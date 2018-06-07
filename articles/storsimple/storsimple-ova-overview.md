@@ -12,13 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/28/2018
+ms.date: 05/21/2018
 ms.author: alkohli
-ms.openlocfilehash: db06614ebd7dee4b0a320737ea8f575b3a3be70f
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 524a587c4547808162b36ff9aa6c08b362465b0b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34651209"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>Wprowadzenie do tablicy wirtualnego StorSimple
 
@@ -206,10 +207,9 @@ StorSimple używa kompresji danych i deduplikacji w celu dalszego ograniczenia w
 
 Funkcje ochrony danych StorSimple pozwalają na tworzenie kopii zapasowych na żądanie. Ponadto domyślny harmonogram tworzenia kopii zapasowej zapewnia, że jest wykonywana kopia zapasowa codziennie danych. Kopie zapasowe są pobierane w postaci migawki przyrostowe, które są przechowywane w chmurze. Migawki, w których rejestrowane tylko zmiany od ostatniej kopii zapasowej, można tworzyć i szybko przywrócić. Te migawki może być bardzo ważny w scenariuszach odzyskiwania po awarii, ponieważ zastąpić systemy dodatkowej magazynu (na przykład kopii zapasowej na taśmie) i umożliwiają przywrócenie danych do centrum danych lub alternatywnej witryn, w razie potrzeby.
 
-## <a name="gdpr-compliance"></a>GDPR zgodności
-[Rozporządzenia ogólne ochrony danych (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) jest prawo ochrona i prywatność danych Unii Europejskiej (UE). GDPR zawiera wiele wymagań dotyczących sposobu zbierania, przechowywania i Użyj informacji osobistych. Reguły GDPR nakłada się na firm, agencji rządowych i innych organizacji, które działają w UE i zbierać, Analizuj dane powiązane mieszkańców Unii Europejskiej.
+## <a name="managing-personal-information"></a>Zarządzanie informacji osobistych
 
-Menedżer urządzeń StorSimple serii wirtualnego jest GDPR zgodne. Istnieją dwa wystąpienia klucza, gdzie informacje osobiste są zbierane i wyświetlane w usłudze:
+Menedżer urządzeń StorSimple wirtualnego serii zbiera informacje osobiste w dwa wystąpienia klucza:
  - Alert, gdy adresy e-mail użytkowników są skonfigurowane ustawienia użytkownika. Te informacje można wyczyścić przez administratora. 
  - Użytkownicy, którzy mają dostęp do danych znajdujących się w akcji. Listę użytkowników, którzy mogą uzyskiwać dostęp do danych udziałów jest wyświetlana i mogą być eksportowane. Ta lista również zostanie usunięta po usunięciu akcji.
 

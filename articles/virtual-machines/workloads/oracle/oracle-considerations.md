@@ -1,9 +1,9 @@
 ---
-title: "Rozwiązania firmy Oracle w systemie Microsoft Azure | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat obsługiwanych konfiguracji i ograniczenia Oracle rozwiązań w systemie Microsoft Azure."
+title: Rozwiązania firmy Oracle w systemie Microsoft Azure | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat obsługiwanych konfiguracji i ograniczenia Oracle rozwiązań w systemie Microsoft Azure.
 services: virtual-machines-linux
-documentationcenter: 
-manager: timlt
+documentationcenter: ''
+manager: jeconnoc
 author: rickstercdn
 tags: azure-resource-management
 ms.assetid: 5d71886b-463a-43ae-b61f-35c6fc9bae25
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/28/2017
 ms.author: rclaus
-ms.openlocfilehash: 1bc03d15096e7f1d4538d6642a61aaee9bb572f7
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: daed709b4b4be87ba75f5539bd31c666b3a37414
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656350"
 ---
 # <a name="oracle-solutions-and-their-deployment-on-microsoft-azure"></a>Rozwiązania programu Oracle i wdrażania ich w systemie Microsoft Azure
 W tym artykule omówiono informacje wymagane do pomyślnego wdrażania różnych rozwiązań Oracle w systemie Microsoft Azure. Te rozwiązania są oparte na obrazy maszyny wirtualnej opublikowane przez firmę Oracle w portalu Azure Marketplace. Aby uzyskać listę dostępnych obrazów, uruchom następujące polecenie:
@@ -89,7 +90,7 @@ Pomimo o wysokiej dostępności i odzyskiwania po awarii rozwiązania zaprojekto
 
          -Dweblogic.rjvm.enableprotocolswitch=true
 
-Powiązane informacje, zobacz artykuł bazy wiedzy **860340.1** w <http://support.oracle.com>.
+Powiązane informacje, zobacz artykuł bazy wiedzy **860340.1** na <http://support.oracle.com>.
 
 * **Dynamiczne klastra i równoważenia obciążenia ograniczenia.** Załóżmy, że chcesz używać dynamicznej klastra WebLogic Server i je ujawnić za pośrednictwem jednej, publiczny równoważeniem obciążenia punktu końcowego na platformie Azure. Będzie to możliwe tak długo, jak używać numeru portu stałej dla każdego z serwerów zarządzanych (przypisywane nie dynamicznie z zakresu) i nie uruchamiaj więcej serwerów zarządzanych niż administrator służy do śledzenia maszyny (to znaczy nie więcej niż jednego zarządzane na m wirtualnego serwera achine). Jeśli konfiguracji powoduje więcej serwerów WebLogic uruchomienia niż maszyny wirtualne (oznacza to, gdzie wielu wystąpień serwera WebLogic udostępnić tę samą maszynę wirtualną), a następnie nie jest możliwe w dla więcej niż jednego z tych wystąpień serwerów WebLogic Aby powiązać danego numeru portu — pozostałe na tej maszynie wirtualnej zakończyć się niepowodzeniem.
 
@@ -102,6 +103,6 @@ Powiązane informacje, zobacz artykuł bazy wiedzy **860340.1** w <http://suppor
    JDK dostępne w tym JDK 6 i 7 obrazów i maszyn wirtualnych i obrazy pochodząca z nich, można używać tylko w obrębie platformy Azure.
 * **JDK 64-bitowych.** Oracle WebLogic Server obrazy maszyny wirtualnej i obrazy maszyny wirtualnej Oracle JDK dostarczany przez platformę Azure zawierają 64-bitowe wersje systemów Windows Server, jak i zestaw JDK.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Omówienie bieżącego rozwiązania firmy Oracle jest teraz dostępna w systemie Microsoft Azure. Następnym krokiem jest do wdrożenia pierwszą bazę danych programu Oracle na platformie Azure.
 - Spróbuj [tworzenie bazy danych programu Oracle na platformie Azure](oracle-database-quick-create.md) samouczkiem, aby rozpocząć pracę.

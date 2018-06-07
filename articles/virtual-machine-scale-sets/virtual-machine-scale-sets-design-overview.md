@@ -1,9 +1,9 @@
 ---
-title: "Zagadnienia dotyczące zestawy skalowania maszyny wirtualnej platformy Azure projektu | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat projektowania sieci zestawy skalowania maszyny wirtualnej Azure"
+title: Zagadnienia dotyczące zestawy skalowania maszyny wirtualnej platformy Azure projektu | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat projektowania sieci zestawy skalowania maszyny wirtualnej Azure
 keywords: zestawy skalowania maszyny wirtualnej w przypadku maszyny wirtualnej systemu Linux
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
 editor: tysonn
@@ -16,36 +16,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: negat
-ms.openlocfilehash: efb9f7f7daa5dbb8cd3120b21ef812106fdc7fb9
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 8c9253caad8b85b25e3142429c1e23be6f92dd64
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652403"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Zagadnienia dotyczące projektowania dla zestawów skalowania
 W tym artykule omówiono zagadnienia dotyczące projektowania dla zestawy skalowania maszyny wirtualnej. Informacje są zestawy skalowania maszyny wirtualnej, można znaleźć w [omówienie zestawy skalowania maszyny wirtualnej](virtual-machine-scale-sets-overview.md).
 
 ## <a name="when-to-use-scale-sets-instead-of-virtual-machines"></a>Kiedy należy używać skali ustawia zamiast maszyn wirtualnych?
-Ogólnie rzecz biorąc zestawy skalowania są przydatne w przypadku wdrażania infrastruktury wysokiej dostępności której zestaw maszyn mają podobnej konfiguracji. Jednak niektóre funkcje są dostępne tylko w zestawach skali, podczas gdy inne funkcje są dostępne tylko w maszynach wirtualnych. Aby można było podjąć świadomej decyzji o tym, kiedy należy używać tych technologii, należy najpierw wykonać przyjrzeć się niektóre z często używane funkcje, które są dostępne w zestawy skalowania, ale nie do maszyn wirtualnych:
+Ogólnie rzecz biorąc zestawy skalowania są przydatne w przypadku wdrażania infrastruktury wysokiej dostępności gdzie zestaw maszyn ma podobnej konfiguracji. Jednak niektóre funkcje są dostępne tylko w zestawach skali, podczas gdy inne funkcje są dostępne tylko w maszynach wirtualnych. Aby można było podjąć świadomej decyzji o tym, kiedy należy używać tych technologii, należy najpierw wykonać przyjrzeć się niektóre z często używane funkcje, które są dostępne w zestawy skalowania, ale nie do maszyn wirtualnych:
 
 ### <a name="scale-set-specific-features"></a>Funkcje specyficzne dla zestawu skalowania
 
-- Po określeniu zestawu skali konfiguracji, należy zaktualizować właściwości "pojemność", aby wdrożyć więcej maszyn wirtualnych jednocześnie. Jest znacznie prostsze niż napisanie skryptu do organizowania wdrażania wiele poszczególnych maszyn wirtualnych jednocześnie.
+- Po określeniu skali ustawienia konfiguracji, można zaktualizować *pojemności* właściwości, aby wdrożyć więcej maszyn wirtualnych jednocześnie. Ten proces jest lepszym rozwiązaniem niż napisanie skryptu do organizowania wdrażania wiele poszczególnych maszyn wirtualnych jednocześnie.
 - Możesz [umożliwia automatycznie skalować zestaw skalowania automatycznego skalowania Azure](./virtual-machine-scale-sets-autoscale-overview.md) , ale nie poszczególnych maszyn wirtualnych.
 - Możesz [maszyn wirtualnych zestawu skalowania odtworzenia z obrazu](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-a-vm) , ale [nie poszczególnych maszyn wirtualnych](https://docs.microsoft.com/rest/api/compute/virtualmachines).
-- Możesz [nadmiernej aprowizacji](./virtual-machine-scale-sets-design-overview.md) zestawu skalowania maszyn wirtualnych dla bardziej niezawodne i szybsze czas wdrażania. Nie można w tym poszczególnych maszyn wirtualnych, chyba że pisanie kodu niestandardowego, w tym celu.
+- Możesz [nadmiernej aprowizacji](./virtual-machine-scale-sets-design-overview.md) zestawu skalowania maszyn wirtualnych dla bardziej niezawodne i szybsze czas wdrażania. Nie można overprovision poszczególnych maszyn wirtualnych, chyba że pisanie kodu niestandardowego do wykonania tej akcji.
 - Można określić [uaktualnienia zasad](./virtual-machine-scale-sets-upgrade-scale-set.md) ułatwia wdrażanie uaktualnień na maszynach wirtualnych w zestawie skali. Poszczególnych maszyn wirtualnych użytkownik musi organizowania aktualizacji samodzielnie.
 
 ### <a name="vm-specific-features"></a>Funkcje specyficzne dla maszyny Wirtualnej
 
 Niektóre funkcje są obecnie dostępne tylko na maszynach wirtualnych:
 
-- Do określonych poszczególnych maszyn wirtualnych można dołączać dysków z danymi, ale dyski dołączone danych są skonfigurowane dla wszystkich maszyn wirtualnych w zestawie skalowania.
-- Dyski danych niepustym można dołączyć do poszczególnych maszyn wirtualnych, ale nie maszyn wirtualnych w zestawie skalowania.
-- Można migawek poszczególnych maszyn wirtualnych, ale nie maszyny Wirtualnej w zestawie skalowania.
 - Można przechwycić obrazu z poszczególnych maszyn wirtualnych, ale nie z maszyny Wirtualnej w zestawie skalowania.
-- Można przeprowadzić migrację poszczególnych maszyn wirtualnych z macierzystych dyskach do dysków zarządzanych, ale nie możesz tego zrobić dla maszyn wirtualnych w zestawie skalowania.
-- Można przypisać publicznych adresów IP protokołu IPv6 do poszczególnych kart sieciowych maszyny Wirtualnej, ale nie można zrobić dla maszyn wirtualnych w zestawie skalowania. Można przypisać publicznych adresów IP protokołu IPv6 można załadować równoważenia przed albo poszczególnych maszyn wirtualnych lub zestawu skalowania maszyn wirtualnych.
+- Można przeprowadzić migrację poszczególnych maszyn wirtualnych z macierzystych dyskach do dysków zarządzanych, ale nie można dokonać migracji wystąpień maszyny Wirtualnej w zestawie skalowania.
+- Można przypisać publicznych adresów IP protokołu IPv6 do poszczególnych maszyn wirtualnych wirtualnych kart interfejsu sieciowego (NIC), ale nie można zrobić dla wystąpień maszyny Wirtualnej w zestawie skalowania. Można przypisać publicznych adresów IP protokołu IPv6 można załadować równoważenia przed albo poszczególnych maszyn wirtualnych lub zestawu skalowania maszyn wirtualnych.
 
 ## <a name="storage"></a>Magazyn
 

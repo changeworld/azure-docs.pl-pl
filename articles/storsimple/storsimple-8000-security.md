@@ -12,13 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/27/2018
+ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: ee0534ab8bc3400854ddf550df9ca2f395f8d80d
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 80cdd2bdad5962a9d5f6a0e20f34ac3db1942741
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650941"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple zabezpieczeń i ochrony danych
 
@@ -204,6 +205,18 @@ StorSimple używa następujących algorytmów szyfrowania, aby chronić dane prz
 
 [!INCLUDE [storsimple Cloud Appliance security](../../includes/storsimple-virtual-device-security.md)]
 
+## <a name="managing-personal-inforamation"></a>Zarządzanie inforamation osobiste
+
+Menedżer urządzeń StorSimple serii fizycznych i wirtualnych zbiera informacje osobiste w Oto wystąpienia klucza:
+
+- Alert ustawienia użytkownika, gdy skonfigurowano adres e-mail użytkowników. Te informacje można wyświetlać i usunięte przez administratora. Dotyczy to urządzeń z serii StorSimple 8000 i tablice wirtualne StorSimple.
+ * Aby wyświetlić i wyczyść ustawienia z serii StorSimple 8000, postępuj zgodnie z instrukcjami [widoku StorSimple alerty i zarządzaj nimi](storsimple-8000-manage-alerts.md#configure-alert-settings)
+ * Aby wyświetlić i wyczyść ustawienia dla tablicy wirtualnego StorSimple, postępuj zgodnie z instrukcjami [widoku StorSimple alerty i zarządzaj nimi](storsimple-virtual-array-manage-alerts.md#configure-alert-settings)
+- Użytkownicy, którzy mają dostęp do danych znajdujących się w akcji. Listę użytkowników, którzy mogą uzyskiwać dostęp do danych udziałów jest wyświetlane i można go wyświetlić. Ta lista również zostanie usunięta po usunięciu akcji. Dotyczy to tylko tablice wirtualne StorSimple.
+ * Aby wyświetlić listę użytkowników, którzy mogą dostępu lub aby usunąć udział, wykonaj czynności opisane w [Zarządzanie udziałami w macierzy wirtualnego StorSimple](storsimple-virtual-array-manage-shares.md)
+
+Aby uzyskać więcej informacji, przejrzyj zasady Privacy firmy Microsoft w [Centrum zaufania](https://www.microsoft.com/trustcenter).
+
 ## <a name="frequently-asked-questions-faq"></a>Często zadawane pytania
 
 Poniżej przedstawiono niektóre pytania i odpowiedzi dotyczące zabezpieczeń i Microsoft Azure StorSimple.
@@ -268,19 +281,7 @@ Poniżej przedstawiono niektóre pytania i odpowiedzi dotyczące zabezpieczeń i
 
 **Odpowiedź:** , dlatego wszystkie dane są szyfrowane na usługi i klucz prywatny jest przechowywany z urządzeniem, jednostki rządowe musi uzyskać klienta danych.
 
-## <a name="gdpr-compliance"></a>GDPR zgodności
 
-[Rozporządzenia ogólne ochrony danych (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) jest prawo ochrona i prywatność danych Unii Europejskiej (UE). GDPR zawiera wiele wymagań dotyczących sposobu zbierania, przechowywania i Użyj informacji osobistych. Reguły GDPR nakłada się na firm, agencji rządowych i innych organizacji, które działają w UE i zbierać, Analizuj dane powiązane mieszkańców Unii Europejskiej. 
-
-Menedżer urządzeń StorSimple serii fizycznych i wirtualnych jest GDPR zgodne. Istnieją dwa wystąpienia klucza, gdzie informacje osobiste są zbierane i wyświetlane w usłudze:
-
-- Alert ustawienia użytkownika, gdy skonfigurowano adres e-mail użytkowników. Te informacje można wyświetlać i usunięte przez administratora. Dotyczy to urządzeń z serii StorSimple 8000 i tablice wirtualne StorSimple.
- * Aby wyświetlić i wyczyść ustawienia z serii StorSimple 8000, postępuj zgodnie z instrukcjami [widoku StorSimple alerty i zarządzaj nimi](storsimple-8000-manage-alerts.md#configure-alert-settings)
- * Aby wyświetlić i wyczyść ustawienia dla tablicy wirtualnego StorSimple, postępuj zgodnie z instrukcjami [widoku StorSimple alerty i zarządzaj nimi](storsimple-virtual-array-manage-alerts.md#configure-alert-settings)
-- Użytkownicy, którzy mają dostęp do danych znajdujących się w akcji. Listę użytkowników, którzy mogą uzyskiwać dostęp do danych udziałów jest wyświetlane i można go wyświetlić. Ta lista również zostanie usunięta po usunięciu akcji. Dotyczy to tylko tablice wirtualne StorSimple.
- * Aby wyświetlić listę użytkowników, którzy mogą dostępu lub aby usunąć udział, wykonaj czynności opisane w [Zarządzanie udziałami w macierzy wirtualnego StorSimple](storsimple-virtual-array-manage-shares.md)
-
-Aby uzyskać więcej informacji, przejrzyj zasady Privacy firmy Microsoft w [Centrum zaufania](https://www.microsoft.com/trustcenter).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -1,22 +1,22 @@
 ---
 title: Jak monitorować i zmniejszenia przepustowości w usłudze Azure czas serii Insights | Dokumentacja firmy Microsoft
 description: W tym artykule opisano, jak monitorowanie, diagnozowanie i ograniczyć problemy z wydajnością powodujących opóźnienia i ograniczania przepustowości w usłudze Azure czas serii Insights.
-services: time-series-insights
 ms.service: time-series-insights
+services: time-series-insights
 author: jasonwhowell
 ms.author: jasonh
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/27/2017
-ms.openlocfilehash: ac59359eb6af268f311534d90e1529fc5e41094f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9a7720934870818a4e13d3d6b5d391d9bd3cddcd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34653675"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorowanie i ograniczenia przepustowości w celu zmniejszenia opóźnień w usłudze Azure czas serii Insights
 Gdy ilość przychodzących danych przekracza konfiguracji w danym środowisku, mogą wystąpić opóźnienia lub ograniczanie w usłudze Azure czas serii Insights.
@@ -41,7 +41,7 @@ Alerty ułatwiają zdiagnozować i ograniczyć problemy opóźnienia spowodowane
 
 2. Kliknij przycisk **Dodaj alert metryki**.  
 
-    ![Dodaj alert metryczny](media/environment-mitigate-latency/add-metric-alert.png)
+    ![Dodawanie metryki alertu](media/environment-mitigate-latency/add-metric-alert.png)
 
 Z tego miejsca można skonfigurować alerty za pomocą następujących metryk:
 

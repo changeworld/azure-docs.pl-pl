@@ -7,14 +7,15 @@ author: MightyPen
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 1e3ecd27ce7ec2e2763a7249428875e51872bf63
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 6c352298c701c827cd01c0ed7f427b7ed6015e29
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646681"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Ogólne wskazówki dotyczące pracy z biletów Wingtip przykładowej aplikacji SaaS
 
@@ -84,7 +85,7 @@ W celu zapewnienia połączenia pokaz pomyślne, wszystkie serwery mają [reguł
 
 
 1. Otwórz *SSMS* i połącz się dzierżawcy. Nazwa serwera jest zależna od wzorzec dzierżawy bazy danych, wybranych (patrz pod kątem specyfiki):
-    - **Aplikacja autonomiczna:** serwerów poszczególnych dzierżawców (np. *contosoconcerthall-&lt;User&gt;.database.windows.net*) 
+    - **Aplikacja autonomiczna:** serwerów poszczególnych dzierżawców (np. *contosoconcerthall -&lt;użytkownika&gt;. database.windows.net*) 
     - **Bazy danych dla poszczególnych dzierżawców:** *tenants1-dpt -&lt;użytkownika&gt;. database.windows.net*
     - **Wielodostępne bazy danych:** *tenants1-mt -&lt;użytkownika&gt;. database.windows.net* 
 2. Kliknij kolejno opcje **Połącz** > **Aparat bazy danych...** :

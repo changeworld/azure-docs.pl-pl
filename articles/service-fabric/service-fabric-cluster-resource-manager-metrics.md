@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 26dffa7e57da2ef383f078c7c5cbb7b9664923ee
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7457a820d9179248eab976ceec64f6b7a4a38563
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643342"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Zarządzanie zużycia zasobów i obciążenia w sieci szkieletowej usług o metryki
 *Metryki* zasobów, które z usług najważniejsze informacje, które są udostępniane przez węzły w klastrze. Metryka to wszystko, co chcesz zarządzać w celu poprawy lub monitorować wydajność usług. Na przykład może oglądać zużycie pamięci, aby dowiedzieć się, jeśli usługa jest przeciążona. Użyj innego jest aby dowiedzieć się, czy usługa może przenieść innym miejscu, gdzie pamięci jest mniejsza ograniczone, aby uzyskać lepszą wydajność.
@@ -32,11 +33,12 @@ Załóżmy, że chcesz rozpocząć pisanie i wdrażania usługi. W tym momencie 
   - ReplicaCount — liczba całkowita stanowe replik w węźle
   - Liczba — liczba wszystkich obiektów usługi (bezstanowe i stanowe) w węźle
 
-| Metryka | Obciążenia bezstanowe wystąpienia | Stanowe dodatkowej obciążenia | Stanowego obciążenia podstawowego |
-| --- | --- | --- | --- |
-| PrimaryCount |0 |0 |1 |
-| ReplicaCount |0 |1 |1 |
-| Licznik |1 |1 |1 |
+| Metryka | Obciążenia bezstanowe wystąpienia | Stanowe dodatkowej obciążenia | Stanowego obciążenia podstawowego | Waga |
+| --- | --- | --- | --- | --- |
+| PrimaryCount |0 |0 |1 |0 |
+| ReplicaCount |0 |1 |1 |0 |
+| Licznik |1 |1 |1 |0 |
+
 
 W przypadku obciążeń podstawowych domyślne metryki Podaj zadowalający dystrybucji pracy w klastrze. W poniższym przykładzie Zobacz, co się stanie po możemy utworzyć dwie usługi i polegać na domyślne metryki równoważenia. Pierwszej usługi jest usługi stanowej trzy partycji i replik docelowy Ustaw rozmiar trzech. Drugi usługa jest usługi bezstanowej z jednej partycji i liczby wystąpień trzy.
 

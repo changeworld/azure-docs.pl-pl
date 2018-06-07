@@ -6,17 +6,18 @@ author: joesackmsft
 manager: craigg
 ms.service: sql-database
 ms.custom: migrate
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: 96bc75e15c99897414fad8c138c8a34ef790af21
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e0c849efa402bdfcf3ed6091cccf47ca722f23d7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650115"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nowy model DBA w chmurze — zarządzania bazą danych w bazie danych SQL Azure
 
@@ -38,7 +39,7 @@ Możliwości odzyskiwania ciągłości i odzyskiwaniem po awarii firm umożliwia
 ### <a name="how-do-i-create-and-manage-backups-on-sql-database"></a>Jak tworzyć i zarządzać kopiami zapasowymi w bazie danych SQL
 Nie twórz kopie zapasowe dla bazy danych SQL Azure i to, ponieważ nie masz. Baza danych SQL automatycznie kopie zapasowe baz danych, więc możesz już musi martwić planowania, pobieranie i zarządzanie kopiami zapasowymi. Platforma trwa pełna kopia zapasowa co tydzień, różnicowej kopii zapasowej co kilka godzin i dziennika kopii zapasowej co 5 minut, aby upewnić się, że odzyskiwania po awarii jest wydajne i minimalnej utracie danych. Pierwsza pełna kopia zapasowa odbywa się, jak utworzyć bazę danych. Te kopie zapasowe są dostępne na pewien okres o nazwie "Okres przechowywania" i zależy od wybranej warstwy wydajności.  Baza danych SQL udostępnia możliwość przywracania do dowolnego punktu w czasie, w tym przechowywania okresu przy użyciu [punktu w czasie odzyskiwania (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore).
 
-|Konfiguruj wydajność|Okres przechowywania w dniach|
+|Warstwę wydajności|Okres przechowywania w dniach|
 |---|:---:|
 |Podstawowa|7|
 |Standardowa (Standard)|35|

@@ -7,14 +7,15 @@ manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 010d4f6d9f33b8fb6f1622321a3b566f68f28f5f
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 4ab938bc556d5e3dea8b7ec093f590ff1746ea29
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647548"
 ---
 # <a name="elastic-database-tools-glossary"></a>Elastyczne słownik Narzędzia bazy danych
 Poniższe terminy są definiowane dla [narzędzi elastycznej bazy danych](sql-database-elastic-scale-introduction.md), funkcja bazy danych SQL Azure. Narzędzia są używane do zarządzania [mapy niezależnego fragmentu](sql-database-elastic-scale-shard-map-management.md)i obejmują [biblioteki klienta](sql-database-elastic-database-client-library.md), [narzędzia do scalania podziału](sql-database-elastic-scale-overview-split-and-merge.md), [pule elastyczne](sql-database-elastic-pool.md)i [zapytania](sql-database-elastic-query-overview.md). 

@@ -1,19 +1,20 @@
 ---
-title: "Usługa aplikacji Azure — konfiguracja sieci synchronizacji | Dokumentacja firmy Microsoft"
-description: "W tym artykule omówiono sposób synchronizacji konfiguracji sieci dla planu hostingu usługi Azure App Service."
+title: Usługa aplikacji Azure — konfiguracja sieci synchronizacji | Dokumentacja firmy Microsoft
+description: W tym artykule omówiono sposób synchronizacji konfiguracji sieci dla planu hostingu usługi Azure App Service.
 ms.service: sql-database
 author: srdjan-bozovic
 manager: craigg
 ms.custom: managed instance
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 5b139b1279776acfca63def25a9fdae0f627a727
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ea8f4aae0324e201def6b9b6cd33b0e79042ebbe
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647973"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan"></a>Synchronizowanie konfiguracji sieci dla planu hostingu usługi aplikacji Azure
 

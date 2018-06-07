@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: 674f4ec53300643450d8a576db6fcb50e86dd9d2
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: c500725508d2bf9f09279e665871ab286d9e495a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652073"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>Kontrola dostępu oparta na rolach dla urządzenia StorSimple
 
@@ -30,7 +31,7 @@ Ten artykuł dotyczy urządzeń z serii StorSimple 8000 systemem 3.0 aktualizacj
 
 RBAC można przypisywać na podstawie ról. Upewnij się, role określone poziomy uprawnień na podstawie dostępnych zasobów w środowisku. Istnieją dwa typy ról, które można wybrać użytkowników StorSimple: wbudowanych lub niestandardowych.
 
-* **Wbudowane role** -wbudowane role mogą być właściciela, współautora, czytnika lub administrator dostępu użytkowników. Aby uzyskać więcej informacji, zobacz [wbudowanych ról dla kontroli dostępu opartej na roli Azure](../role-based-access-control/overview.md#built-in-roles).
+* **Wbudowane role** -wbudowane role mogą być właściciela, współautora, czytnika lub administrator dostępu użytkowników. Aby uzyskać więcej informacji, zobacz [wbudowanych ról dla kontroli dostępu opartej na roli Azure](../role-based-access-control/built-in-roles.md).
 
 * **Role niestandardowe** — Jeśli wbudowane role nie własnych potrzeb, można tworzyć niestandardowe role RBAC dla urządzenia StorSimple. Aby utworzyć niestandardową rolę RBAC, rozpoczynać się od wbudowanej roli go edytować i zaimportuj go ponownie w środowisku. Pobieranie i przekazywania roli są zarządzane przy użyciu programu Azure PowerShell lub wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [Tworzenie niestandardowych ról dla kontroli dostępu opartej na rolach](../role-based-access-control/custom-roles.md).
 
@@ -153,7 +154,7 @@ PS C:\WINDOWS\system32>
 
 ## <a name="add-users-to-the-custom-role"></a>Dodawanie użytkowników do roli niestandardowej
 
-Dostęp udzielany jest w ramach zasobu, grupy zasobów lub subskrypcji, która jest zakresem przypisania roli. Przy udzielaniu dostępu, pamiętać, że dostęp udzielany na węzeł nadrzędny jest dziedziczona przez dziecko. Aby uzyskać więcej informacji, przejdź do [zasobów dostępu i hierarchii dziedziczenia](../role-based-access-control/overview.md#resource-hierarchy-and-access-inheritance).
+Dostęp udzielany jest w ramach zasobu, grupy zasobów lub subskrypcji, która jest zakresem przypisania roli. Przy udzielaniu dostępu, pamiętać, że dostęp udzielany na węzeł nadrzędny jest dziedziczona przez dziecko. Aby uzyskać więcej informacji, przejdź do [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md).
 
 1. Przejdź do **(IAM) kontroli dostępu**. Kliknij przycisk **+ Dodaj** w bloku kontroli dostępu.
 

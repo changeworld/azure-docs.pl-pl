@@ -1,6 +1,6 @@
 ---
-title: "Testowanie trybu failover na platformie Azure w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o uruchamianiu test trybu failover z lokalnej na platformie Azure, przy użyciu usługi Azure Site Recovery."
+title: Testowanie trybu failover na platformie Azure w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o uruchamianiu test trybu failover z lokalnej na platformie Azure, przy użyciu usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: raynew
-ms.openlocfilehash: bfc9df3c1190d9b94f5e8d726665acb7f999311f
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: bdbeee0e0caaa0e6db7249c2f4aeaa19d5d2ed0d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643655"
 ---
 # <a name="test-failover-to-azure-in-site-recovery"></a>Testowanie trybu failover na platformie Azure w usłudze Site Recovery
 
@@ -25,7 +26,7 @@ Możesz uruchomić test trybu failover do weryfikowanie replikacji i strategii o
 ## <a name="run-a-test-failover"></a>Wykonywanie próby przejścia w tryb failover
 Ta procedura opisuje sposób testować tryb failover planu odzyskiwania. 
 
-![Testowanie trybu Failover](./media/site-recovery-test-failover-to-azure/TestFailover.png)
+![Test pracy w trybie failover](./media/site-recovery-test-failover-to-azure/TestFailover.png)
 
 
 1. W usłudze Site Recovery w portalu Azure, kliknij przycisk **plany odzyskiwania** > *recoveryplan_name* > **testowy tryb Failover**.
@@ -40,7 +41,7 @@ Ta procedura opisuje sposób testować tryb failover planu odzyskiwania.
 
     - Prób odzyskania lokacji można utworzyć testu maszyn wirtualnych w podsieci o tej samej nazwie i tego samego adresu IP, jak te zawarte w **obliczenia i sieć** ustawienia maszyny wirtualnej.
     - Jeśli podsieć o takiej samej nazwie nie jest dostępny w sieci wirtualnej platformy Azure, używane do testowania trybu failover, następnie testu zostanie utworzona maszyna wirtualna w pierwszej podsieci alfabetycznie.
-    - Jeśli tego samego adresu IP nie jest dostępny w podsieci, następnie maszyna wirtualna odbiera kolejny dostępny adres IP w podsieci. [Dowiedz się więcej](#creating-a-network-for-test-failover).
+    - Jeśli tego samego adresu IP nie jest dostępny w podsieci, następnie maszyna wirtualna odbiera kolejny dostępny adres IP w podsieci. [Dowiedz się więcej](#create-a-network-for-test-failover).
 4. Jeśli użytkownik jest przechodzenie w tryb failover na platformie Azure i szyfrowanie danych jest włączone, w **klucza szyfrowania**, wybierz certyfikat, który został wystawiony, włączenie szyfrowania podczas instalacji dostawcy. Możesz zignorować ten krok nie jest włączone szyfrowanie.
 5. Śledzić postęp trybu failover na **zadania** kartę. Można wyświetlić testową maszynę repliki w portalu Azure.
 6. Aby zainicjować połączenie RDP z maszyny Wirtualnej Azure, musisz [Dodaj publiczny adres IP](https://aka.ms/addpublicip) dla interfejsu sieci w trybie Failover maszyny Wirtualnej. 
@@ -48,7 +49,7 @@ Ta procedura opisuje sposób testować tryb failover planu odzyskiwania.
 8. W obszarze **Uwagi** zarejestruj i zapisz wszelkie obserwacje związane z testem pracy w trybie failover. 
 
 
-![Testowanie trybu Failover](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
+![Test pracy w trybie failover](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
 
 Po wyzwoleniu test trybu failover, są następujące operacje:
 
@@ -70,7 +71,7 @@ W następujących scenariuszach pracy awaryjnej wymaga bardzo pośredniego kroku
     * vmbus
     * storflt
     * Intelide
-    * atapi
+    * ATAPI
 * Maszyna wirtualna oprogramowania VMware który DHCP nie jest włączone, rrespective z tego, czy używasz DHCP lub statyczne adresy IP.
 
 We wszystkich innych przypadkach nie jest wymagane nie pośredniego kroku i trybu failover trwa znacznie krócej.

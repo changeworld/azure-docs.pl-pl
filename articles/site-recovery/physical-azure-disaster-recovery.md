@@ -6,13 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 05/23/2018
 ms.author: raynew
-ms.openlocfilehash: 207ff17f7b113bf4a94bb6c157cf53e7b1c46b45
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a4c83e495e269cdca35844a699d714b55cf1f500
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643315"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Konfigurowanie odzyskiwania po awarii do platformy Azure dla lokalnych serwerów fizycznych
 
@@ -27,18 +28,25 @@ W tym samouczku przedstawiono sposób konfigurowania odzyskiwania po awarii loka
 > * Tworzenie zasad replikacji
 > * Włącz replikację dla serwera
 
+[Przegląd architektury](concepts-hyper-v-to-azure-architecture.md) w tym scenariuszu odzyskiwania po awarii.
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 W celu ukończenia tego samouczka:
 
-- Przeanalizuj informacje o [składnikach i architekturze scenariusza](physical-azure-architecture.md).
+- Upewnij się, że rozumiesz [architektury i składników](physical-azure-architecture.md) dla tego scenariusza.
 - Zapoznaj się z [wymaganiami dotyczącymi obsługi](vmware-physical-secondary-support-matrix.md) wszystkich składników.
 - Upewnij się, że spełniają serwerów, które chcesz replikować [wymagania maszyny Wirtualnej Azure](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
 - Przygotuj Azure. Potrzebujesz subskrypcji platformy Azure, sieć wirtualną platformy Azure i konto magazynu.
 - Przygotowanie konta do automatycznej instalacji usługi mobilności na każdym serwerze, który chcesz replikować.
 
-> [!NOTE]
-> Przed rozpoczęciem należy pamiętać, że po w tryb failover na platformie Azure, serwery fizyczne nie nie do fizycznych komputerów lokalnych. Możesz tylko w trybie do maszyn wirtualnych VMware. 
+Przed rozpoczęciem należy pamiętać, że:
+
+- Po w tryb failover na platformie Azure serwerów fizycznych nie można przełączyć do fizycznych komputerów lokalnych. Możesz tylko w trybie do maszyn wirtualnych VMware. 
+- W tym samouczku konfiguruje odzyskiwania po awarii serwera fizycznego na platformie Azure przy użyciu ustawień najprostsza. Jeśli chcesz dowiedzieć się więcej o innych opcjach, zapoznaj się z artykułem nasze wskazówki jak:
+    - Konfigurowanie [źródła replikacji](physical-azure-set-up-source.md), łącznie z serwera konfiguracji usługi Site Recovery.
+    - Konfigurowanie [lokalizacją docelową replikacji](physical-azure-set-up-target.md).
+    - Skonfiguruj [zasad replikacji](vmware-azure-set-up-replication.md), i [włączyć replikację](vmware-azure-enable-replication.md).
 
 
 ### <a name="set-up-an-azure-account"></a>Konfigurowanie konta platformy Azure

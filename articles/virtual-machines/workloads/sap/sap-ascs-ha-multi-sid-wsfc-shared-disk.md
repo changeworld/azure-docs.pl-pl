@@ -1,13 +1,13 @@
 ---
-title: "SAP ASCS/SCS wystąpienia identyfikatora SID multi wysokiej dostępności z systemu Windows Server Failover Clustering i udostępnionego dysku na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Identyfikator SID Multi wysoka dostępność dla wystąpienia SAP ASCS/SCS z systemu Windows Server Failover Clustering i udostępnionego dysku na platformie Azure"
+title: SAP ASCS/SCS wystąpienia identyfikatora SID multi wysokiej dostępności z systemu Windows Server Failover Clustering i udostępnionego dysku na platformie Azure | Dokumentacja firmy Microsoft
+description: Identyfikator SID Multi wysoka dostępność dla wystąpienia SAP ASCS/SCS z systemu Windows Server Failover Clustering i udostępnionego dysku na platformie Azure
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: cbf18abe-41cb-44f7-bdec-966f32c89325
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c82cc943f983b3dedfc0f64f2eec5b4425a4bf81
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: ee5dc346def58ea7362a763d088145eb0d04a608
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656734"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -248,13 +249,13 @@ Zakończenie pozioma z dwoma systemami SAP wysokiej dostępności będzie wyglą
 
 ![SAP wysokiej dostępności multi-SID Instalatorowi systemu SAP identyfikatorów SID][sap-ha-guide-figure-6003]
 
-## <a name="25e358f8-92e5-4e8d-a1e5-df7580a39cb0"></a>Przygotowanie infrastruktury scenariusz identyfikatora SID multi SAP
+## <a name="25e358f8-92e5-4e8d-a1e5-df7580a39cb0"></a> Przygotowanie infrastruktury scenariusz identyfikatora SID multi SAP
 
 Aby przygotować infrastrukturę, można zainstalować dodatkowe wystąpienia SAP ASCS/SCS z następującymi parametrami:
 
 | Nazwa parametru | Wartość |
 | --- | --- |
-| SAP ASCS/SCS IDENTYFIKATORA SID |PR1-lb-ascs |
+| SAP ASCS/SCS SID |PR1-lb-ascs |
 | System DBMS SAP wewnętrznego modułu równoważenia obciążenia | PR5 |
 | Nazwa hosta wirtualnego SAP | cl-pr5-sap |
 | Adres IP hosta wirtualnego SAP ASCS/SCS (adres IP usługi równoważenia obciążenia Azure dodatkowe) | 10.0.0.50 |
@@ -270,7 +271,7 @@ Można zainstalować dodatkowe wystąpienia SAP ASCS/SCS w istniejącym klastrze
 
 | Roli maszyny wirtualnej | Nazwa hosta maszyny wirtualnej | Statyczny adres IP |
 | --- | --- | --- |
-| Pierwszym węźle klastra dla wystąpienia ASCS/SCS |PR1-ascs-0 |10.0.0.10 |
+| Pierwszym węźle klastra dla wystąpienia ASCS/SCS |pr1-ascs-0 |10.0.0.10 |
 | Drugi węzeł klastra dla wystąpienia ASCS/SCS |PR1-ascs-1 |10.0.0.9 |
 
 ### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance-on-the-dns-server"></a>Utwórz nazwę hosta wirtualnego wystąpienia klastra programu SAP ASCS/SCS na serwerze DNS
@@ -432,7 +433,7 @@ Procedury ogólne wygląda następująco:
 
 10. [Testowanie trybu failover wystąpienia programu SAP ASCS/SCS i replikacji SIOS][sap-high-availability-installation-wsfc-shared-disk-test-ascs-failover-and-sios-repl].
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Ograniczenia sieciowe: Usługa Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Moduł równoważenia obciążenia z wieloma wirtualnymi adresami IP na platformie Azure][load-balancer-multivip-overview]

@@ -5,25 +5,25 @@ services: storage,event-grid
 keywords: ''
 author: david-stanford
 ms.author: dastanfo
-ms.date: 01/30/2018
+ms.date: 05/24/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 9ea51f6ea55c62fdd01efb155d26fade3941ce41
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: b6764ffa0e7cfbc888f11c22af855d48d8160372
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650506"
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-powershell"></a>Zdarzenia magazynu obiektów Blob trasy do punktu końcowego niestandardowe sieci web przy użyciu programu PowerShell
 
 Azure Event Grid to usługa obsługi zdarzeń dla chmury. W tym artykule subskrybować zdarzenia magazynu obiektów Blob, wyzwalacz zdarzenia przy użyciu programu Azure PowerShell i wyświetlenia wyników. 
 
-Zazwyczaj wysyła się zdarzenia do punktu końcowego, który na nie reaguje, takiego jak element webhook lub funkcja platformy Azure. Aby uprościć przykładzie przedstawionym w tym artykule, zdarzenia są wysyłane na adres URL, który tylko zbiera wiadomości. Ten adres URL jest tworzony w narzędziu innej firmy przy użyciu narzędzia [Hookbin](https://hookbin.com/).
+Zazwyczaj użytkownik wysyła zdarzenia do punktu końcowego, który przetwarza dane zdarzenia i wykonuje akcje. Jednak aby uprościć w tym artykule, możesz wysłać zdarzenia do aplikacji sieci web, który zbiera i wyświetla komunikaty.
 
-> [!NOTE]
-> **Hookbin** nie jest przeznaczony do użycia z wysokiej przepływności. Zastosowanie tego narzędzia ma charakter czysto poglądowy. W przypadku wypchnięcia więcej niż jednego zdarzenia w tym samym czasie w narzędziu mogą nie być widoczne wszystkie zdarzenia. Ponadto należy pamiętać, że **Hookbin** pobiera [szczególnego traktowania](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-event-grid#create-a-requestbin-endpoint) Azure zdarzeń siatki. Aby ułatwić testowanie, siatki zdarzeń wysyła zdarzenia bez konieczności poprawne odpowiedzi na żądania weryfikacji subskrypcji (się stanie, który [w przeciwnym razie](https://docs.microsoft.com/en-us/azure/event-grid/security-authentication#validation-details)).
+Po zakończeniu, zobacz, czy dane zdarzenie zostało wysłane do aplikacji sieci web.
 
-Po wykonaniu czynności opisanych w tym artykule dane powinny zostać wysłane do punktu końcowego.
+![Wyświetl wyniki](./media/storage-blob-event-quickstart-powershell/view-results.png)
 
 ## <a name="setup"></a>Konfiguracja
 
@@ -82,23 +82,41 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-message-endpoint"></a>Tworzenie punktu końcowego komunikatów
 
-Przed zasubskrybowaniem tematu utwórzmy punkt końcowy dla komunikatów o zdarzeniach. Zamiast pisać kod w celu zareagowania na zdarzenie, utwórzmy punkt końcowy, który będzie zbierać komunikaty, aby można było je wyświetlić. Hookbin to narzędzie innego producenta, które umożliwia utworzenie punktu końcowego i wyświetlanie wysyłanych do niego żądań. Przejdź do narzędzia [Hookbin](https://hookbin.com/) i kliknij pozycję **Create New Endpoint** (Utwórz nowy punkt końcowy). Skopiuj adres URL bin i Zastąp `<bin URL>` w poniższym skrypcie.
+Przed zasubskrybowaniem tematu utwórzmy punkt końcowy dla komunikatów o zdarzeniach. Zazwyczaj punktu końcowego wykonuje akcje na podstawie danych zdarzenia. Aby uprościć tego przewodnika Szybki Start, wdrażanie [aplikacji sieci web wbudowanych](https://github.com/dbarkol/azure-event-grid-viewer) który wyświetla komunikaty o zdarzeniach. Wdrożone rozwiązanie zawiera plan usługi aplikacji, aplikacji sieci web usługi aplikacji i kodu źródłowego z usługi GitHub.
+
+Zastąp `<your-site-name>` o unikatowej nazwie dla aplikacji sieci web. Nazwa aplikacji sieci web musi być unikatowa, ponieważ jest ona częścią wpisu DNS.
 
 ```powershell
-$binEndPoint = "<bin URL>"
+$sitename="<your-site-name>"
+
+New-AzureRmResourceGroupDeployment `
+  -ResourceGroupName $resourceGroup `
+  -TemplateUri "https://raw.githubusercontent.com/dbarkol/azure-event-grid-viewer/master/azuredeploy.json" `
+  -siteName $sitename `
+  -hostingPlanName viewerhost
 ```
+
+Wdrażanie może potrwać kilka minut. Po pomyślnym wdrożeniu wyświetlić aplikację sieci web, aby zapewnić, że jest uruchomiona. W przeglądarce sieci web przejdź do: `https://<your-site-name>.azurewebsites.net`
+
+Powinny pojawić lokacji z żadnych komunikatów aktualnie wyświetlany.
 
 ## <a name="subscribe-to-your-storage-account"></a>Subskrypcja konta magazynu
 
-Subskrybowanie tematu ma poinformować usługę Event Grid o tym, które zdarzenia chcesz śledzić. Poniższy przykład subskrybuje konta magazynu utworzone i przekazuje adres URL z Hookbin jako punkt końcowy powiadomienia o zdarzeniach. 
+Subskrybowanie tematu ma poinformować usługę Event Grid o tym, które zdarzenia chcesz śledzić. Poniższy przykład subskrybuje konta magazynu utworzone i przekazuje adres URL z aplikacji sieci web jako punktu końcowego powiadomienia o zdarzeniach. Punkt końcowy dla aplikacji sieci web musi zawierać sufiks `/api/updates/`.
 
 ```powershell
 $storageId = (Get-AzureRmStorageAccount -ResourceGroupName $resourceGroup -AccountName $storageName).Id
+$endpoint="https://$sitename.azurewebsites.net/api/updates"
+
 New-AzureRmEventGridSubscription `
   -EventSubscriptionName gridBlobQuickStart `
-  -Endpoint $binEndPoint `
+  -Endpoint $endpoint `
   -ResourceId $storageId
 ```
+
+Ponownie wyświetlić aplikację sieci web i zwróć uwagę, że zdarzenie sprawdzania poprawności subskrypcji zostało wysłane do niej. Wybierz ikonę oka, aby rozwinąć dane zdarzenia. Siatki zdarzeń wysyła zdarzenia weryfikacji punktu końcowego można sprawdzić, czy chce odbierać dane zdarzenia. Aplikacja sieci web zawiera kod do sprawdzania poprawności subskrypcji.
+
+![Widok subskrypcji zdarzeń](./media/storage-blob-event-quickstart-powershell/view-subscription-event.png)
 
 ## <a name="trigger-an-event-from-blob-storage"></a>Wyzwalanie zdarzenia z usługi Blob Storage
 
@@ -113,7 +131,7 @@ echo $null >> gridTestFile.txt
 Set-AzureStorageBlobContent -File gridTestFile.txt -Container $containerName -Context $ctx -Blob gridTestFile.txt
 ```
 
-Zdarzenie zostało wyzwolone, a usługa Event Grid wysłała komunikat do punktu końcowego skonfigurowanego podczas subskrybowania. Przejdź do adresu URL punktu końcowego utworzonego wcześniej. Ewentualnie kliknij przycisk Refresh (Odśwież) w otwartej przeglądarce. Zobaczysz właśnie wysłane zdarzenie. 
+Zdarzenie zostało wyzwolone, a usługa Event Grid wysłała komunikat do punktu końcowego skonfigurowanego podczas subskrybowania. Wyświetl aplikację sieci web, aby wyświetlić zdarzenia, które zostały wysłane.
 
 ```json
 [{

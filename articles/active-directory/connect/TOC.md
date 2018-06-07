@@ -54,7 +54,7 @@
 ### [Obsługa wielu domen do federowania](active-directory-aadconnect-multiple-domains.md)
 ### [Automatycznie uaktualnianie](active-directory-aadconnect-feature-automatic-upgrade.md)
 ### [Korzystanie z dostawcy tożsamości SAML 2.0 na potrzeby logowania jednokrotnego](active-directory-aadconnect-federation-saml-idp.md)
-### [Synchronizowanie kont użytkowników-gości logujących się za pomocą adresu e-mail](active-directory-aadconnect-guest-sync.md)
+
 
 
 ## Zarządzanie programem Azure AD Connect Sync

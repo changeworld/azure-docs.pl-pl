@@ -10,11 +10,12 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: a2a6c78444cb385a2e74b108000555ff056fe9f0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 233cba790aff60121bd1fdf43667ac48a5ef668d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644940"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Limity pojemności magazynu danych SQL
 Maksymalna dozwolona dla poszczególnych składników usługi Azure SQL Data Warehouse.
@@ -32,7 +33,7 @@ Maksymalna dozwolona dla poszczególnych składników usługi Azure SQL Data War
 ## <a name="database-objects"></a>Obiekty bazy danych
 | Kategoria | Opis | Maksimum |
 |:--- |:--- |:--- |
-| Database (Baza danych) |Maks. rozmiar |240 TB skompresowane na dysku<br/><br/>Ta przestrzeń jest niezależna od miejsca w bazie danych tempdb lub dziennika, a w związku z tym to miejsce jest przydzielane trwałych tabelach.  Kompresja klastrowanego magazynu kolumn szacuje się na 5 X.  Kompresja ta umożliwia wzrostu około 1 bazy PB, gdy wszystkie tabele są klastrowanego magazynu kolumn (domyślny typ tabeli). |
+| Database (Baza danych) |Maks. rozmiar | Gen1: 240 TB skompresowane na dysku. Ta przestrzeń jest niezależna od miejsca w bazie danych tempdb lub dziennika, a w związku z tym to miejsce jest przydzielane trwałych tabelach.  Kompresja klastrowanego magazynu kolumn szacuje się na 5 X.  Kompresja ta umożliwia wzrostu około 1 bazy PB, gdy wszystkie tabele są klastrowanego magazynu kolumn (domyślny typ tabeli). <br/><br/> Gen2: 240TB magazynu wierszy i nieograniczony magazyn dla magazynu kolumn tabel |
 | Tabela |Maks. rozmiar |60 TB skompresowane na dysku |
 | Tabela |Tabel na bazę danych |10 000 |
 | Tabela |Kolumn w tabeli |1024 kolumn |

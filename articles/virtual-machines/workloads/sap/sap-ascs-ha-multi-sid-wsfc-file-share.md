@@ -1,13 +1,13 @@
 ---
-title: "SAP ASCS/SCS wystąpienia identyfikatora SID multi wysokiej dostępności z systemu Windows Server Failover Clustering i udział plików na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Udostępnianie identyfikatora SID wielu wysokiej dostępności dla SAP ASCS/SCS wystąpień z systemem Windows Server Failover Clustering i plików na platformie Azure"
+title: SAP ASCS/SCS wystąpienia identyfikatora SID multi wysokiej dostępności z systemu Windows Server Failover Clustering i udział plików na platformie Azure | Dokumentacja firmy Microsoft
+description: Udostępnianie identyfikatora SID wielu wysokiej dostępności dla SAP ASCS/SCS wystąpień z systemem Windows Server Failover Clustering i plików na platformie Azure
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: cbf18abe-41cb-44f7-bdec-966f32c89325
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3522e7ef0e3d49ce1bd8bed750b239fa384af8b8
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 604179ec856d21dce51101fdafa5d51eed08f89f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657217"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -447,7 +448,7 @@ Wykonaj te same kroki instalacji i konfiguracji zgodnie z wcześniejszym opisem 
 ### <a name="install-dbms-and-sap-application-servers"></a>Zainstaluj system DBMS i SAP serwerów aplikacji
 Zainstaluj system DBMS i serwerów aplikacji SAP zgodnie z wcześniejszym opisem.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Instalowanie wystąpienia ASCS/SCS w klastrze trybu failover bez udostępnionych dysków][sap-official-ha-file-share-document]: oficjalny SAP wytyczne dotyczące udziału plików o wysokiej dostępności
 

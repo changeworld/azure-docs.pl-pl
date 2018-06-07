@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 8173a5abbbeea38bc831b7cc76898714cd4dd4d4
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: dc54c232b972c25e6b21dbbb8a91a0218f17d584
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34670211"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Omówienie ponownych rozruchów maszyn wirtualnych — konserwacja a przestój
 Istnieją trzy scenariusze, które mogą prowadzić do maszyny wirtualnej platformy Azure jest w pełni funkcjonalne: sprzęt nieplanowana konserwacja, nieoczekiwane przestoje i planowanej konserwacji.
@@ -20,7 +21,7 @@ Istnieją trzy scenariusze, które mogą prowadzić do maszyny wirtualnej platfo
 * **Zdarzenie nieplanowanej konserwacji sprzętu** ma miejsce, gdy platforma Azure przewidzi zbliżającą się awarię sprzętu lub dowolnego składnika platformy powiązanego z maszyną fizyczną. Gdy platforma przewidzi awarię, wygeneruje zdarzenie nieplanowanej konserwacji sprzętu, aby zmniejszyć wpływ tej awarii na maszyny wirtualne hostowane na tym sprzęcie. Platforma Azure korzysta z technologii migracji na żywo do migrowania maszyn wirtualnych ze sprzętu ulegającego awarii na maszynę fizyczną w dobrej kondycji. Migracja na żywo to operacja zachowywania maszyny wirtualnej, która jedynie wstrzymuje maszynę wirtualną na krótki czas. Pamięć, otwarte pliki i połączenia sieciowe są utrzymywane, ale wydajność przed i/lub po zdarzeniu może zostać ograniczona. W przypadkach, gdy nie można użyć migracji na żywo, maszyna wirtualna doświadczy nieoczekiwanego przestoju zgodnie z opisem poniżej.
 
 
-* **Nieoczekiwany przestój** rzadko występuje w przypadku wystąpienia awarii sprzętu lub infrastruktury fizycznej, na której bazuje maszyna wirtualna. Mogą być to awarie sieci lokalnej, błędy na dysku lokalnym lub inne awarie na poziomie regału. W przypadku wykrycia takiej awarii platformy Azure automatycznie zmigrowane (heals) maszyny wirtualnej do dobrej kondycji komputera fizycznego w tym samym centrum danych. Podczas wykonywania procedury naprawiania maszyny wirtualne doświadczają przestoju (ponownego rozruchu), a w niektórych przypadkach dochodzi do utraty dysku tymczasowego. Dołączone dyski systemu operacyjnego i danych są zawsze zachowywane. 
+* **Nieoczekiwane przestoje** jest w przypadku awarii sprzętu lub infrastruktury fizycznej dla maszyny wirtualnej nieoczekiwanie. Mogą to być awarie sieci lokalnej, awarii dysku lokalnego lub innych błędów poziomu stojaku. W przypadku wykrycia platformy Azure automatycznie zmigrowane (heals) maszyny wirtualnej do dobrej kondycji komputera fizycznego w tym samym centrum danych. Podczas wykonywania procedury naprawiania maszyny wirtualne doświadczają przestoju (ponownego rozruchu), a w niektórych przypadkach dochodzi do utraty dysku tymczasowego. Dołączone dyski systemu operacyjnego i danych są zawsze zachowywane. 
 
   Maszyny wirtualne można również przestój w przypadku mało prawdopodobnego awarii lub poważnej awarii, który wpływa na całą centrum danych lub nawet całego regionu. W tych sytuacjach platforma Azure udostępnia opcje ochrony, w tym [stref dostępności](../articles/availability-zones/az-overview.md) i [łączyć regionów](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions).
 
@@ -83,7 +84,7 @@ Jeśli moduł równoważenia obciążenia nie został skonfigurowany do równowa
 
 [Dostępność strefy](../articles/availability-zones/az-overview.md), ustawia zamiast dostępności, rozwiń poziom kontroli należy zachować dostępność aplikacje i dane maszyn wirtualnych. Strefa dostępności to fizycznie oddzielona strefa w regionie świadczenia usługi Azure. Istnieją trzy strefy dostępności na obsługiwany region platformy Azure. Każdej strefy dostępności ma oddzielny zasilania źródła, sieci i chłodzenia i jest logicznie oddzielona od innych stref dostępności w obrębie regionu Azure. Przez projektowania rozwiązań do użycia w strefach replikowanych maszyn wirtualnych, można chronić aplikacji i danych z utraty możliwości Centrum danych. W przypadku złamania zabezpieczeń jednego strefy, następnie replikowanych aplikacje i dane są dostępne natychmiast w innej strefie. 
 
-![Dostępność strefy](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
+![Strefy dostępności](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
 
 Dowiedz się więcej o wdrażaniu [Windows](../articles/virtual-machines/windows/create-powershell-availability-zone.md) lub [Linux](../articles/virtual-machines/linux/create-cli-availability-zone.md) maszyny Wirtualnej w strefie dostępności.
 

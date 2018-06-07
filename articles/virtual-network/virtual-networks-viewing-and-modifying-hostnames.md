@@ -12,24 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/27/2016
+ms.date: 05/24/2018
 ms.author: genli
-ms.openlocfilehash: 9bf57eac2176444ed408d90723009118bd411480
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: f4c602368368e8ef36581d3f035ff3943a8f0d8f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657285"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>Wyświetlanie i modyfikowanie nazwy hostów
 Aby zezwolić wystąpienia roli przywoływanie według nazwy hosta, należy ustawić wartość nazwy hosta w pliku konfiguracji usługi dla każdej roli. Można to zrobić przez dodanie nazwy wybranego hosta, aby **vmName** atrybutu **roli** elementu. Wartość **vmName** atrybutu jest używana jako podstawa dla każdego wystąpienia roli nazwy hosta. Na przykład jeśli **vmName** jest *sieć Web* istnieją trzy wystąpień tej roli, nazwy hosta wystąpień będą *webrole0*, *webrole1*, i *webrole2*. Nie trzeba określić nazwę hosta dla maszyn wirtualnych w pliku konfiguracji, ponieważ nazwa hosta dla maszyny wirtualnej jest wypełniana na podstawie nazwy maszyny wirtualnej. Aby uzyskać więcej informacji o konfigurowaniu usługi Microsoft Azure, zobacz [schemat konfiguracji usługi Azure (cscfg plików)](https://msdn.microsoft.com/library/azure/ee758710.aspx)
 
 ## <a name="viewing-hostnames"></a>Wyświetlanie nazwy hostów
 Można wyświetlić nazwy hostów maszyn wirtualnych i wystąpień roli w usłudze w chmurze przy użyciu dowolnej z poniższych narzędzi.
-
-### <a name="azure-portal"></a>Azure Portal
-Można użyć [portalu Azure](http://portal.azure.com) Aby wyświetlić nazwy hostów dla maszyn wirtualnych w bloku omówienie maszyny wirtualnej. Należy pamiętać, że blok zawiera wartość dla **nazwa** i **nazwy hosta**. Chociaż początkowo są takie same, zmiana nazwy hosta nie zmieni nazwę maszyny wirtualnej lub wystąpienia roli.
-
-Można również wyświetlać wystąpień roli w portalu Azure, ale jeśli lista wystąpień w usłudze w chmurze, nazwy hosta nie jest wyświetlana. Zobaczysz nazwy dla każdego wystąpienia, ale ta nazwa reprezentuje nazwę hosta.
 
 ### <a name="service-configuration-file"></a>Plik konfiguracji usługi
 Możesz pobrać plik konfiguracji usługi dla wdrożonej usługi z **Konfiguruj** bloku usługi w portalu Azure. Następnie można wyszukać **vmName** atrybutu dla **nazwy roli** element, aby zobaczyć nazwę hosta. Należy pamiętać, że ta nazwa hosta jest używana jako podstawa dla każdego wystąpienia roli nazwy hosta. Na przykład jeśli **vmName** jest *sieć Web* istnieją trzy wystąpień tej roli, nazwy hosta wystąpień będą *webrole0*, *webrole1*, i *webrole2*.
@@ -46,7 +42,7 @@ W kliencie REST wykonaj następujące instrukcje:
 
 1. Upewnij się, że certyfikat klienta do nawiązania połączenia z portalu Azure. Aby uzyskać certyfikat klienta, wykonaj kroki przedstawione w [porady: pobieranie i importowanie ustawień publikowania i informacji o subskrypcji](https://msdn.microsoft.com/library/dn385850.aspx). 
 2. Ustaw wpis nagłówka o nazwie x-ms-version o wartości 2013-11-01.
-3. Wyślij żądanie w następującym formacie: https://management.core.windows.net/ \<identyfikator subscrition\>/services/hostedservices/\<nazwa usługi\>? osadzić szczegółów = true
+3. Wyślij żądanie w następującym formacie: https://management.core.windows.net/\<subscrition-id\>/services/hostedservices/\<service-name\>?embed-detail=true
 4. Wyszukaj **HostName** elementu dla każdego **RoleInstance** elementu.
 
 > [!WARNING]

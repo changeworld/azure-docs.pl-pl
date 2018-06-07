@@ -6,14 +6,15 @@ author: jodebrui
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: jodebrui
-ms.openlocfilehash: 0802a3b51847236efb64e628ed259dc7776bac4e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: aff0f82f07e9129c8f7c131f055447ad578ad15b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647344"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>Monitor OLTP w pamięci magazynu
 Korzystając z [OLTP w pamięci](sql-database-in-memory.md), dane w tabelach zoptymalizowanych pod kątem pamięci i zmiennych tabel znajdują się w magazynie OLTP w pamięci. Każda warstwa usług Premium i biznesowe krytyczne ma maksymalny rozmiar magazynu OLTP w pamięci, które opisano w [limity zasobów na podstawie jednostek dtu w warstwie](sql-database-dtu-resource-limits.md) i [limity zasobów na podstawie vCore](sql-database-vcore-resource-limits.md). Po przekroczeniu tego limitu insert i zaktualizować operacji mogą kończyć się niepowodzeniem z błędem 41823 autonomiczny baz danych i błąd 41840 dla pul elastycznych. W tym momencie możesz należy usunąć dane w celu odzyskania pamięci, lub Uaktualnij warstwę wydajności bazy danych.

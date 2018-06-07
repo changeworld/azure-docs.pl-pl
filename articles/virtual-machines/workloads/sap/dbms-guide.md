@@ -4,7 +4,7 @@ description: Azure wdrożenia SAP NetWeaver DBMS maszyny wirtualne
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: MSSedusch
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2c78b764b66e677144186831b6139fd6a0aae7e6
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 356e44b063fbd65de23d3aab313f58b5572840ea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656197"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Azure wdrożenia SAP NetWeaver DBMS maszyny wirtualne
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -539,9 +540,10 @@ Firma Microsoft wystąpi jakiś scenariuszy, w którym jako klienta chcesz przen
 W przypadku używania dysków zarządzanych można przenieść magazyn w warstwie Premium przez:
 
 1. Cofnij Przydział maszyny wirtualnej
-2. W razie potrzeby zmień rozmiar maszyny wirtualnej na rozmiar, który obsługuje magazyn w warstwie Premium (na przykład DS lub GS)
-3. Zmień typ konta zarządzane dysku Premium (SSD)
-4. Uruchom maszynę wirtualną
+1. W razie potrzeby zmień rozmiar maszyny wirtualnej na rozmiar, który obsługuje magazyn w warstwie Premium (na przykład DS lub GS)
+1. Zmień typ konta zarządzane dysku Premium (SSD)
+1. Zmień buforowanie na dyskach danych zgodnie z zaleceniami w rozdziale [buforowania dla maszyn wirtualnych i dysków z danymi][dbms-guide-2.1]
+1. Uruchom maszynę wirtualną
 
 ### <a name="deployment-of-vms-for-sap-in-azure"></a>Wdrażanie maszyn wirtualnych dla programu SAP na platformie Azure
 Microsoft Azure oferuje wiele sposobów wdrażania maszyn wirtualnych i skojarzone dyski. Co należy poznać różnice, od przygotowania maszyn wirtualnych może się różnić zależy od sposobu wdrożenia. Ogólnie rzecz biorąc szukamy do opisanych w poniższych rozdziałach scenariuszy.

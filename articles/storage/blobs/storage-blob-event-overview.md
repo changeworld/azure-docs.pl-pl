@@ -8,11 +8,12 @@ ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 2762466c0130ead36372a93f4c3b852cb378a02a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: db062fc36478d6ba2cf0f00544793f635ccdbb06
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650132"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagowanie na zdarzenia magazynu obiektów Blob
 
@@ -46,7 +47,7 @@ Dodatkowe informacje dotyczące użycia właściwości zdarzenia zdarzeń siatki
 > |eventTime|ciąg|Data/Godzina wygenerowania zdarzenia, w formacie ISO 8601|
 > |Typ zdarzenia|ciąg|"Microsoft.Storage.BlobCreated" lub "Microsoft.Storage.BlobDeleted"|
 > |Identyfikator|ciąg|Unikatowy identyfikator, jeśli to zdarzenie|
-> |dataVersion|ciąg|Wersja schematu obiektu danych.|
+> |dataVersion|ciąg|Wersja schematu dla obiektu danych.|
 > |Element metadataVersion|ciąg|Wersja schematu właściwości najwyższego poziomu.|
 > |dane|obiekt|Zbieranie danych zdarzeń specyficznych dla magazynu obiektów blob|
 > |data.contentType|ciąg|Typ zawartości obiektu blob, czy zwrócony w nagłówku Content-Type z obiektu blob|
@@ -118,7 +119,7 @@ Aby dopasować zdarzenia z obiektów blob utworzone w określonym kontenerze udo
 
 Aby dopasować zdarzenia z obiektów blob utworzone w określonego kontenera udostępnianie sufiks obiektów blob, użyj `subjectEndsWith` filtru, takich jak "log" lub ".jpg"
 
-Aby uzyskać więcej informacji, zobacz [pojęcia siatki zdarzeń](../../event-grid/concepts.md#filters).
+Aby uzyskać więcej informacji, zobacz [pojęcia siatki zdarzeń](../../event-grid/concepts.md#event-subscriptions).
 
 ## <a name="practices-for-consuming-events"></a>Wskazówki dotyczące używania zdarzeń
 Aplikacje obsługujące zdarzenia magazynu obiektów Blob, należy wykonać kilka zaleceń:

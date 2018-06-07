@@ -1,21 +1,21 @@
 ---
-title: "Jak dodać odwołanie do zestawu danych do środowiska Azure czas serii Insights"
-description: "W tym artykule opisano sposób dodawania zestawem danych odwołania do danych w środowisku Azure czas serii Insights rozszerzyć."
-services: time-series-insights
+title: Jak dodać odwołanie do zestawu danych do środowiska Azure czas serii Insights
+description: W tym artykule opisano sposób dodawania zestawem danych odwołania do danych w środowisku Azure czas serii Insights rozszerzyć.
 ms.service: time-series-insights
+services: time-series-insights
 author: jasonwhowell
 ms.author: jasonh
 manager: kfile
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/15/2018
-ms.openlocfilehash: e0d11f253d5aa143ff636c4dc8dff7665a80360e
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 7da2393bb5114de20747581e366a8f416c9ff9a4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34653641"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Tworzenie zestawu danych odwołania dla danego środowiska Insights serii czasu przy użyciu portalu Azure
 
@@ -63,7 +63,7 @@ Dane referencyjne nie jest przyłączona Wstecz. Oznacza to, że tylko danych we
 
    ![Dodaj odwołanie do danych](media/add-reference-data-set/parse_data.png)
 
-9. Przejrzyj każdej kolumny, aby wyświetlić założono typ danych i zmienić typ danych w razie potrzeby.  Wybierz symbol typu danych w nagłówku kolumny:  **#**  dla typu double (dane liczbowe), **T | F** dla typu boolean, lub **Abc** ciągu.
+9. Przejrzyj każdej kolumny, aby wyświetlić założono typ danych i zmienić typ danych w razie potrzeby.  Wybierz symbol typu danych w nagłówku kolumny: **#** dla typu double (dane liczbowe), **T | F** dla typu boolean, lub **Abc** ciągu.
 
    ![Wybierz typy danych w nagłówkach kolumn.](media/add-reference-data-set/choose_datatypes.png)
 
@@ -81,7 +81,7 @@ Dane referencyjne nie jest przyłączona Wstecz. Oznacza to, że tylko danych we
 
    ![Wybierz kolumny klucza.](media/add-reference-data-set/set_primary_key.png)
 
-   Opcjonalnie wybierz  **+**  przycisk, aby dodać dodatkowej kolumny klucza złożonego klucza podstawowego. Aby cofnąć zaznaczenie należy wybrać pustą wartość z listy rozwijanej można usunąć klucza pomocniczego.
+   Opcjonalnie wybierz **+** przycisk, aby dodać dodatkowej kolumny klucza złożonego klucza podstawowego. Aby cofnąć zaznaczenie należy wybrać pustą wartość z listy rozwijanej można usunąć klucza pomocniczego.
 
 15.  Aby przekazać dane, wybierz **przekazać wierszy** przycisku.
 

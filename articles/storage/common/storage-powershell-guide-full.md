@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: rogarana
-ms.openlocfilehash: 33ca8af49ed9c3a8e7133eedfd284a1b71a9a9f9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 951b69877718c5da3c165c24c297906a1ad9a976
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652505"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Używanie programu Azure PowerShell z usługą Azure Storage
 
@@ -214,7 +215,7 @@ Teraz, że rozumiesz, jak zarządzać kontem magazynu za pomocą programu PowerS
 * [Jak zarządzać obiektów blob przy użyciu programu PowerShell](../blobs/storage-how-to-use-blobs-powershell.md)
 * [Jak zarządzać plikami przy użyciu programu PowerShell](../files/storage-how-to-use-files-powershell.md)
 * [Jak zarządzać kolejki przy użyciu programu PowerShell](../queues/storage-powershell-how-to-use-queues.md)
-* [Wykonywanie operacji magazynu tabel Azure przy użyciu programu PowerShell](../../cosmos-db/table-storage-how-to-use-powershell.md)
+* [Wykonywanie operacji magazynu tabel Azure przy użyciu programu PowerShell](../../storage/tables/table-storage-how-to-use-powershell.md)
 
 Interfejsu API Azure rozwiązania Cosmos DB tabeli zawiera funkcje premium magazynu tabel gotowe dystrybucji globalnych, odczyty małe opóźnienia i zapisy, automatycznego indeksowania dodatkowej i dedykowanych przepływności. 
 

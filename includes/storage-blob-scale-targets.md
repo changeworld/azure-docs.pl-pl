@@ -1,6 +1,6 @@
 | Zasób | Środowisko docelowe |
 |----------|---------------|
-| Maksymalny rozmiar pojedynczego obiektu blob kontenera | 500 TiB |
+| Maksymalny rozmiar pojedynczego obiektu blob kontenera | Identyczny maksymalnej pojemności konta |
 | Maksymalna liczba bloków w blokowych obiektów blob lub uzupełnialnych obiektów blob | 50 000 bloków |
 | Maksymalny rozmiar bloku w blokowych obiektów blob | 100 MiB |
 | Maksymalny rozmiar blokowych obiektów blob | 50 000 x 100 MiB (około 4,75 TiB) |

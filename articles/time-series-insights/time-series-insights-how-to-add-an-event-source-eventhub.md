@@ -1,21 +1,21 @@
 ---
-title: "Jak dodać źródła zdarzenia Centrum zdarzeń do szczegółowych danych serii czasu Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób dodawania źródła zdarzenia podłączoną do Centrum zdarzeń w danym środowisku Insights serii czasu."
-services: time-series-insights
+title: Jak dodać źródła zdarzenia Centrum zdarzeń do szczegółowych danych serii czasu Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób dodawania źródła zdarzenia podłączoną do Centrum zdarzeń w danym środowisku Insights serii czasu.
 ms.service: time-series-insights
+services: time-series-insights
 author: sandshadow
 ms.author: edett
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/21/2017
-ms.openlocfilehash: c07c847784eb13c62e350e9c655e027e7df696a3
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: ed151160bd8bd0f0241e1a728fab53570e33a201
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656021"
 ---
 # <a name="how-to-add-an-event-hub-event-source-to-time-series-insights-environment"></a>Jak dodać źródła zdarzenia Centrum zdarzeń do środowiska Insights serii czasu
 
@@ -23,7 +23,7 @@ W tym artykule opisano, jak przy użyciu portalu Azure Dodaj źródło zdarzenia
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 - Utwórz środowisko Insights serii czasu. Aby uzyskać więcej informacji, zobacz [utworzyć środowiska Azure czas serii Insights](time-series-insights-get-started.md) 
-- Tworzenie Centrum zdarzeń. Aby uzyskać więcej informacji dotyczących usługi Event Hubs, zobacz [tworzenie przestrzeni nazw usługi Event Hubs i Centrum zdarzeń za pomocą portalu Azure](../event-hubs/event-hubs-create.md)
+- Tworzenie centrum zdarzeń. Aby uzyskać więcej informacji dotyczących usługi Event Hubs, zobacz [tworzenie przestrzeni nazw usługi Event Hubs i Centrum zdarzeń za pomocą portalu Azure](../event-hubs/event-hubs-create.md)
 - Zdarzenia aktywne wiadomości wysyłane podczas musi Centrum zdarzeń. Aby uzyskać więcej informacji, zobacz [wysyłania zdarzeń do usługi Azure Event Hubs przy użyciu programu .NET Framework](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md).
 - Utwórz dedykowanej grupy klientów w Centrum zdarzeń środowiska szczegółowe informacje o czasie serii, aby korzystać z. Każdego źródła zdarzeń Insights serii czasu musi mieć własną dedykowanej grupy klientów, które nie są współużytkowane z innym klientom. Jeśli wielu czytników korzystanie ze zdarzeń z tej samej grupy konsumentów, wszystkich czytelników prawdopodobnie błędy. Należy pamiętać, że jest również maksymalnie 20 grup odbiorców, na Centrum zdarzeń. Aby uzyskać więcej informacji, zobacz [Event Hubs Programming Guide](../event-hubs/event-hubs-programming-guide.md).
 
@@ -36,7 +36,7 @@ W tym artykule opisano, jak przy użyciu portalu Azure Dodaj źródło zdarzenia
 
    ![Zdarzenie źródeł + Dodaj](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png)
 
-4. Kliknij przycisk **+ Dodaj**.
+4. Kliknij pozycję **+ Dodaj**.
 
 5. Podaj **nazwa źródła zdarzenia** unikatowe dla tego środowiska Insights serii czasu, takich jak **strumienia zdarzeń**.
 
@@ -102,7 +102,7 @@ Aby dodać nowe grupy odbiorców w Centrum zdarzeń, wykonaj następujące kroki
 
 5. Wybierz **Utwórz** do tworzenia nowej grupy odbiorców.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - [Definiowanie zasad dostępu danych](time-series-insights-data-access.md) do zabezpieczania danych.
 - [Wysyłanie zdarzeń](time-series-insights-send-events.md) w źródle zdarzeń.
 - Dostęp do środowiska w [Eksplorator czasu serii Insights](https://insights.timeseries.azure.com).

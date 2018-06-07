@@ -6,14 +6,15 @@ manager: craigg
 services: sql-database
 ms.service: sql-database
 ms.custom: monitor and tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: aamalvea
-ms.openlocfilehash: 0c543ccf1d2104a83f7610bc870334b460ec40fb
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 349f1bbb0bfcc737d70e32947dd217c2cd51e194
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34648027"
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Utwórz alerty dla bazy danych SQL Azure i magazynem danych za pomocą portalu Azure
 
@@ -80,9 +81,9 @@ Po utworzeniu alertu, zostanie ona wybrana oraz:
 | Baza danych SQL | dtu_consumption_percent | Procent użycia jednostek DTU | Średnia | 5 minut |
 | Baza danych SQL | magazyn | Rozmiar całkowitą bazy danych | Maksimum | 30 minut |
 | Baza danych SQL | connection_successful | Udane połączenia | Łącznie | 10 minut |
-| Baza danych SQL | connection_failed | Połączenia nie powiodło się | Łącznie | 10 minut |
+| Baza danych SQL | connection_failed | Połączenia zakończone niepowodzeniem | Łącznie | 10 minut |
 | Baza danych SQL | blocked_by_firewall | Blokowane przez zaporę | Łącznie | 10 minut |
-| Baza danych SQL | Zakleszczenie | Zakleszczenie | Łącznie | 10 minut |
+| Baza danych SQL | Zakleszczenie | Zakleszczenia | Łącznie | 10 minut |
 | Baza danych SQL | storage_percent | Procent użycia rozmiaru bazy danych | Maksimum | 30 minut |
 | Baza danych SQL | xtp_storage_percent | Percent(Preview) magazynu OLTP w pamięci | Średnia | 5 minut |
 | Baza danych SQL | workers_percent | Procent pracowników | Średnia | 5 minut |
@@ -105,7 +106,7 @@ Po utworzeniu alertu, zostanie ona wybrana oraz:
 | magazyn danych SQL | physical_data_read_percent | Procent użycia operacji we/wy na danych | Średnia | 10 minut |
 | magazyn danych SQL | magazyn | Rozmiar całkowitą bazy danych | Maksimum | 10 minut |
 | magazyn danych SQL | connection_successful | Udane połączenia | Łącznie | 10 minut |
-| magazyn danych SQL | connection_failed | Połączenia nie powiodło się | Łącznie | 10 minut |
+| magazyn danych SQL | connection_failed | Połączenia zakończone niepowodzeniem | Łącznie | 10 minut |
 | magazyn danych SQL | blocked_by_firewall | Blokowane przez zaporę | Łącznie | 10 minut |
 | magazyn danych SQL | service_level_objective | Cel poziomu usługi bazy danych | Łącznie | 10 minut |
 | magazyn danych SQL | dwu_limit | Jednostka dwu limit | Maksimum | 10 minut |

@@ -7,14 +7,15 @@ manager: craigg
 ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: v-daljep
-ms.openlocfilehash: 7830a8a4bfc43e158069cc7cdc186e289e166751
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 68ccf6f64f90200359322f35ca081aa6b53493f9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34648272"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Baza danych SQL Azure Rozwiązywanie problemów z wydajnością z informacjami dotyczącymi inteligentnego
 
@@ -39,7 +40,7 @@ Inteligentnego Insights automatycznie wykrywa problemy z wydajnością z bazą d
 | [Brak indeksu](sql-database-intelligent-insights-troubleshoot-performance.md#missing-index) | Brak indeksu wykrycia problemu, co ma wpływ na wydajność bazy danych SQL. |
 | [Nowe zapytanie](sql-database-intelligent-insights-troubleshoot-performance.md#new-query) | Wykryto nowe zapytanie, co ma wpływ na ogólną wydajność bazy danych SQL. |
 | [Statystyka nietypowe zachowanie podczas oczekiwania](sql-database-intelligent-insights-troubleshoot-performance.md#unusual-wait-statistic) | Czasy oczekiwania nietypowe bazy danych zostały wykryte, co ma wpływ na wydajność bazy danych SQL. |
-| [TempDB Contention](sql-database-intelligent-insights-troubleshoot-performance.md#tempdb-contention) | Wiele wątków próbuje uzyskać dostępu do tych samych zasobów bazy danych tempDB, co powoduje, że "wąskie gardło", który ma wpływ na wydajność bazy danych SQL. |
+| [Bazy danych TempDB rywalizacji](sql-database-intelligent-insights-troubleshoot-performance.md#tempdb-contention) | Wiele wątków próbuje uzyskać dostępu do tych samych zasobów bazy danych tempDB, co powoduje, że "wąskie gardło", który ma wpływ na wydajność bazy danych SQL. |
 | [Brak jednostek DTU puli elastycznej](sql-database-intelligent-insights-troubleshoot-performance.md#elastic-pool-dtu-shortage) | Braku dostępnych jednostek Edtu w puli elastycznej wpływa na wydajność bazy danych SQL. |
 | [Planowanie regresji](sql-database-intelligent-insights-troubleshoot-performance.md#plan-regression) | Opcje nowego planu lub zmiana obciążenie istniejący plan został wykryty, co ma wpływ na wydajność bazy danych SQL. |
 | [Zmiana wartości o zakresie bazy danych konfiguracji](sql-database-intelligent-insights-troubleshoot-performance.md#database-scoped-configuration-value-change) | Zmiana konfiguracji w bazie danych wpływa na wydajność bazy danych SQL. |
@@ -144,7 +145,7 @@ Po pierwsze Optymalizacja lub Uprość złożonych zapytań. Dobrym rozwiązanie
 
 Ustawienie serwera MAXDOP opcji konfiguracji na zero (0), jako wartość domyślną oznacza bazy danych SQL za pomocą wszystkie dostępne rdzenie Procesora logicznego parallelize wątków wykonywania pojedynczego zapytania. Ustawienie MAXDOP do jednego (1) oznacza, że tylko jeden rdzeń może służyć do wykonywania pojedynczego zapytania. W praktyce oznacza to, że równoległości jest wyłączona. W zależności od przypadku na podstawie dostępne rdzenie do bazy danych i informacji diagnostycznych rejestrowania informacji, można dostosować w opcji MAXDOP liczby rdzeni używany do wykonywania zapytania równoległe, która może rozwiązać problem w Twoim przypadku.
 
-## <a name="pagelatch-contention"></a>Pagelatch Contention
+## <a name="pagelatch-contention"></a>Pagelatch rywalizacji
 
 ### <a name="what-is-happening"></a>Co się dzieje
 

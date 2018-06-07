@@ -7,14 +7,15 @@ manager: craigg
 ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: v-daljep
-ms.openlocfilehash: f3ace9d178fdfa90130e4436722e1e36cedc7e50
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: a911ed9777e1a63e1fc1776fb6a8c1ab98bc6820
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647507"
 ---
 # <a name="intelligent-insights"></a>Wyniki analizy
 
@@ -53,7 +54,7 @@ Identyfikuje bazy danych SQL degradations wydajności są rejestrowane w dzienni
 | Wpływ na metryk | Metryki, który spowodował wgląd do wygenerowania: <ul><li>Zapytania [s] zwiększyć czas trwania.</li><li>Nadmierne oczekiwania [s].</li><li>Upłynął limit czasu żądania [wartość procentowa].</li><li>Raportuje żądania [wartość procentowa].</li></ul>|
 | Wartość wpływu | Mierzona wartość metryki. |
 | Wpływ na zapytania i kody błędów | Zapytanie skrótu lub kodu błędu. Mogą one używane do skorelowania łatwe do zapytań, których dotyczy. Podano metryk, które składają się z zapytania zwiększyć czas trwania, czas oczekiwania, liczby limitu czasu lub kody błędów. |
-| Wykryć | Wykrywanie określonych w bazie danych w czasie zdarzenia. Brak 15 wzorce wykrywania. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z wydajnością bazy danych z informacjami dotyczącymi inteligentnego](sql-database-intelligent-insights-troubleshoot-performance.md). |
+| Wykrycia | Wykrywanie określonych w bazie danych w czasie zdarzenia. Brak 15 wzorce wykrywania. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z wydajnością bazy danych z informacjami dotyczącymi inteligentnego](sql-database-intelligent-insights-troubleshoot-performance.md). |
 | Analiza głównych przyczyn | Przyczyna analizy problem wskazany w formacie czytelnym dla człowieka. Niektóre szczegółowe informacje może zawierać zalecenie poprawy wydajności, gdy jest to możliwe. |
 |||
 

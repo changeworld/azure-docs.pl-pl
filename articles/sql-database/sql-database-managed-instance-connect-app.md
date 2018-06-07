@@ -5,17 +5,18 @@ ms.service: sql-database
 author: srdjan-bozovic
 manager: craigg
 ms.custom: managed instance
-ms.topic: article
-ms.date: 04/10/2018
+ms.topic: conceptual
+ms.date: 05/21/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 1eecd28d5e7043acae5cfd52edf93e8d301bd31e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bea1dc88d66717717cdeacbc8504f5df7e37ba04
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647837"
 ---
-# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Połączyć aplikację z wystąpienia zarządzane bazy danych SQL Azure
+# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Połącz aplikację z wystąpieniem zarządzanym usługi Azure SQL Database
 
 Obecnie masz wiele wyborów podczas podejmowania decyzji o, jak i gdzie hostowania aplikacji. 
  
@@ -39,10 +40,10 @@ Dostępne są dwie opcje do łączenia sieci wirtualnych:
 - [Komunikacji równorzędnej sieci wirtualnej platformy Azure](../virtual-network/virtual-network-peering-overview.md) 
 - Aby wirtualnymi bramy sieci VPN ([portalu Azure](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md), [PowerShell](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md), [interfejsu wiersza polecenia Azure](../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md)) 
  
-Ta opcja komunikacji równorzędnej jest to preferowane, ponieważ równorzędna używa sieci firmy Microsoft w sieci szkieletowej tak, z punktu widzenia łączności, nie ma żadnej różnicy zauważalnego opóźnienia między maszynami wirtualnymi w połączyć za pomocą sieci wirtualnej, a w tej samej sieci wirtualnej. Sieci wirtualnej komunikacji równorzędnej jest ograniczona do sieci, w tym samym regionie, mimo że komunikacji równorzędnej między region jest włączony w pewnych regionach jako podgląd.  
+Ta opcja komunikacji równorzędnej jest to preferowane, ponieważ równorzędna używa sieci firmy Microsoft w sieci szkieletowej tak, z punktu widzenia łączności, nie ma żadnej różnicy zauważalnego opóźnienia między maszynami wirtualnymi w połączyć za pomocą sieci wirtualnej, a w tej samej sieci wirtualnej. Sieci wirtualnej komunikacji równorzędnej jest ograniczona do sieci, w tym samym regionie.  
  
 > [!IMPORTANT]
-> Komunikacji równorzędnych sieci wirtualnej utworzone między region nie może mieć taki sam poziom dostępności i niezawodności jako komunikacji równorzędnych w wersji ogólnodostępnej. Komunikacji równorzędnych sieci wirtualnej mogą mieć ograniczone możliwości i może nie być dostępne we wszystkich regionach platformy Azure. Najbardziej aktualne powiadomień o dostępności i stan tej funkcji, sprawdź [sieci wirtualnej Azure](https://azure.microsoft.com/updates/?product=virtual-network) aktualizacji strony. 
+> Sieci wirtualnej komunikacji równorzędnej scenariusz zarządzane wystąpienia jest ograniczona do sieci, w tym samym regionie z powodu [ograniczenia globalnej sieci wirtualnej komunikacji równorzędnej](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). 
 
 ## <a name="connect-an-on-premises-application"></a>Łączenie aplikacji lokalnie 
 

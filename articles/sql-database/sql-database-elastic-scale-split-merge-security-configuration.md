@@ -7,14 +7,15 @@ manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 694c1755b5263d48fdfa5cad3c0b13e42bfb8522
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: bb2090aba61f32e79fe3a9fd950e6e3688193d7d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647089"
 ---
 # <a name="split-merge-security-configuration"></a>Konfiguracja zabezpieczeń scalania podziału
 Do korzystania z usługi podziału/Merge, należy poprawnie skonfigurować zabezpieczeń. Usługa jest część funkcji elastycznego skalowania bazy danych SQL Azure firmy Microsoft. Aby uzyskać więcej informacji, zobacz [elastycznej podziału skali i scal samouczek usługi](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
@@ -168,7 +169,7 @@ Ten temat dotyczy tylko w celach informacyjnych. Wykonaj kroki konfiguracji opis
 * Konfigurowanie certyfikatu protokołu SSL
 * Skonfiguruj certyfikaty klienta
 
-## <a name="create-a-self-signed-certificate"></a>Utwórz certyfikat z podpisem własnym
+## <a name="create-a-self-signed-certificate"></a>Tworzenie certyfikatu z podpisem własnym
 Wykonaj:
 
     makecert ^

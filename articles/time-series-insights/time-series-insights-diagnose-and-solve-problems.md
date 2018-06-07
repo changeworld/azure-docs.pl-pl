@@ -1,21 +1,21 @@
 ---
 title: Diagnozowanie i rozwiązywanie problemów w usłudze Azure czas serii Insights | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób diagnozowania, rozwiązywanie problemów i rozwiązywania typowych problemów, które mogą wystąpić w środowisku Azure czas serii Insights.
-services: time-series-insights
 ms.service: time-series-insights
+services: time-series-insights
 author: venkatgct
 ms.author: venkatja
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 04/09/2018
-ms.openlocfilehash: f0c1b8aa99e9ac9c73f57af17490dd3a465a9cac
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 64fd67915a4a39b7e8dfce4381002ae0888aa42a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652692"
 ---
 # <a name="diagnose-and-solve-problems-in-your-time-series-insights-environment"></a>Diagnozowanie i rozwiązywanie problemów w środowisku Insights serii czasu
 

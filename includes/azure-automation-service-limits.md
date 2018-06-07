@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 04/05/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: 03a1235b9bf20fa19f378802923d3bab7dbf4900
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 8242f2bb16b52e8c319027788d5b937d7f79ad3d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34665066"
 ---
 | Zasób | Limit maksymalny |
 | --- | --- |
@@ -21,8 +22,8 @@ ms.lasthandoff: 04/06/2018
 | Maksymalna liczba modułów, które można importować co 30 sekund na konto automatyzacji |5 |
 | Maksymalny rozmiar modułu |100 MB |
 | Czas uruchomienia zadania — warstwa bezpłatna |500 minut na subskrypcję na miesiąc kalendarzowy |
-| Maksymalna ilość pamięci do zadania <sup>1</sup> |400 MB |
-| Maksymalna liczba dozwolonych dla jednego zadania gniazda sieci <sup>1</sup> |1000 |
+| Maksymalna ilość pamięci do zadania  **<sup>1</sup>** |400 MB |
+| Maksymalna liczba dozwolonych dla jednego zadania gniazda sieci  **<sup>1</sup>** |1000 |
 | Maksymalna liczba kont automatyzacji w ramach subskrypcji |Bez ograniczeń |
 
-<sup>1</sup> te limity mają zastosowanie tylko do obszarów izolowanych na platformie Azure, dla hybrydowych procesów roboczych te są tylko ograniczone możliwości maszyny, na którym znajduje się hybrydowy proces roboczy.
+**<sup>1</sup>**  te limity mają zastosowanie tylko do obszarów izolowanych na platformie Azure, dla hybrydowych procesów roboczych te są tylko ograniczone możliwości maszyny, na którym znajduje się hybrydowy proces roboczy.

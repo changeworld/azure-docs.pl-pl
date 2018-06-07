@@ -9,11 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 417517cbbd187d32b84cc0a78f7b68a5fcf8eb23
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f63ccd62136fe8d556a4cfb591e3294f3751dfb3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652250"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Zapytanie przykłady typowych wzorców użycia usługi analiza strumienia
 
@@ -117,7 +118,7 @@ Na przykład Podaj opis ciągu upewnij ile samochodów tego samego przekazany z 
         Make,
         TumblingWindow(second, 10)
 
-**Wyjaśnienie**: **przypadku** klauzuli pozwala na udostępnianie różnych obliczeń, na podstawie kryteriów, niektóre (w tym przypadku liczba samochodów w oknie agregacji).
+**Wyjaśnienie**: **przypadku** wyrażenie porównuje wyrażenie zbiór prostych wyrażeń w celu ustalenia wyniku. W tym przykładzie vehicle sprawia, że wraz z liczbą 1 zwrócił opis ciągu innego niż vehicle sprawia, że liczba innych niż 1. 
 
 ## <a name="query-example-send-data-to-multiple-outputs"></a>Przykład zapytania: wysyłanie danych do wielu wyjść
 **Opis elementu**: wysyłania danych do wielu elementów docelowych w danych wyjściowych z jednym zadaniu.
@@ -173,7 +174,7 @@ Na przykład analizować dane oparte na wartościach progowych alertu oraz archi
         [Count] >= 3
 
 **Wyjaśnienie**: **INTO** klauzuli informuje Stream Analytics której dane wyjściowe można zapisać danych do tej instrukcji.
-Pierwszego zapytania jest przekazywanie danych Otrzymaliśmy do wyjścia nasze konto nazywa się **ArchiveOutput**.
+Pierwszego zapytania jest przekazywanie danych odebranych wyjścia o nazwie **ArchiveOutput**.
 Drugiego zapytania jest niektórych prostych agregacji i filtrowanie i wysyła wyniki do podrzędne system alertów.
 
 Należy pamiętać, że możesz również użyć wyniki wspólnych wyrażeniach tabel (wyrażeń CTE) (takich jak **WITH** instrukcje) w wielu deklaracjach danych wyjściowych. Ta opcja ma dodatkowa korzyść otwarcia mniej czytników do źródła danych wejściowych.
@@ -396,7 +397,7 @@ Na przykład 2 samochodów następujących po sobie z tym samym upewnij wprowadz
 | Użytkownik | Cecha | Wydarzenie | Time |
 | --- | --- | --- | --- |
 | user@location.com |RightMenu |Uruchamianie |2015-01-01T00:00:01.0000000Z |
-| user@location.com |RightMenu |End |2015-01-01T00:00:08.0000000Z |
+| user@location.com |RightMenu |Koniec |2015-01-01T00:00:08.0000000Z |
 
 **Dane wyjściowe**:  
 
@@ -418,7 +419,7 @@ Na przykład 2 samochodów następujących po sobie z tym samym upewnij wprowadz
 
 ## <a name="query-example-detect-the-duration-of-a-condition"></a>Przykład zapytania: wykrywanie w czasie trwania warunek
 **Opis elementu**: Sprawdzanie, jak długo wystąpił warunek.
-Na przykład załóżmy, że usterki spowodowała wszystkich samochodów niepoprawne ciężar (ponad 20 000 jednostkach funt). Chcemy obliczeniowe czas trwania usterki.
+Na przykład załóżmy, że usterki spowodowała wszystkich samochodów niepoprawne ciężar (ponad 20 000 jednostkach funt), a czas trwania tej usterki należy obliczyć.
 
 **Dane wejściowe**:
 
@@ -506,8 +507,8 @@ Na przykład generują zdarzenie co 5 sekund, która raportuje najbardziej ostat
 
 
 ## <a name="query-example-correlate-two-event-types-within-the-same-stream"></a>Przykład zapytania: skorelowania dwa typy zdarzeń, w ramach tego samego strumienia
-**Opis elementu**: Czasami musimy generować alerty oparte na wiele typów zdarzeń, które wystąpiły w zakresie czasu.
-Na przykład w scenariuszu IoT dla piekarników macierzystego, chcemy Zgłoś alert, gdy temperatury wentylator jest mniejsza niż 40 i maksymalną moc w ciągu ostatnich 3 minut była mniejsza niż 10.
+**Opis elementu**: czasami alerty konieczne do wygenerowania oparte na wiele typów zdarzeń, które wystąpiły w zakresie czasu.
+Na przykład w scenariuszu IoT dla macierzystego piekarników alert musi zostać wygenerowany podczas temperatury wentylator jest mniejsza niż 40 i maksymalną moc w ciągu ostatnich 3 minut jest mniejsza niż 10.
 
 **Dane wejściowe**:
 
@@ -577,6 +578,46 @@ WHERE
 ````
 
 **Wyjaśnienie**: pierwsza kwerenda `max_power_during_last_3_mins`, używa [okna ruchomej](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics) można znaleźć maksymalną wartość czujnika zasilania dla każdego urządzenia w ciągu ostatnich 3 minut. Drugiego zapytania jest dołączony do pierwszego zapytania, aby znaleźć wartość zasilania w oknie najnowszych odpowiednie dla bieżącego zdarzenia. A następnie, pod warunkiem warunki są spełnione, alert zostanie wygenerowany dla urządzenia.
+
+## <a name="query-example-process-events-independent-of-device-clock-skew-substreams"></a>Przykład zapytania: przetworzyć zdarzenia niezależne od urządzenia zegara pochylanie (substreams)
+**Opis elementu**: późne odebrania zdarzeń lub poza kolejnością z powodu pochyla zegara między producentami zdarzeń, zegara pochyla między partycji lub opóźnienia sieci. W poniższym przykładzie zegar urządzenia TollID 2 to dziesięć sekund za TollID 1 i zegar urządzenia TollID 3 jest pięć sekund za TollID 1. 
+
+
+**Dane wejściowe**:
+| LicensePlate | Wprowadź | Time | TollID |
+| --- | --- | --- | --- |
+| DXE 5291 |Honda |2015-07-27T00:00:01.0000000Z | 1 |
+| YHN 6970 |Toyota |2015-07-27T00:00:05.0000000Z | 1 |
+| QYF 9358 |Honda |2015-07-27T00:00:01.0000000Z | 2 |
+| GXF 9462 |BMW |2015-07-27T00:00:04.0000000Z | 2 |
+| VFE 1616 |Toyota |2015-07-27T00:00:10.0000000Z | 1 |
+| RMV 8282 |Honda |2015-07-27T00:00:03.0000000Z | 3 |
+| MDR 6128 |BMW |2015-07-27T00:00:11.0000000Z | 2 |
+| YZK 5704 |Ford |2015-07-27T00:00:07.0000000Z | 3 |
+
+**Dane wyjściowe**:
+| TollID | Licznik |
+| --- | --- |
+| 1 | 2 |
+| 2 | 2 |
+| 1 | 1 |
+| 3 | 1 |
+| 2 | 1 |
+| 3 | 1 |
+
+**Rozwiązanie**:
+
+````
+SELECT
+      TollId,
+      COUNT(*) AS Count
+FROM input
+      TIMESTAMP BY Time OVER TollId
+GROUP BY TUMBLINGWINDOW(second, 5), TollId
+
+````
+
+**Wyjaśnienie**: [TIMESTAMP BY OVER](https://msdn.microsoft.com/en-us/azure/stream-analytics/reference/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering) klauzuli wygląda na osi czasu każdego urządzenia, oddzielnie za pomocą substreams. Zdarzenia danych wyjściowych dla każdego TollID są generowane, ponieważ są one obliczane, co oznacza, że zdarzenia są w kolejności, w odniesieniu do każdego TollID zamiast trwa kolejności tak, jakby wszystkie urządzenia były na tej samej zegara.
 
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy

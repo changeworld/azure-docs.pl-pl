@@ -13,13 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2017
+ms.date: 05/29/2018
 ms.author: iainfou
-ms.openlocfilehash: e033439ba9f525307edb857a358d1f760a08aad0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4f57924bf2197c472d408edc67baf35b18ae45c2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652930"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Wdrażanie aplikacji na zestawy skalowania maszyny wirtualnej
 Aby uruchamiać aplikacje na wystąpieniach maszyn wirtualnych w zestawie skalowania, musisz najpierw zainstalować składniki aplikacji i wymagane pliki. W tym artykule przedstawiono sposoby budowania niestandardowego obrazu maszyny Wirtualnej dla wystąpień w skali ustawić lub automatycznego uruchamiania skryptów instalacji na istniejących wystąpień maszyny Wirtualnej. Możesz również sposób zarządzania aplikacji lub aktualizacji systemu operacyjnego przez zestaw skali.
@@ -39,6 +40,7 @@ Rozszerzenie niestandardowego skryptu pobiera i wykonuje skrypty na maszynach wi
 
 - [Interfejs wiersza polecenia platformy Azure 2.0](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
+- [Szablon usługi Azure Resource Manager](tutorial-install-apps-template.md)
 
 
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>Instalowanie aplikacji do systemu Windows maszyny Wirtualnej przy użyciu programu PowerShell DSC
@@ -112,7 +114,7 @@ az vmss create \
 ### <a name="install-applications-with-os-updates"></a>Instalowanie aplikacji z aktualizacje systemu operacyjnego
 Gdy dostępne są nowe wersje systemu operacyjnego, możesz użyć lub utworzyć obraz niestandardowy i [wdrażanie uaktualnień systemu operacyjnego](virtual-machine-scale-sets-upgrade-scale-set.md) skali ustawić. Każde wystąpienie maszyny Wirtualnej zostanie uaktualniony do najnowszej obrazu, który określisz. Niestandardowy obraz z aplikacją preinstalowanym, niestandardowe rozszerzenie skryptu lub DSC środowiska PowerShell umożliwia ma automatycznie dostępny aplikacji, jak przeprowadzić uaktualnienie. Może być konieczne planowanie konserwacji aplikacji wykonanie tego procesu, aby upewnić się, że nie ma żadnych wersji problemy ze zgodnością.
 
-Jeśli używasz niestandardowego obrazu maszyny Wirtualnej z wcześniej zainstalowaną aplikację może integrować aktualizacje aplikacji z potokiem wdrożenia do tworzenia nowych obrazów i wdrażania uaktualnień systemu operacyjnego na zestawie skali. Takie podejście umożliwia potoku do odebrania najnowszej kompilacji aplikacji, Utwórz i Zweryfikuj obrazu maszyny Wirtualnej, a następnie uaktualnić wystąpień maszyny Wirtualnej w zestawie skalowania. Aby uruchomić potok wdrożenia, który tworzy i wdraża aktualizacje aplikacji w niestandardowych obrazów maszyn wirtualnych, można użyć [Visual Studio Team Services](https://www.visualstudio.com/team-services/), [Spinnaker](https://www.spinnaker.io/), lub [Wpięć](https://jenkins.io/) .
+Jeśli używasz niestandardowego obrazu maszyny Wirtualnej z wcześniej zainstalowaną aplikację może integrować aktualizacje aplikacji z potokiem wdrożenia do tworzenia nowych obrazów i wdrażania uaktualnień systemu operacyjnego na zestawie skali. Takie podejście umożliwia potoku do odebrania najnowszej kompilacji aplikacji, Utwórz i Zweryfikuj obrazu maszyny Wirtualnej, a następnie uaktualnić wystąpień maszyny Wirtualnej w zestawie skalowania. Aby uruchomić potok wdrożenia, który tworzy i wdraża aktualizacje aplikacji w niestandardowych obrazów maszyn wirtualnych, można [utworzyć obraz pakujący i wdrożyć przy użyciu programu Visual Studio Team Services) [/ vsts/potoki/aplikacje/cd/azure/wdrożyć azure-scaleset], lub użyj innej platformy takie jak [Spinnaker](https://www.spinnaker.io/) lub [Wpięć](https://jenkins.io/).
 
 
 ## <a name="next-steps"></a>Kolejne kroki

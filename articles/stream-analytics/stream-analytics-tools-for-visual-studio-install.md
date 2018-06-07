@@ -1,5 +1,5 @@
 ---
-title: Konfiguracja usługi analiza strumienia Azure tools dla programu Visual Studio
+title: Konfigurowanie usługi Azure Stream Analytics tools dla programu Visual Studio
 description: W tym artykule opisano wymagania dotyczące instalacji i konfiguracji usługi Azure Stream Analytics tools dla programu Visual Studio.
 services: stream-analytics
 author: su-jie
@@ -8,15 +8,16 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/19/2017
-ms.openlocfilehash: 511658fc0e2b480987455007dac5f55cd7850feb
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 05/22/2018
+ms.openlocfilehash: 94ed603990859d12f709e4a6121e3736221cf10a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34651182"
 ---
 # <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>Zainstaluj narzędzia analiza strumienia Azure dla programu Visual Studio
-Azure Stream Analytics tools są teraz obsługiwane w Visual Studio 2017 r. 2015 i 2013. Ten dokument zawiera opis sposobu instalowania i odinstalowywania narzędzia.
+Narzędzia usługi Azure Stream Analytics obsługuje Visual Studio 2017 r. 2015 i 2013. W tym artykule opisano sposób instalowania i odinstalowywania narzędzia.
 
 Aby uzyskać więcej informacji na temat używania narzędzia, zobacz [Stream Analytics tools dla Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
 
@@ -27,11 +28,11 @@ Aby uzyskać więcej informacji na temat używania narzędzia, zobacz [Stream An
 
 Włącz **magazynu danych i przetwarzania** obciążenia, jak pokazano:
 
-![Obciążenie przechowywania i przetwarzania danych](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-2017-install-01.png)
+![Wybrano obciążenie przechowywania i przetwarzania danych](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-for-vs-2017-install-01.png)
 
 Włącz **Azure programowanie** obciążenia, jak pokazano:
 
-![Programowanie Azure obciążenia](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-2017-install-02.png)
+![Wybrano obciążenia rozwoju platformy Azure](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-for-vs-2017-install-02.png)
 
 
 ### <a name="visual-studio-2013-2015"></a>Visual Studio 2013, 2015
@@ -39,14 +40,12 @@ Włącz **Azure programowanie** obciążenia, jak pokazano:
 * Zainstaluj zestaw Microsoft Azure SDK dla platformy .NET w wersji 2.7.1 lub nowszej przy użyciu [Instalatora platformy sieci Web](http://www.microsoft.com/web/downloads/platform.aspx).
 * Zainstaluj [analiza strumienia Azure tools dla Visual Studio](http://aka.ms/asatoolsvs).
 
-
-
 ## <a name="update"></a>Aktualizacja
 
 ### <a name="visual-studio-2017"></a>Visual Studio 2017
 Monit wersji zostaną wyświetlone powiadomienia programu Visual Studio. 
 
-### <a name="visual-studio-2013-2015"></a>Visual Studio 2013, 2015
+### <a name="visual-studio-2013-and-visual-studio-2015"></a>Visual Studio 2013 i Visual Studio 2015
 Analiza strumienia narzędzia Visual Studio sprawdzał nowe wersje. Postępuj zgodnie z instrukcjami w wyskakującym oknie, aby zainstalować najnowszą wersję. 
 
 
@@ -55,7 +54,7 @@ Analiza strumienia narzędzia Visual Studio sprawdzał nowe wersje. Postępuj zg
 ### <a name="visual-studio-2017"></a>Visual Studio 2017
 Kliknij dwukrotnie pozycję Instalator programu Visual Studio i wybierz **Modyfikuj**. Wyczyść **usługi Azure Data Lake i narzędzia do analizy strumienia** pole wyboru przy użyciu dowolnego **magazynu danych i przetwarzania** obciążenia lub **Azure programowanie** obciążenia.
 
-### <a name="visual-studio-2013-2015"></a>Visual Studio 2013, 2015
+### <a name="visual-studio-2013-and-visual-studio-2015"></a>Visual Studio 2013 i Visual Studio 2015
 Przejdź do panelu sterowania, a następnie odinstaluj **Microsoft Azure Data Lake i Stream Analytics tools dla Visual Studio**.
 
 

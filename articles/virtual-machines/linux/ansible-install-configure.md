@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/04/2018
 ms.author: iainfou
-ms.openlocfilehash: e6fad548eda35d1832cb4ecc2fd9bdabf825f361
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c00ebcb771081f8e35c67bf384f5f6822e16f268
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652995"
 ---
 # <a name="install-and-configure-ansible-to-manage-virtual-machines-in-azure"></a>Instalowanie i konfigurowanie Ansible do zarządzania maszynami wirtualnymi na platformie Azure
 
@@ -149,7 +150,7 @@ Teraz przejść do [poświadczenia Azure utworzyć](#create-azure-credentials).
 
 Ansible komunikuje się z platformy Azure przy użyciu nazwy użytkownika i hasła lub nazwy głównej usługi. Podmiot zabezpieczeń usługi Azure jest tożsamość zabezpieczeń korzystających z aplikacji, usługami i automatyzacja takich narzędzi jak Ansible. Kontrolowanie i definiowanie uprawnień określające, jakie operacje nazwy głównej usługi można wykonać na platformie Azure. Zwiększające bezpieczeństwo za pośrednictwem tylko podanie nazwy użytkownika i hasła, w tym przykładzie tworzy podstawowe usługę podmiotu zabezpieczeń.
 
-Na komputerze hosta lub w powłoce chmury Azure, utworzyć główną usługi za pomocą [az ad sp utworzyć do rbac](/cli/azure/ad/sp#create-for-rbac). Poświadczenia, które wymaga Ansible są dane wyjściowe do ekranu:
+Na komputerze hosta lub w powłoce chmury Azure, utworzyć główną usługi za pomocą [az ad sp utworzyć do rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac). Poświadczenia, które wymaga Ansible są dane wyjściowe do ekranu:
 
 ```azurecli-interactive
 az ad sp create-for-rbac --query '{"client_id": appId, "secret": password, "tenant": tenant}'
@@ -165,7 +166,7 @@ Przykład danych wyjściowych z poprzedniego polecenia jest następujący:
 }
 ```
 
-Aby uwierzytelniać na platformie Azure, również należy uzyskać identyfikator subskrypcją platformy Azure za pomocą [Pokaż konto az](/cli/azure/account#az_account_show):
+Aby uwierzytelniać na platformie Azure, również należy uzyskać identyfikator subskrypcją platformy Azure za pomocą [Pokaż konto az](/cli/azure/account#az-account-show):
 
 ```azurecli-interactive
 az account show --query "{ subscription_id: id }"

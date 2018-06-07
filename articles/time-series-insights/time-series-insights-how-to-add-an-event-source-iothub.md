@@ -1,21 +1,21 @@
 ---
-title: "Jak dodać źródła zdarzenia Centrum IoT Azure czas serii insights | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób dodawania źródła zdarzenia połączoną z Centrum IoT w danym środowisku Insights serii czasu"
-services: time-series-insights
+title: Jak dodać źródła zdarzenia Centrum IoT Azure czas serii insights | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób dodawania źródła zdarzenia połączoną z Centrum IoT w danym środowisku Insights serii czasu
 ms.service: time-series-insights
+services: time-series-insights
 author: sandshadow
 ms.author: edett
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/21/2017
-ms.openlocfilehash: 0469c35056d1d02457c162b8540af472b84f1e92
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 01ab5017a5f16a0c46ea2bc600cef6bbf81de963
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652529"
 ---
 # <a name="how-to-add-an-iot-hub-event-source-to-time-series-insights-environment"></a>Jak dodać źródła zdarzenia Centrum IoT środowiska Insights serii czasu
 W tym artykule opisano, jak przy użyciu portalu Azure Dodaj źródło zdarzenia, które odczytuje dane z Centrum IoT w środowisku Insights serii czasu.
@@ -34,7 +34,7 @@ W tym artykule opisano, jak przy użyciu portalu Azure Dodaj źródło zdarzenia
 3. W obszarze **topologia środowiska** kliknij pozycję **źródła zdarzeń**.
    ![Zdarzenie źródeł + Dodaj](media/time-series-insights-how-to-add-an-event-source-iothub/1-event-sources.png)
 
-4. Kliknij przycisk **+ Dodaj**.
+4. Kliknij pozycję **+ Dodaj**.
 
 5. Podaj **nazwa źródła zdarzenia** unikatowe dla tego środowiska Insights serii czasu, takich jak **strumienia zdarzeń**.
 
@@ -95,7 +95,7 @@ Aby dodać nowe grupy odbiorców do Centrum IoT, wykonaj następujące kroki:
 
 5. Wybierz **zapisać** Aby zapisać nową grupę odbiorców.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - [Definiowanie zasad dostępu danych](time-series-insights-data-access.md) do zabezpieczania danych.
 - [Wysyłanie zdarzeń](time-series-insights-send-events.md) w źródle zdarzeń.
 - Dostęp do środowiska w [Eksplorator czasu serii Insights](https://insights.timeseries.azure.com).

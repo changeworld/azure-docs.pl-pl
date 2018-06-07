@@ -1,13 +1,13 @@
 ---
-title: "SAP NetWeaver instalacji o wysokiej dostępności na Windows trybu failover klastra i udział plików dla programu SAP ASCS/SCS wystąpień na platformie Azure | Dokumentacja firmy Microsoft"
-description: "SAP NetWeaver instalacji o wysokiej dostępności na Windows trybu failover klastra i udział plików dla programu SAP ASCS/SCS wystąpień"
+title: SAP NetWeaver instalacji o wysokiej dostępności na Windows trybu failover klastra i udział plików dla programu SAP ASCS/SCS wystąpień na platformie Azure | Dokumentacja firmy Microsoft
+description: SAP NetWeaver instalacji o wysokiej dostępności na Windows trybu failover klastra i udział plików dla programu SAP ASCS/SCS wystąpień
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 71296618-673b-4093-ab17-b7a80df6e9ac
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fc957ece0250d233db9cec4f1fdd8b063c13a136
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 2fa9cebe092f726b2df3dec99cee1bb97ccc92dc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34658659"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Zainstaluj SAP NetWeaver wysokiej dostępności na Windows trybu failover klastra i udział plików dla programu SAP ASCS/SCS wystąpień na platformie Azure
 
@@ -88,7 +89,7 @@ ms.lasthandoff: 11/17/2017
 
 [sap-official-ha-file-share-document]:https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID high-availability configuration)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (Konfiguracja wysokiej dostępności identyfikatora SID multi SAP)
 
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
@@ -236,12 +237,12 @@ Instalowanie wystąpienia programu SAP ASCS/SCS w *zarówno* węzłów klastra A
 
 Aby zainstalować wystąpienie, w narzędziu instalacji SAP SWPM, przejdź do:
 
-**\<Produktu >** > **\<DBMS >** > **instalacji** > **serwera aplikacji ABAP**(lub **Java**) > **rozproszony System** > **ASCS/SCS wystąpienia**
+**\<Produktu >** > **\<DBMS >** > **instalacji** > **serwera aplikacji ABAP** () lub **Java**) > **rozproszony System** > **ASCS/SCS wystąpienia**
 
 > [!IMPORTANT]
 > Obecnie scenariusz udziału plików nie jest obsługiwany przez narzędzie instalacji SAP SWPM. Możesz *nie można użyć* następująca ścieżka instalacji:
 >
-> **\<Produktu >** > **\<DBMS >** > **instalacji** > **serwera aplikacji ABAP**(lub **Java**) > **wysokiej dostępności systemu** >...
+> **\<Produktu >** > **\<DBMS >** > **instalacji** > **serwera aplikacji ABAP** () lub **Java**) > **wysokiej dostępności systemu** >...
 >
 
 ### <a name="remove-sapmnt-and-create-an-saploc-file-share"></a>Usuń SAPMNT i utworzenie udziału plików SAPLOC
@@ -407,7 +408,7 @@ Do użycia nowej nazwy hostów wirtualnych SAP ASCS/SCS i SAP nazwy hosta global
 | SAPLOCALHOST | **PR1 ascs** |
 | Restart_Program_03 = local$(_EN) pf=$(_PF) | **Uruchom**_Program_03 = local$(_EN) pf=$(_PF) |
 | GW/netstat_once | **0** |
-| umieścić/encni/set_so_keepalive  | **wartość true** |
+| umieścić/encni/set_so_keepalive  | **Wartość true** |
 | Usługa/ha_check_node | **1** |
 
 > [!IMPORTANT]
@@ -578,7 +579,7 @@ Zakończ instalację systemu SAP, instalując:
 * Podstawowy serwer aplikacji SAP.
 * Dodatkowy serwer aplikacji SAP.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Instalowanie wystąpienia ASCS/SCS w klastrze trybu failover z dysków — oficjalny SAP wytyczne dotyczące udziału plików o wysokiej dostępności][sap-official-ha-file-share-document]
 

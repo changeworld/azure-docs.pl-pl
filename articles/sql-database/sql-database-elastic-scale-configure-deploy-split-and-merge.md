@@ -6,14 +6,15 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 90f758bf5bc979dc4bc173b08dadaceeaa077317
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 51a5f70cc56b2a4196ee7b151be0af3a9e16fc4f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646936"
 ---
 # <a name="deploy-a-split-merge-service"></a>Wdrażanie usługi z podziałem i scalaniem
 Narzędzia do scalania podziału umożliwia przenoszenie danych między podzielonej baz danych. Zobacz [przenoszenia danych między bazami danych w chmurze skalowalnych w poziomie](sql-database-elastic-scale-overview-split-and-merge.md)
@@ -33,8 +34,8 @@ Pliki są umieszczane w katalogu o nazwie **Microsoft.Azure.SqlDatabase.ElasticS
 2. Upewnij się, że serwer bazy danych SQL Azure umożliwia usługom Azure się z nią połączyć. W portalu w **ustawienia zapory**, upewnij się, **zezwolić na dostęp do usług Azure** mają ustawioną wartość **na**. Kliknij ikonę "Zapisz".
    
    ![Dozwolone usług][1]
-3. Tworzenie konta usługi Azure Storage, który będzie używany dla danych wyjściowych diagnostyki. Przejdź do portalu Azure. Na pasku po lewej stronie kliknij **Utwórz zasób**, kliknij przycisk **dane i magazyn**, następnie **magazynu**.
-4. Tworzenie usługi w chmurze Azure zawierających usługi podziału scalania.  Przejdź do portalu Azure. Na pasku po lewej stronie kliknij **Utwórz zasób**, następnie **obliczeniowe**, **usługi w chmurze**, i **Utwórz**. 
+3. Tworzenie konta usługi Azure Storage, który będzie używany dla danych wyjściowych diagnostyki. Przejdź do witryny Azure Portal. Na pasku po lewej stronie kliknij **Utwórz zasób**, kliknij przycisk **dane i magazyn**, następnie **magazynu**.
+4. Tworzenie usługi w chmurze Azure zawierających usługi podziału scalania.  Przejdź do witryny Azure Portal. Na pasku po lewej stronie kliknij **Utwórz zasób**, następnie **obliczeniowe**, **usługi w chmurze**, i **Utwórz**. 
 
 ## <a name="configure-your-split-merge-service"></a>Konfigurowanie usługi scalania podziału
 ### <a name="split-merge-service-configuration"></a>Konfiguracja usługi scalania podziału
@@ -59,7 +60,7 @@ Szczegółowe instrukcje dotyczące konfigurowania zabezpieczeń usługi, zapozn
 
 Do celów wdrożenia simple testu, w tym samouczku minimalny zestaw kroków konfiguracji będzie wykonywane do uruchomienia usługi i uruchomione. Kroki te włączają tylko jeden/konto komputera wykonywanie ich do komunikowania się z usługą.
 
-### <a name="create-a-self-signed-certificate"></a>Utwórz certyfikat z podpisem własnym
+### <a name="create-a-self-signed-certificate"></a>Tworzenie certyfikatu z podpisem własnym
 Utwórz nowy katalog i z tego katalogu wykonywanie następujących za pomocą polecenia [wiersz polecenia dla programu Visual Studio deweloperów](http://msdn.microsoft.com/library/ms229859.aspx) okno:
 
    ```

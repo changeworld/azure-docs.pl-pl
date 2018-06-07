@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 7a244a5dbb86b076f99975ad477d4062699270b5
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 22cf62f201b21f3035687b7f0f2ff07dc94f1a29
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34658676"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Tworzenie, zmienianie lub usuwanie grupy zabezpieczeń sieci
 
@@ -65,7 +66,7 @@ W polu wyszukiwania w górnej części portalu wprowadź *sieciowej grupy zabezp
 ### <a name="view-details-of-a-network-security-group"></a>Wyświetl szczegóły grupy zabezpieczeń sieci
 
 1. W polu wyszukiwania w górnej części portalu wprowadź *sieciowej grupy zabezpieczeń*. Gdy **sieciowej grupy zabezpieczeń** są wyświetlane w wynikach wyszukiwania, wybierz ją.
-2. Wybierz grupy zabezpieczeń sieci na liście, który chcesz wyświetlić szczegóły. W obszarze **ustawienia** można wyświetlić **reguły zabezpieczeń dla ruchu przychodzącego** i **reguł zabezpieczeń dla ruchu wychodzącego**, **interfejsy sieciowe** i  **Podsieci** sieciowej grupy zabezpieczeń jest skojarzony. Można również włączyć lub wyłączyć **dzienniki diagnostyczne** i widoku **reguły efektywnym elementem systemu zabezpieczeń**. Aby dowiedzieć się więcej, zobacz [dzienniki diagnostyczne](virtual-network-nsg-manage-log.md) i [wyświetlić reguły efektywnym elementem systemu zabezpieczeń](virtual-network-nsg-troubleshoot-portal.md).
+2. Wybierz grupy zabezpieczeń sieci na liście, który chcesz wyświetlić szczegóły. W obszarze **ustawienia** można wyświetlić **reguły zabezpieczeń dla ruchu przychodzącego** i **reguł zabezpieczeń dla ruchu wychodzącego**, **interfejsy sieciowe** i  **Podsieci** sieciowej grupy zabezpieczeń jest skojarzony. Można również włączyć lub wyłączyć **dzienniki diagnostyczne** i widoku **reguły efektywnym elementem systemu zabezpieczeń**. Aby dowiedzieć się więcej, zobacz [dzienniki diagnostyczne](virtual-network-nsg-manage-log.md) i [wyświetlić reguły efektywnym elementem systemu zabezpieczeń](diagnose-network-traffic-filter-problem.md).
 3. Aby dowiedzieć się więcej na temat typowych ustawień platformy Azure na liście, zobacz następujące artykuły:
     *   [Dziennik aktywności](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)
     *   [Kontrola dostępu (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)

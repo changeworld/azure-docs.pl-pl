@@ -1,22 +1,22 @@
 ---
-title: "Eksplorowanie danych za pomocą Eksploratora Azure czas serii Insights | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano, jak szybko wyświetlić widok globalne dane big i sprawdzić poprawności środowiska IoT za pomocą Eksploratora Azure czas serii wgląd w przeglądarce sieci web."
-services: time-series-insights
+title: Eksplorowanie danych za pomocą Eksploratora Azure czas serii Insights | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak szybko wyświetlić widok globalne dane big i sprawdzić poprawności środowiska IoT za pomocą Eksploratora Azure czas serii wgląd w przeglądarce sieci web.
 ms.service: time-series-insights
+services: time-series-insights
 author: MarkMcGeeAtAquent
 ms.author: kfile
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: d09292cce1414a1b89e4b75df27d0a689738b4d6
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: de676efdd7dd2a4035bbeca4bddd8b1d7ee7e989
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34651781"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Eksplorator Insights serii czasu
 Ten artykuł opisuje różne funkcje i opcje dostępne w aplikacji sieci web explorer Insights serii czasu. Umożliwia explorer czasu serii wgląd w przeglądarce sieci web tworzenie wizualizacji danych.
@@ -58,8 +58,8 @@ W ciągu minut połączenia źródła zdarzeń w danym środowisku czasu serii I
          |Operacja  |Obsługiwane typy  |Uwagi  |
          |---------|---------|---------|
          |<, >, <=, >=     |  Double, DateTime, TimeSpan       |         |
-         |=, !=, <>     | String, Bool, Double, DateTime, TimeSpan, NULL        |         |
-         |W     | String, Bool, Double, DateTime, TimeSpan, NULL        |  Wszystkie argumenty powinny być tego samego typu lub być stała NULL.        |
+         |=, !=, <>     | String, Bool, Double, DateTime, TimeSpan, wartość NULL        |         |
+         |W     | String, Bool, Double, DateTime, TimeSpan, wartość NULL        |  Wszystkie argumenty powinny być tego samego typu lub być stała NULL.        |
          |MA     | Ciąg        |  Tylko Literały ciągu stałych mogą się po prawej stronie. Pusty ciąg i NULL są niedozwolone.       |
 
       - **Przykłady zapytań**

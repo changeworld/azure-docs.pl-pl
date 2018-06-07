@@ -10,17 +10,18 @@ ms.component: implement
 ms.date: 05/09/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 2922a859f741c6b6420f49d34b982b7ec4968a8c
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: bbc6a5083aebba40885700cab6c67128c9d9f916
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643434"
 ---
 # <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Tworzenie, aktualizowanie statystyk dotyczących tabel w magazynie danych SQL Azure
 Zalecenia i przykłady dotyczące tworzenia i zaktualizowanie statystyk optymalizacji kwerend w tabelach w usłudze Azure SQL Data Warehouse.
 
 ## <a name="why-use-statistics"></a>Dlaczego warto używać statystyki?
-Im bardziej zna danych Azure SQL Data Warehouse, tym szybciej jego wykonywanie zapytań względem jego. Zbieranie statystyk na podstawie danych i załadowanie go do usługi SQL Data Warehouse jest jednym z najważniejszych czynności, które pozwalają zoptymalizować zapytania. Jest to spowodowane Optymalizator zapytań SQL Data Warehouse jest Optymalizator opartych na kosztach. Porównuje koszt różne plany zapytań, a następnie wybiera plan o najniższej cenie, który znajduje się w większości przypadków plan, który wykonuje najszybsze. Na przykład jeśli Optymalizator szacuje się, że data filtrowania kwerendy zwróci jeden wiersz, ją wybrać inny plan niż w przypadku szacuje go, że wybrana data zwraca 1 milion wierszy.
+Im bardziej zna danych Azure SQL Data Warehouse, tym szybciej jego wykonywanie zapytań względem jego. Zbieranie statystyk na podstawie danych i załadowanie go do usługi SQL Data Warehouse jest jednym z najważniejszych czynności, które pozwalają zoptymalizować zapytania. Jest to spowodowane Optymalizator zapytań SQL Data Warehouse jest Optymalizator opartych na kosztach. Porównuje koszty różnych planów zapytań, a następnie wybiera plan o najniższych kosztach, który w większości przypadków jest planem zapewniającym najszybsze wykonanie. Na przykład jeśli Optymalizator szacuje się, że data filtrowania kwerendy zwróci jeden wiersz, ją wybrać inny plan niż w przypadku szacuje go, że wybrana data zwraca 1 milion wierszy.
 
 ## <a name="automatic-creation-of-statistics"></a>Automatyczne tworzenie statystyk
 Podczas automatycznego tworzenia statystyk opcja jest włączona, AUTO_CREATE_STATISTICS, SQL Data Warehouse analizuje zapytania przychodzące użytkownika, których statystyki pojedynczej kolumny są tworzone dla kolumny, których brakuje statystyki. Optymalizator zapytań tworzy statystyki dla poszczególnych kolumn w warunek predykatu lub sprzężenia zapytania zwiększające szacowania kardynalności dla planu zapytania. Automatyczne tworzenie statystyk jest obecnie włączona domyślnie.
@@ -49,11 +50,14 @@ Automatyczne tworzenie statystyk jest generowany synchronicznie, więc jeśli ko
 > Tworzenie statystyk, również są rejestrowane w [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016) w kontekście innego użytkownika.
 > 
 
-Po utworzeniu automatycznego statystyki one będzie mieć postać: _WA_Sys_< identyfikator kolumny 8 cyfr szesnastkowo > _ < identyfikator tabeli 8 cyfr szesnastkowo >. Można wyświetlić statystyki, które zostały już utworzone, uruchamiając następujące polecenie:
+Po utworzeniu automatycznego statystyki one będzie mieć postać: _WA_Sys_< identyfikator kolumny 8 cyfr szesnastkowo > _ < identyfikator tabeli 8 cyfr szesnastkowo >. Możesz wyświetlić statystyki, które zostały już utworzone, uruchamiając [DBCC SHOW_STATISTICS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=sql-server-2017) polecenia:
 
 ```sql
 DBCC SHOW_STATISTICS (<tablename>, <targetname>)
 ```
+Pierwszy argument jest tabelę zawierającą statystyki do wyświetlenia. Nie może to być tabeli zewnętrznej. Drugi argument jest nazwą indeksu docelowego, statystyk lub kolumny, dla którego mają być wyświetlone informacje statystyczne.
+
+
 
 ## <a name="updating-statistics"></a>Zaktualizowanie statystyk
 

@@ -1,20 +1,21 @@
 ---
-title: "Samouczek SaaS wielodostępne — baza danych SQL Azure | Dokumentacja firmy Microsoft"
-description: "Dostarczanie i katalogu nowi dzierżawcy przy użyciu wzorca aplikacji autonomicznych"
-keywords: "samouczek usługi sql database"
+title: Samouczek SaaS wielodostępne — baza danych SQL Azure | Dokumentacja firmy Microsoft
+description: Dostarczanie i katalogu nowi dzierżawcy przy użyciu wzorca aplikacji autonomicznych
+keywords: samouczek usługi sql database
 services: sql-database
 author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: SaaS
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/31/2018
 ms.author: billgib
-ms.openlocfilehash: 148a50d07d4cea7adda493b283766d22d26b81e2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0f2495ddc5d5053582d67bd44cdf80d018f79e42
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646157"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Dostarczanie i katalogu nowi dzierżawcy przy użyciu aplikacji dla poszczególnych dzierżawców wzorzec SaaS
 
@@ -70,7 +71,7 @@ W tym zadaniu Dowiedz się udostępnianie katalogu używane do rejestrowania wsz
 * **Udostępniania bazy danych katalogu** przy użyciu szablonu usługi zarządzania zasobów platformy Azure. Baza danych jest zainicjowana przez zaimportowanie pliku pliku bacpac.  
 * **Zarejestruj przykładowych aplikacji dzierżawy** wdrożonej wcześniej.  Poszczególni dzierżawcy jest zarejestrowana przy użyciu klucza utworzone na podstawie wartości skrótu nazwę dzierżawcy.  Nazwa dzierżawcy jest również przechowywane w tabeli rozszerzenia w katalogu.
 
-1. Otwórz w programie PowerShell ISE *...\Learning Modules\UserConfig.psm* i zaktualizuj  **\<użytkownika\>**  wartość używana w przypadku wdrażania trzy przykładowe aplikacje.  **Zapisz plik**.  
+1. Otwórz w programie PowerShell ISE *...\Learning Modules\UserConfig.psm* i zaktualizuj **\<użytkownika\>** wartość używana w przypadku wdrażania trzy przykładowe aplikacje.  **Zapisz plik**.  
 1. Otwórz w programie PowerShell ISE *...\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* i ustaw **$Scenario = 1**. Wdróż katalogu dzierżawcy i zarejestruj wstępnie zdefiniowane dzierżaw.
 
 1. Dodawanie punktu przerwania w dowolnym umieszczając kursor w wierszu, który jest wyświetlany komunikat `& $PSScriptRoot\New-Catalog.ps1`, a następnie naciśnij klawisz **F9**.
@@ -87,7 +88,7 @@ Po ukończeniu działania skryptu katalogu będzie istnieć i dzierżawcami pró
 Teraz wyglądać na zasoby, które utworzono.
 
 1. Otwórz [portalu Azure](https://portal.azure.com/) i grupy zasobów.  Otwórz **wingtip-sa-katalogu -\<użytkownika\>**  zasobów grupy i zanotuj katalogu serwera i bazy danych.
-1. Otwórz w portalu i wybierz bazę danych *Eksploratora danych* z menu po lewej stronie.  Kliknij polecenie logowania, a następnie wprowadź hasło =  **P@ssword1** .
+1. Otwórz w portalu i wybierz bazę danych *Eksploratora danych* z menu po lewej stronie.  Kliknij polecenie logowania, a następnie wprowadź hasło = **P@ssword1**.
 
 
 1. Eksploruj schemat *tenantcatalog* bazy danych.  

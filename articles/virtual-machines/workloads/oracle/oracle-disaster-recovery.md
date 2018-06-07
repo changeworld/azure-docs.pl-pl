@@ -1,13 +1,13 @@
 ---
-title: "Omówienie scenariusza odzyskiwania po awarii programu Oracle w środowisku platformy Azure | Dokumentacja firmy Microsoft"
-description: "Scenariusza odzyskiwania po awarii dla bazy danych Oracle 12c w środowisku platformy Azure"
+title: Omówienie scenariusza odzyskiwania po awarii programu Oracle w środowisku platformy Azure | Dokumentacja firmy Microsoft
+description: Scenariusza odzyskiwania po awarii dla bazy danych Oracle 12c w środowisku platformy Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: v-shiuma
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 6/2/2017
 ms.author: rclaus
-ms.openlocfilehash: aede44d964994bd2ef9b46a133b1f1ee303ef309
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: bb319c4ba9bbfba584803b35a0db0763fcf97b86
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657865"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Odzyskiwanie po awarii dla bazy danych programu Oracle Database 12c w środowisku platformy Azure
 
@@ -103,7 +104,7 @@ Poniżej znajduje się podsumowanie konfiguracji platformy Azure:
 - [Oracle kopii zapasowych i odzyskiwania](oracle-backup-recovery.md)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Samouczek: Tworzenie maszyn wirtualnych wysokiej dostępności](../../linux/create-cli-complete.md)
 - [Eksploruj przykłady Azure CLI wdrożenia maszyny Wirtualnej](../../linux/cli-samples.md)

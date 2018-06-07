@@ -8,14 +8,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.workload: data-management
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 4cbf758b82bccae8efe77e197d23a090d71fd7e5
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: ac53443140b792d01147cdf22b81d0e6658fa429
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646460"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Wdrażanie i Eksploruj podzielonej aplikacji wielodostępnych, która używa bazy danych SQL Azure
 
@@ -123,7 +124,7 @@ Każda właściwość pobiera aplikację sieci web spersonalizowane listy ich zd
 Centralnego **Centrum zdarzeń** strony sieci Web zawiera listę łącza do dzierżawców w danego wdrożenia. Wykonaj następujące kroki, aby zgłaszać **Centrum zdarzeń** strony sieci Web i aplikacji sieci web poszczególnych:
 
 1. Otwórz **Centrum zdarzeń** w przeglądarce sieci web:
-    - http://events.wingtip-mt. &lt;użytkownika&gt;. trafficmanager.net &nbsp; *(Zastąp &lt;użytkownika&gt; o wartości użytkownika w danym wdrożeniu.)*
+    - http://events.wingtip-mt.&lt; użytkownika&gt;. trafficmanager.net &nbsp; *(Zastąp &lt;użytkownika&gt; o wartości użytkownika w danym wdrożeniu.)*
 
     ![centrum zdarzeń](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
@@ -135,7 +136,7 @@ Centralnego **Centrum zdarzeń** strony sieci Web zawiera listę łącza do dzie
 
 Aby kontrolować dystrybucję żądań przychodzących, używa aplikacji Wingtip [usługi Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Strona zdarzenia dla każdego dzierżawcy zawiera nazwę dzierżawy w jego adres URL. Każdy adres URL zawiera także wartość określonego użytkownika. Każdy adres URL przestrzega format wyświetlane przy użyciu następujących kroków:
 
-- http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt; użytkownika&gt;.trafficmanager.net/*fabrikamjazzclub*
 
 1. Aplikacja zdarzenia analizuje nazwę dzierżawcy z adresu URL. Nazwa dzierżawy to *fabrikamjazzclub* w poprzednim przykładzie adres URL.
 2. Aplikacja następnie skróty nazwę dzierżawcy, aby utworzyć klucz, aby uzyskiwać dostęp za pomocą wykazu [zarządzania mapy niezależnego fragmentu](sql-database-elastic-scale-shard-map-management.md).

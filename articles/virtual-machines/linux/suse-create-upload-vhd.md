@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 2372550548f40ad07b4f76c19bc3bc1cb8380830
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 99838a7038672998d4940bfb437bd31311d3600f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34653437"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu SLES lub openSUSE dla platformy Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -93,9 +94,9 @@ Jako alternatywę do tworzenia własnych wirtualnego dysku twardego, SUSE publik
      ResourceDisk.Format=y ResourceDisk.Filesystem=ext4 ResourceDisk.MountPoint=/mnt/resource ResourceDisk.EnableSwap=y ResourceDisk.SwapSizeMB=2048 ## Uwaga: Ustaw tę wartość na dowolnym należy się.
 15. Uruchom następujące polecenia, aby anulowanie zastrzeżenia maszyny wirtualnej i przygotowywania ich do inicjowania obsługi administracyjnej na platformie Azure:
     
-    # <a name="sudo-waagent--force--deprovision"></a>sudo agenta waagent-force - deprovision
-    # <a name="export-histsize0"></a>Eksportuj HISTSIZE = 0
-    # <a name="logout"></a>wyloguj
+        # sudo waagent -force -deprovision
+        # export HISTSIZE=0
+        # logout
 16. Kliknij przycisk **akcji -> zamykania w dół** w Menedżerze funkcji Hyper-V. Dysk VHD systemu Linux jest teraz gotowy do przekazania do platformy Azure.
 
 - - -
@@ -128,7 +129,7 @@ Jako alternatywę do tworzenia własnych wirtualnego dysku twardego, SUSE publik
         # sudo zypper update
 5. Zainstaluj agenta systemu Linux platformy Azure.
    
-   # <a name="sudo-zypper-install-walinuxagent"></a>Zainstaluj zypper sudo WALinuxAgent
+        # sudo zypper install WALinuxAgent
 6. Zmodyfikuj wiersza rozruchu jądra w konfiguracji chodników uwzględnienie jądra dodatkowe parametry dla platformy Azure. W tym celu należy otworzyć "/ boot/grub/menu.lst" w edytorze tekstów i upewnij się, że jądra domyślna zawiera następujące parametry:
    
      Konsola = ttyS0 earlyprintk = ttyS0 rootdelay = 300
@@ -150,9 +151,9 @@ Jako alternatywę do tworzenia własnych wirtualnego dysku twardego, SUSE publik
      ResourceDisk.Format=y ResourceDisk.Filesystem=ext4 ResourceDisk.MountPoint=/mnt/resource ResourceDisk.EnableSwap=y ResourceDisk.SwapSizeMB=2048 ## Uwaga: Ustaw tę wartość na dowolnym należy się.
 11. Uruchom następujące polecenia, aby anulowanie zastrzeżenia maszyny wirtualnej i przygotowywania ich do inicjowania obsługi administracyjnej na platformie Azure:
     
-    # <a name="sudo-waagent--force--deprovision"></a>sudo agenta waagent-force - deprovision
-    # <a name="export-histsize0"></a>Eksportuj HISTSIZE = 0
-    # <a name="logout"></a>wyloguj
+        # sudo waagent -force -deprovision
+        # export HISTSIZE=0
+        # logout
 12. Upewnij się, że Agent systemu Linux platformy Azure jest uruchamiany podczas uruchamiania:
     
         # sudo systemctl enable waagent.service

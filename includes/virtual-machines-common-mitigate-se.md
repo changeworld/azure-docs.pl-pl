@@ -5,16 +5,17 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/03/2018
+ms.date: 05/21/2018
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: dac04ed9a43e19d022720979c8f83aa2b4132f78
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 49db6b625a9e4fc46fe414eb723dfccd890efd64
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34677363"
 ---
-**Dokument ostatniej aktualizacji**: 3 kwietnia 3:00 PM PST.
+**Dokument ostatniej aktualizacji**: 21 maja 2018 3:00 PM PST.
 
 Ostatnie ujawnienie [nowa klasa luk w zabezpieczeniach Procesora](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) znany jako rozważana wykonywania ataków kanału po stronie spowodowało pytania, korzystając z wyszukiwania jasności więcej klientów.  
 
@@ -23,6 +24,8 @@ Microsoft zostało wdrożone środki zaradcze w naszej usługi w chmurze. Infras
 Ponadto Azure rozszerza się użycie [pamięci, zachowując konserwacji](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#memory-preserving-maintenance) Jeśli to możliwe, wstrzymanie maszyny Wirtualnej przez 30 sekund, podczas gdy host jest aktualizowany lub maszyna wirtualna zostanie przeniesiona do hosta już zaktualizowany.  Zachowywanie dalsze konserwacji pamięci minimalizuje klientów i eliminuje konieczność ponownego uruchomienia.  Azure będzie korzystać z tych metod podczas wprowadzania aktualizacji całym systemie hosta.
 
 > [!NOTE] 
+21 maja 2018 Zero projektu Google i Microsoft poinformowała nową podklasę luki w zabezpieczeniach kanału po stronie rozważana wykonanie znany jako rozważana obejścia magazynu. Bardziej dodatkowe środki zaradcze głębi zostały wdrożone w ramach infrastruktury chmury firmy Microsoft, którego bezpośrednio dotyczy luk rozważana wykonywania. Więcej informacji znajduje się w tym miejscu: https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180012 
+>
 > W późne 2018 lutego, Intel Corporation opublikowane zaktualizowane [wskazówki poprawki mikrokodu](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/03/microcode-update-guidance.pdf) stan ich wersje mikrokodu, które poprawić stabilność i ograniczyć ostatnie luk w zabezpieczeniach ujawnione przez [Projektu Google Zero](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html). Środki zaradcze wprowadzone przez Azure [3 stycznia 2018](https://azure.microsoft.com/blog/securing-azure-customers-from-cpu-vulnerability/) nie dotyczy aktualizacji mikrokodu firmy Intel. Microsoft już wprowadzić Silne środki zaradcze ochrony klientów platformy Azure z innych maszyn wirtualnych platformy Azure.  
 >
 > Mikrokodu firmy Intel adresów variant 2 Spectre ([CVE-2017-5715](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5715) lub gałęzi docelowej iniekcji) ochronę przed atakami, które mogłyby tylko odpowiednie realizującym obciążeń udostępnionego lub niezaufanych wewnątrz maszyn wirtualnych na platformie Azure. Nasze inżynierów testowania stabilności, aby zminimalizować wpływ na wydajność mikrokodu, przed udostępnieniem jej klientów platformy Azure.  Bardzo kilku klientów Uruchom niezaufanych obciążeń w ramach ich maszyn wirtualnych, większość klientów nie będzie konieczne włączenie tej możliwości wydawane raz. 
@@ -48,7 +51,7 @@ W poniższych ofertach Oto nasze zalecane działania, aby zaktualizować System 
 <td>usług Azure Cloud Services </td>  <td>Włącz Aktualizacje automatyczne lub upewnij się, że używasz najnowszej systemu operacyjnego gościa.</td>
 </tr>
 <tr>
-<td>Maszyny wirtualne systemu Linux platformy Azure</td> <td>Zainstaluj aktualizacje z dostawcą systemu operacyjnego, jeśli jest dostępna. </td>
+<td>Azure Linux Virtual Machines</td> <td>Zainstaluj aktualizacje z dostawcą systemu operacyjnego, jeśli jest dostępna. </td>
 </tr>
 <tr>
 <td>Maszyny wirtualne systemu Windows Azure </td> <td>Sprawdź, czy używasz obsługiwanej aplikacji oprogramowania antywirusowego przed zainstalowaniem aktualizacji systemu operacyjnego. Skontaktuj się z dostawcą oprogramowania antywirusowego, aby uzyskać informacje o zgodności.<p> Zainstaluj [zbiorczy zabezpieczeń stycznia](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002). </p></td>

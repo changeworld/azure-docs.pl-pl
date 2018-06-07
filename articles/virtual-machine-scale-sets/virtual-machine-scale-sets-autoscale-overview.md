@@ -13,25 +13,26 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 05/29/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 03053f8427fbd20b0a7288d930dca258ee3070b6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 49ef3821ba5dd10d745649c6b4546ec04282714f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652308"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Ustawia Omówienie automatycznego skalowania o skali maszyny wirtualnej platformy Azure
-Zestaw skali maszyny wirtualnej platformy Azure automatycznie można zwiększyć lub zmniejszyć liczbę wystąpień maszyn wirtualnych, których uruchamiana jest aplikacja. To zachowanie automatyczne i elastyczny zmniejsza obciążenie związane z zarządzania do monitorowania i zoptymalizować wydajność aplikacji. Możesz utworzyć reguły określające minimalny akceptowalną wydajność środowisko dodatnią klienta. Po spełnieniu tych progów zdefiniowanych reguł skalowania automatycznego reakcję pojemności sieci zestawu skali. Można również zaplanować zdarzeń, aby automatycznie zwiększyć lub zmniejszyć pojemność zestawu skalowania w stałej razy. Ten artykuł zawiera omówienie metryki wydajności, które są dostępne i skalowania automatycznego jakie akcje mogą wykonywać.
+Zestaw skali maszyny wirtualnej platformy Azure automatycznie można zwiększyć lub zmniejszyć liczbę wystąpień maszyn wirtualnych, których uruchamiana jest aplikacja. To zachowanie automatyczne i elastyczny zmniejsza obciążenie związane z zarządzania do monitorowania i zoptymalizować wydajność aplikacji. Można tworzyć reguły definiujące akceptowalną wydajność środowisko dodatnią klienta. Po spełnieniu tych progów zdefiniowanych reguł skalowania automatycznego reakcję pojemności sieci zestawu skali. Można również zaplanować zdarzeń, aby automatycznie zwiększyć lub zmniejszyć pojemność zestawu skalowania w stałej razy. Ten artykuł zawiera omówienie metryki wydajności, które są dostępne i skalowania automatycznego jakie akcje mogą wykonywać.
 
 
 ## <a name="benefits-of-autoscale"></a>Korzyści wynikające z automatycznego skalowania
-Jeśli Twoje żądanie aplikacji zwiększa, obciążenie wystąpień maszyn wirtualnych w skali sieci ustawić zwiększa. Jeśli ta zwiększone obciążenie jest spójne, a nie tylko krótki żądanie, można skonfigurować reguł skalowania automatycznego, aby zwiększyć liczbę wystąpień maszyny Wirtualnej w zestawie skalowania.
+Wraz ze wzrostem zapotrzebowania aplikacji zwiększa się obciążenie wystąpień maszyn wirtualnych w zestawie skalowania. Jeśli wzrost obciążenia ma cechy stałego trendu, można skonfigurować reguły skalowania automatycznego umożliwiające zwiększenie liczby wystąpień maszyn wirtualnych w zestawie skalowania.
 
-Gdy te wystąpień maszyn wirtualnych są tworzone i wdrożonych aplikacji, zestaw skali rozpoczyna Dystrybuuj ruch do nich za pośrednictwem usługi równoważenia obciążenia. Można określić, jakie metryk do monitorowania, takie jak procesor CPU lub pamięci, jak długo obciążenia aplikacji muszą spełniać podany próg i ustaw liczbę wystąpień maszyny Wirtualnej, aby dodać do skali.
+Gdy aplikacje zostaną wdrożone, zestaw skalowania rozpoczyna kierowanie ruchu do nowo utworzonych wystąpień maszyn wirtualnych za pośrednictwem modułu równoważenia obciążenia. Można określić, jakie metryk do monitorowania, takie jak procesor CPU lub pamięci, jak długo obciążenia aplikacji muszą spełniać podany próg i ustaw liczbę wystąpień maszyny Wirtualnej, aby dodać do skali.
 
-Na wieczorem lub w weekendy Twoje żądanie aplikacji mogą się zmniejszyć. Jeśli to zmniejszyć obciążenie jest spójne w danym okresie czasu, można skonfigurować reguły automatycznego skalowania, aby zmniejszyć liczbę wystąpień maszyny Wirtualnej w zestawie skalowania. Ta akcja skali zmniejsza koszt do uruchomienia na skalę ustawione jako tylko Uruchom liczba wystąpień wymaganych do bieżącego zapotrzebowania.
+Wieczorami lub w weekendy zapotrzebowanie aplikacji może być mniejsze. Jeśli spadek obciążenia ma cechy stałego trendu w danym okresie, można skonfigurować reguły skalowania automatycznego umożliwiające zmniejszenie liczby wystąpień maszyn wirtualnych w zestawie skalowania. Akcja skalowania w pionie ogranicza koszt używania zestawu skalowania, ponieważ jest uruchomionych tylko tyle wystąpień, ile jest wymaganych do zaspokojenia bieżącego zapotrzebowania.
 
 
 ## <a name="use-host-based-metrics"></a>Metryki oparta na hoście
@@ -115,7 +116,7 @@ Rozszerzenie diagnostyki Azure to agent uruchamiający wewnątrz wystąpienia ma
 
 Próbę użycia rozszerzenia diagnostycznych platformy Azure, należy utworzyć konta magazynu platformy Azure dla wystąpień maszyn wirtualnych, zainstaluj agenta platformy Azure diagnostics, a następnie skonfigurować maszyny wirtualne do liczników wydajności konkretnego strumienia z kontem magazynu.
 
-Aby uzyskać więcej informacji, zobacz artykuły o tym, jak włączyć rozszerzenie diagnostyki platformy Azure na [maszynie wirtualnej z systemem Linux](../virtual-machines/linux/diagnostic-extension.md) lub [maszynie wirtualnej z systemem Windows](../virtual-machines/windows/ps-extensions-diagnostics.md).
+Aby uzyskać więcej informacji, zobacz artykuły o tym, jak włączyć rozszerzenie diagnostyki platformy Azure na [maszynie wirtualnej z systemem Linux](../virtual-machines/extensions/diagnostics-linux.md) lub [maszynie wirtualnej z systemem Windows](../virtual-machines/extensions/diagnostics-windows.md).
 
 
 ## <a name="application-level-metrics-with-app-insights"></a>Metryki poziomu aplikacji z informacjami dotyczącymi aplikacji

@@ -6,14 +6,15 @@ manager: craigg
 author: anumjs
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: anjangsh
-ms.openlocfilehash: fa6899b285bcd1d3f2d4c1e17e3fbab7a6e0f839
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: cf180149ceb0b6c88fab8a0a7bb58a84d25b1b9c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647235"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Wprowadzenie do narzędzi elastycznej bazy danych
 Ten dokument stanowi wprowadzenie do obsługi projektanta [biblioteki klienta elastycznej bazy danych](sql-database-elastic-database-client-library.md) pomagając Uruchom przykładową aplikację. Przykładowa aplikacja tworzy prostą aplikację podzielonej i Eksploruje kluczowych możliwości funkcji narzędzi elastycznej bazy danych, bazy danych SQL Azure. Dotyczy on przypadki użycia [zarządzania mapy niezależnego fragmentu](sql-database-elastic-scale-shard-map-management.md), [routingu zależne od danych](sql-database-elastic-scale-data-dependent-routing.md), i [zapytań wielu niezależnych](sql-database-elastic-scale-multishard-querying.md). Biblioteka klienta jest dostępna dla platformy .NET, a także Java. 

@@ -7,14 +7,15 @@ manager: craigg
 ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: v-daljep
-ms.openlocfilehash: 5ce83198e1d2afb713044879724df88ad2696548
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 3d1a9045ed89bd3e5714762add7cb9568c46e44f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34648245"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Korzystanie z dziennika inteligentnego bazy danych SQL Azure Insights wydajności diagnostyki
 
@@ -82,7 +83,7 @@ W zależności od wydajności wykrytego problemu, szczegóły wyjściowych diagn
 | Wykorzystanie pamięci | <li>Pracownik pamięci.</li> |
 | Blokowanie | <li>Wpływ na skróty zapytania</li><li>Blokowanie skrótów zapytania</li> |
 | Zwiększona MAXDOP | <li>Skróty zapytania</li><li>Czasy oczekiwania CXP</li><li>Czas oczekiwania</li> |
-| Pagelatch Contention | <li>Zapytanie skrótów zapytania powodujące rywalizacji</li> |
+| Pagelatch rywalizacji | <li>Zapytanie skrótów zapytania powodujące rywalizacji</li> |
 | Brak indeksu | <li>Skróty zapytania</li> |
 | Nowe zapytanie | <li>Zapytanie skrótu nowej kwerendy</li> |
 | Statystyka nietypowe zachowanie podczas oczekiwania | <li>Typy nietypowe zachowanie podczas oczekiwania</li><li>Skróty zapytania</li><li>Czas oczekiwania na zapytania</li> |

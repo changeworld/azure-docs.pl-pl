@@ -1,11 +1,11 @@
 ---
-title: "Wysoką dostępność, skonfiguruj za pomocą STONITH dla SAP HANA na platformie Azure (wystąpienia duże) | Dokumentacja firmy Microsoft"
-description: "Ustanowienie wysokiej dostępności dla SAP HANA na platformie Azure (duże wystąpień) w SUSE przy użyciu STONITH"
+title: Wysoką dostępność, skonfiguruj za pomocą STONITH dla SAP HANA na platformie Azure (wystąpienia duże) | Dokumentacja firmy Microsoft
+description: Ustanowienie wysokiej dostępności dla SAP HANA na platformie Azure (duże wystąpień) w SUSE przy użyciu STONITH
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: saghorpa
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,17 +14,18 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d710fe24673c6ddc581d36e4f0cacdb750ff74f9
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 344a48ff82bd93bf8dc9924e09399e72b9f88e2f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656367"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Wysoka dostępność skonfigurowane w systemie SUSE przy użyciu STONITH
 Ten dokument zawiera szczegółowe instrukcje krok po kroku, aby skonfigurować wysoką dostępność w systemie operacyjnym SUSE przy użyciu urządzenia STONITH.
 
-**Zastrzeżenie:** *ten przewodnik jest uzyskiwany w wyniku testowania zestaw się w środowisku Microsoft HANA dużych wystąpień pomyślnie działa. Ponieważ zespołu zarządzania usługami firmy Microsoft dla wystąpień dużych HANA nie obsługuje systemu operacyjnego, konieczne może być skontaktuj się z SUSE dla dalszego rozwiązywania problemów lub wyjaśnienia dotyczące warstwy systemu operacyjnego. Zespół zarządzania usługi Microsoft Konfigurowanie urządzenia STONITH i w pełni obsługuje i mogą brać udział uzyskać informacje o rozwiązywaniu problemów urządzenia STONITH.*
-## <a name="overview"></a>Omówienie
+**Zastrzeżenie:** *ten przewodnik jest uzyskiwany w wyniku testowanie ustawienia w środowisko Microsoft HANA dużych wystąpień, w którym pomyślnie działa. Ponieważ zespołu zarządzania usługami firmy Microsoft dla wystąpień dużych HANA nie obsługuje systemu operacyjnego, konieczne może być skontaktuj się z SUSE dla dalszego rozwiązywania problemów lub wyjaśnienia dotyczące warstwy systemu operacyjnego. Zespół zarządzania usługi Microsoft Konfigurowanie urządzenia STONITH i w pełni obsługuje i mogą brać udział uzyskać informacje o rozwiązywaniu problemów urządzenia STONITH.*
+## <a name="overview"></a>Przegląd
 Aby skonfigurować wysoką dostępność korzystania z klastra SUSE, musi spełniać następujące wymagania wstępne.
 ### <a name="pre-requisites"></a>Wymagania wstępne
 - Udostępnieniu wystąpień dużych HANA
@@ -32,10 +33,10 @@ Aby skonfigurować wysoką dostępność korzystania z klastra SUSE, musi spełn
 - Duże wystąpień HANA serwery są podłączone do serwera SMT, aby uzyskać poprawek/pakietów
 - System operacyjny ma zainstalowane najnowsze poprawki.
 - Skonfigurowano NTP (serwer czasu)
-- Przeczytane i zrozumiane najnowszej wersji dokumentacji SUSE na Konfigurowanie wysokiej dostępności
+- Przeczytane i zrozumiane najnowszej wersji dokumentacji SUSE w konfiguracji wysokiej dostępności
 
-### <a name="set-up-details"></a>Konfigurowanie szczegółów
-- W tym przewodniku użyliśmy następujące ustawienia:
+### <a name="setup-details"></a>Szczegóły ustawień
+W tym przewodniku są używane następujące ustawienia:
 - System operacyjny: SLES 12 dodatku SP1 dla programu SAP
 - HANA dużych wystąpień: 2xS192 (cztery gniazda, 2 TB)
 - Wersja HANA: HANA 2.0 z dodatkiem SP1
@@ -50,7 +51,7 @@ Po skonfigurowaniu HANA dużych wystąpień HSR zespołu zarządzania usługami 
 - Nazwa klienta (na przykład Microsoft)
 - Identyfikator SID - HANA identyfikatora systemowego (na przykład H11)
 
-Po skonfigurowaniu urządzenia STONITH zespołu zarządzania usługami firmy Microsoft Podaj interwencja nazwa urządzenia i adres IP z magazynu iSCSI, które służy do konfigurowania STONITH skonfigurowany. 
+Po skonfigurowaniu urządzenia STONITH zespołu zarządzania usługami Microsoft umożliwiają interwencja nazwa urządzenia i adres IP z magazynu iSCSI, które służy do konfigurowania ustawień STONITH. 
 
 Aby skonfigurować HA kompleksowemu użyciu STONITH, należy wprowadzić następujące czynności:
 
@@ -64,7 +65,7 @@ Aby skonfigurować HA kompleksowemu użyciu STONITH, należy wprowadzić następ
 8.  Testowanie procesu trybu failover
 
 ## <a name="1---identify-the-sbd-device"></a>1.   Identyfikowanie urządzeń interwencja
-W tej sekcji opisano w sposób określania urządzeń interwencja zestawu się po skonfigurowaniu STONITH zespół zarządzania usługi Microsoft. **Ta sekcja dotyczy tylko istniejący klient**. W przypadku nowego klienta zespół zarządzania usługi Microsoft Podaj interwencja nazwy urządzenia dla Ciebie i możesz pominąć tę sekcję.
+W tej sekcji opisano w sposób określania urządzeń interwencja ustawienia, po skonfigurowaniu STONITH zespół zarządzania usługi Microsoft. **Ta sekcja dotyczy tylko istniejący klient**. W przypadku nowego klienta zespół zarządzania usługi Microsoft Podaj interwencja nazwy urządzenia dla Ciebie i możesz pominąć tę sekcję.
 
 1.1 modyfikowanie */etc/iscsi/initiatorname.isci* do 
 ``` 
@@ -134,12 +135,12 @@ zypper in SAPHanaSR SAPHanaSR-doc
 ![zypperpatternSAPHANASR doc.png](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
 
 ### <a name="32-setting-up-the-cluster"></a>3.2 Konfigurowanie klastra
-3.2.1 można użyć *ha klastra init* polecenie lub Kreator yast2 służy do konfigurowania klastra. W takim przypadku użyliśmy yast2 kreatora. Wykonaj ten krok **tylko w węźle podstawowym**.
+3.2.1 można użyć *ha klastra init* polecenie lub Kreator yast2 służy do konfigurowania klastra. W takim przypadku Kreator yast2 jest używany. Wykonaj ten krok **tylko w węźle podstawowym**.
 
 Wykonaj yast2 > wysokiej dostępności > klastra ![yast formant center.png](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
 ![yast-hawk-install.png](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
 
-Kliknij przycisk **anulować** jak mamy już pakiet halk2 zainstalowany.
+Kliknij przycisk **anulować** ponieważ halk2 pakiet jest już zainstalowany.
 
 ![yast-hawk-continue.png](media/HowToHLI/HASetupWithStonith/yast-hawk-continue.png)
 
@@ -163,7 +164,7 @@ Uwierzytelnianie jest wykonywane przy użyciu adresów IP i wstępnie przygotowa
 Kliknij przycisk **dalej**
 ![yast klastra service.png](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
 
-W przypadku opcji domyślnej rozruch był wyłączony, zmień go na "on", aby rozrusznik jest uruchomiona na rozruchu. Umożliwia wybór oparta na konfiguracji wymagań.
+W przypadku opcji domyślnej rozruch był wyłączony, zmień go na "on", aby rozrusznik jest uruchomiona na rozruchu. Umożliwia wybór zgodnie z wymaganiami konfiguracji.
 Kliknij przycisk **dalej** i Konfiguracja klastra została ukończona.
 
 ## <a name="4---setting-up-the-softdog-watchdog"></a>4.   Konfigurowanie programu alarmowego Softdog
@@ -261,7 +262,7 @@ crm_mon
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7. Konfigurowanie właściwości klastra i zasoby 
 W tej sekcji opisano kroki konfigurowania zasobów klastra.
-W tym przykładzie skonfigurowanie następujących zasobów, pozostałe można skonfigurować (w razie potrzeby), umieszczając odwołanie do przewodnika SUSE HA. Wykonaj w pliku config **jednym z węzłów** tylko. Czy na węzła podstawowego.
+W tym przykładzie, skonfiguruj następujący zasób pozostałe można skonfigurować (w razie potrzeby), umieszczając odwołanie do przewodnika SUSE HA. Wykonaj w pliku config **jednym z węzłów** tylko. Czy na węzła podstawowego.
 
 - Bootstrap klastra
 - STONITH urządzenia
@@ -342,7 +343,7 @@ Teraz, Zatrzymaj usługę rozrusznik na **node2** i nie można za pośrednictwem
 
 
 ## <a name="9-troubleshooting"></a>9. Rozwiązywanie problemów
-W tej sekcji opisano kilka scenariuszy awarii, które mogą wystąpić podczas konfigurowania. Nie może zawsze napotkają tych problemów.
+W tej sekcji opisano kilka scenariuszy awarii, które mogą wystąpić podczas instalacji. Nie może zawsze napotkają tych problemów.
 
 ### <a name="scenario-1-cluster-node-not-online"></a>Scenariusz 1: Węzeł klastra nie w trybie online
 Jeśli dowolny z węzłów nie są wyświetlane w Menedżerze klastra online, możesz je wypróbować, po przełączenia do trybu online.
@@ -369,9 +370,9 @@ Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal
 Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.21,3260] successful.
 ```
 ### <a name="scenario-2-yast2-does-not-show-graphical-view"></a>Scenariusz 2: yast2 nie są wyświetlane widoku graficznego
-Na ekranie graficznego yast2 firma Microsoft użyty do skonfigurowania klastra o wysokiej dostępności w tym dokumencie. Jeśli yast2 nie Otwórz okno z graficznego, jak pokazano i zgłosić błąd Qt, wykonaj następujące czynności w krokach. Jeśli zostanie ona otwarta z graficznego okna, można pominąć kroki.
+Na ekranie graficznego yast2 jest używana do konfigurowania klastra o wysokiej dostępności w tym dokumencie. Jeśli yast2 nie Otwórz okno z graficznego, jak pokazano i zgłosić błąd Qt, wykonaj następujące czynności w krokach. Jeśli zostanie ona otwarta z graficznego okna, można pominąć kroki.
 
-**Błąd**
+**Error**
 
 ![yast2-qt-gui-error.png](media/HowToHLI/HASetupWithStonith/yast2-qt-gui-error.png)
 
@@ -533,8 +534,8 @@ Po poprzednim poprawkę Węzeł2 powinien zostaną dodane do klastra
 
 ![ha klastra sprzężenia fix.png](media/HowToHLI/HASetupWithStonith/ha-cluster-join-fix.png)
 
-## <a name="10-general-documentation"></a>10. Dokumentacja ogólna
-Można znaleźć więcej informacji na temat SUSE HA w następujących artykułach: 
+## <a name="10-general-documentation"></a>10. Ogólna dokumentacja
+Więcej informacji na temat SUSE HA instalacji można znaleźć w następujących artykułach: 
 
 - [SAP HANA SR zoptymalizowana scenariusza](https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf )
 - [Oparty na magazynie ogrodzenia](https://www.suse.com/documentation/sle-ha-2/book_sleha/data/sec_ha_storage_protect_fencing.html)

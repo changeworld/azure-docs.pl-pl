@@ -6,14 +6,15 @@ author: bonova
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: bonova
-ms.openlocfilehash: 4722399525b376e232f2bc7802a570836da79e29
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 92e4180f1efe62d2dae9778f70e25f1bb0273b7f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34649887"
 ---
 # <a name="operating-the-query-store-in-azure-sql-database"></a>Działania w magazynie zapytań w bazie danych Azure SQL
 Magazyn zapytań w usłudze Azure to funkcja bazy danych w pełni zarządzana, nieustannie zbiera i wyświetla szczegółowe informacje historyczne na temat wszystkich zapytań. Temat funkcji magazyn zapytań można traktować jako podobne do Rejestrator danych samolotowy, który znacznie upraszcza wydajność zapytań, zarówno dla chmury Rozwiązywanie problemów z klientami lokalnymi. W tym artykule opisano aspekty określonego systemu operacyjnego magazynu zapytań na platformie Azure. Przy użyciu to wstępnie zebrane dane, można szybkie diagnozowanie i rozwiązywanie problemów z wydajnością i w związku z tym poświęcić więcej czasu na koncentrujących się na swojej działalności. 
@@ -33,8 +34,8 @@ W tej sekcji opisano ustawienia domyślne optymalną konfigurację, które są p
 | MAX_STORAGE_SIZE_MB |Określa limit dla obszaru danych, prowadzące przez Magazyn zapytań w bazie danych klienta |100 |Wymuszane dla nowych baz danych |
 | PARAMETR INTERVAL_LENGTH_MINUTES |Określa rozmiar przedział czasu, podczas którego statystyk zebranych środowiska uruchomieniowego dla planów zapytania są agregowane i utrwalone. Każdy plan aktywnej kwerendzie ma co najwyżej jeden wiersz w danym okresie czasu zdefiniowanego w tej konfiguracji |60 |Wymuszane dla nowych baz danych |
 | PARAMETR STALE_QUERY_THRESHOLD_DAYS |Zasady oparte na czasie oczyszczania, które kontrolują okres przechowywania statystyk utrwalonego środowiska uruchomieniowego i nieaktywne zapytania |30 |Wymuszane dla nowych baz danych i baz danych z poprzedniej domyślne (367) |
-| SIZE_BASED_CLEANUP_MODE |Określa, czy automatyczne oczyszczania ma miejsce, gdy zbliża się do limitu rozmiaru danych w magazynie zapytań |AUTO |Wymuszone dla wszystkich baz danych |
-| QUERY_CAPTURE_MODE |Określa, czy są śledzone wszystkich zapytań czy tylko podzbiór zapytań |AUTO |Wymuszone dla wszystkich baz danych |
+| SIZE_BASED_CLEANUP_MODE |Określa, czy automatyczne oczyszczania ma miejsce, gdy zbliża się do limitu rozmiaru danych w magazynie zapytań |AUTOMATYCZNIE |Wymuszone dla wszystkich baz danych |
+| PARAMETR QUERY_CAPTURE_MODE |Określa, czy są śledzone wszystkich zapytań czy tylko podzbiór zapytań |AUTOMATYCZNIE |Wymuszone dla wszystkich baz danych |
 | FLUSH_INTERVAL_SECONDS |Określa maksymalny okres, przez który przechwycone środowiska uruchomieniowego, które statystyki są przechowywane w pamięci, przed opróżnianie na dysku |900 |Wymuszane dla nowych baz danych |
 |  | | | |
 

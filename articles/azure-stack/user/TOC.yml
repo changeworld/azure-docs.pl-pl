@@ -35,9 +35,9 @@
       href: azure-stack-rest-api-use.md
     - name: Zabezpieczenia i zgodność
       items:
-        - name: Zarządzanie kontrolą dostępu opartą na rolach
+        - name: Korzystanie z kontroli dostępu opartej na rolach
           href: azure-stack-manage-permissions.md
-        - name: Tworzenie jednostek usługi
+        - name: Użyj nazwy główne usług
           href: Azure-stack-create-service-principals.md
     - name: Korzystanie z usług
       items:
@@ -107,7 +107,7 @@
           items:
             - name: Instalowanie programu Azure Stack PowerShell
               href: 'https://docs.microsoft.com/azure/azure-stack/user/azure-stack-powershell-install'
-            - name: Pobieranie narzędzi
+            - name: Pobieranie narzędzia Azure stosu
               href: azure-stack-powershell-download.md
             - name: Konfigurowanie programu PowerShell — użytkownik
               href: azure-stack-powershell-configure-user.md
@@ -128,13 +128,13 @@
                   href: azure-stack-version-profiles-python.md
                 - name: 'Dostawca zasobów interfejsów API, obsługiwane przez profil'
                   href: azure-stack-profiles-azure-resource-manager-versions.md
-        - name: Używanie modułu zasad
+        - name: Użyj modułu zasad stosu Azure
           href: azure-stack-policy-module.md
         - name: Korzystanie z szablonów
           items:
             - name: Omówienie szablonu
               href: azure-stack-arm-templates.md
-            - name: Tworzenie szablonów
+            - name: Zagadnienia dotyczące szablonów
               href: azure-stack-develop-templates.md
             - name: Sprawdzanie szablonów
               href: azure-stack-validate-templates.md

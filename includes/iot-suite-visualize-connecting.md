@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 5eca35141544e8ea451dfc7471a83e3e1e980360
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 5702c6e9c9d75c6cccb82f1c57684ef7b9898c34
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34666028"
 ---
 ## <a name="view-device-telemetry"></a>Wyświetlanie danych telemetrycznych z urządzenia
 
@@ -32,7 +33,7 @@ Można wyświetlić dane telemetryczne, wysyłane z urządzenia **urządzeń** s
 
 ## <a name="act-on-your-device"></a>Działania na urządzeniu
 
-Aby wywołać metody na urządzeniach, należy użyć **urządzeń** strony w zdalnym rozwiązanie monitorowania. Na przykład w przypadku zdalnego rozwiązanie monitorowania **Chłodnica** zaimplementować urządzeń **FirmwareUpdate** metody.
+Aby wywołać metody na urządzeniach, należy użyć **urządzeń** strony w rozwiązaniu monitorowania zdalnego. Na przykład w rozwiązaniu Monitorowanie zdalne **Chłodnica** zaimplementować urządzeń **FirmwareUpdate** metody.
 
 1. Wybierz **urządzeń** można przejść do **urządzeń** strony w rozwiązaniu.
 
@@ -57,4 +58,4 @@ Aby wywołać metody na urządzeniach, należy użyć **urządzeń** strony w zd
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Artykuł [dostosować zdalnego monitorowania akcelerator rozwiązań](../articles/iot-accelerators/iot-accelerators-remote-monitoring-customize.md) opisano niektóre sposoby dostosowania akcelerator rozwiązań.
+Artykuł [dostosować akcelerator rozwiązań monitorowania zdalnego](../articles/iot-accelerators/iot-accelerators-remote-monitoring-customize.md) opisano niektóre sposoby dostosowania akcelerator rozwiązań.

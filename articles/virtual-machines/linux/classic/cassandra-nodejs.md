@@ -1,11 +1,11 @@
 ---
 title: Uruchom klaster Cassandra w systemie Linux na platformie Azure w oprogramowaniu Node.js
-description: "Jak uruchomić Cassandra klastra w systemie Linux w maszynach wirtualnych platformy Azure z poziomu aplikacji Node.js"
+description: Jak uruchomić Cassandra klastra w systemie Linux w maszynach wirtualnych platformy Azure z poziomu aplikacji Node.js
 services: virtual-machines-linux
 documentationcenter: nodejs
 author: craigshoemaker
 manager: routlaw
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 30de1f29-e97d-492f-ae34-41ec83488de0
 ms.service: virtual-machines-linux
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 00e42a00dffd1be37073f10f6ff7bff619fdee85
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 5d800daa2589effe342cb2bf8b1d59d7bfce6d8c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652842"
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>Uruchom klaster Cassandra w systemie Linux na platformie Azure za pomocą języka Node.js
 
@@ -158,9 +159,9 @@ Na ekranie "konfiguracja maszyny wirtualnej" #2, wprowadź następujące informa
 <tr><td> USŁUGI W CHMURZE    </td><td> Utwórz nową usługę w chmurze    </td><td>Usługa w chmurze jest zasoby obliczeniowe kontenera, takich jak maszyny wirtualne</td></tr>
 <tr><td> NAZWA DNS USŁUGI W CHMURZE    </td><td>ubuntu-template.cloudapp.net    </td><td>Nadaj nazwę modułu równoważenia obciążenia o niesprecyzowanym maszyny</td></tr>
 <tr><td> REGION/GRUPY KOLIGACJI/SIECI WIRTUALNEJ </td><td>    Zachodnie stany USA    </td><td> Wybierz region, z której uzyskują dostęp do klastra Cassandra aplikacji sieci web</td></tr>
-<tr><td>KONTO MAGAZYNU </td><td>    Użyj wartości domyślnej    </td><td>Użyj domyślnego konta magazynu lub wstępnie utworzone konto magazynu w określonym regionie</td></tr>
+<tr><td>KONTO MAGAZYNU </td><td>    Używanie wartości domyślnej    </td><td>Użyj domyślnego konta magazynu lub wstępnie utworzone konto magazynu w określonym regionie</td></tr>
 <tr><td>ZESTAW DOSTĘPNOŚCI </td><td>    Brak </td><td>    Pozostaw to pole puste</td></tr>
-<tr><td>PUNKTY KOŃCOWE    </td><td>Użyj wartości domyślnej </td><td>    Użyj domyślnej konfiguracji SSH </td></tr>
+<tr><td>PUNKTY KOŃCOWE    </td><td>Używanie wartości domyślnej </td><td>    Użyj domyślnej konfiguracji SSH </td></tr>
 </table>
 
 Kliknij strzałkę w prawo, pozostaw wartości domyślne na ekranie #3. Kliknij przycisk "Sprawdź", aby ukończyć proces inicjowania obsługi administracyjnej maszyny Wirtualnej. Po kilku minutach maszyny Wirtualnej o nazwie "ubuntu-template" powinna być w stanie "uruchomiona".
@@ -169,7 +170,7 @@ Kliknij strzałkę w prawo, pozostaw wartości domyślne na ekranie #3. Kliknij 
 #### <a name="step-1-upload-tarballs"></a>Krok 1: Przekazywanie tarballs
 Przy użyciu protokołu scp lub pscp, skopiuj pobrane wcześniej oprogramowanie do katalogu ~/downloads w następującym formacie polecenia:
 
-##### <a name="pscp-server-jre-8u5-linux-x64targz-localadminhk-cas-templatecloudappnethomelocaladmindownloadsserver-jre-8u5-linux-x64targz"></a>pscp server-środowiska jre-8u5-linux-x64.tar.gzlocaladmin@hk-cas-template.cloudapp.net:/home/localadmin/downloads/server-jre-8u5-linux-x64.tar.gz
+##### <a name="pscp-server-jre-8u5-linux-x64targz-localadminhk-cas-templatecloudappnethomelocaladmindownloadsserver-jre-8u5-linux-x64targz"></a>pscp server-środowiska jre-8u5-linux-x64.tar.gz localadmin@hk-cas-template.cloudapp.net:/home/localadmin/downloads/server-jre-8u5-linux-x64.tar.gz
 Powtórz powyższe polecenie dla środowiska JRE również podobnie jak w przypadku Cassandra usługi bits.
 
 #### <a name="step-2-prepare-the-directory-structure-and-extract-the-archives"></a>Krok 2: Przygotowanie strukturę katalogów i wyodrębniać archiwum
@@ -279,7 +280,7 @@ Edytuj cassandra.yaml na każdej maszynie Wirtualnej w celu uwzględnienia konfi
 
 <table>
 <tr><th>Nazwa pola   </th><th> Wartość  </th><th>    Uwagi </th></tr>
-<tr><td>cluster_name </td><td>    “CustomerService”    </td><td> Użyj nazwy, która odzwierciedla wdrożenia</td></tr>
+<tr><td>cluster_name </td><td>    "CustomerService"    </td><td> Użyj nazwy, która odzwierciedla wdrożenia</td></tr>
 <tr><td>listen_address    </td><td>[pozostaw to pole puste]    </td><td> Usuń "localhost" </td></tr>
 <tr><td>rpc_addres   </td><td>[pozostaw to pole puste]    </td><td> Usuń "localhost" </td></tr>
 <tr><td>ziarna    </td><td>"10.1.2.4, 10.1.2.6, 10.1.2.8"    </td><td>Lista wszystkich adresów IP, które są oznaczone jako dane.</td></tr>
@@ -337,7 +338,7 @@ Dane i podsieci w sieci Web mogą być chronione przy użyciu grup zabezpieczeń
 <tr><td>hk-c6-west-us    </td><td>dane    </td><td>10.1.2.9    </td><td>hk-c-aset-2    </td><td>DC = stojak WESTUS = szafa3    </td><td>Nie </td></tr>
 <tr><td>hk-c7-west-us    </td><td>dane    </td><td>10.1.2.10    </td><td>hk-c-aset-2    </td><td>DC = stojak WESTUS = rack4    </td><td>Yes</td></tr>
 <tr><td>hk-c8-west-us    </td><td>dane    </td><td>10.1.2.11    </td><td>hk-c-aset-2    </td><td>DC = stojak WESTUS = rack4    </td><td>Nie </td></tr>
-<tr><td>hk-w1-west-us    </td><td>web    </td><td>10.1.1.4    </td><td>hk-w-aset-1    </td><td>                       </td><td>ND</td></tr>
+<tr><td>HK-w1 — zachód us    </td><td>web    </td><td>10.1.1.4    </td><td>hk-w-aset-1    </td><td>                       </td><td>ND</td></tr>
 <tr><td>hk-w2-west-us    </td><td>web    </td><td>10.1.1.5    </td><td>hk-w-aset-1    </td><td>                       </td><td>ND</td></tr>
 </table>
 
@@ -355,7 +356,7 @@ Proces powyżej mogą być wykonywane przy użyciu portalu Azure; Użyj maszynę
         #Tested with Azure Powershell - November 2014
         #This powershell script deployes a number of VMs from an existing image inside an Azure region
         #Import your Azure subscription into the current Powershell session before proceeding
-        #The process: 1. create Azure Storage account, 2. create virtual network, 3.create the VM template, 2. crate a list of VMs from the template
+        #The process: 1. create Azure Storage account, 2. create virtual network, 3.create the VM template, 2. create a list of VMs from the template
 
         #fundamental variables - change these to reflect your subscription
         $country="us"; $region="west"; $vnetName = "your_vnet_name";$storageAccount="your_storage_account"
@@ -458,7 +459,7 @@ Powinien zostać wyświetlony ekran podobny do następujące wyniki:
 
 Przestrzeni kluczy, utworzony w kroku 4 używa SimpleStrategy z replication_factor 3. SimpleStrategy jest zalecane dla pojedynczego wdrożenia Centrum natomiast NetworkTopologyStrategy danych z wielu centrów. Replication_factor 3 zapewnia tolerancji na wypadek awarii węzła.
 
-## <a id="tworegion"></a>Proces w przypadku wdrażania
+## <a id="tworegion"> </a>Proces wdrażania wielu regionu
 Wykorzystanie zakończono wdrażanie jednego regionu i powtórz ten sam proces instalacji drugiego regionu. Klucza różnica między wdrażania jednego lub wielu region jest instalację tunelu sieci VPN na potrzeby komunikacji między regionu; Rozpocznij instalację sieciową, obsługi administracyjnej maszyn wirtualnych i skonfigurować Cassandra.
 
 ### <a name="step-1-create-the-virtual-network-at-the-2nd-region"></a>Krok 1: Utwórz sieć wirtualną w regionie 2
@@ -528,13 +529,13 @@ Utwórz obraz Ubuntu zgodnie z opisem w regionie #1 wdrożenia, wykonując kroki
 | --- | --- | --- | --- | --- | --- |
 | HK-c1-wschód us |dane |10.2.2.4 |hk-c-aset-1 |DC = stojak EASTUS = szafa1 |Yes |
 | HK-c2-wschód us |dane |10.2.2.5 |hk-c-aset-1 |DC = stojak EASTUS = szafa1 |Nie |
-| hk-c3-east-us |dane |10.2.2.6 |hk-c-aset-1 |DC = stojak EASTUS = szafa2 |Yes |
+| HK-c3-wschód us |dane |10.2.2.6 |hk-c-aset-1 |DC = stojak EASTUS = szafa2 |Yes |
 | HK-c5-wschód us |dane |10.2.2.8 |hk-c-aset-2 |DC = stojak EASTUS = szafa3 |Yes |
 | HK-c6-wschód us |dane |10.2.2.9 |hk-c-aset-2 |DC = stojak EASTUS = szafa3 |Nie |
-| hk-c7-east-us |dane |10.2.2.10 |hk-c-aset-2 |DC = stojak EASTUS = rack4 |Yes |
+| HK-c7-wschód us |dane |10.2.2.10 |hk-c-aset-2 |DC = stojak EASTUS = rack4 |Yes |
 | HK-c8-wschód us |dane |10.2.2.11 |hk-c-aset-2 |DC = stojak EASTUS = rack4 |Nie |
-| hk-w1-east-us |web |10.2.1.4 |hk-w-aset-1 |ND |ND |
-| hk-w2-east-us |web |10.2.1.5 |hk-w-aset-1 |ND |ND |
+| HK-w1 — wschód us |web |10.2.1.4 |hk-w-aset-1 |ND |ND |
+| HK-w2 — wschód us |web |10.2.1.5 |hk-w-aset-1 |ND |ND |
 
 Postępuj zgodnie z instrukcjami region #1, ale użyj 10.2.xxx.xxx przestrzeni adresowej.
 
@@ -551,7 +552,7 @@ Zaloguj się do każdej maszyny Wirtualnej i uruchom Cassandra w tle, uruchamiaj
 Już Cassandra została wdrożona do 16 węzłów o 8 węzłów w każdym regionie Azure. Te węzły znajdują się w tym samym klastrze z wspólnej nazwy klastra i konfiguracja węzła inicjatora. Aby przetestować klastra, należy wykonać poniższe czynności:
 
 ### <a name="step-1-get-the-internal-load-balancer-ip-for-both-the-regions-using-powershell"></a>Krok 1: Uzyskiwanie adresu IP usługi równoważenia obciążenia wewnętrznego dla regionów przy użyciu programu PowerShell
-* Get-AzureInternalLoadbalancer -ServiceName "hk-c-svc-west-us"
+* Get-AzureInternalLoadbalancer - ServiceName "hk — c-svc zachód us"
 * Get-AzureInternalLoadbalancer - ServiceName "hk — c-svc wschód us"  
   
     Należy zwrócić uwagę na adresy IP (na przykład zachodnie - 10.1.2.101, wschód - 10.2.2.101) wyświetlane.

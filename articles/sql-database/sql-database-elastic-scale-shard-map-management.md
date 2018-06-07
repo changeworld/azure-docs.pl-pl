@@ -1,19 +1,20 @@
 ---
 title: Skalowania bazy danych Azure SQL | Dokumentacja firmy Microsoft
-description: "Jak używać ShardMapManager, biblioteki klienta elastycznej bazy danych"
+description: Jak używać ShardMapManager, biblioteki klienta elastycznej bazy danych
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: sstein
-ms.openlocfilehash: cf8d4427cddbe6368ac265fe9ecc0f408f7fb1fb
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7e156142a68b30471646ea3a9181ce7d0097e626
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646997"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Skalowanie w poziomie baz danych przy użyciu Menedżera mapy niezależnego fragmentu
 Aby łatwe skalowanie bazy danych SQL Azure, użyj Menedżera map niezależnego fragmentu. Menedżer mapy niezależnego fragmentu jest specjalne bazy danych, która przechowuje Mapowanie globalne informacje o wszystkich odłamków (bazy danych) w zestawie niezależnego fragmentu. Metadane umożliwia aplikacji do nawiązania połączenia z poprawną bazą danych na podstawie wartości z **klucza dzielenia na fragmenty**. Ponadto każdy identyfikator niezależnego fragmentu w zestawie zawiera map, które śledzą dane lokalne niezależnego fragmentu (nazywane **shardlets**). 
@@ -47,12 +48,12 @@ Elastyczne skalowanie obsługuje następujące typy jako klucze dzielenia na fra
 
 | .NET | Java |
 | --- | --- |
-| integer |integer |
-| długa |długa |
+| liczba całkowita |liczba całkowita |
+| dł. |dł. |
 | Identyfikator GUID |Identyfikator UUID |
 | byte[]  |byte[] |
 | datetime | sygnatura czasowa |
-| Zakres czasu | Czas trwania|
+| Zakres czasu | czas trwania|
 | Datetimeoffset |offsetdatetime |
 
 ### <a name="list-and-range-shard-maps"></a>Mapuje niezależnych listy i zakresu

@@ -1,13 +1,13 @@
 ---
 title: Konfigurowanie funkcji ASM Oracle na maszynie wirtualnej platformy Azure w systemie Linux | Dokumentacja firmy Microsoft
-description: "Szybko uzyskać ASM Oracle w górę i w swoim środowisku platformy Azure."
+description: Szybko uzyskać ASM Oracle w górę i w swoim środowisku platformy Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: RicksterCDN
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,15 +15,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/19/2017
 ms.author: rclaus
-ms.openlocfilehash: 0e34a188271a5ac2fb6cb34a088ec3f650be6cab
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: cc75235680eeace5107ef6ac0380e8b7a42974fc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656113"
 ---
-# <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Konfigurowanie funkcji ASM Oracle na maszynie wirtualnej platformy Azure w systemie Linux  
+# <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Skonfiguruj rozwiązanie Oracle ASM na maszynie wirtualnej z systemem Linux na platformie Azure  
 
-Maszyny wirtualne platformy Azure zawierają w pełni konfigurowalne i elastyczne środowiska komputerowego. Ten samouczek obejmuje wdrożenia podstawowej maszyny wirtualnej platformy Azure, połączeniu z instalacji i konfiguracji programu Oracle automatycznego magazyn zarządzania (ASM).  Omawiane kwestie:
+Maszyny wirtualne platformy Azure oferują w pełni konfigurowalne i elastyczne środowiska obliczeniowe. Ten samouczek obejmuje wdrożenia podstawowej maszyny wirtualnej platformy Azure, połączeniu z instalacji i konfiguracji programu Oracle automatycznego magazyn zarządzania (ASM).  Omawiane kwestie:
 
 > [!div class="checklist"]
 > * Utworzyć i nawiązywanie z maszyny Wirtualnej bazy danych programu Oracle
@@ -200,7 +201,7 @@ W tym samouczku jest domyślny użytkownik *siatki* i jest domyślna grupa *asma
    ```
 
 3. Formatuj dysk */dev/sdc* , uruchamiając następujące polecenie i udzielenie odpowiedzi na monity o:
-   - *n*dla nowej partycji
+   - *n* dla nowej partycji
    - *p* dla partycji podstawowej
    - *1* wybierz pierwszej partycji
    - Naciśnij klawisz `enter` dla domyślnego pierwszy cylinder
@@ -572,7 +573,7 @@ Oprogramowanie Oracle bazy danych jest już zainstalowana na obrazie portalu Azu
 
 5. Baza danych została utworzona. Na **Zakończ** strony, istnieje możliwość odblokowania dodatkowych kont do tej bazy danych i zmiany hasła. Jeśli chcesz to zrobić, wybierz **zarządzania hasłami** — w przeciwnym razie kliknij `close`.
 
-## <a name="delete-the-vm"></a>Usuń maszynę Wirtualną
+## <a name="delete-the-vm"></a>Usuwanie maszyny wirtualnej
 
 Pomyślnie skonfigurowano Oracle automatyczne zarządzanie pamięcią masową na obrazie bazy danych Oracle w witrynie Azure Marketplace.  Podczas tej maszyny Wirtualnej nie są już potrzebne, służy następujące polecenie, aby usunąć grupę zasobów, maszyny Wirtualnej i wszystkie powiązane zasoby:
 

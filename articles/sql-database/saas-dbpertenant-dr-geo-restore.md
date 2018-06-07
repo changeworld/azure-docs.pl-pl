@@ -7,14 +7,15 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: saas apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: ayolubek
-ms.openlocfilehash: 8fd25e13f6796b8be99ad3efd425bcde7bca3905
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: fc28622ad6d2569d455f82a30a84c47647baa1e2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34645338"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Użyj geograficzne, aby odzyskać wielodostępnych aplikacji SaaS z kopii zapasowej bazy danych
 
@@ -77,7 +78,7 @@ Skrypty DR używane w tym samouczku są dostępne w [SaaS biletów Wingtip bazy 
 ## <a name="review-the-healthy-state-of-the-application"></a>Sprawdź kondycję aplikacji
 Przed rozpoczęciem procesu odzyskiwania należy przejrzeć normalnego stanu dobrej kondycji aplikacji.
 
-1. W przeglądarce sieci web Otwórz Centrum zdarzeń Wingtip biletów (http://events.wingtip-dpt.&lt; Użytkownik&gt;. trafficmanager.net, Zastąp &lt;użytkownika&gt; z wartością użytkownika danego wdrożenia).
+1. W przeglądarce sieci web Otwórz Centrum zdarzeń Wingtip biletów (http://events.wingtip-dpt.&lt; użytkownika&gt;. trafficmanager.net, Zastąp &lt;użytkownika&gt; z wartością użytkownika danego wdrożenia).
     
    Przewiń w dół strony i zwróć uwagę, nazwę serwera katalogu i lokalizację w stopce. Lokalizacja jest regionu, w którym aplikacja została wdrożona.    
 
@@ -197,7 +198,7 @@ Gdy punkt końcowy aplikacji jest wyłączone w Menedżerze ruchu, że aplikacja
  
     ![Proces odzyskiwania](media/saas-dbpertenant-dr-geo-restore/events-hub-tenants-offline-in-recovery-region.png)    
 
-    * Po otwarciu strony zdarzenia dzierżawy bezpośrednio, gdy dzierżawa jest w trybie offline, zostaje wyświetlona strona dzierżawy powiadomienie w trybie offline. Na przykład, jeśli Hall porozumieniu Contoso jest w trybie offline, spróbuj otworzyć http://events.wingtip-dpt.&lt; Użytkownik&gt;.trafficmanager.net/contosoconcerthall.
+    * Po otwarciu strony zdarzenia dzierżawy bezpośrednio, gdy dzierżawa jest w trybie offline, zostaje wyświetlona strona dzierżawy powiadomienie w trybie offline. Na przykład, jeśli Hall porozumieniu Contoso jest w trybie offline, spróbuj otworzyć http://events.wingtip-dpt.&lt; użytkownika&gt;.trafficmanager.net/contosoconcerthall.
 
     ![Proces odzyskiwania](media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
 
@@ -263,7 +264,7 @@ W tym zadaniu zaktualizuj jednej dzierżawy przywróconej bazy danych. Kopie pro
 
 3. Można wykonać skryptu, wybierz F5.
 
-4. Odśwież stronę zdarzenia Hall porozumieniu Contoso (http://events.wingtip-dpt.&lt; Użytkownik&gt;.trafficmanager.net/contosoconcerthall) i zwróć uwagę, Brak zdarzeń poważnie Strauss.
+4. Odśwież stronę zdarzenia Hall porozumieniu Contoso (http://events.wingtip-dpt.&lt; użytkownika&gt;.trafficmanager.net/contosoconcerthall) i zwróć uwagę, Brak zdarzeń poważnie Strauss.
 
 W tym momencie w samouczku odzyskano aplikacji, która jest teraz uruchomiona w regionie odzyskiwania. Zostały udostępnione nowej dzierżawy w regionie odzyskiwania i modyfikować danych przywróconej dzierżaw.  
 
@@ -327,7 +328,7 @@ Jeśli samouczka zostały wykonane, skrypt natychmiast uaktywnia ponownie klub J
 
     Aby uruchomić skrypt odzyskiwania w nowym oknie programu PowerShell, wybierz F5. Repatriacji może zająć kilka minut i mogą być monitorowane w oknie programu PowerShell.
 
-3. Skrypt jest uruchomiona, Odśwież stronę Centrum zdarzeń (http://events.wingtip-dpt.&lt; Użytkownik&gt;. trafficmanager.net).
+3. Skrypt jest uruchomiona, Odśwież stronę Centrum zdarzeń (http://events.wingtip-dpt.&lt; użytkownika&gt;. trafficmanager.net).
 
     Zwróć uwagę, że wszystkie dzierżaw są online i jest dostępny w trakcie tego procesu.
 

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2018
 ms.author: srrengar
-ms.openlocfilehash: 4fcf8c514cb785dbb0a149e5b3073fc72937b68a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f7fe07500f877cf34626e53361c9c68dd459a5e4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643179"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorowania i diagnostyki dla sieci szkieletowej usług Azure
 
@@ -46,9 +47,6 @@ Sieć szkieletowa usług zapewnia rozbudowany zestaw zdarzeń z pola. Te [zdarze
 Firma Microsoft zaleca się używanie EventStore do szybkiego analizy, a także aby uzyskać pomysłem migawki działania klastra, a jeśli czynności są wykonywane jako. Do zbierania dzienników i zdarzenia generowane przez klaster, ogólnie zalecamy użycie [rozszerzenia diagnostyki Azure](service-fabric-diagnostics-event-aggregation-wad.md). To jest zintegrowany z usługi sieć szkieletowa Analytics, analizy dzienników OMS sieci szkieletowej usług określonego rozwiązania, które zawiera niestandardowy pulpit nawigacyjny do monitorowania klastrów sieci szkieletowej usług i umożliwia zapytań dotyczących zdarzeń, klastra i skonfigurować alerty. Dowiedz się więcej o tym w [analiza zdarzeń z OMS](service-fabric-diagnostics-event-analysis-oms.md). 
 
  Więcej o monitorowaniu klastra na [platformy poziomu generowania zdarzeń i dziennika](service-fabric-diagnostics-event-generation-infra.md).
-
-
- ![Rozwiązanie rz OMS](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-solution.png)
 
 ## <a name="performance-monitoring"></a>Monitorowanie wydajności
 Monitorowanie infrastruktury podstawowej jest kluczowym elementem opis stanu klastra i z wykorzystania zasobów. Pomiaru wydajności systemu zależy od wielu czynników, z których każdy jest zwykle mierzy się za pomocą kluczowych wskaźników wydajności (KPI). Kluczowe wskaźniki wydajności odpowiednich sieci szkieletowej usług mogą być mapowane na metryki, które mogą być zbierane z węzłów w klastrze, jako liczniki wydajności.

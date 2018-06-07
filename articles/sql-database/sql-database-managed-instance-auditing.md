@@ -7,14 +7,15 @@ manager: craigg
 ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: security
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: giladm
-ms.openlocfilehash: 3d5a4ad3f4046dfdfe6eb3f7ddd931ccb240b1a9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 71929be456de4b798da48bb202969deb71e1c371
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34648857"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Wprowadzenie do usługi Azure SQL Database zarządzane wystąpienia Auditing
 
@@ -102,7 +103,7 @@ W poniższej sekcji opisano konfigurację inspekcji na wystąpienie zarządzane.
 
     Jeśli nie zostanie określony, `RETENTION_DAYS` domyślna to 0 (nieograniczone przechowywania).
 
-    Aby uzyskać dodatkowe informacje:
+    Dodatkowe informacje:
     - [Inspekcja różnice między zarządzane wystąpienia, bazy danych SQL Azure i SQL Server](#subheading-3)
     - [TWORZENIE INSPEKCJI SERWERA](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
     - [INSTRUKCJA ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)

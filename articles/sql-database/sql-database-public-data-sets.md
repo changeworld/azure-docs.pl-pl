@@ -6,14 +6,15 @@ author: douglaslMS
 manager: craigg
 ms.custom: reference
 ms.service: sql-database
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: douglasl
-ms.openlocfilehash: d6fd83f2a6648d3ba6c3ef55b832820d62ed5690
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: be93dbff39c47ed1d8834efa3ef6c033525b4bea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34648918"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Zestawy danych publicznych, testowanie i tworzenie prototypów
 
@@ -26,7 +27,7 @@ Przeglądaj tej listy publicznego zestawy danych na dane, które służy do usł
 | [Dane dla instytucji rządowych USA](https://www.census.gov/data.html) | Ponad 190,000 zestawów danych obejmujących rolnictwa, klimatem, odbiorców, ekosystemami edukacji, energii, finance kondycji, lokalnej produkcyjnym morskiego, Oceanu, bezpieczeństwa publicznego i nauki i badania w Stanach Zjednoczonych | Pliki o różnych rozmiarach w różnych formatach, w tym HTML, XML, CSV, JSON, Excel i wielu innych. Dostępne zestawy danych można filtrować według formatu pliku. |
 | [Dane spisu stany USA](https://www.census.gov/data.html) | Dane statystyczne dotyczące populacji Stanów Zjednoczonych | Zestawy danych znajdują się w różnych formatach. |
 | [Dane NASA nauki ziemi.](https://earthdata.nasa.gov/) | Zbiory danych niż 32 000 obejmujące rolnictwa, atmosfery, biosfery, klimatem, cryosphere, wymiary ludzi, hydrosfery, powierzchni ziemi, oceanów, interakcje sun ziemi i więcej. | Zestawy danych znajdują się w różnych formatach. |
-| [Opóźnienia transmitowane linii lotniczych i innych danych transportu](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "The U.S. Stanowych przez Biuro statystyki transportu (BTS) śledzi wydajność na czas krajowych lotach obsługiwane przez nośniki dużych lotniczego (KROPKĄ). Podsumowanie liczby lotach na czas, opóźnione, anulowanych i kierunku pojawi się... w tabelach podsumowania zamieszczony na tej witrynie sieci Web." | Pliki są w formacie CSV. |
+| [Opóźnienia transmitowane linii lotniczych i innych danych transportu](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "USA Stanowych przez Biuro statystyki transportu (BTS) śledzi wydajność na czas krajowych lotach obsługiwane przez nośniki dużych lotniczego (KROPKĄ). Podsumowanie liczby lotach na czas, opóźnione, anulowanych i kierunku pojawi się... w tabelach podsumowania zamieszczony na tej witrynie sieci Web." | Pliki są w formacie CSV. |
 | [Ruch zgonów - US Fatality analizy raportowania systemu (FARS)](http://www.nhtsa.gov/FARS) | "FARS jest krajowego spisu, zapewniając NHTSA, Kongresu, i American publicznego roczne dane dotyczące krytyczny uszkodzenia poniesione w motoryzacyjnego ruchu awarii (Crash)." | "Tworzenie własnych danych fatality Uruchom online przy użyciu systemu FARS zapytania. Lub pobrać wszystkich danych FARS z 1975 do prezentowania z witryny FTP." |
 | [Toksyczne chemicznych danych - warunkowy EPA toksyczności typu (ToxCast™)](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | "EPA toksyczności wysokiej przepustowości najnowszych, publicznie dostępnych danych na tysiącach chemikaliów. Te dane jest generowany przez wysiłków badawczych ToxCast EPA". | Zestawy danych są dostępne w różnych formatach, takich jak arkusze kalkulacyjne, pakiety języka R i pliki bazy danych MySQL. |
 | [Dane chemicznych toksyczne — NIH Tox21 danych żądania 2014](https://tripod.nih.gov/tox21/challenge/) | "Żądanie danych Tox21 2014 ułatwia zrozumienie możliwości chemikaliów i związki testowane za pośrednictwem Toxicology inicjatywy 21 wieku zakłócić biologicznych ścieżek z metod, które mogą skutkować toksycznych służące." | Zestawy danych są dostępne w UŚMIECHY i SDF formatów. Udostępnia dane "Analiza dane o aktywności i struktur chemicznych w kolekcji Tox21 związków ~ 10 000 (Tox21 10K)." |

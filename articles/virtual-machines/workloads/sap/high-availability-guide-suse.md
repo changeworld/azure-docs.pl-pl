@@ -4,7 +4,7 @@ description: Przewodnik wysokiej dostępności dla programu SAP NetWeaver w syst
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -16,11 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: sedusch
-ms.openlocfilehash: f1d2725237d2cf059450ce7e2c1600b24d17f35c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 12efeba68f30aa8723acc32449ae05ffac4c1ac4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34658761"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Wysoka dostępność dla programu SAP NetWeaver na maszynach wirtualnych Azure w systemie SUSE Linux Enterprise Server dla programu SAP aplikacji
 
@@ -96,13 +97,13 @@ Serwer systemu plików NFS, SAP NetWeaver ASCS SAP NetWeaver SCS, SAP NetWeaver 
 * Port sondy
   * Port 620**&lt;nr&gt;**
 * Reguły obciążenia
-  * 32**&lt;nr&gt;** TCP
-  * 36**&lt;nr&gt;** TCP
+  * 32**&lt;nr&gt;**  TCP
+  * 36**&lt;nr&gt;**  TCP
   * 39**&lt;nr&gt;** TCP
-  * 81**&lt;nr&gt;** TCP
-  * 5**&lt;nr&gt;**13 TCP
-  * 5**&lt;nr&gt;**14 TCP
-  * 5**&lt;nr&gt;**16 TCP
+  * 81**&lt;nr&gt;**  TCP
+  * 5**&lt;nr&gt;** 13 TCP
+  * 5**&lt;nr&gt;** 14 TCP
+  * 5**&lt;nr&gt;** 16 TCP
 
 ### <a name="ers"></a>ERS
 
@@ -113,10 +114,10 @@ Serwer systemu plików NFS, SAP NetWeaver ASCS SAP NetWeaver SCS, SAP NetWeaver 
 * Port sondy
   * Port 621**&lt;nr&gt;**
 * Reguły obciążenia
-  * 33**&lt;nr&gt;** TCP
-  * 5**&lt;nr&gt;**13 TCP
-  * 5**&lt;nr&gt;**14 TCP
-  * 5**&lt;nr&gt;**16 TCP
+  * 33**&lt;nr&gt;**  TCP
+  * 5**&lt;nr&gt;** 13 TCP
+  * 5**&lt;nr&gt;** 14 TCP
+  * 5**&lt;nr&gt;** 16 TCP
 
 ## <a name="setting-up-a-highly-available-nfs-server"></a>Konfigurowanie serwera systemu plików NFS o wysokiej dostępności
 
@@ -264,9 +265,9 @@ Następujące elementy są poprzedzane prefiksem albo **[A]** — mające zastos
    # IP address of the load balancer frontend configuration for NFS
    <b>10.0.0.4 nw1-nfs</b>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS
-   <b>10.0.0.11 nw1-ascs</b>
+   <b>10.0.0.7 nw1-ascs</b>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS ERS
-   <b>10.0.0.12 nw1-aers</b>
+   <b>10.0.0.8 nw1-aers</b>
    # IP address of the load balancer frontend configuration for database
    <b>10.0.0.13 nw1-db</b>
    </code></pre>
@@ -349,7 +350,7 @@ Następujące elementy są poprzedzane prefiksem albo **[A]** — mające zastos
    sudo crm node standby <b>nw1-cl-1</b>
    
    sudo crm configure primitive vip_<b>NW1</b>_ASCS IPaddr2 \
-     params ip=<b>10.0.0.11</b> cidr_netmask=<b>24</b> \
+     params ip=<b>10.0.0.7</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
    
    sudo crm configure primitive nc_<b>NW1</b>_ASCS anything \
@@ -379,7 +380,7 @@ Następujące elementy są poprzedzane prefiksem albo **[A]** — mające zastos
 
 1. **[1]**  Zainstalować SAP NetWeaver ASCS  
 
-   Instalowanie programu SAP NetWeaver ASCS jako katalog główny na pierwszym węźle, za pomocą wirtualnej nazwy hosta, który jest mapowany na adres IP frontonu modułu równoważenia obciążenia konfiguracji ASCS, na przykład <b>nw1 ascs</b>, <b>10.0.0.11</b> i wystąpienie numer, który był używany przez sondę modułu równoważenia obciążenia, na przykład <b>00</b>.
+   Instalowanie programu SAP NetWeaver ASCS jako katalog główny na pierwszym węźle, za pomocą wirtualnej nazwy hosta, który jest mapowany na adres IP frontonu modułu równoważenia obciążenia konfiguracji ASCS, na przykład <b>nw1 ascs</b>, <b>10.0.0.7</b> i wystąpienie numer, który był używany przez sondę modułu równoważenia obciążenia, na przykład <b>00</b>.
 
    Można użyć parametru sapinst SAPINST_REMOTE_ACCESS_USER, aby zezwolić użytkownikowi inny niż główny nawiązać sapinst.
 
@@ -401,7 +402,7 @@ Następujące elementy są poprzedzane prefiksem albo **[A]** — mające zastos
    sudo crm node standby <b>nw1-cl-0</b>
    
    sudo crm configure primitive vip_<b>NW1</b>_ERS IPaddr2 \
-     params ip=<b>10.0.0.12</b> cidr_netmask=<b>24</b> \
+     params ip=<b>10.0.0.8</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
    
    sudo crm configure primitive nc_<b>NW1</b>_ERS anything \
@@ -436,7 +437,7 @@ Następujące elementy są poprzedzane prefiksem albo **[A]** — mające zastos
 
 1. **[2]**  Zainstalować SAP NetWeaver Wywołujących  
 
-   Instalowanie programu SAP NetWeaver Wywołujących jako główny na drugi węzeł, za pomocą wirtualnej nazwy hosta, który jest mapowany na adres IP frontonu modułu równoważenia obciążenia konfiguracji Wywołujących, na przykład <b>nw1 aers</b>, <b>10.0.0.12</b> i wystąpienie numer, który był używany przez sondę modułu równoważenia obciążenia, na przykład <b>02</b>.
+   Instalowanie programu SAP NetWeaver Wywołujących jako główny na drugi węzeł, za pomocą wirtualnej nazwy hosta, który jest mapowany na adres IP frontonu modułu równoważenia obciążenia konfiguracji Wywołujących, na przykład <b>nw1 aers</b>, <b>10.0.0.8</b> i wystąpienie numer, który był używany przez sondę modułu równoważenia obciążenia, na przykład <b>02</b>.
 
    Można użyć parametru sapinst SAPINST_REMOTE_ACCESS_USER, aby zezwolić użytkownikowi inny niż główny nawiązać sapinst.
 
@@ -581,14 +582,14 @@ Poniższych kroków założono, zainstalować serwer aplikacji na serwerze innym
    # IP address of the load balancer frontend configuration for NFS
    <b>10.0.0.4 nw1-nfs</b>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS/SCS
-   <b>10.0.0.11 nw1-ascs</b>
+   <b>10.0.0.7 nw1-ascs</b>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ERS
-   <b>10.0.0.12 nw1-aers</b>
+   <b>10.0.0.8 nw1-aers</b>
    # IP address of the load balancer frontend configuration for database
    <b>10.0.0.13 nw1-db</b>
    # IP address of all application servers
-   <b>10.0.0.8 nw1-di-0</b>
-   <b>10.0.0.7 nw1-di-1</b>
+   <b>10.0.0.20 nw1-di-0</b>
+   <b>10.0.0.21 nw1-di-1</b>
    </code></pre>
 
 1. Utwórz katalog sapmnt

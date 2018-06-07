@@ -7,15 +7,16 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
 ms.reviewer: anjangsh; billgib; genemi
-ms.openlocfilehash: ec54e68ee1d0b09b5fb34a2a11c331cb0d478326
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 68057a2ae5925aa16288844759a34592aa7c7573
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644964"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data"></a>Analytics między dzierżawcy przy użyciu wyodrębnione dane
 
@@ -166,7 +167,7 @@ Dane w tabeli Schemat gwiazdy zawiera wszystkie biletu sprzedaży dane potrzebne
 
 Do nawiązania połączenia usługi Power BI i zaimportować widoków, które wcześniej utworzony, wykonaj następujące kroki:
 
-1. Launch Power BI desktop.
+1. Uruchom program Power BI desktop.
 2. Na Wstążce głównej wybierz **Pobierz dane**i wybierz **więcej...** z menu.
 3. W **Pobierz dane** okna, wybierz bazę danych SQL Azure.
 4. W oknie nazwy logowania bazy danych, wprowadź nazwę serwera (katalogu-dpt -&lt;użytkownika&gt;. database.windows.net). Wybierz **importu** dla **tryb łączności danych**, a następnie kliknij przycisk OK. 

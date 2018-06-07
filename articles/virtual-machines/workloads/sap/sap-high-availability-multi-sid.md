@@ -1,13 +1,13 @@
 ---
 title: Tworzenie konfiguracji wielu SID SAP na platformie Azure | Dokumentacja firmy Microsoft
-description: "Przewodnik po konfiguracji wielu SID SAP NetWeaver wysokiej dostępności w systemie Windows maszyny wirtualne"
+description: Przewodnik po konfiguracji wielu SID SAP NetWeaver wysokiej dostępności w systemie Windows maszyny wirtualne
 services: virtual-machines-windows, virtual-network, storage
 documentationcenter: saponazure
 author: goraco
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 0b89b4f8-6d6c-45d7-8d20-fe93430217ca
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b48df78df9f53ac7bf0804f55a8d36a2fe2f86b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 570c427166c07e93d3c8a7d3be079d9007238243
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656826"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>Tworzenie konfiguracji wielu SID SAP NetWeaver
 
@@ -84,12 +85,12 @@ Zakończenie pozioma z dwoma systemami SAP wysokiej dostępności będzie wyglą
 > - Serwery aplikacji SAP, które należą do jednego systemu SAP identyfikatora SID musi mieć własne dedykowanych maszyn wirtualnych.
 
 
-## <a name="prepare-the-infrastructure"></a>Przygotowanie infrastruktury
+## <a name="prepare-the-infrastructure"></a>Przygotowywanie infrastruktury
 Aby przygotować infrastrukturę, można zainstalować dodatkowe wystąpienia SAP ASCS/SCS z następującymi parametrami:
 
 | Nazwa parametru | Wartość |
 | --- | --- |
-| SAP ASCS/SCS IDENTYFIKATORA SID |PR1-lb-ascs |
+| SAP ASCS/SCS SID |PR1-lb-ascs |
 | System DBMS SAP wewnętrznego modułu równoważenia obciążenia | PR5 |
 | Nazwa hosta wirtualnego SAP | cl-pr5-sap |
 | Adres IP hosta wirtualnego SAP ASCS/SCS (adres IP usługi równoważenia obciążenia Azure dodatkowe) | 10.0.0.50 |
@@ -105,7 +106,7 @@ Można zainstalować dodatkowe wystąpienia SAP ASCS/SCS w istniejącym klastrze
 
 | Roli maszyny wirtualnej | Nazwa hosta maszyny wirtualnej | Statyczny adres IP |
 | --- | --- | --- |
-| 1. węzła klastra dla wystąpienia ASCS/SCS |PR1-ascs-0 |10.0.0.10 |
+| 1. węzła klastra dla wystąpienia ASCS/SCS |pr1-ascs-0 |10.0.0.10 |
 | 2 węzła klastra dla wystąpienia ASCS/SCS |PR1-ascs-1 |10.0.0.9 |
 
 ### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance-on-the-dns-server"></a>Utwórz nazwę hosta wirtualnego wystąpienia klastra programu SAP ASCS/SCS na serwerze DNS
@@ -266,7 +267,7 @@ Procedury ogólne wygląda następująco:
 
 10. [Testowanie trybu failover wystąpienia programu SAP ASCS/SCS i replikacji SIOS][sap-ha-guide-10].
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Ograniczenia sieciowe: Usługa Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Moduł równoważenia obciążenia z wieloma wirtualnymi adresami IP na platformie Azure][load-balancer-multivip-overview]

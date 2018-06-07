@@ -4,7 +4,7 @@ description: Dowiedz się, jak wykonać kopię zapasową i przywrócić bazę da
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: v-shiuma
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 5/17/2017
 ms.author: rclaus
-ms.openlocfilehash: e804fd17c3dbe9df9e9dc258e67b8f9192c1f8ad
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e01a347607b2c2ff82d15172756f32c9c6a474a8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656175"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Tworzenie kopii zapasowej i odzyskiwanie bazy danych 12c baz danych programu Oracle na maszynie wirtualnej platformy Azure w systemie Linux
 
@@ -553,7 +554,7 @@ Po przywróceniu maszyny Wirtualnej, należy skonfigurować publicznego adresu I
 
 Kopii zapasowych i odzyskiwania bazy danych 12c baz danych programu Oracle na maszynie Wirtualnej platformy Azure Linux jest zakończone.
 
-## <a name="delete-the-vm"></a>Usuń maszynę Wirtualną
+## <a name="delete-the-vm"></a>Usuwanie maszyny wirtualnej
 
 Gdy maszyna wirtualna nie jest już potrzebny, służy polecenie Usuń grupę zasobów, maszyny Wirtualnej i wszystkie powiązane zasoby:
 

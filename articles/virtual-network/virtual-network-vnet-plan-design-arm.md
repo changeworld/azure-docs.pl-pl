@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: jdial
-ms.openlocfilehash: 83558b9d8d47ac5e6bd15dd54db38125376d11bd
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fd290420c2c755e07f6949750e3a88bcb64682f3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656911"
 ---
 # <a name="plan-virtual-networks"></a>Planowanie sieci wirtualnych
 
@@ -26,7 +27,7 @@ Tworzenie sieci wirtualnej do eksperymentów z jest dość proste, ale prawdopod
 
 ## <a name="naming"></a>Nazewnictwo
 
-Wszystkie zasoby platformy Azure ma nazwy. Nazwa musi być unikatowa w zakresie, które mogą być różne dla każdego typu zasobu. Na przykład nazwa sieci wirtualnej muszą być unikatowe w obrębie [grupy zasobów](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), ale można duplikować, w ramach [subskrypcji](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) lub Azure [region](https://azure.microsoft.com/regions/#services). Definiowanie konwencji nazewnictwa, która służy stale w nazwach zasobów jest przydatne, gdy zarządzanie kilku zasobów sieciowych w czasie. Wskazówki dotyczące zasobów, zobacz [konwencje nazewnictwa](/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Wszystkie zasoby platformy Azure ma nazwy. Nazwa musi być unikatowa w zakresie, które mogą być różne dla każdego typu zasobu. Na przykład nazwa sieci wirtualnej muszą być unikatowe w obrębie [grupy zasobów](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), ale można duplikować, w ramach [subskrypcji](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) lub Azure [region](https://azure.microsoft.com/regions/#services). Definiowanie konwencji nazewnictwa, która służy stale w nazwach zasobów jest przydatne, gdy zarządzanie kilku zasobów sieciowych w czasie. Wskazówki dotyczące zasobów, zobacz [konwencje nazewnictwa](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#networking).
 
 ## <a name="regions"></a>Regiony
 
@@ -38,7 +39,7 @@ Wszystkie zasoby platformy Azure są tworzone w regionie platformy Azure i subsk
 
 ## <a name="subscriptions"></a>Subskrypcje
 
-Jak wiele sieci wirtualnych zgodnie z wymaganiami w ramach każdej subskrypcji można wdrożyć do [limit](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Niektóre organizacje mają różnych subskrypcji dla różnych działów, np. Aby uzyskać więcej informacji i dodatkowe uwagi wokół subskrypcji, zobacz [ładu subskrypcji](../azure-resource-manager/resource-manager-subscription-governance.md?toc=%2fazure%2fvirtual-network%2ftoc.json#define-your-hierarchy).
+Jak wiele sieci wirtualnych zgodnie z wymaganiami w ramach każdej subskrypcji można wdrożyć do [limit](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Niektóre organizacje mają różnych subskrypcji dla różnych działów, np. Aby uzyskać więcej informacji i dodatkowe uwagi wokół subskrypcji, zobacz [ładu subskrypcji](/azure/architecture/cloud-adoption-guide/subscription-governance#define-your-hierarchy).
 
 ## <a name="segmentation"></a>Segmentacja
 
@@ -81,7 +82,7 @@ Możesz wyświetlić przykładowe projekty wykonywania DMZ platformy Azure i Int
 ### <a name="traffic-routing"></a>routing ruchu
 
 Platforma Azure tworzy kilka trasy domyślnej dla ruchu wychodzącego z podsieci. Można zastąpić domyślne Azure routingu, tworząc tabelę tras i kojarzenie go do podsieci. Typowe przyczyny są routingu dla Zastępowanie domyślnego platformy Azure:
-- Ponieważ chcesz, aby ruch między podsieciami przepływ NVA. Aby dowiedzieć się więcej o sposobie [skonfigurować tabele tras, aby wymusić ruchu za pośrednictwem NVA](tutorial-create-route-table-portal.md)
+- Ponieważ chcesz, aby ruch między podsieciami przepływ NVA. Aby dowiedzieć się więcej o sposobie [skonfigurować tabele tras, aby wymusić ruchu za pośrednictwem NVA](tutorial-create-route-table-portal.md).
 - Ponieważ chcesz wymusić wszystkich ruch do Internetu za pośrednictwem NVA lub lokalnymi, za pośrednictwem bramy sieci VPN platformy Azure. Wymuszenie internet ruchu lokalnego do inspekcji i rejestrowanie jest często określane jako wymuszonego tunelowania. Dowiedz się więcej o sposobie konfigurowania [wymuszone tunelowanie](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2Fazure%2Fvirtual-network%2Ftoc.json).
 
 Jeśli musisz wdrożyć niestandardowy routing, zalecane jest zapoznanie się z [routing na platformie Azure](virtual-networks-udr-overview.md).
@@ -92,7 +93,7 @@ Można połączyć sieć wirtualną do innych sieci wirtualnych za pomocą sieci
 
 ### <a name="peering"></a>Komunikacja równorzędna
 
-Korzystając z [sieci wirtualnej komunikacji równorzędnej](virtual-network-peering-overview.md), sieci wirtualne mogą być w tej samej lub różnych, obsługiwane regiony platformy Azure. Sieci wirtualne można w tym samym lub różnych subskrypcji platformy Azure, tak długo, jak obie subskrypcje są przypisane do tej samej dzierżawy usługi Azure Active Directory. Przed utworzeniem komunikacji równorzędnej, zalecane jest, zapoznaj się ze wszystkimi komunikacji równorzędnej [wymagań i ograniczeń](virtual-network-manage-peering.md#requirements-and-constraints). Przepustowość między zasobami w sieciach wirtualnych połączyć za pomocą jest taka sama, jak gdyby zasoby w tej samej sieci wirtualnej.
+Korzystając z [sieci wirtualnej komunikacji równorzędnej](virtual-network-peering-overview.md), sieci wirtualne mogą być w tej samej lub różnych, obsługiwane regiony platformy Azure. Sieci wirtualne można w tym samym lub różnych subskrypcji platformy Azure, tak długo, jak obie subskrypcje są przypisane do tej samej dzierżawy usługi Azure Active Directory. Przed utworzeniem komunikacji równorzędnej, zalecane jest, zapoznaj się ze wszystkimi komunikacji równorzędnej [wymagań i ograniczeń](virtual-network-manage-peering.md#requirements-and-constraints). Przepustowość między zasobami w sieciach wirtualnych połączyć za pomocą w w tym samym regionie jest taka sama, jak gdyby zasoby w tej samej sieci wirtualnej.
 
 ### <a name="vpn-gateway"></a>Brama sieci VPN
 
@@ -102,14 +103,18 @@ Możesz połączyć ze sobą równorzędna i bramy sieci VPN, aby utworzyć [gwi
 
 ### <a name="name-resolution"></a>Rozpoznawanie nazw
 
-Zasoby w jednej sieci wirtualnej nie można rozpoznać nazwy zasobów w peered sieci wirtualnej przy użyciu platformy Azure [wbudowanych DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md). Rozpoznawanie nazw w sieci wirtualnej peered [wdrożenia serwera DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server), lub użyj usługi Azure DNS [domenach prywatnych](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Rozpoznawanie nazw między zasobami w sieci wirtualnej i sieci lokalnej również wymaga wdrożenia serwera DNS.
+Zasoby w jednej sieci wirtualnej nie można rozpoznać nazwy zasobów w sieci wirtualnej peered przy użyciu platformy Azure [wbudowanych DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md). Rozpoznawanie nazw w sieci wirtualnej peered [wdrożenia serwera DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server), lub użyj usługi Azure DNS [domenach prywatnych](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Rozpoznawanie nazw między zasobami w sieci wirtualnej i sieci lokalnej również wymaga wdrożenia serwera DNS.
 
 ## <a name="permissions"></a>Uprawnienia
 
-Korzysta z usługi Azure [kontrola dostępu oparta na rolach](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) do zasobów. Uprawnienia są przypisane do [zakres](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-hierarchy-and-access-inheritance) w następujących hierarchii: subskrypcji, grupy zarządzania, grupy zasobów i pojedynczego zasobu. Aby dowiedzieć się więcej na temat hierarchii, zobacz [organizowania zasobów](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Aby pracować z sieci wirtualnych platformy Azure i wszystkie ich powiązanych możliwości, takich jak komunikacji równorzędnej, grup zabezpieczeń sieci punktów końcowych usługi i tabele tras, członków organizacji można przypisać do wbudowanej [właściciela](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [Współautora](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor), lub [współautora sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) ról i następnie przypisać rolę do odpowiedniego zakresu. Jeśli chcesz przypisać uprawnienia określone dla podzbioru funkcji sieci wirtualnej, Utwórz [niestandardowej roli zabezpieczeń](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) i przypisz określonych uprawnień wymaganych do [sieci wirtualnych](manage-virtual-network.md#permissions), [ podsieci i punktów końcowych usługi](virtual-network-manage-subnet.md#permissions), [interfejsy sieciowe](virtual-network-network-interface.md), [równorzędna](virtual-network-manage-peering.md#permissions), [grup zabezpieczeń sieci i aplikacji](manage-network-security-group.md#permissions), lub [tabel tras](manage-route-table.md#permissions) do roli.
+Korzysta z usługi Azure [kontrola dostępu oparta na rolach](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) do zasobów. Uprawnienia są przypisane do [zakres](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) w następujących hierarchii: subskrypcji, grupy zarządzania, grupy zasobów i pojedynczego zasobu. Aby dowiedzieć się więcej na temat hierarchii, zobacz [organizowania zasobów](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Aby pracować z sieci wirtualnych platformy Azure i wszystkie ich powiązanych możliwości, takich jak komunikacji równorzędnej, grup zabezpieczeń sieci punktów końcowych usługi i tabele tras, członków organizacji można przypisać do wbudowanej [właściciela](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [Współautora](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor), lub [współautora sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) ról i następnie przypisać rolę do odpowiedniego zakresu. Jeśli chcesz przypisać uprawnienia określone dla podzbioru funkcji sieci wirtualnej, Utwórz [niestandardowej roli zabezpieczeń](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) i przypisz określonych uprawnień wymaganych do [sieci wirtualnych](manage-virtual-network.md#permissions), [ podsieci i punktów końcowych usługi](virtual-network-manage-subnet.md#permissions), [interfejsy sieciowe](virtual-network-network-interface.md#permissions), [równorzędna](virtual-network-manage-peering.md#permissions), [grup zabezpieczeń sieci i aplikacji](manage-network-security-group.md#permissions), lub [tabel tras](manage-route-table.md#permissions) do roli.
 
 ## <a name="policy"></a>Zasady
 
-Zasady usługi Azure umożliwia tworzenia, przypisywania i definicje zasad zarządzania. Definicje zasad wymusić różne zasady i wpływ nad zasobami, więc zasoby pozostają zgodne z standardów organizacji i umowy dotyczącej poziomu usług. Zasady usługi Azure uruchomienie ocenę zasobów, wyszukiwanie zasobów, które nie są zgodne z definicje zasad, do których masz. Na przykład może mieć zasady, które umożliwia tworzenie sieci wirtualnych w grupie określonego zasobu. Inne zasady może być wymagane każdej podsieci jest grupa zabezpieczeń sieci skojarzonych z nim. Zasady są oceniane oddzielnie podczas tworzenia i aktualizowania zasobów.
+Zasady usługi Azure umożliwia tworzenia, przypisywania i definicje zasad zarządzania. Definicje zasad wymuszania reguł różnych nad zasobami, więc zasoby pozostają zgodne z standardów organizacji i umowy dotyczącej poziomu usług. Zasady usługi Azure uruchomienie ocenę zasobów, wyszukiwanie zasobów, które nie są zgodne z definicje zasad, do których masz. Na przykład można zdefiniować i stosowanie zasad, który umożliwia tworzenie sieci wirtualnych w określonej grupy zasobów lub regionu. Inne zasady można wymagane w każdej podsieci jest grupa zabezpieczeń sieci skojarzonych z nim. Zasady są oceniane oddzielnie podczas tworzenia i aktualizowania zasobów.
 
 Zasady są stosowane do następujących hierarchii: subskrypcji, grupy zarządzania i grupy zasobów. Dowiedz się więcej o [Azure zasad](../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub wdrożyć niektóre sieci wirtualnej [szablonu zasad](policy-samples.md) próbek.
+
+## <a name="next-steps"></a>Kolejne kroki
+
+Więcej informacji na temat wszystkich zadań, ustawienia i opcje dla [sieci wirtualnej](manage-virtual-network.md), [podsieci i usługi punktu końcowego](virtual-network-manage-subnet.md), [interfejsu sieciowego](virtual-network-network-interface.md), [komunikacji równorzędnej](virtual-network-manage-peering.md), [grupy zabezpieczeń sieci i aplikacji](manage-network-security-group.md), lub [tabeli tras](manage-route-table.md).

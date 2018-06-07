@@ -8,14 +8,15 @@ ms.reviewer: carlrab
 manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: 5b8a2ec7e0401ac239acdefdd77a13b522f73960
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8f666bc352dc1706da4812590f85adc7695e2f13
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647666"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migracja wystąpienia programu SQL Server do wystąpienia zarządzane bazy danych SQL Azure
 
@@ -79,7 +80,7 @@ Zarządzane wystąpienie obsługuje następujące opcje migracji bazy danych (ob
 - Natywny RESTORE z adresu URL - korzysta natywnych kopii zapasowych z programu SQL Server i wymaga Przestój
 - Przeprowadzić migrację za pomocą pliku pliku BACPAC — używa pliku BACPAC pliku z serwera SQL lub bazy danych SQL i wymaga Przestój
 
-### <a name="azure-database-migration-service"></a>Usługa migracji bazy danych platformy Azure
+### <a name="azure-database-migration-service"></a>Azure Database Migration Service
 
 [Azure migracji usługi BAZĘ](../dms/dms-overview.md) to w pełni zarządzana usługa zaprojektowana w celu umożliwienia bezproblemowego migracji z wielu źródeł bazy danych do platformy Azure danych z minimalnym czasem przestojów. Ta usługa upraszcza zadania wymagane do przenoszenia istniejącego innych firm i baz danych programu SQL Server na platformie Azure. Opcje wdrażania w publicznej wersji zapoznawczej obejmują usługi Azure SQL Database, zarządzane wystąpienia i programu SQL Server w maszynie wirtualnej platformy Azure. Usługa DMS jest zalecaną metodą migracji obciążeń przedsiębiorstwa. 
 

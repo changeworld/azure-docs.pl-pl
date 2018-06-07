@@ -7,14 +7,15 @@ author: MightyPen
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 84e6f2303bcfd6a2c91f29e9e9afdc2b84f990ca
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 95d4fc1886e16785b6de8f3a395b218b66d193ff
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34645365"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Wdrażanie i Eksploruj wielodostępnych aplikacji SaaS, który korzysta ze wzorca bazy danych na dzierżawcy z bazy danych SQL
 
@@ -108,7 +109,7 @@ Wewnętrznie w aplikacji, każdy dzierżawca pobiera wdrożonych w puli elastycz
 
 Centralnego **Centrum zdarzeń** strona zawiera listę łączy do dzierżawców w danym wdrożeniu.
 
-1. Użyj adresu URL, aby otworzyć Centrum zdarzeń w przeglądarce sieci web: http://events.wingtip-dpt.&lt; Użytkownik&gt;. trafficmanager.net. SUBSTITUTE &lt;użytkownika&gt; o wartości użytkownika w danym wdrożeniu.
+1. Użyj adresu URL, aby otworzyć Centrum zdarzeń w przeglądarce sieci web: http://events.wingtip-dpt.&lt; użytkownika&gt;. trafficmanager.net. SUBSTITUTE &lt;użytkownika&gt; o wartości użytkownika w danym wdrożeniu.
 
     ![Centrum zdarzeń](media/saas-dbpertenant-get-started-deploy/events-hub.png)
 
@@ -120,7 +121,7 @@ Centralnego **Centrum zdarzeń** strona zawiera listę łączy do dzierżawców 
 
 Aplikacja Wingtip używa [ *usługi Azure Traffic Manager* ](../traffic-manager/traffic-manager-overview.md) Aby kontrolować dystrybucję żądań przychodzących. Adres URL strony zdarzenia dostępu do określonych dzierżawcy używany następujący format:
 
-- http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/fabrikamjazzclub
+- http://events.wingtip-dpt.&lt; użytkownika&gt;.trafficmanager.net/fabrikamjazzclub
 
     W poniższej tabeli opisano części poprzedniego formatu.
 
@@ -234,7 +235,7 @@ Teraz, gdy rozpoczęciu uruchamiania obciążenia kolekcję dzierżawców przyjr
 
 Po *LoadGenerator.ps1* działa na kilka minut, za mało danych powinny być dostępne rozpocząć wyszukiwanie informacji niektóre możliwości monitorowania. Te możliwości są wbudowane w pule i baz danych.
 
-Przejdź do serwera **tenants1-dpt -&lt;użytkownika&gt;**i wybierz **Pool1** do wyświetlania wykorzystania zasobów w puli. Na poniższych wykresach generator obciążenia uruchomione na godzinę.
+Przejdź do serwera **tenants1-dpt -&lt;użytkownika&gt;** i wybierz **Pool1** do wyświetlania wykorzystania zasobów w puli. Na poniższych wykresach generator obciążenia uruchomione na godzinę.
 
    ![Monitor puli](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 

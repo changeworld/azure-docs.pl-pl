@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/27/2018
+ms.date: 05/29/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 20bcb822ff39b9587a479fd6cc43b7daa9b83627
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 807af10c0655d9d1728a80a47d1f8f9c2a16fb84
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34654287"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalowanie sterowników NVIDIA GPU na maszynach wirtualnych N-series systemem Linux
 
@@ -30,7 +31,7 @@ Dane techniczne, wielkości magazynu i dysku szczegóły wirtualna N-series, zob
 
 [!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
 
-## <a name="install-cuda-drivers-for-nc-ncv2-ncv3-and-nd-series-vms"></a>Zainstaluj sterowniki CUDA dla NC, NCv2 NCv3 i ND serii maszyn wirtualnych
+## <a name="install-cuda-drivers-on-n-series-vms"></a>Zainstaluj sterowniki CUDA na maszynach wirtualnych serii N
 
 Poniżej przedstawiono kroki, aby zainstalować sterowniki CUDA z zestawu narzędzi CUDA NVIDIA na maszynach wirtualnych N serii. 
 
@@ -155,7 +156,7 @@ Jeśli sterownik jest zainstalowany, pojawi się dane wyjściowe podobne do nast
 
 ## <a name="rdma-network-connectivity"></a>Połączenie sieciowe RDMA
 
-Połączenie sieciowe RDMA można włączyć na maszynach wirtualnych z funkcją RDMA N-series, takie jak NC24r wdrażane w tym samym zestawie dostępności lub zestaw skali maszyny Wirtualnej. Sieć RDMA obsługuje ruch interfejsu Message (Passing) dla aplikacji działających z Intel MPI 5.x lub nowszej wersji. Wykonaj dodatkowe wymagania:
+Połączenie sieciowe RDMA można włączyć dla z funkcją RDMA N serii maszyn wirtualnych, takie jak NC24r wdrożone w tym samym zestawie dostępności lub w grupie pojedynczego umieszczania w zestawie skalowania maszyn wirtualnych. Sieć RDMA obsługuje ruch interfejsu Message (Passing) dla aplikacji działających z Intel MPI 5.x lub nowszej wersji. Wykonaj dodatkowe wymagania:
 
 ### <a name="distributions"></a>Dystrybucje
 
@@ -167,7 +168,7 @@ Wdrożenie funkcją RDMA N serii maszyn wirtualnych z jednego z obrazów w porta
 
 * **Na podstawie centOS 7.4 HPC** -sterowniki RDMA i Intel MPI 5.1 są zainstalowane na maszynie Wirtualnej.
 
-## <a name="install-grid-drivers-for-nv-series-vms"></a>Zainstaluj sterowniki siatki dla maszyn wirtualnych z wirtualizacją sieci serii
+## <a name="install-grid-drivers-on-nv-series-vms"></a>Zainstaluj sterowniki siatki na maszynach wirtualnych z wirtualizacją sieci serii
 
 Aby zainstalować sterowniki NVIDIA siatki na maszynach wirtualnych z wirtualizacją sieci serii, utworzyć połączenie SSH na każdej maszynie Wirtualnej i wykonaj procedurę dystrybucji systemu Linux. 
 
@@ -330,7 +331,7 @@ BUSID=$((16#`/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 |
 if grep -Fxq "${BUSID}" /etc/X11/XF86Config; then     echo "BUSID is matching"; else   echo "BUSID changed to ${BUSID}" && sed -i '/BusID/c\    BusID          \"PCI:0@'${BUSID}':0:0:0\"' /etc/X11/XF86Config; fi
 ```
 
-Następnie należy utworzyć wpis dla skryptu upate w `/etc/rc.d/rc3.d` , skrypt zostanie wywołany jako główny na rozruchu.
+Następnie należy utworzyć wpis dla skryptu aktualizacji w `/etc/rc.d/rc3.d` , skrypt zostanie wywołany jako główny na rozruchu.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 

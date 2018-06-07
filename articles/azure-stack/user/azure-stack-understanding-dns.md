@@ -6,19 +6,20 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 60f5ac85-be19-49ac-a7c1-f290d682b5de
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/15/2018
+ms.date: 05/21/2018
 ms.author: mabrigg
-ms.openlocfilehash: df9c22877eeac381d936f2fb86f5720c9cc9c930
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.reviewer: scottnap
+ms.openlocfilehash: 9123160f42adea57c28dff265bd5b5dbbcbb7918
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724262"
 ---
 # <a name="introducing-idns-for-azure-stack"></a>Introducing Azure stosu międzynarodowych nazw domen.
 
@@ -30,9 +31,9 @@ międzynarodowych nazw domen jest funkcją sieci stosu Azure, która umożliwia 
 
 Z międzynarodowych nazw domen w stosie Azure bez konieczności określania niestandardowych wpisów serwera DNS można uzyskać następujące możliwości:
 
-* Udostępnione usługi rozpoznawania nazw DNS dla obciążeń dzierżawców.
-* Autorytatywny usługi DNS dla rozpoznawania nazw i rejestrację DNS w sieci wirtualnej dzierżawcy.
-* Usługa DNS cykliczne do rozpoznawania nazw internetowych dzierżawy maszyn wirtualnych. Dzierżawcy nie są już potrzebne określić niestandardowe wpisy DNS do rozpoznawania nazw internetowych (na przykład www.bing.com.)
+- Udostępnione usługi rozpoznawania nazw DNS dla obciążeń dzierżawców.
+- Autorytatywny usługi DNS dla rozpoznawania nazw i rejestrację DNS w sieci wirtualnej dzierżawcy.
+- Usługa DNS cykliczne do rozpoznawania nazw internetowych dzierżawy maszyn wirtualnych. Dzierżawcy nie są już potrzebne określić niestandardowe wpisy DNS do rozpoznawania nazw internetowych (na przykład www.bing.com.)
 
 Nadal można przełączyć własne DNS i używać niestandardowych serwerów DNS. Jednak przy użyciu międzynarodowych nazw domen, można rozpoznawania nazw DNS w Internecie i nawiązać połączenia z innych maszyn wirtualnych w tej samej sieci wirtualnej, nie trzeba tworzyć niestandardowe wpisy DNS.
 
@@ -48,10 +49,10 @@ Jak pokazano na poprzedniej ilustracji, Azure utworzy rekord "A" w systemie DNS 
 
 Stos Azure obsługuje tylko międzynarodowych nazw domen rejestracji nazwy wewnętrznej, więc nie można wykonać następujące czynności:
 
-* Utwórz rekord DNS w istniejącej hostowanej strefy DNS (na przykład local.azurestack.external.)
-* Tworzenie strefy DNS (np. Contoso.com).
-* Utwórz rekord w obszarze własne niestandardowe strefy DNS.
-* Obsługuje zakupów nazw domen.
+- Utwórz rekord DNS w istniejącej hostowanej strefy DNS (na przykład local.azurestack.external.)
+- Tworzenie strefy DNS (np. Contoso.com).
+- Utwórz rekord w obszarze własne niestandardowe strefy DNS.
+- Obsługuje zakupów nazw domen.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

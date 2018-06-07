@@ -1,23 +1,19 @@
 ---
-title: "Podczas wywoływania operacji interfejsu API REST usług magazynu Azure, włącznie z uwierzytelnianiem | Dokumentacja firmy Microsoft"
-description: "Podczas wywoływania operacji interfejsu API REST usług magazynu Azure, włącznie z uwierzytelnianiem"
+title: Podczas wywoływania operacji interfejsu API REST usług magazynu Azure, włącznie z uwierzytelnianiem | Dokumentacja firmy Microsoft
+description: Podczas wywoływania operacji interfejsu API REST usług magazynu Azure, włącznie z uwierzytelnianiem
 services: storage
-documentationcenter: na
-author: robinsh
-manager: timlt
-ms.assetid: f4704f58-abc6-4f89-8b6d-1b1659746f5a
+author: tamram
+manager: twooley
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 11/27/2017
-ms.author: robinsh
-ms.openlocfilehash: 521487c3ed38f191308e14e4d542358438945556
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.date: 05/22/2018
+ms.author: tamram
+ms.openlocfilehash: 6009ebd18eb089b21c98d6f7d9f49044a8d96098
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650455"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Korzystanie z interfejsu API REST usługi Azure Storage
 
@@ -48,19 +44,17 @@ git clone https://github.com/Azure-Samples/storage-dotnet-rest-api-with-auth.git
 
 To polecenie klonuje repozytorium do lokalnego folderu git. Aby otworzyć rozwiązanie programu Visual Studio, wyszukaj storage-dotnet-rest-api-with-auth folder, otwórz go, a następnie kliknij dwukrotnie na StorageRestApiAuth.sln. 
 
-## <a name="why-do-i-need-to-know-rest"></a>Dlaczego należy znać REST
-
-Za pomocą REST jest przydatne umiejętności. Zespół produktu Azure często udostępnia nowe funkcje. Wiele razy, nowe funkcje są dostępne za pośrednictwem interfejsu REST, ale nie ma jeszcze udostępniane za pośrednictwem **wszystkie** biblioteki klienta magazynu lub interfejsu użytkownika (na przykład Azure portal). Zawsze należy używać najnowszej i najlepszej uczenia REST jest wymagane. Ponadto jeśli chcesz zapisać biblioteki do interakcji z usługą Azure Storage lub chcesz uzyskać dostępu do usługi Azure Storage z języka programowania, który nie ma zestawu SDK lub magazynu biblioteki klienta, można użyć interfejsu API REST.
-
 ## <a name="what-is-rest"></a>Co to jest REST?
 
 Oznacza, że REST *representational transferze*. Dla określonej definicji, zapoznaj się z [Wikipedia](http://en.wikipedia.org/wiki/Representational_state_transfer).
 
 Zasadniczo REST jest architekturę służy do wywoływania interfejsów API lub wprowadzeniem do wywołania interfejsów API. Nie zależy od działania wykonywane na każdej stronie, a tym, jakie inne oprogramowanie jest używany przy wysyłaniu lub odbieraniu pozostałe wywołania. Można napisać aplikację, która działa na komputerze Mac, Windows, Linux, telefonów z systemem Android lub tabletu, iPhone, iPod lub witryny sieci web i używać tego samego interfejsu API REST dla wszystkich tych platform. Dane mogą być przekazywane w i/lub wychodzących po wywołaniu interfejsu API REST. Interfejs API REST nie zależy od platformy jest nazywana — ważne jest przekazane w żądaniu informacje i dane zawarte w odpowiedzi.
 
-## <a name="heres-the-plan"></a>Oto planu
+Za pomocą REST jest przydatne umiejętności. Zespół produktu Azure często udostępnia nowe funkcje. Wiele razy, nowe funkcje są dostępne za pośrednictwem interfejsu REST, ale nie ma jeszcze udostępniane za pośrednictwem **wszystkie** biblioteki klienta magazynu lub interfejsu użytkownika (na przykład Azure portal). Zawsze należy używać najnowszej i najlepszej uczenia REST jest wymagane. Ponadto jeśli chcesz zapisać biblioteki do interakcji z usługą Azure Storage lub chcesz uzyskać dostępu do usługi Azure Storage z języka programowania, który nie ma zestawu SDK lub magazynu biblioteki klienta, można użyć interfejsu API REST.
 
-Przykładowy projekt zawiera kontenery na koncie magazynu. Po zrozumieniu sposobu informacji w dokumentacji interfejsu API REST są powiązane z rzeczywistego kodu, inne wywołania REST są łatwiejsze do ustalenia. 
+## <a name="about-the-sample-application"></a>O przykładowej aplikacji
+
+Przykładowa aplikacja Wyświetla kontenery na koncie magazynu. Po zrozumieniu sposobu informacji w dokumentacji interfejsu API REST są powiązane z rzeczywistego kodu, inne wywołania REST są łatwiejsze do ustalenia. 
 
 Jeśli przyjrzymy się [interfejsu API REST usługi Blob](/rest/api/storageservices/fileservices/Blob-Service-REST-API), zobacz wszystkie operacje można wykonywać na magazynu obiektów blob. Biblioteki klienta magazynu są otoki wokół interfejsów API REST-one ułatwiają możesz uzyskać dostęp do magazynu bez bezpośrednio za pomocą interfejsów API REST. Ale jak wspomniano powyżej, czasami chce zamiast biblioteki klienta magazynu za pomocą interfejsu API REST.
 
@@ -70,7 +64,7 @@ Przyjrzyjmy się w dokumentacji interfejsu API REST dla strony [ListContainers](
 
 **Metoda żądania**: GET. To polecenie jest metodę HTTP, który został określony jako właściwość obiektu żądania. Inne wartości dla tego zlecenia to HEAD, PUT i DELETE, w zależności od wywołujesz interfejs API.
 
-**Identyfikator URI żądania**: to jest tworzona na podstawie końcowego konta magazynu obiektów blob https://myaccount.blob.core.windows.net/?comp=list `http://myaccount.blob.core.windows.net` i ciągu zasobu `/?comp=list`.
+**Identyfikator URI żądania**: https://myaccount.blob.core.windows.net/?comp=list to jest tworzona na podstawie końcowego konta magazynu obiektów blob `http://myaccount.blob.core.windows.net` i ciągu zasobu `/?comp=list`.
 
 [Parametry identyfikatora URI](/rest/api/storageservices/fileservices/List-Containers2#uri-parameters): istnieją dodatkowe kryteria wyszukiwania można używać podczas wywoływania ListContainers. Kilka te parametry są *limitu czasu* dla wywołania (w sekundach) i *prefiks*, które jest używane do filtrowania.
 
@@ -141,7 +135,7 @@ Dodaj nagłówki żądania x-ms-date i x-ms-version. To miejsce w kodzie jest ta
     // Add the request headers for x-ms-date and x-ms-version.
     DateTime now = DateTime.UtcNow;
     httpRequestMessage.Headers.Add("x-ms-date", now.ToString("R", CultureInfo.InvariantCulture));
-    httpRequestMessage.Headers.Add("x-ms-version", "2017-04-17");
+    httpRequestMessage.Headers.Add("x-ms-version", "2017-07-29");
     // If you need any additional headers, add them here before creating
     //   the authorization header. 
 ```
@@ -205,7 +199,7 @@ HTTP/1.1 200 OK
 Content-Type: application/xml
 Server: Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
 x-ms-request-id: 3e889876-001e-0039-6a3a-5f4396000000
-x-ms-version: 04-17
+x-ms-version: 2017-07-29
 Date: Fri, 17 Nov 2017 00:23:42 GMT
 Content-Length: 1511
 ```
@@ -271,6 +265,9 @@ Teraz, że rozumiesz, jak utworzyć żądanie, wywołania tej usługi i przeanal
 
 ## <a name="creating-the-authorization-header"></a>Tworzenie nagłówek autoryzacji
 
+> [!TIP]
+> Usługa Azure Storage obsługuje teraz integracji usługi Azure Active Directory (Azure AD) dla usług obiektów Blob i kolejek (wersja zapoznawcza). Usługi Azure AD, oferuje znacznie prostsze środowisko autoryzacji żądania do usługi Azure Storage. Aby uzyskać więcej informacji na używanie programu Azure AD do autoryzacji operacje REST, zobacz [uwierzytelniania w usłudze Azure Active Directory (wersja zapoznawcza)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory). Omówienie integracji z usługą Azure AD z usługą Azure Storage, zobacz [uwierzytelniania dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza)](storage-auth-aad.md).
+
 Brak artykuł opisujący koncepcyjnie (Brak kodu) jak wykonać [uwierzytelniania dla usług magazynu Azure](/rest/api/storageservices/fileservices/Authentication-for-the-Azure-Storage-Services).
 Załóżmy przetwarzania tego artykułu, aby dokładnie są potrzebne i wyświetlany jest kod.
 
@@ -312,7 +309,7 @@ Zacznijmy tych dwóch pól postaci kanonicznej, ponieważ są one wymagane do ut
 Aby utworzyć tę wartość, pobrać nagłówki, które rozpoczynać się od "x - ms-" i sortowanie je, a następnie formatują ciąg `[key:value\n]` wystąpień połączone w jeden ciąg. Na przykład postaci kanonicznej nagłówki wyglądać następująco: 
 
 ```
-x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-04-17\n
+x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
 ```
 
 Oto kod pozwala utworzyć te dane wyjściowe:
@@ -417,7 +414,7 @@ internal static AuthenticationHeaderValue GetAuthorizationHeader(
 Po uruchomieniu tego kodu MessageSignature wynikowy wygląda następująco:
 
 ```
-GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 01:07:37 GMT\nx-ms-version:2017-04-17\n/contosorest/\ncomp:list
+GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 01:07:37 GMT\nx-ms-version:2017-07-29\n/contosorest/\ncomp:list
 ```
 
 Oto końcowej dla AuthorizationHeader:
@@ -463,7 +460,7 @@ Po uruchomieniu tego przykładu, można uzyskać wyniki podobne do poniższych:
 **Nagłówki postaci kanonicznej:**
 
 ```
-x-ms-date:Fri, 17 Nov 2017 05:16:48 GMT\nx-ms-version:2017-04-17\n
+x-ms-date:Fri, 17 Nov 2017 05:16:48 GMT\nx-ms-version:2017-07-29\n
 ```
 
 **Zasób w postaci kanonicznej:**
@@ -476,7 +473,7 @@ x-ms-date:Fri, 17 Nov 2017 05:16:48 GMT\nx-ms-version:2017-04-17\n
 
 ```
 GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 05:16:48 GMT
-  \nx-ms-version:2017-04-17\n/contosorest/container-1\ncomp:list\nrestype:container
+  \nx-ms-version:2017-07-29\n/contosorest/container-1\ncomp:list\nrestype:container
 ```
 
 **AuthorizationHeader:**
@@ -497,7 +494,7 @@ GET http://contosorest.blob.core.windows.net/container-1?restype=container&comp=
 
 ```
 x-ms-date: Fri, 17 Nov 2017 05:16:48 GMT
-x-ms-version: 2017-04-17
+x-ms-version: 2017-07-29
 Authorization: SharedKey contosorest:uzvWZN1WUIv2LYC6e3En10/7EIQJ5X9KtFQqrZkxi6s=
 Host: contosorest.blob.core.windows.net
 Connection: Keep-Alive
@@ -510,7 +507,7 @@ HTTP/1.1 200 OK
 Content-Type: application/xml
 Server: Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
 x-ms-request-id: 7e9316da-001e-0037-4063-5faf9d000000
-x-ms-version: 2017-04-17
+x-ms-version: 2017-07-29
 Date: Fri, 17 Nov 2017 05:20:21 GMT
 Content-Length: 1135
 ```

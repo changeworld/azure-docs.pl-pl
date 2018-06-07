@@ -12,13 +12,14 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/08/2018
+ms.date: 05/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 1d0ae04bee6d50456949529449b658907d338f91
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: 96cc7aeb5fd1c64dc3793a801a4a5b759e7558b9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652876"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Zaloguj się do maszyny wirtualnej systemu Linux na platformie Azure przy użyciu uwierzytelniania usługi Azure Active Directory (wersja zapoznawcza)
 
@@ -50,7 +51,7 @@ Następujące dystrybucje systemu Linux są obecnie obsługiwane w wersji zapozn
 
 Obecnie obsługiwane są następujące regiony platformy Azure w wersji zapoznawczej tej funkcji:
 
-- Wszystkie publiczne regiony platformy Azure
+- Wszystkie regiony platformy Azure globalne
 
 >[!IMPORTANT]
 > Aby użyć tej funkcji w wersji zapoznawczej, wdrażać tylko w obsługiwanych distro systemu Linux i w obsługiwanym regionie Azure. Funkcja nie jest obsługiwana w Azure dla instytucji rządowych lub suwerennych chmury.
@@ -74,7 +75,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-Trwa kilka minut na utworzenie maszyny Wirtualnej i dodatkowe zasoby.
+Utworzenie maszyny wirtualnej i zasobów pomocniczych potrwa kilka minut.
 
 ## <a name="install-the-azure-ad-login-vm-extension"></a>Zainstaluj usługi Azure AD logowania rozszerzenia maszyny Wirtualnej
 
@@ -111,6 +112,9 @@ az role assignment create \
     --assignee $username \
     --scope $vm
 ```
+
+> [!NOTE]
+> Jeśli w domenie AAD i domeny nazwa użytkownika logowania nie są zgodne, musisz określić identyfikator obiektu konta użytkownika z *--ona object-id*, nie tylko nazwę użytkownika dla *--ona*. Można uzyskać Identyfikatora obiektu dla tego konta użytkownika z [listy użytkowników usługi ad az](/cli/azure/ad/user#az-ad-user-list).
 
 Aby uzyskać więcej informacji na temat sposobu użycie funkcji RBAC, aby zarządzać dostępem do zasobów subskrypcji platformy Azure, zobacz przy użyciu [Azure CLI 2.0](../../role-based-access-control/role-assignments-cli.md), [portalu Azure](../../role-based-access-control/role-assignments-portal.md), lub [programu Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
@@ -167,6 +171,10 @@ Jeśli pomyślnie wykonać krok uwierzytelniania w przeglądarce sieci web, moż
 - Sprawdź poprawność nazwy logowania, określona w wierszu polecenia SSH. Literówka w nazwie logowania może spowodować niezgodność nazwy logowania, określona w wierszu polecenia programu SSH i konta, na którym jest zalogowany do usługi Azure AD z. Na przykład możesz wpisać *azuresuer@contoso.onmicrosoft.com* zamiast *azureuser@contoso.onmicrosoft.com*.
 - Jeśli masz wiele kont użytkowników, upewnij się, że nie udostępniają innego konta użytkownika w oknie przeglądarki, po zalogowaniu się do usługi Azure AD.
 - Linux jest rozróżniana wielkość liter systemu operacyjnego. Ma różnicy między "Azureuser@contoso.onmicrosoft.com"i"azureuser@contoso.onmicrosoft.com", co może spowodować niezgodność. Upewnij się, określ nazwę UPN z poprawną rozróżnianiem wielkości liter w wierszu polecenia SSH.
+
+## <a name="preview-feedback"></a>Podgląd opinii
+
+Udostępnianie swoją opinię na temat tej funkcji lub raportu problemów związanych z podglądu używania go na [forum opinii usługi Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -6,14 +6,15 @@ author: danimir
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: vvasic
-ms.openlocfilehash: e4c3a2c1f21bf14bfc75f20dd18cefca68fd2067
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d4d3b7f54c7393b57339ea149e8a79f97891dc20
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646035"
 ---
 # <a name="enable-automatic-tuning"></a>Włączanie automatycznego dostrajania
 
@@ -23,36 +24,40 @@ Baza danych SQL Azure jest usługą automatycznie zarządzanych danych, która s
 Na poziomie serwera można wybrać dziedziczenia automatycznego dostrajania konfiguracji na podstawie "Azure domyślne" lub nie można odziedziczyć konfiguracji. Domyślne Azure to FORCE_LAST_GOOD_PLAN jest włączona, CREATE_INDEX jest włączona i DROP_INDEX jest wyłączona.
 
 ### <a name="azure-portal"></a>Azure Portal
-Aby włączyć automatyczne dostrajanie w bazie danych SQL Azure **serwera**, przejdź do serwera w portalu Azure, a następnie wybierz **automatycznego dostrajania** w menu. Wybierz opcje automatycznego dostrajania chcesz włączyć, a następnie wybierz **Zastosuj**.
+Aby włączyć automatyczne dostrajanie na bazy danych SQL Azure logicznej **serwera**, przejdź do serwera w portalu Azure, a następnie wybierz **automatycznego dostrajania** w menu.
 
 ![Serwer](./media/sql-database-automatic-tuning-enable/server.png)
 
 > [!NOTE]
-> Należy pamiętać, że **DROP_INDEX** opcji w tej chwili jest niezgodny z aplikacji przy użyciu wskazówek indeks i przełączanie partycji i nie powinna włączona w tych przypadkach.
+> Należy pamiętać, że **DROP_INDEX** opcji w tej chwili nie jest zgodny z aplikacjami przy użyciu wskazówek indeks i przełączanie partycji i nie powinna być włączona w tych przypadkach.
 >
 
-Opcje automatycznego dostrajania na serwerze są stosowane do wszystkich baz danych na serwerze. Domyślnie wszystkie bazy danych dziedziczy konfiguracji z ich nadrzędnego serwera, ale to zastąpione i określić osobno dla każdej bazy danych.
+Wybierz opcje automatycznego dostrajania chcesz włączyć, a następnie wybierz **Zastosuj**.
+
+Opcje automatycznego dostrajania na serwerze są stosowane do wszystkich baz danych na tym serwerze. Domyślnie wszystkie bazy danych odziedziczyć konfiguracji z ich nadrzędnego serwera, ale to zastąpione i określić osobno dla każdej bazy danych.
 
 ### <a name="rest-api"></a>Interfejs API REST
 [Kliknij tutaj, aby dowiedzieć się więcej o sposobie włączania automatycznego dostrajania na poziomie serwera za pomocą interfejsu API REST](https://docs.microsoft.com/rest/api/sql/serverautomatictuning)
 
 ## <a name="enable-automatic-tuning-on-an-individual-database"></a>Włączanie automatycznego dostrajania dla poszczególnych bazy danych
 
-Baza danych SQL Azure umożliwia niezależnie Określ automatycznego dostrajania konfiguracji w każdej bazie danych. Na poziomie bazy danych można dziedziczyć automatycznego dostrajania konfiguracji z nadrzędnego serwera, "Azure domyślne" albo nie można odziedziczyć konfiguracji. Azure wartości domyślne są włączone FORCE_LAST_GOOD_PLAN CREATE_INDEX i włączona DROP_INDEX wyłączone.
+Baza danych SQL Azure można określić indywidualnie automatycznego dostrajania konfiguracji dla każdej bazy danych. Na poziomie bazy danych można dziedziczyć automatycznego dostrajania konfiguracji z nadrzędnego serwera, "Azure domyślne" albo nie można odziedziczyć konfiguracji. Ustawienia domyślne Azure umożliwiają FORCE_LAST_GOOD_PLAN jest włączona, CREATE_INDEX jest włączona i DROP_INDEX jest wyłączona.
 
 > [!NOTE]
-> Ogólne zaleca się zarządzanie automatycznego dostrajania konfiguracji na poziomie serwera, dlatego te same ustawienia konfiguracji mogą być automatycznie stosowane w każdej bazie danych. Konfigurowanie automatycznego dostrajania na poszczególne bazy danych, jeśli baza danych jest inny tego inne, na tym samym serwerze.
+> Ogólne zalecenie to zarządzanie automatycznego dostrajania konfiguracji **poziom serwera** , te same ustawienia konfiguracji mogą być automatycznie stosowane w każdej bazie danych. Konfigurowanie automatycznego dostrajania dla poszczególnych bazy danych tylko wtedy, gdy potrzebujesz tej bazy danych ma inne ustawienia niż inne dziedziczy ustawienia z tego samego serwera.
 >
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Aby włączyć automatyczne dostrajanie na **pojedynczej bazy danych**, przejdź do bazy danych w portalu Azure wybierz a następnie **automatycznego dostrajania**. Można skonfigurować pojedynczy bazy danych, aby odziedziczyć ustawienia z serwera, wybierając opcję lub konfiguracji bazy danych można określić osobno.
+Aby włączyć automatyczne dostrajanie na **pojedynczej bazy danych**, przejdź do bazy danych w portalu Azure i wybierz **automatycznego dostrajania**.
+
+Poszczególne automatycznego dostrajania ustawienia można skonfigurować osobno dla każdej bazy danych. Można ręcznie skonfigurować poszczególne opcje automatycznego dostrajania lub określ, czy opcja dziedziczy ustawienia z serwera.
 
 ![Database (Baza danych)](./media/sql-database-automatic-tuning-enable/database.png)
 
-Po wybraniu odpowiedniej konfiguracji, kliknij przycisk **Zastosuj**.
+Należy pamiętać, że opcja DROP_INDEX w tej chwili nie jest zgodny z aplikacji przy użyciu wskazówek indeks i przełączanie partycji i nie powinna być włączona w tych przypadkach.
 
-Należy pamiętać, że opcja DROP_INDEX w tej chwili jest niezgodny z aplikacji przy użyciu wskazówek indeks i przełączanie partycji i powinien nie jest włączona w tych przypadkach.
+Po wybraniu wymaganą konfigurację, kliknij przycisk **Zastosuj**.
 
 ### <a name="rest-api"></a>Interfejs API REST
 [Kliknij tutaj, aby dowiedzieć się więcej o sposobie włączania automatycznego dostrajania dla jednej bazy danych za pośrednictwem interfejsu API REST](https://docs.microsoft.com/rest/api/sql/databaseautomatictuning)

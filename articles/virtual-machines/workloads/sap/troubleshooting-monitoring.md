@@ -1,11 +1,11 @@
 ---
-title: "Rozwiązywanie problemów i monitorowanie SAP HANA na platformie Azure (wystąpienia duże) | Dokumentacja firmy Microsoft"
-description: "Rozwiązywanie problemów i monitorowanie SAP HANA na platformie Azure (wystąpienia duże)."
+title: Rozwiązywanie problemów i monitorowanie SAP HANA na platformie Azure (wystąpienia duże) | Dokumentacja firmy Microsoft
+description: Rozwiązywanie problemów i monitorowanie SAP HANA na platformie Azure (wystąpienia duże).
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: RicksterCDN
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,12 @@ ms.workload: infrastructure
 ms.date: 10/31/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5583f3d1949614dbba4d2f91d72e4ac6b4d03d1c
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 41fbeb848d7d97e5ee41a2221b69cc88380dc1e1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657200"
 ---
 # <a name="how-to-troubleshoot-and-monitor-sap-hana-large-instances-on-azure"></a>Rozwiązywanie problemów i monitorować SAP HANA (duże wystąpień) w systemie Azure
 
@@ -71,7 +72,7 @@ Pierwszym krokiem zapoznaj się z dziennikami alertu bieżącego SAP HANA. W sys
 
 ![W systemie SAP HANA Studio przejdź do konsoli administracyjnej: alerty: Pokaż: wszystkie alerty](./media/troubleshooting-monitoring/image1-show-alerts.png)
 
-**PROCESOR CPU**
+**CPU**
 
 Alert wywołany z powodu ustawienia nieprawidłowej wartości progowej rozwiązanie jest resetowane do wartości domyślnej lub bardziej przystępne wartość progową.
 
@@ -100,7 +101,7 @@ Zapoznaj się [SAP HANA Rozwiązywanie problemów z: pokrewne powoduje procesora
 
 **System operacyjny**
 
-Jednym z najważniejszych wyszukuje SAP HANA w systemie Linux jest upewnij się, że wyłączono przezroczysty dużych stron, zobacz [&#2131662; Uwaga SAP — przezroczysty dużych stron (THP) na serwerach z SAP HANA](https://launchpad.support.sap.com/#/notes/2131662).
+Jednym z najważniejszych wyszukuje SAP HANA w systemie Linux jest upewnij się, że wyłączono przezroczysty dużych stron, zobacz [2131662 # Uwaga SAP — przezroczysty dużych stron (THP) na serwerach z SAP HANA](https://launchpad.support.sap.com/#/notes/2131662).
 
 - Możesz sprawdzić, czy przezroczyste dużych stron są włączone, za pomocą następującego polecenia Linux: **cat /sys/kernel/mm/transparent\_hugepage lub nie włączono**
 - Jeśli _zawsze_ jest ujęta w nawiasy kwadratowe zgodnie z poniższymi instrukcjami, oznacza to, czy przezroczyste dużych stron są włączone: [zawsze] madvise nigdy nie; Jeśli _nigdy nie_ jest ujęta w nawiasy kwadratowe zgodnie z poniższymi instrukcjami, oznacza, że ogromnych przezroczysty Strony są wyłączone: zawsze madvise [nigdy nie]
@@ -153,7 +154,7 @@ Zapoznaj się [SAP HANA Rozwiązywanie problemów z: We/Wy pokrewne główne prz
 
 Wykonaj sprawdzenie kondycji programu SAP HANA za pośrednictwem HANA\_konfiguracji\_Minichecks. To narzędzie zwraca potencjalnie krytycznych problemów technicznych, które powinny już mieć został zgłoszony jako ostrzeżenia w SAP HANA Studio.
 
-Zapoznaj się [&#1969700; Uwaga SAP — kolekcja instrukcji SQL dla SAP HANA](https://launchpad.support.sap.com/#/notes/1969700) i Pobierz plik SQL Statements.zip dołączony do tej uwagi. Należy zapisać ten plik zip na lokalnym dysku twardym.
+Zapoznaj się [1969700 # Uwaga SAP — kolekcja instrukcji SQL dla SAP HANA](https://launchpad.support.sap.com/#/notes/1969700) i Pobierz plik SQL Statements.zip dołączony do tej uwagi. Należy zapisać ten plik zip na lokalnym dysku twardym.
 
 W systemie SAP HANA Studio na **informacje o systemie** karcie, kliknij prawym przyciskiem myszy w **nazwa** kolumny i wybierz **instrukcje SQL importu**.
 

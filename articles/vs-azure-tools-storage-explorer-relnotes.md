@@ -14,17 +14,103 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: 7e290b3bbe3fa70522533f23febe587fbb873e35
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 2878fb737f5daa875b91aefc77c6b8bc495f917e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657574"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Informacje o wersji Eksploratora magazynu Microsoft Azure
 
 Ten artykuł zawiera informacje o wersji w wersji 1.0.0 Eksploratora usługi Azure Storage, a także informacje o wersji w poprzednich wersjach.
 
 [Eksplorator magazynu Microsoft Azure](./vs-azure-tools-storage-manage-with-storage-explorer.md) jest aplikacją autonomiczną, która pozwala łatwo pracować z danymi usługi Azure Storage w systemie Windows, macOS i Linux.
+
+## <a name="version-110"></a>Wersja 1.1.0
+2018-05/09
+
+### <a name="download-azure-storage-explorer-110"></a>Pobierz Eksploratora usługi Azure Storage 1.1.0
+- [Eksplorator usługi Azure Storage 1.1.0 dla systemu Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Eksplorator usługi Azure Storage 1.1.0 dla komputerów Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Eksplorator usługi Azure Storage 1.1.0 dla systemu Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>Nowa
+* Eksplorator usługi Storage obsługuje teraz Azurite. Uwaga: połączenie Azurite jest zapisane na stałe do rozwoju domyślne punkty końcowe.
+* Eksplorator usługi Storage obsługuje teraz warstw dostępu tylko do obiektów Blob i GPV2 kont magazynu. Dowiedz się więcej na temat warstw dostępu [tutaj](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers).
+* Czas rozpoczęcia nie jest już wymagane podczas generowania sygnatury dostępu Współdzielonego.
+
+### <a name="fixes"></a>Poprawki
+* Podczas pobierania subskrypcje dla instytucji rządowych Stanów Zjednoczonych kont zostało przerwane. Problem został rozwiązany. [#61](https://github.com/Microsoft/AzureStorageExplorer/issues/61)
+* Poprawnie czas wygaśnięcia zasady dostępu nie został on zapisany. Problem został rozwiązany. [#50](https://github.com/Microsoft/AzureStorageExplorer/issues/50)
+* Podczas generowania adresu URL sygnatury dostępu Współdzielonego dla elementu w kontenerze, nazwa elementu została nie są dołączane do adresu URL. Problem został rozwiązany. [#44](https://github.com/Microsoft/AzureStorageExplorer/issues/44)
+* Podczas tworzenia sygnatury dostępu Współdzielonego, czas wygaśnięcia, znajdujących się w przeszłości czasami będą wartości domyślne. Jest to spowodowane Eksploratora usługi Storage za pomocą ostatniej używany czas rozpoczęcia i wygaśnięcia jako wartości domyślne. Teraz każdym otwarciu okna dialogowego sygnatury dostępu Współdzielonego jest generowany nowy zestaw wartości domyślnych. [#35](https://github.com/Microsoft/AzureStorageExplorer/issues/35)
+* Jeśli kopiowanie odbywa się między kontami magazynu, 24-godzinnym sygnatury dostępu Współdzielonego jest generowany. Jeśli kopia trwała dłużej niż 24 godziny, kopia może zakończyć się niepowodzeniem. Zwiększyliśmy sygnatury dostępu Współdzielonego w celu ostatni 1 tydzień Aby zmniejszyć prawdopodobieństwo kopii się niepowodzeniem z powodu wygasły SAS. [#62](https://github.com/Microsoft/AzureStorageExplorer/issues/62)
+* W przypadku niektórych działań klikając przycisk "Anuluj", nie będzie zawsze działać. Problem został rozwiązany. [#125](https://github.com/Microsoft/AzureStorageExplorer/issues/125)
+* W przypadku niektórych działań szybkość transferu jest nieprawidłowa. Problem został rozwiązany. [#124](https://github.com/Microsoft/AzureStorageExplorer/issues/124)
+* Błędna pisownię wyrazu "Wstecz", w menu Widok. Teraz została prawidłowo wpisana. [#71](https://github.com/Microsoft/AzureStorageExplorer/issues/71)
+* Na ostatniej stronie Instalatora systemu Windows ma przycisk "Dalej". Został zmieniony na przycisk "Zakończ". [#70](https://github.com/Microsoft/AzureStorageExplorer/issues/70)
+* Karta fokus nie był widoczny dla przycisków w oknach dialogowych, korzystając z motyw Czarny HC. Jest teraz widoczne. [#64](https://github.com/Microsoft/AzureStorageExplorer/issues/64)
+* Wielkość liter w wyrazie "Automatyczne rozwiązanie" działań w dzienniku aktywności jest nieprawidłowa. Teraz jest poprawna. [#51](https://github.com/Microsoft/AzureStorageExplorer/issues/51)
+* Podczas usuwania jednostki z tabeli, okno dialogowe z prośbą o potwierdzenie wyświetlana ikona błędu. Okno dialogowe używa teraz ikona ostrzeżenia. [#148](https://github.com/Microsoft/AzureStorageExplorer/issues/148)
+
+### <a name="known-issues"></a>Znane problemy
+* Jeśli używasz programu VS dla komputerów Mac i tworzenia niestandardowej konfiguracji usługi AAD, nie można się zalogować. Aby obejść ten problem, usuń zawartość ~ /. IdentityService/AadConfigurations. Jeśli to nie odblokować możesz, należy dodać komentarz dotyczący [ten problem](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
+* Azurite nie została jeszcze całkowicie zaimplementowana wszystkich interfejsów API magazynu. W związku z tym może być nieoczekiwane błędy lub zachowanie w przypadku używania Azurite dla rozwoju magazynu.
+* W rzadkich przypadkach fokus drzewa może zostać zablokowane na szybki dostęp. Aby przylegał fokus, można odświeżyć wszystkie.
+* Przekazywanie z folderu usługi OneDrive nie działa z powodu błędu w środowisku NodeJS. Ten błąd został rozwiązany, ale niewłączonych jeszcze do elektronów.
+* Celem Azure stosu, przekazywanie pewne pliki jako uzupełnialnych obiektów blob może zakończyć się niepowodzeniem.
+* Po kliknięciu przycisku "Anuluj" dla zadania, może upłynąć trochę czasu dla tego zadania anulować. Jest to spowodowane używamy rozwiązanie filtru Anuluj opisane [tutaj](https://github.com/Azure/azure-storage-node/issues/317). 
+* Jeśli wybierzesz nieprawidłowy certyfikat kodu PIN/karty inteligentnej, będzie konieczne ponowne uruchomienie w celu Eksploratora usługi Storage zapomnij tej decyzji.
+* Zmiana nazwy obiektów blob (indywidualnie lub wewnątrz kontenera obiektów blob zmienionej nazwie) nie zostaną zachowane migawki. Wszystkie inne właściwości i metadanych dla obiektów blob, plików i jednostek są zachowywane podczas zmiany nazwy.
+* Mimo że stosu Azure aktualnie nie obsługuje udziałów plików, węzła udziałów plików jest nadal wyświetlana na koncie dołączone magazynu Azure stosu.
+* Powłoka elektronów wykorzystywane przez Eksploratora magazynu ma problemy z niektórych przyspieszanie sprzętowe procesora GPU (jednostka przetwarzania grafiki). Jeśli Eksploratora usługi Storage są wyświetlane puste okno główne (pusta), można spróbować uruchamianie Eksploratora usługi Storage z poziomu wiersza polecenia i wyłączanie przyspieszenie procesora GPU, dodając `--disable-gpu` przełącznika:
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* W przypadku użytkowników systemu Linux, musisz zainstalować [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Dla użytkowników Ubuntu 14.04, konieczne będzie zapewnienia GCC jest aktualny — można to zrobić, uruchamiając następujące polecenia i ponownym uruchomieniu komputera:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Dla użytkowników Ubuntu 17.04 będą musieli zainstalować GConf — można to zrobić, uruchamiając następujące polecenia i ponownym uruchomieniu komputera:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="previous-releases"></a>Poprzednie wersje
+
+* [W wersji 1.0.0](#version-100)
+* [Wersja 0.9.6](#version-096)
+* [Wersja 0.9.5](#version-095)
+* [Wersja 0.9.4 i 0.9.3](#version-094-and-093)
+* [Wersja 0.9.2](#version-092)
+* [W wersji od 0.9.1 i 0.9.0](#version-091-and-090)
+* [Wersja 0.8.16](#version-0816)
+* [Wersja 0.8.14](#version-0814)
+* [Wersja 0.8.13](#version-0813)
+* [Wersja 0.8.12 i 0.8.11 i 0.8.10](#version-0812-and-0811-and-0810)
+* [Wersja 0.8.9 i 0.8.8](#version-089-and-088)
+* [Wersja 0.8.7](#version-087)
+* [Wersja 0.8.6](#version-086)
+* [Wersja 0.8.5](#version-085)
+* [Wersja 0.8.4](#version-084)
+* [Wersja 0.8.3](#version-083)
+* [Wersja 0.8.2](#version-082)
+* [Wersja 0.8.0](#version-080)
+* [Wersja 0.7.20160509.0](#version-07201605090)
+* [Wersja 0.7.20160325.0](#version-07201603250)
+* [Wersja 0.7.20160129.1](#version-07201601291)
+* [Wersja 0.7.20160105.0](#version-07201601050)
+* [Wersja 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-100"></a>W wersji 1.0.0
 2018-04/16
@@ -44,7 +130,7 @@ Ten artykuł zawiera informacje o wersji w wersji 1.0.0 Eksploratora usługi Azu
 * Ulepszone ułatwień dostępu i obsługę czytnika ekranu. Jeśli użytkownik korzysta z funkcji ułatwień dostępu, zobacz nasze [dokumentacji ułatwień dostępu](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-accessibility) Aby uzyskać więcej informacji.
 * Eksplorator usługi Storage korzysta z elektronów 1.8.3
 
-### <a name="breaking-changes"></a>Fundamentalne zmiany
+### <a name="breaking-changes"></a>Zmiany powodujące niezgodność
 * Eksplorator usługi Storage została przełączona do nowej biblioteki uwierzytelniania. W ramach przełącznika do biblioteki trzeba będzie ponownie logowania do kont i ponownie określić subskrypcji przefiltrowane
 * Metoda używana do szyfrowania poufnych danych została zmieniona. Może to spowodować niektórych elementów szybki dostęp konieczności ponownego dodania i/lub części należy dołączyć zasobów musi zostać ponownie nałożona.
 
@@ -95,31 +181,6 @@ Ten artykuł zawiera informacje o wersji w wersji 1.0.0 Eksploratora usługi Azu
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-## <a name="previous-releases"></a>Poprzednie wersje
-
-* [Wersja 0.9.6](#version-096)
-* [Wersja 0.9.5](#version-095)
-* [Wersja 0.9.4 i 0.9.3](#version-094-and-093)
-* [Wersja 0.9.2](#version-092)
-* [W wersji od 0.9.1 i 0.9.0](#version-091-and-090)
-* [Wersja 0.8.16](#version-0816)
-* [Wersja 0.8.14](#version-0814)
-* [Wersja 0.8.13](#version-0813)
-* [Wersja 0.8.12 i 0.8.11 i 0.8.10](#version-0812-and-0811-and-0810)
-* [Wersja 0.8.9 i 0.8.8](#version-089-and-088)
-* [Wersja 0.8.7](#version-087)
-* [Wersja 0.8.6](#version-086)
-* [Wersja 0.8.5](#version-085)
-* [Wersja 0.8.4](#version-084)
-* [Wersja 0.8.3](#version-083)
-* [Wersja 0.8.2](#version-082)
-* [Wersja 0.8.0](#version-080)
-* [Wersja 0.7.20160509.0](#version-07201605090)
-* [Wersja 0.7.20160325.0](#version-07201603250)
-* [Wersja 0.7.20160129.1](#version-07201601291)
-* [Wersja 0.7.20160105.0](#version-07201601050)
-* [Wersja 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-096"></a>Wersja 0.9.6
 02/28/2018
