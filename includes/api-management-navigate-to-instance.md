@@ -1,18 +1,18 @@
-## <a name="navigate-to-your-apim-instance"></a>Przejdź do swojego wystąpienia APIM
+## <a name="navigate-to-your-apim-instance"></a>Przechodzenie do wystąpienia usługi APIM
 
-Aby przejść do swojego wystąpienia APIM, wykonaj następujące kroki:
+Aby przejść do swojego wystąpienia usługi APIM, wykonaj następujące czynności:
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
-2. W górnym lewym rogu ekranu, wybierz **wszystkie usługi**.  
-3. W polu wyszukiwania wpisz "interfejsu api".
-4. Kliknij przycisk **usługi Zarządzanie interfejsami API**.
+2. W górnym lewym rogu ekranu wybierz pozycję **Wszystkie usługi**.  
+3. W polu wyszukiwania wpisz „api”.
+4. Kliknij pozycję **Usługi API Management**.
 
-    ![Przejdź](./media/api-management-navigate-to-instance/navigate-to-api-management-services.png)
+    ![Nawigacja](./media/api-management-navigate-to-instance/navigate-to-api-management-services.png)
 
 5. Wybierz wystąpienie usługi APIM.
 
 >[!TIP]
->Interfejs API zarządzania (APIM) należy dodać do ulubionych w portalu Azure, klikając gwiazdki. <br/>Spowoduje to dodanie ikona APIM menu po lewej stronie portalu. Aby wyświetlić wszystkie usługi APIM, kliknij ikonę (![ikona APIM](./media/api-management-navigate-to-instance/apim-icon.png)).
+>Możesz dodać usługę API Management (APIM) do ulubionych w witrynie Azure Portal, klikając gwiazdkę. <br/>To spowoduje dodanie ikony APIM do menu po lewej stronie portalu. Aby wyświetlić wszystkie usługi APIM, kliknij ikonę (![ikona APIM](./media/api-management-navigate-to-instance/apim-icon.png)).
  
 
 

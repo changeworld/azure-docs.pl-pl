@@ -1,21 +1,21 @@
-Jedną z kluczowych możliwości usługi Azure IoT krawędzi jest możliwość wdrażania modułów z urządzeniami IoT krawędzi z chmury. Moduł krawędzi IoT jest pakiet wykonywalnego zaimplementowane jako kontener. W tej sekcji możesz wdrożyć moduł, który generuje dane telemetryczne symulowane urządzenie. 
+Jedną z najważniejszych funkcji usługi Azure IoT Edge jest możliwość wdrażania modułów na urządzeniach usługi IoT Edge z poziomu chmury. Moduł usługi IoT Edge to pakiet wykonywalny wdrażany jako kontener. W tej sekcji zapoznasz się ze sposobem wdrażania modułu generującego dane telemetryczne na symulowanym urządzeniu. 
 
-1. W portalu Azure przejdź do Centrum IoT.
-1. Przejdź do **IoT krawędzi (wersja zapoznawcza)** i wybierz urządzenia IoT krawędzi.
-1. Wybierz **ustawić modułów**.
-1. Wybierz **Dodaj moduł krawędzi IoT**.
-1. W **nazwa** wprowadź `tempSensor`. 
-1. W **identyfikatora URI obrazu** wprowadź `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`. 
-1. Pozostaw bez zmian innych ustawień, a następnie wybierz **zapisać**.
+1. W witrynie Azure Portal przejdź do centrum IoT Hub.
+1. Przejdź do pozycji **IoT Edge (wersja zapoznawcza)** i wybierz urządzenie usługi IoT Edge.
+1. Wybierz pozycję **Ustaw moduły**.
+1. Wybierz pozycję **Dodaj moduł usługi IoT Edge**.
+1. W polu **Nazwa** wprowadź wartość `tempSensor`. 
+1. W polu **Identyfikator URI obrazu** wprowadź wartość `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`. 
+1. Pozostaw inne ustawienia bez zmian, a następnie wybierz pozycję **Zapisz**.
 
-   ![Zapisz modułu krawędzi IoT po wprowadzeniu nazwy i identyfikatora URI obrazu](./media/iot-edge-deploy-module/name-image.png)
+   ![Zapisywanie modułu usługi IoT Edge po wprowadzeniu nazwy i identyfikatora URI obrazu](./media/iot-edge-deploy-module/name-image.png)
 
-1. W **Dodaj moduły** krok, wybierz opcję **dalej**.
-1. W **określić trasy** krok, wybierz opcję **dalej**.
-1. W **szablon przeglądu** krok, wybierz opcję **przesyłania**.
-1. Wróć do strony szczegółów urządzenia i wybierz **Odśwież**. Powinien zostać wyświetlony nowy moduł tempSensor systemem wzdłuż krawędzi IoT środowiska uruchomieniowego. 
+1. W kroku **Dodawanie modułów** wybierz opcję **Dalej**.
+1. W kroku **Określanie tras** wybierz opcję **Dalej**.
+1. W kroku **Przegląd szablonu** wybierz opcję **Prześlij**.
+1. Wróć do strony szczegółów urządzenia i wybierz opcję **Odśwież**. Nowy moduł tempSensor powinien zostać uruchomiony wraz ze środowiskiem uruchomieniowym usługi IoT Edge. 
 
-   ![Widok tempSensor liście wdrożonej modułów][1]
+   ![Wyświetlanie modułu tempSensor na liście wdrożonych modułów][1]
 
 <!-- Images -->
 [1]: ../articles/iot-edge/media/tutorial-simulate-device-windows/view-module.png

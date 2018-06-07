@@ -3,16 +3,19 @@ title: Samouczek — udzielanie dostępu do internetowego interfejsu API platfor
 description: Samouczek dotyczący używania usługi Active Directory B2C do chronienia internetowego interfejsu API platformy .NET Core i wywoływania go z aplikacji jednostronicowej.
 services: active-directory-b2c
 author: davidmu1
+manager: mtillman
 ms.author: davidmu
 ms.date: 3/02/2018
 ms.custom: mvc
 ms.topic: tutorial
-ms.service: active-directory-b2c
-ms.openlocfilehash: 0e9e3074e2cdd9ec3adc814779811d150cd11010
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.service: active-directory
+ms.component: B2C
+ms.openlocfilehash: 5b99f60c1bd81b77a5fc2be5575f65fc63eb0c11
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34711097"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-app-using-azure-active-directory-b2c"></a>Samouczek: udzielanie dostępu do internetowego interfejsu API platformy ASP.NET Core z aplikacji jednostronicowej przy użyciu usługi Azure Active Directory B2C
 
@@ -155,13 +158,15 @@ Aby umożliwić aplikacji jednostronicowej wywoływanie internetowego interfejsu
         builder.WithOrigins("http://localhost:6420").AllowAnyHeader().AllowAnyMethod());
     ```
 
+3. Otwórz plik **launchSettings.json** w obszarze **Właściwości**, znajdź ustawienie *applicationURL* i zapisz jego wartość do użycia w kolejnej sekcji.
+
 ### <a name="configure-the-single-page-app"></a>Konfigurowanie aplikacji jednostronicowej
 
 Aplikacja jednostronicowa używa usługi Azure AD B2C do tworzenia nowych kont i logowania użytkowników oraz wywołuje chroniony internetowy interfejs API platformy ASP.NET Core. Musisz zaktualizować wywołanie aplikacji jednostronicowej dla internetowego interfejsu platformy .NET Core.
 Aby zmienić ustawienia aplikacji:
 
 1. Otwórz plik `index.html` w przykładowej aplikacji jednostronicowej platformy Node.js.
-2. Skonfiguruj przykład obejmujący informacje na temat rejestracji dzierżawy usługi Azure AD B2C. Zmień wartości **b2cScopes** i **webApi** w następujących wierszach kodu:
+2. Skonfiguruj przykład obejmujący informacje na temat rejestracji dzierżawy usługi Azure AD B2C. W poniższym kodzie dodaj nazwę swojej dzierżawy do pozycji **b2cScopes** i zmień wartość **webApi** na zapisaną wcześniej wartość ustawienia *applicationURL*:
 
     ```javascript
     // The current application coordinates were pre-registered in a B2C tenant.
@@ -169,7 +174,7 @@ Aby zmienić ustawienia aplikacji:
         clientID: '<Application ID for your SPA obtained from portal app registration>',
         authority: "https://login.microsoftonline.com/tfp/<your-tenant-name>.onmicrosoft.com/B2C_1_SiUpIn",
         b2cScopes: ["https://<Your tenant name>.onmicrosoft.com/HelloCoreAPI/demo.read"],
-        webApi: 'http://localhost:58553/api/values',
+        webApi: 'http://localhost:64791/api/values',
     };
     ```
 

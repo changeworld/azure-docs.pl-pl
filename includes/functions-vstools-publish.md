@@ -1,25 +1,42 @@
-1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Opublikuj**. Wybierz **tworzenia nowych** , a następnie **publikowania**. 
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: functions
+author: ggailey777
+ms.service: functions
+ms.topic: include
+ms.date: 05/22/2018
+ms.author: glenga
+ms.custom: include file
+ms.openlocfilehash: 6cbf24c56458ab8b3b6c7b44bedbd8b48d4677b3
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34702425"
+---
+1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Opublikuj**.
 
-    ![Publikowanie utworzonej aplikacji funkcji](./media/functions-vstools-publish/functions-vstools-publish-new-function-app.png)
+2. Wybierz kolejno pozycje **Aplikacja funkcji platformy Azure**, **Utwórz nową** i **Publikuj**.
 
-2. Jeśli jeszcze nie zostało to jeszcze połączenia programu Visual Studio do konta platformy Azure, wybierz **Dodaj konto...** .  
+    ![Wybieranie miejsca docelowego publikacji](./media/functions-vstools-publish/functions-vstools-create-new-function-app.png)
 
-3. W oknie dialogowym **Tworzenie usługi App Service** użyj ustawień **Hosting** określonych w poniższej tabeli: 
+2. Jeśli program Visual Studio nie został jeszcze połączony z kontem platformy Azure, wybierz pozycję **Dodaj konto...**.
 
-    ![Lokalne środowisko uruchomieniowe platformy Azure](./media/functions-vstools-publish/functions-vstools-publish.png)
+3. W oknie dialogowym **Tworzenie usługi App Service** zastosuj w obszarze **Hosting** ustawienia określone w tabeli pod obrazem:
+
+    ![Okno dialogowe Tworzenie usługi App Service](./media/functions-vstools-publish/functions-vstools-publish.png)
 
     | Ustawienie      | Sugerowana wartość  | Opis                                |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Nazwa aplikacji** | Nazwa unikatowa w skali globalnej | Unikatowa nazwa identyfikująca nową aplikację funkcji. |
     | **Subskrypcja** | Wybierz subskrypcję | Subskrypcja platformy Azure, która ma być używana. |
-    | **[Grupa zasobów](../articles/azure-resource-manager/resource-group-overview.md)** | myResourceGroup |  Nazwa grupy zasobów, w której ma zostać utworzona aplikacja funkcji. Wybierz **nowy** Aby utworzyć nową grupę zasobów.|
-    | **[Plan usługi App Service](../articles/azure-functions/functions-scale.md)** | Plan Zużycie | Upewnij się, że wybrano **zużycie** w obszarze **rozmiar** po kliknięciu **nowy** Aby utworzyć nowy plan. Możesz także określić **lokalizacji** w [region](https://azure.microsoft.com/regions/) pobliżu lub w jego pobliżu innych usług w funkcji dostępu.  |
+    | **[Grupa zasobów](../articles/azure-resource-manager/resource-group-overview.md)** | myResourceGroup |  Nazwa grupy zasobów, w której ma zostać utworzona aplikacja funkcji. Wybierz pozycję **Nowa**, aby utworzyć nową grupę zasobów.|
+    | **[Plan usługi App Service](../articles/azure-functions/functions-scale.md)** | Plan Zużycie | Pamiętaj, aby po kliknięciu pozycji **Nowy** w celu utworzenia planu wybrać pozycję **Zużycie** w obszarze **Rozmiar**. Ponadto w polu **Lokalizacja** wybierz [region](https://azure.microsoft.com/regions/) w swojej okolicy lub w pobliżu innych usług, do których Twoje funkcje uzyskują dostęp.  |
+    | **[Konto magazynu](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account)** | Konto magazynu ogólnego przeznaczenia | Środowisko uruchomieniowe usługi Functions wymaga konta magazynu platformy Azure. Kliknij przycisk **Nowe**, aby utworzyć konto magazynu ogólnego przeznaczenia, lub użyj istniejącego konta.  |
 
-    >[!NOTE]
-    >Konto magazynu platformy Azure jest wymagane przez środowisko uruchomieniowe Functions. W związku z tym nowe konto magazynu platformy Azure utworzono dla Ciebie podczas tworzenia aplikacji funkcji.
+4. Kliknij przycisk **Utwórz**, aby utworzyć aplikację funkcji i powiązane zasoby na platformie Azure przy użyciu tych ustawień i wdrożyć kod projektu funkcji. 
 
-4. Kliknij przycisk **Utwórz** do tworzenia aplikacji funkcji i powiązanych zasobów na platformie Azure przy użyciu tych ustawień i wdrażanie funkcji kodu projektu. 
+5. Po ukończeniu wdrażania zanotuj wartość **Adres URL witryny**, która jest adresem aplikacji funkcji na platformie Azure.
 
-5. Po zakończeniu wdrażania Zanotuj **adres URL witryny** wartość, która jest adresem aplikacji funkcji na platformie Azure.
-
-    ![Lokalne środowisko uruchomieniowe platformy Azure](./media/functions-vstools-publish/functions-vstools-publish-profile.png)
+    ![Komunikat o powodzeniu publikowania](./media/functions-vstools-publish/functions-vstools-publish-profile.png)

@@ -1,8 +1,8 @@
 ---
- Tytuł: zawierają opis pliku: obejmują usług plików: Autor azure zasad: eross msft
+ Tytuł: plik dyrektywy include Opis: plik dyrektywy include Usługi: active-directory Autor: eross-msft
  
-MS.Service: ms.topic zasadami azure: obejmują ms.date: 04/24/2018 ms.author: lizross ms.custom: plik dołączany
+ms.service: active-directory ms.topic: include ms.date: 24.04.2018 ms.author: lizross ms.custom: plik dyrektywy include
 ---
 
 >[!Note] 
-> W tym artykule instrukcje dotyczące sposobu usuwania danych osobistych z urządzenia lub usługi i mogą służyć do obsługi sieci zobowiązań GDPR. Jeśli szukasz informacji ogólnych o GDPR zobacz [GDPR części portalu zaufania usługi](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
+> W tym artykule przedstawiono instrukcje dotyczące usuwania danych osobowych z urządzenia lub usługi, co jest pomocne w wypełnianiu obowiązków wynikających z RODO. Jeśli szukasz ogólnych informacji na temat RODO, zobacz [sekcję RODO w portalu zaufania usług](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).

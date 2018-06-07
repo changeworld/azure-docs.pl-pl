@@ -4,8 +4,8 @@ description: Dowiedz się, jak zarządzać udziałami plików platformy Azure pr
 services: storage
 documentationcenter: ''
 author: wmgries
-manager: jeconnoc
-editor: ''
+manager: aungoo
+editor: tamram
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/26/2018
 ms.author: wgries
-ms.openlocfilehash: c796ac54eb21af18d21144a00b633c6b6efc28be
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 4a7d39910fac6096ef17873a9f81c5e1d1508857
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34757143"
 ---
 # <a name="managing-azure-file-shares-with-azure-powershell"></a>Zarządzanie udziałami plików platformy Azure przy użyciu programu Azure PowerShell 
 [Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziały plików platformy Azure można instalować w systemach Windows, Linux i macOS. W tym przewodniku przedstawiono podstawowe informacje dotyczące pracy z udziałami plików platformy Azure przy użyciu programu PowerShell. W tym artykule omówiono sposób wykonywania następujących zadań:
@@ -165,7 +166,7 @@ Teraz, po wyświetleniu listy plików w nowym udziale, skopiowany plik powinien 
 Get-AzureStorageFile -Context $storageAcct.Context -ShareName "myshare2" -Path "myDirectory2" 
 ```
 
-Polecenie cmdlet `Start-AzureStorageFileCopy` jest wygodne w przypadku przenoszenia plików ad-hoc między udziałami plików platformy Azure i kontenerami usługi Azure Blob Storage, jednak do przenoszenia większej liczby plików lub plików o większych rozmiarach zalecamy używanie narzędzia AzCopy. Dowiedz się więcej o [narzędziu AzCopy dla systemu Windows](../common/storage-use-azcopy.md) i [narzędziu AzCopy dla systemu Linux](../common/storage-use-azcopy-linux.md). Narzędzie AzCopy musi być zainstalowane lokalnie — nie jest dostępne w usłudze Cloud Shell 
+Polecenie cmdlet `Start-AzureStorageFileCopy` jest wygodne w przypadku przenoszenia plików ad-hoc między udziałami plików platformy Azure i kontenerami usługi Azure Blob Storage, jednak do przenoszenia większej liczby plików lub plików o większych rozmiarach zalecamy używanie narzędzia AzCopy. Dowiedz się więcej o [narzędziu AzCopy dla systemu Windows](../common/storage-use-azcopy.md) i [narzędziu AzCopy dla systemu Linux](../common/storage-use-azcopy-linux.md). Narzędzie AzCopy musi być zainstalowane lokalnie — nie jest dostępne w usłudze Cloud Shell. 
 
 ## <a name="create-and-modify-share-snapshots"></a>Tworzenie i modyfikowanie migawek udziałów
 Jedną z dodatkowych przydatnych czynności, które można wykonywać na udziałach plików platformy Azure, jest tworzenie migawek udziałów. Migawka zachowuje określony moment w czasie dla udziału plików platformy Azure. Migawki udziałów są podobne do technologii systemów operacyjnych, które być może już znasz, takich jak:
