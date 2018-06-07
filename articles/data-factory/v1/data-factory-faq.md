@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 387b5e944b0fd198e37a35d7bf1c54f7795c9f21
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 12422a1123673feac1977fa5f52f49b2cdfda777
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621350"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Fabryka danych Azure — często zadawane pytania
 > [!NOTE]
@@ -40,7 +41,7 @@ Zobacz [strony Szczegóły cennika fabryki danych] [ adf-pricing-details] uzyska
 * Samouczek dotyczący sposobu **skopiowania/przeniesienia danych** za pomocą działania kopiowania, zobacz [skopiować dane z magazynu obiektów Blob Azure do usługi Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 * Samouczek dotyczący sposobu **przekształcania danych** za pomocą działania Hive HDInsight. Zobacz [przetwarzania danych przez uruchomienie skryptu Hive w klastrze usługi Hadoop](data-factory-build-your-first-pipeline.md)
 
-### <a name="what-is-the-data-factorys-region-availability"></a>Co to jest dostępność regionu fabryki danych?
+### <a name="what-is-the-data-factorys-region-availability"></a>Co to jest dostępność region s fabryki danych?
 Fabryka danych jest dostępna w **zachodnie nam** i **Europa Północna, Europa**. Usługi obliczeniowe i Magazyn używany przez fabryki danych może być w różnych regionach. Zobacz [obsługiwane regiony](data-factory-introduction.md#supported-regions).
 
 ### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>Jakie są limity liczby danych fabryki/potoki/działań/zestaw danych?

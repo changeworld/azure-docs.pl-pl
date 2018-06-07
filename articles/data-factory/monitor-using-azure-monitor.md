@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: 798af75625e0d2fed1220932c172683fe71f9aad
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 234dacca152dca6e8e212a86f3921c9355f640e4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34620344"
 ---
 # <a name="monitor-data-factories-using-azure-monitor"></a>Monitorowanie za pomocą monitora Azure fabryki danych  
 Aplikacje w chmurze są złożonych z wielu części ruchu. Monitorowanie zawiera danych, aby upewnić się, że aplikacja pozostaje w górę i działa w dobrej kondycji. Pomaga również umożliwia stave potencjalne problemy i rozwiązywanie problemów w przeszłości te. Ponadto można użyć danych monitorowania w celu uzyskania szczegółowych informacji o aplikacji. Wiedzy może pomóc zwiększyć wydajność aplikacji lub utrzymania lub automatyzować czynności, które w przeciwnym razie wymagają ręcznej interwencji.
@@ -106,7 +107,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | Właściwość | Typ | Opis |
 | --- | --- | --- |
 | storageAccountId |Ciąg | Identyfikator zasobu konta magazynu, do którego chcesz wysłać dzienniki diagnostyczne |
-| serviceBusRuleId |Ciąg | Identyfikator reguły magistrali usługi z przestrzeń nazw magistrali usług, w którym chcesz mieć centra zdarzeń utworzonych dla przesyłania strumieniowego dzienników diagnostycznych. Reguła identyfikator jest w formacie: "{identyfikator zasobu magistrali usługi} /authorizationrules/ {nazwa klucza}".|
+| serviceBusRuleId |Ciąg | Identyfikator reguły magistrali usługi z przestrzeń nazw magistrali usług, w którym chcesz mieć centra zdarzeń utworzonych dla przesyłania strumieniowego dzienników diagnostycznych. Reguła identyfikator jest w formacie: {identyfikator zasobu magistrali usługi} /authorizationrules/ {nazwa klucza}.|
 | workspaceId | Typ złożony | Tablica ziarno czasu metryki i ich zasad przechowywania. Obecnie ta właściwość jest pusta. |
 |metrics| Wartości parametrów potoku Uruchom do przekazania do wywoływanej potoku| Obiekt JSON mapowania nazw parametrów do wartości argumentów | 
 | dzienniki| Typ złożony| Nazwa kategorii dzienników diagnostycznych dla typu zasobu. Aby uzyskać listę kategorii dzienników diagnostycznych dla zasobu, należy najpierw wykonać operację pobierania ustawień diagnostycznych. |

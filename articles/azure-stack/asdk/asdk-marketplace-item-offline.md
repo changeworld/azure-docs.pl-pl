@@ -16,11 +16,12 @@ ms.custom: mvc
 ms.date: 04/20/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 325ef42d72970f4e0962a9b1a81b78bbd39585d4
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: a093e60718881b2fe9ca70df7596e8963dc55d9f
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808047"
 ---
 # <a name="tutorial-add-an-azure-stack-marketplace-item-from-a-local-source"></a>Samouczek: Dodawanie elementu stosu Azure marketplace z lokalnego źródła
 
@@ -48,85 +49,82 @@ Obraz systemu Windows Server 2016 stosu Azure marketplace można publikować prz
 
 Ta opcja została wdrożona stosu Azure w scenariuszu odłączonego ani w zastosowaniach z ograniczona łączność.
 
-1. Importowanie stosu Azure `Connect` i `ComputeAdmin` moduły programu PowerShell uwzględnione w katalogu narzędzia stosu Azure za pomocą następujących poleceń:
+1. [Instalowanie programu PowerShell dla usługi Azure stosu](../azure-stack-powershell-install.md).
 
-   ```powershell
-   Set-ExecutionPolicy RemoteSigned
+  ```PowerShell  
+    # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
+    Add-AzureRMEnvironment `
+      -Name "AzureStackAdmin" `
+      -ArmEndpoint $ArmEndpoint
 
-   # Import the Connect and ComputeAdmin modules.   
-   Import-Module .\Connect\AzureStack.Connect.psm1
-   Import-Module .\ComputeAdmin\AzureStack.ComputeAdmin.psm1
+    Set-AzureRmEnvironment `
+      -Name "AzureStackAdmin" `
+      -GraphAudience $GraphAudience
 
-   ```
+    $TenantID = Get-AzsDirectoryTenantId `
+      -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
+      -EnvironmentName AzureStackAdmin
 
-2. Uruchom jedno z poniższych skryptów do komputera hosta ASDK w zależności od tego, czy wdrożyć środowiska Azure stosu przy użyciu usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS):
+    Add-AzureRmAccount `
+      -EnvironmentName "AzureStackAdmin" `
+      -TenantId $TenantID
+  ```
 
-  - Polecenia dla **wdrożenia usługi Azure AD**: 
+2. Jeśli przy użyciu **Active Directory Federation Services**, użyj następującego polecenia cmdlet:
 
-      ```PowerShell
-      # To get this value for Azure Stack integrated systems, contact your service provider.
-      $ArmEndpoint = "https://adminmanagement.local.azurestack.external"
+  ```PowerShell
+  # For Azure Stack Development Kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
+  $ArmEndpoint = "<Resource Manager endpoint for your environment>"
 
-      # To get this value for Azure Stack integrated systems, contact your service provider.
-      $GraphAudience = "https://graph.windows.net/"
-      
-      # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
-      Add-AzureRMEnvironment `
-        -Name "AzureStackAdmin" `
-        -ArmEndpoint $ArmEndpoint
+  # For Azure Stack Development Kit, this value is set to https://graph.local.azurestack.external/. To get this value for Azure Stack integrated systems, contact your service provider.
+  $GraphAudience = "<GraphAuidence endpoint for your environment>"
 
-      Set-AzureRmEnvironment `
-        -Name "AzureStackAdmin" `
-        -GraphAudience $GraphAudience
-
-      $TenantID = Get-AzsDirectoryTenantId `
-      # Replace the AADTenantName value to reflect your Azure AD tenant name.
-        -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
-        -EnvironmentName AzureStackAdmin
-
-      Add-AzureRmAccount `
-        -EnvironmentName "AzureStackAdmin" `
-        -TenantId $TenantID 
-      ```
-
-  - Polecenia dla **wdrożenia usług AD FS**:
-      
-      ```PowerShell
-      # To get this value for Azure Stack integrated systems, contact your service provider.
-      $ArmEndpoint = "https://adminmanagement.local.azurestack.external"
-
-      # To get this value for Azure Stack integrated systems, contact your service provider.
-      $GraphAudience = "https://graph.local.azurestack.external/"
-
-      # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
-      Add-AzureRMEnvironment `
-        -Name "AzureStackAdmin" `
-        -ArmEndpoint $ArmEndpoint
-
-      Set-AzureRmEnvironment `
-        -Name "AzureStackAdmin" `
-        -GraphAudience $GraphAudience `
-        -EnableAdfsAuthentication:$true
-
-      $TenantID = Get-AzsDirectoryTenantId `
-      -ADFS `
-      -EnvironmentName "AzureStackAdmin" 
-
-      Add-AzureRmAccount `
-        -EnvironmentName "AzureStackAdmin" `
-        -TenantId $TenantID 
-      ```
-   
-3. Dodaj obraz systemu Windows Server 2016 do stosu Azure marketplace. (Zastąp *fully_qualified_path_to_ISO* ze ścieżką do ISO systemu Windows Server 2016, pobranego.)
-
-    ```PowerShell
-    $ISOPath = "<fully_qualified_path_to_ISO>"
-
-    # Add a Windows Server 2016 Evaluation VM image.
-    New-AzsServer2016VMImage `
-      -ISOPath $ISOPath
-
+  # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
+  Add-AzureRMEnvironment `
+    -Name "AzureStackAdmin" `
+    -ArmEndpoint $ArmEndpoint
     ```
+
+3. Zaloguj się do stosu Azure jako operatora. Aby uzyskać instrukcje, zobacz [Zaloguj się do stosu Azure jako operator](../azure-stack-powershell-configure-admin.md).
+
+   ````PowerShell  
+    Add-AzureRmAccount `
+      -EnvironmentName "AzureStackAdmin" `
+      -TenantId $TenantID
+  ````
+
+4. Dodaj obraz systemu Windows Server 2016 do stosu Azure marketplace.
+
+    **AzsPlatformimage Dodaj** polecenia cmdlet umożliwiają dodanie obrazu określa wartości używane przez Szablony usługi Azure Resource Manager, aby odwołać obrazu maszyny Wirtualnej.
+    
+    Wartości:
+    
+  - **publisher**  
+    Na przykład: `Microsoft`  
+    Segment nazwy wydawcy obrazu maszyny Wirtualnej, wykorzystywanym przez użytkowników po wdrożeniu przez nich obrazu. Na przykład **Microsoft**. Nie dołączaj spację lub inne znaki specjalne w tym polu.  
+  - **offer**  
+    Na przykład: `WindowsServer`  
+    Oferta segment nazwę obrazu maszyny Wirtualnej, wykorzystywanym przez użytkowników po wdrożeniu przez nich obrazu maszyny Wirtualnej. Na przykład **Windows Server**. Nie dołączaj spację lub inne znaki specjalne w tym polu.  
+  - **sku**  
+    Na przykład: `Datacenter2016`  
+    Segment nazwa jednostki SKU obrazu maszyny Wirtualnej, wykorzystywanym przez użytkowników po wdrożeniu przez nich obrazu maszyny Wirtualnej. Na przykład **Datacenter2016**. Nie dołączaj spację lub inne znaki specjalne w tym polu.  
+  - **Wersja**  
+    Na przykład: `1.0.0`  
+    Wersja obrazu maszyny Wirtualnej, wykorzystywanym przez użytkowników po wdrożeniu przez nich obrazu maszyny Wirtualnej. Ta wersja jest w formacie *\#.\#.\#*. Na przykład **1.0.0**. Nie dołączaj spację lub inne znaki specjalne w tym polu.  
+  - **osType**  
+    Na przykład: `Windows`  
+    OsType obrazu musi być równa albo **Windows** lub **Linux**. Zastąp *fully_qualified_path_to_ISO* ze ścieżką do ISO systemu Windows Server 2016, pobrany. 
+  - **OSUri**  
+    Na przykład: `https://storageaccount.blob.core.windows.net/vhds/Ubuntu1404.vhd`  
+    Można określić magazynu obiektów blob identyfikatora URI dla `osDisk`. W przypadku jego będzie określić miejsce przechowywania obrazu, który został pobrany.
+
+    Aby uzyskać więcej informacji, zobacz dokumentację programu PowerShell dla [AzsPlatformimage Dodaj](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage) polecenia cmdlet.
+
+    Otwórz program PowerShell z podniesionego wiersza, a następnie uruchom:
+
+      ````PowerShell  
+        Add-AzsPlatformimage -publisher "Microsoft" -offer "WindowsServer" -sku "Datacenter2016" -version "1.0.0” -OSType "Windows" -OSUri "<fully_qualified_path_to_ISO>"
+      ````  
 
 ## <a name="verify-the-marketplace-item-is-available"></a>Sprawdź, czy element marketplace jest dostępny
 Wykonaj te kroki, aby Sprawdź, czy nowy obraz maszyny Wirtualnej jest dostępna w witrynie marketplace stosu Azure.

@@ -15,11 +15,12 @@ ms.topic: get-started-article
 ms.date: 05/11/2018
 ms.author: brenduns
 ms.reviewer: jiahan
-ms.openlocfilehash: 314c5b51608192719c77ce143b3530f0bb310bc2
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
-ms.translationtype: HT
+ms.openlocfilehash: 6364c0bec8437ba0dfa195c6532b26ec506a2e90
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807435"
 ---
 # <a name="provision-virtual-machine-disk-storage-in-azure-stack"></a>Obsługę magazynowania dysku maszyny wirtualnej Azure stosu
 
@@ -61,26 +62,26 @@ Po utworzeniu maszyny Wirtualnej, można użyć portalu, aby:
 Każdy dysk niezarządzane, dodane należy umieścić w oddzielnych kontenera.
 
 >[!NOTE]
->Dyski tworzone i zarządzane przez usługę Azure są nazywane [dyskach zarządzanych](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/managed-disks-overview).
+>Dyski tworzone i zarządzane przez usługę Azure są nazywane [dyskach zarządzanych](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview).
 
 ### <a name="use-the-portal-to-create-and-attach-a-new-data-disk"></a>Utwórz i Dołącz nowy dysk danych za pomocą portalu
 
-1.  W portalu kliknij **maszyn wirtualnych**.    
+1.  W portalu, wybierz **maszyn wirtualnych**.    
     ![Przykład: Pulpit nawigacyjny z maszyny Wirtualnej](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
 2.  Wybierz maszynę wirtualną, które wcześniej zostały zainicjowane.   
     ![Przykład: Wybierz maszynę Wirtualną na pulpicie nawigacyjnym](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
-3.  Dla maszyny wirtualnej, kliknij przycisk **dysków** > **Dołącz nowy**.       
+3.  Dla maszyny wirtualnej, wybierz **dysków** > **Dołącz nowy**.       
     ![Przykład: Dołączyć nowego dysku do maszyny wirtualnej](media/azure-stack-manage-vm-disks/Attach-disks.png)    
 
-4.  W **Dołączanie nowego dysku** okienku, kliknij przycisk **lokalizacji**. Domyślna lokalizacja jest ustawiana do tego samego kontenera, w którym jest przechowywana na dysku systemu operacyjnego.      
+4.  W **Dołączanie nowego dysku** okienku wybierz **lokalizacji**. Domyślna lokalizacja jest ustawiana do tego samego kontenera, w którym jest przechowywana na dysku systemu operacyjnego.      
     ![Przykład: Ustaw lokalizację dysku](media/azure-stack-manage-vm-disks/disk-location.png)
 
-5.  Wybierz **konta magazynu** do użycia. Następnie wybierz pozycję **kontenera** gdzie chcesz umieścić dysk z danymi. Z **kontenery** stronę, można utworzyć nowy kontener Jeśli chcesz. Następnie można zmienić lokalizacji dla nowego dysku do jego własnej kontenera. Korzystając z kontenera osobne dla każdego dysku, możesz dystrybuować umieszczania dysku danych, które może poprawić wydajność. Kliknij przycisk **wybierz** zapisać je.     
+5.  Wybierz **konta magazynu** do użycia. Następnie wybierz pozycję **kontenera** gdzie chcesz umieścić dysk z danymi. Z **kontenery** stronę, można utworzyć nowy kontener Jeśli chcesz. Następnie można zmienić lokalizacji dla nowego dysku do jego własnej kontenera. Korzystając z kontenera osobne dla każdego dysku, możesz dystrybuować umieszczania dysku danych, które może poprawić wydajność. Wybierz **wybierz** zapisać je.     
     ![Przykład: Select kontenera](media/azure-stack-manage-vm-disks/select-container.png)
 
-6.  W **Dołączanie nowego dysku** pozycję Aktualizuj **nazwa**, **typu**, **rozmiar**, i **buforowanie hosta** ustawienia dysku. Następnie kliknij przycisk **OK** Aby zapisać nową konfigurację dysku dla maszyny Wirtualnej.  
+6.  W **Dołączanie nowego dysku** pozycję Aktualizuj **nazwa**, **typu**, **rozmiar**, i **buforowanie hosta** ustawienia dysku. Następnie wybierz **OK** Aby zapisać nową konfigurację dysku dla maszyny Wirtualnej.  
     ![Przykład: Całego dysku załącznika](media/azure-stack-manage-vm-disks/complete-disk-attach.png)  
 
 7.  Po stosu Azure utworzy dysk i dołącza go do maszyny wirtualnej, nowy dysk ma na liście ustawień dysku maszyny wirtualnej w obszarze **dysków z danymi**.   
@@ -94,22 +95,22 @@ Każdy dysk niezarządzane, dodane należy umieścić w oddzielnych kontenera.
   Planowane jest stosowanie różnych kontenerów do przechowywania pliku VHD niż kontener, który zawiera dysk systemu operacyjnego.   
   ![Przykład: Ładowanie pliku wirtualnego dysku twardego](media/azure-stack-manage-vm-disks/upload-vhd.png)
 
-2.  Po przekazaniu pliku VHD, można przystąpić do Dołącz wirtualny dysk twardy do maszyny Wirtualnej. W menu po lewej stronie kliknij **maszyn wirtualnych**.  
+2.  Po przekazaniu pliku VHD, można przystąpić do Dołącz wirtualny dysk twardy do maszyny Wirtualnej. W menu po lewej stronie wybierz **maszyn wirtualnych**.  
  ![Przykład: Wybierz maszynę Wirtualną na pulpicie nawigacyjnym](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
 3.  Wybierz maszynę wirtualną z listy.    
   ![Przykład: Wybierz maszynę Wirtualną na pulpicie nawigacyjnym](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
-4.  Na stronie dla maszyny wirtualnej, kliknij przycisk **dysków** > **Attach istniejących**.   
+4.  Na stronie dla maszyny wirtualnej, wybierz **dysków** > **Attach istniejących**.   
   ![Przykład: Dołączanie istniejącego dysku](media/azure-stack-manage-vm-disks/attach-disks2.png)
 
-5.  W **dołączyć istniejącego dysku** kliknij przycisk **pliku VHD**. **Kont magazynu** zostanie otwarta strona.    
+5.  W **dołączyć istniejącego dysku** wybierz pozycję **pliku VHD**. **Kont magazynu** zostanie otwarta strona.    
   ![Przykład: Select pliku wirtualnego dysku twardego](media/azure-stack-manage-vm-disks/select-vhd.png)
 
-6.  W obszarze **kont magazynu**, wybierz konto do użycia, a następnie wybierz kontener, który zawiera wcześniej przekazany plik VHD. Wybierz plik VHD, a następnie kliknij przycisk **wybierz** zapisać je.    
+6.  W obszarze **kont magazynu**, wybierz konto do użycia, a następnie wybierz kontener, który zawiera wcześniej przekazany plik VHD. Wybierz plik VHD, a następnie wybierz pozycję **wybierz** zapisać je.    
   ![Przykład: Select kontenera](media/azure-stack-manage-vm-disks/select-container2.png)
 
-7.  W obszarze **dołączyć istniejącego dysku**, wybrany plik jest wyświetlana w obszarze **pliku VHD**. Aktualizacja **buforowanie hosta** ustawienie dysku, a następnie kliknij przycisk **OK** Aby zapisać nową konfigurację dysku dla maszyny Wirtualnej.    
+7.  W obszarze **dołączyć istniejącego dysku**, wybrany plik jest wyświetlana w obszarze **pliku VHD**. Aktualizacja **buforowanie hosta** ustawienie dysku, a następnie wybierz **OK** Aby zapisać nową konfigurację dysku dla maszyny Wirtualnej.    
   ![Przykład: Dołącz plik wirtualnego dysku twardego](media/azure-stack-manage-vm-disks/attach-vhd.png)
 
 8.  Po stosu Azure utworzy dysk i dołącza go do maszyny wirtualnej, nowy dysk ma na liście ustawień dysku maszyny wirtualnej w obszarze **dysków z danymi**.   
