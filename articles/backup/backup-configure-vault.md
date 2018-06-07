@@ -1,25 +1,20 @@
 ---
-title: Użyj agenta usługi Kopia zapasowa Azure do utworzenia kopii zapasowej plików i folderów | Dokumentacja firmy Microsoft
+title: Agent usługi Kopia zapasowa Azure umożliwia tworzenie kopii zapasowej plików i folderów
 description: Agent usługi Kopia zapasowa Microsoft Azure umożliwia tworzenie kopii zapasowej plików systemu Windows i folderów na platformie Azure. Tworzenie magazynu usług odzyskiwania, zainstalować agenta kopii zapasowej Definiowanie zasad tworzenia kopii zapasowej i uruchom tworzenie początkowej kopii zapasowej plików i folderów.
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
 keywords: Magazyn kopii zapasowych; Tworzenie kopii zapasowej systemu Windows server; Kopia zapasowa systemu windows;
-ms.assetid: 7f5b1943-b3c1-4ddb-8fb7-3560533c68d5
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 1/5/2018
-ms.author: markgal;trinadhk;
-ms.openlocfilehash: 38f98a29edc2a0bfb0141a0a6fabad2727175f29
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: markgal
+ms.openlocfilehash: 583149ed892f82af8687d698cabe1a876aaaa523
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606262"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Tworzenie kopii zapasowych systemu Windows Server lub Client na platformie Azure przy użyciu modelu wdrażania używającego usługi Resource Manager
 W tym artykule opisano sposób wykonywania kopii zapasowej systemu Windows Server (lub klienta systemu Windows) plików i folderów na platformie Azure za pomocą usługi Kopia zapasowa Azure przy użyciu modelu wdrażania Menedżera zasobów.
@@ -29,7 +24,7 @@ W tym artykule opisano sposób wykonywania kopii zapasowej systemu Windows Serve
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 Aby utworzyć kopię zapasową serwera lub klienta na platformie Azure, potrzebne jest konto platformy Azure. Jeśli nie masz, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free/) w zaledwie kilka minut.
 
-## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu Usług odzyskiwania
+## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
 Magazyn usług odzyskiwania jest jednostka, która przechowuje wszystkie kopie zapasowe i punkty odzyskiwania, tworzonych w czasie. Magazyn usług odzyskiwania zawiera również zasady tworzenia kopii zapasowej stosowane do chronionych plików i folderów. Podczas tworzenia magazynu usług odzyskiwania, należy również wybierz opcję nadmiarowość odpowiedniego magazynu.
 
 ### <a name="to-create-a-recovery-services-vault"></a>Aby utworzyć magazyn usługi Recovery Services

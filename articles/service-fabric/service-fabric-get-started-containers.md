@@ -9,17 +9,17 @@ editor: vturecek
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 5fcd42a2453bddbfc1c1d1939dd9e63e7e09bdb0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
-ms.translationtype: HT
+ms.openlocfilehash: 8511af935eb2427724ace1f39ec9948e3b0b5537
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366532"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643213"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Windows
 > [!div class="op_single_selector"]
@@ -29,14 +29,21 @@ ms.locfileid: "34366532"
 Uruchomienie istniejącej aplikacji w kontenerze systemu Windows w klastrze usługi Service Fabric nie wymaga dokonywania żadnych zmian w aplikacji. W tym artykule przedstawiono proces tworzenia obrazu Docker zawierającego aplikację sieci Web w języku Python na platformie [Flask](http://flask.pocoo.org/) oraz wdrażania go w klastrze usługi Service Fabric. Będziesz również udostępniać aplikację skonteneryzowaną za pomocą usługi [Azure Container Registry](/azure/container-registry/). W tym artykule przyjęto założenie, że masz podstawową wiedzą dotyczącą platformy Docker. Aby uzyskać informacje dotyczące platformy Docker, przeczytaj artykuł [Docker Overview](https://docs.docker.com/engine/understanding-docker/) (Przegląd platformy Docker).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Komputer dewelopera z następującym oprogramowaniem:
-* Program Visual Studio 2015 lub Visual Studio 2017.
-* [Zestaw SDK usługi Service Fabric oraz narzędzia](service-fabric-get-started.md).
-*  Program Docker dla systemu Windows. [Pobierz program Docker CE dla systemu Windows (wersja stabilna)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Po zainstalowaniu i uruchomieniu programu Docker kliknij prawym przyciskiem myszy jego ikonę na pasku zadań i wybierz pozycję **Switch to Windows containers** (Przełącz na kontenery systemu Windows). Ten krok jest wymagany do uruchomienia obrazów platformy Docker opartych na systemie Windows.
+* Komputer dewelopera z następującym oprogramowaniem:
+  * Program Visual Studio 2015 lub Visual Studio 2017.
+  * [Zestaw SDK usługi Service Fabric oraz narzędzia](service-fabric-get-started.md).
+  *  Program Docker dla systemu Windows. [Pobierz program Docker CE dla systemu Windows (wersja stabilna)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Po zainstalowaniu i uruchomieniu programu Docker kliknij prawym przyciskiem myszy jego ikonę na pasku zadań i wybierz pozycję **Switch to Windows containers** (Przełącz na kontenery systemu Windows). Ten krok jest wymagany do uruchomienia obrazów platformy Docker opartych na systemie Windows.
 
-Klaster systemu Windows z co najmniej trzema węzłami działającymi w systemie Windows Server 2016 z kontenerami — [utwórz klaster](service-fabric-cluster-creation-via-portal.md) lub [wypróbuj bezpłatnie usługę Service Fabric](https://aka.ms/tryservicefabric).
+* Klaster systemu Windows z co najmniej trzech węzłów w systemie Windows Server z kontenerów. 
 
-Rejestr w usłudze Azure Container Registry — [utwórz rejestr kontenera](../container-registry/container-registry-get-started-portal.md) w subskrypcji platformy Azure.
+  W tym artykule (Kompilacja) wersji systemu Windows Server z kontenerami uruchomionych na węzły klastra musi być zgodna na komputerze deweloperskim. Jest to spowodowane utworzyć obraz docker na komputerze deweloperskim i istnieją ograniczenia zgodności między wersjami kontenera systemu operacyjnego i systemu operacyjnego hosta w którym jest wdrażany. Aby uzyskać więcej informacji, zobacz [kontenera systemu Windows Server zgodność systemu operacyjnego systemu operacyjnego i hosta](#windows-server-container-os-and-host-os-compatibility). 
+  
+  Aby określić wersji systemu Windows Server z kontenerami należy do klastra, należy uruchomić `ver` polecenia z wiersza polecenia systemu Windows na komputerze deweloperskim:
+
+  * Jeśli wersja zawiera *x.x.14323.x*, następnie [utworzyć klaster](service-fabric-cluster-creation-via-portal.md) upewnić się *2016 Windows Server Datacenter z kontenerów* dla systemu operacyjnego lub [bezpłatnie spróbuj sieci szkieletowej usług](https://aka.ms/tryservicefabric) z klastrem strony.
+  * Jeśli wersja zawiera *x.x.16299.x*, następnie [utworzyć klaster](service-fabric-cluster-creation-via-portal.md) upewnić się *WindowsServerSemiAnnual Datacenter-Core-1709-z — kontenery* dla System operacyjny. Nie można używać klastra strony.
+
+* Rejestr w usłudze Azure Container Registry — [utwórz rejestr kontenera](../container-registry/container-registry-get-started-portal.md) w subskrypcji platformy Azure.
 
 > [!NOTE]
 > Wdrażanie kontenerów do klastra usługi Service Fabric w systemie Windows 10 lub w klastrze z programem Docker CE nie jest obsługiwane. Ten przewodnik przy użyciu aparatu platformy Docker w systemie Windows 10 lokalnie testuje i na koniec wdraża usługi kontenerów do klastra systemu Windows Server na platformie Azure z programem Docker EE. 
@@ -316,7 +323,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 ```
 
 ## <a name="configure-isolation-mode"></a>Konfigurowanie trybu izolacji
-System Windows obsługuje dwa tryby izolacji dla kontenerów: tryb procesu oraz tryb funkcji Hyper-V. W trybie izolacji procesu wszystkie kontenery działające na tym samym hoście współdzielą jądro z hostem. W trybie izolacji funkcji Hyper-V jądra są odizolowane dla każdego kontenera funkcji Hyper-V i hosta kontenera. Tryb izolacji można określić w elemencie `ContainerHostPolicies` pliku manifestu aplikacji. Tryby izolacji, które można określić, to `process`, `hyperv` i `default`. Wartością domyślną trybu izolacji jest `process` na hostach z systemem Windows Server i `hyperv` na hostach z systemem Windows 10. Poniższy fragment kodu przedstawia sposób określania trybu izolacji w pliku manifestu aplikacji.
+System Windows obsługuje dwa tryby izolacji dla kontenerów: tryb procesu oraz tryb funkcji Hyper-V. W trybie izolacji procesu wszystkie kontenery działające na tym samym hoście współdzielą jądro z hostem. W trybie izolacji funkcji Hyper-V jądra są odizolowane dla każdego kontenera funkcji Hyper-V i hosta kontenera. Tryb izolacji można określić w elemencie `ContainerHostPolicies` pliku manifestu aplikacji. Tryby izolacji, które można określić, to `process`, `hyperv` i `default`. Wartość domyślna to trybie izolacji procesu na hostach z systemem Windows Server. Na hostach z systemem Windows 10 jest obsługiwana tylko tryb izolacji funkcji Hyper-V, dlatego kontenera działa w trybie izolacji funkcji Hyper-V niezależnie od jego ustawienie trybu izolacji. Poniższy fragment kodu przedstawia sposób określania trybu izolacji w pliku manifestu aplikacji.
 
 ```xml
 <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
@@ -387,19 +394,44 @@ docker rmi helloworldapp
 docker rmi myregistry.azurecr.io/samples/helloworldapp
 ```
 
+## <a name="windows-server-container-os-and-host-os-compatibility"></a>Windows Server kontenera systemu operacyjnego i hosta zgodność systemu operacyjnego
+
+Kontenery systemu Windows Server nie są zgodne przez wszystkie wersje systemu operacyjnego hosta. Na przykład:
+ 
+- Kontenery systemu Windows Server, utworzony przy użyciu systemu Windows Server w wersji 1709 nie działają na hoście z systemem Windows Server w wersji 2016. 
+- Kontenery systemu Windows Server, utworzony przy użyciu systemu Windows Server 2016 działa w trybie izolacji z funkcją Hyper-v tylko na hoście z systemem Windows Server w wersji 1709. 
+- Z kontenerami systemu Windows Server został utworzony przy użyciu systemu Windows Server 2016 może być konieczne upewnić się, że wersja systemu operacyjnego hosta i kontenera systemu operacyjnego są takie same, podczas uruchamiania w trybie izolacji procesu na hoście z systemem Windows Server 2016.
+ 
+Aby dowiedzieć się więcej, zobacz [zgodność wersji kontenera systemu Windows](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
+
+Należy wziąć pod uwagę zgodność systemu operacyjnego hosta i z kontenera systemu operacyjnego podczas tworzenia i wdrażania kontenerów do klastra usługi sieć szkieletowa usług. Na przykład:
+
+- Upewnij się, że wdrożeniem kontenerów z systemem operacyjnym zgodne z systemem operacyjnym na węzły klastra.
+- Upewnij się, że tryb izolacji określony dla kontenera aplikacji są spójne z pomocy technicznej dla kontenera systemu operacyjnego w węźle, w którym jest wdrażany.
+- Należy rozważyć sposób uaktualnienia systemu operacyjnego do węzłów klastra lub kontenery może mieć wpływ na ich zgodności. 
+
+Zaleca się następujące rozwiązania, aby upewnić się, że kontenery są poprawnie wdrożone w klastrze usługi sieć szkieletowa usług:
+
+- Użyj obrazu jawne znakowanie z obrazy usługi Docker, aby określić wersji systemu operacyjnego serwera Windows skompilowanego z kontenera. 
+- Użyj [znakowanie OS](#specify-os-build-specific-container-images) w pliku manifestu aplikacji, aby upewnić się, czy aplikacja jest zgodna w różnych wersjach systemu Windows Server i uaktualnień.
+
+> [!NOTE]
+> Z usługi Service Fabric wersji 6.2 i nowszych można wdrażać kontenerów na podstawie systemu Windows Server 2016 lokalnie na hoście systemu Windows 10. W systemie Windows 10 kontenery pracy w trybie izolacji funkcji Hyper-V, niezależnie od trybu izolacji w manifeście aplikacji. Aby dowiedzieć się więcej, zobacz [Konfigurowanie trybu izolacji](#configure-isolation-mode).   
+>
+ 
 ## <a name="specify-os-build-specific-container-images"></a>Określanie obrazów kontenera dla kompilacji systemu operacyjnego 
 
-Kontenery systemu Windows Server (w trybie izolacji procesu) mogą nie być zgodne z nowszymi wersjami systemu operacyjnego. Na przykład kontenery utworzone przy użyciu systemu Windows Server 2016 nie działają w systemie Windows Server w wersji 1709. W związku z tym, jeśli węzły klastra są aktualizowane do najnowszej wersji, usługi kontenerów utworzone za pomocą wcześniejszych wersji systemu operacyjnego mogą zakończyć się niepowodzeniem. Aby obejść to ograniczenie w wersji 6.1 (i nowszej) środowiska uruchomieniowego, usługa Service Fabric obsługuje określanie wielu obrazów systemu operacyjnego na kontener i oznacza je za pomocą wersji kompilacji systemu operacyjnego (uzyskanych przez uruchomienie elementu `winver` w wierszu polecenia systemu Windows). Przed zaktualizowaniem systemu operacyjnego na węzłach najpierw zaktualizuj manifesty aplikacji i określ elementy przesłaniające obrazy dla poszczególnych wersji systemu operacyjnego. Poniższy fragment kodu przedstawia, w jaki sposób określić wiele obrazów kontenera w manifeście aplikacji **ApplicationManifest.xml**:
+Kontenery systemu Windows Server nie może być zgodne w różnych wersjach systemu operacyjnego. Na przykład utworzone przy użyciu systemu Windows Server 2016 kontenery systemu Windows Server nie działają w systemie Windows Server w wersji 1709 w trybie izolacji procesu. W związku z tym jeśli węzły klastra zostaną zaktualizowane do najnowszej wersji, usługi kontenerów utworzony za pomocą wcześniejszych wersji systemu operacyjnego może zakończyć się niepowodzeniem. Aby obejść to w wersji 6.1 środowiska uruchomieniowego i nowszych, sieci szkieletowej usług obsługuje określania wielu obrazów systemu operacyjnego na kontenera i znakowanie je z kompilacji w wersji systemu operacyjnego w manifeście aplikacji. Wersja kompilacji systemu operacyjnego można uzyskać, uruchamiając `winver` w wierszu polecenia systemu Windows. Przed zaktualizowaniem systemu operacyjnego na węzłach najpierw zaktualizuj manifesty aplikacji i określ elementy przesłaniające obrazy dla poszczególnych wersji systemu operacyjnego. Poniższy fragment kodu przedstawia, w jaki sposób określić wiele obrazów kontenera w manifeście aplikacji **ApplicationManifest.xml**:
 
 
 ```xml
-<ContainerHostPolicies> 
+      <ContainerHostPolicies> 
          <ImageOverrides> 
            <Image Name="myregistry.azurecr.io/samples/helloworldappDefault" /> 
                <Image Name="myregistry.azurecr.io/samples/helloworldapp1701" Os="14393" /> 
                <Image Name="myregistry.azurecr.io/samples/helloworldapp1709" Os="16299" /> 
          </ImageOverrides> 
-     </ContainerHostPolicies> 
+      </ContainerHostPolicies> 
 ```
 Wersja kompilacji dla systemu Windows Server 2016 to 14393, a dla systemu Windows Server w wersji 1709 — 16299. Manifest usługi wciąż określa tylko jeden obraz na usługę kontenera, jak przedstawiono poniżej:
 
@@ -605,7 +637,7 @@ W środowisku uruchomieniowym usługi Service Fabric w wersji 6.2 lub nowszej mo
 
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o uruchamianiu [kontenerów w usłudze Service Fabric](service-fabric-containers-overview.md).
 * Zapoznaj się z samouczkiem [Deploy a .NET application in a container](service-fabric-host-app-in-a-container.md) (Wdrażanie aplikacji .NET w kontenerze).
 * Uzyskaj informacje o [cyklu życia aplikacji](service-fabric-application-lifecycle.md) usługi Service Fabric.

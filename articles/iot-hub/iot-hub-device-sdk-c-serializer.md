@@ -1,24 +1,20 @@
 ---
 title: Azure urządzenia IoT zestawu SDK dla języka C - serializator | Dokumentacja firmy Microsoft
 description: Jak używać biblioteki serializator na urządzeniu Azure IoT SDK dla języka C do tworzenia aplikacji urządzenia, które komunikują się z Centrum IoT.
-services: iot-hub
-documentationcenter: ''
 author: yzhong94
-manager: timlt
-editor: ''
-ms.assetid: defbed34-de73-429c-8592-cd863a38e4dd
+manager: arjmands
 ms.service: iot-hub
-ms.devlang: cpp
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: c
+ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: yizhon
-ms.openlocfilehash: 04b5ebf6d8c568fbfd9b291bef95af973ec5d6d7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a724fa5acc930475bdbe4ffcc74141470a92326c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634148"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>Azure IoT urządzenia zestawu SDK dla języka C — więcej informacji na temat serializator
 [Najpierw artykuł](iot-hub-device-sdk-c-intro.md) w tej serii wprowadzone **urządzenia Azure IoT SDK dla języka C**. Kolejnym artykule podano bardziej szczegółowy opis [ **IoTHubClient**](iot-hub-device-sdk-c-iothubclient.md). W tym artykule zakończeniu pokrycia zestawu SDK, zapewniając bardziej szczegółowy opis pozostałych składników: **serializator** biblioteki.
@@ -68,18 +64,18 @@ Następujące typy danych są obsługiwane w modelach utworzone za pomocą **ser
 
 | Typ | Opis |
 | --- | --- |
-| O podwójnej precyzji |Podwójna precyzja liczba zmiennoprzecinkowa |
+| double |Podwójna precyzja liczba zmiennoprzecinkowa |
 | int |32-bitowa liczba całkowita |
-| Float |Liczba zmiennoprzecinkowa pojedynczej precyzji |
-| długa |długich liczb całkowitych |
+| liczba zmiennoprzecinkowa |Liczba zmiennoprzecinkowa pojedynczej precyzji |
+| dł. |długich liczb całkowitych |
 | int8\_t |8-bitową liczbą całkowitą |
-| int16\_t |16-bitową liczbę całkowitą |
+| Int16\_t |16-bitową liczbę całkowitą |
 | int32\_t |32-bitowa liczba całkowita |
 | Int64\_t |64-bitowa liczba całkowita |
-| bool |wartość logiczna |
+| wartość logiczna |wartość logiczna |
 | ASCII\_char\_ptr |Ciąg ASCII |
 | EDM\_DATA\_CZASU\_PRZESUNIĘCIA |Przesunięcie czasu daty |
-| EDM\_IDENTYFIKATOR GUID |GUID |
+| EDM\_IDENTYFIKATOR GUID |Identyfikator GUID |
 | EDM\_BINARY |Binarne |
 | DEKLAROWANIE\_— STRUKTURA |Typ danych złożonych |
 
@@ -664,7 +660,7 @@ serializer_deinit();
 
 W przeciwnym razie wszystkie inne funkcje wymienione powyżej działać w identyczny **serializator** biblioteki tak jak w **IoTHubClient** biblioteki. Aby uzyskać więcej informacji o tych tematów, zobacz [poprzednim artykule](iot-hub-device-sdk-c-iothubclient.md) w tej serii.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule opisano szczegółowo unikatowe aspekty **serializator** zawartych w bibliotece **urządzenia Azure IoT SDK dla języka C**. Z informacjami pod warunkiem, że powinien dysponować dobrą znajomością używania modeli do wysyłania zdarzeń i odbieranie komunikatów z Centrum IoT.
 
 Teraz również serii trzech części o tworzeniu aplikacji za pomocą **urządzenia Azure IoT SDK dla języka C**. Powinno to być wystarczających informacji do nie tylko ułatwiające rozpoczęcie pracy, ale umożliwiają dokładne zrozumienie działania interfejsów API. Aby uzyskać dodatkowe informacje istnieje kilka przykładów w zestawie SDK nie pasuje do tutaj. W przeciwnym razie [dokumentacji zestawu SDK](https://github.com/Azure/azure-iot-sdk-c) jest dobrym zasobów, aby uzyskać dodatkowe informacje.

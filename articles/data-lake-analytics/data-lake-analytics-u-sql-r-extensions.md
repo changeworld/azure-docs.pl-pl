@@ -1,26 +1,23 @@
 ---
-title: "Rozszerzanie skryptów U-SQL z języka R w usłudze Azure Data Lake Analytics | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak uruchomić kod języka R w skryptów U-SQL"
+title: Rozszerzanie skryptów U-SQL z języka R w usłudze Azure Data Lake Analytics
+description: Dowiedz się, jak uruchomić kod języka R w skryptów U-SQL przy użyciu usługi Azure Data Lake Analytics
 services: data-lake-analytics
-documentationcenter: 
-author: saveenr
-manager: sukvg
-editor: cgronlun
-ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 06/20/2017
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: d479af515566f497d9611e75426f6acb8f8276d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: kfile
+editor: jasonwhowell
+ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
+ms.topic: conceptual
+ms.date: 06/20/2017
+ms.openlocfilehash: 8b22b4238b20f56727d1c7858094328ab8817dad
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624928"
 ---
-# <a name="tutorial-get-started-with-extending-u-sql-with-r"></a>Samouczek: Rozpoczynanie pracy z rozszerzanie U-SQL z języka R
+# <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>Rozszerzanie skryptów U-SQL z kodem R w usłudze Azure Data Lake Analytics
 
 Poniższy przykład przedstawia podstawowe kroki wdrażania R kodu:
 * Użyj `REFERENCE ASSEMBLY` instrukcji, aby włączyć rozszerzenia R skryptu U-SQL.
@@ -97,7 +94,7 @@ Aby wdrożyć ten skrypt języka R z instrukcji wdrażania zasobów za pomocą s
 ### <a name="datatypes"></a>Typy danych
 * Ciąg, jak i numeryczne kolumny z U-SQL są konwertowane na — między R DataFrame i języka U-SQL [obsługiwane typy: `double`, `string`, `bool`, `integer`, `byte`].
 * `Factor` Typ danych nie jest obsługiwane w języku U-SQL.
-* `byte[]`musi być Zserializowany jako algorytmem base64 `string`.
+* `byte[]` musi być Zserializowany jako algorytmem base64 `string`.
 * Ciągi języka U-SQL może zostać przekonwertowany na czynniki w kodzie języka R, kiedy U-SQL utworzony dataframe wejściowych R lub przez ustawienie dla parametru reduktor `stringsAsFactors: true`.
 
 ### <a name="schemas"></a>Schematy

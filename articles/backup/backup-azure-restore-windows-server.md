@@ -1,24 +1,19 @@
 ---
-title: Odzyskiwanie danych na platformie Azure do systemu Windows Server lub komputer z systemem Windows | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak przywrócić dane przechowywane na platformie Azure do systemu Windows Server lub komputer z systemem Windows."
+title: Odzyskiwanie danych na platformie Azure do systemu Windows Server lub komputer z systemem Windows
+description: Dowiedz się, jak przywrócić dane przechowywane na platformie Azure do systemu Windows Server lub komputer z systemem Windows.
 services: backup
-documentationcenter: 
 author: saurabhsensharma
 manager: shivamg
-editor: 
-ms.assetid: 742f4b9e-c0ab-4eeb-8e22-ee29b83c22c4
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 1/4/2018
-ms.author: saurse;trinadhk;markgal;
-ms.openlocfilehash: 3444b13972ab9e5c435fc009e8ddb51bcafb1a41
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.author: saurse
+ms.openlocfilehash: 16f0460dea75b0dc52c3852d9947db0ad15f8fbe
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606328"
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>Przywracanie plików do maszyny z systemem Windows Server lub Client przy użyciu modelu wdrażania używającego usługi Resource Manager
 

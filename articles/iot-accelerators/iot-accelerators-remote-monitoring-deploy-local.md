@@ -1,30 +1,27 @@
 ---
 title: Wdrożenie zdalne monitorowania lokalnie - Azure | Dokumentacja firmy Microsoft
 description: W tym samouczku przedstawiono sposób wdrażania zdalnego monitorowania akcelerator rozwiązań na komputerze lokalnym do testowania i tworzenia.
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 03/07/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: a11df1dc17b4dcbacece85526eeac39502cbbe34
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.topic: conceptual
+ms.openlocfilehash: 3f723d716a652e64527310a499d6b06a6cf6bc6f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627235"
 ---
-# <a name="deploy-the-remote-monitoring-solution-accelerator-locally"></a>Wdrażanie zdalne monitorowania akcelerator rozwiązań lokalnie
+# <a name="deploy-the-remote-monitoring-solution-accelerator-locally"></a>Wdrażanie zdalne monitorowanie akcelerator rozwiązań lokalnie
 
-W tym artykule przedstawiono sposób wdrażania zdalnego monitorowania akcelerator rozwiązań na komputerze lokalnym do testowania i tworzenia. Takie podejście wdraża mikrousług lokalnego kontenerze Docker i używa Centrum IoT, rozwiązania Cosmos bazę danych i usług Azure storage w chmurze. Możesz użyć akceleratorów rozwiązania (komputery) interfejsu wiersza polecenia do wdrożenia usługi w chmurze Azure.
+W tym artykule przedstawiono sposób wdrażania akcelerator rozwiązań monitorowania zdalnego na komputerze lokalnym do testowania i tworzenia. Takie podejście wdraża mikrousług lokalnego kontenerze Docker i używa Centrum IoT, rozwiązania Cosmos bazę danych i usług Azure storage w chmurze. Możesz użyć akceleratorów rozwiązania (komputery) interfejsu wiersza polecenia do wdrożenia usługi w chmurze Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby wdrożyć używane przez zdalne akcelerator rozwiązań monitorowania usług Azure, musisz mieć aktywną subskrypcją platformy Azure.
+Aby wdrożyć usług Azure używany przez akcelerator rozwiązań monitorowania zdalnego, musisz mieć aktywną subskrypcją platformy Azure.
 
 Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](http://azure.microsoft.com/pricing/free-trial/).
 
@@ -52,7 +49,7 @@ Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia, zobacz [s
 
 ### <a name="download-the-source-code"></a>Pobieranie kodu źródłowego
 
- Zdalne repozytorium kodu źródłowego monitorowania obejmuje Docker pliki konfiguracji, które należy pobrać, skonfigurować i uruchomić obrazów Docker, które zawierają mikrousług. Klonowania i utworzyć lokalną wersję repozytorium, przejdź do odpowiedniego folderu na komputerze lokalnym za pomocą Twoje ulubione wiersza polecenia lub terminalu i uruchom jedno z następujących poleceń:
+ Repozytorium zdalne monitorowanie kodu źródłowego zawiera Docker pliki konfiguracji, które należy pobrać, skonfigurować i uruchomić obrazów Docker, które zawierają mikrousług. Klonowania i utworzyć lokalną wersję repozytorium, przejdź do odpowiedniego folderu na komputerze lokalnym za pomocą Twoje ulubione wiersza polecenia lub terminalu i uruchom jedno z następujących poleceń:
 
 Aby zainstalować implementacje Java mikrousług, uruchom polecenie:
 
@@ -119,13 +116,13 @@ Przy pierwszym uruchomieniu tego polecenia Docker pobiera obrazy mikrousługi z 
 
 Oddzielne powłoki służy do wyświetlania dzienników z kontenera. Najpierw znaleźć przy użyciu Identyfikatora kontenera `docker ps -a` polecenia. Następnie użyj `docker logs {container-id} --tail 1000` do wyświetlania ostatnich wpisów dziennika 1000 określonego kontenera.
 
-Aby uzyskać dostęp do zdalnego pulpitu nawigacyjnego monitorowania rozwiązania, przejdź do [ http://localhost:8080 ](http://localhost:8080) w przeglądarce.
+Aby uzyskać dostęp do pulpitu nawigacyjnego rozwiązania monitorowania zdalnego, przejdź do [ http://localhost:8080 ](http://localhost:8080) w przeglądarce.
 
 ## <a name="clean-up"></a>Czyszczenie
 
 Aby uniknąć niepotrzebnych kosztów, po zakończeniu testowania, należy usunąć usługi w chmurze z subskrypcją platformy Azure. Najprostszym sposobem usunięcia usług jest można przejść do [portalu Azure](https://ms.portal.azure.com) i usunąć grupy zasobów utworzonej za pomocą `pcs` narzędzia.
 
-Użyj `docker-compose down --rmi all` polecenie, aby usunąć obrazy usługi Docker i wolnego miejsca na komputerze lokalnym. Możesz także usunąć lokalną kopię zdalnego repozytorium monitorowania utworzenia sklonowanego kodu źródłowego z usługi GitHub.
+Użyj `docker-compose down --rmi all` polecenie, aby usunąć obrazy usługi Docker i wolnego miejsca na komputerze lokalnym. Możesz także usunąć lokalną kopię monitorowania zdalnego repozytorium, utworzenia sklonowanego kodu źródłowego z usługi GitHub.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -7,14 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
 ms.devlang: cpp
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: edmacauley
-ms.openlocfilehash: 49cbed06d92843fcf0c444e7ef2bb42df2addf7e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: c37fdaa9f7aa2a0d243fe6cbc175060156967c61
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644702"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Połącz z bazą danych SQL za pomocą C i C++
 Ten wpis jest przeznaczony dla deweloperów C i C++ podejmuje próbę nawiązania połączenia z bazą danych SQL Azure. Podzielona jest na sekcje, można przejść do sekcji, która najlepiej przechwytuje zainteresowanie. 
@@ -108,7 +109,7 @@ Ostatnim etapem przed kompilacji jest dodanie **odbc** jako zależności bibliot
 
 Aby uruchomić aplikację, wyświetlić konsoli systemu Linux z **debugowania** menu: 
 
-![Linux Console](./media/sql-database-develop-cplusplus-simple/linuxconsole.png)
+![Konsola systemu Linux](./media/sql-database-develop-cplusplus-simple/linuxconsole.png)
 
 Jeśli połączenie zakończyło się pomyślnie, powinien zostać wyświetlony nazwa bieżącej bazy danych na konsoli systemu Linux: 
 

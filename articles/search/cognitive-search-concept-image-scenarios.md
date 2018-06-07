@@ -10,11 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 77fbd69aad6c78ecd5c933d8017c980afaa661a3
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 566b1e731f137863e9d4bc284d8868d408c7a575
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640204"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Jak informacje o procesie i wyodrębniania z obrazów w scenariuszach kognitywnych wyszukiwania
 
@@ -44,7 +45,7 @@ Ustaw **parsingMode** parametr `json` (do indeksowania każdy obiekt blob jako p
 Wartość domyślna pikseli 2000 znormalizowane obrazy maksymalną szerokość i wysokość jest oparta na maksymalne rozmiary obsługiwane przez [umiejętności Rozpoznawania](cognitive-search-skill-ocr.md) i [obrazu umiejętności analizy](cognitive-search-skill-image-analysis.md). Jeśli zwiększysz maksymalnych przetwarzanie może zakończyć się niepowodzeniem na większych obrazów.
 
 
-Określ imageAction w Twojej [definicji indeksatora](ref-create-indexer.md) w następujący sposób:
+Określ imageAction w Twojej [definicji indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer) w następujący sposób:
 
 ```json
 {
@@ -217,7 +218,7 @@ Jako obiekt pomocnika Jeśli potrzebujesz do przekształcenia współrzędnych z
 ```
 
 ## <a name="see-also"></a>Zobacz także
-+ [Utwórz indeksator (REST)](ref-create-indexer.md)
++ [Utwórz indeksator (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 + [Analizowanie umiejętności obrazu](cognitive-search-skill-image-analysis.md)
 + [Umiejętności Rozpoznawania](cognitive-search-skill-ocr.md)
 + [Tekst umiejętności scalania](cognitive-search-skill-textmerger.md)

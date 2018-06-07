@@ -1,24 +1,19 @@
 ---
-title: "Wprowadzenie do zarządzania urządzeniami Centrum IoT Azure (.NET/węzła) | Dokumentacja firmy Microsoft"
-description: "Jak używać zarządzania urządzeniami Centrum IoT Azure do zainicjowania ponownego uruchomienia urządzenia zdalnego. Przy użyciu urządzenia Azure IoT SDK dla środowiska Node.js aplikacji symulowane urządzenie, która zawiera metoda bezpośrednia i usługę Azure IoT SDK dla platformy .NET zaimplementować aplikację usługi, która wywołuje metodę bezpośredniego."
-services: iot-hub
-documentationcenter: .net
+title: Wprowadzenie do zarządzania urządzeniami Centrum IoT Azure (.NET/węzła) | Dokumentacja firmy Microsoft
+description: Jak używać zarządzania urządzeniami Centrum IoT Azure do zainicjowania ponownego uruchomienia urządzenia zdalnego. Przy użyciu urządzenia Azure IoT SDK dla środowiska Node.js aplikacji symulowane urządzenie, która zawiera metoda bezpośrednia i usługę Azure IoT SDK dla platformy .NET zaimplementować aplikację usługi, która wywołuje metodę bezpośredniego.
 author: juanjperez
-manager: timlt
-editor: 
-ms.assetid: e044006d-ffd6-469b-bc63-c182ad066e31
+manager: cberlin
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 10/05/2017
 ms.author: juanpere
-ms.openlocfilehash: 5d0b7b1ab5893e55a6e2aa16451b6a9fc1481966
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: df41d8b88cf630183afc314dafdc1e898f4e02d9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632241"
 ---
 # <a name="get-started-with-device-management-netnode"></a>Wprowadzenie do zarządzania urządzeniami (.NET/węzeł)
 
@@ -70,7 +65,7 @@ W tej sekcji służy do tworzenia aplikacji konsoli .NET (przy użyciu języka C
         static JobClient jobClient;
         static string targetDevice = "myDeviceId";
         
-6. Dodaj następującą metodę do **Program** klasy.  Ten kod pobiera dwie urządzenia rebooting urządzenia i danych wyjściowych zgłoszone właściwości.
+6. Dodaj następującą metodę do klasy **Program**.  Ten kod pobiera dwie urządzenia rebooting urządzenia i danych wyjściowych zgłoszone właściwości.
    
         public static async Task QueryTwinRebootReported()
         {
@@ -78,7 +73,7 @@ W tej sekcji służy do tworzenia aplikacji konsoli .NET (przy użyciu języka C
             Console.WriteLine(twin.Properties.Reported.ToJson());
         }
         
-7. Dodaj następującą metodę do **Program** klasy.  Ten kod inicjuje ponownego uruchomienia na urządzeniu, za pomocą metody bezpośredniego.
+7. Dodaj następującą metodę do klasy **Program**.  Ten kod inicjuje ponownego uruchomienia na urządzeniu, za pomocą metody bezpośredniego.
 
         public static async Task StartReboot()
         {

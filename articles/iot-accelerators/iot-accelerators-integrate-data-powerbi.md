@@ -1,22 +1,19 @@
 ---
 title: Wizualizuj dane monitorowania zdalnego przy użyciu usługi Power BI - Azure | Dokumentacja firmy Microsoft
 description: Ten samouczek używa Power BI Desktop i DB rozwiązania Cosmos do integerate danych z rozwiązanie monitorowania zdalnego do wizualizacji dostosowane. Użytkownicy w ten sposób można tworzenie własnych niestandardowych pulpitów nawigacyjnych i udostępniać je użytkownikom nie w ramach rozwiązania.
-services: iot-suite
-suite: iot-suite
 author: asdonald
 manager: hegate
 ms.author: asdonald
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 05/01/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 55feb56008a54676bd0af332e251da94a9653aaf
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: e396d69a61679a85fdfbd3e8fd43216635dec51d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627794"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Wizualizuj dane monitorowania zdalnego przy użyciu usługi Power BI
 
@@ -105,7 +102,7 @@ Należy również do [odświeżania danych](https://docs.microsoft.com/en-us/pow
 
 W tym artykule przedstawiono temat do wizualizacji danych monitorowania zdalnych przy użyciu usługi Power BI
 
-Aby uzyskać więcej informacji dotyczących dostosowywania zdalnego rozwiązanie monitorowania zobacz:
+Aby uzyskać więcej informacji dotyczących dostosowywania rozwiązanie monitorowania zdalnego Zobacz:
 
 * [Dostosowywanie rozwiązanie monitorowania zdalnego interfejsu użytkownika](iot-accelerators-remote-monitoring-customize.md)
 * [Przewodnik informacyjny dla deweloperów](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)

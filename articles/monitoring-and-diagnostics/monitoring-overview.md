@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: robb,bwren
-ms.openlocfilehash: 27d3835b5574492fdb62df0131ca3a542dd21ec3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 354aadd4377e054bc9c10561bbda8fc8009a98a7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640102"
 ---
-# <a name="monitoring-azure-applications-and-resources"></a>Monitorowanie aplikacji platformy Azure i zasobów
+# <a name="monitoring-azure-applications-and-resources"></a>Monitorowanie aplikacji i zasobów platformy Azure
 
 Monitorowanie jest czynnością zbierania i analizowania danych w celu ustalenia wydajności, kondycji i dostępności aplikacji biznesowych i zasobów, których ona zależy. Strategia monitorowania skuteczne pomaga w zrozumieniu szczegółowe działaniem składników aplikacji. Pomaga również zwiększenia Twojej pracy aktywnego informujący poważnych problemów, dzięki czemu można je rozwiązać, zanim wystąpią problemy.
 
@@ -117,9 +118,9 @@ Istnieje kilka narzędzi, które współpracują ze sobą, aby monitorować ró�
 
 [Monitor sieci](../network-watcher/network-watcher-monitoring-overview.md) udostępnia oparta na scenariuszu monitorowania i diagnostyki dla różnych scenariuszach sieciowych na platformie Azure. Przechowuje dane w Azure metryki i informacji diagnostycznych do dalszej analizy. Działa on z następujących rozwiązań w zakresie monitorowania różnych aspektów sieci.
 
-[Sieci monitora wydajności (NPM)](https://blogs.msdn.microsoft.com/azuregov/2017/09/05/network-performance-monitor-general-availability/) monitorowania rozwiązania, który monitoruje łączność między chmur publicznych centrów danych i lokalnych środowisk sieci opartej na chmurze.
+[Sieci monitora wydajności (NPM)](../log-analytics/log-analytics-network-performance-monitor.md) monitorowania rozwiązania, który monitoruje łączność między chmur publicznych centrów danych i lokalnych środowisk sieci opartej na chmurze.
 
-[Monitor usługi ExpressRoute](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/) jest możliwość NPM, która monitoruje łączność end-to-end i wydajności za pośrednictwem obwody usługi Azure ExpressRoute.
+[Monitor usługi ExpressRoute](../expressroute/how-to-npm.md) jest możliwość NPM, która monitoruje łączność end-to-end i wydajności za pośrednictwem obwody usługi Azure ExpressRoute.
 
 [Analiza DNS](../log-analytics/log-analytics-dns.md) to rozwiązanie zapewnia zabezpieczeń, wydajności i operacji związanych insights oparte na serwerach DNS.
 

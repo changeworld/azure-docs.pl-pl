@@ -1,25 +1,19 @@
 ---
 title: Połączone fabryki rozwiązania często zadawane pytania — Azure | Dokumentacja firmy Microsoft
 description: Często zadawane pytania dotyczące akcelerator rozwiązań połączone fabryki
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 4ed0cd413480e717e686f7e52123102e1a838f19
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: dbdd9c70fc135561eb0e60e5932e446bcfa3759b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627505"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Często zadawane pytania dotyczące akcelerator rozwiązań połączone fabryki
 
@@ -67,7 +61,7 @@ Dostępne są dwie opcje, aby usunąć adres IP:
 
 Logowanie do symulacji maszyny Wirtualnej jest obsługiwana tylko jeśli wdrożono rozwiązanie przy użyciu skryptu środowiska PowerShell `build.ps1` w [repozytorium](https://github.com/Azure/azure-iot-connected-factory).
 
-Jeśli wdrożono rozwiązanie z www.azureiotsuite.com nie logowania się do maszyny Wirtualnej. Nie można zalogować się, ponieważ hasło jest generowany losowo i nie można zresetować go.
+Jeśli wdrożono rozwiązanie z www.azureiotsolutions.com nie logowania się do maszyny Wirtualnej. Nie można zalogować się, ponieważ hasło jest generowany losowo i nie można zresetować go.
 
 1. Dodaj publiczny adres IP do maszyny Wirtualnej. Zobacz [jak dodać publicznego adresu IP na symulacyjnych maszyny Wirtualnej?](#how-do-i-remove-the-public-ip-address-to-the-simulation-vm)
 1. Tworzenie sesji SSH maszyny Wirtualnej przy użyciu adresu IP maszyny wirtualnej.
@@ -148,11 +142,11 @@ Jeśli zostanie wyświetlone żadne dane wysyłane do Centrum IoT, oznacza to, �
 
 Aby włączyć mapy interakcyjnej w rozwiązaniu fabryki połączone, musi mieć istniejącego interfejsu API map Bing planu przedsiębiorstwa.
 
-W przypadku wdrażania z [www.azureiotsuite.com](http://www.azureiotsuite.com), proces wdrażania sprawdza ma włączone interfejsu API map Bing Enterprise planu subskrypcji i automatycznie wdraża mapy interakcyjnej do fabryki połączony. Jeśli nie jest to możliwe, można włączyć mapy interakcyjnej we wdrożeniu w następujący sposób:
+W przypadku wdrażania z [www.azureiotsolutions.com](http://www.azureiotsolutions.com), proces wdrażania sprawdza ma włączone interfejsu API map Bing Enterprise planu subskrypcji i automatycznie wdraża mapy interakcyjnej do fabryki połączony. Jeśli nie jest to możliwe, można włączyć mapy interakcyjnej we wdrożeniu w następujący sposób:
 
 Podczas wdrażania przy użyciu `build.ps1` skryptów w witrynie GitHub fabryki połączone repozytorium i ma interfejsu API map Bing planu przedsiębiorstwa, ustaw zmienną środowiskową `$env:MapApiQueryKey` w oknie kompilacji, aby klucz zapytania planu. Mapy interakcyjnej jest włączana automatycznie.
 
-Jeśli nie masz interfejsu API map Bing Enterprise planu wdrażania rozwiązania fabryki połączone z [www.azureiotsuite.com](http://www.azureiotsuite.com) lub przy użyciu `build.ps1` skryptu. Następnie dodaj interfejsu API map Bing Enterprise planu subskrypcji, zgodnie z objaśnieniem w [sposób utworzenia interfejsu API map Bing dla konta organizacji?](#how-do-i-create-a-bing-maps-api-for-enterprise-account). Wyszukiwanie klucza zapytania tego konta, zgodnie z objaśnieniem w [Uzyskiwanie interfejsu API map Bing dla przedsiębiorstwa QueryKey](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey) i Zapisz ten klucz. Przejdź do portalu Azure i uzyskać dostęp do zasobu usługi aplikacji w danym wdrożeniu połączone fabryki. Przejdź do **ustawienia aplikacji**, gdzie można znaleźć sekcji **ustawień aplikacji**. Ustaw **MapApiQueryKey** klucza zapytania został uzyskany. Zapisz ustawienia, a następnie przejdź do **omówienie** i uruchom ponownie usługę aplikacji.
+Jeśli nie masz interfejsu API map Bing Enterprise planu wdrażania rozwiązania fabryki połączone z [www.azureiotsolutions.com](http://www.azureiotsolutions.com) lub przy użyciu `build.ps1` skryptu. Następnie dodaj interfejsu API map Bing Enterprise planu subskrypcji, zgodnie z objaśnieniem w [sposób utworzenia interfejsu API map Bing dla konta organizacji?](#how-do-i-create-a-bing-maps-api-for-enterprise-account). Wyszukiwanie klucza zapytania tego konta, zgodnie z objaśnieniem w [Uzyskiwanie interfejsu API map Bing dla przedsiębiorstwa QueryKey](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey) i Zapisz ten klucz. Przejdź do portalu Azure i uzyskać dostęp do zasobu usługi aplikacji w danym wdrożeniu połączone fabryki. Przejdź do **ustawienia aplikacji**, gdzie można znaleźć sekcji **ustawień aplikacji**. Ustaw **MapApiQueryKey** klucza zapytania został uzyskany. Zapisz ustawienia, a następnie przejdź do **omówienie** i uruchom ponownie usługę aplikacji.
 
 ### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>Jak utworzyć interfejsu API map Bing dla konta organizacji
 
@@ -212,6 +206,6 @@ Do wysyłania danych telemetrycznych z innych niż UA OPC urządzeń do fabryki 
 
 Możesz także wypróbować niektóre inne funkcje i możliwości akceleratorów rozwiązań IoT:
 
-* [Omówienie akceleratora rozwiązań do konserwacji zapobiegawczej](../iot-suite/iot-suite-predictive-overview.md)
+* [Omówienie akceleratora rozwiązań do konserwacji zapobiegawczej](iot-accelerators-predictive-overview.md)
 * [Akceleratora rozwiązań połączonych fabryki — omówienie](iot-accelerators-connected-factory-overview.md)
-* [Zabezpieczenia IoT od podstaw](../iot-suite/securing-iot-ground-up.md)
+* [Zabezpieczenia IoT od podstaw](securing-iot-ground-up.md)

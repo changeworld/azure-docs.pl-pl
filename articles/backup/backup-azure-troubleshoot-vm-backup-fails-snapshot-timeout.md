@@ -1,25 +1,20 @@
 ---
-title: 'Rozwiązywanie problemów z usługi Kopia zapasowa Azure awarii: niedostępny stan agenta gościa | Dokumentacja firmy Microsoft'
+title: 'Rozwiązywanie problemów z usługi Kopia zapasowa Azure awarii: niedostępny stan agenta gościa'
 description: Objawy, przyczyny i rozwiązania błędów kopia zapasowa Azure powiązane z agenta, rozszerzenia i dysków.
 services: backup
-documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: ''
 keywords: Kopia zapasowa Azure; Agent maszyny Wirtualnej; Łączności sieciowej;
-ms.assetid: 4b02ffa4-c48e-45f6-8363-73d536be4639
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
-ms.author: genli;markgal;sogup;
-ms.openlocfilehash: 17f4f832af0177ad588058833672c0986adeb3fa
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: genli
+ms.openlocfilehash: 63cded007af499455e7bb4fc23d26d56caf96678
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606362"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z usługi Kopia zapasowa Azure awarii: problemy z agentem lub rozszerzenia
 
@@ -63,7 +58,7 @@ Po zarejestrować i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa Az
 
 ## <a name="backup-fails-because-the-vm-agent-is-unresponsive"></a>Kopii zapasowej nie powiedzie się, ponieważ nie odpowiada, agent maszyny Wirtualnej
 
-Komunikat o błędzie: "Nie można wykonać operacji, ponieważ Agent maszyny Wirtualnej nie jest elastyczny" <br>
+Komunikat o błędzie: "Nie można nawiązać komunikacji z agentem maszyny Wirtualnej do stanu migawki" <br>
 Kod błędu: "GuestAgentSnapshotTaskStatusError"
 
 Po zarejestrować i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa Azure kopii zapasowej inicjuje zadania komunikując się z rozszerzenia kopii zapasowej maszyny Wirtualnej do tworzenia migawki punktu w czasie. Jeden z następujących warunków może uniemożliwić migawki są wyzwalane. Jeśli migawka nie jest wyzwalany, może wystąpić błąd tworzenia kopii zapasowej. Wykonaj następujące kroki rozwiązywania problemów w podanej kolejności, a następnie ponów próbę wykonania operacji:  
@@ -91,6 +86,16 @@ Na wymagania wdrożenia maszyny Wirtualnej nie ma dostępu do Internetu. Lub mo�
 
 Prawidłowe rozszerzenie usługi Backup wymaga połączenia z Azure publicznych adresów IP. Rozszerzenie wysyła polecenia do punktu końcowego usługi Azure storage (adres URL protokołu HTTP) do zarządzania migawki maszyny wirtualnej. Jeśli rozszerzenie nie ma dostępu do publicznej sieci internet, wykonaj kopię zapasową ostatecznie zakończy się niepowodzeniem.
 
+Go możliwe do wdrożenia serwera proxy do kierowania ruchem maszyny Wirtualnej.
+##### <a name="create-a-path-for-http-traffic"></a>Tworzenie ścieżki dla ruchu HTTP
+
+1. Jeśli masz ograniczeń sieci w miejscu (na przykład grupa zabezpieczeń sieci), wdrażania serwera proxy HTTP do kierowania ruchem.
+2. Aby umożliwić dostęp do Internetu z serwera proxy HTTP, należy dodać reguły do grupy zabezpieczeń sieci, jeśli istnieje.
+
+Aby dowiedzieć się, jak skonfigurować serwer proxy HTTP dla kopii zapasowych maszyn wirtualnych, zobacz [przygotowania środowiska do tworzenia kopii zapasowych maszyn wirtualnych platformy Azure](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
+
+W kopii zapasowej maszyny Wirtualnej lub serwer proxy, przez który ruch jest kierowany wymaga dostępu do usługi Azure publiczny adres IP
+
 ####  <a name="solution"></a>Rozwiązanie
 Aby rozwiązać ten problem, wypróbuj jedną z następujących metod:
 
@@ -104,13 +109,6 @@ Aby poznać procedury krok po kroku, aby skonfigurować usługi tagi, obejrzyj [
 
 > [!WARNING]
 > Tagi usługi magazynowania są w wersji zapoznawczej. Są one dostępne tylko w określonych regionach. Aby uzyskać listę regionów, zobacz [usługi tagi dla magazynu](../virtual-network/security-overview.md#service-tags).
-
-##### <a name="create-a-path-for-http-traffic"></a>Tworzenie ścieżki dla ruchu HTTP
-
-1. Jeśli masz ograniczeń sieci w miejscu (na przykład grupa zabezpieczeń sieci), wdrażania serwera proxy HTTP do kierowania ruchem.
-2. Aby umożliwić dostęp do Internetu z serwera proxy HTTP, należy dodać reguły do grupy zabezpieczeń sieci, jeśli istnieje.
-
-Aby dowiedzieć się, jak skonfigurować serwer proxy HTTP dla kopii zapasowych maszyn wirtualnych, zobacz [przygotowania środowiska do tworzenia kopii zapasowych maszyn wirtualnych platformy Azure](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
 Dysków Azure zarządzanych, może być konieczne otwierający dodatkowy port (na porcie 8443) na zapory.
 
@@ -194,6 +192,19 @@ Ten problem dotyczy zarządzanych maszyn wirtualnych, w których użytkownik zab
 
 #### <a name="solution"></a>Rozwiązanie
 
-Aby rozwiązać ten problem, Usuń blokadę z grupy zasobów i umożliwić usługi Kopia zapasowa Azure, wyczyść kolekcję punkt odzyskiwania i podstawowej migawek w następnej kopii zapasowej.
-Po zakończeniu można ponownie umieścić ponownie blokady w grupie zasobów maszyny Wirtualnej. 
+Aby rozwiązać ten problem, Usuń blokadę z grupy zasobów i wykonaj następujące kroki w celu usunięcia kolekcji punkt przywracania: 
+ 
+1. Usunięcie blokady w grupie zasobów, w którym znajduje się maszyna wirtualna. 
+2. Zainstaluj ARMClient przy użyciu Chocolatey: <br>
+   https://github.com/projectkudu/ARMClient
+3. Zaloguj się do ARMClient: <br>
+    `.\armclient.exe login`
+4. Pobierz kolekcję punkt przywracania, do której odnosi się do maszyny Wirtualnej: <br>
+    `.\armclient.exe get https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30`
 
+    Przykład: `.\armclient.exe get https://management.azure.com/subscriptions/f2edfd5d-5496-4683-b94f-b3588c579006/resourceGroups/winvaultrg/providers/Microsoft.Compute/restorepointcollections/AzureBackup_winmanagedvm?api-version=2017-03-30`
+5. Usuń kolekcję punkt przywracania: <br>
+    `.\armclient.exe delete https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30` 
+6. Następnego zaplanowanego tworzenia kopii zapasowej automatycznie tworzy kolekcję punktu przywracania i nowych punktów przywracania.
+
+Po zakończeniu można ponownie umieścić ponownie blokady w grupie zasobów maszyny Wirtualnej. 

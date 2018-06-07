@@ -1,24 +1,19 @@
 ---
-title: Rozwiązywanie problemów z kopii zapasowej błędy maszyny wirtualnej platformy Azure | Dokumentacja firmy Microsoft
+title: Rozwiązywanie problemów z kopii zapasowej błędy maszyny wirtualnej platformy Azure
 description: Rozwiązywanie problemów z kopii zapasowej i przywracania maszyn wirtualnych platformy Azure
 services: backup
-documentationcenter: ''
 author: trinadhk
 manager: shreeshd
-editor: ''
-ms.assetid: 73214212-57a4-4b57-a2e2-eaf9d7fde67f
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/21/2018
-ms.author: trinadhk;markgal;jpallavi;sogup
-ms.openlocfilehash: 25008736dbff87aafe2f2ef2d13bbaf746e95e4d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: trinadhk
+ms.openlocfilehash: d6e78d46f0886b06cb1cf3577c16c8bc4f842bab
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607263"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Rozwiązywanie problemów z kopiami zapasowymi maszyn wirtualnych platformy Azure
 Można rozwiązać błędów napotkanych podczas przy użyciu usługi Kopia zapasowa Azure informacje wymienione w poniższej tabeli.
@@ -30,7 +25,7 @@ Można rozwiązać błędów napotkanych podczas przy użyciu usługi Kopia zapa
 | Agent maszyny Wirtualnej nie może nawiązać połączenia z usługą kopia zapasowa Azure. -Upewnij się, czy maszyna wirtualna ma łączność sieciową i agenta maszyny Wirtualnej jest najnowsze i uruchomiona. Aby uzyskać więcej informacji zapoznaj się  http://go.microsoft.com/fwlink/?LinkId=800034 |Ten błąd jest zgłaszany, jeśli występuje problem z agentem maszyny Wirtualnej lub dostępu do sieci do infrastruktury platformy Azure są zablokowane w inny sposób. [Dowiedz się więcej](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#vm-agent-unable-to-communicate-with-azure-backup) informacje o debugowaniu zapasowej maszyny Wirtualnej migawki problemy.<br> Jeśli agent maszyny Wirtualnej nie powoduje żadnych problemów, a następnie uruchom ponownie maszynę Wirtualną. W czasie niepoprawny stan maszyny Wirtualnej mogą powodować problemy, i ponownego uruchamiania maszyny Wirtualnej resetuje to "nieprawidłowego stanu". |
 | Maszyna wirtualna jest w stanie niepowodzenia inicjowania obsługi administracyjnej — Uruchom ponownie maszynę Wirtualną i upewnij się, że maszyna wirtualna jest w stanie uruchomienia lub zamknięcia do utworzenia kopii zapasowej | Dzieje się tak, gdy jeden z błędami rozszerzenia prowadzi stan maszyny Wirtualnej w stanie niepowodzenia inicjowania obsługi administracyjnej. Przejdź do listy rozszerzeń i czy ma rozszerzenia nie powiodło się, usuń go i spróbuj ponownie uruchomić maszynę wirtualną. Jeśli wszystkie rozszerzenia są w stanie uruchomienia, sprawdź, czy Usługa agenta maszyny Wirtualnej jest uruchomiona. Jeśli nie, uruchom ponownie usługę agenta maszyny Wirtualnej. | 
 | VMSnapshot rozszerzenia operacja nie powiodła się dla zarządzanych dysków, ponów operację tworzenia kopii zapasowej. Jeśli problem się powtarza, postępuj zgodnie z instrukcjami w "http://go.microsoft.com/fwlink/?LinkId=800034". Jeśli problem będzie dalej, skontaktuj się z pomocą techniczną firmy Microsoft | Ten błąd w przypadku niepowodzenia wyzwolenia migawki usługi Kopia zapasowa Azure. [Dowiedz się więcej](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#vmsnapshot-extension-operation-failed) informacje o debugowaniu wirtualna migawki problemy. |
-| Można kopiowania migawki maszyny wirtualnej z powodu wolnego miejsca na koncie magazynu - Sprawdź, czy konto magazynu ma wolnego miejsca odpowiednikiem danych na dyskach magazynu premium dołączony do maszyny wirtualnej | W przypadku maszyn wirtualnych w warstwie premium możemy skopiować migawki do konta magazynu. To, aby upewnić się, że ruch związany z zarządzaniem kopii zapasowej, który działa na migawki, nie ograniczają liczbę IOPS dostępne do aplikacji przy użyciu dysków premium. Firma Microsoft zaleca się, że przydzielone tylko 50% całkowitego konta miejsca do magazynowania, usługi Azure Backup można skopiować migawki do przechowywania konta i transfer danych z tej lokalizacji skopiowany na koncie magazynu do magazynu. | 
+| Można kopiowania migawki maszyny wirtualnej z powodu wolnego miejsca na koncie magazynu - Sprawdź, czy konto magazynu ma wolnego miejsca odpowiednikiem danych na dyskach magazynu premium dołączony do maszyny wirtualnej | W przypadku maszyn wirtualnych premium na stos kopii zapasowej maszyny Wirtualnej V1 możemy skopiować migawki do konta magazynu. To, aby upewnić się, że ruch związany z zarządzaniem kopii zapasowej, który działa na migawki, nie ograniczają liczbę IOPS dostępne do aplikacji przy użyciu dysków premium. Firma Microsoft zaleca się, że możesz przydzielić tylko 50% (17.5 TB) miejsca do magazynowania całkowita konta, usługi Azure Backup można skopiować migawki do przechowywania konta i transfer danych z tej lokalizacji skopiowany na koncie magazynu do magazynu. | 
 | Nie można wykonać operacji, ponieważ agent maszyny Wirtualnej nie jest elastyczny |Ten błąd jest zgłaszany, jeśli występuje problem z agentem maszyny Wirtualnej lub dostępu do sieci do infrastruktury platformy Azure są zablokowane w inny sposób. Dla maszyn wirtualnych systemu Windows Sprawdź stan usługi agenta maszyny Wirtualnej w usługach i czy agent jest wyświetlane w aplecie Programy w Panelu sterowania. Spróbuj usunąć program z kontrolki panelu i ponowne zainstalowanie agenta, jak wspomniano [poniżej](#vm-agent). Po ponownym zainstalowaniu agenta, Wyzwól kopię zapasową adhoc można zweryfikować. |
 | Operacja rozszerzenia usług odzyskiwania nie powiodła się. -Należy upewnić się, że najnowsza wersja agenta maszyny wirtualnej jest zainstalowany na maszynie wirtualnej i jest uruchomiona usługa agenta. Ponów operację tworzenia kopii zapasowej i w przypadku niepowodzenia skontaktuj się z pomocą techniczną firmy Microsoft. |Ten błąd jest zgłaszany, gdy agent maszyny Wirtualnej jest nieaktualny. Zobacz sekcję "Aktualizacja agenta maszyny Wirtualnej" poniżej, aby zaktualizować agenta maszyny Wirtualnej. |
 | Maszyna wirtualna nie istnieje. -Podaj upewnij się, że istnieje maszyny wirtualnej, lub wybierz inną maszynę wirtualną. |Dzieje się tak, gdy podstawowej maszyny Wirtualnej jest usuwane, ale zasady tworzenia kopii zapasowych w dalszym ciągu wyszukiwania dla maszyny Wirtualnej wykonać kopię zapasową. Aby naprawić ten błąd: <ol><li> Utwórz ponownie maszynę wirtualną o tej samej nazwie i tej samej nazwy grupy zasobów [nazwa usługi w chmurze],<br>(OR)<br></li><li>Zatrzymaj ochronę maszyny wirtualnej bez usuwania danych kopii zapasowej. [więcej informacji](http://go.microsoft.com/fwlink/?LinkId=808124)</li></ol> |

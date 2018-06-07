@@ -12,17 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/27/2018
+ms.date: 05/21/2018
 ms.author: sethm
-ms.openlocfilehash: d433fb916280e98dd0f2af61728596b8566be71b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 1795c1ec0b4129e3c99fff3fc893148e191ce83e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641496"
 ---
 # <a name="azure-relay-faqs"></a>Przekaźnik Azure — często zadawane pytania
 
-Ten artykuł zawiera odpowiedzi niektóre często zadawane pytania (FAQ) o [przekazywania Azure](https://azure.microsoft.com/services/service-bus/). Ogólne Azure cennik i pomocy technicznej informacji można uzyskać [często zadawane pytania dotyczące obsługi Azure](https://azure.microsoft.com/en-in/support/faq/).
+Ten artykuł zawiera odpowiedzi niektóre często zadawane pytania (FAQ) o [przekazywania Azure](https://azure.microsoft.com/services/service-bus/). Ogólne Azure cennik i pomocy technicznej informacji można uzyskać [często zadawane pytania dotyczące obsługi Azure](https://azure.microsoft.com/support/faq/).
 
 ## <a name="general-questions"></a>Pytania ogólne
 ### <a name="what-is-azure-relay"></a>Co to jest usługa Azure Relay?
@@ -35,7 +36,7 @@ A [przestrzeni nazw](relay-create-namespace-portal.md) jest kontenerem zakresu, 
 Wcześniej nazwane usługi Service Bus Relay nosi teraz [przekazywania WCF](relay-wcf-dotnet-get-started.md). Można nadal używać tej usługi w zwykły sposób. Funkcja połączeń hybrydowych było możliwe jest zaktualizowana wersja usługi, która jest ponownie przeszczepione z usług Azure BizTalk. Przekaźnik usługi WCF i połączeń hybrydowych nadal obsługiwane.
 
 ## <a name="pricing"></a>Cennik
-W tej sekcji odpowiedzi na niektóre często zadawane pytania dotyczące przekazywania cennik struktury. Również widoczne [pomocy technicznej platformy Azure — często zadawane pytania](http://go.microsoft.com/fwlink/?LinkID=185083) Azure ogólne informacje o cenach. Aby uzyskać pełne informacje o cenach przekazywania, zobacz [szczegóły cennika usługi Service Bus][Pricing overview].
+W tej sekcji odpowiedzi na niektóre często zadawane pytania dotyczące przekazywania cennik struktury. Również widoczne [pomocy technicznej platformy Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/) Azure ogólne informacje o cenach. Aby uzyskać pełne informacje o cenach przekazywania, zobacz [szczegóły cennika usługi Service Bus][Pricing overview].
 
 ### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>Jak można pobierać połączeń hybrydowych i przekazywania WCF?
 Aby uzyskać pełne informacje o cenach przekazywania, zobacz [połączeń hybrydowych i przekaźników WCF] [ Pricing overview] tabeli usługi Service Bus cennik strony szczegółów. Oprócz ceny wymienione na tej stronie są naliczane transferów danych skojarzony za wyjście poza centrum danych, w którym aplikacja zostanie zainicjowana.
@@ -81,8 +82,8 @@ Przekaźniki, które są otwierane za pomocą **netTCPRelay** wiązania WCF Trak
 | Współbieżne odbiorników w przekaźnik |Jednostka |Kolejne żądania dla dodatkowych połączeń są odrzucane i wyjątek jest odbierany przez kod wywołujący. |25 |
 | Połączeń współbieżnych przekazywania na wszystkich przekazywania punktów końcowych w przestrzeni nazw usługi |Przestrzeń nazw |- |5000 |
 | Punkty końcowe przekazywania na przestrzeni nazw usługi |Przestrzeń nazw |- |10 000 |
-| Rozmiar komunikatu [NetOnewayRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.netonewayrelaybinding.aspx) i [NetEventRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.neteventrelaybinding.aspx) przekazuje |Przestrzeń nazw |Wiadomości przychodzących, które przekraczają te przydziały są odrzucane i wyjątek jest odbierany przez kod wywołujący. |64 KB |
-| Rozmiar komunikatu [HttpRelayTransportBindingElement](https://msdn.microsoft.com/library/microsoft.servicebus.httprelaytransportbindingelement.aspx) i [NetTcpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.nettcprelaybinding.aspx) przekazuje |Przestrzeń nazw |Brak limitu rozmiaru dla wiadomości. |Nieograniczona liczba |
+| Rozmiar komunikatu [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) i [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) przekazuje |Przestrzeń nazw |Wiadomości przychodzących, które przekraczają te przydziały są odrzucane i wyjątek jest odbierany przez kod wywołujący. |64 KB |
+| Rozmiar komunikatu [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) i [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) przekazuje |Przestrzeń nazw |Brak limitu rozmiaru dla wiadomości. |Nieograniczona liczba |
 
 ### <a name="does-relay-have-any-usage-quotas"></a>Przekaźnik ma wszelkie przydziały użycia?
 Domyślnie dla dowolnej usługi w chmurze firmy Microsoft ustawia agregacji miesięczne przydział użycia, która jest obliczana dla wszystkich subskrypcji klienta. Rozumiemy, że w czasie potrzeb może przekroczyć tych limitów. Tak możemy zrozumienie potrzeb i odpowiednio dostosować te limity można się z obsługą klienta w dowolnym momencie. Dla usługi Service Bus przydziały użycie agregacji są następujące:
@@ -108,7 +109,7 @@ Na potrzeby migracji przestrzeni nazw przekazywania Azure z jedną subskrypcję 
 
 Przenieś przestrzeni nazw z jedną subskrypcją platformy Azure do innej subskrypcji przy użyciu programu PowerShell, użyj następującej procedury. Do wykonania tej operacji, przestrzeń nazw już musi być aktywne, a użytkownik uruchamiający poleceń programu PowerShell musi być użytkownika administratora dla subskrypcji źródłowej i docelowej.
 
-```powershell
+```azurepowershell-interactive
 # Create a new resource group in the target subscription.
 Select-AzureRmSubscription -SubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff'
 New-AzureRmResourceGroup -Name 'targetRG' -Location 'East US'
@@ -136,4 +137,4 @@ Tak. Klient przekaźnika wysyła połączenia z usługą przekazywania Azure prz
 
 [Pricing overview]: https://azure.microsoft.com/pricing/details/service-bus/
 [Relay exceptions]: relay-exceptions.md
-[Shared access signatures]: ../service-bus-messaging/service-bus-sas.md
+[Shared Access Signatures]: ../service-bus-messaging/service-bus-sas.md

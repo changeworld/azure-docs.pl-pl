@@ -4,14 +4,15 @@ description: Zawiera omówienie urządzenia moduł zbierający i sposobie konfig
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 05/22/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: d0dd310a1f6dff389a4d3dd41dc389b7117272fe
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 32554b2f297c2079374a5edd7739af7320bc1234
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640231"
 ---
 # <a name="collector-appliance"></a>Moduł zbierający urządzenia
 
@@ -35,7 +36,7 @@ Można utworzyć modułu zbierającego, wykonując kroki opisane w tym miejscu -
 | Składnik      | Element docelowy komunikacji   | Wymagany port                            | Przyczyna                                   |
 | -------------- | --------------------- | ---------------------------------------- | ---------------------------------------- |
 | Moduł zbierający      | Usługa Azure Migrate | TCP 443                                  | Moduł zbierający powinny mieć możliwość komunikacji z usługą za pośrednictwem portu SSL 443 |
-| Moduł zbierający      | Program vCenter Server        | Domyślne 443                             | Moduł zbierający powinno być możliwe do komunikacji z serwerem vCenter. Łączy się vCenter na 443 domyślnie. Jeśli vCenter nasłuchuje na innym porcie, ten port powinny być dostępne jako port wychodzący modułu zbierającego |
+| Moduł zbierający      | Program vCenter Server        | Domyślnie 443                             | Moduł zbierający powinno być możliwe do komunikacji z serwerem vCenter. Łączy się vCenter na 443 domyślnie. Jeśli vCenter nasłuchuje na innym porcie, ten port powinny być dostępne jako port wychodzący modułu zbierającego |
 | Moduł zbierający      | RDP|   | TCP 3389 | Można mieć możliwość RDP do komputera modułu zbierającego |
 
 
@@ -187,37 +188,37 @@ Zalecamy również następujące kroki, aby zabezpieczyć urządzenia
 
 Moduł zbierający można uaktualnić do najnowszej wersji, bez pobierania komórki jajowe jeszcze raz.
 
-1. Pobierz najnowszą [pakiet uaktualniający](https://aka.ms/migrate/col/latestupgrade).
+1. Pobierz najnowszą [pakiet uaktualniający](https://aka.ms/migrate/col/upgrade_9_11) (wersja 1.0.9.11).
 2. W celu zapewnienia bezpiecznego pobrany poprawki, Otwórz okno polecenia administratora i uruchom następujące polecenie, aby wygenerować skrótu dla pliku ZIP. Skrót wygenerowanego powinno być zgodne z skrótu wymienionych dla określonej wersji:
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
 
-    (example usage C:\>CertUtil -HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.5.zip SHA256)
+    (Przykładowe użycie C:\>CertUtil - HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.7.zip SHA256)
 3. Skopiuj plik zip do migracji Azure modułu zbierającego maszyny wirtualnej (moduł zbierający urządzenia).
 4. Kliknij prawym przyciskiem myszy w pliku zip, a następnie wybierz Wyodrębnij wszystkie.
 5. Kliknij prawym przyciskiem myszy na Setup.ps1 i wybierz polecenie Uruchom przy użyciu programu PowerShell i postępuj zgodnie z instrukcjami na ekranie, aby zainstalować aktualizację.
 
 ### <a name="list-of-updates"></a>Lista aktualizacji
 
+#### <a name="upgrade-to-version-10911"></a>Uaktualnienie do wersji 1.0.9.11
+
+Wartości do uaktualnienia mieszania [pakietu 1.0.9.11](https://aka.ms/migrate/col/upgrade_9_11)
+
+**Algorytm** | **Wartość skrótu**
+--- | ---
+MD5 | 0e36129ac5383b204720df7a56b95a60
+SHA1 | aa422ef6aa6b6f8bc88f27727e80272241de1bdf
+SHA256 | 5f76dbbe40c5ccab3502cc1c5f074e4b4bcbf356d3721fd52fb7ff583ff2b68f
+
 #### <a name="upgrade-to-version-1097"></a>Uaktualnienie do wersji 1.0.9.7
 
-W celu uaktualnienia do wersji 1.0.9.7 pobierania [pakietu](https://aka.ms/migrate/col/upgrade_9_7)
+Wartości do uaktualnienia mieszania [pakietu 1.0.9.7](https://aka.ms/migrate/col/upgrade_9_7)
 
 **Algorytm** | **Wartość skrótu**
 --- | ---
 MD5 | 01ccd6bc0281f63f2a672952a2a25363
 SHA1 | 3e6c57523a30d5610acdaa14b833c070bffddbff
 SHA256 | e3ee031fb2d47b7881cc5b13750fc7df541028e0a1cc038c796789139aa8e1e6
-
-#### <a name="upgrade-to-version-1095"></a>Uaktualnienie do wersji 1.0.9.5
-
-W celu uaktualnienia do wersji 1.0.9.5 pobierania [pakietu](https://aka.ms/migrate/col/upgrade_9_5)
-
-**Algorytm** | **Wartość skrótu**
---- | ---
-MD5 | d969ebf3bdacc3952df0310d8891ffdf
-SHA1 | f96cc428eaa49d597eb77e51721dec600af19d53
-SHA256 | 07c03abaac686faca1e82aef8b80e8ad8eca39067f1f80b4038967be1dc86fa1
 
 ## <a name="next-steps"></a>Kolejne kroki
 

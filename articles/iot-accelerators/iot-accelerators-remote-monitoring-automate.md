@@ -1,26 +1,23 @@
 ---
-title: Wykrywanie problemów z urządzeniami w zdalnym rozwiązanie monitorowania - Azure | Dokumentacja firmy Microsoft
-description: W tym samouczku przedstawiono sposób automatycznego wykrywania problemów z urządzeniami oparte na wartościach progowych w zdalnym rozwiązanie monitorowania przy użyciu reguł i akcje.
-services: iot-suite
-suite: iot-suite
+title: Wykrywaj problemy związane z urządzenia w rozwiązaniu monitorowania zdalnego - Azure | Dokumentacja firmy Microsoft
+description: W tym samouczku przedstawiono sposób automatycznego wykrywania problemów z urządzeniami oparte na wartościach progowych w rozwiązaniu monitorowania zdalnego przy użyciu reguł i akcje.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-suite
 ms.date: 05/01/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: f3583b27b2fb9959e65a9c66a75c1174ebf3e238
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: df1ba7909c64e8ccc24bcf3584bd28b2629f49ff
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627317"
 ---
 # <a name="detect-issues-using-threshold-based-rules"></a>Wykrywanie problemów przy użyciu reguły progu
 
-Ten samouczek pokazuje możliwości aparatu reguł w zdalnym rozwiązanie monitorowania. Aby dodać tych funkcji, samouczku scenariusza aplikacji Contoso IoT.
+Ten samouczek pokazuje możliwości aparatu reguł w rozwiązaniu monitorowania zdalnego. Aby dodać tych funkcji, samouczku scenariusza aplikacji Contoso IoT.
 
 Firma Contoso ma regułę, która generuje alert krytyczny, gdy wykorzystanie zgłoszone przez **Chłodnica** urządzenia przekracza 250 PSI. Jako operator chcesz zidentyfikować **Chłodnica** urządzeń, które mogą mieć problemy czujników, wyszukując początkowej wartości szczytowe wykorzystania. Aby zidentyfikować te urządzenia, należy utworzyć regułę, aby generować ostrzeżenia, gdy wykorzystanie przekracza 150 PSI.
 
@@ -37,9 +34,9 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby użyć tego samouczka, należy wdrożone wystąpienie zdalnego rozwiązanie monitorowania w ramach subskrypcji platformy Azure.
+Aby użyć tego samouczka, należy wdrożone wystąpienie rozwiązanie monitorowania zdalnego w ramach subskrypcji platformy Azure.
 
-Jeśli jeszcze tego nie wdrożono rozwiązanie monitorowania zdalnego jeszcze, należy wykonać [wdrożyć zdalnego monitorowania akcelerator rozwiązań](iot-accelerators-remote-monitoring-deploy.md) samouczka.
+Jeśli jeszcze tego nie wdrożono rozwiązanie monitorowania zdalnego jeszcze, należy wykonać [wdrażanie akcelerator rozwiązań monitorowania zdalnego](iot-accelerators-remote-monitoring-deploy.md) samouczka.
 
 ## <a name="view-the-rules-in-your-solution"></a>Wyświetlanie reguł w rozwiązaniu
 
@@ -110,7 +107,7 @@ Użyj następujących wartości na nowy warunek:
 
 | Ustawienie          | Wartość                                 |
 | ---------------- | ------------------------------------- |
-| Pole warunku 2| Temperatury                           |
+| Pole warunku 2| temperature                           |
 | Operator warunkowy 2 | Więcej niż                      |
 | Wartość warunku 2    | 75                                |
 

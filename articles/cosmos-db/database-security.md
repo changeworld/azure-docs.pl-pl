@@ -5,20 +5,17 @@ keywords: bazy danych nosql, zabezpieczeń, ochrony informacji, bezpieczeństwo 
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: a02a6a82-3baf-405c-9355-7a00aaa1a816
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: 2b0cb1ed92694a7859912dfe0339ef719c0d15ef
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: aa04ae8d5bdccb52e3f63fb2dfb3c75df83b7a54
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34611623"
 ---
 # <a name="azure-cosmos-db-database-security"></a>Zabezpieczenia bazy danych w usłudze Azure DB rozwiązania Cosmos
 
@@ -76,7 +73,7 @@ Umożliwia pracę na każdej z nich szczegółowo.
 |Ochrona i izolowanie danych poufnych|Wszystkie dane w regionach wymienionych w [nowości?](#whats-new) teraz jest szyfrowane, gdy.<br><br>Dane osobowe i innych poufnych danych mogą być izolowane do określonej kolekcji i odczytu i zapisu lub dostęp tylko do odczytu można ograniczyć do określonych użytkowników.|
 |Monitor łącznego czasu ataków|Za pomocą [rejestrowania i działania dzienniki inspekcji](logging.md), można monitorować konto dla typowych i nietypowych działań. Można wyświetlić, jakie operacje były wykonywane na zasoby, które zainicjować operacji, w przypadku operacji wystąpił stan operacji, a także bardziej pokazany na zrzucie ekranu poniżej tej tabeli.|
 |Odpowiadanie na ataki|Gdy nawiązano pomocy technicznej platformy Azure, aby zgłosić potencjalny atak proces odpowiedzi na zdarzenia krok 5 zostało rozpoczęte. Celem procesu krok 5 jest przywrócenie normalnego użytkowania, zabezpieczenia i operacje możliwie jak najszybciej po zostanie wykryty problem i dochodzenia została uruchomiona.<br><br>Dowiedz się więcej w [Response zabezpieczeń firmy Microsoft Azure w chmurze](https://aka.ms/securityresponsepaper).|
-|Grodzenia|Azure DB rozwiązania Cosmos zapewnia zarządzanie danymi i zgodności dla suwerennych regionów (na przykład Niemczech, Chinach, nam wersji dla instytucji rządowych).|
+|Grodzenia|Azure DB rozwiązania Cosmos zapewnia funkcje do zarządzania danymi dla suwerennych regionów (na przykład Niemczech, Chinach, nam wersji dla instytucji rządowych).|
 |Urządzenia chronione|Dane w usłudze Azure DB rozwiązania Cosmos są przechowywane na dyskach SSD w centrach danych chronionych na platformie Azure.<br><br>Dowiedz się więcej [Globalne centra danych firmy Microsoft](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)|
 |Szyfrowanie protokołu HTTPS/SSL/TLS|Wszystkie interakcje bazy danych rozwiązania Cosmos Azure Usługa klienta są SSL/TLS 1.2 stanie. Ponadto wszystkie replikacji wewnątrz centrum danych i między centrum danych jest SSL/TLS 1.2, wymuszane.|
 |Szyfrowanie w spoczynku|Wszystkie dane przechowywane w bazie danych rozwiązania Cosmos Azure jest szyfrowane, gdy. Dowiedz się więcej [szyfrowania bazy danych Azure rozwiązania Cosmos w stanie spoczynku](.\database-encryption-at-rest.md)|

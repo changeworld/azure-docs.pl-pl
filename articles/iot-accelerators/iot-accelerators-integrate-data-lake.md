@@ -1,19 +1,19 @@
 ---
 title: Integracja rozwiązania monitorowania zdalnego z usługi Azure Data Lake Store | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak zintegrować rozwiązanie monitorowania zdalnego z usługi Azure Data Lake Store przy użyciu zadania usługi analiza strumienia Azure.
-+services: ''
-+suite: iot-suite
-+author: philmea
-+manager: timlt
-+ms.author: philmea
-+ms.date: 04/029/2018
-+ms.topic: article
-+ms.service: iot-suite
-ms.openlocfilehash: 426ded8079ba5d6de4c186a8d18dd284082b0c1c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+author: philmea
+manager: timlt
+ms.author: philmea
+ms.date: 04/29/2018
+ms.topic: conceptual
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.openlocfilehash: 3bd29e348fd067c12def8ca36fbdc1d7e35b2874
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627590"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>Integracja rozwiązania monitorowania zdalnego z usługi Azure Data Lake Store
 
@@ -25,7 +25,7 @@ W tym instrukcje użyjesz zadanie usługi analiza strumienia Azure do transmisji
 
 Aby ukończyć ten jak to zrobić, potrzebne następujące elementy:
 
-* [Wdrażanie zdalne wstępnie skonfigurowane rozwiązanie monitorowania](iot-accelerators-remote-monitoring-deploy.md).
+* [Wdrażanie akcelerator rozwiązań monitorowania zdalnego](iot-accelerators-remote-monitoring-deploy.md).
   * To rozwiązanie monitorowanie zdalnego zostaną wdrożone w Centrum IoT i zadania usługi analiza strumienia Azure używane w tym artykule w Twojej subskrypcji platformy Azure.
 * [Wdrażanie usługi Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md)
   * Usługi Data Lake Store powinny zostać wdrożone na tym samym regionie co rozwiązanie monitorowania zdalnego.

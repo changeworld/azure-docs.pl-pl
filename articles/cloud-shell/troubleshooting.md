@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: damaerte
-ms.openlocfilehash: 3c01a31eae2b90ecb54cbfba7f565fd140db3773
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cffa67509690f4c594182fbe8104f0620da56bee
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608954"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Rozwiązywanie problemów z & ograniczenia Azure Cloud powłoki
 
@@ -43,11 +44,6 @@ Następujące znane rozwiązania problemów w powłoce chmury Azure:
  - **Rozdzielczość**: Sprawdź skonfigurowano ustawienia sieci, aby umożliwić wysyłanie żądań https i żądania protokołu websocket do domen na *. console.azure.com.
 
 ## <a name="bash-troubleshooting"></a>Bash, rozwiązywanie problemów
-
-### <a name="cannot-run-az-login"></a>Nie można uruchomić az logowania
-
-- **Szczegóły**: systemem `az login` nie będzie działać, ponieważ zostali już uwierzytelnieni w ramach konta używane do logowania się do portalu powłoki chmury lub Azure.
-- **Rozdzielczość**: Korzystanie z konta, używany do podpisywania lub wyloguj się i ponownego uwierzytelnienia przy użyciu danego konta platformy Azure.
 
 ### <a name="cannot-run-the-docker-daemon"></a>Nie można uruchomić demona docker
 

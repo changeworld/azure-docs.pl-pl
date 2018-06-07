@@ -1,12 +1,12 @@
 ---
-title: "Łączenia komputerów z systemem Windows Azure Log Analytics | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób podłączania komputerów z systemem Windows w innych chmur lub lokalnie z analizą dzienników z programu Microsoft Monitoring Agent (MMA)."
+title: Łączenia komputerów z systemem Windows Azure Log Analytics | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób podłączania komputerów z systemem Windows w innych chmur lub lokalnie z analizą dzienników z programu Microsoft Monitoring Agent (MMA).
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: magoedte
-ms.openlocfilehash: 778810001952daf9ac63a7f1f880b05234549965
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 342387edb3793358d041702eaa6d76b462aef527
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637416"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Łączenie komputerów z systemem Windows z usługą analizy dzienników na platformie Azure
 
@@ -33,7 +34,7 @@ Agent może być zainstalowana za pomocą jednej z poniższych metod. Większoś
 * Skrypt programu PowerShell.
 * Szablon Menedżera zasobów dla maszyn wirtualnych z systemem Windows lokalnymi w stosie Azure.  
 
-Aby poznać wymagania sieci i systemu w celu wdrażania agenta systemu Windows, przejrzyj [wymagania wstępne dla systemu Windows, komputerów](log-analytics-concept-hybrid.md#prerequisites).
+Aby poznać obsługiwanej konfiguracji, przejrzyj [obsługiwanych systemów operacyjnych Windows](log-analytics-concept-hybrid.md#supported-windows-operating-systems) i [konfigurację zapory sieciowej](log-analytics-concept-hybrid.md#network-firewall-requirements).
 
 ## <a name="obtain-workspace-id-and-key"></a>Uzyskiwanie identyfikatora i klucza obszaru roboczego
 Przed zainstalowaniem programu Microsoft Monitoring Agent dla systemu Windows potrzebne są identyfikator i klucz obszaru roboczego usługi Log Analytics.  Te informacje są wymagane podczas instalacji z każdej metody instalacji, aby poprawnie skonfigurować agenta i upewnij się, że mogą się komunikować z analizy dzienników na platformie Azure handlowych i w chmurze instytucji rządowych Stanów Zjednoczonych.  

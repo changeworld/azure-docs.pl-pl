@@ -1,24 +1,19 @@
 ---
-title: Monitoruj alerty kopii zapasowej maszyn wirtualnych platformy Azure | Dokumentacja firmy Microsoft
-description: "Monitorowanie zdarzeń i alertów z zadań tworzenia kopii zapasowej maszyny wirtualnej platformy Azure. Wyślij wiadomość e-mail na podstawie alertów."
+title: Monitoruj alerty kopii zapasowej maszyn wirtualnych platformy Azure
+description: Monitorowanie zdarzeń i alertów z zadań tworzenia kopii zapasowej maszyny wirtualnej platformy Azure. Wyślij wiadomość e-mail na podstawie alertów.
 services: backup
-documentationcenter: dev-center-name
 author: markgalioto
 manager: carmonm
-editor: 
-ms.assetid: fed32015-2db2-44f8-b204-d89f6fd1bea2
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/23/2018
-ms.author: markgal;trinadhk;giridham;
-ms.openlocfilehash: fbdce5c244d733a2978d473f01c8d875cbeaa65e
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.author: markgal
+ms.openlocfilehash: 3783014738ec4e8f185531773b1259dc63e7f49f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606311"
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>Monitorowanie alertów związanych z kopiami zapasowymi maszyny wirtualnej platformy Azure
 Alerty są odpowiedzi z usługi, czy próg zdarzenia zostały spełnione lub przekroczenia. Uzyskiwanie informacji o tym, gdy rozpoczęcia problemów może być krytyczne zachowaniu niskich kosztów biznesowych. Alerty zwykle nie występują zgodnie z harmonogramem, a więc warto wiedzieć, jak najszybciej po wystąpieniu alerty. Na przykład gdy zadanie tworzenia kopii zapasowej lub przywracania nie powiodło się, alert występuje w ciągu pięciu minut błędu. Na pulpicie nawigacyjnym magazynu w kafelku alerty kopii zapasowej Wyświetla zdarzeń krytycznych i poziom ostrzeżeń. W ustawieniach alerty kopii zapasowej można wyświetlić wszystkie zdarzenia. Ale co zrobić, jeśli alarm występuje, gdy pracujesz na oddzielnych problem? Jeśli nie znasz w przypadku alertu, może to być pomocnicza niedogodności lub może naruszyć bezpieczeństwo danych. Aby upewnić się, że osobom potrafią alertu — Jeśli występuje on, należy skonfigurować usługę, aby wysłać powiadomienia o alertach pocztą e-mail. Aby uzyskać więcej informacji na temat konfigurowania powiadomień e-mail, zobacz [skonfigurować powiadomienia](backup-azure-monitor-vms.md#configure-notifications).

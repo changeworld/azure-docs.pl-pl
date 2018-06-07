@@ -1,26 +1,23 @@
 ---
-title: Użyj przeglądarki zadania i widoku zadania dla zadań usługi Azure Data Lake Analytics | Dokumentacja firmy Microsoft
-description: 'Dowiedz się, jak używać przeglądarki zadania i widoku zadania dla zadań usługi Azure Data Lake Analytics. '
+title: Użyj przeglądarki zadania i widoku zadania dla zadań usługi Azure Data Lake Analytics
+description: W tym artykule opisano sposób użycia przeglądarki zadania i widok zadań dla zadania usługi Azure Data Lake Analytics.
 services: data-lake-analytics
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+author: jasonwhowell
+ms.author: jasonh
+manager: kfile
+editor: jasonwhowell
+ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
+ms.topic: conceptual
 ms.date: 08/02/2017
-ms.author: jgao
-ms.openlocfilehash: cc9048566dd58733cd86aac0f9836763fa095843
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6d7ebc8d14e82281e074ff52abd41a16871470c0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623234"
 ---
-# <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics-jobs"></a>Użyj przeglądarki zadania i widoku zadania dla zadań usługi Azure Data lake Analytics
+# <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>Użyj przeglądarki zadania i zadania dla usługi Azure Data Lake Analytics
 Usługa Azure Data Lake Analytics archiwa przesłanych zadania w [magazyn zapytań](#query-store). W tym artykule Dowiedz się jak używać przeglądarki zadania i widoku zadania w Azure Data Lake Tools dla programu Visual Studio można znaleźć informacje o zadaniu historycznych. 
 
 Domyślnie usługi Data Lake Analytics archiwa zadania przez 30 dni. Okres wygaśnięcia można skonfigurować w portalu Azure Konfigurując zasady wygasania dostosowane. Nie można uzyskać dostępu do informacji zadania po wygaśnięciu. 
@@ -54,7 +51,7 @@ Zadania widoku zawiera:
     * Finalizowanie: Kończy zadanie (na przykład: Trwa kończenie pliku).
       
       Zadanie może zakończyć się niepowodzeniem na każdym etapie. Na przykład błędy kompilacji w fazie Preparing, błędy przekroczenia limitu czasu w fazie w kolejce i błędy wykonania w fazie uruchomione itd.
-  * Podstawowe informacje
+  * Informacje podstawowe
     
       Przedstawia informacje o zadaniu podstawowe w dolnej części panel Podsumowanie zadania.
     

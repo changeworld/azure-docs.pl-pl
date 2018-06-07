@@ -1,33 +1,28 @@
 ---
-title: "Portów i protokołów komunikacyjnych Centrum IoT Azure | Dokumentacja firmy Microsoft"
-description: "Przewodnik dewelopera — w tym artykule opisano protokołów komunikacyjnych obsługiwanych, urządzenia do chmury i chmury do urządzenia komunikację i numery portów, które muszą być otwarte."
-services: iot-hub
-documentationcenter: .net
+title: Portów i protokołów komunikacyjnych Centrum IoT Azure | Dokumentacja firmy Microsoft
+description: Przewodnik dewelopera — w tym artykule opisano protokołów komunikacyjnych obsługiwanych, urządzenia do chmury i chmury do urządzenia komunikację i numery portów, które muszą być otwarte.
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 3fc5f1a3-3711-4611-9897-d4db079b4250
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: f115d1e7313d2c9d378129c021a37489674fe81f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0fe3dd719877dac23410ff1ca00d559636a5ed60
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633006"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>Odwołanie — wybierz protokół komunikacyjny
 
 Centrum IoT umożliwia skonfigurowanie urządzenia do używania następujące protokoły komunikacji po stronie urządzenia:
 
 * [MQTT][lnk-mqtt]
-* MQTT przez protokół WebSockets
+* MQTT za pośrednictwem obiektów WebSocket
 * [AMQP][lnk-amqp]
-* Protokół AMQP przez protokół WebSockets
+* AMQP za pośrednictwem obiektów WebSocket
 * HTTPS
 
 Informacje, jak te protokoły obsługują określone funkcje Centrum IoT, zobacz [wskazówki komunikację urządzenia do chmury] [ lnk-d2c-guidance] i [wskazówki dotyczące komunikacji chmury do urządzenia][lnk-c2d-guidance].
@@ -58,9 +53,9 @@ Urządzenia mogą komunikować się z Centrum IoT na platformie Azure przy użyc
 | Protokół | Port |
 | --- | --- |
 | MQTT |8883 |
-| MQTT przez protokół WebSockets |443 |
+| MQTT za pośrednictwem obiektów WebSocket |443 |
 | AMQP |5671 |
-| Protokół AMQP przez protokół WebSockets |443 |
+| AMQP za pośrednictwem obiektów WebSocket |443 |
 | HTTPS |443 |
 
 Po utworzeniu Centrum IoT w regionie Azure, Centrum IoT przechowuje ten sam adres IP przez czas ich istnienia tego Centrum IoT. Jednak jeśli Microsoft przenosi Centrum IoT na jednostkę skalowania różnych utrzymanie jakości usług, następnie przypisano nowego adresu IP.

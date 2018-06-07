@@ -10,13 +10,14 @@ ms.assetid: 45321f6a-179f-4ee4-b8aa-efa7745b8eb6
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/30/2018
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 03d8cc4440d7adcb947e7c150a565e51b6401e92
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 2b3ae9e4ecb8b8db4eee109f0867c7884bea37c2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34625682"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-store"></a>Użyj usługi Import/Eksport Azure dla trybu offline kopię danych do usługi Data Lake Store
 W tym artykule omówiono sposób kopiowania dużych zestawów danych (> 200 GB) do usługi Azure Data Lake Store za pomocą metody kopiowania w trybie offline, tak samo, jak [usługi Import/Eksport Azure](../storage/common/storage-import-export-service.md). W szczególności plik używany na przykład w tym artykule jest 339,420,860,416 bajtów lub około 319 GB na dysku. Umożliwia wywołanie 319GB.tsv tego pliku.

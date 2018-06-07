@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 3da4b0286ddea88d8009757ea44797e4269140a2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: cb68b00232edd79a7b9cf239c1576c88731812d6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617685"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Kopiowanie danych do i z programu SQL Server przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -491,7 +492,7 @@ Podczas kopiowania danych z/do programu SQL Server, z typów danych programu SQL
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
 | Atrybut FILESTREAM (varbinary(max)) |Byte[] |
-| Float |Podwójnej precyzji |
+| Liczba zmiennoprzecinkowa |O podwójnej precyzji |
 | Obraz |Byte[] |
 | int |Int32 |
 | oszczędność pieniędzy |Decimal |
@@ -505,11 +506,11 @@ Podczas kopiowania danych z/do programu SQL Server, z typów danych programu SQL
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Obiekt * |
-| Tekst |Ciąg, Char] |
-| time |TimeSpan |
+| tekst |Ciąg, Char] |
+| time |Zakres czasu |
 | sygnatura czasowa |Byte[] |
 | tinyint |Int16 |
-| uniqueidentifier |Identyfikator GUID |
+| Unikatowy identyfikator |Identyfikator GUID |
 | varbinary |Byte[] |
 | varchar |Ciąg, Char] |
 | xml |Xml |

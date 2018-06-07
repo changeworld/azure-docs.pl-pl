@@ -1,18 +1,19 @@
 ---
 title: Podłącz urządzenie Windows IoT Core do aplikacji Azure IoT centralnej | Dokumentacja firmy Microsoft
 description: Deweloper urządzenia jak Podłącz urządzenie z systemem zestaw deweloperski IoT MXChip do aplikacji Azure IoT centralnej.
-services: iot-central
 author: miriamb
 ms.author: mriamb
 ms.date: 04/09/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
 manager: peterpr
-ms.openlocfilehash: c38231f97eeb1c4511702bf3e788f72918cab045
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 55c0d9c26cd4e7f8ae9f6ff2359e0f2d2a9970c9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34629147"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie Windows IoT Core do aplikacji Azure IoT centralnej
 
@@ -29,7 +30,7 @@ Aplikacji utworzone na podstawie **Devkits próbki** szablon aplikacji obejmuje 
 
 ### <a name="telemetry-measurements"></a>Pomiary telemetrii
 
-| Nazwa pola     | Jednostki  | Minimalne | Maksimum | Po przecinku |
+| Nazwa pola     | Jednostki  | Minimalne | Maksimum | Miejsca dziesiętne |
 | -------------- | ------ | ------- | ------- | -------------- |
 | wilgotność       | %      | 0       | 100     | 0              |
 | Temp           | C     | -40     | 120     | 0              |
@@ -39,7 +40,7 @@ Aplikacji utworzone na podstawie **Devkits próbki** szablon aplikacji obejmuje 
 
 Ustawienia numeryczne
 
-| Nazwa wyświetlana | Nazwa pola | Jednostki | Po przecinku | Minimalne | Maksimum | Początkowa |
+| Nazwa wyświetlana | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimalne | Maksimum | Początkowa |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Wentylator szybkości    | fanSpeed   | OBR. / MIN   | 0              | 0       | 1000    | 0       |
 

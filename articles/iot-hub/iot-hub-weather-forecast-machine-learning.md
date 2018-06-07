@@ -1,25 +1,21 @@
 ---
 title: Pogody prognozy przy użyciu danych z Centrum IoT przy użyciu usługi Azure Machine Learning | Dokumentacja firmy Microsoft
 description: Użyj usługi Azure Machine Learning przewidzieć ryzyko ustaniu oparte na danych temperatury i wilgotności, które z czujnika zbiera dane Centrum IoT.
-services: iot-hub
-documentationcenter: ''
 author: rangv
-manager: timlt
-tags: ''
+manager: ''
 keywords: uczenie maszynowe prognozie pogody
-ms.assetid: 8ba7d9e7-699c-4448-b353-0f3e1429d198
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 4/11/2018
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
+ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 453b4de8a93e897b4455403855438d7705945514
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a331f8a8a69ffe41a368c1b36f1680890aaac8bf
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637671"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Pogody prognozy przy użyciu danych czujnika z Centrum IoT w usłudze Azure Machine Learning
 
@@ -80,10 +76,10 @@ Sposób na potrzeby usługi Azure Machine Learning pogodowe prognozy (szansy ust
 
 ### <a name="create-a-stream-analytics-job"></a>Tworzenie zadania usługi Stream Analytics
 
-1. W [portalu Azure](https://portal.azure.com/), kliknij przycisk **Utwórz zasób** > **Internetu rzeczy** > **zadanie usługi Stream Analytics**.
-1. Wprowadź następujące informacje dla zadania.
+1. W witrynie [Azure Portal](https://portal.azure.com/) kliknij kolejno pozycje **Utwórz zasób** > **Internet rzeczy** > **Zadanie usługi Stream Analytics**.
+1. Wprowadź poniższe informacje dotyczące zadania.
 
-   **Nazwa zadania**: Nazwa zadania. Nazwa musi być unikatowa w skali globalnej.
+   **Nazwa zadania**: nazwa zadania. Nazwa musi być unikatowa w skali globalnej.
 
    **Grupa zasobów**: Użyj tej samej grupie zasobów, która używa Centrum IoT.
 
@@ -95,10 +91,10 @@ Sposób na potrzeby usługi Azure Machine Learning pogodowe prognozy (szansy ust
 
 1. Kliknij przycisk **Utwórz**.
 
-### <a name="add-an-input-to-the-stream-analytics-job"></a>Dodawanie danych wejściowych do zadania usługi analiza strumienia
+### <a name="add-an-input-to-the-stream-analytics-job"></a>Dodawanie danych wejściowych do zadania usługi Stream Analytics
 
 1. Otwórz zadanie usługi Stream Analytics.
-1. W obszarze **topologii zadania**, kliknij przycisk **dane wejściowe**.
+1. W obszarze **Topologia zadania** kliknij pozycję **Dane wejściowe**.
 1. W **dane wejściowe** okienku, kliknij przycisk **Dodaj**, a następnie wprowadź następujące informacje:
 
    **Alias wejściowy**: unikatowego aliasu dla danych wejściowych.
@@ -111,12 +107,12 @@ Sposób na potrzeby usługi Azure Machine Learning pogodowe prognozy (szansy ust
 
 1. Kliknij przycisk **Utwórz**.
 
-### <a name="add-an-output-to-the-stream-analytics-job"></a>Dodawanie danych wyjściowych do zadania usługi analiza strumienia
+### <a name="add-an-output-to-the-stream-analytics-job"></a>Dodawanie danych wyjściowych do zadania usługi Stream Analytics
 
-1. W obszarze **topologii zadania**, kliknij przycisk **dane wyjściowe**.
+1. W obszarze **Topologia zadania** kliknij pozycję **Dane wyjściowe**.
 1. W **dane wyjściowe** okienku, kliknij przycisk **Dodaj**, a następnie wprowadź następujące informacje:
 
-   **Alias wyjściowy**: unikatowego aliasu dla danych wyjściowych.
+   **Alias wyjściowy**: unikatowy alias danych wyjściowych.
 
    **Obiekt sink**: Wybierz **magazynu obiektów Blob**.
 
@@ -149,9 +145,9 @@ Sposób na potrzeby usługi Azure Machine Learning pogodowe prognozy (szansy ust
 
 1. Kliknij przycisk **Utwórz**.
 
-### <a name="configure-the-query-of-the-stream-analytics-job"></a>Skonfiguruj zapytanie zadania usługi analiza strumienia
+### <a name="configure-the-query-of-the-stream-analytics-job"></a>Konfigurowanie zapytania zadania usługi Stream Analytics
 
-1. W obszarze **topologii zadania**, kliknij przycisk **zapytania**.
+1. W obszarze **Topologia zadania** kliknij pozycję **Zapytanie**.
 1. Zastąp istniejący kod następujący kod:
 
    ```sql
@@ -163,17 +159,17 @@ Sposób na potrzeby usługi Azure Machine Learning pogodowe prognozy (szansy ust
    From machinelearning
    ```
 
-   Zastąp `[YourInputAlias]` z alias wejściowy zadania.
+   Zastąp element `[YourInputAlias]` aliasem wejściowym zadania.
 
-   Zastąp `[YourOutputAlias]` z aliasem dane wyjściowe zadania.
+   Zastąp element `[YourOutputAlias]` aliasem wyjściowym zadania.
 
 1. Kliknij pozycję **Zapisz**.
 
-### <a name="run-the-stream-analytics-job"></a>Uruchom zadanie usługi analiza strumienia
+### <a name="run-the-stream-analytics-job"></a>Uruchamianie zadania usługi Stream Analytics
 
-W zadaniu Stream Analytics kliknij **Start** > **teraz** > **Start**. Gdy zadanie zostanie uruchomiony pomyślnie, stan zadania zmieni się z **zatrzymane** do **systemem**.
+W zadaniu usługi Stream Analytics kliknij kolejno pozycje **Uruchom** > **Teraz** > **Uruchom**. Po pomyślnym uruchomieniu zadania jego stan zmieni się z **Zatrzymano** na **Uruchomiono**.
 
-![Uruchom zadanie usługi analiza strumienia](media/iot-hub-weather-forecast-machine-learning/11_run-stream-analytics-job-azure.png)
+![Uruchamianie zadania usługi Stream Analytics](media/iot-hub-weather-forecast-machine-learning/11_run-stream-analytics-job-azure.png)
 
 ## <a name="use-microsoft-azure-storage-explorer-to-view-the-weather-forecast"></a>Umożliwia wyświetlanie prognozie pogody Eksploratora magazynu Microsoft Azure
 

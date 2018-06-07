@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 96d9da90114ae392c3a9e1c22d8e993fd787ada8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3afdcbfc2d1d6f40db0f0336be161a06908cb883
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618001"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Kopiowanie danych z programu SAP HANA przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -63,7 +64,7 @@ Obsługiwane są następujące właściwości dla SAP HANA połączone usługi:
 |:--- |:--- |:--- |
 | type | Właściwość type musi mieć ustawioną: **SapHana** | Yes |
 | serwer | Nazwa serwera, na którym znajduje się z wystąpieniem SAP HANA. Jeśli serwer używa portu dostosowane, określ `server:port`. | Yes |
-| authenticationType | Typ uwierzytelniania używany do łączenia z bazą danych SAP HANA.<br/>Dozwolone wartości to: **podstawowe**, i **systemu Windows** | Yes |
+| Typ authenticationType | Typ uwierzytelniania używany do łączenia z bazą danych SAP HANA.<br/>Dozwolone wartości to: **podstawowe**, i **systemu Windows** | Yes |
 | userName | Nazwa użytkownika, który ma dostęp do serwera SAP. | Yes |
 | hasło | Hasło dla użytkownika. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. Środowisko uruchomieniowe integracji Self-hosted jest wymagana, jak wspomniano w [wymagania wstępne](#prerequisites). |Yes |
@@ -167,18 +168,18 @@ Podczas kopiowania danych z programu SAP HANA, następujące mapowania są używ
 |:--- |:--- |
 | ALPHANUM | Ciąg |
 | BIGINT | Int64 |
-| BLOB | Byte[] |
+| OBIEKT BLOB | Byte[] |
 | WARTOŚĆ LOGICZNA | Bajtów |
 | CLOB | Byte[] |
 | DATE | DateTime |
 | DECIMAL | Decimal |
-| O PODWÓJNEJ PRECYZJI | Kawaler/panna |
+| O PODWÓJNEJ PRECYZJI | Pojedyncze |
 | INT | Int32 |
 | NVARCHAR | Ciąg |
-| RZECZYWISTE | Kawaler/panna |
+| RZECZYWISTE | Pojedyncze |
 | SECONDDATE | DateTime |
 | SMALLINT | Int16 |
-| CZAS | TimeSpan |
+| CZAS | Zakres czasu |
 | ZNACZNIK CZASU | DateTime |
 | TINYINT | Bajtów |
 | VARCHAR | Ciąg |

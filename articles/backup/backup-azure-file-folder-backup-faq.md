@@ -1,25 +1,20 @@
 ---
-title: "Agent usługi Azure Backup — często zadawane pytania | Microsoft Docs"
-description: "Odpowiedzi na często zadawane pytania dotyczące sposobu działania agenta usługi Azure Backup oraz limitów wykonywania kopii zapasowych i przechowywania."
+title: Agent usługi Kopia zapasowa Azure — często zadawane pytania
+description: Odpowiedzi na często zadawane pytania dotyczące sposobu działania agenta usługi Azure Backup oraz limitów wykonywania kopii zapasowych i przechowywania.
 services: backup
-documentationcenter: 
 author: trinadhk
 manager: shreeshd
-editor: 
-keywords: "tworzenie kopii zapasowej i odzyskiwanie po awarii; usługa kopii zapasowej"
-ms.assetid: 778c6ccf-3e57-4103-a022-367cc60c411a
+keywords: tworzenie kopii zapasowej i odzyskiwanie po awarii; usługa kopii zapasowej
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 7/18/2017
-ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: 8777b2265666a4505a3432aca6683e2510519cac
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.author: trinadhk
+ms.openlocfilehash: 4234b76c192ba3bbeaca9593250cc855c073e380
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605535"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>Pytania dotyczące agenta usługi Azure Backup
 W tym artykule znajdują się odpowiedzi na często zadawane pytania pomagające w szybkim poznaniu składników agenta usługi Azure Backup. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).

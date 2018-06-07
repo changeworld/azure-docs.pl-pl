@@ -11,19 +11,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 05/15/2018
+ms.date: 05/22/2018
 ms.author: barclayn
-ms.openlocfilehash: 12a176a6eba3b6dd83ef7fb97f89ecfe99083059
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1ddc74b1960095509a77d4b3072017847df42d90
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637365"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Funkcje danych klienta w usłudze Azure Key Vault
 
 Usługa Azure Key Vault otrzymuje dane klienta podczas tworzenia lub aktualizacji magazynów, kluczy, kluczy tajnych, certyfikatów i kont magazynu zarządzanego. Te dane klienta są bezpośrednio widoczne w portalu Azure i za pośrednictwem interfejsu API REST. Dane klienta można edytowane lub usunięte przez aktualizowanie lub usuwanie obiektu, który zawiera dane.
 
 Dzienniki systemu dostępu są generowane, gdy użytkownik lub aplikacja uzyskuje dostęp do magazynu kluczy. Dostęp szczegółowe dzienniki są dostępne dla klientów korzystających z usługi Azure Insights.
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="identifying-customer-data"></a>Identyfikowanie danych klienta
 

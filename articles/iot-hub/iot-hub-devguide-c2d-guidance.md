@@ -1,24 +1,19 @@
 ---
 title: Opcje chmury do urządzenia usługi Azure IoT Hub | Dokumentacja firmy Microsoft
 description: Przewodnik dewelopera — wskazówki dotyczące kiedy należy używać metody bezpośredniego, odpowiednie właściwości urządzenia dwie lub wiadomości chmury do urządzenia komunikacji chmury do urządzenia.
-services: iot-hub
-documentationcenter: ''
 author: fsautomata
-manager: timlt
-editor: ''
-ms.assetid: 1ac90923-1edf-4134-bbd4-77fee9b68d24
+manager: ''
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: elioda
-ms.openlocfilehash: 144bd8e0a954e54cf17fb88105759d0e000454fb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ff81be4bbf6d297c623c5d98b5dc22a540112fcc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634441"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>Wskazówki dotyczące komunikacji chmury do urządzenia
 Centrum IoT zawiera trzy opcje udostępniać funkcje do aplikacji wewnętrznych aplikacji dla urządzeń:
@@ -37,7 +32,7 @@ Oto szczegółowe porównanie różnych opcji komunikacji chmury do urządzenia.
 | Przepływ danych | Dwukierunkowe. Aplikacji urządzenia mogą odpowiadać od razu do metody. Zaplecze rozwiązania odbiera wyniku kontekstowej na żądanie. | Jednokierunkowe. Aplikacja urządzenie odbiera powiadomienie o zmianie właściwości. | Jednokierunkowe. Aplikacja urządzenie odbiera wiadomości
 | Trwałość | Odłączone urządzenia nie będą wykorzystywane. Zaplecza rozwiązania jest powiadamiany o to, że urządzenie nie jest połączony. | Wartości właściwości są zachowywane w dwie urządzenia. Urządzenie będzie go odczytać w następnym ponowne nawiązanie połączenia. Wartości właściwości są pobieranie z [język zapytań Centrum IoT][lnk-query]. | Komunikaty mogą być przechowywane przez Centrum IoT do 48 godzin. |
 | Cele | Za pomocą jednego urządzenia **deviceId**, lub wielu urządzeń przy użyciu [zadania][lnk-jobs]. | Za pomocą jednego urządzenia **deviceId**, lub wielu urządzeń przy użyciu [zadania][lnk-jobs]. | Pojedyncze urządzenie przez **deviceId**. |
-| Rozmiar | Do 8 KB żądań i odpowiedzi 8 KB. | Maksymalna żądany rozmiar właściwości to 8 KB. | Komunikaty do 64 KB. |
+| Rozmiar | Metoda bezpośrednia maksymalny rozmiar ładunku jest 128 KB. | Maksymalna żądany rozmiar właściwości to 8 KB. | Komunikaty do 64 KB. |
 | Częstotliwość | Wysoka. Aby uzyskać więcej informacji, zobacz [ogranicza Centrum IoT][lnk-quotas]. | Średnia. Aby uzyskać więcej informacji, zobacz [ogranicza Centrum IoT][lnk-quotas]. | Niski. Aby uzyskać więcej informacji, zobacz [ogranicza Centrum IoT][lnk-quotas]. |
 | Protokół | Dostępne przy użyciu MQTT lub AMQP. | Dostępne przy użyciu MQTT lub AMQP. | Dostępna dla wszystkich protokołów. Urządzenie musi wykonać sondowanie przy użyciu protokołu HTTPS. |
 

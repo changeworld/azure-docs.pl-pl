@@ -1,25 +1,21 @@
 ---
 title: Azure IoT zarządzania urządzeniami z rozszerzeniem IoT Azure CLI 2.0 | Dokumentacja firmy Microsoft
 description: Użyj rozszerzenia IoT Azure CLI 2.0 narzędzia do zarządzania urządzeniami Centrum IoT Azure, bezpośrednie metod i opcje zarządzania żądaną właściwości dwie.
-services: iot-hub
-documentationcenter: ''
 author: chrissie926
-manager: timlt
-tags: ''
+manager: ''
 keywords: Zarządzanie urządzeniami iot platformy Azure, zarządzanie urządzeniami Centrum azure iot, urządzenia iot zarządzania, zarządzanie urządzeniami Centrum iot
-ms.assetid: b34f799a-fc14-41b9-bf45-54751163fffe
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: 27a8dca68000e3f4b7f33508fc6dbc3450fc80b4
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: dc96e70a031d6080217e71b829ec5de3c64e4cf7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632819"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-20-for-azure-iot-hub-device-management"></a>Użyj rozszerzenia IoT 2.0 interfejsu wiersza polecenia platformy Azure do zarządzania urządzeniami Centrum IoT Azure
 
@@ -129,7 +125,7 @@ Wszystkie urządzenia z wyjątkiem tych z tagiem roli zapytania = "temperatury i
 az iot hub query --hub-name <your hub name> --query-command "SELECT * FROM devices WHERE tags.role != 'temperature&humidity'"
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Kiedy znasz już jak monitorować urządzenia do chmury wiadomości i wysyłanie komunikatów chmury do urządzenia między urządzenia IoT i Centrum IoT Azure.
 

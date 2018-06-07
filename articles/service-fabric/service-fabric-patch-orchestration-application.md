@@ -12,13 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/07/2018
+ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: d36fcac4cbbdf8127e60e23df4ff2d52e68b6689
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 69806520f3d57cb1d383999ba53fefb7e0bd56b4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642815"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Poprawka systemu operacyjnego Windows w klastrze usługi sieć szkieletowa
 
@@ -316,6 +317,10 @@ A. Czas potrzebny aplikacji aranżacji poprawki przede wszystkim jest zależna o
 Q. **Dlaczego widzę niektórych aktualizacji w wynikach usługi Windows Update uzyskany za pośrednictwem interfejsu API REST, ale nie w historii usługi Windows Update na komputerze?**
 
 A. Niektóre aktualizacje produktu może występować tylko w historii odpowiednich aktualizacji/poprawki. Na przykład aktualizacje programu Windows Defender nie są wyświetlane w historii usługi Windows Update w systemie Windows Server 2016.
+
+Q. **Może służyć do poprawka Moje deweloperów klastra (klastra z jednym węzłem) aranżacji poprawkę aplikacji?**
+
+A. Nie, aplikacja orchestration poprawki nie może służyć do klastra z jednym węzłem poprawki. To ograniczenie jest zgodne z założeniami, jako [usługi sieć szkieletowa usług systemowych](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-technical-overview#system-services) lub wszystkie aplikacje odbiorcy będą występować Przestój i dlatego wszystkie zadania naprawy dla stosowania poprawek nigdy nie może pobrać zatwierdzone przez Menedżera naprawy.
 
 ## <a name="disclaimers"></a>Zastrzeżenia
 

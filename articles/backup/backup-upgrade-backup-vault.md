@@ -1,25 +1,19 @@
 ---
-title: Uaktualnienia magazynu kopii zapasowych w magazynie usług odzyskiwania usługi Azure Backup | Dokumentacja firmy Microsoft
+title: Uaktualnienia magazynu kopii zapasowych w magazynie usług odzyskiwania Azure kopii zapasowej "
 description: Uaktualnienia magazynu kopii zapasowych w magazynie usług odzyskiwania, aby uzyskać nowe funkcje, takie jak kopii zapasowej Menedżera zasobów maszyn wirtualnych, zwiększone zabezpieczenia, kopii zapasowej maszyny Wirtualnej VMware i kopii zapasowej stanu systemu dla serwerów systemu Windows
 services: backup
-documentationcenter: ''
 author: trinadhk
 manager: vijayts
-editor: ''
-keyword: backup vault; upgrade vault; recovery services vault
-ms.assetid: d037a8bf-49f2-4578-974a-3471d87ca278
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/10/2017
-ms.author: trinadhk, sogup
-ms.openlocfilehash: ffc5f11a324b5ac65c872ca2c033f039c129c5f8
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.author: trinadhk
+ms.openlocfilehash: 358c7b0e61d1c85e236007c2495941a31502431a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606863"
 ---
 # <a name="backup-vault-upgraded-to-recovery-services-vault"></a>Magazyn kopii zapasowych uaktualnione do magazynu usług odzyskiwania
 Ten artykuł zawiera omówienie magazynu usług odzyskiwania, jakie udostępnia, często zadawane pytania na temat uaktualniania istniejącej kopii zapasowej magazynu do magazynu usług odzyskiwania i czynności po uaktualnieniu. Magazyn usług odzyskiwania jest odpowiednikiem usługi Azure Resource Manager w magazynie kopii zapasowej, która przechowuje dane kopii zapasowej. Dane są zwykle kopii danych lub informacje o konfiguracji dla maszyn wirtualnych (VM), obciążenia, serwerach lub stacjach roboczych, czy lokalnie lub na platformie Azure.

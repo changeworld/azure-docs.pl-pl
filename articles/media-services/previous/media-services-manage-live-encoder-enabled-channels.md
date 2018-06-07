@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: c4d5533c443d27afa56471ce048efc5a375f6780
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 5aa6f629b04a4c187a43b13c929a122a6304c575
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639439"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Transmisja strumieniowa na żywo korzystająca z usługi Azure Media Services do tworzenia strumieni o różnej szybkości transmisji bitów
 
@@ -223,8 +224,8 @@ Należy pamiętać, że jeśli potrzebujesz predefiniowanych, należy skontaktow
 | 1350 |704 |396 |30 |Główny |Video_704x396_1350kbps |
 | 850 |512 |288 |30 |Główny |Video_512x288_850kbps |
 | 550 |384 |216 |30 |Główny |Video_384x216_550kbps |
-| 350 |340 |192 |30 |Linii bazowej |Video_340x192_350kbps |
-| 200 |340 |192 |30 |Linii bazowej |Video_340x192_200kbps |
+| 350 |340 |192 |30 |Punkt odniesienia |Video_340x192_350kbps |
+| 200 |340 |192 |30 |Punkt odniesienia |Video_340x192_200kbps |
 
 #### <a name="output-audio-stream"></a>Audio strumienia wyjściowego.
 Dźwięk jest zakodowany do stereo AAC-LC na 64 KB/s, częstotliwość próbkowania 44,1 kHz.
@@ -332,7 +333,7 @@ W tabeli poniżej pokazano, jak stany kanału przekładają się na naliczanie o
 * Rozliczenie jest przeprowadzane tylko w przypadku kanału **systemem** stanu. Aby uzyskać więcej informacji, zapoznaj się [to](media-services-manage-live-encoder-enabled-channels.md#states) sekcji.
 * Obecnie maksymalny zalecany czas trwania wydarzenia na żywo wynosi 8 godzin. Napisz na adres amslived@microsoft.com, jeśli potrzebujesz uruchomić kanał na dłuższy czas.
 * Upewnij się, że ma punktu końcowego przesyłania strumieniowego, z którego chcesz zawartości strumienia w **systemem** stanu.
-* Ustawienie wstępne kodowania używa pojęcie "maksymalną szybkość" 30 klatek na sekundę. Dlatego w przypadku danych wejściowych jest 60 klatek na sekundę / 59.97i, ramki wejściowe są porzucony/dezaktywuje-interlaced do 30/29,97 kl. / s. Jeśli dane wejściowe są 50 klatek na sekundę/50i, ramki wejściowe są porzucony/dezaktywuje-interlaced do 25 kl. / s. Jeśli dane wejściowe są 25 kl. / s, dane wyjściowe pozostaje w 25 kl. / s.
+* Ustawienie wstępne kodowania używa pojęcie "maksymalną szybkość" 30 klatek na sekundę. Dlatego w przypadku danych wejściowych jest 60 klatek na sekundę / 59.94i, ramki wejściowe są porzucony/dezaktywuje-interlaced do 30/29,97 kl. / s. Jeśli dane wejściowe są 50 klatek na sekundę/50i, ramki wejściowe są porzucony/dezaktywuje-interlaced do 25 kl. / s. Jeśli dane wejściowe są 25 kl. / s, dane wyjściowe pozostaje w 25 kl. / s.
 * Nie zapomnij o zatrzymanie YOUR kanały po zakończeniu. Jeśli nie, będą nadal rozliczeń.
 
 ## <a name="known-issues"></a>Znane problemy

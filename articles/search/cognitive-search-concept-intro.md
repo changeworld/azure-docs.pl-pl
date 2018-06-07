@@ -8,11 +8,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: heidist
-ms.openlocfilehash: cce10ceb190ac90b57e77bfa5903b30b2c249a2c
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: ca6c285348208a7ad24faf966073d641810039fc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641115"
 ---
 # <a name="what-is-cognitive-search"></a>Co to jest kognitywnych wyszukiwania?
 
@@ -61,7 +62,7 @@ Po zakończeniu przetwarzania masz Boże wyszukiwania, składające się z wzbog
 
 Indeks działa jak inne można utworzyć dla usługi wyszukiwanie Azure: można uzupełnić z niestandardowych analizatorów, wywołania zapytania wyszukiwania rozmytego, Dodaj wyszukiwanie filtrowane lub eksperymentować oceniania profilów, aby przekształcić w wynikach wyszukiwania.
 
-Indeksy zostaną wygenerowane na podstawie schematu indeksu, który definiuje pól atrybutów, i innych konstrukcji dołączony do konkretnego indeksu, takich jak profile oceniania synonim mapy. Gdy indeks jest zdefiniowany i wypełnione, można zaindeksować przyrostowo do pobrania dokumentów źródłowych nowe i zaktualizowane. Niektóre zmiany wymagają ponownej pełnej kompilacji. Należy używać niewielki zestaw danych, aż do projektu schematu jest stabilna. Aby uzyskać więcej informacji, zobacz [jak odbudować indeksu](search-howto-reindex.md).
+Indeksy zostaną wygenerowane na podstawie schematu indeksu, który definiuje pól atrybutów, i innych konstrukcji dołączony do konkretnego indeksu, takich jak profile oceniania synonim mapy. Gdy indeks jest zdefiniowany i wypełnione, można zaindeksować przyrostowo do pobrania dokumentów źródłowych nowe i zaktualizowane. Niektóre zmiany wymagają ponownej pełnej kompilacji. Należy używać niewielki zestaw danych, aż do projektu schematu jest stabilna. Aby uzyskać więcej informacji, zobacz [Jak odbudować indeks](search-howto-reindex.md).
 
 <a name="feature-concepts"></a>
 
@@ -102,9 +103,9 @@ Obecnie są udostępniane tylko interfejsów API REST. Użyj `api-version=2017-1
 | Interfejs API REST | Opis |
 |-----|-------------|
 | [Utwórz źródło danych](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Zasób identyfikowanie zewnętrzne źródło danych dostarczania źródła danych używany do tworzenia wzbogaconego dokumentów.  |
-| [Utwórz Skillset (interfejs api-version = 2017-11-11-Preview)](ref-create-skillset.md)  | Koordynowanie używania zasobu [wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md) i [niestandardowych umiejętności kognitywnych](cognitive-search-custom-skill-interface.md) używane w potoku wzbogacenia podczas indeksowania. |
+| [Utwórz Skillset (interfejs api-version = 2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Koordynowanie używania zasobu [wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md) i [niestandardowych umiejętności kognitywnych](cognitive-search-custom-skill-interface.md) używane w potoku wzbogacenia podczas indeksowania. |
 | [Tworzenie indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Schemat wyrażenia indeksu usługi Azure Search. Pola w indeksie mapowania pól źródła danych lub pola wyprodukowany w fazie wzbogacenia (np. pola utworzone przez jednostki rozpoznawania nazw organizacji). |
-| [Utwórz indeksator (interfejs api-version = 2017-11-11-Preview)](ref-create-skillset.md)  | Definiowanie składniki używane podczas indeksowania zasobu: w tym źródłem danych, skillset, pole skojarzenia ze źródła i struktury danych pośredniczące do indeksu docelowego i sam indeks. Uruchomienie indeksatora jest wprowadzanie danych i wzbogacenia wyzwalacza. Dane wyjściowe są Boże wyszukiwania, na podstawie schematu indeksu, wypełniane przy użyciu źródła danych, wzbogacone przez skillsets.  |
+| [Utwórz indeksator (interfejs api-version = 2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Definiowanie składniki używane podczas indeksowania zasobu: w tym źródłem danych, skillset, pole skojarzenia ze źródła i struktury danych pośredniczące do indeksu docelowego i sam indeks. Uruchomienie indeksatora jest wprowadzanie danych i wzbogacenia wyzwalacza. Dane wyjściowe są Boże wyszukiwania, na podstawie schematu indeksu, wypełniane przy użyciu źródła danych, wzbogacone przez skillsets.  |
 
 **Lista kontrolna: Typowy przepływ pracy**
 
@@ -112,11 +113,11 @@ Obecnie są udostępniane tylko interfejsów API REST. Użyj `api-version=2017-1
 
 1. Utwórz [obiektu źródła danych](https://docs.microsoft.com/rest/api/searchservice/create-data-source) w usłudze Azure Search udostępnia ciąg połączenia dla pobierania danych.
 
-1. Utwórz [skillset](ref-create-skillset.md) wzbogacenia kroków.
+1. Utwórz [skillset](https://docs.microsoft.com/rest/api/searchservice/create-skillset) wzbogacenia kroków.
 
 1. Zdefiniuj [schematu indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index). *Pola* kolekcja zawiera pola źródła danych. Należy również stub, limit dodatkowe pola do przechowywania wartości wygenerowany dla zawartości tworzone podczas wzbogacenia.
 
-1. Zdefiniuj [indeksatora](ref-create-skillset.md) odwołujące się do źródła danych, skillset i indeksu.
+1. Zdefiniuj [indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-skillset) odwołujące się do źródła danych, skillset i indeksu.
 
 1. W ramach indeksatora, Dodaj *outputFieldMappings*. W tej sekcji mapuje dane wyjściowe z skillset (w kroku 3) do pól danych wejściowych w schemacie indeksu (w kroku 4).
 

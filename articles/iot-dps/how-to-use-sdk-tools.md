@@ -1,22 +1,19 @@
 ---
 title: Upraszczanie tworzenia przy użyciu narzędzi dostępnych w Azure Centrum inicjowania obsługi usługi zestawy SDK urządzenia IoT
 description: Ten dokument przegląda z narzędzi dostępnych w Azure Centrum inicjowania obsługi usługi zestawy SDK urządzenia IoT dla rozwoju
-services: iot-dps
-keywords: ''
 author: yzhong94
 ms.author: yizhon
 ms.date: 04/09/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: a7e1a55bcfc8c7a8f76416fb12edf712340fadd2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+services: iot-dps
+manager: arjmands
+ms.openlocfilehash: afc7059f3b066ac5f3c9b49d543bc2b3e52ad6af
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631126"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>Jak użyć narzędzi dostępnych w zestawy SDK, aby uprościć programowanie do inicjowania obsługi
 Usługa inicjowania obsługi urządzeń Centrum IoT upraszcza proces inicjowania obsługi administracyjnej z zero touch just in time [automatycznego inicjowania obsługi administracyjnej](concepts-auto-provisioning.md) w sposób bezpieczny i skalowalności.  Wymagane jest poświadczenie zabezpieczeń w formie certyfikatu X.509 lub modułu Trusted Platform Module (TPM).  Microsoft, jest również partnerstwo z [innych zabezpieczeń dostawców sprzętu będących partnerami](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) Aby zwiększyć zaufanie Zabezpieczanie wdrożenia IoT. Opis wymagań sprzętowych zabezpieczeń może być bardzo trudne dla deweloperów. Zestaw SDK usługi udostępniania IoT Azure są dostarczane, dzięki czemu deweloperzy mogą używać warstwy wygody dla klientów zapisu, którzy komunikują się inicjowania obsługi administracyjnej usługi. Zestawy SDK udostępniają przykłady dla typowych scenariuszy, a także zestaw narzędzi, aby uprościć poświadczenie zabezpieczeń do rozwoju.

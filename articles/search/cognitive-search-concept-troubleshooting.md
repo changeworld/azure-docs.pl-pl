@@ -10,11 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 15fc879958bfd886210a90239e0247c60fe231f9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3c3f9a0d0dc40de6c62c21dab0f11a501829ef11
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640969"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>Porady dotyczące rozwiązywania problemów kognitywnych wyszukiwania
 
@@ -53,15 +54,15 @@ W takim przypadku można stwierdzić, indeksatora ignorowanie błędów. To zrob
 ## <a name="tip-4-looking-at-enriched-documents-under-the-hood"></a>Porada 4: Patrzeć wzbogaconego dokumenty kulisy 
 Wzbogaconego dokumenty są struktury tymczasowych utworzonych podczas wzbogacenia, a następnie usuwane po zakończeniu przetwarzania.
 
-Aby przechwycić migawkę wzbogaconego dokumentu utworzona podczas indeksowania, Dodaj pole o nazwie ```enriched``` Twojego indeksu. Indeksator zrzuty w polu automatycznie reprezentację ciągu wszystkich wzbogacenia dla tego dokumentu.
+Aby przechwycić migawkę wzbogaconego dokumentu utworzoną podczas indeksowania, dodaj pole o nazwie ```enriched``` do indeksu. Indeksator automatycznie zrzuca do tego pola ciąg będący reprezentacją wszystkich wzbogaceń dokumentu.
 
-```enriched``` Pole zawiera ciąg, który jest logiczną reprezentacja w pamięci wzbogaconego dokumentu w formacie JSON.  Wartość pola jest prawidłowym dokumentem JSON, jednak. Cudzysłowy są anulowane, więc musisz zastąpić `\"` z `"` do wyświetlenia dokumentu formacie JSON. 
+Pole ```enriched``` będzie zawierać ciąg, który jest logiczną reprezentacją wzbogaconego dokumentu w pamięci w formacie JSON.  Wartość pola jest jednak prawidłowym dokumentem w formacie JSON. Cudzysłowy są umieszczane w sekwencji ucieczki, więc musisz zastąpić ciąg `\"` znakiem `"`, aby wyświetlić dokument w postaci sformatowanego kodu JSON. 
 
 Pole wzbogaconego jest przeznaczony do debugowania, aby lepiej zrozumieć logicznej kształtu wyrażenia są oceniane pod względem zawartości. Nie należy uwzględniać w tym polu indeksowania celów.
 
 Dodaj ```enriched``` pole jako część definicja indeksu na potrzeby debugowania:
 
-#### <a name="request-body-syntax"></a>Składnia treść żądania
+#### <a name="request-body-syntax"></a>Składnia treści żądania
 ```json
 {
   "fields": [
@@ -98,7 +99,7 @@ Oparte na portalu indeksowania (zgodnie z opisem w szybkiego startu), wybierają
 
 ## <a name="tip-7-increase-indexing-throughput"></a>Porada 7: Zwiększyć przepływność indeksowania
 
-Dla [równoległych indeksowania](search-howto-reindex.md#parallel-indexing), umieść dane w wielu kontenerów lub wielu wirtualnych folderów wewnątrz tego samego kontenera. Następnie utwórz wiele par źródła danych i indeksatora. Wszystkie indeksatory można użyć tego samego skillset i zapisu do tego samego indeksu wyszukiwania docelowego dzięki aplikacji wyszukiwania nie trzeba znać tej partycji.
+Dla [równoległych indeksowania](search-howto-large-index.md), umieść dane w wielu kontenerów lub wielu wirtualnych folderów wewnątrz tego samego kontenera. Następnie utwórz wiele par źródła danych i indeksatora. Wszystkie indeksatory można użyć tego samego skillset i zapisu do tego samego indeksu wyszukiwania docelowego dzięki aplikacji wyszukiwania nie trzeba znać tej partycji.
 Aby uzyskać więcej informacji, zobacz [indeksowania dużych zestawów danych](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets).
 
 ## <a name="see-also"></a>Zobacz także

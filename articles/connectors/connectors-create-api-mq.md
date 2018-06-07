@@ -1,25 +1,22 @@
 ---
-title: "Informacje o sposobie korzystania z łącznika MQ w aplikacjach logiki platformy Azure | Dokumentacja firmy Microsoft"
-description: "Połącz się z lokalnym lub serwerze Azure MQ z przepływu pracy aplikacji logiki Przeglądaj odbieranie i wysyłanie komunikatów do WebSphere MQ"
-services: logic-apps
+title: Połączyć się z serwerem MQ - Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Wysyłanie i pobieranie wiadomości z platformy Azure lub lokalnego MQ serwera i usługi Azure Logic Apps
 author: valthom
-manager: anneta
-documentationcenter: 
-editor: 
-tags: connectors
-ms.assetid: 
-ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
+manager: cfowler
+ms.author: valthom
 ms.date: 06/01/2017
-ms.author: valthom; ladocs
-ms.openlocfilehash: 24ea1ef4d3c6229707458ef2f2005f90d8273304
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: 0877d0e9394d1a54eae5482001bd53da0e1a83b0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609452"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-logic-apps-using-the-mq-connector"></a>Połącz się z serwerem IBM MQ z aplikacji logiki przy użyciu łącznika programu MQ 
 
@@ -48,7 +45,7 @@ Microsoft Connector dla programu MQ wysyła i pobiera wiadomości przechowywanyc
 
 ## <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
 
-1. W **Azure start tablicy**, wybierz pozycję  **+**  (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**. 
+1. W **Azure start tablicy**, wybierz pozycję **+** (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**. 
 2. Wprowadź **nazwa**, takich jak MQTestApp, **subskrypcji**, **grupy zasobów**, i **lokalizacji** (Użyj lokalizacji, w którym jest skonfigurowane połączenie bramy danych lokalnych). Wybierz **Przypnij do pulpitu nawigacyjnego**i wybierz **Utwórz**.  
 ![Tworzenie aplikacji logiki](media/connectors-create-api-mq/Create_Logic_App.png)
 

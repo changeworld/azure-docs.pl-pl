@@ -1,22 +1,19 @@
 ---
-title: "Porównanie siatki zdarzeń, routing dla Centrum IoT | Dokumentacja firmy Microsoft"
-description: "Centrum IoT zapewnia własnej komunikat usługi routingu, ale integruje się również z siatki zdarzeń do publikowania zdarzeń. Porównaj te dwie funkcje."
-services: iot-hub
-documentationcenter: 
+title: Porównanie siatki zdarzeń, routing dla Centrum IoT | Dokumentacja firmy Microsoft
+description: Centrum IoT zapewnia własnej komunikat usługi routingu, ale integruje się również z siatki zdarzeń do publikowania zdarzeń. Porównaj te dwie funkcje.
 author: kgremban
 manager: timlt
-editor: 
 ms.service: iot-hub
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 01/30/2018
 ms.author: kgremban
-ms.openlocfilehash: 5a0a97ccf033b2981ba13be455482146ba212228
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 320320687e441a1296065eb9d0b7b12771036459
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636175"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>Porównaj rozsyłania wiadomości i siatki zdarzeń do Centrum IoT
 
@@ -37,7 +34,7 @@ Podczas rozsyłania wiadomości i siatki zdarzeń włączyć konfiguracji alertu
 | **Maksymalny rozmiar wiadomości** | 256 KB, device-to-cloud | 64 KB |
 | **Filtrowanie** | Zaawansowane filtrowanie przy użyciu języka przypominającego SQL obsługuje filtrowanie nagłówki komunikatów i treść. Aby uzyskać przykłady, zobacz [język zapytań Centrum IoT](iot-hub-devguide-query-language.md). | Filtrowanie na podstawie sufiksu/prefiks identyfikatory urządzeń, które działa dobrze dla hierarchicznych usług takich jak magazynu. |
 | **Punkty końcowe** | <ul><li>Centrum zdarzeń</li> <li>Obiektu blob magazynu</li> <li>Kolejka magistrali usług</li> <li>Tematy usługi Service Bus</li></ul><br>Płatną SKU Centrum IoT (S1, S2 i S3) są ograniczone do 10 niestandardowe punkty końcowe. może zostać utworzony 100 tras na Centrum IoT. | <ul><li>Azure Functions</li> <li>Azure Automation</li> <li>Centrum zdarzeń</li> <li>Logic Apps</li> <li>Microsoft Flow</li> <li>Usług innych firm za pomocą elementów Webhook</li></ul><br>Aby uzyskać najbardziej aktualne listy punktów końcowych, zobacz [obsługi zdarzeń siatki zdarzeń](../event-grid/overview.md#event-handlers). |
-| **Cost** | Jest bezpłatna oddzielne do rozsyłania wiadomości. Rozliczany tylko ruch przychodzący dane telemetryczne w Centrum IoT. Na przykład jeśli masz wiadomość kierowane do trzech różnych punktów końcowych są rozliczane dla tylko jednej wiadomości. | Brak bez żadnych opłat z Centrum IoT. Siatki zdarzeń oferuje pierwszych 100 000 operacji miesięcznie bezpłatnie, a następnie $: 0,60 na mln operacji po. |
+| **Koszty** | Jest bezpłatna oddzielne do rozsyłania wiadomości. Rozliczany tylko ruch przychodzący dane telemetryczne w Centrum IoT. Na przykład jeśli masz wiadomość kierowane do trzech różnych punktów końcowych są rozliczane dla tylko jednej wiadomości. | Brak bez żadnych opłat z Centrum IoT. Siatki zdarzeń oferuje pierwszych 100 000 operacji miesięcznie bezpłatnie, a następnie $: 0,60 na mln operacji po. |
 
 Rozsyłanie wiadomości Centrum IoT i siatki zdarzeń mają podobieństwa zbyt, niektóre z nich są szczegółowo opisane w poniższej tabeli:
 

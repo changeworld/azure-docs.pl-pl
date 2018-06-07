@@ -9,13 +9,14 @@ editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/21/2018
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: cff2ca87ab2916c9d5aa8bb308325cb7a0227d75
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 57c4d9ccc64c9644c3d333fad1262c997aeff5d1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624665"
 ---
 # <a name="use-azure-data-lake-store-to-capture-data-from-event-hubs"></a>Użyj usługi Azure Data Lake Store do przechwytywania danych z usługi Event Hubs
 
@@ -56,12 +57,12 @@ W tej sekcji utworzysz folder w ramach konta, których chcesz przechwytywać dan
 
     c. W obszarze **przypisywanie uprawnień**, kliknij przycisk **wybierz uprawnienia**. Ustaw **uprawnienia** do **wykonania**. Ustaw **dodać do** do **ten folder i wszystkie obiekty podrzędne**. Ustaw **dodać jako** do **wpisu uprawnienia dostępu i wpis uprawnienia domyślne**.
 
-> [!IMPORTANT]
-> Podczas tworzenia nowej hierarchii folderu do przechwytywania danych otrzymywanych przez usługi Azure Event Hubs, jest prosty sposób, aby zapewnić dostęp do folderu docelowego.  Jednak dodanie uprawnień do wszystkich obiektów podrzędnych folderu najwyższego poziomu z wielu podrzędnych plików i folderów może zająć dużo czasu.  Jeśli folder główny zawiera dużą liczbę plików i folderów, może to być szybsze można dodać **Execute** uprawnienia `Microsoft.EventHubs` indywidualnie do każdego folderu w ścieżce do folderu przeznaczenia. 
+    > [!IMPORTANT]
+    > Podczas tworzenia nowej hierarchii folderu do przechwytywania danych otrzymywanych przez usługi Azure Event Hubs, jest prosty sposób, aby zapewnić dostęp do folderu docelowego.  Jednak dodanie uprawnień do wszystkich obiektów podrzędnych folderu najwyższego poziomu z wielu podrzędnych plików i folderów może zająć dużo czasu.  Jeśli folder główny zawiera dużą liczbę plików i folderów, może to być szybsze można dodać **Execute** uprawnienia `Microsoft.EventHubs` indywidualnie do każdego folderu w ścieżce do folderu przeznaczenia. 
 
-    ![Assign permissions for Data Lake Store root](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Assign permissions for Data Lake Store root")
+    ![Przypisywanie uprawnień do katalogu głównego usługi Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "przypisać uprawnienia dla elementu głównego usługi Data Lake Store")
 
-    Click **OK**.
+    Kliknij przycisk **OK**.
 
 4. Przypisywanie uprawnień do folderu w ramach konta usługi Data Lake Store, w którym ma do przechwytywania danych.
 

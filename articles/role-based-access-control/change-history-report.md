@@ -11,36 +11,45 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/23/2017
+ms.date: 05/23/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e48ea2293c186bbc337f9d70464df374d64b5e61
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 737f8d49d8254806891d3177cde59187cd8e1f2e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640187"
 ---
 # <a name="view-activity-logs-for-role-based-access-control-changes"></a>Wyświetl dzienniki aktywności zmiany kontroli dostępu opartej na rolach
 
-Ilekroć ktoś dokonuje zmian w definicji ról lub przypisań ról w ramach subskrypcji, rejestrowane są zmiany [dziennika aktywności platformy Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) w kategorii administracyjnej. Można wyświetlać dzienniki aktywności, aby wyświetlić wszystkie zmiany kontroli dostępu opartej na rolach w ciągu ostatnich 90 dni.
+Czasami potrzebny informacji na temat zmiany kontroli dostępu opartej na rolach, takich jak dla inspekcji lub rozwiązywania problemów. Ilekroć ktoś zmienia przypisania roli lub definicje ról w ramach subskrypcji, rejestrowane są zmiany [dziennika aktywności platformy Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md). Można wyświetlać dzienniki aktywności, aby wyświetlić wszystkie zmiany RBAC w ciągu ostatnich 90 dni.
 
 ## <a name="operations-that-are-logged"></a>Operacje związane z unikatowymi
 
 Poniżej przedstawiono operacji związanych z RBAC, które są rejestrowane w dzienniku aktywności:
 
-- Utwórz lub zaktualizuj niestandardową definicję roli
-- Usuń niestandardową definicję roli
 - Utwórz przypisanie roli
 - Usuń przypisanie roli
+- Utwórz lub zaktualizuj niestandardową definicję roli
+- Usuń niestandardową definicję roli
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Najłatwiejszym sposobem na rozpoczęcie pracy jest aby wyświetlić dzienniki aktywności w portalu Azure. Poniższy zrzut ekranu przedstawia przykład dziennik aktywności, która została przefiltrowana do wyświetlenia **administracyjne** kategorii wraz z definicji roli i operacje przypisania roli. Zawiera również link do pobierania dzienników jako plik CSV.
+Najłatwiejszym sposobem na rozpoczęcie pracy jest aby wyświetlić dzienniki aktywności w portalu Azure. Poniższy zrzut ekranu przedstawia przykład dziennik aktywności, która została przefiltrowana do wyświetlenia operacji definicji roli i przypisanie roli. Zawiera również link do pobierania dzienników jako plik CSV.
 
 ![Dzienniki aktywności za pomocą portalu — zrzut ekranu](./media/change-history-report/activity-log-portal.png)
 
-Aby uzyskać więcej informacji, zobacz [wyświetlać zdarzenia w dzienniku aktywności](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
+Dziennik aktywności w portalu ma kilka filtrów. Poniżej przedstawiono filtry powiązane RBAC:
+
+|Filtr  |Wartość  |
+|---------|---------|
+|Kategoria zdarzenia     | <ul><li>Administracyjne</li></ul>         |
+|Operacja     | <ul><li>Utwórz przypisanie roli</li> <li>Usuń przypisanie roli</li> <li>Utwórz lub zaktualizuj niestandardową definicję roli</li> <li>Usuń niestandardową definicję roli</li></ul>      |
+
+
+Aby uzyskać więcej informacji o Dzienniki aktywności, zobacz [wyświetlać zdarzenia w dzienniku aktywności](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -99,7 +108,7 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 ## <a name="azure-log-analytics"></a>Azure Log Analytics
 
-[Analiza dzienników Azure](../log-analytics/log-analytics-overview.md) jest inne narzędzie służy do zbierania i analizowania zmian kontroli dostępu opartej na rolach dla wszystkich zasobów na platformie Azure. Analiza dzienników ma następujące zalety:
+[Analiza dzienników Azure](../log-analytics/log-analytics-overview.md) jest inne narzędzie służy do zbierania i analizowania zmian RBAC dla wszystkich zasobów na platformie Azure. Analiza dzienników ma następujące zalety:
 
 - Pisanie logiki i złożonych zapytań
 - Integracja z alertów, usługa Power BI i inne narzędzia

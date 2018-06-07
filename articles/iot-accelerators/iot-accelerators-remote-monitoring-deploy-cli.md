@@ -1,30 +1,27 @@
 ---
-title: Wdrażanie zdalne monitorowanie rozwiązania - Azure Java | Dokumentacja firmy Microsoft
-description: W tym samouczku przedstawiono sposób udostępnienia zdalnego akcelerator rozwiązań monitorowania przy użyciu interfejsu wiersza polecenia.
-services: iot-suite
-suite: iot-suite
+title: Wdrażanie rozwiązania zdalne monitorowanie Java - Azure | Dokumentacja firmy Microsoft
+description: Ten samouczek pokazuje, jak zainicjować akcelerator rozwiązań monitorowania zdalnego przy użyciu interfejsu wiersza polecenia.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 01/29/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 3178d51cd2c04f3be8d4a6284a4f1635845def8c
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.topic: conceptual
+ms.openlocfilehash: 603ce00a036822fd0c7411b47cf3fe630671cc5a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628127"
 ---
-# <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Wdrażanie zdalne akcelerator rozwiązań monitorowania przy użyciu interfejsu wiersza polecenia
+# <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Wdrażanie akcelerator rozwiązań monitorowania zdalnego przy użyciu interfejsu wiersza polecenia
 
-W tym samouczku przedstawiono sposób udostępnienia zdalnego monitorowania akcelerator rozwiązań. Możesz wdrożyć rozwiązanie przy użyciu interfejsu wiersza polecenia. Można także wdrożyć rozwiązanie przy użyciu interfejsu użytkownika sieci web na azureiotsuite.com, aby dowiedzieć się więcej o tej opcji, zobacz [wdrożyć zdalnego monitorowania akcelerator rozwiązań](iot-accelerators-remote-monitoring-deploy.md).
+Ten samouczek pokazuje, jak zainicjować akcelerator rozwiązań monitorowania zdalnego. Możesz wdrożyć rozwiązanie przy użyciu interfejsu wiersza polecenia. Można także wdrożyć rozwiązanie przy użyciu interfejsu użytkownika sieci web na azureiotsuite.com, aby dowiedzieć się więcej o tej opcji, zobacz [wdrażanie akcelerator rozwiązań monitorowania zdalnego](iot-accelerators-remote-monitoring-deploy.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby wdrożyć zdalnego akcelerator rozwiązań monitorowania, należy aktywną subskrypcją platformy Azure.
+Aby wdrożyć akcelerator rozwiązań monitorowania zdalnego, musisz mieć aktywną subskrypcją platformy Azure.
 
 Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](http://azure.microsoft.com/pricing/free-trial/).
 
@@ -57,7 +54,7 @@ Podczas wdrażania akcelerator rozwiązań, dostępnych jest kilka opcji, które
 | SKU    | `basic`, `standard`, `local` | A _podstawowe_ wdrożenia jest przeznaczony dla testu i pokazów, wszystkie mikrousług jest wdrażana na jednej maszynie wirtualnej. A _standardowe_ wdrożenia jest przeznaczony dla środowiska produkcyjnego, mikrousług wdrażania wielu maszyn wirtualnych. A _lokalnego_ wdrożenia konfiguruje kontener Docker do uruchomienia mikrousług na komputerze lokalnym i używa usług Azure, takich jak magazyn i DB rozwiązania Cosmos w chmurze. |
 | Środowisko uruchomieniowe | `dotnet`, `java` | Wybiera implementacja języka mikrousług. |
 
-Aby dowiedzieć się więcej o sposobie używania lokalnego wdrożenia, zobacz [uruchomiony lokalnie zdalnego rozwiązanie monitorowania](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Running-the-Remote-Monitoring-Solution-Locally#deploy-azure-services-and-set-environment-variables).
+Aby dowiedzieć się więcej o sposobie używania lokalnego wdrożenia, zobacz [uruchomiony lokalnie rozwiązanie monitorowania zdalnego](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Running-the-Remote-Monitoring-Solution-Locally#deploy-azure-services-and-set-environment-variables).
 
 ## <a name="basic-vs-standard-deployments"></a>Podstawowe programu vs. Standardowa wdrożenia
 
@@ -96,7 +93,7 @@ Tworzenie standardowego rozwiązania spowoduje wyświetlenie następujących us�
 
 ### <a name="example-deploy-net-version"></a>Przykład: wdrożenie wersji platformy .NET
 
-Poniższy przykład przedstawia sposób wdrażania basic, wersja platformy .NET zdalnego monitorowania akcelerator rozwiązań:
+Poniższy przykład przedstawia wdrożenie podstawowe, wersji .NET akcelerator rozwiązań monitorowania zdalnego:
 
 ```cmd/sh
 pcs -t remotemonitoring -s basic -r dotnet
@@ -104,7 +101,7 @@ pcs -t remotemonitoring -s basic -r dotnet
 
 ### <a name="example-deploy-java-version"></a>Przykład: wdrożenie wersji języka Java
 
-Poniższy przykład przedstawia sposób wdrażania standard, Java wersję zdalnego monitorowania akcelerator rozwiązań:
+Poniższy przykład przedstawia sposób wdrażania standardową, wersję Java akcelerator rozwiązań monitorowania zdalnego:
 
 ```cmd/sh
 pcs -t remotemonitoring -s standard -r java

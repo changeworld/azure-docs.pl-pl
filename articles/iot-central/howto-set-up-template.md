@@ -1,18 +1,19 @@
 ---
 title: Konfigurowanie szablonu urządzenia w aplikacji Azure IoT centralnej | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skonfigurować szablon urządzenia z pomiarów, ustawienia właściwości, reguł i pulpitu nawigacyjnego.
-services: iot-central
 author: viv-liu
 ms.author: viviali
 ms.date: 04/16/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 52c6c8fe4375354d650f92b73bffc288c9a2ccfe
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: c88b27edab71527b4b3eca71c00af2930c22f8cd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34629239"
 ---
 # <a name="set-up-a-device-template"></a>Konfigurowanie szablonu urządzenia
 
@@ -39,7 +40,7 @@ Za pomocą tego szablonu urządzenia operator można tworzyć i Podłącz urząd
 > [!NOTE]
 Tylko konstruktorów i Administratorzy mogą tworzenie, edytowanie i usuwanie szablonów urządzenia. Każdy użytkownik może tworzyć urządzeń w **Explorer urządzenia** strony z istniejących szablonów urządzenia.
 
-## <a name="create-a-new-device-template"></a>Utwórz nowy szablon urządzenia
+## <a name="create-a-new-device-template"></a>Tworzenie nowego szablonu urządzenia
 
 1. Przejdź do **Konstruktor aplikacji** strony.
 
@@ -53,7 +54,7 @@ Tylko konstruktorów i Administratorzy mogą tworzenie, edytowanie i usuwanie sz
 
 Teraz wyglądać na poszczególnych kartach **szczegóły urządzenia** strony.
 
-## <a name="measurements"></a>Pomiary
+## <a name="measurements"></a>Miary
 
 Pomiary są danych z urządzenia. Można dodać wiele miar do szablonu urządzenia, aby dopasować możliwości urządzenia. Obecnie dane telemetryczne i zdarzenia są typy obsługiwanych pomiarów.
 
@@ -106,7 +107,7 @@ Po wybraniu **zapisać**, **tryb wentylator** pomiaru stan zostanie wyświetlony
 
 ![Stan pomiarów wykresu](./media/howto-set-up-template/statemeasurementschart.png)
 
-W przypadku istnieje zbyt wiele punktów danych wysłanego przez urządzenie w małych czas trwania, pomiaru stan jest wyświetlany z innego języka visual, jak pokazano poniżej. Jeśli klikniesz przycisk na wykresie, wszystkich punktów danych w tym przedziale czasu są wyświetlane w kolejności chronologicznej. Można również zawęzić zakres czasu, aby zobaczyć pomiaru wykreślić na wykresie.
+Jeśli w krótkim okresie urządzenie wyśle za dużo punktów danych, miara stanu będzie wyświetlana za pomocą innej wizualizacji, jak pokazano poniżej. Jeśli klikniesz wykres, wszystkie punkty danych w danym okresie zostaną wyświetlone w kolejności chronologicznej. Można również zawęzić zakres czasu, aby zobaczyć pomiaru wykreślić na wykresie.
 
 ![Szczegóły stanu pomiarów](./media/howto-set-up-template/statemeasurementsdetail.png)
 

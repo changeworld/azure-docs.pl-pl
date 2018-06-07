@@ -1,24 +1,20 @@
 ---
 title: Przy użyciu urządzenia Azure twins kontrolować LED użytkownika zestaw deweloperski IoT MXChip | Dokumentacja firmy Microsoft
 description: W tym samouczku informacje o sposobie monitorowania zestaw deweloperski stanów i kontroli użytkownika LED twins urządzenia Azure IoT Hub.
-services: iot-hub
-documentationcenter: ''
 author: liydu
-manager: timlt
-tags: ''
-keywords: ''
+manager: jeffya
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: 3678eb20429d9e5123272499d474fdec2cdab065
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 2845b545484f4eef1e6999c1c54aaba5de14b832
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633268"
 ---
 # <a name="mxchip-iot-devkit"></a>Zestaw deweloperski IoT MXChip
 

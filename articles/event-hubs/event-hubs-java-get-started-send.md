@@ -2,23 +2,19 @@
 title: Wysyłanie zdarzeń do usługi Azure Event Hubs przy użyciu języka Java | Dokumentacja firmy Microsoft
 description: Wprowadzenie do wysyłania do usługi Event Hubs przy użyciu języka Java
 services: event-hubs
-documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: event-hubs
 ms.workload: core
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 05/30/2018
 ms.author: sethm
-ms.openlocfilehash: 5dd0c88dab9ff4b7073a9acf6872b4c3ff085586
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6d3bf0b8ac5c5bdc7bf3deda21e800fe3cc6be2e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626415"
 ---
 # <a name="send-events-to-azure-event-hubs-using-java"></a>Wysyłanie zdarzeń do usługi Azure Event Hubs przy użyciu języka Java
 
@@ -28,12 +24,14 @@ Aby uzyskać więcej informacji, zobacz [Przegląd usługi Event Hubs][Event Hub
 
 W tym samouczku przedstawiono sposób wysyłania zdarzeń do Centrum zdarzeń za pomocą aplikacji konsoli w języku Java. Aby odbierać zdarzenia przy użyciu biblioteki hosta procesora zdarzeń Java, zobacz [w tym artykule](event-hubs-java-get-started-receive-eph.md), lub kliknij odpowiedni język odbierania w tabeli po lewej stronie zawartości.
 
-W celu ukończenia tego samouczka potrzebne następujące elementy:
+## <a name="prerequisites"></a>Wymagania wstępne
 
-* Środowisko projektowe Java. W tym samouczku przyjęto założenie, [Eclipse](https://www.eclipse.org/).
+W celu ukończenia tego samouczka niezbędne są następujące wymagania wstępne:
+
+* Środowisko projektowe Java. W tym samouczku używana [Eclipse](https://www.eclipse.org/).
 * Aktywne konto platformy Azure. Jeśli nie masz subskrypcji platformy Azure, Utwórz [bezpłatne konto][] przed rozpoczęciem.
 
-Kod w tym samouczku jest oparta na [GitHub Wyślij próbki](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/Send), które można sprawdzić, aby wyświetlić pełny działającą aplikację.
+Kod w tym samouczku jest oparta na [próbki SimpleSend GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend), który można sprawdzić, aby wyświetlić pełny działającą aplikację.
 
 ## <a name="send-events-to-event-hubs"></a>Wysyłanie zdarzeń do usługi Event Hubs
 
@@ -94,7 +92,7 @@ Klasa ConnectionStringBuilder służy do tworzenia wartości ciągu połączenia
 
 ### <a name="send-events"></a>Wysyłanie zdarzeń
 
-Następnie utwórz zdarzenie pojedynczej przez przekształcania ciąg w jego kodowania UTF-8 bajtów. Następnie utwórz nowe wystąpienie klienta usługi Event Hubs z parametrów połączenia i wysłać wiadomość.   
+Tworzenie zdarzenia pojedynczej poprzez przekształcanie ciąg do jego kodowania UTF-8 bajtów. Następnie utwórz nowe wystąpienie klienta usługi Event Hubs z parametrów połączenia i wysłać wiadomość:   
 
 ```java 
 byte[] payloadBytes = "Test AMQP message from JMS".getBytes("UTF-8");
@@ -119,5 +117,5 @@ Następujące linki pozwalają dowiedzieć się więcej na temat usługi Event H
 
 <!-- Links -->
 [Event Hubs overview]: event-hubs-overview.md
-[bezpłatne konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[Bezpłatne konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 

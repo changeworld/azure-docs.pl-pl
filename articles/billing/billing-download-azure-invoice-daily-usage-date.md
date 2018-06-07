@@ -2,13 +2,12 @@
 title: Pobierz rozliczeń faktury i dziennego użycia danych Azure | Dokumentacja firmy Microsoft
 description: Zawiera opis sposobu pobierania lub wyświetlania Azure rozliczeń faktury i dziennego użycia danych.
 keywords: faktury rozliczeń, pobierania faktury, faktury azure, azure użycie
-services: ''
+services: billing
 documentationcenter: ''
 author: genlin
 manager: tonguyen
 editor: ''
 tags: billing
-ms.assetid: 6d568d1d-3bd6-4348-97d0-1098b5fe0661
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -16,19 +15,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: genli
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e57e3898c5e843dcc130746a10e78b0681303670
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 59ee992518b5e529f486415f962c6f26881875f1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607416"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Pobierz lub wyświetlanie Twoich Azure rozliczeń faktury i dziennego użycia danych
 Możesz pobrać faktury z [portalu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) lub została ona wysłana w wiadomości e-mail. Aby pobrać dzienne użycie, przejdź do [Centrum konta platformy Azure](https://account.azure.com/Subscriptions). Tylko w przypadku niektórych ról ma uprawnienia do rozliczeń faktury i informacje o użyciu, takie jak konto administratora. Aby dowiedzieć się więcej na temat uzyskiwania dostępu do informacji dotyczących rozliczeń, zobacz [zarządzanie dostępem do platformy Azure, rozliczeń, za pomocą ról](billing-manage-access.md).
 
 W tym artykule nie dotyczą klientów Enterprise Agreement (EA). Jeśli EA klientów, faktur są wysyłane bezpośrednio do administratorów rejestracji.
 
-[!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="get-your-invoice-in-email-pdf"></a>Pobierz faktury w wiadomości e-mail (PDF)
 Można włączyć i skonfigurować dodatkowych adresatów, aby otrzymać Azure faktury w wiadomości e-mail. Ta funkcja nie mogą być dostępne dla niektórych subskrypcji, takie jak ofert obsługi, umowy Enterprise Agreement lub Azure otwartym.
@@ -39,13 +38,18 @@ Można włączyć i skonfigurować dodatkowych adresatów, aby otrzymać Azure f
     
 2. Kliknij przycisk **uczestnictwa w** i zaakceptuj postanowienia.
 
-    ![Zrzut ekranu przedstawiający przepływ opcjonalnych](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep2.PNG)
+    ![Zrzut ekranu pokazujący przepływ opcjonalnych w kroku 2](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep2.PNG)
  
-3. Po zaakceptowane umowy, można skonfigurować dodatkowych adresatów.
+3. Po zaakceptowane umowy, można skonfigurować dodatkowych adresatów. Adresat zostanie usunięty, adres e-mail jest już przechowywany. Jeśli zmienisz zdanie, należy dodać je ponownie.
 
-    ![Zrzut ekranu przedstawiający przepływ opcjonalnych](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep3.PNG)
+    ![Zrzut ekranu pokazujący przepływ opcjonalnych w kroku 3](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep3.PNG)
     
 Jeśli nie otrzymasz wiadomość e-mail po wykonaniu kroków, upewnij się, Twój adres e-mail jest poprawny w [preferencjach komunikacji w profilu](https://account.windowsazure.com/profile).
+
+### <a name="opt-out-from-getting-your-invoice-in-email"></a>Brak zgody na przed pobraniem faktura w wiadomości e-mail
+Jeśli nie chcesz uzyskać potwierdzenia w wiadomości e-mail, kliknij przycisk akceptacji limit przesłanego faktury. Spowoduje to usunięcie żadne adresy e-mail ustawiona na otrzymywanie pocztą e-mail faktury. Jeśli wybierzesz Wstecz w przypadku należy ponownie skonfigurować adresatów.
+
+ ![Zrzut ekranu przedstawiający przepływ rezygnacji z](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep4.PNG)
 
 ## <a name="download-invoice-from-azure-portal-pdf"></a>Pobierać faktury z portalu Azure (PDF)
 

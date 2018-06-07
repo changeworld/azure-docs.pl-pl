@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: 66340e690e5a6ac3e440b8b4d26e1a8b2abab266
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f78dd2a28575ad8e3fa30ac9c2bbd29c7d85a78f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640476"
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis Cache — często zadawane pytania
 Dowiedz się odpowiedzi na często zadawane pytania, wzorców i najlepszych rozwiązań dla pamięci podręcznej Redis Azure.
@@ -82,7 +83,7 @@ Często zadawane pytania w tej sekcji opisano typowe monitorowania i rozwiązywa
 * [Które oferty Azure w pamięci podręcznej jest dla mnie odpowiednia?](#which-azure-cache-offering-is-right-for-me)
 
 ### <a name="what-is-azure-redis-cache"></a>Co to jest usługa Azure Redis Cache?
-Pamięć podręczna Redis Azure jest oparta na popularnych open source [pamięci podręcznej Redis](http://redis.io). Go umożliwia dostęp do bezpiecznego, dedykowanej pamięci podręcznej Redis, zarządzane przez firmę Microsoft i jest dostępny z poziomu dowolnej aplikacji w obrębie platformy Azure. Aby uzyskać bardziej szczegółowe informacje, zobacz [pamięć podręczna Redis Azure](https://azure.microsoft.com/services/cache/) stronę produktu w witrynie Azure.com.
+Usługa Azure Redis Cache jest oparta na popularnej [pamięci podręcznej Redis](http://redis.io) typu „open source”. Go umożliwia dostęp do bezpiecznego, dedykowanej pamięci podręcznej Redis, zarządzane przez firmę Microsoft i jest dostępny z poziomu dowolnej aplikacji w obrębie platformy Azure. Aby uzyskać bardziej szczegółowe informacje, zobacz [pamięć podręczna Redis Azure](https://azure.microsoft.com/services/cache/) stronę produktu w witrynie Azure.com.
 
 ### <a name="how-can-i-get-started-with-azure-redis-cache"></a>Jak można zacząć korzystać z pamięci podręcznej Redis Azure?
 Istnieje kilka metod, które możesz rozpocząć pracę z pamięci podręcznej Redis Azure.
@@ -140,7 +141,7 @@ Z tej tabeli firma Microsoft może wykonywać Rysowanie następujących wnioskó
 | C2 |2,5 GB |2 |500 / 62.5 |41,000 |37,000 |
 | C3 |6 GB |4 |1000 / 125 |100,000 |90,000 |
 | C4 |13 GB |2 |500 / 62.5 |60,000 |55,000 |
-| C5 |26 GB |4 |1,000 / 125 |102,000 |93,000 |
+| C5 |26 GB |4 |1,000 / 125 |102 000 |93,000 |
 | C6 |53 GB |8 |2,000 / 250 |126,000 |120,000 |
 | **Rozmiar pamięci podręcznej — wersja Premium** | |**Rdzenie procesora CPU na niezależnego fragmentu** | **Megabity na sekundę (Mb/s) / MB na sekundę (MB/s)** |**Liczba żądań na drugim (RPS) bez protokołu SSL, na niezależnego fragmentu** |**Liczba żądań na drugi SSL (RPS), na niezależnego fragmentu** |
 | P1 |6 GB |2 |1,500 / 187.5 |180,000 |172,000 |
@@ -165,7 +166,7 @@ Tak, pamięć podręczna Redis Azure jest dostępna w chmurze platformy Azure dl
 
 | Chmura   | Sufiks DNS dla pamięci podręcznej Redis            |
 |---------|---------------------------------|
-| Publiczne  | *.redis.cache.windows.net       |
+| Public  | *.redis.cache.windows.net       |
 | Rząd USA  | *.redis.cache.usgovcloudapi.net |
 | Niemcy | *.redis.cache.cloudapi.de       |
 | Chiny   | *.redis.cache.chinacloudapi.cn  |
@@ -385,7 +386,7 @@ Biorąc pod uwagę te informacje, zdecydowanie zaleca się czy klientów ustawio
 
 Jak skonfigurować tego ustawienia:
 
-* W programie ASP.NET, użyj [ustawienie konfiguracji "minIoThreads"] [ "minIoThreads" configuration setting] w obszarze `<processModel>` element konfiguracji w pliku web.config. Jeśli korzystasz z wewnątrz witryn sieci Web platformy Azure, to ustawienie nie jest uwidaczniana, za pomocą opcji konfiguracji. Jednakże, nadal można skonfigurować to ustawienie programowo (patrz poniżej), od wybranej metody Application_Start w global.asax.cs.
+* W programie ASP.NET, użyj ["minIoThreads" lub "minWorkerThreads" Ustawienie konfiguracji] [ "minIoThreads" configuration setting] w obszarze `<processModel>` element konfiguracji w pliku web.config. Jeśli korzystasz z wewnątrz witryn sieci Web platformy Azure, to ustawienie nie jest uwidaczniana, za pomocą opcji konfiguracji. Jednakże, nadal można skonfigurować to ustawienie programowo (patrz poniżej), od wybranej metody Application_Start w global.asax.cs.
 
   > [!NOTE] 
   > Wartość określona w tym elemencie konfiguracji jest *-core* ustawienie. Na przykład jeśli korzystasz z 4-rdzeniową maszyną i chcesz ustawienia minIOThreads się 200 w czasie wykonywania, czy użyć `<processModel minIoThreads="50"/>`.

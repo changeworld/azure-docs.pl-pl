@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/05/2018
 ms.author: johnkem
-ms.openlocfilehash: 9cc4eb8d8f1494a7ea7a63297751f8e251aedf05
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 35cdd157469556c071b03a0f25184df141057554
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639065"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Azure strumienia danych do Centrum zdarzeń do użycia przez monitorowania przez narzędzie zewnętrzne
 
@@ -97,7 +98,7 @@ Monitorowanie danych aplikacji wymaga, że kodu został zinstrumentowany przy u�
 
 1. [Konfigurowanie Eksport ciągły](../application-insights/app-insights-export-telemetry.md) danych usługi Application Insights do konta magazynu.
 
-2. Konfigurowanie aplikacji logiki wyzwalany przez czasomierz który [pobiera dane z magazynu obiektów blob](../connectors/connectors-create-api-azureblobstorage.md#use-an-action) i [wypchnięcia jej jako wiadomości do Centrum zdarzeń](../connectors/connectors-create-api-azure-event-hubs.md#send-events-to-your-event-hub-from-your-logic-app).
+2. Konfigurowanie aplikacji logiki wyzwalany przez czasomierz który [pobiera dane z magazynu obiektów blob](../connectors/connectors-create-api-azureblobstorage.md#add-action) i [wypchnięcia jej jako wiadomości do Centrum zdarzeń](../connectors/connectors-create-api-azure-event-hubs.md#add-action).
 
 ## <a name="what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub"></a>Co mogę zrobić przy użyciu monitorowania danych są wysyłane do mojego Centrum zdarzeń
 

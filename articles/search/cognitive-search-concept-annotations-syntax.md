@@ -10,11 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 2e838e9c94d5b19565bea3d02890fe6164bb37d0
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0e074e93ecbe80c3acf3481c0d33917fbe5090c6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640910"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>Jak adnotacje odwołania w skillset kognitywnych wyszukiwania
 
@@ -124,5 +125,5 @@ Należy pamiętać, że relacja `"/document/people/*/lastname"` jest większy ni
 ## <a name="see-also"></a>Zobacz także
 + [Integrowanie niestandardowych umiejętności potokiem wzbogacenia](cognitive-search-custom-skill-interface.md)
 + [Sposób definiowania skillset](cognitive-search-defining-skillset.md)
-+ [Utwórz Skillset (REST)](ref-create-skillset.md)
++ [Utwórz Skillset (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [Sposób mapowania pól wzbogaconego do indeksu](cognitive-search-output-field-mapping.md)

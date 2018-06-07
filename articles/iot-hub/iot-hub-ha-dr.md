@@ -1,24 +1,19 @@
 ---
-title: "Usługa Azure IoT Hub wysokiej dostępności i odzyskiwania po awarii | Dokumentacja firmy Microsoft"
-description: "Zawiera opis funkcji Azure i Centrum IoT, które ułatwiają tworzenie wysokiej dostępności rozwiązania Azure IoT z po awarii możliwości odzyskiwania."
-services: iot-hub
-documentationcenter: 
+title: Usługa Azure IoT Hub wysokiej dostępności i odzyskiwania po awarii | Dokumentacja firmy Microsoft
+description: Zawiera opis funkcji Azure i Centrum IoT, które ułatwiają tworzenie wysokiej dostępności rozwiązania Azure IoT z po awarii możliwości odzyskiwania.
 author: fsautomata
-manager: timlt
-editor: 
-ms.assetid: ae320e58-aa20-45b9-abdc-fa4faae8e6dd
+manager: ''
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: elioda
-ms.openlocfilehash: ecc5da8daf0f5c93dffc93798f40507f8eac48be
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 428209defa554599c01789e6f2a8b62f155b0f2f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633710"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Centrum IoT wysokiej dostępności i odzyskiwania po awarii
 Jako usługi Azure IoT Hub zapewnia wysokiej dostępności (HA), za pomocą zwolnienia na poziomie region platformy Azure, bez konieczności wykonywania dodatkowych działań wymaganych przez to rozwiązanie. Platforma Microsoft Azure obejmuje również funkcje ułatwiające tworzenie rozwiązań z możliwości odzyskiwanie po awarii lub dostępności między regionu. Jeśli chcesz zapewnić globalnych, region między wysoką dostępność dla urządzeń lub użytkowników, korzystać z tych funkcji odzyskiwania po awarii usługi Azure. Artykuł [wskazówki techniczne ciągłości biznesowej Azure](../resiliency/resiliency-technical-guidance.md) opisuje wbudowane funkcje w systemie Azure ciągłość prowadzenia działalności biznesowej i odzyskiwania po awarii. [Odzyskiwania po awarii i wysoką dostępność aplikacji Azure] [ Disaster recovery and high availability for Azure applications] dokument zawiera wskazówki architektura strategie aplikacjami platformy Azure w celu osiągnięcia wysokiej dostępności i odzyskiwania po awarii.

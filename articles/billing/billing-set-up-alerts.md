@@ -2,13 +2,12 @@
 title: Ustawianie alertów rozliczeń lub faktury dla subskrypcji platformy Azure | Dokumentacja firmy Microsoft
 description: W tym artykule opisano, jak można skonfigurować alerty na rachunku Azure, aby uniknąć niespodzianki rozliczeń.
 keywords: środki alert, alert rozliczeń
-services: ''
+services: billing
 documentationcenter: ''
 author: adpick
 manager: adpick
 editor: ''
 tags: billing
-ms.assetid: 9b7b3eeb-cd9d-4690-86a3-51b1e2a8974f
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -16,19 +15,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/9/2017
 ms.author: adpick
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fa7d1853226647917925e8c75e01a1c83d84daeb
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 981cb1153e0268e6572207f8d2401edb23485863
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607807"
 ---
 # <a name="set-up-billing-or-credit-alerts-for-your-microsoft-azure-subscriptions"></a>Ustawianie alertów rozliczeń lub faktury dla subskrypcji platformy Microsoft Azure
 Jeśli jesteś administratorem konta subskrypcji platformy Azure, aby utworzyć dostosowany, można użyć Usługa alertów rozliczenia Azure alerty dotyczące rozliczeń, które ułatwiają monitorowanie działań i zarządzania nimi rozliczeń dla konta platformy Azure.
 
 Ta usługa jest w wersji zapoznawczej, więc należy ją najpierw włączyć na stronie funkcji w wersji zapoznawczej.
 
-[!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="set-the-alert-threshold-and-email-recipients"></a>Ustawiony próg i adres e-mail odbiorcy alertów
 1. Odwiedź stronę [strona funkcje w wersji zapoznawczej](https://account.windowsazure.com/PreviewFeatures) i Włącz **rozliczeń Usługa alertów**.
@@ -50,6 +49,11 @@ Azure obsługuje dowolnego adresu e-mail, ale nie Sprawdź, czy działa adres e-
 ## <a name="check-on-your-alerts"></a>Sprawdź alerty
 Po skonfigurowaniu alerty Centrum konta je i pokazuje, ile więcej można skonfigurować. Dla każdego alertu Zobacz Data i godzina wysłania, czy jest alert dotyczący rozliczeń całkowita lub środki pieniężne i skonfigurowanego limitu. Format daty i godziny jest 24-godzinnym koordynować czasu uniwersalnego (UTC), a data jest w formacie rrrr mm-dd. Kliknij znak plus alertu na liście, aby go edytować, lub kliknij przycisk Kosz go usunąć.
 
+## <a name="delete-alerts-or-email-addresses-from-the-azure-billing-alert-service"></a>Usuwa alerty lub adresy e-mail z Usługa alertów rozliczenia Azure
+Jeśli trzeba usunąć wszelkie informacje z usługi, zaktualizować adres e-mail dla pliku lub całkowicie usunąć alert.
+
+   ![Zrzut ekranu przedstawiający widok usunięcia alertu, gdy należy usunąć informacje osobiste][Image4]
+
 ## <a name="billing-alerts-for-enterprise-agreement-ea-customers"></a>Karta alerty dla klientów Enterprise Agreement (EA)
 Subskrypcje EA nie są obsługiwane przez tę usługę, zamiast tego EA klienci mogą uzyskać alerty dla każdego działu w ramach rejestracji przez ustawienie wydatków przydziałów. Zobacz [przydziały wydatków działu](https://ea.azure.com/helpdocs/departmentSpendingQuotas) w portalu EA, aby rozpocząć pracę.
 
@@ -63,3 +67,4 @@ Aby dowiedzieć się więcej, zobacz [Azure koszt wskazówki dotyczące zarządz
 [Image1]: ./media/azure-billing-set-up-alerts/billingalert1.png 
 [Image2]: ./media/azure-billing-set-up-alerts/billingalert2.png
 [Image3]: ./media/azure-billing-set-up-alerts/billingalerts3.png 
+[Image4]: ./media/azure-billing-set-up-alerts/AlertsDeleteScreen1.PNG

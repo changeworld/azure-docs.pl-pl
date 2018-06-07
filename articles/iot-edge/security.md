@@ -1,19 +1,19 @@
 ---
 title: Zabezpieczenia w programie Azure IoT Edge | Dokumentacja firmy Microsoft
-description: "Zabezpieczeń, uwierzytelniania i autoryzacji urządzenia brzegowe IoT"
-services: iot-edge
-keywords: 
+description: Zabezpieczeń, uwierzytelniania i autoryzacji urządzenia brzegowe IoT
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 10/05/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 8a5bf1f35fcdd779cf27edeba7dfd5705cbae205
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+services: iot-edge
+ms.openlocfilehash: effe33182435d2a4afbad3356c6840070ba96325
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631432"
 ---
 # <a name="securing-azure-iot-edge---preview"></a>Zabezpieczanie krawędzi IoT Azure — wersja zapoznawcza
 
@@ -42,7 +42,7 @@ Aby delegować uprawnienia i kontroli dostępu jest kluczową rolę w osiąganiu
 
 Inne schematy autoryzacji to prawa podpisywania certyfikatów i kontroli dostępu opartej na rolach (RBAC).  Możliwość rozszerzania przez strukturę zabezpieczeń zezwala na przyjęcie innych systemów dojrzałe autoryzacji. 
 
-## <a name="attestation"></a>Poświadczenie
+## <a name="attestation"></a>Zaświadczanie
 
 Poświadczenie zapewnia integralność bitów oprogramowania.  Jest ważne w przypadku wykrywania i zapobiegania złośliwego oprogramowania.  Przez strukturę zabezpieczeń Azure IoT krawędzi klasyfikuje zaświadczania w obszarze trzy główne kategorie:
 
@@ -66,7 +66,7 @@ Wszystkie systemy dobrej kondycji, w tym systemy inteligentnego krawędzi musi b
 
 We wdrożeniach urządzenia brzegowe inteligentnego, zwłaszcza tych, które wdrożone w miejscach, w którym potencjalne złośliwych osób mieć fizyczny dostęp do urządzenia, zabezpieczeń oferowanych przez urządzeń sprzętowych jest ostatnim narzędziem do ochrony.  Z tego powodu kotwiące zaufanie odporne na próby naruszenia sprzętu jest najbardziej niezwykle istotne w przypadku tych wdrożeń.  Przez strukturę zabezpieczeń Azure IoT Edge wymaga współpracy dostawców sprzętu bezpiecznego krzemu oferowanie różnymi odmianami sprzętu głównym zaufania, aby zmieścił się w różnych wdrożeń i profilów ryzyka. Obejmują one użycie bezpiecznego krzemu przestrzegać wspólne standardy protokołu zabezpieczeń, takie jak Trusted Platform Module (ISO/IEC 11889) i aparat kompozycji identyfikator Trusted Computing Group na urządzenia (GRUPOWANE).  Obejmują one bezpieczne enklawę technologii, takich jak TrustZones i oprogramowania rozszerzenia Guard (SGX). 
 
-## <a name="certification"></a>Certyfikat
+## <a name="certification"></a>Certyfikacja
 
 Aby ułatwić klientom podejmowanie świadomych decyzji podczas nabywanie urządzenia Azure IoT brzegowe dla wdrożenia, framework Azure IoT krawędzi zawiera wymagania dotyczące certyfikacji.  Podstawowych, aby te wymagania są certyfikaty dotyczące bezpieczeństwa i certyfikaty odnoszące się do weryfikacji implementacji zabezpieczeń.  Na przykład certyfikacji oświadczeń zabezpieczeń będzie informuje, że urządzenie brzegowe IoT używa bezpiecznych składników sprzętowych znane na ataki rozruchu. Certyfikacji weryfikacji będzie informuje, że bezpiecznych składników sprzętowych prawidłowo został wdrożony do zaoferowania tej wartości w urządzeniu.  Zgodnie z zasadą prostotę platformę oferuje wizji pozostawienie minimalnego obciążenia certyfikacji.   
 
@@ -83,7 +83,7 @@ Przykłady kilka wymiarów dla rozszerzeń i strukturę zabezpieczeń Azure IoT 
 
 W końcu najwyższy Powodzenie zabezpieczania inteligentnego krawędzi wyniki z udziału współpracy społeczności Otwórz regulowane przez wspólne zainteresowanie zabezpieczanie IoT.  Te udziały mogą być w formie bezpiecznego technologii i usług.  Przez strukturę zabezpieczeń krawędzi IoT Azure zapewnia solidną podstawę dla zabezpieczeń, który jest rozszerzalny maksymalnego pokrycia do zaoferowania poziomu zaufania i integralności w inteligentnego krawędź jako z chmury Azure.  
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Przeczytaj więcej na temat sposobu Azure IoT krawędzi jest [zabezpieczanie inteligentnego krawędzi][lnk-edge-blog].
 

@@ -1,22 +1,19 @@
 ---
 title: Wdrażanie rozwiązania symulacji urządzenia - Azure | Dokumentacja firmy Microsoft
 description: Ten samouczek pokazuje, jak zainicjować rozwiązania symulacji urządzenia z azureiotsuite.com.
-services: iot device simulation
-suite: iot-suite
 author: troyhopwood
-manager: timlt
+manager: ''
 ms.author: troyhop
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 12/18/2017
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 4d468c527c658707da2b5f35f43676626baf5ca2
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: e96c0f16ca4b69d103674b7f895c52d197280ca5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627010"
 ---
 # <a name="deploy-the-azure-iot-device-simulation-solution"></a>Wdrażanie rozwiązania symulacji urządzenia IoT Azure
 
@@ -39,7 +36,7 @@ Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka
 
 Przed przystąpieniem do wdrażania rozwiązania do subskrypcji platformy Azure, musisz wybrać niektóre opcje konfiguracji:
 
-1. Zaloguj się do [azureiotsuite.com](https://www.azureiotsuite.com) poświadczenia konta przy użyciu platformy Azure i kliknij przycisk **+** do tworzenia nowego rozwiązania:
+1. Zaloguj się do [azureiotsuite.com](https://www.azureiotsolutions.com) poświadczenia konta przy użyciu platformy Azure i kliknij przycisk **+** do tworzenia nowego rozwiązania:
 
     ![Utwórz nowe rozwiązanie](./media/iot-accelerators-device-simulation-deploy/createnewsolution.png)
 

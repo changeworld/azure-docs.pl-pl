@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/03/2018
+ms.date: 05/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 0e4c4c9e950610526a29e02d70827a1279d9686a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 43f7f1160fa36745bcfd697d91d1b46615b99edc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637518"
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Zarządzanie koszt kontrolując ilość danych i przechowywania w analizy dzienników
 Analiza dzienników jest przeznaczone do skali i pomocy technicznej zbierania, indeksowanie i przechowywania dużych ilości danych dziennie z dowolnego źródła w przedsiębiorstwie lub wdrożona na platformie Azure.  Może to być podstawowy sterownik dla Twojej organizacji, niskich kosztów jest ostatecznie sterownika. W tym celu jego wziąć pod uwagę, że koszt obszaru roboczego Analytisc dziennika po prostu nie jest oparty na ilość danych zebranych, również jest zależny od plan wybrany, i jak długo został wybrany do przechowywania danych generowanych przez połączone źródła.  
@@ -36,7 +37,7 @@ Koszt danych mogą być znaczące w zależności od następujących czynników:
 > [!NOTE]
 > Zapoznaj się z dokumentacją, dla każdego rozwiązania, ponieważ zapewnia szacunkową ilość danych, które zbiera.   
 
-Jeśli pracujesz w *wolne* planu, dane są ograniczone do przechowywania 7 dni. Aby uzyskać *autonomiczny* lub *zapłacone* warstwy, dane zbierane są dostępne w ciągu ostatnich 31 dni. *Wolne* plan ma 500 MB dzienny limit wprowadzanie i odnalezienie stale przekracza dozwolone woluminu kwoty obszaru roboczego można zmienić na plan płatnej do zbierania danych po przekroczeniu tego limitu. 
+Klienci z umową Enterprise podpisu przed 1 lipca 2018 lub obszar roboczy analizy dzienników kto już utworzone w ramach subskrypcji, możesz nadal mieć dostęp do *wolne* planu. Jeśli subskrypcja nie jest związana z istniejących rejestracji EA *wolne* warstwa nie jest dostępna podczas tworzenia obszaru roboczego w nową subskrypcję po 2 kwietnia 2018.  Dane są ograniczone do 7 dni przechowywania dla *wolne* warstwy.  Aby uzyskać *autonomiczny* lub *zapłacone* warstwy, dane zbierane są dostępne w ciągu ostatnich 31 dni. *Wolne* warstwa ma 500 MB dzienny limit wprowadzanie i odnalezienie stale przekracza dozwolone woluminu kwoty obszaru roboczego można zmienić na plan płatnej do zbierania danych po przekroczeniu tego limitu. 
 
 > [!NOTE]
 > Opłaty za wybranie opcji wybierz dłuższy okres przechowywania dla warstwy płatną. Możesz zmienić typ planu w dowolnym momencie, a także aby uzyskać więcej informacji o cenach, zobacz [szczegóły cennika](https://azure.microsoft.com/pricing/details/log-analytics/). 
@@ -54,7 +55,7 @@ W tym miejscu możesz przejrzeć woluminu dane dla danego miesiąca. Dotyczy to 
  
 Dziennik analizy opłaty są dodawane do rachunku platformy Azure. Można wyświetlić szczegóły Azure naliczać opłaty sekcji rozliczeń w portalu Azure lub w [Azure Billing Portal](https://account.windowsazure.com/Subscriptions).  
 
-## <a name="daily-cap"></a>Limit dzienny
+## <a name="daily-cap"></a>Dzienny limit
 Podczas tworzenia obszaru roboczego analizy dzienników z portalu Azure i wybierz *wolne* planu, ma ustawioną wartość 500 MB limitu dnia. Nie ma żadnego limitu do innych planów cenowych. Możesz skonfigurować dzienny limit i ograniczyć wprowadzanie dziennych obszaru roboczego, ale zachować ostrożność, zgodnie z celem nie powinno być trafienie dzienny limit.  W przeciwnym razie utraty danych do końca dnia, w którym może wpłynąć na innych usług platformy Azure i rozwiązań, funkcje, których może zależeć od aktualnych danych dostępnych w obszarze roboczym.  W związku z tym możliwość obserwować i otrzymywać alerty, po wpływ na warunki kondycji zasobów Obsługa usług IT.  Dzienny limit jest przeznaczony do użycia jako sposobu zarządzania nieoczekiwany wzrost ilości danych z zarządzanych zasobów i pozostać w ramach limitu lub gdy chcesz po prostu ograniczyć nieplanowane opłat obszaru roboczego.  
 
 Po osiągnięciu dzienny limit kolekcję typów danych rozliczeniowy zatrzymuje się do końca dnia. Transparent ostrzeżenie pojawia się w górnej części strony dla wybranego obszaru roboczego analizy dzienników i zdarzenia operacji są wysyłane do *operacji* tabeli w obszarze **LogManagement** kategorii. Zbieranie danych wznawia działanie po czasie resetowania zdefiniowane w obszarze *dzienny limit jest ustawiony na*. Zaleca się definiowania zasady alertu na podstawie zdarzeń tej operacji, skonfigurowana do wysyłania powiadomień, gdy zostanie osiągnięty dzienny limit danych. 

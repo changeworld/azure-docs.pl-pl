@@ -1,24 +1,19 @@
 ---
-title: "Użyj portalu Azure, aby skonfigurować przekazywanie pliku | Dokumentacja firmy Microsoft"
-description: "Jak skonfigurować Centrum IoT umożliwia przekazywania plików z połączonych urządzeń przy użyciu portalu Azure. Zawiera informacje o konfigurowaniu docelowym kontem magazynu platformy Azure."
-services: iot-hub
-documentationcenter: 
+title: Użyj portalu Azure, aby skonfigurować przekazywanie pliku | Dokumentacja firmy Microsoft
+description: Jak skonfigurować Centrum IoT umożliwia przekazywania plików z połączonych urządzeń przy użyciu portalu Azure. Zawiera informacje o konfigurowaniu docelowym kontem magazynu platformy Azure.
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 915f1597-272d-4fd4-8c5b-a0ccb1df0d91
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 07/03/2017
 ms.author: dobett
-ms.openlocfilehash: 2d875947297be5d47362369b96bc6ab0d90b3c93
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 0100cbe4bbc66d0c4ef940cc40f4fa3441176a1a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633210"
 ---
 # <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>Konfigurowanie Centrum IoT przekazywania plików przy użyciu portalu Azure
 
@@ -44,7 +39,7 @@ Aby użyć [plików funkcji przekazywania w Centrum IoT][lnk-upload], należy na
 
 ![Konfigurowanie przekazywania pliku Centrum IoT w portalu][15]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat możliwości przekazywania plików Centrum IoT, zobacz [przekazywania plików z urządzeniem] [ lnk-upload] w Podręczniku dewelopera Centrum IoT.
 
@@ -57,7 +52,7 @@ Skorzystaj z poniższych linków, aby dowiedzieć się więcej o zarządzaniu Ce
 Aby dokładniej analizować możliwości Centrum IoT, zobacz:
 
 * [Przewodnik dewelopera Centrum IoT][lnk-devguide]
-* [Wdrażanie urządzenia brzegowe AI krawędzi IoT Azure][lnk-iotedge]
+* [Wdrażanie rozwiązań SI na urządzeniach brzegowych przy użyciu usługi Azure IoT Edge][lnk-iotedge]
 * [Zabezpieczanie rozwiązania IoT od podstaw w górę][lnk-securing]
 
 [13]: ./media/iot-hub-configure-file-upload/file-upload-settings.png

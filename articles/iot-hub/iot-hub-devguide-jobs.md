@@ -1,24 +1,19 @@
 ---
 title: Zrozumienie zadania Centrum IoT Azure | Dokumentacja firmy Microsoft
 description: Przewodnik dewelopera — Planowanie zadań do uruchamiania na wielu urządzeniach połączona z Centrum IoT. Zadania można zaktualizować znaczniki i odpowiednie właściwości i wywołania metod bezpośrednio na wielu urządzeniach.
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: fe78458f-4f14-4358-ac83-4f7bd14ee8da
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 367eb703465b2fbc6f1e06a383bc9df709cabe78
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 35b8536b944df39d0d47bf3529698fc94e51110e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633948"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Planowanie zadań na wielu urządzeniach
 
@@ -108,7 +103,7 @@ Na poniższej liście przedstawiono właściwości i odpowiednie opisy, które m
 | **jobId** |Aplikacja podany identyfikator zadania. |
 | **startTime** |Aplikacja podany czas rozpoczęcia (ISO 8601) dla zadania. |
 | **endTime** |Centrum IoT podać datę (ISO 8601) ukończenia zadania. Jest prawidłowy tylko wtedy, gdy zadanie osiągnie stan "ukończone". |
-| **Typ** |Typy zadań: |
+| **type** |Typy zadań: |
 | | **scheduledUpdateTwin**: zadanie używane do aktualizowania zestaw żądaną właściwości bądź tagi. |
 | | **scheduledDeviceMethod**: zadanie służy do wywoływania metody urządzenia na zestawie twins urządzenia. |
 | **status** |Bieżący stan zadania. Dopuszczalne wartości stanu: |

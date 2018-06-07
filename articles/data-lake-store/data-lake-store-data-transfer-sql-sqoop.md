@@ -10,13 +10,14 @@ ms.assetid: 3f914b2a-83cc-4950-b3f7-69c921851683
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/09/2018
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 255ba1468f4dfbf83a88390fff7355fa2403cac5
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4f0c20b7d18d9b03ae7127e6cdcdc269a3c4b404
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624169"
 ---
 # <a name="copy-data-between-data-lake-store-and-azure-sql-database-using-sqoop"></a>Kopiowanie danych między Data Lake Store i za pomocą Sqoop bazy danych Azure SQL
 Dowiedz się, jak używać narzędzia Apache Sqoop umożliwia importowanie i eksportowanie danych między bazą danych SQL Azure i usługi Data Lake Store.

@@ -1,24 +1,19 @@
 ---
-title: "Nowoczesne magazynu kopii zapasowej za pomocą serwera kopii zapasowej Azure w wersji 2 | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat nowych funkcji w wersji v2 serwer kopii zapasowej Azure. W tym artykule opisano sposób uaktualnienia instalacji serwera kopii zapasowej."
+title: Nowoczesne magazynu kopii zapasowej za pomocą serwera kopii zapasowej Azure w wersji 2
+description: Więcej informacji na temat nowych funkcji w wersji v2 serwer kopii zapasowej Azure. W tym artykule opisano sposób uaktualnienia instalacji serwera kopii zapasowej.
 services: backup
-documentationcenter: 
 author: markgalioto
 manager: carmonm
-editor: 
-ms.assetid: 
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: masaran;markgal
-ms.openlocfilehash: 751b9b495fd368dff1f72429707f5f33a0ccb569
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: markgal
+ms.openlocfilehash: 7c583ea048ed1837c662869c62039165aaa3c024
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606758"
 ---
 # <a name="add-storage-to-azure-backup-server-v2"></a>Dodawanie magazynu do serwera usługi Kopia zapasowa Azure w wersji 2
 
@@ -77,7 +72,7 @@ Aby dodać wolumin do serwera kopii zapasowej w **zarządzania** okienku ponowne
 
 Z magazynu obsługujących obciążenie można wybrać woluminów, które przechowują preferencyjnie niektóre rodzaje obciążeń. Na przykład można ustawić kosztowne woluminów, które obsługują dużej liczby operacji wejścia/wyjścia na sekundę (IOPS) do przechowywania obciążeń, które wymagają częstego, dużej liczby kopii zapasowych. Przykładem jest program SQL Server z dzienników transakcji. Innych obciążeń, których kopii zapasowej rzadziej, takich jak maszyny wirtualne, można tworzenie kopii zapasowych woluminów niskich kosztach.
 
-### <a name="update-dpmdiskstorage"></a>DPMDiskStorage aktualizacji
+### <a name="update-dpmdiskstorage"></a>Update-DPMDiskStorage
 
 Magazyn obsługujący obciążenia można skonfigurować przy użyciu polecenia cmdlet programu PowerShell Update-DPMDiskStorage, która aktualizuje właściwości woluminu w puli magazynu na serwerze programu Data Protection Manager.
 
@@ -96,7 +91,7 @@ Zmiany wprowadzone przy użyciu programu PowerShell są uwzględniane w konsoli 
 
 ![Dyski i woluminy w konsoli administratora](./media/backup-mabs-add-storage/mabs-add-storage-9.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Po zainstalowaniu serwera kopii zapasowej, Dowiedz się, jak przygotować serwer lub Włącz ochronę obciążeń.
 
 - [Przygotowanie serwera kopii zapasowej obciążeń](backup-azure-microsoft-azure-backup.md)

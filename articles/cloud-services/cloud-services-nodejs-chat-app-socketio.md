@@ -14,11 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: adegeo
-ms.openlocfilehash: 0139c42334b53364aee8cfd29cfa771d47e2ccc8
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: b5d706f82dd41f0c271aa5f67676bba08cceb3b1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608597"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Tworzenie aplikacji czatu Node.js przy użyciu biblioteki Socket.IO w usługi w chmurze platformy Azure
 
@@ -151,16 +152,16 @@ Aplikacja jest teraz uruchomiona na platformie Azure i możliwość przekazywani
 ## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku przedstawiono sposób tworzenia aplikacji rozmów podstawowe hostowanych w usłudze w chmurze Azure. Aby uzyskać informacje o obsłudze tej aplikacji w witrynie sieci Web platformy Azure, zobacz [tworzenie aplikacji czatu Node.js przy użyciu biblioteki Socket.IO w witrynie sieci Web Azure][chatwebsite].
 
-Aby uzyskać więcej informacji, zobacz też [Centrum deweloperów środowiska Node.js](/develop/nodejs/).
+Aby uzyskać więcej informacji, zobacz też [Centrum deweloperów środowiska Node.js](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest).
 
-[chatwebsite]: /develop/nodejs/tutorials/website-using-socketio/
+[chatwebsite]: https://docs.microsoft.com/azure/cloud-services/cloud-services-nodejs-develop-deploy-app
 
 [Azure SLA]: http://www.windowsazure.com/support/sla/
 [Azure SDK for Node.js GitHub repository]: https://github.com/WindowsAzure/azure-sdk-for-node
 [completed-app]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-10.png
 [Azure SDK for Node.js]: https://www.windowsazure.com/develop/nodejs/
 [Node.js Web Application]: https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
-[repozytorium GitHub użyciu biblioteki Socket.IO]: https://github.com/LearnBoost/socket.io/tree/0.9.14
+[Repozytorium GitHub użyciu biblioteki Socket.IO]: https://github.com/LearnBoost/socket.io/tree/0.9.14
 [Azure Considerations]: #windowsazureconsiderations
 [Hosting the Chat Example in a Worker Role]: #hostingthechatexampleinawebrole
 [Summary and Next Steps]: #summary

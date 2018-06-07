@@ -1,19 +1,19 @@
 ---
 title: Usługa Azure IoT EdgeAgent i EdgeHub odwołania | Dokumentacja firmy Microsoft
 description: Sprawdź właściwości i ich wartości dla twins modułu edgeAgent i edgeHub
-services: iot-edge
-keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 03/14/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 0971d5bba59ce3c7b1a6409ef3248f33a41e37c9
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+services: iot-edge
+ms.openlocfilehash: 0b9e7421bb09e619b4a820910db5faa9edfcc5d5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632911"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Właściwości krawędź agent i twins modułu Centrum krawędzi
 
@@ -42,8 +42,8 @@ Dwie modułu dla agenta krawędzi jest nazywany `$edgeAgent` i koordynuje komuni
 | systemModules.edgeHub.settings.createOptions | Stringified JSON, zawierające opcje tworzenia kontenera Centrum krawędzi. [Opcje tworzenia docker][lnk-docker-create-options] | Nie |
 | systemModules.edgeHub.configuration.id | Identyfikator wdrożenia, które wdrożyć ten moduł. | Zostało to określone przez Centrum IoT, po zastosowaniu tego manifestu przy użyciu wdrożenia. Nie jest częścią manifest wdrażania. |
 | moduły. {moduleId} .version | Zdefiniowane przez użytkownika ciąg reprezentujący wersję tego modułu. | Yes |
-| modules.{moduleId}.type | Musi być "docker" | Yes |
-| modules.{moduleId}.restartPolicy | {"nigdy" \| "— nie powiodło się" \| "na — zła" \| "zawsze"} | Yes |
+| moduły. .type {moduleId} | Musi być "docker" | Yes |
+| moduły. .restartPolicy {moduleId} | {"nigdy" \| "— nie powiodło się" \| "na — zła" \| "zawsze"} | Yes |
 | modules.{moduleId}.settings.image | Identyfikator URI do obrazu modułu. | Yes |
 | modules.{moduleId}.settings.createOptions | Stringified JSON, zawierające opcje tworzenia kontenera modułu. [Opcje tworzenia docker][lnk-docker-create-options] | Nie |
 | moduły. .configuration.id {moduleId} | Identyfikator wdrożenia, które wdrożyć ten moduł. | Zostało to określone przez Centrum IoT, po zastosowaniu tego manifestu przy użyciu wdrożenia. Nie jest częścią manifest wdrażania. |
@@ -83,7 +83,7 @@ Poniższa tabela nie zawiera informacje, które jest kopiowana żądanej właśc
 | systemModules.edgeHub.restartCount | Ile razy ten moduł został ponownie uruchomiony jako część zasada ponownego uruchamiania. |
 | modules.{moduleId}.runtimeStatus | Bieżący stan modułu: {"uruchomiona" \| 'stopped' \| "nie powiodło się" \| "wycofywania" \| "zła"} |
 | moduły. .statusDescription {moduleId} | Opis tekstowy przy bieżącym stanie modułu, jeśli jest zła. |
-| modules.{moduleId}.exitCode | Jeśli został zakończony, kod zakończenia zgłaszane przez moduł kontenera |
+| moduły. .exitCode {moduleId} | Jeśli został zakończony, kod zakończenia zgłaszane przez moduł kontenera |
 | modules.{moduleId}.startTimeUtc | Godzina ostatniego uruchomienia modułu |
 | modules.{moduleId}.lastExitTimeUtc | Czas, gdy moduł ostatnio zakończony |
 | modules.{moduleId}.lastRestartTimeUtc | Czas, gdy moduł ostatniego ponownego uruchomienia |

@@ -11,23 +11,24 @@ ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 05/11/2018
+ms.date: 05/18/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: it-pro
-ms.openlocfilehash: 85a9b3a4f1fc21cbb47d41a61661de38d6fc246d
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: HT
+ms.openlocfilehash: 365959a588dc48e7991efea239ba823c3ca65e7a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640544"
 ---
-# <a name="built-in-roles-for-azure-role-based-access-control"></a>Wbudowanych ról dla kontroli dostępu opartej na rolach na platformie Azure
-[Kontrola dostępu oparta na rolach (RBAC)](overview.md) ma kilka definicji wbudowanych ról, które można przypisać do użytkowników, grup i nazwy główne usług. Przypisania ról są sposób kontrolowania dostępu do zasobów na platformie Azure. Nie można modyfikować wbudowanych ról, ale Utwórz swój własny [role niestandardowe](custom-roles.md) do określonych potrzeb organizacji.
+# <a name="built-in-roles-for-azure-role-based-access-control"></a>Role wbudowane dla kontroli dostępu opartej na rolach na platformie Azure
+[Kontrola dostępu oparta na rolach (RBAC)](overview.md) ma kilka definicji wbudowanych ról, które można przypisać do użytkowników, grup i nazwy główne usług. Przypisania ról są sposób kontrolowania dostępu do zasobów na platformie Azure. Jeśli wbudowane role nie spełnienia specyficznych potrzeb Twojej organizacji, możesz utworzyć własne [role niestandardowe](custom-roles.md).
 
 Zawsze ewoluuje wbudowane role. Aby uzyskać najnowsze definicje ról, należy użyć [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) lub [listy definicji roli az](/cli/azure/role/definition#az-role-definition-list).
 
 ## <a name="built-in-role-descriptions"></a>Opisy ról wbudowanych
-Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby wyświetlić listę `actions` i `notActions` dla każdej roli.
+Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby wyświetlić listę `actions`, `notActions`, `dataActions`, i `notDataActions` dla każdej roli.
 
 
 | Wbudowane roli | Opis |
@@ -83,6 +84,7 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 | [Nowy współtwórca konta APM Relic](#new-relic-apm-account-contributor) | Umożliwia zarządzanie kontami i aplikacjami usługi New Relic Application Performance Management, ale nie umożliwia uzyskiwania dostępu do nich. |
 | [Dostęp do danych i odczytywania](#reader-and-data-access) | Pozwala wyświetlić wszystko, ale nie będzie można usunąć lub utworzyć konto magazynu lub zawartego zasobu. Umożliwia również dostęp do odczytu i zapisu do wszystkich danych znajdujących się na koncie magazynu za pośrednictwem dostępu do kluczy konta magazynu. |
 | [Współautor pamięci podręcznej redis](#redis-cache-contributor) | Umożliwia zarządzanie pamięciami podręcznymi Redis, ale nie umożliwia uzyskiwania do nich dostępu. |
+| [Współautor zasad zasobów (wersja zapoznawcza)](#resource-policy-contributor-preview) | (Wersja zapoznawcza) Użytkownicy uzupełnieni z umowy EA z prawami do tworzenia/modyfikowania zasad zasobów, tworzenia biletów pomocy technicznej i odczytywania zasobów/hierarchii. |
 | [Harmonogram zadania kolekcje współautora](#scheduler-job-collections-contributor) | Umożliwia zarządzanie kolekcjami zadań usługi Scheduler, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Współautor usługi wyszukiwania](#search-service-contributor) | Umożliwia zarządzanie usługami Search, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Administrator zabezpieczeń](#security-admin) | W Centrum zabezpieczeń tylko: można wyświetlić zasady zabezpieczeń, wyświetlanie stanów zabezpieczeń, Edytuj zasady zabezpieczeń, wyświetlanie alertów i zalecenia, odrzucać alerty i zalecenia |
@@ -96,11 +98,15 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 | [SQL Server współautora](#sql-server-contributor) | Umożliwia zarządzanie serwerami i bazami danych SQL, ale nie umożliwia uzyskiwania dostępu do nich ani do ich zasad związanych z zabezpieczeniami. |
 | [Współautor konta magazynu](#storage-account-contributor) | Umożliwia zarządzanie kontami magazynu, ale nie dostęp do nich. |
 | [Rola usługi Operator klucza konta magazynu](#storage-account-key-operator-service-role) | Operatorzy kluczy kont magazynu mogą wyświetlać listę kluczy dla kont magazynu i ponownie je generować |
+| [Magazyn obiektów Blob danych Współautor (wersja zapoznawcza)](#storage-blob-data-contributor-preview) | Zezwala na dostęp do odczytu, zapisu i usuwania do kontenerów obiektów blob i danych usługi Azure Storage |
+| [Czytnik danych magazynu obiektów Blob (wersja zapoznawcza)](#storage-blob-data-reader-preview) | Zezwala na dostęp do odczytu do kontenerów obiektów blob i danych usługi Azure Storage |
+| [Magazyn kolejek współautorem (wersja zapoznawcza)](#storage-queue-data-contributor-preview) | Zezwala na dostęp do odczytu, zapisu i usuwania do kolejek i komunikatów kolejek usługi Azure Storage |
+| [Czytnik danych kolejki magazynu (wersja zapoznawcza)](#storage-queue-data-reader-preview) | Zezwala na dostęp do odczytu do kolejek i komunikatów kolejek usługi Azure Storage |
 | [Współautor żądania obsługi](#support-request-contributor) | Umożliwia tworzenie żądań pomocy technicznej i zarządzanie nimi |
 | [Współautor Menedżera ruchu](#traffic-manager-contributor) | Umożliwia zarządzanie profilami usługi Traffic Manager, ale nie zapewnia kontroli dostępu do nich. |
 | [Administrator dostępu użytkowników](#user-access-administrator) | Umożliwia zarządzanie dostępem użytkowników do zasobów platformy Azure. |
 | [Identyfikator logowania administratora maszyny wirtualnej](#virtual-machine-administrator-login) | - użytkownicy z tą rolą mają możliwość zalogowania się na maszynie wirtualnej z uprawnieniami administratora systemu Windows lub użytkownika root systemu Linux. |
-| [Współautor maszyny wirtualnej](#virtual-machine-contributor) | Umożliwia zarządzanie maszynami wirtualnymi, ale nie dostęp do nich ani do sieci wirtualnych i konta magazynu, z którymi są połączone. |
+| [Współautor maszyny wirtualnej](#virtual-machine-contributor) | Umożliwia zarządzanie maszyn wirtualnych, ale nie do nich dostępu i nie sieci wirtualnej lub konta magazynu, które są połączone. |
 | [Dane logowania użytkownika maszyny wirtualnej](#virtual-machine-user-login) | Użytkownicy z tą rolą mają możliwość zalogowania się na maszynie wirtualnej jako zwykli użytkownicy. |
 | [Współautor Plan sieci Web](#web-plan-contributor) | Umożliwia zarządzanie planami sieci Web dla witryn sieci Web, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Współautor witryny sieci Web](#website-contributor) | Umożliwia zarządzanie witrynami sieci Web (nie planami sieci Web), ale nie umożliwia uzyskiwania do nich dostępu. |
@@ -1035,6 +1041,20 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 
+## <a name="resource-policy-contributor-preview"></a>Współautor zasad zasobów (wersja zapoznawcza)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | (Wersja zapoznawcza) Użytkownicy uzupełnieni z umowy EA z prawami do tworzenia/modyfikowania zasad zasobów, tworzenia biletów pomocy technicznej i odczytywania zasobów/hierarchii. |
+> | **Identyfikator** | 36243c78-bf99-498c-9df9-86d9f8d28608 |
+> | **Akcje** |  |
+> | * / Odczyt | Przeczytaj zasoby wszystkich typów, z wyjątkiem kluczy tajnych. |
+> | Microsoft.Authorization/policyassignments/* | Tworzenie i zarządzanie nimi przypisania zasad |
+> | Microsoft.Authorization/policydefinitions/* | Tworzenie i zarządzanie nimi definicje zasad |
+> | Microsoft.Authorization/policysetdefinitions/* | Tworzenie i zarządzanie nimi zestawów zasad |
+> | Microsoft.PolicyInsights/* |  |
+> | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+
 ## <a name="scheduler-job-collections-contributor"></a>Współautor kolekcji zadań usługi Harmonogram
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1388,6 +1408,58 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 > | Microsoft.Storage/storageAccounts/listkeys/action | Zwraca klucze dostępu dla podanego konta magazynu. |
 > | Microsoft.Storage/storageAccounts/regeneratekey/action | Generuje ponownie klucze dostępu dla podanego konta magazynu. |
 
+## <a name="storage-blob-data-contributor-preview"></a>Współautor danych obiektu blob magazynu (wersja zapoznawcza)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Zezwala na dostęp do odczytu, zapisu i usuwania do kontenerów obiektów blob i danych usługi Azure Storage |
+> | **Identyfikator** | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
+> | **Akcje** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/delete | Zwraca wynik usunięcia kontenera |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/read | Zwraca kontener lub listę kontenerów |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/write | Zwraca wynik umieszczania lub dzierżawienia kontenera obiektów blob |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Zwraca wynik usunięcia obiektu blob |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Zwraca obiekt blob lub listę obiektów blob |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Zwraca wynik zapisania obiektu blob |
+
+## <a name="storage-blob-data-reader-preview"></a>Czytnik danych obiektu blob magazynu (wersja zapoznawcza)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Zezwala na dostęp do odczytu do kontenerów obiektów blob i danych usługi Azure Storage |
+> | **Identyfikator** | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
+> | **Akcje** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/read | Zwraca kontener lub listę kontenerów |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Zwraca obiekt blob lub listę obiektów blob |
+
+## <a name="storage-queue-data-contributor-preview"></a>Współautor danych kolejki magazynu (wersja zapoznawcza)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Zezwala na dostęp do odczytu, zapisu i usuwania do kolejek i komunikatów kolejek usługi Azure Storage |
+> | **Identyfikator** | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
+> | **Akcje** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/delete | Zwraca wynik usunięcia kolejki |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/read | Zwraca kolejkę lub listę kolejek. |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/write | Zwraca wynik zapisania kolejki |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete | Zwraca wynik usunięcia komunikatu |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Zwraca komunikat |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/write | Zwraca wynik zapisania komunikatu |
+
+## <a name="storage-queue-data-reader-preview"></a>Czytnik danych kolejki magazynu (wersja zapoznawcza)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Zezwala na dostęp do odczytu do kolejek i komunikatów kolejek usługi Azure Storage |
+> | **Identyfikator** | 19e7f393-937e-4f77-808e-94535e297925 |
+> | **Akcje** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/read | Zwraca kolejkę lub listę kolejek. |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Zwraca komunikat |
+
 ## <a name="support-request-contributor"></a>Współautor żądania pomocy technicznej
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1437,12 +1509,15 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 > | Microsoft.Network/loadBalancers/read | Pobiera definicję modułu równoważenia obciążenia |
 > | Microsoft.Network/networkInterfaces/read | Pobiera definicję interfejsu sieciowego.  |
 > | Microsoft.Compute/virtualMachines/*/read |  |
+> | **DataActions** |  |
+> | Microsoft.Compute/virtualMachines/login/action | Zaloguj się do maszyny wirtualnej jako zwykły użytkownik |
+> | Microsoft.Compute/virtualMachines/loginAsAdmin/action | Zaloguj się do maszyny wirtualnej z uprawnieniami administratora systemu Windows lub użytkownika root systemu Linux |
 
 ## <a name="virtual-machine-contributor"></a>Współautor maszyny wirtualnej
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Umożliwia zarządzanie maszynami wirtualnymi, ale nie dostęp do nich ani do sieci wirtualnych i konta magazynu, z którymi są połączone. |
+> | **Opis** | Umożliwia zarządzanie maszyn wirtualnych, ale nie do nich dostępu i nie sieci wirtualnej lub konta magazynu, które są połączone. |
 > | **Identyfikator** | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj autoryzacji |
@@ -1495,6 +1570,8 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 > | Microsoft.Network/loadBalancers/read | Pobiera definicję modułu równoważenia obciążenia |
 > | Microsoft.Network/networkInterfaces/read | Pobiera definicję interfejsu sieciowego.  |
 > | Microsoft.Compute/virtualMachines/*/read |  |
+> | **DataActions** |  |
+> | Microsoft.Compute/virtualMachines/login/action | Zaloguj się do maszyny wirtualnej jako zwykły użytkownik |
 
 ## <a name="web-plan-contributor"></a>Współautor planów sieci Web
 > [!div class="mx-tableFixed"]

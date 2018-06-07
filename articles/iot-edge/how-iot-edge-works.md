@@ -1,25 +1,20 @@
 ---
 title: Co to jest usługa Azure IoT Edge | Microsoft Docs
 description: Omówienie usługi Azure IoT Edge
-services: iot-Edge
-documentationcenter: ''
 author: kgremban
 manager: timlt
-editor: chipalost
-ms.assetid: ''
-ms.service: iot-hub
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.reviewer: chipalost
+ms.service: iot-edge
+services: iot-edge
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: kgremban
-ms.custom: ''
-ms.openlocfilehash: b14dd7ca2c35f9d660b571436f1d7f1b5185c5c1
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
-ms.translationtype: HT
+ms.openlocfilehash: 52956e9888d67e0502a9ea82657acb9728216111
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630701"
 ---
 # <a name="what-is-azure-iot-edge---preview"></a>Co to jest usługa Azure IoT Edge — wersja zapoznawcza
 
@@ -69,7 +64,7 @@ Sposób używania urządzenia Azure IoT Edge zależy wyłącznie od Ciebie. Śro
 
 Zarządzanie cyklem życia oprogramowania w przypadku urządzeń korporacyjnych jest skomplikowane. Zarządzanie cyklem życia oprogramowania w przypadku milionów heterogenicznych urządzeń IoT jest jeszcze trudniejsze. Obciążenia muszą być tworzone i konfigurowane dla konkretnego typu urządzenia, wdrażane na dużą skalę na milionach urządzeń w Twoim rozwiązaniu i monitorowane, aby wyłapywać nieprawidłowo funkcjonujące urządzenia. Tych działań nie można wykonywać dla poszczególnych urządzeń. Muszą być wykonywane na dużą skalę.
 
-Usługa Azure IoT Edge bezproblemowo integruje się z pakietem Azure IoT Suite w celu zapewnienia jednej warstwy kontroli na potrzeby rozwiązania. Usługi w chmurze umożliwiają użytkownikom wykonywanie następujących działań:
+Krawędź IoT Azure bezproblemowo integruje się z akceleratorów rozwiązania Azure IoT zapewnienie płaszczyzny sterowania na potrzeby tego rozwiązania. Usługi w chmurze umożliwiają użytkownikom wykonywanie następujących działań:
 
 * Tworzenie i konfigurowanie obciążeń do uruchamiania na określonym typie urządzenia.
 * Wysyłanie obciążeń do zestawu urządzeń.
@@ -77,7 +72,7 @@ Usługa Azure IoT Edge bezproblemowo integruje się z pakietem Azure IoT Suite w
 
 ![Telemetria, szczegółowe informacje i akcje urządzeń są koordynowane za pomocą chmury][2]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Wypróbuj te pojęcia przez [wdrożenie usługi IoT Edge na symulowanym urządzeniu][lnk-quickstart].
 

@@ -7,15 +7,16 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
 ms.reviewer: billgib
-ms.openlocfilehash: eb7e87934269a5e1ba453e20f6f409a10dfbda5b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 319195ceb98b5b760d4d92055faa6e09c8fb0e3d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644352"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Przywracanie pojedynczej dzierżawy z bazy danych na dzierżawy aplikacji SaaS
 
@@ -64,7 +65,7 @@ Aby zademonstrować tych scenariuszy odzyskiwania, najpierw "przypadkowo" usuną
 
 ### <a name="open-the-events-app-to-review-the-current-events"></a>Otwórz aplikację zdarzeń do przeglądania zdarzeń bieżącego
 
-1. Otwórz Centrum zdarzeń (http://events.wtp.&lt; Użytkownik&gt;. trafficmanager.net) i wybierz **Hall porozumieniu Contoso**.
+1. Otwórz Centrum zdarzeń (http://events.wtp.&lt; użytkownika&gt;. trafficmanager.net) i wybierz **Hall porozumieniu Contoso**.
 
    ![Centrum zdarzeń](media/saas-dbpertenant-restore-single-tenant/events-hub.png)
 

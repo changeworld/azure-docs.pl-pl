@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2018
+ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 8fb75484537d577cb19b04fa091bab69d6723c9b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: da81d1455649f1e3f3ab43016df49953ce90e0ca
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637620"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Połącz Azure narzędzia Zarządzanie usługami IT — za pomocą łącznika zarządzania usługi IT
 
@@ -98,7 +99,7 @@ Gdy ma prepped narzędziami Zarządzanie usługami IT —, wykonaj poniższe kro
 
     > [!NOTE]
 
-    > Domyślnie ITSMC odświeża dane konfiguracji połączenia raz w co 24 godziny. Aby odświeżyć tego połączenia danych natychmiast dla wszystkich edycji lub szablonu aktualizacje, które zostaną wprowadzone, kliknij przycisk "Odśwież", wyświetlane obok połączenia.
+    > Domyślnie ITSMC odświeża dane konfiguracji połączenia raz w co 24 godziny. Aby odświeżyć dane tego połączenia, natychmiast wszelkie zmiany lub szablon aktualizacji, które należy, kliknij przycisk **synchronizacji** przycisk w bloku tego połączenia.
 
     ![Odśwież połączenie](./media/log-analytics-itsmc/itsmc-connections-refresh.png)
 
@@ -137,58 +138,6 @@ Podczas tworzenia/edytowania Azure reguły alertu, należy użyć grupy akcji, k
 >[!NOTE]
 
 > Aby uzyskać informacje o cenach Zarządzanie usługami IT — działania, zobacz [cennikiem](https://azure.microsoft.com/pricing/details/monitor/) dla grup działań.
-
-
-## <a name="create-itsm-work-items-from-log-analytics-alerts"></a>Tworzenie elementów roboczych Zarządzanie usługami IT — alertów analizy dzienników
-
-Reguły alertów można skonfigurować w portalu Azure Log Analytics do tworzenia elementów roboczych w narzędziu Zarządzanie usługami IT — przy użyciu poniższej procedury.
-
-1. Z **wyszukiwania dziennika** okna, uruchom zapytania wyszukiwania dziennika, aby wyświetlić dane. Wyniki zapytania są źródłem dla elementów roboczych.
-2. W **wyszukiwania dziennika**, kliknij przycisk **alertu** otworzyć **Dodaj regułę alertu** strony.
-
-    ![Ekran analiza dziennika](./media/log-analytics-itsmc/itsmc-work-items-for-azure-alerts.png)
-
-3. Na **Dodaj regułę alertu** okna, podaj wymagane szczegóły dotyczące **nazwa**, **ważność**, **zapytania wyszukiwania**, i **alertu kryteria** (pomiar Metryka okno czasu).
-4. Wybierz **tak** dla **akcje Zarządzanie usługami IT —**.
-5. Wybierz połączenie Zarządzanie usługami IT — od **połączenia wybierz** listy.
-6. Podaj szczegóły zgodnie z potrzebami.
-7. Aby utworzyć element roboczy osobne dla każdego wpisu dziennika tego alertu, wybierz **utworzyć poszczególnych elementach roboczych dla każdego wpisu dziennika** wyboru.
-
-    Lub
-
-    Pozostaw to pole wyboru niezaznaczone można utworzyć tylko jeden element roboczy dla dowolnej liczby wpisów dziennika w ramach tego alertu.
-
-7. Kliknij pozycję **Zapisz**.
-
-Można wyświetlić alertu analizy dzienników, który został utworzony w obszarze **Ustawienia > alerty**. Zarządzanie usługami IT — połączenie odpowiednich elementów roboczych są tworzone po spełnieniu warunku określony alert.
-
-
-## <a name="create-itsm-work-items-from-log-analytics-log-records"></a>Tworzenie elementów roboczych Zarządzanie usługami IT — z rekordów dziennika analizy dzienników
-
-Można też utworzyć elementów roboczych w połączonych źródeł Zarządzanie usługami IT — bezpośrednio z rekordu dziennika. Może to służyć do testowania, jeśli połączenie działa poprawnie.
-
-
-1. Z **wyszukiwania dziennika**, wyszukaj wymagane dane, wybierz szczegóły, a następnie kliknij przycisk **Utwórz element roboczy**.
-
-    **Tworzenie elementu roboczego Zarządzanie usługami IT —** zostanie wyświetlone okno:
-
-    ![Ekran analiza dziennika](media/log-analytics-itsmc/itsmc-work-items-from-azure-logs.png)
-
-2.   Dodaj następujące informacje:
-
-  - **Tytuł elementu pracy**: tytuł dla elementu roboczego.
-  - **Opis elementu roboczego**: opis nowego elementu roboczego.
-  - **Wpływ na komputerze**: Nazwa komputera, na którym zostało znalezione te dane dziennika.
-  - **Wybierz połączenie**: Zarządzanie usługami IT — połączenie, w którym chcesz utworzyć ten element roboczy.
-  - **Element roboczy**: typ elementu roboczego.
-
-3. Aby korzystać z istniejących szablonów elementów pracy zdarzenia, kliknij przycisk **tak** w obszarze **element roboczy Generowanie na podstawie szablonu** opcji, a następnie kliknij przycisk **Utwórz**.
-
-    Lub:
-
-    Kliknij przycisk **nr** Jeśli chcesz podać dostosowanych wartości.
-
-4. Podaj odpowiednie wartości w **typ**, **wpływ**, **pilność**, **kategorii**, i **podkategorii** pola tekstowe, a następnie kliknij przycisk **Utwórz**.
 
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Wizualizuj i analizować zdarzenia i dane żądania zmiany

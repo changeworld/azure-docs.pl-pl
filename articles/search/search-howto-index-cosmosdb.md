@@ -7,14 +7,15 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 05/29/2018
 ms.author: eugenesh
 robot: noindex
-ms.openlocfilehash: a724057981b5b389011ffc4c2fc93994c2b8be9e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8206c076f9e89753adb16854a7d981c0f80c4a3a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640340"
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Łączenie z usługi Azure Search przy użyciu indeksatorów DB rozwiązania Cosmos
 
@@ -96,7 +97,7 @@ Treść żądania zawiera definicję źródła danych, które powinny zawierać 
 * **Typ**: musi być `documentdb`.
 * **poświadczenia**:
   
-  * **connectionString**: wymagane. Określ informacje o połączeniu z bazą danych Azure DB rozwiązania Cosmos w następującym formacie: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>` MongoDB dla kolekcji, Dodaj **ApiKind = MongoDB** w parametrach połączenia: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDB` 
+  * **connectionString**: wymagane. Określ informacje o połączeniu z bazą danych Azure DB rozwiązania Cosmos w następującym formacie: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>` MongoDB dla kolekcji, Dodaj **ApiKind = MongoDb** w parametrach połączenia: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb` 
 * **kontener**:
   
   * **Nazwa**: wymagane. Określ identyfikator kolekcji bazy danych do indeksowania.
@@ -177,7 +178,7 @@ Upewnij się, że schemat indeksu docelowego jest zgodna z schematu dokumentów 
 ### <a name="mapping-between-json-data-types-and-azure-search-data-types"></a>Mapowanie między typami danych JSON i typy danych w usłudze Azure Search
 | Typ danych JSON | Typy elementów docelowych zgodny indeks pola |
 | --- | --- |
-| Wartość logiczna |Edm.Boolean, Edm.String |
+| wartość logiczna |Edm.Boolean, Edm.String |
 | Numery, które wyglądają jak liczby całkowite |Edm.Int32, Edm.Int64, Edm.String |
 | Numery tego wygląd zmiennoprzecinkową punkty |Edm.Double, Edm.String |
 | Ciąg |Edm.String |

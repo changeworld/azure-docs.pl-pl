@@ -6,13 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/30/2018
+ms.date: 05/24/2018
 ms.author: tomfitz
-ms.openlocfilehash: f9719bb1f1563c55537c7ef32278411a2034bd75
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 625f3e228bb28c85e68fb592914fb2191baf3e4e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626993"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Monitorowanie zdarzeń siatki dostarczanie komunikatów 
 
@@ -41,9 +42,15 @@ W przypadku subskrypcji metryki są:
 
 ## <a name="event-subscription-status"></a>Stan subskrypcji zdarzeń
 
-Aby widzieć metryki dla subskrypcji zdarzeń, wyszukaj **subskrypcji siatki zdarzeń** dostępnych usług i zaznacz je.
+Aby widzieć metryki dla subskrypcji zdarzeń, albo można wyszukiwać według typu subskrypcji lub subskrypcji dla określonego zasobu.
 
-![Wyszukaj subskrypcji zdarzeń](./media/monitor-event-delivery/select-event-subscriptions.png)
+Aby przeprowadzić wyszukiwanie według typu zdarzenia subskrypcji, wybierz **wszystkie usługi**.
+
+![Wybierz wszystkie usługi](./media/monitor-event-delivery/all-services.png)
+
+Wyszukaj **siatki zdarzeń** i wybierz **subskrypcji siatki zdarzeń** z dostępnych opcji.
+
+![Wyszukaj subskrypcji zdarzeń](./media/monitor-event-delivery/search-and-select.png)
 
 Filtruj według typu zdarzenia, subskrypcji i lokalizacji. Wybierz **metryki** subskrypcji do wyświetlenia.
 
@@ -53,9 +60,15 @@ Wyświetl metryki zdarzenia tematu i subskrypcji.
 
 ![Wyświetlaj metryki zdarzenia](./media/monitor-event-delivery/subscription-metrics.png)
 
+Aby znaleźć określonego zasobu metryki, zaznacz ten zasób. Następnie wybierz opcję **zdarzenia**.
+
+![Wybierz zdarzenia dla zasobu](./media/monitor-event-delivery/select-events.png)
+
+Zostanie wyświetlony metryki dla subskrypcji dla tego zasobu.
+
 ## <a name="custom-event-status"></a>Stan zdarzenia niestandardowe
 
-Po opublikowaniu niestandardowego tematu, można wyświetlić dla niej metryki. Wybierz grupę zasobów, zawierającą tematu, a następnie wybierz temat.
+Po opublikowaniu niestandardowego tematu, można wyświetlić dla niej metryki. Wybierz grupę zasobów dla tematu, a następnie wybierz temat.
 
 ![Wybierz niestandardowego tematu](./media/monitor-event-delivery/select-custom-topic.png)
 
@@ -66,5 +79,5 @@ Wyświetl metryki dla tematu zdarzenie niestandardowe.
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Informacje dotyczące dostarczania zdarzeń i ponownych prób [dostarczanie komunikatów zdarzeń siatki i ponów próbę](delivery-and-retry.md).
-* Aby obejrzeć wprowadzenie do siatki zdarzeń, zobacz [o siatki zdarzeń](overview.md).
+* Aby zapoznać się z wprowadzeniem do usługi Event Grid, zobacz [Wprowadzenie do usługi Azure Event Grid](overview.md).
 * Aby szybko rozpocząć korzystanie z siatki zdarzeń, zobacz [tworzenie i tras niestandardowych zdarzeń siatki zdarzeń Azure](custom-event-quickstart.md).

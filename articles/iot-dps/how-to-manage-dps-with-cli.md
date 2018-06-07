@@ -1,22 +1,19 @@
 ---
 title: Jak zarządzać usługami Device Provisioning przy użyciu interfejsu wiersza polecenia platformy Azure 2.0 i rozszerzenia usługi IoT | Microsoft Docs
 description: Dowiedz się, jak zarządzać usługami Device Provisioning przy użyciu interfejsu wiersza polecenia platformy Azure 2.0 i rozszerzenia usługi IoT
-services: iot-dps
-keywords: ''
 author: chrissie926
 ms.author: menchi
 ms.date: 01/17/2018
-ms.topic: tutorial
+ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: 8e8bbf5808c11709a49f1cb6ebeba410837e5810
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+services: iot-dps
+manager: briz
+ms.openlocfilehash: 174f8447b17d1fa580472cbb45d0a72f41c793c3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628321"
 ---
 # <a name="how-to-use-azure-cli-20-and-the-iot-extension-to-manage-device-provisioning-services"></a>Jak zarządzać usługami Device Provisioning przy użyciu interfejsu wiersza polecenia platformy Azure 2.0 i rozszerzenia usługi IoT
 
@@ -96,7 +93,7 @@ Przed rozpoczęciem wykonaj opisane wcześniej kroki instalacji. Jeśli nie masz
 [6]: ./media/how-to-manage-dps-with-cli/link-hub.jpg
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]

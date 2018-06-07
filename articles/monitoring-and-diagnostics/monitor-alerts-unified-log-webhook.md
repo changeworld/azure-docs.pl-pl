@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: 28c8e6ab6a23a46bdea31c71b08b9c6a28d1be33
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 981b6b65675550fd1403064ad3113c2dca0c3f6e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638674"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akcje elementu Webhook dla dziennika reguły alertów
 Gdy [alert jest tworzony na platformie Azure ](monitor-alerts-unified-usage.md), masz możliwość [konfigurowania za pomocą grup akcji](monitoring-action-groups.md) przeprowadzenie jedną lub więcej akcji.  W tym artykule opisano webhook różne akcje, które są dostępne i szczegółowe informacje na temat konfigurowania niestandardowego elementu webhook opartych na formacie JSON.
@@ -32,7 +33,7 @@ Akcje elementu Webhook wymagają właściwości w poniższej tabeli:
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Adres URL elementu Webhook |Adres URL elementu webhook. |
+| Adres URL elementu webhook |Adres URL elementu webhook. |
 | Niestandardowy ładunek JSON |Niestandardowy ładunek do wysłania z elementu webhook, po wybraniu tej opcji podczas tworzenia alertu. Szczegóły dostępne pod adresem [Zarządzanie alertami korzystanie z alertów Azure ](monitor-alerts-unified-usage.md) |
 
 > [!NOTE]
@@ -47,11 +48,11 @@ Elementów Webhook obejmują adres URL i zapisany w formacie JSON, które to dan
 | Ważność |#severity |Ważność, ustaw dla alertu wypalane dziennika. |
 | AlertThresholdOperator |#thresholdoperator |Operator próg dla reguł alertów.  *Większa niż* lub *mniej niż*. |
 | AlertThresholdValue |#thresholdvalue |Wartość progowa reguły alertów. |
-| LinkToSearchResults |#linktosearchresults |Link do wyszukiwania dziennika analizy dzienników, która zwraca odpowiednie rekordy z kwerendy utworzony alert. |
+| LinkToSearchResults |#linktosearchresults |Link do portalu analityka, która zwraca odpowiednie rekordy z kwerendy utworzony alert. |
 | ResultCount |#searchresultcount |Liczba rekordów w wynikach wyszukiwania. |
-| Godzina zakończenia interwał wyszukiwania |#searchintervalendtimeutc |Godzina zakończenia dla zapytania w formacie UTC. |
-| Interwał wyszukiwania |#searchinterval |Przedział czasu dla reguły alertów. |
-| Wartość StartTime interwał wyszukiwania |#searchintervalstarttimeutc |Godzina rozpoczęcia dla zapytania w formacie UTC. 
+| Godzina zakończenia interwał wyszukiwania |#searchintervalendtimeutc |Godziny zakończenia dla zapytania w formacie UTC, format — mm/dd/rrrr gg: mm: ss AM/PM. |
+| Interwał wyszukiwania |#searchinterval |Przedział czasu dla alertu reguły, format — hh: mm:. |
+| Wartość StartTime interwał wyszukiwania |#searchintervalstarttimeutc |Godziny rozpoczęcia dla zapytania w formacie UTC, format — mm/dd/rrrr gg: mm: ss AM/PM. 
 | SearchQuery |#searchquery |Dziennik wyszukiwania używane przez reguły alertów. |
 | Wynikówwyszukiwania |"IncludeSearchResults": true|Rekordów zwróconych przez kwerendę jako tabelę JSON, ograniczona do pierwszych 1000 rekordów; Jeśli "IncludeSearchResults": true został dodany w niestandardowych definicji elementu webhook JSON jako właściwość najwyższego poziomu. |
 | WorkspaceID |#workspaceid |Identyfikator obszaru roboczego analizy dzienników. |
@@ -74,6 +75,7 @@ Ten przykładowy ładunek może rozpoznać przypominać następujące przy wysy�
         "text":"My Alert Rule fired with 18 records over threshold of 10 ."
     }
 ```
+Wszystkie zmienne w niestandardowych elementu webhook zawiera określony w obudowie JSON, takie jak "#searchinterval", wynikowe elementu webhook ma też danych zmiennej wewnątrz obudowy, takich jak "00: 05:00".
 
 Aby dołączyć wyniki wyszukiwania niestandardowy ładunek, upewnij się, że **IncudeSearchResults** jest ustawiony jako właściwość najwyższego poziomu w ładunku json. 
 

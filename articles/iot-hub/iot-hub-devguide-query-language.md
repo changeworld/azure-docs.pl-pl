@@ -1,24 +1,19 @@
 ---
 title: Zrozumienie język zapytań usługi Azure IoT Hub | Dokumentacja firmy Microsoft
 description: Przewodnik dewelopera — opis Centrum IoT przypominającego SQL zapytania język używany do pobierania informacji o urządzeniu/modułu twins i zadania z Centrum IoT.
-services: iot-hub
-documentationcenter: .net
 author: fsautomata
-manager: timlt
-editor: ''
-ms.assetid: 851a9ed3-b69e-422e-8a5d-1d79f91ddf15
+manager: ''
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 27ddc41c463c00a061a396098f0ccfaa6cec80a1
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 663277bfe347f42fa7ee241f5acddf4a3dca9268
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633516"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Język zapytań Centrum IoT urządzenia i moduł twins, zadań i rozsyłania wiadomości
 
@@ -440,7 +435,7 @@ FROM <from_specification>
 [GROUP BY <group_specification>]
 ```
 
-## <a name="from-clause"></a>klauzula FROM
+## <a name="from-clause"></a>Klauzula FROM
 **z < from_specification >** klauzuli może przyjmować tylko dwie wartości: **z urządzeń** do twins urządzenia zapytania, lub **z devices.jobs** do szczegółów na urządzenie zadania zapytania.
 
 ## <a name="where-clause"></a>Klauzula WHERE
@@ -448,7 +443,7 @@ FROM <from_specification>
 
 Dozwolone warunki opisane w sekcji [wyrażeń i warunki][lnk-query-expressions].
 
-## <a name="select-clause"></a>klauzula SELECT
+## <a name="select-clause"></a>Klauzula SELECT
 **Wybierz < select_list >** jest wymagana i określa, jakie wartości są pobierane z zapytania. Określa wartości JSON ma być używany do generowania nowych obiektów JSON.
 Dla każdego elementu filtrowane (i opcjonalnie grupowanych) podzestaw kolekcji FROM faza projekcji generuje nowy obiekt JSON. Ten obiekt jest tworzony przy użyciu wartości określone w klauzuli SELECT.
 
@@ -478,7 +473,7 @@ SELECT [TOP <max number>] <projection list>
 
 Obecnie wybór klauzule różni się od **wybierz*** są obsługiwane tylko w zapytaniach agregacji w twins urządzenia.
 
-## <a name="group-by-clause"></a>klauzula GROUP BY
+## <a name="group-by-clause"></a>Klauzula GROUP BY
 **GROUP BY < group_specification >** klauzuli to krok opcjonalny, który jest wykonywany po określony w klauzuli WHERE, a przed projekcji określonej w polu Wybierz filtr. Grup dokumentów na podstawie wartości atrybutu. Te grupy są używane do generowania wartości zagregowane, jak określono w klauzuli SELECT.
 
 Przykładem zapytanie, używając GROUP BY jest:
@@ -557,7 +552,7 @@ Obsługiwane są następujące operatory:
 | --- | --- |
 | Operacje arytmetyczne |+, -, *, /, % |
 | Logiczne |AND, OR, NOT |
-| Porównanie |=, !=, <, >, <=, >=, <> |
+| porównanie |=, !=, <, >, <=, >=, <> |
 
 ### <a name="functions"></a>Funkcje
 Podczas wykonywania zapytania twins i zadania, którego jedynym obsługiwanym funkcja jest:

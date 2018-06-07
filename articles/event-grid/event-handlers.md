@@ -8,15 +8,16 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 996bd4b3497861a3bfcbfecebe18a6936f487028
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 24cecdc65c45d5d1ee5443740d9874ccfd74e387
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627719"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Programy obsługi zdarzeń w siatce zdarzeń platformy Azure
 
-Program obsługi zdarzeń jest miejscem, w której zdarzenia są wysyłane. Program obsługi ma niektórych dalszych kroków w celu przetworzenia zdarzenia. Wiele usług platformy Azure są automatycznie konfigurowane do obsługi zdarzeń. Umożliwia także dowolnego elementu webhook na potrzeby obsługi zdarzeń. Elementu webhook nie musi być hostowana na platformie Azure do obsługi zdarzeń.
+Program obsługi zdarzeń jest miejscem, w której zdarzenia są wysyłane. Program obsługi ma niektórych dalszych kroków w celu przetworzenia zdarzenia. Wiele usług platformy Azure są automatycznie konfigurowane do obsługi zdarzeń. Umożliwia także dowolnego elementu webhook na potrzeby obsługi zdarzeń. Elementu webhook nie musi być hostowana na platformie Azure do obsługi zdarzeń. Siatka zdarzeń obsługuje tylko punktów końcowych HTTPS elementu webhook.
 
 Ten artykuł zawiera linki do zawartości dla każdego programu obsługi zdarzeń.
 
@@ -31,6 +32,8 @@ Używanie automatyzacji Azure do zdarzenia procesu z automatycznych elementów r
 ## <a name="azure-functions"></a>Azure Functions
 
 Użyj usługi Azure Functions dla niekorzystającą odpowiedzi na zdarzenia.
+
+W przypadku używania usługi Azure Functions jako procedury obsługi należy korzystać z wyzwalaczy usługi Event Grid, a nie ogólnych wyzwalaczy HTTP. Usługa Event Grid automatycznie weryfikuje wyzwalacze funkcji usługi Event Grid. W przypadku ogólnych wyzwalaczy HTTP trzeba zaimplementować [odpowiedź weryfikacji](security-authentication.md#webhook-event-delivery).
 
 |Stanowisko  |Opis  |
 |---------|---------|
@@ -75,5 +78,5 @@ Użyj elementów webhook dla dostosowania punktów końcowych, które odpowiadan
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby obejrzeć wprowadzenie do siatki zdarzeń, zobacz [o siatki zdarzeń](overview.md).
+* Aby zapoznać się z wprowadzeniem do usługi Event Grid, zobacz [Wprowadzenie do usługi Azure Event Grid](overview.md).
 * Aby szybko rozpocząć korzystanie z siatki zdarzeń, zobacz [tworzenie i tras niestandardowych zdarzeń siatki zdarzeń Azure](custom-event-quickstart.md).

@@ -1,24 +1,25 @@
 ---
-title: "Konfigurowanie autonomicznego klastra usługi Azure Service Fabric | Microsoft Docs"
-description: "Utwórz autonomiczny klaster programowania z trzema węzłami działającymi na tym samym komputerze. Po ukończeniu tej konfiguracji wszystko będzie gotowe do tworzenia klastra dla wielu maszyn."
+title: Konfigurowanie autonomicznego klastra usługi Azure Service Fabric | Microsoft Docs
+description: Utwórz autonomiczny klaster programowania z trzema węzłami działającymi na tym samym komputerze. Po ukończeniu tej konfiguracji wszystko będzie gotowe do tworzenia klastra dla wielu maszyn.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: 5438d8d366ef989d5ae29581477513f8c884c4b3
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
-ms.translationtype: HT
+ms.openlocfilehash: 93c921e54c69693ed02c122a2491b0942f550126
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643468"
 ---
 # <a name="create-your-first-service-fabric-standalone-cluster"></a>Tworzenie pierwszego autonomicznego klastra usługi Service Fabric
 Autonomiczny klaster usługi Service Fabric można utworzyć na wszystkich maszynach wirtualnych lub komputerach z systemem Windows Server 2012 R2 lub Windows Server 2016 lokalnie lub w chmurze. Ten przewodnik szybkiego startu pomaga utworzyć autonomiczny klaster programowania w ciągu zaledwie kilku minut.  Po zakończeniu na pojedynczym komputerze będzie dostępny klaster z trzema węzłami, do którego można wdrażać aplikacje.
@@ -66,7 +67,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
 ```
 
 ## <a name="visualize-the-cluster-using-service-fabric-explorer"></a>Wizualizowanie klastra za pomocą narzędzia Service Fabric Explorer
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) to odpowiednie narzędzie do wizualizowania klastra i zarządzania aplikacjami.  Service Fabric Explorer to usługa, która działa w klastrze otwieranym w przeglądarce po przejściu do adresu [http://localhost:19080/Explorer](http://localhost:19080/Explorer). 
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) to odpowiednie narzędzie do wizualizowania klastra i zarządzania aplikacjami.  Service Fabric Explorer to usługa, która działa w klastrze, otwieranego w przeglądarce, przechodząc do [ http://localhost:19080/Explorer ](http://localhost:19080/Explorer). 
 
 Pulpit nawigacyjny klastra zawiera omówienie klastra, w tym podsumowanie kondycji węzła i aplikacji. Widok węzła przedstawia fizyczny układ klastra. Dla danego węzła można sprawdzić, które aplikacje mają kod wdrożony w tym węźle.
 
@@ -87,7 +88,7 @@ Aby usunąć środowisko uruchomieniowe usługi Service Fabric z komputera, uruc
 .\CleanFabric.ps1
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Teraz po skonfigurowaniu autonomicznego klastra programowania możesz spróbować wykonać czynności opisane w następujących artykułach:
 * [Konfigurowanie autonomicznego klastra dla wielu maszyn](service-fabric-cluster-creation-for-windows-server.md) i włączanie zabezpieczeń
 * [Wdrażanie aplikacji przy użyciu programu PowerShell](service-fabric-deploy-remove-applications.md)

@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: 2c7dd89d9c2e5d50f2533101499a6e50e52047b3
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: a6bd63598781a60c2dd717c07b96fcb498a67d30
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636610"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Temat kluczy, kluczy tajnych i certyfikatów
 Usługa Azure Key Vault umożliwia użytkownikom przechowywać i wykorzystywać kluczy kryptograficznych w środowisku Microsoft Azure. Magazyn kluczy obsługuje wiele typów kluczy i algorytmów i umożliwia korzystanie z sprzętowych modułów zabezpieczeń (HSM) dla kluczy o wysokiej wartości. Ponadto Key Vault umożliwia użytkownikom bezpieczne przechowywanie kluczy tajnych. Klucze tajne są obiektami octet ograniczony z nie szczególnych semantyki. Magazyn kluczy obsługuje także certyfikaty, które są oparte na kluczach i kluczach tajnych i dodać funkcję automatycznego odnawiania.
@@ -327,7 +328,7 @@ Atrybuty mogą być adresowane klucza i klucz tajny tworzone podczas tworzenia c
 
 Certyfikat usługi Key Vault ma następujące atrybuty:  
 
--   *włączone*: wartość logiczna, opcjonalnie, domyślnie jest **true**. Ten atrybut można określić wskazująca, czy można pobrać danych certyfikatu jako poufne lub obsługiwane jako klucz. Jest on używany w połączeniu z *nbf* i*exp*gdy operacja odbywa się między *nbf* i exp, go zostanie dopuszczona, jeśli włączone jest ustawiona na true. Operacje poza *nbf* i*exp*okno automatycznie są niedozwolone.  
+-   *włączone*: wartość logiczna, opcjonalnie, domyślnie jest **true**. Ten atrybut można określić wskazująca, czy można pobrać danych certyfikatu jako poufne lub obsługiwane jako klucz. Jest on używany w połączeniu z *nbf* i *exp* gdy operacja odbywa się między *nbf* i *exp*, będzie mieć uprawnienia tylko, jeśli włączone jest ustawiony na wartość true. Operacje poza *nbf* i *exp* okno automatycznie są niedozwolone.  
 
 Istnieją dodatkowe atrybuty tylko do odczytu, które znajdują się w odpowiedzi:
 

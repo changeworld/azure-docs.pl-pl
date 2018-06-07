@@ -1,32 +1,29 @@
 ---
 title: Schemat urządzenia w rozwiązaniu monitorowania zdalnego - Azure | Dokumentacja firmy Microsoft
 description: W tym artykule opisano schematu JSON, który definiuje symulowane urządzenie zdalne rozwiązanie monitorowania.
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 01/29/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 186eaee952435573a861d144195c3165e4940cc1
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: 1ba73d24aaa113a9124e17ea91946c205b21fba6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627437"
 ---
 # <a name="understand-the-device-model-schema"></a>Zrozumienie schematu modelu urządzenia
 
-Symulowane urządzeń w zdalnego rozwiązanie monitorowania służy do testowania jego zachowanie. Podczas wdrażania zdalnego rozwiązanie monitorowania, automatycznie zostanie zainicjowana kolekcji urządzeń symulowane. Można dostosować istniejących urządzeń symulowane lub Utwórz swój własny.
+Symulowanego urządzenia w rozwiązaniu monitorowania zdalnego służy do testowania jego zachowanie. Podczas wdrażania rozwiązania monitorowania zdalnego kolekcji urządzeń symulowane jest administracyjnie automatycznie. Można dostosować istniejących urządzeń symulowane lub Utwórz swój własny.
 
 W tym artykule opisano schematu modelu urządzenia, która określa zachowanie symulowane urządzenie. Model urządzenia jest przechowywany w pliku JSON.
 
 Następujące artykuły odnoszą się do bieżącego artykułu:
 
-* [Implementuje zachowanie modelu urządzenia](../iot-suite/iot-suite-remote-monitoring-device-behavior.md) opisuje pliki JavaScript przy użyciu zachowanie symulowane urządzenie.
+* [Implementuje zachowanie modelu urządzenia](iot-accelerators-remote-monitoring-device-behavior.md) opisuje pliki JavaScript przy użyciu zachowanie symulowane urządzenie.
 * [Utwórz nowy symulowane urządzenie](iot-accelerators-remote-monitoring-test.md) umieszcza je na wszystkich elementów i pokazuje, jak wdrożyć nowy typ symulowane urządzenie do rozwiązania.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
@@ -39,7 +36,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 
 ## <a name="the-parts-of-the-device-model-schema"></a>Części schematu modelu urządzenia
 
-Każdy model urządzenia, takie jak Chłodnica lub ciężarówka, definiuje typ symulowane urządzenie, aby nawiązać połączenie zdalne rozwiązanie monitorowania. Każdy model urządzenia są przechowywane w pliku JSON z następującego schematu najwyższego poziomu:
+Każdy model urządzenia, takie jak Chłodnica lub ciężarówka, definiuje typ symulowane urządzenie, aby nawiązać połączenie zdalne monitorowanie rozwiązania. Każdy model urządzenia są przechowywane w pliku JSON z następującego schematu najwyższego poziomu:
 
 ```json
 {
@@ -203,12 +200,12 @@ Aby wysyłać dane telemetryczne w różnych odstępach czasu, Dodaj wiele typó
 
 ## <a name="cloudtodevicemethods"></a>CloudToDeviceMethods
 
-Symulowane urządzenie może odpowiadać na chmury do urządzenia metody wywoływane z zdalnego rozwiązanie monitorowania. `CloudToDeviceMethods` Sekcji w pliku schematu modelu urządzenia:
+Symulowane urządzenie może odpowiadać na chmury do urządzenia metody wywoływane z rozwiązanie monitorowania zdalnego. `CloudToDeviceMethods` Sekcji w pliku schematu modelu urządzenia:
 
 * Definiuje metody, które może odpowiadać symulowane urządzenie.
 * Określa plik JavaScript, który zawiera logikę do wykonania.
 
-Symulowane urządzenie wysyła listę metod obsługiwanych do zdalnego rozwiązanie monitorowania.
+Symulowane urządzenie wysyła listę metod obsługiwanych rozwiązanie monitorowania zdalnego.
 
 Aby uzyskać więcej informacji na temat pliku JavaScript, który implementuje zachowanie danego urządzenia, zobacz [zrozumienie zachowania modelu urządzenia](iot-accelerators-remote-monitoring-device-behavior.md).
 
@@ -246,7 +243,7 @@ W tym artykule opisano sposób tworzenia modelu niestandardowych symulowane urz�
 
 Teraz, kiedy znasz już o schematu JSON, sugerowane następnym krokiem jest Dowiedz się, jak [implementuje zachowanie symulowane urządzenie](iot-accelerators-remote-monitoring-device-behavior.md).
 
-Aby uzyskać więcej informacji o deweloperów o zdalnego rozwiązanie monitorowania zobacz:
+Aby uzyskać więcej informacji o deweloperów o rozwiązaniu monitorowania zdalnego Zobacz:
 
 * [Przewodnik informacyjny dla deweloperów](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [Przewodnik po rozwiązywaniu problemów dla deweloperów](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)

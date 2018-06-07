@@ -8,11 +8,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: f415eb6080a02d25fc47c40b2719544d2ea99c5b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8f21a56982189aa13745f27f0fae49310ae55aa0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640323"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Jak dodać niestandardowe umiejętności do potoku kognitywnych wyszukiwania
 
@@ -146,5 +147,5 @@ Podczas tworzenia enricher interfejsu API sieci Web, można opisać nagłówków
 
 + [Przykład: Tworzenie niestandardowego umiejętności dla interfejsu API tłumaczenie tekstu](cognitive-search-create-custom-skill-example.md)
 + [Sposób definiowania skillset](cognitive-search-defining-skillset.md)
-+ [Utwórz Skillset (REST)](ref-create-skillset.md)
++ [Utwórz Skillset (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [Sposób mapowania pól wzbogaconego](cognitive-search-output-field-mapping.md)

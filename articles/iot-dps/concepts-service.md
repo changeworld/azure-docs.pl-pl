@@ -1,22 +1,19 @@
 ---
 title: Pojęcia dotyczące usługi Azure IoT Hub urządzenia inicjowania obsługi usługi | Dokumentacja firmy Microsoft
 description: W tym artykule opisano inicjowania obsługi administracyjnej pojęcia dotyczące usługi specyficzne dla urządzeń z punktu dystrybucji i Centrum IoT
-services: iot-dps
-keywords: ''
 author: nberdy
 ms.author: nberdy
 ms.date: 03/30/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: d2bc58514ea716954ec3ac96151549168fedc2ed
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+services: iot-dps
+manager: briz
+ms.openlocfilehash: 2908e08e36f41ebb8a154e7c490e5c6719d911be
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628304"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>Pojęcia dotyczące inicjowania obsługi usługi IoT Hub urządzeń
 
@@ -45,7 +42,7 @@ Ustawienie poziomu usługi określa, jak usługa inicjowania obsługi urządzeń
 * **Można uzyskać najmniejsze opóźnienia**: urządzeń są udostępniane w Centrum IoT z najniższym opóźnieniu na urządzeniu. Jeśli wiele połączone centra IoT zapewni tego samego uzyskać najmniejsze opóźnienia, inicjowania obsługi usługi skróty urządzeń między tymi koncentratorami
 * **Statyczne konfiguracji za pomocą listy rejestracji**: specyfikacja żądaną Centrum IoT na liście rejestracji ma wyższy priorytet niż zasady alokacji poziomu usług.
 
-## <a name="enrollment"></a>Rejestrowanie
+## <a name="enrollment"></a>Rejestracji
 
 Rejestracja jest rekord urządzeń lub grup urządzeń, które mogą rejestrować się za pośrednictwem automatycznego inicjowania obsługi administracyjnej. Rekord rejestracji zawiera informacje dotyczące urządzenia lub grupy urządzeń, w tym:
 - [mechanizmu zaświadczania](concepts-security.md#attestation-mechanism) używany przez urządzenie

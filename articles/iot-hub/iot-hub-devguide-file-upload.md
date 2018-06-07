@@ -1,24 +1,19 @@
 ---
 title: Zrozumienie przekazania pliku Centrum IoT Azure | Dokumentacja firmy Microsoft
-description: "Przewodnik dewelopera — użycie funkcji przekazywania plików z Centrum IoT do zarządzania przekazywania plików z urządzenia do kontenera obiektów blob magazynu Azure."
-services: iot-hub
-documentationcenter: .net
+description: Przewodnik dewelopera — użycie funkcji przekazywania plików z Centrum IoT do zarządzania przekazywania plików z urządzenia do kontenera obiektów blob magazynu Azure.
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: a0427925-3e40-4fcd-96c1-2a31d1ddc14b
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 7bf1ba333f36dcfa8959320566bcb771f37cfe22
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e16d32bdba1374540c03d1034a94192a54e6a109
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634900"
 ---
 # <a name="upload-files-with-iot-hub"></a>Przekazywanie plików z Centrum IoT
 

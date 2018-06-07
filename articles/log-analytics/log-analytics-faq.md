@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 22da58df653b31c46145ebbbd1f6f6a26b0e9f29
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 33998d72ae2a57ae5226c2ec7a1d5dbcebef155e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637178"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics — często zadawane pytania
 Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące analizy dzienników platformy Microsoft Azure. Jeśli masz dodatkowe pytania dotyczące analizy dzienników, przejdź do [forum dyskusyjne](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) i opublikuj swoje pytania. Po zadawane pytania możemy dodać ją do tego artykułu, aby można je znaleźć szybkie i łatwe.
@@ -96,7 +97,7 @@ A. Nie, nie jest obecnie możliwa do odczytu z dowolnego tabel lub kontenerów w
 
 A. Usługi analizy dzienników jest oparty na platformie Azure. Adresy IP analizy dziennika znajdują się w [zakresów IP centrum danych Microsoft Azure](http://www.microsoft.com/download/details.aspx?id=41653).
 
-Podczas wdrożenia usługi zostały wprowadzone, zmieniać rzeczywiste adresów IP usługi analizy dzienników. Nazwy DNS, aby zezwolić za pośrednictwem zapory są udokumentowane w artykule [wymagania systemowe](log-analytics-concept-hybrid.md#prerequisites).
+Podczas wdrożenia usługi zostały wprowadzone, zmieniać rzeczywiste adresów IP usługi analizy dzienników. Nazwy DNS, aby zezwolić za pośrednictwem zapory są udokumentowane w artykule [wymagania dotyczące sieciowej](log-analytics-concept-hybrid.md#network-firewall-requirements).
 
 ### <a name="q-i-use-expressroute-for-connecting-to-azure-does-my-log-analytics-traffic-use-my-expressroute-connection"></a>Q. ExpressRoute można używać do nawiązywania połączenia z platformy Azure. Moje analizy dzienników ruchu używa połączenie ExpressRoute?
 

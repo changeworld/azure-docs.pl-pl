@@ -4,13 +4,14 @@ description: Zawiera omówienie obliczeń oceny w usłudze Azure migracji.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 05/28/2018
 ms.author: raynew
-ms.openlocfilehash: be4fb15d96f5598d4b1ddbbaa4befe7f6530152c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e815ff3340a9ef6c56e43d3276a28619d2f008a9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639150"
 ---
 # <a name="assessment-calculations"></a>Obliczenia dotyczące oceny
 
@@ -68,12 +69,12 @@ System operacyjny określony jako *innych* w programie vCenter Server | Azure mi
 
 ## <a name="sizing"></a>Zmiana rozmiaru
 
-Po maszyna jest oznaczona jako gotowe do platformy Azure, Azure migracji rozmiary maszyny Wirtualnej i jej dysków dla platformy Azure. Jeśli określona we właściwościach oceny kryterium zmiany rozmiaru czy wydajności na podstawie zmiany rozmiaru, Azure migracji uwzględnia Historia wydajności komputera, aby zidentyfikować dla rozmiaru maszyny Wirtualnej na platformie Azure. Ta metoda jest przydatne w scenariuszach, w którym nadmiernie przydzielił lokalnej maszyny Wirtualnej, ale wykorzystania jest niski i chcesz odpowiedniego rozmiaru maszyn wirtualnych na platformie Azure, aby zapisać kosztów.
+Po maszyna jest oznaczona jako gotowe do platformy Azure, Azure migracji rozmiary maszyny Wirtualnej i jej dysków dla platformy Azure. Jeśli określona we właściwościach oceny kryterium zmiany rozmiaru czy wydajności na podstawie zmiany rozmiaru, Azure migracji uwzględnia Historia wydajności maszyny, aby zidentyfikować typu rozmiarze i dysków maszyny Wirtualnej na platformie Azure. Ta metoda jest przydatne w scenariuszach, w którym nadmiernie przydzielił lokalnej maszyny Wirtualnej, ale wykorzystania jest niski i chcesz odpowiedniego rozmiaru maszyn wirtualnych na platformie Azure, aby zapisać kosztów.
 
 > [!NOTE]
 > Azure migracji zbiera Historia wydajności lokalnych maszyn wirtualnych z programu vCenter Server. Aby zapewnić dokładne doboru wielkości, upewnij się, że ustawienie statystyk w programie vCenter Server jest ustawiony poziom 3 i poczekaj co najmniej jeden dzień przed zasób wyłączanie funkcji odnajdywania lokalnych maszyn wirtualnych. Jeśli ustawienie statystyk w programie vCenter Server znajduje się poniżej poziomu 3, nie są zbierane dane dotyczące wydajności dysku i sieci.
 
-Jeśli nie chcesz wziąć pod uwagę historię wydajności dla rozmiaru maszyny Wirtualnej i chcesz przełączyć maszyny Wirtualnej jako — jest na platformie Azure, można określić jako kryterium zmiany rozmiaru *jako lokalną* i migracji Azure następnie rozmiaru maszyny wirtualne oparte na lokalnej Konfiguracja bez uwzględniania danych użycia. Zmiany rozmiaru dysku, w tym przypadku będą nadal opierać się na dane wydajności.
+Jeśli nie chcesz wziąć pod uwagę historię wydajności dla rozmiaru maszyny Wirtualnej i chcesz przełączyć maszyny Wirtualnej jako — jest na platformie Azure, można określić jako kryterium zmiany rozmiaru *jako lokalną* i migracji Azure następnie rozmiaru maszyny wirtualne oparte na lokalnej Konfiguracja bez uwzględniania danych użycia. Ustawianie rozmiaru dysku, w tym przypadku zostanie to zrobione zależności od typu magazynu, które określisz we właściwościach oceny (standardowy lub Premium dysku)
 
 ### <a name="performance-based-sizing"></a>Na podstawie rozmiaru
 
@@ -102,25 +103,13 @@ Na podstawie wydajności zmiany rozmiaru dysków dołączonych do maszyny Wirtua
     - Jeśli występuje wiele kwalifikujących się rozmiarów maszyn wirtualnych platformy Azure, zalecany jest rozmiar, który generuje najniższy koszt.
 
 ### <a name="as-on-premises-sizing"></a>Jako lokalną zmiany rozmiaru
-W przypadku zmiany rozmiaru kryterium *jako lokalne zmiany rozmiaru*, Azure migracji nie należy wziąć pod uwagę historię wydajności maszyn wirtualnych i przydziela na podstawie rozmiaru przydzielone lokalnych maszyn wirtualnych. Jednak do zmiany rozmiaru dysku, jego wziąć pod uwagę Historia wydajności dysków zalecanie dysków standardowa lub Premium.  
-- **Magazyn**: Migrowanie Azure mapuje każdy dysk dołączony do maszyny na dysku na platformie Azure.
-
-    > [!NOTE]
-    > Azure migracji obsługuje tylko zarządzanego dysków w celu oceny.
-
-    - Uzyskanie dysku skuteczne operacji We/Wy na sekundę (IOPS) i przepływności (MB/s), Azure migracji mnoży dysku IOPS i przepływność współczynnik komfort. Na podstawie IOPS skuteczne i wartości przepustowości, migracja Azure Określa, czy należy mapować dysku na dysk standardowy lub premium na platformie Azure.
-    - Jeśli migracja Azure nie może znaleźć dysku o wymagane IOPS & przepływności, oznacza maszynę jako nieodpowiednie dla platformy Azure. [Dowiedz się więcej](../azure-subscription-service-limits.md#storage-limits) o Azure ogranicza na dysku i maszyny Wirtualnej.
-    - W przypadku odnalezienia zestaw odpowiednich dysków, Azure migracji wybiera te, które obsługują metody nadmiarowość magazynu i lokalizacji określonej w ustawieniach oceny.
-    - W przypadku wielu dysków kwalifikujących się wybiera jeden z najniższy koszt.
-    - Jeśli dane wydajności dotyczące dysków w niedostępny, wszystkie dyski są mapowane na standardowych dysków na platformie Azure.
-- **Sieci**: dla każdej karty sieciowej, zaleca się karty sieciowej w systemie Azure.
-- **Obliczenia bazy danych**: Migrowanie Azure sprawdza liczby rdzeni i wielkości pamięci lokalnej maszyny wirtualnej i zaleca maszyny Wirtualnej platformy Azure z taką samą konfiguracją. Jeśli występuje wiele kwalifikujących się rozmiarów maszyn wirtualnych platformy Azure, zalecany jest rozmiar, który generuje najniższy koszt. Dane dotyczące wykorzystania procesora CPU i pamięci nie jest uwzględniony podczas jako lokalne zmiany rozmiaru.
+W przypadku zmiany rozmiaru kryterium *jako lokalne zmiany rozmiaru*, Azure migracji nie należy wziąć pod uwagę historię wydajności dysków i maszyn wirtualnych i przydziela SKU maszyny Wirtualnej na platformie Azure, zależnie od rozmiaru przydzielone lokalnymi. Podobnie w przypadku zmiany rozmiaru dysku, sprawdza magazyn typu określonego we właściwości oceny (Standard/Premium) i w związku z tym zaleca typu dysku. Domyślny typ magazynu jest dysków Premium.
 
 ### <a name="confidence-rating"></a>Ocena zaufania
 
 Każda ocena w usłudze Azure Migrate jest skojarzona z oceną zaufania obejmującą zakres od 1 gwiazdki do 5 gwiazdek (1 gwiazdka to najniższa ocena, 5 gwiazdek — najwyższa). Ocena zaufania jest przypisana do oceny na podstawie dostępności punktów danych potrzebnych do obliczenia oceny. Ocena zaufania do oceny pomaga oszacować niezawodność zaleceń dotyczących rozmiaru określanych przez usługę Azure Migrate.
 
-W przypadku ustalania rozmiaru maszyny wirtualnej na podstawie wydajności usługa Azure Migrate potrzebuje danych użycia procesora i pamięci. Ponadto dla rozmiaru każdy dysk dołączony do maszyny Wirtualnej, musi on odczytu/zapisu IOPS i przepustowość. Analogicznie, dla każdej karty sieciowej podłączonej do maszyny wirtualnej usługa Azure Migrate potrzebuje danych o ruchu wchodzącym/wychodzącym sieci do ustalenia rozmiaru na podstawie wydajności. Jeśli którekolwiek z powyższych danych użycia są niedostępne w programie vCenter Server, zalecenie dotyczące rozmiaru określone przez usługę Azure Migrate może nie być wiarygodne. W zależności od procent dostępności punktów danych podano przedziałem zaufania do oceny zgodnie z poniższymi instrukcjami:
+Przedziałem zaufania ocenę jest bardziej użyteczna w przypadku oceny z kryterium zmiany rozmiaru jako "na podstawie zmiany rozmiaru. Na podstawie wydajności zmiany rozmiaru migracji Azure wymaga danych wykorzystania procesora, pamięci maszyny wirtualnej. Ponadto dla każdego dysku do maszyny Wirtualnej, musi on dysku IOPS i danych o przepływności. Podobnie dla każdej karty sieciowej podłączony do maszyny Wirtualnej Azure migracji musi sieci lub brak zgody na celu wydajności na podstawie rozmiaru. Jeśli którekolwiek z powyższych danych użycia są niedostępne w programie vCenter Server, zalecenie dotyczące rozmiaru określone przez usługę Azure Migrate może nie być wiarygodne. W zależności od odsetka dostępnych punktów danych ocena zaufania dla oceny jest określana w następujący sposób:
 
    **Dostępność punktów danych** | **Ocenę zaufania**
    --- | ---
@@ -131,7 +120,7 @@ W przypadku ustalania rozmiaru maszyny wirtualnej na podstawie wydajności usłu
    81%–100% | 5 gwiazdek
 
 Ocena może nie mieć dostępnych wszystkich punktów danych z jednego z następujących powodów:
-- Ustawienie statystyk w programie vCenter Server nie ma wartość poziomu 3. Jeśli ustawienie statystyk w programie vCenter Server jest mniejsze niż poziom 3, dane o wydajności dysku i sieci nie są zbierane z programu vCenter Server. W takim przypadku zalecenie określane przez usługę Azure Migrate dla dysku i sieci nie opiera się na użyciu. Bez uwzględniania IOPS/przepływność dysku, Azure migracji nie można ustalić, czy dysk należy dysku premium na platformie Azure, w związku z tym w takim przypadku Migrowanie Azure zaleca dyski standardowe dla wszystkich dysków.
+- Ustawienie statystyk w programie vCenter Server jest inne niż poziom 3. Jeśli ustawienie statystyk w programie vCenter Server jest mniejsze niż poziom 3, dane o wydajności dysku i sieci nie są zbierane z programu vCenter Server. W takim przypadku zalecenie określane przez usługę Azure Migrate dla dysku i sieci nie opiera się na użyciu. Bez uwzględniania liczby operacji we/wy na sekundę/przepływności dysku usługa Azure Migrate nie może określić, czy dysk będzie potrzebować dysku w warstwie Premium na platformie Azure, dlatego w tym przypadku usługa Azure Migrate zaleca wszystkie dyski w warstwie Standardowa.
 - Ustawienie statystyk w programie vCenter Server zostało ustawione na poziom 3 przez krótszy czas przed rozpoczęciem odnajdywania. Rozważmy na przykład scenariusz, w którym dzisiaj zmienisz poziom ustawień statystyk na 3 i jutro rozpoczniesz odnajdowanie przy użyciu urządzenia modułu zbierającego (po 24 godzinach). Jeśli tworzysz ocenę dla jednego dnia, masz wszystkie punkty danych i oceną zaufania dla oceny będzie 5 gwiazdek. Ale jeśli zmieniasz czas trwania wydajności we właściwościach oceny na jeden miesiąc, ocena zaufania spada, ponieważ dane o wydajności dysku i sieci dla ostatniego miesiąca byłyby niedostępne. Jeśli chcesz wziąć pod uwagę dane wydajności za ostatni miesiąc, zaleca się utrzymanie ustawienia statystyk programu vCenter Server na poziomie 3 przez jeden miesiąc przed rozpoczęciem odnajdywania.
 - Kilka maszyn wirtualnych zostało wyłączonych w czasie, dla którego jest obliczana ocena. Jeśli którakolwiek maszyna wirtualna została odłączona od zasilania na pewien czas, program vCenter Server nie będzie miał danych o wydajności dla tego okresu.
 - Kilka maszyn wirtualnych zostało utworzonych w czasie, dla którego jest obliczana ocena. Jeśli na przykład tworzysz ocenę dla historii wydajności za ostatni miesiąc, ale kilka maszyn wirtualnych zostało utworzonych w środowisku tylko tydzień temu. W takich przypadkach historia wydajności nowych maszyn wirtualnych nie będzie dotyczyła całego czasu oceny.

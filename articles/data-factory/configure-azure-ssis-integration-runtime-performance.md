@@ -3,17 +3,18 @@ title: Konfigurowanie środowiska uruchomieniowego integracji usług SSIS Azure 
 description: Dowiedz się, jak skonfigurować właściwości środowiska uruchomieniowego integracji usług SSIS Azure o wysokiej wydajności
 services: data-factory
 ms.date: 01/10/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: data-factory
 ms.workload: data-services
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: ed5d1740f1d68db5ad42266c3fc2dcc983682774
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 876f68d232e5f171f0c03b653d56f2351ffb2c7d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617131"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurowanie środowiska uruchomieniowego integracji usług SSIS Azure o wysokiej wydajności
 

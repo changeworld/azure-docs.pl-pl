@@ -6,14 +6,15 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 3361519c260fe842ae362814cbee62aa9257b9f8
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d52838aa65ade8e2dfac75089ee82b4b1bae5257
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644199"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Znajdź i stosować zalecenia wydajności
 
@@ -101,8 +102,10 @@ Można ustawić baza danych SQL Azure, aby automatycznie wdrożyć zalecenia. Zg
     ![Zalecane indeksy](./media/sql-database-automatic-tuning-enable/server.png)
 
 > [!NOTE]
-> Należy pamiętać, że **DROP_INDEX** opcji w tej chwili jest niezgodny z aplikacji przy użyciu wskazówek indeks i przełączanie partycji i nie powinna włączona w tych przypadkach.
+> Należy pamiętać, że **DROP_INDEX** opcji w tej chwili nie jest zgodny z aplikacjami przy użyciu wskazówek indeks i przełączanie partycji i nie powinna być włączona w tych przypadkach.
 >
+
+Po wybraniu wymaganą konfigurację, kliknij przycisk Zastosuj.
 
 ### <a name="manually-run-the-recommended-t-sql-script"></a>Ręcznie uruchom zalecane skryptu T-SQL
 Wybierz każde zalecenie, a następnie kliknij przycisk **Wyświetl skrypt**. Uruchom ten skrypt, aby ręcznie zastosować zalecenie bazy danych.

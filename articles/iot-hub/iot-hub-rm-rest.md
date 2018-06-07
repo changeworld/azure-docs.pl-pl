@@ -1,24 +1,20 @@
 ---
-title: "Tworzenie Centrum Azure IoT przy użyciu dostawcy zasobów interfejsu API REST | Dokumentacja firmy Microsoft"
-description: "Jak użyć interfejsu API REST dostawcy zasobów w celu tworzenia Centrum IoT."
-services: iot-hub
-documentationcenter: .net
+title: Tworzenie Centrum Azure IoT przy użyciu dostawcy zasobów interfejsu API REST | Dokumentacja firmy Microsoft
+description: Jak użyć interfejsu API REST dostawcy zasobów w celu tworzenia Centrum IoT.
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 52814ee5-bc10-4abe-9eb2-f8973096c2d8
 ms.service: iot-hub
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: csharp
+ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: d9372f8345257c45ae6b3b915383788f698a0e35
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 06f05da839ebca2ae53e255acce7f07d1989673c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635223"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>Tworzenie Centrum IoT przy użyciu dostawcy zasobów interfejsu API REST (.NET)
 
@@ -173,7 +169,7 @@ Możesz teraz ukończyć aplikacji przez wywołanie metody **CreateIoTHub** meto
 > [!NOTE]
 > Ta przykładowa aplikacja dodaje Centrum IoT standardowe S1 dla której są rozliczane. Gdy skończysz, można usunąć Centrum IoT za pośrednictwem [portalu Azure] [ lnk-azure-portal] lub za pomocą **AzureRmResource Usuń** polecenia cmdlet programu PowerShell po zakończeniu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Po wdrożeniu przy użyciu interfejsu API REST dostawcy zasobów Centrum IoT, może zajść potrzeba dalszego zbadania:
 
 * Przeczytaj informacje o możliwości [interfejsu API REST dostawcy zasobów Centrum IoT][lnk-rest-api].
@@ -186,7 +182,7 @@ Aby dowiedzieć się więcej o tworzeniu aplikacji Centrum IoT, zobacz następuj
 
 Aby dokładniej analizować możliwości Centrum IoT, zobacz:
 
-* [Wdrażanie urządzenia brzegowe AI krawędzi IoT Azure][lnk-iotedge]
+* [Wdrażanie rozwiązań SI na urządzeniach brzegowych przy użyciu usługi Azure IoT Edge][lnk-iotedge]
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/

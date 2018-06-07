@@ -9,13 +9,14 @@ ms.assetid: 164ada5a-222e-4be2-bd32-e51dbe993bc0
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/30/2018
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 4c08dac95a2d2b52f1a1d28f6933b94ad4db10b7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a68e6a076bb27626c100594de011cf07ff361768
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627386"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-data-lake-store-as-additional-storage"></a>Tworzenie klastra usługi HDInsight z usługą Data Lake Store (jako dodatkowej pamięci masowej) przy użyciu programu Azure PowerShell
 
@@ -126,10 +127,10 @@ Każda subskrypcja platformy Azure jest skojarzony z usługą Azure Active Direc
 
 Aby skonfigurować uwierzytelnianie usługi Active Directory dla usługi Azure Data Lake, należy wykonać poniższe zadania.
 
-* Utwórz certyfikat z podpisem własnym
+* Tworzenie certyfikatu z podpisem własnym
 * Tworzenie aplikacji w usłudze Azure Active Directory i nazwy głównej usługi
 
-### <a name="create-a-self-signed-certificate"></a>Utwórz certyfikat z podpisem własnym
+### <a name="create-a-self-signed-certificate"></a>Tworzenie certyfikatu z podpisem własnym
 
 Upewnij się, że masz [zestaw Windows SDK](https://dev.windows.com/en-us/downloads) zainstalowany, przed wykonaniem czynności w tej sekcji. Należy także utworzyć katalogu, takie jak **C:\mycertdir**, gdzie można utworzyć certyfikatu.
 

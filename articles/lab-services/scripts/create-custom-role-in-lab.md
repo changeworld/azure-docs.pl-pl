@@ -1,6 +1,6 @@
 ---
-title: 'Skrypt programu PowerShell: Tworzenie niestandardowej roli zabezpieczeń w niestandardowych laboratorium w usłudze Azure laboratorium Services | Dokumentacja firmy Microsoft'
-description: Ten skrypt programu PowerShell dodaje użytkownika zewnętrznego do niestandardowych laboratorium w usłudze Azure Services laboratorium.
+title: 'Skrypt programu PowerShell: Tworzenie niestandardowej roli zabezpieczeń w laboratorium w usłudze Azure DevTest Labs | Dokumentacja firmy Microsoft'
+description: Ten skrypt programu PowerShell dodaje użytkownika zewnętrznego do laboratorium w usłudze Azure DevTest Labs.
 services: lab-services
 author: spelluru
 manager: ''
@@ -12,24 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: df91c9f842d338e1725fec2734129f2f1f3d3721
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 295f742342fba7d77b556724c8005f3ac4816482
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636719"
 ---
-# <a name="use-powershell-to-create-a-custom-role-in-a-custom-lab-in-azure-lab-services"></a>Aby utworzyć niestandardową rolę w niestandardowych laboratorium w usłudze Azure laboratorium Services za pomocą programu PowerShell
+# <a name="use-powershell-to-create-a-custom-role-in-a-lab-in-azure-devtest-labs"></a>Użyj programu PowerShell, aby utworzyć niestandardową rolę w laboratorium w usłudze Azure DevTest Labs
 
-Ten przykładowy skrypt programu PowerShell tworzy niestandardowej roli zabezpieczeń do użycia w laboratorium niestandardowych w usług Azure laboratorium. 
+Ten przykładowy skrypt programu PowerShell tworzy niestandardowej roli zabezpieczeń do użycia w laboratorium w usłudze Azure DevTest Labs. 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* **Niestandardowe laboratorium**. Skrypt wymaga posiadania istniejącego laboratorium niestandardowych. 
+* **Laboratorium**. Skrypt wymaga posiadania istniejącego laboratorium. 
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
-[!code-powershell[main](../../../powershell_scripts/devtest-lab/create-custom-role-in-lab/create-custom-role-in-lab.ps1 "Add external user to a custom lab")]
+[!code-powershell[main](../../../powershell_scripts/devtest-lab/create-custom-role-in-lab/create-custom-role-in-lab.ps1 "Add external user to a lab")]
 
 ## <a name="script-explanation"></a>Objaśnienia dla skryptu
 

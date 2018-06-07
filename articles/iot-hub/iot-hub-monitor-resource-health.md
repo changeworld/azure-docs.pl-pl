@@ -1,30 +1,28 @@
 ---
 title: Monitorowanie kondycji Centrum IoT Azure | Dokumentacja firmy Microsoft
 description: Użyj monitora Azure i kondycji zasobów platformy Azure do monitorowania Centrum IoT i szybkie diagnozowanie problemów
-services: iot-hub
-documentationcenter: ''
 author: kgremban
 manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 10/09/2017
 ms.author: kgremban
-ms.openlocfilehash: bf6202b002aaf6d89a30c7c653fdcee00cb50290
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: caf740e45c6de2b6ae52db48a588db67033e103d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634689"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitorowanie kondycji Azure IoT Hub i szybkie diagnozowanie problemów
 
 Firm, które implementują Centrum IoT Azure oczekiwać niezawodnej wydajności z zasobami. Aby ułatwić Obsługa Zamknij czujki na operacje, Centrum IoT jest w pełni zintegrowana z [Azure Monitor] [ lnk-AM] i [kondycja zasobów Azure] [ lnk-ARH]. Te dwie usługi działa w połączeniu ze dane potrzebne do przechowywania Twojego rozwiązania IoT w górę i uruchomiony w dobrej kondycji. 
 
-Azure Monitor jest jednego źródła, monitorowania i rejestrowania dla wszystkich usług platformy Azure. Możesz wysłać dzienniki, generowane przez Azure Monitor Log Analytics, centra zdarzeń lub usługi Azure Storage do przetwarzania niestandardowego. Ustawienia metryki i diagnostyki Azure Monitor zapewniają wgląd w czasie rzeczywistym w wydajności zasobów. Kontynuuj czytanie tego artykułu, aby dowiedzieć się, jak [Użyj monitora Azure](#use-azure-monitor) z Centrum IoT. 
+Azure Monitor jest jednego źródła, monitorowania i rejestrowania dla wszystkich usług platformy Azure. Możesz wysłać dzienniki diagnostyczne, które Azure Monitor generuje analizy dzienników, usługa Event Hubs lub usługi Azure Storage przetwarzania niestandardowego. Ustawienia metryki i diagnostyki Azure Monitor zapewniają wgląd w wydajności zasobów. Kontynuuj czytanie tego artykułu, aby dowiedzieć się, jak [Użyj monitora Azure](#use-azure-monitor) z Centrum IoT. 
+
+> [!IMPORTANT]
+> Zdarzenia emitowane przez usługę Centrum IoT przy użyciu dzienników diagnostycznych Azure monitora nie ma gwarancji być niezawodne lub są uporządkowane. Niektóre zdarzenia mogą utracone lub dostarczony poza kolejnością. Dzienniki diagnostyczne również nie są przeznaczone do można w czasie rzeczywistym i może potrwać kilka minut dla zdarzeń, które będą rejestrowane w wybranym docelowym.
 
 Kondycja zasobów Azure ułatwia diagnozowanie i uzyskać pomoc techniczną, gdy problemy Azure ma wpływ na zasoby. Spersonalizowane pulpit nawigacyjny zawiera stan kondycji bieżących i starszych dla Twojej centra IoT. Kontynuuj czytanie tego artykułu, aby dowiedzieć się, jak [kondycja zasobów Azure użyj](#use-azure-resource-health) z Centrum IoT. 
 

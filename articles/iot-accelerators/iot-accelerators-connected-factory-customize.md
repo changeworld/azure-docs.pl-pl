@@ -1,25 +1,20 @@
 ---
 title: Dostosowywanie rozwiązania połączone fabryki - Azure | Dokumentacja firmy Microsoft
 description: Opis sposobu dostosowywania zachowanie akcelerator rozwiązań połączone fabryki.
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: iot-suite
-ms.devlang: c#
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.devlang: csharp
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
-ms.openlocfilehash: 6d3008fb92f2240c22680f1b9486067e8bd2ae88
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: e91f36c9d6f0cb3195e6903d55cd676f1e9ccf5a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626554"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Dostosuj sposób rozwiązania połączone fabryki wyświetlania danych z serwerów OPC UA
 
@@ -100,5 +95,5 @@ Dowiedz się więcej o akcelerator rozwiązań połączone fabryki przeczytaj na
 
 [lnk-rm-walkthrough]:iot-accelerators-connected-factory-sample-walkthrough.md
 [lnk-connect-cf]:iot-accelerators-connected-factory-gateway-deployment.md
-[lnk-permissions]: ../iot-suite/iot-suite-v1-permissions.md
-[lnk-faq]: ../iot-suite/iot-suite-v1-faq.md
+[lnk-permissions]: iot-accelerators-permissions.md
+[lnk-faq]: iot-accelerators-faq.md

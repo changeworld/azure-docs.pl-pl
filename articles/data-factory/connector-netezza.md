@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 469e72a70d23b3d23eeeb68b3aa2a9e3527d038e
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 85a79cbbe53393bc02178cd827453508b043692e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617896"
 ---
 # <a name="copy-data-from-netezza-using-azure-data-factory-beta"></a>Kopiowanie danych z Netezza przy użyciu fabryki danych Azure (wersja Beta)
 
@@ -56,7 +57,7 @@ Ciąg połączenia typowe jest `Server=<server>;Port=<port>;Database=<database>;
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |:--- |
 | SecurityLevel | Poziom zabezpieczeń (SSL/TLS) używanego przez sterownik do połączenia z magazynem danych. Na przykład `SecurityLevel=preferredSecured`. Obsługiwane są następujące wartości:<br/>-Tylko niezabezpieczone (**onlyUnSecured**): sterownik nie korzysta z protokołu SSL.<br/>- **Preferowany Unsecured (preferredUnSecured) (ustawienie domyślne)**: Jeśli serwer umożliwia wybranie, sterownik nie korzysta z protokołu SSL. <br/>- **Preferowany bezpieczne (preferredSecured)**: Jeśli serwer udostępnia wybór, sterownik używa protokołu SSL. <br/>- **Tylko bezpieczne (onlySecured)**: sterownik nie połączyć, chyba że dostępne są połączenia SSL | Nie |
-| PlikCertyfikatuUrzędu | Pełna ścieżka do certyfikatu SSL, który jest używany przez serwer. Na przykład `UseSystemTrustStore=<cert path>;`| Tak, jeśli jest włączony protokół SSL |
+| PlikCertyfikatuUrzędu | Pełna ścieżka do certyfikatu SSL, który jest używany przez serwer. Na przykład `CaCertFile=<cert path>;`| Tak, jeśli jest włączony protokół SSL |
 
 **Przykład:**
 

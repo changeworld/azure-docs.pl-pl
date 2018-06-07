@@ -12,22 +12,16 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 9/20/2017
+ms.date: 5/21/2018
 ms.author: msfussell
-ms.openlocfilehash: c70db92d6071a295dfc329768ab8a0fd561f8ce5
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: fe6db569c0f70362676251a9413fa859f27f5046
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641916"
 ---
 # <a name="service-fabric-and-containers"></a>Sieć szkieletowa usług i kontenerów
-> [!NOTE]
-> Wdrażanie kontenerów do klastra usługi sieć szkieletowa usług w systemie Windows 10 lub Docker CE nie jest obsługiwane. 
->   
-
-> [!NOTE]
-> Usługa Service Fabric w wersji 6.1 obejmuje obsługę wersji zapoznawczej systemu Windows Server w wersji 1709. Otwarta sieć i usługa DNS w usłudze Service Fabric nie działają w systemie Windows Server w wersji 1709. 
-> 
 
 ## <a name="introduction"></a>Wprowadzenie
 Sieć szkieletowa usług Azure to [orchestrator](service-fabric-cluster-resource-manager-introduction.md) usługi w klastrze maszyn z wielu lat użycia i optymalizację na ogromną skalę usług firmy Microsoft. Usługi mogą być opracowane na wiele sposobów korzystania z [usługi sieć szkieletowa modele programowania](service-fabric-choose-framework.md) wdrażanie [pliki wykonywalne gościa](service-fabric-guest-executables-introduction.md). Domyślnie usługi sieć szkieletowa wdraża i aktywuje tych usług jako procesów. Procesy Podaj najszybszym aktywacji i najwyższy gęstość użycia zasobów w klastrze. Sieć szkieletowa usług można także wdrożyć usługi kontenera obrazów. Ważne można mieszać usług w procesach i usług w kontenerach w tej samej aplikacji.   
@@ -44,10 +38,6 @@ Kontenery są technologii wirtualizacji, która Wirtualizuje system operacyjny z
 
 ## <a name="container-types-and-supported-environments"></a>Typy kontenera i obsługiwane środowiska
 Sieć szkieletowa usług obsługuje kontenery na systemie Linux i Windows i obsługuje również trybem izolacji funkcji Hyper-V na drugie. 
-
-> [!NOTE]
-> Wdrażanie kontenerów do klastra usługi sieć szkieletowa usług w systemie Windows 10 nie jest obecnie obsługiwany. 
-> 
 
 ### <a name="docker-containers-on-linux"></a>Kontenery docker w systemie Linux
 Docker zapewnia wysokiego poziomu interfejsy API umożliwiające tworzenie i zarządzanie nimi kontenerów na górze kontenery jądra systemu Linux. Centrum docker jest centralnym repozytorium do przechowywania i pobierania obrazów kontenera.

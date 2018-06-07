@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 05/30/2018
 ms.author: johnkem
-ms.openlocfilehash: bf776ba8aaeca361250f39fb2c62233ee1dfbd5b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 32360a1af25b92fe232e3e504cb6587dcb364f48
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638769"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Archiwum dzienników diagnostycznych platformy Azure
 
@@ -30,12 +31,12 @@ Przed rozpoczęciem należy [Utwórz konto magazynu](../storage/storage-create-s
 
 ## <a name="diagnostic-settings"></a>Ustawienia diagnostyczne
 
-Aby zarchiwizować dzienników diagnostycznych przy użyciu dowolnej z poniższych metod, należy ustawić **ustawienie diagnostyczne** dla określonego zasobu. Ustawienie diagnostyczne dla zasobu definiuje kategorii dzienników i dane wysyłane do miejsca docelowego (konto magazynu, centra zdarzeń w przestrzeni nazw lub Log Analytics). Definiuje również zasady przechowywania (liczba dni przechowywania) dla zdarzenia każdej kategorii dziennika i dane przechowywane na koncie magazynu. Jeśli zasady przechowywania wynosi zero, zdarzenia dla tej kategorii dziennika są przechowywane przez nieograniczony czas (to znaczy oznacza nieskończoność). Zasady przechowywania, w przeciwnym razie może być dowolną liczbę dni od 1 do 2147483647. [Możesz przeczytać dodatkowe informacje w tym miejscu ustawień diagnostycznych](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings). Zasady przechowywania są zastosowane na dni, więc pod koniec dnia (UTC), dzienniki od dnia, która jest teraz poza przechowywania zasady zostaną usunięte. Na przykład jeśli masz zasady przechowywania jeden dzień na początku dnia, w obecnie dzienniki na wczoraj zanim dzień zostaną usunięte
+Aby zarchiwizować dzienników diagnostycznych przy użyciu dowolnej z poniższych metod, należy ustawić **ustawienie diagnostyczne** dla określonego zasobu. Ustawienie diagnostyczne dla zasobu definiuje kategorii dzienników i dane wysyłane do miejsca docelowego (konto magazynu, centra zdarzeń w przestrzeni nazw lub Log Analytics). Definiuje również zasady przechowywania (liczba dni przechowywania) dla zdarzenia każdej kategorii dziennika i dane przechowywane na koncie magazynu. Jeśli zasady przechowywania wynosi zero, zdarzenia dla tej kategorii dziennika są przechowywane przez nieograniczony czas (to znaczy oznacza nieskończoność). Zasady przechowywania, w przeciwnym razie może być dowolną liczbę dni od 1 do 2147483647. [Możesz przeczytać dodatkowe informacje w tym miejscu ustawień diagnostycznych](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings). Zasady przechowywania są zastosowane na dni, więc pod koniec dnia (UTC), dzienniki od dnia, która jest teraz poza przechowywania zasady zostaną usunięte. Na przykład jeśli masz zasady przechowywania jeden dzień na początku dnia dzisiaj dzienniki na wczoraj zanim dzień zostaną usunięte. Proces usuwania rozpoczyna się od północy czasu UTC, ale należy pamiętać, że może potrwać do 24 godzin dzienniki, aby go usunąć z konta magazynu. 
 
 > [!NOTE]
-> Wysyłanie metryki wielowymiarowej za pomocą ustawień diagnostycznych nie jest obecnie obsługiwane. Metryka z wymiarów są eksportowane jako spłaszczone pojedynczego metryki wymiarów, zagregowane WE wartości wymiaru.
+> Wysyłanie metryk wielowymiarowych za pomocą ustawień diagnostycznych nie jest obecnie obsługiwane. Metryki wielowymiarowe są eksportowane jako spłaszczone metryki jednowymiarowe z wartościami zagregowanymi we wszystkich wymiarach.
 >
-> *Na przykład*: metryka "Komunikatów przychodzących" w Centrum zdarzeń można przedstawione i wykresie na na poziomie kolejki. Jednak podczas eksportowania za pomocą ustawień diagnostycznych, które Metryka będą reprezentowane jako komunikaty przychodzące we wszystkich kolejek zdarzeń koncentratora.
+> *Na przykład*: metrykę „Komunikaty przychodzące” w centrum zdarzeń można przeglądać i przedstawiać na wykresie na poziomie pojedynczej kolejki. Jednak w przypadku eksportowania za pomocą ustawień diagnostycznych metryka ta jest przedstawiana jako wszystkie komunikaty przychodzące we wszystkich kolejkach w centrum zdarzeń.
 >
 >
 
@@ -118,7 +119,7 @@ Na przykład może być nazwa obiektu blob:
 
 > insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUP/TESTNSG/y=2016/m=08/d=22/h=18/m=00/PT1H.json
 
-Każdy obiekt blob PT1H.json zawiera obiektu blob JSON zdarzeń, które wystąpiły w ciągu godziny określonego w adresie URL obiektu blob (na przykład h = 12). Podczas obecny godzinę zdarzenia są dołączane do pliku PT1H.json miarę ich występowania. Wartości minutowe (m = 00) jest zawsze 00, ponieważ dziennik diagnostyczny zdarzenia są podzielone na poszczególne obiekty BLOB na godzinę.
+Każdy obiekt blob PT1H.json zawiera obiekt blob JSON ze zdarzeniami, które wystąpiły w ciągu godziny określonej w adresie URL obiektu blob (na przykład h = 12). Zdarzenia występujące w danej chwili są na bieżąco dołączane do pliku PT1H.json. Wartości minutowe (m = 00) jest zawsze 00, ponieważ dziennik diagnostyczny zdarzenia są podzielone na poszczególne obiekty BLOB na godzinę.
 
 W pliku PT1H.json każdego zdarzenia są przechowywane w tablicy "rekordy", po tym formacie:
 

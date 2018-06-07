@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
 ms.author: johnkem
-ms.openlocfilehash: 248d45a59fa2769c4cfcc4b169bd9e61059f11b0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 01a785eab1b31b2943184267a3c6496fefaf44cf
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639082"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Rozpoczynanie pracy z rolami, uprawnienia i zabezpieczeń z monitorem Azure
 Wiele zespołów należy ściśle regulowania dostępu do danych i ustawienia monitorowania. Na przykład, jeśli masz członków zespołu, którzy używają wyłącznie na monitorowanie (pracowników działu pomocy technicznej, metodyki devops engineers) lub jeśli korzystasz z dostawcą usługi zarządzanej, można przyznać im dostęp do danych tylko do monitorowania podczas ograniczania możliwość tworzenia, modyfikowania, lub Usuwanie zasobów. W tym artykule pokazano, jak szybko zastosować wbudowane monitorowania roli RBAC użytkownikowi na platformie Azure lub tworzenie własnych niestandardowych ról dla użytkownika, który wymaga ograniczonych uprawnień monitorowania. Następnie zawiera omówienie zagadnienia dotyczące zabezpieczeń dla zasobów związanych z monitora Azure i jak można ograniczyć dostęp do danych, które zawierają.
@@ -125,7 +126,7 @@ Wszystkie trzy z następujących typów danych może przechowywane na koncie mag
 
 * Użyj konta magazynu jednego, przeznaczonego dla danych monitorowania. Jeśli chcesz podzielić monitorowanie na wiele kont magazynu, nigdy nie udostępniaj użycia konta magazynu między monitorowania i -monitorowania danych, jak to przypadkowo może dać tych, którzy potrzebują tylko dostępu do monitorowania danych (na przykład SIEM innych firm) dostęp do innych niż monitorowania danych.
 * Użyj jednego, przeznaczonego nazw usługi Service Bus lub Centrum zdarzeń na wszystkich ustawień diagnostycznych z tej samej przyczyny jak wyżej.
-* Ograniczanie dostępu do kont magazynu związanych z monitorowaniem lub event hubs trzymając je w oddzielnej grupie zasobów, i [Użyj zakresu](../role-based-access-control/overview.md#basics-of-access-management-in-azure) na poszczególnych ról monitorowania, aby ograniczyć dostęp do tej grupy zasobów.
+* Ograniczanie dostępu do kont magazynu związanych z monitorowaniem lub event hubs trzymając je w oddzielnej grupie zasobów, i [Użyj zakresu](../role-based-access-control/overview.md#scope) na poszczególnych ról monitorowania, aby ograniczyć dostęp do tej grupy zasobów.
 * Nigdy nie należy przyznać uprawnienia ListKeys dla konta magazynu lub centra zdarzeń w zakresie subskrypcji, gdy użytkownik potrzebuje tylko dostęp do danych monitorowania. Zamiast tego należy przekazać te uprawnienia użytkownika na zasób lub grupa zasobów (Jeśli masz dedykowane monitorowania grupy zasobów) zakresu.
 
 ### <a name="limiting-access-to-monitoring-related-storage-accounts"></a>Ograniczanie dostępu do kont magazynu związanych z monitorowaniem

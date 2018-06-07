@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 05/30/2018
 ms.author: johnkem; magoedte
-ms.openlocfilehash: 00b990181e5bb96f122ff1ae530dd027a772b210
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 7d1ab75146c9899bf2699309cd5dd4ed523096ef
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638810"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Zbierania i wykorzystywania danych dziennika z zasobów platformy Azure
 
@@ -54,7 +55,7 @@ Dzienniki diagnostyczne zasobu z systemem innym niż — obliczeń się, że zas
 * Jak długo każdej kategorii dziennika powinny zostać zachowane na koncie magazynu
     - Przechowywanie 0 oznacza, że dzienniki są przechowywane w nieskończoność. W przeciwnym razie wartość może być dowolną liczbę dni od 1 do 2147483647.
     - Jeśli zasady przechowywania są skonfigurowane, ale przechowywanie dzienniki na koncie magazynu jest wyłączone (na przykład, jeśli tylko są zaznaczone opcje usługi Event Hubs lub analizy dzienników), zasad przechowywania nie obowiązują.
-    - Zasady przechowywania są zastosowane na dni, więc pod koniec dnia (UTC), dzienniki od dnia, która jest teraz poza przechowywania zasad są usuwane. Na przykład jeśli masz zasady przechowywania jeden dzień na początku dnia dzisiaj dzienniki na wczoraj zanim dzień zostaną usunięte.
+    - Zasady przechowywania są zastosowane na dni, więc pod koniec dnia (UTC), dzienniki od dnia, która jest teraz poza przechowywania zasad są usuwane. Na przykład jeśli masz zasady przechowywania jeden dzień na początku dnia dzisiaj dzienniki na wczoraj zanim dzień zostaną usunięte. Proces usuwania rozpoczyna się od północy czasu UTC, ale należy pamiętać, że może potrwać do 24 godzin dzienniki, aby go usunąć z konta magazynu.
 
 Te ustawienia można łatwo skonfigurować za pomocą ustawień diagnostycznych dla zasobu w portalu Azure, za pomocą programu Azure PowerShell i polecenia interfejsu wiersza polecenia lub za pośrednictwem [interfejsu API REST Monitor Azure](https://msdn.microsoft.com/library/azure/dn931943.aspx).
 

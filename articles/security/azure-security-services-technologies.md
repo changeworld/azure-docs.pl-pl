@@ -9,73 +9,82 @@ editor: TomSh
 ms.assetid: a5a7f60a-97e2-49b4-a8c5-7c010ff27ef8
 ms.service: security
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2018
+ms.date: 05/25/2018
 ms.author: barclayn
-ms.openlocfilehash: 56d69297e9b52144f1ff4880983da0128115f4a6
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: e52cee2cb642de6e54270c597e6ed99f7162d0ed
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641462"
 ---
-# <a name="azure-security-services-and-technologies"></a>Usługi zabezpieczeń platformy Azure i technologii
+# <a name="security-services-and-technologies-available-on-azure"></a>Zabezpieczenia usług i technologii dostępnych w systemie Azure
 
-W naszych rozmów z aktualnych i przyszłych klientów platformy Azure jest firma Microsoft często zadawane "masz listę wszystkich zabezpieczeń związane z usług i technologii, które platforma Azure ma oferować?"
+W naszych rozmów z klientami Azure aktualnych i przyszłych system często prosi "masz listę wszystkich usług związanych z zabezpieczeniami i technologie, które platforma Azure ma oferować?"
 
-Ocena możliwości dostawcy usług chmury, warto te informacje.
+Ocena możliwości dostawcy usług chmury, warto te informacje. Dlatego firma Microsoft umieściła tej listy, które ułatwią rozpoczęcie pracy.
 
-Poniżej znajduje się dążenia początkowej zapewnienie listy. Wraz z upływem czasu tej listy zmieniać i powiększać, podobnie jak Azure. Listy uporządkowane i listy kategorii również będzie rosnąć wraz z upływem czasu. Upewnij się sprawdzić tę stronę na bieżąco na bieżąco na naszych usług związanych z zabezpieczeniami i technologii.
+Wraz z upływem czasu tej listy zmieniać i powiększać, podobnie jak Azure. Upewnij się sprawdzić tę stronę na bieżąco na bieżąco na naszych usług związanych z zabezpieczeniami i technologii.
 
-## <a name="azure-security---general"></a>Zabezpieczeń platformy Azure — ogólne
+## <a name="general-azure-security"></a>Ogólne Azure zabezpieczeń
+|Usługa|Opis|
+|--------|--------|
+|[Azure&nbsp;zabezpieczeń&nbsp;Center](../security-center/security-center-intro.md)| Rozwiązania ochrony obciążenia chmury, które umożliwia zarządzanie zabezpieczeniami i advanced threat protection między obciążeń chmury hybrydowej.|
+|[Usługa Azure Key Vault](../key-vault/key-vault-overview.md)| Magazynem kluczy tajnych bezpiecznego hasła, parametry połączenia i innych informacji potrzebnych do zachowania aplikacji działa. |
+|[Log Analytics](../log-analytics/log-analytics-overview.md)|Usługa monitorowania zbiera dane telemetryczne i innych danych, a także aparatu zapytań języka i analiza do świadczenia usługi operational insights dla aplikacji i zasobów. Mogą być używane autonomicznie lub z innych usług takich jak Centrum zabezpieczeń. |
+|[Laboratoria Azure: tworzenie i testowanie](../devtest-lab/devtest-lab-overview.md)|Usługa, która pomaga deweloperom i testerom szybkie tworzenie środowisk podczas zminimalizować odpady i kontrolować koszty na platformie Azure.  |
 
-* [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/)
-* [Usługa Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/)
-* [Szyfrowanie dysków Azure](azure-security-disk-encryption.md)
-* [Log Analytics](../log-analytics/log-analytics-overview.md)
-* [Laboratoria Azure: tworzenie i testowanie](https://azure.microsoft.com/documentation/services/devtest-lab/)
+<!---|[Azure&nbsp;Disk&nbsp;Encryption](azure-security-disk-encryption-overview.md)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->
 
-## <a name="azure-storage-security"></a>Zabezpieczeń usługi Azure Storage
+## <a name="storage-security"></a>Zabezpieczenia magazynu
+|Usługa|Opis|
+|------|--------|
+| [Azure&nbsp;magazynu&nbsp;usługi&nbsp;szyfrowania](../storage/common/storage-service-encryption.md)|Funkcja zabezpieczeń, która automatycznie szyfruje dane w magazynie Azure.   |
+|[StorSimple zaszyfrowane magazynu hybrydowego](../storsimple/storsimple-ova-overview.md)| Rozwiązanie zintegrowanego magazynu, które zarządza zadań magazynu między urządzeniami lokalnymi i magazynu w chmurze Azure.|
+|[Azure szyfrowania po stronie klienta](../storage/common/storage-client-side-encryption.md)| Rozwiązania szyfrowania po stronie klienta, które są szyfrowane dane w aplikacjach klienckich przed przekazaniem do usługi Azure Storage; podczas pobierania również odszyfrowuje dane. |
+| [Sygnatury dostępu współdzielonego usługi Azure Storage](../storage/common/storage-dotnet-shared-access-signature-part-1.md)|Sygnatury dostępu współdzielonego umożliwiają dostęp delegowany do zasobów na koncie magazynu.  |
+|[Klucze konta magazynu platformy Azure](../storage/common/storage-create-storage-account.md)| Metoda kontroli dostępu do magazynu Azure, który jest używany do uwierzytelniania podczas uzyskiwania dostępu do konta magazynu. |
+|[Azure udziałów plików z szyfrowania protokołu SMB 3.0](../storage/files/storage-files-introduction.md)|To technologia zabezpieczeń sieci, która umożliwia automatyczne sieci szyfrowanie protokół udostępniania plików bloku komunikatów serwera (SMB). |
+|[Usługa Azure Storage Analytics](https://docs.microsoft.com/en-us/rest/api/storageservices/Storage-Analytics)| Rejestrowanie i generowanie metryk technologia danych na koncie magazynu. |
 
-* [Szyfrowanie usługi magazynu Azure](../storage/common/storage-service-encryption.md)
-* [StorSimple zaszyfrowane magazynu hybrydowego](https://azure.microsoft.com/documentation/services/storsimple/)
-* [Azure szyfrowania po stronie klienta](../storage/common/storage-client-side-encryption.md)
-* [Sygnatury dostępu współdzielonego usługi Azure Storage](../storage/common/storage-dotnet-shared-access-signature-part-1.md)
-* [Klucze konta magazynu platformy Azure](../storage/common/storage-create-storage-account.md)
-* [Azure udziałów plików z szyfrowania protokołu SMB 3.0](../storage/files/storage-dotnet-how-to-use-files.md)
-* [Usługa Azure Storage Analytics](https://msdn.microsoft.com/library/hh343270.aspx)
+<!------>
 
-## <a name="azure-database-security"></a>Zabezpieczenia bazy danych Azure
+## <a name="database-security"></a>Zabezpieczenia bazy danych
+|Usługa|Opis|
+|------|--------|
+| [Azure&nbsp;SQL&nbsp;zapory](../sql-database/sql-database-firewall-configure.md)|Funkcja kontroli dostępu do sieci, która chroni przed atakami sieciowymi w bazie danych. |
+|[Azure&nbsp;SQL&nbsp;komórki&nbsp;poziomu szyfrowania](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)| Technologia zabezpieczeń bazy danych, która zapewnia szyfrowanie na poziomie szczegółowym.  |
+| [Azure&nbsp;SQL&nbsp;szyfrowanie połączenia](../sql-database/sql-database-control-access.md)|Aby zapewnić bezpieczeństwo, usługa SQL Database kontroluje dostęp za pomocą reguł zapory, ograniczając adresy IP dla połączeń, stosując mechanizmy uwierzytelniania wymagające potwierdzenia tożsamości przez użytkowników oraz mechanizmy autoryzacji ograniczające użytkowników do określonych działań i danych. |
+| [Azure SQL zawsze szyfrowania](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)|Ochrona poufnych danych, takich jak numery kart kredytowych lub numerów identyfikacyjnych national (na przykład USA numerów ubezpieczenia społecznego), przechowywane w bazach danych usługi Azure SQL Database lub SQL Server.  |
+| [Azure&nbsp;SQL&nbsp;przezroczystego szyfrowania danych](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current)| Funkcja zabezpieczeń bazy danych, który szyfruje magazyn całej bazy danych. |
+| [Baza danych Azure SQL inspekcji](../sql-database/sql-database-auditing.md)|Baza danych inspekcji funkcja, która śledzi zdarzenia bazy danych i zapisuje je inspekcji logowania na koncie magazynu Azure.  |
 
-* [Zapory Azure SQL](../sql-database/sql-database-firewall-configure.md)
-* [Szyfrowanie na poziomie komórki Azure SQL](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)
-* [Szyfrowanie połączenia Azure SQL](../sql-database/sql-database-control-access.md)
-* [Uwierzytelnianie Azure SQL](../sql-database/sql-database-control-access.md)
-* [Azure SQL zawsze szyfrowania](https://msdn.microsoft.com/library/mt163865.aspx)
-* [Szyfrowanie na poziomie kolumny Azure SQL](https://msdn.microsoft.com/library/ms179331.aspx)
-* [Niewidoczne szyfrowanie danych Azure SQL](https://msdn.microsoft.com/library/dn948096.aspx)
-* [Baza danych Azure SQL inspekcji](../sql-database/sql-database-auditing.md)
 
-## <a name="azure-identity-and-access-management"></a>Tożsamość platformy Azure i zarządzanie dostępem
+## <a name="identity-and-access-management"></a>Zarządzanie tożsamościami i dostępem
+|Usługa|Opis|
+|------|--------|
+| [Azure&nbsp;roli&nbsp;na podstawie&nbsp;kontrola dostępu](../active-directory/role-based-access-control-configure.md)|Funkcja kontroli dostępu umożliwia użytkownikom uzyskiwanie dostępu do zasobów wymaganych do dostępu na podstawie ich ról w organizacji.  |
+| [Azure Active Directory](../active-directory/active-directory-whatis.md)|Repozytorium uwierzytelniania opartego na chmurze, która obsługuje wiele tożsamości usługi zarządzania w systemie Azure i katalogu wielodostępnej, oparte na chmurze.  |
+| [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-overview.md)|Usługa zarządzania tożsamości, który umożliwia kontrolę nad jak klienci rejestrację, logowanie i zarządzać nimi ich profile, przy użyciu aplikacji opartych na platformie Azure.   |
+| [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-overview.md)| Wersja oparta na chmurze i zarządzanych usług domenowych w usłudze Active Directory. |
+| [Uwierzytelnianie wieloskładnikowe platformy Azure](../active-directory/authentication/multi-factor-authentication.md)| Zapewnienie bezpieczeństwa, używającego kilka różnych metod uwierzytelniania i weryfikacji przed zezwoleniem na dostęp do zabezpieczonych informacji. |
 
-* [Kontrola dostępu oparta na roli Azure](../role-based-access-control/role-assignments-portal.md)
-* [Azure Active Directory](../active-directory/active-directory-whatis.md)
-* [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-get-started.md)
-* [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-overview.md)
-* [Uwierzytelnianie wieloskładnikowe platformy Azure](../active-directory/authentication/multi-factor-authentication.md)
+## <a name="backup-and-disaster-recovery"></a>Kopia zapasowa i odzyskiwanie po awarii
+|Usługa|Opis|
+|------|--------|
+| [Azure&nbsp;kopii zapasowej](../backup/backup-introduction-to-azure-backup.md)| Bazujących na platformie Azure Usługa używana do kopii zapasowej i przywracania danych w chmurze Azure. |
+| [Azure&nbsp;lokacji&nbsp;odzyskiwania](../site-recovery/site-recovery-overview.md)|Usługa online, która replikuje obciążeń uruchomionych na fizycznych i maszyn wirtualnych (VM) z lokacji podstawowej do dodatkowej lokalizacji, aby włączyć usługi odzyskiwania po awarii. |
 
-## <a name="backup-and-disaster-recovery"></a>Kopii zapasowych i odzyskiwania po awarii
-
-* [Azure Backup](https://azure.microsoft.com/documentation/services/backup/)
-* [Azure Site Recovery](https://azure.microsoft.com/documentation/services/site-recovery/)
-
-## <a name="azure-networking"></a>Sieci systemu Azure
-
-* [Grupy zabezpieczeń sieci](../virtual-network/security-overview.md)
-* [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)
-* [Brama aplikacji Azure](../application-gateway/application-gateway-introduction.md)
-* [Azure Load Balancer](../load-balancer/load-balancer-overview.md)
-* [Usługa Azure ExpressRoute](../expressroute/expressroute-introduction.md)
-* [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)
-* [Serwer Proxy aplikacji Azure](../active-directory/manage-apps/application-proxy-enable.md)
+## <a name="networking"></a>Networking
+|Usługa|Opis|
+|------|--------|
+| [Sieci&nbsp;zabezpieczeń&nbsp;grup](../virtual-network/virtual-networks-nsg.md)| Funkcja kontroli dostępu opartej na sieci przy użyciu krotka 5, aby zezwolić lub odmówić decyzji.  |
+| [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)| Urządzenie sieciowe używany jako punkt końcowy sieci VPN, aby umożliwić między lokalizacjami dostępu do sieci wirtualnych Azure.  |
+| [Brama aplikacji Azure](../application-gateway/application-gateway-introduction.md)|Aplikacja sieci web zaawansowane załadować równoważenia, który można kierować na podstawie adresu URL i wykonać odciążanie protokołu SSL. |
+| [Azure Load Balancer](../load-balancer/load-balancer-overview.md)|TCP/UDP aplikacji sieciowej usługi równoważenia obciążenia. |
+| [Usługa Azure ExpressRoute](../expressroute/expressroute-introduction.md)| Dedykowane łącze sieci WAN między sieciami lokalnymi i sieci wirtualnych Azure. |
+| [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)| Globalne DNS modułu równoważenia obciążenia.|
+| [Serwer Proxy aplikacji Azure](../active-directory/active-directory-application-proxy-get-started.md)| Uwierzytelnianie frontonu używany do zabezpieczania dostępu zdalnego dla aplikacji sieci web hostowane lokalnie. |

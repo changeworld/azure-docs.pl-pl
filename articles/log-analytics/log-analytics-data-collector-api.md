@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/03/2018
+ms.date: 05/25/2018
 ms.author: bwren
-ms.openlocfilehash: d42069e8ed72a834973b56df55488955d62e71f2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 33b98c56cde8d4a876f217d0bbdd716d3a336260
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636736"
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Wysyłanie danych do analizy dzienników przy użyciu protokołu HTTP danych modułu zbierającego interfejsu API (w publicznej wersji zapoznawczej)
 W tym artykule przedstawiono sposób wysyłania danych do analizy dzienników z klienta interfejsu API REST za pomocą interfejsu API modułów zbierających dane HTTP.  Przedstawiono sposób formatowania danych zbieranych przez skrypt lub aplikację, dołączyć go w żądaniu i mieć tego żądania uprawnień przez analizy dzienników.  Przykłady są dostępne dla programu PowerShell, C# i Python.
@@ -59,7 +60,7 @@ Aby za pomocą interfejsu API modułów zbierających dane HTTP, należy utworzy
 | Autoryzacja |Podpis autoryzacji. W dalszej części tego artykułu można uzyskać informacje dotyczące sposobu tworzenia nagłówka HMAC SHA256. |
 | Typ dziennika |Określ typ rekordu jest przesyłane dane. Typ dziennika obsługuje obecnie tylko znaki alfanumeryczne. Nie obsługuje wartości numeryczne i znaki specjalne. Limit rozmiaru dla tego parametru wynosi 100 znaków. |
 | x-ms-date |Żądanie zostało przetworzone, w formacie RFC 1123 Data. |
-| time-generated-field |Nazwa pola danych, które zawiera sygnaturę czasową elementu danych. Jeśli określisz pola, a następnie jego zawartość jest używana dla **TimeGenerated**. Jeśli to pole nie zostanie określona, wartością domyślną **TimeGenerated** jest czas, który jest pozyskanych wiadomości. Zawartość pola wiadomości należy wykonać w formacie ISO 8601 RRRR-MM-Ddtgg. |
+| time-generated-field |Nazwa pola danych, które zawiera sygnaturę czasową elementu danych. Jeśli określisz pola, a następnie jego zawartość jest używana dla **TimeGenerated**. Nie może mieć wartości null i musi zawierać prawidłowy godzina. Jeśli to pole nie zostanie określona, wartością domyślną **TimeGenerated** jest czas, który jest pozyskanych wiadomości. Zawartość pola wiadomości należy wykonać w formacie ISO 8601 RRRR-MM-Ddtgg. |
 
 ## <a name="authorization"></a>Autoryzacja
 Każde żądanie API modułu zbierającego dane dziennika Analytics HTTP musi zawierać nagłówek uwierzytelnienia. Aby uwierzytelnić żądanie, musisz zalogować się żądanie z serwera podstawowego lub dodatkowego klucza dla obszaru roboczego, który wysłał żądanie. Następnie przekaż tego podpisu, jako część żądania.   
@@ -136,7 +137,7 @@ Aby określić typ danych właściwości, analizy dzienników dodaje sufiks nazw
 |:--- |:--- |
 | Ciąg |_s |
 | Wartość logiczna |_b |
-| Podwójnej precyzji |_d |
+| O podwójnej precyzji |_d |
 | Data i godzina |_t |
 | GUID |_g |
 
@@ -188,7 +189,7 @@ Poniższa tabela zawiera pełen zestaw kodów stanu, które mogą zwracać usłu
 | 403 |Zabroniony |InvalidAuthorization |Usługa nie może uwierzytelnić żądania. Sprawdź, czy klucz połączenia i identyfikator obszaru roboczego są prawidłowe. |
 | 404 |Nie znaleziono | | Podany adres URL jest nieprawidłowy albo żądania jest za duży. |
 | 429 |Zbyt wiele żądań | | Usługa napotkała dużą liczbę dane z Twojego konta. Ponów żądanie później. |
-| 500 |Wewnętrzny błąd serwera |UnspecifiedError |Usługa napotkała błąd wewnętrzny. Ponów żądanie. |
+| 500 |Wewnętrzny błąd serwera |UnspecifiedError |W usłudze wystąpił wewnętrzny błąd. Ponów żądanie. |
 | 503 |Usługa niedostępna |ServiceUnavailable |Usługa jest obecnie odbierać żądań. Ponów żądanie. |
 
 ## <a name="query-data"></a>Zapytania o dane
@@ -211,7 +212,7 @@ Dla każdej próbki wykonaj następujące kroki, aby ustawić zmienne dla nagł�
 
 Można również zmienić zmienne typu dziennika i dane JSON.
 
-### <a name="powershell-sample"></a>Przykładowe programu PowerShell
+### <a name="powershell-sample"></a>Przykładowy skrypt programu PowerShell
 ```
 # Replace with your Workspace ID
 $CustomerId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"  

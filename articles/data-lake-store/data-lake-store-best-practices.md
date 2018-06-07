@@ -9,13 +9,14 @@ editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2018
+ms.date: 05/25/2018
 ms.author: sachins
-ms.openlocfilehash: ac0a01ed7a067688732aa54eb1b76e0e299e4263
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9fd6b72a7d09f85f7a6e60e5af4035ffc3862d2c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34625342"
 ---
 # <a name="best-practices-for-using-azure-data-lake-store"></a>Najlepsze rozwiązania dotyczące używania usługi Azure Data Lake Store
 W tym artykule opisano najważniejsze wskazówki i informacje dotyczące pracy z usługi Azure Data Lake Store. Ten artykuł zawiera informacje dotyczące zabezpieczeń, wydajności, odporności i monitorowania usługi Data Lake Store. Przed usługi Data Lake Store pracę z danymi big naprawdę w usługach, takich jak usługa Azure HDInsight był zbyt złożony. Konieczne było współdzielenie danych między wiele kont magazynu obiektów Blob, aby petabajt magazynu i optymalnej wydajności, które rozwijają się może zostać osiągnięty. Z usługi Data Lake Store większość stałych limitów rozmiaru i wydajności zostaną usunięte. Jednak nadal istnieją pewne kwestie, które w tym artykule omówiono tak, aby uzyskać najlepszą wydajność dzięki usłudze Data Lake Store. 
@@ -65,9 +66,9 @@ Uprawnień POSIX i inspekcji w usłudze Data Lake Store jest dostarczany z obci�
 * Kopiowania/replikacji szybsze
 * Mniejszą liczbę plików do przetworzenia podczas aktualizowania uprawnień POSIX magazynu Lake danych 
 
-W zależności od tego, jakie usługi i obciążeń z danych dobrym zakres, należy wziąć pod uwagę rozmiary plików to 256 MB do 1 GB, najlepiej nie będą poniżej 100 MB lub ponad 2 GB. Jeśli rozmiary plików nie można umieścić w partii, gdy kierowanych do usługi Data Lake Store, może być zadanie oddzielne kompaktowanie, łączącą tych plików w nich większe. Aby uzyskać więcej informacji i zaleceń na rozmiary plików i organizowania danych w usłudze Data Lake Store, zobacz [struktury zestawu danych](data-lake-store-performance-tuning-guidance.md#structure-your-data-set). 
+W zależności od tego, jakie usługi i obciążeń z danych, dobrym rozmiar wziąć pod uwagę w przypadku plików to 256 MB lub większy. Jeśli rozmiary plików nie można umieścić w partii, gdy kierowanych do usługi Data Lake Store, może być zadanie oddzielne kompaktowanie, łączącą tych plików w nich większe. Aby uzyskać więcej informacji i zaleceń na rozmiary plików i organizowania danych w usłudze Data Lake Store, zobacz [struktury zestawu danych](data-lake-store-performance-tuning-guidance.md#structure-your-data-set).
 
-### <a name="large-file-sizes-and-potential-performance-impact"></a>Duże rozmiary plików i potencjalnego wpływu na wydajność 
+### <a name="large-file-sizes-and-potential-performance-impact"></a>Duże rozmiary plików i potencjalnego wpływu na wydajność
 
 Mimo że usługa Data Lake Store obsługuje dużych plików petabajtów rozmiar, aby zapewnić optymalną wydajność i w zależności od procesu odczytywanie danych, może nie być idealne rozwiązanie Przejdź średnio ponad 2 GB. Na przykład w przypadku korzystania z **narzędzia Distcp** kopiowanie danych między lokalizacjami lub różnych kont magazynu, pliki są najwyższy poziom szczegółowości używany do określenia zadania mapy. Tak Jeśli kopiujesz 10 plików, które są 1 TB, maksymalnie 10 mapowań są przydzielone. Ponadto jeśli masz wiele plików z mapowań przypisane początkowo mapowań działać równolegle przenoszenia dużych plików. Jednak po uruchomieniu zadania zakończyć w dół tylko kilka mapowań pozostają przydzielone i można zostać zatrzymane z jednym odwzorowaniem, przypisana do dużych plików. Microsoft zostało przesłane ulepszenia narzędzia Distcp, aby rozwiązać ten problem w przyszłych wersjach platformy Hadoop.  
 

@@ -2,23 +2,20 @@
 title: Praca z danymi dane geograficzne w usłudze Azure DB rozwiązania Cosmos | Dokumentacja firmy Microsoft
 description: Zrozumienie sposobu tworzenia, indeksu i zapytania przestrzennych obiektów z bazy danych rozwiązania Cosmos Azure i interfejsu API SQL.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: 82ce2898-a9f9-4acf-af4d-8ca4ba9c7b8f
 ms.service: cosmos-db
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 10/20/2017
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 858d6c2154a74a6e5fe16c9392827cc8a6354f9c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 893b985514f4c812da673a90fc40148e8ac9ce81
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34611371"
 ---
 # <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Praca z dane geograficzne i danych lokalizacji GeoJSON w usłudze Azure DB rozwiązania Cosmos
 Ten artykuł obejmuje wprowadzenie do funkcji geograficzne w [bazy danych Azure rozwiązania Cosmos](https://azure.microsoft.com/services/cosmos-db/). Po przeczytaniu tego, będzie mógł odpowiedzieć na następujące pytania:
@@ -98,7 +95,7 @@ Oprócz punktów GeoJSON obsługuje również LineStrings i wielokątów. **Line
 Oprócz punktu, LineString i wielokąta GeoJSON określa również reprezentację sposób grupowania wielu lokalizacji geograficznych, a także sposobu kojarzenia dowolne właściwości z używanie funkcji geolokalizacji jako **funkcji**. Ponieważ te obiekty są poprawne dane JSON, ich można wszystkie przechowywane i przetwarzane w usłudze Azure DB rozwiązania Cosmos. Niemniej jednak bazy danych Azure rozwiązania Cosmos obsługuje tylko, automatycznego indeksowania punktów.
 
 ### <a name="coordinate-reference-systems"></a>Koordynacji systemów odniesienia
-Ponieważ kształtu ziemi jest nieprawidłowa, współrzędne geograficzne dane są reprezentowane w wielu systemach współrzędnych odwołania (znaki CR), każdy z ramek odniesienia i jednostki miary. Na przykład "National siatki z Brytania" jest systemu odniesienia są bardzo dokładne Zjednoczone Królestwo, ale nie poza nią. 
+Ponieważ kształtu ziemi jest nieprawidłowa, współrzędne geograficzne dane są reprezentowane w wielu systemach współrzędnych odwołania (znaki CR), każdy z ramek odniesienia i jednostki miary. Na przykład "National siatki z Brytania" jest systemu odniesienia jest dokładna Zjednoczone Królestwo, ale nie poza nią. 
 
 Najbardziej popularnym używany obecnie jest System geodezyjny World [WGS 84](http://earth-info.nga.mil/GandG/wgs84/). Urządzenia GPS, a wiele usług mapowania tym map programu Google i interfejsów API map Bing Użyj WGS 84. Azure DB rozwiązania Cosmos obsługuje indeksowanie i wyszukiwanie przy użyciu CRS WGS 84 w tylko dane geograficzne. 
 
@@ -223,7 +220,7 @@ Argumenty wielokąta ST_WITHIN może zawierać tylko jeden pierścień, czyli wi
 > 
 > 
 
-Azure DB rozwiązania Cosmos obsługuje również wykonywania kwerend odwrotny, oznacza to, możesz indeksu wierszy w usłudze Azure DB rozwiązania Cosmos lub wielokątów, a następnie wyszukać obszarów, które zawierają określony punkt. Ten wzorzec jest najczęściej używany w logistyki do identyfikowania na przykład gdy ciężarówka wprowadza lub pozostawia wyznaczonego obszaru. 
+Azure DB rozwiązania Cosmos obsługuje również wykonywania kwerend odwrotny, oznacza to, możesz indeksu wierszy w usłudze Azure DB rozwiązania Cosmos lub wielokątów, a następnie wyszukać obszarów, które zawierają określony punkt. Ten wzorzec jest najczęściej używany w logistyki do identyfikowania, na przykład podczas ciężarówka wprowadza lub pozostawia wyznaczonego obszaru. 
 
 **Zapytanie**
 
@@ -272,7 +269,7 @@ Funkcje te mogą służyć do sprawdzania poprawności wielokątów. Na przykła
     }]
 
 ### <a name="linq-querying-in-the-net-sdk"></a>Wykonywanie zapytania do zestawu .NET SDK LINQ
-Zestaw SDK .NET SQL również dostawców stub metody `Distance()` i `Within()` do użytku w wyrażenia LINQ. Dostawca SQL LINQ tłumaczy tych wywołań metody odpowiednik wywołania funkcji wbudowanej SQL (ST_DISTANCE i ST_WITHIN odpowiednio). 
+Zestaw SDK .NET SQL również dostawców stub metody `Distance()` i `Within()` do użytku w wyrażenia LINQ. Ta metoda wykonuje translację dostawcy LINQ do SQL wywołań odpowiednik wywołania funkcji wbudowanej SQL (ST_DISTANCE i ST_WITHIN odpowiednio). 
 
 Oto przykład kwerendy LINQ znajduje wszystkie dokumenty w kolekcji bazy danych Azure rozwiązania Cosmos, którego wartość "Lokalizacja" jest w ramach usługi radius 30 km określonego punktu za pomocą LINQ.
 
@@ -391,7 +388,7 @@ A Oto, jak można zmodyfikować istniejącą kolekcję przeprowadzać przestrzen
 > 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Nolearned, które zostały wcześniej o tym, jak rozpocząć pracę z obsługą dane geograficzne w usłudze Azure DB rozwiązania Cosmos, można:
+Teraz, kiedy znasz jak rozpocząć pracę z obsługą dane geograficzne w usłudze Azure DB rozwiązania Cosmos, obok można:
 
 * Rozpoczęcie kodowania z [przykłady kodu .NET dane geograficzne w witrynie GitHub](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)
 * Uzyskać ręce na z geograficzne zapytań w [Plac zabaw dla Azure rozwiązania Cosmos DB zapytań](http://www.documentdb.com/sql/demo#geospatial)

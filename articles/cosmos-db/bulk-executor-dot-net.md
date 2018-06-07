@@ -6,19 +6,20 @@ services: cosmos-db
 author: tknandu
 manager: kfile
 ms.service: cosmos-db
-ms.workload: data-services
-ms.topic: article
+ms.devlang: dotnet
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 608551090ce10e08ba517def644c72186a6f25e1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 0e8c5f9a848eaa1543ce9d58895b035e23d9f335
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34611164"
 ---
 # <a name="using-bulkexecutor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Za pomocą biblioteki BulkExecutor .NET do wykonywania operacji zbiorczej w usłudze Azure DB rozwiązania Cosmos
 
-W tym samouczku instrukcje na temat używania biblioteki BulkExecutor .NET DB rozwiązania Cosmos Azure do importowania i aktualizowania dokumentów do kolekcji bazy danych Azure rozwiązania Cosmos. Aby dowiedzieć się więcej o BulkExecutor biblioteki i jej można wykorzystać ogromnej przepływności i magazynu, zobacz [Przegląd biblioteki BulkExecutor](bulk-executor-overview.md) artykułu. Ten samouczek przeprowadzi użytkownika przykładowej aplikacji .NET, które zbiorczego importuje losowo generowany dokumentów do kolekcji bazy danych Azure rozwiązania Cosmos. Po zaimportowaniu, pokazuje sposób można zbiorczego aktualizacji importowanych danych, określając poprawki jako operacje do wykonania w polach określonego dokumentu.
+W tym samouczku instrukcje na temat używania biblioteki BulkExecutor .NET DB rozwiązania Cosmos Azure do importowania i aktualizowania dokumentów do kolekcji bazy danych Azure rozwiązania Cosmos. Aby dowiedzieć się więcej o BulkExecutor biblioteki i jej można wykorzystać ogromnej przepływności i magazynu, zobacz [Przegląd biblioteki BulkExecutor](bulk-executor-overview.md) artykułu. Ten samouczek przeprowadzi użytkownika przykładową aplikację .NET zbiorcze importów losowo generowany dokumentów w kolekcji usługi Azure DB rozwiązania Cosmos. Po zaimportowaniu, pokazuje sposób można zbiorczego aktualizacji importowanych danych, określając poprawki jako operacje do wykonania w polach określonego dokumentu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -38,7 +39,7 @@ Teraz załóżmy przełączyć się do pracy z kodem, pobierając niektóre przy
 git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started.git
 ```
 
-Sklonowanego repozytorium zawiera dwa przykłady "BulkImportSample" i "BulkUpdateSample". Można otworzyć jednego z przykładowych aplikacji, zaktualizuj parametry połączenia w pliku App.config z parametrów połączenia konta bazy danych Azure rozwiązania Cosmos, Skompiluj rozwiązanie i uruchom go. 
+Sklonowanego repozytorium zawiera dwa przykłady "BulkImportSample" i "BulkUpdateSample." Można otworzyć jednego z przykładowych aplikacji, zaktualizuj parametry połączenia w pliku App.config z parametrów połączenia konta bazy danych Azure rozwiązania Cosmos, Skompiluj rozwiązanie i uruchom go. 
 
 Aplikacja "BulkImportSample" generuje losowe dokumentów i zbiorczo importowane do bazy danych Azure rozwiązania Cosmos. Większość aplikacji "BulkUpdateSample" aktualizuje importowanych dokumenty, określając poprawki jako operacje do wykonania w polach określonego dokumentu. W kolejnych sekcjach należy przejrzeć kod w każdym z tych przykładowych aplikacji.
 
@@ -171,7 +172,7 @@ Należy wziąć pod uwagę następujące kwestie w celu poprawy wydajności podc
 
 * Zalecane jest uruchamianie pojedynczego obiektu BulkExecutor dla całej aplikacji w ramach jednej maszyny wirtualnej odpowiadający określonej kolekcji DB rozwiązania Cosmos.  
 
-* Ponieważ wykonanie operacji interfejsu API pojedynczego zbiorczego zużywa duże fragmentu komputer kliencki procesora CPU i sieci We/Wy. Dzieje się to przez wewnętrznie duplikowanie wielu zadań, należy unikać duplikowania wiele równoczesnych zadań w procesie aplikacji każdego wykonywanego interfejsu API operacji zbiorczej wywoływanych przez. Jeśli połączenie operacji interfejsu API pojedynczego zbiorczego uruchomionych na jednej maszynie wirtualnej jest nie może wykorzystać całą kolekcję przepływności (jeśli swojej kolekcji przepływność > 1 mln RU/s), lepiej utworzyć osobne maszyny wirtualne można wykonać jednocześnie zbiorcze wywołania operacji interfejsu API.  
+* Ponieważ wykonanie operacji interfejsu API pojedynczego zbiorczego zużywa duże fragmentu komputer kliencki procesora CPU i sieci We/Wy. Dzieje się to przez wewnętrznie duplikowanie wielu zadań, należy unikać duplikowania wiele równoczesnych zadań w procesie aplikacji każdego wykonywanego interfejsu API operacji zbiorczej wywoływanych przez. Jeśli połączenie operacji interfejsu API pojedynczego zbiorczego uruchomionych na jednej maszynie wirtualnej jest nie może wykorzystać całą kolekcję przepływności (jeśli swojej kolekcji przepływność > 1 mln RU/s), zaleca się tworzenie oddzielnych maszyn wirtualnych, które można wykonać jednocześnie zbiorczego wywołania operacji interfejsu API.  
 
 * Upewnij się, że InitializeAsync() jest wywoływana po tworzenia wystąpienia obiektu BulkExecutor można pobrać docelowa Mapa partycji kolekcji DB rozwiązania Cosmos.  
 

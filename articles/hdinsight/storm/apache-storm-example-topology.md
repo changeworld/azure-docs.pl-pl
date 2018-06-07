@@ -4,7 +4,7 @@ description: Listę przykładowych topologii Storm utworzone i przetestowane z s
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 ms.assetid: f9b1bdff-5928-4705-a76d-52fd200917cb
@@ -12,13 +12,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/21/2018
+ms.date: 05/30/2018
 ms.author: larryfr
-ms.openlocfilehash: f633797147b2090680ebb5ea11f60271addc7f52
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 429373a27ad9be23b986116182a4eda80bace7f7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626891"
 ---
 # <a name="example-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>Przykładowych topologii Storm i składniki Apache STORM w usłudze HDInsight
 
@@ -38,6 +39,11 @@ Poniżej znajduje się lista przykłady tworzone i obsługiwane przez firmę Mic
 | [Wzorce skalowalność do odczytywania z usługi Azure Event Hubs za pomocą Storm w usłudze HDInsight][d6c540e3] |Komunikat przepływności usługi Event Hubs bazy danych SQL |C#, Java |
 | [Python za pomocą Storm w usłudze HDInsight](apache-storm-develop-python-topology.md) |Składniki Python z topologią strumienia |Python |
 | [Kafka za pomocą Storm w usłudze HDInsight](../hdinsight-apache-storm-with-kafka.md) | Apache Storm odczytywanie i zapisywanie do Apache Kafka | Java |
+
+> [!WARNING]
+> Przykłady C# na tej liście pierwotnie zostały utworzone i przetestowane z usługi HDInsight opartej na systemie Windows i może nie działają prawidłowo z programem klastrów usługi HDInsight opartych na systemie Linux. Opartych na systemie Linux klastrów Użyj Mono do uruchomienia kodu platformy .NET i może mieć problemy ze zgodnością z platform i pakietów używane w przykładzie.
+>
+> Linux jest tylko system operacyjny używany w usłudze HDInsight w wersji 3.4 lub nowszej.
 
 ### <a name="next-steps"></a>Następne kroki
 

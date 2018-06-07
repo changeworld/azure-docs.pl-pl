@@ -1,26 +1,23 @@
 ---
-title: Wdrażanie zdalne rozwiązanie monitorowania - Azure | Dokumentacja firmy Microsoft
-description: W tym samouczku przedstawiono sposób udostępnienia zdalnego monitorowania akcelerator rozwiązań z azureiotsuite.com.
-services: iot-suite
-suite: iot-suite
+title: Wdrażanie rozwiązania monitorowania zdalnego - Azure | Dokumentacja firmy Microsoft
+description: Ten samouczek pokazuje, jak zainicjować akcelerator rozwiązań monitorowania zdalnego z azureiotsuite.com.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 05/01/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 8738fbfc29f6776a091cdc2b872eab88abd195cd
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: 42f6afcd3cb6880ba6c9cdd2a51e2a3e9ff2c2d4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626857"
 ---
-# <a name="deploy-the-remote-monitoring-solution-accelerator"></a>Wdrażanie zdalne akcelerator rozwiązań monitorowania
+# <a name="deploy-the-remote-monitoring-solution-accelerator"></a>Wdrażanie akcelerator rozwiązań monitorowania zdalnego
 
-W tym samouczku przedstawiono sposób udostępnienia zdalnego monitorowania akcelerator rozwiązań. Możesz wdrożyć rozwiązanie z azureiotsuite.com. Można także wdrożyć rozwiązanie przy użyciu interfejsu wiersza polecenia, aby dowiedzieć się więcej o tej opcji, zobacz [wdrażanie akcelerator rozwiązań, w wierszu polecenia](iot-accelerators-remote-monitoring-deploy-cli.md).
+Ten samouczek pokazuje, jak zainicjować akcelerator rozwiązań monitorowania zdalnego. Możesz wdrożyć rozwiązanie z azureiotsuite.com. Można także wdrożyć rozwiązanie przy użyciu interfejsu wiersza polecenia, aby dowiedzieć się więcej o tej opcji, zobacz [wdrażanie akcelerator rozwiązań, w wierszu polecenia](iot-accelerators-remote-monitoring-deploy-cli.md).
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -45,7 +42,7 @@ Przed wdrożeniem akcelerator rozwiązań do subskrypcji platformy Azure, musisz
 
     ![Wybierz monitorowania zdalnego](./media/iot-accelerators-remote-monitoring-deploy/remotemonitoring.png)
 
-1. Na **utworzyć monitorowania zdalnego rozwiązania** wprowadź **Nazwa rozwiązania** dla zdalnego monitorowania akcelerator rozwiązań.
+1. Na **utworzyć monitorowania zdalnego rozwiązania** wprowadź **Nazwa rozwiązania** dla Twojego akcelerator rozwiązań monitorowania zdalnego.
 
 1. Wybierz **podstawowe** lub **standardowe** wdrożenia. Jeśli wdrażasz Dowiedz się, jak to działa rozwiązania lub uruchomić pokaz, wybierz **podstawowe** opcję, aby zminimalizować koszty.
 
@@ -63,20 +60,20 @@ Aby uzyskać informacje dotyczące rozwiązywania problemów, zobacz [co robić,
 
 ## <a name="sign-in-to-the-solution-accelerator"></a>Zaloguj się do akcelerator rozwiązań
 
-Po zakończeniu procesu inicjowania obsługi administracyjnej można logowania się do zdalnego monitorowania akcelerator rozwiązań.
+Po zakończeniu procesu inicjowania obsługi administracyjnej można logowania się do sieci zdalne monitorowanie akcelerator rozwiązań.
 
-1. Na **elastycznie rozwiązań** wybierz nowe zdalnego rozwiązanie monitorowania:
+1. Na **elastycznie rozwiązań** wybierz nowe rozwiązanie monitorowania zdalnego:
 
     ![Wybierz nowe rozwiązanie](./media/iot-accelerators-remote-monitoring-deploy/choosenew.png)
 
-1. Można wyświetlić informacje dotyczące rozwiązania monitorowania zdalnego w panelu, który pojawi się. Wybierz **pulpit nawigacyjny rozwiązania** do nawiązania połączenia zdalnego rozwiązanie monitorowania.
+1. Można wyświetlić informacje dotyczące monitorowania zdalnego rozwiązania w panelu, który jest wyświetlany. Wybierz **pulpit nawigacyjny rozwiązania** do nawiązania połączenia zdalnego monitorowania rozwiązania.
 
     > [!NOTE]
     > Rozwiązanie monitorowania zdalnego można usunąć z tego panelu po zakończeniu pracy z nim.
 
     ![Panel rozwiązania](./media/iot-accelerators-remote-monitoring-deploy/solutionpanel.png)
 
-1. Zdalny pulpit nawigacyjny monitorowania rozwiązania wyświetla w przeglądarce.
+1. Pulpit nawigacyjny monitorowania zdalnego rozwiązania wyświetla w przeglądarce.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

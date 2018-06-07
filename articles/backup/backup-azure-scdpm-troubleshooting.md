@@ -1,24 +1,19 @@
 ---
-title: Rozwiązywanie problemów z programu System Center Data Protection Manager w usłudze Azure Backup | Dokumentacja firmy Microsoft
+title: Rozwiązywanie problemów z programu System Center Data Protection Manager z kopii zapasowej systemu Azure
 description: Rozwiązywanie problemów w System Center Data Protection Manager.
 services: backup
-documentationcenter: ''
 author: adigan
 manager: shreeshd
-editor: ''
-ms.assetid: 2d73c349-0fc8-4ca8-afd8-8c9029cb8524
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/24/2017
-ms.author: pullabhk;markgal;adigan
-ms.openlocfilehash: 8f8117b216dcbda217bc433e643090e8eb47cf57
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: adigan
+ms.openlocfilehash: d3776df8184523999433059e95bc72e1d3abb1c7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606447"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>Rozwiązywanie problemów z programem System Center Data Protection Manager
 

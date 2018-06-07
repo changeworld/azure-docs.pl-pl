@@ -7,14 +7,15 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 3a4026b56522da6c6efede4b8b7a542efc8a776d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7c526f65be5e4a3ea50de4603441e6184abf8edd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643621"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Dowiedz się, jak udostępnić nowi dzierżawcy i zarejestruj je w katalogu
 
@@ -144,7 +145,7 @@ Skrypt wdroży partię dodatkowych dzierżaw. Używa [szablonu usługi Azure Res
 
 * W [portalu Azure](https://portal.azure.com), przejdź do listy serwerów i Otwórz *tenants1* serwera. Wybierz **baz danych**i sprawdź, czy partii 17 dodatkowych baz danych jest teraz na liście.
 
-   ![Listy baz danych](media/saas-dbpertenant-provision-and-catalog/database-list.png)
+   ![Lista baz danych](media/saas-dbpertenant-provision-and-catalog/database-list.png)
 
 
 

@@ -7,13 +7,14 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/10/2018
+ms.date: 05/24/2018
 ms.author: heidist
-ms.openlocfilehash: b964f5c127d627ede6d3ff671ac695e1b33e4558
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c24cccde507873424e3c51d584f5cd094df2b876
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641173"
 ---
 # <a name="service-limits-in-azure-search"></a>Ograniczenia usługi w usłudze Azure Search
 Maksymalne zawartości w pamięci masowej, obciążenia i ilości indeksów, dokumentów, a inne obiekty są zależne od tego, czy użytkownik [udostępnić usługi Azure Search](search-create-service-portal.md) w **wolne**, **podstawowe**, lub **Standardowe** warstw cenowych.
@@ -92,13 +93,16 @@ Aby zachować rozmiar dokumentu w dół, pamiętaj, aby wykluczyć z systemem in
 
 Podstawowe usługi utworzone po późne 2017 mają zwiększenie limitu 15 indeksów, źródła danych, skillsets i indeksatorów.
 
+Operacje obciążający zasoby, takie jak analizy obrazu w indeksowanie obiektów blob platformy Azure lub przetwarzania języka naturalnego w wyszukiwaniu kognitywnych ma krótszą maksymalne czasy uruchomionych tak, aby mogli je spełnić inne zadania indeksowania. Jeśli zadania indeksowania nie można wykonać w ramach maksymalny dozwolony czas, spróbuj uruchomić go zgodnie z harmonogramem. Planista przechowuje informacje o stanie indeksowania. Jeśli zaplanowane zadanie indeksowania zostanie przerwana jakiejkolwiek przyczyny, indeksatora mogą odbierać którym ostatnio przerwał na następne zaplanowane uruchomienie.
+
 | Zasób | Bezpłatne&nbsp;<sup>1</sup> | Podstawowe&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- |
 | Maksymalna liczba indeksatorów |3 |5 lub 15|50 |200 |200 |ND |
 | Maksymalna liczba źródeł danych |3 |5 lub 15 |50 |200 |200 |ND |
 | Maksymalna skillsets <sup>4</sup> |3 |5 lub 15 |50 |200 |200 |ND |
 | Maksymalne obciążenie indeksowania dla wywołania |10 000 dokumentów |Ograniczone tylko dokumenty maksymalna |Ograniczone tylko dokumenty maksymalna |Ograniczone tylko dokumenty maksymalna |Ograniczone tylko dokumenty maksymalna |ND |
-| Maksymalny czas działania | 1 – 3 minuty |24 godziny |24 godziny |24 godziny |24 godziny |ND  |
+| Maksymalny czas działania <sup>5</sup> | 1 – 3 minuty |24 godziny |24 godziny |24 godziny |24 godziny |ND  |
+| Maksymalny czas wyszukiwania kognitywnych skillsets lub obiektu blob indeksowanie z analizy obrazu działania <sup>5</sup> | 3 – 10 minut |2 godziny |2 godziny |2 godziny |2 godziny |ND  |
 | Indeksator obiektów blob: rozmiar maksymalny obiektu blob, MB |16 |16 |128 |256 |256 |ND  |
 | Indeksator obiektów blob: Maksymalna liczba znaków zawartości wyodrębniony z obiektu blob |32,000 |64,000 |4 miliony |4 miliony |4 miliony |ND |
 
@@ -109,6 +113,8 @@ Podstawowe usługi utworzone po późne 2017 mają zwiększenie limitu 15 indeks
 <sup>3</sup> S3 HD services nie obsługują indeksatora.
 
 <sup>4</sup> maksymalnie 30 umiejętności na skillset.
+
+<sup>5</sup> obciążeń kognitywnych wyszukiwania i analizy obrazu w indeksowanie obiektów blob platformy Azure ma krótszą razy uruchomiona niż indeksowania zwykły tekst. Obraz analizy i przetwarzania języka naturalnego są w praktyce znacznym i zużywać nieproporcjonalnie ilości mocy obliczeniowej dostępne. Czas działania został zredukowanych do dać możliwość uruchamiania innych zadań w kolejce.  
 
 ## <a name="queries-per-second-qps"></a>Zapytania na sekundę (QPS)
 
@@ -123,7 +129,7 @@ Szacuje są bardziej przewidywalne podczas obliczania na usługi działające na
 * Maksymalny 32 pola w klauzuli $orderby
 * Rozmiar termin wyszukiwania maksymalna to 32 766 bajtów (32 KB minus 2 bajty) tekstu kodowany w formacie UTF-8
 
-<sup>1</sup> w usłudze Azure Search treści żądania podlega górny limit 16 MB, nakładające praktyczne limit na zawartość poszczególnych pól lub kolekcje, które w przeciwnym razie nie są ograniczone przez teoretycznego limity (zobacz [obsługiwane danych typy](https://msdn.microsoft.com/library/azure/dn798938.aspx) uzyskać więcej informacji dotyczących ograniczenia i pola kompozycji).
+<sup>1</sup> w usłudze Azure Search treści żądania podlega górny limit 16 MB, nakładające praktyczne limit na zawartość poszczególnych pól lub kolekcje, które w przeciwnym razie nie są ograniczone przez teoretycznego limity (zobacz [obsługiwane danych typy](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) uzyskać więcej informacji dotyczących ograniczenia i pola kompozycji).
 
 ## <a name="api-response-limits"></a>Limity odpowiedzi interfejsu API
 * Maksymalna 1000 zwrócone na stronę wyników wyszukiwania

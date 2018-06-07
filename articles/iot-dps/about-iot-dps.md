@@ -1,22 +1,19 @@
 ---
-title: "Omówienie usługi inicjowania obsługi administracyjnej urządzeniu Centrum IoT Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano, inicjowanie obsługi administracyjnej urządzeń na platformie Azure z usługą inicjowania obsługi urządzeń i Centrum IoT"
-services: iot-dps
-keywords: 
+title: Omówienie usługi inicjowania obsługi administracyjnej urządzeniu Centrum IoT Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, inicjowanie obsługi administracyjnej urządzeń na platformie Azure z usługą inicjowania obsługi urządzeń i Centrum IoT
 author: nberdy
 ms.author: nberdy
 ms.date: 12/05/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: 
-manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: 108ae4a66d2c13906cd0892b6c8ee5b20c3ca605
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+services: iot-dps
+manager: briz
+ms.openlocfilehash: 45f47a553f94da2759c4db2b79c8ef5a1b42b8e8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630247"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Inicjowania obsługi urządzeń przy użyciu usługi inicjowania obsługi urządzeń Centrum IoT Azure
 Microsoft Azure oferuje bogaty zestaw usługi w chmurze publicznej zintegrowane wszystkie potrzeby rozwiązania IoT. Usługa udostępniania urządzeń Centrum IoT to usługa pomocnika do Centrum IoT, umożliwiającą bezobsługową, w czasie inicjowania obsługi administracyjnej Centrum IoT w prawo bez udziału człowieka, umożliwiając klientom udostępniania milionów urządzeń bezpieczne i skalowalne sposób.

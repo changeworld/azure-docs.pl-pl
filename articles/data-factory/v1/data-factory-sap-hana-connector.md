@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6052dae1321e8ac8238ec2994886de30db27551e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0149b15fdfbd9fd7a3c9f9c099db9d505d27d1c5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623064"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Przenoszenie danych z SAP HANA przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -61,7 +62,7 @@ Poniższa tabela zawiera opis specyficzne dla usługi SAP HANA połączone eleme
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
 serwer | Nazwa serwera, na którym znajduje się z wystąpieniem SAP HANA. Jeśli serwer używa portu dostosowane, określ `server:port`. | ciąg | Yes
-authenticationType | Typ uwierzytelniania. | Ciąg. "Basic" lub "Windows" | Yes 
+Typ authenticationType | Typ uwierzytelniania. | Ciąg. "Basic" lub "Windows" | Yes 
 nazwa użytkownika | Nazwa użytkownika, który ma dostęp do serwera SAP | ciąg | Yes
 hasło | Hasło dla użytkownika. | ciąg | Yes
 gatewayName | Nazwa bramy, która powinna być używana przez usługi fabryka danych nawiązywania połączenia z lokalnym wystąpieniem SAP HANA. | ciąg | Yes
@@ -288,17 +289,17 @@ TINYINT | Bajtów
 SMALLINT | Int16
 INT | Int32
 BIGINT | Int64
-RZECZYWISTE | Kawaler/panna
-O PODWÓJNEJ PRECYZJI | Kawaler/panna
+RZECZYWISTE | Pojedyncze
+O PODWÓJNEJ PRECYZJI | Pojedyncze
 DECIMAL | Decimal
 WARTOŚĆ LOGICZNA | Bajtów
 VARCHAR | Ciąg
 NVARCHAR | Ciąg
 CLOB | Byte[]
 ALPHANUM | Ciąg
-BLOB | Byte[]
+OBIEKT BLOB | Byte[]
 DATE | DateTime
-CZAS | TimeSpan
+CZAS | Zakres czasu
 ZNACZNIK CZASU | DateTime
 SECONDDATE | DateTime
 

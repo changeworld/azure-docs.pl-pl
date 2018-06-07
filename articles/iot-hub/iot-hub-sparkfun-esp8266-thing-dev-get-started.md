@@ -1,25 +1,20 @@
 ---
 title: ESP8266 do chmury — Połącz Sparkfun ESP8266 operacją deweloperów do Centrum IoT Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skonfigurować i deweloperów operacją ESP8266 Sparkfun nawiązać połączenia z Centrum IoT Azure go do przesyłania danych do platformy w chmurze platformy Azure, w tym samouczku.
-services: iot-hub
-documentationcenter: ''
 author: rangv
-manager: timlt
-tags: ''
-keywords: ''
-ms.assetid: 587fe292-9602-45b4-95ee-f39bba10e716
+manager: ''
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 4/11/2018
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
+ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: e6837d0312217d8e27e3639b8220f5016a2505a6
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 75ff53d5be29af08bb8e9c1b41f61040e5710cf7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635325"
 ---
 # <a name="connect-sparkfun-esp8266-thing-dev-to-azure-iot-hub-in-the-cloud"></a>Sparkfun ESP8266 operacją deweloperów nawiązać połączenia z Centrum IoT Azure w chmurze
 

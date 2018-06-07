@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: 5e71714f94cf148895585e8de88eaf995f0791fb
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 181a1b8ad6403045264ddc0bd502273f36df3eff
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638334"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Formaty i kodeki narzędzia Media Encoder Standard
 Ten dokument zawiera listę typowych importu i eksportu formatów plików, które można używać z Media Encoder Standard.
@@ -75,6 +76,7 @@ Pomoc techniczna dla mapowania kanału jawne/dostarczone przez użytkownika będ
 | Serwer Proxy ProRes firmy Apple |Yes |
 | Apple ProRes 4444 |Yes |
 | XQ 4444 ProRes firmy Apple |Yes |
+| HEVC/H.265| Główny profil|
 
 ## <a name="input-audio-codecs"></a>Dane wejściowe Audio koderów-dekoderów
 | Dane wejściowe Audio koderów-dekoderów | Obsługiwane |

@@ -4,7 +4,7 @@ description: Wskazówki krok po kroku dotyczące wdrażania loggregator Foundry 
 services: virtual-machines-linux
 documentationcenter: ''
 author: ningk
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: b900a42196eedab89af8e55d71a336ed7adc45a4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 687356b60ad0bbc469d67e071ce3bccc8b61ebd7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609005"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Wdrażanie końcówki Analiza dzienników Azure do monitorowania systemu chmury Foundry
 
@@ -55,9 +56,9 @@ Przed skonfigurowaniem UAA klient wiersza polecenia, upewnij się, że zainstalo
 
 ### <a name="3-create-a-log-analytics-workspace-in-azure"></a>3. Tworzenie obszaru roboczego analizy dzienników na platformie Azure
 
-Można utworzyć obszaru roboczego analizy dzienników, ręcznie lub za pomocą szablonu. Po zakończeniu wdrażania końcówki załadować wstępnie skonfigurowane widoki OMS i alerty.
+Można utworzyć obszaru roboczego analizy dzienników, ręcznie lub za pomocą szablonu. Szablon zostanie wdrożona ustawień wstępnie skonfigurowane widoki OMS kluczowy wskaźnik wydajności i alertów w konsoli OMS. 
 
-Aby ręcznie utworzyć obszaru roboczego:
+#### <a name="to-create-the-workspace-manually"></a>Aby ręcznie utworzyć obszaru roboczego:
 
 1. W portalu Azure Wyszukaj na liście usług w portalu Azure Marketplace, a następnie wybierz analizy dzienników.
 2. Wybierz **Utwórz**, a następnie wybierz opcje dla następujących elementów:
@@ -70,7 +71,22 @@ Aby ręcznie utworzyć obszaru roboczego:
 
 Aby uzyskać więcej informacji, zobacz [wprowadzenie do analizy dzienników](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started).
 
-Alternatywnie można utworzyć obszaru roboczego analizy dzienników przy użyciu szablonu OMS. Ta metoda szablonu ładuje wstępnie skonfigurowane widoki OMS i alerty automatycznie. Aby uzyskać więcej informacji, zobacz [rozwiązania Azure Log Analytics dla chmury Foundry](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-cloudfoundry-solution).
+#### <a name="to-create-the-oms-workspace-through-the-oms-monitoring-template-from-azure-market-place"></a>Aby utworzyć obszar roboczy OMS przy użyciu szablonu monitorowania OMS z handlową platformy Azure:
+
+1. Otwórz Azure portal.
+2. Kliknij znak "+" lub "Utwórz zasób" w lewym górnym rogu.
+3. Typ "chmury Foundry" w oknie wyszukiwania wybierz "OMS Foundry monitorowania rozwiązanie chmury".
+4. Foundry chmury OMS monitorowania strony front szablonu rozwiązanie po załadowaniu, kliknij przycisk Utwórz, aby uruchomić bloku szablonu.
+5. Wprowadź wymagane parametry:
+    * **Subskrypcja**: Wybierz subskrypcję platformy Azure dla obszaru roboczego OMS, zazwyczaj taki sam jak wdrożenia chmury Foundry.
+    * **Grupa zasobów**: Wybierz istniejącą grupę zasobów lub Utwórz nową obszarem roboczym pakietu OMS.
+    * **Lokalizacja grupy zasobów**: Wybierz lokalizację, w grupie zasobów.
+    * **OMS_Workspace_Name**: Wprowadź nazwę obszaru roboczego, jeśli obszar roboczy nie istnieje, zostanie utworzona przez szablon nowego.
+    * **OMS_Workspace_Region**: Wybierz lokalizację, w obszarze roboczym.
+    * **OMS_Workspace_Pricing_Tier**: Wybierz obszar roboczy OMS jednostki SKU. Zobacz [cennik wskazówki](https://azure.microsoft.com/pricing/details/log-analytics/) odwołania.
+    * **Postanowienia prawne**: kliknij przepisami, następnie kliknij przycisk "Utwórz", aby zaakceptować określenie prawne.
+- Po wszystkie parametry są określone, kliknij przycisk Utwórz, aby wdrożyć szablon. Po zakończeniu wdrożenia stan będzie wyświetlany na karcie powiadomienia.
+
 
 ## <a name="deploy-the-nozzle"></a>Wdrażanie końcówkę
 
@@ -78,9 +94,9 @@ Istnieje kilka różnych sposobów wdrażania końcówkę: jako Kafelek PCF lub 
 
 ### <a name="deploy-the-nozzle-as-a-pcf-ops-manager-tile"></a>Wdrażanie końcówkę jako Kafelek PCF Operations Manager
 
-Jeśli PCF został wdrożony za pomocą programu Operations Manager, wykonaj kroki, aby [zainstalować i skonfigurować końcówkę dla PCF](http://docs.pivotal.io/partners/azure-log-analytics-nozzle/installing.html). Końcówkę jest instalowany jako Kafelek z programem Operations Manager.
+Wykonaj kroki, aby [zainstalować i skonfigurować końcówkę Analiza dzienników Azure dla PCF](http://docs.pivotal.io/partners/azure-log-analytics-nozzle/installing.html). Jest to metoda uproszczona, automatycznie skonfiguruje i push końcówkę PCF Ops kafelka menedżera. 
 
-### <a name="deploy-the-nozzle-as-a-cf-application"></a>Wdróż końcówkę jako aplikację CF
+### <a name="deploy-the-nozzle-manually-as-a-cf-application"></a>Ręczne wdrażanie końcówkę jako aplikacja CF
 
 Jeśli nie używasz PCF Operations Manager, należy wdrożyć końcówkę jako aplikacja. W poniższych sekcjach opisano tego procesu.
 
@@ -163,6 +179,10 @@ Upewnij się, że jest uruchomiona aplikacja końcówki OMS.
 
 ## <a name="view-the-data-in-the-oms-portal"></a>Wyświetlanie danych w portalu OMS
 
+Jeśli wdrożono OMS monitorowania rozwiązania za pomocą szablonu rynku, przejdź do portalu Azure i znajduje się w zakresie OMS. Rozwiązanie znajduje się w grupie zasobów określone w szablonie. Kliknij przycisk rozwiązaniu, przeglądanie "Konsoli OMS", są wyświetlane wstępnie skonfigurowane widoki, z górnym Foundry chmury systemu kluczowych wskaźników wydajności, dane aplikacji, alertów i metryki kondycji maszyny Wirtualnej. 
+
+Jeśli utworzono obszar roboczy OMS ręcznie, wykonaj poniższe kroki, aby tworzyć widoki oraz alerty:
+
 ### <a name="1-import-the-oms-view"></a>1. Zaimportuj widok OMS
 
 W portalu OMS, przejdź do **Widok projektanta** > **importu** > **Przeglądaj**i wybierz jeden z plików omsview. Na przykład wybierz *Foundry.omsview chmury*i Zapisz widoku. Teraz kafelka jest wyświetlany na **omówienie** strony. Wybierz, aby wyświetlić wizualizowanego metryki.
@@ -180,7 +200,7 @@ Możesz [tworzyć alerty](https://docs.microsoft.com/azure/log-analytics/log-ana
 | Type=CF_ValueMetric_CL Origin_s=bbs Name_s="Domain.cf-apps"                   | Liczba wyników < 1   | **BBS. Aplikacje Domain.cf** wskazuje, czy domena aplikacji cf jest aktualny. Oznacza to, że żądania aplikacji CF z kontrolerem chmury są synchronizowane z bbs. LRPsDesired (AIs potrzeby Diego) do wykonania. Żadne dane otrzymane oznacza, że aplikacje cf domeny nie jest aktualny w określone okno czasu. |
 | Typ = CF_ValueMetric_CL Origin_s = rep Name_s = UnhealthyCell Value_d > 1            | Liczba wyników > 0   | Dla komórek Diego 0 oznacza, że działa prawidłowo, a 1 oznacza złej kondycji. Wykrycie wielu komórek Diego złej kondycji w określone okno czasu, należy ustawić alert. |
 | Type=CF_ValueMetric_CL Origin_s="bosh-hm-forwarder" Name_s="system.healthy" Value_d=0 | Liczba wyników > 0 | 1 oznacza, że system jest w dobrej kondycji, a wartość 0 oznacza, że system nie jest w dobrej kondycji. |
-| Type=CF_ValueMetric_CL Origin_s=route_emitter Name_s=ConsulDownMode Value_d>0 | Liczba wyników > 0   | Konsul emituje okresowo jej stan kondycji. 0 oznacza, że system jest w dobrej kondycji i 1 oznacza nadajnika trasy wykryje, że Konsul jest wyłączony. |
+| Typ = CF_ValueMetric_CL Origin_s = route_emitter Name_s = ConsulDownMode Value_d > 0 | Liczba wyników > 0   | Konsul emituje okresowo jej stan kondycji. 0 oznacza, że system jest w dobrej kondycji i 1 oznacza nadajnika trasy wykryje, że Konsul jest wyłączony. |
 | Type=CF_CounterEvent_CL Origin_s=DopplerServer (Name_s="TruncatingBuffer.DroppedMessages" or Name_s="doppler.shedEnvelopes") Delta_d>0 | Liczba wyników > 0 | Delta liczba komunikatów porzuconych celowo przez Doppler'a z powodu braku Wstecz. |
 | Typ = CF_LogMessage_CL SourceType_s = LGR MessageType_s = błąd                      | Liczba wyników > 0   | Emituje Loggregator **LGR** wskazująca problemy podczas procesu rejestracji. Przykładem takiego problemu jest dane wyjściowe komunikatu dziennika jest za duża. |
 | Typ = CF_ValueMetric_CL Name_s = slowConsumerAlert                               | Liczba wyników > 0   | Gdy końcówkę odbiera alert konsumenta wolne od loggregator, wysyła **slowConsumerAlert** ValueMetric do analizy dzienników. |
@@ -226,6 +246,6 @@ Azure końcówki analizy dziennika jest otwarta pochodzenia. Wyślij pytania i o
 
 ## <a name="next-step"></a>Następny krok
 
-Oprócz metryki Foundry chmury objęte końcówkę umożliwia agent pakietu OMS uzyskać wgląd w dane operacyjne poziom maszyny Wirtualnej (np. Syslog, wydajność, alerty, spis). Agent pakietu OMS jest instalowany jako dodatek Bosh, aby CF maszyn wirtualnych.
+Z PCF2.0 metryki wydajności maszyny Wirtualnej są przenoszone do końcówki Analiza dzienników Azure przez usługę przesyłania dalej systemu metryki oraz zintegrowane w obszarze roboczym pakietu OMS. Nie są już potrzebne agent pakietu OMS dla metryki wydajności maszyny Wirtualnej. Jednak do zbierania informacji Syslog można nadal używać agent pakietu OMS. Agent pakietu OMS jest instalowany jako dodatek Bosh, aby CF maszyn wirtualnych. 
 
 Aby uzyskać więcej informacji, zobacz [wdrożyć agenta pakietu OMS z danym wdrożeniem chmury Foundry](https://github.com/Azure/oms-agent-for-linux-boshrelease).

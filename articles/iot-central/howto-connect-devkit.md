@@ -1,18 +1,19 @@
 ---
 title: Podłącz urządzenie zestaw deweloperski do aplikacji Azure IoT centralnej | Dokumentacja firmy Microsoft
 description: Deweloper urządzenia jak Podłącz urządzenie z systemem zestaw deweloperski IoT MXChip do aplikacji Azure IoT centralnej.
-services: iot-central
-author: tanmaybhagwat
+author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/16/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 4c7074e5e7d3858919f3fc17005fea4f8dce1560
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: af5cfc2f598893328bc8d4acc979f6d777114f99
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628797"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie z systemem zestaw deweloperski IoT MXChip do aplikacji Azure IoT centralnej
 
@@ -29,7 +30,7 @@ Aplikacji utworzone na podstawie **Devkits próbki** szablon aplikacji obejmuje 
 
 ### <a name="telemetry-measurements"></a>Pomiary telemetrii
 
-| Nazwa pola     | Jednostki  | Minimalne | Maksimum | Po przecinku |
+| Nazwa pola     | Jednostki  | Minimalne | Maksimum | Miejsca dziesiętne |
 | -------------- | ------ | ------- | ------- | -------------- |
 | wilgotność       | %      | 0       | 100     | 0              |
 | Temp           | C     | -40     | 120     | 0              |
@@ -48,7 +49,7 @@ Aplikacji utworzone na podstawie **Devkits próbki** szablon aplikacji obejmuje 
 
 Ustawienia numeryczne
 
-| Nazwa wyświetlana | Nazwa pola | Jednostki | Po przecinku | Minimalne | Maksimum | Początkowa |
+| Nazwa wyświetlana | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimalne | Maksimum | Początkowa |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Napięcia      | setVoltage | V | 0              | 0       | 240     | 0       |
 | Bieżący      | setCurrent | Amps  | 0              | 0       | 100     | 0       |
@@ -200,4 +201,4 @@ Aby uzyskać informacje na temat modyfikowania, kompilacji i przekazać przykła
 
 Teraz, kiedy znasz sposób podłączania urządzeń zestaw deweloperski do aplikacji Azure IoT centralnej, Oto Sugerowane następne kroki:
 
-* [Przygotowanie i połącz Pi malina](howto-connect-raspberry-pi-python.md)
+* [Przygotowywanie i łączenie urządzenia Raspberry Pi](howto-connect-raspberry-pi-python.md)

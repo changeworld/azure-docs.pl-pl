@@ -1,25 +1,20 @@
 ---
-title: 'Kopia zapasowa Azure: Przygotowanie do tworzenia kopii zapasowych maszyn wirtualnych | Dokumentacja firmy Microsoft'
+title: 'Kopia zapasowa Azure: Przygotowanie do tworzenia kopii zapasowych maszyn wirtualnych'
 description: Upewnij się, że środowisko jest przygotowane do tworzenia kopii zapasowych maszyn wirtualnych na platformie Azure.
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
 keywords: Tworzenie kopii zapasowych; Tworzenie kopii zapasowej;
-ms.assetid: e87e8db2-b4d9-40e1-a481-1aa560c03395
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 3/1/2018
-ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: 489875e595c9f28a1e30cbb29cde078f1b716f7f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: markgal
+ms.openlocfilehash: 3727fab8f5d19e8f9178c9029177a2c1479422ae
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606640"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Przygotowywanie środowiska do tworzenia kopii zapasowych maszyn wirtualnych wdrożonych przez program Resource Manager
 
@@ -59,6 +54,7 @@ Aby przygotować środowisko, należy zrozumieć następujące ograniczenia:
 * Dla wybranych sieci, po skonfigurowaniu opcji i ustawień sieci wirtualnej dla konta magazynu, wybierz **usług firmy Microsoft, aby uzyskać dostęp do tego konta magazynu Zaufane Zezwalaj** jako wyjątek do włączenia usługi Kopia zapasowa Azure dostęp do konta magazynu w sieci z ograniczeniami. Odzyskiwanie na poziomie elementu nie jest obsługiwana dla kont magazynu w sieci z ograniczeniami.
 * Można tworzyć kopie zapasowe maszyn wirtualnych we wszystkich regionach publicznej platformy Azure. (Zobacz [Lista kontrolna](https://azure.microsoft.com/regions/#services) obsługiwanych regionów.) Jeśli obecnie jest obsługiwany region, którego szukasz, nie zostanie wyświetlony na liście rozwijanej podczas tworzenia magazynu.
 * Przywracanie kontrolera domeny (DC) maszyny Wirtualnej, która jest częścią konfiguracji kontrolera domeny na wielu jest obsługiwane tylko za pomocą programu PowerShell. Aby dowiedzieć się więcej, zobacz [Przywracanie kontrolera domeny, kontrolera domeny na wielu](backup-azure-arm-restore-vms.md#restore-domain-controller-vms).
+* Migawki na dysku zapisu włączone klawiszy skrótów nie jest obsługiwane. To ograniczenie blokuje możliwość usługi Kopia zapasowa Azure wykonywania spójna migawka aplikacji wszystkich dysków maszyny wirtualnej.
 * Przywracanie maszyn wirtualnych, które mają następujące konfiguracje sieciowe specjalne jest obsługiwane tylko za pomocą programu PowerShell. Maszyny wirtualne utworzone za pomocą przepływu pracy przywracania w interfejsie użytkownika nie będą miały te konfiguracje sieci po zakończeniu operacji przywracania. Aby dowiedzieć się więcej, zobacz [przywracanie maszyn wirtualnych z konfiguracjami sieci specjalne](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations).
   * Maszyny wirtualne znajdujące się w konfiguracji usługi równoważenia obciążenia (wewnętrznych i zewnętrznych)
   * Maszyny wirtualne z wielu zastrzeżonych adresów IP
@@ -174,7 +170,9 @@ Jeśli masz problemy z zarejestrowaniem maszyny wirtualnej, zobacz poniższe inf
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>Zainstaluj agenta maszyny Wirtualnej na maszynie wirtualnej
 Rozszerzenia kopii zapasowej do pracy Azure [agenta maszyny Wirtualnej](../virtual-machines/extensions/agent-windows.md) musi być zainstalowany na maszynie wirtualnej Azure. Jeśli maszyna wirtualna została utworzona z portalu Azure Marketplace, agent maszyny Wirtualnej jest już obecny w maszynie wirtualnej. 
 
-Poniżej przedstawiono informacje dotyczące sytuacji, w którym są *nie* przy użyciu maszyny Wirtualnej utworzone w witrynie Azure Marketplace. Na przykład w przypadku migracji maszyny Wirtualnej z lokalnego centrum danych. W takim przypadku agenta maszyny Wirtualnej musi być zainstalowany, aby chronić maszyny wirtualnej.
+Poniżej przedstawiono informacje dotyczące sytuacji, w którym są *nie* przy użyciu maszyny Wirtualnej utworzone w witrynie Azure Marketplace. **Na przykład w przypadku migracji maszyny Wirtualnej z lokalnego centrum danych. W takim przypadku agenta maszyny Wirtualnej musi być zainstalowany, aby chronić maszyny wirtualnej.**
+
+**Uwaga**: po zainstalowaniu agenta maszyny Wirtualnej, należy również użyć programu Azure PowerShell do aktualizacji właściwości ProvisionGuestAgent będzie wówczas traktował Azure maszyny Wirtualnej jest zainstalowany agent. 
 
 Jeśli masz problemy z tworzenia kopii zapasowej maszyny Wirtualnej Azure, skorzystaj z poniższej tabeli, aby sprawdzić, czy agent maszyny Wirtualnej platformy Azure jest poprawnie zainstalowane na maszynie wirtualnej. W tabeli znajdują się dodatkowe informacje na temat agenta maszyny Wirtualnej systemu Windows i maszyn wirtualnych systemu Linux.
 

@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/04/2018
+ms.date: 05/27/2018
 ms.author: bwren
-ms.openlocfilehash: e4e2edeb6703e8c55a16b488175fbcdb0dfe56a9
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 28523ce3671a8104d91f04575b3e88647dde16f4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637076"
 ---
 # <a name="custom-logs-in-log-analytics"></a>Niestandardowe dzienniki w analizy dzienników
 Źródło danych niestandardowe dzienniki w analizy dzienników umożliwia zbieranie zdarzeń z plików tekstowych na komputerach z systemami Windows i Linux. Wiele aplikacji rejestrowania informacji w plikach tekstowych zamiast standardowych usług rejestrowania, takich jak dziennika zdarzeń systemu Windows lub Syslog.  Po zebraniu danych, można przeanalizować każdego rekordu podczas logowania do poszczególnych pól przy użyciu [pola niestandardowe](log-analytics-custom-fields.md) funkcji analizy dzienników.
@@ -41,7 +42,13 @@ Pliki dziennika mają być zbierane musi odpowiadać następujących kryteriów.
 ## <a name="defining-a-custom-log"></a>Definiowanie niestandardowego dziennika
 Poniższa procedura umożliwia zdefiniowanie niestandardowego pliku dziennika.  Przewiń do końca w tym artykule przewodnik próby dodania dziennik niestandardowy.
 
-### <a name="step-1-open-the-custom-log-wizard"></a>Krok 1. Otwórz kreatora dziennik niestandardowy
+### <a name="step-1-enable-custom-logs-preview"></a>Krok 1. Włącz podgląd dzienników niestandardowych
+1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
+2. W okienku subskrypcje analizy dzienników, wybierz obszar roboczy, a następnie wybierz **portalu OMS** kafelka.<br><br> ![Przycisk Wyszukiwanie w dziennikach](media/log-analytics-data-sources-custom-logs/azure-portal-01.png)<br><br> 
+3. Po nastąpi przekierowanie do portalu OMS, kliknij Kafelek ustawienia po prawej stronie górnej części strony.<br><br> ![Portalu OMS opcji ustawień](media/log-analytics-data-sources-custom-logs/oms-portal-settings-option.png)<br><br> 
+4. Z **ustawienia** wybierz pozycję **funkcje w wersji zapoznawczej** i na stronie wybierz **włączyć** dzienników niestandardowych.    
+
+### <a name="step-2-open-the-custom-log-wizard"></a>Krok 2. Otwórz kreatora dziennik niestandardowy
 Kreator niestandardowy dziennika jest uruchamiana w portalu Azure i można zdefiniować nowego dziennika niestandardowego do zbierania.
 
 1. W portalu Azure wybierz **analizy dzienników** > obszar roboczy > **Zaawansowane ustawienia**.
@@ -49,7 +56,7 @@ Kreator niestandardowy dziennika jest uruchamiana w portalu Azure i można zdefi
 3. Domyślnie wszystkie zmiany konfiguracji są automatycznie przypisany do wszystkich agentów.  Dla agentów systemów Linux plik konfiguracji jest wysyłany do Fluentd modułów zbierających dane.  Jeśli chcesz zmodyfikować ten plik ręcznie na każdym agenta systemu Linux, usuń zaznaczenie pola *Zastosuj poniższą konfigurację na moich maszynach z systemem Linux*.
 4. Kliknij przycisk **Dodaj +** aby otworzyć Kreatora dziennika niestandardowego.
 
-### <a name="step-2-upload-and-parse-a-sample-log"></a>Krok 2. Przekazywanie i przeanalizować przykładowy dziennik
+### <a name="step-3-upload-and-parse-a-sample-log"></a>Krok 3. Przekazywanie i przeanalizować przykładowy dziennik
 Możesz uruchomić przekazywanie próbce dziennika niestandardowego.  Kreator przeanalizować i wyświetlane wpisy w tym pliku można sprawdzić poprawności.  Analiza dzienników użyje ogranicznik, który określisz do identyfikowania każdego rekordu.
 
 **Nowy wiersz** jest domyślnym ogranicznikiem i używany dla plików dziennika, które mają pojedynczy wpis wierszu.  Jeśli wiersz rozpoczyna się od daty i godziny w jednym z formatów dostępne, a następnie można określić **sygnatury czasowej** ogranicznik obsługującej wpisów, obejmujące więcej niż jeden wiersz.
@@ -63,7 +70,7 @@ Jeśli jest używany ogranicznik sygnatury czasowej, właściwość TimeGenerate
 4. Zmień ogranicznik, który służy do identyfikowania nowy rekord i wybierz ogranicznik najlepiej identyfikujący rekordy w pliku dziennika.
 5. Kliknij przycisk **Dalej**.
 
-### <a name="step-3-add-log-collection-paths"></a>Krok 3. Dodaj ścieżki zbierania dzienników
+### <a name="step-4-add-log-collection-paths"></a>Krok 4. Dodaj ścieżki zbierania dzienników
 Należy zdefiniować co najmniej jedną ścieżkę na agencie, gdzie można znaleźć dziennika niestandardowego.  Można podać albo określoną ścieżkę i nazwę pliku dziennika lub z symbolem wieloznacznym dla nazwy można określić ścieżkę.  Obejmuje to obsługę aplikacji, które tworzą nowy plik, każdego dnia lub gdy jeden plik osiągnie określony rozmiar.  Można też podać wiele ścieżek dla jednego pliku dziennika.
 
 Na przykład aplikacja może utworzyć pliku dziennika każdego dnia z datą uwzględniony w nazwie, jak log20100316.txt. Szablon dla takich dziennika może być *dziennika\*.txt* która powinna zostać zastosowana do dowolnego pliku dziennika, po zastosowaniu do nazw schematu.
@@ -81,14 +88,14 @@ Poniższa tabela zawiera przykłady prawidłowych do określenia różnych plika
 2. Wpisz ścieżkę i kliknij przycisk **+** przycisku.
 3. Należy powtórzyć dla żadnych dodatkowych ścieżek.
 
-### <a name="step-4-provide-a-name-and-description-for-the-log"></a>Krok 4. Podaj nazwę i opis dziennika
+### <a name="step-5-provide-a-name-and-description-for-the-log"></a>Krok 5. Podaj nazwę i opis dziennika
 Określona nazwa będzie służyć do typu dziennika, jak opisano powyżej.  Zawsze zakończy się z _CL odróżniający go jako dziennik niestandardowy.
 
 1. Wpisz nazwę dziennika.  **\_CL** sufiks jest teraz udostępniana automatycznie.
 2. Dodaj opcjonalny **opis**.
 3. Kliknij przycisk **dalej** można zapisać definicji dziennik niestandardowy.
 
-### <a name="step-5-validate-that-the-custom-logs-are-being-collected"></a>Krok 5. Zweryfikuj, że są zbierane dzienników niestandardowych
+### <a name="step-6-validate-that-the-custom-logs-are-being-collected"></a>Krok 6. Zweryfikuj, że są zbierane dzienników niestandardowych
 Może potrwać do godziny początkowe dane z nowego dziennika niestandardowego pojawią się w analizy dzienników.  Rozpocznie się zbieranie wpisy z dzienników odnaleziona w ścieżce określonej od momentu zdefiniowania dziennik niestandardowy.  Wpisy przekazane podczas tworzenia niestandardowego dziennika nie zostaną zachowane, ale będzie zbierać już istniejących wpisów w plikach dziennika, które klient zlokalizuje.
 
 Po uruchomieniu analizy dzienników zbierane z dziennika niestandardowego swoje rekordy będą dostępne z wyszukiwania dziennika.  Użyj nazwy, który udostępnił dziennik niestandardowy jako **typu** w zapytaniu.
@@ -98,7 +105,7 @@ Po uruchomieniu analizy dzienników zbierane z dziennika niestandardowego swoje 
 >
 >
 
-### <a name="step-6-parse-the-custom-log-entries"></a>Krok 6. Przeanalizować wpisów dziennika niestandardowego
+### <a name="step-7-parse-the-custom-log-entries"></a>Krok 7. Przeanalizować wpisów dziennika niestandardowego
 Wpis dziennika całego będą przechowywane w jedną właściwość o nazwie **RawData**.  Prawdopodobnie należy rozdzielić różne informacje zawarte w każdej pozycji do poszczególnych właściwości przechowywanych w rekordzie.  Można to zrobić przy użyciu [pola niestandardowe](log-analytics-custom-fields.md) funkcji analizy dzienników.
 
 Szczegółowe informacje na temat analizowania wpis dziennika niestandardowego nie znajdują się w tym miejscu.  Zapoznaj się z [pola niestandardowe](log-analytics-custom-fields.md) tych informacji w dokumentacji.

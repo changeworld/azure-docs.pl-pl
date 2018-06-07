@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: b2369f9468c54f10d01203841b6d7ba44b7ba2de
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f8e6ad4b23eeaf46cccac9c8ff9d41f71511129d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642856"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Jak elementy Reliable Actors korzystają z platformy usługi Service Fabric
 W tym artykule opisano, jak Reliable Actors działają na platformie Azure Service Fabric. Wywołuje Reliable Actors uruchomienia w ramach obsługiwanej w implementacji usługi stanowej niezawodnej *usługi aktora*. Usługa aktora zawiera składniki niezbędne do zarządzania cyklem życia i komunikat podczas wysyłania do sieci złośliwych użytkowników:
@@ -41,9 +42,6 @@ W usługach niezawodnej usługi dziedziczy `StatefulService` klasy. Ta klasa jes
 * Usługa tworzenia kopii zapasowej i przywracania.
 * Udostępnione funkcji dla wszystkich podmiotów, na przykład wyłącznika.
 * Zdalne wywoływanie procedur w samej usługi aktora i na każdym poszczególnych aktora.
-
-> [!NOTE]
-> Stanowe usług nie są obecnie obsługiwane w języku Java/Linux.
 
 Aby uzyskać więcej informacji, zobacz [implementowania funkcji poziomu usług w usłudze aktora](service-fabric-reliable-actors-using.md).
 

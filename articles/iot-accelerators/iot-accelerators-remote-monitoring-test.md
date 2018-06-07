@@ -1,26 +1,23 @@
 ---
 title: Symulacji urządzenia w rozwiązaniu monitorowania zdalnego - Azure | Dokumentacja firmy Microsoft
 description: W tym samouczku przedstawiono sposób symulator urządzeń za pomocą zdalnego monitorowania akcelerator rozwiązań.
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 01/15/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: c10d983ea6b864d21f4589a3cbfdd5def39ac753
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: d8a528265acc3e0bee24da6c1b6130082815b9fd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628263"
 ---
 # <a name="create-a-new-simulated-device"></a>Utwórz nowe urządzenie symulowane
 
-Ten samouczek pokazuje, jak dostosować mikrousługi symulator urządzeń w zdalnym monitorowania akcelerator rozwiązań. Aby pokazać możliwości symulator urządzeń dwa scenariusze w tym samouczku jest używany w aplikacji Contoso IoT.
+Ten samouczek przedstawia sposób dostosowywania mikrousługi symulator urządzeń w akcelerator rozwiązań monitorowania zdalnego. Aby pokazać możliwości symulator urządzeń dwa scenariusze w tym samouczku jest używany w aplikacji Contoso IoT.
 
 Poniższe wideo przedstawia Omówienie opcji dostosowywania mikrousługi symulator urządzeń:
 
@@ -72,7 +69,7 @@ W poniższej tabeli przedstawiono początkowy stan urządzenia:
 
 W drugi scenariusz, należy dodać nowy typ danych telemetrycznych do firmy Contoso jego istniejącą **Chłodnica** urządzenia.
 
-W tym samouczku przedstawiono sposób symulator urządzeń za pomocą zdalnego monitorowania akcelerator rozwiązań:
+W tym samouczku przedstawiono sposób symulator urządzeń za pomocą akcelerator rozwiązań monitorowania zdalnego:
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -82,7 +79,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Dodawanie nowego typu urządzenia do pulpitu nawigacyjnego
 > * Wysyłać dane telemetryczne niestandardowych z istniejącym typem urządzenia
 
-Dostępny poniżej film wideo przedstawia wskazówki nawiązywanie symulowanych i rzeczywistego urządzenia zdalnego rozwiązanie monitorowania:
+Poniższe wideo przedstawia przewodnik połączenie symulowanych i rzeczywistych urządzeń do monitorowania zdalnego rozwiązania:
 
 >[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Part-38-Customizing-Azure-IoT-Suite-solution-and-connect-a-real-device/Player]
 
@@ -90,7 +87,7 @@ Dostępny poniżej film wideo przedstawia wskazówki nawiązywanie symulowanych 
 
 Aby użyć tego samouczka, potrzebne są:
 
-* Wdrożone wystąpienie zdalnego rozwiązanie monitorowania w ramach subskrypcji platformy Azure. Jeśli jeszcze tego nie wdrożono rozwiązanie monitorowania zdalnego jeszcze, należy wykonać [wdrożyć zdalnego monitorowania akcelerator rozwiązań](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md) samouczka.
+* Wdrożone wystąpienie rozwiązanie monitorowania zdalnego w ramach subskrypcji platformy Azure. Jeśli jeszcze tego nie wdrożono rozwiązanie monitorowania zdalnego jeszcze, należy wykonać [wdrażanie akcelerator rozwiązań monitorowania zdalnego](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md) samouczka.
 
 * Program Visual Studio 2017. Jeśli nie masz programu Visual Studio 2017 r zainstalowany, możesz pobrać bezpłatną [Visual Studio Community](https://www.visualstudio.com/free-developer-offers/) edition.
 
@@ -102,15 +99,15 @@ Aby użyć tego samouczka, potrzebne są:
 
 ## <a name="prepare-your-development-environment"></a>Przygotowywanie środowiska projektowego
 
-Wykonaj następujące zadania w celu przygotowania środowiska deweloperskiego do dodawania nowych symulowane urządzenie do zdalnego rozwiązanie monitorowania:
+Wykonaj następujące zadania w celu przygotowania środowiska deweloperskiego do dodawania nowych symulowane urządzenie do monitorowania zdalnego rozwiązania:
 
 ### <a name="configure-ssh-access-to-the-solution-virtual-machine-in-azure"></a>Konfigurowanie dostępu SSH z maszyną wirtualną rozwiązania na platformie Azure
 
-Podczas tworzenia rozwiązania monitorowania zdalnego na [www.azureiotsuite.com](https://www.azureiotsuite.com), wybrana nazwa rozwiązania. Nazwa rozwiązania staje się nazwa grupy zasobów platformy Azure, która zawiera różne wdrożone zasoby używane przez rozwiązanie. W poniższych poleceniach zastosowano grupę zasobów o nazwie **Contoso-01**, należy zastąpić **Contoso-01** z nazwą grupy zasobów.
+Podczas tworzenia rozwiązania monitorowania zdalnego na [www.azureiotsolutions.com](https://www.azureiotsolutions.com), wybrana nazwa rozwiązania. Nazwa rozwiązania staje się nazwa grupy zasobów platformy Azure, która zawiera różne wdrożone zasoby używane przez rozwiązanie. W poniższych poleceniach zastosowano grupę zasobów o nazwie **Contoso-01**, należy zastąpić **Contoso-01** z nazwą grupy zasobów.
 
 Następujące polecenia, użyj `az` polecenie [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest). Zainstaluj na komputerze deweloperskim 2.0 interfejsu wiersza polecenia Azure, lub użyj [powłoki chmury](https://docs.microsoft.com/azure/cloud-shell/overview) w [portalu Azure](http://portal.azure.com). Azure CLI 2.0 jest wstępnie zainstalowane w powłoce chmury.
 
-1. Aby sprawdzić nazwę grupy zasobów, która zawiera monitorowania zasobów zdalnych, uruchom następujące polecenie:
+1. Aby sprawdzić nazwę grupy zasobów, która zawiera zasoby zdalne monitorowanie, uruchom następujące polecenie:
 
     ```sh
     az group list | grep "name"
@@ -161,7 +158,7 @@ Następujące polecenia, użyj `az` polecenie [Azure CLI 2.0](https://docs.micro
     ssh azureuser@public-ip-address
     ```
 
-    Masz teraz dostęp do powłoki w maszynę wirtualną, która uruchamia kontenery Docker w zdalnym rozwiązanie monitorowania. Aby wyświetlić uruchomionych kontenery, użyj następującego polecenia:
+    Masz teraz dostęp do powłoki w maszynę wirtualną, która uruchamia kontenery Docker w rozwiązaniu monitorowania zdalnego. Aby wyświetlić uruchomionych kontenery, użyj następującego polecenia:
 
     ```sh
     docker ps
@@ -220,7 +217,7 @@ W tym samouczku pracować z **symulacji urządzenia** i **adaptera magazynu** pr
     git clone https://github.com/Azure/device-simulation-dotnet.git
     ```
 
-    Usługi symulacji urządzenia w rozwiązaniu do monitorowania zdalnego umożliwia zmianę typów wbudowanych symulowane urządzenie i aby utworzyć nowy symulowane typów urządzeń. Typy urządzeń niestandardowych służy do testowania zachowanie zdalnego rozwiązanie monitorowania przed nawiązaniem połączenia urządzenia fizycznego.
+    Usługi symulacji urządzenia w rozwiązaniu monitorowania zdalnego umożliwia zmianę typów wbudowanych symulowane urządzenie i aby utworzyć nowy symulowane typów urządzeń. Typy urządzeń niestandardowych służy do testowania zachowanie rozwiązanie monitorowania zdalnego przed nawiązaniem połączenia urządzenia fizycznego.
 
 1. Klonowanie wersja .NET **adaptera magazynu** repozytorium, uruchom następujące polecenie:
 
@@ -228,7 +225,7 @@ W tym samouczku pracować z **symulacji urządzenia** i **adaptera magazynu** pr
     git clone https://github.com/Azure/pcs-storage-adapter-dotnet.git
     ```
 
-    Usługa symulacji urządzeń używa usługi karty magazynu się połączyć z usługą rozwiązania Cosmos bazy danych na platformie Azure. Rozwiązanie monitorowania zdalnego przechowuje dane konfiguracji symulowane urządzenie w bazie danych DB rozwiązania Cosmos.
+    Usługa symulacji urządzeń używa usługi karty magazynu się połączyć z usługą rozwiązania Cosmos bazy danych na platformie Azure. To rozwiązanie monitorowanie zdalnego przechowuje dane konfiguracji symulowane urządzenie w bazie danych DB rozwiązania Cosmos.
 
 ### <a name="run-the-storage-adapter-service-locally"></a>Uruchom usługę karty magazynu lokalnie
 
@@ -246,7 +243,7 @@ Usługa symulacji urządzeń używa usługi karty magazynu do łączenia z bazą
 
 1. Pozostaw karty Usługa magazynu działa lokalnie dopiero po ukończeniu samouczka.
 
-Masz teraz wszystko w miejscu, a wszystko będzie gotowe rozpocząć dodawanie nowego typu symulowane urządzenie do zdalnego rozwiązanie monitorowania.
+Masz teraz wszystko w miejscu, a wszystko będzie gotowe rozpocząć dodawanie nowego typu symulowane urządzenie do rozwiązania monitorowania zdalnego.
 
 ## <a name="create-a-simulated-device-type"></a>Tworzenie typu symulowane urządzenie
 
@@ -478,23 +475,23 @@ Teraz można przystąpić do testowania nowego typu symulowane żarówka lokalni
 
 1. Aby sprawdzić, czy dwa symulowanego urządzenia są podłączone do Centrum IoT, otwórz Azure portal w przeglądarce.
 
-1. Przejdź do Centrum IoT w grupie zasobów, zawierającą zdalnego rozwiązanie monitorowania.
+1. Przejdź do Centrum IoT w grupie zasobów, zawierającą rozwiązanie monitorowania zdalnego.
 
 1. W **monitorowanie** wybierz **metryki**. Sprawdź, czy liczba **urządzeń podłączonych** jest dwa:
 
     ![Liczba połączonych urządzeń](./media/iot-accelerators-remote-monitoring-test/connecteddevices.png)
 
-1. W przeglądarce przejdź do **pulpitu nawigacyjnego** zdalnego rozwiązania do monitorowania. W panelu dane telemetryczne w **pulpitu nawigacyjnego**, wybierz pozycję **temperatury**. Wyświetla temperatury dla wszystkich urządzeń symulowane na wykresie:
+1. W przeglądarce przejdź do **pulpitu nawigacyjnego** rozwiązania do monitorowania zdalnego. W panelu dane telemetryczne w **pulpitu nawigacyjnego**, wybierz pozycję **temperatury**. Wyświetla temperatury dla wszystkich urządzeń symulowane na wykresie:
 
     ![Dane telemetryczne temperatury](./media/iot-accelerators-remote-monitoring-test/telemetry.png)
 
-Masz teraz symulacji urządzenia żarówka uruchomionej na komputerze lokalnym. Następnym krokiem jest aby wdrożyć kod symulatora zaktualizowane do maszyny wirtualnej z systemem zdalnym mikrousług monitorowania na platformie Azure.
+Masz teraz symulacji urządzenia żarówka uruchomionej na komputerze lokalnym. Następnym krokiem jest aby wdrożyć kod symulatora zaktualizowane do maszyny wirtualnej, która działa mikrousług monitorowania zdalnego w systemie Azure.
 
 Przed kontynuowaniem, można zatrzymać debugowania symulacji urządzenia i projekty karty magazynu w programie Visual Studio.
 
 ### <a name="deploy-the-updated-simulator-to-the-cloud"></a>Zaktualizowano symulatora wdrażać w chmurze
 
-Uruchom mikrousług w zdalnym rozwiązanie monitorowania w kontenerach docker. Kontenery znajdują się w maszynie wirtualnej rozwiązania na platformie Azure. W tej sekcji omówiono następujące zagadnienia:
+Uruchom mikrousług w rozwiązaniu Monitorowanie zdalne w kontenerach docker. Kontenery znajdują się w maszynie wirtualnej rozwiązania na platformie Azure. W tej sekcji omówiono następujące zagadnienia:
 
 * Utwórz nowy obraz docker symulacji urządzenia.
 * Przekaż obraz do repozytorium Centrum docker.
@@ -584,7 +581,7 @@ W następujących krokach założono, że masz repozytorium o nazwie **żarówka
 
 Teraz wykonano kroki, aby zainstalować zaktualizowaną wersję usługi symulacji urządzeń do monitorowania zdalnego rozwiązania.
 
-W przeglądarce przejdź do **pulpitu nawigacyjnego** zdalnego rozwiązania do monitorowania. W panelu dane telemetryczne w **pulpitu nawigacyjnego**, wybierz pozycję **temperatury**. Wyświetla temperatury dwóch symulowane urządzeń na wykresie:
+W przeglądarce przejdź do **pulpitu nawigacyjnego** rozwiązania do monitorowania zdalnego. W panelu dane telemetryczne w **pulpitu nawigacyjnego**, wybierz pozycję **temperatury**. Wyświetla temperatury dwóch symulowane urządzeń na wykresie:
 
 ![Dane telemetryczne temperatury](./media/iot-accelerators-remote-monitoring-test/telemetry.png)
 
@@ -678,7 +675,7 @@ Następujących krokach przedstawiono sposób dodawania nowego **temperatury wew
 
 Aby przetestować zaktualizowane **Chłodnica** typu urządzenia, najpierw uruchom lokalną kopię **symulacji urządzenia** usługi, aby przetestować danego typu urządzenia działa zgodnie z oczekiwaniami. Po przetestowane i debugować danego typu urządzenia zaktualizowane lokalnie, należy odbudować kontenera i wdrożenie **symulacji urządzenia** usługi na platformie Azure.
 
-Po uruchomieniu **symulacji urządzenia** usługi lokalnie, wysyła dane telemetryczne do zdalnego rozwiązanie monitorowania. Na **urządzeń** strony, można udostępnić wystąpienia typu zaktualizowane.
+Po uruchomieniu **symulacji urządzenia** usługi lokalnie, wysyła dane telemetryczne do monitorowania zdalnego rozwiązania. Na **urządzeń** strony, można udostępnić wystąpienia typu zaktualizowane.
 
 Do testowania i debugowania zmiany lokalnie, zawiera Poprzednia sekcja [lokalnie typ urządzenia żarówka testu](#test-the-lightbulb-device-type-locally).
 
@@ -701,9 +698,9 @@ W tym samouczku przedstawiono należy jak do:
 > * Dodawanie nowego typu urządzenia do pulpitu nawigacyjnego
 > * Wysyłać dane telemetryczne niestandardowych z istniejącym typem urządzenia
 
-Teraz uzyskanych jak dostosować usługę symulacji urządzenia. Sugerowane następnym krokiem jest, aby dowiedzieć się jak [fizyczne urządzenie podłączone do zdalnego rozwiązanie monitorowania](iot-accelerators-connecting-devices-node.md).
+Teraz uzyskanych jak dostosować usługę symulacji urządzenia. Sugerowane następnym krokiem jest, aby dowiedzieć się jak [fizyczne urządzenie podłączone do rozwiązania monitorowania zdalnego](iot-accelerators-connecting-devices-node.md).
 
-Aby uzyskać więcej informacji o deweloperów o zdalnego rozwiązanie monitorowania zobacz:
+Aby uzyskać więcej informacji o deweloperów o rozwiązaniu monitorowania zdalnego Zobacz:
 
 * [Przewodnik informacyjny dla deweloperów](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [Przewodnik po rozwiązywaniu problemów dla deweloperów](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)

@@ -1,24 +1,19 @@
 ---
-title: "Zarządzanie kopii zapasowych maszyn wirtualnych wdrożonych Resource Manager | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zarządzanie nimi oraz monitorowanie kopii zapasowych maszyn wirtualnych wdrożonych przez Menedżera zasobów"
+title: Zarządzanie kopii zapasowych maszyn wirtualnych wdrożonych przez Menedżera zasobów
+description: Dowiedz się, jak zarządzanie nimi oraz monitorowanie kopii zapasowych maszyn wirtualnych wdrożonych przez Menedżera zasobów
 services: backup
-documentationcenter: 
 author: trinadhk
 manager: shreeshd
-editor: 
-ms.assetid: f3050283-d60f-472d-b464-cb844e70d67e
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2016
-ms.author: trinadhk;markgal
-ms.openlocfilehash: f4613746a427e6987366eeb46605524cd3aacbe2
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: trinadhk
+ms.openlocfilehash: 4d45db6ba6354f85c3ed67561751720b6f6f4b77
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606345"
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>Zarządzanie kopiami zapasowymi maszyny wirtualnej platformy Azure
 
@@ -193,7 +188,7 @@ Aby wznowić ochronę dla maszyny wirtualnej
     ![Pomyślnie chronionej maszyny Wirtualnej](./media/backup-azure-manage-vms/success-message.png)
 
 ## <a name="delete-backup-data"></a>Usuwanie danych kopii zapasowej
-Można usunąć danych kopii zapasowej skojarzonego z maszyną wirtualną podczas **kopii zapasowej Zatrzymaj** zadania, lub w dowolnym momencie po zakończeniu tworzenia kopii zapasowej zadania zakończone. Alternatywą może być korzystne oczekiwania dni lub tygodnie przed usunięciem punktów odzyskiwania. W odróżnieniu od przywracanie punktów odzyskiwania, podczas usuwania danych kopii zapasowej, nie można wybrać punktów odzyskiwania określone do usunięcia. Jeśli chcesz usunąć dane kopii zapasowej, należy usunąć wszystkie punkty odzyskiwania skojarzone z elementem.
+Można usunąć danych kopii zapasowej skojarzonego z maszyną wirtualną podczas **kopii zapasowej Zatrzymaj** zadania, lub w dowolnym momencie po zakończeniu tworzenia kopii zapasowej zadania zakończone. Wstrzymanie się z usunięciem punktów odzyskiwania przez określoną liczbę dni lub tygodni może być nawet korzystne. W odróżnieniu od przywracania punktów odzyskiwania podczas usuwania danych kopii zapasowej nie można wybrać punktów odzyskiwania do usunięcia. Jeśli zdecydujesz się usunąć dane kopii zapasowych, wszystkie skojarzone z tym elementem punkty odzyskiwania zostaną usunięte.
 
 W poniższej procedurze przyjęto zadanie tworzenia kopii zapasowej maszyny wirtualnej została zatrzymana lub wyłączona. Gdy zadanie tworzenia kopii zapasowej jest wyłączone, **Wznów wykonywanie kopii zapasowej** i **kopii zapasowej Delete** opcje są dostępne na pulpicie nawigacyjnym elementu magazynu.
 
@@ -203,11 +198,11 @@ Aby usunąć dane kopii zapasowej na maszynie wirtualnej z *kopii zapasowej wył
 
 1. Na [pulpitem nawigacyjnym magazynu elementu](backup-azure-manage-vms.md#open-a-vault-item-dashboard), kliknij przycisk **usunięcia kopii zapasowej**.
 
-    ![Typu maszyny Wirtualnej](./media/backup-azure-manage-vms/delete-backup-buttom.png)
+    ![Typ maszyny wirtualnej](./media/backup-azure-manage-vms/delete-backup-buttom.png)
 
     **Usunąć dane z kopii zapasowej** zostanie otwarty blok.
 
-    ![Typu maszyny Wirtualnej](./media/backup-azure-manage-vms/delete-backup-blade.png)
+    ![Typ maszyny wirtualnej](./media/backup-azure-manage-vms/delete-backup-blade.png)
 2. Wpisz nazwę elementu, aby potwierdzić, że chcesz usunąć punktów odzyskiwania.
 
     ![Zatrzymaj weryfikacji](./media/backup-azure-manage-vms/item-verification-box.png)

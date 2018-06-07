@@ -1,24 +1,19 @@
 ---
-title: " Usuwanie magazynu usług odzyskiwania na platformie Azure | Dokumentacja firmy Microsoft "
-description: "W tym artykule opisano sposób usuwania magazynu usług odzyskiwania. Artykuł zawiera kroki rozwiązywania problemów, spróbuj usunąć magazynu, ale nie."
+title: Usuwanie magazynu usług odzyskiwania platformy Azure "
+description: W tym artykule opisano sposób usuwania magazynu usług odzyskiwania. Artykuł zawiera kroki rozwiązywania problemów, spróbuj usunąć magazynu, ale nie.
 services: service-name
-documentationcenter: dev-center-name
 author: markgalioto
 manager: carmonm
-editor: 
-ms.assetid: 5fa08157-2612-4020-bd90-f9e3c3bc1806
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 12/20/2017
-ms.author: markgal;trinadhk
-ms.openlocfilehash: 4f4a92159b01b197984130c15195419e1b166fd3
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: markgal
+ms.openlocfilehash: 844a70aa6fe003c6ad5816aaec9c32db9104c620
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605344"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Usuwanie magazynu usługi Recovery Services
 W tym artykule opisano sposób usuwania magazynu usług odzyskiwania w portalu Azure. Jeśli masz magazyny kopii zapasowych, ich został przekonwertowany na magazyny usług odzyskiwania.   
@@ -34,7 +29,7 @@ Jeśli masz już magazyn usług odzyskiwania, Otwórz, przejdź do kroku drugim.
 
 1. Otwórz Azure portal, a z poziomu pulpitu nawigacyjnego magazynu, które chcesz usunąć.
 
-   Jeśli nie masz magazyn usług odzyskiwania przypięty do pulpitu nawigacyjnego, w menu centralnym kliknij **więcej usług** i na liście zasobów wpisz **usług odzyskiwania**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Kliknij przycisk **Magazyny usług odzyskiwania**.
+   Jeśli nie masz magazyn usług odzyskiwania przypięty do pulpitu nawigacyjnego, w menu centralnym kliknij **więcej usług** i na liście zasobów wpisz **usług odzyskiwania**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Kliknij pozycję **Magazyny usługi Recovery Services**.
 
    ![Tworzenie magazynu usługi Recovery Services — krok 1](./media/backup-azure-delete-vault/open-recovery-services-vault.png) <br/>
 
@@ -68,7 +63,7 @@ Jeśli masz już magazyn usług odzyskiwania, Otwórz, przejdź do kroku drugim.
     Opcjonalnie możesz podać przyczyny, dlaczego usuwasz danych i Dodaj komentarze. Po kliknięciu **zatrzymać kopii zapasowej**, Zezwalaj Usuń zadanie do wykonania przed próbą usunięcia w magazynie. Aby sprawdzić, czy zadanie zostało zakończone, sprawdź komunikaty Azure ![usunąć danych kopii zapasowej](./media/backup-azure-delete-vault/messages.png). <br/>
     Po zakończeniu zadania, usługa wysyła komunikat: Zatrzymano proces tworzenia kopii zapasowej i dane kopii zapasowej zostały usunięte.
 
-    d. Po usunięciu elementu z listy na **kopii zapasowej elementów** menu, kliknij przycisk **Odśwież** pozostałych elementów w magazynie.
+    c. Po usunięciu elementu z listy na **kopii zapasowej elementów** menu, kliknij przycisk **Odśwież** pozostałych elementów w magazynie.
 
       ![Usuwanie danych kopii zapasowej](./media/backup-azure-delete-vault/empty-items-list.png)
 
@@ -165,4 +160,4 @@ Jeśli masz wiele serwerów zarejestrowanych w magazynie, może być trudne do z
     ![Lista serwerów zarządzania kopiami zapasowymi](./media/backup-azure-delete-vault/list-of-backup-management-servers.png)
 5. Aby usunąć serwer z listy, kliknij prawym przyciskiem myszy nazwę serwera, a następnie kliknij przycisk **usunąć**.
     **Usunąć** zostanie otwarte menu.
-6. Na **usunąć** menu, podaj nazwę serwera. Jeśli jest to nazwa długo, można skopiować i wkleić go z listy serwerów zarządzania kopiami zapasowymi. Następnie kliknij przycisk **usunąć**.  
+6. Na **usunąć** menu, podaj nazwę serwera. Jeśli jest to nazwa długo, można skopiować i wkleić go z listy serwerów zarządzania kopiami zapasowymi. Następnie kliknij pozycję **Usuń**.  

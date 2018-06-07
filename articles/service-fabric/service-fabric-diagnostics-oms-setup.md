@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 4/03/2018
 ms.author: srrengar
-ms.openlocfilehash: af94e3270493f6967c4f8c484170751c098bf181
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 25db5075e2099dee354c4c5ef999b26c8e0c50c9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642669"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>Konfigurowanie analizy dzienników dla klastra
 
@@ -50,7 +51,7 @@ Jeśli korzystasz z systemu Windows, wykonaj następujące kroki, aby nawiązać
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>Połączyć się z klastrem obszaru roboczego analizy dzienników 
 
-1. Obszar roboczy musi być połączona z danych diagnostycznych z klastra. Przejdź do grupy zasobów, w której utworzono rozwiązania analizy sieci szkieletowej usług. Wybierz **ServiceFabric\<nameOfWorkspace\>**  i przejdź do strony Przegląd. Z tego miejsca można zmienić ustawienia rozwiązania, ustawienia obszaru roboczego i uzyskać dostęp do portalu OMS.
+1. Obszar roboczy musi być połączona z danych diagnostycznych z klastra. Przejdź do grupy zasobów, w której utworzono rozwiązania analizy sieci szkieletowej usług. Wybierz **ServiceFabric\<nameOfWorkspace\>**  i przejdź do strony Przegląd. Z tego miejsca można zmienić ustawienia rozwiązania, ustawień obszaru roboczego i dostęp do obszaru roboczego OMS.
 
 2. W menu nawigacji po lewej stronie w obszarze **źródeł danych obszaru roboczego**, wybierz pozycję **dzienników kont magazynu**.
 

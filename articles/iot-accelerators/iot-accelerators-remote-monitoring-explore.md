@@ -1,28 +1,25 @@
 ---
 title: Wprowadzenie do zdalnego rozwiązanie monitorowania - Azure | Dokumentacja firmy Microsoft
 description: W tym samouczku używana symulowane scenariusze wprowadzenie zdalnego monitorowania akcelerator rozwiązań. Te scenariusze są tworzone podczas wdrażania zdalnego monitorowania akcelerator rozwiązań po raz pierwszy.
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 05/01/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: c8a055dd0dc8e2d9a9a64b492fb134caaacda489
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: e354e110df8d168e153c50de6f7aad08dd416464
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627811"
 ---
-# <a name="explore-the-capabilities-of-the-remote-monitoring-solution-accelerator"></a>Poznaj możliwości zdalnego monitorowania akcelerator rozwiązań
+# <a name="explore-the-capabilities-of-the-remote-monitoring-solution-accelerator"></a>Poznaj możliwości akcelerator rozwiązań monitorowania zdalnego
 
-Ten samouczek pokazuje kluczowych możliwości zdalnego rozwiązanie monitorowania. Aby dodać tych funkcji, samouczka ilustrację typowych scenariuszy klienta przy użyciu symulowane aplikacji IoT firmy o nazwie Contoso.
+W tym samouczku przedstawiono kluczowe możliwości monitorowania zdalnego rozwiązania. Aby dodać tych funkcji, samouczka ilustrację typowych scenariuszy klienta przy użyciu symulowane aplikacji IoT firmy o nazwie Contoso.
 
-Samouczek ułatwia zrozumienie typowych scenariuszach IoT zdalnego rozwiązanie monitorowania udostępnia poza pole.
+Samouczek ułatwia zrozumienie typowych scenariuszach IoT rozwiązanie monitorowania zdalnego udostępnia poza pole.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -33,24 +30,24 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Organizowanie zasobów
 > * Zatrzymywanie i uruchamianie symulowanego urządzenia
 
-Poniższe wideo przedstawia przewodnik zdalnego rozwiązanie monitorowania:
+Poniższe wideo przedstawia wskazówki rozwiązania monitorowania zdalnego:
 
 >[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Part-28-An-introduction-to-Azure-IoT-through-the-new-Remote-Monitoring-Preconfigured-Solution/Player]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do ukończenia tego samouczka należy wdrożone wystąpienie zdalnego rozwiązanie monitorowania w ramach subskrypcji platformy Azure.
+Do ukończenia tego samouczka należy wdrożone wystąpienie rozwiązanie monitorowania zdalnego w ramach subskrypcji platformy Azure.
 
-Jeśli jeszcze tego nie wdrożono rozwiązanie monitorowania zdalnego jeszcze, należy wykonać [wdrożyć zdalnego monitorowania akcelerator rozwiązań](iot-accelerators-remote-monitoring-deploy.md) samouczka.
+Jeśli jeszcze tego nie wdrożono rozwiązanie monitorowania zdalnego jeszcze, należy wykonać [wdrażanie akcelerator rozwiązań monitorowania zdalnego](iot-accelerators-remote-monitoring-deploy.md) samouczka.
 
 ## <a name="the-contoso-sample-iot-deployment"></a>Wdrożenie IoT przykładowej firmy Contoso
 
-Umożliwia wdrożenie IoT przykładowej firmy Contoso zrozumieć podstawowe scenariusze zdalnego monitorowania rozwiązanie zapewnia poza pole. Te scenariusze są oparte na rzeczywistych wdrożeń IoT. Prawdopodobnie wybierzesz opcję Dostosuj zdalnego rozwiązanie monitorowania do własnych wymagań, ale przykładowej firmy Contoso pomaga Poznaj podstawy.
+Można użyć wdrożenia IoT przykładowej firmy Contoso zrozumieć podstawowe scenariusze monitorowania zdalnego rozwiązanie zapewnia poza pole. Te scenariusze są oparte na rzeczywistych wdrożeń IoT. Prawdopodobnie wybierzesz opcję dostosować do własnych wymagań rozwiązanie monitorowania zdalnego, ale przykładowej firmy Contoso pomaga Poznaj podstawy.
 
 > [!NOTE]
 > Jeśli interfejsu wiersza polecenia jest używane do wdrażania akcelerator rozwiązań, plik `deployment-{your deployment name}-output.json` zawiera informacje dotyczące wdrażania, takie jak adres URL wdrożonej przykładu.
 
-Przykładowe firmy Contoso inicjuje zestaw symulowanego urządzenia i reguł, które działają na nich. Po zrozumieniu podstawowe scenariusze można kontynuować eksploracji więcej funkcji rozwiązania w [wykonaj zaawansowanego monitorowania urządzeń przy użyciu zdalnego rozwiązanie monitorowania](iot-accelerators-remote-monitoring-monitor.md).
+Przykładowe firmy Contoso inicjuje zestaw symulowanego urządzenia i reguł, które działają na nich. Po zrozumieniu podstawowe scenariusze można kontynuować eksploracji więcej funkcji rozwiązania w [wykonaj zaawansowanego monitorowania urządzeń za pomocą rozwiązania monitorowania zdalnego](iot-accelerators-remote-monitoring-monitor.md).
 
 Contoso to firma, która zarządza szerokiej gamy zasobów w różnych środowiskach. Contoso jest planowane używanie możliwości aplikacji opartych na chmurze IoT zdalnie monitorować i zarządzać wielu zasobów z scentralizowane aplikacji. Poniższe sekcje zawierają Podsumowanie konfiguracji początkowej próbki Contoso:
 
@@ -136,7 +133,7 @@ Na koniec Potwierdź wartości danych telemetrycznych z Chłodnica na normalne.
 
 ## <a name="update-device-firmware"></a>Zaktualizuj oprogramowanie układowe urządzenia
 
-Contoso jest testowania nowego typu urządzenia, w tym polu. W ramach cyklu testowania musisz upewnij się, że poprawnie pracy aktualizacji oprogramowania układowego tego urządzenia. Poniższe kroki pokazują, jak używać zdalnego rozwiązanie monitorowania aktualizacji oprogramowania układowego na wielu urządzeniach.
+Contoso jest testowania nowego typu urządzenia, w tym polu. W ramach cyklu testowania musisz upewnij się, że poprawnie pracy aktualizacji oprogramowania układowego tego urządzenia. Poniższe kroki pokazują, jak używać rozwiązania zdalne monitorowanie aktualizacji oprogramowania układowego na wielu urządzeniach.
 
 Aby wykonywać zadania zarządzania niezbędne urządzenia, należy użyć **urządzeń** strony. Rozpocznij od filtrowania dla wszystkich urządzeń prototypowania:
 
@@ -253,7 +250,7 @@ W tym samouczku przedstawiono do:
 > * Organizowanie zasobów
 > * Zatrzymywanie i uruchamianie symulowanego urządzenia
 
-Teraz, gdy rozwiązanie monitorowania zdalnego zostały zbadane, sugerowane następnych krokach zostaną Dowiedz się więcej o zaawansowanych funkcji zdalnego rozwiązanie monitorowania:
+Teraz, gdy rozwiązanie monitorowania zdalnego zostały zbadane, sugerowane następnych krokach zostaną funkcje zaawansowane rozwiązanie monitorowania zdalnego:
 
 * [Monitorowanie urządzeń](./iot-accelerators-remote-monitoring-monitor.md).
 * [Zarządzaj swoimi urządzeniami](./iot-accelerators-remote-monitoring-manage.md).

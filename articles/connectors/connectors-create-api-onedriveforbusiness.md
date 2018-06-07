@@ -1,25 +1,22 @@
 ---
-title: OneDrive dla firm | Dokumentacja firmy Microsoft
-description: "Tworzenie aplikacji logiki z usługi aplikacji Azure. Połączenie do usługi OneDrive dla firm do zarządzania plikami. Można wykonywać różne akcje takich jak przekazywanie, zaktualizować, Pobierz i usuwania plików."
-services: logic-apps
-documentationcenter: .net,nodejs,java
+title: Połączenie do usługi OneDrive dla firm — aplikacje logiki platformy Azure | Dokumentacja firmy Microsoft
+description: Przekazywanie i zarządzanie plikami z usługą OneDrive dla firm interfejsów API REST i usługi Azure Logic Apps
 author: ecfan
-manager: anneta
-editor: 
-tags: connectors
-ms.assetid: cf9484e9-7a20-4de0-93c8-0fa132221f2b
-ms.service: logic-apps
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
+manager: cfowler
+ms.author: estfan
 ms.date: 08/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: a572d3d858bcaed817198420db7f2e09732b2366
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: cf0541fc4271766ed5fe2e9720c6312f229bc450
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609598"
 ---
 # <a name="get-started-with-the-onedrive-for-business-connector"></a>Wprowadzenie do usługi OneDrive dla firm łącznika
 Połączenie do usługi OneDrive dla firm do zarządzania plikami. Można wykonywać różne akcje takich jak przekazywanie, zaktualizować, Pobierz i usuwania plików.
@@ -31,7 +28,7 @@ Do tworzenia aplikacji logiki z usługą OneDrive dla firm, należy najpierw utw
 
 | Właściwość | Wymagane | Opis |
 | --- | --- | --- |
-| Token |Yes |Podaj usługi OneDrive dla firm poświadczeń |
+| Token |Yes |Podaj poświadczenia usługi OneDrive dla Firm |
 
 Po utworzeniu połączenia, można go wykonać akcje i będzie nasłuchiwać wyzwalaczy opisane w tym artykule.
 

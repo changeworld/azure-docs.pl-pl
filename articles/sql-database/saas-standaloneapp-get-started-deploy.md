@@ -7,14 +7,15 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 86a5bc31639cbbcdac1468f3bc2e35a547068882
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 32cfa2e9bd48dd4e27da5c4010391c032d67d96b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644726"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Wdrażanie i Eksploruj aplikacja pojedynczej dzierżawy autonomiczna, która używa bazy danych SQL Azure
 
@@ -73,16 +74,16 @@ Miejsc, które hostują zdarzeń aplikacji, których są wyświetlane.  Miejsc s
 
 1. Otwórz stronę zdarzeń dla każdego z trzech dzierżaw w osobnych kartach przeglądarki.
 
-    - http://events.contosoconcerthall.&lt;user&gt;.trafficmanager.net
-    - http://events.dogwooddojo.&lt;user&gt;.trafficmanager.net
-    - http://events.fabrikamjazzclub.&lt;user&gt;.trafficmanager.net
+    - http://events.contosoconcerthall.&lt; użytkownika&gt;. trafficmanager.net
+    - http://events.dogwooddojo.&lt; użytkownika&gt;. trafficmanager.net
+    - http://events.fabrikamjazzclub.&lt; użytkownika&gt;. trafficmanager.net
 
     (W przypadku każdego adresu URL, Zastąp &lt;użytkownika&gt; o wartości użytkownika w danym wdrożeniu.)
 
    ![Zdarzenia](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
 Aby kontrolować dystrybucję żądań przychodzących, aplikacja używa [ *usługi Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md). Każde wystąpienie aplikacji specyficznego dla dzierżawy zawiera nazwę dzierżawy jako część nazwy domeny w adresie URL. Wszystkie dzierżawy adresów URL obejmują konkretnej **użytkownika** wartość. Adresy URL wykonaj następujący format:
-- http://events.&lt;venuename&gt;.&lt;user&gt;.trafficmanager.net
+- http://events.&lt; venuename&gt;.&lt; Użytkownik&gt;. trafficmanager.net
 
 Bazy danych z każdej dzierżawy **lokalizacji** znajduje się w ustawieniach aplikacji w odpowiednich wdrożonej aplikacji.
 

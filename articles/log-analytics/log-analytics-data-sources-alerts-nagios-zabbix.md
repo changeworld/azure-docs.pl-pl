@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 04c56b7b7726d9ca603f2ff38acfabc887ecaf34
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a34a4be75488aca46fe232331e4bac3e0ac414b0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637773"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>Zbieraj alerty z Nagios i Zabbix w Log Analytics z usługą OMS agenta dla systemu Linux 
 [Nagios](https://www.nagios.org/) i [Zabbix](http://www.zabbix.com/) są typu open source, narzędzia do monitorowania. Można zbierać alerty z tych narzędzi do analizy dzienników w celu przeanalizowania wraz z [alertów z innych źródeł](log-analytics-alerts.md).  W tym artykule opisano sposób konfigurowania agenta pakietu OMS dla systemu Linux zbierać alerty z tych systemów.
@@ -56,7 +57,7 @@ Aby zbierać alerty, wykonaj następujące czynności na serwerze Nagios.
     ```
 
 ### <a name="configuring-zabbix-alert-collection"></a>Konfigurowanie zbierania alertów Zabbix
-Aby zbierać alerty z serwera Zabbix, należy określić użytkownika i hasło w *zwykły tekst*.  Gdy nie nadaje się doskonale, zalecamy utworzenia użytkownika, a następnie udzielić uprawnień, aby monitorować onlu.
+Aby zbierać alerty z serwera Zabbix, należy określić użytkownika i hasło w *zwykły tekst*.  Gdy nie nadaje się doskonale, zaleca się utworzenie Zabbix użytkownika z uprawnieniami tylko do odczytu do odpowiednich alarmy catch.
 
 Aby zbierać alerty na serwerze Nagios, wykonaj następujące kroki.
 
@@ -73,7 +74,7 @@ Aby zbierać alerty na serwerze Nagios, wykonaj następujące kroki.
 
 2. Uruchom ponownie demona omsagent
 
-    sudo sh /opt/microsoft/omsagent/bin/service_control ponownego uruchomienia
+    `sudo sh /opt/microsoft/omsagent/bin/service_control restart`
 
 
 ## <a name="alert-records"></a>Rejestruje alertu
@@ -104,7 +105,7 @@ Alert ma rekordy zebrane przez Zabbix **typu** z **alertu** i **SourceSystem** z
 | Typ |*Alert* |
 | SourceSystem |*Zabbix* |
 | AlertName | Nazwa alertu. |
-| AlertPriority | Ważność alertu.<br><br>nie sklasyfikowane<br>informacje<br>ostrzeżenie<br>średnio<br>Wysoka<br>po awarii  |
+| AlertPriority | Ważność alertu.<br><br>nie sklasyfikowane<br>informacje<br>ostrzeżenie<br>średnia<br>Wysoka<br>po awarii  |
 | AlertState | Stan alertu.<br><br>0 — jest aktualna.<br>1 — stan jest nieznany.  |
 | AlertTypeNumber | Określa, czy alert może wygenerować wiele zdarzeń problem.<br><br>0 — jest aktualna.<br>1 — stan jest nieznany.    |
 | Komentarze | Dodatkowe uwagi o alercie. |

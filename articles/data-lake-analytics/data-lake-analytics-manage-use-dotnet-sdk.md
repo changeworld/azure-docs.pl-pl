@@ -1,29 +1,26 @@
 ---
-title: "Zarządzanie przy użyciu zestawu Azure .NET SDK usługi Azure Data Lake Analytics | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zarządzać zadań usługi Data Lake Analytics, źródła danych i użytkowników. "
+title: Zarządzanie przy użyciu zestawu Azure .NET SDK usługi Azure Data Lake Analytics
+description: W tym artykule opisano sposób użycia Azure .net SDK do zapisania aplikacjom zarządzanym zadania usługi Data Lake Analytics, źródła danych i użytkowników.
 services: data-lake-analytics
-documentationcenter: 
 author: saveenr
-manager: saveenr
-editor: cgronlun
+ms.author: saveenr
+manager: kfile
+editor: jasonwhowell
 ms.assetid: 811d172d-9873-4ce9-a6d5-c1a26b374c79
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 06/18/2017
-ms.author: saveenr
-ms.openlocfilehash: 0f8a95f96ce4c816dfb9132923faa9a9bf20c205
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc49bb9b5461a4e8eb3573877276f5876e12f340
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34625124"
 ---
-# <a name="manage-azure-data-lake-analytics-using-azure-net-sdk"></a>Zarządzanie przy użyciu zestawu Azure .NET SDK usługi Azure Data Lake Analytics
+# <a name="manage-azure-data-lake-analytics-a-net-app"></a>Zarządzanie usługą Azure Data Lake Analytics aplikacji .NET
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Dowiedz się, jak zarządzać kontami usługi Azure Data Lake Analytics, źródła danych, użytkowników i zadań przy użyciu zestawu .NET SDK usługi Azure. 
+W tym artykule opisano sposób zarządzania usługą Azure Data Lake Analytics kont, źródeł danych użytkowników i zadań za pomocą aplikacji napisane przy użyciu zestawu .NET SDK usługi Azure. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -288,6 +285,8 @@ using (var memstream = new MemoryStream())
    {
       sw.WriteLine("Hello World");
       sw.Flush();
+      
+      memstream.Position = 0;
 
       adlsFileSystemClient.FileSystem.Create(adls, "/Samples/Output/randombytes.csv", memstream);
    }
@@ -423,7 +422,7 @@ var newPolicyParams = new ComputePolicyCreateOrUpdateParameters(userAadObjectId,
 adlaAccountClient.ComputePolicies.CreateOrUpdate(rg, adla, "GaryMcDaniel", newPolicyParams);
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Omówienie usługi Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [Zarządzanie usługą Azure Data Lake Analytics przy użyciu witryny Azure Portal](data-lake-analytics-manage-use-portal.md)
 * [Monitorowanie zadań usługi Azure Data Lake Analytics i rozwiązywanie problemów przy użyciu witryny Azure Portal](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

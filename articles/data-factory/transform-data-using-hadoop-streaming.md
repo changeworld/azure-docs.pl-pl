@@ -9,14 +9,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: c0143b4f2d6858883ac11df18f7844802c667404
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ea83701e834895b09faf8eb6602bd342b648ec37
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34620208"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Przekształcanie danych za pomocą działaniu przesyłania strumieniowego usługi Hadoop w usłudze fabryka danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -82,7 +83,7 @@ Jeśli jesteś nowym użytkownikiem usługi fabryka danych Azure, zapoznaj się 
 | łączenia          | Określa nazwę pliku wykonywalnego łączenia | Nie       |
 | fileLinkedService | Odwołanie do połączonej usługi magazynu Azure są używane do przechowywania mapowania, łączenia i reduktor na wykonywanie programów. Jeśli nie określisz tej połączonej usługi, usługi połączonej magazynu Azure, zdefiniowane w połączonej usłudze HDInsight jest używany. | Nie       |
 | Ścieżka pliku          | Podaj tablicę ścieżka do mapowania, łączenia, i programy reduktor przechowywanych w magazynie Azure odwołuje się fileLinkedService. W ścieżce jest rozróżniana wielkość liter. | Yes      |
-| Dane wejściowe             | Określa ścieżkę WASB do pliku wejściowego dla mapowania. | Yes      |
+| wejście             | Określa ścieżkę WASB do pliku wejściowego dla mapowania. | Yes      |
 | output            | Określa reduktor WASB ścieżka do pliku wyjściowego. | Yes      |
 | getDebugInfo      | Określa, kiedy pliki dziennika są kopiowane do magazynu Azure używanego przez klaster usługi HDInsight (lub) określony przez element scriptLinkedService. Dozwolone wartości: None, zawsze lub niepowodzenie. Wartość domyślna: Brak. | Nie       |
 | Argumenty         | Określa tablicę argumentów dla zadania usługi Hadoop. Argumenty są przekazywane jako argumenty wiersza polecenia do każdego zadania. | Nie       |

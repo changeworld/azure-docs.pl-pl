@@ -1,20 +1,20 @@
 ---
-title: "Zainstaluj krawędzi IoT Azure IoT Core | Dokumentacja firmy Microsoft"
-description: "Zainstaluj środowisko uruchomieniowe Azure IoT Edge na urządzeniu Windows IoT Core"
-services: iot-edge
-keywords: 
+title: Zainstaluj krawędzi IoT Azure IoT Core | Dokumentacja firmy Microsoft
+description: Zainstaluj środowisko uruchomieniowe Azure IoT Edge na urządzeniu Windows IoT Core
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.reviewer: veyalla
 ms.date: 03/05/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 75d2b370ed6118a30153a001a4b654d7212b56cd
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+services: iot-edge
+ms.openlocfilehash: af6ce22d1b41ebfe9b64ea5fc1a2cf99478af925
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630038"
 ---
 # <a name="install-the-iot-edge-runtime-on-windows-iot-core---preview"></a>Zainstaluj środowisko uruchomieniowe IoT Edge w systemie Windows IoT Core - preview
 

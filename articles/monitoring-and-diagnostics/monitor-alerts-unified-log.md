@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: 8bf534177e8236a7d72d6dfdd4612b5f6f492b17
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 175e512d0bdaa84d5251f4bbdb09aed3aed436f9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638725"
 ---
 # <a name="log-alerts-in-azure-monitor---alerts"></a>Alerty dziennika w monitorze Azure - alertów 
 Ten artykuł zawiera szczegółowe informacje o alertach dziennika są jednego z typów obsługiwanych w ciągu nowe alerty [alerty Azure](monitoring-overview-unified-alerts.md) i zezwalają na używanie platforma do analiz platformy Azure jako podstawa alertów... Aby uzyskać więcej informacji o alertach Metryka przy użyciu dzienników, zapoznaj się [niemal alerty metryki czasu rzeczywistego](monitoring-near-real-time-metric-alerts.md)
@@ -35,7 +36,7 @@ Dziennik wyszukiwania reguł są określone przez następujące informacje:
 - **Zaloguj się zapytania**.  Zapytanie, do którego jest uruchamiany za każdym razem, gdy generowane reguły alertów.  Rekordów zwróconych przez to zapytanie są używane do określenia, czy alert jest tworzony. *Azure Application Insights* zapytania mogą również obejmować [wywołania międzyaplikacyjnej](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery), o ile użytkownik ma uprawnienia dostępu do aplikacji zewnętrznych. 
 
     > [!IMPORTANT]
-    > Obsługuje z [między zapytania aplikacji dla usługi Application Insights](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery) jest w wersji preview — funkcje i środowisko użytkownika mogą ulec zmianie. Użycie [między zapytania obszaru roboczego](https://dev.loganalytics.io/oms/documentation/3-Using-the-API/CrossResourceQuery) i [zasobów między zapytanie dla analizy dzienników](../log-analytics/log-analytics-cross-workspace-search.md) jest obecnie **nieobsługiwane** Azure alertów.
+    > Obsługuje z [między zapytania aplikacji dla usługi Application Insights](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery) jest w wersji zapoznawczej — maksymalnie 2 lub więcej aplikacji za pomocą funkcji i środowisko użytkownika mogą ulec zmianie. Użycie [między zapytania obszaru roboczego](https://dev.loganalytics.io/oms/documentation/3-Using-the-API/CrossResourceQuery) i [zasobów między zapytanie dla analizy dzienników](../log-analytics/log-analytics-cross-workspace-search.md) jest obecnie **nieobsługiwane** Azure alertów.
 
 - **Okres czasu**.  Określa przedział czasu dla zapytania. Zapytanie zwraca tylko rekordy utworzone w tym zakresie czasu bieżącego. Okres ogranicza dane pobierane dla zapytania dziennika uniemożliwić nadużycia oraz prowadzenia dowolnego polecenia na czas (takich jak temu) używanych w zapytaniu dziennika. <br>*Na przykład jeśli okres czasu jest ustawiona na 60 minut, a uruchomieniu kwerendy, godzina 13:15 będzie, tylko rekordy między 12:15:00 a 13:15 będzie zwracany jest można wykonać kwerendy dziennika. Teraz, jeśli zapytanie dziennika używa czasu polecenia, takich jak temu 7d, zapytania dziennika zostanie uruchomione tylko dla danych między 12:15:00 a 13:15:00 - tak, jakby istnieją dane dla ostatnich 60 minut. A nie na siedem dni danych określone w zapytaniu dziennika.*
 - **Częstotliwość**.  Określa, jak często mają być uruchamiane zapytania. Może być dowolną wartość z zakresu od 5 minut do 24 godzin. Powinna być równa lub mniejsza niż okres czasu.  Jeśli wartość jest większa niż okres czasu, istnieje ryzyko rekordów jest pominięte.<br>*Rozważmy na przykład okres 30 minut i częstotliwość 60 minut.  Jeśli zapytanie jest uruchomione 1:00, zwraca rekordów między 12:30 i 1:00 PM.  Przy następnym uruchom zapytanie to 2:00 po zwróci rekordów między 1:30 i 2:00.  Nigdy nie będzie można obliczyć wszystkie rekordy między 1:00 i 1:30.*
@@ -125,7 +126,7 @@ Interfejsy API są dostępne dla dziennika alerty są RESTful i jest dostępny z
 
 Aby uzyskać szczegółowe informacje, a także przykłady przy użyciu interfejsu API REST, sprawdź, zobacz:
 - [Logowania interfejsu API REST Alert Analytics](../log-analytics/log-analytics-api-alerts.md) — do tworzenia i zarządzania regułami alertów wyszukiwania dziennika dla usługi Analiza dzienników Azure
-- [Azure Monitor zaplanowane zapytania reguł interfejsu API REST](https://docs.microsoft.com/en-us/rest/api/monitorr/scheduledqueryrules/) — do tworzenia i zarządzania regułami alertów wyszukiwania dziennika dla usługi Azure Application Insights
+- [Azure Monitor zaplanowane zapytania reguł interfejsu API REST](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) — do tworzenia i zarządzania regułami alertów wyszukiwania dziennika dla usługi Azure Application Insights
 
 ### <a name="azure-resource-manager-template"></a>Szablon usługi Azure Resource Manager
 Użytkownicy mogą również używać elastyczności przez [usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) do tworzenia i aktualizacji zasobów — do tworzenia lub aktualizowania alerty dziennika.

@@ -15,15 +15,18 @@ ms.date: 05/12/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9e2ea46ea1a6b5bd3f50d4d4c15492c16c5241c0
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: e75f2cceed83d577730cd29490f80011bdb0a508
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640986"
 ---
 # <a name="create-custom-roles-in-azure"></a>Tworzenie niestandardowych ról na platformie Azure
 
-Jeśli [wbudowane role](built-in-roles.md) nie spełnia Twoich potrzeb określonym dostępu, można tworzyć własne role niestandardowe. Podobnie jak wbudowane role role niestandardowe można przypisać do użytkowników, grup i nazwy główne usług, subskrypcji, grupy zasobów i zakresy zasobów. Role niestandardowe są przechowywane w dzierżawie usługi Azure Active Directory (Azure AD) i mogą być udostępniane między subskrypcjami. Role niestandardowe można tworzyć przy użyciu programu Azure PowerShell, interfejsu wiersza polecenia Azure lub interfejsu API REST. W tym artykule opisano przykładowy sposób rozpocząć tworzenie niestandardowych ról przy użyciu programu PowerShell i interfejsu wiersza polecenia Azure.
+Jeśli [wbudowane role](built-in-roles.md) nie spełnia Twoich potrzeb określonym dostępu, można tworzyć własne role niestandardowe. Podobnie jak wbudowane role role niestandardowe można przypisać do użytkowników, grup i nazwy główne usług, subskrypcji, grupy zasobów i zakresy zasobów. Role niestandardowe są przechowywane w dzierżawie usługi Azure Active Directory (Azure AD) i mogą być udostępniane między subskrypcjami. Każdy Dzierżawca może mieć maksymalnie 2000 role niestandardowe. Role niestandardowe można tworzyć przy użyciu programu Azure PowerShell, interfejsu wiersza polecenia Azure lub interfejsu API REST.
+
+W tym artykule opisano przykładowy sposób rozpocząć tworzenie niestandardowych ról przy użyciu programu PowerShell i interfejsu wiersza polecenia Azure.
 
 ## <a name="create-a-custom-role-to-open-support-requests-using-powershell"></a>Tworzenie niestandardowej roli zabezpieczeń można otworzyć żądania obsługi przy użyciu programu PowerShell
 

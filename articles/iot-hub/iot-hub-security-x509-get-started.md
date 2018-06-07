@@ -1,23 +1,19 @@
 ---
-title: "Samouczek X.509 zabezpieczeń w Centrum IoT Azure | Dokumentacja firmy Microsoft"
-description: "Rozpoczynanie pracy z zabezpieczeń na podstawie X.509 w Centrum Azure IoT w środowisku symulowanym."
-services: iot-hub
-documentationcenter: 
+title: Samouczek X.509 zabezpieczeń w Centrum IoT Azure | Dokumentacja firmy Microsoft
+description: Rozpoczynanie pracy z zabezpieczeń na podstawie X.509 w Centrum Azure IoT w środowisku symulowanym.
 author: dsk-2015
 manager: timlt
-editor: 
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 10/10/2017
 ms.author: dkshir
-ms.openlocfilehash: 93f9099d7aef1161f7789e7b21a88a8691cb2a8e
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: dd5b9f196f911011d9dd606d46f515b88d338531
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635580"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Konfigurowanie zabezpieczeń X.509 w Centrum Azure IoT
 
@@ -67,7 +63,7 @@ Tych krokach przedstawiono sposób dodawania nowego urzędu certyfikacji do Cent
  
 9. Przekaż wynikowy podpis w kroku 8 powyżej Centrum IoT w portalu. W **szczegóły certyfikatu** bloku w portalu Azure, przejdź do **plik PEM lub .cer certyfikatu weryfikacji**i wybierz podpisu, na przykład *VerifyCert4.cer*utworzone za pomocą polecenia programu PowerShell próbki _Eksploratora plików_ ikona oprócz go.
 
-10. Po pomyślnym przekazaniu certyfikat, kliknij przycisk **Sprawdź**. **Stan** zmian certyfikatu  **_zweryfikowano_**  w **certyfikaty** bloku. Kliknij przycisk **Odśwież** nie automatycznie aktualizacji.
+10. Po pomyślnym przekazaniu certyfikat, kliknij przycisk **Sprawdź**. **Stan** zmian certyfikatu **_zweryfikowano_** w **certyfikaty** bloku. Kliknij przycisk **Odśwież** nie automatycznie aktualizacji.
 
    ![Przekaż certyfikat weryfikacji](./media/iot-hub-security-x509-get-started/upload-cert-verification.png)  
 
@@ -80,7 +76,7 @@ Tych krokach przedstawiono sposób dodawania nowego urzędu certyfikacji do Cent
 
 2. Kliknij przycisk **Dodaj** Aby dodać nowe urządzenie. 
 
-3. Nadaj przyjazną nazwę wyświetlaną dla **identyfikator urządzenia**i wybierz  **_podpisany urzędu certyfikacji X.509_**  jako **typ uwierzytelniania**. Kliknij pozycję **Zapisz**.
+3. Nadaj przyjazną nazwę wyświetlaną dla **identyfikator urządzenia**i wybierz **_podpisany urzędu certyfikacji X.509_** jako **typ uwierzytelniania**. Kliknij pozycję **Zapisz**.
 
    ![Utwórz urządzenie X.509 w portalu](./media/iot-hub-security-x509-get-started/create-x509-device.png)
 
@@ -170,7 +166,7 @@ Następnie możemy opisano sposób tworzenia aplikacji C# do symulacji urządzen
 7. Ponieważ ta aplikacja uzyskuje dostęp do *PFX* plik, trzeba wykonać to w *Admin* tryb. Skompiluj rozwiązanie Visual Studio. Otwórz nowe okno polecenia jako **administratora**, a następnie przejdź do folderu zawierającego tego rozwiązania. Przejdź do *bin/Debug* ścieżka folderu rozwiązania. Uruchom aplikację **SimulateX509Device.exe** z _Admin_ okna poleceń. Powinny pojawić się urządzenie pomyślnie łączenie z Centrum i wysyłania zdarzeń. 
    ![Uruchamianie aplikacji na urządzeniu](./media/iot-hub-security-x509-get-started/device-app-success.png)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 Aby dowiedzieć się więcej na temat zabezpieczania rozwiązania IoT, zobacz:
 
 * [Najlepsze rozwiązania IoT][lnk-security-best-practices]
@@ -179,7 +175,7 @@ Aby dowiedzieć się więcej na temat zabezpieczania rozwiązania IoT, zobacz:
 
 Aby dokładniej analizować możliwości Centrum IoT, zobacz:
 
-* [Wdrażanie urządzenia brzegowe AI krawędzi IoT Azure][lnk-iotedge]
+* [Wdrażanie rozwiązań SI na urządzeniach brzegowych przy użyciu usługi Azure IoT Edge][lnk-iotedge]
 
 [lnk-security-best-practices]: iot-hub-security-best-practices.md
 [lnk-security-architecture]: iot-hub-security-architecture.md

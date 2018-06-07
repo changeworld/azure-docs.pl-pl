@@ -9,17 +9,17 @@ editor: vturecek
 ms.assetid: c3655b7b-de78-4eac-99eb-012f8e042109
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/14/2018
+ms.date: 05/21/2018
 ms.author: ryanwi
-ms.openlocfilehash: 7e64bc34f5c39edaf87cc732d7c4702655df0e3e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: 7dadaadd0e6a6e6d71685356568076ad26305cc2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212674"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642227"
 ---
 # <a name="create-your-first-c-service-fabric-stateful-reliable-services-application"></a>Tworzenie pierwszej aplikacji stanowych usług Reliable Services w usłudze Service Fabric w języku C#
 
@@ -68,12 +68,15 @@ Aby zapoznać się z omówieniem zawartości projektu usługi, zobacz [Pierwsze 
 
 Teraz, gdy już masz aplikację, przeprowadź jej uruchamianie, wdrażanie i debugowanie, wykonując poniższe kroki.
 
-1. W programie Visual Studio naciśnij klawisz F5, aby wdrożyć aplikację do debugowania.
+1. W programie Visual Studio, wybierz **F5** wdrożyć aplikację do debugowania.  Kliknij przycisk **tak** Jeśli wyświetlony komunikat z pytaniem udzielić "ServiceFabricAllowedUsers" grupy odczyt i wykonywanie uprawnień do katalogu projektu programu Visual Studio.
 
     >[!NOTE]
     >Przy pierwszym uruchamianiu i wdrażaniu aplikacji w środowisku lokalnym program Visual Studio tworzy lokalny klaster na potrzeby debugowania. Może to potrwać jakiś czas. Stan tworzenia klastra jest wyświetlany w oknie danych wyjściowych programu Visual Studio.
-
-    Gdy klaster jest gotowy, z aplikacji znajdującej się w zestawie SDK otrzymasz powiadomienie menedżera paska zadań klastra lokalnego.
+    
+     Gdy klaster jest gotowy, z aplikacji znajdującej się w zestawie SDK otrzymasz powiadomienie menedżera paska zadań klastra lokalnego.
+     
+    >[!NOTE]
+    >Wymaga to ćwiczenie 5 węzła (vs. Węzeł 1) klastra. Można to sprawdzić w następujący sposób: uruchomienie narzędzia Service Fabric Explorer, klikając prawym przyciskiem myszy **usługi sieć szkieletowa Local Cluster Manager** aplikacji na pasku zadań systemu, a następnie kliknij przycisk **Przełącz tryb klastra**. Kliknij przycisk **5 węzła** Jeśli wybrano 1 węzła.
     
     ![Powiadomienie klastra lokalnego na pasku zadań][4]
 
@@ -107,7 +110,7 @@ Teraz, gdy już masz aplikację, przeprowadź jej uruchamianie, wdrażanie i deb
 
     ![Punkt przerwania w metodzie RunAsync usługi stanowej][7]
 
-7. Uruchom narzędzie Service Fabric Explorer, klikając prawym przyciskiem myszy aplikację **Menedżer klastra lokalnego** na pasku zadań, a następnie wybierając polecenie **Zarządzaj klastrem lokalnym**.
+7. Uruchom narzędzie Service Fabric Explorer, klikając prawym przyciskiem myszy **usługi sieć szkieletowa Local Cluster Manager** aplikacji na pasku zadań systemu, a następnie wybierając **Zarządzaj klastrem lokalnym**.
 
     ![Uruchamianie narzędzia Service Fabric Explorer z menedżera klastra lokalnego][systray-launch-sfx]
 
@@ -117,7 +120,7 @@ Teraz, gdy już masz aplikację, przeprowadź jej uruchamianie, wdrażanie i deb
 
     ![Zatrzymanie węzła w narzędziu Service Fabric Explorer][sfx-stop-node]
 
-    Chwilowo powinien być widoczny trafiony punkt przerwania w programie Visual Studio, gdy obliczenia wykonywane w jednym węźle zostaną awaryjnie przełączone na inny węzeł.
+    Chwilowo powinien być widoczny trafiony punkt przerwania w programie Visual Studio, gdy obliczenia wykonywane w jednym węźle zostaną awaryjnie przełączone na inny węzeł. Naciśnij klawisz **F5** aby kontynuować.
 
 9. Następnie wróć do podglądu zdarzeń diagnostycznych i sprawdź komunikaty. Wartość licznika nadal wzrastała, mimo że zdarzenia w rzeczywistości pochodzą z innego węzła.
 
@@ -137,7 +140,7 @@ Usuń klaster, klikając prawym przyciskiem myszy aplikację **Menedżer klastra
 
 Jeśli wybierzesz tę opcję, program Visual Studio ponownie wdroży klaster po następnym uruchomieniu aplikacji. Wybierz tę opcję tylko wtedy, gdy nie będziesz używać klastra lokalnego przez pewien czas lub gdy chcesz odzyskać zasoby.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej o usługach [Reliable Services](service-fabric-reliable-services-introduction.md).
 <!-- Image References -->
 

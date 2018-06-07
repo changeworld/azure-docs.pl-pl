@@ -11,11 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 2780438e715b6f6cb04d820c02d09f14e14b480f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6a098f43819bb6581b2c5978fbcc4a378a8514c1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638504"
 ---
 # <a name="route-azure-media-services-events-to-a-custom-web-endpoint-using-cli"></a>Zdarzenia usługi Azure Media Services trasy do punktu końcowego niestandardowe sieci web przy użyciu interfejsu wiersza polecenia
 
@@ -27,7 +28,7 @@ Po wykonaniu czynności opisanych w tym artykule dane powinny zostać wysłane d
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
-Zaloguj się do [portalu Azure](http://portal.azure.com) , a następnie uruchom **CloudShell** można wykonać polecenia interfejsu wiersza polecenia, jak pokazano w następnych krokach.
+Zaloguj się w witrynie [Azure Portal](http://portal.azure.com), a następnie uruchom usługę **CloudShell**, aby wykonywać polecenia interfejsu wiersza polecenia, jak pokazano w następnych krokach.
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
@@ -184,4 +185,8 @@ az group delete --name <resource_group_name>
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Reaguje na zdarzenia](reacting-to-media-services-events.md)
+[Reaguje na zdarzenia](reacting-to-media-services-events.md)## Zobacz też
+
+## <a name="see-also"></a>Zobacz także
+
+[Interfejs wiersza polecenia 2.0](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)

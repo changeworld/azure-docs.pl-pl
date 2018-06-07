@@ -2,23 +2,20 @@
 title: Azure DB rozwiązania Cosmos rejestrowania diagnostycznego | Dokumentacja firmy Microsoft
 description: Użyj w tym samouczku ułatwią rozpoczęcie pracy z bazy danych Azure rozwiązania Cosmos rejestrowania.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: 103d9d36ae1290f7af18be83f41bd9b83dbd3fbe
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 66ee0856851a301a6849b71b64cb904c925ad18d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34612218"
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Azure DB rozwiązania Cosmos rejestrowania diagnostycznego
 
@@ -47,9 +44,9 @@ Dziennik aktywności platformy Azure jest Dziennik subskrypcji, która zapewnia 
 
 Dziennik aktywności różni się od dzienników diagnostycznych. Dziennik zawiera dane dotyczące operacji na zasobie z zewnątrz ( _płaszczyzny kontroli_). W kontekście bazy danych Azure rozwiązania Cosmos płaszczyzny kontroli, które obejmują operacje tworzenia kolekcji, listy kluczy, usuń klucze, listy bazy danych i tak dalej. Dzienniki diagnostyczne są emitowane przez zasób i podaj informacje na temat operacji zasobu ( _płaszczyzna danych_). Przykłady operacje płaszczyzna danych dzienników diagnostycznych są Delete, Insert i ReadFeed.
 
-Dzienniki aktywności (operacji kontroli płaszczyzny) może być bardziej rozbudowane charakteru i mogą obejmować pełny adres e-mail wywołującego, wywołujący adres IP, nazwę zasobu, nazwy operacji, identyfikatora dzierżawcy i więcej. Dziennik zawiera kilka [kategorii](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema) danych. Aby uzyskać szczegółowe informacje na schematów z tych kategorii, zobacz [schematu zdarzeń dziennika aktywności platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema). Jednak dzienników diagnostycznych mogą być restrykcyjne charakteru danych dane osobowe często jest usuwany z tych dzienników. Może mieć adres IP obiektu wywołującego, ale jest usuwany ostatni octant.
+Dzienniki aktywności (operacji kontroli płaszczyzny) może być bardziej rozbudowane charakteru i mogą obejmować pełny adres e-mail wywołującego, wywołujący adres IP, nazwę zasobu, nazwy operacji, identyfikatora dzierżawcy i więcej. Dziennik zawiera kilka [kategorii](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema) danych. Aby uzyskać szczegółowe informacje na schematów z tych kategorii, zobacz [schematu zdarzeń dziennika aktywności platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema). Jednak dzienników diagnostycznych mogą być restrykcyjne charakteru danych osobowych często jest usuwany z tych dzienników. Może mieć adres IP obiektu wywołującego, ale jest usuwany ostatni octant.
 
-### <a name="azure-metrics"></a>Metryki Azure
+### <a name="azure-metrics"></a>Metryki platformy Azure
 
 [Metryki Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) najważniejszych rodzaju danych telemetrycznych platformy Azure (nazywane również _liczniki wydajności_) które są emitowane przez zasobów najbardziej Azure. Metryki umożliwiają wyświetlanie informacji o przepływności, magazynu, spójności, dostępności i opóźnienia zasobów platformy Azure DB rozwiązania Cosmos. Aby uzyskać więcej informacji, zobacz [monitorowanie i debugowanie za pomocą metryki w usłudze Azure DB rozwiązania Cosmos](use-metrics.md).
 

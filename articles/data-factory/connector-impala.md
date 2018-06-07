@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 22e1ddbd9f621a3ef270c4b769032e6456b54fc9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 73987d03cb96fa421d193504fe6eaf6c3b5ddb18
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618773"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory-beta"></a>Kopiowanie danych z Impala przy użyciu fabryki danych Azure (wersja beta)
 
@@ -50,7 +51,7 @@ Następujące właściwości są obsługiwane przez Impala połączonej usługi.
 | type | Właściwość type musi mieć ustawioną **Impala**. | Yes |
 | host | IP adres lub nazwę hosta serwera Impala (czyli 192.168.222.160).  | Yes |
 | port | Port TCP używany przez serwer Impala nasłuchiwanie dla połączeń klienta. Wartość domyślna to 21050.  | Nie |
-| authenticationType | Typ uwierzytelniania do użycia. <br/>Dozwolone wartości to **anonimowe**, **SASLUsername**, i **UsernameAndPassword**. | Yes |
+| Typ authenticationType | Typ uwierzytelniania do użycia. <br/>Dozwolone wartości to **anonimowe**, **SASLUsername**, i **UsernameAndPassword**. | Yes |
 | nazwa użytkownika | Nazwa użytkownika używana do uzyskiwania dostępu do serwera Impala. Wartość domyślna to anonimowe, korzystając z SASLUsername.  | Nie |
 | hasło | Hasło, które odpowiada nazwie użytkownika, gdy używasz UsernameAndPassword. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 | enableSsl | Określa, czy połączenia z serwerem są szyfrowane przy użyciu protokołu SSL. Wartość domyślna to **false**.  | Nie |

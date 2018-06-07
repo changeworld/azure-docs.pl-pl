@@ -1,25 +1,20 @@
 ---
 title: ESP8266 do chmury - nawiązać Centrum IoT Azure piór HUZZAH ESP8266 | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skonfigurować i Adafruit piór HUZZAH ESP8266 nawiązać połączenia z Centrum IoT Azure go do przesyłania danych do platformy w chmurze platformy Azure, w tym samouczku.
-services: iot-hub
-documentationcenter: ''
 author: rangv
-manager: timlt
-tags: ''
-keywords: ''
-ms.assetid: c505aacf-89a8-40ed-a853-493b75bec524
+manager: nasing
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 4/11/2018
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
+ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: b850bb25d7a6d06a2d0f55ed915321badf76bb39
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3431cc729550c0dd6eae8f332e2f8996cde9b02f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631482"
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Adafruit piór HUZZAH ESP8266 nawiązać połączenia z Centrum IoT Azure w chmurze
 

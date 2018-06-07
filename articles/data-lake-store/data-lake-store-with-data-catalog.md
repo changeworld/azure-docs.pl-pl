@@ -10,13 +10,14 @@ ms.assetid: 3294d91e-a723-41b5-9eca-ace0ee408a4b
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/21/2018
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: ea5d658b8f465b3a527033ef5e9d2126732c7029
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 3f1bc925b772265a9f72c34f5ac661088123bb1a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626141"
 ---
 # <a name="register-data-from-data-lake-store-in-azure-data-catalog"></a>Zarejestruj dane z usługi Data Lake Store w wykazie danych Azure
 W tym artykule dowiesz się, Integrowanie usługi Azure Data Lake Store w wykazie danych Azure, aby dane integrując z wykazu danych wykrywania urządzeń w organizacji. Aby uzyskać więcej informacji na skatalogowania danych, zobacz [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). Aby poznać scenariusze, w których można używać usługi Data Catalog, zobacz [typowych scenariuszy Azure Data Catalog](../data-catalog/data-catalog-common-scenarios.md).
@@ -26,7 +27,7 @@ Przed przystąpieniem do wykonania kroków opisanych w tym samouczku należy dys
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Włączenie subskrypcji platformy Azure** dla publicznej wersji zapoznawczej Data Lake Store. Zobacz [instrukcje](data-lake-store-get-started-portal.md).
-* **Konto usługi Azure Data Lake Store**. Postępuj zgodnie z instrukcjami w temacie [Rozpoczynanie pracy z usługą Azure Data Lake Store za pomocą witryny Azure Portal](data-lake-store-get-started-portal.md). W tym samouczku, możemy utworzyć konto usługi Data Lake Store o nazwie **datacatalogstore**.
+* **Konto usługi Azure Data Lake Store**. Postępuj zgodnie z instrukcjami w temacie [Rozpoczynanie pracy z usługą Azure Data Lake Store za pomocą witryny Azure Portal](data-lake-store-get-started-portal.md). W tym samouczku, Utwórz konto usługi Data Lake Store o nazwie **datacatalogstore**.
 
     Po utworzeniu konta, Przekaż przykładowe zestaw danych do niego. W tym samouczku, Daj nam przekazać pliki CSV w obszarze **AmbulanceData** folderu w [repozytorium Git programu Azure Data Lake](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/). Można użyć różnych klientów, takie jak [Eksploratora usługi Storage Azure](http://storageexplorer.com/), aby przekazać dane do kontenera obiektów blob.
 * **Wykaz danych Azure**. Twoja organizacja musi mieć już Azure Data Catalog utworzony dla Twojej organizacji. Tylko jeden katalog jest dozwolona dla każdej organizacji.
@@ -55,12 +56,12 @@ Przed przystąpieniem do wykonania kroków opisanych w tym samouczku należy dys
 
     b. **Dostępne obiekty** pole zawiera listę plików i folderów w obszarze **AmbulanceData** folderu.
 
-    c. **Obiekty do zarejestrowanych pole** zawiera listę plików i folderów, które chcesz zarejestrować w usłudze Azure Data Catalog.
+    c. **Obiekty do zarejestrowania** pole zawiera listę plików i folderów, które chcesz zarejestrować w usłudze Azure Data Catalog.
 
     ![Wyświetlanie struktury danych](./media/data-lake-store-with-data-catalog/view-data-structure.png "wyświetlanie struktury danych")
 8. W tym samouczku należy zarejestrować wszystkie pliki w katalogu. Do tego, kliknij przycisk (![przenieść obiekty](./media/data-lake-store-with-data-catalog/move-objects.png "przenieść obiekty")), aby przenieść wszystkie pliki do **obiekty do zarejestrowania** pole.
 
-    Dane zostaną zarejestrowane w wykazie danych organizacji, dlatego jest podejście zalecane, aby dodać niektóre metadane, w którym później można szybko znaleźć dane. Na przykład można dodać adres e-mail właściciela danych (na przykład taką, która przekazuje dane), lub dodać tag, aby zidentyfikować dane. Przechwytywanie ekranu poniżej zawiera tag dodamy do danych.
+    Dane zostaną zarejestrowane w wykazie danych organizacji, dlatego jest zalecane podejście, aby dodać niektóre metadane, który później można szybko znaleźć dane. Na przykład można dodać adres e-mail właściciela danych (na przykład taką, która przekazuje dane), lub dodać tag, aby zidentyfikować dane. Przechwytywanie ekranu poniżej zawiera tag, dodanie do danych.
 
     ![Wyświetlanie struktury danych](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "wyświetlanie struktury danych")
 

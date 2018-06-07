@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 9542f11830415a84af6857c9008ad26056a8af3d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3a858e3e901f300ce5f0dbc44437106905078375
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617719"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Wykonanie działania potok w fabryce danych Azure
 Działanie wykonanie potoku umożliwia potoku fabryki danych wywołać inny potoku.
@@ -68,7 +69,7 @@ name | Nazwa działania potoku execute. | Ciąg | Yes
 type | Musi mieć wartość: **ExecutePipeline**. | Ciąg | Yes
 potok | Potok odwołanie do zależnego potok, który wywołuje tego potoku. Obiekt potoku odwołanie ma dwie właściwości: **nazwę odwołania** i **typu**. Właściwość nazwę odwołania określa nazwę odwołania potoku. Właściwość type musi być równa PipelineReference. | PipelineReference | Yes
 parameters | Parametry do przekazania do wywoływanej potoku | Obiekt JSON, który mapuje nazwy parametru wartości argumentów | Nie
-waitOnCompletion | Określa, czy wykonania działania czeka na zakończenie wykonywania potoku zależnych. | Domyślna to false. | Wartość logiczna | Nie
+waitOnCompletion | Określa, czy wykonania działania czeka na zakończenie wykonywania potoku zależnych. | Wartość domyślna to false. | Wartość logiczna | Nie
 
 ## <a name="sample"></a>Sample
 Ten scenariusz ma dwie części:

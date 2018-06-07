@@ -1,20 +1,21 @@
 ---
-title: Zarządzanie aplikacjami sieć szkieletowa usług Azure przy użyciu interfejsu wiersza polecenia Azure Service Fabric
+title: Zarządzanie aplikacjami sieć szkieletowa usług Azure przy użyciu wiersza polecenia platformy Azure Usługa sieci szkieletowej (sfctl)
 description: Dowiedz się, jak wdrożyć i usuwać aplikacje z klastra usługi sieć szkieletowa usług Azure przy użyciu interfejsu wiersza polecenia Azure Service Fabric
 services: service-fabric
 author: Christina-Kang
 manager: timlt
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 08/22/2017
+ms.date: 04/13/2018
 ms.author: bikang
-ms.openlocfilehash: 18edd28943566daa382a1d742f25aaf9cc99792b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 2cbc5778385a5a4af3f6dc0306e2b943482bf40c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642890"
 ---
-# <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli"></a>Zarządzanie aplikacją sieci szkieletowej usług Azure przy użyciu interfejsu wiersza polecenia Azure Service Fabric
+# <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Zarządzanie aplikacją sieci szkieletowej usług Azure przy użyciu wiersza polecenia platformy Azure Usługa sieci szkieletowej (sfctl)
 
 Dowiedz się, jak tworzyć i usuwać aplikacje, które są uruchomione w klastrze usługi sieć szkieletowa usług Azure.
 

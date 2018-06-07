@@ -1,23 +1,19 @@
 ---
 title: Zrozumienie wiadomości chmury do urządzenia Azure IoT Hub | Dokumentacja firmy Microsoft
 description: Przewodnik dewelopera - sposobu korzystania z chmury do urządzenia wiadomości z Centrum IoT. Zawiera informacje na temat cykl życia komunikatów i opcji konfiguracji.
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 03/15/2018
 ms.author: dobett
-ms.openlocfilehash: 670cf45a48ca4b72576cedddd4678c0d569401cd
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: d3d8df0d1e00fdff4d0e1e93715e1a408116d1e7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632479"
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>Wysyłanie wiadomości chmury do urządzenia z Centrum IoT
 
@@ -88,8 +84,8 @@ Zgodnie z objaśnieniem w [punkty końcowe][lnk-endpoints], Centrum IoT zapewnia
 | Właściwość     | Opis |
 | ------------ | ----------- |
 | EnqueuedTime | Sygnatura czasowa wskazująca otrzymania wiadomości opinii przez koncentratora. |
-| Nazwa użytkownika       | `{iot hub name}` |
-| Typ zawartości  | `application/vnd.microsoft.iothub.feedback.json` |
+| UserId       | `{iot hub name}` |
+| ContentType  | `application/vnd.microsoft.iothub.feedback.json` |
 
 Treść jest serializacji JSON tablicą rekordów, każdy z następującymi właściwościami:
 

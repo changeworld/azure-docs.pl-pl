@@ -10,11 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: a5b6bb683538bd5359ebcbbe2640216e574b3e00
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: a48298668e2297cb95f2a2f16eac6387ff509781
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608716"
 ---
 # <a name="link-partner-id-to-your-azure-accounts"></a>Identyfikator partnera łącza do konta platformy Azure
 
@@ -32,7 +33,7 @@ Przed połączeniem Twój identyfikator partnera, klient musi uzyskania dostępu
 
 - **Nazwy głównej usługi:** klienta można dodać aplikacji lub skryptu z Twojej organizacji w ich katalogu i przypisać każdej roli RBAC. Tożsamość aplikacji lub skryptu jest znana jako nazwy głównej usługi.
 
-## <a name="link-partner-id"></a>Identyfikator partnera łącza
+## <a name="link-partner-id"></a>Identyfikator partnera linku
 
 Jeśli masz dostęp do zasobów przez klienta umożliwia portalu Azure, programu PowerShell lub interfejsu wiersza polecenia link identyfikator sieci Microsoft Partner (identyfikator MPN) do Twojej nazwy użytkownika i nazwę główną usługi. Należy połączyć z Identyfikatorem partnera w każdej dzierżawy klienta.
 
@@ -52,7 +53,7 @@ Jeśli masz dostęp do zasobów przez klienta umożliwia portalu Azure, programu
 
 ### <a name="use-powershell-to-link-new-partner-id"></a>Połącz nowy identyfikator partnera przy użyciu programu PowerShell
 
-1. Zainstaluj [AzurePartnerRP](https://www.powershellgallery.com/packages/AzureRM.ManagementPartner/0.1.0-preview) modułu programu PowerShell.
+1. Zainstaluj [AzureRM.ManagementPartner](https://www.powershellgallery.com/packages/AzureRM.ManagementPartner) modułu programu PowerShell.
 
 2. Zaloguj się do dzierżawy przez klienta z konta użytkownika lub usługę podmiotu zabezpieczeń, aby uzyskać więcej informacji, zobacz [logowania przy użyciu programu Powershell](https://docs.microsoft.com/powershell/azure/authenticate-azureps?view=azurermps-5.2.0).
  

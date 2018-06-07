@@ -1,24 +1,20 @@
 ---
-title: 'Zestaw deweloperski IoT do chmury: Połącz IoT MXChip zestaw deweloperski z Centrum IoT Azure | Dokumentacja firmy Microsoft'
+title: Zestaw deweloperski IoT do chmury — nawiązać zestaw deweloperski MXChip IoT Azure IoT Hub | Dokumentacja firmy Microsoft
 description: W tym samouczku Dowiedz się, jak wysyłać stan czujników na AZ3166 zestaw deweloperski IoT do akcelerator rozwiązań monitorowania zdalnego IoT Azure.
-services: iot-hub
-documentationcenter: ''
 author: liydu
-manager: timlt
-tags: ''
-keywords: ''
+manager: jeffya
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: d3de8241b42aff63faaf04477a58c5564407ac8b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 6c5c12ffeacad9a3dd56ac561d9b4fe1a6e67eea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631500"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Zestaw deweloperski IoT MXChip nawiązania połączenia zdalnego monitorowania Azure IoT akcelerator rozwiązań
 
@@ -40,7 +36,7 @@ Aktywna subskrypcja platformy Azure. Jeśli nie masz, możesz zarejestrować za 
 
 ## <a name="create-an-azure-iot-remote-monitoring-solution-accelerator"></a>Utwórz akcelerator rozwiązań monitorowania zdalnego IoT Azure
 
-1. Przejdź do [lokacji acclerators rozwiązania Azure IoT](https://www.azureiotsuite.com/) i kliknij przycisk **Utwórz nowe rozwiązanie**.
+1. Przejdź do [lokacji akceleratorów rozwiązania Azure IoT](https://www.azureiotsolutions.com/) i kliknij przycisk **Utwórz nowe rozwiązanie**.
   ![Wybierz typ akceleratora rozwiązania Azure IoT](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-solution-types.png)
   > [!WARNING]
   > Domyślnie ten przykład tworzy Centrum IoT S2 po utworzeniu jednego akcelerator rozwiązań monitorowania zdalnego IoT. Jeśli w tym Centrum IoT nie jest używana z bardzo dużej liczby urządzeń, zdecydowanie zaleca się obniżyć go z S2 S1 i usunąć akcelerator rozwiązań monitorowania zdalnego IoT, aby powiązane Centrum IoT mogą być również usuwane, gdy nie są już potrzebne. 

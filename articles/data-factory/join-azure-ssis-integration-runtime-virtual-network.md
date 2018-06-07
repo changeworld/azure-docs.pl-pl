@@ -9,14 +9,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/07/2018
+ms.topic: conceptual
+ms.date: 05/29/2018
 ms.author: douglasl
-ms.openlocfilehash: 2bb6491a470e7041568bb6b9183e996d2a9119d9
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b998b47cdc65be91f62543369f5c3f18e4f270c4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619647"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Dołącz do środowiska uruchomieniowego integracji usług SSIS Azure do sieci wirtualnej
 Dołącz do programu Azure SSIS integracji runtime (IR) do sieci wirtualnej platformy Azure w następujących scenariuszach: 
@@ -86,7 +87,7 @@ Jeśli musisz wdrożyć grupę zabezpieczeń sieci (NSG) w sieci wirtualnej doł
 
 | Kierunek | Protokół transportu | Element źródłowy | Zakres portów źródła | Element docelowy | Port docelowy zakres | Komentarze |
 |---|---|---|---|---|---|---|
-| Przychodzący | TCP | Internet | * | VirtualNetwork | 29876, 29877 (Jeśli dołączysz IR sieci wirtualnej platformy Azure Resource Manager) <br/><br/>10100, 20100, 30100 (Jeśli dołączysz IR klasycznej sieci wirtualnej)| Usługi fabryka danych te porty są używane do komunikacji z węzłami Twojego środowiska uruchomieniowego integracji usług SSIS Azure w sieci wirtualnej. |
+| Przychodzący | TCP | Internet | * | VirtualNetwork | 29876, 29877 (Jeśli dołączysz IR sieci wirtualnej platformy Azure Resource Manager) <br/><br/>10100, 20100, 30100 (Jeśli dołączysz IR klasycznej sieci wirtualnej)| Usługi fabryka danych te porty są używane do komunikacji z węzłami Twojego środowiska uruchomieniowego integracji usług SSIS Azure w sieci wirtualnej. <br/><br/> Czy lub nie określono grupy NSG, fabryki danych zawsze konfiguruje grupy NSG na poziomie kart interfejsu sieciowego (NIC) dołączonych do maszyn wirtualnych, które host podczerwieni Azure SSIS. Dozwolone jest tylko na ruch przychodzący z adresów IP fabryki danych. Nawet jeśli możesz otworzyć te porty, aby ruch internetowy, ruch sieciowy z adresów IP, które nie są adresami IP fabryki danych jest zablokowany na poziomie karty Sieciowej. |
 | Wychodzący | TCP | VirtualNetwork | * | Internet | 443 | Węzły sieci środowiska uruchomieniowego integracji usług SSIS Azure w sieci wirtualnej użyć tego portu dostępu do usług Azure, takich jak usługi Azure Storage i Azure Event Hubs. |
 | Wychodzący | TCP | VirtualNetwork | * | Internet lub Sql | 1433, 11000 11999, 14000 14999 | Węzły sieci środowiska uruchomieniowego integracji usług SSIS Azure w sieci wirtualnej umożliwia dostęp do bazy danych SSISDB obsługiwanych przez serwer bazy danych SQL Azure te porty. (Ten cel, nie ma zastosowania do wystąpienia zarządzane bazy danych SQL (wersja zapoznawcza) na użytek bazy danych SSISDB). |
 ||||||||

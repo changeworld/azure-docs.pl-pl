@@ -6,13 +6,14 @@ author: luiscabrer
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 05/24/2018
 ms.author: luisca
-ms.openlocfilehash: 3ab35cfd8ce5cf54a68473736fe05b78d26850de
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 816951ac128fb76d748262cfbc5f064a44e6376c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640930"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Jak utworzyć skillset w potoku wzbogacenia
 
@@ -51,7 +52,7 @@ Na diagramie *łamania dokumentu* krok odbywa się automatycznie. Zasadniczo us�
 
 ## <a name="skillset-definition-in-rest"></a>Definicja Skillset w REST
 
-Skillset jest zdefiniowany jako tablicę umiejętności. Każdy umiejętności definiuje źródło wejścia i nazwę utworzone dane wyjściowe. Przy użyciu [tworzenie Skillset interfejsu API REST](ref-create-skillset.md), można zdefiniować skillset, która odpowiada do poprzedniego diagramu: 
+Skillset jest zdefiniowany jako tablicę umiejętności. Każdy umiejętności definiuje źródło wejścia i nazwę utworzone dane wyjściowe. Przy użyciu [tworzenie Skillset interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/create-skillset), można zdefiniować skillset, która odpowiada do poprzedniego diagramu: 
 
 ```http
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2017-11-11-Preview
@@ -103,7 +104,7 @@ Content-Type: application/json
      "description": "Calls an Azure function, which in turn calls Bing Entity Search",
       "uri": "https://indexer-e2e-webskill.azurewebsites.net/api/InvokeTextAnalyticsV3?code=foo",
       "httpHeaders": {
-          "Ocp-Apim-Subscription-Key": "foobar",
+          "Ocp-Apim-Subscription-Key": "foobar"
       },
       "context": "/document/content/organizations/*",
       "inputs": [
@@ -123,7 +124,7 @@ Content-Type: application/json
 }
 ```
 
-## <a name="create-a-skillset"></a>Utwórz skillset
+## <a name="create-a-skillset"></a>Tworzenie zestawu umiejętności
 
 Podczas tworzenia skillset, musisz podać opis skillset pomocniczy. Opis jest opcjonalny, ale są przydatne w celu śledzenia jest skillset. Ponieważ skillset jest dokumentem JSON, która nie zezwala na komentarze, należy użyć `description` tego elementu.
 
@@ -152,8 +153,7 @@ Przyjrzyjmy się pierwszy umiejętności, który jest wstępnie zdefiniowane [o 
           "name": "text",
           "source": "/document/content"
         }
-      ],
-      "outputs": [
+      ],      "outputs": [
         {
           "name": "organizations",
           "targetName": "organizations"
@@ -208,7 +208,7 @@ Odwołaj struktury niestandardowych enricher wyszukiwania jednostki Bing:
      "description": "This skill calls an Azure function, which in turn calls Bing Entity Search",
       "uri": "https://indexer-e2e-webskill.azurewebsites.net/api/InvokeTextAnalyticsV3?code=foo",
       "httpHeaders": {
-          "Ocp-Apim-Subscription-Key": "foobar",
+          "Ocp-Apim-Subscription-Key": "foobar"
       }
       "context": "/document/content/organizations/*",
       "inputs": [

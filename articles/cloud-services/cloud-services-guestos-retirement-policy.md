@@ -1,11 +1,11 @@
 ---
-title: "Możliwość obsługi i zasadami wycofania przewodnik dla systemu operacyjnego gościa Azure | Dokumentacja firmy Microsoft"
-description: "Zawiera informacje o co będzie pomocy technicznej firmy Microsoft w odniesieniu do systemu operacyjnego gościa Azure używany przez usługi w chmurze."
+title: Możliwość obsługi i zasadami wycofania przewodnik dla systemu operacyjnego gościa Azure | Dokumentacja firmy Microsoft
+description: Zawiera informacje o co będzie pomocy technicznej firmy Microsoft w odniesieniu do systemu operacyjnego gościa Azure używany przez usługi w chmurze.
 services: cloud-services
 documentationcenter: na
 author: raiye
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 919dd781-4dc6-4e50-bda8-9632966c5458
 ms.service: cloud-services
 ms.devlang: na
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 9/20/2017
 ms.author: raiye
-ms.openlocfilehash: 4bc2d57cf4c7d6e0981aa1a5c7c989860600b897
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dfa3bac95b9827789950b4931e3198237de4a1fd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608566"
 ---
 # <a name="azure-guest-os-supportability-and-retirement-policy"></a>Azure zasad obsługi i wycofania systemu operacyjnego gościa
 Informacje na tej stronie odnosi się do systemu operacyjnego gościa Azure ([systemu operacyjnego gościa](cloud-services-guestos-update-matrix.md)) dla usługi w chmurze sieci web i proces roboczy ról (PaaS). Nie ma zastosowania do maszyn wirtualnych (IaaS).
@@ -33,9 +34,7 @@ Zasady
 
 W czasie więcej niż dwie grupy lub wersji może być obsługiwana. Informacje pomocy technicznej systemu operacyjnego gościa oficjalnego pojawią się na [poszczególnych wersji systemu operacyjnego gościa Azure i zgodność pakietu SDK](cloud-services-guestos-update-matrix.md).
 
-## <a name="when-a-guest-os-family-or-version-is-retired"></a>Po wycofaniu rodziny systemów operacyjnych gościa lub w wersji
-Nowy system operacyjny gościa **rodziny** wprowadzono pewnego czasu po wydaniu nowej wersji oficjalnego systemu operacyjnego Windows Server. Zawsze wprowadzane nowej rodziny systemu operacyjnego gościa, Microsoft będzie wycofać najstarsze rodziny systemów operacyjnych gościa.
-
+## <a name="when-a-guest-os-version-is-retired"></a>Po wycofaniu wersji systemu operacyjnego gościa
 Nowy system operacyjny gościa **wersji** wprowadzono o co miesiąc, w celu uwzględnienia najnowszych aktualizacji MSRC. Z powodu regularnych comiesięcznych aktualizacji wersja systemu operacyjnego gościa zwykle jest wyłączona około 60 dni po jego wersji. To działanie umożliwia zachowanie co najmniej dwie wersje systemu operacyjnego gościa, dla każdej rodziny, które są dostępne do użycia.
 
 ### <a name="process-during-a-guest-os-family-retirement"></a>Podczas wycofywania rodziny systemu operacyjnego gościa
@@ -77,5 +76,5 @@ Zalecane jest użycie najnowszej rodziny systemów operacyjnych gościa za proje
 
 Jeśli architektury aplikacji sieci web jest zależny od funkcji systemu operacyjnego, użyj platformy obsługiwane funkcje takie jak [uruchamiania zadań](cloud-services-startup-tasks.md) lub innych mechanizmów rozszerzalności. Alternatywnie można również użyć [maszyny wirtualne Azure](https://azure.microsoft.com/documentation/scenarios/virtual-machines/) (IaaS — infrastruktura jako usługa), gdzie jest odpowiedzialny za konserwację system operacyjny.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Przejrzyj najnowszej [wersje systemu operacyjnego gościa](cloud-services-guestos-update-matrix.md).

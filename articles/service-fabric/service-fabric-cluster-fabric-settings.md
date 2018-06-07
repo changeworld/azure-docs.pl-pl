@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/09/2018
 ms.author: aljo
-ms.openlocfilehash: 29afb683b579d6b59d9a8002351a57dc6e42fad0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 118a6d10eeba691fd0886967f90156a0ab8d9fae
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642652"
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Dostosowywanie ustawień klastra sieci szkieletowej usług i zasady uaktualniania sieci szkieletowej
 Ten dokument zawiera informacje dotyczące dostosować różne ustawienia sieci szkieletowej i sieci szkieletowej uaktualniania zasad dla klastra usługi sieć szkieletowa usług. Możesz dostosować je za pomocą [portalu Azure](https://portal.azure.com) lub przy użyciu szablonu usługi Azure Resource Manager.
@@ -75,6 +76,15 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, domyślna wartość to Brak|Dynamiczny|  |
+
+## <a name="backuprestoreservice"></a>BackupRestoreService
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| --- | --- | --- | --- |
+|MinReplicaSetSize|Int, domyślna to 0|Statyczny|MinReplicaSetSize dla BackupRestoreService |
+|PlacementConstraints|wstring, domyślny jest L""|Statyczny| PlacementConstraints BackupRestore usługi |
+|SecretEncryptionCertThumbprint|wstring, domyślny jest L""|Dynamiczny|Odcisk palca certyfikatu szyfrowania tajny X509 |
+|SecretEncryptionCertX509StoreName|wstring, domyślny jest L "Moje"|  Dynamiczny|    Oznacza to certyfikat używany do szyfrowania i odszyfrowywania poświadczenia magazynu certyfikatów nazwa X.509, który jest używany do szyfrowania, odszyfrowywania poświadczeń magazynu używane przez usługę Przywracanie kopii zapasowej |
+|Wartość TargetReplicaSetSize|int, domyślne to 0|Statyczny| TargetReplicaSetSize dla BackupRestoreService |
 
 ## <a name="clustermanager"></a>ClusterManager
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
@@ -299,6 +309,7 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 |ActivationTimeout| Zakres czasu, domyślnie jest Common::TimeSpan::FromSeconds(180)|Dynamiczny| Określ zakres czasu w sekundach. Limit czasu dla aktywacji aplikacji; Dezaktywacja i uaktualniania. |
 |ApplicationHostCloseTimeout| Zakres czasu, domyślnie jest Common::TimeSpan::FromSeconds(120)|Dynamiczny| Określ zakres czasu w sekundach. Po wykryciu zakończenia sieci szkieletowej w własnym aktywowane procesy; Środowisko uruchomieniowe sieci szkieletowej zamyka wszystkie repliki procesu (hosta aplikacji) hosta użytkownika. Jest to limit czasu dla operacji zamknięcia. |
 |ApplicationUpgradeTimeout| Zakres czasu, domyślnie jest Common::TimeSpan::FromSeconds(360)|Dynamiczny| Określ zakres czasu w sekundach. Limit czasu uaktualniania aplikacji. Jeśli limit czasu jest mniejsza niż wdrażającego "ActivationTimeout" zakończy się niepowodzeniem. |
+|ContainerServiceArguments|wstring, domyślny jest L "-H 2375 -H npipe: / /"|Statyczny|Usługa sieci szkieletowej (CPP) zarządza demon docker (z wyjątkiem komputerów klienckich z systemem windows, takich jak Windows 10). Ta konfiguracja umożliwia użytkownikowi określenie niestandardowego argumenty, które powinny zostać przekazane do demon docker podczas jego uruchamiania. Jeśli określono niestandardowe argumenty, sieci szkieletowej usług nie są przekazywane innych argumentu z aparatem platformy Docker z wyjątkiem "--pidfile" argument. Dlatego użytkownicy nie można określić "--pidfile" argument jako część ich argumentów klienta. Niestandardowe argumenty powinny upewnij się również, tego docker wykrywa demon domyślnej nazwy potoku w systemie Windows (lub Unix gniazda domeny w systemie Linux) dla sieci szkieletowej usług można było nawiązać z nim.|
 |CreateFabricRuntimeTimeout|Zakres czasu, domyślnie jest Common::TimeSpan::FromSeconds(120)|Dynamiczny| Określ zakres czasu w sekundach. Wartość limitu czasu dla synchronizacji FabricCreateRuntime wywołania |
 |DeploymentMaxFailureCount|Int, domyślna to 20| Dynamiczny|Wdrażanie aplikacji zostanie ponowiona w sytuacjach DeploymentMaxFailureCount przed niepowodzeniem wdrożenia tej aplikacji w węźle.| 
 |DeploymentMaxRetryInterval| Zakres czasu, domyślnie jest Common::TimeSpan::FromSeconds(3600)|Dynamiczny| Określ zakres czasu w sekundach. Maksymalny interwał ponawiania dla wdrożenia. Co ciągłego niepowodzeń interwał ponawiania jest obliczany jako wartość minimalną (DeploymentMaxRetryInterval; Ciągłe liczby awarii * DeploymentRetryBackoffInterval) |
@@ -311,6 +322,7 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 |FirewallPolicyEnabled|wartość logiczna, domyślna to FALSE|Statyczny| Umożliwia otwarcie portów zapory dla punktu końcowego zasobów z jawnym porty określone w ServiceManifest |
 |GetCodePackageActivationContextTimeout|Zakres czasu, domyślnie jest Common::TimeSpan::FromSeconds(120)|Dynamiczny|Określ zakres czasu w sekundach. Wartość limitu czasu dla wywołań CodePackageActivationContext. To nie ma zastosowania do usług ad hoc. |
 |IPProviderEnabled|wartość logiczna, domyślna to FALSE|Statyczny|Umożliwia zarządzanie adresami IP. |
+|LinuxExternalExecutablePath|wstring, domyślny jest L "/ usr/bin /" |Statyczny|Katalog podstawowy zewnętrznego pliku wykonywalnego poleceń w węźle.|
 |NTLMAuthenticationEnabled|wartość logiczna, domyślna to FALSE|Statyczny| Umożliwia obsługę przez pakiety kodu, które są uruchomione innych użytkowników, dzięki czemu procesów na komputerach można bezpiecznego komunikowania się przy użyciu protokołu NTLM. |
 |NTLMAuthenticationPasswordSecret|SecureString, domyślnie jest Common::SecureString(L"")|Statyczny|Jest zaszyfrowany ma służący do generowania haseł dla użytkowników NTLM. Musi być ustawiona, jeśli NTLMAuthenticationEnabled ma wartość true. Zweryfikowane przez narzędzia wdrażania. |
 |NTLMSecurityUsersByX509CommonNamesRefreshInterval|Zakres czasu, domyślnie jest Common::TimeSpan::FromMinutes(3)|Dynamiczny|Określ zakres czasu w sekundach. Ustawienia charakterystyczne dla środowiska okresowe interwał, w którym hostingu skanowania pod kątem nowych certyfikatów, które ma być użyty do konfiguracji FileStoreService NTLM. |
@@ -322,6 +334,7 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 |ServiceTypeDisableFailureThreshold |Liczby całkowitej, domyślna to 1 |Dynamiczny|To jest próg liczby awarii, po upływie którego FailoverManager (FM) jest powiadamiany o konieczności Wyłącz typ usługi, w tym węźle i spróbuj inny węzeł do umieszczania. |
 |ServiceTypeDisableGraceInterval|Zakres czasu, domyślnie jest Common::TimeSpan::FromSeconds(30)|Dynamiczny|Określ zakres czasu w sekundach. Interwał czasu, po którym można wyłączyć typ usługi |
 |ServiceTypeRegistrationTimeout |Czas w sekundach, domyślna to 300 |Dynamiczny|Maksymalny dozwolony czas realizacji ServiceType rejestrowana z sieci szkieletowej |
+|UseContainerServiceArguments|wartość logiczna, domyślna ma wartość TRUE|Statyczny|Tej konfiguracji informuje hosting pomijania przekazywanie argumentów (określony w konfiguracji ContainerServiceArguments) do demon docker.|
 
 ## <a name="httpgateway"></a>HttpGateway
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
@@ -368,6 +381,7 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 |AzureStorageMaxConnections | Int, domyślna to 5000 |Dynamiczny|Maksymalna liczba jednoczesnych połączeń z magazynem platformy azure. |
 |AzureStorageMaxWorkerThreads | Int, domyślna to 25 |Dynamiczny|Maksymalna liczba wątków roboczych równolegle. |
 |AzureStorageOperationTimeout | Czas w sekundach, domyślnie jest 6000 |Dynamiczny|Określ zakres czasu w sekundach. Limit czasu na ukończenie operacji xstore. |
+|CleanupApplicationPackageOnProvisionSuccess|wartość logiczna, domyślna to FALSE |Dynamiczny|Ta konfiguracja Włącza lub wyłącza funkcję automatycznego czyszczenia pakietu aplikacji złożenia powiodło się. |
 |DisableChecksumValidation | Wartość logiczna, wartość domyślna to false |Statyczny| Ta konfiguracja pozwala włączyć lub wyłączyć Weryfikacja sum kontrolnych podczas inicjowania obsługi aplikacji. |
 |DisableServerSideCopy | Wartość logiczna, wartość domyślna to false |Statyczny|Ta konfiguracja Włącza lub wyłącza po stronie serwera kopię pakietu aplikacji w składniku ImageStore podczas inicjowania obsługi aplikacji. |
 |ImageCachingEnabled | Wartość logiczna, domyślna to true |Statyczny|Ta konfiguracja pozwala włączyć lub wyłączyć buforowanie. |
@@ -526,6 +540,11 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 |ReplicatorPublishAddress|ciąg, domyślny jest L "localhost:0"|Statyczny|Punkt końcowy w postaci ciągu - IP:Port, który jest używany przez Replikator sieci szkieletowej systemu Windows do wysłania operacji do innych replik.|
 |retryInterval|Zakres czasu, domyślnie jest Common::TimeSpan::FromSeconds(5)|Statyczny|Określ zakres czasu w sekundach. Podczas operacji zostało utracone lub odrzucone ten czasomierz Określa, jak często replikatora ponowi operację wysyłania.|
 
+## <a name="resourcemonitorservice"></a>ResourceMonitorService
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania**| **Wskazówki lub krótki opis** |
+| --- | --- | --- | --- |
+|IsEnabled|wartość logiczna, domyślna to FALSE |Statyczny|Kontroluje, czy usługa jest włączona w klastrze, czy nie. |
+
 ## <a name="runas"></a>Uruchom jako
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
@@ -586,6 +605,7 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 |ServerAuthCredentialType|ciąg, domyślny jest L "None"|Statyczny|Wskazuje typ poświadczeń zabezpieczeń do użycia w celu zabezpieczenia komunikacji między klienta fabricclient z rolą i klastra. Prawidłowe wartości to "Brak/X509/systemu Windows" |
 |ServerCertThumbprints|ciąg, domyślny jest L""|Dynamiczny|Odciski palców certyfikatów serwera używane przez klaster do komunikowania się klientów. Klienci używają tego do uwierzytelniania w klastrze. Jest listy rozdzielanej przecinkami nazw. |
 |SettingsX509StoreName| ciąg, domyślny jest L "MY"| Dynamiczny|X509 certyfikatu Magazyn używany przez sieci szkieletowej dla ochrony konfiguracji |
+|UseClusterCertForIpcServerTlsSecurity|wartość logiczna, domyślna to FALSE|Statyczny|Czy do korzystania z certyfikatu klastra do zabezpieczania TLS serwera IPC transportu jednostki |
 |X509Folder|ciąg, domyślny jest /var/lib/waagent|Statyczny|Folderu gdzie X509 znajdują się certyfikaty i klucze prywatne |
 
 ## <a name="securityadminclientx509names"></a>Zabezpieczenia/AdminClientX509Names
@@ -632,6 +652,7 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 |GetUpgradesPendingApproval |ciąg, domyślną jest "Admin" |Dynamiczny| Wywołuje GetUpgradesPendingApproval na partycji. |
 |GetUpgradeStatus |ciąg, domyślna to "Admin\|\|użytkownika" |Dynamiczny| Konfiguracja zabezpieczeń sondowania stanu uaktualniania aplikacji. |
 |InternalList |ciąg, domyślną jest "Admin" | Dynamiczny|Konfiguracja zabezpieczeń dla obrazu przechowywać operacja listy plików klienta (wewnętrzny). |
+|InvokeContainerApi|wstring, domyślny jest L "Admin"|Dynamiczny|Wywołanie interfejsu API kontenera |
 |InvokeInfrastructureCommand |ciąg, domyślną jest "Admin" |Dynamiczny| Konfiguracja zabezpieczeń infrastruktury zadań zarządzania poleceń. |
 |InvokeInfrastructureQuery |ciąg, domyślna to "Admin\|\|użytkownika" | Dynamiczny|Badania infrastruktury zadań konfiguracji zabezpieczeń. |
 |List |ciąg, domyślna to "Admin\|\|użytkownika" | Dynamiczny|Konfiguracja zabezpieczeń dla obrazu przechowywać operacja listy pliku klienta. |
@@ -741,25 +762,13 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |BatchAcknowledgementInterval | Czas w sekundach, domyślnie jest 0,015 | Statyczny | Określ zakres czasu w sekundach. Określa czas oczekiwania po otrzymaniu operacji przed odsyła potwierdzenia replikatora. Inne operacje otrzymanych w tym czasie będzie miał ich potwierdzeń wysyłane z powrotem w pojedynczym komunikacie -> ograniczenia ruchu sieciowego, ale potencjalnie zmniejszenie przepływności replikatora. |
-|CheckpointThresholdInMB |Int, domyślną wartością jest 50 |Statyczny|Punkt kontrolny zostanie rozpoczęte, gdy użycie dziennika przekracza tę wartość. |
-|InitialPrimaryReplicationQueueSize |Uint — wartość domyślna to 64 | Statyczny |Ta wartość Określa początkowy rozmiar kolejki, która obsługuje operacje replikacji na serwerze podstawowym. Należy pamiętać, że musi być potęgą liczby 2.|
-|InitialSecondaryReplicationQueueSize |Uint — wartość domyślna to 64 | Statyczny |Ta wartość Określa początkowy rozmiar kolejki, która obsługuje operacje replikacji na serwerze pomocniczym. Należy pamiętać, że musi być potęgą liczby 2. |
-|MaxAccumulatedBackupLogSizeInMB |Int, domyślnie jest 800 |Statyczny|Maksymalna liczba zebranych elementów rozmiar (w MB) kopii zapasowych dzienników łańcucha danej kopii zapasowej dziennika. Przyrostowej kopii zapasowej żądań zakończy się niepowodzeniem, jeśli wygenerowanie kopii zapasowej dziennika, spowodowałoby skumulowany dzienniki kopii zapasowych od odpowiednich pełnej kopii zapasowej będzie większy niż rozmiar przyrostowej kopii zapasowej. W takim przypadku użytkownik musi wykonać pełną kopię zapasową. |
 |MaxCopyQueueSize |Uint — wartość domyślna to 16384 | Statyczny |Jest to maksymalna wartość Określa początkowy rozmiar kolejki, co umożliwia utrzymywanie operacji replikacji. Należy pamiętać, że musi być potęgą liczby 2. Jeśli w czasie wykonywania kolejki rozwoju na tę operację rozmiar zostanie zdławionych między replikatorów podstawowego i pomocniczego. |
-|MaxMetadataSizeInKB |Int, domyślna to 4 |Niedozwolone|Maksymalny rozmiar dziennika strumienia metadanych. |
 |MaxPrimaryReplicationQueueMemorySize |Uint — wartość domyślna to 0 | Statyczny |Jest to maksymalna wartość kolejki podstawowej replikacji w bajtach. |
 |MaxPrimaryReplicationQueueSize |Uint — wartość domyślna to 8192 | Statyczny |Jest to maksymalna liczba operacji, które może znajdować się w kolejce podstawowej replikacji. Należy pamiętać, że musi być potęgą liczby 2. |
-|MaxRecordSizeInKB |Uint, domyślny to 1024 |Niedozwolone| Maksymalny rozmiar rekordu dziennika strumienia. |
 |MaxReplicationMessageSize |Uint — wartość domyślna to 52428800 | Statyczny | Maksymalny rozmiar komunikatu operacji replikacji. Domyślną jest 50MB. |
 |MaxSecondaryReplicationQueueMemorySize |Uint — wartość domyślna to 0 | Statyczny |Jest to maksymalna wartość kolejki dodatkowej replikacji w bajtach. |
 |MaxSecondaryReplicationQueueSize |Uint — wartość domyślna to 16384 | Statyczny |Jest to maksymalna liczba operacji, które może znajdować się w kolejce replikacji dodatkowej. Należy pamiętać, że musi być potęgą liczby 2. |
-|MaxWriteQueueDepthInKB |Int, domyślna to 0 |Niedozwolone| Int maksymalnego zapisu głębokości kolejki, która rejestratora core można użyć jako określony w kilobajtach dla dziennika, który jest skojarzony z tej repliki. Ta wartość jest maksymalną liczbą bajtów, które mogą być oczekujących podczas aktualizacji rejestratora core. Może być 0 dla rejestratora core można obliczyć odpowiednią wartość lub wielokrotnością liczby 4. |
-|MinLogSizeInMB |Int, domyślna to 0 |Statyczny|Minimalny rozmiar dziennika transakcyjnych. Dziennik nie będzie można obciąć rozmiar poniżej tego ustawienia. wartość 0 wskazuje, czy replikatora Określa minimalny rozmiar dziennika zgodnie z innymi ustawieniami. Zwiększenie tej wartości zwiększa możliwości wykonywania częściowej kopii i przyrostowe kopie zapasowe od szanse rekordów dziennika odpowiednich obcięcie jest obniżony. |
 |ReplicatorAddress |ciąg, domyślną jest "localhost:0" | Statyczny | Punkt końcowy w postaci ciągu - IP:Port, który jest używany przez Replikator sieci szkieletowej systemu Windows do nawiązywania połączeń z innych replik w celu wysyłania i odbierania operacji. |
-|SecondaryClearAcknowledgedOperations |Wartość logiczna, wartość domyślna to false | Statyczny |Wartość logiczna, która kontroluje, czy operacje na dodatkowej replikatora są czyszczone po uznanych do serwera podstawowego (liczba opróżnionych na dysku). Ustawienia na wartość TRUE, może spowodować odczyty dodatkowy dysk na nową podstawową podczas Przechwytywanie zapasową replik po przejściu w tryb failover. |
-|SharedLogId |Ciąg |Niedozwolone|Identyfikator dziennika udostępniony. To jest identyfikator guid i powinna być unikatowa dla każdego udostępnionego dziennika. |
-|SharedLogPath |Ciąg |Niedozwolone|Ścieżka do udostępnionego dziennika. Jeśli ta wartość jest pusta dziennika udostępniony domyślny jest używany. |
-|SlowApiMonitoringDuration |Czas w sekundach, domyślna to 300 |Statyczny| Określ czas trwania dla interfejsu api, zanim ostrzeżenie kondycji zdarzenie jest wywoływane.|
 
 ## <a name="transport"></a>Transport
 | **Parametr** | **Dozwolone wartości** |**Zasady uaktualniania** |**Wskazówki lub krótki opis** |

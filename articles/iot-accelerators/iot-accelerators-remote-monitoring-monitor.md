@@ -1,26 +1,23 @@
 ---
 title: Zaawansowane monitorowanie zdalnego rozwiązanie monitorowania - Azure | Dokumentacja firmy Microsoft
 description: W tym samouczku przedstawiono sposób monitorowania urządzeń ze zdalnego pulpitu nawigacyjnego monitorowania rozwiązania.
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 02/22/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 0456594a4a7776175781968779b4540a98070b78
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: 4d2dabd348d7fda4fa7ca3aac9975fd4179400c5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627403"
 ---
-# <a name="perform-advanced-monitoring-using-the-remote-monitoring-solution"></a>Wykonaj zaawansowanego monitorowania przy użyciu zdalnego rozwiązanie monitorowania
+# <a name="perform-advanced-monitoring-using-the-remote-monitoring-solution"></a>Wykonaj zaawansowanego monitorowania za pomocą rozwiązania monitorowania zdalnego
 
-Ten samouczek pokazuje możliwości zdalnego pulpitu nawigacyjnego monitorowania. Aby dodać tych funkcji, samouczku scenariusza aplikacji Contoso IoT.
+Ten samouczek pokazuje możliwości monitorowania zdalnego pulpitu nawigacyjnego. Aby dodać tych funkcji, samouczku scenariusza aplikacji Contoso IoT.
 
 W tym samouczku dwa symulowanego urządzenia ciężarówka Contoso służy do Dowiedz się, jak monitorować urządzenia z poziomu pulpitu nawigacyjnego akceleratora rozwiązań. Jako operatora firmy Contoso należy monitorować lokalizacji i zachowania użytkownika pojazdów w polu.
 
@@ -35,9 +32,9 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby użyć tego samouczka, należy wdrożone wystąpienie zdalnego rozwiązanie monitorowania w ramach subskrypcji platformy Azure.
+Aby użyć tego samouczka, należy wdrożone wystąpienie rozwiązanie monitorowania zdalnego w ramach subskrypcji platformy Azure.
 
-Jeśli jeszcze tego nie wdrożono rozwiązanie monitorowania zdalnego jeszcze, należy wykonać [wdrożyć zdalnego monitorowania akcelerator rozwiązań](iot-accelerators-remote-monitoring-deploy.md) samouczka.
+Jeśli jeszcze tego nie wdrożono rozwiązanie monitorowania zdalnego jeszcze, należy wykonać [wdrażanie akcelerator rozwiązań monitorowania zdalnego](iot-accelerators-remote-monitoring-deploy.md) samouczka.
 
 ## <a name="choose-the-devices-to-display"></a>Wybierz urządzenia do wyświetlenia
 

@@ -1,24 +1,19 @@
 ---
-title: "Konfigurowanie przekazywania pliku z Centrum IoT przy użyciu wiersza polecenia platformy Azure (az.py) | Dokumentacja firmy Microsoft"
-description: "Jak skonfigurować fileuploads z Centrum IoT Azure przy użyciu interfejsu wiersza polecenia Azure i platform w 2.0 (az.py)."
-services: iot-hub
-documentationcenter: 
+title: Konfigurowanie przekazywania pliku z Centrum IoT przy użyciu wiersza polecenia platformy Azure (az.py) | Dokumentacja firmy Microsoft
+description: Jak skonfigurować fileuploads z Centrum IoT Azure przy użyciu interfejsu wiersza polecenia Azure i platform w 2.0 (az.py).
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 915f1597-272d-4fd4-8c5b-a0ccb1df0d91
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 6b100e65aba604fd8becb02c3a205b3348872bc4
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 378fb06f7ac9cbb6dc645994682786f474077d03
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633856"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Konfigurowanie Centrum IoT przekazywania plików przy użyciu wiersza polecenia platformy Azure
 
@@ -31,27 +26,27 @@ Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 * Aktywne konto platformy Azure. Jeśli go nie masz, możesz utworzyć [bezpłatne konto][lnk-free-trial] w zaledwie kilka minut.
 * [Azure CLI 2.0][lnk-CLI-install].
 * Centrum Azure IoT. Jeśli nie masz Centrum IoT, możesz użyć `az iot hub create` [polecenia] [ lnk-cli-create-iothub] można utworzyć jeden lub za pomocą portalu [tworzenia Centrum IoT] [lnk-portal Centrum].
-* Konto magazynu Azure. Jeśli nie masz konta usługi Azure Storage, możesz użyć [2.0 interfejsu wiersza polecenia platformy Azure — Zarządzanie kontami magazynu] [ lnk-manage-storage] można utworzyć jeden lub Portal umożliwia [Utwórz konto magazynu][lnk-portal-storage].
+* Konto usługi Azure Storage. Jeśli nie masz konta usługi Azure Storage, możesz użyć [2.0 interfejsu wiersza polecenia platformy Azure — Zarządzanie kontami magazynu] [ lnk-manage-storage] można utworzyć jeden lub Portal umożliwia [Utwórz konto magazynu][lnk-portal-storage].
 
 ## <a name="sign-in-and-set-your-azure-account"></a>Zaloguj się i ustawić konta platformy Azure
 
-Zaloguj się do konta platformy Azure i wyboru subskrypcji.
+Zaloguj się do konta platformy Azure i wybierz subskrypcję.
 
-1. W wierszu polecenia Uruchom [polecenia logowania][lnk-login-command]:
+1. W wierszu polecenia uruchom [polecenie logowania][lnk-login-command]:
 
     ```azurecli
     az login
     ```
 
-    Postępuj zgodnie z instrukcjami w celu uwierzytelnienia przy użyciu kodu i zaloguj się do konta platformy Azure za pośrednictwem przeglądarki sieci web.
+    Postępuj zgodnie z instrukcjami w celu uwierzytelnienia przy użyciu kodu i zaloguj się na konto platformy Azure za pośrednictwem przeglądarki internetowej.
 
-1. Jeśli masz wiele subskrypcji Azure, logowanie do platformy Azure przydziela dostęp do wszystkich kont platformy Azure skojarzone z poświadczeniami użytkownika. Należy użyć następującego [polecenia do listy kont Azure] [ lnk-az-account-command] dostępne do użycia:
+1. Jeśli masz wiele subskrypcji platformy Azure, zalogowanie się do platformy Azure zapewnia dostęp do wszystkich kont platformy Azure skojarzonych z poświadczeniami użytkownika. Użyj następującego [polecenia, aby wyświetlić listę kont platformy Azure][lnk-az-account-command] dostępnych do użycia:
 
     ```azurecli
     az account list
     ```
 
-    Użyj następującego polecenia, aby wybrać subskrypcję, która ma być używany do uruchamiania poleceń, aby utworzyć Centrum IoT. Przy użyciu subskrypcji nazwa lub identyfikator z danych wyjściowych poprzednie polecenie:
+    Użyj następującego polecenia, aby wybrać subskrypcję, która ma zostać użyta do uruchamiania poleceń w celu utworzenia centrum IoT. Można użyć nazwy subskrypcji lub identyfikatora z danych wyjściowych poprzedniego polecenia:
 
     ```azurecli
     az account set --subscription {your subscription name or id}
@@ -131,7 +126,7 @@ Możesz przejrzeć konfigurację przekazywania pliku, na Centrum IoT przy użyci
 az iot hub show --name {your iot hub name}
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat możliwości przekazywania plików Centrum IoT, zobacz [przekazywania plików z urządzeniem][lnk-upload].
 
@@ -144,7 +139,7 @@ Skorzystaj z poniższych linków, aby dowiedzieć się więcej o zarządzaniu Ce
 Aby dokładniej analizować możliwości Centrum IoT, zobacz:
 
 * [Przewodnik dewelopera Centrum IoT][lnk-devguide]
-* [Wdrażanie urządzenia brzegowe AI krawędzi IoT Azure][lnk-iotedge]
+* [Wdrażanie rozwiązań SI na urządzeniach brzegowych przy użyciu usługi Azure IoT Edge][lnk-iotedge]
 * [Zabezpieczanie rozwiązania IoT od podstaw w górę][lnk-securing]
 
 [13]: ./media/iot-hub-configure-file-upload/file-upload-settings.png

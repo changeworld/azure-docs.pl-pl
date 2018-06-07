@@ -54,6 +54,7 @@
 ### [Stosowanie w aplikacjach niestandardowych (SDK)](../active-directory/authentication/howto-mfa-sdk.md)
 
 ## [Raportowanie](../active-directory/authentication/howto-mfa-reporting.md)
+### [Zbieranie danych](../active-directory/authentication/howto-mfa-reporting-datacollection.md)
 
 ## [Podręcznik użytkownika uwierzytelniania wieloskładnikowego](./end-user/multi-factor-authentication-end-user.md)
 

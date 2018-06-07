@@ -1,24 +1,20 @@
 ---
-title: Azure serwera kopii zapasowej stanu systemu chroni i przywraca od zera | Dokumentacja firmy Microsoft
-description: "Serwer kopii zapasowej Azure umożliwia tworzenie kopii zapasowej stanu systemu i zapewnić ochronę odzyskiwania kompletnego stanu systemu od zera (BMR)."
+title: Azure serwera kopii zapasowej stanu systemu chroni i przywraca od zera
+description: Serwer kopii zapasowej Azure umożliwia tworzenie kopii zapasowej stanu systemu i zapewnić ochronę odzyskiwania kompletnego stanu systemu od zera (BMR).
 services: backup
-documentationcenter: 
 author: markgalioto
 manager: carmonm
-keywords: 
-ms.assetid: 
+keywords: ''
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.targetplatform: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: markgal,masaran
-ms.openlocfilehash: 30f70a702d7d9a3e1196c04096708c035e406607
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: markgal
+ms.openlocfilehash: d35f8667cb1ca9a0b3abd08450ebc647d6d12276
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607212"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Wykonaj kopię zapasową stanu systemu i przywrócić serwer kopii zapasowej Azure od zera
 
@@ -33,23 +29,23 @@ Serwer kopii zapasowej systemu Azure wykonuje kopię zapasową stanu systemu i z
 
 Poniższa tabela zawiera podsumowanie, jakie można utworzyć kopię zapasową i odzyskiwanie. Aby uzyskać szczegółowe informacje o wersji aplikacji, które mogą być chronione przy użyciu stanu systemu i BMR, zobacz [czego serwer kopii zapasowej Azure Utwórz kopię zapasową?](backup-mabs-protection-matrix.md).
 
-|Tworzenie kopii zapasowych|Problem|Odzyskiwanie z kopii zapasowej serwera kopii zapasowej Azure|Odzyskiwanie z kopii zapasowej stanu systemu|ODZYSKIWANIA SYSTEMU OD ZERA|
+|Backup|Problem|Odzyskiwanie z kopii zapasowej serwera kopii zapasowej Azure|Odzyskiwanie z kopii zapasowej stanu systemu|ODZYSKIWANIA SYSTEMU OD ZERA|
 |----------|---------|---------------------------|------------------------------------|-------|
-|**Plik danych**<br /><br />Regularnego tworzenia kopii zapasowych<br /><br />Kopii zapasowej BMR/system stanu|Utraconych danych|Tak|N|N|
-|**Plik danych**<br /><br />Kopia zapasowa Azure serwera kopii zapasowej danych plików<br /><br />Kopii zapasowej BMR/system stanu|Utraconego lub uszkodzonego systemu operacyjnego|N|Tak|Tak|
-|**Plik danych**<br /><br />Kopia zapasowa Azure serwera kopii zapasowej danych plików<br /><br />Kopii zapasowej BMR/system stanu|Utracony serwer (nieuszkodzone woluminy danych)|N|N|Tak|
+|**Plik danych**<br /><br />Regularnego tworzenia kopii zapasowych<br /><br />Kopii zapasowej BMR/system stanu|Utraconych danych|Tak|Nie|Nie|
+|**Plik danych**<br /><br />Kopia zapasowa Azure serwera kopii zapasowej danych plików<br /><br />Kopii zapasowej BMR/system stanu|Utraconego lub uszkodzonego systemu operacyjnego|Nie|Tak|Tak|
+|**Plik danych**<br /><br />Kopia zapasowa Azure serwera kopii zapasowej danych plików<br /><br />Kopii zapasowej BMR/system stanu|Utracony serwer (nieuszkodzone woluminy danych)|Nie|Nie|Tak|
 |**Plik danych**<br /><br />Kopia zapasowa Azure serwera kopii zapasowej danych plików<br /><br />Kopii zapasowej BMR/system stanu|Utracony serwer (utracone woluminy danych)|Tak|Nie|Tak (BMR, następuje zwykłe odzyskiwanie kopii zapasowej pliku danych)|
-|**Dane programu SharePoint**:<br /><br />Utwórz kopię zapasową serwera kopii zapasowej systemu Azure danych farmy<br /><br />Kopii zapasowej BMR/system stanu|Utracone witryny, listy, elementy listy, dokumentów|Tak|N|N|
-|**Dane programu SharePoint**:<br /><br />Utwórz kopię zapasową serwera kopii zapasowej systemu Azure danych farmy<br /><br />Kopii zapasowej BMR/system stanu|Utraconego lub uszkodzonego systemu operacyjnego|N|Tak|Tak|
-|**Dane programu SharePoint**:<br /><br />Utwórz kopię zapasową serwera kopii zapasowej systemu Azure danych farmy<br /><br />Kopii zapasowej BMR/system stanu|Odzyskiwanie po awarii|N|N|N|
-|Windows Server 2012 R2 Hyper-V<br /><br />Utwórz kopię zapasową serwera kopii zapasowej systemu Azure hosta funkcji Hyper-V lub gościa<br /><br />Kopia zapasowa stanu BMR/systemu hosta|Utracone maszyny Wirtualnej|Tak|N|N|
-|Funkcja Hyper-V<br /><br />Utwórz kopię zapasową serwera kopii zapasowej systemu Azure hosta funkcji Hyper-V lub gościa<br /><br />Kopia zapasowa stanu BMR/systemu hosta|Utraconego lub uszkodzonego systemu operacyjnego|N|Tak|Tak|
-|Funkcja Hyper-V<br /><br />Utwórz kopię zapasową serwera kopii zapasowej systemu Azure hosta funkcji Hyper-V lub gościa<br /><br />Kopia zapasowa stanu BMR/systemu hosta|Utracone hosta funkcji Hyper-V (nieuszkodzone VMs)|N|N|Tak|
-|Funkcja Hyper-V<br /><br />Utwórz kopię zapasową serwera kopii zapasowej systemu Azure hosta funkcji Hyper-V lub gościa<br /><br />Kopia zapasowa stanu BMR/systemu hosta|Utracone hosta funkcji Hyper-V (utracone maszyny wirtualne)|N|N|Tak<br /><br />Odzyskiwania systemu od ZERA, następuje zwykłe odzyskiwanie serwera usługi Kopia zapasowa Azure|
-|Wymiana serwer SQL<br /><br />Utwórz kopię zapasową serwera aplikacji usługa Kopia zapasowa Azure<br /><br />Kopii zapasowej BMR/system stanu|Dane aplikacji utracone|Tak|N|N|
-|Wymiana serwer SQL<br /><br />Utwórz kopię zapasową serwera aplikacji usługa Kopia zapasowa Azure<br /><br />Kopii zapasowej BMR/system stanu|Utraconego lub uszkodzonego systemu operacyjnego|N|Y|Tak|
-|Wymiana serwer SQL<br /><br />Utwórz kopię zapasową serwera aplikacji usługa Kopia zapasowa Azure<br /><br />Kopii zapasowej BMR/system stanu|Utracony serwer (nieuszkodzone dzienniki transakcji/bazy danych)|N|N|Tak|
-|Wymiana serwer SQL<br /><br />Utwórz kopię zapasową serwera aplikacji usługa Kopia zapasowa Azure<br /><br />Kopii zapasowej BMR/system stanu|Utracony serwer (utracone dzienniki transakcji/bazy danych)|N|N|Tak<br /><br />Odzyskiwania systemu od ZERA, następuje zwykłe odzyskiwanie serwera usługi Kopia zapasowa Azure|
+|**Dane programu SharePoint**:<br /><br />Utwórz kopię zapasową serwera kopii zapasowej systemu Azure danych farmy<br /><br />Kopii zapasowej BMR/system stanu|Utracone witryny, listy, elementy listy, dokumentów|Tak|Nie|Nie|
+|**Dane programu SharePoint**:<br /><br />Utwórz kopię zapasową serwera kopii zapasowej systemu Azure danych farmy<br /><br />Kopii zapasowej BMR/system stanu|Utraconego lub uszkodzonego systemu operacyjnego|Nie|Tak|Tak|
+|**Dane programu SharePoint**:<br /><br />Utwórz kopię zapasową serwera kopii zapasowej systemu Azure danych farmy<br /><br />Kopii zapasowej BMR/system stanu|Odzyskiwanie po awarii|Nie|Nie|Nie|
+|Windows Server 2012 R2 Hyper-V<br /><br />Utwórz kopię zapasową serwera kopii zapasowej systemu Azure hosta funkcji Hyper-V lub gościa<br /><br />Kopia zapasowa stanu BMR/systemu hosta|Utracone maszyny Wirtualnej|Tak|Nie|Nie|
+|Funkcja Hyper-V<br /><br />Utwórz kopię zapasową serwera kopii zapasowej systemu Azure hosta funkcji Hyper-V lub gościa<br /><br />Kopia zapasowa stanu BMR/systemu hosta|Utraconego lub uszkodzonego systemu operacyjnego|Nie|Tak|Tak|
+|Funkcja Hyper-V<br /><br />Utwórz kopię zapasową serwera kopii zapasowej systemu Azure hosta funkcji Hyper-V lub gościa<br /><br />Kopia zapasowa stanu BMR/systemu hosta|Utracone hosta funkcji Hyper-V (nieuszkodzone VMs)|Nie|Nie|Tak|
+|Funkcja Hyper-V<br /><br />Utwórz kopię zapasową serwera kopii zapasowej systemu Azure hosta funkcji Hyper-V lub gościa<br /><br />Kopia zapasowa stanu BMR/systemu hosta|Utracone hosta funkcji Hyper-V (utracone maszyny wirtualne)|Nie|Nie|Tak<br /><br />Odzyskiwania systemu od ZERA, następuje zwykłe odzyskiwanie serwera usługi Kopia zapasowa Azure|
+|Wymiana serwer SQL<br /><br />Utwórz kopię zapasową serwera aplikacji usługa Kopia zapasowa Azure<br /><br />Kopii zapasowej BMR/system stanu|Dane aplikacji utracone|Tak|Nie|Nie|
+|Wymiana serwer SQL<br /><br />Utwórz kopię zapasową serwera aplikacji usługa Kopia zapasowa Azure<br /><br />Kopii zapasowej BMR/system stanu|Utraconego lub uszkodzonego systemu operacyjnego|Nie|Y|Tak|
+|Wymiana serwer SQL<br /><br />Utwórz kopię zapasową serwera aplikacji usługa Kopia zapasowa Azure<br /><br />Kopii zapasowej BMR/system stanu|Utracony serwer (nieuszkodzone dzienniki transakcji/bazy danych)|Nie|Nie|Tak|
+|Wymiana serwer SQL<br /><br />Utwórz kopię zapasową serwera aplikacji usługa Kopia zapasowa Azure<br /><br />Kopii zapasowej BMR/system stanu|Utracony serwer (utracone dzienniki transakcji/bazy danych)|Nie|Nie|Tak<br /><br />Odzyskiwania systemu od ZERA, następuje zwykłe odzyskiwanie serwera usługi Kopia zapasowa Azure|
 
 ## <a name="how-system-state-backup-works"></a>Jak działa kopii zapasowej stanu systemu
 
@@ -59,7 +55,7 @@ Można wybrać dysk, który korzysta z tworzenia kopii zapasowej serwera kopii z
 
 Należy pamiętać, że jeśli serwer ochrony znajduje się w klastrze, możliwe, że dysk klastra zostanie wybrany jako dysk z największą ilością wolnego miejsca. Jeśli tego własności dysku została przełączona na inny węzeł i kopii zapasowej stanu systemu, dysku nie jest dostępna i tworzenia kopii zapasowej nie powiedzie się. W tym scenariuszu należy zmodyfikować PSDataSourceConfig.xml, aby wskazywał dysk lokalny.
 
-Następnie kopia zapasowa systemu Windows Server tworzy folder o nazwie WindowsImageBackup w katalogu głównym folderu przywracania. Jako kopia zapasowa systemu Windows Server tworzy kopię zapasową wszystkich danych znajduje się w tym folderze. Po zakończeniu operacji tworzenia kopii zapasowej plik jest przekazywany do tworzenia kopii zapasowej serwera. Należy uwzględnić następujące informacje:
+Następnie kopia zapasowa systemu Windows Server tworzy folder o nazwie WindowsImageBackup w katalogu głównym folderu przywracania. Jako kopia zapasowa systemu Windows Server tworzy kopię zapasową wszystkich danych znajduje się w tym folderze. Po zakończeniu operacji tworzenia kopii zapasowej plik jest przekazywany do tworzenia kopii zapasowej serwera. Zanotuj następujące informacje:
 
 * Ten folder i jego zawartość nie wyczyszczono po zakończeniu operacji transferu lub kopii zapasowej. Najlepszym sposobem jest to, że miejsce pozostaje zarezerwowane dla następnej kopii zapasowej zostało zakończone.
 * Folder jest tworzony za każdym razem, gdy kopia zapasowa ma zostać. Datą i godziną wskazuje godzinę wykonania ostatniej kopii zapasowej stanu systemu.
@@ -220,9 +216,9 @@ Uruchom narzędzie Kopia zapasowa systemu Windows Server:
 
 5.  Na **potwierdzenie** wybierz pozycję **odzyskać**. Po przywróceniu Uruchom ponownie serwer.
 
-6.  Przywracanie stanu systemu można również uruchomić polecenie w wierszu polecenia. Aby to zrobić, należy uruchomić narzędzie Kopia zapasowa systemu Windows Server na komputerze, który chcesz odzyskać. Aby uzyskać identyfikator wersji, w wierszu polecenia, wpisz:```wbadmin get versions -backuptarget \<servername\sharename\>```
+6.  Przywracanie stanu systemu można również uruchomić polecenie w wierszu polecenia. Aby to zrobić, należy uruchomić narzędzie Kopia zapasowa systemu Windows Server na komputerze, który chcesz odzyskać. Aby uzyskać identyfikator wersji, w wierszu polecenia, wpisz: ```wbadmin get versions -backuptarget \<servername\sharename\>```
 
-    Użyj identyfikatora wersji, aby uruchomić Przywracanie stanu systemu. W wierszu polecenia wpisz:```wbadmin start systemstaterecovery -version:<versionidentified> -backuptarget:<servername\sharename>```
+    Użyj identyfikatora wersji, aby uruchomić Przywracanie stanu systemu. W wierszu polecenia wpisz: ```wbadmin start systemstaterecovery -version:<versionidentified> -backuptarget:<servername\sharename>```
 
     Upewnij się, że chcesz rozpocząć odzyskiwanie. Możesz śledzić proces w oknie wiersza polecenia. Tworzony jest dziennik przywracania. Po przywróceniu Uruchom ponownie serwer.
 

@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: ef43037ff33b693256c82459eec2e4b3beab4d9a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3f6add6691b0e1f43d70399493fa6bf8db8f3833
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617182"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Kopiowanie danych do i z magazynem tabel Azure przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -270,9 +271,9 @@ Podczas przenoszenia danych do i z tabel Azure, następujące [mapowania zdefini
 | Typ danych tabeli platformy Azure | Typ danych tymczasowych fabryki danych | Szczegóły |
 |:--- |:--- |:--- |
 | Edm.Binary |byte[] |Tablica bajtów do 64 KB. |
-| Edm.Boolean |bool |Wartość logiczna. |
+| Edm.Boolean |wartość logiczna |Wartość logiczna. |
 | Edm.DateTime |DateTime |Wartość 64-bitowa, wyrażone jako uniwersalny czas koordynowany (UTC). Północy, 1 stycznia, 1601 r. N.E. rozpoczyna się obsługiwanym zakresem daty i godziny (C.E.), UTC. Zakres kończy się 31 grudnia 9999 r. |
-| Edm.Double |O podwójnej precyzji |64-bitowej zmiennej punktu wartości. |
+| Edm.Double |double |64-bitowej zmiennej punktu wartości. |
 | Edm.Guid |Identyfikator GUID |Globalnie unikatowy identyfikator 128-bitowego. |
 | Edm.Int32 |Int32 |32-bitową liczbę całkowitą. |
 | Edm.Int64 |Int64 |64-bitową liczbę całkowitą. |

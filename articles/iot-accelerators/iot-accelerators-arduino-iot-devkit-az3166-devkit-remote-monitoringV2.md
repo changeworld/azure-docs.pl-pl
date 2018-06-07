@@ -1,31 +1,27 @@
 ---
-title: 'Zestaw deweloperski IoT do chmury: Połącz AZ3166 zestaw deweloperski IoT do Azure IoT pakiet monitorowania zdalnego v2 | Dokumentacja firmy Microsoft'
-description: W tym samouczku sposób wysyłania stan czujników na AZ3166 zestaw deweloperski IoT do monitorowania zdalnego v2 z pakiet IoT Azure monitorowania i wizualizacji.
-services: iot-hub
-documentationcenter: ''
+title: 'Zestaw deweloperski IoT do chmury: Połącz AZ3166 zestaw deweloperski IoT do zdalnego monitorowania IoT akcelerator rozwiązań | Dokumentacja firmy Microsoft'
+description: W tym samouczku Dowiedz się, jak wysyłać stan czujników na AZ3166 zestaw deweloperski IoT do zdalnego monitorowania IoT akcelerator rozwiązań monitorowania i wizualizacji.
 author: isabelcabezasm
 manager: ''
-tags: ''
-keywords: ''
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.devlang: c
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: isacabe
-ms.openlocfilehash: 667e51acd5ac1367e185fb9bf9a7949a13e061af
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 8aa4d660fbf785a4caf99bcdeddc86aa9929c50d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627743"
 ---
-# <a name="connect-mxchip-iot-devkit-az3166-to-azure-iot-suite-for-remote-monitoring-v2"></a>Nawiązać MXChip IoT zestaw deweloperski AZ3166 pakiet IoT Azure dla zdalnego monitorowania v2
+# <a name="connect-mxchip-iot-devkit-az3166-to-the-iot-remote-monitoring-solution-accelerator"></a>Nawiązać MXChip IoT zestaw deweloperski AZ3166 akcelerator rozwiązań monitorowania zdalnego IoT
 
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-W tym samouczku Dowiedz się jak uruchomić przykładową aplikację na Twoje zestaw deweloperski, aby wysłać dane czujników do pakietu Azure IoT.
+W tym samouczku Dowiedz się jak uruchomić przykładową aplikację na Twoje zestaw deweloperski, aby wysłać dane czujników do Twojej akcelerator rozwiązań.
 
 [Zestaw deweloperski IoT MXChip](https://aka.ms/iot-devkit) jest w jednym Arduino tablicy zgodny z czujników i sformatowanego urządzenia peryferyjne. Można utworzyć dla niego przy użyciu [rozszerzenia Visual Studio Code Arduino](https://aka.ms/arduino). I pochodzi z rosnącym [katalogu projektów](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) prowadzące prototypu Internetu rzeczy (IoT) rozwiązania, które korzystać z usług Microsoft Azure.
 
@@ -114,13 +110,13 @@ Teraz możesz zobaczyć nowe urządzenie fizyczne w kodzie VS sekcji "Azure IoT 
 
 ## <a name="test-the-project"></a>Projekt testowy
 
-Po uruchomieniu aplikacji przykładowej, zestaw deweloperski wysyła dane czujników za pośrednictwem sieci Wi-Fi do pakietu Azure IoT. Aby zobaczyć wynik, wykonaj następujące kroki:
+Po uruchomieniu aplikacji przykładowej, zestaw deweloperski wysyła dane czujników za pośrednictwem sieci Wi-Fi do akceleratorami rozwiązania IoT. Aby zobaczyć wynik, wykonaj następujące kroki:
 
-1. Przejdź do pakietu IoT Azure, a następnie kliknij przycisk **pulpitu NAWIGACYJNEGO**.
+1. Przejdź do Twojej akceleratora rozwiązania IoT, a następnie kliknij przycisk **pulpitu NAWIGACYJNEGO**.
 
-2. W konsoli rozwiązania pakiet IoT Azure pojawi się stan czujnik zestaw deweloperski. 
+2. W konsoli akceleratora rozwiązania IoT pojawi się stan czujnik zestaw deweloperski. 
 
-![Dane czujników w pakiet IoT Azure](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-dashboard.png)
+![Dane czujników w akceleratorów rozwiązania IoT](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-dashboard.png)
 
 Po kliknięciu nazwy czujnika (AZ3166) po prawej stronie pulpitu nawigacyjnego, w którym można zobaczyć MX układ wykresu czujników w czasie rzeczywistym powoduje otwarcie karty.
 
@@ -158,7 +154,7 @@ Jeśli wystąpią problemy, zapoznaj się [— często zadawane pytania](https:/
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, kiedy znasz jak zestaw deweloperski urządzenie podłączone do pakietu Azure IoT i wizualizować dane czujników, w tym miejscu są Sugerowane następne kroki:
+Teraz, kiedy znasz jak zestaw deweloperski urządzenie podłączone do akceleratorami rozwiązania IoT i wizualizować dane czujników, w tym miejscu są Sugerowane następne kroki:
 
-* [Omówienie pakiet IoT Azure](https://docs.microsoft.com/azure/iot-suite/)
+* [Omówienie akceleratorów rozwiązania IoT](https://docs.microsoft.com/azure/iot-suite/)
 * [Podłącz urządzenie z systemem zestaw deweloperski IoT MXChip do aplikacji Microsoft IoT centralnego](https://docs.microsoft.com/en-us/microsoft-iot-central/howto-connect-devkit)

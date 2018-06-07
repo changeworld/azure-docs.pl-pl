@@ -1,23 +1,20 @@
 ---
-title: Wyświetlanie dzienników diagnostycznych dla usługi Azure Data Lake Analytics | Dokumentacja firmy Microsoft
-description: 'Zrozumienie, jak skonfigurować i dostępu do dzienników diagnostycznych dla usługi Azure Data Lake analytics '
+title: Włączanie i przeglądanie dzienników diagnostycznych dla usługi Azure Data Lake Analytics
+description: Zrozumienie, jak skonfigurować i uzyskiwać dostęp do dzienników diagnostycznych dla usługi Azure Data Lake Analytics
 services: data-lake-analytics
-documentationcenter: ''
+ms.service: data-lake-analytics
 author: jasonwhowell
 ms.author: jasonh
 manager: kfile
 ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
-ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/12/2018
-ms.openlocfilehash: efec1e00e9c2da519028f7e6ff094a0f0876df79
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e65c6396d859a128777c66cad6a44bb033b50d50
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623489"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Uzyskiwanie dostępu do dzienników diagnostycznych dla usługi Azure Data Lake Analytics
 

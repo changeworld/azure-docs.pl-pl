@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: magoedte
-ms.openlocfilehash: 6adde6a76a7675ef4d8b63757fc9419500872dd9
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 66d3ee76308573bb5672ffa8eeedcc4aca4c0cc5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638351"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Kontener rozwiązania monitorowanie analizy dzienników
 
@@ -52,7 +53,7 @@ W poniższej tabeli przedstawiono aranżacji Docker i monitorowania obsługę ko
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
 | Docker<br>Swarm | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
-| Usługa<br>Sieć szkieletowa | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
+| Usługa<br>Fabric | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Red Hat Otwórz<br>Shift | | &#8226; | | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; | | &#8226; |
 | Windows Server<br>(autonomiczna) | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
 | Serwer systemu Linux<br>(autonomiczna) | | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
@@ -90,7 +91,7 @@ W poniższej tabeli przedstawiono aranżacji Docker i monitorowania obsługę ko
 - Docker 17.03.0 i nowsze
 
 ## <a name="installing-and-configuring-the-solution"></a>Instalowanie i konfigurowanie rozwiązania
-Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązania.
+Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązanie.
 
 1. Dodaj rozwiązanie monitorowania kontenera do obszaru roboczego analizy dzienników z [witrynę Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) lub przy użyciu procesu opisanego w [rozwiązań dodać analizy dzienników z galerii rozwiązań](log-analytics-add-solutions.md).
 
@@ -528,7 +529,7 @@ Możesz sprawdzić, czy to rozwiązanie monitorowanie kontenera jest prawidłowo
 
 ## <a name="solution-components"></a>Składniki rozwiązania
 
-Jeśli korzystasz z agentów systemu Windows, następujące pakiet administracyjny jest zainstalowany na każdym komputerze z agentem po dodaniu tego rozwiązania. Nie konfiguracji lub konserwacji jest wymagany dla pakietu administracyjnego.
+W portalu OMS, przejdź do *galerii rozwiązań* i Dodaj **rozwiązanie monitorowanie kontenera**. Jeśli korzystasz z agentów systemu Windows, następujące pakiet administracyjny jest zainstalowany na każdym komputerze z agentem po dodaniu tego rozwiązania. Nie konfiguracji lub konserwacji jest wymagany dla pakietu administracyjnego.
 
 - *ContainerManagement.xxx* zainstalowane w C:\Program Files\Microsoft Monitoring Agent\Agent\Health usługi State\Management pakietów
 
@@ -563,6 +564,7 @@ Etykiety dołączany do *PodLabel* typy danych są etykiet niestandardowych. Do�
 
 ## <a name="monitor-containers"></a>Monitorowanie kontenerów
 Po rozwiązaniu włączone w portalu usługi Analiza dzienników **kontenery** kafelka zawiera podsumowanie informacji o hostach kontenera i kontenery uruchomione na hostach.
+
 
 ![Kontenery kafelka](./media/log-analytics-containers/containers-title.png)
 

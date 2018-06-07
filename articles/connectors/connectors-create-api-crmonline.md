@@ -1,25 +1,22 @@
 ---
-title: "Nawiązywanie połączenia z usługi Azure Logic Apps do 365 Dynamics (online) | Dokumentacja firmy Microsoft"
-description: "Tworzenie przepływów pracy aplikacji zarządzających Dynamics 365 jednostek (online) za pośrednictwem interfejsu API dostarczonych przez łącznik programu Dynamics 365 logiki"
-services: logic-apps
-cloud: Azure Stack
+title: Nawiązać Dynamics 365 - Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Tworzenie i zarządzanie nimi rekordy z interfejsów API REST (online) Dynamics 365 i Azure Logic Apps
 author: Mattp123
-manager: anneta
-documentationcenter: 
-tags: connectors
-ms.assetid: 0dc2abef-7d2c-4a2d-87ca-fad21367d135
-ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+manager: cfowler
+ms.author: matp
 ms.date: 02/10/2017
-ms.author: matp; LADocs
-ms.openlocfilehash: d35647921ff540167a3a591fb489d3bab031a5c1
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: 015f587257603330eab9840edf661ba9675f4ba8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609899"
 ---
 # <a name="connect-to-dynamics-365-from-logic-app-workflows"></a>Nawiązywanie połączenia z przepływów pracy aplikacji logiki do Dynamics 365
 

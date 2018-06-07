@@ -13,11 +13,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 48253b68a329d17f213369e8e4ee2e06bdf17992
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 4ac86be25ebe7d12190cce290603ce83037a7b47
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640374"
 ---
 # <a name="ocr-cognitive-skill"></a>Kognitywnych umiejętności Rozpoznawania
 
@@ -60,7 +61,7 @@ Parametry jest rozróżniana wielkość liter.
 {
     "skills": [
       {
-        "description": "Extracts text (plain and structured) from image."
+        "description": "Extracts text (plain and structured) from image.",
         "@odata.type": "#Microsoft.Skills.Vision.OcrSkill",
         "context": "/document/normalized_images/*",
         "defaultLanguageCode": null,
@@ -131,7 +132,7 @@ Przypadek użycia wspólnego dla połączenia tekst jest możliwość scalania t
 
 Tworzy następujące skillset przykład *merged_text* pole ma zawierać zawartość tekstową dokumentu, a także tekst OCRed z poszczególnych obrazów osadzonych w tym dokumencie. 
 
-#### <a name="request-body-syntax"></a>Składnia treść żądania
+#### <a name="request-body-syntax"></a>Składnia treści żądania
 ```json
 {
   "description": "Extract text from images and merge with content text to produce merged_text",
@@ -200,4 +201,4 @@ W powyższym przykładzie skillset założono, że pole znormalizowany obrazów 
 + [Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md)
 + [Umiejętności TextMerger](cognitive-search-skill-textmerger.md)
 + [Sposób definiowania skillset](cognitive-search-defining-skillset.md)
-+ [Utwórz indeksator (REST)](ref-create-indexer.md)
++ [Utwórz indeksator (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

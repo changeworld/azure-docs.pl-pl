@@ -1,6 +1,6 @@
 ---
-title: "Administrowanie pamięć podręczna Redis Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wykonywać zadania administracyjne, takie jak ponowne uruchomienie i harmonogram aktualizacji dla pamięci podręcznej Redis Azure"
+title: Administrowanie pamięć podręczna Redis Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wykonywać zadania administracyjne, takie jak ponowne uruchomienie i harmonogram aktualizacji dla pamięci podręcznej Redis Azure
 services: redis-cache
 documentationcenter: na
 author: wesmc7777
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: wesmc
-ms.openlocfilehash: 37e7395a26ead737009ad9e285e9f88372b25d26
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 3b62b41fb7b9d7ff6f40191c48d00c1f0a941e48
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639456"
 ---
 # <a name="how-to-administer-azure-redis-cache"></a>Administrowanie pamięć podręczna Redis Azure
 W tym temacie opisano sposób wykonywania zadań administracyjnych, takich jak [ponowny rozruch](#reboot) i [Planowanie aktualizacji](#schedule-updates) dla swoich wystąpień w pamięci podręcznej Redis Azure.
@@ -91,10 +92,8 @@ Ponowne uruchomienie jest dostępna dla wszystkich warstw cenowych.
 
 Aby określić okna obsługi, sprawdź odpowiednią dni i określ godzina rozpoczęcia okna konserwacji codziennie i kliknij **OK**. Należy pamiętać, że czas okna obsługi w formacie UTC. 
 
-> [!NOTE]
-> Oknie domyślnej konserwacji dla aktualizacji jest pięć godzin. Ta wartość nie jest konfigurowalne z portalu Azure, ale można go skonfigurować za pomocą programu PowerShell `MaintenanceWindow` parametr [AzureRmRedisCacheScheduleEntry nowy](/powershell/module/azurerm.rediscache/new-azurermrediscachescheduleentry) polecenia cmdlet. Aby uzyskać więcej informacji, zobacz [zaplanowanych aktualizacji przy użyciu programu PowerShell, interfejsu wiersza polecenia lub innych narzędzi do zarządzania można zarządzać?](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools)
-> 
-> 
+Domyślną i minimum, okna obsługi aktualizacji jest pięć godzin. Ta wartość nie jest konfigurowalne z portalu Azure, ale można go skonfigurować za pomocą programu PowerShell `MaintenanceWindow` parametr [AzureRmRedisCacheScheduleEntry nowy](/powershell/module/azurerm.rediscache/new-azurermrediscachescheduleentry) polecenia cmdlet. Aby uzyskać więcej informacji, zobacz [zaplanowanych aktualizacji przy użyciu programu PowerShell, interfejsu wiersza polecenia lub innych narzędzi do zarządzania można zarządzać?](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools)
+
 
 ## <a name="schedule-updates-faq"></a>Zaplanuj aktualizacje — często zadawane pytania
 * [Gdy aktualizacje wystąpić, jeśli funkcja Aktualizacje harmonogramu nie jest używany?](#when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature)

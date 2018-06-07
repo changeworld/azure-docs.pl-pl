@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/6/2017
 ms.author: mcoskun
-ms.openlocfilehash: c90231d58ca8eb562aadb916c8667e2bee700b3a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 46f9c6129ccf99fb72a285fa4089b7b3f01f7d7b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643036"
 ---
 # <a name="back-up-and-restore-reliable-services-and-reliable-actors"></a>Kopie zapasowe i przywracanie Reliable Services i Reliable Actors
 Sieć szkieletowa usług Azure to platforma wysokiej dostępności, która replikuje stanu na wielu węzłach do obsługi tej wysokiej dostępności.  W związku z tym nawet w przypadku awarii jednego węzła w klastrze, usługi nadal dostępne. Może być wystarczające dla niektórych wbudowanych — dublowanie dostarczone przez platformę, w niektórych przypadkach pożądane jest usługi Kopia zapasowa danych (w zewnętrznym sklepie).
@@ -153,7 +154,7 @@ Na przykład, jeśli zawiera pełną kopię zapasową pierwszy przyrostowych i t
 > 
 
 ## <a name="deleted-or-lost-service"></a>Usunięte i utracone usługi
-Jeśli usługa zostanie usunięty, należy najpierw ponownie utworzyć usługę przed przywróceniem danych.  Należy utworzyć usługę z taką samą konfiguracją, na przykład schemat, partycji, dzięki czemu dane można przywrócić bezproblemowo.  Gdy usługa działa, interfejsu API, aby przywrócić dane (`OnDataLossAsync` powyżej) musi być wywołana na każdej partycji tej usługi. Jednym ze sposobów osiągnięcia jest przy użyciu `[FabricClient.TestManagementClient.StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx)` na każdej partycji.  
+Jeśli usługa zostanie usunięty, należy najpierw ponownie utworzyć usługę przed przywróceniem danych.  Należy utworzyć usługę z taką samą konfiguracją, na przykład schemat, partycji, dzięki czemu dane można przywrócić bezproblemowo.  Gdy usługa działa, interfejsu API, aby przywrócić dane (`OnDataLossAsync` powyżej) musi być wywołana na każdej partycji tej usługi. Jednym ze sposobów osiągnięcia jest przy użyciu [FabricClient.TestManagementClient.StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx) na każdej partycji.  
 
 Z tego punktu implementacji jest taka sama, jak w powyższym scenariuszu. Każda partycja musi przywrócić najnowsze odpowiednich kopii zapasowej z magazynu zewnętrznego. Jedno zastrzeżenie: jest, że identyfikator partycji może teraz zmieniono, ponieważ środowisko uruchomieniowe dynamicznie tworzy identyfikatorów partycji. W związku z tym usługa musi przechowywać nazwy partycji odpowiednie informacje i usługi do identyfikowania poprawne najnowszej kopii zapasowej do przywrócenia z dla każdej partycji.
 

@@ -1,22 +1,19 @@
 ---
-title: Podczas instalacji dyskretnej serwer kopii zapasowej Azure w wersji 2 | Dokumentacja firmy Microsoft
-description: "Za pomocą skryptu programu PowerShell do przeprowadzenia instalacji dyskretnej v2 serwer kopii zapasowej Azure. Ten rodzaj instalacji jest również nazywany instalacji nienadzorowanej."
+title: Instalacja dyskretna z serwera usługi Kopia zapasowa Azure w wersji 2
+description: Za pomocą skryptu programu PowerShell do przeprowadzenia instalacji dyskretnej v2 serwer kopii zapasowej Azure. Ten rodzaj instalacji jest również nazywany instalacji nienadzorowanej.
 services: backup
-documentationcenter: " "
 author: markgalioto
 manager: carmonm
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 05/30/2017
-ms.author: markgal;masaran
-ms.openlocfilehash: 91778a67f9ef523aa87b7918197e0d0ded0f5702
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: markgal
+ms.openlocfilehash: 126c1971d83a8874c096caf407231fb6dee2ff59
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606413"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server-v2"></a>Uruchamianie nienadzorowanej instalacji serwera usługi Kopia zapasowa Azure w wersji 2
 
@@ -63,7 +60,7 @@ Można użyć tych flag do instalacji:</br>
 **/i**: ścieżka instalacji</br>
 **/x**: Odinstaluj ścieżki</br>
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Po zainstalowaniu serwera kopii zapasowej, Dowiedz się, jak przygotować serwer lub Włącz ochronę obciążeń.
 
 - [Przygotowanie serwera kopii zapasowej obciążeń](backup-azure-microsoft-azure-backup.md)

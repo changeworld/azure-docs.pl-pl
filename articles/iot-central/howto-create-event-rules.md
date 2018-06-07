@@ -1,18 +1,19 @@
 ---
 title: Tworzenie i zarządzanie nimi reguły zdarzenia w aplikacji Azure IoT centralnej | Dokumentacja firmy Microsoft
 description: Reguły zdarzeń w usłudze Azure IoT centralnego umożliwiają monitorowanie urządzeń w najbliższym czasie rzeczywistym i automatycznie wywołują akcje, takie jak wysyłanie wiadomości e-mail, gdy zasada wyzwala.
-services: iot-central
 author: ankitgupta
 ms.author: ankitgup
 ms.date: 04/29/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 932b1906b767ee7676f46ffd7242ad3d478d41c2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: 30223fdca9d848ddc407981bf4a3ca683a10575a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628372"
 ---
 # <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Tworzenie reguły zdarzeń i skonfigurować powiadomienia w aplikacji Azure IoT centralnej
 

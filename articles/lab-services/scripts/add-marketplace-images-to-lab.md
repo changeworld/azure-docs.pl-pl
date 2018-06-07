@@ -1,6 +1,6 @@
 ---
-title: 'Skrypt programu PowerShell: Dodaj do niestandardowych laboratorium w usłudze Azure laboratorium Services obrazu z witryny marketplace | Dokumentacja firmy Microsoft'
-description: Ten skrypt programu PowerShell dodaje obrazu z witryny marketplace do niestandardowych laboratorium w usłudze Azure Services laboratorium.
+title: 'Skrypt programu PowerShell: Dodaj obrazu z witryny marketplace do laboratorium w usłudze Azure DevTest Labs | Dokumentacja firmy Microsoft'
+description: Ten skrypt programu PowerShell dodaje laboratorium w usłudze Azure DevTest Labs obrazu z witryny marketplace.
 services: lab-services
 author: spelluru
 manager: ''
@@ -12,24 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 64d168c132edce4ecd128b795fbfa5ab2607cb19
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9a65237b3eba6c9878d73148f0143f20dd60dd79
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636552"
 ---
-# <a name="use-powershell-to-add-a-marketplace-image-to-a-custom-lab"></a>Dodaj do laboratorium niestandardowego obrazu z witryny marketplace przy użyciu programu PowerShell
+# <a name="use-powershell-to-add-a-marketplace-image-to-a-lab-in-azure-devtest-labs"></a>Dodawanie obrazu z witryny marketplace do laboratorium w usłudze Azure DevTest Labs przy użyciu programu PowerShell
 
-Ten przykładowy skrypt programu PowerShell dodaje obrazu z witryny marketplace do niestandardowych laboratorium w usłudze Azure Services laboratorium.
+Ten przykładowy skrypt programu PowerShell dodaje obrazu z witryny marketplace do laboratorium w usłudze Azure DevTest Labs. 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* **Niestandardowe laboratorium**. Skrypt wymaga posiadania istniejącego laboratorium niestandardowych. 
+* **Laboratorium**. Skrypt wymaga posiadania istniejącego laboratorium. 
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
-[!code-powershell[main](../../../powershell_scripts/devtest-lab/add-marketplace-images-to-lab/add-marketplace-images-to-lab.ps1 "Add marketplace images to a custom lab")]
+[!code-powershell[main](../../../powershell_scripts/devtest-lab/add-marketplace-images-to-lab/add-marketplace-images-to-lab.ps1 "Add marketplace images to a lab")]
 
 ## <a name="script-explanation"></a>Objaśnienia dla skryptu
 
@@ -37,7 +38,7 @@ W tym skrypcie użyto następujących poleceń:
 
 | Polecenie | Uwagi |
 |---|---|
-| [Znajdź AzureRmResource](/module/azurerm.resources/find-azurermresource) | Wyszukiwanie zasobów na podstawie określonych parametrów. |
+| [Find-AzureRmResource](/module/azurerm.resources/find-azurermresource) | Wyszukiwanie zasobów na podstawie określonych parametrów. |
 | [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) | Pobiera zasoby. |
 | [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource) | Modyfikuje zasobu. |
 | [New-AzureRmResource](/powershell/module/azurerm.resources/new-azurermresource) | Utwórz zasób. |

@@ -12,13 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/22/2018
+ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: f5d9b39a91567dd04b4e8ca0cd580c58024bb2f2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ea999945ace53099eb9dec15397310c9b5d1b904
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643128"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Poprawka systemu operacyjnego Linux w klastrze usługi sieć szkieletowa
 
@@ -61,9 +62,9 @@ Poprawka aplikacji orchestration składa się z następujących Podskładniki:
 ### <a name="ensure-that-your-azure-vms-are-running-ubuntu-1604"></a>Upewnij się, że maszynach wirtualnych platformy Azure są uruchomione Ubuntu 16.04
 W momencie pisania tego dokumentu, Ubuntu 16.04 (`Xenial Xerus`) jest jedyną obsługiwaną wersją.
 
-### <a name="ensure-that-the-service-fabric-linux-cluster-is-version-61x-and-above"></a>Upewnij się, że w klastrze usługi sieci szkieletowej systemu linux jest w wersji 6.1.x i powyżej.
+### <a name="ensure-that-the-service-fabric-linux-cluster-is-version-62x-and-above"></a>Upewnij się, że w klastrze usługi sieci szkieletowej systemu linux jest w wersji 6.2.x i powyżej.
 
-Poprawka aranżacji aplikacji w systemie linux używa pewnych funkcji środowiska uruchomieniowego, które są dostępne tylko w wersji środowiska uruchomieniowego sieci szkieletowej usług 6.1.x i powyżej.
+Poprawka aranżacji aplikacji w systemie linux używa pewnych funkcji środowiska uruchomieniowego, które są dostępne tylko w wersji środowiska uruchomieniowego sieci szkieletowej usług 6.2.x i powyżej.
 
 ### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>Włącz usługę Menedżer napraw (Jeśli nie jest już uruchomiona)
 
@@ -118,7 +119,9 @@ Dla Ubuntu [nienadzorowane uaktualnienia](https://help.ubuntu.com/community/Auto
 
 ## <a name="download-the-app-package"></a>Pobierz pakiet aplikacji
 
-Pobierz aplikację z [pobrać link](https://go.microsoft.com/fwlink/?linkid=867984).
+Można pobrać z aplikacji oraz skrypty instalacyjne [łącze archiwum](https://go.microsoft.com/fwlink/?linkid=867984).
+
+Aplikacja w formacie sfpkg można pobrać z [łącze sfpkg](https://go.microsoft.com/fwlink/?linkid=867984&pc=sfpkg). Jeśli źródłem jest przydatna do [wdrożenia aplikacji na podstawie usługi Azure Resource Manager](service-fabric-application-arm-resource.md).
 
 ## <a name="configure-the-app"></a>Konfigurowanie aplikacji
 
@@ -319,6 +322,10 @@ Q. **Post uaktualnienia poprawka aranżacji aplikacji oczyszczania nieużywane p
 
 A. Oczyszczanie odbywa się tak, w ramach czynności po instalacji. 
 
+Q. **Może służyć do poprawka Moje deweloperów klastra (klastra z jednym węzłem) aranżacji poprawkę aplikacji?**
+
+A. Nie, aplikacja orchestration poprawki nie może służyć do klastra z jednym węzłem poprawki. To ograniczenie jest zgodne z założeniami, jako [usługi sieć szkieletowa usług systemowych](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-technical-overview#system-services) lub wszystkie aplikacje odbiorcy będą występować Przestój i dlatego wszystkie zadania naprawy dla stosowania poprawek nigdy nie może pobrać zatwierdzone przez Menedżera naprawy.
+
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
 ### <a name="a-node-is-not-coming-back-to-up-state"></a>Węzeł nie jest powracające stanu w górę
@@ -360,5 +367,8 @@ Poprawka aplikacji aranżacji zbiera dane telemetryczne umożliwiający śledzen
 ### <a name="version-010"></a>Wersja 0.1.0
 - Wersja zapoznawcza prywatnych
 
-### <a name="version-200-latest"></a>Wersji 2.0.0 (Najnowsza wersja)
+### <a name="version-200"></a>Wersja 2.0.0
 - Publiczny zlecenia
+
+### <a name="version-201-latest"></a>Wersja 2.0.1 (Najnowsza wersja)
+- Ponownie kompilowana aplikacji przy użyciu najnowszego zestawu SDK sieci szkieletowej usług

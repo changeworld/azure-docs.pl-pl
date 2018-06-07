@@ -1,25 +1,22 @@
 ---
-title: "Dodaj łącznik DB2 w aplikacji logiki | Dokumentacja firmy Microsoft"
-description: "Omówienie łącznik DB2 z parametrami interfejsu API REST"
-services: 
-documentationcenter: 
+title: Połącz z bazą danych DB2 — aplikacje logiki platformy Azure | Dokumentacja firmy Microsoft
+description: Zarządzanie zasobami za pomocą interfejsów API REST bazy danych DB2 i usługi Azure Logic Apps
 author: gplarsen
-manager: erikre
-editor: 
-tags: connectors
-ms.assetid: 1c6b010c-beee-496d-943a-a99e168c99aa
-ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
+manager: cfowler
+ms.author: plarsen
 ms.date: 09/26/2016
-ms.author: plarsen; ladocs
-ms.openlocfilehash: 7ad246ede7e891de42235443c1bc6a90b88ad5ac
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, estfan
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: 9e86273a8b614098aa77608386ab050c20926d23
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609753"
 ---
 # <a name="get-started-with-the-db2-connector"></a>Rozpoczynanie pracy z łącznik DB2
 Łącznik usługi Microsoft dla bazy danych DB2 nawiązywanie zasobów przechowywanych w bazie danych programu IBM DB2 Logic Apps. Ten łącznik obejmuje klienta Microsoft do komunikowania się ze zdalnymi komputerami serwera bazy danych DB2 w sieci TCP/IP. Obejmuje chmury baz danych, takich jak dashDB IBM Bluemix lub IBM DB2 dla systemu Windows Azure wirtualizacji i lokalnych baz danych za pomocą bramy danych lokalnych. Zobacz [obsługiwane listy](connectors-create-api-db2.md#supported-db2-platforms-and-versions) IBM DB2 platform i wersji (w tym temacie).
@@ -47,13 +44,13 @@ Aby dowiedzieć się więcej na temat aplikacji logiki, zobacz [tworzenie aplika
 * UpdateRow
 * DeleteRow
 
-## <a name="list-tables"></a>Wyświetlenie listy tabel
+## <a name="list-tables"></a>Wyświetl tabele
 Tworzenie aplikacji logiki do żadnej operacji składa się z wielu czynności wykonywanych za pośrednictwem portalu Microsoft Azure.
 
 W aplikacji logiki akcja zostanie dodana do listy tabel w bazie danych DB2. Akcja powoduje, że łącznik do przetwarzania zestawienie schematu bazy danych DB2, takich jak `CALL SYSIBM.SQLTABLES`.
 
 ### <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
-1. W **Azure start tablicy**, wybierz pozycję  **+**  (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
+1. W **Azure start tablicy**, wybierz pozycję **+** (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
 2. Wprowadź **nazwa**, takich jak `Db2getTables`, **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **planu usługi App Service**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz **Utwórz**.
 
 ### <a name="add-a-trigger-and-action"></a>Dodaj trigger i action
@@ -90,7 +87,7 @@ Ten łącznik obsługuje połączenia z lokalnym baz danych i w chmurze przy uż
 | uwierzytelnianie |Opcjonalny. Akceptuje wartości elementu listy, Basic lub systemu Windows (kerberos). |
 | nazwa użytkownika |Wymagany. Akceptuje wartości ciągu. Bazy danych DB2 dla z/OS akceptuje ciąg 8-bajtowych. Bazy danych DB2 dla i akceptuje ciąg 10-bajtowych. Bazy danych DB2 dla systemu Linux lub UNIX akceptuje ciąg 8-bajtowych. Bazy danych DB2 dla systemu Windows akceptuje ciąg 30-bajtowych. |
 | hasło |Wymagany. Akceptuje wartości ciągu. |
-| Bramy |Wymagany. Akceptuje wartości elementu listy, reprezentujący bramy danych lokalnych zdefiniowany do aplikacji logiki w ramach grupy magazynów. |
+| brama |Wymagany. Akceptuje wartości elementu listy, reprezentujący bramy danych lokalnych zdefiniowany do aplikacji logiki w ramach grupy magazynów. |
 
 ## <a name="create-the-on-premises-gateway-connection"></a>Utwórz połączenie bramy lokalnej
 Ten łącznik można uzyskać dostępu do bazy danych DB2 lokalnie przy użyciu bramy lokalnej. Zobacz Tematy bramy, aby uzyskać więcej informacji. 
@@ -123,7 +120,7 @@ Ten łącznik można uzyskać dostępu do bazy danych DB2 chmury.
 Można określić akcję aplikacji logiki, aby pobrać wszystkie wiersze w tabeli bazy danych DB2. To powoduje, że łącznik do przetwarzania zestawienie wybierz bazy danych DB2, takich jak `SELECT * FROM AREA`.
 
 ### <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
-1. W **Azure start tablicy**, wybierz pozycję  **+**  (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
+1. W **Azure start tablicy**, wybierz pozycję **+** (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
 2. Wprowadź **nazwa**, takich jak `Db2getRows`, **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **planu usługi App Service**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz **Utwórz**.
 
 ### <a name="add-a-trigger-and-action"></a>Dodaj trigger i action
@@ -160,7 +157,7 @@ Można określić akcję aplikacji logiki, aby pobrać wszystkie wiersze w tabel
 Można określić akcję aplikacji logiki, aby dodać jeden wiersz w tabeli bazy danych DB2. Ta akcja powoduje, że łącznik do przetwarzania instrukcji INSERT bazy danych DB2, takich jak `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`.
 
 ### <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
-1. W **Azure start tablicy**, wybierz pozycję  **+**  (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
+1. W **Azure start tablicy**, wybierz pozycję **+** (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
 2. Wprowadź **nazwa**, takich jak `Db2insertRow`, **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **planu usługi App Service**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz **Utwórz**.
 
 ### <a name="add-a-trigger-and-action"></a>Dodaj trigger i action
@@ -187,7 +184,7 @@ Można określić akcję aplikacji logiki, aby dodać jeden wiersz w tabeli bazy
 Można określić akcję aplikacji logiki można pobrać jeden wiersz w tabeli bazy danych DB2. Ta akcja powoduje, że łącznik do przetwarzania instrukcji wybierz bazy danych DB2 gdzie, takich jak `SELECT FROM AREA WHERE AREAID = '99999'`.
 
 ### <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
-1. W **Azure start tablicy**, wybierz pozycję  **+**  (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
+1. W **Azure start tablicy**, wybierz pozycję **+** (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
 2. Wprowadź **nazwa** (np. "**Db2getRow**"), **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **planu usługi App Service**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz **Utwórz**.
 
 ### <a name="add-a-trigger-and-action"></a>Dodaj trigger i action
@@ -215,7 +212,7 @@ Można określić akcję aplikacji logiki można pobrać jeden wiersz w tabeli b
 Można określić akcję aplikacji logiki, aby zmienić jeden wiersz w tabeli bazy danych DB2. Ta akcja powoduje, że łącznik do przetwarzania instrukcji aktualizacji bazy danych DB2, takich jak `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`.
 
 ### <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
-1. W **Azure start tablicy**, wybierz pozycję  **+**  (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
+1. W **Azure start tablicy**, wybierz pozycję **+** (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
 2. Wprowadź **nazwa**, takich jak `Db2updateRow`, **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **planu usługi App Service**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz **Utwórz**.
 
 ### <a name="add-a-trigger-and-action"></a>Dodaj trigger i action
@@ -242,7 +239,7 @@ Można określić akcję aplikacji logiki, aby zmienić jeden wiersz w tabeli ba
 Można określić akcję aplikacji logiki, aby usunąć jeden wiersz w tabeli bazy danych DB2. Ta akcja powoduje, że łącznik do przetwarzania zestawienie usunąć bazy danych DB2, takich jak `DELETE FROM AREA WHERE AREAID = '99999'`.
 
 ### <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
-1. W **Azure start tablicy**, wybierz pozycję  **+**  (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
+1. W **Azure start tablicy**, wybierz pozycję **+** (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
 2. Wprowadź **nazwa**, takich jak `Db2deleteRow`, **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **planu usługi App Service**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz **Utwórz**.
 
 ### <a name="add-a-trigger-and-action"></a>Dodaj trigger i action

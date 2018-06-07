@@ -1,5 +1,5 @@
 ---
-title: Omówienie usługi Azure wiadomości Blockchain Workbench
+title: Omówienie integracji komunikatów w usłudze Azure Blockchain Workbench
 description: Omówienie za pomocą wiadomości w Azure Blockchain Workbench.
 services: azure-blockchain
 keywords: ''
@@ -10,26 +10,26 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 4a2e85cc619d17745be9d8f72af5f99049ce7c6b
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: f45396c3af285026e16ce641bd37bf0eadcee56d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607604"
 ---
-# <a name="azure-blockchain-workbench-messages-overview"></a>Omówienie usługi Azure wiadomości Blockchain Workbench
+# <a name="azure-blockchain-workbench-messaging-integration"></a>Azure Blockchain Workbench wiadomości integracji
 
 Oprócz zapewnienia interfejsu API REST, Azure Blockchain Workbench udostępnia integracji na podstawie wiadomości. Workbench publikuje skoncentrowane księgi zdarzenia za pośrednictwem Azure zdarzeń siatki, umożliwiając użytkownikom podrzędne pozyskiwania danych lub podjąć działania na podstawie tych zdarzeń. Dla tych klientów, które wymagają niezawodna obsługa komunikatów Azure Blockchain Workbench dostarcza komunikaty do punktu końcowego usługi Azure Service Bus.
 
 Deweloperzy również wyrazili zainteresowanie możliwość komunikacji inicjować transakcji do tworzenia użytkowników, tworzyć umowy i zaktualizować kontraktów na księgowe systemami zewnętrznymi. Gdy ta funkcja nie jest aktualnie widoczne w publicznej wersji zapoznawczej, próbkę dostarczającej taką możliwość można znaleźć w folderze [ http://aka.ms/blockchain-workbench-integration-sample ](http://aka.ms/blockchain-workbench-integration-sample).
 
-
 ## <a name="event-notifications"></a>Powiadomienia o zdarzeniach
 
-Powiadomienia o zdarzeniach może służyć do powiadamiania użytkowników i systemy klienckie zdarzeń, które pojawiają się w Workbench i blockchain sieci, z którą jest połączona. Powiadomienia o zdarzeniach może być używane bezpośrednio w kodzie lub używana z narzędzi, takich jak aplikacje logiki i przepływu do wyzwalania przepływu danych, aby systemy klienckie.
+Powiadomienia o zdarzeniach może służyć do powiadamiania użytkowników i systemy klienckie zdarzeń, które pojawiają się w Blockchain Workbench i blockchain sieci, z którą jest połączona. Powiadomienia o zdarzeniach może być używane bezpośrednio w kodzie lub używana z narzędzi, takich jak aplikacje logiki i przepływu do wyzwalania przepływu danych, aby systemy klienckie.
 
 Zobacz [dokumentacja komunikatów powiadomień](#notification-message-reference) informacji o różnych komunikatów, które mogą być odbierane.
 
-### <a name="consuming-event-grid-events-with-azure-functions"></a>Wykorzystywanie zdarzenia siatki zdarzeń za pomocą funkcji platformy Azure
+### <a name="consuming-event-grid-events-with-azure-functions"></a>Wykorzystywanie zdarzenia siatki zdarzeń za pomocą usługi Azure Functions
 
 Jeśli użytkownik chce Użyj siatki zdarzeń, aby otrzymywać powiadomienia o zdarzeniach, które pojawiają się w Blockchain Workbench, możesz korzystać ze zdarzeń siatki zdarzeń za pomocą usługi Azure Functions.
 
@@ -39,7 +39,7 @@ Jeśli użytkownik chce Użyj siatki zdarzeń, aby otrzymywać powiadomienia o z
 4. Zapisz funkcji. 
 5. Wybierz siatki zdarzeń z Blockchain Workbench grupy zasobów.
 
-### <a name="consuming-event-grid-events-with-logic-apps"></a>Wykorzystywanie zdarzenie siatki zdarzenia z usługą Logic Apps
+### <a name="consuming-event-grid-events-with-logic-apps"></a>Korzystanie z siatki zdarzeń zdarzenia z usługą Logic Apps
 
 1.  Utwórz nową **aplikacji logiki Azure** w portalu Azure.
 2.  Podczas otwierania aplikacji logiki platformy Azure w portalu, pojawi się monit wybierz wyzwalacz. Wybierz **Azure siatka zdarzenia — po wystąpieniu zdarzenia zasobów**.
@@ -60,14 +60,14 @@ Tematów usługi Service Bus może służyć do powiadamiania użytkowników o z
 ### <a name="consuming-service-bus-messages-with-logic-apps"></a>Korzystanie z komunikatów magistrali usługi z usługą Logic Apps
 
 1. Utwórz nową **aplikacji logiki Azure** w portalu Azure.
-2.  Podczas otwierania aplikacji logiki platformy Azure w portalu, pojawi się monit wybierz wyzwalacz. Typ **usługi Service Bus** w polu wyszukiwania i wybierz odpowiednią dla typu interakcji wyzwalacza mają z magistralą usług. Na przykład **usługi Service Bus — po odebraniu komunikatu w subskrypcji tematu (automatycznie uzupełniać)**.
+2. Podczas otwierania aplikacji logiki platformy Azure w portalu, pojawi się monit wybierz wyzwalacz. Typ **usługi Service Bus** w polu wyszukiwania i wybierz odpowiednią dla typu interakcji wyzwalacza mają z magistralą usług. Na przykład **usługi Service Bus — po odebraniu komunikatu w subskrypcji tematu (automatycznie uzupełniać)**.
 3. Gdy zostanie wyświetlona projektanta przepływów pracy, należy określić informacje o połączeniu dla usługi Service Bus.
 4. Wybierz subskrypcję i określ temat **zewnętrzne workbench**.
 5. Opracowywanie logikę aplikacji, która korzysta z wiadomości z tego wyzwalacza.
 
 ## <a name="notification-message-reference"></a>Dokumentacja komunikatów powiadomień
 
-W zależności od OperationName komunikaty powiadomień mieć jedną z następujących typów wiadomości.
+W zależności od **OperationName**, komunikaty powiadomień mieć jeden z następujących typów wiadomości.
 
 ### <a name="accountcreated"></a>AccountCreated
 
@@ -75,8 +75,8 @@ Wskazuje, że mają zostać dodane do określonej łańcucha zażądano nowego k
 
 | Name (Nazwa)    | Opis  |
 |----------|--------------|
-| UserId  | Identyfikator użytkownika, który został utworzony |
-| ChainIdentifier | Adres użytkownika, który został utworzony w sieci blockchain. W Ethereum to adres "w łańcuchu" dla użytkownika. |
+| UserId  | Identyfikator użytkownika, który został utworzony. |
+| ChainIdentifier | Adres użytkownika, który został utworzony w sieci blockchain. W Ethereum, to użytkownika **w łańcuchu** adres. |
 
 ``` csharp
 public class NewAccountRequest : MessageModelBase
@@ -93,15 +93,15 @@ Wskazuje, wprowadzono żądanie można wstawić ani zaktualizować kontraktu w k
 | Name (Nazwa) | Opis |
 |-----|--------------|
 | ChainID | Unikatowy identyfikator skojarzony z żądaniem łańcucha.|
-  BlockId | Unikatowy identyfikator bloku na księgowe.|
-  ContractId | Unikatowy identyfikator dla umowy.|
-  ContractAddress |       Adres kontraktu w księdze.|
-  TransactionHash  |     Skrót transakcji w księdze.|
-  OriginatingAddress |   Adres inicjatorem transakcji.|
-  Nazwa akcji       |     Nazwa akcji.|
-  IsUpdate        |      Określa, czy jest to aktualizacja.|
-  Parametry       |     Lista obiektów, które identyfikują typu nazwę, wartość i dane wysyłane do akcji, parametrów.|
-  TopLevelInputParams |  W scenariuszach, w których kontrakt jest podłączony do jednego lub więcej umów są parametry z umową najwyższego poziomu. |
+| BlockId | Unikatowy identyfikator bloku na księgowe.|
+| ContractId | Unikatowy identyfikator dla umowy.|
+| ContractAddress |       Adres kontraktu w księdze.|
+| TransactionHash  |     Skrót transakcji w księdze.|
+| OriginatingAddress |   Adres inicjatorem transakcji.|
+| Nazwa akcji       |     Nazwa akcji.|
+| IsUpdate        |      Określa, czy jest to aktualizacja.|
+| Parametry       |     Lista obiektów, które identyfikują typu nazwę, wartość i dane wysyłane do akcji, parametrów.|
+| TopLevelInputParams |  W scenariuszach, w których kontrakt jest podłączony do jednego lub więcej umów są parametry z umową najwyższego poziomu. |
 
 ``` csharp
 public class ContractInsertOrUpdateRequest : MessageModelBase
@@ -241,6 +241,65 @@ public class AssignContractChainIdentifierRequest : MessageModelBase
 {
     public int ContractId { get; set; }
     public string ChainIdentifier { get; set; }
+}
+```
+
+## <a name="classes-used-by-message-types"></a>Klasy używane przez typy komunikatu
+
+### <a name="messagemodelbase"></a>MessageModelBase
+
+Podstawowy model dla wszystkich wiadomości.
+
+| Name (Nazwa)          | Opis                          |
+|---------------|--------------------------------------|
+| OperationName | Nazwa operacji.           |
+| Identyfikator żądania     | Unikatowy identyfikator dla żądania. |
+
+``` csharp
+public class MessageModelBase
+{
+    public string OperationName { get; set; }
+    public string RequestId { get; set; }
+}
+```
+
+### <a name="contractinputparameter"></a>ContractInputParameter
+
+Zawiera nazwę, wartość oraz typ parametru.
+
+| Name (Nazwa)  | Opis                 |
+|-------|-----------------------------|
+| Name (Nazwa)  | Nazwa parametru.  |
+| Wartość | Wartość parametru. |
+| Typ  | Typ parametru.  |
+
+``` csharp
+public class ContractInputParameter
+{
+    public string Name { get; set; }
+    public string Value { get; set; }
+    public string Type { get; set; }
+}
+```
+
+#### <a name="contractproperty"></a>ContractProperty
+
+Zawiera identyfikator, nazwę, wartość i typ właściwości.
+
+| Name (Nazwa)  | Opis                |
+|-------|----------------------------|
+| Identyfikator    | Identyfikator właściwości.    |
+| Name (Nazwa)  | Nazwa właściwości.  |
+| Wartość | Wartość właściwości. |
+| Typ  | Typ właściwości.  |
+
+``` csharp
+public class ContractProperty
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Value { get; set; }
+    public string DataType { get; set; }
 }
 ```
 

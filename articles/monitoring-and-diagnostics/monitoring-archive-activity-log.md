@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 05/30/2018
 ms.author: johnkem
-ms.openlocfilehash: 6020272d79ace55041da94ee45165e557e92b80f
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a7fc8209028b8d84be31a068f7aa7a83a1ca152a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638793"
 ---
 # <a name="archive-the-azure-activity-log"></a>Archiwum dziennik aktywności platformy Azure
 W tym artykule zostanie przedstawiony sposób można użyć portalu Azure, poleceń cmdlet programu PowerShell lub interfejsu wiersza polecenia i Platform do archiwizacji Twojej [ **dziennika aktywności platformy Azure** ](monitoring-overview-activity-logs.md) na koncie magazynu. Ta opcja jest przydatna, jeśli chcesz zachować dłużej niż 90 dni (z pełną kontrolę nad zasady przechowywania) inspekcji, analizę statyczną lub kopii zapasowej dziennika aktywności. Jeśli musisz zachować zdarzeń przez 90 dni lub mniej nie trzeba skonfigurować archiwizacji na konto magazynu, ponieważ zdarzenia dziennika aktywności są przechowywane na platformie Azure przez 90 dni bez włączania archiwizacji.
@@ -27,7 +28,7 @@ W tym artykule zostanie przedstawiony sposób można użyć portalu Azure, polec
 Przed rozpoczęciem należy [Utwórz konto magazynu](../storage/common/storage-create-storage-account.md#create-a-storage-account) do której można archiwizować dziennik aktywności. Zdecydowanie zaleca się, że nie należy używać istniejącego konta magazynu ma inne — monitorowanie dane w niej przechowywane, dzięki czemu można lepiej kontrolować dostęp do danych monitorowania. Jednak jeśli są również archiwizowanie dzienników diagnostycznych i metryki na konto magazynu, rozsądne może okazać na potrzeby tego konta magazynu dziennika działań oraz wszystkie dane monitorowania są przechowywane w centralnej lokalizacji. Konto magazynu, którego używasz, musi być konto magazynu ogólnego przeznaczenia, a nie konta magazynu obiektów blob. Konto magazynu nie ma w tej samej subskrypcji co subskrypcji emitowanie dzienniki, dopóki użytkownik, który konfiguruje ustawienia ma odpowiedni dostęp RBAC do obu subskrypcji.
 
 ## <a name="log-profile"></a>Profil dziennika
-Archiwizowanie dziennika aktywności przy użyciu dowolnej z poniższych metod, możesz ustawić **profilu dziennika** dla subskrypcji. Profil dziennika definiuje typ zdarzenia, które są zapisywane lub przesyłane strumieniowo i dane wyjściowe — magazynu konta i/lub zdarzenia koncentratora. Definiuje również zasady przechowywania (liczba dni przechowywania) dla zdarzenia zapisane na koncie magazynu. Jeśli zasady przechowywania są ustawione na zero, zdarzenia są przechowywane w nieskończoność. W przeciwnym razie to można ustawić dowolną wartość z zakresu od 1 do 2147483647. Zasady przechowywania są zastosowane na dni, więc pod koniec dnia (UTC), dzienniki od dnia, która jest teraz poza przechowywania zasady zostaną usunięte. Na przykład jeśli masz zasady przechowywania jeden dzień na początku dnia dzisiaj dzienniki na wczoraj zanim dzień zostaną usunięte. [Więcej informacje dziennika tutaj profile](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile). 
+Archiwizowanie dziennika aktywności przy użyciu dowolnej z poniższych metod, możesz ustawić **profilu dziennika** dla subskrypcji. Profil dziennika definiuje typ zdarzenia, które są zapisywane lub przesyłane strumieniowo i dane wyjściowe — magazynu konta i/lub zdarzenia koncentratora. Definiuje również zasady przechowywania (liczba dni przechowywania) dla zdarzenia zapisane na koncie magazynu. Jeśli zasady przechowywania są ustawione na zero, zdarzenia są przechowywane w nieskończoność. W przeciwnym razie to można ustawić dowolną wartość z zakresu od 1 do 2147483647. Zasady przechowywania są zastosowane na dni, więc pod koniec dnia (UTC), dzienniki od dnia, która jest teraz poza przechowywania zasady zostaną usunięte. Na przykład jeśli masz zasady przechowywania jeden dzień na początku dnia dzisiaj dzienniki na wczoraj zanim dzień zostaną usunięte. Proces usuwania rozpoczyna się od północy czasu UTC, ale należy pamiętać, że może potrwać do 24 godzin dzienniki, aby go usunąć z konta magazynu. [Więcej informacje dziennika tutaj profile](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile). 
 
 ## <a name="archive-the-activity-log-using-the-portal"></a>Archiwizowanie dziennika aktywności przy użyciu portalu
 1. W portalu kliknij **dziennik aktywności** łącze nawigacji po lewej stronie. Jeśli nie widzisz łącze dla dziennika aktywności, kliknij przycisk **wszystkie usługi** najpierw łącza.
@@ -84,7 +85,7 @@ Archiwizowanie dziennika aktywności przy użyciu dowolnej z poniższych metod, 
 ## <a name="storage-schema-of-the-activity-log"></a>Schemat magazynu dziennika aktywności
 Po skonfigurowaniu archiwizacji, kontenera magazynu zostanie utworzony na koncie magazynu zaraz po wystąpieniu zdarzenia dziennika aktywności. Obiekty BLOB w kontenerze należy wykonać ten sam format dziennika aktywności i dzienników diagnostycznych. Struktura tych obiektów blob jest:
 
-> szczegółowe informacje operacyjne dzienniki/nazwa-= domyślne/resourceId = / SUBSKRYPCJI / {identyfikator subskrypcji} / y = {czterocyfrowy rok liczbowych} / m = {dwucyfrowe liczbowych month} / d = {dwucyfrowe liczbą dzień} / h = {dwucyfrowe 24-godzinnym hour}/m=00/PT1H.json
+> insights-operational-logs/name=default/id_zasobu=/SUBSCRIPTIONS/{identyfikator subskrypcji}/y={czterocyfrowy rok}/m={dwucyfrowy miesiąc}/d={dwucyfrowy dzień}/h={dwucyfrowa pełna godzina w formacie 24-godzinnym}/m=00/PT1H.json
 > 
 > 
 
@@ -94,7 +95,7 @@ Na przykład może być nazwa obiektu blob:
 > 
 > 
 
-Każdy obiekt blob PT1H.json zawiera obiektu blob JSON zdarzeń, które wystąpiły w ciągu godziny określonego w adresie URL obiektu blob (np. h = 12). Podczas obecny godzinę zdarzenia są dołączane do pliku PT1H.json miarę ich występowania. Wartości minutowe (m = 00) jest zawsze 00, ponieważ dziennik zdarzeń są podzielone na poszczególne obiekty BLOB na godzinę.
+Każdy obiekt blob PT1H.json zawiera obiektu blob JSON zdarzeń, które wystąpiły w ciągu godziny określonego w adresie URL obiektu blob (np. h = 12). Zdarzenia występujące w danej chwili są na bieżąco dołączane do pliku PT1H.json. Wartości minutowe (m = 00) jest zawsze 00, ponieważ dziennik zdarzeń są podzielone na poszczególne obiekty BLOB na godzinę.
 
 W pliku PT1H.json każdego zdarzenia są przechowywane w tablicy "rekordy", po tym formacie:
 

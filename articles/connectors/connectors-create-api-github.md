@@ -1,25 +1,22 @@
 ---
-title: "Nawiązać połączenia z usługi GitHub z usługą Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Automatyczne przepływy pracy dla usługi GitHub z usługi Azure Logic Apps"
-services: logic-apps
-documentationcenter: 
+title: Nawiązać GitHub — aplikacje logiki platformy Azure | Dokumentacja firmy Microsoft
+description: Monitor zdarzeń GitHub z interfejsów API REST usługi GitHub i usługi Azure Logic Apps
 author: ecfan
-manager: anneta
-editor: 
-tags: connectors
-ms.assetid: 8f873e6c-f4c0-4c2e-a5bd-2e953efe5e2b
-ms.service: logic-apps
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
+manager: cfowler
+ms.author: estfan
 ms.date: 03/02/2018
-ms.author: estfan; ladocs
-ms.openlocfilehash: 830c3e6b5462c5d2d917388c0d0924e444342f93
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: c6bd21626c1934f40520b0ddc2d78eeb97eee9a9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609916"
 ---
 # <a name="connect-to-github"></a>Nawiązać połączenia z usługi GitHub
 

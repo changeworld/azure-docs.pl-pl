@@ -15,11 +15,12 @@ ms.topic: get-started-article
 ms.date: 05/16/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 69148a0ac9a5761eeee0ab47d83862724583619a
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 5d403f7c1d0fff466f6c0fb9942ec777ab820eab
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604536"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Pobieranie elementów marketplace z platformy Azure do stosu Azure
 
@@ -85,7 +86,7 @@ Istnieją dwie części tego scenariusza:
 
 - Umożliwienie importowania elementu pobrany marketplace [środowiska PowerShell dla operatora stosu Azure](azure-stack-powershell-configure-admin.md) musi być skonfigurowany.  
 
-- Musisz mieć konto magazynu w stosie Azure, z kontenerem publicznie (czyli obiektu blob magazynu). Kontener są używane jako magazyn tymczasowy plików Galeria elementów marketplace. Jeśli nie masz doświadczenia z konta magazynu i kontenerów, zobacz [pracy z obiektami blob - portalu Azure](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) w dokumentacji platformy Azure.
+- Musi mieć [konta magazynu](azure-stack-manage-storage-accounts.md) w stosie Azure, z kontenerem publicznie (czyli obiektu blob magazynu). Kontener są używane jako magazyn tymczasowy plików Galeria elementów marketplace. Jeśli nie masz doświadczenia z konta magazynu i kontenerów, zobacz [pracy z obiektami blob - portalu Azure](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) w dokumentacji platformy Azure.
 
 - Narzędzie zespolonego marketplace jest pobierana podczas pierwszej procedury. 
 

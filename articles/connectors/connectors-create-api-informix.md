@@ -1,25 +1,22 @@
 ---
-title: "Dodaj łącznik Informix w aplikacji logiki | Dokumentacja firmy Microsoft"
-description: "Omówienie programu Informix łącznika z parametrami interfejsu API REST"
-services: 
-documentationcenter: 
+title: Nawiązać połączenia z bazą danych IBM Informix - Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Zarządzanie zasobami za pomocą interfejsów API REST programu IBM Informix i usługi Azure Logic Apps
 author: gplarsen
-manager: anneta
-editor: 
-tags: connectors
-ms.assetid: ca2393f0-3073-4dc2-8438-747f5bc59689
-ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
+manager: cfowler
+ms.author: plarsen
 ms.date: 09/26/2016
-ms.author: plarsen; ladocs
-ms.openlocfilehash: b3b352b185b7dfeee12ac9bee1b72cb740add5b8
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: c78c6bb669e0945ba1cbacc3ca808a364f3099a5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609392"
 ---
 # <a name="get-started-with-the-informix-connector"></a>Rozpoczynanie pracy z łącznikiem programu Informix
 Łącznik usługi Microsoft dla programu Informix łączy Logic Apps zasobów przechowywanych w bazie danych programu IBM Informix. Łącznik programu Informix obejmuje klienta Microsoft do komunikowania się z komputerami zdalnymi serwerem Informix w sieci TCP/IP. Obejmuje chmury baz danych, takich jak IBM Informix dla systemu Windows Azure wirtualizacji i lokalnych baz danych za pomocą bramy danych lokalnych. Zobacz [obsługiwane listy](connectors-create-api-informix.md#supported-informix-platforms-and-versions) IBM Informix platform i wersji (w tym temacie).
@@ -47,13 +44,13 @@ Ten łącznik obsługuje następujące akcje logikę w aplikacji:
 * UpdateRow
 * DeleteRow
 
-## <a name="list-tables"></a>Wyświetlenie listy tabel
+## <a name="list-tables"></a>Wyświetl tabele
 Tworzenie aplikacji logiki do żadnej operacji składa się z wielu czynności wykonywanych za pośrednictwem portalu Microsoft Azure.
 
 W aplikacji logiki akcja zostanie dodana do listy tabel w bazie danych programu Informix. Ta akcja powoduje, że łącznik do przetwarzania zestawienie schematu Informix, takich jak `CALL SYSIBM.SQLTABLES`.
 
 ### <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
-1. W **Azure start tablicy**, wybierz pozycję  **+**  (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
+1. W **Azure start tablicy**, wybierz pozycję **+** (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
 2. Wprowadź **nazwa**, takich jak `InformixgetTables`, **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **planu usługi App Service**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz **Utwórz**.
 
 ### <a name="add-a-trigger-and-action"></a>Dodaj trigger i action
@@ -90,7 +87,7 @@ Ten łącznik obsługuje połączenia z bazą danych na lokalnym i w chmurze prz
 | uwierzytelnianie |Opcjonalny. Akceptuje wartości elementu listy, Basic lub systemu Windows (kerberos). |
 | nazwa użytkownika |Wymagany. Akceptuje wartości ciągu. |
 | hasło |Wymagany. Akceptuje wartości ciągu. |
-| Bramy |Wymagany. Akceptuje wartości elementu listy, reprezentujący bramy danych lokalnych zdefiniowany do aplikacji logiki w ramach grupy magazynów. |
+| brama |Wymagany. Akceptuje wartości elementu listy, reprezentujący bramy danych lokalnych zdefiniowany do aplikacji logiki w ramach grupy magazynów. |
 
 ## <a name="create-the-on-premises-gateway-connection"></a>Utwórz połączenie bramy lokalnej
 Tego łącznika można uzyskać dostępu do bazy danych programu Informix lokalnej za pomocą bramy danych lokalnych. Zobacz Tematy bramy, aby uzyskać więcej informacji. 
@@ -123,7 +120,7 @@ Ten łącznik mogą uzyskiwać dostęp do bazy danych programu Informix chmurę.
 Można utworzyć działania aplikacji logiki, aby pobrać wszystkie wiersze w tabeli programu Informix. Ta akcja powoduje, że łącznik do przetwarzania instrukcję Informix SELECT, takich jak `SELECT * FROM AREA`.
 
 ### <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
-1. W **Azure start tablicy**, wybierz pozycję  **+**  (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
+1. W **Azure start tablicy**, wybierz pozycję **+** (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
 2. Wprowadź **nazwa** (np. "**InformixgetRows**"), **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **planu usługi App Service**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz **Utwórz**.
 
 ### <a name="add-a-trigger-and-action"></a>Dodaj trigger i action
@@ -160,7 +157,7 @@ Można utworzyć działania aplikacji logiki, aby pobrać wszystkie wiersze w ta
 Można utworzyć akcji aplikacji logiki, aby dodać jeden wiersz w tabeli programu Informix. Ta akcja powoduje, że łącznik do przetwarzania instrukcji Informix INSERT, takich jak `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`.
 
 ### <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
-1. W **Azure start tablicy**, wybierz pozycję  **+**  (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
+1. W **Azure start tablicy**, wybierz pozycję **+** (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
 2. Wprowadź **nazwa**, takich jak `InformixinsertRow`, **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **planu usługi App Service**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz **Utwórz**.
 
 ### <a name="add-a-trigger-and-action"></a>Dodaj trigger i action
@@ -187,7 +184,7 @@ Można utworzyć akcji aplikacji logiki, aby dodać jeden wiersz w tabeli progra
 Można utworzyć działania aplikacji logiki w celu pobrania jeden wiersz w tabeli programu Informix. Ta akcja powoduje, że łącznik do przetwarzania instrukcji Informix wybierz gdzie, takich jak `SELECT FROM AREA WHERE AREAID = '99999'`.
 
 ### <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
-1. W **Azure start tablicy**, wybierz pozycję  **+**  (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
+1. W **Azure start tablicy**, wybierz pozycję **+** (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
 2. Wprowadź **nazwa**, takich jak `InformixgetRow`, **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **planu usługi App Service**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz **Utwórz**.
 
 ### <a name="add-a-trigger-and-action"></a>Dodaj trigger i action
@@ -215,7 +212,7 @@ Można utworzyć działania aplikacji logiki w celu pobrania jeden wiersz w tabe
 Można utworzyć działania aplikacji logiki, aby zmienić jeden wiersz w tabeli programu Informix. Ta akcja powoduje, że łącznik do przetwarzania instrukcji Informix UPDATE, takich jak `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`.
 
 ### <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
-1. W **Azure start tablicy**, wybierz pozycję  **+**  (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
+1. W **Azure start tablicy**, wybierz pozycję **+** (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
 2. Wprowadź **nazwa**, takich jak `InformixupdateRow`, **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **planu usługi App Service**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz **Utwórz**.
 
 ### <a name="add-a-trigger-and-action"></a>Dodaj trigger i action
@@ -242,7 +239,7 @@ Można utworzyć działania aplikacji logiki, aby zmienić jeden wiersz w tabeli
 Można utworzyć działania aplikacji logiki, aby usunąć jeden wiersz w tabeli programu Informix. Ta akcja powoduje, że łącznik do przetwarzania zestawienie Informix usunąć, takich jak `DELETE FROM AREA WHERE AREAID = '99999'`.
 
 ### <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
-1. W **Azure start tablicy**, wybierz pozycję  **+**  (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
+1. W **Azure start tablicy**, wybierz pozycję **+** (znak plus) **sieci Web i mobilność**, a następnie **aplikacji logiki**.
 2. Wprowadź **nazwa**, takich jak `InformixdeleteRow`, **subskrypcji**, **grupy zasobów**, **lokalizacji**, i **planu usługi App Service**. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz **Utwórz**.
 
 ### <a name="add-a-trigger-and-action"></a>Dodaj trigger i action

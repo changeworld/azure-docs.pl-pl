@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 287fc502a0a538660da86e028a81fba04bcac903
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4360ff12a435afc4347fa97bba4506ccd81618aa
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618984"
 ---
 # <a name="copy-data-from-teradata-using-azure-data-factory"></a>Kopiowanie danych z programu Teradata przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -59,7 +60,7 @@ Obsługiwane są następujące właściwości dla programu Teradata połączone 
 |:--- |:--- |:--- |
 | type | Właściwość type musi mieć ustawioną: **Teradata** | Yes |
 | serwer | Nazwa serwera programu Teradata. | Yes |
-| authenticationType | Typ uwierzytelniania używany do łączenia z bazą danych programu Teradata.<br/>Dozwolone wartości to: **podstawowe**, i **Windows**. | Yes |
+| Typ authenticationType | Typ uwierzytelniania używany do łączenia z bazą danych programu Teradata.<br/>Dozwolone wartości to: **podstawowe**, i **Windows**. | Yes |
 | nazwa użytkownika | Określ nazwę użytkownika do połączenia z bazą danych programu Teradata. | Yes |
 | hasło | Określ hasło dla konta użytkownika, określone nazwy użytkownika. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. Środowisko uruchomieniowe integracji Self-hosted jest wymagana, jak wspomniano w [wymagania wstępne](#prerequisites). |Yes |
@@ -174,30 +175,30 @@ Podczas kopiowania danych z programu Teradata, następujące mapowania są używ
 | CLOB |Ciąg |
 | Date |DateTime |
 | Decimal |Decimal |
-| Podwójnej precyzji |Podwójnej precyzji |
+| O podwójnej precyzji |O podwójnej precyzji |
 | Grafika |Ciąg |
 | Liczba całkowita |Int32 |
-| Interwał dnia |TimeSpan |
-| Interwał dzień na godzinę |TimeSpan |
-| Interwał dzień na minutę |TimeSpan |
-| Interwał dzień na sekundę |TimeSpan |
-| Interwał, godzinę |TimeSpan |
-| Interwał godzinę, minutę |TimeSpan |
-| Interwał godzinę na sekundę |TimeSpan |
-| Interwał minutę |TimeSpan |
-| Interwał minutę na sekundę |TimeSpan |
+| Interwał dnia |Zakres czasu |
+| Interwał dzień na godzinę |Zakres czasu |
+| Interwał dzień na minutę |Zakres czasu |
+| Interwał dzień na sekundę |Zakres czasu |
+| Interwał, godzinę |Zakres czasu |
+| Interwał godzinę, minutę |Zakres czasu |
+| Interwał godzinę na sekundę |Zakres czasu |
+| Interwał minutę |Zakres czasu |
+| Interwał minutę na sekundę |Zakres czasu |
 | Interwał miesiąca |Ciąg |
-| Interwał drugi |TimeSpan |
+| Interwał drugi |Zakres czasu |
 | Interwał roku |Ciąg |
 | Interwał rok, miesiąc |Ciąg |
-| Liczba |Podwójnej precyzji |
+| Liczba |O podwójnej precyzji |
 | Period(Date) |Ciąg |
 | Period(Time) |Ciąg |
 | Okres (czas ze strefą czasową) |Ciąg |
 | Period(TimeStamp) |Ciąg |
 | Okres (sygnatura ze strefą czasową) |Ciąg |
 | SmallInt |Int16 |
-| Time |TimeSpan |
+| Time |Zakres czasu |
 | Czas ze strefą czasową |Ciąg |
 | Sygnatura czasowa |DateTime |
 | Sygnatura czasowa ze strefą czasową |DateTimeOffset |

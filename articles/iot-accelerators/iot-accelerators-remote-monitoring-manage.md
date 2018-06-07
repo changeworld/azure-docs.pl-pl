@@ -1,30 +1,27 @@
 ---
 title: Zarządzanie urządzeniami w zdalnym rozwiązanie monitorowania - Azure | Dokumentacja firmy Microsoft
 description: W tym samouczku przedstawiono sposób zarządzania urządzenia podłączone do zdalnego rozwiązanie monitorowania.
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 05/01/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 3ad6de2a0ebcd257ca90ea3c5c69988d4c1afd7a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: 0f177c3a8746f801e52cdac6cb2189e9cc28e1e8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627283"
 ---
 # <a name="manage-and-configure-your-devices"></a>Konfigurowanie urządzeń oraz zarządzanie nimi
 
-Ten samouczek Pokazuje urządzenie możliwości zarządzania zdalnego rozwiązanie monitorowania. Aby dodać tych funkcji, samouczku scenariusza aplikacji Contoso IoT.
+Ten samouczek Pokazuje urządzenie możliwości zarządzania, monitorowania zdalnego rozwiązania. Aby dodać tych funkcji, samouczku scenariusza aplikacji Contoso IoT.
 
-Firma Contoso ma uporządkowane nowe maszyny do rozwiń jedno ze swoich urządzeń do zwiększenia danych wyjściowych. Podczas oczekiwania dla nowych maszyn mają być dostarczane chcesz uruchomić symulacji, aby sprawdzić zachowanie rozwiązania. Jako operator chcesz zarządzania i skonfigurować urządzenia w rozwiązaniu do monitorowania zdalnego.
+Firma Contoso ma uporządkowane nowe maszyny do rozwiń jedno ze swoich urządzeń do zwiększenia danych wyjściowych. Podczas oczekiwania dla nowych maszyn mają być dostarczane chcesz uruchomić symulacji, aby sprawdzić zachowanie rozwiązania. Jako operator chcesz zarządzania i skonfigurować urządzenia w rozwiązaniu monitorowania zdalnego.
 
-Oferuje rozszerzalny sposób zarządzania i konfigurowanie urządzeń, rozwiązanie monitorowania zdalnego korzysta z Centrum IoT funkcji, takich jak [zadania](../iot-hub/iot-hub-devguide-jobs.md) i [bezpośrednie metody](../iot-hub/iot-hub-devguide-direct-methods.md). Aby dowiedzieć się, jak implementuje metody dewelopera urządzenia na urządzeniu fizycznym, zobacz [dostosować zdalnego monitorowania akcelerator rozwiązań](iot-accelerators-remote-monitoring-customize.md).
+Oferuje rozszerzalny sposób zarządzania i konfigurowanie urządzeń, to rozwiązanie monitorowanie zdalnego korzysta z Centrum IoT funkcji, takich jak [zadania](../iot-hub/iot-hub-devguide-jobs.md) i [bezpośrednie metody](../iot-hub/iot-hub-devguide-direct-methods.md). Aby dowiedzieć się, jak implementuje metody dewelopera urządzenia na urządzeniu fizycznym, zobacz [dostosować akcelerator rozwiązań monitorowania zdalnego](iot-accelerators-remote-monitoring-customize.md).
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -36,9 +33,9 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby użyć tego samouczka, należy wdrożone wystąpienie zdalnego rozwiązanie monitorowania w ramach subskrypcji platformy Azure.
+Aby użyć tego samouczka, należy wdrożone wystąpienie rozwiązanie monitorowania zdalnego w ramach subskrypcji platformy Azure.
 
-Jeśli jeszcze tego nie wdrożono rozwiązanie monitorowania zdalnego jeszcze, należy wykonać [wdrożyć zdalnego monitorowania akcelerator rozwiązań](iot-accelerators-remote-monitoring-deploy.md) samouczka.
+Jeśli jeszcze tego nie wdrożono rozwiązanie monitorowania zdalnego jeszcze, należy wykonać [wdrażanie akcelerator rozwiązań monitorowania zdalnego](iot-accelerators-remote-monitoring-deploy.md) samouczka.
 
 ## <a name="add-a-simulated-device"></a>Dodaj symulowane urządzenie
 
@@ -50,7 +47,7 @@ Pozostaw liczbę urządzeń do świadczenia ustawioną **1**. Wybierz **błędny
 
 ![Zainicjuj obsługę aparatu symulowane urządzenie](./media/iot-accelerators-remote-monitoring-manage/devicesprovisionengine.png)
 
-Aby dowiedzieć się, jak udostępnić *fizycznych* urządzenia, zobacz [Podłącz urządzenie do zdalnego monitorowania akcelerator rozwiązań](iot-accelerators-connecting-devices-node.md).
+Aby dowiedzieć się, jak udostępnić *fizycznych* urządzenia, zobacz [Podłącz urządzenie do akcelerator rozwiązań monitorowania zdalnego](iot-accelerators-connecting-devices-node.md).
 
 ## <a name="test-the-simulated-device"></a>Testowanie symulowane urządzenie
 
@@ -113,6 +110,6 @@ Teraz, kiedy znasz sposobu zarządzania urządzeniami, Sugerowane następne krok
 
 * [Rozwiązywanie problemów i Korygowanie problemów z urządzeniami](iot-accelerators-remote-monitoring-maintain.md).
 * [Testowanie rozwiązania z urządzeniami symulowane](iot-accelerators-remote-monitoring-test.md).
-* [Podłącz urządzenie do zdalnego monitorowania akcelerator rozwiązań](iot-accelerators-connecting-devices-node.md).
+* [Podłącz urządzenie do akcelerator rozwiązań monitorowania zdalnego](iot-accelerators-connecting-devices-node.md).
 
 <!-- Next tutorials in the sequence -->
