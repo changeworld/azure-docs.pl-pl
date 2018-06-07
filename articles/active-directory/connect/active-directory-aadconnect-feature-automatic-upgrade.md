@@ -2,10 +2,10 @@
 title: 'Azure AD Connect: Automatyczne uaktualnianie | Dokumentacja firmy Microsoft'
 description: W tym temacie opisano wbudowanych funkcji automatycznego uaktualniania synchronizacji Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 6b395e8f-fa3c-4e55-be54-392dd303c472
 ms.service: active-directory
 ms.devlang: na
@@ -13,12 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ddf23193e7b9c2fb7a69045be539841dbb6e6249
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: adfce1195a6a322e0225ee09a45148001d0167c8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592133"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatyczne uaktualnianie
 Ta funkcja została wprowadzona z kompilacją 1.1.105.0 (wydane luty 2016).
@@ -37,7 +39,7 @@ Bieżący stan automatycznego uaktualniania można wyświetlić za pomocą polec
 | Stan | Komentarz |
 | --- | --- |
 | Enabled (Włączony) |Włączono automatyczną aktualizację. |
-| Wstrzymano |Ustaw tylko w systemie. System nie jest już przysługiwać automatycznych uaktualnień. |
+| Zawieszone |Ustaw tylko w systemie. System nie jest już przysługiwać automatycznych uaktualnień. |
 | Disabled (Wyłączony) |Automatyczne uaktualnianie jest wyłączona. |
 
 Można przełączać się między **włączone** i **wyłączone** z `Set-ADSyncAutoUpgrade`. Tylko system, należy ustawić stan **zawieszone**.

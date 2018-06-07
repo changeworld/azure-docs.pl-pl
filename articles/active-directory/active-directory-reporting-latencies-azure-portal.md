@@ -1,25 +1,27 @@
 ---
-title: "Usługa Azure Active Directory raportowania opóźnienia | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o ilość czasu, jaki zajmuje zdarzeń do raportowania w portalu usługi Azure"
+title: Usługa Azure Active Directory raportowania opóźnienia | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o ilość czasu, jaki zajmuje zdarzeń do raportowania w portalu usługi Azure
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: rolyon
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 9b88958d-94a2-4f4b-a18c-616f0617a24e
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: compliance-reports
 ms.date: 12/15/2017
-ms.author: markvi;dhanyahk
+ms.author: rolyon;dhanyahk
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5ec41817fede495b8262e28d2d614a480d98ff3b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: f27efab05dc8580735c58eed20e9b48d8003dd17
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589784"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Usługa Azure Active Directory opóźnienia raportowania
 
@@ -37,10 +39,10 @@ Istnieją dwa obszary działania raportowania:
 
 Poniższa tabela zawiera informacje opóźnienia raporty aktywności.
 
-| Raport | Minimalne | Średnia | Uwagi |
-| :-- | --- | --- | :-- |
-| Dzienniki inspekcji | 30 minut  | 1 godzina  |W niektórych przypadkach może potrwać maksymalnie 2 godziny dla danych działania inspekcji wyświetlani.|
-| Logowania | 15 minut  | 2 godziny |W niektórych przypadkach może potrwać do 24 godzin dla danych logowania działania wyświetlone. W tym dane o aktywności logowania pochodzące z aplikacji starszej wersji pakietu office. |
+| Raport | Czas oczekiwania (P95) |Czas oczekiwania (P99)|
+| :-- | --- | --- | 
+| Dzienniki inspekcji | 2 minut.  | 5 minut.  |
+| Logowania | 2 minut.  | 5 minut. |
 
 
 

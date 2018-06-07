@@ -11,13 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 05/29/2018
 ms.author: mbullwin
-ms.openlocfilehash: 99d9ad04ac39d6d0072b13c81e74605e48de175b
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 7023ce1c9d8a115ae791d40c5d40a5b5d1fabed9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598389"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Skonfiguruj usługę Application Insights: Śledzenie zależności
 A *zależności* jest składnik zewnętrzny, który jest wywoływany przez aplikację. Usługa ta jest zazwyczaj wywoływana przy użyciu protokołu HTTP, lub bazy danych lub systemu plików. [Usługa Application Insights](app-insights-overview.md) mierzy czas oczekiwania zależności aplikacji i jak często wywołanie zależności nie powiedzie się. Zbadaj określonych wywołań i dotyczą żądań i wyjątki.
@@ -48,7 +49,7 @@ Informacje o zależnościach częściowe są zbierane automatycznie przez [zesta
 | Usługi w chmurze Azure |[Zadanie uruchamiania użyj](app-insights-cloudservices.md) lub [zainstalowania środowiska .NET framework 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
 
 ## <a name="where-to-find-dependency-data"></a>Gdzie można znaleźć danych zależności
-* [Mapowanie aplikacji](#application-map) wizualizuje zależności między aplikacji i składniki pokrewne.
+* [Mapowanie aplikacji](#application-map) wizualizuje zależności między aplikacji i składników sąsiednich.
 * [Bloki wydajności, przeglądarki oraz Niepowodzenie](#performance-and-blades) przedstawiono dane zależności serwera.
 * [Blok przeglądarki](#ajax-calls) pokazuje wywołania AJAX z przeglądarki użytkownika.
 * [Kliknij go, z powolnym działaniem lub nieudanych żądań](#diagnose-slow-requests) do sprawdzania ich zależności wywołania.
@@ -116,7 +117,7 @@ W przypadku różnych nie ma żadnych wywołanie zależności, które są szczeg
 
 ![Znajdź wywołania zależności zdalnych, zidentyfikuj nietypowe czas trwania](./media/app-insights-asp-net-dependencies/04-1.png)
 
-Wydaje się duży przerwę po pierwszej zależności wywołać, więc należy przyjrzymy się naszego kodu, aby zobaczyć, dlaczego jest.
+Wydaje się duży odstęp po pierwszej zależności wywołać, dlatego należy przyjrzymy się naszego kodu, aby zobaczyć, dlaczego jest.
 
 ### <a name="profile-your-live-site"></a>Profil witryny na żywo
 
@@ -200,12 +201,13 @@ Jeśli chcesz wyłączyć modułu śledzenia zależności standardowe, Usuń odw
 
 *Zapytania SQL nie są wyświetlane w całości.*
 
-* Uaktualnij do najnowsza stabilna wersja zestawu SDK usługi Application Insights.
+Sprawdź informacje w poniższej tabeli i upewnić się, że wybrano prawidłowej konfiguracji, aby włączyć monitorowanie zależności aplikacji.
 
- Jeśli wersja .NET jest mniejsza niż 4.6:
-
-* Host usługi IIS: Zainstaluj [agenta Application Insights](app-insights-monitor-performance-live-website-now.md) na serwerach hostach.
-* Aplikacja sieci web platformy Azure: Otwórz Application Insights w Panelu sterowania aplikacji sieci web, a następnie zainstaluj usługę Application Insights.
+| Platforma | Instalowanie |
+| --- | --- |
+| Serwer usług IIS |Albo [Zainstaluj Monitor stanu na serwerze](app-insights-monitor-performance-live-website-now.md). Lub [uaktualnić aplikacji .NET Framework 4.6 lub nowszy](http://go.microsoft.com/fwlink/?LinkId=528259) i zainstaluj [zestaw SDK usługi Application Insights](app-insights-asp-net.md) w aplikacji. |
+| Aplikacja sieci Web platformy Azure |W Panelu sterowania aplikacji sieci web [otwarcie bloku usługi Application Insights w Panelu sterowania aplikacji sieci web](app-insights-azure-web-apps.md) i wybierz opcję instalacji, jeśli zostanie wyświetlony monit. |
+| Usługi w chmurze Azure |[Zadanie uruchamiania użyj](app-insights-cloudservices.md) lub [zainstalowania środowiska .NET framework 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
 
 ## <a name="video"></a>Połączenia wideo
 

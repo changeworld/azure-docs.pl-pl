@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/15/2017
+ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: fabb79a1449529cde97db7054eb954564b4dfa68
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: b0db212b215d2d53b32437d703394148bcc4ac92
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590280"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>Samouczek: Integracji Azure Active Directory z LinkedIn Learning
 
@@ -165,7 +166,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
 11. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik XML na tym komputerze.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-linkedinlearning-tutorial/tutorial-linkedinlearning_certificate.png) 
+    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-linkedinlearning-tutorial/tutorial-linkedinlearning_certificate.png)
 
 12. Kliknij pozycję **Zapisz**.
 
@@ -208,12 +209,12 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
-    d. Kliknij przycisk **Utwórz**. 
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="creating-a-linkedin-learning-test-user"></a>Tworzenie użytkownika testowego LinkedIn Learning
 
-Obsługuje połączonych aplikacji Learning. Tylko na czas Inicjowanie obsługi użytkowników, a następnie uwierzytelniania użytkowników są tworzone automatycznie w aplikacji. Na administrator ustawienia strony na Przerzucanie portalu LinkedIn Learning przełącznika **automatycznie przypisywać licencje** aktywna można włączyć tylko w czasie inicjowania obsługi administracyjnej i to będzie również przypisać licencję do użytkownika.
-   
+LinkedIn Learning aplikacji obsługuje tylko w czasie Inicjowanie obsługi użytkowników i uwierzytelnianie użytkowników są tworzone automatycznie w aplikacji. Na administrator ustawienia strony na Przerzucanie portalu LinkedIn Learning przełącznika **automatycznie przypisywać licencje** na active bezpośrednio w czasie inicjowania obsługi administracyjnej i to będzie również przypisać licencję do użytkownika. LinkedIn Learning również obsługę użytkowników, można znaleźć więcej szczegółów [tutaj](active-directory-saas-linkedinlearning-provisioning-tutorial.md) na temat konfigurowania użytkowników automatycznego inicjowania obsługi administracyjnej.
+
    ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-linkedinLearning-tutorial/LinkedinUserprovswitch.png)
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisanie użytkownika testowego usługi Azure AD
@@ -226,15 +227,15 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
-    ![Przypisz użytkownika][201] 
+    ![Przypisz użytkownika][201]
 
 2. Na liście aplikacji zaznacz **LinkedIn Learning**.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-linkedinlearning-tutorial/tutorial-linkedinlearning_0001.png) 
+    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-linkedinlearning-tutorial/tutorial-linkedinlearning_0001.png)
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Przypisz użytkownika][202] 
+    ![Przypisz użytkownika][202]
 
 4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
@@ -245,7 +246,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
-    
+
 ### <a name="testing-single-sign-on"></a>Testowanie rejestracji jednokrotnej
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
@@ -256,6 +257,7 @@ Po kliknięciu kafelka LinkedIn Learning w panelu dostępu, należy pobrać stro
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
+* [Skonfiguruj Inicjowanie obsługi użytkowników](active-directory-saas-linkedinlearning-provisioning-tutorial.md)
 
 <!--Image references-->
 

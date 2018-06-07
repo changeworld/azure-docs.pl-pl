@@ -1,9 +1,9 @@
 ---
-title: "Agentów programu Azure AD Connect - uwierzytelniania przekazywanego - auth uaktualnienia | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób uaktualniania konfiguracji uwierzytelniania przekazywanego usługi Azure Active Directory (Azure AD)."
+title: Agentów programu Azure AD Connect - uwierzytelniania przekazywanego - auth uaktualnienia | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób uaktualniania konfiguracji uwierzytelniania przekazywanego usługi Azure Active Directory (Azure AD).
 services: active-directory
-keywords: "Azure AD Connect przekazywanego uwierzytelniania, instalacji usługi Active Directory, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on"
-documentationcenter: 
+keywords: Azure AD Connect przekazywanego uwierzytelniania, instalacji usługi Active Directory, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/14/2018
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: f0a254b7216ca6fda40e26bafb7de57e796a5218
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: c699df83c7032dc6e3d176753d8203fec6977c1b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591994"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Usługi Azure Active Directory przekazywanego uwierzytelniania: Agenci uwierzytelniania uaktualnienia wersji zapoznawczej
 
@@ -68,7 +70,7 @@ Przed uaktualnieniem Agent uwierzytelniania na tym samym serwerze, należy uaktu
 2. **Odinstaluj wersję zapoznawczą Agent uwierzytelniania**: Pobierz [ten skrypt programu PowerShell](https://aka.ms/rmpreviewagent) i uruchom go jako Administrator na serwerze.
 3. **Pobierz najnowszą wersję agenta uwierzytelniania (wersje 1.5.193.0 lub nowszym)**: Zaloguj się do [Centrum administracyjnego usługi Azure Active Directory](https://aad.portal.azure.com) przy użyciu poświadczeń administratora globalnego Twojej dzierżawy. Wybierz **usługi Azure Active Directory -> Azure AD Connect -> uwierzytelniania przekazywanego -> agent pobierania**. Zaakceptuj [warunków użytkowania usługi](https://aka.ms/authagenteula) i pobrać najnowszą wersję agenta uwierzytelniania. Możesz również pobrać agenta uwierzytelniania z [tutaj](https://aka.ms/getauthagent).
 4. **Zainstaluj najnowszą wersję agenta uwierzytelniania**: Uruchom plik wykonywalny pobrany w kroku 3. Podaj poświadczenia administratora globalnego Twojej dzierżawy, po wyświetleniu monitu.
-5. **Sprawdź, czy zainstalowana najnowsza wersja**: jak pokazano wcześniej, przejdź do **Panel sterowania -> programy -> programy i funkcje** i sprawdź, czy istnieje wpis dotyczący "**agenta programu Microsoft Azure AD Connect uwierzytelniania**".
+5. **Sprawdź, czy zainstalowana najnowsza wersja**: jak pokazano wcześniej, przejdź do **Panel sterowania -> programy -> programy i funkcje** i sprawdź, czy istnieje wpis dotyczący "**Microsoft Azure AD Connect Agent uwierzytelniania**".
 
 >[!NOTE]
 >Jeśli wybierzesz bloku uwierzytelniania przekazywanego na [Centrum administracyjnego usługi Azure Active Directory](https://aad.portal.azure.com) po ukończeniu poprzedniego kroków, zobaczysz dwa wpisy uwierzytelniania agenta na serwer - jeden wpis przedstawiający Agent uwierzytelniania jako **Active** i inne, **nieaktywne**. Jest to _Oczekiwano_. **Nieaktywne** wpis jest automatycznie usunięte po upływie kilku dni.
@@ -80,7 +82,7 @@ Wykonaj następujące kroki, aby uaktualnić agentów uwierzytelniania na innych
 1. **Odinstaluj wersję zapoznawczą Agent uwierzytelniania**: Pobierz [ten skrypt programu PowerShell](https://aka.ms/rmpreviewagent) i uruchom go jako Administrator na serwerze.
 2. **Pobierz najnowszą wersję agenta uwierzytelniania (wersje 1.5.193.0 lub nowszym)**: Zaloguj się do [Centrum administracyjnego usługi Azure Active Directory](https://aad.portal.azure.com) przy użyciu poświadczeń administratora globalnego Twojej dzierżawy. Wybierz **usługi Azure Active Directory -> Azure AD Connect -> uwierzytelniania przekazywanego -> agent pobierania**. Zaakceptuj warunki świadczenia usługi i Pobierz najnowszą wersję.
 3. **Zainstaluj najnowszą wersję agenta uwierzytelniania**: Uruchom plik wykonywalny pobrany w kroku 2. Podaj poświadczenia administratora globalnego Twojej dzierżawy, po wyświetleniu monitu.
-4. **Sprawdź, czy zainstalowana najnowsza wersja**: jak pokazano wcześniej, przejdź do **Panel sterowania -> programy -> programy i funkcje** i sprawdź, czy istnieje wpis o nazwie **agenta programu Microsoft Azure AD Connect uwierzytelniania**.
+4. **Sprawdź, czy zainstalowana najnowsza wersja**: jak pokazano wcześniej, przejdź do **Panel sterowania -> programy -> programy i funkcje** i sprawdź, czy istnieje wpis o nazwie **Microsoft Azure AD Connect Agent uwierzytelniania**.
 
 >[!NOTE]
 >Jeśli wybierzesz bloku uwierzytelniania przekazywanego na [Centrum administracyjnego usługi Azure Active Directory](https://aad.portal.azure.com) po ukończeniu poprzedniego kroków, zobaczysz dwa wpisy uwierzytelniania agenta na serwer - jeden wpis przedstawiający Agent uwierzytelniania jako **Active** i inne, **nieaktywne**. Jest to _Oczekiwano_. **Nieaktywne** wpis jest automatycznie usunięte po upływie kilku dni.

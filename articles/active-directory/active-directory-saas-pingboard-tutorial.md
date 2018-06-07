@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2017
+ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 46d00fdcc535b85754eb2f805d2844e1526f1f86
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 25777001907f705700d1c90e238d19a20242b50d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590902"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>Samouczek: Integracji Azure Active Directory z Pingboard
 
@@ -65,7 +66,7 @@ Aby skonfigurować integrację usługi Azure AD Pingboard, należy dodać Pingbo
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Aplikacje dla przedsiębiorstw][2]
-    
+
 3. Kliknij przycisk **Dodaj** przycisk w górnej części okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
@@ -101,7 +102,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
 2.  Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
- 
+
     ![Okno dialogowe rejestracji jednokrotnej](./media/active-directory-saas-pingboard-tutorial/tutorial_pingboard_samlbase.png)
 
 3. Na **Pingboard domeny i adres URL** sekcji, wykonaj następujące kroki, aby skonfigurować aplikację w **IDP** inicjowane tryb:
@@ -118,12 +119,12 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
      W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<sub-domain>.pingboard.com/sign_in`
 
-    > [!NOTE] 
+    > [!NOTE]
     > Należy pamiętać, że te wartości nie są prawdziwe. Rzeczywisty adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta Pingboard](https://support.pingboard.com/) uzyskać te wartości.
 
 5. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik XML na tym komputerze.
 
-    ![Pingboard xml metadanych](./media/active-directory-saas-pingboard-tutorial/tutorial_pingboard_certificate.png) 
+    ![Pingboard xml metadanych](./media/active-directory-saas-pingboard-tutorial/tutorial_pingboard_certificate.png)
 
 6. Kliknij przycisk **zapisać** przycisku.
 
@@ -135,7 +136,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-pingboard-tutorial/Pingboard_integration.png)
 
-9.  Na **integracji** strony, Znajdź **"Azure Active Directory"** Kafelek, a następnie kliknij go.
+9. Na **integracji** strony, Znajdź **"Azure Active Directory"** Kafelek, a następnie kliknij go.
 
     ![Jednym Pingboard logowania jednokrotnego integracji](./media/active-directory-saas-pingboard-tutorial/Pingboard_aad.png)
 
@@ -162,16 +163,16 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
     ![Przycisk usługi Azure Active Directory](./media/active-directory-saas-pingboard-tutorial/create_aaduser_01.png) 
 
 2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
-    
-    !["Użytkownicy i grupy" i "Wszyscy użytkownicy" łącza](./media/active-directory-saas-pingboard-tutorial/create_aaduser_02.png) 
+
+    !["Użytkownicy i grupy" i "Wszyscy użytkownicy" łącza](./media/active-directory-saas-pingboard-tutorial/create_aaduser_02.png)
 
 3. W górnej części okna dialogowego, kliknij przycisk **Dodaj** otworzyć **użytkownika** okna dialogowego.
- 
+
     ![Przycisk dodawania](./media/active-directory-saas-pingboard-tutorial/create_aaduser_03.png) 
 
 4. Na **użytkownika** okna dialogowego strony, należy wykonać następujące czynności:
- 
-    ![Okno dialogowe użytkownika](./media/active-directory-saas-pingboard-tutorial/create_aaduser_04.png) 
+
+    ![Okno dialogowe użytkownika](./media/active-directory-saas-pingboard-tutorial/create_aaduser_04.png)
 
     a. W **nazwa** pole tekstowe, typ **BrittaSimon**.
 
@@ -180,12 +181,12 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
     d. Kliknij przycisk **Utwórz**.
- 
+
 ### <a name="create-a-pingboard-test-user"></a>Tworzenie użytkownika testowego Pingboard
 
-Aby włączyć użytkowników usługi Azure AD zalogować się do Pingboard, musi być przygotowana do Pingboard. Dla Pingboard Inicjowanie obsługi to zadanie ręczne.
+Celem tej sekcji jest utworzenie użytkownika o nazwie Simona Britta w Pingboard. Pingboard obsługę automatycznego użytkownika, który jest domyślnie włączone. Więcej informacji można znaleźć [tutaj](active-directory-saas-pingboard-provisioning-tutorial.md) na temat konfigurowania użytkowników automatycznego inicjowania obsługi administracyjnej.
 
-**Aby udostępnić konta użytkownika, wykonaj następujące czynności:**
+**Jeśli trzeba ręcznie utworzyć użytkownika, należy wykonać następujące kroki:**
 
 1. Zaloguj się do witryny firmy Pingboard jako administrator.
 
@@ -204,13 +205,13 @@ Aby włączyć użytkowników usługi Azure AD zalogować się do Pingboard, mus
     c. W **stanowisko** tekstowym, wpisz nazwę zadania Simona Britta.
 
     d. W **lokalizacji** listy rozwijanej wybierz lokalizację Simona Britta.
-    
-    e. Kliknij pozycję **Add** (Dodaj).   
+
+    e. Kliknij pozycję **Add** (Dodaj).
 
 4. Ekran potwierdzenia pojawia się, aby potwierdzić dodanie użytkownika.
-    
+
     ![Upewnij się](./media/active-directory-saas-pingboard-tutorial/create_testuser_confirm.png)
-        
+
     > [!NOTE]
     > Właściciel konta usługi Azure Active Directory otrzymuje wiadomość e-mail i następuje łącze, aby potwierdzić swoje konto, zanim staje się aktywny.
 
@@ -255,8 +256,7 @@ Po kliknięciu kafelka Pingboard w panelu dostępu użytkownik powinien pobrać 
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
-
-
+* [Skonfiguruj Inicjowanie obsługi użytkowników](active-directory-saas-pingboard-provisioning-tutorial.md)
 
 <!--Image references-->
 

@@ -11,13 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/21/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a1fa7f58040b420bf52d89a57b1234416c2fb939
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8e3f81a6480e9de55c8f803e2266c4ac6e33c316
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590542"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>Zasady zachowania poufności użytkownika i Azure AD Connect 
 
@@ -26,7 +28,7 @@ ms.lasthandoff: 04/28/2018
 >[!NOTE] 
 >Ten artykuł dotyczy usługi Azure AD Connect i użytkownika prywatności.  Aby uzyskać informacje dotyczące usługi Azure AD Connect Health i użytkownika prywatności, zobacz artykuł [tutaj](../../active-directory/connect-health/active-directory-aadconnect-health-gdpr.md).
 
-Zgodność prywatności użytkownika dla instalacji usługi Azure AD Connect można połączyć się z na dwa sposoby:
+Poprawa ochrony prywatności użytkowników w przypadku instalacji usługi Azure AD Connect na dwa sposoby:
 
 1.  Na żądanie wyodrębniania danych osoby i usuwanie danych z tej osoby z instalacji
 2.  Upewnij się, że żadne dane nie są przechowywane poza 48 godzin.

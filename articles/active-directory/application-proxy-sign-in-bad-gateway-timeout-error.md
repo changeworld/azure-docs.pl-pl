@@ -3,21 +3,24 @@ title: Nie można uzyskać dostępu tego błędu aplikacji firmowych, korzystaj�
 description: Jak rozwiązać typowe problemy z dostępem z aplikacji serwera Proxy aplikacji usługi Azure AD.
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: b9a643dab98fa685bb4873705c177a834af831ce
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.date: 05/21/2018
+ms.author: barbkess
+ms.reviewer: harshja
+ms.openlocfilehash: c2571a7ca9e92c5088aec600f1865f84736c5bfa
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592514"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Błąd "Nie można uzyskać dostępu do tej aplikacji firmowych" podczas korzystania z aplikacji serwera Proxy aplikacji
 
