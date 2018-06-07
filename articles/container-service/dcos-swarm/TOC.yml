@@ -7,9 +7,9 @@
 - name: Przewodniki Szybki start
   expanded: true
   items:
-    - name: Docker Swarm (Linux)
-      href: container-service-swarm-walkthrough.md
-    - name: Platforma DC/OS w systemie Linux
+    - name: Docker Swarm
+      href: container-service-swarm-mode-walkthrough.md
+    - name: DC/OS
       href: container-service-dcos-quickstart.md
 - name: Samouczki
   items:
@@ -27,10 +27,6 @@
       href: container-service-security.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Tworzenie klastra ACS
-      href: container-service-create-acs-cluster-cli.md
-    - name: Łączenie z klastrem ACS
-      href: container-service-connect.md
     - name: Skalowanie klastra ACS
       href: container-service-scale.md
     - name: DC/OS

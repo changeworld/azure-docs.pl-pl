@@ -4,20 +4,19 @@ title: Dokumentacja usługi Azure IoT Central (wersja zapoznawcza)
 metadata:
   title: Dokumentacja usługi Azure IoT Central (wersja zapoznawcza) — samouczki i dokumentacja interfejsu API | Microsoft Docs
   description: Azure IoT Central to w pełni zarządzane rozwiązanie SaaS (oprogramowanie jako usługa), które ułatwia łączenie i monitorowanie zasobów IoT oraz zarządzanie nimi w odpowiedniej skali. Usługa Azure IoT Central upraszcza początkową konfigurację rozwiązania IoT, a także zmniejsza obciążenie związane z zarządzaniem, koszty operacyjne i ogólny nakład pracy w typowym projekcie IoT. Dowiedz się, jak tworzyć i dostosowywać aplikację usługi Azure IoT Central, używać jej oraz zarządzać nią, korzystając z naszych przewodników Szybki start i samouczków.
-  services: iot-central
-  author: czeumault
-  manager: carolz
-  ms.prod: microsoft-iot-central
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  author: dominicbetts
   ms.topic: landing-page
   ms.date: 11/08/2017
-  ms.author: carolz
-  ms.openlocfilehash: 3e443a4ba2de76971ef856b67fdeb1f8836f68e1
-  ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+  ms.author: dobett
+  ms.service: iot-central
+  services: iot-central
+  manager: timlt
+  ms.openlocfilehash: df6acc821183e7336d8079895c7494eed397eea1
+  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 05/16/2018
+  ms.lasthandoff: 06/01/2018
+  ms.locfileid: "34628576"
 abstract:
   description: Azure IoT Central to w pełni zarządzane rozwiązanie SaaS (oprogramowanie jako usługa), które ułatwia łączenie i monitorowanie zasobów IoT oraz zarządzanie nimi w odpowiedniej skali. Usługa Azure IoT Central upraszcza początkową konfigurację rozwiązania IoT, a także zmniejsza obciążenie związane z zarządzaniem, koszty operacyjne i ogólny nakład pracy w typowym projekcie IoT. Dowiedz się, jak tworzyć i dostosowywać aplikację usługi Azure IoT Central, używać jej oraz zarządzać nią, korzystając z naszych przewodników Szybki start i samouczków.
 sections:

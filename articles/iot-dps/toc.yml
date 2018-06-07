@@ -125,7 +125,7 @@
   items:
     - name: Rozwiązania
       items:
-        - name: Wstępnie skonfigurowane rozwiązania usługi IoT Suite
+        - name: Akceleratory rozwiązań IoT
           href: /azure/iot-suite
         - name: IoT Central
           href: 'https://docs.microsoft.com/microsoft-iot-central/'

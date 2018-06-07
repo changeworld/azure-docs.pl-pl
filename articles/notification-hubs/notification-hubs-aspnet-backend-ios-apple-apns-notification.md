@@ -1,6 +1,6 @@
 ---
 title: Powiadomienia wypychane do określonych użytkowników przy użyciu usługi Azure Notification Hubs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wysyłać powiadomienia wypychane do określonych użytkowników przy użyciu usługi Azure Notification Hubs.
+description: Dowiedz się, jak wysyłać powiadomienia push do konkretnych użytkowników przy użyciu usługi Azure Notification Hubs.
 documentationcenter: ios
 author: dimazaid
 manager: kpiteira
@@ -15,24 +15,25 @@ ms.topic: article
 ms.date: 04/13/2018
 ms.author: dimazaid
 ms.openlocfilehash: 36d70c40e3de7bd38cdfc566da37060cdcea9060
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "33777539"
 ---
 # <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Samouczek: Powiadomienia wypychane do określonych użytkowników przy użyciu usługi Azure Notification Hubs
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-W tym samouczku pokazano, jak wysyłać powiadomienia wypychane do użytkownika konkretnej aplikacji na konkretnym urządzeniu za pomocą usługi Azure Notification Hubs. Zaplecza ASP.NET WebAPI jest używany do uwierzytelniania klientów i generowania powiadomień, jak pokazano w temacie wskazówki [rejestrowanie z zaplecza aplikacji](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).
+W tym samouczku pokazano, jak wysyłać powiadomienia push do użytkownika konkretnej aplikacji na konkretnym urządzeniu za pomocą usługi Azure Notification Hubs. Zaplecza ASP.NET WebAPI jest używany do uwierzytelniania klientów i generowania powiadomień, jak pokazano w temacie wskazówki [rejestrowanie z zaplecza aplikacji](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).
 
-W tym samouczku można wykonać następujące czynności:
+W tym samouczku wykonasz następujące kroki:
 
 > [!div class="checklist"]
-> * Utwórz projekt WebAPI
-> * Uwierzytelnianie klientów WebAPI wewnętrzną bazą danych
-> * Przy użyciu zaplecza WebAPI zarejestrować odbieranie powiadomień
-> * Wysyłanie powiadomień z zaplecza WebAPI
-> * Publikowanie nowych WebAPI wewnętrznej bazy danych
+> * Tworzenie projektu interfejsu WebAPI
+> * Uwierzytelnianie klientów w zapleczu interfejsu WebAPI
+> * Rejestrowanie na potrzeby powiadomień za pomocą zaplecza interfejsu WebAPI
+> * Wysyłanie powiadomień z zaplecza interfejsu WebAPI
+> * Publikowanie nowego zaplecza interfejsu WebAPI
 > * Modyfikowanie aplikacji systemu iOS
 > * Testowanie aplikacji
 
@@ -478,10 +479,10 @@ Jeśli chcesz korzystać z aplikacji mobilnej jako usługi wewnętrznej bazy dan
     ![][4]
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym samouczku przedstawiono sposób powiadomienia wypychane do określonych użytkowników, którzy mają znaczniki skojarzone z ich rejestracji. Informacje na temat oparte na lokalizacji powiadomienia wypychane, przejdź do samouczka następujące: 
+W tym samouczku przedstawiono sposób wysyłania powiadomień push do konkretnych użytkowników, którzy mają tagi skojarzone ze swoimi rejestracjami. Aby dowiedzieć się, jak wypychać powiadomienia oparte na lokalizacji, przejdź do następującego samouczka: 
 
 > [!div class="nextstepaction"]
->[Na podstawie lokalizacji powiadomienia wypychane](notification-hubs-push-bing-spartial-data-geofencing-notification.md)
+>[Wypychanie powiadomień na podstawie lokalizacji](notification-hubs-push-bing-spartial-data-geofencing-notification.md)
 
 
 [1]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-interface.png

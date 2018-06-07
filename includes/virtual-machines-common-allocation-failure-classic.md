@@ -9,10 +9,10 @@ ms.date: 04/14/2018
 ms.author: genli
 ms.custom: include file
 ms.openlocfilehash: f403e060859df6d1de96a3c0d478d57df2677eee
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/07/2018
 ms.locfileid: "31531059"
 ---
 Poniżej przedstawiono typowe scenariusze alokacji, które powodują żądanie alokacji przypięty. Firma Microsoft będzie Poznaj każdego scenariusza w dalszej części tego artykułu.
@@ -80,7 +80,7 @@ Jeśli można użyć różnych adresów VIP, usunąć oryginalny zatrzymania (co
 ## <a name="stagingproduction-deployments-platform-as-a-service-only"></a>Wdrożeń przemieszczania/produkcyjnych (platforma jako usługa tylko)
 **Error**
 
-New_General * lub New_VMSizeNotSupported\*
+New_General * lub New_VMSizeNotSupported *
 
 **Przyczyną przypinanie klastra**
 
@@ -93,7 +93,7 @@ Usuń ich pierwszym wdrożeniu i oryginalnego usługi w chmurze, a następnie po
 ## <a name="affinity-group-vmservice-proximity"></a>Grupa koligacji (zbliżeniowe maszyny Wirtualnej lub usługi)
 **Error**
 
-New_General * lub New_VMSizeNotSupported\*
+New_General * lub New_VMSizeNotSupported *
 
 **Przyczyną przypinanie klastra**
 
@@ -106,7 +106,7 @@ Grupy koligacji nie jest konieczne, nie używać grupy koligacji, czy grupa zaso
 ## <a name="affinity-group-based-virtual-network"></a>Oparte na grupach koligacji sieci wirtualnej
 **Error**
 
-New_General * lub New_VMSizeNotSupported\*
+New_General * lub New_VMSizeNotSupported *
 
 **Przyczyną przypinanie klastra**
 

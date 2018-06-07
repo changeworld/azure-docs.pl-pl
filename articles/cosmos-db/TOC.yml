@@ -1,3 +1,4 @@
+metadata: {}
 items:
   - name: Dokumentacja usługi Azure Cosmos DB
     href: index.yml
@@ -70,6 +71,8 @@ items:
     items:
       - name: Dystrybucja globalna
         href: distribute-data-globally.md
+      - name: Konfiguracja wielu wzorców
+        href: multi-region-writers.md
       - name: Partycjonowanie
         href: partition-data.md
       - name: Przepływność
@@ -80,8 +83,6 @@ items:
         href: unique-keys.md
       - name: Bezserwerowa baza danych
         href: serverless-computing-database.md
-      - name: Omówienie biblioteki BulkExecutor
-        href: bulk-executor-overview.md
       - name: Bezpieczeństwo
         href: database-security.md
         items:
@@ -119,7 +120,7 @@ items:
                         href: sql-api-nodejs-get-started.md
                       - name: C++
                         href: sql-api-cpp-get-started.md
-                  - name: Tworzenie aplikacji sieci Web
+                  - name: Tworzenie aplikacji internetowej
                     items:
                       - name: .NET
                         href: sql-api-dotnet-application.md
@@ -167,8 +168,6 @@ items:
                 href: sql-api-resources.md
               - name: Modelowanie danych dokumentów
                 href: modeling-data.md
-              - name: Konfiguracja wielu wzorców
-                href: multi-region-writers.md
           - name: Przewodniki z instrukcjami
             items:
               - name: BulkExecutor — platforma .NET
@@ -399,8 +398,6 @@ items:
                 href: table-storage-how-to-use-dotnet.md
               - name: 'F#'
                 href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
-              - name: Node.js
-                href: table-storage-cloud-service-nodejs.md
               - name: Java
                 href: table-storage-how-to-use-java.md
               - name: Node.js
@@ -413,8 +410,6 @@ items:
                 href: table-storage-how-to-use-python.md
               - name: Ruby
                 href: table-storage-how-to-use-ruby.md
-              - name: PowerShell
-                href: table-storage-how-to-use-powershell.md
           - name: Dokumentacja
             items:
               - name: .NET
@@ -467,10 +462,14 @@ items:
         href: regional-failover.md
       - name: Rejestrowanie diagnostyczne
         href: logging.md
+      - name: Omówienie biblioteki BulkExecutor
+        href: bulk-executor-overview.md
       - name: Ekonomiczne odczyty i zapisy
         href: key-value-store-cost.md
       - name: Automatyczne wygasanie danych
         href: time-to-live.md
+      - name: Zarządzanie przy użyciu programu PowerShell
+        href: manage-account-with-powershell.md
       - name: Zarządzanie przy użyciu Eksploratora usługi Storage
         href: storage-explorer.md
   - name: Zasoby

@@ -81,6 +81,8 @@
               href: n-series-driver-setup.md
         - name: Obliczenia o wysokiej wydajności
           href: sizes-hpc.md
+        - name: Poprzednie generacje
+          href: sizes-previous-gen.md
         - name: Jednostki obliczeniowe platformy Azure (ACU)
           href: acu.md
         - name: Wyniki testów porównawczych
@@ -190,7 +192,12 @@
         - name: Tagowanie maszyny wirtualnej
           href: tag.md
         - name: Uruchamianie skryptów na maszynie wirtualnej
-          href: extensions-customscript.md
+          href: run-scripts-in-vm.md
+          items:
+            - name: Rozszerzenie niestandardowego skryptu
+              href: ../extensions/custom-script-windows.md
+            - name: Uruchamianie polecenia
+              href: run-command.md
         - name: Zmienianie litery dysku tymczasowego
           href: change-drive-letter.md
         - name: Zmienianie zestawu dostępności
@@ -243,7 +250,7 @@
       items:
         - name: Chef
           href: chef-automation.md
-        - name: Publikowanie aplikacji sieci Web z programu Visual Studio
+        - name: Publikowanie aplikacji internetowej z programu Visual Studio
           href: publish-web-app-from-visual-studio.md
     - name: Uruchamianie aplikacji
       items:
@@ -329,41 +336,7 @@
         - name: Rozpoznawanie nazw DNS
           href: ../../dns/dns-for-azure-services.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: Korzystanie z rozszerzeń maszyn wirtualnych
-      items:
-        - name: Przegląd rozszerzeń maszyn wirtualnych
-          href: extensions-features.md
-        - name: Rozszerzenie niestandardowego skryptu
-          href: extensions-customscript.md
-        - name: Rozszerzenie agenta OMS
-          href: extensions-oms.md
-        - name: Rozszerzenie DSC programu PowerShell
-          href: extensions-dsc-overview.md
-          items:
-            - name: Obsługa poświadczeń rozszerzenia DSC programu PowerShell
-              href: extensions-dsc-credentials.md
-            - name: DSC i VMSS z szablonami
-              href: extensions-dsc-template.md
-        - name: Rozszerzenie modułu zbierania danych dzienników platformy Azure
-          href: log-collector-extension.md
-        - name: Rozszerzenie diagnostyki platformy Azure
-          href: extensions-diagnostics.md
-          items:
-            - name: Schemat rozszerzenia
-              href: ../../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md
-            - name: Włączanie przy użyciu programu PowerShell
-              href: ps-extensions-diagnostics.md
-            - name: Włączanie za pomocą szablonów
-              href: extensions-diagnostics-template.md
-            - name: Rozwiązywanie problemów
-              href: ../../monitoring-and-diagnostics/azure-diagnostics-troubleshooting.md
-        - name: Eksportowanie rozszerzeń maszyn wirtualnych
-          href: extensions-export-templates.md
-        - name: Rozwiązywanie problemów z rozszerzeniami
-          href: extensions-troubleshoot.md
-        - name: Agent usługi Network Watcher
-          href: extensions-nwa.md
-        - name: Ograniczanie instalacji rozszerzeń
-          href: ../extensions/extensions-rmpolicy-howto-ps.md
+      href: ../extensions/overview.md
     - name: Migrowanie maszyn wirtualnych
       items:
         - name: Migrowanie lokalnych maszyn wirtualnych i maszyn wirtualnych usług AWS

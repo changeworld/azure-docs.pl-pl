@@ -10,6 +10,8 @@
   items:
     - name: Tworzenie profilu i punktu końcowego
       href: cdn-create-new-endpoint.md
+    - name: Integrowanie konta magazynu
+      href: cdn-create-a-storage-account-with-cdn.md
 - name: Samouczki
   items:
     - name: Dodawanie usługi Azure CDN do aplikacji internetowej
@@ -30,29 +32,19 @@
       href: cdn-how-caching-works.md
     - name: Dostarczanie zawartości w Chinach
       href: cdn-china-delivery.md
+    - name: Obsługa protokołu HTTP/2
+      href: cdn-http2.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Integracja
-      items:
-        - name: Magazyn
-          items:
-            - name: Integrowanie konta magazynu
-              href: cdn-create-a-storage-account-with-cdn.md
-            - name: Magazyn SAS — pomoc techniczna
-              href: cdn-sas-storage-support.md
-        - name: Współużytkowanie zasobów między źródłami
-          href: cdn-cors.md
     - name: Optymalizowanie zawartości
+      href: cdn-optimization-overview.md
       items:
-        - name: Omówienie optymalizacji
-          href: cdn-optimization-overview.md
-          items:
-            - name: Optymalizacja dużych plików
-              href: cdn-large-file-optimization.md
-            - name: Optymalizacja przesyłania strumieniowego multimediów
-              href: cdn-media-streaming-optimization.md
-            - name: Przyspieszanie witryn dynamicznych
-              href: cdn-dynamic-site-acceleration.md
+        - name: Optymalizacja dużych plików
+          href: cdn-large-file-optimization.md
+        - name: Optymalizacja przesyłania strumieniowego multimediów
+          href: cdn-media-streaming-optimization.md
+        - name: Przyspieszanie witryn dynamicznych
+          href: cdn-dynamic-site-acceleration.md
     - name: Zarządzanie
       items:
         - name: Zarządzanie przy użyciu programu Azure PowerShell
@@ -63,8 +55,6 @@
           href: cdn-improve-performance.md
         - name: Sterowanie zachowaniem buforowania
           items:
-            - name: Jak działa buforowanie
-              href: cdn-how-caching-works.md
             - name: Sterowanie zachowaniem buforowania przy użyciu reguł buforowania
               href: cdn-caching-rules.md
             - name: Buforowanie zawartości według ciągów zapytania
@@ -85,35 +75,35 @@
               href: cdn-manage-expiration-of-blob-content.md
         - name: Uwierzytelnianie przy użyciu tokenów
           href: cdn-token-auth.md
+        - name: Magazyn SAS — pomoc techniczna
+          href: cdn-sas-storage-support.md
+        - name: Współużytkowanie zasobów między źródłami
+          href: cdn-cors.md
         - name: Monitorowanie zasobów
           href: cdn-resource-health.md
         - name: Zastępowanie zachowania przy użyciu reguł
           href: cdn-rules-engine.md
-        - name: Uzyskiwanie alertów w czasie rzeczywistym
-          href: cdn-real-time-alerts.md
-        - name: Obsługa protokołu HTTP/2
-          href: cdn-http2.md
     - name: Analiza
+      href: cdn-log-analysis.md
       items:
-        - name: Analizowanie wzorców użycia usługi Azure CDN
-          href: cdn-log-analysis.md
+        - name: Dzienniki diagnostyczne platformy Azure
+          href: cdn-azure-diagnostic-logs.md
+        - name: Narzędzia do analizy dla usługi Azure CDN świadczonej przez firmę Verizon
           items:
-            - name: Dzienniki diagnostyczne platformy Azure
-              href: cdn-azure-diagnostic-logs.md
-            - name: Narzędzia do analizy dla usługi Azure CDN świadczonej przez firmę Verizon
-              items:
-                - name: Raporty podstawowe z usługi Verizon
-                  href: cdn-analyze-usage-patterns.md
-                - name: Raporty niestandardowe z usługi Verizon
-                  href: cdn-verizon-custom-reports.md
-            - name: Narzędzia do analizy dla usługi Azure CDN Premium świadczonej przez firmę Verizon
-              items:
-                - name: Generowanie zaawansowanych raportów HTTP
-                  href: cdn-advanced-http-reports.md
-                - name: Wyświetlanie statystyk w czasie rzeczywistym
-                  href: cdn-real-time-stats.md
-                - name: Analizowanie wydajności węzła krawędzi
-                  href: cdn-edge-performance.md
+            - name: Raporty podstawowe z usługi Verizon
+              href: cdn-analyze-usage-patterns.md
+            - name: Raporty niestandardowe z usługi Verizon
+              href: cdn-verizon-custom-reports.md
+        - name: Narzędzia do analizy dla usługi Azure CDN Premium świadczonej przez firmę Verizon
+          items:
+            - name: Generowanie zaawansowanych raportów HTTP
+              href: cdn-advanced-http-reports.md
+            - name: Wyświetlanie statystyk w czasie rzeczywistym
+              href: cdn-real-time-stats.md
+            - name: Analizowanie wydajności węzła krawędzi
+              href: cdn-edge-performance.md
+            - name: Uzyskiwanie alertów w czasie rzeczywistym
+              href: cdn-real-time-alerts.md
     - name: Programowanie
       items:
         - name: .NET

@@ -35,13 +35,13 @@
   items:
     - name: Monitorowanie platformy Azure
       items:
-        - name: Aplikacje sieci Web Azure
+        - name: Aplikacje internetowe platformy Azure
           href: app-insights-azure-web-apps.md
         - name: usług Azure Cloud Services
           href: app-insights-cloudservices.md
     - name: Monitorowanie aplikacji ASP.NET
       items:
-        - name: Aplikacje sieci Web
+        - name: Aplikacje internetowe
           href: app-insights-asp-net.md
         - name: Aplikacje internetowe już aktywne
           href: app-insights-monitor-performance-live-website-now.md
@@ -57,7 +57,7 @@
           href: app-insights-overview-dashboard.md
     - name: Monitorowanie aplikacji Java
       items:
-        - name: Aplikacje sieci Web
+        - name: Aplikacje internetowe
           href: app-insights-java-get-started.md
         - name: Aplikacje internetowe — środowisko uruchomieniowe
           href: app-insights-java-live.md
@@ -85,7 +85,7 @@
       items:
         - name: Szczegółowa diagnostyka dla usług i aplikacji internetowych
           href: app-insights-devops.md
-        - name: Monitorowanie wydajności w aplikacjach sieci Web
+        - name: Monitorowanie wydajności w aplikacjach internetowych
           href: app-insights-web-monitor-performance.md
         - name: 'Oddzielanie programowania, testowania i produkcji'
           href: app-insights-separate-resources.md
@@ -268,6 +268,8 @@
           href: app-insights-export-power-bi.md
     - name: Bezpieczeństwo
       items:
+        - name: Obsługa danych osobowych
+          href: app-insights-customer-data.md
         - name: 'Zbieranie, przechowywanie i magazynowanie danych'
           href: app-insights-data-retention-privacy.md
         - name: 'Zasoby, role i kontrola dostępu'

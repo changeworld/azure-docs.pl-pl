@@ -15,10 +15,11 @@ ms.workload: na
 ms.date: 02/27/2018
 ms.author: jomolesk
 ms.openlocfilehash: e627019f6219509c21ca6245ee1f7f54f2e1669a
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "33894317"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpieczeń platformy Azure i plan zgodności - dane kondycji HIPAA/HITRUST i AI
 
@@ -366,9 +367,9 @@ Rozwiązanie obsługuje Azure zdarzeń siatki, pojedynczą usługę zarządzania
 - [Klasyfikator Azure](/azure/advisor/advisor-overview) jest konsultanta spersonalizowane chmury, ułatwiająca należy stosować najlepsze rozwiązania w celu zoptymalizowania wdrożeń platformy Azure. Analizuje konfigurację zasobów i dane telemetryczne dotyczące użycia, a następnie zaleca rozwiązania, które mogą pomóc w zapewnieniu wysokiej dostępności, bezpieczeństwa, wydajności i efektywności kosztowej zasobów platformy Azure.
 
 ### <a name="application-insights"></a>Application Insights
-- [Usługa Application Insights](/azure/application-insights/app-insights-overview) jest rozszerzalną usługę zarządzania wydajności aplikacji (APM) dla deweloperów sieci web na wielu platformach. Użyj tej usługi do monitorowania aplikacji sieci Web na żywo. Wykrycia anomalii wydajności. Obejmuje ona zaawansowane narzędzia analityczne, dzięki którym możesz diagnozować problemy i zrozumieć sposób korzystania z aplikacji przez użytkowników. Usługa ta pomaga w ciągłym udoskonalaniu wydajności i użyteczności tworzonych rozwiązań.
+- [Usługa Application Insights](/azure/application-insights/app-insights-overview) jest rozszerzalną usługę zarządzania wydajności aplikacji (APM) dla deweloperów sieci web na wielu platformach. Użyj tej usługi do monitorowania aplikacji internetowej na żywo. Wykrycia anomalii wydajności. Obejmuje ona zaawansowane narzędzia analityczne, dzięki którym możesz diagnozować problemy i zrozumieć sposób korzystania z aplikacji przez użytkowników. Usługa ta pomaga w ciągłym udoskonalaniu wydajności i użyteczności tworzonych rozwiązań.
 
-### <a name="azure-alerts"></a>Alerty systemu Azure
+### <a name="azure-alerts"></a>Alerty platformy Azure
 - [Alerty oferują metodą monitorowania usług platformy Azure i umożliwiają konfigurowanie warunków nad danymi. Alerty zapewniają również powiadomienia, gdy warunek alertu jest zgodna z danych monitorowania.
 
 ### <a name="operations-management-suite-oms"></a>Operations Management Suite (OMS)
@@ -382,7 +383,7 @@ Rozwiązanie obsługuje Azure zdarzeń siatki, pojedynczą usługę zarządzania
 
     -   Tożsamość i dostęp
 
-    -   Bezpieczeństwo i inspekcji
+    -   Zabezpieczenia i inspekcja
 
     -   Azure SQL DB Analytics
 

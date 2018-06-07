@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.author: anoopkv
 ms.openlocfilehash: 3279dbc2eeecd3a3f0f36a47d8dd51ef4f3f503f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/07/2018
 ms.locfileid: "33942139"
 ---
 # <a name="install-the-mobility-service"></a>Instalowanie usługi mobilności 
