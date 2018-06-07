@@ -63,6 +63,8 @@
           items:
             - name: Przygotowywanie obciążeń serwera Azure Backup Server w witrynie Azure Portal
               href: backup-azure-microsoft-azure-backup.md
+            - name: Instalowanie składnika Azure Backup Server w usłudze Azure Stack
+              href: backup-mabs-install-azure-stack.md
             - name: Dodawanie magazynu do usługi Azure Backup Server
               href: backup-mabs-add-storage.md
             - name: Uaktualnianie usługi Azure Backup Server do wersji 2
@@ -157,12 +159,10 @@
           href: backup-dpm-automation.md
         - name: System Windows Server w witrynie Azure Portal
           href: backup-client-automation.md
-    - name: Azure SQL Database
+    - name: SQL na maszynach wirtualnych platformy Azure
       items:
-        - name: Konfigurowanie i przywracanie kopii zapasowych usługi SQL Database — magazyn SQL
-          href: ../sql-database/sql-database-long-term-backup-retention-configure.md?toc=%2fazure%2fbackup%2ftoc.json
-        - name: Konfigurowanie i przywracanie kopii zapasowych usługi SQL Database — magazyn usługi Recovery Services
-          href: ../sql-database/sql-database-long-term-backup-retention-configure-vault.md?toc=%2fazure%2fbackup%2ftoc.json
+        - name: Tworzenie kopii zapasowej bazy danych SQL na platformie Azure
+          href: backup-azure-sql-database.md
     - name: Windows Server
       items:
         - name: Tworzenie kopii zapasowych plików i folderów z systemu Windows Server

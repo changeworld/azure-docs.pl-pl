@@ -50,8 +50,6 @@
   items:
     - name: Zarządzanie
       items:
-        - name: Aktualizowanie zadania
-          href: stream-analytics-job-reliability.md
         - name: Aktualizowanie poświadczeń
           href: stream-analytics-login-credentials-inputs-outputs.md
         - name: Konfigurowanie alertów
@@ -60,6 +58,10 @@
           href: stream-analytics-test-query.md
         - name: Wyświetlanie wyników na pulpicie nawigacyjnym
           href: stream-analytics-power-bi-dashboard.md
+        - name: Czyszczenie zadania
+          href: stream-analytics-clean-up-your-job.md
+        - name: Parowanie zadań w celu zwiększenia niezawodności
+          href: stream-analytics-job-reliability.md
     - name: Tworzenie rozwiązań
       items:
         - name: Analiza tonacji w usłudze Twitter

@@ -43,11 +43,9 @@
 ### [Tworzenie dedykowanego połączenia prywatnego (ExpressRoute)](../expressroute/expressroute-howto-circuit-portal-resource-manager.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 ## Zarządzanie
+### [Omówienie monitorowania sieci](network-monitoring-overview.md)
+### [Porównywanie użycia zasobów z limitami platformy Azure](check-usage-against-limits.md)
 ### [Wyświetlanie topologii sieci](../network-watcher/network-watcher-topology-powershell.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Zarządzanie przechwytywaniem pakietów](../network-watcher/network-watcher-packet-capture-manage-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Ustalanie następnego przeskoku routingu](../network-watcher/network-watcher-check-next-hop-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Sprawdzanie przepływów adresów IP dla maszyny wirtualnej](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Omówienie monitorowania sieci](network-monitoring-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 ## Przykładowe skrypty
 ### [Interfejs wiersza polecenia platformy Azure](cli-samples.md)

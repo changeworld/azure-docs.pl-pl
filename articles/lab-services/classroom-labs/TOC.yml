@@ -1,0 +1,50 @@
+- name: Dokumentacja usług Lab Services
+  href: /azure/lab-services
+- name: Omówienie
+  items:
+    - name: Informacje na temat laboratoriów na potrzeby zajęć
+      href: classroom-labs-overview.md
+    - name: Porównanie typów laboratorium
+      href: ../compare-lab-types.md
+- name: Samouczki
+  items:
+    - name: 1. Konfigurowanie konta laboratorium
+      href: tutorial-setup-lab-account.md
+    - name: 2. Konfigurowanie laboratorium na potrzeby zajęć
+      href: tutorial-setup-classroom-lab.md
+    - name: 3. Dostęp do laboratorium na potrzeby zajęć
+      href: tutorial-connect-virtual-machine-classroom-lab.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Zarządzanie kontami laboratorium
+      href: how-to-manage-lab-accounts.md
+    - name: Zarządzanie laboratoriami na potrzeby zajęć
+      href: how-to-manage-classroom-labs.md
+    - name: Dostęp do laboratoriów na potrzeby zajęć
+      href: how-to-use-classroom-lab.md
+- name: Dokumentacja
+  items:
+    - name: Interfejs wiersza polecenia 2.0
+      href: /cli/azure/lab
+    - name: PowerShell
+      href: '/powershell/module/azurerm.devtestlabs/#devtest_labs'
+    - name: Interfejs API REST
+      href: 'https://docs.microsoft.com/rest/api/dtl/'
+- name: Zasoby
+  items:
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/?category=developer-tools'
+    - name: Kalkulator cen
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Aktualizacje usług
+      href: 'https://azure.microsoft.com/updates/?product=devtest-lab'
+    - name: Forum MSDN
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDevTestLabs'
+    - name: Blog zespołu
+      href: 'https://blogs.msdn.microsoft.com/devtestlab/'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-devtest-labs'
+    - name: Filmy wideo
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab'
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/devtest-lab/'

@@ -1,26 +1,24 @@
 ---
-title: "Dokumentacja usługi Azure Data Lake Analytics — samouczki i dokumentacja interfejsu API | Microsoft Docs"
-description: "Dowiedz się, jak przeprowadzać analizy danych big data za pomocą usługi Data Lake Analytics. W samouczkach pokazano, jak uruchomić analizę wsadową, w czasie rzeczywistym i interaktywną, oraz jak pisać zapytania U-SQL."
+title: Dokumentacja usługi Azure Data Lake Analytics — samouczki i dokumentacja interfejsu API
+description: Dowiedz się, jak przeprowadzać analizy danych big data za pomocą usługi Azure Data Lake Analytics. W samouczkach pokazano, jak uruchomić analizę wsadową, w czasie rzeczywistym i interaktywną, oraz jak pisać zapytania U-SQL.
 services: data-lake-analytics
-author: czeumault
-manager: carolz
-layout: LandingPage
-ms.assetid: 
 ms.service: data-lake-analytics
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: jasonwhowell
+ms.author: jasonh
+manager: kfile
+layout: LandingPage
 ms.topic: landing-page
 ms.date: 01/23/2017
-ms.author: carolz
-ms.openlocfilehash: 0cad8acb88494755522e0772c77afcc4793d8e74
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6dc7b85e5a5f6173572e390c1073971d927aa7df
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624220"
 ---
-# <a name="data-lake-analytics-documentation"></a>Dokumentacja usługi Data Lake Analytics
+# <a name="azure-data-lake-analytics-documentation"></a>Dokumentacja usługi Azure Data Lake Analytics
 
-Dowiedz się, jak przy użyciu usługi Data Lake Analytics uruchamiać zadania analizy danych big data skalowane dla wielkich zestawów danych. W samouczkach i innej dokumentacji pokazano, jak tworzyć zadania analizy wsadowej, w czasie rzeczywistym i interaktywnej i zarządzać nimi, oraz jak pisać zapytania w języku U-SQL.
+Dowiedz się, jak przy użyciu usługi Azure Data Lake Analytics uruchamiać zadania analizy danych big data skalowane dla wielkich zestawów danych. W samouczkach i innej dokumentacji pokazano, jak tworzyć zadania analizy wsadowej, w czasie rzeczywistym i interaktywnej i zarządzać nimi, oraz jak pisać zapytania w języku U-SQL.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -85,7 +83,7 @@ Dowiedz się, jak przy użyciu usługi Data Lake Analytics uruchamiać zadania a
         <td><a href="data-lake-analytics-get-started-portal.md">Portal</a></td>
         <td><a href="data-lake-analytics-data-lake-tools-get-started.md">Program Visual Studio</a></td>
         <td><a href="data-lake-analytics-data-lake-tools-for-vscode.md">Visual Studio Code</a></td>
-        <td><a href="data-lake-analytics-get-started-powershell.md">PowerShell</a></td>
+        <td><a href="data-lake-analytics-get-started-powershell.md">Program PowerShell</a></td>
         <td><a href="data-lake-analytics-get-started-cli2.md">Interfejs wiersza polecenia platformy Azure 2.0</a></td>
     </tr>
 </table>
@@ -98,7 +96,6 @@ Dowiedz się, jak przy użyciu usługi Data Lake Analytics uruchamiać zadania a
         <td><a href="data-lake-analytics-manage-use-cli.md">Interfejs wiersza polecenia platformy Azure</a></td>
         <td><a href="data-lake-analytics-manage-use-dotnet-sdk.md">Zestaw SDK platformy .NET</a></td>
         <td><a href="data-lake-analytics-get-started-python.md">Zestaw SDK dla języka Python</a></td>
-        <td><a href="data-lake-analytics-get-started-java-sdk.md">Zestaw SDK Java</a></td>
     </tr>
 </table>
 
@@ -112,7 +109,7 @@ Dowiedz się, jak przy użyciu usługi Data Lake Analytics uruchamiać zadania a
                 <div class="card">
                     <div class="cardText">
                         <h3>Wiersz polecenia</h3>
-                        <p><a href="/powershell/resourcemanager/azurerm.datalakeanalytics/v2.3.0/azurerm.datalakeanalytics">PowerShell</a></p>
+                        <p><a href="/powershell/resourcemanager/azurerm.datalakeanalytics/v2.3.0/azurerm.datalakeanalytics">Program PowerShell</a></p>
                         <p><a href="/cli/azure/dla">Interfejs wiersza polecenia 2.0</a></p>
                     </div>
                 </div>

@@ -10,18 +10,26 @@
       href: quickstart-create-basic-load-balancer-portal.md
     - name: Tworzenie podstawowego modułu równoważenia obciążenia — interfejs wiersza polecenia platformy Azure
       href: quickstart-create-basic-load-balancer-cli.md
+    - name: Tworzenie podstawowego modułu równoważenia obciążenia — program Azure PowerShell
+      href: quickstart-create-basic-load-balancer-powershell.md
     - name: Tworzenie standardowego modułu równoważenia obciążenia — portal
       href: quickstart-load-balancer-standard-public-portal.md
     - name: Tworzenie standardowego modułu równoważenia obciążenia — interfejs wiersza polecenia platformy Azure
       href: quickstart-load-balancer-standard-public-cli.md
+    - name: Tworzenie standardowego modułu równoważenia obciążenia — program Azure PowerShell
+      href: quickstart-create-standard-load-balancer-powershell.md
 - name: Samouczki
   items:
+    - name: Tworzenie modułu równoważenia obciążenia i zarządzanie nim
+      href: tutorial-load-balancer-standard-manage-portal.md
     - name: Równoważenie obciążenia ruchem wewnętrznym przez skierowanie go do maszyn wirtualnych
       href: tutorial-load-balancer-basic-internal-portal.md
     - name: Równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: Równoważenie obciążenia maszyny wirtualnej w określonej strefie dostępności
       href: tutorial-load-balancer-standard-public-zonal-portal.md
+    - name: Konfigurowanie przekierowywania portów w usłudze Load Balancer
+      href: tutorial-load-balancer-port-forwarding-portal.md
 - name: Przykłady
   items:
     - name: Interfejs wiersza polecenia platformy Azure

@@ -14,6 +14,8 @@
   items:
     - name: Eksplorowanie biblioteki klienckiej JavaScript dla usługi TSI
       href: tutorial-explore-js-client-lib.md
+    - name: Tworzenie środowiska usługi TSI
+      href: tutorial-create-populate-tsi-environment.md
 - name: Pojęcia
   items:
     - name: Planowanie środowiska
@@ -56,6 +58,8 @@
       href: time-series-insights-how-to-scale-your-environment.md
     - name: Zarządzanie zasobami za pomocą szablonów
       href: time-series-insights-manage-resources-using-azure-resource-manager-template.md
+    - name: Dostosowywanie środowiska JSON na potrzeby zapytań
+      href: how-to-shape-query-json.md
 - name: Dokumentacja
   items:
     - name: Interfejs API zapytań

@@ -10,7 +10,7 @@
       href: tutorial-assessment-vmware.md
 - name: Pojęcia
   items:
-    - name: Pojęcia dotyczące modułu zbierającego
+    - name: Informacje o module zbierającym
       href: concepts-collector.md
     - name: Obliczenia dotyczące oceny
       href: concepts-assessment-calculation.md
@@ -18,13 +18,15 @@
       href: concepts-dependency-visualization.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Migrowanie zasobów lokalnych na platformę Azure
+    - name: Seria dotycząca migracji w firmie Contoso
       items:
-        - name: Omówienie scenariusza — migrowanie zasobów lokalnych na platformę Azure
-          href: migrate-scenarios-overview.md
-        - name: Scenariusz 1 — ocena zasobów lokalnych pod kątem migracji na platformę Azure
+        - name: 1. Contoso — omówienie migracji
+          href: contoso-migration-overview.md
+        - name: 2. Contoso — konfigurowanie infrastruktury platformy Azure
+          href: contoso-migration-infrastructure.md
+        - name: 3. Contoso — ocena zasobów lokalnych pod kątem migracji na platformę Azure
           href: migrate-scenarios-assessment.md
-        - name: Scenariusz 2 — migracja metodą „lift-and-shift” na platformę Azure
+        - name: 4. Contoso — ponowne hostowanie na maszynach wirtualnych platformy Azure i w wystąpieniu zarządzanym Azure SQL
           href: migrate-scenarios-lift-and-shift.md
     - name: Odnajdywanie i ocenianie w dużym środowisku
       href: how-to-scale-assessment.md

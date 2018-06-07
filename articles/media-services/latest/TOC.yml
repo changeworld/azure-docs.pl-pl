@@ -12,9 +12,15 @@
 - name: Samouczki
   items:
     - name: 'Przekazywanie, kodowanie i przesyłanie strumieniowe'
-      href: stream-files-tutorial-with-api.md
+      items:
+        - name: Przy użyciu platformy .NET
+          href: stream-files-tutorial-with-api.md
+        - name: Przy użyciu architektury REST
+          href: stream-files-tutorial-with-rest.md
     - name: Analizowanie filmu wideo
-      href: analyze-videos-tutorial-with-api.md
+      items:
+        - name: Przy użyciu platformy .NET
+          href: analyze-videos-tutorial-with-api.md
 - name: Przykłady
   items:
     - name: Przykłady kodu platformy Azure
@@ -25,18 +31,24 @@
   items:
     - name: Elementy zawartości
       href: assets-concept.md
-    - name: Automatyczne generowanie adaptacyjnej drabiny szybkości transmisji bitów
-      href: autogen-bitrate-ladder.md
+    - name: Kodowanie
+      items:
+        - name: Omówienie
+          href: encoding-concept.md
+        - name: Automatyczne generowanie adaptacyjnej drabiny szybkości transmisji bitów
+          href: autogen-bitrate-ladder.md
     - name: Inteligentna analiza multimediów
       href: intelligence-concept.md
+    - name: Reagowanie na zdarzenia
+      href: reacting-to-media-services-events.md
     - name: Konta magazynu
       href: storage-account-concept.md
     - name: Transformacje i zadania
       href: transform-concept.md
-    - name: Reagowanie na zdarzenia
-      href: reacting-to-media-services-events.md
 - name: Przewodniki z instrukcjami
   items:
+    - name: Migracja z wersji 2 do wersji 3
+      href: migrate-from-v2-to-v3.md
     - name: Tworzenie konta — interfejs wiersza polecenia
       href: create-account-cli-how-to.md
     - name: Dostęp do interfejsów API — interfejs wiersza polecenia
@@ -49,8 +61,14 @@
           href: job-input-from-http-how-to.md
         - name: Z pliku lokalnego
           href: job-input-from-local-file-how-to.md
+    - name: Dostosowywanie wstępnych ustawień przekształcania
+      items:
+        - name: Przy użyciu platformy .NET Core
+          href: customize-encoder-presets-how-to.md
 - name: Dokumentacja
   items:
+    - name: Specyfikacja interfejsu OpenAPI (Swagger)
+      href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2018-03-30-preview'
     - name: Interfejs wiersza polecenia platformy Azure 2.0
       href: 'https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest'
     - name: REST
@@ -61,6 +79,8 @@
       href: 'https://docs.microsoft.com/java/api/overview/azure/mediaservices'
     - name: Python
       href: 'https://docs.microsoft.com/python/api/overview/azure/media-services?view=azure-python'
+    - name: Node.js
+      href: 'https://docs.microsoft.com/en-us/javascript/api/azure-arm-mediaservices/index?view=azure-node-latest'
     - name: Schematy zdarzeń
       href: media-services-event-schemas.md
 - name: Zasoby
@@ -77,3 +97,5 @@
       href: release-notes.md
     - name: Limity przydziału i ograniczenia
       href: limits-quotas-constraints.md
+    - name: Często zadawane pytania
+      href: frequently-asked-questions.md

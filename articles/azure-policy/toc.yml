@@ -17,26 +17,50 @@
   items:
     - name: Tworzenie zasad platformy Azure i zarządzanie nimi
       href: create-manage-policy.md
+    - name: Poznawanie usługi Azure Policy (warszaty)
+      href: 'https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyId=story://Content-Private/content/sp-azuregovernance/1-azpolicy/a-policy'
 - name: Przykłady
   items:
-    - name: Szablony zasad
+    - name: Przykłady dla usługi Azure Policy
       href: json-samples.md
 - name: Pojęcia
   items:
     - name: Struktura definicji zasad platformy Azure
       href: policy-definition.md
+    - name: Wyjaśnienie działania zasad
+      href: policy-effects.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Programowe tworzenie zasad
       href: policy-insights.md
+    - name: Zbieranie danych dotyczących zgodności
+      href: policy-compliance.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure
       href: /cli/azure/policy
     - name: Azure PowerShell
       href: '/powershell/module/azurerm.resources/#policies'
+    - name: Interfejs API REST
+      items:
+        - name: Zdarzenia
+          href: /rest/api/policy-insights/policyevents
+        - name: Stany
+          href: /rest/api/policy-insights/policystates
+        - name: Przypisania
+          href: /rest/api/resources/policyassignments
+        - name: Definicje zasad
+          href: /rest/api/resources/policydefinitions
+        - name: Definicje inicjatyw
+          href: /rest/api/resources/policysetdefinitions
 - name: Zasoby
   items:
+    - name: GitHub — przykłady dla usługi Azure Policy
+      href: 'https://github.com/Azure/azure-policy'
+    - name: Klip wideo — konferencja Build 2018
+      href: 'https://channel9.msdn.com/events/Build/2018/THR2030'
+    - name: Klip wideo — konferencja Ignite 2017
+      href: 'https://myignite.microsoft.com/videos/54781'
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Kalkulator cen

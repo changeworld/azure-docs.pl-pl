@@ -10,6 +10,8 @@
   items:
     - name: Maj 2018 r.
       href: release-notes-may-2018.md
+    - name: "Kwiecień 2018\_r."
+      href: release-notes-april-2018.md
 - name: Przewodniki Szybki start
   expanded: true
   items:

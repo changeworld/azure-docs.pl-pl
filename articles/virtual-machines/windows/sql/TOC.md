@@ -19,7 +19,8 @@
 #### [Konfigurowanie integracji usługi Azure Key Vault](virtual-machines-windows-ps-sql-keyvault.md)
 ## Tworzenie kopii zapasowej i przywracanie
 ### [Tworzenie kopii zapasowej i przywracanie](virtual-machines-windows-sql-backup-recovery.md)
-### [Automatyczne kopie zapasowe](virtual-machines-windows-sql-automated-backup.md)
+### [Zautomatyzowane tworzenie kopii zapasowej programu SQL Server 2014](virtual-machines-windows-sql-automated-backup.md)
+### [Zautomatyzowane tworzenie kopii zapasowej programu SQL Server 2016+](virtual-machines-windows-sql-automated-backup-v2.md)
 ### [Tworzenie kopii zapasowej i przywracanie za pomocą usługi Azure Storage](virtual-machines-windows-use-storage-sql-server-backup-restore.md)
 
 # Przewodniki z instrukcjami

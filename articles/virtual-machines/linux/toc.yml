@@ -89,6 +89,8 @@
               href: n-series-driver-setup.md
         - name: Obliczenia o wysokiej wydajności
           href: sizes-hpc.md
+        - name: Poprzednie generacje
+          href: sizes-previous-gen.md
         - name: Jednostki obliczeniowe platformy Azure (ACU)
           href: acu.md
         - name: Wyniki testów porównawczych
@@ -140,6 +142,8 @@
           href: create-cli-complete.md
         - name: Korzystanie z szablonu
           href: create-ssh-secured-vm-from-template.md
+        - name: Korzystanie z interfejsu API REST
+          href: create-vm-rest-api.md
         - name: Kopiowanie lub klonowanie maszyny wirtualnej
           href: copy-vm.md
     - name: Zabezpieczone maszyny wirtualne
@@ -188,7 +192,12 @@
         - name: Tagowanie maszyny wirtualnej
           href: tag.md
         - name: Uruchamianie skryptów na maszynie wirtualnej
-          href: extensions-customscript.md
+          href: run-scripts-in-vm.md
+          items:
+            - name: Rozszerzenie niestandardowego skryptu
+              href: ../extensions/custom-script-linux.md
+            - name: Uruchamianie polecenia
+              href: run-command.md
         - name: Korzystanie z pulpitu zdalnego
           href: use-remote-desktop.md
         - name: Przyłączanie maszyny wirtualnej do usługi Azure Active Directory
@@ -416,21 +425,7 @@
             - name: Korzystanie z wewnętrznego serwera DNS
               href: static-dns-name-resolution-for-linux-on-azure.md
     - name: Korzystanie z rozszerzeń maszyn wirtualnych
-      items:
-        - name: Przegląd rozszerzeń maszyn wirtualnych
-          href: extensions-features.md
-        - name: Rozszerzenie niestandardowego skryptu
-          href: extensions-customscript.md
-        - name: Rozszerzenie agenta OMS
-          href: extensions-oms.md
-        - name: Rozszerzenie diagnostyczne systemu Linux
-          href: diagnostic-extension.md
-        - name: Agent usługi Network Watcher
-          href: extensions-nwa.md
-        - name: Rozszerzenie VMAccess
-          href: using-vmaccess-extension.md
-        - name: Ograniczanie instalacji rozszerzeń
-          href: ../extensions/extensions-rmpolicy-howto-cli.md
+      href: ../extensions/overview.md
     - name: Migrowanie maszyn wirtualnych
       items:
         - name: Migrowanie lokalnych maszyn wirtualnych i maszyn wirtualnych usług AWS

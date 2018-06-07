@@ -113,7 +113,7 @@
     - name: Usługa Batch — sztuczna inteligencja
       tocHref: /azure/batch-ai/
       topicHref: /azure/batch-ai/
-    - name: Rozliczenia
+    - name: Rozliczenia i zarządzanie kosztami
       tocHref: /azure/billing/
       topicHref: /azure/billing/
     - name: BizTalk Services

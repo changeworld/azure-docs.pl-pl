@@ -73,6 +73,8 @@
           href: batch-custom-images.md
         - name: Tworzenie puli w sieci wirtualnej
           href: batch-virtual-network.md
+        - name: Instalowanie udziału plików platformy Azure
+          href: pool-file-shares.md
         - name: Używanie maszyn wirtualnych intensywnie korzystających z mocy obliczeniowej
           href: batch-pool-compute-intensive-sizes.md
         - name: Używanie węzłów obliczeniowych z systemem Linux

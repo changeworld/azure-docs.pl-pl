@@ -15,6 +15,7 @@
 ### [Programowe tworzenie pulpitów nawigacyjnych platformy Azure](azure-portal-dashboards-create-programmatically.md)
 ## Zarządzanie
 ### [Włączanie dużego kontrastu lub zmienianie motywu](azure-portal-change-theme-high-contrast.md)
+### [Eksportowanie i usuwanie ustawień użytkownika](azure-portal-export-delete-settings.md)
 ### [Zarządzanie zasobami w portalu](../azure-resource-manager/resource-group-portal.md)
 ### [Zarządzanie dostępem przy użyciu kontroli dostępu opartej na rolach](../role-based-access-control/role-assignments-portal.md)
 ### [Udostępnianie pulpitów nawigacyjnych przy użyciu kontroli dostępu opartej na rolach](azure-portal-dashboard-share-access.md)

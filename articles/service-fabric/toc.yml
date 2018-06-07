@@ -433,6 +433,8 @@
           href: service-fabric-visualstudio-configure-secure-connections.md
         - name: Debugowanie usługi .NET w programie VS
           href: service-fabric-debugging-your-application.md
+        - name: Debugowanie kontenerów systemu Windows przy użyciu usługi Service Fabric i programu VS
+          href: service-fabric-how-to-debug-windows-containers.md
         - name: Typowe błędy i wyjątki
           href: service-fabric-errors-and-exceptions.md
         - name: Lokalne monitorowanie i diagnozowanie
@@ -521,12 +523,18 @@
                   href: service-fabric-cluster-creation-via-arm.md
                 - name: Klaster używający nazwy pospolitej certyfikatu
                   href: service-fabric-create-cluster-using-cert-cn.md
+                - name: Włączanie szyfrowania dysku dla systemu Windows
+                  href: service-fabric-enable-azure-disk-encryption-windows.md
+                - name: Włączanie szyfrowania dysku dla systemu Linux
+                  href: service-fabric-enable-azure-disk-encryption-linux.md
             - name: Skalowanie
               items:
-                - name: Ręczne
+                - name: Ręczne skalowanie w poziomie
                   href: service-fabric-cluster-scale-up-down.md
-                - name: Programistyczne
+                - name: Programowe skalowanie w poziomie
                   href: service-fabric-cluster-programmatic-scaling.md
+                - name: Skalowanie w górę maszyn wirtualnych węzłów o podstawowym typie
+                  href: service-fabric-cluster-upgrade-primary-nodetype-vm.md
             - name: Uaktualnienie
               href: service-fabric-cluster-upgrade.md
             - name: Ustawianie kontroli dostępu
@@ -599,10 +607,10 @@
               href: service-fabric-diagnostics-event-analysis-oms.md
         - name: Monitorowanie infrastruktury
           items:
-            - name: Monitorowanie wydajności za pomocą funkcji WAD
-              href: service-fabric-diagnostics-perf-wad.md
             - name: Monitorowanie wydajności za pomocą agenta pakietu OMS
               href: service-fabric-diagnostics-oms-agent.md
+            - name: Monitorowanie wydajności za pomocą funkcji WAD
+              href: service-fabric-diagnostics-perf-wad.md
         - name: Monitorowanie kondycji
           items:
             - name: Tworzenie raportów i sprawdzanie kondycji
@@ -613,6 +621,8 @@
               href: service-fabric-view-entities-aggregated-health.md
         - name: Rozwiązywanie problemów z klastrem lokalnym
           href: service-fabric-troubleshoot-local-cluster-setup.md
+        - name: Diagnozowanie typowych scenariuszy
+          href: service-fabric-diagnostics-common-scenarios.md
 - name: Dokumentacja
   items:
     - name: Azure PowerShell
@@ -628,20 +638,29 @@
           href: service-fabric-sfctl-application.md
         - name: sfctl chaos
           href: service-fabric-sfctl-chaos.md
+          items:
+            - name: sfctl chaos schedule
+              href: service-fabric-sfctl-chaos-schedule.md
         - name: sfctl cluster
           href: service-fabric-sfctl-cluster.md
         - name: sfctl compose
           href: service-fabric-sfctl-compose.md
+        - name: sfctl container
+          href: service-fabric-sfctl-container.md
         - name: sfctl is
           href: service-fabric-sfctl-is.md
         - name: sfctl node
           href: service-fabric-sfctl-node.md
         - name: sfctl partition
           href: service-fabric-sfctl-partition.md
+        - name: sfctl property
+          href: service-fabric-sfctl-property.md
         - name: sfctl replica
           href: service-fabric-sfctl-replica.md
         - name: sfctl rpm
           href: service-fabric-sfctl-rpm.md
+        - name: sfctl sa-cluster
+          href: service-fabric-sfctl-sa-cluster.md
         - name: sfctl service
           href: service-fabric-sfctl-service.md
         - name: sfctl store

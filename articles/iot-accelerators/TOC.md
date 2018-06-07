@@ -3,13 +3,13 @@
 
 # Omówienie
 ## [Pojęcia dotyczące architektury IoT](iot-accelerators-what-is-azure-iot.md)
-## [Porównanie opcji usługi Azure IoT](../iot-suite/iot-suite-options.md)
+## [Porównanie opcji usługi Azure IoT](iot-accelerators-options.md)
 ## [Omówienie akceleratorów rozwiązań](iot-accelerators-what-are-solution-accelerators.md)
 
 # Rozpoczęcie pracy
 ## Zdalne monitorowanie
 ### [Wdrażanie akceleratora rozwiązań](iot-accelerators-remote-monitoring-deploy.md)
-### [Obsługa akceleratora rozwiązań](../iot-suite/iot-suite-remote-monitoring-explore.md)
+### [Obsługa akceleratora rozwiązań](iot-accelerators-remote-monitoring-explore.md)
 
 ## Zdalne monitorowanie (poprzednia wersja)
 ### [Co to są akceleratory rozwiązań?](../iot-suite/iot-suite-v1-what-are-preconfigured-solutions.md)
@@ -43,8 +43,8 @@
 
 
 ## Konserwacja zapobiegawcza
-### [Omówienie akceleratora rozwiązań do konserwacji zapobiegawczej](../iot-suite/iot-suite-predictive-overview.md)
-### [Przewodnik po akceleratorze rozwiązań do konserwacji zapobiegawczej](../iot-suite/iot-suite-predictive-walkthrough.md)
+### [Omówienie akceleratora rozwiązań do konserwacji zapobiegawczej](iot-accelerators-predictive-overview.md)
+### [Przewodnik po akceleratorze rozwiązań do konserwacji zapobiegawczej](iot-accelerators-predictive-walkthrough.md)
 
 ## Połączona fabryka
 ### [Co to jest połączona fabryka?](iot-accelerators-connected-factory-features.md)
@@ -70,7 +70,7 @@
 ### [Dostosowywanie i ponowne wdrażanie mikrousługi](iot-accelerators-microservices-example.md)
 ### [Wdrażanie przy użyciu interfejsu wiersza polecenia](iot-accelerators-remote-monitoring-deploy-cli.md)
 ### [Wdrażanie lokalne](iot-accelerators-remote-monitoring-deploy-local.md)
-### [Wizualizowanie danych za pomocą usługi Time Series Insights](../iot-suite/iot-suite-time-series-insights.md)
+### [Wizualizowanie danych za pomocą usługi Time Series Insights](iot-accelerators-time-series-insights.md)
 ### [Integracja z usługą Data Lake](iot-accelerators-integrate-data-lake.md)
 ### Podłączanie urządzenia fizycznego
 #### [C w systemie Windows](iot-accelerators-connecting-devices.md)
@@ -78,7 +78,7 @@
 #### [Node.js (ogólny)](iot-accelerators-connecting-devices-node.md)
 #### [Node.js na urządzeniu Raspberry Pi](iot-accelerators-connecting-pi-node.md)
 #### [C na urządzeniu Raspberry Pi](iot-accelerators-connecting-pi-c.md)
-#### [Zestaw deweloperski MX Chip AZ3166](../iot-suite/iot-suite-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md)
+#### [Zestaw deweloperski MX Chip AZ3166](iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md)
 
 ### Pojęcia
 #### [Szczegóły implementacji monitorowania zdalnego](iot-accelerators-remote-monitoring-sample-walkthrough.md)
@@ -89,19 +89,19 @@
 ### [Dostosowywanie połączonej fabryki](iot-accelerators-connected-factory-customize.md)
 ### [Korzystanie z wydawcy OPC na potrzeby połączonej fabryki](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md)
 ### [Konfigurowanie połączonej fabryki](iot-accelerators-connected-factory-configure.md)
-## [Uprawnienia w witrynie azureiotsuite.com](../iot-suite/iot-suite-permissions.md)
+## [Uprawnienia w witrynie azureiotsuite.com](iot-accelerators-permissions.md)
 
 # Dokumentacja
 ## [Przewodnik informacyjny dla deweloperów](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 ## [Przewodnik po rozwiązywaniu problemów dla deweloperów](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
-## [Architektura zabezpieczeń](../iot-suite/iot-security-architecture.md)
-## [Najlepsze rozwiązania dotyczące zabezpieczeń](../iot-suite/iot-security-best-practices.md)
-## [Zabezpieczanie wdrożenia IoT](../iot-suite/iot-suite-security-deployment.md)
-## [Zabezpieczenia od podstaw](../iot-suite/securing-iot-ground-up.md)
+## [Architektura zabezpieczeń](iot-security-architecture.md)
+## [Najlepsze rozwiązania dotyczące zabezpieczeń](iot-security-best-practices.md)
+## [Zabezpieczanie wdrożenia IoT](iot-accelerators-security-deployment.md)
+## [Zabezpieczenia od podstaw](securing-iot-ground-up.md)
 
 # Powiązane
 ## Rozwiązania 
-### [Wstępnie skonfigurowane rozwiązania usługi IoT Suite](/azure/iot-suite) 
+### [Akceleratory rozwiązań IoT](/azure/iot-suite) 
 ### [Centrala IoT](https://docs.microsoft.com/microsoft-iot-central/) 
 ## Usługi platformy 
 ### [IoT Hub](/azure/iot-hub) 

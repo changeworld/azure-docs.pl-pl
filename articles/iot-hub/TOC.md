@@ -9,6 +9,7 @@
 ## [Wysyłanie danych telemetrycznych (.NET)](quickstart-send-telemetry-dotnet.md)
 ## [Wysyłanie danych telemetrycznych (Java)](quickstart-send-telemetry-java.md)
 ## [Wysyłanie danych telemetrycznych (Python)](quickstart-send-telemetry-python.md)
+## [Wysyłanie danych telemetrycznych (iOS)](quickstart-send-telemetry-ios.md)
 ## [Kontrolowanie urządzenia (Node.js)](quickstart-control-device-node.md)
 ## [Kontrolowanie urządzenia (.NET)](quickstart-control-device-dotnet.md)
 ## [Kontrolowanie urządzenia (Java)](quickstart-control-device-java.md)
@@ -18,29 +19,19 @@
 
 <!-- These will all be replaced by the new MVC tutorials as we write them -->
 ## [Routing wiadomości](tutorial-routing.md)
+## [Konfigurowanie urządzeń](tutorial-device-twins.md)
+## [Testowanie łączności urządzenia](tutorial-connectivity.md)
 ## Wysyłanie komunikatów z chmury do urządzeń
 ### [.NET](iot-hub-csharp-csharp-c2d.md)
 ### [Java](iot-hub-java-java-c2d.md)
 ### [Node.js](iot-hub-node-node-c2d.md)
 ### [Python](iot-hub-python-python-c2d.md)
-## Wprowadzenie do zarządzania bliźniaczymi reprezentacjami urządzeń
-### [Zaplecze środowiska Node.js/urządzenie środowiska Node.js](iot-hub-node-node-twin-getstarted.md)
-### [Zaplecze środowiska .NET/urządzenie środowiska Node.js](iot-hub-csharp-node-twin-getstarted.md)
-### [Zaplecze środowiska .NET/urządzenie środowiska .NET](iot-hub-csharp-csharp-twin-getstarted.md)
-### [Zaplecze środowiska Java/urządzenie środowiska Java](iot-hub-java-java-twin-getstarted.md)
-### [Zaplecze języka Python/urządzenie języka Python](iot-hub-python-twin-getstarted.md)
 ## Wprowadzenie do zarządzania urządzeniami
 ### [Zaplecze środowiska Node.js/urządzenie środowiska Node.js](iot-hub-node-node-device-management-get-started.md)
 ### [Zaplecze środowiska .NET/urządzenie środowiska Node.js](iot-hub-csharp-node-device-management-get-started.md)
 ### [Zaplecze środowiska .NET/urządzenie środowiska .NET](iot-hub-csharp-csharp-device-management-get-started.md)
 ### [Zaplecze środowiska Java/urządzenie środowiska Java](iot-hub-java-java-device-management-getstarted.md)
 ### [Zaplecze języka Python/urządzenie języka Python](iot-hub-python-python-device-management-get-started.md)
-## Korzystanie z właściwości bliźniaczych reprezentacji
-### [Zaplecze środowiska Node.js/urządzenie środowiska Node.js](iot-hub-node-node-twin-how-to-configure.md)
-### [Zaplecze środowiska .NET/urządzenie środowiska Node.js](iot-hub-csharp-node-twin-how-to-configure.md)
-### [Zaplecze środowiska .NET/urządzenie środowiska .NET](iot-hub-csharp-csharp-twin-how-to-configure.md)
-### [Zaplecze środowiska Java/urządzenie środowiska Java](iot-hub-java-java-twin-how-to-configure.md)
-### [Zaplecze języka Python/urządzenie języka Python](iot-hub-python-python-twin-how-to-configure.md)
 ## Aktualizowanie oprogramowania układowego urządzenia za pomocą zadań urządzeń
 ### [Zaplecze środowiska Node/urządzenie środowiska Node](iot-hub-node-node-firmware-update.md)
 ### [Zaplecze środowiska .NET/urządzenie środowiska Node.js](iot-hub-csharp-node-firmware-update.md)
@@ -80,6 +71,8 @@
 ### [Limity przydziału i ograniczanie przepływności](iot-hub-devguide-quotas-throttling.md)
 ### [Przykłady cen](iot-hub-devguide-pricing.md)
 ### [Zestawy SDK urządzeń i usługi](iot-hub-devguide-sdks.md)
+### [Opracowywanie zawartości dla urządzeń z ograniczeniami](iot-hub-devguide-develop-for-constrained-devices.md)
+### [Opracowywanie zawartości dla urządzeń przenośnych](iot-hub-how-to-develop-for-mobile-devices.md)
 ### [Obsługa protokołu MQTT](iot-hub-mqtt-support.md)
 ### [Słownik](iot-hub-devguide-glossary.md)
 
@@ -89,7 +82,6 @@
 #### [Java](iot-hub-java-java-getstarted.md)
 #### [Node.js](iot-hub-node-node-getstarted.md)
 #### [Python](iot-hub-python-getstarted.md)
-#### [iOS (Swift)](quickstart-send-telemetry-ios.md)
 ## [Korzystanie z zestawu SDK urządzenia IoT dla języka C](iot-hub-device-sdk-c-intro.md)
 ### [Korzystanie z usługi IoTHubClient](iot-hub-device-sdk-c-iothubclient.md)
 ### [Korzystanie z serializatora](iot-hub-device-sdk-c-serializer.md)
@@ -157,17 +149,26 @@
 ### [Korzystanie z zestawu SDK urządzenia IoT dla języka C](iot-hub-device-sdk-c-intro.md)
 #### [Korzystanie z usługi IoTHubClient](iot-hub-device-sdk-c-iothubclient.md)
 #### [Korzystanie z serializatora](iot-hub-device-sdk-c-serializer.md)
+### [Opracowywanie zawartości dla urządzeń z ograniczeniami](iot-hub-devguide-develop-for-constrained-devices.md)
+### [Opracowywanie zawartości dla urządzeń przenośnych](iot-hub-how-to-develop-for-mobile-devices.md)
 ### Routing wiadomości
 #### [.NET](iot-hub-csharp-csharp-process-d2c.md)
 #### [Java](iot-hub-java-java-process-d2c.md)
 #### [Node.js](iot-hub-node-node-process-d2c.md)
 #### [Python](iot-hub-python-python-process-d2c.md)
+### [Wykonywanie zapytań o dane Avro przy użyciu trasy centrum](iot-hub-query-avro-data.md)
 ### Wysyłanie komunikatów z chmury do urządzeń
 #### [.NET](iot-hub-csharp-csharp-c2d.md)
 #### [Java](iot-hub-java-java-c2d.md)
 #### [Node.js](iot-hub-node-node-c2d.md)
 #### [Python](iot-hub-python-python-c2d.md)
 #### [iOS](iot-hub-ios-swift-c2d.md)
+### Wprowadzenie do zarządzania bliźniaczymi reprezentacjami urządzeń
+#### [Zaplecze środowiska Node.js/urządzenie środowiska Node.js](iot-hub-node-node-twin-getstarted.md)
+#### [Zaplecze środowiska .NET/urządzenie środowiska Node.js](iot-hub-csharp-node-twin-getstarted.md)
+#### [Zaplecze środowiska .NET/urządzenie środowiska .NET](iot-hub-csharp-csharp-twin-getstarted.md)
+#### [Zaplecze środowiska Java/urządzenie środowiska Java](iot-hub-java-java-twin-getstarted.md)
+#### [Zaplecze języka Python/urządzenie języka Python](iot-hub-python-twin-getstarted.md)
 ### Przekazywanie plików z urządzeń
 #### [.NET](iot-hub-csharp-csharp-file-upload.md)
 #### [Java](iot-hub-java-java-file-upload.md)
@@ -217,13 +218,6 @@
 ### [Java](iot-hub-java-java-file-upload.md)
 ### [Node.js](iot-hub-node-node-file-upload.md)
 ### [Python](iot-hub-python-python-file-upload.md)
-
-## Planowanie i emitowanie zadań
-### [Zaplecze środowiska Node.js/urządzenie środowiska Node.js](iot-hub-node-node-schedule-jobs.md)
-### [Zaplecze środowiska .NET/urządzenie środowiska Node.js](iot-hub-csharp-node-schedule-jobs.md)
-### [Zaplecze środowiska .NET/urządzenie środowiska .NET](iot-hub-csharp-csharp-schedule-jobs.md)
-### [Zaplecze środowiska Java/urządzenie środowiska Java](iot-hub-java-java-schedule-jobs.md)
-### [Zaplecze języka Python/urządzenie języka Python](iot-hub-python-python-schedule-jobs.md)
 
 ## Tworzenie centrum IoT 
 ### [Korzystanie z witryny Azure Portal](iot-hub-create-through-portal.md)

@@ -51,6 +51,8 @@
           href: container-instances-exec.md
         - name: Monitorowanie użycia procesora i pamięci
           href: container-instances-monitor.md
+        - name: Rejestrowanie za pomocą usługi Azure Log Analytics
+          href: container-instances-log-analytics.md
     - name: Uruchamianie obciążeń
       items:
         - name: Uruchamianie zadań konteneryzowanych
