@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 62a1052c0b2674e3292d5f89c0b8863439dd3928
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b8a35e19628ebbe75d3f1890a6d64ab777519698
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621551"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Przenoszenia danych z lokalnego systemu plików HDFS przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -67,7 +68,7 @@ Połączona usługa łączy magazynu danych z fabryki danych. Tworzenie połącz
 | --- | --- | --- |
 | type |Właściwość type musi mieć ustawioną: **Hdfs** |Yes |
 | Url |Adres URL do systemu plików HDFS |Yes |
-| authenticationType |Anonimowe lub Windows. <br><br> Umożliwia **uwierzytelnianie Kerberos** łącznika systemu plików HDFS, można znaleźć w temacie [w tej sekcji](#use-kerberos-authentication-for-hdfs-connector) do odpowiednio skonfigurowane w lokalnym środowisku. |Yes |
+| Typ authenticationType |Anonimowe lub Windows. <br><br> Umożliwia **uwierzytelnianie Kerberos** łącznika systemu plików HDFS, można znaleźć w temacie [w tej sekcji](#use-kerberos-authentication-for-hdfs-connector) do odpowiednio skonfigurowane w lokalnym środowisku. |Yes |
 | userName |Uwierzytelnianie nazwy użytkownika dla systemu Windows. Aby uwierzytelnianie Kerberos, określ `<username>@<domain>.com`. |Tak (w przypadku uwierzytelniania systemu Windows) |
 | hasło |Hasło dla uwierzytelniania systemu Windows. |Tak (w przypadku uwierzytelniania systemu Windows) |
 | gatewayName |Nazwa bramy, która powinna być używana do nawiązania połączenia systemu plików HDFS usługi fabryka danych. |Yes |

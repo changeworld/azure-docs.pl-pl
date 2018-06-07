@@ -1,24 +1,20 @@
 ---
 title: Przekazywanie plików z urządzenia do Centrum IoT Azure z językiem Java | Dokumentacja firmy Microsoft
 description: Sposób przekazywania plików z urządzenia do chmury przy użyciu urządzenia Azure IoT SDK dla języka Java. Przekazano pliki są przechowywane w kontenerze obiektu blob magazynu Azure.
-services: iot-hub
-documentationcenter: java
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 4759d229-f856-4526-abda-414f8b00a56d
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: 794ebd3b2d25f6b7d5dcb86b0834380fce9b9a27
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 09580f3bb5d6f6f5ccb15adddf0cf1f9e19c2210
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807581"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Przekazywanie plików z urządzenia do chmury z Centrum IoT
 
@@ -29,7 +25,7 @@ W tym samouczku opiera się na kodzie w [wysyłać chmury do urządzenia z Centr
 - Bezpieczne udostępnianie urządzenia platformy Azure blob identyfikatora URI pobierania pliku.
 - Powiadomienia o przekazywania plików Centrum IoT umożliwia wyzwalanie przetwarzania plików w sieci wewnętrznej aplikacji.
 
-[Rozpoczynanie pracy z Centrum IoT](iot-hub-java-java-getstarted.md) i [wysyłać chmury do urządzenia z Centrum IoT](iot-hub-java-java-c2d.md) samouczki przedstawiają podstawowych funkcji obsługi komunikatów z Centrum IoT urządzenia do chmury i chmury do urządzenia. [Wiadomości procesu urządzenia do chmury](iot-hub-java-java-process-d2c.md) samouczek przedstawia sposób niezawodny sposób przechowywania wiadomości urządzenia do chmury w magazynie obiektów blob platformy Azure. Jednak w niektórych scenariuszach nie można łatwo mapować dane, które Twojego urządzenia wysyłają do stosunkowo mały wiadomości urządzenia do chmury, które akceptuje Centrum IoT. Na przykład:
+[Rozpoczynanie pracy z Centrum IoT](iot-hub-java-java-getstarted.md) i [wysyłać chmury do urządzenia z Centrum IoT](iot-hub-java-java-c2d.md) samouczki przedstawiają podstawowych funkcji obsługi komunikatów z Centrum IoT urządzenia do chmury i chmury do urządzenia. [Wiadomości procesu urządzenia do chmury](tutorial-routing.md) samouczek przedstawia sposób niezawodny sposób przechowywania wiadomości urządzenia do chmury w magazynie obiektów blob platformy Azure. Jednak w niektórych scenariuszach nie można łatwo mapować dane, które Twojego urządzenia wysyłają do stosunkowo mały wiadomości urządzenia do chmury, które akceptuje Centrum IoT. Na przykład:
 
 * Duże pliki, które zawierają obrazów
 * Filmy wideo
@@ -44,7 +40,7 @@ Na końcu tego samouczka możesz uruchomić dwie aplikacje konsoli Java:
 * **Odczyt pliku przekazywania powiadomień**, która odbiera powiadomienia o przekazywania plików z Centrum IoT.
 
 > [!NOTE]
-> Centrum IoT obsługuje wiele platform urządzeń i języków (w tym C, .NET i Javascript) za pomocą urządzenia Azure IoT zestawów SDK. Zapoznaj się [Azure IoT Developer Center] instrukcje krok po kroku dotyczące sposobu Podłącz urządzenie do Centrum IoT Azure.
+> Centrum IoT obsługuje wiele platform urządzeń i języków (w tym C, .NET i Javascript) za pomocą urządzenia Azure IoT zestawów SDK. Zapoznaj się [Centrum deweloperów Azure IoT] instrukcje krok po kroku dotyczące sposobu Podłącz urządzenie do Centrum IoT Azure.
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
@@ -283,7 +279,7 @@ Aby dokładniej analizować możliwości Centrum IoT, zobacz:
 
 
 
-[Azure IoT Developer Center]: http://azure.microsoft.com/develop/iot
+[Centrum deweloperów Azure IoT]: http://azure.microsoft.com/develop/iot
 
 [Transient Fault Handling]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure Storage]:../storage/common/storage-create-storage-account.md#create-a-storage-account

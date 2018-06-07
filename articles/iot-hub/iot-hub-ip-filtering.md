@@ -1,24 +1,19 @@
 ---
 title: Filtry połączenia IP Centrum IoT Azure | Dokumentacja firmy Microsoft
 description: Jak używać IP filtrowania bloku połączeń z określonych adresów IP do Centrum Azure IoT. Możesz zablokować połączenia z poszczególnych lub zakresów adresów IP.
-services: iot-hub
-documentationcenter: ''
 author: BeatriceOltean
-manager: timlt
-editor: ''
-ms.assetid: f833eac3-5b5f-46a7-a47b-f4f6fc927f3f
+manager: ''
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: boltean
-ms.openlocfilehash: 0229b8b16de1fa04d953c90895b29e4fbad60ec3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: fa44fd21eadb910ce90523b46332505c7303751e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635971"
 ---
 # <a name="use-ip-filters"></a>Używanie filtrów IP
 
@@ -28,7 +23,7 @@ Zabezpieczenia są istotnym elementem każde rozwiązanie IoT oparte na usłudze
 
 Istnieją dwa określonych przypadków użycia gdy będzie blokować punkty końcowe Centrum IoT dla określonych adresów IP:
 
-- Centrum IoT powinny odbierać dane tylko z określonego zakresu adresów IP i odrzucić wszystkie inne elementy. Na przykład w przypadku korzystania z Centrum IoT [Azure Express Route] do utworzenia prywatnej połączeń między centrum IoT i infrastruktury lokalnej.
+- Centrum IoT powinny odbierać dane tylko z określonego zakresu adresów IP i odrzucić wszystkie inne elementy. Na przykład w przypadku korzystania z Centrum IoT [Usługa Azure Expressroute] do utworzenia prywatnej połączeń między centrum IoT i infrastruktury lokalnej.
 - Należy odrzucić ruch sieciowy z adresów IP, które zostały zidentyfikowane jako podejrzane przez administratora Centrum IoT.
 
 ## <a name="how-filter-rules-are-applied"></a>Sposób stosowania reguły filtrowania
@@ -103,7 +98,7 @@ Aby dokładniej analizować możliwości Centrum IoT, zobacz:
 <!-- Links -->
 
 [IoT Hub developer guide]: iot-hub-devguide.md
-[Azure Express Route]:  https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services
+[Usługa Azure Expressroute]:  https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services
 
 [lnk-monitor]: iot-hub-operations-monitoring.md
 [lnk-metrics]: iot-hub-metrics.md

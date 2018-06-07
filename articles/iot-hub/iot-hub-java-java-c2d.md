@@ -1,24 +1,20 @@
 ---
 title: Komunikaty chmury do urządzenia z Centrum IoT Azure (Java) | Dokumentacja firmy Microsoft
 description: Jak wysyłać wiadomości chmury do urządzenia na urządzeniu z Centrum Azure IoT przy użyciu zestawów SDK IoT Azure dla języka Java. Możesz zmodyfikować aplikację symulowane urządzenie, aby odbierać komunikaty z chmury do urządzenia i modyfikowania aplikacji zaplecza, do wysyłania wiadomości chmury do urządzenia.
-services: iot-hub
-documentationcenter: java
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 7f785ea8-e7c2-40c5-87ef-96525e9b9e1e
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: 4c748f01a83c7f569953f7c7f2fc5631ca0efd17
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 410a156d60aa9b17da9c36e043082c291eea4849
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808115"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>Wysyłanie komunikatów chmury do urządzenia z Centrum IoT (Java)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -41,11 +37,11 @@ Na końcu tego samouczka możesz uruchomić dwie aplikacje konsoli Java:
 * **send — c2d — liczba komunikatów**, który wysyła komunikat chmury do urządzenia do aplikacji symulowane urządzenie za pomocą Centrum IoT i następnie odbiera jego potwierdzenie dostarczenia.
 
 > [!NOTE]
-> Centrum IoT obsługuje zestawu SDK dla wielu platform urządzeń i języków (w tym C, Java i Javascript) za pośrednictwem zestawy SDK urządzenia Azure IoT. Aby uzyskać instrukcje krok po kroku dotyczące sposobu Podłącz urządzenie do kodu w tym samouczku i zwykle z Centrum IoT Azure, zobacz [Azure IoT Developer Center].
+> Centrum IoT obsługuje zestawu SDK dla wielu platform urządzeń i języków (w tym C, Java i Javascript) za pośrednictwem zestawy SDK urządzenia Azure IoT. Aby uzyskać instrukcje krok po kroku dotyczące sposobu Podłącz urządzenie do kodu w tym samouczku i zwykle z Centrum IoT Azure, zobacz [Centrum deweloperów Azure IoT].
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
-* Pełną wersję pracy [Rozpoczynanie pracy z Centrum IoT](iot-hub-java-java-getstarted.md) lub [wiadomości urządzenia do chmury Centrum IoT procesu](iot-hub-java-java-process-d2c.md) samouczka.
+* Pełną wersję pracy [Rozpoczynanie pracy z Centrum IoT](iot-hub-java-java-getstarted.md) lub [wiadomości urządzenia do chmury Centrum IoT procesu](tutorial-routing.md) samouczka.
 * Najnowszy zestaw [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Maven 3](https://maven.apache.org/install.html)
 * Aktywne konto platformy Azure. (Jeśli go nie masz, możesz utworzyć [bezpłatne konto próbne][lnk-free-trial] w zaledwie kilka minut).
@@ -89,7 +85,7 @@ W tej sekcji możesz zmodyfikować aplikację symulowane urządzenie, utworzony 
 
 ## <a name="send-a-cloud-to-device-message"></a>Wyślij wiadomość chmury do urządzenia
 
-W tej sekcji utworzysz aplikację konsoli języka Java, która wysyła komunikaty chmury do urządzenia do aplikacji symulowane urządzenie. Potrzebny jest identyfikator urządzenia urządzenia dodane w [Rozpoczynanie pracy z Centrum IoT] samouczka. Należy również parametry połączenia Centrum IoT, który znajduje się w Centrum [portalu Azure].
+W tej sekcji utworzysz aplikację konsoli języka Java, która wysyła komunikaty chmury do urządzenia do aplikacji symulowane urządzenie. Potrzebny jest identyfikator urządzenia urządzenia dodane w [Rozpoczynanie pracy z Centrum IoT] samouczka. Należy również parametry połączenia Centrum IoT, który znajduje się w Centrum [Azure Portal].
 
 1. Utwórz projekt Maven o nazwie **wysyłania — c2d — liczba komunikatów** za pomocą następującego polecenia z wiersza polecenia. Należy zauważyć, że to polecenie jest pojedynczą, długie polecenie:
 
@@ -165,7 +161,7 @@ W tej sekcji utworzysz aplikację konsoli języka Java, która wysyła komunikat
     ```
 
     > [!NOTE]
-    > Sake na prostotę w tym samouczku nie implementuje wszystkie zasady ponawiania. W kodzie produkcyjnym, należy zaimplementować zasady ponawiania (na przykład wykładniczego wycofywania), zgodnie z sugestią podaną w artykuł w witrynie MSDN [obsługi błędów przejściowych].
+    > Sake na prostotę w tym samouczku nie implementuje wszystkie zasady ponawiania. W kodzie produkcyjnym, należy zaimplementować zasady ponawiania (na przykład wykładniczego wycofywania), zgodnie z sugestią podaną w artykuł w witrynie MSDN [Obsługa błędu przejściowego].
 
 
 9. Aby utworzyć aplikację **simulated-device** przy użyciu narzędzia Maven, wykonaj następujące polecenie w wierszu polecenia w folderze simulated-device:
@@ -198,9 +194,9 @@ Teraz można uruchomić aplikacje.
 
 W tym samouczku przedstawiono sposób wysyłania i odbierania wiadomości chmury do urządzenia. 
 
-Aby zapoznać się przykładem kompletnych rozwiązań end-to-end korzystających z Centrum IoT, zobacz [zdalnego monitorowania Azure IoT akcelerator rozwiązań].
+Aby zapoznać się przykładem kompletnych rozwiązań end-to-end korzystających z Centrum IoT, zobacz [Akcelerator rozwiązań monitorowania zdalnego IoT Azure].
 
-Aby dowiedzieć się więcej na temat tworzenia rozwiązań z Centrum IoT, zobacz [Centrum IoT — przewodnik dewelopera].
+Aby dowiedzieć się więcej na temat tworzenia rozwiązań z Centrum IoT, zobacz [Przewodnik dewelopera Centrum IoT].
 
 <!-- Images -->
 [img-simulated-device]: media/iot-hub-java-java-c2d/receivec2d.png
@@ -209,11 +205,11 @@ Aby dowiedzieć się więcej na temat tworzenia rozwiązań z Centrum IoT, zobac
 
 [Rozpoczynanie pracy z Centrum IoT]: iot-hub-java-java-getstarted.md
 [IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
-[Centrum IoT — przewodnik dewelopera]: iot-hub-devguide.md
-[Azure IoT Developer Center]: http://azure.microsoft.com/develop/iot
+[Przewodnik dewelopera Centrum IoT]: iot-hub-devguide.md
+[Centrum deweloperów Azure IoT]: http://azure.microsoft.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-java
-[obsługi błędów przejściowych]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-[portalu Azure]: https://portal.azure.com
-[zdalnego monitorowania Azure IoT akcelerator rozwiązań]: https://azure.microsoft.com/documentation/suites/iot-suite/
+[Obsługa błędu przejściowego]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
+[Azure Portal]: https://portal.azure.com
+[Akcelerator rozwiązań monitorowania zdalnego IoT Azure]: https://azure.microsoft.com/documentation/suites/iot-suite/
 [lnk-maven-service-search]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22

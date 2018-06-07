@@ -2,23 +2,20 @@
 title: Regionalnej pracy awaryjnej w usłudze Azure DB rozwiązania Cosmos | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o sposobie ręcznego i automatycznego działania trybu failover z bazy danych Azure rozwiązania Cosmos.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: 446e2580-ff49-4485-8e53-ae34e08d997f
 ms.service: cosmos-db
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 977027de0627a6eca5f9eb5d1ab83dea5347c6d4
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 947ecb2e6cd122ad98429db93e43b2b5c57744b7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34614003"
 ---
 # <a name="automatic-regional-failover-for-business-continuity-in-azure-cosmos-db"></a>Automatyczne regionalnej pracy w trybie failover ciągłość prowadzenia działalności biznesowej w usłudze Azure DB rozwiązania Cosmos
 Azure DB rozwiązania Cosmos upraszcza globalne rozkład danych oferując do pełnego zarządzania, [konta bazy danych w przypadku](distribute-data-globally.md) zawierających wyczyść wady i zalety między spójności, dostępność i wydajność, wszystkie z odpowiednimi gwarancje. Rozwiązania cosmos DB kont oferują wysoką dostępność, opóźnienia ms w pojedynczą cyfrą [dobrze zdefiniowane poziomy spójności](consistency-levels.md), przezroczysty regionalnej pracy awaryjnej z wielu interfejsów API oraz możliwość elastycznie skalować przepływność i Magazyn między globu. 

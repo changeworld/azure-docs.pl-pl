@@ -14,14 +14,15 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/12/2017
+ms.date: 06/05/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3b4bf8d8ca43110dcfa4aeaed279a8e340e5d529
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 8b6d85fbfdde463352ae80cc8922025a7dcc03f3
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807537"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Skala funkcji platformy Azure i hostingu
 
@@ -43,12 +44,12 @@ W planie usługi aplikacji można skalować między warstwami przydzielić róż
 
 ## <a name="consumption-plan"></a>Plan Zużycie
 
-Podczas korzystania z planu zużycia, wystąpienia usługi Azure Functions hosta są dynamicznie dodawane i usuwane zależności od liczby zdarzeń przychodzących. Ten plan skaluje automatycznie, a użytkownik naliczane są opłaty za zasoby obliczeniowe tylko wtedy, gdy są uruchomione funkcji. Na plan użycie funkcji można uruchomić maksymalnie 10 minut. 
+Podczas korzystania z planu zużycia, wystąpienia usługi Azure Functions hosta są dynamicznie dodawane i usuwane zależności od liczby zdarzeń przychodzących. Ten plan skaluje automatycznie, a użytkownik naliczane są opłaty za zasoby obliczeniowe tylko wtedy, gdy są uruchomione funkcji. W planie zużycia wykonanie funkcji upłynie limit czasu po upływie czasu można skonfigurować. 
 
 > [!NOTE]
-> Domyślny limit czasu dla funkcji w planie zużycie wynosi 5 minut. Wartość można zwiększyć do 10 minut dla aplikacji funkcja, zmieniając właściwość `functionTimeout` w [host.json](functions-host-json.md#functiontimeout) pliku projektu.
+> Domyślny limit czasu dla funkcji w planie zużycie wynosi 5 minut. Można zwiększyć wartość dla aplikacji funkcja maksymalnie 10 minut, zmieniając właściwość `functionTimeout` w [host.json](functions-host-json.md#functiontimeout) pliku projektu.
 
-Karta jest oparta na liczbę wykonaniami, czas wykonywania i używanej pamięci. Karta jest zagregowane we wszystkich funkcji w aplikacji funkcji. Aby uzyskać więcej informacji, zobacz [usługi Azure Functions cennikiem].
+Karta jest oparta na liczbę wykonaniami, czas wykonywania i używanej pamięci. Karta jest zagregowane we wszystkich funkcji w aplikacji funkcji. Aby uzyskać więcej informacji, zobacz [Środowisko Azure Functions stronie dotyczącej cen].
 
 Plan zużycie jest domyślny plan hostingu i oferuje następujące korzyści:
 - Płać tylko wtedy, gdy uruchomione są funkcji.
@@ -90,7 +91,7 @@ Aby dowiedzieć się więcej na temat typów kont magazynu, zobacz [wprowadzenie
 
 ## <a name="how-the-consumption-plan-works"></a>Jak działa planu zużycie
 
-Kontroler skali w planie zużycie jest automatycznie skalowany zasobów Procesora i pamięci przez dodanie dodatkowych wystąpień funkcje hosta, na podstawie liczby zdarzeń, które funkcje są uruchamiane na. Każde wystąpienie hosta funkcji jest ograniczona do 1,5 GB pamięci.  Wystąpienie hosta to funkcja aplikacji, co oznacza wszystkie funkcje w funkcji aplikacji współużytkowanie zasobów w ramach wystąpienia i skali, w tym samym czasie.
+Kontroler skali w planie zużycie jest automatycznie skalowany zasobów Procesora i pamięci przez dodanie dodatkowych wystąpień funkcje hosta, na podstawie liczby zdarzeń, które funkcje są uruchamiane na. Każde wystąpienie hosta funkcji jest ograniczona do 1,5 GB pamięci.  Wystąpienie hosta to funkcja aplikacji, co oznacza wszystkie funkcje w funkcji aplikacji współużytkowanie zasobów w ramach wystąpienia i skali, w tym samym czasie. Funkcja aplikacji, które współdzielić ten sam plan zużycia są skalowane niezależnie.  
 
 Użycie zużycie plan hostingu, funkcja kodu pliki są przechowywane w udziałach plików Azure na koncie magazynu głównego funkcji. Podczas usuwania konta magazynu głównego aplikacji funkcji plików kodu funkcji zostaną usunięte i nie może zostać odzyskany.
 
@@ -121,8 +122,8 @@ Istnieje wiele aspektów aplikacji funkcji, które mają wpływ na skuteczność
 
 ### <a name="billing-model"></a>Model rozliczania
 
-Rozliczeń dla planu zużycie opisano szczegółowo w [usługi Azure Functions cennikiem]. Użycie jest agregowana na poziomie aplikacji funkcji i liczby tylko wykonywany jest kod w funkcji czasu. Jednostki do rozliczeń są następujące: 
+Rozliczeń dla planu zużycie opisano szczegółowo w [Środowisko Azure Functions stronie dotyczącej cen]. Użycie jest agregowana na poziomie aplikacji funkcji i liczby tylko wykonywany jest kod w funkcji czasu. Jednostki do rozliczeń są następujące: 
 * **Zużycie zasobów w ciągu sekund na gigabajtów (GB-s)**. Obliczony jako połączenie rozmiar pamięci i czasu wykonywania dla wszystkich funkcji w funkcji aplikacji. 
 * **Wykonaniami**. Zliczane każdym razem, gdy funkcja jest wykonywana w odpowiedzi na zdarzenia wyzwalacza.
 
-[usługi Azure Functions cennikiem]: https://azure.microsoft.com/pricing/details/functions
+[Środowisko Azure Functions stronie dotyczącej cen]: https://azure.microsoft.com/pricing/details/functions

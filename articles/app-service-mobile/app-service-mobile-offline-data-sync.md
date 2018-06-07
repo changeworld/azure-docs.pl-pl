@@ -1,10 +1,10 @@
 ---
-title: "Synchronizacja danych w trybie offline w usługi Azure Mobile Apps | Dokumentacja firmy Microsoft"
-description: "Omówienie funkcji synchronizacji danych w trybie offline dla usługi Azure Mobile Apps i koncepcyjny odwołania"
+title: Synchronizacja danych w trybie offline w usługi Azure Mobile Apps | Dokumentacja firmy Microsoft
+description: Omówienie funkcji synchronizacji danych w trybie offline dla usługi Azure Mobile Apps i koncepcyjny odwołania
 documentationcenter: windows
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 services: app-service\mobile
 ms.assetid: 982fb683-8884-40da-96e6-77eeca2500e3
 ms.service: app-service-mobile
@@ -14,11 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 5ea1d655f50da49be88f7b6ae91231c4d2258fa7
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 403b3289a6135a59e888c4a7bf1cd9cbe40c8ac0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597981"
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Synchronizowanie danych w trybie offline w usłudze Azure Mobile Apps
 ## <a name="what-is-offline-data-sync"></a>Co to jest synchronizacja danych w trybie offline?
@@ -42,7 +43,7 @@ Następujące samouczki przedstawiają sposób dodawania synchronizacji w trybie
 * [Xamarin iOS: Włączanie synchronizacji w trybie offline]
 * [Dla systemu Xamarin Android: Włączanie synchronizacji w trybie offline]
 * [Platformy Xamarin.Forms: Synchronizacja w trybie offline Włącz](app-service-mobile-xamarin-forms-get-started-offline-data.md)
-* [platformy uniwersalnej systemu Windows: Włączanie synchronizacji w trybie offline]
+* [Platforma uniwersalna systemu Windows: Włączanie synchronizacji w trybie offline]
 
 ## <a name="what-is-a-sync-table"></a>Co to jest tabela synchronizacji?
 Aby uzyskać dostęp do punktu końcowego "/ tabel", zestawów SDK klienta usługi Azure Mobile podać interfejsy takich jak `IMobileServiceTable` (klient .NET SDK) lub `MSTable` (klient z systemem iOS). Te interfejsy API połączyć się bezpośrednio z zaplecza aplikacji mobilnej Azure i zakończyć się niepowodzeniem, jeśli urządzenie klienckie nie dysponują połączeniem sieciowym.
@@ -52,14 +53,14 @@ Aby zapewnić obsługę pracy w trybie offline, należy zamiast tego użyć apli
 ## <a name="what-is-a-local-store"></a>Co to jest Magazyn lokalny?
 Magazyn lokalny jest warstwę trwałości danych na urządzeniu klienckim. Zestawy SDK klienta usługi Azure Mobile Apps udostępnia domyślną implementację magazynu lokalnego. W systemach Windows, Xamarin i Android jest on oparty na SQLite. W systemach iOS jest on oparty na danych podstawowych.
 
-Aby używać implementacji oparty na SQLite Windows Phone lub Sklepu Windows 8.1, musisz zainstalować rozszerzenie SQLite. Aby uzyskać więcej informacji, zobacz [platformy uniwersalnej systemu Windows: Włączanie synchronizacji w trybie offline]. Android i iOS składnikiem wersji bazy danych SQLite w system operacyjny urządzenia, więc nie można odwołać własnych wersji bazy danych SQLite.
+Aby używać implementacji oparty na SQLite Windows Phone lub Microsoft Store, należy zainstalować rozszerzenie SQLite. Aby uzyskać więcej informacji, zobacz [Platforma uniwersalna systemu Windows: Włączanie synchronizacji w trybie offline]. Android i iOS składnikiem wersji bazy danych SQLite w system operacyjny urządzenia, więc nie można odwołać własnych wersji bazy danych SQLite.
 
 Deweloperzy mogą także implementować własnych magazynu lokalnego. Na przykład jeśli chcesz przechowywać dane w postaci zaszyfrowanej na klientów urządzeń przenośnych, można zdefiniować magazynu lokalnego, który używa SQLCipher szyfrowania.
 
 ## <a name="what-is-a-sync-context"></a>Co to jest kontekst synchronizacji?
 A *kontekstu synchronizacji* jest skojarzony z obiektem klientów urządzeń przenośnych (takich jak `IMobileServiceClient` lub `MSClient`) i śledzi zmiany wprowadzone w tabelach synchronizacji. Kontekst synchronizacji zapewnia *kolejka operację*, co pozwala uporządkowaną listę operacji CUD (tworzenia, aktualizacji, usuwania), zostanie wysłane do serwera.
 
-Magazyn lokalny jest skojarzony z kontekstem synchronizacji, takie jak za pomocą metody inicjowania `IMobileServicesSyncContext.InitializeAsync(localstore)` w [klienta .NET SDK].
+Magazyn lokalny jest skojarzony z kontekstem synchronizacji, takie jak za pomocą metody inicjowania `IMobileServicesSyncContext.InitializeAsync(localstore)` w [Klient .NET SDK].
 
 ## <a name="how-sync-works"></a>Jak w trybie offline działania synchronizacji
 Korzystając z tabel synchronizacji, kod klienta określa, kiedy lokalne zmiany są synchronizowane z zaplecza aplikacji mobilnej Azure. Nic nie są wysyłane do wewnętrznej bazy danych, dopóki jest to wywołanie *wypychania* zmian lokalnych. Podobnie, Magazyn lokalny jest wypełniane przy użyciu nowych danych tylko wtedy, gdy wywołanie *ściągania* danych.
@@ -92,12 +93,12 @@ Korzystając z tabel synchronizacji, kod klienta określa, kiedy lokalne zmiany 
 * [iOS: Włączanie synchronizacji w trybie offline]
 * [Xamarin iOS: Włączanie synchronizacji w trybie offline]
 * [Dla systemu Xamarin Android: Włączanie synchronizacji w trybie offline]
-* [platformy uniwersalnej systemu Windows: Włączanie synchronizacji w trybie offline]
+* [Platforma uniwersalna systemu Windows: Włączanie synchronizacji w trybie offline]
 
 <!-- Links -->
-[klienta .NET SDK]: app-service-mobile-dotnet-how-to-use-client-library.md
+[Klient .NET SDK]: app-service-mobile-dotnet-how-to-use-client-library.md
 [System android: Włączanie synchronizacji w trybie offline]: app-service-mobile-android-get-started-offline-data.md
 [iOS: Włączanie synchronizacji w trybie offline]: app-service-mobile-ios-get-started-offline-data.md
 [Xamarin iOS: Włączanie synchronizacji w trybie offline]: app-service-mobile-xamarin-ios-get-started-offline-data.md
 [Dla systemu Xamarin Android: Włączanie synchronizacji w trybie offline]: app-service-mobile-xamarin-android-get-started-offline-data.md
-[platformy uniwersalnej systemu Windows: Włączanie synchronizacji w trybie offline]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
+[Platforma uniwersalna systemu Windows: Włączanie synchronizacji w trybie offline]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md

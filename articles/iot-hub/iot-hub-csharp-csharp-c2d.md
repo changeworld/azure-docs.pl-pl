@@ -1,24 +1,20 @@
 ---
 title: Komunikaty chmury do urządzenia z Centrum IoT Azure (.NET) | Dokumentacja firmy Microsoft
 description: Jak wysyłać wiadomości chmury do urządzenia na urządzeniu z Centrum Azure IoT przy użyciu zestawów SDK IoT Azure dla platformy .NET. Możesz zmodyfikować aplikacji przez urządzenia do odbierania wiadomości chmury do urządzenia i modyfikowania aplikacji zaplecza, do wysyłania wiadomości chmury do urządzenia.
-services: iot-hub
-documentationcenter: .net
 author: fsautomata
-manager: timlt
-editor: ''
-ms.assetid: a31c05ed-6ec0-40f3-99ab-8fdd28b1a89a
+manager: ''
 ms.service: iot-hub
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: csharp
+ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: elioda
-ms.openlocfilehash: b867976c637cdd4dd9b696382103c63f1af2e8b3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e4bec631550d6ca3dc2c702b3b3f56bd29c59f03
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631891"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Wysyłanie komunikatów z chmury do urządzenia z Centrum IoT (.NET)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -42,7 +38,7 @@ Na końcu tego samouczka możesz uruchomić dwóch aplikacji konsoli .NET:
 * **SendCloudToDevice**, który wysyła komunikat chmury do urządzenia do aplikacji urządzenia za pośrednictwem Centrum IoT i następnie odbiera jego potwierdzenie dostarczenia.
 
 > [!NOTE]
-> Centrum IoT obsługuje zestawu SDK dla wielu platform urządzeń i języków (w tym C, Java i Javascript) za pośrednictwem [urządzenia Azure IoT SDK]. Aby uzyskać instrukcje krok po kroku dotyczące sposobu Podłącz urządzenie do kodu w tym samouczku i zwykle z Centrum IoT Azure, zobacz [Centrum IoT — przewodnik dewelopera].
+> Centrum IoT obsługuje zestawu SDK dla wielu platform urządzeń i języków (w tym C, Java i Javascript) za pośrednictwem [Urządzenia IoT Azure SDK]. Aby uzyskać instrukcje krok po kroku dotyczące sposobu Podłącz urządzenie do kodu w tym samouczku i zwykle z Centrum IoT Azure, zobacz [Przewodnik dewelopera Centrum IoT].
 > 
 > 
 
@@ -85,7 +81,7 @@ W tej sekcji będziesz modyfikowania aplikacji urządzenia został utworzony w [
         ReceiveC2dAsync();
 
 > [!NOTE]
-> Sake na prostotę w tym samouczku nie implementuje wszystkie zasady ponawiania. W kodzie produkcyjnym, należy zaimplementować zasady ponawiania (na przykład wykładniczego wycofywania), zgodnie z sugestią podaną w artykuł w witrynie MSDN [obsługi błędów przejściowych].
+> Sake na prostotę w tym samouczku nie implementuje wszystkie zasady ponawiania. W kodzie produkcyjnym, należy zaimplementować zasady ponawiania (na przykład wykładniczego wycofywania), zgodnie z sugestią podaną w artykuł w witrynie MSDN [Obsługa błędu przejściowego].
 > 
 > 
 
@@ -100,7 +96,7 @@ W tej sekcji służy do pisania aplikacji konsoli .NET, który wysyła wiadomoś
     Ta akcja powoduje otwarcie **Zarządzaj pakietami NuGet** okna.
 3. Wyszukaj **Microsoft.Azure.Devices**, kliknij przycisk **zainstalować**i zaakceptuj warunki użytkowania. 
    
-    To spowoduje pobranie, instaluje i dodaje odwołanie do [pakiet NuGet zestawu SDK usługi Azure IoT].
+    To spowoduje pobranie, instaluje i dodaje odwołanie do [Pakiet NuGet zestawu SDK usługi IoT Azure].
 
 4. Dodaj następującą instrukcję `using` w górnej części pliku **Program.cs**:
    
@@ -169,16 +165,16 @@ W tej sekcji możesz zmodyfikować **SendCloudToDevice** aplikacji do żądania 
    ![Odbieranie komunikatów aplikacji][22]
 
 > [!NOTE]
-> Sake na prostotę w tym samouczku nie implementuje wszystkie zasady ponawiania. W kodzie produkcyjnym, należy zaimplementować zasady ponawiania (na przykład wykładniczego wycofywania), zgodnie z sugestią podaną w artykuł w witrynie MSDN [obsługi błędów przejściowych].
+> Sake na prostotę w tym samouczku nie implementuje wszystkie zasady ponawiania. W kodzie produkcyjnym, należy zaimplementować zasady ponawiania (na przykład wykładniczego wycofywania), zgodnie z sugestią podaną w artykuł w witrynie MSDN [Obsługa błędu przejściowego].
 > 
 > 
 
 ## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku przedstawiono sposób wysyłania i odbierania wiadomości chmury do urządzenia. 
 
-Aby zapoznać się przykładem kompletnych rozwiązań end-to-end korzystających z Centrum IoT, zobacz [zdalnego monitorowania Azure IoT akcelerator rozwiązań].
+Aby zapoznać się przykładem kompletnych rozwiązań end-to-end korzystających z Centrum IoT, zobacz [Akcelerator rozwiązań monitorowania zdalnego IoT Azure].
 
-Aby dowiedzieć się więcej na temat tworzenia rozwiązań z Centrum IoT, zobacz [Centrum IoT — przewodnik dewelopera].
+Aby dowiedzieć się więcej na temat tworzenia rozwiązań z Centrum IoT, zobacz [Przewodnik dewelopera Centrum IoT].
 
 <!-- Images -->
 [20]: ./media/iot-hub-csharp-csharp-c2d/create-identity-csharp1.png
@@ -187,13 +183,13 @@ Aby dowiedzieć się więcej na temat tworzenia rozwiązań z Centrum IoT, zobac
 
 <!-- Links -->
 
-[pakiet NuGet zestawu SDK usługi Azure IoT]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
-[obsługi błędów przejściowych]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
+[Pakiet NuGet zestawu SDK usługi IoT Azure]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
+[Obsługa błędu przejściowego]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 
 [IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
 
-[Centrum IoT — przewodnik dewelopera]: iot-hub-devguide.md
+[Przewodnik dewelopera Centrum IoT]: iot-hub-devguide.md
 [Rozpoczynanie pracy z Centrum IoT]: iot-hub-csharp-csharp-getstarted.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[zdalnego monitorowania Azure IoT akcelerator rozwiązań]: https://docs.microsoft.com/azure/iot-suite/
-[urządzenia Azure IoT SDK]: iot-hub-devguide-sdks.md
+[Akcelerator rozwiązań monitorowania zdalnego IoT Azure]: https://docs.microsoft.com/azure/iot-suite/
+[Urządzenia IoT Azure SDK]: iot-hub-devguide-sdks.md

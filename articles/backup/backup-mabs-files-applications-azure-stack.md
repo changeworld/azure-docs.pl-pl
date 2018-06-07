@@ -1,25 +1,19 @@
 ---
-title: Utwórz kopię zapasową plików stosu Azure i aplikacji | Dokumentacja firmy Microsoft
+title: Kopie zapasowe plików stosu Azure i aplikacji
 description: Kopia zapasowa Azure umożliwia tworzenie kopii zapasowej i odzyskiwanie plików stosu Azure i aplikacji do środowiska Azure stosu.
 services: backup
-documentationcenter: ''
 author: adiganmsft
 manager: shivamg
-editor: ''
-keyword: ''
-ms.assetid: ''
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 5/11/2018
-ms.author: adigan,markgal
-ms.openlocfilehash: 19067b40e8e87c160515d13bb490e7c1604788b6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.date: 5/18/2018
+ms.author: adigan
+ms.openlocfilehash: 6c7fcc0182add05b68a7b41ab6fe50e18427f6ea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607307"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Kopie zapasowe plików i aplikacji na stosie Azure
 Kopia zapasowa Azure umożliwia ochronę (lub utworzyć kopię zapasową) plików i aplikacji na stosie Azure. Aby utworzyć kopię zapasową plików i aplikacji, należy zainstalować serwer kopii zapasowej Microsoft Azure jako maszynę wirtualną działającą na stosie Azure. Można chronić wszystkie aplikacje uruchomione na każdym serwerze stosu Azure w tej samej sieci wirtualnej. Po zainstalowaniu serwera kopii zapasowej Azure, Dodawanie dysku systemu Azure, aby zwiększyć magazynu lokalnego, która jest dostępna dla krótkoterminowej kopii zapasowej danych. Serwer kopii zapasowej systemu Azure korzysta z magazynu Azure w celu przechowywania długoterminowego.
@@ -47,7 +41,7 @@ Serwer kopii zapasowej systemu Azure chroni następujące obciążenia maszyny w
 
 
 ## <a name="install-azure-backup-server"></a>Zainstaluj serwer kopii zapasowej systemu Azure
-Aby zainstalować serwer kopii zapasowej Azure na maszynie wirtualnej platformy Azure stosu, zapoznaj się z artykułem [przygotowanie do tworzenia kopii zapasowych obciążeń przy użyciu serwera usługi Kopia zapasowa Azure](backup-azure-microsoft-azure-backup.md). Przed zainstalowaniem i skonfigurowaniem serwera usługi Kopia zapasowa Azure, należy pamiętać o następujących czynności:
+Aby zainstalować serwer kopii zapasowej Azure na maszynie wirtualnej platformy Azure stosu, zapoznaj się z artykułem [przygotowanie do tworzenia kopii zapasowych obciążeń przy użyciu serwera usługi Kopia zapasowa Azure](backup-mabs-install-azure-stack.md). Przed zainstalowaniem i skonfigurowaniem serwera usługi Kopia zapasowa Azure, należy pamiętać o następujących czynności:
 
 ### <a name="determining-size-of-virtual-machine"></a>Ustalanie rozmiaru maszyny wirtualnej
 Aby uruchomić serwera usługi Kopia zapasowa Azure na maszynie wirtualnej platformy Azure stosu, użyj rozmiaru A2 lub większym. Aby uzyskać pomoc przy wyborze rozmiaru maszyny wirtualnej, należy pobrać [kalkulatora rozmiaru maszyny Wirtualnej Azure stosu](https://www.microsoft.com/download/details.aspx?id=56832).

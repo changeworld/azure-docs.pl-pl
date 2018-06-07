@@ -5,16 +5,17 @@ services: sql-database
 author: stevestein
 manager: craigg
 ms.service: sql-database
-ms.topic: article
+ms.topic: conceptual
 ms.custom: scale out apps
 ms.workload: On Demand
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 37de2a6918012707ae171415ac8f043d6f9cb1ae
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: c0dfc8e2b71e0d81943ef8306c58421ff1d78c6c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646953"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Transakcje rozproszone w bazach danych w chmurze
 Transakcji elastycznej bazy danych dla usługi Azure SQL Database (baza danych SQL) pozwala na uruchamianie transakcje obejmujące wiele baz danych w bazie danych SQL. Transakcji elastycznej bazy danych dla bazy danych SQL są dostępne dla aplikacji .NET przy użyciu ADO .NET oraz integrują się z znanych programowania środowisko przy użyciu [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) klasy. Aby pobrać bibliotekę, zobacz [.NET Framework 4.6.1 (Instalator internetowy)](https://www.microsoft.com/download/details.aspx?id=49981).
