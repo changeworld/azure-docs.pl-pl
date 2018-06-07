@@ -1,11 +1,11 @@
 ---
 title: 'Azure AD Connect: Uaktualnianie z poprzedniej wersji | Dokumentacja firmy Microsoft'
-description: "W tym artykule wyjaśniono różnych metod do uaktualnienia do najnowszej wersji programu Azure Active Directory Connect, w tym uaktualnienia w miejscu i migracji kierunku."
+description: W tym artykule wyjaśniono różnych metod do uaktualnienia do najnowszej wersji programu Azure Active Directory Connect, w tym uaktualnienia w miejscu i migracji kierunku.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 31f084d8-2b89-478c-9079-76cf92e6618f
 ms.service: active-directory
 ms.devlang: na
@@ -13,12 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4d431a9e0fab8d46b244fd40178ede594c095893
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 1a6fe4fc7fd5f47bfd4bc4d9168f76c31c78b47b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592480"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Uaktualnianie z poprzedniej wersji do najnowszej wersji
 W tym temacie opisano różne metody, których można użyć, aby uaktualnić instalację Połącz usługi Azure Active Directory (Azure AD) do najnowszej wersji. Zaleca się pozostawienie samodzielnie bieżącego z wersjami programu Azure AD Connect. Możesz również użyć kroki opisane w [migracji w kierunku](#swing-migration) sekcji podczas wprowadzania istotne zmiany konfiguracji.
@@ -102,7 +104,7 @@ Mogą wystąpić sytuacje, w których nie chcesz te zastąpienia została wykona
 
    ![DisableFullSyncAfterUpgrade](./media/active-directory-aadconnect-upgrade-previous-version/disablefullsync01.png)
 
-2. Po zakończeniu uaktualniania, uruchom następujące polecenie cmdlet, aby dowiedzieć się, jakie zastąpienia zostały dodane:`Get-ADSyncSchedulerConnectorOverride | fl`
+2. Po zakończeniu uaktualniania, uruchom następujące polecenie cmdlet, aby dowiedzieć się, jakie zastąpienia zostały dodane: `Get-ADSyncSchedulerConnectorOverride | fl`
 
    >[!NOTE]
    > Zastąpienia są specyficzne dla łącznika. W poniższym przykładzie krok pełny Import i pełną synchronizację zostały dodane do obu lokalną AD Connector i łącznika usługi Azure AD.
@@ -111,7 +113,7 @@ Mogą wystąpić sytuacje, w których nie chcesz te zastąpienia została wykona
 
 3. Należy zanotować istniejących zastąpień, które zostały dodane.
    
-4. Aby usunąć zastąpień dla pełny import i pełną synchronizację łącznika dowolnego, uruchom następujące polecenie cmdlet:`Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid-of-ConnectorIdentifier> -FullImportRequired $false -FullSyncRequired $false`
+4. Aby usunąć zastąpień dla pełny import i pełną synchronizację łącznika dowolnego, uruchom następujące polecenie cmdlet: `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid-of-ConnectorIdentifier> -FullImportRequired $false -FullSyncRequired $false`
 
    Aby usunąć zastąpień dla wszystkich łączników, uruchom następujący skrypt programu PowerShell:
 
@@ -122,12 +124,12 @@ Mogą wystąpić sytuacje, w których nie chcesz te zastąpienia została wykona
    }
    ```
 
-5. Aby wznowić harmonogram, uruchom następujące polecenie cmdlet:`Set-ADSyncScheduler -SyncCycleEnabled $true`
+5. Aby wznowić harmonogram, uruchom następujące polecenie cmdlet: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
    >[!IMPORTANT]
    > Pamiętaj, aby wykonać kroki wymagane synchronizacji najwcześniejszą wygodne. Możesz ręcznie wykonać te czynności przy użyciu Menedżera usługi synchronizacji lub dodać zastąpienia powrotem przy użyciu polecenia cmdlet Set-ADSyncSchedulerConnectorOverride.
 
-Aby dodać zastąpień dla pełny import i pełną synchronizację łącznika dowolnego, uruchom następujące polecenie cmdlet:`Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
+Aby dodać zastąpień dla pełny import i pełną synchronizację łącznika dowolnego, uruchom następujące polecenie cmdlet:  `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
 
 ## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej o [integrowanie tożsamości lokalnych z usługą Azure Active Directory](active-directory-aadconnect.md).

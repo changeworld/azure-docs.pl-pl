@@ -12,14 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 05/23/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 3d8a02cc540251d77b61cf0e5b7e2aa8292f1f5f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9d980c800f930c00b2b0140314f78ff3f043aa58
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604220"
 ---
 # <a name="azure-stack-firewall-integration"></a>Integracja z zaporą Azure stosu
 Używanie urządzenia zapory ułatwiające bezpieczne stosu Azure jest zalecane. Mimo że zapory można ułatwić rozproszonej typu "odmowa usługi" (DDOS) ataków, wykrywania nieautoryzowanego dostępu i inspekcji zawartości, może również zostać wąskie gardło przepływności dla usług magazynu Azure, takich jak obiekty BLOB, tabel i kolejek.
@@ -48,7 +49,7 @@ We wdrożeniu krawędzi stosu Azure jest wdrażany bezpośrednio za router brzeg
 
 Zazwyczaj publiczne rutowalne adresy IP są określone dla publicznych pulę adresów VIP z siecią zewnętrzną w czasie wdrażania. W scenariuszu krawędzi nie zaleca używania publicznych adresów IP z obsługą routingu w innych sieci ze względów bezpieczeństwa. Ten scenariusz umożliwia użytkownikowi wystąpić środowisko pełnej chmury własnym kontrolowane w chmurze publicznej, takich jak Azure.  
 
-![Przykład zapory krawędzi w usłudze Azure stosu](.\media\azure-stack-firewall\edge-firewall-scenario.png)
+![Przykład zapory krawędzi w usłudze Azure stosu](.\media\azure-stack-firewall\firewallScenarios.png)
 
 ## <a name="enterprise-intranet-or-perimeter-network-firewall-scenario"></a>Enterprise intranet lub obwód zapory scenariusz sieci
 W sieci intranet lub obwód wdrożenia w przedsiębiorstwie stosu Azure jest wdrażany zaporę przydzielony do strefy multi lub Between zaporą brzegową, a Zapora wewnętrznej sieci firmowej. Ruch jest dystrybuowane między bezpiecznego, sieci obwodowej (lub sieć obwodowa), a niezabezpieczone strefy, jak opisano poniżej:

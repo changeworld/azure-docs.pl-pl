@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: c2232e1ce92eb6198b22bad22b8c3e10bab6bf12
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 79bc42394513efc2ac03ea9d7170f035d71edb4f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603731"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Deploy resources with Resource Manager templates and Azure portal (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i witryny Azure Portal)
 
@@ -85,7 +86,7 @@ Jeśli chcesz wykonać wdrożenie, ale nie używa tych szablonów w witrynie Mar
 
 1. Wybierz pozycję **Utwórz**.
 
-   ![Wybierz opcję tworzenia](./media/resource-group-template-deploy-portal/show-template-option.png)
+   ![Wybieranie pozycji Utwórz](./media/resource-group-template-deploy-portal/show-template-option.png)
 
 1. Zobacz jest kilka opcji tworzenia szablonu. Wybierz **tworzenia szablonu w edytorze**.
 
@@ -113,7 +114,7 @@ Jeśli chcesz wykonać wdrożenie, ale nie używa tych szablonów w witrynie Mar
 
 ## <a name="deploy-resources-from-a-template-saved-to-your-account"></a>Wdrażanie zasobów w ramach szablonu na swoim koncie
 
-Portal umożliwia zapisywanie szablonu do konta platformy Azure i wdróż go ponownie później. Aby uzyskać więcej informacji na temat pracy z tych szablonów, zapisanych [Rozpoczynanie pracy z szablonami prywatnymi w portalu Azure](../marketplace-consumer/mytemplates-getstarted.md).
+Portal umożliwia zapisywanie szablonu do konta platformy Azure i wdróż go ponownie później. Aby uzyskać więcej informacji dotyczących szablonów, zobacz [tworzenie i wdrażanie pierwszego szablonu usługi Azure Resource Manager](resource-manager-create-first-template.md).
 
 1. Zapisane szablonów, wybierz **więcej usług**.
 
@@ -135,4 +136,4 @@ Portal umożliwia zapisywanie szablonu do konta platformy Azure i wdróż go pon
 * Aby wyświetlić dzienniki inspekcji, zobacz [inspekcji operacji za pomocą Menedżera zasobów](resource-group-audit.md).
 * Aby rozwiązać błędy wdrożenia, zobacz [wyświetlić operacje wdrażania](resource-manager-deployment-operations.md).
 * Aby pobrać szablonu z wdrożenia lub grupy zasobów, zobacz [szablonu eksportu usługi Azure Resource Manager z istniejących zasobów](resource-manager-export-template.md).
-* Aby uzyskać instrukcje dla przedsiębiorstw dotyczące użycia usługi Resource Manager w celu efektywnego zarządzania subskrypcjami, zobacz [Azure enterprise scaffold - prescriptive subscription governance](resource-manager-subscription-governance.md) (Szkielet platformy Azure dla przedsiębiorstwa — narzucony nadzór subskrypcji).
+* Aby uzyskać instrukcje dla przedsiębiorstw dotyczące użycia usługi Resource Manager w celu efektywnego zarządzania subskrypcjami, zobacz [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Szkielet platformy Azure dla przedsiębiorstwa — narzucony nadzór subskrypcji).

@@ -10,14 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2018
+ms.date: 05/21/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: e568ffd2c3adb97ed0b727b85e7888fb797db1f9
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: adbe88a44ac38868a68a6845c328ef4cf7fba60c
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604441"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Zarządzanie profilami wersji interfejsu API Azure stosu
 
@@ -36,7 +37,7 @@ Ten temat ułatwia:
 ## <a name="summary-of-api-profiles"></a>Podsumowanie profilów interfejsu API
 
 - Profile interfejsu API są używane do reprezentowania zestaw dostawców zasobów platformy Azure i ich wersje interfejsu API.
-- Profile interfejsu API zostały utworzone dla deweloperów, aby mogli tworzyć szablony między wieloma chmury Azure. Profile są przeznaczone do spełnia potrzeby interfejs zgodny i stabilna.
+- Profile interfejsu API zostały utworzone do tworzenia szablonów w wielu chmury Azure. Profile są przeznaczone do spełnia potrzeby interfejs zgodny i stabilna.
 - Profile są wydawane cztery razy w roku.
 - Używane są trzy profile konwencji nazewnictwa:
     - **latest**  
@@ -66,17 +67,11 @@ Zamiast niż badania każdy dostawca zasobów i obsługiwane przez stos Azure we
 
 Interfejs API profile pracować z narzędziami, które używają usługi Azure Resource Manager, takich jak programu PowerShell, interfejsu wiersza polecenia Azure, kod w zestawie SDK i programu Microsoft Visual Studio. Profile można użyć narzędzia i zestawy SDK można odczytać wersji modułów i biblioteki do uwzględnienia podczas tworzenia aplikacji.
 
-**Programowanie scenariusz użycia profilu**  
-Załóżmy, że używasz programu PowerShell, aby utworzyć:
+Na przykład użyj programu PowerShell do utworzenia magazynu konta przy użyciu **Microsoft.Storage** dostawcy zasobów, która obsługuje interfejs api-version 2016-03-30 i maszyny Wirtualnej za pomocą dostawcy zasobów Microsoft.Compute z interfejsu api-version 2015-12-01 , należy wyszukać obsługujący moduł PowerShell 2016-03-30 dla magazynu i który moduł obsługuje 2015-02-01 obliczania i zainstaluj je. Zamiast tego można użyć profilu. Użyj polecenia cmdlet ** instalacji profilu * profilename *** i programu PowerShell ładuje właściwej wersji modułów.
 
-* Konto magazynu, który używa **Microsoft.Storage** dostawcy zasobów, która obsługuje interfejs api-version 2016-03-30.
-* Maszyna wirtualna, która używa **Microsoft.Compute** dostawcy zasobów, która obsługuje interfejs api-version 2015-12-01.
+Podobnie podczas tworzenia aplikacji opartych na języku Python za pomocą zestawu SDK Python, można określić profil. Zestaw SDK ładuje prawo modułów dla dostawców zasobów, określonych w skrypcie.
 
-Zamiast Znajdowanie i instalowanie modułów programu PowerShell, które obsługuje wersje interfejsu api dla magazynu i zasobów obliczeniowych, mogą używać profilu. Użyj polecenia cmdlet ** instalacji profilu * profilename *** i programu PowerShell ładuje poprawną wersję modułów.
-
-Podobnie jeśli zestaw SDK Python używany do tworzenia aplikacji opartych na języku Python, mogą używać profilu. Zestaw SDK ładuje poprawne modułów dla dostawców zasobów, które zostały określone w skrypcie.
-
-Deweloperzy mogą skupić się na zapisywanie rozwiązania. Mogą używać profilu, wiedząc, że kod będzie działać we wszystkich chmur, które obsługują profilu.
+Deweloperzy mogą skupić się na zapisywanie rozwiązania. Zamiast badanie, której wersji interfejsu api, dostawca zasobów i które chmurze współpracuje ze sobą, Użyj profilu i dowiedzieć się, że kod będzie działać we wszystkich chmur, które obsługują tego profilu.
 
 ## <a name="api-profile-code-samples"></a>Przykłady kodu interfejsu API profilu
 
@@ -90,6 +85,8 @@ Można aktualizować konfiguracji środowiska, aby użyć określonego profilu w
 W zestawie SDK Przejdź profil jest kombinacją różnych typów zasobów z różnymi wersjami z różnych usług. Profile są dostępne w obszarze Profile / ścieżki z ich wersji w **RRRR-MM-DD** format. Aby uzyskać informacje, zobacz [Użyj interfejsu API w wersji profilów dla Przejdź](azure-stack-version-profiles-go.md).
 - **Ruby**  
 Ruby zestawu SDK dla usługi Azure stosu Resource Manager udostępnia narzędzia umożliwiające tworzenie i zarządzanie infrastrukturą. Dostawcy zasobów w zestawie SDK obejmują obliczeniowych, sieci wirtualnych i magazynu w języku Ruby. Aby uzyskać informacje, zobacz [profile w wersji interfejsu API używany z Ruby](azure-stack-version-profiles-ruby.md)
+- **Python**  
+- Zestaw SDK Python obsługuje profile w wersji interfejsu API pod kątem platformy inną chmurę, na przykład stosu Azure i globalnych Azure. Można użyć interfejsu API profile tworzenia rozwiązań chmur hybrydowych. Aby uzyskać informacje, zobacz [Użyj interfejsu API w wersji profile z użyciem języka Python](azure-stack-version-profiles-python.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -1,22 +1,20 @@
 ---
 title: Dodawanie kształtu przy użyciu map Azure | Dokumentacja firmy Microsoft
 description: Jak dodać kształt do mapy kodu Javascript
-services: azure-maps
-keywords: ''
-author: jinzh-azureiot
+author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
+services: azure-maps
+manager: ''
 ms.custom: codepen
-ms.openlocfilehash: fb9ec0713d3db465cf835346465e70c4455b38ff
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: dec9b7289927365faa9c58522df2571db99f0494
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599375"
 ---
 # <a name="add-a-shape-to-a-map"></a>Dodawanie kształtów do mapy
 
@@ -59,3 +57,10 @@ W powyższym kodzie pierwszy blok kodu tworzy obiekt mapy. Widać [Tworzenie map
 W drugim bloku kodu jest tworzony wielokąta. Wielokąt jest [funkcji](https://docs.microsoft.com/javascript/api/azure-maps-javascript/feature?view=azure-iot-typescript-latest) z [wielokąta](https://docs.microsoft.com/javascript/api/azure-maps-javascript/polygon?view=azure-iot-typescript-latest) z [PolygonProperties](https://docs.microsoft.com/javascript/api/azure-maps-javascript/polygonproperties?view=azure-iot-typescript-latest) jako jego właściwości funkcji. Użyj `new atlas.data.Feature(new atlas.data.Polygon())` tworzenie wielokąta i określeniu jego właściwości. Podaj uporządkowanej współrzędne ścieżki wielokąta w Konstruktorze wielokąta.
 
 Warstwa Wielokąt jest tablicą wielokątów. Korzysta z ostatniego bloku kodu [addPolygons](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addpolygons) funkcji klasy mapy, aby dodać warstwę wielokąta do mapy i określeniu jego właściwości. Zobacz właściwości warstwy wielokąta w [PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-javascript/polygonlayeroptions?view=azure-iot-typescript-latest). 
+
+## <a name="next-steps"></a>Kolejne kroki
+Aby uzyskać więcej przykładów kodu do dodania do map zobacz następujące artykuły:
+* [Dodaj niestandardowy kod HTML](./map-add-custom-html.md)
+* [Pokaż wyniki wyszukiwania](./map-search-location.md)
+
+

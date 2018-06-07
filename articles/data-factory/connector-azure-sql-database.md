@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 0503b355089fe6bbcc7632ac93fd21e71f268032
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: bdff5b188653704cca51f70ab24a32e13f522a66
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34615992"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopiowanie danych do lub z bazą danych SQL Azure przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -579,7 +580,7 @@ Podczas kopiowania danych z/do bazy danych SQL Azure, następujące mapowania s�
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
 | Atrybut FILESTREAM (varbinary(max)) |Byte[] |
-| Float |Podwójnej precyzji |
+| Liczba zmiennoprzecinkowa |O podwójnej precyzji |
 | Obraz |Byte[] |
 | int |Int32 |
 | oszczędność pieniędzy |Decimal |
@@ -593,7 +594,7 @@ Podczas kopiowania danych z/do bazy danych SQL Azure, następujące mapowania s�
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Obiekt * |
-| Tekst |Ciąg, Char] |
+| tekst |Ciąg, Char] |
 | time |Zakres czasu |
 | sygnatura czasowa |Byte[] |
 | tinyint |Bajtów |

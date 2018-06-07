@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 41948d8141d0f3c0e41b95f169bcec6c4b641106
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3328a7c80a05a48b3c04ad5492a7eafe62059681
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622469"
 ---
 # <a name="use-case---product-recommendations"></a>Przypadek użycia — rekomendacje produktów
 Fabryka danych Azure to jedna z wielu usług, używaną do zaimplementowania pakietu Cortana Intelligence Suite akceleratorów rozwiązania.  Zobacz [pakietu Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics) strony w celu uzyskania szczegółów dotyczących tego zestawu. W tym dokumencie opisano typowe przypadek użycia, które Azure użytkownicy mają już rozwiązany i implementowane przy użyciu fabryki danych Azure i innych usług składowych Cortana Intelligence.

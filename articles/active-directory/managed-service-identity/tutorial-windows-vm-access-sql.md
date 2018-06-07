@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: skwan
-ms.openlocfilehash: 27c4f35cbd8cc69e689b26078d5a07c8558d8e2a
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.author: daveba
+ms.openlocfilehash: 5805dbc0a4831f14a4f9a98943a7611fa49961eb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594955"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>Samouczek: Umożliwia dostęp do usługi Azure SQL systemu Windows maszyny Wirtualnej zarządzane usługi tożsamości (MSI)
 
@@ -269,11 +270,9 @@ Można również szybko Testuj ustawienia pełnego bez konieczności zapisu i wd
 
 Sprawdź wartość `$DataSet.Tables[0]` , aby wyświetlić wyniki zapytania.  Gratulacje, zostały zapytanie bazy danych używającej MSI maszyny Wirtualnej i bez konieczności aby podać poświadczenia!
 
-## <a name="related-content"></a>Zawartość pokrewna
+## <a name="next-steps"></a>Kolejne kroki
 
-- Omówienie MSI, zobacz [omówienie zarządzane tożsamość usługi](overview.md).
-- Dowiedz się więcej o [Azure SQL obsługę uwierzytelniania usługi Azure AD](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication).
-- Dowiedz się więcej o [Konfigurowanie Azure SQL obsługę uwierzytelniania usługi Azure AD](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure).
-- Dowiedz się więcej o [uwierzytelniania i dostępu w programie SQL server](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions).
+W tym samouczku przedstawiono sposób tworzenia tożsamości usługi zarządzany dostęp do serwera Azure SQL.  Aby dowiedzieć się więcej o usłudze Azure SQL Server, zobacz:
 
-W poniższej sekcji komentarzy umożliwia wyrazić swoją opinię i pomóc nam dostosować i kształtu zawartość.
+> [!div class="nextstepaction"]
+>[Usługa bazy danych SQL Azure](/azure/sql-database/sql-database-technical-overview)

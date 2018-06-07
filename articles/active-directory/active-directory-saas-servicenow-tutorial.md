@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: cf955c15b1dfe3ef0c46ab5023035986da5c5c99
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: c75ec11fc11febbd896c715ead9f347062facb44
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591841"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>Samouczek: Integracji Azure Active Directory z usługi ServiceNow
 
@@ -271,10 +272,10 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     > [!NOTE]
     > Można skonfigurować usługi Azure AD, aby emitować identyfikator użytkownika usługi Azure AD (główna nazwa użytkownika) lub adres e-mail jako unikatowy identyfikator w tokenie SAML, przechodząc do **ServiceNow > atrybuty > logowanie jednokrotne** części portalu Azure mapowania odpowiednie pola i **nameidentifier** atrybutu. Wartość przechowywana wybranego atrybutu w usłudze Azure AD (na przykład główna nazwa użytkownika) musi odpowiadać wartości przechowywane w usługi ServiceNow wprowadzone pola (na przykład nazwa_użytkownika)
 
-     e. W obszarze **x509 certyfikatu**, zawiera listę certyfikat został utworzony w poprzednim kroku.
+    e. W obszarze **x509 certyfikatu**, zawiera listę certyfikat został utworzony w poprzednim kroku.
 
-     > [!NOTE]
-     > Usługi ServiceNow nie zezwala na aktywację Idp nie klikając przycisk Testuj połączenie, aby zastąpić taki sam, wykonaj następujące czynności.
+    > [!NOTE]
+    > Usługi ServiceNow nie zezwala na aktywację Idp nie klikając przycisk Testuj połączenie, aby zastąpić taki sam, wykonaj następujące czynności.
 
 22. Kliknij ikonę menu z nowego dostawcy tożsamości utworzony jako część konfiguracji i z listy wybierz **skopiuj sys_id**
 
@@ -443,7 +444,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     > Można skonfigurować usługi Azure AD, aby emitować identyfikator użytkownika usługi Azure AD (główna nazwa użytkownika) lub adres e-mail jako unikatowy identyfikator w tokenie SAML, przechodząc do **ServiceNow > atrybuty > logowanie jednokrotne** części portalu Azure mapowania odpowiednie pola i **nameidentifier** atrybutu. Wartość przechowywana wybranego atrybutu w usłudze Azure AD (na przykład główna nazwa użytkownika) musi odpowiadać wartości przechowywane w usługi ServiceNow wprowadzone pola (na przykład nazwa_użytkownika)
 
     f. Kliknij pozycję **Zapisz**.
- 
+
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
 Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
@@ -475,10 +476,13 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
- 
+
 ### <a name="create-a-servicenow-test-user"></a>Tworzenie użytkownika testowego usługi ServiceNow
 
-W tej sekcji należy utworzyć użytkownika o nazwie Simona Britta w usługi ServiceNow. Jeśli nie wiadomo, jak dodać użytkownika w ramach konta usługi ServiceNow lub usługi ServiceNow Express, skontaktuj się z [zespołem pomocy technicznej usługi ServiceNow klienta](https://www.servicenow.com/support/contact-support.html)
+Celem tej sekcji jest utworzenie użytkownika o nazwie Simona Britta w usługi ServiceNow. Usługi ServiceNow obsługuje inicjowania obsługi użytkowników, która jest domyślnie włączona. Więcej informacji można znaleźć [tutaj](active-directory-saas-servicenow-provisioning-tutorial.md) na temat konfigurowania użytkowników automatycznego inicjowania obsługi administracyjnej.
+
+> [!NOTE]
+> Jeśli trzeba ręcznie utworzyć użytkownika, należy skontaktować się [zespołem pomocy technicznej usługi ServiceNow klienta](https://www.servicenow.com/support/contact-support.html)
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
 
@@ -521,6 +525,8 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
+* [Skonfiguruj Inicjowanie obsługi użytkowników](active-directory-saas-servicenow-provisioning-tutorial.md)
+
 
 <!--Image references-->
 
@@ -535,4 +541,3 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 [201]: ./media/active-directory-saas-servicenow-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-servicenow-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-servicenow-tutorial/tutorial_general_203.png
-

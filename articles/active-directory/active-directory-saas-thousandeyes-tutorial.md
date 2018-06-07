@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/15/2017
+ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: d40ab6d2587f5d842ac98479a6db7609d8a9ce4d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 80d13b0a42239466a1e13d065ed5f52bd84b8008
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591089"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thousandeyes"></a>Samouczek: Integracji Azure Active Directory z ThousandEyes
 
@@ -103,7 +104,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     ![Konfigurowanie rejestracji jednokrotnej][4]
 
 2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
- 
+
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-thousandeyes-tutorial/tutorial_thousandeyes_samlbase.png)
 
 3. Na **ThousandEyes domeny i adres URL** sekcji, wykonaj następujące czynności:
@@ -114,7 +115,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
 4. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-thousandeyes-tutorial/tutorial_thousandeyes_certificate.png) 
+    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-thousandeyes-tutorial/tutorial_thousandeyes_certificate.png)
 
 5. Kliknij przycisk **zapisać** przycisku.
 
@@ -127,35 +128,32 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 7. W oknie przeglądarki innej witryny sieci web, zaloguj się na Twojej **ThousandEyes** witryny firmy jako administrator.
 
 8. W menu u góry kliknij **ustawienia**.
-   
+
     ![Ustawienia](./media/active-directory-saas-thousandeyes-tutorial/ic790066.png "ustawienia")
 
 9. Kliknij przycisk **konta**
-   
+
     ![Konto](./media/active-directory-saas-thousandeyes-tutorial/ic790067.png "konta")
 
 10. Kliknij przycisk **zabezpieczeń i uwierzytelniania** kartę.
-   
+
     ![Bezpieczeństwo i uwierzytelniania](./media/active-directory-saas-thousandeyes-tutorial/ic790068.png "zabezpieczeń i uwierzytelniania")
 
 11. W **ustawienia logowania jednokrotnego** sekcji, wykonaj następujące czynności:
-   
+
     ![Konfiguracja rejestracji jednokrotnej](./media/active-directory-saas-thousandeyes-tutorial/ic790069.png "skonfigurować logowanie jednokrotne")
-  
+
     a. Wybierz **Włącz rejestrację jednokrotną**.
-  
-    b. W **adres URL strony logowania** pole tekstowe, Wklej **SAML pojedynczy znak na adres URL usługi** którego została skopiowana z portalu Azure.
-  
-    c. W **adres URL strony wylogowania** pole tekstowe, Wklej **Sign-Out URL** którego została skopiowana z portalu Azure.
-  
-    d. **Wystawca dostawcy tożsamości** pole tekstowe, Wklej **identyfikator jednostki SAML** którego została skopiowana z portalu Azure.
-  
+
+    b. W **adres URL strony logowania** pole tekstowe, Wklej **SAML pojedynczy znak na adres URL usługi**, które zostały skopiowane z portalu Azure.
+
+    c. W **adres URL strony wylogowania** pole tekstowe, Wklej **Sign-Out URL**, które zostały skopiowane z portalu Azure.
+
+    d. **Wystawca dostawcy tożsamości** pole tekstowe, Wklej **identyfikator jednostki SAML**, które zostały skopiowane z portalu Azure.
+
     e. W **certyfikatu weryfikacji**, kliknij przycisk **wybierz plik**, a następnie przekaż certyfikat został pobrany z portalu Azure.
-  
+
     f. Kliknij pozycję **Zapisz**.
- 
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
@@ -173,12 +171,12 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-thousandeyes-tutorial/create_aaduser_02.png) 
 
 3. Aby otworzyć **użytkownika** okna dialogowego, kliknij przycisk **Dodaj** górnej części okna dialogowego.
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-thousandeyes-tutorial/create_aaduser_03.png) 
+
+    ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-thousandeyes-tutorial/create_aaduser_03.png)
 
 4. Na **użytkownika** okna dialogowego strony, należy wykonać następujące czynności:
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-thousandeyes-tutorial/create_aaduser_04.png) 
+
+    ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-thousandeyes-tutorial/create_aaduser_04.png)
 
     a. W **nazwa** pole tekstowe, typ **BrittaSimon**.
 
@@ -187,43 +185,42 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
     d. Kliknij przycisk **Utwórz**.
- 
+
 ### <a name="creating-a-thousandeyes-test-user"></a>Tworzenie użytkownika testowego ThousandEyes
 
-Aby włączyć użytkowników usługi Azure AD zalogować się do ThousandEyes, musi być przygotowana do ThousandEyes.  
-W przypadku ThousandEyes Inicjowanie obsługi to zadanie ręczne.
+Celem tej sekcji jest utworzenie użytkownika o nazwie Simona Britta w ThousandEyes. ThousandEyes obsługę automatycznego użytkownika, który jest domyślnie włączone. Więcej informacji można znaleźć [tutaj](active-directory-saas-thousandeyes-provisioning-tutorial.md) na temat konfigurowania użytkowników automatycznego inicjowania obsługi administracyjnej.
 
->[!NOTE]
->Możesz użyć innych ThousandEyes użytkownika konta tworzenia narzędzi lub interfejsów API dostarczonych przez ThousandEyes do świadczenia usługi Azure Active Directory kont użytkowników.
-
-**Aby udostępnić konta użytkownika do ThousandEyes, wykonaj następujące czynności:**
+**Jeśli trzeba ręcznie utworzyć użytkownika, należy wykonać następujące kroki:**
 
 1. Zaloguj się do witryny firmy ThousandEyes jako administrator.
 
 2. Kliknij przycisk **ustawienia**.
-   
+
     ![Ustawienia](./media/active-directory-saas-thousandeyes-tutorial/IC790066.png "ustawienia")
 
 3. Kliknij przycisk **konta**.
-   
+
     ![Konto](./media/active-directory-saas-thousandeyes-tutorial/IC790067.png "konta")
 
 4. Kliknij przycisk **konta & użytkowników** kartę.
-   
+
     ![Konta & użytkowników](./media/active-directory-saas-thousandeyes-tutorial/IC790073.png "konta & użytkowników")
 
 5. W **Dodawanie użytkowników i kont** sekcji, wykonaj następujące czynności:
-   
-    ![Dodaj konta użytkowników](./media/active-directory-saas-thousandeyes-tutorial/IC790074.png "dodawania kont użytkowników")   
-  
+
+    ![Dodaj konta użytkowników](./media/active-directory-saas-thousandeyes-tutorial/IC790074.png "dodawania kont użytkowników")
+
     a. W **nazwa** tekstowym, wpisz nazwę użytkownika, takich jak **Simona Britta**.
 
     b. W **E-mail** tekstowym, wpisz adres e-mail użytkownika, takich jak **brittasimon@contoso.com**.
-   
+
     b. Kliknij przycisk **Dodaj nowego użytkownika do konta**.
-      
-     >[!NOTE]
-     >Właściciel konta usługi Azure Active Directory otrzyma wiadomość e-mail, łącznie z łączem do potwierdzenia i Aktywuj konta.
+
+    > [!NOTE]
+    > Właściciel konta usługi Azure Active Directory otrzyma wiadomość e-mail, łącznie z łączem do potwierdzenia i Aktywuj konta.
+
+> [!NOTE]
+> Możesz użyć innych ThousandEyes użytkownika konta tworzenia narzędzi lub interfejsów API dostarczonych przez ThousandEyes do świadczenia usługi Azure Active Directory kont użytkowników.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisanie użytkownika testowego usługi Azure AD
 
@@ -267,7 +264,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
-
+* [Skonfiguruj Inicjowanie obsługi użytkowników](active-directory-saas-thousandeyes-provisioning-tutorial.md)
 
 
 <!--Image references-->
@@ -283,4 +280,3 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 [201]: ./media/active-directory-saas-thousandeyes-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-thousandeyes-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-thousandeyes-tutorial/tutorial_general_203.png
-

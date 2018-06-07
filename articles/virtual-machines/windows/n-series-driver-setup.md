@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/04/2018
+ms.date: 05/29/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: efa8c2603d6ff4493656cda41306a5dad46bc5f3
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: bc4b9cb9940f073034df01143f4d9e77a47cb19b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34654389"
 ---
 # <a name="set-up-gpu-drivers-for-n-series-vms-running-windows"></a>Konfigurowanie wersji sterowników procesora GPU N serii maszyn wirtualnych systemu Windows 
 Aby skorzystać z możliwości procesora GPU N-series maszyny wirtualne platformy Azure uruchomiona obsługiwana wersja systemu Windows Server lub systemu Windows, muszą zostać zainstalowane sterowniki grafiki NVIDIA. Ten artykuł zawiera kroki konfiguracji sterownika po wdrożeniu maszyny Wirtualnej N serii. Informacje o instalacji sterowników jest również dostępny do [maszyn wirtualnych systemu Linux](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -53,7 +54,7 @@ Aby sprawdzić stan urządzenia procesora GPU, uruchom [nvidia smi](https://deve
 
 ## <a name="rdma-network-connectivity"></a>Połączenie sieciowe RDMA
 
-Połączenie sieciowe RDMA można włączyć na maszynach wirtualnych z funkcją RDMA N-series, takie jak NC24r wdrażane w tym samym zestawie dostępności lub zestaw skali maszyny Wirtualnej. Aby zainstalować sterowniki urządzeń sieciowych systemu Windows, umożliwiających łączności RDMA należy dodać rozszerzenie HpcVmDrivers. Aby dodać rozszerzenie maszyny Wirtualnej do maszyny Wirtualnej z obsługą RDMA N-series, użyj [programu Azure PowerShell](/powershell/azure/overview) poleceń cmdlet dla usługi Azure Resource Manager.
+Połączenie sieciowe RDMA można włączyć dla z funkcją RDMA N serii maszyn wirtualnych, takie jak NC24r wdrożone w tym samym zestawie dostępności lub w grupie pojedynczego umieszczania w zestawie skalowania maszyn wirtualnych. Aby zainstalować sterowniki urządzeń sieciowych systemu Windows, umożliwiających łączności RDMA należy dodać rozszerzenie HpcVmDrivers. Aby dodać rozszerzenie maszyny Wirtualnej do maszyny Wirtualnej z obsługą RDMA N-series, użyj [programu Azure PowerShell](/powershell/azure/overview) poleceń cmdlet dla usługi Azure Resource Manager.
 
 Aby zainstalować najnowszą wersję 1.1 rozszerzenia HpcVMDrivers na istniejącej maszyny Wirtualnej z funkcją RDMA o nazwie myVM regionu zachodnie stany USA:
   ```PowerShell
@@ -66,6 +67,6 @@ Sieć RDMA obsługuje ruch interfejsu Message (Passing) dla aplikacji działają
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Deweloperzy tworzący aplikacje przyspieszony GPU dla jednostki GPU tesla — NVIDIA można również pobrać i zainstalować [CUDA Toolkit 9.1](https://developer.nvidia.com/cuda-downloads). Aby uzyskać więcej informacji, zobacz [Przewodnik instalacji CUDA](http://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi).
+* Deweloperzy tworzący aplikacje przyspieszony GPU dla jednostki GPU tesla — NVIDIA można również pobrać i zainstalować najnowszą [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads). Aby uzyskać więcej informacji, zobacz [Przewodnik instalacji CUDA](http://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi).
 
 

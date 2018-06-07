@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2017
+ms.date: 05/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 8af9e7023142077fdeed0262e5f39921b158a14f
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: a77ac397dfca1be948b6d0c05a50c23c0cd7879c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590651"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Samouczek: Integracji Azure Active Directory z Clarizen
 
@@ -185,6 +186,11 @@ W portalu Azure Tworzenie użytkownika testowego o nazwie Simona Britta.
     d. Kliknij przycisk **Utwórz**.
 
 ### <a name="create-a-clarizen-test-user"></a>Tworzenie użytkownika testowego Clarizen
+
+Celem tej sekcji jest utworzenie użytkownika o nazwie Simona Britta w Clarizen. Clarizen obsługę automatycznego użytkownika, który jest domyślnie włączone. Więcej informacji można znaleźć [tutaj](active-directory-saas-clarizen-provisioning-tutorial.md) na temat konfigurowania użytkowników automatycznego inicjowania obsługi administracyjnej.
+
+**Jeśli trzeba ręcznie utworzyć użytkownika, wykonaj następujące kroki:**
+
 Aby umożliwić użytkownikom usługi Azure AD do logowania się na Clarizen, należy udostępnić kont użytkowników. W przypadku Clarizen Inicjowanie obsługi to zadanie ręczne.
 
 1. Zaloguj się do witryny firmy Clarizen jako administrator.
@@ -244,6 +250,7 @@ Po kliknięciu kafelka Clarizen w panelu dostępu należy powinny być automatyc
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS w usłudze Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
+* [Skonfiguruj Inicjowanie obsługi użytkowników](active-directory-saas-clarizen-provisioning-tutorial.md)
 
 <!--Image references-->
 

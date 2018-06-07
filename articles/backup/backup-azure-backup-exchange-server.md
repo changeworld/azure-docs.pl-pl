@@ -1,24 +1,19 @@
 ---
-title: "Utwórz kopię zapasową serwera programu Exchange do usługi Kopia zapasowa Azure z programu System Center 2012 R2 DPM | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wykonać kopię zapasową serwera Exchange, kopia zapasowa Azure za pomocą programu System Center 2012 R2 DPM"
+title: Tworzenie kopii zapasowych serwera programu Exchange do usługi Azure Backup przy użyciu programu System Center 2012 R2 DPM
+description: Dowiedz się, jak wykonać kopię zapasową serwera Exchange, kopia zapasowa Azure za pomocą programu System Center 2012 R2 DPM
 services: backup
-documentationcenter: 
 author: MaanasSaran
 manager: NKolli1
-editor: 
-ms.assetid: 13f32256-888e-416e-a78b-40c2a26a5939
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/08/2017
-ms.author: masaran;jimpark;delhan;trinadhk;markgal
-ms.openlocfilehash: 9dc0105034e0d354a6cbbd7ba70634bdff83c1bd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: adigan
+ms.openlocfilehash: 4edec499d12261add398e5a9297f039ecfb252e9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605104"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Tworzenie kopii zapasowych serwera programu Exchange do usługi Azure Backup przy użyciu programu System Center 2012 R2 DPM
 W tym artykule opisano sposób konfigurowania serwera System Center 2012 R2 danych ochrony Manager (DPM), aby utworzyć kopię zapasową serwera Microsoft Exchange do usługi Kopia zapasowa Azure.  
@@ -123,5 +118,5 @@ Punkty odzyskiwania online są pięć typów odzyskiwania:
 
     ![Wybierz opcję replikacji online](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Azure — często zadawane pytania kopii zapasowej](backup-azure-backup-faq.md)

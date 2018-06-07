@@ -1,24 +1,19 @@
 ---
-title: "Użyj serwera usługi Kopia zapasowa Azure, aby utworzyć kopię zapasową farmy programu SharePoint do platformy Azure | Dokumentacja firmy Microsoft"
-description: "Serwer kopii zapasowej Azure umożliwia tworzenie kopii zapasowej i przywracanie danych programu SharePoint. Ten artykuł zawiera informacje, aby skonfigurować farmę programu SharePoint, tak aby żądanych danych mogą być przechowywane na platformie Azure. Chronione dane SharePoint można przywrócić z dysku lub z platformy Azure."
+title: Użyj serwera usługi Kopia zapasowa Azure, aby utworzyć kopię zapasową farmy programu SharePoint do platformy Azure
+description: Serwer kopii zapasowej Azure umożliwia tworzenie kopii zapasowej i przywracanie danych programu SharePoint. Ten artykuł zawiera informacje, aby skonfigurować farmę programu SharePoint, tak aby żądanych danych mogą być przechowywane na platformie Azure. Chronione dane SharePoint można przywrócić z dysku lub z platformy Azure.
 services: backup
-documentationcenter: 
 author: pvrk
 manager: shivamg
-editor: 
-ms.assetid: 34ba87a4-91f1-4054-a4a1-272af1e15496
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: pullabhk
-ms.openlocfilehash: 3ed000affd326eb1bd7c99773ec021ad6e03cc3b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f7b69e2558234159075161be7d58cc3695dfbbaf
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606056"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>Tworzenie kopii zapasowych farmy programu SharePoint na platformie Azure
 Możesz utworzyć kopię zapasową farmy programu SharePoint do systemu Microsoft Azure przy użyciu usługi Microsoft Azure kopii zapasowej serwera (MABS) w znacznie tak samo jak wykonanie kopii zapasowej innych źródeł danych. Kopia zapasowa Azure zapewnia elastyczność w harmonogram tworzenia kopii zapasowych, aby utworzyć codziennie, co tydzień, miesięcznego lub rocznego kopii zapasowej wskazuje i udostępnia opcje zasad przechowywania dla różnych punktów kopii zapasowej. Zapewnia także możliwość przechowywania kopii dysku lokalnym dla szybka celami czasu odzyskiwania (RTO) i Zapisz kopie Azure ekonomiczny, długoterminowego przechowywania.
@@ -236,5 +231,5 @@ Odpowiedź: tak elementu można odzyskać do oryginalnej witryny programu ShareP
 Pytanie: czy bazy danych programu SharePoint do oryginalnej lokalizacji można odzyskać Jeśli programu SharePoint została skonfigurowana przy użyciu funkcji SQL AlwaysOn?<br>
 Odpowiedź: ponieważ baz danych programu SharePoint są konfigurowane w funkcji SQL AlwaysOn, nie można modyfikować, chyba że zostanie usunięta grupa dostępności. W związku z tym MABS nie można przywrócić bazę danych do oryginalnej lokalizacji. Można odzyskać bazy danych programu SQL Server do innego wystąpienia programu SQL Server.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o MABS ochrony programu SharePoint — zobacz [wideo serii — Program DPM ochronę programu SharePoint](http://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)

@@ -1,31 +1,32 @@
 ---
-title: "Kopiowanie danych z magazynu obiektów Blob do bazy danych SQL — Azure | Dokumentacja firmy Microsoft"
-description: "Ten samouczek przedstawia sposób użycia działanie kopiowania w potoku fabryki danych Azure, aby skopiować dane z magazynu obiektów Blob do bazy danych SQL."
+title: Kopiowanie danych z magazynu obiektów Blob do bazy danych SQL — Azure | Dokumentacja firmy Microsoft
+description: Ten samouczek przedstawia sposób użycia działanie kopiowania w potoku fabryki danych Azure, aby skopiować dane z magazynu obiektów Blob do bazy danych SQL.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: e4035060-93bf-4e8d-bf35-35e2d15c51e0
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3135c8bf6316125a164c06630bc7607a92621b26
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 6575a68423df97d7727401b79ded44545a43afca
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621109"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Samouczek: Kopiowanie danych z magazynu obiektów Blob do bazy danych SQL przy użyciu fabryki danych
 > [!div class="op_single_selector"]
 > * [Przegląd i wymagania wstępne](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Kreator kopiowania](data-factory-copy-data-wizard-tutorial.md)
-> * [Witryna Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
+> * [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Program Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [Program PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Szablon usługi Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -118,7 +119,7 @@ Teraz Przygotuj magazyn obiektów blob platformy Azure i bazy danych Azure SQL d
 Sprawdzanie wymagań wstępnych została ukończona. Można utworzyć fabryki danych przy użyciu jednej z następujących sposobów. Kliknij jedną z opcji na liście rozwijanej na górze lub poniższe linki do wykonania w samouczku.     
 
 * [Kreator kopiowania](data-factory-copy-data-wizard-tutorial.md)
-* [Witryna Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
+* [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 * [Program Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 * [Program PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 * [Szablon usługi Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)

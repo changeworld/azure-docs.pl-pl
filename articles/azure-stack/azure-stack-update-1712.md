@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/24/2018
 ms.author: brenduns
-ms.openlocfilehash: e9c39c374d7dfa6759da9f9b9a12816d77c647b1
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: b4c5b53a46792e31316f752f8902d7a05554b57d
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604152"
 ---
 # <a name="azure-stack-1712-update"></a>Azure aktualizacji 1712 stosu
 
@@ -116,7 +117,25 @@ Ta sekcja zawiera poinstalacyjne znane problemy z kompilacją **180106.1**.
 
 #### <a name="health-and-monitoring"></a>Monitorowania kondycji i
 
+- <!-- 1264761 - IS ASDK -->  You might see alerts for the *Health controller* component that have the following details:  
+
+   Alert #1:
+   - Nazwa: Rolę infrastruktury złej kondycji
+   - Ważność: ostrzeżenie
+   - SKŁADNIKÓW: Kontroler kondycji
+   - Opis: Kontroler kondycji pulsu skanera jest niedostępny. Może to dotyczyć raportów o kondycji i metryki.  
+
+  Alert #2.
+   - Nazwa: Rolę infrastruktury złej kondycji
+   - Ważność: ostrzeżenie
+   - SKŁADNIKÓW: Kontroler kondycji
+   - Opis: Kontroler kondycji skanera błędu jest niedostępny. Może to dotyczyć raportów o kondycji i metryki.
+
+  Obydwa alerty można bezpiecznie zignorować. Będą one Zamknij automatycznie wraz z upływem czasu.  
+
 - Jeśli ponowne uruchomienie wystąpienia roli infrastruktury, może zostać wyświetlony komunikat informujący, że ponowne uruchomienie nie powiodło się. Jednak ponownego uruchamiania faktycznie zakończyło się pomyślnie.
+
+
 
 #### <a name="marketplace"></a>Portal Marketplace
 - Niektóre elementy marketplace są usuwane w tej wersji z powodu problemów ze zgodnością. Te zostaną ponownie włączone po dalszych weryfikacji.

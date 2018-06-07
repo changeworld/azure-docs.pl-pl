@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 05/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 2889e509d4ba0e055d86a67adaf4bd734f4f9e0c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 4f5e0cf0b45e4972cc1c318861025ae4b926a966
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590175"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-weekdone"></a>Samouczek: Integracji Azure Active Directory z Weekdone
 
@@ -44,7 +45,7 @@ Aby skonfigurować integrację usługi Azure AD z Weekdone, potrzebne są nastę
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
 - Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz pobrać miesięczna wersja próbna tutaj: [oferta wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
+- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
@@ -82,8 +83,6 @@ W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokr
 
 Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w Weekdone jest dla użytkownika, w usłudze Azure AD. Innymi słowy link relację między użytkownikiem usługi Azure AD i danemu użytkownikowi w Weekdone musi się.
 
-W Weekdone, należy przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łącza.
-
 Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z Weekdone, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
@@ -110,7 +109,10 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-weekdone-tutorial/tutorial_weekdone_url1.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://weekdone.com/a/<tenantname>`
+    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://weekdone.com/a/<tenant>/metadata`
+
+    > [!NOTE]
+    > Plik metadanych z weekdone można pobrać przy użyciu tego samego adresu URL.
 
     b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://weekdone.com/a/<tenantname>`
 
@@ -136,10 +138,6 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-weekdone-tutorial/tutorial_weekdone_configure.png) 
 
 8. Aby skonfigurować logowanie jednokrotne w **Weekdone** stronie, musisz wysłać pobrany **XML metadanych, adres URL Sign-Out identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** do [Weekdone zespołem pomocy technicznej ](mailto:hello@weekdone.com).
-
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
@@ -235,4 +233,3 @@ Po kliknięciu kafelka Weekdone w panelu dostępu użytkownik powinien pobrać a
 [201]: ./media/active-directory-saas-weekdone-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-weekdone-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-weekdone-tutorial/tutorial_general_203.png
-

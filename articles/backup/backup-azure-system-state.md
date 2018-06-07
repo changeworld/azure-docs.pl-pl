@@ -1,25 +1,20 @@
 ---
-title: Utwórz kopię zapasową stanu systemu Windows Azure | Dokumentacja firmy Microsoft
+title: Tworzenie kopii zapasowej stanu systemu Windows Azure
 description: Dowiedz się tworzyć kopie zapasowe stanu systemu Windows Server i/lub Windows komputerów Azure.
 services: backup
-documentationcenter: ''
 author: saurabhsensharma
-manager: carmonm
-editor: ''
+manager: shivamg
 keywords: jak tworzyć kopie zapasowe; tworzenie kopii zapasowych; tworzenie kopii zapasowych plików i folderów
-ms.assetid: 5b15ebf1-2214-4722-b937-96e2be8872bb
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 07/31/2017
-ms.author: saurse;markgal
-ms.openlocfilehash: b4847a4b2d8397530d8a6bb4bc4729a6966634f2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.topic: conceptual
+ms.date: 05/23/2018
+ms.author: saurse
+ms.openlocfilehash: 61ee1ce7d5cc6dc2aa4b7a8b02c2e5ba77539725
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606073"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Wykonaj kopię zapasową stanu systemu Windows podczas wdrażania usługi Resource Manager
 W tym artykule opisano sposób wykonywania kopii zapasowej stanu systemu Windows Server na platformie Azure. Ten samouczek zawiera podstawowe informacje.
@@ -175,6 +170,11 @@ Początkowa kopia zapasowa obejmuje dwa zadania:
 * Wykonaj kopię zapasową stanu systemu po raz pierwszy
 
 Aby utworzyć początkową kopię zapasową, użyj agenta usługi Microsoft Azure Recovery Services.
+
+> [!NOTE]
+> Można tworzyć kopie zapasowe stanu systemu w systemie Windows Server 2008 R2 do systemu Windows Server 2016. Powrót do ochrony stanu systemu nawet nie jest obsługiwana na jednostki SKU klienta. Stan systemu nie jest wyświetlany jako opcję dla klientów systemu Windows lub urządzenia z systemem Windows Server 2008 z dodatkiem SP2.
+>
+>
 
 ### <a name="to-schedule-the-backup-job"></a>Aby zaplanować zadanie tworzenia kopii zapasowej
 

@@ -1,9 +1,9 @@
 ---
-title: "Azure AD uwierzytelniania przekazywanego — szybki start | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano, jak rozpocząć pracę z usługi Azure Active Directory (Azure AD) przekazywanego uwierzytelniania."
+title: Azure AD uwierzytelniania przekazywanego — szybki start | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak rozpocząć pracę z usługi Azure Active Directory (Azure AD) przekazywanego uwierzytelniania.
 services: active-directory
-keywords: "Azure AD Connect przekazywanego uwierzytelniania, instalacji usługi Active Directory, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on"
-documentationcenter: 
+keywords: Azure AD Connect przekazywanego uwierzytelniania, instalacji usługi Active Directory, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b592eb8ca43e5bf3eebe2b0c47d8f17dbec7b238
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: da3d78880a3d389c2a247f9940b708c026c96e03
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591334"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Usługi Azure Active Directory przekazywanego uwierzytelniania: Szybki start
 
@@ -139,7 +141,7 @@ Po pierwsze możesz zrobić to interaktywnie przez właśnie uruchomienie pobran
 Po drugie można tworzyć i uruchom skrypt instalacji nienadzorowanej wdrożenia. Jest to przydatne, gdy chcesz jednocześnie wdrażać wielu agentów uwierzytelniania lub zainstaluj agentów uwierzytelniania na serwerach systemu Windows, które nie mają włączone interfejsu użytkownika, lub nie masz dostępu przy użyciu pulpitu zdalnego. Oto instrukcje dotyczące sposobu używania tej metody:
 
 1. Uruchom następujące polecenie, aby zainstalować agenta uwierzytelniania: `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q`.
-2. Agent uwierzytelniania można zarejestrować naszej usługi przy użyciu programu Windows PowerShell. Utwórz obiekt poświadczeń PowerShell `$cred` zawierający nazwę i hasło użytkownika administratora globalnego dla dzierżawy. Uruchom następujące polecenie, zastępując  *\<username\>*  i  *\<hasło\>*:
+2. Agent uwierzytelniania można zarejestrować naszej usługi przy użyciu programu Windows PowerShell. Utwórz obiekt poświadczeń PowerShell `$cred` zawierający nazwę i hasło użytkownika administratora globalnego dla dzierżawy. Uruchom następujące polecenie, zastępując *\<username\>* i  *\<hasło\>*:
    
         $User = "<username>"
         $PlainPassword = '<password>'

@@ -1,24 +1,19 @@
 ---
-title: "Kopia zapasowa Azure dla obciążeń programu SQL Server za pomocą serwera usługi Azure Backup | Dokumentacja firmy Microsoft"
-description: "Wprowadzenie do tworzenia kopii zapasowej bazy danych programu SQL Server za pomocą serwera usługi Kopia zapasowa Azure"
+title: Kopia zapasowa Azure dla obciążeń programu SQL Server za pomocą serwera usługi Kopia zapasowa Azure
+description: Wprowadzenie do tworzenia kopii zapasowej bazy danych programu SQL Server za pomocą serwera usługi Kopia zapasowa Azure
 services: backup
-documentationcenter: 
 author: pvrk
 manager: Shivamg
-editor: 
-ms.assetid: c8b1f7ec-26b1-4ef0-a3f2-91aec959daea
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: pullabhk
-ms.openlocfilehash: 2af9ebaa8f52690ed63406cbd85b77544d2d900d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5d0fc66ff81672116d3d98ee9970456515ab3c9e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606396"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>Wykonywanie kopii zapasowej serwera SQL do platformy Azure z Azure kopii zapasowej serwera
 W tym artykule poprowadzi Cię przez kroki konfiguracyjne do wykonania kopii zapasowej bazy danych programu SQL Server przy użyciu programu Microsoft Azure kopii zapasowej serwera (MABS).

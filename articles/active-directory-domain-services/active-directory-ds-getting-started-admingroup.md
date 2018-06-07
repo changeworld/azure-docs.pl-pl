@@ -1,24 +1,26 @@
 ---
-title: "Usług domenowych Azure Active Directory: Wprowadzenie | Dokumentacja firmy Microsoft"
-description: "Włączanie usługi Azure Active Directory Domain Services przy użyciu portalu Azure"
+title: 'Usług domenowych Azure Active Directory: Wprowadzenie | Dokumentacja firmy Microsoft'
+description: Włączanie usługi Azure Active Directory Domain Services przy użyciu portalu Azure
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 05/23/2018
 ms.author: maheshu
-ms.openlocfilehash: 2a171490faf9804196c93d33c5ee74d22533c044
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6f7c0372ec53157d42a229feddb5b3fce92ff4cd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587906"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Włączanie usługi Azure Active Directory Domain Services przy użyciu portalu Azure
 
@@ -40,16 +42,19 @@ Kreator automatycznie tworzy grupy administracyjnej w katalogu usługi Azure AD.
 
 3. Gdy wszystko będzie gotowe, kliknij przycisk **OK** można przenieść do **Podsumowanie** stronie kreatora.
 
-4. Na **Podsumowanie** strony kreatora należy przejrzeć ustawienia konfiguracji dla domeny zarządzanej. Można przejść wstecz do dowolnego kroku kreatora, aby wprowadzić zmiany, jeśli to konieczne. Gdy wszystko będzie gotowe, kliknij przycisk **OK** do utworzenia nowej domeny zarządzanej.
+
+## <a name="deploy-your-managed-domain"></a>Wdrażanie domeny zarządzanej
+
+1. Na **Podsumowanie** strony kreatora należy przejrzeć ustawienia konfiguracji dla domeny zarządzanej. Można przejść wstecz do dowolnego kroku kreatora, aby wprowadzić zmiany, jeśli to konieczne. Gdy wszystko będzie gotowe, kliknij przycisk **OK** do utworzenia nowej domeny zarządzanej.
 
     ![Podsumowanie](./media/getting-started/domain-services-blade-summary.png)
 
-5. Zostanie wyświetlone powiadomienie, że będzie wyświetlany postęp wdrażania usług domenowych Azure AD. Kliknij powiadomienie, aby wyświetlić szczegółowe informacje o postępie dla wdrożenia.
+2. Zostanie wyświetlone powiadomienie, że będzie wyświetlany postęp wdrażania usług domenowych Azure AD. Kliknij powiadomienie, aby wyświetlić szczegółowe informacje o postępie dla wdrożenia.
 
     ![Powiadomienie — wdrożenie w toku](./media/getting-started/domain-services-blade-deployment-in-progress.png)
 
 
-## <a name="provision-your-managed-domain"></a>Zapewnij domeny zarządzanej
+## <a name="check-the-deployment-status-of-your-managed-domain"></a>Sprawdź stan wdrożenia domeny zarządzanej
 Proces inicjowania obsługi administracyjnej domeny zarządzanej może potrwać do godziny.
 
 1. Gdy wdrożenie jest w toku, możesz wyszukać "usługi domeny", w **wyszukiwania zasobów** pola wyszukiwania. Wybierz **usług domenowych Azure AD** z wyników wyszukiwania. **Usług domenowych Azure AD** bloku wymieniono domeny zarządzanej, która jest inicjowana.

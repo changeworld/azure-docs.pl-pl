@@ -1,40 +1,41 @@
 ---
-title: 'Magazynu Azure stosu: Różnice i zagadnienia dotyczące'
-description: Opis różnic między Azure stosu magazynu i usługi Azure Storage oraz zagadnienia dotyczące wdrażania usługi Azure stosu.
+title: Różnice magazynu Azure stosu i zagadnienia dotyczące | Dokumentacja firmy Microsoft
+description: Opis różnic między Azure stosu magazynu i magazynu systemu Azure wraz ze stosu Azure zagadnienia dotyczące wdrażania.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
 manager: femila
-ms.reviwer: xiaofmao
 ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/14/2018
+ms.date: 05/21/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 5a4d3312d6574f761da9a28bfb01a34acf11c9cc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.reviwer: xiaofmao
+ms.openlocfilehash: 2a6cb3f1a1f8009af411ba4d97a23194f6f089ae
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604464"
 ---
-# <a name="azure-stack-storage-differences-and-considerations"></a>Magazynu Azure stosu: Różnice i zagadnienia dotyczące
+# <a name="azure-stack-storage-differences-and-considerations"></a>Magazyn Azure stosu: różnice i zagadnienia
 
 *Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
 
-Magazyn Azure stosu to zbiór magazynu usługi w chmurze Microsoft Azure stosu. Usługa Azure Storage stosu udostępnia obiektów blob, tabeli, kolejki i funkcje zarządzania kontami z semantyki spójnej platformy Azure.
+Azure stosu magazynu to zbiór magazynu usługi w chmurze Microsoft Azure stosu. Magazyn Azure stosu zapewnia obiektów blob, tabeli, kolejki i funkcje zarządzania kontami z semantyki spójnej platformy Azure.
 
-Ten artykuł zawiera podsumowanie znane różnice Azure stosu magazynu z usług Azure Storage. Zawiera także listę rzeczy, które należy wziąć pod uwagę podczas wdrażania usługi Azure stosu. Aby uzyskać informacje ogólne różnice między stosu Azure i usługi Azure, zobacz [kluczowe zagadnienia dotyczące](azure-stack-considerations.md) tematu.
+Ten artykuł zawiera podsumowanie znane różnice Azure stosu magazynu z usług Azure Storage. Zawiera także listę rzeczy, które należy wziąć pod uwagę podczas wdrażania usługi Azure stosu. Aby dowiedzieć się więcej o wysokim poziomie różnice między globalne Azure i stosu Azure, zobacz [kluczowe zagadnienia dotyczące](azure-stack-considerations.md) tematu.
 
 ## <a name="cheat-sheet-storage-differences"></a>Ściągawka: różnice magazynu
 
 | Cecha | Azure (globalna) | Azure Stack |
 | --- | --- | --- |
 |File Storage|Oparte na chmurze udziałów plików SMB obsługiwane|Nie jest jeszcze obsługiwane
-|Szyfrowanie usługi Azure Storage dla danych magazynowanych|256-bitowe szyfrowanie AES|Funkcja BitLocker 128-bitowe szyfrowanie AES
-|Typ konta magazynu|Ogólnego przeznaczenia i Azure kont magazynu obiektów Blob|Ogólnego przeznaczenia tylko.
+|Szyfrowanie usługi Magazyn Azure dla przechowywanych danych|256-bitowe szyfrowanie AES|Funkcja BitLocker 128-bitowe szyfrowanie AES
+|Typ konta magazynu|Konta magazynu ogólnego przeznaczenia i Azure obiektów blob|Ogólnego przeznaczenia tylko.
 |Opcje replikacji|Magazyn lokalnie nadmiarowy, magazynu geograficznie nadmiarowego magazynu geograficznie nadmiarowego dostęp do odczytu i Magazyn strefowo nadmiarowy|Magazyn lokalnie nadmiarowy.
 |Premium Storage|W pełni obsługiwane|Można udostępnić, ale brak limitu wydajności lub gwarancji.
 |Dyski zarządzane|Premium i standardowa obsługiwane|Nie jest jeszcze obsługiwane.
@@ -80,7 +81,7 @@ Magazyn Azure usługi Zarządzanie interfejsami API:
 
 ## <a name="sdk-versions"></a>Wersje zestawu SDK
 
-Usługa Azure Storage stosu obsługuje następujące biblioteki klienta:
+Usługa Azure storage stosu obsługuje następujące biblioteki klienta:
 
 | Biblioteka kliencka | Azure stosu obsługiwana wersja | Link                                                                                                                                                                                                                                                                                                                                     | Specyfikacja punktu końcowego       |
 |----------------|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|

@@ -1,23 +1,19 @@
 ---
-title: "Utwórz kopię zapasową serwerów VMware serwer kopii zapasowej Azure | Dokumentacja firmy Microsoft"
-description: "Serwer kopii zapasowej Azure umożliwia tworzenie kopii zapasowych serwery vCenter/ESXi VMware Azure lub dysku. W tym artykule przedstawiono krok = instrukcje krok po kroku dla tworzenia kopii zapasowych (lub ochrony) obciążeń VMware."
+title: Wykonaj kopię zapasową serwerów VMware z serwera usługi Kopia zapasowa Azure
+description: Serwer kopii zapasowej Azure umożliwia tworzenie kopii zapasowych serwery vCenter/ESXi VMware Azure lub dysku. W tym artykule przedstawiono krok = instrukcje krok po kroku dla tworzenia kopii zapasowych (lub ochrony) obciążeń VMware.
 services: backup
-documentationcenter: 
 author: markgalioto
 manager: carmonm
-ms.assetid: 6b131caf-de85-4eba-b8e6-d8a04545cd9d
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 07/24/2017
-ms.author: markgal;
-ms.openlocfilehash: ad331dffb7c31d12290f4223967c568e4535fe3c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: adigan
+ms.openlocfilehash: 9cf3c9d5df11e19045cd47a41d7ab9ac93bdf700
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605427"
 ---
 # <a name="back-up-a-vmware-server-to-azure"></a>Utwórz kopię zapasową serwera VMware do platformy Azure
 
@@ -380,7 +376,7 @@ Jeśli nie używasz programu System Center Data Protection Manager lub serwer ko
 
     ![Członka grupy ochrony i ustawienia — podsumowanie](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Jeśli serwer kopii zapasowej Azure umożliwia ochronę obciążeń VMware, może Cię zainteresować za pomocą serwera usługi Kopia zapasowa Azure w celu ochrony [programu Microsoft Exchange server](./backup-azure-exchange-mabs.md), [farmy Microsoft SharePoint](./backup-azure-backup-sharepoint-mabs.md), lub [bazy danych programu SQL Server](./backup-azure-sql-mabs.md).
 
 Informacje na problemy z zarejestrowaniem agenta, konfigurowania grupy ochrony lub tworzenie kopii zapasowych zadań, zobacz [Rozwiązywanie problemów z serwera usługi Kopia zapasowa Azure](./backup-azure-mabs-troubleshoot.md).

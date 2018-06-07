@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 900f6a2a8e75cc43a3cfaa0c9e7b8d91f57ea20d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f5af46017dede0deac92ff5a7f35f17e083590d6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618610"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Kopiowanie danych z programu SAP Business Warehouse przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -44,7 +45,7 @@ W szczególności ten łącznik SAP Business Warehouse obsługuje:
 Aby użyć tego łącznika SAP Business Warehouse, musisz:
 
 - Konfigurowanie środowiska uruchomieniowego integracji Self-hosted. Zobacz [środowiska uruchomieniowego integracji Self-hosted](create-self-hosted-integration-runtime.md) artykułu, aby uzyskać szczegółowe informacje.
-- Zainstaluj **biblioteki SAP NetWeaver** na komputerze środowiska uruchomieniowego integracji. Biblioteka SAP Netweaver można uzyskać od administratora SAP, lub bezpośrednio z [Centrum pobierania oprogramowania SAP](https://support.sap.com/swdc). Wyszukaj **&#1025361; Uwaga SAP** można pobrać lokalizację pobierania najnowszej wersji. Upewnij się, że wybrano **64-bitowe** SAP NetWeaver biblioteki, która odpowiada instalacji środowiska uruchomieniowego integracji. Następnie zainstaluj wszystkie pliki zawarte w zestawie SDK programu SAP NetWeaver RFC zgodnie z Uwaga SAP. Biblioteka programu SAP NetWeaver znajduje się również w narzędziach klienckich SAP instalacji.
+- Zainstaluj **biblioteki SAP NetWeaver** na komputerze środowiska uruchomieniowego integracji. Biblioteka SAP Netweaver można uzyskać od administratora SAP, lub bezpośrednio z [Centrum pobierania oprogramowania SAP](https://support.sap.com/swdc). Wyszukaj **1025361 # Uwaga SAP** można pobrać lokalizację pobierania najnowszej wersji. Upewnij się, że wybrano **64-bitowe** SAP NetWeaver biblioteki, która odpowiada instalacji środowiska uruchomieniowego integracji. Następnie zainstaluj wszystkie pliki zawarte w zestawie SDK programu SAP NetWeaver RFC zgodnie z Uwaga SAP. Biblioteka programu SAP NetWeaver znajduje się również w narzędziach klienckich SAP instalacji.
 
 > [!TIP]
 > Umieść wyodrębniony z zestawu SDK RFC NetWeaver w folderze system32 bibliotek DLL.
@@ -173,7 +174,7 @@ Podczas kopiowania danych z programu SAP BW, następujące mapowania są używan
 | CURR | Decimal |
 | CUKY | Ciąg |
 | DEC | Decimal |
-| FLTP | Podwójnej precyzji |
+| FLTP | O podwójnej precyzji |
 | INT1 | Bajtów |
 | INT2 | Int16 |
 | INT4 | Int |
@@ -182,7 +183,7 @@ Podczas kopiowania danych z programu SAP BW, następujące mapowania są używan
 | LRAW | Byte[] |
 | PREC | Int16 |
 | QUAN | Decimal |
-| RAW | Byte[] |
+| NIEPRZETWORZONE | Byte[] |
 | RAWSTRING | Byte[] |
 | CIĄG | Ciąg |
 | JEDNOSTKA | Ciąg |

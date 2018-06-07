@@ -3,7 +3,7 @@ title: Wymagania wstępne dotyczące dostęp do usługi Azure Active Directory r
 description: Dowiedz się więcej o wymaganiach wstępnych można uzyskać dostępu do raportowania interfejsu API usługi Azure AD
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: rolyon
 manager: mtillman
 editor: ''
 ms.assetid: ada19f69-665c-452a-8452-701029bf4252
@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: compliance-reports
 ms.date: 05/07/2018
-ms.author: dhanyahk;markvi
+ms.author: dhanyahk;rolyon
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ab05907f1f23c3856b41a941c1b95992ed5a79a4
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a38447150dd283ff21a852690cfd48477472f7b8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34588764"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Wymagania wstępne dotyczące dostęp do usługi Azure Active Directory raportowania interfejsu API
 
-[Usługi Azure Active Directory (Azure AD) raportowania interfejsów API](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) umożliwiają programowy dostęp do danych za pomocą zestawu opartego na interfejsie REST API. Te interfejsy API można wywoływać przy użyciu różnych języków i narzędzi do programowania.
+[Interfejsy API raportowania usługi Azure Active Directory (Azure AD)](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) umożliwiają dostęp programowy do danych za pomocą zestawu interfejsów API opartych na architekturze REST. Te interfejsy API można wywoływać przy użyciu różnych języków i narzędzi do programowania.
 
 Raportowania używa interfejsu API [OAuth](https://msdn.microsoft.com/library/azure/dn645545.aspx) do autoryzacji dostępu do interfejsów API sieci web.
 
@@ -31,7 +33,7 @@ Aby przygotować dostęp do interfejsu API raportowania, należy:
 
 1. Przypisz role
 2. Rejestrowanie aplikacji
-3. Udziel uprawnień
+3. Udzielenie uprawnień
 4. Zbierz ustawienia konfiguracji
 
 
@@ -87,7 +89,7 @@ Aby skonfigurować dostęp raportowania interfejsu API usługi Azure AD do katal
     d. Kliknij przycisk **Utwórz**. 
 
 
-## <a name="grant-permissions"></a>Udziel uprawnień 
+## <a name="grant-permissions"></a>Udzielenie uprawnień 
 
 W zależności od interfejsu API, który chcesz uzyskać dostęp musisz przyznać aplikacji następujące uprawnienia:  
 
@@ -230,7 +232,7 @@ Aby uzyskać klucz tajny klienta aplikacji, musisz utworzyć nowy klucz i zapisa
 
 - [Pobierz dane przy użyciu usługi Azure Active Directory raportowania interfejsu API z certyfikatami](active-directory-reporting-api-with-certificates.md).
 
-- [Pobierz pierwsze wrażenia raportowania interfejsów API](active-directory-reporting-api-getting-started-azure-portal.md#explore)
+- [Pierwsze wrażenie dotyczące interfejsów API raportowania](active-directory-reporting-api-getting-started-azure-portal.md#explore)
 
-- [Tworzenie własnych rozwiązań](active-directory-reporting-api-getting-started-azure-portal.md#customize)
+- [Tworzenie własnego rozwiązania](active-directory-reporting-api-getting-started-azure-portal.md#customize)
 

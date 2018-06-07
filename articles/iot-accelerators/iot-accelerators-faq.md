@@ -1,29 +1,23 @@
 ---
 title: Akceleratorów rozwiązania w usłudze Azure IoT — często zadawane pytania | Dokumentacja firmy Microsoft
 description: Często zadawane pytania dotyczące akceleratorów rozwiązania IoT
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: cb537749-a8a1-4e53-b3bf-f1b64a38188a
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 6c8c87dc4f7bb91ce227bbfbaf1cabf0c44d2e0b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: decae2fee0d040d0857950bec507df173e2820b9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627163"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Często zadawane pytania dotyczące akceleratorów rozwiązania IoT
 
-Zobacz też [połączonych fabryki specyficzne dla często zadawane pytania dotyczące](iot-accelerators-faq-cf.md) i [— często zadawane pytania dotyczące monitorowania zdalnego](iot-accelerators-faq-rm-v2.md) .
+Zobacz też [połączone — często zadawane pytania dotyczące fabryki](iot-accelerators-faq-cf.md) i [— często zadawane pytania dotyczące monitorowania zdalnego](iot-accelerators-faq-rm-v2.md) .
 
 ### <a name="where-can-i-find-the-source-code-for-the-solution-accelerators"></a>Gdzie można znaleźć kodu źródłowego dla akceleratorów rozwiązania?
 
@@ -42,7 +36,7 @@ Jeśli korzystasz z urządzenia zestaw deweloperski, można znaleźć zasobów i
 
 ### <a name="is-the-new-microservices-architecture-available-for-all-the-three-solution-accelerators"></a>Nowa architektura mikrousług jest dostępna dla wszystkich trzech solution Accelerator?
 
-Obecnie tylko zdalnego rozwiązanie monitorowania używa architektura mikrousług obejmuje najszerszych scenariusza.
+Obecnie tylko rozwiązanie zdalnego monitorowanie używa architektura mikrousług obejmuje najszerszych scenariusza.
 
 ### <a name="what-advantages-does-the-new-open-sourced-microservices-based-architecture-provide-in-the-new-update"></a>Jakie korzyści nowej powierzając jej ich konserwację otwarte na podstawie mikrousług architektury oferuje w nową aktualizację?
 
@@ -54,7 +48,7 @@ Tak, nowe monitorowania zdalnego są dostępne w tej samej regionów geograficzn
 
 ### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsuitecom"></a>Jaka jest różnica między usunięcie grupy zasobów w portalu Azure i klikając polecenie Usuń na akcelerator rozwiązań w azureiotsuite.com?
 
-* Jeśli usuniesz akcelerator rozwiązań w [azureiotsuite.com](https://www.azureiotsuite.com/), należy usunąć wszystkie zasoby, które zostały udostępnione po utworzeniu akcelerator rozwiązań. Dodatkowe zasoby są dodawane do grupy zasobów, te zasoby są także usuwane.
+* Jeśli usuniesz akcelerator rozwiązań w [azureiotsuite.com](https://www.azureiotsolutions.com/), należy usunąć wszystkie zasoby, które zostały udostępnione po utworzeniu akcelerator rozwiązań. Dodatkowe zasoby są dodawane do grupy zasobów, te zasoby są także usuwane.
 * Usunięcie grupy zasobów w [portalu Azure](https://portal.azure.com), należy usunąć tylko zasoby w tej grupie zasobów. Należy również usunąć aplikacji usługi Azure Active Directory skojarzonej z akcelerator rozwiązań.
 
 ### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>Czy można kontynuować korzystanie z mojego istniejących inwestycji w akceleratorów rozwiązania Azure IoT?
@@ -71,7 +65,7 @@ Domyślnie można udostępnić [10 centra IoT na subskrypcję](../azure-subscrip
 
 ### <a name="how-many-free-bing-maps-apis-can-i-provision-in-a-subscription"></a>Ile bezpłatnych interfejsów API usługi Mapy Bing można aprowizować w ramach subskrypcji?
 
-Dwa. W subskrypcji platformy Azure można utworzyć tylko dwa wewnętrzne transakcje poziom 1 mapy Bing dla planów organizacji. Rozwiązanie monitorowania zdalnego jest udostępniana domyślnie z planem wewnętrzny poziom 1 transakcji. W związku z tym niemodyfikowana subskrypcja pozwala aprowizować maksymalnie dwa rozwiązania do monitorowania zdalnego.
+Dwa. W subskrypcji platformy Azure można utworzyć tylko dwa wewnętrzne transakcje poziom 1 mapy Bing dla planów organizacji. To rozwiązanie monitorowanie zdalnego jest udostępniana domyślnie z planem wewnętrzny poziom 1 transakcji. W związku z tym można udostępnić tylko do dwóch monitorowania zdalnego rozwiązań w ramach subskrypcji bez żadnych modyfikacji.
 
 ### <a name="can-i-create-a-solution-accelerator-if-i-have-microsoft-azure-for-dreamspark"></a>Jeśli dla DreamSpark Microsoft Azure można utworzyć akcelerator rozwiązań?
 
@@ -92,7 +86,7 @@ Zobacz Golpe marek blogu [wskazówki usunięcia dzierżawy usługi Azure AD](htt
 
 Możesz także wypróbować niektóre inne funkcje i możliwości akceleratorów rozwiązań IoT:
 
-* [Poznaj możliwości zdalnego monitorowania akcelerator rozwiązań](iot-accelerators-remote-monitoring-explore.md)
-* [Omówienie akceleratora rozwiązań do konserwacji zapobiegawczej](../iot-suite/iot-suite-predictive-overview.md)
+* [Poznaj możliwości akcelerator rozwiązań monitorowania zdalnego](iot-accelerators-remote-monitoring-explore.md)
+* [Omówienie akceleratora rozwiązań do konserwacji zapobiegawczej](iot-accelerators-predictive-overview.md)
 * [Akceleratora rozwiązań połączonych fabryki — omówienie](iot-accelerators-connected-factory-overview.md)
-* [Zabezpieczenia IoT od podstaw](../iot-suite/securing-iot-ground-up.md)
+* [Zabezpieczenia IoT od podstaw](securing-iot-ground-up.md)

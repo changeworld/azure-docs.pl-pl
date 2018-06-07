@@ -17,11 +17,12 @@ ms.date: 04/20/2018
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 8068e193ac267ef23bdaab1fc23bc7bf9b0d330b
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 90c70837b3afb589e5a503681aa9cd7cf1dae930
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594119"
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Wprowadzenie aplikacji sieci web AD Node.js Azure
 W tym miejscu możemy użyć usługi Passport:
@@ -61,6 +62,10 @@ Ukończona aplikacja znajduje się na końcu również w tym samouczku.
 
 6. Po zarejestrowaniu, usługi Azure AD przypisuje aplikacji identyfikatora aplikacji Potrzebujesz tej wartości w poniższych sekcjach, dlatego skopiuj go ze strony aplikacji.
 7. Z **ustawienia** -> **właściwości** strony dla aplikacji, zaktualizuj identyfikator URI aplikacji. **Identyfikator URI aplikacji** to unikatowy identyfikator aplikacji. Konwencji jest użycie formatu `https://<tenant-domain>/<app-name>`, na przykład: `https://contoso.onmicrosoft.com/my-first-aad-app`.
+8. Aby utworzyć klucz tajny, wykonaj krok 4 w [można dodać poświadczeń aplikacji lub uprawnienia dostępu do interfejsów API sieci web](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications#to-add-application-credentials-or-permissions-to-access-web-apis).
+
+   > [!IMPORTANT]
+   > Skopiuj wartość klucza aplikacji. Jest to wartość `clientSecret`, które będą potrzebne dla **kroku 3** poniżej. 
 
 ## <a name="step-2-add-prerequisites-to-your-directory"></a>Krok 2: Dodawanie wymagań wstępnych do katalogu
 1. W wierszu polecenia Zmień katalog na folder główny, jeśli nie masz już istnieje, a następnie uruchom następujące polecenia:

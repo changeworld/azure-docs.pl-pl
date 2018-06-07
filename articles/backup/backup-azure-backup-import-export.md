@@ -1,24 +1,19 @@
 ---
-title: Kopia zapasowa Azure — kopia zapasowa Offline lub początkowe umieszczanie za pomocą usługi Import/Eksport Azure | Dokumentacja firmy Microsoft
+title: Kopia zapasowa Azure — kopia zapasowa Offline lub początkowe umieszczanie za pomocą usługi Import/Eksport Azure
 description: Dowiedz się, jak Kopia zapasowa Azure umożliwia wysyłanie danych w sieci za pomocą usługi Import/Eksport Azure. W tym artykule opisano, w trybie offline inicjacją dane początkowej kopii zapasowej za pomocą usługi Azure importu wyeksportować.
 services: backup
-documentationcenter: ''
 author: saurabhsensharma
 manager: shivamg
-editor: ''
-ms.assetid: ada19c12-3e60-457b-8a6e-cf21b9553b97
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 5/8/2018
-ms.author: saurse;nkolli;trinadhk
-ms.openlocfilehash: 801de343ebb88394f04a65236997f9ec80a2f535
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.topic: conceptual
+ms.date: 05/17/2018
+ms.author: saurse
+ms.openlocfilehash: cb37c94d3ec819823083041708cfc28ead0ed5cf
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606141"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Przepływ pracy tworzenia kopii zapasowych w trybie offline w usłudze Azure Backup
 Kopia zapasowa Azure zawiera kilka wbudowanych korzyści, które zapisania koszty sieci i magazynu podczas początkowej pełne kopie zapasowe danych na platformie Azure. Początkowa pełnych kopii zapasowych zwykle transfer dużych ilości danych i wymagają większej przepustowości sieci w porównaniu do kolejnych kopii zapasowych, które transfer tylko delty/przyrostowa. W procesie wstępnego wypełniania w trybie offline kopia zapasowa Azure umożliwia dysków przekazać dane kopii zapasowej w trybie offline na platformie Azure.
@@ -67,7 +62,7 @@ Przed rozpoczęciem przepływu pracy w trybie Offline z kopii zapasowej, należy
     4. Na liście dostawców przewiń w dół Microsoft.ImportExport. Jeśli stan jest NotRegistered, kliknij **zarejestrować**.
     ![Rejestrowanie dostawcy zasobów](./media/backup-azure-backup-import-export/registerimportexport.png)
 * Utworzono tymczasowej lokalizacji, która może być udział sieciowy lub dodatkowego dysku na komputerze, wewnętrzne lub zewnętrzne, z miejsca na dysku do przechowywania kopii początkowej. Na przykład jeśli chcesz utworzyć kopię zapasową na serwerze plików 500 GB, upewnij się, że obszaru przemieszczania jest co najmniej 500 GB. (Mniejszą ilość jest używany z powodu kompresji).
-* Podczas wysyłania dysków na platformie Azure, użyj tylko 2,5 SSD lub 2.5 cala lub 3,5 cala SATA II/III wewnętrzne dyski twarde. Dyski twarde można użyć do 10 TB. Sprawdź [dokumentację usługi Import/Eksport Azure](../storage/common/storage-import-export-service.md#hard-disk-drives) najnowszego zestawu dysków, obsługiwanych przez usługę.
+* Podczas wysyłania dysków na platformie Azure, użyj tylko 2,5 SSD lub 2.5 cala lub 3,5 cala SATA II/III wewnętrzne dyski twarde. Dyski twarde można użyć do 10 TB. Sprawdź [dokumentację usługi Import/Eksport Azure](../storage/common/storage-import-export-requirements.md#supported-hardware) najnowszego zestawu dysków, obsługiwanych przez usługę.
 * Dyski SATA musi być podłączony do komputera (nazywane *komputera kopii*) z jakiej lokalizacji kopię danych kopii zapasowej z *lokalizacji przejściowej* do SATA odbywa się dyski. Upewnij się, że funkcja Bitlocker jest włączona na *komputera kopiowania*.
 
 ## <a name="workflow"></a>Przepływ pracy

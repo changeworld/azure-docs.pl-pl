@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
 ms.author: arluca
-ms.openlocfilehash: d04bfe601760dcbf832aeec0cc66d8e1eda51178
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: ed225206e512ff64835d4d90b35bd44800e0a559
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595380"
 ---
 # <a name="tutorial-use-a-windows-vm-msi-to-access-azure-cosmos-db"></a>Samouczek: Umożliwia dostęp do bazy danych Azure rozwiązania Cosmos MSI maszyny Wirtualnej systemu Windows
 
@@ -209,4 +210,9 @@ To polecenie interfejsu wiersza polecenia zwraca szczegółowe informacje o kole
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Omówienie MSI, zobacz [omówienie zarządzane tożsamość usługi](overview.md).
+W tym samouczku przedstawiono sposób tworzenia zarządzane tożsamości usługi systemu Windows można uzyskać dostępu do bazy danych rozwiązania Cosmos.  Aby dowiedzieć się więcej na temat rozwiązania Cosmos DB zobacz:
+
+> [!div class="nextstepaction"]
+>[Omówienie usługi Azure DB rozwiązania Cosmos](/azure/cosmos-db/introduction)
+
+

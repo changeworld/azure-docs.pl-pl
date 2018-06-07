@@ -1,24 +1,19 @@
 ---
-title: "Utwórz kopię zapasową serwera programu Exchange do usługi Kopia zapasowa Azure serwer kopii zapasowej Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wykonać kopię zapasową serwera Exchange, kopia zapasowa Azure za pomocą serwera usługi Kopia zapasowa Azure"
+title: Wykonywanie kopii zapasowej serwera Exchange kopia zapasowa Azure z serwerem kopia zapasowa Azure
+description: Dowiedz się, jak wykonać kopię zapasową serwera Exchange, kopia zapasowa Azure za pomocą serwera usługi Kopia zapasowa Azure
 services: backup
-documentationcenter: 
 author: pvrk
 manager: shivamg
-editor: 
-ms.assetid: e46557e8-2eaf-4ee0-99ea-00fbb8687dca
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: pullabhk
-ms.openlocfilehash: 60b784fd00013c2b9504f8635c6b5c4c592563be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d64c273a189b1fe2337c4430b156874e0adf54b2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605964"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-azure-backup-server"></a>Wykonywanie kopii zapasowej serwera Exchange kopia zapasowa Azure z serwerem kopia zapasowa Azure
 W tym artykule opisano sposób konfigurowania programu Microsoft Azure kopii zapasowej serwera (MABS) aby utworzyć kopię zapasową Microsoft Exchange server na platformie Azure.  
@@ -109,5 +104,5 @@ Punkty odzyskiwania online są pięć typów odzyskiwania:
 
     ![Wybierz opcję replikacji online](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Azure — często zadawane pytania kopii zapasowej](backup-azure-backup-faq.md)

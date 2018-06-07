@@ -7,18 +7,20 @@ author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 165249d5-e0e7-4ed1-aa26-91a05a87bdc9
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: maheshu
-ms.openlocfilehash: c384046d280e03de5a808d245dd273fdf7b44549
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 172477af5d5ae19cd0362cb1de0a8c66332cb0bd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587838"
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>Jak stwierdzić, czy usługi domenowe Azure AD jest odpowiednia dla przypadek użycia
 Z usług domenowych Azure AD można wdrażać obciążeń w usługi infrastruktury platformy Azure, nie martwiąc się o zachowaniu infrastruktury tożsamości na platformie Azure. Ta usługa zarządzanych różni się od typowe wdrożenie usługi Active Directory systemu Windows Server, wdrażania i administrowania samodzielnie. Usługa jest łatwa do wdrożenia i zapewnia monitorowanie kondycji automatycznych i korygowania. Firma Microsoft stale ewoluuje usługę, aby dodać obsługę typowych scenariuszy wdrożeń.
@@ -38,7 +40,7 @@ Poniższa tabela ułatwia wybór między przy użyciu usług domenowych Azure AD
 | [**Zabezpieczanie wdrożenia**](active-directory-ds-comparison.md#secure-deployments) |**&#x2713;** |Administrator musi bezpiecznego wdrażania. |
 | [**Serwer DNS**](active-directory-ds-comparison.md#dns-server) |**&#x2713;**(usługa zarządzane) |**&#x2713;** |
 | [**Uprawnienia administratora domeny lub Enterprise**](active-directory-ds-comparison.md#domain-or-enterprise-administrator-privileges) |**&#x2715;** |**&#x2713;** |
-| [**Domain join**](active-directory-ds-comparison.md#domain-join) |**&#x2713;** |**&#x2713;** |
+| [**Przyłączanie do domeny**](active-directory-ds-comparison.md#domain-join) |**&#x2713;** |**&#x2713;** |
 | [**Uwierzytelnianie domeny przy użyciu protokołu NTLM i Kerberos**](active-directory-ds-comparison.md#domain-authentication-using-ntlm-and-kerberos) |**&#x2713;** |**&#x2713;** |
 | [**Ograniczone delegowanie protokołu Kerberos**](active-directory-ds-comparison.md#kerberos-constrained-delegation)|oparte na zasobach|oparte na zasobach & na podstawie konta|
 | [**Niestandardowe struktury jednostek organizacyjnych**](active-directory-ds-comparison.md#custom-ou-structure) |**&#x2713;** |**&#x2713;** |
@@ -63,7 +65,7 @@ Domeny zarządzanej usług domenowych Azure AD zawiera zarządzanych usług DNS.
 #### <a name="domain-or-enterprise-administrator-privileges"></a>Uprawnienia do domeny lub administratora przedsiębiorstwa
 Te podniesione uprawnienia nie są dostępne w domenie zarządzanej usługi AAD DS. Domen zarządzanych aplikacji, które wymagają tych podniesione uprawnienia nie można wdrożyć przed DS usługi AAD. Mniejszego podzestawu uprawnienia administracyjne są dostępne dla członków grupy administracji delegowanej o nazwie "Administratorzy usługi AAD kontrolera domeny". Uprawnienia te obejmują uprawnienia do konfigurowania serwera DNS, skonfigurować zasady grupy, uzyskanie uprawnień administratora na komputerach przyłączonych do domeny itp.
 
-#### <a name="domain-join"></a>Domain join
+#### <a name="domain-join"></a>Przyłączanie do domeny
 Maszyny wirtualne można przyłączyć do domeny zarządzanej, podobnie jak przyłączania komputerów do domeny usługi AD.
 
 #### <a name="domain-authentication-using-ntlm-and-kerberos"></a>Uwierzytelnianie domeny przy użyciu protokołu NTLM i Kerberos

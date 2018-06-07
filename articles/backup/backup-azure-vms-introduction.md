@@ -1,25 +1,20 @@
 ---
-title: Planowanie infrastruktury kopii zapasowych maszyn wirtualnych na platformie Azure | Dokumentacja firmy Microsoft
+title: Planowanie infrastruktury kopii zapasowych maszyn wirtualnych na platformie Azure
 description: Ważne uwagi dotyczące planowania kopii zapasowych maszyn wirtualnych na platformie Azure
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
 keywords: Wykonaj kopię zapasową maszyn wirtualnych, kopii zapasowych maszyn wirtualnych
-ms.assetid: 19d2cf82-1f60-43e1-b089-9238042887a9
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 3/23/2018
-ms.author: markgal;trinadhk;sogup
-ms.openlocfilehash: 299794b100ed438de2995d70419025dd686d2278
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: markgal
+ms.openlocfilehash: 92122e7dc62e0f402bcddff099984e6e2c605fae
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606090"
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Planowanie infrastruktury kopii zapasowych maszyny wirtualnej na platformie Azure
 Ten artykuł zawiera wydajności i sugestie zasobów ułatwiają planowanie infrastruktury kopii zapasowych maszyn wirtualnych. Definiuje również kluczowych aspektów usługi tworzenia kopii zapasowej; te aspekty może mieć decydujące znaczenie dla określenia architektury, planowanie pojemności i planowania. Jeśli znasz [przygotować środowisko](backup-azure-arm-vms-prepare.md), następnym krokiem planowania jest przed rozpoczęciem [do tworzenia kopii zapasowych maszyn wirtualnych](backup-azure-arm-vms.md). Aby uzyskać więcej informacji o maszynach wirtualnych platformy Azure, zobacz [dokumentacji maszyn wirtualnych](https://azure.microsoft.com/documentation/services/virtual-machines/).
@@ -27,7 +22,7 @@ Ten artykuł zawiera wydajności i sugestie zasobów ułatwiają planowanie infr
 ## <a name="how-does-azure-back-up-virtual-machines"></a>Jak Azure wykonywanie kopii zapasowych maszyn wirtualnych?
 Gdy usługa Azure Backup Inicjuje zadania tworzenia kopii zapasowej w zaplanowanym terminie, wyzwalaczy usługi zapasowy numer wewnętrzny do tworzenia migawki w chwili. Używa usługi Azure Backup _VMSnapshot_ rozszerzenia w systemie Windows i _VMSnapshotLinux_ rozszerzenia w systemie Linux. Rozszerzenie jest zainstalowany podczas pierwszego tworzenia kopii zapasowej maszyny Wirtualnej. Aby zainstalować to rozszerzenie, musi być uruchomiona maszyna wirtualna. Jeśli maszyna wirtualna nie jest uruchomiona, usługa Backup utworzy migawkę powiązanego magazynu (ponieważ gdy maszyna wirtualna jest zatrzymana, nie występują zapisy aplikacji).
 
-Podczas wykonywania migawki maszyn wirtualnych systemu Windows, usługi Kopia zapasowa koordynuje z woluminów w tle kopii Service (VSS) do uzyskania migawki spójne z dysków maszyny wirtualnej. Jeśli tworzysz kopię zapasową maszyn wirtualnych systemu Linux, napisania własnych skryptów niestandardowych w celu zapewnienia spójności podczas wykonywania migawki maszyny Wirtualnej. Szczegółowe informacje na temat wywoływania tych skryptów znajdują się w dalszej części tego artykułu.
+Podczas wykonywania migawki maszyn wirtualnych z systemem Windows usługa Backup koordynuje się z usługą kopiowania woluminów w tle (VSS, Volume Shadow Copy Service), aby uzyskać spójną migawkę dysków maszyny wirtualnej. Jeśli tworzysz kopię zapasową maszyn wirtualnych systemu Linux, napisania własnych skryptów niestandardowych w celu zapewnienia spójności podczas wykonywania migawki maszyny Wirtualnej. Szczegółowe informacje na temat wywoływania tych skryptów znajdują się w dalszej części tego artykułu.
 
 Po utworzeniu migawki w usłudze Azure Backup dane są przesyłane do magazynu. Aby zmaksymalizować wydajność, usługa rozpoznaje i przesyła jedynie te bloki danych, które uległy zmianie od czasu utworzenia poprzedniej kopii zapasowej.
 
@@ -119,7 +114,7 @@ Sugerujemy następujące te wskazówki podczas konfigurowania kopii zapasowych m
 * Planowanie kopii zapasowych maszyn wirtualnych podczas godziny poza szczytem. Dzięki temu usługa Kopia zapasowa używa IOPS do przesyłania danych z konta magazynu klienta do magazynu.
 * Upewnij się, że zasady są stosowane na maszynach wirtualnych umieszczonych na różnych kont magazynu. Zalecamy nie więcej niż 20 całkowita liczba dysków z konta magazynu pojedynczego jest chroniona przez ten sam harmonogram tworzenia kopii zapasowej. Jeśli masz większą niż 20 dyski na koncie magazynu, rozłożyć tych maszyn wirtualnych na wiele zasad, aby uzyskać wymagany IOPS transfer w fazie procesu tworzenia kopii zapasowej.
 * Nie należy przywracać maszyny Wirtualnej z systemem na magazyn w warstwie Premium do tego samego konta magazynu. Jeśli proces operacji przywracania pokrywa się z operacji tworzenia kopii zapasowej, zmniejsza dostępne IOPS dla kopii zapasowej.
-* Dla kopii zapasowej maszyny Wirtualnej — wersja Premium upewnij się, że dysków premium hostów ma co najmniej 50% wolnego miejsca do przemieszczania migawki do pomyślnego utworzenia kopii zapasowej konto magazynu. 
+* Dla kopii zapasowej maszyny Wirtualnej — wersja Premium na stos kopii zapasowej maszyny Wirtualnej V1 zalecane jest przydzielenie tylko 50% całkowitego konta miejsca do magazynowania, dzięki czemu usługa Azure Backup można skopiować migawki na potrzeby magazynu konta i transfer danych z tej lokalizacji skopiowany na koncie magazynu do magazynu.
 * Upewnij się, że ta wersja języka python na maszynach wirtualnych systemu Linux włączone dla kopii zapasowej jest 2.7
 
 ## <a name="data-encryption"></a>Szyfrowanie danych

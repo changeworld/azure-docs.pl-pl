@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bcf266813476c682d47bfd483db77f5d8b73837a
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 7cc86f56f7f68c70d66407bd44e6368f31f202d4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593789"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Rozwiązywanie problemów z synchronizacją skrótów haseł z synchronizacji Azure AD Connect
 Ten temat zawiera procedurę rozwiązywania problemów z synchronizacją skrótów haseł. Jeśli nie można zsynchronizować hasła, zgodnie z oczekiwaniami, można dla podzbioru użytkowników lub dla wszystkich użytkowników.
@@ -333,7 +335,7 @@ W kolumnie Stan może mieć następujące wartości:
 | TargetNotExportedToDirectory |Obiekt do przestrzeni łącznika usługi Azure AD nie zostały wyeksportowane. |
 | MigratedCheckDetailsForMoreInfo |Wpis dziennika został utworzony przed kompilacji 1.0.9125.0 i jest wyświetlany w stanie starszej wersji. |
 | Błąd |Usługa zwróciła nieznany błąd. |
-| Brak informacji |Wystąpił błąd podczas próby przetworzenia partii skrótów haseł.  |
+| Nieznane |Wystąpił błąd podczas próby przetworzenia partii skrótów haseł.  |
 | MissingAttribute |Określone atrybuty (na przykład protokołu Kerberos wyznaczania wartości skrótu) wymagane przez usługi domenowe Azure AD nie są dostępne. |
 | RetryRequestedByTarget |Określone atrybuty (na przykład protokołu Kerberos wyznaczania wartości skrótu) wymagane przez usługi domenowe Azure AD nie były wcześniej dostępne. Podejmowana jest próba, aby ponownie zsynchronizować skrót hasła użytkownika. |
 

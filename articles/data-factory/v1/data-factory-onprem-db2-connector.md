@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0e597574c1993e2f2a5421d24063cf9f42a7e57b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fc4ce0a2ae33e99ecede371d9f17fb9a63851f64
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622027"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Przenieść dane z bazy danych DB2 za pomocą działania kopiowania fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -81,7 +82,7 @@ W poniższej tabeli wymieniono właściwości JSON, które są specyficzne dla u
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| **Typ** |Ta właściwość musi mieć ustawioną **OnPremisesDb2**. |Yes |
+| **type** |Ta właściwość musi mieć ustawioną **OnPremisesDb2**. |Yes |
 | **server** |Nazwa serwera bazy danych DB2. |Yes |
 | **Bazy danych** |Nazwa bazy danych DB2. |Yes |
 | **schema** |Nazwa schematu bazy danych DB2. Ta właściwość jest rozróżniana wielkość liter. |Nie |
@@ -97,7 +98,7 @@ Listę sekcje i właściwości, które są dostępne do definiowania zestawów d
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| **tableName** |Nazwa tabeli w wystąpieniu bazy danych DB2 odnoszący się do połączonej usługi. Ta właściwość jest rozróżniana wielkość liter. |Nie (Jeśli **zapytania** właściwości działania kopiowania typu **RelationalSource** jest określona) |
+| **TableName** |Nazwa tabeli w wystąpieniu bazy danych DB2 odnoszący się do połączonej usługi. Ta właściwość jest rozróżniana wielkość liter. |Nie (Jeśli **zapytania** właściwości działania kopiowania typu **RelationalSource** jest określona) |
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 Aby uzyskać listę sekcji i właściwości, które są dostępne do definiowania działania kopiowania, zobacz [tworzenie potoków](data-factory-create-pipelines.md) artykułu. Kopiuj właściwości działania, takie jak **nazwa**, **opis**, **dane wejściowe** tabeli, **generuje** tabeli, i **zasad**, są dostępne dla wszystkich typów działań. Właściwości, które są dostępne w **typeProperties** sekcji działania różne dla każdego typu działania. Dla działania kopiowania właściwości różnią się w zależności od typów źródeł danych i sink.
@@ -311,14 +312,14 @@ Następujące mapowania są używane, gdy działanie kopiowania konwertuje dane 
 | SmallInt |Int16 |
 | Liczba całkowita |Int32 |
 | BigInt |Int64 |
-| Real |Kawaler/panna |
-| Podwójnej precyzji |Podwójnej precyzji |
-| Float |Podwójnej precyzji |
+| Real |Pojedyncze |
+| O podwójnej precyzji |O podwójnej precyzji |
+| Liczba zmiennoprzecinkowa |O podwójnej precyzji |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
-| numeryczne |Decimal |
+| Liczbowy |Decimal |
 | Date |DateTime |
-| Time |TimeSpan |
+| Time |Zakres czasu |
 | Sygnatura czasowa |DateTime |
 | Xml |Byte[] |
 | char |Ciąg |
@@ -337,14 +338,14 @@ Następujące mapowania są używane, gdy działanie kopiowania konwertuje dane 
 | SmallInt |Int16 |
 | Liczba całkowita |Int32 |
 | BigInt |Int64 |
-| Real |Kawaler/panna |
-| Podwójnej precyzji |Podwójnej precyzji |
-| Float |Podwójnej precyzji |
+| Real |Pojedyncze |
+| O podwójnej precyzji |O podwójnej precyzji |
+| Liczba zmiennoprzecinkowa |O podwójnej precyzji |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
-| numeryczne |Decimal |
+| Liczbowy |Decimal |
 | Date |DateTime |
-| Time |TimeSpan |
+| Time |Zakres czasu |
 | Sygnatura czasowa |DateTime |
 | Xml |Byte[] |
 | char |Ciąg |

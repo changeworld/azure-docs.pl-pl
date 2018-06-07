@@ -17,11 +17,12 @@ ms.date: 01/07/2017
 ms.author: celested
 ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: db466a3ae416c47f86bb66b3bb8ba4bcd7741f5f
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 892cf2cfc93c86b9196000d94f976407156ec248
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594282"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>V2.0 usługi Azure Active Directory i że przepływ poświadczeń klienta OAuth 2.0
 Można użyć [przyznania poświadczeń klienta OAuth 2.0](http://tools.ietf.org/html/rfc6749#section-4.4) określona w specyfikacji RFC 6749, nazywane również *bokami dwa OAuth*, aby uzyskać dostęp do zasobów hostowanych w sieci web przy użyciu tożsamości aplikacji. Ten typ grant często służy do interakcji do serwera, które muszą zostać uruchomione w tle, bez natychmiastowego interakcji z użytkownikiem. Często aplikacje tego typu są określane jako *demony* lub *kont usługi*.
@@ -62,7 +63,7 @@ Aby użyć uprawnienia aplikacji w aplikacji, wykonaj czynności, które omówio
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>Żądanie uprawnienia w portalu rejestracji aplikacji
 1. Przejdź do aplikacji w [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), lub [Utwórz aplikację](active-directory-v2-app-registration.md), jeśli nie jest jeszcze. Należy użyć co najmniej jeden klucz tajny aplikacji podczas tworzenia aplikacji.
-2. Zlokalizuj **uprawnienia wykres Mcrosoft** sekcji, a następnie dodaj **uprawnienia aplikacji** aplikację wymagającej.
+2. Zlokalizuj **Microsoft Graph uprawnienia** sekcji, a następnie dodaj **uprawnienia aplikacji** aplikację wymagającej.
 3. **Zapisz** rejestracji aplikacji.
 
 #### <a name="recommended-sign-the-user-in-to-your-app"></a>Zalecane: Zalogować użytkownika do aplikacji

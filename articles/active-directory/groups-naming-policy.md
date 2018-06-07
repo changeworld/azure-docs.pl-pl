@@ -10,15 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 05/21/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: 1cfd85eda9ef59a2265a991cabe5f1b6ee83563d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: fb4f43dd85f887fa051aaa8050ddf6b37313e376
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594554"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Wymuszanie zasad nazewnictwa dla grup usługi Office 365 w usłudze Azure Active Directory (wersja zapoznawcza)
 
@@ -189,7 +190,7 @@ Synchronizacja danych służbowych (SDS) | Grup utworzonych za pomocą SDS są z
 Menedżer klienta programu Outlook (OCM) | Menedżer klienta programu Outlook jest zgodne z zasadami nazewnictwa, który jest automatycznie stosowane do grupy utworzone w Menedżerze klienta programu Outlook. W przypadku wykrycia niestandardowych word zablokowanych tworzenie grup w OCM jest zablokowane, a użytkownik jest zablokowany za pomocą aplikacji OCM.
 Klasy aplikacji | Grupy utworzone w klasie aplikacji jest zgodne z zasadami nazewnictwa, ale zasady nazewnictwa nie jest stosowana automatycznie, a nazewnictwa Podgląd zasad nie jest widoczne dla użytkowników podczas wprowadzania nazwy grupy klas. Użytkownicy muszą wprowadzić nazwę grupy wymuszone klasy z prefiksów i sufiksów. Jeśli nie, Grupa klas tworzenia lub edytowania operacja kończy się niepowodzeniem z błędami.
 Power BI | Obszary robocze programu Power BI są zgodne z zasadami nazewnictwa.    
-Yammer | Usługi Yammer podłączonymi grupami nie wymuszają skonfigurowanymi zasadami nazewnictwa. W przypadku organizacji z włączonymi zasadami nazewnictwa Yammer tworzy starszych grup Yammer, które nie są podłączone do usługi Office 365 dla grup, które nie są zgodne z zasadami nazewnictwa.
+Yammer | Gdy użytkownik zalogowany do usługi Yammer do swojego konta usługi Azure Active Directory tworzy grupę lub edytuje nazwę grupy, nazwę grupy będą stosować się zasady nazewnictwa. Dotyczy to zarówno do grup usługi Office 365 połączone i wszystkie inne grupy Yammer.<br>Jeśli podłączonej grupy usługi Office 365 został utworzony przed zasad nazewnictwa jest już na miejscu, nazwa grupy nie zostaną automatycznie wprowadzone zasady nazewnictwa. Gdy użytkownik edytuje nazwę grupy, zostanie wyświetlony monit, aby dodać prefiksu i sufiksu.
 StaffHub  | Zespoły StaffHub nie są zgodne z zasadami nazewnictwa, ale nie podstawowej grupy usługi Office 365. Nazwa zespołu StaffHub nie ma zastosowania prefiksów i sufiksów i nie sprawdza niestandardowych słów zablokowany. Jednak StaffHub zastosować prefiksów i sufiksów i usuwa zablokowanych słowa z podstawowej grupy usługi Office 365.
 Exchange PowerShell | Polecenia cmdlet programu PowerShell programu Exchange są zgodne z zasadami nazewnictwa. Użytkownicy będą otrzymywać wiadomości odpowiednie błąd z sugerowanych prefiksów i sufiksów i niestandardowych słów zablokowane, jeśli nie stosują zasady nazewnictwa Nazwa grupy i aliasu grupy (mailNickname).
 Polecenia cmdlet środowiska PowerShell usługi Active Directory systemu Azure | Polecenia cmdlet środowiska PowerShell usługi Active Directory systemu Azure są zgodne z zasadami nazewnictwa. Użytkownicy będą otrzymywać wiadomości odpowiednie błąd z sugerowanych prefiksów i sufiksów i niestandardowych słów zablokowane, jeśli nie stosują konwencji nazewnictwa nazwy grup i aliasu grupy.

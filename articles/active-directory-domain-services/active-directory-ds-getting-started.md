@@ -1,32 +1,44 @@
 ---
-title: "Usług domenowych Azure Active Directory: Wprowadzenie | Dokumentacja firmy Microsoft"
-description: "Włączanie usługi Azure Active Directory Domain Services przy użyciu portalu Azure"
+title: 'Usług domenowych Azure Active Directory: Wprowadzenie | Dokumentacja firmy Microsoft'
+description: Włączanie usługi Azure Active Directory Domain Services przy użyciu portalu Azure
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2017
+ms.date: 05/23/2018
 ms.author: maheshu
-ms.openlocfilehash: 97803d62ee42d777336dc87c34a16eff426d24d0
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ab2897eefd1c394ba0b10ba6fce3e11af4a0b2a5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587964"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Włączanie usługi Azure Active Directory Domain Services przy użyciu portalu Azure
 W tym artykule przedstawiono sposób włączania usługi Azure Active Directory Domain Services (Azure AD DS) za pomocą portalu Azure.
 
+## <a name="before-you-begin"></a>Przed rozpoczęciem
+Aby wykonać zadania opisane w tym artykule, należy:
+
+* Prawidłowy **subskrypcji platformy Azure**.
+* **Katalog usługi Azure AD** -albo synchronizowane z katalogu lokalnego lub w katalogu tylko w chmurze.
+* **Subskrypcji platformy Azure musi być skojarzona z katalogiem Azure AD**.
+* Należy **administratora globalnego** uprawnień w katalogu usługi Azure AD, aby włączyć usługi domenowe Azure AD.
+
+
+## <a name="enable-azure-ad-domain-services"></a>Włączanie Usług domenowych Azure AD
 Aby uruchomić **usług włączyć domenowych Azure AD** kreatora, wykonaj następujące czynności:
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
-2. W okienku po lewej stronie kliknij **Utwórz zasób**.
+2. W okienku po lewej stronie kliknij pozycję **Utwórz zasób**.
 3. W **nowy** wpisz **usług domenowych w usłudze** na pasku wyszukiwania.
 
     ![Wyszukaj usług domenowych w usłudze](./media/getting-started/search-domain-services.png)
@@ -39,7 +51,7 @@ Aby uruchomić **usług włączyć domenowych Azure AD** kreatora, wykonaj nast�
 
 
 ## <a name="task-1-configure-basic-settings"></a>Zadanie 1: Konfigurowanie ustawień podstawowych
-W **podstawy** strony kreatora można określić nazwę domeny DNS dla domeny zarządzanej. Można także grupy zasobów i lokalizacja platformy Azure, do którego powinny zostać wdrożone domeny zarządzanej.
+W **podstawy** strona kreatora określ nazwy domeny DNS dla domeny zarządzanej. Można także grupy zasobów i lokalizacja platformy Azure, do którego powinny zostać wdrożone domeny zarządzanej.
 
 ![Skonfiguruj podstawy](./media/getting-started/domain-services-blade-basics.png)
 
@@ -59,11 +71,11 @@ W **podstawy** strony kreatora można określić nazwę domeny DNS dla domeny za
 
 2. Wybierz platformy Azure **subskrypcji** , w której chcesz utworzyć domeny zarządzanej.
 
-3. Wybierz **grupy zasobów** powinien należeć domeny zarządzanej. Można wybrać **Utwórz nowy** lub **Użyj istniejącego** opcji, aby wybrać grupę zasobów.
+3. Wybierz **grupy zasobów** powinien należeć domeny zarządzanej. Wybierz **Utwórz nowy** lub **Użyj istniejącego** opcji, aby wybrać grupę zasobów.
 
 4. Wybierz platformy Azure **lokalizacji** , w którym ma zostać utworzony domeny zarządzanej. Na **sieci** strony kreatora, zobacz sieci tylko wirtualne, które należą do wybrania lokalizacji.
 
-5. Gdy wszystko będzie gotowe, kliknij przycisk **OK** można przenieść do **sieci** stronie kreatora.
+5. Kliknij przycisk **OK** można przenieść do **sieci** stronie kreatora.
 
 
 ## <a name="next-step"></a>Następny krok

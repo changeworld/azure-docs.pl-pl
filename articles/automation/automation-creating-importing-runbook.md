@@ -9,11 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ac7b050bf96401d33254dedad5035e43850ecc52
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ea03f34a2e709fe6f6d8d2f7e13798cf6dcd1e34
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598246"
 ---
 # <a name="creating-or-importing-a-runbook-in-azure-automation"></a>Tworzenie lub importowanie elementu runbook automatyzacji Azure
 Można dodać elementu runbook automatyzacji Azure przez [tworzenia nowej](#creating-a-new-runbook) lub importując istniejący element runbook z pliku lub [galerię elementów Runbook](automation-runbook-gallery.md). Ten artykuł zawiera informacje na temat tworzenia i importowania elementów runbook z pliku.  Można pobrać szczegółów na uzyskiwanie dostępu do społeczności elementów runbook i modułów w [galerie elementów Runbook i modułów w automatyzacji Azure](automation-runbook-gallery.md).
@@ -33,8 +34,10 @@ Można użyć [AzureRmAutomationRunbook nowy](https://msdn.microsoft.com/library
 
 W następujących przykładowych poleceniach pokazano, jak utworzyć nowy pusty element runbook.
 
-    New-AzureRmAutomationRunbook -AutomationAccountName MyAccount `
-    -Name NewRunbook -ResourceGroupName MyResourceGroup -Type PowerShell
+```azurepowershell-interactive
+New-AzureRmAutomationRunbook -AutomationAccountName MyAccount `
+-Name NewRunbook -ResourceGroupName MyResourceGroup -Type PowerShell
+```
 
 ## <a name="importing-a-runbook-from-a-file-into-azure-automation"></a>Importowanie elementu runbook z pliku do usługi Automatyzacja Azure
 Można utworzyć nowy element runbook automatyzacji Azure, importując skrypt programu PowerShell lub przepływu pracy programu PowerShell (z rozszerzeniem .ps1), wyeksportowany graficzny element runbook (graphrunbook) lub skryptu Python 2 (rozszerzenie .py).  Należy określić [typu element runbook](automation-runbook-types.md) utworzonego podczas importowania, biorąc pod uwagę przedstawione poniżej zagadnienia.
@@ -70,15 +73,16 @@ Można użyć [AzureRMAutomationRunbook importu](https://msdn.microsoft.com/libr
 
 W następujących przykładowych poleceniach pokazano, jak zaimportować plik skryptu do elementu runbook.
 
-    $automationAccountName =  "AutomationAccount"
-    $runbookName = "Sample_TestRunbook"
-    $scriptPath = "C:\Runbooks\Sample_TestRunbook.ps1"
-    $RGName = "ResourceGroup"
+```azurepowershell-interactive
+$automationAccountName =  "AutomationAccount"
+$runbookName = "Sample_TestRunbook"
+$scriptPath = "C:\Runbooks\Sample_TestRunbook.ps1"
+$RGName = "ResourceGroup"
 
-    Import-AzureRMAutomationRunbook -Name $runbookName -Path $scriptPath `
-    -ResourceGroupName $RGName -AutomationAccountName $automationAccountName `
-    -Type PowerShellWorkflow 
-
+Import-AzureRMAutomationRunbook -Name $runbookName -Path $scriptPath `
+-ResourceGroupName $RGName -AutomationAccountName $automationAccountName `
+-Type PowerShellWorkflow
+```
 
 ## <a name="publishing-a-runbook"></a>Publikowanie elementu runbook
 Podczas tworzenia lub zaimportować nowy element runbook należy opublikować przed jej uruchomieniem.  Każdy element runbook w automatyzacji ma wersję roboczą i opublikowaną wersję. Opublikowana wersja jest dostępna do uruchamiania i tylko wersję roboczą można edytowane. Wersję opublikowaną nie mają wpływu żadne zmiany wprowadzone w wersji roboczej. Gdy wersja robocza powinna zostać udostępniona, należy ją opublikować, co powoduje nadpisanie wersji opublikowanej wersją roboczą.
@@ -91,13 +95,14 @@ Podczas tworzenia lub zaimportować nowy element runbook należy opublikować pr
 ## <a name="to-publish-a-runbook-using-windows-powershell"></a>Aby opublikować element runbook za pomocą środowiska Windows PowerShell
 Można użyć [AzureRmAutomationRunbook publikowania](https://msdn.microsoft.com/library/mt603705.aspx) polecenia cmdlet, aby opublikować element runbook za pomocą środowiska Windows PowerShell. Następujące przykładowe polecenia pokazują, jak opublikować przykładowego elementu runbook.
 
-    $automationAccountName =  AutomationAccount"
-    $runbookName = "Sample_TestRunbook"
-    $RGName = "ResourceGroup"
+```azurepowershell-interactive
+$automationAccountName =  "AutomationAccount"
+$runbookName = "Sample_TestRunbook"
+$RGName = "ResourceGroup"
 
-    Publish-AzureRmAutomationRunbook -AutomationAccountName $automationAccountName `
-    -Name $runbookName -ResourceGroupName $RGName
-
+Publish-AzureRmAutomationRunbook -AutomationAccountName $automationAccountName `
+-Name $runbookName -ResourceGroupName $RGName
+```
 
 ## <a name="next-steps"></a>Następne kroki
 * Aby dowiedzieć się, jak można korzystać z elementu Runbook i galerii modułu programu PowerShell, zobacz [galerie elementów Runbook i modułów w automatyzacji Azure](automation-runbook-gallery.md)

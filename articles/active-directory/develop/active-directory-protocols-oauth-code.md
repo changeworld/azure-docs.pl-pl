@@ -16,11 +16,12 @@ ms.date: 04/17/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 93de62a21ca1d3b8c88715fc9207a583920ac33e
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: a01c5bc2ca6310ee87f2ead1ea590987c854e733
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595329"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autoryzacja dostępu do aplikacji sieci web usługi Azure Active Directory przy użyciu przepływu grant kodu OAuth 2.0
 Azure Active Directory (Azure AD) używa protokołu OAuth 2.0 do autoryzowania dostępu do aplikacji sieci web i interfejsów API sieci web w dzierżawie usługi Azure AD. Ten przewodnik jest niezależny od języka i opisuje sposób wysyłania i odbierania wiadomości HTTP bez przy użyciu dowolnej z naszych [bibliotekach open source](active-directory-authentication-libraries.md).
@@ -59,7 +60,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | state |Zalecane |Wartość zawarte w żądaniu, który jest także zwracany w odpowiedzi tokenu. Losowo generowany unikatową wartość jest zazwyczaj używana w przypadku [zapobieganie fałszerstwie żądania międzywitrynowego](http://tools.ietf.org/html/rfc6749#section-10.12). Stan służy także do kodowania informacje o stanie użytkownika w aplikacji przed wystąpieniem żądania uwierzytelniania, takich jak strony lub widok, które były na. |
 | zasób | Zalecane |Identyfikator URI aplikacji sieci Web docelowego interfejsu API (zabezpieczonych zasobów). Aby znaleźć identyfikator URI aplikacji w portalu Azure, kliknij przycisk **usługi Azure Active Directory**, kliknij przycisk **rejestracji aplikacji**, Otwórz aplikację **ustawienia** strony, a następnie kliknij przycisk  **Właściwości**. Może to być również zasób zewnętrzny, takich jak `https://graph.microsoft.com`. Jest to wymagane w jednym autoryzacji lub żądania tokenu. Do zapewnienia uwierzytelniania mniejszą liczbę monitów umieścić w żądaniu autoryzacji, aby upewnić się, że odebraniu zgody użytkownika. |
 | scope | **ignorowane** | W przypadku aplikacji usługi Azure AD v1, zakresy muszą być skonfigurowane statycznie w portalu Azure w obszarze aplikacje **ustawienia**, **wymagane uprawnienia**. |
-| wiersz |opcjonalne |Wskazuje typ interakcji z użytkownikiem, który jest wymagany.<p> Prawidłowe wartości to: <p> *logowania*: użytkownik powinien być monitowany o ponownego uwierzytelnienia. <p> *zgoda*: zgody użytkownika przyznano, ale musi zostać zaktualizowany. Użytkownik powinien monit o zgodę. <p> *admin_consent*: administrator powinien być monitowany o zgodę imieniu wszyscy użytkownicy w organizacji |
+| wiersz |opcjonalne |Wskazuje typ interakcji z użytkownikiem, który jest wymagany.<p> Prawidłowe wartości to: <p> *logowania*: użytkownik powinien być monitowany o ponownego uwierzytelnienia. <p> *select_account*: użytkownik jest monitowany wybierz konto, przerywania rejestracji jednokrotnej w. Użytkownik może wybrać istniejące konto zalogowanego, wprowadź swoje poświadczenia dla konta zapamiętanych lub wybierz inne konto całkowicie. <p> *zgoda*: zgody użytkownika przyznano, ale musi zostać zaktualizowany. Użytkownik powinien monit o zgodę. <p> *admin_consent*: administrator powinien być monitowany o zgodę imieniu wszyscy użytkownicy w organizacji |
 | login_hint |opcjonalne |Można wstępnie wypełnić pole adresu e-mail/nazwa użytkownika strony logowania dla użytkownika, jeśli znasz swoją nazwę użytkownika wcześniejsze. Aplikacje często tego parametru należy użyć podczas ponownego uwierzytelniania, już o wyodrębnić nazwy użytkownika z poprzedniej logowania przy użyciu `preferred_username` oświadczeń. |
 | domain_hint |opcjonalne |Zawiera wskazówki dotyczące dzierżawy lub domeny, która powinna być używana do logowania użytkownika. Wartość domain_hint jest domeną zarejestrowanych dla dzierżawcy. Jeśli dzierżawa jest Sfederowane do katalogu lokalnego, usługi AAD przekierowuje do serwera federacyjnego w określonym dzierżawcy. |
 | code_challenge_method | opcjonalne    | Metody używane do kodowania `code_verifier` dla `code_challenge` parametru. Może być jednym z `plain` lub `S256`. Jeśli wykluczone, `code_challenge` zostanie potraktowany jako zwykłego tekstu, jeśli `code_challenge` jest dołączony. Azure 1.0 AAD obsługuje zarówno `plain` i `S256`. Aby uzyskać więcej informacji, zobacz [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
@@ -217,7 +218,7 @@ Aby uzyskać więcej informacji dotyczących tokenów sieci web JSON, zobacz [Sp
 | IAT |Wygenerowane w czasie. Czas, kiedy wydano tokenu JWT. Czas jest reprezentowany jako liczba sekund od 1 stycznia 1970 (1970-01-01T0:0:0Z) UTC czasu token został wystawiony. |
 | iss |Identyfikuje wystawcy tokenów |
 | nbf |Nie wcześniej niż czas. Czas, gdy token rozpoczęcia obowiązywania. Aby token był prawidłowy bieżącej daty/godziny musi być większa lub równa wartości Nbf. Czas jest reprezentowany jako liczba sekund od 1 stycznia 1970 (1970-01-01T0:0:0Z) UTC czasu token został wystawiony. |
-| Identyfikator OID |Identyfikator obiektu (ID) obiektu użytkownika w usłudze Azure AD. |
+| Identyfikator OID |Identyfikator obiektu użytkownika w usłudze Azure AD. |
 | Sub |Identyfikator podmiotu tokenu. To jest trwałe i modyfikować identyfikator dla użytkownika, który opisuje tokenu. Użyj tej wartości w ramach buforowania logiki. |
 | TID |Dzierżawy identyfikator dzierżawy usługi Azure AD, która wystawiła token. |
 | unique_name |Unikatowy identyfikator, które mogą być wyświetlane dla użytkownika. Jest to zwykle główna nazwa użytkownika (UPN). |

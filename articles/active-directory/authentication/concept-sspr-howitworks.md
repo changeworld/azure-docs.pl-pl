@@ -10,11 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 6f755754097336fc97678940ea1fa0aa28315fab
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 42471687e0a56ff0bacf5c9effecb0e2466b4690
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593595"
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Samoobsługowe Resetowanie w usłudze Azure AD nowości haseł
 
@@ -152,6 +153,8 @@ Wszystkie wstępnie zdefiniowanych pytania, na które należy wykonać są zloka
 Pytania zabezpieczające niestandardowe nie są zlokalizowane dla różnych ustawień regionalnych. Wszystkie pytania niestandardowe są wyświetlane w tym samym języku wprowadzoną w interfejsie użytkownika administracyjnego, nawet jeśli ustawienia regionalne przeglądarki użytkownika jest inna. Jeśli potrzebujesz zlokalizowanych pytania należy używać wstępnie zdefiniowanych pytań.
 
 Maksymalna długość pytanie zabezpieczające niestandardowych jest 200 znaków.
+
+Aby wyświetlić portal resetowania hasła i pytania w innej zlokalizowane Dołącz języka "? mkt =<Locale>" na końcu hasło zresetować adres URL z następującym przykładzie lokalizowanie na język hiszpański [ https://passwordreset.microsoftonline.com/?mkt=es-us ](https://passwordreset.microsoftonline.com/?mkt=es-us).
 
 ### <a name="security-question-requirements"></a>Wymagania dotyczące pytanie zabezpieczeń
 

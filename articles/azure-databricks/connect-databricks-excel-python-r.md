@@ -1,8 +1,8 @@
 ---
-title: "Nawiązywanie połączenia z programu Excel, Python lub R do platformy Azure Databricks | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak korzystać ze sterownika Simba nawiązać Azure Databricks do programu Excel, Python lub R."
+title: Nawiązywanie połączenia z programu Excel, Python lub R do platformy Azure Databricks | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak korzystać ze sterownika Simba nawiązać Azure Databricks do programu Excel, Python lub R.
 services: azure-databricks
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
@@ -11,13 +11,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2018
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 9daa7d30036d0a0f98d079e03a69c29d11e49664
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: bbf75a03fb771aa415a26e151614cecfaa14c485
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598882"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Nawiązywanie połączenia z programu Excel, Python lub R do Azure Databricks
 
@@ -60,7 +61,7 @@ Nazwa źródła danych (DSN) zawiera informacje dotyczące określonego źródł
     |Pole  | Wartość  |
     |---------|---------|
     |**Nazwa źródła danych**     | Podaj nazwę dla źródła danych.        |
-    |**Host(s)**     | Podaj wartość skopiowany z obszaru roboczego Databricks dla *nazwy hosta serwera*.        |
+    |**Hostami**     | Podaj wartość skopiowany z obszaru roboczego Databricks dla *nazwy hosta serwera*.        |
     |**Port**     | Wprowadź *443*.        |
     |**Uwierzytelnianie** > **mechanizmu**     | Wybierz *nazwy użytkownika i hasła*.        |
     |**Nazwa użytkownika**     | Wprowadź *tokenu*.        |
@@ -102,7 +103,7 @@ Po utworzeniu danych w skoroszycie programu Excel, można wykonać na nim operac
 W tej sekcji służy IDE języka R odwoływanie się do danych dostępne w Azure Databricks. Przed rozpoczęciem, musi mieć następujące zainstalowane na komputerze.
 
 * IDE języka R. W tym artykule używa programu RStudio pulpitu. Możesz zainstalować ją z [pobieranie R Studio](https://www.rstudio.com/products/rstudio/download/).
-* Jeśli używasz programu RStudio pulpitu jako środowiskiem IDE także zainstalować Microsoft R Client [http://aka.ms/rclient/](http://aka.ms/rclient/). 
+* Jeśli używasz programu RStudio pulpitu jako środowiskiem IDE także zainstalować Microsoft R Client [ http://aka.ms/rclient/ ](http://aka.ms/rclient/). 
 
 Otwórz programu RStudio i wykonaj następujące czynności:
 

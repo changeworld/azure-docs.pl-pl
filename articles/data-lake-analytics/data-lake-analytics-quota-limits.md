@@ -1,26 +1,25 @@
 ---
-title: Limity przydziału usługi Azure Data Lake Analytics
-description: Dowiedz się, jak dostosować i zwiększyć limity przydziału na kontach usługi Azure Data Lake Analytics (ADLA).
+title: Dostosuj przydziały i limity w usłudze Azure Data Lake Analytics
+description: Dowiedz się, jak dostosować i zwiększyć przydziały i limity konta usługi Azure Data Lake Analytics (ADLA).
 services: data-lake-analytics
-keywords: Azure Data Lake Analytics
-documentationcenter: ''
-author: omidm1
-editor: omidm1
-ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
 ms.service: data-lake-analytics
-ms.topic: article
-ms.workload: big-data
-ms.date: 03/15/2018
+author: omidm1
 ms.author: omidm
-ms.openlocfilehash: 4334a438f09d7c18912262e9c70bfffbcdeb1d9e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+editor: jasonwhowell
+manager: kfile
+ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
+ms.topic: conceptual
+ms.date: 03/15/2018
+ms.openlocfilehash: e493c45ef49d370bbf7d007e039b4102aaa3cdf0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623982"
 ---
-# <a name="azure-data-lake-analytics-quota-limits"></a>Limity przydziału usługi Azure Data Lake Analytics
+# <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Dostosuj przydziały i limity w usłudze Azure Data Lake Analytics
 
-Dowiedz się, jak dostosować i zwiększyć limity przydziału na kontach usługi Azure Data Lake Analytics (ADLA). Znajomość tych limitów mogą ułatwić zrozumienie zachowania zadania z języka U-SQL. Wszystkie limity przydziału są miękkie, więc maksymalna limity można zwiększyć przez skontaktowaniu się z pomocą techniczną platformy Azure.
+Dowiedz się, jak dostosować i zwiększyć przydziały i limity konta usługi Azure Data Lake Analytics (ADLA). Znajomość tych limitów mogą ułatwić zrozumienie zachowania zadania z języka U-SQL. Wszystkie limity przydziału są miękkie, więc maksymalna limity można zwiększyć przez skontaktowaniu się z pomocą techniczną platformy Azure.
 
 ## <a name="azure-subscriptions-limits"></a>Limity subskrypcji platformy Azure
 

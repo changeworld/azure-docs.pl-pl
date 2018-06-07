@@ -1,11 +1,11 @@
 ---
-title: "Synchronizacja programu Azure AD Connect: odwołanie do funkcji | Dokumentacja firmy Microsoft"
-description: "Odwołanie deklaratywne wyrażenia inicjowania obsługi administracyjnej w synchronizacja programu Azure AD Connect."
+title: 'Synchronizacja programu Azure AD Connect: odwołanie do funkcji | Dokumentacja firmy Microsoft'
+description: Odwołanie deklaratywne wyrażenia inicjowania obsługi administracyjnej w synchronizacja programu Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 4f525ca0-be0e-4a2e-8da1-09b6b567ed5f
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9ce27ca217f99b4f12ca1af0b5a178f5d61a1c89
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 4814d53a86b0d90cf16f76e75c7044448cf791eb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595159"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Synchronizacja programu Azure AD Connect: odwołanie do funkcji
 W programie Azure AD Connect funkcje są używane do modyfikowania wartości atrybutu podczas synchronizacji.  
@@ -55,8 +57,8 @@ Funkcje z typami **mvbin**, **mvstr**, i **mvref** może pracować tylko na atry
 | [CertIssuer](#certissuer) |[CertIssuerDN](#certissuerdn) |[CertIssuerOid](#certissueroid) |[CertKeyAlgorithm](#certkeyalgorithm) | |
 | [CertKeyAlgorithmParams](#certkeyalgorithmparams) |[CertNameInfo](#certnameinfo) |[CertNotAfter](#certnotafter) |[CertNotBefore](#certnotbefore) | |
 | [CertPublicKeyOid](#certpublickeyoid) |[CertPublicKeyParametersOid](#certpublickeyparametersoid) |[CertSerialNumber](#certserialnumber) |[CertSignatureAlgorithmOid](#certsignaturealgorithmoid) | |
-| [CertSubject](#certsubject) |[CertSubjectNameDN](#certsubjectnamedn) |[CertSubjectNameOid](#certsubjectnameoid) |[CertThumbprint](#certthumbprint) | |
-[CertVersion](#certversion) |[IsCert](#iscert) | | | |
+| [CertSubject](#certsubject) |[CertSubjectNameDN](#certsubjectnamedn) |[CertSubjectNameOid](#certsubjectnameoid) |[certThumbprint](#certthumbprint) | |
+[ CertVersion](#certversion) |[IsCert](#iscert) | | | |
 | **Konwersja** | | | | |
 | [CBool](#cbool) |[CDate](#cdate) |[CGuid](#cguid) |[ConvertFromBase64](#convertfrombase64) | |
 | [ConvertToBase64](#converttobase64) |[ConvertFromUTF8Hex](#convertfromutf8hex) |[ConvertToUTF8Hex](#converttoutf8hex) |[CNum](#cnum) | |
@@ -73,14 +75,14 @@ Funkcje z typami **mvbin**, **mvstr**, i **mvref** może pracować tylko na atry
 | **Matematyczne** | | | | |
 | [BitAnd](#bitand) |[BitOr](#bitor) |[RandomNum](#randomnum) | | |
 | **Wielowartościowe** | | | | |
-| [Zawiera](#contains) |[Liczba](#count) |[Element](#item) |[ItemOrNull](#itemornull) | |
+| [zawiera](#contains) |[Liczba](#count) |[Element](#item) |[ItemOrNull](#itemornull) | |
 | [Dołącz](#join) |[Removeduplicates —](#removeduplicates) |[Podziel](#split) | | |
 | **Przepływ programu** | | | | |
-| [Błąd](#error) |[IIF](#iif) |[Wybierz](#select) |[Przełącznik](#switch) | |
-| [Gdzie](#where) |[Z](#with) | | | |
+| [Error](#error) |[IIF](#iif) |[Wybierz](#select) |[Przełącznik](#switch) | |
+| [Where](#where) |[With](#with) | | | |
 | **Tekst** | | | | |
 | [IDENTYFIKATOR GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
-| [Po lewej](#left) |[Długość](#len) |[Przytp](#ltrim) |[MID](#mid) | |
+| [Po lewej](#left) |[Długość](#len) |[Przytp](#ltrim) |[Mid](#mid) | |
 | [PadLeft](#padleft) |[PadRight](#padright) |[PCase](#pcase) |[Zamień](#replace) | |
 | [ReplaceChars](#replacechars) |[Prawo](#right) |[Przytk](#rtrim) |[TRIM](#trim) | |
 | [UCase](#ucase) |[Word](#word) | | | |
@@ -364,9 +366,9 @@ Funkcja CGuid konwertuje jego reprezentacja binarna reprezentacja ciągu identyf
 Funkcja zawiera wyszukuje ciąg wewnątrz atrybutu wielowartościowego
 
 **Składnia:**  
-`num Contains (mvstring attribute, str search)`-uwzględniana wielkość liter  
+`num Contains (mvstring attribute, str search)` -uwzględniana wielkość liter  
 `num Contains (mvstring attribute, str search, enum Casetype)`  
-`num Contains (mvref attribute, str search)`-uwzględniana wielkość liter
+`num Contains (mvref attribute, str search)` -uwzględniana wielkość liter
 
 * Atrybut: atrybutu wielowartościowego do wyszukiwania.
 * wyszukiwania: ciąg można znaleźć w atrybucie.
@@ -388,7 +390,7 @@ Jeśli atrybut proxyAddresses ma podstawowego adresu e-mail (wskazywanym przez w
 Funkcja ConvertFromBase64 konwertuje wartość określonego kodowanie base64 na regularne ciągu.
 
 **Składnia:**  
-`str ConvertFromBase64(str source)`-zakłada do kodowania Unicode  
+`str ConvertFromBase64(str source)` -zakłada do kodowania Unicode  
 `str ConvertFromBase64(str source, enum Encoding)`
 
 * Źródło: ciąg kodowany w formacie Base64  

@@ -11,15 +11,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 05/24/2018
 ms.author: mbullwin; Soubhagya.Dash
-ms.openlocfilehash: 3b17344af099ea8b5d2554d5f6045a10641ff861
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 352fff53d9e35ddd8d8e0c107e969357d9c766b3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599239"
 ---
-# <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Strumień na żywo metryki: Monitor & Diagnozuj z opóźnieniem 1 sekundę 
+# <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Strumień na żywo metryki: Monitor & Diagnozuj z opóźnieniem 1 sekundę
 
 Sonda Puls wznowiony aplikacji sieci web na żywo, w środowisku produkcyjnym za pomocą strumień na żywo metryki z [usługi Application Insights](app-insights-overview.md). Wybierz i filtrować liczniki wydajności i metryk, które należy obserwować w czasie rzeczywistym, bez jakichkolwiek zakłóceń w usłudze. Sprawdź dane śledzenia stosu z żądań próbki nie powiodło się i wyjątki. Razem z [profilera](app-insights-profiler.md), [debugera migawki](app-insights-snapshot-debugger.md), i [testowania wydajności](app-insights-monitor-web-app-availability.md#performance-tests), strumień na żywo metryki udostępnia zaawansowane i nieinwazyjna narzędzie diagnostyczne dla sieci web na żywo lokacja.
 
@@ -34,8 +35,6 @@ Strumień na żywo metryki można:
 * Łatwo zidentyfikować serwera, na którym występują problemy i filtr, który wszystkich kluczowych wskaźników wydajności/live źródła danych tylko z tym serwerem.
 
 [![Metryki strumienia wideo na żywo](./media/app-insights-live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
-
-Strumień na żywo metryki jest obecnie dostępna w aplikacji ASP.NET uruchomionych lokalnie lub w chmurze. 
 
 ## <a name="get-started"></a>Rozpoczęcie pracy
 

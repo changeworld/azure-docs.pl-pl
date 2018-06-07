@@ -1,30 +1,30 @@
 ---
-title: Narzędzia do magazynu Azure stosu
+title: Narzędzia do magazynu Azure stosu | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o Azure stosu magazynu danych narzędzia transferu
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/25/2018
+ms.date: 05/21/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 3fb18a001c7cfb30b642c8bfaaeef656f96a4900
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: 3d9bd187a70e8b8292e9c47497c2c6b13764045d
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604730"
 ---
-# <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Użyj narzędzia do przenoszenia danych usługi Azure Storage stosu
+# <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Użyj narzędzia transferu danych do magazynu Azure stosu
 
 *Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
 
-Microsoft Azure stosu zapewnia zbiór usług magazynu dla dysków, obiekty BLOB, tabel, kolejek i funkcje zarządzania konta. Zestaw narzędzi usługi Azure Storage można użyć, jeśli chcesz zarządzać lub przenieść dane z usługi Azure Storage stosu lub. Ten artykuł zawiera omówienie dostępnych narzędzi.
+Microsoft Azure stosu zapewnia zbiór usług magazynu dla dysków, obiekty BLOB, tabel, kolejek i funkcje zarządzania konta. Zestaw narzędzi do magazynu Azure można użyć, jeśli chcesz zarządzać lub przenieść dane z magazynu Azure stosu lub. Ten artykuł zawiera omówienie dostępnych narzędzi.
 
 Wymagania określają, które z następujących narzędzi najlepiej można:
 
@@ -40,11 +40,11 @@ Wymagania określają, które z następujących narzędzi najlepiej można:
 
     Narzędziem open source, obsługujący wiele platform, które udostępnia zestaw poleceń do pracy z platformy Azure i stosu Azure.
 
-* [Eksplorator usługi Storage firmy Microsoft](#microsoft-azure-storage-explorer)
+* [Eksplorator usługi storage firmy Microsoft](#microsoft-azure-storage-explorer)
 
     Łatwy w użyciu aplikacji autonomicznej z interfejsem użytkownika.
 
-Z powodu różnic usług magazynu platformy Azure i stosu Azure może być niektórych określonych wymagań dotyczących poszczególnych narzędzi opisanych w poniższych sekcjach. Porównanie między Azure stosu magazynu i magazynu Azure, zobacz [usługi Azure Storage stosu: różnice i zagadnienia dotyczące](azure-stack-acs-differences.md).
+Z powodu różnic usług magazynu platformy Azure i stosu Azure może być niektórych określonych wymagań dotyczących poszczególnych narzędzi opisanych w poniższych sekcjach. Porównanie między Azure stosu magazynu i magazynu Azure, zobacz [magazynu Azure stosu: różnice i zagadnienia dotyczące](azure-stack-acs-differences.md).
 
 ## <a name="azcopy"></a>Narzędzie AzCopy
 
@@ -102,9 +102,9 @@ azcopy \
     --dest-key <key>
 ````
 
-### <a name="move-data-between-azure-and-azure-stack-storage"></a>Przenoszenie danych między Azure i usługi Azure Storage stosu
+### <a name="move-data-between-azure-and-azure-stack-storage"></a>Przenoszenie danych między magazynu Azure i stosu Azure
 
-Transfer danych asynchronicznych między usługi Azure Storage i Azure stosu nie jest obsługiwany. Należy określić transfer z **/SyncCopy** lub **— kopia synchroniczna** opcji.
+Transfer danych asynchronicznej między usługi Azure storage i Azure stosu nie jest obsługiwane. Należy określić transfer z **/SyncCopy** lub **— kopia synchroniczna** opcji.
 
 **Windows**
 
@@ -127,7 +127,7 @@ azcopy \
 ### <a name="azcopy-known-issues"></a>Narzędzie Azcopy znane problemy
 
  - Wszelkie operacje AzCopy na magazyn plików jest niedostępna, ponieważ magazyn plików nie jest jeszcze dostępna w stosie Azure.
- - Transfer danych asynchronicznych między usługi Azure Storage i Azure stosu nie jest obsługiwany. Można określić transfer z **/SyncCopy** opcję, aby skopiować dane.
+ - Transfer danych asynchronicznej między usługi Azure storage i Azure stosu nie jest obsługiwane. Można określić transfer z **/SyncCopy** opcję, aby skopiować dane.
  - Wersji systemu Linux Azcopy obsługuje tylko 1802 aktualizacji lub nowszy. I nie obsługuje usługi tabel.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
@@ -150,7 +150,7 @@ W tym przykładzie założono, że masz pomyślnie [zainstalowany programu Power
    > [!NOTE]
    > Ten skrypt ma być uruchamiane w katalogu głównym **AzureStack_Tools**.
 
-```PowerShell
+```PowerShell  
 # begin
 
 $ARMEvnName = "AzureStackUser" # set AzureStackUser as your Azure Stack environemnt name
@@ -213,21 +213,21 @@ New-Item -Path $DestinationFolder -ItemType Directory -Force
 $blobs | Get-AzureStorageBlobContent –Destination $DestinationFolder
 
 # end
-```
+````
 
 ### <a name="powershell-known-issues"></a>Znane problemy w programie PowerShell
 
-Bieżąca wersja modułu zgodne programu Azure PowerShell w stosu Azure to pkt 1.2.12. Różni się od najnowszej wersji programu Azure PowerShell. Ta różnica ma wpływ operacji usług magazynu:
+Bieżąca wersja modułu zgodne programu Azure PowerShell w stosu Azure to 1.3.0. Różni się od najnowszej wersji programu Azure PowerShell. Ta różnica ma wpływ operacji usług magazynu:
 
-* Format wartości zwracanej `Get-AzureRmStorageAccountKey` w wersji pkt 1.2.12 ma dwie właściwości: `Key1` i `Key2`, podczas gdy obecna wersja Azure zwraca tablicę zawierającą wszystkie klucze konta.
+* Format wartości zwracanej `Get-AzureRmStorageAccountKey` w wersji 1.3.0 ma dwie właściwości: `Key1` i `Key2`, podczas gdy obecna wersja Azure zwraca tablicę zawierającą wszystkie klucze konta.
 
    ```
-   # This command gets a specific key for a Storage account, 
+   # This command gets a specific key for a storage account, 
    # and works for Azure PowerShell version 1.4, and later versions.
    (Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" `
    -AccountName "MyStorageAccount").Value[0]
 
-   # This command gets a specific key for a Storage account, 
+   # This command gets a specific key for a storage account, 
    # and works for Azure PowerShell version 1.3.2, and previous versions.
    (Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" `
    -AccountName "MyStorageAccount").Key1
@@ -242,11 +242,11 @@ Interfejsu wiersza polecenia Azure to środowisko wiersza polecenia platformy Az
 
 Interfejs wiersza polecenia platformy Azure jest zoptymalizowany do zarządzania i administrowania zasobami Azure z poziomu wiersza polecenia, a także tworzenie skryptów automatyzacji, współpracujących z usługą Azure Resource Manager. Udostępnia wiele z tych samych funkcji w portalu Azure stosu, w tym dostęp do zaawansowanych danych.
 
-Stos Azure wymaga wiersza polecenia platformy Azure w wersji 2.0. Aby uzyskać więcej informacji o instalowaniu i konfigurowaniu wiersza polecenia platformy Azure z stosem platformy Azure, zobacz [Instalowanie i Konfigurowanie interfejsu wiersza polecenia Azure stosu](azure-stack-version-profiles-azurecli2.md). Aby uzyskać więcej informacji o sposobie używania wykonać kilka czynności, Praca z zasobów na koncie usługi Azure Storage stosu 2.0 interfejsu wiersza polecenia Azure, zobacz [przy użyciu Azure CLI2.0 z usługą Azure Storage](../../storage/storage-azure-cli.md)
+Stos Azure wymaga wiersza polecenia platformy Azure w wersji 2.0. Aby uzyskać więcej informacji o instalowaniu i konfigurowaniu wiersza polecenia platformy Azure z stosem platformy Azure, zobacz [Instalowanie i Konfigurowanie interfejsu wiersza polecenia Azure stosu](azure-stack-version-profiles-azurecli2.md). Aby uzyskać więcej informacji o sposobie używania wykonać kilka czynności, Praca z zasobów na koncie magazynu Azure stosu 2.0 interfejsu wiersza polecenia Azure, zobacz [przy użyciu Azure CLI2.0 z usługą Azure storage](../../storage/storage-azure-cli.md)
 
 ### <a name="azure-cli-sample-script-for-azure-stack"></a>Azure CLI przykładowy skrypt Azure stosu
 
-Po zakończeniu interfejsu wiersza polecenia instalacji i konfiguracji, możesz spróbować następujące kroki, aby pracować z powłoki małych przykładowy skrypt do interakcji z zasobami Azure stosu magazynu. Skrypt wykonuje następujące akcje:
+Po zakończeniu interfejsu wiersza polecenia instalacji i konfiguracji, możesz spróbować następujące kroki, aby pracować z powłoki małych przykładowy skrypt do interakcji z zasobami magazynu Azure stosu. Skrypt wykonuje następujące akcje:
 
 * Tworzy nowy kontener na koncie magazynu.
 * Przekazuje istniejącego pliku (jako obiektu blob) do kontenera.
@@ -263,7 +263,7 @@ Przed uruchomieniem tego skryptu, upewnij się, że można pomyślnie nawiązać
 
 ```bash
 #!/bin/bash
-# A simple Azure Stack Storage example script
+# A simple Azure Stack storage example script
 
 export AZURESTACK_RESOURCE_GROUP=<resource_group_name>
 export AZURESTACK_RG_LOCATION="local"
@@ -292,17 +292,18 @@ echo "Downloading the file..."
 az storage blob download --container-name $AZURESTACK_STORAGE_CONTAINER_NAME --account-name $AZURESTACK_STORAGE_ACCOUNT_NAME --name $AZURESTACK_STORAGE_BLOB_NAME --file $DESTINATION_FILE --output table
 
 echo "Done"
-```
+````
 
-## <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
+## <a name="microsoft-azure-storage-explorer"></a>Eksplorator usługi Microsoft Azure storage
 
-Eksplorator magazynu Microsoft Azure jest aplikacją autonomiczną firmy Microsoft. Dzięki temu można łatwo pracować przy użyciu magazynu Azure i Azure stosu magazynu danych systemu Windows, system macOS i komputerów z systemem Linux. Jeśli chcesz, aby łatwo zarządzać danymi Azure stosu magazynu, należy rozważyć przy użyciu Eksploratora magazynu Microsoft Azure.
+Eksplorator usługi Microsoft Azure storage jest aplikacją autonomiczną firmy Microsoft. Dzięki temu można łatwo pracować przy użyciu magazynu Azure i Azure stosu magazynu danych systemu Windows, system macOS i komputerów z systemem Linux. Jeśli chcesz, aby łatwo zarządzać danymi magazynu Azure stosu, następnie należy wziąć pod uwagę przy użyciu Eksploratora magazynu Microsoft Azure.
 
-* Aby dowiedzieć się więcej o konfigurowaniu Eksploratora magazynu Azure do pracy z stosu Azure, zobacz [połączenia Eksploratora usługi Storage z subskrypcją platformy Azure stosu](azure-stack-storage-connect-se.md).
-* Aby dowiedzieć się więcej na temat Eksploratora magazynu Microsoft Azure, zobacz [wprowadzenie do Eksploratora usługi Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
+* Aby dowiedzieć się więcej o konfigurowaniu Eksploratora usługi storage platformy Azure do pracy z stosu Azure, zobacz [Eksploratora usługi storage Połącz z subskrypcją platformy Azure stosu](azure-stack-storage-connect-se.md).
+* Aby dowiedzieć się więcej na temat Eksploratora magazynu Microsoft Azure, zobacz [wprowadzenie do Eksploratora usługi storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Połącz z subskrypcją platformy Azure stosu Eksploratora usługi Storage](azure-stack-storage-connect-se.md)
-* [Wprowadzenie do Eksploratora usługi Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
+
+* [Połącz z subskrypcją platformy Azure stosu Eksploratora usługi storage](azure-stack-storage-connect-se.md)
+* [Wprowadzenie do Eksploratora usługi storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Magazyn Azure spójne: różnice i zagadnienia](azure-stack-acs-differences.md)
-* [Wprowadzenie do usługi Microsoft Azure Storage](../../storage/common/storage-introduction.md)
+* [Wprowadzenie do usługi Microsoft Azure storage](../../storage/common/storage-introduction.md)

@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2018
 ms.author: rithorn
-ms.openlocfilehash: 53de4afb42e9ea5b7845a9c862dc1e06c6de36df
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: e4ce2a17f475fa3e11a4101c448f1c1c60dc66ec
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604747"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organizowanie zasobów z grupami zarządzania Azure 
 
@@ -69,7 +70,7 @@ Każdy katalog znajduje się grupę pojedynczego zarządzania najwyższego pozio
 
 Grupy zarządzania platformy Azure obsługuje [based kontroli dostępu (RBAC)](../role-based-access-control/overview.md) dla wszystkich uzyskuje dostęp do zasobów i definicje ról. Te uprawnienia są dziedziczone przez zasoby podrzędne, które istnieją w hierarchii.   
 
-Podczas żadnego [wbudowanej roli RBAC](../role-based-access-control/overview.md#built-in-roles) mogą być przypisane do grupy zarządzania są cztery role, które są często używane: 
+Podczas żadnego [wbudowanej roli RBAC](../role-based-access-control/built-in-roles.md) mogą być przypisane do grupy zarządzania są cztery role, które są często używane: 
 - **Właściciel** ma pełny dostęp do wszystkich zasobów łącznie z prawem delegować dostęp do innych użytkowników. 
 - **Współautor** można tworzyć i zarządzania wszystkimi typami zasobów platformy Azure, ale nie może udzielić dostępu do innych użytkowników.
 - **Współautor zasad zasobów** można utworzyć zasad i zarządzanie nimi w katalogu na zasobach.     

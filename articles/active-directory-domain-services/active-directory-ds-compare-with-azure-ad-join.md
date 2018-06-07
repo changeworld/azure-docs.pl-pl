@@ -1,24 +1,26 @@
 ---
-title: "Porównanie usług domenowych Azure AD Join i Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Przy wyborze między usług domenowych Azure AD i Azure AD Join"
+title: Porównanie usług domenowych Azure AD Join i Azure Active Directory | Dokumentacja firmy Microsoft
+description: Przy wyborze między usług domenowych Azure AD i Azure AD Join
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 31a71d36-58c1-4839-b958-80da0c6a77eb
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: maheshu
-ms.openlocfilehash: fb28c7a66d26119444dd720c2e134f2818d46cfc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5f2d09e896a41647ef3211a754a4c7aa403d8cea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587865"
 ---
 # <a name="choose-between-azure-active-directory-join-and-azure-active-directory-domain-services"></a>Wybór między sprzężenia usługi Azure Active Directory i Azure Active Directory Domain Services
 W tym artykule opisano różnice między sprzężenia Azure Active Directory (AD) i usługi domenowe Azure AD i pomoże wybrać, w oparciu o przypadki użycia.
@@ -58,11 +60,11 @@ Na komputerze przyłączonym do domeny uwierzytelnianie użytkownika odbywa się
 | Reprezentacja w katalogu | Obiekty urządzeń w katalogu usługi Azure AD. | Obiekty komputerów w domenie zarządzanej usługi AAD DS. |
 | Authentication | Protokoły uwierzytelniania OAuth/OpenID Connect, na podstawie | Protokół Kerberos, protokoły NTLM |
 | Zarządzanie | Oprogramowanie do zarządzania urządzeniami przenośnymi (MDM) takie jak usługi Intune | Zasady grupy |
-| Sieć | Działa w Internecie | Wymaga maszyn w tej samej sieci wirtualnej jako domeny zarządzanej.|
+| Networking | Działa w Internecie | Wymaga maszyn w tej samej sieci wirtualnej jako domeny zarządzanej.|
 | Świetnie dla... | Urządzenia przenośne lub pulpitu użytkownika końcowego | Maszyny wirtualne serwera wdrożona na platformie Azure |
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 ### <a name="learn-more-about-azure-ad-domain-services"></a>Dowiedz się więcej o usługach domenowych Azure AD
 * [Omówienie usług domenowych Azure AD](active-directory-ds-overview.md)
 * [Funkcje](active-directory-ds-features.md)

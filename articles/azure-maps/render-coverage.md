@@ -1,22 +1,19 @@
 ---
 title: Renderowanie pokrycia w społeczności Maps Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o pokrycia renderowania w społeczności Maps Azure
-services: azure-maps
-keywords: ''
 author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 03/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
-ms.custom: ''
-ms.openlocfilehash: ab05277c4541ae859f79b1108c4cf8a7beb29271
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+services: azure-maps
+manager: ''
+ms.openlocfilehash: c973897015df978f31d267ec6f2a20812d9d541c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34600582"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure mapy renderowania pokrycia
 
@@ -87,7 +84,7 @@ Jednak mapy nie ma tego samego poziomu informacji i dokładność we wszystkich 
 | Sudan Południowy                      |   | Ø |
 | Sudan                            |   | Ø |
 | Suazi                        | ✓ | ✓ |
-| Stany Republika Tanzanii      | ✓ | ✓ |
+| Zjednoczona Republika Tanzanii      | ✓ | ✓ |
 | Togo                             | ✓ | ✓ |
 | Tunezja                          | ✓ | ✓ |
 | Uganda                           | ✓ | ✓ |
@@ -188,7 +185,7 @@ Jednak mapy nie ma tego samego poziomu informacji i dokładność we wszystkich 
 | Malezja                  | ✓ | ✓ |
 | Malediwy                  |   | Ø |
 | Mongolia                  |   | Ø |
-| Myanmar                   |   | Ø |
+| Mjanma                   |   | Ø |
 | Napal                     |   | Ø |
 | Oman                      | ✓ | ✓ |
 | Pakistan                  |   | Ø |
@@ -211,7 +208,7 @@ Jednak mapy nie ma tego samego poziomu informacji i dokładność we wszystkich 
 | Wietnam                   | ✓ | ✓ |
 | Jemen                     | ✓ | ✓ |
 
-## <a name="oceania"></a>Oceania
+## <a name="oceania"></a>Oceanii
 
 | Region | Kafelki rastrowe Unified | Ujednolicone Kafelki wektora |
 | ------ | :------------------: | :------------------: |

@@ -1,12 +1,12 @@
 ---
-title: "Azure AD Connect - zarządzania usług AD FS i dostosowywania | Dokumentacja firmy Microsoft"
-description: "Zarządzanie usługami AD FS z usługi Azure AD Connect i dostosowywania AD FS logowania użytkowników z usługi Azure AD Connect i programu PowerShell."
-keywords: "Usługi AD FS, usługi AD FS, usługi AD FS zarządzania AAD Connect, Connect, logowania, usługi AD FS dostosowanie, napraw federacyjnej relacji zaufania, usługi O365, jednostki uzależnionej"
+title: Azure AD Connect - zarządzania usług AD FS i dostosowywania | Dokumentacja firmy Microsoft
+description: Zarządzanie usługami AD FS z usługi Azure AD Connect i dostosowywania AD FS logowania użytkowników z usługi Azure AD Connect i programu PowerShell.
+keywords: Usługi AD FS, usługi AD FS, usługi AD FS zarządzania AAD Connect, Connect, logowania, usługi AD FS dostosowanie, napraw federacyjnej relacji zaufania, usługi O365, jednostki uzależnionej
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: anandyadavmsft
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 2593b6c6-dc3f-46ef-8e02-a8e2dc4e9fb9
 ms.service: active-directory
 ms.workload: identity
@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 49acea5c08a10ba3b60d0db5f05e30d573f5e507
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 276e53784b30c2196ad7455cf9fd801a103fdc30
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590858"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Zarządzanie i dostosowania usług federacyjnych Active Directory przy użyciu usługi Azure AD Connect
 W tym artykule opisano sposób zarządzania i dostosowywania Active Directory Federation Services (AD FS) przy użyciu połączenia usługi Azure Active Directory (Azure AD). Zawiera również innych typowych zadań usług AD FS, które może być konieczne przeprowadzenie pełnej konfiguracji farmy usług AD FS.
@@ -29,7 +31,7 @@ W tym artykule opisano sposób zarządzania i dostosowywania Active Directory Fe
 |:--- |:--- |
 | **Zarządzanie usługami AD FS** | |
 | [Napraw zaufania](#repairthetrust) |Jak naprawić relacja zaufania federacji z usługą Office 365. |
-| [Utworzenie federacji z usługą Azure AD przy użyciu alternatywnego Identyfikatora logowania](#alternateid) | Konfigurowanie Federacji przy użyciu alternatywnego Identyfikatora logowania  |
+| [Utworzenie federacji z usługą Azure AD przy użyciu alternatywnego Identyfikatora logowania ](#alternateid) | Konfigurowanie Federacji przy użyciu alternatywnego Identyfikatora logowania  |
 | [Dodawanie serwera usług AD FS](#addadfsserver) |Jak rozszerzyć farmy usług AD FS jest dodatkowy serwer usług AD FS. |
 | [Dodaj serwer Proxy aplikacji sieci Web usług AD FS](#addwapserver) |Jak rozszerzyć farmy usług AD FS jest dodatkowy serwer Proxy aplikacji sieci Web (WAP). |
 | [Dodawanie domeny federacyjnej](#addfeddomain) |Jak dodać domeny federacyjnej. |
@@ -223,7 +225,7 @@ Ponadto za pomocą **dodać** i nie **problem**, unikać dodawania problemu wych
     NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
     => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
 
-Ta zasada definiuje tymczasowe flagę o nazwie **idflag** który ustawiono **useguid** w przypadku nie **consistencyguid-ms-ds** wypełnione dla użytkownika. Logiki tego jest fakt, że usługi AD FS nie zezwala na puste oświadczeń. Dlatego po dodaniu http://contoso.com/ws/2016/02/identity/claims/objectguid oświadczeń i http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid w reguła 1 na końcu **msdsconsistencyguid** oświadczeń tylko, jeśli wartość jest wypełniana dla użytkownika. Jeśli go nie jest wypełnione, będzie mieć wartość pustą i odrzuca pochodzące od razu będzie widział usług AD FS. Wszystkie obiekty będą mieć **objectGuid**, więc roszczenie zawsze będą dostępne po wykonaniu reguła 1.
+Ta zasada definiuje tymczasowe flagę o nazwie **idflag** który ustawiono **useguid** w przypadku nie **consistencyguid-ms-ds** wypełnione dla użytkownika. Logiki tego jest fakt, że usługi AD FS nie zezwala na puste oświadczeń. Dlatego podczas dodawania oświadczeń http://contoso.com/ws/2016/02/identity/claims/objectguid i http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid w zasadzie 1 na końcu **msdsconsistencyguid** oświadczeń tylko, jeśli wartość jest wypełniana dla użytkownika. Jeśli go nie jest wypełnione, będzie mieć wartość pustą i odrzuca pochodzące od razu będzie widział usług AD FS. Wszystkie obiekty będą mieć **objectGuid**, więc roszczenie zawsze będą dostępne po wykonaniu reguła 1.
 
 **Reguła 3: Wystawiać ms-ds-consistencyguid jako niezmienialnego Identyfikatora, jeśli jest obecny**
 
@@ -262,7 +264,7 @@ Domyślna reguła po prostu przyjmuje sufiks głównej nazwy użytkownika i uży
 
     => issue(Type = “http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid“, Value = regexreplace(john@sub.contoso.com, “.+@(?<domain>.+)“, “http://${domain}/adfs/services/trust/“));
 
-**Wartość oświadczenia:** http://sub.contoso.com/adfs/services/trust/
+**Wartość oświadczenia:**  http://sub.contoso.com/adfs/services/trust/
 
 Aby w wartości oświadczenia wystawcy tylko domeny głównej, zmień reguły oświadczenia zgodne z następującymi:
 

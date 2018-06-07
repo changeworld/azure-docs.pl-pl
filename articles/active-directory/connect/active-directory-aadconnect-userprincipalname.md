@@ -2,17 +2,19 @@
 title: Azure AD UserPrincipalName populacji
 description: Następującym dokumencie opisano, jak atrybut UserPrincipalName jest wypełnione.
 author: billmath
+ms.component: hybrid
 ms.author: billmath
 ms.date: 02/02/2018
 ms.topic: article
 ms.workload: identity
 ms.service: active-Directory
 manager: mtillman
-ms.openlocfilehash: 96b12fbddd4293c55e9029b194416541ca44c622
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 73238b1f79e639f832499eed15ac1e4499eb6e84
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593406"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD UserPrincipalName populacji
 
@@ -35,7 +37,7 @@ Następującą terminologią jest używana w tym artykule:
 UserPrincipalName jest atrybut, który jest Internet stylu nazwa logowania użytkownika na podstawie standardu Internet [RFC 822](http://www.ietf.org/rfc/rfc0822.txt). 
 
 ### <a name="upn-format"></a>Format nazwy UPN
-Nazwy UPN składa się z prefiksu nazwy UPN (nazwa konta użytkownika) i sufiks nazwy UPN (nazwa domeny DNS). Prefiks jest połączony z za pomocą sufiksu "@" symbolu. Na przykład "someone@example.com". Nazwy UPN musi być unikatowa wśród wszystkich obiektów podmiotów zabezpieczeń w ramach lasu katalogu. 
+Nazwy UPN składa się z prefiksu nazwy UPN (nazwa konta użytkownika) i sufiks nazwy UPN (nazwa domeny DNS). Prefiks jest połączony z za pomocą sufiksu "@" symbolu. Na przykład „someone@example.com”. Nazwy UPN musi być unikatowa wśród wszystkich obiektów podmiotów zabezpieczeń w ramach lasu katalogu. 
 
 ## <a name="upn-in-azure-ad"></a>Nazwy UPN w usłudze Azure AD 
 Nazwy UPN jest używany przez usługę Azure AD, aby zezwolić użytkownikom na logowanie.  Nazwa UPN, które użytkownik może używać, zależy od tego, czy domena została zweryfikowana.  Jeśli domena została zweryfikowana, a następnie użytkownik z tego sufiksu będą mogli zalogować się do usługi Azure AD.  
@@ -97,7 +99,7 @@ Zsynchronizowane obiekt użytkownika do dzierżawy Azure AD po raz pierwszy
 
 Obiektu użytkownika w usłudze Azure AD dzierżawy:
 - MailNickName: us1           
-- UserPrincipalName: us1@contoso.onmicrosoft.com
+- userPrincipalName: us1@contoso.onmicrosoft.com
 
 
 ### <a name="scenario-2-non-verified-upn-suffix--set-on-premises-mailnickname-attribute"></a>Scenariusz 2: Sufiks-zweryfikować nazwy UPN — zestaw lokalną atrybutu mailNickName
@@ -114,7 +116,7 @@ Synchronizowanie aktualizacji w atrybucie mailNickName lokalnej do dzierżawy Az
 
 Obiektu użytkownika w usłudze Azure AD dzierżawy:
 - MailNickName: us4
-- UserPrincipalName: us1@contoso.onmicrosoft.com
+- userPrincipalName: us1@contoso.onmicrosoft.com
 
 ### <a name="scenario-3-non-verified-upn-suffix--update-on-premises-userprincipalname-attribute"></a>Scenariusz 3: Sufiks-zweryfikować nazwy UPN — aktualizacja lokalną atrybutu userPrincipalName
 
@@ -131,7 +133,7 @@ Synchronizowanie aktualizacji na atrybut userPrincipalName lokalnej do dzierżaw
 
 Obiektu użytkownika w usłudze Azure AD dzierżawy:
 - MailNickName: us4
-- UserPrincipalName: us4@contoso.onmicrosoft.com
+- userPrincipalName: us4@contoso.onmicrosoft.com
 
 ### <a name="scenario-4-non-verified-upn-suffix--update-primary-smtp-address-and-on-premises-mail-attribute"></a>Scenariusz 4: Atrybut poczty nie zweryfikowany sufiks nazwy UPN — aktualizacja podstawowego adresu SMTP i lokalnych
 
@@ -146,7 +148,7 @@ Synchronizowanie aktualizacji na atrybut poczty lokalnymi i podstawowego adresu 
 
 Obiektu użytkownika w usłudze Azure AD dzierżawy:
 - MailNickName: us4
-- UserPrincipalName: us4@contoso.onmicrosoft.com
+- userPrincipalName: us4@contoso.onmicrosoft.com
 
 ### <a name="scenario-5-verified-upn-suffix--update-on-premises-userprincipalname-attribute-suffix"></a>Scenariusz 5: Sufiks nazwy UPN zweryfikowano — aktualizacja lokalnych sufiks domeny atrybutu userPrincipalName
 
@@ -162,7 +164,7 @@ Synchronizowanie aktualizacji na atrybut userPrincipalName lokalnej dzierżawcy 
 
 Obiektu użytkownika w usłudze Azure AD dzierżawy:
 - MailNickName: us4     
-- UserPrincipalName: us5@verified.contoso.com
+- userPrincipalName: us5@verified.contoso.com
 
 ## <a name="next-steps"></a>Następne kroki
 - [Integrowanie katalogów lokalnych z usługą Azure Active Directory](active-directory-aadconnect.md)

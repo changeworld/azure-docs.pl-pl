@@ -1,25 +1,20 @@
 ---
-title: Wdrażanie i zarządzanie nimi kopii zapasowych maszyn wirtualnych wdrożonych przez Menedżera zasobów, przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
+title: Wdrażanie kopii zapasowych maszyn wirtualnych wdrożonych przy użyciu usługi Resource Manager oraz zarządzanie nimi przy użyciu programu PowerShell
 description: Wdrażanie i zarządzanie nimi kopii zapasowych na platformie Azure dla maszyn wirtualnych, wdrożone usługi Resource Manager przy użyciu programu PowerShell
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
-ms.assetid: 68606e4f-536d-4eac-9f80-8a198ea94d52
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 12/20/2017
-ms.author: markgal;trinadhk;pullabhk
+ms.author: markgal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3431db3844ca47ce6c2beafbd894a69f05e0311a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 4d3c0d08b2a34313c10ab89f2972894ffabe19d2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606243"
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>Tworzenie kopii zapasowych maszyn wirtualnych przy użyciu poleceń cmdlet AzureRM.RecoveryServices.Backup
 
@@ -92,19 +87,17 @@ Aby rozpocząć:
 
     ```PS
     PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
-    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Backup"
     ```
 
 6. Można sprawdzić, czy dostawców zarejestrowana pomyślnie, używając następujących poleceń:
     ```PS
     PS C:\> Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
-    PS C:\> Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Backup"
     ``` 
 W danych wyjściowych polecenia **RegistrationState** należy przypisać **zarejestrowanej**. Jeśli nie, wystarczy ponownie uruchomić **[AzureRmResourceProvider rejestru](http://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)** polecenia cmdlet przedstawionych powyżej.
 
 Następujące zadania można zautomatyzować przy użyciu programu PowerShell:
 
-* [Tworzenie magazynu usług odzyskiwania](backup-azure-vms-automation.md#create-a-recovery-services-vault)
+* [Tworzenie magazynu usługi Recovery Services](backup-azure-vms-automation.md#create-a-recovery-services-vault)
 * [Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure](backup-azure-vms-automation.md#back-up-azure-vms)
 * [Wyzwalacz zadania tworzenia kopii zapasowej](backup-azure-vms-automation.md#trigger-a-backup-job)
 * [Monitor zadania tworzenia kopii zapasowej](backup-azure-vms-automation.md#monitoring-a-backup-job)

@@ -1,11 +1,11 @@
 ---
-title: "Synchronizacja programu Azure AD Connect: opis konfiguracji domyślnej | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano domyślnej konfiguracji synchronizacji Azure AD Connect."
+title: 'Synchronizacja programu Azure AD Connect: opis konfiguracji domyślnej | Dokumentacja firmy Microsoft'
+description: W tym artykule opisano domyślnej konfiguracji synchronizacji Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ed876f22-6892-4b9d-acbe-6a2d112f1cd1
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: dba7a6fcf936e9610a5f1f04e367d32e9aae6643
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f4278dc3af1074b6de299444d2b205396bc0a9c0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595312"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Synchronizacja programu Azure AD Connect: opis konfiguracji domyślnej
 W tym artykule opisano reguły konfiguracji out-of-box. Dokumenty go zasady i wpływ tych reguł konfiguracji. On również przeprowadzi Cię przez domyślną konfigurację synchronizacji usługi Azure AD Connect. Celem jest czytnik rozumie, jak model konfiguracji o nazwie aprowizacją deklaratywną działa w przykładzie rzeczywistych. W tym artykule założono, że zainstalowano i skonfiguruj synchronizację programu Azure AD Connect przy użyciu Kreatora instalacji.

@@ -9,15 +9,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e43e147fa352a38dd8c051725e92245047921689
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 9efb385e96e77b3cfc69556406bbc9777338b5d7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623472"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Przenoszenie danych z serwera SFTP przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -54,7 +55,7 @@ Poniższa tabela zawiera opis elementów JSON specyficzne dla połączonej usłu
 | type | Właściwość type musi mieć ustawioną `Sftp`. |Yes |
 | host | Nazwa lub adres IP serwera SFTP. |Yes |
 | port |Port, na którym nasłuchuje serwer SFTP. Wartość domyślna to: 21 |Nie |
-| authenticationType |Określ typ uwierzytelniania. Dozwolone wartości: **podstawowe**, **parametry SshPublicKey**. <br><br> Zapoznaj się [uwierzytelnianie podstawowe Using](#using-basic-authentication) i [przy użyciu publicznego klucza uwierzytelniania SSH](#using-ssh-public-key-authentication) odpowiednio sekcje więcej właściwości i przykłady JSON. |Yes |
+| Typ authenticationType |Określ typ uwierzytelniania. Dozwolone wartości: **podstawowe**, **parametry SshPublicKey**. <br><br> Zapoznaj się [uwierzytelnianie podstawowe Using](#using-basic-authentication) i [przy użyciu publicznego klucza uwierzytelniania SSH](#using-ssh-public-key-authentication) odpowiednio sekcje więcej właściwości i przykłady JSON. |Yes |
 | skipHostKeyValidation | Określ, czy pominąć sprawdzanie poprawności klucza hosta. | Nie. Wartość domyślna: false |
 | hostKeyFingerprint | Podaj odcisk palca klucza hosta. | Tak, jeśli `skipHostKeyValidation` ma wartość false.  |
 | gatewayName |Nazwa bramy zarządzania danymi do nawiązywania połączenia z serwerem lokalnym SFTP. | Tak, jeśli kopiowanie danych z lokalnego serwera SFTP. |
@@ -119,7 +120,7 @@ Aby używać uwierzytelniania klucza publicznego SSH, ustaw `authenticationType`
 | nazwa użytkownika |Użytkownik, który ma dostęp do serwera SFTP |Yes |
 | privateKeyPath | Określ ścieżka bezwzględna do pliku klucza prywatnego może dostęp do tej bramy. | Określ `privateKeyPath` lub `privateKeyContent`. <br><br> Mają zastosowanie tylko wtedy, gdy kopiowanie danych z lokalnego serwera SFTP. |
 | privateKeyContent | Ciąg serializacji zawartość klucza prywatnego. Kreator kopiowania można odczytać pliku klucza prywatnego i Wyodrębnij zawartość klucza prywatnego automatycznie. Jeśli używane są wszystkie inne narzędzie/pakiet SDK, należy użyć właściwości privateKeyPath. | Określ `privateKeyPath` lub `privateKeyContent`. |
-| passPhrase | Określ przebiegu frazy/hasło do odszyfrowania klucza prywatnego, jeśli plik klucza jest chroniony przez hasło. | Tak, jeśli hasło jest chroniony plik klucza prywatnego. |
+| Hasło | Określ przebiegu frazy/hasło do odszyfrowania klucza prywatnego, jeśli plik klucza jest chroniony przez hasło. | Tak, jeśli hasło jest chroniony plik klucza prywatnego. |
 
 > [!NOTE]
 > Łącznik SFTP obsługuje klucz OpenSSH RSA/DSA. Upewnij się, że zawartość pliku klucza, który rozpoczyna się od "---BEGIN [RSA/DSA] klucza prywatnego---". Jeśli plik klucza prywatnego jest plik formatu ppk, użyj narzędzia Putty do przekonwertowania z ppk OpenSSH format.

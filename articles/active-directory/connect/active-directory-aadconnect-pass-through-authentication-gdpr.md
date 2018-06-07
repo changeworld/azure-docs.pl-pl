@@ -12,14 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/28/2018
+ms.date: 05/21/2018
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 910eb5bdd1b9d4a2a27a27c89812584bb068bec0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3343cebb85124f19fe773822e296312abad53d96
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591178"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Zasady zachowania poufności użytkownika a platformą Azure uwierzytelniania przekazywanego usługi Active Directory
 
@@ -28,13 +30,13 @@ ms.lasthandoff: 04/28/2018
 
 ## <a name="overview"></a>Przegląd
 
-Azure AD przekazywanego uwierzytelniania tworzy następujące typy dziennika, które mogą zawierać EUII:
+Azure AD przekazywanego uwierzytelniania tworzy następującego typu dziennika, który może zawierać dane osobowe:
 
 - Pliki dziennika śledzenia usługi Azure AD Connect.
 - Pliki dziennika śledzenia Agent uwierzytelniania.
 - Pliki dziennika zdarzeń systemu Windows.
 
-Zasady zachowania poufności użytkownika dla uwierzytelniania przekazywanego można połączyć się z na dwa sposoby:
+Poprawa ochrony prywatności użytkowników dla uwierzytelniania przekazywanego na dwa sposoby:
 
 1.  Na żądanie wyodrębnić dane dla osoby i usuwanie danych z tej osoby z instalacji.
 2.  Upewnij się, że żadne dane nie są przechowywane poza 48 godzin.

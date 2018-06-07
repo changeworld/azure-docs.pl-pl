@@ -1,24 +1,21 @@
 ---
-title: "Analizowanie dzienników witryn sieci Web przy użyciu usługi Azure Data Lake Analytics | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak i analizowanie dzienników witryn sieci Web przy użyciu usługi Data Lake Analytics. "
+title: Analizowanie dzienników witryn sieci Web przy użyciu usługi Azure Data Lake Analytics
+description: Dowiedz się, jak i analizowanie dzienników witryn sieci Web przy użyciu usługi Data Lake Analytics.
 services: data-lake-analytics
-documentationcenter: 
 author: saveenr
 manager: saveenr
-editor: cgronlun
+editor: jasonwhowell
 ms.assetid: 3a196735-d0d9-4deb-ba68-c4b3f3be8403
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 12/05/2016
 ms.author: saveenr
-ms.openlocfilehash: 52d19297ae5c34f9daf5e42250a53a78e0168192
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8cb8e0f683c2790d7aebb87a684798ea0a36417f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623370"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Analizowanie dzienników witryn sieci Web przy użyciu usługi Azure Data Lake Analytics
 Dowiedz się, jak i analizowanie dzienników witryn sieci Web przy użyciu usługi Data Lake Analytics, szczególnie w przypadku sprawdzanie odwołań, które pojawiły się błędy w podczas próby uzyskania witrynie sieci Web.
@@ -172,7 +169,7 @@ Dodanie operatory zdefiniowane przez użytkownika można dodać do aplikacji.  A
 3. Kliknij dwukrotnie **UnsuccessfulResponsees.log**.
 4. Możesz również dwukrotnie pliku wyjściowego, w widoku wykresu zadania, aby przejść bezpośrednio do wyjścia.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 Aby rozpocząć pracę z usługą Data Lake Analytics przy użyciu różnych narzędzi, zobacz:
 
 * [Rozpoczynanie pracy z usługą Data Lake Analytics przy użyciu portalu Azure](data-lake-analytics-get-started-portal.md)

@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2016
 ms.author: tomfitz
-ms.openlocfilehash: fda195c03c589361b8a798166b0ae4d93611bcd0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7398e01a46b5d296f26905e2063acdb98383f567
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603389"
 ---
 # <a name="manage-azure-resources-through-portal"></a>Zarządzania zasobami Azure za pośrednictwem portalu
 
@@ -58,7 +59,7 @@ Grupa zasobów przechowuje metadane dotyczące zasobów. Z tego powodu określaj
    
     ![Grupa zasobów numeru PIN](./media/resource-group-portal/show-resource-group-dashboard.png)
 
-## <a name="tag-resources"></a>Tag zasobów
+## <a name="tag-resources"></a>Tagowanie zasobów
 Możliwość dodawania tagów do grup zasobów i zasobów w celu logicznego uporządkowania zasobów. Informacje o pracy z tagami, zobacz [organizowania zasobów na platformie Azure przy użyciu tagów](resource-group-using-tags.md).
 
 [!INCLUDE [resource-manager-tag-resource](../../includes/resource-manager-tag-resources.md)]
@@ -130,5 +131,5 @@ Usunięcie grupy zasobów powoduje usunięcie wszystkich zasobów w nim zawarte.
 * Aby wyświetlić szczegółowe informacje o wdrożeniu, zobacz [wyświetlić operacje wdrażania](resource-manager-deployment-operations.md).
 * Aby wdrożyć zasobów za pośrednictwem portalu, zobacz [wdrożenie zasobów z szablonami usługi Resource Manager i portalu Azure](resource-group-template-deploy-portal.md).
 * Aby zarządzać dostępem do zasobów, zobacz [zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą przypisań ról](../role-based-access-control/role-assignments-portal.md).
-* Aby uzyskać instrukcje dla przedsiębiorstw dotyczące użycia usługi Resource Manager w celu efektywnego zarządzania subskrypcjami, zobacz [Azure enterprise scaffold - prescriptive subscription governance](resource-manager-subscription-governance.md) (Szkielet platformy Azure dla przedsiębiorstwa — narzucony nadzór subskrypcji).
+* Aby uzyskać instrukcje dla przedsiębiorstw dotyczące użycia usługi Resource Manager w celu efektywnego zarządzania subskrypcjami, zobacz [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Szkielet platformy Azure dla przedsiębiorstwa — narzucony nadzór subskrypcji).
 

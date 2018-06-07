@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6c0e9c96840995c7d5a067e60264c66ce987af93
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 2326f37afcb845b8c484bdf57db0876026f8e8a1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34602724"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -91,6 +92,8 @@ Przed przeniesieniem zasobu należy wykonać kilka ważnych kroków. Dzięki spr
 
    * **Microsoft.Resources/subscriptions/resourceGroups/moveResources/action** dla źródłowej grupy zasobów.
    * **Microsoft.Resources/subscriptions/resourceGroups/write** w docelowej grupie zasobów.
+
+5. Jeśli to możliwe, podziału dużych przenosi do operacji przenoszenia oddzielne. Menedżer zasobów natychmiast kończy się niepowodzeniem próbami przenoszenie więcej niż 800 zasobów w ramach jednej operacji. Jednak przenoszenia zasobów mniej niż 800 może również zakończyć się niepowodzeniem przez przekroczeniem limitu czasu.
 
 ## <a name="when-to-call-support"></a>Kiedy Zadzwoń do pomocy technicznej
 

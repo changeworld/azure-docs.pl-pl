@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 860a09d004c16de992093e79c0dbda4c469bb775
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: b6cfe6ba510f1e7ed1b448d99fb8a71bb94053e8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34620687"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Monitorowanie i zarządzanie nimi potoki fabryki danych Azure przy użyciu portalu Azure i programu PowerShell
 > [!div class="op_single_selector"]
@@ -135,7 +136,7 @@ Wycinków zestaw danych w fabryce danych może mieć jeden z następujących sta
 <td>Gotowe</td><td>-</td><td>Wycinek jest gotowy do użycia.</td>
 </tr>
 <tr>
-<td>Pominięto</td><td>Brak</td><td>Wycinek nie jest przetwarzany.</td>
+<td>Pominięte</td><td>Brak</td><td>Wycinek nie jest przetwarzany.</td>
 </tr>
 <tr>
 <td>Brak</td><td>-</td><td>Wycinek miał poprzednio inny stan, ale został zresetowany.</td>

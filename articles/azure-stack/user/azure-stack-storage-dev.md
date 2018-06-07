@@ -1,19 +1,20 @@
 ---
-title: Wprowadzenie do narzędzi programistycznych magazyn Azure stosu
+title: Wprowadzenie do narzędzi programistycznych magazyn Azure stosu | Dokumentacja firmy Microsoft
 description: Aby rozpocząć używanie narzędzi programistycznych magazyn Azure stosu
 services: azure-stack
 author: mabriggs
 ms.author: mabrigg
-ms.date: 05/14/2018
+ms.date: 05/21/2018
 ms.topic: get-started-article
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.openlocfilehash: ce5c72262e7c046de2f06c474c585082804dcdf4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0ceda393412f8217a893a347ec5f3a9ac03efa3d
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604481"
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Wprowadzenie do narzędzi programistycznych magazyn Azure stosu
 
@@ -21,14 +22,14 @@ ms.lasthandoff: 05/16/2018
 
 Microsoft Azure stosu zawiera zestaw usług magazynu, który zawiera obiekt blob, tabel i magazyn kolejek.
 
-Używany w tym artykule jako szablon, aby rozpocząć korzystanie z narzędzi programistycznych magazyn Azure stosu. W odpowiednich samouczków usługi Azure Storage można znaleźć bardziej szczegółowe informacje, a przykładowy kod.
+Używany w tym artykule jako szablon, aby rozpocząć korzystanie z narzędzi programistycznych magazyn Azure stosu. W odpowiednich samouczków usługi Azure storage można znaleźć bardziej szczegółowe informacje, a przykładowy kod.
 
->[!NOTE]
->Istnieją znane różnice między Azure stosu magazynu i magazynu Azure, w tym określone wymagania dotyczące każdej platformy. Na przykład istnieją bibliotek określonego klienta i określonego końcowego sufiks wymagania dotyczące stosu Azure. Aby uzyskać więcej informacji, zobacz [usługi Azure Storage stosu: różnice i zagadnienia dotyczące](azure-stack-acs-differences.md).
+> [!NOTE]  
+> Istnieją znane różnice między Azure stosu magazynu i magazynu Azure, w tym określone wymagania dotyczące każdej platformy. Na przykład istnieją bibliotek określonego klienta i określonego końcowego sufiks wymagania dotyczące stosu Azure. Aby uzyskać więcej informacji, zobacz [magazynu Azure stosu: różnice i zagadnienia dotyczące](azure-stack-acs-differences.md).
 
 ## <a name="azure-client-libraries"></a>Bibliotek klienta platformy Azure
 
-Obsługiwane wersje interfejsu API REST usługi Azure Storage stosu są 2017-04-17, 2016-05-31, 2015-12-11, 2015-07-08, 2015-04-05 1802 aktualizacji lub nowsze wersje i 2015-04-05 w poprzednich wersjach. Punkty końcowe platformy Azure stosu nie mają pełnego parzystości z najnowszą wersją interfejsu API REST magazynu Azure. Biblioteki klienta magazynu musisz znać wersji, która jest zgodna z interfejsu API REST.
+Obsługiwane wersje interfejsu API REST Azure stosu magazynu są 2017-04-17, 2016-05-31, 2015-12-11, 2015-07-08, 2015-04-05 1802 aktualizacji lub nowsze wersje i 2015-04-05 w poprzednich wersjach. Punkty końcowe platformy Azure stosu nie mają pełnego parzystości z najnowszą wersją interfejsu API REST magazynu Azure. Biblioteki klienta magazynu musisz znać wersji, która jest zgodna z interfejsu API REST.
 
 ### <a name="1802-update-or-newer-versions"></a>1802 aktualizacji lub nowszych wersji
 
@@ -209,4 +210,4 @@ Następujące samouczki magazynu tabel Azure mają zastosowanie do stosu Azure. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Wprowadzenie do usługi Microsoft Azure Storage](../../storage/common/storage-introduction.md)
+* [Wprowadzenie do usługi Microsoft Azure storage](../../storage/common/storage-introduction.md)

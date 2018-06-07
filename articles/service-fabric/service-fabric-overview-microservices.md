@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
 ms.author: msfussell
-ms.openlocfilehash: 16757af0bab7cfd43488118f62300fb167c193a3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: cd3f947bfc44055bfec4198a1e7c6a9bb2fab5d4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642628"
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>Dlaczego mikrousług podejścia do tworzenia aplikacji?
 Jako deweloperów, a nie ma nowych w jak naszym zdaniem o factoring aplikacji na części składnika. Jest centralna modelu obiektu orientacji, abstrakcje oprogramowania i componentization. Obecnie ta factorization zwykle formę klasy i interfejsy między biblioteki udostępnione i warstw technologicznych. Zazwyczaj warstwowego podejścia jest pobierana z magazynu zaplecza, logika biznesowa warstwy środkowej i interfejs frontonu użytkownika (UI). Co *ma* zmienione w ciągu kilku ostatnich lat jest, że firma Microsoft, jako deweloperom tworzenia aplikacji, które są dla chmury rozproszonych i obsługiwanego przez firmę.
@@ -162,7 +163,7 @@ Ważne jest, aby ponownie podkreślić, że można **uruchomić i zatrzymać w d
 - Zmniejszenie kosztów, albo z powodu konsolidacji i usuwania istniejących aplikacji sprzętu lub działa w zwiększeniu. 
 - Kontrakt spójne wdrażanie między rozwoju i operacji.
 
-Obniżenie kosztu są zrozumiałe, a w ramach firmy Microsoft, dużą liczbę istniejących aplikacji są trwa konteneryzowanych wystarczy, aby zapisać milionów dolarów. Spójne wdrażanie jest trudne do oceny, ale jednakowo jako ważne. Wyświetlany jest tekst deweloperzy nadal można wybrać technologii z tego pakietu ich jednak operacje przyjmuje tylko jeden sposób wdrażania i zarządzania nimi tych aplikacji. Go eliminuje operacje z konieczności złożoność wiele różnych technologii lub wymuszania deweloperom wybierać tylko niektóre z nich. Zasadniczo każda aplikacja jest konteneryzowanych obrazy niezależne wdrożenia.
+Obniżenie kosztu są zrozumiałe, a w ramach firmy Microsoft, dużą liczbę istniejących aplikacji są trwa konteneryzowanych wystarczy, aby zapisać milionów dolarów. Spójne wdrażanie jest trudne do oceny, ale jednakowo jako ważne. Wyświetlany jest tekst deweloperzy nadal można wybrać technologia, która odpowiada, jednak operacje przyjmuje tylko jeden sposób wdrażania i zarządzania nimi tych aplikacji. Go eliminuje operacje z konieczności złożoność wiele różnych technologii lub wymuszania deweloperom wybierać tylko niektóre z nich. Zasadniczo każda aplikacja jest konteneryzowanych obrazy niezależne wdrożenia.
 
 W wielu organizacjach zatrzymać w tym miejscu. Mają zalet kontenery i sieci szkieletowej usług udostępnia możliwości zarządzania ukończone z wdrożenia uaktualnień, wersji, wycofywanie zmian, kondycji monitorowania itp.
 

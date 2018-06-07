@@ -4,7 +4,7 @@
 ## [Co to jest usługa Resource Manager?](resource-group-overview.md)
 ## [Dostawcy zasobów i ich typy](resource-manager-supported-services.md)
 ## [Wdrażanie za pomocą usługi Resource Manager i klasyczne](resource-manager-deployment-model.md)
-## [Nadzór subskrypcji](resource-manager-subscription-governance.md)
+## [Nadzór subskrypcji](/azure/architecture/cloud-adoption-guide/subscription-governance)
 ## [Organizowanie zasobów przy użyciu grup zarządzania](management-groups-overview.md)
 
 # Rozpoczęcie pracy
@@ -50,7 +50,6 @@
 ### [Programowe tworzenie subskrypcji EA](programmatically-create-subscription.md)
 ### [Tworzenie grupy zarządzania](management-groups-create.md)
 ### [Zarządzanie grupami zarządzania](management-groups-manage.md)
-### [Przykłady nadzoru](resource-manager-subscription-examples.md)
 
 ## Kontrola dostępu
 ### Tworzenie jednostki usługi

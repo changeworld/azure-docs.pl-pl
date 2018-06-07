@@ -1,8 +1,8 @@
 ---
-title: "Użyj interfejsu wiersza polecenia Databricks z powłoki chmury Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać interfejsu wiersza polecenia Databricks z powłoki chmury Azure."
+title: Użyj interfejsu wiersza polecenia Databricks z powłoki chmury Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać interfejsu wiersza polecenia Databricks z powłoki chmury Azure.
 services: azure-databricks
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
@@ -11,13 +11,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2018
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 8e4213813ff23586ac683556d4a3c0c587edea58
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: c20ad02f962fbee22bb16653c5eab351d9f3de17
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598729"
 ---
 # <a name="use-databricks-cli-from-azure-cloud-shell"></a>Używanie interfejsu wiersza polecenia Databricks z poziomu usługi Azure Cloud Shell
 

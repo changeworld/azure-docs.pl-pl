@@ -11,15 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 110297fd60b4a25f959b451f2952f32d66cb8c3e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c5f47379072f4e5d15ffd96c5e45a23d10fff187
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34620252"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Fabryka danych Azure — dziennik zmian interfejs API .NET
 > [!NOTE]
@@ -137,7 +138,7 @@ Funkcja dodatków:
   * [AzureDataLakeStoreSink](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoresink.aspx)
 
 ## <a name="version-401"></a>Wersja 4.0.1
-### <a name="breaking-changes"></a>Fundamentalne zmiany
+### <a name="breaking-changes"></a>Zmiany powodujące niezgodność
 Zmieniono następujące klasy. Nazwy nowych sprzed oryginalnej nazwy klasy 4.0.0 wersji.
 
 | Nazwa w 4.0.0 | Nazwa w 4.0.1 |
@@ -150,7 +151,7 @@ Zmieniono następujące klasy. Nazwy nowych sprzed oryginalnej nazwy klasy 4.0.0
 | SqlServerDataset |[SqlServerTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.sqlservertabledataset.aspx) |
 
 ## <a name="version-400"></a>Wersja 4.0.0
-### <a name="breaking-changes"></a>Fundamentalne zmiany
+### <a name="breaking-changes"></a>Zmiany powodujące niezgodność
 * Zmieniono klas/interfejsów.
 
 | Stara nazwa | Nowa nazwa |

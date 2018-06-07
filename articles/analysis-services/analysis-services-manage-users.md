@@ -3,16 +3,17 @@ title: Uprawnienia do uwierzytelniania i użytkownika w usłudze Azure Analysis 
 description: Więcej informacji na temat uwierzytelniania i uprawnień użytkowników w usłudze Azure Analysis Services.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ede05667d794267443babacaa8b016206d86ab2c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 47846af015bf02940da7a7b8a4154113aab57b08
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597634"
 ---
 # <a name="authentication-and-user-permissions"></a>Uprawnienia do uwierzytelniania i użytkownika
 Azure Analysis Services używa usługi Azure Active Directory (Azure AD) do uwierzytelniania użytkowników i zarządzania tożsamościami. Każdy użytkownik, tworzenia, zarządzania lub nawiązywania połączenia z usług Azure Analysis Services serwer musi mieć tożsamość prawidłowego użytkownika w [dzierżawy usługi Azure AD](../active-directory/active-directory-administer.md) w tej samej subskrypcji.

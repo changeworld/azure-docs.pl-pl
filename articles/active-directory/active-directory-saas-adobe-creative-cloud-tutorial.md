@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 05/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 808debcee11eb83f7e6afa1f3443a35c9f6767c4
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 53513b2d07f75e917845ad307a2833a5149ab677
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590015"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Samouczek: Integracji Azure Active Directory z chmurą Creative Adobe
 
@@ -80,8 +81,6 @@ W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokr
 
 Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w chmurze Creative Adobe jest dla użytkownika, w usłudze Azure AD. Innymi słowy łącze relację między użytkownikiem usługi Azure AD i danemu użytkownikowi w chmurze Creative Adobe musi się.
 
-W chmurze Creative Adobe, należy przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łącza.
-
 Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z chmurą Creative Adobe, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
@@ -101,7 +100,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
 2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
- 
+
     ![Okno dialogowe rejestracji jednokrotnej](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobecreativecloud_samlbase.png)
 
 3. Na **adresy URL i Adobe Creative domenę chmury** sekcji, wykonaj następujące kroki, aby skonfigurować aplikację w trybie IDP inicjowane:
@@ -112,8 +111,8 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<company name>.okta.com/auth/saml20/accauthlinktest`
 
-    > [!NOTE] 
-    > Wartości te nie są prawdziwe. Rzeczywisty identyfikator i adres URL odpowiedzi, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej Adobe Creative Cloud Client](https://helpx.adobe.com/in/contact/support.html) uzyskać te wartości. 
+    > [!NOTE]
+    > Wartości te nie są prawdziwe. Rzeczywisty identyfikator i adres URL odpowiedzi, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej Adobe Creative Cloud Client](https://helpx.adobe.com/in/contact/support.html) uzyskać te wartości.
 
 4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** inicjowane tryb:
 
@@ -138,41 +137,44 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     | Email |User.mail |
 
     a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
-    
+
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_attribute_04.png)
-    
+
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_attribute_05.png)
-    
+
     b. W **nazwa** tekstowym, wpisz nazwę atrybut wyświetlany dla danego wiersza.
-    
+
     c. Z **wartość** listy, wpisz wartość atrybutu wyświetlany dla danego wiersza.
-    
+
     d. Kliknij przycisk **OK**.
-    
+
+    > [!NOTE]
+    > Użytkownicy muszą mieć ważną licencję pakietu Office 365 ekso wiadomości e-mail o wartości w odpowiedzi SAML oświadczenia.
+
 8. Kliknij przycisk **zapisać** przycisku.
 
     ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_general_400.png)
-    
+
 9. Na **Adobe Creative konfiguracji chmury** kliknij **Konfigurowanie chmury Creative Adobe** otworzyć **konfigurowania rejestracji** okna. Kopiuj **identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami**.
 
     ![Konfiguracja chmury Creative Adobe](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobecreativecloud_configure.png)
-    
+
 10. W oknie przeglądarki innej witryny sieci web, zaloguj się do [konsoli administracyjnej programu Adobe](https://adminconsole.adobe.com) jako administrator.
 
 11. Przejdź do **ustawienia** w górnym menu nawigacyjnym pasek, a następnie wybierz pozycję **tożsamości**. Otwiera listy domen. Kliknij przycisk **Konfiguruj** łącze w domenie. Następnie wykonaj następujące czynności na **pojedynczy znak na wymagana konfiguracja** sekcji. Aby uzyskać więcej informacji, zobacz [ustawienia domeny](https://helpx.adobe.com/enterprise/using/set-up-domain.html)
 
     ![Ustawienia](https://helpx.adobe.com/content/dam/help/en/enterprise/using/configure-microsoft-azure-with-adobe-sso/_jcr_content/main-pars/procedure_719391630/proc_par/step_3/step_par/image/edit-sso-configuration.png "ustawienia")
-    
+
     a. Kliknij przycisk **Przeglądaj** można przekazać certyfikatu pobrane z usługi Azure AD do **certyfikatu IDP**.
-    
+
     b. W **wystawcy IDP** pole tekstowe, umieścić wartość elementu **identyfikator jednostki SAML** którego skopiowany z **Konfigurowanie logowania jednokrotnego** sekcji w portalu Azure.
-    
+
     c. W **adres URL logowania IDP** pole tekstowe, umieścić wartość elementu **adres URL usługi logowania jednokrotnego SAML** , które zostały skopiowane z **Konfigurowanie logowania jednokrotnego** sekcji w portalu Azure.
-    
+
     d. Wybierz **HTTP - przekierowania** jako **powiązania IDP**.
-    
+
     e. Wybierz **adres E-mail** jako **ustawienia logowania użytkownika**.
-    
+
     f. Kliknij przycisk **zapisać** przycisku.
 
 12. Pulpit nawigacyjny teraz przedstawi XML **"Pobieranie metadanych"** pliku. Zawiera adres URL EntityDescriptor Adobe i AssertionConsumerService adresu URL. Otwórz plik i skonfigurować je w aplikacji usługi Azure AD.
@@ -182,9 +184,6 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     a. Użyj wartości EntityDescriptor Adobe dostarczył dla **identyfikator** na **Konfigurowanie ustawień aplikacji** okna dialogowego.
 
     b. Użyj wartości AssertionConsumerService Adobe dostarczył dla **adres URL odpowiedzi** na **Konfigurowanie ustawień aplikacji** okna dialogowego.
-
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -290,4 +289,3 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 [201]: ./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_general_203.png
-

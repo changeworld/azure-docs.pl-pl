@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c37ab34b241e59f70b6417036506dd132ce9aa43
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6826d87e5613ce4892e9fd839c66ec26282ad188
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622129"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Przekształcanie danych za pomocą działania Hive w fabryce danych Azure 
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -78,10 +79,10 @@ Działanie HDInsight Hive w fabryce danych [potoku](data-factory-create-pipeline
 | name |Nazwa działania |Yes |
 | description |Tekst opisujący działanie służy do |Nie |
 | type |HDinsightHive |Yes |
-| Dane wejściowe |Dane wejściowe używane na potrzeby działania gałęzi |Nie |
+| dane wejściowe |Dane wejściowe używane na potrzeby działania gałęzi |Nie |
 | wyjścia |Dane wyjściowe, generowane przez działanie gałęzi |Yes |
 | linkedServiceName |Odwołanie do klastra usługi HDInsight zarejestrowany jako połączonej usługi z fabryki danych |Yes |
-| skrypt |Określ wbudowanego skryptu Hive |Nie |
+| Skrypt |Określ wbudowanego skryptu Hive |Nie |
 | Ścieżka skryptu |Przechowywanie skryptu Hive w magazynie obiektów blob platformy Azure i podaj ścieżkę do pliku. Użyj właściwości 'script' lub "scriptPath". Nie można używać razem. Nazwa pliku jest rozróżniana wielkość liter. |Nie |
 | Definiuje |Określ parametry jako pary klucz wartość dla odwołania do skryptu Hive za pomocą "hiveconf" |Nie |
 

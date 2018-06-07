@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: af0ddebc79100cbe0ea55e46b825c35ab8a775b7
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: be350ad153bfcc51eb1198a97eeba01593ccb34e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594248"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>Samouczek: Umożliwia dostęp do usługi Azure Storage za pomocą klucza dostępu maszyny Wirtualnej systemu Linux zarządzanych tożsamości usługi
 
@@ -226,10 +227,7 @@ Odpowiedź:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Omówienie MSI, zobacz [omówienie zarządzane tożsamość usługi](overview.md).
-- Aby dowiedzieć się, jak to zrobić to opisane w tym samouczku przy użyciu magazynu poświadczeń sygnatury dostępu Współdzielonego, zobacz [umożliwia dostęp do usługi Azure Storage za pomocą poświadczeń sygnatury dostępu Współdzielonego maszyny Wirtualnej systemu Linux zarządzanych tożsamości usługi](tutorial-linux-vm-access-storage-sas.md)
-- Aby uzyskać więcej informacji o funkcji sygnatury dostępu Współdzielonego konta usługi Azure Storage zobacz:
-  - [Przy użyciu sygnatury dostępu współdzielonego (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1.md)
-  - [Utworzenie sygnatury dostępu Współdzielonego usługi](/rest/api/storageservices/Constructing-a-Service-SAS.md)
+W tym samouczku przedstawiono sposób korzystania z tożsamości usługi zarządzania dla maszyny wirtualnej systemu Linux dostęp do magazynu Azure przy użyciu klucza dostępu.  Aby dowiedzieć się więcej o kluczy dostępu do magazynu Azure, zobacz:
 
-W poniższej sekcji komentarzy umożliwia wyrazić swoją opinię i pomóc nam dostosować i kształtu zawartość.
+> [!div class="nextstepaction"]
+>[Zarządzanie kluczami dostępu do magazynu](/azure/storage/common/storage-create-storage-account#manage-your-storage-access-keys)

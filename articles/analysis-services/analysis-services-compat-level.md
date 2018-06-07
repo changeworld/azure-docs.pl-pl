@@ -3,26 +3,27 @@ title: Model danych, poziom zgodności w usłudze Azure Analysis Services | Doku
 description: Opis poziomu zgodności modelu tabelarycznego.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 231a7ea42560aac3fba0ccf27e27123320f219a3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d68d544a66448fbbf193ff53fa43e179b1edb706
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34602071"
 ---
 # <a name="compatibility-level-for-analysis-services-tabular-models"></a>Poziom zgodności dla modele tabelaryczne usług Analysis Services
 
-*Poziom zgodności* odwołuje się do zachowania specyficzne dla wersji aparatu usług Analysis Services. Zmiany poziomu zgodności pokrywają się zwykle z główne wersje programu SQL Server. Te zmiany są również implementowana w usług Azure Analysis Services w celu zachowania zgodności między obu platform. Zmiany poziomu zgodności dotyczy również funkcje dostępne w Twojej modeli tabelarycznych. Na przykład zapytania bezpośredniego i metadanych tabelarycznych obiektów mają implementacje różne w zależności od poziomu zgodności. 
+*Poziom zgodności* odwołuje się do zachowania specyficzne dla wersji aparatu usług Analysis Services. Zmiany poziomu zgodności pokrywają się zwykle z główne wersje programu SQL Server. Te zmiany są również implementowana w usług Azure Analysis Services w celu zachowania zgodności między obu platform. Poziom zgodności zmienia również wpływ funkcji dostępnych w modeli tabelarycznych. Na przykład zapytania bezpośredniego i metadanych tabelarycznych obiektów mają implementacje różne w zależności od poziomu zgodności. Poziom zgodności jest określony w projekcie modelu tabelarycznego w Visual Studio (SSDT). Modele tabelaryczne tworzone w i importowane z programu Power BI Desktop są tylko na poziomie 1400 zgodności.
 
-Azure Analysis Services obsługuje modele tabelaryczne poziomie zgodności 1200 i 1400.
+Azure Analysis Services obsługuje modele tabelaryczne poziomie zgodności 1200 i 1400. 
 
 Najnowsze poziom zgodności jest 1400. Ten poziom pokrywa się z usługami analizy serwera SQL w 2017 r. Główne funkcje w 1400 poziom zgodności:
 
-*  Nowa infrastruktura dla połączenia danych, a następnie zaimportuj do modeli tabelarycznych z obsługą TOMASZ interfejsów API i skryptów TMSL. Ta nowa funkcja umożliwia obsługę dodatkowych źródeł danych takich jak magazynu obiektów Blob platformy Azure.
+*  Nowe funkcje usługi łączności danych, a następnie zaimportuj z obsługą TOMASZ interfejsów API i skryptów TMSL. 
 *  Przekształcenia danych i możliwości mashup danych za pomocą wyrażenia pobieranie danych i M.
 *  Środki obsługuje właściwości wiersze szczegółów za pomocą wyrażenia języka DAX. Ta właściwość umożliwia klienta narzędzi, takich jak Microsoft Excel, aby następnie przejść do szczegółowych danych z zagregowane raportu. Na przykład przy przeglądaniu łączna sprzedaż dla regionu i miesiąc, można wyświetlić szczegółów skojarzone zamówienia. 
 *  Zabezpieczenia na poziomie obiektu dla nazwy tabel i kolumn, oprócz danych w tych.

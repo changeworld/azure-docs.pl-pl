@@ -3,7 +3,7 @@ title: Wprowadzenie do raportowania interfejsu API usługi Azure AD | Dokumentac
 description: Jak rozpocząć pracę z usługą Active Directory Azure, interfejsu API raportowania
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: rolyon
 manager: mtillman
 editor: ''
 ms.assetid: 8813b911-a4ec-4234-8474-2eef9afea11e
@@ -12,14 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: compliance-reports
 ms.date: 05/07/2018
-ms.author: dhanyahk;markvi
+ms.author: dhanyahk;rolyon
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a818c9b0e2c9097f45d2fdd39676ef6807d06ca5
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: df0b672a07575a0d26fff89c90008043d02818dd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589104"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Wprowadzenie do usługi Azure Active Directory raportowania interfejsu API
 
@@ -38,7 +40,7 @@ Aby uzyskać dostęp do interfejsu API raportowania, nawet wtedy, gdy planujesz 
 
 1. Przypisz role (Administrator globalny czytnika zabezpieczeń, administrator zabezpieczeń)
 2. Rejestrowanie aplikacji
-3. Udziel uprawnień
+3. Udzielenie uprawnień
 4. Zbierz ustawienia konfiguracji
 
 

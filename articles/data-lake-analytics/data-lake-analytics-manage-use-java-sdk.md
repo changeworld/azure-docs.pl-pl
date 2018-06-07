@@ -1,28 +1,26 @@
 ---
-title: "Zarządzanie Azure Data Lake Analytics przy użyciu zestawu SDK Java usługi Azure | Dokumentacja firmy Microsoft"
-description: "Korzystanie z zestawu Java SDK usługi Azure Data Lake Analytics w celu projektowania aplikacji"
+title: Zarządzanie Azure Data Lake Analytics przy użyciu zestawu SDK Java usługi Azure
+description: W tym artykule opisano sposób użycia zestawu Java SDK usługi Azure można zapisać aplikacjom zarządzanym zadania usługi Data Lake Analytics, źródła danych i użytkowników.
 services: data-lake-analytics
-documentationcenter: 
-author: matt1883
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 06/18/2017
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: 8a0c1c7aab89f3bb62d0eb9f42e8ac65309d617e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: kfile
+editor: jasonwhowell
+ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
+ms.topic: conceptual
+ms.date: 06/18/2017
+ms.openlocfilehash: 4cf8390f55beeb65c1bd99594e885ed9db551d9e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624237"
 ---
-# <a name="manage--azure-data-lake-analytics-using-java-sdk"></a>Zarządzanie przy użyciu zestawu SDK Java usługi Azure Data Lake Analytics
+# <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Zarządzanie Azure Data Lake Analytics przy użyciu aplikacji Java
+[!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-W tym samouczku opracowywania aplikacji konsoli Java, która wykonuje operacje typowe dla usługi Azure Data Lake.
+W tym artykule opisano sposób zarządzania kont usługi Azure Data Lake Analytics, źródła danych, użytkowników i zadań za pomocą aplikacji napisanych z użyciem zestawu Java SDK usługi Azure. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * **Java Development Kit (JDK) 8** (przy użyciu języka Java w wersji 1.8).
@@ -377,7 +375,7 @@ public static String GetJobStatus(UUID jobId) throws IOException, CloudException
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Aby dowiedzieć się więcej o języku U-SQL, zobacz [Wprowadzenie do języka U-SQL w usłudze Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md) i [Dokumentację języka SQL](http://go.microsoft.com/fwlink/?LinkId=691348).
 * Informacje o zadaniach zarządzania znajdziesz w artykule [Zarządzanie usługą Azure Data Lake Analytics przy użyciu witryny Azure Portal](data-lake-analytics-manage-use-portal.md).

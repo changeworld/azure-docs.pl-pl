@@ -13,13 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
-ms.author: aelnably;wesmc
-ms.openlocfilehash: 8d25c70a0e5db92bca6f3970049a2e1325fe124b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 05/25/2018
+ms.author: msangapu
+ms.openlocfilehash: c1dbcf83927da23ceab652f8bc4dbe8d6343c1a8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598406"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Usługa aplikacji Azure w systemie Linux — często zadawane pytania
 
@@ -47,8 +48,8 @@ Ta akcja jest taka sama jak Docker ponownego uruchomienia komputera.
 
 Tak, możesz to zrobić za pośrednictwem witryny zarządzania (SCM) kontroli źródła.
 
-> [!NOTE] 
-> Można również nawiązać kontenera aplikacji bezpośrednio z komputera lokalnego Programowanie przy użyciu protokołu SSH, SFTP lub Visual Studio Code (dla aplikacji Node.js debugowania na żywo). Aby uzyskać więcej informacji, zobacz [zdalnego debugowania i SSH w usłudze App Service w systemie Linux](https://aka.ms/linux-debug).
+> [!NOTE]
+> Możesz również nawiązać połączenie z kontenerem aplikacji bezpośrednio z lokalnego komputera deweloperskiego przy użyciu protokołu SSH, SFTP lub programu Visual Studio Code (na potrzeby debugowania na żywo aplikacji Node.js). Aby uzyskać więcej informacji, zobacz [Zdalne debugowanie i protokół SSH w usłudze App Service w systemie Linux](https://aka.ms/linux-debug).
 >
 
 **Jak utworzyć planu usługi aplikacji Linux za pomocą zestawu SDK lub szablonu usługi Azure Resource Manager?**
@@ -113,7 +114,7 @@ Możesz to zrobić przez ustawienie `WEBSITES_ENABLE_APP_SERVICE_STORAGE` ustawi
 
 **Moje niestandardowe kontenera zajmuje dużo czasu do uruchomienia, i platformy ponownego uruchomienia kontenera, przed zakończeniem uruchamiania.**
 
-Możesz skonfigurować czas oczekiwania platformę przed jej ponownym uruchomieniu programu kontenera. Aby to zrobić, ustaw `WEBSITES_CONTAINER_START_TIME_LIMIT` ma wartość ustawienia aplikacji. Wartość domyślna to 230 sekund, a wartość maksymalna wynosi 600 sekund.
+Możesz skonfigurować czas oczekiwania platformę przed jej ponownym uruchomieniu programu kontenera. Aby to zrobić, ustaw `WEBSITES_CONTAINER_START_TIME_LIMIT` ma wartość ustawienia aplikacji. Wartość domyślna to 230 sekund, a wartość maksymalna to 1800 sekund.
 
 **Co to jest format adresu URL serwera prywatnej rejestru?**
 

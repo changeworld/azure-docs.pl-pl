@@ -3,16 +3,17 @@ title: Azure kopii zapasowej bazy danych usług Analysis Services i przywracania
 description: Opisuje sposób wykonywania kopii zapasowej i przywracanie bazy danych usług Azure Analysis Services.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ec213d5c223180825ea0eabe95881002432b92e9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 07b2cebde40983955c5244ac2b7f0b759dcdbd14
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597301"
 ---
 # <a name="backup-and-restore"></a>Tworzenie kopii zapasowej i przywracanie
 
@@ -44,7 +45,7 @@ Przed utworzeniem kopii zapasowej, należy skonfigurować ustawienia magazynu dl
 
 4. Wybierz kontener lub Utwórz nową.
 
-    ![Wybierz kontener](./media/analysis-services-backup/aas-backup-container.png)
+    ![Wybieranie kontenera](./media/analysis-services-backup/aas-backup-container.png)
 
 5. Zapisz ustawienia kopii zapasowej.
 

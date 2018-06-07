@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 5c37a693e1594f9afe40effba45d7b05a68fd49c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 152cf0c8504205e09b075714a58811d240ab431c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598304"
 ---
 # <a name="restore-an-app-in-azure"></a>Przywracanie aplikacji na platformie Azure
-W tym artykule przedstawiono sposób przywracania aplikacji w [usłudze Azure App Service](../app-service/app-service-web-overview.md) , która została wcześniej utworzona kopia zapasowa (zobacz [kopii zapasowych aplikacji na platformie Azure](web-sites-backup.md)). Możesz przywrócić poprzedni stan aplikacji za pomocą jego połączonej bazy danych na żądanie lub Utwórz nową aplikację na podstawie jednej z aplikacji oryginalne kopie zapasowe. Usługa aplikacji Azure obsługuje następujące bazy danych dla kopii zapasowej i przywracania:
+W tym artykule przedstawiono sposób przywracania aplikacji w [usłudze Azure App Service](../app-service/app-service-web-overview.md) , która została wcześniej utworzona kopia zapasowa (zobacz [kopii zapasowych aplikacji na platformie Azure](web-sites-backup.md)). Na żądanie można przywrócić aplikację wraz z jej połączonymi bazami danych do poprzedniego stanu lub utworzyć nową aplikację na podstawie kopii zapasowej pierwotnej aplikacji. Usługa aplikacji Azure obsługuje następujące bazy danych dla kopii zapasowej i przywracania:
 - [SQL Database](https://azure.microsoft.com/services/sql-database/)
-- [Azure bazy danych MySQL)](https://azure.microsoft.com/services/mysql)
+- [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
 - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgres)
 - [MySQL w aplikacji](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
 
@@ -51,7 +52,7 @@ Przywracanie z kopii zapasowych jest dostępne dla aplikacji działających **st
    > 
    > 
    
-    Możesz wybrać **istniejącej aplikacji** przywracania kopii zapasowej aplikacji do innej aplikacji w tej samej grupie identyczny. Przed użyciem tej opcji należy utworzono już inną aplikację w grupie zasobów z dublowania bazy danych konfiguracji do zdefiniowana w kopii zapasowej aplikacji. Można również utworzyć **nowy** aplikacji, aby przywrócić swoją zawartość.
+    Możesz wybrać **istniejącej aplikacji** przywracania kopii zapasowej aplikacji do innej aplikacji w tej samej grupie zasobów. Przed użyciem tej opcji należy utworzono już inną aplikację w grupie zasobów z dublowania bazy danych konfiguracji do zdefiniowana w kopii zapasowej aplikacji. Można również utworzyć **nowy** aplikacji, aby przywrócić swoją zawartość.
 
 4. Kliknij przycisk **OK**.
 

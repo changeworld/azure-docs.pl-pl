@@ -1,25 +1,21 @@
 ---
 title: Wizualizacja danych w czasie rzeczywistym danych czujnika z Centrum IoT Azure — usługi Power BI | Dokumentacja firmy Microsoft
 description: Wizualizuj dane temperatury i wilgotności, który został zebrany z czujnika i wysyłany do Centrum Azure IoT przy użyciu usługi Power BI.
-services: iot-hub
-documentationcenter: ''
 author: rangv
-manager: timlt
-tags: ''
+manager: ''
 keywords: wizualizację danych czasu rzeczywistego, wizualizacji danych na żywo czujnik wizualizacji danych
-ms.assetid: e67c9c09-6219-4f0f-ad42-58edaaa74f61
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
 ms.date: 4/11/2018
 ms.author: rangv
-ms.openlocfilehash: 12ac0596d70ae068ba17713d1251fbf117824f67
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a3c54fe635fe0f8988c321684a815e9896922587
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634349"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Wizualizacja danych czujnika w czasie rzeczywistym z Centrum IoT Azure przy użyciu usługi Power BI
 
@@ -52,10 +48,10 @@ Sposób do wizualizacji danych czujnika w czasie rzeczywistym, który odbiera Ce
 
 ### <a name="create-a-stream-analytics-job"></a>Tworzenie zadania usługi Stream Analytics
 
-1. W [portalu Azure](https://portal.azure.com), kliknij przycisk **Utwórz zasób** > **Internetu rzeczy** > **zadanie usługi Stream Analytics**.
-1. Wprowadź następujące informacje dla zadania.
+1. W witrynie [Azure Portal](https://portal.azure.com) kliknij kolejno pozycje **Utwórz zasób** > **Internet rzeczy** > **Zadanie usługi Stream Analytics**.
+1. Wprowadź poniższe informacje dotyczące zadania.
 
-   **Nazwa zadania**: Nazwa zadania. Nazwa musi być unikatowa w skali globalnej.
+   **Nazwa zadania**: nazwa zadania. Nazwa musi być unikatowa w skali globalnej.
 
    **Grupa zasobów**: Użyj tej samej grupie zasobów, która używa Centrum IoT.
 
@@ -67,10 +63,10 @@ Sposób do wizualizacji danych czujnika w czasie rzeczywistym, który odbiera Ce
 
 1. Kliknij przycisk **Utwórz**.
 
-### <a name="add-an-input-to-the-stream-analytics-job"></a>Dodawanie danych wejściowych do zadania usługi analiza strumienia
+### <a name="add-an-input-to-the-stream-analytics-job"></a>Dodawanie danych wejściowych do zadania usługi Stream Analytics
 
 1. Otwórz zadanie usługi Stream Analytics.
-1. W obszarze **topologii zadania**, kliknij przycisk **dane wejściowe**.
+1. W obszarze **Topologia zadania** kliknij pozycję **Dane wejściowe**.
 1. W **dane wejściowe** okienku, kliknij przycisk **Dodaj**, a następnie wprowadź następujące informacje:
 
    **Alias wejściowy**: unikatowego aliasu dla danych wejściowych.
@@ -82,12 +78,12 @@ Sposób do wizualizacji danych czujnika w czasie rzeczywistym, który odbiera Ce
 
    ![Dodawanie danych wejściowych do zadania usługi analiza strumienia na platformie Azure](media/iot-hub-live-data-visualization-in-power-bi/3_add-input-to-stream-analytics-job-azure.png)
 
-### <a name="add-an-output-to-the-stream-analytics-job"></a>Dodawanie danych wyjściowych do zadania usługi analiza strumienia
+### <a name="add-an-output-to-the-stream-analytics-job"></a>Dodawanie danych wyjściowych do zadania usługi Stream Analytics
 
-1. W obszarze **topologii zadania**, kliknij przycisk **dane wyjściowe**.
+1. W obszarze **Topologia zadania** kliknij pozycję **Dane wyjściowe**.
 1. W **dane wyjściowe** okienku, kliknij przycisk **Dodaj**, a następnie wprowadź następujące informacje:
 
-   **Alias wyjściowy**: unikatowego aliasu dla danych wyjściowych.
+   **Alias wyjściowy**: unikatowy alias danych wyjściowych.
 
    **Obiekt sink**: Wybierz **Power BI**.
 1. Kliknij przycisk **autoryzacji**, a następnie zaloguj się na koncie usługi Power BI.
@@ -102,18 +98,18 @@ Sposób do wizualizacji danych czujnika w czasie rzeczywistym, który odbiera Ce
 
    ![Dodawanie danych wyjściowych do zadania usługi analiza strumienia na platformie Azure](media/iot-hub-live-data-visualization-in-power-bi/4_add-output-to-stream-analytics-job-azure.png)
 
-### <a name="configure-the-query-of-the-stream-analytics-job"></a>Skonfiguruj zapytanie zadania usługi analiza strumienia
+### <a name="configure-the-query-of-the-stream-analytics-job"></a>Konfigurowanie zapytania zadania usługi Stream Analytics
 
-1. W obszarze **topologii zadania**, kliknij przycisk **zapytania**.
-1. Zastąp `[YourInputAlias]` z alias wejściowy zadania.
-1. Zastąp `[YourOutputAlias]` z aliasem dane wyjściowe zadania.
+1. W obszarze **Topologia zadania** kliknij pozycję **Zapytanie**.
+1. Zastąp element `[YourInputAlias]` aliasem wejściowym zadania.
+1. Zastąp element `[YourOutputAlias]` aliasem wyjściowym zadania.
 1. Kliknij pozycję **Zapisz**.
 
    ![Dodaj zapytanie do zadania usługi analiza strumienia na platformie Azure](media/iot-hub-live-data-visualization-in-power-bi/5_add-query-stream-analytics-job-azure.png)
 
-### <a name="run-the-stream-analytics-job"></a>Uruchom zadanie usługi analiza strumienia
+### <a name="run-the-stream-analytics-job"></a>Uruchamianie zadania usługi Stream Analytics
 
-W zadaniu Stream Analytics kliknij **Start** > **teraz** > **Start**. Gdy zadanie zostanie uruchomiony pomyślnie, stan zadania zmieni się z **zatrzymane** do **systemem**.
+W zadaniu usługi Stream Analytics kliknij kolejno pozycje **Uruchom** > **Teraz** > **Uruchom**. Po pomyślnym uruchomieniu zadania jego stan zmieni się z **Zatrzymano** na **Uruchomiono**.
 
 ![Uruchom zadanie usługi Stream Analytics na platformie Azure](media/iot-hub-live-data-visualization-in-power-bi/6_run-stream-analytics-job-azure.png)
 
@@ -124,26 +120,26 @@ W zadaniu Stream Analytics kliknij **Start** > **teraz** > **Start**. Gdy zadani
 1. Przejdź do obszaru roboczego grupy, która ustawione podczas tworzenia dane wyjściowe zadania usługi analiza strumienia.
 1. Kliknij przycisk **przesyłania strumieniowego zestawów danych**.
 
-   Powinny pojawić się wymienionych zestawu danych, które określone podczas tworzenia dane wyjściowe zadania usługi analiza strumienia.
-1. W obszarze **akcje**, kliknij ikonę pierwszy, aby utworzyć raport.
+   Powinien pojawić się wymieniony na liście zestaw danych, który został wybrany podczas tworzenia danych wyjściowych zadania usługi Stream Analytics.
+1. W obszarze **AKCJE** kliknij pierwszą ikonę, aby utworzyć raport.
 
    ![Tworzenie raportu usługi Microsoft Power BI](media/iot-hub-live-data-visualization-in-power-bi/7_create-power-bi-report-microsoft.png)
 
-1. Utwórz wykres liniowy, aby pokazać temperatury w czasie rzeczywistym w czasie.
+1. Utwórz wykres liniowy, aby pokazać zachodzące w miarę upływu czasu zmiany temperatury w czasie rzeczywistym.
    1. Na stronie tworzenia raportu należy dodać wykres liniowy.
-   1. Na **pola** okienku rozwiń tabeli określonej podczas tworzenia zadania usługi analiza strumienia danych wyjściowych.
-   1. Przeciągnij **EventEnqueuedUtcTime** do **osi** na **wizualizacje** okienka.
-   1. Przeciągnij **temperatury** do **wartości**.
+   1. W okienku **Pola** rozwiń tabelę, która została wybrana podczas tworzenia danych wyjściowych zadania usługi Stream Analytics.
+   1. Przeciągnij element **EventEnqueuedUtcTime** do obszaru **Oś** w okienku **Wizualizacje**.
+   1. Przeciągnij element **temperature** (Temperatura) do obszaru **Wartości**.
 
-      Teraz jest tworzony wykres liniowy. Oś x Wyświetla datę i godzinę w strefie czasowej UTC. Oś y Wyświetla temperatury z czujnika.
+      Teraz jest tworzony wykres liniowy. Na osi X jest wyświetlana data i godzina w strefie czasowej UTC. Na osi Y jest wyświetlana temperatura z czujnika.
 
       ![Dodaj wykres liniowy dla temperatury raport Microsoft Power BI](media/iot-hub-live-data-visualization-in-power-bi/8_add-line-chart-for-temperature-to-power-bi-report-microsoft.png)
 
-1. Utwórz inną wykres liniowy do wyświetlenia w czasie rzeczywistym wilgotności wraz z upływem czasu. Aby to zrobić, wykonaj te same czynności powyżej i umieścić **EventEnqueuedUtcTime** na osi x i **wilgotności** na osi y.
+1. Utwórz inny wykres liniowy, aby przedstawić zachodzące w miarę upływu czasu zmiany wilgotności w czasie rzeczywistym. Aby to zrobić, wykonaj te same czynności powyżej i umieścić **EventEnqueuedUtcTime** na osi x i **wilgotności** na osi y.
 
    ![Dodaj wykres wiersza wilgotność raport Microsoft Power BI](media/iot-hub-live-data-visualization-in-power-bi/9_add-line-chart-for-humidity-to-power-bi-report-microsoft.png)
 
-1. Kliknij przycisk **zapisać** Aby zapisać raport.
+1. Kliknij przycisk **Zapisz**, aby zapisać raport.
 1. Kliknij przycisk **pliku** > **publikowanie w sieci web**.
 1. Kliknij przycisk **kod osadzania, Utwórz**, a następnie kliknij przycisk **publikowania**.
 

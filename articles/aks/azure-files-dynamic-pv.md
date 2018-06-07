@@ -6,14 +6,15 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 05/21/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 991db1fc32ae89ab04ca040cfb6e8d59ffe5262f
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d3e92902e711ba2b1664c6497ecb66f035ea9308
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597505"
 ---
 # <a name="persistent-volumes-with-azure-files"></a>Woluminy trwałe pliki Azure
 
@@ -23,29 +24,20 @@ Aby uzyskać więcej informacji na temat Kubernetes trwałe woluminów, w tym tw
 
 ## <a name="create-storage-account"></a>Tworzenie konta magazynu
 
-Podczas dynamicznego tworzenia udziału plików na platformę Azure jako wolumin Kubernetes, wszystkie konta magazynu można tak długo, jak jest w tej samej grupie zasobów co klaster AKS. Jeśli to konieczne, Utwórz konto magazynu w tej samej grupie zasobów co klaster AKS.
-
-Aby zidentyfikować grupę odpowiednich zasobów, użyj [listy grup az] [ az-group-list] polecenia.
+Podczas dynamicznego tworzenia udziału plików na platformę Azure jako wolumin Kubernetes, dowolne konto magazynu może służyć tak długo, jak jest AKS **węzła** grupy zasobów. Pobierz nazwę grupy zasobów z [Pokaż zasobów az] [ az-resource-show] polecenia.
 
 ```azurecli-interactive
-az group list --output table
-```
+$ az resource show --resource-group myResourceGroup --name myAKSCluster --resource-type Microsoft.ContainerService/managedClusters --query properties.nodeResourceGroup -o tsv
 
-Wyszukaj grupy zasobów o nazwie podobny do `MC_clustername_clustername_locaton`.
-
-```
-Name                                 Location    Status
------------------------------------  ----------  ---------
-MC_myAKSCluster_myAKSCluster_eastus  eastus      Succeeded
-myAKSCluster                         eastus      Succeeded
+MC_myResourceGroup_myAKSCluster_eastus
 ```
 
 Użyj [Tworzenie konta magazynu az] [ az-storage-account-create] polecenie, aby utworzyć konto magazynu.
 
-Za pomocą tego przykładu, zaktualizuj `--resource-group` z nazwą grupy zasobów i `--name` na wybraną nazwę.
+Aktualizacja `--resource-group` z nazwą grupy zasobów zebranych w ostatnim kroku i `--name` na wybraną nazwę.
 
 ```azurecli-interactive
-az storage account create --resource-group MC_myAKSCluster_myAKSCluster_eastus --name mystorageaccount --location eastus --sku Standard_LRS
+az storage account create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name mystorageaccount --location eastus --sku Standard_LRS
 ```
 
 ## <a name="create-storage-class"></a>Tworzenie klasy magazynu
@@ -76,7 +68,7 @@ kubectl apply -f azure-file-sc.yaml
 
 Oświadczenie trwały wolumin (PVC) używa obiektu klasy magazynu, aby dynamicznie inicjują obsługę udziału plików na platformę Azure.
 
-Następujące yaml programu może służyć do tworzenia oświadczeń trwały wolumin `5GB` rozmiaru w `ReadWriteOnce` dostępu. Aby uzyskać więcej informacji o trybach dostępu, zobacz [Kubernetes trwały wolumin] [ access-modes] dokumentacji.
+Następujące yaml programu może służyć do tworzenia oświadczeń trwały wolumin `5GB` rozmiaru w `ReadWriteMany` dostępu. Aby uzyskać więcej informacji o trybach dostępu, zobacz [Kubernetes trwały wolumin] [ access-modes] dokumentacji.
 
 Utwórz plik o nazwie `azure-file-pvc.yaml` i skopiuj następujące yaml programu. Upewnij się, że `storageClassName` odpowiada klasy magazynowania utworzone w ostatnim kroku.
 
@@ -87,7 +79,7 @@ metadata:
   name: azurefile
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   storageClassName: azurefile
   resources:
     requests:
@@ -209,6 +201,7 @@ Dowiedz się więcej o Kubernetes woluminów trwałego za pomocą usługi pliki 
 <!-- LINKS - internal -->
 [az-group-create]: /cli/azure/group#az_group_create
 [az-group-list]: /cli/azure/group#az_group_list
+[az-resource-show]: /cli/azure/resource#az-resource-show
 [az-storage-account-create]: /cli/azure/storage/account#az_storage_account_create
 [az-storage-create]: /cli/azure/storage/account#az_storage_account_create
 [az-storage-key-list]: /cli/azure/storage/account/keys#az_storage_account_keys_list

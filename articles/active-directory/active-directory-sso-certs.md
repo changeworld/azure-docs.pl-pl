@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 9924d06f149b0d234cd8f5546cab8abbab740aac
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7041bd19c464c0ce6fb0f3d695a87581fed290e5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592026"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Zarządzanie certyfikatami federacyjnego logowania jednokrotnego w usłudze Azure Active Directory
 W tym artykule omówiono typowe pytania i informacje dotyczące certyfikatów, które usługi Azure Active Directory (Azure AD) tworzy ustanowienie federacyjnej rejestracji jednokrotnej (SSO) do aplikacji SaaS. Dodaj aplikacje z galerii aplikacji Azure AD lub przy użyciu szablonu z systemem innym niż galerii aplikacji. Konfigurowanie aplikacji przy użyciu opcji federacyjnego logowania jednokrotnego.
@@ -57,6 +58,15 @@ Zrzuty ekranu używać usług Salesforce przykładach, ale te kroki można zasto
 6. Nowy certyfikat jest teraz dostępne do pobrania. Kliknij przycisk **certyfikatu** link jej pobranie. W tym momencie certyfikat nie jest aktywne. Przeskocz do tego certyfikatu, należy wybrać **uaktywnić nowego świadectwa** pole wyboru i kliknij przycisk **zapisać**. Z tego punktu Usługi Azure AD jest uruchamiany przy użyciu nowego certyfikatu podpisywania odpowiedzi.
 
 7.  Aby dowiedzieć się, jak można przekazać certyfikatu do określonej aplikacji SaaS, kliknij przycisk **samouczek konfiguracji aplikacji w widoku** łącza.
+
+## <a name="certificate-expiration-notification-email"></a>Wiadomość e-mail z powiadomieniem wygaśnięcia certyfikatu
+
+Usługi Azure AD będzie wysyłać wiadomości e-mail powiadomienia 60, 30 i 7 dni przed wygaśnięciem certyfikatu SAML. Aby określić adres e-mail wysłać powiadomienie, gdzie:
+
+- W przypadku usługi Azure Active Directory pojedynczy znak na stronie aplikacji przejść na pole wiadomość E-mail z powiadomieniem.
+- Wprowadź adres e-mail, na który powinny być przesyłane powiadomienia e-mail wygaśnięcia certyfikatu. Domyślnie to pole używa adresu e-mail administratora, który dodał aplikacji.
+
+Otrzymasz wiadomość e-mail z powiadomieniem z aadnotification@microsoft.com. Aby uniknąć poczty e-mail, przechodząc do lokalizacji wiadomości-śmieci, należy dodać tę wiadomość e-mail do Twoich kontaktów. 
 
 ## <a name="renew-a-certificate-that-will-soon-expire"></a>Odnów certyfikat, który wkrótce wygaśnie
 Poniższe kroki odnawiania powinno spowodować bez przestojów istotne dla użytkowników. Zrzuty ekranu w tej sekcji funkcji Salesforce jako przykład, ale te kroki można zastosować do wszystkich federacyjnych aplikacji SaaS.

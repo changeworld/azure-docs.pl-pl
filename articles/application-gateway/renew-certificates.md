@@ -6,19 +6,20 @@ author: vhorne
 manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 05/18/2018
 ms.author: victorh
-ms.openlocfilehash: b125f707e8de17764701e981736a53492e5e756c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: b44a57fe8ebcc985d3ab66ea04936a1558d00863
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598270"
 ---
 # <a name="renew-application-gateway-certificates"></a>Odnów certyfikaty bramy aplikacji
 
 W pewnym momencie należy odnowić certyfikaty użytkownika, po skonfigurowaniu bramy aplikacji do szyfrowania SSL.
 
-Mogą odnowić certyfikat skojarzony z odbiornikiem przy użyciu portalu Azure lub programu Azure PowerShell:
+Mogą odnowić certyfikat skojarzony z odbiornikiem przy użyciu albo portalu Azure, programu Azure PowerShell lub interfejsu wiersza polecenia Azure:
 
 ## <a name="azure-portal"></a>Azure Portal
 
@@ -32,7 +33,7 @@ Przekaż nowy certyfikat PFX, nadaj mu nazwę, wpisz hasło, a następnie klikni
 
 Aby odnowić certyfikat przy użyciu programu Azure PowerShell, użyj następującego polecenia cmdlet:
 
-```PowerShell
+```azurepowershell-interactive
 $appgw = Get-AzureRmApplicationGateway `
   -ResourceGroupName <ResourceGroup> `
   -Name <AppGatewayName>
@@ -44,6 +45,16 @@ $password = ConvertTo-SecureString `
 
 set-azureRmApplicationGatewaySSLCertificate -Name <oldcertname> `
 -ApplicationGateway $appgw -CertificateFile <newcertPath> -Password $password
+```
+## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
+
+```azurecli-interactive
+az network application-gateway ssl-cert update \
+  -n "<CertName>" \
+  --gateway-name "<AppGatewayName>" \
+  -g "ResourceGroupName>" \
+  --cert-file <PathToCerFile> \
+  --cert-password "<password>"
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

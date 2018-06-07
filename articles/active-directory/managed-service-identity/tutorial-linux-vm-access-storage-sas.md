@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 57d4a3767d0ad02f136686d95703817055566c33
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: e5e08985f88c7cf3018ecadce2cabac743e4bd37
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594856"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Samouczek: Umożliwia dostęp do usługi Azure Storage za pomocą poświadczeń sygnatury dostępu Współdzielonego maszyny Wirtualnej systemu Linux zarządzanych tożsamości usługi
 
@@ -253,10 +254,7 @@ Odpowiedź:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Omówienie MSI, zobacz [omówienie zarządzane tożsamość usługi](overview.md).
-- Aby dowiedzieć się, jak to zrobić na tej samej instrukcji za pomocą klucza konta magazynu, zobacz [użyć maszyny Wirtualnej systemu Linux zarządzanych tożsamości usługi dostępu do magazynu Azure](tutorial-linux-vm-access-storage.md)
-- Aby uzyskać więcej informacji o funkcji sygnatury dostępu Współdzielonego konta usługi Azure Storage zobacz:
-  - [Przy użyciu sygnatury dostępu współdzielonego (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1.md)
-  - [Utworzenie sygnatury dostępu Współdzielonego usługi](/rest/api/storageservices/Constructing-a-Service-SAS.md)
+W tym samouczku przedstawiono sposób korzystania z tożsamości usługi zarządzane na maszynie wirtualnej systemu Linux dostęp do magazynu Azure przy użyciu poświadczeń sygnatury dostępu Współdzielonego.  Aby dowiedzieć się więcej o SAS magazynu Azure, zobacz:
 
-W poniższej sekcji komentarzy umożliwia wyrazić swoją opinię i pomóc nam dostosować i kształtu zawartość.
+> [!div class="nextstepaction"]
+>[Przy użyciu sygnatury dostępu współdzielonego (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)

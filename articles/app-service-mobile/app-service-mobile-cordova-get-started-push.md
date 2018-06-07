@@ -1,10 +1,10 @@
 ---
-title: "Dodawanie powiadomień wypychanych do aplikacji oprogramowania Apache Cordova za pomocą funkcji Mobile Apps w usłudze Azure App Service | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać do wysyłania powiadomień wypychanych do aplikacji platformy Apache Cordova Mobile Apps."
+title: Dodawanie powiadomień wypychanych do aplikacji oprogramowania Apache Cordova za pomocą funkcji Mobile Apps w usłudze Azure App Service | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać do wysyłania powiadomień wypychanych do aplikacji platformy Apache Cordova Mobile Apps.
 services: app-service\mobile
 documentationcenter: javascript
 manager: crdun
-editor: 
+editor: ''
 author: conceptdev
 ms.assetid: 92c596a9-875c-4840-b0e1-69198817576f
 ms.service: app-service-mobile
@@ -14,11 +14,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 6af5fa51f2e6553431b9f0aa2dbb368651e7e209
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 13c1a53cfa3f998c9e3fa3ee1ee2dcec37357095
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597998"
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Dodawanie powiadomień wypychanych do aplikacji platformy Apache Cordova
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -33,13 +34,13 @@ Ten samouczek zakłada, że masz aplikację oprogramowania Apache Cordova, któr
 
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
-* Komputer z programem [Visual Studio Community 2015] [ 2] lub nowszy 
+* Komputer z programem [Visual Studio Community 2015] [ 2] lub nowszy
 * [Visual Studio Tools for Apache Cordova][4]
 * [Aktywne konto platformy Azure][3]
 * Ukończono [szybkiego startu Apache Cordova] [ 5] projektu
 * (Android) A [konto Google] [ 6] z ze zweryfikowanym adresem e-mail
 * (iOS) [Członkostwo w programie dla deweloperów firmy Apple] [ 7] i urządzenia z systemem iOS (iOS Simulator nie obsługuje powiadomienia wypychane)
-* (System Windows) A [konto dewelopera w Sklepie Windows] [ 8] i urządzeń z systemem Windows 10
+* (System Windows) A [konto dewelopera w sklepie Microsoft] [ 8] i urządzeń z systemem Windows 10
 
 ## <a name="configure-hub"></a>Konfigurowanie Centrum powiadomień
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]

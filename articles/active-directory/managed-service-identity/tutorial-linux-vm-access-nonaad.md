@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 74bc28619996b7cd52d2280d4d8b6288aa7c904f
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 280b1340c094a89ad5980178947045b707128807
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595023"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Samouczek: Umożliwia dostęp do usługi Azure Key Vault Linux VM zarządzane usługi tożsamości (MSI) 
 
@@ -134,12 +135,12 @@ Aby wykonać te kroki, należy klient SSH.  Jeśli korzystasz z systemu Windows,
     
 Po klucz tajny zostały pobrane z magazynu kluczy, służy ona do uwierzytelniania do usługi, która wymaga podania nazwy i hasła.
 
+## <a name="next-steps"></a>Kolejne kroki
 
-## <a name="related-content"></a>Zawartość pokrewna
+W tym samouczku przedstawiono sposób korzystania z tożsamości usługi zarządzane na maszynie wirtualnej systemu Linux można uzyskać dostępu do usługi Azure Key Vault.  Aby dowiedzieć się więcej na temat usługi Azure Key Vault, zobacz:
 
-- Omówienie MSI, zobacz [omówienie zarządzane tożsamość usługi](overview.md).
-
-W poniższej sekcji komentarzy umożliwia wyrazić swoją opinię i pomóc nam dostosować i kształtu zawartość.
+> [!div class="nextstepaction"]
+>[Usługa Azure Key Vault](/azure/key-vault/key-vault-whatis)
 
 
 

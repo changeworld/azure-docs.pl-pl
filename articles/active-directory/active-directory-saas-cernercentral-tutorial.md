@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/16/2018
+ms.date: 05/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 3a7a0eab4e7e3a6e030069c3562a501fc696060f
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 0440d4f5db9b8b08d1d143495b1d3118537c3823
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589155"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a>Samouczek: Integracji Azure Active Directory z centralnego Cerner
 
@@ -64,7 +65,7 @@ Aby skonfigurować integrację usługi Azure AD centralnego Cerner, należy doda
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Aplikacje][2]
-    
+
 3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
@@ -109,7 +110,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_url.png)
 
     a. W **identyfikator** tekstowym, wpisz wartość, przy użyciu następujących wzorców:
-    
+
     | |
     |--|
     | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/metadata` |
@@ -120,14 +121,14 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     |--|
     | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/sso` |
     | `https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/sso` |
-    
+
     > [!NOTE]
     > Wartości te nie są rzeczywistych. Rzeczywisty identyfikator i adres URL odpowiedzi, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej centralnego Cerner](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations) uzyskać te wartości.
 
 4. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk Kopiuj, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go do Notatnika.
-    
+
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-cernercentral-tutorial/tutorial_metadataurl.png)
-     
+
 5. Kliknij przycisk **zapisać** przycisku.
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-cernercentral-tutorial/tutorial_general_400.png)
@@ -135,7 +136,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 6. Skonfigurować logowanie jednokrotne w **centralnego Cerner** stronie, musisz wysłać **adres Url metadanych Federacji aplikacji** do [Obsługa centralnego Cerner](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations). Skonfigurowano SSO po stronie aplikacji, aby ukończyć integracji.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta. 
+Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
 
 ![Tworzenie użytkowników usługi Azure AD][100]
 
@@ -146,15 +147,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-cernercentral-tutorial/create_aaduser_01.png) 
 
 2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
-    
+
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-cernercentral-tutorial/create_aaduser_02.png) 
 
 3. Aby otworzyć **użytkownika** okna dialogowego, kliknij przycisk **Dodaj**.
- 
+
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-cernercentral-tutorial/create_aaduser_03.png) 
 
 4. Na **użytkownika** okna dialogowego strony, należy wykonać następujące czynności:
- 
+
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-cernercentral-tutorial/create_aaduser_04.png) 
 
     a. W **nazwa** pole tekstowe, typ **BrittaSimon**.
@@ -164,30 +165,30 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
     d. Kliknij przycisk **Utwórz**.
- 
+
 ### <a name="creating-a-cerner-central-test-user"></a>Tworzenie użytkownika testowego Cerner środkowe
 
-**Środkowe Cerner** aplikacji pozwala na uwierzytelnianie z każdego dostawcy tożsamości federacyjnych. Jeśli użytkownik będzie mógł logować się do strony głównej aplikacji, są federacyjnych i nie potrzebują ręcznej obsługi.
+**Środkowe Cerner** aplikacji pozwala na uwierzytelnianie z każdego dostawcy tożsamości federacyjnych. Jeśli użytkownik będzie mógł logować się do strony głównej aplikacji, są federacyjnych i nie potrzebują ręcznej obsługi. Więcej informacji można znaleźć [tutaj](active-directory-saas-cernercentral-provisioning-tutorial.md) na temat konfigurowania użytkowników automatycznego inicjowania obsługi administracyjnej.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisanie użytkownika testowego usługi Azure AD
 
 W tej sekcji musisz włączyć Simona Britta do użycia usługi Azure logowania jednokrotnego za udzielanie dostępu do centralnego Cerner.
 
-![Przypisz użytkownika][200] 
+![Przypisz użytkownika][200]
 
 **Aby przypisać centralne Cerner Simona Britta, wykonaj następujące czynności:**
 
 1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
-    ![Przypisz użytkownika][201] 
+    ![Przypisz użytkownika][201]
 
 2. Na liście aplikacji zaznacz **centralnego Cerner**.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_app.png) 
+    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_app.png)
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Przypisz użytkownika][202] 
+    ![Przypisz użytkownika][202]
 
 4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
@@ -198,7 +199,7 @@ W tej sekcji musisz włączyć Simona Britta do użycia usługi Azure logowania 
 6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
-    
+
 ### <a name="testing-single-sign-on"></a>Testowanie rejestracji jednokrotnej
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
@@ -209,8 +210,7 @@ Po kliknięciu kafelka Cerner centralnego w panelu dostępu należy należy pobr
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
-
-
+* [Skonfiguruj Inicjowanie obsługi użytkowników](active-directory-saas-cernercentral-provisioning-tutorial.md)
 
 <!--Image references-->
 

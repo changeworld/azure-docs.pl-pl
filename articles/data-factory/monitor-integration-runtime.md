@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/23/2017
 ms.author: douglasl
-ms.openlocfilehash: 4c857af02e104940559cb86daa3ccd208d8e35a1
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 763b13849470079e24aac6aff45584bac33403f0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34620541"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitor środowiska uruchomieniowego integracji w fabryce danych Azure  
 **Integracja środowiska uruchomieniowego** jest używany przez fabryki danych Azure zapewnienie różne funkcje integracji danych w różnych środowiskach sieci infrastruktury obliczeniowej. Istnieją trzy typy środowisk uruchomieniowych integracji oferowane przez fabrykę danych:
@@ -181,17 +182,17 @@ Przykładowe dane wyjściowe (przy założeniu, że istnieją dwa węzły skojar
 | Stan | Opis |
 | ------ | ----------- | 
 | Uruchamianie | Ten węzeł jest w trakcie przygotowywania. |
-| Dostępna | Ten węzeł jest gotowe do wdrożenia/wykonywania pakietów SSIS. |
+| Dostępne | Ten węzeł jest gotowe do wdrożenia/wykonywania pakietów SSIS. |
 | Odtwarzanie | Ten węzeł jest on naprawiony/ponowne uruchomienie. |
 | Niedostępny | Ten węzeł nie jest gotowe do wdrożenia/wykonywania pakietów SSIS i można wykonać błędy/problemy, które można rozwiązać. |
 
 ### <a name="status-overall-azure-ssis-integration-runtime"></a>Stan (ogólną Azure SSIS integracji runtime)
 
-| Ogólne informacje o stanie | Opis | 
+| Stan ogólny | Opis | 
 | -------------- | ----------- | 
 | Początkowa | Węzły Twojego środowiska uruchomieniowego integracji Azure SSIS nie zostały przydzielone przygotowane. | 
 | Uruchamianie | Węzły sieci środowiska uruchomieniowego integracji usług SSIS Azure są przydzielone przygotowane i rozliczeń została uruchomiona. |
-| Uruchomiono | Węzły sieci środowiska uruchomieniowego integracji usług SSIS Azure zostały przydzielone przygotowane i są gotowe do wdrożenia/wykonywania pakiety usług SSIS. |
+| Rozpoczęto | Węzły sieci środowiska uruchomieniowego integracji usług SSIS Azure zostały przydzielone przygotowane i są gotowe do wdrożenia/wykonywania pakiety usług SSIS. |
 | Zatrzymywanie  | Zwalnianie węzły Twojego środowiska uruchomieniowego integracji usług SSIS Azure. |
 | Zatrzymano | Węzły Twojego środowiska uruchomieniowego integracji usług SSIS Azure zostały zwolnione i rozliczeń została zatrzymana. |
 
@@ -199,7 +200,7 @@ Zobacz następujące artykuły, aby dowiedzieć się więcej na temat środowisk
 
 - [Środowisko uruchomieniowe integracji usług SSIS Azure](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ten artykuł zawiera informacje o pojęciach dotyczących środowisk uruchomieniowych integracji ogólnie tym podczerwieni Azure SSIS. 
 - [Samouczek: Wdrażanie pakietów usług SSIS na platformie Azure](tutorial-create-azure-ssis-runtime-portal.md). Ten artykuł zawiera szczegółowe instrukcje dotyczące tworzenia środowiska Azure-SSIS IR i używania bazy danych Azure SQL do hostowania wykazu usług SSIS. 
-- [How to: Create an Azure-SSIS integration runtime (Jak: Tworzenie środowiska Azure SSIS Integration Runtime)](create-azure-ssis-integration-runtime.md). W tym artykule rozszerzenie samouczka i zawiera instrukcje dotyczące przy użyciu wystąpienia zarządzane Azure SQL (wersja zapoznawcza) i dołączenie IR do sieci wirtualnej. 
+- [How to: Create an Azure-SSIS integration runtime (Jak: Tworzenie środowiska Azure SSIS Integration Runtime)](create-azure-ssis-integration-runtime.md). Ten artykuł stanowi rozszerzenie samouczka i zawiera instrukcje dotyczące używania wystąpienia zarządzanego Azure SQL (wersja zapoznawcza) oraz dołączania środowiska IR do sieci wirtualnej. 
 - [Manage an Azure-SSIS IR (Zarządzanie środowiskiem Azure-SSIS IR)](manage-azure-ssis-integration-runtime.md). W tym artykule przedstawiono sposób zatrzymywania, uruchamiania lub usuwania środowiska Azure-SSIS IR. Zawiera on również instrukcje skalowania środowiska Azure-SSIS IR do wewnątrz za pomocą dodawania do niego węzłów. 
 - [Join an Azure-SSIS IR to a VNet (Dołączanie środowiska Azure-SSIS IR do sieci wirtualnej)](join-azure-ssis-integration-runtime-virtual-network.md). Ten artykuł zawiera podstawowe informacje na temat dołączania środowiska Azure-SSIS IR do sieci wirtualnej platformy Azure. Opisano w nim kroki konfigurowania sieci wirtualnej za pomocą witryny Azure Portal tak, aby umożliwić dołączanie środowiska Azure-SSIS IR do sieci wirtualnej. 
 

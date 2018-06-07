@@ -8,14 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
-ms.openlocfilehash: b82ee060ff3f25e7a92c85114d457ecb349159b3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5180a490a543b6cfc2a8129423f0e663de2e06e1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619426"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Skopiuj narzędzie dane z fabryki danych Azure
 Narzędzie Kopia fabryki danych Azure ułatwia i optymalizuje proces wprowadzania danych w usłudze data lake, który zazwyczaj jest to pierwszy krok w scenariuszu integracji danych na całej trasie.  Zaoszczędzić czas, zwłaszcza jeśli używasz usługi fabryka danych Azure do pozyskiwania danych ze źródła danych po raz pierwszy. Korzyści wynikające ze stosowania tego narzędzia, należą:
@@ -90,7 +91,7 @@ Załóżmy, że podania folderów w następującym formacie:
 
 Kliknij przycisk **Przeglądaj** przycisk dla **pliku lub folderu**, przejdź do jednej z tych folderów (na przykład 2016 -> 03 -> 01 -> 02) i kliknij przycisk **wybierz**. Powinny pojawić się 2016/03/01/02 w polu tekstowym. 
 
-Następnie zastąp **2016** z **{year}**, **03** z **{month}**, **01** z **{day}** , i **02** z **{godzina}**i naciśnij klawisz **kartę** klucza. Powinny pojawić się listy rozwijanej, aby wybrać format tych zmiennych:
+Następnie zastąp **2016** z **{year}**, **03** z **{month}**, **01** z **{day}** , i **02** z **{godzina}** i naciśnij klawisz **kartę** klucza. Powinny pojawić się listy rozwijanej, aby wybrać format tych zmiennych:
 
 ![Filtr pliku lub folderu](./media/copy-data-tool/filter-file-or-folder.png)
 

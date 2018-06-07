@@ -1,30 +1,32 @@
 ---
-title: "Często zadawane pytania — Azure Active Directory Domain Services | Dokumentacja firmy Microsoft"
-description: "Często zadawane pytania dotyczące usług domenowych Azure Active Directory"
+title: Często zadawane pytania — Azure Active Directory Domain Services | Dokumentacja firmy Microsoft
+description: Często zadawane pytania dotyczące usług domenowych Azure Active Directory
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 48731820-9e8c-4ec2-95e8-83dba1e58775
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 05/30/2018
 ms.author: maheshu
-ms.openlocfilehash: 1cfd0570315d5a1c6587ade164edf0a837453406
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: aab6e893a6da1c5b877498f2bf6cbeaa6d0a5c2c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587787"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: Często zadawane pytania (FAQ)
 Ta strona zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Active Directory Domain Services. Sprawdzanie wstecz do aktualizacji.
 
 ## <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
-Zapoznaj się [przewodnik rozwiązywania problemów](active-directory-ds-troubleshooting.md) rozwiązania typowych problemów napotykanych podczas konfigurowania lub administrowania usługami domenowymi Azure AD.
+Zapoznaj się [przewodnik rozwiązywania problemów](active-directory-ds-troubleshooting.md) dla rozwiązania typowych problemów z administrowaniem w usługach domenowych Azure AD lub konfigurowanie.
 
 ## <a name="configuration"></a>Konfigurowanie
 ### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>Można utworzyć wiele domen zarządzanych w jednym katalogu usługi Azure AD?
@@ -55,7 +57,7 @@ Tak. Zobacz [sposób, aby włączyć domenowych Azure AD usług przy użyciu pro
 Nie. Domena udostępniane przez usługi domenowe Azure AD jest domeną zarządzaną. Nie trzeba było możliwe, konfigurowania i inaczej Zarządzanie kontrolerami domeny dla tej domeny — te działania zarządzania są obsługiwane jako usługa przez firmę Microsoft. W związku z tym nie można dodać dodatkowe kontrolery domeny (odczytu i zapisu lub tylko do odczytu) dla domeny zarządzanej.
 
 ### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>Goście zaproszenie do katalogu Moje można użyć usług domenowych Azure AD?
-Nie. Goście zaproszenie do używania usługi Azure AD directory [B2B usługi Azure AD](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) zaproszenia procesu są sycned do domeny zarządzanej usług domenowych Azure AD. Hasła dla tych użytkowników nie są przechowywane w katalogu usługi Azure AD. W związku z tym usługi domenowe Azure AD nie ma możliwości synchronizacji NTLM i Kerberos, tworzy skrót dla tych użytkowników do domeny zarządzanej. W związku z tym takich użytkowników nie może zalogować się do domeny zarządzanej lub komputerów przyłączenia do domeny zarządzanej.
+Nie. Goście zaproszenie do używania usługi Azure AD directory [B2B usługi Azure AD](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) zsynchronizowaniu procesu zaproszenie do domeny zarządzanej usług domenowych Azure AD. Hasła dla tych użytkowników nie są przechowywane w katalogu usługi Azure AD. W związku z tym usługi domenowe Azure AD nie ma możliwości synchronizacji NTLM i Kerberos, tworzy skrót dla tych użytkowników do domeny zarządzanej. W związku z tym takich użytkowników nie może zalogować się do domeny zarządzanej lub dołączania komputerów do domeny zarządzanej.
 
 ## <a name="administration-and-operations"></a>Administracja i operacje
 ### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>Można podłączyć do kontrolera domeny dla mojej domeny zarządzanej przy użyciu pulpitu zdalnego?
@@ -65,13 +67,13 @@ Nie. Nie masz uprawnień do łączenia się z kontrolerami domeny dla domeny zar
 Elementy członkowskie grupy administracyjnej "Administratorzy kontrolera domeny usługi AAD" można maszyny przyłączania do domeny. Ponadto Członkowie tej grupy są przyznawane pulpitu dostęp zdalny do komputerów, na których został przyłączony do domeny.
 
 ### <a name="do-i-have-domain-administrator-privileges-for-the-managed-domain-provided-by-azure-ad-domain-services"></a>Czy mają uprawnienia administratora domeny dla domeny zarządzanej udostępniane przez usługi domenowe Azure AD?
-Nie. Nie udzielono uprawnienia administracyjne do domeny zarządzanej. Zarówno domeny administratora, jak i administratora przedsiębiorstwa uprawnienia nie są dostępne do użycia w ramach domeny. Istniejącego administratora domeny lub grupy administratora przedsiębiorstwa w katalogu usługi Azure AD również nie są przyznawane uprawnienia administratora domeny/przedsiębiorstwa w domenie.
+Nie. Nie udzielono uprawnienia administracyjne do domeny zarządzanej. Zarówno domeny administratora, jak i administratora przedsiębiorstwa uprawnienia nie są dostępne do użycia w ramach domeny. Również członkowie administrator domeny lub grup administratorów przedsiębiorstwa w usłudze Active Directory lokalnych nie są przyznawane uprawnienia administratora domeny/enterprise na domeny zarządzanej.
 
 ### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>Można zmodyfikować członkostwa grupy przy użyciu protokołu LDAP lub innych narzędzi administracyjnych AD w domenach zarządzanych?
 Nie. Nie można zmodyfikować członkostwa w grupach w domenach obsługiwanych przez usługi domenowe Azure AD. To samo dotyczy atrybuty użytkownika. Można jednak zmienić atrybuty użytkownika lub członkostwa w grupach w usłudze Azure AD lub w domenie lokalnej. Takie zmiany są synchronizowane automatycznie w usługach domenowych Azure AD.
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Jak długo trwa zmiany można wprowadzić w katalogu Moje usługi Azure AD mają być wyświetlane w mojej domeny zarządzanej?
-Zmiany wprowadzone w katalogu usługi Azure AD przy użyciu interfejsu użytkownika programu Azure AD lub programu PowerShell są synchronizowane z domeny zarządzanej. Ten proces synchronizacji działa w tle. Po zakończeniu jednorazowe wstępna synchronizacja katalogu zwykle trwa około 20 minut, aby zmiany wprowadzone w usłudze Azure AD zostaną odzwierciedlone w domeny zarządzanej.
+Zmiany wprowadzone w katalogu usługi Azure AD przy użyciu interfejsu użytkownika programu Azure AD lub programu PowerShell są synchronizowane z domeny zarządzanej. Ten proces synchronizacji działa w tle. Po ukończeniu synchronizacji początkowej zwykle trwa około 20 minut, aby zmiany wprowadzone w usłudze Azure AD zostaną odzwierciedlone w domeny zarządzanej.
 
 ### <a name="can-i-extend-the-schema-of-the-managed-domain-provided-by-azure-ad-domain-services"></a>Czy można rozszerzyć schemat domeny zarządzanej udostępniane przez usługi domenowe Azure AD?
 Nie. Schemat jest zarządzany przez firmę Microsoft do domeny zarządzanej. Rozszerzenia schematu nie są obsługiwane przez usługi domenowe Azure AD.
@@ -81,6 +83,9 @@ Tak. Członków grupy "Administratorzy kontrolera domeny usługi AAD" są przyzn
 
 ### <a name="what-is-the-password-lifetime-policy-on-a-managed-domain"></a>Co to jest okres istnienia zasad haseł w domenie zarządzanej?
 Domyślny okres istnienia hasła w domenie AD Azure domeny zarządzanej usług to 90 dni. Okres istnienia tego hasła nie jest zsynchronizowany z okresu istnienia hasło skonfigurowane w usłudze Azure AD. W związku z tym może być sytuacja, gdy wygaśnie po upływie domeny zarządzanej hasła użytkowników, ale są nadal ważne w usłudze Azure AD. W takich sytuacjach użytkownicy będą musieli zmienić swoje hasło w usłudze Azure AD i nowe hasło będzie synchronizować do domeny zarządzanej. Ponadto 'hasło — czy — nie wygasa' i "user-must-change-password-at-next-logon" atrybuty dla kont użytkowników nie są zsynchronizowane do domeny zarządzanej.
+
+### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Usługi domenowe Azure AD zapewnia ochronę blokady konta AD?
+Tak. Pięć nieudanych próbach wpisania hasła w ciągu 2 minut na domeny zarządzanej, że konto użytkownika zostało zablokowane przez 30 minut. Po 30 minutach konto użytkownika jest automatycznie odblokowane. Nieudanych próbach wpisania hasła na domeny zarządzanej nie zablokowania konta użytkownika w usłudze Azure AD. Konto użytkownika jest zablokowane tylko w swojej domenie zarządzanych usług domenowych Azure AD.
 
 ## <a name="billing-and-availability"></a>Rozliczeń i dostępności
 ### <a name="is-azure-ad-domain-services-a-paid-service"></a>Jest usługą płatną usług domenowych Azure AD?

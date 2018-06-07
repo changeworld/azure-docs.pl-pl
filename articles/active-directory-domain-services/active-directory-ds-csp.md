@@ -1,24 +1,26 @@
 ---
-title: "Dostawców rozwiązań w chmurze Azure Active Directory Domain Services dla platformy Azure | Dokumentacja firmy Microsoft"
-description: "Usługi domenowe Azure Active Directory dla dostawców rozwiązań w chmurze Azure."
+title: Dostawców rozwiązań w chmurze Azure Active Directory Domain Services dla platformy Azure | Dokumentacja firmy Microsoft
+description: Usługi domenowe Azure Active Directory dla dostawców rozwiązań w chmurze Azure.
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: 56ccb219-11b2-4e43-9f07-5a76e3cd8da8
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: maheshu
-ms.openlocfilehash: 313c4853b0f585921739779bb764c50036c9ac8a
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: f8a6e73420f1b53b8c253842001e8227e48e7d4a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589529"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Usług domenowych Azure Active Directory (AD) dla dostawców rozwiązań w chmurze Azure (CSP)
 W tym artykule opisano, jak można użyć usług domenowych Azure AD w subskrypcji platformy Azure dostawcy usług Kryptograficznych.
@@ -84,7 +86,7 @@ Następujące istotne kwestie administrowanie domeną zarządzaną w subskrypcji
 * **Konto użytkownika utworzone dla administracją musi zostać dodany do grupy "Administratorzy kontrolera domeny usługi AAD":** grupy "Administratorzy kontrolera domeny usługi AAD" ma uprawnienia do wykonania niektórych zadań administracji delegowanej na domeny zarządzanej. Te zadania obejmują konfigurowanie usługi DNS, tworząc jednostki organizacyjne, administrowanie zasadami grupy itp. Dostawca usług Kryptograficznych partnera do wykonywania takich zadań na domeny zarządzanej konto użytkownika musi być utworzony w katalogu usługi Azure AD przez klienta. Poświadczenia dla tego konta muszą zostać udostępnione z agentami admin partnera dostawcy usług Kryptograficznych. Ponadto należy dodać konto tego użytkownika do grupy "Administratorzy kontrolera domeny usługi AAD", aby włączyć zadania konfiguracji na domeny zarządzanej, które można wykonać za pomocą tego konta użytkownika.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Rejestracja w programie Azure dostawcy usług Kryptograficznych](https://partnercenter.microsoft.com/partner/programs) i rozpocząć tworzenie biznesowych za pośrednictwem dostawcy usług w Chmurze Azure.
 * Zapoznaj się z listą [usług platformy Azure, które są dostępne w dostawcy usług Kryptograficznych Azure](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services).
 * [Włączanie usługi Azure AD Domain Services przy użyciu programu PowerShell](active-directory-ds-enable-using-powershell.md)

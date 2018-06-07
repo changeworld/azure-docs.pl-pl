@@ -12,13 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 05/22/2018
 ms.author: anwestg
-ms.openlocfilehash: 9554309522e4a1e60fd3599b9a19bcf9cf4bbefb
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f44e6e917058306e37b9eb99819afda76a742389
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604271"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Dodawanie dostawcy zasobów usługi aplikacji Azure stosu
 
@@ -66,6 +67,12 @@ Aby wdrożyć dostawcy zasobów usługi aplikacji, wykonaj następujące kroki:
         * Jeśli używasz usługi Azure Active Directory (Azure AD), wprowadź konto administratora usługi Azure AD i hasło podane podczas wdrażania usługi Azure stosu. Kliknij przycisk **Zaloguj**.
         * Jeśli używasz programu Active Directory Federation Services (AD FS), podaj konto administratora. Na przykład cloudadmin@azurestack.local. Wprowadź hasło, a następnie kliknij przycisk **logowania**.
     2. W **subskrypcji platformy Azure stosu** wybierz opcję **domyślny dostawca subskrypcji**.
+    
+    > [!NOTE]
+    > Usługi aplikacji można wdrożyć tylko do **domyślny dostawca subskrypcji** w tej chwili.  W przyszłej aktualizacji usługi aplikacji — zostanie wdrożona na nową subskrypcję pomiaru wprowadzone w 1804 stosu Azure i wszystkie istniejące wdrożenia będą migrowane do tej nowej subskrypcji również.
+    >
+    >
+    
     3. W **lokalizacji stosu Azure** wybierz lokalizację, do której odnosi się do regionu jest wdrażany do. Na przykład wybierz **lokalnego** Jeśli wdrażanie Azure stosu Development Kit.
 
     ![Instalator usługi aplikacji][3]

@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 4/30/2018
 ms.author: jlian
-ms.openlocfilehash: f55f878d53b3813ea2ff2510998d47820de76a6a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 308202addbca447ee0dab7a55a1ad2b3b6600a10
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603325"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Programowe tworzenie subskrypcji Azure Enterprise (wersja zapoznawcza)
 
@@ -175,7 +176,7 @@ W odpowiedzi, możesz wrócić `subscriptionOperation` obiektu monitorowania. Po
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
-Aby użyć tego modułu w wersji zapoznawczej, zainstaluj ją, uruchamiając `Install-Module AzureRM.Subscription -AllowPrerelease` pierwszy. Aby upewnić się, `-AllowPrerelease` works, zainstaluj najnowszą wersję PowerShellGet z [Get PowerShellGet Module](/powershell/gallery/psget/get_psget_module).
+Aby użyć tego modułu w wersji zapoznawczej, zainstaluj ją, uruchamiając `Install-Module AzureRM.Subscription -AllowPrerelease` pierwszy. Aby upewnić się, `-AllowPrerelease` works, zainstaluj najnowszą wersję PowerShellGet z [Get PowerShellGet Module](/powershell/gallery/installing-psget).
 
 Użyj [New-AzureRmSubscription](/powershell/module/azurerm.subscription.preview) wraz z `enrollmentAccount` obiekt o identyfikatorze jako `EnrollmentAccountObjectId` parametr, aby utworzyć nową subskrypcję. 
 
@@ -299,4 +300,4 @@ GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015
 * Na przykład dotyczące tworzenia subskrypcji przy użyciu platformy .NET, zobacz [przykładowy kod w serwisie GitHub](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core).
 * Aby dowiedzieć się więcej na temat usługi Azure Resource Manager i jej interfejsów API, zobacz [Omówienie usługi Azure Resource Manager](resource-group-overview.md).
 * Aby dowiedzieć się więcej na temat zarządzania dużą liczbą subskrypcji przy użyciu grup zarządzania, zobacz [organizowania zasobów z grupami zarządzania Azure](management-groups-overview.md)
-* Aby wyświetlić kompleksowe najlepszych rozwiązań dla dużych organizacji na Zarządzanie subskrypcją, zobacz [szkieletu Azure enterprise — ładu przetestowanego subskrypcji](resource-manager-subscription-governance.md)
+* Aby wyświetlić kompleksowe najlepszych rozwiązań dla dużych organizacji na Zarządzanie subskrypcją, zobacz [szkieletu Azure enterprise — ładu przetestowanego subskrypcji](/azure/architecture/cloud-adoption-guide/subscription-governance)

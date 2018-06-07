@@ -4,15 +4,16 @@ description: Opisuje, jak zasobów definicji zasad jest używane przez zasady us
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/07/2018
+ms.date: 05/24/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1937792290d973f3aee7fa3c0714f4667c21e79a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f864cf45b255ac26ccf0efac9a89683d1ae650b3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34601262"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -63,7 +64,7 @@ Na przykład następujące JSON zawiera zasadę, która ogranicza wdrożonym zas
 }
 ```
 
-Wszystkie próbki szablonu zasad Azure są [szablony zasad Azure](json-samples.md).
+Wszystkie przykłady zasad Azure są [Przykłady zasad](json-samples.md).
 
 ## <a name="mode"></a>Tryb
 
@@ -203,7 +204,7 @@ Obsługiwane są następujące pola:
 
 - `name`
 - `fullName`
-  - Zwraca pełną nazwę zasobu, włącznie z elementów nadrzędnych (na przykład "MójSerwer/mojabazadanych")
+  - Zwraca pełną nazwę zasobu. Pełna nazwa zasobu to nazwa zasobu reprezentowana przez wszystkie nazwy zasobu nadrzędnego (na przykład "MójSerwer/mojabazadanych").
 - `kind`
 - `type`
 - `location`
@@ -250,6 +251,8 @@ Wartość może być ciągiem lub obiekt do formatu JSON.
 
 Z **AuditIfNotExists** i **DeployIfNotExists** można ocenić istnienie powiązanych zasobów i Zastosuj regułę i ich wpływ, gdy ten zasób nie istnieje. Można na przykład wymagać, że dla wszystkich sieci wirtualnych jest wdrażany obserwatora sieciowego.
 Przykład inspekcję, gdy rozszerzenie maszyny wirtualnej nie została wdrożona, zobacz [inspekcji, jeśli rozszerzenie nie istnieje](scripts/audit-ext-not-exist.md).
+
+Aby uzyskać szczegółowe informacje dotyczące każdego skutku kolejności oceny, właściwości i przykłady, zobacz [opis zasad efekty](policy-effects.md).
 
 ## <a name="aliases"></a>Aliasy
 
@@ -391,4 +394,4 @@ Poniższy przykład przedstawia sposób tworzenia inicjatywą obsługi dwa tagi:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Przejrzyj przykłady szablonu zasad Azure w [szablony zasad Azure](json-samples.md).
+- Przejrzyj więcej przykładów w [Przykłady zasad Azure](json-samples.md).

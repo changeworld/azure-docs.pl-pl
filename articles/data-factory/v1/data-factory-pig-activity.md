@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: af0c19988c52760a681477a5cea7ebbc48492c83
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d65851f73ca3cc0bc85caff39b3a322900b78843
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622520"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Przekształcanie danych za pomocą działania Pig w fabryce danych Azure
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -86,10 +87,10 @@ Działanie HDInsight Pig w fabryce danych [potoku](data-factory-create-pipelines
 | name |Nazwa działania |Yes |
 | description |Tekst opisujący działanie służy do |Nie |
 | type |HDinsightPig |Yes |
-| Dane wejściowe |Co najmniej jeden dane wejściowe, używane na potrzeby działania Pig |Nie |
+| dane wejściowe |Co najmniej jeden dane wejściowe, używane na potrzeby działania Pig |Nie |
 | wyjścia |Co najmniej jeden dane wyjściowe, generowane przez działanie Pig |Yes |
 | linkedServiceName |Odwołanie do klastra usługi HDInsight zarejestrowany jako połączonej usługi z fabryki danych |Yes |
-| skrypt |Określ wbudowanego skryptu Pig |Nie |
+| Skrypt |Określ wbudowanego skryptu Pig |Nie |
 | Ścieżka skryptu |Umieść skrypt programu Pig w magazynie obiektów blob platformy Azure, a następnie podaj ścieżkę do pliku. Użyj właściwości 'script' lub "scriptPath". Nie można używać razem. Nazwa pliku jest rozróżniana wielkość liter. |Nie |
 | Definiuje |Określ parametry jako pary klucz wartość dla odwołania do skryptu Pig |Nie |
 

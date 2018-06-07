@@ -1,11 +1,11 @@
 ---
 title: 'Synchronizacja programu Azure AD Connect: Konfiguracja synchronizacji Azure AD Connect | Dokumentacja firmy Microsoft'
-description: "Przedstawiono sposób zmiany w konfiguracji synchronizacji Azure AD Connect."
+description: Przedstawiono sposób zmiany w konfiguracji synchronizacji Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 06c715cf5dbf039334adfde8b3111d9bfcb86568
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: bad1cbe0b142e146ada28f2af5d152973100e919
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595108"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Synchronizacja programu Azure AD Connect: zmiany w konfiguracji domyślnej
 Celem tego artykułu jest aby zademonstrować sposób wprowadzania zmian w domyślnej konfiguracji synchronizacji usługi Azure Active Directory (Azure AD) Connect. Ona instrukcje dla niektórych typowych scenariuszy. Z tym wiedzy należy wprowadzać proste zmiany własnych konfiguracją na podstawie własnych reguł biznesowych.
@@ -204,7 +206,7 @@ Przed włączeniem synchronizacji atrybut UserType, najpierw należy zdecydować
 
     Jeśli wybierzesz takie podejście, musi zapewnić wyznaczonych atrybutu jest wypełniana poprawną wartość dla wszystkich istniejących obiektów użytkowników w lokalnej usłudze Active Directory, które są synchronizowane z usługą Azure AD przed włączeniem synchronizacji atrybut UserType .
 
-- Alternatywnie wartość atrybut UserType może pochodzić od innych właściwości. Na przykład chcesz synchronizować wszystkich użytkowników jako **gościa** Jeśli lokalną atrybutu userPrincipalName AD kończy się wraz z części domenowej  *@partners.fabrikam123.org* . 
+- Alternatywnie wartość atrybut UserType może pochodzić od innych właściwości. Na przykład chcesz synchronizować wszystkich użytkowników jako **gościa** Jeśli lokalną atrybutu userPrincipalName AD kończy się wraz z części domenowej *@partners.fabrikam123.org*. 
 
     Jak wspomniano wcześniej, Azure AD Connect nie zezwala na atrybut UserType na istniejących użytkowników usługi Azure AD zostanie zmieniony przez program Azure AD Connect. W związku z tym upewnij się, że logika ustalony jest zgodna z jak atrybut UserType został już skonfigurowany dla wszystkich istniejących użytkowników usługi Azure AD w dzierżawie.
 
@@ -282,7 +284,7 @@ Reguła synchronizacji ruchu przychodzącego zezwala na wartość atrybutu mogą
     | --- | --- | --- | --- | --- |
     | Bezpośrednie | UserType | extensionAttribute1 | Unchecked | Aktualizacja |
 
-    W kolejnym przykładzie mają pochodzi wartość atrybut UserType od innych właściwości. Na przykład chcesz synchronizować wszystkich użytkowników jako Gość, jeśli ich lokalne atrybutu userPrincipalName AD kończy się wraz z części domenowej  *@partners.fabrikam123.org* . Można zaimplementować wyrażenia następująco:
+    W kolejnym przykładzie mają pochodzi wartość atrybut UserType od innych właściwości. Na przykład chcesz synchronizować wszystkich użytkowników jako Gość, jeśli ich lokalne atrybutu userPrincipalName AD kończy się wraz z części domenowej *@partners.fabrikam123.org*. Można zaimplementować wyrażenia następująco:
 
     | Typ przepływu | Atrybut docelowy | Element źródłowy | Zastosuj raz | Scal typu |
     | --- | --- | --- | --- | --- |

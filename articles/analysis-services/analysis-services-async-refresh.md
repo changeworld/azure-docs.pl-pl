@@ -3,16 +3,17 @@ title: Odświeżanie asynchroniczne dla modeli usług Azure Analysis Services | 
 description: Dowiedz się, jak kod Odświeżanie asynchroniczne przy użyciu interfejsu API REST.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ff48d70a19e99531dcc90a81f8c7c723133ba8a0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a20e8460e0243e2f6f2f258e26374a2cd716206c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34601619"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Odświeżanie asynchroniczne przy użyciu interfejsu API REST
 Przy użyciu języka programowania, który obsługuje wywołania REST, można wykonywać operacje asynchroniczne odświeżanie danych w sieci modele tabelaryczne usług Azure Analysis Services. W tym synchronizacji repliki tylko do odczytu dla zapytania skalowania w poziomie. 

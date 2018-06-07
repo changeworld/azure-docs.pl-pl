@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2017
+ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 3e82cf4ccdc09cd6505994f9db952ac718342bf2
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5b940ac896f95ec796179f44e0dd11dcf6184464
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589393"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>Samouczek: Integracji Azure Active Directory z LinkedIn podniesienia uprawnień
 
@@ -47,7 +48,8 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 - Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym.
+Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
 
 1. Dodawanie podniesienia uprawnień LinkedIn z galerii
 2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
@@ -57,14 +59,14 @@ Aby skonfigurować integrację LinkedIn podniesienia uprawnień w usłudze Azure
 
 **Aby dodać podniesienia uprawnień LinkedIn z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu zarządzania Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[portalu zarządzania Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony.
 
     ![Usługa Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Aplikacje][2]
-    
+
 3. Kliknij przycisk **Dodaj** przycisk w górnej części okna dialogowego.
 
     ![Aplikacje][3]
@@ -99,7 +101,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     ![Konfigurowanie rejestracji jednokrotnej][4]
 
 2. Na **logowanie jednokrotne** okna dialogowego, jako **tryb** wybierz **na języku SAML logowania jednokrotnego** Włącz funkcji logowania jednokrotnego.
- 
+
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-linkedinElevate-tutorial/tutorial-linkedin_01.png)
 
 3. W oknie przeglądarki innej witryny sieci web logowanie do podniesienia uprawnień LinkedIn dzierżawy z uprawnieniami administratora.
@@ -123,17 +125,17 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 7. Jeśli chcesz skonfigurować logowanie Jednokrotne w **inicjowane SP**, kliknij opcję Ustawienia Pokaż zaawansowane adres URL w sekcji konfiguracji oraz konfigurowania logowania na adres URL jest następujący wzór:
 
     `https://www.linkedin.com/checkpoint/enterprise/login/<AccountId>?application=elevate&applicationInstanceId=<InstanceId>` 
-    
+
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_signon_02.png) 
-    
-8. Podniesienie poziomu LinkedIn aplikacji oczekuje potwierdzenia języka SAML w określonym formacie, musisz dodać mapowania atrybutu niestandardowego do konfiguracji atrybuty tokenu SAML. Poniższy zrzut ekranu przedstawia przykład tego. Wartość domyślna **identyfikator użytkownika** jest **user.userprincipalname** , ale oczekuje LinkedIn podniesienia uprawnień, to można mapować z adresu e-mail użytkownika. W przypadku którego można użyć **user.mail** atrybutu z listy lub użyj wartości atrybutu odpowiednie na podstawie konfiguracji organizacji. 
+
+8. Podniesienie poziomu LinkedIn aplikacji oczekuje potwierdzenia języka SAML w określonym formacie, musisz dodać mapowania atrybutu niestandardowego do konfiguracji atrybuty tokenu SAML. Poniższy zrzut ekranu przedstawia przykład tego. Wartość domyślna **identyfikator użytkownika** jest **user.userprincipalname** , ale oczekuje LinkedIn podniesienia uprawnień, to można mapować z adresu e-mail użytkownika. W przypadku którego można użyć **user.mail** atrybutu z listy lub użyj wartości atrybutu odpowiednie na podstawie konfiguracji organizacji.
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-linkedinElevate-tutorial/updateusermail.png)
 
 9. W **atrybuty użytkownika** kliknij **widoku i edytować wszystkie atrybuty użytkowników** i ustawić atrybutów. Należy dodać inny oświadczeń o nazwie **działu** i wartość ta musi być zamapowany na **user.department**.
 
     | Nazwa atrybutu | Wartość atrybutu |
-    | --- | --- |    
+    | --- | --- |
     | dział| User.Department |
 
       ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-linkedinElevate-tutorial/userattribute.png)
@@ -145,7 +147,6 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
       b. Polecenie **Ok** można zapisać atrybutu.
 
       c. Zmień nazwę atrybutu **emailaddress** do **e-mail**.
-
 
 10. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik XML na tym komputerze.
 
@@ -175,15 +176,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu zarządzania Az
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-linkedinElevate-tutorial/create_aaduser_01.png) 
 
 2. Przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy** do wyświetlenia na liście Użytkownicy.
-    
+
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-linkedinElevate-tutorial/create_aaduser_02.png) 
 
 3. W górnej części okna dialogowego kliknij **Dodaj** otworzyć **użytkownika** okna dialogowego.
- 
+
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-linkedinElevate-tutorial/create_aaduser_03.png) 
 
 4. Na **użytkownika** okna dialogowego strony, należy wykonać następujące czynności:
- 
+
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-linkedinElevate-tutorial/create_aaduser_04.png) 
 
     a. W **nazwa** pole tekstowe, typ **BrittaSimon**.
@@ -192,11 +193,11 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu zarządzania Az
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
-    d. Kliknij przycisk **Utwórz**. 
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="creating-a-linkedin-elevate-test-user"></a>Tworzenie użytkownika testowego LinkedIn podniesienia uprawnień
 
-Połączone podniesienia uprawnień aplikacji obsługuje tylko w czasie Inicjowanie obsługi użytkowników i uwierzytelnianie użytkowników zostaną utworzone w aplikacji automatycznie. Na administrator ustawienia strony na Przerzucanie portalu LinkedIn podniesienia uprawnień przełącznika **automatycznie przypisywać licencje** aktywna można włączyć tylko w czasie inicjowania obsługi administracyjnej i to będzie również przypisać licencję do użytkownika.
+LinkedIn podniesienia uprawnień aplikacji obsługuje tylko w czasie Inicjowanie obsługi użytkowników i uwierzytelnianie użytkowników zostaną utworzone w aplikacji automatycznie. Na administrator ustawienia strony na Przerzucanie portalu LinkedIn podniesienia uprawnień przełącznika **automatycznie przypisywać licencje** na active bezpośrednio w czasie inicjowania obsługi administracyjnej i to będzie również przypisać licencję do użytkownika. Podniesienie poziomu LinkedIn obsługuje również Inicjowanie obsługi użytkowników, można znaleźć więcej szczegółów [tutaj](active-directory-saas-linkedinelevate-provisioning-tutorial.md) na temat konfigurowania użytkowników automatycznego inicjowania obsługi administracyjnej.
 
    ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-linkedinElevate-tutorial/LinkedinUserprovswitch.png)
 
@@ -210,7 +211,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 1. Otwórz widok aplikacji w portalu zarządzania Azure, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
-    ![Przypisz użytkownika][201] 
+    ![Przypisz użytkownika][201]
 
 2. Na liście aplikacji zaznacz **LinkedIn podniesienia uprawnień**.
 
@@ -229,7 +230,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
-    
+
 ### <a name="testing-single-sign-on"></a>Testowanie rejestracji jednokrotnej
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
@@ -241,7 +242,7 @@ Po kliknięciu kafelka LinkedIn podniesienia uprawnień w panelu dostępu, nale�
 * [Samouczek: Konfigurowanie LinkedIn podniesienia uprawnień dla użytkownika automatycznego inicjowania obsługi administracyjnej w usłudze Azure Active Directory](active-directory-saas-linkedinelevate-provisioning-tutorial.md)
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
-
+* [Skonfiguruj Inicjowanie obsługi użytkowników](active-directory-saas-linkedinelevate-provisioning-tutorial.md)
 
 <!--Image references-->
 

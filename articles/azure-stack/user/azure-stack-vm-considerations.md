@@ -12,13 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 05/23/2018
 ms.author: brenduns
-ms.openlocfilehash: 83a0b8ff040425ac30cff96936f2f639fd1b5643
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 324fa19aa97cead44f38d07a2fd0765048cd6238
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605392"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Zagadnienia dotyczące korzystania z maszyn wirtualnych Azure stosu
 
@@ -102,7 +103,7 @@ Lista obsługiwane typy zasobów i wersje interfejsu API może się różnić, j
 Produkty Windows musi być używany zgodnie z prawami używania produktu i postanowienia licencyjne firmy Microsoft. Używa stosu Azure [automatyczna aktywacja maszyny Wirtualnej](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v%3dws.11)) (AVMA), aby aktywować maszynach wirtualnych systemu Windows Server (VM).
 
 - Host platformy Azure stosu aktywuje systemu Windows z klucze AVMA dla systemu Windows Server 2016. Wszystkie maszyny wirtualne z systemem Windows Server 2012 lub nowszym są automatycznie aktywowane.
-- Maszyny wirtualne, które uruchamiania systemu Windows Server 2008 R2 nie są automatycznie aktywowane i musi zostać aktywowana przy użyciu [klucza MAK](https://technet.microsoft.com/library/ff793438.aspx).
+- Maszyny wirtualne, które uruchamiania systemu Windows Server 2008 R2 nie są automatycznie aktywowane i musi zostać aktywowana przy użyciu [klucza MAK](https://technet.microsoft.com/library/ff793438.aspx). Aby zastosować aktywację MAK, należy podać klucz produktu.
 
 Microsoft Azure można aktywować maszyn wirtualnych systemu Windows przy użyciu aktywacji usługi KMS. Jeśli przenosisz Maszynę wirtualną z stosu Azure na platformie Azure oraz podczas potyczki aktywować problemów, zobacz [Rozwiązywanie problemów z systemu Windows Azure maszyny wirtualnej aktywacji problemów](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-activation-problems). Dodatkowe informacje można znaleźć w folderze [błędy aktywacji Rozwiązywanie problemów z systemu Windows na maszynach wirtualnych Azure](https://blogs.msdn.microsoft.com/mast/2017/06/14/troubleshooting-windows-activation-failures-on-azure-vms/) post na blogu zespołu pomocy technicznej platformy Azure.
 

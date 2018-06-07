@@ -11,15 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2017
+ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 6ab0e36fc0b4bd3f04d75499b6dfe734a9f72d4d
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 8eb629396629a92503907439a64cca9d70747010
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594126"
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Publikowanie aplikacji przy użyciu serwera proxy aplikacji usługi Azure AD
 
@@ -29,6 +30,9 @@ W tym artykule przedstawiono kroki publikowania aplikacji lokalnej za pomocą se
 
 Jeśli jesteś nowym użytkownikiem serwera Proxy aplikacji, więcej informacji na temat tej funkcji z artykułem [jak zapewnić bezpieczny zdalny dostęp do aplikacji lokalnych](application-proxy.md).
 
+## <a name="before-you-begin"></a>Przed rozpoczęciem
+
+W tym artykule przyjęto założenie, zostały już zainstalowane i zarejestrowane łącznika. Jeśli nadal trzeba wykonać te kroki, zobacz [rozpoczęcie pracy z serwerem Proxy aplikacji i zainstalować łącznik](application-proxy-enable.md).
 
 ## <a name="publish-an-on-premises-app-for-remote-access"></a>Publikowanie aplikacji lokalnych dla funkcji dostępu zdalnego
 

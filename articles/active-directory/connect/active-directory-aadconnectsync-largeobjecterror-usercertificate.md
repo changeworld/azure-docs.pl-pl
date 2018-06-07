@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect - LargeObject błędów spowodowanych przez atrybut certyfikatu użytkownika | Dokumentacja firmy Microsoft"
-description: "Ten temat zawiera kroki korygujące LargeObject błędy spowodowane przez atrybut certyfikatu użytkownika."
+title: Azure AD Connect - LargeObject błędów spowodowanych przez atrybut certyfikatu użytkownika | Dokumentacja firmy Microsoft
+description: Ten temat zawiera kroki korygujące LargeObject błędy spowodowane przez atrybut certyfikatu użytkownika.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 146ad5b3-74d9-4a83-b9e8-0973a19828d9
 ms.service: active-directory
 ms.workload: identity
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 73c79e26b2962368f33bbb0d52d6c243b93a3026
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 9866454735b33239a812dca238006299c74e5ae2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592810"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Synchronizacja programu Azure AD Connect: LargeObject obsługi błędów spowodowanych przez atrybut certyfikatu użytkownika
 
@@ -71,7 +73,7 @@ Kroki można podsumować jako:
 Upewnij się, że synchronizacja nie ma miejsce, gdy są w trakcie wdrażania nowej reguły synchronizacji, aby uniknąć zmian niezamierzone eksportowane do usługi Azure AD. Aby wyłączyć harmonogram synchronizacji wbudowany:
 1. Uruchom sesję programu PowerShell na serwerze programu Azure AD Connect.
 
-2. Wyłącz zaplanowanej synchronizacji, uruchamiając polecenie cmdlet:`Set-ADSyncScheduler -SyncCycleEnabled $false`
+2. Wyłącz zaplanowanej synchronizacji, uruchamiając polecenie cmdlet: `Set-ADSyncScheduler -SyncCycleEnabled $false`
 
 > [!Note]
 > Te czynności mają zastosowanie tylko wtedy do nowszej wersji (1.1.xxx.x) programu Azure AD Connect z wbudowanych harmonogramu. Jeśli używasz starszej wersji (1.0.xxx.x) programu Azure AD Connect, która używa harmonogramu zadań systemu Windows lub są przy użyciu własnego harmonogramu niestandardowego (nie wspólnej) do wyzwolenia okresową synchronizację, należy odpowiednio je wyłączyć.
@@ -92,7 +94,7 @@ Powinien być istniejącą regułę synchronizacji, która została włączona i
     | Kierunek |**Wychodzące** |
     | Typ obiektu MV |**Osoby** |
     | Łącznik |*Nazwa łącznika usługi Azure AD* |
-    | Typ obiektu łącznika |**użytkownika** |
+    | Typ obiektu łącznika |**Użytkownika** |
     | Atrybut MV |**certyfikatu użytkownika** |
 
 3. Jeśli używasz OOB reguły synchronizacji (out-of-box) do łącznika usługi Azure AD można wyeksportować atrybutu userCertficiate obiektów użytkownika, powinny zostać wyświetlone *"Się do usługi AAD — użytkownik ExchangeOnline"* reguły.
@@ -117,8 +119,8 @@ Nowa reguła synchronizacji muszą mieć ten sam **zakresu filtru** i **wyższy 
     | Name (Nazwa) | *Podaj nazwę* | Np. *"Się do usługi AAD — niestandardowy zastąpienie dla certyfikatu użytkownika"* |
     | Opis | *Podaj opis* | Np. *"Jeśli certyfikatu użytkownika atrybut ma więcej niż 15 wartości, wyeksportuj NULL".* |
     | System połączony | *Wybierz łącznik usługi Azure AD* |
-    | Połączony System typu obiektu | **użytkownika** | |
-    | Typ obiektu Metaverse | **osoby** | |
+    | Połączony System typu obiektu | **Użytkownika** | |
+    | Typ obiektu Metaverse | **Osoby** | |
     | Typ łącza | **Dołącz** | |
     | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 do 99* | Liczba wybrana nie mogą być używane przez żadną istniejącą regułę synchronizacji i ma mniejszą wartość (i w związku z tym wyższy priorytet) niż istniejącą regułę synchronizacji. |
 
@@ -128,9 +130,9 @@ Nowa reguła synchronizacji muszą mieć ten sam **zakresu filtru** i **wyższy 
 
     | Atrybut | Wartość |
     | --- | --- |
-    | Typ przepływu |**Expression** |
+    | Typ przepływu |**wyrażenie** |
     | Atrybut docelowy |**certyfikatu użytkownika** |
-    | Atrybut źródłowy |*Należy użyć następującego wyrażenia*:`IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
+    | Atrybut źródłowy |*Należy użyć następującego wyrażenia*: `IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
     
 6. Kliknij przycisk **Dodaj** przycisk, aby utworzyć regułę synchronizacji.
 
@@ -173,7 +175,7 @@ Aby wyeksportować zmiany do usługi Azure AD:
 ### <a name="step-8-re-enable-sync-scheduler"></a>Krok 8. Włącz ponownie harmonogram synchronizacji
 Teraz, gdy problem zostanie rozwiązany, należy ponownie włączyć harmonogramu synchronizacji wbudowany:
 1. Uruchom sesję programu PowerShell.
-2. Ponownie włączyć zaplanowanej synchronizacji, uruchamiając polecenie cmdlet:`Set-ADSyncScheduler -SyncCycleEnabled $true`
+2. Ponownie włączyć zaplanowanej synchronizacji, uruchamiając polecenie cmdlet: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
 > [!Note]
 > Te czynności mają zastosowanie tylko wtedy do nowszej wersji (1.1.xxx.x) programu Azure AD Connect z wbudowanych harmonogramu. Jeśli używasz starszej wersji (1.0.xxx.x) programu Azure AD Connect, która używa harmonogramu zadań systemu Windows lub są przy użyciu własnego harmonogramu niestandardowego (nie wspólnej) do wyzwolenia okresową synchronizację, należy odpowiednio je wyłączyć.

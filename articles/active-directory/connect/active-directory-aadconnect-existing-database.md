@@ -1,25 +1,27 @@
 ---
-title: "Zainstaluj usługi Azure AD Connect przy użyciu istniejącej bazy danych ADSync | Dokumentacja firmy Microsoft"
-description: "W tym temacie opisano sposób użycia istniejącej bazy danych ADSync."
+title: Zainstaluj usługi Azure AD Connect przy użyciu istniejącej bazy danych ADSync | Dokumentacja firmy Microsoft
+description: W tym temacie opisano sposób użycia istniejącej bazy danych ADSync.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.reviewer: cychua
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d65e12350e6302b0f95091f48f71cdc7d4610e2c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b28d4cc6b10b0fd47a67cfefa7cf1022921a5d96
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591773"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Zainstalować program Azure AD Connect przy użyciu istniejącej bazy danych ADSync
 Azure AD Connect wymaga bazy danych programu SQL Server do przechowywania danych. Można użyć domyślnego programu SQL Server 2012 Express LocalDB zainstalowane z programem Azure AD Connect lub używać pełnej wersji programu SQL Server. Wcześniej po zainstalowaniu usługi Azure AD Connect, nową bazę danych o nazwie ADSync zawsze został utworzony. Z programem Azure AD Connect wersji 1.1.613.0 (lub po) masz możliwość zainstalowania Azure AD Connect, wskazując go istniejąca baza danych ADSync.
@@ -57,7 +59,7 @@ Ważne uwagi do wykonania należy pamiętać o przed kontynuowaniem:
 2.  Po zakończeniu instalacji MSI Kreatora programu Azure AD Connect rozpoczyna się od instalacji w trybie Express. Zamknąć ten ekran, klikając ikonę zakończenia.
 ![Witamy](media/active-directory-aadconnect-existing-database/db1.png)
 3.  Uruchom nowy wiersz polecenia lub w sesji programu PowerShell. Przejdź do folderu <drive>\program files\Microsoft Azure AD Connect. Uruchom polecenie.\AzureADConnect.exe /useexistingdatabase, aby uruchomić Kreatora programu Azure AD Connect w trybie "Użyj istniejącej bazy danych".
-![PowerShell](media/active-directory-aadconnect-existing-database/db2.png)
+![Program PowerShell](media/active-directory-aadconnect-existing-database/db2.png)
 4.  Możesz są greeted o wprowadzenie do programu Azure AD Connect ekranu. Po akceptujesz postanowienia licencyjne i zasady zachowania poufności informacji, kliknij przycisk **Kontynuuj**.
 ![Witamy](media/active-directory-aadconnect-existing-database/db3.png)
 5.  Na **zainstalowanie wymaganych składników** ekranu, **korzystało z istniejącego serwera SQL** opcja jest włączona. Określ nazwę programu SQL server, który jest hostem bazy danych ADSync. Jeśli wystąpienie aparatu SQL używana do hostowania bazy danych ADSync nie jest domyślne wystąpienie programu SQL Server, należy określić nazwę wystąpienia aparatu SQL. Ponadto jeśli SQL nie włączono funkcji przeglądania, należy również określić numer portu wystąpienia aparatu SQL. Na przykład:         
@@ -84,7 +86,7 @@ Ważne uwagi do wykonania należy pamiętać o przed kontynuowaniem:
  
 11. Po zakończeniu instalacji serwera usługi Azure AD Connect jest automatycznie włączona dla trybu przejściowego. Zalecane jest, aby przejrzeć konfigurację serwera i oczekujące operacje eksportu dla nieoczekiwane zmiany przed wyłączeniem trybu przejściowego. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Po zainstalowaniu programu Azure AD Connect możesz [zweryfikować instalację i przypisać licencje](active-directory-aadconnect-whats-next.md).
 - Dowiedz się więcej na temat funkcji włączonych w ramach instalacji: [Zapobieganie przypadkowemu usuwaniu](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) oraz [Azure AD Connect Health](../connect-health/active-directory-aadconnect-health-sync.md).

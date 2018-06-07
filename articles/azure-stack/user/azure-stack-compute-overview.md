@@ -6,30 +6,34 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: get-started-article
-ms.date: 02/28/2018
+ms.date: 05/21/2018
 ms.author: mabrigg
-ms.openlocfilehash: 41e75a6806cc5ff13fad64fd415344376e0d6e88
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.reviewer: kivenkat
+ms.openlocfilehash: 967fcb86c1bf0c85517bc13c2066ed32e8fa28d9
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604135"
 ---
 # <a name="introduction-to-azure-stack-virtual-machines"></a>Wprowadzenie do maszyn wirtualnych usługi Azure Stack
 
 *Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
 
-## <a name="overview"></a>Przegląd
-Azure stosu maszyn wirtualnych (VM) jest jeden typ na żądanie, skalowalnych zasobów obliczeniowych udostępniającej stosu Azure. W większości przypadków maszynę wirtualną należy wybrać wtedy, gdy potrzebna jest większa kontrola nad środowiskiem obliczeniowym niż ta, jaką oferują inne opcje. Ten artykuł zawiera informacje o kwestiach, jakie należy rozważyć przed przystąpieniem do tworzenia maszyny wirtualnej. Opisano w nim także tworzenie maszyny wirtualnej i zarządzanie nią.
+Stos Azure oferuje maszynach wirtualnych (VM) jako jeden typ na żądanie, skalowalnych zasobów obliczeniowych. Można wybrać Maszynę wirtualną, gdy potrzebujesz większej kontroli nad środowiskiem obliczeniowym, niż pozostałych opcji. Ten artykuł zawiera szczegółowe informacje, przed utworzeniem maszyny Wirtualnej.
 
 Maszyna wirtualna Azure stosu zapewnia elastyczność wirtualizacji bez konieczności zarządzania klastrami lub poszczególnych maszyn. Jednak nadal należy do obsługi maszyny Wirtualnej, wykonując takie zadania, takie jak konfigurowanie, poprawki i instalacji oprogramowania, które uruchamia na nim.
 
 Maszyny wirtualne Azure stosu można użyć na różne sposoby. Na przykład:
 
-* **Projektowania i testowania** — maszynach wirtualnych platformy Azure stosu oferują szybki i prosty sposób tworzenia komputerów o określonej konfiguracji wymagane do kodu i testowania aplikacji.
+- **Prac deweloperskich i testowych**  
+    Maszyny wirtualne platformy Azure stosu oferują szybki i łatwy sposób tworzenia komputerów o określonej konfiguracji wymaganej do kodowania i testowania aplikacji.
 
-* **Aplikacje w chmurze** — ponieważ żądanie aplikacji mogą się zmieniać, może być uzasadnione gospodarczego go uruchomić na maszynie Wirtualnej Azure stosu. Jeśli zajdzie potrzeba użycia dodatkowych maszyn wirtualnych, wystarczy je opłacić. Gdy dodatkowe maszyny staną się zbędne, można je wyłączyć.
+- **Aplikacje w chmurze**  
+    Ponieważ żądanie aplikacji mogą się zmieniać, może mieć punktu widzenia ekonomii prawidłowym go uruchomić na maszynie Wirtualnej Azure stosu. Jeśli zajdzie potrzeba użycia dodatkowych maszyn wirtualnych, wystarczy je opłacić. Gdy dodatkowe maszyny staną się zbędne, można je wyłączyć.
 
-* **Rozszerzony datacenter** — maszyn wirtualnych w sieci wirtualnej platformy Azure stosu można łatwo można podłączyć do sieci danej organizacji lub na platformie Azure.
+- **Rozszerzone centrum danych**  
+    Maszyny wirtualne w sieci wirtualnej platformy Azure stosu łatwo można podłączyć do sieci danej organizacji lub na platformie Azure.
 
 Maszyny wirtualne, które aplikacja używa skalowanie w górę lub skalować w poziomie do niezależnie od jest wymagany do własnych potrzeb.
 
@@ -37,12 +41,12 @@ Maszyny wirtualne, które aplikacja używa skalowanie w górę lub skalować w p
 
 Brak zawsze wiele uwagi dotyczące projektowania, podczas tworzenia infrastruktury aplikacji w stosie Azure. Te aspekty maszyny wirtualnej są ważne przed rozpoczęciem tworzenia infrastruktury:
 
-* Nazwy zasobów aplikacji.
-* Rozmiar maszyny Wirtualnej.
-* Maksymalna liczba maszyn wirtualnych, które mogą zostać utworzone.
-* System operacyjny, który działa na Maszynie wirtualnej.
-* Konfiguracja maszyny Wirtualnej po jej uruchomieniu.
-* Powiązane zasoby, które wymaga maszyny Wirtualnej.
+- Nazwy zasobów aplikacji.
+- Rozmiar maszyny Wirtualnej.
+- Maksymalna liczba maszyn wirtualnych, które mogą zostać utworzone.
+- System operacyjny, który działa na Maszynie wirtualnej.
+- Konfiguracja maszyny Wirtualnej po jej uruchomieniu.
+- Powiązane zasoby, które wymaga maszyny Wirtualnej.
 
 ### <a name="naming"></a>Nazewnictwo
 
@@ -78,9 +82,14 @@ Istnieje możliwość przekazywania i użycie własnego obrazu. Jeśli to zrobis
 Rozszerzenia maszyny Wirtualnej zapewniają dodatkowe możliwości maszyny Wirtualnej za pomocą konfiguracji wdrożenia post i automatycznych zadań.
 Typowe zadania można realizować przy użyciu różnych rozszerzeń:
 
-* Uruchamianie niestandardowych skryptów — niestandardowe rozszerzenie skryptu służy do konfigurowania obciążeń na maszynie Wirtualnej, uruchamiając skrypt po zainicjowaniu obsługi maszyny Wirtualnej.
-* Wdrażanie i zarządzanie konfiguracjami — rozszerzenie programu PowerShell żądanego stanu konfiguracji (DSC) pomaga skonfigurować DSC na maszynie Wirtualnej, do zarządzania konfiguracjami i środowisk.
-* Dane diagnostyczne zbieranie — rozszerzenie diagnostyki Azure ułatwia konfigurowanie maszyny Wirtualnej do zbierania danych diagnostycznych, który może służyć do monitorowania kondycji aplikacji.
+- **Uruchamianie niestandardowych skryptów**  
+    Niestandardowe rozszerzenie skryptu służy do konfigurowania obciążeń na maszynie Wirtualnej, uruchamiając skrypt po zainicjowaniu obsługi maszyny Wirtualnej.
+
+- **Wdrażanie i zarządzanie konfiguracjami**  
+    Rozszerzenia konfiguracji żądanego stanu środowiska PowerShell (DSC) pomoże Ci skonfigurować DSC maszyny wirtualnej do zarządzania konfiguracjami i środowiskach.
+
+- **Zbieranie danych diagnostycznych**  
+    Rozszerzenia diagnostyki Azure ułatwia konfigurowanie maszyny Wirtualnej do zbierania danych diagnostycznych, który może służyć do monitorowania kondycji aplikacji.
 
 ### <a name="related-resources"></a>Powiązane zasoby
 
@@ -96,7 +105,7 @@ Zasoby w poniższej tabeli są używane przez maszynę Wirtualną i muszą istni
 |Interfejs sieciowy|Yes|Maszyna wirtualna wymaga interfejsu sieciowego do komunikacji w sieci.|
 |Dyski z danymi|Nie|Maszyna wirtualna może zawierać dyski danych zwiększające jej pojemność.|
 
-## <a name="how-do-i-create-my-first-vm"></a>Jak utworzyć maszynę wirtualną?
+## <a name="create-your-first-vm"></a>Tworzenie pierwszej maszyny Wirtualnej
 
 Można wybrać kilka opcji, aby utworzyć Maszynę wirtualną. Wybór zależy od środowiska.
 Poniższa tabela zawiera informacje ułatwiające rozpoczęcie pracy tworzenia maszyny Wirtualnej.
@@ -109,16 +118,16 @@ Poniższa tabela zawiera informacje ułatwiające rozpoczęcie pracy tworzenia m
 |PowerShell|[Utwórz maszynę wirtualną z systemem Windows przy użyciu programu PowerShell w stosie Azure](azure-stack-quick-create-vm-windows-powershell.md)<br>[Utwórz maszynę wirtualną systemu Linux przy użyciu programu PowerShell w stosie Azure](azure-stack-quick-create-vm-linux-powershell.md)|
 |Interfejs wiersza polecenia|[Utwórz maszynę wirtualną z systemem Windows przy użyciu interfejsu wiersza polecenia Azure stosu](azure-stack-quick-create-vm-windows-cli.md)<br>[Utwórz maszynę wirtualną systemu Linux przy użyciu interfejsu wiersza polecenia Azure stosu](azure-stack-quick-create-vm-linux-cli.md)|
 
-## <a name="how-do-i-manage-the-vm-that-i-created"></a>Jak zarządzać maszyną wirtualną?
+## <a name="manage-your-vm"></a>Zarządzaj maszyną wirtualną
 
 Maszyny wirtualne przy użyciu narzędzia wiersza polecenia z obsługą skryptów lub bezpośrednio za pośrednictwem interfejsów API portal oparty na przeglądarce, można zarządzać. Niektórych typowych zadań zarządzania, które można wykonać są:
 
-* Pobieranie informacji na temat maszyny Wirtualnej
-* Połączenie z maszyną wirtualną
-* Zarządzanie dostępności
-* Tworzenie kopii zapasowych
+- Pobieranie informacji na temat maszyny Wirtualnej
+- Połączenie z maszyną wirtualną
+- Zarządzanie dostępności
+- Tworzenie kopii zapasowych
 
-### <a name="get-information-about-a-vm"></a>Uzyskiwanie informacji o maszynie wirtualnej
+### <a name="get-information-about-your-vm"></a>Uzyskiwanie informacji o maszynie Wirtualnej
 
 W poniższej tabeli przedstawiono możesz niektóre sposoby, które można pobrać informacji o maszynie Wirtualnej.
 
@@ -129,10 +138,10 @@ W poniższej tabeli przedstawiono możesz niektóre sposoby, które można pobra
 |Azure PowerShell|Zarządzanie maszyn wirtualnych jest podobny w stosie Azure i usługi Azure. Aby uzyskać więcej informacji o korzystaniu z programu PowerShell zobacz następujący temat Azure:<br>[Tworzenie i zarządzanie maszynami wirtualnymi systemu Windows z modułu Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm#understand-vm-sizes)|
 |Zestawy SDK klienta|Zarządzanie za pomocą języka C# maszyn wirtualnych jest podobny w stosie Azure i usługi Azure. Aby uzyskać więcej informacji zobacz następujący temat Azure:<br>[Tworzenie i zarządzanie maszynami wirtualnymi systemu Windows na platformie Azure przy użyciu języka C#](https://docs.microsoft.com/azure/virtual-machines/windows/csharp)|
 
-### <a name="connect-to-the-vm"></a>Łączenie z maszyną wirtualną
+### <a name="connect-to-your-vm"></a>Połączenie z maszyną Wirtualną
 
 Można użyć **Connect** przycisk w portalu Azure stos, aby nawiązać połączenie z maszyną Wirtualną.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Zagadnienia dotyczące maszyn wirtualnych Azure stosu](azure-stack-vm-considerations.md)
+- [Zagadnienia dotyczące maszyn wirtualnych Azure stosu](azure-stack-vm-considerations.md)

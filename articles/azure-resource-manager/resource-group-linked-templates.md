@@ -12,19 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/17/2018
+ms.date: 05/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: b01df5d89784c9982ebbf2351ae61a5d9f79aee8
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 17f40790343181c592eca7bf6337b0f37d3ec20c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34602819"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Za pomocą połączonego i zagnieżdżone szablony, w przypadku wdrażania zasobów platformy Azure
 
 Aby wdrożyć rozwiązanie, służy jednego szablonu lub szablonu głównego z wielu szablonów pokrewne. Powiązane szablon może być oddzielny plik, który jest powiązany z szablonu głównego lub szablonu, który jest zagnieżdżony w szablonie głównym.
 
-Dla małych i średnich rozwiązania jednego szablonu jest łatwiejsze do zrozumienia i obsługa. Jesteś w stanie zobaczyć wszystkie zasoby i wartości w jednym pliku. Dla zaawansowanych scenariuszy połączonego Szablony umożliwiają podział rozwiązania do elementów docelowych i ponowne użycie szablonów.
+Dla małych i średnich rozwiązania jednego szablonu jest łatwiejsze do zrozumienia i obsługa. Widać wszystkich zasobów i wartości w jednym pliku. Dla zaawansowanych scenariuszy połączonego Szablony umożliwiają podział rozwiązania do elementów docelowych i ponowne użycie szablonów.
 
 Podczas korzystania z połączonego szablonu, tworzenia szablonu głównego, który odbiera wartości parametrów podczas wdrażania. Główny szablon zawiera wszystkie połączone szablony i przekazuje wartości do tych szablonów, zgodnie z potrzebami.
 
@@ -85,6 +86,8 @@ Aby zagnieździć szablonu w szablonie głównym, należy użyć **szablonu** w�
 >
 > Nie można użyć `reference` w sekcji danych wyjściowych szablonu zagnieżdżonych funkcji. Aby zwrócić wartości dla wdrożonych zasobów w szablonie zagnieżdżonych, przekonwertować szablon zagnieżdżony połączonego szablonu.
 
+Szablon zagnieżdżony wymaga [takie same właściwości](resource-group-authoring-templates.md) jako standardowy szablon.
+
 ### <a name="external-template-and-external-parameters"></a>Szablon zewnętrznych i parametry zewnętrznych
 
 Aby utworzyć łącze do zewnętrznego szablonu i pliku parametrów, należy użyć **templateLink** i **parametersLink**. Podczas łączenia z szablonu, usługi Resource Manager musi mieć możliwość do niego dostęp. Nie można określić plik lokalny lub plik, który jest dostępny tylko w sieci lokalnej. Możesz udostępniać wartość identyfikatora URI, która zawiera jedną **http** lub **https**. Jedną z opcji jest umieszczenie szablonu połączonego na koncie magazynu i użyj identyfikatora URI dla tego elementu.
@@ -109,6 +112,8 @@ Aby utworzyć łącze do zewnętrznego szablonu i pliku parametrów, należy uż
   }
 ]
 ```
+
+Nie trzeba podać `contentVersion` właściwości dla parametrów lub szablonu. Jeśli nie podasz wartość wersja zawartości jest wdrażany bieżącą wersję szablonu. Jeśli Podaj wartość wersji zawartości musi być zgodna wersja w szablonie połączonego; w przeciwnym razie wdrażanie zakończy się niepowodzeniem z powodu błędu.
 
 ### <a name="external-template-and-inline-parameters"></a>Zewnętrzne parametrów szablonu i wbudowane
 
@@ -136,7 +141,7 @@ Lub możesz podać parametr wbudowanego. Aby przekazać wartości z głównym sz
 
 ## <a name="using-variables-to-link-templates"></a>Użycie zmiennych połączenia szablonów
 
-W poprzednich przykładach pokazano zakodowanych wartości adresu URL dla łączy szablonu. Takie podejście może działać w przypadku prostego szablonu, ale nie działa w przypadku pracy z dużym zestawem moduły szablonów. Zamiast tego można utworzyć zmienną statyczną, przechowującym bazowy adres URL dla szablonu głównego, a następnie dynamicznie utworzyć adresów URL dla szablonów połączonych z tym podstawowego adresu URL. Zaletą tej metody jest można łatwo przenosić lub rozwidlania szablonu, ponieważ musisz zmienić zmienna statyczna w szablonie głównym. Główny szablon przekazuje prawidłowe identyfikatory URI w szablonie rozłożone.
+W poprzednich przykładach pokazano zakodowanych wartości adresu URL dla łączy szablonu. Takie podejście może działać w przypadku prostego szablonu, ale ta funkcja nie działa w przypadku pracy z dużym zestawem moduły szablonów. Zamiast tego można utworzyć zmienną statyczną, przechowującym bazowy adres URL dla szablonu głównego, a następnie dynamicznie utworzyć adresów URL dla szablonów połączonych z tym podstawowego adresu URL. Zaletą tej metody jest można łatwo przenosić lub rozwidlania szablonu, ponieważ musisz zmienić zmienna statyczna w szablonie głównym. Główny szablon przekazuje prawidłowe identyfikatory URI w szablonie rozłożone.
 
 Poniższy przykład przedstawia sposób Użyj podstawowego adresu URL, aby utworzyć dwa adresy URL dla szablonów połączonych (**sharedTemplateUrl** i **vmTemplate**).
 
@@ -148,7 +153,7 @@ Poniższy przykład przedstawia sposób Użyj podstawowego adresu URL, aby utwor
 }
 ```
 
-Można również użyć [deployment()](resource-group-template-functions-deployment.md#deployment) uzyskać podstawowy adres URL dla bieżącego szablonu i używać, aby uzyskać adres URL dla innych szablonów w tej samej lokalizacji. Ta metoda jest przydatna, jeśli zmieni się lokalizację szablonu (być może z powodu versioning) lub aby uniknąć twardego kodowania adresów URL w pliku szablonu. Właściwość templateLink jest zwracany wyłącznie w trakcie łączenia ze zdalnego szablonu przy użyciu adresu URL. Jeśli używasz lokalnych szablonu, że właściwość nie jest dostępna.
+Można również użyć [deployment()](resource-group-template-functions-deployment.md#deployment) uzyskać podstawowy adres URL dla bieżącego szablonu i używać, aby uzyskać adres URL dla innych szablonów w tej samej lokalizacji. Ta metoda jest przydatna zmiany lokalizacji szablonu lub uniknąć twardego kodowania adresów URL w pliku szablonu. Właściwość templateLink jest zwracany wyłącznie w trakcie łączenia ze zdalnego szablonu przy użyciu adresu URL. Jeśli używasz lokalnych szablonu tej właściwości nie jest dostępna.
 
 ```json
 "variables": {
@@ -414,7 +419,7 @@ done
 
 ## <a name="securing-an-external-template"></a>Zabezpieczanie zewnętrznych szablonu
 
-Mimo że połączonego szablonu musi być dostępny zewnętrznie, nie trzeba być ogólnie dostępne publicznie. Możesz dodać do szablonu na konto magazynu prywatnego, który jest dostępny tylko dla właściciela konta magazynu. Następnie można utworzyć token sygnatury dostępu Współdzielonego dostępu współdzielonego, aby umożliwić dostęp podczas wdrażania. Identyfikator URI dla połączonych szablonu należy dodać tokenu sygnatury dostępu Współdzielonego. Nawet jeśli token jest przekazywany jako bezpieczny ciąg, identyfikator URI szablonu połączone, wraz z tokenem sygnatury dostępu Współdzielonego są rejestrowane w operacji wdrażania. W celu ograniczenia narażenia, ustawienia okresu ważności tokenu.
+Mimo że połączonego szablonu musi być dostępny zewnętrznie, nie musi być ogólnie dostępne publicznie. Możesz dodać do szablonu na konto magazynu prywatnego, który jest dostępny tylko dla właściciela konta magazynu. Następnie można utworzyć token sygnatury dostępu Współdzielonego dostępu współdzielonego, aby umożliwić dostęp podczas wdrażania. Identyfikator URI dla połączonych szablonu należy dodać tokenu sygnatury dostępu Współdzielonego. Nawet jeśli token jest przekazywany jako bezpieczny ciąg, identyfikator URI szablonu połączone, wraz z tokenem sygnatury dostępu Współdzielonego są rejestrowane w operacji wdrażania. W celu ograniczenia narażenia, ustawienia okresu ważności tokenu.
 
 Można też maksymalnie dostęp za pośrednictwem tokenu sygnatury dostępu Współdzielonego pliku parametrów.
 
@@ -486,7 +491,7 @@ Poniższe przykłady przedstawiają typowe zastosowania szablonów połączonych
 |---------|---------| ---------|
 |[Witaj, świecie](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[Połączone szablonu](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Zwraca ciąg z połączonego szablonu. |
 |[Moduł równoważenia obciążenia z publicznym adresem IP](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[Połączone szablonu](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Zwraca publiczny adres IP z szablonów połączonych i ustawia tę wartość w usłudze równoważenia obciążenia. |
-|[Wiele adresów IP](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [Połączone szablonu](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |Tworzy wiele publicznych adresów IP w szablonie połączony.  |
+|[Wiele adresów IP](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [Połączone szablonu](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |Tworzy kilka publicznych adresów IP w szablonie połączony.  |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

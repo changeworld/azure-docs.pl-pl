@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 38c1611c0404202be2e100d3059b4ba1ed1a9236
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6debc77bf7232f5ee5d7e638ee25b5eccdbdeeef
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622081"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Przenoszenie danych z programu SAP Business Warehouse przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -38,7 +39,7 @@ Ten łącznik obsługuje wersję SAP Business Warehouse 7.x. Obsługuje ona kopi
 
 Aby umożliwić łączność z wystąpienia programu SAP BW, należy zainstalować następujące składniki:
 - **Brama zarządzania danymi**: łączenie z danymi lokalnymi obsługuje usługi fabryka danych magazynów (w tym SAP Business Warehouse) przy użyciu składnika o nazwie brama zarządzania danymi. Informacje na temat bramy zarządzania danymi i szczegółowe instrukcje dotyczące konfigurowania bramy, zobacz [przenoszenie danych między danymi lokalnymi magazynu do magazynu danych w chmurze](data-factory-move-data-between-onprem-and-cloud.md) artykułu. Nawet jeśli SAP Business Warehouse znajduje się na maszynie wirtualnej platformy Azure IaaS (VM), wymagana jest brama. Można zainstalować bramę na tej samej maszyny Wirtualnej do przechowywania danych lub w innej maszyny Wirtualnej, tak długo, jak bramy można połączyć z bazą danych.
-- **SAP NetWeaver biblioteki** na komputerze bramy. Biblioteka SAP Netweaver można uzyskać od administratora SAP, lub bezpośrednio z [Centrum pobierania oprogramowania SAP](https://support.sap.com/swdc). Wyszukaj **&#1025361; Uwaga SAP** można pobrać lokalizację pobierania najnowszej wersji. Upewnij się, czy architektura biblioteki SAP NetWeaver (32-bitowy lub 64-bitowy) jest zgodna instalacji bramy. Następnie zainstaluj wszystkie pliki zawarte w zestawie SDK programu SAP NetWeaver RFC zgodnie z Uwaga SAP. Biblioteka programu SAP NetWeaver znajduje się również w narzędziach klienckich SAP instalacji.
+- **SAP NetWeaver biblioteki** na komputerze bramy. Biblioteka SAP Netweaver można uzyskać od administratora SAP, lub bezpośrednio z [Centrum pobierania oprogramowania SAP](https://support.sap.com/swdc). Wyszukaj **1025361 # Uwaga SAP** można pobrać lokalizację pobierania najnowszej wersji. Upewnij się, czy architektura biblioteki SAP NetWeaver (32-bitowy lub 64-bitowy) jest zgodna instalacji bramy. Następnie zainstaluj wszystkie pliki zawarte w zestawie SDK programu SAP NetWeaver RFC zgodnie z Uwaga SAP. Biblioteka programu SAP NetWeaver znajduje się również w narzędziach klienckich SAP instalacji.
 
 > [!TIP]
 > Umieść wyodrębniony z zestawu SDK RFC NetWeaver w folderze system32 bibliotek DLL.
@@ -297,7 +298,7 @@ CLNT | Ciąg
 CURR | Decimal
 CUKY | Ciąg
 DEC | Decimal
-FLTP | Podwójnej precyzji
+FLTP | O podwójnej precyzji
 INT1 | Bajtów
 INT2 | Int16
 INT4 | Int
@@ -306,7 +307,7 @@ LCHR | Ciąg
 LRAW | Byte[]
 PREC | Int16
 QUAN | Decimal
-RAW | Byte[]
+NIEPRZETWORZONE | Byte[]
 RAWSTRING | Byte[]
 CIĄG | Ciąg
 JEDNOSTKA | Ciąg

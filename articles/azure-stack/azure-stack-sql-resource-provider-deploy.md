@@ -11,14 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 05/24/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 20b289c16a73bd20ed020987116975c8abe893f0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8643e75a24ff7840b71dfaceae9934cdda566d30
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604424"
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Użyj bazy danych SQL Microsoft Azure stosu
 Dostawcy zasobów Azure stosu programu SQL Server umożliwia udostępnianie baz danych jako usługa Azure stosu. Uruchamia usługę dostawcy zasobów programu SQL Server na dostawcy zasobów SQL maszyny Wirtualnej, który jest maszyną wirtualną systemu Windows Server core.
@@ -29,10 +30,14 @@ Istnieje kilka wymagań wstępnych, które muszą zostać spełnione przed wdro�
 - Jeśli użytkownik nie zostało jeszcze zrobione, [zarejestrować stosu Azure](.\azure-stack-registration.md) z platformy Azure, tak, aby można pobrać elementów portalu Azure marketplace.
 - Dodaj wymagane core systemu Windows Server maszyny Wirtualnej do stosu Azure marketplace, pobierając **2016 serwera Windows Server core** obrazu. Jeśli musisz zainstalować aktualizację, należy zaznaczyć jeden. Pakiet MSU w ścieżce lokalnej zależności. Jeśli więcej niż jeden. MSU plik zostanie odnaleziony, spowoduje to niepowodzenie instalacji dostawcy zasobów SQL.
 - Pobierz dostawcę zasobów SQL binarnego, a następnie uruchom samorozpakowujący się plik typu wyodrębnienie zawartości do katalogu tymczasowego. Dostawca zasobów ma minimalną odpowiedniego stosu Azure kompilacji. Pamiętaj pobrać poprawne dane binarne dla wersji stosu Azure, które są uruchomione:
-    - Azure stosu wersji 1802 (1.0.180302.1): [RP SQL w wersji 1.1.18.0](https://aka.ms/azurestacksqlrp1802).
-    - Azure stosu wersji 1712 (1.0.180102.3, 1.0.180103.2 lub 1.0.180106.1 (zintegrowanych systemów)): [RP SQL w wersji 1.1.14.0](https://aka.ms/azurestacksqlrp1712).
+
+    |Wersja Azure stosu|Wersja SQL RP|
+    |-----|-----|
+    |Wersja 1804 (1.0.180513.1)|[RP SQL w wersji 1.1.24.0](https://aka.ms/azurestacksqlrp1804)
+    |Wersja 1802 (1.0.180302.1)|[RP SQL w wersji 1.1.18.0](https://aka.ms/azurestacksqlrp1802)|
+    |Wersja 1712 (1.0.180102.3, 1.0.180103.2 lub 1.0.180106.1 (zintegrowanych systemów))|[RP SQL w wersji 1.1.14.0](https://aka.ms/azurestacksqlrp1712)|
+    |     |     |
 - Tylko na potrzeby zintegrowanych systemów instalacji, należy podać certyfikat SQL PaaS PKI zgodnie z opisem w sekcji opcjonalnej certyfikaty PaaS z [wymagania dotyczące infrastruktury kluczy publicznych wdrażania stosu Azure](.\azure-stack-pki-certs.md#optional-paas-certificates), umieszczając plik pfx w lokalizacji określony przez **DependencyFilesLocalPath** parametru.
-- Upewnij się, że masz [najnowszą wersję programu Azure PowerShell stosu](.\azure-stack-powershell-install.md) zainstalowany (v1.2.11). 
 
 ## <a name="deploy-the-sql-resource-provider"></a>Wdrażanie dostawcy zasobów SQL
 Po przygotowaniu pomyślnie zainstalować dostawcę zasobów SQL przez spełnia wszystkie wymagania wstępne, można teraz uruchomić **DeploySqlProvider.ps1** skrypt do wdrażania dostawcy zasobów SQL. Skryptu DeploySqlProvider.ps1 jest wyodrębniany w ramach dostawcy zasobów SQL binarne pobrane odpowiednie do wersji Azure stosu. 
@@ -81,10 +86,9 @@ Te parametry można określić w wierszu polecenia. Jeśli nie chcesz, lub jeśl
 Aby uniknąć ręcznego wprowadzania informacji wymaganych po uruchomieniu skryptu DeploySqlProvider.ps1, przez zmianę domyślnych informacji o koncie i hasła w razie potrzeby można dostosować Poniższy przykładowy skrypt:
 
 ```powershell
-# Install the AzureRM.Bootstrapper module, set the profile, and install the AzureRM and AzureStack modules.
+# Install the AzureRM.Bootstrapper module and set the profile.
 Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
-Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
 # Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"
@@ -113,12 +117,13 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 
 # Change directory to the folder where you extracted the installation files.
 # Then adjust the endpoints.
-. $tempDir\DeploySQLProvider.ps1 -AzCredential $AdminCreds `
-  -VMLocalCredential $vmLocalAdminCreds `
-  -CloudAdminCredential $cloudAdminCreds `
-  -PrivilegedEndpoint $privilegedEndpoint `
-  -DefaultSSLCertificatePassword $PfxPass `
-  -DependencyFilesLocalPath $tempDir\cert
+$tempDir\DeploySQLProvider.ps1 `
+    -AzCredential $AdminCreds `
+    -VMLocalCredential $vmLocalAdminCreds `
+    -CloudAdminCredential $cloudAdminCreds `
+    -PrivilegedEndpoint $privilegedEndpoint `
+    -DefaultSSLCertificatePassword $PfxPass `
+    -DependencyFilesLocalPath $tempDir\cert
  ```
 
 ## <a name="verify-the-deployment-using-the-azure-stack-portal"></a>Weryfikacja wdrożenia przy użyciu portalu Azure stosu

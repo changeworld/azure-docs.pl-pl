@@ -1,17 +1,19 @@
 ---
 title: Sposób wyszukiwania adresu przy użyciu usługi Azure Search mapy | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak wyszukiwanie adresu przy użyciu usługi Azure Search mapy
-services: azure-maps
 author: kgremban
 ms.author: kgremban
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-ms.openlocfilehash: 4a87c0d0a487706209acc1c6a4ded92e6aab8f9e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+services: azure-maps
+manager: timlt
+ms.openlocfilehash: 1acb95af7b62641c371627d6250067f9c2eac99c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34600310"
 ---
 # <a name="how-to-find-an-address-using-the-azure-maps-search-service"></a>Jak znaleźć adresu przy użyciu usługi wyszukiwanie Azure mapy
 

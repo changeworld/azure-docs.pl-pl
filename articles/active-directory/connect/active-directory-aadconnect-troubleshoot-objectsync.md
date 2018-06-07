@@ -12,18 +12,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9945ad30cc7d8882d8b99f6b4278f2063ab4b7f7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f65e84bff63bbdb781991ff6648b0fb98ca5208f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592317"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Rozwiązywanie problemów z synchronizacją obiektu z synchronizacji Azure AD Connect
-Ten dokument zawiera kroki umożliwiające rozwiązywanie problemów z synchronizacją obiektu przy użyciu zadania dotyczące rozwiązywania problemów.
+Ten artykuł zawiera kroki podczas rozwiązywania problemów z synchronizacji obiekt przy użyciu zadania dotyczące rozwiązywania problemów. Aby zobaczyć, jak rozwiązywanie problemów z działa w usłudze Azure Active Directory (Azure AD) Połącz, obejrzyj [ten krótki film](https://aka.ms/AADCTSVideo).
 
 ## <a name="troubleshooting-task"></a>Rozwiązywanie problemów z zadania
-Dla usługi Azure Active Directory (AAD) wdrożenia Uzyskuj dostęp do wersji 1.1.749.0 lub wyższym, korzystając z zadania dotyczące rozwiązywania problemów w Kreatorze rozwiązywać problemy z synchronizacją obiektu. W przypadku wcześniejszych wersji, należy rozwiązać ręcznie, zgodnie z opisem [tutaj](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md).
+Dla usługi Azure AD Connect wdrożenia z wersją 1.1.749.0 lub wyższym, korzystając z zadania dotyczące rozwiązywania problemów w Kreatorze rozwiązywać problemy z synchronizacją obiektu. W przypadku wcześniejszych wersji, należy rozwiązać ręcznie, zgodnie z opisem [tutaj](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md).
 
 ### <a name="run-the-troubleshooting-task-in-the-wizard"></a>Uruchom zadanie rozwiązywania problemów w Kreatorze
 Aby uruchomić zadanie rozwiązywania problemów w kreatorze, wykonaj następujące czynności:

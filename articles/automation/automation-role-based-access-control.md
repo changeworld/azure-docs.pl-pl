@@ -7,18 +7,19 @@ ms.service: automation
 ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/16/2018
+ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f758d6aec25ce0ef6bf9a0ecab34189296c81fc0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: fd96a6cfebe44bd02e3f44a44d91119ad1c2c5a9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598756"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Kontrola dostępu oparta na rolach w usłudze Azure Automation
 
-Funkcja kontroli dostępu opartej na rolach (role-based access control, RBAC) umożliwia zarządzanie dostępem do zasobów platformy Azure. Przy użyciu [RBAC](../role-based-access-control/role-assignments-portal.md), możesz rozdzielenie obowiązków w obrębie organizacji i udzielić tylko takiego dostępu użytkowników, grup i aplikacji potrzebnych im do wykonywania swoich zadań. Prawo dostępu oparte na rolach może zostać przydzielone użytkownikom za pomocą witryny Azure Portal, narzędzi wiersza polecenia platformy Azure lub interfejsów API zarządzania platformy Azure.
+Funkcja kontroli dostępu opartej na rolach (role-based access control, RBAC) umożliwia zarządzanie dostępem do zasobów platformy Azure. Przy użyciu [RBAC](../role-based-access-control/overview.md), możesz rozdzielenie obowiązków w obrębie organizacji i udzielić tylko takiego dostępu użytkowników, grup i aplikacji potrzebnych im do wykonywania swoich zadań. Prawo dostępu oparte na rolach może zostać przydzielone użytkownikom za pomocą witryny Azure Portal, narzędzi wiersza polecenia platformy Azure lub interfejsów API zarządzania platformy Azure.
 
 ## <a name="roles-in-automation-accounts"></a>Role w ramach kont automatyzacji
 
@@ -35,7 +36,7 @@ W usłudze Azure Automation prawo dostępu jest nadawane poprzez przypisywanie u
 | Współautor usługi Log Analytics | Rola współautora analizy dziennika umożliwia odczytanie wszystkich danych monitorowania i edytować ustawienia monitorowania. Edytowanie ustawień monitorowania obejmuje dodawanie rozszerzenia maszyny Wirtualnej do maszyn wirtualnych, odczytywanie klucze konta magazynu, aby można było skonfigurować kolekcję dzienników z usługi Azure storage, tworzenia i konfigurowania kont automatyzacji, Dodawanie rozwiązania i konfigurowania diagnostyki Azure w wszystkie zasoby platformy Azure.|
 | Czytelnik usługi Log Analytics | Rolę czytelnika analizy dziennika umożliwia wyświetlanie i wyszukiwanie wszystkich monitorowania danych jak widok ustawienia monitorowania. Dotyczy to również wyświetlanie konfiguracji diagnostyki Azure wszystkich zasobów platformy Azure. |
 | Współautor monitorowania | Rola współautora monitorowania umożliwia odczytanie wszystkich danych monitorowania i aktualizacji ustawienia monitorowania.|
-| Czytelnik monitorowania | Rolę czytelnika Montioring umożliwia odczytanie wszystkich danych monitorowania. |
+| Czytelnik monitorowania | Rolę czytelnika monitorowania umożliwia odczytanie wszystkich danych monitorowania. |
 | Administrator dostępu użytkowników |Rola Administrator dostępu użytkowników umożliwia zarządzanie dostępem użytkowników do kont usługi Azure Automation. |
 
 ## <a name="role-permissions"></a>Uprawnienia roli
@@ -70,6 +71,24 @@ Czytnik mogą wyświetlać wszystkie zasoby w konto usługi Automatyzacja, ale n
 |---------|---------|
 |Microsoft.Automation/automationAccounts/read|Wyświetlanie wszystkich zasobów na koncie automatyzacji. |
 
+### <a name="automation-operator"></a>Operator usługi
+
+Operator automatyzacji jest możliwość tworzenia i zarządzania zadaniami i odczytać nazwy elementu runbook i właściwości dla wszystkich elementów runbook na koncie automatyzacji.  Uwaga: Jeśli chcesz kontrolować operatora dostępu do poszczególnych elementów runbook, a następnie nie ustawić tę rolę, a zamiast tego użyj "Operator zadania automatyzacji" i "Operator elementów Runbook automatyzacji" role w połączeniu. W poniższej tabeli przedstawiono uprawnienia przyznane dla roli:
+
+|**Akcje**  |**Opis**  |
+|---------|---------|
+|Microsoft.Authorization/*/read|Przeczytaj autoryzacji.|
+|Microsoft.Automation/automationAccounts/jobs/read|Lista zadań elementu runbook.|
+|Microsoft.Automation/automationAccounts/jobs/resume/action|Wznów zadanie, które zostało wstrzymane.|
+|Microsoft.Automation/automationAccounts/jobs/stop/action|Anulowanie zadania w toku.|
+|Microsoft.Automation/automationAccounts/jobs/streams/read|Przeczytaj strumieni zadania i dane wyjściowe.|
+|Microsoft.Automation/automationAccounts/jobs/suspend/action|Wstrzymaj zadanie w toku.|
+|Microsoft.Automation/automationAccounts/jobs/write|Tworzenie zadań.|
+|Microsoft.Resources/subscriptions/resourceGroups/read      |Odczytywanie ról i przypisań ról.         |
+|Microsoft.Resources/deployments/*      |Utwórz i Zarządzaj wdrożenia grupy zasobów.         |
+|Microsoft.Insights/alertRules/*      | Utwórz i Zarządzaj reguł alertów.        |
+|Microsoft.Support/* |Tworzenie i zarządzanie biletami pomocy technicznej.|
+
 ### <a name="automation-job-operator"></a>Operator zadań usługi Automation
 
 Rola operatora zadania automatyzacji udzielany jest w zakresie konta automatyzacji. Dzięki temu uprawnienia operatora do utworzenia zadania i zarządzać nimi dla wszystkich elementów runbook w ramach konta. W poniższej tabeli przedstawiono uprawnienia przyznane dla roli:
@@ -92,9 +111,6 @@ Rola operatora zadania automatyzacji udzielany jest w zakresie konta automatyzac
 
 Rola operatora elementu Runbook automatyzacji udzielany jest w zakresie elementu Runbook. Operator elementów Runbook automatyzacji można wyświetlić nazwy i właściwości elementu runbook.  Tej roli w połączeniu z rolą "Automatyzacji zadań Operator" umożliwia operatorowi również tworzyć zadania i zarządzać nimi dla elementu runbook. W poniższej tabeli przedstawiono uprawnienia przyznane dla roli:
 
-> [!NOTE]
-> Nie należy ustawiać rolę "Automatyzacji Operator", chyba że chcesz udzielić operator możliwość zarządzania zadania dla wszystkich elementów runbook w ramach konta.
-
 |**Akcje**  |**Opis**  |
 |---------|---------|
 |Microsoft.Automation/automationAccounts/runbooks/read     | Lista elementów runbook.        |
@@ -103,24 +119,6 @@ Rola operatora elementu Runbook automatyzacji udzielany jest w zakresie elementu
 |Microsoft.Resources/deployments/*      | Utwórz i Zarządzaj wdrożenia grupy zasobów.         |
 |Microsoft.Insights/alertRules/*      | Utwórz i Zarządzaj reguł alertów.        |
 |Microsoft.Support/*      | Tworzenie i zarządzanie biletami pomocy technicznej.        |
-
-### <a name="automation-operator"></a>Operator usługi
-
-Operator automatyzacji jest możliwość tworzenia i zarządzania zadaniami i odczytać nazwy elementu runbook i właściwości dla wszystkich elementów runbook na koncie automatyzacji.  Uwaga: Jeśli chcesz kontrolować operatora dostępu do poszczególnych elementów runbook, a następnie nie ustawić tę rolę, a zamiast tego użyj "Operator zadania automatyzacji" i "Operator elementów Runbook automatyzacji" ról.  W poniższej tabeli przedstawiono uprawnienia przyznane dla roli:
-
-|**Akcje**  |**Opis**  |
-|---------|---------|
-|Microsoft.Authorization/*/read|Przeczytaj autoryzacji.|
-|Microsoft.Automation/automationAccounts/jobs/read|Lista zadań elementu runbook.|
-|Microsoft.Automation/automationAccounts/jobs/resume/action|Wznów zadanie, które zostało wstrzymane.|
-|Microsoft.Automation/automationAccounts/jobs/stop/action|Anulowanie zadania w toku.|
-|Microsoft.Automation/automationAccounts/jobs/streams/read|Przeczytaj strumieni zadania i dane wyjściowe.|
-|Microsoft.Automation/automationAccounts/jobs/suspend/action|Wstrzymaj zadanie w toku.|
-|Microsoft.Automation/automationAccounts/jobs/write|Tworzenie zadań.|
-|Microsoft.Resources/subscriptions/resourceGroups/read      |Odczytywanie ról i przypisań ról.         |
-|Microsoft.Resources/deployments/*      |Utwórz i Zarządzaj wdrożenia grupy zasobów.         |
-|Microsoft.Insights/alertRules/*      | Utwórz i Zarządzaj reguł alertów.        |
-|Microsoft.Support/* |Tworzenie i zarządzanie biletami pomocy technicznej.|
 
 ### <a name="log-analytics-contributor"></a>Współautor usługi Log Analytics
 
@@ -259,14 +257,18 @@ Zarządzanie aktualizacjami osiągnie w wielu usługach do jego obsługi. W poni
 |Rozwiązanie     |Współautor usługi Log Analytics         | Rozwiązanie|
 |Maszyna wirtualna     | Współautor maszyny wirtualnej        | Maszyna wirtualna        |
 
-## <a name="configure-rbac-for-your-automation-account-using-azure-portal"></a>Konfigurowanie RBAC dla konta automatyzacji za pomocą portalu Azure
+## <a name="configure-rbac-for-your-automation-account"></a>Skonfiguruj RBAC dla Twojego konta automatyzacji
+
+Poniższej sekcji przedstawiono sposób konfigurowania RBAC na Twoim koncie automatyzacji za pośrednictwem [portal](#configure-rbac-using-the-azure-portal) i [programu PowerShell](#configure-rbac-using-powershell)
+
+### <a name="configure-rbac-using-the-azure-portal"></a>Konfigurowanie przy użyciu portalu Azure RBAC
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/) i otwórz swoje konto usługi Automation ze strony Konta usługi Automation.
 2. Polecenie **(IAM) kontroli dostępu** kontroli w lewym górnym rogu. Spowoduje to otwarcie **(IAM) kontroli dostępu** strony, gdzie można dodać nowych użytkowników, grup i aplikacji do zarządzania z automatyzacji konta i wyświetlić istniejących ról, które można skonfigurować dla konta automatyzacji.
 
    ![Przycisk Dostęp](media/automation-role-based-access-control/automation-01-access-button.png)
 
-### <a name="add-a-new-user-and-assign-a-role"></a>Dodawanie nowego użytkownika i przypisywanie roli
+#### <a name="add-a-new-user-and-assign-a-role"></a>Dodawanie nowego użytkownika i przypisywanie roli
 
 1. Z **(IAM) kontroli dostępu** kliknij przycisk **+ Dodaj** otworzyć **dodać uprawnienia** strony, w którym można dodać użytkownika, grupy lub aplikacji i przypisać rolę do nich.
 
@@ -288,7 +290,7 @@ Zarządzanie aktualizacjami osiągnie w wielu usługach do jego obsługi. W poni
    > [!NOTE]
    > Kontrola dostępu oparta na rolach można ustawić tylko w zakresie konta automatyzacji, a nie w dowolnym zasobem poniżej konta automatyzacji.
 
-### <a name="remove-a-user"></a>Usuwanie użytkownika
+#### <a name="remove-a-user"></a>Usuwanie użytkownika
 
 Można usunąć uprawnienia dostępu dla użytkownika, który nie obsługuje konta automatyzacji lub który nie działa dla organizacji. Poniżej przedstawiono kroki prowadzące do usunięcia użytkownika:
 
@@ -298,23 +300,7 @@ Można usunąć uprawnienia dostępu dla użytkownika, który nie obsługuje kon
 
    ![Usuwanie użytkowników](media/automation-role-based-access-control/automation-08-remove-users.png)
 
-## <a name="role-assigned-user"></a>Rola przypisana do użytkownika
-
-Gdy użytkownik przypisany do roli loguje się do platformy Azure i wybiera swojego konta automatyzacji, będą teraz widoczne konta właściciela wymienione na liście **katalogów**. Aby wyświetlić konto usługi Automation, do którego został dodany, musi przełączyć katalog domyślny na katalog właściciela.
-
-### <a name="user-experience-for-automation-operator-role"></a>Środowisko użytkownika dla roli operatora usługi
-
-Gdy użytkownik, który jest przypisany do widoków roli operatora automatyzacji konto automatyzacji, które są przypisane, można tylko wyświetlić listę elementów runbook, zadania elementów runbook i harmonogramy utworzone w ramach konta automatyzacji, ale nie można wyświetlić ich definicji. Może uruchamiać, zatrzymywać, wstrzymywać, wznawiać lub planować zadania elementu runbook. Użytkownik nie ma dostępu do innych zasobów automatyzacji, takie jak konfiguracje, hybrydowego procesu roboczego grupy lub węzłów DSC.
-
-![Brak dostępu do zasobów](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)
-
-Użytkownik ma dostęp do wyświetlania i tworzenia harmonogramów, ale nie ma dostępu do jakichkolwiek innych typów zasobów.
-
-Użytkownik nie ma także dostępu do funkcji wyświetlania elementów webhook skojarzonych z elementem Runbook
-
-![Brak dostępu do elementów webhook](media/automation-role-based-access-control/automation-13-no-access-to-webhooks.png)
-
-## <a name="configure-rbac-for-your-automation-account-using-azure-powershell"></a>Konfigurowanie RBAC dla konta automatyzacji za pomocą programu Azure PowerShell
+### <a name="configure-rbac-using-powershell"></a>Skonfiguruj RBAC przy użyciu programu PowerShell
 
 Można również skonfigurować opartej na rolach dostępu do konta automatyzacji za pomocą następujących [poleceń cmdlet programu Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
@@ -326,7 +312,7 @@ Get-AzureRmRoleDefinition -Name 'Automation Operator'
 
 Poniżej przedstawiono przykładowe dane wyjściowe:
 
-```azurepowershell-interactive
+```azurepowershell
 Name             : Automation Operator
 Id               : d3881f73-407a-4167-8283-e981cbba0404
 IsCustom         : False
@@ -387,6 +373,45 @@ Remove-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to remov
 ```
 
 W powyższych przykładach, Zastąp **zaloguj identyfikator**, **identyfikator subskrypcji**, **Nazwa grupy zasobów**, i **nazwa konta automatyzacji** z sieci Szczegóły konta. Gdy zostanie wyświetlony monit o potwierdzenie usunięcia przypisania roli do użytkownika, wybierz pozycję **Tak**.
+
+### <a name="user-experience-for-automation-operator-role---automation-account"></a>Obsługa użytkowników w roli operatora automatyzacji - konta automatyzacji
+
+Gdy użytkownik, który jest przypisany do roli operatora automatyzacji w zakresie konta automatyzacji widoki są przypisane do konta automatyzacji, mogą je tylko przeglądać listę elementów runbook, zadania elementu runbook, i harmonogramy utworzone w automatyzacji konta, ale nie można wyświetlić ich Definicja. Może uruchamiać, zatrzymywać, wstrzymywać, wznawiać lub planować zadania elementu runbook. Użytkownik nie ma dostępu do innych zasobów automatyzacji, takie jak konfiguracje, hybrydowego procesu roboczego grupy lub węzłów DSC.
+
+![Brak dostępu do zasobów](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)
+
+## <a name="configure-rbac-for-runbooks"></a>Skonfiguruj RBAC dla elementów Runbook
+
+Automatyzacja Azure umożliwia przypisanie RBAC do poszczególnych elementów runbook. Aby wykonać to uruchom następujący skrypt, aby dodać użytkownika do określonego elementu runbook. Poniższy skrypt może być uruchomionych przez automatyzacji konta administratora lub administratora dzierżawy.
+
+```azurepowershell-interactive
+$rgName = "<Resource Group Name>" # Resource Group name for the Automation Account
+$automationAccountName ="<Automation Account Name>" # Name of the Automation Account
+$rbName = "<Name of Runbook>" # Name of the runbook
+$userId = "<User ObjectId>" # Azure Active Directory (AAD) user's ObjectId from the directory
+
+# Gets the Automation Account resource
+$aa = Get-AzureRmResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts" -ResourceName $automationAccountName
+
+# Get the Runbook resource
+$rb = Get-AzureRmResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts/runbooks" -ResourceName "$automationAccountName/$rbName"
+
+# The Automation Job Operator role only needs to be ran once per user.
+New-AzureRmRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Job Operator" -Scope $aa.ResourceId
+
+# Adds the user to the Automation Runbook Operator role to the Runbook scope
+New-AzureRmRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook Operator" -Scope $rb.ResourceId
+```
+
+Raz wykonane, zaloguj się do portalu Azure i widoku użytkownik **wszystkie zasoby**. Na liście będą wyświetlać element Runbook, które zostały dodane jako **Operator elementów Runbook automatyzacji** dla.
+
+![RBAC elementu Runbook w portalu](./media/automation-role-based-access-control/runbook-rbac.png)
+
+### <a name="user-experience-for-automation-operator-role---runbook"></a>Obsługa użytkowników w roli operatora automatyzacji - Runbook
+
+Gdy użytkownik, który jest przypisany do roli operatora automatyzacji w widokach zakresu elementu Runbook są przypisane do elementu Runbook, mogą tylko uruchamiania elementu runbook i wyświetlania zadań elementu runbook.
+
+![Ma dostęp tylko do uruchomienia](media/automation-role-based-access-control/automation-only-start.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

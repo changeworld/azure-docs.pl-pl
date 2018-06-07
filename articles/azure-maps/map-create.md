@@ -1,28 +1,26 @@
 ---
 title: Tworzenie mapy przy użyciu map Azure | Dokumentacja firmy Microsoft
 description: Jak utworzyć mapę kodu Javascript
-services: azure-maps
-keywords: ''
-author: jinzh-azureiot
+author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
+services: azure-maps
+manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 9a7c611860a6d32f82d6714d945c62e6c562f91f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ec85854e5d9b7ee0d5e2c54881a417ba6cbb366e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599817"
 ---
 # <a name="create-a-map"></a>Tworzenie mapy
 
 W tym artykule przedstawiono sposób tworzenia mapy.  
 
-## <a name="understand-the-code"></a>Kodu
+## <a name="understand-the-code"></a>Zrozumienie kodu
 
 Istnieją dwa sposoby tworzenia mapy. Można ustawić aparatu mapy przez określenie punktu centralnego i poziom powiększenia lub ustaw granice aparatu mapy, określając południowo-zachodni ograniczenia punkt i ograniczenia punktu północno-wschodnie.
 
@@ -56,4 +54,9 @@ Dowiedz się więcej na temat klasy i metody używane w tym artykule:
 * [mapy](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
     * [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#setcamera)
     * [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#setcamerabounds)
+    
+Aby uzyskać więcej przykładów kodu do dodania do map zobacz następujące artykuły: 
+* [Dodaj kod pin](./map-add-pin.md)
+* [Dodawanie menu podręcznego](map-add-popup.md)
+    
 

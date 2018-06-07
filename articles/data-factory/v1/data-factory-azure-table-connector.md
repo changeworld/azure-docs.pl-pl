@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2c560bf9eeac5f9aed1024bd87d450f7aee7ce05
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 996b1e5cbc477bf8a67a8cbb118961aaedf151fd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621510"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Przenoszenie danych do i z tabel Azure przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -476,9 +477,9 @@ Podczas przenoszenia danych do i z tabel Azure, następujące [mapowania zdefini
 | Typ danych OData | Typ architektury .NET | Szczegóły |
 | --- | --- | --- |
 | Edm.Binary |byte[] |Tablica bajtów do 64 KB. |
-| Edm.Boolean |bool |Wartość logiczna. |
+| Edm.Boolean |wartość logiczna |Wartość logiczna. |
 | Edm.DateTime |DateTime |Wartość 64-bitowa, wyrażone jako uniwersalny czas koordynowany (UTC). Obsługiwanym zakresem DateTime zaczyna się od 12:00, a 1 stycznia, 1601 r. N.E. (C.E.), UTC. Zakres kończy się po 31 grudnia 9999 r. |
-| Edm.Double |O podwójnej precyzji |64-bitowej zmiennej punktu wartości. |
+| Edm.Double |double |64-bitowej zmiennej punktu wartości. |
 | Edm.Guid |Identyfikator GUID |Globalnie unikatowy identyfikator 128-bitowego. |
 | Edm.Int32 |Int32 |32-bitową liczbę całkowitą. |
 | Edm.Int64 |Int64 |64-bitową liczbę całkowitą. |

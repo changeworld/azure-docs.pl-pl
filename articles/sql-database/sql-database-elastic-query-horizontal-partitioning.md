@@ -7,14 +7,15 @@ manager: craigg
 author: MladjoA
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: mlandzic
-ms.openlocfilehash: dd2219c01f194dad658d08a01f5f525640ef1c7c
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: fcb498542a496e4a887c825808642d3f586ef1d9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646358"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Raportowanie w chmurze skalowalnych w poziomie bazy danych (wersja zapoznawcza)
 ![Wysyłanie zapytań na odłamków][1]
@@ -35,7 +36,7 @@ Podzielonej baz danych, zobacz [zapytania dla baz danych chmury z różnych sche
 Te instrukcje tworzenia reprezentację metadanych warstwę danych podzielonej w elastycznej kwerendy bazy danych. 
 
 1. [TWORZENIE KLUCZA GŁÓWNEGO](https://msdn.microsoft.com/library/ms174382.aspx)
-2. [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
+2. [UTWÓRZ BAZĘ DANYCH O ZAKRESIE POŚWIADCZEŃ](https://msdn.microsoft.com/library/mt270260.aspx)
 3. [TWORZENIE ZEWNĘTRZNEGO ŹRÓDŁA DANYCH](https://msdn.microsoft.com/library/dn935022.aspx)
 4. [TWORZENIE TABELI ZEWNĘTRZNEJ](https://msdn.microsoft.com/library/dn935021.aspx) 
 

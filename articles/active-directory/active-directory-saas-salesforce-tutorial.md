@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 2caf788f1c38c701699e0c275cabe3d12eb75270
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: e5b9fb0e1696e83ca4dfc8936613631f4c84ca47
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590786"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>Samouczek: Integracji Azure Active Directory z usług Salesforce
 
@@ -205,10 +206,6 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     > [!NOTE]
     > Jeśli zostanie wybrana więcej niż jedna usługa uwierzytelniania, użytkownicy są monit o wybranie usługi uwierzytelniania, która ich, takich jak się zalogować podczas inicjowania rejestracji jednokrotnej w środowisku usług Salesforce. Jeśli nie chcesz, aby mieć miejsce, a następnie wykonaj następujące czynności **pozostawienie jej niezaznaczonej innych usług uwierzytelniania**.
 
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
 Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
@@ -240,27 +237,26 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
- 
+
 ### <a name="create-a-salesforce-test-user"></a>Tworzenie użytkownika testowego usług Salesforce
 
-W tej sekcji użytkownika o nazwie Simona Britta jest tworzony w Salesforce. SalesForce obsługę w czasie, który jest domyślnie włączona.
-Nie ma elementu akcji można w tej sekcji. Jeśli użytkownik nie istnieje w usłudze Salesforce, nowy jest tworzony przy próbie uzyskania dostępu do usług Salesforce.
+W tej sekcji użytkownika o nazwie Simona Britta jest tworzony w Salesforce. SalesForce obsługę w czasie, który jest domyślnie włączona. Nie ma elementu akcji można w tej sekcji. Jeśli użytkownik nie istnieje w usłudze Salesforce, nowy jest tworzony przy próbie uzyskania dostępu do usług Salesforce. SalesForce również obsługę użytkowników, można znaleźć więcej szczegółów [tutaj](active-directory-saas-salesforce-provisioning-tutorial.md) na temat konfigurowania użytkowników automatycznego inicjowania obsługi administracyjnej.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
 
 W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu do usług Salesforce.
 
-![Przypisanie roli użytkownika][200] 
+![Przypisanie roli użytkownika][200]
 
 **Aby przypisać Simona Britta Salesforce, wykonaj następujące czynności:**
 
 1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
-    ![Przypisz użytkownika][201] 
+    ![Przypisz użytkownika][201]
 
 2. Na liście aplikacji zaznacz **Salesforce**.
 
-    ![Łącze Salesforce na liście aplikacji](./media/active-directory-saas-salesforce-tutorial/tutorial_salesforce_app.png)  
+    ![Łącze Salesforce na liście aplikacji](./media/active-directory-saas-salesforce-tutorial/tutorial_salesforce_app.png)
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
@@ -275,7 +271,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
-    
+
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
@@ -287,8 +283,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
-
-
+* [Skonfiguruj Inicjowanie obsługi użytkowników](active-directory-saas-salesforce-provisioning-tutorial.md)
 
 <!--Image references-->
 
@@ -303,4 +298,3 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 [201]: ./media/active-directory-saas-salesforce-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-salesforce-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-salesforce-tutorial/tutorial_general_203.png
-

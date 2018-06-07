@@ -1,25 +1,26 @@
 ---
 title: Kreator kopiowania Azure fabryki danych | Dokumentacja firmy Microsoft
-description: "Więcej informacji na temat sposobu korzystania z Kreatora kopiowania Azure fabryki danych można skopiować danych z obsługiwanych źródeł danych do ujścia."
+description: Więcej informacji na temat sposobu korzystania z Kreatora kopiowania Azure fabryki danych można skopiować danych z obsługiwanych źródeł danych do ujścia.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 0974eb40-db98-4149-a50d-48db46817076
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: aeed2b2413f14b60d018ebd4f09293d6c41554d2
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: ebd8abf8c34be1fa6fcd282c9bfbc63d81a56239
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621136"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Kreator kopiowania fabryki danych Azure
 > [!NOTE]
@@ -75,11 +76,11 @@ Załóżmy, że podania folderów w następującym formacie:
     2016/03/01/03
     ...
 
-Kliknij przycisk **Przeglądaj** przycisk dla **pliku lub folderu**, przejdź do jednej z tych folderów (na przykład 2016 -> 03 -> 01 -> 02) i kliknij przycisk **wybierz**. Powinny pojawić się `2016/03/01/02` w polu tekstowym. Teraz, Zastąp **2016** z **{year}**, **03** z **{month}**, **01** z **{day}** , i **02** z **{godzina}**i naciśnij klawisz **kartę** klucza. Powinny pojawić się listy rozwijanej, aby wybrać format tych zmiennych:
+Kliknij przycisk **Przeglądaj** przycisk dla **pliku lub folderu**, przejdź do jednej z tych folderów (na przykład 2016 -> 03 -> 01 -> 02) i kliknij przycisk **wybierz**. Powinny pojawić się `2016/03/01/02` w polu tekstowym. Teraz, Zastąp **2016** z **{year}**, **03** z **{month}**, **01** z **{day}** , i **02** z **{godzina}** i naciśnij klawisz **kartę** klucza. Powinny pojawić się listy rozwijanej, aby wybrać format tych zmiennych:
 
 ![Używanie zmiennych systemu](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
-Jak pokazano na poniższym zrzucie ekranu, można również użyć **niestandardowych** zmiennej i wszystkie [obsługiwane ciągi formatujące](https://msdn.microsoft.com/library/8kb3ddd4.aspx). Aby wybrać folder o tej struktury, użyj **Przeglądaj** najpierw przycisk. Następnie zastąp wartości z **{niestandardowych}**i naciśnij klawisz **kartę** klucza, aby zobaczyć pole tekstowe, w którym można wpisać ciąg formatu.     
+Jak pokazano na poniższym zrzucie ekranu, można również użyć **niestandardowych** zmiennej i wszystkie [obsługiwane ciągi formatujące](https://msdn.microsoft.com/library/8kb3ddd4.aspx). Aby wybrać folder o tej struktury, użyj **Przeglądaj** najpierw przycisk. Następnie zastąp wartości z **{niestandardowych}** i naciśnij klawisz **kartę** klucza, aby zobaczyć pole tekstowe, w którym można wpisać ciąg formatu.     
 
 ![Użycie niestandardowej zmiennej](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 

@@ -1,19 +1,19 @@
 ---
 title: Usługa Azure IoT krawędzi ciągłej integracji i ciągłe wdrażanie | Dokumentacja firmy Microsoft
 description: Omówienie ciągłej integracji i ciągłe wdrażanie Edge IoT Azure
-services: iot-Edge
-documentationcenter: ''
 author: shizn
-manager: timlt
+manager: ''
 ms.author: xshi
-ms.date: 4/30/2018
-ms.topic: article
+ms.date: 04/30/2018
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 2f635a4c02dd8fd2b58598e53662d1a4d82ea611
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+services: iot-edge
+ms.openlocfilehash: a8b58eae9aa08d8f6539370fa6e78a7a4813c18f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631024"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge---preview"></a>Ciągłej integracji i ciągłe wdrażanie na krawędzi IoT Azure — wersja zapoznawcza
 W tym samouczku przedstawiono sposób użycia ciągłej integracji i funkcji ciągłego wdrażania programu Visual Studio Team Services (VSTS) i Microsoft Team Foundation Server (TFS) do tworzenia, testowania i wdrażania aplikacji szybkie i skuteczne do użytkownika Usługa Azure IoT krawędzi. 

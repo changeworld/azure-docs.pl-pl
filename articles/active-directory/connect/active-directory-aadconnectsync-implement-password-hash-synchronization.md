@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c223091e423d0f342f14424c58d6b7447cda50e8
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: abe439cc91a003137c116f57c0cc8bbb61430114
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593456"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementowanie synchronizacji skrótów haseł z synchronizacji Azure AD Connect
 Ten artykuł zawiera informacje potrzebne do synchronizacji haseł użytkowników z lokalnego wystąpienia usługi Active Directory do wystąpienia usługi Azure Active Directory (Azure AD) oparte na chmurze.
@@ -81,9 +83,9 @@ Poniżej przedstawiono szczegółowe działania synchronizacji skrótu hasła mi
 2. Przed wysłaniem, kontroler domeny szyfruje MD4 skrót hasła przy użyciu klucza, który jest [MD5](http://www.rfc-editor.org/rfc/rfc1321.txt) skrótu klucza sesji RPC i soli. Następnie wysyła wynik do agenta synchronizacji skrótu hasła za pośrednictwem wywołania RPC. Kontroler domeny również przekazuje soli agent synchronizacji przy użyciu protokołu replikacji kontrolera domeny, agent będzie można odszyfrować koperty.
 3.  Agent synchronizacji skrótów haseł po zaszyfrowanych koperty używa [MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx) i soli do wygenerowania klucza do odszyfrowywania odebranych danych do oryginalnego formatu MD4. W żadnym punkcie agent synchronizacji skrótów haseł mają dostęp do hasła w postaci zwykłego tekstu. Użyj agent synchronizacji skrótów haseł MD5 obejmuje wyłącznie zgodność z protokołem replikacji z kontrolerem domeny i jest używana tylko na lokalne między kontrolerem domeny i agent synchronizacji skrótów haseł.
 4.  Agent synchronizacji skrótów haseł rozszerza wartość skrótu hasła binarne 16-bajtowych 64 bajtów konwertując pierwszy skrót na ciąg szesnastkowy 32-bajtowych, następnie konwertując tego ciągu z powrotem do binarną, używając kodowania UTF-16.
-5.  Agent synchronizacji skrótów haseł dodaje soli, składające się soli długość 10-bajtowych, do pliku binarnego 64-bajtowych, aby jeszcze lepiej chronić oryginalnego wyznaczania wartości skrótu.
-6.  Agent synchronizacji skrótów haseł następnie łączy skrót MD4 plus soli i danych wejściowych do [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) funkcji. iteracje 1000 [HMAC SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) kluczem algorytmu wyznaczania wartości skrótu jest używany. 
-7.  Agent synchronizacji skrótów haseł przyjmuje wynikowy skrót 32-bajtowych, łączy zarówno soli i liczby iteracji SHA256 do niego (na potrzeby używania przez usługę Azure AD), a następnie przesyła ciąg z usługi Azure AD Connect do usługi Azure AD przy użyciu protokołu SSL.</br> 
+5.  Dodaje agent synchronizacji skrótów haseł na soli użytkowników, składające się soli długość 10-bajtowych, do pliku binarnego 64-bajtowych, aby jeszcze lepiej chronić oryginalnego wyznaczania wartości skrótu.
+6.  Agent synchronizacji skrótów haseł następnie łączy skrót MD4 oraz na soli użytkownika i danych wejściowych do [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) funkcji. iteracje 1000 [HMAC SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) kluczem algorytmu wyznaczania wartości skrótu jest używany. 
+7.  Agent synchronizacji skrótów haseł ma wynikowy 32-bajtowych wyznaczania wartości skrótu, łączy zarówno na soli użytkownika i liczbę SHA256 iteracji, aby go (na potrzeby używania przez usługę Azure AD), przesyła ciąg z usługi Azure AD Connect do usługi Azure AD przy użyciu protokołu SSL.</br> 
 8.  Gdy użytkownik próbuje zalogować się do usługi Azure AD i wprowadza swoje hasło, hasło jest uruchamiane za pomocą tego samego MD4 + ziarna + PBKDF2 + HMAC SHA256 procesu. Jeśli wynikowy skrót zgodny skrótu przechowywane w usłudze Azure AD, użytkownik wprowadził prawidłowe hasło i zostanie uwierzytelniony. 
 
 >[!Note] 

@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/10/2018
+ms.topic: conceptual
+ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b54138c5197d1c5870eed6fd4782e47c6a8b0300
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 27d74ce2cf8fdc4434c48c36dd0c0751dbbab232
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622316"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Skopiuj wydajności działania i dostrajania przewodnik
 
@@ -102,8 +103,8 @@ A **jednostki przepływu danych w chmurze (DMU)** miary, która odzwierciedla wy
 
 | Skopiuj scenariusza | Domyślne DMUs określone przez usługę |
 |:--- |:--- |
-| Kopiowanie danych między magazynów opartych na plikach | Od 2 do 16, w zależności od liczby i rozmiaru plików. |
-| Inne scenariusze kopiowania | 2 |
+| Kopiowanie danych między magazynów opartych na plikach | Od 4 do 16, w zależności od liczby i rozmiaru plików. |
+| Inne scenariusze kopiowania | 4 |
 
 Aby zastąpić to ustawienie domyślne, należy określić wartość dla **cloudDataMovementUnits** właściwości w następujący sposób. **Dozwolone wartości** dla **cloudDataMovementUnits** to 2, 4, 8, 16, 32. **Rzeczywistą liczbę chmury DMUs** używany w czasie wykonywania operacji kopiowania jest równa lub mniejsza niż skonfigurowana wartość, w zależności od tego wzorca sieci danych. Uzyskać informacje na temat poziomu są bardziej wydajne, można uzyskać po skonfigurowaniu więcej jednostek dla konkretnej kopii źródłowy i odbiorczy, zobacz [dotyczące wydajności](#performance-reference).
 

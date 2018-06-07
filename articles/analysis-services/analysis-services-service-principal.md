@@ -2,16 +2,17 @@
 title: Automatyzacji zadań usług Azure Analysis Services z nazwy główne usług | Dokumentacja firmy Microsoft
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2b49b85d39f55052e112fd9f4f0e28bdc6c91637
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 931a45fdbb04d15f3080ee0a2c0546ab6e924b59
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595720"
 ---
 # <a name="automation-with-service-principals"></a>Automatyzacja przy użyciu nazwy główne usług
 

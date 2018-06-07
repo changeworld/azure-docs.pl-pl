@@ -1,12 +1,12 @@
 ---
-title: "Synchronizacja programu Azure AD Connect: Włączanie Kosza AD | Dokumentacja firmy Microsoft"
-description: "W tym temacie zalecane jest stosowanie funkcji Kosz usługi AD w programie Azure AD Connect."
+title: 'Synchronizacja programu Azure AD Connect: Włączanie Kosza AD | Dokumentacja firmy Microsoft'
+description: W tym temacie zalecane jest stosowanie funkcji Kosz usługi AD w programie Azure AD Connect.
 services: active-directory
-keywords: "Kosz usługi AD, przypadkowego usunięcia, zakotwiczenie źródła"
-documentationcenter: 
+keywords: Kosz usługi AD, przypadkowego usunięcia, zakotwiczenie źródła
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: afec4207-74f7-4cdd-b13a-574af5223a90
 ms.service: active-directory
 ms.workload: identity
@@ -14,12 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 45bff0585eb6f1990a7300ae3d16632eab78a83c
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: f80d16c36714a971e3878ad7dedffaac55103d92
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593078"
 ---
 # <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Synchronizacja programu Azure AD Connect: Włączanie Kosza usługi AD
 Zalecane jest, Włącz funkcję Kosz usługi AD do katalogów Active lokalnych, które są synchronizowane z usługą Azure AD. 

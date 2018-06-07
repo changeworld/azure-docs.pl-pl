@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ab21eaf935ed03b6f34af00f69e993eaffdad1db
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5731e4249c94e77846f07870e4bba28aab70682e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619528"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Przenoszenie danych z Redshift Amazon przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -62,9 +63,9 @@ Poniższa tabela zawiera opisy elementów JSON, które są specyficzne dla usłu
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| **Typ** |Ta właściwość musi mieć ustawioną **AmazonRedshift**. |Yes |
+| **type** |Ta właściwość musi mieć ustawioną **AmazonRedshift**. |Yes |
 | **server** |IP adres lub nazwę hosta serwera Amazon Redshift. |Yes |
-| **port** |Numer portu TCP używany przez serwer Amazon Redshift do nasłuchiwania dla połączeń klienta. |Nie (wartość domyślna to 5439) |
+| **Port** |Numer portu TCP używany przez serwer Amazon Redshift do nasłuchiwania dla połączeń klienta. |Nie (wartość domyślna to 5439) |
 | **Bazy danych** |Nazwa bazy danych Amazon Redshift. |Yes |
 | **Nazwa użytkownika** |Nazwa użytkownika, który ma dostęp do bazy danych. |Yes |
 | **Hasło** |Hasło dla konta użytkownika. |Yes |
@@ -77,7 +78,7 @@ Listę sekcje i właściwości, które są dostępne do definiowania zestawów d
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| **tableName** |Nazwa tabeli w bazie danych Amazon Redshift, odnoszący się do połączonej usługi. |Nie (Jeśli **zapytania** właściwości działania kopiowania typu **RelationalSource** jest określona) |
+| **TableName** |Nazwa tabeli w bazie danych Amazon Redshift, odnoszący się do połączonej usługi. |Nie (Jeśli **zapytania** właściwości działania kopiowania typu **RelationalSource** jest określona) |
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
@@ -334,8 +335,8 @@ Następujące mapowania są używane, gdy działanie kopiowania konwertuje dane 
 | LICZBA CAŁKOWITA |Int32 |
 | BIGINT |Int64 |
 | DECIMAL |Decimal |
-| RZECZYWISTE |Kawaler/panna |
-| PODWÓJNEJ PRECYZJI |Podwójnej precyzji |
+| RZECZYWISTE |Pojedyncze |
+| PODWÓJNEJ PRECYZJI |O podwójnej precyzji |
 | WARTOŚĆ LOGICZNA |Ciąg |
 | CHAR |Ciąg |
 | VARCHAR |Ciąg |

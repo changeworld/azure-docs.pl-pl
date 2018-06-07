@@ -1,24 +1,20 @@
 ---
-title: "Kopia zapasowa Azure: spójnych z aplikacją kopii zapasowych maszyn wirtualnych systemu Linux | Dokumentacja firmy Microsoft"
-description: "Tworzenie spójnych z aplikacją kopii zapasowych maszyn wirtualnych systemu Linux na platformie Azure. W tym artykule opisano konfigurowanie framework skryptu, aby utworzyć kopię zapasową maszyn wirtualnych systemu Linux wdrożonych Azure. Ten artykuł zawiera także informacje dotyczące rozwiązywania problemów."
+title: 'Kopia zapasowa Azure: spójnych z aplikacją kopii zapasowych maszyn wirtualnych systemu Linux'
+description: Tworzenie spójnych z aplikacją kopii zapasowych maszyn wirtualnych systemu Linux na platformie Azure. W tym artykule opisano konfigurowanie framework skryptu, aby utworzyć kopię zapasową maszyn wirtualnych systemu Linux wdrożonych Azure. Ten artykuł zawiera także informacje dotyczące rozwiązywania problemów.
 services: backup
-documentationcenter: dev-center-name
 author: anuragmehrotra
 manager: shivamg
-keywords: "kopii zapasowej całej aplikacji. spójnych z aplikacją kopii zapasowej maszyny Wirtualnej platformy Azure; Kopii zapasowej maszyny Wirtualnej systemu Linux. Kopia zapasowa Azure"
-ms.assetid: bbb99cf2-d8c7-4b3d-8b29-eadc0fed3bef
+keywords: kopii zapasowej całej aplikacji. spójnych z aplikacją kopii zapasowej maszyny Wirtualnej platformy Azure; Kopii zapasowej maszyny Wirtualnej systemu Linux. Kopia zapasowa Azure
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 1/12/2018
-ms.author: anuragm;markgal
-ms.openlocfilehash: c2437b4cd90deda3e7239d87837a47a072f52835
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.author: anuragm
+ms.openlocfilehash: 027fc4098e7760de276a8548453bb83599ed0521
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605216"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Spójnych z aplikacją kopii zapasowej maszyn wirtualnych systemu Linux platformy Azure
 

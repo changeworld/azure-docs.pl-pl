@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a9d8d0daae3fd35cd8a2527a3a29da235424830e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 62b838212f94c48e39daf31877aeb5b344836571
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622564"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Przenoszenia danych z programu Teradata przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -66,7 +67,7 @@ Poniższa tabela zawiera opis specyficzne dla usługi programu Teradata połącz
 | --- | --- | --- |
 | type |Właściwość type musi mieć ustawioną: **OnPremisesTeradata** |Yes |
 | serwer |Nazwa serwera programu Teradata. |Yes |
-| authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych programu Teradata. Możliwe wartości to: anonimowe, podstawowe i systemu Windows. |Yes |
+| Typ authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych programu Teradata. Możliwe wartości to: anonimowe, podstawowe i systemu Windows. |Yes |
 | nazwa użytkownika |Określ nazwę użytkownika, jeśli korzystasz z uwierzytelniania podstawowego lub systemu Windows. |Nie |
 | hasło |Określ hasło dla konta użytkownika, określone nazwy użytkownika. |Nie |
 | gatewayName |Nazwa bramy, która powinna być używana przez usługi fabryka danych nawiązać połączenia z lokalną bazą danych programu Teradata. |Yes |
@@ -296,25 +297,25 @@ Podczas przenoszenia danych do programu Teradata, następujące mapowania są u�
 | BigInt |Int64 |
 | ByteInt |Int16 |
 | Decimal |Decimal |
-| Podwójnej precyzji |Podwójnej precyzji |
+| O podwójnej precyzji |O podwójnej precyzji |
 | Liczba całkowita |Int32 |
-| Liczba |Podwójnej precyzji |
+| Liczba |O podwójnej precyzji |
 | SmallInt |Int16 |
 | Date |DateTime |
-| Time |TimeSpan |
+| Time |Zakres czasu |
 | Czas ze strefą czasową |Ciąg |
 | Sygnatura czasowa |DateTime |
 | Sygnatura czasowa ze strefą czasową |DateTimeOffset |
-| Interwał dnia |TimeSpan |
-| Interwał dzień na godzinę |TimeSpan |
-| Interwał dzień na minutę |TimeSpan |
-| Interwał dzień na sekundę |TimeSpan |
-| Interwał, godzinę |TimeSpan |
-| Interwał godzinę, minutę |TimeSpan |
-| Interwał godzinę na sekundę |TimeSpan |
-| Interwał minutę |TimeSpan |
-| Interwał minutę na sekundę |TimeSpan |
-| Interwał drugi |TimeSpan |
+| Interwał dnia |Zakres czasu |
+| Interwał dzień na godzinę |Zakres czasu |
+| Interwał dzień na minutę |Zakres czasu |
+| Interwał dzień na sekundę |Zakres czasu |
+| Interwał, godzinę |Zakres czasu |
+| Interwał godzinę, minutę |Zakres czasu |
+| Interwał godzinę na sekundę |Zakres czasu |
+| Interwał minutę |Zakres czasu |
+| Interwał minutę na sekundę |Zakres czasu |
+| Interwał drugi |Zakres czasu |
 | Interwał roku |Ciąg |
 | Interwał rok, miesiąc |Ciąg |
 | Interwał miesiąca |Ciąg |

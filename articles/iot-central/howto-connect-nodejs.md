@@ -1,18 +1,19 @@
 ---
-title: Konstruktor ogólnego aplikacji klienckiej Node.js do usługi Azure IoT centralnej | Dokumentacja firmy Microsoft
+title: Połącz ogólnego aplikacji klienckiej Node.js do usługi Azure IoT centralnej | Dokumentacja firmy Microsoft
 description: Deweloper urządzenia jak połączyć ogólnego urządzenia Node.js do aplikacji Azure IoT centralnej.
-services: iot-central
-author: tanmaybhagwat
+author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/16/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 8666a2db051cbd4a93c3e587aeaef3e1722b1b83
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: 42ede975f2cfde2d9c0a61d15ba1af412a88c556
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628542"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Łączenie aplikacji klienckiej ogólnych do aplikacji Azure IoT centralnej (Node.js)
 
@@ -23,7 +24,7 @@ W tym artykule opisano sposób Deweloper urządzenia nawiązać ogólnego aplika
 Do wykonania kroków opisanych w tym artykule potrzebne są:
 
 1. Aplikacja Azure IoT centralnej. Aby uzyskać więcej informacji, zobacz [tworzenie aplikacji centralnej Azure IoT](howto-create-application.md).
-1. Maszyna programowanie z [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszej. Można uruchomić `node --version` w wierszu polecenia, aby sprawdzić swoją wersję. Node.js to dostępne dla różnych typów systemów operacyjnych.
+1. Maszyna programowanie z [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszej. Można uruchomić `node --version` w wierszu polecenia, aby sprawdzić swoją wersję. Oprogramowanie Node.js jest dostępne dla różnych systemów operacyjnych.
 
 W aplikacji Azure IoT centralną należy szablonu urządzenia z poniższe pomiarów i zdefiniowane właściwości urządzenia:
 
@@ -33,7 +34,7 @@ Dodaj następujące dane telemetryczne w **pomiary** strony:
 
 | Nazwa wyświetlana | Nazwa pola  | Jednostki | Min. | Maks. | Po przecinku |
 | ------------ | ----------- | ----- | --- | --- | -------------- |
-| Temperatura  | Temperatury | F     | 60  | 110 | 0              |
+| Temperatura  | temperature | F     | 60  | 110 | 0              |
 | Wilgotność     | wilgotność    | %     | 0   | 100 | 0              |
 | Ciśnienie     | pressure    | kPa   | 80  | 110 | 0              |
 
@@ -48,7 +49,7 @@ Dodaj następujący stan w **pomiary** strony:
 
 | Nazwa wyświetlana | Nazwa pola  | Wartość 1 | Nazwa wyświetlana | Wartość 2 | Nazwa wyświetlana |
 | ------------ | ----------- | --------| ------------ | ------- | ------------ | 
-| Wentylator tryb     | fanmode     | 1       | Działanie      | 0       | Zatrzymano      |
+| Tryb wentylatora     | fanmode     | 1       | Działanie      | 0       | Zatrzymano      |
 
 > [!NOTE]
   Typ danych miary stanu jest ciągiem.
@@ -72,7 +73,7 @@ Dodaj następujące właściwości urządzenia w **stronę właściwości**:
 
 | Nazwa wyświetlana        | Nazwa pola        | Typ danych |
 | ------------------- | ----------------- | --------- |
-| Numer seryjny       | numer seryjny      | tekst      |
+| Numer seryjny       | serialNumber      | tekst      |
 | Producent urządzenia | producent      | tekst      |
 
 Wprowadź nazwy pól dokładnie tak jak pokazano w tabeli w szablonie urządzenia. Jeśli nazwy pól nie są zgodne, aplikacja nie może wyświetlić wartość właściwości.
@@ -84,7 +85,7 @@ Dodaj następujące **numer** ustawienia w **strony ustawień**:
 | Nazwa wyświetlana    | Nazwa pola     | Jednostki | Liczba cyfr dziesiętnych | Min. | Maks.  | Początkowa |
 | --------------- | -------------- | ----- | -------- | --- | ---- | ------- |
 | Wentylator szybkości       | fanSpeed       | obr. / min   | 0        | 0   | 3000 | 0       |
-| Ustaw temperatury | setTemperature | F     | 0        | 20  | 200  | 80      |
+| Ustaw temperaturę | setTemperature | F     | 0        | 20  | 200  | 80      |
 
 Wprowadź nazwę pola dokładnie tak jak pokazano w tabeli w szablonie urządzenia. Jeśli nazwy pól nie są zgodne, urządzenie nie może otrzymywać wartości ustawień.
 
@@ -96,7 +97,7 @@ W aplikacji Azure IoT centralnej Dodaj rzeczywiste urządzenie z urządzenia sza
 
 Poniższe kroki przedstawiają sposób tworzenia aplikacji klienckiej, który implementuje rzeczywiste urządzenie dodane do aplikacji.
 
-1. Utwórz folder o nazwie `connected-air-conditioner-adv` na tym komputerze. Przejdź do tego folderu w środowisku wiersza polecenia.
+1. Utwórz folder o nazwie `connected-air-conditioner-adv` na maszynie. Przejdź do tego folderu w środowisku wiersza polecenia.
 
 1. Aby zainicjować projektu Node.js, uruchom następujące polecenia:
 
@@ -273,5 +274,5 @@ Operator w aplikacji Azure IoT centralnej rzeczywistego urządzenia może:
 ## <a name="next-steps"></a>Kolejne kroki
 
 Teraz, kiedy znasz sposobu łączenia ogólnego klienta Node.js do aplikacji Azure IoT centralnej, Oto Sugerowane następne kroki:
-* [Przygotowanie i połącz Pi malina](howto-connect-raspberry-pi-python.md)
+* [Przygotowywanie i łączenie urządzenia Raspberry Pi](howto-connect-raspberry-pi-python.md)
 <!-- Next how-tos in the sequence -->

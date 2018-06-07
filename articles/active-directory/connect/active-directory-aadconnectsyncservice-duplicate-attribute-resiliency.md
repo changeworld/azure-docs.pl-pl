@@ -1,11 +1,11 @@
 ---
-title: "Tożsamość synchronizacji i zduplikowany atrybut odporności | Dokumentacja firmy Microsoft"
-description: "Nowe zachowanie sposób obsługi obiektów z konfliktami nazwy UPN lub ProxyAddress podczas synchronizacji katalogów za pomocą usługi Azure AD Connect."
+title: Tożsamość synchronizacji i zduplikowany atrybut odporności | Dokumentacja firmy Microsoft
+description: Nowe zachowanie sposób obsługi obiektów z konfliktami nazwy UPN lub ProxyAddress podczas synchronizacji katalogów za pomocą usługi Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 537a92b7-7a84-4c89-88b0-9bce0eacd931
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
+ms.component: hybrid
 ms.author: markvi
-ms.openlocfilehash: 975abed469a78573553c0879b33181d2a58ec48c
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: cfed9d32e919cc3c1b7b9c2a6ea5ddb31f2a8fb9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593212"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Synchronizacja tożsamości i odporność względem zduplikowanych atrybutów
 Zduplikowany atrybut odporności to funkcja usługi Azure Active Directory, która wyeliminuje tarcie spowodowane **UserPrincipalName** i **ProxyAddress** powoduje konflikt podczas uruchamiania narzędzi synchronizacji firmy Microsoft.
@@ -141,11 +143,11 @@ Artykule przedstawiono różne strategie rozwiązywania problemów i rozwiązani
 1. Obiekty z określonym atrybutem konfiguracje w dalszym ciągu otrzymywać błędy eksportu przeciwieństwie zduplikowane atrybuty kwarantanną.  
    Na przykład:
    
-    a. Nowy użytkownik jest tworzony w usłudze AD za pomocą nazwy UPN  **Joe@contoso.com**  i ProxyAddress**smtp:Joe@contoso.com**
+    a. Nowy użytkownik jest tworzony w usłudze AD za pomocą nazwy UPN **Joe@contoso.com** i ProxyAddress **smtp:Joe@contoso.com**
    
-    b. Właściwości tego obiektu powodują konflikt z istniejącą grupę, gdzie jest ProxyAddress  **SMTP:Joe@contoso.com** .
+    b. Właściwości tego obiektu powodują konflikt z istniejącą grupę, gdzie jest ProxyAddress **SMTP:Joe@contoso.com**.
    
-    d. Podczas eksportu **konflikt ProxyAddress** zamiast konflikt atrybuty poddane kwarantannie, zostanie zgłoszony błąd. Jak miałoby to miejsce przed włączeniem funkcji ochrony na każdym cyklu kolejnej synchronizacji jest ponowić próbę operacji.
+    c. Podczas eksportu **konflikt ProxyAddress** zamiast konflikt atrybuty poddane kwarantannie, zostanie zgłoszony błąd. Jak miałoby to miejsce przed włączeniem funkcji ochrony na każdym cyklu kolejnej synchronizacji jest ponowić próbę operacji.
 2. Jeśli dwie grupy są tworzone lokalne z tego samego adresu SMTP, zawiedzie świadczeniem przy pierwszej próbie ze standardowych duplikatem **ProxyAddress** błędu. Jednak zduplikowaną wartość prawidłowo zostanie poddane kwarantannie przy następnym cyklu synchronizacji.
 
 **Raport portalu Office**:
@@ -157,16 +159,16 @@ Artykule przedstawiono różne strategie rozwiązywania problemów i rozwiązani
    
     b. **Użytkownik B** próbował można zsynchronizować się dalej z **UPN = User@contoso.com** .
    
-    d. **Użytkownik B** głównej nazwy użytkownika jest zmieniana na  **User1234@contoso.onmicrosoft.com**  i  **User@contoso.com**  jest dodawany do **DirSyncProvisioningErrors**.
+    c. **Użytkownik B** głównej nazwy użytkownika jest zmieniana na **User1234@contoso.onmicrosoft.com** i **User@contoso.com** jest dodawany do **DirSyncProvisioningErrors**.
    
-    d. Komunikat o błędzie dla **użytkownika B** powinny wskazywać, że **użytkownika A** ma już  **User@contoso.com**  jako nazwy UPN, ale zawiera **użytkownika B** własnych Nazwa wyświetlana.
+    d. Komunikat o błędzie dla **użytkownika B** powinny wskazywać, że **użytkownika A** ma już **User@contoso.com** jako nazwy UPN, ale zawiera **użytkownika B** własnych Nazwa wyświetlana.
 
 **Raport o błędzie synchronizacji tożsamości**:
 
 Łącze do *kroki dotyczące sposobu rozwiązania tego problemu* jest nieprawidłowy:  
     ![Aktywni użytkownicy](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/6.png "aktywni użytkownicy")  
 
-Powinny wskazywać [https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency).
+Powinny wskazywać [ https://aka.ms/duplicateattributeresiliency ](https://aka.ms/duplicateattributeresiliency).
 
 ## <a name="see-also"></a>Zobacz także
 * [Synchronizacja programu Azure AD Connect](active-directory-aadconnectsync-whatis.md)

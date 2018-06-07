@@ -11,14 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 05/24/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: cd917165804314f6ee4ee006e3f29263d8d4b4c5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e381d2ed3c6a972d776dd31f311fcebe2e35823a
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605614"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Sprawdź poprawność certyfikatów PKI stosu Azure
 
@@ -35,7 +36,7 @@ Narzędzie sprawdzania gotowości wykonuje następujące operacje sprawdzania po
 - **Łańcuch certyfikatów**  
     Sprawdza łańcuch certyfikatów jest prawidłowa, w tym sprawdzenia certyfikaty z podpisem własnym.
 - **Nazwy DNS**  
-    Sprawdza, czy odpowiednie nazwy DNS dla każdego punktu końcowego zawiera sieci SAN lub w przypadku obsługi występuje symbol wieloznaczny.
+    Sprawdza, czy odpowiednie nazwy DNS dla każdego punktu końcowego zawiera sieci SAN lub w przypadku obsługi symboli wieloznacznych jest obecny.
 - **Użycie klucza**  
     Sprawdza, czy użycie klucza zawiera podpis cyfrowy i szyfrowanie klucza i zawiera ulepszonego użycia klucza uwierzytelniania serwera i uwierzytelnianie klienta.
 - **Rozmiar klucza**  
@@ -44,6 +45,8 @@ Narzędzie sprawdzania gotowości wykonuje następujące operacje sprawdzania po
     Sprawdza, czy kolejność innych certyfikatów weryfikacji, że kolejność jest poprawna.
 - **Innych certyfikatów**  
     Upewnij się, że żadne inne certyfikaty nie zostały opakowane w formacie PFX inne niż liścia odpowiedniego certyfikatu i jego łańcucha.
+- **Brak profilu**  
+    Sprawdza, czy nowy użytkownik mogą ładować dane PFX bez załadowane, profil użytkownika mimicking zachowania kont gMSA podczas obsługi certyfikatu.
 
 > [!IMPORTANT]  
 > Plik PFX jest certyfikat PKI i hasła powinny być traktowane jako poufne informacje.
@@ -57,43 +60,46 @@ System powinna spełniać następujące wymagania wstępne, przed sprawdzaniem p
 - DeploymentData.json
 - Windows 10 lub Windows Server 2016
 
-## <a name="perform-certificate-validation"></a>Sprawdzania poprawności certyfikatu
+## <a name="perform-core-services-certificate-validation"></a>Sprawdzania poprawności certyfikatu core services
 
-Aby przygotować i sprawdzania poprawności certyfikatów PKI stosu Azure, wykonaj następujące kroki:
+W celu przygotowania i aby zweryfikować certyfikaty PKI stosu Azure wdrożenia i obrotu tajne, wykonaj następujące kroki:
 
-1. Zainstaluj AzsReadinessChecker w wierszu PowerShell (5.1 lub nowszej), uruchamiając następujące polecenie cmdlet:
+1. Zainstaluj **AzsReadinessChecker** z programu PowerShell wiersza (5.1 lub nowszej), uruchamiając następujące polecenie cmdlet:
 
     ````PowerShell  
-        Install-Module Microsoft.AzureStack.ReadinessChecker 
+        Install-Module Microsoft.AzureStack.ReadinessChecker -force 
     ````
 
 2. Utwórz strukturę katalogów certyfikatu. W poniższym przykładzie, można zmienić `<c:\certificates>` nową ścieżkę katalogu wybranych przez użytkownika.
 
     ````PowerShell  
     New-Item C:\Certificates -ItemType Directory
-
-    $directories = 'ACSBlob','ACSQueue','ACSTable','ADFS','Admin Portal','ARM Admin','ARM Public','Graph','KeyVault','KeyVaultInternal','Public Portal' 
-
-    $destination = 'c:\certificates' 
-
-    $directories | % { New-Item -Path (Join-Path $destination $PSITEM) -ItemType Directory -Force}  
+    
+    $directories = 'ACSBlob','ACSQueue','ACSTable','ADFS','Admin Portal','ARM Admin','ARM Public','Graph','KeyVault','KeyVaultInternal','Public Portal'
+    
+    $destination = 'c:\certificates'
+    
+    $directories | % { New-Item -Path (Join-Path $destination $PSITEM) -ItemType Directory -Force}
     ````
+    
+    > [!Note]  
+    > Wykres i usług AD FS są wymagane, jeśli używasz usług AD FS w systemie tożsamości.
+    
+     - Umieść Twoje certyfikaty w katalogach odpowiednie utworzony w poprzednim kroku. Na przykład:  
+        - `c:\certificates\ACSBlob\CustomerCertificate.pfx`
+        - `c:\certificates\Certs\Admin Portal\CustomerCertificate.pfx`
+        - `c:\certificates\Certs\ARM Admin\CustomerCertificate.pfx`
 
- - Umieść Twoje certyfikaty w katalogach odpowiednie utworzony w poprzednim kroku. Na przykład:  
-    - c:\certificates\ACSBlob\CustomerCertificate.pfx 
-    - c:\certificates\Certs\Admin Portal\CustomerCertificate.pfx 
-    - c:\certificates\Certs\ARM Admin\CustomerCertificate.pfx 
-    - i tak dalej... 
-
-3. W oknie programu PowerShell, uruchom:
+3. W oknie programu PowerShell, zmień wartości **RegionName** i **FQDN** odpowiednie do środowiska Azure stosu i uruchom następujące polecenie:
 
     ````PowerShell  
-    $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString
+    $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
 
-    Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
+    Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD 
+
     ````
 
-4. Przejrzyj dane wyjściowe, aby sprawdzić, czy wszystkie certyfikaty przekazany testy. Na przykład:
+4. Sprawdź dane wyjściowe i wszystkie certyfikaty przejść wszystkie testy. Na przykład:
 
     ````PowerShell
     AzsReadinessChecker v1.1803.405.3 started
@@ -125,7 +131,8 @@ Aby przygotować i sprawdzania poprawności certyfikatów PKI stosu Azure, wykon
     Finished Certificate Validation
 
     AzsReadinessChecker Log location: C:\AzsReadinessChecker\AzsReadinessChecker.log
-    AzsReadinessChecker Report location (for OEM): C:\AzsReadinessChecker\AzsReadinessReport.json
+    AzsReadinessChecker Report location: 
+    C:\AzsReadinessChecker\AzsReadinessReport.json
     AzsReadinessChecker Completed
     ````
 
@@ -162,12 +169,87 @@ Aby przygotować i sprawdzania poprawności certyfikatów PKI stosu Azure, wykon
 
 **Rozdzielczość**: Wykonaj wskazówki dotyczące narzędzia w sekcji szczegółów w obszarze każdego zestawu testów dla każdego certyfikatu.
 
+## <a name="perform-platform-as-a-service-certificate-validation"></a>Przeprowadź platformy Weryfikacja certyfikatów usług
+
+Te kroki umożliwiają przygotowanie i sprawdzania poprawności certyfikatów PKI stosu Azure dla platformy jako usługa (PaaS) certyfikatów, jeśli planuje się wdrożeń SQL/MySQL lub usługi aplikacji.
+
+1.  Zainstaluj **AzsReadinessChecker** z programu PowerShell wiersza (5.1 lub nowszej), uruchamiając następujące polecenie cmdlet:
+
+    ````PowerShell  
+      Install-Module Microsoft.AzureStack.ReadinessChecker -force
+    ````
+
+2.  Utworzyć obiektu hashtable zagnieżdżonych zawierający ścieżek i hasło, aby każdy z certyfikatów PaaS wymagające weryfikacji. W oknie programu PowerShell, uruchom:
+
+    ```PowerShell
+        $PaaSCertificates = @{
+        'PaaSDBCert' = @{'pfxPath' = '<Path to DBAdapter PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
+        'PaaSDefaultCert' = @{'pfxPath' = '<Path to Default PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
+        'PaaSAPICert' = @{'pfxPath' = '<Path to API PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
+        'PaaSFTPCert' = @{'pfxPath' = '<Path to FTP PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
+        'PaaSSSOCert' = @{'pfxPath' = '<Path to SSO PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
+        }
+    ```
+
+3.  Zmiana wartości **RegionName** i **FQDN** do danego środowiska Azure stos, aby rozpocząć sprawdzanie poprawności. Następnie uruchom polecenie:
+
+    ```PowerShell
+    Start-AzsReadinessChecker -PaaSCertificates $PaaSCertificates -RegionName east -FQDN azurestack.contoso.com 
+    ```
+4.  Sprawdź, czy dane wyjściowe i że wszystkie certyfikaty przejść wszystkie testy.
+
+    ```PowerShell
+    AzsReadinessChecker v1.1805.425.2 started
+    Starting PaaS Certificate Validation
+    
+    Starting Azure Stack Certificate Validation 1.0 
+    Testing: PaaSCerts\wildcard.appservice.pfx
+        Read PFX: OK
+        Signature Algorithm: OK
+        Private Key: OK
+        Cert Chain: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Size: OK
+        Chain Order: OK
+        Other Certificates: OK
+    Testing: PaaSCerts\api.appservice.pfx
+        Read PFX: OK
+        Signature Algorithm: OK
+        Private Key: OK
+        Cert Chain: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Size: OK
+        Chain Order: OK
+        Other Certificates: OK
+    Testing: PaaSCerts\wildcard.dbadapter.pfx
+        Read PFX: OK
+        Signature Algorithm: OK
+        Private Key: OK
+        Cert Chain: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Size: OK
+        Chain Order: OK
+        Other Certificates: OK
+    Testing: PaaSCerts\sso.appservice.pfx
+        Read PFX: OK
+        Signature Algorithm: OK
+        Private Key: OK
+        Cert Chain: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Size: OK
+    ```
+
 ## <a name="using-validated-certificates"></a>Przy użyciu zatwierdzonych certyfikatów
 
 Po sprawdzeniu poprawności certyfikatów przez AzsReadinessChecker można przystąpić do ich używać w danym wdrożeniu stosu Azure lub obrotu tajny stosu Azure. 
 
  - W przypadku wdrożenia bezpiecznego transferu certyfikaty do specjalistą wdrożenia, aby można je skopiować na host wdrażania, jak określono w [dokumentacji wymagań dotyczących infrastruktury kluczy publicznych Azure stosu](azure-stack-pki-certs.md).
  - Dla obrotu tajne, można użyć certyfikatów zaktualizować stare certyfikaty dla punktów końcowych infrastruktury publicznych środowiska Azure stosu, postępując [dokumentacji Azure stosu klucz tajny obrotu](azure-stack-rotate-secrets.md).
+ - W przypadku usług PaaS umożliwia certyfikaty Zainstaluj SQL, MySQL i dostawców zasobów usługi aplikacji Azure stosu, wykonując [Przegląd oferty usług w dokumentacji usługi Azure stosu](azure-stack-offer-services-overview.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

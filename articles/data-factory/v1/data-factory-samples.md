@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b0b8f56266f77724a60253991556b15a923e537f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c56501deaf4d30374690a112b1ba11eaa9344cdb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622367"
 ---
 # <a name="azure-data-factory---samples"></a>Fabryki danych Azure — przykłady
 > [!NOTE]
@@ -86,11 +87,11 @@ Na komputerze muszą być zainstalowane następujące elementy:
 
 ### <a name="use-data-factory-templates"></a>Za pomocą szablonów fabryki danych
 1. Kliknij przycisk **pliku** w menu wskaż **nowy**i kliknij przycisk **projektu**.
-2. W **nowy projekt** okna dialogowego wykonaj następujące czynności:
+2. W oknie dialogowym **Nowy projekt** wykonaj następujące kroki:
 
    1. Wybierz **DataFactory** w obszarze **szablony**.
    2. Wybierz **szablony fabryki danych** w okienku po prawej stronie.
-   3. Wprowadź **nazwa** dla projektu.
+   3. Wprowadź **nazwę** dla projektu.
    4. Wybierz **lokalizacji** dla projektu.
    5. Kliknij przycisk **OK**.
 

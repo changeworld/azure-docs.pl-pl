@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: c3fb9eb3e8dd4b8c3add5dcf0436958500aa0189
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 2b1b6b8e119cc842ae780cd244ea3b265340fb3a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589828"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>Samouczek: Integracji Azure Active Directory z zapas czasu
 
@@ -138,11 +139,11 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-slack-tutorial/tutorial_slack_attribute1.png)
 
     a. W **nazwa** tekstowym, wpisz nazwę atrybut wyświetlany dla danego wiersza.
-    
+
     b. Z **wartość** listy, wybierz wartość atrybutu wyświetlany dla danego wiersza.
 
     c. Pozostaw **Namespace** puste.
-    
+
     d. Kliknij przycisk **OK**.
 
 6. Na **certyfikat podpisywania SAML** kliknij **certyfikatu (Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
@@ -155,17 +156,17 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
 8. Na **konfiguracji zapas czasu** kliknij **skonfigurować zapas czasu** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-slack-tutorial/tutorial_slack_configure.png) 
+    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-slack-tutorial/tutorial_slack_configure.png)
 
-9.  W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy Slack.
+9. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy Slack.
 
-10.  Przejdź do **usługi Microsoft Azure AD** następnie przejdź do **ustawień zespołu**.
+10. Przejdź do **usługi Microsoft Azure AD** następnie przejdź do **ustawień zespołu**.
 
      ![Konfigurowanie rejestracji jednokrotnej po stronie aplikacji](./media/active-directory-saas-slack-tutorial/tutorial_slack_001.png)
 
-11.  W **ustawień zespołu** kliknij **uwierzytelniania** , a następnie kliknij pozycję **Zmień ustawienia**.
+11. W **ustawień zespołu** kliknij **uwierzytelniania** , a następnie kliknij pozycję **Zmień ustawienia**.
 
-     ![Konfigurowanie rejestracji jednokrotnej po stronie aplikacji](./media/active-directory-saas-slack-tutorial/tutorial_slack_002.png)
+    ![Konfigurowanie rejestracji jednokrotnej po stronie aplikacji](./media/active-directory-saas-slack-tutorial/tutorial_slack_002.png)
 
 12. Na **ustawienia uwierzytelniania SAML** okna dialogowego, wykonaj następujące czynności:
 
@@ -180,10 +181,6 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     d. Skonfiguruj powyżej trzy ustawienia odpowiednie dla swojego zespołu Slack. Aby uzyskać więcej informacji na temat ustawień znaleźć **Przewodnik po konfiguracji logowania jednokrotnego zapas czasu jego** tutaj. `https://get.slack.help/hc/articles/220403548-Guide-to-single-sign-on-with-Slack%60`
 
     e.  Kliknij przycisk **Zapisz konfigurację**.
-
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
@@ -201,12 +198,12 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-slack-tutorial/create_aaduser_02.png) 
 
 3. Aby otworzyć **użytkownika** okna dialogowego, kliknij przycisk **Dodaj** górnej części okna dialogowego.
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-slack-tutorial/create_aaduser_03.png) 
+
+    ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-slack-tutorial/create_aaduser_03.png)
 
 4. Na **użytkownika** okna dialogowego strony, należy wykonać następujące czynności:
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-slack-tutorial/create_aaduser_04.png) 
+
+    ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-slack-tutorial/create_aaduser_04.png)
 
     a. W **nazwa** pole tekstowe, typ **BrittaSimon**.
 
@@ -215,12 +212,10 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
     d. Kliknij przycisk **Utwórz**.
- 
+
 ### <a name="creating-a-slack-test-user"></a>Tworzenie użytkownika testowego Slack
 
-Celem tej sekcji jest utworzenie użytkownika o nazwie Simona Britta w Slack. Zapas czasu obsługę w czasie, który jest domyślnie włączone.
-
-Nie ma elementu akcji można w tej sekcji. Nowy użytkownik został utworzony podczas próby dostępu zapas czasu, jeśli go jeszcze nie istnieje.
+Celem tej sekcji jest utworzenie użytkownika o nazwie Simona Britta w Slack. Zapas czasu obsługę w czasie, który jest domyślnie włączone. Nie ma elementu akcji można w tej sekcji. Nowy użytkownik został utworzony podczas próby dostępu zapas czasu, jeśli go jeszcze nie istnieje. Zapas obsługuje również Inicjowanie obsługi użytkowników, można znaleźć więcej szczegółów [tutaj](active-directory-saas-slack-provisioning-tutorial.md) na temat konfigurowania użytkowników automatycznego inicjowania obsługi administracyjnej.
 
 > [!NOTE]
 > Jeśli trzeba ręcznie utworzyć użytkownika, należy skontaktować się [zespołem pomocy technicznej Slack](https://slack.com/help/contact).
@@ -229,7 +224,7 @@ Nie ma elementu akcji można w tej sekcji. Nowy użytkownik został utworzony po
 
 W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu zapas czasu.
 
-![Przypisz użytkownika][200] 
+![Przypisz użytkownika][200]
 
 **Aby przypisać Simona Britta zapas czasu, wykonaj następujące czynności:**
 
@@ -265,6 +260,8 @@ Po kliknięciu kafelka Slack w panelu dostępu użytkownik powinien pobrać auto
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
+* [Skonfiguruj Inicjowanie obsługi użytkowników](active-directory-saas-slack-provisioning-tutorial.md)
+
 
 <!--Image references-->
 
@@ -279,4 +276,3 @@ Po kliknięciu kafelka Slack w panelu dostępu użytkownik powinien pobrać auto
 [201]: ./media/active-directory-saas-slack-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-slack-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-slack-tutorial/tutorial_general_203.png
-

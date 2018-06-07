@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 8af15e4751b696a6f30d3dc70556ab856020bedb
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f0739c821f1521eb761912e5092661c7b5c0fd78
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591259"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sansan"></a>Samouczek: Integracji Azure Active Directory z Sansan
 
@@ -110,7 +111,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL za pomocą następujących wzorców: 
+    W **adres URL logowania** tekstowym, wpisz adres URL za pomocą następujących wzorców: 
     
     | Środowisko | Adres URL |
     |:--- |:--- |
@@ -118,16 +119,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     | Natywnych aplikacji mobilnej |`https://internal.api.sansan.com/saml2/<company name>/acs` |
     | Ustawienia przeglądarki przenośnych |`https://ap.sansan.com/s/saml2/<company name>/acs` |  
 
-    b. W **identyfikator** tekstowym, wpisz adres URL za pomocą następujących wzorców:
-    | Środowisko             | Adres URL |
-    | :-- | :-- |
-    | Komputer w sieci web                  | `https://ap.sansan.com/v/saml2/<company name>`|
-    | Natywnych aplikacji mobilnej       | `https://internal.api.sansan.com/saml2/<company name>` |
-    | Ustawienia przeglądarki przenośnych | `https://ap.sansan.com/s/saml2/<company name>` |
-
     > [!NOTE] 
-    > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta Sansan](https://www.sansan.com/form/contact) uzyskać te wartości. 
-
+    > Wartości te nie są prawdziwe. Adres URL logowania rzeczywiste, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta Sansan](https://www.sansan.com/form/contact) uzyskać te wartości. 
+     
 4. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_certificate.png) 
@@ -136,19 +130,77 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-sansan-tutorial/tutorial_general_400.png)
 
-6. Na **konfiguracji Sansan** , kliknij przycisk **skonfigurować Sansan** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **Sign-Out adres URL, identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
+6. Aplikacja Sansan oczekuje wielu **identyfikatory** i **adresy URL odpowiedzi** do obsługi wielu środowisk (komputer w sieci web, aplikacji mobilnej macierzystego, ustawienia przeglądarki przenośnych), które można skonfigurować przy użyciu programu PowerShell skrypt. Poniżej opisano szczegółowy opis kroków.
+
+7. Aby skonfigurować wiele **identyfikatory** i **adresy URL odpowiedzi** dla aplikacji Sansan przy użyciu skryptu programu PowerShell, należy wykonać następujące kroki:
+
+    ![Konfigurowanie rejestracji jednokrotnej obj.](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_objid.png)    
+
+    a. Przejdź do **właściwości** strony **Sansan** aplikacji i skopiuj **obiektu o identyfikatorze** przy użyciu **kopiowania** przycisk i wklej go do Notatnika.
+
+    b. **Obiektu o identyfikatorze**, które zostały skopiowane z portalu Azure będzie używany jako **ServicePrincipalObjectId** w skrypcie programu PowerShell używane w dalszej części tego samouczka. 
+
+    c. Teraz Otwórz wiersz polecenia z podwyższonym poziomem uprawnień programu Windows PowerShell.
+    
+    >[!NOTE] 
+    > Musisz zainstalować moduł AzureAD (za pomocą polecenia `Install-Module -Name AzureAD`). Jeśli zostanie wyświetlony monit, aby zainstalować moduł NuGet lub nowego modułu programu PowerShell usługi Azure Active Directory w wersji 2, typ T, a następnie naciśnij klawisz ENTER.
+
+    d. Uruchom `Connect-AzureAD` i zaloguj się przy użyciu konta administratora globalnego.
+
+    e. Aby zaktualizować wiele adresów URL do aplikacji, użyj następującego skryptu:
+
+    ```poweshell
+     Param(
+    [Parameter(Mandatory=$true)][guid]$ServicePrincipalObjectId,
+    [Parameter(Mandatory=$false)][string[]]$ReplyUrls,
+    [Parameter(Mandatory=$false)][string[]]$IdentifierUrls
+    )
+
+    $servicePrincipal = Get-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId
+
+    if($ReplyUrls.Length)
+    {
+    echo "Updating Reply urls"
+    Set-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId -ReplyUrls $ReplyUrls
+    echo "updated"
+    }
+    if($IdentifierUrls.Length)
+    {
+    echo "Updating Identifier urls"
+    $applications = Get-AzureADApplication -SearchString $servicePrincipal.AppDisplayName 
+    echo "Found Applications =" $applications.Length
+    $i = 0;
+    do
+    {  
+    $application = $applications[$i];
+    if($application.AppId -eq $servicePrincipal.AppId){
+    Set-AzureADApplication -ObjectId $application.ObjectId -IdentifierUris $IdentifierUrls
+    $servicePrincipal = Get-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId
+    echo "Updated"
+    return;
+    }
+    $i++;
+    }while($i -lt $applications.Length);
+    echo "Not able to find the matched application with this service principal"
+    }
+    ```
+
+8. Po pomyślnym ukończeniu skrypt programu PowerShell wynik skryptu będzie podobny do tego, jak pokazano poniżej i wartości adresu URL pobierania aktualizacji, ale nie pobrać odzwierciedlone w portalu Azure. 
+
+    ![Konfigurowanie rejestracji jednokrotnej skryptu](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_powershell.png)
+
+
+9. Na **konfiguracji Sansan** , kliknij przycisk **skonfigurować Sansan** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **Sign-Out adres URL, identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_configure.png) 
 
-7. Skonfigurować logowanie jednokrotne w **Sansan** stronie, musisz wysłać pobrany **certyfikatu**, **Sign-Out adres URL**, **identyfikator jednostki SAML**, i **SAML pojedynczy znak na adres URL usługi** do [Sansan zespołem pomocy technicznej](https://www.sansan.com/form/contact). To ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML one wartość.
+10. Skonfigurować logowanie jednokrotne w **Sansan** stronie, musisz wysłać pobrany **certyfikatu**, **Sign-Out adres URL**, **identyfikator jednostki SAML**, i **SAML pojedynczy znak na adres URL usługi** do [Sansan zespołem pomocy technicznej](https://www.sansan.com/form/contact). To ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML one wartość.
 
 >[!NOTE]
->Ustawienia przeglądarki komputera również działać dla aplikacji mobilnej oraz przeglądarkę dla telefonów wraz z Komputerami w sieci web.  
-
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+>Ustawienia przeglądarki komputera również działać dla aplikacji mobilnej oraz przeglądarkę dla telefonów wraz z Komputerami w sieci web. 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+
 Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
 
 ![Tworzenie użytkowników usługi Azure AD][100]
@@ -181,7 +233,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
  
 ### <a name="creating-a-sansan-test-user"></a>Tworzenie użytkownika testowego Sansan
 
-W tej sekcji należy utworzyć użytkownika o nazwie Simona Britta w SanSan. Aplikacja SanSan musi użytkownika na potrzeby aprowizacji w aplikacji przed wykonaniem logowania jednokrotnego. 
+W tej sekcji należy utworzyć użytkownika o nazwie Simona Britta w Sansan. Aplikacja Sansan musi użytkownika na potrzeby aprowizacji w aplikacji przed wykonaniem logowania jednokrotnego. 
 
 >[!NOTE]
 >Jeśli trzeba ręcznie utworzyć użytkownika ani partii użytkowników, należy skontaktować się [zespołem pomocy technicznej Sansan](https://www.sansan.com/form/contact). 

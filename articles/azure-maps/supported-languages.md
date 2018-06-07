@@ -1,28 +1,25 @@
 ---
 title: Obsługiwane języki w społeczności Maps Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o językach obsługiwanych dla usług Azure mapy
-services: azure-maps
-keywords: ''
 author: juliekohler
 ms.author: julieko
-ms.date: 3/30/2018
-ms.topic: article
+ms.date: 03/30/2018
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
-ms.custom: ''
-ms.openlocfilehash: 8a603ebf05ec714c57955d32182943a4191627cf
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+services: azure-maps
+manager: ''
+ms.openlocfilehash: 68438a317b33bb7e3e784936cdfd1282ba823ad8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34600242"
 ---
 # <a name="azure-maps-supported-languages"></a>Mapy Azure obsługiwane języki
 Mapy Azure zostały zlokalizowane w różnych językach w usługach.  W poniższej tabeli przedstawiono kody obsługiwanego języka dla każdej usługi.  
   
 
-| ID         | Name (Nazwa)                   |  Mapy | Wyszukiwanie | Routing | Zdarzenia ruchu | Formant mapy JS | Strefa czasowa |
+| ID         | Name (Nazwa)                   |  Maps | Wyszukiwanie | Routing | Zdarzenia ruchu | Formant mapy JS | Strefa czasowa |
 |------------|------------------------|:-----:|:------:|:-------:|:-----------------:|:--------------:|:---------:|
 | af-ZA      | Afrikaans              |       |    ✓   |    ✓    |                   |                |     ✓     |
 | ar-SA      | Arabski                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
@@ -56,7 +53,7 @@ Mapy Azure zostały zlokalizowane w różnych językach w usługach.  W poniższ
 | WD LV      | Łotewski                |       |    ✓   |         |         ✓         |                |     ✓     |
 | lt-LT      | Litewski             |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | ms-MY      | Malajski (łaciński)          |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
-| nb-NO      | Norweski (Bokmål)       |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
+| nb-NO      | Norweski, Bokmål       |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | pl-PL      | Polski                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | pt-BR      | Portugalski (Brazylia)    |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
 | pt-PT      | Portugalski (Portugalia)  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |

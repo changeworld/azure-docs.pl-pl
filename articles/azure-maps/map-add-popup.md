@@ -1,28 +1,26 @@
 ---
 title: Dodaj menu podręczne przy użyciu map Azure | Dokumentacja firmy Microsoft
 description: Jak dodać wyskakujące okienko z mapą kodu Javascript
-services: azure-maps
-keywords: ''
-author: jinzh-azureiot
+author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
+services: azure-maps
+manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 7425081597bfa9379594597277555ee30809c4e6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d9eeac28b204af0bb7d8e204762aae854055b33a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599307"
 ---
 # <a name="add-a-popup-to-the-map"></a>Dodawanie menu podręcznego do mapy
 
 W tym artykule przedstawiono sposób dodawania elementu popup do mapy.  
 
-## <a name="understand-the-code"></a>Kodu
+## <a name="understand-the-code"></a>Zrozumienie kodu
 
 <a id="addAPopup"></a>
 
@@ -51,3 +49,7 @@ Dowiedz się więcej na temat klasy i metody używane w tym artykule:
     * [setPopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-javascript/popup?view=azure-iot-typescript-latest#setpopupoptions)
     * [Otwórz](https://docs.microsoft.com/javascript/api/azure-maps-javascript/popup?view=azure-iot-typescript-latest#open)
     * [Zamknij](https://docs.microsoft.com/javascript/api/azure-maps-javascript/popup?view=azure-iot-typescript-latest#close)
+    
+Aby uzyskać więcej przykładów kodu do dodania do map zobacz następujące artykuły: 
+* [Dodawanie kształtów](./map-add-shape.md)
+* [Dodaj niestandardowy kod HTML](./map-add-custom-html.md)

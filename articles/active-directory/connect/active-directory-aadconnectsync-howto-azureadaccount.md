@@ -1,12 +1,12 @@
 ---
-title: "Synchronizacja programu Azure AD Connect: Zarządzanie konta usługi Azure AD | Dokumentacja firmy Microsoft"
-description: "W tym temacie omówiono sposób przywracania konta usługi Azure AD."
+title: 'Synchronizacja programu Azure AD Connect: Zarządzanie konta usługi Azure AD | Dokumentacja firmy Microsoft'
+description: W tym temacie omówiono sposób przywracania konta usługi Azure AD.
 services: active-directory
-keywords: "AADSTS70002, AADSTS50054, jak można zresetować hasła dla konta łącznika usługi synchronizacji Azure AD Connect"
-documentationcenter: 
+keywords: AADSTS70002, AADSTS50054, jak można zresetować hasła dla konta łącznika usługi synchronizacji Azure AD Connect
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 6077043a-27f1-4304-a44b-81dc46620f24
 ms.service: active-directory
 ms.workload: identity
@@ -14,12 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: cfd807706ebbf0bfa6ea699129cb197f1c79db8c
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 8f201f2478e2883289a6cc4b435e2c3218950b1d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594044"
 ---
 # <a name="azure-ad-connect-sync-how-to-manage-the-azure-ad-service-account"></a>Synchronizacja programu Azure AD Connect: Zarządzanie konta usługi Azure AD
 Konto usługi używane przez łącznik usługi Azure AD powinien być bezpłatnej usługi. Jeśli potrzebujesz zresetować swoje poświadczenia, w tym temacie jest dla Ciebie. Na przykład jeśli przez pomyłkę administratora globalnego zresetować hasło konta usługi, za pomocą programu PowerShell.
@@ -47,7 +49,7 @@ Zdarzenie 659
 Błąd podczas pobierania konfiguracji synchronizacji zasad haseł. Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException:  
 AADSTS70002: Błąd podczas sprawdzania poprawności poświadczeń. AADSTS50054: Stare hasło jest używany do uwierzytelniania.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 **Tematy poglądowe**
 
 * [Synchronizacja programu Azure AD Connect: zrozumienie i dostosowywanie synchronizacji](active-directory-aadconnectsync-whatis.md)

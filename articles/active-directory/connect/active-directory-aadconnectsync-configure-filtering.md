@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0b4b306d1224b5521774b05a110c862b58450eb3
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: f54f0fb16838b245ac09c08c7afd9e6a53449afc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594231"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizacja programu Azure AD Connect: konfigurowanie filtrowania
 Za pomocą filtrowania, można kontrolować obiekty, które są wyświetlane w usłudze Azure Active Directory (Azure AD) z katalogu lokalnego. Domyślna konfiguracja pobiera wszystkie obiekty we wszystkich domenach w lesie skonfigurowanym. Ogólnie rzecz biorąc jest to zalecana konfiguracja. Użytkowników przy użyciu usługi Office 365 obciążeń, takich jak Exchange Online i Skype dla firm, korzystać z pełną globalnej listy adresowej, wysyłać wiadomości e-mail i wywołać Wszyscy. W konfiguracji domyślnej zostałyby to samo środowisko korzystania, które zostałyby implementacja lokalnego programu Exchange lub Lync.
@@ -33,7 +35,7 @@ W niektórych przypadkach jednak masz wymagane wprowadzić kilka zmian w konfigu
 W tym artykule opisano sposób konfigurowania różnych metod filtrowania.
 
 > [!IMPORTANT]
-> Microsoft nie obsługuje modyfikowania lub działania synchronizacji Azure AD Connect poza akcje, które są udokumentowane formalnie. Te czynności może spowodować niespójne lub nieobsługiwany stan synchronizacji Azure AD Connect. W związku z tym Microsoft nie świadczy pomocy technicznej dla tych wdrożeń.
+> Firma Microsoft nie obsługuje modyfikowania ani działania synchronizacji programu Azure AD Connect poza akcjami, które zostały formalnie udokumentowane. Każda z tych akcji może spowodować niespójny lub nieobsługiwany stan synchronizacji programu Azure AD Connect. W związku z tym firma Microsoft nie może świadczyć pomocy technicznej w przypadku takich wdrożeń.
 
 ## <a name="basics-and-important-notes"></a>Podstawy i ważne uwagi
 Synchronizacja programu Azure AD Connect można włączyć, filtrowanie, w dowolnym momencie. Jeśli rozpoczynać się od domyślnej konfiguracji synchronizacji katalogów, a następnie skonfigurować filtrowanie, obiekty, które są odfiltrowywane nie są synchronizowane z usługą Azure AD. Z powodu tej zmiany wszystkie obiekty w usłudze Azure AD, które wcześniej zostały zsynchronizowane, ale następnie zostały przefiltrowane są usuwane z usługi Azure AD.

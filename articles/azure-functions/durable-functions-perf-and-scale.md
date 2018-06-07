@@ -14,11 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 18a3f3080c58e01117e0fc73adad76d28c298536
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 110f393e723c7e784a4bd7e79559dd9d55147140
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599436"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Wydajność i skalę w funkcjach trwałe (usługi Azure Functions)
 
@@ -161,7 +162,7 @@ Podczas planowania należy używać funkcji niezawodna w przypadku aplikacji pro
 > [!TIP]
 > W odróżnieniu od rozdysponowywania operacje fan-in są ograniczone do jednej maszyny Wirtualnej. Jeśli aplikacja używa rozdysponowywania, wzorzec fan-in i dane dotyczące wydajności fan-in, należy wziąć pod uwagę podrzędna dzielenia rozdysponowywania funkcja działania w wielu [orchestrations podrzędne](durable-functions-sub-orchestrations.md).
 
-W poniższej tabeli przedstawiono oczekiwanej *maksymalna* numery przepływności w scenariuszach opisany wcześniej. "Instance" odwołuje się do pojedynczego wystąpienia uruchomione na jednym małych funkcji programu orchestrator ([A1](../virtual-machines/windows/sizes-general.md#a-series)) maszyny Wirtualnej w usłudze Azure App Service. We wszystkich przypadkach, zakłada się, że [rozszerzony sesji](#orchestrator-function-replay) są włączone. Rzeczywiste wyniki mogą się różnić w zależności od pracy procesora CPU lub we/wy, wykonywane przez kod funkcji.
+W poniższej tabeli przedstawiono oczekiwanej *maksymalna* numery przepływności w scenariuszach opisany wcześniej. "Instance" odwołuje się do pojedynczego wystąpienia uruchomione na jednym małych funkcji programu orchestrator ([A1](../virtual-machines/windows/sizes-previous-gen.md#a-series)) maszyny Wirtualnej w usłudze Azure App Service. We wszystkich przypadkach, zakłada się, że [rozszerzony sesji](#orchestrator-function-replay) są włączone. Rzeczywiste wyniki mogą się różnić w zależności od pracy procesora CPU lub we/wy, wykonywane przez kod funkcji.
 
 | Scenariusz | Maksymalna przepustowość |
 |-|-|

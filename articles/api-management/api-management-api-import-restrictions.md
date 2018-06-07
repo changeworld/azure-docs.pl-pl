@@ -14,20 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: b33c95af94c436b1069658963692242d0f905554
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 03d785898398cb0bcd7b43e8d7feab705bce4b34
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598474"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Ograniczenia importu interfejsu API i znane problemy
 ## <a name="about-this-list"></a>Ta lista — informacje
 Podczas importowania interfejsu API, może spotkać się z pewnymi ograniczeniami lub zidentyfikować problemy, które należy rozwiązać, aby można było pomyślnie zaimportować. Ten artykuł dokumentów, uporządkowane według format importu interfejsu API.
 
-## <a name="open-api"> </a>Interfejs API otwarty/Swagger
-W przypadku otrzymania błędy importowania dokument otwarty interfejs API, upewnij się, zweryfikowaniu jej — przy użyciu narzędzia Projektant w portalu Azure (projekt - Front End — Otwórz interfejs API specyfikacji Edytor), lub z innych firm narzędzia takie jak <a href="http://www.swagger.io">edytora programu Swagger</a>.
+## <a name="open-api"> </a>OpenAPI/Swagger
+W przypadku otrzymania Importowanie dokumentu OpenAPI błędy, upewnij się, zweryfikowaniu jej — przy użyciu narzędzia Projektant w portalu Azure (projekt - Front End — OpenAPI specyfikacji Edytor) lub z innych firm narzędzia takie jak <a href="http://www.swagger.io">edytora programu Swagger</a>.
 
 * Obsługiwane jest tylko format JSON OpenAPI.
+* Parametry wymagane przez zarówno ścieżka i kwerenda muszą mieć unikatowe nazwy. (W OpenAPI nazwę parametru tylko musi być unikatowa w ramach danej lokalizacji, np. ścieżka, zapytania, nagłówka.  Jednak w usłudze API Management zezwolimy operacje można Suma rozłączna — zarówno ścieżka i kwerenda parametrami (które OpenAPI nie obsługuje). W związku z tym wymagamy nazwy parametrów, aby być unikatowe w obrębie całej szablon adresu URL.)
 * Schematy odwoływać się przy użyciu **$ref** właściwości nie może zawierać inne **$ref** właściwości.
 * **$ref** wskaźniki nie mogą odwoływać się do plików zewnętrznych.
 * **x-ms ścieżki** i **serwerach x** są obsługiwane tylko rozszerzenia.

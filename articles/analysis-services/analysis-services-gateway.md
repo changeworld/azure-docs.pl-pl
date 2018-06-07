@@ -3,16 +3,17 @@ title: Brama danych lokalnych | Dokumentacja firmy Microsoft
 description: Jest to konieczne, jeśli serwer usług Analysis Services na platformie Azure zostaną podłączone do lokalnych źródeł danych brama lokalnego.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: abd2d2c8e220a946d08774f8e55ea968008c1757
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 60a04d492798da8292e2c9d4107e21e9039f7d40
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34596859"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Łączenie z lokalnych źródeł danych z bramą danych lokalnych Azure
 Brama danych lokalna działa jako mostka zapewnianie bezpiecznego transferu danych między lokalnych źródeł danych i serwerów usług Azure Analysis Services w chmurze. Oprócz Praca z wieloma serwerami usług Azure Analysis Services, w tym samym regionie, najnowszą wersję bramy współdziała również z usługi Azure Logic Apps, usługi Power BI aplikacje zasilania i Flow firmy Microsoft. Wiele usług w tym samym regionie można skojarzyć z pojedynczą bramą. 

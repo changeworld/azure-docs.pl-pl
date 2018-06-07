@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 2696be33c97b411a9f4809f0ff6ca56cd2fe6080
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3d2e64a88492db396b1c4771e605245c0cd744f6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592072"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>Samouczek: Integracji Azure Active Directory z xMatters na żądanie
 
@@ -103,14 +104,14 @@ W tej sekcji włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azur
     ![Konfigurowanie rejestracji jednokrotnej][4]
 
 2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
- 
+
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_samlbase.png)
 
 3. Na **xMatters OnDemand domeny i adres URL** sekcji, wykonaj następujące czynności:
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_url.png)
     
-    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:   
+    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au/`|
@@ -133,7 +134,7 @@ W tej sekcji włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azur
 4. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu lokalnie jako **c:\\XMatters OnDemand.cer**.
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_certificate.png)
-    
+
     > [!IMPORTANT]
     > Konieczne przekazywanie certyfikatu [xMatters OnDemand obsługuje zespołu](https://www.xmatters.com/company/contact-us/). Ten certyfikat musi się do przekazania przez zespół pomocy technicznej xMatters przed może zakończyć pojedynczego konfigurację logowania jednokrotnego. 
 
@@ -148,28 +149,24 @@ W tej sekcji włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azur
 7. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy XMatters OnDemand.
 
 8. Na pasku narzędzi u góry kliknij **Admin**, a następnie kliknij przycisk **szczegóły firmy** na pasku nawigacyjnym po lewej stronie.
-   
+
     ![Administrator](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776795.png "administratora")
 
 9. Na **Konfiguracja SAML** wykonaj następujące czynności:
-   
-    ![Konfiguracja SAML](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776796.png "Konfiguracja SAML")
-   
-    a. Wybierz **Włącz SAML**.
-   
-    b. Wklej **identyfikator jednostki SAML**, które zostały skopiowane z portalu Azure do **identyfikator dostawcy tożsamości** pola tekstowego.
-   
-    c. Wklej **SAML pojedynczy znak na adres URL usługi**, które zostały skopiowane z portalu Azure do **jeden znak na adres URL** pola tekstowego.
-   
-    d. Wklej **Sign-Out URL**, które zostały skopiowane z portalu Azure do **pojedynczego adresu URL wylogowania** pola tekstowego.
-   
-    e. Na stronie Szczegóły firmy u góry, kliknij przycisk **Zapisz zmiany**.
-    
-    ![Szczegóły firmy](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776797.png "firmy szczegóły")
 
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    ![Konfiguracja SAML](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776796.png "Konfiguracja SAML")
+
+    a. Wybierz **Włącz SAML**.
+
+    b. W **identyfikator dostawcy tożsamości** pole tekstowe, Wklej **identyfikator jednostki SAML** wartość, która została skopiowana z portalu Azure.
+
+    c. W **jeden znak na adres URL** pole tekstowe, Wklej **SAML pojedynczy znak na adres URL usługi** wartość, która została skopiowana z portalu Azure.
+
+    d. W **pojedynczego adresu URL wylogowania** pole tekstowe, Wklej **Sign-Out URL**, które zostały skopiowane z portalu Azure.
+
+    e. Na stronie Szczegóły firmy u góry, kliknij przycisk **Zapisz zmiany**.
+
+    ![Szczegóły firmy](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776797.png "firmy szczegóły")
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
@@ -183,15 +180,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/create_aaduser_01.png) 
 
 2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
-    
+
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/create_aaduser_02.png) 
 
 3. Aby otworzyć **użytkownika** okna dialogowego, kliknij przycisk **Dodaj** górnej części okna dialogowego.
- 
+
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/create_aaduser_03.png) 
 
 4. Na **użytkownika** okna dialogowego strony, należy wykonać następujące czynności:
- 
+
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/create_aaduser_04.png) 
 
     a. W **nazwa** pole tekstowe, typ **BrittaSimon**.
@@ -201,32 +198,33 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
     d. Kliknij przycisk **Utwórz**.
- 
+
 ### <a name="creating-a-xmatters-ondemand-test-user"></a>Tworzenie użytkownika testowego OnDemand xMatters
 
-Aby umożliwić użytkownikom zalogować się do atrybutu XMatters usługi Azure AD, muszą mieć przydzielone do XMatters OnDemand. W przypadku XMatters OnDemand Inicjowanie obsługi to zadanie ręczne.
+Celem tej sekcji jest utworzenie użytkownika o nazwie Simona Britta w xMatters OnDemand. xMatters OnDemand obsługę automatycznego użytkownika, który jest domyślnie włączone. Więcej informacji można znaleźć [tutaj](active-directory-saas-xmatters-ondemand-provisioning-tutorial.md) na temat konfigurowania użytkowników automatycznego inicjowania obsługi administracyjnej.
 
-### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>Aby udostępnić konta użytkowników, wykonaj następujące czynności:
+**Jeśli trzeba ręcznie utworzyć użytkownika, należy wykonać następujące kroki:**
+
 1. Zaloguj się do Twojego **XMatters OnDemand** dzierżawy.
 
 2.  Kliknij przycisk **użytkowników** kartę, a następnie kliknij przycisk **Dodaj użytkownika**.
-  
+
     ![Użytkownicy](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781048.png "użytkowników")
 
 3. W **dodać użytkownika** sekcji, wykonaj następujące czynności:
-   
+
     ![Dodawanie użytkownika](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781049.png "Dodawanie użytkownika")
 
     a. Wybierz **Active**.
 
     b. W **identyfikator użytkownika** pole tekstowe, typ identyfikatora użytkownika użytkownika, takich jak Brittasimon@contoso.com.
-   
+
     c. W **imię** tekstowym, wpisz imię użytkownika, takich jak Britta.
 
     d. W **nazwisko** tekstowym, wpisz nazwisko użytkownika, takich jak Simona.
-    
+
     e. W **lokacji** pole tekstowe, wprowadź prawidłową witryną Azure prawidłowe konto AD, które chcesz udostępnić.
-    
+
     f. Kliknij pozycję **Zapisz**.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisanie użytkownika testowego usługi Azure AD
@@ -270,6 +268,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
+* [Skonfiguruj Inicjowanie obsługi użytkowników](active-directory-saas-xmatters-ondemand-provisioning-tutorial.md)
 
 <!--Image references-->
 
@@ -284,4 +283,3 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 [201]: ./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_general_203.png
-

@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 79c339c136e614be8a98461533c63d244dabc166
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 317c94abdf14d3d88e07e32ab16769bd1f641438
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591300"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>Wymagane porty i protokoły dotyczące tożsamości hybrydowej
 Ten dokument jest techniczne wymagane porty i protokoły dotyczące implementowania rozwiązania z tożsamością hybrydową. Użyj poniższej ilustracji i odwoływać się do tej tabeli.
@@ -30,7 +32,7 @@ Ta tabela opisuje porty i protokoły, które są wymagane do komunikacji między
 
 | Protokół | Porty | Opis |
 | --- | --- | --- |
-| Usługa DNS |53 (TCP/UDP) |Wyszukiwania DNS lasu docelowego. |
+| DNS |53 (TCP/UDP) |Wyszukiwania DNS lasu docelowego. |
 | Kerberos |88 (TCP/UDP) |Uwierzytelnianie Kerberos do lasu usługi AD. |
 | MS-RPC |135 (TCP/UDP) |Używane podczas wstępnej konfiguracji Kreator Azure AD Connect, gdy jest on powiązany z lasem usługi AD, a także podczas synchronizacji haseł. |
 | LDAP |389 (TCP/UDP) |Używany do importowania danych z usługi Active Directory. Dane są szyfrowane z protokołu Kerberos i zamknięcia. |

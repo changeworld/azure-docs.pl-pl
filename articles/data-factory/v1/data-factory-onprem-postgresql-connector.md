@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4ee466c85b68ebc72dbd55849db84a473d584ffb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1d566a719abaf09146965a677868d363d33d10e5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622768"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Przenoszenia danych z PostgreSQL przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -78,7 +79,7 @@ Poniższa tabela zawiera opis specyficzne dla usługi PostgreSQL połączone ele
 | serwer |Nazwa serwera PostgreSQL. |Yes |
 | baza danych |Nazwa bazy danych PostgreSQL. |Yes |
 | Schemat |Nazwa schematu w bazie danych. Nazwa schematu jest rozróżniana wielkość liter. |Nie |
-| authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych PostgreSQL. Możliwe wartości to: anonimowe, podstawowe i systemu Windows. |Yes |
+| Typ authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych PostgreSQL. Możliwe wartości to: anonimowe, podstawowe i systemu Windows. |Yes |
 | nazwa użytkownika |Określ nazwę użytkownika, jeśli korzystasz z uwierzytelniania podstawowego lub systemu Windows. |Nie |
 | hasło |Określ hasło dla konta użytkownika, określone nazwy użytkownika. |Nie |
 | gatewayName |Nazwa bramy, która powinna być używana przez usługi fabryka danych nawiązać połączenia z lokalną bazą danych PostgreSQL. |Yes |
@@ -311,7 +312,7 @@ Podczas przenoszenia danych do PostgreSQL, następujące mapowania są używane 
 | bigserial |serial8 |Int64 |
 | bitowe [(n)] | |Byte [], ciąg | &nbsp;
 | bit zróżnicowanie [(n)] |varbit |Byte [], ciąg |
-| wartość logiczna |bool |Wartość logiczna |
+| wartość logiczna |wartość logiczna |Wartość logiczna |
 | box | |Byte [], ciąg |&nbsp;
 | bytea | |Byte [], ciąg |&nbsp;
 | znak [(n)] |char [(n)] |Ciąg |
@@ -321,14 +322,14 @@ Podczas przenoszenia danych do PostgreSQL, następujące mapowania są używane 
 | koło | |Byte [], ciąg |&nbsp;
 | data | |Data/godzina |&nbsp;
 | DateRange | |Ciąg |&nbsp;
-| podwójnej precyzji |FLOAT8 |Podwójnej precyzji |
+| podwójnej precyzji |FLOAT8 |O podwójnej precyzji |
 | inet | |Byte [], ciąg |&nbsp;
 | intarry | |Ciąg |&nbsp;
 | int4range | |Ciąg |&nbsp;
 | int8range | |Ciąg |&nbsp;
-| integer |int, int4 |Int32 |
+| liczba całkowita |int, int4 |Int32 |
 | Interwał [pola] [(p)] | |Zakres czasu |&nbsp;
-| JSON | |Ciąg |&nbsp;
+| json | |Ciąg |&nbsp;
 | jsonb | |Byte[] |&nbsp;
 | wiersz | |Byte [], ciąg |&nbsp;
 | lseg | |Byte [], ciąg |&nbsp;
@@ -341,11 +342,11 @@ Podczas przenoszenia danych do PostgreSQL, następujące mapowania są używane 
 | pg_lsn | |Int64 |&nbsp;
 | punkt | |Byte [], ciąg |&nbsp;
 | wielokąta | |Byte [], ciąg |&nbsp;
-| rzeczywiste |FLOAT4 |Kawaler/panna |
+| rzeczywiste |FLOAT4 |Pojedyncze |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | numer seryjny |serial4 |Int32 |
-| Tekst | |Ciąg |&nbsp;
+| tekst | |Ciąg |&nbsp;
 
 ## <a name="map-source-to-sink-columns"></a>Obiekt sink kolumn mapy źródła
 Aby uzyskać informacje dotyczące mapowania kolumn w zestawie źródła danych do kolumn w zestawie danych zbiornika, zobacz [mapowania kolumnach dataset w fabryce danych Azure](data-factory-map-columns.md).

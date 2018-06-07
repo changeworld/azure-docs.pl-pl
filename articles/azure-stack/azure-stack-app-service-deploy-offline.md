@@ -12,13 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 05/22/2018
 ms.author: anwestg
-ms.openlocfilehash: 5b4281de4a6c2efee8e96f98a3cd46fec191fe22
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7084243c0fc84429b585c3e8fd9e5c64df469ec4
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604288"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Dodaj dostawcy zasobów usługi aplikacji w środowisku bez połączenia stosu Azure zabezpieczonej przez usługi AD FS
 
@@ -81,6 +82,12 @@ Wdrożenie usługi aplikacji w środowisku bez połączenia, należy najpierw ut
     1. Kliknij przycisk **Connect** znajdujący się obok **subskrypcji platformy Azure stosu** pole.
         - Podaj konto administratora. Na przykład cloudadmin@azurestack.local. Wprowadź hasło, a następnie kliknij przycisk **logowania**.
     2. W **subskrypcji platformy Azure stosu** wybierz opcję **domyślny dostawca subskrypcji**.
+    
+    > [!NOTE]
+    > Usługi aplikacji można wdrożyć tylko do **domyślny dostawca subskrypcji** w tej chwili.  W przyszłej aktualizacji usługi aplikacji — zostanie wdrożona na nową subskrypcję pomiaru wprowadzone w 1804 stosu Azure i wszystkie istniejące wdrożenia będą migrowane do tej nowej subskrypcji również.
+    >
+    >
+    
     3. W **lokalizacji stosu Azure** wybierz lokalizację, do której odnosi się do regionu jest wdrażany do. Na przykład wybierz **lokalnego** Jeśli wdrażanie Azure stosu Development Kit.
     4. Kliknij przycisk **Dalej**.
 
@@ -96,12 +103,12 @@ Wdrożenie usługi aplikacji w środowisku bez połączenia, należy najpierw ut
 
     ![Instalator usługi aplikacji][5]
 
-9. Wprowadź informacje dotyczące udziału plików, a następnie kliknij przycisk **dalej**. Adres udziału plików korzystać w pełni kwalifikowana nazwa domeny lub adres IP serwera plików. Na przykład \\\appservicefileserver.local.cloudapp.azurestack.external\websites, lub \\\10.0.0.1\websites.
+9. Wprowadź informacje dotyczące udziału plików, a następnie kliknij przycisk **dalej**. Adres udziału plików korzystać w pełni kwalifikowana nazwa domeny lub adres IP serwera plików. Na przykład \\\appservicefileserver.local.cloudapp.azurestack.external\websites, lub \\\10.0.0.1\websites
 
-> [!NOTE]
-> Instalator podejmuje próbę Testuj łączność z udziałem plików przed kontynuowaniem.  Jednak jeśli wybierzesz do wdrożenia w ramach istniejącej sieci wirtualnej, Instalator może nie móc nawiązać połączenia z udziałem plików i wyświetla ostrzeżenie, pytaniem, czy chcesz kontynuować.  Sprawdź informacje dotyczące udziału plików i Kontynuuj, jeśli są poprawne.
->
->
+    > [!NOTE]
+    > Instalator podejmuje próbę Testuj łączność z udziałem plików przed kontynuowaniem.  Jednak jeśli wybierzesz do wdrożenia w ramach istniejącej sieci wirtualnej, Instalator może nie móc nawiązać połączenia z udziałem plików i wyświetla ostrzeżenie, pytaniem, czy chcesz kontynuować.  Sprawdź informacje dotyczące udziału plików i Kontynuuj, jeśli są poprawne.
+    >
+    >
 
    ![Instalator usługi aplikacji][8]
 
@@ -128,10 +135,10 @@ Wdrożenie usługi aplikacji w środowisku bez połączenia, należy najpierw ut
 
 12. Podaj szczegóły programu SQL Server dla wystąpienia serwera, używane do obsługi baz danych dostawcy zasobów usługi aplikacji, a następnie kliknij przycisk **dalej**. Instalator sprawdza właściwości połączenia SQL. Możesz **musi** wprowadź wewnętrznym adresem ip lub w pełni kwalifikowaną nazwę domeny dla nazwy serwera SQL.
 
-> [!NOTE]
-> Instalator podejmuje próbę przetestowanie łączności z serwerem SQl Server przed kontynuowaniem.  Jednak jeśli wybierzesz do wdrożenia w ramach istniejącej sieci wirtualnej, Instalator może nie móc połączyć się z serwerem SQL i wyświetla ostrzeżenie z pytaniem, czy chcesz kontynuować.  Sprawdź informacje dotyczące programu SQL Server i Kontynuuj, jeśli są poprawne.
->
->
+    > [!NOTE]
+    > Instalator podejmuje próbę przetestowanie łączności z serwerem SQl Server przed kontynuowaniem.  Jednak jeśli wybierzesz do wdrożenia w ramach istniejącej sieci wirtualnej, Instalator może nie móc połączyć się z serwerem SQL i wyświetla ostrzeżenie z pytaniem, czy chcesz kontynuować.  Sprawdź informacje dotyczące programu SQL Server i Kontynuuj, jeśli są poprawne.
+    >
+    >
    
    ![Instalator usługi aplikacji][12]
 

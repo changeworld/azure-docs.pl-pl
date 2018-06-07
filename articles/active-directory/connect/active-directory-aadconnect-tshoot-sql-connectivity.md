@@ -11,12 +11,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/14/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a8b105d7a374e281e46064f83a6e103c2a7cf84f
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: ad1e5d176caff6553159c5f35fe2b199ba50769f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592385"
 ---
 # <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>Rozwiązywanie problemów z łącznością SQL z programem Azure AD Connect
 W tym artykule opisano sposób rozwiązywania problemów z łącznością między Azure AD Connect i SQL Server. 
@@ -171,4 +173,4 @@ PS C:\Program Files\Microsoft Azure Active Directory Connect\tools>
 
 ## <a name="next-steps"></a>Następne kroki
 - [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](active-directory-aadconnect.md)
--  [Azure AD łączność z programem Azure AD Connect](active-directory-aadconnect-troubleshoot-connectivity.md)
+-  [Łączność z usługą Azure AD za pośrednictwem programu Azure AD Connect](active-directory-aadconnect-troubleshoot-connectivity.md)

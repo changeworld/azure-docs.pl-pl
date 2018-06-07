@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2d790b067630f15b96eba5e46ea12e1997a47c86
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6e6b9bf194da17ebd03389829ba594bf3fbf1e64
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622105"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Przenoszenia danych z Cassandra lokalną bazą danych przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -64,15 +65,15 @@ Poniższe sekcje zawierają szczegółowe informacje o właściwości JSON, któ
 ## <a name="linked-service-properties"></a>Połączona usługa właściwości
 Poniższa tabela zawiera opis specyficzne dla usługi Cassandra połączone elementy JSON.
 
-| Właściwość | Opis | Wymagana |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| typ |Właściwość type musi mieć ustawioną: **OnPremisesCassandra** |Tak |
-| host |Jeden lub więcej adresów IP lub nazw hostów serwerów Cassandra.<br/><br/>Określ rozdzielaną przecinkami listę adresów IP lub nazw hostów, aby nawiązać połączenie wszystkie serwery jednocześnie. |Tak |
+| type |Właściwość type musi mieć ustawioną: **OnPremisesCassandra** |Yes |
+| host |Jeden lub więcej adresów IP lub nazw hostów serwerów Cassandra.<br/><br/>Określ rozdzielaną przecinkami listę adresów IP lub nazw hostów, aby nawiązać połączenie wszystkie serwery jednocześnie. |Yes |
 | port |Port TCP używany przez serwer Cassandra nasłuchiwanie dla połączeń klienta. |Nie, wartość domyślna: 9042 |
-| authenticationType |Podstawowa lub anonimowe |Tak |
+| Typ authenticationType |Podstawowa lub anonimowe |Yes |
 | nazwa użytkownika |Określ nazwę użytkownika dla konta użytkownika. |Tak, jeśli authenticationType ustawiany jest podstawowy. |
 | hasło |Określ hasło dla konta użytkownika. |Tak, jeśli authenticationType ustawiany jest podstawowy. |
-| gatewayName |Nazwa bramy, która służy do łączenia z bazą danych Cassandra lokalnymi. |Tak |
+| gatewayName |Nazwa bramy, która służy do łączenia z bazą danych Cassandra lokalnymi. |Yes |
 | encryptedCredential |Poświadczenie szyfrowane przez bramę. |Nie |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
@@ -80,7 +81,7 @@ Aby uzyskać pełną listę sekcje & właściwości dostępne do definiowania ze
 
 **TypeProperties** sekcja jest różne dla każdego typu zestawu danych i zawiera informacje o lokalizacji danych w magazynie danych. TypeProperties sekcja dla zestawu danych typu **CassandraTable** ma następujące właściwości
 
-| Właściwość | Opis | Wymagana |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | przestrzeni kluczy |Nazwa schematu bazy danych Cassandra lub przestrzeni kluczy. |Tak (Jeśli **zapytania** dla **CassandraSource** nie jest zdefiniowana). |
 | tableName |Nazwa tabeli w bazie danych Cassandra. |Tak (Jeśli **zapytania** dla **CassandraSource** nie jest zdefiniowana). |
@@ -92,7 +93,7 @@ Właściwości, które są dostępne w sekcji typeProperties działania różni�
 
 Jeśli źródło jest typu **CassandraSource**, w sekcji typeProperties dostępne są następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagana |
+| Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
 | query |Użyj niestandardowych zapytania można odczytać danych. |Zapytania SQL 92 lub CQL zapytania. Zobacz [odwołania CQL](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Korzystając z zapytania SQL, określ **przestrzeni kluczy name.table nazwy** do reprezentowania tabeli ma dotyczyć zapytanie. |Nie (jeśli są zdefiniowane tableName oraz przestrzeni kluczy w zestawie danych). |
 | consistencyLevel |Poziom spójności Określa, jak wiele replik musi odpowiedzieć na żądanie odczytu przed zwróceniem danych do aplikacji klienckiej. Cassandra sprawdza określonej liczby replik danych do spełnienia żądania odczytu. |JEDNĄ, DWIE, TRZY, KWORUM, WSZYSTKIE, LOCAL_QUORUM EACH_QUORUM, LOCAL_ONE. Zobacz [Konfigurowanie spójność danych](http://docs.datastax.com/en//cassandra/2.0/cassandra/dml/dml_config_consistency_c.html) szczegółowe informacje. |Nie. Domyślna wartość to jeden. |
@@ -261,17 +262,17 @@ Zobacz [właściwości typu RelationalSource](#copy-activity-properties) listę 
 | --- | --- |
 | ASCII |Ciąg |
 | BIGINT |Int64 |
-| BLOB |Byte[] |
+| OBIEKT BLOB |Byte[] |
 | WARTOŚĆ LOGICZNA |Wartość logiczna |
 | DECIMAL |Decimal |
-| O PODWÓJNEJ PRECYZJI |Podwójnej precyzji |
-| FLOAT |Kawaler/panna |
+| O PODWÓJNEJ PRECYZJI |O podwójnej precyzji |
+| FLOAT |Pojedyncze |
 | INET |Ciąg |
 | INT |Int32 |
 | TEKST |Ciąg |
-| ZNACZNIK CZASU |Data/godzina |
+| ZNACZNIK CZASU |DateTime |
 | TIMEUUID |Identyfikator GUID |
-| UUID |Identyfikator GUID |
+| IDENTYFIKATOR UUID |Identyfikator GUID |
 | VARCHAR |Ciąg |
 | VARINT |Decimal |
 
@@ -297,7 +298,7 @@ Można użyć [kreatora kopiowania](data-factory-data-movement-activities.md#cre
 ### <a name="example"></a>Przykład
 Na przykład następujące "ExampleTable" jest Cassandra tabeli bazy danych, która zawiera całkowitą kolumna klucza podstawowego o nazwie "pk_int", kolumna tekst o nazwie wartość kolumny listy, kolumny mapy i zestawu kolumn (o nazwie "StringSet").
 
-| pk_int | Wartość | Wyliczanie | Mapa | StringSet |
+| pk_int | Wartość | List | Mapa | StringSet |
 | --- | --- | --- | --- | --- |
 | 1 |"Przykładowa wartość 1" |["1", "2", "3"] |{"S1": "", "S2": "b"} |{"A", "B", "C"} |
 | 3 |"przykład value 3" |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |
@@ -327,17 +328,17 @@ W poniższych tabelach przedstawiono wirtualnego tabel, które renormalize danyc
 #### <a name="table-exampletablevtmap"></a>Tabela "ExampleTable_vt_Map":
 | pk_int | Map_key | Map_value |
 | --- | --- | --- |
-| 1 |S1 |Z |
+| 1 |S1 |A |
 | 1 |S2 |b |
 | 3 |S1 |t |
 
 #### <a name="table-exampletablevtstringset"></a>Tabela "ExampleTable_vt_StringSet":
 | pk_int | StringSet_value |
 | --- | --- |
-| 1 |Z |
+| 1 |A |
 | 1 |B |
 | 1 |C |
-| 3 |Z |
+| 3 |A |
 | 3 |E |
 
 ## <a name="map-source-to-sink-columns"></a>Obiekt sink kolumn mapy źródła

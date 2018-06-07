@@ -3,7 +3,7 @@ title: Raport danych użycia usługi Azure stosu na platformie Azure | Dokumenta
 description: Dowiedz się, jak skonfigurować dane użycia raportowania w programie Azure stosu.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: brenduns
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,14 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
-ms.author: mabrigg
+ms.date: 05/30/2018
+ms.author: brenduns
 ms.reviewer: alfredop
-ms.openlocfilehash: 602cd6c3b2be8881bebbcebe30ec2520358b731f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: daaaf6c574c4b169c19ebec42ad68e2d818ca1cb
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603706"
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>Raport danych użycia usługi Azure stosu na platformie Azure 
 
@@ -42,7 +43,7 @@ Aby skonfigurować raportowanie danych użycia, należy najpierw [zarejestruj wy
 - **Ilość** — ilość użycia zasobów.
 - **Lokalizacja** — lokalizacja wdrożonym bieżącego zasobu stosu Azure.
 - **Identyfikator URI zasobu** — identyfikator URI zasobu, dla którego obciążenie jest raportowany w pełni kwalifikowana.
-- **Identyfikator subskrypcji** — identyfikator subskrypcji Azure stosu. To jest lokalne subskrypcji (Azure stosu).
+- **Identyfikator subskrypcji** — identyfikator subskrypcji użytkownika stosu Azure jest lokalny subskrypcji (stos Azure).
 - **Czas** — godzina rozpoczęcia i zakończenia danych użycia. Brak pewne opóźnienie między czasem, podczas tych zasobów są używane w stosie Azure i danych użycia jest zgłaszany do obsługi handlu. Azure stosu agreguje dane dotyczące wykorzystania co 24 godziny i raportowania danych użycia do potoku handlu na platformie Azure ma inny kilka godzin. Tak użycie, która występuje tuż przed północy może wyświetlane na platformie Azure następnego dnia.
 
 ## <a name="generate-usage-data-reporting"></a>Generowanie raportowania danych użycia
@@ -68,7 +69,7 @@ Jeśli zarejestrowane stosu Azure przy użyciu żadnego innego typu subskrypcji,
 
    ![Przepływ rozliczeń](media/azure-stack-usage-reporting/pricing-details.png)
 
-Dla usługi Azure stosu Development Kit zasobów Azure stosu nie są naliczane, ceny jest wyświetlany jako 0,00 USD. Po wielowęzłowego stosu Azure staje się ogólnie dostępna, można wyświetlić rzeczywisty koszt dla każdego z tych zasobów.
+Dla usługi Azure stosu Development Kit zasobów Azure stosu nie są naliczane, ceny jest wyświetlany jako 0,00 USD.
 
 ## <a name="which-azure-stack-deployments-are-charged"></a>Które wdrożenia stosu Azure są naliczane?
 
@@ -82,7 +83,7 @@ Użytkownicy są naliczane tylko dla maszyn wirtualnych uruchamianych w ramach s
 
 ## <a name="i-have-a-windows-server-license-i-want-to-use-on-azure-stack-how-do-i-do-it"></a>Użytkownik ma licencję systemu Windows Server, który ma być użyty na stosie Azure, jak to zrobić?
 
-Przy użyciu istniejących licencji pozwala uniknąć generowania liczników użycia. Istniejących licencji systemu Windows Server mogą być używane w stosie Azure, zgodnie z opisem w sekcji "Przy użyciu istniejącego oprogramowania z usługi Azure stosu" [Przewodnik licencjonowania stosu Azure](https://go.microsoft.com/fwlink/?LinkId=851536&clcid=0x409). Klienci muszą wdrażać maszynami wirtualnymi systemu Windows Server, zgodnie z opisem w [korzyści hybrydowego licencji systemu Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) tematu, aby można było używać ich istniejących licencji.
+Przy użyciu istniejących licencji pozwala uniknąć generowania liczników użycia. Istniejących licencji systemu Windows Server mogą być używane w stosie Azure, zgodnie z opisem w sekcji "Przy użyciu istniejącego oprogramowania z usługi Azure stosu" [Przewodnik licencjonowania stosu Azure](https://go.microsoft.com/fwlink/?LinkId=851536&clcid=0x409). Klienci muszą wdrażać maszynami wirtualnymi systemu Windows Server, zgodnie z opisem w [korzyści hybrydowego licencji systemu Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) artykuł, aby można było używać ich istniejących licencji.
 
 ## <a name="which-subscription-is-charged-for-the-resources-consumed"></a>Subskrypcji, której dotyczy kosztów używanych zasobów?
 Subskrypcję, która jest dostępne, gdy [rejestrowania stosu Azure za pomocą usługi Azure](azure-stack-register.md) rozliczany.
@@ -101,7 +102,7 @@ Użytkownicy mogą zobaczyć stos Azure dane użycia w pliku szczegóły użycia
 
 ## <a name="why-doesnt-the-usage-reported-in-azure-stack-match-the-report-generated-from-azure-account-center"></a>Dlaczego użycia raportowane w stosie Azure nie odpowiada raportów wygenerowanych z Centrum konta platformy Azure?
 
-Zawsze jest delaybetween danych użycia zgłoszonych przez wykorzystanie stosu Azure interfejsów API i danych użycia zgłoszonych przez Centrum konta platformy Azure. Opóźnienie to czas potrzebny do przekazywania danych użycia ze stosu Azure do handlu Azure. Ze względu na to opóźnienie użycia, która występuje tuż przed północy może wyświetlane w usłudze Azure następnego dnia. Jeśli używasz [interfejsów API usługi Azure stosu użycia](azure-stack-provider-resource-api.md)i porównywania wyników do użycia w portalu Azure rozliczeń, zobaczysz różnicy.
+Jest zawsze opóźnienie między danych użycia zgłoszonych przez wykorzystanie stosu Azure interfejsów API i danych użycia zgłoszonych przez Centrum konta platformy Azure. Opóźnienie to czas potrzebny do przekazywania danych użycia ze stosu Azure do handlu Azure. Ze względu na to opóźnienie użycia, która występuje tuż przed północy może wyświetlane w usłudze Azure następnego dnia. Jeśli używasz [interfejsów API usługi Azure stosu użycia](azure-stack-provider-resource-api.md)i porównywania wyników do użycia w portalu Azure rozliczeń, zobaczysz różnicy.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/09/2018
+ms.date: 05/14/2018
 ms.author: celested
+ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 5f42a706bd7cb44162765bb77039cc3173d6941e
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 22833851b85427dd8e9583f9c783fd55b9d31414
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594092"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Wyświetlanie listy aplikacji w galerii aplikacji usługi Azure Active Directory
 
@@ -33,20 +35,19 @@ Azure Active Directory (Azure AD) to usługa oparta na chmurze tożsamości. [Ga
 
 *  Klienci znaleźć najlepszych pojedynczy znak w aplikacji.
 
-*  Konfiguracja aplikacji jest proste i minimalnej. 
+*  Konfiguracja aplikacji jest proste i minimalnej.
 
 *  Szybkie wyszukiwanie umożliwia znalezienie aplikacji w galerii.
 
-*  Zwolnij, Basic i wszystkie usługi Azure AD Premium klienci mogą używać tej integracji. 
+*  Zwolnij, Basic i wszystkie usługi Azure AD Premium klienci mogą używać tej integracji.
 
-*  Wzajemne klienci uzyskują samouczek krok po kroku konfiguracji. 
+*  Wzajemne klienci uzyskują samouczek krok po kroku konfiguracji.
 
 *  Klienci, którzy korzystają SCIM można użyć, inicjowanie obsługi administracyjnej dla tej samej aplikacji.
 
-
 ##  <a name="prerequisites-implement-federation-protocol"></a>Wymagania wstępne: Protokół federacyjnego zaimplementuj
 
-Aby wyświetlić listę aplikacji w galerii aplikacji Azure AD, należy najpierw implementować jeden z następujących protokołów federacyjnego obsługiwane przez usługę Azure AD. Przeczytaj warunki i postanowienia galerii aplikacji Azure AD, w tym miejscu. 
+Aby wyświetlić listę aplikacji w galerii aplikacji Azure AD, należy najpierw implementować jeden z następujących protokołów federacyjnego obsługiwane przez usługę Azure AD i Akceptuję warunki galerii aplikacji usługi Azure AD. Przeczytaj warunki i postanowienia galerii aplikacji Azure AD z [tutaj](https://azure.microsoft.com/en-us/support/legal/active-directory-app-gallery-terms/).
 
 *   **OpenID Connect**: tworzenie wielodostępnych aplikacji w usłudze Azure AD i zaimplementować [framework zgody usługi Azure AD](active-directory-integrating-applications.md#overview-of-the-consent-framework) aplikacji. Wyślij żądanie logowania do wspólnego punktu końcowego tak, aby każdy klient może zapewnić zgody do aplikacji. Można kontrolować dostęp użytkowników na podstawie Identyfikatora dzierżawy i nazwy UPN użytkownika odebrane w tokenie. Integracja aplikacji z usługą Azure AD, należy wykonać [instrukcje deweloperów](active-directory-authentication-scenarios.md).
 

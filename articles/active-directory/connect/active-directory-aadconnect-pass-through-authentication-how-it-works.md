@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect: Uwierzytelniania przekazywanego — jak działa | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano, jak działa uwierzytelniania przekazywanego Azure Active Directory"
+title: 'Azure AD Connect: Uwierzytelniania przekazywanego — jak działa | Dokumentacja firmy Microsoft'
+description: W tym artykule opisano, jak działa uwierzytelniania przekazywanego Azure Active Directory
 services: active-directory
-keywords: "Azure AD Connect przekazywanego uwierzytelniania, instalacji usługi Active Directory, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on"
-documentationcenter: 
+keywords: Azure AD Connect przekazywanego uwierzytelniania, instalacji usługi Active Directory, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: eaa9995430833c0c087ed0d4044f6c41d254e3ff
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: ca501bb3ad37353f00ffe5d46f72822c7c5487bf
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591399"
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure przekazywanego uwierzytelnianie usługi Active Directory: Techniczne nowości
 W tym artykule przedstawiono sposób działania przekazywanego uwierzytelniania w usłudze Azure Active directory (Azure AD). Bezpośrednie technicznych i informacji o zabezpieczeniach, zobacz [nowości zabezpieczeń](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md) artykułu.

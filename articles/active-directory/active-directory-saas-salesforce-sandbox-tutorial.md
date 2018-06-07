@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 0660bdb3592e36cb25f68243f16e32d7e51fb85c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d4ccb3fd457f9541354281e3dc11dce273f75d9a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590430"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>Samouczek: Integracji Azure Active Directory z piaskownicy usług Salesforce
 
@@ -153,51 +154,48 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     b. W **wystawcy** pól, Wklej wartość **identyfikator jednostki SAML**, które zostały skopiowane z portalu Azure
 
-    c. W **identyfikator jednostki** pole tekstowe, typ `https://<instancename>--Sandbox.<entityid>.my.salesforce.com` Jeśli pierwsze wystąpienie piaskownicy Salesforce, które ma zostać dodane do katalogu. Jeśli masz już dodany wystąpienia usług Salesforce piaskownicy, następnie dla **identyfikator jednostki** wpisz **na adres URL logowania**, która powinna być w następującym formacie: `https://<instancename>--Sandbox.<entityid>.my.salesforce.com`  
- 
-    d. Aby przekazać **certyfikat dostawcy tożsamości**, kliknij przycisk **wybierz plik** Przeglądaj i wybierz plik certyfikatu, który został pobrany z portalu Azure.  
+    c. W **identyfikator jednostki** pole tekstowe, typ `https://<instancename>--Sandbox.<entityid>.my.salesforce.com` Jeśli pierwsze wystąpienie piaskownicy Salesforce, które ma zostać dodane do katalogu. Jeśli masz już dodany wystąpienia usług Salesforce piaskownicy, następnie dla **identyfikator jednostki** wpisz **na adres URL logowania**, która powinna być w następującym formacie: `https://<instancename>--Sandbox.<entityid>.my.salesforce.com`
+
+    d. Aby przekazać **certyfikat dostawcy tożsamości**, kliknij przycisk **wybierz plik** Przeglądaj i wybierz plik certyfikatu, który został pobrany z portalu Azure.
 
     e. Jako **typ tożsamości SAML**, wybierz jedną z następujących opcji:
-    
+
       * Wybierz **potwierdzenia zawiera Salesforce użytkownika**, jeśli Salesforce użytkownika jest przekazywany potwierdzenia języka SAML
 
       * Wybierz **potwierdzenia zawiera identyfikator federacji z obiektu użytkownika**, jeśli identyfikator federacyjnej z obiektu użytkownika jest przekazywany potwierdzenia języka SAML
 
       * Wybierz **potwierdzenia zawiera identyfikator używany z obiektu użytkownika**, jeśli identyfikator użytkownika z obiektu użytkownika jest przekazywany potwierdzenia języka SAML
- 
+
     f. Jako **lokalizacji tożsamości SAML**, wybierz pozycję **jest tożsamość w elemencie NameIdentifier instrukcji podmiotu**.
 
-    g. Jako **dostawcy zainicjował żądanie powiązania usługi**, wybierz pozycję **HTTP POST**. 
+    g. Jako **dostawcy zainicjował żądanie powiązania usługi**, wybierz pozycję **HTTP POST**.
 
-    h. W **adresu URL logowania do dostawcy tożsamości** pole tekstowe, Wklej wartość **pojedynczy znak na adres URL usługi**, które zostały skopiowane z portalu Azure. 
+    h. W **adresu URL logowania do dostawcy tożsamości** pole tekstowe, Wklej wartość **pojedynczy znak na adres URL usługi**, które zostały skopiowane z portalu Azure.
 
     i. SFDC nie obsługuje SAML wylogowania.  Jako obejście, Wklej `https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0` go do **adres URL wylogowania dostawcy tożsamości** pola tekstowego.
 
     j. Kliknij pozycję **Zapisz**.
 
 ### <a name="enable-your-domain"></a>Włącz domeny
+
 W tej sekcji założono, że już utworzono domeny.  Aby uzyskać więcej informacji, zobacz [Definiowanie Twojej nazwy domeny](https://help.salesforce.com/HTViewHelpDoc?id=domain_name_define.htm&language=en_US).
 
 **Aby włączyć domeny, wykonaj następujące czynności:**
 
 1. W lewym okienku nawigacji w aplikacji Salesforce, kliknij polecenie **ustawienia firmy** rozwiń sekcję powiązane, a następnie kliknij przycisk **Moje domeny**.
-   
-     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-salesforce-sandbox-tutorial/sf-my-domain.png)
-   
+
+    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-salesforce-sandbox-tutorial/sf-my-domain.png)
+
    >[!NOTE]
-   >Upewnij się, że poprawnie skonfigurowano domenę. 
+   >Upewnij się, że poprawnie skonfigurowano domenę.
 
 2. W **konfiguracji uwierzytelniania** kliknij **Edytuj**, następnie jako **usługi uwierzytelniania**, wybierz nazwę SAML pojedynczego logowania jednokrotnego ustawienia z poprzednich sekcja, a na koniec kliknij **zapisać**.
-   
+
    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-salesforce-sandbox-tutorial/sf-edit-auth-config.png)
 
-Jak masz domenę skonfigurowane, użytkownicy należy używać URL domeny na potrzeby logowania do usługi Salesforce piaskownicy.  
+Jak masz domenę skonfigurowane, użytkownicy należy używać URL domeny na potrzeby logowania do usługi Salesforce piaskownicy.
 
 Aby uzyskać wartość adresu URL, kliknij profil rejestracji Jednokrotnej, utworzony w poprzedniej sekcji.
-
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -230,17 +228,16 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
- 
+
 ### <a name="create-a-salesforce-sandbox-test-user"></a>Tworzenie użytkownika testowego piaskownicy usług Salesforce
 
-W tej sekcji użytkownika o nazwie Simona Britta jest tworzony w piaskownicy Salesforce. Piaskownica SalesForce obsługę w czasie, który jest domyślnie włączona.
-Nie ma elementu akcji można w tej sekcji. Jeśli użytkownik nie istnieje w piaskownicy Salesforce, nowy jest tworzony przy próbie uzyskania dostępu do piaskownicy Salesforce.
+W tej sekcji użytkownika o nazwie Simona Britta jest tworzony w piaskownicy Salesforce. Piaskownica SalesForce obsługę w czasie, który jest domyślnie włączona. Nie ma elementu akcji można w tej sekcji. Jeśli użytkownik nie istnieje w piaskownicy Salesforce, nowy jest tworzony przy próbie uzyskania dostępu do piaskownicy Salesforce. Piaskownica SalesForce również obsługę użytkowników, można znaleźć więcej szczegółów [tutaj](active-directory-saas-salesforce-sandbox-provisioning-tutorial.md) na temat konfigurowania użytkowników automatycznego inicjowania obsługi administracyjnej.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
 
 W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu do piaskownicy Salesforce.
 
-![Przypisanie roli użytkownika][200] 
+![Przypisanie roli użytkownika][200]
 
 **Aby przypisać Simona Britta piaskownicy Salesforce, wykonaj następujące czynności:**
 
@@ -277,6 +274,8 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
+* [Skonfiguruj Inicjowanie obsługi użytkowników](active-directory-saas-salesforce-sandbox-provisioning-tutorial.md)
+
 
 <!--Image references-->
 
@@ -291,4 +290,3 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 [201]: ./media/active-directory-saas-salesforce-sandbox-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-salesforce-sandbox-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-salesforce-sandbox-tutorial/tutorial_general_203.png
-

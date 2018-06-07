@@ -1,27 +1,29 @@
 ---
-title: 'Sieci Azure stosu: Różnice i zagadnienia dotyczące'
+title: Stos Azure networking różnice i zagadnienia dotyczące | Dokumentacja firmy Microsoft
 description: Więcej informacji na temat różnic i zagadnienia dotyczące podczas pracy z sieci w programie Azure stosu.
 services: azure-stack
 keywords: ''
 author: mattbriggs
 manager: femila
 ms.author: mabrigg
-ms.date: 05/14/2018
+ms.date: 05/21/2018
 ms.topic: article
 ms.service: azure-stack
-ms.openlocfilehash: 2a4c5bce072970f158a89763ebdf4132eafe9cbe
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.reviewer: scottnap
+ms.openlocfilehash: faff52ba5b5e2f0d573a67633d3a8411b2d7de74
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606430"
 ---
 # <a name="considerations-for-azure-stack-networking"></a>Zagadnienia dotyczące sieci Azure stosu
 
 *Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
 
-Azure Networking stosu zawiera funkcje oferowane przez sieć platformy Azure. Istnieją jednak niektóre podstawowe różnice, które należy zrozumieć przed wdrożeniem w sieci Azure stosu.
+Azure stosu sieci zawiera funkcje oferowane przez sieć platformy Azure. Istnieją jednak niektóre podstawowe różnice, które należy zrozumieć przed wdrożeniem w sieci Azure stosu.
 
-Ten artykuł zawiera omówienie unikatowy zagadnienia dotyczące sieci stosu Azure i jego funkcje. Aby uzyskać informacje ogólne różnice między stosu Azure i usługi Azure, zobacz [kluczowe zagadnienia dotyczące](azure-stack-considerations.md) tematu.
+Ten artykuł zawiera omówienie unikatowy zagadnienia dotyczące sieci Azure stosu i ich funkcje. Aby uzyskać informacje ogólne różnice między stosu Azure i usługi Azure, zobacz [kluczowe zagadnienia dotyczące](azure-stack-considerations.md) tematu.
 
 ## <a name="cheat-sheet-networking-differences"></a>Ściągawka: różnice sieci
 

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: 70dd61758b30c1c7a89374e708fe37c1443d3a2a
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 4489f194329727160d770ab72d9cd36115f2e64d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594761"
 ---
 # <a name="tutorial-use-managed-service-identity-for-a-linux-vm-to-access-azure-data-lake-store"></a>Samouczek: Użyj zarządzanych tożsamości usługi dla maszyny Wirtualnej systemu Linux uzyskać dostępu do usługi Azure Data Lake Store
 
@@ -181,12 +182,9 @@ Przy użyciu innych interfejsów API systemu plików usługi Data Lake Store, mo
 
 Gratulacje! W systemie plików usługi Data Lake Store uwierzytelniono za pomocą Instalatora MSI dla maszyny Wirtualnej systemu Linux.
 
-## <a name="related-content"></a>Zawartość pokrewna
+## <a name="next-steps"></a>Kolejne kroki
 
-- Omówienie MSI, zobacz [omówienie zarządzane tożsamość usługi](overview.md).
-- Dla operacji zarządzania Data Lake Store używa usługi Azure Resource Manager.  Aby uzyskać więcej informacji na temat używania MSI do uwierzytelniania do Menedżera zasobów, zobacz [umożliwia dostęp do Menedżera zasobów systemu Linux VM zarządzane usługi tożsamości (MSI)](https://docs.microsoft.com/azure/active-directory/msi-tutorial-linux-vm-access-arm).
-- Dowiedz się więcej o [uwierzytelniania za pomocą usługi Data Lake Store za pomocą usługi Azure Active Directory](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory).
-- Dowiedz się więcej o [plików operacji w systemie Azure Data Lake Store przy użyciu interfejsu API REST](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-data-operations-rest-api) lub [interfejsów API systemu plików WebHDFS](https://docs.microsoft.com/rest/api/datalakestore/webhdfs-filesystem-apis).
-- Dowiedz się więcej o [kontroli dostępu w usłudze Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control).
+W tym samouczku przedstawiono sposób korzystania z tożsamości usługi zarządzania dla maszyny wirtualnej systemu Linux można uzyskać dostępu do usługi Azure Data Lake Store. Aby dowiedzieć się więcej o usłudze Azure Data Lake Store, zobacz:
 
-W poniższej sekcji komentarzy umożliwia wyrazić swoją opinię i pomóc nam dostosować i kształtu zawartość.
+> [!div class="nextstepaction"]
+>[Azure Data Lake Store](/azure/data-lake-store/data-lake-store-overview)

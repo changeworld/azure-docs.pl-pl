@@ -1,12 +1,12 @@
 ---
-title: "Konfigurowanie języka Python z aplikacjami sieci Web usługi aplikacji Azure"
-description: "W tym samouczku opisano opcje dotyczące tworzenia i konfigurowania podstawowego serwera sieci Web zgodnych aplikacji Python interfejs bramy (WSGI) w aplikacji sieci Web usługi aplikacji Azure."
+title: Konfigurowanie języka Python z aplikacjami sieci Web usługi aplikacji Azure
+description: W tym samouczku opisano opcje dotyczące tworzenia i konfigurowania podstawowego serwera sieci Web zgodnych aplikacji Python interfejs bramy (WSGI) w aplikacji sieci Web usługi aplikacji Azure.
 services: app-service
 documentationcenter: python
 tags: python
 author: huguesv
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: fd00dc91-9935-4331-b955-4bd71e66d518
 ms.service: app-service
 ms.workload: na
@@ -15,11 +15,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: huvalo
-ms.openlocfilehash: fa5f9afbc595f06bd41e8670fab7730b610f570e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 32d9cd6c42387b67881877a1165dfcbcaef405ba
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598644"
 ---
 # <a name="configuring-python-with-azure-app-service-web-apps"></a>Konfigurowanie języka Python z aplikacjami sieci Web usługi aplikacji Azure
 W tym samouczku opisano opcje dotyczące tworzenia i konfigurowania podstawowej aplikacji Python zgodnych sieci Web serwera bramy interfejsu (WSGI) w [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714).
@@ -29,9 +30,9 @@ Opisuje dodatkowe funkcje Git, takiego jak wdrożenie środowiska wirtualnego, a
 ## <a name="bottle-django-or-flask"></a>Bottle, Django lub Flask?
 W portalu Azure Marketplace zawiera szablony dla struktur Bottle, Django i Flask. Jeśli tworzysz pierwszej aplikacji sieci web w usłudze Azure App Service, możesz ją utworzyć szybko z portalu Azure:
 
-* [Tworzenie aplikacji sieci web w języku Bottle](https://portal.azure.com/#create/PTVS.Bottle)
-* [Tworzenie aplikacji sieci web przy użyciu platformy Django](https://portal.azure.com/#create/PTVS.Django)
-* [Tworzenie aplikacji sieci web za pomocą platformy Flask](https://portal.azure.com/#create/PTVS.Flask)
+* [Aplikacja sieci Web z Bottle](https://portal.azure.com/#create/PTVS.Bottle)
+* [Aplikacja sieci Web przy użyciu platformy Django](https://portal.azure.com/#create/PTVS.Django)
+* [Aplikacja sieci Web z platformy Flask, w systemie Linux](https://portal.azure.com/#create/PTVS.FlaskLinux)
 
 ## <a name="web-app-creation-on-azure-portal"></a>Tworzenie aplikacji sieci Web w portalu Azure
 Ten samouczek zakłada istniejącą subskrypcję platformy Azure i dostęp do portalu Azure.
@@ -53,7 +54,7 @@ W kolejnych sekcjach są tworzone następujące pliki. Powinny one umieszczone w
     ptvs_virtualenv_proxy.py
 
 
-## <a name="wsgi-handler"></a>WSGI Handler
+## <a name="wsgi-handler"></a>Program obsługi WSGI
 WSGI jest standardem Python opisanego przez [3333 program ten](http://www.python.org/dev/peps/pep-3333/) Definiowanie interfejsu między serwerem sieci web i Python. Zapewnia interfejs standardowych do pisania różnych aplikacji sieci web i struktur za pomocą języka Python. Obecnie popularnych struktur sieci web języka Python posłużyć WSGI. Umożliwia aplikacji sieci Web usługi aplikacji Azure obsługę tych platform; Ponadto użytkownicy zaawansowani można nawet tworzyć własne tak długo, jak niestandardowy program obsługi jest zgodna z wytycznymi specyfikacji WSGI.
 
 Oto przykład `app.py` definiuje niestandardowego programu obsługi:

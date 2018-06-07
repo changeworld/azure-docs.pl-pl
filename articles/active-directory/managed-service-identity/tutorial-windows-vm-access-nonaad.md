@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: c4570e43c23ff7a23b5d6a97ebd6da0244ed6fb2
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 35391c8148246146eeb0c07bf57aea8a2a95d277
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594938"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Samouczek: Umożliwia dostęp do usługi Azure Key Vault Windows wirtualna zarządzane usługi tożsamości (MSI) 
 
@@ -138,8 +139,9 @@ Po pierwsze stosujemy MSI maszyny Wirtualnej do uzyskania tokenu dostępu do uwi
     
 Po klucz tajny zostały pobrane z magazynu kluczy, służy ona do uwierzytelniania do usługi, która wymaga podania nazwy i hasła. 
 
-## <a name="related-content"></a>Zawartość pokrewna
+## <a name="next-steps"></a>Kolejne kroki
 
-- Omówienie MSI, zobacz [omówienie zarządzane tożsamość usługi](overview.md).
+W tym samouczku przedstawiono sposób tworzenia tożsamości usługi zarządzane można uzyskać dostępu do usługi Azure Key Vault.  Aby dowiedzieć się więcej na temat usługi Azure Key Vault, zobacz:
 
-W poniższej sekcji komentarzy umożliwia wyrazić swoją opinię i pomóc nam dostosować i kształtu zawartość.
+> [!div class="nextstepaction"]
+>[Usługa Azure Key Vault](/azure/key-vault/key-vault-whatis)

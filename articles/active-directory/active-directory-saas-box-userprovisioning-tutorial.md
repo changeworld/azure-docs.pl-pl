@@ -13,23 +13,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: jeedes
-ms.openlocfilehash: d9c615e3d0f144080a02f6f8d95603ecac4341f0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 0a6386f9d0207ab71c490801ea995e504825e0c8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589318"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie pole dla użytkownika automatycznego inicjowania obsługi administracyjnej.
 
 Celem tego samouczka jest do pokazania kroki, które należy wykonać w polu a usługą Azure AD można automatycznie udostępnić i usuwanie kont użytkowników z usługi Azure AD do pola.
 
+> [!NOTE]
+> W tym samouczku opisano łącznika, rozszerzający usługi dostarczania użytkownika programu Azure AD. Uzyskać ważne szczegóły dotyczące tej usługi nie, jak to działa i często zadawane pytania, zobacz [zautomatyzować użytkownika alokowania i anulowania alokowania do aplikacji SaaS w usłudze Azure Active Directory](./active-directory-saas-app-provisioning.md).
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Scenariusz opisany w tym samouczku założono, że już następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z polem, potrzebne są następujące elementy:
 
-*   Dzierżawy usługi Azure Active directory.
-*   Pole jednokrotnego włączone subskrypcji.
-*   Konto użytkownika, w polu z uprawnieniami administratora zespołu.
+- Dzierżawa usługi Azure AD
+- Plan działalności gospodarczej pole lub lepszy
+
+> [!NOTE]
+> Podczas testowania czynności w tym samouczku, zaleca się wykonanie *nie* za pomocą środowiska produkcyjnego.
+
+Aby przetestować kroki opisane w tym samouczku, wykonaj te zalecenia:
+
+- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
+- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="assigning-users-to-box"></a>Przypisywanie użytkowników do pola 
 

@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 506206d3e0a28f2ffc0e9e029ec27546bc332754
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4009a35226473cd3ecc68929e53d70f7fb749156
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593439"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Synchronizacja programu Azure AD Connect: atrybuty synchronizowane z usługą Azure Active Directory
 Ten temat zawiera listę atrybutów, które są synchronizowane przez synchronizacja programu Azure AD Connect.  
@@ -40,7 +42,7 @@ W takim przypadku zaczynać się na liście atrybutów w tym temacie i zidentyfi
 | --- |:---:| --- |
 | accountEnabled |X |Określa, czy konto jest włączone. |
 | cn |X | |
-| Nazwa wyświetlana |X | |
+| displayName |X | |
 | objectSID |X |tych właściwości. Identyfikator użytkownika AD służy do utrzymywania synchronizacji między Azure AD i usługi AD. |
 | pwdLastSet |X |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używane przez funkcje synchronizacji skrótów haseł, uwierzytelnianie i federacji. |
 | sourceAnchor |X |tych właściwości. Niezmienne identyfikator, aby utrzymać relację między DODAJE i Azure AD. |
@@ -59,9 +61,9 @@ W takim przypadku zaczynać się na liście atrybutów w tym temacie i zidentyfi
 | co |X |X | | |
 | Firmy |X |X | | |
 | countryCode |X |X | | |
-| Dział |X |X | | |
+| dział |X |X | | |
 | description |X |X |X | |
-| Nazwa wyświetlana |X |X |X | |
+| displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
 | extensionAttribute1 |X |X |X | |
@@ -82,14 +84,14 @@ W takim przypadku zaczynać się na liście atrybutów w tym temacie i zidentyfi
 | facsimiletelephonenumber |X |X | | |
 | givenName |X |X | | |
 | HomePhone |X |X | | |
-| Informacje o |X |X |X |Ten atrybut nie jest aktualnie używane dla grup. |
+| informacje |X |X |X |Ten atrybut nie jest aktualnie używane dla grup. |
 | Inicjały |X |X | | |
 | l |X |X | | |
 | legacyExchangeDN |X |X |X | |
 | mailNickname |X |X |X | |
 | managedBy | | |X | |
-| Menedżer |X |X | | |
-| Element członkowski | | |X | |
+| menedżer |X |X | | |
+| składowa | | |X | |
 | Telefon komórkowy |X |X | | |
 | msDS-HABSeniorityIndex |X |X |X | |
 | msDS-PhoneticDisplayName |X |X |X | |
@@ -181,9 +183,9 @@ W takim przypadku zaczynać się na liście atrybutów w tym temacie i zidentyfi
 | co |X |X | | |
 | Firmy |X |X | | |
 | countryCode |X |X | | |
-| Dział |X |X | | |
+| dział |X |X | | |
 | description |X |X |X | |
-| Nazwa wyświetlana |X |X |X | |
+| displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
 | extensionAttribute1 |X |X |X | |
@@ -205,15 +207,15 @@ W takim przypadku zaczynać się na liście atrybutów w tym temacie i zidentyfi
 | givenName |X |X | | |
 | hideDLMembership | | |X | |
 | homephone |X |X | | |
-| Informacje o |X |X |X | |
+| informacje |X |X |X | |
 | Inicjały |X |X | | |
 | ipPhone |X |X | | |
 | l |X |X | | |
-| Poczty |X |X |X | |
+| poczta |X |X |X | |
 | mailnickname |X |X |X | |
 | managedBy | | |X | |
-| Menedżer |X |X | | |
-| Element członkowski | | |X | |
+| menedżer |X |X | | |
+| składowa | | |X | |
 | middleName |X |X | | |
 | Telefon komórkowy |X |X | | |
 | msExchTeamMailboxExpiration |X | | | |
@@ -261,19 +263,19 @@ W takim przypadku zaczynać się na liście atrybutów w tym temacie i zidentyfi
 | cn |X | |X | |
 | co |X |X | | |
 | Firmy |X |X | | |
-| Dział |X |X | | |
+| dział |X |X | | |
 | description |X |X |X | |
-| Nazwa wyświetlana |X |X |X | |
+| displayName |X |X |X | |
 | facsimiletelephonenumber |X |X |X | |
 | givenName |X |X | | |
 | homephone |X |X | | |
 | ipPhone |X |X | | |
 | l |X |X | | |
-| Poczty |X |X |X | |
+| poczta |X |X |X | |
 | mailNickname |X |X |X | |
 | managedBy | | |X | |
-| Menedżer |X |X | | |
-| Element członkowski | | |X | |
+| menedżer |X |X | | |
+| składowa | | |X | |
 | Telefon komórkowy |X |X | | |
 | msExchHideFromAddressLists |X |X |X | |
 | msRTCSIP-ApplicationOptions |X | | | |
@@ -307,9 +309,9 @@ W takim przypadku zaczynać się na liście atrybutów w tym temacie i zidentyfi
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Określa, czy konto jest włączone. |
 | cn |X | |X |Typowe nazwy ani aliasu. W większości przypadków prefiks wartość [poczty]. |
-| Nazwa wyświetlana |X |X |X |Ciąg, który reprezentuje nazwę często są wyświetlane jako przyjaznej nazwy (imię nazwisko). |
-| Poczty |X |X |X |pełny adres e-mail. |
-| Element członkowski | | |X | |
+| displayName |X |X |X |Ciąg, który reprezentuje nazwę często są wyświetlane jako przyjaznej nazwy (imię nazwisko). |
+| poczta |X |X |X |pełny adres e-mail. |
+| składowa | | |X | |
 | objectSID |X | |X |tych właściwości. Identyfikator użytkownika AD służy do utrzymywania synchronizacji między Azure AD i usługi AD. |
 | proxyAddresses |X |X |X |tych właściwości. Używane przez usługę Azure AD. Zawiera wszystkie adresy pomocniczego poczty e-mail dla użytkownika. |
 | pwdLastSet |X | | |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. |
@@ -325,10 +327,10 @@ W takim przypadku zaczynać się na liście atrybutów w tym temacie i zidentyfi
 | c |X |X | | |
 | cn |X | |X | |
 | description |X |X |X | |
-| Nazwa wyświetlana |X |X |X | |
-| Poczty |X |X |X | |
+| displayName |X |X |X | |
+| poczta |X |X |X | |
 | mailnickname |X |X |X | |
-| Element członkowski | | |X | |
+| składowa | | |X | |
 | objectSID |X | |X |tych właściwości. Identyfikator użytkownika AD służy do utrzymywania synchronizacji między Azure AD i usługi AD. |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używane przez funkcje synchronizacji skrótów haseł, uwierzytelnianie i federacji. |
@@ -347,13 +349,13 @@ W takim przypadku zaczynać się na liście atrybutów w tym temacie i zidentyfi
 | Firmy |X |X | | |
 | countryCode |X |X | | |
 | description |X |X |X | |
-| Nazwa wyświetlana |X |X |X | |
+| displayName |X |X |X | |
 | facsimiletelephonenumber |X |X | | |
 | givenName |X |X | | |
 | l |X |X | | |
 | managedBy | | |X | |
-| Menedżer |X |X | | |
-| Element członkowski | | |X | |
+| menedżer |X |X | | |
+| składowa | | |X | |
 | Telefon komórkowy |X |X | | |
 | objectSID |X | |X |tych właściwości. Identyfikator użytkownika AD służy do utrzymywania synchronizacji między Azure AD i usługi AD. |
 | physicalDeliveryOfficeName |X |X | | |
@@ -382,12 +384,12 @@ Ta grupa jest zestaw atrybutów, które mogą być używane, jeśli katalog usł
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Określa, czy konto jest włączone. |
 | cn |X | |X | |
-| Nazwa wyświetlana |X |X |X | |
+| displayName |X |X |X | |
 | givenName |X |X | | |
-| Poczty |X | |X | |
+| poczta |X | |X | |
 | managedBy | | |X | |
 | mailNickName |X |X |X | |
-| Element członkowski | | |X | |
+| składowa | | |X | |
 | objectSID |X | | |tych właściwości. Identyfikator użytkownika AD służy do utrzymywania synchronizacji między Azure AD i usługi AD. |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używane przez funkcje synchronizacji skrótów haseł, uwierzytelnianie i federacji. |
@@ -403,7 +405,7 @@ Windows 10 przyłączonych do domeny computer(device) synchronizuje niektóre at
 | --- |:---:| --- |
 | accountEnabled |X | |
 | deviceTrustType |X |Wartość zapisane na stałe dla komputerów przyłączonych do domeny. |
-| Nazwa wyświetlana |X | |
+| displayName |X | |
 | ms-DS-CreatorSID |X |Skrót registeredOwnerReference. |
 | Atrybut objectGUID |X |Skrót deviceID. |
 | objectSID |X |Skrót onPremisesSecurityIdentifier. |
@@ -438,8 +440,8 @@ Te atrybuty są synchronizowane z lokalnej usługi Active Directory do usługi A
 
 | Nazwa atrybutu | PublicFolder | Komentarz |
 | --- | :---:| --- |
-| Nazwa wyświetlana | X |  |
-| Poczty | X |  |
+| displayName | X |  |
+| poczta | X |  |
 | msExchRecipientTypeDetails | X |  |
 | Atrybut objectGUID | X |  |
 | proxyAddresses | X |  |
@@ -451,7 +453,7 @@ Obiekty urządzeń są tworzone w usłudze Active Directory. Te obiekty mogą by
 | Nazwa atrybutu | Urządzenie | Komentarz |
 | --- |:---:| --- |
 | altSecurityIdentities |X | |
-| Nazwa wyświetlana |X | |
+| displayName |X | |
 | dn |X | |
 | msDS-CloudAnchor |X | |
 | msDS-DeviceID |X | |
