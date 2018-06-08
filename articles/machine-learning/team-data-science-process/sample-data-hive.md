@@ -8,17 +8,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: f31e8d01-0fd4-4a10-b1a7-35de3c327521
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: b40aae9d494f3e7ebeae56fcad48f0ff47798bbc
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 558f7d684453c8b5040f586820bd2a8a9ac0f9c8
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34838436"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Przykładowe dane w tabelach usługi Azure HDInsight Hive
 W tym artykule opisano sposób dół przykładowe dane przechowywane w tabelach platformy Azure HDInsight Hive za pomocą zapytań programu Hive, aby zmniejszyć jego rozmiar łatwiejsze do analizy. Obejmuje ono trzy metody popularly używane próbkowania:

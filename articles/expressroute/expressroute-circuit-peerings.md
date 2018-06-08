@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: ganesr,cherylmc
-ms.openlocfilehash: 0e060e67d615f0d6aa8ca6cbe305670956ac3faf
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: be04a1cd723cf27e764daa468607d6495baf0291
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849934"
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>Obwody usługi ExpressRoute i domeny routingu
  Należy zamówić *obwodu ExpressRoute* do podłączenia infrastruktury lokalnej do firmy Microsoft za pośrednictwem dostawcy łączności. Na poniższej ilustracji przedstawiono logiczną reprezentację połączenia między sieci WAN i firmy Microsoft.
@@ -86,6 +87,11 @@ W poniższej tabeli porównano trzy domeny routingu:
 Można włączyć jedną lub więcej domen routingu w ramach obwodu usługi ExpressRoute. Można mieć wszystkich domen routingu umieszczanie na tej samej sieci VPN, jeśli chcesz połączyć je w jednej domeny routingu. Można również wprowadzić je w różnych domenach routingu, podobne do diagramu. Zalecana konfiguracja jest prywatnej komunikacji równorzędnej jest podłączony bezpośrednio do sieci podstawowej, czy publicznego i łączy komunikacji równorzędnej firmy Microsoft są podłączone do sieci Obwodowej.
 
 Jeśli wybierzesz opcję wszystkie trzy sesje komunikacji równorzędnej, muszą mieć trzy pary sesje BGP (jedna para dla każdego typu komunikacji równorzędnej). Pary sesji BGP podaj łącze wysokiej dostępności. Jeśli łączysz się za pośrednictwem warstwy 2 łączności dostawców, jest odpowiedzialny za konfigurowanie i zarządzanie nimi routingu. Dowiedz się więcej, przeglądając [przepływy pracy](expressroute-workflows.md) dotyczące konfigurowania usługi ExpressRoute.
+
+## <a name="expressroute-health"></a>Kondycja usługi ExpressRoute
+Obwody usługi ExpressRoute może być monitorowany, dostępność, łączność sieci wirtualnych i użyciu wykorzystania przepustowości [monitora wydajności sieci](https://docs.microsoft.com/en-us/azure/networking/network-monitoring-overview) (NPM).
+
+NPM monitoruje kondycję Azure prywatnej komunikacji równorzędnej i komunikacji równorzędnej firmy Microsoft.  Zapoznaj się z naszym [post](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/) Aby uzyskać więcej informacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Znajdź dostawcę usługi. Zobacz [usługi ExpressRoute dostawców i lokalizacje](expressroute-locations.md).

@@ -1,6 +1,6 @@
 ---
 title: Wdróż ponownie zestaw deweloperski Azure stosu (ASDK) | Dokumentacja firmy Microsoft
-description: W tym samouczku Dowiedz się jak zainstalować ASDK.
+description: W tym artykule Dowiedz się jak zainstalować ASDK.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -11,28 +11,23 @@ ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
-ms.custom: mvc
-ms.date: 03/16/2018
+ms.topic: article
+ms.custom: ''
+ms.date: 06/07/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: fcf1abfe574dd3067f00df7c5ff2632b9cc2ec4f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 91b8a936215e906e6e5b7e6a4fcd0dc88bef6009
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850324"
 ---
-# <a name="tutorial-redeploy-the-asdk"></a>Samouczek: należy ponownie wdrożyć ASDK
-W tym samouczku możesz dowiedzieć się, jak można wdrożyć ponownie Azure stosu Development Kit (ASDK) w środowisku produkcyjnym z systemem innym niż. Ponieważ uaktualnienie ASDK nie jest obsługiwane, należy całkowicie wdrożenie przejście do nowszej wersji. Można także wdrożyć ponownie ASDK w dowolnym momencie, która po prostu chcesz rozpocząć od początku od początku.
+# <a name="redeploy-the-asdk"></a>Wdróż ponownie ASDK
+W tym artykule możesz dowiedzieć się, jak można wdrożyć ponownie Azure stosu Development Kit (ASDK) w środowisku produkcyjnym z systemem innym niż. Ponieważ uaktualnienie ASDK nie jest obsługiwane, należy całkowicie wdrożenie przejście do nowszej wersji. Można także wdrożyć ponownie ASDK w dowolnym momencie, która po prostu chcesz rozpocząć od początku od początku.
 
 > [!IMPORTANT]
 > Uaktualnienie ASDK do nowej wersji nie jest obsługiwane. Należy ponownie wdrożyć ASDK na komputerze hosta development kit zawsze chcesz ocenić nowszej wersji programu Azure stosu.
-
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
-
-> [!div class="checklist"]
-> * Usuń rejestracja w usłudze Azure 
-> * Wdróż ponownie ASDK
 
 ## <a name="remove-azure-registration"></a>Usuń rejestracja w usłudze Azure 
 Jeśli instalacja ASDK zostały wcześniej zarejestrowane przy użyciu platformy Azure, należy usunąć zasobu rejestracji przed ponownego wdrażania ASDK. Zarejestruj ponownie ASDK umożliwiające zespolonego marketplace podczas ponownego wdrażania ASDK. Jeśli nie zostały wcześniej zarejestrowane ASDK z subskrypcją platformy Azure, możesz pominąć tę sekcję.
@@ -55,7 +50,7 @@ Aby usunąć zasób rejestracji, użyj **AzsRegistration Usuń** polecenia cmdle
 
   # Unregister Azure Stack
   Remove-AzsRegistration `
-      -CloudAdminCredential $YourCloudAdminCredential `
+      -PrivilegedEndpointCredential $CloudAdminCred `
       -PrivilegedEndpoint AzS-ERCS01
 
   # Remove the Azure Stack resource group
@@ -71,7 +66,7 @@ Aby usunąć zasób rejestracji, użyj **AzsRegistration Usuń** polecenia cmdle
 
 Azure stosu teraz pomyślnie należy wyrejestrować z subskrypcją platformy Azure. Ponadto azurestack grupy zasobów, tworzone podczas rejestrowania ASDK z platformy Azure, należy również zostaną usunięte.
 
-## <a name="redeploy-the-asdk"></a>Wdróż ponownie ASDK
+## <a name="deploy-the-asdk"></a>Wdrażanie ASDK
 Aby ponownie wdrożyć stosu Azure, należy uruchomić za pośrednictwem od początku zgodnie z poniższym opisem. Te kroki są różne w zależności od tego, czy skrypt Instalatora (asdk installer.ps1) stosu Azure zostały użyte do zainstalowania ASDK.
 
 ### <a name="redeploy-the-asdk-using-the-installer-script"></a>Należy ponownie wdrożyć ASDK przy użyciu skryptu Instalatora
@@ -85,7 +80,7 @@ Aby ponownie wdrożyć stosu Azure, należy uruchomić za pośrednictwem od pocz
 
 3. Po zestawie hosta ponowny rozruch w podstawowego systemu operacyjnego zaloguj jako administrator lokalny. Zlokalizuj i Usuń **C:\CloudBuilder.vhdx** pliku, który został użyty w ramach poprzedniego wdrożenia. 
 
-4. Powtórz te same kroki, które do pierwszego [wdrażanie ASDK](asdk-deploy.md).
+4. Powtórz te same kroki, które do pierwszego [wdrażanie ASDK](asdk-install.md).
 
 ### <a name="redeploy-the-asdk-without-using-the-installer"></a>Wdróż ponownie ASDK bez za pomocą Instalatora
 Jeśli nie używasz skryptu asdk installer.ps1 do zainstalowania ASDK, należy ręcznie ponownie skonfigurować development kit hosta przed ponownego wdrażania ASDK.
@@ -100,16 +95,7 @@ Jeśli nie używasz skryptu asdk installer.ps1 do zainstalowania ASDK, należy r
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
-
-> [!div class="checklist"]
-> * Usuń rejestracja w usłudze Azure 
-> * Wdróż ponownie ASDK
-
-Przejdź do następnego samouczkiem, aby dowiedzieć się, jak dodać element stosu Azure marketplace.
-
-> [!div class="nextstepaction"]
-> [Dodawanie elementu stosu Azure marketplace](asdk-marketplace-item.md)
+[Po zakończeniu instalacji ASDK zadania konfiguracji](asdk-post-deploy.md)
 
 
 

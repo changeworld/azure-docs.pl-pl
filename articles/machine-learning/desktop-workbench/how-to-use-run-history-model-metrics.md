@@ -7,14 +7,16 @@ ms.author: roastala
 manager: haining
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: dddf6af506269c7f22cea69e39b55effa2f14d63
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: df29117235e890a9b20619744df6320f298a73b2
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831873"
 ---
 # <a name="how-to-use-run-history-and-model-metrics-in-azure-machine-learning-workbench"></a>Sposób użycia Historia uruchomień i metryki modelu w konsoli usługi Azure Machine Learning Workbench
 
@@ -113,7 +115,7 @@ Postęp i wyniki przebiegów śledzonych są dostępne do analizy w usłudze Azu
 **Historia uruchomień** udostępnia trzy różne widoki:
 - Pulpit nawigacyjny
 - Szczegóły
-- Porównanie
+- porównanie
 
 **Pulpitu nawigacyjnego** widok przedstawia dane przez wszystkie elementy z danego skryptu renderowane w formularzach zarówno graficznego i tabelarycznych.
 **Szczegóły** widoku są wyświetlane wszystkie dane zostały wygenerowane z określonego działania danego skryptu, między innymi zarejestrowane metryki i pliki wyjściowe (takie jak renderowane geograficzne.) **Porównanie** widok wyników przebiegów dwóch lub trzech być wyświetlane side-by-side, w także w tym rejestrowane metryki plików wyjściowych.

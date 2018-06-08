@@ -5,23 +5,24 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 06/06/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 2f5d664b660d43e61dba46d13aff1ced796de884
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0174e2a3c0b14c52b5750e343932a5df39d18976
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833386"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Dołączyć rozwiązań do zarządzania aktualizacjami, śledzenia zmian i magazynu
 
-Automatyzacja Azure zapewnia rozwiązania do zarządzania aktualizacjami zabezpieczeń systemu operacyjnego, śledzenie zmian i magazynowych zainstalowanych w komputerach. Istnieje wiele sposobów, aby dołączyć maszyny, możesz dołączyć rozwiązania [z maszyny wirtualnej](automation-onboard-solutions-from-vm.md), z Twojego konta automatyzacji lub przez [runbook](automation-onboard-solutions.md). W tym artykule omówiono dołączania tych rozwiązań z Twojego konta automatyzacji.
+Automatyzacja Azure zapewnia rozwiązania do zarządzania aktualizacjami zabezpieczeń systemu operacyjnego, śledzenie zmian i magazynowych zainstalowanych w komputerach. Istnieje wiele sposobów, aby dołączyć maszyny, możesz dołączyć rozwiązania [z maszyny wirtualnej](automation-onboard-solutions-from-vm.md), [z wieloma maszynami przeglądania](automation-onboard-solutions-from-browse.md), z Twojego konta automatyzacji lub przez [runbook](automation-onboard-solutions.md). W tym artykule omówiono dołączania tych rozwiązań z Twojego konta automatyzacji.
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
-Logowanie do platformy Azure w https://portal.azure.com
+Zaloguj się do platformy Azure na stronie https://portal.azure.com
 
 ## <a name="enable-solutions"></a>Włączanie rozwiązań
 
@@ -68,29 +69,27 @@ Wybierz albo zapisane wyszukiwanie, aby wyświetlić zapytania używany do wype�
 
 ![Zapisane wyszukiwania](media/automation-onboard-solutions-from-automation-account/savedsearch.png)
 
-## <a name="onboard-an-azure-machine"></a>Dołączyć maszynę platformy Azure
+## <a name="onboard-azure-vms"></a>Dodaj maszyny wirtualne platformy Azure
 
 Twoje automatyzacji konta wybierz **spisu** lub **śledzenie zmian** w obszarze **zarządzania konfiguracją**, lub **zarządzanie aktualizacjami** w obszarze **zarządzania AKTUALIZACJAMI**.
 
-Kliknij przycisk **+ Dodaj maszyny Wirtualnej Azure**, wybierz maszynę Wirtualną z listy. Na **zarządzania aktualizacjami** kliknij przycisk **włączyć**. Spowoduje to dodanie bieżącej maszyny Wirtualnej do grupy komputerów zapisanego wyszukiwania dla rozwiązania.
+Kliknij przycisk **+ Dodaj maszyny wirtualne Azure**, wybierz z listy przynajmniej jednej maszyny wirtualnej. Maszyny wirtualne, które nie mogą być włączone są wyszarzone, out i nie można wybrać. Na **włączyć zarządzanie aktualizacjami** kliknij przycisk **włączyć**. Spowoduje to dodanie wybranych maszyn wirtualnych do grupy komputerów zapisanego wyszukiwania dla rozwiązania.
+
+![Włącz maszyny wirtualne platformy Azure](media/automation-onboard-solutions-from-automation-account/enable-azure-vms.png)
 
 ## <a name="onboard-a-non-azure-machine"></a>Dołączanie maszyny spoza platformy Azure
 
-Twoje automatyzacji konta wybierz **spisu** lub **śledzenie zmian** w obszarze **zarządzania konfiguracją**, lub **zarządzanie aktualizacjami** w obszarze **zarządzania AKTUALIZACJAMI**.
+Maszyny nie na platformie Azure należy dodać ręcznie. Twoje automatyzacji konta wybierz **spisu** lub **śledzenie zmian** w obszarze **zarządzania konfiguracją**, lub **zarządzanie aktualizacjami** w obszarze **zarządzania AKTUALIZACJAMI**.
 
-Kliknij przycisk **maszynę z systemem innym niż Azure Dodaj**. Spowoduje to otwarcie się nowe okno przeglądarki z instrukcjami dotyczącymi sposobu instalowania i konfigurowania programu Microsoft Monitoring Agent na komputerze, komputer można rozpocząć raportowania do rozwiązania. W przypadku przechodzenia do komputera, który obecnie zarządzany przez program System Center Operations Manager nie jest wymagany nowy agent, informacje o obszarze roboczym jest wprowadzany do istniejącego agenta.
+Kliknij przycisk **maszynę z systemem innym niż Azure Dodaj**. To otwiera nowe okno przeglądarki z [instrukcje dotyczące instalowania i konfigurowania programu Microsoft Monitoring Agent na komputerze](../log-analytics/log-analytics-concept-hybrid.md) , komputer można rozpocząć raportowania do rozwiązania. W przypadku przechodzenia do komputera, który obecnie zarządzany przez program System Center Operations Manager nie jest wymagany nowy agent, informacje o obszarze roboczym jest wprowadzany do istniejącego agenta.
 
 ## <a name="onboard-machines-in-the-workspace"></a>Dołączenia maszyny w obszarze roboczym
 
-Twoje automatyzacji konta wybierz **spisu** lub **śledzenie zmian** w obszarze **zarządzania konfiguracją**, lub **zarządzanie aktualizacjami** w obszarze **zarządzania AKTUALIZACJAMI**.
+Ręcznie zainstalować lub maszynom już raportowania do potrzeb obszaru roboczego ma zostać dodany do włączenia usługi Automatyzacja Azure dla rozwiązania. Twoje automatyzacji konta wybierz **spisu** lub **śledzenie zmian** w obszarze **zarządzania konfiguracją**, lub **zarządzanie aktualizacjami** w obszarze **zarządzania AKTUALIZACJAMI**.
 
 Wybierz **Zarządzanie maszynami**. Spowoduje to otwarcie **Zarządzanie maszyny** strony. Ta strona umożliwia rozwiązanie na wybierz zestaw komputerów, wszystkie dostępne maszyny, Włącz lub Włącz rozwiązania na wszystkich komputerach bieżąca i włączenie go dla wszystkich przyszłych maszyn.
 
 ![Zapisane wyszukiwania](media/automation-onboard-solutions-from-automation-account/managemachines.png)
-
-### <a name="selected-machines"></a>Wybrane maszyny
-
-Aby włączyć rozwiązania dla co najmniej jednej maszyny, zaznacz **włączyć na wybranych komputerach** i kliknij przycisk **dodać** obok każdego komputera ma zostać dodany do rozwiązania. To zadanie dodaje nazwy wybranych komputerów do grupy komputerów zapisane kwerendy wyszukiwania dla rozwiązania.
 
 ### <a name="all-available-machines"></a>Wszystkie dostępne maszyny
 
@@ -99,6 +98,10 @@ Aby włączyć rozwiązania dla wszystkich maszyn dostępna, zaznacz **Włącz n
 ### <a name="all-available-and-future-machines"></a>Wszystkie dostępne i przyszłych maszyny
 
 Aby włączyć rozwiązania dla wszystkich dostępnych maszyn i wszystkie maszyny w przyszłości, zaznacz **Włącz na wszystkich komputerach dostępne i przyszłych**. Ta opcja usuwa zapisanych wyszukiwań i konfiguracji zakresu, w obszarze roboczym. Spowoduje to otwarcie rozwiązania do wszystkich Azure i maszyny z systemem innym niż Azure, które raporty do obszaru roboczego.
+
+### <a name="selected-machines"></a>Wybrane maszyny
+
+Aby włączyć rozwiązania dla co najmniej jednej maszyny, zaznacz **włączyć na wybranych komputerach** i kliknij przycisk **dodać** obok każdego komputera ma zostać dodany do rozwiązania. To zadanie dodaje nazwy wybranych komputerów do grupy komputerów zapisane kwerendy wyszukiwania dla rozwiązania.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

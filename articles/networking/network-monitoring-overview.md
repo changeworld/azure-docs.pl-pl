@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: 306d0e57449de41080d5473034e585f772771d51
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: aea43eed0cb66b0e0d3bb7a393f569714feb475d
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850141"
 ---
 # <a name="network-monitoring-solutions"></a>Monitorowanie rozwiązań sieci 
 
@@ -40,11 +41,11 @@ Monitor wydajności, ExpressRoute Monitor i Monitor punktu końcowego usługi mo
 
 Monitor wydajności jest częścią programu NPM i jest monitorowanie sieci dla chmury, hybrydowej i lokalnych środowisk. Można monitorować łączność sieciową między gałęzi zdalnej i pola oddziałów, lokalizacji magazynu centrów danych i chmur. Użytkownicy skarżą się, można wykrywać problemy z siecią. Dostępne są następujące kluczowe korzyści:
 
-* Monitorowanie utraty i opóźnienia za pośrednictwem różnych podsieci i Ustaw alerty
+* Monitorowanie strat i opóźnień w różnych podsieciach oraz ustawianie alertów
 * Monitorowanie wszystkich ścieżek (w tym nadmiarowe ścieżki) w sieci
 * Przejściowych i w momencie Rozwiązywanie problemów z sieci, które są trudne do replikacji
 * Określić określonego segmentu w sieci, która jest odpowiedzialna za pogorszenie wydajności
-* Monitorowanie kondycji sieci, bez konieczności SNMP
+* Monitorowanie kondycji sieci bez potrzeby korzystania z protokołu SNMP
 
 ![Mapy topologii NPM](./media/network-monitoring-overview/npm-topology-map.png) 
 
@@ -56,12 +57,13 @@ Aby uzyskać więcej informacji Wyświetl następujące artykuły:
 
 ## <a name="expressroute-monitor"></a>Monitor usługi ExpressRoute
 
-NPM dla ExpressRoute oferuje kompleksowe monitorowanie usługi ExpressRoute dla prywatnej komunikacji równorzędnej połączeń. Można monitorować łączność E2E i wydajności między oddziałach i Azure za pośrednictwem usługi ExpressRoute. Do najważniejszych możliwości należą:
+NPM dla ExpressRoute oferuje kompleksowe ExpressRoute monitorowania Azure prywatnej komunikacji równorzędnej i połączenia komunikacji równorzędnej firmy Microsoft. Można monitorować łączność E2E i wydajności między oddziałach i Azure za pośrednictwem usługi ExpressRoute. Do najważniejszych możliwości należą:
 
 * Automatyczne wykrywanie obwody ER skojarzone z subskrypcją
 * Wykrywanie topologii sieci z lokalnej do aplikacji w chmurze
-* Planowanie pojemności, analiza wykorzystania użycie przepustowości dla sieci wirtualnej
+* Planowanie pojemności, analiza wykorzystania przepustowości
 * Monitorowanie i alerty na głównych i dodatkowych ścieżek
+* Monitorowanie łączności Azure usług takich jak Office 365, Dynamics 365... za pośrednictwem usługi ExpressRoute
 * Wykryj spadek łączność sieci wirtualnych
 
 ![Obszar mapy przedstawiający ruchu w regionach](./media/network-monitoring-overview/expressroute-topology-map.png) 

@@ -7,19 +7,21 @@ ms.author: jehrling
 manager: jhubbard
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
-ms.openlocfilehash: 791c34785fa817fd68d0bec8111bf23e606c9b64
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f3f24a9b269205dd77ec3301b2650ee7a03f435b
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832700"
 ---
 # <a name="predictive-maintenance-for-real-world-scenarios"></a>Konserwacji predykcyjnej, do rzeczywistych scenariuszy
 
-Wpływ urządzeń nieplanowanych przestojów mogą być szkodliwe dla dowolnego rodzaju działalności. Warto zachować urządzeń pola uruchomiona w celu zmaksymalizowania wykorzystania i wydajności oraz zminimalizować kosztowne, nieplanowanych przestojów. Wczesne identyfikację problemów mogą pomóc przydzielić zasoby obsługi ograniczony w sposób ekonomiczny i zwiększyć jakość i procesy łańcucha dostaw. 
+Niezaplanowane przestoje sprzętu mogą mieć niekorzystny wpływ na każdą firmę. Warto zachować urządzeń pola uruchomiona w celu zmaksymalizowania wykorzystania i wydajności oraz zminimalizować kosztowne, nieplanowanych przestojów. Wczesne identyfikację problemów mogą pomóc przydzielić zasoby obsługi ograniczony w sposób ekonomiczny i zwiększyć jakość i procesy łańcucha dostaw. 
 
 W tym scenariuszu Eksploruje stosunkowo [na dużą skalę symulowane zestawu danych](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data) przechodzenia przez projekt nauki konserwacji predykcyjnej danych z wprowadzanie danych, funkcji zespołu inżynieryjnego, konstruowania modelu i operationalization modelu i wdrożenia. Kod dla całego procesu są zapisywane w notesu Jupyter przy użyciu PySpark w Azure Machine Learning Workbench. Ostatecznego modelu jest wdrażane za pomocą Azure Machine Learning Model zarządzania w celu prognozowania awarii sprzętu w czasie rzeczywistym.   
 

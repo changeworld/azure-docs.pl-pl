@@ -10,16 +10,18 @@ manager: hjerez
 editor: cjgronlund
 ms.assetid: a01f93ee-01eb-4afe-abbd-cfa035c119b0
 ms.service: machine-learning
+ms.component: studio
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 494c8293a1dbfccbfe2df1e2f48f770edb6452dc
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1d004eb16fcac13d6ba7592cbe432cbeac0401e8
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834155"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Wideo 1: analiza danych dla początkujących — 5 pytań, na które analiza danych daje odpowiedzi
 Pobierz szybkie wprowadzenie do analizy danych z *nauki danych dla początkujących* w pięciu krótkie filmy wideo z naukowca danych najwyższego. Tych klipów wideo są podstawowy, ale przydatne, czy interesują Cię wykonywania analizy danych lub pracować z analityków danych.

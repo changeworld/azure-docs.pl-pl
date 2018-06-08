@@ -8,21 +8,25 @@ editor: TomShinder
 ms.assetid: ''
 ms.service: security
 ms.topic: article
-ms.date: 02/16/2018
+ms.date: 06/06/2018
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 42c30a825e44c289c42d0fb0a40a442c4ac950d7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 9065d237057bf47d469b6f6fbf5b588c7e348232
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839361"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Samouczek usługi Azure integracji dziennika: zdarzeń procesu usługi Azure Key Vault za pomocą usługi Event Hubs
 
-Integracja dziennika Azure służy do pobierania zarejestrowane zdarzenia i udostępnić je do systemu zarządzania (SIEM) informacje i zdarzeń zabezpieczeń. W tym samouczku przedstawiono sposób integracji dziennika Azure może służyć do przetworzenia dzienniki, które zostały zakupione w ramach usługi Azure Event Hubs.
 
 >[!IMPORTANT]
->Preferowaną metodą integrowanie dzienników Azure jest za pomocą łącznika Azure Monitor dostawcą SIEM i wykonując te [instrukcje](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). Jednak jeśli dostawcą SIEM nie łącznika do monitorowania Azure, można korzystać z usługi Azure dziennika integracji jako rozwiązanie tymczasowe (Jeśli system SIEM jest obsługiwana przez integrację dziennika Azure) do czasu udostępnienia łącznika programu.
+> Funkcja integracji Azure dziennika zostaną wycofane przez 2019-06/01.  Pliki do pobrania AzLog zostanie wyłączone przez 27 cze 2018. Aby uzyskać wskazówki dotyczące co należy zrobić przenoszenie do przodu przeglądu post [monitor Azure używana do integracji z narzędzia SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/preview/?cdn=disable) 
+
+Integracja dziennika Azure służy do pobierania zarejestrowane zdarzenia i udostępnić je do systemu zarządzania (SIEM) informacje i zdarzeń zabezpieczeń. W tym samouczku przedstawiono sposób integracji dziennika Azure może służyć do przetworzenia dzienniki, które zostały zakupione w ramach usługi Azure Event Hubs.
+
+Preferowaną metodą integrowanie dzienników Azure jest za pomocą łącznika Azure Monitor dostawcą SIEM i wykonując te [instrukcje](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). Jednak jeśli dostawcą SIEM nie łącznika do monitorowania Azure, można korzystać z usługi Azure dziennika integracji jako rozwiązanie tymczasowe (Jeśli system SIEM jest obsługiwana przez integrację dziennika Azure) do czasu udostępnienia łącznika programu.
 
  
 Użyj tego samouczka, aby poznać sposób integracji dziennika Azure i usługi Event Hubs współpracują ze sobą następujące przykładowe kroki i zrozumienie, jak każdy krok obsługuje rozwiązania. Następnie może potrwać co kiedy znasz już w tym miejscu można utworzyć własne kroki, aby obsługiwać unikatowe wymagania firmy.

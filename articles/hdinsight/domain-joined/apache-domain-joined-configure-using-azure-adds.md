@@ -9,21 +9,18 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: omidm
-ms.openlocfilehash: 7bde1c834038bdc2a010987b4e32fa49222101ee
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 8064940e0d0f035010a2521752d6f32f3f9ccd9f
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715279"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849836"
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-using-azure-active-directory-domain-services"></a>Konfigurowanie klastrów HDInsight przyłączonych do domeny za pomocą usług domenowych Azure Active Directory
 
 Klastry przyłączonych do domeny zapewniają dostęp wielu użytkowników w klastrach usługi HDInsight. Klastry HDInsight przyłączonych do domeny są połączone z domeną, aby użytkownicy domeny mogli używać swoich poświadczeń domeny do uwierzytelniania z klastrów i uruchamianie zadań danych big data. 
 
 W tym artykule Dowiedz się jak skonfigurować klaster HDInsight przyłączonych do domeny za pomocą usług domenowych Azure Active Directory.
-
-> [!NOTE]
-> Tworzenie klastrów HDInsight przyłączonych do domeny wymaga usług domenowych Azure Active Directory. Tworzenie domeny HDInsight, klaster przy użyciu usługi Active Directory hostowanych na maszynach wirtualnych Azure IaaS nie jest już obsługiwana.
 
 ## <a name="create-azure-adds"></a>Utwórz DODAJE Azure
 

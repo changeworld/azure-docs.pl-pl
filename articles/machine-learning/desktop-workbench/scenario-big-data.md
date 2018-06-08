@@ -9,17 +9,19 @@ editor: daden
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: 424af2ffd1b7931701036aeb819cbb8879cb7a41
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 450c033fbce3544cdc17ddc6d47ff726b01a4d3e
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832666"
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>Prognozowanie obciążenia serwera pod kątem terabajtów danych
 
@@ -104,17 +106,17 @@ Numer kolumny | Nazwa pola| Typ | Opis |
 1  | `SessionStart` | Data/godzina |    Czas rozpoczęcia sesji
 2  |`SessionEnd`    | Data/godzina | Godzina zakończenia sesji
 3 |`ConcurrentConnectionCounts` | Liczba całkowita | Liczba jednoczesnych połączeń
-4 | `MbytesTransferred` | Podwójnej precyzji | Znormalizowany danych przesyłanych w megabajtach
+4 | `MbytesTransferred` | O podwójnej precyzji | Znormalizowany danych przesyłanych w megabajtach
 5 | `ServiceGrade` | Liczba całkowita |  Klasa usługi dla sesji
 6 | `HTTP1` | Liczba całkowita|  Sesja używa HTTP1 lub HTTP2
 7 |`ServerType` | Liczba całkowita   |Typ serwera
-8 |`SubService_1_Load` | Podwójnej precyzji |   Obciążenia subservice 1
-9 | `SubService_2_Load` | Podwójnej precyzji |  Subservice 2 obciążenia
-10 | `SubService_3_Load` | Podwójnej precyzji |     Obciążenia subservice 3
-11 |`SubService_4_Load` | Podwójnej precyzji |  Subservice 4 obciążenia
-12 | `SubService_5_Load`| Podwójnej precyzji |      Obciążenia subservice 5
-13 |`SecureBytes_Load`  | Podwójnej precyzji | Bezpieczne bajtów obciążenia
-14 |`TotalLoad` | Podwójnej precyzji | Całkowita liczba obciążenie serwera
+8 |`SubService_1_Load` | O podwójnej precyzji |   Obciążenia subservice 1
+9 | `SubService_2_Load` | O podwójnej precyzji |  Subservice 2 obciążenia
+10 | `SubService_3_Load` | O podwójnej precyzji |     Obciążenia subservice 3
+11 |`SubService_4_Load` | O podwójnej precyzji |  Subservice 4 obciążenia
+12 | `SubService_5_Load`| O podwójnej precyzji |      Obciążenia subservice 5
+13 |`SecureBytes_Load`  | O podwójnej precyzji | Bezpieczne bajtów obciążenia
+14 |`TotalLoad` | O podwójnej precyzji | Całkowita liczba obciążenie serwera
 15 |`ClientIP` | Ciąg|    Adres IP klienta
 16 |`ServerIP` | Ciąg|    Adres IP serwera
 
@@ -164,7 +166,7 @@ Jeden kontener należy używać do eksperymentów na jeden miesiąc w zestawie d
 | stringIndexModel | Parquet | Model indeksatora ciąg nieliczbowy funkcji.|
 | oneHotEncoderModel|Parquet | Model hot jeden koder podzielone na kategorie funkcji. |
 | mlModel | Parquet | Modelu uczenia maszynowego przeszkolone. |
-| Informacje o| Plik pickle Python | Informacje o przekształcone dane, w tym start szkolenia, szkolenia zakończenia, czas trwania, sygnaturę czasową dla train-test dzielenia i kolumny na potrzeby indeksowania hot jeden kodowania i.
+| informacje| Plik pickle Python | Informacje o przekształcone dane, w tym start szkolenia, szkolenia zakończenia, czas trwania, sygnaturę czasową dla train-test dzielenia i kolumny na potrzeby indeksowania hot jeden kodowania i.
 
 Operationalization używane pliki i obiekty BLOB w powyższej tabeli.
 
@@ -190,7 +192,7 @@ Pierwszy argument `configFilename`, jest plikiem konfiguracji lokalnej, której 
 | storageContainer | Ciąg | Kontener na koncie magazynu Azure do przechowywania wyników pośrednich |
 | atrybutu storageKey | Ciąg |Klucz dostępu do konta magazynu Azure |
 | Pliku danych|Ciąg | Pliki źródła danych  |
-| Czas trwania| Ciąg | Czas trwania danych w plikach źródłowych danych|
+| czas trwania| Ciąg | Czas trwania danych w plikach źródłowych danych|
 
 Zmodyfikuj oba `Config/storageconfig.json` i `Config/fulldata_storageconfig.json` do konfigurowania konta magazynu, klucz magazynu i kontener obiektów blob do przechowywania wyników pośrednich. Domyślnie jest kontenera obiektów blob danych jednego miesiąca Uruchom `onemonthmodel`, i jest kontenera obiektów blob dla pełnego zestawu danych, uruchom `fullmodel`. Upewnij się, że tworzenie tych dwóch kontenerów na koncie magazynu. `dataFile` w [ `Config/fulldata_storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldatastorageconfig.json) konfiguruje, jakie dane są ładowane w [ `Code/etl.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py). `duration` Pola konfiguruje zakres obejmuje dane. Jeśli czas trwania ONE_MONTH danych załadowanych powinna być tylko jeden plik CSV między siedem plików danych dla czerwca 2016. Jeśli czas trwania jest pełna, pełny zestaw danych (1 TB) została załadowana. Nie trzeba zmieniać `dataFile` i `duration` w tych plikach konfiguracji dwóch.
 

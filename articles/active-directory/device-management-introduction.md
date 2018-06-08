@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 6384f63139eb64522409c5922e187afd878ebb09
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 8bcc89f9ec7c73fd1f690e00e831fbd5b960eef9
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714140"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850012"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory
 
@@ -70,12 +70,16 @@ Celem urządzeń usługi Azure AD przyłączony jest uproszczenie:
 
 - Wdrażanie systemu Windows urządzenia należące do pracy 
 - Dostęp do zasobów i aplikacji organizacji z dowolnego urządzenia z systemem Windows
+- Oparte na chmurze zarządzanie urządzeniami należącymi do pracy
 
 ![Urządzenia zarejestrowane usługi Azure AD](./media/device-management-introduction/02.png)
 
+Azure AD Join można wdrożyć przy użyciu dowolnej z następujących metod: 
+ - [Autopilot systemu Windows](https://docs.microsoft.com/en-us/windows/deployment/windows-autopilot/windows-10-autopilot)
+ - [Zbiorczego wdrożenia](https://docs.microsoft.com/en-us/intune/windows-bulk-enroll)
+ - [Funkcji samoobsługi](device-management-azuread-joined-devices-frx.md) 
 
-Te cele są realizowane przez zapewnienie użytkownikom przy użyciu środowiska samodzielnego uzyskania urządzenia należące do pracy pod kontrolą programu Azure AD.  
-**Azure AD Join** jest przeznaczona dla organizacji, które chcesz najpierw chmury lub tylko w chmurze. Brak ograniczeń rozmiaru lub typ organizacji, które można wdrożyć w usłudze Azure AD Join nie istnieje. Azure AD Join działa prawidłowo nawet w przypadku środowiska hybrydowego, a można włączyć dostęp do lokalnych aplikacji i zasobów.
+**Azure AD Join** jest przeznaczona dla organizacji, które mają być chmury — pierwszy (oznacza to, przede wszystkim używają usługi w chmurze, mając na celu zmniejszenie korzystanie z infrastruktury lokalnej) lub tylko w chmurze (bez infrastruktury lokalnej). Nie ma żadnych ograniczeń na rozmiar lub typ organizacji, które można wdrożyć w usłudze Azure AD Join. Azure AD Join działa dobrze nawet w środowisku hybrydowym, włączanie dostępu do aplikacji w chmurze, jak i dla lokalnego i zasobów.
 
 Wdrażanie usługi Azure AD przyłączone do urządzeń zapewnia następujące korzyści:
 
@@ -89,10 +93,12 @@ Wdrażanie usługi Azure AD przyłączone do urządzeń zapewnia następujące k
 
 - **Ograniczenie dostępu** aby aplikacji tylko w przypadku urządzeń, które spełniają zasady zgodności.
 
-- **Bezproblemowy dostęp do zasobów na lokalnych** gdy urządzenie ma procesów z wiersza do lokalnego kontrolera domeny.
+- **Bezproblemowy dostęp do zasobów na lokalnych** gdy urządzenie ma procesów z wiersza do lokalnego kontrolera domeny. 
 
 
-Podczas usługi Azure AD join jest przeznaczone głównie dla organizacji, które nie mają infrastruktury lokalnej usługi Active Directory systemu Windows Server, można wykonywać następujące czynności na pewno również korzystać w scenariuszach, w których:
+Podczas usługi Azure AD join jest przeznaczone głównie dla organizacji, które nie mają infrastruktury lokalnej usługi Active Directory systemu Windows Server, na pewno umożliwia w scenariuszach, w których:
+
+- Aby przejść do infrastruktury chmurowej przy użyciu usługi Azure AD i usługą MDM, takich jak usługi Intune.
 
 - Przyłączanie do domeny lokalnej nie można użyć na przykład, jeśli potrzebujesz urządzeń przenośnych, takich jak tablety i telefony pod kontrolą.
 
@@ -122,7 +128,7 @@ Jeśli środowisko ma lokalnego wpływ AD a również skorzystać z możliwości
 
 Należy używać urządzeń hybrydowego przyłączonych do usługi Azure AD, jeśli:
 
-- Masz aplikacji Win32 wdrożonych na tych urządzeniach, które używają protokołu NTLM / Kerberos.
+- Masz aplikacji Win32 wdrożonych na tych urządzeniach, które opierają się na uwierzytelnianie komputera usługi Active Directory.
 
 - Wymagane jest zasad grupy do zarządzania urządzeniami.
 

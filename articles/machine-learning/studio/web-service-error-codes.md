@@ -10,16 +10,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 0923074b-3728-439d-a1b8-8a7245e39be4
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: 0ba44b2a93bcd542db1350def2d0554c8c44233c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fbedf355c6b1c45d581408a962b875544838087f
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836093"
 ---
 # <a name="machine-learning-rest-api-error-codes"></a>Kody błędów interfejsu API REST uczenia maszynowego
  
@@ -39,7 +41,7 @@ Ta klasa błędy oznacza, że udostępniane innym argument był nieprawidłowy. 
 | BatchJobInputsNotSpecified | Następujące wymagane w żądaniu nie określono input(s): {0}. Upewnij się, że wszystkie dane wejściowe jest określona, a następnie spróbuj ponownie. |
 | BatchJobInputsTooManySpecified | Żądanie określony wejść więcej niż zdefiniowana w usłudze. Lista input(s) zaakceptowane: {0}. Upewnij się, że wszystkie dane wejściowe został podany poprawnie, a następnie spróbuj ponownie. |
 | BlobNameTooLong | Ścieżki do magazynu obiektów blob platformy Azure podana diagnostycznych danych wyjściowych jest za długa: {0}. Skróć ścieżkę i spróbuj ponownie. |
-| BlobNotFound | Nie można uzyskać dostępu do podanego obiektów blob platformy Azure - {0}.  Komunikat o błędzie platformy Azure: {1}. |
+| BlobNotFound | Nie można uzyskać dostępu do podanego obiektu blob Azure - {0}.  Komunikat o błędzie platformy Azure: {1}. |
 | ContainerIsEmpty | Podano bez nazwy kontenera magazynu systemu Azure. Podaj nazwę kontenera prawidłowe i spróbuj ponownie. |
 | ContainerSegmentInvalid | Nazwa nieprawidłowym kontenerem. Podaj nazwę kontenera prawidłowe i spróbuj ponownie. |
 | ContainerValidationFailed | Obiekt blob kontenera nie można sprawdzić poprawności z powodu następującego błędu: {0}. |
@@ -50,15 +52,15 @@ Ta klasa błędy oznacza, że udostępniane innym argument był nieprawidłowy. 
 | InputBlobRelativeLocationInvalid | Nie podano nazwy obiektu blob magazynu Azure. Podaj nazwę nieprawidłowy obiekt blob, a następnie spróbuj ponownie. |
 | InvalidBlob | Nieprawidłowy obiekt blob specyfikacji dla obiekt blob: {0}. Sprawdź tego ciągu połączenia / ścieżkę względną lub specyfikacji tokenu sygnatury dostępu Współdzielonego jest poprawna i spróbuj ponownie. |
 | InvalidBlobConnectionString | Ciąg połączenia dla jednego z obiektów blob wejścia/wyjścia nieprawidłowe: {0}. Rozwiązać ten problem i spróbuj ponownie. |
-| InvalidBlobExtension | Odwołanie do obiektu blob: {0} ma nieprawidłowe lub brakujące rozszerzenie. Obsługiwane rozszerzenia plików dla tego typu danych wyjściowych to: "{1}". |
+| InvalidBlobExtension | Odwołanie do obiektu blob: {0} nieprawidłowego lub brakującego pliku ma rozszerzenie. Obsługiwane rozszerzenia plików dla tego typu danych wyjściowych to: "{1}". |
 | InvalidInputNames | Usługi danych wejściowych nazwy podanej w żądaniu: {0}. Mapowanie danych wejściowych do usługi poprawne dane wejściowe i spróbuj ponownie. |
-| InvalidOutputOverrideName | Nieprawidłowe dane wyjściowe zastąpić nazwę: {0}. Usługa nie ma danych wyjściowych węzła o tej nazwie. Przekaż nazwę węzła poprawne dane wyjściowe do zastąpienia (dotyczy rozróżniania wielkości liter). |
+| InvalidOutputOverrideName | Nieprawidłowe dane wyjściowe przesłaniania nazwy: {0}. Usługa nie ma danych wyjściowych węzła o tej nazwie. Przekaż nazwę węzła poprawne dane wyjściowe do zastąpienia (dotyczy rozróżniania wielkości liter). |
 | InvalidQueryParameter | Nieprawidłowy parametr zapytania "{0}". {1} |
 | MissingInputBlobInformation | Brak informacji o obiektu blob magazynu Azure. Podaj prawidłowe parametry połączenia i ścieżkę względną lub identyfikator URI, a następnie spróbuj ponownie. |
 | MissingJobId | Brak podany identyfikator zadania. Zadanie identyfikator jest zwracany, gdy zadanie zostało przesłane po raz pierwszy. Sprawdź poprawność identyfikatora zadania, a następnie spróbuj ponownie. |
 | MissingKeys | Brak kluczy dostarczona lub nie podano podstawowego lub dodatkowego klucza. |
 | MissingModelPackage | Nie identyfikator pakietu modelu lub podać pakietu modelu. Podaj identyfikator pakietu prawidłowego modelu lub modelu pakietu i spróbuj ponownie. |
-| MissingOutputOverrideSpecification | W żądaniu brakuje specyfikacji obiektu blob danych wyjściowych zastąpienie {0}. Określ lokalizację nieprawidłowy obiekt blob z żądaniem lub usuń specyfikację elementu wyjściowego, jeśli żadne przesłonięcie lokalizacji. |
+| MissingOutputOverrideSpecification | W żądaniu brakuje specyfikacji obiektu blob dla danych wyjściowych zastąpienia {0}. Określ lokalizację nieprawidłowy obiekt blob z żądaniem lub usuń specyfikację elementu wyjściowego, jeśli żadne przesłonięcie lokalizacji. |
 | MissingRequestInput | Usługa sieci web oczekuje danych wejściowych, ale nie dane wejściowe nie został podany. Upewnij się, że znajdują się prawidłowe wartości wejściowe na podstawie opublikowanych portów wejściowych w modelu, a następnie spróbuj ponownie. |
 | MissingRequiredGlobalParameters | Nie wszystkie wymagane podane parametry usługi sieci web. Sprawdź, czy parametry oczekiwanego przez moduły są poprawne i spróbuj ponownie. |
 | MissingRequiredOutputOverrides | Podczas wywoływania metody punktu końcowego szyfrowanie usług, które jest wymagane do przekazania w danych wyjściowych zastąpienia dla wszystkich usług danych wyjściowych. Brak zastąpienia w tej chwili uzyskać te dane wyjściowe: {0} |
@@ -73,9 +75,9 @@ Ta klasa błędy oznacza, że udostępniane innym argument był nieprawidłowy. 
 | UnexpectedParameter | Podane parametry nieoczekiwany. Sprawdź wszystkie nazwy parametrów są poprawne, tylko oczekiwane parametry są przekazywane, a następnie spróbuj ponownie. |
 | Nieznany | Nieznany błąd. |
 | UserParameterInvalid | {0} |
-| WebServiceConcurrentRequestRequirementInvalid | Nie można zmienić wymagania równoczesnych żądań dla usługi sieci web {0}. |
+| WebServiceConcurrentRequestRequirementInvalid | Nie można zmienić wymagania równoczesnych żądań dla {0} usługi sieci web. |
 | WebServiceIdInvalid | Podany identyfikator usługi sieci web nieprawidłowy. Identyfikator usługi sieci Web powinna być prawidłowym identyfikatorem guid. |
-| WebServiceTooManyConcurrentRequestRequirement | Nie można ustawić wymaganie równoczesnych żądań do więcej niż {0}. |
+| WebServiceTooManyConcurrentRequestRequirement | Nie można ustawić wymaganie równoczesnych żądań więcej niż {0}. |
 | WebServiceTypeInvalid | Nieprawidłowy typ sieci web usługi udostępniane. Sprawdź, czy typ usługi sieci web prawidłowy jest poprawny i spróbuj ponownie. Nieprawidłowe typy usług: {0}. |
  
 ## <a name="baduserargument-http-status-code-400"></a>BadUserArgument (kod stanu HTTP 400)
@@ -96,7 +98,7 @@ Podany argument nieprawidłowego użytkownika.
  
 | Kod błędu | Komunikat użytkownika |
 | ---------- |--------------|
-| CannotStartJob | Nie można uruchomić zadania, ponieważ jest w stanie {0}. |
+| CannotStartJob | Nie można uruchomić zadania, ponieważ jest on {0} stanu. |
 | IncompatibleModel | Model jest niezgodna z wersją żądania. Wersja żądania obsługuje tylko modele danych wyjściowych jednego elementu datatable. |
 | MultipleInputsNotAllowed | Model nie zezwala na wielu danych wejściowych. |
  
@@ -164,7 +166,7 @@ Model przekroczył limit przydziału pamięci przypisane do niej.
  
 | Kod błędu | Komunikat użytkownika |
 | ---------- |--------------|
-| OutOfMemoryLimit | Model używany więcej pamięci niż była przeznaczona dla niego. Maksymalna dozwolona ilość pamięci dla modelu to {0} MB. Sprawdź, czy model problemów. |
+| OutOfMemoryLimit | Model używany więcej pamięci niż była przeznaczona dla niego. Maksymalna ilość pamięci dla modelu jest {0} MB. Sprawdź, czy model problemów. |
  
 ## <a name="internalerror-http-status-code-500"></a>InternalError (kod stanu HTTP 500)
  
@@ -193,11 +195,11 @@ Wykonanie napotkał błąd wewnętrzny.
 | ModuleLoadFailed |  |
 | ModuleObjectCloneFailed |  |
 | OutputConversionFailed |  |
-| PortDataTypeNotSupported | Identyfikator portów = {0} ma nieobsługiwany typ danych: {1}. |
+| PortDataTypeNotSupported | Identyfikator portów ={0} ma nieobsługiwany typ danych: {1}. |
 | ResourceDownload |  |
 | ResourceLoadFailed |  |
 | ServiceUrisNotFound |  |
-| SwaggerGeneration | Generowanie swagger nie powiodło się, szczegóły: {0} |
+| SwaggerGeneration | Generowanie swagger nie powiodło się, szczegółowe informacje: {0} |
 | UnexpectedScoreStatus |  |
 | UnknownBackendErrorResponse |  |
 | Nieznany |  |
@@ -239,7 +241,7 @@ Usługa jest tymczasowo niedostępna.
 | Kod błędu | Komunikat użytkownika |
 | ---------- |--------------|
 | NoMoreResources | Brak dostępnych zasobów do żądania. |
-| RequestThrottled | Żądanie zostało ograniczenie dla punktu końcowego {0}. Maksymalna współbieżności dla punktu końcowego jest {1}. |
+| RequestThrottled | Żądanie zostało ograniczany do {0} punktu końcowego. Maksymalna współbieżności dla punktu końcowego jest {1}. |
 | TooManyConcurrentRequests | Za dużo współbieżnych żądań wysyłane. |
 | TooManyHostsBeingInitialized | Zbyt wiele hostów inicjowania w tym samym czasie. Należy rozważyć ograniczenie / ponawianie próby. |
 | TooManyHostsBeingInitializedPerModel | Zbyt wiele hostów inicjowania w tym samym czasie. Należy rozważyć ograniczenie / ponawianie próby. |

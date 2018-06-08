@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
-ms.openlocfilehash: cb37c94d3ec819823083041708cfc28ead0ed5cf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5ef44ccf87bc5e40b57dc7fc997c9a827c93484b
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606141"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831463"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Przepływ pracy tworzenia kopii zapasowych w trybie offline w usłudze Azure Backup
 Kopia zapasowa Azure zawiera kilka wbudowanych korzyści, które zapisania koszty sieci i magazynu podczas początkowej pełne kopie zapasowe danych na platformie Azure. Początkowa pełnych kopii zapasowych zwykle transfer dużych ilości danych i wymagają większej przepustowości sieci w porównaniu do kolejnych kopii zapasowych, które transfer tylko delty/przyrostowa. W procesie wstępnego wypełniania w trybie offline kopia zapasowa Azure umożliwia dysków przekazać dane kopii zapasowej w trybie offline na platformie Azure.
@@ -51,7 +51,7 @@ Następujące funkcje usługi Kopia zapasowa Azure lub obciążeń obsługuje ko
 Przed rozpoczęciem przepływu pracy w trybie Offline z kopii zapasowej, należy wykonać następujące wymagania wstępne: 
 * Utwórz [magazyn usług odzyskiwania i](backup-azure-recovery-services-vault-overview.md). Aby utworzyć magazyn, skorzystaj z procedury opisanej w [w tym artykule](tutorial-backup-windows-server-to-azure.md#create-a-recovery-services-vault)
 * Upewnij się, że tylko [najnowszą wersję agenta usługi Kopia zapasowa Azure](https://aka.ms/azurebackup_agent) został zainstalowany na komputerze klienckim z systemem Windows Server i Windows, zgodnie z wymaganiami, a komputer jest zarejestrowany w magazynie usług odzyskiwania.
-* Program Azure PowerShell 3.7.0 lub większa jest wymagane na komputerze, na którym jest uruchomiony agent usługi Kopia zapasowa Azure. Zaleca się możesz [zainstaluj najnowszą wersję programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0).
+* Program Azure PowerShell 3.7.0 jest wymagany na komputerze, na którym jest uruchomiony agent usługi Kopia zapasowa Azure. Zalecane jest pobranie i [Zainstaluj 3.7.0 wersję programu Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v3.7.0-March2017).
 * Na komputerze, na którym jest uruchomiony agent usługi Kopia zapasowa Azure upewnij się, Microsoft Edge lub Internet Explorer 11 jest zainstalowany i włączyć obsługę języka JavaScript. 
 * Tworzenie konta usługi Azure Storage w tej samej subskrypcji co magazyn usług odzyskiwania. 
 * Upewnij się, że masz [niezbędne uprawnienia](../azure-resource-manager/resource-group-create-service-principal-portal.md) do utworzenia aplikacji usługi Azure Active Directory. Przepływ pracy w trybie Offline Backup tworzy aplikację usługi Azure Active Directory w subskrypcję skojarzoną z kontem magazynu platformy Azure. Celem aplikacji jest zapewnienie kopia zapasowa Azure bezpiecznego i zakresem dostępu do usługi Azure importu, wymagane dla przepływu pracy w trybie Offline z kopii zapasowej. 
@@ -108,7 +108,7 @@ W tej sekcji opisano przepływ pracy w trybie offline z kopii zapasowej, aby dan
 
     * Komputer kopii można uzyskać dostęp do tymczasowej lokalizacji dla przepływu pracy w trybie offline wstępne wypełnianie przy użyciu tej samej lokalizacji sieciowej, która została dostarczona w **zainicjować kopię zapasową offline** przepływu pracy.
     * Funkcja BitLocker jest włączona na komputerze kopiowania.
-    * Program Azure PowerShell 3.7.0, lub większą, jest zainstalowana.
+    * Program Azure PowerShell 3.7.0 jest zainstalowany.
     * Zainstalowano najnowszych przeglądarkach zgodne (Edge lub Internet Explorer 11) i włączyć obsługę języka JavaScript. 
     * Komputer kopii mogą uzyskać dostęp do portalu Azure. W razie potrzeby kopiowania komputer może być taka sama, co na komputerze źródłowym.
     

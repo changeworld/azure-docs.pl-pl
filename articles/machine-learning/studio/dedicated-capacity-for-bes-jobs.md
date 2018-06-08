@@ -8,16 +8,18 @@ ms.author: yahajiza
 manager: hjerez
 editor: cgronlun
 ms.service: machine-learning
+ms.component: studio
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 5a3d2c976ca4deef093f2640e56634acf911f4c0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1e4cf34582e28e00108e280d928eea8a8134699a
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834529"
 ---
 # <a name="azure-batch-service-for-machine-learning-jobs"></a>Azure usługa partia zadań dla zadania uczenia maszynowego
 
@@ -110,4 +112,4 @@ Zaleca się, że sondowania stan zadania, aby określić, po zakończeniu zadani
 
 | **Korzystanie z puli partii podczas przetwarzania**    | **Użyj klasycznego partii podczas przetwarzania**  |
 |---|---|
-|Musisz uruchomić dużej liczby zadań<br>Lub<br/>Musisz wiedzieć, że Twoje zadania będą uruchamiane natychmiast<br/>Lub<br/>Należy gwarantowanej przepustowości. Na przykład trzeba uruchomić liczba zadań w określonym przedziale czasu i chcesz skalować w poziomie zasoby obliczeniowe do własnych potrzeb.    | Użytkownicy korzystający z kilku zadań<br/>I<br/> Nie ma potrzeby zadania, aby natychmiast uruchomić |
+|Musisz uruchomić dużej liczby zadań<br>Lub<br/>Musisz wiedzieć, że Twoje zadania będą uruchamiane natychmiast<br/>Lub<br/>Należy gwarantowanej przepustowości. Na przykład trzeba uruchomić liczba zadań w określonym przedziale czasu i chcesz skalować w poziomie zasoby obliczeniowe do własnych potrzeb.    | Użytkownicy korzystający z kilku zadań<br/>Oraz<br/> Nie ma potrzeby zadania, aby natychmiast uruchomić |

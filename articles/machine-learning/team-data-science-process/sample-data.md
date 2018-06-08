@@ -8,17 +8,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: 80a9dfae-e3a6-4cfb-aecc-5701cfc7e39d
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: 73b0d3992627b7787ee46e61f62717a545c5b9e2
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 0efd754936b67611a747c6c5756de92443a937e4
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34838003"
 ---
 # <a name="heading"></a>Przykładowe dane w kontenerów obiektów blob platformy Azure, programu SQL Server i program Hive tabel
 Ten dokument łącza do artykułów, które opisano, jak przykładowe dane, które są przechowywane w jednym z trzech różnych miejscach Azure:

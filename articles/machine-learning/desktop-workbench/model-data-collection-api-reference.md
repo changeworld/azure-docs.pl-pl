@@ -7,15 +7,17 @@ ms.author: aashishb
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: db8718b60cdd934e3301479489f21fe45f5578cd
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ff80130ebb9c4095d4a20202cdfabd9aaf1b1992
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832010"
 ---
 # <a name="azure-machine-learning-model-data-collection-api-reference"></a>Odwołanie do usługi Azure Machine Learning Model danych kolekcji API
 
@@ -63,7 +65,7 @@ Zobacz szczegóły klasy i parametr:
 | Name (Nazwa) | Typ | Opis |
 |-------------|------------|-------------------------|
 | nazwa_modelu | ciąg | Nazwa modelu zbieranych danych na |
-| identyfikator | ciąg | Lokalizacja w kodzie, który identyfikuje te dane, np. "RawInput" lub "Prognozowania" |
+| Identyfikator | ciąg | Lokalizacja w kodzie, który identyfikuje te dane, np. "RawInput" lub "Prognozowania" |
 | feature_names | Lista ciągów | Lista nazw funkcji, które stają się nagłówek csv, gdy podane |
 | model_management_account_id | ciąg | Identyfikator modelu konto zarządzania przechowywania tego modelu. to jest wypełniana automatycznie podczas modeli są operationalized za pośrednictwem AML |
 | webservice_name | ciąg | Nazwa usługi sieci Web, na którym ten model jest obecnie wdrożona. to jest wypełniana automatycznie podczas modeli są operationalized za pośrednictwem AML |

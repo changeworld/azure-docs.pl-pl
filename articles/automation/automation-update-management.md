@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/23/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 43cfb16e9471736c0f112ef879faaf01badebc4f
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: d336b0a4c1de069fccce21a370ca64dc9e9359c9
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824952"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831697"
 ---
 # <a name="update-management-solution-in-azure"></a>Aktualizacja rozwiązania do zarządzania na platformie Azure
 
@@ -166,6 +166,8 @@ Ten widok zawiera informacje na maszynach, brakujące aktualizacje, wdrożenia a
 
 Możesz uruchomić wyszukiwanie dziennika, które zwraca informacje o maszyny, aktualizacji lub wdrożenia po wybraniu elementu na liście. Spowoduje to otwarcie **wyszukiwania dziennika** strony z zapytaniem dla wybranego elementu.
 
+![Aktualizowanie zarządzania widok domyślny](media/automation-update-management/update-management-view.png)
+
 ## <a name="installing-updates"></a>Instalowanie aktualizacji
 
 Gdy aktualizacje zostaną ocenione dla wszystkich komputerów z systemami Windows i Linux w obszarze roboczym, możesz utworzyć *wdrożenie aktualizacji* w celu zainstalowania wymaganych aktualizacji. Wdrażanie aktualizacji jest zaplanowana instalacja aktualizacji wymaganych dla co najmniej jeden komputer. Należy określić datę i godzinę wdrożenia, a także komputer lub grupę komputerów, które mają zostać uwzględnione w zakresie wdrożenia. Aby dowiedzieć się więcej na temat grup komputerów, zobacz [Computer groups in Log Analytics](../log-analytics/log-analytics-computer-groups.md) (Grupy komputerów w usłudze Log Analytics). Po dołączeniu grup komputerów w danym wdrożeniu aktualizacji członkostwa w grupie jest oceniane tylko raz w momencie tworzenia harmonogramu. Późniejsze zmiany w grupie nie są odzwierciedlane. Aby obejść ten problem, usuń zaplanowane wdrożenie aktualizacji, a następnie utwórz je ponownie.
@@ -197,9 +199,8 @@ Utwórz nowe wdrożenie aktualizacji, klikając **harmonogram wdrożenia aktuali
 |System operacyjny| Linux lub Windows|
 | Komputery do zaktualizowania |Wybierz wyszukiwanie, Saved lub wybierz komputer z listy rozwijanej i wybierz poszczególne maszyny |
 |Aktualizuj klasyfikacje|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne|
-|Aktualizacje do wykluczenia|Wprowadź wszystkie KB/s do wykluczenia bez prefiksu "KB."|
-|Ustawienia harmonogramu|Wybierz czas uruchomienia, a następnie wybierz jednorazowo lub cykliczne cyklu|
-| Okno obsługi |Liczba minut dla aktualizacji. Wartość może nie być mniej niż 30 minut, a nie więcej niż 6 godzin |
+|Aktualizacje do wykluczenia|Wprowadź aktualizacje, które mają zostać wykluczone. W przypadku systemu Windows wprowadź KB bez prefiksu "KB". Dla systemu Linux wprowadź nazwę pakietu, lub użyj symbolu wieloznacznego.  |
+|Ustawienia harmonogramu|Wybierz czas uruchomienia, a następnie wybierz jednorazowo lub cykliczne cyklu|| Okno obsługi |Liczba minut dla aktualizacji. Wartość może nie być mniej niż 30 minut, a nie więcej niż 6 godzin |
 
 ## <a name="update-classifications"></a>Aktualizuj klasyfikacje
 

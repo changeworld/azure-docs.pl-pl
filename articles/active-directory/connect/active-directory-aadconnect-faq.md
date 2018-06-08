@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4cef685d71a64f8a6681a3449e4fe0b67899c67c
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 2e5a7cab5c9db0c13ca0c0986c18c86adf675562
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808608"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850290"
 ---
 # <a name="frequently-asked-questions-for-azure-active-directory-connect"></a>Często zadawane pytania dotyczące usługi Azure Active Directory Connect
 
@@ -121,7 +121,11 @@ Proces uaktualniania automatycznie zawsze najpierw ustalają, czy instalacja kwa
 W zależności od wielkości środowiska proces może zająć kilka godzin, a a odbywa się uaktualnienie, nastąpi Brak synchronizacji między systemu Windows Server AD i Azure AD.
 
 **Pytanie: czy mogę odebrał wiadomość e-mail z informacją, Moje automatycznego uaktualnienia przestanie działać, którą należy zainstalować nową wersję. Dlaczego trzeba to zrobić?**</br>
-Została wydana w zeszłym roku wersji programu Azure AD Connect, które w pewnych okolicznościach, być może został wyłączony funkcja automatycznego uaktualniania na serwerze. Ten problem został rozwiązany w programie Azure AD Connect wersji 1.1.750.0. Klienci, którzy mogą dotyczy ten problem należy ręcznie uaktualnić do najnowszej wersji programu Azure AD Connect złagodzić problem. Należy ręcznie uaktualnić należy pobrać i uruchomić najnowszą wersję pliku AADConnect.msi.
+Została wydana w zeszłym roku wersji programu Azure AD Connect, które w pewnych okolicznościach, być może został wyłączony funkcja automatycznego uaktualniania na serwerze. Ten problem został rozwiązany w programie Azure AD Connect wersji 1.1.750.0. Klienci, którzy mogą dotyczy ten problem, należy uruchomić skrypt programu PowerShell w celu naprawy lub ręcznego uaktualnienia do najnowszej wersji programu Azure AD Connect w celu ograniczenia tego problemu. 
+
+Aby uruchomić skrypt programu PowerShell, Pobierz skryptu z [tutaj](https://aka.ms/repairaadconnect) i uruchom skrypt na serwerze programu AADConnect administracyjne okno programu PowerShell. [To jest krótki film](https://aka.ms/repairaadcau) który opisano szczegółowo w tym celu.
+
+Należy ręcznie uaktualnić należy pobrać i uruchomić najnowszą wersję pliku AADConnect.msi.
  
 -  Jeśli bieżąca wersja jest starsza niż 1.1.750.0, należy uaktualnić do najnowszej wersji [który można pobrać tutaj](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
 - Jeśli wersja programu Azure AD Connect jest 1.1.750.0 lub nowszego, nie trzeba wykonywać żadnych czynności w celu złagodzenia problem uaktualniania automatycznie, jako użytkownik jest już w wersji, która ma poprawkę dla tego. 
@@ -165,7 +169,7 @@ Automatycznej aktualizacji jest pierwszym krokiem w procesie wersji w nowszej we
 **Pytanie: automatycznej aktualizacji uaktualnienia AAD Connect Health?**</br>   Tak, automatycznego uaktualnienia uaktualnia AAD Connect Health
 
 **Pytanie: czy też automatycznej aktualizacji serwerów AAD Connect w tryb przejściowy?**</br>   
-Nie, możesz nie automatycznej aktualizacji z serwera usługi Azure AD Connect, który znajduje się w trybie przejściowym.
+Tak, użytkownik może automatycznej aktualizacji z serwera usługi Azure AD Connect, który znajduje się w trybie przejściowym.
 
 **Pytanie: czy automatycznej aktualizacji nie powiedzie się i serwer AAD Connect nie można uruchomić, co należy zrobić?**</br>   
 W rzadkich przypadkach usługa Azure AD Connect nie zostanie uruchomiona po wykonaniu uaktualnienia. W takich przypadkach ponowny rozruch serwera, który zazwyczaj rozwiązuje problem. Jeśli usługa Azure AD Connect nadal nie zostanie uruchomiony, otwórz bilet pomocy technicznej. Oto [łącze](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/) który wyjaśnia, jak to zrobić. 

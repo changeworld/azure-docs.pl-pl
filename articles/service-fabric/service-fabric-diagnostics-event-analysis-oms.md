@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/29/2018
 ms.author: srrengar
-ms.openlocfilehash: 1552fbe66f7bad219d8aea8a3f208b0fe69cdf2b
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 184faa0f6171ff00ab3c2398f693e9c7ad015d33
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716061"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839592"
 ---
 # <a name="event-analysis-and-visualization-with-log-analytics"></a>Analiza zdarzeń i wizualizacji z analizy dzienników
 
@@ -54,19 +54,19 @@ Powyższy obraz jest stroną główną rozwiązania analizy sieci szkieletowej u
 * [Niezawodne usługi zdarzeń modelu programowania](service-fabric-reliable-services-diagnostics.md)
 
 >[!NOTE]
->Oprócz operacyjne kanału bardziej szczegółowe zdarzenia systemowe mogą być zbierane przez [aktualizowania konfiguracji rozszerzenia diagnostyki](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)
+>Oprócz operacyjne kanału bardziej szczegółowe zdarzenia systemowe mogą być zbierane przez [aktualizowania konfiguracji rozszerzenia diagnostyki](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations).
 
 ### <a name="view-service-fabric-events-including-actions-on-nodes"></a>Wyświetl zdarzenia sieci szkieletowej usług łącznie z czynności w węzłach
 
 1. Na stronie usługi sieć szkieletowa Analytics kliknij na wykresie dla **zdarzenia sieci szkieletowej usług**.
 
-    ![Kanał operacyjne rozwiązania rz OMS](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-new-operational.png)
+    ![Kanał operacyjne rozwiązania rz OMS](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
 
-2. Kliknij przycisk tabeli, aby wyświetlić zdarzenia na liście. Gdy w tym miejscu zobaczysz wszystkich zdarzeń systemowych, które zostały zebrane. Odwołania są one z WADServiceFabricSystemEventsTable na koncie magazynu Azure, a podobnie reliable services i zdarzeń podmiotów, które widać obok są z tych tabel odpowiednich.
+2. Kliknij przycisk **listy** do wyświetlania na liście zdarzeń. Gdy w tym miejscu zobaczysz wszystkich zdarzeń systemowych, które zostały zebrane. Odwołania są one z WADServiceFabricSystemEventsTable na koncie magazynu Azure, a podobnie reliable services i zdarzeń podmiotów, które widać obok są z tych tabel odpowiednich.
     
-    ![Kanał operacyjny kwerendy OMS](media/service-fabric-diagnostics-event-analysis-oms/oms-query-operational-channel.png)
+    ![Kanał operacyjny kwerendy OMS](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
 
-Można kliknąć Lupa po lewej stronie i używać języka kwerend Kusto można znaleźć, czego szukasz. Na przykład aby znaleźć wszystkie akcje wykonywane w węzłach w klastrze, używając następujące zapytanie. Identyfikatory zdarzeń, poniżej znajdują się w [dotyczące zdarzeń operacyjnych kanału](service-fabric-diagnostics-event-generation-operational.md)
+Można kliknąć Lupa po lewej stronie i używać języka kwerend Kusto można znaleźć, czego szukasz. Na przykład aby znaleźć wszystkie akcje wykonywane w węzłach w klastrze, używając następujące zapytanie. Identyfikatory zdarzeń, poniżej znajdują się w [dotyczące zdarzeń operacyjnych kanału](service-fabric-diagnostics-event-generation-operational.md).
 
 ```kusto
 ServiceFabricOperationalEvent
@@ -79,13 +79,13 @@ Umożliwia wysyłanie zapytań o wiele więcej pól, takich jak określonych wę
 
 1. Na stronie usługi sieć szkieletowa Analytics kliknij wykresu dla **niezawodne usługi**.
 
-    ![Niezawodne usługi rozwiązania rz OMS](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-reliable-services.png)
+    ![Niezawodne usługi rozwiązania rz OMS](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
 
-2. Kliknij przycisk tabeli, aby wyświetlić zdarzenia na liście. Tutaj można zobaczyć zdarzenia z niezawodne usługi. Widoczny różnych zdarzeń dla runasync usługi zostanie rozpoczęte i zakończone, zwykle nastąpi na wdrożenia i uaktualnienia. 
+2. Kliknij przycisk **listy** do wyświetlania na liście zdarzeń. Tutaj można zobaczyć zdarzenia z niezawodne usługi. Widoczny różnych zdarzeń dla runasync usługi zostanie rozpoczęte i zakończone, zwykle nastąpi na wdrożenia i uaktualnienia. 
 
-    ![OMS zapytania niezawodne usługi](media/service-fabric-diagnostics-event-analysis-oms/oms-query-reliable-services.png)
+    ![OMS zapytania niezawodne usługi](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
 
-W podobny sposób można wyświetlać zdarzenia niezawodnego aktora. Aby skonfigurować więcej szczegółowych informacji o zdarzeniach dla elementów reliable actors, musisz zmienić `scheduledTransferKeywordFilter` w pliku config diagnostycznych rozszerzenia (pokazana poniżej). Szczegółowe informacje o wartości te są w [niezawodnej złośliwych użytkowników dotyczące zdarzeń](service-fabric-reliable-actors-diagnostics.md#keywords)
+W podobny sposób można wyświetlać zdarzenia niezawodnego aktora. Aby skonfigurować więcej szczegółowych informacji o zdarzeniach dla elementów reliable actors, musisz zmienić `scheduledTransferKeywordFilter` w pliku config diagnostycznych rozszerzenia (pokazana poniżej). Szczegółowe informacje o wartości te są w [dotyczące zdarzeń niezawodnej podmiotów](service-fabric-reliable-actors-diagnostics.md#keywords).
 
 ```json
 "EtwEventSourceProviderConfiguration": [
@@ -99,9 +99,9 @@ W podobny sposób można wyświetlać zdarzenia niezawodnego aktora. Aby skonfig
                 },
 ```
 
-Język kwerendy Kusto jest zaawansowanym. Inne przydatne zapytanie można uruchamiać jest aby dowiedzieć się węzły, które generują najwięcej zdarzeń. Zapytanie na poniższym zrzucie ekranu wyświetla zagregowane z określonej usługi i węzła zdarzeń niezawodne usługi
+Język kwerendy Kusto jest zaawansowanym. Inne przydatne zapytanie można uruchamiać jest aby dowiedzieć się węzły, które generują najwięcej zdarzeń. Zapytanie na poniższym zrzucie ekranu wyświetla zdarzenia operacyjne sieci szkieletowej usług, łącznie z określonej usługi i węzła.
 
-![Zdarzenia OMS na węzeł](media/service-fabric-diagnostics-event-analysis-oms/oms-query-events-per-node.png)
+![Zdarzenia OMS na węzeł](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

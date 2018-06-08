@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: c7c2b72b3a164e35c464a92f82cddb3329250283
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 27f0c49913b424a6bd77b7cb6f7d6e97598c2157
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650064"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839813"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Baza danych SQL wysokiej dostępności i platformy Azure
 Od chwili rozpoczęcia oferty PaaS bazy danych SQL Azure firma Microsoft wprowadziła Obietnica jej klientów, które wysokiej dostępności (HA) korzysta z wbudowanej w usługi i klientów nie są wymagane do działania, Dodaj logikę specjalnych lub podejmować decyzje dotyczące wysokiej dostępności. Firma Microsoft udostępnia pełną kontrolę nad HA system konfiguracji i obsłudze, zaoferować klientom umowy dotyczącej poziomu usług. HA umowy SLA stosuje się do bazy danych SQL w regionie i nie zapewnia ochrony w przypadku niepowodzenia obszar całkowity, który jest wystąpiły z przyczyn będących poza kontrolą firmy Microsoft (na przykład klęski żywiołowej, plik war, czynności terroryzmu, zamieszek, akcji dla instytucji rządowych, lub sieci lub na urządzeniu niepowodzenie zewnętrznych w centrach danych firmy Microsoft, w tym klientów w lokacjach lub między lokacjami klienta i centrum danych firmy Microsoft).
@@ -79,7 +79,7 @@ Domyślnie replik zestawu kworum w przypadku konfiguracji z magazynu lokalnego z
 Ponieważ strefy nadmiarowe kworum zestawie replik w różnych centrach danych, z niektórych odległość między nimi, opóźnienie sieci zwiększona może zwiększyć czas zatwierdzenia i w związku z tym wpływ na wydajność niektórych obciążeń OLTP. Możesz zawsze wrócić do konfiguracji strefy jednym wyłączenie ustawienia nadmiarowość strefy. Ten proces jest rozmiar operacji danych i jest podobny do aktualizacji (SLO), cel poziomu usługi regularne. Po zakończeniu procesu bazy danych lub puli migracji z nadmiarowych pierścień strefy pierścień jednej strefie lub odwrotnie.
 
 > [!IMPORTANT]
-> Strefy nadmiarowe baz danych i elastyczne pule są obsługiwane tylko w warstwie Premium i biznesowe krytyczne (wersja zapoznawcza) warstwy usług. W publicznej wersji zapoznawczej, kopie zapasowe i inspekcji rekordy są przechowywane w magazynie RA-GRS i dlatego nie można automatycznie dostępne w przypadku awarii całej strefy. 
+> Strefy nadmiarowe baz danych i elastyczne pule są obecnie obsługiwane tylko w warstwie usług Premium. W publicznej wersji zapoznawczej, kopie zapasowe i inspekcji rekordy są przechowywane w magazynie RA-GRS i dlatego nie można automatycznie dostępne w przypadku awarii całej strefy. 
 
 W poniższym diagramie przedstawiono wersja nadmiarowe strefy architektury wysokiej dostępności:
  

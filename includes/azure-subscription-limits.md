@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 8f104ab046fad8dfd9086525b8f942f3d2941821
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 57747e21cf4b5b32fc5b0ddeaf151a538337afba
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34852079"
 ---
 | Zasób | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
@@ -30,5 +31,5 @@ ms.lasthandoff: 05/20/2018
 
 <sup>1</sup>dodatkowe mała liczba wystąpienia jako jednego rdzenia się do limitu core pomimo przy użyciu częściowego core.
 
-<sup>2</sup>limitu konta magazynu zawiera kont magazynu w wersjach Standard i Premium. Jeśli potrzebujesz więcej niż 200 kont magazynu w pojedynczym regionie, Utwórz żądanie za pośrednictwem [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/faq/). Zespół usługi Azure Storage przejrzy Twój przypadek biznesowy i może zatwierdzić do 250 kont magazynu. 
+<sup>2</sup>limitu konta magazynu zawiera kont magazynu w wersjach Standard i Premium. Jeśli potrzebujesz więcej niż 200 kont magazynu w danym regionie, Utwórz żądanie za pośrednictwem [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/faq/). Zespół usługi Azure Storage przejrzeć tej sprawy biznesowych i może zatwierdzić do 250 kont magazynu dla danego regionu. 
 

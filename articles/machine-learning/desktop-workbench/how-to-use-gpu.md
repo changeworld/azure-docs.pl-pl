@@ -7,14 +7,16 @@ ms.author: roastala
 manager: jhubbard
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 1bd8f28b472361470fa8020149a9af0c690fbc52
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: db0cfa1d91681d48a21ac160706dc4e8c72f81c2
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830915"
 ---
 # <a name="how-to-use-gpu-in-azure-machine-learning"></a>Sposób użycia procesora GPU w usłudze Azure Machine Learning
 Graficzny przetwarzania jednostka GPU jest powszechnie używany do przetworzenia w praktyce znacznym zadań, które zwykle mogą wystąpić w przypadku uczenie niektórych modeli sieci neuronowej głębokość. Przy użyciu GPU, można znacznie skrócić czas szkolenia modeli. W tym dokumencie zostanie przedstawiony sposób konfigurowania środowiska roboczego uczenia Maszynowego Azure do użycia [DSVM (danych maszyny wirtualnej nauki)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) wyposażone GPU jako cel wykonywania. 

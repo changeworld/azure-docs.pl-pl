@@ -4,36 +4,37 @@ description: Dowiedz się, jak można dołączyć wirtualnej Azure maszyny z roz
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/25/2018
+ms.date: 06/06/2018
 ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 2fbfd733a57d0e2f91d119b614917abf172b8379
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 675aebf35a6bee6e4cc4fd884204edb5bae4b848
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830565"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Zintegrowanego rozwiązania zarządzania aktualizacjami, śledzenia zmian i magazynu z maszyny wirtualnej platformy Azure
 
-Automatyzacja Azure zapewnia rozwiązania do zarządzania aktualizacjami zabezpieczeń systemu operacyjnego, śledzenie zmian i magazynowych zainstalowanych w komputerach. Istnieje wiele sposobów, aby dołączyć maszyny, możesz dołączyć rozwiązania z maszyną wirtualną [z Twojego konta automatyzacji](automation-onboard-solutions-from-automation-account.md), lub [runbook](automation-onboard-solutions.md). W tym artykule omówiono dołączania tych rozwiązań z maszyny wirtualnej platformy Azure.
+Automatyzacja Azure zapewnia rozwiązania do zarządzania aktualizacjami zabezpieczeń systemu operacyjnego, śledzenie zmian i magazynowych zainstalowanych w komputerach. Istnieje wiele sposobów, aby dołączyć maszyny, możesz dołączyć rozwiązania z maszyną wirtualną [z Twojego konta automatyzacji](automation-onboard-solutions-from-automation-account.md), [z wieloma maszynami przeglądania](automation-onboard-solutions-from-browse.md), lub [runbook](automation-onboard-solutions.md). W tym artykule omówiono dołączania tych rozwiązań z maszyny wirtualnej platformy Azure.
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
-Logowanie do platformy Azure w https://portal.azure.com
+Zaloguj się do platformy Azure na stronie https://portal.azure.com
 
 ## <a name="enable-the-solutions"></a>Włącz rozwiązania
 
 Przejdź do istniejącej maszyny wirtualnej, a następnie wybierz opcję **zarządzanie aktualizacjami**, **spisu**, lub **śledzenie zmian** w obszarze **operacji**.
+
+Aby włączyć tylko zapewnić rozwiązanie dla maszyny Wirtualnej **Włącz dla tej maszyny Wirtualnej** przycisk radiowy zostanie wybrany, aby dołączyć wiele maszyn do rozwiązania wybierz **włączanie dla maszyn wirtualnych w tej subskrypcji** i kliknij przycisk **Kliknij, aby wybrać komputerach, aby umożliwić**. Zobacz, [rozwiązania zintegrowanego zarządzania aktualizacjami, śledzenia zmian i spisu](automation-onboard-solutions-from-automation-account.md) Aby wyświetlić kroki dotyczące dołączyć wiele maszyn jednocześnie.
 
 Wybierz obszar roboczy usługi Log Analytics i konto usługi Automation, a następnie kliknij przycisk **Włącz**, aby włączyć to rozwiązanie. Włączanie rozwiązania może trwać do 15 minut.
 
 ![Dołączanie rozwiązania Update](media/automation-onboard-solutions-from-vm/onboard-solution.png)
 
 Przejdź do innych rozwiązań i kliknij **włączyć**, analizy dzienników, a konto automatyzacji list rozwijanych są wyłączone, ponieważ używają tego samego konta dla obszaru roboczego automatyzacji jako rozwiązanie wcześniej włączony.
-
-![Dołączanie rozwiązania Update](media/automation-onboard-solutions-from-vm/onboard-solutions2.png)
 
 > [!NOTE]
 > **Śledzenie zmian** i **spisu** używać tego samego rozwiązania, gdy jeden jest włączona innych także włączone.

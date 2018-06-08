@@ -1,39 +1,30 @@
 ---
-title: "Wdrażanie programu PowerShell Azure stosu — | Dokumentacja firmy Microsoft"
-description: "W tym samouczku należy zainstalować ASDK z wiersza polecenia."
+title: Wdrażanie programu PowerShell Azure stosu — | Dokumentacja firmy Microsoft
+description: W tym artykule należy zainstalować ASDK z wiersza polecenia przy użyciu programu PowerShell.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
-ms.custom: mvc
-ms.date: 03/16/2018
+ms.topic: article
+ms.custom: ''
+ms.date: 06/07/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 48ccccaba6b7f5780f1d42dfbe5d9747c5e30292
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f0d7daa479f6e6ea345e010962488c1ecad5b7e2
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849961"
 ---
-# <a name="tutorial-deploy-the-asdk-from-the-command-line"></a>Samouczek: Wdrażanie ASDK z wiersza polecenia
-W tym samouczku wdrożeniem zestawu programowanie stosu (ASDK) Azure, w wierszu polecenia w środowiskach nieprodukcyjnych. 
-
+# <a name="deploy-the-asdk-from-the-command-line"></a>Wdrażanie ASDK z wiersza polecenia
 ASDK jest środowiskiem badań i rozwoju, które można wdrożyć do oceny i Wykaż stosu Azure funkcji i usług. Można go pobrać działa prawidłowo, należy przygotować środowisko sprzętu i uruchamiać skrypty, niektóre (to potrwa kilka godzin). Po wykonaniu tej można Zaloguj się do portali administratora i użytkownika na rozpoczęcie korzystania z usługi Azure stosu.
-
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
-
-> [!div class="checklist"]
-> * Pobierać i wyodrębniać pakiet wdrożeniowy
-> * Przygotowanie komputera-hosta development kit 
-> * Przeprowadź konfiguracje po wdrożeniu
-> * Zarejestrować w usłudze Azure
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 Przygotowanie komputera-hosta development kit. Planowanie sprzętu, oprogramowania i sieci. Komputer, który obsługuje zestaw deweloperski (Programowanie hosta kit) musi spełniać sprzętu, oprogramowania i wymagania dotyczące sieci. Należy również wybrać opcję przy użyciu usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS). Należy przestrzegać wymagań wstępnych przed rozpoczęciem wdrażania, dzięki czemu proces instalacji uruchamia się sprawnie. 
@@ -61,7 +52,7 @@ Aby skonfigurować komputer-host ASDK rozruchu z CloudBuilder.vhdx:
 
   1. Uruchom wiersz polecenia jako administrator.
   2. Uruchom polecenie `bcdedit /copy {current} /d "Azure Stack"`
-  3. Kopiowania (CTRL + C) wartość identyfikatora CLSID zwrócone, łącznie z wymagane {} "s. Ta wartość jest określana jako {CLSID} i należy wkleić (CTRL + V lub kliknij prawym przyciskiem myszy) w pozostałych kroków.
+  3. Kopiowania (CTRL + C) wartość identyfikatora CLSID zwrócone, łącznie z wymaganymi {}"s. Ta wartość jest określana jako {CLSID} i należy wkleić (CTRL + V lub kliknij prawym przyciskiem myszy) w pozostałych kroków.
   4. Uruchom polecenie `bcdedit /set {CLSID} device vhd=[C:]\CloudBuilder.vhdx` 
   5. Uruchom `bcdedit /set {CLSID} osdevice vhd=[C:]\CloudBuilder.vhdx` 
   6. Uruchom `bcdedit /set {CLSID} detecthal on` 
@@ -176,16 +167,5 @@ Należy zarejestrować stosu Azure przy użyciu platformy Azure, co pozwala [pob
 ## <a name="next-steps"></a>Kolejne kroki
 Gratulacje! Po wykonaniu tych czynności, będziesz mieć Środowisko deweloperskie zestawu zarówno [administratora](https://adminportal.local.azurestack.external) i [użytkownika](https://portal.local.azurestack.external) portali. 
 
-W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
-
-> [!div class="checklist"]
-> * Pobierać i wyodrębniać pakiet wdrożeniowy
-> * Przygotowanie komputera-hosta development kit 
-> * Przeprowadź konfiguracje po wdrożeniu
-> * Zarejestrować w usłudze Azure
-
-Przejdź do następnego samouczkiem, aby dowiedzieć się, jak dodać element stosu Azure marketplace.
-
-> [!div class="nextstepaction"]
-> [Dodawanie elementu stosu Azure marketplace](asdk-marketplace-item.md)
+[Po zakończeniu instalacji ASDK zadania konfiguracji](asdk-post-deploy.md)
 

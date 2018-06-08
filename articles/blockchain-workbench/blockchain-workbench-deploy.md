@@ -10,11 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 484c7a17fec4ee94e3170e93eb1438af688d101e
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: bcd08ac8563edfaf4297e26ad42ed8bc62d86918
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831639"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Wdrażanie usługi Azure Workbench Blockchain
 
@@ -62,7 +63,7 @@ Deployment Blockchain Workbench wymaga rejestracji aplikacji usługi Azure AD. N
     |Ustawienie  | Wartość  |
     |---------|---------|
     |Name (Nazwa) | `Blockchain API` |
-    |Typ aplikacji |Interfejs API/aplikacja sieci Web|
+    |Typ aplikacji |Interfejs API/aplikacja internetowa|
     |Adres URL logowania | `https://blockchainapi` |
 
 5. Wybierz **Utwórz** można zarejestrować aplikacji usługi Azure AD.
@@ -72,7 +73,7 @@ Deployment Blockchain Workbench wymaga rejestracji aplikacji usługi Azure AD. N
 Następnie należy zmodyfikować manifest aplikacji do korzystania z ról aplikacji w usłudze Azure AD, aby określić Blockchain Workbench Administratorzy.  Aby uzyskać więcej informacji na temat manifestów aplikacji, zobacz [manifest aplikacji usługi Azure Active Directory](../active-directory/develop/active-directory-application-manifest.md).
 
 1. Dla aplikacji został zarejestrowany, wybierz **manifestu** w okienku szczegółów zarejestrowanej aplikacji.
-2. Generuje identyfikator GUID. Możesz użyć polecenia środowiska PowerShell `[guid]::NewGuid()` lub online narzędzia do generowania identyfikatora GUID. 
+2. Generuje identyfikator GUID. Można wygenerować identyfikatora GUID przy użyciu polecenia programu PowerShell [identyfikator guid]:: NewGuid () lub identyfikator GUID nowego polecenia cmdlet. Innym rozwiązaniem jest na identyfikator GUID generator witrynę sieci Web.
 3. Zamierzasz zaktualizować **appRoles** sekcji manifestu. W okienku manifestu edycji wybierz **Edytuj** i Zastąp `"appRoles": []` z podanych JSON. Pamiętaj zastąpić wartość **identyfikator** o identyfikatorze GUID wygenerowanego pola. 
 
     ``` json
@@ -116,7 +117,7 @@ Aplikacja interfejsu API musi poprosić uprawnienia użytkownika do dostępu do 
 
 3. W **wymagane uprawnienia**, wybierz pozycję **udzielanie uprawnień** następnie wybierz **tak** monitu weryfikacji.
 
-   ![Udziel uprawnień](media/blockchain-workbench-deploy/client-app-grant-permissions.png)
+   ![Udzielenie uprawnień](media/blockchain-workbench-deploy/client-app-grant-permissions.png)
 
    Udzielanie uprawnień umożliwia Blockchain Workbench do użytkowników w katalogu. Uprawnienia do odczytu jest wymagane do wyszukiwania i dodawać członków do Blockchain Workbench.
 

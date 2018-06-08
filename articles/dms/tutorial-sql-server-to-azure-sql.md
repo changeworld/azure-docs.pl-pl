@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 06/06/2018
-ms.openlocfilehash: 823f785bf33fd4d227fbdbb0f3c6b5eec914e08c
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.date: 06/08/2018
+ms.openlocfilehash: f64b2922818eddcab02f7d1c7b8f97671d92589e
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808013"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850257"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-using-dms"></a>Migrowanie serwera SQL z bazą danych SQL Azure przy użyciu DMS
 Usługa Azure bazy danych migracji umożliwia migrację bazy danych z lokalnego wystąpienia programu SQL Server do [bazy danych SQL Azure](https://docs.microsoft.com/en-us/azure/sql-database/). W tym samouczku, wykonywana jest migracja **Adventureworks2012** przywrócone do lokalnego wystąpienia programu SQL Server 2016 (lub nowsza) bazy danych do bazy danych SQL Azure za pomocą usługi Azure migracji bazy danych.
@@ -217,7 +217,7 @@ Po utworzeniu usługi znalezienie go w portalu Azure, otwórz go, a następnie u
 
 4. Wybierz **zapisać**na **wybierz tabele** ekranu, rozwiń tabelę z listą, a następnie przejrzyj listę odpowiednich pól.
 
-    Należy pamiętać, że usługa migracji bazy danych Azure automatycznie wybiera wszystkie tabele pusty źródło istnieje w docelowym wystąpieniu bazy danych SQL Azure. Jeśli chcesz ponownie migrować tabel, które już zawierają dane, musisz jawnie wybrać tabele w tym bloku.
+    Należy pamiętać, że usługa migracji bazy danych Azure automatycznie wybiera wszystkie tabele pusty źródło istnieje w docelowym wystąpieniu bazy danych SQL Azure. Do wykonania ponownej migracji tabel, które już zawierają dane, należy jawnie wybrać tabele w tym bloku.
 
     ![Wybór tabel](media\tutorial-sql-server-to-azure-sql\dms-configure-setting-activity1.png)
 

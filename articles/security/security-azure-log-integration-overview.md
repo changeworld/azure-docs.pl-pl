@@ -12,17 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/25/2018
+ms.date: 06/06/2018
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: 04aa713a33ec871821e281ba3b1ea47777fb8b24
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3c7ea4f3c081734a77f5ebe44c9fba167ddc6d67
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641258"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839394"
 ---
 # <a name="introduction-to-azure-log-integration"></a>Wprowadzenie do integracji dzienników Azure
+
+
+>[!IMPORTANT]
+> Funkcja integracji Azure dziennika zostaną wycofane przez 2019-06/01. Pliki do pobrania AzLog zostanie wyłączone przez 27 cze 2018. Aby uzyskać wskazówki dotyczące co należy zrobić przenoszenie do przodu przeglądu post [monitor Azure używana do integracji z narzędzia SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/preview/?cdn=disable) 
 
 Integracja dziennika Azure została udostępniona usprawniających integracji Azure dzienniki z lokalnego systemu Security Information and Event Management (SIEM).
 

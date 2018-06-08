@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 6230e5ab-a5c0-4c21-a061-47675ba3342c
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: e8f6d3accc7ad8de1161f08cceb0e856cf764255
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e62f4716a95a6c1840afde27361eeb756abff335
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34837008"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning"></a>Interpretowanie wyników modelu w usłudze Azure Machine Learning
 W tym temacie wyjaśniono, jak wizualizacji i interpretować wyniki prognozowania w usłudze Azure Machine Learning Studio. Po uczony model i gotowe prognoz na nim ("oceniane modelu"), należy zrozumieć i interpretować wyniki prognozowania.
@@ -138,7 +140,7 @@ Po opublikowaniu i uruchamiania usługi sieci web oraz wprowadzić niektóre war
 
 ![Wynik testu](./media/interpret-model-results/10.png)
 
-Figure 10. Wynik usługi sieci Web wieloklasowej klasyfikacji
+Rysunek 10. Wynik usługi sieci Web wieloklasowej klasyfikacji
 
 ## <a name="regression"></a>Regresja
 Regresja problemów różnią się od klasyfikacji problemów. Problem klasyfikacji próbujesz odrębny klas, takie jak klasa kwiat iris należy przewidzieć. Jednak jak widać w poniższym przykładzie problem regresji próbujesz prognozowania ciągłego zmienną, np. ceny samochodu.
@@ -155,7 +157,7 @@ Wizualizacja [Score Model] [ score-model] modułu, wynik wygląda jak rysunek 12
 
 ![Wyników oceniania problemu prognozowania cen samochodów](./media/interpret-model-results/12.png)
 
-Figure 12. Ocenianie wyniku problemu prognozowania cen samochodów
+Rysunek 12. Ocenianie wyniku problemu prognozowania cen samochodów
 
 **Interpretacja wyników**
 
@@ -167,7 +169,7 @@ Można opublikować eksperymentu opartego na regresji do usługi sieci web i wyw
 
 ![Ocenianie eksperymentu cen samochodów regresji problemu](./media/interpret-model-results/13.png)
 
-Figure 13. Ocenianie eksperymentu problem regresji cen samochodów
+Rysunek 13. Ocenianie eksperymentu problem regresji cen samochodów
 
 Uruchomiona usługa sieci web, zwrócony wynik wygląda na rysunku 14. Przewidywane cenę samochodu ten jest 15,085.52 $.
 
@@ -184,7 +186,7 @@ Użyjmy Iris zestawu danych ponownie do tworzenia klastrów eksperymentu. W tym 
 
 ![Problem klastrowania Iris eksperymentu](./media/interpret-model-results/15.png)
 
-Figure 15. Problem klastrowania Iris eksperymentu
+Rysunek 15. Problem klastrowania Iris eksperymentu
 
 Klastrowanie różni się od klasyfikacji, w tym szkoleniowy zestaw danych nie ma podstaw prawdy etykiety samodzielnie. Klastrowanie grup wystąpień zestawu danych szkoleniowych w różnych klastrach. W trakcie uczenia modelu etykiet wpisy przez uczenia różnice między ich funkcje. Po wykonaniu tej trenowanego modelu może służyć do dalszej klasyfikacji przyszłych wpisów. Istnieją dwie części wynik, który NAS interesuje w ramach klastrowania problem. Pierwsza część jest etykietowania szkoleniowy zestaw danych, a drugi jest klasyfikowanie nowy zestaw danych z trenowanego modelu.
 
@@ -198,7 +200,7 @@ Wynik drugiej części, nowe wpisy uczonego modelu klastrowania z klastra jest w
 
 ![Wizualizowanie klastra wyników](./media/interpret-model-results/17.png)
 
-Figure 17. Wizualizowanie klastra wyników na nowym zestawie danych
+Rysunek 17. Wizualizowanie klastra wyników na nowym zestawie danych
 
 **Interpretacja wyników**
 

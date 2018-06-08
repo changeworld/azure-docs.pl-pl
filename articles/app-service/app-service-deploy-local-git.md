@@ -11,13 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
-ms.openlocfilehash: 842cd6f67a04bec0ed06282bdeeea8b8a51c0667
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 88cc9ff4979c2e6a4a14a7d531054c1a842deaf8
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849807"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Wdrażanie lokalnej usługi Git w usłudze Azure App Service
 
@@ -38,36 +39,21 @@ Do korzystania z repozytorium przykładowej w odbiorze, uruchom następujące po
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 ```
 
-## <a name="prepare-your-repository"></a>Przygotowanie repozytorium
-
-Upewnij się, że katalogu głównym repozytorium ma poprawne pliki w projekcie.
-
-| Środowisko uruchomieniowe | Plików z katalogu głównego |
-|-|-|
-| ASP.NET (tylko system Windows) | _*.sln_, _*.csproj_, lub _default.aspx_ |
-| ASP.NET Core | _*.sln_ lub _*.csproj_ |
-| PHP | _index.php_ |
-| Ruby (tylko w systemie Linux) | _Gemfile_ |
-| Node.js | _Server.js_, _app.js_, lub _package.json_ przy użyciu skryptu start |
-| Python (tylko system Windows) | _\*.PY_, _requirements.txt_, lub _pliku runtime.txt_ |
-| HTML | _default.htm_, _default.html_, _default.asp_, _index.htm_, _index.html_, lub  _iisstart.htm_ |
-| Zadania WebJob | _\<job_name > / run. \<rozszerzenia >_ w obszarze _aplikacji\_danych/zadania/ciągłego_ (dla ciągłe zadania Webjob) lub _aplikacji\_danych/zadania/wyzwalane_ (dla wyzwalane Zadania Webjob). Aby uzyskać więcej informacji, zobacz [dokumentacji zadań Webjob Kudu](https://github.com/projectkudu/kudu/wiki/WebJobs) |
-| Funkcje | Zobacz [ciągłego wdrażania usługi Azure Functions](../azure-functions/functions-continuous-deployment.md#continuous-deployment-requirements). |
-
-Aby dostosować wdrożenia, można dołączyć _.deployment_ pliku w folderze głównym repozytorium. Aby uzyskać więcej informacji, zobacz [Dostosowywanie wdrożenia](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) i [niestandardowego skryptu wdrażania](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script).
-
-> [!NOTE]
-> Upewnij się, `git commit` wszystkie zmiany, którą chcesz wdrożyć.
->
->
+[!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user.md)]
+## <a name="deploy-from-local-git-with-kudu-builds"></a>Wdrażanie z lokalnego repozytorium Git z kompilacjami Kudu
 
-## <a name="enable-git-for-your-app"></a>Włącz Git dla aplikacji
+Najprostszym sposobem włączenia lokalnego wdrożenia Git dla aplikacji na serwerze Kudu kompilacji jest użycia powłoki chmury.
 
-Aby umożliwić wdrożenie Git dla istniejącej aplikacji usługi App Service, uruchom [ `az webapp deployment source config-local-git` ](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_local_git) w powłoce chmury.
+### <a name="create-a-deployment-user"></a>Tworzenie użytkownika wdrożenia
+
+[!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
+
+### <a name="enable-local-git-with-kudu"></a>Włącz lokalnego Git z Kudu
+
+Aby włączyć lokalne wdrożenie Git dla aplikacji na serwerze Kudu kompilacji, uruchom [ `az webapp deployment source config-local-git` ](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_local_git) w powłoce chmury.
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
@@ -97,7 +83,7 @@ Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebs
 }
 ```
 
-## <a name="deploy-your-project"></a>Wdrażanie projektu
+### <a name="deploy-your-project"></a>Wdrażanie projektu
 
 W _lokalnym oknie terminala_ dodaj zdalną platformę Azure do lokalnego repozytorium Git. Zastąp  _\<adres url >_ z adresem URL zdalnego Git pochodzący z [włączyć Git dla aplikacji](#enable-git-for-you-app).
 
@@ -113,13 +99,56 @@ git push azure master
 
 Automatyzacja specyficzne dla środowiska uruchomieniowego w danych wyjściowych, takich jak program MSBuild programu ASP.NET, może zostać wyświetlony `npm install` dla środowiska Node.js, a `pip install` dla języka Python. 
 
-Po ukończeniu wdrażania aplikacji w portalu Azure powinna teraz istnieć rekord użytkownika `git push` w **opcje wdrażania** strony.
+Przejdź do aplikacji w taki sposób, aby sprawdzić, czy zawartość jest wdrażana.
 
-![](./media/app-service-deploy-local-git/deployment_history.png)
+## <a name="deploy-from-local-git-with-vsts-builds"></a>Wdrażanie z lokalnego repozytorium Git z kompilacjami VSTS
+
+> [!NOTE]
+> Usługi aplikacji Utwórz niezbędne kompilację i wersji definicji w ramach konta usługi VSTS konta platformy Azure musi mieć rolę **właściciela** w Twojej subskrypcji platformy Azure.
+>
+
+Aby włączyć lokalne wdrożenie Git dla aplikacji na serwerze Kudu kompilacji, przejdź do aplikacji w [portalu Azure](https://portal.azure.com).
+
+W lewym obszarze nawigacji strony aplikacji, kliknij przycisk **Centrum wdrażania** > **lokalnego Git** > **Kontynuuj**. 
+
+![](media/app-service-deploy-local-git/portal-enable.png)
+
+Kliknij przycisk **VSTS ciągłego dostarczania** > **kontynuować**.
+
+![](media/app-service-deploy-local-git/vsts-build-server.png)
+
+W **Konfiguruj** strony, konfigurowanie nowego konta usługi VSTS lub określenie istniejącego konta. Gdy skończysz, kliknij przycisk **Kontynuuj**.
+
+> [!NOTE]
+> Jeśli chcesz użyć istniejącego konta usługi VSTS nie ma na liście, należy [połączenia konta usługi VSTS do subskrypcji platformy Azure](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
+
+W **testu** wybierz, czy włączyć testów obciążenia, a następnie kliknij pozycję **Kontynuuj**.
+
+W zależności od [warstwy cenowej](/pricing/details/app-service/plans/) planu usługi aplikacji może również zostać wyświetlony **wdrażanie na przemieszczania** strony. Wybierz, czy chcesz włączyć miejsc wdrożenia, a następnie kliknij przycisk **Kontynuuj**.
+
+W **Podsumowanie** , sprawdź opcje i kliknij przycisk **Zakończ**.
+
+Trwa kilka minut dla konta usługi VSTS będzie gotowa. Gdy będzie gotowy, skopiuj adres URL repozytorium Git w Centrum wdrażania.
+
+![](media/app-service-deploy-local-git/vsts-repo-ready.png)
+
+W _lokalnym oknie terminala_ dodaj zdalną platformę Azure do lokalnego repozytorium Git. Zastąp  _\<adres url >_ z adresem URL uzyskano w ostatnim kroku.
+
+```bash
+git remote add vsts <url>
+```
+
+Wypchnij na zdalną platformę Azure w celu wdrożenia aplikacji za pomocą następującego polecenia. Po wyświetleniu monitu przez Menedżera poświadczeń Git, zaloguj się przy użyciu programu Visual Studio — użytkownika. Aby uzyskać dodatkowe metody uwierzytelniania, zobacz [omówienie uwierzytelniania programu VSTS](/vsts/git/auth-overview?view=vsts).
+
+```bash
+git push vsts master
+```
+
+Po ukończeniu wdrażania można znaleźć postęp kompilacji w `https://<vsts_account>.visualstudio.com/<project_name>/_build` i postępu wdrożenia na `https://<vsts_account>.visualstudio.com/<project_name>/_release`.
 
 Przejdź do aplikacji w taki sposób, aby sprawdzić, czy zawartość jest wdrażana.
 
-## <a name="troubleshooting"></a>Rozwiązywanie problemów
+## <a name="troubleshooting-kudu-deployment"></a>Rozwiązywanie problemów z wdrażaniem Kudu
 
 Poniżej przedstawiono typowe błędy lub problemy podczas przy użyciu narzędzia Git, aby opublikować aplikację usługi aplikacji na platformie Azure:
 
@@ -178,7 +207,7 @@ git config --global http.postBuffer 524288000
 **Rozdzielczość**: dodatkowych komunikatów z 'npm błąd'! powinny być rejestrowane przed ten błąd i może zapewnić dodatkowy kontekst błędu. Znane są następujące przyczyny tego błędu i odpowiednie "npm błąd!' Komunikat:
 
 * **Plik package.json źle sformułowane**: błąd npm! Nie można odczytać zależności.
-* **Natywny moduł, który nie ma binarne dystrybucji dla systemu Windows**:
+* **Moduł macierzysty, która nie ma binarne dystrybucji dla systemu Windows**:
 
   * `npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1`
 

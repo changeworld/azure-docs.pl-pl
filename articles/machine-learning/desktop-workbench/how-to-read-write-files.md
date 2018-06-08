@@ -7,14 +7,16 @@ ms.author: haining
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/10/2017
-ms.openlocfilehash: 099ff69b396c35730471d684b59115f03ccf67d9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3e7436c4b69a27931238ea80304231394074ffe3
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831098"
 ---
 # <a name="persisting-changes-and-working-with-large-files"></a>Utrwalanie zmian i Praca z dużymi plikami
 W usłudze Azure Machine Learning eksperymenty można skonfigurować różne realizacji celów. Niektóre elementy docelowe są lokalne, na przykład komputer lokalny lub kontener Docker na komputerze lokalnym. Inne są zdalnego, takich jak kontener Docker na komputerze zdalnym lub klastra usługi HDInsight. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Machine Learning eksperymentu usługi wykonywania](experimentation-service-configuration.md). 

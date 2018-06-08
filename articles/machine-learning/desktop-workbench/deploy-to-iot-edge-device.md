@@ -7,14 +7,16 @@ ms.author: tedway
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 2/1/2018
-ms.openlocfilehash: ceab96b1ef28527c8aa2692b83d3609f133f339c
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1dffdee032c5b079aa5b81284cebe8f6471efebd
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833642"
 ---
 # <a name="deploy-an-azure-machine-learning-model-to-an-azure-iot-edge-device"></a>Wdrażanie usługi Azure Machine Learning model na urządzenia IoT Azure
 
@@ -43,7 +45,7 @@ sudo iotedgectl login --address <docker-registry-address> --username <docker-use
 ### <a name="find-the-machine-learning-container-image-location"></a>Znajdź lokalizację obrazu kontenera uczenia maszynowego
 Należy lokalizacji obrazu kontenera uczenia maszynowego. Aby znaleźć lokalizację kontenera obrazu:
 
-1. Zaloguj się do [portalu Azure](http://portal.azure.com/).
+1. Zaloguj się do witryny [Azure Portal](http://portal.azure.com/).
 2. W **rejestru kontenera Azure**, wybierz rejestru chcesz sprawdzić.
 3. W rejestrze, kliknij przycisk **repozytoria** umożliwia wyświetlenie listy wszystkich repozytoria i obrazów.
 

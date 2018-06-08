@@ -7,16 +7,18 @@ ms.author: euang
 manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 9fc0ae8929f12447123321a5c64ac89309c68dca
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: f0ba579ab204e6636a986b054555ff431438d0a5
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830677"
 ---
 # <a name="data-preparations-user-guide"></a>Podręcznik użytkownika przygotowań danych 
 Środowisko usługi Azure Machine Learning danych przygotowania zawiera wiele zaawansowanych funkcji. W tym artykule omówiono najgłębszym części środowiska.
@@ -55,7 +57,7 @@ Dla każdego źródła danych pliku wielu próbkach umożliwia generowanie i prz
 
 Istnieją różne dostępne strategie, każdy z innymi parametrami można konfigurować.
 
-#### <a name="top"></a>Najważniejsze
+#### <a name="top"></a>Pierwsze
 Ta strategia może odnosić się do plików lokalnych lub zdalnych. Trwa pierwsze N wierszy (określonego przez liczbę) do źródła danych.
 
 #### <a name="random-n"></a>Losowe N 

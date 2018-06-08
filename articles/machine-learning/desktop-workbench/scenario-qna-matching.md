@@ -8,6 +8,7 @@ editor: mezmicrosoft
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 09/15/2017
 ms.author: mez
 manager: tihazen
-ms.openlocfilehash: 081ca444aee5cd3d426ee569a98bf54c7923af79
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3695657d819f52ef04468a0f1a44828403c65373
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34835104"
 ---
 #  <a name="q--a-matching-using-azure-machine-learning-workbench"></a>Funkcja pytania i zgodne, za pomocą usługi Azure Machine Learning workbench
 Udzielenie odpowiedzi na pytania zakończone Otwórz jest trudne i często wymaga nakładu pracy od ekspertów z danej dziedziny (msp). Aby zmniejszyć zapotrzebowanie na wewnętrzny MSP, firm często tworzyć listy — często zadawane pytania (FAQ) jako sposób udzielania pomocy użytkownikom. W tym przykładzie których są wyświetlane różne metody learning skuteczne maszyny do dopasowania Otwórz zakończone zapytań do istniejące pary odpowiedzi na pytania / — często zadawane pytania. W tym przykładzie przedstawiono prosty proces budowania rozwiązania przy użyciu Azure Machine Learning Workbench. 

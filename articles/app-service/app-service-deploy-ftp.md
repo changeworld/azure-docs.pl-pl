@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2016
+ms.date: 06/05/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: 561f317cd7afd740b83709efc8a75ed515626192
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7e05e06a5abd02dd67f58a8e01bb246e318f51de
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850240"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Wdrażanie aplikacji w usłudze Azure App Service przy użyciu FTP/S
 
@@ -26,29 +27,23 @@ W tym artykule przedstawiono sposób użycia FTP i FTPS, aby wdrożyć aplikacj�
 
 Punkt końcowy FTP/S dla aplikacji jest już aktywna. Konfiguracja nie jest niezbędne do obsługi wdrożenia FTP/S.
 
-<a name="step1"></a>
-## <a name="step-1-set-deployment-credentials"></a>Krok 1: Konfigurowanie poświadczeń wdrożenia
+## <a name="open-ftp-dashboard"></a>Otwórz pulpit nawigacyjny FTP
 
-Aby uzyskać dostęp do serwera FTP dla aplikacji, najpierw poświadczenia wdrożenia. 
+W [portalu Azure](https://portal.azure.com), otwórz aplikacji [zasobu strony](../azure-resource-manager/resource-group-portal.md#manage-resources).
 
-Aby skonfigurować lub zresetować poświadczenia wdrażania, zobacz [poświadczenia wdrożenia usługi aplikacji Azure](app-service-deployment-credentials.md). W tym samouczku przedstawiono na używanie poświadczeń na poziomie użytkownika.
+Aby otworzyć pulpit nawigacyjny FTP, kliknij przycisk **ciągłego dostarczania (wersja zapoznawcza)** > **FTP** > **pulpitu nawigacyjnego**.
 
-## <a name="step-2-get-ftp-connection-information"></a>Krok 2: Pobieranie informacji o połączeniu FTP
+![Otwórz pulpit nawigacyjny FTP](./media/app-service-deploy-ftp/open-dashboard.png)
 
-1. W [portalu Azure](https://portal.azure.com), otwórz aplikacji [zasobu strony](../azure-resource-manager/resource-group-portal.md#manage-resources).
-2. Wybierz **omówienie** na lewym pasku nawigacyjnym, a następnie zanotuj wartości **użytkownika serwera FTP/wdrożenia**, **nazwa hosta FTP**, i **nazwy hosta FTPS**. 
+## <a name="get-ftp-connection-information"></a>Uzyskiwanie informacji o połączeniu FTP
 
-    ![Informacje o połączeniu FTP](./media/app-service-deploy-ftp/FTP-Connection-Info.PNG)
+Na pulpicie nawigacyjnym FTP, kliknij przycisk **kopiowania** do skopiowania FTPS poświadczenia punktu końcowego i aplikacji.
 
-    > [!NOTE]
-    > Do zapewnienia prawidłowego kontekstu serwera FTP **użytkownika serwera FTP/wdrożenia** wartość wyświetlana w portalu Azure zawiera nazwę aplikacji.
-    > Te same informacje można znaleźć po wybraniu **właściwości** na lewym pasku nawigacyjnym. 
-    >
-    > Ponadto hasła wdrożenia nigdy nie jest wyświetlana. Jeśli użytkownik zapomni hasła wdrożenia, wróć do [krok 1](#step1) i zresetuj hasło wdrożenia.
-    >
-    >
+![Kopiowanie informacji FTP](./media/app-service-deploy-ftp/ftp-dashboard.png)
 
-## <a name="step-3-deploy-files-to-azure"></a>Krok 3: Wdrażanie plików na platformie Azure
+Zaleca się, że używasz **poświadczeń aplikacji** można wdrożyć do aplikacji, ponieważ jest on unikatowy dla każdej aplikacji. Jednak jeśli klikniesz przycisk **poświadczenia użytkownika**, można ustawić poświadczeń na poziomie użytkownika, które służy do logowania FTP/S do wszystkich aplikacji usługi aplikacji w ramach subskrypcji.
+
+## <a name="deploy-files-to-azure"></a>Wdrażanie plików na platformie Azure
 
 1. Z tego klienta FTP (na przykład [programu Visual Studio](https://www.visualstudio.com/vs/community/) lub [FileZilla](https://filezilla-project.org/download.php?type=client)), Użyj zebranych do nawiązania połączenia aplikacji informacje o połączeniu.
 3. Kopiowanie plików i ich struktury katalogów odpowiednich do [ **/lokacji/wwwroot** katalogu](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) na platformie Azure (lub **/lokacji/wwwroot/App_Data/zadania/** katalogu dla zadań Webjob).
@@ -75,6 +70,12 @@ Aby wyłączyć niezaszyfrowane FTP, wybierz pozycję **FTPS tylko**. Aby całko
 
 ![Wyłącz FTP/S](./media/app-service-deploy-ftp/disable-ftp.png)
 
+## <a name="automate-with-scripts"></a>Automatyzowanie przy użyciu skryptów
+
+Do wdrożenia przy użyciu FTP [interfejsu wiersza polecenia Azure](/cli/azure), zobacz [tworzenie aplikacji sieci web i wdrażanie plików przy użyciu FTP (Azure CLI)](./scripts/app-service-cli-deploy-ftp.md).
+
+Do wdrożenia przy użyciu FTP [programu Azure PowerShell](/cli/azure), zobacz [przekazać pliki do aplikacji sieci web za pomocą protokołu FTP (PowerShell)](./scripts/app-service-powershell-deploy-ftp.md).
+
 ## <a name="troubleshoot-ftp-deployment"></a>Rozwiązywanie problemów z wdrażaniem FTP
 
 - [Jak rozwiązywać problemy z serwera FTP wdrożenia?](#how-can-i-troubleshoot-ftp-deployment)
@@ -85,13 +86,12 @@ Aby wyłączyć niezaszyfrowane FTP, wybierz pozycję **FTPS tylko**. Aby całko
 
 Pierwszym krokiem Rozwiązywanie problemów z wdrażaniem FTP jest izolowanie problem wdrażania, problem aplikacji środowiska wykonawczego.
 
-Problem wdrażania zazwyczaj wynikiem nie plików lub nieprawidłowe pliki wdrożonych aplikacji. Może zostać zlikwidowane poprzez badanie wdrożenia FTP lub wybranie ścieżki alternatywnej rozmieszczania (na przykład kontroli źródła).
+Problem wdrażania zazwyczaj wynikiem nie plików lub nieprawidłowe pliki wdrożonych aplikacji. Można rozwiązać, badanie wdrożenia FTP lub wybierając ścieżki alternatywnej rozmieszczania (na przykład kontroli źródła).
 
-Problem aplikacji środowiska wykonawczego zazwyczaj wynikiem prawidłowego zestawu plików wdrożonych aplikacji, ale zachowanie aplikacji niepoprawne. Może zostać zlikwidowane poprzez koncentrujących się na zachowanie kodu w czasie wykonywania i badania ścieżki określony błąd.
+Problem aplikacji środowiska wykonawczego zazwyczaj wynikiem prawidłowego zestawu plików wdrożonych aplikacji, ale zachowanie aplikacji niepoprawne. Można rozwiązać przez koncentrujących się na zachowanie kodu w czasie wykonywania i badania ścieżki określony błąd.
 
 Aby określić problem wdrożenia lub w czasie wykonywania, zobacz [wdrożenia, a problemy środowiska uruchomieniowego](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues).
 
- 
 ### <a name="im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue"></a>I jest niemożliwe FTP i Publikuj kod. Jak można rozwiązać ten problem?
 Sprawdź, czy wprowadzono poprawną nazwę hosta i [poświadczenia](#step-1--set-deployment-credentials). Należy także sprawdzić, czy następujące porty FTP na tym komputerze nie są blokowane przez zaporę:
 

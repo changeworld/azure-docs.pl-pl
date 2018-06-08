@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
 ms.author: jomolesk
-ms.openlocfilehash: 1b77aee3bceef13128ada34fb325240dda98bc41
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 06151b211a03a971e549e88817770ef096f3f603
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839430"
 ---
 # <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Azure zabezpieczeń i zgodności plan - środowisk standardem PCI DSS przetwarzania płatności
 
@@ -43,7 +44,7 @@ Architektura podstawowych składa się z następujących składników:
 - **Szablony wdrażania**. W tym wdrożeniu [szablonów usługi Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview#template-deployment) są używane do automatycznego wdrożenia składników architektury w Microsoft Azure, określając parametry konfiguracji podczas instalacji.
 - **Skrypty wdrażania automatycznego**. Skrypty te pomocy wdrożyć rozwiązanie end-to-end. Skrypty obejmują:
     - Instalacja modułu i [administratora globalnego](/azure/active-directory/active-directory-assign-admin-roles-azure-portal) skrypt instalacyjny jest używane do instalowania i sprawdź, czy wymagane moduły programu PowerShell i ról administratora globalnego są poprawnie skonfigurowane.
-    - Instalacja skryptu PowerShell służy do wdrażania rozwiązania end-to-end, podanego przez plik .zip oraz pliku bacpac, który zawiera pokaz wstępnie zbudowanych aplikacji sieci web z [przykładowej bazy danych SQL](https://github.com/Microsoft/azure-sql-security-sample). zawartość. Kod źródłowy dla tego rozwiązania jest gotowa do przeglądu [repozytorium kodu planu] [repozytorium kodu]. 
+    - Instalacja skryptu PowerShell służy do wdrażania rozwiązania end-to-end, podanego przez plik .zip oraz pliku bacpac, który zawiera pokaz wstępnie zbudowanych aplikacji sieci web z [przykładowej bazy danych SQL](https://github.com/Microsoft/azure-sql-security-sample) zawartości. Kod źródłowy dla tego rozwiązania jest gotowa do przeglądu na [GitHub](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms). 
 
 ## <a name="architectural-diagram"></a>Diagram architektury
 

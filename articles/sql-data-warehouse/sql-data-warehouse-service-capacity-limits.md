@@ -10,12 +10,12 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 233cba790aff60121bd1fdf43667ac48a5ef668d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b79d928f3c1c3d81fbca0b8d676d4a4cbf83369a
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644940"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839643"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Limity pojemności magazynu danych SQL
 Maksymalna dozwolona dla poszczególnych składników usługi Azure SQL Data Warehouse.
@@ -24,7 +24,7 @@ Maksymalna dozwolona dla poszczególnych składników usługi Azure SQL Data War
 | Kategoria | Opis | Maksimum |
 |:--- |:--- |:--- |
 | [Jednostki magazynu danych (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Jednostka DWU Max jednego magazynu danych SQL | Gen1: DW6000<br></br>Gen2: DW30000c |
-| [Jednostki magazynu danych (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Domyślne jednostek dtu w warstwie na serwer |54,000<br></br>Domyślnie każdy serwer SQL (na przykład myserver.database.windows.net) ma limit przydziału jednostek DTU równa 54 000, dzięki czemu do DW6000c. Ten limit przydziału jest po prostu limitem bezpieczeństwa. Może spowodować zwiększenie limitu przydziału przez [tworzenie biletu pomocy technicznej](sql-data-warehouse-get-started-create-support-ticket.md) i wybierając *przydziału* jako typ żądania.  Do obliczenia z jednostek dtu w warstwie wymaga, należy pomnożyć 7.5 przez łączną potrzebne DWU lub należy pomnożyć 9.0, przez całkowitą cDWU, potrzebne. Na przykład:<br></br>DW6000 x w wersji 7.5 = 45,000 Dtu<br></br>DW600c x 9.0 = równa 54 000 jednostek Dtu.<br></br>Twoje bieżące użycie jednostek DTU z opcji programu SQL server można wyświetlić w portalu. Limit przydziału jednostek DTU obejmuje zarówno wstrzymane, jak i niewstrzymane bazy danych. |
+| [Jednostki magazynu danych (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Domyślne jednostek dtu w warstwie na serwer |54,000<br></br>Domyślnie każdy serwer SQL (na przykład myserver.database.windows.net) ma limit przydziału jednostek DTU równa 54 000, dzięki czemu do DW6000c. Ten limit przydziału jest po prostu limitem bezpieczeństwa. Może spowodować zwiększenie limitu przydziału przez [tworzenie biletu pomocy technicznej](sql-data-warehouse-get-started-create-support-ticket.md) i wybierając *przydziału* jako typ żądania.  Do obliczenia z jednostek dtu w warstwie wymaga, należy pomnożyć 7.5 przez łączną potrzebne DWU lub należy pomnożyć 9.0, przez całkowitą cDWU, potrzebne. Na przykład:<br></br>DW6000 x w wersji 7.5 = 45,000 Dtu<br></br>DW6000c x 9.0 = równa 54 000 jednostek Dtu.<br></br>Twoje bieżące użycie jednostek DTU z opcji programu SQL server można wyświetlić w portalu. Limit przydziału jednostek DTU obejmuje zarówno wstrzymane, jak i niewstrzymane bazy danych. |
 | Połączenie z bazą danych |Otwieranie sesji jednoczesnych |1024<br/><br/>Każdy z 1024 aktywnych sesji przesyłania żądań do bazy danych magazynu danych SQL, w tym samym czasie. Uwaga: istnieją ograniczenia liczby zapytań, które mogą być wykonywane jednocześnie. Po przekroczeniu limitu współbieżności, żądanie przechodzi w stan kolejki wewnętrznej, gdzie oczekuje na przetworzenie. |
 | Połączenie z bazą danych |Maksymalna ilość pamięci dla przygotowanych instrukcji |20 MB |
 | [Zarządzanie obciążeniami](resource-classes-for-workload-management.md) |Maksymalna liczba jednoczesnych kwerend |32<br/><br/> Domyślnie usługi SQL Data Warehouse można wykonywać maksymalnie 32 zapytania jednoczesne i kolejek pozostałych zapytań.<br/><br/>Można zmniejszyć liczby równoczesnych zapytań, gdy użytkownicy są przypisane do wyższych klas zasobów lub gdy magazyn danych SQL ma mniejszy [jednostki magazynu danych](memory-and-concurrency-limits.md) ustawienie. Niektóre kwerendy, takie jak zapytania DMV zawsze mogą być uruchamiane. |

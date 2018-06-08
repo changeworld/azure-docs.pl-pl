@@ -8,17 +8,19 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 96a1b5fb-34d1-4b9b-8d99-2bb8289e0398
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 39feca23532264c1f4c17017f89b064af09e9c1c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 165180c49de75cf4b635a89dacec311d5370acd3
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34837749"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Przenoszenie danych do i z magazynu obiektów Blob Azure za pomocą łączników SSIS
 [Programu SQL Server Integration Services Feature Pack dla platformy Azure](https://msdn.microsoft.com/library/mt146770.aspx) udostępnia składników do nawiązania połączenia platformy Azure, transfer danych między Azure i lokalnego źródła danych i przetwarzania danych przechowywanych na platformie Azure.

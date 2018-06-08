@@ -9,11 +9,12 @@ ms.author: gwallace
 ms.date: 04/20/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1f34255bdbcc8761f1c68adbb2f1828521f789e4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 658686bec41fe1a6cfa8ca4ba6fe61d2e559297c
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833723"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Zarządzanie aktualizacjami dla wielu maszyn
 
@@ -34,31 +35,16 @@ Do korzystania z rozwiązania Update Management są wymagane następujące eleme
 
 ## <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
 
-Rozwiązanie Update Management jest obsługiwane w następujących systemach operacyjnych:
+Zarządzanie aktualizacjami jest obsługiwane w następujących systemach operacyjnych:
 
-### <a name="windows"></a>Windows
-
-- Windows Server 2008 lub nowszy i wdrożenia aktualizacji dla systemu Windows Server 2008 R2 z dodatkiem SP1 lub nowszego. System Nano Server nie jest obsługiwany.
-
-  Obsługa wdrażania aktualizacji dla systemu Windows Server 2008 R2 z dodatkiem SP1 wymaga programu .NET Framework 4.5 i programu Windows Management Framework 5.0 lub nowszego.
-
-- Systemy operacyjne klienta systemu Windows nie są obsługiwane.
-
-Agenci dla systemu Windows muszą być skonfigurowani do komunikowania się z serwerem Windows Server Update Services (WSUS) albo mieć dostęp do usługi Microsoft Update.
-
-> [!NOTE]
-> Program System Center Configuration Manager nie może zarządzać współbieżnie agentem dla systemu Windows.
->
-
-### <a name="linux"></a>Linux
-
-- CentOS 6 (x86/x64) i 7 (x64)
-
-- Red Hat Enterprise 6 (x86/x64) i 7 (x64)
-
-- SUSE Linux Enterprise Server 11 (x86/x64) i 12 (x64)
-
-- Ubuntu 12.04 LTS i nowsze (x86/x64)
+|System operacyjny  |Uwagi  |
+|---------|---------|
+|Windows Server 2008, Windows Server 2008 R2 RTM    | Obsługuje tylko zaktualizować ocen         |
+|Windows Server 2008 R2 z dodatkiem SP1 lub nowszy     |Windows PowerShell 4.0 lub nowszy jest wymagany ([Pobierz WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855)).</br> Windows PowerShell w wersji 5.1 ([Pobierz 5.1 WMF](https://www.microsoft.com/download/details.aspx?id=54616)) jest zalecane w przypadku bardziej niezawodne.         |
+|CentOS 6 (x86/x64) i 7 (x64)      | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
+|Red Hat Enterprise 6 (x86/x64) i 7 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
+|SUSE Linux Enterprise Server 11 (x86/x64) i 12 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
+|Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)      |Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.         |
 
 > [!NOTE]
 > Aby w przypadku systemu Ubuntu uniknąć stosowania aktualizacji poza oknem obsługi, zmień konfigurację pakietu Unattended-Upgrade tak, aby wyłączyć automatyczne aktualizacje. Aby uzyskać więcej informacji, zobacz [temat poświęcony aktualizacjom automatycznym w podręczniku systemu Ubuntu Server](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
@@ -142,7 +128,7 @@ W okienku **Nowe wdrożenie aktualizacji** podaj następujące informacje:
 
   ![Okienko „Nowe wdrożenie aktualizacji”](./media/manage-update-multi/update-select-computers.png)
 
-- **Klasyfikacja aktualizacji**: wybierz typy oprogramowania, które zostaną uwzględnione we wdrożeniu aktualizacji. Opis typów klasyfikacji, zobacz [klasyfikacje aktualizacji](automation-update-management.md#update-classifications). Dostępne są następujące typy klasyfikacji:
+- **Klasyfikacja aktualizacji**: wybierz typy oprogramowania, które zostaną uwzględnione we wdrożeniu aktualizacji. Opis typów klasyfikacji znajduje się w [klasyfikacjach aktualizacji](automation-update-management.md#update-classifications). Dostępne są następujące typy klasyfikacji:
   - Aktualizacje krytyczne
   - Aktualizacje zabezpieczeń
   - Pakiety zbiorcze aktualizacji
@@ -151,6 +137,9 @@ W okienku **Nowe wdrożenie aktualizacji** podaj następujące informacje:
   - Aktualizacje definicji
   - Narzędzia
   - Aktualizacje
+
+- **Aktualizacje, które mają zostać wykluczone** — spowoduje to otwarcie **wykluczyć** strony. Wprowadź w KB/s lub nazwy pakietu, które mają zostać wykluczone.
+
 - **Ustawienia harmonogramu**: możesz zaakceptować domyślną datę i godzinę, czyli 30 minut po bieżącej godzinie. Możesz też określić inny czas.
    Możesz też określić, czy wdrożenie ma występować raz, czy zgodnie z harmonogramem cyklicznym. Aby skonfigurować harmonogram cykliczny, wybierz opcję **Cyklicznie** w obszarze **Cykl**.
 

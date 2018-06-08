@@ -12,14 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 06/07/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 05dd42b049c75b9ea592ffe341f44e3b02b9757f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: fa2ee4df9a0a28c08237f30fcf6a4bac50c21100
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849512"
 ---
 # <a name="asdk-administration-basics"></a>Podstawy administracji ASDK 
 Istnieje kilka kwestii, które trzeba znać, jeśli zaczynasz administracji Azure stosu Development Kit (ASDK). W tych wskazówkach zawiera omówienie roli jako operator Azure stosu w środowisku oceny i jak zapewnić użytkownikom testu może stać się produktywności szybko.
@@ -28,7 +29,7 @@ Najpierw należy przejrzeć [co to jest Azure stosu Development Kit?](asdk-what-
 
 Takich jak Azure Azure stosu innovates szybko tak regularnie udostępnimy nowe kompilacje ASDK. Jednak nie można uaktualnić ASDK jak stosu Azure zintegrowanych systemów wdrożeń. Tak, jeśli chcesz przejść do ostatniej kompilacji, należy całkowicie [ponownie wdrożyć ASDK](asdk-redeploy.md). Nie można zastosować pakietów aktualizacji. Ten proces trwa, ale korzyścią jest to, że można wypróbować najnowsze funkcje jak tylko staną się dostępne. 
 
-## <a name="what-account-should-i-use"></a>Jakiego konta należy użyć?
+## <a name="what-account-should-i-use"></a>Z jakiego konta mam korzystać?
 Istnieje kilka uwagi dotyczące konta, które należy zwrócić uwagę podczas zarządzania Azure stosu. Szczególnie w przypadku wdrożeń za pomocą systemu Windows Server Active Directory Federation Services (AD FS) jako dostawca tożsamości, a nie usługi Azure Active Directory (Azure AD). Następujące uwagi dotyczące konta dotyczą zarówno stosu Azure zintegrowanych systemów i ASDK wdrożenia:
 
 |Konto|Azure AD|AD FS|
@@ -64,5 +65,5 @@ Dla zestawu SDK, jedyną opcją pomocy technicznej jest, aby zadać pytania doty
 > Ponieważ ASDK środowiska do oceny, nie jest oficjalną obsługiwane oferowane za pośrednictwem usług obsługi klienta firmy Microsoft (CSS).
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Wdrażanie ASDK](asdk-deploy.md)
+[Wdrażanie ASDK](asdk-install.md)
 

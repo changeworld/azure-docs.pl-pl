@@ -6,31 +6,39 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/29/2018
+ms.date: 06/08/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8cbf379e167f854d495704bc0919789dcbafd8e1
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: db3f616d85c21f01c751fd82532289593a6e7e45
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850573"
 ---
 # <a name="deploy-a-container-group"></a>Wdrożenie grupy kontenera
 
 Wystąpień kontenera platformy Azure obsługuje wdrażanie wielu kontenerów na jednym hoście przy użyciu [grupy kontenerów](container-instances-container-groups.md). Jest to przydatne podczas kompilowania aplikacji boczną rejestrowania, monitorowania lub dowolnej innej konfiguracji gdzie usługa musi drugi dołączony proces.
 
-Ten dokument przeprowadzi Cię przez systemem konfiguracji proste boczną wielu kontenera przez wdrożenie szablonu usługi Azure Resource Manager.
+Istnieją dwie metody wdrażania grup usługi kontenera przy użyciu wiersza polecenia platformy Azure:
+
+* Wdrożenie szablonu usługi Resource Manager (w tym artykule)
+* [Wdrażanie plików yaml programu](container-instances-multi-container-yaml.md)
+
+Wdrażanie za pomocą szablonu usługi Resource Manager zaleca się, gdy zajdzie potrzeba wdrożenia usługi Azure dodatkowe zasoby (na przykład udział plików Azure) w czasie wdrażania wystąpienia kontenera. Ze względu na format yaml programu charakter bardziej zwięzły, wdrożenia przy użyciu pliku yaml programu jest zalecana, gdy wdrożenie obejmuje *tylko* wystąpień kontenera.
 
 > [!NOTE]
 > Kontener wielu grup są obecnie ograniczone do kontenerów systemu Linux. Podczas gdy pracujemy, aby udostępnić wszystkie funkcje na potrzeby kontenerów systemu Windows, bieżące różnice dotyczące platform możesz znaleźć w temacie [Limity przydziałów i dostępność regionów dla usługi Azure Container Instances](container-instances-quotas.md).
 
 ## <a name="configure-the-template"></a>Konfigurowanie szablonu
 
-Utwórz plik o nazwie `azuredeploy.json` i skopiuj następujący ciąg JSON do niego.
+Informacje zawarte w tym artykule przeprowadzenie systemem konfiguracji proste boczną wielu kontenera przez wdrożenie szablonu usługi Azure Resource Manager.
 
-W tym przykładzie grupa kontenera o dwa kontenery publicznego adresu IP i dwa porty narażonych jest zdefiniowany. Aplikacja internetowy jest uruchamiana pierwszy kontenera w grupie. Drugi kontenera boczną, zgłasza żądanie HTTP do aplikacji głównej sieci web za pośrednictwem sieci lokalnej grupy.
+Rozpocznij od utworzenia pliku o nazwie `azuredeploy.json`, następnie skopiuj do niego następujący kod JSON.
 
-```json
+Ten szablon usługi Resource Manager definiuje grupę kontenera o dwa kontenery, publiczny adres IP i dwa porty uwidocznione. Aplikacja internetowy jest uruchamiana pierwszy kontenera w grupie. Drugi kontenera boczną, zgłasza żądanie HTTP do aplikacji głównej sieci web za pośrednictwem sieci lokalnej grupy.
+
+```JSON
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -118,7 +126,7 @@ W tym przykładzie grupa kontenera o dwa kontenery publicznego adresu IP i dwa p
 
 Aby użyć rejestru obrazu Kontener prywatny, należy dodać obiektu do dokumentu JSON o następującym formacie. Na przykład implementacji tej konfiguracji, zobacz [odwołania do szablonu Menedżera zasobów ACI] [ template-reference] dokumentacji.
 
-```json
+```JSON
 "imageRegistryCredentials": [
   {
     "server": "[parameters('imageRegistryLoginServer')]",
@@ -146,13 +154,13 @@ W ciągu kilku sekund powinna pojawić się początkowa odpowiedź z platformy A
 
 ## <a name="view-deployment-state"></a>Wyświetl stan wdrożenia
 
-Aby wyświetlić stan wdrożenia, użyj [Pokaż kontenera az] [ az-container-show] polecenia. To polecenie zwróci elastycznie publiczny adres IP za pomocą której aplikacja jest możliwy.
+Aby wyświetlić stan wdrożenia, należy użyć następującego [Pokaż kontenera az] [ az-container-show] polecenia:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name myContainerGroup --output table
 ```
 
-Dane wyjściowe:
+Jeśli chcesz wyświetlić działającej aplikacji, przejdź do adresu IP w przeglądarce. Na przykład adres IP jest `52.168.26.124` w tym przykładzie danych wyjściowych:
 
 ```bash
 Name              ResourceGroup    ProvisioningState    Image                                                           IP:ports               CPU/Memory       OsType    Location

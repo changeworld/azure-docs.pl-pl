@@ -8,18 +8,19 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: marsma
-ms.openlocfilehash: 47abb4c305b1997fa3f44c07aa85dd01e5a94f1f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a030582c885dd0a5680bd23046ea2a9c0329701a
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830075"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Zainstalować tajny woluminu w wystąpień kontenera platformy Azure
 
 Dowiedz się, jak zainstalować *klucz tajny* woluminu w swoich wystąpień kontenera do przechowywania i pobierania informacji poufnych przez kontenery w Twoich grupach kontenera.
 
 > [!NOTE]
-> Instalowanie *klucz tajny* wolumin jest obecnie ograniczone do kontenerów systemu Linux. Podczas gdy pracujemy, aby udostępnić wszystkie funkcje na potrzeby kontenerów systemu Windows, bieżące różnice dotyczące platform możesz znaleźć w temacie [Limity przydziałów i dostępność regionów dla usługi Azure Container Instances](container-instances-quotas.md).
+> Instalowanie *klucz tajny* wolumin jest obecnie ograniczone do kontenerów systemu Linux. Dowiedz się, jak przekazać zmiennych środowiskowych bezpiecznych kontenerów w systemach Windows i Linux w [Ustaw zmienne środowiskowe](container-instances-environment-variables.md). Podczas gdy pracujemy, aby udostępnić wszystkie funkcje na potrzeby kontenerów systemu Windows, bieżące różnice dotyczące platform możesz znaleźć w temacie [Limity przydziałów i dostępność regionów dla usługi Azure Container Instances](container-instances-quotas.md).
 
 ## <a name="secret-volume"></a>tajny woluminu
 

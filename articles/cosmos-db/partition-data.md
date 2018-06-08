@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rimman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3fe2dbab876d1ef55ff05315cf7c823d0444663a
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: bd1b52dd32976ce65458e1dfe1b50d228fbd6d0e
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808676"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850529"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Partycja i skali w usłudze Azure DB rozwiązania Cosmos
 
@@ -64,15 +64,16 @@ Azure DB rozwiązania Cosmos używa skrótu na podstawie partycjonowania. Podcza
 
 Wybór klucza partycji jest ważnych decyzji, które należy podjąć w czasie projektowania. Wybierz nazwę właściwości, który ma szeroki zakres wartości i ma nawet wzorce dostępu. Jest najlepszym rozwiązaniem jest klucz partycji z dużą liczbą unikatowe wartości (np., setek lub tysięcy). Umożliwia równomierne rozłożenie obciążenia na tych wartości. Klucz partycji idealna to taki, który pojawia się często jako filtr zapytania i jest wystarczające, aby upewnić się, że rozwiązanie jest skalowalna.
 
-Jeśli partycji fizycznej osiągnie limit magazynu i danych na partycji ma ten sam klucz partycji, zwraca bazy danych Azure rozwiązania Cosmos *"klucza partycji Osiągnięto maksymalny rozmiar 10 GB"* komunikat i partycja nie jest podzielona. Wybór stanowi dobry klucz partycji jest bardzo ważne. Partycje są koncepcji wewnętrznej bazy danych Azure rozwiązania Cosmos i przejściowych. Przy założeniu, jak wiele partycji są przydzielane na niektórych przepustowości jest dość niepoprawny. Azure DB rozwiązania Cosmos jest automatycznie skalowany partycje oparte na obciążenie. Dlatego nie należy corelate projektu bazy danych na podstawie liczby partycji zamiast tego należy upewnić się, że wybierz klucz partycji prawo. 
+Jeśli partycji fizycznej osiągnie limit magazynu i danych na partycji ma ten sam klucz partycji, zwraca bazy danych Azure rozwiązania Cosmos *"klucza partycji Osiągnięto maksymalny rozmiar 10 GB"* komunikat i partycja nie jest podzielona. Wybór stanowi dobry klucz partycji jest bardzo ważne. Partycje fizycznych są koncepcji wewnętrznej bazy danych Azure rozwiązania Cosmos i przejściowych. Azure DB rozwiązania Cosmos jest automatycznie skalowany liczby partycji fizycznej oparte na obciążenie. Dlatego nie należy corelate projektu bazy danych na podstawie liczby partycji fizycznej zamiast tego należy upewnić się, że wybierz klucz partycji w prawo (partycji logicznej). 
 
 Wybierz klucz partycji tak, aby:
 
-* Rozkład danych jest nawet przez wszystkich kluczy.
-* Obciążenie jest nawet przez wszystkich kluczy.
-* Preferowana znajdować się zestaw kluczy jako klucze partycji niż jeden klucz.  Powoduje zwiększenie liczby kluczy, nawet rozkład obciążenia.
+* Dystrybucja magazynu jest nawet przez wszystkich kluczy.
+* Rozkład woluminu żądań w danym punkcie w czasie jest nawet przez wszystkich kluczy.
+* Zapytania, które są wywoływane z wysoką współbieżności może wydajnie kierowane przez dołączenie klucza partycji do predykatu filtru.  
+* Wybieranie klucza partycji o wyższej wartości cardinality jest zazwyczaj preferowana — becaue go zwykle zapewnia większą dystrybucji i skalowalność. Na przykład klucz złożony może zostać utworzona przez łączenie wartości z wiele właściwości w celu zwiększenia kardynalność. 
 
-Po wybraniu klucza partycji z powyżej zagadnienia, nie trzeba martwić się o numer partycji lub jaka przepustowość jest przydzielona dla każdej partycji fizycznej skalowania każdej partycji niezależnie i liniowo zgodnie z potrzebami.
+Gdy wybierz klucz partycji z powyżej zagadnienia, nie trzeba martwić się o numer partycji lub jaka przepustowość jest przydzielona dla każdej partycji fizycznej, zgodnie z bazy danych Azure rozwiązania Cosmos skaluje limit liczby partycji fizycznej i można również skalować pojedynczych partycji zgodnie z potrzebami.
 
 Kontenery DB rozwiązania Cosmos Azure mogą być tworzone jako *stałej* lub *nieograniczone* w portalu Azure. Kontenery o stałym rozmiarze są ograniczone do 10 GB, a ich maksymalna przepływność wynosi 10 000 jednostek żądań na sekundę. Aby utworzyć kontener jako nieograniczone, należy określić klucz partycji i minimalnej przepustowości 1 000 RU/s. Kontenery DB rozwiązania Cosmos Azure można również konfigurować udostępnianie przepustowość między zestaw kontenery, w których każdego kontenera należy zdefiniuj partycji klucza i może zwiększyć nieograniczone.
 

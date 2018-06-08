@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 5dc5348a-4488-4536-99eb-ff105be9b160
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 5bf065d8e91bd4ebb4cc3932c0525cb091b26b38
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: bb49fd2fe7f72e211fbbda7cffdd2308c2c36fba
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834237"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning"></a>Ocenianie wydajności modelu w usłudze Azure Machine Learning
 W tym artykule przedstawiono sposób oceny wydajności modelu w usłudze Azure Machine Learning Studio i zawiera krótki opis dostępnych metryk dla tego zadania. Dostępne są trzy typowe scenariusze uczenia nadzorowanego: 
@@ -157,7 +159,7 @@ Ustaw ułamek wystąpień można użyć do trenowania w [podziału danych] [ spl
 
 ![Ocena Wieloklasowej klasyfikatora](./media/evaluate-model-performance/10.png)
 
-Figure 10. Ocena Wieloklasowej klasyfikatora
+Rysunek 10. Ocena Wieloklasowej klasyfikatora
 
 ### <a name="inspecting-the-evaluation-results"></a>Sprawdzanie wyników oceny
 Uruchom eksperyment, a następnie kliknij port wyjściowy [Evaluate Model][evaluate-model]. Wyniki oceny są prezentowane w postaci macierzy pomyłek, w tym przypadku. Porównanie przewidywane wystąpień dla wszystkich klas 3 rzeczywistych pokazuje macierzy.
@@ -171,11 +173,11 @@ Jak wspomniano wcześniej, można wykonać powtarzane szkolenia, ocenianie i oce
 
 ![Krzyżowe sprawdzanie modelu Wieloklasowej klasyfikacji](./media/evaluate-model-performance/12.png)
 
-Figure 12. Weryfikowanie między modelu Wieloklasowej klasyfikacji.
+Rysunek 12. Weryfikowanie między modelu Wieloklasowej klasyfikacji.
 
 ![Wyników krzyżowego sprawdzania poprawności modelu Wieloklasowej klasyfikacji](./media/evaluate-model-performance/13.png)
 
-Figure 13. Wyników krzyżowego sprawdzania poprawności modelu Wieloklasowej klasyfikacji.
+Rysunek 13. Wyników krzyżowego sprawdzania poprawności modelu Wieloklasowej klasyfikacji.
 
 <!-- Module References -->
 [cross-validate-model]: https://msdn.microsoft.com/library/azure/75fb875d-6b86-4d46-8bcc-74261ade5826/

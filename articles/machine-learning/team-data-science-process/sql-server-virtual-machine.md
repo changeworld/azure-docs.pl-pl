@@ -8,17 +8,19 @@ manager: jhubbard
 editor: ''
 ms.assetid: 3949fb2c-ffab-49fb-908d-27d5e42f743b
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: deguhath
-ms.openlocfilehash: 31612f56e996ba0b609a34dd556ede3a0ac498f9
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 39bdbce4ada225c0fa7df8559f68b591ccfc68b7
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34838660"
 ---
 # <a name="heading"></a>Dane procesu w maszynie wirtualnej serwera SQL na platformie Azure
 W tym dokumencie opisano sposób eksplorować dane i generowanie funkcji danych przechowywanych na maszynie Wirtualnej z programu SQL Server na platformie Azure. Można to zrobić przy użyciu języka programowania, takich jak Python lub wrangling danych przy użyciu programu SQL.

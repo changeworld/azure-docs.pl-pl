@@ -12,19 +12,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/19/2018
+ms.date: 06/06/2018
 ms.author: barbkess
 ms.reviewer: luleon
-ms.openlocfilehash: 1609942269a0c737239cf4198289fdc44ade2b32
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d7e237e1e9daae3830f9a9943d54bc6bfa90a34c
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830830"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Przypisanie użytkownika lub grupę do aplikacji przedsiębiorstwa w usłudze Azure Active Directory
 Aby przypisać użytkownika lub grupę do aplikacji w przedsiębiorstwie, musi mieć odpowiednie uprawnienia do zarządzania aplikacjami przedsiębiorstwa, a musi być administratorem globalnym katalogu.
+
+> [!NOTE]
+> Funkcje omówione w tym artykule wymagają licencji usługi Azure Active Directory Premium P1 lub Premium P2. Aby uzyskać więcej informacji, zobacz [cennik usługi Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory).
+
 > [!NOTE]
 > For Applications firmy Microsoft (takich jak aplikacje pakietu Office 365) Przypisz użytkowników do aplikacji w organizacji za pomocą programu PowerShell.
+
 
 ## <a name="how-do-i-assign-user-access-to-an-enterprise-app-in-the-azure-portal"></a>Jak przypisać dostępu użytkownika do aplikacji przedsiębiorstwa w portalu Azure?
 1. Zaloguj się do [portalu Azure](https://portal.azure.com) przy użyciu konta, które jest administratorem globalnym katalogu.
@@ -76,7 +82,7 @@ Aby przypisać grupę do aplikacji w organizacji, należy zastąpić `Get-AzureA
 
 ### <a name="example"></a>Przykład
 
-W tym przykładzie przypisuje użytkownika Simona Britta do [Microsoft Analytics pracy](https://products.office.com/en-us/business/workplace-analytics) aplikacji przy użyciu programu PowerShell.
+W tym przykładzie przypisuje użytkownika Simona Britta do [Microsoft Analytics pracy](https://products.office.com/business/workplace-analytics) aplikacji przy użyciu programu PowerShell.
 
 1. W programie PowerShell przypisać odpowiednie wartości zmiennych $username, nazwa_aplikacji $ i $app_role_name. 
 

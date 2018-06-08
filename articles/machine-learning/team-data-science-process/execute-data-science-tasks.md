@@ -7,17 +7,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: deguhath
-ms.openlocfilehash: 5c617c60ff51d0b1e7717b28b0372efe63c1ee18
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: ed402f9730136fdb8a4d07dd291599c567637600
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34838385"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Wykonanie zadania nauki danych: eksploracji, modelowania i wdrażanie
 
@@ -92,14 +94,17 @@ Istnieją różne podejścia i platformy, aby umieścić modeli w środowisku pr
 - [Wdrażania modelu w programie SQL server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
+> [!NOTE]
+> Przed wdrożeniem jeden musi upewnić się, że opóźnienie oceniania modelu jest niski do użycia w środowisku produkcyjnym.
 >
->
->Uwaga: Przed ich wdrożeniem, jeden musi upewnić się, że opóźnienie oceniania modelu jest niski do użycia w środowisku produkcyjnym.
 >
 
 Dalsze przykłady są dostępne w wskazówki, które pokazują wszystkie kroki procesu **określonych scenariuszy**. Wymieniono i połączone z opisami miniatur w [wskazówki przykład](walkthroughs.md) artykułu. Pokazują one sposób łączenia chmury, narzędzia lokalnych i usług w przepływie pracy lub potoku, aby utworzyć aplikację inteligentnego.
 
-Uwaga: Do wdrożenia za pomocą usługi Azure Machine Learning Studio, zobacz [wdrażanie usługi sieci web Azure Machine Learning](../studio/publish-a-machine-learning-web-service.md).
+> [!NOTE]
+> Wdrożenie przy użyciu usługi Azure Machine Learning Studio, zobacz [wdrażanie usługi sieci web Azure Machine Learning](../studio/publish-a-machine-learning-web-service.md).
+>
+>
 
 ### <a name="ab-testing"></a>A / B, testowanie
 W przypadku wielu modeli w środowisku produkcyjnym, może być przydatne do wykonania [A / B, testowanie](https://en.wikipedia.org/wiki/A/B_testing) porównanie wydajności modeli. 
@@ -108,6 +113,7 @@ W przypadku wielu modeli w środowisku produkcyjnym, może być przydatne do wyk
 ## <a name="next-steps"></a>Kolejne kroki
 
 [Śledzenie postępu projektów analizy danych](track-progress.md) pokazuje, jak naukowca danych można śledzić postęp projektu analizy danych.
- 
+
+[Model operacji i CI/CD](ci-cd-flask.md) pokazuje, jak CI/CD może odbywać się przy użyciu modeli rozwinięte.
 
 

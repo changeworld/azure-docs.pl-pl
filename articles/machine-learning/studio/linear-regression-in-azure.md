@@ -10,16 +10,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 417ae6ab-de4f-4bdd-957a-d96133234656
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 2ea5a2720542217d3bb6a0a2b1309312fb74a953
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 162fc96c44db3c92103e12922de14b543daec9bf
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836229"
 ---
 # <a name="using-linear-regression-in-azure-machine-learning"></a>Używanie regresji liniowej w usłudze Azure Machine Learning
 > *Kate Baroni* i *Ben Boatman* są architekci rozwiązań w firmy Microsoft danych usługi Insights centrum doskonałości przedsiębiorstwa. W tym artykule opisano w nich ich obsługi migracji na istniejący pakiet analizy regresji rozwiązanie oparte na chmurze za pomocą usługi Azure Machine Learning. 
@@ -81,7 +83,7 @@ Stosowania zaleceń, firma Microsoft uzyskuje do linii bazowej wydajności w us�
 | --- |:---:|:---:|:---:|
 | Wartość etykietą |Rzeczywiste (numeryczne) |tym samym |tym samym |
 | Uczeń |Excel -> dane analizy -> regresji |Regresji liniowej. |Regresja liniowa |
-| Opcje uczeń |ND |Wartości domyślne |zwykłe najmniejszych kwadratów<br />L2 = 0,005 |
+| Opcje uczeń |ND |Domyślne |zwykłe najmniejszych kwadratów<br />L2 = 0,005 |
 | Zestaw danych |26 wierszy, funkcje 3, 1 etykiety. Wszystkie liczbowe. |tym samym |tym samym |
 | Podziel: pociągu |Excel ćwiczenie najpierw 18 wierszy, przetestowane na ostatnie 8 wierszy. |tym samym |tym samym |
 | Podziel: testu |Formuła regresji stosowany do wierszy ostatnie 8 w programie Excel |tym samym |tym samym |
@@ -123,7 +125,7 @@ Następnie planujemy Dołącz algorytmy dodatkowe, takie jak [Estymacja Bayesian
 
 Jeśli chcesz wypróbować regresji dobrej zestawu danych, aby spróbować jest dataset próbki energii wydajność regresji ma wiele atrybutów wartości liczbowych. Zestaw danych jest dostarczane jako część przykładowych zestawów danych w usłudze Machine Learning Studio. Szereg modułów szkoleniowych służy do prognozowania ogrzewania obciążenia lub chłodzenia obciążenia. Wykres poniżej znajduje się porównanie wydajności różnych regresji uzyskuje informacje o względem zapotrzebowania na energię przewidywania zestawu danych dla Zmienna docelowa Cooling obciążenia: 
 
-| Model | Oznacza błąd absolutny | Błąd kwadrat średniej głównego | Względny błąd absolutny | Względna kwadrat błąd | Współczynnik determinacji |
+| Modelowanie | Oznacza błąd absolutny | Błąd kwadrat średniej głównego | Względny błąd absolutny | Względna kwadrat błąd | Współczynnik determinacji |
 | --- | --- | --- | --- | --- | --- |
 | Drzewo decyzyjne boosted |0.930113 |1.4239 |0.106647 |0.021662 |0.978338 |
 | Regresja liniowa (spadku gradientu) |2.035693 |2.98006 |0.233414 |0.094881 |0.905119 |

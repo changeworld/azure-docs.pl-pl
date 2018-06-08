@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: 4c9e7ec65db80e0af91645d70cea39bb1a396791
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: ff658fd14700e9fdf66b9d929da133f7a3b3f3a0
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831789"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Omówienie API raportowania dla przedsiębiorstw
 Interfejsy API raportowania umożliwiają klientom Enterprise Azure programowo ściągania danych rozliczeń i zużycia do narzędzia do analizy danych preferowany. 
@@ -30,7 +31,7 @@ Interfejsy API raportowania umożliwiają klientom Enterprise Azure programowo �
 
 |Klucz nagłówka żądania | Wartość|
 |-|-|
-|Autoryzacja| Określ wartość w następującym formacie: **elementu nośnego {API_KEY}** <br/> Przykład: eyr elementu nośnego... 09|
+|Autoryzacja| Określ wartość w następującym formacie: **elementu nośnego {API_KEY}** <br/> Przykład: eyr elementu nośnego... 09| 
 
 ## <a name="consumption-apis"></a>Interfejsy API zużycie
 Punktu końcowego struktury Swagger jest dostępna [tutaj](https://consumption.azure.com/swagger/ui/index) dla interfejsów API opisanego poniżej którego powinien umożliwiają łatwe introspection interfejsu API oraz do generowania zestawy SDK klientów przy użyciu [AutoRest](https://github.com/Azure/AutoRest) lub [programu Swagger CodeGen](http://swagger.io/swagger-codegen/). Począwszy od 1 maja 2014 danych jest dostępna za pośrednictwem tego interfejsu API. 
@@ -50,7 +51,7 @@ Elementy etag zostanie zwrócony w odpowiedzi na wszystkie powyższe interfejsu 
  **Lista rozliczeń okresów** — [rozliczeń API okresów](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) zwraca listę rozliczeń okresów, które mają dane dotyczące zużycia dla określonej rejestracji w odwrotnej kolejności. Każdego okresu zawiera właściwość wskazujący trasę interfejsu API dla cztery zestawy danych - BalanceSummary, UsageDetails opłat w witrynie Marketplace i arkusza cen.
 
 
-## <a name="api-response-codes"></a>Kody odpowiedzi interfejsu API  
+## <a name="api-response-codes"></a>Kody odpowiedzi interfejsu API   
 |Kod stanu odpowiedzi|Komunikat|Opis|
 |-|-|-|
 |200| OK|Brak błędów|

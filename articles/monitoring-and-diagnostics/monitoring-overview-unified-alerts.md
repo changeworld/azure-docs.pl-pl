@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2018
+ms.date: 06/07/2018
 ms.author: mamit,bwren
 ms.custom: ''
-ms.openlocfilehash: dac8052a96c98130891a9ea31994198e331e314d
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 699dff42846ee1f9d42980feca55d8a79e2514e3
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726469"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839847"
 ---
 # <a name="unified-alerts-in-azure-monitor"></a>Ujednolicone alertów w monitorze Azure
 
@@ -104,6 +104,8 @@ Alerty są dostępne przez kilka Azure monitorowanie usług. Aby uzyskać inform
 | Application Insights | Badania dostępności sieci Web | Nie jest obsługiwany w ujednoliconego alerty.  Zobacz [alerty testu sieci Web](../application-insights/app-insights-monitor-web-app-availability.md). Dostępne dla wszystkich witryn sieci Web narzędzia do wysyłania danych do usługi Application Insights. Otrzymasz powiadomienie, gdy dostępność lub czasu odpowiedzi witryny sieci Web jest poniżej oczekiwań. |
 
 ## <a name="enhanced-unified-alerts-public-preview"></a>Ulepszone ujednoliconego alerty (publicznej wersji zapoznawczej)
+> [!NOTE]
+>  Funkcje w tej sekcji będzie dostępna wkrótce. Może wyglądać w wersji portalu jeszcze. 
 
 Środowisko rozszerzone alerty ujednoliconego został wydany w publicznej wersji zapoznawczej monitora Azure 1 czerwca 2018. To środowisko opiera się na zalet [unified alerty](#overview) wydane 2018 marca i zapewnia możliwość zarządzania i agregowanie poszczególnych alertów Oprócz modyfikowania stan alertu. W tej sekcji opisano nowe funkcje i jak przechodzić nowych alertów stron w portalu Azure.
 
