@@ -39,7 +39,7 @@
       href: ssl-overview.md
     - name: Omówienie zasad protokołu SSL
       href: application-gateway-ssl-policy-overview.md
-    - name: Zapora aplikacji sieci Web
+    - name: Zapora aplikacji internetowej
       href: waf-overview.md
     - name: Routing adresów URL
       href: url-route-overview.md
@@ -48,24 +48,39 @@
     - name: Obsługa przekierowania
       href: redirect-overview.md
     - name: Obsługa wielu dzierżaw
+      href: application-gateway-web-app-overview.md
     - name: Monitorowanie kondycji
       href: application-gateway-probe-overview.md
     - name: Obsługa protokołu WebSocket
       href: application-gateway-websocket.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Tworzenie bramy aplikacji
+    - name: Zarządzanie ruchem internetowym
       items:
+        - name: Azure PowerShell
+          href: tutorial-manage-web-traffic-powershell.md
         - name: Szablon
           href: create-vmss-template.md
-        - name: Aplikacje internetowe — PowerShell
-          href: create-web-app.md
-        - name: Konfigurowanie wewnętrznego modułu równoważenia obciążenia
-          href: application-gateway-ilb.md
-    - name: Konfigurowanie kończenia żądań protokołu SSL — portal
-      href: create-ssl-portal.md
-    - name: Hostowanie wielu witryn — portal
-      href: create-multiple-sites-portal.md
+    - name: Konfigurowanie wewnętrznego modułu równoważenia obciążenia
+      items:
+        - name: Azure PowerShell
+          href: application-gateway-ilb-arm.md
+    - name: Konfigurowanie kończenia żądań protokołu SSL
+      items:
+        - name: Kończenie żądań SSL przy użyciu witryny Azure Portal
+          href: create-ssl-portal.md
+        - name: Kończenie żądań protokołu SSL przy użyciu programu Azure PowerShell
+          href: tutorial-ssl-powershell.md
+        - name: Odnawianie certyfikatów
+          href: renew-certificates.md
+        - name: Konfigurowanie zasad protokołu SSL
+          href: application-gateway-configure-ssl-policy-powershell.md
+    - name: Konfigurowanie zapory aplikacji internetowej
+      items:
+        - name: Azure Portal
+          href: application-gateway-web-application-firewall-portal.md
+        - name: Azure PowerShell
+          href: tutorial-restrict-web-traffic-powershell.md
     - name: Dostosowywanie reguł zapory aplikacji internetowych
       items:
         - name: Azure Portal
@@ -74,40 +89,36 @@
           href: application-gateway-customize-waf-rules-powershell.md
         - name: Interfejs wiersza polecenia platformy Azure
           href: application-gateway-customize-waf-rules-cli.md
-    - name: Przekierowywanie ruchu zewnętrznego
+    - name: Kierowanie według adresu URL
       items:
+        - name: Azure Portal
+          href: create-url-route-portal.md
         - name: Azure PowerShell
-          href: redirect-external-site-powershell.md
-        - name: Interfejs wiersza polecenia platformy Azure
-          href: redirect-external-site-cli.md
-    - name: Przekierowywanie protokołu HTTP do HTTPS
+          href: tutorial-url-route-powershell.md
+    - name: Hostowanie wielu witryn
       items:
+        - name: Azure Portal
+          href: create-multiple-sites-portal.md
         - name: Azure PowerShell
-          href: redirect-http-to-https-powershell.md
-        - name: Interfejs wiersza polecenia platformy Azure
-          href: redirect-http-to-https-cli.md
-    - name: Przekierowywanie ruchu wewnętrznego
+          href: tutorial-multiple-sites-powershell.md
+    - name: Przekierowywanie ruchu
       items:
-        - name: Azure PowerShell
-          href: redirect-internal-site-powershell.md
-        - name: Interfejs wiersza polecenia platformy Azure
-          href: redirect-internal-site-cli.md
-    - name: Ograniczanie ruchu internetowego — portal
-      href: create-waf-portal.md
-    - name: Kierowanie w oparciu o adres URL — portal
-      href: create-url-route-portal.md
-    - name: Zarządzanie ruchem internetowym przy użyciu programu Azure PowerShell
-      href: tutorial-manage-web-traffic-powershell.md
-    - name: Ograniczanie ruchu internetowego przy użyciu programu Azure PowerShell
-      href: tutorial-restrict-web-traffic-powershell.md
-    - name: Kończenie żądań protokołu SSL przy użyciu programu Azure PowerShell
-      href: tutorial-ssl-powershell.md
-    - name: Odnawianie certyfikatów
-      href: renew-certificates.md
-    - name: Hostowanie wielu witryn przy użyciu programu Azure PowerShell
-      href: tutorial-multiple-sites-powershell.md
-    - name: Kierowanie ruchu sieciowego przy użyciu programu Azure PowerShell
-      href: tutorial-url-route-powershell.md
+        - name: HTTP do HTTPS
+          items:
+            - name: Azure PowerShell
+              href: redirect-http-to-https-powershell.md
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: redirect-http-to-https-cli.md
+        - name: Przekierowywanie ruchu wewnętrznego
+          items:
+            - name: Azure PowerShell
+              href: redirect-internal-site-powershell.md
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: redirect-internal-site-cli.md
+    - name: Obsługa wielu dzierżaw
+      items:
+        - name: Konfigurowanie obsługi wielu dzierżaw
+          href: create-web-app.md
     - name: Przekierowywanie ruchu sieciowego przy użyciu programu Azure PowerShell
       href: tutorial-url-redirect-powershell.md
     - name: Tworzenie strefowo nadmiarowej bramy aplikacji

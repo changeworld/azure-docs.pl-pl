@@ -159,14 +159,12 @@
       items:
         - name: Galeria elementów Runbook
           href: automation-runbook-gallery.md
-        - name: Monitorowanie elementów runbook za pomocą dzienników aktywności
-          href: automation-alert-activity-log.md
+        - name: Monitorowanie elementów runbook za pomocą alertów metryki
+          href: automation-alert-metric.md
         - name: Uruchamianie elementu Runbook z alertów platformy Azure
           href: automation-create-alert-triggered-runbook.md
         - name: Tworzenie maszyny wirtualnej usługi Amazon Web Service
           href: automation-scenario-aws-deployment.md
-        - name: Rozwiązywanie problemów dotyczących alertów maszyny wirtualnej platformy Azure
-          href: automation-azure-vm-alert-integration.md
         - name: Uruchamianie/zatrzymywanie maszyn wirtualnych po godzinach pracy
           href: automation-solution-vm-management.md
         - name: Usuwanie grupy zasobów
@@ -215,16 +213,12 @@
   items:
     - name: Usługa Automation — film z wprowadzeniem
       href: 'https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/'
-    - name: Szkolenie z usługi Azure Automation
-      href: 'https://mva.microsoft.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323?l=C6mIpCay_4804984382'
     - name: Harmonogram działania dla platformy Azure
-      href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
-    - name: Ścieżka szkoleniowa
-      href: 'https://azure.microsoft.com/documentation/learning-paths/automation/'
+      href: 'https://azure.microsoft.com/roadmap/?category=management-tools&query=automation'
     - name: Forum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation)'
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation'
     - name: Cennik
-      href: 'https://azure.microsoft.com/pricing/details/automation/)'
+      href: 'https://azure.microsoft.com/pricing/details/automation/'
     - name: Kalkulator cen
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Informacje o wersji

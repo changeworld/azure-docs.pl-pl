@@ -13,11 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/06/2018
   ms.author: spelluru
-  ms.openlocfilehash: f06102399cac6ef1b6b31155dff32999a923e173
-  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+  ms.openlocfilehash: 1b37824b113fd9b1aaf225c5cb24b2dd27f1b47f
+  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 05/07/2018
+  ms.lasthandoff: 06/01/2018
+  ms.locfileid: "34636702"
 abstract:
   description: Dowiedz się, jak użyć usługi Azure Lab Services do szybkiego skonfigurowania laboratorium badawczego lub testowego bądź laboratorium na potrzeby maratonu programistycznego lub zajęć dla Twojego zespołu lub studentów w chmurze. W samouczkach, przykładach i innych zasobach dotyczących platformy Azure pokazano, jak tworzyć i zabezpieczać laboratoria oraz zarządzać z nimi.
 sections:
@@ -28,16 +29,16 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/lab-services/tutorial-setup-lab-account">Konfigurowanie konta laboratorium</a>
-    - html: <a href="/azure/lab-services/tutorial-setup-classroom-lab">Konfigurowanie laboratorium na potrzeby zajęć</a>
-    - html: <a href="/azure/lab-services/tutorial-connect-virtual-machine-classroom-lab">Dostęp do laboratorium na potrzeby zajęć</a>
+    - html: <a href="/azure/lab-services/classroom-labs/tutorial-setup-lab-account">Konfigurowanie konta laboratorium</a>
+    - html: <a href="/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab">Konfigurowanie laboratorium na potrzeby zajęć</a>
+    - html: <a href="/azure/lab-services/classroom-labs/tutorial-connect-virtual-machine-classroom-lab">Dostęp do laboratorium na potrzeby zajęć</a>
   - type: paragraph
-    text: Dowiedz się, jak tworzyć i korzystać z <b>laboratorium niestandardowego</b> przy użyciu usługi Azure Lab Services.
+    text: Dowiedz się, jak tworzyć i korzystać z <b>laboratorium</b> przy użyciu usługi Azure DevTest Labs.
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/lab-services/tutorial-create-custom-lab">Konfigurowanie laboratorium niestandardowego</a>
-    - html: <a href="/azure/lab-services/tutorial-use-custom-lab">Dostęp do laboratorium niestandardowego</a>
+    - html: <a href="/azure/lab-services/tutorial-create-custom-lab">Konfigurowanie laboratorium</a>
+    - html: <a href="/azure/lab-services/tutorial-use-custom-lab">Dostęp do laboratorium</a>
 - title: Przykłady
   items:
   - type: paragraph

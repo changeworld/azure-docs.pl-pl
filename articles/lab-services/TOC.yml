@@ -10,18 +10,18 @@
   items:
     - name: DevTest Labs
       items:
-        - name: 1. Konfigurowanie laboratorium niestandardowego
+        - name: 1. Konfigurowanie laboratorium
           href: tutorial-create-custom-lab.md
-        - name: 2. Dostęp do laboratorium niestandardowego
+        - name: 2. Dostęp do laboratorium
           href: tutorial-use-custom-lab.md
     - name: Laboratorium na potrzeby zajęć
       items:
         - name: 1. Konfigurowanie konta laboratorium
-          href: tutorial-setup-lab-account.md
+          href: classroom-labs/tutorial-setup-lab-account.md
         - name: 2. Konfigurowanie laboratorium na potrzeby zajęć
-          href: tutorial-setup-classroom-lab.md
+          href: classroom-labs/tutorial-setup-classroom-lab.md
         - name: 3. Dostęp do laboratorium na potrzeby zajęć
-          href: tutorial-connect-virtual-machine-classroom-lab.md
+          href: classroom-labs/tutorial-connect-virtual-machine-classroom-lab.md
 - name: Przykłady
   items:
     - name: DevTest Labs
@@ -50,20 +50,20 @@
     - name: Laboratorium na potrzeby zajęć
       items:
         - name: Zarządzanie kontami laboratorium
-          href: how-to-manage-lab-accounts.md
+          href: classroom-labs/how-to-manage-lab-accounts.md
         - name: Zarządzanie laboratoriami na potrzeby zajęć
-          href: how-to-manage-classroom-labs.md
+          href: classroom-labs/how-to-manage-classroom-labs.md
         - name: Dostęp do laboratoriów na potrzeby zajęć
-          href: how-to-use-classroom-lab.md
+          href: classroom-labs/how-to-use-classroom-lab.md
     - name: Laboratoria DevTest Labs
       items:
-        - name: Tworzenie laboratorium niestandardowego
+        - name: Tworzenie laboratorium
           href: devtest-lab-create-lab.md
-        - name: Tworzenie maszyny wirtualnej w laboratorium niestandardowym
+        - name: Tworzenie maszyny wirtualnej w laboratorium
           href: devtest-lab-create-first-vm.md
-        - name: Ustawiania zasad dla laboratorium niestandardowego
+        - name: Ustawianie zasad dla laboratorium
           href: devtest-lab-get-started-with-lab-policies.md
-        - name: Korzystanie z maszyn wirtualnych w laboratorium niestandardowym
+        - name: Korzystanie z maszyn wirtualnych w laboratorium
           items:
             - name: Tworzenie maszyn wirtualnych
               href: devtest-lab-add-vm.md
@@ -75,7 +75,7 @@
               href: devtest-lab-use-resource-manager-template.md
             - name: Ponowne uruchamianie maszyny wirtualnej
               href: devtest-lab-restart-vm.md
-        - name: Korzystanie ze środowisk w laboratorium niestandardowym
+        - name: Korzystanie ze środowisk w laboratorium
           items:
             - name: Tworzenie środowiska
               href: devtest-lab-create-environment-from-arm.md
@@ -85,7 +85,7 @@
               href: devtest-lab-add-devtest-user.md
             - name: Dostosowywanie uprawnień za pomocą ról niestandardowych
               href: devtest-lab-grant-user-permissions-to-specific-lab-policies.md
-        - name: Konfigurowanie laboratorium niestandardowego
+        - name: Konfigurowanie laboratorium
           items:
             - name: Ustawianie zasad i harmonogramów
               href: devtest-lab-set-lab-policy.md
@@ -95,11 +95,11 @@
               href: devtest-lab-configure-marketplace-images.md
             - name: Włączanie obrazu licencjonowanego
               href: devtest-lab-enable-licensed-images.md
-            - name: Dodawanie tagów do laboratorium niestandardowego
+            - name: Dodawanie tagów do laboratorium
               href: devtest-lab-add-tag.md
-            - name: Publikowanie anonsu w laboratorium niestandardowym
+            - name: Publikowanie anonsu w laboratorium
               href: devtest-lab-announcements.md
-            - name: Dodawanie informacji o pomocy technicznej do laboratorium niestandardowego
+            - name: Dodawanie informacji o pomocy technicznej do laboratorium
               href: devtest-lab-internal-support-message.md
         - name: Wybieranie niestandardowego obrazu lub formuły
           href: devtest-lab-comparing-vm-base-image-types.md

@@ -21,6 +21,8 @@
       href: custom-event-quickstart-portal.md
     - name: Wysyłanie zdarzeń do usługi Queue Storage
       href: custom-event-to-queue-storage.md
+    - name: Wysyłanie zdarzeń do usługi Event Hubs
+      href: custom-event-to-eventhub.md
 - name: Samouczki
   items:
     - name: Wysyłanie wiadomości e-mail po zmianie maszyny wirtualnej

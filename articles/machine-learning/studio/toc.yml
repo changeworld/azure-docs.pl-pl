@@ -63,6 +63,8 @@
               href: deploy-with-resource-manager-template.md
             - name: Tworzenie w innym regionie
               href: multi-geo.md
+            - name: Wyświetlanie i usuwanie danych konta usługi Studio
+              href: export-delete-personal-data-dsr.md
     - name: Uzyskiwanie i rozumienie danych
       items:
         - name: Importowanie danych treningowych
@@ -215,6 +217,8 @@
           href: gallery-collections.md
         - name: Moduły niestandardowe
           href: gallery-custom-modules.md
+        - name: Wyświetlanie i usuwanie danych konta
+          href: ai-gallery-control-personal-data-dsr.md
 - name: Zasoby
   items:
     - name: Harmonogram działania dla platformy Azure

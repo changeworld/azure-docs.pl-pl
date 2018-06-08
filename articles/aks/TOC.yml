@@ -63,6 +63,8 @@
           href: internal-lb.md
         - name: Ruch przychodzący i protokół TLS
           href: ingress.md
+        - name: Ruch wychodzący
+          href: egress.md
         - name: Routing aplikacji protokołu HTTP
           href: http-application-routing.md
     - name: Zabezpieczenia i uwierzytelnianie

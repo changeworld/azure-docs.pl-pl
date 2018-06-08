@@ -1,8 +1,11 @@
 - name: Dokumentacja usługi Data Factory V1
   href: null
+- name: Przechodzenie do dokumentacji bieżącej wersji
+  href: ../index.yml
 - name: Omówienie
   items:
-    - name: "Wprowadzenie do usługi Azure Data Factory\r\n"
+    - name: |
+        Wprowadzenie do usługi Azure Data Factory
       href: data-factory-introduction.md
     - name: Pojęcia
       items:
@@ -12,7 +15,7 @@
           href: data-factory-create-datasets.md
         - name: Planowanie i wykonywanie
           href: data-factory-scheduling-and-execution.md
-- name: Wprowadzenie
+- name: Rozpoczęcie pracy
   expanded: true
   items:
     - name: Tworzenie potoku w celu kopiowania danych
@@ -78,7 +81,7 @@
               href: data-factory-azure-datalake-connector.md
             - name: Azure Search
               href: data-factory-azure-search-connector.md
-            - name: Usługa Azure SQL Database
+            - name: Azure SQL Database
               href: data-factory-azure-sql-connector.md
             - name: Azure SQL Data Warehouse
               href: data-factory-azure-sql-data-warehouse-connector.md

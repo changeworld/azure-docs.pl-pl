@@ -10,6 +10,8 @@
       href: cache-web-app-howto.md
     - name: Tworzenie aplikacji platformy .NET
       href: cache-dotnet-how-to-use-azure-redis-cache.md
+    - name: Tworzenie aplikacji .NET Core
+      href: cache-dotnet-core-quickstart.md
     - name: Tworzenie aplikacji platformy Node.js
       href: cache-nodejs-get-started.md
     - name: Tworzenie aplikacji w języku Java
@@ -48,6 +50,8 @@
           href: cache-how-to-premium-vnet.md
         - name: Rozproszenie pamięci podręcznej przez zastosowanie klastrowania
           href: cache-how-to-premium-clustering.md
+        - name: Migrowanie z usługi Managed Cache Service
+          href: cache-migrate-to-redis.md
     - name: Automatyzacja
       items:
         - name: Wdrażanie i zarządzanie przy użyciu programu Azure PowerShell
@@ -56,7 +60,7 @@
           href: cli-samples.md
         - name: Inicjowanie obsługi administracyjnej pamięci podręcznej Redis
           href: cache-redis-cache-arm-provision.md
-        - name: Inicjowanie obsługi administracyjnej aplikacji sieci Web i pamięci podręcznej Redis
+        - name: Inicjowanie obsługi administracyjnej aplikacji internetowej i pamięci podręcznej Redis
           href: cache-web-app-arm-with-redis-cache-provision.md
     - name: Integracja z platformą ASP.NET
       items:

@@ -47,6 +47,8 @@
               href: logic-apps-control-flow-loops.md
             - name: Zakresy
               href: logic-apps-control-flow-run-steps-group-scopes.md
+        - name: Tworzenie zmiennych na potrzeby zapisywania wartości
+          href: logic-apps-create-variables-store-values.md
         - name: Dodawanie kodu niestandardowego za pomocą usługi Azure Functions
           href: logic-apps-azure-functions.md
         - name: Wywoływanie aplikacji logiki za pomocą usługi Azure Functions

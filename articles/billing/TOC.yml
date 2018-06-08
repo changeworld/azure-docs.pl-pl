@@ -1,6 +1,6 @@
 - name: Dokumentacja dotycząca rozliczeń i zarządzania kosztami na platformie Azure
   href: index.md
-- name: Opis rozliczeń na platformie Azure
+- name: Informacje na temat rozliczeń na platformie Azure
   expanded: true
   items:
     - name: Opis zawartości rachunku
@@ -113,6 +113,8 @@
       href: ../azure-supportability/how-to-create-azure-support-request.md
 - name: Dokumentacja
   items:
+    - name: Scenariusze automatyzacji rozliczeń
+      href: billing-cost-management-automation-scenarios.md
     - name: Omówienie interfejsu API rozliczeń platformy Azure
       href: billing-usage-rate-card-overview.md
       items:
@@ -120,7 +122,8 @@
           href: 'https://docs.microsoft.com/rest/api/billing'
         - name: Rozwiązanie partnera — Cloud Cruiser
           href: billing-usage-rate-card-partner-solution-cloudcruiser.md
-    - name: Interfejs API użycia platformy Azure
+    - name: Przegląd interfejsu API użycia platformy Azure
+      href: billing-consumption-api-overview.md
       items:
         - name: Interfejs API REST użycia platformy Azure
           href: 'https://docs.microsoft.com/rest/api/consumption'

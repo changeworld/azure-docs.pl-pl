@@ -129,6 +129,8 @@
           href: monitoring-rest-api-walkthrough.md
         - name: Przykłady programu Azure PowerShell
           href: insights-powershell-samples.md
+        - name: Przykłady interfejsu wiersza polecenia platformy Azure
+          href: insights-cli-samples.md
     - name: Używanie rozszerzenia diagnostyki platformy Azure
       items:
         - name: Wysyłanie do usługi Azure Storage

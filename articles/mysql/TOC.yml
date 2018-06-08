@@ -39,7 +39,7 @@
           href: tutorial-design-database-using-portal.md
         - name: Interfejs wiersza polecenia platformy Azure
           href: tutorial-design-database-using-cli.md
-    - name: 2 — Tworzenie aplikacji sieci Web
+    - name: 2 — Tworzenie aplikacji internetowej
       items:
         - name: Wordpress — portal
           href: 'https://portal.azure.com/#create/WordPress.WordPress'
@@ -75,6 +75,8 @@
           href: concepts-firewall-rules.md
         - name: Konfigurowanie protokołu SSL
           href: concepts-ssl-connection-security.md
+        - name: VNet
+          href: concepts-data-access-and-security-vnet.md
     - name: Ciągłość działalności biznesowej
       items:
         - name: Omówienie
@@ -89,6 +91,10 @@
           href: concepts-compatibility.md
         - name: Opracowywanie aplikacji
           href: concepts-database-application-development.md
+    - name: Replikacja
+      items:
+        - name: Replikacja wejściowa danych
+          href: concepts-data-in-replication.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Zarządzanie serwerem
@@ -123,7 +129,7 @@
           href: howto-connection-string.md
         - name: Konfigurowanie protokołu SSL
           href: howto-configure-ssl.md
-        - name: Aplikacje sieci Web
+        - name: Aplikacje internetowe
           href: howto-connect-webapp.md
     - name: Konfigurowanie parametrów serwera
       items:
@@ -141,18 +147,30 @@
       items:
         - name: Tworzenie alertów dotyczących metryk
           href: howto-alert-on-metric.md
+    - name: Replikacja
+      items:
+        - name: Konfigurowanie replikacji wejściowej danych
+          href: howto-data-in-replication.md
     - name: Rozwiązywanie problemów
       items:
         - name: Rozwiązywanie problemów z wydajnością zapytań
           href: howto-troubleshoot-query-performance.md
         - name: Jak używać widoków w schemacie sys
           href: howto-troubleshoot-sys-schema.md
+    - name: Virtual Network
+      items:
+        - name: Azure Portal
+          href: howto-manage-vnet-using-portal.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: howto-manage-vnet-using-cli.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure
       href: /cli/azure/mysql
     - name: Interfejs API REST
       href: /rest/api/mysql
+    - name: Procedury składowane replikacji wejściowej danych
+      href: reference-data-in-stored-procedures.md
 - name: Zasoby
   items:
     - name: Szablony wdrażania

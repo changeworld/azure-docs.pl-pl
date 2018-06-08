@@ -97,7 +97,7 @@
         - name: Zabezpieczenia aplikacji
           href: security-center-application-recommendations.md
           items:
-            - name: Dodawanie zapory aplikacji sieci Web
+            - name: Dodawanie zapory aplikacji internetowej
               href: security-center-add-web-application-firewall.md
             - name: Finalizowanie ochrony aplikacji
               href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
@@ -109,6 +109,8 @@
           href: security-center-just-in-time.md
         - name: Funkcje adaptacyjnego sterowania aplikacjami
           href: security-center-adaptive-application.md
+        - name: Monitorowanie integralności plików
+          href: security-center-file-integrity-monitoring.md
     - name: Zarządzanie rozwiązaniami zabezpieczeń
       href: security-center-partner-integration.md
       items:
@@ -145,6 +147,8 @@
           href: security-center-threat-intel.md
         - name: Badanie
           href: security-center-investigation.md
+        - name: Zarządzanie danymi użytkownika badań
+          href: security-center-investigation-user-data.md
     - name: Automatyzacja przepływów pracy zabezpieczeń
       items:
         - name: Elementy playbook usługi Logic Apps
@@ -169,6 +173,8 @@
       href: 'https://msdn.microsoft.com/library/mt704034(Azure.100).aspx'
 - name: Zasoby
   items:
+    - name: Zarządzanie danymi użytkowników
+      href: security-center-privacy.md
     - name: Często zadawane pytania
       href: security-center-faq.md
     - name: Obsługiwane platformy

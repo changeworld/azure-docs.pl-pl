@@ -25,9 +25,11 @@
         - name: 2. Contoso — konfigurowanie infrastruktury platformy Azure
           href: contoso-migration-infrastructure.md
         - name: 3. Contoso — ocena zasobów lokalnych pod kątem migracji na platformę Azure
-          href: migrate-scenarios-assessment.md
-        - name: 4. Contoso — ponowne hostowanie na maszynach wirtualnych platformy Azure i w wystąpieniu zarządzanym Azure SQL
-          href: migrate-scenarios-lift-and-shift.md
+          href: contoso-migration-assessment.md
+        - name: 4. Contoso — ponowne hostowanie aplikacji na maszynach wirtualnych platformy Azure i w wystąpieniu zarządzanym Azure SQL
+          href: contoso-migration-rehost-vm-sql-managed-instance.md
+        - name: 5. Contoso — ponowne hostowanie aplikacji na maszynach wirtualnych platformy Azure
+          href: contoso-migration-rehost-vm.md
     - name: Odnajdywanie i ocenianie w dużym środowisku
       href: how-to-scale-assessment.md
     - name: Grupowanie maszyn
@@ -48,3 +50,5 @@
       href: 'https://azure.microsoft.com/migrate'
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/'
+    - name: Często zadawane pytania
+      href: resources-faq.md

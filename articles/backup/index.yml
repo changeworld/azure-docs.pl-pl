@@ -1,30 +1,31 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Dokumentacja usługi Azure Backup"
+title: Dokumentacja usługi Azure Backup
 metadata:
-  title: "Dokumentacja usługi Azure Backup — samouczki i dokumentacja interfejsu API | Microsoft Docs"
-  description: "Usługa Azure Backup umożliwia tworzenie kopii zapasowych danych dla serwerów lokalnych, maszyn wirtualnych, zwirtualizowanych obciążeń, serwera SQL, serwera SharePoint i nie tylko. Dowiedz się, jak tworzyć kopie zapasowe danych i przywracać je, zapoznając się z naszymi przewodnikami Szybki start, samouczkami i przykładami."
+  title: Dokumentacja usługi Azure Backup — samouczki i dokumentacja interfejsu API | Microsoft Docs
+  description: Usługa Azure Backup umożliwia tworzenie kopii zapasowych danych dla serwerów lokalnych, maszyn wirtualnych, zwirtualizowanych obciążeń, serwera SQL, serwera SharePoint i nie tylko. Dowiedz się, jak tworzyć kopie zapasowe danych i przywracać je, zapoznając się z naszymi przewodnikami Szybki start, samouczkami i przykładami.
   services: backup
-  author: czeumault
-  manager: carolz
+  author: markgalioto
+  manager: carmonm
   ms.service: backup
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/11/2017
-  ms.author: carolz
-  ms.openlocfilehash: f2654916ee61a548537c8887ff7d1923fb6f29ac
-  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+  ms.date: 05/22/2018
+  ms.author: markgal
+  ms.openlocfilehash: b2907330477c62cce2ee5e9498cc4445580161a2
+  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 01/12/2018
+  ms.lasthandoff: 06/01/2018
+  ms.locfileid: "34606872"
 abstract:
-  description: "Usługa Azure Backup umożliwia tworzenie kopii zapasowych danych dla serwerów lokalnych, maszyn wirtualnych, zwirtualizowanych obciążeń, serwera SQL, serwera SharePoint i nie tylko. Dowiedz się, jak tworzyć kopie zapasowe danych i przywracać je, zapoznając się z naszymi przewodnikami Szybki start, samouczkami i przykładami."
+  description: Za pomocą usługi Azure Backup możesz chronić dane serwerów lokalnych, maszyn wirtualnych, zwirtualizowanych obciążeń, serwera SQL, serwera SharePoint i nie tylko. Dowiedz się, jak tworzyć kopie zapasowe danych i przywracać je, zapoznając się z naszymi przewodnikami Szybki start, samouczkami i przykładami.
 sections:
 - title: 5-minutowe przewodniki Szybki start
   items:
   - type: paragraph
-    text: "Dowiedz się, jak utworzyć kopię zapasową maszyny wirtualną platformy Azure na platformie Azure."
+    text: Dowiedz się, jak utworzyć kopię zapasową maszyny wirtualną platformy Azure na platformie Azure.
   - type: list
     style: icon48
     items:
@@ -43,31 +44,33 @@ sections:
 - title: Samouczki krok po kroku
   items:
   - type: paragraph
-    text: "Dowiedz się, jak tworzyć kopie zapasowe i odzyskiwać maszyny wirtualne w obrębie platformy Azure lub z systemu Windows Server."
+    text: Dowiedz się, jak tworzyć kopie zapasowe i odzyskiwać maszyny wirtualne w obrębie platformy Azure lub z systemu Windows Server.
   - type: list
     style: ordered
     items:
     - html: <a href="tutorial-backup-vm-at-scale">Tworzenie kopii zapasowych wielu maszyn wirtualnych platformy Azure</a>
     - html: <a href="tutorial-restore-disk">Przywracanie dysku i tworzenie odzyskanej maszyny wirtualnej</a>
-    - html: "<a href=\"tutorial-restore-files\">Przywracanie plików do maszyny wirtualnej na platformie Azure</a>"
+    - html: <a href="tutorial-restore-files">Przywracanie plików do maszyny wirtualnej na platformie Azure</a>
     - html: <a href="tutorial-backup-windows-server-to-azure">Tworzenie kopii zapasowych serwera z systemem Windows na platformie Azure</a>
-    - html: "<a href=\"tutorial-backup-restore-files-windows-server\">Odzyskiwanie plików z platformy Azure do systemu Windows Server</a>"
-- title: "Przykłady"
+    - html: <a href="tutorial-backup-restore-files-windows-server">Odzyskiwanie plików z platformy Azure do systemu Windows Server</a>
+- title: Przykłady
   items:
   - type: paragraph
-    text: "Poniższe przykłady ułatwiają ochronę danych na platformie Azure."
+    text: Poniższe przykłady ułatwiają ochronę danych na platformie Azure.
   - type: list
     style: unordered
     className: spaced noBullet
     items:
     - html: <a href="/azure/backup/powershell-backup-samples">Azure PowerShell</a>
-- title: "Odwołanie"
+- title: Dokumentacja
   items:
   - type: list
     style: cards
     className: cardsD
     items:
     - title: Wiersz polecenia
-      html: <p><a href="/powershell/resourcemanager/azurerm.backup/v2.3.0/azurerm.backup">Azure PowerShell</a></p>
-    - title: "Języki"
+      html: <p><a href="/powershell/resourcemanager/azurerm.backup/v2.3.0/azurerm.backup">Azure PowerShell</a></p><p><a href="/cli/azure/backup?view=azure-cli-latest">Interfejs wiersza polecenia platformy Azure</a></p>
+    - title: Języki
       html: <p><a href="/dotnet/api/microsoft.azure.management.backupservices">.NET</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/backup/">Dokumentacja interfejsu API usługi Azure Backup</a></p>
