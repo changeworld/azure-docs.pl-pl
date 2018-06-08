@@ -162,6 +162,8 @@
               href: app-insights-proactive-low-utilization-cloud-resources.md
             - name: Wykrywanie zabezpieczeń
               href: app-insights-proactive-application-security-detection-pack.md
+            - name: usług Azure Cloud Services
+              href: app-insights-proactive-cloud-services.md
         - name: Tworzenie zasobu
           href: app-insights-create-new-resource.md
     - name: Analiza
