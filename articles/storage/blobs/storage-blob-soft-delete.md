@@ -6,20 +6,20 @@ author: MichaelHauss
 manager: vamshik
 ms.service: storage
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 05/31/2018
 ms.author: mihauss
-ms.openlocfilehash: 0e728f9f9754d76d893b12309bb52201d772efbf
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
-ms.translationtype: HT
+ms.openlocfilehash: 93b60f8957a6ae225dbc5beb33a7de817ffc5bc2
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34057863"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "34701687"
 ---
-# <a name="soft-delete-for-azure-storage-blobs-preview"></a>Usuwania nietrwałego dla obiektów blob magazynu Azure (wersja zapoznawcza)
+# <a name="soft-delete-for-azure-storage-blobs"></a>Soft usuwania obiektów blob magazynu Azure
 
 ## <a name="overview"></a>Przegląd
 
-Azure Storage oferuje teraz usuwania nietrwałego (wersja zapoznawcza) dla obiektów blob, aby łatwiej można odzyskać dane, gdy jest błędnie zmodyfikowany lub usunięty przez aplikację lub innego użytkownika z konta magazynu.
+Azure Storage oferuje teraz usuwania nietrwałego dla obiektów blob, aby łatwiej można odzyskać dane, gdy jest błędnie zmodyfikowany lub usunięty przez aplikację lub innego użytkownika z konta magazynu.
 
 ## <a name="how-does-it-work"></a>Jak to działa?
 
@@ -30,10 +30,6 @@ Możesz skonfigurować czas, który nietrwałego usunięte dane są możliwe do 
 
 Usuwania nietrwałego jest wstecznie zgodna; nie trzeba wprowadzać żadnych zmian w aplikacji, aby móc korzystać z ochrony, który zapewnia tę funkcję. Jednak [odzyskiwania danych](#recovery) wprowadzono nowy **Blob cofanie usuwania** interfejsu API.
 
-> [!NOTE]
-> W publicznej wersji zapoznawczej wywoływania ustawić warstwy obiektu Blob dla obiektu blob z migawki jest niedozwolone.
-Usuwania nietrwałego generuje migawek, aby chronić dane, gdy jest on zastąpiony. Aktywnie pracujemy nad rozwiązanie umożliwiające obsługę poziomów obiektów blob z migawki.
-
 ### <a name="configuration-settings"></a>Ustawienia konfiguracji
 
 Podczas tworzenia nowego konta usuwania nietrwałego jest domyślnie wyłączone. Usuwania nietrwałego jest również domyślnie wyłączona w przypadku istniejących kont magazynu. Funkcja włączać i wyłączać można przełączyć w czasie życia konta magazynu.
@@ -42,7 +38,7 @@ Nadal będzie mogła uzyskać dostęp i odzyskiwanie danych usuniętych miękkie
 
 Okres przechowywania wskazuje ilość czasu, przez który nietrwałego usunięte dane są przechowywane i dostępne do odzyskania. Dla obiektów blob i migawki obiektu blob, które są jawnie usunięte zegara okresu przechowywania rozpoczyna się, gdy dane są usuwane. Elastyczne migawki usunięto generowane przez funkcję usuwania nietrwałego, gdy dane są zastępowane zegar rozpoczyna się po wygenerowaniu migawki. Obecnie można zachować nietrwałego usunięte dane dla zakresu od 1 do 365 dni.
 
-Można zmienić w dowolnym momencie okres przechowywania usuwania nietrwałego. Okres przechowywania zaktualizowane będzie dotyczyć tylko usunięte nowo dane. Wcześniej usunięte dane wygaśnie oparte na okres przechowywania skonfigurowanego podczas tych danych została usunięta.
+Można zmienić w dowolnym momencie okres przechowywania usuwania nietrwałego. Okres przechowywania zaktualizowane będzie dotyczyć tylko usunięte nowo dane. Wcześniej usunięte dane wygaśnie oparte na okres przechowywania skonfigurowanego podczas tych danych została usunięta. Próba usunięcia nietrwałego usuniętego obiektu nie wpłyną na jego czas wygaśnięcia.
 
 ### <a name="saving-deleted-data"></a>Zapisywanie danych usuniętych
 
@@ -64,13 +60,13 @@ Podczas **usunąć obiektu Blob** jest wywoływana w migawce tej migawki jest oz
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-delete-snapshot.png)
 
-*Elastyczne usunięte dane jest szary, zablokowaniu niebieski aktywnych danych. Więcej ostatnio zapisywane dane są wyświetlane poniżej starszych danych. Gdy **migawki obiektu Blob** jest wywoływana, B0 staje się migawkę i B1 jest w stanie aktywnym obiektu blob. Po usunięciu migawki B0 jest oznaczony jako nietrwałego usunięte.\*
+*Elastyczne usunięte dane jest szary, zablokowaniu niebieski aktywnych danych. Więcej ostatnio zapisywane dane są wyświetlane poniżej starszych danych. Gdy **migawki obiektu Blob** jest wywoływana, B0 staje się migawkę i B1 jest w stanie aktywnym obiektu blob. Po usunięciu migawki B0 jest oznaczony jako nietrwałego usunięte.*
 
 Gdy **usunąć obiektu Blob** zostanie wywołany dla obiekt blob podstawowej (żadnego obiektu blob to znaczy nie migawkę), tego obiektu blob jest oznaczony jako słabe usunięte. Zgodny z poprzednim zachowanie wywoływania **usunąć obiektu Blob** dla obiektu blob, dysponującej migawkami active zwraca błąd. Wywoływanie **usunąć obiektu Blob** dla obiektu blob z migawkami usunięto miękkiej nie zwraca błąd. Możesz nadal usunąć obiektu blob i wszystkie jego migawek w jednej operacji po włączeniu usuwania nietrwałego. W ten sposób oznacza podstawowego obiektu blob i usunąć migawki jako nietrwałego.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-include.png)
 
-*Elastyczne usunięte dane jest szary, zablokowaniu niebieski aktywnych danych. Więcej ostatnio zapisywane dane są wyświetlane poniżej starszych danych. W tym miejscu **usunąć obiektu Blob** wywołanie do usuwania B2 i wszystkie skojarzone migawki. Aktywne obiektów blob, B2 i wszystkie skojarzone migawki są oznaczone jako nietrwałego usunięte.\*
+*Elastyczne usunięte dane jest szary, zablokowaniu niebieski aktywnych danych. Więcej ostatnio zapisywane dane są wyświetlane poniżej starszych danych. W tym miejscu **usunąć obiektu Blob** wywołanie do usuwania B2 i wszystkie skojarzone migawki. Aktywne obiektów blob, B2 i wszystkie skojarzone migawki są oznaczone jako nietrwałego usunięte.*
 
 > [!NOTE]
 > Słabe usunięto obiekt blob jest zastąpiony, jest generowany automatycznie nietrwałego migawka usuniętego obiektu blob stanu przed operacji zapisu. Nowy obiekt blob dziedziczy warstwy zastąpione obiektu blob.
@@ -103,7 +99,7 @@ Można przywrócić obiektu blob do określonych nietrwałego migawki usunięto 
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-recover.png)
 
-*Elastyczne usunięte dane jest szary, zablokowaniu niebieski aktywnych danych. Więcej ostatnio zapisywane dane są wyświetlane poniżej starszych danych. W tym miejscu **Blob cofanie usuwania** jest wywoływana dla obiektu blob B, a tym samym przywracanie podstawowego obiektu blob, B1 i wszystkie skojarzone migawki, w tym miejscu po prostu B0 jako aktywne. W drugim kroku B0 jest kopiowana za pośrednictwem podstawowego obiektu blob. Ta operacja kopiowania generuje nietrwałego Usunięto migawkę B1.\*
+*Elastyczne usunięte dane jest szary, zablokowaniu niebieski aktywnych danych. Więcej ostatnio zapisywane dane są wyświetlane poniżej starszych danych. W tym miejscu **Blob cofanie usuwania** jest wywoływana dla obiektu blob B, a tym samym przywracanie podstawowego obiektu blob, B1 i wszystkie skojarzone migawki, w tym miejscu po prostu B0 jako aktywne. W drugim kroku B0 jest kopiowana za pośrednictwem podstawowego obiektu blob. Ta operacja kopiowania generuje nietrwałego Usunięto migawkę B1.*
 
 Aby wyświetlić nietrwałego usuniętych obiektów blob i migawki obiektu blob, możesz dołączyć usunięte dane w **listę obiektów blob**. Można wybrać, aby wyświetlić tylko nietrwałego usunięto podstawowej obiektów blob lub obejmują również migawki nietrwałego usuniętego obiektu blob. Dla wszystkich danych usuniętych miękkie możesz wyświetlić czas usunięcia danych oraz liczbę dni, zanim dane zostaną trwale wygasł.
 
@@ -141,7 +137,7 @@ Copy a snapshot over the base blob:
 - HelloWorld (is soft deleted: False, is snapshot: False)
 ```
 
-Zobacz [następne kroki](#Next steps) sekcji dla wskaźnika do aplikacji, której te dane wyjściowe.
+Zobacz [następne kroki](#next-steps) sekcji dla wskaźnika do aplikacji, której te dane wyjściowe.
 
 ## <a name="pricing-and-billing"></a>Cennik i rozliczenia
 
@@ -205,6 +201,19 @@ $Blobs.ICloudBlob.Properties
 # Undelete the blobs
 $Blobs.ICloudBlob.Undelete()
 ```
+### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure 
+Aby włączyć usuwania nietrwałego, zaktualizuj właściwości usługi klienta obiektów blob:
+
+```azurecli-interactive
+az storage blob service-properties delete-policy update --days-retained 7  --account-name mystorageaccount --enable true
+```
+
+Aby sprawdzić soft delete jest włączona, należy użyć następującego polecenia: 
+
+```azurecli-interactive
+az storage blob service-properties delete-policy show --account-name mystorageaccount 
+```
+
 ### <a name="python-client-library"></a>Biblioteka klienta języka Python
 
 Aby włączyć usuwania nietrwałego, zaktualizuj właściwości usługi klienta obiektów blob:
@@ -277,11 +286,15 @@ Obecnie usuwania nietrwałego jest dostępna tylko dla magazynu obiektów blob (
 
 **Usuwania nietrwałego jest dostępna dla wszystkich typów kont magazynu?**
 
-Tak, usuwania nietrwałego jest dostępny dla konta magazynu obiektów blob oraz jak w przypadku obiektów blob na kontach magazynu ogólnego przeznaczenia. Dotyczy to zarówno warstwy standardowa i premium kont. Usuwania nietrwałego nie jest dostępne dla zarządzanych dysków.
+Tak, usuwania nietrwałego jest dostępny dla konta magazynu obiektów blob oraz jak w przypadku obiektów blob w ogólnego przeznaczenia (GPv1 i GPv2) kont magazynu. Dotyczy to zarówno warstwy standardowa i premium kont. Usuwania nietrwałego nie jest dostępne dla zarządzanych dysków.
 
 **Jest dostępna dla wszystkich warstw magazynowania usuwania nietrwałego?**
 
 Tak, usuwania nietrwałego jest dostępna dla wszystkich warstw magazynowania, łącznie z gorącego i chłodnego i archiwum. Jednak nie dają usuwania nietrwałego zastąpić ochronę obiekty BLOB w warstwie archiwum.
+
+**Do warstwy obiektów blob z migawkami usunięto nietrwałego można używać interfejsu API ustawić warstwy obiektów Blob?**
+
+Tak. Nietrwałego usuniętych migawek zostanie umieszczony w oryginalnej warstwy, ale podstawowego obiektu blob zostanie przeniesione do nowej warstwy. 
 
 **Konta Premium magazynu ma limitu migawki obiektu blob 100. Czy nietrwałego migawki usunięto wliczane ten limit?**
 
