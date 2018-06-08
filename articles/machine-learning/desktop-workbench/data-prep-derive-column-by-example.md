@@ -7,15 +7,17 @@ ms.author: ranku
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 201492f033ad3e2508bc75c0865036e7c83a652a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8b85f57f79cad0a01d3c5499383108450babd507
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833767"
 ---
 # <a name="derive-column-by-example-transformation"></a>Pochodzi kolumny przez przykład przekształcania
 
@@ -152,7 +154,7 @@ Liczba przykłady, które były wymagane dla tego przypadku: 1
 |Anne-Marie|W|Kowalski|Anne-Marie·W·Jones|
 |Rico||Ropp|Rico·· Ropp|
 |Może Lauren||Fullmer|Lauren May·· Fullmer|
-|Wytłoków|W|Maine|Marc· T· Maine|
+|Wytłoków|T|Maine|Marc· T· Maine|
 |Angie||Adelmana|Angie··Adelman|
 |John-Paul||Smith|John-Paul··Smith|
 |Utworu|W|Staller|Song·W·Staller|
@@ -190,11 +192,11 @@ Liczba przykłady, które były wymagane dla tego przypadku: 3
 |:-----|:-----:|
 |Mężczyzna|**0**|
 |Kobieta|**1**|
-|Brak informacji|**2**|
+|Nieznane|**2**|
 |Kobieta|1|
 |Kobieta|1|
 |Mężczyzna|0|
-|Brak informacji|2|
+|Nieznane|2|
 |Mężczyzna|0|
 |Kobieta|1|
 

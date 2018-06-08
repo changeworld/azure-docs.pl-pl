@@ -6,14 +6,16 @@ author: hning86
 ms.author: haining
 manager: mwinkle
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: reference
 ms.date: 03/28/2018
-ms.openlocfilehash: 1eb4e7859ae62fca4e4a11f69abda3f767ab9596
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6085762f9f3874df8dd90866e387a581915dbbaf
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831605"
 ---
 # <a name="whats-new-in-azure-machine-learning"></a>Co nowego w usłudze Azure Machine Learning
 
@@ -26,9 +28,9 @@ W tej wersji usługi Azure Machine Learning można:
 + Obrazy Featurize wersją quantized 50 ResNet uczenia klasyfikatora na podstawie tych funkcji i [wdrażania modelu do układu FPGA na platformie Azure](../service/how-to-deploy-fpga-web-service.md) dla inferencing bardzo małych opóźnień.
 
 + Szybkie tworzenie i wdrażanie, uczenie maszynowe bardzo dokładne i modele uczenia głębokie przy użyciu [niestandardowych pakietów platformy Azure Machine Learning](../service/reference-python-package-overview.md) dla następujących domen:
-  + [Wizja komputera](../service/how-to-build-deploy-image-classification-models.md)
+  + [Przetwarzanie obrazów](../service/how-to-build-deploy-image-classification-models.md)
   + [Analiza tekstu](../service/how-to-build-deploy-text-classification-models.md)
-  + [Funkcja prognozowania](../service/how-to-build-deploy-forecast-models.md)
+  + [Prognozowanie](../service/how-to-build-deploy-forecast-models.md)
 
 ## <a name="2018-03-sprint-4"></a>2018-03 (przebiegu 4)
 **Numer wersji**: 0.1.1801.24353 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([znaleźć wersji](../service/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
@@ -222,7 +224,7 @@ Aby uzyskać więcej informacji na temat tworzenia elementów docelowych oblicze
 ### <a name="sample-projects"></a>Przykładowych projektach
 - [Iris](https://github.com/Azure/MachineLearningSamples-Iris) i [MMLSpark](https://github.com/Azure/mmlspark) przykłady zaktualizowane o nową wersję zestawu SDK usługi Azure ML
 
-### <a name="breaking-changes"></a>Fundamentalne zmiany
+### <a name="breaking-changes"></a>Zmiany powodujące niezgodność
 - Poziom jest podwyższany `--type` przełącznika w `az ml computetarget attach` do podpolecenia. 
 
     - `az ml computetarget attach --type remotedocker` jest teraz `az ml computetarget attach remotedocker`

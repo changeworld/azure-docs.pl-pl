@@ -6,13 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 06/07/2018
 ms.author: marsma
-ms.openlocfilehash: 1a025ce647cb3c071a6549a433e6505b85409fdc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: bc30352f50344031f8356d2be1b800dd035f12ad
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830466"
 ---
 # <a name="set-environment-variables"></a>Ustawianie zmiennych środowiskowych
 
@@ -23,6 +24,8 @@ Na przykład, jeśli uruchomisz [microsoft/aci-wordcount] [ aci-wordcount] konte
 *NumWords*: liczba wysłanych do STDOUT słów.
 
 *Element MinLength*: minimalna liczba znaków w wyrazie go do zliczenia. Większa liczba ignoruje popularnych wyrazów, takich jak "z" i "".
+
+Jeśli chcesz przekazać kluczy tajnych jako zmienne środowiskowe wystąpień kontenera Azure obsługuje [secure wartości](#secure-values) secure wartości dla kontenerów w systemach Windows i Linux.
 
 ## <a name="azure-cli-example"></a>Przykład interfejsu wiersza polecenia platformy Azure
 
@@ -151,6 +154,81 @@ Aby zapoznać się przykładem, należy uruchomić [microsoft/aci-wordcount] [ a
 Aby wyświetlić dzienniki kontenera, w obszarze **ustawienia** wybierz **kontenery**, następnie **dzienniki**. Podobny do danych wyjściowych pokazano w poprzednim interfejsu wiersza polecenia i programu PowerShell sekcje, widać, jak zachowanie skryptu został zmodyfikowany przez zmiennych środowiskowych. Wyświetlane są tylko pięć wyrazy, każde z nich długość co najmniej osiem znaków.
 
 ![Dane wyjściowe dziennika kontenera przedstawiający portalu][portal-env-vars-02]
+
+## <a name="secure-values"></a>Bezpieczne wartości
+Obiekty o wartości bezpiecznego są przeznaczone do przechowywania poufnych informacji, takich jak hasła lub kluczy dla aplikacji. Przy użyciu bezpiecznego wartości zmiennych środowiskowych jest bezpieczniejsze i bardziej elastyczne niż uwzględniania go w obrazie z kontenera. Inną opcją jest użycie woluminy poufną, opisane w [zainstalować tajny woluminu w wystąpień kontenera Azure](container-instances-volume-secret.md).
+
+Zmienne środowiskowe bezpiecznego wartościami bezpiecznego nie ujawnić bezpiecznego wartość właściwości z kontenera, więc wartość można uzyskać tylko z Twojej kontenera. Na przykład wyświetlić właściwości kontenera w portalu Azure lub interfejsu wiersza polecenia Azure nie można wyświetlić zmienną środowiskową o wartości bezpieczne.
+
+Ustaw zmienną środowiskową bezpieczny, określając `secureValue` zamiast zwykłej właściwości `value` dla typu zmiennej. Dwie zmienne zdefiniowane w następujących yaml programu pokazują dwa typy zmiennych.
+
+### <a name="yaml-deployment"></a>Wdrożenie yaml programu
+
+Utwórz `secure-env.yaml` pliku z następującego fragmentu kodu.
+
+```yaml
+apiVersion: 2018-06-01
+location: westus
+name: securetest
+properties:
+  containers:
+  - name: mycontainer
+    properties:
+      environmentVariables:
+        - "name": "SECRET"
+          "secureValue": "my-secret-value"
+        - "name": "NOTSECRET"
+          "value": "my-exposed-value"
+      image: nginx
+      ports: []
+      resources:
+        requests:
+          cpu: 1.0
+          memoryInGB: 1.5
+  osType: Linux
+  restartPolicy: Always
+tags: null
+type: Microsoft.ContainerInstance/containerGroups
+```
+
+Uruchom następujące polecenie, aby wdrożyć grupę kontenera z yaml programu.
+
+```azurecli-interactive
+az container create --resource-group myRG --name securetest -f secure-env.yaml
+```
+
+### <a name="verify-environment-variables"></a>Sprawdź zmienne środowiskowe
+
+Uruchom następujące polecenie, aby zapytania z kontenera zmiennych środowiskowych.
+
+```azurecli-interactive
+az container show --resource-group myRG --name securetest --query 'containers[].environmentVariables`
+```
+
+Odpowiedź w formacie JSON przy użyciu szczegółów dla tego kontenera będzie Pokaż tylko zmiennej środowiskowej niezabezpieczonego i zabezpieczyć klucz zmiennej środowiskowej.
+
+```json
+  "environmentVariables": [
+    {
+      "name": "NOTSECRET",
+      "value": "my-exposed-value"
+    },
+    {
+      "name": "SECRET"
+    }
+```
+
+Możesz przejrzeć bezpieczny ustawiono zmiennej środowiskowej `exec` polecenia, co umożliwia, wykonując polecenie z kontenera uruchomione. 
+
+Uruchom następujące polecenie, aby uruchomić sesję interakcyjne bash z kontenera.
+```azurecli-interactive
+az container exec --resource-group myRG --name securetest --exec-command "/bin/bash"
+```
+
+W ramach Twojej kontenera wydrukować Twojej zmiennej środowiskowej przy użyciu następującego polecenia bash.
+```bash
+echo $SECRET
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

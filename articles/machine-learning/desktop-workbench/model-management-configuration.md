@@ -7,14 +7,16 @@ ms.author: raymondl
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/29/2017
-ms.openlocfilehash: 45ddd4dc6fb5559c020706e2784158b1319f9b52
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 6802d1dfc360a48d8085ff07a8d4488ee1751e33
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832105"
 ---
 # <a name="model-management-setup"></a>Model konfiguracji zarządzania
 
@@ -146,7 +148,7 @@ az ml env set -n [environment name] -g [resource group]
 >[!NOTE] 
 >Aby utworzyć punkt końcowy HTTPS, Określ certyfikat SSL, podczas tworzenia klastra przy użyciu nazwa certyfikatu i--cert pem opcje az ml env Instalatora. To ustawienie klaster do obsługi żądań HTTPS, zabezpieczone przy użyciu podanego certyfikatu. Po zakończeniu instalacji należy utworzyć rekord CNAME DNS, który wskazuje nazwę FQDN klastra.
 
-### <a name="create-an-account"></a>Tworzenie konta usługi
+### <a name="create-an-account"></a>Utwórz konto
 Konto jest wymagane do wdrażania modeli. Należy wykonać to jeden raz dla każdego konta, a można ponownie użyć tego samego konta w przypadku wielu wdrożeń.
 
 Aby utworzyć nowe konto, użyj następującego polecenia:

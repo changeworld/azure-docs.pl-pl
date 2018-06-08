@@ -10,16 +10,18 @@ manager: hjerez
 editor: cjgronlund
 ms.assetid: d502062c-da70-4b21-9054-0bfd9902612e
 ms.service: machine-learning
+ms.component: studio
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 2d9c66d89b82c63561b147f3d2537ba6ad07c511
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5ab3c7716485053432240cb74be8ebc60c9ad274
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834621"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Czy Twoje dane są gotowe na analizę danych?
 ## <a name="video-2-data-science-for-beginners-series"></a>Wideo 2: Nauki danych serii dla początkujących
@@ -50,7 +52,7 @@ Przed nauki danych można nadać odpowiedzi, który ma, należy nadać mu niekt�
 W nauce danych istnieją niektórych składników, które muszą być pobierane razem w tym:
 
 * Odpowiednie
-* Połączony
+* Połączono
 * Dokładne
 * Aby pracować z
 
