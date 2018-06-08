@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 8216dafdd846f10ca1c8fc33b710a093aca20c7b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "31589632"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Praca z zestawem SDK serwera zaplecza platformy .NET na potrzeby usługi Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -35,7 +36,7 @@ W tym temacie przedstawiono sposób użycia serwera wewnętrznej bazy danych .NE
 Dokumentacja referencyjna dla serwera zestawu SDK znajduje się tutaj: [Azure Mobile Apps .NET Reference][1].
 
 ## <a name="create-app"></a>Porady: tworzenie zaplecza aplikacji mobilnej platformy .NET
-Jeśli uruchamiasz nowego projektu można utworzyć aplikację usługi aplikacji za pomocą [portalu Azure] lub Visual Studio. Można uruchomić aplikację usługi aplikacji — lokalnie lub publikowania projektu na chmurze aplikacji mobilnej usługi aplikacji.
+Jeśli uruchamiasz nowego projektu można utworzyć aplikację usługi aplikacji za pomocą [Azure Portal] lub Visual Studio. Można uruchomić aplikację usługi aplikacji — lokalnie lub publikowania projektu na chmurze aplikacji mobilnej usługi aplikacji.
 
 Jeśli dodajesz funkcji mobilnych do istniejącego projektu, zobacz [pobrać i zainicjuj zestaw SDK](#install-sdk) sekcji.
 
@@ -468,7 +469,7 @@ Upewnij się, że Twoje zaplecze aplikacji mobilnej ma [Microsoft.Azure.Mobile.S
 W poprzednim przykładzie, należy skonfigurować *authAudience* i *authIssuer* ustawienia aplikacji w pliku Web.config plików do każdej być adresem URL katalogu aplikacji przy użyciu schematu HTTPS. Podobnie należy ustawić *authSigningKey* jako klucza do podpisywania wartości aplikacji.
 Aby uzyskać klucza podpisywania:
 
-1. Przejdź do aplikacji w ramach [portalu Azure]
+1. Przejdź do aplikacji w ramach [Azure Portal]
 2. Kliknij przycisk **narzędzia**, **Kudu**, **Przejdź**.
 3. W witrynie zarządzania Kudu kliknij **środowiska**.
 4. Znajdź wartość *witryny sieci Web\_uwierzytelniania\_podpisywanie\_klucza*.
@@ -481,7 +482,7 @@ Użyj klucza podpisywania dla *authSigningKey* parametru w pliku config aplikacj
 [4]: https://azure.microsoft.com/downloads/
 [5]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#client-added-push-notification-tags
 [6]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#push-to-users
-[portalu Azure]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 [NuGet.org]: http://www.nuget.org/
 [Microsoft.Azure.Mobile.Server]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/
 [Microsoft.Azure.Mobile.Server.Quickstart]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Quickstart/

@@ -1,4 +1,4 @@
-1. Zaloguj się na stronie [portalu Azure].
+1. Zaloguj się na stronie [Azure Portal].
 2. Wybierz **+ nowy** > **sieci Web i mobilność** > **aplikacji mobilnej**, a następnie podaj nazwę dla zaplecza aplikacji mobilnej.
 3. Aby uzyskać **grupy zasobów**, wybierz istniejącą grupę zasobów lub Utwórz nową (przy użyciu tej samej nazwie co aplikacja). 
 4. Dla **planu usługi aplikacji**, plan domyślny (w [warstwy standardowa](https://azure.microsoft.com/pricing/details/app-service/)) jest zaznaczone. Możesz też wybrać inny plan lub [Utwórz nową](../articles/app-service/app-service-plan-manage.md#create-an-app-service-plan). 
@@ -18,4 +18,4 @@
    Poczekaj kilka minut dla bazy danych zostanie pomyślnie wdrożona przed kontynuowaniem.
 
 <!-- URLs. -->
-[portalu Azure]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

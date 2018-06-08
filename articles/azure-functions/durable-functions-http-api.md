@@ -15,10 +15,11 @@ ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
 ms.openlocfilehash: aa5c46a4d0ca55339e8f26a3e577d03bf4b504b2
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "32309984"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Interfejsy API protokołu HTTP w funkcji trwałe (funkcje platformy Azure)
 
@@ -129,8 +130,8 @@ Może być zwracany kilka wartości Kod stanu możliwe.
 
 | Pole           | Typ danych | Opis |
 |-----------------|-----------|-------------|
-| runtimeStatus   | ciąg    | Stanu działania wystąpienia. Wartości to *systemem*, *oczekujące*, **, *anulowane*, *zwolniony*, *Ukończone*. |
-| Dane wejściowe           | JSON      | Dane JSON, używane do inicjowania wystąpienia. |
+| runtimeStatus   | ciąg    | Stanu działania wystąpienia. Wartości to *systemem*, *oczekujące*, *anulowane*, *zwolniony*, *Ukończone*. |
+| wejście           | JSON      | Dane JSON, używane do inicjowania wystąpienia. |
 | customStatus    | JSON      | Dane JSON używane na potrzeby stanu aranżacji niestandardowych. To pole jest `null` Jeżeli nie jest ustawiony. |
 | output          | JSON      | Dane wyjściowe JSON wystąpienia. To pole jest `null` Jeśli wystąpienie nie jest w stanie ukończone. |
 | createdTime     | ciąg    | Podczas tworzenia tego wystąpienia. Używa ISO 8601 rozszerzony notacji. |

@@ -5,20 +5,17 @@ keywords: Pytania dotyczące bazy danych, często zadawane pytania, usługi docu
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: b68d1831-35f9-443d-a0ac-dad0c89f245b
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: fe192fb83c8bf29af0d02f47da366d8551dd6af6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e20e360fc1bfb839476a1f4dccf6acf0f25174d2
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "34735168"
 ---
 # <a name="azure-cosmos-db-faq"></a>Często zadawane pytania dotyczące usługi Azure rozwiązania Cosmos bazy danych
 ## <a name="azure-cosmos-db-fundamentals"></a>Podstawowe informacje na temat usługi Azure DB rozwiązania Cosmos
@@ -61,6 +58,9 @@ Nie ma żadnego limitu całkowitej ilości danych, które kontener może przecho
 
 ### <a name="what-are-the-throughput-limits-of-azure-cosmos-db"></a>Jakie są ograniczenia przepływności bazy danych rozwiązania Cosmos Azure?
 Nie ma żadnego limitu całkowitej przepływności obsługujące przez kontener w usłudze Azure DB rozwiązania Cosmos. Klucza będzie rozłożyć obciążenie przybliżeniu równomiernie między wystarczająco dużą liczbę kluczy partycji.
+
+### <a name="are-direct-and-gateway-connectivity-modes-encrypted-"></a>Tryby łączności bezpośrednio i bramy są szyfrowane? 
+Tak oba tryby zawsze pełni są szyfrowane. 
 
 ### <a name="how-much-does-azure-cosmos-db-cost"></a>Ile kosztuje bazy danych Azure rozwiązania Cosmos
 Aby uzyskać więcej informacji, zapoznaj się [Azure DB rozwiązania Cosmos szczegóły cennika](https://azure.microsoft.com/pricing/details/cosmos-db/) strony. Azure opłaty za użycie rozwiązania Cosmos bazy danych są określane przez liczbę kontenerów elastycznie, liczbę godzin kontenery były w trybie online, i udostępnionej przepływności dla każdego kontenera. Termin *kontenery* odnosi się tutaj do kolekcji interfejsu API SQL, wykres interfejsu API programu Graph, kolekcji bazy danych MongoDB interfejsu API i tabele tabeli interfejsu API. 
@@ -164,6 +164,10 @@ Użytkownik może wstawiania zbiorczego dokumentów do bazy danych Azure rozwią
 * Narzędzie migracji danych, zgodnie z opisem w [narzędzie migracji bazy danych dla bazy danych Azure rozwiązania Cosmos](import-data.md).
 * Procedury składowane, zgodnie z opisem w [programowania w języku JavaScript po stronie serwera dla bazy danych Azure rozwiązania Cosmos](programming.md).
 
+### <a name="i-have-setup-my-collection-to-use-lazy-indexing-i-see-that-my-queries-do-not-return-expected-results"></a>Mam Instalatora mojej kolekcji umożliwia indeksowanie z opóźnieniem, widać, że moje zapytania zwraca oczekiwanych rezultatów. 
+Zgodnie z objaśnieniem w sekcji indeksowania, indeksowanie z opóźnieniem może spowodować takie zachowanie. Zawsze należy używać spójne indeksowania dla wszystkich aplikacji. 
+
+
 ### <a name="does-the-sql-api-support-resource-link-caching"></a>Czy buforowanie linków zasobów pomocy technicznej interfejsu API SQL?
 Tak, ponieważ bazy danych rozwiązania Cosmos Azure jest usługą RESTful, linki zasobów są niezmienne i mogą być buforowane. Klienci interfejsu API SQL można określić nagłówek "If-None-Match" dla odczytów względem dowolnego zasobu typu dokumentu lub kolekcji, a następnie zaktualizuj ich lokalne kopie, po zmianie wersji serwera.
 
@@ -171,7 +175,12 @@ Tak, ponieważ bazy danych rozwiązania Cosmos Azure jest usługą RESTful, link
 Tak. [Azure rozwiązania Cosmos DB emulatora](local-emulator.md) zapewnia emulacji o wysokiej wierności usługi DB rozwiązania Cosmos. Obsługuje funkcje, które są takie same jak rozwiązania Cosmos bazy danych Azure, w tym obsługa tworzenia i badania dokumentów JSON, inicjowania obsługi administracyjnej i skalowanie kolekcje i wykonywania procedury składowane i wyzwalaczy. Mogą tworzyć i testować aplikacje przy użyciu emulatora usługi Azure DB rozwiązania Cosmos i wdrożyć je na platformie Azure w skali globalnej, wprowadzając zmiany do punktu końcowego połączenia dla bazy danych Azure rozwiązania Cosmos konfiguracji pojedynczego.
 
 ### <a name="why-are-long-floating-point-values-in-a-document-rounded-when-viewed-from-data-explorer-in-the-portal"></a>Dlaczego są wartości długo zmiennoprzecinkowych w dokumencie zaokrąglona z Eksploratora danych w portalu. 
-Jest to ograniczenie języka JavaScript. JavaScript używa numerów format zmiennoprzecinkowe podwójnej precyzji jak określono w IEEE-754 i bezpiecznie może reprezentować liczby z zakresu od-(253 - 1) i 253 – 1 (tj. 9007199254740991) tylko.
+Jest to ograniczenie języka JavaScript. JavaScript używa numerów format zmiennoprzecinkowe podwójnej precyzji jak określono w IEEE-754 i bezpiecznie może reprezentować liczby z zakresu od-(253 - 1) i 253-1 (tj. 9007199254740991) tylko.
+
+### <a name="where-are-permissions-allowed-in-the-object-hierarchy"></a>Gdzie są dozwolone uprawnienia w hierarchii obiektów?
+
+Tworzenie uprawnień przy użyciu ResourceTokens jest dozwolona na poziomie kolekcji i jego obiektów podrzędnych (takich jak dokumenty, załączniki). Oznacza to, że w trakcie tworzenia uprawnienia w bazie danych lub na poziomie konta aktualnie jest niedozwolone.
+
 
 ## <a name="develop-against-the-api-for-mongodb"></a>Tworzenie do interfejsu API dla bazy danych MongoDB
 ### <a name="what-is-the-azure-cosmos-db-api-for-mongodb"></a>Co to jest API Azure rozwiązania Cosmos bazy danych dla bazy danych MongoDB?
@@ -213,7 +222,7 @@ Istnieją pewne różnice zachowanie, które użytkownicy pochodzące z magazyne
 * CORS nie jest obecnie obsługiwany.
 * Nazwy tabeli w magazynie tabel platformy Azure nie jest rozróżniana, ale są one interfejsu API Azure rozwiązania Cosmos DB tabeli
 * Azure rozwiązania Cosmos DB wewnętrzny formaty kodowania informacje, np. pola binarnego nie są obecnie tak efektywne jak jedną może. W związku z tym może to spowodować nieoczekiwane ograniczenia na rozmiar danych. Na przykład aktualnie jedną nie można użyć pełnej 1 mg jednostki tabeli do przechowywania danych binarnych, ponieważ szyfrowanie zwiększa rozmiar danych.
-* Nazwa właściwości jednostki "Id" obecnie nieobsługiwane
+* Nazwa właściwości jednostki 'Id' obecnie nieobsługiwane
 * TableQuery TakeCount nie jest ograniczona do 1000
 
 Pod względem interfejsu API REST istnieje wiele opcji punkty końcowe/zapytania, które nie są obsługiwane przez interfejs API Azure rozwiązania Cosmos DB tabeli:
@@ -414,7 +423,7 @@ Przy użyciu specyfikacji przepływności, elastycznie zmianą jego korzystać z
 
 Azure DB rozwiązania Cosmos została zaprojektowana jako globalnie rozproszone, na podstawie umowy SLA systemu z gwarancją dostępności, opóźnienia i przepływności. Podczas rezerwowania przepustowości w usłudze Azure DB rozwiązania Cosmos gwarantowane, w odróżnieniu od przepustowości innych systemów. Azure DB rozwiązania Cosmos zapewnia dodatkowe funkcje, które żądane klientów, takie jak indeksów pomocniczych i dystrybucji globalnego.  
 
-### <a name="i-never-get-a-quota-full-notification-indicating-that-a-partition-is-full-when-i-ingest-data-into-azure-table-storage-with-the-table-api-i-do-get-this-message-is-this-offering-limiting-me-and-forcing-me-to-change-my-existing-application"></a>Nigdy nie pojawia się powiadomienie "przydział pełna" (co oznacza, że partycji jest pełny) po pozyskiwania danych do magazynu tabel Azure. Przy użyciu interfejsu API tabeli pojawia się w tej wiadomości. Jest to oferta ograniczenie mnie i wymuszania, żeby można było zmienić mojej istniejącej aplikacji?
+### <a name="i-never-get-a-quota-full-notification-indicating-that-a-partition-is-full-when-i-ingest-data-into-azure-table-storage-with-the-table-api-i-do-get-this-message-is-this-offering-limiting-me-and-forcing-me-to-change-my-existing-application"></a>Powiadomienie nigdy nie uzyskać pełnej limit przydziału"(co oznacza, że partycji jest pełny) po pozyskiwania danych do magazynu tabel Azure. Przy użyciu interfejsu API tabeli pojawia się w tej wiadomości. Jest to oferta ograniczenie mnie i wymuszania, żeby można było zmienić mojej istniejącej aplikacji?
 
 Azure DB rozwiązania Cosmos jest system na podstawie umowy SLA zawiera nieograniczone skali gwarancje opóźnień, przepustowości, dostępności i spójności. W celu zapewnienia wydajności premium gwarantowane, upewnij się, że rozmiar danych i indeks są łatwe w zarządzaniu i skalowalność. 10 GB limit liczby jednostek lub elementów na klucz partycji jest upewnij się, że udostępniamy doskonałą wydajność wyszukiwania i zapytania. Aby upewnić się, skalowanie aplikacji nawet w przypadku usługi Azure Storage, zaleca się możesz *nie* utworzyć partycję gorących wszystkie informacje są przechowywane w jednej partycji i badając ją. 
 
@@ -475,7 +484,7 @@ Dzienniki diagnostyczne zostały omówione w [rejestrowania diagnostycznego bazy
 ### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>Czy głównej mapy klucza do koncepcji klucza partycji bazy danych rozwiązania Cosmos Azure?
 Tak, klucz partycji służy do umieszczania jednostki w odpowiedniej lokalizacji. W usłudze Azure DB rozwiązania Cosmos służy można znaleźć partycji logicznej po prawej, który jest przechowywany na partycji fizycznej. Pojęcie partycjonowania znajduje się również w [partycji i skali w usłudze Azure DB rozwiązania Cosmos](partition-data.md) artykułu. Podjęcie podstawowych optymalizacji Oto czy partycji logicznej nie może przekraczać limitu 10 GB dzisiaj. 
 
-### <a name="what-happens-when-i-get-a-quota-full-notification-indicating-that-a-partition-is-full"></a>Co się dzieje, gdy pojawia się powiadomienie "przydział pełna" wskazujący, że partycji jest pełny?
+### <a name="what-happens-when-i-get-a-quota-full-notification-indicating-that-a-partition-is-full"></a>Co się stanie po uzyskać pełnej limit przydziału"powiadomienie wskazujące, czy partycja jest pełny?
 Azure DB rozwiązania Cosmos jest umowa SLA systemu udostępniająca nieograniczone skali gwarancje opóźnień, przepustowości, dostępności i spójności. Jego Cassandra interfejsu API umożliwia zbyt nieograniczony magazyn danych. Ten nieograniczony magazyn opiera się na poziomie skalowania danych przy użyciu partycjonowania jako kluczowe pojęcia. Pojęcie partycjonowania znajduje się również w [partycji i skali w usłudze Azure DB rozwiązania Cosmos](partition-data.md) artykułu.
 
 10 GB limit liczby jednostek lub elementów na partycji logicznej należy przestrzegać. W celu zapewnienia także skalowanie aplikacji, zaleca się, że możesz *nie* utworzyć partycję gorących wszystkie informacje są przechowywane w jednej partycji i badając ją. Ten błąd można tylko dostarczanych Jeśli danych jest niesymetryczna — która jest np. mieć partii danych do jednej partycji klucz — więcej niż 10 GB. Można znaleźć dystrybucji przy użyciu portalu magazynu danych. Sposób, aby naprawić ten błąd jest recrete tabeli i wybierz podstawowy szczegółowego (klucz partycji), który umożliwia lepszą rozkład danych.

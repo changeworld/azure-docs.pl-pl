@@ -15,10 +15,11 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 02c3a3d996fa253cf56e551a37e098639bf73533
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "32151947"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Jak delegować subskrypcji użytkownika rejestracji i produktu
 Delegowanie umożliwia przy użyciu istniejącej witryny sieci Web do obsługi projektanta logowania — w/tworzenia konta i subskrypcji do produktów, a nie za pomocą wbudowanej funkcji w portalu dla deweloperów. Dzięki temu witryny sieci Web do własnych danych użytkownika i przeprowadzania weryfikacji tych kroków w niestandardowy sposób.
@@ -67,7 +68,7 @@ Teraz musisz utworzyć **punktu końcowego delegowania**. Musi przeprowadzić sz
 5. Jeśli użytkownik jest zarejestrowanie się należy utworzyć odpowiednie konta dla nich w usłudze API Management. [Utwórz użytkownika] przy użyciu interfejsu API REST zarządzania interfejsu API. Po tej czynności upewnij się, Ustaw identyfikator użytkownika, takie same, który znajduje się w magazynie użytkownika lub identyfikator, który użytkownik może przechowywać ścieżkę.
 6. Po pomyślnym uwierzytelnieniu użytkownika:
    
-   * [żądania tokenu (rejestracji jednokrotnej SSO) single-sign-on] za pośrednictwem interfejsu API REST zarządzania interfejsu API
+   * [żądanie tokenu (rejestracji jednokrotnej SSO) single-sign-on] za pośrednictwem interfejsu API REST zarządzania interfejsu API
    * Dołącz returnUrl parametru zapytania do adresu URL logowania jednokrotnego otrzymane od wywołania interfejsu API powyżej:
      
      > Na przykład https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
@@ -172,7 +173,7 @@ Aby uzyskać więcej informacji na delegowania zobacz poniższe wideo:
 
 [Delegating developer sign-in and sign-up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
-[żądania tokenu (rejestracji jednokrotnej SSO) single-sign-on]: https://docs.microsoft.com/rest/api/apimanagement/User/GenerateSsoUrl
+[żądanie tokenu (rejestracji jednokrotnej SSO) single-sign-on]: https://docs.microsoft.com/rest/api/apimanagement/User/GenerateSsoUrl
 [Utwórz użytkownika]: https://docs.microsoft.com/rest/api/apimanagement/user/createorupdate
 [wywołanie interfejsu API REST dla subskrypcji produktu]: http://go.microsoft.com/fwlink/?LinkId=507655#SSO
 [Next steps]: #next-steps

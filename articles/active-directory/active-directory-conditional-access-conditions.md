@@ -9,18 +9,20 @@ manager: mtillman
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/01/2018
+ms.date: 06/01/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 3cb8e598864bccfbea24a2aec5d9387ff903e51c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 5f0ff092a7535448d48642e972d1d36652f1b83f
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "34735145"
 ---
 # <a name="conditions-in-azure-active-directory-conditional-access"></a>Warunki dostępu warunkowego w usłudze Azure Active Directory 
 
@@ -87,7 +89,7 @@ Można też wykluczyć określone aplikacje z zasad; Jednak te aplikacje będą 
 
 
 
-## <a name="sign-in-risk"></a>Ryzyko związane z logowaniem
+## <a name="sign-in-risk"></a>Ryzyko logowania
 
 Ryzyko logowania jest wskaźnik prawdopodobieństwo (wysoki, średni lub niski) próba logowania nie została wykonana przez wiarygodnego właściciela konta użytkownika. Usługi Azure AD oblicza poziom ryzyka logowania podczas logowania użytkownika. Poziom ryzyka obliczeniowej logowania można użyć jako warunek w zasadach dostępu warunkowego. 
 
@@ -148,7 +150,7 @@ Warunek aplikacji klienta umożliwia stosowanie zasad do różnych typów aplika
 - Witryny sieci Web i usług
 - Aplikacje mobilne i aplikacje komputerowe. 
 
-![Warunki](./media/active-directory-conditional-access-conditions/04.png)
+
 
 Aplikacja zostanie sklasyfikowany jako:
 
@@ -156,7 +158,7 @@ Aplikacja zostanie sklasyfikowany jako:
 
 - A aplikację mobilną lub aplikację, gdy jest używana dla natywnego klienta aplikacji mobilnej, OpenID Connect.
 
-Aby uzyskać pełną listę aplikacji klienckich, których można używać w zasadach dostępu warunkowego, zobacz [informacje techniczne dotyczące usługi Azure Active Directory dostępu warunkowego](active-directory-conditional-access-technical-reference.md#client-apps-condition).
+Aby uzyskać pełną listę aplikacji klienckich, których można używać w zasadach dostępu warunkowego, zobacz [warunku aplikacje klienckie](active-directory-conditional-access-technical-reference.md#client-apps-condition) technicznymi Azure Active Directory dostępu warunkowego.
 
 Typowe przypadki użycia tego warunku są zasadami, które:
 
@@ -166,6 +168,20 @@ Typowe przypadki użycia tego warunku są zasadami, które:
 
 Oprócz przy użyciu protokołów nowoczesnego uwierzytelniania i logowania jednokrotnego w sieci web, ten warunek można zastosować do aplikacji poczty, które używają programu Exchange ActiveSync, takich jak aplikacje natywnego programu pocztowego w większości smartfonów. Obecnie aplikacji klienta przy użyciu starszej wersji protokołów muszą być zabezpieczone za pomocą usług AD FS.
 
+Ten stan można wybrać tylko, jeśli **Office 365 usługi Exchange Online** jest tylko aplikacji w chmurze wybrano.
+
+![Aplikacje w chmurze](./media/active-directory-conditional-access-conditions/32.png)
+
+Wybieranie **programu Exchange ActiveSync** jako aplikacje klienckie warunku jest obsługiwana tylko jeśli nie masz inne warunki zasady skonfigurowane. Można jednak zawęzić zakres ten stan do mają zastosowanie tylko do obsługiwanych platform.
+
+ 
+![Obsługiwane platformy](./media/active-directory-conditional-access-conditions/33.png)
+
+Zastosowanie tylko do obsługiwanych platform ten stan jest odpowiednikiem do wszystkich platform urządzeń w [warunku platformy urządzenia](active-directory-conditional-access-conditions.md#device-platforms).
+
+![Obsługiwane platformy](./media/active-directory-conditional-access-conditions/34.png)
+
+
  Aby uzyskać więcej informacji, zobacz:
 
 - [Konfigurowanie programu SharePoint Online i Exchange Online dla usługi Azure Active Directory dostępu warunkowego](active-directory-conditional-access-no-modern-authentication.md)
@@ -173,9 +189,53 @@ Oprócz przy użyciu protokołów nowoczesnego uwierzytelniania i logowania jedn
 - [Azure Active Directory na podstawie aplikacji dostępu warunkowego](active-directory-conditional-access-mam.md) 
 
 
+### <a name="legacy-authentication"></a>Starsze uwierzytelnianie  
+
+Dostęp warunkowy dotyczy teraz starszych klientów pakietu Office, które nie obsługują nowoczesnego uwierzytelniania, a także klientów, którzy używają poczty protokoły POP, IMAP, SMTP itd. Dzięki temu można skonfigurować zasady, takie jak **zablokować dostęp z innych klientów**.
+
+
+![Starsze uwierzytelnianie](./media/active-directory-conditional-access-conditions/160.png)
+ 
 
 
 
+#### <a name="known-issues"></a>Znane problemy
+
+- Konfigurowanie zasad dla **innych klientów** blokuje z niektórych klientów, takie jak SPConnect całej organizacji. Jest to spowodowane starszych klientów uwierzytelniania w nieoczekiwany sposób. Ten problem nie dotyczy głównych aplikacji pakietu Office, takich jak starszych klientów pakietu Office. 
+
+- Może potrwać do 24 godzin zasad zaczęły obowiązywać. 
+
+
+#### <a name="frequently-asked-questions"></a>Często zadawane pytania
+
+**Spowoduje to zablokowanie usług sieci Web programu Exchange (EWS)**
+
+Protokół uwierzytelniania, który używa EWS to zależy. Jeśli EWS aplikacji korzystających z nowoczesnego uwierzytelniania, zostaną objęte aplikacji klienckiej "aplikacji mobilnych i klasycznych klientów". Jeśli aplikacja EWS używa uwierzytelniania podstawowego, zostaną objęte aplikacji klienckiej "Innych klientów".
+
+
+**Kontrolki można użyć dla innych klientów**
+
+Żadnego formantu, można skonfigurować dla "Innych klientów". Środowisko użytkownika końcowego będzie jednak blokowanie dostępu we wszystkich przypadkach. "Innych klientów" nie obsługują formantach, takich jak uwierzytelnianie wieloskładnikowe zgodnego urządzenia, przyłączanie do domeny,... itd. 
+ 
+**Jakie warunki można używać dla innych klientów?**
+
+Wszelkie warunki, można skonfigurować dla "Innych klientów".
+
+**Program Exchange ActiveSync obsługuje wszystkie warunki i formanty?**
+
+Nie. Poniżej przedstawiono podsumowanie obsługi protokołu Exchange ActiveSync (EAS):
+
+- EAS obsługuje tylko użytkowników i grup elementów docelowych. Nie obsługuje on gościa, role. Jeśli warunek gościa/roli jest skonfigurowany, wszyscy użytkownicy będą zablokowania, ponieważ nie można określić, czy dla użytkownika mają dotyczyć zasady, czy nie.
+
+- EAS działa tylko z programem Exchange jako aplikacji w chmurze. 
+
+- EAS nie obsługuje żadnych stan, z wyjątkiem samej aplikacji klienta.
+
+- EAS można skonfigurować z żadnym formantem (wszystkie z wyjątkiem zgodności urządzeń doprowadzi do bloku).
+
+**Czy zasady mają zastosowanie do wszystkich aplikacji klienckich domyślnie idąc dalej?**
+
+Nie. Nie została zmieniona w domyślne zachowanie zasady. Zasady nadal mają zastosowanie do przeglądarki i klientów mobilnych aplikacji/pulpitu domyślnie.
 
 
 
