@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
 ms.openlocfilehash: 9d2043808cbd61d5e2a69cbe0f2a5a611e3afa31
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
+ms.lasthandoff: 06/08/2018
 ms.locfileid: "34839762"
 ---
 # <a name="team-lead-tasks"></a>Zespół realizacji zadań

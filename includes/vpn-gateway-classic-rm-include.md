@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 2b1f0a34c9e068ab98863e317975bb7479d99a88
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
+ms.lasthandoff: 06/08/2018
 ms.locfileid: "30197792"
 ---
 Obecnie platforma Azure obsługuje dwa modele wdrażania: model wdrażania przy użyciu usługi Azure Resource Manager i model klasyczny. Te dwa modele nie są ze sobą w pełni zgodne. Zanim zaczniesz, musisz wiedzieć, z którym modelem chcesz pracować. Aby uzyskać więcej informacji na temat modeli wdrażania, zobacz [Understanding deployment models](../articles/resource-manager-deployment-model.md) (Omówienie modeli wdrażania). Jeśli dopiero zaczynasz pracę na platformie Azure, zalecamy użycie modelu wdrażania przy użyciu usługi Resource Manager.

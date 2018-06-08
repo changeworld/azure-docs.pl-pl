@@ -2,23 +2,23 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: storage
-author: tamram
+author: rogara
 ms.service: storage
 ms.topic: include
 ms.date: 04/09/2018
-ms.author: tamram
+ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b8b61f2a512cca2a88274b93d04a1fdc8893a88f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f64645db782b055e1c544f257149411f29fc99d7
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "34806319"
 ---
 ## <a name="about-vhds"></a>Informacje o wirtualnych dyskach twardych
-
 Wirtualne dyski twarde używane na platformie Azure to pliki vhd przechowywane jako stronicowe obiekty blob na koncie magazynu w warstwie Standardowa lub Premium na platformie Azure. Aby uzyskać informacje na temat stronicowych obiektów blob, zobacz [Understanding block blobs and page blobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/) (Omówienie blokowych i stronicowych obiektów blob). Aby uzyskać szczegółowe informacje na temat magazynu w warstwie Premium, zobacz [High-performance premium storage and Azure VMs](../articles/virtual-machines/windows/premium-storage.md) (Magazyn w warstwie Premium o wysokiej wydajności i maszyny wirtualne platformy Azure).
 
-Platforma Azure obsługuje stały format VHD dysków. W przypadku stałego formatu dysk logiczny jest zapisywany w pliku w sposób liniowy w taki sposób, że przesunięcie X na dysku jest zapisywane w obiekcie blob z przesunięciem X. Niewielka stopka na końcu obiektu blob opisuje właściwości wirtualnego dysku twardego. Często zdarza się, że stały format prowadzi do marnotrawienia miejsca, ponieważ większość dysków zawiera duże nieużywane zakresy. Platforma Azure jednak przechowuje pliki vhd w formacie rozrzedzonym, więc jednocześnie uzyskuje się zalety dysków stałych i dynamicznych. Aby uzyskać więcej szczegółów, zobacz [Getting started with virtual hard disks](https://technet.microsoft.com/library/dd979539.aspx) (Pierwsze kroki z wirtualnymi dyskami twardymi).
+Platforma Azure obsługuje stały format VHD dysków. W przypadku stałego formatu dysk logiczny jest zapisywany w pliku w sposób liniowy w taki sposób, że przesunięcie X na dysku jest zapisywane w obiekcie blob z przesunięciem X. Niewielka stopka na końcu obiektu blob opisuje właściwości wirtualnego dysku twardego. Często odpady ustalonym formacie miejsca, ponieważ większość dysków ma duże zakresy nieużywane w nich. Platforma Azure jednak przechowuje pliki vhd w formacie rozrzedzonym, więc jednocześnie uzyskuje się zalety dysków stałych i dynamicznych. Aby uzyskać więcej informacji, zobacz [wprowadzenie do korzystania z wirtualnymi dyskami twardymi](https://technet.microsoft.com/library/dd979539.aspx).
 
 Wszystkie pliki VHD na platformie Azure, który ma być używany jako źródło do utworzenia dysków lub obrazy są tylko do odczytu, z wyjątkiem plików VHD przekazany lub kopiowane do magazynu Azure przez użytkownika (która może być do odczytu / zapisu lub tylko do odczytu). Po utworzeniu dysku lub obrazie Azure tworzy kopie źródła pliki VHD. Te kopie mogą być tylko do odczytu lub do odczytu i zapisu, zależnie od tego, jak korzystasz z wirtualnego dysku twardego.
 
@@ -30,44 +30,39 @@ Zanim będzie możliwe usunięcie źródłowego pliku vhd, trzeba będzie usuną
 > Jeśli usuniesz źródłowy plik vhd z magazynu albo usuniesz swoje konto magazynu, firma Microsoft nie będzie mogła odzyskać usuniętych danych.
 
 ## <a name="types-of-disks"></a>Typy dysków 
-
 Dyski platformy Azure zaprojektowano tak, aby zapewniały 99,999% dostępności. Dysku systemu Azure zostały spójnie dostarczone trwałości korporacyjnej, z branży, ZERO % Annualized częstość niepowodzeń.
 
-Do wyboru podczas tworzenia dysków są dwie warstwy wydajności — magazyny Standard Storage i Premium Storage. Ponadto istnieją dwa typy dysków — niezarządzane i zarządzane — mogące występować w obu warstwach wydajności.
+Istnieją trzy warstwy wydajności dla magazynu, który można wybrać podczas tworzenia dysków--dysków SSD w warstwie Premium, standardowych dysków SSD (wersja zapoznawcza) i magazynu w warstwie standardowa dysk twardy. Ponadto istnieją dwa typy dysków--niezarządzane, a zarządzane.
 
+### <a name="standard-hdd-disks"></a>Dyski standardowe dysk twardy
+Dyski standardowe HDD bazują na dyskach HDD i dostarczać ekonomicznego magazynowania. Standardowe magazynu dysku twardego mogą być replikowane lokalnie w centrum danych z jednego lub być geograficznie nadmiarowego z centrów danych podstawowych i pomocniczych. Aby uzyskać więcej informacji na temat replikacji magazynu, zobacz [replikacja usługi Azure Storage](../articles/storage/common/storage-redundancy.md). 
 
-### <a name="standard-storage"></a>Standard Storage 
+Aby uzyskać więcej informacji o korzystaniu z dysków standardowych dysków Twardych, zobacz [Standard Storage i dysków](../articles/virtual-machines/windows/standard-storage.md).
 
-Magazyn Standard Storage bazuje na dyskach twardych (HDD) i stanowi ekonomiczne, chociaż wciąż wydajne rozwiązanie. Magazyn Standard Storage może być replikowany lokalnie w jednym centrum danych albo być objęty nadmiarowością geograficzną z głównym i dodatkowym centrum danych. Aby uzyskać więcej informacji na temat replikowania magazynu, zobacz [Replikacja usługi Azure Storage](../articles/storage/common/storage-redundancy.md). 
+### <a name="standard-ssd-disks-preview"></a>Dyski SSD standardowe (wersja zapoznawcza)
+Dyski SSD standardowe są przeznaczone do adresów tego samego rodzaju obciążenia jako dyski standardowe dysku twardego, ale oferuje bardziej spójny wydajność i niezawodność niż dysk twardy. Dyski SSD standardowe połączyć elementy dyski Premium SSD i HDD standardowa do formularza ekonomicznym rozwiązaniem, które najlepiej nadaje się do aplikacji, takich jak serwery sieci web, które nie wymagają wysokiej IOPS na dyskach. Jeśli jest dostępna, dyski SSD standardowe są opcji wdrażania zalecane dla większości obciążeń. Dyski SSD standardowe są dostępne tylko jako zarządzane dysków i while w podglądzie są dostępne tylko w [wybierz regionów](../articles/virtual-machines/windows/faq-for-disks.md) i z typem odporności magazyn lokalnie nadmiarowy (LRS).
 
-Aby uzyskać więcej informacji na temat korzystania z magazynu Standard Storage z dyskami maszyn wirtualnych, zobacz [Standard Storage and Disks](../articles/virtual-machines/windows/standard-storage.md) (Magazyn Standard Storage i dyski).
-
-### <a name="premium-storage"></a>Premium Storage 
-
-Magazyn Premium Storage bazuje na dyskach półprzewodnikowych (SSD) i oferuje dyski o wysokiej wydajności i małych opóźnieniach dla maszyn wirtualnych, na których działają obciążenia intensywnie korzystające z operacji wejścia/wyjścia. Zwykle służy magazyn w warstwie Premium o rozmiarze, które obejmują "s" w nazwie serii. Na przykład brak serii Dv3 i Dsv3 serii, serie Dsv3 może być używany z magazyn w warstwie Premium.  Aby uzyskać więcej informacji, zobacz [Premium Storage](../articles/virtual-machines/windows/premium-storage.md).
+### <a name="premium-ssd-disks"></a>Dyski SSD w warstwie Premium 
+Dyski SSD w warstwie Premium bazują na dyskach SSD, a także zapewnia obsługę dysków o wysokiej wydajności i małych opóźnieniach/O wykonujących obciążeń uruchomionych maszyn wirtualnych. Zazwyczaj można dysków Premium SSD o rozmiarze, które obejmują "s" w nazwie serii. Na przykład brak serii Dv3 i Dsv3 serii, serie Dsv3 może być używany z dysków Premium SSD.  Aby uzyskać więcej informacji, zobacz [Premium Storage](../articles/virtual-machines/windows/premium-storage.md).
 
 ### <a name="unmanaged-disks"></a>Dyski niezarządzane
-
-Dyski niezarządzane to tradycyjny typ dysków używany przez maszyny wirtualne. Za ich pomocą tworzy się własne konto magazynu, które wskazuje się podczas tworzenia dysku. Musisz upewnić się, że nie umieszczasz zbyt wielu dysków na tym samym koncie magazynu, ponieważ możesz przekroczyć [cele skalowalności](../articles/storage/common/storage-scalability-targets.md) konta magazynu (np. 20 000 IOPS), przez co wydajność maszyn wirtualnych będzie ograniczona. Gdy korzystasz z dysków niezarządzanych, musisz opracować sposób zmaksymalizowania użycia jednego lub większej liczby kont magazynu w celu uzyskania najlepszej wydajności maszyn wirtualnych.
+Dyski niezarządzane to tradycyjny typ dysków używany przez maszyny wirtualne. Z tych dysków Tworzenie konta magazynu i konto magazynu można określić podczas tworzenia dysku. Upewnij się, nie umieszczaj zbyt wiele dysków z tego samego konta magazynu, ponieważ mogła przekroczyć [wartości docelowe skalowalności](../articles/storage/common/storage-scalability-targets.md) konta magazynu (20 000 IOPS, na przykład), co w maszynach wirtualnych ograniczane. Gdy korzystasz z dysków niezarządzanych, musisz opracować sposób zmaksymalizowania użycia jednego lub większej liczby kont magazynu w celu uzyskania najlepszej wydajności maszyn wirtualnych.
 
 ### <a name="managed-disks"></a>Dyski zarządzane 
+W przypadku dysków zarządzanych tworzenie konta magazynu i zarządzanie nim odbywa się automatycznie w tle i nie trzeba martwić się o limity skalowalności konta magazynu. Wystarczy określić rozmiar dysku i warstwę wydajności (Standardowa/Premium), a platforma Azure sama utworzy dysk i będzie nim zarządzać. O używanym magazynie nie trzeba myśleć przy dodawaniu dysków albo skalowaniu maszyny wirtualnej w górę i w dół. 
 
-W przypadku dysków zarządzanych tworzenie konta magazynu i zarządzanie nim odbywa się automatycznie w tle i nie trzeba martwić się o limity skalowalności konta magazynu. Wystarczy określić rozmiar dysku i warstwę wydajności (Standardowa/Premium), a platforma Azure sama utworzy dysk i będzie nim zarządzać. O używanym magazynie nie trzeba myśleć nawet przy dodawaniu dysków albo skalowaniu maszyny wirtualnej w górę i w dół. 
-
-Można też zarządzać własnymi obrazami niestandardowymi na jednym koncie magazynu na region platformy Azure i używać ich do tworzenia setek maszyn wirtualnych w tej samej subskrypcji. Aby uzyskać więcej informacji na temat dysków zarządzanych, zobacz [Omówienie usługi Managed Disks](../articles/virtual-machines/windows/managed-disks-overview.md).
+Można też zarządzać własnymi obrazami niestandardowymi na jednym koncie magazynu na region platformy Azure i używać ich do tworzenia setek maszyn wirtualnych w tej samej subskrypcji. Aby uzyskać więcej informacji o dyskach zarządzanych, zobacz [Omówienie usługi Azure Managed Disks](../articles/virtual-machines/windows/managed-disks-overview.md).
 
 Aby czerpać korzyści z wielu funkcji dysków zarządzanych, zalecamy używanie usługi Azure Managed Disks dla nowych maszyn wirtualnych i przekonwertowanie wcześniej używanych dysków niezarządzanych na dyski zarządzane.
 
 ### <a name="disk-comparison"></a>Porównanie dysków
+W poniższej tabeli przedstawiono porównanie standardowych dysków Twardych, SSD standardowa i Premium SSD dysków niezarządzane i zarządzane pomocne w podejmowaniu decyzji co do użycia.
 
-Poniższa tabela zawiera porównanie warstw Premium i Standardowa dla dysków niezarządzanych i zarządzanych, które może być pomocne przy wybieraniu rozwiązania do zastosowania.
-
-|    | Dysk platformy Azure w warstwie Premium | Dysk platformy Azure w warstwie Standardowa |
-|--- | ------------------ | ------------------- |
-| Typ dysku | Dyski półprzewodnikowe (SSD) | Dyski twarde (HDD)  |
-| Przegląd  | Pamięć dyskowa o wysokiej wydajności i małych opóźnieniach, bazująca na dyskach SSD, przeznaczona dla maszyn wirtualnych uruchamiających obciążenia intensywnie korzystające z operacji wejścia/wyjścia lub hostujących środowisko produkcyjne o znaczeniu krytycznym | Ekonomiczna pamięć dyskowa oparta na dyskach HDD, przeznaczona dla scenariuszy z maszynami wirtualnymi do programowania i testowania |
-| Scenariusz  | Obciążenia produkcyjne i wrażliwe na wydajność | Programowanie i testowanie, zastosowania niekrytyczne <br>Rzadki dostęp |
-| Rozmiar dysku | P4: 32 GB (tylko w przypadku dysków zarządzane)<br>P6: 64 GB (tylko w przypadku dysków zarządzane)<br>P10: 128 GB<br>P20: 512 GB<br>P30: 1024 GB<br>P40: 2048 GB<br>P50: GB 4095 | Niezarządzane dysków: 1 GB – 4 TB (4095 GB) <br><br>Dyski zarządzane:<br> S4: 32 GB <br>S6: 64 GB <br>S10: 128 GB <br>S20: 512 GB <br>S30: 1024 GB <br>S40: 2048 GB<br>S50: GB 4095| 
-| Maksymalna przepływność na dysk | 250 MB/s | 60 MB/s | 
-| Maksymalna liczba operacji wejścia/wyjścia na dysk | 7500 IOPS | 500 IOPS | 
-
+|    | Dysk platformy Azure w warstwie Premium |Azure SSD — dysk standardowy (wersja zapoznawcza)| Dysk Azure standardowych dysków Twardych 
+|--- | ------------------ | ------------------------------- | ----------------------- 
+| Typ dysku | Dyski półprzewodnikowe (SSD) | Dyski półprzewodnikowe (SSD) | Dyski twarde (HDD)  
+| Przegląd  | Pamięć dyskowa o wysokiej wydajności i małych opóźnieniach, bazująca na dyskach SSD, przeznaczona dla maszyn wirtualnych uruchamiających obciążenia intensywnie korzystające z operacji wejścia/wyjścia lub hostujących środowisko produkcyjne o znaczeniu krytycznym |Bardziej spójny wydajność i niezawodność niż dysk twardy. Zoptymalizowana pod kątem obciążeń IOPS niski| Dysku ekonomiczne rzadkim dostępu opartego na dysk twardy
+| Scenariusz  | Obciążenia produkcyjne i wrażliwe na wydajność |Serwery sieci Web, aplikacje dla przedsiębiorstw lekkim używane i tworzenie/testowanie oprogramowania| Kopia zapasowa, niekrytyczny, rzadko dostępu 
+| Rozmiar dysku | P4: 32 GiB (tylko w przypadku dysków zarządzane)<br>P6: 64 GiB (tylko w przypadku dysków zarządzane)<br>P10: GiB 128<br>P15: 256 GiB (tylko w przypadku dysków zarządzane)<br>P20: GiB 512<br>P30: GiB 1024<br>P40: GiB 2048<br>P50: GiB 4095 |Zarządzane tylko dyski:<br>E10: GiB 128<br>E15: GiB 256<br>E20: GiB 512<br>E30: GiB 1024<br>E40: GiB 2048<br>E 50: GiB 4095 | Niezarządzane dysków: GiB 1 – 4 TiB (4095 GiB) <br><br>Dyski zarządzane:<br> S4: GiB 32 <br>S6: GiB 64 <br>S10 w warstwie: GiB 128 <br>S15: GiB 256 <br>S20: GiB 512 <br>S30: GiB 1024 <br>S40: GiB 2048<br>S50: GiB 4095
+| Maksymalna przepływność na dysk | 250 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s 
+| Maksymalna liczba operacji wejścia/wyjścia na dysk | 7500 IOPS | Maksymalnie 500 IOPS | Maksymalnie 500 IOPS 
