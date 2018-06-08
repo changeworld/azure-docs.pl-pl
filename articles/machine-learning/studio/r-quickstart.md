@@ -10,16 +10,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 99a3a0fd-b359-481a-b236-66868deccd96
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: 231d505e91fc036b30344e2fd9971db8ba2fdf05
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 57c0030ac613167dc3ed567c2876b8e2e110d47a
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836379"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning"></a>Samouczek szybkiego startu dotyczący języka programowania R dla usługi Azure Machine Learning
 
@@ -682,7 +684,7 @@ Teraz zajrzyj do dziennika. Powinien on wyglądać rys. 15.
     [ModuleOutput] 
     [ModuleOutput]  $ Time             : POSIXct, format: "1995-01-01" "1995-02-01" ...
 
-*Figure 15. Podsumowanie dataframe z obiektem serii czasu.*
+*Rysunek 15. Podsumowanie dataframe z obiektem serii czasu.*
 
 Możemy stwierdzić Podsumowanie nowej kolumny, która jest w rzeczywistości klasy POSIXct.
 

@@ -9,17 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 73a3e9c6-00d0-41d4-8cf1-2ec87713867e
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: 3ce4104040e90a4740442d7692b3bf4a0789bde0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 86e018a3f8eedecbb60614b0f1226b088ebb18fc
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "30185207"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34837936"
 ---
 # <a name="deploy-an-azure-machine-learning-web-service"></a>Wdrażanie usługi sieci Web Azure Machine Learning
 Usługa Azure Machine Learning umożliwia tworzenia, testowania i wdrażania rozwiązań z zakresu analiz predykcyjnych.
@@ -62,7 +63,7 @@ Eksperyment predykcyjny można wdrożyć jako nową usługę sieci web lub usłu
 ### <a name="deploy-the-predictive-experiment-as-a-new-web-service"></a>Wdróż eksperyment predykcyjny jako nową usługę sieci web
 Teraz, eksperyment predykcyjny został przygotowany, można go wdrożyć jako nową usługę sieci web platformy Azure. Przy użyciu usługi sieci web, użytkownicy mogą wysyłać dane do modelu i model, którą będzie zwracać jej prognoz.
 
-Aby wdrożyć predykcyjnej eksperymentu, kliknij przycisk **Uruchom** w dolnej części obszaru roboczego eksperymentu. NewPo skończeniu pracy eksperymentu kliknij **wdrażanie usługi sieci Web** i wybierz **wdrażanie usługi sieci Web [nowy]**.  Zostanie otwarta strona wdrożenia portalu Usługa sieci Web usługi Machine Learning.
+Aby wdrożyć predykcyjnej eksperymentu, kliknij przycisk **Uruchom** w dolnej części obszaru roboczego eksperymentu. Po skończeniu pracy eksperymentu kliknij **wdrażanie usługi sieci Web** i wybierz **wdrażanie usługi sieci Web [nowy]**.  Zostanie otwarta strona wdrożenia portalu Usługa sieci Web usługi Machine Learning.
 
 > [!NOTE] 
 > Aby wdrożyć nową usługę sieci web musi masz wystarczające uprawnienia do subskrypcji, do którego należy wdrożyć usługę sieci web. Aby uzyskać więcej informacji, zobacz [zarządzania usługi sieci Web przy użyciu portalu usługi sieci Web systemu Azure Machine Learning](manage-new-webservice.md). 

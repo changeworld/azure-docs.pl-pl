@@ -1,26 +1,27 @@
 ---
-title: "Wprowadzenie do usługi Azure stosu Development Kit (ASDK) | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano, co to jest ASDK i typowe przypadki użycia do oceny programu Microsoft Azure stosu."
+title: Wprowadzenie do usługi Azure stosu Development Kit (ASDK) | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, co to jest ASDK i typowe przypadki użycia do oceny programu Microsoft Azure stosu.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 03/16/2018
+ms.date: 06/07/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 5a268a29c7a767084049bf56270aa8bc9d2ccc3f
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 951cd1adc09373b9af560097b088fd740ceb51a8
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850631"
 ---
 # <a name="what-is-the-azure-stack-development-kit"></a>Co to jest zestaw deweloperski stosu Azure?
 [Microsoft Azure stosu zintegrowane systemy](.\.\azure-stack-poc.md) należeć do zakresu o rozmiarze z 4-12 węzłów i wspólnie są obsługiwane przez partnera sprzętu i firmy Microsoft. Użyj stosu Azure zintegrowanych systemów, aby włączyć nowe scenariusze dla obciążeń produkcyjnych. Jeśli operator Azure stosu, który zarządza zintegrowanych systemów infrastruktury i oferuje usługi, zobacz nasze [dokumentacji operator](https://docs.microsoft.com/azure/azure-stack).
@@ -79,4 +80,4 @@ Stos Azure będą w dalszym ciągu obsługę dodatkowych usług Azure. Aby dowie
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby rozpocząć, obliczenia stosu Azure, należy przygotować hosta zestawu programowanie komputera serwera, a następnie [zainstalować ASDK](asdk-deploy.md). Po wykonaniu tej można Zaloguj się do portali administratorów i użytkowników na rozpoczęcie korzystania z usługi Azure stosu.
+Aby rozpocząć, obliczenia stosu Azure, należy przygotować hosta zestawu programowanie komputera serwera, a następnie [zainstalować ASDK](asdk-install.md). Po wykonaniu tej można Zaloguj się do portali administratorów i użytkowników na rozpoczęcie korzystania z usługi Azure stosu.

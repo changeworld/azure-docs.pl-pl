@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/18/2018
+ms.date: 06/05/2018
 ms.author: brenduns
-ms.openlocfilehash: d23f5b91e08c169975ac5d0bb8d9f048828c2910
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 94cabb73406619b95147595127e97a27aed762f9
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849753"
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>Ustawienia konfiguracji bramy sieci VPN Azure stosu
 
@@ -157,7 +158,10 @@ W przeciwieństwie do usługi Azure, który obsługuje wielu ofert jako inicjato
 |Wersja IKE |IKEv2 |
 |Szyfrowania i tworzenia skrótów algorytmy (szyfrowanie)     | GCMAES256|
 |Szyfrowania i tworzenia skrótów algorytmy (uwierzytelnianie) | GCMAES256|
-|Okres istnienia skojarzeń zabezpieczeń (czas)  | 27 000 sekund |
-|Okres istnienia skojarzeń zabezpieczeń (bajty) | 819,200       |
+|Okres istnienia skojarzeń zabezpieczeń (czas)  | 27,000 sekund<sup>zobacz Uwaga 1</sup> |
+|Okres istnienia skojarzeń zabezpieczeń (bajty) | 33,553,408<sup>patrz Uwaga 2</sup>     |
 |Doskonałe utajnienie przekazywania (PFS) |PFS2048 |
 |Wykrywanie nieaktywnych elementów równorzędnych | Obsługiwane|  
+
+*Uwaga 1:* poprzedzające wersję 1803 stosu Azure została użyta wartość 14,400 przez czas ich istnienia SA (Time). 
+*Uwaga 2:* poprzedzające wersję 1803 stosu Azure została użyta wartość 819,200 przez czas ich istnienia SA (w bajtach).

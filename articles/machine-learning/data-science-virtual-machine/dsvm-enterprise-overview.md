@@ -8,17 +8,19 @@ author: gopitk
 manager: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 6a755ef4d933046377a6a25be76655b44f4bf508
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d2aa3c8582227363e9365f213cdf351b9f4a81af
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830541"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Maszyny wirtualnej nauki danych na podstawie analizy zespołu i środowiska AI 
 [Maszyny wirtualnej nauki danych](overview.md) (DSVM) udostępnia bogate środowisko w chmurze Azure z oprogramowaniem wbudowanych AI i danych analiz. Tradycyjnie DSVM został użyty jako poszczególnych analytics pulpitu i analityków danych poszczególnych zwiększyć wydajność, wykorzystując to pojęcie udostępnionego środowiska wbudowanych analytics. Jak analytics duże zespoły zaplanować środowiskami analytics ich AI i analityków danych, jeden cyklicznego motywów jest udostępnionego analytics programowanie i eksperymenty infrastrukturę, która jest zarządzany zgodnie z organizacji IT zasad który ułatwia również współpracy i spójności między nauki danych / zespoły analytics. Umożliwia również współużytkowanej infrastruktury IT na lepsze wykorzystanie środowiska analytics. Nauki danych zespołów / analytics infrastruktury jest również określana przez niektóre organizacje jako "Piaskownicy Analytics", która umożliwia analityków danych szybko zrozumieć dane, uruchom eksperymenty sprawdzić hipoteza, tworzenie modeli predykcyjnych w bezpieczny sposób bez wpływu na środowisko produkcyjne podczas mieli dostęp do różnych zasobów danych. 

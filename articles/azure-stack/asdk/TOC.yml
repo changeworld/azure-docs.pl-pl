@@ -9,27 +9,11 @@
       href: asdk-release-notes.md
 - name: Samouczki
   items:
-    - name: 1. Wdrażanie ASDK
-      items:
-        - name: Wdrażanie ASDK - Instalatora
-          href: asdk-deploy.md
-        - name: Wdrażanie ASDK - programu PowerShell
-          href: asdk-deploy-powershell.md
-        - name: Wdróż ponownie ASDK
-          href: asdk-redeploy.md
-    - name: 2. Dodaj element marketplace
-      items:
-        - name: Pobierz z platformy Azure
-          href: asdk-marketplace-item.md
-        - name: Dodaj z lokalnego źródła
-          href: asdk-marketplace-item-offline.md
-    - name: 3. Oferta usługi IaaS
-      href: asdk-offer-services.md
-    - name: 4. Subskrybowanie oferty
+    - name: Subskrybowanie oferty
       href: asdk-subscribe-services.md
-    - name: 5. Aktualizacja oferty i planów
+    - name: Aktualizacja oferty i planów
       href: asdk-update-offers.md
-    - name: 6. Utwórz maszynę Wirtualną z szablonu
+    - name: Utwórz maszynę Wirtualną z szablonu
       href: asdk-create-vm-template.md
 - name: Pojęcia
   items:
@@ -49,10 +33,14 @@
           href: asdk-download.md
         - name: Przygotuj komputer-host ASDK
           href: asdk-prepare-host.md
-        - name: Zainstaluj ASDK
+        - name: Wdrażanie ASDK - Instalatora
           href: asdk-install.md
+        - name: Wdrażanie ASDK - programu PowerShell
+          href: asdk-deploy-powershell.md
         - name: Po wdrożeniu konfiguracji
           href: asdk-post-deploy.md
+        - name: Wdróż ponownie ASDK
+          href: asdk-redeploy.md
     - name: Zarejestruj ASDK
       href: asdk-register.md
     - name: Skonfiguruj ustawienia telemetrii stosu Azure

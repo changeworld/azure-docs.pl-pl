@@ -8,14 +8,16 @@ ms.author: pabuehle
 manager: mwinkle
 ms.reviewer: marhamil, mldocs, garyericson, jasonwhowell
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 8bf5cd802198cba48a99c029d0c75c25dd5f6d84
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 5ff6502b0ed023f6fe8a9475a0e81991a9918cc5
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850175"
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Za pomocą usługi Azure Machine Learning Workbench klasyfikacji obrazu
 
@@ -242,15 +244,20 @@ W pierwszym zrzut ekranu Uszczegółowienie DNN prowadzi do umożliwiające leps
 
 
 ### <a name="parameter-tuning"></a>Dostrajanie parametrów
+
 Jak ma wartość true dla większości machine learning projektów, uzyskiwania dobrych wyników o nowy zestaw danych wymaga parametru dokładne dostrajania, a także decyzje dotyczące projektu innej obliczania. Ułatwiające te zadania zostały podane wszystkie parametry ważne i krótki opis podany w jednym miejscu: `PARAMETERS.py` pliku.
 
 Najbardziej obietnicy drogi ulepszeń, należą:
 
 - Jakość danych: Upewnij się, zestawy szkoleniowe i testu mają wysokiej jakości. Oznacza to, że obrazy są poprawnie adnotacjami, niejednoznaczne obrazów usunięte (na przykład odzieży elementów z paski i kropki) i wykluczają się wzajemnie atrybuty (to znaczy wybierany tak, aby każdego obrazu należy dokładnie jeden atrybut).
+
 - Jeśli obiekt odsetek jest mały obraz nie będą działać poprawnie są określane podejścia klasyfikacji obrazu. W takim przypadku należy rozważyć użycie metody wykrywania obiektu zgodnie z opisem w tym [samouczek](https://github.com/Azure/ObjectDetectionUsingCntk).
 - Uszczegółowienie DNN: parametr raczej najważniejszych uzyskać prawo jest tempo uczenia `rf_lrPerMb`. Jeśli dokładności szkolenia (pierwszy rysunek w część 2) nie jest bliski 0 – 5%, najprawdopodobniej jest to spowodowane błędną tempo uczenia. Parametry, począwszy od `rf_` mniej ważne. Zazwyczaj błąd szkolenia należy zmniejszyć wykładniczo i być 0% po szkolenia.
+
 - Dane wejściowe rozpoznawania: domyślna rozdzielczość obrazu to 224 x 224 pikseli. Przy użyciu nowszej rozdzielczość obrazu (parametr: `rf_inputResoluton`), na przykład 448 x 448 lub 896 x 896 pikseli często znaczących zwiększa dokładność, ale spowalnia uściślenia DNN. **Przy użyciu wyższej rozdzielczości obrazu jest niemal wolne obiad i prawie zawsze zwiększa dokładność**.
+
 - Nadmierne dopasowywania DNN: Unikaj duży odstęp między szkoleniowe i dokładność testu podczas uściślenia DNN (pierwszy rysunek w część 2). Ta przerwa można zmniejszyć przy użyciu stawki przerwany `rf_dropoutRate` 0,5 lub więcej oraz przez odpowiednie zwiększenie wagi regularizer `rf_l2RegWeight`. Przy użyciu szybkość wysokiej przerwany może być szczególnie przydatne, jeśli rozdzielczość obrazu wejściowego DNN jest duża.
+
 - Spróbuj użyć DNNs głębiej, zmieniając `rf_pretrainedModelFilename` z `ResNet_18.model` albo `ResNet_34.model` lub `ResNet_50.model`. Model Resnet 50 nie jest tylko głębiej, ale jego dane wyjściowe przedostatni warstwy jest rozmiar 2048 elementów przestawnych (vs. 512 elementów przestawnych modeli ResNet 18 i ResNet 34). Ta zwiększona wymiar może być szczególnie przydatne podczas uczenia SVM klasyfikatora.
 
 ## <a name="part-3---custom-dataset"></a>Część 3 - niestandardowy zestaw danych

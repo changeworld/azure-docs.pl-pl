@@ -9,11 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: 44777946fdc829da222ffdd67dfecfa3bf240be7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 2eefabcc0484fca0e6e3ad1dd5037684a759d010
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850450"
 ---
 # <a name="troubleshooting-guide-for-azure-stream-analytics"></a>Podręcznik rozwiązywania problemów dotyczących usługi Azure Stream Analytics
 
@@ -41,6 +42,7 @@ Aby uzyskać najlepsze wyniki przy rozwiązywaniu zadania usługi analiza strumi
 
 5.  Eliminowanie typowych problemów, takich jak:
     - A [ **gdzie** ](https://msdn.microsoft.com/library/azure/dn835048.aspx) klauzula w zapytaniu odfiltrowane wszystkie zdarzenia generowane uniemożliwia żadnych danych wyjściowych.
+    - A [ **RZUTOWANIA** ](https://msdn.microsoft.com/azure/stream-analytics/reference/cast-azure-stream-analytics) funkcji nie powiedzie się, co powoduje niepowodzenie zadania. Aby uniknąć niepowodzeń rzutowanie typu, należy użyć [ **TRY_CAST** ](https://msdn.microsoft.com/azure/stream-analytics/reference/try-cast-azure-stream-analytics) zamiast tego.
     - Podczas korzystania z funkcji okna, poczekaj na czas trwania całe okno, aby wyświetlić dane wyjściowe z zapytania.
     - Godzina rozpoczęcia zadania poprzedza sygnaturę czasową dla zdarzeń i w związku z tym zdarzeń są usuwane.
 
@@ -59,7 +61,7 @@ Aby uzyskać najlepsze wyniki przy rozwiązywaniu zadania usługi analiza strumi
                 - Schemat zdarzeń mogą być niezgodne schemat zdefiniowane lub oczekiwanego zdarzenia w zapytaniu.
                 - Typy danych niektórych pól zdarzeń mogą być niezgodne oczekiwań.
             - Jeśli błędy podczas wykonywania > 0, jego oznacza, że zadanie może odbierać dane, ale generuje błędy podczas przetwarzania zapytania.
-                - Aby znaleźć błędy, przejdź do [dzienników inspekcji](../azure-resource-manager/resource-group-audit.md) i odfiltrować ** stanu.
+                - Aby znaleźć błędy, przejdź do [dzienników inspekcji](../azure-resource-manager/resource-group-audit.md) i*odfiltrować* stanu.
             - Jeśli InputEvents > 0 i OutputEvents = 0, oznacza to, że jest spełniony jeden z następujących czynności:
                 - W wyniku przetwarzania zapytania nie zostało zwrócone żadne zdarzenie wyjściowe.
                 - Zdarzenia lub jego pól może być nieprawidłowo uformowany, w efekcie zero wynik po zakończeniu przetwarzania zapytania.
