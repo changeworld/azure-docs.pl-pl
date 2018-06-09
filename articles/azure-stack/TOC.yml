@@ -6,14 +6,14 @@
       href: azure-stack-poc.md
     - name: Informacje o wersji
       items:
+        - name: 1805 aktualizacji
+          href: azure-stack-update-1805.md
         - name: 1804 aktualizacji
           href: azure-stack-update-1804.md
         - name: 1803 aktualizacji
           href: azure-stack-update-1803.md
         - name: 1802 aktualizacji
           href: azure-stack-update-1802.md
-        - name: Aktualizacja 1712
-          href: azure-stack-update-1712.md
 - name: Przewodniki Szybki start
   expanded: true
   items:
@@ -52,6 +52,12 @@
               items:
                 - name: Publikowanie punktów końcowych
                   href: azure-stack-integrate-endpoints.md
+        - name: Integracja tożsamości
+          items:
+            - name: Wybierz dostawcę tożsamości
+              href: azure-stack-integrate-identity.md
+            - name: Zweryfikuj tożsamość platformy Azure
+              href: azure-stack-validate-identity.md
         - name: Wymagania dotyczące usługi Azure stosu wdrażania infrastruktury kluczy publicznych
           href: azure-stack-pki-certs.md
           items:
@@ -63,20 +69,17 @@
               href: azure-stack-validate-pki-certs.md
             - name: Korygowanie certyfikatów PKI
               href: azure-stack-remediate-certs.md
-            - name: Zasoby dotyczące wdrażania
-              items:
-                - name: Dokumentacja poleceń cmdlet Start-AzsReadiness
-                  href: azure-stack-azsreadiness-cmdlet.md
-                - name: Wyświetl raport gotowości
-                  href: azure-stack-validation-report.md
-            - name: Integracja tożsamości
-              items:
-                - name: Wybierz dostawcę tożsamości
-                  href: azure-stack-integrate-identity.md
-                - name: Zweryfikuj tożsamość platformy Azure
-                  href: azure-stack-validate-identity.md
+        - name: Zasoby dotyczące wdrażania
+          items:
+            - name: Dotyczące wdrożenia sieci
+              href: deployment-networking.md
         - name: Sprawdź poprawność rejestracja w usłudze Azure
           href: azure-stack-validate-registration.md
+          items:
+            - name: Dokumentacja poleceń cmdlet Start-AzsReadiness
+              href: azure-stack-azsreadiness-cmdlet.md
+            - name: Wyświetl raport gotowości
+              href: azure-stack-validation-report.md
         - name: Monitorowania zewnętrznych
           href: azure-stack-integrate-monitor.md
         - name: Integracja z zabezpieczeniami
@@ -196,6 +199,8 @@
               href: azure-stack-plan-offer-quota-overview.md
             - name: Tworzenie planu
               href: azure-stack-create-plan.md
+            - name: Tworzenie planu dodatku
+              href: create-add-on-plan.md
             - name: Tworzenie oferty
               href: azure-stack-create-offer.md
             - name: Subskrybowanie oferty

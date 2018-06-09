@@ -27,6 +27,10 @@
       href: azure-stack-solution-hybrid-identity.md
     - name: Konfiguracja połączenia chmury hybrydowej
       href: azure-stack-solution-hybrid-connectivity.md
+    - name: Subskrybowanie oferty
+      href: azure-stack-subscribe-services.md
+    - name: Utwórz maszynę Wirtualną z szablonu
+      href: azure-stack-create-vm-template.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Korzystanie z portalu usługi Azure Stack

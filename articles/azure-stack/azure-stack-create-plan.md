@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/23/2018
+ms.date: 06/07/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: b1bfff16c4f51a9fa53204930df78cbd2cf19b8d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1fa01d23108ce92fbd7c854442c0474b19395d25
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248707"
 ---
 # <a name="create-a-plan-in-azure-stack"></a>Tworzenie planu w usłudze Azure Stack
 
@@ -29,34 +30,46 @@ ms.lasthandoff: 04/28/2018
 
 1. Zaloguj się do portalu administratora platformy Azure stosu (https://adminportal.local.azurestack.external).
 
-2. Aby utworzyć plan i oferty, które użytkownicy mogą subskrybować, wybierz **nowy** > **oferuje + plany** > **planu**.  
+2. Aby utworzyć plan i oferty, które użytkownicy mogą subskrybować, wybierz **nowy** > **oferuje + plany** > **planu**.
+  
    ![Wybierz plan](media/azure-stack-create-plan/select-plan.png)
 
-3. W **nowy plan** okienka, wypełnij **Nazwa wyświetlana** i **Nazwa zasobu**. Nazwa wyświetlana jest przyjazna nazwa planu, dostępna dla użytkowników. Tylko administrator może zobaczyć Nazwa zasobu jest nazwą Administratorzy służy do pracy z planem jako zasób usługi Azure Resource Manager.  
+3. W obszarze **nowy plan**, wprowadź **Nazwa wyświetlana** i **Nazwa zasobu**. Nazwa wyświetlana jest przyjazna nazwa planu, który użytkownicy mogą zobaczyć. Tylko administrator może zobaczyć Nazwa zasobu, które Administratorzy służy do pracy z planem jako zasób usługi Azure Resource Manager.
+
    ![Określ szczegóły](media/azure-stack-create-plan/plan-name.png)
 
-4. Utwórz nową **grupy zasobów**, lub wybierz istniejący, jako kontener dla planu.  
+4. Utwórz nową **grupy zasobów**, lub wybierz istniejący, jako kontener dla planu.
+
    ![Określ grupę zasobów](media/azure-stack-create-plan/resource-group.png)
 
-5. Wybierz **usług** , a następnie zaznacz pole wyboru **Microsoft.Compute**, **Microsoft.Network**, i **Microsoft.Storage**. Następnie wybierz **wybierz** Aby zapisać konfigurację. Pola wyboru są wyświetlane, gdy wskaźnik myszy znajduje się nad każdej opcji.  
-   ![Wybierz usługi](media/azure-stack-create-plan/services.png)
+5. Wybierz **usług** , a następnie zaznacz pole wyboru **Microsoft.Compute**, **Microsoft.Network**, i **Microsoft.Storage**. Następnie wybierz **wybierz** Aby zapisać konfigurację. Pola wyboru są wyświetlane, gdy wskaźnik myszy znajduje się nad każdej opcji.
+  
+   ![Wybieranie usług](media/azure-stack-create-plan/services.png)
 
-6. Wybierz **przydziały**, **Microsoft.Storage (lokalne)**, a następnie wybierz pozycję domyślnego przydziału albo wybierz **Utwórz nowy przydział** dostosować limit przydziału.  
+6. Wybierz **przydziały**, **Microsoft.Storage (lokalne)**, a następnie wybierz pozycję domyślnego przydziału albo wybierz **Utwórz nowy przydział** do utworzenia dostosowanego przydziału.
+  
    ![Przydziały](media/azure-stack-create-plan/quotas.png)
 
-7. Jeśli tworzysz nowy przydział, wprowadź **nazwa** dla limitu przydziału > określ wartości przydziału > Wybierz **OK**. **Tworzenie przydziału** okienko zostanie zamknięte.
-   ![Nowy przydział](media/azure-stack-create-plan/new-quota.png)
+7. Jeśli tworzysz nowy przydział, wprowadź **nazwa** dla limitu przydziału > określ wartości przydziału > Wybierz **OK**. **Tworzenie przydziału** zamknięciu okna.
 
-   Następnie wybierz nowy przydział utworzony. Wybór przydział przypisuje go i zamyka okienko wyboru.  
+   ![Nowy limit przydziału](media/azure-stack-create-plan/new-quota.png)
+
+   Następnie wybierz nowy przydział utworzony. Wybranie przydział przypisuje go i zamknięcie okna dialogowego wyboru.
+  
    ![Przypisz limitu przydziału](media/azure-stack-create-plan/assign-quota.png)
 
-8. Powtórz kroki 6 i 7, aby utworzyć i przypisać przydziały na potrzeby **Microsoft.Network (lokalne)** i **Microsoft.Compute (lokalne)**.  Jeśli wszystkie trzy usługi są przypisane przydziały, pojawią się one podobne do następujących obrazów.  
+8. Powtórz kroki 6 i 7, aby utworzyć i przypisać przydziały na potrzeby **Microsoft.Network (lokalne)** i **Microsoft.Compute (lokalne)**. Gdy wszystkie trzy usługi są przypisane przydziały, będzie wyglądać następnym przykładzie.
+
    ![Przydziały pełną przydziału](media/azure-stack-create-plan/all-quotas-assigned.png)
 
-9. W **przydziały** okienku wybierz **OK**, a następnie w **nowy plan** okienku wybierz **Utwórz** Aby utworzyć plan.  
+9. W obszarze **przydziały**, wybierz **OK**, a następnie w obszarze **nowy plan**, wybierz **Utwórz** Aby utworzyć plan.
+
     ![Tworzenie planu](media/azure-stack-create-plan/create.png)
-10. Aby wyświetlić nowy plan, wybierz **wszystkie zasoby**, następnie wyszukaj plan i wybierz jego nazwę. Jeśli lista zasobów jest długa, użyj **wyszukiwania** można zlokalizować planu według nazwy.  
+
+10. Aby wyświetlić nowy plan, wybierz **wszystkie zasoby**, następnie wyszukaj plan i wybierz jego nazwę. Jeśli lista zasobów jest długa, użyj **wyszukiwania** można zlokalizować planu według nazwy.
+
    ![Przejrzyj plan](media/azure-stack-create-plan/plan-overview.png)
 
-### <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Kolejne kroki
+
 [Tworzenie oferty](azure-stack-create-offer.md)

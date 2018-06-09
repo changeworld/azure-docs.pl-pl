@@ -12,17 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/01/2018
+ms.date: 06/05/2018
 ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: 0e1eed2601946ddff6fa15f1a1f82398706c920d
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: b9ba2bb89bb0d7e16a28a165cf14530a7a10f71b
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234754"
 ---
-# <a name="make-sql-databases-available-to-your-azure-stack-users"></a>Udostępnić użytkownikom Azure stosu bazy danych SQL
+# <a name="tutorial-make-sql-databases-available-to-your-azure-stack-users"></a>Samouczek: udostępnić baz danych użytkowników Azure stosu
+
 Jako administrator chmury Azure stosu tworzenia oferty, które pozwalają użytkownikom (dzierżawcami) Utwórz bazy danych SQL, które mogą używać z ich chmury natywnych aplikacji, witryn sieci Web i obciążeń. Zapewniając użytkownikom tych baz danych niestandardowych, na żądanie, oparte na chmurze, można je zapisać czasu i zasobów. Aby to skonfigurować, obejmują:
 
 > [!div class="checklist"]
@@ -32,11 +34,11 @@ Jako administrator chmury Azure stosu tworzenia oferty, które pozwalają użytk
 
 ## <a name="deploy-the-sql-server-resource-provider"></a>Wdrażanie dostawcy zasobów programu SQL Server
 
-Proces wdrażania opisano szczegółowo w [użycia baz danych w artykule stosu Azure](azure-stack-sql-resource-provider-deploy.md)i obejmuje następujące podstawowe kroki:
+Proces wdrażania opisano szczegółowo w [użycia baz danych w artykule stosu Azure](azure-stack-sql-resource-provider-deploy.md)i zawiera następujące podstawowe kroki:
 
 1. [Wdrażanie dostawcy zasobów SQL](azure-stack-sql-resource-provider-deploy.md).
 2. [Weryfikacja wdrożenia](azure-stack-sql-resource-provider-deploy.md#verify-the-deployment-using-the-azure-stack-portal).
-3. Zapewniają pojemność, łącząc się z serwerem SQL hostingu.
+3. Zapewniają pojemność, łącząc się z serwerem SQL hostingu. Aby uzyskać więcej informacji, zobacz [Dodaj serwerów hosta](azure-stack-sql-resource-provider-hosting-servers.md)
 
 ## <a name="create-an-offer"></a>Tworzenie oferty
 
@@ -44,9 +46,7 @@ Proces wdrażania opisano szczegółowo w [użycia baz danych w artykule stosu A
 2.  [Tworzenie planu](azure-stack-create-plan.md). Nadaj mu nazwę *TestSQLServerPlan*, wybierz pozycję **Microsoft.SQLAdapter** usługi, i **SQLServerQuota** przydziału.
 
     > [!NOTE]
-    > Aby zezwolić użytkownikom na tworzenie inne aplikacje, innych usług mogą być wymagane w planie. Wymaga na przykład usługi Azure Functions, że plan obejmuje **Microsoft.Storage** usługi, gdy wymaga Wordpress **Microsoft.MySQLAdapter**.
-    > 
-    >
+    > Aby zezwolić użytkownikom na tworzenie inne aplikacje, innych usług mogą być wymagane w planie. Na przykład wymaga usługi Azure Functions **Microsoft.Storage** usługi w planie, podczas gdy Wordpress wymaga **Microsoft.MySQLAdapter**.
 
 3.  [Utwórz ofertę](azure-stack-create-offer.md), nadaj jej nazwę **TestSQLServerOffer** i wybierz **TestSQLServerPlan** planu.
 
@@ -55,23 +55,24 @@ Proces wdrażania opisano szczegółowo w [użycia baz danych w artykule stosu A
 Wdrożeniu dostawcy zasobów programu SQL Server, a następnie utworzyć ofertę, może zalogować się jako użytkownik, subskrybować ofertę i utworzyć bazę danych.
 
 ### <a name="subscribe-to-the-offer"></a>Subskrybuj oferty
+
 1. Zaloguj się do portalu Azure stosu (https://portal.local.azurestack.external) dzierżawcy.
-2. Kliknij przycisk **uzyskania subskrypcji** , a następnie wpisz **TestSQLServerSubscription** w obszarze **Nazwa wyświetlana**.
-3. Kliknij przycisk **wybierz ofertę** > **TestSQLServerOffer** > **Utwórz**.
-4. Kliknij przycisk **więcej usług** > **subskrypcje** > **TestSQLServerSubscription** > **zasobów dostawcy**.
-5. Kliknij przycisk **zarejestrować** obok **Microsoft.SQLAdapter** dostawcy.
+2. Wybierz **uzyskania subskrypcji** , a następnie wprowadź **TestSQLServerSubscription** w obszarze **Nazwa wyświetlana**.
+3. Wybierz **wybierz ofertę** > **TestSQLServerOffer** > **Utwórz**.
+4. Wybierz **więcej usług** > **subskrypcje** > **TestSQLServerSubscription** > **zasobów dostawcy**.
+5. Wybierz **zarejestrować** obok **Microsoft.SQLAdapter** dostawcy.
 
 ### <a name="create-a-sql-database"></a>Tworzenie bazy danych SQL
 
-1. Kliknij przycisk **+**  >  **dane i magazyn** > **bazy danych SQL**.
-2. Pozostaw wartości domyślne dla pól, lub można użyć tych przykładów:
+1. Wybierz **+**  >  **dane i magazyn** > **bazy danych SQL**.
+2. Zachowaj wartości domyślne lub użyć tych przykładów dla następujących pól:
     - **Nazwa bazy danych**: SQLdb
     - **Maksymalny rozmiar w MB**: 100
     - **Subskrypcja**: TestSQLOffer
     - **Grupa zasobów**: zarządcy zasobów SQL
-3. Kliknij przycisk **ustawienia logowania**, wprowadź poświadczenia dla bazy danych, a następnie kliknij przycisk **OK**.
-4. Kliknij przycisk **SKU** > Wybierz jednostki SKU SQL utworzony dla programu SQL Server obsługującego > **OK**.
-5. Kliknij przycisk **Utwórz**.
+3. Wybierz **ustawienia logowania**, wprowadź poświadczenia dla bazy danych, a następnie wybierz **OK**.
+4. Wybierz **SKU** > Wybierz jednostki SKU SQL utworzony dla programu SQL Server obsługującego >, a następnie wybierz **OK**.
+5. Wybierz pozycję **Utwórz**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -86,4 +87,3 @@ ADVANCE do samouczka dalej, aby dowiedzieć się, jak:
 
 > [!div class="nextstepaction"]
 > [Udostępnić aplikacje interfejsu API, mobilne i sieci web dla użytkowników]( azure-stack-tutorial-app-service.md)
-

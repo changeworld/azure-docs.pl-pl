@@ -7,14 +7,6 @@
       href: asdk-what-is.md
     - name: Informacje o wersji ASDK
       href: asdk-release-notes.md
-- name: Samouczki
-  items:
-    - name: Subskrybowanie oferty
-      href: asdk-subscribe-services.md
-    - name: Aktualizacja oferty i planów
-      href: asdk-update-offers.md
-    - name: Utwórz maszynę Wirtualną z szablonu
-      href: asdk-create-vm-template.md
 - name: Pojęcia
   items:
     - name: Zagadnienia dotyczące planowania wdrożenia
