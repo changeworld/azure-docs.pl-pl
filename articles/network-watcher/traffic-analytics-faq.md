@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: f7e456c76dcf67a40777e32b100b900b859e210e
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 99b1e39b764f27d4638e8bb0f0d210043fde8643
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736800"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236403"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analiza ruchu — często zadawane pytania
 
@@ -30,14 +30,14 @@ ms.locfileid: "34736800"
     - Dzienniki przepływu NSG włączona dla grupy NSG, który chcesz monitorować
     - Konto usługi Azure Storage do przechowywania raw flog dzienniki
     - Obszar roboczy analizy dzienników (OMS), z odczytu i zapisu
-    - Konto musi mieć przypisaną z jednego z następujących uprawnień na poziomie subskrypcji:
+    - Użytkownik musi być przypisany z jednego z następujących ról na poziomie subskrypcji:
     
             All permissions *
             All Read permissions */read
             All network permissions Microsoft.Network/*
             All network read permissions Microsoft.Network/*/read
 
-    Lub Twoje konto musi mieć przypisaną o następującej wszystkie akcje na poziomie subskrypcji: 
+    Lub, użytkownik musi być przypisany o następującej wszystkich ról na poziomie subskrypcji: 
 
         - Microsoft.Network/applicationGateways/read
         - Microsoft.Network/connections/read
@@ -49,6 +49,19 @@ ms.locfileid: "34736800"
         - Microsoft.Network/routeTables/read
         - Microsoft.Network/virtualNetworkGateways/read 
         - Microsoft.Network/virtualNetworks/read
+        
+Aby sprawdzić role przypisane do użytkownika w przypadku subskrypcji, wykonaj następujące czynności:
+
+Logowanie do platformy Azure przy użyciu Login-AzureRmAccount 
+
+Wybierz subskrypcję wymagane przy użyciu Select-AzureRmSubscription 
+
+Teraz, aby wyświetlić listę wszystkich ról, które są przypisane do określonego użytkownika, użyj Get AzureRmRoleAssignment - SignInName <user email> - IncludeClassicAdministrators 
+
+Jeśli nie widać żadnych danych wyjściowych po wykonywania commends następnie skontaktuj dotrzeć do odpowiednich administratora subskrypcji, uzyskania dostępu do wykonania polecenia.  
+
+Dla więcej szczegółowych informacji można znaleźć [Zarządzanie kontroli dostępu opartej na rolach przy użyciu programu Azure PowerShell](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-powershell)
+
 
 2.  Regiony platformy Azure są dostępne w ruchu analytics?
 
@@ -114,11 +127,11 @@ ms.locfileid: "34736800"
 
 14. Można skonfigurować analytics ruchu przy użyciu programu PowerShell lub szablonu usługi Azure Resource Manager?
 
-    Nie, analizy ruchu może być konfigurowany tylko przy użyciu portalu Azure.
+Tak, przy użyciu systemu windows powershell jest obsługiwana z wersji 6.2.1 konfiguracji analizy ruchu lub nowszej, usługi Azure Resource Manager Obsługa szablonów nie jest dostępny na przedstawić. Aby dowiedzieć się więcej, jak PowerShell może służyć do konfigurowania ruchu analytics można znaleźć w następujących [dokumentacji](https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog?view=azurermps-6.2.0). 
 
 15.  Jak kosztuje analizy ruchu
 
-        Analizy ruchu taryfowych wzmocnienia zmniejszenie dzienniki i zapisywania rozszerzonych dzienniki w obszarze roboczym analizy dzienników. W wersji zapoznawczej, analizy ruchu jest nie rozliczane wzmocnienia zmniejszenie dzienniki, jednak przechowywania danych w obszarze roboczym podlega rozliczeń stawkami opublikowanych. Tej odpowiedzi zostanie zaktualizowany po udostępnieniu ceny analizy ruchu.
+Analiza ruchu taryfowych dla przepływu danych dziennika przetworzone przez usługę i przechowywanie resulted dzienniki rozszerzone w obszarze roboczym analizy dzienników. Aby dowiedzieć się więcej na temat cen planu, zapoznaj się z [kliknij tutaj](https://azure.microsoft.com/en-us/pricing/details/network-watcher/) 
 
 16.  Jak można przejść za pomocą klawiatury w widoku mapy geograficznie?
 

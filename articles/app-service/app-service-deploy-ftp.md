@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: 7e05e06a5abd02dd67f58a8e01bb246e318f51de
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 2ec08b45fab9987e9271c1ff3101eaf321dc84be
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850240"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234227"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Wdrażanie aplikacji w usłudze Azure App Service przy użyciu FTP/S
 
@@ -75,6 +75,8 @@ Aby wyłączyć niezaszyfrowane FTP, wybierz pozycję **FTPS tylko**. Aby całko
 Do wdrożenia przy użyciu FTP [interfejsu wiersza polecenia Azure](/cli/azure), zobacz [tworzenie aplikacji sieci web i wdrażanie plików przy użyciu FTP (Azure CLI)](./scripts/app-service-cli-deploy-ftp.md).
 
 Do wdrożenia przy użyciu FTP [programu Azure PowerShell](/cli/azure), zobacz [przekazać pliki do aplikacji sieci web za pomocą protokołu FTP (PowerShell)](./scripts/app-service-powershell-deploy-ftp.md).
+
+[!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
 ## <a name="troubleshoot-ftp-deployment"></a>Rozwiązywanie problemów z wdrażaniem FTP
 

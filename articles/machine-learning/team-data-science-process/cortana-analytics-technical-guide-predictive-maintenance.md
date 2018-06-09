@@ -1,24 +1,25 @@
 ---
 title: Konserwacji predykcyjnej w aerospace z platformy Azure — podręcznik techniczny Cortana Intelligence rozwiązania | Dokumentacja firmy Microsoft
 description: Podręcznik techniczny do szablonu rozwiązania z Microsoft Cortana Intelligence do konserwacji predykcyjnej w aerospace, narzędzia i transportu.
-services: cortana-analytics
+services: machine-learning
 documentationcenter: ''
 author: fboylu
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 2c4d2147-0f05-4705-8748-9527c2c1f033
-ms.service: cortana-analytics
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
-ms.openlocfilehash: 080618b844669cbea29a6a48c32e937705b06e3f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c3e9b27784a1c0671ca3c87f9a7c55a288362299
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248388"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Podręcznik techniczny do szablonu Cortana analizy rozwiązania dla konserwacji predykcyjnej aerospace i innych firm
 
@@ -57,7 +58,7 @@ Aby uzyskać instrukcje, aby pobrać i zainstalować tę aplikację, wybierz wę
 
 Aplikacja generowania zdarzeń wypełnia Azure Event Hub tylko wtedy, gdy jest wykonywane na tym komputerze.
 
-### <a name="azure-event-hub"></a>Azure Event Hub
+### <a name="azure-event-hub"></a>Centrum zdarzeń Azure
 [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) usługi jest odbiorcą danych wejściowych dostarczonych przez syntetyczne źródło danych.
 
 ## <a name="data-preparation-and-analysis"></a>Przygotowanie danych i analiza
@@ -85,7 +86,7 @@ Jest mało prawdopodobne, czy zestaw danych jest zgodna zestawu danych używany 
 
 W poniższych sekcjach omówiono części szablonu, które wymagają modyfikacji, jeśli wprowadzono nowy zestaw danych.
 
-### <a name="azure-event-hub"></a>Azure Event Hub
+### <a name="azure-event-hub"></a>Centrum zdarzeń Azure
 Azure Centrum zdarzeń jest rodzajowy; dane mogą być publikowane w Centrum w formacie CSV lub JSON. Brak specjalnego przetwarzania występuje w Centrum zdarzeń platformy Azure, ale jest ważne, aby zrozumieć dane, które są przekazywane do niego.
 
 Ten dokument nie opisuje sposobu pozyskiwania danych, ale można łatwo wysłać zdarzenia lub dane do Centrum zdarzeń platformy Azure przy użyciu interfejsów API Centrum zdarzeń.

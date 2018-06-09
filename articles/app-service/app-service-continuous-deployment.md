@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: e587edeef1cfa080a81f523f63678a645b514c57
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: d83d1ad74d04356f73f18a744c2d1509b5efc280
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849495"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233848"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Ciągłe wdrażanie w usłudze Azure App Service
 W tym artykule przedstawiono sposób skonfigurować ciągłego wdrażania [usłudze Azure App Service](app-service-web-overview.md). Usługa aplikacji umożliwia ciągłego wdrażania od BitBucket, GitHub, i [programu Visual Studio Team Services (VSTS)](https://www.visualstudio.com/team-services/) przez ściąganie w najnowszych aktualizacji z repozytorium istniejącej w jednej z tych usług.
@@ -134,6 +134,8 @@ Aby wyłączyć ciągłego wdrażania, przejdź do strony aplikacji usługi App 
 W menu po lewej stronie kliknij **Centrum wdrażania** > **GitHub** lub **VSTS** lub **BitBucket**  >  **Rozłączyć**.
 
 ![](media/app-service-continuous-deployment/disable.png)
+
+[!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 

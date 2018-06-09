@@ -12,17 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/15/2017
+ms.date: 06/07/2018
 ms.author: asmalser
-ms.openlocfilehash: 72f796f0a4522b66feb55b827b02a83dcfdd3a01
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 6189038a338a9151b23dbdad11d86e43709a96a0
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35247948"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatyzowanie użytkownika alokowania i anulowania alokowania do aplikacji SaaS w usłudze Azure Active Directory
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Co to jest automatyczne Inicjowanie obsługi użytkowników dla aplikacji SaaS?
 Azure Active Directory (Azure AD) pozwala na automatyzację tworzenia, obsługi i usuwania tożsamości użytkowników w chmurze ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) aplikacji, takich jak Dropbox, Salesforce, ServiceNow i inne.
+
+> [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
 
 **Poniżej przedstawiono kilka przykładów co ta funkcja umożliwia:**
 
@@ -44,7 +47,7 @@ Niektóre typowe motywacji dla tej funkcji obejmują:
 * Unikanie kosztów, wydajność i błędu ludzkiego związanego z procesów ręcznych inicjowania obsługi administracyjnej.
 * Unikanie kosztów związanych z udostępniania i utrzymywania opracowany niestandardowe rozwiązania inicjowania obsługi administracyjnej i skryptów
 * W celu zabezpieczenia organizacji natychmiastowe usunięcie tożsamości użytkowników z klucza aplikacji SaaS w przypadku opuszczenia organizacji.
-* Aby łatwo importować dużej liczby użytkowników do określonej aplikacji SaaS lub systemu.
+* Aby łatwo zaimportować dużą liczbę użytkowników do określonej aplikacji SaaS lub systemu.
 * Do korzystania z o jeden zestaw zasad, aby określić, który zostanie zainicjowana i który można zalogować się do aplikacji.
 
 
@@ -77,6 +80,8 @@ Skontaktuj się z usługą Azure AD engineering team do żądania obsługi inicj
     
     
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Jak skonfigurować automatyczne Inicjowanie obsługi administracyjnej dla aplikacji?
+
+> [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 
 Konfiguracja programu Azure AD usługi inicjowania obsługi administracyjnej dla wybranej aplikacji jest uruchamiany w  **[portalu Azure](https://portal.azure.com)**. W **usługi Azure Active Directory > aplikacje przedsiębiorstwa** wybierz opcję **Dodaj**, następnie **wszystkie**, a następnie dodaj jednej z następujących pozycji w zależności od danego scenariusza:
 
@@ -170,31 +175,50 @@ W przypadku kwarantanny, częstotliwość synchronizacje przyrostowe stopniowo o
 Zadanie inicjowania obsługi administracyjnej zostanie usunięty z kwarantanny po dokonaniu wszystkich błędów ataku jest ustalany i rozpoczyna się w następnym cyklu synchronizacji. Jeśli zadanie inicjowania obsługi administracyjnej pozostaje w kwarantannie przez więcej niż cztery tygodnie, zadanie inicjowania obsługi administracyjnej jest wyłączone.
 
 
+## <a name="how-long-will-it-take-to-provision-users"></a>Jak długo trwa obsługi administracyjnej użytkowników?
+
+Wydajność zależy od tego, czy zadanie inicjowania obsługi administracyjnej wykonuje początkowej synchronizacji lub synchronizacji przyrostowej, zgodnie z opisem w poprzedniej sekcji.
+
+Dla **początkowa synchronizacje**, czas zadania zależy od wielu czynników, takich jak liczba użytkowników i grup w zakresie alokacji i liczba użytkowników i grup w systemie źródłowym. Kompletna lista czynników mających wpływ na wydajność synchronizacji początkowej podsumowano później w tej sekcji.
+
+Aby uzyskać **synchronizacje przyrostowe**, czas zadania zależy od liczby zmian wykryto w tym cyklu synchronizacji. Jeśli ma mniej niż 5000 użytkownika lub zmiany członkostwa w grupie, w cyklu synchronizacji przyrostowej pojedynczego zakończyć zadania. 
+
+W poniższej tabeli przedstawiono czas synchronizacji dla typowych scenariuszy inicjowania obsługi administracyjnej. W tych scenariuszach w systemie źródłowym jest usługi Azure AD i aplikacji SaaS jest system docelowy. Czas synchronizacji są uzyskiwane z analizy statystycznej zadania synchronizacji dla aplikacji SaaS usługi ServiceNow, obszar roboczy usługi Salesforce i usługi Google Apps.
+
+
+| Konfiguracja zakresu | Użytkowników, grup i elementów członkowskich w zakresie | Czas synchronizacji początkowej | Czas synchronizacji przyrostowej |
+| -------- | -------- | -------- | -------- |
+| Przypisane do użytkowników i grup tylko synchronizacji |  < 1000 |  < 30 minut | < 30 minut |
+| Przypisane do użytkowników i grup tylko synchronizacji |  1000–10 000 | 142 - 708 minut | < 30 minut |
+| Przypisane do użytkowników i grup tylko synchronizacji |   10 000 - 100 000 | 1,170 - 2,340 minut | < 30 minut |
+| Synchronizuj wszystkich użytkowników i grup w usłudze Azure AD |  < 1000 | < 30 minut  | < 30 minut |
+| Synchronizuj wszystkich użytkowników i grup w usłudze Azure AD |  1000–10 000 | < 30 120 minut | < 30 minut |
+| Synchronizuj wszystkich użytkowników i grup w usłudze Azure AD |  10 000 - 100 000  | 713 - 1,425 minut | < 30 minut |
+| Synchronizuj wszystkich użytkowników w usłudze Azure AD|  < 1000  | < 30 minut | < 30 minut |
+| Synchronizuj wszystkich użytkowników w usłudze Azure AD | 1000–10 000  | 43 - 86 minut | < 30 minut |
+
+
+Dla konfiguracji **synchronizacji przypisanych użytkowników i grup tylko**, można użyć następujących formuł ustalenie przybliżonej minimalne i maksymalne Oczekiwano **początkowej synchronizacji** razy:
+
+    Minimum minutes =  0.01 x [Number of assigned users, groups, and group members]
+    Maximum minutes = 0.08 x [Number of assigned users, groups, and group members] 
+    
+Podsumowanie czynników wpływających na czas potrzebny do ukończenia **początkowej synchronizacji**:
+
+* Całkowita liczba użytkowników i grup w zakresie obsługi
+
+* Całkowita liczba użytkowników, grup i członków grupy obecne w systemie źródłowym (Azure AD)
+
+* Czy użytkownicy w zakresie obsługi są dopasowywane do istniejących użytkowników w aplikacji docelowej lub muszą zostać utworzone po raz pierwszy. Zadania synchronizacji, dla których wszyscy użytkownicy są tworzone po raz pierwszy potrwa około *dwa razy dłużej* synchronizacji jako zadania, dla których wszyscy użytkownicy są dopasowywane do istniejących użytkowników.
+
+* Liczba błędów w [dzienniki inspekcji](active-directory-saas-provisioning-reporting.md). Wydajność jest niższa, jeśli istnieje wiele błędów i inicjowania obsługi usługi stała się w stanie kwarantanny   
+
+* Żądanie limitów szybkości i ograniczania przepustowości zaimplementowana przez system docelowy. Niektóre systemy docelowe implementuje limity szybkości żądania i ograniczania przepustowości, która może wpłynąć na wydajność podczas operacji synchronizacji dużej. W tych warunkach aplikację, która odbiera zbyt wiele żądań zbyt wysoka może spowolnić jej szybkości odpowiedzi lub zamknąć połączenie. Aby zwiększyć wydajność, łącznik musi dostosować nie szybciej, niż może je przetwarzać aplikacji wysyłania żądań aplikacji. Łączniki inicjowania obsługi administracyjnej utworzony przez firmę Microsoft należy dostosowania. 
+
+* Liczby i rozmiarów przypisanych grup. Synchronizowanie przypisanych grup trwa dłużej niż synchronizowania użytkowników. Liczba i rozmiary przypisanych grup wpływ na wydajność. Jeśli aplikacja ma [mapowania włączona dla grupy obiektów synchronizacji](active-directory-saas-customizing-attribute-mappings.md#editing-group-attribute-mappings), właściwości grupy, takie jak nazwy grup i członkostw są synchronizowane oprócz użytkowników. Te dodatkowe synchronizacje będzie trwało dłużej niż synchronizowanie tylko obiekty użytkownika.
+ 
+
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
-
-**Jak długo trwa udostępnianie moich użytkowników?**
-
-Wydajność może się różnić w zależności od tego, czy zadanie inicjowania obsługi administracyjnej wykonuje początkowej synchronizacji lub synchronizacji przyrostowej.
-
-W początkowej synchronizacje czas potrzebny na zakończenie będzie bezpośrednio zależne od liczby użytkowników, grup i członków grupy są obecne w systemie źródłowym. Systemów źródłowych bardzo małych setki obiekty mogą przeprowadzać synchronizacje początkową w ciągu kilku minut. Jednak systemów źródłowych z setkami tysięcy lub miliony połączonych obiektów będzie trwać dłużej.
-
-Dla synchronizacje przyrostowe czas, jaki zajmuje zależy wykryto w tym cyklu synchronizacji zmian numerów. Jeśli ma mniej niż 5000 użytkownika lub wykryto zmiany członkostwa grupy, te często można synchronizować w cyklu 40 minut. 
-
-Należy pamiętać, że ogólną wydajność jest zależna od systemów źródłowych i docelowych. Niektóre systemy docelowe implementuje limity szybkości żądania i ograniczania przepustowości, że można wpływu na wydajność podczas operacji synchronizacji dużej i wbudowanych usługi Azure AD, inicjowania obsługi administracyjnej łączników w tych systemach to uwzględniać.
-
-Wydajność jest również wolniej, jeśli istnieje wiele błędów (zarejestrowane w [dzienniki inspekcji](active-directory-saas-provisioning-reporting.md)) i inicjowania obsługi usługi stała się w stanie "kwarantanny".
-
-**Jak ulepszyć wydajność synchronizacji**
-
-Większości problemów z wydajnością wystąpić podczas początkowej synchronizacje systemów, które ma dużą liczbę grup i elementów członkowskich grupy.
-
-Jeśli synchronizacja grup lub członkostwa w grupach nie jest wymagana, synchronizacji można znacznie poprawić wydajność przez:
-
-1. Ustawienie **inicjowania obsługi administracyjnej > Ustawienia > zakres** menu **synchronizowanie wszystkich**, zamiast synchronizowania przypisanych użytkowników i grup.
-2. Użyj [filtrami zakresów](active-directory-saas-scoping-filters.md) zamiast przypisania, aby filtrować listę użytkowników udostępniane.
-
-> [!NOTE]
-> Dla aplikacji, które obsługuje inicjowania obsługi grupy nazwy i właściwości grupy (takie jak usługi ServiceNow i usługi Google Apps) również wyłączenie to skraca czas potrzebny na potrzeby początkowej synchronizacji zakończyć. Jeśli nie chcesz udostępniać nazwy grupy i członkostwa w grupach aplikacji, można wyłączyć tę opcję w [mapowania atrybutów](active-directory-saas-customizing-attribute-mappings.md) konfiguracji inicjowania obsługi administracyjnej.
 
 **Jak można śledzić postęp bieżącego zadania inicjowania obsługi administracyjnej**
 

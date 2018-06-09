@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/07/2018
 ms.author: erikre
-ms.openlocfilehash: ac0c4c0bad98c3057fb554e6011f1c601cd97dee
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: f84071577e9636e40d621093e2c57e3e9adf4913
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34851328"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35247670"
 ---
 # <a name="billing-and-cost-management-automation-scenarios"></a>Scenariuszach automatyzacji rozliczeń i kosztów zarządzania
 

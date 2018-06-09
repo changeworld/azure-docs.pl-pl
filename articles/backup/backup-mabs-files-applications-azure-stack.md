@@ -6,14 +6,14 @@ author: adiganmsft
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 5/18/2018
+ms.date: 6/5/2018
 ms.author: adigan
-ms.openlocfilehash: 6c7fcc0182add05b68a7b41ab6fe50e18427f6ea
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7baaa29d205c09daaeeebf44a4bad338913dcad9
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607307"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248864"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Kopie zapasowe plików i aplikacji na stosie Azure
 Kopia zapasowa Azure umożliwia ochronę (lub utworzyć kopię zapasową) plików i aplikacji na stosie Azure. Aby utworzyć kopię zapasową plików i aplikacji, należy zainstalować serwer kopii zapasowej Microsoft Azure jako maszynę wirtualną działającą na stosie Azure. Można chronić wszystkie aplikacje uruchomione na każdym serwerze stosu Azure w tej samej sieci wirtualnej. Po zainstalowaniu serwera kopii zapasowej Azure, Dodawanie dysku systemu Azure, aby zwiększyć magazynu lokalnego, która jest dostępna dla krótkoterminowej kopii zapasowej danych. Serwer kopii zapasowej systemu Azure korzysta z magazynu Azure w celu przechowywania długoterminowego.
@@ -22,60 +22,124 @@ Kopia zapasowa Azure umożliwia ochronę (lub utworzyć kopię zapasową) plikó
 > Jeśli serwer usługi Kopia zapasowa Azure i System Center Data Protection Manager (DPM) są podobne, program DPM nie jest obsługiwane do użycia z programem Azure stosu.
 >
 
-
-## <a name="azure-backup-server-protection-matrix"></a>Macierz ochrony usługi Azure Backup Server
-Serwer kopii zapasowej systemu Azure chroni następujące obciążenia maszyny wirtualnej Azure stosu.
-
-| Chronionego źródła danych | Ochrona i odzyskiwanie |
-| --------------------- | ----------------------- |
-| Windows Server częściowej roczna kanału - Enterprise/Datacenter/Standard | Woluminy, pliki, foldery |
-| Windows Server 2016 - Enterprise/Datacenter/Standard | Woluminy, pliki, foldery |
-| Windows Server 2012 R2 - Enterprise/Datacenter/Standard | Woluminy, pliki, foldery |
-| Windows Server 2012 — Entprise/Datacenter/Standard | Woluminy, pliki, foldery |
-| Windows Server 2008 R2 - Enterprise/Datacenter/Standard | Woluminy, pliki, foldery |
-| SQL Server 2016 | Database (Baza danych) |
-| SQL Server 2014 | Database (Baza danych) |
-| SQL Server 2012 z dodatkiem SP1 | Database (Baza danych) |
-| SharePoint 2013 | Farma, baza danych, serwera sieci Web, serwer sieci web |
-| SharePoint 2010 | Farma, baza danych, serwera sieci Web, serwer sieci web |
+W tym artykule nie opisano instalowanie serwera usługi Kopia zapasowa Azure w środowisku Azure stosu. Aby zainstalować serwer kopii zapasowej Azure na stosie Azure, zapoznaj się z artykułem [przygotowanie do tworzenia kopii zapasowych obciążeń przy użyciu serwera usługi Kopia zapasowa Azure](backup-mabs-install-azure-stack.md).
 
 
-## <a name="install-azure-backup-server"></a>Zainstaluj serwer kopii zapasowej systemu Azure
-Aby zainstalować serwer kopii zapasowej Azure na maszynie wirtualnej platformy Azure stosu, zapoznaj się z artykułem [przygotowanie do tworzenia kopii zapasowych obciążeń przy użyciu serwera usługi Kopia zapasowa Azure](backup-mabs-install-azure-stack.md). Przed zainstalowaniem i skonfigurowaniem serwera usługi Kopia zapasowa Azure, należy pamiętać o następujących czynności:
+## <a name="back-up-azure-stack-vm-file-data-to-azure"></a>Kopie zapasowe danych plików maszyny Wirtualnej Azure stosu na platformie Azure
 
-### <a name="determining-size-of-virtual-machine"></a>Ustalanie rozmiaru maszyny wirtualnej
-Aby uruchomić serwera usługi Kopia zapasowa Azure na maszynie wirtualnej platformy Azure stosu, użyj rozmiaru A2 lub większym. Aby uzyskać pomoc przy wyborze rozmiaru maszyny wirtualnej, należy pobrać [kalkulatora rozmiaru maszyny Wirtualnej Azure stosu](https://www.microsoft.com/download/details.aspx?id=56832).
+Aby skonfigurować serwer kopii zapasowej Azure do ochrony maszyn wirtualnych IaaS, otwórz konsolę serwer kopii zapasowej Azure. Użyjesz konsoli do konfigurowania grup ochrony i ochrony danych na maszynach wirtualnych.
 
-### <a name="virtual-networks-on-azure-stack-virtual-machines"></a>Sieci wirtualne na maszynach wirtualnych Azure stosu
-Wszystkie maszyny wirtualne używane w stos Azure obciążenia muszą należeć do tej samej sieci wirtualnej platformy Azure i subskrypcję Azure.
+1. W konsoli serwera usługi Kopia zapasowa Azure kliknij **ochrony** i na pasku narzędzi, kliknij przycisk **nowy** otworzyć **tworzenia nowej grupy ochrony** kreatora.
 
-### <a name="storing-backup-data-on-local-disk-and-in-azure"></a>Przechowywanie danych kopii zapasowej na dysku lokalnym oraz na platformie Azure
-Serwer kopii zapasowej systemu Azure przechowuje dane kopii zapasowej na dyskach platformy Azure dołączonych do maszyny wirtualnej dla operacyjnych dotyczących odzyskiwania. Gdy dyski i miejsca do magazynowania są dołączone do maszyny wirtualnej, serwer kopii zapasowej Azure zarządza magazynu. Ilość miejsca w magazynie danych kopii zapasowych zależy od liczby i rozmiaru dysków dołączonych do każdego [maszyny wirtualnej Azure stosu](../azure-stack/user/azure-stack-storage-overview.md). Każdego rozmiaru maszyny Wirtualnej Azure stosu ma maksymalną liczbę dysków, które może zostać dołączony do maszyny wirtualnej. Na przykład A2 jest cztery dyski. A3 jest ośmiu dysków. A4 jest 16 dysków. Ponownie rozmiaru i liczby dysków określa puli całkowita magazynu kopii zapasowych.
+   ![Konfigurowanie ochrony w konsoli serwera usługi Kopia zapasowa Azure](./media/backup-mabs-files-applications-azure-stack/1-mabs-menu-create-protection-group.png)
 
-> [!IMPORTANT]
-> Należy **nie** zachowania danych operacyjnych dotyczących odzyskiwania (kopia zapasowa) na dyskach dołączone do serwera kopii zapasowej Azure przez więcej niż pięć dni.
->
+    Może potrwać kilka sekund otworzyć kreatora. Po otwarciu kreatora, kliknij przycisk **dalej** aby przejść do **wybierz typ grupy ochrony** ekranu.
 
-Przechowywania danych kopii zapasowej na platformie Azure zmniejsza infrastruktury kopii zapasowych na stosie Azure. Jeśli dane są więcej niż pięć dni, powinny być przechowywane na platformie Azure.
+   ![Otwiera Kreatora nowej grupy ochrony](./media/backup-mabs-files-applications-azure-stack/2-create-new-protection-group-wiz.png)
 
-Aby przechowywać dane kopii zapasowej na platformie Azure, należy utworzyć lub użyć magazynu usług odzyskiwania. Podczas przygotowywania do tworzenia kopii zapasowych obciążeń serwera usługi Kopia zapasowa Azure możesz [skonfigurować magazyn usług odzyskiwania](backup-azure-microsoft-azure-backup.md#create-a-recovery-services-vault). Po skonfigurowaniu każdym uruchomieniu zadania tworzenia kopii zapasowej, punkt odzyskiwania jest tworzony w magazynie. Każdy magazyn usług odzyskiwania zawiera punkty odzyskiwania do 9999. W zależności od liczby punktów odzyskiwania utworzonych i jak długo są przechowywane przez wiele lat można zachować dane kopii zapasowej. Na przykład można utworzyć miesięczne punktów odzyskiwania i zachować je do pięciu lat.
- 
-### <a name="using-sql-server"></a>Za pomocą programu SQL Server
-Jeśli chcesz użyć zdalnego serwera SQL dla bazy danych serwera usługi Kopia zapasowa Azure, wybierz tylko stosu maszyny Wirtualnej platformy Azure działa program SQL Server.
+2. Na **wybierz typ grupy ochrony** ekranu, wybierz **serwerów** i kliknij przycisk **dalej**.
 
-### <a name="azure-backup-server-vm-performance"></a>Wydajność maszyny Wirtualnej serwera kopii zapasowej platformy Azure
-Jeśli udostępniony innym maszynom wirtualnym, rozmiar konta magazynu i limity liczby mogą obniżyć wydajność maszyny wirtualnej serwera usługi Kopia zapasowa Azure. Z tego powodu należy użyć oddzielnego konta magazynu dla maszyny wirtualnej Azure Utwórz kopię zapasową serwera. Agent usługi Kopia zapasowa Azure uruchomionych na serwerze kopii zapasowej Azure wymaga tymczasowego magazynu dla:
-    - własnego użytku (lokalizacja pamięci podręcznej),
-    - danych przywróconych z chmury (lokalny obszar przemieszczania)
-  
-### <a name="configuring-azure-backup-temporary-disk-storage"></a>Konfigurowanie magazynu dysku tymczasowym kopia zapasowa Azure
-Każda maszyna wirtualna Azure stosu jest dostarczany z magazynu na dysku tymczasowym, który jest dostępny dla użytkownika jako wolumin `D:\`. Lokalny obszar przemieszczania wymagany dla usługi Kopia zapasowa Azure można skonfigurować w celu znajdują się w `D:\`, i lokalizację pamięci podręcznej można umieścić na `C:\`. W ten sposób magazynu nie trzeba używać przeciwną na dyskach danych dołączonych do maszyny wirtualnej serwera usługi Kopia zapasowa Azure.
+    ![Otwiera Kreatora nowej grupy ochrony](./media/backup-mabs-files-applications-azure-stack/3-select-protection-group-type.png)
 
-### <a name="scaling-deployment"></a>Skalowania wdrożenia
-Jeśli chcesz skalowania wdrożenia, dostępne są następujące opcje:
-  - Skalowanie w górę — zwiększenie rozmiaru maszyny wirtualnej serwera usługi Kopia zapasowa Azure z serii D serii i zwiększyć Magazyn lokalny [zgodnie z instrukcjami maszyny wirtualnej Azure stosu](../azure-stack/user/azure-stack-manage-vm-disks.md).
-  - Korzystaj — wysyłanie starszych danych do serwera usługi Kopia zapasowa Azure i zachowywanie tylko najnowszych danych w magazynie dołączonym do serwera kopii zapasowej Azure.
-  - Skalowanie w poziomie — dodawanie kolejnych serwerów kopia zapasowa Azure w celu włączenia ochrony obciążeń.
+    **Wybierz członków grupy** ekranu zostanie otwarta. 
+
+    ![Otwiera Kreatora nowej grupy ochrony](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
+
+3. W **Wybierz członków grupy** kliknij **+** rozwiń listę elementów podrzędnych. Dla wszystkich elementów, które chcesz chronić zaznacz pole wyboru. Po wybraniu wszystkich elementów kliknij **dalej**.
+
+    ![Otwiera Kreatora nowej grupy ochrony](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
+
+    Firma Microsoft zaleca umieszczenie wszystkich maszyn wirtualnych, które do grupy ochrony co udostępni zasadę ochrony. Aby uzyskać pełne informacje o planowaniu i wdrażaniu grup ochrony, zapoznaj się z artykułem programu System Center DPM [wdrażanie grup ochrony](https://docs.microsoft.com/en-us/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801).
+
+4. W **wybierz metodę ochrony danych** ekranu, wpisz nazwę grupy ochrony. Zaznacz pole wyboru **chcę uzyskać krótkoterminową ochronę za pomocą:** i **chcę uzyskać ochronę online**. Kliknij przycisk **Dalej**.
+
+    ![Otwiera Kreatora nowej grupy ochrony](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
+
+    Aby wybrać **chcę uzyskać ochronę online**, musisz najpierw wybrać **chcę uzyskać krótkoterminową ochronę za pomocą:** dysku. Serwer kopii zapasowej systemu Azure nie może chronić na taśmie, więc dysk jest jedyną dostępną dla ochrony krótkoterminowej.
+
+5. W **Określ cele krótkoterminowe** ekranu, czas przechowywania punktów odzyskiwania, zapisywane na dysku i kiedy należy zapisać przyrostowych kopii zapasowych. Kliknij przycisk **Dalej**.
+
+    > [!IMPORTANT]
+    > Należy **nie** zachowania danych operacyjnych dotyczących odzyskiwania (kopia zapasowa) na dyskach dołączone do serwera kopii zapasowej Azure przez więcej niż pięć dni.
+    >
+
+    ![Otwiera Kreatora nowej grupy ochrony](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png) 
+
+    Zamiast określać interwał tworzenia przyrostowych kopii zapasowych, aby uruchomienie ekspresowej pełnej kopii zapasowej bezpośrednio przed każdym zaplanowanym punktem odzyskiwania, kliknij przycisk **zaraz przed punktem odzyskiwania**. Jeśli chronisz obciążenia aplikacji, serwer kopii zapasowej Azure tworzy punkty odzyskiwania na harmonogram częstotliwości synchronizacji (zakładając, że aplikacja obsługuje przyrostowe kopie zapasowe). Jeśli aplikacja nie obsługuje przyrostowych kopii zapasowych, Utwórz kopię zapasową serwera Azure uruchamia ekspresową pełną kopią zapasową.
+
+    Aby uzyskać **punktów odzyskiwania plików**, określ, kiedy należy utworzyć punktów odzyskiwania. Kliknij przycisk **Modyfikuj** można ustawić godziny i dni tygodnia, kiedy są tworzone punkty odzyskiwania.
+
+6. W **Przejrzyj przydział dysku** ekranu, przejrzyj miejsce puli magazynu przydzielone do grupy ochrony.
+
+    **Całkowity rozmiar danych** rozmiar danych, aby utworzyć kopię zapasową i **miejsca na dysku do obsługi administracyjnej** na serwerze kopii zapasowej Azure jest zalecane miejsce dla grupy ochrony. Serwer kopii zapasowej systemu Azure wybiera idealne wolumin kopii zapasowej, na podstawie ustawień. Można jednak edytować opcje tworzenia kopii zapasowej woluminu informacje dotyczące alokacji dysku. W przypadku obciążeń wybierz preferowany magazynu w menu rozwijanym. Zmiany wprowadzone zmiany wartości dla całkowita ilość miejsca i wolnego miejsca, w okienku dostępny magazyn na dysku. Ilość miejsca w magazynie, które sugeruje serwer kopii zapasowej Azure należy dodać do woluminu, aby kontynuować tworzenie kopii zapasowych w przyszłości sprawnie jest underprovisioned miejsca.
+
+7. W **wybierz metodę tworzenia repliki**, wybierz sposób obsługi replikacji początkowej danych. Jeśli zdecydujesz się replikacji za pośrednictwem sieci, Azure zaleca wybierz godzinę poza godzinami szczytu. Dla dużych ilości danych lub nieoptymalnych siecią należy wziąć pod uwagę replikację danych w trybie offline za pomocą nośnika wymiennego.
+
+8. W **wybierz opcje sprawdzania spójności**, wybierz sposób automatyzacji sprawdzania spójności. Włącz sprawdzanie spójności uruchomić tylko wtedy, gdy replikacja danych stanie się niespójna, lub zgodnie z harmonogramem. Jeśli nie chcesz konfigurować automatycznego sprawdzania spójności, należy uruchomić sprawdzanie ręczne, w dowolnym momencie przez:
+    * W **ochrony** konsoli serwera usługi Kopia zapasowa Azure, kliknij prawym przyciskiem myszy grupę ochrony i wybierz **Przeprowadź Sprawdzanie spójności**.
+
+9. Jeśli chcesz utworzyć kopię zapasową na platformie Azure, na **Określ dane chronione w trybie online** strony upewnij się, że wybrano obciążeń, aby utworzyć kopię zapasową na platformie Azure.
+
+10. W **harmonogram tworzenia kopii zapasowych online określ**, określ, kiedy powinny występować przyrostowych kopii zapasowych na platformie Azure. 
+
+    Można zaplanować uruchamianie co dzień/tydzień/miesiąc/rok i godzina i Data, w którym należy uruchomić wykonywania kopii zapasowych. Tworzenie kopii zapasowych może wystąpić maksymalnie dwa razy dziennie. Każdym uruchomieniu zadania tworzenia kopii zapasowej danych punkt odzyskiwania jest tworzony na platformie Azure z kopii kopii zapasowej danych przechowywanych na dysku serwera kopii zapasowej Azure.
+
+11. W **Określ zasady przechowywania online**, określ, jak punkty odzyskiwania utworzone na podstawie kopii zapasowych codziennie/co tydzień/co miesiąc/corocznej są przechowywane na platformie Azure.
+
+12. W **wybierz replikacji online**, określ, jak następuje pełna Replikacja początkowa danych. 
+
+    Replikowanie za pośrednictwem sieci, lub wykonaj w trybie offline kopii zapasowej (obsługi w trybie offline). Kopia zapasowa offline używa [funkcji importu platformy Azure](./backup-azure-backup-import-export.md).
+
+13. Na **Podsumowanie**, przejrzyj ustawienia. Po kliknięciu **Utwórz grupę**, Replikacja początkowa danych. Podczas replikacji danych zakończeniu na **stan** strony, stan grupy ochrony jest pokazywana jako **OK**. Początkowe zadanie tworzenia kopii zapasowej odbywa się zgodnie z ochrony grupy ustawień.
+
+Pytania wymagające odpowiedzi: jak można rozwinąć magazynu danych na dysku do przechowywania krótkoterminowego dysku stosu Azure. Co to są wskazówki, które muszą zostać wywołane limit wyjaśniający krótkoterminowy Magazyn dyskowy?
+
+## <a name="recover-file-data"></a>Odzyskiwanie danych plików
+
+Aby odzyskać dane z maszyną wirtualną za pomocą konsoli serwera usługi Kopia zapasowa Azure.
+
+1. W konsoli programu Azure Utwórz kopię zapasową serwera, na pasku nawigacyjnym kliknij **odzyskiwania** i przeglądania danych do odzyskania. Wybierz dane w okienku wyników.
+
+2. W kalendarzu w sekcji punktów odzyskiwania dat wytłuszczonym drukiem wskazują, że są dostępne punkty odzyskiwania. Wybierz datę, aby odzyskać punktu odzyskiwania.
+
+3. W **elementy możliwe do odzyskania** okienku, wybierz element, który chcesz odzyskać.
+
+4. W **akcje** okienku, kliknij przycisk **odzyskać** aby otworzyć Kreatora odzyskiwania.
+
+5. Dane można odzyskać w następujący sposób:
+
+    * **Odzyskaj do oryginalnej lokalizacji** — Jeśli komputer kliencki jest połączony za pośrednictwem połączenia VPN, ta opcja nie działa. Zamiast tego użyć alternatywnej lokalizacji, a następnie skopiuj dane z tej lokalizacji.
+    * **Odzyskaj do lokalizacji alternatywnej**
+
+6. Określ opcje odzyskiwania:
+
+    * Dla **zachowanie funkcji odzyskiwania wersji istniejące**, wybierz pozycję **utworzyć kopię**, **Pomiń**, lub **Zastąp**. Zastąp jest dostępna tylko wtedy, gdy odzyskiwanie do oryginalnej lokalizacji.
+    * Aby uzyskać **Przywróć zabezpieczenia**, wybierz **Zastosuj ustawienia komputera docelowego** lub **Zastosuj ustawienia bezpieczeństwa wersji punktu odzyskiwania**.
+    * Dla **przepustowości**, kliknij przycisk **Modyfikuj** umożliwiające ograniczenie przepustowości sieci.
+    * Wybierz **SAN włączyć odzyskiwanie z użyciem migawek sprzętowych** Aby szybciej odzyskiwać dane przy użyciu migawek sprzętowych opartych na sieci SAN. Ta opcja jest prawidłowa tylko wtedy, gdy sieć SAN Jeśli jest włączona funkcja wykonywania migawek sprzętowych. Aby utworzyć punkt odzyskiwania jest zapisywalny, musi być możliwość tworzenie własnego klonu i podziałem klon sieci SAN. Chronione maszyny Wirtualnej i serwer kopii zapasowej Azure muszą być połączone do tej samej sieci SAN.
+    * **Powiadomienie** kliknij **Wyślij wiadomość e-mail po zakończeniu odzyskiwania**, i określ adresatów, którzy będą otrzymywać powiadomienia. Kolejne adresy e-mail oddziel przecinkami.
+    * Po dokonaniu wyboru, kliknij przycisk **dalej**
+
+7. Przejrzyj ustawienia odzyskiwania, a następnie kliknij przycisk **odzyskać**. 
+
+    > [!Note] 
+    > Gdy zadanie odzyskiwania jest w toku, zostaną anulowane wszystkie zadania synchronizacji dla wybrane odzyskiwanie elementy.
+    >
+
+Jeśli używasz nowoczesnych magazynu kopii zapasowej (MB), serwer plików odzyskiwania przez użytkownika końcowego (EUR) nie jest obsługiwana. EUR serwera plików ma zależność na woluminów w tle kopii Service (VSS), które nowoczesne magazynu kopii zapasowej nie są używane. Jeśli włączono EUR, wykonaj następujące kroki, aby odzyskać dane:
+
+1. Przejdź do chronionych plików i kliknij prawym przyciskiem myszy nazwę pliku i wybierz **właściwości**.
+
+2. Na **właściwości** menu, kliknij przycisk **poprzednie wersje** i wybierz wersję, w której chcesz odzyskać.
+
+
+
+## <a name="register-azure-backup-server-with-a-vault"></a>Zarejestruj w magazynie Azure kopii zapasowej serwera
+Zawierają opis etapów przedstawiający sposób:
+
+1. Otwórz magazyn usług odzyskiwania.
+2. Kliknij przycisk infrastruktura kopii zapasowej.
+3. Widoku serwerów zarządzania kopiami zapasowymi.
 
 ## <a name="see-also"></a>Zobacz także
 Uzyskać na ochrona innych obciążeń za pomocą serwera usługi Kopia zapasowa Azure zobacz następujące artykuły:

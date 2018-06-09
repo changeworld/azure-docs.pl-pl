@@ -10,14 +10,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.component: compliance-reports
 ms.date: 05/14/2018
 ms.author: rolyon
-ms.openlocfilehash: 00d8c7f9c4b335f107f436041b027b4df8845267
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 6a1d4a55074630cc20c98202d2e94ec682c323f4
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34698268"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234077"
 ---
 # <a name="create-an-access-review-of-group-members-or-application-access-with-azure-ad"></a>Tworzenie przeglądu dostępu do członków grupy lub dostęp do aplikacji z usługą Azure AD
 

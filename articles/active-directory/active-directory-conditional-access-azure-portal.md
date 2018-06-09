@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/26/2018
+ms.date: 06/08/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: ddfa3d70e2ce901a59476c5c0784d35999731ed6
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 0730fbd2df6c2a0a8b8d0930c86709c0e3012002
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724364"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248724"
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Dostęp warunkowy w usłudze Azure Active Directory
 
@@ -32,6 +32,7 @@ Zabezpieczenia są szczególnie ważne dla organizacji przy użyciu chmury. Kluc
 ![Kontrola](./media/active-directory-conditional-access-azure-portal/81.png)
 
 Ten artykuł zawiera omówienie pojęć dotyczących dostępu warunkowego w usłudze Azure AD.
+
 
 
 ## <a name="common-scenarios"></a>Typowe scenariusze
@@ -60,7 +61,7 @@ Te pytania i odpowiedzi powiązanych reprezentują typowych scenariuszy dostępu
 
 ## <a name="conditional-access-policies"></a>Zasady dostępu warunkowego
 
-Zasady dostępu warunkowego to definicja scenariusza dostępu przy użyciu następującego wzorca:
+Zasady dostępu warunkowego jest definicją scenariusz dostępu przy użyciu następującego wzorca:
 
 ![Kontrola](./media/active-directory-conditional-access-azure-portal/10.png)
 

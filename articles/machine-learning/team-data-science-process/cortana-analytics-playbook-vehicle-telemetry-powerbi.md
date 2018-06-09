@@ -2,7 +2,6 @@
 title: Power BI, odwiedź pulpit nawigacyjny kondycji vehicle i wspierającym zwyczaje - Azure | Dokumentacja firmy Microsoft
 description: Korzystanie z możliwości Cortana Intelligence, aby uzyskać wgląd w czasie rzeczywistym oraz predykcyjnej na vehicle kondycji i wspierającym zwyczaje.
 services: machine-learning
-documentationcenter: ''
 author: deguhath
 manager: cgronlun
 editor: cgronlun
@@ -15,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: 462f5d15e7a39d282bca59f96166cc809447ee14
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 8544c400fdb7d4f00a4946aba321fec3568d024a
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837127"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248456"
 ---
 # <a name="vehicle-telemetry-analytics-solution-template-power-bi-dashboard-setup-instructions"></a>Instrukcje instalacji pulpit nawigacyjny usługi Power BI Telemetrii analizy rozwiązania szablonu vehicle
 Tego łącza menu rozdziałów, w tym podręcznika dotyczącego: 

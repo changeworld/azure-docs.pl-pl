@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: johnkem
-ms.openlocfilehash: 128a16f0fbde87136ca01812b0217523fdbeeeeb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 060f91e4bdd1dd2690a3e1f148f7c5e5e13d13ef
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638990"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235668"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorowanie aktywności subskrypcji z dziennika aktywności platformy Azure
 
@@ -107,6 +107,9 @@ A **profilu dziennika** kontroluje sposób eksportowania jest dziennik aktywnoś
     - Zasady przechowywania są zastosowane na dni, więc pod koniec dnia (UTC), dzienniki od dnia, która jest teraz poza przechowywania zasad są usuwane. Na przykład jeśli masz zasady przechowywania jeden dzień na początku dnia dzisiaj dzienniki na wczoraj zanim dzień zostaną usunięte. Proces usuwania rozpoczyna się od północy czasu UTC, ale należy pamiętać, że może potrwać do 24 godzin dzienniki, aby go usunąć z konta magazynu.
 
 Możesz użyć magazynu konta lub zdarzenia koncentratora przestrzeni nazw, która nie znajduje się w tej samej subskrypcji co emitowanie dzienników. Użytkownik, który konfiguruje ustawienie musi mieć odpowiedni dostęp RBAC do obu subskrypcji.
+
+> [!NOTE]
+>  Obecnie nie można zarchiwizować dane do magazynu kontem, które za zabezpieczonej sieci wirtualnej.
 
 Te ustawienia można skonfigurować przy użyciu opcji "Export" w bloku dziennika aktywności w portalu. Ich można również skonfigurować programowo [przy użyciu interfejsu API REST Azure Monitor](https://msdn.microsoft.com/library/azure/dn931927.aspx), poleceń cmdlet programu PowerShell lub interfejsu wiersza polecenia. Subskrypcja może mieć tylko jeden profil dziennika.
 

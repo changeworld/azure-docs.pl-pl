@@ -1,26 +1,28 @@
 ---
-title: "Wywoływanie funkcji z rozwiązania PowerApps | Dokumentacja firmy Microsoft"
-description: "Tworzenie niestandardowego łącznika, a następnie wywołaj funkcję za pomocą tego łącznika."
+title: Wywoływanie funkcji z rozwiązania PowerApps | Dokumentacja firmy Microsoft
+description: Tworzenie niestandardowego łącznika, a następnie wywołaj funkcję za pomocą tego łącznika.
 services: functions
-keywords: "aplikacje w chmurze, w chmurze usługi, w rozwiązaniu PowerApps, procesów biznesowych, aplikacja biznesowa"
-documentationcenter: 
-author: mgblythe
+keywords: aplikacje w chmurze, w chmurze usługi, w rozwiązaniu PowerApps, procesów biznesowych, aplikacja biznesowa
+documentationcenter: ''
+author: ggailey777
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2017
-ms.author: mblythe
-ms.custom: 
-ms.openlocfilehash: 28c2fc8246851807e1f65911d6a5d56322c5ea16
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: glenga
+ms.reviewer: sunayv
+ms.custom: ''
+ms.openlocfilehash: 02cd491be5336abe708cce0f6e268b38514d4e88
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234958"
 ---
 # <a name="call-a-function-from-powerapps"></a>Wywoływanie funkcji z usługi PowerApps
 [Rozwiązania PowerApps](https://powerapps.microsoft.com) platformy jest przeznaczona dla ekspertów biznesowych do tworzenia aplikacji bez kodu tradycyjnych aplikacji. Professional deweloperzy mogą używać usługi Azure Functions, aby rozszerzyć możliwości rozwiązania PowerApps, podczas osłaniania rozwiązania PowerApps konstruktorów aplikacji z szczegóły techniczne.
@@ -63,7 +65,7 @@ Niestandardowy interfejs API (znanej także jako łącznik niestandardowy) jest 
 
 1. Wprowadź klucz interfejsu API, a następnie kliknij przycisk **Utwórz**.
 
-    ![Utwórz połączenie](media/functions-powerapps-scenario/create-connection.png)
+    ![Tworzenie połączenia](media/functions-powerapps-scenario/create-connection.png)
 
 > [!NOTE]
 > Możesz udostępniać aplikacji innym użytkownikom, każda osoba, która działa na lub korzysta z aplikacji należy także podać klucz interfejsu API, aby nawiązać połączenie z interfejsu API. To zachowanie może ulec zmianie w przyszłości, a aby odzwierciedlał, które będą aktualizowane.
@@ -71,7 +73,7 @@ Niestandardowy interfejs API (znanej także jako łącznik niestandardowy) jest 
 ## <a name="create-an-app-and-add-data-sources"></a>Utwórz aplikację, a następnie dodaj źródła danych
 Teraz możesz przystąpić do tworzenia aplikacji w rozwiązaniu PowerApps i dodać dane programu Excel i niestandardowy interfejs API jako źródła danych dla aplikacji.
 
-1. W [web.powerapps.com](https://web.powerapps.com), wybierz **rozpoczęcie od puste** > ![ikonę aplikacji Phone](media/functions-powerapps-scenario/icon-phone-app.png) (telefon) > **tej aplikacji**.
+1. W witrynie [web.powerapps.com](https://web.powerapps.com) wybierz pozycje **Zacznij od pustej aplikacji** > ![Ikona aplikacji na telefon](media/functions-powerapps-scenario/icon-phone-app.png) (telefon) > **Utwórz tę aplikację**.
 
     ![Rozpocznij od puste — aplikacji telefonicznej](media/functions-powerapps-scenario/create-phone-app.png)
 
@@ -97,7 +99,7 @@ Teraz możesz przystąpić do tworzenia aplikacji w rozwiązaniu PowerApps i dod
 
     ![Dane programu Excel do zaimportowania](media/functions-powerapps-scenario/excel-table.png)
 
-    1. W obszarze roboczym aplikacji wybierz **łączenie z danymi**.
+    1. Na kanwie aplikacji wybierz pozycję **Połącz z danymi**.
 
     1. Na **danych** panelu, kliknij przycisk **Dodawanie statycznych danych do aplikacji**.
 
@@ -207,7 +209,7 @@ Masz aplikację, która zawiera dane podsumowania dla każdego turbiny, więc te
     ![Zakończono aplikację przed uruchomieniem](media/functions-powerapps-scenario/finished-app-before-run.png)
 
 
-## <a name="run-the-app"></a>Uruchomienie aplikacji
+## <a name="run-the-app"></a>Uruchamianie aplikacji
 Masz pełnej aplikacji. Teraz nadszedł czas, aby uruchomić go i nie wywołuje funkcji w akcji.
 
 1. W prawym górnym rogu rozwiązania PowerApps Studio kliknij przycisk uruchamiania: ![Przycisk uruchamiania aplikacji](media/functions-powerapps-scenario/f5-arrow-sm.png).

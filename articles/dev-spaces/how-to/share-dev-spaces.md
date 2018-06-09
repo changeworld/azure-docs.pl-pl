@@ -11,12 +11,12 @@ ms.topic: article
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 manager: douge
-ms.openlocfilehash: c469a71ec1357dd6f260ab613fed72110d1ed880
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: ca644cc412ad0c8f0e2a0781d9419fba58ed8d12
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824357"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35247708"
 ---
 # <a name="share-azure-dev-spaces"></a>Funkcja miejsca do udziału deweloperów platformy Azure
 
@@ -24,9 +24,9 @@ Spacjami deweloperów platformy Azure można udostępniać obszaru deweloperów 
 
 Aby skonfigurować odstęp deweloperów dla wielu deweloperów:
 1. Tworzenie miejsca deweloperów na platformie Azure. Wybierz [oprogramowanie .NET Core i kodzie VS](../get-started-netcore.md), [.NET Core i Visual Studio](../get-started-netcore-visualstudio.md), lub [Node.js i kodzie VS](../get-started-nodejs.md). Musisz być właścicielem lub współautorem dostępu do wybranej subskrypcji Azure.
-1. Skonfiguruj miejsce deweloperów Azure **grupy zasobów** do [udzielić dostępu współautora](/azure/active-directory/role-based-access-control-configure) dla każdego członka zespołu. Miejsce na deweloperów grupy zasobów można sprawdzić, uruchamiając poniższe polecenie: `azds resource list`
+1. Skonfiguruj miejsce deweloperów Azure **grupy zasobów** do [udzielić dostępu współautora](/azure/active-directory/role-based-access-control-configure) dla każdego członka zespołu. Miejsce na deweloperów grupy zasobów można sprawdzić, uruchamiając poniższe polecenie: `azds list`
 1. Poproś członkom zespołu **wybierz miejsce deweloperów** aby tworzyć w nim.
-     * **Wiersz polecenia lub kodzie VS**: Aby wyświetlić istniejące Spacess deweloperów platformy Azure masz dostęp do: `azds resource list`. Aby wybrać miejsce dev: `azds resource select`.
+     * **Wiersz polecenia lub kodzie VS**: Aby wyświetlić istniejące pomieszczenia deweloperów platformy Azure masz dostęp do: `azds space list`. Aby wybrać miejsce dev: `azds space select`.
      * **Visual Studio IDE**: Otwórz projekt w programie Visual Studio, wybierz **spacje deweloperów Azure** z rozwijanej ustawień uruchamiania. W otwartym oknie dialogowym Wybierz istniejącego klastra.
 
 ![Visual Studio Uruchom ustawienia listy rozwijanej](../media/get-started-netcore-visualstudio/LaunchSettings.png)

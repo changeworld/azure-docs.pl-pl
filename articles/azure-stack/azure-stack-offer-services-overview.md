@@ -1,25 +1,26 @@
 ---
-title: "Oferty usług w stosie Azure | Dokumentacja firmy Microsoft"
-description: "Operator chmury mają możliwość oferowania usługi dla użytkowników."
+title: Oferty usług w stosie Azure | Dokumentacja firmy Microsoft
+description: Operator chmury mają możliwość oferowania usługi dla użytkowników.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 06/07/2018
 ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: 5b117a9b174f5d2419ff596cc90436e4b9d21645
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.reviewer: ''
+ms.openlocfilehash: 042e65cfe350cb61124ed8920ae3616502e6553d
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248847"
 ---
 # <a name="overview-of-offering-services-in-azure-stack"></a>Przegląd oferty usług Azure stosu
 
@@ -27,7 +28,7 @@ ms.lasthandoff: 03/08/2018
 
 [Microsoft Azure stosu](azure-stack-poc.md) platforma chmury hybrydowej, która umożliwia świadczenie usług z centrum danych. Dostawcy usług mają możliwość oferowania usług dzierżawcom. W firmie lub agencji rządowych Stanów Zjednoczonych możesz zaoferować lokalnych usług pracownikom. Usługi, które można dostarczać obejmują, ale nie są ograniczone do:
 
-- Usługi aplikacji, aplikacje interfejsu API, funkcje interfejsu API, SQL, MySQL, takich jak platforma jako usługa (PaaS) usługi.
+- Usługi aplikacji, aplikacje interfejsu API, funkcje interfejsu API, SQL i MySQL, takich jak platforma jako usługa (PaaS) usługi.
 
 Można nawet łączyć usług integracji do tworzenia złożonych rozwiązań dla różnych użytkowników.
 
@@ -44,5 +45,5 @@ Podczas planujesz Twojej oferty, należy uwzględnić następujące kwestie:
 **Delegowane dostawców**: można przyznać innym możliwość tworzenia oferty w danym środowisku. Na przykład jeśli jesteś dostawcą usług, możesz [delegować](azure-stack-delegated-provider.md) możliwość Twojej odsprzedawców. Lub, w przypadku organizacji, możesz delegować do innych działów/zależnych.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Utwórz ofertę w stosie Azure](azure-stack-create-offer.md)
 
+[Utwórz ofertę w stosie Azure](azure-stack-create-offer.md)

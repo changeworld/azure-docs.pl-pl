@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/02/2018
+ms.date: 06/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 1ad7b9d16e00319320f638593c9f24ccb75c2bb9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 94312edaa97a5d9a7502eed4c0551151ce2a06cc
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616155"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235281"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Kopiowanie danych z Cassandra przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -37,8 +37,11 @@ Możesz skopiować dane z bazy danych Cassandra żadnych obsługiwanych ujścia 
 
 W szczególności ten łącznik Cassandra obsługuje:
 
-- Cassandra **wersji 2.X**.
+- Cassandra **wersji 2.x i 3.x**.
 - Kopiowanie danych przy użyciu **podstawowe** lub **anonimowe** uwierzytelniania.
+
+>[!NOTE]
+>Dla działania systemem obsługi integracji Self-hosted, Cassandra 3.x jest obsługiwana, ponieważ IR wersji 3.7 lub nowszym.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -63,6 +66,9 @@ Cassandra połączone usługi, obsługiwane są następujące właściwości:
 | nazwa użytkownika |Określ nazwę użytkownika dla konta użytkownika. |Tak, jeśli authenticationType ustawiany jest podstawowy. |
 | hasło |Określ hasło dla konta użytkownika. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Tak, jeśli authenticationType ustawiany jest podstawowy. |
 | connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. (Jeśli w magazynie danych jest dostępny publicznie) można użyć środowiska uruchomieniowego integracji Self-hosted lub środowiska uruchomieniowego integracji Azure. Jeśli nie zostanie określony, używa domyślnej środowiska uruchomieniowego integracji Azure. |Nie |
+
+>[!NOTE]
+>Połączenie Cassandra przy użyciu protokołu SSL nie jest obecnie obsługiwane.
 
 **Przykład:**
 

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 06/07/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d0cfce1dfe6482397e421d85d59494e6d75cc441
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 198ecdbf81c2b8efeec23da2c5d5d087128b20e9
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34591161"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233567"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Instalowanie programu Azure AD Connect przy użyciu SQL delegowane uprawnienia administratora
 Przed ostatniej kompilacji Azure AD Connect administracyjne delegowania, wdrażając konfiguracje, które wymagane SQL, nie jest obsługiwana.  Użytkownicy, którzy chcieli zainstalować program Azure AD Connect potrzebne do mają uprawnienia administratora serwera na serwerze SQL.
@@ -48,7 +48,7 @@ Do udostępniania bazy danych poza pasmem i instalowanie Azure AD Connect przy u
 2.  Przyznaj administrator usługi Azure AD Connect i konto usługi domeny następujące uprawnienia:
     - Identyfikator logowania SQL 
     - **Baza danych owner(dbo)** praw.  </br>
-![Uprawnienia](media/active-directory-aadconnect-sql-delegation/sql3.png)
+![Uprawnienia](media/active-directory-aadconnect-sql-delegation/sql3a.png)
 3.  Wysłanie wiadomości e-mail do administratora programu Azure AD Connect wskazujący nazwę SQL serwer i wystąpienie, które mają być używane podczas instalacji programu Azure AD Connect.
 
 ## <a name="additional-information"></a>Dodatkowe informacje

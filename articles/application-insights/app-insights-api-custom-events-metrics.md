@@ -11,13 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 05/17/2017
+ms.date: 06/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: e93b3348c933f65067114bfce4ac517f1204af34
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 562fc4a08e2d59739b53cb06c37a880616c9143f
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234822"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Aplikacji interfejsu API Insights dla niestandardowych zdarzeń i metryk
 
@@ -47,7 +48,7 @@ Jeśli to odwołanie nie ma jeszcze na zestaw SDK usługi Application Insights:
   * [Projekt języka Java](app-insights-java-get-started.md)
   * [Projekt środowiska node.js](app-insights-nodejs.md)
   * [Język JavaScript w każdej strony sieci Web](app-insights-javascript.md) 
-* W kodzie serwera sieci web lub urządzenia obejmują:
+* Na Twoim urządzeniu lub w kodzie serwera sieci Web dołącz:
 
     *C#:* `using Microsoft.ApplicationInsights;`
 
@@ -640,6 +641,8 @@ finally
 {
     timer.Stop();
     telemetry.TrackDependency("myDependency", "myCall", startTime, timer.Elapsed, success);
+     // The call above has been made obsolete in the latest SDK. The updated call follows this format:
+     // TrackDependency (string dependencyTypeName, string dependencyName, string data, DateTimeOffset startTime, TimeSpan duration, bool success);
 }
 ```
 
@@ -730,7 +733,7 @@ Należy pamiętać, że funkcja asynchronicznego dla [kanału dane telemetryczne
 
 W idealnym przypadku metody flush() używanego w działaniu zamknięcia aplikacji.
 
-## <a name="authenticated-users"></a>Użytkownicy uwierzytelnieni
+## <a name="authenticated-users"></a>Uwierzytelnieni użytkownicy
 W aplikacji sieci web użytkownicy są (domyślnie) identyfikowani na podstawie plików cookie. Użytkownik może być traktowane więcej niż raz, jeśli uzyskują oni dostęp do aplikacji z innego komputera lub przeglądarki lub one usunąć pliki cookie.
 
 Jeśli logowania użytkownika do aplikacji, możesz uzyskać dokładniejsze liczba, przez ustawienie Identyfikatora uwierzytelnionego użytkownika w kodzie przeglądarki:

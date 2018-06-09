@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 06/04/2018
+ms.date: 06/07/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 94062c69a1de32d061b97bbaae0d7028b0424feb
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 4dddc4c4e4bd34f5e9d7054f1311e13113fce52d
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757676"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234617"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Przypisywanie ról administratorów w usłudze Azure Active Directory
 
@@ -42,15 +42,15 @@ Dostępne są następujące role administratora:
   > [!NOTE]
   > Aby wdrożyć zasady dostępu warunkowego programu Exchange ActiveSync na platformie Azure, użytkownik musi być administratorem globalnym.
   
-* **Administrator Dynamics 365**: użytkownicy z tą rolą mają uprawnienia globalne w ramach programu Microsoft Dynamics 365, gdy usługa jest obecne, a także możliwość Zarządzanie biletami pomocy technicznej i monitoruje kondycję usługi. Więcej informacji na [ról administratora o usługi Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
-
-* **Administratorzy urządzenia**: użytkownicy z tą rolą stają się Administratorzy komputera lokalnego na wszystkich urządzeniach z systemem Windows 10, które dołączyły do usługi Azure Active Directory. Nie mają możliwość zarządzania obiektami urządzeń w usłudze Azure Active Directory.
+* **Administratorzy urządzenia**: Ta rola jest dostępne do przypisania tylko jako administrator lokalny dodatkowe w [ustawienia urządzenia](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/). Użytkownicy z tą rolą stają się administratorami maszyny lokalnej na wszystkich urządzeniach z systemem Windows 10 dołączonych do usługi Azure Active Directory. Nie mają możliwość zarządzania obiektami urządzeń w usłudze Azure Active Directory.
 
 * **Czytniki katalogu**: jest to starszy rolę, która ma być przypisana do aplikacji, które nie obsługują [Framework zgody](active-directory-integrating-applications.md). Nie należy można przypisać do użytkowników.
 
 * **Konta synchronizacji katalogu**: nie używaj. Ta rola zostanie automatycznie przypisany do usługi Azure AD Connect i jest nie przeznaczone lub obsługiwane do innego użytku.
 
 * **Składniki zapisywania katalogu**: jest to starszy rolę, która ma być przypisana do aplikacji, które nie obsługują [zgody Framework](active-directory-integrating-applications.md). Nie należy można przypisać do użytkowników.
+
+* **Administrator Dynamics 365**: użytkownicy z tą rolą mają uprawnienia globalne w ramach programu Microsoft Dynamics 365, gdy usługa jest obecne, a także możliwość Zarządzanie biletami pomocy technicznej i monitoruje kondycję usługi. Więcej informacji na [ról administratora o usługi Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
 * **Administrator usługi Exchange**: użytkownicy z tą rolą uprawnień globalnych w ramach programu Microsoft Exchange Online, gdy usługa jest obecny. Więcej informacji na [ról administratora o usługi Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 

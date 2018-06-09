@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: tamram
-ms.openlocfilehash: 27397d490902625d10e54ea17a9e534fbfbca8cd
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 98af46707485d1ab49e7d8c6fb1729e6edc6b2ff
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757506"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235869"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>Użyj tożsamości usługi Azure AD dostęp do magazynu Azure z interfejsu wiersza polecenia lub środowiska PowerShell (wersja zapoznawcza)
 
@@ -79,7 +79,7 @@ Aby zalogować się przy użyciu tożsamości usługi Azure AD przy użyciu prog
 4. Zainstaluj moduł podglądu:
 
     ```powershell
-    Install-Module-Name Azure.Storage-RequiredVersion 4.4.0-AllowPrerelease –AllowClobber -Repository PSGallery -Force 
+    Install-Module -Name Azure.Storage -AllowPrerelease –AllowClobber 
     ```
 
 5. Wywołanie [AzureStorageContext nowy](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext) polecenia cmdlet, aby utworzyć kontekstu i uwzględnić `-UseConnectedAccount` parametru. 

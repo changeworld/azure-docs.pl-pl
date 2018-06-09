@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload8: na
-ms.date: 06/06/2018
+ms.date: 06/07/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 31524f24eea97082c8b148ba0a65bbeb24717039
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: bec62b8c6b70706fa6519cbc2fd59bf69f119e9d
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839324"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236267"
 ---
 # <a name="azure-log-integration-faq"></a>Integracja dzienników Azure — często zadawane pytania
 
 Ten artykuł zawiera odpowiedzi na często zadawane pytania (FAQ) dotyczące integracji dziennika Azure.
 
 >[!IMPORTANT]
-> Funkcja integracji Azure dziennika zostaną wycofane przez 2019-06/01.  Pliki do pobrania AzLog zostanie wyłączone przez 27 cze 2018. Aby uzyskać wskazówki dotyczące co należy zrobić przenoszenie do przodu przeglądu post [monitor Azure używana do integracji z narzędzia SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/preview/?cdn=disable) 
+> Funkcja integracji Azure dziennika zostaną wycofane przez 2019-06/01. Pliki do pobrania AzLog zostanie wyłączone przez 27 cze 2018. Aby uzyskać wskazówki dotyczące co należy zrobić przenoszenie do przodu przeglądu post [monitor Azure używana do integracji z narzędzia SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 Integracja dziennika Azure to usługa systemu operacyjnego Windows używanej do integracji nowych dzienników z zasobów platformy Azure w sieci lokalnej zabezpieczeń informacji i zdarzenia (SIEM) systemów zarządzania. Integracja ta zapewnia jednolity pulpit nawigacyjny dla wszystkich zasobów, lokalnie lub w chmurze. Możesz agregować, skorelowania, analizowanie i alertów zdarzeń zabezpieczeń skojarzonych z aplikacjami.
 

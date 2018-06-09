@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/06/2018
+ms.date: 06/07/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: faf85c34c527dd72889f0fcb5021925b79481163
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: f0c86f121fd65a06fb4d1a193f3e3bf724af505e
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823853"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234845"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Wymagania dotyczące usługi Azure stosu infrastruktury klucza publicznego certyfikatu
 
@@ -30,7 +30,7 @@ Azure stos nie zawiera publicznych infrastruktury sieci przy użyciu dostępne z
 - Uzyskiwanie certyfikatów dopasowania tych specyfikacji procesu
 - Jak przygotować, sprawdzania poprawności i użyć tych certyfikatów podczas wdrażania
 
-> [!NOTE]
+> [!Note]  
 > Podczas wdrażania certyfikatów należy skopiować do folderu wdrożenia, który odpowiada dostawcy tożsamości, które wdrażasz względem (Azure AD lub AD FS). Jeśli używasz jeden certyfikat dla wszystkich punktów końcowych, należy skopiować ten plik certyfikatu do każdego folderu wdrożenia zgodnie z opisem w poniższych tabelach. Struktura folderów wstępnie jest oparty na maszynie wirtualnej wdrożenia i znajduje się w temacie: C:\CloudDeployment\Setup\Certificates. 
 
 ## <a name="certificate-requirements"></a>Wymagania dotyczące certyfikatów
@@ -47,12 +47,12 @@ Poniższa lista zawiera opis wymagań dotyczących certyfikatów, które są wym
 - Certyfikatu "wydany dla:" pole nie może być taka sama jak jego "wystawiony przez:" pola.
 - Hasła do wszystkich plików pfx certyfikatów muszą być takie same w czasie wdrażania
 - Hasło do pliku pfx certyfikatu musi być złożone hasło.
-- Upewnij się, że nazwy podmiotu i alternatywnej nazwy podmiotu wszystkie certyfikaty są zgodne ze specyfikacjami opisane w tym artykule, aby uniknąć wdrożenia nie powiodło się.
+- Upewnij się, że nazwy podmiotu i alternatywnej nazwy podmiotu w dopasowania rozszerzenia (x509v3_config) alternatywnej nazwy podmiotu. Pole alternatywnej nazwy podmiotu umożliwia określenie nazwy hostów dodatkowe (witryn sieci Web, adresów IP, nazw pospolitych) mają być chronione przez jeden certyfikat SSL.
 
-> [!NOTE]
+> [!NOTE]  
 > Samodzielna podpisana certyfikaty nie są obsługiwane.
 
-> [!NOTE]
+> [!NOTE]  
 > Obecność pośrednik urzędy certyfikacji w IS łańcucha z zaufania certyfikatów jest obsługiwane. 
 
 ## <a name="mandatory-certificates"></a>Obowiązkowe certyfikatów

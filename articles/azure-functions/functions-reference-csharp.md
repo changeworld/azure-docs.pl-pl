@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: 9de8119cbde486800639bc5f3559a1a2859ec204
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 174c4734e1cc145e9e01fff9e674e146c8a8c1d8
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235043"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure funkcje skryptu (csx) developer odwołanie w C#
 
@@ -409,6 +410,8 @@ public static string GetEnvironmentVariable(string name)
         System.Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.Process);
 }
 ```
+
+[System.Configuration.ConfigurationManager.AppSettings](https://docs.microsoft.com/en-us/dotnet/api/system.configuration.configurationmanager.appsettings) właściwości to interfejs API alternatywnych do pobierania wartości ustawienia aplikacji, ale zaleca się, że używasz `GetEnvironmentVariable` w sposób pokazany poniżej.
 
 <a name="imperative-bindings"></a> 
 

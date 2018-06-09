@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 6/1/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: f48cbdb41f8ad7a3bad4546fa5cb77cf66780bed
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 4ae64fefb58840214104a4e1cb338ec404fac1a8
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808506"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235417"
 ---
 # <a name="back-up-sql-server-database-in-azure"></a>Wykonaj kopię zapasową bazy danych programu SQL Server na platformie Azure
 
@@ -103,6 +103,10 @@ Przed utworzeniem kopii zapasowej bazy danych programu SQL Server, sprawdź nast
 - Zidentyfikuj lub [Tworzenie magazynu usług odzyskiwania](backup-azure-sql-database.md#create-a-recovery-services-vault) w tym samym regionie, lub ustawień regionalnych, jako maszynę wirtualną hostowany program SQL Server.
 - [Sprawdź uprawnienia na maszynie wirtualnej](backup-azure-sql-database.md#set-permissions-for-non-marketplace-sql-vms) potrzebne do tworzenia kopii zapasowych baz danych SQL.
 - [Maszyny wirtualnej SQL ma łączność sieciową](backup-azure-sql-database.md#establish-network-connectivity).
+
+> [!NOTE]
+> Może mieć tylko jedno rozwiązanie tworzenia kopii zapasowej w czasie do kopii zapasowej baz danych programu SQL Server. Przed użyciem tej funkcji, wyłącz wszelkie inne kopii zapasowej SQL, innego kopie zapasowe będą kolidować i zakończyć się niepowodzeniem. Można włączyć usługi Kopia zapasowa Azure dla maszyn wirtualnych IaaS wraz z kopii zapasowej SQL bez żadnych konfliktów 
+>
 
 Jeśli te warunki w danym środowisku, przejdź do sekcji [konfigurowanie Twojego magazynu, aby chronić bazę danych SQL](backup-azure-sql-database.md#configure-your-vault-to-protect-a-sql-database). Jeśli wymagania wstępne nie istnieją, nadal odczytu w tej sekcji.
 
@@ -253,7 +257,13 @@ Jeśli używasz **odnajdywanie bazami danych** narzędzia Kopia zapasowa Azure w
 
 ## <a name="configure-backup-for-sql-server-database"></a>Konfigurowanie kopii zapasowej bazy danych SQL Server
 
-Kopia zapasowa Azure udostępnia usługi zarządzania, aby chronić baz danych programu SQL Server i zarządzać nimi zadania tworzenia kopii zapasowej. Zarządzanie i możliwości monitorowania są zależne od magazynu usług odzyskiwania. Aby skonfigurować ochronę bazy danych SQL:
+Kopia zapasowa Azure udostępnia usługi zarządzania, aby chronić baz danych programu SQL Server i zarządzać nimi zadania tworzenia kopii zapasowej. Zarządzanie i możliwości monitorowania są zależne od magazynu usług odzyskiwania. 
+
+> [!NOTE]
+> Może mieć tylko jedno rozwiązanie tworzenia kopii zapasowej w czasie do kopii zapasowej baz danych programu SQL Server. Przed użyciem tej funkcji, wyłącz wszelkie inne kopii zapasowej SQL, innego kopie zapasowe będą kolidować i zakończyć się niepowodzeniem. Można włączyć usługi Kopia zapasowa Azure dla maszyn wirtualnych IaaS wraz z kopii zapasowej SQL bez żadnych konfliktów 
+>
+
+Aby skonfigurować ochronę bazy danych SQL:
 
 1. Otwórz magazyn usług odzyskiwania zarejestrowany z maszyną wirtualną programu SQL.
 

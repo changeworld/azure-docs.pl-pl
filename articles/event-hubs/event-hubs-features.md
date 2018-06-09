@@ -1,28 +1,27 @@
 ---
-title: "Omówienie funkcji usługi Azure Event Hubs | Dokumentacja firmy Microsoft"
-description: "Omówienie i szczegółowe informacje o funkcjach usługi Azure Event Hubs"
+title: Omówienie funkcji usługi Azure Event Hubs | Dokumentacja firmy Microsoft
+description: Omówienie i szczegółowe informacje o funkcjach usługi Azure Event Hubs
 services: event-hubs
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/02/2018
+ms.date: 06/08/2018
 ms.author: sethm
-ms.openlocfilehash: aaedb8ed2be85017b17a2015ff2fcaaf76c20058
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: f16f8aa73ecfa3e0a47ce2373a2e28a7a9968ff5
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248745"
 ---
 # <a name="event-hubs-features-overview"></a>Omówienie funkcji usługi Event Hubs
 
-Usługa Azure Event Hubs jest skalowalna zdarzeń, usługa, która wysyła strumień i przetwarza duże ilości zdarzenia i dane, z małymi opóźnieniami i wysoką niezawodnością przetwarzania. Zobacz [co to jest usługa Event Hubs?](event-hubs-what-is-event-hubs.md) szczegółowe omówienie usługi.
+Usługa Azure Event Hubs jest skalowalna zdarzeń, usługa, która wysyła strumień i przetwarza duże ilości zdarzenia i dane, z małymi opóźnieniami i wysoką niezawodnością przetwarzania. Zobacz [co to jest usługa Event Hubs?](event-hubs-what-is-event-hubs.md) szczegółowe omówienie.
 
 W tym artykule opiera się na informacje zawarte w [artykuł z omówieniem](event-hubs-what-is-event-hubs.md)i zawiera szczegółowe informacje techniczne i wdrożenia o składnikach usługi Event Hubs i funkcje.
 
@@ -44,7 +43,7 @@ Usługa Event Hubs zapewnia, że wszystkie zdarzenia współużytkujące wartoś
 
 Usługa Event Hubs umożliwia szczegółową kontrolę nad wydawcami zdarzeń za pomocą *zasad wydawcy*. Zasady wydawcy to funkcje środowiska uruchomieniowego zaprojektowane w celu ułatwienia działania dużej liczby niezależnych wydawców zdarzeń. Dzięki zasadom wydawcy każdy wydawca używa swojego unikatowego identyfikatora podczas publikowania zdarzeń w centrum zdarzeń przy użyciu następującego mechanizmu:
 
-```
+```http
 //[my namespace].servicebus.windows.net/[event hub name]/publishers/[my publisher name]
 ```
 
@@ -123,7 +122,7 @@ Wszystkie usługi Event Hubs konsumentów połączenie za pomocą sesji protoko�
 
 #### <a name="connect-to-a-partition"></a>Nawiązywanie połączenia z partycją
 
-Częstą praktyką jest, aby podczas nawiązywania połączenia z partycjami używany był mechanizm dzierżawienia w celu skoordynowania połączeń czytników z określonymi partycjami. Dzięki temu możliwe jest, aby dla każdej partycji w grupie odbiorców istniał tylko jeden aktywny czytnik. Tworzenie punktów kontrolnych, dzierżawienie i zarządzanie czytnikami jest upraszczane przez użycie klasy [EventProcessorHost](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost) dla klientów programu .NET. Host procesora zdarzeń to inteligentny agent odbiorcy.
+Częstą praktyką jest, aby podczas nawiązywania połączenia z partycjami używany był mechanizm dzierżawienia w celu skoordynowania połączeń czytników z określonymi partycjami. Dzięki temu możliwe jest, aby dla każdej partycji w grupie odbiorców istniał tylko jeden aktywny czytnik. Tworzenie punktów kontrolnych, dzierżawienie i zarządzanie czytnikami jest upraszczane przez użycie klasy [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) dla klientów programu .NET. Host procesora zdarzeń to inteligentny agent odbiorcy.
 
 #### <a name="read-events"></a>Zdarzenia odczytywania
 
@@ -149,9 +148,9 @@ Pojemność przepływności usługi Event Hubs jest kontrolowana przez *jednostk
 * Ruch przychodzący: 1 MB na sekundę lub 1000 zdarzeń na sekundę (w zależności od tego, co będzie miało miejsce wcześniej)
 * Ruch wychodzący: maksymalnie 2 MB na sekundę
 
-Po przekroczeniu pojemności zakupionych jednostek przepływności ruch przychodzący jest ograniczany i jest zwracany wyjątek [ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception). Ruch wychodzący nie generuje wyjątków ograniczania, ale też jest ograniczony do pojemności zakupionych jednostek przepływności. Jeśli wystąpią wyjątki szybkości publikowania lub oczekiwany będzie większy transfer danych wychodzących, należy sprawdzić liczbę jednostek przepływności zakupionych dla przestrzeni nazw. Jednostki przepływności można zarządzać na **skali** bloku przestrzeni nazw w [portalu Azure](https://portal.azure.com). Można również zarządzać programowo przy użyciu jednostek przepływności [interfejsów API centra zdarzeń](event-hubs-api-overview.md).
+Po przekroczeniu pojemności zakupionych jednostek przepływności ruch przychodzący jest ograniczany i jest zwracany wyjątek [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception). Ruch wychodzący nie generuje wyjątków ograniczania, ale też jest ograniczony do pojemności zakupionych jednostek przepływności. Jeśli wystąpią wyjątki szybkości publikowania lub oczekiwany będzie większy transfer danych wychodzących, należy sprawdzić liczbę jednostek przepływności zakupionych dla przestrzeni nazw. Jednostki przepływności można zarządzać na **skali** bloku przestrzeni nazw w [portalu Azure](https://portal.azure.com). Można również zarządzać programowo przy użyciu jednostek przepływności [interfejsów API centra zdarzeń](event-hubs-api-overview.md).
 
-Jednostki przepływności są rozliczane co godzinę i są kupowane wcześniej. Po zakupieniu jednostki przepływności są rozliczane za co najmniej jedną godzinę. Dla przestrzeni nazw usługi Event Hubs można kupić do 20 jednostek przepływności. Jednostki te będą współużytkowane przez wszystkie centra zdarzeń w przestrzeni nazw.
+Jednostki przepływności to zakupione wcześniej i są rozliczane co godzinę. Po zakupieniu jednostki przepływności są rozliczane za co najmniej jedną godzinę. Przepływność maksymalnie 20 jednostek można zakupić dla przestrzeni nazw usługi Event Hubs i są współdzielone przez wszystkie usługi event hubs w tej przestrzeni nazw.
 
 Więcej jednostek przepływności można kupić w blokach po 20 (maksymalnie 100 jednostek przepływności), kontaktując się z pomocą techniczną platformy Azure. Ponadto możesz kupować bloki po 100 jednostek przepływności.
 

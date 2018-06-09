@@ -5,20 +5,16 @@ services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: bfa10984-eb22-4671-861a-f377a90d9372
 ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/30/2018
+ms.date: 06/07/2018
 ms.author: sethm
-ms.openlocfilehash: 8a30b8cb92b98606ca3d859ada329b8301806b10
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 4c28f1ae5517e54fab259e680128d6c666c82fbe
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235315"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Usługa Event Hubs — często zadawane pytania
 
@@ -30,7 +26,7 @@ Warstwy standardowa usługi Azure Event hubs udostępnia funkcje poza co to jest
 * Dłużej przechowywania zdarzeń
 * Dodatkowe połączeń obsługiwanych przez brokera dodatkowy nadwyżkowe dla więcej niż numer zawarty
 * Więcej niż jednej grupy odbiorców
-* [Przechwytywania](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)
+* [Przechwytywania](event-hubs-capture-overview.md)
 
 Aby uzyskać więcej informacji na temat cen warstwy dedykowanego centra zdarzeń w tym temacie [szczegóły cennika usługi Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -58,9 +54,10 @@ Przy użyciu [zwiększyć automatycznie](event-hubs-auto-inflate.md) funkcji, mo
 Tak, jak długo są wszystkie usługi event hubs w tej samej przestrzeni nazw.
 
 ### <a name="what-is-the-maximum-retention-period-for-events"></a>Co to jest maksymalny okres przechowywania dla zdarzeń?
-Warstwy standardowa centra zdarzeń obsługuje obecnie okres maksymalny czas przechowywania danych w ciągu 7 dni. Centra zdarzeń nie są przeznaczone do stałego przechowywania danych. Okresy przechowywania dłuższego niż 24 godziny są przeznaczone dla scenariuszy, w których jest wygodne powtarzania strumienia zdarzeń w tym samym systemy; na przykład uczenia lub sprawdź, czy nowy model uczenia maszynowego na istniejących danych. Jeśli konieczne komunikatu przechowywania poza 7 dni, włączanie [przechwytywania centra zdarzeń](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) na zdarzenie Centrum pobiera dane z Centrum zdarzeń do konta magazynu lub konta usługi Azure Data Lake usługi wybrane. Włączanie przechwytywania wiąże opłat oparte na sieci zakupionych jednostek przepływności.
+Warstwy standardowa centra zdarzeń obsługuje obecnie okres maksymalny czas przechowywania danych w ciągu 7 dni. Centra zdarzeń nie są przeznaczone do stałego przechowywania danych. Okresy przechowywania dłuższego niż 24 godziny są przeznaczone dla scenariuszy, w których jest wygodne powtarzania strumienia zdarzeń w tym samym systemy; na przykład uczenia lub sprawdź, czy nowy model uczenia maszynowego na istniejących danych. Jeśli konieczne komunikatu przechowywania poza 7 dni, włączanie [przechwytywania centra zdarzeń](event-hubs-capture-overview.md) na zdarzenie Centrum pobiera dane z Centrum zdarzeń do konta magazynu lub konta usługi Azure Data Lake usługi wybrane. Włączanie przechwytywania wiąże się z jednostek przepływności zakupionych w oparciu opłat.
 
 ### <a name="where-is-azure-event-hubs-available"></a>Gdzie jest usługa Azure Event Hubs?
+
 Usługa Azure Event Hubs jest dostępna we wszystkich obsługiwanych regionach platformy Azure. Lista, odwiedź stronę [regiony platformy Azure](https://azure.microsoft.com/regions/) strony.  
 
 ## <a name="best-practices"></a>Najlepsze praktyki
@@ -101,22 +98,27 @@ Przechwytywanie używa konta magazynu, podane przez użytkownika po włączeniu 
 ## <a name="quotas"></a>Przydziały
 
 ### <a name="are-there-any-quotas-associated-with-event-hubs"></a>Czy istnieją wszystkie przydziały skojarzony z usługą Event Hubs?
+
 Aby uzyskać listę wszystkich przydziałów centra zdarzeń, zobacz [przydziały](event-hubs-quotas.md).
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Co to są wyjątki generowane przez centra zdarzeń i ich sugerowane akcje?
+
 Listę możliwych wyjątków usługi Event Hubs, zobacz [omówienie wyjątki](event-hubs-messaging-exceptions.md).
 
 ### <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
+
 Usługa Event Hubs obsługuje dwa typy [dzienników diagnostycznych](event-hubs-diagnostic-logs.md) -przechwytywania dzienniki błędów i operacyjne dzienniki — które są reprezentowane w formacie json i można włączyć za pomocą portalu Azure.
 
 ### <a name="support-and-sla"></a>Pomoc techniczna i umowa SLA
+
 Pomoc techniczna dla usługi Event Hubs jest dostępna za pośrednictwem [Fora społeczności użytkowników](https://social.msdn.microsoft.com/forums/azure/home?forum=servbus). Pomoc dotycząca rozliczeń i subskrypcji jest świadczona bezpłatnie.
 
 Aby dowiedzieć się więcej na temat naszych umowy SLA, zobacz [umowy dotyczące poziomu usług](https://azure.microsoft.com/support/legal/sla/) strony.
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 Następujące linki pozwalają dowiedzieć się więcej na temat usługi Event Hubs:
 
 * [Omówienie usługi Event Hubs](event-hubs-what-is-event-hubs.md)

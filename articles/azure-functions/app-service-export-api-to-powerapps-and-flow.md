@@ -1,24 +1,26 @@
 ---
-title: "Eksportowanie interfejs API hostowanymi na platformie Azure do PowerApps i przepływów Microsoft | Dokumentacja firmy Microsoft"
-description: "Omówienie sposobu uwidacznia interfejs API hostowany w usłudze App Service w rozwiązaniu PowerApps i Flow firmy Microsoft"
+title: Eksportowanie interfejs API hostowanymi na platformie Azure do PowerApps i przepływów Microsoft | Dokumentacja firmy Microsoft
+description: Omówienie sposobu uwidacznia interfejs API hostowany w usłudze App Service w rozwiązaniu PowerApps i Flow firmy Microsoft
 services: app-service
-documentationcenter: 
-author: mattchenderson
-manager: erikre
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: ggailey777
+manager: cfowler
+editor: ''
+ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 12/15/2017
-ms.author: mahender; mblythe
-ms.openlocfilehash: 2d7ef0d4b2669b774b1d218d244052083e883517
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.author: glenga
+ms.reviewer: sunayv
+ms.openlocfilehash: ef3fe5002a28c66478a10909a7e9556449cd9712
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234771"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Eksportowanie interfejs API hostowanymi na platformie Azure do PowerApps i przepływów firmy Microsoft
 

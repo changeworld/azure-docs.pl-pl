@@ -9,12 +9,12 @@ ms.workload: storage
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
-ms.openlocfilehash: b141adc9025f2f40acdfbd1f2d7f378173463956
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: bd36cfd0cd03592396a2aa9a977124880f47ec90
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34805159"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248473"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Zarządzanie cyklem życia z magazynu obiektów Blob platformy Azure (wersja zapoznawcza)
 
@@ -70,7 +70,7 @@ Jeśli funkcja jest zatwierdzona i prawidłowo zarejestrowane, powinien zostać 
 
 ## <a name="add-or-remove-policies"></a>Dodaj lub Usuń zasady 
 
-Można dodać, edytować lub usunąć zasadę przy użyciu narzędzi platformy Azure w portalu, programu PowerShell, interfejsów API REST lub klienta w następujących językach: [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview), [Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/), [Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0), [Ruby]( https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2). 
+Można dodać, edytować lub usunąć zasadę przy użyciu portalu Azure, [PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview), interfejsów API REST lub narzędzia klienta w następujących językach: [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview), [Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/), [ Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0), [Ruby]( https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2). 
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -121,7 +121,7 @@ W ramach zasad wymagane są dwa parametry:
 | Nazwa parametru | Typ parametru | Uwagi |
 |----------------|----------------|-------|
 | wersja        | Wyrażonej w postaci ciągu `x.x` | Numer wersji preview to 0,5 |
-| rules          | Tablica obiektów reguły | W każdej zasady jest wymagana co najmniej jedną regułę. Podczas udostępniania wersji zapoznawczej można określić maksymalnie 10 reguł dla poszczególnych zasad. |
+| rules          | Tablica obiektów reguły | W każdej zasady jest wymagana co najmniej jedną regułę. Podczas udostępniania wersji zapoznawczej można określić maksymalnie 4 reguł dla poszczególnych zasad. |
 
 Parametry wymagane w regule są:
 
@@ -169,7 +169,7 @@ Każda definicja reguły obejmuje zestaw filtrów i akcji. Poniższa reguła pr�
 
 ```
 
-## <a name="rule-filters"></a>Reguły filtrów
+### <a name="rule-filters"></a>Reguły filtrów
 
 Filtry ograniczyć akcje reguły do podzbioru obiektów blob w ramach konta magazynu. Jeśli zdefiniowano wiele filtrów, logicznych `AND` odbywa się na wszystkie filtry.
 
@@ -191,6 +191,9 @@ W wersji zapoznawczej Zarządzanie cyklem życia obsługuje warstwy i usuwania o
 | tierToCool    | Obsługuje obiekty BLOB dla warstwy dostępu         | Nieobsługiwane |
 | tierToArchive | Obsługuje obiekty BLOB obecnie na aktywny lub chłodnych warstwy | Nieobsługiwane |
 | usuwanie        | Obsługiwane                                   | Obsługiwane     |
+
+>[!NOTE] 
+Jeśli więcej niż jedna akcja jest zdefiniowany w tym samym obiekcie blob, Zarządzanie cyklem życia dotyczy najniższych akcję obiektu blob. (np. Akcja `delete` jest tańsze niż akcja `tierToArchive`. Akcja `tierToArchive` jest tańsze niż akcja `tierToCool`.)
 
 W wersji zapoznawczej warunki wykonywania akcji są oparte na wieku. Używa podstawowej blob Data ostatniej modyfikacji śledzenia wieku i czas utworzenia migawki używa migawek do śledzenia wieku obiektu blob.
 

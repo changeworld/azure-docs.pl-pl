@@ -1,5 +1,5 @@
 ---
-title: Wprowadzenie do zestawu SDK zadań Webjob - Azure
+title: Wprowadzenie do zestawu Azure WebJobs SDK
 description: Wprowadzenie do zestawu SDK zadań Webjob dla przetwarzania w tle sterowanego zdarzeniami. Dowiedz się, jak uzyskać dostęp do danych w usługach Azure i usług innych firm.
 services: app-service\web, storage
 documentationcenter: .net
@@ -13,19 +13,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: b1de898ec4f661c54b5227367ad416a5edec80ed
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d0afc8b6f8e0b7ef73e5d1c3cbabf2e1542f47f4
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234526"
 ---
-# <a name="get-started-with-the-webjobs-sdk"></a>Wprowadzenie do zestawu SDK zadań Webjob
+# <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Wprowadzenie do zestawu SDK zadań Webjob Azure dla przetwarzania w tle sterowane zdarzeniami
 
-W tym artykule pokazano, jak utworzyć projekt zestawu SDK zadań Webjob, uruchomić je lokalnie i wdróż je na platformie Azure.
+W tym artykule pokazano, jak utworzyć projekt zestawu SDK zadań Webjob Azure, uruchom lokalnie i wdrożyć ją w usłudze Azure App Service.
 
 Instrukcje dotyczą [programu Visual Studio 2017](https://www.visualstudio.com/vs/), ale tych samych zadań można wykonywać przy użyciu innych narzędzi, takich jak [Visual Studio Code](https://code.visualstudio.com/).
 
-## <a name="what-is-the-webjobs-sdk"></a>Co to jest zestaw SDK zadań Webjob
+## <a name="what-is-the-azure-webjobs-sdk"></a>Co to jest zestaw SDK usługi Azure WebJobs
 
 Zestaw SDK zadań Webjob Azure to platforma, która upraszcza proces pisania kodu przetwarzania tła, który uzyskuje dostęp do danych z usług Azure. Zestaw SDK funkcji składni deklaratywnej służącą do zdarzeń, które powinny wywoływać funkcji, takich jak nowy komunikat dodane do kolejki. Podobne składni deklaratywnej steruje odczytywania i zapisywania danych w przypadku, gdy funkcja zostało wyzwolone. Większość niskiego poziomu zadania kodowania związane z dostępem do usług innych firm i Azure zapewnia obsługę tego systemu, wyzwalaczy i powiązań.
 
@@ -68,7 +69,7 @@ W tym artykule przyjęto założenie, masz [konta platformy Azure](https://azure
 
 3. Nazwij projekt *WebJobsSDKSample*, a następnie wybierz **OK**.
 
-   ![Okno dialogowe nowego projektu](./media/webjobs-sdk-get-started/new-project.png)
+   ![Okno dialogowe Nowy projekt](./media/webjobs-sdk-get-started/new-project.png)
 
 ## <a name="add-webjobs-nuget-package"></a>Dodaj pakiet NuGet zadań Webjob
 

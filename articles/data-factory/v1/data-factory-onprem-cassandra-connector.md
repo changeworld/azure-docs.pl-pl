@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6e6b9bf194da17ebd03389829ba594bf3fbf1e64
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 01ac558ec032d2da8026ce48923d839bd05e85c1
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622105"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235468"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Przenoszenia danych z Cassandra lokalną bazą danych przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -34,7 +34,7 @@ W tym artykule opisano sposób używania działania kopiowania w fabryce danych 
 Można skopiować danych z lokalnego magazynu danych Cassandra żadnych obsługiwanych ujścia magazynu danych. Lista magazynów danych obsługiwane jako wychwytywanie przez działanie kopiowania, zobacz [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabeli. Fabryka danych aktualnie obsługuje tylko dane przenoszenie, z magazynu danych Cassandra do innych magazynów danych, ale nie do przenoszenia danych z innych magazynów danych w magazynie danych Cassandra. 
 
 ## <a name="supported-versions"></a>Obsługiwane wersje
-Łącznik Cassandra obsługuje następujące wersje Cassandra: 2.X.
+Łącznik Cassandra obsługuje następujące wersje Cassandra: 2.x i 3.x. Dla działania systemem obsługi integracji Self-hosted, Cassandra 3.x jest obsługiwana, ponieważ IR wersji 3.7 lub nowszym.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Dla usługi fabryka danych Azure można było nawiązać połączenia z lokalną bazą danych Cassandra należy zainstalować bramę zarządzania danymi na tym samym komputerze, który jest hostem bazy danych lub na osobnym komputerze, aby uniknąć konkurowanie o zasoby z bazą danych. Brama zarządzania danymi jest składnikiem, który łączy lokalnych źródeł danych do usługi w chmurze w sposób bezpieczny i zarządzanie nimi. Zobacz [brama zarządzania danymi](data-factory-data-management-gateway.md) artykułu, aby uzyskać więcej informacji dotyczących bramy zarządzania danymi. Zobacz [przenoszenia danych z lokalnymi do chmury](data-factory-move-data-between-onprem-and-cloud.md) artykułu, aby uzyskać instrukcje krok po kroku dotyczące konfigurowania bramy danych potoku do przenoszenia danych.
@@ -75,6 +75,9 @@ Poniższa tabela zawiera opis specyficzne dla usługi Cassandra połączone elem
 | hasło |Określ hasło dla konta użytkownika. |Tak, jeśli authenticationType ustawiany jest podstawowy. |
 | gatewayName |Nazwa bramy, która służy do łączenia z bazą danych Cassandra lokalnymi. |Yes |
 | encryptedCredential |Poświadczenie szyfrowane przez bramę. |Nie |
+
+>[!NOTE]
+>Połączenie Cassandra przy użyciu protokołu SSL nie jest obecnie obsługiwane.
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 Aby uzyskać pełną listę sekcje & właściwości dostępne do definiowania zestawów danych, zobacz [Tworzenie zbiorów danych](data-factory-create-datasets.md) artykułu. Sekcje zawierają informacje, takie jak struktury, dostępności i zasad zestawu danych JSON są podobne dla wszystkich typów obiektów dataset (Azure SQL, obiektów blob platformy Azure, Azure tabeli itp.).

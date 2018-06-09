@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/07/2018
 ms.author: erikre
-ms.openlocfilehash: becc6d6e86fd292cfbc919f1eee36a4f5edb711c
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 69e148089f48ebe04faceff87b08eb3f7127f8a3
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34851334"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248371"
 ---
 # <a name="azure-consumption-api-overview"></a>Przegląd wykorzystania platformy Azure, interfejsu API 
 

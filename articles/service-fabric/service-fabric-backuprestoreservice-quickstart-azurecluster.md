@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: hrushib
-ms.openlocfilehash: ad2faabbab74ba343328b6fe30e09c87520e7019
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 73b5356f63199c7530fe5eef0c4b4b7ee617ff5f
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809798"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236124"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Okresowe kopii zapasowej i przywracania w sieci szkieletowej usług Azure (wersja zapoznawcza)
 > [!div class="op_single_selector"]
@@ -118,7 +118,7 @@ Przejdźmy kroki, aby włączyć okresowe tworzenie kopii zapasowej dla usługi 
 
 Pierwszym krokiem jest tworzenie zasad tworzenia kopii zapasowej opisujące harmonogram tworzenia kopii zapasowych, Magazyn docelowy kopii zapasowej danych, nazwę zasady i maksymalna przyrostowe kopie zapasowe mogą być, aby mogło nastąpić wyzwolenie pełnej kopii zapasowej. 
 
-W magazynie kopii zapasowej należy użyć usługi Azure Storage, konto utworzone powyżej. W tym przykładzie przyjęto założenie konta usługi Magazyn Azure o nazwie `sfbackupstore`. Kontener `backup-container` jest skonfigurowany do przechowywania kopii zapasowych, kontener o tej nazwie jest tworzony, jeśli jeszcze nie istnieje, podczas tworzenia kopii zapasowej przekazywania. Wypełnij `ConnectionString` z prawidłowe parametry połączenia dla konta magazynu Azure.
+W magazynie kopii zapasowej należy użyć usługi Azure Storage, konto utworzone powyżej. Kontener `backup-container` jest skonfigurowany do przechowywania kopii zapasowych. Kontener o tej nazwie jest tworzony, jeśli go jeszcze nie istnieje, podczas tworzenia kopii zapasowej przekazywania. Wypełnij `ConnectionString` z prawidłowe parametry połączenia dla konta magazynu Azure, zastępując `account-name` nazwą konta magazynu, i `account-key` kluczem konta magazynu.
 
 Wykonaj następujący skrypt programu PowerShell do wywoływania wymaganego interfejsu API REST do tworzenia nowych zasad. Zastąp `account-name` z nazwę konta magazynu i `account-key` kluczem konta magazynu.
 

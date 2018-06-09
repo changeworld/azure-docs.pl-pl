@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 06/07/2018
 ms.author: johnkem
-ms.openlocfilehash: 32360a1af25b92fe232e3e504cb6587dcb364f48
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a9bd197ff03ec0c1f9a320a721f69f2efc6a73b4
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638769"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235978"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Archiwum dzienników diagnostycznych platformy Azure
 
@@ -28,6 +28,9 @@ W tym artykule zostanie przedstawiony sposób może użyć portalu Azure, polece
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem należy [Utwórz konto magazynu](../storage/storage-create-storage-account.md) do której można archiwizować dzienników diagnostycznych. Zdecydowanie zaleca się, że nie należy używać istniejącego konta magazynu ma inne — monitorowanie dane w niej przechowywane, dzięki czemu można lepiej kontrolować dostęp do danych monitorowania. Jednak jeśli są również Archiwizowanie dziennika aktywności, a metryki diagnostycznych na konto magazynu, rozsądne może okazać na potrzeby tego konta magazynu dla dzienników diagnostycznych oraz wszystkie dane monitorowania są przechowywane w centralnej lokalizacji. Konto magazynu, którego używasz, musi być konto magazynu ogólnego przeznaczenia, a nie konta magazynu obiektów blob.
+
+> [!NOTE]
+>  Obecnie nie można zarchiwizować dane do magazynu kontem, które za zabezpieczonej sieci wirtualnej.
 
 ## <a name="diagnostic-settings"></a>Ustawienia diagnostyczne
 

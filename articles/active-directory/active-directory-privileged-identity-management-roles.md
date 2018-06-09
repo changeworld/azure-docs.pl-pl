@@ -9,16 +9,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
-ms.component: users-groups-roles
+ms.component: protection
 ms.date: 03/04/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: 48ff4b4957ac1f9f8f0d6737335811a3e2df0b68
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 3d1027a2fe53a45b089fbae29a831d9e23df059e
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34698309"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233326"
 ---
 # <a name="different-administrative-role-in-azure-active-directory-pim"></a>Innej roli administracyjnej w usłudze Azure Active Directory PIM
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->

@@ -1,26 +1,28 @@
 ---
-title: "Wywołania funkcji platformy Azure z Microsoft Flow | Dokumentacja firmy Microsoft"
-description: "Tworzenie niestandardowego łącznika, a następnie wywołaj funkcję za pomocą tego łącznika."
+title: Wywołania funkcji platformy Azure z Microsoft Flow | Dokumentacja firmy Microsoft
+description: Tworzenie niestandardowego łącznika, a następnie wywołaj funkcję za pomocą tego łącznika.
 services: functions
-keywords: "aplikacje w chmurze, cloud services, Microsoft Flow, procesów biznesowych, aplikacja biznesowa"
-documentationcenter: 
-author: mgblythe
+keywords: aplikacje w chmurze, cloud services, Microsoft Flow, procesów biznesowych, aplikacja biznesowa
+documentationcenter: ''
+author: ggailey777
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2017
-ms.author: mblythe
-ms.custom: 
-ms.openlocfilehash: 38d2e3f2f2aa057b50ba12138cafc512ac110f9b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: glenga
+ms.reviewer: sunayv
+ms.custom: ''
+ms.openlocfilehash: 57d80ad836a16b8821ba0cce42c822728c654dfd
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234805"
 ---
 # <a name="call-a-function-from-microsoft-flow"></a>Wywoływanie funkcji z usługi Microsoft Flow
 
@@ -58,11 +60,11 @@ Możesz rozpocząć od tworzenia listy używanej jako źródło danych dla przep
 
 1. W witrynie programu SharePoint, kliknij lub naciśnij polecenie **nowy**, następnie **listy**.
 
-    ![Utwórz nową listę programu SharePoint](./media/functions-flow-scenario/new-list.png)
+    ![Tworzenie nowej listy programu SharePoint](./media/functions-flow-scenario/new-list.png)
 
 2. Wprowadź nazwę `Turbines`, kliknij lub naciśnij polecenie **Utwórz**.
 
-    ![Określ nazwę nowej listy](./media/functions-flow-scenario/create-list.png)
+    ![Określanie nazwy nowej listy](./media/functions-flow-scenario/create-list.png)
 
     **Turbin** listy jest tworzony przy użyciu domyślnego **tytuł** pola.
 
@@ -70,7 +72,7 @@ Możesz rozpocząć od tworzenia listy używanej jako źródło danych dla przep
 
 3. Kliknij lub naciśnij polecenie ![ikonę nowego elementu](./media/functions-flow-scenario/icon-new.png) następnie **data**.
 
-    ![Dodaj pojedynczy wiersz pola tekstowego.](./media/functions-flow-scenario/add-column.png)
+    ![Dodawanie pola pojedynczego wiersza tekstu](./media/functions-flow-scenario/add-column.png)
 
 4. Wprowadź nazwę `LastServiceDate`, kliknij lub naciśnij polecenie **Utwórz**.
 
@@ -99,7 +101,7 @@ Niestandardowy interfejs API (znanej także jako łącznik niestandardowy) jest 
 
 1. Kliknij przycisk **Utwórz połączenie**, przewiń w dół do **naprawy turbiny** łącznika i kliknij ją.
 
-    ![Utwórz połączenie](media/functions-flow-scenario/create-connection.png)
+    ![Tworzenie połączenia](media/functions-flow-scenario/create-connection.png)
 
 1. Wprowadź klucz interfejsu API, a następnie kliknij przycisk **utworzyć połączenie**.
 
@@ -153,7 +155,7 @@ Najpierw utwórz przepływem na podstawie pustego (bez szablonu) i Dodaj *wyzwal
 
 Elementy utworzone na liście, aby uzyskać przepływ sprawdza, czy **ServiceRequired** pole jest ustawione na `Yes`, przejdzie do **tak** gałęzi lub **Jeśli żadne** gałęzi jako odpowiednie. Aby zaoszczędzić czas, w tym temacie, można określić tylko akcje **tak** gałęzi.
 
-### <a name="add-the-custom-connector"></a>Dodaj niestandardowy łącznik
+### <a name="add-the-custom-connector"></a>Dodawanie łącznika niestandardowego
 
 Teraz Dodaj niestandardowy łącznik, który wywołuje funkcję na platformie Azure. Dodanie łącznika niestandardowego przepływu, podobnie jak standardowy łącznika. 
 
@@ -237,7 +239,7 @@ Teraz, gdy strumień jest zakończone, Dodaj wiersz na liście programu SharePoi
 
 3. Kliknij przycisk **Gotowe**.
 
-    ![Edytuj szybkie gotowe](media/functions-flow-scenario/quick-edit-done.png)
+    ![Szybka edycja — gotowe](media/functions-flow-scenario/quick-edit-done.png)
 
     Po dodaniu elementu wyzwala przepływ, który można spojrzeć na dalej.
 
@@ -247,7 +249,7 @@ Teraz, gdy strumień jest zakończone, Dodaj wiersz na liście programu SharePoi
 
 5. W obszarze **Uruchom HISTORII**, kliknij przycisk Uruchom przepływ.
 
-    ![Historia uruchomień](media/functions-flow-scenario/run-history.png)
+    ![Historia uruchamiania](media/functions-flow-scenario/run-history.png)
 
     Jeśli uruchomienie zakończyło się pomyślnie, można przejrzeć operacji przepływu na następnej stronie. Jeśli uruchomienie nie powiodło się dla jakiejkolwiek przyczyny, Następna strona zawiera informacje dotyczące rozwiązywania problemów.
 

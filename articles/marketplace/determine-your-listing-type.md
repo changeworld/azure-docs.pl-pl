@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
-ms.openlocfilehash: 8e9781f97c7d605a5249fcc1684dc2f72cb1e3ac
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: f9793156b3728f617b92624651ff89ab2665c061
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824435"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235811"
 ---
 # <a name="determine-the-listing-type-for-your-solution"></a>Określić typ oferty dla rozwiązania  
 Sklepy obsługują wiele opcji publikowania: Lista typów i oferują typy. Wybierz typ oferty, które najlepiej informują szczegóły rozwiązania i usługi. Wszystkie opcje publikowania zapewniają dostęp do prowadzić do udostępniania.   
@@ -209,10 +209,11 @@ Firma Microsoft obsługuje obecnie bezpłatne i przełączyć your właściciele
 
 | Wymaganie | Szczegóły |  
 |:--- |:--- |  
-| Rozliczenia i pomiarów | Obsługuje albo wolnego lub BYOL modelu rozliczeń. |  
-|Zbudowany z plik Dockerfile obrazu    |   Kontener obrazów muszą być oparte na specyfikacji obrazu Docker i muszą być zbudowane z plik Dockerfile. Dowiedz się więcej o tworzeniu [tutaj] obrazy usługi docker. (https://docs.docker.com/engine/reference/builder/#usage) |
-|Hosting w ACR    |   Kontener obrazów muszą być obsługiwane w repozytorium Azure kontenera rejestru (ACR). Dowiedz się więcej o pracy z ACR [tutaj]. (https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal)   |
-|Znakowanie obrazu    |   Obrazy kontenera musi zawierać co najmniej 1 znaczników (tagów maksymalna: 16). Dowiedz się więcej o znakowanie [tutaj] obrazu. (https://docs.docker.com/engine/reference/commandline/tag/)    |
+|Rozliczenia i pomiarów  |  Twoje kontenera musi obsługiwać albo Zwolnij lub użycie własnej licencji rozliczeń modeli.       |  
+|Zbudowany z plik Dockerfile obrazu   |   Kontener obrazów muszą być oparte na specyfikacji obrazu Docker i muszą być zbudowane z plik Dockerfile. Dowiedz się więcej o tworzeniu [tutaj] obrazy usługi docker. (https://docs.docker.com/engine/reference/builder/#usage)
+|Hosting w ACR   |   Kontener obrazów muszą być obsługiwane w repozytorium Azure kontenera rejestru (ACR). Dowiedz się więcej o pracy z ACR [tutaj]. (https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal)     
+|Znakowanie obrazu   |   Obrazy kontenera musi zawierać co najmniej 1 znaczników (tagów maksymalna: 16). Dowiedz się więcej o znakowanie [tutaj] obrazu. (https://docs.docker.com/engine/reference/commandline/tag/)     | 
+
 
 
 #### <a name="requirements-azure-marketplace-transact-saas-app"></a>Wymagania dotyczące: Azure Marketplace: Transact: aplikacji SaaS  
@@ -224,10 +225,11 @@ Microsoft hostuje transakcję commerce. Microsoft rachunków klienta w Twoim imi
 
 | Wymaganie | Szczegóły |  
 |:--- |:--- |  
-| Rozliczenia i pomiarów | Ofertę kosztuje szybkością miesięczne płaski. Opartej na użyciu cenową i opartej na użyciu *true-up* opcje nie są obsługiwane w tej chwili. |  
-| Anulowanie | Twoja oferta jest można anulować przez klienta w dowolnym momencie. |  
-|Strona początkowa transakcji     |   Możesz udostępniać Azure markami transakcji strony docelowej, gdzie użytkownicy mogą tworzyć i zarządzania swoim kontem usługi SaaS.      |    Transakcji     |
-|Subskrypcja interfejsu API    |   Naraża usługi, które mogą kontaktować się z subskrypcją SaaS na tworzenie, aktualizowanie i usuwanie planu usługi oraz konta użytkownika. Krytyczne zmiany interfejsu API musi być obsługiwane w ciągu 24 godzin. Niekrytyczny zmiany interfejsu API zostanie wydana okresowo.      |     Transakcji    |
+|Rozliczenia i pomiarów   |   Ofertę kosztuje szybkością miesięczne płaski. Opartej na użyciu cennik i możliwości opartej na użyciu "wartość true w górę" nie są obsługiwane w tej chwili.      |  
+|Anulowanie  |   Twoja oferta jest można anulować przez klienta w dowolnym momencie.      |  
+|Strona początkowa transakcji   |   Możesz udostępniać Azure markami transakcji strony docelowej, gdzie użytkownicy mogą tworzyć i zarządzania swoim kontem usługi SaaS.      |   
+|Subskrypcja interfejsu API    |   Naraża usługi, które mogą kontaktować się z subskrypcją SaaS na tworzenie, aktualizowanie i usuwanie planu usługi oraz konta użytkownika. Krytyczne zmiany interfejsu API musi być obsługiwane w ciągu 24 godzin. Niekrytyczny zmiany interfejsu API zostanie wydana okresowo.      | 
+
 
 
 #### <a name="requirements-azure-marketplace-transact-virtual-machine"></a>Wymagania dotyczące: Azure Marketplace: Transact: maszyny wirtualne  

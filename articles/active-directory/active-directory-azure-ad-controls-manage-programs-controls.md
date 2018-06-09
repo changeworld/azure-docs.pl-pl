@@ -11,14 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.component: compliance-reports
 ms.date: 05/14/2018
 ms.author: rolyon
-ms.openlocfilehash: f457d2a7d23785a4af66b0578412defd38f4b410
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 3bce933787e49d787c9414ef75ee0e97a41b79aa
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34698108"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233642"
 ---
 # <a name="manage-programs-and-their-controls"></a>Zarządzanie programów i ich formantów 
 

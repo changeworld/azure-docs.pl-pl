@@ -1,11 +1,11 @@
 ---
-title: "Wdrażanie aplikacji w usłudze Azure App Service przy użyciu pliku ZIP albo WOJENNE | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wdrożyć aplikację w usłudze Azure App Service z pliku ZIP (lub plik WAR dla deweloperów języka Java)."
+title: Wdrażanie aplikacji w usłudze Azure App Service przy użyciu pliku ZIP albo WOJENNE | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wdrożyć aplikację w usłudze Azure App Service z pliku ZIP (lub plik WAR dla deweloperów języka Java).
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: cephalin;sisirap
-ms.openlocfilehash: 6ecbf111bad96bce310109ac1a3e8f3bb846be6c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a3178d5cb09087a243a51e20567895d03ce1f7fb
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234138"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Wdrażanie aplikacji w usłudze Azure App Service przy użyciu pliku ZIP albo WOJENNE
 
@@ -82,7 +83,7 @@ To polecenie wdraża pliki i katalogi z pliku ZIP do domyślnego folderu aplikac
 
 ## <a name="deploy-war-file"></a>Wdróż plik WAR
 
-Aby wdrożyć plik WAR do usługi App Service, wysyła żądanie POST na https://<app_name>.scm.azurewebsites.net/api/wardeploy. Żądanie POST musi zawierać plik .war w treści wiadomości. Poświadczenia wdrażania dla aplikacji znajdują się w żądaniu przy użyciu uwierzytelniania podstawowe HTTP. 
+Aby wdrożyć plik WAR do usługi App Service, wysyła żądanie POST na https://<app_name>.scm.azurewebsites.net/api/wardeploy. Żądanie POST musi zawierać plik WAR w treści wiadomości. Poświadczenia wdrażania dla aplikacji są podawane w żądaniu za pomocą podstawowego uwierzytelniania HTTP. 
 
 Uwierzytelnianie podstawowe HTTP należy poświadczenia wdrażania usługi aplikacji. Aby sprawdzić, jak ustawić poświadczenia wdrażania, zobacz [ustawić i zresetowanie poświadczeń na poziomie użytkownika](app-service-deployment-credentials.md#userscope).
 
@@ -106,6 +107,8 @@ $apiUrl = "https://<app_name>.scm.azurewebsites.net/api/wardeploy"
 $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))
 Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -Method POST -InFile $filePath -ContentType "multipart/form-data"
 ```
+
+[!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 

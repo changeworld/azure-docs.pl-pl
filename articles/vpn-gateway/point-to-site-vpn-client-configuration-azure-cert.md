@@ -13,17 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/02/2018
+ms.date: 06/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 9b9528aba0be8fd46087d97bc294552db608f1c1
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 2ae16d76dce01488403e9f13684e719f92eb80c5
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235835"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-point-to-site-configurations"></a>Utwórz i zainstaluj VPN plików konfiguracji klienta dla natywnych Azure certyfikatu konfiguracji uwierzytelniania punkt-lokacja
 
 Pliki konfiguracji klienta sieci VPN znajdują się w pliku zip. Pliki konfiguracji Podaj ustawienia wymagane dla natywnego klienta systemu Windows, Mac IKEv2 sieci VPN lub Linux do nawiązania połączenia sieci wirtualnej za pośrednictwem połączenia punkt-lokacja, które używają uwierzytelniania natywnego certyfikatu Azure.
+
+>[!IMPORTANT]
+>[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
+>
 
 ### <a name="workflow"></a>Przepływ pracy P2S
 
@@ -116,7 +121,7 @@ Kliknij przycisk **Dodaj** do zaimportowania.
   ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. W **identyfikator lokalny** Określ nazwę certyfikatu (z kroku 6). W tym przykładzie jest "ikev2Client.com". Następnie kliknij przycisk **Zastosuj** przycisk, aby zapisać zmiany.
 
-  ![Zastosuj](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
+  ![zastosuj](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
 9. Na **sieci** okna dialogowego, kliknij przycisk **Zastosuj** można zapisać wszystkich zmian. Następnie kliknij przycisk **Connect** nawiązaniu połączenia P2S do sieci wirtualnej platformy Azure.
 
 ## <a name="installlinux"></a>Instalowanie - systemu Linux (strongSwan)
@@ -166,7 +171,7 @@ Poniższe instrukcje zostały utworzone za pomocą strongSwan 5.5.1 na Ubuntu 17
   ![wewnętrzny adres IP żądania](./media/point-to-site-vpn-client-configuration-azure-cert/inneripreq.png)
 8. Kliknij przycisk **Menedżera sieci** ikony (up strzałkę/strzałki w dół), jak i zatrzymaj wskaźnik myszy **połączeń sieci VPN**. Połączenia sieci VPN, utworzony zostanie wyświetlony. Kliknij, aby zainicjować połączenie.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Wróć do tego artykułu, aby [ukończyć konfigurację P2S](vpn-gateway-howto-point-to-site-rm-ps.md).
 

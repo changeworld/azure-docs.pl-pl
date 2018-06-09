@@ -1,5 +1,5 @@
 ---
-title: Jak używać zestawu SDK zadań Webjob dla przetwarzania w tle sterowane zdarzeniami - Azure
+title: Jak używać zestawu Azure WebJobs SDK
 description: Dowiedz się więcej o tym, jak napisać kod dla tego zestawu SDK zadań Webjob. Utwórz sterowane zdarzeniami tła zadania przetwarzania, które uzyskują dostęp do danych w usługach Azure i usług innych firm.
 services: app-service\web, storage
 documentationcenter: .net
@@ -13,16 +13,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: 18b47014e6fe3e489f783f675a3498c58981b99f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 08272ba7d828f744336723f25b482bf06b9e43dc
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725534"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234654"
 ---
-# <a name="how-to-use-the-webjobs-sdk-for-event-driven-background-processing"></a>Jak używać zestawu SDK zadań Webjob dla przetwarzania w tle sterowane zdarzeniami
+# <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak używać zestawu Azure WebJobs SDK do przetwarzania w tle sterowane zdarzeniami
 
-Ten artykuł zawiera wskazówki dotyczące pisania kodu dla [zestaw SDK zadań Webjob](webjobs-sdk-get-started.md). Dokumentację dotyczy wersji 2.x i 3.x, z wyjątkiem przypadków, gdy zaznaczono inaczej. Główne zmiany wprowadzone przez 3.x jest korzystanie z platformy .NET Core zamiast .NET Framework.
+Ten artykuł zawiera wskazówki dotyczące pisania kodu dla [zestaw SDK zadań Webjob Azure](webjobs-sdk-get-started.md). Dokumentację dotyczy wersji 2.x i 3.x, z wyjątkiem przypadków, gdy zaznaczono inaczej. Główne zmiany wprowadzone przez 3.x jest korzystanie z platformy .NET Core zamiast .NET Framework.
 
 >[!NOTE]
 > [Środowisko Azure Functions](../azure-functions/functions-overview.md) jest zbudowany na zestaw SDK zadań Webjob i ten artykuł zawiera łącza do dokumentacji usługi Azure Functions niektóre tematy. Należy zwrócić uwagę na następujące różnice między funkcje i zestaw SDK zadań Webjob:

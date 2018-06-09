@@ -4,14 +4,14 @@ description: Zawiera omówienie znanych problemów dotyczących usługi Azure mi
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: troubleshooting
-ms.date: 05/31/2018
+ms.date: 06/08/2018
 ms.author: raynew
-ms.openlocfilehash: d53dec3794a414f61b9bfca3e9715607de448bbf
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: c717cfdac83ec8d85b1fa0a874e5573a40dd4611
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716207"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235631"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Rozwiązywanie problemów z usługą Azure Migrate
 
@@ -19,13 +19,29 @@ ms.locfileid: "34716207"
 
 [Azure migracji](migrate-overview.md) ocenia obciążeń lokalnych do migracji do usługi Azure. W tym artykule umożliwiają rozwiązywanie problemów podczas wdrażania i przy użyciu migracji Azure.
 
-**Tworzenie projektu migracji nie powiodła się z powodu błędu *żądania musi zawierać nagłówki tożsamości użytkownika***
+### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>Tworzenie projektu migracji nie powiodła się z powodu błędu *żądania musi zawierać nagłówki tożsamości użytkownika*
 
 Ten problem może się zdarzyć dla użytkowników, którzy nie mają dostęp do dzierżawy usługi Azure Active Directory (Azure AD) w organizacji. Gdy użytkownik zostanie dodany do dzierżawy usługi Azure AD po raz pierwszy, on odbiera wiadomości e-mail zaproszenie do dołączenia do dzierżawy. Użytkownicy muszą przejść do wiadomości e-mail i zaakceptować zaproszenie, aby pobrać zostało pomyślnie dodane do dzierżawcy. Jeśli nie możesz wyświetlić wiadomości e-mail, dotrzeć do użytkownika, który już ma dostęp do dzierżawy i poproś o wysłać zaproszenie do użytkownika za pomocą kroków określony [tutaj](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator#resend-invitations-to-guest-users).
 
 Po otrzymaniu wiadomości e-mail z zaproszeniem należy otworzyć wiadomości e-mail i kliknij łącze w wiadomości e-mail o zaakceptowanie zaproszenia. Po zakończeniu musisz wylogować się z portalu Azure i zaloguj ponownie, odświeżanie w przeglądarce nie będzie działać. Następnie możesz spróbować utworzyć projekt migracji.
 
-**Moduł zbierający nie jest w stanie nawiązać połączenia z Internetem**
+### <a name="performance-data-for-disks-and-networks-adapters-shows-as-zeros"></a>Przedstawia dane wydajności dotyczące dysków i sieci karty jako zera
+
+Może to wystąpić, jeśli poziom ustawienie statystyk na serwer vCenter jest ustawiony na mniej niż trzech. Na poziomie 3 lub nowszym vCenter przechowuje historii wydajności maszyny Wirtualnej dla zasobów obliczeniowych, magazynu i sieci. Dla trzech poniżej poziomu vCenter nie przechowuje magazynu i sieci danych, ale tylko dane Procesora i pamięci. W tym scenariuszu wydajności pokazuje dane jako zero w migracji Azure i migracji Azure udostępnia zalecenia rozmiaru dysków i sieci na podstawie metadanych zebrane z komputerów lokalnych.
+
+Aby włączyć zbieranie danych wydajności dysku i sieci, należy zmienić poziom ustawienia statystyki do trzech. Następnie należy poczekać co najmniej jeden dzień w celu odnajdywania środowisku i jego oceny.
+
+### <a name="i-installed-agents-and-used-the-dependency-visualization-to-create-groups-now-post-failover-the-machines-show-install-agent-action-instead-of-view-dependencies"></a>Agenci zostali zainstalowani i używane do tworzenia grup wizualizacji zależności. Teraz po pracy w trybie failover maszyny Pokaż akcji "Zainstaluj agentów" zamiast "Wyświetl zależności"
+* Post planowane lub nieplanowane przełączenie awaryjne, lokalne maszyny są wyłączone i maszyny równoważne są uruchomione na platformie Azure. Te maszyny uzyskać inny adres MAC. Mogą one uzyskać inny adres IP w oparciu Określa, czy użytkownik wybrał opcję zachowania lokalny adres IP, czy nie. Jeżeli różnią się adresy IP i MAC, Azure migracji nie wiąże lokalnymi maszynami z żadnych danych zależności mapy usług i pyta użytkownika, aby zainstalować agentów zamiast wyświetlanie zależności.
+* Opublikuj testowania trybu failover maszyny lokalnej pozostają włączone zgodnie z oczekiwaniami. Odpowiednik maszyny przejścia na platformie Azure uzyskać inny adres MAC oraz może uzyskać inny adres IP. Chyba że użytkownik blokuje ruch wychodzący analizy dzienników z urządzeń, Azure migracji nie wiąże lokalnymi maszynami z żadnych danych zależności mapy usług i pyta użytkownika, aby zainstalować agentów zamiast wyświetlania zależności.
+
+## <a name="collector-errors"></a>Błędy modułu zbierającego
+
+### <a name="deployment-of-collector-ova-failed"></a>Wdrożenia modułu zbierającego komórek jajowych nie powiodło się
+
+Może się to zdarzyć czy komórki jajowe częściowo jest pobierana z powodu przeglądarki korzystania z klienta sieci web vSphere komórki jajowe wdrażania. Upewnij się, że pobranie zostanie ukończone i spróbuj przeprowadzić wdrożenie komórek jajowych z innej przeglądarki.
+
+### <a name="collector-is-not-able-to-connect-to-the-internet"></a>Moduł zbierający nie jest w stanie nawiązać połączenia z Internetem
 
 Może to nastąpić, gdy maszyny, którego używasz znajduje się za serwerem proxy. Upewnij się, że podajesz poświadczenia autoryzacji, jeśli serwer proxy wymaga jednego.
 Jeśli używasz dowolnego zapora oparta na adres URL serwera proxy do sterowania łączność wychodząca, upewnij się listą dozwolonych adresów IP są wymagane adresów URL:
@@ -48,7 +64,7 @@ Upewnij się, zostały skopiowane i wklejone odpowiednie informacje. Aby rozwią
 7. Sprawdź, czy agent może połączyć się z projektem. Jeśli nie, sprawdź ustawienia. Jeśli agent może połączyć, ale nie przez moduł zbierający, skontaktuj się z pomocą techniczną.
 
 
-**Błąd 802: błąd datę i godzinę synchronizacji.**
+### <a name="error-802-date-and-time-synchronization-error"></a>Błąd 802: Daty i godziny błąd synchronizacji
 
 Zegar serwera może być typu "out synchronizacji" przy użyciu bieżącego czasu, przez ponad pięć minut. Zmiana czasu zegara w module zbierającym maszyny Wirtualnej, aby dopasować bieżący czas, w następujący sposób:
 
@@ -56,20 +72,32 @@ Zegar serwera może być typu "out synchronizacji" przy użyciu bieżącego czas
 2. Aby sprawdzić strefę czasową, uruchom w32tm /tz.
 3. Aby zsynchronizować czas, należy uruchomić w32tm/resync.
 
-**Mój klucz projektów ma "==" symbole w końcowej. Są one zakodowane, znaki alfanumeryczne przez moduł zbierający. Jest to oczekiwane?**
+### <a name="vmware-powercli-installation-failed"></a>VMware PowerCLI instalacja nie powiodła się
 
-Tak, każdy klucz Projekt kończy się wyrazem "==". Moduł zbierający szyfruje klucz projektu przed jego przetworzeniem.
+Azure migracji modułu zbierającego PowerCLI pobiera i instaluje je na urządzeniu. Niepowodzenie instalacji PowerCLI mogło być spowodowane nieosiągalny punktów końcowych dla repozytorium PowerCLI. Aby rozwiązać problemy, spróbuj ręcznego instalowania PowerCLI w module zbierającym maszyny Wirtualnej przy użyciu następujący krok:
 
-**Przedstawia dane wydajności dotyczące dysków i sieci karty jako zera**
+1. Otwórz program Windows PowerShell w trybie administratora
+2. Przejdź do katalogu C:\ProgramFiles\ProfilerService\VMWare\Scripts\
+3. Uruchom skrypt InstallPowerCLI.ps1
 
-Może to wystąpić, jeśli poziom ustawienie statystyk na serwer vCenter jest ustawiony na mniej niż trzech. Na poziomie 3 lub nowszym vCenter przechowuje historii wydajności maszyny Wirtualnej dla zasobów obliczeniowych, magazynu i sieci. Dla trzech poniżej poziomu vCenter nie przechowuje magazynu i sieci danych, ale tylko dane Procesora i pamięci. W tym scenariuszu wydajności pokazuje dane jako zero w migracji Azure i migracji Azure udostępnia zalecenia rozmiaru dysków i sieci na podstawie metadanych zebrane z komputerów lokalnych.
+### <a name="error-unhandledexception-internal-error-occured-systemiofilenotfoundexception"></a>Wystąpił błąd wewnętrzny UnhandledException: System.IO.FileNotFoundException
 
-Aby włączyć zbieranie danych wydajności dysku i sieci, należy zmienić poziom ustawienia statystyki do trzech. Następnie należy poczekać co najmniej jeden dzień w celu odnajdywania środowisku i jego oceny.
+Jest to problem występujący w module zbierającym w wersjach starszych niż 1.0.9.5. Jeśli używasz modułu zbierającego w wersji 1.0.9.2 lub wersji wcześniejszych niż ogólnodostępne, takich jak 1.0.8.59, napotkasz ten problem. Użyj [tego linku, aby przejść do forów i uzyskać szczegółową odpowiedź](https://social.msdn.microsoft.com/Forums/azure/en-US/c1f59456-7ba1-45e7-9d96-bae18112fb52/azure-migrate-connect-to-vcenter-server-error?forum=AzureMigrate).
 
-**Agenci zostali zainstalowani i używane do tworzenia grup wizualizacji zależności. Teraz po pracy w trybie failover maszyny Pokaż akcji "Zainstaluj agentów" zamiast "Wyświetl zależności"**
-* Post planowane lub nieplanowane przełączenie awaryjne, lokalne maszyny są wyłączone i maszyny równoważne są uruchomione na platformie Azure. Te maszyny uzyskać inny adres MAC. Mogą one uzyskać inny adres IP w oparciu Określa, czy użytkownik wybrał opcję zachowania lokalny adres IP, czy nie. Jeżeli różnią się adresy IP i MAC, Azure migracji nie wiąże lokalnymi maszynami z żadnych danych zależności mapy usług i pyta użytkownika, aby zainstalować agentów zamiast wyświetlanie zależności.
-* Opublikuj testowania trybu failover maszyny lokalnej pozostają włączone zgodnie z oczekiwaniami. Odpowiednik maszyny przejścia na platformie Azure uzyskać inny adres MAC oraz może uzyskać inny adres IP. Chyba że użytkownik blokuje ruch wychodzący analizy dzienników z urządzeń, Azure migracji nie wiąże lokalnymi maszynami z żadnych danych zależności mapy usług i pyta użytkownika, aby zainstalować agentów zamiast wyświetlania zależności.
+[Uaktualnij moduł zbierający, aby rozwiązać problem](https://aka.ms/migrate/col/checkforupdates).
 
+### <a name="error-unabletoconnecttoserver"></a>Błąd UnableToConnectToServer
+
+Nie można nawiązać połączenia z programem vCenter Server "Servername.com:9443" z powodu błędu: nie znaleziono żadnego punktu końcowego nasłuchiwania na https://Servername.com:9443/sdk który mógłby odebrać komunikat.
+
+Sprawdź, czy możesz korzystają z najnowszej wersji urządzenia modułu zbierającego, jeśli nie, uaktualnić urządzenie [najnowszej wersji](https://docs.microsoft.com/azure/migrate/concepts-collector#how-to-upgrade-collector).
+
+Jeśli problem nadal występuje w najnowszej wersji, być może maszyny modułu zbierającego nie może rozpoznać określonej nazwy serwera vCenter lub określony port jest nieprawidłowy. Domyślnie jeśli port nie jest określony, moduł zbierający będzie spróbują połączyć się z numerem portu 443.
+
+1. Spróbuj wykonać polecenie ping Servername.com z komputera modułu zbierającego.
+2. Jeśli nie możesz wykonać kroku 1, spróbuj połączyć się z programem vCenter Server za pośrednictwem adresu IP.
+3. Podaj prawidłowy numer portu, aby nawiązać połączenie z programem vCenter.
+4. Na koniec sprawdź, czy program vCenter Server działa.
 
 ## <a name="troubleshoot-readiness-issues"></a>Rozwiązywanie problemów gotowości
 
@@ -130,26 +158,6 @@ Aby zbierać zdarzenia śledzenia systemu Windows, wykonaj następujące czynno�
  - W przeglądarce Chrome kliknij prawym przyciskiem myszy w dzienniku konsoli. Wybierz **Zapisz jako**, aby wyeksportować i zip dziennika.
  - W programie Microsoft Edge/IE, kliknij prawym przyciskiem myszy na błędy i wybierz **skopiuj wszystkie**.
 7. Zamknij narzędzia dla deweloperów.
-
-
-## <a name="vcenter-errors"></a>błędy vCenter
-
-### <a name="error-unhandledexception-internal-error-occured-systemiofilenotfoundexception"></a>Wystąpił błąd wewnętrzny UnhandledException: System.IO.FileNotFoundException
-
-Jest to problem występujący w module zbierającym w wersjach starszych niż 1.0.9.5. Jeśli używasz modułu zbierającego w wersji 1.0.9.2 lub wersji wcześniejszych niż ogólnodostępne, takich jak 1.0.8.59, napotkasz ten problem. Użyj [tego linku, aby przejść do forów i uzyskać szczegółową odpowiedź](https://social.msdn.microsoft.com/Forums/azure/en-US/c1f59456-7ba1-45e7-9d96-bae18112fb52/azure-migrate-connect-to-vcenter-server-error?forum=AzureMigrate).
-
-[Uaktualnij moduł zbierający, aby rozwiązać problem](https://aka.ms/migrate/col/checkforupdates).
-
-### <a name="error-unabletoconnecttoserver"></a>Błąd UnableToConnectToServer
-
-Nie można nawiązać połączenia z programem vCenter Server "Servername.com:9443" z powodu błędu: nie znaleziono żadnego punktu końcowego nasłuchiwania na https://Servername.com:9443/sdk który mógłby odebrać komunikat.
-
-Dzieje się tak, gdy maszyna modułu zbierającego nie może rozpoznać podanej nazwy programu vCenter Server lub gdy wybrano nieprawidłowy port. Jeśli port nie zostanie określony, moduł zbierający domyślnie podejmie próbę połączenia z portem o numerze 443.
-
-1. Spróbuj wykonać polecenie ping dla adresu Servername.com z maszyny modułu zbierającego.
-2. Jeśli nie możesz wykonać kroku 1, spróbuj połączyć się z programem vCenter Server za pośrednictwem adresu IP.
-3. Podaj prawidłowy numer portu, aby nawiązać połączenie z programem vCenter.
-4. Na koniec sprawdź, czy program vCenter Server działa.
 
 ## <a name="collector-error-codes-and-recommended-actions"></a>Kody błędów modułu zbierającego i zalecane akcje
 

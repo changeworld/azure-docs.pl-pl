@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
-ms.openlocfilehash: 88cc9ff4979c2e6a4a14a7d531054c1a842deaf8
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: a614dadae40fcfc28eba85e5943f60a38653224b
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849807"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233907"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Wdrażanie lokalnej usługi Git w usłudze Azure App Service
 
@@ -147,6 +147,8 @@ git push vsts master
 Po ukończeniu wdrażania można znaleźć postęp kompilacji w `https://<vsts_account>.visualstudio.com/<project_name>/_build` i postępu wdrożenia na `https://<vsts_account>.visualstudio.com/<project_name>/_release`.
 
 Przejdź do aplikacji w taki sposób, aby sprawdzić, czy zawartość jest wdrażana.
+
+[!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
 ## <a name="troubleshooting-kudu-deployment"></a>Rozwiązywanie problemów z wdrażaniem Kudu
 

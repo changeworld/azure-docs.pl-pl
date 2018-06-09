@@ -5,14 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 06/04/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 072c16a0e50a4922d44dd354b632f39b33d23cdd
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9522e1f56c7aa8ce8fbe2b5b7b04f5482738342c
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236706"
 ---
 ### <a name="supportedclientos"></a>Których systemów operacyjnych klienta można używać z połączeniami typu punkt-lokacja?
 
@@ -28,6 +29,12 @@ Obsługiwane są następujące systemy operacyjne klientów:
 * Windows 10
 * Wersja systemu Mac OS X 10.11 (El Capitan)
 * Mac OS X w wersji 10.12 (Sierra)
+* Linux (StrongSwan)
+* iOS
+
+>[!NOTE]
+>[!INCLUDE [TLS](vpn-gateway-tls-updates.md)]
+>
 
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Ile punktów końcowych klienta sieci VPN może obejmować konfiguracja punkt-lokacja?
 
@@ -73,7 +80,7 @@ Do przygotowywania systemu Windows 10 lub Server 2016 dla protokołu IKEv2:
 
 1. Zainstaluj aktualizację.
 
-  | Wersja systemu operacyjnego | Date | Number/Link |
+  | Wersja systemu operacyjnego | Date | Numer/Link |
   |---|---|---|---|
   | Windows Server 2016<br>Windows 10 w wersji 1607 | 17 stycznia 2018 r. | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
   | Wersja systemu Windows 10 1703 | 17 stycznia 2018 r. | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |

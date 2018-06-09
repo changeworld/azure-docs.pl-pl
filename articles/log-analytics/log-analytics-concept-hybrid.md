@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 06/07/2018
 ms.author: magoedte
-ms.openlocfilehash: 2597b434bc6db0d5639709a9ce869462c3e47f56
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 5bf1e12c958fef0cb20eaad8cece8cadb380c196
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235944"
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Zbieranie danych z komputerów w środowisku z analizy dzienników
 
@@ -40,12 +41,9 @@ Agenta dla systemu Linux i Windows komunikuje się wychodzące z usługą analiz
 
 Jeśli monitorowanych komputerów z System Center 2016 - Operations Manager lub programu Operations Manager 2012 R2, można wieloadresowego z usługą analizy dzienników w celu zbierania danych i przekazywać je do usługi i nadal być monitorowane przez [programu Operations Manager ](log-analytics-om-agents.md). Komputery z systemem Linux monitorowane przez grupę zarządzania programu Operations Manager zintegrowany z analizy dzienników nie mają konfiguracji dla źródła danych i do przodu zebranych danych za pośrednictwem grupy zarządzania. Agent systemu Windows może raportować do czterech obszarów roboczych, a agenta systemu Linux obsługuje tylko do jednego obszaru roboczego raporty.  
 
-Agent dla systemu Linux i Windows, który nie jest tylko w celu nawiązania połączenia analizy dzienników, obsługuje ona również usługi Automatyzacja Azure umożliwia hosta roli procesu roboczego Runbook hybrydowego i rozwiązań do zarządzania takich jak śledzenia zmian i zarządzania aktualizacjami.  Aby uzyskać więcej informacji na temat roli hybrydowy proces roboczy elementu Runbook, zobacz [procesu roboczego Runbook hybrydowego automatyzacji Azure](../automation/automation-hybrid-runbook-worker.md).
+Agent dla systemu Linux i Windows, który nie jest tylko w celu nawiązania połączenia analizy dzienników, obsługuje ona również usługi Automatyzacja Azure umożliwia hosta roli procesu roboczego Runbook hybrydowego i rozwiązań do zarządzania takich jak śledzenia zmian i zarządzania aktualizacjami.  Aby uzyskać więcej informacji na temat roli hybrydowy proces roboczy elementu Runbook, zobacz [procesu roboczego Runbook hybrydowego automatyzacji Azure](../automation/automation-hybrid-runbook-worker.md).  
 
-## <a name="prerequisites"></a>Wymagania wstępne
-Przed rozpoczęciem należy przejrzeć następujące informacje, aby sprawdzić, czy zostały spełnione minimalne wymagania systemowe.
-
-### <a name="windows-operating-system"></a>System operacyjny Windows
+## <a name="supported-windows-operating-systems"></a>Obsługiwane systemy operacyjne Windows
 Windows agent oficjalnie obsługuje następujące wersje systemu operacyjnego Windows:
 
 * Windows Server 2008 Service Pack 1 (SP1) lub nowszy
@@ -54,17 +52,7 @@ Windows agent oficjalnie obsługuje następujące wersje systemu operacyjnego Wi
 > [!NOTE]
 > Agent dla systemu Windows obsługuje tylko zabezpieczeń TLS (Transport Layer) 1.0 i 1.1.  
 
-#### <a name="network-configuration"></a>Konfiguracja sieci
-Informacje poniżej listy proxy i zapory konfiguracji wymaganych informacji dla agenta systemu Windows do komunikowania się z analizy dzienników. Ruch jest wychodzący z sieci lokalnej z usługą analizy dzienników. 
-
-| Zasób agenta | Porty | Obejście inspekcji HTTPS|
-|----------------|-------|------------------------|
-|*.ods.opinsights.azure.com |443 | Yes |
-|*.oms.opinsights.azure.com | 443 | Yes | 
-|*.blob.core.windows.net | 443 | Yes | 
-|*.azure-automation.net | 443 | Yes | 
-
-### <a name="linux-operating-systems"></a>Systemy operacyjne Linux
+## <a name="supported-linux-operating-systems"></a>Obsługiwane systemy operacyjne Linux
 Oficjalnie obsługiwane są następujące dystrybucje systemu Linux.  Jednak agenta systemu Linux mogą również uruchomić na innych dystrybucje nie na liście.  Jeśli nie podano inaczej, wszystkie wersje pomocnicze są obsługiwane dla każdej wersji głównej na liście.  
 
 * Linux Amazon 2012.09 do 2015.09 (x86/x64)
@@ -75,19 +63,22 @@ Oficjalnie obsługiwane są następujące dystrybucje systemu Linux.  Jednak age
 * Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)
 * SUSE Linux Enterprise Server 11 i 12 (x86/x64)
 
-#### <a name="network-configuration"></a>Konfiguracja sieci
-Informacje poniżej listy proxy i zapory konfiguracji wymaganych informacji dla agenta systemu Linux do komunikowania się z analizy dzienników.  
+## <a name="network-firewall-requirements"></a>Wymagania dotyczące zapory sieciowej
+Informacje poniżej listy proxy i zapory konfiguracji wymaganych informacji dla agenta systemu Linux i Windows, aby komunikować się z analizy dzienników.  
 
-|Zasób agenta| Porty | Kierunek |  
-|------|---------|--------|  
-|*.ods.opinsights.azure.com | Port 443 | Przychodzące i wychodzące|  
-|*.oms.opinsights.azure.com | Port 443 | Przychodzące i wychodzące|  
-|*.blob.core.windows.net | Port 443 | Przychodzące i wychodzące|  
-|*.azure-automation.net | Port 443 | Przychodzące i wychodzące|  
+|Zasób agenta|Porty |Kierunek |Obejście inspekcji HTTPS|
+|------|---------|--------|--------|   
+|*.ods.opinsights.azure.com |Port 443 |Przychodzące i wychodzące|Yes |  
+|*.oms.opinsights.azure.com |Port 443 |Przychodzące i wychodzące|Yes |  
+|*.blob.core.windows.net |Port 443 |Przychodzące i wychodzące|Yes |  
+|*.azure-automation.net |Port 443 |Przychodzące i wychodzące|Yes |  
 
-Agent systemu Linux obsługuje komunikacji przy użyciu serwera proxy lub bramy OMS z usługą analizy dzienników przy użyciu protokołu HTTPS.  Obsługiwane są zarówno anonimowych, jak i podstawowego uwierzytelniania (nazwy użytkownika i hasła).  Podczas instalacji lub modyfikując plik konfiguracji proxy.conf po zakończeniu instalacji można określić serwer proxy.  
 
-Wartość konfiguracji serwera proxy ma następującą składnię:
+Jeśli planujesz użyć Azure automatyzacji hybrydowy proces roboczy do nawiązania połączenia i zarejestrować w usłudze Automatyzacja na używanie elementów runbook w środowisku, musi mieć dostęp do numer portu i adresy URL opisane w [Konfigurowanie sieci dla Hybrydowy proces roboczy elementu Runbook](../automation/automation-hybrid-runbook-worker.md#network-planning). 
+
+Agent systemu Windows i Linux obsługują komunikacji przy użyciu serwera proxy lub bramy OMS z usługą analizy dzienników przy użyciu protokołu HTTPS.  Obsługiwane są zarówno anonimowych, jak i podstawowego uwierzytelniania (nazwy użytkownika i hasła).  Dla agenta programu Windows podłączone bezpośrednio do usługi, konfiguracja serwera proxy jest określany podczas instalacji lub [po wdrożeniu](log-analytics-agent-manage.md#update-proxy-settings) w Panelu sterowania lub przy użyciu programu PowerShell.  
+
+Dla agenta systemu Linux, serwer proxy został określony podczas instalacji lub [po zakończeniu instalacji](/log-analytics-agent-manage.md#update-proxy-settings) , modyfikując plik konfiguracji proxy.conf.  Wartość konfiguracji serwera proxy agenta systemu Linux ma następującą składnię:
 
 `[protocol://][user:password@]proxyhost[:port]`
 

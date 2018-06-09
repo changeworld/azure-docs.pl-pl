@@ -1,35 +1,35 @@
 ---
 title: Porównanie funkcji w usłudze Azure SQL Database | Dokumentacja firmy Microsoft
-description: W tym artykule porównano funkcje bazy danych SQL Azure i zarządzanych wystąpień ze sobą oraz z programem SQL Server.
+description: Ten artykuł zawiera porównanie funkcji programu SQL Server, które są dostępne w różnych odmian bazy danych SQL Azure.
 services: sql-database
 author: jovanpop-msft
 ms.reviewer: bonova, carlrab
 ms.service: sql-database
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 06/08/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: eaaadd48c92ef79964f712dae9bffb24dac271cd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 09595c19622eaabe0838c52bc1226fcdfe60d4ba
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646725"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248813"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porównanie funkcji: Azure SQL Database i programu SQL Server 
 
-Baza danych SQL Azure udostępnia typowe bazy kodu z programem SQL Server. Funkcje programu SQL Server obsługiwana przez bazę danych SQL Azure, zależy od typu bazy danych Azure SQL, którą należy utworzyć. Z bazy danych SQL Azure, możesz utworzyć bazę danych jako część [zarządzanego wystąpienia](sql-database-managed-instance.md) (obecnie w publicznej wersji zapoznawczej) lub można utworzyć bazy danych, która jest pojedynczą bazę danych lub bazę danych, która jest częścią puli elastycznej. 
+Baza danych SQL Azure udostępnia typowe bazy kodu z programem SQL Server. Funkcje programu SQL Server obsługiwana przez bazę danych SQL Azure są zależne od typu bazy danych Azure SQL, które można utworzyć. Z bazy danych SQL Azure, możesz utworzyć bazę danych jako część [zarządzanego wystąpienia](sql-database-managed-instance.md) (obecnie w publicznej wersji zapoznawczej) lub można utworzyć bazy danych, która jest częścią logicznego serwera i opcjonalnie umieszczony w puli elastycznej. 
 
 Firma Microsoft w dalszym ciągu dodawania funkcji do bazy danych SQL Azure. Odwiedź stronę sieci Web usługi aktualizacji dla platformy Azure najnowsze aktualizacje przy użyciu tych filtrów:
 
 * Włączony filtr [usługi SQL Database](https://azure.microsoft.com/updates/?service=sql-database).
 * Włączony filtr [ogłoszeń dotyczących ogólnej dostępności](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) funkcji usługi SQL Database.
 
-## <a name="sql-server-and-sql-database-feature-support"></a>Obsługa funkcji programu SQL Server i bazy danych SQL
+## <a name="sql-server-feature-support-in-azure-sql-database"></a>Obsługa funkcji programu SQL Server w bazie danych SQL Azure
 
 Poniższa tabela zawiera listę głównych funkcji programu SQL Server oraz informacje na temat tego, czy funkcja ta jest częściowo lub całkowicie obsługiwana i łącza do dodatkowych informacji na temat funkcji. 
 
-| **Funkcja SQL** | **Obsługiwane w bazie danych Azure SQL** | **Zarządzane wystąpienia (wersja zapoznawcza)** |
+| **Funkcja SQL** | **Obsługiwane przez serwer bazy danych/logiczny Azure SQL** | **Obsługiwane w wystąpieniu bazy danych/zarządzane SQL Azure (wersja zapoznawcza)** |
 | --- | --- | --- |
 | [Zawsze zaszyfrowane](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Tak — zobacz [magazynu certyfikatów](sql-database-always-encrypted.md) i [magazyn kluczy](sql-database-always-encrypted-azure-key-vault.md) | Tak — zobacz [magazynu certyfikatów](sql-database-always-encrypted.md) i [magazyn kluczy](sql-database-always-encrypted-azure-key-vault.md) |
 | [Zawsze włączone grupy dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [Wysoka dostępność](sql-database-high-availability.md) znajduje się w każdej bazie danych. Odzyskiwanie po awarii jest omówiona w [omówienie ciągłości działalności biznesowej z bazy danych SQL Azure](sql-database-business-continuity.md) | [Wysoka dostępność](sql-database-high-availability.md) znajduje się w każdej bazie danych. Odzyskiwanie po awarii jest omówiona w [omówienie ciągłości działalności biznesowej z bazy danych SQL Azure](sql-database-business-continuity.md) |
@@ -40,7 +40,7 @@ Poniższa tabela zawiera listę głównych funkcji programu SQL Server oraz info
 | [Automatycznego dostrajania (wymuszanie planu)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Tak](sql-database-automatic-tuning.md)| [Tak](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning) |
 | [Automatycznego dostrajania (indeksów)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Tak](sql-database-automatic-tuning.md)| Nie |
 | [Plik pliku BACPAC (Eksportuj)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Tak — zobacz [eksportu bazy danych SQL](sql-database-export.md) | Yes |
-| [Plik pliku BACPAC (Importuj)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Tak — zobacz [importu bazy danych SQL](sql-database-import.md) | Yes |
+| [Plik pliku BACPAC (Importuj)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Tak — zobacz [importu bazy danych SQL](sql-database-import.md) | Nie |
 | [Polecenie tworzenia kopii zapasowej](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql) | Nie, tylko inicjowanych przez system automatycznego tworzenia kopii zapasowych — Zobacz [automatycznego tworzenia kopii zapasowych](sql-database-automated-backups.md) | Zainicjowane przez system automatycznych kopii zapasowych i użytkownik zainicjował kopie zapasowe tylko do kopiowania — zobacz [kopii zapasowej różnic](sql-database-managed-instance-transact-sql-information.md#backup) |
 | [Funkcje wbudowane](https://docs.microsoft.com/sql/t-sql/functions/functions) | Większość — Zobacz poszczególnych funkcji | Tak — zobacz [procedury przechowywane i funkcje, wyzwala różnic](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |
 | [Przechwytywania zmian danych](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Nie | Yes |
@@ -137,7 +137,7 @@ Poniższa tabela zawiera listę głównych funkcji programu SQL Server oraz info
 |Wykrywanie zagrożeń|  [Tak](sql-database-threat-detection.md)|[Tak](sql-database-managed-instance-threat-detection.md)|
 | [Flagi śledzenia](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | Nie | Nie |
 | [Zmienne](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | Yes | Yes |
-| [Przezroczystego szyfrowania danych (funkcji TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | Yes | Nie, nie znajduje się w publicznej wersji zapoznawczej |
+| [Przezroczystego szyfrowania danych (funkcji TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | Yes | Partial tylko z szyfrowaniem zarządzane przez usługę |
 [Sieć wirtualna](../virtual-network/virtual-networks-overview.md) | Częściowe — zobacz [punktów końcowych sieci Wirtualnej](sql-database-vnet-service-endpoint-rule-overview.md) | Tak — tylko modelu Resource Manager |
 | [Klaster trybu Failover serwera systemu Windows](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | [Wysoka dostępność](sql-database-high-availability.md) znajduje się w każdej bazie danych. Odzyskiwanie po awarii jest omówiona w [omówienie ciągłości działalności biznesowej z bazy danych SQL Azure](sql-database-business-continuity.md) | [Wysoka dostępność](sql-database-high-availability.md) znajduje się w każdej bazie danych. Odzyskiwanie po awarii jest omówiona w [omówienie ciągłości działalności biznesowej z bazy danych SQL Azure](sql-database-business-continuity.md) |
 | [Indeksów XML](https://docs.microsoft.com/sql/t-sql/statements/create-xml-index-transact-sql) | Yes | Yes |

@@ -6,14 +6,14 @@ author: pvrk
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/24/2017
+ms.date: 6/8/2018
 ms.author: pullabhk
-ms.openlocfilehash: f7b69e2558234159075161be7d58cc3695dfbbaf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4dff27d8ef7357e5af3635cc39fb52963689e7bb
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606056"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35247969"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>Tworzenie kopii zapasowych farmy programu SharePoint na platformie Azure
 Możesz utworzyć kopię zapasową farmy programu SharePoint do systemu Microsoft Azure przy użyciu usługi Microsoft Azure kopii zapasowej serwera (MABS) w znacznie tak samo jak wykonanie kopii zapasowej innych źródeł danych. Kopia zapasowa Azure zapewnia elastyczność w harmonogram tworzenia kopii zapasowych, aby utworzyć codziennie, co tydzień, miesięcznego lub rocznego kopii zapasowej wskazuje i udostępnia opcje zasad przechowywania dla różnych punktów kopii zapasowej. Zapewnia także możliwość przechowywania kopii dysku lokalnym dla szybka celami czasu odzyskiwania (RTO) i Zapisz kopie Azure ekonomiczny, długoterminowego przechowywania.
@@ -32,13 +32,13 @@ Istnieje kilka rzeczy, które trzeba upewnić się, aby wykonać kopię zapasow�
 Przed kontynuowaniem upewnij się, że masz [zainstalowane i przygotować serwer kopii zapasowej Azure](backup-azure-microsoft-azure-backup.md) ochrony obciążeń.
 
 ### <a name="protection-agent"></a>Agent ochrony
-Musi być zainstalowany agent ochrony na serwerze, który jest uruchomiony, SharePoint, serwery z programem SQL Server i wszystkich serwerów, które należą do farmy programu SharePoint. Aby uzyskać więcej informacji na temat sposobu konfigurowania agenta ochrony, zobacz [instalacji agenta ochrony](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx).  Jedynym wyjątkiem jest, zainstaluj agenta tylko na jednym serwerze sieci web frontonu (WFE). Program DPM wymaga agenta na jednym serwerze WFE tylko służy jako punkt wejścia do ochrony.
+Musi być zainstalowany agent usługi Kopia zapasowa Azure na serwerze, który jest uruchomiony, SharePoint, serwery z programem SQL Server i wszystkich serwerów, które należą do farmy programu SharePoint. Aby uzyskać więcej informacji na temat sposobu konfigurowania agenta ochrony, zobacz [instalacji agenta ochrony](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx).  Jedynym wyjątkiem jest, zainstaluj agenta tylko na jednym serwerze sieci web frontonu (WFE). Serwer kopii zapasowej systemu Azure wymaga agenta na jednym serwerze WFE tylko służy jako punkt wejścia do ochrony.
 
 ### <a name="sharepoint-farm"></a>Farma programu SharePoint
 Dla każdych 10 milionów elementów w farmie musi istnieć co najmniej 2 GB miejsca na woluminie, w którym znajduje się MABS folder. Ta przestrzeń jest wymagany do generowania katalogu. W przypadku MABS odzyskać określone elementy (zbiory witryn, witryn listy, biblioteki dokumentów, foldery, pojedyncze dokumenty i elementy listy) generowania katalogu tworzy listę adresów URL, które są zawarte w każdej bazie danych zawartości. Można wyświetlić listę adresów URL w okienku elementy możliwe do odzyskania w **odzyskiwania** obszarze Konsola administratora MABS zadań.
 
 ### <a name="sql-server"></a>Oprogramowanie SQL Server
-MABS działa jako konto systemu lokalnego. Aby utworzyć kopię zapasową bazy danych programu SQL Server, MABS wymaga uprawnień administratora na tym koncie dla serwera, na którym działa program SQL Server. Ustaw Zarządzanie NT\System *sysadmin* na serwerze, na którym działa program SQL Server przed jego kopię zapasową.
+Serwer kopii zapasowej systemu Azure działa jako konto systemu lokalnego. Aby utworzyć kopię zapasową bazy danych programu SQL Server, MABS wymaga uprawnień administratora na tym koncie dla serwera, na którym działa program SQL Server. Ustaw Zarządzanie NT\System *sysadmin* na serwerze, na którym działa program SQL Server przed jego kopię zapasową.
 
 Jeśli farma programu SharePoint zawiera bazy danych programu SQL Server, które skonfigurowano z aliasami programu SQL Server, należy zainstalować składniki klienta programu SQL Server na serwerze frontonu sieci Web, które będzie chronione MABS.
 
@@ -231,5 +231,7 @@ Odpowiedź: tak elementu można odzyskać do oryginalnej witryny programu ShareP
 Pytanie: czy bazy danych programu SharePoint do oryginalnej lokalizacji można odzyskać Jeśli programu SharePoint została skonfigurowana przy użyciu funkcji SQL AlwaysOn?<br>
 Odpowiedź: ponieważ baz danych programu SharePoint są konfigurowane w funkcji SQL AlwaysOn, nie można modyfikować, chyba że zostanie usunięta grupa dostępności. W związku z tym MABS nie można przywrócić bazę danych do oryginalnej lokalizacji. Można odzyskać bazy danych programu SQL Server do innego wystąpienia programu SQL Server.
 
-## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o MABS ochrony programu SharePoint — zobacz [wideo serii — Program DPM ochronę programu SharePoint](http://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
+## <a name="next-steps"></a>Następne kroki
+
+Zobacz [kopię zapasową programu Exchange server](backup-azure-exchange-mabs.md) artykułu.
+Zobacz [kopii zapasowych programu SQL Server](backup-azure-sql-mabs.md) artykułu.

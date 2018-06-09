@@ -11,15 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 06/07/2018
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 4c3b88d9f522e28189bcb746905d35dced9d31cc
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 61ff91709b52f7378bbc320524781dca7faf2204
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248881"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikowanie pulpitu zdalnego z serwerem Proxy aplikacji usługi Azure AD
 
@@ -49,6 +50,8 @@ We wdrożeniu usług pulpitu zdalnego roli usług pulpitu zdalnego w sieci Web i
 - Ma już [wdrożone RDS](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure), i [włączono serwer Proxy aplikacji](application-proxy-enable.md).
 
 - W tym scenariuszu przyjęto go użytkownikom końcowym za pomocą programu Internet Explorer na pulpitach systemu Windows 7 lub Windows 10, które łączenie się za pośrednictwem strony sieci Web usług pulpitu zdalnego. Jeśli potrzebujesz do obsługi innych systemów operacyjnych, zobacz [obsługę innych konfiguracji klienta](#support-for-other-client-configurations).
+
+- Publikowanie za pomocą usług pulpitu zdalnego w sieci Web, najlepiej użyć taką samą nazwą FQDN wewnętrznych i zewnętrznych. Różnią się nazwy FQDN wewnętrznych i zewnętrznych należy wyłączyć żądania tłumaczenia nagłówka, aby uniknąć otrzymywania nieprawidłowe linki. 
 
 - W programie Internet Explorer należy włączyć dodatek ActiveX usług pulpitu zdalnego.
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/21/2018
+ms.date: 06/08/2018
 ms.author: alkohli
-ms.openlocfilehash: bbcb598d075868a6c6aab27d108e91afa90b62b1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 299029e10ac8f0235bb11876aa00c98a21183c0f
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651087"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248796"
 ---
 # <a name="migrate-subscriptions-and-storage-accounts-associated-with-storsimple-device-manager-service"></a>Migrowanie subskrypcji i kont magazynu skojarzonych z usługą Menedżera urządzeń StorSimple
 
@@ -29,8 +29,8 @@ Konieczne może być Przesuń usługi StorSimple rejestrowania nowych lub nową 
 
 | Można przeniesiesz...| Obsługiwane| Przestój| Proces pomocy technicznej platformy Azure| Podejście|
 |-----|-----|-----|-----|-----|
-| Całej subskrypcji (w tym StorSimple konta usługi i magazyn) do innej rejestracji? | Yes       | Nie       | **Transfer rejestracji**<br>Za pomocą:<li>Podczas zakupu nowego zobowiązania Azure w obszarze nowej umowy.</li><li>Użytkownik chce migrować wszystkie konta i subskrypcji z rejestracji starego do nowego. Dotyczy to również wszystkich usług platformy Azure w ramach starego subskrypcji.</li> | **Krok 1: Otwórz bilet pomocy technicznej operacji Enterprise Azure.**<li>Przejdź do obszaru [http://aka.ms/AzureEnt](http://aka.ms/AzureEnt) (Ustawienia — Integracje i usługi).</li><li> Wybierz **administracji rejestracji** , a następnie wybierz **transferu z jednego rejestracji do nowej rejestracji**.<br>**Krok 2: Podaj wymagane informacje**<br>Obejmują:<li>numer rejestracji źródła</li><li> numer rejestracji docelowego</li><li>Data wprowadzenia transferu|
-| Usługi StorSimple z istniejącego konta do nowej rejestracji?    | Yes       | Nie       | **Transfer konta**<br>Za pomocą:<li>Jeśli nie chcesz transferu pełnej rejestracji.</li><li>Chcesz przenieść określonych kont do nowej rejestracji.</li>| **Krok 1: Otwórz bilet pomocy technicznej operacji Enterprise Azure.**<li>Przejdź do obszaru [http://aka.ms/AzureEnt](http://aka.ms/AzureEnt) (Ustawienia — Integracje i usługi).</li><li>Wybierz **administracji rejestracji** , a następnie wybierz **transferu konta EA nowej rejestracji**.<br>**Krok 2: Podaj wymagane informacje**<br>Obejmują:<li>numer rejestracji źródła</li><li> numer rejestracji docelowego</li><li>Data wprowadzenia transferu|
+| Całej subskrypcji (w tym StorSimple konta usługi i magazyn) do innej rejestracji? | Yes       | Nie       | **Transfer rejestracji**<br>Za pomocą:<li>Podczas zakupu nowego zobowiązania Azure w obszarze nowej umowy.</li><li>Użytkownik chce migrować wszystkie konta i subskrypcji z rejestracji starego do nowego. Dotyczy to również wszystkich usług platformy Azure w ramach starego subskrypcji.</li> | **Krok 1: Otwórz bilet pomocy technicznej operacji Enterprise Azure.**<li>Przejdź do obszaru [http://aka.ms/AzureEntSupport](http://aka.ms/AzureEntSupport) (Ustawienia — Integracje i usługi).</li><li> Wybierz **administracji rejestracji** , a następnie wybierz **transferu z jednego rejestracji do nowej rejestracji**.<br>**Krok 2: Podaj wymagane informacje**<br>Obejmują:<li>numer rejestracji źródła</li><li> numer rejestracji docelowego</li><li>Data wprowadzenia transferu|
+| Usługi StorSimple z istniejącego konta do nowej rejestracji?    | Yes       | Nie       | **Transfer konta**<br>Za pomocą:<li>Jeśli nie chcesz transferu pełnej rejestracji.</li><li>Chcesz przenieść określonych kont do nowej rejestracji.</li>| **Krok 1: Otwórz bilet pomocy technicznej operacji Enterprise Azure.**<li>Przejdź do obszaru [http://aka.ms/AzureEntSupport](http://aka.ms/AzureEntSupport) (Ustawienia — Integracje i usługi).</li><li>Wybierz **administracji rejestracji** , a następnie wybierz **transferu konta EA nowej rejestracji**.<br>**Krok 2: Podaj wymagane informacje**<br>Obejmują:<li>numer rejestracji źródła</li><li> numer rejestracji docelowego</li><li>Data wprowadzenia transferu|
 | Usługi StorSimple z jedną subskrypcję do innej subskrypcji?      | Nie        |    Yes         | Żaden proces ręczny|<li>Przeprowadź migrację danych poza urządzenia StorSimple.</li><li>Wykonaj resetowania do ustawień fabrycznych urządzenia, to usuwa wszystkie dane lokalne na urządzeniu.</li><li>Rejestrowanie urządzenia z nową subskrypcję usługi Menedżer StorSimple urządzenia.</li><li>Migrację danych do urządzenia.|
   |Czy można przenieść własności subskrypcji platformy Azure, do innego katalogu? | Yes       | Nie       | Skojarz istniejącą subskrypcję do katalogu usługi Azure AD | Zobacz [do skojarzenia z istniejącej subskrypcji dla katalogu usługi Azure AD](../active-directory/active-directory-how-subscriptions-associated-directory.md). Może upłynąć do 10 minut, zanim wszystko zostanie poprawnie wyświetlone.|
 | Urządzenia StorSimple z jedną usługę Menedżer StorSimple urządzenia do innej usługi w innym regionie?      | Nie        | Yes            | Żaden proces ręczny |Taka sama jak powyżej.|
