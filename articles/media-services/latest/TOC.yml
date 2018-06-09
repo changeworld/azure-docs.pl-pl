@@ -17,6 +17,10 @@
           href: stream-files-tutorial-with-api.md
         - name: Przy użyciu architektury REST
           href: stream-files-tutorial-with-rest.md
+    - name: Przesyłanie strumieniowe na żywo
+      items:
+        - name: Przy użyciu platformy .NET Core
+          href: stream-live-tutorial-with-api.md
     - name: Analizowanie filmu wideo
       items:
         - name: Przy użyciu platformy .NET
@@ -37,6 +41,8 @@
           href: encoding-concept.md
         - name: Automatyczne generowanie adaptacyjnej drabiny szybkości transmisji bitów
           href: autogen-bitrate-ladder.md
+    - name: Transmisja strumieniowa na żywo
+      href: live-streaming-overview.md
     - name: Inteligentna analiza multimediów
       href: intelligence-concept.md
     - name: Reagowanie na zdarzenia
