@@ -10,20 +10,18 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: e4bde4f521e0e19e7acd36260c98cfe80973e284
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: MT
+ms.openlocfilehash: 0d0ec1520c91c0c1dcdac4660130917bb63065cc
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34825547"
 ---
-## <a name="initialize-debug-assets-with-the-vs-code-extension"></a>Zainicjuj zasoby debugowania z rozszerzeniem kodzie VS
-Najpierw należy skonfigurować projekt kodu, więc kodzie VS będzie komunikować się z naszym środowisko projektowe na platformie Azure. Rozszerzenie kodzie VS spacji deweloperów Azure udostępnia polecenia pomocnika, aby ustawić konfigurację debugowania. 
+### <a name="initialize-debug-assets-with-the-vs-code-extension"></a>Inicjowanie zasobów debugowania za pomocą rozszerzenia programu VS Code
+Najpierw musisz skonfigurować projekt kodu, aby program VS Code komunikował się z naszą przestrzenią deweloperów na platformie Azure. Rozszerzenie programu VS Code dla usługi Azure Dev Spaces udostępnia polecenie pomocnika w celu ustawienia konfiguracji debugowania. 
 
-Otwórz **palety polecenia** (przy użyciu **widok | Polecenie palety** menu) i użyj automatycznego zakończenia wpisz i wybierz polecenie: `Azure Dev Spaces: Create configuration files for connected development`. 
+Otwórz okno **Paleta poleceń** (za pomocą menu **Widok | Paleta poleceń**) i przy użyciu autouzupełniania wpisz i wybierz to polecenie: `Azure Dev Spaces: Create configuration files for connected development`. 
 
-Spowoduje to dodanie konfiguracji debugowania spacji deweloperów platformy Azure w obszarze `.vscode` folderu.
+Spowoduje to dodanie konfiguracji debugowania dla usługi Azure Dev Spaces w obszarze folderu `.vscode`.
 
 ![](../media/common/command-palette.png)
-
-> [!Important]
-> Z powodu usterki Zamknij i otwórz ponownie kodzie VS przed kontynuowaniem.
