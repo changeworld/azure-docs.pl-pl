@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie aplikacji sieci Web w usłudze Azure App Service"
-description: "Jak skonfigurować aplikację sieci web w usłudze Azure App Services"
+title: Konfigurowanie aplikacji sieci Web w usłudze Azure App Service
+description: Jak skonfigurować aplikację sieci web w usłudze Azure App Services
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.service: app-service
 ms.workload: na
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 58c27c0872978c3a6a4c47be37e6fa6078309286
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 0c1cea1646c71698318e94932248e08955359b9e
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234529"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Konfigurowanie aplikacji sieci Web w usłudze Azure App Service
 
@@ -49,7 +50,7 @@ Ze względów technicznych włączenie Java aplikacji powoduje wyłączenie opcj
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-**Sieci Web Sockets**. Ustaw **ON** Aby włączyć protokół WebSocket; na przykład, jeśli aplikacja sieci web używa [ASP.NET SignalR] lub [użyciu biblioteki socket.io](https://socket.io/).
+**Sieci Web Sockets**. Ustaw **ON** Aby włączyć protokół WebSocket; na przykład, jeśli aplikacja sieci web używa [Biblioteka SignalR platformy ASP.NET] lub [użyciu biblioteki socket.io](https://socket.io/).
 
 <a name="alwayson"></a>
 **Zawsze włączone**. Domyślnie aplikacje sieci web są usuwane, jeśli są one bezczynności przez niektóre czas. Pozwala to zaoszczędzić zasoby systemu. W trybie Basic lub Standard, aby umożliwić **zawsze na** do zachowania aplikacji załadowana przez cały czas. Jeśli aplikacja będzie działać ciągłe zadania Webjob lub uruchamia zadania Webjob wyzwolone przy użyciu wyrażenia CRON, należy włączyć **zawsze na**, lub zadania sieci web mogą nie działać prawidłowo.
@@ -67,6 +68,8 @@ Ta sekcja zawiera pary nazwa/wartość, które Twoja aplikacja sieci web zostani
 * W przypadku aplikacji .NET, te ustawienia są wstrzykiwane do konfiguracji .NET `AppSettings` w czasie wykonywania, zastępowanie istniejących ustawień. 
 * Aplikacje PHP, Python, Java i węzła mają dostęp do tych ustawień jako zmienne środowiskowe w czasie wykonywania. Dla każdego ustawienia aplikacji są tworzone dwie zmienne środowiskowe; jeden z nazwą określoną przez ustawienie wpis aplikacji, a druga z prefiksem APPSETTING_. Zawierają tę samą wartość.
 
+Ustawienia aplikacji są zawsze szyfrowane, gdy przechowywane (szyfrowane podczas spoczynku).
+
 ### <a name="connection-strings"></a>Parametry połączeń
 Parametry połączenia dla połączonych zasobów. 
 
@@ -80,6 +83,8 @@ W przypadku aplikacji PHP, Python, Java i węzła te ustawienia będą dostępne
 * Niestandardowe: `CUSTOMCONNSTR_`
 
 Na przykład, jeśli parametry połączenia MySql nazwany `connectionstring1`, czy dostęp do niej za pomocą zmiennej środowiskowej `MYSQLCONNSTR_connectionString1`.
+
+Parametry połączenia są zawsze szyfrowane, gdy przechowywane (szyfrowane podczas spoczynku).
 
 ### <a name="default-documents"></a>Domyślne dokumenty
 Dokument domyślny jest strony sieci web wyświetlaną w głównego adresu URL witryny sieci Web.  Pierwszy odpowiedniego pliku na liście jest używany. 
@@ -140,7 +145,7 @@ Aby wyświetlić nazwy domeny, kliknij przycisk **wszystkie ustawienia** > **dom
 
 ### <a name="deployments"></a>Wdrożenia
 * Konfigurowanie ciągłego wdrażania. Zobacz [przy użyciu narzędzia Git do wdrożenia aplikacji Web Apps w usłudze Azure App Service](app-service-deploy-local-git.md).
-* Miejsc wdrożenia. Zobacz [wdrożyć środowisk przejściowych dla aplikacji sieci Web w usłudze aplikacji Azure].
+* Miejsc wdrożenia. Zobacz [Wdrażanie na środowisk przejściowych dla aplikacji sieci Web w usłudze aplikacji Azure].
 
 Aby wyświetlić Twojego miejsca wdrożenia, kliknij przycisk **wszystkie ustawienia** > **miejsc wdrożenia**.
 
@@ -150,7 +155,7 @@ W trybie Basic lub Standard można sprawdzić dostępności punktów końcowych 
 Aby uzyskać więcej informacji, zobacz [porady: monitorować stan punktu końcowego sieci web].
 
 > [!NOTE]
-> Jeśli chcesz zacząć korzystać z usługi Azure App Service przed utworzeniem konta platformy Azure, przejdź do artykułu [Try App Service] (Wypróbuj usługę App Service), w którym wyjaśniono, jak od razu utworzyć początkową aplikację sieci Web o krótkim okresie istnienia w usłudze App Service. Bez kart kredytowych i bez zobowiązań.
+> Jeśli chcesz zacząć korzystać z usługi Azure App Service przed utworzeniem konta platformy Azure, przejdź do artykułu [Wypróbuj usługę App Service] (Wypróbuj usługę App Service), w którym wyjaśniono, jak od razu utworzyć początkową aplikację internetową o krótkim okresie istnienia w usłudze App Service. Bez kart kredytowych i bez zobowiązań.
 > 
 > 
 
@@ -162,16 +167,16 @@ Aby uzyskać więcej informacji, zobacz [porady: monitorować stan punktu końco
 
 <!-- URL List -->
 
-[ASP.NET SignalR]: http://www.asp.net/signalr
+[Biblioteka SignalR platformy ASP.NET]: http://www.asp.net/signalr
 [Azure Portal]: https://portal.azure.com/
 [Konfigurowanie niestandardowej nazwy domeny w usłudze Azure App Service]: ./app-service-web-tutorial-custom-domain.md
-[wdrożyć środowisk przejściowych dla aplikacji sieci Web w usłudze aplikacji Azure]: ./web-sites-staged-publishing.md
+[Wdrażanie na środowisk przejściowych dla aplikacji sieci Web w usłudze aplikacji Azure]: ./web-sites-staged-publishing.md
 [Włącz protokół HTTPS dla aplikacji w usłudze aplikacji Azure]: ./app-service-web-tutorial-custom-ssl.md
-[porady: monitorować stan punktu końcowego sieci web]: http://go.microsoft.com/fwLink/?LinkID=279906
+[Porady: monitorować stan punktu końcowego sieci web]: http://go.microsoft.com/fwLink/?LinkID=279906
 [Podstawy monitorowania aplikacji sieci Web w usłudze Azure App Service]: ./web-sites-monitor.md
-[tryb potokowy]: http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
+[Tryb potokowy]: http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
 [Skalowanie aplikacji sieci web w usłudze Azure App Service]: ./web-sites-scale.md
-[Try App Service]: https://azure.microsoft.com/try/app-service/
+[Wypróbuj usługę App Service]: https://azure.microsoft.com/try/app-service/
 
 <!-- IMG List -->
 

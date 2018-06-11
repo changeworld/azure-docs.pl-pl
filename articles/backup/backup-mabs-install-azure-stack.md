@@ -14,24 +14,92 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/5/2018
 ms.author: markgal
-ms.openlocfilehash: c79ca93138961e294f03e283466dd66250472dae
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: f39f8571d4256a14f64ee2a66788cac8fa524eec
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801742"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248898"
 ---
-# <a name="install-azure-backup-server-on-azure-stack"></a>Zainstaluj serwer kopii zapasowej systemu Azure w stosie Azure
+# <a name="install-azure-backup-server-on-azure-stack"></a>Instalowanie składnika Azure Backup Server w usłudze Azure Stack
 
-W tym artykule opisano sposób instalowania serwera kopii zapasowej Azure na stosie Azure. Serwer kopii zapasowej Azure umożliwia ochronę obciążeń aplikacji uruchomionych w stosie Azure z poziomu pojedynczej konsoli.
+W tym artykule opisano sposób instalowania serwera kopii zapasowej Azure na stosie Azure. Serwer kopii zapasowej Azure umożliwia ochronę infrastruktury jako obciążenia usługa (IaaS), na przykład maszyn wirtualnych działających w stosie Azure. Zaletą używania serwera usługi Kopia zapasowa Azure w celu ochrony obciążeń jest wszystkich ochrony obciążenia można zarządzać z poziomu pojedynczej konsoli.
 
 > [!NOTE]
 > Aby dowiedzieć się więcej na temat funkcji zabezpieczeń, zapoznaj się [dokumentacji funkcji Kopia zapasowa Azure zabezpieczeń](backup-azure-security-feature.md).
 >
 
-Można również chronić infrastrukturę jako obciążeń usługę (IaaS), takich jak maszyny wirtualne na platformie Azure.
+## <a name="azure-backup-server-protection-matrix"></a>Macierz ochrony usługi Azure Backup Server
+Serwer kopii zapasowej systemu Azure chroni następujące obciążenia maszyny wirtualnej Azure stosu.
 
-Pierwszy krok w kierunku uruchamianie serwera kopii zapasowej Azure i przeprowadzanie jest aby skonfigurować maszynę wirtualną w stosie Azure.
+| Chronionego źródła danych | Ochrona i odzyskiwanie |
+| --------------------- | ----------------------- |
+| Windows Server częściowej roczna kanału - Enterprise/Datacenter/Standard | Woluminy, pliki, foldery |
+| Windows Server 2016 - Enterprise/Datacenter/Standard | Woluminy, pliki, foldery |
+| Windows Server 2012 R2 - Enterprise/Datacenter/Standard | Woluminy, pliki, foldery |
+| Windows Server 2012 — Entprise/Datacenter/Standard | Woluminy, pliki, foldery |
+| Windows Server 2008 R2 - Enterprise/Datacenter/Standard | Woluminy, pliki, foldery |
+| SQL Server 2016 | Database (Baza danych) |
+| SQL Server 2014 | Database (Baza danych) |
+| SQL Server 2012 z dodatkiem SP1 | Database (Baza danych) |
+| SharePoint 2013 | Farma, baza danych, serwera sieci Web, serwer sieci web |
+| SharePoint 2010 | Farma, baza danych, serwera sieci Web, serwer sieci web |
+
+
+### <a name="host-vs-guest-backup"></a>Host vs gościa kopii zapasowej
+
+Serwer kopii zapasowej systemu Azure wykonuje hosta lub gościa poziomie kopii zapasowych maszyn wirtualnych. Na poziomie hosta agent usługi Kopia zapasowa Azure jest zainstalowana na maszynie wirtualnej lub w klastrze i chroni całej maszyny wirtualnej i plików danych uruchomiona na hoście. Na poziomie gościa agent usługi Kopia zapasowa Azure jest zainstalowany na wszystkich maszynach wirtualnych i chroni obciążenia istnieje na tym komputerze.
+
+Obie metody mają ich zalet i wad:
+
+   * Poziomie hosta kopii zapasowych pracy, niezależnie od systemu operacyjnego uruchomionych na maszynach gościa i nie wymagają instalacji na każdej maszynie Wirtualnej agenta usługi Kopia zapasowa Azure. W przypadku wdrożenia poziomie hosta kopii zapasowych można odzyskać całej maszyny wirtualnej lub plików i folderów (odzyskiwanie na poziomie elementu).
+   * Kopii zapasowych na poziomie gościa jest przydatne w przypadku ochrony konkretnych zadań działających na maszynie wirtualnej. Na poziomie hosta można odzyskać całą maszynę Wirtualną lub określonych plików, ale nie odzyskać danych w ramach określonej aplikacji. Na przykład aby odzyskać określone pliki programu SharePoint z chronionej maszyny wirtualnej, należy włączyć ochronę maszyny Wirtualnej na poziomie gościa. Jeśli chcesz chronić dane przechowywane na dyskach przekazujących, należy użyć kopii zapasowych na poziomie gościa. Przekazywanie umożliwia maszynie wirtualnej bezpośredni dostęp do urządzenia magazynującego i nie przechowują danych woluminu wirtualnego w pliku VHD.
+
+## <a name="prerequisites-for-the-azure-backup-server-environment"></a>Wymagania wstępne dotyczące środowiska Azure kopii zapasowej serwera
+
+Podczas instalowania serwera usługi Kopia zapasowa Azure w środowisku Azure stosu, należy wziąć pod uwagę zalecenia przedstawione w tej sekcji. Instalator serwera usługi Kopia zapasowa Azure sprawdza środowiska pod kątem wymagania wstępne, że można skrócić czas od przygotowania, przed zainstalowaniem.
+
+### <a name="determining-size-of-virtual-machine"></a>Ustalanie rozmiaru maszyny wirtualnej
+Aby uruchomić serwera usługi Kopia zapasowa Azure na maszynie wirtualnej platformy Azure stosu, użyj rozmiaru A2 lub większym. Aby uzyskać pomoc przy wyborze rozmiaru maszyny wirtualnej, należy pobrać [kalkulatora rozmiaru maszyny Wirtualnej Azure stosu](https://www.microsoft.com/download/details.aspx?id=56832).
+
+### <a name="virtual-networks-on-azure-stack-virtual-machines"></a>Sieci wirtualne na maszynach wirtualnych Azure stosu
+Wszystkie maszyny wirtualne używane w stos Azure obciążenia muszą należeć do tej samej sieci wirtualnej platformy Azure i subskrypcję Azure.
+
+### <a name="azure-backup-server-vm-performance"></a>Wydajność maszyny Wirtualnej serwera kopii zapasowej platformy Azure
+Jeśli udostępniony innym maszynom wirtualnym, Magazyn konta, rozmiar i IOPS limity wpływu na wydajność maszyny Wirtualnej serwera kopii zapasowej Azure. Z tego powodu należy użyć oddzielnego konta magazynu dla maszyny wirtualnej Azure Utwórz kopię zapasową serwera. Agent usługi Kopia zapasowa Azure uruchomionych na serwerze kopii zapasowej Azure wymaga tymczasowego magazynu dla:
+- własnego użytku (lokalizacja pamięci podręcznej),
+- danych przywróconych z chmury (lokalny obszar przemieszczania)
+
+### <a name="configuring-azure-backup-temporary-disk-storage"></a>Konfigurowanie magazynu dysku tymczasowym kopia zapasowa Azure
+Każda maszyna wirtualna Azure stosu jest dostarczany z magazynu na dysku tymczasowym, który jest dostępny dla użytkownika jako wolumin `D:\`. Lokalny obszar przemieszczania wymagany dla usługi Kopia zapasowa Azure można skonfigurować w celu znajdują się w `D:\`, i lokalizację pamięci podręcznej można umieścić na `C:\`. W ten sposób magazynu nie trzeba używać przeciwną na dyskach danych dołączonych do maszyny wirtualnej serwera usługi Kopia zapasowa Azure.
+
+### <a name="storing-backup-data-on-local-disk-and-in-azure"></a>Przechowywanie danych kopii zapasowej na dysku lokalnym oraz na platformie Azure
+Serwer kopii zapasowej systemu Azure przechowuje dane kopii zapasowej na dyskach platformy Azure dołączonych do maszyny wirtualnej dla operacyjnych dotyczących odzyskiwania. Gdy dyski i miejsca do magazynowania są dołączone do maszyny wirtualnej, serwer kopii zapasowej Azure zarządza magazynu. Ilość miejsca w magazynie danych kopii zapasowych zależy od liczby i rozmiaru dysków dołączonych do każdego [maszyny wirtualnej Azure stosu](../azure-stack/user/azure-stack-storage-overview.md). Każdego rozmiaru maszyny Wirtualnej Azure stosu ma maksymalną liczbę dysków, które może zostać dołączony do maszyny wirtualnej. Na przykład A2 jest cztery dyski. A3 jest ośmiu dysków. A4 jest 16 dysków. Ponownie rozmiaru i liczby dysków określa puli całkowita magazynu kopii zapasowych.
+
+> [!IMPORTANT]
+> Należy **nie** zachowania danych operacyjnych dotyczących odzyskiwania (kopia zapasowa) na dyskach dołączone do serwera kopii zapasowej Azure przez więcej niż pięć dni.
+>
+
+Przechowywania danych kopii zapasowej na platformie Azure zmniejsza infrastruktury kopii zapasowych na stosie Azure. Jeśli dane są więcej niż pięć dni, powinny być przechowywane na platformie Azure.
+
+Aby przechowywać dane kopii zapasowej na platformie Azure, należy utworzyć lub użyć magazynu usług odzyskiwania. Podczas przygotowywania do tworzenia kopii zapasowych obciążeń serwera usługi Kopia zapasowa Azure możesz [skonfigurować magazyn usług odzyskiwania](backup-azure-microsoft-azure-backup.md#create-a-recovery-services-vault). Po skonfigurowaniu każdym uruchomieniu zadania tworzenia kopii zapasowej, punkt odzyskiwania jest tworzony w magazynie. Każdy magazyn usług odzyskiwania zawiera punkty odzyskiwania do 9999. W zależności od liczby punktów odzyskiwania utworzonych i jak długo są przechowywane przez wiele lat można zachować dane kopii zapasowej. Na przykład można utworzyć miesięczne punktów odzyskiwania i zachować je do pięciu lat.
+ 
+### <a name="using-sql-server"></a>Za pomocą programu SQL Server
+Jeśli chcesz użyć zdalnego serwera SQL dla bazy danych serwera usługi Kopia zapasowa Azure, wybierz tylko stosu maszyny Wirtualnej platformy Azure działa program SQL Server.
+
+### <a name="scaling-deployment"></a>Skalowania wdrożenia
+Jeśli chcesz skalowania wdrożenia, dostępne są następujące opcje:
+  - Skalowanie w górę — zwiększenie rozmiaru maszyny wirtualnej serwera usługi Kopia zapasowa Azure z serii D serii i zwiększyć Magazyn lokalny [zgodnie z instrukcjami maszyny wirtualnej Azure stosu](../azure-stack/user/azure-stack-manage-vm-disks.md).
+  - Korzystaj — wysyłanie starszych danych do serwera usługi Kopia zapasowa Azure i zachowywanie tylko najnowszych danych w magazynie dołączonym do serwera kopii zapasowej Azure.
+  - Skalowanie w poziomie — dodawanie kolejnych serwerów kopia zapasowa Azure w celu włączenia ochrony obciążeń.
+
+### <a name="net-framework"></a>.NET Framework
+
+.NET framework 3.5 z dodatkiem SP1 lub nowszym należy zainstalować na maszynie wirtualnej.
+
+### <a name="joining-a-domain"></a>Przyłączanie do domeny
+
+Maszyna wirtualna serwera usługi Kopia zapasowa Azure musi należeć do domeny. Użytkownik z uprawnieniami administratora domeny, należy zainstalować serwer kopii zapasowej Azure na maszynie wirtualnej.
 
 ## <a name="using-an-iaas-vm-in-azure-stack"></a>Przy użyciu maszyn wirtualnych IaaS platformy Azure stosu
 
@@ -63,7 +131,7 @@ Aby edytować ustawienia replikacji magazynu:
 
 ## <a name="download-azure-backup-server-installer"></a>Pobierz Instalatora serwera usługi Kopia zapasowa Azure
 
-Po utworzeniu magazynu usług odzyskiwania, użyj menu wprowadzenie w magazynie usług odzyskiwania pobrać Instalatora serwer kopii zapasowej Azure do maszyny wirtualnej Azure stosu. Poniższe kroki miejsce w Twojej subskrypcji platformy Azure.
+Istnieją dwa sposoby pobrać Instalatora serwer kopii zapasowej Azure. Możesz pobrać Instalator serwer kopii zapasowej Azure z [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=55269). Możesz również pobrać Instalatora serwer kopii zapasowej Azure jako konfigurowania magazynu usług odzyskiwania. W poniższych krokach objaśniono do pobierania Instalatora z portalu Azure podczas konfigurowania magazynu usług odzyskiwania.
 
 1. Z maszyny wirtualnej Azure stosu [Zaloguj się do subskrypcji platformy Azure w portalu Azure](https://portal.azure.com/).
 2. W menu po lewej stronie wybierz **wszystkie usługi**.
@@ -108,11 +176,11 @@ Po utworzeniu magazynu usług odzyskiwania, użyj menu wprowadzenie w magazynie 
 
     ![Pobierz center 1](./media/backup-mabs-install-azure-stack/download-center-selected-files.png)
 
-    Ponieważ rozmiar pobierania wszystkich plików jest > sieci 3G, przy 10-MB/s Pobierz link, który może potrwać do 60 minut do pobrania zakończyć. Pliki zostaną pobrane do lokalizacji pobierania.
+    Rozmiar pobierania wszystkich plików instalacji jest większy niż 3 GB. Podczas pobierania 10 MB/s łącza pobierania wszystkich plików instalacji może potrwać do 60 minut. Pobierz pliki do lokalizacji pobierania.
 
 ## <a name="extract-azure-backup-server-install-files"></a>Wyodrębnij pliki instalacji serwera usługi Kopia zapasowa Azure
 
-Po pobraniu wszystkich plików z maszyną wirtualną, przejdź do lokalizacji pobierania.
+Po pobraniu wszystkich plików z maszyną wirtualną Azure stosu, przejdź do lokalizacji pobierania. Pierwszą fazę instalacji serwera usługi Kopia zapasowa Azure jest aby wyodrębnić pliki.
 
 ![Pobierz center 1](./media/backup-mabs-install-azure-stack/download-mabs-installer.png)
 
@@ -122,23 +190,23 @@ Po pobraniu wszystkich plików z maszyną wirtualną, przejdź do lokalizacji po
     > Co najmniej 4GB wolnego miejsca jest wymagane do wyodrębnienia plików instalacyjnych.
     >
 
-2. W Instalatorze serwer kopii zapasowej Azure kliknij **dalej** Aby uruchomić kreatora.
+2. W Kreatorze serwer kopii zapasowej Azure kliknij **dalej** aby kontynuować.
 
     ![Kreator tworzenia kopii zapasowej Microsoft Azure](./media/backup-mabs-install-azure-stack/mabs-install-wiz-1.png)
 
-3. Wybierz lokalizację zainstalować serwer kopii zapasowej Azure i kliknij przycisk **dalej**.
+3. Wybierz ścieżkę do plików Azure Utwórz kopię zapasową serwera, a następnie kliknij przycisk **dalej**.
 
    ![Kreator tworzenia kopii zapasowej Microsoft Azure](./media/backup-mabs-install-azure-stack/mabs-install-wizard-select-destination-1.png)
 
-4. Sprawdź lokalizację instalacji, a następnie kliknij przycisk **wyodrębnić**.
+4. Sprawdź lokalizację wyodrębniania, a następnie kliknij przycisk **wyodrębnić**.
 
    ![Kreator tworzenia kopii zapasowej Microsoft Azure](./media/backup-mabs-install-azure-stack/mabs-install-wizard-extract-2.png)
 
-5. Instalator wyodrębnia pliki i przygotowuje proces instalacji.
+5. Kreator wyodrębnia pliki i przygotowuje proces instalacji.
 
    ![Kreator tworzenia kopii zapasowej Microsoft Azure](./media/backup-mabs-install-azure-stack/mabs-install-wizard-install-3.png)
 
-6. Po zakończeniu procesu wyodrębniania, kliknij przycisk **Zakończ** można uruchomić *setup.exe*. Setup.exe instaluje serwer kopii zapasowej Microsoft Azure.
+6. Po zakończeniu procesu wyodrębniania, kliknij przycisk **Zakończ**. Domyślnie **wykonania setup.exe** jest zaznaczone. Po kliknięciu **Zakończ**, Setup.exe instaluje serwer kopii zapasowej Microsoft Azure w określonej lokalizacji.
 
    ![Kreator tworzenia kopii zapasowej Microsoft Azure](./media/backup-mabs-install-azure-stack/mabs-install-wizard-finish-4.png)
 
@@ -148,25 +216,29 @@ W poprzednim kroku kliknięto **Zakończ** aby zakończyć fazy wyodrębniania, 
 
 ![Kreator tworzenia kopii zapasowej Microsoft Azure](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5.png)
 
-Serwer kopii zapasowej systemu Azure udostępnia kodu z programu Data Protection Manager. Zostanie wyświetlone odwołania do programu Data Protection Manager i programu DPM w Instalatorze serwer kopii zapasowej Azure. Jeśli serwer usługi Kopia zapasowa Azure i programu Data Protection Manager są oddzielne produkty, odwołania lub narzędzia, których Data Protection Manager lub programu DPM, dotyczą serwer kopii zapasowej Azure.
+Serwer kopii zapasowej systemu Azure udostępnia kodu z programu Data Protection Manager. Zostanie wyświetlone odwołania do programu Data Protection Manager i programu DPM w Instalatorze serwer kopii zapasowej Azure. Jeśli serwer usługi Kopia zapasowa Azure i programu Data Protection Manager są oddzielne produkty, te produkty są ściśle powiązane. W dokumentacji serwera usługi Kopia zapasowa Azure wszystkie odwołania do programu Data Protection Manager i DPM dotyczą serwer kopii zapasowej Azure.
 
-1. Aby uruchomić Kreatora instalacji, kliknij przycisk **kopia zapasowa Microsoft Azure**.
+1. Aby uruchomić Kreatora instalacji, kliknij przycisk **serwer kopii zapasowej Microsoft Azure**.
 
    ![Kreator tworzenia kopii zapasowej Microsoft Azure](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5b.png)
 
-2. Na ekranie powitalnym kliknij przycisk **dalej**.
+2. Na **powitalnej** kliknij **dalej**.
 
     ![Sprawdź serwera kopii zapasowej Azure — Zapraszamy i wymagania wstępne](./media/backup-mabs-install-azure-stack/mabs-install-wizard-setup-6.png)
 
-3. Na *wymagań wstępnych sprawdza* kliknij **Sprawdź** ustalenie, jeśli zostały spełnione wymagania wstępne sprzętu i oprogramowania dla serwera usługi Kopia zapasowa Azure.
+3. Na **wymagań wstępnych sprawdza** kliknij **Sprawdź** ustalenie, jeśli zostały spełnione wymagania wstępne sprzętu i oprogramowania dla serwera usługi Kopia zapasowa Azure.
 
     ![Sprawdź serwera kopii zapasowej Azure — Zapraszamy i wymagania wstępne](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-7.png)
 
-    Jeśli środowisko zawiera wymagania wstępne, pojawi się komunikat wskazujący, że komputer spełnia wymagania. Kliknij przycisk **Dalej**.
+    Jeśli środowisko zawiera wymagania wstępne, pojawi się komunikat wskazujący, że komputer spełnia wymagania. Kliknij przycisk **Dalej**.  
 
     ![Serwera kopii zapasowej Azure — Sprawdzanie wymagań wstępnych Zakończono pomyślnie](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-passed-8.png)
 
-4. Serwer kopii zapasowej Microsoft Azure wymaga programu SQL Server. Pakiet instalacyjny serwera usługi Kopia zapasowa Azure zawiera powiązane potrzebne, jeśli nie chcesz korzystać z własnych SQL odpowiednie pliki binarne programu SQL Server. Wybór zalecane jest, aby dodać nowe wystąpienie programu SQL Server Instalator. Aby zapewnić używanie środowiska programu SQL Server, kliknij przycisk **Sprawdź i zainstaluj**.
+    Jeśli w danym środowisku nie spełnia wymagania wstępne, zostanie określone problemy. Wymagania wstępne, które nie zostały spełnione są również wyświetlane w DpmSetup.log. Naprawić błędy wymagań wstępnych, a następnie uruchom **Sprawdź ponownie**. Nie można kontynuować instalacji, dopóki wszystkie wymagania wstępne są spełnione.
+
+    ![Serwera kopii zapasowej Azure — nie zostały spełnione wymagania wstępne instalacji](./media/backup-mabs-install-azure-stack/installation-errors.png)
+
+4. Serwer kopii zapasowej Microsoft Azure wymaga programu SQL Server. Pakiet instalacyjny serwera usługi Kopia zapasowa Azure jest powiązane z odpowiednie pliki binarne programu SQL Server. Jeśli chcesz użyć instalacji SQL, możesz. Jednak zalecanym wyborem jest let Instalatora, Dodaj nowe wystąpienie programu SQL Server. Aby upewnić się, Twoje rozwiązanie ze środowiskiem, kliknij przycisk **Sprawdź i zainstaluj**.
 
    > [!NOTE]
    > Serwer kopii zapasowej systemu Azure nie będzie działać przy użyciu zdalnego wystąpienia programu SQL Server. Wystąpienie używane przez serwer kopii zapasowej Azure musi być kontem lokalnym.
@@ -174,11 +246,11 @@ Serwer kopii zapasowej systemu Azure udostępnia kodu z programu Data Protection
 
     ![Sprawdź serwera kopii zapasowej Azure — Zapraszamy i wymagania wstępne](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-install-9.png)
 
-    Po sprawdzeniu, czy komputer ma niezbędne wymagania wstępne dotyczące instalacji serwera usługi Kopia zapasowa Azure, kliknij **dalej**.
+    Po sprawdzeniu, czy maszyna wirtualna ma niezbędne wymagania wstępne dotyczące instalacji serwera usługi Kopia zapasowa Azure, kliknij **dalej**.
 
     ![Sprawdź serwera kopii zapasowej Azure — Zapraszamy i wymagania wstępne](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-ready-10.png)
 
-    Jeśli wystąpi błąd zgodnie z zaleceniami, aby ponownie uruchomić komputer, to zrobić, kliknij przycisk Uruchom ponownie Instalatora, w tym ekranie **Sprawdź ponownie**.
+    Jeśli wystąpi błąd zgodnie z zaleceniami ponowne uruchomienie komputera, a następnie uruchom ponownie komputer. Po ponownym uruchomieniu komputera, uruchom ponownie Instalatora, a po przejściu do **ustawienia programu SQL** ekranu, kliknij przycisk **Sprawdź ponownie**.
 
 5. W **ustawienia instalacji**, podaj lokalizację instalacji plików serwera kopia zapasowa Microsoft Azure i kliknij przycisk **dalej**.
 
@@ -248,12 +320,12 @@ Serwer kopii zapasowej systemu Azure udostępnia kodu z programu Data Protection
 
     Po ukończeniu instalacji konsoli serwera usługi Kopia zapasowa Azure i ikony programu PowerShell serwera kopii zapasowej Azure są tworzone na pulpicie serwera.
 
-### <a name="add-backup-storage"></a>Dodawanie magazynu kopii zapasowej
+## <a name="add-backup-storage"></a>Dodawanie magazynu kopii zapasowej
 
 Pierwszej kopii zapasowej jest przechowywany w magazynie dołączonym do serwera kopii zapasowej Azure. Aby uzyskać więcej informacji na temat dodawania dysków, zobacz [Konfigurowanie pul magazynów i dysku magazynu](https://technet.microsoft.com/library/hh758075.aspx).
 
 > [!NOTE]
-> Należy dodać magazyn kopii zapasowych, nawet wtedy, gdy planujesz do wysyłania danych do platformy Azure. W bieżącym architektury serwera kopii zapasowej Azure przechowuje magazynu kopii zapasowych Azure *drugi* kopię danych podczas Magazyn lokalny zawiera pierwszy (i obowiązkowe) kopii zapasowej.
+> Należy dodać magazyn kopii zapasowych, nawet wtedy, gdy planujesz do wysyłania danych do platformy Azure. W architekturze serwera kopii zapasowej Azure magazyn usług odzyskiwania i blokad *drugi* kopię danych podczas Magazyn lokalny zawiera pierwszy (i obowiązkowe) kopii zapasowej.
 >
 >
 
