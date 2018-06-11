@@ -29,6 +29,8 @@
   items:
     - name: Dołączanie
       items:
+        - name: Dołączanie wielu maszyn wirtualnych z portalu
+          href: automation-onboard-solutions-from-browse.md
         - name: Dołączanie z maszyny wirtualnej platformy Azure
           href: automation-onboard-solutions-from-vm.md
         - name: Dołączanie z konta usługi Automation

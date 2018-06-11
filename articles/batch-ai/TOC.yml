@@ -11,6 +11,10 @@
       href: quickstart-cli.md
     - name: Uruchamianie zadania szkolenia — język Python
       href: quickstart-python.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Migracja do zaktualizowanego interfejsu API
+      href: migrate-to-new-api.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure

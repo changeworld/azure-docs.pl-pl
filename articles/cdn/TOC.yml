@@ -116,6 +116,8 @@
           href: cdn-troubleshoot-endpoint.md
         - name: Kompresja plików
           href: cdn-troubleshoot-compression.md
+        - name: Dozwolone urzędy certyfikacji
+          href: cdn-troubleshoot-allowed-ca.md
 - name: Dokumentacja
   items:
     - name: Dokumentacja aparatu reguł

@@ -40,6 +40,8 @@
       href: dns-alerts-metrics.md
     - name: Wsteczna usługa DNS
       href: dns-reverse-dns-overview.md
+    - name: Odzyskiwanie po awarii przy użyciu usług Azure DNS i Traffic Manager
+      href: ../networking/disaster-recovery-dns-traffic-manager.md
 - name: Instrukcje
   items:
     - name: Tworzenie niestandardowej strefy i rekordu DNS — interfejs wiersza polecenia platformy Azure
@@ -112,7 +114,7 @@
       href: /azure/load-balancer/
     - name: Traffic Manager
       href: /azure/traffic-manager/
-    - name: Aplikacje sieci Web
+    - name: Aplikacje internetowe
       href: /azure/app-service/
 - name: Zasoby
   items:

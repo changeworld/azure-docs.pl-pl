@@ -8,6 +8,7 @@
 ### [Najlepsze rozwiązania z zakresu zabezpieczeń sieci](../security/azure-security-network-security-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Urządzenia wirtualne sieci o wysokiej dostępności](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha )
 ### [Łączenie metod równoważenia obciążenia](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [Odzyskiwanie po awarii przy użyciu usług Azure DNS i Traffic Manager](disaster-recovery-dns-traffic-manager.md)
 ## Planowanie i projektowanie
 ### [Sieci wirtualne](../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Połączenia obejmujące wiele lokalizacji — sieć VPN](../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fnetworking%2ftoc.json)
@@ -30,7 +31,8 @@
 ## Łączność z Internetem
 ### [Serwery publiczne równoważenia obciążenia sieciowego](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Serwery publiczne równoważenia obciążenia aplikacji](../application-gateway/application-gateway-create-gateway-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Ochrona aplikacji sieci Web](../application-gateway/application-gateway-web-application-firewall-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### 
+  [Ochrona aplikacji internetowej](../application-gateway/application-gateway-web-application-firewall-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Rozłożenie ruchu na wiele lokalizacji](../traffic-manager/traffic-manager-configure-geographic-routing-method.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ## Łączność wewnętrzna
 ### [Serwery prywatne równoważenia obciążenia sieciowego](../load-balancer/load-balancer-get-started-ilb-arm-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
