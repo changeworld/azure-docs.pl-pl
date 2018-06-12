@@ -1,24 +1,20 @@
 ---
-title: Rozszerzenie diagnostyki Azure 1.3 i nowszym schemat konfiguracji | Dokumentacja firmy Microsoft
+title: Rozszerzenie diagnostyki Azure 1.3 i nowszym schemat konfiguracji
 description: Wersja schematu 1.3 i nowszym diagnostyki Azure dostarczana jako część 2.4 zestawu SDK programu Microsoft Azure i później.
-services: monitoring-and-diagnostics
-documentationcenter: .net
+services: azure-monitor
 author: rboucher
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
-ms.openlocfilehash: 02656c5bb4d2acd944f565d1397984ce94ced0bd
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: diagnostic-extension
+ms.openlocfilehash: b4fba492a57471df737896956e0b37e3da772cce
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262379"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>1.3 diagnostyki Azure i nowszym schemat konfiguracji
 > [!NOTE]
@@ -384,7 +380,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |--------------------|-----------------|  
 |**PublicConfig**|Wymagany. Zobacz opis w innym miejscu na tej stronie.|  
 |**PrivateConfig**|Opcjonalny. Zobacz opis w innym miejscu na tej stronie.|  
-|**IsEnabled**|Boolean. Zobacz opis w innym miejscu na tej stronie.|  
+|**IsEnabled**|Wartość logiczna. Zobacz opis w innym miejscu na tej stronie.|  
 
 ## <a name="publicconfig-element"></a>PublicConfig Element  
  *Drzewa: PublicConfig - DiagnosticsConfiguration - katalogu głównego*
@@ -480,7 +476,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
-|**Absolute**|Ścieżka bezwzględna do katalogu, do monitorowania. Wymagane są następujące atrybuty:<br /><br /> - **Ścieżka** -ścieżka bezwzględna do katalogu, do monitorowania.<br /><br /> - **expandEnvironment** — Określa, czy są rozwinięte zmiennych środowiskowych w ścieżce.|  
+|**Bezwzględne**|Ścieżka bezwzględna do katalogu, do monitorowania. Wymagane są następujące atrybuty:<br /><br /> - **Ścieżka** -ścieżka bezwzględna do katalogu, do monitorowania.<br /><br /> - **expandEnvironment** — Określa, czy są rozwinięte zmiennych środowiskowych w ścieżce.|  
 |**LocalResource**|Ścieżka względna zasobu lokalnego do monitorowania. Atrybuty wymagane są:<br /><br /> - **Nazwa** -zasób lokalny, zawierająca katalogi do monitorowania<br /><br /> - **relativePath** -ścieżka względna nazwa zawierająca katalogi do monitorowania|  
 
 
@@ -608,7 +604,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Element|Typ|Opis|  
 |-------------|----------|-----------------|  
 |**Application Insights**|ciąg|Używana tylko wtedy, gdy wysyłanie danych do usługi Application Insights. Zawiera klucz instrumentacji dla aktywnego konta usługi Application Insights, czy masz dostęp do.|  
-|**Channels**|ciąg|Po jednej dla każdego dodatkowego filtrowania strumienia, który|  
+|**Kanały**|ciąg|Po jednej dla każdego dodatkowego filtrowania strumienia, który|  
 
 ## <a name="channels-element"></a>Element kanałów  
  *Drzewa: Kanały SinksConfig - zbiornika - głównego - DiagnosticsConfiguration - PublicConfig - WadCFG-*
@@ -645,10 +641,10 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
-|**StorageAccount**|Konta magazynu do użycia. Następujące atrybuty są wymagane<br /><br /> - **Nazwa** — nazwa konta magazynu.<br /><br /> - **klucz** — klucz do konta magazynu.<br /><br /> - **punkt końcowy** — punkt końcowy do uzyskania dostępu do konta magazynu. <br /><br /> -**sasToken** (dodany 1.8.1)-tokenu sygnatury dostępu Współdzielonego, zamiast klucz konta magazynu można określić w prywatnej konfiguracji. Podany klucz konta magazynu jest ignorowana. <br />Wymagania dotyczące tokenu sygnatury dostępu Współdzielonego: <br />— Obsługuje tylko tokenu sygnatury dostępu Współdzielonego konta <br />- *b*, *t* typów usług są wymagane. <br /> - **, *c*, *u*, *w* uprawnienia są wymagane. <br /> - *c*, *o* typów zasobów są wymagane. <br /> — Obsługuje tylko protokół HTTPS <br /> -Start i czas wygaśnięcia musi być prawidłowy.|  
+|**StorageAccount**|Konta magazynu do użycia. Następujące atrybuty są wymagane<br /><br /> - **Nazwa** — nazwa konta magazynu.<br /><br /> - **klucz** — klucz do konta magazynu.<br /><br /> - **punkt końcowy** — punkt końcowy do uzyskania dostępu do konta magazynu. <br /><br /> -**sasToken** (dodany 1.8.1)-tokenu sygnatury dostępu Współdzielonego, zamiast klucz konta magazynu można określić w prywatnej konfiguracji. Podany klucz konta magazynu jest ignorowana. <br />Wymagania dotyczące tokenu sygnatury dostępu Współdzielonego: <br />— Obsługuje tylko tokenu sygnatury dostępu Współdzielonego konta <br />- *b*, *t* typów usług są wymagane. <br /> - *a*, *c*, *u*, *w* uprawnienia są wymagane. <br /> - *c*, *o* typów zasobów są wymagane. <br /> — Obsługuje tylko protokół HTTPS <br /> -Start i czas wygaśnięcia musi być prawidłowy.|  
 
 
 ## <a name="isenabled-element"></a>IsEnabled Element  
  *Drzewa: IsEnabled - DiagnosticsConfiguration - katalogu głównego*
 
- Boolean. Użyj `true` umożliwiające diagnostyki lub `false` wyłączyć diagnostyki.
+ Wartość logiczna. Użyj `true` umożliwiające diagnostyki lub `false` wyłączyć diagnostyki.

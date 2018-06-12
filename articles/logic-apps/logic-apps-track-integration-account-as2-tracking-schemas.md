@@ -2,7 +2,7 @@
 title: Schematy śledzenia AS2 B2B monitorowania - Azure Logic Apps | Dokumentacja firmy Microsoft
 description: Użyj AS2 śledzenia schematów, aby monitorować wiadomości B2B transakcji na koncie integracji Azure.
 author: padmavc
-manager: anneta
+manager: jeconnoc
 editor: ''
 services: logic-apps
 documentationcenter: ''
@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8605950f3cc07730ee13b91999076e3a093e8d92
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 48e39fd20716e962c4a3e367fdff18e0b4fba32d
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300885"
 ---
 # <a name="start-or-enable-tracking-of-as2-messages-and-mdns-to-monitor-success-errors-and-message-properties"></a>Uruchom lub włączyć śledzenie wiadomości AS2 i MDNs sukcesu monitora, błędy i właściwości wiadomości
 Te schematy śledzenia AS2 na koncie integracja Azure umożliwia ułatwiają monitorowanie biznesowych między firmami (B2B) transakcji:
@@ -126,7 +127,7 @@ Te schematy śledzenia AS2 na koncie integracja Azure umożliwia ułatwiają mon
 | isMessageSigned |Wartość logiczna | Określa, czy wiadomość AS2 została podpisana. (Wymagane) |
 | isNrrEnabled | Wartość logiczna | Użyj wartości domyślnej, jeśli wartość nie jest znany. (Wymagane) |
 | statusCode | wyliczenia | Dozwolone wartości to **zaakceptowane**, **odrzucone**, i **AcceptedWithErrors**. (Wymagane) |
-| micVerificationStatus | wyliczenia | Dozwolone wartości to **NotApplicable**, **zakończyło się pomyślnie**, i ****. (Wymagane) |
+| micVerificationStatus | wyliczenia | Dozwolone wartości to **NotApplicable**, **zakończyło się pomyślnie**, **i**. (Wymagane) |
 | correlationMessageId | Ciąg | Identyfikator korelacji. Oryginalna messaged ID (identyfikator komunikatu wiadomości, dla której skonfigurowano MDN). (Opcjonalnie) |
 | incomingHeaders | Słownik JToken | Wskazuje szczegóły nagłówka komunikatu przychodzącego. (Opcjonalnie) |
 | outgoingHeaders |Słownik JToken | Wskazuje szczegóły nagłówka komunikatu wychodzącego. (Opcjonalnie) |

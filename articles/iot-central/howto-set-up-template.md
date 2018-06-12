@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c88b27edab71527b4b3eca71c00af2930c22f8cd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bda056a75ae9d696dab389b85fe1bfb2935ee1a8
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629239"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261988"
 ---
 # <a name="set-up-a-device-template"></a>Konfigurowanie szablonu urządzenia
 
@@ -161,6 +161,59 @@ Po wybraniu **zapisać**, Lokalizacja urządzenia jest wyświetlana jako Kafelek
 > [!NOTE]
 > Po utworzeniu nowego kafelka, można zmienić wartości właściwości. Po pierwsze, wyłącz tryb projektowania u góry po prawej części ekranu.
 
+### <a name="create-a-location-property-powered-by-azure-maps"></a>Utwórz właściwość lokalizacji obsługiwane przez usługę Azure mapy
+Można przekazać geograficzne kontekstu danych lokalizacji w Azure IoT centralnej i mapowanie dowolnego szerokości geograficznej i współrzędne geograficzne ulicę lub po prostu współrzędne współrzędne geograficzne. Tej funkcji w usłudze Azure IoT centralnej jest obsługiwany przez usługę Azure mapy.
+
+Istnieją dwa typy właściwości lokalizacji, które można dodać:
+- **Lokalizacja jako właściwość aplikacji** której będą przechowywane wyłącznie w aplikacji. Urządzenie nie ma informacji o właściwości aplikacji.
+- **Lokalizacja jako właściwość urządzenia** które będą zgłaszane przez urządzenie.
+
+####<a name="adding-location-as-an-application-property"></a>Dodawanie lokalizacji jako właściwości aplikacji 
+Możesz utworzyć lokalizację mapy właściwości jako właściwość aplikacji za pomocą platformy Azure w aplikacji Azure IoT centralnej. Na przykład można dodać adres instalacji urządzenia. 
+
+1. Przejdź do karty właściwości urządzenia; Upewnij się, że jest włączony tryb projektowania.
+
+![Właściwość lokalizacji](./media/howto-set-up-template/locationcloudproperty1.png)
+
+2. Na karcie właściwości kliknij lokalizację.
+3. Opcjonalnie skonfiguruj nazwę wyświetlaną, nazwy pola i wartość początkową lokalizacji. 
+
+![Lokalizacja właściwości formularza](./media/howto-set-up-template/locationcloudproperty2.png)
+
+Istnieją dwa obsługiwanych formatów, aby dodać lokalizację:
+- **Lokalizacja adresu**
+- **Lokalizacja jak współrzędnych.** 
+
+4. Kliknij przycisk Zapisz. 
+
+![Pole właściwości lokalizacji](./media/howto-set-up-template/locationcloudproperty3.png)
+
+Operator można teraz zaktualizować wartość lokalizacji w formularzu pole lokalizacji. 
+
+####<a name="adding-location-as-a-device-property"></a>Dodawanie lokalizacji jako właściwości urządzenia 
+
+Można utworzyć właściwości location jako właściwość urządzenia zgłoszonego przez urządzenie.
+Na przykład chcesz śledzić lokalizacji urządzenia.
+
+1.  Przejdź do karty właściwości urządzenia; Upewnij się, że jest włączony tryb projektowania.
+2.  Kliknij przycisk Właściwości urządzenia z biblioteki.
+
+![Pole właściwości lokalizacji](./media/howto-set-up-template/locationdeviceproperty1.png)
+
+3.  Skonfigurować nazwę wyświetlaną, nazwy pola i wybierz polecenie "Lokalizacja", jako typ danych. 
+
+> [!NOTE]
+Nazwa pola musi dokładnie pasować do nazwy właściwości urządzenia raportów. 
+
+![Pole właściwości lokalizacji](./media/howto-set-up-template/locationdeviceproperty2.png)
+
+![Widok operator właściwość lokalizacji](./media/howto-set-up-template/locationdeviceproperty2.png)
+
+Teraz, gdy skonfigurowano właściwości Twojej lokalizacji, można dodać mapy w celu wizualizowania lokalizacji na pulpicie nawigacyjnym urządzenia. Zobacz temat jak [Dodaj lokalizację mapy platformy Azure na pulpicie nawigacyjnym](howto-set-up-template.md).
+
+
+
+
 ## <a name="rules"></a>Reguły
 
 Reguły umożliwiają operatory monitorowanie urządzeń w najbliższym czasie rzeczywistym. Reguły automatycznie wywołują **akcje** takie jak wysyłanie wiadomości e-mail, gdy zasada wyzwala. Brak dostępnej jeden typ reguły dzisiaj:
@@ -178,6 +231,31 @@ Na przykład można dodać **właściwości i ustawienia** Kafelek, aby pokazywa
 Teraz po operatorze widoków pulpitu nawigacyjnego, można wyświetlić tego kafelka, który wyświetla właściwości i ustawienia urządzenia:
 
 ![Kafelka pulpitu nawigacyjnego](./media/howto-set-up-template/dashboardtile.png)
+
+### <a name="add-location-azure-map-in-dashboard"></a>Dodaj lokalizację mapy platformy Azure na pulpicie nawigacyjnym
+
+Jeśli skonfigurowano właściwość lokalizacji jak kroki [Utwórz właściwość lokalizacji obsługiwane przez usługę Azure Maps]((howto-set-up-template.md), można zwizualizować lokalizacji przy użyciu mapy bezpośrednio w pulpicie nawigacyjnym urządzenia.
+
+1.  Przejdź do karty Pulpit nawigacyjny urządzenia; Upewnij się, że jest włączony tryb projektowania.
+2.  Na pulpicie nawigacyjnym urządzenia wybierz mapę z biblioteki. 
+
+![Wybierz lokalizację Azure mapy pulpitu nawigacyjnego](./media/howto-set-up-template/locationcloudproperty4map.png)
+
+3.  Nadaj tytuł, a następnie wybierz właściwość lokalizacji wcześniej skonfigurowanych jako część programu właściwości urządzenia.
+
+![Konfigurowanie usługi Azure mapy lokalizacji pulpitu nawigacyjnego](./media/howto-set-up-template/locationcloudproperty5map.png)
+
+4.  Zapisz i zobaczą mapy kafelka wyświetlanie wybranej lokalizacji. 
+
+![Lokalizacja na pulpicie nawigacyjnym wizualizacji mapy platformy Azure](./media/howto-set-up-template/locationcloudproperty6map.png) 
+
+Będzie można zmienić rozmiar mapy w celu żądane rozmiary.
+
+Teraz po operatorze widoków pulpitu nawigacyjnego, będą mogli wyświetlać tego wszystkie kafelka pulpitu nawigacyjnego zostały skonfigurowane w tym miejscu Mapa!
+
+![Pulpit nawigacyjny Azure mapy lokalizacji pulpitu nawigacyjnego](./media/howto-set-up-template/locationcloudproperty7map.png) 
+
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 
