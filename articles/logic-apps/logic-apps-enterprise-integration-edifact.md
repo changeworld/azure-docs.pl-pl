@@ -1,11 +1,11 @@
 ---
-title: "EDIFACT wiadomości B2B integracji przedsiębiorstwa - Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "EDIFACT wymiany wiadomości w formacie EDI B2B enterprise integracji z usługą Azure Logic Apps"
+title: EDIFACT wiadomości B2B integracji przedsiębiorstwa - Azure Logic Apps | Dokumentacja firmy Microsoft
+description: EDIFACT wymiany wiadomości w formacie EDI B2B enterprise integracji z usługą Azure Logic Apps
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 2257d2c8-1929-4390-b22c-f96ca8b291bc
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/26/2016
 ms.author: LADocs; jonfan
-ms.openlocfilehash: 4b1ea9966add3cf0d5f75988f11cda57fa4e4cf6
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: d85db6f5be487578ceab261d2779589439bfad31
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300100"
 ---
 # <a name="exchange-edifact-messages-for-enterprise-integration-with-logic-apps"></a>Komunikaty Exchange EDIFACT enterprise integracji z usługą logic apps
 
@@ -114,7 +115,7 @@ Umowie jest teraz gotowy do obsługi wiadomości przychodzących, które odpowia
 | --- | --- |
 | UNH2.1 (TYPE) |Wybierz typ zestawu transakcji. |
 | UNH2.2 (WERSJA) |Wprowadź numer wersji komunikatu. (Minimalna, jeden znak; maksymalna, trzy znaki). |
-| UNH2.3 (RELEASE) |Wprowadź numer wersji komunikatu. (Minimalna, jeden znak; maksymalna, trzy znaki). |
+| UNH2.3 (WERSJA) |Wprowadź numer wersji komunikatu. (Minimalna, jeden znak; maksymalna, trzy znaki). |
 | UNH2.5 (SKOJARZONY KOD PRZYPISANEJ) |Wprowadź kod przypisanej. (Maksymalnie sześć znaków. Musi być alfanumeryczny). |
 | UNG2.1 (IDENTYFIKATOR NADAWCY APLIKACJI) |Wprowadź wartość alfanumeryczne z co najmniej jeden znak i 35 znaków. |
 | UNG2.2 (KWALIFIKATOR KODU NADAWCY APLIKACJI) |Wprowadź wartość alfanumeryczne z maksymalnie cztery znaki. |
@@ -190,7 +191,7 @@ Umowie jest teraz gotowy do obsługi komunikatów wychodzących, które odpowiad
 | --- | --- |
 | UNH2.1 (TYPE) |Wybierz typ zestawu transakcji. |
 | UNH2.2 (WERSJA) |Wprowadź numer wersji komunikatu. |
-| UNH2.3 (RELEASE) |Wprowadź numer wersji komunikatu. |
+| UNH2.3 (WERSJA) |Wprowadź numer wersji komunikatu. |
 | SCHEMA |Wybierz schemat używany. Schematy znajdują się na koncie integracji. Aby uzyskać dostęp do Twojego schematów, należy najpierw połączyć konta integracji do aplikacji logiki. |
 
 ### <a name="envelopes"></a>Koperty

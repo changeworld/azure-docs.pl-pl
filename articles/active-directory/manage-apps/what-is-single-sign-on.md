@@ -14,11 +14,12 @@ ms.date: 09/11/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: b185f53f8f13ebbe1efc57a99b7d65269f5559c0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3f1225b71d16419a3dd100bfaccfbfa1e1c1c41c
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292895"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?
 Logowanie jednokrotne oznacza dostępowi do wszystkich aplikacji i zasobów potrzebnych do prowadzenia działalności, logując się tylko raz przy użyciu jednego konta użytkownika. Po zalogowaniu możesz uzyskać dostęp do wszystkich aplikacji bez konieczności uwierzytelnienia (na przykład wpisz hasło) po raz drugi.
@@ -58,7 +59,7 @@ W tym scenariuszu gdy możesz już zostały zarejestrowane w usłudze Azure Acti
 
 Usługi Azure AD mogą obsługiwać federacyjne logowanie jednokrotne z aplikacjami, które obsługują SAML 2.0, WS-Federation, lub OpenID connect protokołów.
 
-Zobacz też: [zarządzanie certyfikatami dla federacyjnych rejestracji jednokrotnej](../active-directory-sso-certs.md)
+Zobacz też: [zarządzanie certyfikatami dla federacyjnych rejestracji jednokrotnej](manage-certificates-for-federated-single-sign-on.md)
 
 ### <a name="password-based-single-sign-on"></a>Logowanie jednokrotne oparte na hasłach
 Konfigurowanie opartego na hasłach logowania jednokrotnego pozwala użytkownikom w organizacji automatycznie zalogowani do aplikacji SaaS innych firm przez usługę Azure AD przy użyciu informacji o koncie użytkownika z innych aplikacji SaaS. Po włączeniu tej funkcji usługi Azure AD zbiera i bezpiecznie przechowywane są informacje o koncie użytkownika i hasło powiązane.
@@ -193,7 +194,7 @@ Te linki używane te same mechanizmy kontroli dostępu do panelu dostępu i usł
 * [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](../active-directory-apps-index.md)
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](../active-directory-saas-tutorial-list.md)
 * [Znajdowanie niezatwierdzona aplikacji w chmurze z usługi Cloud App Discovery](cloud-app-discovery.md)
-* [Wprowadzenie do zarządzania dostępem do aplikacji](../active-directory-managing-access-to-apps.md)
+* [Wprowadzenie do zarządzania dostępem do aplikacji](what-is-access-management.md)
 * [Porównanie funkcji zarządzania w usłudze Azure AD tożsamości zewnętrznych](../active-directory-b2b-compare-b2c.md)
 
 

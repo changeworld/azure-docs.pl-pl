@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2017
 ms.author: douglasl
-ms.openlocfilehash: 763b13849470079e24aac6aff45584bac33403f0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 956bd89a993a019d7a5a4dd28efec4116b174334
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620541"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297261"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitor środowiska uruchomieniowego integracji w fabryce danych Azure  
 **Integracja środowiska uruchomieniowego** jest używany przez fabryki danych Azure zapewnienie różne funkcje integracji danych w różnych środowiskach sieci infrastruktury obliczeniowej. Istnieją trzy typy środowisk uruchomieniowych integracji oferowane przez fabrykę danych:
@@ -167,7 +167,7 @@ Przykładowe dane wyjściowe (przy założeniu, że istnieją dwa węzły skojar
 | CatalogAdminUserName | Nazwa użytkownika z istniejącego serwera Azure SQL bazy danych/zarządzane wystąpienia (wersja zapoznawcza). Usługi fabryka danych używa tych informacji do przygotowania i zarządzanie nimi SSISDB w Twoim imieniu. |
 | CatalogAdminPassword | Hasło administratora serwera istniejącego wystąpienia zarządzanego/bazy danych SQL Azure (wersja zapoznawcza). |
 | CatalogPricingTier | Warstwa cenowa SSISDB należące do istniejącego serwera bazy danych SQL Azure.  Nie dotyczy Azure zarządzane wystąpienia SQL (wersja zapoznawcza) hosting usług SSIS. |
-| VNetId | Sieć wirtualną (VNet) identyfikator zasobu dla Twojego środowiska uruchomieniowego integracji usług SSIS Azure do przyłączenia. |
+| VNetId | Sieć wirtualna identyfikator zasobu dla Twojego środowiska uruchomieniowego integracji usług SSIS Azure do przyłączenia. |
 | Podsieć | Nazwa podsieci dla Twojego środowiska uruchomieniowego integracji Azure SSIS do przyłączenia. |
 | ID | Identyfikator zasobu Twojego środowiska uruchomieniowego integracji usług SSIS Azure. |
 | Typ | Typ (zarządzanego/niezależne-Hosted) programu Azure SSIS integracji runtime. |
@@ -200,9 +200,9 @@ Zobacz następujące artykuły, aby dowiedzieć się więcej na temat środowisk
 
 - [Środowisko uruchomieniowe integracji usług SSIS Azure](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ten artykuł zawiera informacje o pojęciach dotyczących środowisk uruchomieniowych integracji ogólnie tym podczerwieni Azure SSIS. 
 - [Samouczek: Wdrażanie pakietów usług SSIS na platformie Azure](tutorial-create-azure-ssis-runtime-portal.md). Ten artykuł zawiera szczegółowe instrukcje dotyczące tworzenia środowiska Azure-SSIS IR i używania bazy danych Azure SQL do hostowania wykazu usług SSIS. 
-- [How to: Create an Azure-SSIS integration runtime (Jak: Tworzenie środowiska Azure SSIS Integration Runtime)](create-azure-ssis-integration-runtime.md). Ten artykuł stanowi rozszerzenie samouczka i zawiera instrukcje dotyczące używania wystąpienia zarządzanego Azure SQL (wersja zapoznawcza) oraz dołączania środowiska IR do sieci wirtualnej. 
+- [How to: Create an Azure-SSIS integration runtime (Jak: Tworzenie środowiska Azure SSIS Integration Runtime)](create-azure-ssis-integration-runtime.md). W tym artykule rozszerzenie samouczka i zawiera instrukcje dotyczące przy użyciu wystąpienia zarządzane Azure SQL (wersja zapoznawcza) i dołączenie IR do sieci wirtualnej. 
 - [Manage an Azure-SSIS IR (Zarządzanie środowiskiem Azure-SSIS IR)](manage-azure-ssis-integration-runtime.md). W tym artykule przedstawiono sposób zatrzymywania, uruchamiania lub usuwania środowiska Azure-SSIS IR. Zawiera on również instrukcje skalowania środowiska Azure-SSIS IR do wewnątrz za pomocą dodawania do niego węzłów. 
-- [Join an Azure-SSIS IR to a VNet (Dołączanie środowiska Azure-SSIS IR do sieci wirtualnej)](join-azure-ssis-integration-runtime-virtual-network.md). Ten artykuł zawiera podstawowe informacje na temat dołączania środowiska Azure-SSIS IR do sieci wirtualnej platformy Azure. Opisano w nim kroki konfigurowania sieci wirtualnej za pomocą witryny Azure Portal tak, aby umożliwić dołączanie środowiska Azure-SSIS IR do sieci wirtualnej. 
+- [Dołącz IR Azure SSIS do sieci wirtualnej](join-azure-ssis-integration-runtime-virtual-network.md). Ten artykuł zawiera informacje o pojęciach dotyczących przyłączania IR Azure SSIS do sieci wirtualnej platformy Azure. Umożliwia także kroki, aby skonfigurować sieci wirtualnej, tak aby IR Azure SSIS można dołączyć do sieci wirtualnej za pomocą portalu Azure. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 Zobacz następujące artykuły monitorowania potoki na różne sposoby: 

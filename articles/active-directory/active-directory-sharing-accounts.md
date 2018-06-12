@@ -14,11 +14,12 @@ ms.date: 11/13/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: b97ec4ffacead7630c267284f79f954ef03eff61
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 1bdc7a4d50b81c615d9aca651c897796d9f60c00
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292280"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Udostępnianie kont usługi Azure AD
 ## <a name="overview"></a>Przegląd
@@ -46,7 +47,7 @@ W drugi raz z swoje konta organizacyjne logowania użytkowników. To konto jest 
 
 Udostępnionego konta nie tylko zwiększyć nadzoru i poprawić użyteczność, zapewniają również ze względów bezpieczeństwa. Użytkownicy z uprawnieniami, aby użyć poświadczeń nie widzisz wspólne hasło, ale raczej uzyskać uprawnienia do używania hasło jako część przepływu zorkiestrowana uwierzytelniania. Ponadto niektóre aplikacje logowania jednokrotnego hasła zapewnienia możliwości za pomocą usługi Azure AD, aby okresowo przerzucania (aktualizacja) hasła. System używa dużych, złożonych haseł, która zwiększa bezpieczeństwo konta. Administrator może łatwo przydzielić lub odwołać dostęp do aplikacji, wie, kto ma dostęp do konta i kto ma dostęp do niego w przeszłości.
 
-Usługi Azure AD obsługuje udostępnionego konta Enterprise Mobility Suite (EMS), Premium lub Basic licencjonowani użytkownicy, wszystkich typów hasła pojedynczego logowania w aplikacji. Można udostępniać konta dla każdego tysięcy wstępnie zintegrowanych aplikacji w galerii aplikacji i dodać własne uwierzytelniania hasła aplikacji z [aplikacji niestandardowych logowania jednokrotnego](active-directory-enterprise-apps-manage-sso.md).
+Usługi Azure AD obsługuje udostępnionego konta Enterprise Mobility Suite (EMS), Premium lub Basic licencjonowani użytkownicy, wszystkich typów hasła pojedynczego logowania w aplikacji. Można udostępniać konta dla każdego tysięcy wstępnie zintegrowanych aplikacji w galerii aplikacji i dodać własne uwierzytelniania hasła aplikacji z [aplikacji niestandardowych logowania jednokrotnego](manage-apps/configure-single-sign-on-portal.md).
 
 Azure AD funkcje, które umożliwiają udostępnianie konta:
 

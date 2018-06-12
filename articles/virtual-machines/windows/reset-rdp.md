@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2018
 ms.author: cynthn
-ms.openlocfilehash: 26a213d490ee3f661735ff5b893b0a5f5f9906da
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: b61b7501c94e9682a3b324488caf119ce4aad3df
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267207"
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm"></a>Jak można zresetować usług pulpitu zdalnego lub jego hasło logowania na maszynie wirtualnej systemu Windows
 Jeśli nie można połączyć z maszyną wirtualną (VM) systemu Windows, można zresetować hasła administratora lokalnego lub zresetowanie konfiguracji usługi pulpitu zdalnego (nieobsługiwane na kontrolerach domeny z systemem Windows). Aby zresetować hasło, można użyć portalu Azure lub rozszerzenia dostępu do maszyny Wirtualnej w programie Azure PowerShell. Gdy użytkownik zalogował się do maszyny Wirtualnej, należy zresetować hasło dla tego użytkownika.  
@@ -57,7 +58,7 @@ Wybierz **Resetowanie tylko konfiguracji** z menu rozwijanego, następnie klikni
 Upewnij się, że masz [najnowsze modułu PowerShell zainstalowany i skonfigurowany](/powershell/azure/overview) i jest zalogowany do subskrypcji platformy Azure z `Connect-AzureRmAccount` polecenia cmdlet.
 
 ### <a name="reset-the-local-administrator-account-password"></a>**Zresetuj hasło konta administratora lokalnego**
-Resetuj nazwa użytkownika lub hasło administratora z [AzureRmVMAccessExtension zestaw](/powershell/module/azurerm.compute/set-azurermvmaccessextension) polecenia cmdlet programu PowerShell. 
+Resetuj nazwa użytkownika lub hasło administratora z [AzureRmVMAccessExtension zestaw](/powershell/module/azurerm.compute/set-azurermvmaccessextension) polecenia cmdlet programu PowerShell. TypeHandlerVersion musi być w wersji 2.0 lub wyższej, jako wersja 1 jest przestarzały. 
 
 ```powershell
 $SubID = "<SUBSCRIPTION ID>" 

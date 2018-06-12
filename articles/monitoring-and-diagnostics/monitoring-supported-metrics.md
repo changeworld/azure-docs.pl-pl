@@ -1,24 +1,19 @@
 ---
-title: Metryki Monitor Azure - obsługiwanych metryki na typ zasobu | Dokumentacja firmy Microsoft
+title: Azure Monitor obsługiwany metryki według typów zasobów
 description: Lista dostępnych dla każdego typu zasobu z monitorem Azure metryk.
 author: anirudhcavale
-manager: ashwink
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 63d4ac65-1688-40d1-85c8-7cd408285b0f
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: reference
 ms.date: 03/30/2018
 ms.author: ancav
-ms.openlocfilehash: a5c0d529357d8ab92cf63ca4a0293753d55801d6
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.component: metrics
+ms.openlocfilehash: d7d51a7c037e109c730dd79005a2c75eeb0697c0
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35266896"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Obsługiwane metryki z monitorem Azure
 Azure Monitor udostępnia kilka metod do interakcji z metryk, takich jak wykresy je w portalu, dostępu do nich za pośrednictwem interfejsu API REST lub zapytań je przy użyciu programu PowerShell lub interfejsu wiersza polecenia. Poniżej przedstawiono pełną listę wszystkich metryki obecnie z potoku metryki Azure monitora. Inne metryki mogą być dostępne w portalu lub przy użyciu starszej wersji interfejsów API. Ta lista poniżej zawiera tylko metryk dostępnych za pośrednictwem potoku metryki skonsolidowanych Azure Monitor. Wykonanie kwerendy i dostępu do tych metryk możesz użyć [wersja interfejsu api 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -129,7 +124,7 @@ Azure Monitor udostępnia kilka metod do interakcji z metryk, takich jak wykresy
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|connectedclients|Połączeni klienci|Licznik|Maksimum||Nie wymiarów|
+|connectedclients|Podłączeni klienci|Licznik|Maksimum||Nie wymiarów|
 |totalcommandsprocessed|Łączna liczba operacji|Licznik|Łącznie||Nie wymiarów|
 |Trafienia w pamięci podręcznej|Trafienia w pamięci podręcznej|Licznik|Łącznie||Nie wymiarów|
 |cachemisses|Chybienia w pamięci podręcznej|Licznik|Łącznie||Nie wymiarów|
@@ -345,7 +340,7 @@ Azure Monitor udostępnia kilka metod do interakcji z metryk, takich jak wykresy
 |Opóźnienie|Opóźnienie|W milisekundach|Średnia|Opóźnienie w milisekundach.|Nie wymiarów|
 |CharactersTranslated|Przetłumaczone znaki|Licznik|Łącznie|Łączna liczba znaków w przychodzącym żądaniu tekstowym.|Nie wymiarów|
 |SpeechSessionDuration|Czas trwania sesji mowy|Sekundy|Łącznie|Łączny czas trwania sesji mowy w sekundach.|Nie wymiarów|
-|TotalTransactions|Całkowita liczba transakcji|Licznik|Łącznie|Całkowita liczba transakcji|Nie wymiarów|
+|TotalTransactions|Łączna liczba transakcji|Licznik|Łącznie|Całkowita liczba transakcji|Nie wymiarów|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
@@ -360,16 +355,16 @@ Azure Monitor udostępnia kilka metod do interakcji z metryk, takich jak wykresy
 |Operacje zapisu dysku/s|Operacje zapisu dysku/s|CountPerSecond|Średnia|Operacje we/wy zapisu dysku|Nie wymiarów|
 |Pozostałe środki na procesory CPU|Pozostałe środki na procesory CPU|Licznik|Średnia|Łączna ilość środków dostępnych na potrzeby serii|Nie wymiarów|
 |Wykorzystane środki na procesory CPU|Wykorzystane środki na procesory CPU|Licznik|Średnia|Łączna ilość środków wykorzystanych przez maszynę wirtualną|Nie wymiarów|
-|Na bajty odczytu dysku/s|Dane Bajty odczytu dysku/s (wersja zapoznawcza)|CountPerSecond|Średnia|Całkowita liczba bajtów/s do odczytu na pojedynczym dysku podczas okresu monitorowania|Identyfikator_gniazda|
-|Na bajty zapisu dysku/s|Dane Bajty zapisu dysku/s (wersja zapoznawcza)|CountPerSecond|Średnia|Całkowita liczba bajtów/s podczas okresu monitorowania zapisywane na pojedynczym dysku|Identyfikator_gniazda|
-|Dla każdego dysku, operacje odczytu/s|Dysk z danymi operacje odczytu/s (wersja zapoznawcza)|CountPerSecond|Średnia|Całkowita liczba IOPS podczas odczytu z jednego dysku podczas okresu monitorowania|Identyfikator_gniazda|
-|Dla operacji zapisu dysku/s|Dane zapisu dysku operacji/s (wersja zapoznawcza)|CountPerSecond|Średnia|Całkowita liczba IOPS podczas zapisywania do jednego dysku podczas okresu monitorowania|Identyfikator_gniazda|
-|Dla każdego dysku QD|Dysk z danymi QD (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku danych (lub długość kolejki)|Identyfikator_gniazda|
-|System operacyjny na bajty odczytu dysku/s|Dysk systemu operacyjnego do odczytu w bajtach na sekundę (wersja zapoznawcza)|CountPerSecond|Średnia|Całkowita liczba bajtów/s do odczytu na pojedynczym dysku podczas monitorowania okresu dla dysku systemu operacyjnego|Nie wymiarów|
-|Zapis systemu operacyjnego na dysku w bajtach na sekundę|Bajty zapisu dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Całkowita liczba bajtów/s zapisywane na pojedynczym dysku podczas monitorowania okresu dla dysku systemu operacyjnego|Nie wymiarów|
-|System operacyjny na operacje odczytu dysku/s|Dysk systemu operacyjnego operacje odczytu/s (wersja zapoznawcza)|CountPerSecond|Średnia|Całkowita liczba IOPS podczas odczytu z jednego dysku podczas monitorowania okresu dla dysku systemu operacyjnego|Nie wymiarów|
-|System operacyjny na jednym dysku operacje zapisu/s|Operacje zapisu dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Całkowita liczba IOPS podczas zapisywania do jednego dysku podczas monitorowania okresu dla dysku systemu operacyjnego|Nie wymiarów|
-|System operacyjny na jednym dysku QD|Dysk systemu operacyjnego QD (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku systemu operacyjnego (lub długość kolejki)|Nie wymiarów|
+|Bajty odczytu z dysku/s|Dane Bajty odczytu dysku/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę odczytanych z pojedynczego dysku w okresie monitorowania|SlotId|
+|Bajty zapisu na dysku/s|Dane Bajty zapisu dysku/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę zapisanych na pojedynczym dysku w okresie monitorowania|SlotId|
+|Operacje odczytu z dysku/s|Dysk z danymi operacje odczytu/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji we/wy na sekundę wykonanych podczas odczytywania z pojedynczego dysku w okresie monitorowania|SlotId|
+|Operacje zapisu na dysku/s|Dane zapisu dysku operacji/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji we/wy na sekundę wykonanych podczas zapisywania na pojedynczym dysku w okresie monitorowania|SlotId|
+|Głębokość kolejki dysku|Dysk z danymi QD (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku danych (lub długość kolejki)|SlotId|
+|Bajty odczytu z dysku systemu operacyjnego/s|Dysk systemu operacyjnego do odczytu w bajtach na sekundę (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę odczytanych z pojedynczego dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
+|Bajty zapisu na dysku systemu operacyjnego/s|Bajty zapisu dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę zapisanych na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
+|Operacje odczytu z dysku systemu operacyjnego/s|Dysk systemu operacyjnego operacje odczytu/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji we/wy na sekundę wykonanych podczas odczytywania z pojedynczego dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
+|Operacje zapisu na dysku systemu operacyjnego/s|Operacje zapisu dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji we/wy na sekundę wykonanych podczas zapisywania na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
+|Głębokość kolejki dysku systemu operacyjnego|Dysk systemu operacyjnego QD (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku systemu operacyjnego (lub długość kolejki)|Nie wymiarów|
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
 
@@ -384,16 +379,16 @@ Azure Monitor udostępnia kilka metod do interakcji z metryk, takich jak wykresy
 |Operacje zapisu dysku/s|Operacje zapisu dysku/s|CountPerSecond|Średnia|Operacje we/wy zapisu dysku|Nie wymiarów|
 |Pozostałe środki na procesory CPU|Pozostałe środki na procesory CPU|Licznik|Średnia|Łączna ilość środków dostępnych na potrzeby serii|Nie wymiarów|
 |Wykorzystane środki na procesory CPU|Wykorzystane środki na procesory CPU|Licznik|Średnia|Łączna ilość środków wykorzystanych przez maszynę wirtualną|Nie wymiarów|
-|Na bajty odczytu dysku/s|Dane Bajty odczytu dysku/s (wersja zapoznawcza)|CountPerSecond|Średnia|Całkowita liczba bajtów/s do odczytu na pojedynczym dysku podczas okresu monitorowania|Identyfikator_gniazda|
-|Na bajty zapisu dysku/s|Dane Bajty zapisu dysku/s (wersja zapoznawcza)|CountPerSecond|Średnia|Całkowita liczba bajtów/s podczas okresu monitorowania zapisywane na pojedynczym dysku|Identyfikator_gniazda|
-|Dla każdego dysku, operacje odczytu/s|Dysk z danymi operacje odczytu/s (wersja zapoznawcza)|CountPerSecond|Średnia|Całkowita liczba IOPS podczas odczytu z jednego dysku podczas okresu monitorowania|Identyfikator_gniazda|
-|Dla operacji zapisu dysku/s|Dane zapisu dysku operacji/s (wersja zapoznawcza)|CountPerSecond|Średnia|Całkowita liczba IOPS podczas zapisywania do jednego dysku podczas okresu monitorowania|Identyfikator_gniazda|
-|Dla każdego dysku QD|Dysk z danymi QD (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku danych (lub długość kolejki)|Identyfikator_gniazda|
-|System operacyjny na bajty odczytu dysku/s|Dysk systemu operacyjnego do odczytu w bajtach na sekundę|CountPerSecond|Średnia|Całkowita liczba bajtów/s do odczytu na pojedynczym dysku podczas monitorowania okresu dla dysku systemu operacyjnego|Nie wymiarów|
-|Zapis systemu operacyjnego na dysku w bajtach na sekundę|Bajty zapisu dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Całkowita liczba bajtów/s zapisywane na pojedynczym dysku podczas monitorowania okresu dla dysku systemu operacyjnego|Nie wymiarów|
-|System operacyjny na operacje odczytu dysku/s|Dysk systemu operacyjnego operacje odczytu/s (wersja zapoznawcza)|CountPerSecond|Średnia|Całkowita liczba IOPS podczas odczytu z jednego dysku podczas monitorowania okresu dla dysku systemu operacyjnego|Nie wymiarów|
-|System operacyjny na jednym dysku operacje zapisu/s|Operacje zapisu dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Całkowita liczba IOPS podczas zapisywania do jednego dysku podczas monitorowania okresu dla dysku systemu operacyjnego|Nie wymiarów|
-|System operacyjny na jednym dysku QD|Dysk systemu operacyjnego QD (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku systemu operacyjnego (lub długość kolejki)|Nie wymiarów|
+|Bajty odczytu z dysku/s|Dane Bajty odczytu dysku/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę odczytanych z pojedynczego dysku w okresie monitorowania|SlotId|
+|Bajty zapisu na dysku/s|Dane Bajty zapisu dysku/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę zapisanych na pojedynczym dysku w okresie monitorowania|SlotId|
+|Operacje odczytu z dysku/s|Dysk z danymi operacje odczytu/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji we/wy na sekundę wykonanych podczas odczytywania z pojedynczego dysku w okresie monitorowania|SlotId|
+|Operacje zapisu na dysku/s|Dane zapisu dysku operacji/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji we/wy na sekundę wykonanych podczas zapisywania na pojedynczym dysku w okresie monitorowania|SlotId|
+|Głębokość kolejki dysku|Dysk z danymi QD (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku danych (lub długość kolejki)|SlotId|
+|Bajty odczytu z dysku systemu operacyjnego/s|Bajty odczytu z dysku systemu operacyjnego/s|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę odczytanych z pojedynczego dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
+|Bajty zapisu na dysku systemu operacyjnego/s|Bajty zapisu dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę zapisanych na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
+|Operacje odczytu z dysku systemu operacyjnego/s|Dysk systemu operacyjnego operacje odczytu/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji we/wy na sekundę wykonanych podczas odczytywania z pojedynczego dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
+|Operacje zapisu na dysku systemu operacyjnego/s|Operacje zapisu dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji we/wy na sekundę wykonanych podczas zapisywania na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
+|Głębokość kolejki dysku systemu operacyjnego|Dysk systemu operacyjnego QD (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku systemu operacyjnego (lub długość kolejki)|Nie wymiarów|
 
 ## <a name="microsoftcomputevirtualmachinescalesetsvirtualmachines"></a>Microsoft.Compute/virtualMachineScaleSets/virtualMachines
 
@@ -408,23 +403,23 @@ Azure Monitor udostępnia kilka metod do interakcji z metryk, takich jak wykresy
 |Operacje zapisu dysku/s|Operacje zapisu dysku/s|CountPerSecond|Średnia|Operacje we/wy zapisu dysku|Nie wymiarów|
 |Pozostałe środki na procesory CPU|Pozostałe środki na procesory CPU|Licznik|Średnia|Łączna ilość środków dostępnych na potrzeby serii|Nie wymiarów|
 |Wykorzystane środki na procesory CPU|Wykorzystane środki na procesory CPU|Licznik|Średnia|Łączna ilość środków wykorzystanych przez maszynę wirtualną|Nie wymiarów|
-|Na bajty odczytu dysku/s|Dane Bajty odczytu dysku/s (wersja zapoznawcza)|CountPerSecond|Średnia|Całkowita liczba bajtów/s do odczytu na pojedynczym dysku podczas okresu monitorowania|Identyfikator_gniazda|
-|Na bajty zapisu dysku/s|Dane Bajty zapisu dysku/s (wersja zapoznawcza)|CountPerSecond|Średnia|Całkowita liczba bajtów/s podczas okresu monitorowania zapisywane na pojedynczym dysku|Identyfikator_gniazda|
-|Dla każdego dysku, operacje odczytu/s|Dysk z danymi operacje odczytu/s (wersja zapoznawcza)|CountPerSecond|Średnia|Całkowita liczba IOPS podczas odczytu z jednego dysku podczas okresu monitorowania|Identyfikator_gniazda|
-|Dla operacji zapisu dysku/s|Dane zapisu dysku operacji/s (wersja zapoznawcza)|CountPerSecond|Średnia|Całkowita liczba IOPS podczas zapisywania do jednego dysku podczas okresu monitorowania|Identyfikator_gniazda|
-|Dla każdego dysku QD|Dysk z danymi QD (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku danych (lub długość kolejki)|Identyfikator_gniazda|
-|System operacyjny na bajty odczytu dysku/s|Dysk systemu operacyjnego do odczytu w bajtach na sekundę (wersja zapoznawcza)|CountPerSecond|Średnia|Całkowita liczba bajtów/s do odczytu na pojedynczym dysku podczas monitorowania okresu dla dysku systemu operacyjnego|Nie wymiarów|
-|Zapis systemu operacyjnego na dysku w bajtach na sekundę|Bajty zapisu dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Całkowita liczba bajtów/s zapisywane na pojedynczym dysku podczas monitorowania okresu dla dysku systemu operacyjnego|Nie wymiarów|
-|System operacyjny na operacje odczytu dysku/s|Dysk systemu operacyjnego operacje odczytu/s (wersja zapoznawcza)|CountPerSecond|Średnia|Całkowita liczba IOPS podczas odczytu z jednego dysku podczas monitorowania okresu dla dysku systemu operacyjnego|Nie wymiarów|
-|System operacyjny na jednym dysku operacje zapisu/s|Operacje zapisu dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Całkowita liczba IOPS podczas zapisywania do jednego dysku podczas monitorowania okresu dla dysku systemu operacyjnego|Nie wymiarów|
-|System operacyjny na jednym dysku QD|Dysk systemu operacyjnego QD (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku systemu operacyjnego (lub długość kolejki)|Nie wymiarów|
+|Bajty odczytu z dysku/s|Dane Bajty odczytu dysku/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę odczytanych z pojedynczego dysku w okresie monitorowania|SlotId|
+|Bajty zapisu na dysku/s|Dane Bajty zapisu dysku/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę zapisanych na pojedynczym dysku w okresie monitorowania|SlotId|
+|Operacje odczytu z dysku/s|Dysk z danymi operacje odczytu/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji we/wy na sekundę wykonanych podczas odczytywania z pojedynczego dysku w okresie monitorowania|SlotId|
+|Operacje zapisu na dysku/s|Dane zapisu dysku operacji/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji we/wy na sekundę wykonanych podczas zapisywania na pojedynczym dysku w okresie monitorowania|SlotId|
+|Głębokość kolejki dysku|Dysk z danymi QD (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku danych (lub długość kolejki)|SlotId|
+|Bajty odczytu z dysku systemu operacyjnego/s|Dysk systemu operacyjnego do odczytu w bajtach na sekundę (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę odczytanych z pojedynczego dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
+|Bajty zapisu na dysku systemu operacyjnego/s|Bajty zapisu dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba bajtów na sekundę zapisanych na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
+|Operacje odczytu z dysku systemu operacyjnego/s|Dysk systemu operacyjnego operacje odczytu/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji we/wy na sekundę wykonanych podczas odczytywania z pojedynczego dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
+|Operacje zapisu na dysku systemu operacyjnego/s|Operacje zapisu dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Łączna liczba operacji we/wy na sekundę wykonanych podczas zapisywania na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|Nie wymiarów|
+|Głębokość kolejki dysku systemu operacyjnego|Dysk systemu operacyjnego QD (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku systemu operacyjnego (lub długość kolejki)|Nie wymiarów|
 
 ## <a name="microsoftcontainerinstancecontainergroups"></a>Microsoft.ContainerInstance/containerGroups
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|CpuUsage|Użycie procesora CPU|Licznik|Średnia|Użycie procesora CPU na wszystkich rdzeni millicores.|containerName|
-|MemoryUsage|Użycie pamięci|Bajty|Średnia|Użycie pamięci Całkowita liczba bajtów.|containerName|
+|CpuUsage|Użycie procesora CPU|Licznik|Średnia|Użycie procesora CPU na wszystkich rdzeniach (w tysięcznych częściach rdzenia).|containerName|
+|MemoryUsage|Użycie pamięci|Bajty|Średnia|Całkowite użycie pamięci (w bajtach).|containerName|
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/managedClusters
 
@@ -467,7 +462,7 @@ Azure Monitor udostępnia kilka metod do interakcji z metryk, takich jak wykresy
 |DCIProfilesCount|Liczba wystąpień profilu|Licznik|Ostatnia||Nie wymiarów|
 |DCIInteractionsPerMonthCount|Interakcje na liczba miesięcy|Licznik|Ostatnia||Nie wymiarów|
 |DCIKpisCount|Liczba wskaźnika KPI|Licznik|Ostatnia||Nie wymiarów|
-|DCISegmentsCount|Liczba segmentów.|Licznik|Ostatnia||Nie wymiarów|
+|DCISegmentsCount|Liczba segmentów|Licznik|Ostatnia||Nie wymiarów|
 |DCIPredictiveMatchPoliciesCount|Liczba dopasowań predykcyjnej|Licznik|Ostatnia||Nie wymiarów|
 |DCIPredictionsCount|Liczba prognozowania|Licznik|Ostatnia||Nie wymiarów|
 
@@ -643,10 +638,10 @@ Azure Monitor udostępnia kilka metod do interakcji z metryk, takich jak wykresy
 |ActiveConnections|ActiveConnections (wersja zapoznawcza)|Licznik|Średnia|Całkowita liczba aktywnych połączeń dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
 |ConnectionsOpened|Połączenia otwarte. (Wersja zapoznawcza)|Licznik|Średnia|Połączenia otwarte dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|EntityName|
 |ConnectionsClosed|Połączenia zamknięte. (Wersja zapoznawcza)|Licznik|Średnia|Połączenia zamknięte dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|EntityName|
-|CaptureBacklog|Lista prac przechwytywania. (Wersja zapoznawcza)|Licznik|Łącznie|Lista prac przechwytywania dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|EntityName|
+|CaptureBacklog|Lista prac funkcji Capture. (Wersja zapoznawcza)|Licznik|Łącznie|Lista prac funkcji Capture dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|EntityName|
 |CapturedMessages|Przechwycone komunikaty. (Wersja zapoznawcza)|Licznik|Łącznie|Przechwycone komunikaty dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|EntityName|
 |CapturedBytes|Przechwycone bajty. (Wersja zapoznawcza)|Bajty|Łącznie|Przechwycone bajty dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|EntityName|
-|Rozmiar|Rozmiar (wersja zapoznawcza)|Bajty|Średnia|Rozmiar EventHub w bajtach. (Wersja zapoznawcza)|EntityName|
+|Rozmiar|Rozmiar (wersja zapoznawcza)|Bajty|Średnia|Rozmiar Centrum zdarzeń w bajtach. (Wersja zapoznawcza)|EntityName|
 |INREQS|Żądania przychodzące|Licznik|Łącznie|Łączna liczba żądań wysłania dla przestrzeni nazw|Nie wymiarów|
 |SUCCREQ|Żądania zakończone powodzeniem|Licznik|Łącznie|Łączna liczba udanych żądań dla przestrzeni nazw|Nie wymiarów|
 |FAILREQ|Żądania zakończone niepowodzeniem|Licznik|Łącznie|Łączna liczba nieudanych żądań dla przestrzeni nazw|Nie wymiarów|
@@ -1017,8 +1012,8 @@ Azure Monitor udostępnia kilka metod do interakcji z metryk, takich jak wykresy
 |OutgoingMessages|Wysyła komunikaty wychodzące (wersja zapoznawcza)|Licznik|Łącznie|Komunikaty wychodzące dla elementu Microsoft.ServiceBus. (Wersja zapoznawcza)|EntityName|
 |ActiveConnections|ActiveConnections (wersja zapoznawcza)|Licznik|Łącznie|Całkowita liczba aktywnych połączeń dla elementu Microsoft.ServiceBus. (Wersja zapoznawcza)|Nie wymiarów|
 |Rozmiar|Rozmiar (wersja zapoznawcza)|Bajty|Średnia|Rozmiar kolejki/tematu w bajtach. (Wersja zapoznawcza)|EntityName|
-|Komunikaty|Liczba wiadomości w kolejce/tematu. (Wersja zapoznawcza)|Licznik|Średnia|Liczba wiadomości w kolejce/tematu. (Wersja zapoznawcza)|EntityName|
-|ActiveMessages|Liczba aktywnych wiadomości w kolejce/tematu. (Wersja zapoznawcza)|Licznik|Średnia|Liczba aktywnych wiadomości w kolejce/tematu. (Wersja zapoznawcza)|EntityName|
+|Komunikaty|Liczba komunikatów w kolejce/temacie. (Wersja zapoznawcza)|Licznik|Średnia|Liczba komunikatów w kolejce/temacie. (Wersja zapoznawcza)|EntityName|
+|ActiveMessages|Liczba aktywnych komunikatów w kolejce/temacie. (Wersja zapoznawcza)|Licznik|Średnia|Liczba aktywnych komunikatów w kolejce/temacie. (Wersja zapoznawcza)|EntityName|
 |CPUXNS|Użycie procesora na przestrzeń nazw|Procent|Maksimum|Metryka użycia procesora przestrzeni nazw w usłudze Service Bus w warstwie Premium|Nie wymiarów|
 |WSXNS|Użycie rozmiaru pamięci na przestrzeń nazw|Procent|Maksimum|Metryka użycia pamięci przestrzeni nazw w usłudze Service Bus w warstwie Premium|Nie wymiarów|
 
@@ -1046,9 +1041,9 @@ Azure Monitor udostępnia kilka metod do interakcji z metryk, takich jak wykresy
 |dtu_consumption_percent|Procent użycia jednostek DTU|Procent|Średnia|Procent użycia jednostek DTU|Nie wymiarów|
 |magazyn|Rozmiar całkowitą bazy danych|Bajty|Maksimum|Rozmiar całkowitą bazy danych|Nie wymiarów|
 |connection_successful|Udane połączenia|Licznik|Łącznie|Udane połączenia|Nie wymiarów|
-|connection_failed|Połączenia nie powiodło się|Licznik|Łącznie|Połączenia nie powiodło się|Nie wymiarów|
+|connection_failed|Połączenia zakończone niepowodzeniem|Licznik|Łącznie|Połączenia zakończone niepowodzeniem|Nie wymiarów|
 |blocked_by_firewall|Blokowane przez zaporę|Licznik|Łącznie|Blokowane przez zaporę|Nie wymiarów|
-|Zakleszczenie|Zakleszczenie|Licznik|Łącznie|Zakleszczenie|Nie wymiarów|
+|Zakleszczenie|Zakleszczenia|Licznik|Łącznie|Zakleszczenia|Nie wymiarów|
 |storage_percent|Procent użycia rozmiaru bazy danych|Procent|Maksimum|Procent użycia rozmiaru bazy danych|Nie wymiarów|
 |xtp_storage_percent|Procent magazynu OLTP w pamięci|Procent|Średnia|Procent magazynu OLTP w pamięci|Nie wymiarów|
 |workers_percent|Procent pracowników|Procent|Średnia|Procent pracowników|Nie wymiarów|
@@ -1169,7 +1164,7 @@ Azure Monitor udostępnia kilka metod do interakcji z metryk, takich jak wykresy
 |AMLCalloutFailedRequests|Żądania funkcji zakończone niepowodzeniem|Licznik|Łącznie|Żądania funkcji zakończone niepowodzeniem|Nie wymiarów|
 |AMLCalloutInputEvents|Zdarzenia funkcji|Licznik|Łącznie|Zdarzenia funkcji|Nie wymiarów|
 |DeserializationError|Błędy deserializacji danych wejściowych|Licznik|Łącznie|Błędy deserializacji danych wejściowych|Nie wymiarów|
-|EarlyInputEvents|Zdarzenia, których czas aplikacji jest wcześniejszy niż czas przyjęcia.|Licznik|Łącznie|Zdarzenia, których czas aplikacji jest wcześniejszy niż czas przyjęcia.|Nie wymiarów|
+|EarlyInputEvents|Zdarzenia, których czas aplikacji jest wcześniejszy niż czas ich nadejściu.|Licznik|Łącznie|Zdarzenia, których czas aplikacji jest wcześniejszy niż czas ich nadejściu.|Nie wymiarów|
 
 ## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft.TimeSeriesInsights/environments
 
@@ -1229,19 +1224,19 @@ Azure Monitor udostępnia kilka metod do interakcji z metryk, takich jak wykresy
 |AppConnections|Połączenia|Licznik|Średnia|Połączenia|Wystąpienie|
 |Dojścia|Liczba dojść|Licznik|Średnia|Liczba dojść|Wystąpienie|
 |Wątki|Liczba wątków|Licznik|Średnia|Liczba wątków|Wystąpienie|
-|IoReadBytesPerSecond|Bajty odczytu We/Wy na sekundę|Bajty na sekundę|Łącznie|Bajty odczytu We/Wy na sekundę|Wystąpienie|
-|IoWriteBytesPerSecond|We/Wy zapisu bajtów na sekundę|Bajty na sekundę|Łącznie|We/Wy zapisu bajtów na sekundę|Wystąpienie|
-|IoOtherBytesPerSecond|We/Wy innych bajtów na sekundę|Bajty na sekundę|Łącznie|We/Wy innych bajtów na sekundę|Wystąpienie|
-|IoReadOperationsPerSecond|Operacje odczytu We/Wy na sekundę|Bajty na sekundę|Łącznie|Operacje odczytu We/Wy na sekundę|Wystąpienie|
-|IoWriteOperationsPerSecond|Zapisu We/Wy na sekundę|Bajty na sekundę|Łącznie|Zapisu We/Wy na sekundę|Wystąpienie|
-|IoOtherOperationsPerSecond|We/Wy inne operacje na sekundę|Bajty na sekundę|Łącznie|We/Wy inne operacje na sekundę|Wystąpienie|
-|RequestsInApplicationQueue|Żądań w kolejce aplikacji|Licznik|Średnia|Żądań w kolejce aplikacji|Wystąpienie|
+|IoReadBytesPerSecond|Odczytane bajty We/Wy na sekundę|Bajty na sekundę|Łącznie|Odczytane bajty We/Wy na sekundę|Wystąpienie|
+|IoWriteBytesPerSecond|Zapisane bajty We/Wy na sekundę|Bajty na sekundę|Łącznie|Zapisane bajty We/Wy na sekundę|Wystąpienie|
+|IoOtherBytesPerSecond|Inne bajty We/Wy na sekundę|Bajty na sekundę|Łącznie|Inne bajty We/Wy na sekundę|Wystąpienie|
+|IoReadOperationsPerSecond|Inne operacje odczytu We/Wy na sekundę|Bajty na sekundę|Łącznie|Inne operacje odczytu We/Wy na sekundę|Wystąpienie|
+|IoWriteOperationsPerSecond|Operacje zapisu We/Wy na sekundę|Bajty na sekundę|Łącznie|Operacje zapisu We/Wy na sekundę|Wystąpienie|
+|IoOtherOperationsPerSecond|Inne operacje We/Wy na sekundę|Bajty na sekundę|Łącznie|Inne operacje We/Wy na sekundę|Wystąpienie|
+|RequestsInApplicationQueue|Żądania w kolejce aplikacji|Licznik|Średnia|Żądania w kolejce aplikacji|Wystąpienie|
 |CurrentAssemblies|Aktualna liczba zestawów|Licznik|Średnia|Aktualna liczba zestawów|Wystąpienie|
-|TotalAppDomains|Całkowita liczba aplikacji domen|Licznik|Średnia|Całkowita liczba aplikacji domen|Wystąpienie|
-|TotalAppDomainsUnloaded|Zwalnianie domen aplikacji całkowita|Licznik|Średnia|Zwalnianie domen aplikacji całkowita|Wystąpienie|
-|Gen0Collections|Wyrzucania pokolenia 0|Licznik|Łącznie|Wyrzucania pokolenia 0|Wystąpienie|
-|Gen1Collections|Kolekcje odzyskiwania pamięci Gen 1|Licznik|Łącznie|Kolekcje odzyskiwania pamięci Gen 1|Wystąpienie|
-|Gen2Collections|Wyrzucania Gen 2|Licznik|Łącznie|Wyrzucania Gen 2|Wystąpienie|
+|TotalAppDomains|Łączna liczba domen aplikacji|Licznik|Średnia|Łączna liczba domen aplikacji|Wystąpienie|
+|TotalAppDomainsUnloaded|Łączna liczba nie załadowanych domen aplikacji|Licznik|Średnia|Łączna liczba nie załadowanych domen aplikacji|Wystąpienie|
+|Gen0Collections|Zbieranie elementów bezużytecznych generacji 0|Licznik|Łącznie|Zbieranie elementów bezużytecznych generacji 0|Wystąpienie|
+|Gen1Collections|Zbieranie elementów bezużytecznych generacji 1|Licznik|Łącznie|Zbieranie elementów bezużytecznych generacji 1|Wystąpienie|
+|Gen2Collections|Zbieranie elementów bezużytecznych generacji 2|Licznik|Łącznie|Zbieranie elementów bezużytecznych generacji 2|Wystąpienie|
 
 ## <a name="microsoftwebsites-functions"></a>Microsoft.Web/sites (funkcje)
 
@@ -1254,19 +1249,19 @@ Azure Monitor udostępnia kilka metod do interakcji z metryk, takich jak wykresy
 |AverageMemoryWorkingSet|Średni zestaw roboczy pamięci|Bajty|Średnia|Średni zestaw roboczy pamięci|Wystąpienie|
 |FunctionExecutionUnits|Jednostki wykonawcze funkcji|Licznik|Łącznie|Jednostki wykonawcze funkcji|Wystąpienie|
 |FunctionExecutionCount|Liczba wykonań funkcji|Licznik|Łącznie|Liczba wykonań funkcji|Wystąpienie|
-|IoReadBytesPerSecond|Bajty odczytu We/Wy na sekundę|Bajty na sekundę|Łącznie|Bajty odczytu We/Wy na sekundę|Wystąpienie|
-|IoWriteBytesPerSecond|We/Wy zapisu bajtów na sekundę|Bajty na sekundę|Łącznie|We/Wy zapisu bajtów na sekundę|Wystąpienie|
-|IoOtherBytesPerSecond|We/Wy innych bajtów na sekundę|Bajty na sekundę|Łącznie|We/Wy innych bajtów na sekundę|Wystąpienie|
-|IoReadOperationsPerSecond|Operacje odczytu We/Wy na sekundę|Bajty na sekundę|Łącznie|Operacje odczytu We/Wy na sekundę|Wystąpienie|
-|IoWriteOperationsPerSecond|Zapisu We/Wy na sekundę|Bajty na sekundę|Łącznie|Zapisu We/Wy na sekundę|Wystąpienie|
-|IoOtherOperationsPerSecond|We/Wy inne operacje na sekundę|Bajty na sekundę|Łącznie|We/Wy inne operacje na sekundę|Wystąpienie|
-|RequestsInApplicationQueue|Żądań w kolejce aplikacji|Licznik|Średnia|Żądań w kolejce aplikacji|Wystąpienie|
+|IoReadBytesPerSecond|Odczytane bajty We/Wy na sekundę|Bajty na sekundę|Łącznie|Odczytane bajty We/Wy na sekundę|Wystąpienie|
+|IoWriteBytesPerSecond|Zapisane bajty We/Wy na sekundę|Bajty na sekundę|Łącznie|Zapisane bajty We/Wy na sekundę|Wystąpienie|
+|IoOtherBytesPerSecond|Inne bajty We/Wy na sekundę|Bajty na sekundę|Łącznie|Inne bajty We/Wy na sekundę|Wystąpienie|
+|IoReadOperationsPerSecond|Inne operacje odczytu We/Wy na sekundę|Bajty na sekundę|Łącznie|Inne operacje odczytu We/Wy na sekundę|Wystąpienie|
+|IoWriteOperationsPerSecond|Operacje zapisu We/Wy na sekundę|Bajty na sekundę|Łącznie|Operacje zapisu We/Wy na sekundę|Wystąpienie|
+|IoOtherOperationsPerSecond|Inne operacje We/Wy na sekundę|Bajty na sekundę|Łącznie|Inne operacje We/Wy na sekundę|Wystąpienie|
+|RequestsInApplicationQueue|Żądania w kolejce aplikacji|Licznik|Średnia|Żądania w kolejce aplikacji|Wystąpienie|
 |CurrentAssemblies|Aktualna liczba zestawów|Licznik|Średnia|Aktualna liczba zestawów|Wystąpienie|
-|TotalAppDomains|Całkowita liczba aplikacji domen|Licznik|Średnia|Całkowita liczba aplikacji domen|Wystąpienie|
-|TotalAppDomainsUnloaded|Zwalnianie domen aplikacji całkowita|Licznik|Średnia|Zwalnianie domen aplikacji całkowita|Wystąpienie|
-|Gen0Collections|Wyrzucania pokolenia 0|Licznik|Łącznie|Wyrzucania pokolenia 0|Wystąpienie|
-|Gen1Collections|Kolekcje odzyskiwania pamięci Gen 1|Licznik|Łącznie|Kolekcje odzyskiwania pamięci Gen 1|Wystąpienie|
-|Gen2Collections|Wyrzucania Gen 2|Licznik|Łącznie|Wyrzucania Gen 2|Wystąpienie|
+|TotalAppDomains|Łączna liczba domen aplikacji|Licznik|Średnia|Łączna liczba domen aplikacji|Wystąpienie|
+|TotalAppDomainsUnloaded|Łączna liczba nie załadowanych domen aplikacji|Licznik|Średnia|Łączna liczba nie załadowanych domen aplikacji|Wystąpienie|
+|Gen0Collections|Zbieranie elementów bezużytecznych generacji 0|Licznik|Łącznie|Zbieranie elementów bezużytecznych generacji 0|Wystąpienie|
+|Gen1Collections|Zbieranie elementów bezużytecznych generacji 1|Licznik|Łącznie|Zbieranie elementów bezużytecznych generacji 1|Wystąpienie|
+|Gen2Collections|Zbieranie elementów bezużytecznych generacji 2|Licznik|Łącznie|Zbieranie elementów bezużytecznych generacji 2|Wystąpienie|
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft.Web/sites/slots
 
@@ -1293,19 +1288,19 @@ Azure Monitor udostępnia kilka metod do interakcji z metryk, takich jak wykresy
 |AppConnections|Połączenia|Licznik|Średnia|Połączenia|Wystąpienie|
 |Dojścia|Liczba dojść|Licznik|Średnia|Liczba dojść|Wystąpienie|
 |Wątki|Liczba wątków|Licznik|Średnia|Liczba wątków|Wystąpienie|
-|IoReadBytesPerSecond|Bajty odczytu We/Wy na sekundę|Bajty na sekundę|Łącznie|Bajty odczytu We/Wy na sekundę|Wystąpienie|
-|IoWriteBytesPerSecond|We/Wy zapisu bajtów na sekundę|Bajty na sekundę|Łącznie|We/Wy zapisu bajtów na sekundę|Wystąpienie|
-|IoOtherBytesPerSecond|We/Wy innych bajtów na sekundę|Bajty na sekundę|Łącznie|We/Wy innych bajtów na sekundę|Wystąpienie|
-|IoReadOperationsPerSecond|Operacje odczytu We/Wy na sekundę|Bajty na sekundę|Łącznie|Operacje odczytu We/Wy na sekundę|Wystąpienie|
-|IoWriteOperationsPerSecond|Zapisu We/Wy na sekundę|Bajty na sekundę|Łącznie|Zapisu We/Wy na sekundę|Wystąpienie|
-|IoOtherOperationsPerSecond|We/Wy inne operacje na sekundę|Bajty na sekundę|Łącznie|We/Wy inne operacje na sekundę|Wystąpienie|
-|RequestsInApplicationQueue|Żądań w kolejce aplikacji|Licznik|Średnia|Żądań w kolejce aplikacji|Wystąpienie|
+|IoReadBytesPerSecond|Odczytane bajty We/Wy na sekundę|Bajty na sekundę|Łącznie|Odczytane bajty We/Wy na sekundę|Wystąpienie|
+|IoWriteBytesPerSecond|Zapisane bajty We/Wy na sekundę|Bajty na sekundę|Łącznie|Zapisane bajty We/Wy na sekundę|Wystąpienie|
+|IoOtherBytesPerSecond|Inne bajty We/Wy na sekundę|Bajty na sekundę|Łącznie|Inne bajty We/Wy na sekundę|Wystąpienie|
+|IoReadOperationsPerSecond|Inne operacje odczytu We/Wy na sekundę|Bajty na sekundę|Łącznie|Inne operacje odczytu We/Wy na sekundę|Wystąpienie|
+|IoWriteOperationsPerSecond|Operacje zapisu We/Wy na sekundę|Bajty na sekundę|Łącznie|Operacje zapisu We/Wy na sekundę|Wystąpienie|
+|IoOtherOperationsPerSecond|Inne operacje We/Wy na sekundę|Bajty na sekundę|Łącznie|Inne operacje We/Wy na sekundę|Wystąpienie|
+|RequestsInApplicationQueue|Żądania w kolejce aplikacji|Licznik|Średnia|Żądania w kolejce aplikacji|Wystąpienie|
 |CurrentAssemblies|Aktualna liczba zestawów|Licznik|Średnia|Aktualna liczba zestawów|Wystąpienie|
-|TotalAppDomains|Całkowita liczba aplikacji domen|Licznik|Średnia|Całkowita liczba aplikacji domen|Wystąpienie|
-|TotalAppDomainsUnloaded|Zwalnianie domen aplikacji całkowita|Licznik|Średnia|Zwalnianie domen aplikacji całkowita|Wystąpienie|
-|Gen0Collections|Wyrzucania pokolenia 0|Licznik|Łącznie|Wyrzucania pokolenia 0|Wystąpienie|
-|Gen1Collections|Kolekcje odzyskiwania pamięci Gen 1|Licznik|Łącznie|Kolekcje odzyskiwania pamięci Gen 1|Wystąpienie|
-|Gen2Collections|Wyrzucania Gen 2|Licznik|Łącznie|Wyrzucania Gen 2|Wystąpienie|
+|TotalAppDomains|Łączna liczba domen aplikacji|Licznik|Średnia|Łączna liczba domen aplikacji|Wystąpienie|
+|TotalAppDomainsUnloaded|Łączna liczba nie załadowanych domen aplikacji|Licznik|Średnia|Łączna liczba nie załadowanych domen aplikacji|Wystąpienie|
+|Gen0Collections|Zbieranie elementów bezużytecznych generacji 0|Licznik|Łącznie|Zbieranie elementów bezużytecznych generacji 0|Wystąpienie|
+|Gen1Collections|Zbieranie elementów bezużytecznych generacji 1|Licznik|Łącznie|Zbieranie elementów bezużytecznych generacji 1|Wystąpienie|
+|Gen2Collections|Zbieranie elementów bezużytecznych generacji 2|Licznik|Łącznie|Zbieranie elementów bezużytecznych generacji 2|Wystąpienie|
 
 ## <a name="microsoftwebhostingenvironmentsmultirolepools"></a>Microsoft.Web/hostingEnvironments/multiRolePools
 

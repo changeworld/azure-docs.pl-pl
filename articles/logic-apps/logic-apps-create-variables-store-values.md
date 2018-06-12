@@ -3,19 +3,19 @@ title: Tworzenie zmiennych przy zapisywaniu wartości - Azure Logic Apps | Dokum
 description: Zapisz i zarządzaniu wartości przez tworzenie zmiennych w aplikacjach logiki platformy Azure
 services: logic-apps
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 ms.author: estfan
 ms.topic: article
 ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: cc464edf416a2b036d84e65e05810104d2706041
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0efce9fbbbd241f335f08bb258b6ba343982fdb9
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655597"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299192"
 ---
 # <a name="create-variables-for-saving-and-managing-values-in-azure-logic-apps"></a>Utwórz zmienne, zapisywania i zarządzanie wartości w aplikacjach logiki platformy Azure
 

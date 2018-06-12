@@ -1,25 +1,19 @@
 ---
-title: Akcje elementu Webhook dla dziennika alertów w alertach Azure | Dokumentacja firmy Microsoft
+title: Akcje elementu Webhook dla dziennika alertów w alertach Azure
 description: W tym artykule opisano, jak reguły alertu dziennika przy użyciu dziennika analityka lub application insights przeprowadzi wypychanie danych jako elementu webhook HTTP i szczegóły różne dostosowania możliwe.
 author: msvijayn
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: monitoring
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: 981b6b65675550fd1403064ad3113c2dca0c3f6e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: alerts
+ms.openlocfilehash: 304476e2d6862fbb6a859ae6fefe96d177b1111b
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638674"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264259"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akcje elementu Webhook dla dziennika reguły alertów
 Gdy [alert jest tworzony na platformie Azure ](monitor-alerts-unified-usage.md), masz możliwość [konfigurowania za pomocą grup akcji](monitoring-action-groups.md) przeprowadzenie jedną lub więcej akcji.  W tym artykule opisano webhook różne akcje, które są dostępne i szczegółowe informacje na temat konfigurowania niestandardowego elementu webhook opartych na formacie JSON.
@@ -33,7 +27,7 @@ Akcje elementu Webhook wymagają właściwości w poniższej tabeli:
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Adres URL elementu webhook |Adres URL elementu webhook. |
+| Adres URL elementu Webhook |Adres URL elementu webhook. |
 | Niestandardowy ładunek JSON |Niestandardowy ładunek do wysłania z elementu webhook, po wybraniu tej opcji podczas tworzenia alertu. Szczegóły dostępne pod adresem [Zarządzanie alertami korzystanie z alertów Azure ](monitor-alerts-unified-usage.md) |
 
 > [!NOTE]
@@ -200,7 +194,7 @@ Poniżej przedstawiono przykładowe ładunku dla akcji niestandardowej elementu 
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - Dowiedz się więcej o [rejestrowania alertów w alertach Azure ](monitor-alerts-unified-log.md)
 - Tworzenie i zarządzanie nimi [grupy akcji na platformie Azure](monitoring-action-groups.md)
 - Dowiedz się więcej o [usługi Application Insights](../application-insights/app-insights-analytics.md)

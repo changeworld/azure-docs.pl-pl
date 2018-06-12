@@ -1,24 +1,20 @@
 ---
-title: Schemat konfiguracji diagnostyki Azure 1.2 | Dokumentacja firmy Microsoft
+title: Rozszerzenie diagnostyki Azure 1.2 schemat konfiguracji
 description: Znaczenie tylko wtedy, gdy 2.5 zestawu SDK platformy Azure za pomocą usługi Azure Virtual Machines, zestawy skalowania maszyny wirtualnej, sieci szkieletowej usług lub usługi w chmurze.
-services: monitoring-and-diagnostics
-documentationcenter: .net
+services: azure-monitor
 author: rboucher
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
-ms.openlocfilehash: 1e9cc6d0950945df8c4fba74d8e1f6196be224f0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: diagnostic-extension
+ms.openlocfilehash: 32fcd3171f1adcfd565c38ca1191342e7afaf5a9
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267700"
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Schemat konfiguracji 1.2 Diagnostyka Azure
 > [!NOTE]
@@ -150,7 +146,7 @@ Definiuje ustawienia konfiguracji dla danych telemetrycznych do zebrania. W poni
 
 |Nazwa elementu|Opis|  
 |------------------|-----------------|  
-|**Absolute**|Ścieżka bezwzględna do katalogu, do monitorowania. Wymagane są następujące atrybuty:<br /><br /> -                     **Ścieżka** -ścieżka bezwzględna do katalogu, do monitorowania.<br /><br /> -                      **expandEnvironment** — Określa, czy są rozwinięte zmiennych środowiskowych w ścieżce.|  
+|**Bezwzględne**|Ścieżka bezwzględna do katalogu, do monitorowania. Wymagane są następujące atrybuty:<br /><br /> -                     **Ścieżka** -ścieżka bezwzględna do katalogu, do monitorowania.<br /><br /> -                      **expandEnvironment** — Określa, czy są rozwinięte zmiennych środowiskowych w ścieżce.|  
 |**LocalResource**|Ścieżka względna zasobu lokalnego do monitorowania. Atrybuty wymagane są:<br /><br /> -                     **Nazwa** -zasób lokalny, zawierająca katalogi do monitorowania<br /><br /> -                     **relativePath** -ścieżka względna nazwa zawierająca katalogi do monitorowania|  
 
 ## <a name="etwproviders-element"></a>EtwProviders Element  
@@ -196,7 +192,7 @@ Definiuje ustawienia konfiguracji dla danych telemetrycznych do zebrania. W poni
 
 |Nazwa elementu|Opis|  
 |------------------|-----------------|  
-|**annotation**|Wymagany atrybut:<br /><br /> **Nazwa wyświetlana** — Nazwa wyświetlana dla licznika<br /><br /> Atrybut opcjonalny:<br /><br /> **Ustawienia regionalne** -ustawień regionalnych używany podczas wyświetlania Nazwa licznika|  
+|**Adnotacja**|Wymagany atrybut:<br /><br /> **Nazwa wyświetlana** — Nazwa wyświetlana dla licznika<br /><br /> Atrybut opcjonalny:<br /><br /> **Ustawienia regionalne** -ustawień regionalnych używany podczas wyświetlania Nazwa licznika|  
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog Element  
  W poniższej tabeli opisano elementy podrzędne:  

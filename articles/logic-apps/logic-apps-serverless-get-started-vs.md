@@ -1,12 +1,12 @@
 ---
 title: Tworzenie aplikacji bez serwera w programie Visual Studio | Dokumentacja firmy Microsoft
-description: "Wprowadzenie do pierwszej aplikacji niekorzystającą z tego przewodnika na tworzenie, wdrażanie i zarządzanie aplikacjami w programie Visual Studio."
-keywords: 
+description: Wprowadzenie do pierwszej aplikacji niekorzystającą z tego przewodnika na tworzenie, wdrażanie i zarządzanie aplikacjami w programie Visual Studio.
+keywords: ''
 services: logic-apps
 author: jeffhollan
-manager: anneta
-editor: 
-documentationcenter: 
+manager: jeconnoc
+editor: ''
+documentationcenter: ''
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: d3cd509a0073e45bf910e9a74a279d678ff03b63
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 75f2be44aa8cc239257d6d2a7dad448e9dbab4b4
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300460"
 ---
 # <a name="build-a-serverless-app-in-visual-studio-with-logic-apps-and-functions"></a>Tworzenie aplikacji bez serwera w programie Visual Studio z Logic Apps i funkcje
 

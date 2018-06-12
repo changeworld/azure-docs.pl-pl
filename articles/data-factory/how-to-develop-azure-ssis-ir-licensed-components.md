@@ -1,5 +1,5 @@
 ---
-title: Zainstaluj płatnej lub licencji składników środowiska uruchomieniowego integracji usług SSIS Azure | Dokumentacja firmy Microsoft
+title: Zainstaluj składniki licencjonowane środowiska uruchomieniowego integracji usług SSIS Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak można programować niezależnego dostawcy oprogramowania i instalacji płatnej lub licencji niestandardowych składników środowiska uruchomieniowego integracji usług SSIS Azure
 services: data-factory
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: douglasl
-ms.openlocfilehash: e2e000df2933b8fa08bf98ef55b12f90de6a5e51
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 6351381e525d256ef5e9693ea1fb5e3a6f4e5ea3
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830847"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298580"
 ---
-# <a name="develop-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Opracowywanie płatną lub licencjonowanych niestandardowych składników środowiska uruchomieniowego integracji usług SSIS Azure
+# <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Zainstaluj składniki niestandardowe płatną lub licencjonowanych środowiska uruchomieniowego integracji usług SSIS Azure
 
 W tym artykule opisano sposób niezależnego dostawcy oprogramowania mogą tworzyć i zainstaluj składniki niestandardowe płatną lub licencjonowane dla pakietów programu SQL Server Integration Services (SSIS) uruchom na platformie Azure w środowisku wykonawczym integracji usług SSIS Azure.
 

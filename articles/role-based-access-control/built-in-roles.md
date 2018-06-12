@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 05/18/2018
+ms.date: 06/06/2018
 ms.author: rolyon
-ms.reviewer: rqureshi
+ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 365959a588dc48e7991efea239ba823c3ca65e7a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cea928d5a4ea5cddaa9942c9535945e11f0f80ad
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640544"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267377"
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Role wbudowane dla kontroli dostępu opartej na rolach na platformie Azure
 [Kontrola dostępu oparta na rolach (RBAC)](overview.md) ma kilka definicji wbudowanych ról, które można przypisać do użytkowników, grup i nazwy główne usług. Przypisania ról są sposób kontrolowania dostępu do zasobów na platformie Azure. Jeśli wbudowane role nie spełnienia specyficznych potrzeb Twojej organizacji, możesz utworzyć własne [role niestandardowe](custom-roles.md).
@@ -133,6 +133,8 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 > | Microsoft.Authorization/*/Delete | Nie można usuwać role i przypisania ról |
 > | Microsoft.Authorization/*/Write | Nie można utworzyć role i przypisania ról |
 > | Microsoft.Authorization/elevateAccess/Action | Przyznaje osobie wywołującej uprawnienia administratora dostępu użytkowników w zakresie dzierżawy |
+> | Microsoft.Blueprint/blueprintAssignments/write |  |
+> | Microsoft.Blueprint/blueprintAssignments/delete |  |
 
 ## <a name="reader"></a>Czytelnik
 > [!div class="mx-tableFixed"]
@@ -709,7 +711,7 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 > | **Identyfikator** | 150f5e0c-0603-4f03-8c7f-cf70034c4e90 |
 > | **Akcje** |  |
 > | Microsoft.Insights/components/*/read |  |
-> | Microsoft.Insights/components/purge/action |  |
+> | Microsoft.Insights/components/purge/action | Czyszczenie danych z usługi Application Insights |
 > | Microsoft.OperationalInsights/workspaces/*/read |  |
 > | Microsoft.OperationalInsights/workspaces/purge/action | Usuń określone dane z obszaru roboczego |
 

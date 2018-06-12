@@ -1,24 +1,19 @@
 ---
-title: Azure integracji partnera Monitor | Dokumentacja firmy Microsoft
-description: "Więcej informacji na temat partnerów Azure Monitor i uzyskać dostęp dokumentację integracji z nich."
+title: Partnerów, którzy intergrate z monitorem Azure
+description: Więcej informacji na temat partnerów Azure Monitor i uzyskać dostęp dokumentację integracji z nich.
 author: johnkemnetz
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 01ee13ac-66fc-4edc-8b0c-32f69b986a26
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 3/15/2018
 ms.author: johnkem
-ms.openlocfilehash: 44315b88d55d370c8200952dc2ff9d64d64cf524
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.component: ''
+ms.openlocfilehash: c8f8dbc4aa32b550849ff14f3ad653311b9fab93
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265287"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure integracji partnera monitora
 | Partnerzy |  |  |
@@ -29,7 +24,7 @@ ms.lasthandoff: 03/16/2018
 | [![Logo partnera][dynatrace-logo]<br/>**Dynatrace**][dynatrace-anchor] | [![Logo partnera][grafana-logo]<br/>**Grafana**][grafana-anchor] | [![Logo partnera][logicmonitor-logo]<br/>**Monitor logiki**][logicmonitor-anchor] |
 | [![Logo partnera][moogsoft-logo]<br/>**Moogsoft**][moogsoft-anchor] | [![Logo partnera][opsgenie-logo]<br/>**OpsGenie**][opsgenie-anchor] | [![Logo partnera][pagerduty-logo]<br/>**PagerDuty**][pagerduty-anchor] |
 | [![Logo partnera][qradar-logo]<br/>**QRadar**][qradar-anchor] | [![Logo partnera][sciencelogic-logo]<br/>**ScienceLogic**][sciencelogic-anchor] | [![Logo partnera][signalfx-logo]<br/>**SignalFx**][signalfx-anchor] |
-| [![Logo partnera][signl4-logo]<br/>**SIGNL4**][signl4-anchor] | [**SolarWinds**][solarwinds-anchor] | [![Logo partnera][splunk-logo]<br/>**Splunk**][splunk-anchor] |
+| [![Logo partnera][signl4-logo]<br/>**SIGNL4**][signl4-anchor] | [**Solarwinds?**][solarwinds-anchor] | [![Logo partnera][splunk-logo]<br/>**Splunk**][splunk-anchor] |
 | [![Logo partnera][sumologic-logo]<br/>**Sumo logiki**][sumologic-anchor] | [![Logo partnera][turbonomic-logo]<br/>**Turbonomic**][turbonomic-anchor] | |
 
 ## <a name="alertlogic-log-manager"></a>Menedżer dzienników AlertLogic
@@ -146,7 +141,7 @@ Sumo jest bezpieczne, natywne chmury maszyny usługi analizy danych, dostarcza a
 [Dowiedz się więcej.][sumologic-doc]
 
 ## <a name="turbonomic"></a>Turbonomic
-Turbonomic dostarcza automatyzacji obciążenia dla chmur hybrydowych przy jednocześnie optymalizacji wydajności, koszt i zgodności w czasie rzeczywistym. Turbonomic pomaga organizacjom można w ich Azure nieruchomości elastycznej stale optymalizując nieruchomości, aby upewnić się, że aplikacje stale zasobów niezbędnych do umowy SLA dla i nic więcej w zasobów obliczeniowych, magazynu i sieci IaaS i PaaS warstwy. Organizacje mogą symulować migracji, prawidłowo skalowania obciążeń i wycofywania zasobów Centrum danych odpowiedzialne migrację do platformy Azure na czas, w ramach budżetu, przy jednoczesnym zapewnieniu wydajności i zgodności. Turbonomic jest obsługiwanego interfejsu API i działa jako bez agenta maszyny Wirtualnej w ramach platformy Azure i lokalnymi.
+Turbonomic dostarcza automatyzacji obciążenia dla chmur hybrydowych przy jednocześnie optymalizacji wydajności, koszt i zgodności w czasie rzeczywistym. Turbonomic pomaga organizacjom można w ich Azure nieruchomości elastycznej stale optymalizując nieruchomości, aby upewnić się, że aplikacje stale zasobów niezbędnych do umowy SLA dla i nic więcej w zasobów obliczeniowych, magazynu i sieci IaaS i PaaS warstwy. Organizacje mogą symulować migracji, prawidłowo skalowania obciążeń i wycofywania zasobów Centrum danych odpowiedzialne migrację do platformy Azure na czas, w ramach budżetu, przy jednoczesnym zapewnieniu wydajności i zgodności. Usługa Turbonomic pracuje w oparciu o interfejs API i działa jako bezagentowa maszyna wirtualna na platformie Azure oraz lokalnie.
 
 [Dowiedz się więcej.][turbonomic-doc]
 
@@ -177,7 +172,7 @@ Turbonomic dostarcza automatyzacji obciążenia dla chmur hybrydowych przy jedno
 [sciencelogic-anchor]: #sciencelogic "ScienceLogic"
 [signalfx-anchor]: #signalfx "SignalFx"
 [signl4-anchor]: #signl4 "SIGNL4"
-[solarwinds-anchor]: #solarwinds "SolarWinds"
+[solarwinds-anchor]: #solarwinds "Solarwinds?"
 [splunk-anchor]: #azure-monitor-add-on-for-splunk "Splunk"
 [sumologic-anchor]: #sumo-logic "Logika sumo"
 [turbonomic-anchor]: #turbonomic "Turbonomic"

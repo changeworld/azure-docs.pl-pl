@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: f6722ed3bdaf8ed2312a371690e3e9b4b61883f4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bb33f2f5062749510906957fda5c8b0eeecdee60
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619511"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297774"
 ---
-# <a name="manage-an-azure-ssis-integration-runtime"></a>Zarządzanie środowiska uruchomieniowego integracji usług SSIS Azure
-[Utworzyć środowiska uruchomieniowego integracji usług SSIS Azure](create-azure-ssis-integration-runtime.md) artykule przedstawiono sposób tworzenia Azure SSIS integrację środowiska uruchomieniowego (IR) przy użyciu fabryki danych Azure. Ten artykuł zawiera informacje o konieczności ponownej konfiguracji istniejącego środowiska uruchomieniowego integracji usług SSIS Azure.  
+# <a name="reconfigure-the-azure-ssis-integration-runtime"></a>Skonfiguruj ponownie środowiska uruchomieniowego integracji usług SSIS Azure
+W tym artykule opisano, jak zmienić konfigurację istniejącego środowiska uruchomieniowego integracji usług SSIS Azure. Aby utworzyć Azure SSIS integrację środowiska uruchomieniowego (IR) w fabryce danych Azure, zobacz [utworzyć środowiska uruchomieniowego integracji usług SSIS Azure](create-azure-ssis-integration-runtime.md).  
 
 > [!NOTE]
 > Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz dostępnej ogólnie wersji 1 usługi Data Factory, zobacz [Data Factory version 1 documentation (Dokumentacja usługi Data Factory w wersji 1)](v1/data-factory-introduction.md).
@@ -97,7 +97,7 @@ Aby uzyskać informacje o środowisku uruchomieniowym usług SSIS Azure zobacz n
 
 - [Środowisko uruchomieniowe integracji usług SSIS Azure](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ten artykuł zawiera informacje o pojęciach dotyczących środowisk uruchomieniowych integracji ogólnie tym podczerwieni Azure SSIS. 
 - [Samouczek: Wdrażanie pakietów usług SSIS na platformie Azure](tutorial-create-azure-ssis-runtime-portal.md). Ten artykuł zawiera szczegółowe instrukcje dotyczące tworzenia środowiska Azure-SSIS IR i używania bazy danych Azure SQL do hostowania wykazu usług SSIS. 
-- [How to: Create an Azure-SSIS integration runtime (Jak: Tworzenie środowiska Azure SSIS Integration Runtime)](create-azure-ssis-integration-runtime.md). Ten artykuł stanowi rozszerzenie samouczka i zawiera instrukcje dotyczące używania wystąpienia zarządzanego Azure SQL (wersja zapoznawcza) oraz dołączania środowiska IR do sieci wirtualnej. 
-- [Join an Azure-SSIS IR to a VNet (Dołączanie środowiska Azure-SSIS IR do sieci wirtualnej)](join-azure-ssis-integration-runtime-virtual-network.md). Ten artykuł zawiera podstawowe informacje na temat dołączania środowiska Azure-SSIS IR do sieci wirtualnej platformy Azure. Opisano w nim kroki konfigurowania sieci wirtualnej za pomocą witryny Azure Portal tak, aby umożliwić dołączanie środowiska Azure-SSIS IR do sieci wirtualnej. 
+- [How to: Create an Azure-SSIS integration runtime (Jak: Tworzenie środowiska Azure SSIS Integration Runtime)](create-azure-ssis-integration-runtime.md). W tym artykule rozszerzenie samouczka i zawiera instrukcje dotyczące przy użyciu wystąpienia zarządzane Azure SQL (wersja zapoznawcza) i dołączenie IR do sieci wirtualnej. 
+- [Dołącz IR Azure SSIS do sieci wirtualnej](join-azure-ssis-integration-runtime-virtual-network.md). Ten artykuł zawiera informacje o pojęciach dotyczących przyłączania IR Azure SSIS do sieci wirtualnej platformy Azure. Umożliwia także kroki, aby skonfigurować sieci wirtualnej, tak aby IR Azure SSIS można dołączyć do sieci wirtualnej za pomocą portalu Azure. 
 - [Monitor an Azure-SSIS IR (Monitorowanie środowiska Azure-SSIS IR)](monitor-integration-runtime.md#azure-ssis-integration-runtime). W tym artykule przedstawiono sposób pobierania informacji o środowisku Azure-SSIS IR i opisów stanów w pobranych informacjach. 
  

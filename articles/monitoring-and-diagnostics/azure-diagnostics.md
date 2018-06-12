@@ -1,24 +1,20 @@
 ---
-title: Omówienie diagnostyki Azure rozszerzenia | Dokumentacja firmy Microsoft
+title: Omówienie rozszerzenia diagnostyki Azure
 description: Użyj diagnostyki Azure dla debugowania pomiaru wydajności, monitorowanie, analiza ruchu w usługi w chmurze, maszyn wirtualnych i sieci szkieletowej usług
-services: multiple
-documentationcenter: .net
+services: azure-monitor
 author: rboucher
-manager: ''
-editor: ''
-ms.assetid: baad40d8-c915-4f93-b486-8b160bf33463
-ms.service: multiple
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: robb
-ms.openlocfilehash: daeaddefa461e71fcc62af4efc4fb7084b237cf9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.component: diagnostic-extension
+ms.openlocfilehash: b4ec82112ea0defcea4f687abaad7d96627cb902
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267683"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Co to jest rozszerzenie diagnostyki Azure
 Rozszerzenie Azure Diagnostics jest agenta w ramach platformy Azure, która umożliwia zbieranie danych diagnostycznych na wdrożonej aplikacji. Można użyć rozszerzenia diagnostyki z wielu różnych źródeł. Obecnie obsługiwane są usługi w chmurze Azure (klasyczne) w sieci Web i proces roboczy, maszyn wirtualnych, zestawy skalowania maszyny wirtualnej i sieci szkieletowej usług. Innymi usługami platformy Azure jest diagnostyki różnych metod. Zobacz [monitorowania na platformie Azure — omówienie](monitoring-overview.md). 
@@ -35,7 +31,7 @@ Rozszerzenia diagnostyki Azure można zebrać następujące typy danych:
 | Dzienniki aplikacji |Wiadomości śledzenia zapisanych przez aplikację |
 | Dzienniki zdarzeń systemu Windows |Informacje wysyłane do rejestrowania zdarzeń systemu |
 | Źródło zdarzenia platformy .NET |Kod zapisywania zdarzeń przy użyciu programu .NET [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) — klasa |
-| Dzienniki programu IIS |Informacje o witryn sieci web usług IIS |
+| Dzienniki usług IIS |Informacje o witryn sieci web usług IIS |
 | Manifest na podstawie ETW |Zdarzenia śledzenia dla systemu Windows zdarzenia generowane przez żaden proces |
 | Zrzuty awaryjne |Informacje o stanie procesu w przypadku awarii aplikacji |
 | Dzienniki błędów niestandardowych |Dzienniki tworzone przez usługi lub aplikacji |

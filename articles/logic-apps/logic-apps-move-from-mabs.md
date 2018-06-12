@@ -4,7 +4,7 @@ description: Przenieś lub migrację usług BizTalk Azure (MABS) do usługi Azur
 services: logic-apps
 documentationcenter: ''
 author: jonfancey
-manager: anneta
+manager: jeconnoc
 editor: ''
 ms.assetid: ''
 ms.service: logic-apps
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: jonfan; LADocs
-ms.openlocfilehash: f5ad003189d70216198f2d5c7719a971c16d5479
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 846386172c0221c217430e62c8560484f799fa7f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299549"
 ---
 # <a name="move-from-biztalk-services-to-azure-logic-apps"></a>Przenoszenie z usługi BizTalk Services do usługi Azure Logic Apps
 
@@ -67,9 +68,9 @@ Domyślnie każdy Mostek ma punkt końcowy HTTP, który jest skonfigurowany z ad
 W usługach BizTalk mostka jest odpowiednikiem potoku przetwarzania. Mostek może zająć danych otrzymywanych z łącznika, czy niektóre pracować z danymi i wysyłać wyniki do innego systemu. Logic Apps działa identycznie Obsługa tego samego wzorców interakcji z potoku jako usługi BizTalk i zapewniając innymi wzorami integracji. [Mostek żądanie-odpowiedź XML](https://msdn.microsoft.com/library/azure/hh689781.aspx) w usługi BizTalk Services nosi nazwę potoku VETER, która składa się z etapów służących do wykonywania tych zadań:
 
 * V sprawdzania poprawności
-* (E) Enrich
+* (E) dodawanie
 * (T) transform
-* (E) Enrich
+* (E) dodawanie
 * (R) trasy
 
 Ten obraz przedstawia sposób przetwarzania są dzielone na żądanie i odpowiedź, która zapewnia kontrolę nad żądaniem i ścieżkach odpowiedzi oddzielnie, na przykład za pomocą innego mapowania dla każdej ścieżki:

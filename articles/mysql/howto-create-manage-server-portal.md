@@ -6,14 +6,15 @@ author: ajlam
 ms.author: andrela
 editor: jasonwhowell
 manager: kfile
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 4b52cb9e42e582d42424c2814e2e30f764a8679b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 065eb708a1d80b0eac618bd9039a859db6ef1340
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265588"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Tworzenie i zarządzanie Azure bazy danych dla serwera MySQL przy użyciu portalu Azure
 W tym temacie opisano, jak szybko utworzyć nową bazę danych Azure dla serwera MySQL. Zawiera także informacje o sposobie zarządzania serwerem przy użyciu portalu Azure. Zarządzanie serwerem obejmuje, wyświetlanie szczegółów serwera i bazy danych, zresetuj hasło, skalowania zasobów i usuwanie serwera.
@@ -48,7 +49,7 @@ Wykonaj następujące kroki, aby utworzyć bazę danych Azure MySQL serwera o na
 
 4. Kliknij przycisk **warstwa cenowa** umożliwia określenie poziomu wydajności i warstwy usługi dla nowego serwera. Wybierz **ogólnego przeznaczenia** kartę. *Generacja 4*, *2 rdzenie wirtualne*, *5 GB* oraz *7 dni* to wartości domyślne opcji **Generowanie obliczeń**, **Rdzeń wirtualny**, **Magazyn** oraz **Okres przechowywania kopii zapasowej**. Te suwaki możesz zostawić bez zmian. Aby włączyć kopie zapasowe serwera w magazynie geograficznie nadmiarowym, wybierz opcję **Geograficznie nadmiarowy** w pozycji **Opcje nadmiarowości kopii zapasowej**.
 
-   ![create-server-pricing-tier](./media/howto-create-manage-server-portal/create-server-pricing-tier.png)
+   ![Utwórz server--warstwy cenowej](./media/howto-create-manage-server-portal/create-server-pricing-tier.png)
 
 5. Kliknij przycisk **Utwórz**, aby aprowizować serwer. Aprowizacja zajmuje kilka minut.
 
@@ -74,7 +75,7 @@ Po zainicjowano nowy serwer, użytkownik ma kilka sposobów konfigurowania istni
 
 2. Zmień **vCore** ustawienie za pomocą suwaka na żądaną wartość.
 
-    ![scale-compute](./media/howto-create-manage-server-portal/scale-compute.png)
+    ![Skala obliczeń](./media/howto-create-manage-server-portal/scale-compute.png)
 
 3. Kliknij przycisk **OK**, aby zapisać zmiany.
 

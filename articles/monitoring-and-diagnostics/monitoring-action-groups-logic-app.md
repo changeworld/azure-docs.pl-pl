@@ -1,24 +1,19 @@
 ---
-title: Wyzwalanie złożonych akcji z alertami monitorowania Azure i grup akcje | Dokumentacja firmy Microsoft
+title: Wyzwalanie złożonych akcji z alertami monitorowania Azure i grup działań
 description: Dowiedz się, jak utworzyć akcję aplikacji logiki do procesu Azure monitorowanie alertów.
 author: dkamstra
-manager: chrad
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: dukek
-ms.openlocfilehash: 0020f1475d52d01897320062edbd3a66c8acf751
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.component: alerts
+ms.openlocfilehash: eafb2bcf0175190748c9dd020051cbebfcaee1fd
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263888"
 ---
 # <a name="create-a-logic-app-action"></a>Utworzenie aplikacji logiki
 ## <a name="overview"></a>Przegląd ##
@@ -58,7 +53,7 @@ Proces jest podobny, jeśli mają aplikację logiki, aby wykonywać różne akcj
 
     ![Kształt wyzwalacza żądania HTTP](media/monitoring-action-groups/http-request-trigger-shape.png "kształtu wyzwalacza żądania HTTP")
 
-7.  Wybierz **ładunku próbki używany do generowania schematu**.
+7.  Wybierz pozycję **Użyj przykładowego ładunku do wygenerowania schematu**.
 
     ![Przykładowy ładunek przycisk](media/monitoring-action-groups/use-sample-payload-button.png "przykładowy przycisk ładunku")
 
@@ -229,7 +224,7 @@ Wpisy usługi kondycji są częścią dziennik aktywności, więc ten proces prz
 
 9.  Wykonaj kroki 15 – 16 poprzedni przykład, aby zapisać aplikację logiki i zaktualizować grupy akcji
 
-## <a name="metric-alert"></a>Alert dotyczący metryki
+## <a name="metric-alert"></a>Metryki alertu
 
 1.  Kroki od 1 do 7, są takie same, co w pierwszym przykładzie
 2.  Użyj następującego schematu próbki dla wyzwalacza HTTP w kroku 8.
@@ -295,7 +290,7 @@ Wpisy usługi kondycji są częścią dziennik aktywności, więc ten proces prz
 
 8.  Wykonaj kroki 15 – 16 pierwszym przykładzie, aby zapisać aplikację logiki i zaktualizować grupy akcji
 
-## <a name="next-steps"></a>Kolejne kroki ##
+## <a name="next-steps"></a>Następne kroki ##
 * Pobierz [Przegląd alertów dotyczących działań w dzienniku](monitoring-overview-alerts.md)i dowiedzieć się, jak otrzymywać alerty.  
 * Dowiedz się, jak [skonfigurować alerty, gdy powiadomienie usługi kondycji jest przesyłana](monitoring-activity-log-alerts-on-service-notifications.md).
 * Dowiedz się więcej o [grupy akcji](monitoring-action-groups.md)

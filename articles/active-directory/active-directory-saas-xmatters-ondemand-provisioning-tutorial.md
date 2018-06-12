@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: v-ant-msft
-ms.openlocfilehash: e0b945a99766ee52cb357f54d7135fbbdf1fada2
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 52fe23f5353a68e3afbac6a91955a61c7b8fb44c
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292674"
 ---
 # <a name="tutorial-configure-xmatters-ondemand-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie xMatters na żądanie dla użytkownika automatycznego inicjowania obsługi administracyjnej.
 
@@ -72,7 +73,7 @@ Usługi Azure Active Directory używa pojęcie o nazwie "przypisania" w celu okr
 
 Przed Konfigurowanie i włączanie automatycznej aprowizacji użytkowników, należy podjąć decyzję dotyczącą użytkowników i/lub grup w usłudze Azure AD będą potrzebować dostępu do xMatters OnDemand. Po decyzję, można przypisać użytkowników i/lub grup xMatters OnDemand postępując zgodnie z instrukcjami poniżej:
 
-*   [Przypisanie użytkownika lub grupę do aplikacji w przedsiębiorstwie](active-directory-coreapps-assign-user-azure-portal.md)
+*   [Przypisanie użytkownika lub grupę do aplikacji w przedsiębiorstwie](manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-xmatters-ondemand"></a>Ważne porady dotyczące przypisywania użytkowników do xMatters na żądanie
 
@@ -158,7 +159,7 @@ Aby uzyskać więcej informacji na temat usługi Azure AD, inicjowanie obsługi 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Zarządzanie aprowizacja konta użytkowników dla aplikacji przedsiębiorstwa](active-directory-enterprise-apps-manage-provisioning.md)
+* [Zarządzanie aprowizacja konta użytkowników dla aplikacji przedsiębiorstwa](manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Kolejne kroki

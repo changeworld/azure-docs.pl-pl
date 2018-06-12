@@ -2,7 +2,7 @@
 title: Schemat aktualizuje sierpnia-1-2015 preview — usługi Azure Logic Apps | Dokumentacja firmy Microsoft
 description: Utworzenie definicji JSON dla usługi Azure Logic Apps z wersji schematu 2015-08-01-preview
 author: stepsic-microsoft-com
-manager: SyntaxC4
+manager: jeconnoc
 editor: ''
 services: logic-apps
 documentationcenter: ''
@@ -15,11 +15,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 05/31/2016
 ms.author: stepsic; LADocs
-ms.openlocfilehash: bdadc2e33082421500f21d5926ac1e660f4164d4
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 736a7cf03c7fe1e9fe976c3bcc80393bff2bada5
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299872"
 ---
 # <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Aktualizacje schematu dla usługi Azure Logic Apps - 1 sierpnia 2015 preview
 

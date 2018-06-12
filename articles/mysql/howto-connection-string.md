@@ -6,14 +6,15 @@ author: mswutao
 ms.author: wuta
 editor: jasonwhowell
 manager: kfile
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: e7b200fd1de79f0bca680bdedc34fa376cf07d68
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 083c6850151340ba8cb307a237f489e5923761a5
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265687"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Jak połączyć aplikacje do bazy danych Azure dla programu MySQL
 Ten temat zawiera listę typów ciąg połączenia, które są obsługiwane przez bazę danych Azure dla programu MySQL, wraz z szablonów i przykłady. W ciągu połączenia może mieć różne parametry i ustawienia.
@@ -68,5 +69,5 @@ W [portalu Azure](https://portal.azure.com), przejdź do bazy danych Azure, aby 
 
 Ciąg zawiera szczegółowe informacje, takie jak sterownik, serwera i inne bazy danych parametry połączenia. Zmodyfikuj te przykłady własne parametry, takie jak nazwa bazy danych, hasło i tak dalej. Następnie można ten ciąg połączenia z serwerem z kodu i aplikacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - Aby uzyskać więcej informacji na temat biblioteki połączeń, zobacz [pojęcia — bibliotek połączeń](./concepts-connection-libraries.md).

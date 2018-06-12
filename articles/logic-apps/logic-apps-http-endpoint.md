@@ -1,12 +1,12 @@
 ---
-title: "Wywołanie, wyzwalacza lub zagnieździć przepływy pracy z punktów końcowych HTTP - Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Konfigurowanie punktów końcowych HTTP połączeń telefonicznych, wyzwalacza lub zagnieździć przepływy pracy dla usługi Azure Logic Apps"
+title: Wywołanie, wyzwalacza lub zagnieździć przepływy pracy z punktów końcowych HTTP - Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Konfigurowanie punktów końcowych HTTP połączeń telefonicznych, wyzwalacza lub zagnieździć przepływy pracy dla usługi Azure Logic Apps
 services: logic-apps
-keywords: "przepływy pracy, punktów końcowych HTTP"
+keywords: przepływy pracy, punktów końcowych HTTP
 author: jeffhollan
-manager: anneta
-editor: 
-documentationcenter: 
+manager: jeconnoc
+editor: ''
+documentationcenter: ''
 ms.assetid: 73ba2a70-03e9-4982-bfc8-ebfaad798bc2
 ms.service: logic-apps
 ms.devlang: na
@@ -16,11 +16,12 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
 ms.author: klam; LADocs
-ms.openlocfilehash: de4f4ee086fbf3799fcac1f1b008d9237b5e7a09
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 9c02a0f540f52007412a850b9d69e337743fc35f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300202"
 ---
 # <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-logic-apps"></a>Wywołaj wyzwalacz, lub zagnieżdżania przepływy pracy z punktów końcowych HTTP w aplikacji logiki
 

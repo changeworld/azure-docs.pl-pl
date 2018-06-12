@@ -1,19 +1,20 @@
 ---
-title: "Sposób użycia sys_schema dostrajania wydajności i konserwacji bazy danych w bazie danych Azure dla programu MySQL"
-description: "W tym artykule opisano sposób użycia sys_schema znaleźć problemy z wydajnością i konserwacji bazy danych w bazie danych Azure dla programu MySQL."
+title: Sposób użycia sys_schema dostrajania wydajności i konserwacji bazy danych w bazie danych Azure dla programu MySQL
+description: W tym artykule opisano sposób użycia sys_schema znaleźć problemy z wydajnością i konserwacji bazy danych w bazie danych Azure dla programu MySQL.
 services: mysql
 author: ajlam
 ms.author: andrela
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 2e5b6b859df06d686a97fc1b134da8d66df6783e
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 74bb59a8db70d4a01fcd3bd07054f1cbac50bf40
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35266156"
 ---
 # <a name="how-to-use-sysschema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Jak używać sys_schema dla wydajności dostrajanie oraz konserwacji bazy danych w bazie danych Azure dla programu MySQL
 

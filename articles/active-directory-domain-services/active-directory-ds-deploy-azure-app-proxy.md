@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: 38586763c8bf80ac4ebf2e26b4db935289b88cbf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ac3ea6d696eaf5ba4b2554f416118718271526a8
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34589053"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292470"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Wdrażanie aplikacji serwera Proxy Azure AD w domenie zarządzanej usług domenowych Azure AD
 Serwer Proxy aplikacji usługi Azure Active Directory (AD) pomaga obsługuje pracowników zdalnych przez publikowania lokalnych aplikacji można uzyskać dostęp za pośrednictwem Internetu. Z usług domenowych Azure AD możesz teraz przyrostu i shift starsze aplikacje uruchomione w siedzibie firmy do usługi infrastruktury platformy Azure. Następnie można opublikować te aplikacje przy użyciu usługi Azure AD serwera Proxy aplikacji, co zapewnia bezpieczny dostęp zdalny do użytkowników w organizacji.
@@ -77,7 +77,7 @@ Poprzednio udostępnione maszynę wirtualną systemu Windows Server i do domeny 
     * Podaj Twojej **poświadczenia administratora globalnego usługi Azure AD**. Administrator globalny dzierżawy może mieć inne poświadczenia platformy Microsoft Azure niż Twoje.
     * Konto administratora używane do rejestrowania łącznik muszą należeć do tego samego katalogu, w którym włączono usługę serwera Proxy aplikacji. Na przykład, jeśli domena dzierżawy to contoso.com, administrator powinien mieć admin@contoso.com lub dowolny inny alias prawidłowe w tej domenie.
     * Jeśli Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer jest włączona dla serwera którym jest instalowany łącznik, ekran rejestracji może zostać zablokowany. Aby zezwolić na dostęp, postępuj zgodnie z instrukcjami w komunikacie o błędzie. Upewnij się, że pozycja Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer jest wyłączona.
-    * Jeśli rejestracja łącznika nie powiedzie się, zobacz [Troubleshoot Application Proxy](../active-directory/active-directory-application-proxy-troubleshoot.md) (Rozwiązywanie problemów z serwerem proxy aplikacji).
+    * Jeśli rejestracja łącznika nie powiedzie się, zobacz [Troubleshoot Application Proxy](../active-directory/manage-apps/application-proxy-troubleshoot.md) (Rozwiązywanie problemów z serwerem proxy aplikacji).
 
     ![Zainstalowanego łącznika](./media/app-proxy/app-proxy-connector-installed.png)
 4. Aby zapewnić łącznik działa prawidłowo, uruchomić rozwiązywania łącznika serwera Proxy aplikacji w usłudze Azure AD. Pomyślne raportu powinna zostać wyświetlona po uruchomieniu narzędzia do rozwiązywania problemów.

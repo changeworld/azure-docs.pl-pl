@@ -6,14 +6,15 @@ author: rachel-msft
 ms.author: raagyema
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: ce6b6208b74063ea5d6e9868ca414f833b1a2045
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 50e4b9b8b8f9433ec725aaa982e969cec7afb91c
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265789"
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>Do dzienników serwera w bazie danych systemu Azure dla programu MySQL
 W przypadku bazy danych Azure dla programu MySQL dziennika powolne zapytania jest dostępna dla użytkowników. Dostęp do dziennika transakcji nie jest obsługiwany. Dziennik zapytań powolne może służyć do identyfikowania wąskich gardeł wydajności przy rozwiązywaniu problemów. 

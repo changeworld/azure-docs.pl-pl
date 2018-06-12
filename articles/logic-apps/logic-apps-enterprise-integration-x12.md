@@ -1,11 +1,11 @@
 ---
-title: "X12 wiadomości B2B integracji przedsiębiorstwa - Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Exchange X12 wiadomości w formacie EDI B2B enterprise integracji z usługą Azure Logic Apps"
+title: X12 wiadomości B2B integracji przedsiębiorstwa - Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Exchange X12 wiadomości w formacie EDI B2B enterprise integracji z usługą Azure Logic Apps
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 7422d2d5-b1c7-4a11-8c9b-0d8cfa463164
 ms.service: logic-apps
 ms.workload: integration
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: c644dd98d468a8c99625c45bad3f06031ff22b4e
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: b269a5171dcb8867f7ea40215d6b8a75d5d918bc
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299083"
 ---
 # <a name="exchange-x12-messages-for-enterprise-integration-with-logic-apps"></a>Komunikaty programu Exchange X12 enterprise integracji z usługą logic apps
 
@@ -235,7 +236,7 @@ Umowie jest teraz gotowy do obsługi komunikatów wychodzących, które odpowiad
 
 | Właściwość | Opis |
 | --- | --- |
-| Numer wersji formantu (ISA12) |Wybierz wersję standard X12 |
+| Numer wersji kontroli (ISA12) |Wybierz wersję standard X12 |
 | Użycie wskaźnika (ISA15) |Wybierz kontekst wymiany.  Wartości są informacji i danych produkcyjnych lub dane testowe |
 | Schemat |Generuje segmentów GS i ST wymiany kodowany w formacie X12 wysyłanej do potoku wysyłania |
 | GS1 |Opcjonalne, wybierz wartość funkcjonalny kod z listy rozwijanej |

@@ -1,11 +1,11 @@
 ---
-title: "Harmonogram zadań i regularnie uruchamiania przepływów pracy - Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Tworzenie i planowanie regularnie uruchomionych zadań, działania przepływów pracy, procesów i obciążeń z usługą logic apps"
+title: Harmonogram zadań i regularnie uruchamiania przepływów pracy - Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Tworzenie i planowanie regularnie uruchomionych zadań, działania przepływów pracy, procesów i obciążeń z usługą logic apps
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: ecfan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 tags: connectors
 ms.assetid: 51dd4f22-7dc5-41af-a0a9-e7148378cd50
 ms.service: logic-apps
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 0dead955f9eb723dfa232d3ce751498a09ce1b29
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 3bd396355681cdde486cfbea7004c9c1aece09da
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296791"
 ---
 # <a name="create-and-schedule-regularly-running-tasks-with-azure-logic-apps"></a>Tworzenie i planowanie regularnie uruchomionych zadań za pomocą usługi Azure Logic Apps
 
@@ -154,7 +155,7 @@ Oto przykład [definicję wyzwalacza cyklu](../logic-apps/logic-apps-workflow-ac
 | Uruchom co godzinę w ciągu godziny (o datę i godzinę rozpoczęcia) | 1 | Godzina | *datą rozpoczęcia*Thh:00:00Z | {unavailable} | {Brak} | {Brak} | Nie możesz uruchomić ten harmonogram *żadnych wcześniej* niż określona data i godzina rozpoczęcia. Przyszłe powtórzenia uruchamiane co godzinę o "00" znak minuty. <p>W przypadku "Week" lub "Month" częstotliwość tego harmonogramu odpowiednio działa tylko jeden dzień w tygodniu lub jeden dzień w miesiącu. | 
 | Uruchom co godzinę, codziennie (nie datę i godzinę rozpoczęcia) | 1 | Godzina | {Brak} | {unavailable} | {Brak} | {Brak} | Ten harmonogram rozpoczyna się natychmiast i oblicza przyszłe powtórzenia na podstawie ostatniego czasu wykonywania. <p>W przypadku "Week" lub "Month" częstotliwość tego harmonogramu odpowiednio działa tylko jeden dzień w tygodniu lub jeden dzień w miesiącu. | 
 | Uruchom co godzinę, codziennie (o datę i godzinę rozpoczęcia) | 1 | Godzina | *startDate*T*startTime*Z | {unavailable} | {Brak} | {Brak} | Nie możesz uruchomić ten harmonogram *żadnych wcześniej* niż określona data rozpoczęcia i godzina, a następnie oblicza przyszłe powtórzenia na podstawie ostatniego czasu wykonywania. <p>W przypadku "Week" lub "Month" częstotliwość tego harmonogramu odpowiednio działa tylko jeden dzień w tygodniu lub jeden dzień w miesiącu. | 
-| Uruchom co 15 minut po pełnej godzinie, co godzinę (o datę i godzinę rozpoczęcia) | 1 | Godzina | *startDate*T00:15:00Z | {unavailable} | {Brak} | {Brak} | Nie możesz uruchomić ten harmonogram *żadnych wcześniej* niż określona data i godzina w 00:15 AM, 1:15:00, 2:15 AM, na którym uruchomiono rozpoczęcia i tak dalej. | 
+| Uruchom co 15 minut po pełnej godzinie, co godzinę (o datę i godzinę rozpoczęcia) | 1 | Godzina | *datą rozpoczęcia*T00:15:00Z | {unavailable} | {Brak} | {Brak} | Nie możesz uruchomić ten harmonogram *żadnych wcześniej* niż określona data i godzina w 00:15 AM, 1:15:00, 2:15 AM, na którym uruchomiono rozpoczęcia i tak dalej. | 
 | Uruchom co 15 minut po pełnej godzinie, co godzinę (nie datę i godzinę rozpoczęcia) | 1 | Dzień | {Brak} | {unavailable} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 15 | Ten harmonogram uruchamiania na 00:15 AM, 1:15:00, 2:15 AM, i tak dalej. Ponadto ten harmonogram jest odpowiednikiem częstotliwość "Godzina" i godzinę rozpoczęcia o "15" minut. | 
 | Uruchom co 15 minut od znacznika 15 minut (nie datę i godzinę rozpoczęcia) | 1 | Dzień | {Brak} | {unavailable} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Ten harmonogram nie zaczyna się do momentu następnej znak 15 minut. | 
 | Uruchom o 8:00 każdego dnia (nie datę i godzinę rozpoczęcia) | 1 | Dzień | {Brak} | {unavailable} | 8 | {Brak} | Ten harmonogram uruchamiania o 8:00 każdego dnia, na podstawie określonego harmonogramu. | 

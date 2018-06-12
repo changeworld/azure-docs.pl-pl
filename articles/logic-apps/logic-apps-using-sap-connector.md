@@ -2,7 +2,7 @@
 title: Połączenie z systemami SAP - Azure Logic Apps | Dokumentacja firmy Microsoft
 description: Jak uzyskać dostępu do zasobów i zarządzanie nimi SAP automatyzując przepływy pracy z usługą Azure Logic Apps
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 ms.author: estfan
 ms.date: 05/31/2018
 ms.topic: article
@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, divswa, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 658fb40f618b61fcd973a626e4e00afc3ad8151a
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: a9346092e0a24709a9888937effdf802bf1b09fb
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34756715"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300219"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Połączenie z systemami SAP z usługi Azure Logic Apps
 

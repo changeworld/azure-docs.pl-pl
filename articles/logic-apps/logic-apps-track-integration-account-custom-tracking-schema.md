@@ -2,7 +2,7 @@
 title: Śledzenie niestandardowych schematów B2B monitorowania - Azure Logic Apps | Dokumentacja firmy Microsoft
 description: Utwórz schematy śledzenia niestandardowych do monitorowania wiadomości B2B transakcji na koncie Azure integracji.
 author: padmavc
-manager: anneta
+manager: jeconnoc
 editor: ''
 services: logic-apps
 documentationcenter: ''
@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 94de6afcf3f9f95a3cb45207ef43e1d33b728d99
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 431235370c52be4c6e1ad6cd1af6a412e9eac230
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299838"
 ---
 # <a name="enable-tracking-to-monitor-your-complete-workflow-end-to-end"></a>Włącz śledzenie w celu monitorowania ukończenia przepływu pracy, end-to-end
 Są wbudowane, śledzenie, możesz włączyć dla różnych części przepływu pracy business-to-business, takie jak śledzenie AS2 lub X12 wiadomości. Podczas tworzenia przepływów pracy zawiera aplikację logiki, BizTalk Server, SQL Server lub inną warstwę, można włączyć śledzenie niestandardowej, która zapisuje zdarzenia od początku do końca przepływu pracy, a następnie. 

@@ -6,20 +6,21 @@ author: ajlam
 ms.author: andrela
 editor: jasonwhowell
 manager: kfile
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: d51d11e0e41ad34f80dced7526883a4bd7c46ade
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: ea4fd90670c2137fbe6127ba5c0b7641d846f407
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265431"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Konfiguracja połączenia SSL w aplikacji w celu bezpiecznego łączenia z bazą danych Azure dla programu MySQL
 Bazy danych platformy Azure dla programu MySQL obsługuje połączenie bazy danych Azure, aby serwer MySQL aplikacji klienta przy użyciu protokołu Secure Sockets Layer (SSL). Wymuszanie połączeń SSL między serwerem bazy danych a aplikacją kliencką ułatwia ochronę przed atakami typu man-in-the-middle dzięki szyfrowaniu strumienia danych między serwerem a aplikacją.
 
 ## <a name="step-1-obtain-ssl-certificate"></a>Krok 1: Uzyskiwanie certyfikatu SSL
-Pobierz certyfikat potrzebne do komunikowania się za pośrednictwem protokołu SSL z bazy danych Azure, aby serwer MySQL z [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) i Zapisz plik certyfikatu na dysk lokalny (this samouczku c:\ssl na przykład).
+Pobierz certyfikat potrzebne do komunikowania się za pośrednictwem protokołu SSL z bazy danych Azure, aby serwer MySQL z [ https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem ](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) i Zapisz plik certyfikatu na dysk lokalny (w tym samouczku korzysta z c:\ssl na przykład).
 **Programu Microsoft Internet Explorer oraz Microsoft Edge:** po zakończeniu pobierania, Zmień nazwę certyfikatu na BaltimoreCyberTrustRoot.crt.pem.
 
 ## <a name="step-2-bind-ssl"></a>Krok 2: Powiązanie SSL
@@ -131,7 +132,7 @@ properties.setProperty("user", 'myadmin@mydemoserver');
 properties.setProperty("password", 'yourpassword');
 conn = DriverManager.getConnection(url, properties);
 ```
-### <a name="javamariadb"></a>JAVA(MariaDB)
+### <a name="javamariadb"></a>Java(MariaDB)
 ```java
 # generate truststore and keystore in code
 String importCert = " -import "+

@@ -1,13 +1,13 @@
 ---
-title: "Partii przetwarzania komunikatów przez grupę lub kolekcji — usługi Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Wysyłanie i odbieranie wiadomości dla przetwarzania wsadowego w aplikacji logiki"
+title: Partii przetwarzania komunikatów przez grupę lub kolekcji — usługi Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Wysyłanie i odbieranie wiadomości dla przetwarzania wsadowego w aplikacji logiki
 keywords: partii, przetwarzanie wsadowe
 author: jonfancey
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/7/2017
 ms.author: LADocs; estfan; jonfan
-ms.openlocfilehash: de519084a4f172ad984c78727123835eeb9deaef
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 2815ce7fe0e10aadb60eaa77b58e5395fb5c98d8
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298019"
 ---
 # <a name="send-receive-and-batch-process-messages-in-logic-apps"></a>Wyślij, odbierania i partii przetwarzania komunikatów w aplikacji logiki
 
@@ -77,7 +78,7 @@ Aplikacje logiki nadawcy musi wiedzieć, gdzie wysłać elementy, gdy aplikacje 
 
    1. W obszarze wyzwalacza partii wybierz **+ nowy krok** > **Dodaj akcję**.
 
-   2. W polu wyszukiwania wprowadź "e-mail" jako filtr.
+   2. W polu wyszukiwania wprowadź wartość „e-mail” jako filtr.
    W oparciu o dostawcę poczty e-mail, wybierz łącznik poczty e-mail.
    
       Na przykład jeśli masz konto służbowe, wybierz łącznik programu Outlook pakietu Office 365. 
@@ -131,7 +132,7 @@ Aplikacje logiki nadawcy musi wiedzieć, gdzie wysłać elementy, gdy aplikacje 
 1. Tworzenie aplikacji logiki innej o tej nazwie: "BatchSender"
 
    1. W polu wyszukiwania wprowadź "cyklu" jako filtr. 
-   Wybierz ten wyzwalacz: **harmonogram - cyklu**
+   Wybierz wyzwalacz **Harmonogram — cyklicznie**
 
       ![Dodaj wyzwalacza "Harmonogram cyklu"](./media/logic-apps-batch-process-send-receive-messages/add-schedule-trigger-batch-receiver.png)
 
@@ -168,7 +169,7 @@ Aplikacje logiki nadawcy musi wiedzieć, gdzie wysłać elementy, gdy aplikacje 
    Na przykład dodać to wyrażenie, które wstawia bieżącą datę i godzinę do zawartość komunikatu, który możesz wysłać do partii:
 
      1. Gdy **zawartości dynamicznej** zostanie wyświetlona lista, wybierz **wyrażenia**. 
-     2. Wprowadź wyrażenie **utcnow()**i wybierz polecenie **OK**. 
+     2. Wprowadź wyrażenie **utcnow()** i wybierz polecenie **OK**. 
 
         ![W "Zawartość komunikatu" Wybierz opcję "Wyrażenie". Wprowadź "utcnow()".](./media/logic-apps-batch-process-send-receive-messages/send-batch-receiver-details.png)
 

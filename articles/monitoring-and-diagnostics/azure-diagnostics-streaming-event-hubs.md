@@ -1,24 +1,20 @@
 ---
-title: "Strumieniowe przesyłanie danych diagnostycznych platformy Azure w ścieżce aktywnej za pomocą usługi Event Hubs | Dokumentacja firmy Microsoft"
-description: "Konfigurowanie diagnostyki Azure za pomocą usługi Event Hubs kompleksowe, w tym wskazówki dotyczące typowych scenariuszy."
-services: event-hubs
-documentationcenter: na
+title: Strumień danych diagnostycznych Azure Event Hubs
+description: Konfigurowanie diagnostyki Azure za pomocą usługi Event Hubs kompleksowe, w tym wskazówki dotyczące typowych scenariuszy.
+services: azure-monitor
 author: rboucher
-manager: carmonm
-editor: 
-ms.assetid: edeebaac-1c47-4b43-9687-f28e7e1e446a
-ms.service: monitoring-and-diagnostics
+ms.service: azure-monitor
 ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
-ms.openlocfilehash: ca0dd96389a605ed8bf34af81eb4d75bef581338
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.component: diagnostic-extension
+ms.openlocfilehash: 98e788d87b0ce03eece35868391aadd5233217b0
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267717"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Strumieniowe przesyłanie danych diagnostycznych platformy Azure w ścieżce aktywnej za pomocą usługi Event Hubs
 Diagnostyka Azure oferuje elastyczne metod zbierać metryki i dzienniki z maszyn wirtualnych usługi w chmurze (VM) i przenieść wyniki do magazynu Azure. Uruchamianie w ramach czasowych marca 2016 (zestaw SDK 2.9), można wysyłanie danych diagnostycznych do źródeł danych niestandardowych i transferu danych ścieżkę aktywną w ciągu sekund za pomocą [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -29,7 +25,7 @@ Obsługiwane typy danych obejmują:
 * Liczniki wydajności
 * Dzienniki zdarzeń systemu Windows
 * Dzienniki aplikacji
-* Dzienników infrastruktury Diagnostyka Azure
+* Dzienniki infrastruktury diagnostyki Azure
 
 W tym artykule przedstawiono sposób konfigurowania diagnostyki Azure z usługą Event Hubs od końca do końca. Także wskazówki dotyczące następujących scenariuszy:
 
@@ -322,7 +318,7 @@ namespace EventHubListener
 
     Należy przejrzeć tabeli magazynu Azure, która zawiera dzienniki i błędy diagnostyki Azure, sama: **WADDiagnosticInfrastructureLogsTable**. Jedną z opcji się za pomocą narzędzia, takie jak [Eksploratora usługi Storage Azure](http://www.storageexplorer.com) nawiązać tego konta magazynu, wyświetlić tej tabeli i Dodaj zapytanie dla sygnatury czasowej w ostatnich 24 godzin. Można użyć narzędzia, aby wyeksportować plik CSV i otwórz go w aplikacji, takich jak program Microsoft Excel. Excel ułatwia wyszukiwanie ciągów karty telefonicznej, takich jak **EventHubs**, aby zobaczyć, jakie błąd jest zgłaszany.  
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 • [Dowiedz się więcej o usłudze Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 
 ## <a name="appendix-complete-azure-diagnostics-configuration-file-wadcfgx-example"></a>Dodatek: Ukończyć przykład pliku (.wadcfgx) konfiguracji diagnostyki Azure
@@ -504,7 +500,7 @@ Odpowiednik Json na podstawie ustawień maszyny wirtualnej jest następujący:
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Następujące linki pozwalają dowiedzieć się więcej na temat usługi Event Hubs:
 
 * [Omówienie usługi Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md)

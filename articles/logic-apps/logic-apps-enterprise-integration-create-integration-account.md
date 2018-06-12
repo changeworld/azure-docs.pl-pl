@@ -4,7 +4,7 @@ description: Tworzenie, link, przenoszenie i usuwanie konta integracji integracj
 services: logic-apps
 documentationcenter: ''
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 editor: ''
 ms.assetid: d3ad9e99-a9ee-477b-81bf-0881e11e632f
 ms.service: logic-apps
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: estfan
-ms.openlocfilehash: 97cdc809a00078ee86a40fd4567ab2d3357ed3bd
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 2a1fe501386884e02657d4b6cbef58ffc533fa33
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726435"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297992"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-solutions-with-logic-apps"></a>Tworzenie i zarządzanie kontami integracji rozwiązań B2B w usłudze logic apps
 

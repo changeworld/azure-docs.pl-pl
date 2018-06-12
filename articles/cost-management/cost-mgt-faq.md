@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 01d880a668140b5a7ffcff8947ccc6083bca7ea0
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 0742e1e96e03840f138dde2bca7b2bcda1e49dfe
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298413"
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Często zadawane pytania dotyczące usługi Azure Management koszt
 
@@ -28,23 +29,23 @@ Przy pierwszym użyciu portalu Cloudyn, jeśli jesteś użytkownikiem umowy Ente
 - "Rejestracja bezpośrednia — nie" wyświetlana w portalu umowy Enterprise Agreement.
 - "Nie użycia znaleziono danych w ciągu ostatnich 30 dni. Skontaktuj się z dystrybutora, aby upewnić się, że znaczników zostały włączone dla konta platformy Azure"wyświetlana w portalu Cloudyn.
 
-Poprzednie komunikaty wskazują zakupiono Azure Enterprise Agreement u odsprzedawcy lub dostawcy usług Kryptograficznych. Ze sprzedawcą lub dostawcy usług Kryptograficznych, trzeba włączyć _znacznika_ dla konta platformy Azure, dzięki czemu można wyświetlać dane w Cloudyn.
+Poprzednie komunikaty oznaczają, że umowa Azure Enterprise Agreement została zakupiona od odsprzedawcy lub dostawcy rozwiązań w chmurze. Ze sprzedawcą lub dostawcy usług Kryptograficznych, trzeba włączyć _znacznika_ dla konta platformy Azure, dzięki czemu można wyświetlać dane w Cloudyn.
 
-Oto jak rozwiązać problemy:
+Oto sposoby rozwiązywania tych problemów:
 
-1. Należy włączyć odsprzedawcą _znacznika_ dla Twojego konta. Aby uzyskać instrukcje, zobacz [pośrednie przewodnik dołączania klienta](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
+1. Odsprzedawca musi włączyć _znaczniki_ dla Twojego konta. Aby uzyskać instrukcje, zapoznaj się z dokumentem [Indirect Customer Onboarding Guide (Przewodnik dołączania klienta pośredniego)](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
 
 2. Możesz wygenerować klucz Azure Enterprise Agreement do użycia z Cloudyn. Aby uzyskać instrukcje, zobacz [Dodawanie Your Azure EA](https://support.cloudyn.com/hc/en-us/articles/210429585-Adding-Your-AZURE-EA) lub [jak znaleźć swój EA rejestracji identyfikator i klucz API](https://youtu.be/u_phLs_udig).
 
-Tylko administrator usługi Azure można włączyć zarządzanie kosztów. Uprawnienia administratora współpracującego są niewystarczające.
+Tylko administrator usług platformy Azure może włączyć usługę Cost Management. Uprawnienia współadministratora są niewystarczające.
 
 Przed wygenerowaniem klucza interfejsu API umowy Enterprise Azure do skonfigurowania Cloudyn, należy włączyć interfejsu API rozliczenia Azure zgodnie z instrukcjami na:
 
-- [Omówienie API raportowania dla przedsiębiorstw](../billing/billing-enterprise-api.md)
-- [Microsoft Azure enterprise portal interfejsu API raportowania](https://ea.azure.com/helpdocs/reportingAPI) w obszarze **Włączanie dostępu do interfejsu API danych**
+- [Overview of Reporting APIs for Enterprise customers (Omówienie interfejsów API raportowania dla klientów korporacyjnych)](../billing/billing-enterprise-api.md)
+- [Interfejs API raportowania w witrynie Microsoft Azure dla przedsiębiorstw](https://ea.azure.com/helpdocs/reportingAPI) w obszarze **Włączanie dostępu danych do interfejsu API**
 
 
-Może należy również podać Administratorzy działu, właściciele konta i uprawnienia administratorów przedsiębiorstwa _wyświetlić opłat_ przy użyciu interfejsu API rozliczeń.
+Być może trzeba będzie również nadać administratorom działów, właścicielom kont i administratorom przedsiębiorstwa uprawnienia do _wyświetlania opłat_ przy użyciu interfejsu API rozliczeń.
 
 ## <a name="why-dont-i-see-optimizer-recommendations"></a>Dlaczego nie widzę zalecenia Optymalizator?
 
@@ -71,16 +72,20 @@ Po wykonaniu powyższych kroków można wyświetlić Optymalizator zalecenia w c
 
 ## <a name="how-do-i-enable-suspended-or-locked-out-users"></a>Jak włączyć wstrzymane lub zablokowanego użytkowników?
 
+Po pierwsze Oto najbardziej typowy scenariusz, który powoduje, że konta użytkowników uzyskać *initiallySuspended*.
+
+> Admin1 może być użytkownika Microsoft Cloud Solution Provider lub umowy Enterprise Agreement. Jego organizacja jest gotowy do uruchomienia przy użyciu kosztów zarządzania.  On rejestruje za pośrednictwem portalu Azure i zaloguje się do portalu Cloudyn. Jako osoba, która rejestruje usługę kosztów zarządzania i loguje do portalu Cloudyn, staje się on *głównego administratora*. Admin1 nie utworzyć kont użytkowników. Jednak przy użyciu portalu Cloudyn, on tworzyć konta platformy Azure i konfiguruje Hierarchia jednostek. Admin1 informuje Admin2, administrator dzierżawy, który musi zarejestrować w usłudze zarządzania kosztów i zaloguj się do portalu Cloudyn.
+
+> Rejestruje Admin2 za pośrednictwem portalu Azure. Jednak w przypadku próbuje zalogować się do portalu Cloudyn on pobiera błąd informujący o tym, jego konto jest **zawieszone**. Administrator podstawowy Admin1, jest powiadamiany o zawieszenie konta. Admin1 musi aktywować Admin2 na konto i przyznać *dostępu z uprawnieniami administratora jednostki* dla odpowiednich jednostek i umożliwia dostęp do funkcji zarządzania użytkownika i aktywne konta użytkownika.
+
+
 Jeśli zostanie wyświetlony alert o żądanie, aby zezwolić na dostęp dla użytkownika, musisz aktywować konto użytkownika.
 
 Aby aktywować konto użytkownika:
 
 1. Zaloguj się do Cloudyn za pomocą konta Azure użytkownika administracyjnego, który zostanie użyty do skonfigurowania Cloudyn. Lub zaloguj się przy użyciu konta użytkownika, który został udzielony dostęp administratora.
-
 2. Wybierz symbol koło zębate w prawym górnym rogu i wybierz **Zarządzanie użytkownikami**.
-
 3. Znajdź użytkownika, wybierz symbol ołówka, a następnie Edytuj użytkownika.
-
 4. W obszarze **stan użytkownika**, zmianę stanu z **zawieszone** do **Active**.
 
 Konta użytkowników Cloudyn połączenia przy użyciu rejestracji jednokrotnej z platformy Azure. Jeśli użytkownik mistypes swoje hasło, ich mogą być blokowane z Cloudyn, nawet jeśli ich mogą nadal uzyskiwać dostęp do usługi Azure.

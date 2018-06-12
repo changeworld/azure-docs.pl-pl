@@ -1,6 +1,6 @@
 ---
-title: Uruchom pakiet SSIS za pomocą działania dotyczącego procedury składowanej w fabryce danych Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób uruchamiania pakietu SQL Server Integration Services (SSIS) z potoku fabryki danych Azure za pomocą działania dotyczącego procedury składowanej.
+title: Uruchom pakiet SSIS z działania dotyczącego procedury składowanej - Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób uruchamiania pakietu SQL Server Integration Services (SSIS) w potoku fabryki danych Azure za pomocą działania dotyczącego procedury składowanej.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,15 +13,15 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 44c157334306f81a8c9850cfa53e139139ff1db6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: df4e5002d637c4d280686642156309c85bd89773
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618892"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297689"
 ---
-# <a name="run-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Uruchom pakiet SSIS za pomocą działania procedury składowanej w fabryce danych Azure
-W tym artykule opisano sposób uruchamiania pakietów SSIS z potoku fabryki danych Azure za pomocą działania procedury składowanej. 
+# <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Uruchom pakiet SSIS z działania procedury składowanej w fabryce danych Azure
+W tym artykule opisano sposób uruchamiania pakietów SSIS w potoku fabryki danych Azure za pomocą działania procedury składowanej. 
 
 > [!NOTE]
 > Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [pakietów SSIS wywołać przy użyciu działania procedury składowanej w wersji 1](v1/how-to-invoke-ssis-package-stored-procedure-activity.md).

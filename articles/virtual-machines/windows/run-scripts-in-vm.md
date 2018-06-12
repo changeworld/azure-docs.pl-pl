@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 05/02/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 98c2934800c739b463b168786e14f6a2a9cb47e7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6d8df5e4992cd8d51f1b5259947139d3b180ec82
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660961"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267050"
 ---
 # <a name="run-scripts-in-your-windows-vm"></a>Uruchamianie skryptów w sieci maszyny Wirtualnej systemu Windows
 
@@ -31,14 +31,14 @@ Do automatyzacji zadań lub rozwiązywania problemów, może być konieczne uruc
 
 ## <a name="run-command"></a>Uruchom polecenie
 
-[Uruchom polecenie](run-command.md) zapewnia maszyny wirtualnej i zarządzania aplikacjami oraz rozwiązywanie problemów przy użyciu skryptów i jest dostępny nawet wtedy, gdy komputer nie jest sieciowy połączony.
+[Uruchom polecenie](run-command.md) funkcja umożliwia maszyny wirtualnej i zarządzania aplikacjami oraz rozwiązywanie problemów przy użyciu skryptów i jest dostępny nawet wtedy, gdy komputer nie jest dostępny, na przykład jeśli zapory gościa nie ma portu protokołu RDP lub SSH Otwórz.
 
 * Uruchom skrypty w maszynach wirtualnych platformy Azure.
 * Można uruchomić przy użyciu [portalu Azure](run-command.md), [interfejsu API REST](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [interfejsu wiersza polecenia Azure](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke), lub [programu PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand)
 * Szybkie uruchamianie skryptu i widok danych wyjściowych i powtórz w razie potrzeby w portalu Azure.
 * Skryptu można wpisać bezpośrednio lub uruchomienie jednego z wbudowanych skryptów.
 * Uruchom skrypt programu PowerShell w komputerach z systemem Windows i Bash skryptu w maszyny z systemem Linux.
-* Przydatne dla maszyn wirtualnych i zarządzania aplikacjami i uruchamianie skryptów w przypadku maszyn wirtualnych, które nie są połączone sieci.
+* Przydatne dla maszyn wirtualnych i zarządzania aplikacjami i uruchamianie skryptów w przypadku maszyn wirtualnych, które są niedostępne.
 
 ## <a name="hybrid-runbook-worker"></a>Hybrydowy proces roboczy elementu Runbook
 

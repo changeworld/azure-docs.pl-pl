@@ -1,6 +1,6 @@
 ---
-title: Uruchom pakiet SSIS przy użyciu wykonania działania pakietu SSIS w fabryce danych Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób uruchamiania pakietu SQL Server Integration Services (SSIS) z potoku fabryki danych Azure za pomocą działania wykonanie pakietu usług SSIS.
+title: Uruchom pakiet SSIS aktywnością wykonania SSIS pakietu - Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób uruchamiania pakietu SQL Server Integration Services (SSIS) w potoku fabryki danych Azure za pomocą działania wykonanie pakietu usług SSIS.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -12,15 +12,15 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: douglasl
-ms.openlocfilehash: fed4e10fcaaa5282c37b175f355b94522c3b2b46
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ce041813d52e645c336869ef04c9522962c80cf5
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700489"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297159"
 ---
-# <a name="run-an-ssis-package-using-the-execute-ssis-package-activity-in-azure-data-factory"></a>Uruchom pakiet SSIS za pomocą działania wykonanie pakietu usług SSIS w fabryce danych Azure
-W tym artykule opisano sposób uruchamiania pakietów SSIS z potoku fabryki danych Azure za pomocą działania wykonanie pakietu usług SSIS. 
+# <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Uruchom pakiet SSIS z działaniami pakietu SSIS wykonania w fabryce danych Azure
+W tym artykule opisano sposób uruchamiania pakietów SSIS w potoku fabryki danych Azure za pomocą działania wykonanie pakietu usług SSIS. 
 
 > [!NOTE]
 > Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Działanie wykonanie pakietu usług SSIS nie jest dostępna w wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA). Alternatywne metody do uruchamiania pakietów SSIS wersji 1 usługi fabryka danych, zobacz [pakietów SSIS Uruchom za pomocą działania procedury składowanej w wersji 1](v1/how-to-invoke-ssis-package-stored-procedure-activity.md).

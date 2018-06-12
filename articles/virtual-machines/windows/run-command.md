@@ -5,25 +5,25 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/02/2018
+ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 0bc23c033e868f3cf72256318f0fb129c853e19d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a2a1c916543da07f25b2b9727e309709632afe00
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660968"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267275"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>Uruchamiać skrypty programu PowerShell w sieci maszyny Wirtualnej systemu Windows za pomocą polecenia Uruchom
 
-Uruchom polecenie pozwala na uruchamianie skryptów programu PowerShell w ramach maszyny Wirtualnej systemu Windows Azure niezależnie od łączność sieciową. Skrypty te mogą służyć do zarządzania aplikacji lub głównej maszyny i umożliwia szybkie diagnozowania i rozwiązywania problemów programu access i sieć maszyny Wirtualnej i pobieranie maszyny Wirtualnej do stanu dobrej.
+Uruchom polecenie używa agenta maszyny Wirtualnej do uruchamiania skryptów powłoki PowerShell w ramach maszyny Wirtualnej systemu Windows Azure. Skrypty te mogą służyć do zarządzania aplikacji lub głównej maszyny i umożliwia szybkie diagnozowania i rozwiązywania problemów programu access i sieć maszyny Wirtualnej i pobieranie maszyny Wirtualnej do stanu dobrej.
 
 ## <a name="benefits"></a>Korzyści
 
-Istnieje wiele opcji, które mogą być używane do dostępu maszyn wirtualnych. Uruchom polecenie skrypty można uruchamiać na maszynach wirtualnych, niezależnie od tego, łączności sieciowej i jest dostępny domyślnie (Instalacja nie jest wymagane). Uruchom polecenie może być używane za pośrednictwem portalu Azure [interfejsu API REST](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [interfejsu wiersza polecenia Azure](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke), lub [PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand).
+Istnieje wiele opcji, które mogą być używane do dostępu maszyn wirtualnych. Polecenie uruchomienia można uruchamiać skrypty na maszynach wirtualnych zdalnie przy użyciu agenta maszyny Wirtualnej. Uruchom polecenie może być używane za pośrednictwem portalu Azure [interfejsu API REST](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [interfejsu wiersza polecenia Azure](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke), lub [PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand).
 
-Ta funkcja jest przydatna we wszystkich scenariuszach, w której chcesz uruchomić maszyny wirtualnej związanej z nauką skrypt, a następnie jest jednym ze sposobów tylko Rozwiązywanie problemów i korygowanie maszynę wirtualną, która nie jest połączona z siecią z powodu nieprawidłowej sieci lub użytkownika administracyjnego Konfiguracja.
+Ta funkcja jest przydatna we wszystkich scenariuszach, w którym chcesz uruchomić maszyny wirtualnej związanej z nauką skrypt, a jest jednym ze sposobów tylko Rozwiązywanie problemów i korygowanie maszynę wirtualną, która nie ma protokołu RDP lub Otwórz SSH port z powodu nieprawidłowej sieci lub użytkownik administracyjny Konfiguracja.
 
 ## <a name="restrictions"></a>Ograniczenia
 

@@ -1,24 +1,19 @@
 ---
-title: Opis ustawienia skalowania automatycznego na platformie Azure | Dokumentacja firmy Microsoft
-description: "Podział szczegółowe ustawienia skalowania automatycznego i jak działają."
+title: Opis ustawień automatycznego skalowania w monitorze Azure
+description: Podział szczegółowe ustawienia skalowania automatycznego i jak działają. Ma zastosowanie do maszyn wirtualnych i usług w chmurze, aplikacji sieci Web
 author: anirudhcavale
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ce2930aa-fc41-4b81-b0cb-e7ea922467e1
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 12/18/2017
 ms.author: ancav
-ms.openlocfilehash: 73c79ec4ee1beb5220e088421c78ffffd932eef1
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.component: autoscale
+ms.openlocfilehash: 982bc43fd86a808da07833d77bde17e17789b2d6
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265000"
 ---
 # <a name="understand-autoscale-settings"></a>Omówienie ustawień automatycznego skalowania
 Ustawienia skalowania automatycznego zagwarantować, że masz jednostkom zasoby z uruchomionym obsłużyć wahania obciążenia aplikacji. Można skonfigurować ustawienia skalowania automatycznego wyzwolenie oparciu metryki, które wskazują obciążenia lub wydajności lub wyzwalanych w zaplanowanym czasie. Ten artykuł przedstawia szczegółowe anatomia ustawieniu skalowania automatycznego. Artykuł rozpoczyna się od schematu i właściwości ustawienia, a następnie przeprowadzi Cię przez typy innego profilu, które można skonfigurować. Ponadto w tym artykule omówiono sposób funkcję skalowania automatycznego na platformie Azure ocenia profil, który można wykonać w dowolnym momencie.
@@ -101,11 +96,11 @@ Aby zilustrować schematu Ustawienia skalowania automatycznego, następujące us
 | Ustawienie | location | Lokalizacja w ustawieniu skalowania automatycznego. Ta lokalizacja może być inna niż lokalizacja zasobów są skalowane. |
 | properties | targetResourceUri | Identyfikator zasobu jest skalowana zasobu. Może mieć tylko jedno ustawienie automatycznego skalowania dla zasobów. |
 | properties | Profile | Ustawienia skalowania automatycznego składa się z co najmniej jeden profil. Każdym uruchomieniu aparatu skalowania automatycznego wykonuje jeden profil. |
-| Profil | name | Nazwa profilu. Można wybrać dowolną nazwę, która pomaga zidentyfikować ten profil. |
-| Profil | Capacity.Maximum | Moc maksymalna dozwolona. Zapewnia automatycznego skalowania, podczas wykonywania tego profilu, nie obsługuje zasobu powyżej ten numer. |
-| Profil | Capacity.minimum | Pojemność minimalne dozwolone. Zapewnia automatycznego skalowania, podczas wykonywania tego profilu, nie obsługuje zasobu pod ten numer. |
-| Profil | Capacity.default | Jeśli występuje problem z odczytem pomiar zasobów (w tym przypadku Procesora "vmss1"), a obecna pojemność jest mniejsza wartość domyślna, automatycznego skalowania skaluje się domyślną. To jest zapewnienie dostępności zasobów. Jeśli pojemność bieżąca już jest wyższa niż wydajność domyślna, skalowania automatycznego nie obsługuje w. |
-| Profil | rules | Skalowania automatycznego jest automatycznie skalowany między możliwości maksymalne i minimalne, za pomocą reguł w profilu. Istnieje wiele reguł w profilu. Zazwyczaj istnieją dwie reguły: jeden do określenia, kiedy do skalowania w poziomie, a drugą do określenia, kiedy skalować w. |
+| profil | name | Nazwa profilu. Można wybrać dowolną nazwę, która pomaga zidentyfikować ten profil. |
+| profil | Capacity.Maximum | Moc maksymalna dozwolona. Zapewnia automatycznego skalowania, podczas wykonywania tego profilu, nie obsługuje zasobu powyżej ten numer. |
+| profil | Capacity.minimum | Pojemność minimalne dozwolone. Zapewnia automatycznego skalowania, podczas wykonywania tego profilu, nie obsługuje zasobu pod ten numer. |
+| profil | Capacity.default | Jeśli występuje problem z odczytem pomiar zasobów (w tym przypadku Procesora "vmss1"), a obecna pojemność jest mniejsza wartość domyślna, automatycznego skalowania skaluje się domyślną. To jest zapewnienie dostępności zasobów. Jeśli pojemność bieżąca już jest wyższa niż wydajność domyślna, skalowania automatycznego nie obsługuje w. |
+| profil | rules | Skalowania automatycznego jest automatycznie skalowany między możliwości maksymalne i minimalne, za pomocą reguł w profilu. Istnieje wiele reguł w profilu. Zazwyczaj istnieją dwie reguły: jeden do określenia, kiedy do skalowania w poziomie, a drugą do określenia, kiedy skalować w. |
 | zasada | metricTrigger | Definiuje metryki warunek reguły. |
 | metricTrigger | metricName | Nazwa metryki. |
 | metricTrigger |  metricResourceUri | Identyfikator zasobu zasób, który emituje metryki. W większości przypadków jest taka sama jak zasobów są skalowane. W niektórych przypadkach może być różne. Na przykład można skalować zestaw skali maszyny wirtualnej na podstawie liczby wiadomości w kolejce magazynu. |

@@ -1,25 +1,19 @@
 ---
-title: Diagnostyka Azure dzienniki obsługiwane usługi i schematów | Dokumentacja firmy Microsoft
+title: Dzienniki diagnostyczne platformy Azure obsługiwane usługi i schematy
 description: Zrozumienie obsługiwanych schematu usług i zdarzeń do dzienników diagnostycznych platformy Azure.
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: fe8887df-b0e6-46f8-b2c0-11994d28e44f
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: reference
 ms.date: 6/08/2018
 ms.author: johnkem
-ms.openlocfilehash: 20f148988191c130d8e10f1776f3bbe1612a8c17
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.component: logs
+ms.openlocfilehash: 45595893a199b845c8b010bc1e2545b89aa688cd
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248180"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264983"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Obsługiwane usługi, schematy i kategorie dzienników diagnostycznych platformy Azure
 
@@ -136,7 +130,7 @@ Schemat dla dzienników diagnostycznych zasobu różni się w zależności od ka
 |Microsoft.Sql/servers/databases|DatabaseWaitStatistics|Baza danych statystyki oczekiwania|
 |Microsoft.Sql/servers/databases|Limity czasu|Limity czasu|
 |Microsoft.Sql/servers/databases|Bloki|Bloki|
-|Microsoft.Sql/servers/databases|SQLInsights|Szczegółowe informacje SQL|
+|Microsoft.Sql/servers/databases|SQLInsights|Informacje na temat technologii SQL|
 |Microsoft.Sql/servers/databases|Inspekcja|Dzienniki inspekcji|
 |Microsoft.Sql/servers/databases|SQLSecurityAuditEvents|Zdarzenia inspekcji zabezpieczeń SQL|
 |Microsoft.StreamAnalytics/streamingjobs|Wykonanie|Wykonanie|

@@ -3,40 +3,46 @@ title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: site-recovery
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: include
-ms.date: 05/03/2018
+ms.date: 06/10/2018
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 2464fa41deaa1e9c43e5f53e1a900ca11b582040
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 601819756b78ffe8762bdfbfd5f802bc2d76e9c5
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35268057"
 ---
 **Wymagania dotyczące procesu konfiguracji serwera**
 
 **Składnik** | **Wymaganie** 
 --- | ---
-**SPRZĘT** | 
-**Rdzenie Procesora** | 8 
-**RAM** | 16 GB
-**Liczba dysków** | 3, w tym dysku systemu operacyjnego, dysku pamięci podręcznej serwera przetwarzania i przechowywania dysku powrotu po awarii 
-**Wolne miejsce (pamięć podręczna serwera procesu)** | 600 GB
-**Wolnego miejsca na dysku (dysku przechowywania)** | 600 GB
-**OPROGRAMOWANIE** | 
-**System operacyjny** | Windows Server 2012 R2 <br> Windows Server 2016
-**Ustawienia regionalne systemu operacyjnego** | Angielski (en-us)
-**Role systemu Windows Server** | Nie włączaj tych ról: <br> - Active Directory Domain Services <br>- Internet Information Services <br> - Hyper-V 
-**Zasady grupy** | Nie włączaj tych zasad grupy: <br> -Uniemożliwić dostęp do wiersza polecenia. <br> -Uniemożliwić dostęp do narzędzia do edycji rejestru. <br> — Logika zaufania dla załączników. <br> -Włącz wykonywanie skryptu. <br> [Dowiedz się więcej](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
-**IIS** | -Brak istniejących domyślnej witryny sieci Web <br> -Brak istniejących witryny sieci Web/aplikacja nasłuchuje na porcie 443 <br>-Włącz [uwierzytelnianie anonimowe](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Włącz [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ustawienie 
-**SIECI** | 
-**Typ adresu IP** | Statyczny 
-**Dostęp do Internetu** | Serwer musi mieć dostęp do tych adresów URL (bezpośrednio lub za pośrednictwem serwera proxy) <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (Jeśli podczas konfigurowania serwera konfiguracji) <br> - time.nist.gov <br> - time.windows.com 
-**Porty** | 443 (organizowanie kanału sterowania)<br>9443 (transport danych) 
-**VMWARE (podczas konfigurowania serwera konfiguracji procesu jako maszyny Wirtualnej VMware)**
-**typu karta sieciowa** | VMXNET3  
-**VMware vSphere PowerCLI uruchomione na maszynie Wirtualnej* | [PowerCLI w wersji 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0")
+**USTAWIENIA SPRZĘTU** | 
+Rdzenie procesora CPU | 8 
+Pamięć RAM | 16 GB
+Liczba dysków | 3, w tym dysku systemu operacyjnego, dysku pamięci podręcznej serwera przetwarzania i przechowywania dysku powrotu po awarii 
+Wolne miejsce (pamięć podręczna serwera procesu) | 600 GB
+Wolnego miejsca na dysku (dysku przechowywania) | 600 GB
+ | 
+**USTAWIENIA OPROGRAMOWANIA** | 
+System operacyjny | Windows Server 2012 R2 <br> Windows Server 2016
+Ustawienia regionalne systemu operacyjnego | Angielski (en-us)
+Role systemu Windows Server | Nie włączaj tych ról: <br> - Active Directory Domain Services <br>- Internet Information Services <br> - Hyper-V 
+Zasady grupy | Nie włączaj tych zasad grupy: <br> -Uniemożliwić dostęp do wiersza polecenia. <br> -Uniemożliwić dostęp do narzędzia do edycji rejestru. <br> — Logika zaufania dla załączników. <br> -Włącz wykonywanie skryptu. <br> [Dowiedz się więcej](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
+IIS | -Brak istniejących domyślnej witryny sieci Web <br> -Brak istniejących witryny sieci Web/aplikacja nasłuchuje na porcie 443 <br>-Włącz [uwierzytelnianie anonimowe](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Włącz [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ustawienie 
+| 
+**USTAWIENIA SIECI** | 
+Typ adresu IP | Statyczny 
+Dostęp do Internetu | Serwer musi mieć dostęp do tych adresów URL (bezpośrednio lub za pośrednictwem serwera proxy) <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (Jeśli podczas konfigurowania serwera konfiguracji) <br> - time.nist.gov <br> - time.windows.com 
+Porty | 443 (organizowanie kanału sterowania)<br>9443 (transport danych) 
+Typ karty Sieciowej | VMXNET3 (Jeśli serwer konfiguracji maszyny Wirtualnej VMware)
+ | 
+**OPROGRAMOWANIE DO ZAINSTALOWANIA** | 
+VMware vSphere PowerCLI | [PowerCLI w wersji 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) powinien być zainstalowany, jeśli serwer konfiguracji jest uruchomiony na maszynie Wirtualnej VMware.
+MYSQL | Należy zainstalować MySQL. Można zainstalować ręcznie lub usługi Site Recovery może go zainstalować.
 
 **Serwer konfiguracji procesu zmiany rozmiaru wymagania**
 

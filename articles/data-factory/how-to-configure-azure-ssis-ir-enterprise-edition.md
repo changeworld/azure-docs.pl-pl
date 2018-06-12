@@ -1,6 +1,6 @@
 ---
-title: Enterprise Edition środowiska uruchomieniowego integracji usług SSIS Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano funkcje i konfiguracja Enterprise Edition dla środowiska uruchomieniowego integracji usług SSIS Azure
+title: Zapewnij Enterprise Edition dla środowiska uruchomieniowego integracji usług SSIS Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano funkcje Enterprise Edition dla środowiska uruchomieniowego integracji usług SSIS Azure i jej udostępnianie
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: douglasl
-ms.openlocfilehash: 5ce6b46a49e3fba8f60311ad82d3e1b77ad6d993
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 55f4fd18dbebe8a4c666c5512b9cad46ddf9f7d7
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619307"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296860"
 ---
 # <a name="enterprise-edition-of-the-azure-ssis-integration-runtime"></a>Środowisko uruchomieniowe integracji usług SSIS Azure w wersji Enterprise
 

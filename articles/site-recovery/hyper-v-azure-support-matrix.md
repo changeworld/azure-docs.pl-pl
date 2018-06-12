@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: raynew
-ms.openlocfilehash: f8149d2af5542fb311ff83160d674e4d525289dc
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: c818ff0df5cb1f1b3d20c726b20b30c418f53061
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35266965"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Macierz obsługi replikacji funkcji Hyper-V w systemie Azure
 
@@ -44,7 +45,7 @@ Poniższa tabela zawiera podsumowanie obsługi maszyny Wirtualnej. Usługa Site 
  **Składnik** | **Szczegóły**
 --- | ---
 Konfiguracja maszyny Wirtualnej | Maszyny wirtualne, które są replikowane do platformy Azure musi spełniać [wymagania dotyczące usługi Azure](#failed-over-azure-vm-requirements).
-System operacyjny gościa | Wszelkie system operacyjny gościa [obsługiwany przez platformę Azure](https://technet.microsoft.com/library/cc794868.aspx).<br/><br/> Windows Server 2016 Nano Server nie jest obsługiwana.
+System operacyjny gościa | System operacyjny obsługiwany przez platformę Azure żadnych gościa.<br/><br/> Windows Server 2016 Nano Server nie jest obsługiwana.
 
 
 

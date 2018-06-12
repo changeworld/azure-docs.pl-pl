@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
-ms.openlocfilehash: 35b4343bac033708a0912f1e129cdfef146e0603
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 933a5c8a9cde9134071a12dd0aed684358cc8696
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34698785"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292858"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Rozwiązywanie problemów z konfiguracji delegowania ograniczonego protokołu Kerberos dla serwera Proxy aplikacji
 
@@ -70,9 +70,9 @@ Pokaż oba te obrazy objawem tego samego: błąd rejestracji Jednokrotnej. Odmow
 
 Jak rozwiązać zależy od tego, problem i objawy, które należy obserwować. Przed przejściem do żadnego dalej, Poznaj następujących artykułach. Udostępniają one przydatne informacje dotyczące rozwiązywania problemów:
 
--   [Rozwiązywanie problemów z serwera Proxy aplikacji i komunikaty o błędach](active-directory-application-proxy-troubleshoot.md)
+-   [Rozwiązywanie problemów z serwera Proxy aplikacji i komunikaty o błędach](manage-apps/application-proxy-troubleshoot.md)
 
--   [Błędy protokołu Kerberos i objawy](active-directory-application-proxy-troubleshoot.md#kerberos-errors)
+-   [Błędy protokołu Kerberos i objawy](manage-apps/application-proxy-troubleshoot.md#kerberos-errors)
 
 -   [Praca z logowania jednokrotnego podczas lokalnej i w chmurze tożsamości nie są identyczne](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)
 

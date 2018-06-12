@@ -1,24 +1,19 @@
 ---
-title: Zaawansowane skalowania automatycznego przy użyciu usługi Azure Virtual Machines | Dokumentacja firmy Microsoft
+title: Funkcja automatycznego skalowania zaawansowanych za pomocą usługi Azure Virtual Machines
 description: Używa usługi Resource Manager i zestawy skalowania maszyny Wirtualnej z wielu zasad i profilów, które wysyłania wiadomości e-mail i Wywołaj adresy URL elementu webhook z akcji skalowania.
 author: anirudhcavale
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 7e3576e2-4a2b-4736-b5ae-98c4689cdd2b
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 02/22/2016
 ms.author: ancav
-ms.openlocfilehash: c1ac5c4c44386fc05e3ee87ccdbbc4f652a94a1c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: autoscale
+ms.openlocfilehash: 9ff8c28a139d9a16d31a61b560ef7f5759d0a3f5
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267734"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Zestawy skalowania maszyny Wirtualnej za pomocą szablonów usługi Resource Manager konfiguracji zaawansowanej skalowania automatycznego
 Można w skali i skalowalnego w poziomie w zestawy skalowania maszyny wirtualnej w oparciu metryki progów wydajności, zgodnie z cyklicznym harmonogramem lub w określonym dniu. Można również skonfigurować powiadomienia e-mail i elementu webhook dla akcji skalowania. W tym przewodniku przedstawiono przykład konfigurowania tych obiektów przy użyciu szablonu usługi Resource Manager dla zestawu skalowania maszyny Wirtualnej.

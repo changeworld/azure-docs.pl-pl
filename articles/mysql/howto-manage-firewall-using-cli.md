@@ -6,15 +6,16 @@ author: ajlam
 ms.author: andrela
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: b142d08379f8a8fde20178668a4c1343f08aedbc
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 1bb60a1d6f14f0dc81047a2ffdd514724954fb14
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35266061"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Tworzenie i zarządzanie nimi Azure bazy danych MySQL reguł zapory przy użyciu wiersza polecenia platformy Azure
 Reguły zapory poziomu serwera umożliwiają administratorom zarządzanie dostępem do bazy danych Azure MySQL serwera z określonego adresu IP lub zakresu adresów IP. Za pomocą wygodny poleceń interfejsu wiersza polecenia Azure, możesz utworzyć, zaktualizować, Usuń listę i Pokaż reguły zapory do zarządzania serwerem. Omówienie bazy danych Azure dla zapór MySQL, zobacz [bazą danych Azure dla reguł zapory serwera MySQL](./concepts-firewall-rules.md)
@@ -42,7 +43,7 @@ az login
 ```
 To polecenie generuje kod, aby użyć w następnym kroku.
 
-2. Aby otworzyć stronę przy użyciu przeglądarki sieci web [https://aka.ms/devicelogin](https://aka.ms/devicelogin), a następnie wprowadź kod.
+2. Aby otworzyć stronę przy użyciu przeglądarki sieci web [ https://aka.ms/devicelogin ](https://aka.ms/devicelogin), a następnie wprowadź kod.
 
 3. Po wyświetleniu monitu zaloguj się przy użyciu swoich poświadczeń platformy Azure.
 

@@ -1,12 +1,12 @@
 ---
-title: "Konwertuj dane JSON przy użyciu płynne transformacji - Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Utwórz transformacje lub mapy dla zaawansowanych przekształcenia JSON przy użyciu Logic Apps i płynnych szablonu."
+title: Konwertuj dane JSON przy użyciu płynne transformacji - Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Utwórz transformacje lub mapy dla zaawansowanych przekształcenia JSON przy użyciu Logic Apps i płynnych szablonu.
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: divyaswarnkar
-manager: anneta
-editor: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: integration
 ms.tgt_pltfrm: na
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: LADocs; divswa
-ms.openlocfilehash: 4bb003afd757faac675a9af8599a781247717a64
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 42a102c9b2663380a93d56cc5f8fb82abaa83b74
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299515"
 ---
 # <a name="perform-advanced-json-transformations-with-a-liquid-template"></a>Wykonywać zaawansowane przekształcenia JSON przy użyciu szablonu płynne
 
@@ -126,7 +127,7 @@ Płynnych nie jest ograniczone do tylko przekształcenia JSON. Poniżej przedsta
   
    ![Przykładowe dane wyjściowe JSON do tekstu](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontotext.png)
 
-* Przekształcanie XML do ciągu JSON
+* Przekształć element XML do formatu JSON
   
   Oto płynne szablon używany w tym przykładzie:
    

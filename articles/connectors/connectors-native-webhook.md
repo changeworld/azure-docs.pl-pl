@@ -1,11 +1,11 @@
 ---
-title: "Łącznik elementu Webhook dla usługi Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Jak używać Akcje elementu webhook i wyzwalaczy do wykonania akcji, takich jak tablicy filtrów z aplikacji logiki"
+title: Łącznik elementu Webhook dla usługi Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Jak używać Akcje elementu webhook i wyzwalaczy do wykonania akcji, takich jak tablicy filtrów z aplikacji logiki
 services: logic-apps
 author: jeffhollan
-manager: anneta
-editor: 
-documentationcenter: 
+manager: jeconnoc
+editor: ''
+documentationcenter: ''
 tags: connectors
 ms.assetid: 71775384-6c3a-482c-a484-6624cbe4fcc7
 ms.service: logic-apps
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/21/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: ec407d72f90cf3616214d27c378dee0ff42f4c6f
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 647dcebdd8d66ca49e14b51633e6a4a3ce6cb32b
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296564"
 ---
 # <a name="get-started-with-the-webhook-connector"></a>Rozpoczynanie pracy z łącznika elementu webhook
 
@@ -81,20 +82,20 @@ Poniżej przedstawiono więcej informacji o wyzwalacze i akcje obsługuje tego e
 
 | Akcja | Opis |
 | --- | --- |
-| Element webhook protokołu HTTP |Subskrypcja wywołania zwrotnego adresu URL usługi, który można wywołać, adres URL, aby uruchomić aplikację logiki, zgodnie z potrzebami. |
+| HTTP Webhook |Subskrypcja wywołania zwrotnego adresu URL usługi, który można wywołać, adres URL, aby uruchomić aplikację logiki, zgodnie z potrzebami. |
 
 ### <a name="trigger-details"></a>Szczegóły wyzwalacza
 
-#### <a name="http-webhook"></a>Element webhook protokołu HTTP
+#### <a name="http-webhook"></a>HTTP Webhook
 
 Subskrypcja wywołania zwrotnego adresu URL usługi, który można wywołać, adres URL, aby uruchomić aplikację logiki, zgodnie z potrzebami.
 * Oznacza, że wymagane pole.
 
 | Nazwa wyświetlana | Nazwa właściwości | Opis |
 | --- | --- | --- |
-| Subskrypcja — metoda * |metoda |Metoda HTTP do użycia podczas subskrybowania żądania |
+| Subskrypcja — metoda * |method |Metoda HTTP do użycia podczas subskrybowania żądania |
 | Subskrypcja URI * |identyfikator URI |Identyfikator URI protokołu HTTP do użycia dla żądania Subskrybuj |
-| Anulowanie subskrypcji metody * |metoda |Metoda HTTP do użycia podczas żądania anulowania |
+| Anulowanie subskrypcji metody * |method |Metoda HTTP do użycia podczas żądania anulowania |
 | Anulowanie subskrypcji URI * |identyfikator URI |Identyfikator URI protokołu HTTP do użycia dla żądania anulowania |
 | Subskrypcja treści |treść |Żądania HTTP do subskrybowania |
 | Subskrypcja nagłówki |nagłówki |Nagłówki żądania HTTP do subskrybowania |
@@ -117,20 +118,20 @@ Subskrypcja wywołania zwrotnego adresu URL usługi, który można wywołać, ad
 
 | Akcja | Opis |
 | --- | --- |
-| Element webhook protokołu HTTP |Subskrypcja wywołania zwrotnego adresu URL usługi, który można wywołać, adres URL, aby wznowić krok przepływu pracy, zgodnie z potrzebami. |
+| HTTP Webhook |Subskrypcja wywołania zwrotnego adresu URL usługi, który można wywołać, adres URL, aby wznowić krok przepływu pracy, zgodnie z potrzebami. |
 
 ### <a name="action-details"></a>Szczegóły akcji
 
-#### <a name="http-webhook"></a>Element webhook protokołu HTTP
+#### <a name="http-webhook"></a>HTTP Webhook
 
 Subskrypcja wywołania zwrotnego adresu URL usługi, który można wywołać, adres URL, aby wznowić krok przepływu pracy, zgodnie z potrzebami.
 * Oznacza, że wymagane pole.
 
 | Nazwa wyświetlana | Nazwa właściwości | Opis |
 | --- | --- | --- |
-| Subskrypcja — metoda * |metoda |Metoda HTTP do użycia podczas subskrybowania żądania |
+| Subskrypcja — metoda * |method |Metoda HTTP do użycia podczas subskrybowania żądania |
 | Subskrypcja URI * |identyfikator URI |Identyfikator URI protokołu HTTP do użycia dla żądania Subskrybuj |
-| Anulowanie subskrypcji metody * |metoda |Metoda HTTP do użycia podczas żądania anulowania |
+| Anulowanie subskrypcji metody * |method |Metoda HTTP do użycia podczas żądania anulowania |
 | Anulowanie subskrypcji URI * |identyfikator URI |Identyfikator URI protokołu HTTP do użycia dla żądania anulowania |
 | Subskrypcja treści |treść |Żądania HTTP do subskrybowania |
 | Subskrypcja nagłówki |nagłówki |Nagłówki żądania HTTP do subskrybowania |

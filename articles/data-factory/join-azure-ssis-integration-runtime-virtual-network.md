@@ -12,18 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: douglasl
-ms.openlocfilehash: b998b47cdc65be91f62543369f5c3f18e4f270c4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 344bd9beff03f423d3dc3431dec56334e721d811
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619647"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298070"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Dołącz do środowiska uruchomieniowego integracji usług SSIS Azure do sieci wirtualnej
 Dołącz do programu Azure SSIS integracji runtime (IR) do sieci wirtualnej platformy Azure w następujących scenariuszach: 
 
-- Obsługiwana baza danych SQL Server Integration Services (SSIS) katalogu w wystąpieniu usługi Azure SQL bazy danych zarządzanych (wersja zapoznawcza) w sieci wirtualnej.
 - Chcesz połączyć się z lokalnymi magazynami danych z pakietów usług SSIS działającymi w środowisku Azure SSIS Integration Runtime.
+
+- Obsługiwana baza danych SQL Server Integration Services (SSIS) katalogu w wystąpieniu usługi Azure SQL bazy danych zarządzanych (wersja zapoznawcza) w sieci wirtualnej.
 
  Fabryka danych Azure w wersji 2 (wersja zapoznawcza) umożliwia dołączenie Twojego środowiska uruchomieniowego integracji usług SSIS Azure do sieci wirtualnej, która została utworzona za pośrednictwem klasycznego modelu wdrażania lub modelu wdrażania usługi Azure Resource Manager. 
 
@@ -78,7 +79,7 @@ Zaleca się następujące czynności:
 
 -   Skonfiguruj niestandardowe DNS do przekazywania żądań do usługi Azure DNS. Na serwerze DNS, może przesłać dalej nierozwiązane rekordy DNS na adres IP rozwiązujący cykliczne platformy Azure (168.63.129.16).
 
--   Skonfiguruj niestandardowe DNS jako podstawowa i usługi Azure DNS jako dodatkowej sieci wirtualnej. Rejestruje adres IP platformy Azure cykliczne programy rozpoznawania nazw (168.63.129.16) jako pomocniczy serwer DNS w przypadku, gdy serwer DNS jest niedostępna.
+-   Skonfiguruj niestandardowe DNS jako podstawowa i usługi Azure DNS jako pomocniczy dla sieci wirtualnej. Rejestruje adres IP platformy Azure cykliczne programy rozpoznawania nazw (168.63.129.16) jako pomocniczy serwer DNS w przypadku, gdy serwer DNS jest niedostępna.
 
 Aby uzyskać więcej informacji, zobacz [rozpoznawanie, który używa serwera DNS nazw](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 
@@ -109,7 +110,7 @@ Jeśli masz obawy utraty możliwości inspekcji wychodzący ruch internetowy poc
 Zobacz [ten skrypt programu PowerShell](https://gallery.technet.microsoft.com/scriptcenter/Adds-Azure-Datacenter-IP-dbeebe0c) przykład. Należy uruchomić skrypt co tydzień w celu zapewnienia aktualności listy adresów IP centrum danych Azure.
 
 ### <a name="resource-group"></a> Wymagania dla grupy zasobów.
-IR Azure SSIS potrzebuje do utworzenia niektórych zasobów sieciowych w tej samej grupie zasobów co sieć wirtualną, w tym do modułu równoważenia obciążenia Azure, Azure publicznego adresu IP i grupę zabezpieczeń sieci.
+IR Azure SSIS potrzebuje do utworzenia niektórych zasobów sieciowych w grupie zasobów co sieć wirtualna, w tym do modułu równoważenia obciążenia Azure, Azure publicznego adresu IP i grupę zabezpieczeń sieci.
 
 -   Upewnij się, że nie masz żadnych Blokada zasobu, grupy zasobów lub subskrypcji, do którego należy sieć wirtualna. Jeśli skonfigurujesz blokady tylko do odczytu lub usunięcia blokady uruchamianie i zatrzymywanie IR może zakończyć się niepowodzeniem lub zawieszenie.
 
@@ -228,7 +229,7 @@ Należy skonfigurować sieć wirtualną, zanim dołączysz IR Azure SSIS do nieg
 
 ```powershell
 # Register to the Azure Batch resource provider
-# Make sure to run this script against the subscription to which the VNet belongs.
+# Make sure to run this script against the subscription to which the virtual network belongs.
 if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 {
     $BatchApplicationId = "ddbf3205-c6bd-46ae-8127-60eb93363864"
@@ -282,7 +283,7 @@ Stop-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupNam
 
 ```powershell
 # Register to the Azure Batch resource provider
-# Make sure to run this script against the subscription to which the VNet belongs.
+# Make sure to run this script against the subscription to which the virtual network belongs.
 if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 {
     $BatchObjectId = (Get-AzureRmADServicePrincipal -ServicePrincipalName "MicrosoftAzureBatch").Id

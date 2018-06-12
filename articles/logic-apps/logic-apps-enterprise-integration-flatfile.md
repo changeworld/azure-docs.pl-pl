@@ -1,11 +1,11 @@
 ---
-title: "Kodowania i dekodowania plików prostych w aplikacjach logiki platformy Azure | Dokumentacja firmy Microsoft"
-description: "Jak używać pliku plik encoder lub dekodera w pakiet integracyjny dla przedsiębiorstw w aplikacjach logiki"
+title: Kodowania i dekodowania plików prostych w aplikacjach logiki platformy Azure | Dokumentacja firmy Microsoft
+description: Jak używać pliku plik encoder lub dekodera w pakiet integracyjny dla przedsiębiorstw w aplikacjach logiki
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: divyaswarnkar
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 82152dab-c7ad-43df-b721-596559703be8
 ms.service: logic-apps
 ms.workload: integration
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; divswa
-ms.openlocfilehash: 410f2e184a92b879d4f75b31216da783e82dc953
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 2f88b9c3d25b1a4771772e32bac8a4f7893831cf
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300083"
 ---
 # <a name="overview-of-enterprise-integration-with-flat-files"></a>Omówienie integracji przedsiębiorstwa z plików prostych
 

@@ -1,6 +1,6 @@
 ---
-title: Instalacja niestandardowa środowiska uruchomieniowego integracji usług SSIS Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób użycia interfejsu niestandardowego Instalatora dla środowiska uruchomieniowego integracji usług SSIS Azure
+title: Dostosowywanie ustawień środowiska uruchomieniowego integracji usług SSIS Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób użycia interfejsu niestandardowych ustawień środowiska uruchomieniowego integracji usług SSIS Azure do instalowania dodatkowych składników lub zmienić ustawienia
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: douglasl
-ms.openlocfilehash: cce41a7529367d2e26b89a40593f9564d7e539b6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7b6cae9eaa4674e60edfae13c571d89153c9b498
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619592"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298396"
 ---
-# <a name="custom-setup-for-the-azure-ssis-integration-runtime"></a>Instalacja niestandardowa środowiska uruchomieniowego integracji usług SSIS Azure
+# <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Dostosowywanie ustawień środowiska uruchomieniowego integracji usług SSIS Azure
 
-Instalacja niestandardowa interfejs środowiska uruchomieniowego integracji usług SSIS Azure umożliwia zmianę domyślnego, konfiguracji lub środowisku (na przykład do uruchomienia dodatkowych usług systemu Windows) lub zainstalowanie dodatkowych składników (na przykład, zestawy, sterowniki, lub Extensions) na każdym węźle sieci podczerwieni Azure SSIS. Ogólnie rzecz biorąc zapewnia interfejs do dodania własnych kroków konfiguracji podczas inicjowania obsługi administracyjnej lub zmiana konfiguracji sieci IR. Azure SSIS
+Instalacja niestandardowa interfejs środowiska uruchomieniowego integracji usług SSIS Azure udostępnia interfejs dodać własne kroków konfiguracji podczas inicjowania obsługi administracyjnej lub zmiana konfiguracji sieci IR. Azure SSIS Instalacja niestandardowa umożliwia zmianę domyślnego, konfiguracji lub środowisku (na przykład do uruchomienia dodatkowych usług systemu Windows) lub instalowania dodatkowych składników (na przykład, zestawy, sterowniki lub rozszerzenia) w każdym węźle sieci podczerwieni Azure SSIS.
 
 Skonfiguruj ustawienia niestandardowe poprzez przygotowanie skrypt i skojarzone z nią pliki i przekazywanie ich do kontenera obiektów blob na koncie magazynu Azure. Podaj dostępu sygnatury dostępu Współdzielonego zasobu identyfikator URI (Uniform) dla kontenera programu obsługi administracyjnej lub ponownie skonfigurować Twoje podczerwieni Azure SSIS. Każdy węzeł z IR Azure SSIS następnie pobiera skrypt i skojarzone z nią pliki z Twojej kontenera i uruchamia niestandardowych ustawień z podwyższonym poziomem uprawnień. Po zakończeniu instalacji niestandardowej, każdy węzeł przekazuje standardowe dane wyjściowe wykonania a inne dzienniki do Twojej kontenera.
 
@@ -32,7 +32,7 @@ Można zainstalować składniki wolne lub użytkowaniem i płatną lub licencjon
 
 -   Jeśli chcesz użyć `gacutil.exe` do zainstalowania zestawów w globalnej pamięci podręcznej zestawów (GAC), należy podać go jako część ustawień niestandardowych, lub użyj kopii w kontenerze publicznej wersji zapoznawczej.
 
--   Należy przyłączyć Twojej IR Azure SSIS z niestandardowych ustawień do sieci wirtualnej, tylko usługi Azure Resource Manager wirtualnej jest obsługiwana. Klasyczne sieci wirtualnej nie jest obsługiwane.
+-   Jeśli potrzebujesz sprzęgać z IR Azure SSIS z niestandardowych ustawień do sieci wirtualnej, tylko usługi Azure Resource Manager sieci wirtualnej jest obsługiwane. Klasyczne sieci wirtualnej nie jest obsługiwane.
 
 -   Udział administracyjny nie jest aktualnie obsługiwana w podczerwieni Azure SSIS.
 

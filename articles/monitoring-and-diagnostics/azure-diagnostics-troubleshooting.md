@@ -1,24 +1,20 @@
 ---
-title: "Rozwiązywanie problemów z diagnostyki Azure | Dokumentacja firmy Microsoft"
-description: "Rozwiązywanie problemów, gdy za pomocą diagnostyki Azure w maszynach wirtualnych platformy Azure, sieci szkieletowej usług lub usługi w chmurze."
-services: monitoring-and-diagnostics
-documentationcenter: .net
+title: Rozwiązywanie problemów z rozszerzeniem diagnostyki Azure
+description: Rozwiązywanie problemów, gdy za pomocą diagnostyki Azure w maszynach wirtualnych platformy Azure, sieci szkieletowej usług lub usługi w chmurze.
+services: azure-monitor
 author: rboucher
-manager: carmonm
-editor: 
-ms.assetid: 66469bce-d457-4d1e-b550-a08d2be4d28c
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/12/2017
 ms.author: robb
-ms.openlocfilehash: e194c2898616d5a19782039d38592c59f6b0c576
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.component: diagnostic-extension
+ms.openlocfilehash: 8f41605114de296b626418d0a868e3ed778c0640
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263850"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Rozwiązywanie problemów Diagnostyka Azure
 W tym artykule opisano informacje dotyczące rozwiązywania problemów, który dotyczy za pomocą diagnostyki Azure. Aby uzyskać więcej informacji na temat diagnostycznych platformy Azure, zobacz [Omówienie diagnostyki Azure](azure-diagnostics.md).
@@ -68,7 +64,7 @@ Sprawdź, czy nie ma żadnych danych dla określonej metryki, **konfiguracji dia
 - \Memory\Available Bytes
 - Aplikacje \ASP.NET (__całkowita__) \Requests/Sec
 - Aplikacje \ASP.NET (__całkowita__) \Errors/s
-- \ASP.NET\Requests Queued
+- \ASP.NET\Requests umieszczonych w kolejce.
 - \ASP.NET\Requests odrzucone
 - \Processor(W3wp)\% czas procesora
 - Bajty \Private \Process (w3wp)

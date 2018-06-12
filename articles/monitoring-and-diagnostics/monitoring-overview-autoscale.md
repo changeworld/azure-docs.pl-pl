@@ -1,24 +1,19 @@
 ---
-title: "Omówienie automatycznego skalowania w maszynach wirtualnych platformy Azure firmy Microsoft, usługi w chmurze i aplikacje sieci Web | Dokumentacja firmy Microsoft"
-description: "Omówienie automatycznego skalowania na platformie Microsoft Azure. Ma zastosowanie do maszyn wirtualnych, Cloud Services i aplikacji sieci Web."
+title: Omówienie automatycznego skalowania maszyn wirtualnych, usługi w chmurze i aplikacje sieci Web
+description: Skalowania automatycznego na platformie Microsoft Azure. Ma zastosowanie do maszyn wirtualnych, zestawy skalowania maszyny wirtualnej, Cloud Services i aplikacji sieci Web.
 author: rboucher
-manager: carmonm
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 74bf03be-e658-4239-a214-c12424b53e4c
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 03/02/2016
 ms.author: robb
-ms.openlocfilehash: 0a30f0c3b799f76858424d97218c5a6e4386e78e
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.component: autoscale
+ms.openlocfilehash: 4eeca81e08a0ecae9ba41ccdd2bf8a2f395f579c
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264674"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Omówienie automatycznego skalowania w maszynach wirtualnych platformy Azure firmy Microsoft, usługi w chmurze i aplikacje sieci Web
 W tym artykule opisano, jakie skalowania automatycznego Microsoft Azure, jego zalety i sposobu rozpocząć korzystanie z jej.  
@@ -33,7 +28,7 @@ Azure Monitor skalowania automatycznego ma zastosowanie tylko do [zestawy skalow
 ## <a name="what-is-autoscale"></a>Co to jest funkcja automatycznego skalowania?
 Funkcja automatycznego skalowania umożliwia ma jednostkom zasoby z uruchomionym do obsługi obciążenia aplikacji. Umożliwia dodawanie zasobów obsługujące wzrost obciążenia, a także oszczędzić pieniądze przez usunięcie zasobów, które są obecne bezczynności. Należy określić minimalną i maksymalną liczbę wystąpień do uruchomienia i dodawanie lub usuwanie maszyn wirtualnych, automatycznie na podstawie zestawu reguł. O minimalnej sprawia, że czy aplikacja zawsze działa nawet w przypadku obciążenia. O maksymalnej ogranicza łącznym możliwy koszt co godzinę. Automatycznie skalować między te dwie wartości graniczne przy użyciu utworzone reguły.
 
- ![Wyjaśniono skalowania automatycznego. Dodawanie i usuwanie maszyny wirtualne](./media/monitoring-overview-autoscale/AutoscaleConcept.png)
+ ![Wyjaśniono skalowania automatycznego. Dodawanie i usuwanie maszyn wirtualnych](./media/monitoring-overview-autoscale/AutoscaleConcept.png)
 
 Gdy warunki reguły są spełnione, co najmniej jednej akcji skalowania automatycznego są wyzwalane. Można dodać i usunąć maszyny wirtualnej lub wykonywać inne akcje. Poniższy diagram koncepcyjny przedstawia tego procesu.  
 
@@ -101,8 +96,8 @@ Aby uzyskać więcej informacji, zobacz [skalowanie w pionie maszyny wirtualnej 
 ## <a name="methods-of-access"></a>Metody dostępu
 Możesz skonfigurować automatycznego skalowania za pomocą
 
-* [Witryna Azure Portal](insights-how-to-scale.md)
-* [PowerShell](insights-powershell-samples.md#create-and-manage-autoscale-settings)
+* [Azure Portal](insights-how-to-scale.md)
+* [Program PowerShell](insights-powershell-samples.md#create-and-manage-autoscale-settings)
 * [Interfejs wiersza polecenia i platform (CLI)](insights-cli-samples.md#autoscale)
 * [Interfejs API REST Azure monitora](https://msdn.microsoft.com/library/azure/dn931953.aspx)
 

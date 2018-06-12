@@ -1,13 +1,13 @@
 ---
-title: "Wsadowe przetwarzanie komunikatów EDI jako grupy lub kolekcji — usługi Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Wysyłanie komunikatów EDI dla przetwarzania wsadowego w aplikacji logiki"
+title: Wsadowe przetwarzanie komunikatów EDI jako grupy lub kolekcji — usługi Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Wysyłanie komunikatów EDI dla przetwarzania wsadowego w aplikacji logiki
 keywords: Przetwarzanie wsadowe partii, kodowania partii
 author: divswa
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2017
 ms.author: LADocs; estfan; divswa
-ms.openlocfilehash: 837cb0d9595da5b5bd4f01fb4576f75e98ab8912
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 6340d1fc409b64c5e681f9f69e4e2d0895ede61f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299294"
 ---
 # <a name="send-x12-messages-in-batch-to-trading-partners"></a>Wyślij X12 komunikaty w partii, aby partnerami handlowymi
 
@@ -167,7 +168,7 @@ Aplikacje logiki nadawcy muszą wiedzieć, gdzie mają zostać wysłane elementy
 
 Aby przetestować rozwiązania przetwarzanie wsadowe, post X12 komunikatów do aplikacji logiki nadawcy z [Postman](https://www.getpostman.com/postman) lub narzędzia. Wkrótce, należy rozpocząć pobieranie X12 wiadomości jako partii pięć lub co 10 minut, w Twojej bin żądania — wszystko z tym samym kluczem partycji.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Przetwarzanie komunikatów jako partii](logic-apps-batch-process-send-receive-messages.md) 
 * [Tworzenie aplikacji bez serwera w programie Visual Studio z usługi Azure Logic Apps i funkcje](../logic-apps/logic-apps-serverless-get-started-vs.md)

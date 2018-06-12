@@ -1,11 +1,11 @@
 ---
-title: "Obsługa typów zawartości — usługi Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Sposób obsługi usługi Azure Logic Apps z typami zawartości projektu i środowiska wykonawczego"
+title: Obsługa typów zawartości — usługi Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Sposób obsługi usługi Azure Logic Apps z typami zawartości projektu i środowiska wykonawczego
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: cd1f08fd-8cde-4afc-86ff-2e5738cc8288
 ms.service: logic-apps
 ms.devlang: multiple
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: ac67838344bbd10384299c086ff096fbe5dec6a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 809cc8524bf0d9922aec1f88aa5bfe3b8f2f4d78
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297125"
 ---
 # <a name="handle-content-types-in-logic-apps"></a>Dojście do typów zawartości w aplikacji logiki
 
@@ -55,7 +56,7 @@ Wyzwalacz żądania umożliwia wprowadzenie schematu JSON dla ładunku, który p
 
 `Parse JSON` Pozwala analizować zawartość JSON w tokenach przyjazną wykorzystania aplikacji logiki. Podobnie jak wyzwalacza żądania, ta akcja umożliwia wprowadź lub wygenerować schematu JSON dla zawartości, który chcesz przeanalizować. To narzędzie ułatwia danych korzystanie z usługi Service Bus, bazy danych Azure rozwiązania Cosmos i tak dalej, znacznie.
 
-![Przeanalizować składni JSON](./media/logic-apps-content-type/ParseJSON.png)
+![Przeanalizuj dane JSON](./media/logic-apps-content-type/ParseJSON.png)
 
 ## <a name="textplain"></a>zwykły tekst
 
@@ -72,15 +73,15 @@ W następnej akcji w przypadku wysłania żądania jako treść inne żądanie (
 
 Aparat aplikacji logiki zawsze zachowuje `Content-Type` który otrzymano na żądanie lub odpowiedź HTTP. Dlatego jeśli aparat odbiera zawartość z `Content-Type` z `application/octet-stream`, i obejmują, że zawartość w kolejnych akcji bez rzutowania, żądania wychodzącego został `Content-Type`: `application/octet-stream`. W ten sposób aparat można zagwarantować, że utratę danych podczas przenoszenia przez przepływ pracy. Jednak stan akcji (wejścia i wyjścia) jest przechowywana w obiekcie JSON, ponieważ stan przechodzi przez przepływ pracy. Tak, aby zachować niektóre typy danych, aparat Konwertuje zawartość na ciąg kodowany w standardzie binary base64 odpowiednie metadane, która zachowuje zarówno `$content` i `$content-type`, które są automatycznie przekonwertować. 
 
-* `@json()`-rzutuje danych`application/json`
-* `@xml()`-rzutuje danych`application/xml`
-* `@binary()`-rzutuje danych`application/octet-stream`
-* `@string()`-rzutuje danych`text/plain`
-* `@base64()`-Konwertuje zawartość na ciąg w formacie base64
-* `@base64toString()`-Konwertuje ciąg kodowany w standardzie base64`text/plain`
-* `@base64toBinary()`-Konwertuje ciąg kodowany w standardzie base64`application/octet-stream`
-* `@encodeDataUri()`-koduje ciągiem w postaci tablicy bajtów dataUri
-* `@decodeDataUri()`-dekoduje dataUri do tablicy typu byte
+* `@json()` -rzutuje danych `application/json`
+* `@xml()` -rzutuje danych `application/xml`
+* `@binary()` -rzutuje danych `application/octet-stream`
+* `@string()` -rzutuje danych `text/plain`
+* `@base64()` -Konwertuje zawartość na ciąg w formacie base64
+* `@base64toString()` -Konwertuje ciąg kodowany w standardzie base64 `text/plain`
+* `@base64toBinary()` -Konwertuje ciąg kodowany w standardzie base64 `application/octet-stream`
+* `@encodeDataUri()` -koduje ciągiem w postaci tablicy bajtów dataUri
+* `@decodeDataUri()` -dekoduje dataUri do tablicy typu byte
 
 Na przykład w przypadku otrzymania żądania HTTP z `Content-Type`: `application/xml`:
 

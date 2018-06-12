@@ -6,14 +6,15 @@ author: ajlam
 ms.author: andrela
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 3af6ad347cec171132ddfbec21137775c0f71245
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 72b047c37ac88e4b33c8723f8df14c6794e84399
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35266180"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>Jak używać WYJAŚNIJ do profilu wydajności zapytań w bazie danych Azure dla programu MySQL
 **WYJAŚNIĆ** jest przydatnym narzędziem zoptymalizować zapytania. WYJAŚNIONO, że instrukcja może być używana do uzyskania informacji na temat sposobu wykonywania instrukcji SQL. Następujące dane wyjściowe przedstawiono przykład wykonywania instrukcji wyjaśnienia.

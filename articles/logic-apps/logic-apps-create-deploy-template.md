@@ -1,11 +1,11 @@
 ---
-title: "Utwórz szablony wdrażania dla usługi Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Tworzenie szablonów usługi Azure Resource Manager do wdrażania aplikacji logiki"
+title: Utwórz szablony wdrażania dla usługi Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Tworzenie szablonów usługi Azure Resource Manager do wdrażania aplikacji logiki
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: ecfan
-manager: SyntaxC4
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.service: logic-apps
 ms.devlang: multiple
@@ -15,11 +15,12 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 10/18/2016
 ms.author: LADocs; estfan
-ms.openlocfilehash: 91d93a02bb9bf48c5bda0304c9d3d52c22e30209
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 647ffeb05542e12d19cefa3fa0dbf55e5585109a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297917"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>Tworzenie szablonów usługi Azure Resource Manager do wdrażania aplikacji logiki
 

@@ -5,7 +5,7 @@ services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
-editor: rqureshi
+editor: bagovind
 ms.assetid: b547c5a5-2da2-4372-9938-481cb962d2d6
 ms.service: role-based-access-control
 ms.devlang: na
@@ -14,11 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/11/2018
 ms.author: rolyon
-ms.openlocfilehash: b671ff6b473093e59bce18c7bf98b32e9849bbb0
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.reviewer: bagovind
+ms.openlocfilehash: e1e46d5fb786b09a4c006b61f52b3ac99aafd555
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35266509"
 ---
 # <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Podniesienie uprawnień dostępu administratora globalnego w usłudze Azure Active Directory
 
@@ -32,6 +34,8 @@ Jeśli jesteś [administratora globalnego](../active-directory/active-directory-
 Domyślnie role administratora usługi Azure AD dostępu opartej na rolach na platformie Azure kontrolę i ról (RBAC) nie zakresu usługi Azure AD i Azure. Jednak jeśli jesteś administratorem globalnym w usłudze Azure AD, możesz podnieść poziom dostępu użytkownika do zarządzania subskrypcjami platformy Azure i grup zarządzania. Gdy użytkownik podniesienia uprawnień dostępu, zostanie nadany [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator) roli (rola RBAC) na wszystkie subskrypcje dla konkretnego dzierżawcy. Rola Administrator dostępu użytkowników umożliwia udzielić innym użytkownikom dostęp do zasobów platformy Azure w zakresie głównym (`/`).
 
 Podniesienie uprawnień powinna być tymczasowe i tylko wykonywane w razie potrzeby.
+
+[!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="elevate-access-for-a-global-administrator-using-the-azure-portal"></a>Podniesienie uprawnień dostępu administratora globalnego przy użyciu portalu Azure
 
@@ -75,7 +79,7 @@ ObjectId           : d65fd0e9-c185-472c-8f26-1dafa01f72cc
 ObjectType         : User
 ```
 
-## <a name="delete-a-role-assignment-at-the-root-scope--using-powershell"></a>Usuwa przypisanie roli w zakresie głównym (/), za pomocą programu PowerShell
+## <a name="remove-a-role-assignment-at-the-root-scope--using-powershell"></a>Usuń przypisanie roli w zakresie głównym (/), za pomocą programu PowerShell
 
 Aby usunąć przypisanie roli użytkownika Administrator dostępu dla użytkownika w zakresie głównym (`/`), użyj [AzureRmRoleAssignment Usuń](/powershell/module/azurerm.resources/remove-azurermroleassignment) polecenia.
 
@@ -109,14 +113,23 @@ Poniższe podstawowe kroki umożliwiają podniesienie uprawnień dostępu admini
    }
    ```
 
-1. Podczas Administrator dostępu użytkowników, możesz także usunąć przypisania roli w zakresie głównym (`/`).
+1. Podczas Administrator dostępu użytkowników, można również usunąć przypisania roli w zakresie głównym (`/`).
 
-1. Odwołaj Twoje uprawnienia Administrator dostępu użytkowników, dopóki nie jest ponownie potrzebny.
+1. Usuń Twoje uprawnienia Administrator dostępu użytkowników, dopóki nie jest ponownie potrzebny.
 
+## <a name="list-role-assignments-at-the-root-scope--using-the-rest-api"></a>Wyświetl listę przypisań ról w zakresie głównym (/), za pomocą interfejsu API REST
 
-## <a name="how-to-undo-the-elevateaccess-action-with-the-rest-api"></a>Jak cofnąć elevateAccess przy użyciu interfejsu API REST
+Można wyświetlić listę wszystkich przypisań ról użytkownika w zakresie głównym (`/`).
 
-Podczas wywoływania `elevateAccess`, możesz utworzyć przypisania roli dla siebie, tak aby można było odwołać uprawnienia te należy usunąć przypisanie.
+- Wywołanie [GET roleAssignments](/rest/api/authorization/roleassignments/listforscope) gdzie `{objectIdOfUser}` jest Identyfikatorem obiektu użytkownika, którego przypisania ról do pobrania.
+
+   ```http
+   GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectIdOfUser}'
+   ```
+
+## <a name="remove-elevated-access-using-the-rest-api"></a>Usuń z podwyższonym poziomem uprawnień dostępu przy użyciu interfejsu API REST
+
+Podczas wywoływania `elevateAccess`, możesz utworzyć przypisania roli dla siebie, tak aby odwołać tych uprawnień należy usunąć przypisanie.
 
 1. Wywołanie [GET roleDefinitions](/rest/api/authorization/roledefinitions/get) gdzie `roleName` jest równe Administrator dostępu użytkowników w celu określenia Identyfikatora nazwy roli użytkownika Administrator dostępu.
 
@@ -170,7 +183,7 @@ Podczas wywoływania `elevateAccess`, możesz utworzyć przypisania roli dla sie
     >[!NOTE] 
     >Administrator dzierżawy nie powinny mieć wielu przypisań, jeśli poprzednie zapytanie zwraca za dużo przypisania, możesz także zbadać dla wszystkich przypisań tylko na poziomie zakresu dzierżawy, a następnie filtrować wyniki: `GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
         
-    2. Poprzednich wywołań zwraca listę przypisań ról. Znajdź przypisania roli, której zakresem jest "/" i `roleDefinitionId` kończy Identyfikatora nazwy roli można znaleźć w kroku 1 i `principalId` odpowiada objectId administratora dzierżawy. 
+    2. Poprzednich wywołań zwraca listę przypisań ról. Znajdź przypisania roli, której zakresem jest `"/"` i `roleDefinitionId` kończy Identyfikatora nazwy roli można znaleźć w kroku 1 i `principalId` odpowiada objectId administratora dzierżawy. 
     
     Przykład przypisania roli:
 
@@ -198,7 +211,7 @@ Podczas wywoływania `elevateAccess`, możesz utworzyć przypisania roli dla sie
         
     Ponownie, Zapisz identyfikator z `name` parametru, w tym przypadku e7dd75bc-06f6-4e71-9014-ee96a929d099.
 
-    3. Na koniec użyj identyfikator przypisania roli można usunąć przypisania dodawany przez `elevateAccess`:
+    3. Na koniec użyj identyfikator przypisania roli, aby usunąć przypisanie dodane przez `elevateAccess`:
 
     ```http
     DELETE https://management.azure.com/providers/Microsoft.Authorization/roleAssignments/e7dd75bc-06f6-4e71-9014-ee96a929d099?api-version=2015-07-01

@@ -6,14 +6,15 @@ author: mswutao
 ms.author: wutao
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: c22bb9b31e7623daa635f82256e28ed466070481
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: c826bf1cf17230563b608e764c443b6166f13924
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264007"
 ---
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>Biblioteki połączeń dla bazy danych Azure dla programu MySQL
 W tym artykule wymieniono każdej biblioteki lub sterownik programów klienckich można używany do łączenia z bazą danych Azure dla programu MySQL.
@@ -34,8 +35,8 @@ MySQL zapewnia łączność sterownik standardowe bazy danych dotyczące korzyst
 | Perl | Platformy systemu Windows, Linux, Mac OS X i Unix | [DBD::MySQL](https://metacpan.org/pod/DBD::mysql) | [Pobieranie](https://metacpan.org/pod/DBD::mysql) |
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Przeczytaj te przewodniki Szybki Start na temat nawiązywania i kwerendy bazy danych platformy Azure dla programu MySQL przy użyciu języka wybór:
 
-[PHP](./connect-php.md) | [Java](./connect-java.md) |  [.NET (C#)](./connect-csharp.md) | [Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Ruby](./connect-ruby.md) | [C++](connect-cpp.md) | [Go](./connect-go.md)
+[PHP](./connect-php.md) | [Java](./connect-java.md) |  [.NET (C#)](./connect-csharp.md) | [Python](./connect-python.md) | [Node.JS](./connect-nodejs.md)  |  [Ruby](./connect-ruby.md) | [C++](connect-cpp.md) | [przejdź](./connect-go.md)
 

@@ -1,25 +1,19 @@
 ---
-title: Omówienie metryk w Microsoft Azure | Dokumentacja firmy Microsoft
+title: Omówienie metryk w Microsoft Azure
 description: Omówienie metryki i ich użycie w Microsoft Azure
 author: anirudhcavale
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 405ec51c-0946-4ec9-b535-60f65c4a5bd1
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: ancav
-ms.openlocfilehash: ceabefa47b7627b8a9f952d487f78a96e338838d
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.component: metrics
+ms.openlocfilehash: 3501c8d35968ecf8e32c806dfb05ccfebc7f4386
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824748"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264225"
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Omówienie metryk w Microsoft Azure
 W tym artykule opisano metryki są platformie Microsoft Azure, ich zalety oraz sposób rozpocząć korzystanie z nich.  
@@ -124,7 +118,7 @@ Niektórych zasobów platformy Azure obsługuje skalowanie out lub w wielu wyst�
 ## <a name="learn-about-supported-services-and-metrics"></a>Więcej informacji na temat obsługiwanych usług i metryki
 Można wyświetlić szczegółową listę obsługiwanych usług i ich metryk [Azure Monitor metryki — obsługiwanych metryki na typ zasobu](monitoring-supported-metrics.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Zapoznaj się łącza w tym artykule. Ponadto więcej informacji na temat:  
 
 * [Typowe metryki skalowania automatycznego](insights-autoscale-common-metrics.md)

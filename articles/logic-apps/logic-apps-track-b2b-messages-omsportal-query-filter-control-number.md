@@ -2,7 +2,7 @@
 title: Kwerenda dotycząca wiadomości B2B Log Analytics — usługi Azure Logic Apps | Dokumentacja firmy Microsoft
 description: Tworzenie zapytań do śledzenia AS2, X 12 i EDIFACT wiadomości w analizy dzienników
 author: padmavc
-manager: anneta
+manager: jeconnoc
 editor: ''
 services: logic-apps
 documentationcenter: ''
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 345857801035fb7f149a57a4f0d58e7668f35b81
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 520a1212eaccc48f8b8b423f7dede9c16409220b
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300331"
 ---
 # <a name="query-for-as2-x12-and-edifact-messages-in-log-analytics"></a>Wykonanie kwerendy AS2, X 12 i EDIFACT wiadomości w analizy dzienników
 

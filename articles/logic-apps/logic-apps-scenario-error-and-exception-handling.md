@@ -1,12 +1,12 @@
 ---
-title: "Obsługa wyjątków i błędów rejestrowania scenariusz — aplikacje logiki platformy Azure | Dokumentacja firmy Microsoft"
-description: "Opisuje przypadek użycia rzeczywistych o zaawansowanych wyjątków i rejestrowania błędów dla usługi Azure Logic Apps"
-keywords: 
+title: Obsługa wyjątków i błędów rejestrowania scenariusz — aplikacje logiki platformy Azure | Dokumentacja firmy Microsoft
+description: Opisuje przypadek użycia rzeczywistych o zaawansowanych wyjątków i rejestrowania błędów dla usługi Azure Logic Apps
+keywords: ''
 services: logic-apps
 author: hedidin
-manager: anneta
-editor: 
-documentationcenter: 
+manager: jeconnoc
+editor: ''
+documentationcenter: ''
 ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.service: logic-apps
 ms.workload: na
@@ -16,11 +16,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/29/2016
 ms.author: LADocs; b-hoedid
-ms.openlocfilehash: a8bae22b28b7de2f2579f310c8bd4b0e43885a0d
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: cb80423266d3e9c0b3cac31821965ad92c0420d9
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299362"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scenariusz: Obsługa wyjątków i rejestrowania błędów dla usługi logic apps
 
@@ -486,7 +487,7 @@ Sprawdza, czy wyrażenie w poprzednim przykładzie kodu *Create_NewPatientRecord
 
 Kod źródłowy Zarządzanie wyjątkami aplikacje logiki aplikacji interfejsu API jest dostępna w tym [repozytorium GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "API zarządzania wyjątków aplikacji logiki").
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Wyświetl więcej logiki aplikacji przykłady i scenariusze](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [Więcej informacji na temat monitorowania aplikacji logiki](../logic-apps/logic-apps-monitor-your-logic-apps.md)

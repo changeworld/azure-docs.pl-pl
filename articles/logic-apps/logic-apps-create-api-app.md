@@ -1,12 +1,12 @@
 ---
-title: "Tworzenie sieci web API i interfejsów API REST dla usługi Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Tworzenie sieci web, interfejsów API i interfejsów API REST, zadzwoń z interfejsów API, usług lub systemów z przepływów pracy aplikacji logiki do integracji systemu"
-keywords: "interfejsy API sieci Web, interfejsów API REST, przepływy pracy, integracji systemu"
+title: Tworzenie sieci web API i interfejsów API REST dla usługi Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Tworzenie sieci web, interfejsów API i interfejsów API REST, zadzwoń z interfejsów API, usług lub systemów z przepływów pracy aplikacji logiki do integracji systemu
+keywords: interfejsy API sieci Web, interfejsów API REST, przepływy pracy, integracji systemu
 services: logic-apps
 author: jeffhollan
-manager: anneta
-editor: 
-documentationcenter: 
+manager: jeconnoc
+editor: ''
+documentationcenter: ''
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/26/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: ec7fe2adfb89edd635adcf247eea0b98f7007b1b
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 3ca55bb0a9f4719bd2229aca626d20c53af9fd1e
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299532"
 ---
 # <a name="create-custom-apis-that-you-can-call-from-logic-app-workflows"></a>Tworzenie niestandardowych interfejsów API, który można wywołać z przepływów pracy aplikacji logiki
 
@@ -79,7 +80,7 @@ Działania standardowe możesz zapisać metoda żądania HTTP w interfejsie API 
 
 ![Działania standardowe wzorca](./media/logic-apps-create-api-app/standard-action.png)
 
-<a name="pattern-overview"></a>Aby utworzyć aplikację logiki, zaczekaj, aż interfejs API zakończy dłużej uruchomione zadania, można wykonać interfejsu API [wzorca asynchronicznego sondowania](#async-pattern) lub [wzorca asynchronicznego elementu webhook](#webhook-actions) opisanych w tym temacie. Dla odpowiednio, która pomaga zwizualizować różne zachowania tych wzorców Załóżmy proces porządkowania niestandardowych ciasto z bakery. Wzorzec sondowania odzwierciedla zachowanie, gdzie należy wywołać bakery co 20 minut, aby sprawdzić, czy ciasto jest gotowy. Wzorzec elementu webhook odzwierciedla zachowanie, w którym bakery monituje o numer telefonu, ich można wywołać, gdy ciasto jest gotowy.
+<a name="pattern-overview"></a> Aby utworzyć aplikację logiki, zaczekaj, aż interfejs API zakończy dłużej uruchomione zadania, można wykonać interfejsu API [wzorca asynchronicznego sondowania](#async-pattern) lub [wzorca asynchronicznego elementu webhook](#webhook-actions) opisanych w tym temacie. Dla odpowiednio, która pomaga zwizualizować różne zachowania tych wzorców Załóżmy proces porządkowania niestandardowych ciasto z bakery. Wzorzec sondowania odzwierciedla zachowanie, gdzie należy wywołać bakery co 20 minut, aby sprawdzić, czy ciasto jest gotowy. Wzorzec elementu webhook odzwierciedla zachowanie, w którym bakery monituje o numer telefonu, ich można wywołać, gdy ciasto jest gotowy.
 
 Przykłady, można znaleźć [repozytorium GitHub aplikacje logiki](https://github.com/logicappsio). Ponadto Dowiedz się więcej o [zbierania danych użycia dla akcji](logic-apps-pricing.md).
 
@@ -95,7 +96,7 @@ Poniżej przedstawiono ogólny wzór:
 2. Gdy aparat sprawia, że kolejne żądania dotyczące stanu zadania, umożliwiają aparat wiedzieć, kiedy interfejsu API kończy zadanie.
 3. Zwraca odpowiednie dane do aparatu, aby kontynuować przepływ pracy aplikacji logiki.
 
-<a name="bakery-polling-action"></a>Teraz zastosować poprzedniej odpowiednio bakery do wzorca sondowania i Załóżmy, że należy wywołać bakery i kolejność ciasto niestandardowych w celu dostarczania. Czas procesu dokonywania ciasto, a nie chce czekać na telefonie, podczas gdy bakery działa na ciasto. Bakery potwierdzenie zamówienia i ma należy wywołać co 20 minut ciasto stanu. Po 20 minut przekazać, należy wywołać bakery, ale one informujące, że nie jest wykonywane je i że należy wywołać w innym 20 minut. Ten proces Wstecz i w przód jest kontynuowany do momentu wywołania i bakery informuje, że Twoje zamówienie jest gotowy, a następnie dostarcza je. 
+<a name="bakery-polling-action"></a> Teraz zastosować poprzedniej odpowiednio bakery do wzorca sondowania i Załóżmy, że należy wywołać bakery i kolejność ciasto niestandardowych w celu dostarczania. Czas procesu dokonywania ciasto, a nie chce czekać na telefonie, podczas gdy bakery działa na ciasto. Bakery potwierdzenie zamówienia i ma należy wywołać co 20 minut ciasto stanu. Po 20 minut przekazać, należy wywołać bakery, ale one informujące, że nie jest wykonywane je i że należy wywołać w innym 20 minut. Ten proces Wstecz i w przód jest kontynuowany do momentu wywołania i bakery informuje, że Twoje zamówienie jest gotowy, a następnie dostarcza je. 
 
 Więc warto Mapuj ponownie ten wzorzec sondowania. Bakery reprezentuje niestandardowego interfejsu API, gdy użytkownik klienta ciasto reprezentują aparat Logic Apps. Gdy aparat wywołuje interfejs API żądanie, interfejs API potwierdza żądanie i odpowiada przedział czasu, gdy aparat można sprawdzić stan zadania. Aparat kontynuuje sprawdzanie stanu zadania, dopóki Twój interfejs API odpowiada, że zadanie jest wykonywane i zwraca dane do aplikacji logiki, który następnie jest kontynuowana przepływu pracy. 
 
@@ -130,16 +131,16 @@ Kiedy interfejsu API ten wzorzec, nie trzeba wykonywać żadnych czynności w de
 
 Alternatywnie można użyć wzorzec elementu webhook dla długotrwałych zadań i przetwarzania asynchronicznego. Ten wzorzec ma aplikacji logiki wstrzymać i poczekaj, aż "wywołania zwrotnego" z interfejsu API na zakończenie przetwarzania, aby kontynuować przepływ pracy. To wywołanie zwrotne jest POST protokołu HTTP, który wysyła wiadomość na adres URL, gdy zdarzenie. 
 
-<a name="bakery-webhook-action"></a>Teraz zastosować poprzedniej odpowiednio bakery do wzorca elementu webhook i Załóżmy, że należy wywołać bakery i kolejność ciasto niestandardowych w celu dostarczania. Czas procesu dokonywania ciasto, a nie chce czekać na telefonie, podczas gdy bakery działa na ciasto. Bakery potwierdzenie zamówienia, ale teraz, możesz nadać im numer telefonu, ich można wywołać, gdy jest wykonywane ciasto. Tym razem bakery informuje, kiedy Twoje zamówienie jest gotowy, a następnie dostarcza je.
+<a name="bakery-webhook-action"></a> Teraz zastosować poprzedniej odpowiednio bakery do wzorca elementu webhook i Załóżmy, że należy wywołać bakery i kolejność ciasto niestandardowych w celu dostarczania. Czas procesu dokonywania ciasto, a nie chce czekać na telefonie, podczas gdy bakery działa na ciasto. Bakery potwierdzenie zamówienia, ale teraz, możesz nadać im numer telefonu, ich można wywołać, gdy jest wykonywane ciasto. Tym razem bakery informuje, kiedy Twoje zamówienie jest gotowy, a następnie dostarcza je.
 
 Gdy firma Microsoft mapować tego elementu webhook wzorca ponownie, bakery reprezentuje niestandardowego interfejsu API, gdy użytkownik klienta ciasto reprezentują aparat Logic Apps. Aparat wywołanie interfejsu API z żądaniem i zawiera adres URL "wywołania zwrotnego".
 Po zakończeniu zadania, interfejs API korzysta z adresu URL aparat i zwrócić dane do aplikacji logiki, który następnie jest kontynuowana przepływu pracy. 
 
-Dla tego wzorca zdefiniować dwa punkty końcowe na kontrolerze: `subscribe` i`unsubscribe`
+Dla tego wzorca zdefiniować dwa punkty końcowe na kontrolerze: `subscribe` i `unsubscribe`
 
-*  `subscribe`punkt końcowy: podczas wykonywania osiągnie Twój interfejs API działań w przepływie pracy, aplikacje logiki aparatu wywołania `subscribe` punktu końcowego. Ten krok powoduje, że aplikację logiki, aby utworzyć adres URL wywołania zwrotnego, który przechowuje interfejsu API i poczekaj na wywołanie zwrotne z interfejsu API po zakończeniu pracy. Interfejs API, a następnie wywołuje akcję POST protokołu HTTP do adresu URL i przekazuje wszystkie zwrócone zawartości i nagłówków jako dane wejściowe do aplikacji logiki.
+*  `subscribe` punkt końcowy: podczas wykonywania osiągnie Twój interfejs API działań w przepływie pracy, aplikacje logiki aparatu wywołania `subscribe` punktu końcowego. Ten krok powoduje, że aplikację logiki, aby utworzyć adres URL wywołania zwrotnego, który przechowuje interfejsu API i poczekaj na wywołanie zwrotne z interfejsu API po zakończeniu pracy. Interfejs API, a następnie wywołuje akcję POST protokołu HTTP do adresu URL i przekazuje wszystkie zwrócone zawartości i nagłówków jako dane wejściowe do aplikacji logiki.
 
-* `unsubscribe`punkt końcowy: Jeśli anulowania Uruchom aplikację logiki aplikacji logiki aparat wywołania `unsubscribe` punktu końcowego. Interfejs API można wyrejestrować adres URL wywołania zwrotnego i Zatrzymaj wszystkie procesy w razie potrzeby.
+* `unsubscribe` punkt końcowy: Jeśli anulowania Uruchom aplikację logiki aplikacji logiki aparat wywołania `unsubscribe` punktu końcowego. Interfejs API można wyrejestrować adres URL wywołania zwrotnego i Zatrzymaj wszystkie procesy w razie potrzeby.
 
 ![Wzorzec akcji elementu Webhook](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
@@ -199,9 +200,9 @@ Na przykład mogą okresowo sprawdzać usługi dla nowych plików, można utworz
 Wyzwalacz elementu webhook jest *wyzwalacz wypychania* czeka i nasłuchuje nowych danych lub zdarzeń na punktu końcowego usługi. Jeśli nowe dane lub zdarzenia spełnia określony warunek, wyzwalacz wyzwala i tworzy wystąpienie aplikacji logiki, który następnie przetwarza dane jako dane wejściowe.
 Wyzwalacze elementu Webhook działanie podobne jak w przypadku [Akcje elementu webhook](#webhook-actions) wcześniej w tym temacie opisano i skonfigurowano `subscribe` i `unsubscribe` punktów końcowych. 
 
-* `subscribe`punkt końcowy: podczas dodawania i zapisać wyzwalacza elementu webhook w aplikacji logiki aplikacji logiki aparatu wywołania `subscribe` punktu końcowego. Ten krok powoduje, że aplikację logiki, aby utworzyć adres URL wywołania zwrotnego, który przechowuje interfejsu API. Jeśli wystąpi nowych danych lub zdarzenia spełniającego określony warunek, interfejsu API wywołuje z HTTP POST do adresu URL. Ładunek zawartości i nagłówki są przekazywane jako dane wejściowe do aplikacji logiki.
+* `subscribe` punkt końcowy: podczas dodawania i zapisać wyzwalacza elementu webhook w aplikacji logiki aplikacji logiki aparatu wywołania `subscribe` punktu końcowego. Ten krok powoduje, że aplikację logiki, aby utworzyć adres URL wywołania zwrotnego, który przechowuje interfejsu API. Jeśli wystąpi nowych danych lub zdarzenia spełniającego określony warunek, interfejsu API wywołuje z HTTP POST do adresu URL. Ładunek zawartości i nagłówki są przekazywane jako dane wejściowe do aplikacji logiki.
 
-* `unsubscribe`punkt końcowy: usunięcie elementu webhook wyzwalacza lub całą logikę aplikacji Logic Apps aparat wywołania `unsubscribe` punktu końcowego. Interfejs API można wyrejestrować adres URL wywołania zwrotnego i Zatrzymaj wszystkie procesy w razie potrzeby.
+* `unsubscribe` punkt końcowy: usunięcie elementu webhook wyzwalacza lub całą logikę aplikacji Logic Apps aparat wywołania `unsubscribe` punktu końcowego. Interfejs API można wyrejestrować adres URL wywołania zwrotnego i Zatrzymaj wszystkie procesy w razie potrzeby.
 
 ![Wzorzec wyzwalacza elementu Webhook](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 

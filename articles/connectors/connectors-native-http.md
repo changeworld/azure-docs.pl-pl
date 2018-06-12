@@ -3,7 +3,7 @@ title: Komunikować się z dowolnego punktu końcowego za pośrednictwem protoko
 description: Tworzenie aplikacji logiki, które mogą się komunikować z dowolnego punktu końcowego za pośrednictwem protokołu HTTP
 services: logic-apps
 author: jeffhollan
-manager: anneta
+manager: jeconnoc
 editor: ''
 documentationcenter: ''
 tags: connectors
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: 355d1e02ef8195bcee469b77976f1a5834f192d8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 452af4facd03ce2b4f010a29acc0122241df63c1
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296428"
 ---
 # <a name="get-started-with-the-http-action"></a>Rozpoczynanie pracy z akcji HTTP
 
@@ -193,7 +194,7 @@ Następujący obiekt uwierzytelniania jest wymagane do uwierzytelniania usługi 
 | --- | --- | --- |
 | Typ * |type |Typ uwierzytelniania (musi być `ActiveDirectoryOAuth` dla usługi Azure AD OAuth) |
 | Dzierżawy * |dzierżawa |Identyfikator dzierżawy dla dzierżawy usługi Azure AD |
-| Grupy odbiorców * |grupy odbiorców |Zasób żądania autoryzacji do użycia. Na przykład: `https://management.core.windows.net/` |
+| Grupy odbiorców * |grupy odbiorców |Zasób, którego użycia żądasz podczas autoryzacji. Na przykład: `https://management.core.windows.net/` |
 | Klient identyfikator * |clientId |Identyfikator klienta aplikacji usługi Azure AD |
 | Klucz tajny * |wpis tajny |Klucz tajny klienta, który żąda tokenu |
 

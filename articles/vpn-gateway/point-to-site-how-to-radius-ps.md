@@ -1,13 +1,13 @@
 ---
-title: "Połącz komputer sieć wirtualną przy użyciu uwierzytelniania punkt-lokacja i RADIUS: programu PowerShell | Azure"
-description: "Bezpieczne łączenie klientów systemu Windows i Mac OS X z wirtualnych sieć adresu przy użyciu uwierzytelniania P2S i usługi RADIUS."
+title: 'Połącz komputer sieć wirtualną przy użyciu uwierzytelniania punkt-lokacja i RADIUS: programu PowerShell | Azure'
+description: Bezpieczne łączenie klientów systemu Windows i Mac OS X z wirtualnych sieć adresu przy użyciu uwierzytelniania P2S i usługi RADIUS.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2018
 ms.author: anzaman
-ms.openlocfilehash: 3b7315aaa57d1387e3cea31e8b306131a59a7006
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: df7afe9324831ffb8e79d7320f2c716ed18a7b4f
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267353"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Skonfiguruj połączenie punkt-lokacja sieci wirtualnej przy użyciu uwierzytelniania usługi RADIUS: środowiska PowerShell
 
@@ -134,7 +135,7 @@ Przed tworzeniem i konfigurowaniem bramy sieci wirtualnej, serwer usługi RADIUS
 
 1. Jeśli nie masz serwera RADIUS wdrożone, należy wdrożyć jeden. Kroki wdrażania można znaleźć w podręczniku instalacji dostarczanych przez dostawcę usługi RADIUS.  
 2. Konfigurowanie bramy sieci VPN jako klient usługi RADIUS na PROMIEŃ. Podczas dodawania tego klienta usługi RADIUS, należy określić GatewaySubnet utworzonego w sieci wirtualnej. 
-3. Po skonfigurowaniu służą usługi RADIUS, należy uzyskać adres IP serwera RADIUS i wspólny klucz tajny, która powinna być używana przez klientów usługi RADIUS do serwera RADIUS, należy skontaktować. Jeśli serwer usługi RADIUS w sieci wirtualnej Azure, użyj IP CA, maszyna wirtualna serwera usługi RADIUS.
+3. Po skonfigurowaniu serwera usługi RADIUS, należy uzyskać adres IP serwera usługi RADIUS i wspólny klucz tajny, która powinna być używana przez klientów usługi RADIUS do serwera RADIUS, należy skontaktować. Jeśli serwer usługi RADIUS w sieci wirtualnej Azure, użyj IP CA, maszyna wirtualna serwera usługi RADIUS.
 
 [Serwera zasad sieciowych (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) artykuł zawiera wskazówki dotyczące konfigurowania serwer RADIUS systemu Windows (NPS) na potrzeby uwierzytelniania domeny AD.
 

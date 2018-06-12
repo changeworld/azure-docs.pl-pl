@@ -1,11 +1,11 @@
 ---
-title: "Zabezpieczanie komunikatów B2B z certyfikatami w usłudze Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Dodaj certyfikaty do zabezpieczenia wiadomości B2B z pakiet integracyjny dla przedsiębiorstw"
+title: Zabezpieczanie komunikatów B2B z certyfikatami w usłudze Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Dodaj certyfikaty do zabezpieczenia wiadomości B2B z pakiet integracyjny dla przedsiębiorstw
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 4cbffd85-fe8d-4dde-aa5b-24108a7caa7d
 ms.service: logic-apps
 ms.workload: integration
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 708bdcddede71186c48ae7d4034cc9df0bd61391
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 7ba76a15792fe40b2a628b030f06930641d197a3
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299338"
 ---
 # <a name="secure-b2b-messages-with-certificates"></a>Zabezpieczonych wiadomości B2B z certyfikatami
 

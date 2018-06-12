@@ -1,11 +1,11 @@
 ---
 title: Schemat aktualizuje czerwca-1-2016 - Azure Logic Apps | Dokumentacja firmy Microsoft
-description: "Utworzenie definicji JSON dla usługi Azure Logic Apps z wersją schematu 2016-06-01"
+description: Utworzenie definicji JSON dla usługi Azure Logic Apps z wersją schematu 2016-06-01
 author: jeffhollan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 349d57e8-f62b-4ec6-a92f-a6e0242d6c0e
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/25/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 525df7ddb8cd569bfd361da10d14ae08c1a721e0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1cbb20a96f39ffa6f4c7375a38b3bf8046d0bd3a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299695"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Aktualizacje schematu dla usługi Azure Logic Apps — 1 czerwca 2016 r.
 
@@ -27,7 +28,7 @@ ms.lasthandoff: 02/01/2018
 
 * [Zakresy](#scopes) można zagnieździć działania jako zbiór akcji lub grupy.
 * [Warunkach i pętlach](#conditions-loops) są teraz akcje najwyższej jakości.
-* Bardziej dokładne kolejność uruchamiania akcji z `runAfter` właściwości, zastępując`dependsOn`
+* Bardziej dokładne kolejność uruchamiania akcji z `runAfter` właściwości, zastępując `dependsOn`
 
 Aby uaktualnić aplikacje logiki 1 sierpnia 2015 preview schematu do schematu 1 czerwca 2016 r. [wyewidencjonować sekcja uaktualnienie](#upgrade-your-schema).
 

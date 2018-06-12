@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: db7663623ada5d7799c46018be9e3b66afd004ca
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1a2067228629b04f1ef2cc407a28f379acc75f60
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297519"
 ---
 # <a name="use-cost-management-reports"></a>Korzystanie z raportów rozwiązania Cost Management
 
@@ -23,6 +24,8 @@ W tym artykule opisano sposób używania różnych raportach kosztów zarządzan
 ## <a name="cost-analysis-reports"></a>Raporty analizy kosztów
 
 Raporty analizy kosztów wyświetlania rozliczeń danych od dostawców w chmurze. Korzystanie z raportów można grupy i przejdź do różnych segmentów danych wymienione w pliku rozliczeń. Raporty umożliwiają szczegółowego koszt nawigowanie między nieprzetworzone dane rozliczeń dostawców chmury.
+
+Gdy wyświetlić jako wykresu, raporty analizy jest oś y *koszt* i osi x dla *kategorii lub znacznik* wybranego przez użytkownika. Ma zakresu na wykresie, ale z ostatnich 30 dni na przykład zakres jest używany jako filtr. Raporty analizy idealnie nadają się do do porównania kategorii. Na przykład koszt każdej subskrypcji w ciągu ostatnich 30 dni. Lub koszt usługi, takie jak magazyn lub obliczeniowych w określonym przedziale czasu.
 
 Raporty analizy kosztów nie Grupuj według znaczników kosztów. Raportowanie oparte na tag jest dostępna tylko w raportach alokacji kosztów ustawić po utworzeniu koszt modelu przy użyciu 360 alokacji kosztów.
 
@@ -50,6 +53,8 @@ Możesz kliknąć prawym przyciskiem myszy raportu dotyczącego wyników, aby pr
 ### <a name="actual-cost-over-time"></a>Rzeczywisty koszt wraz z upływem czasu
 
 Rzeczywisty koszt w miarę upływu czasu raport jest ewidencyjnych analizy dystrybucji koszt za pośrednictwem rozwiązania zdefiniowanego czasu. Ten raport wyświetla listę wydatków czasie można obserwować trendy i wykrywanie wydatków nieprawidłowości. Ten raport przedstawia Twojej współautorzy głównego koszt tym bieżących kosztów i opłat jednorazowe wystąpienia zastrzeżonych, przeznaczanych w zadanym przedziale czasu.
+
+Gdy wyświetlić jako wykresu, kosztów za pośrednictwem raportów czasu jest oś y *koszt* i osi x *okresie*. Te raporty zawierają zmiany kosztów w danym okresie czasu.
 
 Użyj raportu rzeczywisty koszt w miarę upływu czasu, aby:
 
@@ -162,4 +167,4 @@ Oto przykład raportu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Jeśli nie zostało już ukończone pierwszy samouczek koszt zarządzania, przeczytaj je na [Przejrzyj użycia i koszty](tutorial-review-usage.md).
+- Jeśli zadania z pierwszego samouczka dotyczącego usługi Cost Management nie zostały jeszcze wykonane, zapoznaj się z nim w temacie [Review usage and costs (Przeglądanie użycia i kosztów)](tutorial-review-usage.md).

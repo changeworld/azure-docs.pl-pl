@@ -13,15 +13,15 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 06/01/2018
 ms.author: douglasl
-ms.openlocfilehash: 8eeed91da3942d00bbab17a2dffc4b4e888a6f70
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 7bffc7aed0c06267a39e2b0a2ee178806c071ab8
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725112"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297798"
 ---
-# <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Jak można zaplanować uruchamianie i zatrzymywanie środowiska uruchomieniowego integracji Azure SSIS 
-W tym artykule opisano sposób tworzenia harmonogramu uruchamiania i zatrzymywania Azure SSIS integrację środowiska uruchomieniowego (IR) przy użyciu usługi Automatyzacja Azure i fabryki danych Azure. Uruchomiona środowiska uruchomieniowego integracji SSIS Azure (SQL Server Integration Services) (IR) ma opłat skojarzonych z nim. W związku z tym który chcesz uruchomić IR tylko wtedy, gdy jest to wymagane do uruchamiania pakietów SSIS na platformie Azure i zatrzymaj ją, gdy nie będzie potrzebny. Można użyć interfejsu użytkownika z fabryki danych lub Azure PowerShell do [ręcznie uruchomić lub zatrzymać IR SSIS Azure](manage-azure-ssis-integration-runtime.md)).
+# <a name="how-to-start-and-stop-the-azure-ssis-integration-runtime-on-a-schedule"></a>Jak uruchomić i zatrzymać środowiska uruchomieniowego integracji Azure SSIS zgodnie z harmonogramem
+W tym artykule opisano sposób tworzenia harmonogramu uruchamiania i zatrzymywania Azure SSIS integrację środowiska uruchomieniowego (IR) przy użyciu usługi Automatyzacja Azure i fabryki danych Azure. Uruchomiona środowiska uruchomieniowego integracji SSIS Azure (SQL Server Integration Services) (IR) ma koszt skojarzonych z nim. W związku z tym zazwyczaj chcesz uruchomić IR tylko wtedy, gdy jest to wymagane do uruchamiania pakietów SSIS na platformie Azure i Zatrzymaj IR, gdy nie będzie potrzebny. Można użyć interfejsu użytkownika z fabryki danych lub Azure PowerShell do [ręcznie uruchomić lub zatrzymać IR SSIS Azure](manage-azure-ssis-integration-runtime.md)).
 
 Na przykład można utworzyć działania sieci Web z elementów webhook do elementu runbook usługi Automatyzacja Azure w programie PowerShell i łańcucha działanie wykonanie pakietu usług SSIS między nimi. Działania w sieci Web można uruchomić i zatrzymać Twojej IR Azure SSIS, tylko w czasie przed i po uruchomieniu pakietu. Aby uzyskać więcej informacji na temat działania wykonanie pakietu usług SSIS zobacz [uruchamiania pakietów SSIS za pomocą działania SSIS w fabryce danych Azure](how-to-invoke-ssis-package-ssis-activity.md).
 

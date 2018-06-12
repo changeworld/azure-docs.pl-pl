@@ -1,11 +1,11 @@
 ---
-title: "Wywołaj punkty końcowe REST z HTTP + Swagger connector dla usługi Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Nawiązywanie połączenia z aplikacji logiki za pośrednictwem programu Swagger z HTTP + programu Swagger do punkty końcowe REST łącznika"
+title: Wywołaj punkty końcowe REST z HTTP + Swagger connector dla usługi Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Nawiązywanie połączenia z aplikacji logiki za pośrednictwem programu Swagger z HTTP + programu Swagger do punkty końcowe REST łącznika
 services: logic-apps
 author: jeffhollan
-manager: anneta
-editor: 
-documentationcenter: 
+manager: jeconnoc
+editor: ''
+documentationcenter: ''
 tags: connectors
 ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 ms.service: logic-apps
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: 0487dbedddee684c75420bd66effe2c963a18624
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 4e4421b0dfe0f29c3d50764b9ca04471c73a1450
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296523"
 ---
 # <a name="get-started-with-the-http--swagger-action"></a>Wprowadzenie do protokołu HTTP + Swagger akcji
 
@@ -79,26 +80,26 @@ Wyzwalacz to zdarzenie służy do uruchomienia przepływu pracy, który jest zde
 
 | Wyzwalacz | Opis |
 | --- | --- |
-| HTTP i Swagger |Wywoływania HTTP i zwrócić zawartość zgodnie z odpowiedzi |
+| HTTP + Swagger |Wywoływania HTTP i zwrócić zawartość zgodnie z odpowiedzi |
 
 ## <a name="http--swagger-actions"></a>HTTP + akcje programu Swagger
 Akcja jest operacja odbywa się przez przepływ pracy, który jest zdefiniowany w aplikacji logiki. [Dowiedz się więcej na temat akcji.](connectors-overview.md) HTTP + Swagger łącznik ma jedną akcję możliwe.
 
 | Akcja | Opis |
 | --- | --- |
-| HTTP i Swagger |Wywoływania HTTP i zwrócić zawartość zgodnie z odpowiedzi |
+| HTTP + Swagger |Wywoływania HTTP i zwrócić zawartość zgodnie z odpowiedzi |
 
 ### <a name="action-details"></a>Szczegóły akcji
 HTTP + Swagger łącznika jest dostarczany z jedną akcję możliwe. Poniżej znajdują się informacje o poszczególnych działań, ich wymaganych i opcjonalnych pól wejściowych i odpowiednie szczegóły danych wyjściowych skojarzonych z ich użycia.
 
-#### <a name="http--swagger"></a>HTTP i Swagger
+#### <a name="http--swagger"></a>HTTP + Swagger
 Przesyłania żądania wychodzącego HTTP pomocy metadanych struktury Swagger.
 Znak gwiazdki (*) oznacza wymaganego pola.
 
 | Nazwa wyświetlana | Nazwa właściwości | Opis |
 | --- | --- | --- |
-| Metoda * |metoda |Zlecenie HTTP do użycia. |
-| URI* |identyfikator URI |Identyfikator URI dla żądania HTTP. |
+| Metoda * |method |Zlecenie HTTP do użycia. |
+| IDENTYFIKATOR URI * |identyfikator URI |Identyfikator URI dla żądania HTTP. |
 | Nagłówki |nagłówki |Obiekt JSON nagłówków HTTP w celu uwzględnienia. |
 | Treść |treść |Treść żądania HTTP. |
 | Authentication |uwierzytelnianie |Uwierzytelniania dla żądania. Aby uzyskać więcej informacji, zobacz [łącznika HTTP](connectors-native-http.md#authentication). |

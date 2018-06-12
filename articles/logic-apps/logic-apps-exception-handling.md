@@ -4,7 +4,7 @@ description: Wzorce dla błędów i obsługa wyjątków w aplikacji logiki.
 services: logic-apps
 documentationcenter: ''
 author: dereklee
-manager: anneta
+manager: jeconnoc
 editor: ''
 ms.assetid: e50ab2f2-1fdc-4d2a-be40-995a6cc5a0d4
 ms.service: logic-apps
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 01/31/2018
 ms.author: deli; LADocs
-ms.openlocfilehash: 70dd4e98dbffd9dac27752f0b4c2f5ce4ca70bdc
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ee2c4f1408dcb6527220cd3870ab00d83987f471
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300066"
 ---
 # <a name="handle-errors-and-exceptions-in-logic-apps"></a>Obsługa błędów i wyjątków w aplikacji logiki
 
@@ -80,7 +81,7 @@ Jeśli ustawisz **retryPolicy** do **stałej**, ta zasada ponowi próbę nieudan
 | Nazwa elementu | Wymagane | Typ | Opis |
 | ------------ | -------- | ---- | ----------- |
 | type | Yes | Ciąg | **Stałe** |
-| Liczba | Yes | Liczba całkowita | Liczba ponownych prób, które musi należeć do zakresu od 1 do 90 | 
+| liczba | Yes | Liczba całkowita | Liczba ponownych prób, które musi należeć do zakresu od 1 do 90 | 
 | interval | Yes | Ciąg | Interwał ponawiania w [formacie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations), który musi należeć do zakresu od PT5S i PT1D | 
 ||||| 
 
@@ -93,7 +94,7 @@ Jeśli ustawisz **retryPolicy** do **wykładniczej**, ta zasada ponawia próby n
 | Nazwa elementu | Wymagane | Typ | Opis |
 | ------------ | -------- | ---- | ----------- |
 | type | Yes | Ciąg | **Wykładniczy** |
-| Liczba | Yes | Liczba całkowita | Liczba ponownych prób, które musi należeć do zakresu od 1 do 90  |
+| liczba | Yes | Liczba całkowita | Liczba ponownych prób, które musi należeć do zakresu od 1 do 90  |
 | interval | Yes | Ciąg | Interwał ponawiania w [formacie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations), który musi należeć do zakresu od PT5S i PT1D. |
 | minimumInterval | Nie | Ciąg | Minimalny interwał ponawiania w [formacie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations), który musi należeć do zakresu od PT5S i **interwał** |
 | maximumInterval | Nie | Ciąg | Minimalny interwał ponawiania w [formacie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations), który musi należeć do zakresu od **interwał** i PT1D | 
@@ -173,9 +174,9 @@ Dla ograniczenia na podstawie zakresów, zobacz [limity i konfiguracji](../logic
 
 ### <a name="get-context-and-results-for-failures"></a>Pobierz kontekstu i wyniki dla niepowodzenia
 
-Mimo że przechwytywanie błędów z zakresu jest przydatne, będą również chcieli kontekście pomagające zrozumieć dokładnie akcje, które nie powiodło się i występują błędy lub kodów stanu, które zostały zwrócone.  **@result()** Funkcji przepływu pracy zawierają kontekst o wyniku wszystkie akcje w zakresie.
+Mimo że przechwytywanie błędów z zakresu jest przydatne, będą również chcieli kontekście pomagające zrozumieć dokładnie akcje, które nie powiodło się i występują błędy lub kodów stanu, które zostały zwrócone. **@result()** Funkcji przepływu pracy zawierają kontekst o wyniku wszystkie akcje w zakresie.
 
- **@result()** Funkcja przyjmuje jeden parametr (nazwa zakresu) i zwraca tablicę wszystkich akcji wyników w tym zakresie. Te obiekty działania obejmują takie same atrybuty jak  **@actions()** obiektu, na przykład akcji czas rozpoczęcia, godziny zakończenia, stanu, danych wejściowych, identyfikatorów korelacji i dane wyjściowe. Aby wysłać kontekst dla akcji, które nie powiodło się w zakresie, można łatwo skojarzyć  **@result()** działać z **runAfter** właściwości.
+**@result()** Funkcja przyjmuje jeden parametr (nazwa zakresu) i zwraca tablicę wszystkich akcji wyników w tym zakresie. Te obiekty działania obejmują takie same atrybuty jak  **@actions()** obiektu, na przykład akcji czas rozpoczęcia, godziny zakończenia, stanu, danych wejściowych, identyfikatorów korelacji i dane wyjściowe. Aby wysłać kontekst dla akcji, które nie powiodło się w zakresie, można łatwo skojarzyć  **@result()** działać z **runAfter** właściwości.
 
 Do uruchomienia akcji *dla każdego* akcji w zakresie, którego **nie powiodło się** wyników, aby filtrować tablicy wyniki do akcji nie powiodło się, służący  **@result()** z **[tablicy filtrów](../connectors/connectors-native-query.md)** akcji i **[ForEach](../logic-apps/logic-apps-control-flow-loops.md)** pętli. Możesz pobrać tablicy filtrowane wyniki i wykonania czynności dla każdego błędu przy użyciu funkcji **ForEach** pętli. 
 
@@ -231,7 +232,7 @@ Poniżej przedstawiono szczegółowy przewodnik, który opisuje, co się stanie,
    Jeśli w zakresie jednej akcji zakończyło się niepowodzeniem, akcje w **foreach** uruchomić tylko raz. 
    Wiele zakończonych niepowodzeniem akcje mogą spowodować jedną akcję na błąd.
 
-4. Wyślij HTTP POST **foreach** elementu treści odpowiedzi, który jest  **@item() ['wyniki'] [treści]**.  **@result()** Kształt element jest taka sama jak  **@actions()** kształtu i może być analizowana taki sam sposób.
+4. Wyślij HTTP POST **foreach** elementu treści odpowiedzi, który jest  **@item() ['wyniki'] [treści]**. **@result()** Kształt element jest taka sama jak  **@actions()** kształtu i może być analizowana taki sam sposób.
 
 5. Obejmują dwa Nagłówki niestandardowe o nazwie nieudanych akcji  **@item() [nazwa]** i nieudane Uruchom klienta, identyfikator śledzenia  **@item() [clientTrackingId]**.
 
@@ -276,7 +277,7 @@ Te wzorce poprzedniej to doskonały sposób na Obsługa błędów i wyjątków w
 
 Aby ocenić stany wykonywania, Monitoruj dzienniki i metryki lub do dowolnego narzędzia monitorowania, które chcesz publikować. Jedną z opcji potencjalnych jest do strumienia wszystkich zdarzeń za pomocą usługi Event Hubs w [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). W Stream Analytics można zapisywać zapytania na żywo na podstawie wszelkie nieprawidłowości, średnie lub błędy z dzienników diagnostycznych. Analiza strumienia służy do wysyłania informacji do innych źródeł danych, takich jak kolejki, tematy, SQL, bazy danych rozwiązania Cosmos Azure lub usługi Power BI.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Zobacz, jak klient tworzy błąd obsługi z usługi Azure Logic Apps](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 * [Znajdź więcej Logic Apps przykłady i scenariusze](../logic-apps/logic-apps-examples-and-scenarios.md)
