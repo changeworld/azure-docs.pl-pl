@@ -3,7 +3,7 @@ documentType: LandingData
 title: Dokumentacja usługi Azure CDN
 metadata:
   title: Dokumentacja usługi Azure CDN — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  description: Usługa Azure Content Delivery Network (CDN) to globalna sieć dostarczania zawartości umożliwiająca dostarczanie zawartości wymagającej wysokiej przepustowości. Może być ona hostowana na platformie Azure lub w dowolnej innej lokalizacji. Dzięki usłudze Azure CDN można buforować obiekty statyczne załadowane z usługi Azure Blob Storage, aplikacji internetowej lub dowolnego publicznie dostępnego serwera internetowego, korzystając z najbliższego serwera punktu obecności (POP, point of presence). Usługa Azure CDN może również przyspieszyć zawartość dynamiczną, której nie można buforować, wykorzystując różne optymalizacje sieci przy użyciu punktów POP w sieci CDN. Na przykład usługa Azure CDN może korzystać z optymalizacji trasy, aby obejść protokół BGP (Border Gateway Protocol).
+  description: Usługa Azure Content Delivery Network (CDN) to globalna sieć dostarczania zawartości umożliwiająca dostarczanie zawartości wymagającej wysokiej przepustowości. Może być ona hostowana na platformie Azure lub w dowolnej innej lokalizacji. Dzięki usłudze Azure CDN można buforować obiekty statyczne załadowane z usługi Azure Blob Storage, aplikacji internetowej lub dowolnego publicznie dostępnego serwera internetowego, korzystając z najbliższego serwera punktu obecności (POP, point of presence). Usługa Azure CDN może również przyspieszyć zawartość dynamiczną, której nie można buforować, wykorzystując różne optymalizacje sieci i routingu.
   services: cdn
   author: czeumault
   manager: carolz
@@ -11,15 +11,16 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/03/2018
+  ms.date: 06/08/2018
   ms.author: carolz
-  ms.openlocfilehash: 42d08e9a5893bf58ecf405cc5caf750ee3e1daf7
-  ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+  ms.openlocfilehash: 37250873e61b4fa1db95e5f4846f2cf054395b4a
+  ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 05/11/2018
+  ms.lasthandoff: 06/11/2018
+  ms.locfileid: "35260027"
 abstract:
-  description: Usługa Azure Content Delivery Network (CDN) to globalna sieć dostarczania zawartości umożliwiająca dostarczanie zawartości wymagającej wysokiej przepustowości. Może być ona hostowana na platformie Azure lub w dowolnej innej lokalizacji. Dzięki usłudze Azure CDN można buforować obiekty statyczne załadowane z usługi Azure Blob Storage, aplikacji internetowej lub dowolnego publicznie dostępnego serwera internetowego, korzystając z najbliższego serwera punktu obecności (POP, point of presence). Usługa Azure CDN może również przyspieszyć zawartość dynamiczną, której nie można buforować, wykorzystując różne optymalizacje sieci przy użyciu punktów POP w sieci CDN. Na przykład usługa Azure CDN może korzystać z optymalizacji trasy, aby obejść protokół BGP (Border Gateway Protocol).
+  description: Usługa Azure Content Delivery Network (CDN) to globalna sieć dostarczania zawartości umożliwiająca dostarczanie zawartości wymagającej wysokiej przepustowości. Może być ona hostowana na platformie Azure lub w dowolnej innej lokalizacji. Dzięki usłudze Azure CDN można buforować obiekty statyczne załadowane z usługi Azure Blob Storage, aplikacji internetowej lub dowolnego publicznie dostępnego serwera internetowego, korzystając z najbliższego serwera punktu obecności (POP, point of presence). Usługa Azure CDN może również przyspieszyć zawartość dynamiczną, której nie można buforować, wykorzystując różne optymalizacje sieci i routingu.
 sections:
 - title: 
   items:

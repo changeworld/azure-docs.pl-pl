@@ -15,6 +15,8 @@
       maintainContext: true
 - name: Samouczki
   items:
+    - name: Tworzenie klastra Kubernetes z użyciem usługi AKS i programu Terraform
+      href: terraform-create-k8s-cluster-with-tf-and-aks.md
     - name: Program Terraform i miejsca wdrożenia dostawcy platformy Azure
       href: terraform-slot-walkthru.md
     - name: Tworzenie maszyny wirtualnej programu z włączoną tożsamością usługi zarządzanej

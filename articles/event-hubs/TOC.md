@@ -33,6 +33,8 @@
 ### [Tworzenie centrów Event Hubs z obsługą platformy Kafka](event-hubs-create-kafka-enabled.md) 
 ### [Przesyłanie strumieniowe do usługi Azure Event Hubs dla ekosystemu platformy Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 ### [Używanie produktu Kafka MirrorMaker z usługą Azure Event Hubs dla ekosystemu platformy Kafka](event-hubs-kafka-mirror-maker-tutorial.md)
+### [Używanie programu Apache Flink z usługą Event Hubs dla ekosystemu Kafka](event-hubs-kafka-flink-tutorial.md)
+### [Używanie programu Akka Streams z usługą Event Hubs dla ekosystemu Kafka](event-hubs-kafka-akka-streams-tutorial.md)
 ## Programowanie
 ### [Wysyłanie zdarzeń za pomocą programu .NET Framework](event-hubs-dotnet-framework-getstarted-send.md)
 ### [Odbieranie zdarzeń za pomocą programu .NET Framework](event-hubs-dotnet-framework-getstarted-receive-eph.md)

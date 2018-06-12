@@ -43,6 +43,8 @@
       href: storage-accounts.md
     - name: Korzystanie z raportów rozwiązania Cost Management
       href: use-reports.md
+    - name: Korzystanie z pulpitów nawigacyjnych
+      href: dashboards.md
 - name: Zasoby
   items:
     - name: Wideo na temat rozwiązania Cost Management
