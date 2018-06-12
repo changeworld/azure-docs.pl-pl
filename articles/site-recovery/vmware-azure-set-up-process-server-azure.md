@@ -1,18 +1,19 @@
 ---
-title: "Skonfiguruj serwer przetwarzania na platformie Azure dla maszyny Wirtualnej VMware i powrotu po awarii serwera fizycznego z usługą Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano, jak skonfigurować serwer przetwarzania na platformie Azure do powrotu po awarii maszyn wirtualnych platformy Azure do programu VMware."
+title: Skonfiguruj serwer przetwarzania na platformie Azure dla maszyny Wirtualnej VMware i powrotu po awarii serwera fizycznego z usługą Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak skonfigurować serwer przetwarzania na platformie Azure do powrotu po awarii maszyn wirtualnych platformy Azure do programu VMware.
 services: site-recovery
-author: AnoopVasudavan
-manager: gauravd
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
-ms.author: anoopkv
-ms.openlocfilehash: c6ef0ae663727c519f9b6a8a56027a3dd8a9503d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.date: 06/10/2018
+ms.author: raynew
+ms.openlocfilehash: 1a6a1276d1a63971fba68dc868aa56ce687a6cc2
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300926"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>Skonfiguruj serwer przetwarzania na platformie Azure do powrotu po awarii
 
@@ -26,7 +27,7 @@ Dowiedz się więcej o [przełączonej](vmware-azure-reprotect.md) i [powrotu po
 
 ## <a name="deploy-a-process-server-in-azure"></a>Wdrażanie serwera przetwarzania na platformie Azure
 
-1. W magazynie > **infrastruktura usługi Site Recovery**> **Mnaage** > **serwery konfiguracji**, wybierz serwer konfiguracji.
+1. W magazynie > **infrastruktura usługi Site Recovery**> **Zarządzaj** > **serwery konfiguracji**, wybierz serwer konfiguracji.
 2. Na stronie serwera, kliknij przycisk **+ serwera przetwarzania**
 3. W **Dodaj serwer przetwarzania** strony i wybierz, aby wdrożyć serwer przetwarzania na platformie Azure.
 4. Określ ustawienia platformy Azure, w tym subskrypcja używana na potrzeby trybu failover, grupy zasobów, region platformy Azure używana w trybie failover i sieci wirtualnej, w którym znajdują się maszyny wirtualne platformy Azure. Jeśli używasz wielu sieci platformy Azure, należy serwer proces w każdej z nich.

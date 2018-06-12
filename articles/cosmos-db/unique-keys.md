@@ -6,20 +6,17 @@ keywords: ograniczenia klucza UNIQUE, naruszenie ograniczenia klucza unique
 author: rafats
 manager: kfile
 editor: monicar
-documentationcenter: ''
-ms.assetid: b15d5041-22dd-491e-a8d5-a3d18fa6517d
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: rafats
-ms.openlocfilehash: dd23f24fd817bfc443457dee30d2f3091c0d9f6b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: d12109efbb157b1e0c15b1a4c0d005fa98c44858
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261104"
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Unikatowy kluczy w usłudze Azure DB rozwiązania Cosmos
 
@@ -34,7 +31,7 @@ Unikatowy kluczy dostarczyć deweloperom możliwość dodawania warstwy integral
 
 Na przykład Przyjrzyjmy się jak bazy danych użytkownika skojarzonego z [społecznościowych aplikacji](use-cases.md#web-and-mobile-applications) mogą korzystać ze miały unikatowe zasady klucza na adresy e-mail. Tworząc Unikatowy klucz adres e-mail użytkownika, upewnij się, każdy rekord ma unikatowy adres e-mail, a żadne nowe rekordy można tworzyć za pomocą adresów e-mail zduplikowane. 
 
-Jeśli chcesz użytkownikom można było utworzyć wiele rekordów o takiej samej wiadomości e-mail adres, ale nie sam imię, nazwisko i adres e-mail, można dodać inne ścieżki do unikatowe zasady kluczy. Dlatego zamiast tworzenia Unikatowy klucz po prostu oparte na adres e-mail, można utworzyć unikatowy klucz jest kombinacją imię, nazwisko i adres e-mail. W takim przypadku każdy unikatowy kombinację trzech ścieżek jest dozwolone, więc baza danych może zawierać elementy, które mają następujące wartości ścieżki. Każdy z tych rekordów przejdzie unikatowy kluczy zasad.  
+Jeśli chcesz użytkownikom można było utworzyć wiele rekordów o takiej samej wiadomości e-mail adres, ale nie sam imię, nazwisko i adres e-mail, można dodać inne ścieżki do unikatowe zasady kluczy. Dlatego zamiast tworzenia Unikatowy klucz na podstawie adresu e-mail, można utworzyć unikatowy klucz jest kombinacją imię, nazwisko i adres e-mail. W takim przypadku każdy unikatowy kombinację trzech ścieżek jest dozwolone, więc baza danych może zawierać elementy, które mają następujące wartości ścieżki. Każdy z tych rekordów przejdzie unikatowy kluczy zasad.  
 
 **Dozwolone wartości Unikatowy klucz firstName, lastName i poczty e-mail**
 
@@ -46,13 +43,13 @@ Jeśli chcesz użytkownikom można było utworzyć wiele rekordów o takiej same
 |    |Duperre|gaby@fabrikam.com|
 |    |       |gaby@fabraikam.com|
 
-Przy próbie wstawienia inny rekord o dowolnej kombinacji wymienione w powyższej tabeli, użytkownik otrzyma komunikat o błędzie informujący, że ograniczenia klucza unique nie zostało spełnione. Błąd, który zwraca bazy danych Azure rozwiązania Cosmos jest "Zasób o określonym identyfikatorze lub nazwie już istnieje." lub "Zasób o określonym identyfikatorze, nazwy lub unikatowego indeksu już istnieje." 
+Przy próbie wstawienia inny rekord o dowolnej kombinacji wymienione w powyższej tabeli, użytkownik otrzyma komunikat o błędzie informujący, że ograniczenia klucza unique nie zostało spełnione. Kod błędu zwrócony z bazy danych Azure rozwiązania Cosmos jest "Zasób o określonym identyfikatorze lub nazwie już istnieje." lub "Zasób o określonym identyfikatorze, nazwy lub unikatowego indeksu już istnieje." 
 
 ## <a name="using-unique-keys"></a>Przy użyciu unikatowy kluczy
 
 Unikatowy kluczy musi być zdefiniowana, jeśli ten kontener jest tworzony i zakres to unikatowy klucz klucza partycji. Aby utworzyć na poprzedniego przykładu, jeśli partycji na podstawie kodu pocztowego, może mieć rekordy z tabeli zduplikowany w każdej partycji.
 
-Nie można zaktualizować istniejące kontenery do używać unikatowy kluczy.
+Nie można zaktualizować istniejącego kontenera, aby używać unikatowy kluczy.
 
 Po utworzeniu kontenera z zasadą unikatowy kluczy zasady nie można zmienić, o ile nie zostanie ponownie utworzona kontenera. Jeśli masz istniejące dane, które chcesz zaimplementować unikatowy kluczy, Utwórz nowy kontener, a następnie użyć narzędzia migracji danych do przenoszenia danych do nowego kontenera. Dla kontenerów SQL, użyj [narzędzia migracji danych](import-data.md). Dla bazy danych MongoDB kontenery, użyj [mongoimport.exe lub mongorestore.exe](mongodb-migrate.md).
 
@@ -90,9 +87,8 @@ private static async Task CreateCollectionIfNotExistsAsync(string dataBase, stri
                 new Collection<UniqueKey>
                 {
                     new UniqueKey { Paths = new Collection<string> { "/firstName" , "/lastName" , "/email" }}
-                    new UniqueKey { Paths = new Collection<string> { "/address/zipCode" } },
-
-                }
+                    new UniqueKey { Paths = new Collection<string> { "/address/zipcode" } },
+          }
             };
             await client.CreateDocumentCollectionAsync(
                 UriFactory.CreateDatabaseUri(dataBase),
@@ -115,17 +111,20 @@ Przykładowy dokument JSON.
     "firstName": "Gaby",
     "lastName": "Duperre",
     "email": "gaby@contoso.com",
-    "address": [
+    "address": 
         {            
             "line1": "100 Some Street",
             "line2": "Unit 1",
             "city": "Seattle",
             "state": "WA",
-            "zipCode": 98012
+            "zipcode": 98012
         }
-    ],
+    
 }
 ```
+> [!NOTE]
+> Sprawdź notatki unikatowa nazwa klucza jest rozróżniana wielkość liter. Jak pokazano powyżej przykład, dla /address/zipcode ustawiono unikatową nazwę. Jeśli dane będzie kod pocztowy, następnie zostaną wstawione "null" w kluczu unikatowy kod pocztowy nie jest taki sam, jak kod pocztowy. I ze względu na to wielkości liter wszystkich rekordów z kod pocztowy nie będzie można ma zostać wstawiony jako zduplikowane wartości "null" spowodują naruszenie ograniczenia klucza unique.
+
 ## <a name="mongodb-api-sample"></a>Przykładowy interfejs API bazy danych MongoDB
 
 W poniższym przykładzie polecenie pokazuje, jak można utworzyć indeksu unikatowego na imię, nazwisko i adres e-mail pola kolekcji użytkowników dla interfejsu API bazy danych MongoDB. Dzięki temu unikatowości dla kombinacji wszystkie trzy pola dla wszystkich dokumentów w kolekcji. Kolekcje API bazy danych MongoDB unikatowy indeks jest tworzony po utworzeniu kolekcji, ale przed kolekcję.
@@ -133,8 +132,22 @@ W poniższym przykładzie polecenie pokazuje, jak można utworzyć indeksu unika
 ```
 db.users.createIndex( { firstName: 1, lastName: 1, email: 1 }, { unique: true } )
 ```
+## <a name="configure-unique-keys-by-using-azure-portal"></a>Skonfigurować unikatowy kluczy przy użyciu portalu Azure
 
-## <a name="next-steps"></a>Kolejne kroki
+W sekcjach powyżej, które znajdują się przykłady kodu, które będą widoczne, jak można zdefiniować ograniczenia klucza unique, gdy kolekcja jest tworzony przy użyciu interfejsu API SQL lub bazy danych MongoDB interfejsu API. Ale jest również możliwe określenie unikatowy kluczy podczas tworzenia kolekcji za pomocą interfejsu użytkownika sieci web w portalu Azure. 
+
+- Przejdź do **Eksploratora danych** na koncie DB rozwiązania Cosmos
+- Kliknij przycisk **nowej kolekcji**
+- W sekcji unikatowy kluczy ** można dodać żądanego ograniczeń klucza unique, klikając **Dodaj Unikatowy klucz.**
+
+![Zdefiniuj unikatowe klucze w Eksploratorze danych](./media/unique-keys/unique-keys-azure-portal.png)
+
+- Jeśli chcesz utworzyć unikatowego ograniczenia klucza w ścieżce lastName, Dodaj `/lastName`.
+- Jeśli chcesz utworzyć unikatowego ograniczenia klucza dla kombinacji firstName lastName, Dodaj `/lastName,/firstName`
+
+Po zakończeniu kliknij przycisk **OK** do tworzenia kolekcji.
+
+## <a name="next-steps"></a>Następne kroki
 
 W tym artykule przedstawiono sposób tworzenia unikatowy kluczy dla elementów w bazie danych. W przypadku tworzenia kontenera po raz pierwszy, przejrzyj [partycjonowanie danych w usłudze Azure DB rozwiązania Cosmos](partition-data.md) jako unikatowy kluczy i kluczy partycji zależne od siebie nawzajem. 
 

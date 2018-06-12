@@ -10,14 +10,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2017
-ms.author: danha; mbullwin
-ms.openlocfilehash: 5a49d38ddc9d2181f9b35ac948c44df70bad831b
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: danha
+ms.author: mbullwin
+ms.openlocfilehash: 7f8f49cf88bda8e485d2365281c13680ef796196
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295523"
 ---
 # <a name="using-analytics-in-application-insights"></a>Za pomocą analizy w usłudze Application Insights
 [Analiza](app-insights-analytics.md) to funkcja wyszukiwania zaawansowanego [usługi Application Insights](app-insights-overview.md). Te strony opisano język zapytań usługi Analiza dzienników.
@@ -163,7 +165,7 @@ Jednak gdy przypiąć go do pulpitu nawigacyjnego wygląda następująco:
 
 ![Wykres z ograniczoną bins](./media/app-insights-analytics-using/pin-08.png)
 
-## <a name="export-to-excel"></a>Eksportowanie do programu Excel
+## <a name="export-to-excel"></a>Eksportuj do programu Excel
 Po uruchomieniu kwerendy, można pobrać pliku CSV. Kliknij przycisk **wyeksportować Excel**.
 
 ## <a name="export-to-power-bi"></a>Eksport do usługi Power BI

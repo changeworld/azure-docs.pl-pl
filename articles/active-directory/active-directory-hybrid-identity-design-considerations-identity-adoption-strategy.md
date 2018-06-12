@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 4b1fefafb34dcbfdced5c978aa235e56cb7fa513
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 9107464acefe75141950c0d07298c8ad946e0ddc
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801800"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260366"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definiowanie strategii wdrażania tożsamości hybrydowej
 To zadanie służy do definiowania strategii wdrażania tożsamości hybrydowej dla hybrydowych rozwiązań tożsamości do spełnienia wymagań biznesowych, które zostały omówione w:
@@ -67,7 +67,7 @@ Strategia, którego używasz wyznaczają środowisko logowania użytkownika.  Po
 | Przeglądarki sieci Web |Uwierzytelnianie oparte na formularzach |Logowanie jednokrotne, czasami trzeba podać identyfikator organizacji |
 | Outlook |Monit o podanie poświadczeń |Monit o podanie poświadczeń |
 | Skype dla firm (Lync) |Monit o podanie poświadczeń |Logowanie jednokrotne Lync, monitowanie o poświadczenia dla programu Exchange |
-| SkyDrive Pro |Monit o podanie poświadczeń |Logowanie jednokrotne |
+| OneDrive dla Firm |Monit o podanie poświadczeń |Logowanie jednokrotne |
 | Office Pro Plus subskrypcji |Monit o podanie poświadczeń |Logowanie jednokrotne |
 
 **Zewnętrznych lub niezaufanych źródeł**:
@@ -75,8 +75,8 @@ Strategia, którego używasz wyznaczają środowisko logowania użytkownika.  Po
 |  | Tożsamości synchronizowane | Tożsamość federacyjna |
 | --- | --- | --- |
 | Przeglądarki sieci Web |Uwierzytelnianie oparte na formularzach |Uwierzytelnianie oparte na formularzach |
-| Outlook i Skype dla firm (Lync), Skydrive Pro subskrypcji pakietu Office |Monit o podanie poświadczeń |Monit o podanie poświadczeń |
-| Exchange ActiveSync |Monit o podanie poświadczeń |Logowanie jednokrotne Lync, monitowanie o poświadczenia dla programu Exchange |
+| Outlook i Skype dla firm (Lync), usługi OneDrive dla firm, subskrypcja pakietu Office |Monit o podanie poświadczeń |Monit o podanie poświadczeń |
+| Program Exchange ActiveSync |Monit o podanie poświadczeń |Logowanie jednokrotne Lync, monitowanie o poświadczenia dla programu Exchange |
 | Aplikacji mobilnych |Monit o podanie poświadczeń |Monit o podanie poświadczeń |
 
 Jeśli już wiesz zadanie 1, że będzie innych dostawców tożsamości lub są jej użyć do zapewnienia federacji z usługą Azure AD, należy należy pamiętać o następujących obsługiwane możliwości:
@@ -210,7 +210,7 @@ Usługa Multi-Factor authentication jest dostępna domyślnie dla administrator�
 > 
 > 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 [Określenie wymagań dotyczących ochrony danych](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md)
 
 ## <a name="see-also"></a>Zobacz także

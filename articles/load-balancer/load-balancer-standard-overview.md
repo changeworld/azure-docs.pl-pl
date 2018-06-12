@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2018
 ms.author: kumud
-ms.openlocfilehash: 9e1f2f3e8fea771fb38b984dad1d8e73d723cb2c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 20897137c617ddf9a33a8f4966bcd7e30ac7c60c
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261937"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Omówienie usługi Azure Standard modułu równoważenia obciążenia
 
@@ -32,7 +33,7 @@ Standardowa usługa równoważenia obciążenia jest nowym produktem modułu ró
 
 Standardowa usługa równoważenia obciążenia można użyć jako publiczny lub wewnętrzny moduł równoważenia obciążenia. I maszyny wirtualnej można podłączyć do publicznego i jednego zasobu wewnętrznego modułu równoważenia obciążenia.
 
-Funkcje zasobów usługi równoważenia obciążenia zawsze są wyrażane jako frontonu, regułę, sondy kondycji i definicji puli wewnętrznej bazy danych.  Zasób może zawierać wiele reguł. Maszyny wirtualne można umieścić w puli zaplecza, określając puli wewnętrznej bazy danych z maszyny wirtualnej karty Sieciowej zasobu.  W przypadku zestawu skali maszyny wirtualnej ten parametr jest przekazywany przez profil sieci i rozwinięty.
+Funkcje zasobów usługi równoważenia obciążenia zawsze są wyrażane jako frontonu, regułę, sondy kondycji i definicji puli wewnętrznej bazy danych.  Zasób może zawierać wiele reguł. Maszyny wirtualne można umieścić w puli zaplecza, określając puli wewnętrznej bazy danych z maszyny wirtualnej karty Sieciowej zasobu.  Ten parametr jest przekazywany przez profil sieci i rozszerzony, gdy za pomocą zestawów skali maszyny wirtualnej.
 
 Jeden z kluczowych aspektów jest zakresem sieci wirtualnej dla zasobu.  Podstawowa usługa równoważenia obciążenia istnieje w zakresie zestawu dostępności, standardowe usługi równoważenia obciążenia jest w pełni zintegrowana z zakresem sieci wirtualnej i zastosować wszystkie koncepcji sieci wirtualnych.
 
@@ -43,7 +44,7 @@ Zasoby usługi równoważenia obciążenia to obiekty w ramach których mogą ex
 
 ## <a name="why-use-standard-load-balancer"></a>Dlaczego warto używać usługi równoważenia obciążenia standardowego?
 
-Standardowa usługa równoważenia obciążenia umożliwia skalowanie aplikacji i utworzyć wysoka dostępność dla małych wdrożeń do architektury strefy wielu dużych i złożonych.
+Usługa Load Balancer w warstwie Standardowa pozwala skalować aplikacje i zapewniać wysoką dostępność zarówno wdrożeniom o małej skali, jak i dużym oraz złożonym architekturom obejmującym wiele stref.
 
 Przejrzyj tabelę poniżej, aby zapoznać się z omówieniem różnice między standardowe usługi równoważenia obciążenia i podstawowa usługi równoważenia obciążenia:
 
@@ -71,7 +72,7 @@ Przegląd [usługi limity dla usługi równoważenia obciążenia](https://aka.m
 
 Rozwija standardowe pul zaplecza modułu równoważenia obciążenia do dowolnego zasobu maszyny wirtualnej w sieci wirtualnej.  Nazwa może zawierać maksymalnie 1000 wystąpień wewnętrznej bazy danych.  Wystąpienie wewnętrznej bazy danych jest konfiguracja adresu IP, która jest właściwością zasobów kart interfejsu Sieciowego.
 
-Puli zaplecza może zawierać autonomicznych maszyn wirtualnych, zestawów dostępności lub zestawy skalowania maszyny wirtualnej.  Przejścia zasobów w puli zaplecza i może zawierać dowolną kombinację tych zasobów do 150 całkowitej.
+Puli zaplecza może zawierać autonomicznych maszyn wirtualnych, zestawów dostępności lub zestawy skalowania maszyny wirtualnej.  Można tworzyć zasoby w puli zaplecza. Możesz łączyć maksymalnie 150 zasobów w puli zaplecza dla zasobów usługi równoważenia obciążenia.
 
 Podczas określania, jak zaprojektować pulę zaplecza, można zaprojektować dla o najmniejszej liczby indywidualnych zaplecza puli zasobów, aby jeszcze bardziej zoptymalizować czas trwania operacji zarządzania.  Nie ma różnic w wydajności płaszczyzna danych lub skali.
 
@@ -89,7 +90,7 @@ Przegląd [szczegółowe omówienie stref dostępności dotyczące możliwości]
 
 ### <a name="diagnostics"></a> Diagnostyka
 
-Standardowy moduł równoważenia obciążenia zapewnia metryki wielowymiarowej za pośrednictwem Monitora Azure.  Te metryki mogą być filtrowane, grupowane i zapewnić bieżące i historyczne informacje o wydajności i kondycji usługi.  Kondycja zasobu jest również obsługiwany.  Poniżej przedstawiono krótkie omówienie diagnostyki obsługiwane:
+Standardowy moduł równoważenia obciążenia zapewnia metryki wielowymiarowej za pośrednictwem Monitora Azure.  Te metryki można filtrować, grupowane i podzielone określonego wymiaru.  Udostępniają one bieżące i historyczne informacje o wydajności i kondycji usługi.  Kondycja zasobu jest również obsługiwany.  Poniżej przedstawiono krótkie omówienie diagnostyki obsługiwane:
 
 | Metryka | Opis |
 | --- | --- |
@@ -117,7 +118,7 @@ Przegląd [szczegółowe omówienie HA porty](load-balancer-ha-ports-overview.md
 
 ### <a name="securebydefault"></a>Bezpieczeństwo domyślne
 
-Standardowa usługa równoważenia obciążenia jest w pełni dołączać do sieci wirtualnej.  Sieć wirtualna jest w sieci prywatnej, zamknięte.  Ponieważ standardowe usługi równoważenia obciążenia i standardowe publiczne adresy IP pozwalają tej sieci wirtualnej jako dostępne spoza sieci wirtualnej, te zasoby teraz domyślnie, chyba że je otworzyć. Oznacza to, aby jawnie zezwolić na teraz są używane grupy zabezpieczeń sieci (NSG) i dozwolonych dozwolone ruchu.  Można tworzyć z całym wirtualnego centrum danych i podjąć decyzję za pośrednictwem grupy NSG, co i kiedy powinny być dostępne.  Jeśli nie masz grupy NSG podsieci lub kartę interfejsu Sieciowego zasobu maszyny wirtualnej, firma Microsoft nie będzie zezwalać ruchu do tego zasobu.
+Standardowa usługa równoważenia obciążenia jest w pełni dołączać do sieci wirtualnej.  Sieć wirtualna jest w sieci prywatnej, zamknięte.  Ponieważ standardowe usługi równoważenia obciążenia i standardowe publiczne adresy IP pozwalają tej sieci wirtualnej jako dostępne spoza sieci wirtualnej, te zasoby teraz domyślnie, chyba że je otworzyć. Oznacza to, aby jawnie zezwolić na teraz są używane grupy zabezpieczeń sieci (NSG) i dozwolonych dozwolone ruchu.  Można tworzyć z całym wirtualnego centrum danych i podjąć decyzję za pośrednictwem grupy NSG, co i kiedy powinny być dostępne.  Jeśli nie masz grupy NSG podsieci lub kartę interfejsu Sieciowego zasobu maszyny wirtualnej, ruch nie jest dozwolony na osiągnięcie tego zasobu.
 
 Aby dowiedzieć się więcej na temat grup NSG i zastosować je dla danego scenariusza, zobacz [grup zabezpieczeń sieci](../virtual-network/security-overview.md).
 
@@ -202,7 +203,7 @@ Jednostki SKU nie jest modyfikowalna. Wykonaj kroki opisane w tej sekcji, aby pr
 >
 >Zarówno wersji Standard, jak i Basic ma liczbę różnic w sposób opisany w tym artykule.  Upewnij się, zrozumieć i Przygotuj się do nich.
 >
->Dla zasobów usługi równoważenia obciążenia i publiczny adres IP muszą być używane dopasowanie jednostki SKU. Nie może mieć kombinację zasobów podstawowy SKU i wersji Standard. Nie można dołączyć autonomicznych maszyn wirtualnych, maszyny wirtualne w zasób zestawu dostępności lub zestawu skalowania maszyn wirtualnych zasobów do obu SKU jednocześnie.
+>Dla zasobów usługi równoważenia obciążenia i publiczny adres IP muszą być używane dopasowanie jednostki SKU. Nie może mieć kombinację zasobów podstawowy SKU i wersji Standard. Nie można dołączyć autonomicznych maszyn wirtualnych, maszyn wirtualnych w zasobie zestawu dostępności lub zasobów zestawu skalowania maszyn wirtualnych jednocześnie do obu jednostek SKU.
 
 ## <a name="region-availability"></a>Dostępność w danym regionie
 

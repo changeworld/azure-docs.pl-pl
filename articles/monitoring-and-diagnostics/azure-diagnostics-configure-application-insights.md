@@ -1,24 +1,19 @@
 ---
-title: "Skonfiguruj diagnostyki Azure w celu wysyłania danych do usługi Application Insights | Dokumentacja firmy Microsoft"
-description: "Zaktualizuj konfigurację publicznego diagnostyki Azure do przesyłania danych do usługi Application Insights."
-services: monitoring-and-diagnostics
-documentationcenter: .net
+title: Skonfiguruj diagnostyki Azure w celu wysyłania danych do usługi Application Insights
+description: Zaktualizuj konfigurację publicznego diagnostyki Azure do przesyłania danych do usługi Application Insights.
+services: azure-monitor
 author: rboucher
-manager: carmonm
-editor: 
-ms.assetid: f9e12c3e-c307-435e-a149-ef0fef20513a
-ms.service: monitoring-and-diagnostics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 03/19/2016
 ms.author: robb
-ms.openlocfilehash: b4f1f8900637f23220f9a89adbb321707c49e2d3
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.component: diagnostic-extension
+ms.openlocfilehash: 3e1f4076c7a90cbb348f31b7b92e745fff79a04f
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262141"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Wyślij dane diagnostyczne usługi w chmurze maszyny wirtualnej i sieci szkieletowej usług do usługi Application Insights
 Usługi w chmurze, maszyn wirtualnych, zestawy skalowania maszyny wirtualnej i sieci szkieletowej usług wszystkie używane rozszerzenie diagnostyki Azure do zbierania danych.  Diagnostyka Azure wysyła dane do tabel usługi Azure Storage.  Można jednak również potoku wszystkie lub podzbiór danych do innych lokalizacji przy użyciu rozszerzenia diagnostyki Azure w wersji 1.5 lub nowszego.

@@ -1,11 +1,11 @@
 ---
-title: "Korzystanie z łącznika zapas czasu w aplikacjach logiki platformy Azure | Dokumentacja firmy Microsoft"
-description: "Nawiązać zapas czasu w aplikacjach logiki"
+title: Korzystanie z łącznika zapas czasu w aplikacjach logiki platformy Azure | Dokumentacja firmy Microsoft
+description: Nawiązać zapas czasu w aplikacjach logiki
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: ecfan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 tags: connectors
 ms.assetid: 234cad64-b13d-4494-ae78-18b17119ba24
 ms.service: logic-apps
@@ -15,14 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
 ms.author: estfan; ladocs
-ms.openlocfilehash: 73c512c70f1c135bd791d93cecc42bd6f4c06b3d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 88b134a90ac385ad957d76f420fe85dc2dbbf751
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296227"
 ---
 # <a name="get-started-with-the-slack-connector"></a>Rozpoczynanie pracy z Slack łącznika
-Zapas czasu to narzędzie komunikacji zespołu, która łączy komunikacji zespołu w jednym umieszczają, natychmiast można wyszukiwać i dostępne, wszędzie tam, gdzie możesz przejść. 
+Slack jest narzędziem do komunikacji zespołowej, które łączy całą komunikację zespołową w jednym miejscu. Umożliwia natychmiastowe wyszukiwanie i dostęp do komunikacji z dowolnego miejsca. 
 
 Rozpoczynanie pracy przez tworzenie aplikacji logiki teraz; zobacz [tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 

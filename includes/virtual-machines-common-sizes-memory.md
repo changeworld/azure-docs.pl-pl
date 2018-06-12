@@ -5,22 +5,22 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/09/2018
+ms.date: 05/22/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: fcbeb6bbd090fc31febb326d3cbef90187d3e7e3
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: d3e0f2680cbe703edc553ddff310fba2d1ddf77f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35323820"
 ---
 Zoptymalizowanych pod kątem pamięci oferta rozmiary maszyny Wirtualnej wysokiego współczynnika pamięci do Procesora, który jest wspaniała relacyjnej bazy danych serwerów, pamięci podręcznych średnich i dużych i analizy w pamięci. Ten artykuł zawiera informacje o liczbie Vcpu, dysków z danymi i karty sieciowe, a także przepustowości przepływności i sieć magazynu dla każdego rozmiaru w tej metodzie grupowania. 
 
 * M-Series oferuje największa liczba vCPU (maksymalnie 128 Vcpu) i pamięci największego (TiB do 3.8) żadnej maszyny Wirtualnej w chmurze.  Jest to idealne rozwiązanie dla bardzo dużych baz danych lub innych aplikacji, które korzystają z dużej liczby procesorów wirtualnych vCPU i dużych ilości pamięci.
 
-* Serie Dv2, D, G i ich odpowiedniki DS/GS są idealne dla aplikacji wymagających szybszych procesorów wirtualnych vCPU, magazynów tymczasowych o lepszej wydajności lub większych ilości pamięci.  Oferują one kombinację opcji o dużych możliwościach dla wielu aplikacji klasy korporacyjnej.
+* Dv2 serii, serie G i odpowiedniki DSv2/GS idealnie nadają się do aplikacji, które popytu szybsze Vcpu, lepszą wydajność magazyn tymczasowy, lub mieć wyższe wymagania pamięci.  Oferują one kombinację opcji o dużych możliwościach dla wielu aplikacji klasy korporacyjnej.
 
-* Maszyny wirtualne serii D są zaprojektowane do uruchamiania aplikacji wymagających większej mocy obliczeniowej i wydajności dysków tymczasowych. Maszyny wirtualne serii D zapewniają szybsze procesory, większą ilość pamięci na procesor wirtualny vCPU i dyski półprzewodnikowe (SSD) dla magazynów tymczasowych. Szczegółowe informacje zawiera ogłoszenie [New D-Series Virtual Machine Sizes](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/) (Nowe rozmiary maszyn wirtualnych serii D) w blogu platformy Azure.
 
 * Seria Dv2, kontynuacja oryginalnej serii D, jest wyposażona w procesor CPU o większych możliwościach. Procesor CPU serii Dv2 jest o około 35% szybszy niż procesor CPU serii D. Jest on oparty na najnowszej generacji 2.4 v3® GHz Intel Xeon E5-2673 2,4 GHz (Haswell) lub E5-2673 procesorów 2.3 GHz (Broadwell) w wersji 4 i 2.0 technologii zwiększanie wyniku Turbo firmy Intel, można przejść do GHz 3.1. Konfiguracje pamięci i dysków serii Dv2 są takie same jak w przypadku serii D.
 
@@ -86,7 +86,7 @@ ACU: 160-180 <sup>1</sup>
 | Standard_M64s  | 64   | 1024        | 2048           | 64             | 80 000 / 800 (6348)       | 40 000 / 1000                            | 8 / 16 000          |
 | Standardowa_M64ms  | 64   | 1792        | 2048           | 64             | 80 000 / 800 (6348)       | 40 000 / 1000                            | 8 / 16 000          |
 | Standard_M128s&nbsp;<sup>2,&nbsp;3</sup> | 128  | 2048        | 4096           | 64             | 160 000 / 1 600 (12 696) | 80 000 / 2000                            | 8 / 30000          |
-| Standard_M128ms&nbsp;<sup>2,&nbsp;3,&nbsp;4</sup> | 128  | 3800        | 4096           | 64             | 160 000 / 1 600 (12 696) | 80 000 / 2000                            | 8 / 30000          |
+| Standard_M128ms&nbsp;<sup>2,&nbsp;3,&nbsp;4</sup> | 128  | 3892        | 4096           | 64             | 160 000 / 1 600 (12 696) | 80 000 / 2000                            | 8 / 30000          |
 
 <sup>1</sup> funkcja wirtualna serii M technologią Intel® Hyper-Threading
 
@@ -176,31 +176,5 @@ ACU: 210–250
 
 <br>
 
-## <a name="ds-series"></a>Seria DS 
 
-ACU: 160 <sup>1</sup>
-
-| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych / oczekiwano przepustowości sieci (MB/s) |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Standardowa_DS11 |2 |14 |28 |8 |8000 / 64 (72) |6400 / 64 |2 / 1000 |
-| Standardowa_DS12 |4 |28 |56 |16 |16 000 / 128 (144) |12 800 / 128 |4 / 2000 |
-| Standardowa_DS13 |8 |56 |112 |32 |32 000 / 256 (288) |25 600 / 256 |8 / 4000 |
-| Standardowa_DS14 |16 |112 |224 |64 |64 000 / 512 (576) |51 200 / 512 |8 / 8000 |
-
-<sup>1</sup> przepustowość maksymalna liczba dyskowych operacji to (IOPS lub MB/s), możliwe z serii DS maszyny Wirtualnej może być ograniczony przez kod, rozmiar i rozkładanie dołączone dyski.  Aby uzyskać szczegółowe informacje, zobacz [Premium Storage: High-performance storage for Azure virtual machine workloads](../articles/virtual-machines/windows/premium-storage.md) (Premium Storage: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure).
-
-
-
-## <a name="d-series"></a>Seria D
-
-ACU: 160
-
-| Rozmiar         | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: operacje we/wy na sek. / odczyt MB/s / zapis MB/s | Maksymalna liczba dysków danych / przepływność: liczba operacji we/wy na sekundę | Maksymalna liczba kart sieciowych / oczekiwano przepustowości sieci (MB/s) |
-|--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standardowa_D11 | 2         | 14          | 100            | 6000 / 93 / 46                                           | 8 / 8 x 500                         | 2 / 1000                     |
-| Standardowa_D12 | 4         | 28          | 200            | 12000 / 187 / 93                                         | 16 / 16 x 500                         | 4 / 2000                     |
-| Standardowa_D13 | 8         | 56          | 400            | 24000 / 375 / 187                                        | 32 / 32 x 500                       | 8 / 4000                     |
-| Standardowa_D14 | 16        | 112         | 800            | 48000 / 750 / 375                                        | 64 / 64x500                       | 8 / 8000                |
-
-<br>
 

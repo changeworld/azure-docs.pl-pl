@@ -1,8 +1,8 @@
 ---
-title: "Ustawianie alertów w usłudze Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Bądź na bieżąco o wydłużają czas odpowiedzi, wyjątków i innych wydajności lub zmiany użycia w aplikacji sieci web."
+title: Ustawianie alertów w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
+description: Bądź na bieżąco o wydłużają czas odpowiedzi, wyjątków i innych wydajności lub zmiany użycia w aplikacji sieci web.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: f8ebde72-f819-4ba5-afa2-31dbd49509a5
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: b0e4828b2cb6bbcb4329381e77db3b187d659706
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 87be1a48a6c3320187243e549a8fb8e5ecc9e006
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293607"
 ---
 # <a name="set-alerts-in-application-insights"></a>Ustawianie alertów w usłudze Application Insights
 [Azure Application Insights] [ start] alertów na zmiany w metryki wydajności i użycia w aplikacji sieci web. 
@@ -98,7 +99,7 @@ Pamiętaj, że [diagnostyki szybkość niepowodzenia aktywnego](app-insights-pro
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 * [Dostępność testy sieci web](app-insights-monitor-web-app-availability.md)
 * [Zautomatyzować konfigurowanie alertów](app-insights-powershell-alerts.md)
 * [Proaktywna Diagnostyka](app-insights-proactive-diagnostics.md) 

@@ -1,28 +1,29 @@
 ---
-title: "Azure Privileged Identity Management przepływów pracy | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat przepływów pracy w zarządzania tożsamości uprzywilejowanych (PIM)"
+title: Azure Privileged Identity Management przepływów pracy | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat przepływów pracy w zarządzania tożsamości uprzywilejowanych (PIM)
 services: active-directory
-documentationcenter: 
-author: barclayn
+documentationcenter: ''
+author: rolyon
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/28/2017
-ms.author: barclayn
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: f30dd06417d9ce4d71c88ba170a4f3169b5fccd7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6e14d91eae367ef62d1ff2e4cb6ddeb47c9fbbea
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261019"
 ---
 # <a name="approvals"></a>Zatwierdzenia
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Z zatwierdzenia Privileged Identity Management można skonfigurować role, aby wymagały zatwierdzenia aktywacji i wybierz jednego lub wielu użytkowników lub grup w ramach delegowanego osób zatwierdzających. Zachowaj odczytu, aby dowiedzieć się, jak skonfigurować role i wybierz osób zatwierdzających.
 
@@ -55,11 +56,11 @@ Prywatnej wersji zapoznawczej obsługuje następujące scenariusze:
 
 **Kwalifikujące się roli użytkownika może:**
 
--   [żądanie aktywacji roli, która wymaga zatwierdzenia](#request-activation-of-a-role-that-requires-approval)
+-   [Żądania aktywacji roli, która wymaga zatwierdzenia](#request-activation-of-a-role-that-requires-approval)
 
 -   [Wyświetl stan żądanie aktywacji](#view-the-status-of-your-request-to-activate)
 
--   [wykonać zadanie w usłudze Azure AD, jeśli Aktywacja została zatwierdzona](#complete-your-task-in-azure-ad-if-activation-was-approved)
+-   [Wykonać zadanie w usłudze Azure AD, jeśli Aktywacja została zatwierdzona](#complete-your-task-in-azure-ad-if-activation-was-approved)
 
 ### <a name="navigation"></a>Nawigacja
 

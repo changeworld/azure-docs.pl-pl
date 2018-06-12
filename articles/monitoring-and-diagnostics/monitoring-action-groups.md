@@ -1,25 +1,19 @@
 ---
-title: Utwórz i Zarządzaj grupami akcji w portalu Azure | Dokumentacja firmy Microsoft
+title: Utwórz i Zarządzaj grupami akcji w portalu Azure
 description: Informacje o sposobie tworzenia i obsługi grup działań w portalu Azure.
 author: dkamstra
-manager: chrad
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 06/1/2018
 ms.author: dukek
-ms.openlocfilehash: fd6817e63eea622294bbf766b66beb8bc49bc30c
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.component: alerts
+ms.openlocfilehash: 63216d56fb3acbb954086fbf026441e69073621e
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726061"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263069"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Utwórz i Zarządzaj grupami akcji w portalu Azure
 ## <a name="overview"></a>Przegląd ##
@@ -110,7 +104,7 @@ Po utworzeniu grupy akcji jest widoczna w **grupy akcji** sekcji **Monitor** blo
 * Dodawanie, edytowanie lub usuwanie akcji.
 * Usuwanie grupy działań.
 
-## <a name="next-steps"></a>Kolejne kroki ##
+## <a name="next-steps"></a>Następne kroki ##
 * Dowiedz się więcej o [SMS alertów zachowanie](monitoring-sms-alert-behavior.md).  
 * Uzyskaj [zrozumienia schemat alertu elementu webhook dziennika aktywności](monitoring-activity-log-alerts-webhook.md).  
 * Dowiedz się więcej o [Zarządzanie usługami IT — łącznika](../log-analytics/log-analytics-itsmc-overview.md)

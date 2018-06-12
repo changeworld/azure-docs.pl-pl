@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: 8dbe995ac3c6799c2fa17d9faa8be0cb74d6ee23
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: daeb41d9094077950223820f8580ae057d039ef0
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261240"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie produktu Workday do inicjowania obsługi użytkowników
 
@@ -372,7 +373,7 @@ W tej sekcji skonfigurujesz, jak dane użytkownika wypływających z produktu Wo
 | **PreferredNameData**  |  displayName |     |   Tworzenie i aktualizowanie |
 | **Firmy**         | Firmy   |     |  Tworzenie i aktualizowanie |
 | **SupervisoryOrganization**  | dział  |     |  Tworzenie i aktualizowanie |
-| **ManagerReference**   | Menedżer  |     |  Tworzenie i aktualizowanie |
+| **ManagerReference**   | menedżer  |     |  Tworzenie i aktualizowanie |
 | **BusinessTitle**   |  tytuł     |     |  Tworzenie i aktualizowanie | 
 | **AddressLineData**    |  Adres  |     |   Tworzenie i aktualizowanie |
 | **Jednostki administracyjnej**   |   l   |     | Tworzenie i aktualizowanie |
@@ -397,7 +398,7 @@ Po zainstalowaniu agenta, uruchom poniższe polecenia programu Powershell do kon
 
 **Polecenie #1**
 
-> CD "C:\Program Files\Microsoft Azure AD Connect, inicjowania obsługi administracyjnej Agent\Modules\AADSyncAgent" Agent\\modułów\\AADSyncAgent
+> CD "C:\Program Files\Microsoft Azure AD Connect inicjowania obsługi administracyjnej Agent\Modules\AADSyncAgent"
 
 > Import-Module "C:\Program Files\Microsoft Azure AD Connect inicjowania obsługi administracyjnej Agent\Modules\AADSyncAgent\AADSyncAgent.psd1"
 

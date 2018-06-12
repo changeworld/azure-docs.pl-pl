@@ -8,12 +8,12 @@ ms.date: 05/24/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: f864cf45b255ac26ccf0efac9a89683d1ae650b3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 320ca0da946a0f04517c9ed4e8a61a868d2bb27c
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34601262"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260485"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -192,7 +192,7 @@ Wynikiem warunku jest czy **pola** spełnia określone kryteria. Są obsługiwan
 - `"notContainsKey": "keyName"`
 - `"exists": "bool"`
 
-Korzystając z **jak** i **notLike** warunki, można podać symbol wieloznaczny (*) w wartości.
+Korzystając z **jak** i **notLike** warunki, można zapewnić symbolu wieloznacznego (*) w wartości. Wartość nie może zawierać więcej niż 1 symbol wieloznaczny (*).
 
 Korzystając z **odpowiada** i **notMatch** warunki `#` do reprezentowania cyfrę, `?` literę i znak reprezentują rzeczywiste znaku. Aby uzyskać przykłady, zobacz [Zezwalaj wielu wzorce nazw](scripts/allow-multiple-name-patterns.md).
 
@@ -314,7 +314,7 @@ Zawsze rośnie listę aliasów. Aby dowiedzieć się, jakie aliasy są obecnie o
   GET https://management.azure.com/providers/?api-version=2017-08-01&$expand=resourceTypes/aliases
   ```
 
-## <a name="initiatives"></a>Inicjatywy
+## <a name="initiatives"></a>Inicjatyw
 
 Włącz inicjatyw kilka grupy powiązane definicje zasad, aby uprościć zadania i zarządzania, ponieważ współdziała z grupą jako pojedynczy element. Na przykład można grupować wszystkie powiązane definicje zasad znakowania w jednym inicjatywy. Zamiast przypisywać każdej zasady pojedynczo, należy zastosować tej inicjatywy.
 
@@ -392,6 +392,6 @@ Poniższy przykład przedstawia sposób tworzenia inicjatywą obsługi dwa tagi:
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Przejrzyj więcej przykładów w [Przykłady zasad Azure](json-samples.md).

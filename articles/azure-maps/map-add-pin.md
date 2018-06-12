@@ -1,7 +1,7 @@
 ---
 title: Dodaj numeru pin przy użyciu map Azure | Dokumentacja firmy Microsoft
 description: Jak dodać numeru pin do mapy kodu Javascript
-author: jinzh-azureiot
+author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
 ms.topic: conceptual
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: dc9649e94f5d1757e5ec65098ccc7e4ffa927bf0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 094abe08c0c88c7561185675ceb8529be2c87a0a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34599861"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294652"
 ---
 # <a name="add-pins-to-the-map"></a>Dodaj numery PIN do mapy
 
@@ -34,3 +34,8 @@ W drugim bloku kodu pin jest tworzony i dodawany do mapy. Numer pin jest [funkcj
 Dowiedz się więcej na temat klasy i metody używane w tym artykule: 
 * [mapy](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
     * [addPins](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addpins)
+    
+Aby uzyskać więcej przykładów kodu do dodania do map zobacz następujące artykuły: 
+* [Dodawanie menu podręcznego](./map-add-popup.md)
+* [Dodawanie kształtów](./map-add-shape.md)
+

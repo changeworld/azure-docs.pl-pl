@@ -3,7 +3,7 @@ title: Omówienie zasobów Azure PIM RBAC | Dokumentacja firmy Microsoft
 description: Zapoznaj się z omówieniem funkcji RBAC w PIM tym terminologii i powiadomienia
 services: active-directory
 documentationcenter: ''
-author: barclayn
+author: rolyon
 manager: mtillman
 editor: ''
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.component: protection
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 304a06dee04b405c7e7acb2c73b31af426591d1d
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: f8eb574a98294b2858edd2ae36293c2857a50403
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233292"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261036"
 ---
 # <a name="pim-for-azure-resources"></a>PIM dla zasobów platformy Azure
 
@@ -193,7 +193,7 @@ Wybierz z menu nawigacji po lewej stronie Moje ról, a następnie wybierz odpowi
 
 ![](media/azure-pim-resource-rbac/my-roles-02.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Wbudowane role zasobów platformy Azure](../../role-based-access-control/built-in-roles.md)
 - Dowiedz się więcej o [aktywowanie tutaj ról usługi Azure AD](../active-directory-privileged-identity-management-how-to-activate-role.md)

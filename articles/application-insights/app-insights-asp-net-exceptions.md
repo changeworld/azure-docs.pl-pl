@@ -1,6 +1,6 @@
 ---
-title: "Diagnozowanie błędów i wyjątków w aplikacji sieci web za pomocą usługi Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Przechwytywanie wyjątków w aplikacji ASP.NET oraz dane telemetryczne żądania."
+title: Diagnozowanie błędów i wyjątków w aplikacji sieci web za pomocą usługi Azure Application Insights | Dokumentacja firmy Microsoft
+description: Przechwytywanie wyjątków w aplikacji ASP.NET oraz dane telemetryczne żądania.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: ee04fc3338dec7893f9f33322bd6b9af932199e7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a3dcf4211df5d40c4b174fd9a818d3268ffaa3a0
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295714"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnozowanie wyjątków w aplikacjach sieci web za pomocą usługi Application Insights
 Wyjątki w aplikacji sieci web na żywo są zgłaszane przez [usługi Application Insights](app-insights-overview.md). Żądań zakończonych niepowodzeniem może być zgodne z wyjątków i innych zdarzeń klienta i serwera, dzięki czemu można szybko diagnozowania przyczyn.

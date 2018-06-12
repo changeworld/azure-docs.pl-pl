@@ -2,7 +2,7 @@
 title: Śledzenie schematy B2B X12 monitorowania - Azure Logic Apps | Dokumentacja firmy Microsoft
 description: Użyj X12 śledzenia schematów, aby monitorować wiadomości B2B transakcji na koncie Azure integracji.
 author: padmavc
-manager: anneta
+manager: jeconnoc
 editor: ''
 services: logic-apps
 documentationcenter: ''
@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5a43b9bdf522b6b26f27c082f5cb623f7a76a8b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 385ff73d780f62f19af2face591cd0b2291ef396
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300977"
 ---
 # <a name="start-or-enable-tracking-of-x12-messages-to-monitor-success-errors-and-message-properties"></a>Początkowy lub Włącz śledzenie X12 komunikaty sukcesu monitora, błędy i właściwości wiadomości
 Można użyć tych X12 śledzenia schematów na koncie Azure integracji ułatwiają monitorowanie transakcji między firmami (B2B):

@@ -15,11 +15,12 @@ ms.date: 07/28/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: c3f07aa0ef4fea773e214e3e161a61e9337dc617
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 673f41e368d54aeed903400179a818e534845860
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292742"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Zagadnienia dotyczące topologii sieci przy użyciu serwera Proxy usługi Azure Active Directory aplikacji
 
@@ -170,9 +171,9 @@ Można także rozważyć użycie jednego innego elementu variant w takiej sytuac
 
 ![Diagram przedstawiający użytkowników, proxy i łącznika w Stanach Zjednoczonych, aplikacji w UE](./media/application-proxy-network-topology/application-proxy-pattern5c.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Włączanie serwera Proxy aplikacji](application-proxy-enable.md)
 - [Włączanie logowania jednokrotnego](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Włączanie dostępu warunkowego](application-proxy-integrate-with-sharepoint-server.md)
-- [Rozwiązywanie problemów, które masz problem z serwerem Proxy aplikacji](../active-directory-application-proxy-troubleshoot.md)
+- [Rozwiązywanie problemów, które masz problem z serwerem Proxy aplikacji](application-proxy-troubleshoot.md)

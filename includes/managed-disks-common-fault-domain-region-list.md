@@ -10,7 +10,7 @@
 | Środkowo-północne stany USA    | 3                       |
 | Środkowo-południowe stany USA    | 3                       |
 | Środkowo-zachodnie stany USA     | 2                       |
-| Kanada Środkowa      | 2                       |
+| Kanada Środkowa      | 3                      |
 | Kanada Wschodnia         | 2                       |
 |                     |                         |
 | Europa Północna        | 3                       |

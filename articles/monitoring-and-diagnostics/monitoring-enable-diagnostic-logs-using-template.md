@@ -1,24 +1,19 @@
 ---
-title: Automatycznie włączaj ustawień diagnostycznych przy użyciu szablonu usługi Resource Manager | Dokumentacja firmy Microsoft
+title: Automatycznie włączaj ustawień diagnostycznych przy użyciu szablonu usługi Resource Manager
 description: Dowiedz się, jak szablon Menedżera zasobów do tworzenia ustawień diagnostycznych, które umożliwi strumienia dzienników diagnostycznych do usługi Event Hubs lub przechowywać je na koncie magazynu.
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: a8a88a8c-4a48-4df6-8f7e-d90634d39c57
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
-ms.openlocfilehash: 5b372ae5a7ff2ad26e4bb83675f592df3f08931b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.component: ''
+ms.openlocfilehash: 6c202afaca893609d41384ee8302b0c4c6c4a6f6
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263392"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatycznie włączaj ustawień diagnostycznych na tworzenie zasobów przy użyciu szablonu usługi Resource Manager
 W tym artykule zostanie przedstawiony sposób korzystania [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) do konfigurowania ustawień diagnostycznych zasobu podczas jego tworzenia. Umożliwia to automatyczne uruchamianie przesyłanych strumieniowo z dzienników diagnostycznych i metryk do usługi Event Hubs, archiwizacji je na koncie magazynu lub wysyłania ich do analizy dzienników po utworzeniu zasobu.

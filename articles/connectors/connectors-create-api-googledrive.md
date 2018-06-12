@@ -2,7 +2,7 @@
 title: Połącz się dyskiem Google — aplikacje logiki platformy Azure | Dokumentacja firmy Microsoft
 description: Tworzenie i zarządzanie plikami z interfejsów API REST dysk Google i usługi Azure Logic Apps
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 ms.author: estfan
 ms.date: 11/07/2016
 ms.topic: article
@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 5048eee1be183ec200514050f14c07d4c9c071ba
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4994687afbdd23f0265138cd1d4eff53bb47c163
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34610144"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295887"
 ---
 # <a name="get-started-with-the-google-drive-connector"></a>Rozpoczynanie pracy z łącznikiem dysk Google
 Nawiązać dysk Google, aby utworzyć pliki, Pobierz wiersze i inne. Dysk Google można: 

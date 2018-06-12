@@ -1,6 +1,6 @@
 ---
-title: Przy użyciu bazy danych SQL Azure stosu | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można wdrożyć baz danych jako usługa na stosie Azure i Szybkie kroki wdrażania karty dostawcy zasobów programu SQL Server.
+title: Usunięcie dostawcy zasobów SQL Azure stosu | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak można usunąć z wdrożenia stosu Azure dostawcy zasobów SQL.
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,32 +11,32 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 06/11/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: c2686a2d5241af46e70263d1827028aa7e9b2138
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 9f90201cad0f74923460c2f25eff4de98dc6690a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294784"
 ---
-# <a name="remove-the-sql-resource-provider"></a>Usuń dostawcę zasobów SQL
+# <a name="removing-the-mysql-resource-provider"></a>Usunięcie dostawcy zasobów MySQL  
+Przed usunięciem dostawcy zasobów SQL, konieczne jest najpierw usunąć wszelkie zależności.
 
-Aby usunąć dostawcę zasobów SQL, konieczne jest najpierw usunąć wszelkie zależności:
+## <a name="remove-the-mysql-resource-provider"></a>Usuń dostawcę zasobów MySQL 
 
-1. Upewnij się, że masz oryginalny pakiet wdrożeniowy, który został pobrany dla tej wersji karty dostawcy zasobów SQL.
+1. Sprawdź usunięto zależności istniejącego dostawcy zasobów SQL.
 
-2. Należy usunąć wszystkie bazy danych użytkownika od dostawcy zasobów. (Usunięcie bazy danych użytkownika nie powoduje usunięcia danych.) To zadanie powinno być wykonywane przez użytkowników, samodzielnie.
+  > [!NOTE]
+  > Odinstalowywanie dostawcy zasobów SQL będzie kontynuowana nawet wtedy, gdy zasoby zależne są aktualnie używa dostawcy zasobów. 
+  
+2. Upewnij się, że masz oryginalny pakiet wdrożeniowy, który został pobrany dla tej wersji karty dostawcy zasobów SQL.
+3. Uruchom ponownie skrypt wdrażania, korzystając z następujących parametrów:
+    - Użyj odinstalować parametru
+    - Adres IP lub nazwa DNS uprzywilejowanych punktu końcowego.
+    - Poświadczenia dla administratora chmury niezbędne do uzyskiwania dostępu do uprzywilejowanych punktu końcowego.
+    - Poświadczenia dla konta administratora usługi Azure stosu. Użyj tych samych poświadczeń, używane do wdrażania usługi Azure stosu.
 
-3. Administrator musi usunąć serwerami hostingu z karty dostawcy zasobów SQL.
-
-4. Administrator, należy usunąć wszystkie plany odwołujące się do karty dostawcy zasobów SQL.
-
-5. Administrator musi usunąć wszystkie jednostki SKU i przydziałów, które są skojarzone z kartą dostawcy zasobów programu SQL.
-
-6. Uruchom ponownie skrypt wdrożenia wraz z następującymi elementami:
-    - Odinstalować parametru
-    - Punkty końcowe usługi Azure Resource Manager
-    - DirectoryTenantID
-    - Poświadczenia dla konta administratora usługi
-
+## <a name="next-steps"></a>Kolejne kroki
+[Oferta usługi aplikacji jako PaaS](azure-stack-app-service-overview.md)

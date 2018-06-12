@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: billmath
-ms.openlocfilehash: e35a33cbe77d9d29b975ede8535abbded2cde4c3
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 04fa23e059ee676ba0e7c48eeea3361b85af5415
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261208"
 ---
 # <a name="claims-mapping-in-azure-active-directory-public-preview"></a>Oświadczenia mapowanie w usłudze Azure Active Directory (publicznej wersji zapoznawczej)
 
@@ -84,8 +85,8 @@ Nie można zmodyfikować ograniczeniami oświadczeń przy użyciu zasad. Nie mo�
 |client_id|
 |cloud_graph_host_name|
 |cloud_instance_name|
-|cnf|
-|kod|
+|opcją cnf|
+|Kod|
 |funkcje sterowania|
 |credential_keys|
 |Renderowanie po stronie klienta|
@@ -95,10 +96,10 @@ Nie można zmodyfikować ograniczeniami oświadczeń przy użyciu zasad. Nie mo�
 |domain_dns_name|
 |domain_netbios_name|
 |e_exp|
-|e-mail|
+|wyślij wiadomość e-mail|
 |endpoint|
 |enfpolids|
-|exp|
+|EXP|
 |expires_on|
 |Typ grant_type|
 |wykres|
@@ -157,7 +158,7 @@ Nie można zmodyfikować ograniczeniami oświadczeń przy użyciu zasad. Nie mo�
 |zasób|
 |rola|
 |role|
-|Zakres|
+|scope|
 |scp|
 |Identyfikator SID|
 |Podpis|
@@ -282,23 +283,23 @@ Elementu ID identyfikuje, które właściwości w źródle zawiera wartość oś
 #### <a name="table-3-valid-id-values-per-source"></a>Tabela 3: Prawidłowy identyfikator wartości dla każdego źródła
 |Element źródłowy|ID|Opis|
 |-----|-----|-----|
-|Użytkownik|surname|Nazwa rodziny|
-|Użytkownik|givenname|Imię|
+|Użytkownik|nazwisko|Nazwa rodziny|
+|Użytkownik|Imię|Imię|
 |Użytkownik|Nazwa wyświetlana|Nazwa wyświetlana|
 |Użytkownik|Identyfikator obiektu|ObjectID|
-|Użytkownik|Poczty|Adres e-mail|
+|Użytkownik|poczta|Adres e-mail|
 |Użytkownik|userprincipalname|Nazwa główna użytkownika|
-|Użytkownik|Dział|Dział|
+|Użytkownik|dział|Dział|
 |Użytkownik|onpremisessamaccountname|Dla nazwy konta Sam lokalne|
 |Użytkownik|Nazwa NetBIOS|Nazwa NetBios|
 |Użytkownik|dnsdomainname|Nazwa domeny DNS|
 |Użytkownik|onpremisesecurityidentifier|Identyfikator zabezpieczeń lokalnych|
 |Użytkownik|companyname|Nazwa organizacji|
 |Użytkownik|adres|Ulica i numer|
-|Użytkownik|KodPocztowy|Kod pocztowy|
+|Użytkownik|KodPocztowy|Kod pocztowy |
 |Użytkownik|preferredlanguange|Preferowany język|
 |Użytkownik|onpremisesuserprincipalname|lokalną nazwą UPN|
-|Użytkownik|mailnickname|Pseudonim poczty|
+|Użytkownik|mailnickname|Pseudonim związany z pocztą|
 |Użytkownik|extensionattribute1|Atrybut rozszerzenia 1|
 |Użytkownik|extensionattribute2|Atrybut rozszerzenia 2|
 |Użytkownik|extensionattribute3|Atrybut rozszerzenia 3|
@@ -356,7 +357,7 @@ Oparte na wybranej metody, oczekiwano zestaw danych wejściowych i wyjściowych.
 |TransformationMethod|Oczekiwano danych wejściowych|Oczekiwane dane wyjściowe|Opis|
 |-----|-----|-----|-----|
 |Join|ciąg1, ciąg2, separatora|outputClaim|Sprzężenia Wprowadź ciągi za pomocą separatora między nimi. Na przykład: ciąg1: "foo@bar.com", ciąg2: "piaskownicy", separatora: "." powoduje outputClaim: "foo@bar.com.sandbox"|
-|ExtractMailPrefix|Poczty|outputClaim|Wyodrębnia lokalnego część adresu e-mail. Na przykład: poczty: "foo@bar.com" powoduje outputClaim: "foo". Jeśli nie @ znak jest nie istnieje, a następnie orignal ciąg wejściowy jest zwracany, ponieważ jest.|
+|ExtractMailPrefix|poczta|outputClaim|Wyodrębnia lokalnego część adresu e-mail. Na przykład: poczty: "foo@bar.com" powoduje outputClaim: "foo". Jeśli nie @ znak jest nie istnieje, a następnie orignal ciąg wejściowy jest zwracany, ponieważ jest.|
 
 **InputClaims:** Użyj elementu InputClaims, aby przekazać dane z wpisu schematu oświadczenia do przekształcenia. Zawiera dwa atrybuty: **ClaimTypeReferenceId** i **TransformationClaimType**.
 
@@ -380,7 +381,7 @@ Oparte na wybranej metody, oczekiwano zestaw danych wejściowych i wyjściowych.
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabela 5: Atrybuty dozwolone jako źródło danych dla SAML NameID
 |Element źródłowy|ID|Opis|
 |-----|-----|-----|
-|Użytkownik|Poczty|Adres e-mail|
+|Użytkownik|poczta|Adres e-mail|
 |Użytkownik|userprincipalname|Nazwa główna użytkownika|
 |Użytkownik|onpremisessamaccountname|Dla nazwy konta Sam lokalne|
 |Użytkownik|Identyfikator pracownika|Identyfikator pracownika|
@@ -403,7 +404,7 @@ Oparte na wybranej metody, oczekiwano zestaw danych wejściowych i wyjściowych.
 #### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>Tabela 6: Metody przekształcania dozwolony dla SAML NameID
 |TransformationMethod|Ograniczenia|
 | ----- | ----- |
-|ExtractMailPrefix|None|
+|ExtractMailPrefix|Brak|
 |Join|Sufiks jest dołączony musi być zweryfikowanej domeny zasobów dzierżawy.|
 
 ### <a name="custom-signing-key"></a>Niestandardowe klucza podpisywania
@@ -467,7 +468,7 @@ W tym przykładzie można utworzyć zasadę, która dodaje identyfikator pracown
     1. Aby utworzyć zasady, uruchom następujące polecenie:  
      
      ``` powershell
-    New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","JwtClaimType":"name"},{"Source":"company","ID":" tenantcountry ","SamlClaimType":" http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country ","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample” -Type "ClaimsMappingPolicy"
+    New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","JwtClaimType":"name"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
     ```
     
     2. Aby wyświetlić nowe zasady i pobrania ObjectId zasad, uruchom następujące polecenie:

@@ -3,7 +3,7 @@ title: Funkcje języka definicji przepływu pracy — usługi Azure Logic Apps |
 description: Dowiedz się więcej o funkcji tworzenia aplikacji logiki z języka definicji przepływu pracy
 services: logic-apps
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 editor: ''
 documentationcenter: ''
 ms.assetid: ''
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 04/25/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: 8240ddf8a93c6589f89f3ad680c1c99c594742c9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 6f1871e1e135ecb9e7cb37c0bedff3737d3febb7
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301392"
 ---
 # <a name="workflow-definition-language-functions-reference-for-azure-logic-apps"></a>Odwołanie do funkcji języka definicji przepływu pracy dla usługi Azure Logic Apps
 
@@ -1450,7 +1451,7 @@ equals('<object1>', '<object2>')
 
 | Parametr | Wymagane | Typ | Opis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Obiekt1*>, <*obiekt2*> | Yes | Różne | Wartości, wyrażenia lub obiektów do porównania | 
+| <*Obiekt1*>, <*obiekt2*> | Yes | różne | Wartości, wyrażenia lub obiektów do porównania | 
 ||||| 
 
 | Wartość zwracana | Typ | Opis | 
@@ -1509,7 +1510,7 @@ I zwrócone następujące wyniki:
 
 <a name="float"></a>
 
-## <a name="float"></a>Float
+## <a name="float"></a>liczba zmiennoprzecinkowa
 
 Konwertuj ciąg wersji dla liczba zmiennoprzecinkowa na rzeczywista liczba zmiennoprzecinkowa. Ta funkcja służy tylko wtedy, gdy przekazywanie niestandardowych parametrów do aplikacji, takich jak aplikacji logiki.
 
@@ -1524,7 +1525,7 @@ float('<value>')
 
 | Wartość zwracana | Typ | Opis | 
 | ------------ | ---- | ----------- | 
-| <*wartości typu float*> | Float | Liczba zmiennoprzecinkowa dla określonego ciągu | 
+| <*wartości typu float*> | Liczba zmiennoprzecinkowa | Liczba zmiennoprzecinkowa dla określonego ciągu | 
 |||| 
 
 *Przykład*
@@ -1825,7 +1826,7 @@ I zwraca wynik tego: `"(c2ecc88d-88c8-4096-912c-d6f2e2b138ce)"`
 
 <a name="if"></a>
 
-## <a name="if"></a>if
+## <a name="if"></a>Jeśli
 
 Sprawdź, czy wyrażenie jest równa true lub false. Na podstawie wyniku, zwrócić określoną wartość.
 
@@ -1967,7 +1968,7 @@ items('myForEachLoopName')
 
 <a name="json"></a>
 
-## <a name="json"></a>JSON
+## <a name="json"></a>json
 
 Zwraca wartość typu JavaScript Object Notation (JSON) lub obiekt string lub XML.
 
@@ -3109,7 +3110,7 @@ I zwrócone następujące wyniki:
 
 <a name="ticks"></a>
 
-## <a name="ticks"></a>znaczniki osi
+## <a name="ticks"></a>takty
 
 Zwraca `ticks` wartości właściwości dla określonej sygnatury czasowej. A *znaczników* interwał 100-nanosekundowych.
 

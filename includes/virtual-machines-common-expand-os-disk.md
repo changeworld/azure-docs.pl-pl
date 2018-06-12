@@ -1,3 +1,20 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: virtual-machines
+author: sdwheeler
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 04/18/2018
+ms.author: kirpas;iainfou;sewhee
+ms.custom: include file
+ms.openlocfilehash: c8b48c9b3ebd6b40640a744f00673158c07cdc3a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35323803"
+---
 ## <a name="overview"></a>Przegląd
 Podczas tworzenia nowej maszyny wirtualnej (VM) w grupie zasobów przez wdrożenie obrazu z [portalu Azure Marketplace](https://azure.microsoft.com/marketplace/), domyślnym dysku systemu operacyjnego jest często 127 GB (niektóre obrazy mają mniejsze rozmiary dysku systemu operacyjnego domyślnie). Mimo iż możliwe jest dodawanie dysków danych do maszyny wirtualnej (ich liczba zależy od wybranej jednostki magazynowej), a ponadto zaleca się instalowanie aplikacji i obciążeń intensywnie wykorzystujących procesor CPU na tych dodatkowych dyskach, klienci często muszą rozszerzać dysk systemu operacyjnego w celu obsługi niektórych scenariuszy, takich jak następujące:
 
@@ -13,7 +30,7 @@ Podczas tworzenia nowej maszyny wirtualnej (VM) w grupie zasobów przez wdrożen
 >
 
 ## <a name="resize-the-os-drive"></a>Zmiana rozmiaru dysku systemu operacyjnego
-W tym artykule opisano zadanie zmiany rozmiaru dysku systemu operacyjnego przy użyciu modułów usługi Resource Manager programu [Azure Powershell](/powershell/azureps-cmdlets-docs). Pokazano zmiana rozmiaru dysku systemu operacyjnego dla dysków zarówno Unamanged i kod zarządzany, ponieważ podejście do zmiany rozmiaru dysków różni się od obu typów dysków.
+W tym artykule opisano zadanie zmiany rozmiaru dysku systemu operacyjnego przy użyciu modułów usługi Resource Manager programu [Azure Powershell](/powershell/azureps-cmdlets-docs). Pokazano zmiana rozmiaru dysku systemu operacyjnego dla dysków zarówno niezarządzany i kod zarządzany, ponieważ podejście do zmiany rozmiaru dysków różni się od obu typów dysków.
 
 ### <a name="for-resizing-unmanaged-disks"></a>Do zmiany rozmiaru dysków niezarządzanego:
 
@@ -106,7 +123,7 @@ To wszystko! Teraz połącz protokół RDP z maszyną wirtualną, otwórz okno Z
 ## <a name="summary"></a>Podsumowanie
 W tym artykule rozszerzyliśmy dysk systemu operacyjnego maszyny wirtualnej IaaS przy użyciu modułów usługi Azure Resource Manager programu Powershell. Pełną skrypt użytkownikowi zarówno niezarządzany i kod zarządzany dysków jest przedstawiony poniżej:
 
-Dyski Unamanged:
+Niezarządzane dysków:
 
 ```Powershell
 Connect-AzureRmAccount
@@ -134,10 +151,10 @@ Update-AzureRmDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name
 Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 ```
 
-## <a name="next-steps"></a>Następne kroki
-Chociaż w tym artykule, firma Microsoft skupia się głównie na zwiększeniem rozmiaru dysku Unamanged/zarządzane systemu operacyjnego maszyny wirtualnej, rozwinięte skrypt może także służyć do rozszerzania na dyskach danych dołączonych do maszyny Wirtualnej. Aby na przykład rozszerzyć pierwszy dysk danych dołączony do maszyny wirtualnej, zamień obiekt ```OSDisk``` elementu ```StorageProfile``` na tablicę ```DataDisks``` i przy użyciu indeksu liczbowego uzyskaj odwołanie do pierwszego dołączonego dysku danych, jak pokazano poniżej:
+## <a name="for-resizing-data-disks"></a>Do zmiany rozmiaru dysków z danymi
+Chociaż w tym artykule, firma Microsoft skupia się głównie na zwiększeniem rozmiaru dysku systemu operacyjnego niezarządzany/zarządzane maszyny wirtualnej, rozwinięte skrypt może także służyć do rozszerzania na dyskach danych dołączonych do maszyny Wirtualnej. Aby na przykład rozszerzyć pierwszy dysk danych dołączony do maszyny wirtualnej, zamień obiekt ```OSDisk``` elementu ```StorageProfile``` na tablicę ```DataDisks``` i przy użyciu indeksu liczbowego uzyskaj odwołanie do pierwszego dołączonego dysku danych, jak pokazano poniżej:
 
-Dysk Unamanged:
+Niezarządzane dysku:
 ```Powershell
 $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 ```
@@ -149,11 +166,11 @@ $disk.DiskSizeGB = 1023
 
 W podobny sposób możesz odwoływać się do innych dysków danych dołączonych do maszyny wirtualnej — przy użyciu indeksu, jak pokazano powyżej, lub przy użyciu właściwości ```Name``` dysku, jak przedstawiono poniżej:
 
-Dysk Unamanged:
+Niezarządzane dysku:
 ```Powershell
 ($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'}).DiskSizeGB = 1023
 ```
-Zarządzanych dysku:
+Dysk zarządzany:
 ```Powershell
 (Get-AzureRmDisk -ResourceGroupName $rgName -DiskName ($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'})).Name).DiskSizeGB = 1023
 ```

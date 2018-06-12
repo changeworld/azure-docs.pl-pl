@@ -11,11 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 05/07/2018
-ms.openlocfilehash: bb7cc17c36809975e26c8da8beda004a0b0cfd9e
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 86af0101d84fe9cd44211a931567a85d7b5166e0
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261614"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-managed-instance-using-dms"></a>Migrowanie serwera SQL do Azure wystąpienia bazy danych SQL zarządzane przy użyciu DMS
 Usługa Azure bazy danych migracji umożliwia migrację bazy danych z lokalnego wystąpienia programu SQL Server do [wystąpienia zarządzane bazy danych SQL Azure](../sql-database/sql-database-managed-instance.md). Aby dodatkowe metody, które mogą wymagać pewnych nakładu pracy, zobacz artykuł [migracji wystąpienie programu SQL Server do wystąpienia zarządzane bazy danych SQL Azure](../sql-database/sql-database-managed-instance-migrate.md).
@@ -118,7 +119,7 @@ Po utworzeniu usługi znalezienie go w portalu Azure, otwórz go, a następnie u
     Zaufanego certyfikatu nie jest zainstalowany, programu SQL Server generuje certyfikat z podpisem własnym, po uruchomieniu tego wystąpienia. Ten certyfikat służy do szyfrowania poświadczeń dla połączeń klienta.
 
     > [!CAUTION]
-    > Połączeń SSL, które są encyopted przy użyciu certyfikatu z podpisem własnym nie zapewnia dużego bezpieczeństwa. Są one narażony na ataki man-in--middle. Nie należy polegać na protokołu SSL przy użyciu certyfikatów z podpisem własnym w środowisku produkcyjnym lub na serwerach, które są połączone z Internetem.
+    > Połączeń SSL, które są szyfrowane za pomocą certyfikatu z podpisem własnym nie zapewnia dużego bezpieczeństwa. Są one narażony na ataki man-in--middle. Nie należy polegać na protokołu SSL przy użyciu certyfikatów z podpisem własnym w środowisku produkcyjnym lub na serwerach, które są połączone z Internetem.
 
    ![Szczegóły źródła](media\tutorial-sql-server-to-managed-instance\dms-source-details1.png)
 
@@ -150,7 +151,7 @@ Po utworzeniu usługi znalezienie go w portalu Azure, otwórz go, a następnie u
 
 1.  Wybierz ostatnio zapisany projekt, wybierz pozycję + **nowe działanie**, a następnie wybierz **uruchamiania migracji**.
 
-    ![Utwórz nowe działanie](media\tutorial-sql-server-to-managed-instance\dms-create-new-activity1.png)
+    ![Tworzenie nowego działania](media\tutorial-sql-server-to-managed-instance\dms-create-new-activity1.png)
 
 2.  Po wyświetleniu monitu wprowadź poświadczenia z serwerem źródłowym a docelowym, a następnie wybierz **zapisać**.
 

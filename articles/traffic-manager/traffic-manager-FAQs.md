@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: kumud
-ms.openlocfilehash: 718a7eb1e6457c669456d88e5c6e80157b28066c
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 29c7994485eeb2b3fdde52d1794704ecb51d65e5
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301069"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Często zadawane pytania (FAQ) Menedżera ruchu
 
@@ -85,10 +86,18 @@ Jeśli zapytanie DNS wyładowuje w usłudze Traffic Manager, ustawia wartość w
 
 Można ustawić na na poziomie profilu, czas wygaśnięcia DNS być możliwie jak 0 sekund i wysokości 2 147 483 647 sekund (zgodne z maksymalną wielkość zakresu [ze standardem RFC 1035](https://www.ietf.org/rfc/rfc1035.txt )). TTL 0 oznacza, że podrzędne rozpoznawania nazw DNS nie buforowanie odpowiedzi na kwerendy, wszystkie zapytania mogą uzyskać dostęp do usługi Traffic Manager w systemie DNS i serwerów rozpoznawania.
 
+### <a name="how-can-i-understand-the-volume-of-queries-coming-to-my-profile"></a>Jak można zrozumieć woluminu zapytań dostępne w moim profilu? 
+Jeden metryki udostępniane przez Menedżera ruchu jest liczba zapytania odpowiedzi przez profil. Te informacje można uzyskać na poziomie agregacji profilu lub można podzielić go po Zobacz wolumin kwerendy, gdzie zostały zwrócone określonych punktów końcowych. Ponadto należy skonfigurować alerty powiadamiające o Jeśli wolumin odpowiedzi zapytania przecina warunki się, że zostało ustawione. Aby uzyskać więcej informacji [metryki usługi Traffic Manager oraz alertów](traffic-manager-metrics-alerts.md).
+
 ## <a name="traffic-manager-geographic-traffic-routing-method"></a>Metody routingu ruchu Geographic Menedżera ruchu
 
 ### <a name="what-are-some-use-cases-where-geographic-routing-is-useful"></a>Co to są niektórych przypadków użycia, w którym geograficzne routing jest przydatne? 
 Geograficzne typ routingu może służyć w jakimkolwiek scenariuszu których Azure klienta wymaga rozróżnienia użytkowników oparte na regionów geograficznych. Na przykład przy użyciu metody routingu ruchu geograficznych, użytkownicy mogli z określonych regionów różnych użytkowników z innych regionów niż. Innym przykładem jest zgodne z oczekuje suwerenności danych lokalnych, wymagających, że użytkownicy z określonego regionu obsługiwane tylko przez punkty końcowe w tym regionie.
+
+### <a name="how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method"></a>Jak zdecydować, czy należy użyć metody routingu wydajności lub geograficzne routingu? 
+Najważniejsza różnica między tych dwóch popularnych metod routingu jest to, że wydajność metody poznasz podstawowy ma przesyłać dane do punktu końcowego, która może zapewnić najniższym opóźnieniu do obiektu wywołującego w Geographic routingu podstawowym celem jest wymuszenie geograficznie routingu ogrodzenia dla Twojego wywoływania, dzięki czemu można zdecydowanie kierować do określonego punktu końcowego. Nakładanie się odbywa się ponieważ korelacja bliskość geograficzne i mniejsze opóźnienia, chociaż nie zawsze jest wartość true. W takim przypadku wydajności routingu wyśle użytkownika do określonego punktu końcowego i w innej lokalizacji geograficznej, która może zapewnić lepsze środowisko opóźnienie dla obiekt wywołujący może być punkt końcowy, ale geograficzne routingu zawsze będzie wysyłać je do punktu końcowego, które mają być mapowane do ich region geograficzny. Umożliwia dalsze Wyczyść, rozważmy następujący przykład - Geographic routingu, możesz wprowadzić rzadko mapowania, takich jak Wyślij cały ruch z Azja do punktów końcowych w Stanach Zjednoczonych i cały ruch Stanów Zjednoczonych do punktów końcowych w Azji. W takim przypadku routingu geograficzne będzie celowo nie dokładnie co skonfigurowano wykonania i optymalizacji wydajności nie jest brany pod uwagę. 
+>[!NOTE]
+>Może to być scenariuszy, w których może być konieczne zarówno wydajności geograficzne funkcji routingu zagnieżdżonych profilów te scenariusze mogą być doskonałym wyborem. Na przykład można skonfigurować profil nadrzędnej geograficzny routingu, gdzie Wyślij cały ruch z Ameryki Północnej zagnieżdżonych profilu, który ma punkty końcowe w Stanach Zjednoczonych i korzystać z routingu do tych przesyłają dane do punktu końcowego najlepsze w tym zestawie. 
 
 ### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>Co to są regionów, które są obsługiwane przez usługę Traffic Manager geograficzne routingu? 
 Hierarchii kraj/region, jaka jest używana przez usługę Traffic Manager można znaleźć [tutaj](traffic-manager-geographic-regions.md). Gdy ta strona jest aktualizowany o zmianach, można również programowane pobieranie tych samych informacji za pomocą [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/). 
@@ -330,6 +339,9 @@ Kliknij przycisk [tutaj](https://azuretrafficmanagerdata.blob.core.windows.net/p
 Liczba kondycji usługi Traffic Manager sprawdza, czy osiągnięciu punktu końcowego zależy od następujących czynników:
 - wartość ustawioną dla interwał monitorowania (mniejszego oznacza więcej żądań kierowanych na punkt końcowy w dowolnym okresie w danym momencie).
 - Liczba lokalizacji, z którego kontroli kondycji pochodzą (adresy IP, z których można oczekiwać, że kontrole jest wymieniony w poprzednim — często zadawane pytania).
+
+### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>Jak można otrzymywać powiadomienia, jeśli jeden z mojej punktów końcowych ulegnie awarii? 
+Jednym z metryki udostępnianych przez Menedżera ruchu jest stan kondycji punktów końcowych w profilu. Zobacz ten jako wartość zagregowana wszystkie punkty końcowe w ramach profilu (na przykład 75% punktów końcowych są w dobrej kondycji), lub na na poziomie punktu końcowego. Metryki usługi Traffic Manager są dostępne za pośrednictwem Monitora Azure i można jej [alerty możliwości](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) Aby otrzymywać powiadomienia, gdy nastąpiła zmiana stanu kondycji punktu końcowego. Aby uzyskać więcej informacji, zobacz [metryki usługi Traffic Manager oraz alertów](traffic-manager-metrics-alerts.md).  
 
 ## <a name="traffic-manager-nested-profiles"></a>Profile zagnieżdżone Menedżera ruchu
 

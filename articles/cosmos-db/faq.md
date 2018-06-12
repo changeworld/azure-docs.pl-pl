@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: e20e360fc1bfb839476a1f4dccf6acf0f25174d2
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: ed69d4de56d23210cc9133d74ab81530f924b5ae
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34735168"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261563"
 ---
 # <a name="azure-cosmos-db-faq"></a>Często zadawane pytania dotyczące usługi Azure rozwiązania Cosmos bazy danych
 ## <a name="azure-cosmos-db-fundamentals"></a>Podstawowe informacje na temat usługi Azure DB rozwiązania Cosmos
@@ -159,8 +159,9 @@ Aby użyć optymistycznej współbieżności w programie .NET, użyj [AccessCond
 Interfejs API SQL obsługuje transakcje zintegrowane z językiem za pomocą procedur składowanych JavaScript i wyzwalaczy. Wszystkie operacje bazy danych wewnątrz skryptów są wykonywane w ramach izolacji migawki. Jeśli jest to kolekcja jednej partycji, obejmuje wykonanie do kolekcji. Jeśli kolekcja jest podzielona na partycje, wykonanie obejmuje dokumentów z taką samą wartość klucza partycji w kolekcji. Migawka wersji dokumentów (elementy ETag) jest wykonywana na początku transakcji i zatwierdzana tylko wtedy, gdy działanie skryptu zakończy się pomyślnie. Jeśli kod JavaScript zwraca błąd, transakcja zostaje wycofana. Aby uzyskać więcej informacji, zobacz [programowania w języku JavaScript po stronie serwera dla bazy danych Azure rozwiązania Cosmos](programming.md).
 
 ### <a name="how-can-i-bulk-insert-documents-into-cosmos-db"></a>Jak można I wstawiania zbiorczego dokumenty w bazie danych rozwiązania Cosmos?
-Użytkownik może wstawiania zbiorczego dokumentów do bazy danych Azure rozwiązania Cosmos w jeden z dwóch sposobów:
+Użytkownik może wstawiania zbiorczego dokumentów do bazy danych Azure rozwiązania Cosmos w jednym z następujących sposobów:
 
+* Narzędzie Moduł wykonujący zbiorczego, zgodnie z opisem w [biblioteki .NET Moduł wykonujący zbiorczego Using](bulk-executor-dot-net.md) i [biblioteka języka Java Moduł wykonujący zbiorczego Using](bulk-executor-java.md)
 * Narzędzie migracji danych, zgodnie z opisem w [narzędzie migracji bazy danych dla bazy danych Azure rozwiązania Cosmos](import-data.md).
 * Procedury składowane, zgodnie z opisem w [programowania w języku JavaScript po stronie serwera dla bazy danych Azure rozwiązania Cosmos](programming.md).
 

@@ -1,22 +1,19 @@
 ---
-title: Odbierzesz alerty dziennika działania dotyczące powiadomień dotyczących usługi Azure | Dokumentacja firmy Microsoft
+title: Odbierzesz alerty dziennika działania dotyczące powiadomień dotyczących usługi Azure
 description: Otrzymuj powiadomienia za pomocą programu SMS, wiadomości e-mail lub elementu webhook w przypadku wystąpienia usługi Azure.
 author: johnkemnetz
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/27/2018
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
+ms.date: 06/09/2018
 ms.author: johnkem
-ms.openlocfilehash: b4c4fdeb825bbcab54f074c5224140282a24d196
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.component: alerts
+ms.openlocfilehash: 01dc3a3c6489b694af26c78ae3b4756f3e8f00b7
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263120"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Utwórz działanie alertów dziennika na powiadomień usługi
 ## <a name="overview"></a>Przegląd
@@ -51,17 +48,22 @@ Aby uzyskać informacje na temat konfigurowania alertów powiadomień kondycji u
 
     ![Polecenie "Utwórz usługi kondycji alert"](./media/monitoring-activity-log-alerts-on-service-notifications/service-health-alert.png)
 
-4. Wprowadź nazwę w **nazwa alertu dziennika aktywności** polu i podaj **opis**.
+4. Wybierz **subskrypcji**, **usług**, i **regionów** chcesz otrzymywać alerty dla.
 
-    ![Okno dialogowe "Dodaj alert dziennika aktywności"](./media/monitoring-activity-log-alerts-on-service-notifications/activity-log-alert-service-notification-new-action-group-sh.png)
+    ![Okno dialogowe "Dodaj alert dziennika aktywności"](./media/monitoring-activity-log-alerts-on-service-notifications/activity-log-alert-new-ux.png)
 
-5. **Subskrypcji** polu autofills z Twojej bieżącej subskrypcji. Ta subskrypcja służy do zapisania alert dziennika aktywności. Zasób alertu jest wdrażana dla tej subskrypcji i monitorować zdarzenia w dzienniku aktywności.
+> [!NOTE]
+> Ta subskrypcja służy do zapisania alert dziennika aktywności. Zasób alertu jest wdrażana dla tej subskrypcji i monitorować zdarzenia w dzienniku aktywności.
 
-6. Wybierz **grupy zasobów** w jest tworzony zasób alertu. Nie jest to grupa zasobów, który jest monitorowany przez alert. Zamiast tego jest grupy zasobów, w którym znajduje się zasób alertu.
+5. Wybierz **typów zdarzeń** chcesz otrzymywać alerty dla: *usługi problem*, *zaplanowanej konserwacji*, i *klasyfikatory kondycji* 
 
-7. **Kategorii zdarzeń** pole jest automatycznie ustawiana **kondycja usługi**. Opcjonalnie wybierz **usługi**, **Region**, i **typu** z powiadomień o kondycji usługi, które chcesz otrzymywać.
+6. Zdefiniuj szczegóły alertu, wprowadzając **Nazwa reguły alertów** i **opis**.
 
-8. W obszarze **alertów za pośrednictwem**, wybierz pozycję **nowy** przycisku grupy akcji. Wprowadź nazwę w **nazwy grupy akcji** i wpisz nazwę w **krótką nazwę** pole. Krótka nazwa odwołuje się do powiadomień wysyłanych po zgłoszeniu tego alertu.
+7. Wybierz **grupy zasobów** miejscu alert do zapisania.
+
+8. Utwórz nową grupę akcji, wybierając **nową grupę akcji**. Wprowadź nazwę w **nazwy grupy akcji** i wpisz nazwę w **krótką nazwę** pole. Krótka nazwa odwołuje się do powiadomień wysyłanych po zgłoszeniu tego alertu.
+
+    ![Utwórz nową grupę akcji](./media/monitoring-activity-log-alerts-on-service-notifications/action-group-creation.png)
 
 9. Zdefiniować listę odbiornikami, zapewniając odbiorcy:
 
@@ -71,7 +73,7 @@ Aby uzyskać informacje na temat konfigurowania alertów powiadomień kondycji u
 
     c. **Szczegóły**: oparte na wybrany typ akcji, wprowadź numer telefonu, adres e-mail, identyfikator URI elementu webhook,... itd.
 
-10. Wybierz **OK** można utworzyć alertu.
+10. Wybierz **OK** Aby utworzyć grupę akcji, a następnie **Utwórz regułę alertu** przeprowadzenie alertu.
 
 W ciągu kilku minut alert jest aktywny i rozpoczyna się do wyzwalania na podstawie wybranych warunków, które zostały określone podczas tworzenia.
 
@@ -86,9 +88,9 @@ Dowiedz się, jak [skonfigurować powiadomienia elementu webhook dla istniejący
 
 1. Wykonaj kroki od 1 do 7 w poprzedniej sekcji, aby utworzyć powiadomienia usługi kondycji. 
 
-2. W obszarze **alertów za pośrednictwem**, wybierz pozycję **istniejące** przycisku grupy akcji. Wybierz grupę odpowiednią akcję.
+2. W obszarze **grupy akcji Definiuj**, kliknij przycisk **grupy wybrana akcja** przycisku. Wybierz grupę odpowiednią akcję.
 
-3. Wybierz **OK** można utworzyć alertu.
+3. Wybierz **Dodaj** można dodać grupy akcji, a następnie **Utwórz regułę alertu** przeprowadzenie alertu.
 
 W ciągu kilku minut alert jest aktywny i rozpoczyna się do wyzwalania na podstawie wybranych warunków, które zostały określone podczas tworzenia.
 

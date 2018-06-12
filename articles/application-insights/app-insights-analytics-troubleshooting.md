@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: 3ef9150cad62e9f9fc43f7afcbbbc01d89884a12
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: c479298187cfc4af6d9b33d9bd3839e8fa579566
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294163"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Rozwiązywanie problemów z analizą w usłudze Application Insights
 Problemy z [Application Insights Analytics](app-insights-analytics.md)? Zacznij tutaj. Analytics to narzędzie wyszukiwania zaawansowanego w Azure Application Insights.
@@ -31,7 +32,7 @@ Problemy z [Application Insights Analytics](app-insights-analytics.md)? Zacznij 
 
 Wyłączyć rozszerzenie, lub użyj innej przeglądarki.
 
-## <a name="e-a"></a>"Nieoczekiwany błąd"
+## <a name="e-a"></a> "Nieoczekiwany błąd"
 ![Wystąpił nieoczekiwany błąd ekranu](./media/app-insights-analytics-troubleshooting/010.png)
 
 Wystąpił błąd wewnętrzny podczas wykonywania portalu — nieobsługiwany wyjątek.

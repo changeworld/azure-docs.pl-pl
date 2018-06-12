@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4009a35226473cd3ecc68929e53d70f7fb749156
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 973b11cd7bcb46bfb113998ff4a4e0b9c6317042
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593439"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261767"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Synchronizacja programu Azure AD Connect: atrybuty synchronizowane z usługą Azure Active Directory
 Ten temat zawiera listę atrybutów, które są synchronizowane przez synchronizacja programu Azure AD Connect.  
@@ -42,7 +42,7 @@ W takim przypadku zaczynać się na liście atrybutów w tym temacie i zidentyfi
 | --- |:---:| --- |
 | accountEnabled |X |Określa, czy konto jest włączone. |
 | cn |X | |
-| displayName |X | |
+| Nazwa wyświetlana |X | |
 | objectSID |X |tych właściwości. Identyfikator użytkownika AD służy do utrzymywania synchronizacji między Azure AD i usługi AD. |
 | pwdLastSet |X |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używane przez funkcje synchronizacji skrótów haseł, uwierzytelnianie i federacji. |
 | sourceAnchor |X |tych właściwości. Niezmienne identyfikator, aby utrzymać relację między DODAJE i Azure AD. |
@@ -63,7 +63,7 @@ W takim przypadku zaczynać się na liście atrybutów w tym temacie i zidentyfi
 | countryCode |X |X | | |
 | dział |X |X | | |
 | description |X |X |X | |
-| displayName |X |X |X | |
+| Nazwa wyświetlana |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
 | extensionAttribute1 |X |X |X | |
@@ -185,7 +185,7 @@ W takim przypadku zaczynać się na liście atrybutów w tym temacie i zidentyfi
 | countryCode |X |X | | |
 | dział |X |X | | |
 | description |X |X |X | |
-| displayName |X |X |X | |
+| Nazwa wyświetlana |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
 | extensionAttribute1 |X |X |X | |
@@ -419,6 +419,7 @@ Te atrybuty **użytkownika** są oprócz wybrano inne aplikacje.
 | --- |:---:| --- |
 | domainFQDN |X |Skrót NazwaDomenyDNS. Na przykład contoso.com. |
 | domainNetBios |X |Skrót netBiosName. Na przykład CONTOSO. |
+| msDS-KeyCredentialLink |X |Gdy użytkownik jest zarejestrowany w systemie Windows Hello dla firm. | 
 
 ## <a name="exchange-hybrid-writeback"></a>Zapisywanie zwrotne hybrydowego programu Exchange
 Te atrybuty są zapisywane z usługi Azure AD do lokalnej usługi Active Directory po wybraniu umożliwiające **hybrydowym programu Exchange**. W zależności od używanej wersji programu Exchange mogą być synchronizowani mniej atrybutów.

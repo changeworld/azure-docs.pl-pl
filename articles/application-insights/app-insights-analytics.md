@@ -1,8 +1,8 @@
 ---
-title: "Analityka — narzędzie zapytania z usługi Azure Application Insights i zaawansowane wyszukiwanie | Dokumentacja firmy Microsoft"
-description: "Przegląd analizowanie narzędziu zaawansowane wyszukiwanie diagnostycznych z usługi Application Insights. "
+title: Analityka — narzędzie zapytania z usługi Azure Application Insights i zaawansowane wyszukiwanie | Dokumentacja firmy Microsoft
+description: 'Przegląd analizowanie narzędziu zaawansowane wyszukiwanie diagnostycznych z usługi Application Insights. '
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 0a2f6011-5bcf-47b7-8450-40f284274b24
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5f324051a2eeedd35a22f77c771793af9c90c434
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 170cd76c72e8aeb5de48c711ae4637a0244742fb
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294204"
 ---
 # <a name="analytics-in-application-insights"></a>Analityka w usłudze Application Insights
 Analiza jest zaawansowanym narzędziem wyszukiwania i zapytania, z [usługi Application Insights](app-insights-overview.md). Analytics to narzędzie sieci web, konfiguracja nie jest wymagana. Jeśli już skonfigurowano usługi Application Insights dla jednej z aplikacji, można analizować dane aplikacji, otwierając Analytics z aplikacji [bloku omówienie](app-insights-dashboards.md).

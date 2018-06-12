@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/17/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 1800db8cd25aa37bffb76adf00901e11c75d49fe
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 61c893848176a89b4b6ed8d7a46f27bdeff5cec1
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604084"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294495"
 ---
 # <a name="check-your-templates-for-azure-stack-with-the-template-validation-tool"></a>Wyszukaj szablony stosu Azure za pomocą narzędzia sprawdzania poprawności szablonu
 
@@ -32,8 +32,8 @@ Można użyć narzędzia sprawdzania poprawności szablonu, aby sprawdzić, czy 
 
 Można zweryfikować szablonu, trzeba kompilacji chmurę możliwości pierwszy plik, a następnie uruchom narzędzie sprawdzania poprawności. Można używać następujących modułów programu PowerShell z narzędzia Azure stosu:
 
-- W **TemplateValidator** folderu:<br>         AzureRM.CloudCapabilities.psm1 tworzy plik JSON możliwości chmury reprezentujący usług i wersji w chmurze Azure stosu.
-- W **CloudCapabilities** folderu:<br>
+- W **CloudCapabilities** folderu:<br>         AzureRM.CloudCapabilities.psm1 tworzy plik JSON możliwości chmury reprezentujący usług i wersji w chmurze Azure stosu.
+- W **TemplateValidator** folderu:<br>
 AzureRM.TemplateValidator.psm1 używa pliku JSON możliwości chmury do testowania szablonów dla wdrożenia w stosie Azure.
 
 ## <a name="build-the-cloud-capabilities-file"></a>Kompiluj plik możliwości w chmurze

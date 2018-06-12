@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: af5cfc2f598893328bc8d4acc979f6d777114f99
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d7b92359e8875c281fd460f1f5307a7941c11c1f
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628797"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261580"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie z systemem zestaw deweloperski IoT MXChip do aplikacji Azure IoT centralnej
 
@@ -28,7 +28,9 @@ Do wykonania kroków opisanych w tym artykule potrzebne są:
 
 Aplikacji utworzone na podstawie **Devkits próbki** szablon aplikacji obejmuje **MXChip** szablonu urządzenia o następującej charakterystyce:
 
-### <a name="telemetry-measurements"></a>Pomiary telemetrii
+### <a name="measurements"></a>Miary
+
+#### <a name="telemetry"></a>Telemetria 
 
 | Nazwa pola     | Jednostki  | Minimalne | Maksimum | Miejsca dziesiętne |
 | -------------- | ------ | ------- | ------- | -------------- |
@@ -44,6 +46,20 @@ Aplikacji utworzone na podstawie **Devkits próbki** szablon aplikacji obejmuje 
 | gyroscopeX     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeY     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
+
+#### <a name="states"></a>Stany 
+
+| Name (Nazwa)          | Nazwa wyświetlana   | NORMALNY | UWAGA | ZAGROŻENIA | 
+| ------------- | -------------- | ------ | ------- | ------ | 
+| DeviceState   | Stan urządzenia   | Zielony  | Orange  | Czerwony    | 
+
+#### <a name="events"></a>Zdarzenia 
+
+| Name (Nazwa)             | Nazwa wyświetlana      | 
+| ---------------- | ----------------- | 
+| ButtonBPressed   | Naciśnięty przycisk B  | 
+
+
 
 ### <a name="settings"></a>Ustawienia
 
@@ -68,17 +84,6 @@ Ustawienia przełącznika
 | Właściwości urządzenia | Die numer   | dieNumber  | numer    |
 | Tekst            | Lokalizacja     | location   | ND       |
 
-### <a name="states"></a>Stany 
-
-| Name (Nazwa)          | Nazwa wyświetlana   | NORMALNY | UWAGA | ZAGROŻENIA | 
-| ------------- | -------------- | ------ | ------- | ------ | 
-| DeviceState   | Stan urządzenia   | Zielony  | Orange  | Czerwony    | 
-
-### <a name="events"></a>Zdarzenia 
-
-| Name (Nazwa)             | Nazwa wyświetlana      | 
-| ---------------- | ----------------- | 
-| ButtonBPressed   | Naciśnięty przycisk B  | 
 
 ### <a name="add-a-real-device"></a>Dodawanie rzeczywistego urządzenia
 

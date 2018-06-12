@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/07/2018
 ms.author: asmalser
-ms.openlocfilehash: 6189038a338a9151b23dbdad11d86e43709a96a0
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: fce7ea66f5e10aae4f1a0a3f0ed92ca57e6112c7
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35247948"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293300"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatyzowanie użytkownika alokowania i anulowania alokowania do aplikacji SaaS w usłudze Azure Active Directory
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Co to jest automatyczne Inicjowanie obsługi użytkowników dla aplikacji SaaS?
@@ -71,7 +71,7 @@ Funkcje platformy Azure AD wstępnie zintegrowane pomocy technicznej w różnych
 
 Aby uzyskać listę wszystkich aplikacji, dla których usługi Azure AD obsługuje wstępnie zintegrowanych łączników inicjowania obsługi administracyjnej, zobacz [lista samouczków aplikacji do inicjowania obsługi użytkowników](active-directory-saas-tutorial-list.md).
 
-Aby uzyskać informacje dotyczące dodawania obsługi usługi Azure AD do aplikacji Inicjowanie obsługi użytkowników, zobacz [przy użyciu SCIM do automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji](active-directory-scim-provisioning.md).
+Aby uzyskać informacje dotyczące dodawania obsługi usługi Azure AD do aplikacji Inicjowanie obsługi użytkowników, zobacz [przy użyciu SCIM do automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji](manage-apps/use-scim-to-provision-users-and-groups.md).
 
 Skontaktuj się z usługą Azure AD engineering team do żądania obsługi inicjowania obsługi administracyjnej dodatkowych aplikacji, przesłać wiadomość za pośrednictwem [forum opinii w usłudze Azure Active Directory](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035).    
 
@@ -106,7 +106,7 @@ Na ekranie aplikacji zarządzania inicjowania obsługi administracyjnej jest sko
 
     * **Filtr w wartości atrybutu** -menu "Zakres obiektu źródłowego" w mapowaniu atrybutu umożliwia filtrowanie na określone wartości danego atrybutu. Na przykład można określić, że tylko użytkownicy z atrybutem "Dział", "Sprzedaży" musi należeć do zakresu do inicjowania obsługi. Aby uzyskać więcej informacji, zobacz [za pomocą filtrów zakresu](active-directory-saas-scoping-filters.md).
 
-    * **Filtr przydziałów** — w obsługi menu 'Scope' > sekcji Ustawienia portalu umożliwia określenie, czy tylko "przypisanych" użytkowników i grup powinny być w zakresie udostępniania lub jeśli wszyscy użytkownicy w katalogu usługi Azure AD powinna być Zainicjowano obsługę administracyjną. Aby uzyskać informacje na "przypisywanie" użytkowników i grup, zobacz [przypisać użytkownika lub grupy do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md).
+    * **Filtr przydziałów** — w obsługi menu 'Scope' > sekcji Ustawienia portalu umożliwia określenie, czy tylko "przypisanych" użytkowników i grup powinny być w zakresie udostępniania lub jeśli wszyscy użytkownicy w katalogu usługi Azure AD powinna być Zainicjowano obsługę administracyjną. Aby uzyskać informacje na "przypisywanie" użytkowników i grup, zobacz [przypisać użytkownika lub grupy do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md).
     
 * **Ustawienia** sterowania działaniem usługi inicjowania obsługi administracyjnej dla aplikacji, w tym, czy jest obecnie uruchomiona lub nie.
 
@@ -126,7 +126,7 @@ W przypadku usługi Azure AD jest systemem źródłowym, inicjowania obsługi us
 Podczas inicjowania obsługi administracyjnej usługa jest uruchomiona, pierwsza synchronizacja nigdy wykonywane następujące czynności:
 
 1. Zapytanie wszyscy użytkownicy i grupy z systemu źródłowego pobierania wszystkie atrybuty zdefiniowane w [mapowania atrybutów](active-directory-saas-customizing-attribute-mappings.md).
-2. Filtrowanie użytkowników i grup zwrócone, przy użyciu dowolnego skonfigurowane [przypisania](active-directory-coreapps-assign-user-azure-portal.md) lub [opartych na atrybutach filtrami zakresów](active-directory-saas-scoping-filters.md).
+2. Filtrowanie użytkowników i grup zwrócone, przy użyciu dowolnego skonfigurowane [przypisania](manage-apps/assign-user-or-group-access-portal.md) lub [opartych na atrybutach filtrami zakresów](active-directory-saas-scoping-filters.md).
 3. Jeśli użytkownik zostanie znaleziony do przypisania lub w zakresie udostępniania, usługa wysyła kwerendę do systemu docelowego zgodnego użytkownika przy użyciu wyznaczone [dopasowania atrybutów](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-properties). Przykład: Jeśli nazwa userPrincipal w systemie źródłowym jest atrybut zgodnego i mapowany na nazwę użytkownika w systemie docelowym, a następnie inicjowania obsługi usługi kwerendy system docelowy nazw użytkowników, która pasuje do wartości nazwy userPrincipal w systemie źródłowym.
 4. Jeśli nie odnaleziono zgodnego użytkownika w systemie docelowym, zostanie utworzony przy użyciu atrybutów zwrócony z systemu źródłowego.
 5. Jeśli pasujący użytkownik zostanie znaleziony, jest aktualizowany przy użyciu atrybutów obsługiwanych przez system źródła.
@@ -139,7 +139,7 @@ Niektóre aplikacje, takie jak usługi ServiceNow, Google Apps lub okno obsługi
 Po początkowej synchronizacji wszystkie kolejne synchronizacje będą:
 
 1. Zapytanie systemie źródłowym żadnych użytkowników i grup, które zostały zaktualizowane od czasu ostatniego znaku wodnego była przechowywana.
-2. Filtrowanie użytkowników i grup zwrócone, przy użyciu dowolnego skonfigurowane [przypisania](active-directory-coreapps-assign-user-azure-portal.md) lub [opartych na atrybutach filtrami zakresów](active-directory-saas-scoping-filters.md).
+2. Filtrowanie użytkowników i grup zwrócone, przy użyciu dowolnego skonfigurowane [przypisania](manage-apps/assign-user-or-group-access-portal.md) lub [opartych na atrybutach filtrami zakresów](active-directory-saas-scoping-filters.md).
 3. Jeśli użytkownik zostanie znaleziony do przypisania lub w zakresie udostępniania, usługa wysyła kwerendę do systemu docelowego zgodnego użytkownika przy użyciu wyznaczone [dopasowania atrybutów](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-properties).
 4. Jeśli nie odnaleziono zgodnego użytkownika w systemie docelowym, zostanie utworzony przy użyciu atrybutów zwrócony z systemu źródłowego.
 5. Jeśli pasujący użytkownik zostanie znaleziony, jest aktualizowany przy użyciu atrybutów obsługiwanych przez system źródła.
@@ -242,7 +242,7 @@ Skontaktuj się z nami za pośrednictwem [forum opinii w usłudze Azure Active D
 * [Dostosowywanie mapowań atrybutów do inicjowania obsługi użytkowników](active-directory-saas-customizing-attribute-mappings.md)
 * [Tworzenie wyrażeń na potrzeby mapowań atrybutów](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Filtry zakresu dla Inicjowanie obsługi użytkowników](active-directory-saas-scoping-filters.md)
-* [Włączanie automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji przy użyciu SCIM](active-directory-scim-provisioning.md)
+* [Włączanie automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji przy użyciu SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Omówienie synchronizacji interfejsu API usługi Azure AD](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
 * [Plan wdrożenia krok po kroku dla aplikacji Inicjowanie obsługi użytkowników ruchu wychodzącego](https://aka.ms/userprovisioningdeploymentplan)
 

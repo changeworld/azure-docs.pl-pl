@@ -1,8 +1,8 @@
 ---
-title: "Przechowywanie danych i magazynu w usłudze Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Deklaracja zasad przechowywania i ochrona prywatności"
+title: Przechowywanie danych i magazynu w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
+description: Deklaracja zasad przechowywania i ochrona prywatności
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: a6268811-c8df-42b5-8b1b-1d5a7e94cbca
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: mbullwin
-ms.openlocfilehash: 1818e564acb0e9b5fa620d6f38db141811ca9777
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 0ee712b24478b52dfc5864e59e885e3b9dd6137b
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294070"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Zbieranie, przechowywanie i magazynowanie danych w usłudze Application Insights
 
@@ -163,9 +164,9 @@ Zestawy SDK różnią się między platformami i jest wiele składników, które
 | [Dodaj zestaw SDK usługi Application Insights do aplikacji sieci web Java][java] |Kontekstu serwera<br/>Wywnioskowane<br/>Żądanie<br/>Sesja<br/>użytkownicy |
 | [Dodaj zestaw SDK JavaScript do strony sieci web][client] |ClientContext <br/>Wywnioskowane<br/>Strona<br/>ClientPerf<br/>Ajax |
 | [Definiowanie właściwości domyślne][apiproperties] |**Właściwości** na wszystkie standardowe i niestandardowe zdarzenia |
-| [Wywołanie TrackMetric][api] |Wartości numeryczne<br/>**Właściwości** |
-| [Wywołanie Śledź *][api] |Nazwa zdarzenia<br/>**Właściwości** |
-| [Wywołanie TrackException][api] |**Wyjątki**<br/>Zrzut stosu<br/>**Właściwości** |
+| [Wywołanie TrackMetric][api] |Wartości numeryczne<br/>**właściwości** |
+| [Wywołanie Śledź *][api] |Nazwa zdarzenia<br/>**właściwości** |
+| [Wywołanie TrackException][api] |**Wyjątki**<br/>Zrzut stosu<br/>**właściwości** |
 | Zestaw SDK nie można zebrać danych. Na przykład: <br/> -Nie można uzyskać dostępu do liczników wydajności<br/> -wyjątku w inicjatorze telemetrii |Diagnostyka zestawu SDK |
 
 Aby uzyskać [zestawy SDK dla innych platform][platforms], zobacz swoje dokumenty.
@@ -173,7 +174,7 @@ Aby uzyskać [zestawy SDK dla innych platform][platforms], zobacz swoje dokument
 #### <a name="the-classes-of-collected-data"></a>Klasy zebranych danych
 | Klasa zebranych danych | Obejmuje (nie stanowi wyczerpującej listy) |
 | --- | --- |
-| **Właściwości** |**Wszystkie dane - ustaleniami kodu** |
+| **właściwości** |**Wszystkie dane - ustaleniami kodu** |
 | DeviceContext |Identyfikator, adresu IP, ustawienia regionalne, model urządzenia, sieci, typ sieci, nazwa producenta OEM, rozdzielczość ekranu wystąpienia roli, nazwa roli, typu urządzenia |
 | ClientContext |System operacyjny, ustawienia regionalne, języka, sieci, rozdzielczość okna |
 | Sesja |Identyfikator sesji |
@@ -187,7 +188,7 @@ Aby uzyskać [zestawy SDK dla innych platform][platforms], zobacz swoje dokument
 | Żądania |Adres URL, czas trwania, kod odpowiedzi |
 | Zależności |Typ (SQL, HTTP,...), parametry połączenia lub identyfikator URI, synchronizacji/asynchroniczne, czas trwania, Powodzenie, instrukcji SQL (za pomocą Monitora stanu) |
 | **Wyjątki** |Typ, **komunikat**, stosy wywołań, plików i wierszy number, identyfikator wątku źródła |
-| Awarie (crash) |Identyfikator procesu, identyfikator procesu nadrzędnego, identyfikator wątku awarii; poprawka aplikacji, identyfikator kompilacji;  Typ wyjątku, adres, reason; symbole zaciemnionego i rejestrów, binarne początkowy i końcowy adres, nazwa pliku binarnego i ścieżki, typ procesora |
+| Awarie |Identyfikator procesu, identyfikator procesu nadrzędnego, identyfikator wątku awarii; poprawka aplikacji, identyfikator kompilacji;  Typ wyjątku, adres, reason; symbole zaciemnionego i rejestrów, binarne początkowy i końcowy adres, nazwa pliku binarnego i ścieżki, typ procesora |
 | Ślad |**Komunikat** i poziom ważności |
 | Liczniki wydajności |Czas procesora, pamięci, liczby żądań, stawki wyjątek, bajtów prywatnych procesu, stawki we/wy, czas trwania żądania, długość kolejki żądań |
 | Dostępność |Kod odpowiedzi testu sieci Web, czas trwania każdego kroku testu, nazwa testu, timestamp, Powodzenie, czas odpowiedzi, lokalizacji testu |
@@ -195,8 +196,8 @@ Aby uzyskać [zestawy SDK dla innych platform][platforms], zobacz swoje dokument
 
 Możesz [wyłącz niektóre dane ApplicationInsights.config edycji][config]
 
-## <a name="credits"></a>Środki na korzystanie z
-Ten produkt zawiera GeoLite2 dane utworzone przez MaxMind dostępnej w sklepie [http://www.maxmind.com](http://www.maxmind.com).
+## <a name="credits"></a>Napisy końcowe
+Ten produkt zawiera GeoLite2 dane utworzone przez MaxMind dostępnej w sklepie [ http://www.maxmind.com ](http://www.maxmind.com).
 
 
 

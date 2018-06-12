@@ -17,11 +17,12 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: d9936da3ee1b0cfb4ee6e834a838798a35140620
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 25660eef50a0a18d4f404944daeb443133424897
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261155"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Rozwiązywanie problemów z ustawieniami roamingu stanu przedsiębiorstwa w usłudze Azure Active Directory
 
@@ -79,7 +80,7 @@ W niektórych warunkach roamingu stanu przedsiębiorstwa może zakończyć się 
 **Potencjalny problem**: synchronizacja może zakończyć się niepowodzeniem, jeśli administrator konfiguruje zasady dostępu warunkowego uwierzytelniania wieloskładnikowego usług federacyjnych Active Directory i wygaśnięcia tokenu dostępu na urządzeniu. Upewnij się zalogujesz, wyloguj się przy użyciu Microsoft Passport dla numeru PIN pracy lub wykonać uwierzytelnianie wieloskładnikowe podczas uzyskiwania dostępu do innych usług Azure, takich jak usługi Office 365.
 
 ### <a name="event-viewer"></a>Podgląd zdarzeń
-Do zaawansowanego rozwiązywania problemów można znaleźć określone błędy Podgląd zdarzeń. Te są opisane w poniższej tabeli. Zdarzenia można znaleźć w Podglądzie zdarzeń > Dzienniki aplikacji i usług > **Microsoft** > **Windows** > **SettingSync** i problemów z synchronizacją tożsamości **Microsoft** > **Windows** > **usługi Azure AD**.
+Do zaawansowanego rozwiązywania problemów można znaleźć określone błędy Podgląd zdarzeń. Te są opisane w poniższej tabeli. Zdarzenia można znaleźć w Podglądzie zdarzeń > Dzienniki aplikacji i usług > **Microsoft** > **Windows** > **SettingSync** i problemów z synchronizacją tożsamości **Microsoft** > **Windows** > **AAD**.
 
 
 ## <a name="known-issues"></a>Znane problemy
@@ -175,7 +176,7 @@ Kontynuuj kroki [KB3196528](https://support.microsoft.com/kb/3196528).
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Użyj [forum User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/category/158658-enterprise-state-roaming) Aby przekazać opinie i sugestie dotyczące ulepszenia roamingu stanu przedsiębiorstwa.
 

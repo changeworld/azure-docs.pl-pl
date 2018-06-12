@@ -4,7 +4,7 @@ description: Ciąg zapytania usługi Azure CDN buforowanie kontroli, jak pliki s
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.assetid: 17410e4f-130e-489c-834e-7ca6d6f9778d
 ms.service: cdn
@@ -12,13 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
-ms.author: mazha
-ms.openlocfilehash: fcb4676325066dd6960070d996b1779fb3471dd9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 06/11/2018
+ms.author: v-deasim
+ms.openlocfilehash: aa553dfc04a755be1169fa117ec66dd10ea75b54
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260434"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>Formant Azure CDN buforowanie z ciągami zapytań — warstwa standardowa
 > [!div class="op_single_selector"]
@@ -50,17 +51,17 @@ Dostępne są trzy tryby ciągu zapytania:
    
 2. W lewym okienku w obszarze Ustawienia, kliknij przycisk **buforowanie reguły**.
    
-    ![Przycisk reguły buforowania CDN](./media/cdn-query-string/cdn-caching-rules-btn.png)
+    ![Przycisk Reguły buforowania usługi CDN](./media/cdn-query-string/cdn-caching-rules-btn.png)
    
 3. W **zachowanie buforowania ciągu kwerendy** listy, wybierz tryb ciąg zapytania, a następnie kliknij przycisk **zapisać**.
    
    ![Opcje buforowania ciągu kwerendy CDN](./media/cdn-query-string/cdn-query-string.png)
 
 > [!IMPORTANT]
-> Ponieważ czas rejestracji propagację za pośrednictwem sieci CDN, zmiany ustawień pamięci podręcznej ciąg może nie być od razu widoczne:
-> - Dla **Azure CDN Standard from Microsoft** profile, propagacji zazwyczaj kończy w ciągu 10 minut. 
-> - Aby uzyskać **Azure CDN Standard from Akamai** profile, propagacji zazwyczaj kończy w ciągu jednej minuty. 
-> - Dla **Azure CDN Standard from Verizon** i **Azure CDN Premium from Verizon** profile, propagacji zazwyczaj kończy w ciągu 90 minut. 
+> Ponieważ czas rejestracji propagację za pośrednictwem usługi Azure CDN, zmiany ustawień pamięci podręcznej ciągów mogą nie być od razu widoczne:
+> - W przypadku profili usługi **Azure CDN Standard from Microsoft** propagacja zwykle trwa do 10 minut. 
+> - W przypadku profili usługi **Azure CDN Standard from Akamai** propagacja zwykle trwa mniej niż jedną minutę. 
+> - Aby uzyskać **Azure CDN Standard from Verizon** i **Azure CDN Premium from Verizon** profile, propagacji zazwyczaj kończy w ciągu 10 minut. 
 
 
 

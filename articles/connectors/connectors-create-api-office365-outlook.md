@@ -2,7 +2,7 @@
 title: Połączenie z programem Outlook pakietu Office 365 — aplikacje logiki platformy Azure | Dokumentacja firmy Microsoft
 description: Zarządzanie pocztą e-mail, kontakty i kalendarzy z interfejsami API REST usługi Office 365 i Azure Logic Apps
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 ms.author: estfan
 ms.date: 10/18/2016
 ms.topic: article
@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: d455f4d9081c1fd448a0d0524c209be305e203be
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: aa900a486b9b0bd0f570da866f3d0ab78c31bc6e
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34609974"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296156"
 ---
 # <a name="get-started-with-the-office-365-outlook-connector"></a>Rozpoczynanie pracy z łącznika programu Outlook pakietu Office 365
 Łącznik programu Outlook pakietu Office 365 umożliwia interakcję z programu Outlook w usłudze Office 365. Używaj tego łącznika do tworzenia, edycji i zaktualizuj kontakty i elementy kalendarza i również uzyskać, wysyłania i Odpowiedz na wiadomość e-mail.

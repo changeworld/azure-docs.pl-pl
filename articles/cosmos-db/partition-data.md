@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rimman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd1b52dd32976ce65458e1dfe1b50d228fbd6d0e
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: d083181b379301ae80e6577ccc3ac8f142767db3
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850529"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261087"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Partycja i skali w usłudze Azure DB rozwiązania Cosmos
 
@@ -47,7 +47,7 @@ Krótko mówiąc Oto jak partycjonowania działa w usłudze Azure DB rozwiązani
 
 * Udostępnić zbiór kontenerów bazy danych Azure rozwiązania Cosmos **T** przepływności RU/s (liczba żądań na sekundę).
 * W tle bazy danych rozwiązania Cosmos Azure udostępnia partycji fizycznej potrzebne do obsługi **T** żądań na sekundę. Jeśli **T** jest większa niż maksymalna przepustowość dla każdej partycji fizycznej **t**, następnie bazy danych Azure rozwiązania Cosmos przepisy **N = T/t** partycji fizycznej. Wartość maksymalna przepustowość na partition(t) jest konfigurowana przy bazy danych Azure rozwiązania Cosmos, ta wartość jest przypisywana na podstawie całkowitej udostępnionej przepływności i konfiguracji sprzętu, używane. 
-* Azure DB rozwiązania Cosmos klawiszy skrótów obszaru klucza partycji są przydziela równomiernie w poprzek **N** partycji fizycznej. Tak, każdy fizyczny hostów partition **1/N** (partycje logiczne) wartości klucza partycji.
+* Azure DB rozwiązania Cosmos klawiszy skrótów obszaru klucza partycji są przydziela równomiernie w poprzek **N** partycji fizycznej. To liczba partycji logicznej każdego hosty fizyczne partycji jest **1/N** * liczba wartości kluczy partycji.
 * Gdy partycji fizycznej **p** osiągnie limit magazynu bazy danych rozwiązania Cosmos Azure bezproblemowo dzieli **p** do dwóch nowych partycji fizycznej **p1** i **p2**. Rozpowszechnia wartości odpowiadających około połowy klucze do wszystkich nowych partycji fizycznej. Podziel operacji jest całkowicie niewidoczna dla aplikacji. Jeśli wszystkie dane w partycji fizycznej należy do tego samego klucza partycji logicznej partycji fizycznej osiągnie limit magazynu, operację podziału nie występuje. Jest to spowodowane wszystkie dane dla klucza jednej partycji logicznej musi znajdować się w tej samej partycji fizycznej. W takim przypadku można zastosować klucza strategii partycjonowania.
 * Podczas obsługi administracyjnej przepływności wyższy niż **t * N**, bazy danych Azure rozwiązania Cosmos dzieli przynajmniej jednej partycji fizycznej do obsługi wyższej przepustowości.
 
@@ -61,6 +61,8 @@ Semantyka kluczy partycji są nieco inne odpowiadające semantykę każdego API,
 | Tabela | Naprawiono polecenie `PartitionKey` | Naprawiono polecenie `RowKey` | 
 
 Azure DB rozwiązania Cosmos używa skrótu na podstawie partycjonowania. Podczas zapisywania elementu bazy danych Azure rozwiązania Cosmos skróty wartość klucza partycji i używa skrótu wynik w celu określenia, które partycji do przechowywania elementu w. Azure DB rozwiązania Cosmos przechowuje wszystkie elementy z tym samym kluczem partycji w tej samej partycji fizycznej. 
+
+## <a name="best-practices-when-choosing-a-partition-key"></a>Najlepsze rozwiązania w przypadku wybrania klucza partycji
 
 Wybór klucza partycji jest ważnych decyzji, które należy podjąć w czasie projektowania. Wybierz nazwę właściwości, który ma szeroki zakres wartości i ma nawet wzorce dostępu. Jest najlepszym rozwiązaniem jest klucz partycji z dużą liczbą unikatowe wartości (np., setek lub tysięcy). Umożliwia równomierne rozłożenie obciążenia na tych wartości. Klucz partycji idealna to taki, który pojawia się często jako filtr zapytania i jest wystarczające, aby upewnić się, że rozwiązanie jest skalowalna.
 
@@ -227,7 +229,7 @@ W przypadku wdrażania aplikacji wielodostępnym, przy użyciu bazy danych Azure
 
 Można również użyć metody hybrydowych, razem colocates małych dzierżawców i izoluje większych dzierżawcy do ich własnych kontenerów.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym artykule podaliśmy omówienie pojęć i najlepsze rozwiązania dla skalowanie i partycjonowania w usłudze Azure DB rozwiązania Cosmos. 
 
 * Dowiedz się więcej o [udostępnionej przepływności w usłudze Azure DB rozwiązania Cosmos](request-units.md).

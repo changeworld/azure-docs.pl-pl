@@ -4,7 +4,7 @@ description: Usługi Azure CDN obsługuje korzystanie z dostępu sygnatury dost�
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: ''
+manager: cfowler
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -12,13 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 06/11/2018
 ms.author: v-deasim
-ms.openlocfilehash: dcae29c49035775cd9ff983bbc99bab06c7f16dc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ea779f4f809e51b57d36cd44f9c6674340d665a2
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261172"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Z sygnatury dostępu Współdzielonego przy użyciu usługi Azure CDN
 
@@ -70,7 +71,7 @@ Ta opcja jest najprostszą i korzysta z jednego tokenu sygnatury dostępu Wspó�
  
 Ta opcja jest dostępna tylko w przypadku **Azure CDN Premium from Verizon** profilów. Po wybraniu tej opcji można zabezpieczyć magazynu obiektów blob na serwerze źródłowym. Możesz użyć tej opcji, jeśli nie ma potrzeby ograniczenia dostępu do określonego pliku, ale chcesz uniemożliwić użytkownikom dostęp do źródła magazynu bezpośrednio, aby skrócić czas odciążania usługi Azure CDN. Token sygnatury dostępu Współdzielonego, który jest nieznany dla użytkownika, jest wymagana dla wszystkich uzyskiwania dostępu do plików w określonym kontenerze serwera pochodzenia. Jednak ze względu na zasady ponowne zapisywanie adresów URL tokenu sygnatury dostępu Współdzielonego nie jest wymagana dla punktu końcowego CDN.
  
-1. Użyj [aparatu reguł](cdn-rules-engine.md) do utworzenia reguły ponowne zapisywanie adresów URL. Nowe zasady potrwać około 90 minut propagacji.
+1. Użyj [aparatu reguł](cdn-rules-engine.md) do utworzenia reguły ponowne zapisywanie adresów URL. Nowe zasady zająć około 10 minut propagacji.
 
    ![Przycisk Zarządzaj CDN](./media/cdn-sas-storage-support/cdn-manage-btn.png)
 
@@ -112,7 +113,7 @@ Aby używać uwierzytelniania tokenu zabezpieczeń usługi Azure CDN, musisz mie
        
    Parametr opcje uwierzytelniania tokenu zabezpieczeń są inne niż opcje parametru tokenu sygnatury dostępu Współdzielonego. Jeśli chcesz użyć podczas tworzenia tokenu zabezpieczającego czas wygaśnięcia, powinien on ustawioną taką samą wartość jak czas wygaśnięcia tokenu sygnatury dostępu Współdzielonego. Daje to gwarancję, że czas wygaśnięcia jest atrybutem wartości prognozowanych. 
  
-2. Użyj [aparatu reguł](cdn-rules-engine.md) Aby utworzyć regułę ponowne zapisywanie adresów URL, aby umożliwić dostęp do tokenu sygnatury dostępu Współdzielonego, do wszystkich obiektów blob w kontenerze. Nowe zasady potrwać około 90 minut propagacji.
+2. Użyj [aparatu reguł](cdn-rules-engine.md) Aby utworzyć regułę ponowne zapisywanie adresów URL, aby umożliwić dostęp do tokenu sygnatury dostępu Współdzielonego, do wszystkich obiektów blob w kontenerze. Nowe zasady zająć około 10 minut propagacji.
 
    Następująca reguła ponowne zapisywanie adresów URL przykładowych używa wzorzec wyrażenia regularnego z grupą przechwytywania i punktu końcowego o nazwie *storagedemo*:
    
@@ -135,7 +136,7 @@ Ponieważ SAS parametry nie są widoczne dla usługi Azure CDN, Azure CDN nie mo
 | Nazwa parametru SAS | Opis |
 | --- | --- |
 | Uruchamianie | Czas, jaki można rozpocząć dostępu do pliku blob Azure CDN. Z powodu zegara pochylanie (nadejściu sygnał zegara w różnym czasie różnych składników), wybierz czas wcześniej 15 minut, jeśli chcesz zasobów, które mają być dostępne natychmiast. |
-| End | Czas, po upływie którego Azure CDN nie można uzyskać dostępu do pliku obiektu blob. Wcześniej buforowanych plików na platformie Azure CDN są nadal dostępne. Aby kontrolować czas wygaśnięcia pliku, ustaw czas wygaśnięcia odpowiednie w tokenie zabezpieczeń usługi Azure CDN lub przeczyszczania elementu zawartości. |
+| Koniec | Czas, po upływie którego Azure CDN nie można uzyskać dostępu do pliku obiektu blob. Wcześniej buforowanych plików na platformie Azure CDN są nadal dostępne. Aby kontrolować czas wygaśnięcia pliku, ustaw czas wygaśnięcia odpowiednie w tokenie zabezpieczeń usługi Azure CDN lub przeczyszczania elementu zawartości. |
 | Dozwolonych adresów IP | Opcjonalny. Jeśli używasz **Azure CDN from Verizon**, ustaw ten parametr, do zakresów określonych w [Azure CDN from zakresów adresów IP serwera krawędzi Verizon](https://msdn.microsoft.com/library/mt757330.aspx). Jeśli używasz **Azure CDN from Akamai**, nie można ustawić parametru zakresy IP, ponieważ nie są statyczne adresy IP.|
 | Dozwolone protokoły | Następujące protokoły dozwoloną dla żądania dotyczącego przy użyciu sygnatury dostępu Współdzielonego konta. Ustawienie HTTPS jest zalecane.|
 

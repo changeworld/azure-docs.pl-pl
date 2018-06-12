@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 55243ead4f088f7a2b3d54c0581c604f0dc63d07
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 0c43b66a9d6210ea951af3fae5eca8bc6d47c3d9
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261223"
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Zagadnienia dotyczące integracji centrum danych Azure stosu zintegrowane systemy
 Jeśli interesuje Cię systemu Azure stosu zintegrowane, należy poznać niektóre z najważniejszych kwestii dotyczących planowania wdrożenia i jak system dopasowuje się do centrum danych. Ten artykuł zawiera omówienie te zagadnienia dotyczące ułatwiającym podejmowanie decyzji ważne infrastruktury systemu Azure stosu wieloma węzłami. Opis tych zagadnień pomaga podczas pracy z dostawcą sprzętu OEM zgodnie z wdrożeniem Azure stosu w centrum danych.  
@@ -134,9 +135,9 @@ W poniższej tabeli przedstawiono scenariusze łączności hybrydowych, specjali
 
 | Scenariusz | Połączenie — metoda | Specjaliści | Wady | Nadaje się do |
 | -- | -- | --| -- | --|
-| Pojedynczy dzierżawy Azure stosu, wdrożenie w sieci intranet | NAT ruchu wychodzącego | Lepszą przepustowość transferów szybsze. Prosta implementacja; nie wymaganych bram. | Ruch nie jest szyfrowany. Brak izolacji i szyfrowania poza TOR. | Gdzie są równie zaufane wszystkich dzierżaw wdrożeń w przedsiębiorstwie.<br><br>Przedsiębiorstw, które mają obwodu Azure ExpressRoute na platformie Azure. |
+| Pojedynczy dzierżawy Azure stosu, wdrożenie w sieci intranet | NAT ruchu wychodzącego | Lepszą przepustowość transferów szybsze. Prosta implementacja; nie wymaganych bram. | Ruch nie jest szyfrowany. Brak izolacji i szyfrowania poza stosem. | Gdzie są równie zaufane wszystkich dzierżaw wdrożeń w przedsiębiorstwie.<br><br>Przedsiębiorstw, które mają obwodu Azure ExpressRoute na platformie Azure. |
 | Wielodostępne Azure stosu, wdrożenie w sieci intranet | Sieci VPN typu lokacja lokacja | Ruch z sieci wirtualnej dzierżawcy do lokalizacji docelowej jest bezpieczna. | Przepustowość jest ograniczona przez tunel VPN lokacja lokacja.<br><br>Wymaga bramy sieci wirtualnej i urządzenia sieci VPN w sieci docelowej. | Musi być zabezpieczona przedsiębiorstwach, gdzie niektóre dzierżawy ruchu od pozostałych dzierżawców. |
-| Pojedynczy dzierżawy Azure stosu, internet wdrożenia | NAT ruchu wychodzącego | Lepszą przepustowość transferów szybsze. | Ruch nie jest szyfrowany. Brak izolacji i szyfrowania poza TOR. | Hosting scenariuszy, w którym dzierżawcy pobiera własnych wdrożenia stosu Azure i obwodu dedykowanego w środowisku Azure stosu. Na przykład ExpressRoute, jak i przełączania etykiety Multiprotocol (MPLS).
+| Pojedynczy dzierżawy Azure stosu, internet wdrożenia | NAT ruchu wychodzącego | Lepszą przepustowość transferów szybsze. | Ruch nie jest szyfrowany. Brak izolacji i szyfrowania poza stosem. | Hosting scenariuszy, w którym dzierżawcy pobiera własnych wdrożenia stosu Azure i obwodu dedykowanego w środowisku Azure stosu. Na przykład ExpressRoute, jak i przełączania etykiety Multiprotocol (MPLS).
 | Wielodostępne Azure stosu, internet wdrożenia | Sieci VPN typu lokacja lokacja | Ruch z sieci wirtualnej dzierżawcy do lokalizacji docelowej jest bezpieczna. | Przepustowość jest ograniczona przez tunel VPN lokacja lokacja.<br><br>Wymaga bramy sieci wirtualnej i urządzenia sieci VPN w sieci docelowej. | Scenariuszach, w którym chce oferują chmury wielodostępne dostawcy hostingu, gdzie dzierżawcy nie ufa siebie i ruchu muszą być szyfrowane.
 |  |  |  |  |  |
 
@@ -200,5 +201,5 @@ Replikowanie danych w dodatkowej lokalizacji i organizowania aplikacji w tryb fa
 - Informacje o przypadki użycia, zakupu partnerami i dostawcami sprzętu OEM, zobacz [stosu Azure](https://azure.microsoft.com/overview/azure-stack/) stronę produktu.
 - Informacji o plan i dostępności geograficznie stosu Azure zintegrowanych systemów, zobacz oficjalny dokument: [stosu Azure: rozszerzenie Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 [Modele połączenia wdrażania w usłudze Azure stosu](azure-stack-connection-models.md)

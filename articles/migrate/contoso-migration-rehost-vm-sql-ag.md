@@ -6,18 +6,18 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/07/2018
+ms.date: 06/11/2018
 ms.author: raynew
-ms.openlocfilehash: 97c8430ab5d4e08e52790b898051d5985c3df03c
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 03e3aaad810f6ccd5fb376765ddbada072dedb06
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839904"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301307"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms-and-sql-server-alwayson-availability-group"></a>Migracja Contoso: Rehost aplikację lokalnie na maszynach wirtualnych platformy Azure i SQL Server AlwaysOn grupy dostępności
 
-W tym artykule przedstawiono sposób Contoso rehost ich SmartHotel aplikacji na platformie Azure. Migrowania frontonu aplikacji maszyny Wirtualnej na maszynie Wirtualnej platformy Azure i bazy danych aplikacji do usługi Azure SQL Server maszyny Wirtualnej, uruchomionych w klastrze pracy awaryjnej systemu Windows Server z grupami dostępności AlwaysOn programu SQL Server.
+W tym artykule przedstawiono sposób Contoso rehost ich SmartHotel aplikacji na platformie Azure. Migrowania frontonu aplikacji maszyny Wirtualnej na maszynie Wirtualnej platformy Azure i aplikacji bazy danych do programu SQL Server maszyny Wirtualnej platformy Azure, uruchomionych w klastrze pracy awaryjnej systemu Windows Server z grupami dostępności AlwaysOn programu SQL Server.
 
 Ten dokument jest jedną z szeregu artykuły, które pokazują, jak fikcyjnej firmy Contoso migruje ich zasobów lokalnych do chmury Microsoft Azure. Seria zawiera informacje i scenariusze, które przedstawiają Konfigurowanie infrastruktury migracji, oceny zasobów lokalnych do migracji i z różnymi typami migracji. Scenariusze zwiększa się złożoność i dodamy dodatkowe artykuły wraz z upływem czasu.
 
@@ -29,8 +29,9 @@ Ten dokument jest jedną z szeregu artykuły, które pokazują, jak fikcyjnej fi
 [Artykuł 4: Rehost aplikację na maszyny wirtualne platformy Azure i zarządzanych wystąpienie serwera SQL](contoso-migration-rehost-vm-sql-managed-instance.md) | Pokazuje sposób Contoso uruchamiania migracji przyrostu shift Azure dla aplikacji SmartHotel. Contoso przeprowadzanie migracji aplikacji frontonu maszyny Wirtualnej w programie [usługi Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)i bazy danych aplikacji do wystąpienia zarządzane SQL, za pomocą [usługi migracji bazy danych Azure](https://docs.microsoft.com/azure/dms/dms-overview). | Dostępne
 [Artykuł 5: Rehost aplikację na maszynach wirtualnych platformy Azure](contoso-migration-rehost-vm.md) | Pokazuje, jak Contoso migracji aplikacji SmartHotel maszyn wirtualnych tylko przy użyciu usługi Site Recovery.
 Artykuł 6: Rehost aplikację na maszynach wirtualnych platformy Azure i SQL Server zawsze włączonej grupy dostępności (w tym artykule) | Pokazuje, jak Contoso migruje SmartHotel aplikacji. Firma Contoso używa usługi Site Recovery do migracji aplikacji, maszyny wirtualne i usługi migracja bazy danych do migracji do klastra programu SQL Server chronione przez zawsze włączoną grupę dostępności bazy danych aplikacji. | Dostępne
-Artykuł 7: Rehost aplikację systemu Linux, aby maszyny wirtualne platformy Azure i serwerem MySQL Azure | Pokazuje, jak Contoso migruje osTicket aplikacji systemu Linux. Migrowanie maszyny Wirtualnej przy użyciu usługi Site Recovery serwera sieci Web i migracji (kopia zapasowa i przywracanie) bazy danych do wystąpienia serwera usługi Azure MySQL, przy użyciu MySQL Workbench | Planowany
-Artykuł 8: Rehost aplikacji systemu Linux, aby maszyny wirtualne platformy Azure | Pokazuje Contoso jak migracja przyrostu shift osTicket inne maszyny wirtualne aplikacji na platformie Azure, przy użyciu usługi Site Recovery | Planowany
+[Artykuł 7: Rehost aplikacji systemu Linux, aby maszyny wirtualne platformy Azure](contoso-migration-rehost-linux-vm.md) | Pokazuje, jak Contoso jest migracji przyrostu shift aplikacji osTicket systemu Linux na maszynach wirtualnych platformy Azure, przy użyciu usługi Site Recovery | Planowany
+[Artykuł 8: Rehost aplikację systemu Linux, aby maszyny wirtualne platformy Azure i serwerem MySQL Azure](contoso-migration-rehost-linux-vm-mysql.md) | Pokazuje, jak Contoso migruje aplikacji osTicket systemu Linux na maszynach wirtualnych platformy Azure przy użyciu usługi Site Recovery i przeprowadzanie migracji aplikacji bazy danych do wystąpienia serwera usługi MySQL Azure przy użyciu MySQL Workbench. | Dostępne
+
 
 
 W tym artykule Contoso migracji dwuwarstwowa systemu Windows. Aplikacja NET SmartHotel działające na maszynach wirtualnych VMware do platformy Azure. Jeśli chcesz korzystać z tej aplikacji, jest podana jako typu open source i można go pobrać z [GitHub](https://github.com/Microsoft/SmartHotel360).
@@ -52,7 +53,7 @@ Zespół chmury Contoso ma przypięty dół celów migracji. Tych celów były u
 - Contoso nie mają inwestycji w tej aplikacji.  Ważne jest, aby firmy, ale w jego bieżącym formularza po prostu chcą bezpiecznie przenieść go do chmury.
 - Lokalną bazą danych aplikacji ma problemów dotyczących dostępności. Chce zobaczyć ona wdrożona na platformie Azure jako klaster wysokiej dostępności, możliwości trybu failover.
 - Firma Contoso chce uaktualnić ich bieżącej platformy SQL Server 2008 R2 do 2017 serwera SQL.
-- Contoso nie chcesz używać bazy danych SQL Azure dla tej aplikacji i i szuka alternatyw.
+- Contoso nie chcesz używać bazy danych SQL Azure dla tej aplikacji, a następnie szuka alternatyw.
 
 ## <a name="proposed-architecture"></a>Architektura proponowanych
 
@@ -168,7 +169,7 @@ Poniżej przedstawiono sposób konfigurowania klastra Contoso:
 
 ### <a name="set-up-a-storage-account-as-cloud-witness"></a>Konfigurowanie konta magazynu jako monitor chmury
 
-Aby skonfigurować Monitor chmury, Contoso musi konta Azure Storage, w którym będą przechowywane w pliku obiektu blob, używanego do rozstrzygnięcia klastra. To samo konto magazynu, można skonfigurować Monitor chmury dla wielu klastrów. 
+Aby skonfigurować Monitor chmury, Contoso musi konta usługi Azure Storage, w którym będą przechowywane w pliku obiektu blob, używanego do rozstrzygnięcia klastra. To samo konto magazynu, można skonfigurować Monitor chmury dla wielu klastrów. 
 
 Contoso tworzy konto magazynu w następujący sposób:
 
@@ -277,7 +278,7 @@ Teraz Contoso potrzeb reguły modułu równoważenia obciążenia do defins rozk
 Reguły tworzenia w następujący sposób:
 
 1. W ustawieniach usługi równoważenia obciążenia w portalu, co zwiększa nowej reguły równoważenia obciążenia: **SQLAlwaysOnEndPointListener**.
-2. Contoso ustawia odbiornik frontonu odbierania ruchu przychodzącego klienta SQL na porcie TCP 1433.
+2. Contoso ustawia frontonu odbiornika odbierania ruchu przychodzącego klienta SQL na porcie TCP 1433.
 3. Określa pulę zaplecza, jaki ruch, zostaną przesłane i port, na którym maszyn wirtualnych nasłuchiwać ruchu.
 4. Contoso umożliwia pływającego adresu IP (bezpośredni zwrot serwera). To jest zawsze wymagane dla funkcji SQL AlwaysOn.
 
@@ -401,7 +402,7 @@ Aby kontynuować, należy potwierdzić, że ukończył Planowanie wdrożenia, wy
 
 ### <a name="set-up-the-source-environment"></a>Konfigurowanie środowiska źródłowego
 
-Contoso musi skonfigurować ich środowiska źródłowego. Aby to zrobić, ich Pobierz szablon OVF i użyć go do wdrożenia serwera konfiguracji usługi Site Recovery jako o wysokiej dostępności, lokalnej maszyny Wirtualnej VMware. Po skonfigurowaniu i uruchomieniu serwera konfiguracji one Zarejestruj go w magazynie tego.
+Contoso musi skonfigurować ich środowiska źródłowego. Aby to zrobić, ich Pobierz szablon OVF i użyć go do wdrożenia serwera konfiguracji usługi Site Recovery jako o wysokiej dostępności, lokalnej maszyny Wirtualnej VMware. Po skonfigurowaniu i uruchomieniu serwera konfiguracji one Zarejestruj go w magazynie.
 
 Serwer konfiguracji jest uruchamiana liczby składników:
 
@@ -435,7 +436,7 @@ Contoso wykonaj następujące kroki w następujący sposób:
 
 10. Ich, a następnie Pobierz i zainstaluj serwer MySQL i VMWare PowerCLI. 
 11. Po sprawdzeniu poprawności określają adres FQDN lub adres IP hosta serwera lub vSphere vCenter. Pozostaw domyślny port i określić przyjazną nazwę dla serwera vCenter.
-12. Określa konto, utworzony automatycznego wykrywania i poświadczenia, które są używane do, aby automatycznie zainstalować usługi mobilności. W przypadku komputerów z systemem Windows konto musi uprawnienia administratora lokalnego na maszynach wirtualnych.
+12. Określa konto, utworzony automatycznego wykrywania i poświadczenia, które są używane do automatycznego zainstalowania usługi mobilności. W przypadku komputerów z systemem Windows konto musi uprawnienia administratora lokalnego na maszynach wirtualnych.
 
     ![vCenter](./media/contoso-migration-rehost-vm-sql-ag/cswiz2.png)
 
@@ -447,7 +448,7 @@ Contoso wykonaj następujące kroki w następujący sposób:
 Teraz Contoso określa ustawienia replikacji obiektu docelowego.
 
 1. W **przygotowanie infrastruktury** > **docelowego**, wybierają ustawienia obiektu docelowego.
-2. Usługa Site Recovery sprawdza, czy znajduje się z kontem magazynu platformy Azure i siecią w określonej lokalizacji docelowej.
+2. Usługa Site Recovery sprawdza, czy znajduje się konto magazynu Azure i sieci w określonej lokalizacji docelowej.
 
 ### <a name="create-a-replication-policy"></a>Tworzenie zasad replikacji
 
@@ -536,7 +537,7 @@ Z bazy danych aplikacji uruchomionej na **SQLAOG1**, Contoso mogą teraz chroni�
 
 ### <a name="create-an-alwayson-availability-group"></a>Tworzenie grupy dostępności AlwaysOn
 
-1. W programie SQL Management Studio, kliknij prawym przyciskiem myszy polecenie **zawsze na wysoką dostępność** uruchomić **Kreatora nowej grupy dostępności**.
+1. W programie SQL Management Studio, kliknij prawym przyciskiem **zawsze na wysoką dostępność** uruchomić **Kreatora nowej grupy dostępności**.
 2. W **Określ opcje**, ich nazwy grupy dostępności **SHAOG**. W **wybierz baz danych**, wybierają SmartHotel bazy danych.
 
     ![Zawsze włączone grupy dostępności](media/contoso-migration-rehost-vm-sql-ag/aog-1.png)
@@ -624,7 +625,7 @@ Ostatni krok w procesie migracji Contoso zaktualizować parametry połączenia a
     ![Tryb failover](./media/contoso-migration-rehost-vm-sql-ag/failover4.png)  
 
 2. Po aktualizacji plik i zapisać go, ich ponownego uruchomienia usług IIS na WEBVM. One to robić przy użyciu /RESTART IISRESET z wiersza polecenia.
-2. Po ponownym uruchomieniu usług IIS aplikacji jest obecnie używana baza danych, systemem SQL MI.
+2. Po ponownym uruchomieniu usług IIS aplikacji jest teraz, używając systemem SQL MI bazy danych.
 
 
 **Potrzebujesz dodatkowej pomocy?**

@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
 ms.date: 05/31/2018
-ms.openlocfilehash: 18b0ee143443ecf128bdfe57adb61cc22f95db87
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 5ed94c3b750c927ec48959c12388bd22de3d3df4
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832588"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261954"
 ---
 # <a name="what-is-fpga-and-project-brainwave"></a>Co to jest układu FPGA i Brainwave projektu?
 
@@ -62,7 +62,7 @@ Następujące scenariusze użycia układu FPGA w oparciu o architekturę Brainwa
 - Automatyczne system optyczny inspekcji. Zobacz [AI w czasie rzeczywistym: Microsoft ogłasza podgląd projektu Brainwave](https://blogs.microsoft.com/ai/build-2018-project-brainwave/).
 - Mapowanie okładce ziemi. Zobacz [wykonać mapowania na terabajtów satelitarnej obrazy obejmują ziemi przy użyciu FPGAs dla bezpośrednich Learning wnioskowania](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/).
 
-## <a name="how-to-create-an-fpga-service"></a>Jak utworzyć usługę układu FPGA?
+## <a name="how-to-deploy-a-web-service-to-an-fpga"></a>Jak wdrożyć usługę sieci web do układu FPGA?
 
 Ogólny przepływ dla tworzenia usługi rozpoznawania obrazu na platformie Azure przy użyciu ResNet50 jako featurizer wygląda następująco:
 
@@ -70,7 +70,8 @@ Ogólny przepływ dla tworzenia usługi rozpoznawania obrazu na platformie Azure
 2. Zarejestruj modelu przy użyciu interfejsu API usługi Azure ML modelu administracyjnego z pliku zip w magazynie obiektów Blob.
 3. Wdrażanie usługi z zarejestrowanego modelu przy użyciu interfejsu API zarządzania modelu uczenia Maszynowego Azure.
 
-Samouczek, zobacz [ML sprzętu przyspieszony modeli Szybki Start Azure](https://github.com/Azure/aml-real-time-ai/blob/master/notebooks/resnet50/00_QuickStart.ipynb).
+Dowiedz się więcej o tym procesie, w artykule [wdrożyć ten model jako usługę sieci web na układu FPGA przy użyciu usługi Azure Machine Learning](how-to-deploy-fpga-web-service.md).
+
 
 ## <a name="start-using-fpga"></a>Rozpoczynanie korzystania z układu FPGA
 

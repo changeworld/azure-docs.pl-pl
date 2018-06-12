@@ -5,7 +5,7 @@ services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
-editor: mwahl
+editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,12 +15,12 @@ ms.component: protection
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: c100cf5421539c985b8132bfd8af59ed0ac2e01c
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 205b4f3113f369279dbe18e75b5945a0498e7bbd
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233428"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260383"
 ---
 # <a name="eligible-assignments-and-resource-visibility-with-privileged-identity-management"></a>Kwalifikujące się zadania i widoczność zasobów z Privileged Identity Management
 
@@ -68,6 +68,6 @@ PIM dla zasobów platformy Azure ma dwa stany przypisania unikatowych, które zn
 
 Po wyświetleniu członkostwa, który znajduje się w **aktywnych ról**, możesz użyć wartości w **stanu** kolumny w celu rozróżnienia użytkowników, którzy są **przypisane** jako aktywne i Użytkownicy który **Activated** kwalifikujących się przypisanie i są obecnie aktywne.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Przypisz role w Privileged Identity Manager](pim-resource-roles-assign-roles.md)

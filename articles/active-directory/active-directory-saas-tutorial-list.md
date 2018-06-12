@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/01/2018
+ms.date: 06/11/2018
 ms.author: markvi
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: 2dc9c0678c2517c0f2ede9b9ecfe2d1ac9c27aaa
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 1e25b3721aeed42f271e38c1d777bec57a978b05
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34713776"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293130"
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>Integracja aplikacji SaaS w usłudze Azure Active Directory
 
@@ -247,6 +247,7 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-iwellnessnow-tutorial.png)| [iWellnessNow](active-directory-saas-iwellnessnow-tutorial.md)|
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-jamfprosamlconnector-tutorial.png)| [Jamf Pro](active-directory-saas-jamfprosamlconnector-tutorial.md)|
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-jiramicrosoft-tutorial.png)| [JIRA SAML logowania jednokrotnego przez firmę Microsoft](active-directory-saas-jiramicrosoft-tutorial.md)|
+| ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-jira52microsoft-tutorial.png)| [JIRA SAML logowania jednokrotnego przez firmę Microsoft (w wersji 5.2)](active-directory-saas-jira52microsoft-tutorial.md)|
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-jitbit-helpdesk-tutorial.png)| [Jitbit Helpdesk](active-directory-saas-jitbit-helpdesk-tutorial.md)|
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-jive-tutorial.png)| [Jive](active-directory-saas-jive-tutorial.md)|[Jive — Inicjowanie obsługi użytkowników](active-directory-saas-jive-provisioning-tutorial.md)|
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-jobbadmin-tutorial.png)| [Jobbadmin](active-directory-saas-jobbadmin-tutorial.md)|
@@ -298,7 +299,6 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-mercell-tutorial.png)| [Mercell](active-directory-saas-mercell-tutorial.md)|
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-mercerhrs-tutorial.png)| [BenefitsCentral mercer (MBC)](active-directory-saas-mercerhrs-tutorial.md)|
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-merchlogix-tutorial.png)| [Merchlogix](active-directory-saas-merchlogix-tutorial.md)|
-| ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-jira52microsoft-tutorial.png)| [Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA 5.2](active-directory-saas-jira52microsoft-tutorial.md)|
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-mimecast-admin-console-tutorial.png)| [Konsola administracyjna Mimecast](active-directory-saas-mimecast-admin-console-tutorial.md)|
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-mimecast-personal-portal-tutorial.png)| [Portal Mimecast osobiste](active-directory-saas-mimecast-personal-portal-tutorial.md)|
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-mindflash-tutorial.png)| [Mindflash](active-directory-saas-mindflash-tutorial.md)|
@@ -307,6 +307,7 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-mobi-tutorial.png)| [MOBI](active-directory-saas-mobi-tutorial.md)|
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-mobilexpense-tutorial.png)| [Przenośne Xpense](active-directory-saas-mobilexpense-tutorial.md)|
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-mobileiron-tutorial.png)| [MobileIron](active-directory-saas-mobileiron-tutorial.md)|
+| ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-moconavi-tutorial.png)| [moconavi](active-directory-saas-moconavi-tutorial.md)|
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-montageonline-tutorial.png)| [Montażowy w trybie Online](active-directory-saas-montageonline-tutorial.md)|
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-moveittransfer-tutorial.png)| [MOVEit Transfer — integracji z usługą Azure AD](active-directory-saas-moveittransfer-tutorial.md)|
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-moxiengage-tutorial.png)| [Moxi komunikować](active-directory-saas-moxiengage-tutorial.md)|
@@ -428,6 +429,8 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-skillport-tutorial.png)| [Skillport](active-directory-saas-skillport-tutorial.md)|
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-skillsmanager-tutorial.png)| [Menedżer umiejętności](active-directory-saas-skillsmanager-tutorial.md)|
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-skydeskemail-tutorial.png)| [SkyDesk poczty E-mail](active-directory-saas-skydeskemail-tutorial.md)|
+| ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-skyhighnetworks-tutorial.png)| [Skyhigh sieci](active-directory-saas-skyhighnetworks-tutorial.md)|
+| ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-skytap-tutorial.png)| [Skytap](active-directory-saas-skytap-tutorial.md)|
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-slack-tutorial.png)| [Slack](active-directory-saas-slack-tutorial.md)|[Slack — Inicjowanie obsługi użytkowników](active-directory-saas-slack-provisioning-tutorial.md)|
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-smallimprovements-tutorial.png)| [Ulepszenia małe](active-directory-saas-smallimprovements-tutorial.md)|
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-smarteru-tutorial.png)| [SmarterU](active-directory-saas-smarteru-tutorial.md)|
@@ -470,6 +473,7 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-timeoffmanager-tutorial.png)| [TimeOffManager](active-directory-saas-timeoffmanager-tutorial.md)|
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-tinfoil-security-tutorial.png)| [USŁUGA TINFOIL SECURITY](active-directory-saas-tinfoil-security-tutorial.md)|
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-tivitz-tutorial.png)| [TiViTz](active-directory-saas-tivitz-tutorial.md)|
+| ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-tonicdm-tutorial.png)| [TonicDM](active-directory-saas-tonicdm-tutorial.md)|
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-topdesk-public-tutorial.png)| [TOPdesk — publiczny](active-directory-saas-topdesk-public-tutorial.md)|
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-topdesk-secure-tutorial.png)| [TOPdesk - bezpieczne](active-directory-saas-topdesk-secure-tutorial.md)|
 | ![logo](./media/active-directory-saas-tutorial-list/active-directory-saas-trackvia-tutorial.png)| [TrackVia](active-directory-saas-trackvia-tutorial.md)|

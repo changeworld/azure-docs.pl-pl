@@ -16,11 +16,12 @@ ms.date: 07/18/2016
 ms.author: celested
 ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 29ac254bf3b0e8decb26452fc36112af0a3970af
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 02d7cb28411e0baec20d334994b385dcd3b06451
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293385"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Podpisywanie przerzucania kluczy w usłudze Azure Active Directory
 W tym artykule opisano, co należy wiedzieć o kluczy publicznych, które są używane w usłudze Azure Active Directory (Azure AD) do podpisywania tokenów zabezpieczających. Należy pamiętać, że te przerzucania kluczy w regularnych odstępach czasu i w razie zagrożenia, może być przerzuceniem natychmiast. Wszystkie aplikacje, które używają usługi Azure AD powinno być możliwe do programowego obsługuje procesu Przerzucanie klucza lub ustanowić proces okresowej ręczne przerzucania. Materiały, aby zrozumieć, jak działają kluczy ocenić wpływ Przerzucanie aplikacji oraz sposobu aktualizacji aplikacji lub ustanawiania proces okresowej przerzucania ręcznej obsługi Przerzucanie klucza, jeśli jest to konieczne.
@@ -50,7 +51,7 @@ Jak aplikacja obsługuje Przerzucanie klucza zależy od zmienne, takie jak typ a
 
 Niniejsze wskazówki **nie** dotyczy:
 
-* Aplikacje dodane z usługi Azure AD galerii aplikacji (w tym niestandardowe) mają oddzielne wytyczne w odniesieniu do kluczy podpisywania. [Więcej informacji.](../active-directory-sso-certs.md)
+* Aplikacje dodane z usługi Azure AD galerii aplikacji (w tym niestandardowe) mają oddzielne wytyczne w odniesieniu do kluczy podpisywania. [Więcej informacji.](../manage-apps/manage-certificates-for-federated-single-sign-on.md)
 * Lokalnego nie trzeba martwić kluczy podpisywania aplikacji opublikowanych przy użyciu serwera proxy aplikacji.
 
 ### <a name="nativeclient"></a>Aplikacja Native client aplikacji dostęp do zasobów

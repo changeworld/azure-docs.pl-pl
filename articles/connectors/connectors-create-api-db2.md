@@ -2,7 +2,7 @@
 title: Połącz z bazą danych DB2 — aplikacje logiki platformy Azure | Dokumentacja firmy Microsoft
 description: Zarządzanie zasobami za pomocą interfejsów API REST bazy danych DB2 i usługi Azure Logic Apps
 author: gplarsen
-manager: cfowler
+manager: jeconnoc
 ms.author: plarsen
 ms.date: 09/26/2016
 ms.topic: article
@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, estfan
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 9e86273a8b614098aa77608386ab050c20926d23
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 507bc48b6b775d6a6fb5f855210d33520e187a74
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34609753"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295095"
 ---
 # <a name="get-started-with-the-db2-connector"></a>Rozpoczynanie pracy z łącznik DB2
 Łącznik usługi Microsoft dla bazy danych DB2 nawiązywanie zasobów przechowywanych w bazie danych programu IBM DB2 Logic Apps. Ten łącznik obejmuje klienta Microsoft do komunikowania się ze zdalnymi komputerami serwera bazy danych DB2 w sieci TCP/IP. Obejmuje chmury baz danych, takich jak dashDB IBM Bluemix lub IBM DB2 dla systemu Windows Azure wirtualizacji i lokalnych baz danych za pomocą bramy danych lokalnych. Zobacz [obsługiwane listy](connectors-create-api-db2.md#supported-db2-platforms-and-versions) IBM DB2 platform i wersji (w tym temacie).

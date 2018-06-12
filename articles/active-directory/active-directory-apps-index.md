@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 71c2463a38f2115bd3aeff82b100e3f2c20e7708
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ed1179663823bc5a16f3ef348a649731814cdd5a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293096"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory
 Ta strona zawiera pełną listę wszystkich dokumentów zapisywane o różnych funkcjach związanych z aplikacji w usłudze Azure Active Directory (Azure AD).
@@ -32,7 +33,7 @@ Poniższe są dobrym punkt wyjścia dla osób chcących po prostu krótki opis f
 |:---:| --- |
 | Wprowadzenie do zarządzania aplikacji problemy rozwiązuje usługa Azure AD |[Zarządzanie aplikacjami przy użyciu usługi Azure Active Directory (AD)](manage-apps/what-is-application-management.md) |
 | Przegląd różnych funkcji w usłudze Azure AD powiązany z włączaniem rejestracji jednokrotnej, określające, kto ma dostęp do aplikacji i jak użytkownicy uruchomią aplikacji |[Dostęp do aplikacji i logowanie jednokrotne w usłudze Azure Active Directory](manage-apps/what-is-single-sign-on.md) |
-| Przeglądać inne czynności związane z integracji aplikacji usługi Azure AD |[Współdziałanie z aplikacjami usługi Azure Active Directory](manage-apps/plan-an-application-integration.md)<br /><br />[Włączanie rejestracji jednokrotnej do aplikacji SaaS](active-directory-enterprise-apps-manage-sso.md)<br /><br />[Zarządzanie dostępem do aplikacji](active-directory-managing-access-to-apps.md) |
+| Przeglądać inne czynności związane z integracji aplikacji usługi Azure AD |[Współdziałanie z aplikacjami usługi Azure Active Directory](manage-apps/plan-an-application-integration.md)<br /><br />[Włączanie rejestracji jednokrotnej do aplikacji SaaS](manage-apps/configure-single-sign-on-portal.md)<br /><br />[Zarządzanie dostępem do aplikacji](manage-apps/what-is-access-management.md) |
 | Techniczne wyjaśnienie, w jaki aplikacje są reprezentowane w usłudze Azure AD |[Metody i przyczyny dodawania aplikacji do usługi Azure AD](active-directory-how-applications-are-added.md) |
 
 ## <a name="troubleshooting-articles"></a>Rozwiązywanie problemów z artykułów
@@ -42,7 +43,7 @@ Ta sekcja zawiera szybki dostęp do odpowiednie instrukcje dotyczące rozwiązyw
 |:---:| --- |
 | Federacyjne logowanie jednokrotne |[Rozwiązywanie problemów z systemem SAML logowania jednokrotnego](active-directory-saml-debugging.md) |
 | Oparte na hasłach rejestracji jednokrotnej |[Rozwiązywanie problemów z rozszerzeniem Panel dostępu dla programu Internet Explorer](active-directory-saas-ie-troubleshooting.md) |
-| Serwer proxy aplikacji |[Przewodnik rozwiązywania problemów serwera Proxy aplikacji](active-directory-application-proxy-troubleshoot.md) |
+| Serwer proxy aplikacji |[Przewodnik rozwiązywania problemów serwera Proxy aplikacji](manage-apps/application-proxy-troubleshoot.md) |
 | Logowanie jednokrotne między lokalnej usługi AD i Azure AD |[Rozwiązywanie problemów z synchronizacji skrótu hasła](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[Rozwiązywanie problemów z zapisywaniem zwrotnym haseł](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | Członkostwa w grupach dynamiczne |[Rozwiązywanie problemów z członkostwa w grupach dynamiczne](active-directory-accessmanagement-troubleshooting.md) |
 
@@ -57,7 +58,7 @@ Logowania jednokrotnego pozwala użytkownikom na dostęp do różnych aplikacji 
 | Więcej niż 150 samouczków aplikacji o tym, jak skonfigurować logowanie jednokrotne dla aplikacji takich jak [Salesforce](active-directory-saas-salesforce-tutorial.md), [ServiceNow](active-directory-saas-servicenow-tutorial.md), [usługi Google Apps](active-directory-saas-google-apps-tutorial.md), [produktu Workday](active-directory-saas-workday-tutorial.md)i o wiele więcej. |[Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md) |
 | Jak ręcznie skonfigurować i dostosować jednej konfiguracji logowania jednokrotnego |[Jak można skonfigurować federacyjne logowanie jednokrotne do aplikacji, które nie znajdują się w galerii aplikacji Azure Active Directory](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[Dostosowywanie oświadczeń wydanych w tokenie SAML dla wstępnie zintegrowanych aplikacji](active-directory-saml-claims-customization.md) |
 | Podręcznik rozwiązywania problemów dotyczących aplikacji federacyjnych, które używają protokołu SAML |[Rozwiązywanie problemów z systemem SAML logowania jednokrotnego](active-directory-saml-debugging.md) |
-| Jak skonfigurować datę wygaśnięcia certyfikatu aplikacji i jak odnowić certyfikaty użytkownika |[Zarządzanie certyfikatami dla federacyjnego logowania jednokrotnego w usłudze Azure Active Directory](active-directory-sso-certs.md) |
+| Jak skonfigurować datę wygaśnięcia certyfikatu aplikacji i jak odnowić certyfikaty użytkownika |[Zarządzanie certyfikatami dla federacyjnego logowania jednokrotnego w usłudze Azure Active Directory](manage-apps/manage-certificates-for-federated-single-sign-on.md) |
 
 Federacyjne logowanie jednokrotne jest dostępna dla wszystkich wersji programu Azure AD dla aplikacji do dziesięciu dla poszczególnych użytkowników. [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) obsługuje aplikacje nieograniczone. Jeśli Twoja organizacja ma [Azure AD podstawowa](https://azure.microsoft.com/pricing/details/active-directory/) lub [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/), a następnie możesz [używanie grup do udzielania dostępu do aplikacji federacyjnych](#managing-access-to-applications).
 
@@ -82,7 +83,7 @@ Jeśli masz aplikacje w sieci prywatnej, które muszą być dostępne dla użytk
 | Samouczki na sposób konfigurowania serwera Proxy aplikacji i jak opublikować pierwszej aplikacji |[Jak skonfigurować serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-enable.md)<br /><br />[Jak zainstalować łącznik serwera Proxy aplikacji w trybie dyskretnym](manage-apps/application-proxy-register-connector-powershell.md)<br /><br />[Sposób publikowania aplikacji przy użyciu serwera Proxy aplikacji](manage-apps/application-proxy-publish-azure-portal.md)<br /><br />[Jak korzystać z własnej nazwy domeny](manage-apps/application-proxy-configure-custom-domain.md) |
 | Jak włączyć jednego logowania i warunkowego dostępu dla aplikacji opublikowane przy użyciu serwera Proxy aplikacji |[Single-sign-on z serwerem Proxy aplikacji](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)<br /><br />[Dostęp warunkowy i serwera Proxy aplikacji](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
 | Wskazówki dotyczące sposobu używania serwera Proxy aplikacji w następujących scenariuszach |[Jak obsługiwać aplikacje Native Client](manage-apps/application-proxy-configure-native-client-application.md)<br /><br />[Jak obsługiwać aplikacje obsługujące oświadczenia](manage-apps/application-proxy-configure-for-claims-aware-applications.md)<br /><br />[Jak obsługiwać aplikacji publikowanych w odrębnych sieci i lokalizacje](manage-apps/application-proxy-connector-groups.md) |
-| Podręcznik rozwiązywania problemów dotyczących serwera Proxy aplikacji |[Przewodnik rozwiązywania problemów serwera Proxy aplikacji](active-directory-application-proxy-troubleshoot.md) |
+| Podręcznik rozwiązywania problemów dotyczących serwera Proxy aplikacji |[Przewodnik rozwiązywania problemów serwera Proxy aplikacji](manage-apps/application-proxy-troubleshoot.md) |
 
 Serwer Proxy aplikacji jest dostępna dla wszystkich wersji programu Azure AD dla aplikacji do dziesięciu dla poszczególnych użytkowników. [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) obsługuje aplikacje nieograniczone. Jeśli Twoja organizacja ma [Azure AD podstawowa](https://azure.microsoft.com/pricing/details/active-directory/) lub [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/), a następnie możesz [używanie grup do udzielania dostępu do aplikacji](#managing-access-to-applications).
 
@@ -136,7 +137,7 @@ Umożliwia automatyzację tworzenia, obsługi i usuwania tożsamości użytkowni
 |:---:| --- |
 | Informacje dotyczące sposobu działania i odpowiedzi na często zadawane pytania |[Automatyzowanie użytkownik aprowizacji i anulowania obsługi do aplikacji SaaS](active-directory-saas-app-provisioning.md) |
 | Skonfiguruj odwzorowania informacji między usługą Azure AD i aplikacji SaaS |[Dostosowywanie mapowań atrybutów](active-directory-saas-customizing-attribute-mappings.md)<br><br>[Tworzenie wyrażeń na potrzeby mapowań atrybutów](active-directory-saas-writing-expressions-for-attribute-mappings.md) |
-| Jak włączyć automatyczne Inicjowanie obsługi do wszystkich aplikacji, który obsługuje protokół SCIM |[Skonfiguruj automatyczne Inicjowanie obsługi użytkowników do wszystkich aplikacji SCIM-Enabled](active-directory-scim-provisioning.md) |
+| Jak włączyć automatyczne Inicjowanie obsługi do wszystkich aplikacji, który obsługuje protokół SCIM |[Skonfiguruj automatyczne Inicjowanie obsługi użytkowników do wszystkich aplikacji SCIM-Enabled](manage-apps/use-scim-to-provision-users-and-groups.md) |
 | Raport dotyczący i rozwiązywanie problemów z Inicjowanie obsługi użytkowników |[Raporty dotyczące użytkownika automatycznego inicjowania obsługi administracyjnej.](active-directory-saas-provisioning-reporting.md)<br><br>[Rozwiązywanie problemów z Inicjowanie obsługi użytkowników](active-directory-application-provisioning-content-map.md) |
 | Limit, który pobiera przygotowana do aplikacji na podstawie ich wartości atrybutu |[Filtrami zakresów](active-directory-saas-scoping-filters.md) |
 
@@ -159,7 +160,7 @@ Aby ułatwić zarządzanie, kto ma dostęp do określonych zasobów, usługi Azu
 
 | Przewodnik artykułu |  |
 |:---:| --- |
-| Omówienie funkcji zarządzania dostęp do usługi Azure AD |[Wprowadzenie do zarządzania dostępem do aplikacji](active-directory-managing-access-to-apps.md)<br /><br />[Jak działa Zarządzanie dostępu w usłudze Azure AD](active-directory-manage-groups.md)<br /><br />[Jak używać grup do zarządzania dostępem do aplikacji SaaS](active-directory-accessmanagement-group-saasapps.md) |
+| Omówienie funkcji zarządzania dostęp do usługi Azure AD |[Wprowadzenie do zarządzania dostępem do aplikacji](manage-apps/what-is-access-management.md)<br /><br />[Jak działa Zarządzanie dostępu w usłudze Azure AD](active-directory-manage-groups.md)<br /><br />[Jak używać grup do zarządzania dostępem do aplikacji SaaS](active-directory-accessmanagement-group-saasapps.md) |
 | Włącz samoobsługowe zarządzanie aplikacji i grup |[Zarządzanie aplikacjami samoobsługi](active-directory-self-service-application-access.md)<br /><br />[Zarządzanie grupami samoobsługi](active-directory-accessmanagement-self-service-group-management.md) |
 | Instrukcje dotyczące konfigurowania grup w usłudze Azure AD |[Tworzenie grup zabezpieczeń](active-directory-groups-create-azure-portal.md)<br /><br />[Jak wyznaczyć właścicielami grupy](active-directory-accessmanagement-managing-group-owners.md)<br /><br />[Jak używać grupie "Wszyscy użytkownicy"](active-directory-accessmanagement-dedicated-groups.md) |
 | Użyj grup dynamicznych, które automatycznie wypełnić członkostwa grupy przy użyciu reguł członkostwa na podstawie atrybutu |[Członkostwa w grupie dynamiczne: Zaawansowanych reguł](active-directory-groups-dynamic-membership-azure-portal.md)<br /><br />[Rozwiązywanie problemów z członkostwa w grupach dynamiczne](active-directory-accessmanagement-troubleshooting.md) |

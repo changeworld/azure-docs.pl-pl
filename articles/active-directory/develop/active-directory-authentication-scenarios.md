@@ -17,11 +17,12 @@ ms.date: 04/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0c1390945848901dd71214e01469ab3bfa765ef4
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 0f535e8a74822319d472c62fe1b65e5145e58a74
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261648"
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Scenariusze uwierzytelniania dla usługi Azure AD
 
@@ -137,7 +138,7 @@ W tej sekcji opisano aplikację, która służy do uwierzytelniania użytkownik�
 1. Gdy użytkownik odwiedza aplikacji i musi się zalogować, zostanie przekierowany przy użyciu żądania logowania do punktu końcowego uwierzytelniania w usłudze Azure AD.
 1. Użytkownik loguje się na stronie logowania.
 1. Jeśli uwierzytelnianie zakończy się pomyślnie, usługi Azure AD umożliwia utworzenie tokenu uwierzytelniania i zwraca odpowiedź logowania do adresu URL odpowiedzi aplikacji, które zostały skonfigurowane w portalu Azure. W przypadku aplikacji produkcyjnej ten adres URL odpowiedzi powinna być HTTPS. Zwrócony token zawiera oświadczenia dotyczące użytkownika i Azure AD, które są wymagane przez aplikację do sprawdzania poprawności tokenu.
-1. Aplikacja sprawdza poprawność tokenu przy użyciu publicznego klucza podpisywania i wystawcy informacji dostępnych w dokumencie metadanych Federacji dla usługi Azure AD. Po zgłoszeniu weryfikuje token, usługi Azure AD nowa sesja rozpoczyna się od użytkownika. Ta sesja zezwala użytkownikowi na dostęp do aplikacji, do momentu wygaśnięcia.
+1. Aplikacja sprawdza poprawność tokenu przy użyciu publicznego klucza podpisywania i wystawcy informacji dostępnych w dokumencie metadanych Federacji dla usługi Azure AD. Po zgłoszeniu weryfikuje token, nowa sesja rozpoczyna się od użytkownika. Ta sesja zezwala użytkownikowi na dostęp do aplikacji, do momentu wygaśnięcia.
 
 #### <a name="code-samples"></a>Przykłady kodu
 

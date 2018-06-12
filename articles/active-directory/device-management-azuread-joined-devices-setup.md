@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 2aeaacbc48c8b49b967241522daf90e8fb228073
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 791181f11af38e4b78743ddb372207bd21893a6b
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34713616"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260933"
 ---
 # <a name="set-up-azure-active-directory-joined-devices"></a>Urządzeniach przyłączonych do konfigurowania usługi Azure Active Directory
 
@@ -48,6 +48,10 @@ Aby przyłączyć urządzenie z systemem Windows 10, usługi rejestracji urządz
 - Jeśli jesteś użytkownikiem zarządzanych systemu Windows umożliwia przejście do pulpitu za pośrednictwem automatycznego logowania.
 
 - W przypadku użytkowników federacyjnych, musisz zalogować się przy użyciu poświadczeń.
+
+- Jeśli użytkownik są Sfederowane, dostawcy tożsamości musi obsługiwać WS-Fed i WS-Trust punktu końcowego nazwy użytkownika i hasła. Może to być w wersji 1.3 lub 2005. Ta obsługa protokołu jest wymagany do dołączenie urządzenia do usługi Azure AD i zaloguj się do urządzenia za pomocą hasła. 
+
+
 
 
 ## <a name="joining-a-device"></a>Dołączenie urządzenia
@@ -119,7 +123,7 @@ Można również przejrzeć ustawienia urządzenia w portalu usługi Azure AD.
 Aby uzyskać więcej informacji, zobacz [znaleźć urządzenia](device-management-azure-portal.md#locate-devices).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji, zobacz: 
 

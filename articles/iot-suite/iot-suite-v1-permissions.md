@@ -1,12 +1,12 @@
 ---
 title: Pakiet Azure IoT i Azure Active Directory | Dokumentacja firmy Microsoft
-description: "W tym artykule opisano, jak pakiet IoT Azure używa usługi Azure Active Directory do zarządzania uprawnieniami."
-services: 
+description: W tym artykule opisano, jak pakiet IoT Azure używa usługi Azure Active Directory do zarządzania uprawnieniami.
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 246228ba-954a-4d96-b6d6-e53e4590cb4f
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
-ms.openlocfilehash: a032fc4332c697748e658ad2615ed5b0915c56c1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 4d0c7aff54ee20cf9ae4e6cdf2fc0718cd0b2f2a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35304143"
 ---
 # <a name="permissions-on-the-azureiotsuitecom-site"></a>Uprawnienia w witrynie the azureiotsuite.com
 
@@ -92,12 +93,12 @@ Poniższa procedura służy do wyznaczenia użytkownika w usłudze Active Direct
 Musi być administratorem globalnym usługi AAD, aby zmienić role dla użytkownika:
 
 1. Przejdź do witryny [Azure Portal][lnk-portal].
-2. Wybierz **usługi Azure Active Directory**.
+2. Wybierz pozycję **Azure Active Directory**.
 3. Upewnij się, że używasz katalogu, który wybrano w azureiotsuite.com podczas przydzielania rozwiązania. Jeśli masz wiele katalogów, skojarzonymi z Twoją subskrypcją, można przełączać się między nimi po kliknięciu nazwę swojego konta w prawym górnym rogu portalu.
 4. Kliknij przycisk **aplikacje dla przedsiębiorstw**, następnie **wszystkie aplikacje**.
 4. Pokaż **wszystkie aplikacje** z **żadnych** stanu. Następnie wyszukaj aplikację o nazwie wstępnie skonfigurowanych rozwiązań.
 5. Kliknij nazwę aplikacji, która jest zgodna z nazwą wstępnie skonfigurowane rozwiązanie.
-6. Kliknij przycisk **użytkowników i grup**.
+6. Kliknij pozycję **Użytkownicy i grupy**.
 7. Wybierz użytkownika, aby przełączyć role.
 8. Kliknij przycisk **przypisać** i wybierz rolę (takich jak **Admin**) ma zostać przypisany do użytkownika, kliknij znacznik wyboru.
 
@@ -116,7 +117,7 @@ Skontaktuj się administratorem globalnym, aby utworzyć administratora globalne
 Można uruchamiać wdrożeń w chmurze z <https://github.com/Azure/azure-iot-remote-monitoring> i wdrożenie z nowo utworzonego dzierżawę usługi AAD. Ponieważ jesteś, domyślnie administratorem globalnym, podczas tworzenia dzierżawy usługi AAD, masz uprawnienia do dodawania użytkowników i przypisać role do tych użytkowników.
 
 1. Tworzenie katalogu usługi AAD w [portalu Azure][lnk-portal].
-2. Przejdź do <https://github.com/Azure/azure-iot-remote-monitoring>.
+2. Przejdź do pozycji <https://github.com/Azure/azure-iot-remote-monitoring> (Plik > Nowy > Inny).
 3. Uruchom `build.cmd cloud [debug | release] {name of previously deployed remote monitoring solution}` (na przykład `build.cmd cloud debug myRMSolution`)
 4. Po wyświetleniu monitu, ustaw **tenantid** się nowo utworzone dzierżawy zamiast dzierżawy poprzedniej.
 
@@ -149,7 +150,7 @@ Aby kontynuować zapoznawanie pakiet IoT, zobacz temat [dostosować wstępnie sk
 [lnk-aad-admin]: ../active-directory/active-directory-assign-admin-roles.md
 [lnk-portal]: https://portal.azure.com/
 [lnk-create-edit-users]: ../active-directory/active-directory-create-users.md
-[lnk-assign-app-roles]: ../active-directory/active-directory-coreapps-assign-user-azure-portal.md
+[lnk-assign-app-roles]:../active-directory/manage-apps/assign-user-or-group-access-portal.md
 [lnk-service-admins]: https://azure.microsoft.com/support/changing-service-admin-and-co-admin/
 [lnk-admin-roles]: ../billing/billing-add-change-azure-subscription-administrator.md
 [lnk-resource-cs]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/DeviceAdministration/Web/Security/RolePermissions.cs

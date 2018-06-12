@@ -1,31 +1,26 @@
 ---
-title: Przykłady szybki start Azure Monitor 2.0 interfejsu wiersza polecenia. | Microsoft Docs
+title: Przykładów dla platformy Azure Monitor CLI szybki start
 description: Przykładowe polecenia 2.0 interfejsu wiersza polecenia dla funkcji Azure monitora. Azure Monitor jest usługą Microsoft Azure, co pozwala na wysyłanie powiadomień o alertach, wywołaj adresu URL sieci web na podstawie wartości danych telemetrycznych skonfigurowany, a automatycznego skalowania usługi w chmurze, maszyn wirtualnych i aplikacji sieci Web.
-author: kamathashwin
-manager: ''
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 1653aa81-0ee6-4622-9c65-d4801ed9006f
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/09/2018
-ms.author: ashwink
-ms.openlocfilehash: a9c6cc0fb81b094e1c980e4c209184a0c0ebd428
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+author: rboucher
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
+ms.date: 05/16/2018
+ms.author: robb
+ms.component: ''
+ms.openlocfilehash: 0b98cc29325310cfc0c7a62de693c309b6731447
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262406"
 ---
 # <a name="azure-monitor-cli-20-quick-start-samples"></a>Przykładów dla platformy Azure szybki start Monitor 2.0 interfejsu wiersza polecenia
 W tym artykule przedstawiono przykład się, że polecenia interfejsu wiersza polecenia (CLI) ułatwiają dostęp do funkcji Azure monitora. Azure Monitor pozwala automatycznego skalowania usługi w chmurze, maszyn wirtualnych i aplikacji sieci Web, jak i do wysyłania powiadomień o alertach lub zadzwoń na podstawie wartości dane telemetryczne skonfigurowanych adresów URL sieci web.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli nie została jeszcze zainstalowana wiersza polecenia platformy Azure, postępuj zgodnie z instrukcjami dotyczącymi [zainstalować 2.0 interfejsu wiersza polecenia Azure](/cli/azure/install-azure-cli). Można również użyć [powłoki chmury Azure](/azure/cloud-shell) do uruchamiania interfejsu wiersza polecenia jako interaktywna w przeglądarce. 
+Jeśli nie została jeszcze zainstalowana wiersza polecenia platformy Azure, postępuj zgodnie z instrukcjami dotyczącymi [zainstalować 2.0 interfejsu wiersza polecenia Azure](/cli/azure/install-azure-cli). Można również użyć [powłoki chmury Azure](/azure/cloud-shell) do uruchamiania interfejsu wiersza polecenia jako interaktywna w przeglądarce. Zobacz pełną dokumentację dostępnych wszystkie dostępne polecenia w [odwołania interfejsu wiersza polecenia Azure Monitor](https://docs.microsoft.com/en-us/cli/azure/monitor?view=azure-cli-latest). 
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 Pierwszym krokiem jest logowania do konta platformy Azure.
@@ -90,7 +85,8 @@ az monitor activity-log list --resource-provider Microsoft.Web \
 ```
 
 ## <a name="work-with-alerts"></a>Praca z alertami 
-[!NOTE] Tylko alerty (klasyczny) jest obsługiwana w interfejsu wiersza polecenia w tej chwili. 
+> [!NOTE]
+> Tylko alerty (klasyczny) jest obsługiwana w interfejsu wiersza polecenia w tej chwili. 
 
 ### <a name="get-alert-classic-rules-in-a-resource-group"></a>Pobierz reguły alertów (klasyczne) w grupie zasobów
 

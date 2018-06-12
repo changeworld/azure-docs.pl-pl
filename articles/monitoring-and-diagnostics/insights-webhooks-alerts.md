@@ -1,24 +1,19 @@
 ---
-title: "Konfigurowanie elementów webhook Azure alerty metryki | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak przekierować Azure alerty do innych, innych niż Azure systemów."
+title: Klasycznym alertu metryki powiadomić systemu Azure z systemem innym niż przy użyciu elementu webhook
+description: Dowiedz się, jak przekierować Azure metryki alerty do innych, innych niż Azure systemów.
 author: johnkemnetz
-manager: carmonm
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 8b3ae540-1d19-4f3d-a635-376042f8a5bb
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: johnkem
-ms.openlocfilehash: 049803e7701c68559103d9b1fa5dfacf820d0548
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.component: alerts
+ms.openlocfilehash: 9cc017aad7fbdc740ab3fa3af5603223e5b844ce
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262355"
 ---
 # <a name="configure-a-webhook-on-an-azure-metric-alert"></a>Konfigurowanie elementu webhook na alert metryki Azure
 Elementów webhook służy do kierowania powiadomień o alertach Azure z innymi systemami przetwarzania końcowego lub niestandardowych działań. Elementu webhook na alert służy do kierowania go do usługi, które wysyłanie wiadomości SMS do dziennika błędów do powiadamiania zespołu za pomocą rozmowy lub usług obsługi wiadomości, lub dla różnych innych działań. 
@@ -97,11 +92,11 @@ Operację POST zawiera następujące ładunek JSON i schematu dla wszystkich ale
 | subscriptionId |Tak | |Identyfikator subskrypcji platformy Azure. |
 | resourceGroupName |Tak | |Nazwa grupy zasobów dla zasobu. |
 | resourceName |Tak | |Nazwa zasobu zasobu. |
-| resourceType |Tak | |Typ zasobu zasobu. |
+| Typ zasobu |Tak | |Typ zasobu zasobu. |
 | resourceId |Tak | |Identyfikator zasobu zasobu. |
 | resourceRegion |Tak | |Obszar lub lokalizacja zasobu. |
 | portalLink |Tak | |Bezpośrednie łącze na stronie Podsumowanie zasobów portalu. |
-| properties |N |Optional (Opcjonalność) |Zestaw pary klucz wartość zawiera informacje o zdarzeniu. Na przykład `Dictionary<String, String>`. Pole właściwości jest opcjonalne. Niestandardowy interfejs użytkownika lub przepływ pracy oparty na aplikację logiki użytkownicy mogą wprowadzać pary klucz wartość, które mogą zostać przekazane za pośrednictwem ładunku. Alternatywny sposób, aby przekazywać właściwości niestandardowych elementu webhook jest za pośrednictwem elementu webhook identyfikatora URI się (jako parametry kwerendy). |
+| properties |Nie |Optional (Opcjonalność) |Zestaw pary klucz wartość zawiera informacje o zdarzeniu. Na przykład `Dictionary<String, String>`. Pole właściwości jest opcjonalne. Niestandardowy interfejs użytkownika lub przepływ pracy oparty na aplikację logiki użytkownicy mogą wprowadzać pary klucz wartość, które mogą zostać przekazane za pośrednictwem ładunku. Alternatywny sposób, aby przekazywać właściwości niestandardowych elementu webhook jest za pośrednictwem elementu webhook identyfikatora URI się (jako parametry kwerendy). |
 
 > [!NOTE]
 > Można ustawić **właściwości** pole tylko przy użyciu [interfejsów API REST Monitor Azure](https://msdn.microsoft.com/library/azure/dn933805.aspx).

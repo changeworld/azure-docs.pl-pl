@@ -7,16 +7,18 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 06/11/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 1c069e8b09f71ac46017974dfd94945c404b16ba
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 80c479aa23da2a8471af3fd83879a2dbfc5d6195
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300575"
 ---
 # <a name="delete-a-site-recovery-vault"></a>Usuń magazyn usługi Site Recovery
-Zależności można uniemożliwić usunięcie magazynie usługi Azure Site Recovery. Akcje, które należy wykonać różnić w zależności od scenariusza usługi Site Recovery: VMware do platformy Azure, funkcji Hyper-V (z lub bez programu System Center Virtual Machine Manager) na platformie Azure oraz Azure Backup. Aby usunąć magazyn używany w usłudze Kopia zapasowa Azure, zobacz [usuwanie magazynu kopii zapasowych w usłudze Azure](../backup/backup-azure-delete-vault.md).
+
+Zależności można uniemożliwić usunięcie magazynie usługi Azure Site Recovery. Akcje, które należy wykonać różnić w zależności od scenariusza odzyskiwania lokacji. Aby usunąć magazyn używany w usłudze Kopia zapasowa Azure, zobacz [usuwanie magazynu kopii zapasowych w usłudze Azure](../backup/backup-azure-delete-vault.md).
 
 
 
@@ -36,12 +38,12 @@ Aby usunąć magazyn, wykonaj kroki zalecane dla danego scenariusza.
 5. Usuń magazyn.
 
 
-### <a name="hyper-v-vms-with-virtual-machine-manager-to-azure"></a>Maszyny wirtualne funkcji Hyper-V (z programu Virtual Machine Manager) w systemie Azure
-1. Usuń wszystkie chronione maszyny wirtualne, wykonując kroki opisane w[Wyłącz ochronę dla maszyny wirtualnej funkcji Hyper-V do platformy Azure przy użyciu programu System Center VMM do platformy Azure scenariusza replikowanie](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario).
+### <a name="hyper-v-vms-with-vmm-to-azure"></a>Maszyny wirtualne funkcji Hyper-V (z programem VMM) do platformy Azure
+1. Usuń wszystkie chronione maszyny wirtualne, wykonując kroki opisane w[Wyłącz ochronę dla maszyny Wirtualnej funkcji Hyper-V (w programie VMM)](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario).
 
 2. Usuń skojarzenie i usunąć wszystkie zasady replikacji, przechodząc do magazynu -> **infrastruktura usługi Site Recovery** -> **dla programu System Center VMM** -> **replikacji Zasady**
 
-3.  Usuń odwołania do serwerów programu Virtual Machine Manager, wykonując kroki opisane w [wyrejestrować podłączony serwer VMM](site-recovery-manage-registration-and-protection.md##unregister-a-vmm-server).
+3.  Usunąć odwołania do serwerów programu VMM, wykonując kroki opisane w [wyrejestrować podłączony serwer VMM](site-recovery-manage-registration-and-protection.md##unregister-a-vmm-server).
 
 4.  Usuń magazyn.
 
@@ -50,7 +52,7 @@ Aby usunąć magazyn, wykonaj kroki zalecane dla danego scenariusza.
 
 2. Usuń skojarzenie i usunąć wszystkie zasady replikacji, przechodząc do magazynu -> **infrastruktura usługi Site Recovery** -> **dla Lokacje funkcji Hyper-V** -> **zasady replikacji**
 
-3. Usuń odwołania do serwerów funkcji Hyper-V, wykonując kroki opisane w [wyrejestrować z hosta funkcji Hyper-V](/site-recovery-manage-registration-and-protection.md##unregister-a-hyper-v-host-in-a-hyper-v-site).
+3. Usuń odwołania do serwerów funkcji Hyper-V, wykonując kroki opisane w [wyrejestrować z hosta funkcji Hyper-V](/site-recovery-manage-registration-and-protection.md#unregister-a-hyper-v-host-in-a-hyper-v-site).
 
 4. Usunąć lokacji funkcji Hyper-V.
 

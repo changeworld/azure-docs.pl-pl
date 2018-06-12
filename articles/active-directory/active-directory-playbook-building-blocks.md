@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 97a77de2fe1111f0a65b5325a5db96ad30f40f15
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: ed64c9df6fcca8f85b200c5f738c2009ea7ae0a5
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293113"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory dowód podręcznikowym koncepcji: bloki konstrukcyjne
 
@@ -140,7 +141,7 @@ Przybliżona godzina ukończone: 60 minut
 | --- | --- |
 | Środowisko testowe dostępnych aplikacji SaaS. W tym przewodniku używamy usługi ServiceNow jako przykład.<br/>Stanowczo zaleca się używanie wystąpienia testu, aby zminimalizować tarcia na nawigowanie po istniejących jakości danych i mapowania. | Przejdź do https://developer.servicenow.com/app.do#! / macierzysty można uruchomić procesu pobierania wystąpienia testu |
 | Dostęp administratora do konsoli zarządzania usługi ServiceNow | [Samouczek: Integracji Azure Active Directory z usługi ServiceNow](active-directory-saas-servicenow-tutorial.md) |
-| Docelowy zestaw użytkowników można przypisać do aplikacji. Zaleca się grupę zabezpieczeń zawierającą użytkowników fazy weryfikacji koncepcji. <br/>Tworzenie grupy nie jest realne, przypisując użytkownikom bezpośrednio do aplikacji w fazie weryfikacji koncepcji | [Przypisanie użytkownika lub grupę do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
+| Docelowy zestaw użytkowników można przypisać do aplikacji. Zaleca się grupę zabezpieczeń zawierającą użytkowników fazy weryfikacji koncepcji. <br/>Tworzenie grupy nie jest realne, przypisując użytkownikom bezpośrednio do aplikacji w fazie weryfikacji koncepcji | [Przypisanie użytkownika lub grupę do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 
 ### <a name="steps"></a>Kroki
 
@@ -148,13 +149,13 @@ Przybliżona godzina ukończone: 60 minut
 | --- | --- |
 | Udostępnianie w samouczku wszystkich podmiotów z Microsoft Documentation  | [Samouczek: Integracji Azure Active Directory z usługi ServiceNow](active-directory-saas-servicenow-tutorial.md) |
 | Ustaw spotkania pracy, a następnie wykonaj kroki samouczka z każdym aktora. | [Samouczek: Integracji Azure Active Directory z usługi ServiceNow](active-directory-saas-servicenow-tutorial.md) |
-| Przypisywanie aplikacji do grupy określonej w wymaganiach wstępnych. Jeśli fazy weryfikacji Koncepcji ma dostęp warunkowy w zakresie, można ponownie, które później i dodać uwierzytelnianie wieloskładnikowe i podobne. <br/>Należy zauważyć, że to rozpocząć w procesie inicjowania obsługi administracyjnej (jeśli jest skonfigurowane) |  [Przypisanie użytkownika lub grupę do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) <br/>[Utwórz grupy i Dodaj elementy członkowskie w usłudze Azure Active Directory](active-directory-groups-create-azure-portal.md) |
+| Przypisywanie aplikacji do grupy określonej w wymaganiach wstępnych. Jeśli fazy weryfikacji Koncepcji ma dostęp warunkowy w zakresie, można ponownie, które później i dodać uwierzytelnianie wieloskładnikowe i podobne. <br/>Należy zauważyć, że to rozpocząć w procesie inicjowania obsługi administracyjnej (jeśli jest skonfigurowane) |  [Przypisanie użytkownika lub grupę do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) <br/>[Utwórz grupy i Dodaj elementy członkowskie w usłudze Azure Active Directory](active-directory-groups-create-azure-portal.md) |
 | Przy użyciu usługi Azure AD management Portal Dodaj aplikację usługi ServiceNow z galerii| [Usługa Azure AD management Portal: aplikacje dla przedsiębiorstw](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/Overview) <br/>[What's new in zarządzania aplikacjami przedsiębiorstwa w usłudze Azure Active Directory](active-directory-enterprise-apps-whats-new-azure-portal.md) |
 | W bloku aplikacji usługi ServiceNow "Logowanie jednokrotne" Włącz "na podstawie SAML logowania" |  |
 | Wypełnij pola "Zaloguj się na adres URL" i "Identyfikator" z adresem URL usługi ServiceNow<br/>Pole wyboru, aby "Uaktywnij nowy certyfikat"<br/>i Zapisz ustawienia |  |
 | Otwarcie bloku "Konfigurowanie usługi ServiceNow" w dolnej części panelu, aby wyświetlić instrukcje niestandardowe do skonfigurowania usługi ServiceNow |  |
 | Postępuj zgodnie z instrukcjami, aby skonfigurować usługi ServiceNow |  |
-| W bloku aplikacji usługi ServiceNow "Aprowizowanie" Włącz "Automatyczny" Inicjowanie obsługi administracyjnej | [Zarządzanie kontami użytkowników, inicjowanie obsługi administracyjnej dla aplikacji przedsiębiorstwa w portalu Azure](active-directory-enterprise-apps-manage-provisioning.md) |
+| W bloku aplikacji usługi ServiceNow "Aprowizowanie" Włącz "Automatyczny" Inicjowanie obsługi administracyjnej | [Zarządzanie kontami użytkowników, inicjowanie obsługi administracyjnej dla aplikacji przedsiębiorstwa w portalu Azure](manage-apps/configure-automatic-user-provisioning-portal.md) |
 | Poczekaj kilka minut, podczas udostępniania.  Do tego czasu można sprawdzić w raportach inicjowania obsługi administracyjnej |  |
 | Zaloguj się do https://myapps.microsoft.com/ jako użytkownika testowego, które ma dostęp | [Co to jest Panel dostępu?](active-directory-saas-access-panel-introduction.md) |
 | Kliknij Kafelek dla aplikacji, która została właśnie utworzona. Potwierdź dostęp |  |
@@ -175,7 +176,7 @@ Przybliżona godzina ukończone: 15 minut
 | --- | --- |
 | Środowisko testowe dla aplikacji SaaS. Przykładem hasło rejestracji Jednokrotnej jest HipChat i Twitter. Dla żadnej innej aplikacji należy dokładny adres URL strony z formularza html logowania. | [Na platformie Microsoft Azure Marketplace w usłudze Twitter](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[HipChat na platformie Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/aad.hipchat) |
 | Testowanie kont dla aplikacji. | [Załóż konto usługi Twitter](https://twitter.com/signup?lang=en)<br/>[Załóż bezpłatne konto: HipChat](https://www.hipchat.com/sign_up) |
-| Docelowy zestaw użytkowników można przypisać do aplikacji. Grupa zabezpieczeń zawiera użytkowników jest zalecane. | [Przypisanie użytkownika lub grupę do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
+| Docelowy zestaw użytkowników można przypisać do aplikacji. Grupa zabezpieczeń zawiera użytkowników jest zalecane. | [Przypisanie użytkownika lub grupę do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Prawa dostępu lokalnego administratora na komputerze, aby wdrożyć rozszerzenie Panel dostępu dla programu Internet Explorer, Chrome lub Firefox | [Rozszerzenia Panel dostępu dla programu Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozszerzenia Panel dostępu dla programu Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozszerzenia Panel dostępu dla przeglądarki Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 
 ### <a name="steps"></a>Kroki
@@ -184,8 +185,8 @@ Przybliżona godzina ukończone: 15 minut
 | --- | --- |
 | Zainstaluj rozszerzenie przeglądarki | [Rozszerzenia Panel dostępu dla programu Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozszerzenia Panel dostępu dla programu Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozszerzenia Panel dostępu dla przeglądarki Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | Skonfigurować aplikację z galerii | [What's new in zarządzania aplikacjami przedsiębiorstwa w usłudze Azure Active Directory: galerii nowych i ulepszonych aplikacji](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
-| Skonfiguruj hasło logowania jednokrotnego | [Zarządzanie rejestracji jednokrotnej dla przedsiębiorstwa aplikacji w portalu Azure: opartego na hasłach logowania](active-directory-enterprise-apps-manage-sso.md#password-based-sign-on) |
-| Przypisywanie aplikacji do grupy określonej w wymaganiach wstępnych | [Przypisanie użytkownika lub grupę do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
+| Skonfiguruj hasło logowania jednokrotnego | [Zarządzanie rejestracji jednokrotnej dla przedsiębiorstwa aplikacji w portalu Azure: opartego na hasłach logowania](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
+| Przypisywanie aplikacji do grupy określonej w wymaganiach wstępnych | [Przypisanie użytkownika lub grupę do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Zaloguj się do https://myapps.microsoft.com/ jako użytkownika testowego, które ma dostęp |  |
 | Kliknij Kafelek dla aplikacji, która została właśnie utworzona. | [Co to jest Panel dostępu?: opartego na hasłach logowania jednokrotnego bez obsługi tożsamości](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | Podaj poświadczenia aplikacji | [Co to jest Panel dostępu?: opartego na hasłach logowania jednokrotnego bez obsługi tożsamości](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
@@ -210,7 +211,7 @@ Przybliżona godzina ukończone: 30 minut
 | --- | --- |
 | Lista aplikacji docelowej i dokładne logowania adresy URL wcześniejsze. Na przykład można użyć usługi Twitter. | [Na platformie Microsoft Azure Marketplace w usłudze Twitter](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[Załóż konto usługi Twitter](https://twitter.com/signup?lang=en) |
 | Udostępnione poświadczenia dla tej aplikacji SaaS. | [Udostępnianie kont za pomocą usługi Azure AD](active-directory-sharing-accounts.md)<br/>[Hasło przerzucania dla usługi Facebook, Twitter i LinkedIn dostępna w wersji zapoznawczej usługi azure AD automatycznego! -Enterprise Mobility and Security Blog] (https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/ ) |
-| Poświadczenia dla co najmniej dwóch członków zespołu, którzy będą uzyskiwać dostęp do tego samego konta. Należy do grupy zabezpieczeń. | [Przypisanie użytkownika lub grupę do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
+| Poświadczenia dla co najmniej dwóch członków zespołu, którzy będą uzyskiwać dostęp do tego samego konta. Należy do grupy zabezpieczeń. | [Przypisanie użytkownika lub grupę do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Prawa dostępu lokalnego administratora na komputerze, aby wdrożyć rozszerzenie Panel dostępu dla programu Internet Explorer, Chrome lub Firefox | [Rozszerzenia Panel dostępu dla programu Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozszerzenia Panel dostępu dla programu Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozszerzenia Panel dostępu dla przeglądarki Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 
 ### <a name="steps"></a>Kroki
@@ -219,8 +220,8 @@ Przybliżona godzina ukończone: 30 minut
 | --- | --- |
 | Zainstaluj rozszerzenie przeglądarki | [Rozszerzenia Panel dostępu dla programu Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozszerzenia Panel dostępu dla programu Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozszerzenia Panel dostępu dla przeglądarki Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | Skonfigurować aplikację z galerii | [What's new in zarządzania aplikacjami przedsiębiorstwa w usłudze Azure Active Directory: galerii nowych i ulepszonych aplikacji](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
-| Skonfiguruj hasło logowania jednokrotnego | [Zarządzanie rejestracji jednokrotnej dla przedsiębiorstwa aplikacji w portalu Azure: opartego na hasłach logowania](active-directory-enterprise-apps-manage-sso.md#password-based-sign-on) |
-| Przypisywanie aplikacji do grupy określonej w wymaganiach wstępnych podczas przypisywania do nich poświadczeń | [Przypisanie użytkownika lub grupę do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
+| Skonfiguruj hasło logowania jednokrotnego | [Zarządzanie rejestracji jednokrotnej dla przedsiębiorstwa aplikacji w portalu Azure: opartego na hasłach logowania](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
+| Przypisywanie aplikacji do grupy określonej w wymaganiach wstępnych podczas przypisywania do nich poświadczeń | [Przypisanie użytkownika lub grupę do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Zaloguj się jako inny użytkownik, aplikacja dostępu jako **sam udostępnionego konta.**  |  |
 | Opcjonalnie można sprawdzić raporty użycia aplikacji. Należy zauważyć, że istnieje pewnego opóźnienia przesyłania, więc musisz Poczekaj chwilę, aby wyświetlić dane w raportach. | [Działania logowania raportów w portalu usługi Azure Active Directory: użycie aplikacji zarządzanej](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory report retention policies](active-directory-reporting-retention.md) (Zasady przechowywania raportów w usłudze Azure Active Directory) |
 

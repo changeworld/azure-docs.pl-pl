@@ -1,24 +1,19 @@
 ---
-title: Wprowadzenie do skalowania automatycznego na platformie Azure | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak skalować zasobu na platformie Azure."
+title: Wprowadzenie do skalowania automatycznego na platformie Azure
+description: Dowiedz się, jak można skalować aplikacji sieci Web zasobu, usługa w chmurze, maszyny wirtualnej lub skalowania maszyny wirtualnej należy ustawić na platformie Azure.
 author: rajram
-manager: rboucher
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: d37d3fda-8ef1-477c-a360-a855b418de84
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: rajram
-ms.openlocfilehash: 84ce3af2bef1e3204ad91567d155d7cbf90e9c7e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: autoscale
+ms.openlocfilehash: 2781e718e3829c13dcc8cdd998936cfba30d8550
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263650"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Wprowadzenie do skalowania automatycznego na platformie Azure
 W tym artykule opisano, jak skonfigurować ustawienia automatycznego skalowania dla zasobu w portalu Microsoft Azure.
@@ -93,7 +88,7 @@ Oprócz skali oparte na Procesorze na skalę można ustawić inaczej, dla okreś
 ### <a name="view-the-scale-history-of-your-resource"></a>Wyświetl historię skalowania zasobu
 Zawsze, gdy zasób jest skalowana w górę lub w dół, zdarzenie jest rejestrowane w dzienniku aktywności. Można wyświetlić historię skalowania zasobu w ciągu ostatnich 24 godzin, przez przełączenie do **Historia uruchomień** kartę.
 
-![Historia uruchomień][11]
+![Historia uruchamiania][11]
 
 Jeśli chcesz wyświetlić historię pełną skali (w przypadku maksymalnie 90 dni), wybierz **kliknij tutaj, aby zobaczyć więcej szczegółów**. Umożliwia otwarcie dziennika aktywności z automatycznego skalowania jest wstępnie zaznaczona dla zasobu i kategorii.
 
@@ -119,7 +114,7 @@ Można teraz ustawić liczba wystąpień, które chcesz skalować ręcznie.
 
 Możesz zawsze wrócić do automatycznego skalowania, klikając **Włączanie automatycznego skalowania** , a następnie **zapisać**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - [Utwórz działanie dziennika alertów monitorowania wszystkich operacji aparatu skalowania automatycznego na subskrypcję](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [Utwórz działanie dziennika alertów można monitorować wszystkie nieudane operacje w/skali skalowalnych w poziomie skalowania automatycznego na subskrypcję](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 

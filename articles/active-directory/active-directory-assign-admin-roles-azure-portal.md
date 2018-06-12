@@ -14,12 +14,12 @@ ms.date: 06/07/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 4dddc4c4e4bd34f5e9d7054f1311e13113fce52d
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 0bb4a57bcc31cffba3c0e7dc50d0e2b214c50838
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234617"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260417"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Przypisywanie ról administratorów w usłudze Azure Active Directory
 
@@ -54,7 +54,7 @@ Dostępne są następujące role administratora:
 
 * **Administrator usługi Exchange**: użytkownicy z tą rolą uprawnień globalnych w ramach programu Microsoft Exchange Online, gdy usługa jest obecny. Więcej informacji na [ról administratora o usługi Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
-* **Administrator globalny / Administrator firmy**: użytkownicy z tej roli mają dostęp do wszystkich funkcji administracyjnych w usłudze Azure Active Directory, a także usług, które Federację do usługi Azure Active Directory, takie jak Exchange Online, SharePoint Online i Skype dla firm Online. Osoba, która zarejestruje się dla dzierżawy usługi Azure Active Directory staje się administratorem globalnym. Tylko administratorzy globalni mogą przypisywać pozostałe role administratorów. Może istnieć więcej niż jeden administrator globalny w firmie. Administratorzy globalni mogą resetować hasła dla każdego użytkownika i innych administratorów.
+* **Administrator globalny / Administrator firmy / Administrator dzierżawy**: użytkownicy z tej roli mają dostęp do wszystkich funkcji administracyjnych w usłudze Azure Active Directory, a także usług, które Federację do usługi Azure Active Directory, takie jak Exchange Online Usługa SharePoint Online i Skype dla firm Online. Osoba, która zarejestruje się dla dzierżawy usługi Azure Active Directory staje się administratorem globalnym. Tylko administratorzy globalni mogą przypisywać pozostałe role administratorów. Może istnieć więcej niż jeden administrator globalny w firmie. Administratorzy globalni mogą resetować hasła dla każdego użytkownika i innych administratorów.
 
   > [!NOTE]
   > W interfejsu API Graph usługi Microsoft Azure AD Graph API i Azure AD PowerShell ta rola jest identyfikowane jako "Administrator firmy". "Administrator globalny" znajduje się w [portalu Azure](https://portal.azure.com).
@@ -188,7 +188,7 @@ Nie można używać następujących ról. One zostały przestarzałe i zostanie 
 * Użytkownicy urządzeń
 * Dołączanie urządzeń w miejscu pracy
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby dowiedzieć się więcej o modyfikowaniu administratorów subskrypcji platformy Azure, zobacz [How to add or change Azure administrator roles](../billing-add-change-azure-subscription-administrator.md) (Jak dodać lub zmienić role administratora platformy Azure).
 * Aby dowiedzieć się więcej o kontrolowaniu dostępu do zasobów na platformie Microsoft Azure, zobacz [Understanding resource access in Azure](../role-based-access-control/rbac-and-directory-admin-roles.md) (Opis dostępu do zasobów na platformie Azure).

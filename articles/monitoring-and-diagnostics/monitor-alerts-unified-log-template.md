@@ -1,24 +1,19 @@
 ---
-title: Utwórz alert dziennika przy użyciu szablonu usługi Resource Manager | Dokumentacja firmy Microsoft
+title: Tworzenie alertu dziennika za pomocą szablonu usługi Resource Manager
 description: Dowiedz się, jak utworzyć wpis dziennika przy użyciu szablonu Azure Resource Manager i interfejsu API.
 author: msvijayn
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: monitoring
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: 14a2560d91fd0f8dcc729b32c7155c4b74aa8aa1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.component: alerts
+ms.openlocfilehash: 5afa34a5eadf5367b3ab28749735197ca6ed82bd
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263205"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Tworzenie alertu dziennika za pomocą szablonu usługi Resource Manager
 W tym artykule opisano, jak można zarządzać [rejestrowania alertów](monitor-alerts-unified-log.md) programowo na dużą skalę, za pomocą usługi Azure [szablonu usługi Azure Resource Manager](..//azure-resource-manager/resource-group-authoring-templates.md) za pośrednictwem [programu Azure Powershell](../azure-resource-manager/resource-group-template-deploy.md) i [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md). Obecnie alerty Azure obsługuje rejestrowania alertów dla zapytań z [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) i [Azure Application Insights](../application-insights/app-insights-analytics-tour.md).

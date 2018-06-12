@@ -4,7 +4,7 @@ description: Klienta można włączyć analizy dziennika dla usługi Azure CDN.
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -12,13 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2017
-ms.author: rli
-ms.openlocfilehash: 73c19383b791438c2ae899b45e1b4635e9cd5802
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 06/06/2018
+ms.author: v-deasim
+ms.openlocfilehash: 98a7fc5c4607115811e17a7cf6acd4e867663833
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261308"
 ---
 # <a name="azure-diagnostic-logs"></a>Dzienniki diagnostyczne platformy Azure
 
@@ -34,9 +35,9 @@ Dzienniki diagnostyczne platformy Azure umożliwiają eksportowania metryki uży
 
 - Eksportuj dane do magazynu obiektów blob, Eksportuj do pliku CSV i Generowanie wykresów w programie Excel.
 - Eksportuj dane do usługi Event Hubs i skorelowania danych z innymi usługami Azure.
-- Eksportuj dane do dziennika analizy i wyświetlania danych w swojego obszaru roboczego analizy dzienników
+- Eksportuj dane do analizy dzienników i wyświetlanie danych w swojego obszaru roboczego analizy dzienników
 
-Na poniższej ilustracji przedstawiono typowe analytics core CDN widoku danych.
+Na poniższym diagramie przedstawiono typowe analytics core CDN widoku danych.
 
 ![Portal — dzienniki diagnostyczne](./media/cdn-diagnostics-log/01_OMS-workspace.png)
 
@@ -44,60 +45,87 @@ Na poniższej ilustracji przedstawiono typowe analytics core CDN widoku danych.
 
 Aby uzyskać więcej informacji na temat dzienników diagnostycznych, zobacz [dzienników diagnostycznych](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
 
-## <a name="enable-logging-with-azure-portal"></a>Włącz rejestrowanie z portalu Azure
+## <a name="enable-logging-with-the-azure-portal"></a>Włącz rejestrowanie w portalu Azure
 
 Wykonaj te kroki Włącz, rejestrowanie w sieci CDN w warstwie podstawowa analiza:
 
-Zaloguj się w [Portalu Azure](http://portal.azure.com). Jeśli nie masz już włączone dla przepływu pracy, w sieci CDN [włączyć usługi Azure CDN](cdn-create-new-endpoint.md) przed kontynuowaniem.
+Zaloguj się w [Portalu Azure](http://portal.azure.com). Jeśli nie już włączono CDN przepływu pracy, [Tworzenie usługi Azure CDN profilu i punktu końcowego](cdn-create-new-endpoint.md) przed kontynuowaniem.
 
-1. W portalu, przejdź do **profilu CDN**.
-2. Wybierz profil CDN, a następnie wybierz punkt końcowy CDN, dla której chcesz włączyć **dzienników diagnostycznych**.
+1. W portalu Azure, przejdź do **profilu CDN**.
+
+2. W portalu Azure Wyszukaj profilu CDN, lub wybierz ją z pulpitu nawigacyjnego. Następnie wybierz punkt końcowy CDN, dla której chcesz włączyć dzienniki diagnostyczne.
 
     ![Portal — dzienniki diagnostyczne](./media/cdn-diagnostics-log/02_Browse-to-Diagnostics-logs.png)
 
-3. Wybierz **dzienników diagnostycznych** w **monitorowanie** sekcji.
+3. Wybierz **dzienników diagnostycznych** w sekcji monitorowanie.
+
+   **Dzienników diagnostycznych** zostanie wyświetlona strona.
 
     ![Portal — dzienniki diagnostyczne](./media/cdn-diagnostics-log/03_Diagnostics-logs-options.png)
 
 ### <a name="enable-logging-with-azure-storage"></a>Włącz rejestrowanie z usługą Azure Storage
+
+Aby użyć konta magazynu do przechowywania dzienników, wykonaj następujące kroki:
     
-1. Aby użyć magazynu Azure do przechowywania dzienników, wybierz opcję **archiwum na konto magazynu**, wybierz pozycję **CoreAnalytics**, a następnie wybierz liczbę dni przechowywania w obszarze **przechowywania (dni)**. Przechowywanie zero dni są przechowywane dzienniki nieskończoność. 
-2. Wprowadź nazwę dla ustawienia, a następnie kliknij przycisk **konta magazynu**. Po wybraniu konta magazynu, kliknij przycisk **zapisać**.
+1. Aby uzyskać **nazwa**, wprowadź nazwę dla ustawienia dziennika diagnostycznego.
+ 
+2. Wybierz **archiwum na konto magazynu**, a następnie wybierz pozycję **CoreAnalytics**. 
 
-![Portal — dzienniki diagnostyczne](./media/cdn-diagnostics-log/04_Diagnostics-logs-storage.png)
+2. Aby uzyskać **przechowywania (dni)**, wybierz liczbę dni przechowywania. Przechowywanie zero dni są przechowywane dzienniki nieskończoność. 
 
-*Rysunek 2 — rejestrowanie z usługą Azure Storage*
+    ![Portal — dzienniki diagnostyczne](./media/cdn-diagnostics-log/04_Diagnostics-logs-storage.png) 
+
+3. Wybierz **konta magazynu**.
+
+    **Wybierz konto magazynu** zostanie wyświetlona strona.
+
+4. Wybierz konto magazynu z listy rozwijanej, a następnie wybierz **OK**.
+
+    ![Portal — dzienniki diagnostyczne](./media/cdn-diagnostics-log/cdn-select-storage-account.png)
+
+5. Po dokonaniu ustawień dziennika diagnostycznego wybierz **zapisać**.
 
 ### <a name="logging-with-log-analytics"></a>Rejestrowanie z analizy dzienników
 
 Aby użyć analizy dzienników do przechowywania dzienników, wykonaj następujące kroki:
 
-1. Z **dzienników diagnostycznych** bloku, wybierz opcję **wysyłać do analizy dzienników**. 
+1. Z **dzienników diagnostycznych** wybierz pozycję **wysyłać do analizy dzienników**. 
 
     ![Portal — dzienniki diagnostyczne](./media/cdn-diagnostics-log/05_Ready-to-Configure.png)    
 
-2. Kliknij przycisk **Konfiguruj** Aby skonfigurować rejestrowanie analizy dziennika. W oknie dialogowym OMS obszarów roboczych można poprzedniej obszaru roboczego wybierz lub Utwórz nową.
+2. Wybierz **Konfiguruj** Aby skonfigurować rejestrowanie analizy dzienników. 
+
+   **Obszarów roboczych OMS** zostanie wyświetlona strona.
 
     ![Portal — dzienniki diagnostyczne](./media/cdn-diagnostics-log/06_Choose-workspace.png)
 
-3. Kliknij przycisk **Utwórz nowy obszar roboczy**.
+3. Wybierz **Utwórz nowy obszar roboczy**.
+
+    **Obszarem roboczym pakietu OMS** zostanie wyświetlona strona.
 
     ![Portal — dzienniki diagnostyczne](./media/cdn-diagnostics-log/07_Create-new.png)
 
-4. Wprowadź nazwę nowego obszaru roboczego analizy dzienników. Nazwa obszaru roboczego analizy dzienników musi być unikatowa i może zawierać tylko litery, cyfry i łączniki; spacje i znaki podkreślenia są niedozwolone. 
-5. Następnie wybierz istniejącej subskrypcji, grupy zasobów (Nowa lub istniejąca), lokalizacji i warstwę cenową. Istnieje również opcja kotwiczenia tej konfiguracji do pulpitu nawigacyjnego. Kliknij przycisk **OK** w celu ukończenia konfiguracji.
+4. Aby uzyskać **obszarem roboczym pakietu OMS**, wprowadź nazwę obszarem roboczym pakietu OMS. Nazwa obszarem roboczym pakietu OMS musi być unikatowa i zawierać tylko litery, cyfry i łączniki; spacje i znaki podkreślenia są niedozwolone. 
+
+5. Aby uzyskać **subskrypcji**, wybierz istniejącą subskrypcję z listy rozwijanej. 
+
+6. Aby uzyskać **grupy zasobów**, Utwórz nową grupę zasobów lub wybierz istniejący.
+
+7. Aby uzyskać **lokalizacji**, wybierz lokalizację z listy.
+
+8. Wybierz **Przypnij do pulpitu nawigacyjnego** Jeśli chcesz zapisać konfigurację dziennika do pulpitu nawigacyjnego. 
+
+9. Wybierz **OK** w celu ukończenia konfiguracji.
 
     ![Portal — dzienniki diagnostyczne](./media/cdn-diagnostics-log/08_Workspace-resource.png)
 
-5.  Po utworzeniu obszaru roboczego są zwracane do dzienników diagnostycznych systemu windows. Upewnij się, nazwę nowego obszaru roboczego analizy dzienników.
+10. Po utworzeniu obszaru roboczego, nastąpi powrót do **dzienniki diagnostyczne** strony. Upewnij się, nazwę nowego obszaru roboczego analizy dzienników.
 
     ![Portal — dzienniki diagnostyczne](./media/cdn-diagnostics-log/09_Return-to-logging.png)
 
-    Po skonfigurowaniu Konfiguracja usługi Analiza dzienników, sprawdź, czy wybrano **CoreAnalytics**.
+11. Wybierz **CoreAnalytics**, a następnie wybierz pozycję **zapisać**.
 
-6. Kliknij pozycję **Zapisz**.
-
-7. Aby wyświetlić nowy obszar roboczy analizy dzienników, przejdź do pulpitu nawigacyjnego portalu Azure, a następnie kliknij nazwę obszaru roboczego analizy dzienników. Kliknij Kafelek portalu OMS, aby wyświetlić obszar roboczy analizy dzienników. 
+12. Aby wyświetlić nowy obszar roboczy analizy dzienników, wybierz **podstawowe analytics** ze strony punktu końcowego CDN.
 
     ![Portal — dzienniki diagnostyczne](./media/cdn-diagnostics-log/11_OMS-dashboard.png) 
 
@@ -111,40 +139,38 @@ Poniższy przykład przedstawia Włączanie dzienników diagnostycznych za pomoc
 
 ### <a name="enabling-diagnostic-logs-in-a-storage-account"></a>Włączanie diagnostyki logowania na koncie magazynu
 
-Zaloguj się najpierw, a następnie wybierz subskrypcję:
+1. Zaloguj się i wybierz subskrypcję:
 
     Connect-AzureRmAccount 
 
-    Select-AzureSubscription -SubscriptionId 
+    Wybierz AzureSubscription — identyfikator subskrypcji 
 
+2. Aby włączyć dzienniki diagnostyczne na koncie magazynu, wprowadź polecenie:
 
-Aby włączyć dzienniki diagnostyczne na koncie magazynu należy użyć tego polecenia:
-
-```powershell
+    ```powershell
     Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}" -StorageAccountId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicStorage/storageAccounts/{storageAccountName}" -Enabled $true -Categories CoreAnalytics
-```
-Aby włączyć dzienniki diagnostyki w obszarze roboczym analizy dzienników należy użyć tego polecenia:
+    ```
 
-```powershell
+3. Aby włączyć dzienniki diagnostyki w obszarze roboczym analizy dzienników, wprowadź polecenie:
+
+    ```powershell
     Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/`{subscriptionId}<subscriptionId>
     .<subscriptionName>" -WorkspaceId "/subscriptions/<workspaceId>.<workspaceName>" -Enabled $true -Categories CoreAnalytics 
-```
-
-
+    ```
 
 ## <a name="consuming-diagnostics-logs-from-azure-storage"></a>Korzystanie z dzienników diagnostycznych z usługi Azure Storage
 W tej sekcji opisano schematu sieci CDN w warstwie podstawowa analiza, jak jest zorganizowana w ramach konta magazynu platformy Azure i udostępnia przykładowy kod, aby pobrać dzienniki w pliku CSV.
 
 ### <a name="using-microsoft-azure-storage-explorer"></a>Za pomocą Eksploratora usługi Storage platformy Microsoft Azure
-Przed uzyskujesz dostęp do podstawowych danych analytics z konta magazynu Azure, musisz najpierw narzędzia dostępu do zawartości na koncie magazynu. Gdy brak kilka narzędzi dostępnych na rynku, zaleca się jest Eksploratora magazynu Microsoft Azure. Aby pobrać to narzędzie, zobacz [Eksploratora usługi Storage Azure](http://storageexplorer.com/). Po pobraniu i zainstalowaniu oprogramowania, należy skonfigurować go do używania tego samego konta magazynu platformy Azure, który został skonfigurowany jako miejsce docelowe w dziennikach Diagnostyka sieci CDN.
+Przed uzyskujesz dostęp do podstawowych danych analytics z kontem magazynu platformy Azure, musisz najpierw narzędzia dostępu do zawartości na koncie magazynu. Gdy brak kilka narzędzi dostępnych na rynku, zaleca się jest Eksploratora magazynu Microsoft Azure. Aby pobrać to narzędzie, zobacz [Eksploratora usługi Storage Azure](http://storageexplorer.com/). Po pobraniu i zainstalowaniu oprogramowania, należy skonfigurować go do używania tego samego konta magazynu platformy Azure, który został skonfigurowany jako miejsce docelowe w dziennikach Diagnostyka sieci CDN.
 
 1.  Otwórz **Eksploratora usługi Storage platformy Microsoft Azure**
 2.  Zlokalizuj konto magazynu
-3.  Przejdź do **"Kontenerów obiektów Blob"** węźle tego magazynu konta, a następnie rozwiń węzeł
-4.  Wybierz kontener o nazwie **"insights dzienniki coreanalytics"** i kliknij ją dwukrotnie
-5.  Powoduje Pokaż się w okienku po prawej stronie, rozpoczynając od pierwszego poziomu, który wygląda podobnie **"resourceId ="**. Klikaj aż do momentu znajduje się w pliku **PT1H.json**. Zobacz uwagę następujące wyjaśnienie ścieżki.
-6.  Każdy obiekt blob **PT1H.json** reprezentuje dzienniki analizy przez godzinę dla określonego punktu końcowego CDN lub jego domeny niestandardowej.
-7.  Schemat zawartość tego pliku JSON jest opisany w sekcji schematu core analizy dzienników
+3.  Rozwiń węzeł **kontenerów obiektów Blob** węzła przy użyciu tego konta magazynu.
+4.  Wybierz kontener o nazwie *insights dzienniki coreanalytics*.
+5.  Powoduje Pokaż się w okienku po prawej stronie, rozpoczynając od pierwszego poziomu jako *resourceId =*. Kontynuuj wybieranie każdy poziom, dopóki nie można odnaleźć pliku *PT1H.json*. Zobacz następujące tematy *format ścieżki obiektu Blob* należy pamiętać, aby uzyskać informacje o ścieżce.
+6.  Każdy obiekt blob *PT1H.json* plik reprezentuje dzienniki analizy przez godzinę dla określonego punktu końcowego CDN lub jego domeny niestandardowej.
+7.  Schemat zawartość tego pliku JSON jest opisany w schemacie sekcji dzienników analytics core.
 
 
 > [!NOTE]
@@ -162,25 +188,25 @@ Przed uzyskujesz dostęp do podstawowych danych analytics z konta magazynu Azure
 |Nazwa grupy zasobów |Nazwa grupy zasobów, do której należą zasoby sieci CDN.|
 |Nazwa profilu |Nazwa profilu CDN|
 |Nazwa punktu końcowego |Nazwa punktu końcowego CDN|
-|Rok|  Reprezentacja 4-cyfrowego roku, na przykład 2017 r.|
-|Miesiąc| Reprezentacja 2-cyfrowy numer miesiąca. 01 stycznia =... 12 grudnia =|
-|Dzień|   2-cyfrowy reprezentację dnia miesiąca|
+|Rok|  Reprezentacja czterocyfrowy rok, na przykład 2017|
+|Miesiąc| Reprezentacja dwucyfrowe numer miesiąca. 01 stycznia =... 12 grudnia =|
+|Dzień|   Reprezentacja dwucyfrowe dnia miesiąca|
 |PT1H.json| Rzeczywisty plik JSON, gdzie są przechowywane dane analityczne|
 
 ### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>Eksportowanie danych analytics core do pliku CSV
 
-Aby ułatwić dostęp podstawowa analiza podano przykładowy kod dla narzędzia. To narzędzie umożliwia pobieranie plików JSON na format pliku płaskim przecinkami, który umożliwia łatwe tworzenie wykresów lub innych agregacji.
+Aby ułatwić dostęp podstawowa analiza podano przykładowy kod dla narzędzia. To narzędzie umożliwia pobieranie plików JSON na format pliku płaskim przecinkami, która może służyć do tworzenia schematów i innych agregacji.
 
 Oto, jak można użyć narzędzia:
 
-1.  Skorzystaj z łącza w witrynie github: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv )
+1.  Skorzystaj z łącza w witrynie github: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
 2.  Pobierz kod.
 3.  Postępuj zgodnie z instrukcjami, aby skompilować i skonfigurować.
 4.  Uruchom narzędzie.
 5.  Wynikowy plik CSV zawiera dane analityczne w prosty płaskiej hierarchii.
 
 ## <a name="consuming-diagnostics-logs-from-a-log-analytics-workspace"></a>Korzystanie z dzienników diagnostycznych z obszaru roboczego analizy dzienników
-Log Analytics to usługa platformy Azure, która monitoruje środowiska chmurowe i lokalne w celu zachowania ich dostępności i wydajności. Zbiera ona dane generowane przez zasoby w środowiskach chmurowych i lokalnych oraz inne narzędzia do monitorowania, aby przeprowadzać analizę na podstawie wielu źródeł. 
+Analiza dzienników jest usługą platformy Azure, który monitoruje chmurze i lokalnych środowiskach utrzymywać ich dostępności i wydajności. Zbiera ona dane generowane przez zasoby w środowiskach chmurowych i lokalnych oraz inne narzędzia do monitorowania, aby przeprowadzać analizę na podstawie wielu źródeł. 
 
 Aby korzystać z analizy dzienników, należy najpierw [włączyć rejestrowanie](#enable-logging-with-azure-storage) do obszaru roboczego analizy dzienników Azure, które omówione w tym artykule.
 
@@ -194,36 +220,36 @@ Aby korzystać z analizy dzienników, należy najpierw [włączyć rejestrowanie
 
 Dane można wyświetlić w na różne sposoby, za pomocą rozwiązania do zarządzania. Można uzyskać z rozwiązania do zarządzania [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions).
 
-Rozwiązania do zarządzania można zainstalować z portalu Azure marketplace, klikając **Pobierz teraz** łącze u dołu każdego z rozwiązań.
+Rozwiązania do zarządzania można zainstalować z portalu Azure marketplace, wybierając **Pobierz teraz** łącze u dołu każdego z rozwiązań.
 
-### <a name="adding-a-log-analytics-cdn-management-solution"></a>Dodawanie rozwiązania do zarządzania dziennika analizy CDN
+### <a name="add-a-log-analytics-cdn-management-solution"></a>Dodaj rozwiązanie do zarządzania CDN analizy dzienników
 
-Wykonaj następujące kroki, aby dodać rozwiązanie do zarządzania:
+Wykonaj następujące kroki, aby dodać rozwiązanie do zarządzania analizy dziennika:
 
-1.   Jeśli jeszcze tego nie zrobiono, zaloguj się do portalu Azure przy użyciu subskrypcji platformy Azure i przejdź do pulpitu nawigacyjnego.
+1.   Zaloguj się do portalu Azure przy użyciu subskrypcji platformy Azure i przejdź do pulpitu nawigacyjnego.
     ![Pulpit nawigacyjny platformy Azure](./media/cdn-diagnostics-log/13_Azure-dashboard.png)
 
-2. W **nowy** bloku w obszarze **Marketplace**, wybierz pozycję **monitorowanie i zarządzanie**.
+2. W **nowy** w obszarze **Marketplace**, wybierz pozycję **monitorowanie i zarządzanie**.
 
     ![Portal Marketplace](./media/cdn-diagnostics-log/14_Marketplace.png)
 
-3. W **monitorowanie i zarządzanie** bloku, kliknij przycisk **zobaczyć wszystkie**.
+3. W **monitorowanie i zarządzanie** wybierz pozycję **zobaczyć wszystkie**.
 
     ![Zobacz wszystkie](./media/cdn-diagnostics-log/15_See-all.png)
 
-4.  Wyszukiwanie sieci CDN w polu wyszukiwania.
+4. Wyszukiwanie sieci CDN w polu wyszukiwania.
 
     ![Zobacz wszystkie](./media/cdn-diagnostics-log/16_Search-for.png)
 
-5.  Wybierz **usługi Azure CDN podstawowa analiza**. 
+5. Wybierz **usługi Azure CDN podstawowa analiza**. 
 
     ![Zobacz wszystkie](./media/cdn-diagnostics-log/17_Core-analytics.png)
 
-6.  Po kliknięciu przycisku **Utwórz**, użytkownik zostanie poproszony do utworzenia nowego obszaru roboczego analizy dzienników lub użyć istniejącego. 
+6. Po wybraniu **Utwórz**, zostanie wyświetlona prośba o utworzenie nowego obszaru roboczego analizy dzienników lub użyć istniejącego. 
 
     ![Zobacz wszystkie](./media/cdn-diagnostics-log/18_Adding-solution.png)
 
-7.  Wybierz obszar roboczy utworzony przed. Następnie należy dodać konto usługi Automatyzacja.
+7. Wybierz obszar roboczy utworzony przed. Następnie należy dodać konto usługi Automatyzacja.
 
     ![Zobacz wszystkie](./media/cdn-diagnostics-log/19_Add-automation.png)
 
@@ -231,7 +257,7 @@ Wykonaj następujące kroki, aby dodać rozwiązanie do zarządzania:
 
     ![Zobacz wszystkie](./media/cdn-diagnostics-log/20_Automation.png)
 
-9. Po utworzeniu konta automatyzacji, można przystąpić do dodawania rozwiązania. Kliknij przycisk **Utwórz**.
+9. Po utworzeniu konta automatyzacji, można przystąpić do dodawania rozwiązania. Wybierz przycisk **Utwórz**.
 
     ![Zobacz wszystkie](./media/cdn-diagnostics-log/21_Ready.png)
 
@@ -239,9 +265,9 @@ Wykonaj następujące kroki, aby dodać rozwiązanie do zarządzania:
 
     ![Zobacz wszystkie](./media/cdn-diagnostics-log/22_Dashboard.png)
 
-    Kliknij obszar roboczy analizy dzienników, utworzonego przejdź do obszaru roboczego. 
+    Wybierz obszar roboczy analizy dzienników, do którego został utworzony, aby przejść do obszaru roboczego. 
 
-11. Kliknij przycisk **portalu OMS** Kafelek, aby zobaczyć nowe rozwiązania.
+11. Wybierz **portalu OMS** Kafelek, aby zobaczyć nowe rozwiązania.
 
     ![Zobacz wszystkie](./media/cdn-diagnostics-log/23_workspace.png)
 
@@ -249,13 +275,13 @@ Wykonaj następujące kroki, aby dodać rozwiązanie do zarządzania:
 
     ![Zobacz wszystkie](./media/cdn-diagnostics-log/24_OMS-solution.png)
 
-    Kliknij jeden z fragmentów, aby wyświetlić kilka widoków danych.
+    Wybierz jeden z fragmentów, aby wyświetlić kilka widoków danych.
 
     ![Zobacz wszystkie](./media/cdn-diagnostics-log/25_Interior-view.png)
 
     Po lewej lub prawej strony, aby wyświetlić dalsze Kafelki reprezentujących poszczególnych widoków do danych mogą być przewijane. 
 
-    Kliknij jeden z fragmentów zapewnia szczegółowe informacje o danych.
+    Wybierz jedną z Kafelki, aby dowiedzieć się więcej o danych.
 
      ![Zobacz wszystkie](./media/cdn-diagnostics-log/26_Further-detail.png)
 
@@ -265,11 +291,11 @@ Możesz wyświetlać oferty i warstw cenowych dla rozwiązań do zarządzania [t
 
 ### <a name="customizing-views"></a>Dostosowywanie widoków
 
-Widok danych można dostosować za pomocą **Widok projektanta**. Aby rozpocząć projektowanie, przejdź do obszaru roboczego analizy dzienników, a następnie kliknij przycisk **Widok projektanta** kafelka.
+Widok danych można dostosować za pomocą **Widok projektanta**. Aby rozpocząć projektowanie, przejdź do obszaru roboczego analizy dzienników i wybierz **Widok projektanta** kafelka.
 
 ![Projektant widoków](./media/cdn-diagnostics-log/27_Designer.png)
 
-Można przeciągnąć i upuścić typy wykresów i wypełnij szczegóły danych, które mają być analizowane.
+Przeciągnij i upuść typów wykresów i wypełnij dane szczegółów do przeanalizowania.
 
 ![Projektant widoków](./media/cdn-diagnostics-log/28_Designer.png)
 
@@ -284,14 +310,14 @@ Opóźnione o 1 godzinę. | Opóźnione przez godzinę i może potrwać maksymal
 
 ## <a name="diagnostic-log-types-for-cdn-core-analytics"></a>Typy dzienników diagnostycznych do sieci CDN w warstwie podstawowa analiza
 
-Firma Microsoft oferuje obecnie tylko core analizy dzienników zawierających metryki wyświetlane statystki odpowiedzi HTTP i statystyki wyjście widziany od obecności CDN/krawędzi.
+Firma Microsoft oferuje obecnie core analytics dzienniki, zawierające metryki wyświetlane statystki odpowiedzi HTTP i statystyki wyjście widziany od obecności CDN/krawędzi.
 
 ### <a name="core-analytics-metrics-details"></a>Szczegóły metryki analytics Core
-W poniższej tabeli przedstawiono listę dostępnych w rdzeniu metryk analizy dzienników dla **Azure CDN Standard from Microsoft**, **Azure CDN Standard from Akamai**, i **Azure CDN Standard/Premium FROM Verizon**. Nie wszystkie metryki są dostępne z wszystkich dostawców, choć różnice są minimalne. Tabela także wskazuje, czy dana metryka jest dostępna od dostawcy. Należy pamiętać, że metryki są dostępne tylko tych punktów końcowych usługi CDN których ruchu.
+W poniższej tabeli przedstawiono listę dostępnych w rdzeniu metryk analizy dzienników dla **Azure CDN Standard from Microsoft**, **Azure CDN Standard from Akamai**, i **Azure CDN Standard/Premium FROM Verizon**. Nie wszystkie metryki są dostępne z wszystkich dostawców, choć różnice są minimalne. Tabela także wskazuje, czy dana metryka jest dostępna od dostawcy. Metryki są dostępne dla tylko tych punktów końcowych usługi CDN których ruchu.
 
 
 |Metryka                     | Opis | Microsoft | Verizon | Akamai |
-|---------------------------|-------------|----------|---------|--------|
+|---------------------------|-------------|-----------|---------|--------|
 | RequestCountTotal         | Całkowita liczba trafień żądania, w tym okresie. | Yes | Yes |Yes |
 | RequestCountHttpStatus2xx | Liczba wszystkich żądań, które wywołały kod HTTP 2xx (na przykład 200, 202). | Yes | Yes |Yes |
 | RequestCountHttpStatus3xx | Liczba wszystkich żądań, które wywołały kod HTTP 3xx (na przykład, 300, 302). | Yes | Yes |Yes |
@@ -303,8 +329,8 @@ W poniższej tabeli przedstawiono listę dostępnych w rdzeniu metryk analizy dz
 | RequestCountHttpStatus302 | Liczba wszystkich żądań, które spowodowało 302 kod odpowiedzi HTTP. | Yes | Nie  |Yes |
 | RequestCountHttpStatus304 | Liczba wszystkich żądań, które zakończyły się odpowiedź 304 kodu HTTP. | Yes | Nie  |Yes |
 | RequestCountHttpStatus404 | Liczba wszystkich żądań, które wywołały kod odpowiedzi HTTP 404. | Yes | Nie  |Yes |
-| RequestCountCacheHit | Liczba wszystkich żądań, które zakończyły się liczby trafień pamięci podręcznej. Element zawartości zostało obsłużone bezpośrednio z punktu obecności do klienta. | Yes | Yes | Nie  |
-| RequestCountCacheMiss | Liczba wszystkich żądań, które spowodowało w Chybienie pamięci podręcznej. Oznacza to zasób nie został znaleziony na POP najbliżej klienta i w związku z tym nie została pobrana z punktu początkowego. | Yes | Yes | Nie |
+| RequestCountCacheHit | Liczba wszystkich żądań, które spowodowało pamięci podręcznej odwołań. Element zawartości zostało obsłużone bezpośrednio z punktu obecności do klienta. | Yes | Yes | Nie  |
+| RequestCountCacheMiss | Liczba wszystkich żądań, które spowodowało Chybienie pamięci podręcznej. Chybienia pamięci podręcznej oznacza, że zasób nie został znaleziony na POP najbliżej klienta i w związku z tym nie została pobrana z punktu początkowego. | Yes | Yes | Nie |
 | RequestCountCacheNoCache | Liczba wszystkich żądań do zasobu, uniemożliwiających w pamięci podręcznej z powodu konfiguracji użytkownika na krawędzi. | Yes | Yes | Nie |
 | RequestCountCacheUncacheable | Liczba wszystkich żądań do zasobów, które uniemożliwiały buforowana przez Cache-Control elementu zawartości i nagłówków wygasa, wskazujące, że go mają nie być buforowane punktu obecności lub przez klienta HTTP. | Yes | Yes | Nie |
 | RequestCountCacheOthers | Liczba wszystkich żądań o stanie pamięci podręcznej nie jest objęty przez powyżej. | Nie | Yes | Nie  |

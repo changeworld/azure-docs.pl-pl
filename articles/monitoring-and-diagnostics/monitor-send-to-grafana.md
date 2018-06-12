@@ -1,18 +1,20 @@
 ---
-title: Monitorowanie usług platformy Azure i aplikacji przy użyciu Grafana | Dokumentacja firmy Microsoft
+title: Monitorowanie usług platformy Azure i aplikacji przy użyciu Grafana
 description: Dane trasy Monitor Azure i usługi Application Insights, aby je wyświetlić w Grafana.
-services: monitoring-and-diagnostics
+services: azure-monitor
 keywords: ''
 author: rboucher
 ms.author: robb
 ms.date: 11/06/2017
-ms.topic: article
-ms.service: monitoring-and-diagnostics
-ms.openlocfilehash: 537760554baa542d4cd967d2e1e885f936303175
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.topic: conceptual
+ms.service: azure-monitor
+ms.component: ''
+ms.openlocfilehash: de2c57949cb2087e41b79a225963225d340f12af
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263086"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Monitorowanie usług systemu Azure w Grafana
 Azure usługi i aplikacje od teraz można również monitorować [Grafana](https://grafana.com/) przy użyciu [wtyczki źródła danych monitora Azure](https://grafana.com/plugins/grafana-azure-monitor-datasource). Wtyczka zbiera informacje zebrane przez zestaw SDK usługi Application Insights danych dotyczących wydajności aplikacji, a także infrastruktury dane dostarczone przez Azure Monitor. Następnie można wyświetlić te dane na pulpicie nawigacyjnym Grafana.
@@ -125,5 +127,5 @@ Są naliczane, gdy maszyny wirtualne są uruchomione, czy są używane lub nie. 
 1. Z menu po lewej stronie w portalu Azure kliknij **grup zasobów** , a następnie kliknij przycisk **Grafana**.
 2. Na stronie grupy zasobów, kliknij przycisk **usunąć**, typ **Grafana** w polu tekstowym, a następnie kliknij przycisk **usunąć**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Omówienie metryki Azure monitora](monitoring-overview-metrics.md)

@@ -1,25 +1,19 @@
 ---
-title: Rozpoczynanie pracy z rolami, uprawnienia i zabezpieczeń z monitorem Azure | Dokumentacja firmy Microsoft
+title: Rozpoczynanie pracy z rolami, uprawnienia i zabezpieczeń z monitorem Azure
 description: Dowiedz się, jak używać monitora Azure wbudowane role i uprawnienia do ograniczania dostępu do monitorowania zasobów.
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 2686e53b-72f0-4312-bcd3-3dc1b4a9b912
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: johnkem
-ms.openlocfilehash: 01a785eab1b31b2943184267a3c6496fefaf44cf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: ''
+ms.openlocfilehash: 82ec2b71ee83d2ec697fa44521c103b11976f1ed
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639082"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264606"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Rozpoczynanie pracy z rolami, uprawnienia i zabezpieczeń z monitorem Azure
 Wiele zespołów należy ściśle regulowania dostępu do danych i ustawienia monitorowania. Na przykład, jeśli masz członków zespołu, którzy używają wyłącznie na monitorowanie (pracowników działu pomocy technicznej, metodyki devops engineers) lub jeśli korzystasz z dostawcą usługi zarządzanej, można przyznać im dostęp do danych tylko do monitorowania podczas ograniczania możliwość tworzenia, modyfikowania, lub Usuwanie zasobów. W tym artykule pokazano, jak szybko zastosować wbudowane monitorowania roli RBAC użytkownikowi na platformie Azure lub tworzenie własnych niestandardowych ról dla użytkownika, który wymaga ograniczonych uprawnień monitorowania. Następnie zawiera omówienie zagadnienia dotyczące zabezpieczeń dla zasobów związanych z monitora Azure i jak można ograniczyć dostęp do danych, które zawierają.

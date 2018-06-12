@@ -1,8 +1,8 @@
 ---
-title: "Utwórz nowy zasób usługi Application Insights dla platformy Azure | Dokumentacja firmy Microsoft"
-description: "Ręcznie skonfiguruj monitorowanie usługi Application Insights dla nowej aplikacji na żywo."
+title: Utwórz nowy zasób usługi Application Insights dla platformy Azure | Dokumentacja firmy Microsoft
+description: Ręcznie skonfiguruj monitorowanie usługi Application Insights dla nowej aplikacji na żywo.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 878b007e-161c-4e36-8ab2-3d7047d8a92d
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: mbullwin
-ms.openlocfilehash: 9023f3d9ae3ddd4d75b5853a08177cba7718cec1
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 59bb8564613e9a0cebda00c2c847283ff218b882
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294721"
 ---
 # <a name="create-an-application-insights-resource"></a>Tworzenie zasobu usługi Application Insights
 Azure Application Insights przedstawia dane dotyczące Twojej aplikacji w systemie Microsoft Azure *zasobów*. Tworzenie nowego zasobu w związku z tym jest częścią [konfigurowaniu usługi Application Insights do monitorowania nowej aplikacji][start]. W wielu przypadkach tworzenie zasobu można automatycznie IDE. Ale w niektórych przypadkach należy Utwórz ręcznie zasób — na przykład mieć osobne zasobów dla rozwoju i produkcji kompilacje aplikacji.
@@ -29,7 +30,7 @@ Jeśli nie mam [Microsoft konto, Uzyskaj je teraz](http://live.com). (Jeśli kor
 
 Należy również subskrypcji [Microsoft Azure](http://azure.com). Jeśli zespół lub organizacja ma subskrypcję platformy Azure, właściciel można do niej dodać, przy użyciu swojego identyfikatora Windows Live. Tylko są naliczane opłaty za można użyć. Podstawowy plan domyślny umożliwia pewnego wykorzystanie eksperymentalne bezpłatnie.
 
-Jeśli masz dostęp do subskrypcji, zaloguj się do usługi Application Insights w [http://portal.azure.com](https://portal.azure.com)i używać swojego identyfikatora Live ID do logowania.
+Jeśli masz dostęp do subskrypcji, zaloguj się do usługi Application Insights w [ http://portal.azure.com ](https://portal.azure.com)i używać swojego identyfikatora Live ID do logowania.
 
 ## <a name="create-an-application-insights-resource"></a>Tworzenie zasobu usługi Application Insights
 W [portal.azure.com](https://portal.azure.com), Dodaj zasób usługi Application Insights:
@@ -68,7 +69,7 @@ Jeśli spodziewasz większej ilości danych, kliknij przycisk **Odśwież** po k
 ## <a name="creating-a-resource-automatically"></a>Automatyczne tworzenie zasobu
 Można napisać [skrypt programu PowerShell](app-insights-powershell.md) automatyczne tworzenie zasobu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Tworzenie pulpitu nawigacyjnego](app-insights-dashboards.md)
 * [Wyszukiwanie diagnostyczne](app-insights-diagnostic-search.md)
 * [Eksplorowanie metryk](app-insights-metrics-explorer.md)

@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 4b00baba44a4724ce8f6a45a80692f7f566a35ed
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 58245478cf49c030c435b487e233bbc893a2b9a3
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296360"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Dodaj rozszerzoną metryki dla maszyn wirtualnych platformy Azure
 
@@ -31,7 +32,7 @@ Na przykład można monitorować procent użycia procesora CPU i pamięci % masz
 
 ## <a name="verify-that-metrics-are-enabled-on-vms"></a>Sprawdź, czy metryki są włączone na maszynach wirtualnych
 
-1. Zaloguj się do witryny Azure Portal na stronie http://portal.azure.com.
+1. Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com.
 2. W obszarze **maszyn wirtualnych**, wybierz maszynę Wirtualną, a następnie w obszarze **monitorowanie**, wybierz pozycję **metryki**. Jest wyświetlana lista dostępnych metryk.
 3. Wybierz niektóre metryki, a wykres przedstawia dane dla nich.  
     ![Przykład metryka — host procent Procesora](./media/azure-vm-extended-metrics/metric01.png)

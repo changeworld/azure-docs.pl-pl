@@ -1,24 +1,19 @@
 ---
-title: "Wywołanie elementu webhook na alert dziennik aktywności platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak trasy zdarzenia dziennika działania innych usług dla akcji niestandardowej. Na przykład można wysłać wiadomości SMS, dziennika błędów lub powiadamiania zespołu za pomocą rozmowy lub usługą obsługi wiadomości."
+title: Wywołanie elementu webhook na alert dziennik aktywności platformy Azure (klasyczne)
+description: Dowiedz się, jak trasy zdarzenia dziennika działania innych usług dla akcji niestandardowej. Na przykład można wysłać wiadomości SMS, dziennika błędów lub powiadamiania zespołu za pomocą rozmowy lub usługą obsługi wiadomości.
 author: johnkemnetz
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 64d333d1-7f37-4a00-9d16-dda6e69a113b
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: johnkem
-ms.openlocfilehash: 9872c30d123f0a7443e28dc58ee0d4e16572a390
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.component: alerts
+ms.openlocfilehash: e825d0f2487c20c8c7f3d210d7180b07742d7173
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262464"
 ---
 # <a name="call-a-webhook-on-an-azure-activity-log-alert"></a>Wywołanie elementu webhook na alert dziennik aktywności platformy Azure
 Elementów webhook służy do kierowania powiadomień o alertach Azure z innymi systemami przetwarzania końcowego lub akcji niestandardowych. Elementu webhook na alert służy do kierowania go do usługi, które wysyłanie wiadomości SMS do dziennika błędów do powiadamiania zespołu za pomocą rozmowy lub usług obsługi wiadomości, lub dla różnych innych działań. Alert dziennika aktywności można również skonfigurować do wysyłania wiadomości e-mail, gdy alert jest aktywny.
@@ -111,13 +106,13 @@ Operację POST zawiera następujące ładunek JSON i schematu dla wszystkich dzi
 | Dziennik aktywności | Właściwości dziennika zdarzeń.|
 | Autoryzacji |Właściwości zdarzenia kontroli dostępu opartej na rolach (RBAC). Zazwyczaj są to właściwości **akcji**, **roli**, i **zakres**. |
 | action | Akcja przechwycone przez alert. |
-| Zakres | Zakres alert (zasobów).|
+| scope | Zakres alert (zasobów).|
 | kanały | Limit czasu operacji. |
 | Oświadczenia | Zbiór danych, ponieważ odnosi się do oświadczenia. |
 | element wywołujący |Identyfikator GUID lub nazwa użytkownika, który wykonał działanie, oświadczenia UPN lub oświadczeń głównej nazwy usługi na podstawie dostępności. Może to być wartość null dla niektórych wywołań systemowych. |
 | correlationId |Zazwyczaj identyfikator GUID w postaci ciągu. Zdarzenia z **correlationId** należą do tego samego działania większy. Zazwyczaj mają takie same **correlationId** wartość. |
 | description |Opis alertu, która została ustawiona podczas tworzenia alertu. |
-| eventSource |Nazwa usługi Azure lub infrastruktury, który wygenerował zdarzenie. |
+| Źródła zdarzeń |Nazwa usługi Azure lub infrastruktury, który wygenerował zdarzenie. |
 | eventTimestamp |Godzina wystąpienia zdarzenia. |
 | eventDataId |Unikatowy identyfikator zdarzenia. |
 | poziom |Jedną z następujących wartości: krytyczny, błąd, ostrzeżenie, informacyjny lub pełne. |
@@ -130,7 +125,7 @@ Operację POST zawiera następujące ładunek JSON i schematu dla wszystkich dzi
 | subStatus |Zwykle zawiera kod stanu HTTP odpowiedniego wywołania REST. Może również zawierać innych ciągów, które opisują podstanu. Typowe wartości podstanu obejmują OK (kod stanu HTTP: 200), utworzony (kod stanu HTTP: 201), akceptowane (kod stanu HTTP: 202), nie zawartości (kod stanu HTTP: 204), nieprawidłowe żądanie (kod stanu HTTP: 400), nie znaleziono (kod stanu HTTP: 404), konflikt (kod stanu HTTP: 409), wewnętrzny błąd serwera (kod stanu HTTP: 500), Usługa niedostępna (kod stanu HTTP: 503) i limit czasu bramy (kod stanu HTTP : 504). |
 | subscriptionId |Identyfikator subskrypcji platformy Azure. |
 | submissionTimestamp |Czas, w którym to zdarzenie zostało wygenerowane przez usługę Azure, który przetwarzał żądanie. |
-| resourceType | Typ zasobu, który wygenerował zdarzenie.|
+| Typ zasobu | Typ zasobu, który wygenerował zdarzenie.|
 | properties |Zestaw pary klucz wartość zawiera informacje o zdarzeniu. Na przykład `Dictionary<String, String>`. |
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/21/2018
+ms.date: 06/11/2018
 ms.author: raynew
-ms.openlocfilehash: 5db7d57045acea3ded82e880169ebf02f4151ec5
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: d78980b69e6598dff349c75527fc27d8a04dfa18
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824731"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301188"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Tabela wsparcia dla VMware i replikacja serwerów fizycznych do platformy Azure
 
@@ -40,7 +40,7 @@ Serwer konfiguracji jest na lokalnej maszynie z systemem składników usługi Si
 **Składnik** | **Wymagania**
 --- |---
 Rdzenie procesora CPU | 8
-Pamięć RAM | 12 GB
+Pamięć RAM | 16 GB
 Liczba dysków | 3 dysków<br/><br/> Dyski zawierają dysku systemu operacyjnego, dysku pamięci podręcznej serwera przetwarzania i przechowywania dysku powrotu po awarii.
 Wolne miejsce na dysku | 600 GB miejsca wymaganego dla pamięci podręcznej serwera przetwarzania.
 Wolne miejsce na dysku | 600 GB miejsca wymaganego dla dysku przechowywania.
@@ -205,7 +205,7 @@ Lokalnych maszyn wirtualnych, które są replikowane do platformy Azure musi spe
 
 **Składnik** | **Wymagania** | **Szczegóły**
 --- | --- | ---
-System operacyjny gościa | Sprawdź [obsługiwanych systemów operacyjnych](#replicated-machines). | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.
+System operacyjny gościa | Sprawdź [obsługiwanych systemów operacyjnych](#replicated-machines) dla replikowane maszyny. | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.
 Architektura systemu operacyjnego gościa | 64-bitowych. | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.
 Rozmiar dysku systemu operacyjnego | Do 2048 GB. | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.
 Liczba dysków systemu operacyjnego | 1 | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.  

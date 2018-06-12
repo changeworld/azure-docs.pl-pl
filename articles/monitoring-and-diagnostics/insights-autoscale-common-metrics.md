@@ -1,24 +1,19 @@
 ---
-title: "Azure metryki wspólnej skalowania automatycznego Monitor | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, metryk, które są często używane do skalowania automatycznego usługi w chmurze, maszyn wirtualnych i aplikacji sieci Web."
+title: Typowe metryki automatycznego skalowania
+description: Dowiedz się, metryk, które są często używane do skalowania automatycznego usługi w chmurze, maszyn wirtualnych i aplikacji sieci Web.
 author: anirudhcavale
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 189b2a13-01c8-4aca-afd5-90711903ca59
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 12/6/2016
 ms.author: ancav
-ms.openlocfilehash: 240a230d09680672ccd5316470a87d047fab9fd1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: autoscale
+ms.openlocfilehash: 7b6f454a8d4c8794b8c56494fd9ed573f8b79852
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262243"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure metryki wspólnej Skalowanie automatyczne monitora
 Azure Monitor Skalowanie automatyczne umożliwia skalowanie liczby wystąpień uruchomione, na podstawie danych telemetrycznych (metryk). W tym dokumencie opisano typowe metryki, które możesz chcieć użyć. W portalu Azure dla farmy serwerów i usług w chmurze można wybrać metryki zasobu skalowanie przez. Jednak możesz również wszystkie metryki z skalowanie przez inny zasób.
@@ -74,9 +69,9 @@ Można utworzyć alertu dotyczącego następujące metryki:
 | Transfery \Disk \PhysicalDisk (_Total) na sekundę |CountPerSecond |
 | Odczyty \Disk \PhysicalDisk (_Total) na sekundę |CountPerSecond |
 | Zapisy \Disk \PhysicalDisk (_Total) na sekundę |CountPerSecond |
-| \Disk \PhysicalDisk (_Total) bajty/s |BytesPerSecond |
-| Bajty odczytane/s \Disk \PhysicalDisk (_Total) |BytesPerSecond |
-| Bajty zapisu \Disk \PhysicalDisk (_Total) / s |BytesPerSecond |
+| \Disk \PhysicalDisk (_Total) bajty/s |Bajty na sekundę |
+| Bajty odczytane/s \Disk \PhysicalDisk (_Total) |Bajty na sekundę |
+| Bajty zapisu \Disk \PhysicalDisk (_Total) / s |Bajty na sekundę |
 | \Avg \PhysicalDisk (_Total) Długość kolejki dysku |Licznik |
 | \Avg \PhysicalDisk (_Total) Długość kolejki odczytu dysku |Licznik |
 | \Avg \PhysicalDisk (_Total) Długość kolejki dysku zapisu |Licznik |
@@ -116,9 +111,9 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 | \Processor\PercentDPCTime |Procent |
 | \Processor\PercentProcessorTime |Procent |
 | \Processor\PercentIOWaitTime |Procent |
-| \PhysicalDisk\BytesPerSecond |BytesPerSecond |
-| \PhysicalDisk\ReadBytesPerSecond |BytesPerSecond |
-| \PhysicalDisk\WriteBytesPerSecond |BytesPerSecond |
+| \PhysicalDisk\BytesPerSecond |Bajty na sekundę |
+| \PhysicalDisk\ReadBytesPerSecond |Bajty na sekundę |
+| \PhysicalDisk\WriteBytesPerSecond |Bajty na sekundę |
 | \PhysicalDisk\TransfersPerSecond |CountPerSecond |
 | \PhysicalDisk\ReadsPerSecond |CountPerSecond |
 | \PhysicalDisk\WritesPerSecond |CountPerSecond |

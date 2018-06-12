@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: f4071f2555607b6035352a2aec38c986941c41a9
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: bbeceb868466de42cfdffa3991983ac906cb98aa
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34826535"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35323735"
 ---
 <a name="virtual-networking-limits-classic"></a>Poniższe limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu klasycznego modelu wdrażania, które przypadają na jedną subskrypcję. Dowiedz się, jak [wyświetlać z bieżącego wykorzystania zasobów względem swoje limity subskrypcji](../articles/networking/check-usage-against-limits.md).
 
@@ -68,6 +68,7 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 | Zasób | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
 | Moduły równoważenia obciążenia | 100 | 1000 |
+| Zasobami zaplecza modułu równoważenia * na obciążenia | 50 | 150 |
 | Zasady dla zasobów, Basic | 150 | 250 |
 | Reguły w poszczególnych zasobów i Standard | 1250 | 1500 |
 | Zasady na konfigurację adresu IP | 299 |299 |
@@ -76,6 +77,8 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 | Puli zaplecza, Basic | 100, pojedynczy zestaw dostępności | 100, pojedynczy zestaw dostępności |
 | Puli zaplecza, Standard | 1000, pojedynczy sieci wirtualnej | 1000, pojedynczy sieci wirtualnej |
 | HA portów, Standard | 1 na frontonie wewnętrzny | 1 na frontonie wewnętrzny |
+
+* Zasoby do 150 dowolną kombinację autonomicznych maszyn wirtualnych, zestawów dostępności i zestawy skalowania maszyny wirtualnej.
 
 Jeśli będzie konieczne zwiększenie limitów domyślnych, [skontaktuj się z pomocą techniczną](../articles/azure-supportability/resource-manager-core-quotas-request.md ).
 

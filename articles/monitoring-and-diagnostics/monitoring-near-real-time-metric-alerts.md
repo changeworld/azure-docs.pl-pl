@@ -1,26 +1,19 @@
 ---
-title: Obsługiwane zasobów dla nowszej alertów metryki Azure Monitor | Dokumentacja firmy Microsoft
+title: Obsługiwane zasobów dla nowszej alerty metryki monitora Azure
 description: Odwołanie do pomocy technicznej, metryki i dzienniki dla nowszej platformy Azure w pobliżu metryki alertów w czasie rzeczywistym.
 author: snehithm
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: monitoring
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 04/27/2018
-ms.author: snmuvva, vinagara
-ms.custom: ''
-ms.openlocfilehash: e09cc1a91daf2e6a043d73ef1f41aa265334dec2
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.author: snmuvva
+ms.component: alerts
+ms.openlocfilehash: d5eaa4dafc9c155d3e6f85bc67c578c8a12da7cf
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809832"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264514"
 ---
 # <a name="supported-metrics-and-creation-methods-for-new-metric-alerts"></a>Obsługiwane metody metryki i tworzenia nowych alertów metryki
 Azure obsługuje teraz Monitor [nowy typ alertu metryki](monitoring-overview-unified-alerts.md) mającego istotne korzyści w starszej [klasycznego alerty metryki](insights-alerts-portal.md). Obsługuje alerty starsze [obszerne listy metryki](monitoring-supported-metrics.md). Nowsza alerty obsługuje podzbiór (rosnącym) tego dłuższej listy. W tym artykule wymieniono tego podzbioru. 

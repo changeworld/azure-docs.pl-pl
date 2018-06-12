@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/04/2018
 ms.author: mbullwin
-ms.openlocfilehash: c898e43cb1334bf7fb1836554fb92708033d3f7d
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 874a338c27262de29b1806352ec3ade068c188e0
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294238"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Używać usługi Stream Analytics do przetworzenia wyeksportowane dane z usługi Application Insights
 [Usługa Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) to idealne narzędzie do przetwarzania danych [wyeksportowany z usługi Application Insights](app-insights-export-telemetry.md). Analiza strumienia może pobierają dane z różnych źródeł. Go transformacji i filtrowanie danych i kierowania go do różnych sink.

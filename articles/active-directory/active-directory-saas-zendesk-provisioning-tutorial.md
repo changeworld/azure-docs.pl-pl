@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
-ms.openlocfilehash: 87ed987b53b45ef9dacb771d8dd057432712fb16
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 18c2cb975e1e7c93f2aba18f99e23998ce47501b
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293344"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi Zendesk dla użytkownika automatycznego inicjowania obsługi administracyjnej.
 
@@ -71,7 +72,7 @@ Usługi Azure Active Directory używa pojęcie o nazwie "przypisania" w celu okr
 
 Przed Konfigurowanie i włączanie automatycznej aprowizacji użytkowników, należy podjąć decyzję dotyczącą użytkowników i/lub grup w usłudze Azure AD będą potrzebować dostępu do usługi Zendesk. Po decyzję, można przypisać użytkowników i/lub grup usługi Zendesk zgodnie z instrukcjami poniżej:
 
-*   [Przypisanie użytkownika lub grupę do aplikacji w przedsiębiorstwie](active-directory-coreapps-assign-user-azure-portal.md)
+*   [Przypisanie użytkownika lub grupę do aplikacji w przedsiębiorstwie](manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-zendesk"></a>Ważne porady dotyczące przypisywania użytkowników do usługi Zendesk
 
@@ -165,7 +166,7 @@ Aby uzyskać więcej informacji na temat usługi Azure AD, inicjowanie obsługi 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Zarządzanie aprowizacja konta użytkowników dla aplikacji przedsiębiorstwa](active-directory-enterprise-apps-manage-provisioning.md)
+* [Zarządzanie aprowizacja konta użytkowników dla aplikacji przedsiębiorstwa](manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Kolejne kroki

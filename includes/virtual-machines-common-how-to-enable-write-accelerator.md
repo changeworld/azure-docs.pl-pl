@@ -5,15 +5,15 @@ services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 5/9/2018
+ms.date: 6/8/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: c6fdd51bd522b08b33e6cac852ef313475682550
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 21681a1af64754ef569f2ad4ff92f85a598007ac
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34723147"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35323786"
 ---
 # <a name="write-accelerator"></a>Zapis klawiszy skrótów
 Zapisu akceleratora jest wyłącznie możliwości dysku dla serii M maszynach wirtualnych (VM na magazyn Azure dysków zarządzanych w warstwie Premium). Jako nazwa stany, cel funkcji jest ulepszenie opóźnień operacji We/Wy zapisu w usłudze Azure Premium Storage. Zapisu akceleratora doskonale nadaje gdzie aktualizacji plików dziennika są wymagane do utrwalenia na dysku w dużej wydajności sposób dla nowoczesnych baz danych.
@@ -49,17 +49,13 @@ Istnieją ograniczenia Azure Premium magazynu wirtualnych dysków twardych na ma
 
 | JEDNOSTKA SKU MASZYNY WIRTUALNEJ | Liczba dysków zapisu klawiszy skrótów | Zapisu dysku akceleratora IOPS dla maszyny Wirtualnej |
 | --- | --- | --- |
-| M128ms | 16 | 8000 |
-| M128s | 16 | 8000 |
-| M64ms | 8 | 4000 |
-| M64s | 8 | 4000 | 
-| M32ms | 4 | 2000 | 
-| M32s | 4 | 2000 | 
-| M16ms | 2 | 1000 | 
-| M16s | 2 | 1000 | 
-| M8ms | 1 | 500 | 
-| M8s | 1 | 500 | 
+| M128ms, 128s | 16 | 8000 |
+| M64s M64ms, M64ls, | 8 | 4000 |
+| M32ms, M32s M32ls, M32ts, | 4 | 2000 | 
+| M16ms, M16s | 2 | 1000 | 
+| M8ms, M8s | 1 | 500 | 
 
+Limity liczby są dla maszyny Wirtualnej i *nie* na dysku. Wszystkie dyski zapisu akceleratora współużytkować ten sam limit IOPS dla maszyny Wirtualnej.
 ## <a name="enabling-write-accelerator-on-a-specific-disk"></a>Włączanie akceleratora zapisu na konkretnym dysku
 Kilka kolejnych sekcjach opisano, jak napisać akceleratora można włączyć na wirtualnych dyskach twardych Azure Premium magazynu.
 

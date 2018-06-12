@@ -1,24 +1,19 @@
 ---
-title: Przykłady szybki start Azure PowerShell monitora. | Microsoft Docs
+title: Przykładów dla platformy Azure Monitor PowerShell szybki start
 description: Dostęp do funkcji Azure Monitor, takich jak skalowania automatycznego, alertów, elementów webhook i wyszukiwanie Dzienniki aktywności za pomocą programu PowerShell.
 author: rboucher
-manager: carmonm
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: c0761814-7148-4ab5-8c27-a2c9fa4cfef5
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 2/14/2018
 ms.author: robb
-ms.openlocfilehash: a67edd4372cff70a3948e85033e806749d585eb5
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.component: ''
+ms.openlocfilehash: d7275bb0399ae5832e85089e44f4b9a1fe412747
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262423"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Przykładów dla platformy Azure Monitor PowerShell szybki start
 Ten artykuł przedstawia przykładowe polecenia programu PowerShell, aby ułatwić dostęp do funkcji Azure monitora.

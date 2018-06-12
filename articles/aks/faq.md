@@ -6,14 +6,14 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 6/08/2018
 ms.author: nepeters
-ms.openlocfilehash: ca8d883add04d623c17390a0b5031aaf08be0429
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 79236ae7134a27b9a5b89ee8151803befa7b51e1
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34596501"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260800"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Często zadawane pytania dotyczące usługi Azure Service Kubernetes (AKS)
 
@@ -49,7 +49,7 @@ Podczas AKS pozostaje w wersji zapoznawczej, zaleca się utworzenie klastrów pr
 
 ## <a name="when-will-acs-be-deprecated"></a>Gdy zostaną wycofane ACS?
 
-Usługi ACS zostaną wycofane wokół AKS staje się po chwili Konieczne będzie 12 miesięcy po tej dacie migrację klastrów do AKS. W okresie 12-miesięczny możesz uruchomić wszystkie operacje usług ACS.
+Usługi ACS zostaną wycofane w czasie zbliżonym do AKS, które staje się po Konieczne będzie 12 miesięcy po tej dacie migrację klastrów do AKS. W okresie 12-miesięczny możesz uruchomić wszystkie operacje usług ACS.
 
 ## <a name="does-aks-support-node-autoscaling"></a>AKS obsługuje funkcję skalowania automatycznego węzeł?
 
@@ -76,6 +76,10 @@ Aby uruchomić kontenery systemu Windows Server, należy uruchomić węzłów z 
 Dla każdego wdrożenia AKS obejmuje dwie grupy zasobów. Pierwszy jest tworzone przez użytkownika i zawiera tylko zasób AKS. Dostawca zasobów AKS automatycznie tworzy drugi podczas wdrażania o nazwie, jak *MC_myResourceGroup_myAKSCluster_eastus*. Drugi grupa zasobów zawiera wszystkie zasoby infrastruktury skojarzony z klastrem, takich jak maszyn wirtualnych, sieci i magazynu. Aby uprościć Oczyszczanie zasobów zostanie utworzony.
 
 W przypadku tworzenia zasobów, które będą używane z klastra AKS, takich jak konta magazynu lub zastrzeżone publicznego adresu IP, należy umieścić je w grupie zasobów wygenerowanej automatycznie.
+
+## <a name="does-aks-offer-a-service-level-agreement"></a>AKS oferuje umowę dotyczącą poziomu usług?
+
+W Umowa dotycząca poziomu usług (SLA) dostawca zgadza się zwrócić klienta do kosztu usługi powinny poziomu opublikowane usługi nie można spełnić. Ponieważ AKS sam jest bezpłatne, jest bez dostępne zwrotu kosztów i w związku z tym nie formalnych umowy SLA. Jednak firma Microsoft starać się zachować dostępność co najmniej 99,5% do serwera interfejsu API Kubernetes.
 
 <!-- LINKS - external -->
 [auto-scaler]: https://github.com/kubernetes/autoscaler

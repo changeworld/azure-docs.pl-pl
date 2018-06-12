@@ -1,24 +1,25 @@
 ---
-title: "Zastąpienie zachowania HTTP przy użyciu usługi Azure CDN aparatu reguł | Dokumentacja firmy Microsoft"
-description: "Aparat reguł pozwala dostosować sposób obsługi żądań HTTP przez usługi Azure CDN, takich jak blokowanie dostarczania niektórych typów zawartości, definiowania zasad buforowania i modyfikować nagłówki HTTP."
+title: Zastąpienie zachowania HTTP przy użyciu usługi Azure CDN aparatu reguł | Dokumentacja firmy Microsoft
+description: Aparat reguł pozwala dostosować sposób obsługi żądań HTTP przez usługi Azure CDN, takich jak blokowanie dostarczania niektórych typów zawartości, definiowania zasad buforowania i modyfikować nagłówki HTTP.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: dksimpson
-manager: akucer
-editor: 
+manager: cfowler
+editor: ''
 ms.assetid: 625a912b-91f2-485d-8991-128cc194ee71
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2018
-ms.author: mazha
-ms.openlocfilehash: fe3df703f7eb244a52756c4d015e9ea598224ce1
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 06/11/2018
+ms.author: v-deasim
+ms.openlocfilehash: df8114aaf5b4672ea51482978abde6f0ce724528
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261053"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-rules-engine"></a>Zastąpienie zachowania HTTP przy użyciu aparatu reguł Azure CDN
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -46,9 +47,10 @@ Aby uzyskać dostęp do aparatu reguł, należy najpierw wybrać **Zarządzaj** 
 ## <a name="tutorial"></a>Samouczek
 1. Z **profilu CDN** wybierz pozycję **Zarządzaj**.
    
-    ![Przycisk Zarządzaj profilu CDN](./media/cdn-rules-engine/cdn-manage-btn.png)
+    ![Przycisk Zarządzaj profil CDN](./media/cdn-rules-engine/cdn-manage-btn.png)
    
     Zostanie otwarty w portalu zarządzania usługi CDN.
+
 2. Wybierz **HTTP dużych** , a następnie wybierz **aparatu reguł**.
    
     Opcje dla nowej reguły są wyświetlane.
@@ -58,7 +60,9 @@ Aby uzyskać dostęp do aparatu reguł, należy najpierw wybrać **Zarządzaj** 
    > [!IMPORTANT]
    > Kolejność, w którym są wyświetlane wiele reguł ma wpływ na sposób obsługi. Kolejne reguły mogą zastąpić akcje określone przez poprzednie reguły.
    > 
+
 3. Wprowadź nazwę w **nazwę / opis** pola tekstowego.
+
 4. Określ typ żądań, których dotyczy reguła. Użyj domyślnego warunku dopasowania **zawsze**. 
    
    ![Warunek dopasowania reguły CDN](./media/cdn-rules-engine/cdn-request-type.png)
@@ -71,7 +75,8 @@ Aby uzyskać dostęp do aparatu reguł, należy najpierw wybrać **Zarządzaj** 
    > Aby uzyskać szczegółową listę warunków dopasowania, zobacz [zasady warunków dopasowania aparat](cdn-rules-engine-reference-match-conditions.md).
    > 
    > 
-1. Aby dodać nową funkcję, zaznacz  **+**  znajdujący się obok **funkcji**.  Na liście rozwijanej po lewej stronie wybierz **życie wewnętrzny Max-Age**.  W wyświetlonym polu tekstowym wprowadź **300**. Nie należy zmieniać pozostałe wartości domyślne.
+
+5. Aby dodać nową funkcję, zaznacz **+** znajdujący się obok **funkcji**.  Na liście rozwijanej po lewej stronie wybierz **życie wewnętrzny Max-Age**.  W wyświetlonym polu tekstowym wprowadź **300**. Nie należy zmieniać pozostałe wartości domyślne.
    
    ![Funkcja reguły CDN](./media/cdn-rules-engine/cdn-new-feature.png)
    
@@ -83,17 +88,18 @@ Aby uzyskać dostęp do aparatu reguł, należy najpierw wybrać **Zarządzaj** 
    > Aby uzyskać szczegółową listę funkcji, zobacz [reguły aparat funkcji](cdn-rules-engine-reference-features.md).
    > 
    > 
-1. Kliknij przycisk **Dodaj** przycisk, aby zapisać nową regułę.  Nowa reguła teraz oczekuje na zatwierdzenie. Po jej zatwierdzeniu zmiany stanu z **oczekujące XML** do **Active XML**.
+
+6. Wybierz **Dodaj** Aby zapisać nową regułę.  Nowa reguła teraz oczekuje na zatwierdzenie. Po jej zatwierdzeniu zmiany stanu z **oczekujące XML** do **Active XML**.
    
    > [!IMPORTANT]
-   > Zmiany zasad może potrwać do 90 minut propagację za pośrednictwem sieci CDN.
+   > Zmiany zasad może potrwać do 10 minut propagację za pośrednictwem usługi Azure CDN.
    > 
    > 
 
 ## <a name="see-also"></a>Zobacz także
 * [Omówienie usługi Azure CDN](cdn-overview.md)
-* [Odwołanie do aparatu reguł](cdn-rules-engine-reference.md)
-* [Warunki uzgadniania aparatu reguł](cdn-rules-engine-reference-match-conditions.md)
+* [Dokumentacja aparatu reguł](cdn-rules-engine-reference.md)
+* [Warunki dopasowań aparatu reguł](cdn-rules-engine-reference-match-conditions.md)
 * [Wyrażenia warunkowe aparatu reguł](cdn-rules-engine-reference-conditional-expressions.md)
 * [Funkcje aparatu reguł](cdn-rules-engine-reference-features.md)
 * [Azure piątki: Usługi Azure CDN zaawansowanych nowych funkcji premium](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (klip wideo)

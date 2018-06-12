@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 22b233e23c5c4609990bb6ba6148fe24d3d82c4b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8763f1dca110a43586619c09f5d25c340c177b09
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641353"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300661"
 ---
 # <a name="azure-identity-management-security-overview"></a>Przegląd zabezpieczeń zarządzania tożsamość platformy Azure
 Pomocy firmy Microsoft tożsamościami i dostępem zarządzania rozwiązań IT ochronę dostępu do aplikacji i zasobów w centrum danych firmy i w chmurze. Taką ochronę umożliwia dodatkowe poziomy sprawdzania poprawności, takich jak uwierzytelnianie wieloskładnikowe i zasady dostępu warunkowego. Monitorowania podejrzanych działań przez zaawansowane zabezpieczenia raportowania, inspekcji i alerty, pomaga ograniczyć potencjalne problemy. [Azure Active Directory Premium](../active-directory/active-directory-editions.md) umożliwia logowanie jednokrotne (SSO) do tysięcy oprogramowania chmury jako aplikacje usługi (SaaS) i dostęp do aplikacji sieci web, że można uruchomić lokalnie.
@@ -58,7 +58,7 @@ Więcej informacji:
 
 * [Omówienie logowania jednokrotnego](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../active-directory/manage-apps/what-is-single-sign-on.md)
-* [Integrowanie usługi Azure Active Directory logowania jednokrotnego dla aplikacji SaaS](../active-directory/active-directory-enterprise-apps-manage-sso.md)
+* [Integrowanie usługi Azure Active Directory logowania jednokrotnego dla aplikacji SaaS](../active-directory/manage-apps/configure-single-sign-on-portal.md)
 
 ## <a name="reverse-proxy"></a>Zwrotny serwer proxy
 Serwera Proxy aplikacji usługi Azure AD umożliwia publikowanie aplikacji lokalnych, takich jak [SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US) witryn, [aplikacji Outlook Web App](https://technet.microsoft.com/library/jj657718.aspx), i [IIS](http://www.iis.net/)— na podstawie aplikacji w sieci prywatnej i zapewnia bezpieczny dostęp do użytkowników spoza sieci. Serwer Proxy aplikacji zapewnia dostęp zdalny i logowanie Jednokrotne dla wielu typów lokalnej sieci web aplikacji z tysiącami aplikacji SaaS, które obsługuje usługę Azure AD. Pracownicy mogą logować się do aplikacji z domu na ich własnych urządzeń i uwierzytelniania za pośrednictwem tego serwera proxy oparte na chmurze.

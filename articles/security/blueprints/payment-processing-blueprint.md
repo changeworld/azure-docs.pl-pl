@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
 ms.author: jomolesk
-ms.openlocfilehash: 06151b211a03a971e549e88817770ef096f3f603
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 03f13c0b1ae209cc3da211a252a9a735faad34d0
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839430"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301375"
 ---
 # <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Azure zabezpieczeń i zgodności plan - środowisk standardem PCI DSS przetwarzania płatności
 
@@ -169,8 +169,6 @@ Każdy z warstw sieci ma dedykowany sieciowej grupy zabezpieczeń (NSG):
 - Grupa zabezpieczeń sieci obwodowej dla zapory i zapory aplikacji sieci Web dla bramy aplikacji
 - Grupa NSG do zarządzania jumpbox (bastionu hosta)
 - Grupa NSG dla środowiska usługi aplikacji
-
-Każdy z grup NSG mieć określone porty i protokoły otwarty do bezpiecznego i prawidłowe funkcjonowanie rozwiązania. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - grupy zabezpieczeń sieci](#network-security-groups).
 
 Każdy z grup NSG mieć określone porty i protokoły otworzyć bezpiecznego i poprawne funkcjonowania rozwiązania. Ponadto następujące konfiguracje są włączone dla każdej grupy NSG:
 - Włączone [dzienników diagnostycznych oraz zdarzenia](/azure/virtual-network/virtual-network-nsg-manage-log) są przechowywane na koncie magazynu 

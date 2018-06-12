@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
-ms.openlocfilehash: f1cf83044eb4f001ba341cabd0771b267c3f996d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 06fd2f3ef4a17c5626afc95ed8ae5999778ebda6
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293164"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Tworzenie wyrażeń na potrzeby mapowań atrybutów w usłudze Azure Active Directory
 Po skonfigurowaniu udostępniania do aplikacji SaaS, jest jeden z typów mapowań atrybutów, które można określić mapowanie wyrażenia. W tym przypadku należy napisać wyrażenie przypominającej skryptu, które pozwala na przekształcanie danych użytkowników do formatów, które są bardziej dozwolone dla aplikacji SaaS.
@@ -251,12 +252,12 @@ Jeśli kod stanu nie odpowiada żadnemu z wstępnie zdefiniowanych opcji, należ
 * **Dane wejściowe** (stan): "QLD"
 * **Dane wyjściowe**: "Australii/Brisbane"
 
-## <a name="related-articles"></a>Powiązane artykuły
+## <a name="related-articles"></a>Pokrewne artykuły
 * [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](active-directory-apps-index.md)
 * [Automatyzowanie użytkownika udostępniania/anulowania obsługi do aplikacji SaaS](active-directory-saas-app-provisioning.md)
 * [Dostosowywanie mapowań atrybutów do inicjowania obsługi użytkowników](active-directory-saas-customizing-attribute-mappings.md)
 * [Filtry zakresu dla Inicjowanie obsługi użytkowników](active-directory-saas-scoping-filters.md)
-* [Włączanie automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji przy użyciu SCIM](active-directory-scim-provisioning.md)
+* [Włączanie automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji przy użyciu SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Powiadomienia aprowizacji kont](active-directory-saas-account-provisioning-notifications.md)
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS](active-directory-saas-tutorial-list.md)
 

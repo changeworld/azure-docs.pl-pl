@@ -1,24 +1,20 @@
 ---
-title: "Azure wersji schematu konfiguracji rozszerzenia diagnostyki i historię | Dokumentacja firmy Microsoft"
-description: "Właściwe dla zbierania liczników wydajności w maszynach wirtualnych platformy Azure, zestawy skalowania maszyny Wirtualnej, sieci szkieletowej usług i usługi w chmurze."
-services: monitoring-and-diagnostics
-documentationcenter: .net
+title: Azure Historia wersji schematu konfiguracji diagnostyki rozszerzenia
+description: Właściwe dla zbierania liczników wydajności w maszynach wirtualnych platformy Azure, zestawy skalowania maszyny Wirtualnej, sieci szkieletowej usług i usługi w chmurze.
+services: azure-monitor
 author: rboucher
-manager: carmonm
-editor: 
-ms.assetid: 
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: reference
 ms.date: 05/16/2017
 ms.author: robb
-ms.openlocfilehash: 45a092452bc702a6a593cd6c21a8d2eaf4ff44bd
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.component: diagnostic-extension
+ms.openlocfilehash: 47fb598e9a0e722d51493fda1ff5180d4b022524
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262202"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure wersji schematu konfiguracji rozszerzenia diagnostyki i historii
 Indeksy tej strony wersji schematu rozszerzenia diagnostyki Azure dostarczana jako część zestawu SDK platformy Microsoft Azure.  
@@ -37,7 +33,7 @@ Rozszerzenia Azure Diagnostics jest używany z innymi produktami firmy Microsoft
 
 ## <a name="azure-sdk-and-diagnostics-versions-shipping-chart"></a>Azure wersji zestawu SDK i informacji diagnostycznych wysyłania wykresu  
 
-|Wersja zestawu SDK platformy Azure | Wersja rozszerzenia diagnostyki | Model|  
+|Wersja zestawu SDK platformy Azure | Wersja rozszerzenia diagnostyki | Modelowanie|  
 |------------------|-------------------------------|------|  
 |1.x               |1.0                            |plug-in|  
 |2.0 - 2.4         |1.0                            |plug-in|  

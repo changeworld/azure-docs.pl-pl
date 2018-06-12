@@ -15,11 +15,12 @@ ms.date: 10/12/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 16f008c6a6f97a791122a3b441c4c09eaf7eadde
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: dfbabb3bc2702e7c6ab5d0ba5c809a1bd04d0bbc
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293011"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Zrozumienie łączniki serwera Proxy aplikacji usługi Azure AD
 
@@ -164,6 +165,6 @@ Można zbadać stanu usługi w oknie usługi. Łącznik obejmuje dwie usługi sy
 
 * [Publikowanie aplikacji w odrębnych sieci i lokalizacje przy użyciu grup łącznika](application-proxy-connector-groups.md)
 * [Praca z istniejącym lokalnych serwerów proxy](application-proxy-configure-connectors-with-proxy-servers.md)
-* [Rozwiązywanie problemów z serwera Proxy aplikacji i łącznika](../active-directory-application-proxy-troubleshoot.md)
+* [Rozwiązywanie problemów z serwera Proxy aplikacji i łącznika](application-proxy-troubleshoot.md)
 * [Jak zainstalować łącznik serwera Proxy aplikacji Azure AD w trybie dyskretnym](application-proxy-register-connector-powershell.md)
 

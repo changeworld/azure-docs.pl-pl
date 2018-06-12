@@ -11,17 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 06/11/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 2808847642639069e60102b195ac97957c8593f0
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: b9f92b4d85e17bc848d82be413df1d0dad7c8548
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294942"
 ---
 # <a name="create-sql-databases"></a>Tworzenie bazy danych SQL
-Samoobsługowe baz danych są realizowane za pośrednictwem portalu użytkowników. Użytkownik musi subskrypcji, która ma oferty zawiera usługę bazy danych.
+Samoobsługowe baz danych są realizowane za pośrednictwem portalu użytkowników. Użytkownik Azure stos musi subskrypcji, która ma oferty zawiera usługę bazy danych SQL.
 
 1. Zaloguj się do [stosu Azure](azure-stack-poc.md) portalu użytkowników (Administratorzy usług mogą również korzystać z portalu administratora).
 

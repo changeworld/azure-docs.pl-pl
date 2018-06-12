@@ -1,6 +1,6 @@
 ---
-title: "Lepiej wykorzystać usługę Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Po pierwsze kroki z usługą Application Insights, poniżej przedstawiono podsumowanie funkcji, które można eksplorować."
+title: Lepiej wykorzystać usługę Azure Application Insights | Dokumentacja firmy Microsoft
+description: Po pierwsze kroki z usługą Application Insights, poniżej przedstawiono podsumowanie funkcji, które można eksplorować.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 167f0175b2c5de804a4251307a7b16e5e40a516a
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 2f03083367de4e818bdc953ab76c28ff687f0a48
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294340"
 ---
 # <a name="more-telemetry-from-application-insights"></a>Więcej danych telemetrycznych z usługi Application Insights
 Po utworzeniu [dodać usługi Application Insights w kodzie ASP.NET](app-insights-asp-net.md), jest kilka rzeczy, które można wykonać, aby uzyskać większą telemetrii. 

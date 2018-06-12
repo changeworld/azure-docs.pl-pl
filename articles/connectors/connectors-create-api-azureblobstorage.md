@@ -2,7 +2,7 @@
 title: Łączenie się z magazynem obiektów blob platformy Azure - Azure Logic Apps | Dokumentacja firmy Microsoft
 description: Tworzenie i zarządzanie nimi obiekty BLOB w magazynie Azure z usługą Azure Logic Apps
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 ms.author: estfan
 ms.date: 05/21/2018
 ms.topic: article
@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 15d737cd85f70717bfdf15dfb3d179f977b63c72
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 49d08135dee4568d1a9d65ec2d22d17ee3bda2ea
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34723436"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294683"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Tworzenie i zarządzanie nimi obiekty BLOB w magazynie obiektów blob platformy Azure z usługą Azure Logic Apps
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: d27e687acf62e4a1e96f1bb49607618dff45512b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ef1fa64a276926a35dbf98646317bfe29200bb22
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628508"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261682"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Użyj zestawy urządzeń w aplikacji Azure IoT centralnej
 
@@ -86,10 +86,40 @@ Po utworzeniu zestawu urządzeń, można skonfigurować jego **pulpitu nawigacyj
 
     > [!NOTE]
     > Można dodać wiele obrazów, łączy i siatki.
-
-1. Wyłącz **tryb projektowania**.
+  
+    1. Wyłącz **tryb projektowania**.
 
     ![Trybu projektowania wyłączone](media/howto-use-device-sets/image10.png)
+
+
+### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>Konfigurowanie Mapa lokalizacji w urządzeniu ustawia pulpitu nawigacyjnego 
+Można dodać mapy lokalizacji w celu wizualizowania lokalizacji urządzenia ustawia na mapie. 
+
+Aby można było dodać Mapa lokalizacji urządzeniu ustawia pulpitu nawigacyjnego musi mieć właściwość skonfigurowanej lokalizacji w szablonie urządzenia, zobacz [utworzyć właściwość lokalizacji obsługiwane przez usługę Azure mapy](howto-set-up-template.md).
+
+
+1. Na pulpicie nawigacyjnym zestawy urządzenia wybierz mapę z biblioteki. 
+
+    ![Urządzenie ustawia mapy pulpitu nawigacyjnego](media/howto-use-device-sets/LocationMaps1.png)
+
+
+2. Nadaj tytuł, a następnie wybierz właściwość lokalizacji wcześniej skonfigurowanych jako część programu właściwości urządzenia.
+
+    ![Konfigurowanie mapowania pulpitu nawigacyjnego](media/howto-use-device-sets/LocationMaps2.png)
+
+3. Zapisz i zobaczą mapy kafelka wyświetlanie lokalizacji z urządzeń w zestawie urządzenia.
+
+    ![Zapisywanie map pulpitu nawigacyjnego](media/howto-use-device-sets/LocationMaps3.png)
+
+
+5. Teraz, gdy operator widoków pulpitu nawigacyjnego zestawy urządzenia, może on zobaczyć wszystkie Kafelki zostały skonfigurowane, włącznie z lokalizacją mapy w celu wizualizowania lokalizacji urządzenia jeden rzut oka!
+
+    ![Widok pulpitu nawigacyjnego mapy — Operator](media/howto-use-device-sets/LocationMaps4.png)
+
+    Będzie można zmienić rozmiar mapy w celu żądane rozmiary.
+
+
+
 
 ## <a name="configure-the-list-for-your-device-set"></a>Konfigurowanie listy dla zestawu urządzeń
 

@@ -1,24 +1,19 @@
 ---
-title: "Zachowanie alertów programu SMS w grupach akcji | Dokumentacja firmy Microsoft"
-description: "Format wiadomości SMS i odpowiada na wiadomości SMS, aby anulować subskrypcję, należy dokonać ponownej subskrypcji lub prosić o pomoc."
+title: Zachowanie alertów programu SMS w grupach akcji
+description: Format wiadomości SMS i odpowiada na wiadomości SMS, aby anulować subskrypcję, należy dokonać ponownej subskrypcji lub prosić o pomoc.
 author: dkamstra
-manager: chrad
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: monitoring
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
-ms.openlocfilehash: ce6908de0f6bcc30d1ee846fe92171a0cb589cbb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.component: alerts
+ms.openlocfilehash: f2f463f6c428ce6c72e2640472376fa17a2bfe5a
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263011"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>Zachowanie w grupach akcji alertów programu SMS
 ## <a name="overview"></a>Przegląd ##
@@ -41,7 +36,7 @@ Odbiornik programu SMS, skonfigurowany jako część grupy akcji odbiera wiadomo
 | WŁĄCZ <Action Group Short name> | Ponownie włącza programu SMS z grupy akcji |
 | STOP | Wyłącza dalsze SMS ze wszystkich grup, akcja |
 | POCZĄTEK | Ponownie włącza SMS ze wszystkich grup, akcja |
-| POMOC | Odpowiedź jest wysyłana do użytkownika z łączem do tego artykułu. |
+| HELP | Odpowiedź jest wysyłana do użytkownika z łączem do tego artykułu. |
 
 >[!NOTE]
 >Jeśli użytkownik anulował z alertów programu SMS, ale jest następnie dodawana do nowej grupy akcji; BĘDĄ one otrzymywać alerty programu SMS dla tej nowej grupy akcji, ale pozostaje anulować ze wszystkich grup poprzedniej akcji.

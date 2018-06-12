@@ -1,24 +1,19 @@
 ---
-title: "Omówienie metryk w Microsoft Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak dostosować monitorowania wykresów na platformie Azure."
+title: Omówienie metryki w Monitorze systemu Azure
+description: Dowiedz się, jak dostosować monitorowania wykresów na platformie Azure.
 author: rboucher
-manager: carmonm
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: c36031eb-4df5-4cd5-9479-311d493a40d2
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 06/06/2017
 ms.author: robb
-ms.openlocfilehash: 3f9ebb0f5737714dd685f0dcc1ff4b1c0c89528f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: metrics
+ms.openlocfilehash: 878ba004e7572ad78f574c15fd76c8868b281117
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262260"
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Omówienie metryk w Microsoft Azure
 Wszystkie usługi Azure śledzić kluczowych metryk, które umożliwiają monitorowanie kondycji, wydajności, dostępności i użyciu usług. Te metryki można wyświetlić w portalu Azure, i umożliwia także [interfejsu API REST](https://msdn.microsoft.com/library/azure/dn931930.aspx) lub [zestawu .NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) do programowy dostęp pełny zestaw metryki.
@@ -60,7 +55,7 @@ W bloku zasobów, które mają przydziały również widoczna przydziały do uż
 
 Tak jak w metryki, możesz użyć [interfejsu API REST](https://msdn.microsoft.com/library/azure/dn931963.aspx) lub [zestawu .NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) do programowy dostęp pełny zestaw przydziały do użycia.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Odbieranie powiadomień o alertach](insights-receive-alert-notifications.md) po każdej zmianie metryki przekracza próg.
 * [Włączanie monitorowania i diagnostyki](insights-how-to-use-diagnostics.md) zbierania szczegółowych o dużej częstotliwości metryk usługi.
 * [Automatyczne skalowanie liczby wystąpień](insights-how-to-scale.md) się upewnić, że usługa jest dostępna i elastyczny.

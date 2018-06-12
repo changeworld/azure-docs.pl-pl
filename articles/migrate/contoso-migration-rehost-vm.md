@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/30/2018
+ms.date: 06/11/2018
 ms.author: raynew
-ms.openlocfilehash: 11b5e2a408d3ba514753f3510b36fce02470c6e9
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 13b36398afdf8eb4db3adeee4ebb821411d813f5
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825263"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300790"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms"></a>Migracja Contoso: Rehost aplikację lokalnie na maszynach wirtualnych platformy Azure
 
@@ -26,21 +26,22 @@ Ten dokument jest jedną z szeregu artykuły, które pokazują, jak fikcyjnej fi
 
 **Artykuł** | **Szczegóły** | **Stan**
 --- | --- | ---
-Artykuł 1: omówienie | Zawiera omówienie strategii migracji firmy Contoso, serii artykułu i przykładowe aplikacje, których będziemy używać. | Dostępne
-Artykuł 2: Wdrażanie infrastruktury platformy Azure | W tym artykule opisano, jak Contoso przygotowuje jego lokalnymi i infrastruktury platformy Azure do migracji. Infrastruktura jest używana w przypadku wszystkich scenariuszy migracji Contoso. | Dostępne
-Artykuł 3: Oceny zasobów lokalnych  | Pokazuje, jak Contoso uruchamia ocenę ich lokalnych dwuwarstwowa SmartHotel aplikacji uruchomionej na VMware. Ich oceny maszyn wirtualnych aplikacji o [migracji Azure](migrate-overview.md) usługi i bazy danych programu SQL Server aplikacji z [Asystenta migracji bazy danych Azure](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Dostępne
-Artykuł 4: Refaktoryzuj (przyrostu i zmiana), maszynach wirtualnych platformy Azure i zarządzane wystąpienia SQL (w tym artykule) | Pokazuje, jak Contoso migruje SmartHotel aplikacji na platformie Azure. Migrowania aplikacji frontonu maszyny Wirtualnej w programie [usługi Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)i przy użyciu bazy danych aplikacji [migracja bazy danych Azure](https://docs.microsoft.com/azure/dms/dms-overview) usługi migrację do zarządzanego wystąpienie serwera SQL. | Dostępne
-Artykuł 5: Zrefaktoryzuj (przyrostu i zmiana) na maszynach wirtualnych platformy Azure (w tym artykule) | Pokazuje, jak Contoso migracji aplikacji SmartHotel maszyn wirtualnych tylko przy użyciu usługi Site Recovery.
-Artykuł 6: Refaktoryzuj (przyrostu i zmiana), maszynach wirtualnych platformy Azure i grup dostępności programu SQL Server | Pokazuje, jak Contoso migruje SmartHotel aplikacji. Site Recovery ich użyć do migracji aplikacji maszyny wirtualne i usługi migracja bazy danych do migracji aplikacji bazy danych do grupy dostępności programu SQL Server. | Dostępne
-Artykuł 7: Refaktoryzuj (przyrostu i zmiany), maszynach wirtualnych platformy Azure i serwer MySQL Azure | Pokazuje, jak Contoso migruje SmartHotel aplikacji maszyn wirtualnych przy użyciu usługi Site Recovery i MySQL Workbench do migracji (kopii zapasowej i przywracania) na wystąpienie serwera Azure MySQL. | Dostępne
+[Artykuł 1: omówienie](contoso-migration-overview.md) | Zawiera omówienie strategii migracji firmy Contoso, serii artykułu i przykładowe aplikacje, których będziemy używać. | Dostępne
+[Artykuł 2: Wdrażanie infrastruktury platformy Azure](contoso-migration-infrastructure.md) | W tym artykule opisano, jak Contoso przygotowuje jego lokalnymi i infrastruktury platformy Azure do migracji. Infrastruktura jest używana w przypadku wszystkich scenariuszy migracji Contoso. | Dostępne
+[Artykuł 3: Oceny zasobów lokalnych](contoso-migration-assessment.md)  | Pokazuje, jak Contoso uruchamia ocenę ich lokalnych dwuwarstwowa SmartHotel aplikacji uruchomionej na VMware. Ich oceny maszyn wirtualnych aplikacji o [migracji Azure](migrate-overview.md) usługi i bazy danych programu SQL Server aplikacji z [Asystenta migracji bazy danych Azure](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Dostępne
+[Artykuł 4: Rehost maszyny wirtualne platformy Azure i zarządzanych wystąpienie serwera SQL](contoso-migration-rehost-vm-sql-managed-instance.md) | Pokazuje, jak Contoso migruje SmartHotel aplikacji na platformie Azure. Migrowania aplikacji frontonu maszyny Wirtualnej w programie [usługi Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)i przy użyciu bazy danych aplikacji [migracja bazy danych Azure](https://docs.microsoft.com/azure/dms/dms-overview) usługi migrację do zarządzanego wystąpienie serwera SQL. | Dostępne
+Artykuł 5: Rehost na maszynach wirtualnych platformy Azure (w tym artykule) | Pokazuje, jak Contoso migracji aplikacji SmartHotel maszyn wirtualnych tylko przy użyciu usługi Site Recovery.
+[Artykuł 6: Rehost maszyny wirtualne platformy Azure i grup dostępności programu SQL Server](contoso-migration-rehost-vm-sql-ag.md) | Pokazuje, jak Contoso migruje SmartHotel aplikacji. Site Recovery ich użyć do migracji aplikacji maszyny wirtualne i usługi migracja bazy danych do migracji aplikacji bazy danych do grupy dostępności programu SQL Server. | Dostępne
+[Artykuł 7: Rehost aplikacji systemu Linux na maszynach wirtualnych Azure](contoso-migration-rehost-linux-vm.md) | Pokazuje, jak Contoso migruje aplikacji osTicket systemu Linux na maszynach wirtualnych platformy Azure przy użyciu usługi Site Recovery. | Dostępne
+[Artykuł 8: Rehost aplikacji Linux maszyny wirtualne platformy Azure i serwerem MySQL Azure](contoso-migration-rehost-linux-vm-mysql.md) | Pokazuje, jak Contoso migruje aplikacji osTicket systemu Linux na maszynach wirtualnych platformy Azure przy użyciu usługi Site Recovery i przeprowadzanie migracji aplikacji bazy danych do wystąpienia serwera usługi MySQL Azure przy użyciu MySQL Workbench. | Dostępne
 
-W tym artykule Contoso będą migrowane dwuwarstwowa systemu Windows. Aplikacja NET SmartHotel uruchomione na maszynach wirtualnych VMware, na platformie Azure. Jeśli chcesz korzystać z tej aplikacji jest podana jako typu open source i można go pobrać z [github](https://github.com/Microsoft/SmartHotel360).
+W tym artykule Contoso będą migrowane dwuwarstwowa systemu Windows. Aplikacja NET SmartHotel uruchomione na maszynach wirtualnych VMware, na platformie Azure. Jeśli chcesz korzystać z tej aplikacji jest podana jako open source i można go pobrać z [github](https://github.com/Microsoft/SmartHotel360).
 
 
 
 ## <a name="business-drivers"></a>Czynniki biznesowe
 
-Kadry kierowniczej IT ściśle działał z ich partnerów biznesowych, aby zrozumieć mają osiągnięcie przy tej migracji:
+Kadry kierowniczej IT ściśle działał z partnerami biznesowymi zrozumienie mają osiągnięcie przy tej migracji:
 
 - **Adres rozwoju firmy**: rośnie Contoso i w związku z tym istnieje nacisk na swoich systemów lokalnych i infrastruktury.
 - **Ogranicz ryzyko**: SmartHotel aplikacji jest szczególnie ważne w firmie Contoso. Chcą przenieść ją do platformy Azure z zero ryzyka.
@@ -224,7 +225,7 @@ Aby kontynuować, ich upewnij się, że ukończył Planowanie wdrożenia, wybier
 
 ### <a name="set-up-the-source-environment"></a>Konfigurowanie środowiska źródłowego
 
-Contoso musi skonfigurować ich środowiska źródłowego. Aby to zrobić, ich Pobierz szablon OVF i użyć go do wdrożenia serwera konfiguracji usługi Site Recovery jako o wysokiej dostępności, lokalnej maszyny Wirtualnej VMware. Po skonfigurowaniu i uruchomieniu serwera konfiguracji one Zarejestruj go w magazynie tego.
+Contoso musi skonfigurować ich środowiska źródłowego. Aby to zrobić, ich Pobierz szablon OVF i użyć go do wdrożenia serwera konfiguracji usługi Site Recovery jako o wysokiej dostępności, lokalnej maszyny Wirtualnej VMware. Po skonfigurowaniu i uruchomieniu serwera konfiguracji one Zarejestruj go w magazynie.
 
 Serwer konfiguracji jest uruchamiana liczby składników:
 

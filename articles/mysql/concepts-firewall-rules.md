@@ -6,14 +6,15 @@ author: ajlam
 ms.author: andrela
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: a1ebbc088b54112ed625412a347b054fd3361782
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: bd075a98e75c6fcb609103eefe260f4d7fc216b1
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264657"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Bazy danych platformy Azure dla reguł zapory serwera MySQL
 Zapory uniemożliwić dostęp do serwera bazy danych do chwili określenia komputery, które ma uprawnienia. Zapora udziela dostępu do serwera, na podstawie źródłowego adresu IP dla każdego żądania.

@@ -15,12 +15,12 @@ ms.date: 01/20/2018
 ms.author: asmalser
 ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 96f6e2cc9b137de48a1d186739a8c76e2f1d18c1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3c115414fc6ae599342192196e256597c28e5aa6
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34590124"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293198"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Konfigurowanie rejestracji jednokrotnej do aplikacji, które nie znajdują się w galerii aplikacji usługi Azure Active Directory
 
@@ -32,7 +32,7 @@ Klienci z [Azure Active Directory Premium](active-directory-whatis.md) licencji 
 
 * Samoobsługowe integracji z dowolnej aplikacji, która obsługuje dostawców tożsamości SAML 2.0 (zainicjował SP lub inicjowane IdP)
 * Samoobsługowe integracji z dowolnej aplikacji sieci web, która ma oparty na języku HTML strony logowania przy użyciu [opartego na hasłach logowania jednokrotnego](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on)
-* Połączenie aplikacji korzystających z protokołu SCIM do inicjowania obsługi użytkowników samoobsługi ([opisanych tutaj](active-directory-scim-provisioning.md))
+* Połączenie aplikacji korzystających z protokołu SCIM do inicjowania obsługi użytkowników samoobsługi ([opisanych tutaj](manage-apps/use-scim-to-provision-users-and-groups.md))
 * Możliwość dodawania łącza do aplikacji w [uruchamiania aplikacji usługi Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) lub [panel dostępu usługi Azure AD](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users)
 
 To nie tylko aplikacji SaaS, które używają, ale ma nie jeszcze został na dodawanej do galerii aplikacji Azure AD, ale aplikacji sieci web innych firm, które organizacja został wdrożony na serwerach, które możesz kontrolować, w chmurze lub lokalnie.
@@ -123,7 +123,7 @@ Sprawdź, czy certyfikat ma:
 - Stan aktywny. Jeśli stan jest nieaktywny, Zmień stan na aktywny. Aby zmienić stan, sprawdź **Active** , a następnie Zapisz konfigurację. 
 - Poprawne powiadomień e-mail. Gdy aktywnego certyfikatu zbliża się data wygaśnięcia, usługi Azure AD wyśle powiadomienie na adres e-mail skonfigurowany w tym polu.  
 
-Aby uzyskać więcej informacji, zobacz [zarządzać certyfikatami dla federacyjnego logowania jednokrotnego w usłudze Azure Active Directory](active-directory-sso-certs.md).
+Aby uzyskać więcej informacji, zobacz [zarządzać certyfikatami dla federacyjnego logowania jednokrotnego w usłudze Azure Active Directory](manage-apps/manage-certificates-for-federated-single-sign-on.md).
 
 ### <a name="set-up-target-application"></a>Konfigurowanie aplikacji docelowej
 

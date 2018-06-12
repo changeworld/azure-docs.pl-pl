@@ -1,11 +1,11 @@
 ---
-title: "Dostosowywanie mapowań atrybutów usługi Azure AD | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jakie mapowań atrybutów dla aplikacji SaaS w usłudze Azure Active Directory są, jak można dostosować je do adresów potrzeb biznesowych."
+title: Dostosowywanie mapowań atrybutów usługi Azure AD | Dokumentacja firmy Microsoft
+description: Dowiedz się, jakie mapowań atrybutów dla aplikacji SaaS w usłudze Azure Active Directory są, jak można dostosować je do adresów potrzeb biznesowych.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 549e0b8c-87ce-4c9b-b487-b7bf0155dc77
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/13/2018
 ms.author: markvi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78d971b47ffceb8d845f21a731176834f004f12c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 565394664ab59ef5186503f708502eacc040321f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295629"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Dostosowywanie użytkownika udostępniania mapowań atrybutów dla aplikacji SaaS w usłudze Azure Active Directory
 Inicjowanie obsługi użytkowników do aplikacji SaaS innych firm, takie jak Salesforce, Google Apps i innych użytkowników usługi Microsoft Azure AD zapewnia obsługę. Jeśli użytkownik Inicjowanie obsługi administracyjnej dla aplikacji SaaS innych firm włączone, portalu Azure określa jego wartości atrybutów w postaci konfiguracji o nazwie "mapowanie atrybutu".
@@ -83,7 +84,7 @@ Grupy inicjowania obsługi administracyjnej może być opcjonalnie włączona lu
 Atrybuty udostępnione jako część grupy obiektów można dostosować w taki sam sposób jak obiekty użytkownika, opisanych powyżej. 
 
 >[!TIP]
->Inicjowanie obsługi obiektów grupy (właściwości i elementów członkowskich) to pojęcie różne od [Przypisywanie grup](active-directory-coreapps-assign-user-azure-portal.md) do aplikacji. Istnieje możliwość przypisania grupy do aplikacji, ale tylko udostępniania obiektów użytkowników znajdujących się w grupie. Obsługa administracyjna obiektów dla całej grupy nie należy używać grup w przypisaniach.
+>Inicjowanie obsługi obiektów grupy (właściwości i elementów członkowskich) to pojęcie różne od [Przypisywanie grup](manage-apps/assign-user-or-group-access-portal.md) do aplikacji. Istnieje możliwość przypisania grupy do aplikacji, ale tylko udostępniania obiektów użytkowników znajdujących się w grupie. Obsługa administracyjna obiektów dla całej grupy nie należy używać grup w przypisaniach.
 
 
 ## <a name="editing-the-list-of-supported-attributes"></a>Edytowanie listę obsługiwanych atrybutów
@@ -149,7 +150,7 @@ Ta opcja wymusi skutecznie ponownej synchronizacji dla wszystkich użytkowników
 * [Automatyzowanie użytkownika udostępniania/anulowania obsługi do aplikacji SaaS](active-directory-saas-app-provisioning.md)
 * [Tworzenie wyrażeń na potrzeby mapowań atrybutów](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Filtry zakresu dla Inicjowanie obsługi użytkowników](active-directory-saas-scoping-filters.md)
-* [Włączanie automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji przy użyciu SCIM](active-directory-scim-provisioning.md)
+* [Włączanie automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji przy użyciu SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS](active-directory-saas-tutorial-list.md)
 
 <!--Image references-->

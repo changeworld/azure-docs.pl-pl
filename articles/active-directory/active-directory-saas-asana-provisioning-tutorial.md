@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: c7e33a46940c9bf0cda5e48c07d42db9f0c7cd96
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 84fa3c5bd57e1f9f5b3eddf872307829f6c9c509
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292970"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Asana dla użytkownika automatycznego inicjowania obsługi administracyjnej.
 
@@ -42,7 +43,7 @@ Usługi Azure AD używa pojęcie o nazwie "przypisania" w celu określenia, któ
 
 Aby skonfigurować i włączyć usługę inicjowania obsługi administracyjnej, należy zdecydować, użytkowników w usłudze Azure AD, którzy potrzebują dostępu do aplikacji Asana. Następnie można przypisać tych użytkowników do aplikacji Asana, postępując zgodnie z instrukcjami poniżej:
 
-[Przypisz użytkownika do aplikacji w przedsiębiorstwie](active-directory-coreapps-assign-user-azure-portal.md)
+[Przypisz użytkownika do aplikacji w przedsiębiorstwie](manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-asana"></a>Ważne porady dotyczące przypisywania użytkowników do Asana
 
@@ -99,6 +100,6 @@ Aby uzyskać więcej informacji na temat usługi Azure AD, inicjowanie obsługi 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Zarządzanie aprowizacja konta użytkowników dla aplikacji przedsiębiorstwa](active-directory-enterprise-apps-manage-provisioning.md)
+* [Zarządzanie aprowizacja konta użytkowników dla aplikacji przedsiębiorstwa](manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 * [Konfigurowanie rejestracji jednokrotnej](active-directory-saas-asana-tutorial.md)

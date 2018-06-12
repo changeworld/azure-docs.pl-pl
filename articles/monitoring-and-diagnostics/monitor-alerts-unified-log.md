@@ -1,25 +1,19 @@
 ---
-title: Rejestrowania alertów w monitorze Azure - alerty | Dokumentacja firmy Microsoft
+title: Alerty dziennika w monitorze Azure
 description: Wyzwalanie wiadomości e-mail, powiadomienia, należy wywołać adresów URL witryny sieci Web (elementy webhook) lub automatyzacji, po spełnieniu warunków zapytania analityczne, które określisz Azure alertów.
 author: msvijayn
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: f7457655-ced6-4102-a9dd-7ddf2265c0e2
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: monitoring
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: 175e512d0bdaa84d5251f4bbdb09aed3aed436f9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: alerts
+ms.openlocfilehash: aab3c843493048291583bea111a52fe3356dc0f0
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638725"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264378"
 ---
 # <a name="log-alerts-in-azure-monitor---alerts"></a>Alerty dziennika w monitorze Azure - alertów 
 Ten artykuł zawiera szczegółowe informacje o alertach dziennika są jednego z typów obsługiwanych w ciągu nowe alerty [alerty Azure](monitoring-overview-unified-alerts.md) i zezwalają na używanie platforma do analiz platformy Azure jako podstawa alertów... Aby uzyskać więcej informacji o alertach Metryka przy użyciu dzienników, zapoznaj się [niemal alerty metryki czasu rzeczywistego](monitoring-near-real-time-metric-alerts.md)

@@ -4,7 +4,7 @@ description: Dowiedz się, jak zwiększyć szybkość transferu plików i zwięk
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.assetid: af1cddff-78d8-476b-a9d0-8c2164e4de5d
 ms.service: cdn
@@ -12,27 +12,28 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2018
-ms.author: mazha
-ms.openlocfilehash: 41e40c7e740e06654e7660c208db52fc2617d4b5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 06/11/2018
+ms.author: v-deasim
+ms.openlocfilehash: bdff57275cf123079004ada732fe782d98399d71
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260400"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Zwiększenie wydajności przez kompresowanie plików w usłudze Azure CDN
 Kompresji plików to prosta i skuteczna metoda zwiększenia szybkości transferu plików i zwiększyć wydajność ładowanie stron dzięki zmniejszeniu rozmiar tego pliku przed wysłaniem go z serwera. Kompresja plików można obniżyć koszty przepustowości i zapewnia bardziej odpowiednie środowisko dla użytkowników.
 
 Istnieją dwa sposoby, aby włączyć kompresję pliku:
 
-- Włącz kompresję na serwerze pochodzenia. W takim przypadku CDN przekazuje skompresowane pliki i dostarcza je klientom żądającym je.
-- Włącz kompresję bezpośrednio na serwerach POP w sieci CDN ("kompresji w locie"). W takim przypadku CDN kompresuje pliki i służy je dla użytkowników końcowych, nawet jeśli nie zostały skompresowane przez serwer pochodzenia.
+- Włącz kompresję na serwerze pochodzenia. W takim przypadku Azure CDN przekazuje skompresowane pliki i dostarcza je klientom żądającym je.
+- Włącz kompresję bezpośrednio na serwerach POP w sieci CDN (*kompresji w locie*). W takim przypadku CDN kompresuje pliki i służy je dla użytkowników końcowych, nawet jeśli nie zostały skompresowane przez serwer pochodzenia.
 
 > [!IMPORTANT]
-> Zmiany konfiguracji sieci CDN może zająć trochę czasu na rozpropagowanie za pośrednictwem sieci: 
-- Dla **Azure CDN Standard from Microsoft** profile, propagacji zazwyczaj kończy w ciągu 10 minut. 
-- Aby uzyskać **Azure CDN Standard from Akamai** profile, propagacji zazwyczaj kończy w ciągu jednej minuty. 
-- Dla **Azure CDN Standard from Verizon** i **Azure CDN Premium from Verizon** profile, propagacji zazwyczaj kończy w ciągu 90 minut. 
+> Zmiany konfiguracji usługi Azure CDN może zająć trochę czasu na rozpropagowanie za pośrednictwem sieci: 
+- W przypadku profili usługi **Azure CDN Standard from Microsoft** propagacja zwykle trwa do 10 minut. 
+- W przypadku profili usługi **Azure CDN Standard from Akamai** propagacja zwykle trwa mniej niż jedną minutę. 
+- Aby uzyskać **Azure CDN Standard from Verizon** i **Azure CDN Premium from Verizon** profile, propagacji zazwyczaj kończy w ciągu 10 minut. 
 >
 > Jeśli podczas konfigurowania kompresji po raz pierwszy dla punktu końcowego CDN, należy wziąć pod uwagę oczekiwania 1 – 2 godz. przed Rozwiązywanie problemów z do upewnij się, że ustawienia kompresji zostaną rozpropagowane do lokalizacji POP.
 > 
@@ -75,7 +76,7 @@ Warstwy sieci CDN w warstwie standardowa i premium zapewniają te same funkcje k
 
 1. Na stronie profilu CDN wybierz **Zarządzaj**.
    
-    ![Wybór Zarządzanie CDN](./media/cdn-file-compression/cdn-manage-btn.png)
+    ![Wybierz Zarządzanie CDN](./media/cdn-file-compression/cdn-manage-btn.png)
    
     Zostanie otwarty w portalu zarządzania usługi CDN.
 2. Umieść kursor nad **HTTP dużych** , a następnie umieść kursor nad **ustawienia pamięci podręcznej** wysuwane okno. Wybierz **kompresji**.

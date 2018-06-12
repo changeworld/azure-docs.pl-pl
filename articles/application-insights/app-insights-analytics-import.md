@@ -1,23 +1,24 @@
 ---
-title: "Importowanie danych do analizy w usłudze Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Importuj dane statyczne, aby dołączyć za pomocą telemetrii aplikacji lub zaimportować strumienia danych do zapytania z Analytics."
+title: Importowanie danych do analizy w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
+description: Importuj dane statyczne, aby dołączyć za pomocą telemetrii aplikacji lub zaimportować strumienia danych do zapytania z Analytics.
 services: application-insights
-keywords: "Otwórz schematu, importowania danych"
-documentationcenter: 
+keywords: Otwórz schematu, importowania danych
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 963e5cfd929f57b34dcb045df82b64f870e897e2
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 688d620e19a8a6f536d134d9c4d7c837ec06bbdc
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293625"
 ---
 # <a name="import-data-into-analytics"></a>Importowanie danych do analityka
 
@@ -144,7 +145,7 @@ Wykonaj następujący proces ręcznie lub konfigurowania automatycznych systemu 
 2. [Utwórz klucz sygnatura dostępu współdzielonego dla obiektu blob](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md). Klucz powinien mieć okres ważności jeden dzień i zapewniają dostęp do odczytu.
 3. Wykonywać wywołanie interfejsu REST w celu powiadomienia usługi Application Insights, która oczekuje na dane.
 
- * Punkt końcowy:`https://dc.services.visualstudio.com/v2/track`
+ * Punkt końcowy: `https://dc.services.visualstudio.com/v2/track`
  * Metoda HTTP: POST
  * Ładunek:
 
@@ -172,7 +173,7 @@ Symbole zastępcze są:
 * `Blob URI with Shared Access Key`: Otrzymujesz to z procedury tworzenia klucza. Jest specyficzne dla obiektu blob.
 * `Schema ID`Generowane dla określonych schemat Identyfikatora schematu. Dane w tym obiekcie blob powinna być zgodna ze schematem.
 * `DateTime`: Czas, o której zostało przesłane żądanie, UTC. Możemy zaakceptować te formaty: ISO8601 (takich jak "2016-01-01-13:45:01"); Rfc822 ("śro, 14 gru 16 14:57:01 + 0000"); RFC850 ("Środa, 16-14-gru UTC 14:57:00"); RFC1123 ("śro 14 gru 2016 14:57:00 + 0000").
-* `Instrumentation key`zasobu usługi Application Insights.
+* `Instrumentation key` zasobu usługi Application Insights.
 
 Dane są dostępne w module analiz po kilku minutach.
 

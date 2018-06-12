@@ -1,8 +1,8 @@
 ---
-title: "Udostępnianie aplikacji z filtrami zakresów | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać filtrów zakresu, aby zapobiec obiektów w aplikacji, które obsługują Inicjowanie obsługi użytkowników automatycznych z obsługiwana administracyjnie, jeśli obiekt nie spełniają wymagań biznesowych."
+title: Udostępnianie aplikacji z filtrami zakresów | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać filtrów zakresu, aby zapobiec obiektów w aplikacji, które obsługują Inicjowanie obsługi użytkowników automatycznych z obsługiwana administracyjnie, jeśli obiekt nie spełniają wymagań biznesowych.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: bcfbda74-e4d4-4859-83bc-06b104df3918
@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 10/31/2017
 ms.author: markvi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e7a2322239945a529a544054c2273e37a3d65abf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d6f4f257d380d6521774afd23dbeaf6a94711c6d
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293079"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Udostępniania aplikacji na podstawie atrybutów z filtrami zakresów
 Celem tego artykułu jest wyjaśnienie, jak używać filtrów zakresu do definiowania reguł na podstawie atrybutów, które określają, użytkowników, którzy są udostępnione do aplikacji.
@@ -29,7 +30,7 @@ Filtr zakresu umożliwia Azure Active Directory (Azure AD) inicjowania obsługi 
 
 Filtrami zakresów można inaczej w zależności od typu łącznika inicjowania obsługi administracyjnej:
 
-* **Wychodzące alokacji z usługi Azure AD dla aplikacji SaaS**. W przypadku usługi Azure AD w systemie źródłowym [przypisań użytkowników i grup](active-directory-coreapps-assign-user-azure-portal.md) są najczęściej spotykaną metodą określania użytkowników, którzy znajdują się w zakresie udostępniania. Te przydziały również są używane do włączania rejestracji jednokrotnej i podaj jedną metodę, aby zarządzać dostępem i inicjowania obsługi administracyjnej. Filtrami zakresów można opcjonalnie oprócz przydziałów lub zamiast je, aby odfiltrować użytkowników na podstawie wartości atrybutu.
+* **Wychodzące alokacji z usługi Azure AD dla aplikacji SaaS**. W przypadku usługi Azure AD w systemie źródłowym [przypisań użytkowników i grup](manage-apps/assign-user-or-group-access-portal.md) są najczęściej spotykaną metodą określania użytkowników, którzy znajdują się w zakresie udostępniania. Te przydziały również są używane do włączania rejestracji jednokrotnej i podaj jedną metodę, aby zarządzać dostępem i inicjowania obsługi administracyjnej. Filtrami zakresów można opcjonalnie oprócz przydziałów lub zamiast je, aby odfiltrować użytkowników na podstawie wartości atrybutu.
 
     >[!TIP]
     > Możesz wyłączyć inicjowania obsługi administracyjnej, zmieniając ustawienia w oparciu o przypisania aplikacji przedsiębiorstwa [zakres](active-directory-saas-app-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) menu w obszarze Ustawienia inicjowania obsługi administracyjnej **Synchronizuj wszystkich użytkowników i grup**. Przy użyciu tej opcji plus opartych na atrybutach filtrów zakresu zapewnia większą wydajność niż za pomocą przypisań na podstawie grupy.  
@@ -113,8 +114,8 @@ Filtry zakresu są skonfigurowane jako część mapowań atrybutów dla każdego
 * [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](active-directory-apps-index.md)
 * [Automatyzowanie użytkownika alokowania i anulowania alokowania do aplikacji SaaS](active-directory-saas-app-provisioning.md)
 * [Dostosowywanie mapowań atrybutów do inicjowania obsługi użytkowników](active-directory-saas-customizing-attribute-mappings.md)
-* [Zapis wyrażeń na potrzeby mapowań atrybutów](active-directory-saas-writing-expressions-for-attribute-mappings.md)
+* [Pisanie wyrażeń do mapowania atrybutów](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Powiadomienia aprowizacji kont](active-directory-saas-account-provisioning-notifications.md)
-* [Włącz automatyczne Inicjowanie obsługi użytkowników i grup z usługi Azure Active Directory do aplikacji za pomocą SCIM](active-directory-scim-provisioning.md)
+* [Włącz automatyczne Inicjowanie obsługi użytkowników i grup z usługi Azure Active Directory do aplikacji za pomocą SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS](active-directory-saas-tutorial-list.md)
 

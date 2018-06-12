@@ -3,8 +3,8 @@ title: Ogranicz zawartość sieci Azure CDN według kraju | Dokumentacja firmy M
 description: Dowiedz się, jak ograniczyć dostęp do treści Azure CDN przy użyciu funkcji filtrowania geo.
 services: cdn
 documentationcenter: ''
-author: lichard
-manager: akucer
+author: dksimpson
+manager: cfowler
 editor: ''
 ms.assetid: 12c17cc5-28ee-4b0b-ba22-2266be2e786a
 ms.service: cdn
@@ -12,13 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
-ms.author: rli
-ms.openlocfilehash: bb757ab115d03ab04dac4468d23f446696a971a9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 06/11/2018
+ms.author: v-deasim
+ms.openlocfilehash: 93321c4c8a7f8d79835d702ca07132eed94f6493
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260756"
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>Ogranicz zawartość sieci Azure CDN według kraju
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 05/07/2018
 Gdy użytkownik zażąda zawartości, domyślnie, niezależnie od tego, w którym użytkownik wprowadzone tego żądania z obsługiwanej zawartości. W niektórych przypadkach można ograniczyć dostęp do zawartości według kraju. W tym artykule opisano sposób użycia *filtrowania geograficznie* funkcji, aby skonfigurować usługę, aby umożliwić lub zablokować dostęp według kraju.
 
 > [!IMPORTANT]
-> Produkty Azure CDN wszystkie mają te same funkcje filtrowania geograficznie, ale ma niewielkie różnice w te numerów kierunkowych, których obsługują. Zobacz krok 3 dla łącza do różnic.
+> Produkty Azure CDN wszystkie mają te same funkcje filtrowania geograficznie, ale ma niewielkie różnice w te numerów kierunkowych, których obsługują. Aby uzyskać więcej informacji, zobacz [Azure CDN numerów kierunkowych](https://msdn.microsoft.com/library/mt761717.aspx).
 
 
 Informacji o kwestiach dotyczących konfigurowania tego typu ograniczeń znajduje się w temacie [zagadnienia](cdn-restrict-access-by-country.md#considerations).  
@@ -64,15 +65,18 @@ Na przykład reguła blokowania /Photos/Strasburgu/będzie filtrować pliki w ty
     http://<endpoint>.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg
 
 
-### <a name="country-codes"></a>Kody krajów
-Funkcję filtrowania geograficznie używa numerów kierunkowych do definiowania krajów, z których będą dozwolone lub blokowane dla katalogu zabezpieczonych żądanie. Mimo że wszystkie produkty Azure CDN mają te same funkcje filtrowania geograficznie, jest niewielkie różnice w kodów kraju, których obsługują. Aby uzyskać informacje, zobacz [Azure CDN numerów kierunkowych](https://msdn.microsoft.com/library/mt761717.aspx). 
+### <a name="country-codes"></a>Kod kraju
+Funkcję filtrowania geograficznie używa numerów kierunkowych do definiowania krajów, z których będą dozwolone lub blokowane dla katalogu zabezpieczonych żądanie. Mimo że wszystkie produkty Azure CDN mają te same funkcje filtrowania geograficznie, jest niewielkie różnice w kodów kraju, których obsługują. Aby uzyskać więcej informacji, zobacz [Azure CDN numerów kierunkowych](https://msdn.microsoft.com/library/mt761717.aspx). 
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 * Zmiany w konfiguracji filtrowania kraju nie będą obowiązywać natychmiast:
-   * Dla **Azure CDN Standard from Microsoft** profile, propagacji zazwyczaj kończy w ciągu 10 minut. 
-   * Aby uzyskać **Azure CDN Standard from Akamai** profile, propagacji zazwyczaj kończy w ciągu jednej minuty. 
-   * Dla **Azure CDN Standard from Verizon** i **Azure CDN Premium from Verizon** profile, propagacji zazwyczaj kończy w ciągu 90 minut.  
+   * W przypadku profili usługi **Azure CDN Standard from Microsoft** propagacja zwykle trwa do 10 minut. 
+   * W przypadku profili usługi **Azure CDN Standard from Akamai** propagacja zwykle trwa mniej niż jedną minutę. 
+   * Aby uzyskać **Azure CDN Standard from Verizon** i **Azure CDN Premium from Verizon** profile, propagacji zazwyczaj kończy w ciągu 10 minut. 
+ 
 * Ta funkcja nie obsługuje symboli wieloznacznych (na przykład "*").
+
 * Konfiguracja filtrowania geograficznie skojarzony ze ścieżką względną będzie cyklicznie zastosowanych do tej ścieżki.
-* Tylko jedna reguła może odnosić się do tej samej ścieżce względnej (nie można utworzyć wiele filtrów kraju, które wskazują na tej samej ścieżce względnej. Jednak folder może mieć wiele filtrów kraju. Jest to spowodowane cykliczne rodzaj filtry kraju. Innymi słowy podfolderze folderu wcześniej skonfigurowane można przypisać filtru innego kraju.
+
+* Tylko jedna reguła może odnosić się do tej samej ścieżki względnej. Oznacza to, że nie można utworzyć wiele filtrów kraju, które wskazują na tej samej ścieżce względnej. Jednak folderu może mieć wiele filtrów kraju, ze względu na specyfikę cykliczne filtrów kraju. Innymi słowy podfolderze folderu wcześniej skonfigurowane można przypisać filtru innego kraju.
 

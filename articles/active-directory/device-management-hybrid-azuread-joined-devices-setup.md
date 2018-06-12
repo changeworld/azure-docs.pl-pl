@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 728eb81d360af0d62d22cd6168b9e16edceefd56
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: fabe19a7348591b4a299868dfc3e618c049198c3
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714395"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261189"
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Konfigurowanie hybrydowego urządzeń przyłączonych do usługi Azure Active Directory
 
@@ -57,7 +57,8 @@ Aby zwiększyć czytelność opisy, w tym artykule używany jest termin następu
     - Windows Server 2012 R2
     - Windows Server 2012
     - Windows Server 2008 R2
-- Rejestracja urządzeń z systemem Windows niższego poziomu **jest** obsługiwane w środowiskach niefederacyjnych za pośrednictwem bezproblemowe rejestracji jednokrotnej [Azure Active Directory bezproblemowe logowanie jednokrotne](https://aka.ms/hybrid/sso).
+- Rejestracja urządzeń z systemem Windows niższego poziomu **jest** obsługiwane w środowiskach niefederacyjnych za pośrednictwem bezproblemowe rejestracji jednokrotnej [Azure Active Directory bezproblemowe logowanie jednokrotne](https://aka.ms/hybrid/sso). 
+- Rejestracja urządzeń z systemem Windows niższego poziomu **nie jest** obsługiwane w przypadku korzystania z usługi Azure AD przekazywanego uwierzytelniania.
 - Rejestracja urządzeń z systemem Windows niższego poziomu **nie jest** obsługiwane na urządzeniach przy użyciu profilów mobilnych. Jeśli używasz mobilnego profile i ustawienia, należy użyć systemu Windows 10.
 
 
@@ -81,8 +82,7 @@ Upewnij się, że następujące adresy URL są dostępne z komputerów w sieci o
 
 - https://enterpriseregistration.windows.net
 
-- https://login.microsoftonline.com
-
+- https://login.microsoftonline.com Zezwalaj na
 - https://device.login.microsoftonline.com
 
 - W organizacji STS (Sfederowanych domen)
@@ -95,7 +95,7 @@ Jeśli Twoja organizacja planuje za pomocą logowania jednokrotnego bezproblemow
 
 - https://aadg.windows.net.nsatc.net
 
-- Ponadto należy włączyć następujące ustawienie w strefie intranetu użytkownika: "Zezwalaj na pasku stanu za pomocą skryptu aktualizacji".
+- Ponadto należy włączyć następujące ustawienie w strefie intranetu użytkownika: "Zezwalaj na aktualizacje paska stanu za pomocą skryptu".
 
 Jeśli Twoja organizacja korzysta z zarządzanego konfiguracji (z systemem innym niż federacyjnych) z lokalnej usługi AD i nie używa usług AD FS możliwości utworzenia federacji z usługą Azure AD, a następnie hybrydowej usługi Azure AD join w systemie Windows 10 zależy od obiektów komputerów w usłudze AD za sync'ed do usługi Azure AD. Upewnij się, że wszelkie jednostek organizacyjnych zawierających obiekty komputerów, które muszą być hybrydowe przyłączonych do usługi Azure AD są włączone dla synchronizacji w konfiguracji synchronizacji usługi Azure AD Connect.
 

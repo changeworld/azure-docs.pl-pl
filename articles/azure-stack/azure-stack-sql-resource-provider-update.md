@@ -1,6 +1,6 @@
 ---
-title: Przy użyciu bazy danych SQL Azure stosu | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można wdrożyć baz danych jako usługa na stosie Azure i Szybkie kroki wdrażania karty dostawcy zasobów programu SQL Server.
+title: Aktualizowanie dostawcy zasobów usługi Azure SQL stosu | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej, aktualizowania dostawcy zasobów usługi Azure SQL stosu.
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,18 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2018
+ms.date: 06/11/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: fd1c2241fe22dc35ceb09e0ba3650fa0000a77b1
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 3a7656e54181c8e8e7b6b1bd39f80ce8ed01c807
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603620"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294864"
 ---
-# <a name="update-the-sql-resource-provider-adapter"></a>Zaktualizuj kartę Dostawca zasobów SQL
-Nowa karta dostawcy zasobów programu SQL może być zwolnione po zaktualizowaniu kompilacje stosu Azure. Gdy istniejącej karty nadal działać, zaleca się jak najszybciej aktualizacja do nowszej kompilacji. Aktualizacje muszą być zainstalowane w kolejności: nie można pominąć wersje (zapoznaj się z listą wersji w [dostawcy zasobów wymagania wstępne dotyczące wdrażania](.\azure-stack-sql-resource-provider-deploy.md#prerequisites)).
+# <a name="update-the-sql-resource-provider"></a>Aktualizuj dostawcę zasobów SQL
+Nowego dostawcę zasobów programu SQL może być zwolnione po zaktualizowaniu stosu Azure kompilacji. Gdy istniejącej karty nadal działać, zaleca się jak najszybciej aktualizacja do nowszej kompilacji. Aktualizacje muszą być zainstalowane w kolejności: nie można pominąć wersje (zapoznaj się z listą wersji w [dostawcy zasobów wymagania wstępne dotyczące wdrażania](.\azure-stack-sql-resource-provider-deploy.md#prerequisites)).
 
 Do aktualizacji, należy użyć dostawcy zasobów *UpdateSQLProvider.ps1* skryptu. Proces jest podobny do procesu używane do instalowania dostawcy zasobów, zgodnie z opisem w [wdrażanie dostawcy zasobów](.\azure-stack-sql-resource-provider-deploy.md) artykułu. Skrypt jest dołączana do pobierania dostawcy zasobów.
 

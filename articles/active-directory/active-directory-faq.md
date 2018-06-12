@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/14/2017
 ms.author: markvi
-ms.openlocfilehash: 09d7bfc8fc0fed5360936fbcb6a3accb791989f2
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 46a636f32cb5bbfcadf9e6ca165c8dd4349d3083
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34713715"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293147"
 ---
 # <a name="azure-active-directory-faq"></a>Często zadawane pytania dotyczące usługi Azure Active Directory
 Azure Active Directory (Azure AD) jest kompleksowym rozwiązaniem typu tożsamość jako usługa (IDaaS, Identity as a Service), które obejmuje wszystkie aspekty tożsamości, zarządzania dostępem i bezpieczeństwa.
@@ -164,7 +164,7 @@ Aby uzyskać pełną listę wstępnie zintegrowanych aplikacji, zobacz [Active D
 Aby uzyskać więcej informacji, zobacz:
 
 * [Konfigurowanie logowania jednokrotnego do aplikacji, które nie znajdują się w galerii aplikacji Azure Active Directory](application-config-sso-how-to-configure-federated-sso-non-gallery.md)
-* [Włączanie automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji przy użyciu SCIM](active-directory-scim-provisioning.md)
+* [Włączanie automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji przy użyciu SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
 
 - - -
 **Pytanie: jak użytkownicy logują się do aplikacji przy użyciu usługi Azure AD?**
@@ -192,7 +192,8 @@ Aby uzyskać więcej informacji, zobacz:
 - - -
 **Pytanie: czy mogę dodać aplikacje uruchamiane lokalnie?**
 
-**Odpowiedź:** serwer proxy aplikacji usługi Azure AD zapewnia prosty i bezpieczny dostęp do wybranych lokalnych aplikacji sieci Web. Dostęp do tych aplikacji można uzyskiwać w taki sam sposób jak w przypadku aplikacji typu oprogramowanie jako usługa (SaaS) w usłudze Azure AD. Nie ma potrzeby stosowania sieci VPN ani zmiany infrastruktury sieciowej.  
+
+  **Odpowiedź:** serwer proxy aplikacji usługi Azure AD zapewnia prosty i bezpieczny dostęp do wybranych lokalnych aplikacji internetowych. Dostęp do tych aplikacji można uzyskiwać w taki sam sposób jak w przypadku aplikacji typu oprogramowanie jako usługa (SaaS) w usłudze Azure AD. Nie ma potrzeby stosowania sieci VPN ani zmiany infrastruktury sieciowej.  
 
 Aby uzyskać więcej informacji, zobacz [How to provide secure remote access to on-premises applications](manage-apps/application-proxy.md) (Jak zapewnić bezpieczny zdalny dostęp do aplikacji lokalnych).
 

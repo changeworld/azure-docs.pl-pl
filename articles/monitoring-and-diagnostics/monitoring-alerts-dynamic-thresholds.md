@@ -1,24 +1,20 @@
 ---
-title: Tworzenie alertów z progami dynamicznych w monitorze Azure | Dokumentacja firmy Microsoft
+title: Tworzenie alertów z progami dynamicznych w Monitorze systemu Azure
 description: Tworzenie alertów z usługi machine learning na podstawie progów dynamiczne
 author: antonfrMSFT
-manager: carmonm
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 04/27/2018
-ms.author: antonfr;mbullwin
-ms.openlocfilehash: 45d2f39ff7fb2e5a22cda74cd0c794db28e351f1
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: mbullwin
+ms.reviewer: antonfr
+ms.component: alerts
+ms.openlocfilehash: 01f924e0b3a2976a3f537cb5acac842eeeaccb4b
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263317"
 ---
 # <a name="alerts-with-dynamic-thresholds-in-azure-monitor-limited-public-preview"></a>Alerty z progami dynamicznych w monitorze Azure (ograniczone publicznej wersji zapoznawczej)
 

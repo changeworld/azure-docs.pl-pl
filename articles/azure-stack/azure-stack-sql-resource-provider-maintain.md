@@ -1,6 +1,6 @@
 ---
-title: Przy użyciu bazy danych SQL Azure stosu | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można wdrożyć baz danych jako usługa na stosie Azure i Szybkie kroki wdrażania karty dostawcy zasobów programu SQL Server.
+title: Obsługa dostawcy zasobów SQL Azure stosu | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak można obsługiwać usługę dostawcy zasobów SQL na stosie Azure.
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,14 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 06/11/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 53436d131672622ae1a72a1bb84d5aa83fdbdc0c
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: e7ddbe1235b3957a1e0cb7693ee728bfdbf9db6b
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295663"
 ---
 # <a name="maintenance-operations"></a>Operacji konserwacji 
 Dostawca zasobów SQL jest zablokowane maszynę wirtualną. Aktualizacja zabezpieczeń maszyny wirtualnej dostawcy zasobów może odbywać się za pośrednictwem punktu końcowego programu PowerShell tylko tyle administracyjnej (JEA) _DBAdapterMaintenance_. Skrypt jest dostarczany z pakietem instalacyjnym RP ułatwiające te operacje.
@@ -39,19 +40,87 @@ Aby zmodyfikować ustawienia, kliknij przycisk **Przeglądaj** &gt; **zasobów a
 
 ![Zaktualizuj hasło administratora](./media/azure-stack-sql-rp-deploy/sqlrp-update-password.PNG)
 
+## <a name="secrets-rotation"></a>Rotacją kluczy tajnych 
+*Te instrukcje dotyczą tylko 1804 wersji systemów zintegrowanego stosu Azure i później. Nie należy podejmować tajny obrotu w wersji pre-1804 Azure stosu wersjach.*
+
+Gdy przy użyciu dostawców zasobów SQL i MySQL stosu Azure zintegrowanych systemów, można obracać następujące klucze tajne infrastruktury (wdrożenia):
+- Certyfikat SSL zewnętrzny [podana podczas wdrażania](azure-stack-pki-certs.md).
+- Zasób dostawcy wirtualna hasło administratora lokalnego konta podana podczas wdrażania.
+- Hasło użytkownika diagnostyczne (dbadapterdiag) dostawcy zasobów.
+
+### <a name="powershell-examples-for-rotating-secrets"></a>Przykłady programu PowerShell związany z rotacją kluczy tajnych
+
+**Zmień wszystkich kluczy tajnych w tym samym czasie**
+```powershell
+.\SecretRotationSQLProvider.ps1 `
+    -Privilegedendpoint $Privilegedendpoint `
+    -CloudAdminCredential $cloudCreds `
+    -AzCredential $adminCreds `
+    –DiagnosticsUserPassword $passwd `
+    -DependencyFilesLocalPath $certPath `
+    -DefaultSSLCertificatePassword $certPasswd  `
+    -VMLocalCredential $localCreds
+```
+
+**Zmień hasło użytkownika diagnostycznych tylko**
+```powershell
+.\SecretRotationSQLProvider.ps1 `
+    -Privilegedendpoint $Privilegedendpoint `
+    -CloudAdminCredential $cloudCreds `
+    -AzCredential $adminCreds `
+    –DiagnosticsUserPassword  $passwd 
+```
+
+**Zmień hasło konta administratora lokalnego maszyny Wirtualnej**
+```powershell
+.\SecretRotationSQLProvider.ps1 `
+    -Privilegedendpoint $Privilegedendpoint `
+    -CloudAdminCredential $cloudCreds `
+    -AzCredential $adminCreds `
+    -VMLocalCredential $localCreds
+```
+
+**Zmiana certyfikatu SSL**
+```powershell
+.\SecretRotationSQLProvider.ps1 `
+    -Privilegedendpoint $Privilegedendpoint `
+    -CloudAdminCredential $cloudCreds `
+    -AzCredential $adminCreds `
+    -DependencyFilesLocalPath $certPath `
+    -DefaultSSLCertificatePassword $certPasswd 
+```
+
+### <a name="secretrotationsqlproviderps1-parameters"></a>Parametry SecretRotationSQLProvider.ps1
+
+|Parametr|Opis|
+|-----|-----|
+|AzCredential|Azure poświadczeń dla konta administratora usługi stosu.|
+|CloudAdminCredential|Azure stosu chmury administratora domeny poświadczeń dla konta.|
+|PrivilegedEndpoint|Uprzywilejowany punktu końcowego dostępu Get-AzureStackStampInformation.|
+|DiagnosticsUserPassword|Diagnostyka hasło użytkownika.|
+|VMLocalCredential|Konto administratora lokalnego MySQLAdapter maszyny wirtualnej.|
+|DefaultSSLCertificatePassword|Domyślny certyfikat SSL (* pfx) hasła.|
+|DependencyFilesLocalPath|Ścieżka lokalna plików zależności.|
+|     |     |
+
+### <a name="known-issues"></a>Znane problemy
+**Problem**: W dziennikach rotacją kluczy tajnych nie są automatycznie zbierane Jeśli tajny obrotu niestandardowego skryptu zakończy się niepowodzeniem, po jego uruchomieniu.
+
+**Obejście**: Użyj polecenia cmdlet Get-AzsDBAdapterLogs zbierać wszystkie dzienniki dostawcy zasobów, w tym AzureStack.DatabaseAdapter.SecretRotation.ps1_*.log, w obszarze C:\Logs.
+
 ## <a name="update-the-virtual-machine-operating-system"></a>Zaktualizuj system operacyjny maszyny wirtualnej
 Istnieje kilka sposobów, aby zaktualizować maszyny Wirtualnej systemu Windows Server:
-* Zainstaluj najnowszy pakiet dostawcy zasobów przy użyciu obecnie poprawioną obrazu systemu Windows Server 2016 Core
-* Instalowanie pakietów usługi Windows Update podczas instalacji lub aktualizacji planu odzyskiwania
+- Zainstaluj najnowszy pakiet dostawcy zasobów przy użyciu obecnie poprawioną obrazu systemu Windows Server 2016 Core
+- Instalowanie pakietów usługi Windows Update podczas instalacji lub aktualizacji planu odzyskiwania
 
 ## <a name="update-the-virtual-machine-windows-defender-definitions"></a>Aktualizacji definicji programu Windows Defender maszyny wirtualnej
 Wykonaj następujące kroki w celu aktualizacji definicji programu Defender:
 
-1. Pobieranie aktualizacji definicji programu Windows Defender [Windows Defender definicji](https://www.microsoft.com/en-us/wdsi/definitions)
+1. Pobieranie aktualizacji definicji programu Windows Defender [Windows Defender definicji](https://www.microsoft.com/en-us/wdsi/definitions).
 
     Na tej stronie w obszarze "Ręcznie pobrać i zainstalować definicje" Pobierz "Windows Defender Antivirus systemu Windows 10 i Windows 8.1" 64-bitowy plik. 
     
-    Bezpośredniego łącza: https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64
+    Bezpośrednie połączenie: https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64.
 
 2. Tworzenie sesji programu PowerShell do punktu końcowego obsługi maszyny wirtualnej karty SQL RP
 3. Skopiuj plik aktualizacji definicji maszynie karty bazy danych za pomocą sesji punktu końcowego konserwacji
@@ -62,42 +131,43 @@ Wykonaj następujące kroki w celu aktualizacji definicji programu Defender:
 Poniżej przedstawiono przykładowy skrypt do aktualizacji definicji programu Defender (zastępuje adres lub nazwa maszyny wirtualnej z wartością rzeczywistą):
 
 ```powershell
-# Set credentials for the diagnostic user
-$diagPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
-$diagCreds = New-Object System.Management.Automation.PSCredential `
-    ("dbadapterdiag", $vmLocalAdminPass)$diagCreds = Get-Credential
+# Set credentials for the RP VM local admin user
+$vmLocalAdminPass = ConvertTo-SecureString "<local admin user password>" -AsPlainText -Force
+$vmLocalAdminUser = "<local admin user name>"
+$vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential `
+    ($vmLocalAdminUser, $vmLocalAdminPass)
 
 # Public IP Address of the DB adapter machine
-$databaseRPMachine  = "XX.XX.XX.XX"
+$databaseRPMachine  = "<RP VM IP address>"
 $localPathToDefenderUpdate = "C:\DefenderUpdates\mpam-fe.exe"
- 
+
 # Download Windows Defender update definitions file from https://www.microsoft.com/en-us/wdsi/definitions. 
-Invoke-WebRequest -Uri https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64 `
+Invoke-WebRequest -Uri 'https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64' `
     -Outfile $localPathToDefenderUpdate 
 
 # Create session to the maintenance endpoint
 $session = New-PSSession -ComputerName $databaseRPMachine `
-    -Credential $diagCreds -ConfigurationName DBAdapterMaintenance
+    -Credential $vmLocalAdminCreds -ConfigurationName DBAdapterMaintenance
 # Copy defender update file to the db adapter machine
 Copy-Item -ToSession $session -Path $localPathToDefenderUpdate `
-     -Destination "User:\mpam-fe.exe"
+     -Destination "User:\"
 # Install the update file
 Invoke-Command -Session $session -ScriptBlock `
-    {Update-AzSDBAdapterWindowsDefenderDefinitions -DefinitionsUpdatePackageFile "User:\mpam-fe.exe"}
+    {Update-AzSDBAdapterWindowsDefenderDefinition -DefinitionsUpdatePackageFile "User:\mpam-fe.exe"}
 # Cleanup the definitions package file and session
 Invoke-Command -Session $session -ScriptBlock `
     {Remove-AzSItemOnUserDrive -ItemPath "User:\mpam-fe.exe"}
-$session | Remove-PSSession
+$session | Remove-PSSession 
 ```
 
 
 ## <a name="collect-diagnostic-logs"></a>Zbieranie dzienników diagnostycznych
 Dostawca zasobów SQL jest zablokowane maszynę wirtualną. Jeśli okaże się konieczne zbieranie dzienników z maszyny wirtualnej, a punkt końcowy programu PowerShell tylko tyle administracyjnej (JEA) _DBAdapterDiagnostics_ znajduje się w tym celu. Dostępne są dwa polecenia za pomocą tego punktu końcowego:
 
-* Get-AzsDBAdapterLog - przygotowuje pakiet zip zawierający RP dzienników diagnostyki i umieszcza je na stacji użytkownika sesji. Polecenie można wywołać bez parametrów i zbierze ostatnich czterech godzin dzienników.
-* Remove-AzsDBAdapterLog - czyści istniejące pakiety dziennika na dostawcy zasobów maszyny Wirtualnej
+- **Get-AzsDBAdapterLog**. Przygotowuje pakiet zip zawierający RP dzienników diagnostyki i umieszcza je na stacji użytkownika sesji. Polecenie można wywołać bez parametrów i zbierze ostatnich czterech godzin dzienników.
+- **Usuń AzsDBAdapterLog**. Czyści istniejące pakiety dziennika na dostawcy zasobów maszyny Wirtualnej
 
-Konto użytkownika o nazwie _dbadapterdiag_ jest tworzony podczas aktualizacji do połączenia z punktem końcowym diagnostyki dla wyodrębniania dzienniki RP lub wdrożenia planu odzyskiwania. Hasło tego konta jest taka sama jak hasło konta administratora lokalnego podczas wdrażania/aktualizacji.
+Konto użytkownika o nazwie **dbadapterdiag** jest tworzony podczas aktualizacji do połączenia z punktem końcowym diagnostyki dla wyodrębniania dzienniki RP lub wdrożenia planu odzyskiwania. Hasło tego konta jest taka sama jak hasło konta administratora lokalnego podczas wdrażania/aktualizacji.
 
 Aby używać tych poleceń, należy utworzyć sesję zdalną programu PowerShell do maszyny wirtualnej dostawcy zasobów i wywołaj polecenie. Opcjonalnie można podać datę rozpoczęcia obowiązywania wybiegającą i ToDate parametrów. Jeśli nie określisz jeden lub oba te Data rozpoczęcia będzie czterech godzin przed bieżącym czasem i ToDate będzie bieżącego czasu.
 
@@ -105,12 +175,12 @@ Ten przykładowy skrypt pokazuje użycie tych poleceń:
 
 ```powershell
 # Create a new diagnostics endpoint session.
-$databaseRPMachineIP = '<RP VM IP>'
+$databaseRPMachineIP = '<RP VM IP address>'
 $diagnosticsUserName = 'dbadapterdiag'
-$diagnosticsUserPassword = '<see above>'
+$diagnosticsUserPassword = '<Enter Diagnostic password>'
 
 $diagCreds = New-Object System.Management.Automation.PSCredential `
-        ($diagnosticsUserName, $diagnosticsUserPassword)
+        ($diagnosticsUserName, (ConvertTo-SecureString -String $diagnosticsUserPassword -AsPlainText -Force))
 $session = New-PSSession -ComputerName $databaseRPMachineIP -Credential $diagCreds `
         -ConfigurationName DBAdapterDiagnostics
 
