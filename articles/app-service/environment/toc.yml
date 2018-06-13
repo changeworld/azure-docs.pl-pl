@@ -74,15 +74,6 @@
           href: app-service-app-service-environment-control-inbound-traffic.md
         - name: Korzystanie z zabezpieczeń warstwowych
           href: app-service-app-service-environment-layered-security.md
-    - name: Interfejs wiersza polecenia 2.0
-- name: Dokumentacja
-  items:
-    - name: Interfejs wiersza polecenia platformy Azure
-      href: /cli/azure/appservice
-    - name: Azure PowerShell
-      href: /powershell
-    - name: Interfejs API REST
-      href: /rest/api/appservice/
 - name: Zasoby
   items:
     - name: Harmonogram działania dla platformy Azure
