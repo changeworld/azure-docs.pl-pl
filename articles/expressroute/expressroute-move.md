@@ -1,11 +1,11 @@
 ---
-title: "Przenoszenie obwodów usługi ExpressRoute z modelu klasycznego do usługi Resource Manager | Microsoft Docs"
-description: "Ta strona zawiera niezbędne informacje dotyczące łączenia modeli wdrażania klasycznego i usługi Resource Manager."
+title: Przenoszenie obwodów usługi ExpressRoute z modelu klasycznego do usługi Resource Manager | Microsoft Docs
+description: Ta strona zawiera niezbędne informacje dotyczące łączenia modeli wdrażania klasycznego i usługi Resource Manager.
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: bdf01217-1a98-4ec0-a08e-d84fd37f78af
 ms.service: expressroute
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22710069"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>Przenoszenie obwodów usługi ExpressRoute z klasycznego modelu wdrażania do modelu wdrażania usługi Resource Manager | Microsoft Azure
 W tym artykule wyjaśniono przenoszenie obwodu usługi Azure ExpressRoute z klasycznego modelu wdrażania do modelu wdrażania usługi Azure Resource Manager.
