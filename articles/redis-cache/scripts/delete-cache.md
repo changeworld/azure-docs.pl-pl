@@ -1,11 +1,11 @@
 ---
-title: "Przykładowy skrypt Azure CLI — Usuń pamięć podręczna Azure Redis | Dokumentacja firmy Microsoft"
-description: "Przykładowy skrypt Azure CLI — Usuń pamięć podręczna Azure Redis"
+title: Przykładowy skrypt Azure CLI — Usuń pamięć podręczna Azure Redis | Dokumentacja firmy Microsoft
+description: Przykładowy skrypt Azure CLI — Usuń pamięć podręczna Azure Redis
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 7beded7a-d2c9-43a6-b3b4-b8079c11de4a
 ms.service: cache-redis
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29850705"
 ---
 # <a name="delete-an-azure-redis-cache"></a>Usuń pamięć podręczna Azure Redis
 

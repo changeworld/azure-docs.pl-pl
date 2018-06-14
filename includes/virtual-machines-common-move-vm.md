@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29958711"
 ---
 ## <a name="use-the-portal-to-move-a-vm-to-a-different-subscription"></a>Użyj portalu, aby przenieść Maszynę wirtualną do innej subskrypcji
 Można przenieść Maszynę wirtualną i związany z zasobów do innej subskrypcji przy użyciu portalu.

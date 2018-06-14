@@ -1,10 +1,10 @@
 ---
-title: "Wdrażanie aplikacji sieci web na platformie Azure przy użyciu Wpięć | Dokumentacja firmy Microsoft"
-description: "Konfigurowanie ciągłej integracji z serwisu GitHub do usługi Azure App Service dla aplikacji sieci web Java za pomocą Wpięć i Docker."
+title: Wdrażanie aplikacji sieci web na platformie Azure przy użyciu Wpięć | Dokumentacja firmy Microsoft
+description: Konfigurowanie ciągłej integracji z serwisu GitHub do usługi Azure App Service dla aplikacji sieci web Java za pomocą Wpięć i Docker.
 author: rloutlaw
 manager: douge
 ms.service: jenkins
-ms.search.scope: 
+ms.search.scope: ''
 ms.devlang: java
 ms.topic: article
 ms.workload: web
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29853003"
 ---
 # <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>Konfigurowanie ciągłej integracji i wdrażania w usłudze Azure App Service z Wpięć
 
