@@ -1,8 +1,8 @@
 ---
-title: "Konfigurowanie środowiska źródłowego (serwerów fizycznych do platformy Azure) | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób konfigurowania środowiska lokalnego do rozpoczęcia replikacji serwery fizyczne z systemem Windows lub Linux na platformie Azure."
+title: Konfigurowanie środowiska źródłowego (serwerów fizycznych do platformy Azure) | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób konfigurowania środowiska lokalnego do rozpoczęcia replikacji serwery fizyczne z systemem Windows lub Linux na platformie Azure.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: AnoopVasudavan
 manager: gauravd
 ms.service: site-recovery
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29812691"
 ---
 # <a name="set-up-the-source-environment-physical-server-to-azure"></a>Konfigurowanie środowiska źródłowego (serwera fizycznego na platformie Azure)
 

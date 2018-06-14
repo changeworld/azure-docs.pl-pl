@@ -1,15 +1,15 @@
 ---
-title: "Opis użycia maszyny wirtualnej platformy Azure | Dokumentacja firmy Microsoft"
-description: "Zrozumienie Szczegóły obciążenia maszyny wirtualnej"
+title: Opis użycia maszyny wirtualnej platformy Azure | Dokumentacja firmy Microsoft
+description: Zrozumienie Szczegóły obciążenia maszyny wirtualnej
 services: virtual-machines
-documentationcenter: 
+documentationcenter: ''
 author: mmccrory
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-virtual-machine
-ms.assetid: 
-ms.service: 
-ms.devlang: 
+ms.assetid: ''
+ms.service: ''
+ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26345453"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Określenie użycia maszyny wirtualnej platformy Azure
 Za analizowanie danych użycia usługi Azure, można uzyskać wgląd zaawansowanych zużycia — szczegółowe informacje, które umożliwiają lepsze kosztów zarządzania i alokacji w całej organizacji. Ten dokument zawiera nowości w szczegóły zużycie rozwiązań usługi obliczenia Azure. Więcej szczegółów na ogólne użycie platformy Azure, przejdź do [Opis rachunku](/billing/billing-understand-your-bill.md).

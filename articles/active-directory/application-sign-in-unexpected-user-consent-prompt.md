@@ -1,11 +1,11 @@
 ---
-title: "Monit o zgodę nieoczekiwany po zalogowaniu się do aplikacji | Dokumentacja firmy Microsoft"
-description: "Jak rozwiązywać problemy z, gdy użytkownik zobaczy monit o zgodę dla aplikacji, który jest zintegrowany z usługą Azure AD, która nie oczekiwano"
+title: Monit o zgodę nieoczekiwany po zalogowaniu się do aplikacji | Dokumentacja firmy Microsoft
+description: Jak rozwiązywać problemy z, gdy użytkownik zobaczy monit o zgodę dla aplikacji, który jest zintegrowany z usługą Azure AD, która nie oczekiwano
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26611812"
 ---
 # <a name="unexpected-consent-prompt-when-signing-in-to-an-application"></a>Monit o zgodę nieoczekiwany po zalogowaniu się do aplikacji
 

@@ -1,11 +1,11 @@
 ---
-title: "Wymagaj przypisanie użytkownika — usługi Azure AD | Dokumentacja firmy Microsoft"
-description: "Jak wymagają przypisania użytkownika dla aplikacji platformy Azure."
+title: Wymagaj przypisanie użytkownika — usługi Azure AD | Dokumentacja firmy Microsoft
+description: Jak wymagają przypisania użytkownika dla aplikacji platformy Azure.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 30b78cba-1e0f-472f-8314-f2250a9b91c3
 ms.service: active-directory
 ms.workload: identity
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26598833"
 ---
 # <a name="azure-ad-and-applications-require-user-assignment"></a>Usługi Azure AD i aplikacji: wymagają przypisania użytkownika
 ## <a name="requiring-user-assignment"></a>Wymaganie przypisanie użytkownika

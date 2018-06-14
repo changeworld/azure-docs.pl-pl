@@ -1,11 +1,11 @@
 ---
-title: "Rozwiązywanie problemów dotyczących ochrony punktu końcowego z Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak rozwiązywanie problemów dotyczących ochrony punktu końcowego w Centrum zabezpieczeń Azure."
+title: Rozwiązywanie problemów dotyczących ochrony punktu końcowego z Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozwiązywanie problemów dotyczących ochrony punktu końcowego w Centrum zabezpieczeń Azure.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 1599ad5f-d810-421d-aafc-892e831b403f
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/24/2017
+ms.locfileid: "23936294"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Rozwiązywanie problemów dotyczących ochrony punktu końcowego z Centrum zabezpieczeń Azure
 Centrum zabezpieczeń Azure służy do monitorowania stanu ochrony przed złośliwym kodem i to w raportach w obszarze bloku problemy ochrony punktu końcowego. Centrum zabezpieczeń zawiera wyróżnione zagadnienia, takie jak wykrytych zagrożeń i niewystarczającą ochroną, co może uniemożliwić maszynach wirtualnych (VM), a komputery narażony na zagrożenia ochrony przed złośliwym oprogramowaniem. Korzystając z informacji w obszarze **problemy z ochroną punktu końcowego**, można zidentyfikować plan, aby rozwiązać wszystkie zidentyfikowane problemy.
