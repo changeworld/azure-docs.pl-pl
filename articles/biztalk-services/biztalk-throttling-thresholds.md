@@ -1,11 +1,11 @@
 ---
-title: "Dowiedz się więcej o ograniczaniu przepustowości w usługi BizTalk Services | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat ograniczania progów i wynikowa zachowanie w czasie wykonywania dla usługi BizTalk Services. Ograniczanie opiera się na użycie pamięci i liczbę komunikatów. MABS, WABS"
+title: Dowiedz się więcej o ograniczaniu przepustowości w usługi BizTalk Services | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat ograniczania progów i wynikowa zachowanie w czasie wykonywania dla usługi BizTalk Services. Ograniczanie opiera się na użycie pamięci i liczbę komunikatów. MABS, WABS
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: f6663cf2-cda4-4bac-855e-27d2ad5c4fa4
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24102090"
 ---
 # <a name="biztalk-services-throttling"></a>BizTalk Services: Throttling (Usługa BizTalk Services: ograniczanie przepływności)
 

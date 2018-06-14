@@ -1,11 +1,11 @@
 ---
-title: "Scenariusze użycia i zagadnienia dotyczące wdrażania dla usługi Azure AD Join | Dokumentacja firmy Microsoft"
-description: "W tym artykule wyjaśniono, jak Administratorzy mogą skonfigurować funkcję Azure AD Join dla użytkowników końcowych (pracowników, studentów, innych użytkowników). Również zawiera omówienie różnych scenariuszy rzeczywistych dotyczące korzystania z usługi Azure AD Join."
+title: Scenariusze użycia i zagadnienia dotyczące wdrażania dla usługi Azure AD Join | Dokumentacja firmy Microsoft
+description: W tym artykule wyjaśniono, jak Administratorzy mogą skonfigurować funkcję Azure AD Join dla użytkowników końcowych (pracowników, studentów, innych użytkowników). Również zawiera omówienie różnych scenariuszy rzeczywistych dotyczące korzystania z usługi Azure AD Join.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: femila
 manager: mtillman
-editor: 
+editor: ''
 tags: azure-classic-portal
 ms.assetid: 81d4461e-21c8-4fdd-9076-0e4991979f62
 ms.service: active-directory
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26602435"
 ---
 # <a name="usage-scenarios-and-deployment-considerations-for-azure-ad-join"></a>Scenariusze użycia i zagadnienia dotyczące wdrażania dla usługi Azure AD Join
 ## <a name="usage-scenarios-for-azure-ad-join"></a>Scenariusze użycia dotyczące usługi Azure AD Join

@@ -21,6 +21,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32161960"
 ---
 # <a name="create-an-azure-container-service-dcos-cluster"></a>Tworzenie klastra DC/OS usługi Azure Container Service
 

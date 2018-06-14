@@ -1,9 +1,9 @@
 ---
-title: "Grupa ustawień zasad i zarządzania urządzeniami Przenośnymi | Dokumentacja firmy Microsoft"
-description: "Zawiera informacje dotyczące zasad grupy i urządzeń przenośnych ustawień zarządzania urządzeniami Przenośnymi, które powinny być używane na urządzeniach należących do firmy. Te zasady są stosowane do wszystkich danych użytkownika z urządzenia."
+title: Grupa ustawień zasad i zarządzania urządzeniami Przenośnymi | Dokumentacja firmy Microsoft
+description: Zawiera informacje dotyczące zasad grupy i urządzeń przenośnych ustawień zarządzania urządzeniami Przenośnymi, które powinny być używane na urządzeniach należących do firmy. Te zasady są stosowane do wszystkich danych użytkownika z urządzenia.
 services: active-directory
-keywords: "Co to są zasady grupy i ustawień zarządzania urządzeniami Przenośnymi roamingu stanu przedsiębiorstwa, roamingu stanu przedsiębiorstwa, chmury systemu windows"
-documentationcenter: 
+keywords: Co to są zasady grupy i ustawień zarządzania urządzeniami Przenośnymi roamingu stanu przedsiębiorstwa, roamingu stanu przedsiębiorstwa, chmury systemu windows
+documentationcenter: ''
 author: tanning
 manager: mtillman
 editor: curtand
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26614911"
 ---
 # <a name="group-policy-and-mdm-settings"></a>Ustawienia zasad grupy i zarządzania urządzeniami Przenośnymi
 Użyj tych zasad grupy i ustawienia zarządzania urządzeniami Przenośnymi dla urządzeń przenośnych tylko na urządzeniach należących do firmy, ponieważ te zasady są stosowane do wszystkich danych użytkownika z urządzenia. Stosowanie zasad zarządzania urządzeniami Przenośnymi, można wyłączyć ustawienia synchronizacji dla osobistego urządzenia należące do użytkownika będzie negatywny wpływ na korzystanie z tego urządzenia. Ponadto inne konta użytkownika na urządzeniu zostanie dotyczy także przez zasady.

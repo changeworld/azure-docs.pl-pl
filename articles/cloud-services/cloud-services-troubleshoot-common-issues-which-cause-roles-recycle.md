@@ -1,11 +1,11 @@
 ---
-title: "Typowe przyczyny odtwarzanie ról usługi w chmurze | Dokumentacja firmy Microsoft"
-description: "Rola usługi chmury, która nagle odtwarzana może spowodować znaczne przestoju. Poniżej przedstawiono niektóre typowe problemy, powodujące ról do odtwarzania, które mogą pomóc w zmniejszeniu przestoju."
+title: Typowe przyczyny odtwarzanie ról usługi w chmurze | Dokumentacja firmy Microsoft
+description: Rola usługi chmury, która nagle odtwarzana może spowodować znaczne przestoju. Poniżej przedstawiono niektóre typowe problemy, powodujące ról do odtwarzania, które mogą pomóc w zmniejszeniu przestoju.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: simonxjx
 manager: felixwu
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 533930d1-8035-4402-b16a-cf887b2c4f85
 ms.service: cloud-services
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2017
+ms.locfileid: "23984290"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>Typowe problemy, które powodują odtwarzanie ról
 W tym artykule omówiono niektóre typowe przyczyny problemów z wdrażaniem i wskazówki dotyczące rozwiązywania problemów, aby pomóc w rozwiązaniu tych problemów. Wskazanie, że istnieje problem z aplikacją jest, gdy wystąpienie roli nie można uruchomić lub jego przełączanie między Stanami inicjowania zajęty i zatrzymywanie.

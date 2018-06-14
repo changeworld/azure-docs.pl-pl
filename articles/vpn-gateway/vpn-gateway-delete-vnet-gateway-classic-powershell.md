@@ -1,16 +1,16 @@
 ---
-title: "Usuwanie bramy sieci wirtualnej: środowiska PowerShell: klasyczny Portal Azure | Dokumentacja firmy Microsoft"
-description: "Usuń bramę sieci wirtualnej w klasycznym modelu wdrażania przy użyciu programu PowerShell."
+title: 'Usuwanie bramy sieci wirtualnej: środowiska PowerShell: klasyczny Portal Azure | Dokumentacja firmy Microsoft'
+description: Usuń bramę sieci wirtualnej w klasycznym modelu wdrażania przy użyciu programu PowerShell.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: 
+ms.topic: ''
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "24994660"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>Usuwanie bramy sieci wirtualnej przy użyciu programu PowerShell (klasyczne)
 > [!div class="op_single_selector"]

@@ -1,12 +1,12 @@
 ---
-title: "Pi malina nawiązać połączenie przy użyciu środowiska Node.js w usłudze rzeczywistych czujników pakiet IoT Azure | Dokumentacja firmy Microsoft"
-description: "Za pomocą usługi Microsoft Azure IoT Starter Kit malinowe pi 3 i pakiet Azure IoT. Użyj Node.js do nawiązania połączenia zdalnego rozwiązanie monitorowania sieci Pi malina wysłać dane telemetryczne z czujników w chmurze i Odpowiedz na metody wywoływane z poziomu pulpitu nawigacyjnego rozwiązania."
-services: 
+title: Pi malina nawiązać połączenie przy użyciu środowiska Node.js w usłudze rzeczywistych czujników pakiet IoT Azure | Dokumentacja firmy Microsoft
+description: Za pomocą usługi Microsoft Azure IoT Starter Kit malinowe pi 3 i pakiet Azure IoT. Użyj Node.js do nawiązania połączenia zdalnego rozwiązanie monitorowania sieci Pi malina wysłać dane telemetryczne z czujników w chmurze i Odpowiedz na metody wywoływane z poziomu pulpitu nawigacyjnego rozwiązania.
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-suite
 ms.devlang: nodejs
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/06/2017
+ms.locfileid: "24011966"
 ---
 # <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-send-telemetry-from-a-real-sensor-using-nodejs"></a>Twoje malina Pi 3 nawiązać połączenie zdalne rozwiązanie monitorowania i wysyłania danych telemetrycznych z czujnika rzeczywistego przy użyciu środowiska Node.js
 

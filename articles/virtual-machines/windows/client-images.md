@@ -1,11 +1,11 @@
 ---
-title: "Używać obrazów klientów systemu Windows na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Jak używać korzyści z subskrypcji programu Visual Studio do wdrażania systemu Windows 7, Windows 8 lub Windows 10 w usłudze Azure scenariusze tworzenia/testowania"
+title: Używać obrazów klientów systemu Windows na platformie Azure | Dokumentacja firmy Microsoft
+description: Jak używać korzyści z subskrypcji programu Visual Studio do wdrażania systemu Windows 7, Windows 8 lub Windows 10 w usłudze Azure scenariusze tworzenia/testowania
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 91c3880a-cede-44f1-ae25-f8f9f5b6eaa4
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/25/2018
+ms.locfileid: "28103680"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Używanie klienta systemu Windows na platformie Azure scenariusze tworzenia/testowania
 Można użyć systemu Windows 7, Windows 8 lub Windows 10 Enterprise (x64) na platformie Azure scenariusze tworzenia/testowania, pod warunkiem, że masz odpowiednie subskrypcji programu Visual Studio (dawniej MSDN). W tym artykule opisano wymagania kwalifikujących się usług systemu Windows 7, Windows 8.1, Windows 10 Enterprise Azure i użyj następujących obrazów w galerii Azure.

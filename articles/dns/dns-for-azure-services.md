@@ -1,11 +1,11 @@
 ---
-title: "Za pomocą usługi Azure DNS z innymi usługami Azure | Dokumentacja firmy Microsoft"
-description: "Opis sposobu korzystania z usługi Azure DNS do rozpoznawania nazw dla innych usług platformy Azure"
+title: Za pomocą usługi Azure DNS z innymi usługami Azure | Dokumentacja firmy Microsoft
+description: Opis sposobu korzystania z usługi Azure DNS do rozpoznawania nazw dla innych usług platformy Azure
 services: dns
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure dns
 ms.assetid: e9b5eb94-7984-4640-9930-564bb9e82b78
 ms.service: dns
@@ -21,6 +21,7 @@ ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/30/2017
+ms.locfileid: "25989847"
 ---
 # <a name="how-azure-dns-works-with-other-azure-services"></a>Działanie usługi Azure DNS z innymi usługami Azure
 

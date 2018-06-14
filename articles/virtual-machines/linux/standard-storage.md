@@ -1,8 +1,8 @@
 ---
-title: "Standardowy magazyn dla dysków maszyny Wirtualnej systemu Linux na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Omówiono w nim ekonomicznego Standard Storage i dysków maszyny Wirtualnej systemu Linux niezarządzane i zarządzane."
+title: Standardowy magazyn dla dysków maszyny Wirtualnej systemu Linux na platformie Azure | Dokumentacja firmy Microsoft
+description: Omówiono w nim ekonomicznego Standard Storage i dysków maszyny Wirtualnej systemu Linux niezarządzane i zarządzane.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: yuemlu
 manager: jeconnoc
 editor: tysonn
@@ -20,5 +20,6 @@ ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/02/2017
+ms.locfileid: "23949139"
 ---
 [!INCLUDE [virtual-machines-common-standard-storage.md](../../../includes/virtual-machines-common-standard-storage.md)]

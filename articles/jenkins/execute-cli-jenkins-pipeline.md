@@ -1,12 +1,12 @@
 ---
-title: "Wykonanie interfejsu wiersza polecenia platformy Azure z Wpięć | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wdrożyć aplikację sieci web Java na platformie Azure w potoku Wpięć za pomocą wiersza polecenia platformy Azure"
+title: Wykonanie interfejsu wiersza polecenia platformy Azure z Wpięć | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wdrożyć aplikację sieci web Java na platformie Azure w potoku Wpięć za pomocą wiersza polecenia platformy Azure
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: mlearned
 manager: douge
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: jenkins
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28926934"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Wdrażanie usługi Azure App Service z Wpięć i interfejsu wiersza polecenia platformy Azure
 Aby wdrożyć aplikację sieci web Java na platformie Azure, można użyć wiersza polecenia platformy Azure w [potoku Wpięć](https://jenkins.io/doc/book/pipeline/). W tym samouczku utworzysz potok CI/CD na maszynie wirtualnej platformy Azure. Wykonasz m.in. następujące czynności:

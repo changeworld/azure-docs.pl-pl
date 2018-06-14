@@ -1,12 +1,12 @@
 ---
-title: "Korzystanie z zestawu SDK .NET dla programu Microsoft Azure StorSimple Data zadań | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak użyć zestawu .NET SDK w celu uruchomienia zadania Menedżer StorSimple danych"
+title: Korzystanie z zestawu SDK .NET dla programu Microsoft Azure StorSimple Data zadań | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak użyć zestawu .NET SDK w celu uruchomienia zadania Menedżer StorSimple danych
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27928240"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>Użyj zestawu SDK programu .net do zainicjowania transformacji danych
 

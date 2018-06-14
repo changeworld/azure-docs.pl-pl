@@ -1,11 +1,11 @@
 ---
-title: "Co to jest usługa Azure Scheduler? | Microsoft Docs"
-description: "Usługa Azure Scheduler umożliwia opisywanie w sposób deklaratywny akcji do wykonania w chmurze. Usługa następnie planuje i uruchamia te akcje automatycznie."
+title: Co to jest usługa Azure Scheduler? | Microsoft Docs
+description: Usługa Azure Scheduler umożliwia opisywanie w sposób deklaratywny akcji do wykonania w chmurze. Usługa następnie planuje i uruchamia te akcje automatycznie.
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: 52aa6ae1-4c3d-43fb-81b0-6792c84bcfae
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22715118"
 ---
 # <a name="what-is-azure-scheduler"></a>Co to jest usługa Azure Scheduler?
 Usługa Azure Scheduler umożliwia opisywanie w sposób deklaratywny akcji do wykonania w chmurze. Usługa następnie planuje i uruchamia te akcje automatycznie.  Usługa Scheduler korzysta w tym celu z witryny [Azure Portal](scheduler-get-started-portal.md), kodu, [interfejsu API REST](https://msdn.microsoft.com/library/mt629143.aspx) lub programu Azure PowerShell.

@@ -1,11 +1,11 @@
 ---
-title: "Dokumentacja usługi Azure Multi-Factor Authentication — samouczki i dokumentacja interfejsu API | Microsoft Docs"
-description: "Informacje o sposobie wdrażania uwierzytelniania wieloskładnikowego przy użyciu szeregu metod weryfikacji, które zapewniają prostotę procesu logowania. Samouczki, zestaw SDK i inne materiały."
+title: Dokumentacja usługi Azure Multi-Factor Authentication — samouczki i dokumentacja interfejsu API | Microsoft Docs
+description: Informacje o sposobie wdrażania uwierzytelniania wieloskładnikowego przy użyciu szeregu metod weryfikacji, które zapewniają prostotę procesu logowania. Samouczki, zestaw SDK i inne materiały.
 services: multi-factor-authentication
 author: czeumault
 manager: mtillman
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: multi-factor-authentication
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26630822"
 ---
 # <a name="multi-factor-authentication-documentation"></a>Dokumentacja usługi Multi-factor Authentication
 

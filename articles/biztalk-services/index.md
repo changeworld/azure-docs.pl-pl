@@ -1,11 +1,11 @@
 ---
-title: "Dokumentacja usługi Azure BizTalk Services — samouczki | Microsoft Docs"
-description: "Dowiedz się, jak usługa BizTalk Services umożliwia integrację specjalistycznych aplikacji dla firm działających w chmurze i lokalnie, takich jak SAP, Oracle EBS, SQL Server i PeopleSoft."
+title: Dokumentacja usługi Azure BizTalk Services — samouczki | Microsoft Docs
+description: Dowiedz się, jak usługa BizTalk Services umożliwia integrację specjalistycznych aplikacji dla firm działających w chmurze i lokalnie, takich jak SAP, Oracle EBS, SQL Server i PeopleSoft.
 services: biztalk-services
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: biztalk-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26625100"
 ---
 # <a name="biztalk-services-documentation"></a>Dokumentacja usługi BizTalk Services
 

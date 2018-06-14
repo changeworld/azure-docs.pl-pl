@@ -1,11 +1,11 @@
 ---
-title: "Sprawdź, kiedy określony użytkownik będą mogli uzyskać dostęp do aplikacji | Dokumentacja firmy Microsoft"
-description: "Jak ustalić, kiedy użytkownik niezwykle ważne być w stanie uzyskać dostęp do aplikacji, które zostały skonfigurowane do obsługi użytkowników z usługą Azure AD"
+title: Sprawdź, kiedy określony użytkownik będą mogli uzyskać dostęp do aplikacji | Dokumentacja firmy Microsoft
+description: Jak ustalić, kiedy użytkownik niezwykle ważne być w stanie uzyskać dostęp do aplikacji, które zostały skonfigurowane do obsługi użytkowników z usługą Azure AD
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26613627"
 ---
 # <a name="find-out-when-a-specific-user-will-be-able-to-access-an-application"></a>Ustalić, kiedy określony użytkownik będzie mógł uzyskać dostęp do aplikacji
 Używając użytkownika automatycznego inicjowania obsługi administracyjnej za pomocą aplikacji, usługi Azure AD automatycznie udostępniania i aktualizowanie kont użytkowników w aplikacji na podstawie takich elementów, jak [przypisania użytkowników i grup](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) w odstępach zaplanowanego czasu, zazwyczaj co 10 minut.

@@ -1,12 +1,12 @@
 ---
-title: "Integracja usługi Automatyzacja Azure z siatki zdarzeń | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak można automatycznie dodać tag podczas tworzenia nowej maszyny Wirtualnej i wysyłania powiadomień do Teams firmy Microsoft."
-keywords: "automatyzacji elementu runbook, zespołów, zdarzenie siatki, maszyny wirtualnej, maszyna wirtualna"
+title: Integracja usługi Automatyzacja Azure z siatki zdarzeń | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak można automatycznie dodać tag podczas tworzenia nowej maszyny Wirtualnej i wysyłania powiadomień do Teams firmy Microsoft.
+keywords: automatyzacji elementu runbook, zespołów, zdarzenie siatki, maszyny wirtualnej, maszyna wirtualna
 services: automation
-documentationcenter: 
+documentationcenter: ''
 author: eamonoreilly
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.service: automation
 ms.devlang: na
 ms.topic: tutorial
@@ -16,9 +16,10 @@ ms.date: 12/06/2017
 ms.author: eamono
 ms.openlocfilehash: 9a4d6ecf19fc96a9c7b92cf246effbf3948fb478
 ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/07/2017
+ms.locfileid: "26349074"
 ---
 # <a name="integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Integracja usługi Automatyzacja Azure z siatki zdarzeń i zespoły firmy Microsoft
 
