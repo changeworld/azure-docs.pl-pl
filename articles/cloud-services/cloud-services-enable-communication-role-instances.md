@@ -1,11 +1,11 @@
 ---
-title: "Komunikacji dla ról, usług w chmurze | Dokumentacja firmy Microsoft"
-description: "Wystąpienia roli usług w chmurze ma zdefiniowanych punktów końcowych (http, https, tcp, udp) dla nich komunikujących się z zewnątrz lub między innych wystąpień roli."
+title: Komunikacji dla ról, usług w chmurze | Dokumentacja firmy Microsoft
+description: Wystąpienia roli usług w chmurze ma zdefiniowanych punktów końcowych (http, https, tcp, udp) dla nich komunikujących się z zewnątrz lub między innych wystąpień roli.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7008a083-acbe-4fb8-ae60-b837ef971ca1
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/08/2018
+ms.locfileid: "27701894"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Włącz komunikację dla wystąpień roli w systemie azure
 Role usługi w chmurze komunikują się za pośrednictwem połączeń wewnętrznych i zewnętrznych. Połączenia zewnętrzne są nazywane **wejściowych punktów końcowych** podczas połączenia wewnętrznego są nazywane **wewnętrznych punktów końcowych**. W tym temacie opisano sposób modyfikowania [definicji usługi](cloud-services-model-and-package.md#csdef) do utworzenia punktów końcowych.

@@ -1,11 +1,11 @@
 ---
-title: "Dodawanie uwierzytelniania w systemie Android w usłudze Mobile Apps | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać funkcji Mobile Apps w usłudze Azure App Service uwierzytelniać użytkowników aplikacji systemu Android za pomocą różnych dostawców tożsamości, obejmującej Google, Facebook, Twitter i firmy Microsoft."
+title: Dodawanie uwierzytelniania w systemie Android w usłudze Mobile Apps | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać funkcji Mobile Apps w usłudze Azure App Service uwierzytelniać użytkowników aplikacji systemu Android za pomocą różnych dostawców tożsamości, obejmującej Google, Facebook, Twitter i firmy Microsoft.
 services: app-service\mobile
 documentationcenter: android
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 1fc8e7c1-6c3c-40f4-9967-9cf5e21fc4e1
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27595231"
 ---
 # <a name="add-authentication-to-your-android-app"></a>Dodawanie uwierzytelniania do aplikacji systemu Android
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]

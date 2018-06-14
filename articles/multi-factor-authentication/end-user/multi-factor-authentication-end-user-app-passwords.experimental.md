@@ -1,8 +1,8 @@
 ---
-title: "Jak używać hasła aplikacji w usłudze Azure MFA? | Microsoft Docs"
-description: "Ta strona może pomóc użytkownikom w zrozumieniu hasła aplikacji są i jakie są używane dla z uwzględnieniem usługi Azure MFA."
+title: Jak używać hasła aplikacji w usłudze Azure MFA? | Microsoft Docs
+description: Ta strona może pomóc użytkownikom w zrozumieniu hasła aplikacji są i jakie są używane dla z uwzględnieniem usługi Azure MFA.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: richagi
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/08/2018
+ms.locfileid: "27700449"
 ---
 # <a name="what-are-app-passwords-in-azure-multi-factor-authentication"></a>Co to są hasła aplikacji w usłudze Azure Multi-Factor Authentication?
 Niektóre aplikacje korzystające z przeglądarki, takie jak klienta natywnego poczty e-mail firmy Apple, który używa programu Exchange Active Sync aktualnie nie obsługują uwierzytelniania wieloskładnikowego. Uwierzytelnianie wieloskładnikowe jest włączone dla użytkownika.  To oznacza, że użytkownik nie może używać uwierzytelniania wieloskładnikowego jeśli:

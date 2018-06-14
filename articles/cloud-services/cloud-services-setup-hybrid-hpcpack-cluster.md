@@ -1,13 +1,13 @@
 ---
 title: Konfigurowanie klastra HPC Pack hybrydowe na platformie Azure | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak i do skonfigurowania hybrydowego wysokiej wydajności (HPC) klastrów obliczeniowych mały Użyj Microsoft HPC Pack i Azure"
+description: Dowiedz się, jak i do skonfigurowania hybrydowego wysokiej wydajności (HPC) klastrów obliczeniowych mały Użyj Microsoft HPC Pack i Azure
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: timlt
-editor: 
+editor: ''
 tags: hpc-pack
-ms.assetid: 
+ms.assetid: ''
 ms.service: cloud-services
 ms.workload: big-compute
 ms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2017
+ms.locfileid: "23985310"
 ---
 # <a name="set-up-a-hybrid-high-performance-computing-hpc-cluster-with-microsoft-hpc-pack-and-on-demand-azure-compute-nodes"></a>Skonfiguruj hybrydowych wysokiej wydajności obliczeniowej klastra (HPC) z pakietu Microsoft HPC Pack i węzłów obliczeń platformy Azure na żądanie
 Umożliwia Microsoft HPC Pack 2012 R2 i Azure skonfigurować małe, hybrydowego wysokiej wydajności obliczeniowej klastra (HPC). Klastra wyświetlane w tym artykule składa się z węzłem głównym HPC Pack lokalnymi i niektóre wyliczenia węzłów wdrażanie na żądanie w systemie Azure usługa w chmurze. Następnie można uruchomić zadania obliczeń w klastrze hybrydowego.
