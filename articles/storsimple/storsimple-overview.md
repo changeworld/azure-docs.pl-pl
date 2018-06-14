@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "23950287"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>Z serii StorSimple 8000: rozwiązania magazynu hybrydowego chmury
 ## <a name="overview"></a>Przegląd

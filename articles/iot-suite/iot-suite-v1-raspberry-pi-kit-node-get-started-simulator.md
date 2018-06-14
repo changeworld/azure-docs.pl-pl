@@ -1,12 +1,12 @@
 ---
-title: "Nawiązać Pi malina pakiet IoT Azure przy użyciu środowiska Node.js w usłudze symulowane telemetrii | Dokumentacja firmy Microsoft"
-description: "Za pomocą usługi Microsoft Azure IoT Starter Kit malinowe pi 3 i pakiet Azure IoT. Użyj Node.js do nawiązania połączenia zdalnego rozwiązanie monitorowania sieci Pi malina wysłać symulowanych dane telemetryczne do chmury i Odpowiedz na metody wywoływane z poziomu pulpitu nawigacyjnego rozwiązania."
-services: 
+title: Nawiązać Pi malina pakiet IoT Azure przy użyciu środowiska Node.js w usłudze symulowane telemetrii | Dokumentacja firmy Microsoft
+description: Za pomocą usługi Microsoft Azure IoT Starter Kit malinowe pi 3 i pakiet Azure IoT. Użyj Node.js do nawiązania połączenia zdalnego rozwiązanie monitorowania sieci Pi malina wysłać symulowanych dane telemetryczne do chmury i Odpowiedz na metody wywoływane z poziomu pulpitu nawigacyjnego rozwiązania.
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-suite
 ms.devlang: node.js
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/06/2017
+ms.locfileid: "24011959"
 ---
 # <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-send-simulated-telemetry-using-nodejs"></a>Twoje malina Pi 3 nawiązać połączenie zdalne rozwiązanie monitorowania i wysłać symulowanych dane telemetryczne przy użyciu środowiska Node.js
 
