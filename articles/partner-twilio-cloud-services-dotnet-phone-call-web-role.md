@@ -1,11 +1,11 @@
 ---
-title: "Porady: tworzenie rozmowy telefonicznej z usługi Twilio (.NET) | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wykonać połączenie telefoniczne i wysłać wiadomość SMS z usługi interfejsu API usługi Twilio na platformie Azure. Przykłady kodu napisane w programie .NET."
-services: 
+title: 'Porady: tworzenie rozmowy telefonicznej z usługi Twilio (.NET) | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak wykonać połączenie telefoniczne i wysłać wiadomość SMS z usługi interfejsu API usługi Twilio na platformie Azure. Przykłady kodu napisane w programie .NET.
+services: ''
 documentationcenter: .net
 author: devinrader
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 789185ad-69dc-4e9e-a936-42e0a25315c8
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26366008"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Jak nawiązać połączenie telefoniczne z rolą sieci web na platformie Azure przy użyciu usługi Twilio
 W tym przewodniku pokazano, jak używać usługi Twilio, aby nawiązać połączenie ze strony sieci web hostowanej na platformie Azure. Wynikowa aplikacji monituje użytkownika o nawiązać połączenie za pomocą podanej liczbie i wiadomości, jak pokazano na poniższym zrzucie ekranu.

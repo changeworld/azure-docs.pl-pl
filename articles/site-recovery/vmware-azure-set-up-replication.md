@@ -1,6 +1,6 @@
 ---
-title: "Konfigurowanie i zarządzanie zasadami replikacji w przypadku replikacji maszyn wirtualnych VMware z usługą Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób konfigurowania ustawień replikacji dla replikacji maszyn wirtualnych VMware do platformy Azure z usługą Azure Site Recovery."
+title: Konfigurowanie i zarządzanie zasadami replikacji w przypadku replikacji maszyn wirtualnych VMware z usługą Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób konfigurowania ustawień replikacji dla replikacji maszyn wirtualnych VMware do platformy Azure z usługą Azure Site Recovery.
 services: site-recovery
 author: sujayt
 manager: rochakm
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29812670"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-replication"></a>Konfigurowanie i zarządzanie zasadami replikacji w przypadku replikacji maszyn wirtualnych VMware
 W tym artykule opisano sposób konfigurowania zasad replikacji, Jeśli replikujesz maszyny wirtualne VMware do platformy Azure, przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md).

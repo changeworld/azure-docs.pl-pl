@@ -1,11 +1,11 @@
 ---
-title: "Odzyskiwania po awarii na geograficznie w usłudze Azure Event Hubs | Dokumentacja firmy Microsoft"
-description: "Jak używać regionów geograficznych do trybu failover i odzyskiwania po awarii w Azure Event Hubs"
+title: Odzyskiwania po awarii na geograficznie w usłudze Azure Event Hubs | Dokumentacja firmy Microsoft
+description: Jak używać regionów geograficznych do trybu failover i odzyskiwania po awarii w Azure Event Hubs
 services: event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/16/2017
+ms.locfileid: "26745898"
 ---
 # <a name="azure-event-hubs-geo-disaster-recovery"></a>Azure awarii usługi Event Hubs Geo
 

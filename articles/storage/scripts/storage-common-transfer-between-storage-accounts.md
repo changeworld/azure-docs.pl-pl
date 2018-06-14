@@ -1,6 +1,6 @@
 ---
-title: "Przykładowy skrypt programu Azure PowerShell — migrowanie obiektów blob między kontami magazynu przy użyciu narzędzia AzCopy w systemie Windows | Microsoft Docs"
-description: "Kopiowanie zawartości obiektów blob z jednego konta usługi Azure Storage na inne przy użyciu narzędzia AzCopy."
+title: Przykładowy skrypt programu Azure PowerShell — migrowanie obiektów blob między kontami magazynu przy użyciu narzędzia AzCopy w systemie Windows | Microsoft Docs
+description: Kopiowanie zawartości obiektów blob z jednego konta usługi Azure Storage na inne przy użyciu narzędzia AzCopy.
 services: storage
 documentationcenter: na
 author: roygara
@@ -18,6 +18,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "29360721"
 ---
 # <a name="migrate-blobs-across-storage-accounts-using-azcopy-on-windows"></a>Migrowanie obiektów blob między kontami magazynu przy użyciu narzędzia AzCopy w systemie Windows
 
