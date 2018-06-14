@@ -1,11 +1,11 @@
 ---
-title: "Monitorowanie urządzenia Surface Hub z Azure Log Analytics | Dokumentacja firmy Microsoft"
-description: "Rozwiązanie Surface Hub umożliwia śledzenie kondycji z urządzeń Surface Hub i zrozumieć, jak są one używane."
+title: Monitorowanie urządzenia Surface Hub z Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Rozwiązanie Surface Hub umożliwia śledzenie kondycji z urządzeń Surface Hub i zrozumieć, jak są one używane.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 8b4e56bc-2d4f-4648-a236-16e9e732ebef
 ms.service: log-analytics
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/13/2018
+ms.locfileid: "29179229"
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>Monitorowanie urządzeń Surface Hub z analizy dzienników śledzenia ich kondycję
 

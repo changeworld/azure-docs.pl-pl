@@ -1,11 +1,11 @@
 ---
 title: Podstawowe raporty from Verizon | Dokumentacja firmy Microsoft
-description: "Możesz wyświetlić wzorców użycia sieci CDN za pomocą następujących raportów: przepustowości, dane przesyłane, trafień, stany pamięci podręcznej, Stosunek trafień w pamięci podręcznej, przesłanych danych IPV4 i IPV6."
+description: 'Możesz wyświetlić wzorców użycia sieci CDN za pomocą następujących raportów: przepustowości, dane przesyłane, trafień, stany pamięci podręcznej, Stosunek trafień w pamięci podręcznej, przesłanych danych IPV4 i IPV6.'
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 5a0d9018-8bdb-48ff-84df-23648ebcf763
 ms.service: cdn
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26345251"
 ---
 # <a name="core-reports-from-verizon"></a>Raporty Core from Verizon
 

@@ -1,11 +1,11 @@
 ---
-title: "Dodawanie wielu połączeń lokacja-lokacja bramy sieci VPN do sieci wirtualnej: Azure Portal: Resource Manager | Dokumentacja firmy Microsoft"
-description: "Dodawaj połączeń S2S obejmujący wiele lokacji do bramy sieci VPN, który ma istniejącego połączenia"
+title: 'Dodawanie wielu połączeń lokacja-lokacja bramy sieci VPN do sieci wirtualnej: Azure Portal: Resource Manager | Dokumentacja firmy Microsoft'
+description: Dodawaj połączeń S2S obejmujący wiele lokacji do bramy sieci VPN, który ma istniejącego połączenia
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: f3e8b165-f20a-42ab-afbb-bf60974bb4b1
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29398614"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Dodaj połączenie lokacja-lokacja z sieci wirtualnej z istniejącego połączenia bramy sieci VPN
 

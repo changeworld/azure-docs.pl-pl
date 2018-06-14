@@ -1,8 +1,8 @@
 ---
-title: "Klaster HPC Pack w usłudze Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zintegrować klastra Microsoft HPC Pack 2016 na platformie Azure z usługą Azure Active Directory"
+title: Klaster HPC Pack w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zintegrować klastra Microsoft HPC Pack 2016 na platformie Azure z usługą Azure Active Directory
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
 ms.assetid: 9edf9559-db02-438b-8268-a6cba7b5c8b7
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2017
+ms.locfileid: "25452576"
 ---
 # <a name="manage-an-hpc-pack-cluster-in-azure-using-azure-active-directory"></a>Zarządzanie klastra HPC Pack platformie Azure przy użyciu usługi Azure Active Directory
 [Microsoft HPC Pack 2016](https://technet.microsoft.com/library/cc514029) obsługuje integrację z [usługi Azure Active Directory](../../active-directory/index.md) (Azure AD) dla administratorów, którzy wdrożenie klastra HPC Pack na platformie Azure.

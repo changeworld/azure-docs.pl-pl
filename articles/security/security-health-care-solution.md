@@ -1,5 +1,5 @@
 ---
-title: "Praktyczne przewodnik dotyczący projektowania bezpiecznych rozwiązań opieki zdrowotnej na platformie Azure | Dokumentacja firmy Microsoft"
+title: Praktyczne przewodnik dotyczący projektowania bezpiecznych rozwiązań opieki zdrowotnej na platformie Azure | Dokumentacja firmy Microsoft
 description: " Ten artykuł ułatwia zrozumienie, jak poprawić zabezpieczenia opieki zdrowotnej rozwiązań za pomocą usług Azure i funkcje, które można skonfigurować. "
 services: security
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2017
+ms.locfileid: "25540979"
 ---
 # <a name="a-practical-guide-to-designing-secure-health-care-solutions-in-azure"></a>Praktyczne przewodnik dotyczący projektowania bezpiecznych rozwiązań opieki zdrowotnej na platformie Azure
 Startupy branży kondycji, integratorów (SIs), niezależnym dostawcom oprogramowania (ISV) i organizacji opieki zdrowotnej, biorąc pod uwagę przeniesienie Azure szukają wskazówek, który pomoże im zastosować środki zabezpieczające zobowiązań zgodności.

@@ -1,12 +1,12 @@
 ---
-title: "Obsługa wskazówki Azure błędów funkcji | Dokumentacja firmy Microsoft"
-description: "Zawiera ogólne wskazówki dotyczące obsługi błędów występujących w podczas wykonywania funkcji oraz łącza do tematów błędy specyficzne dla powiązania."
+title: Obsługa wskazówki Azure błędów funkcji | Dokumentacja firmy Microsoft
+description: Zawiera ogólne wskazówki dotyczące obsługi błędów występujących w podczas wykonywania funkcji oraz łącza do tematów błędy specyficzne dla powiązania.
 services: functions
-cloud: 
-documentationcenter: 
+cloud: ''
+documentationcenter: ''
 author: ggailey777
 manager: cfowler
-ms.assetid: 
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: multiple
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29118489"
 ---
 # <a name="azure-functions-error-handling"></a>Obsługa błędów funkcji platformy Azure
 

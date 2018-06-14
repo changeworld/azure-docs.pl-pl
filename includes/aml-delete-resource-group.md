@@ -14,6 +14,7 @@ ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/27/2018
+ms.locfileid: "29574991"
 ---
 Jeśli nie zamierzasz w przyszłości korzystać z tej aplikacji i nie chcesz, aby zostały naliczone jakiekolwiek opłaty, wykonaj następujące czynności w celu usunięcia wszystkich zasobów w ramach tego przewodnika Szybki start:
 

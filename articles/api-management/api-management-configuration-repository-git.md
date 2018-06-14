@@ -1,8 +1,8 @@
 ---
-title: "Konfigurowanie usługi Zarządzanie interfejsami API przy użyciu narzędzia Git - Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zapisać i skonfigurować konfiguracji usługi Zarządzanie interfejsami API przy użyciu narzędzia Git."
+title: Konfigurowanie usługi Zarządzanie interfejsami API przy użyciu narzędzia Git - Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zapisać i skonfigurować konfiguracji usługi Zarządzanie interfejsami API przy użyciu narzędzia Git.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
 editor: mattfarm
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29117541"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Zapisz i konfigurowaniu konfiguracji usługi Zarządzanie interfejsami API przy użyciu narzędzia Git
 

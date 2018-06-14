@@ -1,11 +1,11 @@
 ---
-title: "Jak wybrać uprawnienia dla danego interfejsu API | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej na temat działania żądania dotyczące uprawnień dla aplikacji klienckich i zasobów dla aplikacji, które tworzysz"
+title: Jak wybrać uprawnienia dla danego interfejsu API | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej na temat działania żądania dotyczące uprawnień dla aplikacji klienckich i zasobów dla aplikacji, które tworzysz
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26614170"
 ---
 # <a name="how-to-select-permissions-for-a-given-api"></a>Jak wybrać uprawnienia dla danego interfejsu API 
 

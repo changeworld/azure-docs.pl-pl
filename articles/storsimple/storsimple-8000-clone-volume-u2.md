@@ -1,12 +1,12 @@
 ---
 title: Klonowanie woluminu z serii StorSimple 8000 | Dokumentacja firmy Microsoft
-description: "Opisano w klonowania różne typy i użycia i opisano sposób korzystania z zestawu sklonować poszczególnych woluminów na urządzeniu z serii StorSimple 8000 kopii zapasowych."
+description: Opisano w klonowania różne typy i użycia i opisano sposób korzystania z zestawu sklonować poszczególnych woluminów na urządzeniu z serii StorSimple 8000 kopii zapasowych.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26333206"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Użyj usługi Menedżer StorSimple urządzenia w portalu Azure Klonowanie woluminów
 

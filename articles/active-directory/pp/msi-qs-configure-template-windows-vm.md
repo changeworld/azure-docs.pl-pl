@@ -1,11 +1,11 @@
 ---
-title: "Jak skonfigurować Instalatora MSI przypisane przez użytkownika dla maszyny Wirtualnej platformy Azure przy użyciu szablonu platformy Azure"
-description: "Krok kroku instrukcje dotyczące konfigurowania przypisanych do użytkowników zarządzanych usługi tożsamości (MSI) dla maszyny Wirtualnej platformy Azure, przy użyciu szablonu usługi Azure Resource Manager."
+title: Jak skonfigurować Instalatora MSI przypisane przez użytkownika dla maszyny Wirtualnej platformy Azure przy użyciu szablonu platformy Azure
+description: Krok kroku instrukcje dotyczące konfigurowania przypisanych do użytkowników zarządzanych usługi tożsamości (MSI) dla maszyny Wirtualnej platformy Azure, przy użyciu szablonu usługi Azure Resource Manager.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28984043"
 ---
 # <a name="configure-a-user-assigned-managed-service-identity-msi-for-a-vm-using-an-azure-template"></a>Skonfiguruj przypisany użytkownik zarządzane usługi tożsamości (MSI) dla maszyny Wirtualnej, przy użyciu szablonu platformy Azure
 
