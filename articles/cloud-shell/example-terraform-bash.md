@@ -1,8 +1,8 @@
 ---
-title: "Wdrażanie z Terraform z Bash w chmurze Azure powłoki | Dokumentacja firmy Microsoft"
-description: "Wdrażanie z Terraform z Bash w chmurze Azure powłoki"
+title: Wdrażanie z Terraform z Bash w chmurze Azure powłoki | Dokumentacja firmy Microsoft
+description: Wdrażanie z Terraform z Bash w chmurze Azure powłoki
 services: Azure
-documentationcenter: 
+documentationcenter: ''
 author: tomarcher
 manager: routlaw
 tags: azure-cloud-shell
@@ -18,6 +18,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29386524"
 ---
 # <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>Wdrażanie z Terraform z Bash w chmurze Azure powłoki
 W tym artykule przedstawiono tworzenie grupy zasobów z [Terraform AzureRM dostawcy](https://www.terraform.io/docs/providers/azurerm/index.html). 

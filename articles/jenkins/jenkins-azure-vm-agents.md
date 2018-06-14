@@ -1,8 +1,8 @@
 ---
-title: "Skalowanie wdrożeń Wpięć z agentami maszyny Wirtualnej platformy Azure."
-description: "Dodaj dodatkowej pojemności do Twojej potoki Wpięć przy użyciu maszyn wirtualnych platformy Azure przy użyciu agenta maszyny Wirtualnej Azure Wpięć wtyczki."
+title: Skalowanie wdrożeń Wpięć z agentami maszyny Wirtualnej platformy Azure.
+description: Dodaj dodatkowej pojemności do Twojej potoki Wpięć przy użyciu maszyn wirtualnych platformy Azure przy użyciu agenta maszyny Wirtualnej Azure Wpięć wtyczki.
 services: multiple
-documentationcenter: 
+documentationcenter: ''
 author: rloutlaw
 manager: justhe
 ms.service: multiple
@@ -16,6 +16,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29392644"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>Skalowanie wdrożeń Wpięć aby spełnić wymagania z agentami maszyny Wirtualnej Azure
 

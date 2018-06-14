@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Dokumentacja usługi Azure Migrate"
+title: Dokumentacja usługi Azure Migrate
 metadata:
-  title: "Dokumentacja usługi Azure Migrate — samouczki i dokumentacja interfejsu API | Microsoft Docs"
-  description: "Dowiedz się, jak ocenić maszyny lokalne pod kątem migracji na platformę Azure"
+  title: Dokumentacja usługi Azure Migrate — samouczki i dokumentacja interfejsu API | Microsoft Docs
+  description: Dowiedz się, jak ocenić maszyny lokalne pod kątem migracji na platformę Azure
   services: migration-planner
   author: rayne-wiselman
   manager: carmonm
@@ -18,13 +18,14 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: pl-PL
   ms.lasthandoff: 11/27/2017
+  ms.locfileid: "25927122"
 abstract:
-  description: "Usługa Azure Migrate pomaga odnajdywać maszyny lokalne i oceniać ich kwalifikowanie się do migracji na platformę Azure. Oprócz tego przedstawia szacunki dotyczące rozmiarów i kosztów maszyn wirtualnych uruchamianych na platformie Azure."
+  description: Usługa Azure Migrate pomaga odnajdywać maszyny lokalne i oceniać ich kwalifikowanie się do migracji na platformę Azure. Oprócz tego przedstawia szacunki dotyczące rozmiarów i kosztów maszyn wirtualnych uruchamianych na platformie Azure.
 sections:
 - title: Samouczki krok po kroku
   items:
   - type: paragraph
-    text: "Dowiedz się, jak ocenić maszyny wirtualne programu VMware pod kątem migracji na platformę Azure"
+    text: Dowiedz się, jak ocenić maszyny wirtualne programu VMware pod kątem migracji na platformę Azure
   - type: list
     style: unordered
     items:

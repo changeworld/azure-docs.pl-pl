@@ -1,11 +1,11 @@
 ---
-title: "Łączenie sieci wirtualnej z inną siecią wirtualną za pomocą połączenia sieć wirtualna-sieć wirtualna: interfejs wiersza polecenia platformy Azure | Microsoft Docs"
-description: "Łączenie sieci wirtualnych przy użyciu połączenia sieć wirtualna-sieć wirtualna oraz interfejsu wiersza polecenia platformy Azure."
+title: 'Łączenie sieci wirtualnej z inną siecią wirtualną za pomocą połączenia sieć wirtualna-sieć wirtualna: interfejs wiersza polecenia platformy Azure | Microsoft Docs'
+description: Łączenie sieci wirtualnych przy użyciu połączenia sieć wirtualna-sieć wirtualna oraz interfejsu wiersza polecenia platformy Azure.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 0683c664-9c03-40a4-b198-a6529bf1ce8b
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29400321"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Konfigurowanie połączenia bramy sieci VPN między sieciami wirtualnymi przy użyciu interfejsu wiersza polecenia platformy Azure
 

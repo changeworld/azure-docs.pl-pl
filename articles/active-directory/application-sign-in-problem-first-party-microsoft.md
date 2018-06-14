@@ -1,11 +1,11 @@
 ---
 title: Problemy przy logowaniu do aplikacji firmy Microsoft | Dokumentacja firmy Microsoft
-description: "Rozwiązywanie typowych problemów, które muszą ponieść po zalogowaniu się do firmy Microsoft Applications przy użyciu usługi Azure AD (takich jak usługi Office 365)"
+description: Rozwiązywanie typowych problemów, które muszą ponieść po zalogowaniu się do firmy Microsoft Applications przy użyciu usługi Azure AD (takich jak usługi Office 365)
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29384229"
 ---
 ## <a name="problems-signing-in-to-a-microsoft-application"></a>Problemy przy logowaniu do aplikacji firmy Microsoft
 

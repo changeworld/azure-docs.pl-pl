@@ -1,8 +1,8 @@
 ---
-title: "Magazyn w warstwie Premium Azure za pomocą programu SQL Server | Dokumentacja firmy Microsoft"
-description: "W tym artykule używa zasobów utworzone za pomocą klasycznym modelu wdrażania i zawiera wskazówki dotyczące przy użyciu usługi Azure Premium Storage z programem SQL Server uruchomiony na maszynach wirtualnych platformy Azure."
+title: Magazyn w warstwie Premium Azure za pomocą programu SQL Server | Dokumentacja firmy Microsoft
+description: W tym artykule używa zasobów utworzone za pomocą klasycznym modelu wdrażania i zawiera wskazówki dotyczące przy użyciu usługi Azure Premium Storage z programem SQL Server uruchomiony na maszynach wirtualnych platformy Azure.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: danielsollondon
 manager: craigg
 editor: monicar
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29400617"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Korzystanie z usługi Azure Premium Storage z programem SQL Server na maszynach wirtualnych
 ## <a name="overview"></a>Przegląd

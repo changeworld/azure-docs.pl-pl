@@ -1,12 +1,12 @@
 ---
-title: "Planowanie wydajności dla ról serwera usługi Azure App Service w stosie Azure | Dokumentacja firmy Microsoft"
-description: "Planowanie wydajności dla ról serwera usługi Azure App Service w stosie Azure"
+title: Planowanie wydajności dla ról serwera usługi Azure App Service w stosie Azure | Dokumentacja firmy Microsoft
+description: Planowanie wydajności dla ról serwera usługi Azure App Service w stosie Azure
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29388587"
 ---
 # <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Planowanie wydajności dla ról serwera usługi Azure App Service w stosie Azure
 *Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
