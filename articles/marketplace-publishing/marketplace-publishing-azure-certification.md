@@ -1,12 +1,12 @@
 ---
-title: "Pobierz wstępnie zatwierdzone przez program Microsoft Azure certyfikowane | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat programu Microsoft Azure certyfikowane partnera i uzyskiwanie sprzedaży obraz maszyny wirtualnej, szablon rozwiązania, deweloperów usługi lub usług danych w witrynie Azure Marketplace"
+title: Pobierz wstępnie zatwierdzone przez program Microsoft Azure certyfikowane | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat programu Microsoft Azure certyfikowane partnera i uzyskiwanie sprzedaży obraz maszyny wirtualnej, szablon rozwiązania, deweloperów usługi lub usług danych w witrynie Azure Marketplace
 services: marketplace-publishing
 documentationcenter: na
 author: msmbaldwin
 manager: mbaldwin
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 7e9ebf17-07a1-4796-921f-d1d62046892d
 ms.service: marketplace
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29939012"
 ---
 # <a name="get-pre-approved-via-the-microsoft-azure-certified-program"></a>Pobierz wstępnie zatwierdzone za pośrednictwem programu Microsoft Azure certyfikowane
 Ten artykuł zawiera instrukcje dotyczące sposobu stają się certyfikowane systemu Microsoft Azure, aby mogli publikowanie rozwiązania do portalu Azure Marketplace i kwalifikują się do korzyści marketing. Aby uzyskać szczegółowe omówienie programu Microsoft Azure certyfikowane i korzyści, odwiedź stronę [ http://azure.com/certified ](http://azure.com/certified).

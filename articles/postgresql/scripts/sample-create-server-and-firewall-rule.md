@@ -1,6 +1,6 @@
 ---
-title: "Skrypt interfejsu wiersza polecenia platformy Azure — tworzenie usługi Azure Database for PostgreSQL"
-description: "Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — Tworzy serwer usługi Azure Database for PostgreSQL i konfiguruje regułę zapory na poziomie serwera."
+title: Skrypt interfejsu wiersza polecenia platformy Azure — tworzenie usługi Azure Database for PostgreSQL
+description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — Tworzy serwer usługi Azure Database for PostgreSQL i konfiguruje regułę zapory na poziomie serwera.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29847964"
 ---
 # <a name="create-an-azure-database-for-postgresql-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Tworzenie serwera usługi Azure Database for PostgreSQL i konfigurowanie reguły zapory przy użyciu polecenia interfejsu wiersza polecenia platformy Azure
 Ten przykładowy skrypt interfejsu wiersza polecenia tworzy serwer usługi Azure Database for PostgreSQL i konfiguruje regułę zapory na poziomie serwera. Po pomyślnym wykonaniu tego skryptu można uzyskać dostęp do serwera PostgreSQL z poziomu wszystkich usług platformy Azure przy użyciu skonfigurowanego adresu IP.

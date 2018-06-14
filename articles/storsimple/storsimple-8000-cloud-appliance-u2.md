@@ -1,12 +1,12 @@
 ---
-title: "Urządzenie StorSimple w chmurze z aktualizacją Update 3| Microsoft Docs"
-description: "Informacje na temat tworzenia i wdrażania urządzenia StorSimple w chmurze oraz zarządzania nim w sieci wirtualnej platformy Microsoft Azure. (Dotyczy urządzenia wirtualnego StorSimple z aktualizacją Update 3 i nowszych)."
+title: Urządzenie StorSimple w chmurze z aktualizacją Update 3| Microsoft Docs
+description: Informacje na temat tworzenia i wdrażania urządzenia StorSimple w chmurze oraz zarządzania nim w sieci wirtualnej platformy Microsoft Azure. (Dotyczy urządzenia wirtualnego StorSimple z aktualizacją Update 3 i nowszych).
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: hero-article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852340"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Wdrażanie urządzenia StorSimple w chmurze oraz zarządzanie nim na platformie Azure (aktualizacja Update 3 i nowsze)
 

@@ -1,6 +1,6 @@
 ---
-title: "Skrypt interfejsu wiersza polecenia platformy Azure: przywracanie serwera usługi Azure Database for PostgreSQL"
-description: "W ramach tego przykładowego skryptu interfejsu wiersza polecenia platformy Azure przedstawiono sposób przywracania serwera usługi Azure Database for PostgreSQL i jego baz danych do wcześniejszego punktu w czasie."
+title: 'Skrypt interfejsu wiersza polecenia platformy Azure: przywracanie serwera usługi Azure Database for PostgreSQL'
+description: W ramach tego przykładowego skryptu interfejsu wiersza polecenia platformy Azure przedstawiono sposób przywracania serwera usługi Azure Database for PostgreSQL i jego baz danych do wcześniejszego punktu w czasie.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29846268"
 ---
 # <a name="restore-an-azure-database-for-postgresql-server-using-azure-cli"></a>Przywracanie serwera usługi Azure Database for PostgreSQL przy użyciu interfejsu wiersza polecenia platformy Azure
 Ten przykładowy skrypt interfejsu wiersza polecenia przywraca jeden serwer usługi Azure Database for PostgreSQL do wcześniejszego punktu w czasie.

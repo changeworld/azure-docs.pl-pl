@@ -1,11 +1,11 @@
 ---
-title: "Interfejs API użycia zasobów dzierżawy | Dokumentacja firmy Microsoft"
-description: "Odwołania do użycia zasobów interfejsu API, który pobrać informacji o użyciu stosu Azure."
+title: Interfejs API użycia zasobów dzierżawy | Dokumentacja firmy Microsoft
+description: Odwołania do użycia zasobów interfejsu API, który pobrać informacji o użyciu stosu Azure.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: b9d7c7ee-e906-4978-92a3-a2c52df16c36
 ms.service: azure-stack
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29873491"
 ---
 # <a name="tenant-resource-usage-api"></a>Interfejs API użycia zasobów dzierżawcy
 

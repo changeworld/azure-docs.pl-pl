@@ -1,11 +1,11 @@
 ---
-title: "Połączyć sieć wirtualną z obwodem usługi ExpressRoute: portalu Azure | Dokumentacja firmy Microsoft"
-description: "Połączyć sieć wirtualną Azure obwodem usługi ExpressRoute. Instrukcje."
+title: 'Połączyć sieć wirtualną z obwodem usługi ExpressRoute: portalu Azure | Dokumentacja firmy Microsoft'
+description: Połączyć sieć wirtualną Azure obwodem usługi ExpressRoute. Instrukcje.
 services: expressroute
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: f5cb5441-2fba-46d9-99a5-d1d586e7bda4
 ms.service: expressroute
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874556"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Połączyć sieć wirtualną z obwodem usługi ExpressRoute przy użyciu portalu
 > [!div class="op_single_selector"]

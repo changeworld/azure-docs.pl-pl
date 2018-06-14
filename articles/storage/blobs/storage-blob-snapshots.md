@@ -1,6 +1,6 @@
 ---
-title: "Tworzenie migawki tylko do odczytu obiektu blob w usłudze Azure Storage | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć migawki obiektu blob, aby utworzyć kopię zapasową danych obiektów blob w danym momencie w czasie. Dowiedz się, jak są rozliczane migawki i sposób ich użycia, aby zminimalizować koszty pojemności."
+title: Tworzenie migawki tylko do odczytu obiektu blob w usłudze Azure Storage | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć migawki obiektu blob, aby utworzyć kopię zapasową danych obiektów blob w danym momencie w czasie. Dowiedz się, jak są rozliczane migawki i sposób ich użycia, aby zminimalizować koszty pojemności.
 services: storage
 author: tamram
 manager: jeconnoc
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852935"
 ---
 # <a name="create-a-blob-snapshot"></a>Tworzenie migawki obiektu blob
 

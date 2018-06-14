@@ -1,7 +1,7 @@
 ---
-title: "Użyj Terraform modułów, aby utworzyć klaster maszyny Wirtualnej na platformie Azure"
-description: "Dowiedz się, jak utworzyć klaster maszyny wirtualnej systemu Windows na platformie Azure przy użyciu modułów Terraform"
-keywords: "terraform, devops, maszyny wirtualnej, sieci, modułów"
+title: Użyj Terraform modułów, aby utworzyć klaster maszyny Wirtualnej na platformie Azure
+description: Dowiedz się, jak utworzyć klaster maszyny wirtualnej systemu Windows na platformie Azure przy użyciu modułów Terraform
+keywords: terraform, devops, maszyny wirtualnej, sieci, modułów
 author: rloutlaw
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29952221"
 ---
 # <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>Tworzenie klastra maszyny Wirtualnej z Terraform za pomocą rejestru modułu
 

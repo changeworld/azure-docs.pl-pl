@@ -1,6 +1,6 @@
 ---
-title: "Serwer fizyczny do architektury replikacji Azure w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera omówienie składników i architektury używane podczas replikowania lokalnych serwerów fizycznych do platformy Azure z usługą Azure Site Recovery"
+title: Serwer fizyczny do architektury replikacji Azure w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera omówienie składników i architektury używane podczas replikowania lokalnych serwerów fizycznych do platformy Azure z usługą Azure Site Recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
@@ -11,6 +11,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874896"
 ---
 # <a name="physical-server-to-azure-replication-architecture"></a>Serwer fizyczny do architektury Azure replikacji
 

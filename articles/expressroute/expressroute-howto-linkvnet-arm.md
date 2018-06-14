@@ -1,11 +1,11 @@
 ---
-title: "Połączyć sieć wirtualną z obwodem usługi ExpressRoute: środowiska PowerShell: Azure | Dokumentacja firmy Microsoft"
-description: "Ten dokument zawiera omówienie sposobu łączenia sieci wirtualnych (sieci wirtualne) do obwody usługi ExpressRoute, przy użyciu modelu wdrażania usługi Resource Manager i programu PowerShell."
+title: 'Połączyć sieć wirtualną z obwodem usługi ExpressRoute: środowiska PowerShell: Azure | Dokumentacja firmy Microsoft'
+description: Ten dokument zawiera omówienie sposobu łączenia sieci wirtualnych (sieci wirtualne) do obwody usługi ExpressRoute, przy użyciu modelu wdrażania usługi Resource Manager i programu PowerShell.
 services: expressroute
 documentationcenter: na
 author: ganesr
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: daacb6e5-705a-456f-9a03-c4fc3f8c1f7e
 ms.service: expressroute
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29877555"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>Połączenie wirtualnej sieci do obwodu usługi ExpressRoute
 > [!div class="op_single_selector"]

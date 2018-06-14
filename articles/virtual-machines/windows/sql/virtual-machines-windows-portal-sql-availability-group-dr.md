@@ -1,6 +1,6 @@
 ---
-title: "Grupy dostępności serwera SQL, odzyskiwania po awarii — maszyn wirtualnych platformy Azure — | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób konfigurowania grupy dostępności programu SQL Server na maszynach wirtualnych Azure z repliką w innym regionie."
+title: Grupy dostępności serwera SQL, odzyskiwania po awarii — maszyn wirtualnych platformy Azure — | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób konfigurowania grupy dostępności programu SQL Server na maszynach wirtualnych Azure z repliką w innym regionie.
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852833"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Konfigurowanie zawsze włączonej grupy dostępności na maszynach wirtualnych Azure w różnych regionach
 
