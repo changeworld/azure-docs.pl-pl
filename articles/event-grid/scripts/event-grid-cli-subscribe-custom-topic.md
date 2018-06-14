@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31426007"
 ---
 # <a name="subscribe-to-events-for-a-custom-topic-with-azure-cli"></a>Subskrybowanie do zdarzeń związanych z tematem niestandardowym przy użyciu interfejsu wiersza polecenia platformy Azure
 

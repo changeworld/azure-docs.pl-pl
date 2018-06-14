@@ -1,11 +1,11 @@
 ---
-title: "Omówienie przekaźnika usługi Azure Standard interfejsów API platformy .NET | Dokumentacja firmy Microsoft"
-description: "Omówienie usługi Azure Standard interfejs API .NET przekazywania"
+title: Omówienie przekaźnika usługi Azure Standard interfejsów API platformy .NET | Dokumentacja firmy Microsoft
+description: Omówienie usługi Azure Standard interfejs API .NET przekazywania
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: b1da9ac1-811b-4df7-a22c-ccd013405c40
 ms.service: service-bus-relay
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28016437"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Omówienie usługi Azure API standardowe .NET połączeń hybrydowych przekazywania
 

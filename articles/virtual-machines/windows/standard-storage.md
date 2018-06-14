@@ -1,8 +1,8 @@
 ---
-title: "Standardowy magazyn dla dysków maszyny Wirtualnej systemu Windows na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Omówiono w nim ekonomicznego magazynowania standardowe i niezarządzane i zarządzane dyski maszyny Wirtualnej systemu Windows."
+title: Standardowy magazyn dla dysków maszyny Wirtualnej systemu Windows na platformie Azure | Dokumentacja firmy Microsoft
+description: Omówiono w nim ekonomicznego magazynowania standardowe i niezarządzane i zarządzane dyski maszyny Wirtualnej systemu Windows.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: yuemlu
 manager: aungoo-msft
 editor: tysonn
@@ -20,5 +20,6 @@ ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/02/2017
+ms.locfileid: "23950518"
 ---
 [!INCLUDE [virtual-machines-common-standard-storage.md](../../../includes/virtual-machines-common-standard-storage.md)]

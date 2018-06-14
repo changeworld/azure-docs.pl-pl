@@ -1,11 +1,11 @@
 ---
-title: "Azure transferów komunikatów usługi Service Bus, blokad i rozliczenia | Dokumentacja firmy Microsoft"
-description: "Omówienie transferu komunikatów usługi Service Bus i rozliczenia operacji"
+title: Azure transferów komunikatów usługi Service Bus, blokad i rozliczenia | Dokumentacja firmy Microsoft
+description: Omówienie transferu komunikatów usługi Service Bus i rozliczenia operacji
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28199036"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>Przesyłania wiadomości, blokad i rozliczenia
 

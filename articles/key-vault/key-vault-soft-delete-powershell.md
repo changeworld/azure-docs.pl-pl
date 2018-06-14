@@ -1,7 +1,7 @@
 ---
-ms.assetid: 
-title: "Usługa Azure Key Vault - sposobu usuwania nietrwałego za pomocą programu PowerShell"
-description: "Wielkość przykłady usuwania nietrwałego za pomocą programu PowerShell wycinki kodu"
+ms.assetid: ''
+title: Usługa Azure Key Vault - sposobu usuwania nietrwałego za pomocą programu PowerShell
+description: Wielkość przykłady usuwania nietrwałego za pomocą programu PowerShell wycinki kodu
 services: key-vault
 author: lleonard-msft
 manager: mbaldwin
@@ -15,6 +15,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27927995"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Jak używać usługi Key Vault soft usunięcie przy użyciu programu PowerShell
 

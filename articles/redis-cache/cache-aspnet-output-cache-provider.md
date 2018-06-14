@@ -1,6 +1,6 @@
 ---
-title: "Dostawcy pamięci podręcznej pamięci podręcznej danych wyjściowych programu ASP.NET"
-description: "Dowiedz się, jak i pamięci podręcznej danych wyjściowych strony ASP.NET przy użyciu pamięci podręcznej Redis Azure"
+title: Dostawcy pamięci podręcznej pamięci podręcznej danych wyjściowych programu ASP.NET
+description: Dowiedz się, jak i pamięci podręcznej danych wyjściowych strony ASP.NET przy użyciu pamięci podręcznej Redis Azure
 services: redis-cache
 documentationcenter: na
 author: wesmc7777
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27909826"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-redis-cache"></a>Dostawcy pamięci podręcznej danych wyjściowych programu ASP.NET na platformie Azure pamięci podręcznej Redis
 Dostawcy Redis wyjściowej pamięci podręcznej jest mechanizmem poza procesem magazynu danych w pamięci podręcznej danych wyjściowych. Dane te są specjalnie z myślą o pełnej odpowiedzi HTTP (strona buforowanie danych wyjściowych). Dostawca podłącza się do nowego dane wyjściowe pamięci podręcznej dostawcy rozszerzeń punktu wprowadzone w programie ASP.NET 4.

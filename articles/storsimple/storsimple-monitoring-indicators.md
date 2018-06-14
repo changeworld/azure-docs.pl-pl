@@ -1,11 +1,11 @@
 ---
-title: "Wskaźniki monitorowania StorSimple | Dokumentacja firmy Microsoft"
-description: "Opisuje światła — elektroluminescencyjne (LED) i dźwiękowych alarmy służy do monitorowania stanu urządzenia StorSimple."
+title: Wskaźniki monitorowania StorSimple | Dokumentacja firmy Microsoft
+description: Opisuje światła — elektroluminescencyjne (LED) i dźwiękowych alarmy służy do monitorowania stanu urządzenia StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 59dee7b9-ca6d-4fd9-96e6-a0071e8d248e
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/07/2017
+ms.locfileid: "24030361"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>Umożliwia zarządzanie urządzeniem StorSimple monitorowania wskaźników
 

@@ -1,6 +1,6 @@
 ---
-ms.assetid: 
-title: "Względem zabezpieczeń usługi Azure Key Vault | Dokumentacja firmy Microsoft"
+ms.assetid: ''
+title: Względem zabezpieczeń usługi Azure Key Vault | Dokumentacja firmy Microsoft
 ms.service: key-vault
 author: lleonard-msft
 ms.author: alleonar
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27928104"
 ---
 # <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Środowiska usługi Azure Key Vault security World i geograficzne granice
 

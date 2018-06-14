@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31424704"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Obliczenia bazy danych wyników testów porównawczych dla maszyn wirtualnych systemu Windows
 Następujące wyniki testu porównawczego SPECInt Pokaż wydajności obliczeniowej dla zestawienia maszyny Wirtualnej platformy Azure wysokiej wydajności z systemem Windows Server. Wyniki testu porównawczego obliczeniowe są także dostępne dla [maszyn wirtualnych systemu Linux](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 

@@ -1,12 +1,12 @@
 ---
-title: "Używanie automatyzacji Azure można uruchomić zadania w Menedżerze danych StorSimple | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać usługi Automatyzacja Azure służącą do wyzwalania zadania Menedżer StorSimple danych"
+title: Używanie automatyzacji Azure można uruchomić zadania w Menedżerze danych StorSimple | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać usługi Automatyzacja Azure służącą do wyzwalania zadania Menedżer StorSimple danych
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/17/2018
+ms.locfileid: "27862200"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Używanie automatyzacji Azure do wyzwalania zadania
 

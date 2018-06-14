@@ -1,12 +1,12 @@
 ---
-title: "Dostosowywanie systemu operacyjnego konfiguracjach zabezpieczeń w Centrum zabezpieczeń Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft"
-description: "W tym artykule przedstawiono sposób dostosowywania oceny Centrum zabezpieczeń"
+title: Dostosowywanie systemu operacyjnego konfiguracjach zabezpieczeń w Centrum zabezpieczeń Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: W tym artykule przedstawiono sposób dostosowywania oceny Centrum zabezpieczeń
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28200014"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Dostosowywanie systemu operacyjnego konfiguracjach zabezpieczeń w Centrum zabezpieczeń Azure (wersja zapoznawcza)
 
