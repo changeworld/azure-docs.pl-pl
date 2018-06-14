@@ -1,12 +1,12 @@
 ---
-title: "Zainstaluj aktualizację 1.0 w macierzy wirtualnego StorSimple | Dokumentacja firmy Microsoft"
-description: "Informacje dotyczące używania interfejsu użytkownika sieci web tablicy wirtualnego StorSimple do stosowania aktualizacji za pomocą metody Azure portal i poprawki"
+title: Zainstaluj aktualizację 1.0 w macierzy wirtualnego StorSimple | Dokumentacja firmy Microsoft
+description: Informacje dotyczące używania interfejsu użytkownika sieci web tablicy wirtualnego StorSimple do stosowania aktualizacji za pomocą metody Azure portal i poprawki
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/06/2017
+ms.locfileid: "24012078"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>Zainstaluj aktualizację 1.0 na tablica wirtualnego StorSimple
 

@@ -1,12 +1,12 @@
 ---
 title: Informacje o wersji 1.0 aktualizacji tablicy wirtualnego StorSimple | Dokumentacja firmy Microsoft
-description: "Opisuje krytyczne Otwórz problemy i rozwiązania dla tablicy wirtualnego StorSimple systemem Update 1.0."
+description: Opisuje krytyczne Otwórz problemy i rozwiązania dla tablicy wirtualnego StorSimple systemem Update 1.0.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/06/2017
+ms.locfileid: "24012106"
 ---
 # <a name="storsimple-virtual-array-update-10-release-notes"></a>Informacje o wersji 1.0 aktualizacji tablicy wirtualnego StorSimple
 

@@ -1,6 +1,6 @@
 ---
-title: "Zapewnianie dostępu do aplikacji kontenera Azure DC/OS"
-description: "Jak włączyć publicznego dostępu do kontenerów DC/OS usługi kontenera platformy Azure."
+title: Zapewnianie dostępu do aplikacji kontenera Azure DC/OS
+description: Jak włączyć publicznego dostępu do kontenerów DC/OS usługi kontenera platformy Azure.
 services: container-service
 author: sauryadas
 manager: madhana
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26332283"
 ---
 # <a name="enable-public-access-to-an-azure-container-service-application"></a>Włącz publiczny dostęp do aplikacji usługi kontenera platformy Azure
 
