@@ -1,11 +1,11 @@
 ---
-title: "Skonfigurować wymuszanie tunelowania dla połączenia usługi Azure Site to Site: Resource Manager | Dokumentacja firmy Microsoft"
-description: "Jak przekierować lub \"force\" cały ruch do Internetu powiązane z powrotem do lokalizacji lokalnej."
+title: 'Skonfigurować wymuszanie tunelowania dla połączenia usługi Azure Site to Site: Resource Manager | Dokumentacja firmy Microsoft'
+description: Jak przekierować lub "force" cały ruch do Internetu powiązane z powrotem do lokalizacji lokalnej.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: cbe58db8-b598-4c9f-ac88-62c865eb8721
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28984145"
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Konfigurowanie wymuszonego tunelowania przy użyciu modelu wdrażania usługi Azure Resource Manager
 

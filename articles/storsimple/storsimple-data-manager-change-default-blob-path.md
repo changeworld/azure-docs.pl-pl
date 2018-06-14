@@ -1,12 +1,12 @@
 ---
-title: "Ścieżka obiektu blob zmiany z domyślnej | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak można skonfigurować funkcję Azure, aby zmienić ścieżkę do pliku obiektu blob"
+title: Ścieżka obiektu blob zmiany z domyślnej | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak można skonfigurować funkcję Azure, aby zmienić ścieżkę do pliku obiektu blob
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/17/2018
+ms.locfileid: "27862404"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>Zmienianie ścieżki obiektu blob ze ścieżki domyślnej
 

@@ -1,6 +1,6 @@
 ---
-title: "Konfigurowanie środowiska źródłowego dla VMware do platformy Azure replikacji za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób konfigurowania środowiska lokalnego do replikowania maszyn wirtualnych VMware do platformy Azure z usługą Azure Site Recovery."
+title: Konfigurowanie środowiska źródłowego dla VMware do platformy Azure replikacji za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób konfigurowania środowiska lokalnego do replikowania maszyn wirtualnych VMware do platformy Azure z usługą Azure Site Recovery.
 services: site-recovery
 author: AnoopVasudavan
 manager: gauravd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29812656"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>Konfigurowanie środowiska źródłowego dla VMware do platformy Azure replikacji
 

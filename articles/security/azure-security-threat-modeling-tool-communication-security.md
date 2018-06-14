@@ -1,6 +1,6 @@
 ---
-title: "Komunikacja — narzędzie Microsoft Threat modelowania — zabezpieczeń Azure | Dokumentacja firmy Microsoft"
-description: "środki zaradcze w przypadku zagrożeń widoczne w narzędziu modelowania zagrożeń"
+title: Komunikacja — narzędzie Microsoft Threat modelowania — zabezpieczeń Azure | Dokumentacja firmy Microsoft
+description: środki zaradcze w przypadku zagrożeń widoczne w narzędziu modelowania zagrożeń
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28019487"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Ramka zabezpieczeń: Zabezpieczenia komunikacji | Środki zaradcze 
 | Produktów i usług | Artykuł |

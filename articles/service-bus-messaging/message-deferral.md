@@ -1,11 +1,11 @@
 ---
-title: "Azure odroczenia komunikatów usługi Service Bus | Dokumentacja firmy Microsoft"
-description: "Odroczenie dostarczenia komunikatów usługi Service Bus"
+title: Azure odroczenia komunikatów usługi Service Bus | Dokumentacja firmy Microsoft
+description: Odroczenie dostarczenia komunikatów usługi Service Bus
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28196979"
 ---
 # <a name="message-deferral"></a>Komunikat odroczenia
 

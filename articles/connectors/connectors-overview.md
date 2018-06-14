@@ -1,11 +1,11 @@
 ---
-title: "Omówienie łączników aplikacji logiki | Dokumentacja firmy Microsoft"
-description: "Omówienie łączniki, które mogą być używane w aplikacji logiki"
-services: 
-documentationcenter: 
+title: Omówienie łączników aplikacji logiki | Dokumentacja firmy Microsoft
+description: Omówienie łączniki, które mogą być używane w aplikacji logiki
+services: ''
+documentationcenter: ''
 author: jeffhollan
 manager: erikre
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: ca8dab2e-9b69-4b1e-865d-1facd9f0cdac
 ms.service: logic-apps
@@ -20,6 +20,7 @@ ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27961656"
 ---
 # <a name="using-connectors-in-a-logic-app"></a>Używanie łączników w aplikacji logiki
 Łączniki zapewniają szybki dostęp do zdarzeń, danych i działania usług, protokołów i platform.  Pełną listę łączników, które obsługuje Logic Apps można [można znaleźć tutaj](apis-list.md).  Łączniki mogą być używane jako wyzwalacz lub akcji w aplikacji logiki i może wymagać skonfigurowany *połączenia* do użycia (na przykład: autoryzowanie konta w usłudze Twitter lub post w Twoim imieniu).

@@ -1,11 +1,11 @@
 ---
-title: "Jednostka SKU serii niedostępny | Dokumentacja firmy Microsoft"
-description: "Niektóre jednostki SKU serii są niedostępne dla wybranej subskrypcji dla tego obszaru."
+title: Jednostka SKU serii niedostępny | Dokumentacja firmy Microsoft
+description: Niektóre jednostki SKU serii są niedostępne dla wybranej subskrypcji dla tego obszaru.
 services: Azure Supportability
-documentationcenter: 
+documentationcenter: ''
 author: stevendotwang
 manager: rajatk
-editor: 
+editor: ''
 ms.service: azure-supportability
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/16/2017
+ms.locfileid: "24870582"
 ---
 # <a name="region-or-sku-unavailable"></a>Region lub SKU niedostępny
 W tym artykule opisano, jak rozwiązać problem subskrypcji platformy Azure, nie ma dostępu do regionu lub SKU maszyny Wirtualnej.

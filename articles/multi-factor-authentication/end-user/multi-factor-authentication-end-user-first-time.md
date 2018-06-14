@@ -1,9 +1,9 @@
 ---
-title: "Skonfigurowaną weryfikację dwuetapową dla konta firmowego lub szkolnego | Dokumentacja firmy Microsoft"
-description: "Gdy firma skonfiguruje Azure Multi-Factor Authentication, pojawi się monit zalogowania się do weryfikacji dwuetapowej. Dowiedz się, jak je skonfigurować. "
+title: Skonfigurowaną weryfikację dwuetapową dla konta firmowego lub szkolnego | Dokumentacja firmy Microsoft
+description: 'Gdy firma skonfiguruje Azure Multi-Factor Authentication, pojawi się monit zalogowania się do weryfikacji dwuetapowej. Dowiedz się, jak je skonfigurować. '
 services: multi-factor-authentication
-keywords: "jak używać usługi azure directory, usługi active directory w chmurze, samouczek usługi active directory"
-documentationcenter: 
+keywords: jak używać usługi azure directory, usługi active directory w chmurze, samouczek usługi active directory
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: richagi
@@ -21,6 +21,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28198359"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>Skonfiguruj moje konto na potrzeby weryfikacji dwuetapowej
 Weryfikacja dwuetapowa to dodatkowe zabezpieczenia krok, który pomaga chronić Twoje konto dokonując przeszkodę dla innych osób włamanie się. Jeśli czytasz ten artykuł, prawdopodobnie masz wiadomość e-mail od firmy lub szkoły administratorem temat uwierzytelniania wieloskładnikowego. Lub może być próbował zarejestrować i otrzymano komunikat z pytaniem do skonfigurowania dodatkowej weryfikacji zabezpieczeń. Jeśli tak, jest **nie można zalogować przed ukończeniem procesu automatycznej rejestracji**.

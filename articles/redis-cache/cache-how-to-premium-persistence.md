@@ -1,11 +1,11 @@
 ---
-title: "Jak skonfigurować trwałości danych dla podręczna Redis Azure Premium"
-description: "Dowiedz się, jak skonfigurować i zarządzać nią trwałości danych swoich wystąpień pamięci podręcznej Redis Azure warstwy Premium"
+title: Jak skonfigurować trwałości danych dla podręczna Redis Azure Premium
+description: Dowiedz się, jak skonfigurować i zarządzać nią trwałości danych swoich wystąpień pamięci podręcznej Redis Azure warstwy Premium
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: b01cf279-60a0-4711-8c5f-af22d9540d38
 ms.service: cache
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27910853"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-redis-cache"></a>Jak skonfigurować trwałości danych dla podręczna Redis Azure Premium
 Pamięć podręczna Redis Azure ma ofert różnych pamięci podręcznej, które zapewniają elastyczność w wyborze rozmiar pamięci podręcznej i funkcji, łącznie z funkcji warstwy Premium, takich jak klastrowanie, trwałości i obsługi sieci wirtualnej. W tym artykule opisano sposób konfigurowania trwałości w wystąpienia pamięci podręcznej Redis Azure premium.

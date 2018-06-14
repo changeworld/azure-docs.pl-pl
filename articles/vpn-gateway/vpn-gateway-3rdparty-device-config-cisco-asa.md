@@ -1,12 +1,12 @@
 ---
-title: "Przykładowa konfiguracja urządzenia Cisco ASA nawiązywania połączenia bramy sieci VPN platformy Azure | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera Przykładowa konfiguracja urządzenia Cisco ASA nawiązywania połączenia bramy sieci VPN platformy Azure."
+title: Przykładowa konfiguracja urządzenia Cisco ASA nawiązywania połączenia bramy sieci VPN platformy Azure | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera Przykładowa konfiguracja urządzenia Cisco ASA nawiązywania połączenia bramy sieci VPN platformy Azure.
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: a8bfc955-de49-4172-95ac-5257e262d7ea
 ms.service: vpn-gateway
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27910762"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Przykładowa konfiguracja: Cisco ASA urządzenia (BGP IKEv2/nie)
 W tym artykule przedstawiono przykładowe konfiguracje dla urządzenia firmy Cisco adaptacyjną zabezpieczeń urządzenia (ASA) do bram sieci VPN platformy Azure. Przykład dotyczy urządzenia Cisco ASA, które działają IKEv2 bez protokołu BGP (Border Gateway). 
