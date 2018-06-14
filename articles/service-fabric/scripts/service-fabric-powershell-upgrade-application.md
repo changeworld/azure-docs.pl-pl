@@ -1,13 +1,13 @@
 ---
-title: "Przykładowy skrypt programu PowerShell Azure - uaktualniania aplikacji usługi Service Fabric | Dokumentacja firmy Microsoft"
-description: "Azure przykładowy skrypt programu PowerShell — uaktualnienie aplikacji sieci szkieletowej usług."
+title: Przykładowy skrypt programu PowerShell Azure - uaktualniania aplikacji usługi Service Fabric | Dokumentacja firmy Microsoft
+description: Azure przykładowy skrypt programu PowerShell — uaktualnienie aplikacji sieci szkieletowej usług.
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
 ms.devlang: na
@@ -17,9 +17,10 @@ ms.author: ryanwi
 ms.custom: mvc
 ms.openlocfilehash: 889e1bbb71f6eaa1871556b3b9a7da1c28cf16ee
 ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27927917"
 ---
 # <a name="upgrade-a-service-fabric-application"></a>Uaktualnianie aplikacji sieci szkieletowej usług
 

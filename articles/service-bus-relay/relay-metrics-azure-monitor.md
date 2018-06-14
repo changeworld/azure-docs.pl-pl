@@ -19,6 +19,7 @@ ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30928166"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Azure metryki przekazywania w monitorze Azure (wersja zapoznawcza)
 

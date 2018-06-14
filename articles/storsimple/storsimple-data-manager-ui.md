@@ -1,12 +1,12 @@
 ---
 title: Interfejs programu Data Manager platformy Microsoft Azure StorSimple | Dokumentacja firmy Microsoft
-description: "Informacje dotyczące używania usługi Menedżer StorSimple danych interfejsu użytkownika"
+description: Informacje dotyczące używania usługi Menedżer StorSimple danych interfejsu użytkownika
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/17/2018
+ms.locfileid: "27862261"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Zarządzanie usługą Menedżer StorSimple danych w portalu Azure
 
