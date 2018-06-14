@@ -1,8 +1,8 @@
 ---
-title: "Opcje obliczeń platformy Azure - usługi w chmurze Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o hostingu opcje i jak działają obliczeń platformy Azure: App Service, usługi w chmurze Azure i maszyny wirtualne"
+title: Opcje obliczeń platformy Azure - usługi w chmurze Azure | Dokumentacja firmy Microsoft
+description: 'Dowiedz się więcej o hostingu opcje i jak działają obliczeń platformy Azure: App Service, usługi w chmurze Azure i maszyny wirtualne'
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
 ms.assetid: ed7ad348-6018-41bb-a27d-523accd90305
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29120288"
 ---
 # <a name="should-i-choose-azure-cloud-services-or-something-else"></a>Należy wybrać usługi w chmurze Azure lub coś innego?
 Usługi w chmurze Azure jest wybór dla Ciebie? Platforma Azure oferuje różne modele hostingu uruchamiania aplikacji. Każda z nich zapewnia inny zestaw usług. Które z nich można wybrać, zależy od tego, dokładnie co próbujesz wykonać.

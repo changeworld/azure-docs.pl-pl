@@ -20,6 +20,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894911"
 ---
 # <a name="low-priority-vms-on-scale-sets-preview"></a>Maszyny wirtualne niskiego priorytetu na zestawy skalowania (wersja zapoznawcza)
 
