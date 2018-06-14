@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30915419"
 ---
 # <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-vms"></a>Co robić w przypadku, gdy przerw w działaniu usługi Azure ma wpływ na maszynach wirtualnych platformy Azure
 W firmie Microsoft firma Microsoft nad tym, aby upewnić się, że naszych usług są zawsze dostępne dla Ciebie przydatne. Wymusza naszych niezależnych czasami wpływ nam w sposób, aby spowodować zakłócenia w świadczeniu usług nieplanowane.

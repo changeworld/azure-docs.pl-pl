@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31403938"
 ---
 # <a name="access-yarn-application-logs-on-windows-based-hdinsight"></a>Dzienniki aplikacji YARN dostępu w usłudze HDInsight z systemu Windows
 W tym dokumencie opisano sposób dostępu do dzienników YARN aplikacji, które zakończyły się w klastrze z systemem Windows Hadoop w usłudze Azure HDInsight
