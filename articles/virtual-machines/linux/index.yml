@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: pl-PL
   ms.lasthandoff: 05/10/2018
+  ms.locfileid: "33943699"
 abstract:
   description: Maszyny wirtualne z systemem Linux na platformie Azure zapewniają bezpieczną infrastrukturę zwirtualizowaną na żądanie o dużej skali z zastosowaniem systemu Red Hat lub Ubuntu albo wybranej dystrybucji systemu Linux. Dowiedz się, jak tworzyć, konfigurować, aktualizować i skalować maszyny wirtualne z systemem Linux oraz zarządzać nimi, korzystając z naszych przewodników Szybki start, samouczków i przykładów.
   aside:

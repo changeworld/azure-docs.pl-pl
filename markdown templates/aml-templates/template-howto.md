@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32188163"
 ---
 # <a name="this-h1-is-the-title-of-the-article-it-appears-in-search-appears-at-the-top-of-article-second-greatest-impact-on-search-100-chars-or-less"></a>H1 to jest tytuł artykułu. Wygląda na to, w wyszukiwaniu, pojawi się w górnej części artykułu, drugi największy wpływ na wyszukiwanie, 100 znaków lub mniej
 

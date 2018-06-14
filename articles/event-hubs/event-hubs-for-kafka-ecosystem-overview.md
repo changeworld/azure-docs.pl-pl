@@ -14,6 +14,7 @@ ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34077610"
 ---
 # <a name="event-hubs-for-kafka-ecosystems"></a>Centra zdarzeń dla ekosystemami Kafka
 

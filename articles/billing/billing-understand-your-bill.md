@@ -20,6 +20,7 @@ ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/04/2018
+ms.locfileid: "33204895"
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>Opis zawartości rachunku za korzystanie z platformy Microsoft Azure
 Aby zrozumieć rachunku Azure, porównaj faktury z szczegółowe codzienne pliku użycia i kosztów zarządzania raportów w portalu Azure.
