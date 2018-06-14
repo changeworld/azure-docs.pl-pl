@@ -10,9 +10,10 @@ ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 203f5a766c4c8a8f1e577f6be1e18d0f9ac95403
 ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31432776"
 ---
 Magazyn obiektów Blob Azure to rozwiązanie magazynu obiektu firmy Microsoft w chmurze. Magazyn obiektów blob jest zoptymalizowana pod kątem przechowywania dużych ilości danych bez struktury, takich jak tekst lub dane binarne.
 

@@ -16,6 +16,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29802931"
 ---
 # <a name="version-release-history"></a>Historia wersji
 Zespół Microsoft Genomics regularnie aktualizuje klienta Microsoft Genomics Python poprawki i nowe funkcje. 
