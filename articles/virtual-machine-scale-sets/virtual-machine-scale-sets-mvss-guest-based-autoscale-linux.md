@@ -1,11 +1,11 @@
 ---
-title: "Azure automatycznego skalowania za pomocą metryki gościa w szablonie zestaw skalowania systemu Linux | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak w szablonie zestawu skalowania maszyn wirtualnych systemu Linux przy użyciu gościa metryki automatycznego skalowania"
+title: Azure automatycznego skalowania za pomocą metryki gościa w szablonie zestaw skalowania systemu Linux | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak w szablonie zestawu skalowania maszyn wirtualnych systemu Linux przy użyciu gościa metryki automatycznego skalowania
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: na
 ms.service: virtual-machine-scale-sets
@@ -20,6 +20,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26781432"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Przy użyciu metryk gościa w szablonie Linux zestaw skalowania automatycznego skalowania
 

@@ -1,11 +1,11 @@
 ---
 title: Azure API Management buforowanie zasad | Dokumentacja firmy Microsoft
-description: "Więcej informacji na temat zasad buforowania dostępne do użycia w usłudze Azure API Management."
+description: Więcej informacji na temat zasad buforowania dostępne do użycia w usłudze Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 8147199c-24d8-439f-b2a9-da28a70a890c
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26344826"
 ---
 # <a name="api-management-caching-policies"></a>Zarządzanie interfejsami API zasad buforowania
 W tym temacie znajdują się informacje na następujące zasady usługi API Management. Aby uzyskać informacje dotyczące dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  

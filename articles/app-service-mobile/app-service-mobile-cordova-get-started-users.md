@@ -1,11 +1,11 @@
 ---
-title: "Dodawanie uwierzytelniania na Apache Cordova w usłudze Mobile Apps | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak korzystać z aplikacji mobilnych w usłudze Azure App Service uwierzytelniać użytkowników aplikacji oprogramowania Apache Cordova za pomocą różnych dostawców tożsamości, obejmującej Google, Facebook, Twitter i Microsoft."
+title: Dodawanie uwierzytelniania na Apache Cordova w usłudze Mobile Apps | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak korzystać z aplikacji mobilnych w usłudze Azure App Service uwierzytelniać użytkowników aplikacji oprogramowania Apache Cordova za pomocą różnych dostawców tożsamości, obejmującej Google, Facebook, Twitter i Microsoft.
 services: app-service\mobile
 documentationcenter: javascript
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 10dd6dc9-ddf5-423d-8205-00ad74929f0d
 ms.service: app-service-mobile
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27591950"
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>Dodawanie uwierzytelniania do aplikacji platformy Apache Cordova
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]

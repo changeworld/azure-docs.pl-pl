@@ -1,12 +1,12 @@
 ---
-title: "Instalowanie aktualizacji 5 na urządzeniu z serii StorSimple 8000 | Dokumentacja firmy Microsoft"
-description: "Wyjaśniono, jak zainstalować StorSimple 8000 serii aktualizacji 5 na urządzeniu z serii StorSimple 8000."
+title: Instalowanie aktualizacji 5 na urządzeniu z serii StorSimple 8000 | Dokumentacja firmy Microsoft
+description: Wyjaśniono, jak zainstalować StorSimple 8000 serii aktualizacji 5 na urządzeniu z serii StorSimple 8000.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/25/2018
+ms.locfileid: "28108724"
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>Instalowanie aktualizacji 5 na urządzeniu StorSimple
 

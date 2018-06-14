@@ -1,11 +1,11 @@
 ---
-title: "Rozwiązywanie problemów przy użyciu dzienników operacji usługi BizTalk Services | Dokumentacja firmy Microsoft"
-description: "Rozwiązywanie problemów z usługi BizTalk Services przy użyciu dzienników operacji. MABS, WABS"
+title: Rozwiązywanie problemów przy użyciu dzienników operacji usługi BizTalk Services | Dokumentacja firmy Microsoft
+description: Rozwiązywanie problemów z usługi BizTalk Services przy użyciu dzienników operacji. MABS, WABS
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 1081a9c6-58cc-4a76-8ac8-11e5e7a6ea27
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24102022"
 ---
 # <a name="biztalk-services-troubleshoot-using-operation-logs"></a>Usługi BizTalk Services: Rozwiązywanie problemów przy użyciu dzienników operacji
 
