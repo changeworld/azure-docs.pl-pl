@@ -1,15 +1,15 @@
 ---
-title: "Magazyn plików Azure instalacji z maszyny Wirtualnej systemu Windows Azure | Dokumentacja firmy Microsoft"
-description: "Przechowywanie plików w chmurze za pomocą usługi Azure file storage i instalowanie udziału plików w chmurze z maszyny wirtualnej platformy Azure (VM)."
-documentationcenter: 
+title: Magazyn plików Azure instalacji z maszyny Wirtualnej systemu Windows Azure | Dokumentacja firmy Microsoft
+description: Przechowywanie plików w chmurze za pomocą usługi Azure file storage i instalowanie udziału plików w chmurze z maszyny wirtualnej platformy Azure (VM).
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.workload: 
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.workload: ''
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/03/2018
+ms.locfileid: "27577555"
 ---
 # <a name="use-azure-file-shares-with-windows-vms"></a>Udziały plików platformy Azure za pomocą maszyn wirtualnych systemu Windows 
 
