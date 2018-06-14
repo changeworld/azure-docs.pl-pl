@@ -1,11 +1,11 @@
 ---
-title: "Rozproszona geograficznie skala przy użyciu środowisk usługi App Service"
-description: "Dowiedz się, jak skalować w poziomie aplikacji z Menedżera ruchu i środowiska usługi App Service przy użyciu dystrybucji geo."
+title: Rozproszona geograficznie skala przy użyciu środowisk usługi App Service
+description: Dowiedz się, jak skalować w poziomie aplikacji z Menedżera ruchu i środowiska usługi App Service przy użyciu dystrybucji geo.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: stefsch
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: c1b05ca8-3703-4d87-a9ae-819d741787fb
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836833"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>Rozproszona geograficznie skala przy użyciu środowisk usługi App Service
 ## <a name="overview"></a>Omówienie

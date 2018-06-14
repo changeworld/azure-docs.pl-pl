@@ -1,11 +1,11 @@
 ---
-title: "Wzorzec aplikacji sieci Web z wieloma dzierżawcami | Dokumentacja firmy Microsoft"
-description: "Znajdowanie omówienie architektury i wzorce projektowe, które opisują sposób wdrożenia aplikacji sieci web z wieloma dzierżawcami na platformie Azure."
-services: 
+title: Wzorzec aplikacji sieci Web z wieloma dzierżawcami | Dokumentacja firmy Microsoft
+description: Znajdowanie omówienie architektury i wzorce projektowe, które opisują sposób wdrożenia aplikacji sieci web z wieloma dzierżawcami na platformie Azure.
+services: ''
 documentationcenter: .net
 author: wadepickett
 manager: wpickett
-editor: 
+editor: ''
 ms.assetid: 4f0281d2-1555-42b0-a99d-1222fade0b0f
 ms.service: active-directory
 ms.workload: identity
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23850714"
 ---
 # <a name="multitenant-applications-in-azure"></a>Wielodostępna aplikacji na platformie Azure
 Wielodostępna aplikacja jest zasób udostępniony, umożliwiający kilku użytkowników, lub "dzierżawy" wyświetlić aplikację tak, jakby była własnych. Typowy scenariusz, który pozwala na wielodostępnych aplikacji jest jeden, w której wszyscy użytkownicy aplikacji mogą chcieć dostosowanie środowiska użytkownika, ale w przeciwnym razie ma tych samych wymagań biznesowych. Przykładem dużych aplikacji wielodostępnym są usługi Office 365, Outlook.com i visualstudio.com.

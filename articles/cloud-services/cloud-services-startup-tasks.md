@@ -1,11 +1,11 @@
 ---
-title: "Uruchom zadania uruchamiania usług w chmurze platformy Azure | Dokumentacja firmy Microsoft"
-description: "Zadania uruchamiania pomóc w przygotowaniu środowiska usługi chmury dla aplikacji. To jest przedstawienie sposób działania uruchamiania zadań i porady były"
+title: Uruchom zadania uruchamiania usług w chmurze platformy Azure | Dokumentacja firmy Microsoft
+description: Zadania uruchamiania pomóc w przygotowaniu środowiska usługi chmury dla aplikacji. To jest przedstawienie sposób działania uruchamiania zadań i porady były
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 886939be-4b5b-49cc-9a6e-2172e3c133e9
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23843679"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Jak skonfigurować i uruchomić zadania uruchamiania dla usługi w chmurze
 Zadania uruchamiania służy do wykonywania operacji przed rozpoczęciem roli. Operacje, które można wykonać to instalowania składnika, rejestrowanie składników modelu COM, ustawienie kluczy rejestru lub uruchamia proces wymagającą dużo czasu.

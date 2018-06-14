@@ -1,13 +1,13 @@
 ---
-title: "Dodaj bramę sieci wirtualnej do sieci wirtualnej dla usługi ExpressRoute: Portal: Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule przedstawiono dodawania bramy sieci wirtualnej do już utworzonego sieci wirtualnej Menedżera zasobów dla usługi ExpressRoute."
+title: 'Dodaj bramę sieci wirtualnej do sieci wirtualnej dla usługi ExpressRoute: Portal: Azure | Dokumentacja firmy Microsoft'
+description: W tym artykule przedstawiono dodawania bramy sieci wirtualnej do już utworzonego sieci wirtualnej Menedżera zasobów dla usługi ExpressRoute.
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23850868"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Konfigurowanie bramy sieci wirtualnej dla usługi przy użyciu portalu Azure
 > [!div class="op_single_selector"]

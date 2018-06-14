@@ -1,11 +1,11 @@
 ---
-title: "Wprowadzenie do aplikacji usługi v1 środowiska"
-description: "Więcej informacji na temat funkcji v1 środowiska usługi aplikacji, która zawiera jednostki skalowania bezpieczne przyłączone do sieci wirtualnej, dedykowane do uruchamiania wszystkich aplikacji."
+title: Wprowadzenie do aplikacji usługi v1 środowiska
+description: Więcej informacji na temat funkcji v1 środowiska usługi aplikacji, która zawiera jednostki skalowania bezpieczne przyłączone do sieci wirtualnej, dedykowane do uruchamiania wszystkich aplikacji.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: stefsch
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 78e6d4f5-da46-4eb5-a632-b5fdc17d2394
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836784"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>Wprowadzenie do aplikacji usługi v1 środowiska
 

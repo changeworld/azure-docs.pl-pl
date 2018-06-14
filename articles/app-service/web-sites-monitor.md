@@ -1,11 +1,11 @@
 ---
-title: "Monitorowanie aplikacji w usłudze Azure App Service | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak monitorować aplikacje w usłudze Azure App Service przy użyciu portalu Azure."
+title: Monitorowanie aplikacji w usłudze Azure App Service | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak monitorować aplikacje w usłudze Azure App Service przy użyciu portalu Azure.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: btardif
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: d273da4e-07de-48e0-b99d-4020d84a425e
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/27/2018
+ms.locfileid: "29573807"
 ---
 # <a name="how-to-monitor-apps-in-azure-app-service"></a>Porady: monitorować aplikacje w usłudze aplikacji Azure
 [Usługi aplikacji](http://go.microsoft.com/fwlink/?LinkId=529714) oferuje wbudowane funkcje monitorowania w [portalu Azure](https://portal.azure.com).

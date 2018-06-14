@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie rekordami kontroli dostępu dla tablicy wirtualnego StorSimple | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób zarządzania rekordami kontroli dostępu (ACRs) do określenia, które hosty mogą łączyć się woluminu w macierzy wirtualnych StorSimple z."
+title: Zarządzanie rekordami kontroli dostępu dla tablicy wirtualnego StorSimple | Dokumentacja firmy Microsoft
+description: Opisuje sposób zarządzania rekordami kontroli dostępu (ACRs) do określenia, które hosty mogą łączyć się woluminu w macierzy wirtualnych StorSimple z.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e154bb4f-faab-4d92-a593-900c3ddc9595
 ms.service: storsimple
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875942"
 ---
 # <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>Użyj Menedżera urządzeń StorSimple do zarządzania rekordy kontroli dostępu dla tablicy wirtualnego StorSimple
 

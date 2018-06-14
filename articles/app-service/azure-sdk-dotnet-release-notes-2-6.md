@@ -4,7 +4,7 @@ description: Informacje o wersji zestawu Azure SDK dla platformy .NET w wersji 2
 services: app-service/web
 documentationcenter: .net
 author: chrissfanos
-editor: 
+editor: ''
 ms.assetid: b45853d5-a2b8-4962-a22d-579cb36ae14c
 ms.service: app-service
 ms.devlang: multiple
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836462"
 ---
 # <a name="azure-sdk-for-net-26-release-notes"></a>Informacje o wersji zestawu Azure SDK dla platformy .NET w wersji 2.6
 Ten dokument zawiera informacje o wersji zestawu Azure SDK w wersji .NET 2.6. 

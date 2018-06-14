@@ -1,11 +1,11 @@
 ---
 title: Naprawianie zadania eksportu Import/Eksport Azure - v1 | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak naprawić zadanie eksportu, który został utworzony i uruchamiany za pomocą usługi Import/Eksport Azure."
+description: Dowiedz się, jak naprawić zadanie eksportu, który został utworzony i uruchamiany za pomocą usługi Import/Eksport Azure.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 728e2a42-04ce-4be8-9375-e9e2bc6827a5
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873877"
 ---
 # <a name="repairing-an-export-job"></a>Naprawianie zadania eksportu
 Po zakończeniu zadania eksportu, możesz uruchomić narzędzie importu/eksportu pakietu Microsoft Azure lokalnej do:  

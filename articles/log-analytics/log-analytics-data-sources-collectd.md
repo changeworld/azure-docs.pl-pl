@@ -1,8 +1,8 @@
 ---
 title: Zbieranie danych z CollectD w OMS Log Analytics | Dokumentacja firmy Microsoft
-description: "CollectD jest demonów systemu Linux typu open source, który okresowo zbiera dane z aplikacji oraz informacje o poziomie systemu.  Ten artykuł zawiera informacje dotyczące zbierania danych z CollectD w analizy dzienników."
+description: CollectD jest demonów systemu Linux typu open source, który okresowo zbiera dane z aplikacji oraz informacje o poziomie systemu.  Ten artykuł zawiera informacje dotyczące zbierania danych z CollectD w analizy dzienników.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23855208"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Zbieranie danych z CollectD na agentach systemu Linux w analizy dzienników
 [CollectD](https://collectd.org/) jest demonów systemu Linux typu open source, która okresowo gromadzi metryki wydajności z aplikacji i informacji o poziomie systemu. Przykładowe aplikacje obejmują maszyny wirtualnej Java (JVM), serwer MySQL i Nginx. Ten artykuł zawiera informacje dotyczące zbierania danych wydajności z CollectD w analizy dzienników.
