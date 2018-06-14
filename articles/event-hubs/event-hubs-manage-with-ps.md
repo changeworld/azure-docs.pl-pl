@@ -1,12 +1,12 @@
 ---
-title: "Za pomocą programu PowerShell do zarządzania zasobami Azure Event Hubs | Dokumentacja firmy Microsoft"
-description: "Użyj modułu programu PowerShell do tworzenia i obsługi usługi Event Hubs"
+title: Za pomocą programu PowerShell do zarządzania zasobami Azure Event Hubs | Dokumentacja firmy Microsoft
+description: Użyj modułu programu PowerShell do tworzenia i obsługi usługi Event Hubs
 services: event-hubs
 documentationcenter: .NET
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26782221"
 ---
 # <a name="use-powershell-to-manage-event-hubs-resources"></a>Zarządzanie zasobami usługi Event Hubs przy użyciu programu PowerShell
 
