@@ -1,10 +1,10 @@
 ---
-title: "Włączanie synchronizacji w trybie offline dla aplikacji uniwersalnych platformy systemu Windows (UWP) z usługą Mobile Apps | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać aplikacji mobilnej Azure do pamięci podręcznej i synchronizacji danych w trybie offline w aplikacji Windows platformy Uniwersalnej."
+title: Włączanie synchronizacji w trybie offline dla aplikacji uniwersalnych platformy systemu Windows (UWP) z usługą Mobile Apps | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać aplikacji mobilnej Azure do pamięci podręcznej i synchronizacji danych w trybie offline w aplikacji Windows platformy Uniwersalnej.
 documentationcenter: windows
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 services: app-service\mobile
 ms.assetid: 8fe51773-90de-4014-8a38-41544446d9b5
 ms.service: app-service-mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27594483"
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>Włączanie synchronizacji w trybie offline dla aplikacji systemu Windows
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]

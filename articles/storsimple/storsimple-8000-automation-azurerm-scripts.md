@@ -1,12 +1,12 @@
 ---
-title: "Za pomocą skryptów usługi Azure Resource Manager do zarządzania urządzeniami StorSimple | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać usługi Azure Resource Manager skryptów do automatyzacji zadań StorSimple"
+title: Za pomocą skryptów usługi Azure Resource Manager do zarządzania urządzeniami StorSimple | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać usługi Azure Resource Manager skryptów do automatyzacji zadań StorSimple
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26373945"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Za pomocą skryptów na podstawie zestawu SDK usługi Azure Resource Manager do zarządzania urządzeniami StorSimple
 

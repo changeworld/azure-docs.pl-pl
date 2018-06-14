@@ -1,11 +1,11 @@
 ---
-title: "Informacje o wersji dla usług Azure BizTalk | Dokumentacja firmy Microsoft"
-description: "Wymieniono znane problemy dotyczące usług Azure BizTalk"
+title: Informacje o wersji dla usług Azure BizTalk | Dokumentacja firmy Microsoft
+description: Wymieniono znane problemy dotyczące usług Azure BizTalk
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: msftman
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: f4906fdc-4cd9-4a57-a007-a88c2e51a18f
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26633820"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Informacje o wersji dla usługi Azure BizTalk Services
 

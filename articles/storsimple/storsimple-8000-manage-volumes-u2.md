@@ -1,12 +1,12 @@
 ---
-title: "Zarządzanie woluminami StorSimple (aktualizacja Update 3) | Dokumentacja firmy Microsoft"
-description: "Wyjaśniono, jak dodawać, modyfikować, monitorowania i Usuń woluminy StorSimple i sposób wykonania ich w trybie offline, jeśli to konieczne."
+title: Zarządzanie woluminami StorSimple (aktualizacja Update 3) | Dokumentacja firmy Microsoft
+description: Wyjaśniono, jak dodawać, modyfikować, monitorowania i Usuń woluminy StorSimple i sposób wykonania ich w trybie offline, jeśli to konieczne.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26578877"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Zarządzanie woluminami (Update 3 lub nowszej) przy użyciu usługi Menedżer StorSimple urządzenia
 
