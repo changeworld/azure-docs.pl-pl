@@ -1,12 +1,12 @@
 ---
-title: "Rozwiązywanie problemów z rozszerzenia maszyny Wirtualnej usługi Analiza dzienników Azure | Dokumentacja firmy Microsoft"
-description: "Opisz objawy, przyczyny i rozwiązania dla typowych problemów z rozszerzeniem wirtualna analizy dziennika systemu Windows i Linux maszynach wirtualnych platformy Azure."
+title: Rozwiązywanie problemów z rozszerzenia maszyny Wirtualnej usługi Analiza dzienników Azure | Dokumentacja firmy Microsoft
+description: Opisz objawy, przyczyny i rozwiązania dla typowych problemów z rozszerzeniem wirtualna analizy dziennika systemu Windows i Linux maszynach wirtualnych platformy Azure.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29394990"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension"></a>Rozwiązywanie problemów z rozszerzenia maszyny Wirtualnej analizy dzienników
 W tym artykule zawiera informacje pomocne przy rozwiązywaniu problemów z błędami, mogą wystąpić z rozszerzeniem wirtualna analizy dzienników dla systemu Windows i Linux maszynami wirtualnymi w systemie Microsoft Azure, a także sugeruje możliwe rozwiązania ich rozwiązania.

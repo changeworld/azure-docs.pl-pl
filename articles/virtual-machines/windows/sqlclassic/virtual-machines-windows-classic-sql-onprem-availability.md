@@ -1,11 +1,11 @@
 ---
-title: "Rozszerzanie lokalnymi zawsze włączone grupy dostępności na platformie Azure | Dokumentacja firmy Microsoft"
-description: "W tym samouczku są używane zasoby utworzone za pomocą klasycznym modelu wdrażania i informacje dotyczące używania kreatora Dodawanie repliki w programu SQL Server Management Studio (SSMS) można dodać repliki zawsze włączonej grupy dostępności na platformie Azure."
+title: Rozszerzanie lokalnymi zawsze włączone grupy dostępności na platformie Azure | Dokumentacja firmy Microsoft
+description: W tym samouczku są używane zasoby utworzone za pomocą klasycznym modelu wdrażania i informacje dotyczące używania kreatora Dodawanie repliki w programu SQL Server Management Studio (SSMS) można dodać repliki zawsze włączonej grupy dostępności na platformie Azure.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 7ca7c423-8342-4175-a70b-d5101dfb7f23
 ms.service: virtual-machines-sql
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29400481"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>Rozszerzanie lokalnymi zawsze włączone grupy dostępności na platformie Azure
 Zawsze włączone grupy dostępności zapewnia wysoką dostępność dla grup bazy danych, dodając replikach pomocniczych. Zezwalaj na tych replik przechodzenie w tryb failover baz danych w przypadku awarii. Ponadto one może służyć do odciążenia odczytu obciążeń lub zadania tworzenia kopii zapasowych.

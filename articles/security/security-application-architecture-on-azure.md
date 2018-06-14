@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/23/2017
+ms.locfileid: "25549439"
 ---
 # <a name="application-architecture-on-azure"></a>Architektura aplikacji na platformie Azure
 Aby ułatwić zabezpieczanie rozwiązań opartych na chmurze w systemie Microsoft Azure, silne foundation architektury jest krytyczna. Architektów, projektantów i implementacje korzystać z silnej wiedzy architektury usług i aplikacji. Ta wiedza podstawowych ułatwiające zrozumienie wszystkie składniki rozwiązań opartych na chmurze i ułatwiają zintegrowane zabezpieczenia do wszystkich aspektów projektowania i implementacji.

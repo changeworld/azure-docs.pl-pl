@@ -1,12 +1,12 @@
 ---
-title: "Cennik powłoki w chmurze platformy Azure | Dokumentacja firmy Microsoft"
-description: "Omówienie ceny powłoki chmury Azure"
-services: 
-documentationcenter: 
+title: Cennik powłoki w chmurze platformy Azure | Dokumentacja firmy Microsoft
+description: Omówienie ceny powłoki chmury Azure
+services: ''
+documentationcenter: ''
 author: jluk
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/15/2017
+ms.locfileid: "24809870"
 ---
 # <a name="pricing"></a>Cennik
 Bash w powłoce chmury i programu PowerShell w chmurze powłoki (wersja zapoznawcza) podlegają poniższe informacje.

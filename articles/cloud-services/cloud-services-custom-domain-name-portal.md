@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "25946778"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Konfigurowanie niestandardowej nazwy domeny dla usługi w chmurze Azure
 Podczas tworzenia usługi w chmurze Azure przypisuje go do poddomeną **cloudapp.net**. Na przykład, jeśli usługi w chmurze ma nazwę "contoso", użytkowników będzie można uzyskać dostępu do aplikacji przy użyciu adresu URL, takie jak http://contoso.cloudapp.net. Azure przypisuje wirtualny adres IP.

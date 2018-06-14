@@ -1,11 +1,11 @@
 ---
 title: Azure API Management cross zasady domeny | Dokumentacja firmy Microsoft
-description: "Więcej informacji na temat dostępnych do użycia w usłudze Azure API Management zasady obejmujące różne domeny."
+description: Więcej informacji na temat dostępnych do użycia w usłudze Azure API Management zasady obejmujące różne domeny.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 7689d277-8abe-472a-a78c-e6d4bd43455d
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/04/2017
+ms.locfileid: "26129038"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (Zasady usługi API Management obejmujące różne domeny)
 W tym temacie znajdują się informacje na następujące zasady usługi API Management. Aby uzyskać informacje dotyczące dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  

@@ -1,7 +1,7 @@
 ---
 title: Tworzenie klastra maszyny Wirtualnej z Terraform i HCL
-description: "Użyj Terraform i HashiCorp konfiguracji języka (HCL) do utworzenia klastra maszyny wirtualnej systemu Linux z modułu równoważenia obciążenia na platformie Azure"
-keywords: "terraform, devops, maszyny wirtualnej, sieci, modułów"
+description: Użyj Terraform i HashiCorp konfiguracji języka (HCL) do utworzenia klastra maszyny wirtualnej systemu Linux z modułu równoważenia obciążenia na platformie Azure
+keywords: terraform, devops, maszyny wirtualnej, sieci, modułów
 author: tomarcher
 manager: routlaw
 ms.service: virtual-machines-linux
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/13/2017
+ms.locfileid: "24518804"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Tworzenie klastra maszyny Wirtualnej z Terraform i HCL
 

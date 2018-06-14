@@ -1,11 +1,11 @@
 ---
-title: "Analizowanie zabezpieczeń sieci z widokiem grupy obserwatora zabezpieczeń Azure sieci - Azure CLI 2.0 | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób na potrzeby analizowania z widokiem zabezpieczeń grupy zabezpieczeń maszyny wirtualne Azure CLI 2.0."
+title: Analizowanie zabezpieczeń sieci z widokiem grupy obserwatora zabezpieczeń Azure sieci - Azure CLI 2.0 | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób na potrzeby analizowania z widokiem zabezpieczeń grupy zabezpieczeń maszyny wirtualne Azure CLI 2.0.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a986ff4f-7e0c-4994-95e1-4ac824986500
 ms.service: network-watcher
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "26409882"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli-20"></a>Analizowanie zabezpieczeń maszyny wirtualnej z widokiem grupy zabezpieczeń używa interfejsu wiersza polecenia platformy Azure w wersji 2.0
 
