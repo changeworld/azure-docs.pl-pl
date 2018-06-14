@@ -1,6 +1,6 @@
 ---
-title: "Usługa Azure Premium Storage: Projektowanie wydajności dla maszyn wirtualnych systemu Windows | Dokumentacja firmy Microsoft"
-description: "Projektowanie aplikacji wysokiej wydajności przy użyciu usługi Azure Premium Storage. Magazyn w warstwie Premium oferuje obsługę dysków o wysokiej wydajności i małych opóźnieniach/O wykonujących obciążeń uruchomionych na maszynach wirtualnych platformy Azure."
+title: 'Usługa Azure Premium Storage: Projektowanie wydajności dla maszyn wirtualnych systemu Windows | Dokumentacja firmy Microsoft'
+description: Projektowanie aplikacji wysokiej wydajności przy użyciu usługi Azure Premium Storage. Magazyn w warstwie Premium oferuje obsługę dysków o wysokiej wydajności i małych opóźnieniach/O wykonujących obciążeń uruchomionych na maszynach wirtualnych platformy Azure.
 services: virtual-machines-windows
 documentationcenter: na
 author: aungoo-msft
@@ -19,5 +19,6 @@ ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/02/2017
+ms.locfileid: "23949846"
 ---
 [!INCLUDE [virtual-machines-common-premium-storage-performance.md](../../../includes/virtual-machines-common-premium-storage-performance.md)]

@@ -1,6 +1,6 @@
 ---
-title: "Usługi konfiguracji zarządzania — narzędzie Microsoft Threat modelowania — Azure | Dokumentacja firmy Microsoft"
-description: "środki zaradcze w przypadku zagrożeń widoczne w narzędziu modelowania zagrożeń"
+title: Usługi konfiguracji zarządzania — narzędzie Microsoft Threat modelowania — Azure | Dokumentacja firmy Microsoft
+description: środki zaradcze w przypadku zagrożeń widoczne w narzędziu modelowania zagrożeń
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28019827"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Zabezpieczeń ramki: Zarządzanie konfiguracją | Środki zaradcze 
 | Produktów i usług | Artykuł |

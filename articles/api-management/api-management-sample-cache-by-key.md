@@ -1,11 +1,11 @@
 ---
-title: "Buforowanie niestandardowych w usłudze Azure API Management"
-description: "Dowiedz się, jak i pamięci podręcznej elementów przez klucz w usłudze Azure API Management"
+title: Buforowanie niestandardowych w usłudze Azure API Management
+description: Dowiedz się, jak i pamięci podręcznej elementów przez klucz w usłudze Azure API Management
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 772bc8dd-5cda-41c4-95bf-b9f6f052bc85
 ms.service: api-management
 ms.devlang: dotnet
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29376035"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Buforowanie niestandardowych w usłudze Azure API Management
 Usługa Azure API Management ma wbudowaną obsługę [buforowanie odpowiedzi HTTP](api-management-howto-cache.md) przy użyciu adresu URL zasobu jako klucz. Klucz może być modyfikowany przez nagłówki żądania przy użyciu `vary-by` właściwości. Jest to przydatne w przypadku buforowanie całej odpowiedzi HTTP (alias oświadczenia), ale czasami jest przydatne do pamięci podręcznej tylko część reprezentacji. Nowy [pamięci podręcznej wyszukiwania wartości](https://msdn.microsoft.com/library/azure/dn894086.aspx#GetFromCacheByKey) i [-magazynu wartość w pamięci podręcznej](https://msdn.microsoft.com/library/azure/dn894086.aspx#StoreToCacheByKey) zasady umożliwiają przechowywanie i pobieranie dowolnych fragmentów danych z poziomu definicji zasad. Tę możliwość również dodaje wartość poprzednio wprowadzone [żądanie wysłania](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest) zasad ponieważ teraz może buforować odpowiedzi z usług zewnętrznych.

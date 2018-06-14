@@ -1,6 +1,6 @@
 ---
-title: "Włączanie kompleksowej usługi SSL w usłudze Azure Application Gateway | Microsoft Docs"
-description: "Ta strona zawiera omówienie kompleksowej obsługi protokołu SSL w usłudze Application Gateway."
+title: Włączanie kompleksowej usługi SSL w usłudze Azure Application Gateway | Microsoft Docs
+description: Ta strona zawiera omówienie kompleksowej obsługi protokołu SSL w usłudze Application Gateway.
 documentationcenter: na
 services: application-gateway
 author: amsriva
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22704714"
 ---
 # <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>Omówienie kompleksowej usługi SSL z usługą Application Gateway
 

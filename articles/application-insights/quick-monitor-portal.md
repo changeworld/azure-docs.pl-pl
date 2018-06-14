@@ -1,8 +1,8 @@
 ---
-title: "Monitorowanie aplikacji internetowej ASP.NET za pomocą usługi Azure Application Insights | Microsoft Docs"
-description: "W tym artykule przedstawiono instrukcje pozwalające szybko skonfigurować aplikację internetową ASP.NET w celu jej monitorowania za pomocą usługi Application Insights."
+title: Monitorowanie aplikacji internetowej ASP.NET za pomocą usługi Azure Application Insights | Microsoft Docs
+description: W tym artykule przedstawiono instrukcje pozwalające szybko skonfigurować aplikację internetową ASP.NET w celu jej monitorowania za pomocą usługi Application Insights.
 services: application-insights
-keywords: 
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/14/2017
@@ -15,6 +15,7 @@ ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/01/2017
+ms.locfileid: "23947676"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Rozpoczynanie monitorowania aplikacji internetowej ASP.NET
 
