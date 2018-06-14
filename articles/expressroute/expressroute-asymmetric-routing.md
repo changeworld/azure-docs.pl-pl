@@ -1,11 +1,11 @@
 ---
 title: Routing asymetryczny | Microsoft Docs
-description: "W tym artykule przedstawiono problemy związane z routingiem asymetrycznym w sieci, które może napotkać klient, jeśli sieć zawiera wiele połączeń z miejscem docelowym."
+description: W tym artykule przedstawiono problemy związane z routingiem asymetrycznym w sieci, które może napotkać klient, jeśli sieć zawiera wiele połączeń z miejscem docelowym.
 documentationcenter: na
 services: expressroute
 author: osamazia
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: a754bff9-95c9-44b5-9796-377fc21e8322
 ms.service: expressroute
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22710018"
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>Routing asymetryczny z wieloma ścieżkami sieciowymi
 W tym artykule wyjaśniono, jak ruch sieciowy w obie strony może podążać różnymi trasami w przypadku dostępności wielu ścieżek między miejscem źródłowym i docelowym.

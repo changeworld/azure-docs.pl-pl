@@ -1,6 +1,6 @@
 ---
-title: "Filmy wideo zabezpieczeń platformy Azure w witrynie Channel 9 | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera listę wyselekcjonowanych prezentacji zabezpieczeń platformy Azure w witrynie Channel 9. Kanał 9 jest społeczność łączącego osobom korzystającym z naszych produktów osobom za naszych produktów."
+title: Filmy wideo zabezpieczeń platformy Azure w witrynie Channel 9 | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera listę wyselekcjonowanych prezentacji zabezpieczeń platformy Azure w witrynie Channel 9. Kanał 9 jest społeczność łączącego osobom korzystającym z naszych produktów osobom za naszych produktów.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2017
+ms.locfileid: "25540139"
 ---
 # <a name="azure-security-videos-on-channel-9"></a>Filmy wideo zabezpieczeń platformy Azure w witrynie Channel 9
 [Channel 9](https://channel9.msdn.com/) jest Wspólnoty przełącza do przodu osoby za naszych produktów i łączy je z klientami.

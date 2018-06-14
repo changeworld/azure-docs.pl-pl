@@ -1,12 +1,12 @@
 ---
-title: "Omówienie planu usługi Azure App Service | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak planów usługi App Service dla pracy w usłudze Azure App Service i korzyści do środowiska zarządzania."
-keywords: "usługi aplikacji, usługi azure app service, skalowania, skalowalna, skalowalność, plan usługi app service, koszt usługi aplikacji"
+title: Omówienie planu usługi Azure App Service | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak planów usługi App Service dla pracy w usłudze Azure App Service i korzyści do środowiska zarządzania.
+keywords: usługi aplikacji, usługi azure app service, skalowania, skalowalna, skalowalność, plan usługi app service, koszt usługi aplikacji
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.service: app-service
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/17/2018
+ms.locfileid: "27862363"
 ---
 # <a name="azure-app-service-plan-overview"></a>Omówienie usługi Azure planu usługi aplikacji
 

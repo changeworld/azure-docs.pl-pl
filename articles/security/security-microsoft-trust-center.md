@@ -1,6 +1,6 @@
 ---
 title: Informacje o zabezpieczeniach Microsoft Trust Center i na platformie Azure | Dokumentacja firmy Microsoft
-description: "Centrum firmy Microsoft Trust udostępnia informacje, które muszą mieć pewność, że platformy Azure, na którym uruchomiono usługi jest bezpieczna."
+description: Centrum firmy Microsoft Trust udostępnia informacje, które muszą mieć pewność, że platformy Azure, na którym uruchomiono usługi jest bezpieczna.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2017
+ms.locfileid: "25541574"
 ---
 # <a name="microsoft-trust-center"></a>Centrum zaufania firmy Microsoft
 Witryny Azure zabezpieczeń informacji w witrynie Azure.com zapewnia informacji do planowania i projektowania, wdrażania, skonfigurować i bezpieczne zarządzanie rozwiązaniach w chmurze. Z Centrum Microsoft Trust również mieć informacje, musisz mieć pewność, że platformy Azure, na którym uruchomiono usługi jest bezpieczna.
