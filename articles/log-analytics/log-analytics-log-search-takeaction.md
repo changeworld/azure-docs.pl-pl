@@ -1,12 +1,12 @@
 ---
-title: "Użytkownik zainicjował akcję elementu Runbook usługi Automatyzacja Azure w Log Analytics | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób uruchamiania elementu runbook automatyzacji z analizy dzienników wyszukiwania wyników na żądanie."
+title: Użytkownik zainicjował akcję elementu Runbook usługi Automatyzacja Azure w Log Analytics | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób uruchamiania elementu runbook automatyzacji z analizy dzienników wyszukiwania wyników na żądanie.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29394619"
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>Podjąć działania z element Runbook usługi Automatyzacja w wynikach wyszukiwania dziennika analizy dzienników
 

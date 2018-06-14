@@ -1,11 +1,11 @@
 ---
-title: "Sposób użycia właściwości w ramach zasad usługi Azure API Management"
-description: "Dowiedz się, jak używać właściwości w ramach zasad usługi Azure API Management."
+title: Sposób użycia właściwości w ramach zasad usługi Azure API Management
+description: Dowiedz się, jak używać właściwości w ramach zasad usługi Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28197116"
 ---
 # <a name="how-to-use-properties-in-azure-api-management-policies"></a>Sposób użycia właściwości w ramach zasad usługi Azure API Management
 Zarządzanie interfejsami API zasady są zaawansowanych możliwości systemu, który umożliwia portalu Azure do zmiany zachowania interfejsu API za pomocą konfiguracji. Zasady to zbiór instrukcji, które są wykonywane sekwencyjnie podczas żądania lub odpowiedzi interfejsu API. Deklaracji zasad może być skonstruowany przy użyciu wartości tekstowe literału, wyrażenie zasad i właściwości. 
