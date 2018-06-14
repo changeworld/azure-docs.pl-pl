@@ -1,6 +1,6 @@
 ---
-title: "Rozwiązanie Docker na platformie Azure"
-description: "Wdrażanie i integrowanie rozwiązania Docker z platformą Azure"
+title: Rozwiązanie Docker na platformie Azure
+description: Wdrażanie i integrowanie rozwiązania Docker z platformą Azure
 services: multiple
 author: czeumault
 manager: carolz
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23069107"
 ---
 <div class="content">
    <h1>Rozwiązanie Docker na platformie Azure</h1>   

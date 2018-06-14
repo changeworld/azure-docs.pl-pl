@@ -1,9 +1,9 @@
 ---
-title: "Azure AD: Resetowanie hasła | Dokumentacja firmy Microsoft"
-description: "Użyj samoobsługowego resetowania hasła, aby odzyskać dostęp do pracy lub szkołą konta użytkownika"
+title: 'Azure AD: Resetowanie hasła | Dokumentacja firmy Microsoft'
+description: Użyj samoobsługowego resetowania hasła, aby odzyskać dostęp do pracy lub szkołą konta użytkownika
 services: active-directory
-keywords: 
-documentationcenter: 
+keywords: ''
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: sahenry
@@ -21,6 +21,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29463782"
 ---
 # <a name="reset-your-work-or-school-password"></a>Resetowanie hasła lub szkoły
 

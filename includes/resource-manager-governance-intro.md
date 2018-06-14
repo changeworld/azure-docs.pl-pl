@@ -13,6 +13,7 @@ ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29528343"
 ---
 Podczas wdrażania zasobów na platformie Azure, masz bardzo elastyczne, podczas podejmowania decyzji o jakich typów zasobów, aby wdrożyć, gdzie znajdują się oraz jak je skonfigurować. Jednak tego elastyczność może otworzyć więcej opcji niż chcesz zezwolić w firmie. Podczas planowania, wdrażania zasobów na platformie Azure, może być zastanawiasz się:
 

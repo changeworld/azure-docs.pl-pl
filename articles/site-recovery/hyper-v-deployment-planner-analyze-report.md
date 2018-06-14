@@ -1,6 +1,6 @@
 ---
-title: "Usługi Azure Site Recovery wdrożenia Planistę dla funkcji Hyper-V-do Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano analizy wygenerowanego raportu za pomocą usługi Azure lokacji odzyskiwania wdrożenia Planistę dla funkcji Hyper-V do platformy Azure scenariusza."
+title: Usługi Azure Site Recovery wdrożenia Planistę dla funkcji Hyper-V-do Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano analizy wygenerowanego raportu za pomocą usługi Azure lokacji odzyskiwania wdrożenia Planistę dla funkcji Hyper-V do platformy Azure scenariusza.
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29467212"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analizowanie raportu planowania usługi Azure Site Recovery wdrożenia
 W tym artykule omówiono arkusze zawarty w raporcie programu Excel, generowane przez Azure lokacji odzyskiwania wdrożenia Planistę dla funkcji Hyper-V do platformy Azure scenariusza.

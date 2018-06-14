@@ -1,11 +1,11 @@
 ---
-title: "Dokumentacja usługi Azure Virtual Machines — samouczki i dokumentacja interfejsu API | Microsoft Docs"
-description: "Dowiedz się, jak tworzyć i wdrażać maszyny wirtualne z systemem Windows lub Linux i zarządzać nimi. Samouczki, dokumentacja interfejsu API i inne dokumenty."
+title: Dokumentacja usługi Azure Virtual Machines — samouczki i dokumentacja interfejsu API | Microsoft Docs
+description: Dowiedz się, jak tworzyć i wdrażać maszyny wirtualne z systemem Windows lub Linux i zarządzać nimi. Samouczki, dokumentacja interfejsu API i inne dokumenty.
 services: virtual-machines
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23072864"
 ---
 # <a name="virtual-machines-documentation"></a>Dokumentacja usługi Virtual Machines
 
