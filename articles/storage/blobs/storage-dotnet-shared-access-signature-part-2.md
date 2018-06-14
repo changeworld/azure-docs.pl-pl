@@ -1,8 +1,8 @@
 ---
-title: "Tworzenie i używanie sygnatury dostępu współdzielonego (SAS) z magazynu obiektów Blob platformy Azure | Dokumentacja firmy Microsoft"
-description: "Ten samouczek przedstawia sposób tworzenia sygnatur dostępu współdzielonego do użytku z magazynu obiektów Blob i jak korzystać z nich w aplikacji klienta."
+title: Tworzenie i używanie sygnatury dostępu współdzielonego (SAS) z magazynu obiektów Blob platformy Azure | Dokumentacja firmy Microsoft
+description: Ten samouczek przedstawia sposób tworzenia sygnatur dostępu współdzielonego do użytku z magazynu obiektów Blob i jak korzystać z nich w aplikacji klienta.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: timlt
 editor: tysonn
@@ -16,9 +16,10 @@ ms.date: 05/15/2017
 ms.author: tamram
 ms.openlocfilehash: 9dde12acde748c48b56f9f96ee772fca49954358
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873212"
 ---
 # <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>Udostępnione sygnatur dostępu, część 2: Tworzenie i sygnatury dostępu Współdzielonego za pomocą magazynu obiektów Blob
 
@@ -160,7 +161,7 @@ static string GetBlobSasUri(CloudBlobContainer container)
 }
 ```
 
-W dolnej części **Main()** metody, Dodaj następujące wiersze do wywołania **GetBlobSasUri()**, przed wywołaniem do **Console.ReadLine()**i zapisu sygnatury dostępu współdzielonego Identyfikator URI w oknie konsoli:
+W dolnej części **Main()** metody, Dodaj następujące wiersze do wywołania **GetBlobSasUri()**, przed wywołaniem do **Console.ReadLine()** i zapisu sygnatury dostępu współdzielonego Identyfikator URI w oknie konsoli:
 
 ```csharp
 //Generate a SAS URI for a blob within the container, without a stored access policy.
@@ -205,7 +206,7 @@ static void CreateSharedAccessPolicy(CloudBlobClient blobClient, CloudBlobContai
 }
 ```
 
-W dolnej części **Main()** przed wywołaniem metody **Console.ReadLine()**Dodaj następujące wiersze do pierwszego wyczyść wszystkie istniejące zasady dostępu, a następnie wywołać  **CreateSharedAccessPolicy()** metody:
+W dolnej części **Main()** przed wywołaniem metody **Console.ReadLine()** Dodaj następujące wiersze do pierwszego wyczyść wszystkie istniejące zasady dostępu, a następnie wywołać  **CreateSharedAccessPolicy()** metody:
 
 ```csharp
 //Clear any existing access policies on container.

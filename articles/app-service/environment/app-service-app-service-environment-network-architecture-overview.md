@@ -1,11 +1,11 @@
 ---
-title: "Omówienie architektury sieciowej środowisk usługi App Service"
-description: "Omówienie architektury ofApp topologii sieci środowiska usługi."
+title: Omówienie architektury sieciowej środowisk usługi App Service
+description: Omówienie architektury ofApp topologii sieci środowiska usługi.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: stefsch
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 13d03a37-1fe2-4e3e-9d57-46dfb330ba52
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836826"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>Omówienie architektury sieciowej środowisk usługi App Service
 ## <a name="introduction"></a>Wprowadzenie

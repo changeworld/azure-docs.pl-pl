@@ -1,12 +1,12 @@
 ---
-title: "Zastąp PCM na urządzeniu z serii StorSimple 8000 | Dokumentacja firmy Microsoft"
-description: "Wyjaśniono, jak usunięty i zastąpiony zasilania i chłodzenia modułu (PCM) na urządzeniu StorSimple"
+title: Zastąp PCM na urządzeniu z serii StorSimple 8000 | Dokumentacja firmy Microsoft
+description: Wyjaśniono, jak usunięty i zastąpiony zasilania i chłodzenia modułu (PCM) na urządzeniu StorSimple
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875060"
 ---
 # <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>Zamień na urządzeniu StorSimple zasilania i chłodzenia modułu
 ## <a name="overview"></a>Omówienie

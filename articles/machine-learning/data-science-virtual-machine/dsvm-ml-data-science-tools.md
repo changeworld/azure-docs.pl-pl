@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31409554"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>Narzędzia nauki maszyny uczenie i danych
 Maszyna wirtualna nauki danych (DSVM) zawiera bogaty zestaw narzędzi i bibliotek do uczenia maszynowego dostępnych w popularnych języków, takich jak Julia Python, R. 

@@ -1,6 +1,6 @@
 ---
-title: "Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych funkcji Hyper-V między lokacjami lokalnymi z usługi Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować odzyskiwania po awarii dla maszyn wirtualnych funkcji Hyper-V między oddziałami lokalnych z usługą Azure Site Recovery."
+title: Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych funkcji Hyper-V między lokacjami lokalnymi z usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować odzyskiwania po awarii dla maszyn wirtualnych funkcji Hyper-V między oddziałami lokalnych z usługą Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29843463"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych funkcji Hyper-V do lokacji dodatkowej lokalnymi
 

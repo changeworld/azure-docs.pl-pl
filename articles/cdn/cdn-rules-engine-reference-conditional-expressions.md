@@ -1,11 +1,11 @@
 ---
-title: "Zasady usługi Azure CDN aparat wyrażeń warunkowych | Dokumentacja firmy Microsoft"
-description: "Dokumentacja referencyjna dla usługi Azure CDN zasady warunków dopasowania aparatu i funkcje."
+title: Zasady usługi Azure CDN aparat wyrażeń warunkowych | Dokumentacja firmy Microsoft
+description: Dokumentacja referencyjna dla usługi Azure CDN zasady warunków dopasowania aparatu i funkcje.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: Lichard
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
 ms.workload: media
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23842930"
 ---
 # <a name="azure-cdn-rules-engine-conditional-expressions"></a>Zasady usługi Azure CDN aparat wyrażeń warunkowych
 Ten temat zawiera szczegółowe opisy wyrażeń warunkowych dla usługi Azure sieci dostarczania zawartości (CDN) [aparatu reguł](cdn-rules-engine.md).

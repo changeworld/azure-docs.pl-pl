@@ -1,6 +1,6 @@
 ---
-title: "Sieć wirtualna platformy Azure — często zadawane pytania | Dokumentacja firmy Microsoft"
-description: "Odpowiedzi na najczęściej zadawane pytania dotyczące sieci wirtualne Microsoft Azure."
+title: Sieć wirtualna platformy Azure — często zadawane pytania | Dokumentacja firmy Microsoft
+description: Odpowiedzi na najczęściej zadawane pytania dotyczące sieci wirtualne Microsoft Azure.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29854193"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Sieć wirtualna platformy Azure — często zadawane pytania (FAQ)
 
