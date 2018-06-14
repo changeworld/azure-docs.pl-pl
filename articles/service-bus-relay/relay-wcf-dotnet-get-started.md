@@ -1,11 +1,11 @@
 ---
 title: Rozpoczynanie pracy z przekazuje Azure przekazywania WCF w programie .NET | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak używać przekaźników Azure przekazywania WCF do połączenia dwóch aplikacji udostępnianych w różnych lokalizacjach."
+description: Dowiedz się, jak używać przekaźników Azure przekazywania WCF do połączenia dwóch aplikacji udostępnianych w różnych lokalizacjach.
 services: service-bus-relay
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5493281a-c2e5-49f2-87ee-9d3ffb782c75
 ms.service: service-bus-relay
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "26856086"
 ---
 # <a name="how-to-use-azure-relay-wcf-relays-with-net"></a>Jak używać usługi WCF przekazywania Azure przekazuje z platformą .NET
 W tym artykule opisano sposób korzystania z usługi przekaźnika usługi Azure. Przykłady zostały napisane w języku C# i używają interfejsu API Windows Communication Foundation (WCF) z rozszerzeniami zawartymi w zestawie usługi Service Bus. Aby uzyskać więcej informacji na temat przekaźnika usługi Azure, zobacz [Omówienie przekaźnika usługi Azure](relay-what-is-it.md).

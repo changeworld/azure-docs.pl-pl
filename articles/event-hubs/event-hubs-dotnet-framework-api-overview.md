@@ -1,11 +1,11 @@
 ---
-title: "Omówienie usługi Azure Event hubs interfejsów API architektury .NET Framework | Dokumentacja firmy Microsoft"
-description: "Podsumowanie niektóre z kluczowych interfejsów API klienta Event Hubs .NET Framework."
+title: Omówienie usługi Azure Event hubs interfejsów API architektury .NET Framework | Dokumentacja firmy Microsoft
+description: Podsumowanie niektóre z kluczowych interfejsów API klienta Event Hubs .NET Framework.
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7f3b6cc0-9600-417f-9e80-2345411bd036
 ms.service: event-hubs
 ms.devlang: dotnet
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26781898"
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>Przegląd usługi Event Hubs .NET Framework API
 
