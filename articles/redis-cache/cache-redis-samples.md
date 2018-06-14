@@ -1,11 +1,11 @@
 ---
-title: "Przykłady pamięci podręcznej Redis Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać usługi pamięć podręczna Redis Azure"
+title: Przykłady pamięci podręcznej Redis Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać usługi pamięć podręczna Redis Azure
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 1f8d210c-ee09-4fe2-b63f-1e69246a27d8
 ms.service: cache
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27909700"
 ---
 # <a name="azure-redis-cache-samples"></a>Przykłady pamięci podręcznej Redis Azure
 Ten temat zawiera listę próbek pamięć podręczna Redis Azure, obejmujące scenariuszy, takich jak nawiązywanie połączeń z pamięci podręcznej, odczytywania i zapisywania danych do i z pamięci podręcznej i korzystanie z dostawców usługi pamięć podręczna Redis ASP.NET. Niektóre przykłady są projekty do pobrania, a niektóre zawierają wskazówki krok po kroku i zawierać fragmentów kodu, ale nie są połączone z projektem do pobrania.

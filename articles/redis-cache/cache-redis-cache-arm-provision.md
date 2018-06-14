@@ -1,11 +1,11 @@
 ---
-title: "Zapewnij pamięci podręcznej Redis przy użyciu usługi Azure Resource Manager | Dokumentacja firmy Microsoft"
-description: "Wdrażanie pamięć podręczna Redis Azure za pomocą szablonu usługi Azure Resource Manager."
+title: Zapewnij pamięci podręcznej Redis przy użyciu usługi Azure Resource Manager | Dokumentacja firmy Microsoft
+description: Wdrażanie pamięć podręczna Redis Azure za pomocą szablonu usługi Azure Resource Manager.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: ce6f5372-7038-4655-b1c5-108f7c148282
 ms.service: cache
 ms.workload: web
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27910745"
 ---
 # <a name="create-a-redis-cache-using-a-template"></a>Tworzenie pamięci podręcznej Redis przy użyciu szablonu
 W tym temacie dowiesz sposób tworzenia szablonu usługi Azure Resource Manager, która wdraża pamięć podręczna Redis Azure. Pamięć podręczna może służyć przy użyciu istniejącego konta magazynu do przechowywania danych diagnostycznych. Dowiesz się również, jak do definiowania zasobów, do których są wdrażane i sposób definiowania parametrów, które są określone, gdy wdrożenie jest wykonywane. Można użyć tego szablonu na potrzeby własnych wdrożeń lub dostosować go do konkretnych potrzeb.

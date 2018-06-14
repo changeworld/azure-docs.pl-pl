@@ -1,11 +1,11 @@
 ---
-title: "Szybki start: Azure Security Center — dołączanie subskrypcji platformy Azure do usługi Security Center w warstwie Standardowa | Microsoft Docs"
-description: "Ten przewodnik Szybki start przedstawia, jak zmienić warstwę cenową usługi Security Center na wyższą warstwę Standardowa w celu zapewnienia dodatkowych zabezpieczeń."
+title: 'Szybki start: Azure Security Center — dołączanie subskrypcji platformy Azure do usługi Security Center w warstwie Standardowa | Microsoft Docs'
+description: Ten przewodnik Szybki start przedstawia, jak zmienić warstwę cenową usługi Security Center na wyższą warstwę Standardowa w celu zapewnienia dodatkowych zabezpieczeń.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29531676"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Szybki start: dołączanie subskrypcji platformy Azure do usługi Security Center w warstwie Standardowa
 Usługa Azure Security Center zapewnia ujednolicone zarządzanie zabezpieczeniami i ochronę przed zagrożeniami na potrzeby różnych obciążeń chmury hybrydowej. Warstwa Bezpłatna zapewnia ograniczone bezpieczeństwo jedynie zasobów platformy Azure, natomiast warstwa Standardowa rozszerza te możliwości na środowisko lokalne i inne chmury. Usługa Security Center w warstwie Standardowa pomaga w wyszukiwaniu i naprawianiu luk w zabezpieczeniach, stosowaniu kontroli dostępu i aplikacji w celu blokowania złośliwych działań, wykrywaniu zagrożeń przy użyciu analizy oraz szybkim reagowaniu podczas ataku. Standardową warstwę cenową usługi Security Center możesz wypróbować bezpłatnie przez pierwsze 60 dni.
