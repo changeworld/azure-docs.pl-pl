@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31407109"
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>Użyj interaktywnego zapytania z usługą HDInsight
 Interakcyjne zapytania (skrót Hive LLAP lub [Live długich i procesu](https://cwiki.apache.org/confluence/display/Hive/LLAP)) to Azure HDInsight [typ klastra](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types). Interakcyjne Query obsługuje buforowanie w pamięci, co czyni szybsze i bardziej interakcyjnych zapytań programu Hive.

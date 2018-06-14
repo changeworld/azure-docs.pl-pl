@@ -1,11 +1,11 @@
 ---
-title: "Omówienie transakcji przetwarzania w Azure Service Bus | Dokumentacja firmy Microsoft"
-description: "Omówienie usługi Azure Service Bus atomic transakcji i za pośrednictwem"
+title: Omówienie transakcji przetwarzania w Azure Service Bus | Dokumentacja firmy Microsoft
+description: Omówienie usługi Azure Service Bus atomic transakcji i za pośrednictwem
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 64449247-1026-44ba-b15a-9610f9385ed8
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29558945"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Omówienie przetwarzanie transakcji usługi Service Bus
 

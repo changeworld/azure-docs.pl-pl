@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31405368"
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Zarządzanie systemem Windows klastrów platformy Hadoop w usłudze HDInsight przy użyciu portalu Azure
 
@@ -82,7 +83,7 @@ Instalacja oprogramowania niestandardowych w klastrze za pomocą usługi Podłą
 
    * Aby dostosować menu, kliknij prawym przyciskiem myszy w dowolnym miejscu w menu, a następnie kliknij przycisk **Dostosuj**.
    * **Ustawienia** i **wszystkie ustawienia**: Wyświetla **ustawienia** bloku dla klastra, co pozwala na dostęp do szczegółowych informacji dla klastra.
-   * **Pulpit nawigacyjny**, **pulpit nawigacyjny klastra** i **adresu URL: są to wszystkie sposoby dostęp do pulpitu nawigacyjnego klastra, który jest sieci Ambari Web w klastrach opartych na systemie Linux. -**Bezpiecznej powłoki **: Zawiera instrukcje, aby nawiązać połączenie z klastrem przy użyciu połączenia protokołu Secure Shell (SSH).
+   * **Pulpit nawigacyjny**, **pulpit nawigacyjny klastra** i **adresu URL: są to wszystkie sposoby dostęp do pulpitu nawigacyjnego klastra, który jest sieci Ambari Web w klastrach opartych na systemie Linux. -** Bezpiecznej powłoki **: Zawiera instrukcje, aby nawiązać połączenie z klastrem przy użyciu połączenia protokołu Secure Shell (SSH).
    * **Skalowanie klastra**: umożliwia zmianę liczby węzłów procesu roboczego dla tego klastra.
    * **Usuń**: usuwa klastra.
    * **Szybki Start**: Wyświetla informacje, które pomogą Ci rozpocząć korzystanie z usługi HDInsight.

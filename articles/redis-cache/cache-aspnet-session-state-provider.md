@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31518760"
 ---
 # <a name="aspnet-session-state-provider-for-azure-redis-cache"></a>Dostawca stanu sesji ASP.NET dla usługi Azure Redis Cache
 Pamięć podręczna Redis Azure udostępnia dostawcę stanu sesji, który służy do przechowywania Twojego sesji stanu w pamięci z pamięci podręcznej Redis zamiast bazy danych programu SQL Server. Aby użyć buforowania dostawcę stanu sesji, najpierw skonfigurować pamięć podręczną, a następnie skonfiguruj aplikację ASP.NET dla pamięci podręcznej przy użyciu pakietu NuGet stanu sesji pamięci podręcznej Redis.
