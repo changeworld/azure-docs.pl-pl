@@ -1,8 +1,8 @@
 ---
-title: "Aplikacja Microsoft Authenticator dla telefonów komórkowych | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak uaktualnić do najnowszej wersji Azure Authenticator."
+title: Aplikacja Microsoft Authenticator dla telefonów komórkowych | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak uaktualnić do najnowszej wersji Azure Authenticator.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.assetid: 3065a1ee-f253-41f0-a68d-2bd84af5ffba
@@ -20,6 +20,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28201001"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Wprowadzenie do aplikacji Microsoft Authenticator
 Aplikacja Microsoft Authenticator zawiera dodatkowy poziom zabezpieczeń w ramach Twojego konta służbowego (na przykład bsimon@contoso.com) lub konta Microsoft (na przykład bsimon@outlook.com).

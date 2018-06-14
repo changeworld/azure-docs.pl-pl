@@ -1,11 +1,11 @@
 ---
-title: "Wersje środowiska uruchomieniowego usługi Azure Functions — omówienie"
-description: "Środowisko Azure Functions obsługuje wiele wersji środowiska uruchomieniowego. Dowiedz się, różnice między nimi i sposobu wybierz jedną, które jest odpowiednie dla Ciebie."
+title: Wersje środowiska uruchomieniowego usługi Azure Functions — omówienie
+description: Środowisko Azure Functions obsługuje wiele wersji środowiska uruchomieniowego. Dowiedz się, różnice między nimi i sposobu wybierz jedną, które jest odpowiednie dla Ciebie.
 services: functions
-documentationcenter: 
+documentationcenter: ''
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 ms.service: functions
 ms.workload: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28919359"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Wersje środowiska uruchomieniowego usługi Azure Functions — omówienie
 

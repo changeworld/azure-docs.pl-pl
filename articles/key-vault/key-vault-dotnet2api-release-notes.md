@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "27909758"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Usługi Azure Key Vault .NET 2.0 — przewodnik migracji i informacje o wersji
 Następujące informacje pomogą w migracji do wersji 2.0 biblioteki usługi Azure Key Vault języka C# i platformy .NET.  Aplikacji napisanych dla wcześniejszych wersji trzeba zaktualizować do obsługi najnowszej wersji.  Te zmiany są potrzebne do zapewnienia pełnej obsługi nowych i ulepszonych funkcji, takich jak **certyfikaty usługi Key Vault**.

@@ -1,11 +1,11 @@
 ---
-title: "Zainicjuj obsługę aplikacji sieci Web z pamięci podręcznej Redis"
-description: "Szablon usługi Azure Resource Manager umożliwia wdrażanie aplikacji sieci web z pamięci podręcznej Redis."
+title: Zainicjuj obsługę aplikacji sieci Web z pamięci podręcznej Redis
+description: Szablon usługi Azure Resource Manager umożliwia wdrażanie aplikacji sieci web z pamięci podręcznej Redis.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 6e99c71f-ef8e-4570-a307-e4c059e60c35
 ms.service: app-service
 ms.workload: web
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27909894"
 ---
 # <a name="create-a-web-app-plus-redis-cache-using-a-template"></a>Tworzenie aplikacji sieci Web oraz usługi pamięć podręczna Redis przy użyciu szablonu
 W tym temacie dowiesz się, jak utworzyć szablon usługi Azure Resource Manager, która wdraża aplikacji sieci Web platformy Azure z pamięcią podręczną Redis. Dowiesz się, jak do definiowania zasobów, do których są wdrażane i sposób definiowania parametrów, które są określone, gdy wdrożenie jest wykonywane. Można użyć tego szablonu na potrzeby własnych wdrożeń lub dostosować go do konkretnych potrzeb.

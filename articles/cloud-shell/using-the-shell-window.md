@@ -1,12 +1,12 @@
 ---
-title: "Korzystanie z okna powłoki chmury Azure | Dokumentacja firmy Microsoft"
-description: "Przegląd sposobu użycia okna powłoki chmury Azure."
+title: Korzystanie z okna powłoki chmury Azure | Dokumentacja firmy Microsoft
+description: Przegląd sposobu użycia okna powłoki chmury Azure.
 services: azure
-documentationcenter: 
+documentationcenter: ''
 author: jluk
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28919998"
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>Korzystanie z okna powłoki chmury Azure
 

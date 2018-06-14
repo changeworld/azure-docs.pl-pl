@@ -16,6 +16,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31798581"
 ---
 # <a name="browse-and-manage-storage-resources-by-using-server-explorer"></a>Przeglądanie i zarządzanie zasobami magazynu za pomocą Eksploratora serwera
 

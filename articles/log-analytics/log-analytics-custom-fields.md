@@ -1,8 +1,8 @@
 ---
 title: Pola niestandardowe w Azure Log Analytics | Dokumentacja firmy Microsoft
-description: "Funkcja pola niestandardowe analizy dzienników służy do tworzenia własnych pól z możliwością wyszukiwania z rekordów dziennika analizy, dodawanych do właściwości zebranych rekordu.  W tym artykule opisano proces tworzenia niestandardowego pola i udostępnia szczegółowy przewodnik zdarzenie próbkowania."
+description: Funkcja pola niestandardowe analizy dzienników służy do tworzenia własnych pól z możliwością wyszukiwania z rekordów dziennika analizy, dodawanych do właściwości zebranych rekordu.  W tym artykule opisano proces tworzenia niestandardowego pola i udostępnia szczegółowy przewodnik zdarzenie próbkowania.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28030710"
 ---
 # <a name="custom-fields-in-log-analytics"></a>Pola niestandardowe w analizy dzienników
 **Pola niestandardowe** funkcji analizy dzienników umożliwia rozszerzanie istniejących rekordów w analizy dzienników przez dodanie pola wyszukiwania.  Pola niestandardowe zostaną automatycznie wypełnione z danych wyodrębnionych z innych właściwości w tym samym rekordzie.
