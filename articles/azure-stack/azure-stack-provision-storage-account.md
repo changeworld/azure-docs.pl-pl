@@ -1,8 +1,8 @@
 ---
 title: Konta magazynu Azure stosu | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak utworzyć konto magazynu Azure stosu."
+description: Dowiedz się, jak utworzyć konto magazynu Azure stosu.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
 ms.assetid: e1152110-b756-4c1a-9fa2-73fe3ab0ad8e
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29733727"
 ---
 # <a name="storage-accounts-in-azure-stack"></a>Konta magazynu w usłudze Azure Stack
 Konta magazynu zawierają usługi Blob i Table oraz unikatową przestrzeń nazw dla obiektów danych magazynu. Domyślnie dane na Twoim koncie są dostępne tylko dla Ciebie, tj. właściciela konta magazynu.

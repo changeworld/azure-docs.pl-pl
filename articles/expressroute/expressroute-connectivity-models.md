@@ -1,12 +1,12 @@
 ---
-title: "Modele połączeń usługi ExpressRoute: łączenie z platformą Microsoft Azure za pośrednictwem dostawcy usług sieciowych, wymian i dostawców sieci Ethernet | Microsoft Docs"
-description: "W tym artykule opisano różne tryby połączeń między siecią klienta oraz platformą Microsoft Azure i usługami Office 365 i Dynamics 365. Klienci mogą korzystać z dostawców MPLS, wymian w chmurze i dostawców sieci Ethernet."
+title: 'Modele połączeń usługi ExpressRoute: łączenie z platformą Microsoft Azure za pośrednictwem dostawcy usług sieciowych, wymian i dostawców sieci Ethernet | Microsoft Docs'
+description: W tym artykule opisano różne tryby połączeń między siecią klienta oraz platformą Microsoft Azure i usługami Office 365 i Dynamics 365. Klienci mogą korzystać z dostawców MPLS, wymian w chmurze i dostawców sieci Ethernet.
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22709899"
 ---
 # <a name="expressroute-connectivity-models"></a>Modele połączeń usługi ExpressRoute
 Połączenie między siecią lokalną i chmurą firmy Microsoft można utworzyć na trzy sposoby: [kolokacja CloudExchange](#CloudExchange), [połączenie Ethernet typu punkt-punkt](#Ethernet) i [łączność typu dowolna-dowolna (IPVPN)](#IPVPN). Dostawcy połączenia oferują po jednym modelu łączności lub większą ich liczbę. Można współpracować z dostawcą połączenia w celu wybrania najlepszego dla siebie modelu.

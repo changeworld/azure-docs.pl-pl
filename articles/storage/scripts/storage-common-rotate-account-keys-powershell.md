@@ -1,12 +1,12 @@
 ---
-title: "Przykładowy skrypt programu PowerShell Azure - klucz dostępu do konta magazynu obracania | Dokumentacja firmy Microsoft"
-description: "Tworzenie konta usługi Azure Storage, a następnie pobrać i Obróć jednego z jego klucze dostępu do konta."
+title: Przykładowy skrypt programu PowerShell Azure - klucz dostępu do konta magazynu obracania | Dokumentacja firmy Microsoft
+description: Tworzenie konta usługi Azure Storage, a następnie pobrać i Obróć jednego z jego klucze dostępu do konta.
 services: storage
 documentationcenter: na
 author: tamram
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
 ms.workload: storage
@@ -17,9 +17,10 @@ ms.date: 06/13/2017
 ms.author: tamram
 ms.openlocfilehash: a7aaacf316799540a6a72b699ba8ea8bb389c8a8
 ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/29/2017
+ms.locfileid: "25984167"
 ---
 # <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>Utwórz konto magazynu i obracania klucze dostępu do swojego konta
 

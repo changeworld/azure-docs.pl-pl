@@ -1,11 +1,11 @@
 ---
-title: "Monitorowanie i przetwarzania zdarzeń zabezpieczeń w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak można pulpit nawigacyjny zdarzenia Centrum zabezpieczeń wyświetlane zdarzenia zabezpieczeń z maszynami wirtualnymi Azure i komputerów z systemem innym niż Azure."
+title: Monitorowanie i przetwarzania zdarzeń zabezpieczeń w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak można pulpit nawigacyjny zdarzenia Centrum zabezpieczeń wyświetlane zdarzenia zabezpieczeń z maszynami wirtualnymi Azure i komputerów z systemem innym niż Azure.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23926529"
 ---
 # <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>Monitorowanie i przetwarzania zdarzeń zabezpieczeń w Centrum zabezpieczeń Azure
 Pulpit nawigacyjny zdarzenia zawiera omówienie liczby zdarzeń zabezpieczeń zbierane wraz z upływem czasu i listę istotnych zdarzeń, które mogą wymagać Twojej uwagi.  

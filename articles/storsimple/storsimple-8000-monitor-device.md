@@ -1,12 +1,12 @@
 ---
-title: "Monitorowanie urządzenia serii StorSimple 8000 | Dokumentacja firmy Microsoft"
-description: "Informacje dotyczące używania usługi Menedżer StorSimple urządzeń do monitorowania użycia, wydajności we/wy i wykorzystanie pojemności."
+title: Monitorowanie urządzenia serii StorSimple 8000 | Dokumentacja firmy Microsoft
+description: Informacje dotyczące używania usługi Menedżer StorSimple urządzeń do monitorowania użycia, wydajności we/wy i wykorzystanie pojemności.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/21/2017
+ms.locfileid: "23933144"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>Użyj Menedżera urządzeń StorSimple usługę do monitorowania urządzenia StorSimple
 

@@ -1,11 +1,11 @@
 ---
-title: "Uwierzytelnianie połączeń wychodzących harmonogramu"
-description: "Uwierzytelnianie połączeń wychodzących harmonogramu"
+title: Uwierzytelnianie połączeń wychodzących harmonogramu
+description: Uwierzytelnianie połączeń wychodzących harmonogramu
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23926508"
 ---
 # <a name="scheduler-outbound-authentication"></a>Uwierzytelnianie połączeń wychodzących harmonogramu
 Harmonogram zadań może być konieczne wyróżnienia do usług, które wymagają uwierzytelniania. W ten sposób usługa o nazwie może określić, czy zadania harmonogramu dostęp do jej zasobów. Niektóre z tych usług obejmują innych usług platformy Azure, witryny Salesforce.com, Facebook i bezpieczne niestandardowych witryn sieci Web.
