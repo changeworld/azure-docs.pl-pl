@@ -1,11 +1,11 @@
 ---
-title: "Przewodnik dotyczący tworzenia szablonu rozwiązania dla witryny Marketplace | Dokumentacja firmy Microsoft"
-description: "Szczegółowe instrukcje dotyczące sposobu tworzenia, certyfikować i wdrażania wielu maszyn wirtualnych szablon rozwiązania obrazu dla kupić w witrynie Azure Marketplace."
+title: Przewodnik dotyczący tworzenia szablonu rozwiązania dla witryny Marketplace | Dokumentacja firmy Microsoft
+description: Szczegółowe instrukcje dotyczące sposobu tworzenia, certyfikować i wdrażania wielu maszyn wirtualnych szablon rozwiązania obrazu dla kupić w witrynie Azure Marketplace.
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: e14e05f2-2385-4ce0-b351-0747cb74ba19
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29937312"
 ---
 # <a name="guide-to-create-a-solution-template-for-azure-marketplace"></a>Przewodnik, aby utworzyć szablon rozwiązania dla portalu Azure Marketplace
 Po ukończeniu kroku 1, [o tworzeniu konta i rejestracji][link-acct-creation], możemy przewodnikiem po utworzeniu szablonu rozwiązania Azure zgodnego w [techniczne wymagania wstępne dotyczące tworzenia szablonu rozwiązania](marketplace-publishing-solution-template-creation-prerequisites.md). Obecnie firma Microsoft przeprowadzi Cię przez kolejne etapy tworzenia szablonu rozwiązanie dla wielu maszyn wirtualnych na [Portal publikowania] [ link-pubportal] dla portalu Azure Marketplace.

@@ -1,6 +1,6 @@
 ---
-title: "Udostępnić puli partii zadań Azure w sieci wirtualnej | Dokumentacja firmy Microsoft"
-description: "Tak, aby węzły obliczeniowe można bezpiecznego komunikowania się z innych maszyn wirtualnych w sieci, takich jak serwer plików, można utworzyć puli partii w sieci wirtualnej."
+title: Udostępnić puli partii zadań Azure w sieci wirtualnej | Dokumentacja firmy Microsoft
+description: Tak, aby węzły obliczeniowe można bezpiecznego komunikowania się z innych maszyn wirtualnych w sieci, takich jak serwer plików, można utworzyć puli partii w sieci wirtualnej.
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29846812"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Tworzenie puli partii zadań Azure w sieci wirtualnej
 

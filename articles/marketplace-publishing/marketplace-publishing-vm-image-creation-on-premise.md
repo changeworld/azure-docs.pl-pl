@@ -1,11 +1,11 @@
 ---
 title: Tworzenie obrazu maszyny wirtualnej lokalnej do portalu Azure Marketplace | Dokumentacja firmy Microsoft
-description: "Zrozumienie i wykonaj kroki, aby utworzyć lokalnej obrazu maszyny Wirtualnej i wdrażanie w portalu Azure Marketplace innym osobom do zakupu."
+description: Zrozumienie i wykonaj kroki, aby utworzyć lokalnej obrazu maszyny Wirtualnej i wdrażanie w portalu Azure Marketplace innym osobom do zakupu.
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 26dfbd5a-8685-4b19-987e-c20ca60540ec
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29944435"
 ---
 # <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>Tworzenie obrazu maszyny wirtualnej lokalnej dla portalu Azure Marketplace
 Zdecydowanie zaleca się tworzenie Azure wirtualnych dysków twardych (VHD) bezpośrednio w chmurze przy użyciu protokołu Remote Desktop Protocol. Jeśli musisz, prawdopodobnie Pobierz wirtualnego dysku twardego i opracowanie go za pomocą infrastruktury lokalnej.  

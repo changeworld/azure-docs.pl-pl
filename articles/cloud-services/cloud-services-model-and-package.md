@@ -1,11 +1,11 @@
 ---
-title: "Co to jest usługa w chmurze modelu i pakietu | Dokumentacja firmy Microsoft"
-description: "Opisuje modelem usługi chmury (pliki csdef, .cscfg) i pakietu (cspkg) na platformie Azure"
+title: Co to jest usługa w chmurze modelu i pakietu | Dokumentacja firmy Microsoft
+description: Opisuje modelem usługi chmury (pliki csdef, .cscfg) i pakietu (cspkg) na platformie Azure
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4ce2feb5-0437-496c-98da-1fb6dcb7f59e
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29876563"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Co to jest model usługi w chmurze i jak jest pakiet?
 Usługi w chmurze jest tworzona na podstawie trzech składników, definicji usługi *(csdef)*, konfiguracji usługi *(cscfg)*, a pakiet usługi *(cspkg)*. Zarówno **ServiceDefinition.csdef** i **ServiceConfig.cscfg** plików są oparte na języku XML i opisano strukturę usługi w chmurze i sposobu jego konfiguracji; nazywane modelu. **ServicePackage.cspkg** plik zip, który jest generowany na podstawie **ServiceDefinition.csdef** i między innymi zawiera wszystkie zależności wymagane formacie binarnym. Platforma Azure tworzy usługi w chmurze z obu **ServicePackage.cspkg** i **ServiceConfig.cscfg**.

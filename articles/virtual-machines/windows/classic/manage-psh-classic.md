@@ -21,6 +21,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/20/2018
+ms.locfileid: "30918309"
 ---
 # <a name="manage-your-virtual-machines-by-using-azure-powershell"></a>Zarządzanie maszynami wirtualnymi przy użyciu programu Azure PowerShell
 > [!IMPORTANT] 

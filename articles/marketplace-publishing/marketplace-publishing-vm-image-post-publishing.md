@@ -19,6 +19,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/20/2018
+ms.locfileid: "29949025"
 ---
 # <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>Przewodnik po produkcyjnych w przypadku ofert maszyny wirtualnej w portalu Azure Marketplace
 W tym artykule opisano sposób aktualizowania maszyny wirtualnej na żywo z tej oferty w portalu Azure Marketplace. Go prowadzi użytkownika przez proces dodawania jednego lub więcej nowe jednostki SKU do istniejącej oferty. On również prowadzi użytkownika przez proces usuwania oferty na żywo maszyny wirtualnej lub wersji z witryny Marketplace.

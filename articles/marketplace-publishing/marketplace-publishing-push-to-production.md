@@ -1,11 +1,11 @@
 ---
-title: "Wdrażanie Twojej oferty w portalu Azure Marketplace | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o i przeprowadzenie instrukcje, aby wdrożyć ofertę — obraz maszyny wirtualnej, deweloperów usługi, Usługa danych itd. — w portalu Azure Marketplace."
+title: Wdrażanie Twojej oferty w portalu Azure Marketplace | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o i przeprowadzenie instrukcje, aby wdrożyć ofertę — obraz maszyny wirtualnej, deweloperów usługi, Usługa danych itd. — w portalu Azure Marketplace.
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 8f79b891-84e2-4f41-ba0d-66420e2c6b2e
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29943245"
 ---
 # <a name="deploy-your-offer-to-the-azure-marketplace"></a>Wdrażanie Twojej oferty w portalu Azure Marketplace
 Po zakończeniu Twojej oferty (to znaczy zostały przetestowane scenariuszy, marketingu zawartości, itp.) i wszystko jest gotowe do uruchomienia, żądań **wypychania do produkcji** na **publikowania** kartę.  

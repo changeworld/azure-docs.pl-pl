@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30841268"
 ---
 # <a name="use-load-balanced-sets-to-clusterize-mysql-on-linux"></a>Umożliwia zestawów o zrównoważonym obciążeniu clusterize bazy danych MySQL na systemie Linux
 > [!IMPORTANT]

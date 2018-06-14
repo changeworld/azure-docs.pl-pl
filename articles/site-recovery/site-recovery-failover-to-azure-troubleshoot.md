@@ -1,12 +1,12 @@
 ---
-title: "Rozwiązywanie problemów z trybu failover na awarie Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposoby rozwiązywania typowych problemów w przypadku awarii na platformie Azure"
+title: Rozwiązywanie problemów z trybu failover na awarie Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposoby rozwiązywania typowych problemów w przypadku awarii na platformie Azure
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: ponatara
 manager: abhemraj
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874363"
 ---
 # <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>Rozwiązywanie problemów z błędami przechodzenie w tryb failover maszyny wirtualnej na platformie Azure
 Może pojawić się jeden z następujących błędów podczas wykonywania pracy w trybie failover maszyny wirtualnej na platformie Azure. Aby rozwiązać problemy, użyj opisane kroki dla każdego warunku błędu.

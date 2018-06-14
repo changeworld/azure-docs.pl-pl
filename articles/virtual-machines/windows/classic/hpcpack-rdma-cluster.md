@@ -1,11 +1,11 @@
 ---
 title: Konfigurowanie klastra systemu Windows RDMA na uruchamianie aplikacji MPI | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak utworzyć klaster Windows HPC Pack o rozmiarze H16r H16mr, A8 i A9 maszyn wirtualnych do używania w sieci Azure RDMA do uruchamiania aplikacji MPI."
+description: Dowiedz się, jak utworzyć klaster Windows HPC Pack o rozmiarze H16r H16mr, A8 i A9 maszyn wirtualnych do używania w sieci Azure RDMA do uruchamiania aplikacji MPI.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-service-management,hpc-pack
 ms.assetid: 7d9f5bc8-012f-48dd-b290-db81c7592215
 ms.service: virtual-machines-windows
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852544"
 ---
 # <a name="set-up-a-windows-rdma-cluster-with-hpc-pack-to-run-mpi-applications"></a>Konfigurowanie klastra RDMA systemu Windows z pakietem HPC do uruchamiania aplikacji MPI
 Konfigurowanie klastra RDMA systemu Windows na platformie Azure z [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) i [rozmiarów z funkcją RDMA HPC maszyn wirtualnych](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#rdma-capable-instances) na uruchamianie równoległe aplikacji komunikat interfejsu (Passing Interface). Po skonfigurowaniu z funkcją RDMA, opartych na systemie Windows Server węzłów w klastrze HPC Pack aplikacji MPI wydajnie komunikacji za pośrednictwem nieznaczne opóźnienia, uzyskać wysoką przepustowość sieci na platformie Azure, oparty na technologii dostępu do (pamięci RDMA) zdalnego pamięci.

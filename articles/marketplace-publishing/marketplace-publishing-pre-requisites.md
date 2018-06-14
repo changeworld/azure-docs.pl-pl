@@ -1,11 +1,11 @@
 ---
-title: "Nietechniczna pomoc wymagania wstępne dotyczące tworzenia oferty w portalu Azure Marketplace | Dokumentacja firmy Microsoft"
-description: "Poznaj wymagania dotyczące tworzenia i wdrażania oferty w portalu Azure Marketplace innym osobom do zakupu."
+title: Nietechniczna pomoc wymagania wstępne dotyczące tworzenia oferty w portalu Azure Marketplace | Dokumentacja firmy Microsoft
+description: Poznaj wymagania dotyczące tworzenia i wdrażania oferty w portalu Azure Marketplace innym osobom do zakupu.
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 3dae463b-8f48-4f52-8fa8-4e3975f09f43
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29940045"
 ---
 # <a name="general-prerequisites-for-creating-an-offer-for-the-azure-marketplace"></a>Ogólne wymagania wstępne dotyczące tworzenia oferty w portalu Azure Marketplace
 Informacje ogólne, business procesu skoncentrowane na wstępne, które są potrzebne, aby rozpocząć proces tworzenia oferty.

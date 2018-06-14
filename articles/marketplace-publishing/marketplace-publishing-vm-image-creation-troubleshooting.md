@@ -1,11 +1,11 @@
 ---
-title: "Jak rozwiązywać typowe problemy podczas tworzenia dysku VHD | Dokumentacja firmy Microsoft"
-description: "Odpowiedzi na często zadawane pytania dotyczące rozwiązywania problemów i problemy podczas tworzenia dysku VHD."
+title: Jak rozwiązywać typowe problemy podczas tworzenia dysku VHD | Dokumentacja firmy Microsoft
+description: Odpowiedzi na często zadawane pytania dotyczące rozwiązywania problemów i problemy podczas tworzenia dysku VHD.
 services: Azure Marketplace
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: e39563d8-8646-4cb7-b078-8b10ac35b494
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29941606"
 ---
 # <a name="how-to-troubleshoot-common-issues-encountered-during-vhd-creation"></a>Sposoby rozwiązywania typowych problemów napotykanych podczas tworzenia dysku VHD
 W tym artykule zapewnia pomoc w portalu Azure Marketplace wydawcy i/lub administratora współpracującego, który może zgłaszać problemy lub ma często zadawane pytania podczas publikowania lub zarządzania ich solution(s) maszyny wirtualnej.

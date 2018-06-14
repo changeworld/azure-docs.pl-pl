@@ -20,6 +20,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/20/2018
+ms.locfileid: "30917347"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planowanie migracji zasobów IaaS ze środowiska klasycznego do usługi Azure Resource Manager
 Gdy usługi Azure Resource Manager oferuje wiele funkcji niesamowite, bardzo ważne jest zaplanować podróży migracji z prośbą sure bezproblemowe. Poświęcany czas na planowanie sprawdzi, czy nie występują problemy podczas wykonywania działań migracji.

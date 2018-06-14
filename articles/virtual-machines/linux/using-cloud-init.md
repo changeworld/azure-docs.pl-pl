@@ -1,11 +1,11 @@
 ---
-title: "Omówienie chmury inicjowania obsługi maszyn wirtualnych systemu Linux na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Omówienie funkcji init chmurze na platformie Microsoft Azure"
+title: Omówienie chmury inicjowania obsługi maszyn wirtualnych systemu Linux na platformie Azure | Dokumentacja firmy Microsoft
+description: Omówienie funkcji init chmurze na platformie Microsoft Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rickstercdn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 195c22cd-4629-4582-9ee3-9749493f1d72
 ms.service: virtual-machines-linux
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/05/2018
+ms.locfileid: "29763149"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Obsługa inicjowania chmury maszyn wirtualnych na platformie Azure
 W tym artykule opisano obsługę, czy istnieje dla [init chmury](https://cloudinit.readthedocs.io) do skonfigurowania maszyny wirtualnej (VM) lub maszyny wirtualnej zestawach skali (VMSS) na inicjowanie obsługi administracyjnej czas na platformie Azure. Skrypty te init chmury są uruchamiane po pierwszym uruchomieniu komputera po zasoby zostały udostępnione przez platformę Azure.  

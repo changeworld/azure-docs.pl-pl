@@ -1,8 +1,8 @@
 ---
-title: "Rozwiązywanie błędów podczas powrotu po awarii maszyn wirtualnych Azure do programu VMware lokalnych z usługą Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposoby rozwiązywania typowych problemów powrotu po awarii i ponowne włączenie ochrony podczas powrotu po awarii do programu VMware z platformy Azure przy użyciu usługi Azure Site Recovery."
+title: Rozwiązywanie błędów podczas powrotu po awarii maszyn wirtualnych Azure do programu VMware lokalnych z usługą Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposoby rozwiązywania typowych problemów powrotu po awarii i ponowne włączenie ochrony podczas powrotu po awarii do programu VMware z platformy Azure przy użyciu usługi Azure Site Recovery.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29941039"
 ---
 # <a name="troubleshoot-failback-from-azure-to-vmware"></a>Rozwiązywanie problemów z powrotu po awarii z platformy Azure do programu VMware
 

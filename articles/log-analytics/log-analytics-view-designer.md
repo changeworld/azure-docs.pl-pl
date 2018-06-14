@@ -1,11 +1,11 @@
 ---
-title: "Tworzenie widoków w celu analizowania danych w Azure Log Analytics | Dokumentacja firmy Microsoft"
-description: "Przy użyciu projektanta widoków analizy dzienników, można utworzyć niestandardowe widoki, które są wyświetlane w portalu Azure i zawierają różne wizualizacje danych w obszarze roboczym analizy dzienników. Ten artykuł zawiera omówienie projektanta widoków i przedstawia procedury tworzenia i edytowania widoków niestandardowych."
+title: Tworzenie widoków w celu analizowania danych w Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Przy użyciu projektanta widoków analizy dzienników, można utworzyć niestandardowe widoki, które są wyświetlane w portalu Azure i zawierają różne wizualizacje danych w obszarze roboczym analizy dzienników. Ten artykuł zawiera omówienie projektanta widoków i przedstawia procedury tworzenia i edytowania widoków niestandardowych.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
-editor: 
+editor: ''
 ms.assetid: ce41dc30-e568-43c1-97fa-81e5997c946a
 ms.service: log-analytics
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29939873"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Tworzenie niestandardowych widoków przy użyciu projektanta widoków w analizy dzienników
 Przy użyciu narzędzia Projektant widoku w [Azure Log Analytics](log-analytics-overview.md), możesz utworzyć różne widoki niestandardowe w portalu Azure, które mogą pomóc w wizualizacji danych w obszarze roboczym analizy dzienników. Ten artykuł zawiera omówienie projektanta widoków i procedur tworzenia i edytowania widoków niestandardowych.

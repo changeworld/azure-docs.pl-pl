@@ -1,12 +1,12 @@
 ---
-title: "Przykład skryptu interfejsu wiersza polecenia platformy Azure — pula systemu Linux w usłudze Batch | Microsoft Docs"
-description: "Przykład skryptu interfejsu wiersza polecenia platformy Azure — tworzenie puli systemu Linux w usłudze Batch i zarządzanie nią"
+title: Przykład skryptu interfejsu wiersza polecenia platformy Azure — pula systemu Linux w usłudze Batch | Microsoft Docs
+description: Przykład skryptu interfejsu wiersza polecenia platformy Azure — tworzenie puli systemu Linux w usłudze Batch i zarządzanie nią
 services: batch
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: batch
 ms.devlang: azurecli
 ms.topic: sample
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29843378"
 ---
 # <a name="cli-example-create-and-manage-a-linux-pool-in-azure-batch"></a>Przykład interfejsu wiersza polecenia: tworzenie puli systemu Linux w usłudze Azure Batch i zarządzanie nią
 

@@ -1,12 +1,12 @@
 ---
-title: "Przykład skryptu interfejsu wiersza polecenia platformy Azure — dodawanie aplikacji w usłudze Batch | Microsoft Docs"
-description: "Przykład skryptu interfejsu wiersza polecenia platformy Azure — dodawanie aplikacji w usłudze Batch"
+title: Przykład skryptu interfejsu wiersza polecenia platformy Azure — dodawanie aplikacji w usłudze Batch | Microsoft Docs
+description: Przykład skryptu interfejsu wiersza polecenia platformy Azure — dodawanie aplikacji w usłudze Batch
 services: batch
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: batch
 ms.devlang: azurecli
 ms.topic: sample
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29843106"
 ---
 # <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>Przykład interfejsu wiersza polecenia: dodawanie aplikacji do konta usługi Azure Batch
 

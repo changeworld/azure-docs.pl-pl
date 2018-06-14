@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29687904"
 ---
 # <a name="azure-database-for-postgresql-videos"></a>Bazy danych platformy Azure dla PostgreSQL wideo
 

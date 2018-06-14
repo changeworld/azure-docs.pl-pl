@@ -1,11 +1,11 @@
 ---
-title: "Połączenie bramy aplikacji Microsoft Azure do Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zintegrować bramy aplikacji i Centrum zabezpieczeń Azure, aby zwiększyć ogólne bezpieczeństwo Twoich zasobów."
+title: Połączenie bramy aplikacji Microsoft Azure do Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zintegrować bramy aplikacji i Centrum zabezpieczeń Azure, aby zwiększyć ogólne bezpieczeństwo Twoich zasobów.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 6af354da-f27a-467a-8b7e-6cbcf70fdbcb
 ms.service: security-center
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29854493"
 ---
 # <a name="connecting-microsoft-azure-application-gateway-to-azure-security-center"></a>Połączenie bramy aplikacji Microsoft Azure do Centrum zabezpieczeń Azure
 Ten dokument pomaga skonfigurować integrację z Centrum zabezpieczeń i zapory aplikacji sieci web Application Gateway (WAF).

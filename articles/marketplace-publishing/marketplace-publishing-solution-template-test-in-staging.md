@@ -1,11 +1,11 @@
 ---
-title: "Testowanie ofertę szablon rozwiązania dla witryny Marketplace | Dokumentacja firmy Microsoft"
-description: "Zrozumienie, jak przetestować ofertę szablon rozwiązania dla portalu Azure Marketplace."
+title: Testowanie ofertę szablon rozwiązania dla witryny Marketplace | Dokumentacja firmy Microsoft
+description: Zrozumienie, jak przetestować ofertę szablon rozwiązania dla portalu Azure Marketplace.
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: ef8f9b5e-b98c-49f3-913f-cdf772c14c12
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29937839"
 ---
 # <a name="test-your-solution-template-offer-in-staging"></a>Testowanie ofertę szablon rozwiązania tymczasowych
 Przemieszczania oznacza wdrażanie ofertę w prywatnej "piaskownicy", gdzie należy przetestować i sprawdzić jego działanie przed wypchnięciem go do produkcji. Oferta jest wyświetlany w przemieszczania analogiczny, jak na rzecz klienta, który został wdrożony go. Aby zostać przeniesiony do przemieszczania muszą być certyfikowane ofertę.

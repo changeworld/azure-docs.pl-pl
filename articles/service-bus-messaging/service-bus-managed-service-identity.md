@@ -1,12 +1,12 @@
 ---
-title: "Tożsamość usługi zarządzanej z wersji zapoznawczej usługi Azure Service Bus | Dokumentacja firmy Microsoft"
-description: "Zarządzana usługa tożsamości za pomocą usługi Azure Service Bus"
+title: Tożsamość usługi zarządzanej z wersji zapoznawczej usługi Azure Service Bus | Dokumentacja firmy Microsoft
+description: Zarządzana usługa tożsamości za pomocą usługi Azure Service Bus
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874656"
 ---
 # <a name="managed-service-identity-preview"></a>Tożsamość usługi zarządzanej (wersja zapoznawcza)
 
