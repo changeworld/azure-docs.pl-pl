@@ -1,7 +1,7 @@
 ---
-title: "Wysyłanie alertów z usługi Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Samouczek do wysyłania alertów w odpowiedzi na błędy w aplikacji przy użyciu usługi Azure Application Insights."
-keywords: 
+title: Wysyłanie alertów z usługi Azure Application Insights | Dokumentacja firmy Microsoft
+description: Samouczek do wysyłania alertów w odpowiedzi na błędy w aplikacji przy użyciu usługi Azure Application Insights.
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2017
@@ -11,9 +11,10 @@ ms.topic: tutorial
 manager: carmonm
 ms.openlocfilehash: 39e2f136e30ebb6dcfc003c435382f3384af1052
 ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/01/2017
+ms.locfileid: "23947228"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Monitor i alert na kondycji aplikacji z usługą Azure Application Insights
 

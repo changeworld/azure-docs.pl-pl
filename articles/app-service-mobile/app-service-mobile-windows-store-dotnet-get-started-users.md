@@ -1,11 +1,11 @@
 ---
 title: Dodawanie uwierzytelniania do aplikacji systemu Windows platformy Uniwersalnej | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak używać usługi Azure App Service Mobile Apps uwierzytelniać użytkowników aplikacji systemu Windows platformy Uniwersalnej przy użyciu różnych dostawców tożsamości, obejmującej: usługi AAD, Google, Facebook, Twitter i firmy Microsoft."
+description: 'Dowiedz się, jak używać usługi Azure App Service Mobile Apps uwierzytelniać użytkowników aplikacji systemu Windows platformy Uniwersalnej przy użyciu różnych dostawców tożsamości, obejmującej: usługi AAD, Google, Facebook, Twitter i firmy Microsoft.'
 services: app-service\mobile
 documentationcenter: windows
 author: conceptdev
 manager: panarasi
-editor: 
+editor: ''
 ms.assetid: 6cffd951-893e-4ce5-97ac-86e3f5ad9466
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27592148"
 ---
 # <a name="add-authentication-to-your-windows-app"></a>Dodawanie uwierzytelniania do aplikacji systemu Windows
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]

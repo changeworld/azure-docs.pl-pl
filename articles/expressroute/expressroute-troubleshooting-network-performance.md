@@ -1,12 +1,12 @@
 ---
-title: "Rozwiązywanie problemów z wydajnością sieci wirtualnej platformy Azure | Dokumentacja firmy Microsoft"
-description: "Ta strona zawiera standardowej metody testowania wydajności łącze sieci platformy Azure."
+title: Rozwiązywanie problemów z wydajnością sieci wirtualnej platformy Azure | Dokumentacja firmy Microsoft
+description: Ta strona zawiera standardowej metody testowania wydajności łącze sieci platformy Azure.
 services: expressroute
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/22/2017
+ms.locfileid: "27319148"
 ---
 # <a name="troubleshooting-network-performance"></a>Rozwiązywanie problemów z wydajnością sieci
 ## <a name="overview"></a>Przegląd

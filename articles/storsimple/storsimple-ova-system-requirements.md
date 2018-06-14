@@ -1,11 +1,11 @@
 ---
 title: Wymagania systemowe tablicy wirtualne Microsoft Azure StorSimple | Dokumentacja firmy Microsoft
-description: "Więcej informacji na temat oprogramowania i wymagania sieciowe związane z macierzy wirtualnego StorSimple"
+description: Więcej informacji na temat oprogramowania i wymagania sieciowe związane z macierzy wirtualnego StorSimple
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: ea1d3bca-e71b-453d-aa82-440d2638f5e3
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/15/2017
+ms.locfileid: "24815232"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>Wymagania systemowe macierzy wirtualnej StorSimple
 ## <a name="overview"></a>Omówienie

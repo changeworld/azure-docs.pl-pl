@@ -1,11 +1,11 @@
 ---
-title: "Jak monitorować pamięć podręczna Redis Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak monitorować kondycję i wydajność swoich wystąpień w pamięci podręcznej Redis Azure"
+title: Jak monitorować pamięć podręczna Redis Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak monitorować kondycję i wydajność swoich wystąpień w pamięci podręcznej Redis Azure
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 7e70b153-9c87-4290-85af-2228f31df118
 ms.service: cache
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27910653"
 ---
 # <a name="how-to-monitor-azure-redis-cache"></a>Jak monitorować usługę Azure Redis Cache
 Pamięć podręczna Redis Azure używa [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) zapewnienie kilka opcji monitorowania swoich wystąpień w pamięci podręcznej. Można wyświetlić metryki, Przypnij wykresy metryk do tablicy startowej, Dostosuj zakres dat i godzin monitorowania wykresy, dodać i usunąć metryki z wykresy i ustawić alerty, gdy są spełnione następujące warunki. Te narzędzia umożliwiają monitorowanie kondycji wystąpień z pamięci podręcznej Redis Azure i pomocne w zarządzaniu aplikacjami buforowania.

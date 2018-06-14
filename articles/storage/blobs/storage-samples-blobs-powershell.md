@@ -1,12 +1,12 @@
 ---
-title: "Przykładów dla platformy Azure środowiska PowerShell dla usługi Azure Blob storage | Dokumentacja firmy Microsoft"
-description: "Przykładów dla platformy Azure PowerShell do pracy z magazynem obiektów Blob Azure"
+title: Przykładów dla platformy Azure środowiska PowerShell dla usługi Azure Blob storage | Dokumentacja firmy Microsoft
+description: Przykładów dla platformy Azure PowerShell do pracy z magazynem obiektów Blob Azure
 services: storage
 documentationcenter: na
 author: tamram
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
 ms.workload: storage
@@ -17,9 +17,10 @@ ms.date: 11/07/2017
 ms.author: tamram
 ms.openlocfilehash: d07161cb5bc08410b0db552f7645e2af776c37df
 ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/23/2017
+ms.locfileid: "27535233"
 ---
 # <a name="azure-powershell-samples-for-azure-blob-storage"></a>Przykładów dla platformy Azure PowerShell do magazynu obiektów Blob platformy Azure
 

@@ -1,6 +1,6 @@
 ---
-title: "Integracja Azure datacenter stosu - zabezpieczeń"
-description: "Dowiedz się, jak zintegrować zabezpieczeń stosu Azure z zabezpieczeń Centrum danych"
+title: Integracja Azure datacenter stosu - zabezpieczeń
+description: Dowiedz się, jak zintegrować zabezpieczeń stosu Azure z zabezpieczeń Centrum danych
 services: azure-stack
 author: jeffgilb
 manager: femila
@@ -9,12 +9,13 @@ ms.topic: article
 ms.date: 02/28/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-keywords: 
+keywords: ''
 ms.openlocfilehash: 8ce9045a3e4fd12d61e9b1600ee98880762bc544
 ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29734431"
 ---
 # <a name="azure-stack-datacenter-integration---security"></a>Integracja Azure datacenter stosu - zabezpieczeń
 Azure stos został zaprojektowany i zbudowany z myślą o bezpieczeństwie. Azure stosu jest systemem zablokowany, więc instalacji agenta zabezpieczeń oprogramowania nie jest obsługiwany.

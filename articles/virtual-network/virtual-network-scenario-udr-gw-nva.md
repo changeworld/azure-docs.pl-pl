@@ -19,6 +19,7 @@ ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/31/2017
+ms.locfileid: "23943224"
 ---
 # <a name="virtual-appliance-scenario"></a>Scenariusz urządzenie wirtualne
 Typowy scenariusz większych klientów platformy Azure jest konieczność zapewnienia dwuwarstwowej aplikacji, połączenie z Internetem, umożliwiając dostęp do tyłu warstwy z lokalnego centrum danych. Ten dokument przeprowadzi użytkownika scenariusza przy użyciu użytkownika zdefiniowanych tras przez bramy sieci VPN i sieci wirtualnych urządzeń do wdrożenia środowiska dwuwarstwowa, która spełnia następujące wymagania:

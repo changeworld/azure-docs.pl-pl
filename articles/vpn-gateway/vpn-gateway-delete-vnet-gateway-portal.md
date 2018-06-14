@@ -1,16 +1,16 @@
 ---
 title: 'Usuwanie bramy sieci wirtualnej: portalu Azure: Resource Manager | Dokumentacja firmy Microsoft'
-description: "Usuń bramę sieci wirtualnej przy użyciu portalu Azure w modelu wdrażania usługi Resource Manager."
+description: Usuń bramę sieci wirtualnej przy użyciu portalu Azure w modelu wdrażania usługi Resource Manager.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: 
+ms.topic: ''
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/20/2017
@@ -20,6 +20,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27593460"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>Usuwanie bramy sieci wirtualnej przy użyciu portalu
 

@@ -1,11 +1,11 @@
 ---
-title: "Uaktualnij do warstwy standardowa Centrum zabezpieczeń w celu zwiększenia bezpieczeństwa | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera informacje o cenach dla Centrum zabezpieczeń Azure."
+title: Uaktualnij do warstwy standardowa Centrum zabezpieczeń w celu zwiększenia bezpieczeństwa | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera informacje o cenach dla Centrum zabezpieczeń Azure.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/20/2017
+ms.locfileid: "23931919"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Uaktualnij do warstwy standardowa Centrum zabezpieczeń w celu zwiększenia bezpieczeństwa
 Centrum zabezpieczeń Azure zapewnia ujednoliconą funkcję zarządzania zabezpieczeniami i advanced threat ochronę obciążeń działających na platformie Azure i lokalnego, a w innych chmur. Zapewnia wgląd i większą kontrolę nad obciążeń chmury hybrydowej, aktywne zabezpieczenia, które obniżyć poziom narażenia na zagrożenia i inteligentnego wykrywania, aby sprostać szybko rozwijających się przez atakami.

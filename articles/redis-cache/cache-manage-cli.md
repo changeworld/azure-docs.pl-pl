@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie pamięcią podręczną Redis Azure za pomocą wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zainstalować wiersza polecenia platformy Azure na dowolnej platformie, jak z niego korzystać do łączenia się z kontem platformy Azure i sposobu tworzenia i zarządzania nimi pamięci podręcznej Redis z wiersza polecenia platformy Azure."
+title: Zarządzanie pamięcią podręczną Redis Azure za pomocą wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zainstalować wiersza polecenia platformy Azure na dowolnej platformie, jak z niego korzystać do łączenia się z kontem platformy Azure i sposobu tworzenia i zarządzania nimi pamięci podręcznej Redis z wiersza polecenia platformy Azure.
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 964ff245-859d-4bc1-bccf-62e4b3c1169f
 ms.service: cache
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27911282"
 ---
 # <a name="how-to-create-and-manage-azure-redis-cache-using-the-azure-command-line-interface-azure-cli"></a>Jak utworzyć i zarządzać pamięcią podręczną Redis Azure za pomocą interfejsu wiersza polecenia platformy Azure (Azure CLI)
 > [!div class="op_single_selector"]

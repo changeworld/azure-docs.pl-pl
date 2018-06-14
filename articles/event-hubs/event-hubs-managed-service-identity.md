@@ -1,12 +1,12 @@
 ---
-title: "Tożsamość usługi zarządzanej z wersji zapoznawczej usługi Azure Event Hubs | Dokumentacja firmy Microsoft"
-description: "Użyj tożsamości usług zarządzanych przy użyciu usługi Azure Event Hubs"
+title: Tożsamość usługi zarządzanej z wersji zapoznawczej usługi Azure Event Hubs | Dokumentacja firmy Microsoft
+description: Użyj tożsamości usług zarządzanych przy użyciu usługi Azure Event Hubs
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26783445"
 ---
 # <a name="managed-service-identity-preview"></a>Tożsamość usługi zarządzanej (wersja zapoznawcza)
 

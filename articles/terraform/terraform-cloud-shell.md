@@ -1,7 +1,7 @@
 ---
-title: "Terraform za pomocą powłoki w chmurze Azure"
-description: "Upraszczanie uwierzytelniania i konfiguracji szablonu przy użyciu Terraform z powłoki chmury Azure."
-keywords: "terraform, devops, skalowanie maszyny ustawiony, wirtualnych, sieci, magazynu, modułów"
+title: Terraform za pomocą powłoki w chmurze Azure
+description: Upraszczanie uwierzytelniania i konfiguracji szablonu przy użyciu Terraform z powłoki chmury Azure.
+keywords: terraform, devops, skalowanie maszyny ustawiony, wirtualnych, sieci, magazynu, modułów
 ms.service: virtual-machines-linux
 author: dcaro
 ms.author: dcaro
@@ -12,6 +12,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29121529"
 ---
 # <a name="terraform-cloud-shell-development"></a>Programowanie Terraform chmury powłoki 
 

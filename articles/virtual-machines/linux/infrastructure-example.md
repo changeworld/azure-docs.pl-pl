@@ -1,11 +1,11 @@
 ---
-title: "Przykład infrastruktury platformy Azure wskazówki | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat klucza projekt i implementację wskazówki dotyczące wdrażania infrastruktury przykład na platformie Azure."
-documentationcenter: 
+title: Przykład infrastruktury platformy Azure wskazówki | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat klucza projekt i implementację wskazówki dotyczące wdrażania infrastruktury przykład na platformie Azure.
+documentationcenter: ''
 services: virtual-machines-linux
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 281fc2c0-b533-45fa-81a3-728c0049c73d
 ms.service: virtual-machines-linux
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/16/2017
+ms.locfileid: "26745779"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Przykład wskazówki infrastruktury platformy Azure dla maszyn wirtualnych systemu Linux
 W tym artykule przedstawiono zbudowaniu przykład infrastruktury aplikacji. Firma Microsoft szczegółowo projektowania infrastruktury dla prostego sklepu online, która gromadzi wszystkie wskazówki i decyzji dotyczących konwencji nazewnictwa, zestawów dostępności, sieci wirtualnych i usług równoważenia obciążenia i faktycznie wdrażania maszyn wirtualnych (VM).
@@ -53,7 +54,7 @@ Wszystkie powyższe wykonaj te konwencji nazewnictwa:
 
 * Adventure Works Cycles używa **[obciążenia IT]-[lokalizacja]-[zasobów platformy Azure]** jako prefiksu
   * Na przykład "**azos**" (magazyn Azure On-line) jest nazwą obciążenia IT i "**użyj**" (wschodnie stany USA 2) to lokalizacja
-* W sieciach wirtualnych za pomocą AZOS-użycie-VN**[numer]**
+* W sieciach wirtualnych za pomocą AZOS-użycie-VN **[numer]**
 * Zestawy dostępności używać azos-Użyj — jako-**[rola]**
 * Nazwy maszyn wirtualnych użyć azos-Użyj-vm -**[vmname]**
 

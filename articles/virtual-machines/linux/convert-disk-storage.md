@@ -1,13 +1,13 @@
 ---
-title: "Konwertuj Azure zarządzanego dyski magazynu ze standardu do premium i na odwrót | Dokumentacja firmy Microsoft"
-description: "Jak przekonwertować Azure zarządzane dyski magazynu ze standardu do premium i odwrotnie, przy użyciu wiersza polecenia platformy Azure."
+title: Konwertuj Azure zarządzanego dyski magazynu ze standardu do premium i na odwrót | Dokumentacja firmy Microsoft
+description: Jak przekonwertować Azure zarządzane dyski magazynu ze standardu do premium i odwrotnie, przy użyciu wiersza polecenia platformy Azure.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: ramankum
 manager: kavithag
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/02/2017
+ms.locfileid: "23950511"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Konwertuj Azure zarządzanego dyski magazynu ze standardu do premium i na odwrót
 

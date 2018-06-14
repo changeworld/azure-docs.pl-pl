@@ -1,11 +1,11 @@
 ---
-title: "Korzystam z usługi Mobile Services. Jak usługa App Service może mi pomóc?"
-description: "Dowiedz się, jakie korzyści z usługi App Service można osiągać podczas pracy z istniejącymi projektami usługi Mobile Services."
+title: Korzystam z usługi Mobile Services. Jak usługa App Service może mi pomóc?
+description: Dowiedz się, jakie korzyści z usługi App Service można osiągać podczas pracy z istniejącymi projektami usługi Mobile Services.
 services: app-service\mobile
 documentationcenter: ios
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 26b68a11-8352-4f78-acd2-e4e0ec177781
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29460416"
 ---
 # <a name="getting-started"> </a>Korzystam z usługi Mobile Services. Jak usługa App Service może mi pomóc?
 ## <a name="overview"></a>Omówienie
