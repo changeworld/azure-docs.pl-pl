@@ -1,11 +1,11 @@
 ---
 title: Automatyczne stosowanie poprawek dla programu SQL Server VMs (Resource Manager) | Dokumentacja firmy Microsoft
-description: "Zawiera opis funkcji Automatyczne stosowanie poprawek dla programu SQL Server maszyn wirtualnych działających na platformie Azure za pomocą Menedżera zasobów."
+description: Zawiera opis funkcji Automatyczne stosowanie poprawek dla programu SQL Server maszyn wirtualnych działających na platformie Azure za pomocą Menedżera zasobów.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 58232e92-318f-456b-8f0a-2201a541e08d
 ms.service: virtual-machines-sql
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29850620"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Automatyczne stosowanie poprawek dla programu SQL Server w usłudze Azure Virtual Machines (Resource Manager)
 > [!div class="op_single_selector"]

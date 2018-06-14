@@ -1,11 +1,11 @@
 ---
-title: "Podręcznik części projektanta widoków Azure Log Analytics | Dokumentacja firmy Microsoft"
-description: "Przy użyciu projektanta widoków analizy dzienników, można tworzyć widoki niestandardowe w portalu Azure, w których są wyświetlane różne wizualizacje danych w obszarze roboczym analizy dzienników. W tym artykule jest przewodnik odwołanie do ustawienia dla części wizualizacji, które są dostępne w niestandardowych widoków."
+title: Podręcznik części projektanta widoków Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Przy użyciu projektanta widoków analizy dzienników, można tworzyć widoki niestandardowe w portalu Azure, w których są wyświetlane różne wizualizacje danych w obszarze roboczym analizy dzienników. W tym artykule jest przewodnik odwołanie do ustawienia dla części wizualizacji, które są dostępne w niestandardowych widoków.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 5718d620-b96e-4d33-8616-e127ee9379c4
 ms.service: log-analytics
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29949535"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Podręcznik projektanta widoków części wizualizacji analizy dzienników
 Przy użyciu projektanta widoków Analiza dzienników Azure, można tworzyć widoki niestandardowe w portalu Azure, która przedstawia różne wizualizacje danych z obszaru roboczego analizy dzienników. W tym artykule jest przewodnik odwołanie do ustawienia dla części wizualizacji, które są dostępne w niestandardowych widoków.

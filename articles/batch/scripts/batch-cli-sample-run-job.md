@@ -1,12 +1,12 @@
 ---
-title: "Przykład skryptu interfejsu wiersza polecenia platformy Azure — uruchamianie zadania usługi Batch | Microsoft Docs"
-description: "Przykład skryptu interfejsu wiersza polecenia platformy Azure — uruchamianie zadania za pomocą usługi Batch"
+title: Przykład skryptu interfejsu wiersza polecenia platformy Azure — uruchamianie zadania usługi Batch | Microsoft Docs
+description: Przykład skryptu interfejsu wiersza polecenia platformy Azure — uruchamianie zadania za pomocą usługi Batch
 services: batch
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: batch
 ms.devlang: azurecli
 ms.topic: sample
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29843616"
 ---
 # <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>Przykład interfejsu wiersza polecenia: uruchamianie zadania i zadań podrzędnych za pomocą usługi Azure Batch
 

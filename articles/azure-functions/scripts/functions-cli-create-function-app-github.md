@@ -1,8 +1,8 @@
 ---
-title: "Tworzenie aplikacji funkcji i wdrażanie kodu funkcji z repozytorium GitHub | Microsoft Docs"
-description: "Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie aplikacji funkcji i wdrażanie kodu funkcji z repozytorium GitHub"
+title: Tworzenie aplikacji funkcji i wdrażanie kodu funkcji z repozytorium GitHub | Microsoft Docs
+description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie aplikacji funkcji i wdrażanie kodu funkcji z repozytorium GitHub
 services: functions
-keywords: 
+keywords: ''
 author: syntaxc4
 ms.author: cfowler
 ms.date: 04/27/2017
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29842664"
 ---
 # <a name="create-a-function-app-and-deploy-function-code-from-github"></a>Tworzenie aplikacji funkcji i wdrażanie kodu funkcji z repozytorium GitHub
 

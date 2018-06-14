@@ -1,6 +1,6 @@
 ---
-title: "Tryb failover, a kończyć się niepowodzeniem z powrotem maszyn wirtualnych funkcji Hyper-V replikowany do platformy Azure z usługą Site Recovery | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak działają maszyny wirtualne funkcji Hyper-V do platformy Azure i powrót po awarii do lokacji lokalnej, z usługą Azure Site Recovery"
+title: Tryb failover, a kończyć się niepowodzeniem z powrotem maszyn wirtualnych funkcji Hyper-V replikowany do platformy Azure z usługą Site Recovery | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak działają maszyny wirtualne funkcji Hyper-V do platformy Azure i powrót po awarii do lokacji lokalnej, z usługą Azure Site Recovery
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
@@ -12,6 +12,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852901"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>Tryb failover, a kończyć się niepowodzeniem z powrotem maszyn wirtualnych funkcji Hyper-V zreplikowanej w systemie Azure
 

@@ -1,11 +1,11 @@
 ---
-title: "Rozwiązywanie problemów z ról, które się nie uruchomić | Dokumentacja firmy Microsoft"
-description: "Poniżej przedstawiono niektóre typowe przyczyny, dlaczego roli usługi w chmurze może się nie uruchomić. Podawane są również rozwiązania tych problemów."
+title: Rozwiązywanie problemów z ról, które się nie uruchomić | Dokumentacja firmy Microsoft
+description: Poniżej przedstawiono niektóre typowe przyczyny, dlaczego roli usługi w chmurze może się nie uruchomić. Podawane są również rozwiązania tych problemów.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: simonxjx
 manager: felixwu
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 674b2faf-26d7-4f54-99ea-a9e02ef0eb2f
 ms.service: cloud-services
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29875338"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Rozwiązywanie problemów z ról usługi w chmurze, które się nie uruchomić
 Poniżej przedstawiono niektóre typowe problemy i rozwiązania związane z usług Azure Cloud Services ról, które się nie uruchomić.

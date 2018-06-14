@@ -1,11 +1,11 @@
 ---
-title: "Użycie zasobów dostawcy interfejsu API | Dokumentacja firmy Microsoft"
-description: "Odwołania do interfejsu API, użycie zasobów, który pobiera informacje o użyciu stosu Azure"
+title: Użycie zasobów dostawcy interfejsu API | Dokumentacja firmy Microsoft
+description: Odwołania do interfejsu API, użycie zasobów, który pobiera informacje o użyciu stosu Azure
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29877283"
 ---
 # <a name="provider-resource-usage-api"></a>Interfejs API użycia zasobów dostawcy
 Termin *dostawcy* stosuje się do administratora usługi i wszystkich dostawców delegowanego. Azure operatorów stosu i dostawców delegowanego służy użycia dostawcy interfejsu API do wyświetlania użycia bezpośredniego dzierżawcom. Na przykład pokazany na rysunku P0 można wywołać dostawcy interfejsu API, aby uzyskać użycia informacji o jego P1 i P2 przez bezpośredniego użycia i P1 można wywołać użycie informacji na temat P3 i P4.

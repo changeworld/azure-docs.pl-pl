@@ -1,11 +1,11 @@
 ---
-title: "Włącz połączenia pulpitu zdalnego dla roli w usług Azure Cloud Services przy użyciu programu PowerShell"
-description: "Konfigurowanie aplikacji usługi chmury azure przy użyciu programu PowerShell, aby umożliwić połączenia pulpitu zdalnego"
+title: Włącz połączenia pulpitu zdalnego dla roli w usług Azure Cloud Services przy użyciu programu PowerShell
+description: Konfigurowanie aplikacji usługi chmury azure przy użyciu programu PowerShell, aby umożliwić połączenia pulpitu zdalnego
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bf2f70a4-20dc-4302-a91a-38cd7a2baa62
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874144"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>Włącz połączenia pulpitu zdalnego dla roli w usług Azure Cloud Services przy użyciu programu PowerShell
 

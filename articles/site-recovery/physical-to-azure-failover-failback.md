@@ -1,6 +1,6 @@
 ---
-title: "Tryb failover i się nie powieść serwery ponownie fizyczne replikowane do platformy Azure z usługą Site Recovery | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak działają serwerów fizycznych do platformy Azure i powrót po awarii do lokacji lokalnej, z usługą Azure Site Recovery"
+title: Tryb failover i się nie powieść serwery ponownie fizyczne replikowane do platformy Azure z usługą Site Recovery | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak działają serwerów fizycznych do platformy Azure i powrót po awarii do lokacji lokalnej, z usługą Azure Site Recovery
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
@@ -12,6 +12,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29876017"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Tryb failover i niepowodzeniem ponownie fizycznych serwerów zreplikowanej w systemie Azure
 

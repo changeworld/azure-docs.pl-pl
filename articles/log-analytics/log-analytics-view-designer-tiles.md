@@ -1,11 +1,11 @@
 ---
-title: "Podręcznik kafelków Projektant widoków w Azure Log Analytics | Dokumentacja firmy Microsoft"
-description: "Przy użyciu projektanta widoków analizy dzienników, można tworzyć widoki niestandardowe w portalu Azure, w których są wyświetlane różne wizualizacje danych w obszarze roboczym analizy dzienników. W tym artykule jest przewodnik odwołanie do ustawienia dla kafelków, które są dostępne w niestandardowych widoków."
+title: Podręcznik kafelków Projektant widoków w Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Przy użyciu projektanta widoków analizy dzienników, można tworzyć widoki niestandardowe w portalu Azure, w których są wyświetlane różne wizualizacje danych w obszarze roboczym analizy dzienników. W tym artykule jest przewodnik odwołanie do ustawienia dla kafelków, które są dostępne w niestandardowych widoków.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
-editor: 
+editor: ''
 ms.assetid: 41787c8f-6c13-4520-b0d3-5d3d84fcf142
 ms.service: log-analytics
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29947320"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Podręcznik projektanta widoku kafelków w analizy dzienników
 Przy użyciu projektanta widoków Analiza dzienników Azure, można tworzyć widoki niestandardowe w portalu Azure, która przedstawia różne wizualizacje danych w obszarze roboczym analizy dzienników. W tym artykule jest przewodnik odwołanie do ustawienia dla kafelków, które są dostępne w niestandardowych widoków.

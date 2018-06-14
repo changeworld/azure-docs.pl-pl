@@ -19,6 +19,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30240912"
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>Tworzenie środowiska Docker na platformie Azure przy użyciu rozszerzenia maszyny Wirtualnej platformy Docker
 Docker jest popularnych kontenera zarządzania i tworzenia obrazu platformy, która pozwala na szybkie pracować z kontenerami w systemie Linux. Na platformie Azure istnieją różne sposoby Docker można wdrożyć zgodnie z potrzebami. Ten artykuł dotyczy przy użyciu rozszerzenia maszyny Wirtualnej platformy Docker i szablony usługi Azure Resource Manager 2.0 interfejsu wiersza polecenia platformy Azure. Czynności te można również wykonać przy użyciu [interfejsu wiersza polecenia platformy Azure w wersji 1.0](dockerextension-nodejs.md).

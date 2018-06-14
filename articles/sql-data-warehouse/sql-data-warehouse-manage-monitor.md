@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31522476"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitor your workload using DMVs
 W tym artykule opisano sposób użycia dynamicznych widoków zarządzania (widoków DMV) do monitorowania obciążenia. W tym badanie wykonywania zapytania w usłudze Azure SQL Data Warehouse.

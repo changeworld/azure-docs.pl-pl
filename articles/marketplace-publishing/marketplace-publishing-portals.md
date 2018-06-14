@@ -1,11 +1,11 @@
 ---
-title: "Przegląd różnych portali potrzebne do utworzenia oferty dla witryny Marketplace | Dokumentacja firmy Microsoft"
-description: "Przegląd różnych portali potrzebne do utworzenia oferty dla witryny Marketplace"
+title: Przegląd różnych portali potrzebne do utworzenia oferty dla witryny Marketplace | Dokumentacja firmy Microsoft
+description: Przegląd różnych portali potrzebne do utworzenia oferty dla witryny Marketplace
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 89ce82b3-c28a-4b0d-b37a-db3112160a4e
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29938648"
 ---
 # <a name="portals-you-will-need"></a>Portale, należy wykonać
 Przed rozpoczęciem procesu publikacji oferty, pomożemy Ci wprowadzane do różnych portali, które będą potrzebne. Poniżej przedstawiono krótkie podsumowanie dotyczące portali--Centrum deweloperów, publikowania portalu Azure i Portal Azure — w kolejności, że będzie wchodzić z nimi.                                                                            

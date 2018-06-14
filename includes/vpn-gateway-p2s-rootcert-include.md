@@ -13,6 +13,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30197077"
 ---
 Możesz użyć albo certyfikatu głównego wygenerowanego za pomocą rozwiązania przedsiębiorstwa (zalecane), albo wygenerować certyfikat z podpisem własnym. Po utworzeniu certyfikatu głównego dane certyfikatu publicznego (nie klucz prywatny) należy wyeksportować jako plik cer X.509 z kodowaniem Base-64 i przekazać dane certyfikatu publicznego na platformę Azure.
 

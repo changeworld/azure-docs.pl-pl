@@ -1,6 +1,6 @@
 ---
-title: "Nie powiodło się platformy Azure z VMware z usługą Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "Po pracy w trybie failover maszyny wirtualne na platformie Azure możesz uruchomić powrotu po awarii, aby przywrócić maszyn wirtualnych do lokalnego. Dowiedz się więcej czynności w celu wykonaj powrót po awarii."
+title: Nie powiodło się platformy Azure z VMware z usługą Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Po pracy w trybie failover maszyny wirtualne na platformie Azure możesz uruchomić powrotu po awarii, aby przywrócić maszyn wirtualnych do lokalnego. Dowiedz się więcej czynności w celu wykonaj powrót po awarii.
 services: site-recovery
 author: nsoneji
 manager: gauravd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29944011"
 ---
 # <a name="fail-back-from-azure-to-an-on-premises-site"></a>Nie powiodło się platformy Azure z lokacją lokalną
 

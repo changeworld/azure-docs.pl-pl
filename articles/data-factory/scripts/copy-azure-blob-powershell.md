@@ -17,6 +17,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30167555"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-in-the-cloud"></a>Aby utworzyć potok fabryki danych do skopiowania danych w chmurze za pomocą programu PowerShell
 

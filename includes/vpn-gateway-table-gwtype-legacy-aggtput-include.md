@@ -13,6 +13,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30197182"
 ---
 W poniższej tabeli przedstawiono typy bram i szacowaną agregowaną przepływność według jednostek SKU bramy. Ta tabela ma zastosowanie do usługi Resource Manager i klasycznych modeli wdrażania. 
 

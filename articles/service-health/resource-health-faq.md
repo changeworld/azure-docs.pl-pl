@@ -19,6 +19,7 @@ ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/29/2018
+ms.locfileid: "30264238"
 ---
 # <a name="azure-resource-health-faq"></a>Kondycja zasobów platformy Azure — często zadawane pytania
 Informacje o odpowiedzi na często zadawane pytania dotyczące kondycji zasobów platformy Azure.

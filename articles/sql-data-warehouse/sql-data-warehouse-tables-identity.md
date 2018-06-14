@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31526988"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>Do tworzenia kluczy dwuskładnikowego w usłudze Azure SQL Data Warehouse przy użyciu tożsamości
 Zalecenia i przykłady dotyczące do tworzenia kluczy zastępczego w tabelach w usłudze Azure SQL Data Warehouse przy użyciu właściwości tożsamości.

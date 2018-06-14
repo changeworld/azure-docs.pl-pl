@@ -1,11 +1,11 @@
 ---
-title: "Ciągłość prowadzenia działalności biznesowej sieci wirtualnej | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, co należy zrobić w przypadku przerw w działaniu usługi Azure wpływających na sieciach wirtualnych platformy Azure."
+title: Ciągłość prowadzenia działalności biznesowej sieci wirtualnej | Dokumentacja firmy Microsoft
+description: Dowiedz się, co należy zrobić w przypadku przerw w działaniu usługi Azure wpływających na sieciach wirtualnych platformy Azure.
 services: virtual-network
-documentationcenter: 
+documentationcenter: ''
 author: NarayanAnnamalai
 manager: jefco
-editor: 
+editor: ''
 ms.assetid: ad260ab9-d873-43b3-8896-f9a1db9858a5
 ms.service: virtual-network
 ms.workload: virtual-network
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29854159"
 ---
 # <a name="virtual-network--business-continuity"></a>Sieć wirtualna — ciągłość prowadzenia działalności biznesowej
 

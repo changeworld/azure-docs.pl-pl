@@ -1,12 +1,12 @@
 ---
-title: "Rozwiązywanie problemów z agenta systemu Linux Analiza dzienników Azure | Dokumentacja firmy Microsoft"
-description: "Opisz objawy, przyczyny i rozwiązania typowych problemów z agentem Linux analizy dziennika."
+title: Rozwiązywanie problemów z agenta systemu Linux Analiza dzienników Azure | Dokumentacja firmy Microsoft
+description: Opisz objawy, przyczyny i rozwiązania typowych problemów z agentem Linux analizy dziennika.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29936479"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-linux-agent-for-log-analytics"></a>Jak rozwiązywać problemy z agentem systemu Linux dla analizy dzienników
 

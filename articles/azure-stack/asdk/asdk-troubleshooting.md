@@ -20,6 +20,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30167904"
 ---
 # <a name="microsoft-azure-stack-development-kit-asdk-troubleshooting"></a>Rozwiązywanie problemów z Microsoft Azure stosu Development Kit (ASDK)
 Ten dokument zawiera typowe informacje dotyczące rozwiązywania problemów dla ASDK. Jeśli występuje problem, który nie jest udokumentowany, upewnij się, że sprawdzanie [Forum MSDN stosu Azure](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) dalszą pomoc i informacje.  
