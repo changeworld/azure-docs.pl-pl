@@ -1,11 +1,11 @@
 ---
-title: "Tablica wirtualnego StorSimple awaryjnego odzyskiwania i urządzenia trybu failover | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o sposobie pracy awaryjnej tablica wirtualne StorSimple."
+title: Tablica wirtualnego StorSimple awaryjnego odzyskiwania i urządzenia trybu failover | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o sposobie pracy awaryjnej tablica wirtualne StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3c1f9c62-af57-4634-a0d8-435522d969aa
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23927768"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Awaryjnego odzyskiwania i urządzenia w trybie failover tablica wirtualnego StorSimple za pośrednictwem portalu Azure
 

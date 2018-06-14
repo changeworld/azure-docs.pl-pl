@@ -1,6 +1,6 @@
 ---
-title: "Przykładów dla platformy Azure PowerShell - zarządzane aplikacje platformy Azure | Dokumentacja firmy Microsoft"
-description: "Przykładów dla platformy Azure PowerShell - aplikacji Azure"
+title: Przykładów dla platformy Azure PowerShell - zarządzane aplikacje platformy Azure | Dokumentacja firmy Microsoft
+description: Przykładów dla platformy Azure PowerShell - aplikacji Azure
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -14,9 +14,10 @@ ms.date: 10/27/2017
 ms.author: tomfitz
 ms.openlocfilehash: 54663282f0a7c9491c0f6501af74eca1a907c44a
 ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/30/2017
+ms.locfileid: "23940949"
 ---
 # <a name="azure-powershell-samples"></a>Przykłady programu Azure PowerShell
 

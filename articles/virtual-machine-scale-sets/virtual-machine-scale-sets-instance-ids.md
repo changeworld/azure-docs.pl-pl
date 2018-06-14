@@ -1,11 +1,11 @@
 ---
-title: "Zrozumienie identyfikatorów wystąpienia dla maszyn wirtualnych zestawu skalowania maszyny Wirtualnej platformy Azure | Dokumentacja firmy Microsoft"
-description: "Zrozumienie zestawu wystąpienia identyfikatory skali maszyny Wirtualnej Azure maszyny wirtualne"
+title: Zrozumienie identyfikatorów wystąpienia dla maszyn wirtualnych zestawu skalowania maszyny Wirtualnej platformy Azure | Dokumentacja firmy Microsoft
+description: Zrozumienie zestawu wystąpienia identyfikatory skali maszyny Wirtualnej Azure maszyny wirtualne
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
 ms.service: virtual-machine-scale-sets
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29742776"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Zrozumienie zestawu wystąpienia identyfikatory skali maszyny Wirtualnej Azure maszyny wirtualne
 W tym artykule opisano identyfikatory wystąpienia zestawów skali i różne sposoby ich powierzchni.

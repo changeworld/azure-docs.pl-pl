@@ -1,6 +1,6 @@
 ---
-title: "Szyfrowanie po stronie klienta z języka Python dla usługi Microsoft Azure Storage | Dokumentacja firmy Microsoft"
-description: "Biblioteka klienta magazynu Azure dla języka Python obsługuje szyfrowanie po stronie klienta dla zapewnienia maksymalnego poziomu bezpieczeństwa dla aplikacji usługi Azure Storage."
+title: Szyfrowanie po stronie klienta z języka Python dla usługi Microsoft Azure Storage | Dokumentacja firmy Microsoft
+description: Biblioteka klienta magazynu Azure dla języka Python obsługuje szyfrowanie po stronie klienta dla zapewnienia maksymalnego poziomu bezpieczeństwa dla aplikacji usługi Azure Storage.
 services: storage
 documentationcenter: python
 author: lakasa
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29742646"
 ---
 # <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>Szyfrowanie po stronie klienta z języka Python dla magazynu Microsoft Azure
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]

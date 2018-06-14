@@ -1,11 +1,11 @@
 ---
-title: "Typowe zadania zarządzania usługi w chmurze | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie zarządzania usługami w chmurze w portalu Azure. Te przykłady, użyj portalu Azure."
+title: Typowe zadania zarządzania usługi w chmurze | Dokumentacja firmy Microsoft
+description: Informacje o sposobie zarządzania usługami w chmurze w portalu Azure. Te przykłady, użyj portalu Azure.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cb218ad9-77d4-4149-83db-71159c00767e
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29121199"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Zarządzaj usługi w chmurze w portalu Azure
 W **usługi w chmurze** obszaru portalu Azure, można wykonywać następujące czynności:
