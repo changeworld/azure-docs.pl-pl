@@ -1,10 +1,10 @@
 ---
-title: "Dodawanie powiadomień wypychanych do aplikacji systemu Android z usługą Mobile Apps | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak korzystać z aplikacji mobilnej do wysyłania powiadomień wypychanych do aplikacji systemu Android."
+title: Dodawanie powiadomień wypychanych do aplikacji systemu Android z usługą Mobile Apps | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak korzystać z aplikacji mobilnej do wysyłania powiadomień wypychanych do aplikacji systemu Android.
 services: app-service\mobile
 documentationcenter: android
 manager: crdun
-editor: 
+editor: ''
 author: conceptdev
 ms.assetid: 9058ed6d-e871-4179-86af-0092d0ca09d3
 ms.service: app-service-mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27593032"
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>Dodawanie powiadomień wypychanych do aplikacji systemu Android
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30904835"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-by-using-smb-with-azure-cli-10"></a>Magazyn plików Azure instalacji na maszynach wirtualnych systemu Linux przy użyciu protokołu SMB 1.0 interfejsu wiersza polecenia platformy Azure
 

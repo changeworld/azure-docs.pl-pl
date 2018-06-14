@@ -1,6 +1,6 @@
 ---
-title: "Włączanie synchronizacji w trybie offline dla aplikacji mobilnej Azure (Android)"
-description: "Dowiedz się, jak używać App Service Mobile Apps do pamięci podręcznej i synchronizacji danych w trybie offline w aplikacji systemu Android"
+title: Włączanie synchronizacji w trybie offline dla aplikacji mobilnej Azure (Android)
+description: Dowiedz się, jak używać App Service Mobile Apps do pamięci podręcznej i synchronizacji danych w trybie offline w aplikacji systemu Android
 documentationcenter: android
 author: conceptdev
 manager: crdun
@@ -18,6 +18,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27594195"
 ---
 # <a name="enable-offline-sync-for-your-android-mobile-app"></a>Włączanie synchronizacji w trybie offline dla twojej aplikacji mobilnej systemu Android
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]

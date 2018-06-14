@@ -1,8 +1,8 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Dokumentacja usługi Site Recovery"
+title: Dokumentacja usługi Site Recovery
 metadata:
-  title: "Dokumentacja usługi Azure Site Recovery — samouczki i dokumentacja interfejsu API | Microsoft Docs"
+  title: Dokumentacja usługi Azure Site Recovery — samouczki i dokumentacja interfejsu API | Microsoft Docs
   meta.description: Learn how to set up cloud disaster recovery and business continuity for physical servers and virtual machines by deploying and managing replication.
   services: site-recovery
   author: czeumault
@@ -18,8 +18,9 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: pl-PL
   ms.lasthandoff: 01/10/2018
+  ms.locfileid: "27740088"
 abstract:
-  description: "Usługa Azure Site Recovery organizuje odzyskiwanie po awarii i zarządza nim w przypadku maszyn wirtualnych platformy Azure, lokalnych maszyn wirtualnych i serwerów fizycznych. Dowiedz się, jak przeprowadzać replikację, przejście do trybu failover i powrót po awarii, zapoznając się z naszymi przewodnikami Szybki start i samouczkami."
+  description: Usługa Azure Site Recovery organizuje odzyskiwanie po awarii i zarządza nim w przypadku maszyn wirtualnych platformy Azure, lokalnych maszyn wirtualnych i serwerów fizycznych. Dowiedz się, jak przeprowadzać replikację, przejście do trybu failover i powrót po awarii, zapoznając się z naszymi przewodnikami Szybki start i samouczkami.
 sections:
 - title: 5-minutowe przewodniki Szybki start
   items:
@@ -35,14 +36,14 @@ sections:
 - title: Samouczki krok po kroku
   items:
   - type: paragraph
-    text: "Dowiedz się, jak skonfigurować odzyskiwanie po awarii w przypadku maszyn wirtualnych i serwerów fizycznych."
+    text: Dowiedz się, jak skonfigurować odzyskiwanie po awarii w przypadku maszyn wirtualnych i serwerów fizycznych.
   - type: text
-    html: "<h3>Azure–Azure</h3>"
+    html: <h3>Azure–Azure</h3>
   - type: list
     style: ordered
     items:
     - html: <a href="azure-to-azure-tutorial-enable-replication">Konfigurowanie odzyskiwania po awarii</a>
-    - html: "<a href=\"azure-to-azure-tutorial-dr-drill\">Uruchamianie próbnego odzyskiwania po awarii</a>"
+    - html: <a href="azure-to-azure-tutorial-dr-drill">Uruchamianie próbnego odzyskiwania po awarii</a>
     - html: <a href="azure-to-azure-tutorial-failover-failback">Uruchamianie trybu failover i powrotu po awarii</a>
   - type: text
     html: <h3>VMware</h3>
@@ -50,9 +51,9 @@ sections:
     style: ordered
     items:
     - html: <a href="tutorial-prepare-azure">Przygotowywanie platformy Azure</a>
-    - html: "<a href=\"tutorial-prepare-on-premises-vmware\">Przygotowywanie lokalnego wdrożenia oprogramowania VMware</a>"
+    - html: <a href="tutorial-prepare-on-premises-vmware">Przygotowywanie lokalnego wdrożenia oprogramowania VMware</a>
     - html: <a href="tutorial-vmware-to-azure">Konfigurowanie odzyskiwania po awarii</a>
-    - html: "<a href=\"tutorial-dr-drill-azure\">Uruchamianie próbnego odzyskiwania po awarii</a>"
+    - html: <a href="tutorial-dr-drill-azure">Uruchamianie próbnego odzyskiwania po awarii</a>
     - html: <a href="tutorial-vmware-to-azure-failover-failback">Uruchamianie trybu failover i powrotu po awarii</a>
   - type: text
     html: <h3>Funkcja Hyper-V</h3>
@@ -62,17 +63,17 @@ sections:
     - html: <a href="tutorial-prepare-azure">Przygotowywanie platformy Azure</a>
     - html: <a href="tutorial-prepare-on-premises-hyper-v">Przygotowywanie lokalnej funkcji Hyper-V</a>
     - html: <a href="tutorial-hyper-v-to-azure">Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych funkcji Hyper-V</a>
-    - html: "<a href=\"tutorial-hyper-v-vmm-to-azure\">Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych funkcji Hyper-V zarządzanych przez program System Center VMM</a>"
-    - html: "<a href=\"tutorial-dr-drill-azure\">Uruchamianie próbnego odzyskiwania po awarii</a>"
+    - html: <a href="tutorial-hyper-v-vmm-to-azure">Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych funkcji Hyper-V zarządzanych przez program System Center VMM</a>
+    - html: <a href="tutorial-dr-drill-azure">Uruchamianie próbnego odzyskiwania po awarii</a>
     - html: <a href="tutorial-hyper-v-to-azure-failover-failback">Uruchamianie trybu failover i powrotu po awarii</a>
   - type: text
-    html: "<h3>Migracja na platformę Azure</h3>"
+    html: <h3>Migracja na platformę Azure</h3>
   - type: list
     style: ordered
     items:
     - html: <a href="tutorial-prepare-azure">Przygotowywanie platformy Azure</a>
-    - html: "<a href=\"tutorial-migrate-on-premises-to-azure\">Migrowanie maszyn lokalnych</a> lub <a href=\"tutorial-migrate-aws-to-azure\">wystąpień usług AWS do platformy Azure</a>"
-- title: "Odwołanie"
+    - html: <a href="tutorial-migrate-on-premises-to-azure">Migrowanie maszyn lokalnych</a> lub <a href="tutorial-migrate-aws-to-azure">wystąpień usług AWS do platformy Azure</a>
+- title: Odwołanie
   items:
   - type: list
     style: cards

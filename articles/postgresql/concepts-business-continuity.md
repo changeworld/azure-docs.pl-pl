@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29693410"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql"></a>Omówienie ciągłości działalności biznesowej z bazą danych Azure dla PostgreSQL
 

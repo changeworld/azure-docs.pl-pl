@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30844093"
 ---
 Magazyn jest ograniczane przez miejsca na dysku lub nienaruszalne ograniczenie na *maksymalną liczbę* indeksów, dokumentu lub innych zasobów wysokiego poziomu, zależnie od zostanie osiągnięty jako pierwszy. Poniższej tabeli opisano limity magazynu. Maksymalna limitów indeksów, dokumentów i innych obiektów, zobacz [limity przez zasób](../articles/search/search-limits-quotas-capacity.md#index-limits).
 

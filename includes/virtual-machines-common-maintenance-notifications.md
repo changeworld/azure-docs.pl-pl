@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29958898"
 ---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>Maszyny wirtualne widoku zaplanowane w celu przeprowadzenia konserwacji w portalu
 

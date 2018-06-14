@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29958728"
 ---
 Magazynu zoptymalizowane rozmiarów maszyn wirtualnych alokację dysku wysokiej przepływności oraz we/wy i idealnie nadają się do bazy danych Big Data, SQL i NoSQL. Ten artykuł zawiera informacje o liczbie Vcpu, dysków z danymi i karty sieciowe, a także przepustowości przepływności i sieć magazynu dla każdego rozmiaru w tej metodzie grupowania. 
 

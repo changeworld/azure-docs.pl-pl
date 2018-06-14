@@ -1,11 +1,11 @@
 ---
-title: "Nowe wyszukiwanie dziennika analizy dziennika często zadawane pytania | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera często zadawane pytania dotyczące uaktualniania analizy dzienników dla nowego języka zapytań."
+title: Nowe wyszukiwanie dziennika analizy dziennika często zadawane pytania | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera często zadawane pytania dotyczące uaktualniania analizy dzienników dla nowego języka zapytań.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/22/2018
+ms.locfileid: "27993873"
 ---
 # <a name="log-analytics-new-log-search-faq-and-known-issues"></a>Często zadawane pytania dotyczące wyszukiwania i znane problemy dziennika nowe analizy dzienników
 

@@ -1,11 +1,11 @@
 ---
-title: "Dodawanie użytkowników dla usług AD FS Azure stosu | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak dodać użytkowników do wdrożenia usług AD FS Azure stosu"
+title: Dodawanie użytkowników dla usług AD FS Azure stosu | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dodać użytkowników do wdrożenia usług AD FS Azure stosu
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29554586"
 ---
 # <a name="add-users-in-the-azure-stack-development-kit"></a>Dodawanie użytkowników w zestawie Azure stosu
 

@@ -1,11 +1,11 @@
 ---
-title: "Instalowanie programu Microsoft Azure StorSimple 8100 urządzenia | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób Rozpakowywanie, montowanie i Podłączanie kabli do urządzenia StorSimple 8100, aby wdrożyć i skonfigurować oprogramowanie."
+title: Instalowanie programu Microsoft Azure StorSimple 8100 urządzenia | Dokumentacja firmy Microsoft
+description: Opisuje sposób Rozpakowywanie, montowanie i Podłączanie kabli do urządzenia StorSimple 8100, aby wdrożyć i skonfigurować oprogramowanie.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 6098a01e-c031-488a-a8d7-0b607ce665e1
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27743470"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>Rozpakowywanie, w stojaku, a Podłączanie kabli do urządzenia StorSimple 8100
 ## <a name="overview"></a>Przegląd

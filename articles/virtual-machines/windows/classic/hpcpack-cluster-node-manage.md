@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30914939"
 ---
 # <a name="manage-the-number-and-availability-of-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Zarządzanie liczbą i dostępnością węzłów obliczeniowych w klastrze pakietu HPC Pack na platformie Azure
 Jeśli utworzony klaster HPC Pack 2012 R2 w maszynach wirtualnych platformy Azure, możesz sposobów, aby łatwo dodać, usunąć, start (zainicjować obsługi administracyjnej) lub zatrzymać (deprovision) obliczeniowe niektórych maszyn wirtualnych węzła w klastrze. Aby wykonać te zadania, uruchomić skrypty programu Azure PowerShell, które są zainstalowane w węźle głównym maszyny Wirtualnej. Skrypty te można kontrolować liczbę i dostępności zasobów klastra HPC Pack, więc można kontrolować koszty.
