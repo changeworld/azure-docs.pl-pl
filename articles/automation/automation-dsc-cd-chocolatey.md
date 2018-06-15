@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195271"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-dsc-and-chocolatey"></a>Przykład użycia: Ciągłe wdrażanie maszyn wirtualnych przy użyciu usługi Konfiguracja DSC automatyzacji i Chocolatey
 W świecie DevOps istnieje wiele narzędzi do pomagać w różnych punktach w potoku ciągłej integracji.  Konfiguracji usługi Azure Automation pożądanej stanu (DSC) to powitalnej oprócz nowe opcje, które zespoły opracowywania oprogramowania można wdrożyć.  W tym artykule przedstawiono ustawienia zapasowej ciągłego wdrażania (CD) na komputerze z systemem Windows.  Metoda zawierać dowolną liczbę komputerów z systemem Windows zgodnie z potrzebami w roli (na przykład witryną sieci web), a następnie do również dodatkowych ról można z łatwością rozszerzyć.

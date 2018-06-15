@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157721"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>V2.0 usługi Azure Active Directory i protokołu OpenID Connect
 OpenID Connect to protokół uwierzytelniania, oparty na OAuth 2.0, który służy do bezpiecznego logowania użytkownika do aplikacji sieci web. Korzystając z punktem końcowym v2.0 wdrażania protokołu OpenID Connect, logowania i dostępu do interfejsu API można dodać do aplikacji opartych na sieci web. W tym artykule firma Microsoft opisano, jak zrobić to niezależny od języka. Opisano sposób wysyłania i odbierania wiadomości HTTP bez korzystania z żadnych bibliotek open source firmy Microsoft.

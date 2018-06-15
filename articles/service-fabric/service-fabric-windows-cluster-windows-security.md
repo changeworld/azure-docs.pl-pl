@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209141"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Zabezpieczanie klastra autonomicznego w systemie Windows przy użyciu zabezpieczeń systemu Windows
 Aby uniemożliwić nieautoryzowany dostęp do klastra usługi sieć szkieletowa, należy zabezpieczyć klastra. Zabezpieczeń jest szczególnie ważne, jeśli klaster uruchamia obciążeń produkcyjnych. W tym artykule opisano sposób konfigurowania zabezpieczeń między węzłami i węzeł klienta przy użyciu zabezpieczeń systemu Windows w *pliku ClusterConfig.JSON* pliku.  Proces odpowiada Konfiguruj kroku zabezpieczeń [tworzenia autonomicznych klastra z systemem Windows](service-fabric-cluster-creation-for-windows-server.md). Aby uzyskać więcej informacji o używaniu sieci szkieletowej usług zabezpieczeń systemu Windows, temacie [klastra scenariusze zabezpieczeń](service-fabric-cluster-security.md).

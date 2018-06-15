@@ -1,11 +1,11 @@
 ---
-title: "Samouczek dotyczący REST przy użyciu przekaźnika usługi Azure | Dokumentacja firmy Microsoft"
-description: "Utworzyć prostą aplikację hosta przekaźnika magistrali usług Azure, która uwidacznia interfejs REST."
+title: Samouczek dotyczący REST przy użyciu przekaźnika usługi Azure | Dokumentacja firmy Microsoft
+description: Utworzyć prostą aplikację hosta przekaźnika magistrali usług Azure, która uwidacznia interfejs REST.
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1312b2db-94c4-4a48-b815-c5deb5b77a6a
 ms.service: service-bus-relay
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/06/2017
+ms.locfileid: "24008040"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Samouczek usługi Azure REST przekaźnika usługi WCF
 

@@ -15,6 +15,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33866895"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user-or-group"></a>Jak zażądać weryfikacji dwuetapowej dla użytkownika lub grupy
 

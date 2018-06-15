@@ -21,6 +21,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157847"
 ---
 # <a name="how-to-register-an-app-with-the-v20-endpoint"></a>Jak zarejestrować aplikację z punktem końcowym v2.0
 Aby utworzyć aplikację, która akceptuje konto Microsoft (MSA) osobiste & pracy lub szkołą logowania konta (Azure AD), musisz najpierw zarejestrować aplikację w firmie Microsoft. W tej chwili nie można używać żadnych istniejących aplikacji, które mogą wiązać Ciebie z usługi Azure AD lub MSA — należy utworzyć nowy.

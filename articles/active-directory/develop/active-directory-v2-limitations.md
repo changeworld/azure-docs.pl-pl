@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156395"
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>Należy użyć punktu końcowego v2.0?
 Podczas tworzenia aplikacji, które integrują się z usługą Azure Active Directory, należy zdecydować, czy protokołów uwierzytelniania i punktu końcowego v2.0 odpowiadają Twoim potrzebom. Oryginalny punktu końcowego usługi Azure Active Directory firmy jest nadal w pełni obsługiwane i pod pewnymi względami jest więcej zaawansowanej funkcji niż wersja 2.0. Jednak punktu końcowego v2.0 [wprowadzono znaczące korzyści](active-directory-v2-compare.md) dla deweloperów.

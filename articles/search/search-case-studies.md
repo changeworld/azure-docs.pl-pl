@@ -15,6 +15,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31790274"
 ---
 # <a name="whos-using-azure-search-case-studies-and-customer-stories"></a>Kto korzysta z usługi Azure Search: wdrożeń i klientów wątków
 Dowiedz się, jak poniższych organizacji przenieść ich firm do przodu integrując sformatowanego usługi Azure Search wystąpić w swoich aplikacjach online.

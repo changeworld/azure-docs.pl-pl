@@ -16,6 +16,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31799468"
 ---
 # <a name="publishing-a-cloud-service-using-visual-studio"></a>Publikowanie usługi w chmurze przy użyciu programu Visual Studio
 

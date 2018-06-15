@@ -15,6 +15,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32186821"
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql"></a>Konfiguracja połączenia SSL w bazie danych Azure dla PostgreSQL
 Bazy danych platformy Azure dla PostgreSQL preferowany, połączenie klienta aplikacji w usłudze PostgreSQL przy użyciu protokołu Secure Sockets Layer (SSL). Wymuszanie połączeń SSL między serwerem bazy danych a aplikacją kliencką ułatwia ochronę przed atakami typu man-in-the-middle dzięki szyfrowaniu strumienia danych między serwerem a aplikacją.

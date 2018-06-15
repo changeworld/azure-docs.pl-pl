@@ -20,6 +20,7 @@ ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34057965"
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>Zaktualizuj informacje o wersji 1.2 dla danego urządzenia z serii StorSimple 8000
 

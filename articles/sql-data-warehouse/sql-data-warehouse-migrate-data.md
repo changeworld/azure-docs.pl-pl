@@ -15,6 +15,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31796007"
 ---
 # <a name="migrate-your-data"></a>Migrowanie danych
 Można przenieść dane z różnych źródeł do magazynu danych SQL przy użyciu różnych narzędzi.  Kopiuj ADF, SSIS i bcp wszystkie umożliwia osiągnięcie tego celu. Jako ilość danych zwiększa należy traktować o podziału na etapy procesu migracji danych. Daje to możliwość optymalizacji każdy krok, wydajności i odporności zapewnić migrację danych smooth.

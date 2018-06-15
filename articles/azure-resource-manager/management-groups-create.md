@@ -17,6 +17,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34069070"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Utwórz grupy zarządzania dla organizacji zasobów i zarządzanie
 Grupy zarządzania to kontenery ułatwiające zarządzanie dostępu, zasad i zgodności między wieloma subskrypcjami. Tworzenie tych kontenerów do tworzenia wydajny i efektywny hierarchii, które mogą być używane z [zasadami Azure](../azure-policy/azure-policy-introduction.md) i [kontroli dostępu na podstawie roli Azure](../role-based-access-control/overview.md). Aby uzyskać więcej informacji dotyczących grup zarządzania, zobacz [organizowania zasobów z grupami zarządzania platformy Azure ](management-groups-overview.md). 

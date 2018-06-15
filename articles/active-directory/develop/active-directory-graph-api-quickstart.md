@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156878"
 ---
 # <a name="quickstart-for-the-azure-ad-graph-api"></a>Szybki Start dla usługi Azure AD Graph API
 Interfejsu API programu Graph usługi Azure Active Directory (AD) zapewnia dostęp programistyczny do usługi Azure AD za pomocą interfejsu API REST OData punktów końcowych. Aplikacje mogą używać interfejsu API usługi Azure AD Graph do wykonania tworzenia, odczytu, aktualizacji i usuwania operacji (CRUD) w katalogu danych i obiektów. Na przykład można użyć interfejsu API Azure AD Graph, aby utworzyć nowego użytkownika, Wyświetl lub zaktualizuj właściwości użytkownika, zmiany hasła użytkownika, sprawdź członkostwo grupy dostępu oparte na rolach, wyłączyć lub usunąć użytkownika. Aby uzyskać więcej informacji o funkcji Azure AD Graph API i scenariuszy aplikacji, zobacz [interfejsu API usługi Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) i [wymagania wstępne programu Azure AD Graph API](https://msdn.microsoft.com/library/hh974476.aspx). 

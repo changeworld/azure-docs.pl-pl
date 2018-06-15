@@ -20,6 +20,7 @@ ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34057689"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Co to jest sieć dostarczania zawartości na platformie Azure?
 Sieć dostarczania zawartości (CDN, content delivery network) to rozproszona sieć serwerów, które pozwalają wydajnie dostarczać użytkownikom zawartość internetową. Sieci CDN umożliwiają przechowywanie buforowanej zawartości na serwerach brzegowych w lokalizacjach punktu obecności (POP, Point-of-Presence), które znajdują się blisko użytkowników końcowych, co pozwala zminimalizować opóźnienie. 

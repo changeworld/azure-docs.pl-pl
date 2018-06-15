@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34194992"
 ---
 # <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>Migrowanie z programu Orchestrator do automatyzacji Azure (wersja Beta)
 Elementy Runbook w [programu System Center Orchestrator](http://technet.microsoft.com/library/hh237242.aspx) są oparte na działań z pakietów integracyjnych, które zostały napisane specjalnie dla programu Orchestrator, gdy elementy runbook automatyzacji Azure są oparte na programie Windows PowerShell.  [Graficznych elementów runbook](automation-runbook-types.md#graphical-runbooks) automatyzacji Azure mają podobne wygląd elementów runbook programu Orchestrator z ich działania polecenia cmdlet programu PowerShell, podrzędnych elementów runbook i zasoby.

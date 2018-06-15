@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34155344"
 ---
 # <a name="sign-in-microsoft-account-and-azure-active-directory-users-in-a-single-application"></a>Zaloguj się Account Microsoft i Azure Active Directory użytkowników w jednej aplikacji
 W przeszłości deweloperzy aplikacji, którzy chcieli obsługuje oba osobistego konta Microsoft i działać kont z usługi Azure Active Directory musiał zintegrować z dwóch oddzielnych systemach. Punktu końcowego v2.0 usługi Azure Active Directory (Azure AD) wprowadziła nową wersję uwierzytelniania interfejsu API, które upraszcza ten proces. Punktu końcowego v2.0 usługi Azure AD umożliwia logowanie z obu typów kont za pomocą pojedynczego integracji. Aplikacje używające punktu końcowego v2.0 usługi Azure AD może również używać interfejsów API REST z [interfejsu API programu Microsoft Graph](https://graph.microsoft.io) przy użyciu dowolnego typu konta.

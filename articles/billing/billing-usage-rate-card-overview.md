@@ -20,6 +20,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164979"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Programowe uzyskiwanie wglądu w wykorzystanie sieci Azure przy użyciu interfejsów API rozliczeń w Azure
 Za pomocą interfejsów API usługi Azure rozliczeń pobierania danych użycia i zasobów do narzędziami analizy danych preferowany. API RateCard i użycia zasobów Azure może pomóc dokładnie przewidzieć i zarządzanie nimi kosztów. Interfejsy API są zaimplementowane jako dostawca zasobów i częścią rodziny interfejsach API udostępnianych przez Menedżera zasobów Azure.  

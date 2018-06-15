@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207081"
 ---
 # <a name="actor-events"></a>Zdarzenia aktora
 Zdarzenia aktora umożliwiają wysyłanie powiadomień optymalnych z aktora do klientów. Aktora zdarzeń są przeznaczone dla komunikacji aktora do klienta i nie można używać do komunikacji aktora aktora.

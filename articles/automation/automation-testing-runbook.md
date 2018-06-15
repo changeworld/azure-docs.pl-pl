@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34192102"
 ---
 # <a name="testing-a-runbook-in-azure-automation"></a>Testowanie elementu runbook automatyzacji Azure
 Podczas testowania elementu runbook [wersję roboczą](automation-creating-importing-runbook.md#publishing-a-runbook) jest wykonywany i wykonywane są wszystkie akcje, które wykonuje. Historia zadań nie został utworzony, ale [dane wyjściowe](automation-runbook-output-and-messages.md#output-stream) i [ostrzeżeń i błędów](automation-runbook-output-and-messages.md#message-streams) strumienie są wyświetlane w teście output okienka. Komunikaty [strumień pełny](automation-runbook-output-and-messages.md#message-streams) są wyświetlane w okienku danych wyjściowych tylko wtedy, gdy [zmiennej $VerbosePreference](automation-runbook-output-and-messages.md#preference-variables) jest ustawiona, aby kontynuować.

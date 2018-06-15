@@ -1,11 +1,11 @@
 ---
-title: "Monitoruje stan replikacji usługi Active Directory z Azure Log Analytics | Dokumentacja firmy Microsoft"
-description: "Stan replikacji usługi Active Directory pakiet rozwiązania regularnie monitoruje środowiska usługi Active Directory dla wszelkie błędy replikacji."
+title: Monitoruje stan replikacji usługi Active Directory z Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Stan replikacji usługi Active Directory pakiet rozwiązania regularnie monitoruje środowiska usługi Active Directory dla wszelkie błędy replikacji.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 1b988972-8e01-4f83-a7f4-87f62778f91d
 ms.service: log-analytics
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/13/2018
+ms.locfileid: "29179338"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Monitoruje stan replikacji usługi Active Directory z analizy dzienników
 

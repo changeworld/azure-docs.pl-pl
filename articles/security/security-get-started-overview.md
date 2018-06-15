@@ -1,6 +1,6 @@
 ---
-title: "Przegląd zabezpieczeń platformy Azure | Dokumentacja firmy Microsoft"
-description: "Witryny Microsoft Azure zabezpieczeń informacji w witrynie Azure.com jest Twoje miejsce techniczne odpowiedzi na pytania zabezpieczeń platformy Azure."
+title: Przegląd zabezpieczeń platformy Azure | Dokumentacja firmy Microsoft
+description: Witryny Microsoft Azure zabezpieczeń informacji w witrynie Azure.com jest Twoje miejsce techniczne odpowiedzi na pytania zabezpieczeń platformy Azure.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2017
+ms.locfileid: "25542150"
 ---
 # <a name="azure-security-overview"></a>Przegląd zabezpieczeń platformy Azure
 Witryny Microsoft Azure zabezpieczeń informacji w witrynie Azure.com jest Twoje miejsce techniczne odpowiedzi na pytania zabezpieczeń platformy Azure. Jeśli interesuje Cię zgodności platformy Azure i jak Azure zabezpiecza własnej infrastruktury, odwiedź stronę [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/default.aspx).

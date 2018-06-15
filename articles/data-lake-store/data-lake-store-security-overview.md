@@ -14,9 +14,10 @@ ms.date: 03/26/2018
 ms.author: nitinme
 ms.openlocfilehash: f4014d304d1e0a7d841e797c3e3bdfe31918c151
 ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34198161"
 ---
 # <a name="security-in-azure-data-lake-store"></a>Zabezpieczeń w usłudze Azure Data Lake Store
 Wiele przedsiębiorstw są korzystanie z analizy danych big data szczegółowe informacje biznesowe ułatwić im podejmowanie decyzji inteligentne. Organizacja może mieć środowisko złożone i podlegającymi ochronie, z coraz większa liczba różnych użytkowników. Jest ważne dla organizacji upewnić się, że ważnych danych biznesowych jest bezpieczniejsza, przechowywane z odpowiedniego poziomu udzielono dostępu do poszczególnych użytkowników. Azure Data Lake Store ułatwia spełnia te wymagania dotyczące zabezpieczeń. W tym artykule, więcej informacji na temat funkcji zabezpieczeń w usłudze Data Lake Store, w tym:

@@ -1,12 +1,12 @@
 ---
-title: "Obsługiwane języki w funkcji platformy Azure"
-description: "Dowiedz się, jakie wersje językowe są obsługiwane (GA) i które są eksperymentalne lub w wersji zapoznawczej."
+title: Obsługiwane języki w funkcji platformy Azure
+description: Dowiedz się, jakie wersje językowe są obsługiwane (GA) i które są eksperymentalne lub w wersji zapoznawczej.
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: functions
 ms.devlang: dotnet
 ms.topic: reference
@@ -19,6 +19,7 @@ ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/17/2017
+ms.locfileid: "24879440"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Obsługiwane języki w funkcji platformy Azure
 

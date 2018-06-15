@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212895"
 ---
 # <a name="implementing-service-level-features-in-your-actor-service"></a>Implementowanie funkcji poziomu usług w usłudze aktora
 Zgodnie z opisem w [warstwy usługi](service-fabric-reliable-actors-platform.md#service-layering), sama usługa aktora jest niezawodnej usługi.  Można pisać własne usługi, która pochodzi z `ActorService` i implementowania funkcji poziomu usług w taki sam sposób jak podczas dziedziczenia z klasy StatefulService, takich jak:

@@ -1,20 +1,20 @@
 ---
 title: Wdrażanie aplikacji usługi Azure IoT Central | Microsoft Docs
 description: Utwórz nową aplikację usługi Azure IoT Central do zarządzania urządzeniami do sprzedaży z funkcją chłodzenia. Wyświetl dane telemetryczne generowane z urządzenia symulowanego.
-services: iot-central
-author: tanmaybhagwat
+author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/15/2018
-ms.topic: hero-article
-ms.prod: microsoft-iot-central
+ms.topic: quickstart
+ms.service: iot-central
+services: iot-central
 ms.custom: mvc
-manager: timlt
-ms.openlocfilehash: 54219246f073f48c2a7e1b04dce7653bd2da0b40
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+manager: peterpr
+ms.openlocfilehash: 9a9b9e66995a2945ef95056f2fcbcd59814d08ff
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202377"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630497"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Tworzenie aplikacji usługi Azure IoT Central
 

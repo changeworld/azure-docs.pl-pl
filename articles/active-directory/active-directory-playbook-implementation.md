@@ -19,6 +19,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34068858"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-implementation"></a>Dowód koncepcji podręcznika dotyczącego usługi Azure Active Directory: implementacja
 

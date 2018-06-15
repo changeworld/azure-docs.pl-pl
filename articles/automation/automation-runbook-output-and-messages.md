@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34194254"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Element Runbook danych wyjściowych i komunikatów w usłudze Automatyzacja Azure
 Większość elementów runbook automatyzacji Azure ma dane wyjściowe, np. komunikat o błędzie dla użytkownika lub obiekt złożony przeznaczony do użycia przez inny przepływ pracy. Środowisko Windows PowerShell udostępnia [wiele strumieni](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) do wysyłania danych wyjściowych w skrypcie lub przepływ pracy. Automatyzacja Azure działa z każdym z tych strumieni inaczej, a należy stosować najlepsze rozwiązania dotyczące sposobu używania każdej podczas tworzenia elementu runbook.

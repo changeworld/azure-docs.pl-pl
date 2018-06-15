@@ -20,6 +20,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31792651"
 ---
 # <a name="move-a-vm-classic-or-cloud-services-role-instance-to-a-different-subnet-using-powershell"></a>Maszyna wirtualna (klasyczna) lub usługi w chmurze wystąpienia roli przeniesione do innej podsieci przy użyciu programu PowerShell
 Za pomocą programu PowerShell można przenoszeniu maszyn wirtualnych (klasyczne) z jednej podsieci w tej samej sieci wirtualnej (VNet). Wystąpienia roli można przenieść edytowania pliku CSCFG, zamiast przy użyciu programu PowerShell.

@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157079"
 ---
 # <a name="azure-active-directory-application-manifest"></a>Manifest aplikacji w usłudze Azure Active Directory
 Aplikacje do zintegrowania z usługą Azure AD musi być zarejestrowana w dzierżawie usługi Azure AD. Tę aplikację można skonfigurować przy użyciu manifest aplikacji (w ramach bloku usługi Azure AD) w [portalu Azure](https://portal.azure.com).

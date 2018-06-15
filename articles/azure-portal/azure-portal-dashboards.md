@@ -19,6 +19,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34165353"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Tworzenie i udostępnianie pulpitów nawigacyjnych w portalu Azure
 Można tworzyć wiele pulpitów nawigacyjnych i udostępniać je innym użytkownikom, którzy mają dostęp do Twojej subskrypcji platformy Azure.  W tym artykule przechodzi przez podstawy tworzenia, edytowania, publikowanie i zarządzanie dostępem do pulpitów nawigacyjnych.

@@ -21,6 +21,7 @@ ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34012363"
 ---
 # <a name="log-on-to-a-windows-virtual-machine-using-the-azure-portal"></a>Logowanie do maszyny wirtualnej systemu Windows przy użyciu witryny Azure Portal
 W portalu Azure, użyj **Connect** przycisk, aby rozpocząć sesję pulpitu zdalnego i zaloguj się do maszyny Wirtualnej systemu Windows.

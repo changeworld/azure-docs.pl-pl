@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33937831"
 ---
 # <a name="validate-azure-identity"></a>Zweryfikuj tożsamość platformy Azure 
 Narzędzie sprawdzania gotowości stosu Azure (AzsReadinessChecker), aby sprawdzić, czy usługi Azure Active Directory (Azure AD) jest gotowe do użycia z stosu Azure. Sprawdzanie poprawności rozwiązania tożsamość platformy Azure, przed rozpoczęciem wdrażania stosu Azure.  

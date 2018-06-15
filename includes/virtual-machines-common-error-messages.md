@@ -13,6 +13,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34013940"
 ---
 >[!NOTE]
 > Możesz pozostawić komentarze na tej stronie opinii lub za pomocą [Azure opinii](https://feedback.azure.com/forums/216843-virtual-machines) #azerrormessage znacznika.

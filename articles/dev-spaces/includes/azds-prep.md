@@ -15,6 +15,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34198830"
 ---
 ## <a name="preparing-code-for-docker-and-kubernetes-development"></a>Przygotowywanie kodu dla rozwoju Docker i Kubernetes
 Do tej pory masz aplikacji sieci web podstawowego, który można uruchomić lokalnie. Będzie teraz containerize tworząc zasoby definiujące kontenera i jak będą wdrażać do Kubernetes aplikacji. Jest to łatwo zrobić spacjami deweloperów platformy Azure: 

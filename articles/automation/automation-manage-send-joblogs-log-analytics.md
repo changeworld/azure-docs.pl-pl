@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34194404"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Przekazuj strumienie zadania i stan zadania z automatyzacji do analizy dzienników
 Automatyzacja może wysyłać runbook strumieni zadania stanu i zadania do swojego obszaru roboczego analizy dzienników. Rejestruje zadania i strumieni zadania są widoczne w portalu Azure lub przy użyciu programu PowerShell, dla poszczególnych zadań i to umożliwia wykonywanie prostych dochodzenia. Teraz przy użyciu analizy dzienników można:

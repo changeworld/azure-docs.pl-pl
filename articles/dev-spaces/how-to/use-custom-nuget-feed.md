@@ -16,6 +16,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34199113"
 ---
 #  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>Użyj niestandardowych NuGet źródła danych w miejscu deweloperów platformy Azure
 

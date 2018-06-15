@@ -1,12 +1,12 @@
 ---
-title: "Nawiązać malinowe Pi pakiet Azure IoT | Dokumentacja firmy Microsoft"
-description: "Samouczki przy użyciu środowiska Node.js lub C ułatwiają używanie malina Pi 3 i zdalne monitorowanie rozwiązania pakiet IoT Microsoft Azure IoT Starter Kit. Możliwe jest wybranie samouczek, która symuluje telemetrii, używającą rzeczywistych czujników lub aktualizacje oprogramowania układowego zdalnego, który umożliwia."
-services: 
+title: Nawiązać malinowe Pi pakiet Azure IoT | Dokumentacja firmy Microsoft
+description: Samouczki przy użyciu środowiska Node.js lub C ułatwiają używanie malina Pi 3 i zdalne monitorowanie rozwiązania pakiet IoT Microsoft Azure IoT Starter Kit. Możliwe jest wybranie samouczek, która symuluje telemetrii, używającą rzeczywistych czujników lub aktualizacje oprogramowania układowego zdalnego, który umożliwia.
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/06/2017
+ms.locfileid: "24011791"
 ---
 # <a name="connect-your-microsoft-azure-iot-raspberry-pi-3-starter-kit-to-the-remote-monitoring-solution"></a>Nawiązać połączenie zdalne rozwiązanie monitorowania programu Microsoft Azure IoT malina Pi 3 Starter Kit
 

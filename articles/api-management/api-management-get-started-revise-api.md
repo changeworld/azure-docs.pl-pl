@@ -19,6 +19,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33935168"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Bezpieczne wprowadzanie zmian niepowodujących niezgodności przy użyciu poprawek
 Gdy interfejs API jest gotowy i zaczyna być używany przez deweloperów, zazwyczaj musisz zadbać o to, aby wprowadzać zmiany w interfejsie API i jednocześnie nie przerywać pracy wywołującym interfejs API. Ponadto warto poinformować deweloperów o wprowadzanych zmianach. Możemy to zrobić w usłudze Azure API Management przy użyciu **poprawek**. Aby uzyskać więcej informacji, zobacz [Wersje i poprawki](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/) oraz [Przechowywanie wersji interfejsu API w usłudze Azure API Management](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/).

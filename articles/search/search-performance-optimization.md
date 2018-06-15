@@ -14,6 +14,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31797768"
 ---
 # <a name="azure-search-performance-and-optimization-considerations"></a>Azure zagadnienia wydajności i optymalizacji wyszukiwania
 Wyszukiwanie dużą jest kluczem do powodzenia dla wielu urządzeń przenośnych i aplikacji sieci web. Z nieruchomości używane rynków samochodu online wykazów szybkiego wyszukiwania i odpowiednie wyniki będzie miało wpływ na wrażenia użytkowników. Ten dokument jest przeznaczony pomocy odnajdywanie obsługę najlepsze rozwiązania dotyczące sposobu uzyskania maksymalne wykorzystanie usługi Azure Search, szczególnie w przypadku zaawansowanych scenariuszy z zaawansowanymi wymaganiami skalowalności, obsługi wielu języków lub niestandardowych klasyfikacji.  Ponadto ten dokument przedstawia ustawienia wewnętrzne i obejmuje metodami działał efektywnie w aplikacjach rzeczywistych klientów.

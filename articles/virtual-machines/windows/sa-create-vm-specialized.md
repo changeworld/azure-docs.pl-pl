@@ -21,6 +21,7 @@ ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34012713"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Utwórz maszynę Wirtualną z wirtualnego dysku twardego specjalne konta magazynu
 

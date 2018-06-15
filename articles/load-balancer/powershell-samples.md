@@ -20,6 +20,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32182472"
 ---
 # <a name="azure-powershell-samples-for-load-balancer"></a>Przykłady programu Azure PowerShell dla usługi równoważenia obciążenia
 

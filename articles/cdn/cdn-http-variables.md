@@ -19,6 +19,7 @@ ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011462"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Zmienne HTTP dla aparatu reguł Azure CDN
 Zmienne HTTP pozwalają, za pomocą którego można pobrać metadanych żądań i odpowiedzi HTTP. Następnie można użyć tego metadanych dynamicznie zmieniać żądania lub odpowiedzi. Użycie zmiennych HTTP jest ograniczone do następujących funkcji aparatu reguł:

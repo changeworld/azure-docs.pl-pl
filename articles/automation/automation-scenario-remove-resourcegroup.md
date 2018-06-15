@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34194524"
 ---
 # <a name="azure-automation-scenario---automate-removal-of-resource-groups"></a>Scenariusz użycia usługi Azure Automation — automatyczne usuwanie grup zasobów
 Wielu klientów tworzy więcej niż jedną grupę zasobów. Niektóre grupy mogą służyć do zarządzania aplikacjami produkcyjnymi, a inne mogą być używane jako środowiska rozwojowe, testowe lub przejściowe. Automatyzacja wdrażania tych zasobów to jedno, ale wymagane jest również zapewnienie możliwości łatwej likwidacji grupy zasobów. To typowe zadanie zarządzania można uprościć przy użyciu usługi Azure Automation. Przydaje się to w przypadku korzystania z subskrypcji platformy Azure z limitem wydatków w ramach takich ofert jak MSDN lub program Microsoft Partner Network Cloud Essentials.

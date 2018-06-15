@@ -15,6 +15,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33866356"
 ---
 # <a name="choose-the-azure-multi-factor-authentication-solution-for-you"></a>Wybieranie odpowiedniego rozwiązania usługi Azure Multi-Factor Authentication
 Istnieje kilka typów usługi Azure Multi-Factor Authentication (MFA), dlatego należy udzielić odpowiedzi na kilka pytań, aby wybrać właściwą wersję tej usługi.  Oto te pytania:

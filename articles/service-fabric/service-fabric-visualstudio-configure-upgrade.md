@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211654"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Konfigurowanie uaktualnienia aplikacji usługi Service Fabric w programie Visual Studio
 Visual Studio tools dla sieci szkieletowej usług Azure zapewniają obsługę uaktualnienia publikowanie do klastrów lokalnym lub zdalnym. Istnieją trzy scenariusze, w których ma zostać uaktualniony do nowszej wersji zamiast zastępowania aplikacji podczas testowania i debugowania aplikacji:

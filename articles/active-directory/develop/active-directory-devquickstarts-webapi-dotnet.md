@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34158292"
 ---
 # <a name="azure-ad-net-web-api-getting-started"></a>Azure AD .NET interfejsu API sieci Web wprowadzenie
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]

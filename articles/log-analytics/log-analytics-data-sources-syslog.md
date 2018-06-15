@@ -19,6 +19,7 @@ ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011098"
 ---
 # <a name="syslog-data-sources-in-log-analytics"></a>SYSLOG źródeł danych w analizy dzienników
 SYSLOG to protokół rejestrowania zdarzeń jest wspólny dla systemu Linux.  Aplikacje będą wysyłać wiadomości, które mogą być przechowywane na komputerze lokalnym lub dostarczone do modułu zbierającego Syslog.  Po zainstalowaniu Agent pakietu OMS dla systemu Linux, konfiguruje lokalnego demon Syslog do przekazywania wiadomości do agenta.  Agent wysyła następnie komunikat do analizy dzienników, w którym odpowiedni rekord jest tworzony w repozytorium OMS.  

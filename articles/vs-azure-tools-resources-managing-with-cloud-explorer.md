@@ -16,6 +16,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31794076"
 ---
 # <a name="manage-the-resources-associated-with-your-azure-accounts-in-visual-studio-cloud-explorer"></a>Zarządzanie zasobami skojarzone z konta platformy Azure w Visual Studio Cloud Explorer
 Eksplorator chmury umożliwia wyświetlanie Twoich zasobów platformy Azure i grup zasobów, sprawdzić ich właściwości i akcje developer klucza diagnostycznych z poziomu programu Visual Studio. 

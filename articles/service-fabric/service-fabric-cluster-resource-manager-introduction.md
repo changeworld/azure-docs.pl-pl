@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34210600"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Wprowadzenie do Menedżera zasobów klastra sieci szkieletowej usług
 Tradycyjnie zarządzania systemów informatycznych lub usługi online przeznaczone przypisywanie określonych fizycznych lub maszynach wirtualnych do tych określonych usług lub systemów. Usługi zostały zaprojektowane pod jako warstw. Może to być warstwy "web" i "dane" lub "Magazyn" warstwy. Aplikacje byłyby warstwy obsługi wiadomości, gdzie żądania przepływ i wylogowanie, a także zestaw maszyn dedykowane do buforowania. Każdej warstwa lub typ obciążenia miała określone maszyny do niego w wersji dedykowanej: kilka maszyn w wersji dedykowanej, serwery sieci web w kilku otrzymano bazy danych. Jeśli konkretny typ obciążenie spowodowane maszyny, służący do Uruchom zbyt gorących więcej komputerów w tej samej konfiguracji jest dodawana do tej warstwy. Jednak nie wszystkie obciążenia może być skalowana w poziomie tak łatwe — szczególnie z warstwą danych zwykle spowodowałoby zastąpienie maszyn o większych maszyn. Łatwe. Maszyna nie powiodło się, część ogólnej aplikacji był uruchamiany na mniejsze zdolności dopóki komputer może zostać przywrócona. Nadal dość proste (o ile nie zawsze przyjemne).

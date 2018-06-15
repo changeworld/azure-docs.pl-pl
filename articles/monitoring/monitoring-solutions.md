@@ -16,9 +16,10 @@ ms.date: 04/20/2018
 ms.author: bwren
 ms.openlocfilehash: 0df54d1758693bce5fb5fd74c3be9c4cfd7dccb6
 ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33885272"
 ---
 # <a name="management-solutions-in-azure"></a>Rozwiązania do zarządzania na platformie Azure
 Rozwiązania do zarządzania korzystać z usług Azure, aby zapewnić dodatkowy wgląd w funkcjonowanie określonej aplikacji lub usługi. Ten artykuł zawiera krótki przegląd rozwiązań do zarządzania Azure i uzyskać szczegółowe informacje na i ich instalowania.
