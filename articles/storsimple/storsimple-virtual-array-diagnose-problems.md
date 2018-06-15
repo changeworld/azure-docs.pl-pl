@@ -1,11 +1,11 @@
 ---
-title: "Rozwiązywanie problemów z tablicy wirtualnego StorSimple | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano Menedżera urządzeń StorSimple diagnozowanie możliwości i wyjaśniono, jak użyć go w celu rozwiązania tablica wirtualnego StorSimple."
+title: Rozwiązywanie problemów z tablicy wirtualnego StorSimple | Dokumentacja firmy Microsoft
+description: W tym artykule opisano Menedżera urządzeń StorSimple diagnozowanie możliwości i wyjaśniono, jak użyć go w celu rozwiązania tablica wirtualnego StorSimple.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: manuaery
 manager: syadav
-editor: 
+editor: ''
 ms.assetid: 53f57d17-07af-457f-a0e8-741e52fbbc2a
 ms.service: storsimple
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875256"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>Rozwiązywanie problemów z tablicy wirtualnego StorSimple przy użyciu usługi Menedżer StorSimple urządzenia
 ## <a name="overview"></a>Omówienie

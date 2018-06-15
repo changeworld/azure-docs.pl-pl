@@ -1,11 +1,11 @@
 ---
-title: "Resetowanie bramy sieci VPN platformy Azure, aby ponownie ustanowić tuneli IPsec | Dokumentacja firmy Microsoft"
-description: "W tym artykule przedstawiono Resetowanie bramy sieci VPN platformy Azure, aby ponownie ustanowić tuneli IPsec. Artykuł dotyczy bram sieci VPN w klasycznym i modeli wdrażania Menedżera zasobów."
+title: Resetowanie bramy sieci VPN platformy Azure, aby ponownie ustanowić tuneli IPsec | Dokumentacja firmy Microsoft
+description: W tym artykule przedstawiono Resetowanie bramy sieci VPN platformy Azure, aby ponownie ustanowić tuneli IPsec. Artykuł dotyczy bram sieci VPN w klasycznym i modeli wdrażania Menedżera zasobów.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 79d77cb8-d175-4273-93ac-712d7d45b1fe
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23884552"
 ---
 # <a name="reset-a-vpn-gateway"></a>Resetowanie bramy VPN Gateway
 
