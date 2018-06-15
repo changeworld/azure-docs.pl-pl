@@ -1,8 +1,8 @@
 ---
-title: "Jak Generowanie i przenoszenie kluczy chronionych modułem HSM dla usługi Azure Key Vault | Dokumentacja firmy Microsoft"
-description: "Użyj w tym artykule, aby ułatwić planowanie, generowanie, a następnie przenieść własne klucze chronione przez moduł HSM do użycia z usługą Azure Key Vault. Znany również jako BYOK lub własnego klucza."
+title: Jak Generowanie i przenoszenie kluczy chronionych modułem HSM dla usługi Azure Key Vault | Dokumentacja firmy Microsoft
+description: Użyj w tym artykule, aby ułatwić planowanie, generowanie, a następnie przenieść własne klucze chronione przez moduł HSM do użycia z usługą Azure Key Vault. Znany również jako BYOK lub własnego klucza.
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26345115"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Jak Generowanie i przenoszenie chronionego przez moduł HSM kluczy dla usługi Azure Key Vault
 ## <a name="introduction"></a>Wprowadzenie

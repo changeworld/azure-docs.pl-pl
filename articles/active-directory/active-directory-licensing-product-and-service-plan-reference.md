@@ -1,13 +1,13 @@
 ---
-title: "Produkty i usługi Planowanie identyfikatory Licencjonowanie w usłudze Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Identyfikator mapy w celu zarządzania licencjonowania usługi Azure AD w portalu Azure, portalu usługi Office 365, programu PowerShell lub programu Microsoft Graph"
+title: Produkty i usługi Planowanie identyfikatory Licencjonowanie w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Identyfikator mapy w celu zarządzania licencjonowania usługi Azure AD w portalu Azure, portalu usługi Office 365, programu PowerShell lub programu Microsoft Graph
 services: active-directory
-keywords: "Usługa Azure Active Directory planów usługi licencjonowania"
-documentationcenter: 
+keywords: Usługa Azure Active Directory planów usługi licencjonowania
+documentationcenter: ''
 author: piotrci
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26609331"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Produkty i usługi identyfikatory planu licencjonowania
 

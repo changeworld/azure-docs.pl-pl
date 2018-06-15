@@ -1,9 +1,9 @@
 ---
-title: "Opis roamingu stanu przedsiębiorstwa | Dokumentacja firmy Microsoft"
-description: "Zawiera informacje dotyczące ustawień roamingu stanu przedsiębiorstwa na urządzeniach z systemem Windows. Roamingu stanu przedsiębiorstwa udostępnia użytkownikom środowisko unified na ich urządzeniach z systemem Windows i skraca czas potrzebny na konfigurowanie nowego urządzenia."
+title: Opis roamingu stanu przedsiębiorstwa | Dokumentacja firmy Microsoft
+description: Zawiera informacje dotyczące ustawień roamingu stanu przedsiębiorstwa na urządzeniach z systemem Windows. Roamingu stanu przedsiębiorstwa udostępnia użytkownikom środowisko unified na ich urządzeniach z systemem Windows i skraca czas potrzebny na konfigurowanie nowego urządzenia.
 services: active-directory
-keywords: "Co to jest roamingu stanu przedsiębiorstwa, synchronizacji przedsiębiorstwa systemu windows w chmurze"
-documentationcenter: 
+keywords: Co to jest roamingu stanu przedsiębiorstwa, synchronizacji przedsiębiorstwa systemu windows w chmurze
+documentationcenter: ''
 author: tanning
 manager: mtillman
 editor: curtand
@@ -17,9 +17,10 @@ ms.date: 03/08/2017
 ms.author: markvi
 ms.openlocfilehash: 2e1ebf5a9bfc4a1f0f92ff85f9406ecc7d538819
 ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26614953"
 ---
 # <a name="enterprise-state-roaming-overview"></a>Omówienie roamingu stanu przedsiębiorstwa
 Z systemem Windows 10 [usługi Azure Active Directory (Azure AD)](active-directory-whatis.md) użytkownikom możliwość bezpiecznego synchronizowanie ich ustawień i danych ustawienia aplikacji w chmurze. Roamingu stanu przedsiębiorstwa udostępnia użytkownikom środowisko unified na ich urządzeniach z systemem Windows i skraca czas potrzebny na konfigurowanie nowego urządzenia. Roamingu stanu przedsiębiorstwa działa podobnie do standardowego [konsumenta ustawienia synchronizacji](http://windows.microsoft.com/en-US/windows-8/sync-settings-pcs) która została wprowadzona w systemie Windows 8. Ponadto roamingu stanu przedsiębiorstwa oferuje:

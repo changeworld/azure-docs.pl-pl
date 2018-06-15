@@ -1,9 +1,9 @@
 ---
-title: "Zarządzanie ustawieniami weryfikacji dwuetapowej | Dokumentacja firmy Microsoft"
-description: "Zarządzanie, jak używasz usługi Azure Multi-Factor Authentication, włącznie ze zmianami swoje informacje kontaktowe i konfigurowanie urządzenia."
+title: Zarządzanie ustawieniami weryfikacji dwuetapowej | Dokumentacja firmy Microsoft
+description: Zarządzanie, jak używasz usługi Azure Multi-Factor Authentication, włącznie ze zmianami swoje informacje kontaktowe i konfigurowanie urządzenia.
 services: multi-factor-authentication
-keywords: "Klient uwierzytelniania wieloskładnikowego, problem z uwierzytelnianiem, identyfikator korelacji"
-documentationcenter: 
+keywords: Klient uwierzytelniania wieloskładnikowego, problem z uwierzytelnianiem, identyfikator korelacji
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: richagi
@@ -21,6 +21,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26626661"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>Zarządzanie ustawieniami na potrzeby weryfikacji dwuetapowej
 W tym artykule odpowiedzi na pytania o tym, jak można zaktualizować ustawień uwierzytelnianie dwuetapowe weryfikacji lub Multi-Factor. Jeśli występują problemy dotyczące logowania do konta, dotyczą [wystąpił problem w trakcie weryfikacji dwuetapowej](multi-factor-authentication-end-user-troubleshoot.md) dla pomocy w rozwiązywaniu problemów.

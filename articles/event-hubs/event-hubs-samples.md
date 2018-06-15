@@ -1,12 +1,12 @@
 ---
-title: "Przykładów dla platformy Azure Event Hubs | Dokumentacja firmy Microsoft"
-description: "Przykładów dla platformy Azure Event Hubs"
+title: Przykładów dla platformy Azure Event Hubs | Dokumentacja firmy Microsoft
+description: Przykładów dla platformy Azure Event Hubs
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29802791"
 ---
 # <a name="event-hubs-samples"></a>Przykłady centra zdarzeń 
 
