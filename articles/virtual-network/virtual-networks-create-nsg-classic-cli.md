@@ -20,6 +20,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31792481"
 ---
 # <a name="create-a-network-security-group-classic-using-the-azure-cli-10"></a>Tworzenie grupy zabezpieczeń sieci (wdrożenia klasyczne) przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]

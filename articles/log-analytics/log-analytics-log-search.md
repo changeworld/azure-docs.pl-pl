@@ -1,11 +1,11 @@
 ---
 title: Zaloguj wyszukiwanie Azure Log Analytics | Dokumentacja firmy Microsoft
-description: "Wymagane jest wyszukiwania dziennika, aby pobrać wszystkie dane z analizy dzienników.  W tym artykule opisano sposób nowy dziennik wyszukiwania są używane w analizy dzienników i zapewnia pojęcia, które należy zrozumieć przed utworzeniem jeden."
+description: Wymagane jest wyszukiwania dziennika, aby pobrać wszystkie dane z analizy dzienników.  W tym artykule opisano sposób nowy dziennik wyszukiwania są używane w analizy dzienników i zapewnia pojęcia, które należy zrozumieć przed utworzeniem jeden.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29953315"
 ---
 # <a name="understanding-log-searches-in-log-analytics"></a>Opis wyszukiwania dziennika analizy dzienników
 

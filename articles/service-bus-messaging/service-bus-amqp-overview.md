@@ -1,11 +1,11 @@
 ---
-title: "Omówienie protokołu AMQP 1.0 w usłudze Azure Service Bus | Dokumentacja firmy Microsoft"
-description: "Informacje o używaniu zaawansowane komunikatów usługi kolejkowania wiadomości protokołu (AMQP) 1.0 na platformie Azure."
+title: Omówienie protokołu AMQP 1.0 w usłudze Azure Service Bus | Dokumentacja firmy Microsoft
+description: Informacje o używaniu zaawansowane komunikatów usługi kolejkowania wiadomości protokołu (AMQP) 1.0 na platformie Azure.
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0e8d19cc-de36-478e-84ae-e089bbc2d515
 ms.service: service-bus-messaging
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28926601"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Obsługa protokołu AMQP 1.0 w usłudze Service Bus
 Zarówno usługa w chmurze Azure Service Bus, jak i dla lokalnego [Usługa Service Bus dla systemu Windows Server (Service Bus 1.1)](https://msdn.microsoft.com/library/dn282144.aspx) obsługuje zaawansowane komunikatów usługi kolejkowania protokołu (protokół AMQP) 1.0. Protokół AMQP umożliwia tworzenie wielu platform, hybrydowych aplikacji przy użyciu standardowego protokołu zapewniającego otwarte. Można utworzyć aplikacji przy użyciu składników, które są tworzone przy użyciu różnych języków i struktur, które działają w różnych systemach operacyjnych. Wszystkie te składniki mogą połączenia usługi Service Bus i bezproblemowo wymiany wiadomości biznesowych strukturalnych, wydajne i w pełnej rozdzielczości.

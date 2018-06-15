@@ -19,6 +19,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31789211"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integracja aplikacji z sieci wirtualnej platformy Azure
 Ten dokument zawiera opis funkcji integracji sieci wirtualnej Azure App Service i pokazuje, jak je skonfigurować przy użyciu aplikacji w [usłudze Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). Jeśli znasz sieci wirtualnych Azure (sieci wirtualne), jest możliwość, która pozwala umieszczać wiele zasobów platformy Azure w kontroli dostępu do sieci routeable z systemem innym niż internet. Te sieci mogą być następnie połączone z sieciami lokalnymi przy użyciu różnych technologii sieci VPN. Aby dowiedzieć się więcej o sieciach wirtualnych platformy Azure, należy uruchomić z informacjami w tym miejscu: [omówienie sieci wirtualnych Azure][VNETOverview]. 

@@ -18,6 +18,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33790685"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Ochrona programu HLS zawartości z FairPlay firmy Apple lub Microsoft PlayReady
 Usługa Azure Media Services umożliwia dynamicznego szyfrowania zawartości HTTP Live Streaming (HLS) przy użyciu następujących formatów:  

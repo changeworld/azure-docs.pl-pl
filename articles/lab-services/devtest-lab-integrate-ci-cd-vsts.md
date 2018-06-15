@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33787668"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-vsts-continuous-integration-and-delivery-pipeline"></a>Integrowanie Azure DevTest Labs programu VSTS ciągłej integracji i dostarczania potoku
 Można użyć *Azure DevTest Labs zadania* rozszerzenia zainstalowanego w Visual Studio Team Services (VSTS) można łatwo zintegrować planowaną kompilacji i wersji elementu konfiguracji/CD z Azure DevTest Labs. Rozszerzenie instaluje trzech zadań: 

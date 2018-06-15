@@ -1,12 +1,12 @@
 ---
-title: "Obramowanie łączności sieciowej integracji zagadnienia dotyczące stosu Azure zintegrowanych systemów | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zaplanować łączności sieciowej obramowania centrum danych z wieloma węzłami Azure stosu."
+title: Obramowanie łączności sieciowej integracji zagadnienia dotyczące stosu Azure zintegrowanych systemów | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zaplanować łączności sieciowej obramowania centrum danych z wieloma węzłami Azure stosu.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28919438"
 ---
 # <a name="border-connectivity"></a>Łączność obramowania 
 Planowanie integracji sieci jest wstępnym ważne dla pomyślnego stosu Azure zintegrowanych systemów wdrożenie operacji i zarządzania. Planowanie łączności obramowania rozpoczyna się przez wybranie, czy należy korzystać z routingu dynamicznego z protokołu border gateway protocol (BGP). Wymaga to przypisywanie 16-bitowy numer systemu autonomicznego BGP (publicznej lub prywatnej) lub przy użyciu routingu statycznego, gdy domyślna trasa statyczna jest przypisany do urządzeń obramowania.

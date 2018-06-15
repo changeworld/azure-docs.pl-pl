@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788858"
 ---
 # <a name="implement-failover-streaming-with-azure-media-services"></a>Implementowanie trybu failover przesyłania strumieniowego w usłudze Azure Media Services
 

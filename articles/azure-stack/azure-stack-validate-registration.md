@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33937842"
 ---
 # <a name="validate-azure-registration"></a>Sprawdź poprawność rejestracja w usłudze Azure 
 Narzędzie sprawdzania gotowości stosu Azure (AzsReadinessChecker), aby sprawdzić, czy Twoja subskrypcja platformy Azure jest gotowe do użycia z stosu Azure. Sprawdzanie poprawności rejestracji, przed rozpoczęciem wdrażania stosu Azure. Narzędzie sprawdzania gotowości weryfikuje:

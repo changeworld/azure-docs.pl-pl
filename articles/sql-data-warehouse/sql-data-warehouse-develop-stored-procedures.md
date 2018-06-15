@@ -15,6 +15,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32774662"
 ---
 # <a name="using-stored-procedures-in-sql-data-warehouse"></a>Korzystanie z procedur składowanych w magazynie danych SQL
 Wskazówki dotyczące implementowania procedur przechowywanych w usłudze Azure SQL Data Warehouse związane z opracowywaniem rozwiązań.

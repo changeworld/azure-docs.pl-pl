@@ -19,6 +19,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32771875"
 ---
 # <a name="azure-dns-private-zones-scenarios"></a>Scenariusze stref DNS prywatnego Azure
 Strefy DNS prywatnego Azure zapewniają rozpoznawania nazw w sieci wirtualnej również między sieciami wirtualnymi. W tym artykule opisano kilka typowych scenariuszy, które mogą być realizowana za pomocą tej funkcji. 

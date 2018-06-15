@@ -20,6 +20,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31790767"
 ---
 # <a name="create-a-virtual-network-classic-by-using-the-azure-cli"></a>Tworzenie sieci wirtualnej (wdrożenia klasyczne) przy użyciu wiersza polecenia platformy Azure
 [!INCLUDE [virtual-networks-create-vnet-selectors-classic-include](../../includes/virtual-networks-create-vnet-selectors-classic-include.md)]

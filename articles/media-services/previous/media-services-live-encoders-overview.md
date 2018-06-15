@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788172"
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>Jak skonfigurować koderów lokalnych przy użyciu usługi Azure Media Services do tworzenia strumieni o wielokrotnej szybkości transmisji bitów
 W tym temacie wymieniono lokalnymi koderów na żywo, które służy do przechwytywania zdarzeń na żywo i wysyłać strumień na żywo pojedynczej szybkości transmisji bitów do AMS kanały (włączyć kodowanie na żywo) dla dalszego przetwarzania. Temat zawiera również linki do samouczków demonstrujących do konfigurowania wymienionych koderów.

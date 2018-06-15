@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788739"
 ---
 # <a name="content-protection-overview"></a>Omówienie ochrony zawartości
  Usługi Azure Media Services służy do zabezpieczania od momentu, gdy opuszczą komputera za pośrednictwem przechowywania, przetwarzania i dostarczania multimediów. Z usługi Media Services można dostarczania zawartości na żywo i na żądanie dynamicznie szyfrowany za pomocą Advanced Encryption Standard (AES-128) lub jeden z trzech głównych prawami cyfrowymi systemów zarządzania (prawami cyfrowymi DRM): Microsoft PlayReady, Google Widevine i FairPlay firmy Apple. Usługa Media Services udostępnia usługę dostarczania kluczy AES i DRM (PlayReady, Widevine i FairPlay) licencji do autoryzowanych klientów. 

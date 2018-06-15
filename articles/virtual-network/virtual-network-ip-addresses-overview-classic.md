@@ -20,6 +20,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31798210"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Typy adresów IP i metod alokacji (klasyczne) na platformie Azure
 Do zasobów platformy Azure można przypisać adresy IP w celu komunikowania się z innymi zasobami platformy Azure, siecią lokalną i Internetem. Istnieją dwa typy adresów IP można używać w Azure: prywatnych i publicznych.

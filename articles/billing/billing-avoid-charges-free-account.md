@@ -19,6 +19,7 @@ ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/04/2018
+ms.locfileid: "33207446"
 ---
 # <a name="avoid-getting-charged-for-your-azure-free-account"></a>Unikaj pobieranie opłaty łączone zgodnie z bezpłatne konto platformy Azure
 

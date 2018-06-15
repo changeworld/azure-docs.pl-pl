@@ -18,6 +18,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788557"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Zarządzanie nośnikiem usług zasobów przez wiele kont magazynu
 Począwszy od programu Microsoft Azure Media Services 2.2, można dołączyć wiele kont magazynu do jednego konta usługi Media Services. Możliwość dołączyć wiele kont magazynu do konta usługi Media Services zapewnia następujące korzyści:

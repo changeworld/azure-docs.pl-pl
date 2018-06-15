@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33787591"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Dołączanie lub odłączanie dysku danych do maszyny wirtualnej w usłudze Azure DevTest Labs
 [Azure dysków zarządzanych](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) zarządza konta magazynu skojarzone z dysków danych maszyny wirtualnej. Dołącza użytkownika, nowe dane na dysku do maszyny Wirtualnej, określa typ i rozmiar dysku, które ma potrzebne, a Azure tworzy i automatycznie zarządza dysku. Dysk z danymi można następnie można odłączyć od maszyny Wirtualnej i ponownie albo nałożona do tej samej maszyny Wirtualnej lub dołączone do innej maszyny Wirtualnej, który należy do tego samego użytkownika.

@@ -56,8 +56,6 @@
     - name: Zabezpieczenia IaaS
       href: security-virtual-machines-overview.md
       items:
-        - name: Najlepsze rozwiązania — maszyny wirtualne platformy Azure
-          href: azure-security-best-practices-vms.md
         - name: Najlepsze rozwiązania — obciążenia IaaS
           href: azure-security-iaas.md
         - name: Obrazy z witryny Azure Marketplace
