@@ -20,6 +20,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30317042"
 ---
 # <a name="get-started-with-the-batch-sdk-for-python"></a>Wprowadzenie do zestawu SDK usługi Batch dla języka Python
 

@@ -2,29 +2,26 @@
 title: Tworzenie wyzwalacza HTTP przy użyciu powiązania danych wejściowych usługi Azure Cosmos DB
 description: Dowiedz się, jak używać usługi Azure Functions z wyzwalaczami HTTP do tworzenia zapytań względem usługi Azure Cosmos DB.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 85a9e66491513b016380913617d8e78cf5d82f6d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3ea102d56df1e47fd1d1c35bd23a3e987fa45145
+ms.sourcegitcommit: 00e875607372517b4b93ca4b6baa915cbbad8064
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34818903"
 ---
 # <a name="create-an-azure-functions-http-trigger-with-an-azure-cosmos-db-input-binding"></a>Tworzenie wyzwalacza HTTP usługi Azure Functions przy użyciu powiązania danych wejściowych usługi Azure Cosmos DB
 
 Azure Cosmos DB to globalnie dystrybuowana, wielomodelowa baza danych, która nie korzysta ze schematów ani serwerów. Azure Functions to bezserwerowa usługa obliczeniowa, która umożliwia uruchamianie kodu na żądanie. Połączenie tych dwóch usług platformy Azure zapewnia podstawę dla architektury bezserwerowej, która pozwala skupić się na tworzeniu atrakcyjnych aplikacji, nie zajmując się aprowizacją i konserwacją serwerów związaną z potrzebami dotyczącymi obliczeń i bazy danych.
 
-Ten samouczek opiera się na kodzie utworzonym w temacie [Przewodnik Szybki start dotyczący interfejsu API dla platformy .NET](create-graph-dotnet.md). W tym samouczku opisano sposób dodawania funkcji platformy Azure, która zawiera [wyzwalacz HTTP](https://github.com/MicrosoftDocs/azure-docs-pr/azure-functions/functions-bindings-http-webhook.md#http-trigger). Wyzwalacz HTTP używa [powiązania danych wejściowych](https://github.com/MicrosoftDocs/azure-docs-pr/azure-functions/functions-triggers-bindings.md) usługi Azure Cosmos DB do pobierania danych z bazy danych programu Graph utworzonej w ramach tego przewodnika Szybki start. Ten konkretny wyzwalacz HTTP służy do wykonywania zapytań względem usługi Azure Cosmos DB dotyczących danych, ale powiązań danych wejściowych z bazy danych usługi Azure Cosmos DB można użyć do pobierania wartości danych wejściowych, gdy jest to wymagane przez funkcję.
+Ten samouczek opiera się na kodzie utworzonym w temacie [Przewodnik Szybki start dotyczący interfejsu API dla platformy .NET](create-graph-dotnet.md). W tym samouczku opisano sposób dodawania funkcji platformy Azure, która zawiera [wyzwalacz HTTP](../azure-functions/functions-bindings-http-webhook.md). Wyzwalacz HTTP używa [powiązania danych wejściowych](../azure-functions/functions-triggers-bindings.md) usługi Azure Cosmos DB do pobierania danych z bazy danych programu Graph utworzonej w ramach tego przewodnika Szybki start. Ten konkretny wyzwalacz HTTP służy do wykonywania zapytań względem usługi Azure Cosmos DB dotyczących danych, ale powiązań danych wejściowych z bazy danych usługi Azure Cosmos DB można użyć do pobierania wartości danych wejściowych, gdy jest to wymagane przez funkcję.
 
 Ten samouczek obejmuje następujące zadania:
 

@@ -3,7 +3,7 @@ title: Schemat języka definicji przepływu pracy — usługi Azure Logic Apps |
 description: Zapisać definicji niestandardowego przepływu pracy dla usługi Azure Logic Apps język definicji przepływu pracy
 services: logic-apps
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 editor: ''
 documentationcenter: ''
 ms.assetid: 26c94308-aa0d-4730-97b6-de848bffff91
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 04/30/2018
 ms.author: estfan
-ms.openlocfilehash: efbfffec10b665ebab230375e774e476199c4ad5
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: MT
+ms.openlocfilehash: 6a4e113c6816540e303210c3f1c96d81146cf5db
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33886813"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300185"
 ---
 # <a name="logic-apps-workflow-definitions-with-the-workflow-definition-language-schema"></a>Definicji przepływu pracy aplikacji logiki ze schematem język definicji przepływu pracy
 
@@ -409,7 +409,7 @@ Aby uzyskać pełną dokumentację dotyczące każdej funkcji, zobacz [artykułu
 
 <a name="workflow-functions"></a>
 
-### <a name="workflow-functions"></a>Funkcje przepływu pracy
+### <a name="workflow-functions"></a>Funkcje przepływów pracy
 
 Te funkcje przepływu pracy można:
 
