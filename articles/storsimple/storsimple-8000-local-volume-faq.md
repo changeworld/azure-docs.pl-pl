@@ -1,12 +1,12 @@
 ---
-title: "Woluminy często zadawane pytania dotyczące przypięty lokalnie StorSimple | Dokumentacja firmy Microsoft"
-description: "Zawiera odpowiedzi na często zadawane pytania dotyczące woluminów StorSimple przypięty lokalnie."
+title: Woluminy często zadawane pytania dotyczące przypięty lokalnie StorSimple | Dokumentacja firmy Microsoft
+description: Zawiera odpowiedzi na często zadawane pytania dotyczące woluminów StorSimple przypięty lokalnie.
 services: storsimple
 documentationcenter: NA
 author: manuaery
 manager: syadav
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875592"
 ---
 # <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>Woluminy przypięte lokalnie StorSimple: często zadawane pytania (FAQ)
 ## <a name="overview"></a>Omówienie
@@ -161,7 +162,7 @@ Więcej informacji na temat sposobu [Konwertowanie woluminu warstwowego na wolum
 
 **PYTANIE** Typ woluminu można zmienić podczas przywracania?
 
-**A.**nie, nie można zmienić typu woluminu podczas przywracania.
+**A.** nie, nie można zmienić typu woluminu podczas przywracania.
 
 * Woluminy, które zostały usunięte zostaną przywrócone jako typ przechowywane w migawce.
 * Istniejące woluminy są przywracane na podstawie ich bieżącego typu, niezależnie od typu przechowywanych w migawce (zobacz poprzednie dwa pytania).

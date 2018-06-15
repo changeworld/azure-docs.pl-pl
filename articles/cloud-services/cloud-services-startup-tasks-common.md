@@ -1,11 +1,11 @@
 ---
-title: "Typowe zadania uruchamiania usługi w chmurze | Dokumentacja firmy Microsoft"
-description: "Niektóre przykłady typowych zadań uruchomienia, które można wykonywać w roli sieci web usługi w chmurze lub roli proces roboczy."
+title: Typowe zadania uruchamiania usługi w chmurze | Dokumentacja firmy Microsoft
+description: Niektóre przykłady typowych zadań uruchomienia, które można wykonywać w roli sieci web usługi w chmurze lub roli proces roboczy.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a7095dad-1ee7-4141-bc6a-ef19a6e570f1
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23843700"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Typowe zadania uruchamiania usługi w chmurze
 Ten artykuł zawiera kilka przykładów typowych zadań uruchomienia, które można wykonywać w usłudze w chmurze. Zadania uruchamiania służy do wykonywania operacji przed rozpoczęciem roli. Operacje, które można wykonać to instalowania składnika, rejestrowanie składników modelu COM, ustawienie kluczy rejestru lub uruchamia proces wymagającą dużo czasu. 

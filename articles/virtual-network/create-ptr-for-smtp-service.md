@@ -1,11 +1,11 @@
 ---
 title: Konfigurowanie strefy wyszukiwania wstecznego sprawdzanie transparent SMTP na platformie Azure | Dokumentacja firmy Microsoft
-description: "Opisuje sposób konfigurowania strefy wyszukiwania wstecznego sprawdzanie transparent SMTP na platformie Azure"
+description: Opisuje sposób konfigurowania strefy wyszukiwania wstecznego sprawdzanie transparent SMTP na platformie Azure
 services: virtual-network
 documentationcenter: virtual-network
 author: genlin
 manager: WillChen
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-network
 ms.devlang: na
@@ -14,12 +14,13 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 02/06/2018
 ms.author: genli
-ms.custom: 
+ms.custom: ''
 ms.openlocfilehash: 1e95b00ea08105238a860265e46275c24ed7bfbd
 ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/11/2018
+ms.locfileid: "29151873"
 ---
 #  <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>Konfigurowanie strefy wyszukiwania wstecznego sprawdzanie transparent SMTP
 

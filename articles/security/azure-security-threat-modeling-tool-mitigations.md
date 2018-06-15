@@ -1,6 +1,6 @@
 ---
-title: "Środki zaradcze — narzędzie Microsoft Threat modelowania - Azure | Dokumentacja firmy Microsoft"
-description: "Środki zaradcze strony Microsoft Threat modelowania narzędzia wyróżnianie możliwych rozwiązań najbardziej narażonych generowane zagrożeń."
+title: Środki zaradcze — narzędzie Microsoft Threat modelowania - Azure | Dokumentacja firmy Microsoft
+description: Środki zaradcze strony Microsoft Threat modelowania narzędzia wyróżnianie możliwych rozwiązań najbardziej narażonych generowane zagrożeń.
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23867983"
 ---
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Środki zaradcze narzędzie modelowania zagrożeń firmy Microsoft
 

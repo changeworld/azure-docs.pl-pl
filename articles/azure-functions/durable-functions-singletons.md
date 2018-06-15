@@ -1,12 +1,12 @@
 ---
-title: "Wzorce Singleton dla funkcji trwałe - Azure"
-description: "Jak używać pojedynczych wystąpień w rozszerzeniu Functons trwałe dla usługi Azure Functions."
+title: Wzorce Singleton dla funkcji trwałe - Azure
+description: Jak używać pojedynczych wystąpień w rozszerzeniu Functons trwałe dla usługi Azure Functions.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29972555"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Pojedyncze orchestrators w funkcji trwałe (funkcje platformy Azure)
 

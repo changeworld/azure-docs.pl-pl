@@ -1,12 +1,12 @@
 ---
-title: "Eksportowanie danych zabezpieczeń platformy Azure do SIEM potoku konfiguracji [Podgląd] | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera dokumentację produktu pobierania Azure security center dzienniki, aby używany system SIEM"
+title: Eksportowanie danych zabezpieczeń platformy Azure do SIEM potoku konfiguracji [Podgląd] | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera dokumentację produktu pobierania Azure security center dzienniki, aby używany system SIEM
 services: security-center
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29124837"
 ---
 # <a name="azure-security-data-export-to-siem--pipeline-configuration-preview"></a>Eksportowanie danych zabezpieczeń platformy Azure do SIEM potoku konfiguracji [Podgląd]
 

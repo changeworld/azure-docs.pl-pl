@@ -1,12 +1,12 @@
 ---
-title: "Omówienie protokołu BGP z bramy sieci VPN platformy Azure | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera omówienie użycia protokołu BGP z bramami sieci VPN na platformie Azure."
+title: Omówienie protokołu BGP z bramy sieci VPN platformy Azure | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera omówienie użycia protokołu BGP z bramami sieci VPN na platformie Azure.
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: f8c3985c-c128-4f34-835c-0e88742bf36e
 ms.service: vpn-gateway
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23883509"
 ---
 # <a name="overview-of-bgp-with-azure-vpn-gateways"></a>Omówienie użycia protokołu BGP z bramami sieci VPN na platformie Azure
 W tym artykule omówiono obsługę protokołu BGP (Border Gateway Protocol) w bramach sieci VPN na platformie Azure.

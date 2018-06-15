@@ -1,11 +1,11 @@
 ---
-title: "Rozpoczynanie pracy z biblioteki usługi Azure CDN dla platformy .NET | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak pisać aplikacje .NET do zarządzania usługi Azure CDN przy użyciu programu Visual Studio."
+title: Rozpoczynanie pracy z biblioteki usługi Azure CDN dla platformy .NET | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak pisać aplikacje .NET do zarządzania usługi Azure CDN przy użyciu programu Visual Studio.
 services: cdn
 documentationcenter: .net
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 63cf4101-92e7-49dd-a155-a90e54a792ca
 ms.service: cdn
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23843049"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Rozpoczynanie pracy z wdrażaniem usługi Azure CDN
 > [!div class="op_single_selector"]

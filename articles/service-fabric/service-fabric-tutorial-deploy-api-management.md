@@ -20,6 +20,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31599258"
 ---
 # <a name="tutorial-deploy-api-management-with-service-fabric"></a>Samouczek: wdrażanie usługi API Management z usługą Service Fabric
 Niniejszy samouczek jest czwartą częścią serii.  Wdrażanie usługi Azure API Management z usługą Service Fabric odbywa się w ramach zaawansowanego scenariusza.  Usługa API Management jest przydatna, gdy trzeba opublikować interfejsy API z obszernym zestawem reguł rozsyłania dla usług zaplecza Service Fabric. Aplikacje w chmurze zwykle potrzebują bramy frontonu, aby udostępniać pojedynczy punkt danych przychodzących dla użytkowników, urządzeń lub innych aplikacji. W usłudze Service Fabric bramą może być dowolna usługa bezstanowa przeznaczona dla ruchu przychodzącego, na przykład aplikacja ASP.NET Core albo usługa Event Hubs, IoT Hub lub Azure API Management. 

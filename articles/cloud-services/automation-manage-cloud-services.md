@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie przy użyciu automatyzacji Azure usługi w chmurze Azure | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat jak usługa Automatyzacja Azure może służyć do zarządzania usługami w chmurze platformy Azure na dużą skalę."
+title: Zarządzanie przy użyciu automatyzacji Azure usługi w chmurze Azure | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat jak usługa Automatyzacja Azure może służyć do zarządzania usługami w chmurze platformy Azure na dużą skalę.
 services: cloud-services, automation
-documentationcenter: 
+documentationcenter: ''
 author: jodoglevy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3789810a-2892-4eef-bf29-c781c1b5af48
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23842937"
 ---
 # <a name="managing-azure-cloud-services-using-azure-automation"></a>Zarządzania usługami w chmurze Azure przy użyciu usługi Automatyzacja Azure
 W tym przewodniku przedstawiono usługi Automatyzacja Azure oraz jak on używany w celu uproszczenia zarządzania usług w chmurze Azure.

@@ -1,12 +1,12 @@
 ---
-title: "Wdrażanie urządzenia z serii StorSimple 8000 w portalu dla instytucji rządowych | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano kroki i najlepsze rozwiązania dotyczące wdrażania urządzeń serii StorSimple 8000 z aktualizacji 3 lub nowszym i usługi w portalu Azure dla instytucji rządowych."
+title: Wdrażanie urządzenia z serii StorSimple 8000 w portalu dla instytucji rządowych | Dokumentacja firmy Microsoft
+description: W tym artykule opisano kroki i najlepsze rozwiązania dotyczące wdrażania urządzeń serii StorSimple 8000 z aktualizacji 3 lub nowszym i usługi w portalu Azure dla instytucji rządowych.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875151"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>Wdrażanie lokalnego urządzenia StorSimple w portalu dla instytucji rządowych
 

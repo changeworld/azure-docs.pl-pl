@@ -1,7 +1,7 @@
 ---
-title: "Szybki start: Przesyłanie przepływu pracy przy użyciu wielu danych wejściowych | Microsoft Docs"
+title: 'Szybki start: Przesyłanie przepływu pracy przy użyciu wielu danych wejściowych | Microsoft Docs'
 titleSuffix: Azure
-description: "W tym poradniku Szybki start założono, że użytkownik ma zainstalowanego klienta msgen i pomyślnie uruchomił przykładowe dane za pośrednictwem usługi."
+description: W tym poradniku Szybki start założono, że użytkownik ma zainstalowanego klienta msgen i pomyślnie uruchomił przykładowe dane za pośrednictwem usługi.
 services: microsoft-genomics
 author: grhuynh
 manager: jhubbard
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29119999"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>Przesyłanie przepływu pracy przy użyciu wielu danych wejściowych z tej samej próbki
 

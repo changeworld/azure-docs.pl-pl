@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32153586"
 ---
 # <a name="back-up-your-app-in-azure"></a>Tworzenie kopii zapasowej aplikacji na platformie Azure
 Funkcja Kopia zapasowa i przywracanie w [usłudze Azure App Service](app-service-web-overview.md) umożliwia łatwe tworzenie kopii zapasowych aplikacji, ręcznie lub zgodnie z harmonogramem. Zastępowanie istniejących aplikacji lub przywracania do innej aplikacji, można przywrócić aplikację do migawki poprzedniego stanu. 

@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie usługi Azure importu/eksportu narzędzia v1 | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować Przygotowanie stacji i napraw narzędzia usługi Import/Eksport Azure. Odnosi się do v1 narzędzia importu/eksportu."
+title: Konfigurowanie usługi Azure importu/eksportu narzędzia v1 | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować Przygotowanie stacji i napraw narzędzia usługi Import/Eksport Azure. Odnosi się do v1 narzędzia importu/eksportu.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: c312b1ab-5b9e-4d24-becd-790a88b3ba8d
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873940"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>Trwa konfigurowanie narzędzia importu/eksportu Azure
 Narzędzie importu/eksportu Microsoft Azure to dysk przygotowania i napraw narzędzie za pomocą usługi Import/Eksport Microsoft Azure. Można użyć narzędzia dla następujących funkcji:  

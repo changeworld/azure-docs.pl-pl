@@ -1,13 +1,13 @@
 ---
-title: "Wskazówki dotyczące tworzenia usługi Azure Functions | Dokumentacja firmy Microsoft"
-description: "Poznaj pojęcia dotyczące usługi Azure Functions i techniki, które trzeba opracować funkcji na platformie Azure, we wszystkich językach programowania i powiązania."
+title: Wskazówki dotyczące tworzenia usługi Azure Functions | Dokumentacja firmy Microsoft
+description: Poznaj pojęcia dotyczące usługi Azure Functions i techniki, które trzeba opracować funkcji na platformie Azure, we wszystkich językach programowania i powiązania.
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: "Funkcje przewodnik azure Developer, funkcje, przetwarzania elementów webhook, dynamiczne obliczeń, architektura niekorzystającą zdarzeń"
+editor: ''
+tags: ''
+keywords: Funkcje przewodnik azure Developer, funkcje, przetwarzania elementów webhook, dynamiczne obliczeń, architektura niekorzystającą zdarzeń
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.service: functions
 ms.devlang: multiple
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29121750"
 ---
 # <a name="azure-functions-developers-guide"></a>Przewodnik dla deweloperów funkcji platformy Azure
 W środowisku Azure Functions określonych funkcji udostępniania kilka podstawowe koncepcje techniczne i składników, niezależnie od języka i powiązanie, którego używasz. Przed możesz przejść do uczenia szczegóły specyficzne dla danego języka lub powiązanie, należy koniecznie zapoznaj się z artykułem ten przegląd, która ma zastosowanie do wszystkich z nich.

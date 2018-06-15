@@ -14,6 +14,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31600911"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Monitorowanie i zarządzanie nimi zadania usługi analiza strumienia za pomocą poleceń cmdlet programu Azure PowerShell
 Dowiedz się, jak monitorowanie i zarządzanie zasobami usługi Stream Analytics za pomocą poleceń cmdlet programu Azure PowerShell i skryptów programu powershell, które wykonywać podstawowe zadania usługi analiza strumienia.

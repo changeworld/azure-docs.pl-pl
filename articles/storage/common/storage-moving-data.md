@@ -1,8 +1,8 @@
 ---
-title: "Przenoszenie dużych ilości danych do/z magazynu w chmurze na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Przegląd różnych metod przenoszenie danych do i z usługi Azure Storage."
+title: Przenoszenie dużych ilości danych do/z magazynu w chmurze na platformie Azure | Dokumentacja firmy Microsoft
+description: Przegląd różnych metod przenoszenie danych do i z usługi Azure Storage.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: JarrettRenshaw
 manager: msmets
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28984599"
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>Przenoszenie danych do i z usługi Azure Storage
 Jeśli chcesz przenieść lokalne na dane do magazynu Azure (lub odwrotnie), dostępne są na różne sposoby, w tym celu. Podejście, który jest najbardziej będzie zależeć od danego scenariusza. W tym artykule zapewnia szybki przegląd różnych scenariuszy i odpowiednich ofert dla każdej z nich.

@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29949841"
 ---
 # <a name="tutorial-set-up-a-jenkins-environment-with-service-fabric"></a>Samouczek: konfigurowanie środowiska narzędzia Jenkins przy użyciu usługi Service Fabric
 Niniejszy samouczek jest piątą częścią serii. Zawiera on informacje dotyczące sposobu wdrażania uaktualnień aplikacji za pomocą usługi Jenkins. W tym samouczku wtyczka usługi Jenkins w usłudze Service Fabric jest używana w połączeniu z repozytorium usługi Github hostującym aplikację do głosowania w celu wdrożenia aplikacji w klastrze. 

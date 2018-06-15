@@ -1,12 +1,12 @@
 ---
-title: "Monitorowanie usługi w chmurze platformy Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano obejmuje co monitorowanie usługi w chmurze platformy Azure i jakie niektóre opcje są."
+title: Monitorowanie usługi w chmurze platformy Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano obejmuje co monitorowanie usługi w chmurze platformy Azure i jakie niektóre opcje są.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: thraka
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: cloud-services
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/11/2018
+ms.locfileid: "29149910"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Wprowadzenie do monitorowania usługi w chmurze
 

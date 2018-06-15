@@ -1,11 +1,11 @@
 ---
-title: "Przygotowanie i testowania ofertę do wdrożenia w portalu Azure Marketplace | Dokumentacja firmy Microsoft"
-description: "Szczegółowe instrukcje na udostępnienie marketingu zawartości, skonfigurowanie planów cenowych i testowania ofertę przed wdrożeniem w portalu Azure Marketplace."
+title: Przygotowanie i testowania ofertę do wdrożenia w portalu Azure Marketplace | Dokumentacja firmy Microsoft
+description: Szczegółowe instrukcje na udostępnienie marketingu zawartości, skonfigurowanie planów cenowych i testowania ofertę przed wdrożeniem w portalu Azure Marketplace.
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 3ccd2448-895b-477e-adf6-ab655a21d2fa
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29947274"
 ---
 # <a name="complete-the-offer-creation-with-marketing-content"></a>Dokończ tworzenie oferty z zawartością marketing
 W tym kroku procesu publikowania należy podać niektórych zawartości marketing i szczegółowe informacje o ofercie i/lub jednostki SKU w portalu Azure Marketplace. Na przykład zapewni opis produktu, logo firmy, plany cen, szczegółowe informacje o planach i inne informacje niezbędne do dystrybuowania oferty i/lub jednostki SKU do tymczasowego. Te informacje są używane jako marketing zawartość w portalu Azure. Rozpocznie się tym procesem w [portal publikowania][link-pubportal].

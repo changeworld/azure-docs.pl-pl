@@ -18,6 +18,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32151063"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Tworzenie i używanie grup do zarządzania konta dewelopera usługi Azure API Management
 W usłudze API Management grupy służą do zarządzania widocznością produktów dla deweloperów. Produkty są najpierw stają się widoczne dla grup, a następnie deweloperów w tych grupach można wyświetlać i subskrybować produktów, które są skojarzone z grupami. 

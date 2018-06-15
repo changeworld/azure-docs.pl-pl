@@ -1,11 +1,11 @@
 ---
-title: "Jak używać kolejek usługi Service Bus za pomocą języka PHP | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać kolejek usługi Service Bus na platformie Azure. Przykłady kodu napisane w języku PHP."
+title: Jak używać kolejek usługi Service Bus za pomocą języka PHP | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać kolejek usługi Service Bus na platformie Azure. Przykłady kodu napisane w języku PHP.
 services: service-bus-messaging
 documentationcenter: php
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e29c829b-44c5-4350-8f2e-39e0c380a9f2
 ms.service: service-bus-messaging
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23868326"
 ---
 # <a name="how-to-use-service-bus-queues-with-php"></a>Jak używać kolejek usługi Service Bus za pomocą języka PHP
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]

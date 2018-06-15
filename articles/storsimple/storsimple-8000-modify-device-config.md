@@ -1,12 +1,12 @@
 ---
-title: "Zmodyfikuj konfigurację urządzenia serii StorSimple 8000 | Dokumentacja firmy Microsoft"
-description: "Informacje dotyczące używania usługi Menedżer StorSimple urządzenia ponownej konfiguracji urządzenia StorSimple, która została już wdrożona."
+title: Zmodyfikuj konfigurację urządzenia serii StorSimple 8000 | Dokumentacja firmy Microsoft
+description: Informacje dotyczące używania usługi Menedżer StorSimple urządzenia ponownej konfiguracji urządzenia StorSimple, która została już wdrożona.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875158"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>Modyfikowanie konfiguracji urządzenia StorSimple przy użyciu usługi Menedżer StorSimple urządzenia
 
