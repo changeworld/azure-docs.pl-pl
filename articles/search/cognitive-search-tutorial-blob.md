@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 3c8b3afcda4422fa5df599798bcd9cd94fe58486
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 0bca64675ed656373d6a73ca772fa713ad36a57e
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366753"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757574"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Samouczek: wywoływanie interfejsów API wyszukiwania poznawczego (wersja zapoznawcza)
 
@@ -85,7 +85,7 @@ Potok wzbogacania ściąga dane ze źródeł danych platformy Azure. Dane muszą
   Parametry połączenia powinny być adresem URL podobnym do następującego przykładu:
 
       ```http
-      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=aaAAAbb123123cccCCCdd456456EeEe789789ffFFgg==;EndpointSuffix=core.windows.net
+      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=<your account key>;EndpointSuffix=core.windows.net
       ```
 
 Istnieją inne sposoby określania parametrów połączenia, takie jak podanie sygnatury dostępu współdzielonego. Aby dowiedzieć się więcej na temat poświadczeń źródła danych, zobacz [Indeksowanie w usłudze Azure Blob Storage](search-howto-indexing-azure-blob-storage.md#Credentials).

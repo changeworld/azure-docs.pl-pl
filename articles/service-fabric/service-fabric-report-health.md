@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212531"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Dodawanie niestandardowych raportów kondycji usługi Service Fabric
 Sieć szkieletowa usług Azure wprowadza [model kondycji](service-fabric-health-introduction.md) umożliwiającą Flaga zła klastra i warunki aplikacji na konkretnych obiektów. Model kondycji używa **Raporty kondycji** (składników systemu i watchdogs). Celem jest łatwe i szybkie diagnozowanie i naprawy. Moduły zapisujące usługi należy wziąć pod uwagę góry o kondycji. Wszelkie warunek, który może mieć wpływ na kondycji należy podać, zwłaszcza, jeśli może pomóc problemów flagi bliski katalogu głównego. Informacje o kondycji można oszczędzić czas i wysiłek na analizie i debugowania. Przydatność jest jasne, szczególnie, gdy usługa jest uruchomiona na dużą skalę w chmurze (prywatny czy Azure).

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34213201"
 ---
 # <a name="introduction-to-auto-scaling"></a>Wprowadzenie do skalowania automatycznego
 Automatyczne skalowanie jest dodatkowe możliwości sieci szkieletowej usług można dynamicznie skalować usług opartych na obciążenia, które usługi są raportowania lub na podstawie ich użycia zasobów. Automatyczne skalowanie zapewnia dużą elastyczność i umożliwia inicjowanie obsługi administracyjnej dodatkowe wystąpienia lub partycji usługi na żądanie. Automatycznie cały proces skalowania jest automatyczne i przejrzysty, a po skonfigurowaniu zasad w usłudze nie jest konieczne ręczne operacji skalowania na poziomie usługi. Automatyczne skalowanie można włączyć w czasie tworzenia usługi lub w dowolnym momencie przez aktualizację usługi.

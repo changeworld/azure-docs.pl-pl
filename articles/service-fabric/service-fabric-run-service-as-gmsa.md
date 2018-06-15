@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206717"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>Uruchamianie usługi za pomocą zarządzanego konta usługi grupy
 W klastrze systemu Windows Server autonomiczny można uruchomić usługi jako konto usługi zarządzane (gMSA) przy użyciu zasad RunAs grupy.  Domyślnie aplikacje sieci szkieletowej usług są uruchamiane na koncie, działającą proces Fabric.exe. Uruchamianie aplikacji w ramach różnych kont, nawet w środowisku hostowanej udostępnionego umożliwiają bardziej bezpieczne od siebie nawzajem. Należy pamiętać, że używa usługi Active Directory lokalnie w domenie i nie usługi Azure Active Directory (Azure AD). Za pomocą grupę, brak hasła i zaszyfrowane hasło przechowywane w manifeście aplikacji.  Można również uruchomić usługi jako [użytkownika usługi Active Directory lub grupy](service-fabric-run-service-as-ad-user-or-group.md).

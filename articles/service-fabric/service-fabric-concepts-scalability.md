@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209376"
 ---
 # <a name="scaling-in-service-fabric"></a>Skalowanie w sieci szkieletowej usług
 Sieć szkieletowa usług Azure ułatwia tworzenie skalowalnych aplikacji dzięki zarządzaniu usług, partycji i replik w węzłach klastra. Uruchamianie wielu obciążeń na tym samym sprzęcie umożliwia wykorzystanie zasobów maksymalna, ale również zapewnia elastyczność pod względem sposobu wybranego skalowania obciążeń. To wideo z witryny Channel 9 opisano, jak w przypadku tworzenia aplikacji skalowalnych mikrousług:

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34204927"
 ---
 # <a name="service-movement-cost"></a>Usługa koszt przeniesienia
 Współczynnik Menedżera zasobów klastra sieci szkieletowej usług pod uwagę podczas próby określenia, jakie zmiany można wprowadzać w klastrze jest koszt tych zmian. Pojęcie "koszt" jest przedmiotem handlu wyłączone przed można zwiększyć ilość klastra. Koszt jest brana pod uwagę podczas przenoszenia usługi równoważenia, defragmentacji i inne wymagania. Celem jest w celu spełnienia wymagań w zakresie zakłócenie najmniej kosztowne. 

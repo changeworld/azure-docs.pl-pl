@@ -12,9 +12,10 @@ manager: mtillman
 ms.reviewer: sasubram
 ms.openlocfilehash: a5f985e1872a196fcd29845ae0c8d924c81673a6
 ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34260149"
 ---
 # <a name="how-do-information-workers-add-b2b-collaboration-users-to-azure-active-directory"></a>Jak pracownicy przetwarzający informacje dodać użytkowników współpracy B2B do usługi Azure Active Directory?
 

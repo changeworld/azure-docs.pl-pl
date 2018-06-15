@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34210583"
 ---
 # <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>Konfigurowanie ustawień Menedżera zasobów klastra dla usługi sieci szkieletowej usług
 Menedżer zasobów klastra sieci szkieletowej usług umożliwia szczegółową kontrolę nad zasady każdego użytkownika, nazwę usługi. Każda usługa o nazwie można określić zasady jak powinna zostać przydzielona w klastrze. Każda usługa o nazwie również zdefiniować zestaw metryki, którą chce do raportu, w tym, jak ważne są do tej usługi. Konfigurowanie usług dzieli na trzy różne zadania:

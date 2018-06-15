@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34200864"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>Uruchamianie zadań MapReduce przy użyciu zestawu SDK .NET usługi HDInsight
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]

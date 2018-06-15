@@ -15,6 +15,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195509"
 ---
 # <a name="authenticate-runbooks-with-azure-classic-deployment-and-resource-manager"></a>Uwierzytelnianie elementów Runbook za pomocą klasycznego wdrożenia platformy Azure i usługi Resource Manager
 W tym artykule opisano kroki, które należy wykonać, aby skonfigurować konto użytkownika usługi Azure AD dla elementów Runbook usługi Azure Automation działających w odniesieniu do klasycznego modelu wdrażania platformy Azure lub zasobów usługi Azure Resource Manager. Gdy to nadal być tożsamością obsługiwanych uwierzytelniania dla usługi Azure Resource Manager, na podstawie elementy runbook, zalecaną metodą jest użycie konta Uruchom jako platformy Azure.       

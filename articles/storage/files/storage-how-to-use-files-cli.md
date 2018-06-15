@@ -4,8 +4,8 @@ description: Dowiedz się, jak zarządzać usługą Azure Files przy użyciu int
 services: storage
 documentationcenter: na
 author: wmgries
-manager: jeconnoc
-editor: ''
+manager: aungoo
+editor: tamram
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/26/2018
 ms.author: wgries
-ms.openlocfilehash: 85b69b7b27153139494539ba3eaa882a4ddcd4ef
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 66373d5a1ddd210d73fa964322862698f208a2f6
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737952"
 ---
 # <a name="manage-azure-file-shares-using-azure-cli"></a>Zarządzanie udziałami plików platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 Usługa [Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziały plików platformy Azure można instalować w systemach Windows, Linux i macOS. W tym artykule przedstawiono podstawowe informacje dotyczące pracy z udziałami plików platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure. Instrukcje: 

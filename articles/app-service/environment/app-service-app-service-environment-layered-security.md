@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34356209"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>Implementacja architektury zabezpieczeń warstwowych, ze środowiska usługi aplikacji
 ## <a name="overview"></a>Przegląd

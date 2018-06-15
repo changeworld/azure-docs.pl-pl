@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206751"
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>Dostęp, zapisywania i usuwania stanu Reliable Actors
 [Reliable Actors](service-fabric-reliable-actors-introduction.md) jednowątkowych obiektów, które hermetyzują zarówno logiki i stan i niezawodny sposób zarządzania stanem. Każde wystąpienie aktora ma własną [Menedżer stanu](service-fabric-reliable-actors-state-management.md): struktura typu słownika danych, która w niezawodny sposób przechowuje par klucz/wartość. Menedżer stanów jest otokę dostawcy stanu. Służy do przechowywania danych niezależnie od tego, który [ustawienie trwałości](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication) jest używany.

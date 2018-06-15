@@ -1,8 +1,8 @@
 ---
-title: "Zmiana identyfikatora dzierżawy magazynu kluczy po przeniesieniu subskrypcji | Microsoft Docs"
-description: "Dowiedz się, jak przełączyć identyfikator dzierżawy magazynu kluczy po przeniesieniu subskrypcji do innej dzierżawy"
+title: Zmiana identyfikatora dzierżawy magazynu kluczy po przeniesieniu subskrypcji | Microsoft Docs
+description: Dowiedz się, jak przełączyć identyfikator dzierżawy magazynu kluczy po przeniesieniu subskrypcji do innej dzierżawy
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: amitbapat
 manager: mbaldwin
 tags: azure-resource-manager
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
-ms.openlocfilehash: 2f007dd4f877b48003cddcefa5f4321049853361
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 91c042ebda9e7a2eba4835abc079568e1ed2e537
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725510"
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>Zmiana identyfikatora dzierżawy magazynu kluczy po przeniesieniu subskrypcji
 ### <a name="q-my-subscription-was-moved-from-tenant-a-to-tenant-b-how-do-i-change-the-tenant-id-for-my-existing-key-vault-and-set-correct-acls-for-principals-in-tenant-b"></a>Pytanie: Moja subskrypcja została przeniesiona z dzierżawy A do dzierżawy B. Jak zmienić identyfikator dzierżawy dla istniejącego magazynu kluczy i ustawić prawidłowe listy ACL dla nazw głównych w dzierżawie B?
@@ -31,7 +32,7 @@ Po utworzeniu nowego magazynu kluczy w subskrypcji zostaje on automatycznie powi
 Jeśli na przykład masz magazyn kluczy „myvault” w subskrypcji przeniesionej z dzierżawy a do dzierżawy B, oto jak zmienić identyfikator dzierżawy dla tego magazynu kluczy i usunąć stare zasady dostępu.
 
 <pre>
-$Select-AzureRmSubscription -SubscriptionId YourSubscriptionID
+Select-AzureRmSubscription -SubscriptionId YourSubscriptionID
 $vaultResourceId = (Get-AzureRmKeyVault -VaultName myvault).ResourceId
 $vault = Get-AzureRmResource –ResourceId $vaultResourceId -ExpandProperties
 $vault.Properties.TenantId = (Get-AzureRmContext).Tenant.TenantId

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206083"
 ---
 # <a name="deploy-multiple-guest-executables"></a>Wdrażanie wielu aplikacji wykonywalnych gości
 W tym artykule przedstawiono sposób pakietów i wdrożyć wiele plików wykonywalnych gościa sieć szkieletowa usług Azure. Umożliwiające tworzenie i wdrażanie pojedynczego pakietu sieci szkieletowej usług przeczytać artykuł dotyczący sposobu do [wdrażanie pliku wykonywalnego gościa sieci szkieletowej usług](service-fabric-deploy-existing-app.md).

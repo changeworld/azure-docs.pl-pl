@@ -15,6 +15,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34356022"
 ---
 # <a name="create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Utwórz i skonfiguruj bramę aplikacji do obsługi wielu witryn sieci web przy użyciu portalu Azure
 

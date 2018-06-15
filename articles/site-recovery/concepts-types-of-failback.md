@@ -1,6 +1,6 @@
 ---
-title: "Powrót po awarii w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera omówienie różnych typów powrotu po awarii i ostrzeżenia wziąć pod uwagę podczas niepowodzenie wstecz do lokalnego z usługą Azure Site Recovery."
+title: Powrót po awarii w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera omówienie różnych typów powrotu po awarii i ostrzeżenia wziąć pod uwagę podczas niepowodzenie wstecz do lokalnego z usługą Azure Site Recovery.
 services: site-recovery
 author: rajani-janaki-ram
 manager: guaravd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29803556"
 ---
 # <a name="overview-of-failback"></a>Omówienie powrotu po awarii
 

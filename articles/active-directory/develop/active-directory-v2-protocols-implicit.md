@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34158391"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>Protokoły - źródła przy użyciu niejawnego przepływu w wersji 2.0
 Z punktem końcowym v2.0 można zalogować się użytkowników do aplikacji jednej strony z konta osobiste oraz pracy/służbowego firmy Microsoft. Jednej strony i innych aplikacji JavaScript, które działają głównie w kilka interesujące będzie wymagał uwierzytelniania w przypadku krój przeglądarki:

@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365631"
 ---
 # <a name="azure-network-security-overview"></a>Przegląd zabezpieczeń sieci platformy Azure
 Azure obejmuje to niezawodna infrastruktura sieci do obsługi aplikacji i wymaganiami dotyczącymi łączności usługi. Łączność sieciowa będzie możliwe między zasobami znajdującymi się na platformie Azure, między lokalnymi i Azure hostowanych zasobów oraz do i z Internetu i Azure.

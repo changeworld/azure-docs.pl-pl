@@ -14,6 +14,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34355954"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galeria elementów Runbook i modułów dla usługi Automatyzacja Azure
 Zamiast tworzenia własnych elementów runbook i modułów w automatyzacji Azure, można uzyskać dostępu do szerokiej gamy scenariuszy, które zostały już utworzone przez firmę Microsoft i społecznością.  Możesz użyć tych scenariuszy bez żadnych modyfikacji lub można ich używać jako punktu wyjścia i edytować je do swoich specyficznych wymagań.

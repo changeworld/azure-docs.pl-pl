@@ -20,6 +20,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34210379"
 ---
 # <a name="set-up-a-linux-rdma-cluster-to-run-mpi-applications"></a>Konfigurowanie klastra RDMA systemu Linux na potrzeby uruchamiania aplikacji MPI
 Dowiedz się, jak skonfigurować klaster RDMA systemu Linux na platformie Azure z [wysokiej wydajności obliczeniowe rozmiarów maszyn wirtualnych](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) na uruchamianie równoległe aplikacji komunikat interfejsu (Passing Interface). Ten artykuł zawiera kroki, aby przygotować obraz HPC systemu Linux, aby uruchomić Intel MPI w klastrze. Po przygotowaniu można wdrożyć klaster maszyn wirtualnych przy użyciu tego obrazu i jeden rozmiary maszyny Wirtualnej platformy Azure z funkcją RDMA (obecnie H16r H16mr, A8 i A9). Klaster umożliwia uruchamianie aplikacji MPI wydajne komunikowanie się przez sieć małym opóźnieniu i dużej przepustowości oparte na technologii dostępu (do pamięci RDMA) zdalnego pamięci.

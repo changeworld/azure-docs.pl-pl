@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212368"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Maszyn wirtualnych i typy węzłów sieci szkieletowej usług Azure skalowanie zestawów
 [Zestawy skalowania maszyny wirtualnej](/azure/virtual-machine-scale-sets) są zasoby obliczeniowe platformy Azure. Zestawy skalowania służy do wdrażania i zarządzania nimi jako zestaw kolekcji maszyn wirtualnych. Każdy typ węzła zdefiniowanej w klastrze usługi sieć szkieletowa usług Azure konfiguruje oddzielne skali.  Ustaw środowisko uruchomieniowe usługi sieć szkieletowa zainstalowany na wszystkich maszynach wirtualnych w skali. Można niezależnie skalować każdy typ węzła w górę lub w dół, zmienianie wersji systemu operacyjnego działającego na każdym węźle klastra, mają różne zestawy otwartych portów i metryki pojemności różnych.

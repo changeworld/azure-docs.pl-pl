@@ -14,6 +14,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164326"
 ---
 # <a name="ssh-into-azure-kubernetes-service-aks-cluster-nodes"></a>SSH w węzłach klastra usługi Kubernetes Azure (AKS)
 
