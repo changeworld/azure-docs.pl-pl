@@ -19,6 +19,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34161384"
 ---
 # <a name="cli-example-reset-the-account-credentials"></a>Przykład interfejsu wiersza polecenia: resetowanie poświadczeń konta
 

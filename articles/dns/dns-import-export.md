@@ -18,6 +18,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34069381"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli-20"></a>Importowanie i eksportowanie pliku strefy DNS przy użyciu 2.0 interfejsu wiersza polecenia platformy Azure 
 

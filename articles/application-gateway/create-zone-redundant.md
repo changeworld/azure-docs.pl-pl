@@ -16,6 +16,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33937756"
 ---
 # <a name="create-a-zone-redundant-azure-application-gateway---private-preview"></a>Tworzenie strefy bramy nadmiarowe aplikacji Azure — prywatnej wersji zapoznawczej
 

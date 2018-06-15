@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33937820"
 ---
 # <a name="azure-stack-validation-report"></a>Raport weryfikacji stosu Azure
 Narzędzie sprawdzania gotowości stosu Azure jest sprawdzanie poprawności, które obsługuje wdrożenia i obsługę środowiska Azure stosu. Narzędzie zapisuje wyniki sprawdzania poprawności pliku raportu JSON. Raport przedstawia szczegółowe i podsumowują dane na temat wymagań wstępnych dotyczących wdrażania stosu Azure i obrotu kluczy tajnych istniejące wdrożenia stosu Azure.  

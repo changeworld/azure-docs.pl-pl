@@ -18,6 +18,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34069914"
 ---
 # <a name="problems-signing-in-to-an-application-using-a-deeplink"></a>Problemy przy logowaniu do aplikacji przy użyciu głębokiego łącza
 

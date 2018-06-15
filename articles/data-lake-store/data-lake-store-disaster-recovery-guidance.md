@@ -16,6 +16,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34199079"
 ---
 # <a name="disaster-recovery-guidance-for-data-in-data-lake-store"></a>Wskazówki dotyczące odzyskiwania po awarii dla danych w usłudze Data Lake Store
 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33943750"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Przygotowanie do użycia z chmury init istniejącego obrazu maszyny Wirtualnej systemu Linux platformy Azure
 W tym artykule przedstawiono sposób pobrać istniejącej maszyny wirtualnej platformy Azure i przygotowania go ponownie wdrożonym i gotowe do użycia chmury init. Obraz wynikowy może służyć do wdrażania nowej maszyny wirtualnej lub zestawy skalowania maszyn wirtualnych — w jednej z nich można następnie można dodatkowo dostosowywać przez init chmury w czasie wdrażania.  Skrypty te init chmury są uruchamiane po pierwszym uruchomieniu komputera po zasoby zostały udostępnione przez platformę Azure. Aby uzyskać więcej informacji na temat chmury inicjowania działania natywnie Azure i obsługiwanych dystrybucjach systemu Linux, zobacz [init chmury — omówienie](using-cloud-init.md)

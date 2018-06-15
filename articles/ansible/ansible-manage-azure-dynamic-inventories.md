@@ -13,6 +13,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32153113"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Umożliwia zarządzanie sieci Azure spisów dynamiczne Ansible
 Ansible może służyć do pobierania informacji o spisie z różnych źródeł (w tym chmury źródeł, takich jak Azure) do *dynamiczne spisu*. W tym artykule używamy [powłoki chmury Azure](./ansible-run-playbook-in-cloudshell.md) Aby skonfigurować spis dynamiczne Ansible Azure w którym można utworzyć dwie maszyny wirtualne, tagów jednego z tych maszyn wirtualnych i zainstalować Nginx na oznakowanych maszyny wirtualnej.

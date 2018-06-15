@@ -11,9 +11,10 @@ ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 0511c2bf7eed15f997f8444c945afb18179bbc63
 ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34194006"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Podrzędne elementy runbook automatyzacji Azure
 

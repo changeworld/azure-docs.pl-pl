@@ -19,6 +19,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31796024"
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>Wystąpienia publicznego adresu IP (klasyczne) omówienie
 Wystąpienie poziomu publicznego adresu IP (ILPIP) to publiczny adres IP, który można przypisać bezpośrednio do wystąpienia roli maszyny Wirtualnej lub usługi w chmurze, a nie do usługi w chmurze, które wystąpienie maszyny Wirtualnej lub roli znajdują się w. ILPIP nie została wykonana z wirtualnego adresu IP (VIP) przypisany do usługi w chmurze. Zamiast jest dodatkowy adres IP, który umożliwia bezpośrednie łączenie się z wystąpieniem maszyny Wirtualnej lub roli.

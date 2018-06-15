@@ -17,6 +17,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34197039"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-store"></a>Zabezpieczanie danych przechowywanych w usłudze Azure Data Lake Store
 Zabezpieczanie danych w usłudze Azure Data Lake Store jest podejście trzech etapów.  Zarówno opartej na rolach kontrola (RBAC) dostępu i listy kontroli dostępu (ACL) musi być ustawiona do pełnego włączenia dostępu do danych użytkowników i grup zabezpieczeń.

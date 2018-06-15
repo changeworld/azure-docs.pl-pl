@@ -19,6 +19,7 @@ ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34075242"
 ---
 # <a name="get-up-and-running-with-powershell-in-azure-stack"></a>Rozpocząć pracę z programu PowerShell w programie Azure stosu
 

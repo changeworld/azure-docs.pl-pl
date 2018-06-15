@@ -16,9 +16,10 @@ ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.openlocfilehash: 4fa93e4bf64e01b44b0826b2182b125004c49609
 ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157486"
 ---
 # <a name="administrative-units-management-in-azure-ad---public-preview"></a>Zarządzanie jednostkami administracyjnymi w usłudze Azure AD - publicznej wersji zapoznawczej
 W tym artykule opisano jednostkami administracyjnymi — nowy kontener usługi Azure Active Directory zasobów, które mogą służyć do delegowania uprawnień administracyjnych za pośrednictwem podzbiór użytkowników i stosowania zasad do podzbioru użytkowników. W usłudze Azure Active Directory jednostki administracyjne Włącz centralnej Administratorzy delegować uprawnienia do administratorów regionalnych lub ustawienie zasad na poziomie szczegółowym.

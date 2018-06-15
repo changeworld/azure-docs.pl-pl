@@ -21,6 +21,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32192224"
 ---
 # <a name="tutorial-create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>Samouczek: Tworzenie potoku ciągłej integracji z Visual Studio Team Services i IIS
 Aby zautomatyzować kompilacji, testowe i wdrożenia etapy tworzenia aplikacji, można użyć ciągłej integracji i wdrażania (CI/CD) potoku. W tym samouczku utworzysz potok CI/CD przy użyciu programu Visual Studio Team Services i Windows maszyny wirtualnej (VM) na platformie Azure z uruchomionymi usługami IIS. Omawiane kwestie:
