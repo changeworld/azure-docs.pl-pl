@@ -1,6 +1,6 @@
 ---
-title: "Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Database for PostgreSQL"
-description: "W tym artykule wymieniono kilka dostępnych przykładów kodu interfejsu wiersza polecenia platformy Azure na potrzeby interakcji z serwerami usługi Azure Database for PostgreSQL."
+title: Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Database for PostgreSQL
+description: W tym artykule wymieniono kilka dostępnych przykładów kodu interfejsu wiersza polecenia platformy Azure na potrzeby interakcji z serwerami usługi Azure Database for PostgreSQL.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -16,6 +16,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29688126"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-postgresql"></a>Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Database for PostgreSQL 
 Poniższa tabela zawiera linki do przykładowych skryptów interfejsu wiersza polecenia platformy Azure dla usługi Azure Database for PostgreSQL.

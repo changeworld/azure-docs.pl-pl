@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31407032"
 ---
 # <a name="get-to-know-your-data-science-virtual-machine"></a>Poznawanie nauki danych maszyny wirtualnej
 

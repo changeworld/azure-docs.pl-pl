@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29687086"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql"></a>Pojęcia dotyczące wysokiej dostępności w bazie danych PostgreSQL Azure
 Baza danych Azure usługi PostgreSQL zapewnia gwarantowane wysoki poziom dostępności. Finansowo kopii umowy dotyczącej poziomu usług (SLA) jest 99,99% po ogólnej dostępności. Nie ma praktycznie żadnej aplikacji czas przestoju podczas korzystania z tej usługi.

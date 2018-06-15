@@ -1,12 +1,12 @@
 ---
-title: "Obliczeniowych maszyn wirtualnych platformy Azure za pomocą partii | Dokumentacja firmy Microsoft"
-description: "Zalety rozmiarów maszyn wirtualnych z funkcją RDMA lub włączone procesora GPU w pulach partii zadań Azure"
+title: Obliczeniowych maszyn wirtualnych platformy Azure za pomocą partii | Dokumentacja firmy Microsoft
+description: Zalety rozmiarów maszyn wirtualnych z funkcją RDMA lub włączone procesora GPU w pulach partii zadań Azure
 services: batch
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/05/2018
+ms.locfileid: "29762445"
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>Użyj wystąpień z funkcją RDMA lub włączone procesora GPU w pulach partii
 
