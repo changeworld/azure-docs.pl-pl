@@ -13,6 +13,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34307441"
 ---
 Rodziny wirtualna B serii można wybrać rozmiar maszyny Wirtualnej, w którym dostarcza niezbędne podstawowym poziomie wydajności dla obciążenia, możliwość serii wydajności procesora CPU do 100% v4 Intel® Broadwell E5-2673 2.3 GHz lub procesor Intel® Haswell 2,4 GHz E5-2673 v3 vCPU.
 

@@ -20,6 +20,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34159294"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Wydajność aplikacji — często zadawane pytania dotyczące aplikacji sieci Web na platformie Azure
 

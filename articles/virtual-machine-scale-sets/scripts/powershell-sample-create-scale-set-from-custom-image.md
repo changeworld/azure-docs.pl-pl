@@ -21,6 +21,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30246512"
 ---
 # <a name="create-a-virtual-machine-scale-set-from-a-custom-vm-image-with-powershell"></a>Tworzenie zestawu skalowania maszyn wirtualnych z niestandardowego obrazu maszyny wirtualnej przy użyciu programu PowerShell
 Ten skrypt tworzy zestaw skalowania maszyn wirtualnych, który używa niestandardowego obrazu maszyny wirtualnej jako źródła dla wystąpień maszyn wirtualnych.

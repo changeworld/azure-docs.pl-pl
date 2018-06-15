@@ -19,6 +19,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30236152"
 ---
 # <a name="import-azure-log-analytics-data-into-power-bi"></a>Importuj dane usługi Analiza dzienników Azure do usługi Power BI
 

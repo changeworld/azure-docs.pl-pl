@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33896024"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Dodaj element runbook usługi Automatyzacja Azure do planów odzyskiwania
 W tym artykule opisano sposób Azure Site Recovery integruje się z automatyzacji Azure w celu umożliwienie wydłużenia planów odzyskiwania. Plany odzyskiwania można organizować odzyskiwania maszyn wirtualnych, które są chronione za pomocą usługi Site Recovery. Plany odzyskiwania działają zarówno dla replikacji do chmury dodatkowej, jak i dla replikacji do platformy Azure. Plany odzyskiwania również sprawić, że odzyskiwania **spójnie dokładne**, **powtarzalne**, i **automatyczne**. Jeśli w trybie Failover maszyny wirtualne na platformie Azure, integracja z usługi Automatyzacja Azure rozszerza planów odzyskiwania. Służy on do wykonywania elementów runbook, które oferują zaawansowane automatyzacji zadań.

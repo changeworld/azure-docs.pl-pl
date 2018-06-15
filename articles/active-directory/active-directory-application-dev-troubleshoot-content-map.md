@@ -18,6 +18,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33932391"
 ---
 # <a name="troubleshoot-azure-active-directory-application-development"></a>Rozwiązywanie problemów z projektowanie aplikacji usługi Azure Active Directory
 Poniższe łącza pozwala wyświetlić Mapa zawartości, które zawierają informacje pomocne podczas rozwiązywania niektórych typowych problemów z opracowywanie aplikacji przy **rejestru aplikacji** w usłudze Azure Active Directory.

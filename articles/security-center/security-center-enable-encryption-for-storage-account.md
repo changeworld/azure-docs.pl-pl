@@ -19,6 +19,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30235023"
 ---
 # <a name="enable-encryption-for-azure-storage-account-in-azure-security-center"></a>Włącz szyfrowanie dla konta magazynu Azure w Centrum zabezpieczeń Azure
 Centrum zabezpieczeń Azure może zalecić Włącz szyfrowanie usługi Magazyn Azure dla przechowywanych danych.

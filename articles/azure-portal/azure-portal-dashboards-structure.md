@@ -18,6 +18,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34165183"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Struktura Azure pulpitów nawigacyjnych
 Ten dokument zawiera opis za pośrednictwem struktury Azure pulpitu nawigacyjnego, na przykład przy użyciu następujących pulpitu nawigacyjnego:

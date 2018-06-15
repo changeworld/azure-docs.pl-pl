@@ -20,6 +20,7 @@ ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34076619"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure-stack"></a>Przygotowywanie maszyny wirtualnej z systemem Red Hat Azure stosu
 W tym artykule dowiesz się, jak przygotować maszyny wirtualnej Red Hat Enterprise Linux (RHEL) do użycia w stosie Azure. Wersje RHEL, które zostały omówione w tym artykule są 7.1 +. Funkcje hypervisor w celu przygotowania, które zostały omówione w tym artykule są maszyny wirtualnej funkcji Hyper-V, na podstawie jądra (KVM) i VMware.

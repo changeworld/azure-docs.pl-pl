@@ -18,6 +18,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33936701"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Jak ustawiać lub edytować zasady usługi Azure API Management
 

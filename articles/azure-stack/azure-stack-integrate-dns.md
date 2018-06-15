@@ -1,6 +1,6 @@
 ---
 title: Integracja Azure datacenter stosu - DNS
-description: "Dowiedz się, jak zintegrować usługę Azure DNS stosu z centrum danych DNS"
+description: Dowiedz się, jak zintegrować usługę Azure DNS stosu z centrum danych DNS
 services: azure-stack
 author: jeffgilb
 manager: femila
@@ -9,12 +9,13 @@ ms.topic: article
 ms.date: 02/28/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-keywords: 
+keywords: ''
 ms.openlocfilehash: 5bdac2f3e6082f9449800fe2d4b303e2d59ade46
 ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29733863"
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Integracja Azure datacenter stosu - DNS
 Aby można było uzyskać dostępu do punktów końcowych stosu Azure (`portal`, `adminportal`, `management`, `adminmanagement`itp.)  ze stosu poza Azure musisz Integrowanie usług DNS stosu Azure z serwerów DNS, które hostuje stref DNS, który ma być używany w stosie Azure.

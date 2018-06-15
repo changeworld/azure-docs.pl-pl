@@ -20,6 +20,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30241015"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Instalowanie i konfigurowanie rozwiązania PostgreSQL na platformie Azure
 PostgreSQL jest zaawansowane open source bazy danych podobny do Oracle i bazy danych DB2. Zawiera on funkcje gotowe enterprise, takie jak ACID pełnej zgodności, niezawodne przetwarzania transakcyjnego i sterowania współbieżnością wielu wersji. Obsługuje ona również standardy, takie jak ANSI SQL i SQL/MED (w tym otoki obcego danych Oracle, MySQL, MongoDB i wielu innych). Jest to rozszerzalna o obsługę ponad 12 procedurach języków, indeksy GIN i GiST obsługę danych przestrzennych i wiele funkcji NoSQL dla formatu JSON lub aplikacji opartych na protokole klucz wartość.

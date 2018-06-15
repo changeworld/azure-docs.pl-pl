@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195298"
 ---
 # <a name="starting-a-runbook-in-azure-automation"></a>Uruchamianie elementu runbook automatyzacji Azure
 Poniższa tabela ułatwia określenie metody uruchomienia elementu runbook w automatyzacji Azure, która jest najbardziej odpowiednie dla Twojego scenariusza. Ten artykuł zawiera szczegółowe informacje dotyczące uruchamiania elementu runbook z portalu Azure i programu Windows PowerShell. Szczegółowe informacje o innych metodach znajdują się w dokumentacji, która można korzystać z poniższych łączy.

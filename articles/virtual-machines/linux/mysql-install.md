@@ -20,6 +20,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30239178"
 ---
 # <a name="how-to-install-mysql-on-azure"></a>Jak zainstalować oprogramowanie MySQL na platformie Azure
 W tym artykule dowiesz się, jak zainstalować i skonfigurować MySQL na maszynie wirtualnej platformy Azure systemem Linux.

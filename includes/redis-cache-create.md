@@ -13,6 +13,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34173122"
 ---
 Aby utworzyć pamięć podręczną, najpierw zaloguj się w witrynie [Azure Portal](https://portal.azure.com), a następnie kliknij kolejno opcje **Utwórz zasób** > **Bazy danych** > **Redis Cache**.
 

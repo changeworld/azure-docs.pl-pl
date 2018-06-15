@@ -1,11 +1,11 @@
 ---
 title: Migrowanie bazy danych programu SQL Server do programu SQL Server na maszynie Wirtualnej | Dokumentacja firmy Microsoft
-description: "Dowiedz się więcej na temat przeprowadzania migracji bazy danych użytkowników lokalnych z programem SQL Server w maszynie wirtualnej platformy Azure."
+description: Dowiedz się więcej na temat przeprowadzania migracji bazy danych użytkowników lokalnych z programem SQL Server w maszynie wirtualnej platformy Azure.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 00fd08c6-98fa-4d62-a3b8-ca20aa5246b1
 ms.service: virtual-machines-sql
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29809441"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-in-an-azure-vm"></a>Migrowanie bazy danych programu SQL Server do programu SQL Server na maszynie wirtualnej platformy Azure
 

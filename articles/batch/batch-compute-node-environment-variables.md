@@ -17,6 +17,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30312705"
 ---
 # <a name="azure-batch-compute-node-environment-variables"></a>Zmienne środowiskowe węzła obliczeń platformy Azure partii
 [Usługi partia zadań Azure](https://azure.microsoft.com/services/batch/) ustawia następujące zmienne środowiskowe w węzłach obliczeniowych. Możesz odwoływać się do tych zmiennych środowiskowych w wierszy polecenia zadania oraz programy i skrypty uruchamiane przez wiersze polecenia.

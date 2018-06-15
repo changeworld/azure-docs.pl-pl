@@ -20,6 +20,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30231280"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Nawiązywanie połączenia z bazy danych SQL Azure za pomocą usługi Azure Functions
 W tym temacie przedstawiono sposób użycia usługi Azure Functions można utworzyć zaplanowane zadanie, które utraciły wierszy w tabeli w bazie danych SQL Azure. Nowa funkcja skryptu C# jest tworzony na podstawie szablonu wyzwalacza czasomierza wstępnie zdefiniowane w portalu Azure. Aby zapewnić obsługę tego scenariusza, należy także ustawić parametry połączenia bazy danych jako ustawienie aplikacji w aplikacji funkcji. W tym scenariuszu operacja zbiorcza w bazie danych. 

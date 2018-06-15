@@ -1,10 +1,10 @@
 ---
-title: "Zarządzanie serwerem procesu w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano zarządzanie serwera przetwarzania, ustaw dla maszyny Wirtualnej VMware i replikacji serwera fizycznego w usłudze Azure Site Recovery."
+title: Zarządzanie serwerem procesu w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano zarządzanie serwera przetwarzania, ustaw dla maszyny Wirtualnej VMware i replikacji serwera fizycznego w usłudze Azure Site Recovery.
 services: site-recovery
 author: AnoopVasudavan
 manager: gauravd
-editor: 
+editor: ''
 ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29812740"
 ---
 # <a name="manage-process-servers"></a>Zarządzanie serwerami procesu
 

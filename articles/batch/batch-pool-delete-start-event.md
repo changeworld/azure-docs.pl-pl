@@ -17,6 +17,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30312063"
 ---
 # <a name="pool-delete-start-event"></a>Zdarzenie rozpoczęcia usuwania puli
 

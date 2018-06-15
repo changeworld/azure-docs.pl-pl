@@ -15,6 +15,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33865939"
 ---
 # <a name="how-azure-multi-factor-authentication-works"></a>Jak działa usługa Azure Multi-Factor Authentication
 Zabezpieczenia weryfikacji dwuetapowej znajduje się w jego warstwowego podejścia. Naruszenie wiele czynników uwierzytelniania przedstawiono istotne wyzwanie osobom atakującym. Nawet jeśli osoba atakująca zarządza się hasło użytkownika, jest bezużyteczny bez również dostęp do zaufanego urządzenia. 

@@ -1,13 +1,13 @@
 ---
-title: "Konwertuj maszyny wirtualnej systemu Windows z dysków niezarządzanych do zarządzanych dysków - Azure zarządzanych dysków | Dokumentacja firmy Microsoft"
-description: "Sposób konwertowania maszyny Wirtualnej systemu Windows z dysków niezarządzanych do zarządzanych dysków za pomocą programu PowerShell w modelu wdrażania usługi Resource Manager"
+title: Konwertuj maszyny wirtualnej systemu Windows z dysków niezarządzanych do zarządzanych dysków - Azure zarządzanych dysków | Dokumentacja firmy Microsoft
+description: Sposób konwertowania maszyny Wirtualnej systemu Windows z dysków niezarządzanych do zarządzanych dysków za pomocą programu PowerShell w modelu wdrażania usługi Resource Manager
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29804219"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Konwertuj maszynę wirtualną systemu Windows z dysków niezarządzanych do zarządzanych dysków
 

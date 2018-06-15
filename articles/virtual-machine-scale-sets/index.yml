@@ -17,6 +17,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: pl-PL
   ms.lasthandoff: 05/10/2018
+  ms.locfileid: "33941071"
 abstract:
   description: Zestawy skalowania maszyn wirtualnych platformy Azure umożliwiają tworzenie grup identycznych maszyn wirtualnych z równoważeniem obciążenia i skalowaniem automatycznym oraz zarządzanie tymi grupami. Dowiedz się, jak tworzyć, konfigurować i automatycznie skalować zestawy skalowania maszyn wirtualnych oraz zarządzać nimi, korzystając z przewodników Szybki start, samouczków i przykładów.
 sections:

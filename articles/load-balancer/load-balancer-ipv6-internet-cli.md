@@ -20,6 +20,7 @@ ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/29/2018
+ms.locfileid: "30264034"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-in-azure-resource-manager-by-using-azure-cli"></a>Utwórz publiczny moduł równoważenia obciążenia w przypadku adresu IPv6 w usłudze Azure Resource Manager przy użyciu wiersza polecenia platformy Azure
 

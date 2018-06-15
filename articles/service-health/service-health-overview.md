@@ -19,6 +19,7 @@ ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/29/2018
+ms.locfileid: "30262878"
 ---
 # <a name="service-health"></a>Service Health
 Kondycja usługi umożliwia można dostosować pulpit nawigacyjny, który śledzi kondycji usług platformy Azure w regionach, gdzie ich używać. Na tym pulpicie nawigacyjnym można śledzić active zdarzeń, takich jak bieżących problemach, nadchodzących maintence planowane lub klasyfikatory odpowiednich kondycji. Zdarzenia stają się nieaktywne, one umieszczone w historii kondycji przez 90 dni. Ponadto można użyć pulpit nawigacyjny kondycji usługi do tworzenia i zarządzania usługi kondycji alerty, które aktywnie powiadomienie, gdy usługa problemy mają wpływ na należy.

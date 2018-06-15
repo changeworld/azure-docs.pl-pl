@@ -16,6 +16,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30235404"
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-the-azure-database-migration-service"></a>Topologie sieci migracji wystąpienia zarządzane bazy danych SQL Azure przy użyciu usługi migracji bazy danych Azure
 W tym artykule dowiesz się o różnych topologii sieci, które usługa migracji bazy danych Azure może współpracować z zapewnienie obsługi płynną migrację z lokalnymi serwerami SQL do wystąpienia zarządzane bazy danych SQL Azure.

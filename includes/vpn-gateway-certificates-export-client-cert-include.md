@@ -13,6 +13,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/20/2018
+ms.locfileid: "30198132"
 ---
 Możesz wygenerować certyfikat klienta, jest automatycznie instalowana na komputerze, który został użyty do wygenerowania. Jeśli chcesz zainstalować certyfikat klienta na inny komputer kliencki, należy wyeksportować certyfikat klienta, który zostanie wygenerowany.
 

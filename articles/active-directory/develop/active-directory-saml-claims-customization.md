@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156912"
 ---
 # <a name="customizing-claims-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Dostosowywanie oświadczeń wydanych w tokenie SAML dla aplikacji przedsiębiorstwa w usłudze Azure Active Directory
 Dzisiaj usługi Azure Active Directory obsługuje rejestracji jednokrotnej w większości aplikacji przedsiębiorstwa, w tym obie aplikacje wstępnie zintegrowane w galerii aplikacji Azure AD, a także niestandardowych aplikacji. Podczas uwierzytelniania użytkownika do aplikacji za pomocą usługi Azure AD przy użyciu protokołu SAML 2.0, usługi Azure AD wysyła token do aplikacji (za pośrednictwem protokołu HTTP POST). A następnie aplikacja sprawdza poprawność tokenu i używa do logowania użytkownika zamiast monitowania o nazwę użytkownika i hasło. Te tokeny SAML zawierają informacje o użytkowniku, nazywany "oświadczeń".

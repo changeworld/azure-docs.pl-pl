@@ -15,9 +15,10 @@ ms.date: 11/27/2017
 ms.author: apimpm
 ms.openlocfilehash: 3eb9d6851c30f11980d47d4e48b158217e41995d
 ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30233789"
 ---
 # <a name="api-management-transformation-policies"></a>Zarządzanie interfejsami API zasad przekształcania
 W tym temacie znajdują się informacje na następujące zasady usługi API Management. Aby uzyskać informacje dotyczące dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](http://go.microsoft.com/fwlink/?LinkID=398186).
