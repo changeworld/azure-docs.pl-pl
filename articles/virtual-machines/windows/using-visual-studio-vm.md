@@ -20,6 +20,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894273"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio obrazów na platformie Azure
 Za pomocą programu Visual Studio w wstępnie skonfigurowane Azure maszyny wirtualnej (VM) jest szybki i łatwy sposób przejść z nic do środowiska projektowego w górę i uruchomiona. Obrazy systemu z różnymi konfiguracjami programu Visual Studio są dostępne w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1).

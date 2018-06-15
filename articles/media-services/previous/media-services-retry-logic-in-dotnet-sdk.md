@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33790426"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Spróbuj ponownie logikę w zestawie SDK usługi multimediów dla platformy .NET
 Podczas pracy z usługami Microsoft Azure, może wystąpić błędów przejściowych. W przypadku wystąpienia błędu przejściowego, w większości przypadków po kilku próbach powiedzie się. SDK usługi Media Services dla platformy .NET implementuje logikę ponawiania do obsługi błędów przejściowych skojarzone z wyjątków i błędów spowodowanych przez żądania sieci web, wykonywanie kwerend, zapisywanie zmian i operacje magazynu.  Domyślnie SDK usługi Media Services dla platformy .NET wykonuje czterech ponownych prób przed ponownym zgłoszeniem wyjątku do aplikacji. Kod w aplikacji następnie musi poprawnie obsługiwać tego wyjątku.  

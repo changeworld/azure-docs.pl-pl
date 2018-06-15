@@ -1,7 +1,7 @@
 ---
-title: "Zrozumienie klientów w usłudze Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Samouczek dotyczący programu Azure Application Insights, aby zrozumieć, jak klienci korzystają z aplikacji."
-keywords: 
+title: Zrozumienie klientów w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
+description: Samouczek dotyczący programu Azure Application Insights, aby zrozumieć, jak klienci korzystają z aplikacji.
+keywords: ''
 services: application-insights
 author: mrbullwinkle
 ms.author: mbullwin
@@ -12,9 +12,10 @@ ms.topic: tutorial
 manager: carmonm
 ms.openlocfilehash: db61c300ad82270e59d315fa3372d9e4390c7a21
 ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/09/2017
+ms.locfileid: "24099025"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Użyj Azure Application Insights, aby zrozumieć, jak klienci używają aplikacji
 

@@ -1,13 +1,13 @@
 ---
-title: "Zarządzanie aplikacją sieci Web dla kontenerów przy użyciu 2.0 interfejsu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft"
-description: "Zarządzanie aplikacją sieci Web dla kontenerów przy użyciu wiersza polecenia platformy Azure."
-keywords: "Usługa aplikacji Azure, aplikacji sieci web, interfejsu wiersza polecenia, linux, oss"
+title: Zarządzanie aplikacją sieci Web dla kontenerów przy użyciu 2.0 interfejsu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Zarządzanie aplikacją sieci Web dla kontenerów przy użyciu wiersza polecenia platformy Azure.
+keywords: Usługa aplikacji Azure, aplikacji sieci web, interfejsu wiersza polecenia, linux, oss
 services: app-service
-documentationCenter: 
+documentationCenter: ''
 author: ahmedelnably
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24105393"
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>Zarządzanie aplikacją sieci Web dla kontenerów przy użyciu wiersza polecenia platformy Azure
 

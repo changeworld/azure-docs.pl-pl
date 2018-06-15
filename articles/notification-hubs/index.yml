@@ -18,6 +18,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: pl-PL
   ms.lasthandoff: 05/07/2018
+  ms.locfileid: "33779042"
 abstract:
   description: Dowiedz się, jak używać usługi Notification Hubs, czyli wieloplatformowego i skalowalnego aparatu obsługującego powiadomienia wypychane, aby szybko wysyłać miliony wiadomości do aplikacji działających na urządzeniach różnych typów (z systemem Android, iOS, Windows, Windows Phone, Baidu lub Kindle). <p>W samouczkach, dokumentacji interfejsu API i innych dokumentach pokazano, jak skonfigurować i wysyłać powiadomienia wypychane z dowolnego zaplecza na dowolne urządzenie mobilne.</p>
   aside:

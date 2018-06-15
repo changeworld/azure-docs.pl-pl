@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33778498"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Indeksowanie dokumentów w magazynie obiektów Blob Azure o usłudze Azure Search
 W tym artykule przedstawiono sposób użycia usługi Azure Search w celu indeksowania dokumentów (takich jak PDF, dokumentów Microsoft Office i kilka innych typowych formatach) przechowywanych w magazynie obiektów Blob platformy Azure. Po pierwsze wyjaśniono podstawowe informacje o instalowaniu i konfigurowaniu indeksatora obiektu blob. Następnie zapewnia lepszą badań zachowania i scenariusze jest prawdopodobnie mogą wystąpić.

@@ -1,7 +1,7 @@
 ---
-title: "Ustaw Terraform używany do tworzenia skali maszyny wirtualnej platformy Azure z pakujący niestandardowego obrazu"
-description: "Użyj Terraform, aby skonfigurować i wersji zestawu skalowania maszyny wirtualnej platformy Azure z niestandardowego obrazu generowane przez pakujący (wraz z sieci wirtualnej i zarządzanych dołączonych dysków)."
-keywords: "terraform, devops, skalowanie maszyny ustawiony, wirtualnych, sieci, magazynu, modułów, niestandardowych obrazów, pakujący"
+title: Ustaw Terraform używany do tworzenia skali maszyny wirtualnej platformy Azure z pakujący niestandardowego obrazu
+description: Użyj Terraform, aby skonfigurować i wersji zestawu skalowania maszyny wirtualnej platformy Azure z niestandardowego obrazu generowane przez pakujący (wraz z sieci wirtualnej i zarządzanych dołączonych dysków).
+keywords: terraform, devops, skalowanie maszyny ustawiony, wirtualnych, sieci, magazynu, modułów, niestandardowych obrazów, pakujący
 author: VaijanathB
 ms.author: tarcher
 ms.date: 10/29/2017
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/01/2017
+ms.locfileid: "23945856"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Ustaw Terraform używany do tworzenia skali maszyny wirtualnej platformy Azure z pakujący niestandardowego obrazu
 

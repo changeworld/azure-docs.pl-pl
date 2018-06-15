@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33771028"
 ---
 # <a name="what-is-azure-hdinsight-and-the-hadoop-technology-stack"></a>Co to jest usługa Azure HDInsight oraz stos technologii Hadoop?
 Ten artykuł zawiera wprowadzenie do usługi Apache Hadoop w usłudze Azure HDInsight. Azure HDInsight jest w pełni zarządzaną usługą analityczną typu „open source” o szerokim zakresie, z przeznaczeniem dla przedsiębiorstw. Można używać z nią struktur typu „open source” takich jak Hadoop, Spark, Hive, LLAP, Kafka, Storm, R i nie tylko. 

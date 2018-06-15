@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33787633"
 ---
 # <a name="view-the-monthly-estimated-lab-cost-trend-in-azure-devtest-labs"></a>Wyświetl trend miesięczny koszt szacowany laboratorium w usłudze Azure DevTest Labs
 Funkcja zarządzania koszt DevTest Labs pomaga śledzić koszt laboratorium. W tym artykule przedstawiono sposób użycia **miesięczny Trend szacowany koszt** wykresu, aby wyświetlić bieżącego miesiąca kalendarzowego szacowany koszt do daty i szacowany koszt koniec miesiąca dla bieżącego miesiąca kalendarzowego. W tym artykule przedstawiono również sposób lepiej zarządzać kosztami laboratorium, ustawiając wydatków progi i obiekty docelowe, po osiągnięciu wyzwalacza DevTest Labs zgłosić wyników.

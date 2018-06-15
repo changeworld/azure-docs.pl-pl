@@ -21,6 +21,7 @@ ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34012482"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Żądany stan konfiguracji rozszerzenia przy użyciu szablonów usługi Azure Resource Manager
 

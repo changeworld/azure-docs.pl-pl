@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33787563"
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>Użyj Azure DevTest Labs dla deweloperów
 Azure DevTest Labs umożliwia wdrożenie wielu kluczowych scenariuszy, ale jednego ze scenariuszy głównej polega na użyciu DevTest Labs umożliwiający przechowywanie tam maszyn programowanie dla deweloperów. W tym scenariuszu DevTest Labs zapewnia następujące korzyści:

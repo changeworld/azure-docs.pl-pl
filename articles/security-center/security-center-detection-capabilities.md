@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894258"
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Funkcje wykrywania usługi Azure Security Center
 W tym dokumencie omówiono zaawansowane funkcje wykrywania usługi Azure Security Center, która ułatwia identyfikację aktywnych zagrożeń atakujących zasoby platformy Microsoft Azure i udostępnia potrzebne informacje w celu szybkiego reagowania.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33789411"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Elementów Webhook Azure używana do monitorowania usługi Media Services zadania powiadomienia z platformą .NET
 Po uruchomieniu zadania często wymagają sposób, aby śledzić postęp zadania. Powiadomienia zadań usługi Media Services można monitorować za pomocą elementów Webhook Azure lub [magazynu kolejek Azure](media-services-dotnet-check-job-progress-with-queues.md). W tym artykule przedstawiono sposób pracy z elementów webhook.

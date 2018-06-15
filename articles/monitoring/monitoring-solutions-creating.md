@@ -17,9 +17,10 @@ ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 92089904941ae913f1992a4407083bfcae010f2d
 ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33887860"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Projektowanie i kompilowanie rozwiązania do zarządzania na platformie Azure (wersja zapoznawcza)
 > [!NOTE]

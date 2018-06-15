@@ -18,6 +18,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33937236"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Sposób autoryzowania konta dewelopera w usłudze Azure API Management przy użyciu protokołu OAuth 2.0
 Obsługuje wiele interfejsów API [OAuth 2.0](http://oauth.net/2/) Zabezpiecz interfejs API i sprawdź, czy tylko prawidłowe użytkowników i ich tylko dostęp do zasobów, do których jest uprawniony. Aby można było używać interakcyjne konsoli dewelopera usługi Azure API Management z tych interfejsów API, usługę pozwala na skonfigurowanie wystąpienia usługi do pracy z Twojej OAuth 2.0 włączone interfejsu API.

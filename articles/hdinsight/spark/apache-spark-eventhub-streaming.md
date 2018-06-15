@@ -15,9 +15,10 @@ ms.date: 05/07/2018
 ms.author: jgao
 ms.openlocfilehash: 9b59f5d58234aaf8f8385f722d6659548e066933
 ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33787255"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-spark-in-hdinsight"></a>Samouczek: Proces tweetów przy użyciu usługi Azure Event Hubs i Spark w usłudze HDInsight
 

@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788221"
 ---
 # <a name="create-clips-with-azure-media-clipper-in-the-portal"></a>Utwórz klipy z usługi Azure Media funkcji tworzenia wycinków w portalu
 Azure Media funkcji tworzenia wycinków w portalu służy do tworzenia klipy z zasobów kont usługi multimediów. Aby rozpocząć, przejdź do Twojego konta usługi media services w portalu. Następnie wybierz pozycję **Subclip** kartę.

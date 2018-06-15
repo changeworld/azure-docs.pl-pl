@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "23945884"
 ---
 # <a name="filters-in-log-analytics-views"></a>Filtry w widokach analizy dzienników
 A **filtru** w [wyświetlić analizy dzienników](log-analytics-view-designer.md) umożliwia filtrowanie danych w widoku przez wartość określonej właściwości bez modyfikowania samego widoku.  Na przykład może pozwolić użytkownikom widoku, aby filtrować widok danych tylko z określonego komputera lub zestawu komputerów.  Można utworzyć wiele filtrów w jednym widoku pozwoli użytkownikom na filtrowanie przez wiele właściwości.  W tym artykule opisano sposób używania filtru i dodaj je do widoku niestandardowego.

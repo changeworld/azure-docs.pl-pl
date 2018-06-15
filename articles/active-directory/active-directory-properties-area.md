@@ -16,9 +16,10 @@ ms.reviewer: bpham
 ms.custom: it-pro
 ms.openlocfilehash: 8cdf30ed09601a31529073eaedd4ab53780157d5
 ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34077550"
 ---
 # <a name="how-to-add-your-organizations-privacy-info-in-azure-active-directory"></a>Porada: Dodawanie informacji o prywatności organizacji w usłudze Azure Active Directory
 W tym artykule opisano, jak dodać informacje dotyczące ochrony prywatności organizacji dzierżawcy usługi Azure Active Directory (Azure AD), za pośrednictwem portalu Azure Administrator dzierżawy.

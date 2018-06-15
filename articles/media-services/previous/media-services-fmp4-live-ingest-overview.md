@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788977"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Specyfikacja pozyskiwania Azure Media Services MP4 pofragmentowane na żywo
 Określenie tej wartości opisano protokołu i format pofragmentowane na podstawie MP4 na żywo przesyłania strumieniowego wprowadzanie do usługi Azure Media Services. Usługa Media Services udostępnia usługi transmisji strumieniowej na żywo, używanego przez klientów do strumienia wydarzeń na żywo i emisji zawartości w czasie rzeczywistym za pomocą usługi Azure jako platformy w chmurze. W tym dokumencie omówiono również najlepsze rozwiązania dotyczące tworzenia wysoce nadmiarowe i niezawodne na żywo pozyskiwania mechanizmów.

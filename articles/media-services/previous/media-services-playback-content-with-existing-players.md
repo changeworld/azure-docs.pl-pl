@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788480"
 ---
 # <a name="playing-your-content-with-existing-players"></a>Odtwarzanie zawartości z istniejących graczy
 Usługa Azure Media Services obsługuje wiele popularnych formatach przesyłania strumieniowego, takie jak Smooth Streaming, HTTP transmisji strumieniowej na żywo i MPEG-Dash. W tym temacie punktów do istniejących odtwarzaczy, których można użyć do testowania strumienie.

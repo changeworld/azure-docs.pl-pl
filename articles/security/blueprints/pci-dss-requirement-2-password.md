@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894164"
 ---
 # <a name="password-requirements-for-pci-dss-compliant-environments"></a>Wymagania dotyczące hasła dla środowisk standardem PCI DSS 
 ## <a name="pci-dss-requirement-2"></a>PCI DSS wymaganie 2
