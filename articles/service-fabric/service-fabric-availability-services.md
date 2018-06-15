@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206253"
 ---
 # <a name="availability-of-service-fabric-services"></a>Dostępność usług sieci szkieletowej usług
 Ten artykuł zawiera omówienie zachowywanie dostępności usługi sieć szkieletowa usług Azure.

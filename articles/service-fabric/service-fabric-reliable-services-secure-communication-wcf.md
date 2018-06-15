@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205743"
 ---
 # <a name="secure-wcf-based-communications-for-a-service"></a>Zabezpieczenia komunikacji usługi WCF
 Zabezpieczeń jest jednym z najważniejszych aspektów komunikacji. Struktura aplikacji niezawodne usługi zapewnia kilka stosy wbudowane komunikacji i narzędzi, których można użyć w celu poprawy bezpieczeństwa. Ten artykuł zawiera informacje o sposób poprawiania zabezpieczeń podczas korzystania z usług zdalnych.

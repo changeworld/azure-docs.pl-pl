@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209342"
 ---
 # <a name="polymorphism-in-the-reliable-actors-framework"></a>Polimorfizm w ramach Reliable Actors
 Framework Reliable Actors umożliwia tworzenie złośliwych użytkowników używających wiele z tych samych metod, które należy użyć w projekcie zorientowane obiektowo. Jeden z tych metod jest polimorfizm, co umożliwia typów i interfejsy odziedziczone po więcej uogólniony elementów nadrzędnych. Dziedziczenie w ramach Reliable Actors zazwyczaj następuje modelu .NET z kilku dodatkowe ograniczenia. W przypadku języka Java/Linux wynika z modelu Java.

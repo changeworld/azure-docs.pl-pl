@@ -19,6 +19,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30284000"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Połącz z analizą dzienników programu Configuration Manager
 Możesz łączyć środowiska System Center Configuration Manager Analiza dzienników Azure na synchronizowanie danych kolekcji urządzeń i odwołać kolekcjach analizy dzienników i automatyzacji Azure.  

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206795"
 ---
 # <a name="actor-timers-and-reminders"></a>Czasomierze aktora i przypomnieniami
 Złośliwych użytkowników można zaplanować okresowe pracy od samych siebie rejestrując czasomierze lub przypomnienia. W tym artykule przedstawiono sposób użycia czasomierze i przypomnieniami i wyjaśniono różnice między nimi.

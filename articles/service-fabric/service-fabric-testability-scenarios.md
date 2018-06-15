@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208757"
 ---
 # <a name="testability-scenarios"></a>Scenariusze testowania
 Dużych systemach rozproszonych jak infrastruktury chmury jest z założenia gwarantowane. Sieć szkieletowa usług Azure zapewnia deweloperom możliwość zapisu do uruchamiania na szczycie infrastruktury niepewna. Aby można było zapisać wysokiej jakości usług, deweloperzy muszą móc wywoływać takie zawodnych infrastruktury do testowania stabilność swoich usług.

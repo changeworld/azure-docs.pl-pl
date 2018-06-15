@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207540"
 ---
 # <a name="service-fabric-application-scenarios"></a>Scenariusze aplikacji sieci szkieletowej usług
 Sieć szkieletowa usług Azure oferuje niezawodny i elastyczny platformę umożliwiającą zapis i uruchomić wiele typów usług i aplikacji biznesowych. Te aplikacje i mikrousług może być bezstanowe i stanowe i są równoważenia zasobów między maszynami wirtualnymi, aby zmaksymalizować wydajność. Unikatowa architektura sieci szkieletowej usług umożliwia przeprowadzanie analizy danych w czasie rzeczywistym, obliczeń w pamięci, równoległych transakcji i przetwarzania zdarzeń w aplikacjach w pobliżu. Można łatwo skalować aplikacji w górę lub w dół (naprawdę przychodzący lub wychodzący), w zależności od zmieniających się wymagań dotyczących zasobów.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34210498"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Uruchamianie skryptu uruchamiania usługi za pomocą użytkownika lokalnego lub konta systemowego
 Przed uruchamiania pliku wykonywalnego usługi Service Fabric może być konieczne uruchomienie dodatkowych czynności konfiguracyjnych lub ustawień.  Na przykład Konfigurowanie zmiennych środowiskowych. Można określić skrypt do uruchomienia przed rozpoczęciem plik wykonywalny usługi uruchamiania w manifeście usługi dla usługi. Konfigurując zasady Uruchom jako dla usługi punktu wejścia instalacji można zmienić konto, które wykonywalnego konfiguracji jest uruchamiana.  Punkt wejścia oddzielne ustawienia umożliwia uruchamianie konfigurację wysokiej privilged krótkim czasie, więc pliku wykonywalnego hosta usługi, nie trzeba uruchomić z wysokiego poziomu uprawnień przez dłuższy czas.

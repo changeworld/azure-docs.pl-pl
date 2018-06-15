@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206564"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Debugowanie aplikacji sieci szkieletowej usług za pomocą programu Visual Studio
 > [!div class="op_single_selector"]

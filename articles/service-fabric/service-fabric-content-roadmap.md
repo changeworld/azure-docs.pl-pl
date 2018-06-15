@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212827"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Dlatego chcesz Dowiedz się więcej o sieci szkieletowej usług?
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych i niezawodnych mikrousług oraz zarządzanie nimi.  Sieć szkieletowa usług ma dużej powierzchni, jednak i jest dużo, aby dowiedzieć się więcej.  Ten artykuł przedstawia streszczenie sieci szkieletowej usług oraz podstawowe koncepcje programowania modeli, cyklem życia aplikacji, testowania, klastrami i monitorowanie kondycji. Odczyt [omówienie](service-fabric-overview.md) i [co to są mikrousług?](service-fabric-overview-microservices.md) wprowadzenie i jak sieci szkieletowej usług może służyć do tworzenia mikrousług. W tym artykule nie zawiera pełną listę zawartości, ale łącze do omówienie i pobieranie rozpoczęte artykułów dla każdej części sieci szkieletowej usług. 

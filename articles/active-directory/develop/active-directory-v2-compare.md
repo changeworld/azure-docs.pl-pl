@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156810"
 ---
 # <a name="whats-different-about-the-v20-endpoint"></a>Czym się różni punktu końcowego v2.0?
 Jeśli zaznajomieni z usługą Azure Active Directory lub mieć zintegrowanych aplikacji z usługą Azure AD w ciągu ostatnich, może być pewne różnice w punkcie końcowym v2.0, nie oczekuje. Ten dokument uwidacznia różnic zrozumienie.

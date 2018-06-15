@@ -1,11 +1,11 @@
 ---
-title: "Zasady uwierzytelniania usługi Azure API Management | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat zasad uwierzytelniania można używać usługi Azure API Management."
+title: Zasady uwierzytelniania usługi Azure API Management | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat zasad uwierzytelniania można używać usługi Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 061702a7-3a78-472b-a54a-f3b1e332490d
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/04/2017
+ms.locfileid: "26127763"
 ---
 # <a name="api-management-authentication-policies"></a>Zarządzanie interfejsami API zasady uwierzytelniania
 W tym temacie znajdują się informacje na następujące zasady usługi API Management. Aby uzyskać informacje dotyczące dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  

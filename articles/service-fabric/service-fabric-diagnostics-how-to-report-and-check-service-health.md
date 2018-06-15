@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208424"
 ---
 # <a name="report-and-check-service-health"></a>Tworzenie raportów i sprawdzanie kondycji usług
 W przypadku wystąpienia problemów z usługami możliwość uwzględniał i naprawić zdarzenia i awarie zależy od możliwości szybko wykrywać problemy. Jeśli zgłaszanie problemów i błędów Menedżera kondycji sieci szkieletowej usług Azure w kodzie usługi, możesz użyć standardowego monitorowania narzędzi dostarczanych do sprawdzania stanu kondycji sieci szkieletowej usług kondycji.

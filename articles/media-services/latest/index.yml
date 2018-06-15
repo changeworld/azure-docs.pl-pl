@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: pl-PL
   ms.lasthandoff: 05/10/2018
+  ms.locfileid: "33940714"
 abstract:
   description: Dowiedz się, jak przeprowadzać przesyłanie strumieniowe wideo na żądanie, prowadzić emisję na żywo i analizować filmy wideo za pomocą usługi Media Services. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiające sposób zapewnienia bezpiecznej transmisji strumieniowej materiałów wideo lub audio na żywo lub na żądanie, którą można skalować na potrzeby milionów użytkowników.
 sections:

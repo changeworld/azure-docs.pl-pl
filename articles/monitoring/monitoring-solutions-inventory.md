@@ -19,6 +19,7 @@ ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34010255"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Szczegóły pobierania danych rozwiązań zarządzania Azure
 Ten artykuł zawiera listę [rozwiązań w zakresie zarządzania](monitoring-solutions.md) udostępniana przez firmę Microsoft z łączami do ich szczegółowej dokumentacji.  Zawiera także informacje o ich metody i częstotliwości zbierania danych do analizy dzienników.  Do identyfikowania różnych rozwiązań dostępnych i zrozumieć wymagania przepływu i połączenia danych dla rozwiązań w zakresie zarządzania różnych, można użyć informacje w tym artykule. 

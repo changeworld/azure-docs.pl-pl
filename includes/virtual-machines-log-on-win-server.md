@@ -13,6 +13,7 @@ ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34012817"
 ---
 1. Kliknij przycisk **Connect** przycisk na stronie właściwości maszyny wirtualnej. 
 2. W **nawiązywanie połączenia z maszyną wirtualną** , przechowywać, wybierz odpowiednie opcje i kliknij przycisk **plik RDP Pobierz**.

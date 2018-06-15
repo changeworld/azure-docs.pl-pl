@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206440"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Odzyskiwanie po awarii w sieci szkieletowej usług Azure
 Istotną częścią dostarczanie wysokiej dostępności jest zapewnienie przełączniki wszystkich różnych typów błędów usługi. Jest to szczególnie ważne w przypadku błędów, które są nieplanowane i poza nimi formantu. W tym artykule opisano niektóre często używanych trybów awarii, może być awarii, jeśli nie modelowane i zarządzane prawidłowo. Omówiono także czynniki oraz czynności do wykonania, jeśli mimo wszystko się stało po awarii. Celem jest ograniczenie lub wyeliminowania ryzyko utraty danych lub przestoju, gdy występują awarie, planowane lub w przeciwnym razie wystąpić.

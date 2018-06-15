@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211069"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Wdrażanie klastra usługi sieć szkieletowa usług używającej nazwa pospolita certyfikatu zamiast odcisk palca
 Nie dwa certyfikaty mogą mieć tym samym odciskiem palca, dzięki czemu Przerzucanie certyfikatów klastra lub zarządzania trudne. Wiele certyfikatów, mogą jednak mieć tę samą nazwę pospolitą lub temat.  Klastra przy użyciu wspólnej nazwy certyfikatów sprawia, że certyfikat zarządzania jest znacznie prostsza. W tym artykule opisano sposób wdrażania klastra sieci szkieletowej usług, aby użyć nazwa pospolita certyfikatu zamiast odcisk palca certyfikatu.

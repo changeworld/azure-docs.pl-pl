@@ -1,14 +1,14 @@
 ---
-title: "Tworzenie obrazów kontenerów dla usługi Azure Service Fabric | Microsoft Docs"
-description: "Z tego samouczka dowiesz się, jak utworzyć obrazy kontenerów dla aplikacji obsługującej wiele kontenerów usługi Service Fabric."
+title: Tworzenie obrazów kontenerów dla usługi Azure Service Fabric | Microsoft Docs
+description: Z tego samouczka dowiesz się, jak utworzyć obrazy kontenerów dla aplikacji obsługującej wiele kontenerów usługi Service Fabric.
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: suhuruli
 manager: timlt
 editor: suhuruli
 tags: servicefabric
 keywords: Docker, Containers, Microservices, Service Fabric, Azure
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.topic: tutorial
 ms.tgt_pltfrm: na
@@ -21,6 +21,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29558189"
 ---
 # <a name="tutorial-create-container-images-for-service-fabric"></a>Samouczek: tworzenie obrazów kontenerów dla usługi Service Fabric
 

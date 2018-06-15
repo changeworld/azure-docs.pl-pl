@@ -20,6 +20,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34161026"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Rozwiązywanie problemów z automatycznie skalowana za pomocą zestawów skali maszyny wirtualnej
 **Problem** — po utworzeniu Skalowanie automatyczne infrastruktury w usłudze Azure Resource Manager za pomocą zestawów skali maszyny wirtualnej — na przykład przy wdrażaniu szablonu podobny do tego: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale — masz zdefiniowanych reguł skalowania i działa ponosić, z wyjątkiem nie niezależnie od tego, ile obciążenia umieszczone na maszynach wirtualnych, nie skalowania automatycznego.

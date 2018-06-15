@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205131"
 ---
 # <a name="throttling-the-service-fabric-cluster-resource-manager"></a>Ograniczanie Menedżera zasobów klastra sieci szkieletowej usług
 Nawet jeśli Menedżera zasobów klastra został prawidłowo skonfigurowany, można pobrać zakłócona klastra. Na przykład może być jednocześnie węzła błędów domeny awarii i — co się stanie po, który wystąpił podczas uaktualniania? Menedżer zasobów klastra zawsze próbuje naprawić wszystkie elementy, korzysta z zasobów klastra próby reorganizować i napraw klastra. Limity zapewniają backstop tak, aby klaster może używać zasobów do utrwalania — węzły wrócić, poprawianego partycje sieciowe, wdrożony poprawiony usługi bits.

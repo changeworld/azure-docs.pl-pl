@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205148"
 ---
 # <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Ręcznie przerzucane certyfikatu klastra sieci szkieletowej usług
 Gdy certyfikat z klastra usługi sieć szkieletowa jest bliski wygaśnięcia, musisz zaktualizować certyfikat.  Przerzucanie certyfikatów jest proste, jeśli klaster został [Ustaw maksymalnie Użyj certyfikatów na podstawie nazwy wspólnej](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (zamiast odcisk palca).  Uzyskaj nowy certyfikat od urzędu certyfikacji z nową datą wygaśnięcia.  Certyfikaty z podpisem własnym, włącznie z wygenerowanymi w przypadku wdrażania klastra sieci szkieletowej usług w portalu Azure, nie są obsługiwane.  Nowy certyfikat musi mieć tę samą nazwę pospolitą jako starszych certyfikatów. 

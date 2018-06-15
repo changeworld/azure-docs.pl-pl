@@ -13,6 +13,7 @@ ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34059882"
 ---
 > [!IMPORTANT]
 > Usługa ACR Build jest obecnie dostępna w wersji zapoznawczej i jest obsługiwana wyłącznie przez rejestry kontenerów platformy Azure w regionach **Wschodnie stany USA** i **Europa Zachodnia**. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania][terms-of-use]. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.

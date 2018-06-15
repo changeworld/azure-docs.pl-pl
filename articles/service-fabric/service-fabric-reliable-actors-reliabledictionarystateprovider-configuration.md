@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34213116"
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Konfigurowanie Reliable Actors — ReliableDictionaryActorStateProvider
 Domyślna konfiguracja ReliableDictionaryActorStateProvider można modyfikować, zmieniając pliku settings.xml generowane w głównym pakietu programu Visual Studio w folderze konfiguracji dla określonego aktora.

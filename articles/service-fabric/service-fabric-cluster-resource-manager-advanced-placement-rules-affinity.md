@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34204859"
 ---
 # <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Konfigurowanie i używanie koligację usługi w sieci szkieletowej usług
 Koligacja jest formant, który znajduje się głównie do pomóc w usprawnieniu przejścia większych wbudowanymi aplikacji w chmurze i mikrousług świecie. Jest również używany jako optymalizacji dla poprawy wydajności usług, mimo że ten sposób może mieć efekty uboczne.

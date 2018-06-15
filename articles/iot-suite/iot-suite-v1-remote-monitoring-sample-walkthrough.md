@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
-ms.openlocfilehash: 3aa9bb9c785bb69c80d9bb33e595393a5a1d220a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 871098642f586a123d056e2da22d2fceae9bdfe5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638079"
 ---
 # <a name="remote-monitoring-preconfigured-solution-walkthrough"></a>Przewodnik po wstępnie skonfigurowanym rozwiązaniu monitorowania zdalnego
 
@@ -35,7 +36,7 @@ Ten artykuł przeprowadzi Cię przez niektóre kluczowe elementy rozwiązania do
 
 Poniższy diagram przedstawia składniki logiczne wstępnie skonfigurowanego rozwiązania:
 
-![Architektura logiczna](media/iot-suite-remote-monitoring-sample-walkthrough/remote-monitoring-architecture-updated.png)
+![Architektura logiczna](media/iot-suite-v1-remote-monitoring-sample-walkthrough/remote-monitoring-architecture-updated.png)
 
 ## <a name="microservices--docker-containers"></a>Mikrousługi i kontenery platformy Docker
 Zdalne monitorowanie to pierwsze z naszych wstępnie skonfigurowanych rozwiązań, które korzysta z architektury mikrousług. Rozwiązanie jest dostępne zarówno na platformie [.NET](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet), jak i [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java).
@@ -254,11 +255,11 @@ Rozwiązanie przechowuje informacje o połączonych z nim urządzeniach w bazie 
 
 ## <a name="solution-portal"></a>Portal rozwiązania
 
-Portal rozwiązania to aplikacja sieci Web wdrożona w ramach wstępnie skonfigurowanego rozwiązania. Najważniejsze strony w portalu rozwiązania to pulpit nawigacyjny i lista urządzeń.
+Portal rozwiązania to aplikacja internetowa wdrożona w ramach wstępnie skonfigurowanego rozwiązania. Najważniejsze strony w portalu rozwiązania to pulpit nawigacyjny i lista urządzeń.
 
 ### <a name="dashboard"></a>Pulpit nawigacyjny
 
-Na tej stronie aplikacji sieci Web są używane kontrolki JavaScript usługi Power BI (zobacz [repozytorium PowerBI-visuals](https://www.github.com/Microsoft/PowerBI-visuals)), które umożliwiają wizualizację danych telemetrycznych z urządzeń. Rozwiązanie zapisuje dane telemetryczne w magazynie obiektów blob, używając zadań telemetrii usługi ASA.
+Na tej stronie aplikacji internetowej są używane kontrolki JavaScript usługi Power BI (zobacz [repozytorium PowerBI-visuals](https://www.github.com/Microsoft/PowerBI-visuals)), które umożliwiają wizualizację danych telemetrycznych z urządzeń. Rozwiązanie zapisuje dane telemetryczne w magazynie obiektów blob, używając zadań telemetrii usługi ASA.
 
 ### <a name="device-list"></a>Lista urządzeń
 

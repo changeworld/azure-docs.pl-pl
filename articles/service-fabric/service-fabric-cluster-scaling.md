@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208033"
 ---
 # <a name="scaling-service-fabric-clusters"></a>Klastry skalowania usługi Service Fabric
 Klaster sieci szkieletowej usług jest zestawem połączonych z siecią maszyn wirtualnych lub fizycznych, w których są wdrożone i zarządzane z mikrousług. Komputer lub maszynę Wirtualną, która jest częścią klastra jest nazywany węzłem. Klastry może zawierać potencjalnie tysiącach węzłów. Po utworzeniu klastra sieci szkieletowej usług, można skalować klastra w poziomie (zmianę liczby węzłów) lub w pionie (zmienić zasoby węzłów).  Można skalować klastra w dowolnym momencie, nawet jeśli obciążeń są uruchomione w klastrze.  Ponieważ skalowanie klastra, aplikacje automatycznie skalować również.

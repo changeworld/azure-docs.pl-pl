@@ -1,8 +1,8 @@
 ---
-title: "Przy użyciu Ansible w usłudze Azure"
-description: "Wprowadzenie do korzystania z Ansible do automatyzuje obsługę chmury, zarządzanie konfiguracją i wdrożeń aplikacji."
+title: Przy użyciu Ansible w usłudze Azure
+description: Wprowadzenie do korzystania z Ansible do automatyzuje obsługę chmury, zarządzanie konfiguracją i wdrożeń aplikacji.
 ms.service: ansible
-keywords: "ansible, azure, przegląd, moduły ansible, udostępniania chmury, wdrożenia aplikacji, devops, zarządzania konfiguracją, ansible playbooks"
+keywords: ansible, azure, przegląd, moduły ansible, udostępniania chmury, wdrożenia aplikacji, devops, zarządzania konfiguracją, ansible playbooks
 author: tomarcher
 manager: routlaw
 ms.author: tarcher
@@ -13,6 +13,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28212106"
 ---
 # <a name="ansible-with-azure"></a>Ansible z platformy Azure
 

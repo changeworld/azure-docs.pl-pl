@@ -9,11 +9,12 @@ ms.topic: overview
 ms.date: 05/08/2018
 ms.author: stevelas
 ms.custom: mvc
-ms.openlocfilehash: 10055b75000e5affdcdef5841a8d45db8b41ef05
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 883da7d1487922f5cd986a67d7a7bded78ea3759
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34058084"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Wprowadzenie do prywatnych rejestrów kontenerów platformy Docker na platformie Azure
 
@@ -54,13 +55,10 @@ Konfiguruj zadania kompilacji usługi [ACR Build](#azure-container-registry-buil
 
 Usługa [Azure Container Registry Build](container-registry-build-overview.md) (ACR Build) to pakiet funkcji usługi Azure Container Registry, który udostępnia udoskonalone i wydajne kompilacje obrazów kontenerów platformy Docker na platformie Azure. Usługa ACR Build umożliwia rozszerzanie wewnętrznej pętli programowania o chmurę dzięki odciążaniu operacji `docker build` na platformie Azure. Konfiguruj zadania kompilacji w celu automatyzowania potoku poprawiania platformy i systemu operacyjnego kontenera, gdy zespół zatwierdza kod w ramach kontroli źródła.
 
-> [!NOTE]
-> Usługa ACR Build jest obecnie dostępna w wersji zapoznawczej i jest obsługiwana wyłącznie przez rejestry kontenerów platformy Azure w regionach **Wschodnie stany USA** (eastus) i **Europa Zachodnia** (westeurope). Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania][terms-of-use]. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
+[!INCLUDE [container-registry-build-preview-note](../../includes/container-registry-build-preview-note.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 
 * [Create a container registry using the Azure portal](container-registry-get-started-portal.md) (Tworzenie rejestru kontenerów za pomocą witryny Azure Portal)
 * [Create a container registry using the Azure CLI](container-registry-get-started-azure-cli.md) (Tworzenie rejestru kontenerów za pomocą interfejsu wiersza polecenia platformy Azure)
 * [Automate OS and framework patching with ACR Build](container-registry-build-overview.md) (Preview) (Automatyzowanie poprawiania systemu operacyjnego i platformy przy użyciu usługi ACR Build (wersja zapoznawcza))
-
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

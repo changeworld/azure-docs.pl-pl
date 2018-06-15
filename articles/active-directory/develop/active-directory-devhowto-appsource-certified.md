@@ -17,11 +17,12 @@ ms.date: 08/03/2017
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 72516ce84fc9a4cf2657548be4ef98e75e46d550
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: HT
+ms.openlocfilehash: 844c19803f57987f4435d013cd12aa3d1ef8aeb8
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257535"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Jak uzyskać AppSource certyfikowane dla usługi Azure Active Directory
 [Microsoft AppSource](https://appsource.microsoft.com/) jest docelowy dla użytkowników biznesowych wykrywanie, spróbuj i zarządzanie nimi z biznesowych aplikacji SaaS (SaaS, jak i dodatku do istniejących produktów Microsoft SaaS).
@@ -43,7 +44,7 @@ Aby włączyć obsługi wielu dzierżawców w swojej aplikacji:
 Aby uzyskać więcej informacji na temat obsługi wielu dzierżawców, zobacz: [jak zarejestrować każdy użytkownik usługi Azure Active Directory (AD) przy użyciu wzorca wielodostępnych aplikacji](./active-directory-devhowto-multi-tenant-overview.md).
 
 ### <a name="single-tenant-applications"></a>Aplikacje pojedynczej dzierżawy
-Aplikacje, które akceptują tylko logowania użytkowników zdefiniowanych wystąpienia usługi Azure Active Directory są określane jako *aplikacji pojedynczej dzierżawy*. Użytkownicy zewnętrzni (łącznie z konta służbowego z innych organizacji lub osobiste konto) można Zaloguj się do aplikacji pojedynczej dzierżawy, po dodaniu każdego użytkownika jako *konta gościa* do wystąpienia usługi Azure Active Directory, że aplikacja jest zarejestrowany. Jako konta gościa można dodać użytkowników do usługi Azure Active Directory za pośrednictwem [ *współpracy B2B usługi Azure AD* ](../active-directory-b2b-what-is-azure-ad-b2b.md) - i mogą to robić [programowo](../active-directory-b2b-code-samples.md). Gdy użytkownik zostanie dodany jako konta gościa do usługi Azure Active Directory, wiadomość e-mail z zaproszeniem są wysyłane do użytkownika, który musi zaakceptować zaproszenie, klikając łącze w wiadomości e-mail z zaproszeniem. Zaproszenia, które są wysyłane do dodatkowych użytkowników w organizacji zaproszenia, która jest również członkiem organizacji partnerskiej odpowiedzialnej za nie są wymagane, aby zaakceptować zaproszenie do logowania.
+Aplikacje, które akceptują tylko logowania użytkowników zdefiniowanych wystąpienia usługi Azure Active Directory są określane jako *aplikacji pojedynczej dzierżawy*. Użytkownicy zewnętrzni (łącznie z konta służbowego z innych organizacji lub osobiste konto) można Zaloguj się do aplikacji pojedynczej dzierżawy, po dodaniu każdego użytkownika jako *konta gościa* do wystąpienia usługi Azure Active Directory, że aplikacja jest zarejestrowany. Jako konta gościa można dodać użytkowników do usługi Azure Active Directory za pośrednictwem [ *współpracy B2B usługi Azure AD* ](../b2b/what-is-b2b.md) - i mogą to robić [programowo](../b2b/code-samples.md). Gdy użytkownik zostanie dodany jako konta gościa do usługi Azure Active Directory, wiadomość e-mail z zaproszeniem są wysyłane do użytkownika, który musi zaakceptować zaproszenie, klikając łącze w wiadomości e-mail z zaproszeniem. Zaproszenia, które są wysyłane do dodatkowych użytkowników w organizacji zaproszenia, która jest również członkiem organizacji partnerskiej odpowiedzialnej za nie są wymagane, aby zaakceptować zaproszenie do logowania.
 
 Aplikacje pojedynczego dzierżawcy można włączyć *kontaktu mnie* środowisko, ale jeśli chcesz włączyć jednym kliknięciem / bezpłatnej wersji próbnej środowisko zalecający AppSource włączenia obsługi wielu dzierżawców w swojej aplikacji zamiast tego.
 

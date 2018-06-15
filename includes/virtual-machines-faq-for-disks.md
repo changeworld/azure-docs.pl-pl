@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: bf0853b137e65ddd6ad40483c50fc8debb62f920
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 812f11a1ced3bac765441bf66f402abb4da4bc3f
+ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34826552"
+ms.lasthandoff: 06/12/2018
+ms.locfileid: "35414573"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Często zadawane pytania dotyczące dyski maszyny Wirtualnej Azure IaaS i zarządzane i niezarządzane — wersja premium
 
@@ -45,13 +45,9 @@ Cennik dysków zarządzanych w warstwie premium jest taka sama jak dyski premium
 
 Tak. Można zmienić typu konta magazynu dysków zarządzanych za pomocą portalu Azure, programu PowerShell lub wiersza polecenia platformy Azure.
 
-**Czy istnieje sposób, aby I skopiuj lub wyeksportować dysków zarządzanych do konta magazynu prywatnej?**
-
-Tak. Dyski zarządzane można wyeksportować za pomocą portalu Azure, programu PowerShell lub wiersza polecenia platformy Azure.
-
 **Aby utworzyć dysków zarządzanych za pomocą innej subskrypcji można użyć pliku VHD na koncie magazynu platformy Azure?**
 
-Nie.
+Tak.
 
 **Aby utworzyć dysków zarządzanych w innym regionie można użyć pliku VHD na koncie magazynu platformy Azure?**
 
@@ -59,7 +55,7 @@ Nie.
 
 **Czy istnieją jakiekolwiek ograniczenia skali dla klientów korzystających z zarządzanego dyski?**
 
-Dyski zarządzane eliminuje limity skojarzonego z kontami magazynu. Jednak maksymalny limit, a domyślny limit, jest 10 000 dysków zarządzanych według regionu i typ dysku dla subskrypcji.
+Dyski zarządzane eliminuje limity skojarzonego z kontami magazynu. Jednak maksymalny limit jest 50 000 dysków zarządzanych według regionu i typ dysku dla subskrypcji.
 
 **Czy można wykonać przyrostowej migawki dysków zarządzanych?**
 
@@ -95,7 +91,7 @@ Zarządzane dysków obsługuje trzy kluczowe domyślne role:
 
 **Czy istnieje sposób, aby I skopiuj lub wyeksportować dysków zarządzanych do konta magazynu prywatnej?**
 
-Można pobrać sygnatury dostępu współdzielonego tylko do odczytu identyfikatora URI dla dysków zarządzanych i go użyć do kopiowania zawartości do magazynu konta lub lokalnego magazynu prywatnych.
+Można wygenerować sygnatury dostępu współdzielonego tylko do odczytu (SAS) identyfikatora URI dla dysków zarządzanych i używać go do kopiowania zawartości do konta lub lokalnego magazynu prywatnego magazynu. Korzystając z identyfikatora URI połączenia SAS za pomocą portalu Azure, programu Azure PowerShell, interfejsu wiersza polecenia Azure lub [AzCopy](../articles/storage/common/storage-use-azcopy.md)
 
 **Można utworzyć kopię dysku zarządzanego?**
 

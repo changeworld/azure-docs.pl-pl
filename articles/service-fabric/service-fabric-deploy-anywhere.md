@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34213133"
 ---
 # <a name="create-service-fabric-clusters-on-windows-server-or-linux"></a>Tworzenie klastrów sieci szkieletowej usług na serwerze z systemem Windows lub Linux
 Klaster sieci szkieletowej usług Azure to zestaw połączonych z siecią maszyn wirtualnych lub fizycznych, w których są wdrożone i zarządzane z mikrousług. Komputer lub maszynę Wirtualną, która jest częścią klastra jest nazywany węzłem klastra. Klastrów można skalować do tysięcy węzłów. Po dodaniu nowych węzłów do klastra usługi sieć szkieletowa rebalances replik partycji usługi i wystąpień przez zwiększenie liczby węzłów. Ogólne poprawia wydajność aplikacji i zmniejsza rywalizacji o dostęp do pamięci. Jeśli nie są wydajnie używane węzłów w klastrze, można zmniejszyć liczbę węzłów w klastrze. Sieć szkieletowa usług ponownie rebalances replik partycji i wystąpień między zmniejszyć liczbę węzłów w celu lepszego wykorzystania sprzętu na każdym węźle.

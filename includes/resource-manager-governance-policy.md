@@ -13,6 +13,7 @@ ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29529978"
 ---
 [Zasady usługi Azure](/azure/azure-policy/) firmowej standardów pomocy należy upewnić się, wszystkie zasoby w subskrypcji. Zasady umożliwiają zmniejszenie kosztów przez ograniczenie opcje wdrażania tych typów zasobów i jednostki magazynowe, które zostały zatwierdzone. Definiowanie reguł i akcji dla zasobów, a te reguły są automatycznie wprowadzane podczas wdrażania. Na przykład można kontrolować typów zasobów, które zostały wdrożone. Lub, można ograniczyć lokalizacje zatwierdzone dla zasobów. Niektóre zasady dotyczące akcji odmowy, a niektóre zasady dotyczące — Konfiguracja inspekcji akcji.
 

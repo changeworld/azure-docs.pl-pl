@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207227"
 ---
 # <a name="service-fabric-networking-patterns"></a>Wzorce sieci sieci szkieletowej usług
 Klaster sieci szkieletowej usług Azure można zintegrować z innymi funkcjami sieci platformy Azure. W tym artykule zostanie przedstawiony zostanie sposób tworzenia klastrów korzystających z następujących funkcji:

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212861"
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Planowanie wydajności dla aplikacji sieci szkieletowej usług
 Ten dokument jest przedstawienie sposobu oszacować ilość zasobów (procesorów CPU, pamięci RAM, dysku magazynu), należy uruchomić aplikacji sieci szkieletowej usług Azure. Bardzo często wymagań dotyczących zasobów zmiany w czasie. Tworzenie i testowanie usługi, a następnie wymaga większej ilości zasobów, przejdź do środowiska produkcyjnego i rozwoju aplikacji w popularne zwykle wymagają niewielkiej ilości zasobów. Podczas projektowania aplikacji przemyślenie długoterminowych wymagań i opcji umożliwiających usługi do skalowania, aby spełnić wymagania wysokiej klienta.

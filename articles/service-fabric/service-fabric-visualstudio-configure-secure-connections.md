@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208689"
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Skonfigurować bezpieczne połączenia z klastrem usługi sieć szkieletowa usług w programie Visual Studio
 Dowiedz się, jak bezpieczny dostęp do klastra usługi sieć szkieletowa usług Azure przy użyciu zasad kontroli dostępu skonfigurowana za pomocą programu Visual Studio.

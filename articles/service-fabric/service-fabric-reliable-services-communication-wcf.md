@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212228"
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>Komunikacja oparta na WCF stos niezawodne usługi
 Niezawodne usługi framework umożliwia autorom usługi wybierz stosu komunikacji, który ma być używany dla ich usługi. Można podłączyć stosu komunikacji wybranych przez nich za pośrednictwem **ICommunicationListener** zwrócony z [CreateServiceReplicaListeners lub CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) metody. Struktury dostarcza implementację tego stosu komunikacji oparte na systemie Windows Communication Foundation (WCF) dla autorów usługi, które mają być używane do komunikacji usługi WCF.

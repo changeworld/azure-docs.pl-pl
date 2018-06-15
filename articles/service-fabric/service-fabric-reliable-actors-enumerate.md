@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207271"
 ---
 # <a name="enumerate-service-fabric-reliable-actors"></a>Wyliczanie Reliable Actors sieci szkieletowej usług
 Usługa Reliable Actors umożliwia klientowi wyliczyć metadane dotyczące osób, które obsługuje usługę. Ponieważ usługa aktora jest partycjonowany usługi stanowej, wyliczenie jest wykonywane dla każdej partycji. Ponieważ każda partycja może zawierać wiele osób, wyliczenia jest zwracana jako zestaw wyników stronicowania. Strony są zwracane przez zapoznaniem wszystkich stron. Poniższy przykład przedstawia sposób tworzenia listy wszystkich podmiotów active w jednej partycji usługi aktora:

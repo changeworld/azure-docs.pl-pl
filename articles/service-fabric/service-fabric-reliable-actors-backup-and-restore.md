@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206870"
 ---
 # <a name="implement-reliable-actors-backup-and-restore"></a>Implementowanie Reliable Actors kopia zapasowa i przywracanie
 W poniższym przykładzie usługi aktora niestandardowych opisuje metodę kopii zapasowych danych aktora dzięki wykorzystaniu odbiornika usługi zdalne znajduje się już w `ActorService`:

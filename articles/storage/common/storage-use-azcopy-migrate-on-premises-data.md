@@ -10,11 +10,12 @@ ms.devlang: azcopy
 ms.topic: tutorial
 ms.date: 12/14/2017
 ms.author: rogarana
-ms.openlocfilehash: 1e7292cf4d647b38a6fe8ceb270ba161e548a537
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3f9735a1e5a6973ab1c1c3f575cf3aa345a3a5a4
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267447"
 ---
 #  <a name="migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>Migracja danych lokalnych do magazynu w chmurze za pomocą narzędzia AzCopy
 
@@ -22,8 +23,8 @@ Narzędzie AzCopy to narzędzie wiersza polecenia służące do kopiowania danyc
 
 Możesz pobrać dwie wersje narzędzia AzCopy:
 
-* [Narzędzie AzCopy w systemie Linux](storage-use-azcopy.md) jest oparte na platformie .NET Core Framework. Jest ono przeznaczone dla platform Linux, oferując opcje wiersza polecenia w stylu POSIX. 
-* [Narzędzie AzCopy w systemie Windows](../storage-use-azcopy.md) jest oparte na platformie .NET Framework. Oferuje ono opcje wiersza polecenia w stylu systemu Windows. 
+* [Narzędzie AzCopy w systemie Linux](storage-use-azcopy-linux.md) jest oparte na platformie .NET Core Framework. Jest ono przeznaczone dla platform Linux, oferując opcje wiersza polecenia w stylu POSIX. 
+* [Narzędzie AzCopy w systemie Windows](storage-use-azcopy.md) jest oparte na platformie .NET Framework. Oferuje ono opcje wiersza polecenia w stylu systemu Windows. 
  
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 

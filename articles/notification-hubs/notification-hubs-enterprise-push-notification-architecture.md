@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33778066"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Wskazówki dotyczące architektury powiadomień wypychanych w przedsiębiorstwie
 Dzisiaj przedsiębiorstwa są stopniowo przenoszenie do tworzenia aplikacji dla urządzeń przenośnych dla dowolnego użytkownikom końcowym (zewnętrzne) lub dla pracowników (wewnętrzny). Mają one istniejących systemów zaplecza w miejscu Komputery mainframe firmy i niektóre aplikacje LoB, które muszą zostać włączone do architektury aplikacji mobilnej. Ten przewodnik zawiera o jak najlepszym rozwiązaniem tej integracji rekomendowanie możliwe rozwiązanie typowych scenariuszy.
