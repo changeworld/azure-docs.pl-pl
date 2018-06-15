@@ -1,11 +1,11 @@
 ---
-title: "Pulpit nawigacyjny, monitora, skalowania, skonfigurować i połączeń hybrydowych w usługi BizTalk Services | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat kontroli i monitorowania wydajności dla usługi BizTalk Services"
+title: Pulpit nawigacyjny, monitora, skalowania, skonfigurować i połączeń hybrydowych w usługi BizTalk Services | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat kontroli i monitorowania wydajności dla usługi BizTalk Services
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 7a1815db-0de2-4274-8be0-198c1b077324
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24103365"
 ---
 # <a name="review-the-dashboard-monitor-scale-configure-and-hybrid-connection-tabs"></a>Przegląd kart Pulpit nawigacyjny, Monitorowanie, Skala, Konfigurowanie i Połączenie hybrydowe
 

@@ -15,6 +15,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32188518"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>Partnerzy Integracja danych magazynu danych SQL
 Aby utworzyć rozwiązanie magazynu danych, wybierz z szerokiej gamy najnowocześniejsze narzędzia. W tym artykule omówiono firm partnerskich firmy Microsoft z rozwiązań integracji danych obsługujący magazyn danych SQL Azure.

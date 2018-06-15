@@ -1,11 +1,11 @@
 ---
-title: "Modyfikowania obwodu usługi expressroute: środowiska PowerShell: klasyczny Portal Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule przedstawiono kroki, aby sprawdzić stan, update lub delete i anulowanie zastrzeżenia obwodu ExpressRoute wdrażania klasycznego modelu."
+title: 'Modyfikowania obwodu usługi expressroute: środowiska PowerShell: klasyczny Portal Azure | Dokumentacja firmy Microsoft'
+description: W tym artykule przedstawiono kroki, aby sprawdzić stan, update lub delete i anulowanie zastrzeżenia obwodu ExpressRoute wdrażania klasycznego modelu.
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 0134d242-6459-4dec-a2f1-4657c3bc8b23
 ms.service: expressroute
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "24102838"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>Modyfikowania obwodu usługi expressroute, przy użyciu programu PowerShell (klasyczne)
 

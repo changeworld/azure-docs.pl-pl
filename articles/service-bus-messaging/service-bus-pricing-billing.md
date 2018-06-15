@@ -1,11 +1,11 @@
 ---
-title: "Usługa Service Bus cennik i rozliczenia | Dokumentacja firmy Microsoft"
-description: "Omówienie struktury cennik usługi Service Bus."
+title: Usługa Service Bus cennik i rozliczenia | Dokumentacja firmy Microsoft
+description: Omówienie struktury cennik usługi Service Bus.
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7c45b112-e911-45ab-9203-a2e5abccd6e0
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/22/2017
+ms.locfileid: "27159790"
 ---
 # <a name="service-bus-pricing-and-billing"></a>Usługa Service Bus cennik i rozliczenia
 

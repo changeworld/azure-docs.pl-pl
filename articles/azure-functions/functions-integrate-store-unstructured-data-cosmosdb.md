@@ -1,14 +1,14 @@
 ---
-title: "Przechowywanie danych niestrukturalnych przy użyciu usług Azure Cosmos DB i Azure Functions | Microsoft Docs"
-description: "Przechowywanie danych niestrukturalnych przy użyciu usług Azure Functions i Cosmos DB"
+title: Przechowywanie danych niestrukturalnych przy użyciu usług Azure Cosmos DB i Azure Functions | Microsoft Docs
+description: Przechowywanie danych niestrukturalnych przy użyciu usług Azure Functions i Cosmos DB
 services: functions
 documentationcenter: functions
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "azure functions, functions, przetwarzanie zdarzeń, Cosmos DB, obliczanie dynamiczne, architektura bez serwera"
-ms.assetid: 
+editor: ''
+tags: ''
+keywords: azure functions, functions, przetwarzanie zdarzeń, Cosmos DB, obliczanie dynamiczne, architektura bez serwera
+ms.assetid: ''
 ms.service: functions
 ms.devlang: csharp
 ms.topic: quickstart
@@ -22,6 +22,7 @@ ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/11/2018
+ms.locfileid: "27767557"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Przechowywanie danych niestrukturalnych przy użyciu usług Azure Functions i Azure Cosmos DB
 

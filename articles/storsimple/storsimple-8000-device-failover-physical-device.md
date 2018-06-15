@@ -1,12 +1,12 @@
 ---
-title: "Tryb failover StorSimple, odzyskiwania po awarii do urządzenia fizycznego serii StorSimple 8000 | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie pracy awaryjnej urządzenia fizycznego StorSimple 8000 serii do innego urządzenia fizycznego."
+title: Tryb failover StorSimple, odzyskiwania po awarii do urządzenia fizycznego serii StorSimple 8000 | Dokumentacja firmy Microsoft
+description: Informacje o sposobie pracy awaryjnej urządzenia fizycznego StorSimple 8000 serii do innego urządzenia fizycznego.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874864"
 ---
 # <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>Przełączyć urządzenia fizycznego StorSimple 8000 serii
 

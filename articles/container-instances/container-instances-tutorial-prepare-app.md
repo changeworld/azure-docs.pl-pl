@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32163286"
 ---
 # <a name="tutorial-create-container-for-deployment-to-azure-container-instances"></a>Samouczek: tworzenie kontenera do wdrożenia w usłudze Azure Container Instances
 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32181824"
 ---
 # <a name="azure-status"></a>Stan platformy Azure
 [Stan Azure](https://azure.microsoft.com/status/) oferuje globalne widok kondycji usług platformy Azure. O stanie Azure możesz uzyskać najbardziej aktualnych informacji o dostępności usługi. Wszyscy ma dostęp do stanu platformy Azure i widok wszystkich usług zgłosić ich kondycję usługi. 

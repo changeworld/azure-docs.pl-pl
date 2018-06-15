@@ -1,11 +1,11 @@
 ---
-title: "Przykłady pamięci podręcznej Redis interfejsu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft"
-description: "Przykładów dla platformy Azure CLI dla pamięci podręcznej Redis Azure."
+title: Przykłady pamięci podręcznej Redis interfejsu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Przykładów dla platformy Azure CLI dla pamięci podręcznej Redis Azure.
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 8d2de145-50c0-4f76-bf8f-fdf679f03698
 ms.service: cache
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27909843"
 ---
 # <a name="azure-cli-samples-for-azure-redis-cache"></a>Pamięć podręczna Redis Azure CLI przykładów dla platformy Azure
 
