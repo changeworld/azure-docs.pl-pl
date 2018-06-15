@@ -1,12 +1,12 @@
 ---
-title: "Zewnętrznego powiązania tabeli dla usługi Azure Functions (eksperymentalne)"
-description: "Przy użyciu powiązań zewnętrznych tabeli w funkcji Azure"
+title: Zewnętrznego powiązania tabeli dla usługi Azure Functions (eksperymentalne)
+description: Przy użyciu powiązań zewnętrznych tabeli w funkcji Azure
 services: functions
-documentationcenter: 
+documentationcenter: ''
 author: alexkarcher-msft
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/05/2018
+ms.locfileid: "27613285"
 ---
 # <a name="external-table-binding-for-azure-functions-experimental"></a>Zewnętrznego powiązania tabeli dla usługi Azure Functions (eksperymentalne)
 

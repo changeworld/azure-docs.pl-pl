@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie aktualizacjami w stosie Azure — omówienie | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat zarządzania aktualizacjami stosu Azure zintegrowanych systemów."
+title: Zarządzanie aktualizacjami w stosie Azure — omówienie | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat zarządzania aktualizacjami stosu Azure zintegrowanych systemów.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 9b0781f4-2cd5-4619-a9b1-59182b4a6e43
 ms.service: azure-stack
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/06/2018
+ms.locfileid: "27620927"
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>Zarządzanie aktualizacjami w stosie Azure — omówienie
 

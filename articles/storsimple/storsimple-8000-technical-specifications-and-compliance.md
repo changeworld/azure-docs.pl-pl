@@ -1,12 +1,12 @@
 ---
 title: Dane techniczne StorSimple | Dokumentacja firmy Microsoft
-description: "Opisuje technicznych oraz informacje o zgodności norm dla składników sprzętowych StorSimple."
+description: Opisuje technicznych oraz informacje o zgodności norm dla składników sprzętowych StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/12/2018
+ms.locfileid: "27785530"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Dane techniczne i zgodności dla urządzenia StorSimple
 

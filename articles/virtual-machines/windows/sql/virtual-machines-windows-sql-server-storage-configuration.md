@@ -1,6 +1,6 @@
 ---
-title: "Konfigurację magazynu dla maszyn wirtualnych programu SQL Server | Dokumentacja firmy Microsoft"
-description: "W tym temacie opisano, jak Azure konfiguruje magazynu dla maszyn wirtualnych programu SQL Server podczas inicjowania obsługi administracyjnej (modelu wdrażania usługi Resource Manager). Wyjaśniono również, jak skonfigurować magazyn dla istniejących maszyn wirtualnych serwera SQL."
+title: Konfigurację magazynu dla maszyn wirtualnych programu SQL Server | Dokumentacja firmy Microsoft
+description: W tym temacie opisano, jak Azure konfiguruje magazynu dla maszyn wirtualnych programu SQL Server podczas inicjowania obsługi administracyjnej (modelu wdrażania usługi Resource Manager). Wyjaśniono również, jak skonfigurować magazyn dla istniejących maszyn wirtualnych serwera SQL.
 services: virtual-machines-windows
 documentationcenter: na
 author: ninarn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29399087"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Konfigurację magazynu dla maszyn wirtualnych programu SQL Server
 Po skonfigurowaniu obraz maszyny wirtualnej programu SQL Server na platformie Azure, portalu pomaga zautomatyzować konfigurację magazynu. W tym podłączania do maszyny Wirtualnej, udostępnienie magazynu do programu SQL Server i skonfigurowania go do Optymalizuj pod kątem wymagań dotyczących wydajności dotyczące magazynu.

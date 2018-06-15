@@ -1,13 +1,13 @@
 ---
-title: "Wyświetl względną opóźnienia, aby regiony platformy Azure z określonych lokalizacji | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak widok względną opóźnienia między internetowi do regiony platformy Azure z określonych lokalizacji."
+title: Wyświetl względną opóźnienia, aby regiony platformy Azure z określonych lokalizacji | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak widok względną opóźnienia między internetowi do regiony platformy Azure z określonych lokalizacji.
 services: network-watcher
-documentationcenter: 
+documentationcenter: ''
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
@@ -15,12 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: jdial
-ms.custom: 
+ms.custom: ''
 ms.openlocfilehash: a6c2ffa619eeff8b455df8a8b2157525af12c640
 ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/05/2018
+ms.locfileid: "27600957"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Widok względny czas opóźnienia regiony platformy Azure z określonych lokalizacji
 

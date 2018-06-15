@@ -1,8 +1,8 @@
 ---
-title: "Poświadczenia wdrożenia usługi Azure App Service | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać poświadczenia wdrożenia usługi Azure App Service."
+title: Poświadczenia wdrożenia usługi Azure App Service | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać poświadczenia wdrożenia usługi Azure App Service.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: dariagrigoriu
 manager: erikre
 editor: mollybos
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "27778551"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Skonfiguruj poświadczenia wdrażania dla usługi Azure App Service
 [Usługa aplikacji Azure](http://go.microsoft.com/fwlink/?LinkId=529714) obsługuje dwa rodzaje poświadczenia [lokalnego wdrożenia Git](app-service-deploy-local-git.md) i [wdrożenia FTP/S](app-service-deploy-ftp.md). Nie są takie same, jak poświadczenia usługi Azure Active Directory.

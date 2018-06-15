@@ -1,11 +1,11 @@
 ---
-title: "Śledzenie przepływu w aplikacji usługi w chmurze z diagnostyki Azure | Dokumentacja firmy Microsoft"
-description: "Dodaj śledzenie wiadomości do aplikacji Azure w celu ułatwienia, debugowanie, pomiaru wydajności, monitorowania, analizy ruchu sieciowego i inne."
+title: Śledzenie przepływu w aplikacji usługi w chmurze z diagnostyki Azure | Dokumentacja firmy Microsoft
+description: Dodaj śledzenie wiadomości do aplikacji Azure w celu ułatwienia, debugowanie, pomiaru wydajności, monitorowania, analizy ruchu sieciowego i inne.
 services: cloud-services
 documentationcenter: .net
 author: thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 09934772-cc07-4fd2-ba88-b224ca192f8e
 ms.service: cloud-services
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29461248"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>Śledzenie przepływu aplikacji usługi w chmurze Diagnostyka Azure
 Śledzenie jest sposobem monitorowania wykonanie aplikacji jest uruchomiona. Można użyć [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace.aspx), [System.Diagnostics.Debug](https://msdn.microsoft.com/library/system.diagnostics.debug.aspx), i [System.Diagnostics.TraceSource](https://msdn.microsoft.com/library/system.diagnostics.tracesource.aspx) klasy do rejestrowania informacji o błędach i wykonanie aplikacji w dzienniki, pliki tekstowe lub innych urządzeń w celu późniejszej analizy. Aby uzyskać więcej informacji dotyczących śledzenia, zobacz [śledzenie i Instrumentacja aplikacji](https://msdn.microsoft.com/library/zs6s4h68.aspx).

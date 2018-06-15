@@ -1,8 +1,8 @@
 ---
-title: "Jak używać usługi Azure storage dla kopii zapasowej serwera SQL i przywracania | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie tworzenia kopii zapasowych programu SQL Server do magazynu Azure. Opis korzyści wykonywanie kopii zapasowych baz danych do magazynu Azure."
+title: Jak używać usługi Azure storage dla kopii zapasowej serwera SQL i przywracania | Dokumentacja firmy Microsoft
+description: Informacje o sposobie tworzenia kopii zapasowych programu SQL Server do magazynu Azure. Opis korzyści wykonywanie kopii zapasowych baz danych do magazynu Azure.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: MikeRayMSFT
 manager: craigg
 tags: azure-service-management
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29399053"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Użyj magazynu Azure dla programu SQL Server z kopii zapasowej i przywracania
 ## <a name="overview"></a>Przegląd

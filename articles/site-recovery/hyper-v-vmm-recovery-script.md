@@ -1,11 +1,11 @@
 ---
-title: "Skrypt do planu odzyskiwania w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat wymagań wstępnych dotyczących dodawania nowego skryptu programu System Center Virtual Machine Manager (VMM) do planu odzyskiwania na platformie Azure."
+title: Skrypt do planu odzyskiwania w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat wymagań wstępnych dotyczących dodawania nowego skryptu programu System Center Virtual Machine Manager (VMM) do planu odzyskiwania na platformie Azure.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: ruturaj
 manager: shons
-editor: 
+editor: ''
 ms.assetid: 72408c62-fcb6-4ee2-8ff5-cab1218773f2
 ms.service: site-recovery
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29402433"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>Skrypt programu VMM do planu odzyskiwania
 

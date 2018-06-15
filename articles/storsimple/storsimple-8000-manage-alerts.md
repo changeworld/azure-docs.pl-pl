@@ -1,12 +1,12 @@
 ---
-title: "Wyświetlanie alertów i zarządzanie nimi dla urządzenia z serii StorSimple 8000 | Dokumentacja firmy Microsoft"
-description: "Opisuje StorSimple warunków alertów i ważność, jak skonfigurować powiadomienia o alertach i alertami można zarządzać przy użyciu usługi Menedżer StorSimple urządzenia."
+title: Wyświetlanie alertów i zarządzanie nimi dla urządzenia z serii StorSimple 8000 | Dokumentacja firmy Microsoft
+description: Opisuje StorSimple warunków alertów i ważność, jak skonfigurować powiadomienia o alertach i alertami można zarządzać przy użyciu usługi Menedżer StorSimple urządzenia.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27745782"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>Użyj usługi Menedżer StorSimple urządzenia, aby wyświetlić alerty i zarządzaj nimi StorSimple
 

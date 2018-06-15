@@ -1,11 +1,11 @@
 ---
-title: "Łączenie komputera z siecią wirtualną przy użyciu połączenia typu punkt-lokacja i uwierzytelniania certyfikatu: klasyczna witryna Azure Portal | Microsoft Docs"
-description: "Utwórz klasyczne połączenie bramy sieci VPN typu punkt-lokacja przy użyciu witryny Azure Portal."
+title: 'Łączenie komputera z siecią wirtualną przy użyciu połączenia typu punkt-lokacja i uwierzytelniania certyfikatu: klasyczna witryna Azure Portal | Microsoft Docs'
+description: Utwórz klasyczne połączenie bramy sieci VPN typu punkt-lokacja przy użyciu witryny Azure Portal.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 65e14579-86cf-4d29-a6ac-547ccbd743bd
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29464331"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-certificate-authentication-classic-azure-portal"></a>Konfigurowanie połączenia typu punkt-lokacja z siecią wirtualną przy użyciu uwierzytelniania certyfikatu (klasyczna): Azure Portal
 

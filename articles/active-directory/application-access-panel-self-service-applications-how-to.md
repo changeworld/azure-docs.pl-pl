@@ -1,11 +1,11 @@
 ---
-title: "Jak używać dostęp do aplikacji Sklep internetowy | Dokumentacja firmy Microsoft"
-description: "Włącz dostęp do aplikacji Sklep internetowy umożliwia użytkownikom znajdowanie własne aplikacje"
+title: Jak używać dostęp do aplikacji Sklep internetowy | Dokumentacja firmy Microsoft
+description: Włącz dostęp do aplikacji Sklep internetowy umożliwia użytkownikom znajdowanie własne aplikacje
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29383193"
 ---
 # <a name="how-to-use-self-service-application-access"></a>Jak używać dostęp do aplikacji Sklep internetowy
 

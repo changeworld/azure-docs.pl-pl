@@ -1,13 +1,13 @@
 ---
-title: "Zarejestruj się w celu samodzielnego resetowania haseł — Azure Active Directory"
-description: "Zarejestruj dane uwierzytelniania dla usługi Azure AD hasła samoobsługi resetowania"
+title: Zarejestruj się w celu samodzielnego resetowania haseł — Azure Active Directory
+description: Zarejestruj dane uwierzytelniania dla usługi Azure AD hasła samoobsługi resetowania
 services: active-directory
-keywords: 
-documentationcenter: 
+keywords: ''
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: sahenry
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -21,6 +21,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29460479"
 ---
 # <a name="register-for-self-service-password-reset"></a>Rejestrowanie na potrzeby samoobsługowego resetowania hasła
 

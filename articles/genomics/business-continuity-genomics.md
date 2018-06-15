@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31427042"
 ---
 # <a name="overview-of-business-continuity-with-microsoft-genomics"></a>Omówienie ciągłości działalności biznesowej z Genomics firmy Microsoft
 Ten przegląd zawiera opis możliwości, które Genomics firmy Microsoft zapewnia ciągłość prowadzenia działalności biznesowej i odzyskiwania po awarii. Więcej informacji na temat opcji odzyskiwania z destrukcyjne zdarzenia, takie jak awarią region platformy Azure, która może spowodować utratę danych. 
