@@ -20,6 +20,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31595477"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Wprowadzenie do maszyny wirtualnej do nauki o danych platformy Azure dla systemów Linux i Windows
 

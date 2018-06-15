@@ -1,11 +1,11 @@
 ---
-title: "Ochrona aplikacji w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft"
-description: "Ten adres dokumentu zalecenia w Centrum zabezpieczeń Azure, które pomagają chronić aplikacje platformy Azure i są aktualizowane zgodnie z zasadami zabezpieczeń."
+title: Ochrona aplikacji w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
+description: Ten adres dokumentu zalecenia w Centrum zabezpieczeń Azure, które pomagają chronić aplikacje platformy Azure i są aktualizowane zgodnie z zasadami zabezpieczeń.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: b5fc7a9e-24b1-415f-b3b5-62a53f5dd424
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866268"
 ---
 # <a name="protecting-your-applications-in-azure-security-center"></a>Ochrona aplikacji w Centrum zabezpieczeń Azure
 Centrum zabezpieczeń Azure analizuje stan zabezpieczeń zasobów platformy Azure. Jeśli Centrum zabezpieczeń zostanie zidentyfikowana potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzają użytkownika przez proces konfigurowania wymaganych elementów sterujących.  Zalecenia dotyczą typów zasobów platformy Azure: maszynach wirtualnych (VM), sieci, SQL i aplikacji.

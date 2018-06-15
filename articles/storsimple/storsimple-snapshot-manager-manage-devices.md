@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie urządzeniami z StorSimple Snapshot Manager | Dokumentacja firmy Microsoft"
-description: "Informacje dotyczące używania przystawki MMC programu StorSimple Snapshot Manager do łączenia i zarządzanie urządzeniami StorSimple."
+title: Zarządzanie urządzeniami z StorSimple Snapshot Manager | Dokumentacja firmy Microsoft
+description: Informacje dotyczące używania przystawki MMC programu StorSimple Snapshot Manager do łączenia i zarządzanie urządzeniami StorSimple.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 966ecbe3-a7fa-4752-825f-6694dd949946
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23876810"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>Użyj programu StorSimple Snapshot Manager do łączenia i zarządzanie urządzeniami StorSimple
 ## <a name="overview"></a>Omówienie

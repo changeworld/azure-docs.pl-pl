@@ -1,11 +1,11 @@
 ---
 title: Optymalizacja kodu platformy Azure w programie Visual Studio | Dokumentacja firmy Microsoft
-description: "Informacje dotyczące sposobu Azure kodu optymalizacji narzędzia w programie Visual Studio sprawić, że kod bardziej niezawodny i lepszego wykonywania."
+description: Informacje dotyczące sposobu Azure kodu optymalizacji narzędzia w programie Visual Studio sprawić, że kod bardziej niezawodny i lepszego wykonywania.
 services: visual-studio-online
 documentationcenter: na
 author: cawa
 manager: paulyuk
-editor: 
+editor: ''
 ms.assetid: ed48ee06-e2d2-4322-af22-07200fb16987
 ms.service: multiple
 ms.devlang: dotnet
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/17/2017
+ms.locfileid: "23890838"
 ---
 # <a name="optimizing-your-azure-code"></a>Optymalizacja kodu platformy Azure
 W przypadku programowania aplikacji, które używają programu Microsoft Azure, istnieją pewne praktyk kodowania, które należy wykonać, aby uniknąć problemów z aplikacji, skalowalność, zachowania i wydajności w środowisku chmury. Firma Microsoft udostępnia narzędzia do analizy kodu platformy Azure, która rozpoznaje i identyfikuje niektóre z tych często napotkał problemy i ułatwia ich rozwiązywania. Możesz pobrać narzędzie w programie Visual Studio za pośrednictwem pakietu NuGet.

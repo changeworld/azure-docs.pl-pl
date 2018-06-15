@@ -1,12 +1,12 @@
 ---
-title: "Zainstalować na urządzeniu z serii StorSimple 8000 z aktualizacją Update 4 | Dokumentacja firmy Microsoft"
-description: "Wyjaśniono, jak zainstalować StorSimple 8000 serii aktualizacji 4 na urządzeniu z serii StorSimple 8000."
+title: Zainstalować na urządzeniu z serii StorSimple 8000 z aktualizacją Update 4 | Dokumentacja firmy Microsoft
+description: Wyjaśniono, jak zainstalować StorSimple 8000 serii aktualizacji 4 na urządzeniu z serii StorSimple 8000.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874934"
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>Instalowanie aktualizacji 4 na urządzeniu StorSimple
 

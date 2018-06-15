@@ -1,11 +1,11 @@
 ---
-title: "Automatyzowanie StorSimple udziału plików odzyskiwania po awarii z usługą Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano kroki i najlepsze rozwiązania dotyczące tworzenia rozwiązanie odzyskiwania po awarii dla udziałów plików hostowane na magazynu Microsoft Azure StorSimple."
+title: Automatyzowanie StorSimple udziału plików odzyskiwania po awarii z usługą Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano kroki i najlepsze rozwiązania dotyczące tworzenia rozwiązanie odzyskiwania po awarii dla udziałów plików hostowane na magazynu Microsoft Azure StorSimple.
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
 manager: syadav
-editor: 
+editor: ''
 ms.assetid: 23049a2c-055e-4d0e-b8f5-af2a87ecf53f
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/17/2017
+ms.locfileid: "23890880"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Zautomatyzowane rozwiązanie odzyskiwania po awarii dla udziałów plików hostowane na StorSimple przy użyciu usługi Azure Site Recovery
 ## <a name="overview"></a>Omówienie

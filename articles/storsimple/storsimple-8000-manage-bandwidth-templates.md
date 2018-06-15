@@ -1,12 +1,12 @@
 ---
-title: "Zarządzaj szablonami przepustowości dla serii StorSimple 8000 | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób zarządzania StorSimple przepustowości szablonów, które umożliwiają kontrolowanie użycia przepustowości."
+title: Zarządzaj szablonami przepustowości dla serii StorSimple 8000 | Dokumentacja firmy Microsoft
+description: Opisuje sposób zarządzania StorSimple przepustowości szablonów, które umożliwiają kontrolowanie użycia przepustowości.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875074"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-bandwidth-templates"></a>Zarządzaj szablonami przepustowości StorSimple przy użyciu usługi Menedżer StorSimple urządzenia
 

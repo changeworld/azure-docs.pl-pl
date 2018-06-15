@@ -1,11 +1,11 @@
 ---
-title: "Interfejs użytkownika programu StorSimple Snapshot Manager | Dokumentacja firmy Microsoft"
-description: "Zawiera opis interfejsu użytkownika programu StorSimple Snapshot Manager i wyjaśniono, jak przy jego użyciu zarządzać zadania tworzenia kopii zapasowej i kopii zapasowej wykazu."
+title: Interfejs użytkownika programu StorSimple Snapshot Manager | Dokumentacja firmy Microsoft
+description: Zawiera opis interfejsu użytkownika programu StorSimple Snapshot Manager i wyjaśniono, jak przy jego użyciu zarządzać zadania tworzenia kopii zapasowej i kopii zapasowej wykazu.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c7d91892-2881-41a2-a7a2-908dc3646493
 ms.service: storsimple
 ms.devlang: NA
@@ -14,12 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
-ms.custom: 
+ms.custom: ''
 ms.openlocfilehash: b48c507e38eb7cadff56259f617e336e4efe5708
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23927950"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>Interfejs użytkownika użycia StorSimple Snapshot Manager do zarządzania zadania tworzenia kopii zapasowej i kopii zapasowej wykazu
 

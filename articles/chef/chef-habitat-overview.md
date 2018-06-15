@@ -13,6 +13,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34267444"
 ---
 # <a name="use-habitat-to-deploy-your-application-to-azure"></a>Wdrażanie aplikacji na platformie Azure przy użyciu siedliska
 [Siedliska](https://www.habitat.sh/) jest pierwszy jej rodzaju projekt open source, który oferuje całkowicie nowe podejście do zarządzania aplikacjami. Siedliska sprawia, że aplikacja i automatyzacji jego jednostkę wdrożenia. Gdy aplikacje są ujęte w lekkie "środowisku", środowisko uruchomieniowe kontenera, od zera lub PaaS, nie jest już fokus i ograniczają aplikacji. 

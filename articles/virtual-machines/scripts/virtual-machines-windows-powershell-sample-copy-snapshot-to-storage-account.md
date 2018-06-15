@@ -1,13 +1,13 @@
 ---
-title: "Przykładowy skrypt programu PowerShell Azure - migawki eksportu/kopiowania jako dysk VHD do konta magazynu w innym regionie | Dokumentacja firmy Microsoft"
-description: "Przykładowy skrypt programu PowerShell Azure - migawki eksportu/kopiowania jako dysk VHD do konta magazynu w tym samym regionie innym"
+title: Przykładowy skrypt programu PowerShell Azure - migawki eksportu/kopiowania jako dysk VHD do konta magazynu w innym regionie | Dokumentacja firmy Microsoft
+description: Przykładowy skrypt programu PowerShell Azure - migawki eksportu/kopiowania jako dysk VHD do konta magazynu w tym samym regionie innym
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
 manager: kavithag
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: sample
@@ -17,9 +17,10 @@ ms.date: 06/05/2017
 ms.author: ramankum
 ms.openlocfilehash: be21a891121df1d645b430d87b572cde6c945d61
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23879645"
 ---
 # <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-powershell"></a>Eksport/kopiowania zarządzane migawki jako dysk VHD do konta magazynu w innym regionie przy użyciu programu PowerShell
 

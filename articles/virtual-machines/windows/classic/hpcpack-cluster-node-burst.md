@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30915111"
 ---
 # <a name="add-on-demand-burst-nodes-to-an-hpc-pack-cluster-in-azure"></a>Dodaj węzły na żądanie "serii" do klastra HPC Pack na platformie Azure
 Po skonfigurowaniu [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) klastra na platformie Azure, może być sposobem szybkie skalowanie pojemności klastra, bez zachowania zestaw węzeł obliczeniowy wstępnie skonfigurowanych maszyn wirtualnych. W tym artykule przedstawiono sposób dodawania węzłów na żądanie "serii" (uruchomionych w usłudze chmury wystąpień roli proces roboczy) jako zasoby obliczeniowe z węzłem głównym na platformie Azure. 

@@ -1,11 +1,11 @@
 ---
 title: Zadania tworzenia kopii zapasowej programu StorSimple Snapshot Manager | Dokumentacja firmy Microsoft
-description: "Informacje dotyczące używania przystawki MMC programu StorSimple Snapshot Manager i zarządzania zaplanowane, uruchomione i zakończonych zadań tworzenia kopii zapasowej."
+description: Informacje dotyczące używania przystawki MMC programu StorSimple Snapshot Manager i zarządzania zaplanowane, uruchomione i zakończonych zadań tworzenia kopii zapasowej.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bf4dcff6-c819-4766-b9d9-9922831cb200
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875816"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>StorSimple Snapshot Manager umożliwia wyświetlanie i zarządzanie nimi zadania tworzenia kopii zapasowej
 

@@ -1,12 +1,12 @@
 ---
-title: "Użyj urządzenia serii StorSimple 8000 podsumowania | Dokumentacja firmy Microsoft"
-description: "Opisuje podsumowania urządzenia usługi Menedżer StorSimple urządzenia i jak z niego korzystać, aby wyświetlić metryki magazynu i inicjatorów połączonych i znaleźć numer seryjny i IQN."
+title: Użyj urządzenia serii StorSimple 8000 podsumowania | Dokumentacja firmy Microsoft
+description: Opisuje podsumowania urządzenia usługi Menedżer StorSimple urządzenia i jak z niego korzystać, aby wyświetlić metryki magazynu i inicjatorów połączonych i znaleźć numer seryjny i IQN.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874857"
 ---
 # <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>Podsumowanie w usłudze Menedżer StorSimple urządzenia urządzenia
 

@@ -1,11 +1,11 @@
 ---
-title: "Sprawdź połączenie bramy sieci VPN | Dokumentacja firmy Microsoft"
-description: "W tym artykule przedstawiono sposób sprawdzania, połączenie sieci VPN bramy sieci wirtualnej."
+title: Sprawdź połączenie bramy sieci VPN | Dokumentacja firmy Microsoft
+description: W tym artykule przedstawiono sposób sprawdzania, połączenie sieci VPN bramy sieci wirtualnej.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 7e3d1043-caa9-4472-96d3-832f4e2c91ee
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23884132"
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>Sprawdź połączenie bramy sieci VPN
 

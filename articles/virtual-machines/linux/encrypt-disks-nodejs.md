@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30911689"
 ---
 # <a name="encrypt-disks-on-a-linux-vm-using-the-azure-cli-10"></a>Szyfrowanie dysków na Maszynę wirtualną systemu Linux przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure
 Ulepszone maszyny wirtualnej (VM) zabezpieczeń i zgodności dyski wirtualne na platformie Azure mogą być szyfrowane w stanie spoczynku. Dyski są szyfrowane za pomocą kluczy kryptograficznych, które są już zabezpieczone w usłudze Azure Key Vault. Kontrolowanie tych kluczy kryptograficznych i przeprowadzić inspekcję ich używania. Ten artykuł zawiera szczegóły dotyczące sposobu szyfrowania dysków wirtualnych na Maszynę wirtualną systemu Linux przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure i modelu wdrażania usługi Resource Manager.

@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie wirtualnego tablicy StorSimple jako serwer plików | Dokumentacja firmy Microsoft"
-description: "W tym samouczku trzeci w tablicy wirtualnego StorSimple wdrożenia powoduje, że możesz skonfigurować urządzenia wirtualnego jako serwer plików."
+title: Konfigurowanie wirtualnego tablicy StorSimple jako serwer plików | Dokumentacja firmy Microsoft
+description: W tym samouczku trzeci w tablicy wirtualnego StorSimple wdrożenia powoduje, że możesz skonfigurować urządzenia wirtualnego jako serwer plików.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f609f6ff-0927-48bb-a68a-6d8985d2fe34
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23927824"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>Wdrożenie tablicy wirtualne StorSimple - zestawu się jako serwera plików za pośrednictwem portalu Azure
 ![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)

@@ -3,7 +3,7 @@ title: Przepływ pracy wyzwalacze i akcje - Azure Logic Apps | Dokumentacja firm
 description: Dowiedz się więcej o wyzwalacze i akcje w definicji przepływu pracy dla usługi Azure Logic Apps
 services: logic-apps
 author: kevinlam1
-manager: SyntaxC4
+manager: jeconnoc
 editor: ''
 documentationcenter: ''
 ms.assetid: 86a53bb3-01ba-4e83-89b7-c9a7074cb159
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 5/8/2018
 ms.author: klam; LADocs
-ms.openlocfilehash: 88ee3d810a80bed418e8dbafa4f3e35ccf5e85b1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: f44de1a316a8375618cfef2e4a98d40c2b21e019
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33886786"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300151"
 ---
 # <a name="triggers-and-actions-for-workflow-definitions-in-azure-logic-apps"></a>Wyzwalacze i akcje dla definicji przepływu pracy w aplikacjach logiki platformy Azure
 
@@ -56,7 +56,7 @@ Wszystkich wyzwalaczy mają takich elementów najwyższego poziomu, chociaż nie
 | ------------ | ---- | ----------- | 
 | <*Nazwa_wyzwalacza*> | Obiekt JSON | Nazwa wyzwalacza jest obiektem opisanego w formacie Javascript Object Notation (JSON)  | 
 | type | Ciąg | Typ wyzwalacza, na przykład: "Http" lub "ApiConnection" | 
-| Dane wejściowe | Obiekt JSON | Dane wejściowe wyzwalacza, które określają zachowanie tego wyzwalacza | 
+| dane wejściowe | Obiekt JSON | Dane wejściowe wyzwalacza, które określają zachowanie tego wyzwalacza | 
 | recurrence | Obiekt JSON | Częstotliwość i interwał, w którym opisano, jak często wyzwalacza |  
 | frequency | Ciąg | Jednostka czasu, który opisuje, jak często wyzwalacza: "Drugi", "Minute", "Godzina", "Dzień", "Tygodnia" lub "Miesiąc" | 
 | interval | Liczba całkowita | Dodatnia liczba całkowita, w tym artykule opisano, jak często wyzwalacza na podstawie częstotliwości. <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesięczny: 1-16 miesięcy </br>-Dniowego: 1-500 dni </br>-Godzinnym: 1-12 000 godzin </br>-Minutowy: 1-72,000 minut </br>-Drugi: 1-9,999,999 sekund<p>Na przykład jeśli interwał to 6 i częstotliwości jest "miesiąc", cykl jest co 6 miesięcy. | 
@@ -124,7 +124,7 @@ Poniżej przedstawiono definicję wyzwalacza:
 | ------------ | ---- | ----------- | 
 | Cykl | Obiekt JSON | Nazwa wyzwalacza jest obiektem opisanego w formacie Javascript Object Notation (JSON)  | 
 | type | Ciąg | Typ wyzwalacza, czyli "Cyklu" | 
-| Dane wejściowe | Obiekt JSON | Dane wejściowe wyzwalacza, które określają zachowanie tego wyzwalacza | 
+| dane wejściowe | Obiekt JSON | Dane wejściowe wyzwalacza, które określają zachowanie tego wyzwalacza | 
 | recurrence | Obiekt JSON | Częstotliwość i interwał, w którym opisano, jak często wyzwalacza |  
 | frequency | Ciąg | Jednostka czasu, który opisuje, jak często wyzwalacza: "Drugi", "Minute", "Godzina", "Dzień", "Tygodnia" lub "Miesiąc" | 
 | interval | Liczba całkowita | Dodatnia liczba całkowita, w tym artykule opisano, jak często wyzwalacza na podstawie częstotliwości. <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesięczny: 1-16 miesięcy </br>-Dniowego: 1-500 dni </br>-Godzinnym: 1-12 000 godzin </br>-Minutowy: 1-72,000 minut </br>-Drugi: 1-9,999,999 sekund<p>Na przykład jeśli interwał to 6 i częstotliwości jest "miesiąc", cykl jest co 6 miesięcy. | 
@@ -228,7 +228,7 @@ Tego wyzwalacza sprawia, że aplikację logiki jest wywoływane przez utworzenie
 | Ręcznie | Obiekt JSON | Nazwa wyzwalacza jest obiektem opisanego w formacie Javascript Object Notation (JSON)  | 
 | type | Ciąg | Typ wyzwalacza, czyli "Żądania" | 
 | rodzaj | Ciąg | Typ żądania, czyli "Http" | 
-| Dane wejściowe | Obiekt JSON | Dane wejściowe wyzwalacza, które określają zachowanie tego wyzwalacza | 
+| dane wejściowe | Obiekt JSON | Dane wejściowe wyzwalacza, które określają zachowanie tego wyzwalacza | 
 |||| 
 
 *Opcjonalne*
@@ -239,7 +239,7 @@ Tego wyzwalacza sprawia, że aplikację logiki jest wywoływane przez utworzenie
 | RelativePath | Ciąg | Względna ścieżka Parametr, który akceptuje punkt końcowy HTTP URL | 
 | Schemat | Obiekt JSON | Schematu JSON, który opisuje i sprawdza poprawność ładunku lub niedozwolonych wyzwalacza odbiera z żądania przychodzącego. Ten schemat ułatwia akcje kolejnych wiedzieć, właściwości, aby odwołać. | 
 | properties | Obiekt JSON | Co najmniej jednej właściwości w schemacie JSON, który opisuje ładunku | 
-| Wymagane | Tablica | Co najmniej jednej właściwości, które wymagają wartości | 
+| wymagane | Tablica | Co najmniej jednej właściwości, które wymagają wartości | 
 |||| 
 
 *Przykład*
@@ -316,7 +316,7 @@ Tego wyzwalacza określony punkt końcowy sonduje i sprawdza odpowiedź. Odpowie
 | ------------ | ---- | ----------- | 
 | HTTP | Obiekt JSON | Nazwa wyzwalacza jest obiektem opisanego w formacie Javascript Object Notation (JSON)  | 
 | type | Ciąg | Typ wyzwalacza, czyli "Http" | 
-| Dane wejściowe | Obiekt JSON | Dane wejściowe wyzwalacza, które określają zachowanie tego wyzwalacza | 
+| dane wejściowe | Obiekt JSON | Dane wejściowe wyzwalacza, które określają zachowanie tego wyzwalacza | 
 | method | Yes | Ciąg | Metoda HTTP do sondowania określony punkt końcowy: "GET", "PUT", "POST", "Poprawka", "DELETE" ani "HEAD" | 
 | identyfikator URI | Yes| Ciąg | HTTP lub HTTPS adres URL punktu końcowego wyzwalacz sprawdza lub sondowania <p>Maksymalny rozmiar ciągu: 2 KB | 
 | recurrence | Obiekt JSON | Częstotliwość i interwał, w którym opisano, jak często wyzwalacza |  
@@ -415,7 +415,7 @@ Poniżej przedstawiono definicję wyzwalacza, mimo że wiele sekcje są opcjonal
 | ------------ | ---- | ----------- | 
 | *APIConnectionTriggerName* | Obiekt JSON | Nazwa wyzwalacza jest obiektem opisanego w formacie Javascript Object Notation (JSON)  | 
 | type | Ciąg | Typ wyzwalacza, czyli "ApiConnection" | 
-| Dane wejściowe | Obiekt JSON | Dane wejściowe wyzwalacza, które określają zachowanie tego wyzwalacza | 
+| dane wejściowe | Obiekt JSON | Dane wejściowe wyzwalacza, które określają zachowanie tego wyzwalacza | 
 | host | Obiekt JSON | Obiekt JSON, który opisuje hosta bramy i identyfikator zarządzanego interfejsu API <p>`host` Obiekt JSON ma następujące elementy: `api` i `connection` | 
 | api | Obiekt JSON | Adres URL punktu końcowego dla zarządzanego interfejsu API: <p>`"runtimeUrl": "<managed-API-endpoint-URL>"` | 
 | połączenie | Obiekt JSON | Nazwa zarządzanego połączenia interfejsu API używanych przez przepływ pracy, który musi zawierać odwołania do parametru o nazwie `$connection`: <p>`"name": "@parameters('$connections')['<connection-name>'].name"` | 
@@ -516,7 +516,7 @@ Poniżej przedstawiono definicję wyzwalacza, chociaż w wielu sekcjach są opcj
 | ------------ | ---- | ----------- | 
 | HTTP_Webhook | Obiekt JSON | Nazwa wyzwalacza jest obiektem opisanego w formacie Javascript Object Notation (JSON)  | 
 | type | Ciąg | Typ wyzwalacza, czyli "HttpWebhook" | 
-| Dane wejściowe | Obiekt JSON | Dane wejściowe wyzwalacza, które określają zachowanie tego wyzwalacza | 
+| dane wejściowe | Obiekt JSON | Dane wejściowe wyzwalacza, które określają zachowanie tego wyzwalacza | 
 | Subskrypcja | Obiekt JSON| Żądania wychodzącego do połączenia i wykonania rejestracji początkowej podczas tworzenia wyzwalacza. To wywołanie dzieje się tak, aby uruchomić wyzwalacz nasłuchuje zdarzeń w punkcie końcowym. Aby uzyskać więcej informacji, zobacz [subskrybowanie i anulowanie subskrypcji](#subscribe-unsubscribe). | 
 | method | Ciąg | Metoda HTTP użytej dla żądania subskrypcji: "GET", "PUT", "POST", "Poprawka", "DELETE" ani "HEAD" | 
 | identyfikator URI | Ciąg | Adres URL punktu końcowego, w których można wysłać żądania subskrypcji | 
@@ -616,7 +616,7 @@ Poniżej przedstawiono definicję wyzwalacza:
 | ------------ | ---- | ----------- | 
 | <*ApiConnectionWebhookTriggerName*> | Obiekt JSON | Nazwa wyzwalacza jest obiektem opisanego w formacie Javascript Object Notation (JSON)  | 
 | type | Ciąg | Typ wyzwalacza, czyli "ApiConnectionWebhook" | 
-| Dane wejściowe | Obiekt JSON | Dane wejściowe wyzwalacza, które określają zachowanie tego wyzwalacza | 
+| dane wejściowe | Obiekt JSON | Dane wejściowe wyzwalacza, które określają zachowanie tego wyzwalacza | 
 | host | Obiekt JSON | Obiekt JSON, który opisuje hosta bramy i identyfikator zarządzanego interfejsu API <p>`host` Obiekt JSON ma następujące elementy: `api` i `connection` | 
 | połączenie | Obiekt JSON | Nazwa zarządzanego połączenia interfejsu API używanych przez przepływ pracy, który musi zawierać odwołania do parametru o nazwie `$connection`: <p>`"name": "@parameters('$connections')['<connection-name>']['connectionId']"` | 
 | treść | Obiekt JSON | Obiekt JSON, który opisuje ładunku (dane) do wysyłania do zarządzanego interfejsu API | 
@@ -779,7 +779,7 @@ Istnieje wiele typów działań, każde z nich unikatowe zachowanie. Każdy typ 
 | **ApiConnectionWebhook** | Działa jak HTTPWebhook, ale używają API zarządzany przez firmę Microsoft. | 
 | **Odpowiedź** | Określa odpowiedź dla połączenia przychodzącego. | 
 | **Redaguj** | Tworzy obiekt dowolnych akcji w danych wejściowych. | 
-| **Funkcja** | Reprezentuje funkcję platformy Azure. | 
+| **Function** | Reprezentuje funkcję platformy Azure. | 
 | **oczekiwania** | Czeka stałą lub określonego czasu. | 
 | **przepływ pracy** | Reprezentuje zagnieżdżony przepływ pracy. | 
 | **Redaguj** | Tworzy obiekt dowolnych akcji w danych wejściowych. | 
@@ -1435,7 +1435,7 @@ Tę akcję, która jest instrukcji switch, wykonuje różne akcje na podstawie o
 | Przypadków | Yes | Obiekt JSON | Zawiera zestawy wewnętrzny akcje, które są uruchamiane na podstawie wyniku wyrażenia. | 
 | Case | Yes | Ciąg | Wartość do dopasowania z wynikami | 
 | Akcje | Yes | Obiekt JSON | Wewnętrzny akcje, które są uruchamiane w przypadku pasującego do wyniku wyrażenia | 
-| domyślnie | Nie | Obiekt JSON | Wewnętrzny akcje uruchamiane po przypadkach nie pasował do wyniku | 
+| default | Nie | Obiekt JSON | Wewnętrzny akcje uruchamiane po przypadkach nie pasował do wyniku | 
 ||||| 
 
 Na przykład:

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34302260"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Włączenia kopii zapasowej Azure stosu z portalu administracyjnego
 Infrastruktura usługi kopii zapasowej za pośrednictwem portalu administracyjnego należy włączyć, dzięki czemu stosu Azure mogą generować kopii zapasowych. Te kopie zapasowe można użyć do przywrócenia środowiska przy użyciu chmury odzyskiwania w przypadku [poważnej awarii](.\azure-stack-backup-recover-data.md). Celem chmura odzyskiwania jest zapewnienie, że operatorów, a użytkownicy mogą Zaloguj się do portalu po zakończeniu odzyskiwania. Użytkownicy mają swoje subskrypcje przywrócone w tym uprawnienia dostępu opartej na rolach i ról, oryginalnego planów, oferty i obliczeń uprzednio zdefiniowanej, magazynu i limitów przydziałów sieci.

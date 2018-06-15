@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie udziałami tablicy wirtualnego StorSimple | Dokumentacja firmy Microsoft"
-description: "Zawiera opis Menedżera urządzeń StorSimple i wyjaśniono, jak przy jego użyciu zarządzać udziałami w macierzy wirtualne StorSimple."
+title: Zarządzanie udziałami tablicy wirtualnego StorSimple | Dokumentacja firmy Microsoft
+description: Zawiera opis Menedżera urządzeń StorSimple i wyjaśniono, jak przy jego użyciu zarządzać udziałami w macierzy wirtualne StorSimple.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: manuaery
 manager: syadav
-editor: 
+editor: ''
 ms.assetid: 0a799c83-fde5-4f3f-af0e-67535d1882b6
 ms.service: storsimple
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23876271"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-shares-on-the-storsimple-virtual-array"></a>Korzystania z usługi Menedżera urządzeń StorSimple do zarządzania udziałami w macierzy wirtualnego StorSimple
 

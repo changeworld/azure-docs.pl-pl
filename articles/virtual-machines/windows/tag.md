@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30917503"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Jak tagu maszyny wirtualnej systemu Windows na platformie Azure
 W tym artykule opisano różne sposoby tagu maszyny wirtualnej systemu Windows na platformie Azure za pośrednictwem modelu wdrażania usługi Resource Manager. Tagi to pary klucz wartość zdefiniowana przez użytkownika, które mogą być umieszczone bezpośrednio na zasób lub grupa zasobów. Azure obecnie obsługuje maksymalnie 15 znaczników dla zasobu i grupy zasobów. Tagi mogą dotyczącymi zasobów w czasie tworzenia lub dodać do istniejącego zasobu. Należy pamiętać, że tagi są obsługiwane dla zasobów utworzone za pośrednictwem tylko modelu wdrażania Menedżera zasobów. Jeśli chcesz oznaczyć maszyny wirtualnej systemu Linux, zobacz [jak tagu maszyny wirtualnej systemu Linux na platformie Azure](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

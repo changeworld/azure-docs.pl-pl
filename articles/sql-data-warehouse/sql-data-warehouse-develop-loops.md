@@ -15,6 +15,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31598969"
 ---
 # <a name="using-t-sql-loops-in-sql-data-warehouse"></a>Przy użyciu pętli T-SQL w usłudze SQL Data Warehouse
 Porady dotyczące przy użyciu pętli T-SQL i zastępowanie kursory w usłudze Azure SQL Data Warehouse związane z opracowywaniem rozwiązań.

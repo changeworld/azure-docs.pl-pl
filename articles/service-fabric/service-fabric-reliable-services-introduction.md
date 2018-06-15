@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34213184"
 ---
 # <a name="reliable-services-overview"></a>Omówienie usług Reliable Services
 Sieć szkieletowa usług Azure upraszcza zapisywanie i bezstanowe i stanowe niezawodne usługi zarządzania. W tym temacie omówiono:

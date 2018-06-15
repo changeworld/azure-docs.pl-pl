@@ -12,9 +12,10 @@ manager: mtillman
 ms.reviewer: sasubram
 ms.openlocfilehash: 64f15095bd260cd5f83e0e834607cd64bb3a47ee
 ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34267435"
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>Inspekcja i raportowania użytkownika współpracy B2B
 Z gości masz inspekcji funkcje podobne do elementu członkowskiego użytkownikom. Oto przykład zaproszenia i realizacji historii osoby zaproszonej Sam Oogle:

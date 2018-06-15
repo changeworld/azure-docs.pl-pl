@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Snapshot Manager i woluminów | Dokumentacja firmy Microsoft"
-description: "Informacje dotyczące używania przystawki MMC programu StorSimple Snapshot Manager można wyświetlać i zarządzać nimi woluminów i skonfigurowania kopii zapasowych."
+title: StorSimple Snapshot Manager i woluminów | Dokumentacja firmy Microsoft
+description: Informacje dotyczące używania przystawki MMC programu StorSimple Snapshot Manager można wyświetlać i zarządzać nimi woluminów i skonfigurowania kopii zapasowych.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 78896323-e57c-431e-bbe2-0cbde1cf43a2
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23876992"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>StorSimple Snapshot Manager umożliwia wyświetlanie i zarządzanie woluminami
 ## <a name="overview"></a>Omówienie

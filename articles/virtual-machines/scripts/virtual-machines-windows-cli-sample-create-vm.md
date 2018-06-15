@@ -4,7 +4,7 @@ description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure �
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: rickstercdn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: ''
 ms.assetid: ''
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
-ms.openlocfilehash: 1bfcb24bb385b38ed1ef80a312e6c1ceb86b2024
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 3aec436749918caa229304c35d0bdbe5ed84578f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656130"
 ---
 # <a name="create-a-virtual-machine-with-the-azure-cli"></a>Tworzenie maszyny wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure
 

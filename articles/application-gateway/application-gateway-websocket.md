@@ -1,6 +1,6 @@
 ---
-title: "Obsługa protokołu WebSocket w bramy aplikacji Azure | Dokumentacja firmy Microsoft"
-description: "Ta strona zawiera omówienie obsługi protokołu WebSocket bramy aplikacji."
+title: Obsługa protokołu WebSocket w bramy aplikacji Azure | Dokumentacja firmy Microsoft
+description: Ta strona zawiera omówienie obsługi protokołu WebSocket bramy aplikacji.
 documentationcenter: na
 services: application-gateway
 author: amsriva
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836798"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>Omówienie obsługi protokołu WebSocket w bramy aplikacji
 

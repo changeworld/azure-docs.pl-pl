@@ -1,11 +1,11 @@
 ---
-title: "Zasobów szablonu usługi Azure API Management | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat typów zasobów, które są dostępne do użycia w szablonach portalu deweloperów w usłudze Azure API Management."
+title: Zasobów szablonu usługi Azure API Management | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat typów zasobów, które są dostępne do użycia w szablonach portalu deweloperów w usłudze Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 51a1b4c6-a9fd-4524-9e0e-03a9800c3e94
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23835398"
 ---
 # <a name="azure-api-management-template-resources"></a>Zasobów szablonu usługi Azure API Management
 Zarządzanie interfejsami API Azure zapewnia następujące typy zasobów do użycia w dewelopera szablony portalu.  

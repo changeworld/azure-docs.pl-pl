@@ -1,6 +1,6 @@
 ---
-title: "Przykłady kodu magazynu platformy Azure | Dokumentacja firmy Microsoft"
-description: "Wyświetlanie, Pobierz i uruchom przykładowy kod i aplikacji usługi Azure Storage. Wykryj, wprowadzenie przykłady dla obiektów blob, kolejek, tabel i plików, za pomocą biblioteki klienta magazynu .NET, Java, Node.js i C++."
+title: Przykłady kodu magazynu platformy Azure | Dokumentacja firmy Microsoft
+description: Wyświetlanie, Pobierz i uruchom przykładowy kod i aplikacji usługi Azure Storage. Wykryj, wprowadzenie przykłady dla obiektów blob, kolejek, tabel i plików, za pomocą biblioteki klienta magazynu .NET, Java, Node.js i C++.
 services: storage
 documentationcenter: na
 author: tamram
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23927453"
 ---
 # <a name="azure-storage-samples"></a>Przykłady usługi Azure Storage
 

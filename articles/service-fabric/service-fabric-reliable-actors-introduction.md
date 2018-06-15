@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34213048"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Wprowadzenie do elementów Reliable Actors usługi Service Fabric
 Reliable Actors to platforma aplikacji sieci szkieletowej usług na podstawie [aktora wirtualnego](http://research.microsoft.com/en-us/projects/orleans/) wzorca. Niezawodnej interfejs API złośliwych użytkowników zapewnia model programowania jednowątkowe oparty na skalowalność i niezawodność gwarancje udostępniane przez usługi sieć szkieletowa usług.

@@ -1,12 +1,12 @@
 ---
-title: "Rozwiązywanie problemów dotyczących wdrożenia serii StorSimple 8000 | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób diagnozowanie i usuwanie błędów występujących podczas wdrażania najpierw StorSimple."
+title: Rozwiązywanie problemów dotyczących wdrożenia serii StorSimple 8000 | Dokumentacja firmy Microsoft
+description: Opisuje sposób diagnozowanie i usuwanie błędów występujących podczas wdrażania najpierw StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23927859"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>Rozwiązywanie problemów dotyczących wdrożenia urządzenia StorSimple
 ## <a name="overview"></a>Omówienie

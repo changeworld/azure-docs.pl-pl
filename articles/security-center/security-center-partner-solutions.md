@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie połączonych partnerskich rozwiązań w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft"
-description: "Ten dokument przedstawia sposób, w jaki Centrum zabezpieczeń Azure umożliwia ogólne monitorowanie kondycji rozwiązań partnerskich zintegrowanych z subskrypcją platformy Azure."
+title: Zarządzanie połączonych partnerskich rozwiązań w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
+description: Ten dokument przedstawia sposób, w jaki Centrum zabezpieczeń Azure umożliwia ogólne monitorowanie kondycji rozwiązań partnerskich zintegrowanych z subskrypcją platformy Azure.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/18/2017
+ms.locfileid: "23891027"
 ---
 # <a name="managing-connected-partner-solutions-with-azure-security-center"></a>Zarządzanie połączonych rozwiązań partnerskich w Centrum zabezpieczeń Azure
 W tym artykule przedstawiono sposób zarządzania i monitorowania zabezpieczeń połączonych rozwiązań w Centrum zabezpieczeń Azure.

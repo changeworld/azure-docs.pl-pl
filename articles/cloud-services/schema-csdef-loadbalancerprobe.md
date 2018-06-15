@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360057"
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Definicja schematu LoadBalancerProbe usług w chmurze Azure
 Sondę modułu równoważenia obciążenia jest klienta badanie kondycji zdefiniowanych punktów końcowych protokołu UDP i punktów końcowych w wystąpieniach ról. `LoadBalancerProbe` Nie jest elementem autonomiczny; jest połączona z rolą sieci web lub roli proces roboczy w pliku definicji usługi. A `LoadBalancerProbe` mogą być używane przez więcej niż jednej roli.
