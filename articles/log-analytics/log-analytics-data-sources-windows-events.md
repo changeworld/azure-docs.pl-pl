@@ -1,8 +1,8 @@
 ---
-title: "Zbieranie i analizowanie dzienników zdarzeń systemu Windows w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft"
-description: "Dzienniki zdarzeń systemu Windows są jednym z najbardziej typowych źródeł danych używanych przez analizy dzienników.  W tym artykule opisano sposób konfigurowania zbierania dzienników zdarzeń systemu Windows i szczegóły rekordów tworzonych w obszarze roboczym analizy dzienników."
+title: Zbieranie i analizowanie dzienników zdarzeń systemu Windows w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Dzienniki zdarzeń systemu Windows są jednym z najbardziej typowych źródeł danych używanych przez analizy dzienników.  W tym artykule opisano sposób konfigurowania zbierania dzienników zdarzeń systemu Windows i szczegóły rekordów tworzonych w obszarze roboczym analizy dzienników.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26782034"
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Źródła danych dziennika zdarzeń systemu Windows w analizy dzienników
 Dzienniki zdarzeń systemu Windows są jednym z najbardziej typowych [źródeł danych](log-analytics-data-sources.md) do zbierania danych za pomocą agentów systemu Windows, ponieważ wiele aplikacji zapisu do dziennika zdarzeń systemu Windows.  Oprócz określenia żadnych dzienników niestandardowych tworzony przez aplikacje, które należy monitorować może zbierać zdarzenia z dzienników standardowe, takie jak systemu i aplikacji.

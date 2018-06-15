@@ -13,6 +13,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33953738"
 ---
 > [!IMPORTANT]
 > To rozszerzenie jest przestarzała i jest tylko opisanych tutaj tylko do celów informacyjnych. Nie zaleca się, że będziesz nadal używać tego rozszerzenia w ramach wdrożeń. 

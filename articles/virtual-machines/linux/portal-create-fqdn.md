@@ -1,8 +1,8 @@
 ---
-title: "Utwórz nazwę FQDN dla maszyny Wirtualnej systemu Linux, w portalu Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć w pełni kwalifikowaną nazwę domeny lub nazwę FQDN dla Menedżera zasobów na podstawie maszyny wirtualnej w portalu Azure."
+title: Utwórz nazwę FQDN dla maszyny Wirtualnej systemu Linux, w portalu Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć w pełni kwalifikowaną nazwę domeny lub nazwę FQDN dla Menedżera zasobów na podstawie maszyny wirtualnej w portalu Azure.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/14/2017
+ms.locfileid: "26707291"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Utwórz w pełni kwalifikowaną nazwą domeny w portalu Azure dla maszyny Wirtualnej systemu Linux
 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33940986"
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-the-azure-portal"></a>Korzystanie z usługi Azure Media Services i witryny Azure Portal do prowadzenia transmisji strumieniowych na żywo ze strumieniami o różnych szybkościach transmisji bitów
 > [!div class="op_single_selector"]

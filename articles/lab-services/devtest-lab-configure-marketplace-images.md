@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33787395"
 ---
 # <a name="configure-azure-marketplace-image-settings-in-azure-devtest-labs"></a>Skonfiguruj ustawienia obrazu portalu Azure Marketplace w usłudze Azure DevTest Labs
 DevTest Labs obsługuje tworzenia maszyn wirtualnych oparte na obrazach portalu Azure Marketplace w zależności od sposobu konfiguracji portalu Azure Marketplace obrazów do wykorzystania w laboratorium. W tym artykule przedstawiono sposób określić, które, portalu Azure Marketplace obrazy mogą być używane podczas tworzenia maszyn wirtualnych w laboratorium. Dzięki temu, że zespół ma dostęp tylko do obrazów Marketplace, które są im potrzebne. 

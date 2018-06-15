@@ -1,11 +1,11 @@
 ---
-title: "Bezpieczne łączenie z zasobami zaplecza ze środowiska usługi aplikacji"
-description: "Dowiedz się więcej o tym, jak bezpiecznie łączyć się z zasobami zaplecza ze środowiska usługi aplikacji."
+title: Bezpieczne łączenie z zasobami zaplecza ze środowiska usługi aplikacji
+description: Dowiedz się więcej o tym, jak bezpiecznie łączyć się z zasobami zaplecza ze środowiska usługi aplikacji.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: stefsch
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: f82eb283-a6e7-4923-a00b-4b4ccf7c4b5b
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836525"
 ---
 # <a name="securely-connecting-to-backend-resources-from-an-app-service-environment"></a>Bezpieczne łączenie z zasobami zaplecza ze środowiska usługi aplikacji
 ## <a name="overview"></a>Omówienie

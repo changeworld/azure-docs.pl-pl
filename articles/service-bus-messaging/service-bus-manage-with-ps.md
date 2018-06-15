@@ -1,12 +1,12 @@
 ---
-title: "Za pomocą programu PowerShell do zarządzania zasobami Azure Service Bus | Dokumentacja firmy Microsoft"
-description: "Moduł PowerShell umożliwia tworzenie i zarządzanie zasobami usługi Service Bus"
+title: Za pomocą programu PowerShell do zarządzania zasobami Azure Service Bus | Dokumentacja firmy Microsoft
+description: Moduł PowerShell umożliwia tworzenie i zarządzanie zasobami usługi Service Bus
 services: service-bus-messaging
 documentationcenter: .NET
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/22/2017
+ms.locfileid: "27159742"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>Zarządzanie zasobami usługi Service Bus przy użyciu programu PowerShell
 

@@ -21,6 +21,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33944543"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optymalizowanie maszyny wirtualnej systemu Linux na platformie Azure
 Tworzenie maszyny wirtualnej systemu Linux (VM) to łatwo zrobić z wiersza polecenia lub w portalu. W tym samouczku przedstawiono sposób zapewnienia skonfigurowaniu go w celu zoptymalizowania wydajności jej na platformie Microsoft Azure. W tym temacie korzysta z maszyny Wirtualnej systemu Ubuntu Server, ale można również utworzyć maszynę wirtualną systemu Linux przy użyciu [obrazów jako szablon](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  

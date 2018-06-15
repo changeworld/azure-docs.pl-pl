@@ -16,6 +16,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33942449"
 ---
 # <a name="microsoft-azure-virtual-datacenter-a-network-perspective"></a>Wirtualne centrum danych platformy Microsoft Azure: Perspektywy sieci
 **Microsoft Azure**: szybszą, oszczędności, integracja danych i aplikacji lokalnych

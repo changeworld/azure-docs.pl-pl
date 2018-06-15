@@ -1,8 +1,8 @@
 ---
-title: "Migracji active nazwy DNS w usłudze Azure App Service | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak przeprowadzić migrację niestandardowej nazwy domeny DNS, który jest już przypisany do lokacji na żywo w usłudze Azure App Service bez żadnego przestoju."
+title: Migracji active nazwy DNS w usłudze Azure App Service | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak przeprowadzić migrację niestandardowej nazwy domeny DNS, który jest już przypisany do lokacji na żywo w usłudze Azure App Service bez żadnego przestoju.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: jimbe
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/03/2018
+ms.locfileid: "27566495"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Migracji active nazwy DNS w usłudze Azure App Service
 

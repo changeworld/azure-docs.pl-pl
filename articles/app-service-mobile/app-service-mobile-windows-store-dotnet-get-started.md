@@ -1,11 +1,11 @@
 ---
-title: "Tworzenie aplikacji platformy uniwersalnej systemu Windows korzystającej z usługi Mobile Apps | Microsoft Docs"
-description: "Wykonaj kroki opisane w tym samouczku, aby rozpocząć używanie zapleczy aplikacji mobilnych Azure na potrzeby tworzenia aplikacji platformy uniwersalnej systemu Windows w języku C#, Visual Basic lub JavaScript."
+title: Tworzenie aplikacji platformy uniwersalnej systemu Windows korzystającej z usługi Mobile Apps | Microsoft Docs
+description: Wykonaj kroki opisane w tym samouczku, aby rozpocząć używanie zapleczy aplikacji mobilnych Azure na potrzeby tworzenia aplikacji platformy uniwersalnej systemu Windows w języku C#, Visual Basic lub JavaScript.
 services: app-service\mobile
 documentationcenter: windows
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 47124296-2908-4d92-85e0-05c4aa6db916
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27594959"
 ---
 # <a name="create-a-windows-app"></a>Tworzenie aplikacji systemu Windows
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]

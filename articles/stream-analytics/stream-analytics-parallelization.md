@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33777631"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Korzystać z zapytania paralelizacja w Azure Stream Analytics
 W tym artykule przedstawiono sposób wykorzystać paralelizacja Azure Stream Analytics. Sposób skalowania zadania usługi analiza strumienia, konfigurując wejściowych partycji i dostrajania analytics definicji zapytania.

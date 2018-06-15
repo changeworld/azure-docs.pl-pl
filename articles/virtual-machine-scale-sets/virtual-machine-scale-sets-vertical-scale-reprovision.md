@@ -1,11 +1,11 @@
 ---
 title: Skalowanie w pionie zestawy skalowania maszyny wirtualnej platformy Azure | Dokumentacja firmy Microsoft
-description: "Sposób pionowo skalowania maszyny wirtualnej w odpowiedzi na monitorowanie alertów w usłudze Automatyzacja Azure"
+description: Sposób pionowo skalowania maszyny wirtualnej w odpowiedzi na monitorowanie alertów w usłudze Automatyzacja Azure
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 16b17421-6b8f-483e-8a84-26327c44e9d3
 ms.service: virtual-machine-scale-sets
@@ -20,6 +20,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26781823"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Ustawia pionowe automatycznego skalowania o skali maszyny wirtualnej
 W tym artykule opisano sposób skalowanie w pionie Azure [zestawy skalowania maszyny wirtualnej](https://azure.microsoft.com/services/virtual-machine-scale-sets/) z lub bez reprovisioning. Pionowy skalowania maszyn wirtualnych, które nie znajdują się w zestawy skalowania można znaleźć w temacie [skalowanie w pionie maszyny wirtualnej platformy Azure w usłudze Automatyzacja Azure](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

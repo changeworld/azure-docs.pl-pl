@@ -1,9 +1,9 @@
 ---
-title: "Konwertuj szablonu zestaw skalowania usługi Azure Resource Manager pod kątem używania dysku zarządzanego | Dokumentacja firmy Microsoft"
-description: "Konwertuj szablonu zestaw skali do szablonu zestawu dysków zarządzanych w skali."
+title: Konwertuj szablonu zestaw skalowania usługi Azure Resource Manager pod kątem używania dysku zarządzanego | Dokumentacja firmy Microsoft
+description: Konwertuj szablonu zestaw skali do szablonu zestawu dysków zarządzanych w skali.
 keywords: zestawy skalowania maszyny wirtualnej
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
 editor: tysonn
@@ -21,6 +21,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26781075"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>Konwertuj szablonu zestaw skalowania do szablonu zestawu dysków zarządzanych w skali
 

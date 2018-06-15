@@ -1,10 +1,10 @@
 ---
-title: "Włączanie synchronizacji w trybie offline dla aplikacji mobilnej Azure (Xamarin iOS)"
-description: "Dowiedz się, jak używać aplikacji usługi Mobile App do pamięci podręcznej i synchronizacji danych w trybie offline w aplikacji platformy Xamarin iOS"
+title: Włączanie synchronizacji w trybie offline dla aplikacji mobilnej Azure (Xamarin iOS)
+description: Dowiedz się, jak używać aplikacji usługi Mobile App do pamięci podręcznej i synchronizacji danych w trybie offline w aplikacji platformy Xamarin iOS
 documentationcenter: xamarin
 author: conceptdev
 manager: cfowler
-editor: 
+editor: ''
 services: app-service\mobile
 ms.assetid: 828a287c-5d58-4540-9527-1309ebb0f32b
 ms.service: app-service-mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27594670"
 ---
 # <a name="enable-offline-sync-for-your-xamarinios-mobile-app"></a>Włączanie synchronizacji w trybie offline dla aplikacji mobilnej platformy Xamarin.iOS
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]

@@ -16,9 +16,10 @@ ms.date: 04/27/2017
 ms.author: bwren
 ms.openlocfilehash: 65585e6c09def23101d9735c8b9c719d213938ac
 ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33887846"
 ---
 # <a name="targeting-management-solutions-in-azure-preview"></a>Celem rozwiązania do zarządzania na platformie Azure (wersja zapoznawcza)
 Po dodaniu rozwiązania do zarządzania do subskrypcji jest automatycznie wdrażane domyślnie do wszystkich agentów systemu Windows i Linux podłączone do obszaru roboczego analizy dzienników.  Możesz zarządzać kosztów i ograniczyć ilość danych zebranych przez rozwiązanie ograniczając go z określonym zestawem agentów.  W tym artykule opisano sposób użycia **przeznaczonych dla rozwiązania** która to funkcja, która pozwala zastosować zakres do rozwiązań.

@@ -15,9 +15,10 @@ ms.date: 04/23/2018
 ms.author: curtand
 ms.openlocfilehash: e372ff8f6e13c4720acc91c402acbe14e9307e06
 ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33763964"
 ---
 # <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>Przykłady programu PowerShell oparta na grupy licencjonowania w usłudze Azure AD
 
