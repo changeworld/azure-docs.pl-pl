@@ -15,6 +15,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31597153"
 ---
 # <a name="connection-strings-for-azure-sql-data-warehouse"></a>Parametry połączenia dla usługi Azure SQL Data Warehouse
 Usługa SQL Data Warehouse można nawiązać z kilku różnych aplikacji protokołów takich, jak [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP] [ PHP] i [JDBC][JDBC]. Poniżej przedstawiono kilka przykładów ciągi połączenia dla każdego protokołu.  Azure portal umożliwia również tworzenie parametrów połączenia.  Aby utworzyć parametry połączenia przy użyciu portalu Azure, przejdź do bloku bazy danych, w obszarze *Essentials* kliknij *Pokaż parametry połączenia bazy danych*.

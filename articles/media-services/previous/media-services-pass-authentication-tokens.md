@@ -20,6 +20,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788452"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Dowiedz się, jak klienci przekazywania tokenów do usługi dostarczania klucza usługi Azure Media Services
 Klienci często dotyczy jak odtwarzacza można przekazać tokenów do usługi Azure Media Services klucza dostawy do weryfikacji, odtwarzacza można uzyskać klucz. Usługa Media Services obsługuje simple web token (SWT) i formatuje tokenu Web JSON (JWT). Token uwierzytelniania jest stosowane do dowolnego typu klucza, niezależnie od tego, czy używać wspólnego szyfrowania lub szyfrowania koperty Advanced Encryption (Standard AES) w systemie.

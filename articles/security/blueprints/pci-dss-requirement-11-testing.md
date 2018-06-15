@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894986"
 ---
 # <a name="testing-requirements-for-pci-dss-compliant-environments"></a>Wymagania dotyczące środowiska standardem PCI DSS 
 ## <a name="pci-dss-requirement-11"></a>Wymaganie PCI DSS 11

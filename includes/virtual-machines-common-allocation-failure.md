@@ -13,6 +13,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33901333"
 ---
 Podczas tworzenia maszyny wirtualnej (VM), ponownego uruchomienia zatrzymanej maszyny wirtualnej (cofnięciu przydziału) lub zmień rozmiar maszyny Wirtualnej Microsoft Azure przydziela zasoby obliczeniowe do subskrypcji. Firma Microsoft stale najlepiej zainwestować w dodatkowe infrastruktury i funkcje, aby upewnić się, że zawsze mamy wszystkie typy maszyn wirtualnych do obsługi klientów. Jednak czasami mogą wystąpić błędy alokacji zasobów z powodu Niespotykana wzrostu popytu na usług platformy Azure w określonych regionach. Ten problem może wystąpić przy próbie utworzenia lub uruchomić maszyny wirtualne w regionie, gdy maszyny wirtualne są wyświetlane następujący kod błędu i komunikat:
 

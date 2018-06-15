@@ -5,14 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 03/22/2018
+ms.date: 06/12/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 36f48e4cc321b534c0fd2e896bf3f43623c540bb
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6e0d2b881e00acc6b1fccd3196187309fc36cba2
+ms.sourcegitcommit: 8659efc885be98f42edae0b516ca576e38940c97
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/13/2018
+ms.locfileid: "35568147"
 ---
 #### <a name="expressroute-limits"></a>Limity usługi ExpressRoute
 Następujące ograniczenia mają zastosowanie do zasobów usługi ExpressRoute dla subskrypcji.
@@ -27,6 +28,7 @@ Następujące ograniczenia mają zastosowanie do zasobów usługi ExpressRoute d
 | Maksymalna liczba tras dla publicznej komunikacji równorzędnej platformy Azure z dodatkiem premium usługi ExpressRoute |200 |
 | Maksymalna liczba tras dla komunikacji równorzędnej firmy Microsoft Azure ze standardowym ExpressRoute |200 |
 | Maksymalna liczba tras dla komunikacji równorzędnej z dodatkiem premium usługi Microsoft Azure |200 |
+| Maksymalna liczba połączonych do tej samej sieci wirtualnej w różnych lokalizacjach komunikacji równorzędnej obwody usługi ExpressRoute |4 |
 | Liczba dozwolonych dla jednej obwodu ExpressRoute łączy sieci wirtualnej |W poniższej tabeli w temacie |
 
 #### <a name="number-of-virtual-networks-per-expressroute-circuit"></a>Liczba sieci wirtualnych na obwodu usługi expressroute

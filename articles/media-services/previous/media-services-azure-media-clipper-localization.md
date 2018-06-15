@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788144"
 ---
 # <a name="configure-localization"></a>Konfigurowanie lokalizacji
 Azure Media funkcji tworzenia wycinków są dostępne w językach 18. Aby ustawić język elementu widget, należy zdefiniować `language` parametr podczas inicjowania. Podaj ciąg kodu żądany język z poniższej listy:

@@ -5,5 +5,7 @@
 ``dc.services.visualstudio.com`` -Używane do zbierania danych telemetrycznych. <br>
 ``time.nist.gov`` i ``time.windows.com``. Służą do sprawdzania synchronizacji czasu między systemem i czasem globalnym.
 <br/><br/>
-Adresy URL w chmurze Azure dla instytucji rządowych:<br/>— .ugv.hypervrecoverymanager.windowsazure.us<br/>— .ugv.backup.windowsazure.us<br/>— .ugi.hypervrecoverymanager.windowsazure.us<br/>— .ugi.backup.windowsazure.us<br/>- https://login-us.microsoftonline.com<br/>- https://login.microsoftonline.us<br/>- https://login.microsoftonline.com<br/>
+Adresy URL w chmurze Azure dla instytucji rządowych:<br/>— .ugv.hypervrecoverymanager.windowsazure.us<br/>— .ugv.backup.windowsazure.us<br/>— .ugi.hypervrecoverymanager.windowsazure.us<br/>— .ugi.backup.windowsazure.us<br/>-
+https://login.microsoftonline.us<br/>-
+https://login.microsoftonline.com<br/>
 

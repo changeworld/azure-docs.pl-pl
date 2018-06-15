@@ -1,6 +1,6 @@
 ---
-title: "Jak rejestrować biletu pomocy technicznej zdarzeń zabezpieczeń - Azure | Dokumentacja firmy Microsoft"
-description: "Jako sprzedawcy w witrynie Azure Marketplace, o zidentyfikować potencjalne zdarzeń zabezpieczeń musisz wiedzieć, jak rejestrować bilet odpowiednie."
+title: Jak rejestrować biletu pomocy technicznej zdarzeń zabezpieczeń - Azure | Dokumentacja firmy Microsoft
+description: Jako sprzedawcy w witrynie Azure Marketplace, o zidentyfikować potencjalne zdarzeń zabezpieczeń musisz wiedzieć, jak rejestrować bilet odpowiednie.
 services: security
 documentationcenter: na
 author: DavidBosland
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/04/2017
+ms.locfileid: "26129944"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>Jak rejestrować biletu pomocy technicznej zdarzeń zabezpieczeń
 

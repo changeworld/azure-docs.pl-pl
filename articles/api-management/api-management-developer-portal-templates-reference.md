@@ -1,11 +1,11 @@
 ---
-title: "Szablony portalu usługi Azure API Management dewelopera | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak dostosować zawartość strony portalu dewelopera przy użyciu zestawu szablonów w usłudze Azure API Management."
+title: Szablony portalu usługi Azure API Management dewelopera | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dostosować zawartość strony portalu dewelopera przy użyciu zestawu szablonów w usłudze Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 5189f3d8-2a4c-4dc8-ab19-11c7df0114d4
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/04/2017
+ms.locfileid: "26128753"
 ---
 # <a name="developer-portal-templates"></a>Szablony portalu dla deweloperów
 

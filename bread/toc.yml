@@ -469,6 +469,9 @@
     - name: Odporność
       tocHref: /azure/resiliency/
       topicHref: /azure/resiliency/
+    - name: Kontrola dostępu oparta na rolach
+      tocHref: /azure/role-based-access-control/
+      topicHref: /azure/role-based-access-control/
     - name: Service Health
       tocHref: /azure/service-health/
       topicHref: /azure/service-health/

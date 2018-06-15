@@ -18,6 +18,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33787997"
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>Użyć do trenowania Azure DevTest Labs
 Azure DevTest Labs umożliwia wdrożenie wielu kluczowych scenariuszy, oprócz: tworzenie i testowanie. Jest jednym z tych scenariuszy skonfigurować laboratorium do trenowania. Azure DevTest Labs umożliwia tworzenie laboratorium, w którym można podać szablonów niestandardowych, które każdego szkoleniowych służy do tworzenia środowisk identyczne i izolowane szkolenia. Można zastosować zasad w celu zapewnienia, że szkolenie środowiska są dostępne dla każdego szkoleniowych tylko wtedy, gdy są potrzebne i zawiera za mało zasobów — takich jak maszyny wirtualne - wymagane szkolenia. Na koniec można łatwo udostępniać laboratorium uczestnikom, które mogą uzyskiwać dostęp do za pomocą jednego kliknięcia.

@@ -33,7 +33,8 @@ Poniższe kroki pokazują, jak skonfigurować uwierzytelnianie hasła dla aplika
    * **{Hasło}:** hasła używanego do uwierzytelniania z aplikacji.
      
      ```powershell
-     New-AzureRmADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password {Password}
+     $SecurePassword=ConvertTo-SecureString {password} –asplaintext –force
+     New-AzureRmADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password $SecurePassword
      ```
 4. Zanotuj **ApplicationId** aplikacji został utworzony. Należy to później.
 5. Utwórz nową główną nazwę usługi, za pomocą następującego polecenia, zastępując **{MyApplicationId}** z **ApplicationId** w poprzednim kroku:

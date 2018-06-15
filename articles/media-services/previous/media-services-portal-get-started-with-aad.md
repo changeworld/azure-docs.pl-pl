@@ -18,6 +18,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33790328"
 ---
 # <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>Wprowadzenie do uwierzytelniania usługi Azure AD przy użyciu portalu Azure
 
