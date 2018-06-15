@@ -2,24 +2,21 @@
 title: 'Azure Cosmos DB: tworzenie aplikacji internetowej Flask za pomocą języka Python i interfejsu API bazy danych MongoDB w usłudze Azure Cosmos DB | Microsoft Docs'
 description: Przykładowy kod Python Flask, za pomocą którego można nawiązywać połączenia z interfejsem API bazy danych MongoDB w usłudze Azure Cosmos DB i wykonywać względem niego zapytania
 services: cosmos-db
-documentationcenter: ''
 author: heatherbshapiro
 manager: kfile
-ms.assetid: ''
 ms.service: cosmos-db
+ms.component: cosmosdb-mongo
 ms.custom: quick start connect, mvc
-ms.workload: ''
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/2/2017
 ms.author: hshapiro
-ms.openlocfilehash: 095cc724beb9f35896bd02e299523839a9f43f4b
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 024ca836e4d2c58c4c942d6f7376608e40248316
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33885106"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34795724"
 ---
 # <a name="azure-cosmos-db-build-a-flask-app-with-the-mongodb-api"></a>Azure Cosmos DB: tworzenie aplikacji Flask za pomocą interfejsu API bazy danych MongoDB
 
@@ -95,7 +92,7 @@ Wszystkie poniższe fragmenty kodu pochodzą z pliku app.py i używają parametr
     heading = "ToDo Reminder"
     ```
     
-## <a name="run-the-web-app"></a>Uruchamianie aplikacji sieci Web
+## <a name="run-the-web-app"></a>Uruchamianie aplikacji internetowej
 
 1. Upewnij się, że emulator usługi Azure Cosmos DB działa.
 

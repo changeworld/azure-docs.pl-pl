@@ -8,6 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: get-started-article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 5ad9b01d3821b481fe3255c821e8674dcb26b322
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 664909fa78f2034c0750492e529b21cebc087e5c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34723800"
 ---
 # <a name="you-cant-get-there-from-here-on-a-windows-device"></a>Nie można dostać się tam z tego miejsca na urządzeniu z systemem Windows
 
@@ -40,7 +42,7 @@ Jeśli używasz urządzenia z systemem **Windows**, sprawdź następujące eleme
 
 ## <a name="supported-browser"></a>Obsługiwana przeglądarka
 
-Jeśli administrator skonfigurował zasady dostępu warunkowego, dostęp do zasobów organizacji można uzyskiwać tylko za pomocą obsługiwanej przeglądarki. Na urządzeniu z systemem Windows są obsługiwane tylko przeglądarki **Internet Explorer** i **Microsoft Edge**.
+Jeśli administrator skonfigurował zasady dostępu warunkowego, dostęp do zasobów organizacji można uzyskiwać tylko za pomocą obsługiwanej przeglądarki. Na urządzeniu z systemem Windows są obsługiwane tylko przeglądarki **Internet Explorer** i **Edge**.
 
 Możesz łatwo sprawdzić, czy dostęp do zasobu jest niemożliwy z powodu nieobsługiwanej przeglądarki, w sekcji szczegółów na stronie błędu:
 

@@ -1,11 +1,11 @@
 ---
-title: "Jak używać tematów usługi Service Bus (Ruby) | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać tematów usługi Service Bus i subskrypcji platformy Azure. Przykłady kodu są napisane dla aplikacji dopisków fonetycznych."
+title: Jak używać tematów usługi Service Bus (Ruby) | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać tematów usługi Service Bus i subskrypcji platformy Azure. Przykłady kodu są napisane dla aplikacji dopisków fonetycznych.
 services: service-bus-messaging
 documentationcenter: ruby
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3ef2295e-7c5f-4c54-a13b-a69c8045d4b6
 ms.service: service-bus-messaging
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23926795"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>Jak używać tematów usługi Service Bus i subskrypcje z Ruby
  

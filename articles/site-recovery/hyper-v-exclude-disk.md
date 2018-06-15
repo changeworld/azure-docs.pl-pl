@@ -1,6 +1,6 @@
 ---
-title: "Wykluczanie dysków z ochrony przy użyciu usługi Azure Site Recovery | Microsoft Docs"
-description: "Opisuje, dlaczego i jak wykluczać dyski maszyny wirtualnej z replikacji z funkcji Hyper-V do platformy Azure."
+title: Wykluczanie dysków z ochrony przy użyciu usługi Azure Site Recovery | Microsoft Docs
+description: Opisuje, dlaczego i jak wykluczać dyski maszyny wirtualnej z replikacji z funkcji Hyper-V do platformy Azure.
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29467184"
 ---
 # <a name="exclude-disks-from-replication"></a>Wykluczanie dysków z replikacji
 W tym artykule opisano sposób wykluczania dysków z replikacji. Takie wykluczenie może zoptymalizować przepustowość używaną przez replikację lub zoptymalizować zasoby po stronie docelowej, z których korzystają takie dyski.

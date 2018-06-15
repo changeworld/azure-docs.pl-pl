@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364254"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Centrum zabezpieczeń Azure
 Ten dokument przedstawia sposób użycia zalecenia w Centrum zabezpieczeń Azure ułatwiają ochronę zasobów platformy Azure.

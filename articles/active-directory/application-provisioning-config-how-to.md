@@ -1,11 +1,11 @@
 ---
-title: "Jak skonfigurować Inicjowanie obsługi użytkowników dla aplikacji w galerii Azure AD | Dokumentacja firmy Microsoft"
-description: "Jak można szybko skonfigurować konto użytkownika sformatowanego alokowania i anulowania alokowania aplikacjom wymienione w galerii aplikacji usługi Azure AD"
+title: Jak skonfigurować Inicjowanie obsługi użytkowników dla aplikacji w galerii Azure AD | Dokumentacja firmy Microsoft
+description: Jak można szybko skonfigurować konto użytkownika sformatowanego alokowania i anulowania alokowania aplikacjom wymienione w galerii aplikacji usługi Azure AD
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29464429"
 ---
 # <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>Jak skonfigurować Inicjowanie obsługi użytkowników dla aplikacji w galerii Azure AD
 
