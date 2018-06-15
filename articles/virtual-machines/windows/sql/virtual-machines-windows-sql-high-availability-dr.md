@@ -1,11 +1,11 @@
 ---
-title: "Wysoka dostępność i odzyskiwanie po awarii dla programu SQL Server | Dokumentacja firmy Microsoft"
-description: "Omówienie różnych typów HADR strategii na serwerze SQL działa w maszynach wirtualnych platformy Azure."
+title: Wysoka dostępność i odzyskiwanie po awarii dla programu SQL Server | Dokumentacja firmy Microsoft
+description: Omówienie różnych typów HADR strategii na serwerze SQL działa w maszynach wirtualnych platformy Azure.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29401263"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Wysoka dostępność i odzyskiwanie awaryjne na potrzeby programu SQL Server na maszynach wirtualnych platformy Azure
 

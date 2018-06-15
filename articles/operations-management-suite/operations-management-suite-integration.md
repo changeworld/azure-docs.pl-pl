@@ -1,8 +1,8 @@
 ---
 title: Integracja z pakietem Operations Management Suite (OMS) | Dokumentacja firmy Microsoft
-description: "Oprócz przy użyciu standardowych funkcji OMS, możesz też zintegrować ją z innymi aplikacje do zarządzania usługami i zapewnienie środowisku hybrydowym zarządzania scenariusze zarządzania niestandardowe unikatowe w danym środowisku lub niestandardowych zarządzania środowisko dla klientów.  Ten artykuł zawiera omówienie różnych opcji dotyczących integracji z usługą OMS i łącza do artykułów szczegółowe informacje techniczne."
+description: Oprócz przy użyciu standardowych funkcji OMS, możesz też zintegrować ją z innymi aplikacje do zarządzania usługami i zapewnienie środowisku hybrydowym zarządzania scenariusze zarządzania niestandardowe unikatowe w danym środowisku lub niestandardowych zarządzania środowisko dla klientów.  Ten artykuł zawiera omówienie różnych opcji dotyczących integracji z usługą OMS i łącza do artykułów szczegółowe informacje techniczne.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23865862"
 ---
 # <a name="integrating-with-operations-management-suite-oms"></a>Integracja z pakietem Operations Management Suite (OMS)
 Operations Management Suite jest firmy Microsoft w chmurze IT rozwiązania do zarządzania ułatwiające zarządzanie i ochrona lokalnej infrastruktury w chmurze.  Oprócz przy użyciu standardowych funkcji OMS, możesz też zintegrować ją z innymi aplikacje do zarządzania usługami i zapewnienie środowisku hybrydowym zarządzania scenariusze zarządzania niestandardowe unikatowe w danym środowisku lub niestandardowych zarządzania środowisko dla klientów.  Ten artykuł zawiera omówienie różnych opcji do integracji z usługami OMS i łącza do artykułów szczegółowe informacje techniczne. 

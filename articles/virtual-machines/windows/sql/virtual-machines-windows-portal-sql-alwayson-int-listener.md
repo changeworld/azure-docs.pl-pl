@@ -1,6 +1,6 @@
 ---
-title: "Utwórz odbiornik grupy dostępności programu SQL Server na maszynach wirtualnych platformy Azure | Dokumentacja firmy Microsoft"
-description: "Instrukcje krok po kroku dotyczące tworzenia odbiornika dla grupy dostępności AlwaysOn dla programu SQL Server na maszynach wirtualnych Azure"
+title: Utwórz odbiornik grupy dostępności programu SQL Server na maszynach wirtualnych platformy Azure | Dokumentacja firmy Microsoft
+description: Instrukcje krok po kroku dotyczące tworzenia odbiornika dla grupy dostępności AlwaysOn dla programu SQL Server na maszynach wirtualnych Azure
 services: virtual-machines
 documentationcenter: na
 author: MikeRayMSFT
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29400634"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Konfigurowanie usługi równoważenia obciążenia zawsze włączonej grupy dostępności na platformie Azure
 W tym artykule opisano sposób tworzenia modułu równoważenia obciążenia dla grupy dostępności programu SQL Server zawsze włączony w maszynach wirtualnych platformy Azure, które działają z usługą Azure Resource Manager. Grupa dostępności wymaga modułu równoważenia obciążenia w przypadku wystąpienia programu SQL Server na maszynach wirtualnych Azure. Moduł równoważenia obciążenia przechowuje adres IP dla odbiornika grupy dostępności. Jeśli grupy dostępności obejmuje wielu regionach, każdy region musi modułu równoważenia obciążenia.

@@ -1,11 +1,11 @@
 ---
-title: "Zastosuj szyfrowanie dysków w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft"
-description: "Ten dokument przedstawia sposób wykonania zalecenia Centrum zabezpieczeń Azure ** zastosowanie szyfrowania dysku **."
+title: Zastosuj szyfrowanie dysków w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
+description: Ten dokument przedstawia sposób wykonania zalecenia Centrum zabezpieczeń Azure ** zastosowanie szyfrowania dysku **.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 6cc7824a-8d6b-4a5f-ab40-e3bbaebc4a91
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866261"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Zastosuj szyfrowanie dysków w Centrum zabezpieczeń Azure
 Centrum zabezpieczeń Azure zaleca zastosowanie szyfrowania dysków, jeśli masz dysków systemu Windows lub maszyny Wirtualnej systemu Linux, które nie są szyfrowane przy użyciu szyfrowania dysków Azure. Szyfrowanie dysku umożliwia zaszyfrowanie dysków systemu Windows i maszyny Wirtualnej systemu Linux IaaS.  Szyfrowanie jest zalecane zarówno w przypadku woluminów z systemem operacyjnym, jak i z danymi maszyny wirtualnej.

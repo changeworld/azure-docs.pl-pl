@@ -1,8 +1,8 @@
 ---
-title: "Wszystkich tematów dotyczących usługi baza danych programu SQL Server Stretch | Dokumentacja firmy Microsoft"
-description: "Spis wszystkich tematów dotyczących usługi Azure o nazwie danych Stretch programu SQL Server, która istnieje na http://azure.microsoft.com/documentation/articles/, tytuł i opis."
+title: Wszystkich tematów dotyczących usługi baza danych programu SQL Server Stretch | Dokumentacja firmy Microsoft
+description: Spis wszystkich tematów dotyczących usługi Azure o nazwie danych Stretch programu SQL Server, która istnieje na http://azure.microsoft.com/documentation/articles/, tytuł i opis.
 services: sql-server-stretch-database
-documentationcenter: 
+documentationcenter: ''
 author: DouglasL
 manager: jhubbard
 editor: MightyPen
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23872946"
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>Wszystkie tematy dotyczące usługi Azure SQL Server — bazy danych Stretch
 W tym temacie wymieniono co temat, który bezpośrednio dotyczą **bazy danych programu SQL Server Stretch** usługi platformy Azure. Ta strona sieci Web dla słów kluczowych można wyszukiwać za pomocą **Ctrl + F**, aby znaleźć tematy odsetek bieżącego.

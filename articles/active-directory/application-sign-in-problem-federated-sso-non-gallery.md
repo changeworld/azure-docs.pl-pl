@@ -1,11 +1,11 @@
 ---
-title: "Problemy przy logowaniu do aplikacji z systemem innym niż galerii skonfigurowane dla federacyjne logowanie jednokrotne | Dokumentacja firmy Microsoft"
-description: "Wskazówki dotyczące określonych problemów, które mogą się spodziewać po zalogowaniu się do aplikacji skonfigurowane na podstawie SAML federacyjne logowanie jednokrotne z usługą Azure AD"
+title: Problemy przy logowaniu do aplikacji z systemem innym niż galerii skonfigurowane dla federacyjne logowanie jednokrotne | Dokumentacja firmy Microsoft
+description: Wskazówki dotyczące określonych problemów, które mogą się spodziewać po zalogowaniu się do aplikacji skonfigurowane na podstawie SAML federacyjne logowanie jednokrotne z usługą Azure AD
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/14/2018
+ms.locfileid: "29383467"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Problemy przy logowaniu do aplikacji z systemem innym niż galerii skonfigurowane dla federacyjnego logowania jednokrotnego
 

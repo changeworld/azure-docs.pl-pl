@@ -1,6 +1,6 @@
 ---
-title: "Wiele adresów VIP dla usługi w chmurze"
-description: "Omówienie wieloma wirtualnymi adresami IP oraz jak ustawić wiele adresów VIP na usługi w chmurze"
+title: Wiele adresów VIP dla usługi w chmurze
+description: Omówienie wieloma wirtualnymi adresami IP oraz jak ustawić wiele adresów VIP na usługi w chmurze
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23855201"
 ---
 # <a name="configure-multiple-vips-for-a-cloud-service"></a>Konfigurowanie wielu adresów VIP dla usługi w chmurze
 

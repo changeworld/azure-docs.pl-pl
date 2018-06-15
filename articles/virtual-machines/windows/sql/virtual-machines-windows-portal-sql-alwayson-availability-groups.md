@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie wysokiej dostępności dla maszyn wirtualnych platformy Azure Resource Manager | Dokumentacja firmy Microsoft"
-description: "Ten samouczek przedstawia sposób tworzenia zawsze włączonej grupy dostępności z maszyn wirtualnych platformy Azure w trybie Azure Resource Manager."
+title: Konfigurowanie wysokiej dostępności dla maszyn wirtualnych platformy Azure Resource Manager | Dokumentacja firmy Microsoft
+description: Ten samouczek przedstawia sposób tworzenia zawsze włączonej grupy dostępności z maszyn wirtualnych platformy Azure w trybie Azure Resource Manager.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 64e85527-d5c8-40d9-bbe2-13045d25fc68
 ms.service: virtual-machines-sql
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29401025"
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Konfigurowanie zawsze włączonych grup dostępności w maszynach wirtualnych platformy Azure automatycznie: Menedżer zasobów
 

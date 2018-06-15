@@ -1,11 +1,11 @@
 ---
-title: "Jak kontrolować ruch przychodzący do środowiska usługi aplikacji"
-description: "Więcej informacji na temat sposobu konfigurowania reguły zabezpieczeń sieciowych, aby kontrolować ruch przychodzący do środowiska usługi aplikacji."
+title: Jak kontrolować ruch przychodzący do środowiska usługi aplikacji
+description: Więcej informacji na temat sposobu konfigurowania reguły zabezpieczeń sieciowych, aby kontrolować ruch przychodzący do środowiska usługi aplikacji.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: ccompy
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 4cc82439-8791-48a4-9485-de6d8e1d1a08
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836924"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>Jak kontrolować ruch przychodzący do środowiska usługi aplikacji
 ## <a name="overview"></a>Omówienie

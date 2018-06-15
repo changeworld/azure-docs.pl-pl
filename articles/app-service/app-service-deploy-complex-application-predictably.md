@@ -1,8 +1,8 @@
 ---
-title: "Aprowizacji i wdrażania mikrousług przewidywalnego na platformie Azure"
-description: "Dowiedz się, jak wdrożyć aplikację składa się z mikrousług w usłudze Azure App Service jako pojedyncza jednostka i w sposób przewidywalny przy użyciu szablonów grupy zasobów JSON i skrypty programu PowerShell."
+title: Aprowizacji i wdrażania mikrousług przewidywalnego na platformie Azure
+description: Dowiedz się, jak wdrożyć aplikację składa się z mikrousług w usłudze Azure App Service jako pojedyncza jednostka i w sposób przewidywalny przy użyciu szablonów grupy zasobów JSON i skrypty programu PowerShell.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: jimbe
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23837099"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Aprowizacji i wdrażania mikrousług przewidywalnego na platformie Azure
 W tym samouczku przedstawiono sposób obsługi administracyjnej i wdrażania aplikacji składający się z [mikrousług](https://en.wikipedia.org/wiki/Microservices) w [usłudze Azure App Service](/services/app-service/) jako pojedyncza jednostka i w sposób przewidywalny przy użyciu szablonów grupy zasobów JSON i skrypty programu PowerShell. 

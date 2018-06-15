@@ -1,11 +1,11 @@
 ---
-title: "Planowanie i projektowanie pod kątem połączeń między lokalizacjami: Brama sieci VPN platformy Azure | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat bramy sieci VPN planowania i projektowania dla między różnymi lokalizacjami, hybrydowej i połączeń do wirtualnymi"
+title: 'Planowanie i projektowanie pod kątem połączeń między lokalizacjami: Brama sieci VPN platformy Azure | Dokumentacja firmy Microsoft'
+description: Więcej informacji na temat bramy sieci VPN planowania i projektowania dla między różnymi lokalizacjami, hybrydowej i połączeń do wirtualnymi
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: d5aaab83-4e74-4484-8bf0-cc465811e757
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23884384"
 ---
 # <a name="planning-and-design-for-vpn-gateway"></a>Planowanie i projektowanie dla usługi VPN Gateway
 

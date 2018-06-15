@@ -1,6 +1,6 @@
 ---
-title: "Azure lokacji odzyskiwania wdrożenia Planistę koszt szczegóły Szacowanie funkcji Hyper-V-do Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano szczegółów szacowania kosztów wygenerowanych przy użyciu funkcji Hyper-v do platformy Azure scenariusza Azure lokacji odzyskiwania wdrożenia Planistę raportu."
+title: Azure lokacji odzyskiwania wdrożenia Planistę koszt szczegóły Szacowanie funkcji Hyper-V-do Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano szczegółów szacowania kosztów wygenerowanych przy użyciu funkcji Hyper-v do platformy Azure scenariusza Azure lokacji odzyskiwania wdrożenia Planistę raportu.
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29467177"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Szacowanie kosztów raport według Azure lokacji odzyskiwania wdrożenia Planistę 
 

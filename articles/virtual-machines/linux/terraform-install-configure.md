@@ -1,13 +1,13 @@
 ---
-title: "Instalowanie i konfigurowanie Terraform do obsługi administracyjnej maszyn wirtualnych i innych infrastruktury na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zainstalować i skonfigurować Terraform tworzenie zasobów Azure"
+title: Instalowanie i konfigurowanie Terraform do obsługi administracyjnej maszyn wirtualnych i innych infrastruktury na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zainstalować i skonfigurować Terraform tworzenie zasobów Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: echuvyrov
 manager: jtalkar
 editor: na
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29399172"
 ---
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>Instalowanie i konfigurowanie Terraform do obsługi administracyjnej maszyn wirtualnych i innych infrastruktury na platformie Azure
  
