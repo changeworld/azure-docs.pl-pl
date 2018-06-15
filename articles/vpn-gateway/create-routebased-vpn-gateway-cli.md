@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30840909"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>Utwórz bramę sieci VPN opartej na trasach przy użyciu interfejsu wiersza polecenia
 

@@ -17,6 +17,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30312681"
 ---
 # <a name="batch-analytics"></a>Analiza danych usługi Batch
 Tematy w analizach wsadowych zawierają informacje dotyczące zdarzenia i alerty dostępne dla zasobów usługi partii.
