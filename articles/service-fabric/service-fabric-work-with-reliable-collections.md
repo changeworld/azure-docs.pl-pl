@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34210821"
 ---
 # <a name="working-with-reliable-collections"></a>Praca z elementami Reliable Collections
 Sieć szkieletowa usług oferuje stanowe model programowania dostępne dla deweloperów platformy .NET przy użyciu niezawodnych kolekcje. W szczególności usługa Service Fabric realizuje klasy kolejka niezawodnych i niezawodne słownika. Korzystając z tych klas, swój stan jest podzielona na partycje (w przypadku skalowalności), replikowane (dostępność) i nietransakcyjnego partycji (w przypadku semantyki ACID). Załóżmy Spójrz na typowy sposób obiekcie dictionary niezawodnych i zobacz, jakie jego faktycznego czynności.

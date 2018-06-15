@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2018
 ms.author: richrund; bwren
-ms.openlocfilehash: 434cbdca42e4287a0f3d7e3960bc0baa373bc358
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: d72d0823d78f47aed3d8690cee81f8bb00e7921d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636974"
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>Zbieranie dzienników aktywności platformy Azure w usłudze Log Analytics w wielu subskrypcjach
 
@@ -113,7 +114,7 @@ Przed utworzeniem aplikacji logiki upewnij się, że masz następujące informac
 - Identyfikator obszaru roboczego usługi Log Analytics
 - Klucz wspólny usługi Log Analytics
 
-Aby uzyskać nazwę centrum zdarzeń i parametry połączenia, wykonaj kroki opisane w [Sprawdzanie uprawnień przestrzeni nazw centrów zdarzeń oraz wyszukiwanie parametrów połączenia](../connectors/connectors-create-api-azure-event-hubs.md#connect-to-azure-event-hubs).
+Aby uzyskać nazwę centrum zdarzeń i parametry połączenia, wykonaj kroki opisane w [Sprawdzanie uprawnień przestrzeni nazw centrów zdarzeń oraz wyszukiwanie parametrów połączenia](../connectors/connectors-create-api-azure-event-hubs.md#permissions-connection-string).
 
 
 ### <a name="create-a-new-blank-logic-app"></a>Tworzenie nowej pustej aplikacji logiki

@@ -20,6 +20,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360393"
 ---
 # <a name="app-service-on-azure-stack-update-2-release-notes"></a>Usługi aplikacji — informacje o wersji update 2 Azure stosu
 

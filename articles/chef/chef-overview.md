@@ -13,6 +13,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34260161"
 ---
 # <a name="using-chef-with-azure"></a>Korzystanie z platformy Azure, Chef
 [Chef](http://www.chef.io) to platforma automatyzacji zaawansowanych, która przekształca infrastruktury maszyny wirtualnej na platformie Azure w kodzie. Chef automatyzuje jak infrastruktury jest skonfigurowane, wdrażane i zarządzane w sieci, niezależnie od jego rozmiaru.
