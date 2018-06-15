@@ -14,6 +14,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31529485"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Pojęcia dotyczące punktu kontrolnego i powtórzeń zadania usługi analiza strumienia Azure
 W tym artykule opisano wewnętrznego punktu kontrolnego i powtarzania pojęcia związane z usługi Azure Stream Analytics i wpływu, że te na zadania odzyskiwania. Zawsze uruchamia zadanie usługi Stream Analytics, informacje o stanie jest obsługiwany wewnętrznie. Czy informacje o stanie jest zapisywany w punkt kontrolny okresowo. W niektórych scenariuszach zostanie użyty dla zadania odzyskiwania informacji punktu kontrolnego, jeśli zadania przed wystąpieniem awarii lub uaktualnienia. W innych warunkach punktu kontrolnego nie może zostać użyty do odzyskiwania, a powtórzeń jest konieczne.

@@ -1,12 +1,12 @@
 ---
-title: "Przykładów dla interfejsu wiersza polecenia platformy Azure dla magazynu obiektów Blob | Dokumentacja firmy Microsoft"
-description: "Przykładów dla interfejsu wiersza polecenia platformy Azure do pracy z magazynem obiektów Blob Azure"
+title: Przykładów dla interfejsu wiersza polecenia platformy Azure dla magazynu obiektów Blob | Dokumentacja firmy Microsoft
+description: Przykładów dla interfejsu wiersza polecenia platformy Azure do pracy z magazynem obiektów Blob Azure
 services: storage
 documentationcenter: na
 author: tamram
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
 ms.workload: storage
@@ -17,9 +17,10 @@ ms.date: 06/13/2017
 ms.author: tamram
 ms.openlocfilehash: e247a788a593b2e8fe7be76c25b85cad3cef2291
 ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/01/2017
+ms.locfileid: "26040179"
 ---
 # <a name="azure-cli-samples-for-azure-blob-storage"></a>Przykładów dla interfejsu wiersza polecenia platformy Azure dla magazynu obiektów Blob platformy Azure
 

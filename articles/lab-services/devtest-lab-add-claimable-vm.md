@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33787493"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Tworzenie i zarządzanie nimi claimable maszyn wirtualnych w usłudze Azure DevTest Labs
 Dodaj Maszynę wirtualną claimable laboratorium w podobny sposób jak możesz [dodać standardowe maszyny Wirtualnej](devtest-lab-add-vm.md) — z *podstawowej* czyli albo [niestandardowego obrazu](devtest-lab-create-template.md), [formuła](devtest-lab-manage-formulas.md) , lub [obrazu z witryny Marketplace](devtest-lab-configure-marketplace-images.md). Ten samouczek przeprowadzi Cię przez dodawanie claimable maszyny Wirtualnej do laboratorium w usłudze DevTest Labs przy użyciu portalu Azure i przedstawiono procesy, które użytkownik wykonuje oświadczeń i unclaim maszyny Wirtualnej.

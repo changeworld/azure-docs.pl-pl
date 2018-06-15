@@ -1,6 +1,6 @@
 ---
-title: "Udział plików dla klastra Azure DC/OS"
-description: "Tworzenie i zainstalować udział plików w klastrze DC/OS usługi kontenera platformy Azure"
+title: Udział plików dla klastra Azure DC/OS
+description: Tworzenie i zainstalować udział plików w klastrze DC/OS usługi kontenera platformy Azure
 services: container-service
 author: julienstroheker
 manager: dcaro
@@ -11,9 +11,10 @@ ms.author: juliens
 ms.custom: mvc
 ms.openlocfilehash: c1c318f4204efd24a2d9d3d83bb1cb71f5775bdb
 ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26331206"
 ---
 # <a name="create-and-mount-a-file-share-to-a-dcos-cluster"></a>Tworzenie i zainstalować udział plików w klastrze DC/OS
 

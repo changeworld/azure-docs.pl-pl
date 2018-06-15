@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788830"
 ---
 # <a name="media-services-playready-license-template-overview"></a>Omówienie szablon licencji PlayReady usługi multimediów
 Usługa Azure Media Services udostępnia teraz usługę dostarczania licencji PlayReady. (Na przykład Silverlight) próbą odtwarzanie zawartości chronionej przez PlayReady, żądanie jest wysyłane do usługi dostarczania licencji uzyskanie licencji. Jeśli usługa licencji zatwierdza żądanie, wystawia licencję, są wysyłane do klienta, który jest używany do odszyfrowania i odtwarzania zawartości określonego.

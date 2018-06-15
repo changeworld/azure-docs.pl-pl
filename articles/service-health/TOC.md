@@ -11,6 +11,7 @@
 ### [Konfigurowanie przy użyciu usługi ServiceNow](service-health-alert-webhook-servicenow.md)
 ### [Konfigurowanie przy użyciu usługi PagerDuty](service-health-alert-webhook-pagerduty.md)
 ### [Konfigurowanie przy użyciu usługi OpsGenie](service-health-alert-webhook-opsgenie.md)
+### [Pobieranie zdarzeń kondycji za pomocą interfejsu REST](service-health-rest.md)
 # Zasoby
 ## [Często zadawane pytania](resource-health-faq.md)
 ## [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/)

@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788942"
 ---
 # <a name="input-metadata"></a>Dane wejściowe metadanych
 Zadania kodowania jest skojarzony z zasób wejściowy (lub zasoby), na którym chcesz wykonać kilka zadań kodowania.  Po zakończeniu zadania jest generowany zawartości wyjściowej.  Elementu zawartości wyjściowej zawiera wideo, audio, miniatur, manifest itp. Elementu zawartości wyjściowej zawiera także plik o metadane dotyczące zasobu wejściowego. Nazwa pliku XML metadanych ma następujący format: &lt;asset_id&gt;_metadata.xml (na przykład 41114ad3-eb5e - 4c d 57 8 92-5354e2b7d4a4_metadata.xml), gdzie &lt;asset_id&gt; jest wartością IDśrodkaTrwałego zasobów wejściowych.  

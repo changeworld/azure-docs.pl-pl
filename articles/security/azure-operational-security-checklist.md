@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894753"
 ---
 # <a name="azure-operational-security-checklist"></a>Lista kontrolna zabezpieczeń platformy Azure operacyjne
 Wdrażanie aplikacji na platformie Azure jest szybkie, łatwe i ekonomiczne. Przed wdrożeniem aplikacji w chmurze w środowisku produkcyjnym warto mieć listę kontrolną pomoc w ocenie aplikacja z listą bezpieczeństwa operacyjnego ważne i zalecane akcje należy wziąć pod uwagę.

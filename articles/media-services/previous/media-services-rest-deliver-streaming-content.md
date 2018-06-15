@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33790370"
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>Publikowanie zawartości usługi Azure Media Services za pomocą usługi REST
 > [!div class="op_single_selector"]

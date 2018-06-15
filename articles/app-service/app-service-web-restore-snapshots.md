@@ -18,6 +18,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33767301"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Przywracanie z migawki aplikacji na platformie Azure
 W tym artykule przedstawiono sposób przywracania aplikacji w [usłudze Azure App Service](../app-service/app-service-web-overview.md) z migawki. Aplikację można przywrócić do poprzedniego stanu, na podstawie jednej z aplikacji migawki. Nie trzeba włączać migawki kopii zapasowej, platforma automatycznie zapisuje migawkę wszystkich aplikacji w celu odzyskiwania danych.

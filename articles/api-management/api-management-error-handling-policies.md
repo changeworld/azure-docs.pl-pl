@@ -1,11 +1,11 @@
 ---
-title: "Błąd podczas obsługi w ramach zasad usługi Azure API Management | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak reagować na błędy, które mogą wystąpić podczas przetwarzania żądań w usłudze Azure API Management."
+title: Błąd podczas obsługi w ramach zasad usługi Azure API Management | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak reagować na błędy, które mogą wystąpić podczas przetwarzania żądań w usłudze Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 3c777964-02b2-4f55-8731-8c3bd3c0ae27
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/04/2017
+ms.locfileid: "26128230"
 ---
 # <a name="error-handling-in-api-management-policies"></a>Obsługa błędów w zasad interfejsu API zarządzania
 Zarządzanie interfejsami API Azure umożliwia wydawców odpowiedzieć na błędy, które mogą wystąpić podczas przetwarzania żądania do serwera proxy, udostępniając `ProxyError` obiektu. `ProxyError` Obiekt jest dostępny za pośrednictwem [kontekstu. LastError](api-management-policy-expressions.md#ContextVariables) właściwości i mogą być używane przez zasady w `on-error` sekcji zasad. W tym temacie znajdują się informacje na błąd możliwości obsługi w programie Azure API Management.  

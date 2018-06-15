@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: milanga;cenkdin;juliako
-ms.openlocfilehash: ebaa679c43bd577d4f37feb7f3a025086490e25f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 304e72e0d2d4a7e95df513e6d5481def9eae3f68
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790293"
+ms.lasthandoff: 10/11/2017
+ms.locfileid: "23860675"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>Aktualizacja usługi Media Services po wycofanie kluczy dostępu do magazynu
 
 Podczas tworzenia nowego konta usługi Azure Media Services (AMS) również należy wybrać konto magazynu Azure używanego do przechowywania zawartości nośnika. Można dodać więcej niż jedno konto magazynu do konta usługi Media Services. W tym temacie przedstawiono sposób Obróć magazynu kluczy. Zawiera on również sposób dodawania konta magazynu do konta usługi media. 
 
-Aby wykonać czynności opisane w tym temacie, należy używać [ARM interfejsów API](https://docs.microsoft.com/rest/api/media/mediaservice) i [Powershell](https://docs.microsoft.com/powershell/resourcemanager/azurerm.media/v0.3.2/azurerm.media).  Aby uzyskać więcej informacji, zobacz [sposobu zarządzania zasobami Azure za pomocą programu PowerShell i Menedżera zasobów](../../azure-resource-manager/powershell-azure-resource-manager.md).
+Aby wykonać czynności opisane w tym temacie, należy używać [ARM interfejsów API](https://docs.microsoft.com/rest/api/media/mediaservice) i [Powershell](https://docs.microsoft.com/powershell/resourcemanager/azurerm.media/v0.3.2/azurerm.media).  Aby uzyskać więcej informacji, zobacz [sposobu zarządzania zasobami Azure za pomocą programu PowerShell i Menedżera zasobów](../azure-resource-manager/powershell-azure-resource-manager.md).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Po utworzeniu nowego konta magazynu Azure generuje dwa klucze dostępu do magazynu 512-bitowe, które są używane do uwierzytelniania dostępu do konta magazynu. Do zabezpieczania połączenia z magazynem, zalecane jest okresowe ponowne wygenerowanie i obracania klucz dostępu do magazynu. Dwa klucze dostępu (podstawowych i pomocniczych) znajdują się w celu umożliwienia można obsługiwać połączenia z kontem magazynu za pomocą jednego klucza dostępu, jednocześnie ponownie generując drugi klucz dostępu. Ta procedura jest również nazywany "stopniowego klucze dostępu".
 
@@ -71,10 +71,10 @@ W poniższym przykładzie pokazano, jak pobrać konta magazynu i synchronizacji 
 Poniższy temat opisuje sposób dodawania konta magazynu do konta usługi AMS: [dołączyć wiele kont magazynu do konta usługi Media Services](meda-services-managing-multiple-storage-accounts.md).
 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
-[!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
+[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Przekazywanie opinii
-[!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
+[!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ### <a name="acknowledgments"></a>Potwierdzenia
 Chcemy potwierdzić następujących osób, które przyczyniły się do tworzenia tego dokumentu: Seva Titov Cenk Dingiloglu, Gada Mediolan.

@@ -18,6 +18,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33927785"
 ---
 # <a name="troubleshoot-azure-active-directory-application-management"></a>Rozwiązywanie problemów z zarządzaniem aplikacji usługi Azure Active Directory
 Poniższe linki prowadzą do mapy zawartości, która ułatwia rozwiązywanie niektórych typowych problemów napotykanych podczas zarządzania **aplikacjami dla przedsiębiorstw** w usłudze Azure Active Directory.

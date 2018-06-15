@@ -5,15 +5,15 @@ services: networking
 author: jimdial
 ms.service: networking
 ms.topic: include
-ms.date: 06/05/2018
+ms.date: 06/12/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: bbeceb868466de42cfdffa3991983ac906cb98aa
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: ad76046a092a37a2dc1f59459ac3c3e48bc284e5
+ms.sourcegitcommit: 8659efc885be98f42edae0b516ca576e38940c97
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35323735"
+ms.lasthandoff: 06/13/2018
+ms.locfileid: "35568130"
 ---
 <a name="virtual-networking-limits-classic"></a>Poniższe limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu klasycznego modelu wdrażania, które przypadają na jedną subskrypcję. Dowiedz się, jak [wyświetlać z bieżącego wykorzystania zasobów względem swoje limity subskrypcji](../articles/networking/check-usage-against-limits.md).
 
@@ -68,7 +68,6 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 | Zasób | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
 | Moduły równoważenia obciążenia | 100 | 1000 |
-| Zasobami zaplecza modułu równoważenia * na obciążenia | 50 | 150 |
 | Zasady dla zasobów, Basic | 150 | 250 |
 | Reguły w poszczególnych zasobów i Standard | 1250 | 1500 |
 | Zasady na konfigurację adresu IP | 299 |299 |
@@ -76,9 +75,10 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 | Konfiguracje adresów IP frontonu, Standard | 10 | 600 |
 | Puli zaplecza, Basic | 100, pojedynczy zestaw dostępności | 100, pojedynczy zestaw dostępności |
 | Puli zaplecza, Standard | 1000, pojedynczy sieci wirtualnej | 1000, pojedynczy sieci wirtualnej |
+| Zasoby wewnętrznej bazy danych dla modułu równoważenia obciążenia, Standard &ast; | 50 | 150 |
 | HA portów, Standard | 1 na frontonie wewnętrzny | 1 na frontonie wewnętrzny |
 
-* Zasoby do 150 dowolną kombinację autonomicznych maszyn wirtualnych, zestawów dostępności i zestawy skalowania maszyny wirtualnej.
+&ast; Zasoby do 150 dowolną kombinację autonomicznych maszyn wirtualnych, zestawów dostępności i zestawy skalowania maszyny wirtualnej.
 
 Jeśli będzie konieczne zwiększenie limitów domyślnych, [skontaktuj się z pomocą techniczną](../articles/azure-supportability/resource-manager-core-quotas-request.md ).
 

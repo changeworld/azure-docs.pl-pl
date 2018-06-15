@@ -1,12 +1,12 @@
 ---
-title: "Włączanie funkcji przechwytywania usługi Azure Event Hubs przy użyciu portalu | Microsoft Docs"
-description: "Włącz funkcję przechwytywania usługi Event Hubs przy użyciu witryny Azure Portal."
+title: Włączanie funkcji przechwytywania usługi Azure Event Hubs przy użyciu portalu | Microsoft Docs
+description: Włącz funkcję przechwytywania usługi Event Hubs przy użyciu witryny Azure Portal.
 services: event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "26855015"
 ---
 # <a name="enable-event-hubs-capture-using-the-azure-portal"></a>Włączanie funkcji przechwytywania usługi Event Hubs przy użyciu witryny Azure Portal
 

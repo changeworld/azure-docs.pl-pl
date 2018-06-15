@@ -1,11 +1,11 @@
 ---
-title: "Co się zmieniło w Azure Log Analytics? | Microsoft Docs"
-description: "Ten artykuł zawiera często zadawane pytania dotyczące uaktualniania analizy dzienników dla nowego języka zapytań."
+title: Co się zmieniło w Azure Log Analytics? | Microsoft Docs
+description: Ten artykuł zawiera często zadawane pytania dotyczące uaktualniania analizy dzienników dla nowego języka zapytań.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/01/2017
+ms.locfileid: "26039863"
 ---
 # <a name="whats-changed-in-azure-log-analytics"></a>Co się zmieniło w Azure Log Analytics?
 Oprócz samego języka kwerend, istnieje kilka ulepszeń i zmiany, które należy zwrócić uwagę, gdy jest obszaru roboczego analizy dzienników [uaktualniony do nowego języka zapytań](log-analytics-log-search-new.md).  W tym artykule krótko opisano zmiany między starszej wersji, jak i uaktualnionych obszaru roboczego z łącza do szczegółowych informacji dla każdego. 

@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33942774"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Użyj Azure niestandardowy skrypt rozszerzenie wersji 1 z maszyn wirtualnych systemu Linux
 Rozszerzenia niestandardowego skryptu w wersji 1 pobiera i uruchamia skrypty na maszynach wirtualnych Azure. To rozszerzenie jest przydatne w przypadku konfiguracji po wdrożeniu, instalacja oprogramowania lub innych zadań konfiguracji i zarządzania nimi. Skrypty można pobrać z magazynu Azure lub innej dostępnej lokalizacji internet lub zapewniają je do środowiska wykonawczego rozszerzenia. 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788662"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Użyj magazynu kolejek Azure, aby monitorować powiadomienia zadania usługi Media Services przy użyciu platformy .NET
 Po uruchomieniu zadania kodowania, często wymagają sposób, aby śledzić postęp zadania. Można skonfigurować usługi Media Services w celu dostarczenia powiadomienia do [magazynu kolejek Azure](../../storage/storage-dotnet-how-to-use-queues.md). Uzyskiwanie powiadomień z magazynu kolejek można monitorować postęp zadania. 

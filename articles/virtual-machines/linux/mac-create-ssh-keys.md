@@ -20,6 +20,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/20/2018
+ms.locfileid: "31602634"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Szybkie kroki: tworzenie i używanie pary kluczy publicznych i prywatnych SSH dla maszyn wirtualnych systemu Linux na platformie Azure
 Para kluczy Secure Shell (SSH) umożliwia tworzenie na platformie Azure maszyn wirtualnych, które używają kluczy SSH do uwierzytelniania, eliminując konieczność logowania przy użyciu haseł. W tym artykule przedstawiono, jak szybko generowania i użytkowania parę pliku klucza publicznego i prywatnego SSH dla maszyn wirtualnych systemu Linux. Można wykonać te kroki powłoki chmury Azure, macOS lub Linux host podsystemu systemu Windows dla systemu Linux i innych narzędzi, które obsługują OpenSSH. 

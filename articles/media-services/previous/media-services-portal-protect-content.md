@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33790384"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Skonfiguruj zasady ochrony zawartości przy użyciu portalu Azure
  Z usługi Azure Media Services można zabezpieczyć nośnik od momentu, gdy opuszczą komputera za pośrednictwem przechowywania, przetwarzania i dostarczania. Usługi Media Services umożliwia dostarczanie zawartości dynamicznie zaszyfrowany z Standard AES (Advanced Encryption) przy użyciu kluczy szyfrowania 128-bitowego. Możesz również służy z szyfrowania common encryption (CENC) za pomocą PlayReady i Widevine zarządzania prawami cyfrowymi (DRM) i FairPlay firmy Apple. 

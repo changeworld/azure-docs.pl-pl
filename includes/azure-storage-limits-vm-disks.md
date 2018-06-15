@@ -3,9 +3,17 @@ Maszyna wirtualna platformy Azure obsługuje dołączanie wielu dysków danych. 
 > [!IMPORTANT]
 > Aby uzyskać optymalną wydajność ograniczyć liczbę wysokiej wykorzystywanych dysków dołączonych do maszyny wirtualnej, aby uniknąć możliwych ograniczania. Jeśli wysokiej wszystkich dołączonych dysków nie są używane w tym samym czasie, maszyna wirtualna może obsługiwać większą liczbę dysków.
 
-* **Na dyskach platformy Azure zarządzanego:** limit dysku do zarządzanych dysków jest według regionu i typ dysku. Maksymalny limit, a domyślny limit, jest 10 000 dysków zarządzanych według regionu i typ dysku dla subskrypcji. Na przykład można utworzyć maksymalnie 10 000 standardowe zarządzane dysków i również 10 000 premium zarządzane dysków w region na subskrypcję.
+* **Dyskach zarządzanych Azure:** 
 
-    Zarządzane migawki i obrazy odliczona limit dysków zarządzanych.
+> | Zasób | Limit domyślny | Limit maksymalny |
+> | --- | --- | --- |
+> | Dyski Managed Disks w warstwie Standardowa | 10 000 | 50,000 |
+> | Usługa Managed Disks z dyskami SSD w warstwie Standardowa | 10 000 | 50,000 |
+> | Dyski Managed Disks w warstwie Premium | 10 000 | 50,000 |
+> | Standard_LRS migawki | 10 000 | 50,000 |
+> | Standard_ZRS migawki | 10 000 | 50,000 |
+> | Premium_LRS migawki | 10 000 | 50,000 |
+> | Zarządzanego obrazu | 10 000 | 50,000 |
 
 * **Konto magazynu w warstwie Standardowa:** maksymalna całkowita liczba żądań dla konta magazynu w warstwie Standardowa to 20 000 operacji wejścia/wyjścia na sekundę (IOPS). Łączna liczba IOPS na wszystkich dyskach maszyny wirtualnej w koncie magazynu w warstwie Standardowa nie powinna przekroczyć tego limitu.
   

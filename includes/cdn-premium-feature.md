@@ -13,6 +13,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33814666"
 ---
 > [!IMPORTANT]
 > Jest to funkcja **Azure CDN Premium from Verizon** i nie jest dostępna w programie Azure CDN standard produktów. Aby zobaczyć porównanie funkcji usługi CDN, zobacz [Funkcje produktu Azure CDN](../articles/cdn/cdn-features.md). 

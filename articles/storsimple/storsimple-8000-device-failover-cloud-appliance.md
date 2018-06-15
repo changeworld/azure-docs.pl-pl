@@ -1,12 +1,12 @@
 ---
-title: "Tryb failover StorSimple, odzyskiwania po awarii do urządzenia chmury StorSimple | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak urządzenia fizycznego StorSimple 8000 serii na urządzeniu chmury w tryb failover."
+title: Tryb failover StorSimple, odzyskiwania po awarii do urządzenia chmury StorSimple | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak urządzenia fizycznego StorSimple 8000 serii na urządzeniu chmury w tryb failover.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874899"
 ---
 # <a name="fail-over-to-your-storsimple-cloud-appliance"></a>Awaryjnie na urządzeniu StorSimple chmury
 

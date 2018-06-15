@@ -1,11 +1,11 @@
 ---
-title: "Jak utworzyć ASE ILB przy użyciu szablonów usługi Azure Resource Manager | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć ASE usługi równoważenia obciążenia wewnętrznego przy użyciu szablonów usługi Azure Resource Manager."
+title: Jak utworzyć ASE ILB przy użyciu szablonów usługi Azure Resource Manager | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć ASE usługi równoważenia obciążenia wewnętrznego przy użyciu szablonów usługi Azure Resource Manager.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: stefsch
 manager: nirma
-editor: 
+editor: ''
 ms.assetid: 091decb6-b0de-42a1-9f2f-c18d9b2e67df
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836854"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Jak tworzyć środowisko ASE wewnętrznego modułu równoważenia przy użyciu szablonów usługi Azure Resource Manager
 

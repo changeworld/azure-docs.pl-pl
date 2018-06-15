@@ -157,6 +157,8 @@
       href: /rest/api/appservice/
 - name: Zasoby
   items:
+    - name: Często zadawane pytania dotyczące usługi App Service w systemie Linux
+      href: app-service-linux-faq.md
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Cennik

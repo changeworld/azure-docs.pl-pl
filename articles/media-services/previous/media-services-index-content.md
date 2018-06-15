@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788907"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Indeksowanie plików multimedialnych na pliki z indeksatora multimediów Azure
 Indeksator usługi Azure Media umożliwia upewnij przeszukiwanie zawartości plików multimedialnych oraz do generowania zapisu pełnotekstowego dla zamkniętego podpisów i słów kluczowych. Możesz przetwarzać jeden plik multimediów lub wiele plików multimediów w partii.  

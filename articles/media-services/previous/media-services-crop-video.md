@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788333"
 ---
 # <a name="crop-videos-with-media-encoder-standard"></a>Przycinanie wideo za pomocą usługi Media Encoder Standard
 Aby przyciąć dane wejściowe wideo, można użyć Media Encoder Standard (rynkowej). Przycinanie to proces wyboru prostokątne okna w ramce wideo i kodowanie tylko pikseli w danym przedziale. Poniższy diagram ułatwia zilustrowanie tego procesu.

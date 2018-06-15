@@ -1,8 +1,8 @@
 ---
-title: "Monitorowanie porównanie produktów firmy Microsoft | Dokumentacja firmy Microsoft"
-description: "Microsoft Operations Management Suite (OMS) to rozwiązanie do zarządzania IT, które pomaga zarządzać i chronić lokalnej i w chmurze infrastruktury opartej na chmurze firmy Microsoft.  W tym artykule opisano różne usługi w ramach pakietu OMS i umieszczono linki do szczegółowych treści na ich temat."
+title: Monitorowanie porównanie produktów firmy Microsoft | Dokumentacja firmy Microsoft
+description: Microsoft Operations Management Suite (OMS) to rozwiązanie do zarządzania IT, które pomaga zarządzać i chronić lokalnej i w chmurze infrastruktury opartej na chmurze firmy Microsoft.  W tym artykule opisano różne usługi w ramach pakietu OMS i umieszczono linki do szczegółowych treści na ich temat.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866317"
 ---
 # <a name="microsoft-monitoring-product-comparison"></a>Monitorowania porównanie produktów firmy Microsoft
 W tym artykule przedstawiono porównanie ich architektury, logiki jak monitorować ich zasobów i jak są analizy danych, które pobierają programu System Center Operations Manager (SCOM) i analizy dzienników w Operations Management Suite (OMS).  To zapewniają podstawowe zrozumienie ich różnice i siły względnej.  

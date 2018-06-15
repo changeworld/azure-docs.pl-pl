@@ -13,9 +13,10 @@ ms.date: 03/19/2018
 ms.author: juliako
 ms.openlocfilehash: 21fc80d7cb274197ae75d2fd5524e76e1e6288d9
 ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788431"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Przydziały i ograniczenia dotyczące usługi Azure Media Services w wersji 3
 

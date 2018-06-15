@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33937853"
 ---
 # <a name="remediate-common-issues-for-azure-stack-pki-certificates"></a>Rozwiązania typowych problemów z certyfikatów PKI stosu Azure
 Informacje przedstawione w tym artykule ułatwia zrozumienie i rozwiązywania typowych problemów dla certyfikatów PKI stosu Azure. Można wykryć problemy, gdy narzędzie sprawdzania gotowości stosu Azure do [sprawdzania poprawności certyfikatów PKI stosu Azure](azure-stack-validate-pki-certs.md). Narzędzie sprawdza, sprawdź, czy certyfikaty spełniają wymagania infrastruktury kluczy publicznych wdrożenia stosu Azure i obrotu klucz tajny stosu Azure i rejestruje wyniki [pliku report.json](azure-stack-validation-report.md).  

@@ -1,8 +1,8 @@
 ---
-title: "Jak skalować aplikację w środowisku usługi aplikacji"
-description: "Skalowanie aplikacji w środowisku usługi aplikacji"
+title: Jak skalować aplikację w środowisku usługi aplikacji
+description: Skalowanie aplikacji w środowisku usługi aplikacji
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: ccompy
 manager: stefsch
 editor: jimbe
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836553"
 ---
 # <a name="scaling-apps-in-an-app-service-environment"></a>Skalowanie aplikacji w środowisku usługi App Service
 W usłudze Azure App Service są zwykle trzy czynności, które można skalować:

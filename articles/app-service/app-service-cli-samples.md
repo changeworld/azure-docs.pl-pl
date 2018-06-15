@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI próbki — usługi App Service | Dokumentacja firmy Microsoft"
-description: "Przykłady Azure CLI - usługi aplikacji"
+title: Azure CLI próbki — usługi App Service | Dokumentacja firmy Microsoft
+description: Przykłady Azure CLI - usługi aplikacji
 services: app-service
 documentationcenter: app-service
 author: syntaxc4
@@ -18,9 +18,10 @@ ms.author: cfowler
 ms.custom: mvc
 ms.openlocfilehash: fdc5e03350783fb8c3e30b6c9a40af45a5925ba8
 ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/12/2017
+ms.locfileid: "26658367"
 ---
 # <a name="azure-cli-samples"></a>Przykłady Azure CLI
 
