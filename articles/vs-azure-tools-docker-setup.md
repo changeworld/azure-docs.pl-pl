@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30190402"
 ---
 # <a name="configure-a-docker-host-with-virtualbox"></a>Konfigurowanie hosta Docker z VirtualBox
 ## <a name="overview"></a>Przegląd

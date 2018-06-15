@@ -20,6 +20,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30165674"
 ---
 # <a name="prepare-the-asdk-host-computer"></a>Przygotuj komputer-host ASDK
 Przed zainstalowaniem ASDK na komputerze-hoście, należy przygotować środowisko ASDK dla instalacji. Gdy na komputerze deweloperskim zestaw hosta zostały przygotowane, uruchomi się z dysku twardego maszyny wirtualnej CloudBuilder.vhdx, aby rozpocząć wdrażanie ASDK.

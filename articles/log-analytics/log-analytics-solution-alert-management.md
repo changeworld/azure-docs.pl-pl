@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30181201"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Alert rozwiązania do zarządzania w Analiza dzienników Azure
 

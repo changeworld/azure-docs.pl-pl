@@ -20,6 +20,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30164971"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Zagadnienia związane z planowaniem wdrożenia usługi Azure stosu
 Przed wdrożeniem Azure stosu Development Kit (ASDK), upewnij się, że komputer-host zestawu programowanie spełnia wymagania opisane w tym artykule.

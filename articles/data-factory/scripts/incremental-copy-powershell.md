@@ -17,6 +17,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30169743"
 ---
 # <a name="powershell-script---incrementally-load-data-by-using-azure-data-factory"></a>Skrypt programu PowerShell - przyrostowo ładowanie danych przy użyciu fabryki danych Azure
 Ten przykładowy skrypt programu PowerShell ładuje tylko nowe lub zaktualizowane rekordy z magazynu danych źródła do ujścia magazynu danych po początkowej pełną kopię danych ze źródła do ujścia.  

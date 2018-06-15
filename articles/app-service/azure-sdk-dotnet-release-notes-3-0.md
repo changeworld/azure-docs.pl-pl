@@ -18,6 +18,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30162098"
 ---
 # <a name="azure-sdk-for-net-30-release-notes"></a>Informacje o wersji zestawu Azure SDK for .NET 3.0
 

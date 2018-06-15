@@ -19,6 +19,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30291286"
 ---
 # <a name="how-to-expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Jak rozszerzyć wirtualne dyski twarde na maszynę Wirtualną systemu Linux za pomocą wiersza polecenia platformy Azure
 Domyślny rozmiar wirtualnego dysku twardego systemu operacyjnego (OS) jest zwykle 30 GB na maszynie wirtualnej systemu Linux (VM) na platformie Azure. Możesz [Dodaj dyski danych](add-disk.md) zapewnienie dodatkowego miejsca, ale mogą też chcieć rozwiń istniejącego dysku danych. Ten artykuł zawiera szczegóły dotyczące sposobu rozszerzania zarządzanych dysków dla maszyny Wirtualnej systemu Linux 2.0 interfejsu wiersza polecenia platformy Azure. Można również rozwinąć niezarządzane dysk systemu operacyjnego z [Azure CLI 1.0](expand-disks-nodejs.md).
