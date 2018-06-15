@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212279"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Zwrotny serwer proxy w sieci szkieletowej usług Azure
 Zwrotny serwer proxy wbudowanych w sieci szkieletowej usług Azure pomaga mikrousług działającego w klastrze usługi sieć szkieletowa odnajdywania i komunikować się z innymi usługami, których punkty końcowe http.

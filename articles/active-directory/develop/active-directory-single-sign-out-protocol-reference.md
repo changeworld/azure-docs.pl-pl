@@ -21,6 +21,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34155501"
 ---
 # <a name="single-sign-out-saml-protocol"></a>Protokół pojedynczego SAML wylogowania
 Azure Active Directory (Azure AD) obsługuje SAML 2.0 sieci web przeglądarce jeden profil wylogowania. Dla pojedynczego wylogowania działał prawidłowo **LogoutURL** dla aplikacji musi być jawnie zarejestrowana w usłudze Azure AD podczas rejestracji aplikacji. Usługi Azure AD używa LogoutURL przekierowywać użytkowników po ich wyrejestrowany.

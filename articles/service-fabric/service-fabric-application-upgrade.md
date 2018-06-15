@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207982"
 ---
 # <a name="service-fabric-application-upgrade"></a>Uaktualnianie aplikacji usługi Service Fabric
 Aplikacja Azure Service Fabric jest kolekcja usług. Podczas uaktualniania usługi sieć szkieletowa porównuje nowe [manifest aplikacji](service-fabric-application-and-service-manifests.md) z poprzedniej wersji i określa usług w aplikacji wymagają aktualizacji. Sieć szkieletowa usług porównuje wersji numery w usłudze manifesty numery wersji w poprzedniej wersji. Jeśli usługa nie została zmieniona, czy usługa nie jest uaktualniony.

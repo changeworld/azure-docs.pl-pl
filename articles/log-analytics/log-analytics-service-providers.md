@@ -19,6 +19,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31593053"
 ---
 # <a name="log-analytics-features-for-service-providers"></a>Funkcje analizy dziennika dla dostawców usług
 Analiza dzienników może pomóc dostawców usługi zarządzane (MSPs), dużych przedsiębiorstw niezależnym dostawcom oprogramowania (ISV) i dostawcy usług hostingowych zarządzanie i monitorowanie serwerów w lokalnym przez klienta lub infrastruktury chmury. 

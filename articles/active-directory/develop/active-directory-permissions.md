@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156895"
 ---
 # <a name="permissions-in-azure-ad"></a>Uprawnienia w usłudze Azure AD
 Usługa Azure Active Directory (Azure AD) szeroko wykorzystuje użycie uprawnień dla przepływów OAuth i OIDC (OpenID Connect). Po odebraniu przez aplikację tokenu dostępu od usługi Azure AD aplikacja uwzględnia oświadczenia z opisami uprawnień, które aplikacja ma w odniesieniu do określonego zasobu (są one znane także jako zakresy). Ułatwia to autoryzację zasobu, ponieważ wystarczy sprawdzić, czy token zawiera odpowiednie uprawnienie, niezależnie od wywoływanego interfejsu API. 

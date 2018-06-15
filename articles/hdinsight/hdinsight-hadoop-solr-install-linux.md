@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34201564"
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>Zainstalować i używać Solr w klastrach HDInsight Hadoop
 

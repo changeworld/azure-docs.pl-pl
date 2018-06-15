@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209688"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>Wprowadzenie do usługi analiza błędów
 Usługi analizy błędów jest przeznaczony do testowania usług, które są wbudowane w usługi sieć szkieletowa usług Microsoft Azure. W usłudze analiza błędów można wywołać znaczenie błędów i uruchomienia testu pełne scenariusze aplikacji. Te błędy i scenariusze wykonywania i sprawdzania poprawności wiele stanów i przejść, które usługa może wystąpić w jego okres istnienia, w sposób kontrolowany, bezpieczne i zgodne.

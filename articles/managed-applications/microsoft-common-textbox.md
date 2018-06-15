@@ -18,6 +18,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34260922"
 ---
 # <a name="microsoftcommontextbox-ui-element"></a>Microsoft.Common.TextBox UI element
 Formant, który może służyć do edycji niesformatowanego tekstu.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203526"
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>Dodawanie zapory aplikacji sieci web w Centrum zabezpieczeń Azure
 Centrum zabezpieczeń Azure może zalecić Dodawanie zapory aplikacji sieci web (WAF) z partnerem firmy Microsoft w celu zabezpieczenia aplikacji sieci web. Ten dokument przeprowadzi Cię przez przykładem zastosowania tego zalecenia.

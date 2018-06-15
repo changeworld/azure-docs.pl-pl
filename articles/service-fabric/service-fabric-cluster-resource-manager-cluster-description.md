@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208815"
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Opisujące klastra sieci szkieletowej usług
 Usługa sieci szkieletowej klastra Resource Manager zapewnia kilka mechanizmów opisujące klastra. W czasie wykonywania Menedżer zasobów klastra używa tych informacji, aby zapewnić wysoką dostępność usługi działające w klastrze. Wymuszając te reguły ważne również próbuje optymalizacji zużycia zasobów w klastrze.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206144"
 ---
 # <a name="service-fabric-patterns-and-scenarios"></a>Scenariusze i wzorce sieci szkieletowej usług
 Jeśli rozważasz usługę kompilowania dużych mikrousług przy użyciu usługi Azure Service Fabric, Dowiedz się od ekspertów, którzy zaprojektowany i zbudowany ta platforma jako usługa (PaaS). Wprowadzenie do architektury właściwe, a następnie Dowiedz się, jak zoptymalizować zasobów dla aplikacji. [Usługi sieć szkieletowa Patterns and Practices](https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mudwqISGD_6005167344) plan odpowiedzi na pytania najczęściej zadawane przez klientów rzeczywistych scenariuszy sieci szkieletowej usług i aplikacji.

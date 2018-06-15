@@ -15,27 +15,23 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 7bf08849cd03a77095ffe717c8387d79d1961b06
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: baaa53b04f608e2cb3546fcac6a6eb4eda4d3c4b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640758"
 ---
 # <a name="quickstart-create-a-aspnet-web-app-with-redis-cache"></a>Szybki start: tworzenie aplikacji internetowej platformy ASP.NET za pomocą pamięci podręcznej Redis Cache
 
-> [!div class="op_single_selector"]
-> * [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
-> * [ASP.NET](cache-web-app-howto.md)
-> * [Node.js](cache-nodejs-get-started.md)
-> * [Java](cache-java-get-started.md)
-> * [Python](cache-python-get-started.md)
->
 
 ## <a name="introduction"></a>Wprowadzenie
 
 W tym przewodniku Szybki start przedstawiono sposób tworzenia i wdrażania aplikacji internetowej platformy ASP.NET w usłudze Azure App Service przy użyciu programu Visual Studio 2017. Przykładowa aplikacja nawiązuje połączenie z usługą Azure Redis Cache w celu zapisywania i pobierania danych z pamięci podręcznej. Po zakończeniu przewodnika Szybki start będziesz mieć uruchomioną aplikację internetową hostowaną na platformie Azure, która odczytuje i zapisuje w usłudze Azure Redis Cache.
 
 ![Ukończony prosty test na platformie Azure](./media/cache-web-app-howto/cache-simple-test-complete-azure.png)
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -44,8 +40,6 @@ Aby ukończyć ten przewodnik Szybki start, niezbędne jest spełnienie następu
 * Zainstaluj program [Visual Studio 2017](https://www.visualstudio.com/downloads/) z następującymi pakietami roboczymi:
     * Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych
     * Programowanie na platformie Azure
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-the-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
@@ -322,7 +316,7 @@ W przeciwnym razie po zakończeniu pracy z przykładową aplikacją poradnika Sz
 
 Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i kliknij pozycję **Grupy zasobów**.
 
-W polu tekstowym **Filtruj według nazwy...** wpisz nazwę grupy zasobów. Instrukcje dla tego tematu korzystały z grupy zasobów o nazwie *TestResources*. Dla grupy zasobów na liście wyników kliknij pozycję **...**, a następnie kliknij pozycję **Usuń grupę zasobów**.
+W polu tekstowym **Filtruj według nazwy...** wpisz nazwę grupy zasobów. Instrukcje w tym artykule używają grupy zasobów o nazwie *TestResources*. Dla grupy zasobów na liście wyników kliknij pozycję **...**, a następnie kliknij pozycję **Usuń grupę zasobów**.
 
 ![Usuwanie](./media/cache-web-app-howto/cache-delete-resource-group.png)
 

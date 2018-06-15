@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: iainfou
 ms.custom: include file
-ms.openlocfilehash: 4a49c3db52e3cce37101836f7233ba8e3f5380c1
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: e54813896eee8a58ae456f14f76151318ac1b9fc
+ms.sourcegitcommit: ff1896b01bfcc26df3b202011bb8ec8cfdb014fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34826579"
+ms.lasthandoff: 06/14/2018
+ms.locfileid: "35620530"
 ---
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Regiony i dostępność maszyn wirtualnych na platformie Azure
 Platforma Azure działa w wielu centrach danych na całym świecie. Te centra danych są grupowane w regiony geograficzne, dzięki czemu można elastycznie wybierać miejsca do kompilowania aplikacji. Ważne jest, aby zrozumieć, jak i gdzie maszyny wirtualne działają na platformie Azure, a także poznać opcje maksymalizowania wydajności, dostępności i nadmiarowości. Ten artykuł zawiera omówienie funkcji dostępności i nadmiarowości platformy Azure.
@@ -49,7 +49,7 @@ Przykłady par regionów:
 Zobacz pełną [listę par regionów tutaj](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions).
 
 ## <a name="feature-availability"></a>Dostępność funkcji
-Niektóre usługi lub funkcje maszyn wirtualnych, takie jak określone rozmiary maszyn wirtualnych lub typy magazynu, są dostępne tylko w określonych regionach. Niektóre globalne usługi platformy Azure, takie jak [Azure Active Directory](../articles/active-directory/active-directory-whatis.md), [Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md) lub [Azure DNS](../articles/dns/dns-overview.md), nie wymagają wybrania określonego regionu. Aby ułatwić sobie projektowanie środowiska aplikacji, sprawdź [dostępność usług Azure w poszczególnych regionach](https://azure.microsoft.com/regions/#services). Możesz również [programowo zapytania obsługiwanych rozmiarów maszyn wirtualnych i ograniczenia w każdym regionie](../articles/azure-resource-manager/resource-manager-sku-not-available-errors.md).
+Niektóre usługi lub funkcje maszyn wirtualnych, takie jak określone rozmiary maszyn wirtualnych lub typy magazynu, są dostępne tylko w określonych regionach. Niektóre globalne usługi platformy Azure, takie jak [Azure Active Directory](../articles/active-directory/fundamentals/active-directory-whatis.md), [Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md) lub [Azure DNS](../articles/dns/dns-overview.md), nie wymagają wybrania określonego regionu. Aby ułatwić sobie projektowanie środowiska aplikacji, sprawdź [dostępność usług Azure w poszczególnych regionach](https://azure.microsoft.com/regions/#services). Możesz również [programowo zapytania obsługiwanych rozmiarów maszyn wirtualnych i ograniczenia w każdym regionie](../articles/azure-resource-manager/resource-manager-sku-not-available-errors.md).
 
 ## <a name="storage-availability"></a>Dostępność magazynu
 Zrozumienie sposobu działania regionów i obszarów geograficznych platformy Azure staje się ważne, jeśli chcesz skorzystać z dostępnych opcji replikacji magazynu. W zależności od typu magazynu masz do wyboru różne opcje replikacji.

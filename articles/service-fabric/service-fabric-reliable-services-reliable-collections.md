@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212929"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Wprowadzenie do kolekcji niezawodnej w stanowe usługi sieć szkieletowa usług Azure
 Niezawodne kolekcje umożliwiają pisanie aplikacji w chmurze wysoko dostępnych, skalowalnych i małych opóźnieniach tak, jakby podczas pisania aplikacji pojedynczego komputera. Klasy w **Microsoft.ServiceFabric.Data.Collections** przestrzeni nazw udostępniają zestaw kolekcji, które automatycznie swój stan wysokiej dostępności. Deweloperzy muszą program tylko dla niezawodnego interfejsów API kolekcji i pozwól niezawodnej kolekcje Zarządzanie stanem replikowane i lokalnej.

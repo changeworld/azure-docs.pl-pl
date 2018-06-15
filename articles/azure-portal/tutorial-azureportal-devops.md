@@ -19,6 +19,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164843"
 ---
 # <a name="tutorial-devops-with-the-azure-portal"></a>Samouczek: DevOps z portalu Azure
 Platforma Azure zawiera wiele elastycznych przepływów pracy metodyki DevOps. W tym samouczku możesz dowiedzieć się, jak wykorzystać możliwości portalu Azure, tworzenie, testowanie, wdrażania, rozwiązywanie problemów z, monitorowania i zarządzanie uruchamianie aplikacji. W tym samouczku omówiono następujące kwestie:

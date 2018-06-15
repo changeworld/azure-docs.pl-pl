@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212021"
 ---
 # <a name="troubleshoot-your-local-development-cluster-setup"></a>Rozwiązywanie problemów z konfiguracji klastra lokalnego rozwoju
 Jeśli napotkasz problem podczas interakcji z lokalnym klastrem programowanie sieć szkieletowa usług Azure, przejrzyj poniższe sugestie potencjalnych rozwiązań.

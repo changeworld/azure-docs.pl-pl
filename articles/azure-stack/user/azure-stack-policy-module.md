@@ -19,6 +19,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34259087"
 ---
 # <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>Zarządzanie zasadami Azure za pomocą modułu zasad stosu Azure
 

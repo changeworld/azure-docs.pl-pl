@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207669"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Niezawodne serializacji obiektu kolekcji w sieci szkieletowej usług Azure
 Niezawodne kolekcje replikacji i utrwalić swoich elementów, aby upewnić się, że są trwałe na błędy maszyn i awarie zasilania.

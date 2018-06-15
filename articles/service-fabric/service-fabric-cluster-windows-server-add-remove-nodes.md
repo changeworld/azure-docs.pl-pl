@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212548"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Dodawanie lub usuwanie węzłów do autonomicznej klastra sieci szkieletowej usług w systemie Windows Server
 Po utworzeniu [utworzone autonomicznej klastra sieci szkieletowej usług na komputerach z systemem Windows Server](service-fabric-cluster-creation-for-windows-server.md)musisz dodać lub usunąć węzły do klastra i potrzeby (biznesowe) mogą ulec zmianie. Ten artykuł zawiera szczegółowy opis kroków można to osiągnąć. Należy pamiętać, że dodawania i usuwania węzła funkcjonalność nie jest obsługiwana w klastrach rozwoju lokalnego.

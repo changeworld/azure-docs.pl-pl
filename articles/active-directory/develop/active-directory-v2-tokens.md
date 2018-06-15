@@ -22,6 +22,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164462"
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Azure Active Directory w wersji 2.0 tokeny odwołania
 Punktu końcowego v2.0 usługi Azure Active Directory (Azure AD) emituje kilka typów tokenów zabezpieczających w każdym [przepływ uwierzytelniania](active-directory-v2-flows.md). To odwołanie opisuje format właściwości zabezpieczeń i zawartości każdego typu tokenu.

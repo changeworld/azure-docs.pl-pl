@@ -13,6 +13,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203097"
 ---
 # <a name="allocate-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Przydziel partycji i replik kwerendy i indeksowania obciążeń w usłudze Azure Search
 Po [wybierz warstwę cenową](search-sku-tier.md) i [alokowanie usługi wyszukiwania](search-create-service-portal.md), następnym krokiem jest opcjonalnie zwiększenie liczby replikami lub partycje używane przez usługę. Każda warstwa oferuje ustalona liczba jednostek rozliczeń. W tym artykule opisano sposób przydzielania tych jednostek, aby osiągnąć optymalną konfigurację, który równoważy wymagania dotyczące wykonywania zapytania, indeksowanie i magazynu.

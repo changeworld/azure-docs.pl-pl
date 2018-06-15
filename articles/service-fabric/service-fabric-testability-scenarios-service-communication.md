@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211229"
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Scenariusze testowania usługi Service Fabric: komunikacji usługi
 Powierzchnia zorientowane na usługę architektury style naturalnie w sieci szkieletowej usług Azure i Mikrousług. W tych typach rozproszonej architektury mikrousługi składnikowa aplikacji zwykle składają się z wielu usług, które muszą komunikować się ze sobą. W nawet sytuacjach najprostszym zazwyczaj masz co najmniej bezstanowych usługą sieci web i usługi magazynu danych stanowe potrzebne do komunikowania się.

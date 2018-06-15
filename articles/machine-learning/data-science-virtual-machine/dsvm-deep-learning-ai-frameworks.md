@@ -20,6 +20,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34160754"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Platformy sztucznej inteligencji i uczenia głębokiego
 [Maszyny wirtualnej nauki danych](http://aka.ms/dsvm) (DSVM) i [głębokie wirtualna Learning](http://aka.ms/dsvm/deeplearning) obsługuje wiele platform głębokie learning ułatwia tworzenie aplikacji analizy sztucznego (AI) z analizy predykcyjnej i kognitywnych możliwości, takich jak obraz i zrozumienia języka. 

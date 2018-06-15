@@ -21,6 +21,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156708"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Jeden protokół logowania jednokrotnego SAML
 W tym artykule omówiono SAML 2.0 uwierzytelniania żądań i odpowiedzi, które obsługuje usługi Azure Active Directory (Azure AD) dla logowania jednokrotnego.

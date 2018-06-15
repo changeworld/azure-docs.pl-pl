@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212997"
 ---
 # <a name="introduction-to-application-groups"></a>Wprowadzenie do grup aplikacji
 Menedżer zasobów klastra usługi sieć szkieletowa zwykle zarządza zasobami klastra przez rozłożenie obciążenia (reprezentowane przez [metryki](service-fabric-cluster-resource-manager-metrics.md)) równomiernie w całym klastrze. Usługa Service Fabric zarządza pojemność węzłów w klastrze i klaster jako całość przy użyciu [pojemności](service-fabric-cluster-resource-manager-cluster-description.md). Metryki i wydajność pracy wygodne w przypadku wielu obciążeń, ale wzorców, które w znacznym stopniu wykorzystywane różnych wystąpień aplikacji sieci szkieletowej usług czasami przenieść dodatkowe wymagania. Na przykład można:

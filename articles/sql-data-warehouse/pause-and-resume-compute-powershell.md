@@ -15,6 +15,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31598901"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-powershell"></a>Szybki Start: Wstrzymywanie i wznawianie obliczeń w usłudze Azure SQL Data Warehouse przy użyciu programu PowerShell
 Użyj programu PowerShell do wstrzymania obliczeniowych w magazynie danych SQL Azure w celu ograniczenia kosztów. [Wznowić operacje obliczeniowe](sql-data-warehouse-manage-compute-overview.md) gdy wszystko będzie gotowe do użycia w magazynie danych.

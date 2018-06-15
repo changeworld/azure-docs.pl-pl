@@ -1,11 +1,11 @@
 ---
 title: Portal przedprodukcyjnym dla tablicy wirtualnego StorSimple | Dokumentacja firmy Microsoft
-description: "Pierwszy samouczek, aby wdrożyć wirtualny tablicy StorSimple obejmuje przygotowanie portalu Azure"
+description: Pierwszy samouczek, aby wdrożyć wirtualny tablicy StorSimple obejmuje przygotowanie portalu Azure
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 68a4cfd3-94c9-46cb-805c-46217290ce02
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/14/2017
+ms.locfileid: "24526557"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Wdrażanie tablicy wirtualne StorSimple — przygotowanie portalu Azure
 

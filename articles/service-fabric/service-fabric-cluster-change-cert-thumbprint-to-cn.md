@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34210345"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Zmień klastra z odcisk palca certyfikatu nazwa pospolita
 Nie dwa certyfikaty mogą mieć tym samym odciskiem palca, dzięki czemu Przerzucanie certyfikatów klastra lub zarządzania trudne. Wiele certyfikatów, mogą jednak mieć tę samą nazwę pospolitą lub temat.  Przełączanie wdrożonej klastra z przy użyciu odciski palców certyfikatów przy użyciu wspólnej nazwy certyfikatów sprawia, że zarządzanie certyfikatami znacznie prostsze. W tym artykule opisano sposób aktualizacji klastra sieci szkieletowej usług uruchomionych do użycia nazwa pospolita certyfikatu zamiast odcisk palca certyfikatu.

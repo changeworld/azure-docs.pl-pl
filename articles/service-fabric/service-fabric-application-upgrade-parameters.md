@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212623"
 ---
 # <a name="application-upgrade-parameters"></a>Parametry uaktualniania aplikacji
 W tym artykule opisano różne parametry, które są stosowane podczas uaktualniania aplikacji sieci szkieletowej usług Azure. Parametry zawierają nazwę i wersję aplikacji. Są one pokrętła określające limity czasu i kontroli kondycji, które są stosowane podczas uaktualniania, a określają zasady, które należy zastosować w przypadku niepowodzenia uaktualnienia.

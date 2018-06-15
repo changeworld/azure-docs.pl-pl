@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206581"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Wprowadzenie do ReliableConcurrentQueue w sieci szkieletowej usług Azure
 Niezawodne równoczesnych kolejka jest asynchroniczne, transakcyjne i replikowane kolejki które concurrency wysokiej funkcji umieścić w kolejce i usuwania z kolejki operacji. Został zaprojektowany w celu dostarczenia wysokiej przepływności i małe opóźnienia za mniejsze strict kolejności FIFO dostarczonych przez [kolejka niezawodnych](https://msdn.microsoft.com/library/azure/dn971527.aspx) i przekazuje optymalnych porządkowania.

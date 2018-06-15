@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208900"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Symulowanie błędów w trakcie obciążenia usługi
 Scenariusze testowania w sieci szkieletowej usług Azure umożliwiają deweloperom nie martw się dotyczące poszczególnych błędów. Istnieją scenariusze, jednak gdzie jawne przeplataniem obciążenie klienta i błędy mogą być wymagane. Z przeplotem obciążenie klienta i błędy gwarantuje, że usługa rzeczywistego wykonania akcji w przypadku awarii. Podany poziom formant, który umożliwia zmianę, mogą to być punktach dokładne wykonywania obciążenia. To wywoływanie błędów w innych stanów w aplikacji można znaleźć usterek i poprawy jakości.

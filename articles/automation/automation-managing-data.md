@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34192976"
 ---
 # <a name="managing-azure-automation-data"></a>Zarządzanie danymi usługi Azure Automation
 Ten artykuł zawiera wiele tematów do zarządzania środowiskiem usługi Automatyzacja Azure.

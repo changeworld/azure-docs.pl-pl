@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34199704"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Utwórz uwierzytelnianie nieinteraktywne aplikacji .NET HDInsight
 Można uruchomić aplikacji Microsoft .NET Azure HDInsight przy użyciu tożsamości aplikacji (nieinterakcyjnym) lub tożsamością zalogowany użytkownik aplikacji (interaktywne). W tym artykule przedstawiono sposób tworzenia uwierzytelnianie nieinteraktywne aplikacji .NET w celu połączenia z platformą Azure i zarządzanie nimi HDInsight. Przykładowy interaktywna aplikacja, [nawiązywanie połączenia z usługi Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight). 

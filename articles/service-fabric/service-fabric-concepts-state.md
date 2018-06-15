@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34213099"
 ---
 # <a name="service-state"></a>Stan usługi
 **Usługa stanu** odnosi się do w pamięci lub na dysku danych, którego usługa wymaga, aby funkcja. Zawiera, na przykład struktury danych i zmienne Członkowskie, które Usługa odczytuje i zapisuje do pracy. W zależności od tego, jak usługa została zaprojektowana on może również obejmować plików lub innych zasobów, które są przechowywane na dysku. Na przykład pliki bazy danych będzie używać do przechowywania danych i dzienników transakcji.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207014"
 ---
 # <a name="reliable-services-notifications"></a>Niezawodne usługi powiadomień
 Powiadomienia Zezwalaj klientom na śledzić zmiany wprowadzone do obiektu, który interesują Cię. Powiadomienia obsługuje dwa typy obiektów: *niezawodnej Menedżer stanu* i *niezawodnej słownika*.

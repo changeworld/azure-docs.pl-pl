@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34200983"
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-using-the-azure-cli"></a>Zarządzanie klastrami Hadoop w HDInsight przy użyciu wiersza polecenia platformy Azure
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]

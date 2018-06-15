@@ -8,15 +8,16 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7e19837c1d16ddeea185f340305a0c9c52ce23ff
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 4ae4cfb91fb3a746c73d6b098a1adc9e4dee8698
+ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/12/2018
+ms.locfileid: "35414709"
 ---
 Po utworzeniu certyfikatu głównego z podpisem własnym należy wyeksportować plik .cer klucza publicznego certyfikatu głównego (nie klucz prywatny). Później możesz przekazać ten plik na platformie Azure. Poniższe kroki ułatwiają wyeksportować plik cer dla certyfikatu z podpisem własnym głównego:
 
-1. Aby uzyskać plik cer z certyfikatu, otwórz okno **Zarządzaj certyfikatami użytkowników**. Zlokalizuj certyfikat główny z podpisem własnym — zwykle znajduje się w katalogu „Certyfikaty - bieżący użytkownik\Osobisty\Certyfikat” — a następnie kliknij go prawym przyciskiem myszy. Kliknij pozycję **Wszystkie zadania**, a następnie kliknij pozycję **Eksportuj**. Spowoduje to otwarcie **Kreatora eksportu certyfikatów**.
+1. Aby uzyskać plik cer z certyfikatu, otwórz okno **Zarządzaj certyfikatami użytkowników**. Zlokalizuj certyfikat główny z podpisem własnym — zwykle znajduje się w katalogu „Certyfikaty - bieżący użytkownik\Osobisty\Certyfikat” — a następnie kliknij go prawym przyciskiem myszy. Kliknij pozycję **Wszystkie zadania**, a następnie kliknij pozycję **Eksportuj**. Spowoduje to otwarcie **Kreatora eksportu certyfikatów**. Jeśli nie można znaleźć certyfikatu w obszarze bieżący User\Personal\Certificates może być otwarty Menedżera certyfikatów dla certyfikatów komputera lokalnego (tytuł będzie "Certyfikaty — komputer" jako przeciwieństwie do "Certyfikaty — bieżący użytkownik"). Aby otworzyć Menedżera certyfikatów w bieżącym zakresie użytkownika uruchomić go z tego samego środowiska PowerShell, których certyfikaty zostały utworzone przez wpisanie ```certmgr```.
 
   ![Eksportowanie](./media/vpn-gateway-certificates-export-public-key-include/export.png)
 2. W Kreatorze kliknij pozycję **Dalej**.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205369"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Ustawienia konfiguracji dla autonomicznych klastra systemu Windows
 W tym artykule opisano sposób konfigurowania klastra usługi sieć szkieletowa usług Azure autonomiczny przy użyciu pliku pliku ClusterConfig.json. Aby podać informacje o węzłach klastra, konfiguracjach zabezpieczeń, a także topologii sieci w domenach awarii i uaktualniania użyjesz tego pliku.

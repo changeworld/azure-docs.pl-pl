@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34213218"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Skonfiguruj ustawienia FabricTransport Reliable Actors
 

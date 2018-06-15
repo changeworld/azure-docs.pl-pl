@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212691"
 ---
 # <a name="manage-secrets-in-service-fabric-applications"></a>Zarządzanie kluczy tajnych w aplikacji sieci szkieletowej usług
 Ten przewodnik zawiera opis kroków związanych z zarządzaniem kluczy tajnych w aplikacji sieci szkieletowej usług. Klucze tajne można poufne informacje, takie jak parametry połączenia magazynu, hasła lub inne wartości, które nie powinny być traktowane w postaci zwykłego tekstu.
