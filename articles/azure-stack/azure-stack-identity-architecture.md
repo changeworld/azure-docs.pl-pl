@@ -20,6 +20,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257492"
 ---
 # <a name="identity-architecture-for-azure-stack"></a>Architektura tożsamości Azure stosu
 Przed wybraniem dostawcy tożsamości do użycia z stosu Azure należy poznać istotnych różnic między opcje usługi Azure Active Directory (Azure AD) i Active Directory Federation Services (AD FS). 

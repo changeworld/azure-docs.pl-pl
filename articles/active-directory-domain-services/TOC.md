@@ -59,7 +59,7 @@
 ## [Przykłady kodu](https://azure.microsoft.com/resources/samples/?service=active-directory)
 
 # Powiązane
-## [Azure Active Directory](../active-directory/active-directory-whatis.md)
+## [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
 ## [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-overview.md)
 ## [Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)
 

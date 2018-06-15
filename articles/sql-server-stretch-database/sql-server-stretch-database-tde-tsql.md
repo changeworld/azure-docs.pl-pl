@@ -1,11 +1,11 @@
 ---
-title: "Włącz przezroczystego szyfrowania danych dla baza danych Stretch TSQL - Azure | Dokumentacja firmy Microsoft"
-description: "Włącz przezroczystego szyfrowania danych (funkcji TDE) dla danych programu SQL Server Stretch na Azure TSQL"
+title: Włącz przezroczystego szyfrowania danych dla baza danych Stretch TSQL - Azure | Dokumentacja firmy Microsoft
+description: Włącz przezroczystego szyfrowania danych (funkcji TDE) dla danych programu SQL Server Stretch na Azure TSQL
 services: sql-server-stretch-database
-documentationcenter: 
+documentationcenter: ''
 author: douglaslMS
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 27753d91-9ca2-4d47-b34d-b5e2c2f029bb
 ms.service: sql-server-stretch-database
 ms.workload: data-management
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23872939"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure-transact-sql"></a>Włącz przezroczystego szyfrowania danych (funkcji TDE) dla baza danych Stretch na platformie Azure (Transact-SQL)
 > [!div class="op_single_selector"]

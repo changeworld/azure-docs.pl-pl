@@ -20,6 +20,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34163850"
 ---
 # <a name="azure-portal-documentation"></a>Dokumentacja witryny Azure Portal
 Poznaj funkcje, za pomocą których możesz wdrażać zasoby w witrynie Azure Portal. W samouczkach, dokumentacji interfejsu API i pozostałych dokumentach przedstawiono informacje na temat wdrażania i monitorowania zasobów platformy Azure oraz zarządzania nimi.

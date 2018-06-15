@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206486"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Więcej informacji na temat różnic między usługami w chmurze i sieci szkieletowej usług przed przeprowadzeniem migracji aplikacji.
 Usługi sieć szkieletowa usług Microsoft Azure to platforma aplikacji nowej generacji chmury dla aplikacji rozproszonych, skalowalnej, bardzo niezawodne. Podaj wiele nowych funkcji do tworzenia pakietów, wdrażanie, uaktualnianie i zarządzania aplikacji rozproszonej chmury. 

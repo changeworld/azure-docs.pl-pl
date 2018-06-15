@@ -19,6 +19,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34068300"
 ---
 # <a name="quickstart-create-an-azure-key-vault-using-powershell"></a>Szybki start: Tworzenie usługi Azure Key Vault przy użyciu programu PowerShell
 

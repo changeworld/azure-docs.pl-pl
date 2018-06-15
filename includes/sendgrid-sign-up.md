@@ -61,9 +61,9 @@ W każdym miesiącu klienci platformy Azure mogą odblokować 25 000 bezpłatny
 
 Aby zarządzać ustawieniami dostarczania poczty e-mail, kliknij przycisk **Zarządzaj**. Nastąpi przekierowanie do pulpitu nawigacyjnego SendGrid.
 
-    ![manage][manage]
+![manage][manage]
 
-    For more information on sending email through SendGrid, visit the [Email API Overview][Email API Overview].
+Aby uzyskać więcej informacji na wysyłanie wiadomości e-mail za pośrednictwem SendGrid, odwiedź stronę [Przegląd interfejsu API usługi poczty E-mail][Email API Overview].
 
 <!--images-->
 

@@ -1,12 +1,12 @@
 ---
-title: "Administracja usługi Menedżera urządzenia StorSimple | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie zarządzania urządzeniem StorSimple przy użyciu usługi Menedżer StorSimple urządzenia w portalu Azure."
+title: Administracja usługi Menedżera urządzenia StorSimple | Dokumentacja firmy Microsoft
+description: Informacje o sposobie zarządzania urządzeniem StorSimple przy użyciu usługi Menedżer StorSimple urządzenia w portalu Azure.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875039"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>Użyj usługi Menedżer StorSimple urządzenia do administrowania urządzenia StorSimple
 

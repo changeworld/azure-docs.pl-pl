@@ -1,6 +1,6 @@
 ---
-title: "Jak używać magazynu kolejek (C++) | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie korzystania z usługi magazyn kolejek na platformie Azure. Przykłady są napisane w języku C++."
+title: Jak używać magazynu kolejek (C++) | Dokumentacja firmy Microsoft
+description: Informacje o sposobie korzystania z usługi magazyn kolejek na platformie Azure. Przykłady są napisane w języku C++.
 services: storage
 documentationcenter: .net
 author: cbrooksmsft
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874052"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>Jak używać magazynu kolejek w języku C++
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

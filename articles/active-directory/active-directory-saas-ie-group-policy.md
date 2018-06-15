@@ -20,6 +20,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34341010"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Wdrażanie rozszerzenia Panel dostępu dla programu Internet Explorer przy użyciu zasad grupy
 Ten samouczek przedstawia sposób użycia zasad grupy można zdalnie zainstalować rozszerzenia Panel dostępu dla programu Internet Explorer na komputerach użytkowników. To rozszerzenie jest wymagane dla programu Internet Explorer, użytkownicy muszą logowanie do aplikacji, które są skonfigurowane przy użyciu [opartego na hasłach rejestracji jednokrotnej](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on).

@@ -41,6 +41,12 @@
           href: billing-understand-reserved-instance-usage-ea.md
         - name: Zarządzanie wystąpieniami zarezerwowanymi
           href: billing-manage-reserved-vm-instance.md
+    - name: Przykłady REST
+      items:
+        - name: Przegląd kosztów przedsiębiorstwa
+          href: billing-review-enterprise-billing.md
+        - name: Przegląd użycia subskrypcji
+          href: billing-review-subscription-billing.md
 - name: Zarządzanie kontem
   items:
     - name: Bezpłatne konto

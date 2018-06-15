@@ -1,12 +1,12 @@
 ---
 title: Przywracanie z kopii zapasowej w serii StorSimple 8000 woluminu | Dokumentacja firmy Microsoft
-description: "Wyjaśniono, jak używać usługi Menedżer StorSimple urządzenia katalogu kopii zapasowej do przywrócenia woluminu StorSimple z zestawu kopii zapasowych."
+description: Wyjaśniono, jak używać usługi Menedżer StorSimple urządzenia katalogu kopii zapasowej do przywrócenia woluminu StorSimple z zestawu kopii zapasowych.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875459"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Przywracania woluminu StorSimple z zestawu kopii zapasowych
 

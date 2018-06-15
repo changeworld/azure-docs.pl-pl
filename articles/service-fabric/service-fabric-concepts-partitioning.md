@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206537"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Niezawodne usługi Service Fabric partycji
 Ten artykuł zawiera wprowadzenie do podstawowych pojęć dotyczących partycjonowania niezawodne usługi sieć szkieletowa usług Azure. Kod źródłowy, używany w artykule jest również dostępna w [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).

@@ -1,6 +1,6 @@
 ---
-title: "Przy użyciu migawek przyrostowych kopii zapasowych i odzyskiwania niezarządzane dysków maszyny Wirtualnej systemu Linux platformy Azure | Dokumentacja firmy Microsoft"
-description: "Tworzenie niestandardowego rozwiązania kopii zapasowych i odzyskiwania przy użyciu przyrostowej migawek dysków maszyny wirtualnej systemu Linux platformy Azure."
+title: Przy użyciu migawek przyrostowych kopii zapasowych i odzyskiwania niezarządzane dysków maszyny Wirtualnej systemu Linux platformy Azure | Dokumentacja firmy Microsoft
+description: Tworzenie niestandardowego rozwiązania kopii zapasowych i odzyskiwania przy użyciu przyrostowej migawek dysków maszyny wirtualnej systemu Linux platformy Azure.
 services: virtual-machines-linux
 documentationcenter: na
 author: aungoo-msft
@@ -19,5 +19,6 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23878868"
 ---
 [!INCLUDE [virtual-machines-incremental-snapshots](../../../includes/virtual-machines-incremental-snapshots.md)]

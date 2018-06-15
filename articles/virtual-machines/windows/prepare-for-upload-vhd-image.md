@@ -20,6 +20,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072253"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Przygotowywanie wirtualnego dysku twardego Windows lub VHDX do przekazania do platformy Azure
 Przed przekazaniem Windows maszyn wirtualnych (VM) z lokalnej do systemu Microsoft Azure, należy przygotować wirtualny dysk twardy (VHD lub VHDX). Azure obsługuje tylko generacji 1 maszyn wirtualnych, które mają w formacie pliku wirtualnego dysku twardego o rozmiarze dysk stały. Maksymalny rozmiar dozwolony dla wirtualnego dysku twardego jest 1,023 GB. Możesz przekonwertować generacji 1 maszyny Wirtualnej z dysk VHDX pliku system z dynamicznie powiększających się dysków do stałym rozmiarze i dysków VHD. Ale nie można zmienić generacji maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [generacji 1 lub 2 należy utworzyć maszyny Wirtualnej w funkcji Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).

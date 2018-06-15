@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208288"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Integracji Menedżera zasobów klastra z zarządzania klastrem sieci szkieletowej usług
 Menedżer zasobów klastra sieci szkieletowej usługi uaktualnienia nie na dysku w sieci szkieletowej usług, ale zostało ono uwzględnione. Pierwszy sposób, aby Menedżer zasobów klastra z zarządzania jest śledzenie żądanego stanu klastra i usług w nim. Menedżer zasobów klastra wysyła raporty kondycji gdy go nie można wstawić klastra do żądanej konfiguracji. Na przykład jeśli są niewystarczające Menedżera zasobów klastra wysyła ostrzeżeń i błędów wskazujących na ten problem. Inny element integracji związana z działania uaktualnienia. Menedżer zasobów klastra nieco zmienia jego zachowania podczas uaktualniania.  

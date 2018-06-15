@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie metody routingu ruchu okrężnego ważoną przy użyciu usługi Azure Traffic Manager | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób równoważenia obciążenia ruchu przy użyciu metody okrężnego w usłudze Traffic Manager"
+title: Konfigurowanie metody routingu ruchu okrężnego ważoną przy użyciu usługi Azure Traffic Manager | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób równoważenia obciążenia ruchu przy użyciu metody okrężnego w usłudze Traffic Manager
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 6dca6de1-18f7-4962-bd98-6055771fab22
 ms.service: traffic-manager
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23876544"
 ---
 # <a name="configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Konfigurowanie metody routingu ruchu ważoną w usłudze Traffic Manager
 

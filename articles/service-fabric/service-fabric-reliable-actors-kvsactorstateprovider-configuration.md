@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208264"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Konfigurowanie Reliable Actors — KVSActorStateProvider
 Domyślna konfiguracja KVSActorStateProvider można modyfikować, zmieniając pliku settings.xml, generowany w folderze głównym pakietu Microsoft Visual Studio w folderze konfiguracji dla określonego aktora.
