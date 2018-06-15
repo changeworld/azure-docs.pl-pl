@@ -20,6 +20,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32767804"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Wskazówek dotyczących ceny dla maszyn wirtualnych Azure, programu SQL Server
 

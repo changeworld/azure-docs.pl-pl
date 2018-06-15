@@ -12,9 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: a4f24aad95f13315eaeac790c9006ca00f61af69
 ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32187603"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Kopia zapasowa i przywracanie w magazynie danych SQL Azure
 Dowiedz się, jak działa i przywracania kopii zapasowych w usłudze Azure SQL Data Warehouse. Użyj magazynu kopii zapasowych danych do przywrócenia magazynu danych do punktu przywracania w regionie podstawowym. Użyj geograficznie nadmiarowego kopii zapasowych do przywrócenia w innym regionie geograficznym. 

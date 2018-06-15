@@ -19,6 +19,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32777717"
 ---
 # <a name="security-health-monitoring-in-azure-security-center"></a>Monitorowanie kondycji zabezpieczeń w Centrum zabezpieczeń Azure
 Informacje zawarte w tym artykule ułatwiają korzystanie z funkcji monitorowania w usłudze Azure Security Center w celu monitorowania zgodności z zasadami.

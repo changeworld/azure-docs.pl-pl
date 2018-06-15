@@ -22,6 +22,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32769175"
 ---
 # <a name="upgrade-your-free-trial-or-microsoft-imagine-azure-subscription-to-pay-as-you-go"></a>Uaktualnienia subskrypcji bezpłatnej wersji próbnej lub Microsoft Azure Wyobraź sobie na płatność za rzeczywiste użycie
 

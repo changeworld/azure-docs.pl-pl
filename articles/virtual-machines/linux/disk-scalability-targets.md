@@ -1,6 +1,6 @@
 ---
-title: "Obiekty docelowe skalowalności i wydajności dla dysków maszyny Wirtualnej w systemie Linux - Microsoft Azure | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat wydajności i skalowalności elementów docelowych dla maszyny wirtualnej dysków dołączonych do maszyn wirtualnych z systemem Linux."
+title: Obiekty docelowe skalowalności i wydajności dla dysków maszyny Wirtualnej w systemie Linux - Microsoft Azure | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat wydajności i skalowalności elementów docelowych dla maszyny wirtualnej dysków dołączonych do maszyn wirtualnych z systemem Linux.
 services: virtual-machines
 author: tamram
 manager: jeconnoc
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/16/2017
+ms.locfileid: "24872330"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-linux"></a>Obiekty docelowe skalowalności i wydajności dla dysków maszyny Wirtualnej w systemie Linux
 

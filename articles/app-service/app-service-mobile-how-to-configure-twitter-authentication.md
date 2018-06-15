@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32149956"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>Konfigurowanie aplikacji usługi aplikacji umożliwiająca użycie logowania usługi Twitter
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]

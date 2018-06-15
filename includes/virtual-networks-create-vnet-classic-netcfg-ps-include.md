@@ -13,6 +13,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31805081"
 ---
 ## <a name="how-to-create-a-virtual-network-using-a-network-config-file-from-powershell"></a>Jak utworzyć sieć wirtualną przy użyciu pliku konfiguracji sieci z programu PowerShell
 Azure używa pliku xml definiującego wszystkie sieci wirtualne dostępne do subskrypcji. Można pobrać tego pliku, edytować go, aby zmodyfikować lub usunąć istniejące sieci wirtualne i utworzyć nowe sieci wirtualnej. W tym samouczku Dowiedz się, jak pobrać ten plik, określonych w pliku konfiguracji (lub netcfg) sieci i edytowanie go w celu utworzenia nowej sieci wirtualnej. Aby dowiedzieć się więcej na temat pliku konfiguracji sieci, zobacz [schemat konfiguracji sieci wirtualnej platformy Azure](https://msdn.microsoft.com/library/azure/jj157100.aspx).
