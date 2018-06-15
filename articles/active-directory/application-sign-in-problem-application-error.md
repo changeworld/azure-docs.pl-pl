@@ -1,11 +1,11 @@
 ---
-title: "Błąd na stronie aplikacji po zalogowaniu się | Dokumentacja firmy Microsoft"
-description: "Jak rozwiązać problemy z logowaniem usługi Azure AD po zgłoszeniu emituje błąd"
+title: Błąd na stronie aplikacji po zalogowaniu się | Dokumentacja firmy Microsoft
+description: Jak rozwiązać problemy z logowaniem usługi Azure AD po zgłoszeniu emituje błąd
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29384909"
 ---
 # <a name="error-on-an-applications-page-after-signing-in"></a>Błąd na stronie aplikacji po zalogowaniu
 

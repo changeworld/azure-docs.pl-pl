@@ -1,12 +1,12 @@
 ---
-title: "Zarządzanie rekordami kontroli dostępu w StorSimple | Dokumentacja firmy Microsoft"
-description: "Informacje dotyczące używania rekordy kontroli dostępu (ACRs) do określenia, których hostów można połączyć do woluminu w urządzeniu StorSimple."
+title: Zarządzanie rekordami kontroli dostępu w StorSimple | Dokumentacja firmy Microsoft
+description: Informacje dotyczące używania rekordy kontroli dostępu (ACRs) do określenia, których hostów można połączyć do woluminu w urządzeniu StorSimple.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874906"
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>Zarządzanie rekordami kontroli dostępu przy użyciu usługi Menedżer StorSimple
 

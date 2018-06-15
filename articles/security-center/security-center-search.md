@@ -1,11 +1,11 @@
 ---
-title: "Centrum zabezpieczeń Azure search | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak Centrum zabezpieczeń Azure używa wyszukiwania analizy dzienników do pobierania i analizowania danych zabezpieczeń."
+title: Centrum zabezpieczeń Azure search | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak Centrum zabezpieczeń Azure używa wyszukiwania analizy dzienników do pobierania i analizowania danych zabezpieczeń.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 45b9756b-6449-49ec-950b-5ed1e7c56daa
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866401"
 ---
 # <a name="azure-security-center-search"></a>Centrum zabezpieczeń Azure search
 Centrum zabezpieczeń Azure używa [wyszukiwania analizy dzienników](../log-analytics/log-analytics-log-searches.md) pobierania i analizowania danych zabezpieczeń. Log Analytics obejmuje język kwerendy szybkie pobieranie i skonsolidować danych. Centrum zabezpieczeń można wykorzystać analizy dzienników wyszukiwania można tworzyć zapytania i analizowanie zebranych danych.

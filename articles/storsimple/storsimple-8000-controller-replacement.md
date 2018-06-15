@@ -1,12 +1,12 @@
 ---
-title: "Zastąp kontrolera urządzenia z serii StorSimple 8000 | Dokumentacja firmy Microsoft"
-description: "Wyjaśniono, jak usunąć i Zastąp jeden lub oba moduły kontroler na urządzeniu z serii StorSimple 8000."
+title: Zastąp kontrolera urządzenia z serii StorSimple 8000 | Dokumentacja firmy Microsoft
+description: Wyjaśniono, jak usunąć i Zastąp jeden lub oba moduły kontroler na urządzeniu z serii StorSimple 8000.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875389"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>Zastąp modułu kontroler na urządzeniu StorSimple
 ## <a name="overview"></a>Omówienie

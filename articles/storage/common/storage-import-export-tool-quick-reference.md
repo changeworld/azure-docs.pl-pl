@@ -1,12 +1,12 @@
 ---
-title: "Podręczna karta informacyjna dotycząca polecenia zadania importu narzędzia importu/eksportu Azure | Dokumentacja firmy Microsoft"
-description: "Dokumentacja poleceń Azure narzędzie importu/eksportu importu często używanych poleceń zadania."
+title: Podręczna karta informacyjna dotycząca polecenia zadania importu narzędzia importu/eksportu Azure | Dokumentacja firmy Microsoft
+description: Dokumentacja poleceń Azure narzędzie importu/eksportu importu często używanych poleceń zadania.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873723"
 ---
 # <a name="quick-reference-for-frequently-used-commands-for-import-jobs"></a>Krótki przewodnik dotyczący często używanych poleceń zadań importu
 

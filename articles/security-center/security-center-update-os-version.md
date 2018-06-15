@@ -1,11 +1,11 @@
 ---
-title: "Wersja aktualizacji systemu operacyjnego w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule przedstawiono sposób wykonania zalecenia Centrum zabezpieczeń Azure ** wersji ** aktualizacji systemu operacyjnego."
+title: Wersja aktualizacji systemu operacyjnego w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
+description: W tym artykule przedstawiono sposób wykonania zalecenia Centrum zabezpieczeń Azure ** wersji ** aktualizacji systemu operacyjnego.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: aa372492-ecdb-4368-8fdd-d8ed31e216ee
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866513"
 ---
 # <a name="update-os-version-in-azure-security-center"></a>Zaktualizuj wersję systemu operacyjnego w Centrum zabezpieczeń Azure
 Dla maszyn wirtualnych (VM) usług w chmurze Centrum zabezpieczeń Azure zaleca czy systemu operacyjnego (OS) można zaktualizować, jeśli jest dostępna nowsza wersja.  Tylko chmury usługi sieci web i proces roboczy role uruchomione w środowisku produkcyjnym, które są monitorowane gniazda.

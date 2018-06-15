@@ -1,11 +1,11 @@
 ---
-title: "Skalowanie usługi w chmurze platformy Azure w programie Windows PowerShell | Dokumentacja firmy Microsoft"
-description: "(klasyczne) Dowiedz się, jak za pomocą programu PowerShell do skalowania roli sieci web lub roli proces roboczy lub na platformie Azure."
+title: Skalowanie usługi w chmurze platformy Azure w programie Windows PowerShell | Dokumentacja firmy Microsoft
+description: (klasyczne) Dowiedz się, jak za pomocą programu PowerShell do skalowania roli sieci web lub roli proces roboczy lub na platformie Azure.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: mmccrory
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: ee37dd8c-6714-4c61-adb8-03d6bbf76c9a
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23842951"
 ---
 # <a name="how-to-scale-a-cloud-service-in-powershell"></a>Sposób skalowania usługi w chmurze w programie PowerShell
 

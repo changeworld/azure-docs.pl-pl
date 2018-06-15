@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie profilami usługi Azure Traffic Manager | Microsoft Docs"
-description: "Ten artykuł ułatwia tworzenie, wyłączanie, włączanie i usuwanie profilu usługi Azure Traffic Manager."
+title: Zarządzanie profilami usługi Azure Traffic Manager | Microsoft Docs
+description: Ten artykuł ułatwia tworzenie, wyłączanie, włączanie i usuwanie profilu usługi Azure Traffic Manager.
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f06e0365-0a20-4d08-b7e1-e56025e64f66
 ms.service: traffic-manager
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29398060"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>Zarządzanie profilem usługi Azure Traffic Manager
 

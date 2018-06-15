@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie poświadczeń konta magazynu tablicy wirtualnego StorSimple | Dokumentacja firmy Microsoft"
-description: "Wyjaśniono, jak umożliwia strony konfiguracji Menedżera urządzeń StorSimple dodać, edytować, usuwać lub Obróć kluczy zabezpieczeń dla poświadczeń konta magazynu skojarzone z tablicy wirtualne StorSimple."
+title: Zarządzanie poświadczeń konta magazynu tablicy wirtualnego StorSimple | Dokumentacja firmy Microsoft
+description: Wyjaśniono, jak umożliwia strony konfiguracji Menedżera urządzeń StorSimple dodać, edytować, usuwać lub Obróć kluczy zabezpieczeń dla poświadczeń konta magazynu skojarzone z tablicy wirtualne StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 234bf8bb-d5fe-40be-9d25-721d7482bc3b
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23876985"
 ---
 # <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>Użyj Menedżera urządzeń StorSimple do zarządzania poświadczeń konta magazynu dla macierzy wirtualnego StorSimple
 

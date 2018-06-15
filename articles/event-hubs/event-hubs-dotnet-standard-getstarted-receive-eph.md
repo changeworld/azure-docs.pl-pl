@@ -1,12 +1,12 @@
 ---
-title: "Odbieranie zdarzeń z usługi Azure Event Hubs za pomocą biblioteki .NET Standard | Microsoft Docs"
-description: "Wprowadzenie do odbierania komunikatów za pomocą klasy EventProcessorHost z biblioteki .NET Standard"
+title: Odbieranie zdarzeń z usługi Azure Event Hubs za pomocą biblioteki .NET Standard | Microsoft Docs
+description: Wprowadzenie do odbierania komunikatów za pomocą klasy EventProcessorHost z biblioteki .NET Standard
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: get-started-article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29389839"
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>Wprowadzenie do odbierania komunikatów za pomocą hosta procesora zdarzeń z biblioteki .NET Standard
 

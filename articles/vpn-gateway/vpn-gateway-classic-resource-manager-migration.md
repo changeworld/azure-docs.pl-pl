@@ -1,6 +1,6 @@
 ---
-title: "Klasycznego bramy sieci VPN do migracji Menedżera zasobów | Dokumentacja firmy Microsoft"
-description: "Ta strona zawiera omówienie sieci VPN bramy klasycznego do migracji Menedżera zasobów."
+title: Klasycznego bramy sieci VPN do migracji Menedżera zasobów | Dokumentacja firmy Microsoft
+description: Ta strona zawiera omówienie sieci VPN bramy klasycznego do migracji Menedżera zasobów.
 documentationcenter: na
 services: vpn-gateway
 author: amsriva
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23885217"
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>Klasycznego bramy sieci VPN do migracji Menedżera zasobów
 Teraz można migrować bramy sieci VPN z klasycznego modelu wdrażania Menedżera zasobów. Możesz przeczytać więcej na temat usługi Azure Resource Manager [funkcje i korzyści](../azure-resource-manager/resource-group-overview.md). W tym artykule firma Microsoft szczegółowo opisano sposób migracji w przypadku wdrożeń klasycznych do nowszej Menedżera zasobów na podstawie modelu. 

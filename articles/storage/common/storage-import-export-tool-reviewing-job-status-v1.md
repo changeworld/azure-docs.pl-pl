@@ -1,11 +1,11 @@
 ---
-title: "Przeglądanie stanu zadania Import/Eksport Azure - v1 | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak pliki dziennika utworzone po sprzed uruchomienia zadania importu lub eksportu, aby wyświetlić stan zadania importu/eksportu."
+title: Przeglądanie stanu zadania Import/Eksport Azure - v1 | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak pliki dziennika utworzone po sprzed uruchomienia zadania importu lub eksportu, aby wyświetlić stan zadania importu/eksportu.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: c69d1d69-6403-4eee-9949-0185faeecfa1
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873709"
 ---
 # <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>Przeglądanie Import/Eksport Azure stan zadania kopiowania plików dzienników
 Kiedy usługa Import/Eksport Microsoft Azure przetwarza dyski skojarzone z zadaniem importu lub eksportu, zapisuje kopiowania plików dziennika do konta magazynu do lub z którego są importowania lub eksportowania obiektów blob. Plik dziennika zawiera szczegółowe informacje dotyczące każdego pliku, który został zaimportowany ani eksportowane. Zwracany jest adres URL do każdego pliku dziennika kopii po wykonaniu kwerendy stanu zadanie zostało ukończone; zobacz [pobrania zadania](/rest/api/storageservices/Get-Job3) Aby uzyskać więcej informacji.  

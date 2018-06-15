@@ -1,11 +1,11 @@
 ---
-title: "Tytuł strony, na którym jest wyświetlany w przeglądarce kartę i wyników wyszukiwania"
-description: "Opis artykułu, który będzie wyświetlany na strony docelowe i w większości wyniki wyszukiwania"
+title: Tytuł strony, na którym jest wyświetlany w przeglądarce kartę i wyników wyszukiwania
+description: Opis artykułu, który będzie wyświetlany na strony docelowe i w większości wyniki wyszukiwania
 services: service-name
 documentationcenter: dev-center-name
 author: GitHub-alias-of-only-one-author
 manager: manager-alias
-editor: 
+editor: ''
 tags: comma-separates-additional-tags-if-required
 ms.service: required
 ms.devlang: may be required
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/16/2018
+ms.locfileid: "23886260"
 ---
 # <a name="title-maximum-120-characters-target-the-primary-keyword"></a>Tytuł (maksymalna 120 znaków, docelowy podstawowego — słowo kluczowe)
 *Użyj 2 – 3 dodatkowej słowa kluczowe w opisie.*

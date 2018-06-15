@@ -1,8 +1,8 @@
 ---
-title: "Porady: tworzenie rozmowy telefonicznej z usługi Twilio (PHP) | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wykonać połączenie telefoniczne i wysłać wiadomość SMS z usługi interfejsu API usługi Twilio na platformie Azure. Przykłady są przeznaczone dla aplikacji PHP."
+title: 'Porady: tworzenie rozmowy telefonicznej z usługi Twilio (PHP) | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak wykonać połączenie telefoniczne i wysłać wiadomość SMS z usługi interfejsu API usługi Twilio na platformie Azure. Przykłady są przeznaczone dla aplikacji PHP.
 documentationcenter: php
-services: 
+services: ''
 author: devinrader
 manager: twilio
 editor: mollybos
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23865757"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-php-application-on-azure"></a>Porady: tworzenie rozmowę telefoniczną w aplikacji PHP na platformie Azure przy użyciu usługi Twilio
 Poniższy przykład pokazuje, jak można użyć usługi Twilio, aby nawiązać połączenie ze strony sieci web PHP hostowana na platformie Azure. Wynikowa aplikacja pojawi się monit dla wartości rozmowy telefonicznej, jak pokazano na poniższym zrzucie ekranu.

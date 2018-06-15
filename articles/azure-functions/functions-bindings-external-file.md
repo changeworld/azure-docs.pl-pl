@@ -1,12 +1,12 @@
 ---
-title: "Zewnętrznego powiązania pliku dla usługi Azure Functions (eksperymentalne)"
-description: "Przy użyciu powiązań zewnętrznych plików w usługi Azure Functions"
+title: Zewnętrznego powiązania pliku dla usługi Azure Functions (eksperymentalne)
+description: Przy użyciu powiązań zewnętrznych plików w usługi Azure Functions
 services: functions
-documentationcenter: 
+documentationcenter: ''
 author: alexkarcher-msft
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/05/2018
+ms.locfileid: "27607925"
 ---
 # <a name="azure-functions-external-file-bindings-experimental"></a>Azure powiązania funkcji zewnętrzny plik (eksperymentalne)
 W tym artykule przedstawiono sposób manipulowanie plikami od różnych dostawców SaaS (na przykład skrzynki lub dysk Google) w funkcji platformy Azure. Usługi Azure Functions obsługuje wyzwolenia, danych wejściowych i wyjściowych powiązań zewnętrznych plików. Tych powiązań utworzyć interfejsu API połączeń z dostawcami SaaS lub użyć istniejącego połączenia interfejsu API z grupy zasobów aplikacji funkcji.

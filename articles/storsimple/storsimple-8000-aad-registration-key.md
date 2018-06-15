@@ -1,12 +1,12 @@
 ---
-title: "Użyj uwierzytelniania nowej usługi Menedżer StorSimple 8000 urządzeń na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Wyjaśniono, jak używać uwierzytelniania w usłudze AAD, na podstawie usługi, wygenerować nowy klucz rejestracji i dokonać ręcznej rejestracji urządzeń."
+title: Użyj uwierzytelniania nowej usługi Menedżer StorSimple 8000 urządzeń na platformie Azure | Dokumentacja firmy Microsoft
+description: Wyjaśniono, jak używać uwierzytelniania w usłudze AAD, na podstawie usługi, wygenerować nowy klucz rejestracji i dokonać ręcznej rejestracji urządzeń.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28030947"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>Użyj nowego uwierzytelniania dla Twojego urządzenia StorSimple
 

@@ -1,12 +1,12 @@
 ---
-title: "Zdalne nawiązywanie połączenia urządzenia StorSimple | Dokumentacja firmy Microsoft"
-description: "Wyjaśniono, jak skonfigurować urządzenie do zdalnego zarządzania oraz sposób nawiązywania połączenia z programu Windows PowerShell dla urządzenia StorSimple za pośrednictwem protokołu HTTP lub HTTPS."
+title: Zdalne nawiązywanie połączenia urządzenia StorSimple | Dokumentacja firmy Microsoft
+description: Wyjaśniono, jak skonfigurować urządzenie do zdalnego zarządzania oraz sposób nawiązywania połączenia z programu Windows PowerShell dla urządzenia StorSimple za pośrednictwem protokołu HTTP lub HTTPS.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/25/2018
+ms.locfileid: "28103959"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Zdalne nawiązywanie połączenia z urządzenia z serii StorSimple 8000
 

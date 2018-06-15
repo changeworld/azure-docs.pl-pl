@@ -1,11 +1,11 @@
 ---
-title: "Analizowanie zabezpieczeń sieci z widokiem grupy obserwatorów zabezpieczeń Azure sieci - interfejsu API REST | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób analizowania zabezpieczeń maszyn wirtualnych z widokiem grupy zabezpieczeń przy użyciu programu PowerShell."
+title: Analizowanie zabezpieczeń sieci z widokiem grupy obserwatorów zabezpieczeń Azure sieci - interfejsu API REST | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób analizowania zabezpieczeń maszyn wirtualnych z widokiem grupy zabezpieczeń przy użyciu programu PowerShell.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a2f418fe-f5d2-43ed-8dc3-df0ed2a4d4ac
 ms.service: network-watcher
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23864322"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>Analizowanie zabezpieczeń maszyny wirtualnej z widoku grupy zabezpieczeń przy użyciu interfejsu API REST
 

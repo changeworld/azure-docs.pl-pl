@@ -1,11 +1,11 @@
 ---
-title: "Strona Szablony w usłudze Azure API Management | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak dostosować zawartość strony portalu dewelopera przy użyciu zestawu szablonów w usłudze Azure API Management."
+title: Strona Szablony w usłudze Azure API Management | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dostosować zawartość strony portalu dewelopera przy użyciu zestawu szablonów w usłudze Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: e57df269-1019-4b74-b74d-53155b809d59
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27745035"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Szablony stron w usłudze Azure API Management
 Zarządzanie interfejsami API Azure zapewnia możliwość dostosować zawartość strony portalu dewelopera przy użyciu zestawu szablonów, które skonfigurować ich zawartości. Przy użyciu [DotLiquid](http://dotliquidmarkup.org/) składni i Edytor wybranych przez użytkownika, takie jak [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), i zestaw udostępnionego zlokalizowane [zasoby ciągu](api-management-template-resources.md#strings), [symboli zasobów](api-management-template-resources.md#glyphs), i [strony kontrolki](api-management-page-controls.md), ma dużą elastyczność konfigurowania zawartości stron, zgodnie z własnymi potrzebami, za pomocą tych szablonów.  

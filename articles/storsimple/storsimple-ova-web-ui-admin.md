@@ -1,11 +1,11 @@
 ---
-title: "Tablica wirtualnego StorSimple sieci web administracji interfejsu użytkownika | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób wykonywania zadań administracyjnych urządzenia podstawowe za pomocą interfejsu użytkownika sieci web tablicy wirtualne StorSimple."
+title: Tablica wirtualnego StorSimple sieci web administracji interfejsu użytkownika | Dokumentacja firmy Microsoft
+description: Opisuje sposób wykonywania zadań administracyjnych urządzenia podstawowe za pomocą interfejsu użytkownika sieci web tablicy wirtualne StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: ea65b4c7-a478-43e6-83df-1d9ea62916a6
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875886"
 ---
 # <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>Użyj interfejsu użytkownika sieci Web do administrowania tablica wirtualnego StorSimple
 ![przepływ procesu instalacji](./media/storsimple-ova-web-ui-admin/manage4.png)

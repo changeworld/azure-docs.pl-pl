@@ -1,11 +1,11 @@
 ---
 title: Format pliku manifestu Import/Eksport Azure | Dokumentacja firmy Microsoft
-description: "Dowiedz się więcej o formacie pliku manifestu dysku opisuje mapowanie między obiekty BLOB w magazynie obiektów Blob platformy Azure i plików na dysku podczas importowania lub eksportowania zadania w usłudze importu i eksportu."
+description: Dowiedz się więcej o formacie pliku manifestu dysku opisuje mapowanie między obiekty BLOB w magazynie obiektów Blob platformy Azure i plików na dysku podczas importowania lub eksportowania zadania w usłudze importu i eksportu.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: f3119e1c-2c25-48ad-8752-a6ed4adadbb0
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873905"
 ---
 # <a name="azure-importexport-service-manifest-file-format"></a>Azure format pliku manifestu usługi Import/Eksport
 Plik manifestu dysku opisuje mapowanie między obiekty BLOB w magazynie obiektów Blob platformy Azure i plików na dysku obejmujące zadania importu lub eksportu. Dla operacji importowania pliku manifestu jest tworzony jako część procesu przygotowywania dysków i są przechowywane na dysku przed wysłaniem dysku do centrum danych Azure. Podczas operacji eksportowania manifestu jest tworzone i przechowywane na dysku przez usługę Azure importu/eksportu.  

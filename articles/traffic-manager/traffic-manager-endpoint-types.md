@@ -1,11 +1,11 @@
 ---
-title: "Typy punktów końcowych usługi Traffic Manager | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano różne typy punktów końcowych, które mogą być używane z usługą Azure Traffic Manager"
+title: Typy punktów końcowych usługi Traffic Manager | Dokumentacja firmy Microsoft
+description: W tym artykule opisano różne typy punktów końcowych, które mogą być używane z usługą Azure Traffic Manager
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4e506986-f78d-41d1-becf-56c8516e4d21
 ms.service: traffic-manager
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23877517"
 ---
 # <a name="traffic-manager-endpoints"></a>Punkty końcowe usługi Traffic Manager
 Menedżer ruchu Microsoft Azure umożliwia kierowanie ruchu sieciowego do wdrożeń aplikacji uruchomionych w różnych centrach danych. Skonfiguruj każdego wdrożenia aplikacji jako punktu końcowego w usłudze Traffic Manager. Menedżer ruchu odebrania żądania DNS wybiera dostępnego punktu końcowego, aby powrócić do odpowiedzi DNS. Menedżer ruchu Określa wybór na bieżący stan punktu końcowego i metody routingu ruchu. Aby uzyskać więcej informacji, zobacz [sposób działania usługi Traffic Manager](traffic-manager-how-traffic-manager-works.md).

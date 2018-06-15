@@ -1,11 +1,11 @@
 ---
-title: "Tworzenie kopii zapasowej manifestów dysku Import/Eksport Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak ma Twojej manifestów dysku dla kopii zapasowej automatycznie usługi Import/Eksport Microsoft Azure."
+title: Tworzenie kopii zapasowej manifestów dysku Import/Eksport Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak ma Twojej manifestów dysku dla kopii zapasowej automatycznie usługi Import/Eksport Microsoft Azure.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 594abd80-b834-4077-a474-d8a0f4b7928a
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873667"
 ---
 # <a name="backing-up-drive-manifests-for-azure-importexport-jobs"></a>Tworzenie kopii zapasowej dysku manifesty prac Import/Eksport Azure
 

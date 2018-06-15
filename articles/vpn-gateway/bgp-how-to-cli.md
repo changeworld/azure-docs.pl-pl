@@ -1,13 +1,13 @@
 ---
-title: "Konfigurowanie protokołu BGP dla bramy sieci VPN platformy Azure: Resource Manager i interfejsu wiersza polecenia | Dokumentacja firmy Microsoft"
-description: "W tym artykule przedstawiono konfigurowanie protokołu BGP z bramy sieci VPN platformy Azure przy użyciu usługi Azure Resource Manager i interfejsu wiersza polecenia."
+title: 'Konfigurowanie protokołu BGP dla bramy sieci VPN platformy Azure: Resource Manager i interfejsu wiersza polecenia | Dokumentacja firmy Microsoft'
+description: W tym artykule przedstawiono konfigurowanie protokołu BGP z bramy sieci VPN platformy Azure przy użyciu usługi Azure Resource Manager i interfejsu wiersza polecenia.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23884041"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>Jak można skonfigurować protokołu BGP dla bramy sieci VPN platformy Azure przy użyciu interfejsu wiersza polecenia
 

@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie woluminami w macierzy wirtualnego StorSimple | Dokumentacja firmy Microsoft"
-description: "Zawiera opis Menedżera urządzeń StorSimple i wyjaśniono, jak przy jego użyciu zarządzać woluminach macierzy wirtualne StorSimple."
+title: Zarządzanie woluminami w macierzy wirtualnego StorSimple | Dokumentacja firmy Microsoft
+description: Zawiera opis Menedżera urządzeń StorSimple i wyjaśniono, jak przy jego użyciu zarządzać woluminach macierzy wirtualne StorSimple.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: manuaery
 manager: syadav
-editor: 
+editor: ''
 ms.assetid: caa6a26b-b7ba-4a05-b092-1a79450225cf
 ms.service: storsimple
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23876054"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>Usługa StorSimple za pomocą Menedżera urządzeń, aby zarządzać woluminy na tablicy wirtualnego StorSimple
 

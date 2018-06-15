@@ -1,11 +1,11 @@
 ---
-title: "Wprowadzenie do obiektów Blob platformy Azure magazynu i Visual Studio połączone usługi (platformy ASP.NET Core) | Dokumentacja firmy Microsoft"
-description: "Jak rozpocząć pracę przy użyciu magazynu obiektów Blob platformy Azure w projekcie platformy ASP.NET Core w programie Visual Studio po połączeniu z kontem magazynu za pomocą programu Visual Studio połączone usługi"
+title: Wprowadzenie do obiektów Blob platformy Azure magazynu i Visual Studio połączone usługi (platformy ASP.NET Core) | Dokumentacja firmy Microsoft
+description: Jak rozpocząć pracę przy użyciu magazynu obiektów Blob platformy Azure w projekcie platformy ASP.NET Core w programie Visual Studio po połączeniu z kontem magazynu za pomocą programu Visual Studio połączone usługi
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: camsoper
 manager: wpickett
-editor: 
+editor: ''
 ms.service: storage
 ms.workload: web
 ms.tgt_pltfrm: vs-getting-started
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/06/2018
+ms.locfileid: "27621227"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Wprowadzenie do obiektów Blob platformy Azure magazynu i Visual Studio połączone usługi (platformy ASP.NET Core)
 

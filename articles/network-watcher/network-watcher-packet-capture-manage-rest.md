@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie przechwytywania pakietów z obserwatora sieciowego Azure - interfejsu API REST | Dokumentacja firmy Microsoft"
-description: "Ta strona wyjaśnia sposób zarządzania funkcja przechwytywania pakietów obserwatora sieciowego przy użyciu interfejsu API REST Azure"
+title: Zarządzanie przechwytywania pakietów z obserwatora sieciowego Azure - interfejsu API REST | Dokumentacja firmy Microsoft
+description: Ta strona wyjaśnia sposób zarządzania funkcja przechwytywania pakietów obserwatora sieciowego przy użyciu interfejsu API REST Azure
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 53fe0324-835f-4005-afc8-145eeb314aeb
 ms.service: network-watcher
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23863384"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>Zarządzanie przechwytywania pakietów za pomocą Monitora sieci Azure przy użyciu interfejsu API REST Azure
 

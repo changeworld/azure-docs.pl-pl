@@ -1,11 +1,11 @@
 ---
-title: "Jak skonfigurować usługę aplikacji środowiska v1"
-description: "Konfigurowanie, zarządzanie i monitorowanie v1 środowiska usługi aplikacji"
+title: Jak skonfigurować usługę aplikacji środowiska v1
+description: Konfigurowanie, zarządzanie i monitorowanie v1 środowiska usługi aplikacji
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: ccompy
 manager: stefsch
-editor: 
+editor: ''
 ms.assetid: b5a1da49-4cab-460d-b5d2-edd086ec32f4
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23837218"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>Konfigurowanie aplikacji usługi v1 środowiska
 

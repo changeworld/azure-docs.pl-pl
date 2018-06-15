@@ -1,11 +1,11 @@
 ---
-title: "Wyświetl alerty i zarządzaj nimi tablicy wirtualne Microsoft Azure StorSimple | Dokumentacja firmy Microsoft"
-description: "Opisuje tablicy wirtualnego StorSimple warunków alertów i ważność oraz sposobu używania usługi Menedżer StorSimple do zarządzania alertami."
+title: Wyświetl alerty i zarządzaj nimi tablicy wirtualne Microsoft Azure StorSimple | Dokumentacja firmy Microsoft
+description: Opisuje tablicy wirtualnego StorSimple warunków alertów i ważność oraz sposobu używania usługi Menedżer StorSimple do zarządzania alertami.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 97ee25a1-0ec3-4883-9a0a-54b722598462
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/12/2018
+ms.locfileid: "27786411"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>Użyj Menedżera urządzeń StorSimple do zarządzania alertami dla tablicy wirtualnego StorSimple
 

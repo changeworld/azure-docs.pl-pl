@@ -20,6 +20,7 @@ ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/04/2018
+ms.locfileid: "33203480"
 ---
 # <a name="prepare-azure-stack-pki-certificates-for-deployment"></a>Przygotowanie do wdrożenia certyfikatów PKI stosu Azure
 Pliki certyfikatów [uzyskany z urzędu certyfikacji wyboru](azure-stack-get-pki-certs.md) musi być zaimportowane i wyeksportowane z właściwościami dopasowania wymagań dotyczących certyfikatów Azure stosu.

@@ -1,11 +1,11 @@
 ---
 title: Konfiguracja serwera iSCSI tablicy wirtualne Microsoft Azure StorSimple | Dokumentacja firmy Microsoft
-description: "Opisuje sposób wykonywania początkowej konfiguracji, Zarejestruj serwer iSCSI StorSimple i przeprowadzić konfigurację urządzenia."
+description: Opisuje sposób wykonywania początkowej konfiguracji, Zarejestruj serwer iSCSI StorSimple i przeprowadzić konfigurację urządzenia.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 4db116d1-978b-48e8-b572-a719a8425dbc
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23877307"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>Wdrożenie tablicy wirtualne StorSimple — zestawu się jako serwer iSCSI za pośrednictwem portalu Azure
 

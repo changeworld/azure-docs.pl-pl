@@ -1,11 +1,11 @@
 ---
-title: "Limity harmonogramu oraz wartości domyślnych"
-description: "Limity harmonogramu oraz wartości domyślnych"
+title: Limity harmonogramu oraz wartości domyślnych
+description: Limity harmonogramu oraz wartości domyślnych
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: 88f4a3e9-6dbd-4943-8543-f0649d423061
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23867815"
 ---
 # <a name="scheduler-limits-and-defaults"></a>Limity harmonogramu oraz wartości domyślnych
 ## <a name="scheduler-quotas-limits-defaults-and-throttles"></a>Przydziały harmonogramu, limity ustawień domyślnych i limity

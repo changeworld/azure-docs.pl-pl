@@ -1,11 +1,11 @@
 ---
-title: "Stosowanie aktualizacji systemu w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft"
-description: "Ten dokument zawiera implementowania zaleceń Centrum zabezpieczeń Azure ** zastosować aktualizacje systemu ** i ** ponowny rozruch po aktualizacji systemu **."
+title: Stosowanie aktualizacji systemu w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
+description: Ten dokument zawiera implementowania zaleceń Centrum zabezpieczeń Azure ** zastosować aktualizacje systemu ** i ** ponowny rozruch po aktualizacji systemu **.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: e5bd7f55-38fd-4ebb-84ab-32bd60e9fa7a
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866429"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Stosowanie aktualizacji systemu w Centrum zabezpieczeń Azure
 Centrum zabezpieczeń Azure monitoruje codzienne systemu Windows i Linux maszynach wirtualnych (VM) i na komputerach brakujących aktualizacji systemu operacyjnego. Centrum zabezpieczeń pobiera listę dostępnych zabezpieczeń i krytycznych aktualizacji z witryny Windows Update lub Windows Server Update Services (WSUS), w zależności od tego, który usługa jest skonfigurowana na komputerze z systemem Windows. Centrum zabezpieczeń sprawdza także najnowsze aktualizacje w systemach Linux. Jeśli maszyna wirtualna lub komputerze z Brak aktualizacji systemu, Centrum zabezpieczeń zaleca się zastosowanie aktualizacji systemu.

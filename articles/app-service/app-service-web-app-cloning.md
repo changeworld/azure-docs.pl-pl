@@ -1,11 +1,11 @@
 ---
-title: "Klonowanie aplikacji sieci Web przy użyciu programu PowerShell"
-description: "Dowiedz się, jak klonowanie aplikacji sieci Web do nowej aplikacji sieci Web przy użyciu programu PowerShell."
+title: Klonowanie aplikacji sieci Web przy użyciu programu PowerShell
+description: Dowiedz się, jak klonowanie aplikacji sieci Web do nowej aplikacji sieci Web przy użyciu programu PowerShell.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: ahmedelnably
 manager: stefsch
-editor: 
+editor: ''
 ms.assetid: f9a5cfa1-fbb0-41e6-95d1-75d457347a35
 ms.service: app-service-web
 ms.workload: web
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/18/2018
+ms.locfileid: "27867476"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Usługa aplikacji Azure aplikacji klonowania przy użyciu programu PowerShell
 Wraz z wydaniem programu Microsoft Azure PowerShell w wersji 1.1.0 dodano nową opcję do `New-AzureRMWebApp` , która umożliwia sklonować istniejącą aplikację sieci Web do aplikacji nowo utworzonej w innym regionie lub w tym samym regionie. Ta opcja umożliwia klienci mogą wdrożyć wiele aplikacji w różnych regionach, szybkie i łatwe.

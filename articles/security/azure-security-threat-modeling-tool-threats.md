@@ -1,6 +1,6 @@
 ---
-title: "Zagrożenia Azure - Microsoft Threat narzędzia modelowania — | Dokumentacja firmy Microsoft"
-description: "Strona kategorii zagrożenie dla narzędzia modelowania zagrożeń firmy Microsoft, zawierający kategorie dla wszystkich narażonych generowane zagrożenia."
+title: Zagrożenia Azure - Microsoft Threat narzędzia modelowania — | Dokumentacja firmy Microsoft
+description: Strona kategorii zagrożenie dla narzędzia modelowania zagrożeń firmy Microsoft, zawierający kategorie dla wszystkich narażonych generowane zagrożenia.
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23867899"
 ---
 # <a name="microsoft-threat-modeling-tool-threats"></a>Narzędzia do modelowania zagrożeń Microsoft zagrożeń
 

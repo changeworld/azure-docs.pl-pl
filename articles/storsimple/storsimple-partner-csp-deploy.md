@@ -1,12 +1,12 @@
 ---
-title: "Omówienie programu Microsoft Azure StorSimple i dostawcy rozwiązań w chmurze | Dokumentacja firmy Microsoft"
-description: "Omówienie StorSimple i dostawcy usług Kryptograficznych dla partnerów usługi StorSimple."
+title: Omówienie programu Microsoft Azure StorSimple i dostawcy rozwiązań w chmurze | Dokumentacja firmy Microsoft
+description: Omówienie StorSimple i dostawcy usług Kryptograficznych dla partnerów usługi StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875655"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>Wdrażanie tablicy wirtualnego StorSimple programu dostawcy rozwiązania chmury
 

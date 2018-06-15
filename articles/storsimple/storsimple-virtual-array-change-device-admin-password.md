@@ -1,11 +1,11 @@
 ---
-title: "Hasło administratora urządzenia StorSimple wirtualnego tablicy zmiany | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano, jak zmienić hasło administratora urządzenia za pomocą portalu Azure lub interfejsu użytkownika sieci web tablicy wirtualnego StorSimple."
+title: Hasło administratora urządzenia StorSimple wirtualnego tablicy zmiany | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak zmienić hasło administratora urządzenia za pomocą portalu Azure lub interfejsu użytkownika sieci web tablicy wirtualnego StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 11490814-d9fd-4dc7-9c3b-55dd2c23eaf1
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875571"
 ---
 # <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>Zmień hasło administratora urządzenia StorSimple wirtualnego tablicy za pomocą Menedżera urządzeń StorSimple
 

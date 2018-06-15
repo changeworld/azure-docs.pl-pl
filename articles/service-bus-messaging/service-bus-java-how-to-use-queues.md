@@ -1,6 +1,6 @@
 ---
-title: "Jak używać kolejek usługi Azure Service Bus z językiem Java | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać kolejek usługi Service Bus na platformie Azure. Przykłady kodu napisane w języku Java."
+title: Jak używać kolejek usługi Azure Service Bus z językiem Java | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać kolejek usługi Service Bus na platformie Azure. Przykłady kodu napisane w języku Java.
 services: service-bus-messaging
 documentationcenter: java
 author: sethmanheim
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23868431"
 ---
 # <a name="how-to-use-service-bus-queues-with-java"></a>Jak używać kolejek usługi Service Bus z językiem Java
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]

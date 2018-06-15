@@ -1,8 +1,8 @@
 ---
-title: "Najlepsze rozwiązania dotyczące usługi Azure App Service"
-description: "Dowiedz się, najlepsze rozwiązania i rozwiązywanie problemów dotyczących usługi Azure App Service."
+title: Najlepsze rozwiązania dotyczące usługi Azure App Service
+description: Dowiedz się, najlepsze rozwiązania i rozwiązywanie problemów dotyczących usługi Azure App Service.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: dariagrigoriu
 manager: erikre
 editor: mollybos
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/18/2018
+ms.locfileid: "27868322"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Najlepsze rozwiązania dotyczące usługi Azure App Service
 W tym artykule przedstawiono najlepsze rozwiązania dotyczące używania [usłudze Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). 

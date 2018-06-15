@@ -1,11 +1,11 @@
 ---
-title: "Omówienie zasad protokołu SSL dla bramy aplikacji Azure | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat sposobu brama aplikacji w usłudze Azure można skonfigurować zasady SSL"
+title: Omówienie zasad protokołu SSL dla bramy aplikacji Azure | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat sposobu brama aplikacji w usłudze Azure można skonfigurować zasady SSL
 services: application gateway
 documentationcenter: na
 author: amsriva
-manager: 
-editor: 
+manager: ''
+editor: ''
 tags: azure resource manager
 ms.service: application gateway
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836952"
 ---
 # <a name="application-gateway-ssl-policy-overview"></a>Omówienie zasad SSL bramy aplikacji
 

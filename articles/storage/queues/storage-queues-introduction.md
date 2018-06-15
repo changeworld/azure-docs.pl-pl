@@ -2,11 +2,11 @@
 title: Wprowadzenie do magazynu kolejek Azure | Dokumentacja firmy Microsoft
 description: Wprowadzenie do magazynu kolejek Azure
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873828"
 ---
 # <a name="introduction-to-queues"></a>Wprowadzenie do kolejek
 

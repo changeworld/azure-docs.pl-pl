@@ -1,11 +1,11 @@
 ---
-title: "Korygowanie konfiguracjach zabezpieczeń w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft"
-description: "Ten dokument zawiera implementowania zalecenia Centrum zabezpieczeń Azure, \"Skoryguj konfiguracje zabezpieczeń\"."
+title: Korygowanie konfiguracjach zabezpieczeń w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
+description: Ten dokument zawiera implementowania zalecenia Centrum zabezpieczeń Azure, "Skoryguj konfiguracje zabezpieczeń".
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 991d41f5-1d17-468d-a66d-83ec1308ab79
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/25/2018
+ms.locfileid: "28103935"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Korygowanie konfiguracjach zabezpieczeń w Centrum zabezpieczeń Azure
 Centrum zabezpieczeń Azure codziennie analizuje systemu operacyjnego (OS), maszynach wirtualnych (VM) i na komputerach w konfiguracji, który można utworzyć maszyny wirtualne i bardziej narażony na ataki. Centrum zabezpieczeń zaleca Rozwiąż luk w zabezpieczeniach w przypadku konfiguracji systemu operacyjnego jest niezgodny z reguły konfiguracji zabezpieczeń i zaleca zmiany konfiguracji, aby rozwiązać te luki w zabezpieczeniach.

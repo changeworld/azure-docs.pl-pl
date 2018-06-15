@@ -14,6 +14,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32767973"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Proces można skonfigurować reguły progu w Azure Stream Analytics
 W tym artykule opisano sposób używania danych referencyjnych do osiągnięcia rozwiązanie alertów, które używa można skonfigurować reguły progu w Azure Stream Analytics.

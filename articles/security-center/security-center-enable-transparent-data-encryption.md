@@ -1,11 +1,11 @@
 ---
-title: "Włącz przezroczystego szyfrowania danych w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft"
-description: "Ten dokument przedstawia sposób wykonania zalecenia Centrum zabezpieczeń Azure ** włączyć przezroczysty danych szyfrowania **."
+title: Włącz przezroczystego szyfrowania danych w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
+description: Ten dokument przedstawia sposób wykonania zalecenia Centrum zabezpieczeń Azure ** włączyć przezroczysty danych szyfrowania **.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: e4be8a0e-2118-4ee9-a266-69e52d9f7f8e
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866296"
 ---
 # <a name="enable-transparent-data-encryption-in-azure-security-center"></a>Włącz przezroczystego szyfrowania danych w Centrum zabezpieczeń Azure
 Centrum zabezpieczeń Azure zaleca Włącz funkcji przezroczystego szyfrowania danych (TDE) baz danych SQL, jeśli nie jest już włączona funkcji TDE. Funkcji TDE chroni dane i pomaga spełnić wymagania zgodności przez zaszyfrowanie bazy danych, skojarzonych kopii zapasowych i plików dziennika transakcji w stanie spoczynku, bez konieczności wprowadzania zmian w aplikacji. Aby dowiedzieć się więcej, zobacz [przezroczystego szyfrowania danych z bazy danych SQL Azure](https://msdn.microsoft.com/library/dn948096).

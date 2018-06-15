@@ -1,8 +1,8 @@
 ---
-title: "Alert zarządzania w programie Microsoft monitoring produktów | Dokumentacja firmy Microsoft"
-description: "Alert wskazuje niektórych problem, który wymaga uwagi ze strony administratora.  W tym artykule opisano różnice w sposób alerty są tworzone i zarządzane w System Center Operations Manager (SCOM) i analizy dzienników i zapewnia najlepszych rozwiązań dzięki wykorzystaniu te dwa produkty strategii zarządzania alertami hybrydowego."
+title: Alert zarządzania w programie Microsoft monitoring produktów | Dokumentacja firmy Microsoft
+description: Alert wskazuje niektórych problem, który wymaga uwagi ze strony administratora.  W tym artykule opisano różnice w sposób alerty są tworzone i zarządzane w System Center Operations Manager (SCOM) i analizy dzienników i zapewnia najlepszych rozwiązań dzięki wykorzystaniu te dwa produkty strategii zarządzania alertami hybrydowego.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23865771"
 ---
 # <a name="managing-alerts-with-microsoft-monitoring"></a>Zarządzanie alertami z monitorowania firmy Microsoft
 Alert wskazuje niektórych problem, który wymaga uwagi ze strony administratora.  Istnieją różne różnice między programu System Center Operations Manager (SCOM) i analizy dzienników w Operations Management Suite (OMS) pod względem sposobu tworzenia alertów, jak są zarządzane i analizowane i jak otrzymasz powiadomienie, że krytyczne problem został Wykryto.

@@ -1,11 +1,11 @@
 ---
-title: "Za pomocą narzędzia importu/eksportu Azure - v1 | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak przygotować dyski twarde dla zadania importu, napraw zadania importu lub naprawy zadania eksportu za pomocą narzędzia importu/eksportu."
+title: Za pomocą narzędzia importu/eksportu Azure - v1 | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak przygotować dyski twarde dla zadania importu, napraw zadania importu lub naprawy zadania eksportu za pomocą narzędzia importu/eksportu.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: f77535bb-d577-438a-bdd3-e15a82e0c543
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873688"
 ---
 # <a name="using-the-azure-importexport-tool-classic-deployment-model"></a>Za pomocą narzędzia importu/eksportu Azure (klasycznego modelu wdrażania)
 

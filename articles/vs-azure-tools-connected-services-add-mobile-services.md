@@ -1,11 +1,11 @@
 ---
-title: "Dodawanie usługi Mobile Services przy użyciu usług połączonych w programie Visual Studio | Dokumentacja firmy Microsoft"
-description: "Dodawanie usługi Mobile Services przy użyciu okna dialogowego programu Visual Studio Dodaj połączone usługi"
+title: Dodawanie usługi Mobile Services przy użyciu usług połączonych w programie Visual Studio | Dokumentacja firmy Microsoft
+description: Dodawanie usługi Mobile Services przy użyciu okna dialogowego programu Visual Studio Dodaj połączone usługi
 services: visual-studio-online
 documentationcenter: na
 author: mlhoop
 manager: douge
-editor: 
+editor: ''
 ms.assetid: 75c3cb93-88e1-476d-a416-f34caa3608e3
 ms.service: visual-studio-online
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23884216"
 ---
 # <a name="adding-mobile-services-by-using-visual-studio-connected-services"></a>Dodawanie usługi Mobile Services przy użyciu programu Visual Studio usług połączonych
 Z programem Visual Studio 2015, możesz nawiązać połączenie przy użyciu usług Azure Mobile Services **dodać podłączonej usługi** okna dialogowego. Możesz połączyć się z wszystkich aplikacji klienckich C#, dowolnej aplikacji JavaScript lub aplikacji Cordova i platform. Po nawiązaniu połączenia można utworzyć i uzyskać dostęp do danych, tworzenie niestandardowych interfejsów API i zaplanowanych zadań lub dodać obsługę powiadomień wypychanych.  Operacja podłączonych usług dodaje wszystkie odpowiednie odwołania i kod połączenia. Mogą również czerpać korzyści z wbudowaną obsługę uwierzytelniania przy użyciu różnych popularnych tożsamości systemów, takich jak Azure AD, Facebook, Twitter i Accounts firmy Microsoft.

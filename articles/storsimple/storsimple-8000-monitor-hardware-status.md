@@ -1,12 +1,12 @@
 ---
-title: "Składniki sprzętowe serii StorSimple 8000 i stan | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak monitorować składniki sprzętowe urządzenia StorSimple przez usługę Menedżer StorSimple urządzenia."
+title: Składniki sprzętowe serii StorSimple 8000 i stan | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak monitorować składniki sprzętowe urządzenia StorSimple przez usługę Menedżer StorSimple urządzenia.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875956"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>Korzystanie z usługi Menedżera urządzeń StorSimple monitorem składniki sprzętowe i stanu
 ## <a name="overview"></a>Omówienie

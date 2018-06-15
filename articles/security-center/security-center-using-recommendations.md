@@ -1,12 +1,12 @@
 ---
-title: "Korzystanie z Centrum zabezpieczeń Azure zalecenia, aby zwiększyć bezpieczeństwo | Dokumentacja firmy Microsoft"
+title: Korzystanie z Centrum zabezpieczeń Azure zalecenia, aby zwiększyć bezpieczeństwo | Dokumentacja firmy Microsoft
 description: " Dowiedz się, jak używać zasad zabezpieczeń i zalecenia w Centrum zabezpieczeń Azure do zmniejszenia atak na zabezpieczenia. "
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866667"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Korzystanie z Centrum zabezpieczeń Azure zaleceń w celu zwiększenia zabezpieczeń
 Konfigurowanie zasad zabezpieczeń, a następnie wdrażanie zaleceń dotyczących, świadczona przez Centrum zabezpieczeń Azure można zmniejszyć prawdopodobieństwo zdarzeń zabezpieczeń. W tym artykule przedstawiono sposób użycia zasady zabezpieczeń i zalecenia w Centrum zabezpieczeń, aby ułatwić uniknięcie atak na zabezpieczenia.

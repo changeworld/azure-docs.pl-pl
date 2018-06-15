@@ -1,11 +1,11 @@
 ---
-title: "Zwróć uwagę, wycofywanie 1 rodziny systemów operacyjnych gościa | Dokumentacja firmy Microsoft"
-description: "Informacje na temat po stało się wycofanie 1 rodziny systemu operacyjnego gościa Azure i sposobu ustalenia, czy ma wpływ"
+title: Zwróć uwagę, wycofywanie 1 rodziny systemów operacyjnych gościa | Dokumentacja firmy Microsoft
+description: Informacje na temat po stało się wycofanie 1 rodziny systemu operacyjnego gościa Azure i sposobu ustalenia, czy ma wpływ
 services: cloud-services
 documentationcenter: na
 author: raiye
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 37b422e9-0713-4a81-a942-f553ef478064
 ms.service: cloud-services
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23843133"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>Powiadomienie wycofanie 1 rodziny systemu operacyjnego gościa
 Wycofanie 1 rodziny System operacyjny najpierw ogłoszono w dniu 1 czerwca 2013.

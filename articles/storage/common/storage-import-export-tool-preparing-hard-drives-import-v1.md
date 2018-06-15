@@ -1,11 +1,11 @@
 ---
 title: Przygotowywanie dyski twarde dla zadania importu Import/Eksport Azure - v1 | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak przygotować Tworzenie zadania importu dla usługi Import/Eksport Azure przy użyciu narzędzia v1 WAImportExport dysków twardych."
+description: Dowiedz się, jak przygotować Tworzenie zadania importu dla usługi Import/Eksport Azure przy użyciu narzędzia v1 WAImportExport dysków twardych.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 3d818245-8b1b-4435-a41f-8e5ec1f194b2
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874094"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Przygotowywanie dysków twardych do zadania importu
 Aby przygotować co najmniej jeden dyski twarde dla zadania importu, wykonaj następujące kroki:

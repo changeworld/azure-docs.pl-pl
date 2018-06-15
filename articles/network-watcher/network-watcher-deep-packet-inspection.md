@@ -1,11 +1,11 @@
 ---
-title: "Inspekcję pakietów z obserwatora sieciowego Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób użycia obserwatora sieciowego przeprowadzać inspekcję pakietów zebrane z maszyny Wirtualnej"
+title: Inspekcję pakietów z obserwatora sieciowego Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób użycia obserwatora sieciowego przeprowadzać inspekcję pakietów zebrane z maszyny Wirtualnej
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7b907d00-9c35-40f5-a61e-beb7b782276f
 ms.service: network-watcher
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23863972"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Inspekcję pakietów z obserwatora sieciowego Azure
 

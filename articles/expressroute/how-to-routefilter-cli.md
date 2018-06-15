@@ -1,13 +1,13 @@
 ---
-title: "Konfigurowanie filtrów trasy dla komunikacji równorzędnej platformy Azure ExpressRoute Microsoft: interfejs wiersza polecenia | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób konfigurowania filtrów tras dla Peering firmy Microsoft przy użyciu wiersza polecenia platformy Azure"
+title: 'Konfigurowanie filtrów trasy dla komunikacji równorzędnej platformy Azure ExpressRoute Microsoft: interfejs wiersza polecenia | Dokumentacja firmy Microsoft'
+description: W tym artykule opisano sposób konfigurowania filtrów tras dla Peering firmy Microsoft przy użyciu wiersza polecenia platformy Azure
 documentationcenter: na
 services: expressroute
 author: anzaman
 manager: ganesr
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23850819"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Konfigurowanie filtrów trasy dla komunikacji równorzędnej firmy Microsoft: wiersza polecenia platformy Azure
 

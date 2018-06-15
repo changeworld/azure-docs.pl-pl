@@ -1,6 +1,6 @@
 ---
-title: "Skonfiguruj limit czasu bezczynności TCP usługi równoważenia obciążenia | Dokumentacja firmy Microsoft"
-description: "Skonfiguruj limit czasu bezczynności TCP usługi równoważenia obciążenia"
+title: Skonfiguruj limit czasu bezczynności TCP usługi równoważenia obciążenia | Dokumentacja firmy Microsoft
+description: Skonfiguruj limit czasu bezczynności TCP usługi równoważenia obciążenia
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23855229"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Skonfiguruj ustawienia limitu czasu bezczynności TCP dla usługi równoważenia obciążenia Azure
 

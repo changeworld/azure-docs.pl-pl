@@ -1,8 +1,8 @@
 ---
-title: "Przykładowe akcji alertu elementu Webhook w OMS Log Analytics | Dokumentacja firmy Microsoft"
-description: "Jedną z akcji można uruchomić w odpowiedzi na alert analizy dzienników jest * webhook *, dzięki czemu można wywołać procesu zewnętrznego przez pojedyncze żądanie HTTP. W tym artykule przedstawiono przykład tworzenia akcji elementu webhook w alercie analizy dzienników, przy użyciu zapas czasu."
+title: Przykładowe akcji alertu elementu Webhook w OMS Log Analytics | Dokumentacja firmy Microsoft
+description: Jedną z akcji można uruchomić w odpowiedzi na alert analizy dzienników jest * webhook *, dzięki czemu można wywołać procesu zewnętrznego przez pojedyncze żądanie HTTP. W tym artykule przedstawiono przykład tworzenia akcji elementu webhook w alercie analizy dzienników, przy użyciu zapas czasu.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23855173"
 ---
 # <a name="create-an-alert-webhook-action-in-oms-log-analytics-to-send-message-to-slack"></a>Utworzenie elementu webhook alertów w OMS analizy dzienników do wysyłania wiadomości zapas czasu
 Jedną z akcji można uruchomić w odpowiedzi na [alert analizy dzienników](log-analytics-alerts.md) jest *webhook*, który umożliwia wywołanie procesu zewnętrznego przez pojedyncze żądanie HTTP.  Możesz przeczytać o szczegółach alertów i elementów webhook w [alertów w analizy dzienników](log-analytics-alerts.md)

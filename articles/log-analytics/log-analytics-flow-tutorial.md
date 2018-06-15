@@ -1,8 +1,8 @@
 ---
-title: "Automatyzowanie procesów Analiza dzienników Azure z Flow firmy Microsoft"
-description: "Dowiedz się, jak można użyć Microsoft Flow można szybko zautomatyzować powtarzalnych procesów za pomocą łącznika usługi Analiza dzienników Azure."
+title: Automatyzowanie procesów Analiza dzienników Azure z Flow firmy Microsoft
+description: Dowiedz się, jak można użyć Microsoft Flow można szybko zautomatyzować powtarzalnych procesów za pomocą łącznika usługi Analiza dzienników Azure.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: CFreemanwa
 manager: carmonm
 ms.service: log-analytics
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/16/2017
+ms.locfileid: "23889508"
 ---
 # <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>Automatyzacji procesów analizy dzienników przy użyciu łącznika dla Flow firmy Microsoft
 [Microsoft Flow](https://ms.flow.microsoft.com) służy do tworzenia automatycznych przepływów pracy za pomocą setki akcje dla różnych usług. Dane wyjściowe z jedną akcję może służyć jako dane wejściowe do innego pozwala na tworzenie integrację różnych usług.  Łącznik usługi Analiza dzienników Azure dla programu Microsoft Flow pozwalają na tworzenie przepływów pracy, które zawierają dane pobierane przez dziennik wyszukiwania analizy dzienników.

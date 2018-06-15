@@ -1,6 +1,6 @@
 ---
 title: Uruchom powrotu po awarii do lokacji lokalnej dla maszyn wirtualnych funkcji Hyper-v | Dokumentacja firmy Microsoft
-description: "Usługa Azure Site Recovery koordynuje replikacji, trybu failover i odzyskiwania maszyn wirtualnych i serwerów fizycznych. Więcej informacji na temat powrotu po awarii z platformy Azure do lokalnego centrum danych."
+description: Usługa Azure Site Recovery koordynuje replikacji, trybu failover i odzyskiwania maszyn wirtualnych i serwerów fizycznych. Więcej informacji na temat powrotu po awarii z platformy Azure do lokalnego centrum danych.
 services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29467121"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Uruchom powrotu po awarii dla maszyn wirtualnych funkcji Hyper-V
 

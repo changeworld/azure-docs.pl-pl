@@ -1,12 +1,12 @@
 ---
-title: "Konfigurowanie serwera proxy sieci web dla urządzenia z serii StorSimple 8000 | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować ustawienia serwera proxy sieci web dla urządzenia StorSimple przy użyciu programu Windows PowerShell dla StorSimple."
+title: Konfigurowanie serwera proxy sieci web dla urządzenia z serii StorSimple 8000 | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować ustawienia serwera proxy sieci web dla urządzenia StorSimple przy użyciu programu Windows PowerShell dla StorSimple.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874997"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>Skonfiguruj serwer proxy sieci web dla urządzenia StorSimple
 

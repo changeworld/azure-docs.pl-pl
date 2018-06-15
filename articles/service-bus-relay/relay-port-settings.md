@@ -1,12 +1,12 @@
 ---
-title: "Ustawienia portów przekaźnika usługi Azure | Dokumentacja firmy Microsoft"
-description: "Szczegółowe informacje o wartości portu przekaźnika usługi Azure."
+title: Ustawienia portów przekaźnika usługi Azure | Dokumentacja firmy Microsoft
+description: Szczegółowe informacje o wartości portu przekaźnika usługi Azure.
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-relay
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28017379"
 ---
 # <a name="azure-relay-port-settings"></a>Ustawienia portów przekaźnika usługi Azure
 

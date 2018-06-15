@@ -1,11 +1,11 @@
 ---
-title: "Wprowadzenie do przechwytywania pakietów w obserwatora sieciowego Azure | Dokumentacja firmy Microsoft"
-description: "Ta strona zawiera przegląd możliwości przechwytywania pakietów obserwatora sieciowego"
+title: Wprowadzenie do przechwytywania pakietów w obserwatora sieciowego Azure | Dokumentacja firmy Microsoft
+description: Ta strona zawiera przegląd możliwości przechwytywania pakietów obserwatora sieciowego
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3a81afaa-ecd9-4004-b68e-69ab56913356
 ms.service: network-watcher
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23864294"
 ---
 # <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Wprowadzenie do przechwytywania pakietów zmiennej w obserwatora sieciowego Azure
 

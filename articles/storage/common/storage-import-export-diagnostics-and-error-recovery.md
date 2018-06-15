@@ -1,11 +1,11 @@
 ---
-title: "Diagnostyka i błąd odzyskiwania dla zadań Import/Eksport Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak włączyć pełne rejestrowanie dla zadania usługi Import/Eksport Microsoft Azure."
+title: Diagnostyka i błąd odzyskiwania dla zadań Import/Eksport Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak włączyć pełne rejestrowanie dla zadania usługi Import/Eksport Microsoft Azure.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 096cc795-9af6-4335-9fe8-fffa9f239a17
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873639"
 ---
 # <a name="diagnostics-and-error-recovery-for-azure-importexport-jobs"></a>Diagnostyka i błąd odzyskiwania dla zadań Import/Eksport Azure
 Dla każdego dysku przetwarzane usługi Import/Eksport Azure tworzy dziennik błędów w skojarzonego konta magazynu. Można również włączyć pełne rejestrowanie, ustawiając `LogLevel` właściwości `Verbose` podczas wywoływania metody [zawiesić zadanie](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) lub [właściwości zadania aktualizacji](/rest/api/storageimportexport/jobs#Jobs_Update) operacji.

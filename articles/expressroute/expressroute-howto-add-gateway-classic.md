@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie bramy sieci wirtualnej dla usługi przy użyciu programu PowerShell: klasycznym: Azure | Dokumentacja firmy Microsoft"
-description: "Konfigurowanie bramy sieci wirtualnej dla wdrożenia klasycznego modelu sieci wirtualnej przy użyciu programu PowerShell dla konfiguracji usługi ExpressRoute."
+title: 'Konfigurowanie bramy sieci wirtualnej dla usługi przy użyciu programu PowerShell: klasycznym: Azure | Dokumentacja firmy Microsoft'
+description: Konfigurowanie bramy sieci wirtualnej dla wdrożenia klasycznego modelu sieci wirtualnej przy użyciu programu PowerShell dla konfiguracji usługi ExpressRoute.
 documentationcenter: na
 services: expressroute
 author: charwen
 manager: carmonm
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 85ee0bc1-55be-4760-bfb4-34d9f2c96f30
 ms.service: expressroute
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23850637"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell-classic"></a>Konfigurowanie bramy sieci wirtualnej dla usługi przy użyciu programu PowerShell (klasyczne)
 > [!div class="op_single_selector"]

@@ -1,12 +1,12 @@
 ---
-title: "Przechowywanie wersji w funkcjach trwałe - Azure"
-description: "Dowiedz się, jak do implementacji przechowywania wersji w rozszerzeniu trwałe funkcji dla usługi Azure Functions."
+title: Przechowywanie wersji w funkcjach trwałe - Azure
+description: Dowiedz się, jak do implementacji przechowywania wersji w rozszerzeniu trwałe funkcji dla usługi Azure Functions.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23838555"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Przechowywanie wersji w funkcji trwałe (funkcje platformy Azure)
 

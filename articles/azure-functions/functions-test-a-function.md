@@ -1,13 +1,13 @@
 ---
-title: "Testowanie usługi Azure Functions | Dokumentacja firmy Microsoft"
-description: "Testowanie funkcji platformy Azure przy użyciu Postman, cURL i Node.js."
+title: Testowanie usługi Azure Functions | Dokumentacja firmy Microsoft
+description: Testowanie funkcji platformy Azure przy użyciu Postman, cURL i Node.js.
 services: functions
 documentationcenter: na
 author: wesmc7777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure funkcji, funkcji, przetwarzania zdarzeń, elementów webhook, dynamiczne obliczeń, niekorzystającą architektury, testowanie"
+editor: ''
+tags: ''
+keywords: Azure funkcji, funkcji, przetwarzania zdarzeń, elementów webhook, dynamiczne obliczeń, niekorzystającą architektury, testowanie
 ms.assetid: c00f3082-30d2-46b3-96ea-34faf2f15f77
 ms.service: functions
 ms.devlang: multiple
@@ -22,6 +22,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23838954"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie do testowania kodu w usługi Azure Functions
 

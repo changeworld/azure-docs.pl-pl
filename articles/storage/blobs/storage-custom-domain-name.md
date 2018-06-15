@@ -1,6 +1,6 @@
 ---
-title: "Konfigurowanie niestandardowej nazwy domeny dla punktu końcowego magazynu obiektów Blob platformy Azure | Dokumentacja firmy Microsoft"
-description: "Użyj portalu Azure, aby zamapować własną nazwę kanoniczną (CNAME) do punktu końcowego magazynu obiektów Blob na koncie magazynu Azure."
+title: Konfigurowanie niestandardowej nazwy domeny dla punktu końcowego magazynu obiektów Blob platformy Azure | Dokumentacja firmy Microsoft
+description: Użyj portalu Azure, aby zamapować własną nazwę kanoniczną (CNAME) do punktu końcowego magazynu obiektów Blob na koncie magazynu Azure.
 services: storage
 author: tamram
 manager: jeconnoc
@@ -13,6 +13,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29559931"
 ---
 # <a name="configure-a-custom-domain-name-for-your-blob-storage-endpoint"></a>Konfigurowanie niestandardowej nazwy domeny dla punktu końcowego usługi Blob Storage
 

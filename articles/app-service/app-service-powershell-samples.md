@@ -1,6 +1,6 @@
 ---
-title: "Przykłady programu Azure PowerShell - usługi aplikacji | Dokumentacja firmy Microsoft"
-description: "Przykłady programu Azure PowerShell - usługi aplikacji"
+title: Przykłady programu Azure PowerShell - usługi aplikacji | Dokumentacja firmy Microsoft
+description: Przykłady programu Azure PowerShell - usługi aplikacji
 services: app-service
 documentationcenter: app-service
 author: syntaxc4
@@ -18,9 +18,10 @@ ms.author: cfowler
 ms.custom: mvc
 ms.openlocfilehash: ba2bd2b185c395e54f2f085317a424a2aa1b4421
 ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/09/2018
+ms.locfileid: "27713420"
 ---
 # <a name="azure-powershell-samples"></a>Przykłady programu Azure PowerShell
 

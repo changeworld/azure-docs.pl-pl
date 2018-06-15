@@ -1,11 +1,11 @@
 ---
-title: "Jak używać tematów usługi Service Bus za pomocą języka PHP | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać tematów usługi Service Bus za pomocą języka PHP na platformie Azure."
+title: Jak używać tematów usługi Service Bus za pomocą języka PHP | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać tematów usługi Service Bus za pomocą języka PHP na platformie Azure.
 services: service-bus-messaging
 documentationcenter: php
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: faaa4bbd-f6ef-42ff-aca7-fc4353976449
 ms.service: service-bus-messaging
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23868599"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Jak używać tematów usługi Service Bus i subskrypcji za pomocą języka PHP
 

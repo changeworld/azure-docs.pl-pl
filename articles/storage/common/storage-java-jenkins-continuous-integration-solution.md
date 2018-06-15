@@ -1,6 +1,6 @@
 ---
-title: "Użycie magazynu Azure z rozwiązaniem ciągłej integracji Wpięć | Dokumentacja firmy Microsoft"
-description: "W tym samouczku pokazano, jak używać usługi obiektów blob platformy Azure jako repozytorium dla kompilacji artefakty utworzone przez rozwiązanie Wpięć ciągłej integracji."
+title: Użycie magazynu Azure z rozwiązaniem ciągłej integracji Wpięć | Dokumentacja firmy Microsoft
+description: W tym samouczku pokazano, jak używać usługi obiektów blob platformy Azure jako repozytorium dla kompilacji artefakty utworzone przez rozwiązanie Wpięć ciągłej integracji.
 services: storage
 documentationcenter: java
 author: seguler
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874136"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Korzystanie z usługi Azure Storage z rozwiązaniem ciągłej integracji Jenkins
 ## <a name="overview"></a>Omówienie

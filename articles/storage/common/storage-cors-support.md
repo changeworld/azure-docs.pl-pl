@@ -16,9 +16,10 @@ ms.date: 2/22/2017
 ms.author: cbrooks
 ms.openlocfilehash: 8d189d3ec3e6081dd37b912824f287cd75f39b35
 ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "23873975"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Współużytkowanie zasobów między źródłami (CORS) obsługę usług magazynu Azure do udostępniania
 Począwszy od wersji 2013-08-15, usług Azure storage obsługuje udostępniania zasobów między źródłami (CORS) dla usług obiektów Blob, tabeli, kolejki i plików. CORS jest funkcja HTTP, która umożliwia aplikacja sieci web w jednej domenie dostęp do zasobów w innej domenie. Przeglądarki sieci Web zaimplementować ograniczenia zabezpieczeń znany jako [zasad samego pochodzenia](http://www.w3.org/Security/wiki/Same_Origin_Policy) uniemożliwiający strony sieci web na podstawie wywoływania interfejsów API w innej domenie; Mechanizm CORS zapewnia bezpieczny sposób, aby umożliwić jednej domeny (domena pochodzenia) do wywoływania interfejsów API w innej domenie. Zobacz [specyfikacji CORS](http://www.w3.org/TR/cors/) szczegółowe informacje dotyczące mechanizmu CORS.

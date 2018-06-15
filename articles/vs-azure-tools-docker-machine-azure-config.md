@@ -1,11 +1,11 @@
 ---
-title: "Tworzenie hostów Docker na platformie Azure z maszyną Docker | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano stosowania Docker maszyny, aby utworzyć hostów docker na platformie Azure."
+title: Tworzenie hostów Docker na platformie Azure z maszyną Docker | Dokumentacja firmy Microsoft
+description: W tym artykule opisano stosowania Docker maszyny, aby utworzyć hostów docker na platformie Azure.
 services: azure-container-service
 documentationcenter: na
 author: mlearned
 manager: douge
-editor: 
+editor: ''
 ms.assetid: 7a3ff6e1-fa93-4a62-b524-ab182d2fea08
 ms.service: multiple
 ms.devlang: dotnet
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23883880"
 ---
 # <a name="create-docker-hosts-in-azure-with-docker-machine"></a>Tworzenie hostów platformy Docker na platformie Azure przy użyciu maszyny platformy Docker
 Uruchomiona [Docker](https://www.docker.com/) kontenery wymaga hosta demona docker uruchomionych maszyn wirtualnych.

@@ -1,13 +1,13 @@
 ---
-title: "Przykładowy skrypt programu PowerShell Azure - Usuń aplikację z klastra | Dokumentacja firmy Microsoft"
-description: "Azure przykładowy skrypt programu PowerShell — Usuń aplikację z klastra usługi sieć szkieletowa usług."
+title: Przykładowy skrypt programu PowerShell Azure - Usuń aplikację z klastra | Dokumentacja firmy Microsoft
+description: Azure przykładowy skrypt programu PowerShell — Usuń aplikację z klastra usługi sieć szkieletowa usług.
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
 ms.devlang: na
@@ -17,9 +17,10 @@ ms.author: ryanwi
 ms.custom: mvc
 ms.openlocfilehash: ea7037fc3655298fc4c03b8d9f988a55e42c9fe9
 ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27927866"
 ---
 # <a name="remove-an-application-from-a-service-fabric-cluster"></a>Usuń aplikację z klastra sieci szkieletowej usług
 

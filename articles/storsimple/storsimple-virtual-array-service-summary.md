@@ -1,11 +1,11 @@
 ---
-title: "Podsumowanie bloku usługi tablicy wirtualnego StorSimple | Dokumentacja firmy Microsoft"
-description: "Zawiera opis bloku podsumowania usługi Menedżer urządzenia StorSimple i wyjaśniono, jak korzystać z niego do monitorowania kondycji macierzy wirtualne StorSimple."
+title: Podsumowanie bloku usługi tablicy wirtualnego StorSimple | Dokumentacja firmy Microsoft
+description: Zawiera opis bloku podsumowania usługi Menedżer urządzenia StorSimple i wyjaśniono, jak korzystać z niego do monitorowania kondycji macierzy wirtualne StorSimple.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: manuaery
 manager: syadav
-editor: 
+editor: ''
 ms.assetid: 8a2b9a84-b0e6-48b9-b366-d16f004241a5
 ms.service: storsimple
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875739"
 ---
 # <a name="use-the-service-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>Użyj bloku podsumowania usługi Menedżera urządzeń StorSimple podłączonym do wirtualnego StorSimple
 ## <a name="overview"></a>Omówienie

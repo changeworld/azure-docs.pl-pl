@@ -1,8 +1,8 @@
 ---
-title: "Szybki start — Azure Application Insights | Microsoft Docs"
-description: "W tym artykule przedstawiono instrukcje pozwalające szybko skonfigurować aplikację internetową ASP.NET Core w celu monitorowania za pomocą usługi Application Insights"
+title: Szybki start — Azure Application Insights | Microsoft Docs
+description: W tym artykule przedstawiono instrukcje pozwalające szybko skonfigurować aplikację internetową ASP.NET Core w celu monitorowania za pomocą usługi Application Insights
 services: application-insights
-keywords: 
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/12/2017
@@ -15,6 +15,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29386388"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Rozpoczynanie monitorowania aplikacji internetowej ASP.NET Core
 

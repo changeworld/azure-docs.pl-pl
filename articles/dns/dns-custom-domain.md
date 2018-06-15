@@ -1,6 +1,6 @@
 ---
-title: "Integrowanie usługi Azure DNS z zasobów platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać usługi Azure DNS wzdłuż zapewnienie DNS dla zasobów platformy Azure."
+title: Integrowanie usługi Azure DNS z zasobów platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać usługi Azure DNS wzdłuż zapewnienie DNS dla zasobów platformy Azure.
 services: dns
 documentationcenter: na
 author: KumudD
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/22/2018
+ms.locfileid: "27994386"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Użyj usługi Azure DNS, aby określić ustawienia domeny niestandardowej dla usługi Azure
 

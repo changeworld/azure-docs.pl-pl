@@ -1,12 +1,12 @@
 ---
-title: "Często zadawane pytania dla partnerów usługi Microsoft Azure StorSimple i Program dostawcy rozwiązań chmury | Dokumentacja firmy Microsoft"
-description: "Odpowiedzi na często zadawane pytania dotyczące StorSimple i dostawcy usług Kryptograficznych dla partnerów."
+title: Często zadawane pytania dla partnerów usługi Microsoft Azure StorSimple i Program dostawcy rozwiązań chmury | Dokumentacja firmy Microsoft
+description: Odpowiedzi na często zadawane pytania dotyczące StorSimple i dostawcy usług Kryptograficznych dla partnerów.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875354"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>StorSimple programu dostawcy rozwiązań chmury: często zadawane pytania
 

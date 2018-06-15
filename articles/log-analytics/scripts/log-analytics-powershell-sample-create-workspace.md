@@ -1,13 +1,13 @@
 ---
-title: "Skrypt programu PowerShell Azure przykładowe — Tworzenie obszaru roboczego analizy dzienników | Dokumentacja firmy Microsoft"
-description: "Skrypt programu PowerShell Azure przykładowe — Tworzenie obszaru roboczego analizy dzienników do"
+title: Skrypt programu PowerShell Azure przykładowe — Tworzenie obszaru roboczego analizy dzienników | Dokumentacja firmy Microsoft
+description: Skrypt programu PowerShell Azure przykładowe — Tworzenie obszaru roboczego analizy dzienników do
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
-tags: 
-ms.assetid: 
+tags: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: sample
@@ -17,9 +17,10 @@ ms.date: 09/07/2017
 ms.author: magoedte
 ms.openlocfilehash: 30d036ae56acc3a798d2776f292243f65cbea43d
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23855439"
 ---
 # <a name="create-a-log-analytics-workspace-with-powershell"></a>Tworzenie obszaru roboczego analizy dzienników przy użyciu programu PowerShell
 
