@@ -19,6 +19,7 @@ ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26343892"
 ---
 # <a name="custom-reports-from-verizon"></a>Raporty niestandardowe from Verizon
 

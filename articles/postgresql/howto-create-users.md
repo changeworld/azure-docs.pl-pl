@@ -1,6 +1,6 @@
 ---
-title: "Tworzenie użytkowników w bazie danych Azure PostgreSQL serwera"
-description: "W tym artykule opisano sposób tworzenia nowych kont użytkowników do interakcji z bazą danych Azure dla serwera PostgreSQL."
+title: Tworzenie użytkowników w bazie danych Azure PostgreSQL serwera
+description: W tym artykule opisano sposób tworzenia nowych kont użytkowników do interakcji z bazą danych Azure dla serwera PostgreSQL.
 services: postgresql
 author: jasonwhowell
 ms.author: jasonh
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/27/2018
+ms.locfileid: "29575639"
 ---
 # <a name="create-users-in-azure-database-for-postgresql-server"></a>Tworzenie użytkowników w bazie danych Azure PostgreSQL serwera 
 W tym artykule opisano sposób tworzenia użytkowników w bazie danych Azure PostgreSQL serwera.

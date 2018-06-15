@@ -1,11 +1,11 @@
 ---
-title: "Microsoft Authenticator phone logowania — konta platformy Azure i Microsoft | Dokumentacja firmy Microsoft"
-description: "Zaloguj się do swojego konta Microsoft, zamiast wpisywania hasła przy użyciu telefonu. Ten artykuł zawiera odpowiedzi na często zadawane pytania o tej funkcji."
+title: Microsoft Authenticator phone logowania — konta platformy Azure i Microsoft | Dokumentacja firmy Microsoft
+description: Zaloguj się do swojego konta Microsoft, zamiast wpisywania hasła przy użyciu telefonu. Ten artykuł zawiera odpowiedzi na często zadawane pytania o tej funkcji.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/14/2018
+ms.locfileid: "26630395"
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>Zaloguj się przy użyciu telefonu, nie pamiętasz hasła
 

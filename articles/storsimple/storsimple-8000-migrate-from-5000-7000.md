@@ -1,11 +1,11 @@
 ---
-title: "Migracja danych na StorSimple serii 5000 7000 do 8000 serii urządzenia | Dokumentacja firmy Microsoft"
-description: "Zawiera omówienie i wymagania wstępne funkcji migracji."
+title: Migracja danych na StorSimple serii 5000 7000 do 8000 serii urządzenia | Dokumentacja firmy Microsoft
+description: Zawiera omówienie i wymagania wstępne funkcji migracji.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-ms.assetid: 
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -18,6 +18,7 @@ ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26639872"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Migracji danych z serii 5000 7000 StorSimple 8000 serii urządzenia
 

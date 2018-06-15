@@ -19,6 +19,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29692338"
 ---
 # <a name="build-complex-schedules-and-advanced-recurrence-with-azure-scheduler"></a>Tworzenie harmonogramów złożone i zaawansowane cyklu z Harmonogram systemu Azure
 

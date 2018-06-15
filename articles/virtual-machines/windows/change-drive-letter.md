@@ -1,11 +1,11 @@
 ---
-title: "Skonfigurować dysk D: dysku danych maszyny wirtualnej | Dokumentacja firmy Microsoft"
-description: "Zawiera opis sposobu zmiany liter dysków dla maszyny Wirtualnej systemu Windows tak, aby dysków D: jako dysk danych."
+title: 'Skonfigurować dysk D: dysku danych maszyny wirtualnej | Dokumentacja firmy Microsoft'
+description: 'Zawiera opis sposobu zmiany liter dysków dla maszyny Wirtualnej systemu Windows tak, aby dysków D: jako dysk danych.'
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 0867a931-0055-4e31-8403-9b38a3eeb904
 ms.service: virtual-machines-windows
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/03/2018
+ms.locfileid: "27577449"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>Użyj dysku D: jako dysk z danymi na maszynie Wirtualnej systemu Windows
 Jeśli aplikacja wymaga na potrzeby przechowywania danych na dysku D, wykonaj te instrukcje, aby użyć innej litery dysku na dysku tymczasowym. Nigdy nie używaj tymczasowych dysku do przechowywania danych, które należy zachować.

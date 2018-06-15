@@ -1,12 +1,12 @@
 ---
-title: "Omówienie programu Microsoft Azure StorSimple i rozwiązań w chmurze | Dokumentacja firmy Microsoft"
-description: "Omówienie StorSimple i dostawcy usług Kryptograficznych dla partnerów usługi StorSimple."
+title: Omówienie programu Microsoft Azure StorSimple i rozwiązań w chmurze | Dokumentacja firmy Microsoft
+description: Omówienie StorSimple i dostawcy usług Kryptograficznych dla partnerów usługi StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26367679"
 ---
 # <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>Co to jest StorSimple dla programu dostawców rozwiązań w chmurze?
 

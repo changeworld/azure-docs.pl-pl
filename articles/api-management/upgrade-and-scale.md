@@ -1,11 +1,11 @@
 ---
-title: "Uaktualnienie i skalować wystąpienia usługi Azure API Management | Dokumentacja firmy Microsoft"
-description: "W tym temacie opisano sposób uaktualniania i skalowanie wystąpienia usługi Azure API Management."
+title: Uaktualnienie i skalować wystąpienia usługi Azure API Management | Dokumentacja firmy Microsoft
+description: W tym temacie opisano sposób uaktualniania i skalowanie wystąpienia usługi Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: anneta
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
@@ -16,6 +16,7 @@ ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/12/2017
+ms.locfileid: "26658640"
 ---
 # <a name="upgrade-and-scale-an-api-management-instance"></a>Uaktualnienie i skalować wystąpienia interfejsu API zarządzania 
 

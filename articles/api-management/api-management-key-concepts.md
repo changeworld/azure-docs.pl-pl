@@ -1,11 +1,11 @@
 ---
-title: "Przegląd i kluczowe pojęcia usługi Azure API Management | Microsoft Docs"
-description: "Poznaj interfejsy API, produkty, role, grupy i inne ważne pojęcia dotyczące usługi API Management."
+title: Przegląd i kluczowe pojęcia usługi Azure API Management | Microsoft Docs
+description: Poznaj interfejsy API, produkty, role, grupy i inne ważne pojęcia dotyczące usługi API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29712376"
 ---
 # <a name="what-is-api-management"></a>Co to jest API Management?
 

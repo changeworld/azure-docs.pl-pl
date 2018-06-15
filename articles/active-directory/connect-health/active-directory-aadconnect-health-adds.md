@@ -1,8 +1,8 @@
 ---
-title: "Używanie programu Azure AD Connect Health z usługami AD DS | Microsoft Docs"
-description: "Jest to strona programu Azure AD Connect Health, na której omówiono monitorowanie usług AD DS."
+title: Używanie programu Azure AD Connect Health z usługami AD DS | Microsoft Docs
+description: Jest to strona programu Azure AD Connect Health, na której omówiono monitorowanie usług AD DS.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: arluca
 manager: mtillman
 editor: curtand
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26614417"
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>Używanie programu Azure AD Connect Health z usługami AD DS
 Poniższa dokumentacja dotyczy monitorowania Usług domenowych Active Directory przy użyciu programu Azure AD Connect Health. Obsługiwane wersje usługi AD DS: Windows Server 2008 R2, Windows Server 2012,Windows Server 2012 R2 i Windows Server 2016.

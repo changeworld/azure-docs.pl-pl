@@ -1,11 +1,11 @@
 ---
-title: "Jak używać usługi poczty e-mail SendGrid (.NET) | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wysłać wiadomość e-mail z usługi poczty e-mail SendGrid na platformie Azure. Przykłady kodu napisane w języku C# i używają interfejsu API platformy .NET."
-services: 
+title: Jak używać usługi poczty e-mail SendGrid (.NET) | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wysłać wiadomość e-mail z usługi poczty e-mail SendGrid na platformie Azure. Przykłady kodu napisane w języku C# i używają interfejsu API platformy .NET.
+services: ''
 documentationcenter: .net
 author: thinkingserious
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 21bf4028-9046-476b-9799-3d3082a0f84c
 ms.service: multiple
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/23/2017
+ms.locfileid: "27534859"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>Sposób wysyłania poczty E-mail przy użyciu SendGrid z platformy Azure
 ## <a name="overview"></a>Przegląd

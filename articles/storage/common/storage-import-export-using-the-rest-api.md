@@ -1,11 +1,11 @@
 ---
-title: "Przy użyciu interfejsu API REST usługi Import/Eksport Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, gdzie można znaleźć zasobów dla za pomocą usługi Import/Eksport Azure interfejsu API REST, w tym zarówno instrukcje, jak i odwołanie do materiałów."
+title: Przy użyciu interfejsu API REST usługi Import/Eksport Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, gdzie można znaleźć zasobów dla za pomocą usługi Import/Eksport Azure interfejsu API REST, w tym zarówno instrukcje, jak i odwołanie do materiałów.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 233f80e9-2e7f-48e0-9639-5c7785e7d743
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/14/2017
+ms.locfileid: "26690180"
 ---
 # <a name="using-the-azure-importexport-service-rest-api"></a>Korzystanie z interfejsu API REST usługi Azure Import/Export
 

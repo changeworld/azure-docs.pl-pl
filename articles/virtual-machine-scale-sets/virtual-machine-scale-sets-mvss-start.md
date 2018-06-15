@@ -1,11 +1,11 @@
 ---
-title: "Więcej informacji na temat szablonów zestaw skali maszyny wirtualnej | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć szablon zestaw minimalnej wielkości zestawy skalowania maszyny wirtualnej"
+title: Więcej informacji na temat szablonów zestaw skali maszyny wirtualnej | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć szablon zestaw minimalnej wielkości zestawy skalowania maszyny wirtualnej
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
@@ -20,6 +20,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26781259"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Więcej informacji na temat szablonów zestaw skali maszyny wirtualnej
 [Szablony usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) to doskonały sposób wdrażania grup powiązanych zasobów. Tej serii samouczek przedstawia sposób tworzenia szablonu zestaw minimalnej wielkości i sposobu modyfikowania ten szablon służy do potrzeb różnych scenariuszy. Wszystkie przykłady pochodzą od tego [repozytorium GitHub](https://github.com/gatneil/mvss). 

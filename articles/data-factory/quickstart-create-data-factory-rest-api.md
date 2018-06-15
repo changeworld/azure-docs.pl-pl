@@ -18,6 +18,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31593342"
 ---
 # <a name="create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Tworzenie usługi Azure Data Factory i potoku przy użyciu interfejsu API REST
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

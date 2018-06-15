@@ -1,12 +1,12 @@
 ---
-title: "Transfer danych za pomocą Biblioteka przenoszenia danych magazynu Microsoft Azure | Dokumentacja firmy Microsoft"
-description: "Biblioteka przenoszenia danych umożliwia przenoszenie lub kopiowanie danych do lub z obiektu blob i zawartości pliku. Kopiowanie danych do magazynu Azure z lokalnych plików lub kopiowania danych w ramach urządzeń magazynujących lub między kontami magazynu. Łatwo przeprowadzić migrację danych do usługi Azure Storage."
+title: Transfer danych za pomocą Biblioteka przenoszenia danych magazynu Microsoft Azure | Dokumentacja firmy Microsoft
+description: Biblioteka przenoszenia danych umożliwia przenoszenie lub kopiowanie danych do lub z obiektu blob i zawartości pliku. Kopiowanie danych do magazynu Azure z lokalnych plików lub kopiowania danych w ramach urządzeń magazynujących lub między kontami magazynu. Łatwo przeprowadzić migrację danych do usługi Azure Storage.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: seguler
 manager: jahogg
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/02/2018
+ms.locfileid: "27564743"
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Transfer danych za pomocą Biblioteka przenoszenia danych magazynu Microsoft Azure
 

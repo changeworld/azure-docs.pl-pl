@@ -1,8 +1,8 @@
 ---
-title: "Omówienie pakietu Operations Management Suite (OMS) | Microsoft Docs"
-description: "Pakiet Microsoft Operations Management Suite (OMS) to oparte na chmurze rozwiązanie firmy Microsoft do zarządzania systemami IT, które ułatwia zarządzanie infrastrukturą lokalną i chmurową oraz jej ochronę.  W tym artykule przedstawiono zalety pakietu OMS, opisano różne usługi i oferty w ramach pakietu OMS oraz umieszczono linki do szczegółowych treści na ich temat."
+title: Omówienie pakietu Operations Management Suite (OMS) | Microsoft Docs
+description: Pakiet Microsoft Operations Management Suite (OMS) to oparte na chmurze rozwiązanie firmy Microsoft do zarządzania systemami IT, które ułatwia zarządzanie infrastrukturą lokalną i chmurową oraz jej ochronę.  W tym artykule przedstawiono zalety pakietu OMS, opisano różne usługi i oferty w ramach pakietu OMS oraz umieszczono linki do szczegółowych treści na ich temat.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/13/2017
+ms.locfileid: "26684018"
 ---
 # <a name="what-is-operations-management-suite-oms"></a>Co to jest pakiet Operations Management Suite (OMS)?
 Ten artykuł zawiera wprowadzenie do pakietu Operations Management Suite (OMS), łącznie z krótkim omówieniem korzyści biznesowych związanych z korzystaniem z tego pakietu, zawartych w nim usług i rozwiązań do zarządzania oraz ofert obejmujących różne usługi i rozwiązania.  Dołączono linki do szczegółowej dokumentacji dotyczące wdrażania i używania poszczególnych usług oraz rozwiązań.

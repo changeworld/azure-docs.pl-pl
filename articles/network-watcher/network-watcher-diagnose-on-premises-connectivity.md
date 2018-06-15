@@ -1,11 +1,11 @@
 ---
-title: "Łączność Diagnozuj lokalnej za pośrednictwem bramy sieci VPN z obserwatora sieciowego Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób diagnozowania łączność z lokalnymi za pośrednictwem bramy sieci VPN z rozwiązywaniem problemów zasobów Azure obserwatora sieciowego."
+title: Łączność Diagnozuj lokalnej za pośrednictwem bramy sieci VPN z obserwatora sieciowego Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób diagnozowania łączność z lokalnymi za pośrednictwem bramy sieci VPN z rozwiązywaniem problemów zasobów Azure obserwatora sieciowego.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: aeffbf3d-fd19-4d61-831d-a7114f7534f9
 ms.service: network-watcher
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26374206"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnozowanie łączność z lokalnymi za pośrednictwem bramy sieci VPN
 

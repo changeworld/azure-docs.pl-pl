@@ -1,8 +1,8 @@
 ---
-title: "Przy użyciu Terraform w usłudze Azure"
-description: "Wprowadzenie do korzystania z Terraform do program w wersji i wdrażanie infrastruktury platformy Azure."
+title: Przy użyciu Terraform w usłudze Azure
+description: Wprowadzenie do korzystania z Terraform do program w wersji i wdrażanie infrastruktury platformy Azure.
 ms.service: virtual-machines-linux
-keywords: "terraform, devops, przegląd, planowanie, zastosowanie oraz automatyzacji"
+keywords: terraform, devops, przegląd, planowanie, zastosowanie oraz automatyzacji
 author: binderjoe
 ms.author: jbinder
 ms.date: 10/19/2017
@@ -12,6 +12,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26364474"
 ---
 # <a name="terraform-with-azure"></a>Terraform z platformy Azure
 

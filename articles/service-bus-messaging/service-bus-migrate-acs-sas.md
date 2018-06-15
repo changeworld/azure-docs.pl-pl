@@ -1,11 +1,11 @@
 ---
-title: "Migrowanie z usługi kontroli dostępu Active Directory platformy Azure do autoryzacji sygnatura dostępu współdzielonego | Dokumentacja firmy Microsoft"
-description: "Aplikacje można migrować z usługi kontroli dostępu do sygnatury dostępu Współdzielonego"
+title: Migrowanie z usługi kontroli dostępu Active Directory platformy Azure do autoryzacji sygnatura dostępu współdzielonego | Dokumentacja firmy Microsoft
+description: Aplikacje można migrować z usługi kontroli dostępu do sygnatury dostępu Współdzielonego
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/22/2017
+ms.locfileid: "27160268"
 ---
 # <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Migrowanie z usługi kontroli dostępu Active Directory platformy Azure do autoryzacji sygnatura dostępu współdzielonego
 

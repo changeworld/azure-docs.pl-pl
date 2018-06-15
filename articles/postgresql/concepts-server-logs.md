@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29691097"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Dzienników serwera w bazie danych Azure PostgreSQL 
 Bazy danych platformy Azure dla PostgreSQL generuje zapytań i błąd dzienników. Jednak dostęp do dzienników transakcji nie jest obsługiwany. Dzienniki zapytania i błąd może służyć do identyfikowania, rozwiązywania, nieoptymalne wydajności i błędów konfiguracji. Aby uzyskać więcej informacji, zobacz [raportowanie błędów i rejestrowanie](https://www.postgresql.org/docs/9.6/static/runtime-config-logging.html).

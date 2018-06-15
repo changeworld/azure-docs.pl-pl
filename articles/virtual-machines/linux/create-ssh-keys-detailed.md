@@ -20,6 +20,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/20/2018
+ms.locfileid: "31600346"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Szczegółowe kroki: tworzenie i zarządzanie nimi kluczy SSH do uwierzytelniania Maszynę wirtualną systemu Linux na platformie Azure 
 Przy użyciu pary kluczy bezpiecznej powłoki (SSH) można utworzyć maszyny wirtualnej systemu Linux na platformie Azure, który domyślnie przy użyciu kluczy SSH do uwierzytelnienia, eliminując konieczność hasła do logowania. Maszyny wirtualne utworzone za pomocą portalu Azure, interfejsu wiersza polecenia Azure Resource Manager szablonów lub innych narzędzi może zawierać klucz publiczny SSH jako część wdrożenia, który konfiguruje uwierzytelniania klucza SSH dla połączenia SSH. 

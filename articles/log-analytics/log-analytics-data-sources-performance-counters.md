@@ -1,8 +1,8 @@
 ---
-title: "Zbieranie i analizowanie liczniki wydajności w Azure Log Analytics | Dokumentacja firmy Microsoft"
-description: "Liczniki wydajności są zbierane przez analizy dzienników do analizowania wydajności agentów systemu Windows i Linux.  W tym artykule opisano sposób konfigurowania kolekcji liczników wydajności dla obu systemu Windows i Linux agentów, ich szczegóły są przechowywane w obszarze roboczym i jak analizować je w portalu Azure."
+title: Zbieranie i analizowanie liczniki wydajności w Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Liczniki wydajności są zbierane przez analizy dzienników do analizowania wydajności agentów systemu Windows i Linux.  W tym artykule opisano sposób konfigurowania kolekcji liczników wydajności dla obu systemu Windows i Linux agentów, ich szczegóły są przechowywane w obszarze roboczym i jak analizować je w portalu Azure.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26783166"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>System Windows i Linux źródła danych wydajności w analizy dzienników
 Liczniki wydajności w systemie Windows i Linux zapewniają wgląd w wydajności składników sprzętu, systemów operacyjnych i aplikacji.  Analizy dzienników można zebrać liczników wydajności odstępach częste do analizy w pobliżu czasu rzeczywistego (NRT) oprócz agregowanie danych wydajności dłuższy okres analizy i raportowania.

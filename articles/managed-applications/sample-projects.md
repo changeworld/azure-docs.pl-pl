@@ -1,6 +1,6 @@
 ---
-title: "Azure zarządzanych aplikacji przykładowych projektach | Dokumentacja firmy Microsoft"
-description: "Zawiera podsumowanie przykładowych projektach dostępna dla platformy Azure zarządzanych aplikacji"
+title: Azure zarządzanych aplikacji przykładowych projektach | Dokumentacja firmy Microsoft
+description: Zawiera podsumowanie przykładowych projektach dostępna dla platformy Azure zarządzanych aplikacji
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -15,9 +15,10 @@ ms.date: 12/15/2017
 ms.author: tomfitz
 ms.openlocfilehash: 9acc769355b44628ca617550e44c9ed9724cfdcb
 ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/18/2017
+ms.locfileid: "26753064"
 ---
 # <a name="sample-projects-for-azure-managed-applications"></a>Przykładowe projekty dla platformy Azure zarządzanych aplikacji
 

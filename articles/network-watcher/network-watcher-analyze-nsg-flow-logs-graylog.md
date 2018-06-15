@@ -1,13 +1,13 @@
 ---
-title: "Analizowanie dzienników przepływu grupy zabezpieczeń sieci platformy Azure - Graylog | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zarządzać i analizować dzienniki przepływu grupy zabezpieczeń sieci na platformie Azure przy użyciu obserwatora sieciowego i Graylog."
+title: Analizowanie dzienników przepływu grupy zabezpieczeń sieci platformy Azure - Graylog | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zarządzać i analizować dzienniki przepływu grupy zabezpieczeń sieci na platformie Azure przy użyciu obserwatora sieciowego i Graylog.
 services: network-watcher
 documentationcenter: na
 author: mareat
 manager: vitinnan
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26639288"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Zarządzanie danymi i analizowanie dzienników przepływu grupy zabezpieczeń sieci na platformie Azure przy użyciu obserwatora sieciowego i Graylog
 

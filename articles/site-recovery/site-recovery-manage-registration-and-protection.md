@@ -1,6 +1,6 @@
 ---
-title: "Usuń serwery i Wyłącz ochronę | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano, jak wyrejestrować serwery z magazynu usługi Site Recovery i wyłączyć ochrony dla maszyn wirtualnych i serwerów fizycznych."
+title: Usuń serwery i Wyłącz ochronę | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak wyrejestrować serwery z magazynu usługi Site Recovery i wyłączyć ochrony dla maszyn wirtualnych i serwerów fizycznych.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29806419"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Usuwanie serwerów i wyłączanie ochrony
 

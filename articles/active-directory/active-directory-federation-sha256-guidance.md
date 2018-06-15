@@ -1,12 +1,12 @@
 ---
-title: "Zmień algorytm wyznaczania wartości skrótu podpisu dla zaufania jednostki uzależnionej usługi Office 365 | Dokumentacja firmy Microsoft"
-description: "Ta strona zawiera wskazówki dotyczące zmieniania algorytm SHA relacja zaufania federacji z usługą Office 365"
-keywords: "SHA1, SHA256, usługi O365, federacyjnych, aadconnect, usług AD FS, usługi ad fs, sha zmian relacji zaufania federacji, zaufanie jednostki uzależnionej"
+title: Zmień algorytm wyznaczania wartości skrótu podpisu dla zaufania jednostki uzależnionej usługi Office 365 | Dokumentacja firmy Microsoft
+description: Ta strona zawiera wskazówki dotyczące zmieniania algorytm SHA relacja zaufania federacji z usługą Office 365
+keywords: SHA1, SHA256, usługi O365, federacyjnych, aadconnect, usług AD FS, usługi ad fs, sha zmian relacji zaufania federacji, zaufanie jednostki uzależnionej
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: anandyadavmsft
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: cf6880e2-af78-4cc9-91bc-b64de4428bbd
 ms.service: active-directory
 ms.workload: identity
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26598965"
 ---
 # <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>Zmień algorytm wyznaczania wartości skrótu podpisu dla usługi Office 365 zaufanie jednostki uzależnionej
 ## <a name="overview"></a>Omówienie

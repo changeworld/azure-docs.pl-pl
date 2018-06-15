@@ -1,7 +1,7 @@
 ---
-title: "Szybki start: Przesyłanie przepływu pracy przy użyciu plików wejściowych FASTQ | Microsoft Docs"
+title: 'Szybki start: Przesyłanie przepływu pracy przy użyciu plików wejściowych FASTQ | Microsoft Docs'
 titleSuffix: Azure
-description: "W tym poradniku Szybki start założono, że użytkownik ma zainstalowanego klienta msgen i pomyślnie uruchomił przykładowe dane za pośrednictwem usługi."
+description: W tym poradniku Szybki start założono, że użytkownik ma zainstalowanego klienta msgen i pomyślnie uruchomił przykładowe dane za pośrednictwem usługi.
 services: microsoft-genomics
 author: grhuynh
 manager: jhubbard
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/13/2017
+ms.locfileid: "26684487"
 ---
 # <a name="submit-a-workflow-using-fastq-file-inputs"></a>Przesyłanie przepływu pracy przy użyciu plików wejściowych FASTQ
 

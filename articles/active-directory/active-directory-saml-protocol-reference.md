@@ -1,11 +1,11 @@
 ---
-title: "Referencyjne protokołu SAML usługi Azure AD | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera omówienie profile rejestracji jednokrotnej i jednym SAML Sign-Out w usłudze Azure Active Directory."
+title: Referencyjne protokołu SAML usługi Azure AD | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera omówienie profile rejestracji jednokrotnej i jednym SAML Sign-Out w usłudze Azure Active Directory.
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 88125cfc-45c1-448b-9903-a629d8f31b01
 ms.service: active-directory
 ms.workload: identity
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26615778"
 ---
 # <a name="how-azure-active-directory-uses-the-saml-protocol"></a>Jak Azure Active Directory korzysta z protokołu SAML
 Azure Active Directory (Azure AD) protokół używa SAML 2.0 na potrzeby aplikacji zapewnić jednego środowiska logowania jednokrotnego dla użytkowników. [Rejestracji jednokrotnej](active-directory-single-sign-on-protocol-reference.md) i [jednym wylogowania](active-directory-single-sign-out-protocol-reference.md) SAML profilów usługi Azure AD wyjaśniają, jak SAML potwierdzeń, protokołów i powiązania są używane w usługę dostawcy tożsamości.

@@ -13,6 +13,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31600912"
 ---
 # <a name="app-service-documentation"></a>Dokumentacja usługi App Service
 Usługa Azure App Service umożliwia tworzenie i hostowanie aplikacji internetowych w wybranym języku programowania bez zarządzania infrastrukturą, językiem i środowiskiem uruchomieniowym platformy internetowej. Oferuje automatyczne skalowanie i wysoką dostępność, obsługuje zarówno system Windows, jak i system Linux, a także umożliwia używanie wdrożeń zautomatyzowanych z usług GitHub i Visual Studio Team Services oraz dowolnych repozytoriów Git. Dowiedz się, jak używać usługi Azure App Service, korzystając z przewodników Szybki start, samouczków i przykładów.
