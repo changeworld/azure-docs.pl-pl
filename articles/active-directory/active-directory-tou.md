@@ -2,7 +2,7 @@
 title: Warunki użytkowania usługi Azure Active Directory | Microsoft Docs
 description: Warunki użytkowania usługi Azure AD pozwalają administratorom i firmom udostępnić użytkownikom warunki użytkowania usług Azure AD.
 services: active-directory
-author: billmath
+author: rolyon
 manager: mtillman
 editor: ''
 ms.assetid: d55872ef-7e45-4de5-a9a0-3298e3de3565
@@ -11,14 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
+ms.component: compliance-reports
 ms.date: 05/15/2018
-ms.author: billmath
-ms.openlocfilehash: 428d70474ba928a9e0c774aeb16395ef6a4cea2e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: rolyon
+ms.openlocfilehash: 8fea445a4cd02da3cf3c3239a119b491327abf54
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34192959"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234121"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkcja Warunki użytkowania usługi Azure Active Directory
 Warunki użytkowania usługi Azure AD pozwalają organizacjom przedstawiać informacje użytkownikom w prosty sposób.  Dzięki tej prezentacji użytkownicy mogą zapoznać się z istotnymi zastrzeżeniami do wymagań prawnych lub wymagań dotyczących zgodności.
@@ -44,7 +45,7 @@ Aby skonfigurować warunki użytkowania usługi Azure AD, wykonaj następujące 
 3. Wyświetl pulpit nawigacyjny warunków użytkowania usługi Azure AD na stronie [https://aka.ms/catou](https://aka.ms/catou).
 
 >[!IMPORTANT]
->Kontrole zasad dostępu warunkowego (w tym warunki użytkowania) nie obsługują wymuszania dla kont usługi.  Zaleca się wykluczenie wszystkich kont usług z zasad dostępu warunkowego.
+>Kontrolki zasad dostępu warunkowego (w tym warunki użytkowania) nie obsługują wymuszania dla kont usługi.  Zaleca się wykluczenie wszystkich kont usług z zasad dostępu warunkowego.
 
 ## <a name="add-company-terms-of-use"></a>Dodawanie firmowych warunków użytkowania
 Po zakończeniu pracy nad zawartością warunków użytkowania, dodaj je za pomocą poniższej procedury.

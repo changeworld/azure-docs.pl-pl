@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360476"
 ---
 # <a name="microsoft-cloud-services-and-network-security"></a>Chmury Microsoft bezpieczeństwa usług i sieci
 Usługi w chmurze firmy Microsoft świadczenia usług hiperskali i infrastruktury, funkcje klasy korporacyjnej oraz wiele opcji na potrzeby łączności hybrydowej. Klienci mogą wybrać dostępu do tych usług za pośrednictwem Internetu lub z usługi Azure ExpressRoute, który zapewnia łączność w sieci prywatnej. Platforma Microsoft Azure umożliwia klientom bezproblemowo rozszerzają infrastruktury do chmury i tworzenia wielu architektur. Ponadto stron trzecich można włączyć udoskonalone funkcje oferty usług zabezpieczeń oraz urządzenia wirtualnego. Ten dokument zawiera omówienie architektury problemów, które klientów należy wziąć pod uwagę podczas korzystania z usługi w chmurze firmy Microsoft dostępne za pośrednictwem usługi ExpressRoute i zabezpieczeń. Obejmuje ona również tworzenia bardziej bezpieczne usług w sieci wirtualnych platformy Azure.

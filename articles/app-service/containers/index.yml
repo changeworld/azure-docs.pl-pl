@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Dokumentacja usługi App Service w systemie Linux"
+title: Dokumentacja usługi App Service w systemie Linux
 metadata:
   document_id: 2239df92-8506-4ee4-b5b0-9ab512c487b2
-  title: "Dokumentacja funkcji Azure Web App for Containers — samouczki i dokumentacja interfejsu API"
+  title: Dokumentacja funkcji Azure Web App for Containers — samouczki i dokumentacja interfejsu API
   meta.description: Learn how to use App Service on Linux to build and host websites and web applications leveraging Docker.
   services: app-service
   author: syntaxc4
@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: pl-PL
   ms.lasthandoff: 11/03/2017
+  ms.locfileid: "23956450"
 sections:
 - title: 5-minutowe przewodniki Szybki start
   items:
@@ -50,7 +51,7 @@ sections:
       text: Docker
       href: https://docs.microsoft.com/azure/app-service/containers/quickstart-custom-docker-image
   - type: paragraph
-    text: "Dowiedz się, jak przeprowadzać ciągłe wdrażanie:"
+    text: 'Dowiedz się, jak przeprowadzać ciągłe wdrażanie:'
   - type: list
     style: icon48
     items:
@@ -61,18 +62,18 @@ sections:
 - title: Samouczki krok po kroku
   items:
   - type: paragraph
-    text: "Dowiedz się, jak wdrożyć i monitorować bezpieczną aplikację internetową za pomocą usługi App Service w systemie Linux oraz jak zarządzać tą aplikacją"
+    text: Dowiedz się, jak wdrożyć i monitorować bezpieczną aplikację internetową za pomocą usługi App Service w systemie Linux oraz jak zarządzać tą aplikacją
   - type: list
     style: ordered
     items:
-    - html: "Tworzenie aplikacji za pomocą <a href=\"azure/app-service/containers/tutorial-dotnetcore-sqldb-app\">programu .NET Core z usługą Azure SQL DB</a> lub <a href=\"azure/app-service/containers/tutorial-nodejs-mongodb-app\">platformy Node.js z usługą MongoDB</a>"
-    - html: "<a href=\"/azure/app-service-web/app-service-web-tutorial-custom-domain\">Mapowanie istniejącej domeny niestandardowej na aplikację</a>"
-    - html: "<a href=\"/azure/app-service-web/app-service-web-tutorial-custom-SSL\">Powiązywanie istniejącego certyfikatu SSL z aplikacją</a>"
-    - html: "<a href=\"/azure/app-service-web/app-service-web-tutorial-content-delivery-network\">Dodawanie usługi CDN do aplikacji</a>"
-- title: "Przykłady"
+    - html: Tworzenie aplikacji za pomocą <a href="azure/app-service/containers/tutorial-dotnetcore-sqldb-app">programu .NET Core z usługą Azure SQL DB</a> lub <a href="azure/app-service/containers/tutorial-nodejs-mongodb-app">platformy Node.js z usługą MongoDB</a>
+    - html: <a href="/azure/app-service-web/app-service-web-tutorial-custom-domain">Mapowanie istniejącej domeny niestandardowej na aplikację</a>
+    - html: <a href="/azure/app-service-web/app-service-web-tutorial-custom-SSL">Powiązywanie istniejącego certyfikatu SSL z aplikacją</a>
+    - html: <a href="/azure/app-service-web/app-service-web-tutorial-content-delivery-network">Dodawanie usługi CDN do aplikacji</a>
+- title: Przykłady
   items:
   - type: paragraph
-    text: "Znajdowanie skryptów umożliwiających zarządzanie typowymi zadaniami."
+    text: Znajdowanie skryptów umożliwiających zarządzanie typowymi zadaniami.
   - type: list
     style: unordered
     className: spaced noBullet
@@ -87,7 +88,7 @@ sections:
     items:
     - title: Wiersz polecenia
       html: <p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p><p><a href="/cli/azure/appservice">Interfejs wiersza polecenia platformy Azure 2.0</a></p>
-    - title: "Języki"
+    - title: Języki
       html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/">Java</a></p>
     - title: REST
       html: <p><a href="/rest/api/appservice">Dokumentacja interfejsu API REST</a></p>
