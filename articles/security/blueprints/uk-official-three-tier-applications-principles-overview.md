@@ -1,6 +1,6 @@
 ---
-title: "UK oficjalne trójwarstwowa automatyzacji aplikacji sieci Web — Omówienie"
-description: "UK oficjalne trójwarstwowa automatyzacji aplikacji sieci Web — Omówienie"
+title: UK oficjalne trójwarstwowa automatyzacji aplikacji sieci Web — Omówienie
+description: UK oficjalne trójwarstwowa automatyzacji aplikacji sieci Web — Omówienie
 services: security
 documentationcenter: na
 author: jomolesk
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/11/2018
+ms.locfileid: "29151382"
 ---
 # <a name="national-cyber-security-centre-cloud-security-principles-overview"></a>Omówienie zasad zabezpieczeń chmury Centrum zabezpieczeń przez National
 

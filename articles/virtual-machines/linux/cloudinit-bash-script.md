@@ -1,11 +1,11 @@
 ---
-title: "Użyj init chmury, aby uruchomić skrypt bash w Maszynę wirtualną systemu Linux na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Jak używać init chmury do uruchomienia skryptu bash w Maszynę wirtualną systemu Linux podczas tworzenia 2.0 interfejsu wiersza polecenia platformy Azure"
+title: Użyj init chmury, aby uruchomić skrypt bash w Maszynę wirtualną systemu Linux na platformie Azure | Dokumentacja firmy Microsoft
+description: Jak używać init chmury do uruchomienia skryptu bash w Maszynę wirtualną systemu Linux podczas tworzenia 2.0 interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rickstercdn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29123722"
 ---
 # <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>Uruchom skrypt bash w Maszynę wirtualną systemu Linux na platformie Azure za pomocą init chmury
 W tym artykule przedstawiono sposób użycia [init chmury](https://cloudinit.readthedocs.io) istniejące bash do uruchamiania skryptu na maszynie wirtualnej systemu Linux (VM) lub zestawach skali maszyn wirtualnych (VMSS) na inicjowanie obsługi administracyjnej czas na platformie Azure. Skrypty te init chmury są uruchamiane po pierwszym uruchomieniu komputera po zasoby zostały udostępnione przez platformę Azure. Aby uzyskać więcej informacji na temat chmury inicjowania działania natywnie Azure i obsługiwanych dystrybucjach systemu Linux, zobacz [init chmury — omówienie](using-cloud-init.md)

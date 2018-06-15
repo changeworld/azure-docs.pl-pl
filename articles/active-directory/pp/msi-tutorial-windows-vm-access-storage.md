@@ -1,8 +1,8 @@
 ---
-title: "Umożliwia dostęp do usługi Azure Storage MSI maszyny Wirtualnej systemu Windows"
-description: "Samouczek, który przeprowadzi Cię przez proces przy użyciu systemu Windows maszyny Wirtualnej zarządzane usługi tożsamości (MSI), dostęp do magazynu Azure."
+title: Umożliwia dostęp do usługi Azure Storage MSI maszyny Wirtualnej systemu Windows
+description: Samouczek, który przeprowadzi Cię przez proces przy użyciu systemu Windows maszyny Wirtualnej zarządzane usługi tożsamości (MSI), dostęp do magazynu Azure.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28984837"
 ---
 # <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>Maszyna wirtualna zarządzane tożsamości usługi systemu Windows umożliwia dostęp do usługi Azure Storage za pomocą klucza dostępu
 

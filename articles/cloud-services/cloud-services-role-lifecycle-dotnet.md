@@ -1,11 +1,11 @@
 ---
-title: "Obsługi zdarzeń cyklu życia usługi w chmurze | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak metod cyklu życia roli usługi w chmurze można użyć w .NET"
+title: Obsługi zdarzeń cyklu życia usługi w chmurze | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak metod cyklu życia roli usługi w chmurze można użyć w .NET
 services: cloud-services
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 39b30acd-57b9-48b7-a7c4-40ea3430e451
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23843448"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Dostosowywanie cyklu życia roli Sieć Web lub Proces roboczy na platformie .NET
 Podczas tworzenia roli procesu roboczego, można rozszerzyć [RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx) klasy, która udostępnia metody pominięcia, które pozwalają na odpowiadanie na zdarzenia cyklu życia. Dla ról sieć web tej klasy jest opcjonalny, dlatego możesz korzystać na odpowiadanie na zdarzenia cyklu życia.

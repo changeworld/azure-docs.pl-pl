@@ -1,12 +1,12 @@
 ---
-title: "Zoptymalizować przepływność sieci maszyny Wirtualnej | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zoptymalizować przepływność sieci maszyny wirtualnej platformy Azure."
+title: Zoptymalizować przepływność sieci maszyny Wirtualnej | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zoptymalizować przepływność sieci maszyny wirtualnej platformy Azure.
 services: virtual-network
 documentationcenter: na
 author: steveesp
 manager: Gerald DeGrace
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29132895"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Zoptymalizować przepływność sieci maszyn wirtualnych platformy Azure
 

@@ -1,12 +1,12 @@
 ---
-title: "Azure stosu zintegrowane systemy modelami połączenia | Dokumentacja firmy Microsoft"
-description: "Określ decyzje dotyczące stosu Azure wielowęzłowego dotyczących planowania wdrażania."
+title: Azure stosu zintegrowane systemy modelami połączenia | Dokumentacja firmy Microsoft
+description: Określ decyzje dotyczące stosu Azure wielowęzłowego dotyczących planowania wdrażania.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29118792"
 ---
 # <a name="azure-stack-integrated-systems-connection-models"></a>Azure stosu zintegrowane systemy modelami połączenia
 Jeśli interesuje Cię systemu Azure stosu zintegrowane, musisz poznać [kilka kwestii integracji datacenter](azure-stack-datacenter-integration.md) dla wdrożenia stosu Azure określić, jak system zmieści się w centrum danych. Ponadto należy określić dokładnie sposób będzie integracji stosu Azure do środowiska chmury hybrydowej. Ten artykuł zawiera omówienie tych istotnych decyzji, w tym połączeniu z platformą Azure, Magazyn tożsamości i decyzje modelu rozliczeń.

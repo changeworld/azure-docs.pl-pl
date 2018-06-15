@@ -1,11 +1,11 @@
 ---
-title: "Włącz inspekcję i wykrywania zagrożeń baz danych SQL w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft"
-description: "Ten dokument przedstawia sposób wykonania zalecenia Centrum zabezpieczeń Azure ** włączyć inspekcję i wykrywania zagrożeń na baz danych SQL **."
+title: Włącz inspekcję i wykrywania zagrożeń baz danych SQL w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
+description: Ten dokument przedstawia sposób wykonania zalecenia Centrum zabezpieczeń Azure ** włączyć inspekcję i wykrywania zagrożeń na baz danych SQL **.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 224b6755-2b36-4ecd-9af8-139a198e0df1
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866205"
 ---
 # <a name="enable-auditing-and-threat-detection-on-sql-databases-in-azure-security-center"></a>Włącz inspekcję i wykrywania zagrożeń baz danych SQL w Centrum zabezpieczeń Azure
 Centrum zabezpieczeń Azure zostanie zaleca włączenie inspekcji i wykrywania zagrożeń dla wszystkich baz danych SQL, jeśli inspekcja i wykrywanie zagrożeń nie jest jeszcze włączone. Inspekcja i jakie wykrywania pomaga zachować zgodność z przepisami, analizować aktywność bazy danych oraz uzyskać wgląd w odchylenia i anomalie, które mogą oznaczać problemy biznesowe lub podejrzane naruszenia zabezpieczeń.

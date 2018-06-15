@@ -18,6 +18,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: pl-PL
   ms.lasthandoff: 04/19/2018
+  ms.locfileid: "31598765"
 abstract:
   description: Dowiedz się, jak korzystać z usługi Azure Machine Learning, która obejmuje w pełni zarządzane usługi do tworzenia i wdrażania modeli uczenia maszynowego i sztucznej inteligencji w chmurze oraz zarządzania nimi. Samouczki, przewodniki Szybki Start, dokumentacja i przykłady przedstawiają sposoby tworzenia i wdrażania modeli dla dowolnej aplikacji.
 sections:

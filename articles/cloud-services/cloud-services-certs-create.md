@@ -1,11 +1,11 @@
 ---
-title: "Usługi i certyfikaty zarządzania w chmurze | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie tworzenia i używania certyfikatów przy użyciu systemu Microsoft Azure"
+title: Usługi i certyfikaty zarządzania w chmurze | Dokumentacja firmy Microsoft
+description: Informacje o sposobie tworzenia i używania certyfikatów przy użyciu systemu Microsoft Azure
 services: cloud-services
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fc70d00d-899b-4771-855f-44574dc4bfc6
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29969206"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Omówienie certyfikatów dla usług w chmurze Azure
 Certyfikaty są używane na platformie Azure do usługi w chmurze ([usługi certyfikatów](#what-are-service-certificates)) i do uwierzytelniania z interfejsem API zarządzania ([certyfikaty zarządzania](#what-are-management-certificates)). Ten temat zawiera ogólne omówienie obu typów certyfikatów, jak do [utworzyć](#create) i [wdrażanie](#deploy) je do platformy Azure.

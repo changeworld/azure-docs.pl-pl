@@ -19,6 +19,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31597371"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Zbieranie danych w analizy dzienników z elementu runbook usługi Automatyzacja Azure
 Można zbierać znaczną ilość danych analizy dzienników z różnych źródeł w tym [źródeł danych](../log-analytics/log-analytics-data-sources.md) na agentach, a także [dane zbierane z platformy Azure](../log-analytics/log-analytics-azure-storage.md).  Chociaż wymagających zbierania danych, która nie jest dostępny za pośrednictwem tych źródeł standardowe są scenariusze.  W takich przypadkach można użyć [interfejsu API modułów zbierających dane HTTP](../log-analytics/log-analytics-data-collector-api.md) można zapisać danych do analizy dzienników za pomocą dowolnego klienta interfejsu API REST.  Częstą metodą do wykonania tej kolekcji danych używa elementu runbook automatyzacji Azure.   

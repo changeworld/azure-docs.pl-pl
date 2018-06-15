@@ -1,11 +1,11 @@
 ---
-title: "Użyj usługi Zarządzanie interfejsu API (Python) — Przewodnik po funkcji"
-description: "Dowiedz się, jak programowo wykonywać typowe zadania zarządzania dla usługi w języku Python."
+title: Użyj usługi Zarządzanie interfejsu API (Python) — Przewodnik po funkcji
+description: Dowiedz się, jak programowo wykonywać typowe zadania zarządzania dla usługi w języku Python.
 services: cloud-services
 documentationcenter: python
 author: lmazuel
 manager: wpickett
-editor: 
+editor: ''
 ms.assetid: 61538ec0-1536-4a7e-ae89-95967fe35d73
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29124803"
 ---
 # <a name="use-service-management-from-python"></a>Za pomocą przystawki Zarządzanie usługi w języku Python
 Ten przewodnik przedstawia, jak programowo wykonywać typowe zadania zarządzania dla usługi w języku Python. **ServiceManagementService** klasy w [zestaw Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python) obsługuje dostęp programistyczny umożliwiający wiele usług związanych z zarządzaniem funkcji dostępnych w [Azure Portal][management-portal]. Ta funkcja służy do tworzenia, aktualizacji i usuwania usługi w chmurze, wdrożeń, dane usługi zarządzania i maszyn wirtualnych. Ta funkcja może być przydatne do tworzenia aplikacji, które muszą dostęp programistyczny umożliwiający zarządzanie usługą.

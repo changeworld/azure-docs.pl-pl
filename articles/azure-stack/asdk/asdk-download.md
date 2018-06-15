@@ -1,12 +1,12 @@
 ---
-title: "Pobierać i wyodrębniać Azure stosu Development Kit (ASDK) | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób pobierać i wyodrębniać Azure stosu Development Kit (ASDK)."
+title: Pobierać i wyodrębniać Azure stosu Development Kit (ASDK) | Dokumentacja firmy Microsoft
+description: Opisuje sposób pobierać i wyodrębniać Azure stosu Development Kit (ASDK).
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29975881"
 ---
 # <a name="download-and-extract-the-azure-stack-development-kit-asdk"></a>Pobierać i wyodrębniać Azure stosu Development Kit (ASDK)
 Po upewnieniu się, że komputer-host zestawu programowanie spełnia podstawowe wymagania dotyczące instalowania ASDK, następnym krokiem jest pobierać i wyodrębniać pakietu wdrożeniowego ASDK, aby uzyskać Cloudbuilder.vhdx.

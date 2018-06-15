@@ -1,8 +1,8 @@
 ---
-title: "Optymalizacja środowiskiem programu System Center Operations Manager na platformie Azure Log Analytics | Dokumentacja firmy Microsoft"
-description: "Sprawdź System Center Operations Manager kondycji rozwiązania można użyć do oceny ryzyka i kondycji środowisk w regularnych odstępach czasu."
+title: Optymalizacja środowiskiem programu System Center Operations Manager na platformie Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Sprawdź System Center Operations Manager kondycji rozwiązania można użyć do oceny ryzyka i kondycji środowisk w regularnych odstępach czasu.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
 editor: tysonn
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/13/2018
+ms.locfileid: "29180040"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optymalizuj środowisko z rozwiązań System Center Operations Manager sprawdzanie kondycji (wersja zapoznawcza)
 

@@ -1,11 +1,11 @@
 ---
-title: "Skonfigurować wymuszanie tunelowania dla połączenia usługi Azure Site to Site: klasycznym | Dokumentacja firmy Microsoft"
-description: "Jak przekierować lub \"force\" cały ruch do Internetu powiązane z powrotem do lokalizacji lokalnej."
+title: 'Skonfigurować wymuszanie tunelowania dla połączenia usługi Azure Site to Site: klasycznym | Dokumentacja firmy Microsoft'
+description: Jak przekierować lub "force" cały ruch do Internetu powiązane z powrotem do lokalizacji lokalnej.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 5c0177f1-540c-4474-9b80-f541fa44240b
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23883523"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>Konfigurowanie wymuszonego tunelowania przy użyciu klasycznego modelu wdrażania
 

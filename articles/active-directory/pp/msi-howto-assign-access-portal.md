@@ -1,11 +1,11 @@
 ---
-title: "Jak przypisać MSI dostępu do zasobów platformy Azure przy użyciu portalu Azure"
-description: "Instrukcje krok po kroku dotyczące przypisywania MSI na jeden dostęp do zasobów z innym zasobem przy użyciu portalu Azure."
+title: Jak przypisać MSI dostępu do zasobów platformy Azure przy użyciu portalu Azure
+description: Instrukcje krok po kroku dotyczące przypisywania MSI na jeden dostęp do zasobów z innym zasobem przy użyciu portalu Azure.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28978841"
 ---
 # <a name="assign-a-managed-service-identity-access-to-a-resource-by-using-the-azure-portal"></a>Przypisywanie dostępu zarządzane tożsamość usługi do zasobu za pomocą portalu Azure
 

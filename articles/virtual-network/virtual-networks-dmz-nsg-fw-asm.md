@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23885126"
 ---
 # <a name="example-2--build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>Przykład 2 — Tworzenie sieci obwodowej w ochronie aplikacji z zaporą i grupy NSG
 [Wróć do strony zabezpieczeń granic najlepsze praktyki][HOME]

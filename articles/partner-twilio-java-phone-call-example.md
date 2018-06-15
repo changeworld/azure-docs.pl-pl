@@ -1,7 +1,7 @@
 ---
-title: "Porady: tworzenie rozmowy telefonicznej z usługi Twilio (Java) | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak nawiązać połączenie telefoniczne ze strony sieci web w aplikacji Java na platformie Azure przy użyciu usługi Twilio."
-services: 
+title: 'Porady: tworzenie rozmowy telefonicznej z usługi Twilio (Java) | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak nawiązać połączenie telefoniczne ze strony sieci web w aplikacji Java na platformie Azure przy użyciu usługi Twilio.
+services: ''
 documentationcenter: java
 author: devinrader
 manager: twilio
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23865939"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>Porady: tworzenie rozmowę telefoniczną w aplikacji Java na platformie Azure przy użyciu usługi Twilio
 Poniższy przykład pokazuje, jak można użyć usługi Twilio, aby nawiązać połączenie ze strony sieci web hostowanej na platformie Azure. Wynikowa aplikacja pojawi się monit dla wartości rozmowy telefonicznej, jak pokazano na poniższym zrzucie ekranu.

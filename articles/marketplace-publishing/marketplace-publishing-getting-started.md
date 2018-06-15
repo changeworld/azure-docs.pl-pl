@@ -1,11 +1,11 @@
 ---
-title: "Omówienie sposobu tworzenia i wdrażania oferty w portalu Marketplace | Dokumentacja firmy Microsoft"
-description: "Opis czynności, wymagane zatwierdzone Microsoft developer i utworzyć i wdrożyć obraz maszyny wirtualnej, szablonu, Usługa danych lub dewelopera usługi w portalu Azure Marketplace"
+title: Omówienie sposobu tworzenia i wdrażania oferty w portalu Marketplace | Dokumentacja firmy Microsoft
+description: Opis czynności, wymagane zatwierdzone Microsoft developer i utworzyć i wdrożyć obraz maszyny wirtualnej, szablonu, Usługa danych lub dewelopera usługi w portalu Azure Marketplace
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 5343bd26-c6e4-4589-85b7-4a2c00bba8ab
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29943177"
 ---
 > [!NOTE]
 > Ta dokumentacja nie jest już aktualny i nie jest dokładne. Zamiast tego, przejdź do portalu Azure Marketplace [przewodnik sprzedawcy](https://docs.microsoft.com/azure/marketplace/seller-guide/cloud-partner-portal-seller-guide) wskazówki dotyczące publikowanie oferty w portalu Azure Marketplace.

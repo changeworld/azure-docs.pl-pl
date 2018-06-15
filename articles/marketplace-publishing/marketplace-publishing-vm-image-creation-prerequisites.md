@@ -1,11 +1,11 @@
 ---
-title: "Techniczne wymagania wstępne dotyczące tworzenia obrazu maszyny wirtualnej dla portalu Azure Marketplace | Dokumentacja firmy Microsoft"
-description: "Poznaj wymagania dotyczące tworzenia i wdrażania obrazu maszyny wirtualnej w portalu Azure Marketplace innym osobom do zakupu."
+title: Techniczne wymagania wstępne dotyczące tworzenia obrazu maszyny wirtualnej dla portalu Azure Marketplace | Dokumentacja firmy Microsoft
+description: Poznaj wymagania dotyczące tworzenia i wdrażania obrazu maszyny wirtualnej w portalu Azure Marketplace innym osobom do zakupu.
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 63c16966-0304-4b17-a715-368a0a5ccb2c
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29936659"
 ---
 # <a name="technical-prerequisites-for-creating-a-virtual-machine-image-for-the-azure-marketplace"></a>Techniczne wymagania wstępne dotyczące tworzenia obrazu maszyny wirtualnej dla portalu Azure Marketplace
 Przeczytaj dokładnie przed rozpoczęciem procesu i zrozumienie, dlaczego i w którym każdy krok jest wykonywane. Jak to możliwe, należy należy przygotować informacji o swojej firmie i innych danych, Pobierz niezbędne narzędzia i/lub tworzenia składników techniczne przed rozpoczęciem procesu tworzenia oferty. Te elementy powinno być wolne od przeglądania w tym artykule.  

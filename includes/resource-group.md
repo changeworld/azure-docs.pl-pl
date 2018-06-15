@@ -13,5 +13,6 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29953890"
 ---
 [Grupa zasobów](../articles/azure-resource-manager/resource-group-overview.md#terminology) to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure, takich jak aplikacje internetowe, bazy danych i konta magazynu, oraz zarządzania nimi. Na przykład można później usunąć całą grupę zasobów w jednym prostym kroku.

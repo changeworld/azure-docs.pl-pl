@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29958745"
 ---
 Niektórych obciążeń bazy danych, takich jak SQL Server lub Oracle wymagają pamięci wysokiej, magazynu i przepustowości we/wy, ale nie liczba rdzeni wysoki. Wiele obciążeń bazy danych nie są użycie Procesora CPU. System Azure oferuje niektórych rozmiarów maszyn wirtualnych, w którym można ograniczyć liczbę vCPU maszyny Wirtualnej, aby zredukować koszty licencjonowania oprogramowania, przy zachowaniu tej samej pamięci, magazynu i przepustowości we/wy.
 

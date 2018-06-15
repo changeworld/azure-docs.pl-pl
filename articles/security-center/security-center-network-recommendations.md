@@ -1,11 +1,11 @@
 ---
-title: "Ochrona sieci w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft"
-description: "Ten adres dokumentu zalecenia w Centrum zabezpieczeń Azure, które ułatwiają ochronę sieci platformy Azure i są aktualizowane zgodnie z zasadami zabezpieczeń."
+title: Ochrona sieci w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
+description: Ten adres dokumentu zalecenia w Centrum zabezpieczeń Azure, które ułatwiają ochronę sieci platformy Azure i są aktualizowane zgodnie z zasadami zabezpieczeń.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 96c55a02-afd6-478b-9c1f-039528f3dea0
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866478"
 ---
 # <a name="protecting-your-network-in-azure-security-center"></a>Ochrona sieci w Centrum zabezpieczeń Azure
 Centrum zabezpieczeń Azure analizuje stan zabezpieczeń zasobów platformy Azure. Jeśli Centrum zabezpieczeń zostanie zidentyfikowana potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzają użytkownika przez proces konfigurowania wymaganych elementów sterujących.  Zalecenia dotyczą typów zasobów platformy Azure: maszynach wirtualnych (VM), sieci, SQL i aplikacji.

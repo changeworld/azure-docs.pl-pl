@@ -1,12 +1,12 @@
 ---
-title: "Biblioteki zarządzania usługi Azure Service Bus | Dokumentacja firmy Microsoft"
-description: "Zarządzanie przestrzeni nazw usługi Service Bus i jednostki z .NET do obsługi komunikatów."
+title: Biblioteki zarządzania usługi Azure Service Bus | Dokumentacja firmy Microsoft
+description: Zarządzanie przestrzeni nazw usługi Service Bus i jednostki z .NET do obsługi komunikatów.
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29120900"
 ---
 # <a name="service-bus-management-libraries"></a>Biblioteki zarządzania usługi Service Bus
 

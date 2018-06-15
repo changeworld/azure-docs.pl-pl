@@ -1,11 +1,11 @@
 ---
 title: Zasady tworzenia kopii zapasowej programu StorSimple Snapshot Manager | Dokumentacja firmy Microsoft
-description: "Informacje dotyczące używania przystawki MMC programu StorSimple Snapshot Manager do tworzenia i obsługi zasad tworzenia kopii zapasowych, które kontrolują zaplanowanych kopii zapasowych."
+description: Informacje dotyczące używania przystawki MMC programu StorSimple Snapshot Manager do tworzenia i obsługi zasad tworzenia kopii zapasowych, które kontrolują zaplanowanych kopii zapasowych.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 04415d0b-42f0-4737-8afa-257fb2dbe5d0
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875473"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>StorSimple Snapshot Manager umożliwia tworzenie i zarządzanie zasadami tworzenia kopii zapasowej
 ## <a name="overview"></a>Omówienie

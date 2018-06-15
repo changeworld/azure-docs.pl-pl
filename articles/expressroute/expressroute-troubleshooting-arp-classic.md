@@ -1,6 +1,6 @@
 ---
-title: "Pobieranie ARP tabel: klasycznym: Azure ExpressRoute Rozwiązywanie problemów z | Dokumentacja firmy Microsoft"
-description: "Ta strona zawiera instrukcje dotyczące pobierania protokołu ARP tabel dla obwodu usługi ExpressRoute."
+title: 'Pobieranie ARP tabel: klasycznym: Azure ExpressRoute Rozwiązywanie problemów z | Dokumentacja firmy Microsoft'
+description: Ta strona zawiera instrukcje dotyczące pobierania protokołu ARP tabel dla obwodu usługi ExpressRoute.
 documentationcenter: na
 services: expressroute
 author: ganesr
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23850798"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>Pobieranie tabel ARP w klasycznym modelu wdrażania
 > [!div class="op_single_selector"]

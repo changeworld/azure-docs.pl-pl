@@ -1,11 +1,11 @@
 ---
-title: "Dzienniki przepływu NSG odczytu | Dokumentacja firmy Microsoft"
-description: "W tym artykule przedstawiono sposób analizowania dzienników przepływu NSG"
+title: Dzienniki przepływu NSG odczytu | Dokumentacja firmy Microsoft
+description: W tym artykule przedstawiono sposób analizowania dzienników przepływu NSG
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/11/2018
+ms.locfileid: "29149638"
 ---
 # <a name="read-nsg-flow-logs"></a>Dzienniki przepływu odczytu NSG
 

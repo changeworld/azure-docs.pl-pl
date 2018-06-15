@@ -1,11 +1,11 @@
 ---
-title: "Zapewnij tablicy wirtualnego StorSimple w środowisku programu VMware | Dokumentacja firmy Microsoft"
-description: "W tym samouczku drugi w tablicy wirtualnego StorSimple wdrażania serii obejmuje Inicjowanie obsługi urządzenia wirtualnego w środowisku programu VMware."
+title: Zapewnij tablicy wirtualnego StorSimple w środowisku programu VMware | Dokumentacja firmy Microsoft
+description: W tym samouczku drugi w tablicy wirtualnego StorSimple wdrażania serii obejmuje Inicjowanie obsługi urządzenia wirtualnego w środowisku programu VMware.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 0425b2a9-d36f-433d-8131-ee0cacef95f8
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29972344"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>Wdrażanie tablicy wirtualnego StorSimple - Provision w środowisku programu VMware
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)

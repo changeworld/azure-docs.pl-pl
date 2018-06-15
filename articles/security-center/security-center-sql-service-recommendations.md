@@ -1,11 +1,11 @@
 ---
-title: "Ochrona usługi Azure SQL i danych w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft"
-description: "Ten adres dokumentu zalecenia w Centrum zabezpieczeń Azure, które ułatwiają ochronę danych i usługą SQL platformy Azure i są aktualizowane zgodnie z zasadami zabezpieczeń."
+title: Ochrona usługi Azure SQL i danych w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
+description: Ten adres dokumentu zalecenia w Centrum zabezpieczeń Azure, które ułatwiają ochronę danych i usługą SQL platformy Azure i są aktualizowane zgodnie z zasadami zabezpieczeń.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: bcae6987-05d0-4208-bca8-6a6ce7c9a1e3
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866275"
 ---
 # <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>Ochrona usługi Azure SQL i danych w Centrum zabezpieczeń Azure
 Centrum zabezpieczeń Azure analizuje stan zabezpieczeń zasobów platformy Azure. Jeśli Centrum zabezpieczeń zostanie zidentyfikowana potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzają użytkownika przez proces konfigurowania wymaganych elementów sterujących.  Zalecenia dotyczą typów zasobów platformy Azure: maszynach wirtualnych (VM), sieci, SQL i danych i aplikacji.

@@ -1,11 +1,11 @@
 ---
-title: "Wyświetl listę wszystkich zadań Import/Eksport Azure | MicrosoftDocs"
-description: "Dowiedz się, jak wyświetlić listę wszystkich zadań usługi Import/Eksport Azure w ramach subskrypcji."
+title: Wyświetl listę wszystkich zadań Import/Eksport Azure | MicrosoftDocs
+description: Dowiedz się, jak wyświetlić listę wszystkich zadań usługi Import/Eksport Azure w ramach subskrypcji.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: f2e619be-1bbd-4a54-9472-9e2f70a83b64
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873702"
 ---
 # <a name="enumerating-jobs-in-the-azure-importexport-service"></a>Wyliczanie zadań w usłudze Import/Eksport Azure
 Aby wyliczyć wszystkie zadania w ramach subskrypcji, należy wywołać [listy zadań](/rest/api/storageimportexport/jobs#Jobs_List) operacji. `List Jobs`Zwraca listę zadań, a także następujące atrybuty:
