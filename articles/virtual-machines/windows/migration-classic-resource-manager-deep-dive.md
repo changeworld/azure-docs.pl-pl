@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30913995"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Rozbudowana technicznie migracja z obsługą platformy od modelu klasycznego do modelu opartego na usłudze Azure Resource Manager
 Spójrzmy szczegółowo na temat migracji z systemu Azure klasycznym modelu wdrożenia do modelu wdrażania usługi Azure Resource Manager. Przyjrzymy się zasobów na poziomie zasobów i funkcji pomagające zrozumieć, jak platformy Azure wykonuje migrację zasobów między modelami dwa wdrożenia. Aby uzyskać więcej informacji, przeczytaj artykuł powiadomienia usługi: [obsługiwane platformy migracji zasobów IaaS ze środowiska klasycznego do usługi Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

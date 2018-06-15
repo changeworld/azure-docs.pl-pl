@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "29717034"
 ---
 W poniższej tabeli wymieniono przydziały i limity specyficzne dla [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Aby uzyskać informacje o cenach usługi Event Hubs, zobacz [cennik usługi Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
 

@@ -18,6 +18,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31406511"
 ---
 # <a name="use-the-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Debugowanie aplikacji Tez zadania w usłudze HDInsight z systemem Windows przy użyciu interfejsu użytkownika aplikacji Tez
 Interfejs użytkownika aplikacji Tez może służyć do debugowania zadań Hive, korzystających z aplikacji Tez jako aparat wykonywania. Interfejs użytkownika aplikacji Tez wizualizuje zadanie wykres połączonych elementów, przejdź do każdego elementu, a pobieranie statystyki i rejestrowania informacji.

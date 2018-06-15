@@ -18,6 +18,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31389717"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Operacje platformy Azure Active Directory Connect Health
 W tym temacie opisano różne operacje, które można wykonać za pomocą usługi Azure Active Directory (Azure AD) Connect Health.

@@ -18,6 +18,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31513639"
 ---
 # <a name="add-a-java-application-to-azure-app-service-web-apps"></a>Dodawanie aplikacji Java do aplikacji sieci Web usługi aplikacji Azure
 Po już zainicjować aplikacji sieci web Java w [usłudze Azure App Service] [ Azure App Service] zgodnie z opisem w [tworzenie aplikacji sieci web Java w usłudze Azure App Service](app-service-web-get-started-java.md), możesz przekazać aplikacji przez umieszczenie Twojej WAR w **webapps** folderu.

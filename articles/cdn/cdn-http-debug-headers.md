@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31517436"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Nagłówki HTTP X-WE-Debug aparat reguł Azure CDN
 Nagłówek żądania debugowania pamięci podręcznej, `X-EC-Debug`, informacje dodatkowe dotyczące zasady pamięci podręcznej, która jest stosowana do żądanego środka trwałego. Nagłówki te są specyficzne dla **Azure CDN Premium z Verizon** produktów.

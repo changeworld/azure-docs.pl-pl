@@ -1,11 +1,11 @@
 ---
-title: "Chmura roli usługi konfiguracji XPath ściągawka | Dokumentacja firmy Microsoft"
-description: "Różne ustawienia języka XPath można w konfiguracji roli usługi w chmurze uwidocznić ustawienia jako zmiennej środowiskowej."
+title: Chmura roli usługi konfiguracji XPath ściągawka | Dokumentacja firmy Microsoft
+description: Różne ustawienia języka XPath można w konfiguracji roli usługi w chmurze uwidocznić ustawienia jako zmiennej środowiskowej.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c51e4493-0643-4d05-bc44-06c76bcbf7d1
 ms.service: cloud-services
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/16/2017
+ms.locfileid: "24860375"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Udostępnianie ustawień konfiguracji roli jako zmiennej środowiskowej XPath
 W chmurze usługi worker lub pliku definicji usługi roli sieci web można uwidocznić wartości konfiguracji środowiska uruchomieniowego jako zmienne środowiskowe. Obsługiwane są następujące wartości XPath, (które odpowiadają wartościom interfejsu API).

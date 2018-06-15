@@ -21,6 +21,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30913107"
 ---
 # <a name="how-to-schedule-planned-maintenance-on-azure-vms"></a>Sposób tworzenia harmonogramu zaplanowanej konserwacji na maszynach wirtualnych Azure
 > [!IMPORTANT]

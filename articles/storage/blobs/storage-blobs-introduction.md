@@ -13,6 +13,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31409419"
 ---
 # <a name="introduction-to-object-storage-in-azure"></a>Wprowadzenie do magazynu obiektów na platformie Azure
 

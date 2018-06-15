@@ -21,6 +21,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31416044"
 ---
 # <a name="create-a-single-zone-virtual-machine-scale-set-with-powershell"></a>Tworzenie jednostrefowego zestawu skalowania maszyn wirtualnych za pomocą programu PowerShell
 Ten skrypt tworzy zestaw skalowania maszyn wirtualnych z systemem Windows Server 2016 w jednej strefie dostępności. Po uruchomieniu skryptu dostęp do maszyny wirtualnej można uzyskać za pomocą protokołu RDP.

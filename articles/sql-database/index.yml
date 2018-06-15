@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: pl-PL
   ms.lasthandoff: 04/06/2018
+  ms.locfileid: "30922386"
 abstract:
   description: Usługa Azure SQL Database to relacyjna baza danych oferowana jako usługach, która korzysta z aparatu programu Microsoft SQL Server. Usługa SQL Database to wysokiej wydajności niezawodna i bezpieczna baza danych, za pomocą której można tworzyć oparte na danych aplikacje i witryny internetowe w wybranym języku programowania bez zarządzania infrastrukturą. Dowiedz się, jak używać usługi SQL Database, korzystając z przewodników Szybki Start, samouczków i przykładów.
   aside:

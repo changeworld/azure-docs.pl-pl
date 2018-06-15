@@ -21,6 +21,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31408255"
 ---
 # <a name="whats-new-in-power-bi-workspace-collections"></a>Nowości w kolekcjach obszaru roboczego programu Power BI
 

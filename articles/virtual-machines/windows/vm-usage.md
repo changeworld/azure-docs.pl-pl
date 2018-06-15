@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31425184"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Określenie użycia maszyny wirtualnej platformy Azure
 Za analizowanie danych użycia usługi Azure, można uzyskać wgląd zaawansowanych zużycia — szczegółowe informacje, które umożliwiają lepsze kosztów zarządzania i alokacji w całej organizacji. Ten dokument zawiera nowości w szczegóły zużycie rozwiązań usługi obliczenia Azure. Więcej szczegółów na ogólne użycie platformy Azure, przejdź do [Opis rachunku](../../billing/billing-understand-your-bill.md).

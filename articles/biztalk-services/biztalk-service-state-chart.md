@@ -1,11 +1,11 @@
 ---
-title: "Zadania, dozwolone w różnych stanów oraz Stany w usługi BizTalk Services | Dokumentacja firmy Microsoft"
-description: "Akcje operacje dozwolone w inny stan MABS: Zatrzymaj, start, uruchom ponownie, wstrzymać, wznowić, Usuń, skalowania, aktualizacji konfiguracji i tworzenia kopii zapasowej"
+title: Zadania, dozwolone w różnych stanów oraz Stany w usługi BizTalk Services | Dokumentacja firmy Microsoft
+description: 'Akcje operacje dozwolone w inny stan MABS: Zatrzymaj, start, uruchom ponownie, wstrzymać, wznowić, Usuń, skalowania, aktualizacji konfiguracji i tworzenia kopii zapasowej'
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: aea738f3-ec76-4099-a41b-e17fea9e252f
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24102746"
 ---
 # <a name="what-you-can-and-cant-do-using-the-biztalk-service-state"></a>Co można i nie można wykonać przy użyciu stanu usługi BizTalk
 

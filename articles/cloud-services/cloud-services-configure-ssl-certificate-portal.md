@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie protokołu SSL dla usługi w chmurze | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak określić punkt końcowy HTTPS dla roli sieci web i jak można przekazać certyfikatu SSL do zabezpieczania aplikacji. Te przykłady, użyj portalu Azure."
+title: Konfigurowanie protokołu SSL dla usługi w chmurze | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak określić punkt końcowy HTTPS dla roli sieci web i jak można przekazać certyfikatu SSL do zabezpieczania aplikacji. Te przykłady, użyj portalu Azure.
 services: cloud-services
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 371ba204-48b6-41af-ab9f-ed1d64efe704
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/16/2017
+ms.locfileid: "24859780"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Konfigurowanie protokołu SSL dla aplikacji na platformie Azure
 

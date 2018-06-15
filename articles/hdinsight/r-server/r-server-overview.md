@@ -18,6 +18,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31414722"
 ---
 # <a name="introduction-to-r-server-and-open-source-r-capabilities-on-hdinsight"></a>Wprowadzenie do języka R Server i open source możliwości R w usłudze HDInsight
 

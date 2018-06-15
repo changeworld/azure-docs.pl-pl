@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31408041"
 ---
 # <a name="using-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Przy użyciu maszyny wirtualnej z magazynu geograficznie sztucznego analizy danych nauki
 

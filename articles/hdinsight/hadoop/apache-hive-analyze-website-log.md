@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31398161"
 ---
 # <a name="use-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>Korzystanie z programu Hive z HDInsight opartych na systemie Windows do analizowania dzienników witryn sieci Web
 Dowiedz się, jak używać HiveQL z usługą HDInsight do analizy dzienników z witryny sieci Web. Analiza dziennika witryny sieci Web może służyć do segmentowania odbiorców w oparciu podobne działania, kategoryzowanie odwiedzający przez demograficznych i sprawdzić zawartość one widoku, witryn sieci Web, które pochodzą z i tak dalej.

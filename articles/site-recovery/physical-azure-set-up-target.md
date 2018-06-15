@@ -1,6 +1,6 @@
 ---
 title: Przygotowanie docelowego (fizycznych do platformy Azure) | Dokumentacja firmy Microsoft
-description: "W tym artykule opisano sposób przygotowania środowiska Azure, aby uruchomić replikowania serwerów fizycznych z systemem Windows lub Linux na platformie Azure."
+description: W tym artykule opisano sposób przygotowania środowiska Azure, aby uruchomić replikowania serwerów fizycznych z systemem Windows lub Linux na platformie Azure.
 services: site-recovery
 author: bsiva
 manager: abhemraj
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29812628"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>Przygotowanie docelowego (VMware do platformy Azure)
 

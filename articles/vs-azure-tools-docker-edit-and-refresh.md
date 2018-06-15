@@ -1,11 +1,11 @@
 ---
 title: Debugowanie aplikacji w kontenerze Docker lokalnym | Dokumentacja firmy Microsoft
-description: "Modyfikowanie aplikacji, która jest uruchomiona w kontenerze Docker lokalnego, Odśwież kontenera za pomocą edycji i Odśwież i ustaw punkty przerwania debugowania"
+description: Modyfikowanie aplikacji, która jest uruchomiona w kontenerze Docker lokalnego, Odśwież kontenera za pomocą edycji i Odśwież i ustaw punkty przerwania debugowania
 services: azure-container-service
 documentationcenter: na
 author: mlearned
 manager: douge
-editor: 
+editor: ''
 ms.assetid: 480e3062-aae7-48ef-9701-e4f9ea041382
 ms.service: multiple
 ms.devlang: dotnet
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26781398"
 ---
 # <a name="debugging-apps-in-a-local-docker-container"></a>Debugowanie aplikacji w lokalnym kontenerze platformy Docker
 ## <a name="overview"></a>Przegląd
