@@ -14,6 +14,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31799077"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-search"></a>Jak model złożone typy danych w usłudze Azure Search
 Zewnętrznych zestawów danych używanych do wypełniania indeksu usługi Azure Search czasami to hierarchiczna lub zagnieżdżony struktur podrzędnych, które nie podzielić się starannie na tabelarycznych zestawu wierszy. Przykłady takich konstrukcji może obejmują wiele lokalizacji i numerów telefonów dla jednego klienta, wiele kolorów i rozmiary dla jednej jednostki SKU wielu autorów jednej książce i tak dalej. Modelowanie warunki, można napotkać tych struktur, określany jako *złożone typy danych*, *złożone typy danych*, *złożone typy danych*, lub *agregacji typy danych*, kilka.

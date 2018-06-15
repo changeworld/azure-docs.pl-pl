@@ -20,6 +20,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31798713"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Samouczek: wdrażanie aplikacji przy użyciu ciągłej integracji/ciągłego wdrażania w klastrze usługi Service Fabric
 Niniejszy samouczek jest czwartą częścią serii i zawiera opis sposobu konfiguracji ciągłej integracji i ciągłego wdrażania aplikacji usługi Service Fabric za pomocą usługi Visual Studio Team Services.  Wymagana jest istniejąca aplikacja usługi Service Fabric. Na potrzeby tego samouczka za przykład posłużyła aplikacja utworzona w temacie [Tworzenie aplikacji .NET](service-fabric-tutorial-create-dotnet-app.md).

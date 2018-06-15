@@ -20,6 +20,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32776418"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli-20-preview"></a>Szyfrowanie systemu operacyjnego i dysków dołączonych danych w skali maszyny wirtualnej ustawić 2.0 interfejsu wiersza polecenia platformy Azure (wersja zapoznawcza)
 

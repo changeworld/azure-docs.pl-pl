@@ -19,6 +19,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31792552"
 ---
 # <a name="data-sources-in-log-analytics"></a>Źródła danych w analizy dzienników
 Analiza dzienników zbiera dane z połączonych źródeł i zapisuje go w obszarze roboczym analizy dzienników.  Dane są zbierane z każdej jest zdefiniowany przez źródła danych, które można skonfigurować.  Dane analizy dziennika są przechowywane jako zestaw rekordów.  Dla każdego źródła danych tworzy rekordy określonego typu z każdym typem o własny zestaw właściwości.

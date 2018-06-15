@@ -14,6 +14,7 @@ ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/01/2018
+ms.locfileid: "32312960"
 ---
 # <a name="troubleshoot-event-hub-receivers-in-azure-stream-analytics"></a>Rozwiązywanie problemów z odbiorników Centrum zdarzeń w usłudze Azure Stream Analytics
 
