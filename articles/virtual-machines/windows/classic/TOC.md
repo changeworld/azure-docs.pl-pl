@@ -19,8 +19,7 @@
 ### [Tworzenie niestandardowej maszyny wirtualnej](createportal-classic.md)
 ### [Przechwytywanie maszyny wirtualnej z systemem Windows](capture-image-classic.md)
 ### [Uruchamianie zadania wymagającego wielu obliczeń w środowisku Java](java-run-compute-intensive-task.md)
-### 
-  [Aplikacja internetowa „Hello World” na platformie Django](python-django-web-app.md)
+### [Aplikacja internetowa „Hello World” na platformie Django](python-django-web-app.md)
 
 ## Konfigurowanie
 ### [Instalowanie i konfigurowanie rozwiązania Symantec Endpoint Protection](install-symantec.md)
