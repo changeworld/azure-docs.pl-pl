@@ -632,6 +632,10 @@
           href: service-fabric-troubleshoot-local-cluster-setup.md
         - name: Diagnozowanie typowych scenariuszy
           href: service-fabric-diagnostics-common-scenarios.md
+    - name: Najlepsze praktyki
+      items:
+        - name: Lista kontrolna gotowości do produkcji
+          href: service-fabric-production-readiness-checklist.md
 - name: Dokumentacja
   items:
     - name: Azure PowerShell

@@ -27,7 +27,7 @@
       href: quickstart-create-data-factory-resource-manager-template.md
 - name: Samouczki
   items:
-    - name: 1 — Tworzenie środowiska Azure SSIS Integration Runtime
+    - name: 1 — Aprowizowanie środowiska Azure-SSIS Integration Runtime
       items:
         - name: Interfejs użytkownika
           href: tutorial-deploy-ssis-packages-azure.md

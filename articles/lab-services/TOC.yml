@@ -79,6 +79,8 @@
               href: devtest-lab-resize-vm.md
             - name: Ponowne wdrażanie maszyny wirtualnej
               href: devtest-lab-redeploy-vm.md
+            - name: Importowanie maszyny wirtualnej
+              href: devtest-lab-import-vm.md
         - name: Korzystanie ze środowisk w laboratorium
           items:
             - name: Tworzenie środowiska

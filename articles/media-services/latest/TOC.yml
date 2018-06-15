@@ -59,16 +59,16 @@
       href: create-account-cli-how-to.md
     - name: Dostęp do interfejsów API — interfejs wiersza polecenia
       href: access-api-cli-how-to.md
-    - name: Zdarzenia stanu zadania — interfejs wiersza polecenia
+    - name: Monitorowanie zdarzeń stanu zadania — interfejs wiersza polecenia
       href: job-state-events-cli-how-to.md
+    - name: Dostosowywanie wstępnych ustawień przekształcania — .NET Core
+      href: customize-encoder-presets-how-to.md
     - name: Przekazywanie zawartości
       items:
         - name: Z protokołu HTTP(s) — .NET
           href: job-input-from-http-how-to.md
         - name: Z pliku lokalnego — .NET
           href: job-input-from-local-file-how-to.md
-    - name: Dostosowywanie wstępnych ustawień przekształcania — .NET Core
-      href: customize-encoder-presets-how-to.md
 - name: Dokumentacja
   items:
     - name: Specyfikacja interfejsu OpenAPI (Swagger)

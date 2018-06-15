@@ -6,7 +6,7 @@
       href: dns-overview.md
 - name: Przewodniki Szybki start
   items:
-    - name: Tworzenie strefy i rekordu DNS — portal
+    - name: Rozpoznawanie nazw — portal
       href: dns-getstarted-portal.md
     - name: Tworzenie strefy i rekordu DNS — program PowerShell
       href: dns-getstarted-powershell.md
@@ -14,12 +14,12 @@
       href: dns-getstarted-cli.md
 - name: Samouczki
   items:
-    - name: Tworzenie strefy i rekordu w prywatnej usłudze DNS
-      href: private-dns-getstarted-powershell.md
-    - name: Delegowanie domeny do systemu DNS platformy Azure
+    - name: Hostowanie własnej domeny w usłudze Azure DNS
       href: dns-delegate-domain-azure-dns.md
     - name: Tworzenie niestandardowych rekordów DNS dla aplikacji internetowej
       href: dns-web-sites-custom-domain.md
+    - name: Tworzenie strefy i rekordu w prywatnej usłudze DNS
+      href: private-dns-getstarted-powershell.md
 - name: Przykłady
   items:
     - name: Interfejs wiersza polecenia platformy Azure
