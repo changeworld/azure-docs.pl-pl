@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32179337"
 ---
 # <a name="create-a-microsoft-developer-account"></a>Utwórz konto Microsoft Developer
 Ten artykuł przeprowadzi Cię przez proces rejestracji zostać zatwierdzone Microsoft Developer do portalu Azure Marketplace i tworzenie konta niezbędne.

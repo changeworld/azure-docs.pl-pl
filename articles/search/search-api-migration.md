@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32181974"
 ---
 # <a name="upgrading-to-the-latest-azure-search-service-rest-api-version"></a>Uaktualnianie do najnowszej wersji interfejsu API REST usługi Azure Search
 Jeśli używasz wcześniejszej wersji programu [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/), ten artykuł pomoże Ci uaktualnienie aplikacji używać najnowszej wersji interfejsu API ogólnie dostępna, 2017-11-11.

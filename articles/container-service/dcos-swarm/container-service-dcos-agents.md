@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32162266"
 ---
 # <a name="dcos-agent-pools-for-azure-container-service"></a>Pule agenta DC/OS usługi kontenera platformy Azure
 Klastry DC/OS usługi kontenera platformy Azure zawierają węzły agenta w dwie pule, puli publicznych i prywatnych puli. Aplikację można wdrożyć do jednej puli wpływu na dostępność między komputerami w usłudze kontenera. Maszyny można połączenie z Internetem (publicznej) lub przechowywane wewnętrzny (prywatny). Ten artykuł zawiera krótki przegląd, dlatego są pule publiczne i prywatne.

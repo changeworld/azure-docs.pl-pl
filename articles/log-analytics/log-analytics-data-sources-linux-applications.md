@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32168286"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Zbieraj liczniki wydajności dla aplikacji systemu Linux w analizy dzienników 
 Ten artykuł zawiera szczegółowe informacje dotyczące konfigurowania [Agent pakietu OMS Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) można zebrać liczników wydajności dla określonych aplikacji.  Aplikacje zawarte w tym artykule są:  

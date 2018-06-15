@@ -18,6 +18,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32182591"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-redis-cache"></a>Jak używać narzędzia wiersza polecenia Redis z pamięci podręcznej Redis Azure
 

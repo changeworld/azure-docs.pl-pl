@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32182076"
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Magazyn tabel Azure indeksu z usługi Azure Search
 W tym artykule pokazano, jak używać usługi Azure Search do indeksowania danych przechowywanych w magazynie tabel platformy Azure.

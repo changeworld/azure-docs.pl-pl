@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32151233"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Przy użyciu usługi Azure API Management z wewnętrznej sieci wirtualnej
 Sieci wirtualne platformy Azure Azure API Management umożliwiają zarządzanie interfejsów API nie jest dostępny w Internecie. Liczba technologii sieci VPN są dostępne do nawiązania połączenia. Zarządzanie interfejsami API można wdrożyć w dwóch trybach głównego w sieci wirtualnej:

@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32190094"
 ---
 # <a name="lucene-query-syntax-examples-for-building-queries-in-azure-search"></a>Przykłady składni zapytań Lucene do tworzenia zapytań w usłudze Azure Search
 Podczas tworzenia zapytań dla usługi wyszukiwanie Azure, można użyć albo domyślnie [prosta składnia zapytań](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) lub alternatywnej [analizator składni zapytań Lucene w usłudze Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search). Analizator składni zapytań Lucene obsługuje bardziej złożonych konstrukcje zapytania, takie jak zapytania należące do zakresu pola, Wyszukiwanie rozmyte wyszukiwanie w sąsiedztwie, termin zwiększania i wyrażeń regularnych wyszukiwania.

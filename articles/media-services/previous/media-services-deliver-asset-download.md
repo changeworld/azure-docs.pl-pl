@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788228"
 ---
 # <a name="how-to-deliver-an-asset-by-download"></a>Porady: dostarczanie zasobów do pobrania
 W tym artykule opisano opcje dostarczania zasobów nośnika przekazane do usługi Media Services. W wielu scenariuszach aplikacji można dostarczać zawartości Media Services. Po kodowania, Pobierz zasoby wygenerowanego media lub uzyskiwać do nich dostęp za pomocą Lokalizator przesyłania strumieniowego. Aby uzyskać lepszą wydajność i skalowalność może również udostępniać zawartość za pomocą sieci dostarczania zawartości (CDN).

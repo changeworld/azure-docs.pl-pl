@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32192948"
 ---
 # <a name="continuous-integration-in-visual-studio-team-services-using-azure-resource-group-deployment-projects"></a>Ciągła integracja w programie Visual Studio Team Services za pomocą projekty wdrażania grup zasobów platformy Azure
 Do wdrożenia szablonu platformy Azure, możesz wykonać zadania w różnych etapach: kopiowania budowania, testowania na platformie Azure (zwane również "Tymczasowości") i wdrażania szablonu. Istnieją dwa różne sposoby wdrażania szablonów w programie Visual Studio Team Services (VS Team Services). Obie metody zapewniają te same wyniki, dlatego wybierz jedną, która najlepiej pasuje do przepływu pracy.

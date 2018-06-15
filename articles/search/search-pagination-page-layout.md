@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32186882"
 ---
 # <a name="how-to-page-search-results-in-azure-search"></a>Jak stronicować wyniki wyszukiwania w usłudze Azure Search
 Ten artykuł zawiera wskazówki dotyczące sposobu używania interfejsu API REST usługi wyszukiwanie Azure do zaimplementowania standardowe elementy strony wyników wyszukiwania, takie jak całkowitej liczby, pobierania dokumentu, sortowania i nawigacji.

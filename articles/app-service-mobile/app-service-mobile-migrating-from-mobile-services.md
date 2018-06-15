@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32158872"
 ---
 # <a name="article-top"></a>Migracji istniejącej usługi mobilnej Azure w usłudze Azure App Service
 Z [ogólnej dostępności usługi Azure App Service], lokacji usług Azure Mobile Services można łatwo migracji w miejscu, aby korzystać ze wszystkich funkcji usługi Azure App Service.  W tym dokumencie opisano, czego można oczekiwać podczas migracji lokacji z usług Azure Mobile Services w usłudze Azure App Service.
