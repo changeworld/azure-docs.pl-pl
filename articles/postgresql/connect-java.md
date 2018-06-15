@@ -1,6 +1,6 @@
 ---
-title: "Nawiązywanie połączeń z usługą Azure Database for PostgreSQL za pomocą języka Java"
-description: "Ten przewodnik Szybki start zawiera przykładowy kod Java, którego można używać do nawiązywania połączeń z danymi usługi Azure Database for PostgreSQL i wykonywania zapytań względem nich."
+title: Nawiązywanie połączeń z usługą Azure Database for PostgreSQL za pomocą języka Java
+description: Ten przewodnik Szybki start zawiera przykładowy kod Java, którego można używać do nawiązywania połączeń z danymi usługi Azure Database for PostgreSQL i wykonywania zapytań względem nich.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -16,6 +16,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29686847"
 ---
 # <a name="azure-database-for-postgresql-use-java-to-connect-and-query-data"></a>Usługa Azure Database for PostgreSQL: nawiązywanie połączeń z danymi i wykonywanie na nich zapytań za pomocą języka Java
 Ten przewodnik Szybki start przedstawia sposób nawiązywania połączeń z usługą Azure Database for PostgreSQL przy użyciu aplikacji Java. Pokazano w nim, jak używać instrukcji języka SQL w celu wysyłania zapytań o dane oraz wstawiania, aktualizowania i usuwania danych w bazie danych. W krokach w tym artykule założono, że wiesz już, jak programować za pomocą języka Java, i dopiero zaczynasz pracę z usługą Azure Database for PostgreSQL.

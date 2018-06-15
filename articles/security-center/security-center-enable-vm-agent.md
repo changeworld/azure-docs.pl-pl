@@ -1,11 +1,11 @@
 ---
-title: "Włącz agenta maszyny Wirtualnej w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft"
-description: "Ten dokument przedstawia sposób wykonania zalecenia Centrum zabezpieczeń Azure ** włączyć VM Agent **."
+title: Włącz agenta maszyny Wirtualnej w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
+description: Ten dokument przedstawia sposób wykonania zalecenia Centrum zabezpieczeń Azure ** włączyć VM Agent **.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 5b431c25-4241-45b7-9556-cf2a1956f3da
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866310"
 ---
 # <a name="enable-vm-agent-in-azure-security-center"></a>Włącz agenta maszyny Wirtualnej w Centrum zabezpieczeń Azure
 Agent maszyny Wirtualnej musi być zainstalowany na maszynach wirtualnych (VM) w celu [Włącz zbieranie danych](security-center-enable-data-collection.md).  Centrum zabezpieczeń Azure umożliwia można zobaczyć, które maszyny wirtualne wymagają agenta maszyny Wirtualnej i zaleca włączenie agenta maszyny Wirtualnej na tych maszynach wirtualnych.

@@ -1,11 +1,11 @@
 ---
-title: "Dodawanie uwierzytelniania w systemie iOS w usłudze Azure Mobile Apps"
-description: "Dowiedz się, jak używać usługi Azure Mobile Apps uwierzytelniać użytkowników aplikacji systemu iOS za pomocą różnych dostawców tożsamości, obejmującej AAD, Google, Facebook, Twitter i firmy Microsoft."
+title: Dodawanie uwierzytelniania w systemie iOS w usłudze Azure Mobile Apps
+description: Dowiedz się, jak używać usługi Azure Mobile Apps uwierzytelniać użytkowników aplikacji systemu iOS za pomocą różnych dostawców tożsamości, obejmującej AAD, Google, Facebook, Twitter i firmy Microsoft.
 services: app-service\mobile
 documentationcenter: ios
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: ef3d3cbe-e7ca-45f9-987f-80c44209dc06
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27592698"
 ---
 # <a name="add-authentication-to-your-ios-app"></a>Dodawanie uwierzytelniania do aplikacji systemu iOS
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]

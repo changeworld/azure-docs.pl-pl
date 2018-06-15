@@ -1,11 +1,11 @@
 ---
-title: "Podaj szczegóły dotyczące kontaktu zabezpieczeń w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft"
-description: "Ten dokument przedstawia sposób podać szczegóły dotyczące kontaktu zabezpieczeń w Centrum zabezpieczeń Azure."
+title: Podaj szczegóły dotyczące kontaktu zabezpieczeń w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
+description: Ten dokument przedstawia sposób podać szczegóły dotyczące kontaktu zabezpieczeń w Centrum zabezpieczeń Azure.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 26b5dcb4-ce3f-4f22-8d56-d2bf743cfc90
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866527"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Podaj szczegóły dotyczące kontaktu zabezpieczeń w Centrum zabezpieczeń Azure
 Centrum zabezpieczeń Azure zaleca Podaj szczegóły dotyczące kontaktu zabezpieczeń dla subskrypcji platformy Azure, jeśli nie jest jeszcze. Te informacje będą używane przez firmę Microsoft do kontaktowania się z Tobą, gdy centrum Microsoft Security Response Center (MSRC) wykryje, że osoby nieupoważnione lub działające niezgodnie z prawem uzyskały dostęp do Twoich danych klienta. MSRC wykonuje monitorowanie zabezpieczeń wybierz sieć platformy Azure i infrastruktury i odbiera zagrożeń analizy i nadużycia utrudnień od osób trzecich.

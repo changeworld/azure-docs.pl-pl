@@ -1,11 +1,11 @@
 ---
-title: "Wyświetlanie podglądu użycia dysków dla zadania eksportu Import/Eksport Azure - v1 | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak listę obiektów blob, wybranych dla zadania eksportu w usłudze Import/Eksport Azure w wersji preview."
+title: Wyświetlanie podglądu użycia dysków dla zadania eksportu Import/Eksport Azure - v1 | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak listę obiektów blob, wybranych dla zadania eksportu w usłudze Import/Eksport Azure w wersji preview.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 7707d744-7ec7-4de8-ac9b-93a18608dc9a
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873646"
 ---
 # <a name="previewing-drive-usage-for-an-export-job"></a>Wyświetlanie podglądu użycia dysków przez zadanie eksportu
 Przed utworzeniem zadania eksportu, musisz wybrać zestaw obiektów blob do wyeksportowania. Usługa Import/Eksport Microsoft Azure umożliwia za pomocą listy ścieżek obiektów blob lub prefiksy, do reprezentowania obiektów blob wybranego obiektu blob.  

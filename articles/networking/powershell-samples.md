@@ -1,17 +1,17 @@
 ---
-title: "Przykłady programu Azure PowerShell | Dokumentacja firmy Microsoft"
-description: "Przykłady programu Azure PowerShell"
+title: Przykłady programu Azure PowerShell | Dokumentacja firmy Microsoft
+description: Przykłady programu Azure PowerShell
 services: virtual-network
 documentationcenter: virtual-network
 author: georgewallace
 manager: timlt
 editor: tysonn
-tags: 
-ms.assetid: 
+tags: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/24/2017
 ms.author: georgewallace
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23926354"
 ---
 # <a name="azure-powershell-samples-for-networking"></a>Przykładów dla platformy Azure PowerShell do obsługi sieci
 

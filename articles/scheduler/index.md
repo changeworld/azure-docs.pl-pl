@@ -1,11 +1,11 @@
 ---
-title: "Dokumentacja usługi Azure Scheduler — samouczki i dokumentacja interfejsu API | Microsoft Docs"
-description: "Dowiedz się, jak za pomocą usługi Scheduler planować i wywoływać zadania, takie jak cykliczne akcje aplikacji i działania w zakresie rutynowej konserwacji. Samouczki, dokumentacja interfejsu API i inne materiały."
+title: Dokumentacja usługi Azure Scheduler — samouczki i dokumentacja interfejsu API | Microsoft Docs
+description: Dowiedz się, jak za pomocą usługi Scheduler planować i wywoływać zadania, takie jak cykliczne akcje aplikacji i działania w zakresie rutynowej konserwacji. Samouczki, dokumentacja interfejsu API i inne materiały.
 services: scheduler
 author: carolz
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: scheduler
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23071351"
 ---
 # <a name="scheduler-documentation"></a>Dokumentacja usługi Scheduler
 

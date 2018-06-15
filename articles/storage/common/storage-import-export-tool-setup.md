@@ -1,12 +1,12 @@
 ---
-title: "Trwa konfigurowanie narzędzia importu/eksportu Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować Przygotowanie stacji i napraw narzędzia usługi Import/Eksport Azure."
+title: Trwa konfigurowanie narzędzia importu/eksportu Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować Przygotowanie stacji i napraw narzędzia usługi Import/Eksport Azure.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873926"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>Trwa konfigurowanie narzędzia importu/eksportu Azure
 

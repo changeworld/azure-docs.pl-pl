@@ -1,11 +1,11 @@
 ---
-title: "Jak używać protokołu AMQP 1.0 przy użyciu interfejsu API języka Java Service Bus | Dokumentacja firmy Microsoft"
-description: "Jak używać usługi komunikat Java (JMS) z usługi Azure Service Bus i zaawansowane komunikatów usługi kolejkowania wiadomości Protodol (AMQP) 1.0."
+title: Jak używać protokołu AMQP 1.0 przy użyciu interfejsu API języka Java Service Bus | Dokumentacja firmy Microsoft
+description: Jak używać usługi komunikat Java (JMS) z usługi Azure Service Bus i zaawansowane komunikatów usługi kolejkowania wiadomości Protodol (AMQP) 1.0.
 services: service-bus-messaging
 documentationcenter: java
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: be766f42-6fd1-410c-b275-8c400c811519
 ms.service: service-bus-messaging
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23868382"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Jak używać języka Java wiadomości usługi (JMS) interfejsu API z usługi Service Bus i protokołu AMQP 1.0
 Zaawansowane komunikatów usługi kolejkowania wiadomości protokołu (AMQP) 1.0 to wydajne, niezawodne i poziom przewodowy obsługi wiadomości protokół służy do tworzenia aplikacji wiadomości niezawodne, między platformami.
