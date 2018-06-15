@@ -11,13 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/03/2018
+ms.date: 05/29/2018
 ms.author: shlo
-ms.openlocfilehash: 08fcc2eec1914d9f7535ea66d33045240452e2a6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e9fb1088110212a0971ea1af7bbfbecb7d150e21
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715041"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Wyzwalacze i wykonywanie potoku w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -138,6 +139,7 @@ Pełny przykład można znaleźć w artykule [Szybki start: tworzenie fabryki da
 Wyzwalacze to inny sposób wykonywania uruchomienia potoku. Wyzwalacze reprezentują jednostki przetwarzania, które określają, kiedy należy rozpocząć wykonanie potoku. Obecnie usługa Data Factory obsługuje 2 typy wyzwalaczy:
 
 - Wyzwalacz harmonogramu: wyzwalacz, który wywołuje potok zgodnie z harmonogramem zegarowym.
+
 - Wyzwalacz okna wirowania: wyzwalacz działający w okresowych interwałach przy zachowaniu stanu. Usługa Azure Data Factory nie obsługuje obecnie wyzwalaczy opartych na zdarzeniach. Na przykład wyzwalacz dla uruchomienia potoku reagującego na zdarzenie otrzymania pliku nie jest obsługiwany.
 
 Między potokami i wyzwalaczami występuje relacja wiele-do-wielu. Wiele wyzwalaczy może uruchamiać jeden potok, a jeden wyzwalacz może uruchamiać wiele potoków. W poniższej definicji wyzwalacza właściwość **pipelines** odnosi się do listy potoków wyzwalanych przez określony wyzwalacz. Definicja właściwości zawiera wartości dla parametrów potoku.
@@ -175,7 +177,9 @@ Wyzwalacz harmonogramu uruchamia potoki zgodnie z harmonogramem zegarowym. Ten w
 Aby uzyskać więcej informacji o wyzwalaczach harmonogramu i przykładach, zobacz [Tworzenie wyzwalacza harmonogramu](how-to-create-schedule-trigger.md).
 
 ## <a name="tumbling-window-trigger"></a>Wyzwalacz okna wirowania
-Wyzwalacze okna wirowania to rodzaj wyzwalaczy uruchamianych w określonych odstępach czasu od wskazanego czasu rozpoczęcia przy zachowaniu stanu. Okna wirowania to ciągłe, nienakładające się na siebie serie odstępów czasu o stałych rozmiarach. Aby uzyskać więcej informacji o wyzwalaczach okna wirowania i przykładach, zobacz [Tworzenie wyzwalacza okna wirowania](how-to-create-tumbling-window-trigger.md).
+Wyzwalacze okna wirowania to rodzaj wyzwalaczy uruchamianych w określonych odstępach czasu od wskazanego czasu rozpoczęcia przy zachowaniu stanu. Okna wirowania to ciągłe, nienakładające się na siebie serie odstępów czasu o stałych rozmiarach.
+
+Aby uzyskać więcej informacji o wyzwalaczach okna wirowania i przykładach, zobacz [Tworzenie wyzwalacza okna wirowania](how-to-create-tumbling-window-trigger.md).
 
 ## <a name="schedule-trigger-definition"></a>Definicja wyzwalacza harmonogramu
 Tworząc wyzwalacz harmonogramu, należy określić planowanie i powtarzanie przy użyciu definicji JSON. 
@@ -280,8 +284,8 @@ Poniższa tabela zawiera ogólne omówienie głównych elementów schematu odnos
 
 | Właściwość JSON | Typ | Wymagany | Wartość domyślna | Prawidłowe wartości | Przykład |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | ciąg | Yes | None | Daty i godziny ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** | obiekt | Yes | None | Obiekt cyklu | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **startTime** | ciąg | Yes | Brak | Daty i godziny ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **recurrence** | obiekt | Yes | Brak | Obiekt cyklu | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | numer | Nie | 1 | Od 1 do 1000 | `"interval":10` |
 | **endTime** | ciąg | Yes | Brak | Wartość daty i godziny reprezentująca godzinę w przyszłości | `"endTime" : "2013-02-09T09:30:00-08:00"` |
 | **schedule** | obiekt | Nie | Brak | Obiekt harmonogramu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |

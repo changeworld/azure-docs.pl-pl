@@ -1,11 +1,11 @@
 ---
-title: "Utwórz kontener usługi chmury przy użyciu programu PowerShell | Dokumentacja firmy Microsoft"
-description: "W tym artykule wyjaśniono, jak utworzyć kontener usługi chmury przy użyciu programu PowerShell. Kontener obsługuje role sieci web i proces roboczy."
+title: Utwórz kontener usługi chmury przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
+description: W tym artykule wyjaśniono, jak utworzyć kontener usługi chmury przy użyciu programu PowerShell. Kontener obsługuje role sieci web i proces roboczy.
 services: cloud-services
 documentationcenter: .net
 author: cawaMS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c8f32469-610e-4f37-a3aa-4fac5c714e13
 ms.service: cloud-services
 ms.devlang: dotnet
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29376137"
 ---
 # <a name="use-an-azure-powershell-command-to-create-an-empty-cloud-service-container"></a>Użyj polecenia programu Azure PowerShell, aby utworzyć kontener usługi chmury pusty
 W tym artykule wyjaśniono, jak szybko utworzyć kontener usługi w chmurze przy użyciu poleceń cmdlet programu Azure PowerShell. Wykonaj poniższe kroki:

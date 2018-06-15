@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/16/2018
+ms.date: 05/31/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 0460d595bc70ec09d492221485749ece32ec07df
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e9f186e682ef8f4606c50452f2e26b0d11580933
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209712"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715993"
 ---
 # <a name="migrate-azure-vms-to-another-region"></a>Migrowanie maszyn wirtualnych platformy Azure do innego regionu
 
@@ -28,9 +28,7 @@ Ten samouczek przedstawia sposób migracji maszyn wirtualnych platformy Azure do
 
 W tym samouczku założono, że masz już subskrypcję platformy Azure. Jeśli jeszcze jej nie masz, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/).
 
->[!NOTE]
->
-> Replikacja usługi Site Recovery na potrzeby maszyn wirtualnych platformy Azure jest obecnie dostępna w wersji zapoznawczej.
+
 
 
 

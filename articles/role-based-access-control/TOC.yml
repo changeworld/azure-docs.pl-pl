@@ -5,6 +5,16 @@
 - name: Kontrola dostępu oparta na rolach (RBAC)
   href: overview.md
   items:
+    - name: Przewodniki Szybki start
+      items:
+        - name: Udzielanie dostępu użytkownikowi — portal
+          href: quickstart-assign-role-user-portal.md
+    - name: Samouczki
+      items:
+        - name: Udzielanie dostępu użytkownikowi — PowerShell
+          href: tutorial-role-assignments-user-powershell.md
+        - name: Udzielanie dostępu grupie — PowerShell
+          href: tutorial-role-assignments-group-powershell.md
     - name: Zarządzanie przypisaniami ról
       items:
         - name: Użytkownik
@@ -17,11 +27,13 @@
           href: role-assignments-powershell.md
         - name: REST
           href: role-assignments-rest.md
+    - name: Omówienie definicji ról
+      href: role-definitions.md
     - name: Wbudowane role
       href: built-in-roles.md
     - name: Role niestandardowe
       href: custom-roles.md
-    - name: Przypisywanie ról niestandardowych dla użytkowników wewnętrznych i zewnętrznych
+    - name: Zarządzanie przypisaniami ról dla użytkowników zewnętrznych
       href: role-assignments-external-users.md
     - name: Dzienniki aktywności
       href: change-history-report.md

@@ -13,6 +13,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33777263"
 ---
 # <a name="what-is-search-traffic-analytics"></a>Co to jest analiza ruchu wyszukiwania
 Analiza ruchu wyszukiwania to wzorzec wykonania sprzężenia zwrotnego dla usługi wyszukiwania. Ten wzorzec opisano niezbędnych danych i jak zbierać za pomocą usługi Application Insights, wiodące branży monitorowania usług w wielu platform.

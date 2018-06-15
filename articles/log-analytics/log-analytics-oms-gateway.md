@@ -19,6 +19,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34271653"
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Łączenie komputerów bez dostępu do Internetu za pomocą bramy OMS
 W tym dokumencie opisano sposób konfigurowania komunikacji przy użyciu automatyzacji Azure i analizy dzienników przy użyciu bramy OMS, gdy bezpośrednie połączenia lub Operations Manager monitorowane komputery nie mają dostępu do Internetu.  Brama OMS, czyli protokołu HTTP do przodu serwera proxy, który obsługuje tunelowania przy użyciu połączenia HTTP polecenia HTTP, można zbierać dane i przesyła do automatyzacji Azure i analizy dzienników w ich imieniu.  

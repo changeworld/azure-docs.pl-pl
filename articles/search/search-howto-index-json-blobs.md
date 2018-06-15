@@ -14,6 +14,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34363006"
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Indeksowanie obiektów blob JSON z indeksatora obiektów blob Azure Search
 W tym artykule przedstawiono sposób skonfigurować indeksator usługi Azure Search obiektu blob do wyodrębniania zawartości strukturalnych z obiektów blob JSON w magazynie obiektów Blob Azure.

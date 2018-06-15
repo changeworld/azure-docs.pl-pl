@@ -1,6 +1,6 @@
 ---
-title: "Replikowanie wielowarstwowych aplikacji usług IIS na podstawie sieci web przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak replikowanie IIS sieci web farmy maszyn wirtualnych przy użyciu usługi Azure Site Recovery."
+title: Replikowanie wielowarstwowych aplikacji usług IIS na podstawie sieci web przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak replikowanie IIS sieci web farmy maszyn wirtualnych przy użyciu usługi Azure Site Recovery.
 services: site-recovery
 author: nsoneji
 manager: gauravd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29809424"
 ---
 # <a name="replicate-a-multi-tier-iis-based-web-application"></a>Replikowanie wielowarstwowych aplikacji usług IIS na podstawie sieci web
 

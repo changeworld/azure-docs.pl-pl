@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie swapfile na Maszynę wirtualną systemu Linux za pomocą init chmurze | Dokumentacja firmy Microsoft"
-description: "Jak skonfigurować swapfile na maszynie wirtualnej systemu Linux podczas tworzenia 2.0 interfejsu wiersza polecenia platformy Azure przy użyciu inicjowania chmury"
+title: Konfigurowanie swapfile na Maszynę wirtualną systemu Linux za pomocą init chmurze | Dokumentacja firmy Microsoft
+description: Jak skonfigurować swapfile na maszynie wirtualnej systemu Linux podczas tworzenia 2.0 interfejsu wiersza polecenia platformy Azure przy użyciu inicjowania chmury
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rickstercdn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29952602"
 ---
 # <a name="use-cloud-init-to-configure-a-swapfile-on-a-linux-vm"></a>Konfigurowanie swapfile na Maszynę wirtualną systemu Linux za pomocą init chmury
 W tym artykule przedstawiono sposób użycia [init chmury](https://cloudinit.readthedocs.io) skonfigurować swapfile w różnych dystrybucje systemu Linux. Swapfile tradycyjnie została skonfigurowana przez Linux Agent (WALA) oparte na które dystrybucji wymagany jeden.  Ten dokument zostanie wchodzą w skład procesu tworzenia swapfile na żądanie w czasie inicjowania obsługi administracyjnej za pomocą init chmury.  Aby uzyskać więcej informacji na temat chmury inicjowania działania natywnie Azure i obsługiwanych dystrybucjach systemu Linux, zobacz [init chmury — omówienie](using-cloud-init.md)

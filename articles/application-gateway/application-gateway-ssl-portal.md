@@ -16,6 +16,7 @@ ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/04/2018
+ms.locfileid: "33204986"
 ---
 # <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Utwórz bramę aplikacji z kończenia żądań SSL przy użyciu portalu Azure
 

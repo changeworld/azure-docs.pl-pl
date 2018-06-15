@@ -9,11 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 2438914449ff609d149fca20f2f3756576877752
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1268ed0f5c46e0f65e1bf5381f2baca95fa0b915
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34610603"
 ---
 # <a name="tutorial-deploy-a-container-to-azure-container-instances"></a>Samouczek: wdrażanie kontenera w usłudze Azure Container Instances
 
@@ -55,7 +56,7 @@ az acr credential show --name <acrName> --query "passwords[0].value"
 Teraz użyj polecenia [az container create][az-container-create], aby wdrożyć kontener. Zastąp elementy `<acrLoginServer>` i `<acrPassword>` wartościami uzyskanymi przy użyciu dwóch poprzednich poleceń. Zastąp wartość `<acrName>` nazwą rejestru kontenerów.
 
 ```azurecli
-az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-username <acrName> --registry-password <acrPassword> --dns-name-label aci-demo --ports 80
+az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <acrName> --registry-password <acrPassword> --dns-name-label aci-demo --ports 80
 ```
 
 W ciągu kilku sekund powinna pojawić się początkowa odpowiedź z platformy Azure. Wartość `--dns-name-label` musi być unikatowa w regionie platformy Azure, w którym tworzysz wystąpienia kontenera. Zmodyfikuj wartość w poprzednim poleceniu, jeśli podczas wykonywania polecenia zostanie wyświetlony komunikat o błędzie **etykiety nazwy DNS**.

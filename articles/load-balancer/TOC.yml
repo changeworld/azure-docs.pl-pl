@@ -74,6 +74,8 @@
       href: load-balancer-standard-public-zone-redundant-cli.md
     - name: Równoważenie obciążenia maszyn wirtualnych w strefie (interfejs wiersza polecenia)
       href: load-balancer-standard-public-zonal-cli.md
+    - name: Tworzenie usługi Azure Load Balancer przy użyciu interfejsu API REST
+      href: create-load-balancer-rest-api.md
     - name: Tworzenie usługi Load Balancer w warstwie Podstawowa (szablon)
       href: load-balancer-get-started-internet-arm-template.md
     - name: Tworzenie publicznego modułu równoważenia obciążenia przy użyciu protokołu IPv6
@@ -106,6 +108,8 @@
           href: load-balancer-multiple-ip-powershell.md
     - name: Analiza dzienników dotyczących usługi Azure Load Balancer
       href: load-balancer-monitor-log.md
+    - name: Pobieranie metryk usługi Load Balancer
+      href: load-balancer-query-metrics-rest-api.md
     - name: Konfigurowanie portów wysokiej dostępności dla wewnętrznego modułu równoważenia obciążenia
       href: load-balancer-configure-ha-ports.md
     - name: Rozwiązywanie problemów

@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/16/2018
+ms.date: 05/31/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d707122f79b37dd6b979be09693011dead988156
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 5cfca7f0413a680369c926f58d0a4e15f182a5b3
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211671"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716486"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure
 
@@ -28,7 +28,7 @@ W tym samouczku przedstawiono sposób konfigurowania odzyskiwania po awarii dla 
 > * Konfigurowanie wychodzącego dostępu dla maszyn wirtualnych
 > * Włączanie replikacji maszyny wirtualnej
 
-Replikacja z platformy Azure na platformę Azure jest obecnie w wersji zapoznawczej.
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 W celu ukończenia tego samouczka:

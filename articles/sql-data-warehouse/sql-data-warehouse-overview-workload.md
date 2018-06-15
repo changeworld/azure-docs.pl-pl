@@ -15,6 +15,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31794613"
 ---
 # <a name="data-warehouse-workload"></a>Obciążenie magazynu danych
 Obciążenie magazynu danych odwołuje się do wszystkich operacji wykonywanych w magazynie danych. Obciążenie magazynu danych uwzględnia cały proces ładowania danych do magazynu, wykonywanie analiz i raportów odnoszących się do magazynu danych, zarządzanie danymi w magazynie oraz eksportowanie danych z magazynu. Stopień zaawansowania i zasięgu tych składników często wynika bezpośrednio z poziomu dojrzałości magazynu danych.

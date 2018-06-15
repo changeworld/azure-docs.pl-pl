@@ -18,6 +18,7 @@ ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34305229"
 ---
 # <a name="create-azure-portal-user-interface-for-your-managed-application"></a>Tworzenie interfejsu użytkownika portalu Azure w aplikacji zarządzanej
 Tym dokumencie przedstawiono podstawowe koncepcje createUiDefinition.json pliku. Azure portal używa tego pliku do generowania interfejsu użytkownika do tworzenia zarządzanej aplikacji.

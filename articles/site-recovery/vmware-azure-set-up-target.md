@@ -1,6 +1,6 @@
 ---
-title: "Przygotowanie środowiska docelowego dla replikacji maszyn wirtualnych VMware do platformy Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób przygotowania urządzenie docelowe środowiska platformy Azure dla replikacji maszyny Wirtualnej VMware do platformy Azure."
+title: Przygotowanie środowiska docelowego dla replikacji maszyn wirtualnych VMware do platformy Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób przygotowania urządzenie docelowe środowiska platformy Azure dla replikacji maszyny Wirtualnej VMware do platformy Azure.
 services: site-recovery
 author: bsiva
 manager: abhemraj
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29812635"
 ---
 # <a name="prepare-the-target-environment-for-vmware-replication-to-azure"></a>Przygotowanie środowiska docelowego dla replikacji maszyn wirtualnych VMware do platformy Azure
 

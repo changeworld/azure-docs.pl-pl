@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/15/2018
+ms.date: 05/31/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: fb1c41e6fe254fbcbee8cb91a177777ed4e37fbb
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f1d3076957a98eab68e0e566d8d0c594b385ee2f
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208978"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716044"
 ---
 # <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>Uruchamianie próbnego odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure
 
@@ -26,7 +26,7 @@ W tym samouczku przedstawiono sposób uruchamiania próbnego odzyskiwania po awa
 > * Sprawdzanie wymagań wstępnych
 > * Uruchamianie testu trybu failover dla pojedynczej maszyny wirtualnej
 
-Replikacja z platformy Azure na platformę Azure jest obecnie w wersji zapoznawczej.
+
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
