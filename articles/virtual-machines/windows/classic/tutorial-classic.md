@@ -21,6 +21,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30917833"
 ---
 # <a name="create-a-virtual-machine-running-windows-in-the-azure-portal"></a>Utwórz maszynę wirtualną z systemem Windows w portalu Azure
 > [!div class="op_single_selector"]

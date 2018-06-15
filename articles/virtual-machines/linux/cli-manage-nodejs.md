@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30842231"
 ---
 # <a name="common-azure-cli-10-commands-on-linux-and-mac"></a>Typowe polecenia interfejsu wiersza polecenia platformy Azure w wersji 1.0 w systemie Linux i komputerów Mac
 [!INCLUDE [virtual-machines-common-cli-manage-nodejs](../../../includes/virtual-machines-common-cli-manage-nodejs.md)]

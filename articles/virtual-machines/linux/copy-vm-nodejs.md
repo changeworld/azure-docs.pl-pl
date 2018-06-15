@@ -19,6 +19,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30906943"
 ---
 # <a name="create-a-copy-of-a-linux-virtual-machine-running-on-azure-with-the-azure-cli-10"></a>Utworzenie kopii maszyny wirtualnej systemu Linux działających na platformie Azure z interfejsu wiersza polecenia platformy Azure w wersji 1.0
 W tym artykule pokazano, jak utworzyć kopię Azure maszyny wirtualnej (VM) systemem Linux przy użyciu modelu wdrażania Menedżera zasobów. Najpierw skopiowaniu za pośrednictwem systemu operacyjnego i dysków z danymi do nowego kontenera, a następnie skonfigurować zasoby sieciowe i tworzenie nowej maszyny wirtualnej.

@@ -14,6 +14,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31412114"
 ---
 # <a name="tutorial-set-up-alerts-for-azure-stream-analytics-jobs"></a>Samouczek: Ustawianie alertów dla zadania usługi analiza strumienia Azure
 Alerty można skonfigurować do wyzwolenia alertu, gdy metryki osiągnie warunek, który określisz. Na przykład skonfigurować alert dla warunku podobne do poniższych:

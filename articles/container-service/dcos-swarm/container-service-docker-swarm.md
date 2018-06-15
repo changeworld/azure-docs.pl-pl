@@ -1,6 +1,6 @@
 ---
-title: "Zarządzanie klastrem Azure Swarm z interfejsu API Docker"
-description: "Wdrażanie kontenerów do klastra Docker Swarm usługi kontenera platformy Azure"
+title: Zarządzanie klastrem Azure Swarm z interfejsu API Docker
+description: Wdrażanie kontenerów do klastra Docker Swarm usługi kontenera platformy Azure
 services: container-service
 author: rgardler
 manager: madhana
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26331549"
 ---
 # <a name="container-management-with-docker-swarm"></a>Zarządzanie kontenerami przy użyciu rozwiązania Docker Swarm
 

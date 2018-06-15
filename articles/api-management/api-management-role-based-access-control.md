@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31393875"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Jak używać opartej na rolach kontroli dostępu w usłudze Azure API Management
 Zarządzanie interfejsami API Azure polega na kontroli dostępu based (RBAC) umożliwia precyzyjne zarządzanie dostępem dla usługi interfejsu API zarządzania i jednostek (na przykład interfejsów API i zasady). Ten artykuł zawiera przegląd ról wbudowanych i niestandardowych w usłudze API Management. Aby uzyskać więcej informacji dotyczących zarządzania dostępem w portalu Azure, zobacz [wprowadzenie do zarządzania dostępem w portalu Azure](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/).

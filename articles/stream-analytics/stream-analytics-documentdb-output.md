@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30907120"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics dane wyjściowe do bazy danych Azure rozwiązania Cosmos  
 Analiza strumienia może kierować [bazy danych Azure rozwiązania Cosmos](https://azure.microsoft.com/services/documentdb/) dla danych wyjściowych JSON, włączanie archiwizacji i małych opóźnieniach kwerend danych na dane JSON bez struktury. W tym dokumencie opisano najważniejsze wskazówki dotyczące implementowania tej konfiguracji.

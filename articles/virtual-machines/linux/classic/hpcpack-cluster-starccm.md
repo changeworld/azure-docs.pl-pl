@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30841491"
 ---
 # <a name="run-star-ccm-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Uruchomienie GWIAZDĘ — CCM + z pakietem Microsoft HPC na Linux RDMA klaster na platformie Azure
 W tym artykule przedstawiono sposób wdrażania klastra Microsoft HPC Pack na platformie Azure i uruchom [GWIAZDKĘ CD adapco-CCM +](http://www.cd-adapco.com/products/star-ccm%C2%AE) zadania na wielu węzłach obliczeniowych Linux, które są wzajemnie InfiniBand.

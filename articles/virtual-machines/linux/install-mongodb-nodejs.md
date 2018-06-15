@@ -19,6 +19,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30907891"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm-using-the-azure-cli-10"></a>Jak zainstalować i skonfigurować bazy danych MongoDB na Maszynę wirtualną systemu Linux przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure
 [Bazy danych MongoDB](http://www.mongodb.org) jest popularnych open source, wysokiej wydajności bazę danych NoSQL. W tym artykule przedstawiono sposób instalowania i konfigurowania bazy danych MongoDB na Maszynę wirtualną systemu Linux na platformie Azure przy użyciu modelu wdrażania Menedżera zasobów. Przykłady są wyświetlane szczegóły tego jak do:

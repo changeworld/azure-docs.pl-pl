@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31402040"
 ---
 # <a name="monitor-hadoop-clusters-in-hdinsight-using-the-ambari-api"></a>Zarządzanie klastrami Hadoop w usłudze HDInsight przy użyciu interfejsów API systemu Ambari
 Informacje o sposobie monitorowania klastrów usługi HDInsight przy użyciu Ambari API.

@@ -1,6 +1,6 @@
 ---
-title: "Kursy zabezpieczeń platformy Azure z Microsoft Virtual Academy | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera zbiór wyselekcjonowanych zabezpieczeń platformy Azure powiązane z Microsoft Virtual Academy kursy.  Microsoft Virtual Academy udostępnia bezpłatne, online szkolenia pomóc deweloperom IT i specjalistów danych i studenci Dowiedz się najnowszych technologii, tworzenia ich umiejętności i poprawić ich możliwości podnoszenia kwalifikacji."
+title: Kursy zabezpieczeń platformy Azure z Microsoft Virtual Academy | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera zbiór wyselekcjonowanych zabezpieczeń platformy Azure powiązane z Microsoft Virtual Academy kursy.  Microsoft Virtual Academy udostępnia bezpłatne, online szkolenia pomóc deweloperom IT i specjalistów danych i studenci Dowiedz się najnowszych technologii, tworzenia ich umiejętności i poprawić ich możliwości podnoszenia kwalifikacji.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2017
+ms.locfileid: "25540052"
 ---
 # <a name="azure-security-courses-from-microsoft-virtual-academy"></a>Kursy zabezpieczeń platformy Azure z Microsoft Virtual Academy
 Microsoft Virtual Academy udostępnia bezpłatne, online szkolenia pomóc deweloperom IT i specjalistów danych i studenci Dowiedz się najnowszych technologii, tworzenia ich umiejętności i poprawić ich możliwości podnoszenia kwalifikacji.

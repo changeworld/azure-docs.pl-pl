@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31399419"
 ---
 # <a name="query-hive-through-the-jdbc-driver-in-hdinsight"></a>Zapytanie Hive za pośrednictwem sterownik JDBC w usłudze HDInsight
 

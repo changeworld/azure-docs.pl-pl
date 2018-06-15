@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30916354"
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>Obsługa planowanych konserwacji powiadomienia dla maszyn wirtualnych systemu Windows
 

@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30918153"
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>Przenieś Maszynę wirtualną systemu Windows do innego Azure subskrypcji lub grupy zasobów
 W tym artykule przedstawiono sposób przenoszenia maszyny Wirtualnej systemu Windows między grupami zasobów lub subskrypcji. Przenoszenie między subskrypcjami można skorzystać, jeśli pierwotnie utworzono Maszynę wirtualną w osobistych subskrypcji i chcesz teraz Przenieś go do subskrypcji w firmie, aby kontynuować pracę.

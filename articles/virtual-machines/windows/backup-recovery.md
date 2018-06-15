@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30915222"
 ---
 # <a name="backup-and-restore-options-for-virtual-machines-in-azure"></a>Opcje kopii zapasowej i przywracania dla maszyn wirtualnych na platformie Azure
 Możesz chronić swoje dane, tworząc kopie zapasowe w regularnych odstępach czasu. Brak dostępnych kilka opcji tworzenia kopii zapasowej dla maszyn wirtualnych, w zależności od przypadek użycia.

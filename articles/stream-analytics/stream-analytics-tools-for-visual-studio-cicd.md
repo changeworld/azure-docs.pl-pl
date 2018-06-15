@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30906277"
 ---
 # <a name="continuously-integrate-and-develop-with-stream-analytics-tools"></a>Ciągłej integracji i opracowywania narzędzia analiza strumienia
 W tym artykule opisano sposób użycia na potrzeby ciągłej integracji i wdrażania proces narzędzia analiza strumienia Azure dla programu Visual Studio.

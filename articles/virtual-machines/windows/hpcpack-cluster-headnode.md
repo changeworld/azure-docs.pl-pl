@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30915263"
 ---
 # <a name="create-the-head-node-of-an-hpc-pack-cluster-in-an-azure-vm-with-a-marketplace-image"></a>Tworzenie węzła głównego klastra pakietu HPC Pack na maszynie wirtualnej platformy Azure przy użyciu obrazu portalu Marketplace
 Użyj [obraz maszyny wirtualnej Microsoft HPC Pack 2012 R2](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) z portalu Azure Marketplace i portalu Azure, można utworzyć węzła głównego klastra HPC. Tego obrazu maszyny Wirtualnej programu HPC Pack jest oparta na systemie Windows Server 2012 R2 Datacenter z preinstalowanym HPC Pack 2012 R2 Update 3. Użyj tego węzła głównego do weryfikacji koncepcji wdrożenia pakietu HPC na platformie Azure. Następnie można dodać węzłów obliczeniowych do klastra do uruchamiania obciążeń HPC.

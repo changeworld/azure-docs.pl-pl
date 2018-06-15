@@ -1,11 +1,11 @@
 ---
-title: "Omówienie obsługi komunikatów kolejek, tematów i subskrypcji usługi Azure Service Bus | Dokumentacja firmy Microsoft"
-description: "Przegląd jednostki do obsługi komunikatów usługi Service Bus."
+title: Omówienie obsługi komunikatów kolejek, tematów i subskrypcji usługi Azure Service Bus | Dokumentacja firmy Microsoft
+description: Przegląd jednostki do obsługi komunikatów usługi Service Bus.
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a306ced4-74e9-47c6-990a-d9c47efa31d5
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/07/2017
+ms.locfileid: "24029511"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Kolejki, tematy i subskrypcje usługi Service Bus
 

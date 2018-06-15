@@ -13,6 +13,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/20/2018
+ms.locfileid: "30929329"
 ---
 Poniższej tabeli wymieniono wymagania dla bram PolicyBased i RouteBased sieci VPN. Ta tabela ma zastosowanie w obu modelach wdrażania — przy użyciu usługi Resource Manager i klasycznym. W przypadku modelu klasycznego bramy sieci VPN PolicyBased są takie same, jak bramy statyczne, a bramy oparte na trasach są takie same, jak bramy dynamiczne.
 

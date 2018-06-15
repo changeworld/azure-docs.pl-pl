@@ -13,6 +13,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30325331"
 ---
 >[!NOTE]
 >Konfiguracja początkowego stanu bliźniaczej reprezentacji urządzenia jest dostępna tylko w warstwie standardowa usługi IoT Hub. Aby uzyskać więcej informacji na temat warstw Podstawowa i Standardowa usługi IoT Hub, zobacz [Jak wybrać właściwą warstwę usługi IoT Hub](../articles/iot-hub/iot-hub-scaling.md).

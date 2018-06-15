@@ -18,6 +18,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31409759"
 ---
 # <a name="os-patching-for-hdinsight"></a>Poprawki dla usługi HDInsight systemu operacyjnego 
 Jako zarządzanej usługi Hadoop HDInsight zapewnia obsługę stosowanie poprawek systemu operacyjnego źródłowej maszyn wirtualnych używanych przez klastry usługi HDInsight. Począwszy od 1 sierpnia 2016 zmieniono zasady stosowania poprawek systemu operacyjnego gościa opartych na systemie Linux klastrów usługi HDInsight (w wersji 3.4 lub nowszej). Celem nowych zasad jest znacznie zmniejszyć liczbę ponownych uruchomień komputera z powodu stosowania poprawek. Nowe zasady będzie poprawki maszynach wirtualnych (VM) w systemie Linux klastrów każdego poniedziałek i czwartek, zaczynając od 00: 00 czasu UTC, w sposób rozłożone w węzłach żadnego danego klastra. Jednak żadnej danej maszyny Wirtualnej zostanie uruchomiony tylko co najwyżej raz na 30 dni z powodu stosowania poprawek systemu operacyjnego gościa. Ponadto ponownym dla nowo utworzony klaster nie nastąpi szybciej niż 30 dni od daty utworzenia klastra. Poprawki zostaną zastosowane po maszyn wirtualnych są ponownie uruchamiane.

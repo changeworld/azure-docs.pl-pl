@@ -1,8 +1,8 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Usługa Jenkins na platformie Azure"
+title: Usługa Jenkins na platformie Azure
 metadata:
-  description: "Wdrażanie i integrowanie rozwiązania Jenkins z platformą Azure"
+  description: Wdrażanie i integrowanie rozwiązania Jenkins z platformą Azure
   services: multiple
   author: rloutlaw
   manager: justhe
@@ -19,8 +19,9 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: pl-PL
   ms.lasthandoff: 11/08/2017
+  ms.locfileid: "24052161"
 abstract:
-  description: "Za pomocą serwera „open source” Jenkins można tworzyć aplikacje w chmurze i wdrażać je na platformie Azure. Dowiedz się, jak zainstalować, skonfigurować i skalować usługę Jenkins na platformie Azure oraz skonfigurować ciągłą integrację dla aplikacji, korzystając z przewodników Szybki start, samouczków i przykładowych potoków."
+  description: Za pomocą serwera „open source” Jenkins można tworzyć aplikacje w chmurze i wdrażać je na platformie Azure. Dowiedz się, jak zainstalować, skonfigurować i skalować usługę Jenkins na platformie Azure oraz skonfigurować ciągłą integrację dla aplikacji, korzystając z przewodników Szybki start, samouczków i przykładowych potoków.
   aside:
     image:
       alt: Jenkins logo
@@ -32,7 +33,7 @@ sections:
 - title: 5-minutowe przewodniki Szybki start
   items:
   - type: paragraph
-    text: "Utwórz system Jenkins na platformie Azure i utwórz aplikację."
+    text: Utwórz system Jenkins na platformie Azure i utwórz aplikację.
   - type: list
     style: icon48
     items:
@@ -43,17 +44,17 @@ sections:
 - title: Samouczki krok po kroku
   items:
   - type: paragraph
-    text: "Skonfiguruj ciągłą integrację dla aplikacji, uruchamiaj agentów w chmurze i używaj usług platformy Azure w swoich zadaniach."
+    text: Skonfiguruj ciągłą integrację dla aplikacji, uruchamiaj agentów w chmurze i używaj usług platformy Azure w swoich zadaniach.
   - type: list
     style: ordered
     items:
-    - html: "Skonfiguruj ciągłą integrację dla usługi <a href=\"/azure/jenkins/java-deploy-webapp-tutorial\">Azure App Service</a>, platformy <a href=\"/azure/container-service/kubernetes/container-service-kubernetes-jenkins\">Kubernetes</a> lub <a href=\"/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd\">maszyny wirtualnej z systemem Linux</a>."
+    - html: Skonfiguruj ciągłą integrację dla usługi <a href="/azure/jenkins/java-deploy-webapp-tutorial">Azure App Service</a>, platformy <a href="/azure/container-service/kubernetes/container-service-kubernetes-jenkins">Kubernetes</a> lub <a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">maszyny wirtualnej z systemem Linux</a>.
     - html: <a href="/azure/jenkins/execute-cli-jenkins-pipeline">Zainicjuj zasoby w zadaniu potoku</a>.
-    - html: "<a href=\"/azure/jenkins/jenkins-azure-vm-agents\">Skaluj przy użyciu agentów maszyn wirtualnych platformy Azure</a>."
-- title: "Przykłady"
+    - html: <a href="/azure/jenkins/jenkins-azure-vm-agents">Skaluj przy użyciu agentów maszyn wirtualnych platformy Azure</a>.
+- title: Przykłady
   items:
   - type: paragraph
-    text: "Przykładowe skrypty i etapy dla potoków."
+    text: Przykładowe skrypty i etapy dla potoków.
   - type: list
     style: unordered
     className: spaced noBullet
@@ -66,6 +67,6 @@ sections:
     className: cardsD
     items:
     - title: Wtyczki
-      html: "<p><a href=\"https://plugins.jenkins.io/azure-vm-agents\">Agenci maszyn wirtualnych platformy Azure</a><p><a href=\"https://plugins.jenkins.io/azure-app-service\">Azure App Service</a></p><p><a href=\"https://plugins.jenkins.io/windows-azure-storage\">Azure Storage</a></p><p><a href=\"https://plugins.jenkins.io/azure-container-agents\">Agenci kontenera platformy Azure</a><p><a href=\"https://plugins.jenkins.io/azure-function\">Wtyczka funkcji platformy Azure</a><p><a href=\"https://plugins.jenkins.io/azure-acs\">Wtyczka usługi kontenera platformy Azure</a>"
+      html: <p><a href="https://plugins.jenkins.io/azure-vm-agents">Agenci maszyn wirtualnych platformy Azure</a><p><a href="https://plugins.jenkins.io/azure-app-service">Azure App Service</a></p><p><a href="https://plugins.jenkins.io/windows-azure-storage">Azure Storage</a></p><p><a href="https://plugins.jenkins.io/azure-container-agents">Agenci kontenera platformy Azure</a><p><a href="https://plugins.jenkins.io/azure-function">Wtyczka funkcji platformy Azure</a><p><a href="https://plugins.jenkins.io/azure-acs">Wtyczka usługi kontenera platformy Azure</a>
 - type: paragraph
-  text: "<h4>Jenkins® jest zastrzeżonym znakiem towarowym firmy Software in the Public Interest, Inc. [Logo Jenkins®](https://wiki.jenkins.io/display/JENKINS/Logo) jest licencjonowane na warunkach licencji [CC BY SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) w ramach [projektu Jenkins](https://jenkins.io).</h4>"
+  text: <h4>Jenkins® jest zastrzeżonym znakiem towarowym firmy Software in the Public Interest, Inc. [Logo Jenkins®](https://wiki.jenkins.io/display/JENKINS/Logo) jest licencjonowane na warunkach licencji [CC BY SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) w ramach [projektu Jenkins](https://jenkins.io).</h4>

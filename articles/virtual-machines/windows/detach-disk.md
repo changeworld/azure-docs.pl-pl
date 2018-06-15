@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30913505"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Jak można odłączyć dysku danych od maszyny wirtualnej systemu Windows
 Gdy już nie potrzebujesz dysku danych dołączonego do maszyny wirtualnej, możesz go łatwo odłączyć. Usuwa dysk od maszyny wirtualnej, ale nie powoduje usunięcia go z magazynu.

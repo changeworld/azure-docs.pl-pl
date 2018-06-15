@@ -1,11 +1,11 @@
 ---
-title: "Zasady usługi Azure CDN aparat odwołania | Dokumentacja firmy Microsoft"
-description: "Dokumentacja referencyjna dla usługi Azure CDN zasady warunków dopasowania aparatu i funkcje."
+title: Zasady usługi Azure CDN aparat odwołania | Dokumentacja firmy Microsoft
+description: Dokumentacja referencyjna dla usługi Azure CDN zasady warunków dopasowania aparatu i funkcje.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: Lichard
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
 ms.workload: media
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29733683"
 ---
 # <a name="azure-cdn-rules-engine-reference"></a>Zasady usługi Azure CDN aparat odwołania
 W tym artykule przedstawiono szczegółowe opisy funkcji i warunki dopasowania dostępne dla usługi Azure sieci dostarczania zawartości (CDN) [aparatu reguł](cdn-rules-engine.md).

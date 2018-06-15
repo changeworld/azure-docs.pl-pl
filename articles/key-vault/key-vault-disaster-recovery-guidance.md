@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31409345"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Usługa Azure Key Vault dostępność i nadmiarowość
 Usługa Azure Key Vault funkcjami wielu warstw nadmiarowość, aby upewnić się, że kluczy i kluczy tajnych pozostają dostępne dla aplikacji nawet w przypadku awarii poszczególnych składników usługi.

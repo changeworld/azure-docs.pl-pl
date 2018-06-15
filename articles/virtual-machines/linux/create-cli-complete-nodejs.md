@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30910768"
 ---
 # <a name="create-a-complete-linux-environment-with-the-azure-cli-10"></a>Utwórz pełną środowiska Linux z interfejsu wiersza polecenia platformy Azure w wersji 1.0
 W tym artykule budujemy prosta sieć z modułem równoważenia obciążenia i para maszyn wirtualnych, które są przydatne w przypadku tworzenia i przetwarzania proste. Firma Microsoft przeprowadzenie procesu polecenie, dopóki nie uzyskasz dwóch pracy, bezpieczne maszyn wirtualnych systemu Linux których możesz połączyć z dowolnego miejsca w Internecie. Następnie możesz przejść do bardziej złożone sieci i środowiskach.

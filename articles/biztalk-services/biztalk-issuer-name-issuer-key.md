@@ -1,11 +1,11 @@
 ---
-title: "Nazwa wystawcy i klucza wystawcy usługi BizTalk Services | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak pobrać Nazwa wystawcy i klucza wystawcy dla usługi Service Bus lub kontroli dostępu (ACS) w usługach BizTalk. MABS, WABS"
+title: Nazwa wystawcy i klucza wystawcy usługi BizTalk Services | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak pobrać Nazwa wystawcy i klucza wystawcy dla usługi Service Bus lub kontroli dostępu (ACS) w usługach BizTalk. MABS, WABS
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 067fe356-d1aa-420f-b2f2-1a418686470a
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24103433"
 ---
 # <a name="biztalk-services-issuer-name-and-issuer-key"></a>BizTalk Services: Issuer Name and Issuer Key (Usługa BizTalk Services: nazwa i klucz wydawcy)
 

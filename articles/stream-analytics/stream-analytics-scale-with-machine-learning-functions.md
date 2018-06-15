@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30909279"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>Skalowanie zadania usługi analiza strumienia z funkcjami usługi Azure Machine Learning
 Jest wprost do przodu do ustawiania zadania usługi analiza strumienia i uruchamiania przykładowych danych przy jego użyciu. Co możemy zrobić, gdy będzie trzeba przeprowadzić to samo zadanie z większą ilość danych? Wymaga to nam zrozumieć, jak skonfigurować zadanie usługi Stream Analytics, aby go skaluje. W tym dokumencie możemy skupić się na specjalne aspektów skalowanie zadania usługi analiza strumienia z funkcjami usługi Machine Learning. Aby uzyskać informacje dotyczące skalowania zadania usługi analiza strumienia ogólnie rzecz biorąc, zobacz artykuł [skalowanie zadania](stream-analytics-scale-jobs.md).

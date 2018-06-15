@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30910530"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>W czasie rzeczywistym analizy usługi Azure Stream Analytics wskaźniki nastrojów klientów usługi Twitter
 

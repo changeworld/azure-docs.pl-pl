@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30904257"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Jak używać filtr pakietów FreeBSD na utworzenie bezpiecznego zapory na platformie Azure
 W tym artykule przedstawiono sposób wdrażania zapory NAT. przy użyciu filtru pakujący FreeBSD firmy przy użyciu szablonu usługi Azure Resource Manager dla typowego scenariusza serwera sieci web.

@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30907762"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Tworzenie zadania Stream Analytics krawędzi za pomocą narzędzi Visual Studio
 

@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30914847"
 ---
 # <a name="create-a-windows-high-performance-computing-hpc-cluster-with-the-hpc-pack-iaas-deployment-script"></a>Tworzenie wysokiej wydajności (HPC) klastra systemu Windows przy użyciu skryptu wdrażania HPC Pack IaaS
 Uruchom HPC Pack IaaS wdrożenie skryptu PowerShell do wdrożenia całego klastra HPC Pack 2012 R2 dla obciążeń systemu Windows na maszynach wirtualnych platformy Azure. Klaster składa się z węzłem głównym przyłączonych do usługi Active Directory systemem Windows Server i Microsoft HPC Pack i zasoby, które określisz obliczeniowe dodatkowe okna. Jeśli chcesz wdrożenie klastra HPC Pack dla systemu Linux obciążeń na platformie Azure, zobacz [utworzyć klaster HPC systemu Linux przy użyciu skryptu wdrażania HPC Pack IaaS](../../linux/classic/hpcpack-cluster-powershell-script.md). 

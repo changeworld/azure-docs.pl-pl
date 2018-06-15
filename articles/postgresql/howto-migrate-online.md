@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29692093"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-postgresql"></a>Migracja minimalnym czasem przestojów PostgreSQL bazą danych Azure
 Istniejącą bazę danych PostgreSQL można migrować do bazy danych platformy Azure dla PostgreSQL przy użyciu replikacji Attunity Migrations firmy Microsoft. Replikacja Attunity jest wspólnego z Attunity i firmy Microsoft. Wraz z usługi migracji bazy danych Azure jest uwzględniony bez ponoszenia dodatkowych kosztów do klientów firmy Microsoft. 

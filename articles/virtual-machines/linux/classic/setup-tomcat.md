@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30841619"
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>Konfigurowanie Tomcat7 na maszynie wirtualnej systemu Linux przy użyciu platformy Azure
 Apache Tomcat (lub po prostu Tomcat, również nazywanych Jakarta Tomcat) to serwer sieci web typu open source i kontener serwlet opracowane przez Foundation oprogramowania Apache (ASF). Tomcat implementuje Serwlet Java i specyfikacje JavaServer Pages (JSP) z Sun Microsystems. Tomcat zapewnia czysty Java HTTP środowisku serwera sieci web do uruchamiania kodu języka Java. W najprostszej konfiguracji Tomcat działa w procesie jeden system operacyjny. Ten proces jest uruchomiony maszyny wirtualnej Java (JVM). Każde żądanie HTTP z przeglądarki do serwera Tomcat jest przetwarzany jako oddzielnym wątku w procesie Tomcat.  

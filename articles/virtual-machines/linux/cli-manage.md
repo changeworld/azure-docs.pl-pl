@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30840131"
 ---
 # <a name="common-azure-cli-20-commands-for-managing-azure-resources"></a>Typowe polecenia 2.0 interfejsu wiersza polecenia platformy Azure do zarządzania zasobami Azure
 [!INCLUDE [virtual-machines-common-cli-manage](../../../includes/virtual-machines-common-cli-manage.md)]

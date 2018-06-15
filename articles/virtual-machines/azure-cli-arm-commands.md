@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30839148"
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Azure polecenia interfejsu wiersza polecenia w trybie Menedżera zasobów
 Ten artykuł zawiera składnię i opcje dla poleceń Azure interfejsu wiersza polecenia (CLI), który jest powszechnie stosowany do tworzenia i zarządzania zasobami Azure w modelu wdrażania usługi Azure Resource Manager. Możesz uzyskać dostępu do tych poleceń za pomocą interfejsu wiersza polecenia w trybie usługi Resource Manager (arm). To nie jest pełną dokumentację i wersji interfejsu wiersza polecenia mogą być wyświetlane nieco inne polecenia lub parametrów. Ogólne omówienie zasobów platformy Azure i grup zasobów, zobacz [Omówienie usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).  

@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30841388"
 ---
 # <a name="peer-two-virtual-networks-script-sample"></a>Przykładowy skrypt tworzący komunikację równorzędną dwóch sieci wirtualnych
 

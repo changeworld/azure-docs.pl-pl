@@ -21,6 +21,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30913488"
 ---
 # <a name="vertically-scale-azure-linux-virtual-machine-with-azure-automation"></a>Skalowanie w pionie maszyny wirtualnej systemu Linux platformy Azure w usłudze Automatyzacja Azure
 Skalowanie w pionie to proces zwiększania lub zmniejszania zasobów w odpowiedzi na obciążenie pracą maszyny. W systemie Azure można to zrobić przez zmianę rozmiaru maszyny wirtualnej. Może to pomóc w następujących scenariuszach

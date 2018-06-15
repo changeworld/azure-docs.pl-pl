@@ -1,11 +1,11 @@
 ---
-title: "Rozwiązywanie problemów z wdrożenia maszyny Wirtualnej systemu Windows — Classic | Dokumentacja firmy Microsoft"
-description: "Klasycznym Rozwiązywanie problemów dotyczących wdrożenia podczas tworzenia nowej maszyny wirtualnej systemu Windows na platformie Azure"
+title: Rozwiązywanie problemów z wdrożenia maszyny Wirtualnej systemu Windows — Classic | Dokumentacja firmy Microsoft
+description: Klasycznym Rozwiązywanie problemów dotyczących wdrożenia podczas tworzenia nowej maszyny wirtualnej systemu Windows na platformie Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: JiangChen79
 manager: felixwu
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 9f01d237-ba39-4c32-b72d-18f5f505d43a
 ms.service: virtual-machines-windows
@@ -20,6 +20,7 @@ ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/09/2017
+ms.locfileid: "24056665"
 ---
 # <a name="troubleshoot-classic-deployment-issues-with-creating-a-new-windows-virtual-machine-in-azure"></a>Rozwiązywanie problemów wdrożenie klasyczne z Tworzenie nowej maszyny wirtualnej systemu Windows na platformie Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-selectors](../../../../includes/virtual-machines-windows-troubleshoot-deployment-new-vm-selectors-include.md)]

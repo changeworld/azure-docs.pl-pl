@@ -1,12 +1,12 @@
 ---
-title: "Co to jest usługa Azure Event Hubs i dlaczego warto jej używać | Microsoft Docs"
-description: "Omówienie i wprowadzenie do usługi Azure Event Hubs — zbieranie danych telemetrycznych z witryn sieci Web, aplikacji i urządzeń w skali chmury"
+title: Co to jest usługa Azure Event Hubs i dlaczego warto jej używać | Microsoft Docs
+description: Omówienie i wprowadzenie do usługi Azure Event Hubs — zbieranie danych telemetrycznych z witryn sieci Web, aplikacji i urządzeń w skali chmury
 services: event-hubs
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: get-started-article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29686909"
 ---
 # <a name="what-is-event-hubs"></a>Co to jest usługa Event Hubs?
 

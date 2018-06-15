@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31421798"
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>Zapewnij maszyny wirtualnej nauki danych CentOS Linux na platformie Azure
 

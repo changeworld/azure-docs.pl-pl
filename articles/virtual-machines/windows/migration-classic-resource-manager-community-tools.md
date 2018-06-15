@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30913940"
 ---
 # <a name="community-tools-to-migrate-iaas-resources-from-classic-to-azure-resource-manager"></a>Narzędzia społeczności związane z migracją zasobów IaaS od modelu klasycznego do modelu opartego na usłudze Azure Resource Manager
 W tym artykule kataloguje narzędzia, które zostały dołączone przez społeczność ułatwiające migrację zasobów IaaS z klasycznego modelu wdrażania usługi Azure Resource Manager.

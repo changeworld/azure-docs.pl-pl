@@ -19,6 +19,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30915471"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat infrastruktury aktualizacji na żądanie Red Hat Enterprise Linux w maszynach wirtualnych na platformie Azure
  [Red Hat aktualizacji infrastruktury](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) umożliwia dostawcom usług chmury, takich jak Azure zawartości hostowanej Red Hat repozytorium, Utwórz niestandardowe repozytoria specyficzne dla platformy Azure zawartości i był dostępny dla maszyn wirtualnych przez użytkownika końcowego.

@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30842017"
 ---
 # <a name="run-namd-with-microsoft-hpc-pack-on-linux-compute-nodes-in-azure"></a>Uruchamianie oprogramowania NAMD przy użyciu pakietu Microsoft HPC w węzłach obliczeniowych systemu Linux na platformie Azure
 Ten artykuł przedstawia sposób do uruchamiania na maszynach wirtualnych Azure Linux obciążenia wysokiej wydajności (HPC). W tym miejscu można skonfigurować [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) klaster na platformie Azure z węzłami obliczeniowymi systemu Linux i uruchamianie [NAMD](http://www.ks.uiuc.edu/Research/namd/) symulację do obliczenia i wizualizację struktury systemu biomolekularnych duże.  

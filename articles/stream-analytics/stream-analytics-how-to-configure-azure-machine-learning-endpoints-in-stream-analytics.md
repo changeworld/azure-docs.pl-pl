@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30911205"
 ---
 # <a name="machine-learning-integration-in-stream-analytics"></a>Maszyny Learning integracji usługi analiza strumienia
 Analiza strumienia obsługuje funkcje zdefiniowane przez użytkownika, które wyróżnienia do punktów końcowych usługi Azure Machine Learning. Obsługa interfejsu API REST dla tej funkcji została szczegółowo opisana w [biblioteki interfejsu API REST usługi analiza strumienia](https://msdn.microsoft.com/library/azure/dn835031.aspx). Ten artykuł zawiera dodatkowe informacje potrzebne do pomyślnego wykonania tej funkcji w Stream Analytics. Samouczek również została opublikowana i jest dostępny [tutaj](stream-analytics-machine-learning-integration-tutorial.md).

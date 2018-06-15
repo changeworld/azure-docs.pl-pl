@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30918442"
 ---
 # <a name="use-cloud-init-to-customize-a-linux-vm-during-creation-with-the-azure-cli-10"></a>Użyć init chmury w celu dostosowania Maszynę wirtualną systemu Linux podczas tworzenia z interfejsu wiersza polecenia platformy Azure w wersji 1.0
 W tym artykule przedstawiono sposób wprowadzania skryptu init chmury, ustawiania nazwy hosta, zainstalowano aktualizację pakietów i zarządzanie kontami użytkowników.  Skrypty chmurze init wywoływane podczas tworzenia maszyny Wirtualnej z wiersza polecenia platformy Azure.  Wykonanie czynności opisanych w tym artykule wymaga:

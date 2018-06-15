@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30915314"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-image-by-using-the-azure-cli-10"></a>Przekazywanie i Utwórz Maszynę wirtualną systemu Linux na podstawie obrazu niestandardowego dysku przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure
 W tym artykule przedstawiono sposób przekazywania wirtualnego dysku twardego (VHD) na platformie Azure przy użyciu modelu wdrażania usługi Resource Manager i Tworzenie maszyn wirtualnych systemu Linux z tego obrazu niestandardowego. Ta funkcja pozwala zainstalować i skonfigurować distro Linux do własnych potrzeb, a następnie użyć tego wirtualnego dysku twardego do szybkiego tworzenia maszyn wirtualnych platformy Azure (maszyny wirtualne).

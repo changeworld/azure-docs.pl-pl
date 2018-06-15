@@ -1,6 +1,6 @@
 ---
-title: "Wyklucz dyski z ochrony za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "Opisuje, dlaczego i jak wykluczać dyski maszyny wirtualnej z replikacji z programu VMware do platformy Azure."
+title: Wyklucz dyski z ochrony za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Opisuje, dlaczego i jak wykluczać dyski maszyny wirtualnej z replikacji z programu VMware do platformy Azure.
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29812936"
 ---
 # <a name="exclude-disks-from-replication-for-vmware-to-azure-scenario"></a>Wykluczanie dysków z replikacji w scenariuszu VMware–Azure
 
