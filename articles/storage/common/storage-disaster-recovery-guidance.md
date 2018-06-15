@@ -19,6 +19,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30323155"
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Co zrobić po wystąpieniu awarii usługi Azure Storage
 Firma Microsoft pracujemy nad twardego upewnij się, że naszych usług są zawsze dostępne. Czasami wymusza poza naszych wpływ kontroli nam w sposób, aby spowodować usługi nieplanowanych przestojów w jednym lub więcej regionów. Aby ułatwić obsługę tych zdarzeń w rzadkich, udostępniamy wysokiego poziomu dotyczące usługi Azure Storage.
