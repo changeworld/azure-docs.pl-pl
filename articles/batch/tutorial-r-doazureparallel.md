@@ -16,6 +16,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30315454"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Samouczek: równoległe uruchamianie symulacji języka R w usłudze Azure Batch 
 

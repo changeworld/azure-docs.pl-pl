@@ -1,11 +1,11 @@
 ---
-title: "V1 Skalowanie automatyczne i środowiska usługi aplikacji"
-description: "Skalowanie automatyczne i środowiska usługi aplikacji"
+title: V1 Skalowanie automatyczne i środowiska usługi aplikacji
+description: Skalowanie automatyczne i środowiska usługi aplikacji
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: btardif
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: c23af2d8-d370-4b1f-9b3e-8782321ddccb
 ms.service: app-service
 ms.workload: web
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23837134"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>V1 Skalowanie automatyczne i środowiska usługi aplikacji
 

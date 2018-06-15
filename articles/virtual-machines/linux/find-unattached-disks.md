@@ -20,6 +20,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30323257"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Znajdowanie i usuwanie odłączyć dysku systemu Azure zarządzane i niezarządzane
 Po usunięciu maszyny wirtualnej (VM) na platformie Azure, domyślnie nie są usuwane wszystkie dyski, które są dołączone do maszyny Wirtualnej. Ta funkcja pomaga zapobiec utracie danych z powodu usunięcia przypadkowe maszyn wirtualnych. Po usunięciu maszyny Wirtualnej będzie kontynuował opłacać odłączyć dysków. W tym artykule przedstawiono, jak znaleźć i Usuń wszystkie dyski odłączyć i zredukowanie niepotrzebnych kosztów. 

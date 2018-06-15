@@ -1,11 +1,11 @@
 ---
-title: "Przy użyciu usługi Twilio głosowych, VoIP i wiadomości SMS na platformie Azure"
-description: "Dowiedz się, jak wykonać połączenie telefoniczne i wysłać wiadomość SMS z usługi interfejsu API usługi Twilio na platformie Azure. Przykłady kodu napisane w środowisku Node.js."
-services: 
+title: Przy użyciu usługi Twilio głosowych, VoIP i wiadomości SMS na platformie Azure
+description: Dowiedz się, jak wykonać połączenie telefoniczne i wysłać wiadomość SMS z usługi interfejsu API usługi Twilio na platformie Azure. Przykłady kodu napisane w środowisku Node.js.
+services: ''
 documentationcenter: nodejs
 author: devinrader
 manager: wpickett
-editor: 
+editor: ''
 ms.assetid: f558cbbd-13d2-416f-b9b1-33a99c426af9
 ms.service: multiple
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23865883"
 ---
 # <a name="using-twilio-for-voice-voip-and-sms-messaging-in-azure"></a>Przy użyciu usługi Twilio głosowych, VoIP i wiadomości SMS na platformie Azure
 W tym przewodniku pokazano, jak tworzyć aplikacje, które komunikują się z usługi Twilio i node.js na platformie Azure.

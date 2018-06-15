@@ -20,6 +20,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30171200"
 ---
 # <a name="install-the-azure-stack-development-kit-asdk"></a>Zainstaluj zestaw Azure stosu Development Kit (ASDK)
 Po [Przygotowywanie komputera hosta ASDK](asdk-prepare-host.md), ASDK można wdrożyć w obrazie CloudBuilder.vhdx, wykonując następujące kroki w tym artykule.

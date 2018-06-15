@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30833102"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>Jak skonfigurować przypisanie samoobsługi aplikacji
 

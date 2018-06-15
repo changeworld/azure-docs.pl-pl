@@ -18,6 +18,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30237349"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure awarii usługi Service Bus Geo
 

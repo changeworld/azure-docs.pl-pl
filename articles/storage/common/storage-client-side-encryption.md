@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30245451"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Magazyn kluczy szyfrowania po stronie klienta i Azure dla magazynu Microsoft Azure
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -65,7 +66,7 @@ Podczas szyfrowania biblioteki klienckiej generowania losowego inicjowania wekto
 > 
 > 
 
-Pobieranie zaszyfrowanej blob polega na pobraniu zawartości przy użyciu całego obiektu blob **DownloadTo *** /**BlobReadStream ** podręczne metody. Opakowana CEK następnie rozpakować i używać razem z IV (przechowywane jako metadane obiektu blob w tym przypadku), aby przywrócić odszyfrowane dane użytkowników.
+Pobieranie zaszyfrowanej blob polega na pobraniu zawartości przy użyciu całego obiektu blob **DownloadTo *** /** BlobReadStream ** podręczne metody. Opakowana CEK następnie rozpakować i używać razem z IV (przechowywane jako metadane obiektu blob w tym przypadku), aby przywrócić odszyfrowane dane użytkowników.
 
 Pobieranie z dowolnego zakresu (**DownloadRange*** metody) w obiekcie blob zaszyfrowane obejmuje dopasowywanie dostarczone przez użytkowników, aby uzyskać niewielkie dodatkowych danych, które można pomyślnie odszyfrować żądanego zakresu zakres.
 
