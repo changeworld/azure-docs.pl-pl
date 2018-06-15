@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788298"
 ---
 # <a name="loading-assets-into-azure-media-clipper"></a>Ładowanie zasobów do funkcji tworzenia wycinków multimediów Azure
 Zasoby mogą zostać załadowane do funkcji tworzenia wycinków multimediów dla platformy Azure za pomocą dwóch metod:
