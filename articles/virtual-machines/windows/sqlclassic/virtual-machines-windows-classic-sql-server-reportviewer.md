@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31424622"
 ---
 # <a name="use-reportviewer-in-a-web-site-hosted-in-azure"></a>Korzystanie z narzędzia ReportViewer w witrynie internetowej hostowanej na platformie Azure
 > [!IMPORTANT] 

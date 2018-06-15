@@ -1,11 +1,11 @@
 ---
-title: "znaki 42 następuje | Dokumentacja firmy Microsoft"
-description: "Wyświetlane w wyszukiwarkach pod tytułem. W tym miejscu ma więcej miejsca, użyj więcej słów kluczowych i bardziej opisowe wyjaśnienie niż tytułu"
+title: znaki 42 następuje | Dokumentacja firmy Microsoft
+description: Wyświetlane w wyszukiwarkach pod tytułem. W tym miejscu ma więcej miejsca, użyj więcej słów kluczowych i bardziej opisowe wyjaśnienie niż tytułu
 services: service-name
 documentationcenter: dev-center-name
 author: GitHub-alias-of-only-one-author
 manager: manager-alias
-editor: 
+editor: ''
 tags: top-support-issue
 ms.service: required
 ms.devlang: may be required
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/16/2018
+ms.locfileid: "23886253"
 ---
 # <a name="title-maximum-120-characters-target-the-primary-keyword"></a>Tytuł (maksymalna 120 znaków, docelowy podstawowego — słowo kluczowe)
 *Użyj 2 – 3 dodatkowej słowa kluczowe w opisie.*

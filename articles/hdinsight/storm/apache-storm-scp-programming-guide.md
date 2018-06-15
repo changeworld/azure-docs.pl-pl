@@ -18,6 +18,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31421559"
 ---
 # <a name="scp-programming-guide"></a>Podręcznik programowania punkt połączenia usługi
 Punkt połączenia usługi jest platformę do tworzenia w czasie rzeczywistym, niezawodnych, spójne i wysokiej wydajności przetwarzania danych aplikacji. Jest ona wbudowana nad [Apache Storm](http://storm.incubator.apache.org/) — systemu projektowania Wspólnot OSS przetwarzania strumienia. STORM jest zaprojektowany przez Nathan Marz i został otwarty kwerendą źródłową Twitter. Jest przeprowadzana z zastosowaniem [Apache ZooKeeper](http://zookeeper.apache.org/), inny projekt Apache w celu włączenia wysoce niezawodne rozproszone Zarządzanie koordynacji i stanu. 

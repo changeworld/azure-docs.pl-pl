@@ -13,6 +13,7 @@ ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29529961"
 ---
 Przed utworzeniem jakichkolwiek elementów, umożliwia przegląd koncepcji zakresu. Platforma Azure udostępnia cztery poziomy zarządzanie: grup zarządzania, subskrypcji, grupy zasobów i zasobów. [Grupy zarządzania](../articles/billing/billing-enterprise-mgmt-group-overview.md) znajdują się w wersji zapoznawczej. Na poniższej ilustracji przedstawiono przykład tych warstw.
 

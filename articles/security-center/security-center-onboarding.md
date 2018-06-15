@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31416493"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Dołączenie do usługi Azure Security Center Standard poziom zabezpieczeń
 Uaktualnij do Security Center Standard, aby skorzystać z rozszerzonymi funkcjami zabezpieczeń, zarządzania i ochrony przed zagrożeniami dla obciążeń chmury hybrydowej.  Możesz spróbować Standard bezpłatnie do 60 dni. Zobacz temat w Centrum zabezpieczeń [cennikiem](https://azure.microsoft.com/pricing/details/security-center/) Aby uzyskać więcej informacji.

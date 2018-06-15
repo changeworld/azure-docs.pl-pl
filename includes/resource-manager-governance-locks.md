@@ -13,6 +13,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29402496"
 ---
 Blokowania zasobów uniemożliwić użytkownikom w organizacji przypadkowo usuwanie i modyfikowanie kluczowych zasobów. W przeciwieństwie do kontroli dostępu opartej na rolach blokowania zasobów mają zastosowanie ograniczenia we wszystkich użytkowników i ról. 
 

@@ -1,12 +1,12 @@
 ---
-title: "Użyj narzędzi Marketplace można tworzyć i publikować elementów marketplace | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak szybko utworzyć elementów marketplace z publikowaniem Toolkit"
+title: Użyj narzędzi Marketplace można tworzyć i publikować elementów marketplace | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak szybko utworzyć elementów marketplace z publikowaniem Toolkit
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29386881"
 ---
 #  <a name="add-marketplace-items-using-publishing-tool"></a>Dodawanie elementów marketplace za pomocą narzędzia do publikowania
 Dodawanie zawartości do [Azure Marketplace stosu](azure-stack-marketplace.md) udostępnia rozwiązań Tobie i dzierżawcy dla wdrożenia.  Zestaw narzędzi Marketplace tworzy pliki Azure Marketplace pakietów (.azpkg) oparte na szablony Menedżera zasobów Azure IaaS lub rozszerzeń maszyny Wirtualnej.  Umożliwia także Marketplace Toolkit do publikowania plików .azpkg, utworzone przy użyciu narzędzia albo przy użyciu [ręczne](azure-stack-create-and-publish-marketplace-item.md) czynności.  W tym temacie przedstawiono pobrać narzędzie, tworzenie elementu portalu marketplace, na podstawie szablonu maszyny Wirtualnej i opublikować ten element w portalu Azure Marketplace stosu.     

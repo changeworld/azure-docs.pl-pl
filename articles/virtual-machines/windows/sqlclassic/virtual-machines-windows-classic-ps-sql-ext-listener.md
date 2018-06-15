@@ -1,11 +1,11 @@
 ---
-title: "Skonfiguruj odbiornik zewnętrzny dla zawsze włączonych grup dostępności | Dokumentacja firmy Microsoft"
-description: "Ten samouczek przedstawia kroki tworzenia zawsze na odbiornik grupy dostępności na platformie Azure, który jest dostępny zewnętrznie przy użyciu adresu publicznego wirtualnego adresu IP usługi skojarzonej chmury."
+title: Skonfiguruj odbiornik zewnętrzny dla zawsze włączonych grup dostępności | Dokumentacja firmy Microsoft
+description: Ten samouczek przedstawia kroki tworzenia zawsze na odbiornik grupy dostępności na platformie Azure, który jest dostępny zewnętrznie przy użyciu adresu publicznego wirtualnego adresu IP usługi skojarzonej chmury.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: a2453032-94ab-4775-b976-c74d24716728
 ms.service: virtual-machines-sql
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29398866"
 ---
 # <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>Skonfiguruj odbiornik zewnętrzny dla zawsze włączonych grup dostępności w systemie Azure
 > [!div class="op_single_selector"]

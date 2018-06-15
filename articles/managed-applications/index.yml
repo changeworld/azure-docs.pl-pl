@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Dokumentacja usługi Azure Managed Applications"
+title: Dokumentacja usługi Azure Managed Applications
 metadata:
-  title: "Dokumentacja usługi Azure Managed Applications — samouczki i dokumentacja interfejsu API"
-  description: "Używaj usługi Azure Managed Applications do publikowania rozwiązań w chmurze łatwiejszych w utrzymaniu dla klientów."
+  title: Dokumentacja usługi Azure Managed Applications — samouczki i dokumentacja interfejsu API
+  description: Używaj usługi Azure Managed Applications do publikowania rozwiązań w chmurze łatwiejszych w utrzymaniu dla klientów.
   services: managed-applications
   author: tfitzmac
   manager: timlt
@@ -18,13 +18,14 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: pl-PL
   ms.lasthandoff: 01/12/2018
+  ms.locfileid: "27779571"
 abstract:
-  description: "Usługa Azure Managed Applications umożliwiają oferowanie rozwiązań w chmurze klientom wewnętrznym i zewnętrznym. Ty definiujesz infrastrukturę dla rozwiązania i warunki na potrzeby bieżącego zarządzania rozwiązaniem. Opłaty za rozwiązanie są rozliczane w ramach rozliczeń za platformę Azure."
+  description: Usługa Azure Managed Applications umożliwiają oferowanie rozwiązań w chmurze klientom wewnętrznym i zewnętrznym. Ty definiujesz infrastrukturę dla rozwiązania i warunki na potrzeby bieżącego zarządzania rozwiązaniem. Opłaty za rozwiązanie są rozliczane w ramach rozliczeń za platformę Azure.
 sections:
 - title: 5-minutowe przewodniki Szybki start
   items:
   - type: paragraph
-    text: "Dowiedz się, jak opublikować i wdrożyć aplikację zarządzaną."
+    text: Dowiedz się, jak opublikować i wdrożyć aplikację zarządzaną.
   - type: list
     style: icon48
     items:
@@ -35,13 +36,13 @@ sections:
 - title: Samouczki krok po kroku
   items:
   - type: paragraph
-    text: "Dowiedz się, jak tworzyć aplikacje zarządzane i oferować je za pośrednictwem witryny Azure Marketplace."
+    text: Dowiedz się, jak tworzyć aplikacje zarządzane i oferować je za pośrednictwem witryny Azure Marketplace.
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"/azure/managed-applications/publish-service-catalog-app\">Publikowanie aplikacji zarządzanej dla użytkowników wewnętrznych</a>"
-    - html: "<a href=\"/azure/managed-applications/publish-marketplace-app\">Publikowanie aplikacji zarządzanej dla użytkowników zewnętrznych</a>"
-- title: "Odwołanie"
+    - html: <a href="/azure/managed-applications/publish-service-catalog-app">Publikowanie aplikacji zarządzanej dla użytkowników wewnętrznych</a>
+    - html: <a href="/azure/managed-applications/publish-marketplace-app">Publikowanie aplikacji zarządzanej dla użytkowników zewnętrznych</a>
+- title: Odwołanie
   items:
   - type: list
     style: cards
@@ -51,5 +52,5 @@ sections:
       html: <p><a href="/cli/azure/managedapp">Interfejs wiersza polecenia platformy Azure</a></p><p><a href="/powershell/module/azurerm.resources">Program PowerShell</a></p>
     - title: Interfejsy API REST
       html: <p><a href="/rest/api/resources/">REST</a></p>
-    - title: "Interfejs użytkownika"
-      html: "<p><a href=\"/azure/managed-applications/create-uidefinition-elements\">Elementy interfejsu użytkownika</a></p><p><a href=\"/azure/managed-applications/create-uidefinition-functions\">Funkcje interfejsu użytkownika</a></p>"
+    - title: Interfejs użytkownika
+      html: <p><a href="/azure/managed-applications/create-uidefinition-elements">Elementy interfejsu użytkownika</a></p><p><a href="/azure/managed-applications/create-uidefinition-functions">Funkcje interfejsu użytkownika</a></p>

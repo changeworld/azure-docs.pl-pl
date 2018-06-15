@@ -1,11 +1,11 @@
 ---
-title: "Dodawanie rozwiązania do zarządzania Azure Log Analytics | Dokumentacja firmy Microsoft"
-description: "Rozwiązania do zarządzania na platformie Azure są Kolekcja reguł nabycia logiki, wizualizacji i danych zawierających metryki przestawiać wokół obszaru określonego problemu."
+title: Dodawanie rozwiązania do zarządzania Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Rozwiązania do zarządzania na platformie Azure są Kolekcja reguł nabycia logiki, wizualizacji i danych zawierających metryki przestawiać wokół obszaru określonego problemu.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: f029dd6d-58ae-42c5-ad27-e6cc92352b3b
 ms.service: log-analytics
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29395466"
 ---
 # <a name="add-azure-log-analytics-management-solutions-to-your-workspace"></a>Dodawanie rozwiązania do zarządzania usługi Analiza dzienników Azure do swojego obszaru roboczego
 

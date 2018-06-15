@@ -21,6 +21,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31525136"
 ---
 # <a name="create-a-vm-with-a-static-public-ip-address-using-powershell"></a>Utwórz maszynę Wirtualną z statycznego publicznego adresu IP za pomocą programu PowerShell
 

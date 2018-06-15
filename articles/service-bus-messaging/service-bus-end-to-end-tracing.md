@@ -1,11 +1,11 @@
 ---
-title: "Śledzenia end-to-end usługi Azure Service Bus i informacji diagnostycznych | Dokumentacja firmy Microsoft"
-description: "Omówienie diagnostyki klient usługi Service Bus i śledzenia end-to-end"
+title: Śledzenia end-to-end usługi Azure Service Bus i informacji diagnostycznych | Dokumentacja firmy Microsoft
+description: Omówienie diagnostyki klient usługi Service Bus i śledzenia end-to-end
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: lmolkova
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27741335"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Śledzenie rozproszone i korelacji za pomocą komunikatów usługi Service Bus
 

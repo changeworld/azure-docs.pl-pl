@@ -1,13 +1,13 @@
 ---
-title: "Powolne działanie aplikacji sieci web w usłudze App Service | Dokumentacja firmy Microsoft"
-description: "Ten artykuł pomaga powolne web app Rozwiązywanie problemów z wydajnością w usłudze Azure App Service."
+title: Powolne działanie aplikacji sieci web w usłudze App Service | Dokumentacja firmy Microsoft
+description: Ten artykuł pomaga powolne web app Rozwiązywanie problemów z wydajnością w usłudze Azure App Service.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 tags: top-support-issue
-keywords: "wydajność aplikacji sieci Web, powolne aplikacji app powolne"
+keywords: wydajność aplikacji sieci Web, powolne aplikacji app powolne
 ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.service: app-service-web
 ms.workload: web
@@ -21,6 +21,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29461846"
 ---
 # <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>Powolne web app Rozwiązywanie problemów z wydajnością w usłudze Azure App Service
 W tym artykule pomocy w rozwiązywaniu problemów z wydajnością aplikacji sieci web wolne w [usłudze Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714).

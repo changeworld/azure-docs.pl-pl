@@ -1,6 +1,6 @@
 ---
-title: "Skonfiguruj połączenie z lokacją lokalną dodatkowej po pracy awaryjnej z usługą Azure Site Recovery adresy IP | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób konfigurowania adresowania IP dla łączenia na maszynach wirtualnych w lokacji dodatkowej lokalnymi po pracy awaryjnej usługi Azure Site Recovery."
+title: Skonfiguruj połączenie z lokacją lokalną dodatkowej po pracy awaryjnej z usługą Azure Site Recovery adresy IP | Dokumentacja firmy Microsoft
+description: Opisuje sposób konfigurowania adresowania IP dla łączenia na maszynach wirtualnych w lokacji dodatkowej lokalnymi po pracy awaryjnej usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -13,6 +13,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29378890"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>Skonfiguruj połączenie z lokacją lokalną dodatkowej po pracy awaryjnej adresy IP
 
