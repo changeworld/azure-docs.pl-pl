@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34192666"
 ---
 # <a name="call-an-azure-automation-runbook-from-a-log-analytics-alert"></a>Wywoływanie elementu runbook usługi Azure Automation z alertu usługi Log Analytics
 

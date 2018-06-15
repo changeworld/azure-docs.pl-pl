@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358221"
 ---
 # <a name="azure-cloud-services-config-schema-cscfg-file"></a>Schemat konfiguracji (plik .cscfg) usług w chmurze Azure
 Plik konfiguracyjny usługi określa liczbę wystąpień roli do wdrożenia dla każdej roli w usłudze, wartości wszystkich ustawień konfiguracji oraz odciski palców wszelkich certyfikatów skojarzone z rolą. Jeśli usługa jest częścią sieci wirtualnej, należy podać informacje o konfiguracji sieci, w pliku konfiguracji usługi, a także w pliku konfiguracji sieci wirtualnej. Domyślne rozszerzenie pliku konfiguracji usługi jest .cscfg.

@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: MT
   ms.contentlocale: pl-PL
   ms.lasthandoff: 05/04/2018
+  ms.locfileid: "33205435"
 abstract:
   description: Usługa Azure Stack to platforma chmury hybrydowej, która umożliwia korzystanie z usług platformy Azure z centrum danych Twojej firmy lub dostawcy usługi. Jako deweloper możesz kompilować aplikacje w usłudze Azure Stack. Następnie możesz wdrożyć je w usłudze Azure Stack lub na platformie Azure. Możesz również kompilować prawdziwie hybrydowe aplikacje, które wykorzystują łączność między chmurą usługi Azure Stack i platformą Azure. Dowiedz się, jak tworzyć zasoby i wdrażać aplikacje, zapoznając się z naszymi przewodnikami Szybki start i samouczkami.<br/><br/>Jeśli operator stosu Azure zarządza infrastrukturę, która oferuje usługi, zobacz nasze <a href="/azure/azure-stack/">dokumentacji operator</a>.<br/><br/>Jeśli operator stosu Azure zainteresowane w Azure stosu programowanie Kit (ASDK), wdrożenie jednowęzłowej Azure stosu, który można pobrać i użyć bezpłatnie, zobacz nasze <a href="/azure/azure-stack/asdk">dokumentacji ASDK</a>.
 sections:

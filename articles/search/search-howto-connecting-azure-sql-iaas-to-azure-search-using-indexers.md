@@ -13,6 +13,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366464"
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Skonfiguruj połączenie z indeksator usługi Azure Search do programu SQL Server na maszynie Wirtualnej platformy Azure
 Zgodnie z opisem w [połączenie bazy danych SQL Azure do usługi Azure Search przy użyciu indeksatorów](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), tworzenie indeksatory przed **programu SQL Server na maszynach wirtualnych Azure** (lub **maszynach wirtualnych Azure SQL** skrócie) jest obsługiwana przez usługi Azure Search, ale istnieje kilka związanych z zabezpieczeniami wymagania wstępne dotyczące zajmie się pierwszy. 

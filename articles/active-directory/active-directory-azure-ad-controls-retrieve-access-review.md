@@ -11,18 +11,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
+ms.component: compliance-reports
 ms.date: 05/16/2018
-ms.author: billmath
-ms.openlocfilehash: cdd07fd837863d9a5abced0db8cacaded6288a41
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: rolyon
+ms.openlocfilehash: c30d166335e31cdbf03283371da42fa6b7cda162
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34192228"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233118"
 ---
 # <a name="retrieve-access-review-results"></a>Pobieranie wyników przeglądu dostępu
 
 Administratorzy mogą używać usługi Azure Active Directory (Azure AD) do [tworzenia przeglądów dostępu](active-directory-azure-ad-controls-create-access-review.md) dla członków grupy lub użytkowników przypisanych do aplikacji.  Użytkownik należący do roli **Administrator globalny**, **Administrator zabezpieczeń** lub **Czytelnik zabezpieczeń** może także przeczytać wyniki przeglądu dostępu.  Aby przypisać użytkowników do jednej z tych ról, administrator ról uprzywilejowanych może użyć usługi Azure AD PIM do uprawnienia użytkownika do aktywowania roli, a administrator globalny może trwale [przypisać użytkownika do roli](active-directory-users-assign-role-azure-portal.md).
+
+[!INCLUDE [Privacy](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="locating-an-access-review"></a>Lokalizowanie przeglądu dostępu
 
@@ -42,8 +45,6 @@ Aby wyświetlić wyniki ukończonego wystąpienia cyklicznego przeglądu dostęp
 
 
 ## <a name="removing-users-from-an-access-review"></a>Usuwanie użytkowników z przeglądu dostępu
-
-[!INCLUDE [Privacy](../../includes/gdpr-intro-sentence.md)]
 
 Domyślnie usunięty użytkownik pozostaje usunięty w usłudze Azure AD przez 30 dni i w tym okresie administrator może przywrócić go w razie potrzeby.  Po 30 dniach użytkownik jest trwale usuwany.  Ponadto przy użyciu portalu usługi Azure Active Directory administrator globalny może jawnie [trwale usunąć niedawno usuniętego użytkownika](active-directory-users-restore.md) przed upłynięciem tego okresu.  Gdy użytkownik zostanie trwale usunięty, nowe dane dotyczące tego użytkownika będą usuwane z aktywnych przeglądów dostępu.  Informacje inspekcji dotyczące usuniętych użytkowników pozostają w dzienniku inspekcji.
 

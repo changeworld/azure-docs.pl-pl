@@ -1,13 +1,13 @@
 ---
-title: "Omówienie usługi Azure App Service lokalnej pamięci podręcznej | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób włączenia, zmienianie rozmiaru i zapytać o stan funkcji lokalnej pamięci podręcznej Azure App Service"
+title: Omówienie usługi Azure App Service lokalnej pamięci podręcznej | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób włączenia, zmienianie rozmiaru i zapytać o stan funkcji lokalnej pamięci podręcznej Azure App Service
 services: app-service
 documentationcenter: app-service
 author: SyntaxC4
 manager: yochayk
-editor: 
+editor: ''
 tags: optional
-keywords: 
+keywords: ''
 ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.service: app-service
 ms.devlang: multiple
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836385"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Omówienie usługi Azure App Service lokalnej pamięci podręcznej
 Zawartość aplikacji sieci web platformy Azure są przechowywane w magazynie Azure i jest udostępniane w górę w sposób trwały jako udział zawartości. Ten projekt jest przeznaczony do pracy z różnych aplikacji i ma następujące atrybuty:  

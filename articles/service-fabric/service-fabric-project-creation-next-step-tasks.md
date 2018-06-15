@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206469"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Sieć szkieletowa usług aplikacji i następne kroki
 Utworzono aplikację sieci szkieletowej usług Azure. W tym artykule opisano niektóre samouczkami, aby wypróbować, w skład projektu, pewne dodatkowe informacje, które mogą być zainteresowane i potencjalne następne kroki.

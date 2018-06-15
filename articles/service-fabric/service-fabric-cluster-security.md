@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34210906"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Scenariusze zabezpieczeń klastra sieci szkieletowej usług
 Klastra usługi sieć szkieletowa usług Azure jest zasobem, którego jesteś właścicielem. Jest obowiązek Zabezpieczanie klastrów w celu zapobiegania nieautoryzowanemu połączyć się z nimi. Bezpieczne klastra jest szczególnie ważne w przypadku obciążeń produkcyjnych są uruchomione w klastrze. Chociaż można utworzyć klastra niezabezpieczoną, jeśli klaster przedstawia punkty końcowe zarządzania do publicznej sieci internet, użytkowników anonimowych można się z nim połączyć. Niezabezpieczona klastrów nie są obsługiwane w przypadku obciążeń produkcyjnych. 

@@ -1,8 +1,8 @@
 ---
-title: "Jak skonfigurować wzajemne uwierzytelnianie protokołu TLS dla aplikacji sieci Web"
-description: "Dowiedz się, jak skonfigurować aplikację sieci web, aby użyć uwierzytelniania certyfikatu klienta na TLS."
+title: Jak skonfigurować wzajemne uwierzytelnianie protokołu TLS dla aplikacji sieci Web
+description: Dowiedz się, jak skonfigurować aplikację sieci web, aby użyć uwierzytelniania certyfikatu klienta na TLS.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: naziml
 manager: erikre
 editor: jimbe
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836308"
 ---
 # <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>Jak skonfigurować wzajemne uwierzytelnianie protokołu TLS dla aplikacji sieci Web
 ## <a name="overview"></a>Omówienie

@@ -13,6 +13,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34260156"
 ---
 # <a name="use-inspec-for-compliance-automation-of-your-azure-infrastructure"></a>Użyj InSpec automatyzacji zgodności infrastrukturę platformy Azure
 [InSpec](https://www.chef.io/inspec/) jest bezpłatny i open source framework do testowania i inspekcji aplikacji i infrastruktury. InSpec działa na podstawie porównania ilości rzeczywisty stan systemu z pożądanego stanu, który express w kodzie InSpec łatwe do odczytania i łatwy do zapisu. InSpec wykrywa naruszeń i wyświetla wyniki w postaci raportu, ale pozwala w formancie korygowania. InSpec służy do sprawdzania stanu maszyn wirtualnych działających na platformie Azure. Umożliwia także InSpec do skanowania i sprawdzić stan zasobów i grup zasobów w ramach subskrypcji.

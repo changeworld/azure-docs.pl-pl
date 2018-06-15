@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208339"
 ---
 # <a name="delete-reliable-actors-and-their-state"></a>Usuń Reliable Actors i ich stan
 Wyrzucanie elementów bezużytecznych dezaktywowane podmiotów tylko czyści obiektu aktora, ale nie powoduje usunięcia danych przechowywanych w Menedżerze stanu aktora. Po ponownym uaktywnieniu aktora jego danych jest ponownie udostępnione do niego za pośrednictwem Menedżera stanu. W przypadku gdy podmiotów przechowywania danych w Menedżerze stanu i są dezaktywowane ale nigdy nie ponownej aktywacji może być konieczne wyczyścić swoje dane.

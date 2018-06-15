@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365716"
 ---
 # <a name="azure-operational-security-overview"></a>Omówienie usługi Azure operational zabezpieczeń
 [Azure bezpieczeństwa operacyjnego](https://docs.microsoft.com/azure/security/azure-operational-security) odwołuje się do usług, formanty i funkcje dostępne dla użytkowników do ochrony danych, aplikacji i innych zasobów na platformie Microsoft Azure. To platforma, która zawiera wiedzę za pomocą różnych funkcji, które są specyficzne dla firmy Microsoft. Te funkcje obejmują Microsoft Security Development Lifecycle (SDL), program Microsoft Security Response Center i głębokie pogłębianie wiedzy na temat zagrożeń bezpieczeństwa.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359496"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Funkcje szablonów usługi Azure Resource Manager
 W tym artykule opisano wszystkie funkcje, których można użyć w szablonie usługi Azure Resource Manager.
