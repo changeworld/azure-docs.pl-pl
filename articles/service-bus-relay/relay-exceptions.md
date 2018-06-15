@@ -1,11 +1,11 @@
 ---
-title: "Wyjątki przekaźnika usługi Azure i sposobu ich rozwiązania | Dokumentacja firmy Microsoft"
-description: "Lista wyjątki przekazywania Azure i wyświetlić sugerowane akcje, które można wykonać w celu ich rozwiązania."
+title: Wyjątki przekaźnika usługi Azure i sposobu ich rozwiązania | Dokumentacja firmy Microsoft
+description: Lista wyjątki przekazywania Azure i wyświetlić sugerowane akcje, które można wykonać w celu ich rozwiązania.
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5f9dd02c-cce0-43b3-8eb8-744f0c27f38c
 ms.service: service-bus-relay
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "26855865"
 ---
 # <a name="azure-relay-exceptions"></a>Wyjątki przekaźnika usługi Azure
 

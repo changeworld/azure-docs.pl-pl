@@ -21,6 +21,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33941432"
 ---
 # <a name="how-to-capture-a-classic-linux-virtual-machine-as-an-image"></a>Jak przechwycić klasyczną maszynę wirtualną z systemem Linux jako obraz
 > [!IMPORTANT]

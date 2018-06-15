@@ -1,8 +1,8 @@
 ---
-title: "Narzędzia dla platformy Azure przy użyciu Ansible"
-description: "Zainstalować i używać poszczególnych narzędzi dla Ansible z platformy Azure"
+title: Narzędzia dla platformy Azure przy użyciu Ansible
+description: Zainstalować i używać poszczególnych narzędzi dla Ansible z platformy Azure
 ms.service: ansible
-keywords: "ansible, azure, metodyki devops, narzędzia kodzie vs, kod programu visual studio, rozszerzenia"
+keywords: ansible, azure, metodyki devops, narzędzia kodzie vs, kod programu visual studio, rozszerzenia
 author: tomarcher
 manager: routlaw
 ms.author: tarcher
@@ -13,6 +13,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28212050"
 ---
 # <a name="tools-for-using-ansible-with-azure"></a>Narzędzia dla platformy Azure przy użyciu Ansible
 

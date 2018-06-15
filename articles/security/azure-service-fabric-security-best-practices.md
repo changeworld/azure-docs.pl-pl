@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894133"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric najlepszych rozwiązań dotyczących zabezpieczeń
 Wdrażanie aplikacji na platformie Azure jest szybkie, łatwe i ekonomiczne. Przed przystąpieniem do wdrażania aplikacji w środowisku produkcyjnym chmury, przejrzyj naszej listy ważne i zalecane najlepsze rozwiązania dotyczące wdrażania bezpiecznych klastrów w aplikacji.

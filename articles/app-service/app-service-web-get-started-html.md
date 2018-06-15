@@ -1,11 +1,11 @@
 ---
-title: "Tworzenie statycznej aplikacji sieci Web w języku HTML na platformie Azure | Microsoft Docs"
-description: "Dowiedz się, jak można uruchamiać aplikacje sieci Web w usłudze Azure App Service, wdrażając przykładową statyczną aplikację w języku HTML."
+title: Tworzenie statycznej aplikacji sieci Web w języku HTML na platformie Azure | Microsoft Docs
+description: Dowiedz się, jak można uruchamiać aplikacje sieci Web w usłudze Azure App Service, wdrażając przykładową statyczną aplikację w języku HTML.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.service: app-service-web
 ms.workload: web
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28918781"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Tworzenie statycznej aplikacji sieci Web w języku HTML na platformie Azure
 

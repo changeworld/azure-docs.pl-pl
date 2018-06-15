@@ -1,8 +1,8 @@
 ---
 title: Architektura pakietu Operations Management Suite (OMS) | Microsoft Docs
-description: "Pakiet Microsoft Operations Management Suite (OMS) to oparte na chmurze rozwiązanie firmy Microsoft do zarządzania systemami IT, które ułatwia zarządzanie infrastrukturą lokalną i chmurową oraz jej ochronę.  W tym artykule opisano różne usługi w ramach pakietu OMS i umieszczono linki do szczegółowych treści na ich temat."
+description: Pakiet Microsoft Operations Management Suite (OMS) to oparte na chmurze rozwiązanie firmy Microsoft do zarządzania systemami IT, które ułatwia zarządzanie infrastrukturą lokalną i chmurową oraz jej ochronę.  W tym artykule opisano różne usługi w ramach pakietu OMS i umieszczono linki do szczegółowych treści na ich temat.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/13/2017
+ms.locfileid: "26683269"
 ---
 # <a name="oms-architecture"></a>Architektura pakietu OMS
 [Pakiet Operations Management Suite (OMS)](https://azure.microsoft.com/documentation/services/operations-management-suite/) to zbiór opartych na chmurze usług zarządzania środowiskami lokalnymi i chmurowymi.  W tym artykule opisano różne lokalne i chmurowe składniki pakietu OMS oraz podano ogólny opis ich architektury przetwarzania w chmurze.  Podano też linki do dokumentacji zawierającej dodatkowe szczegóły dotyczące każdej usługi.

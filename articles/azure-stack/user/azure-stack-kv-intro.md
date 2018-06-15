@@ -1,11 +1,11 @@
 ---
 title: Wprowadzenie stosu magazynu kluczy Azure | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak magazyn kluczy Azure stosu zarządza kluczy i kluczy tajnych"
+description: Dowiedz się, jak magazyn kluczy Azure stosu zarządza kluczy i kluczy tajnych
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 70f1684a-3fbb-4cd1-bf29-9f9882e98fe9
 ms.service: azure-stack
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26636730"
 ---
 # <a name="introduction-to-key-vault-in-azure-stack"></a>Wprowadzenie do magazynu kluczy Azure stosu
 

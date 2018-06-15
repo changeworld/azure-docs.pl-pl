@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30197537"
 ---
 Podczas tworzenia bramy sieci wirtualnej musisz wybrać jednostkę SKU bramy do użycia. W przypadku wybrania wyższej jednostki SKU bramy bramie przydzielane jest więcej procesorów CPU oraz wyższa przepustowość sieci, dlatego może obsługiwać wyższą przepływność sieci do sieci wirtualnej. 
 

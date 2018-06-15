@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788123"
 ---
 # <a name="create-clips-with-azure-media-clipper"></a>Utwórz klipy z funkcji tworzenia wycinków multimediów Azure
 Azure Media funkcji tworzenia wycinków jest bezpłatna biblioteka języka JavaScript, który umożliwia deweloperom sieci web użytkownikom ich interfejs służący do tworzenia nośnika klipy. To narzędzie można zintegrować dowolną stronę sieci web i udostępnia interfejsy API do ładowania zasobów i przesyłanie zadań wycinka.

@@ -1,11 +1,11 @@
 ---
-title: "Użytkownicy nie są aprowizowany do aplikacji w galerii Azure AD | Dokumentacja firmy Microsoft"
-description: "Sposoby rozwiązywania typowych problemów, które muszą ponieść Jeśli nie widzisz użytkowników znajdujących się w moduł usługi Azure AD galerii aplikacji została skonfigurowana dla Inicjowanie obsługi użytkowników z usługą Azure AD"
+title: Użytkownicy nie są aprowizowany do aplikacji w galerii Azure AD | Dokumentacja firmy Microsoft
+description: Sposoby rozwiązywania typowych problemów, które muszą ponieść Jeśli nie widzisz użytkowników znajdujących się w moduł usługi Azure AD galerii aplikacji została skonfigurowana dla Inicjowanie obsługi użytkowników z usługą Azure AD
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26616296"
 ---
 # <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Użytkownicy nie są aprowizowany do aplikacji w galerii Azure AD
 

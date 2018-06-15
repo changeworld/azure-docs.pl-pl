@@ -18,6 +18,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34070431"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Przekazywanie plików do konta usługi Media Services za pomocą usługi REST
 > [!div class="op_single_selector"]

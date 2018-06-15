@@ -1,11 +1,11 @@
 ---
-title: "Usługa Azure Event Hubs wiadomości wyjątki | Dokumentacja firmy Microsoft"
-description: "Lista wyjątków i sugerowane rozwiązania do obsługi komunikatów usługi Azure Event hubs."
+title: Usługa Azure Event Hubs wiadomości wyjątki | Dokumentacja firmy Microsoft
+description: Lista wyjątków i sugerowane rozwiązania do obsługi komunikatów usługi Azure Event hubs.
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 2c6273de-0106-47e5-b45d-59040e51f2c5
 ms.service: event-hubs
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26783132"
 ---
 # <a name="event-hubs-messaging-exceptions"></a>Wyjątki obsługi komunikatów w usłudze Event Hubs
 

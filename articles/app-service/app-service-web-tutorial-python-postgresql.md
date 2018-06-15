@@ -17,6 +17,7 @@ ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/04/2018
+ms.locfileid: "33203514"
 ---
 # <a name="tutorial-build-a-python-and-postgresql-web-app-in-azure"></a>Samouczek: tworzenie aplikacji internetowej przy użyciu języka Python i bazy danych PostgreSQL na platformie Azure
 

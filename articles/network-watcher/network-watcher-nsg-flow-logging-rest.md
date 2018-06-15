@@ -1,11 +1,11 @@
 ---
-title: "Dzienniki przepływ zarządzania sieciową grupę zabezpieczeń z obserwatora sieciowego Azure - interfejsu API REST | Dokumentacja firmy Microsoft"
-description: "Ta strona opisano sposób zarządzania dziennikami przepływu sieciowej grupy zabezpieczeń w obserwatora sieciowego Azure z interfejsu API REST"
+title: Dzienniki przepływ zarządzania sieciową grupę zabezpieczeń z obserwatora sieciowego Azure - interfejsu API REST | Dokumentacja firmy Microsoft
+description: Ta strona opisano sposób zarządzania dziennikami przepływu sieciowej grupy zabezpieczeń w obserwatora sieciowego Azure z interfejsu API REST
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 2ab25379-0fd3-4bfe-9d82-425dfc7ad6bb
 ms.service: network-watcher
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "26774375"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Konfigurowanie grup zabezpieczeń sieci przepływu dzienników przy użyciu interfejsu API REST
 

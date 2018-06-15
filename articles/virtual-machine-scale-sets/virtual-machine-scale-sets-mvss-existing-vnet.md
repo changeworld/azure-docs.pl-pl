@@ -1,11 +1,11 @@
 ---
-title: "Odwołanie istniejącej sieci wirtualnej w szablonie zestaw skalowania Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak dodać sieć wirtualną do istniejącego zestawu skalowania maszyn wirtualnych Azure szablonu"
+title: Odwołanie istniejącej sieci wirtualnej w szablonie zestaw skalowania Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dodać sieć wirtualną do istniejącego zestawu skalowania maszyn wirtualnych Azure szablonu
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
@@ -20,6 +20,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26782375"
 ---
 # <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>Dodaj odwołanie do istniejącej sieci wirtualnej w szablonie zestaw skalowania Azure
 

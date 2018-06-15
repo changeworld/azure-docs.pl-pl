@@ -1,11 +1,11 @@
 ---
 title: Problemy przy logowaniu do aplikacji utworzonych niestandardowych | Dokumentacja firmy Microsoft
-description: "Typowe rrors, który może być przyczyną nie będą mogli zalogować się do aplikacji utworzonych w usłudze Azure AD"
+description: Typowe rrors, który może być przyczyną nie będą mogli zalogować się do aplikacji utworzonych w usłudze Azure AD
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26614142"
 ---
 # <a name="problems-signing-in-to-an-custom-developed-application"></a>Problemy przy logowaniu do aplikacji utworzonych niestandardowych
 

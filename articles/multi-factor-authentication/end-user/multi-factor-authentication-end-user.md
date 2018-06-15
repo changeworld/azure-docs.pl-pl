@@ -1,8 +1,8 @@
 ---
 title: Wprowadzenie do weryfikacji dwuetapowej | Dokumentacja firmy Microsoft
-description: "Jest to strona uwierzytelnianie wieloskładnikowe Azure, przydatnej użytkownikom końcowym z pobierania korzystanie z usługi Azure Multi-Factor Authentication."
+description: Jest to strona uwierzytelnianie wieloskładnikowe Azure, przydatnej użytkownikom końcowym z pobierania korzystanie z usługi Azure Multi-Factor Authentication.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.assetid: e02cc045-2ac0-41ff-b07f-e9255e320383
@@ -20,6 +20,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28198109"
 ---
 # <a name="what-does-azure-multi-factor-authentication-mean-for-me"></a>Co oznacza Azure Multi-Factor Authentication dla mnie?
 Tak, ma zaakceptujesz wiadomość e-mail od użytkowników z IT lub Twoje przełożonego, informujący o tym, ich dodanie dodatkowej weryfikacji zabezpieczeń do konta.  Dlatego co to znaczy?

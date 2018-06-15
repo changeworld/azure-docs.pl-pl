@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788494"
 ---
 # <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Przesyłanie zadań wycinka z funkcji tworzenia wycinków multimediów Azure
 Wymaga usługi Azure Media funkcji tworzenia wycinków **submitSubclipCallback** metody, które mają zostać wdrożone dla obsługi przesyłanie zadań wycinka. Ta funkcja jest wykonywania HTTP POST funkcji tworzenia wycinków danych wyjściowych z usługą sieci web. Ta usługa sieci web jest, gdzie można przesłać zadania kodowania. Dane wyjściowe funkcji tworzenia wycinków jest albo Media Encoder Standard kodowania ustawienie wstępne renderowanych zadań lub ładunek interfejsu API REST dla wywołania dynamicznego filtru manifestu. Ten model przekazujący jest niezbędne, ponieważ poświadczenia konta usługi media services nie jest bezpieczna w przeglądarce klienta.

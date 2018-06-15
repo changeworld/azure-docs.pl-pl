@@ -13,6 +13,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33951508"
 ---
 Poniżej przedstawiono ograniczenia użycia usługi Azure mapy. Informacji o koszt znajduje się w temacie [mapy Azure szczegóły cennika](https://azure.microsoft.com/pricing/details/azure-maps/). [Skontaktuj się z nami](https://azure.microsoft.com/overview/sales-number/) zwiększenie liczby żądań maksymalną dla Twojej subskrypcji.
 

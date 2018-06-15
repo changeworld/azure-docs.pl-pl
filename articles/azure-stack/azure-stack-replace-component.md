@@ -1,11 +1,11 @@
 ---
-title: "Zastąp składnik sprzętowy w węźle jednostki skali stosu Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zastąpić składnik sprzętowy w systemie Azure stosu zintegrowany."
+title: Zastąp składnik sprzętowy w węźle jednostki skali stosu Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zastąpić składnik sprzętowy w systemie Azure stosu zintegrowany.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: c6e036bf-8c80-48b5-b2d2-aa7390c1b7c9
 ms.service: azure-stack
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28919716"
 ---
 # <a name="replace-a-hardware-component-on-an-azure-stack-scale-unit-node"></a>Zastąp składnik sprzętowy w węźle jednostki skali Azure stosu
 

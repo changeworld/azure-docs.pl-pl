@@ -1,11 +1,11 @@
 ---
-title: "Administracja i rozwoju zadań listy usługi BizTalk | Dokumentacja firmy Microsoft"
-description: "Planowanie i zadania pomocy dotyczące wdrażania usług BizTalk Azure."
+title: Administracja i rozwoju zadań listy usługi BizTalk | Dokumentacja firmy Microsoft
+description: Planowanie i zadania pomocy dotyczące wdrażania usług BizTalk Azure.
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: msftman
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 0ab70b5b-1a88-4ba5-b329-ec51b785010e
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26626591"
 ---
 # <a name="administration-and-development-task-list-in-biztalk-services"></a>Administrowanie i Lista zadań rozwoju w usługi BizTalk Services
 

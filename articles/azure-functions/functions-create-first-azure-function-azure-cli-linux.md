@@ -1,8 +1,8 @@
 ---
 title: Tworzenie pierwszej funkcji w systemie Linux z poziomu interfejsu wiersza polecenia platformy Azure (wersja zapoznawcza) | Microsoft Docs
-description: "Dowiedz się, jak utworzyć pierwszą funkcję platformy Azure działającą w domyślnym obrazie systemu Linux z poziomu interfejsu wiersza polecenia platformy Azure."
+description: Dowiedz się, jak utworzyć pierwszą funkcję platformy Azure działającą w domyślnym obrazie systemu Linux z poziomu interfejsu wiersza polecenia platformy Azure.
 services: functions
-keywords: 
+keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.date: 11/15/2017
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28919393"
 ---
 # <a name="create-your-first-function-running-on-linux-using-the-azure-cli-preview"></a>Tworzenie pierwszej funkcji działającej w systemie Linux z poziomu interfejsu wiersza polecenia platformy Azure (wersja zapoznawcza)
 

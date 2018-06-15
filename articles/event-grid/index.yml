@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Dokumentacja usługi Azure Event Grid"
+title: Dokumentacja usługi Azure Event Grid
 metadata:
-  title: "Dokumentacja usługi Azure Event Grid — samouczki i dokumentacja interfejsu API"
-  description: "Usługa Azure Event Grid pozwala reagować na istotne zdarzenia w usługach platformy Azure oraz spoza tej platformy w czasie niemal rzeczywistym."
+  title: Dokumentacja usługi Azure Event Grid — samouczki i dokumentacja interfejsu API
+  description: Usługa Azure Event Grid pozwala reagować na istotne zdarzenia w usługach platformy Azure oraz spoza tej platformy w czasie niemal rzeczywistym.
   services: event-grid
   author: czeumault
   manager: carolz
@@ -18,13 +18,14 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: pl-PL
   ms.lasthandoff: 02/01/2018
+  ms.locfileid: "28921773"
 abstract:
-  description: "Usługa Azure Event Grid to w pełni zarządzana usługa inteligentnego routingu zdarzeń, która umożliwia ujednolicone używanie zdarzeń za pomocą modelu opartego na publikowaniu i subskrybowaniu. Usługa Azure Event Grid pozwala reagować na istotne zdarzenia w usługach platformy Azure oraz spoza tej platformy w czasie niemal rzeczywistym. Dowiedz się, jak używać usługi Azure Event Grid, korzystając z przewodników Szybki start, samouczków i przykładów."
+  description: Usługa Azure Event Grid to w pełni zarządzana usługa inteligentnego routingu zdarzeń, która umożliwia ujednolicone używanie zdarzeń za pomocą modelu opartego na publikowaniu i subskrybowaniu. Usługa Azure Event Grid pozwala reagować na istotne zdarzenia w usługach platformy Azure oraz spoza tej platformy w czasie niemal rzeczywistym. Dowiedz się, jak używać usługi Azure Event Grid, korzystając z przewodników Szybki start, samouczków i przykładów.
 sections:
 - title: 5-minutowe przewodniki Szybki start
   items:
   - type: paragraph
-    text: "Dowiedz się, jak tworzyć i subskrybować zdarzenia niestandardowe."
+    text: Dowiedz się, jak tworzyć i subskrybować zdarzenia niestandardowe.
   - type: list
     style: icon48
     items:
@@ -41,7 +42,7 @@ sections:
       text: Azure Portal
       href: /azure/event-grid/custom-event-quickstart-portal
   - type: paragraph
-    text: "Dowiedz się, jak kierować zdarzenia usługi Blob Storage."
+    text: Dowiedz się, jak kierować zdarzenia usługi Blob Storage.
   - type: list
     style: icon48
     items:
@@ -56,13 +57,13 @@ sections:
 - title: Samouczki krok po kroku
   items:
   - type: paragraph
-    text: "Dowiedz się, jak opracowywać aplikacje reagujące na zdarzenia."
+    text: Dowiedz się, jak opracowywać aplikacje reagujące na zdarzenia.
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app\">Monitorowanie zmian dotyczących maszyn wirtualnych za pomocą aplikacji logiki</a>"
-    - html: "<a href=\"/azure/event-grid/resize-images-on-storage-blob-upload-event\">Zmienianie rozmiaru przekazanych obrazów</a>"
-    - html: "<a href=\"/azure/event-grid/ensure-tags-exists-on-new-virtual-machines\">Integrowanie usługi Azure Automation z usługą Event Grid</a>"
+    - html: <a href="/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app">Monitorowanie zmian dotyczących maszyn wirtualnych za pomocą aplikacji logiki</a>
+    - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">Zmienianie rozmiaru przekazanych obrazów</a>
+    - html: <a href="/azure/event-grid/ensure-tags-exists-on-new-virtual-machines">Integrowanie usługi Azure Automation z usługą Event Grid</a>
 - title: Dokumentacja
   items:
   - type: list
@@ -74,4 +75,4 @@ sections:
     - title: Interfejsy API REST
       html: <p><a href="/rest/api/eventgrid">REST</a></p>
     - title: Schematy
-      html: "<p><a href=\"/azure/event-grid/subscription-creation-schema \">Schemat subskrypcji</a></p><p><a href=\"/azure/event-grid/event-schema\">Schemat zdarzeń</a></p>"
+      html: <p><a href="/azure/event-grid/subscription-creation-schema ">Schemat subskrypcji</a></p><p><a href="/azure/event-grid/event-schema">Schemat zdarzeń</a></p>

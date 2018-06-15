@@ -1,11 +1,11 @@
 ---
-title: "Wygaśnięcia wiadomości usługi Azure Service Bus | Dokumentacja firmy Microsoft"
-description: "Wygaśnięcia i czas wygaśnięcia wiadomości usługi Azure Service Bus"
+title: Wygaśnięcia wiadomości usługi Azure Service Bus | Dokumentacja firmy Microsoft
+description: Wygaśnięcia i czas wygaśnięcia wiadomości usługi Azure Service Bus
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28196772"
 ---
 # <a name="message-expiration-time-to-live"></a>Wygaśnięcia wiadomości (czas wygaśnięcia)
 

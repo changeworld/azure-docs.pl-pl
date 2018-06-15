@@ -13,6 +13,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894644"
 ---
 # <a name="failover-in-site-recovery"></a>Praca w trybie failover w usłudze Site Recovery
 W tym artykule opisano, jak do pracy awaryjnej maszyn wirtualnych i fizycznych serwerów są chronione przez usługę Site Recovery.

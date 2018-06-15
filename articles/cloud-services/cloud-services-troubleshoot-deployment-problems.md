@@ -1,11 +1,11 @@
 ---
-title: "Rozwiązywanie problemów z wdrażaniem usługi chmury | Dokumentacja firmy Microsoft"
-description: "Istnieje kilka typowych problemów, które mogą napotkać podczas wdrażania usługi w chmurze na platformie Azure. Ten artykuł zawiera niektóre z nich rozwiązania."
+title: Rozwiązywanie problemów z wdrażaniem usługi chmury | Dokumentacja firmy Microsoft
+description: Istnieje kilka typowych problemów, które mogą napotkać podczas wdrażania usługi w chmurze na platformie Azure. Ten artykuł zawiera niektóre z nich rozwiązania.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: simonxjx
 manager: felixwu
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: a18ae415-0d1c-4bc4-ab6c-c1ddea02c870
 ms.service: cloud-services
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26408183"
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>Rozwiązywanie problemów z wdrażaniem usługi chmury
 Podczas wdrażania pakietu aplikacji usług chmury Azure, można uzyskać informacji o wdrażaniu z **właściwości** okienku w portalu Azure. Szczegółowe informacje można użyć w tym okienku, ułatwiające rozwiązywanie problemów z usługą w chmurze, a następnie przekaż te informacje do obsługi Azure podczas otwierania nowe żądanie pomocy technicznej.

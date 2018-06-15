@@ -14,6 +14,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33934118"
 ---
 # <a name="tutorial-prepare-application-for-azure-kubernetes-service-aks"></a>Samouczek: przygotowywanie aplikacji dla usługi Azure Kubernetes Service (AKS)
 

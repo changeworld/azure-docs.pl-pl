@@ -1,12 +1,12 @@
 ---
-title: "Wdrażanie geograficznie rozproszonych usług AD FS o wysokiej dostępności na platformie Azure przy użyciu usługi Azure Traffic Manager | Microsoft Docs"
-description: "W tym dokumencie omówiono procedurę wdrożenia usług AD FS na platformie Azure w celu zapewnienia wysokiej dostępności."
-keywords: "Usługi AD FS z menedżerem ruchu Azure, usługi AD FS z usługą Azure Traffic Manager, geograficznie, wiele centrów danych, geograficzne centra danych, geograficznie rozproszone centra danych, wdrażanie usług AD FS na platformie Azure, azure AD FS, usługi azure ad fs, wdrażania usług AD FS, wdrażanie adfs azure, azure adfs, wdrażanie adfs w azure, wdrażanie AD FS w azure, adfs azure, wprowadzenie do usługi AD FS, Azure, AD FS na platformie Azure, iaas, ADFS, przenoszenie adfs do azure"
+title: Wdrażanie geograficznie rozproszonych usług AD FS o wysokiej dostępności na platformie Azure przy użyciu usługi Azure Traffic Manager | Microsoft Docs
+description: W tym dokumencie omówiono procedurę wdrożenia usług AD FS na platformie Azure w celu zapewnienia wysokiej dostępności.
+keywords: Usługi AD FS z menedżerem ruchu Azure, usługi AD FS z usługą Azure Traffic Manager, geograficznie, wiele centrów danych, geograficzne centra danych, geograficznie rozproszone centra danych, wdrażanie usług AD FS na platformie Azure, azure AD FS, usługi azure ad fs, wdrażania usług AD FS, wdrażanie adfs azure, azure adfs, wdrażanie adfs w azure, wdrażanie AD FS w azure, adfs azure, wprowadzenie do usługi AD FS, Azure, AD FS na platformie Azure, iaas, ADFS, przenoszenie adfs do azure
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: anandyadavmsft
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: a14bc870-9fad-45ed-acd5-a90ccd432e54
 ms.service: active-directory
 ms.workload: identity
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26604783"
 ---
 # <a name="high-availability-cross-geographic-ad-fs-deployment-in-azure-with-azure-traffic-manager"></a>Wdrażanie geograficznie rozproszonych usług AD FS o wysokiej dostępności na platformie Azure przy użyciu usługi Azure Traffic Manager
 Artykuł [Wdrożenie usług AD FS na platformie Azure](active-directory-aadconnect-azure-adfs.md) zawiera instrukcje krok po kroku dotyczące wdrażania prostej infrastruktury usług AD FS dla organizacji na platformie Azure. W tym artykule opisano następne kroki tworzenia geograficznie rozproszonego wdrożenia usług AD FS na platformie Azure przy użyciu usługi [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Usługa Azure Traffic Manager pomaga przy tworzeniu geograficznie rozproszonej infrastruktury usług AD FS o wysokiej dostępności i wydajności dla organizacji poprzez korzystanie z wielu dostępnych metod routingu dopasowanych do zróżnicowanych potrzeb infrastruktury.

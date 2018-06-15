@@ -1,11 +1,11 @@
 ---
 title: Instalowanie bazy danych MongoDB Windows maszyny Wirtualnej na platformie Azure | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak zainstalować bazy danych MongoDB na maszynie Wirtualnej platformy Azure, system Windows Server 2012 R2 utworzone za pomocą modelu wdrażania usługi Resource Manager."
+description: Dowiedz się, jak zainstalować bazy danych MongoDB na maszynie Wirtualnej platformy Azure, system Windows Server 2012 R2 utworzone za pomocą modelu wdrażania usługi Resource Manager.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 53faf630-8da5-4955-8d0b-6e829bf30cba
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/16/2017
+ms.locfileid: "26745983"
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Instalowanie i Konfigurowanie bazy danych MongoDB na maszynie Wirtualnej systemu Windows na platformie Azure
 [Bazy danych MongoDB](http://www.mongodb.org) jest popularnych open source, wysokiej wydajności bazę danych NoSQL. W tym artykule opisano sposób instalowania i konfigurowania bazy danych MongoDB na maszynie wirtualnej systemu Windows Server 2016 (VM) na platformie Azure. Możesz również [zainstalować bazy danych MongoDB na Maszynę wirtualną systemu Linux na platformie Azure](../linux/install-mongodb.md).

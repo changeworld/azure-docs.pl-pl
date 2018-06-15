@@ -21,6 +21,7 @@ ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/04/2018
+ms.locfileid: "33203973"
 ---
 # <a name="understand-your-azure-billing-for-external-service-charges"></a>Zrozumienie dla zewnętrznych opłaty za usługę Azure rozliczeniowego
 Zewnętrznych usług są publikowane przez producentów oprogramowania innych firm w portalu Azure marketplace. Na przykład ClearDB i SendGrid są usług zewnętrznych, które można kupić na platformie Azure, ale nie są publikowane przez firmę Microsoft.

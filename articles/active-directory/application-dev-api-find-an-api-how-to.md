@@ -1,11 +1,11 @@
 ---
-title: "Jak znaleźć interfejsu API wymagane dla aplikacji utworzonych niestandardowych | Dokumentacja firmy Microsoft"
-description: "Jak skonfigurować uprawnienia, musisz mieć dostęp do danego interfejsu API w niestandardowe opracowała aplikację usługi Azure AD"
+title: Jak znaleźć interfejsu API wymagane dla aplikacji utworzonych niestandardowych | Dokumentacja firmy Microsoft
+description: Jak skonfigurować uprawnienia, musisz mieć dostęp do danego interfejsu API w niestandardowe opracowała aplikację usługi Azure AD
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26613730"
 ---
 # <a name="how-to-find-a-specific-api-needed-for-a-custom-developed-application"></a>Jak znaleźć interfejsu API wymagane dla aplikacji utworzonych niestandardowych
 

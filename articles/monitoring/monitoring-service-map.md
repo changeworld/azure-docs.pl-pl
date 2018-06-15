@@ -16,9 +16,10 @@ ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
 ms.openlocfilehash: aa9a6b54576ce8399471891c9ab5b80216f00ee1
 ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33887909"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Przy użyciu mapy usługi rozwiązania na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Z mapy usługi można przeglądać serwery w taki sposób, który należy wziąć pod uwagę ich: jako połączonych systemy, które dostarczają usług krytycznych. Mapy usługi pokazuje połączeń między serwerami, procesów, i portów w dowolnej połączenia TCP architekturze, bez konieczności wykonywania konfiguracyjnych wymaganych innych niż instalację agenta.

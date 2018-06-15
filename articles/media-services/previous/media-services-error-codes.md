@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788767"
 ---
 # <a name="azure-media-services-error-codes"></a>Kody błędów w usłudze Azure Media Services
 Korzystając z usługi Microsoft Azure Media Services, usługi, w zależności od problemów, takich jak tokeny uwierzytelniania wygasa do akcji, które nie są obsługiwane w usłudze Media Services może zostać wyświetlony kody błędów HTTP. Poniżej przedstawiono listę **kody błędów HTTP** które mogą być zwrócone przez usługi Media Services i możliwe przyczyny dla nich.  

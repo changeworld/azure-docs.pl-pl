@@ -13,6 +13,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/20/2018
+ms.locfileid: "30196819"
 ---
 Dla bieżącego jednostki SKU (VpnGw1 VpnGw2 i VPNGW3) Aby zmienić rozmiar aktualizacji do bardziej zaawansowanych, jednostka SKU bramy można użyć `Resize-AzureRmVirtualNetworkGateway` polecenia cmdlet programu PowerShell. Możesz również obniżyć bramy, rozmiar jednostki SKU za pomocą tego polecenia cmdlet. Jeśli używasz bramy podstawowa jednostka SKU, [zamiast tego użyj tych instrukcji](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md#resize) zmiany rozmiaru bramy.
 

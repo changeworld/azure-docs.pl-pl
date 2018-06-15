@@ -1,11 +1,11 @@
 ---
-title: "Jak skonfigurować nową aplikację wielodostępne | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować aplikację pracy wielodostępnej i jak wielodostępnych aplikacji"
+title: Jak skonfigurować nową aplikację wielodostępne | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować aplikację pracy wielodostępnej i jak wielodostępnych aplikacji
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26614806"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>Jak skonfigurować nową aplikację wieloma dzierżawcami
 

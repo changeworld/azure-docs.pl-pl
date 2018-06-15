@@ -1,9 +1,9 @@
 ---
 title: Azure MFA logowania w trakcie weryfikacji dwuetapowej | Dokumentacja firmy Microsoft
-description: "Ta strona pozwoli wskazówki na gdzie można wyświetlić różnych logowania dostępne metody za pomocą usługi Azure MFA."
-keywords: "Uwierzytelnianie użytkownika, logowania, zarejestruj się przy użyciu telefonu komórkowego, zarejestruj się przy użyciu telefonu biurowego"
+description: Ta strona pozwoli wskazówki na gdzie można wyświetlić różnych logowania dostępne metody za pomocą usługi Azure MFA.
+keywords: Uwierzytelnianie użytkownika, logowania, zarejestruj się przy użyciu telefonu komórkowego, zarejestruj się przy użyciu telefonu biurowego
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.assetid: b310b762-471b-4b26-887a-a321c9e81d46
@@ -21,6 +21,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26628417"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Środowisko logowania w usłudze Azure Multi-Factor Authentication
 > [!NOTE]

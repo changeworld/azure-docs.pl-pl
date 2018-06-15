@@ -1,6 +1,6 @@
 ---
-title: "Microsoft Threat modelowania narzędzie - Azure | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat wszystkich funkcji dostępnych w narzędziu modelowania zagrożeń"
+title: Microsoft Threat modelowania narzędzie - Azure | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat wszystkich funkcji dostępnych w narzędziu modelowania zagrożeń
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/18/2017
+ms.locfileid: "26754749"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Omówienie funkcji narzędzia do modelowania zagrożeń
 

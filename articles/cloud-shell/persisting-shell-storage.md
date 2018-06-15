@@ -1,12 +1,12 @@
 ---
-title: "Bash w powłoce chmury Azure są przechowywane pliki | Dokumentacja firmy Microsoft"
-description: "Wskazówki dotyczące sposobu Bash w powłoce chmury Azure będzie się powtarzał plików."
+title: Bash w powłoce chmury Azure są przechowywane pliki | Dokumentacja firmy Microsoft
+description: Wskazówki dotyczące sposobu Bash w powłoce chmury Azure będzie się powtarzał plików.
 services: azure
-documentationcenter: 
+documentationcenter: ''
 author: jluk
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28919546"
 ---
 [!INCLUDE [features-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 

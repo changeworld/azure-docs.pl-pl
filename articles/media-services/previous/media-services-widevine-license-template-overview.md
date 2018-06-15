@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33790482"
 ---
 # <a name="widevine-license-template-overview"></a>Omówienie szablonu licencji Widevine
 Azure Media Services służy do konfigurowania i żądają licencji Google Widevine. Próbą odtwarzanie zawartości chronionej przez Widevine, żądanie jest wysyłane do usługi dostarczania licencji uzyskanie licencji. Jeśli usługa licencji zatwierdza żądanie, usługa wystawia licencję. Są wysyłane do klienta, a służy do odszyfrowania i odtwarzać określonej zawartości.
