@@ -14,6 +14,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33893654"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Wprowadzenie do funkcji okien usługi analiza strumienia
 W scenariuszach przesyłanie strumieniowe w czasie wykonywania operacji na danych znajdujących się na danych czasowych systemu windows jest wspólnym wzorcem. Analiza strumienia ma macierzystą obsługę funkcji okien umożliwiają deweloperom zadania przetwarzania strumienia złożonych autora przy minimalnym wysiłku.

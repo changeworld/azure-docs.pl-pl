@@ -15,6 +15,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33942261"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Limity pamięci i magazyn danych SQL Azure
 Wyświetl limitów pamięci i przydzielone do różnych poziomów wydajności i klasy zasobu w usłudze Azure SQL Data Warehouse. Aby uzyskać więcej informacji i dotyczą te możliwości planu zarządzania obciążenia, zobacz [klasy zasobów do zarządzania obciążenia](resource-classes-for-workload-management.md). 

@@ -13,6 +13,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32195298"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jak wdrożyć nawigację aspektową w usłudze Azure Search
 Nawigacji aspektowej jest mechanizm filtrowania, który udostępnia samodzielnego rozwijania szczegółów nawigacji w aplikacji wyszukiwania. Termin "nawigacji aspektowej" mogą być nieznane, ale prawdopodobnie użyto go przed. Jak w poniższym przykładzie pokazano, nawigacji aspektowej ma więcej niż kategorie używane do filtrowania wyników.

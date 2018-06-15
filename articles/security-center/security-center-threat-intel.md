@@ -19,6 +19,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32774577"
 ---
 # <a name="threat-intelligence-in-azure-security-center"></a>Analiza zagrożeń w usłudze Azure Security Center
 Ten artykuł ułatwia korzystanie z analizy zagrożeń usługi Azure Security Center w celu rozwiązywania problemów związanych z zabezpieczeniami.

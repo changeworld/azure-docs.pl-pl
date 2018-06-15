@@ -16,6 +16,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31793600"
 ---
 # <a name="adding-azure-storage-by-using-visual-studio-connected-services"></a>Dodawanie magazynu platformy Azure przy użyciu programu Visual Studio usługami
 Przy użyciu programu Visual Studio możesz można nawiązać żadnego z następujących usługi Azure Storage za pomocą **dodać usług połączonych** okna dialogowego:

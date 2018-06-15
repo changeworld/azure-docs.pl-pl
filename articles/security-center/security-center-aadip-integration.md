@@ -19,6 +19,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32774186"
 ---
 # <a name="connecting-azure-active-directory-identity-protection-to-azure-security-center"></a>Łączenie ochrony tożsamości usługi Azure Active Directory z Centrum zabezpieczeń Azure
 Ten dokument pomaga skonfigurować integrację między ochroną tożsamości usługi Azure Active Directory (AD) i Centrum zabezpieczeń Azure.

@@ -18,6 +18,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32192880"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie usługi Azure Storage zapory i sieci wirtualnych
 Magazyn Azure oferuje model zabezpieczeń warstwowych, co umożliwia Zabezpieczanie kont magazynu do określonego zestawu dozwolonych sieci.  Gdy zasady sieci są skonfigurowane, tylko aplikacje z dozwolonych sieci można uzyskać dostęp do konta magazynu.  Podczas wywoływania metody z dozwolonych sieci, aplikacje będą nadal będą musieli właściwą autoryzację (prawidłowy dostęp do klucza lub tokenu sygnatury dostępu Współdzielonego) do uzyskania dostępu do konta magazynu.

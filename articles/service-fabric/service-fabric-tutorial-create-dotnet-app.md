@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/01/2018
+ms.locfileid: "32312699"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Samouczek: tworzenie i wdrażanie aplikacji przy użyciu usługi frontonu platformy ASP.NET Core z internetowym interfejsem API oraz stanowej usługi zaplecza
 Niniejszy samouczek jest pierwszą częścią serii.  Zostanie tutaj przedstawiony sposób tworzenia aplikacji usługi Azure Service Fabric za pomocą frontonu internetowego interfejsu API platformy ASP.NET Core i stanowej usługi zaplecza umożliwiającej przechowywanie danych. Po zakończeniu będziesz mieć aplikację do głosowania z usługą internetową frontonu ASP.NET Core, która zapisuje wyniki głosowania w stanowej usłudze zaplecza w klastrze. Jeśli nie chcesz ręcznie tworzyć aplikacji do głosowania, możesz [pobrać kod źródłowy](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) ukończonej aplikacji i przejść od razu do sekcji [Szczegółowe omówienie przykładowej aplikacji do głosowania](#walkthrough_anchor).  Jeśli wolisz, możesz też obejrzeć [przewodnik wideo](https://channel9.msdn.com/Events/Connect/2017/E100) dla tego samouczka.

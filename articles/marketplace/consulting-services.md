@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/01/2018
+ms.locfileid: "32312087"
 ---
 # <a name="azure-marketplace-consulting-services"></a>Usługi konsultingowe witrynę Azure Marketplace
 Konsultacji usług w portalu Azure Marketplace udostępnia celem połączenia klientów z usługi do obsługi i rozszerzanie ich użycia usługi Azure partnerów firmy Microsoft. W portalu Azure Marketplace obsługuje listę ofert usługi konsultacji systemu Integrator (SI) partnerów firmy Microsoft. 

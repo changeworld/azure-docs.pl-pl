@@ -13,6 +13,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31613623"
 ---
 Kroki dla tego zadania użyć sieci wirtualnej na podstawie wartości na poniższej liście odwołania konfiguracji. Nazwy i dodatkowe ustawienia są także opisane w tej listy. Nie używamy tej listy bezpośrednio w krokach, mimo że dodamy zmienne na podstawie wartości na tej liście. Możesz skopiować listę i użyj go jako odwołanie, zastąpionymi wartościami z własnego.
 

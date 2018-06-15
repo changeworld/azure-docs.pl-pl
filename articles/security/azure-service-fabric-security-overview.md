@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895667"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Omówienie zabezpieczeń usługi Azure Service Fabric
 [Sieć szkieletowa usług Azure](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) to platforma systemów rozproszonych, która ułatwia pakietów, wdrażanie i zarządzanie mikrousług skalowalne i niezawodne. Sieć szkieletowa usług adresów istotnych wyzwań rozwijania i zarządzanie aplikacjami w chmurze. Deweloperzy i administratorzy mogą uniknąć złożonych problemów związanych z infrastrukturą i skoncentrować się na implementowaniu wymagających obciążeń o znaczeniu strategicznym, które są skalowalne, niezawodne i łatwe w zarządzaniu.

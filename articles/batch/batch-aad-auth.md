@@ -17,9 +17,10 @@ ms.date: 04/18/2018
 ms.author: danlep
 ms.openlocfilehash: c28af5a9773cc362663831346b58f599aed6ea9a
 ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31789269"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Uwierzytelnianie partii rozwiązań usług w usłudze Active Directory
 

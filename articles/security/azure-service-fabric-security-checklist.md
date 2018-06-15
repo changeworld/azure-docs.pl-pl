@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895878"
 ---
 # <a name="azure-service-fabric-security-checklist"></a>Lista kontrolna zabezpieczeń platformy Azure sieci szkieletowej usług
 Ten artykuł zawiera listę kontrolną łatwy w użyciu, które mogą pomóc w zabezpieczeniu środowiska sieć szkieletowa usług Azure.

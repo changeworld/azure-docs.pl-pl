@@ -1,4 +1,4 @@
-# Przegląd
+# Omówienie
 ## [Informacje o maszynach wirtualnych](../../virtual-machines-windows-about.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ## [Często zadawane pytania](faq-classic.md)
 
@@ -19,7 +19,8 @@
 ### [Tworzenie niestandardowej maszyny wirtualnej](createportal-classic.md)
 ### [Przechwytywanie maszyny wirtualnej z systemem Windows](capture-image-classic.md)
 ### [Uruchamianie zadania wymagającego wielu obliczeń w środowisku Java](java-run-compute-intensive-task.md)
-### [Aplikacja sieci Web „Hello World” na platformie Django](python-django-web-app.md)
+### 
+  [Aplikacja internetowa „Hello World” na platformie Django](python-django-web-app.md)
 
 ## Konfigurowanie
 ### [Instalowanie i konfigurowanie rozwiązania Symantec Endpoint Protection](install-symantec.md)
@@ -33,7 +34,6 @@
 ### [Zarządzanie maszynami wirtualnymi przy użyciu programu Azure PowerShell](manage-psh-classic.md)
 ### [Informacje o agencie i rozszerzeniach maszyny wirtualnej](agents-and-extensions-classic.md)
 ### [Zarządzanie rozszerzeniami maszyn wirtualnych](manage-extensions-classic.md)
-### [Rozszerzenie niestandardowego skryptu dla maszyn wirtualnych](extensions-customscript-classic.md)
 
 ## Zarządzanie obciążeniami
 ### [Obliczenia o wysokiej wydajności (HPC)](../../virtual-machines-windows-hpcpack-cluster-options.md)
@@ -53,7 +53,7 @@
 ### [Resetowanie hasła protokołu RDP](reset-rdp.md)
 ### [Dołączanie wirtualnego dysku twardego do maszyny wirtualnej rozwiązywania problemów](troubleshoot-recovery-disks-portal.md)
 
-# Odwołanie
+# Dokumentacja
 ## [Azure PowerShell](/powershell/azure/overview)
 ## [Interfejs wiersza polecenia platformy Azure](/cli/azure/vm)
 ## [Java](/java/api)

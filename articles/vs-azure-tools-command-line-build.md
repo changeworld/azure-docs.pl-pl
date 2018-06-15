@@ -16,6 +16,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31791430"
 ---
 # <a name="building-azure-projects-from-the-command-line"></a>Kompilowanie projektów platformy Azure z poziomu wiersza polecenia
 Aparat kompilacji firmy Microsoft (MSBuild) można tworzyć produktów w środowisku laboratorium kompilacji, których nie zainstalowano programu Visual Studio. Program MSBuild używa formatu XML dla plików projektu, które extensible i w pełni obsługiwane przez firmę Microsoft. Przy użyciu formatu pliku MSBuild, można opisać co elementów musi być skompilowany dla platformy i konfiguracji.
