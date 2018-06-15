@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360261"
 ---
 # <a name="azure-cloud-services-definition-workerrole-schema"></a>Definicja schematu proces roboczy usług w chmurze Azure
 Rola procesu roboczego platformy Azure jest rolę, która jest przydatne w przypadku ogólnych programowanie i może wykonywać przetwarzania w tle dla roli sieci web.

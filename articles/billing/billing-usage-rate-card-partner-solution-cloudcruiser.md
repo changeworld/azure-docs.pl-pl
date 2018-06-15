@@ -20,6 +20,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32771501"
 ---
 # <a name="cloud-cruiser-and-microsoft-azure-billing-api-integration"></a>Cruiser i rozliczeń integracji interfejsu API platformy Microsoft Azure w chmurze
 W tym artykule opisano, jak można użyć informacji zebranych w nowych Microsoft Azure Billing interfejsów API w chmurze Cruiser symulacji koszt przepływu pracy i analizy.

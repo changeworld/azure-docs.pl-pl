@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34363057"
 ---
 # <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>Ogranicz dostęp za pośrednictwem punkty końcowe skierowane do Internetu w Centrum zabezpieczeń Azure
 Centrum zabezpieczeń Azure zaleca ograniczyć dostęp za pośrednictwem punkty końcowe skierowane do Internetu, jeśli jakakolwiek z grup zabezpieczeń sieci (NSG) ma co najmniej jednej reguły dla ruchu przychodzącego zezwalających na dostęp z "dowolny" źródłowy adres IP. Otwieranie dostępu do"" może umożliwić atakującemu dostęp do zasobów. Centrum zabezpieczeń zaleca edytowanie tych reguł ruchu przychodzącego, aby ograniczyć dostęp do źródła adresy IP, które faktycznie muszą mieć dostęp.

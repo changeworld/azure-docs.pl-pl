@@ -1,12 +1,12 @@
 ---
-title: "Tworzenie zautomatyzowanych przepływów pracy z użyciem harmonogramu — Azure Logic Apps | Microsoft Docs"
-description: "Ten samouczek pokazuje, w jaki sposób utworzyć cykliczny, zautomatyzowany przepływ pracy z użyciem harmonogramu w usłudze Azure Logic Apps"
+title: Tworzenie zautomatyzowanych przepływów pracy z użyciem harmonogramu — Azure Logic Apps | Microsoft Docs
+description: Ten samouczek pokazuje, w jaki sposób utworzyć cykliczny, zautomatyzowany przepływ pracy z użyciem harmonogramu w usłudze Azure Logic Apps
 author: ecfan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: logic-apps
 ms.tgt_pltfrm: na
@@ -15,11 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 4360249367632a01e4357c527f595f8416c7cc38
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 84779d3e56b089c34e6556368008d794e634d535
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300773"
 ---
 # <a name="check-traffic-with-a-scheduler-based-logic-app"></a>Sprawdzanie natężenia ruchu za pomocą aplikacji logiki z użyciem harmonogramu
 
@@ -96,8 +97,8 @@ Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-conc
    | ------- | ----- | ----------- | 
    | **Interwał** | 1 | Liczba interwałów do odczekania między sprawdzaniami | 
    | **Częstotliwość** | Tydzień | Jednostka czasu cyklu | 
-   | **Strefa czasowa** | None | Ma zastosowanie tylko, jeśli określisz godzinę rozpoczęcia. Umożliwia określenie innej strefy czasowej niż lokalna. | 
-   | **Godzina rozpoczęcia** | None | Umożliwia opóźnienie cyklu do określonej daty i godziny. Aby uzyskać więcej informacji, zobacz [Schedule tasks and workflows that run regularly (Planowanie regularnie uruchamianych zadań i przepływów pracy)](../connectors/connectors-native-recurrence.md). | 
+   | **Strefa czasowa** | Brak | Ma zastosowanie tylko, jeśli określisz godzinę rozpoczęcia. Umożliwia określenie innej strefy czasowej niż lokalna. | 
+   | **Godzina rozpoczęcia** | Brak | Umożliwia opóźnienie cyklu do określonej daty i godziny. Aby uzyskać więcej informacji, zobacz [Schedule tasks and workflows that run regularly (Planowanie regularnie uruchamianych zadań i przepływów pracy)](../connectors/connectors-native-recurrence.md). | 
    | **W tych dniach** | poniedziałek,wtorek,środa,czwartek,piątek | Dostępne tylko wtedy, gdy w polu **Częstotliwość** wybrano pozycję Tydzień | 
    | **W tych godzinach** | 7,8,9 | Dostępne tylko wtedy, gdy w polu **Częstotliwość** wybrano pozycję Tydzień lub Dzień. Wybierz, o jakich godzinach ma być uruchamiany cykl. W tym przykładzie jest uruchamiany o 7, 8 i 9. | 
    | **W tych minutach** | 0,15,30,45 | Dostępne tylko wtedy, gdy w polu **Częstotliwość** wybrano pozycję Tydzień lub Dzień. Wybierz, w których minutach dnia ma być uruchamiany cykl. W tym przykładzie jest uruchamiany co 15 minut, rozpoczynając od pełnej godziny. | 
@@ -143,12 +144,12 @@ Po utworzeniu wyzwalacza możesz dodać [akcję](../logic-apps/logic-apps-overvi
    | ------- | ----- | ----------- |
    | **Punkt nawigacyjny 1** | <*lokalizacja_początkowa*> | Początek trasy | 
    | **Punkt nawigacyjny 2** | <*lokalizacja_końcowa*> | Koniec trasy | 
-   | **Unikaj** | None | Wszelkie elementy trasy, których należy unikać, na przykład autostrady, drogi płatne i tym podobne | 
+   | **Unikaj** | Brak | Wszelkie elementy trasy, których należy unikać, na przykład autostrady, drogi płatne i tym podobne | 
    | **Optymalizacja** | timeWithTraffic | Parametr używany do optymalizowania trasy, na przykład odległość, czas podróży z uwzględnieniem aktualnego natężenia ruchu i tak dalej. Wybierz parametr: „timeWithTraffic” | 
    | **Jednostka odległości** | <*według_preferencji*> | Jednostka odległości trasy. W tym artykule używaną jednostką jest mila  | 
    | **Tryb podróży** | Jazda samochodem | Tryb podróży dla trasy. Wybierz tryb „Jazda samochodem” | 
    | **Transport publiczny — data i godzina** | Brak | Dotyczy tylko trybu „Transport publiczny” | 
-   | **Rodzaj daty i godziny** | None | Dotyczy tylko trybu „Transport publiczny” | 
+   | **Rodzaj daty i godziny** | Brak | Dotyczy tylko trybu „Transport publiczny” | 
    |||| 
 
    Aby uzyskać więcej informacji na temat tych parametrów, zobacz [Calculate route (Obliczanie trasy)](https://msdn.microsoft.com/library/ff701717.aspx).

@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359428"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Dodaj serwery hostingu dla dostawcy zasobów SQL
 Można użyć wystąpienia programu SQL na maszynach wirtualnych wewnątrz sieci [stosu Azure](azure-stack-poc.md), lub wystąpienia poza środowiskiem Azure stosu, podać dostawcę zasobów można się z nim połączyć. Ogólne wymagania są:

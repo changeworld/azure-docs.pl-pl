@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195560"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Dołączania komputerów do zarządzania przez Konfiguracja DSC automatyzacji Azure
 

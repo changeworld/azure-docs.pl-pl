@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34193485"
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Scenariusz automatyzacji Azure - świadczenia usług AWS maszyny wirtualnej
 W tym artykule dowiesz się, jak można wykorzystać Automatyzacja Azure, aby udostępnić maszynie wirtualnej w ramach subskrypcji usługi sieci Web firmy Amazon (AWS) i nadaj tej maszyny Wirtualnej określonej nazwy — czyli usług AWS jako "znakowanie" maszyny Wirtualnej.

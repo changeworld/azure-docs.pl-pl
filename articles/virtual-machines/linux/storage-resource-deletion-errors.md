@@ -16,6 +16,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34363829"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>Rozwiązywanie problemów z błędami usunięcia zasobów magazynu
 

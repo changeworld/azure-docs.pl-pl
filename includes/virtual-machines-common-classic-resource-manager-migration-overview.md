@@ -13,6 +13,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34371341"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Obsługiwane platformy migracji zasobów IaaS ze środowiska klasycznego do usługi Azure Resource Manager
 W tym artykule opisano sposób w przypadku włączania migracji infrastruktura jako usługa (IaaS) zasoby z klasycznego, który to modele wdrażania Menedżera zasobów. Możesz przeczytać dodatkowe informacje [funkcje usługi Azure Resource Manager i korzyści](../articles/azure-resource-manager/resource-group-overview.md). Firma Microsoft szczegółowo sposób łączenie zasobów z modeli dwa wdrożenia, które są dostępne w ramach subskrypcji, przy użyciu bramy lokacja lokacja sieci wirtualnej.

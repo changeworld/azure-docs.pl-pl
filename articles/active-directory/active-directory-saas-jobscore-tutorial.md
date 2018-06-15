@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34341267"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscore"></a>Samouczek: Integracji Azure Active Directory z JobScore
 

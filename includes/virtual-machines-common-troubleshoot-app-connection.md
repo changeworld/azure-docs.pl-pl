@@ -13,6 +13,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34371273"
 ---
 Istnieją różne powody, gdy nie można uruchomić lub połączyć do aplikacji działających na maszynie wirtualnej platformy Azure (VM). Przyczyny aplikacji nie jest uruchomiona lub nasłuchuje na oczekiwanych portach, port nasłuchujący zablokowane lub sieć zasady prawidłowo przekazywanie ruchu do aplikacji. W tym artykule opisano metodyczny podejście, aby odnaleźć i rozwiązać problem.
 

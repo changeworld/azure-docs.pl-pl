@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360346"
 ---
 # <a name="azure-cloud-services-definition-webrole-schema"></a>Azure Cloud Services definicji schematu sieć Web
 Rola sieci web platformy Azure jest rolę, która jest dostosowany do programowania aplikacji sieci web, ponieważ obsługiwane przez usługi IIS 7, takich jak ASP.NET, PHP, Windows Communication Foundation i FastCGI.

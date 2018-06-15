@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365380"
 ---
 # <a name="azure-storage-security-overview"></a>Przegląd zabezpieczeń magazynu Azure
 Usługa Azure Storage to rozwiązanie magazynu w chmurze dla nowoczesnych aplikacji, które polegają na trwałości, dostępności i skalowalności, aby spełniać potrzeby klientów. Magazyn Azure oferuje rozbudowany zestaw funkcji zabezpieczeń. Możesz:

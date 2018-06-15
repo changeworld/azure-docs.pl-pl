@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery Rozwiązywanie problemów z VMware do platformy Azure | Dokumentacja firmy Microsoft"
-description: "Rozwiązywanie błędów podczas replikowania maszyn wirtualnych platformy Azure."
+title: Azure Site Recovery Rozwiązywanie problemów z VMware do platformy Azure | Dokumentacja firmy Microsoft
+description: Rozwiązywanie błędów podczas replikowania maszyn wirtualnych platformy Azure.
 services: site-recovery
 author: anoopkv
 manager: gauravd
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29812894"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Rozwiązywanie problemów dotyczących instalacji wypychanej usługi mobilności
 

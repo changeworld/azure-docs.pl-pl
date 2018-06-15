@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34194200"
 ---
 # <a name="runbook-settings"></a>Ustawienia elementu Runbook
 Każdy element runbook automatyzacji Azure ma wiele ustawień, które ułatwiają jego identyfikację i zmianę jego zachowania rejestrowania. Każde z tych ustawień opisano poniżej; dołączono instrukcji na temat sposobu ich modyfikacji.

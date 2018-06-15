@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360040"
 ---
 # <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Definicja schematu NetworkTrafficRules usług w chmurze Azure
 `NetworkTrafficRules` Węzeł jest opcjonalny element w pliku definicji usługi, która określa, jak role komunikują się ze sobą. Ogranicza role mogą uzyskiwać dostęp do wewnętrznych punktów końcowych w określonej roli. `NetworkTrafficRules` Nie jest elementem autonomiczny; jest połączona z dwóch lub większej liczby ról w pliku definicji usługi.

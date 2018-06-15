@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364237"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Omówienie zabezpieczeń usługi Azure maszyny wirtualne
 Maszyny wirtualne Azure umożliwia wdrażanie szeroką gamę rozwiązania informatyczne w sposób agile. Usługa obsługuje Microsoft Windows, Linux, programu Microsoft SQL Server, Oracle, IBM, SAP i usługi BizTalk Services dla platformy Azure. Dlatego mogą wdrażać dowolne obciążenia i dowolnego języka w niemal dowolnym systemie operacyjnym.

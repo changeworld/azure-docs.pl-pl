@@ -20,6 +20,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30191453"
 ---
 # <a name="get-started-with-azure-dns-private-zones-using-azure-cli-20"></a>Rozpoczynanie pracy z usługą Azure DNS Private Zones przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
 

@@ -13,6 +13,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34367136"
 ---
 W tym artykule przedstawiono zestaw sprawdzonych rozwiązań dotyczących uruchamiania maszyny wirtualnej z systemem Linux na platformie Azure z uwzględnieniem zagadnień dotyczących skalowalności, dostępności, możliwości zarządzania i zabezpieczeń. Platforma Azure obsługuje różne popularne dystrybucje systemu Linux, w tym CentOS, Debian, Red Hat Enterprise, Ubuntu i FreeBSD. Aby uzyskać więcej informacji, zobacz [Azure and Linux][azure-linux] (Platforma Azure i system Linux).
 

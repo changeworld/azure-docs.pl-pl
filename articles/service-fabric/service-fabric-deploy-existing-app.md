@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205991"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Pakiet, a następnie wdrożyć istniejącego pliku wykonywalnego sieci szkieletowej usług
 Podczas pakowania istniejącego pliku wykonywalnego jako [pliku wykonywalnego gościa](service-fabric-guest-executables-introduction.md), można wybrać jedną, aby użyć szablonu projektu programu Visual Studio lub [ręcznie utworzyć pakiet aplikacji](#manually). Za pomocą programu Visual Studio, struktura pakietu aplikacji i pliki manifestu są tworzone przez nowy szablon projektu dla Ciebie.

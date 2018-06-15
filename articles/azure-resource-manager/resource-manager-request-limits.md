@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358867"
 ---
 # <a name="throttling-resource-manager-requests"></a>Ograniczanie żądań Resource Manager
 Dla każdej subskrypcji i dzierżawy Resource Manager limity żądań do 15 000 na godzinę do odczytu i zapisu żądania 1200 na godzinę. Te limity mają zastosowanie do każdego wystąpienia usługi Azure Resource Manager. Istnieje wiele wystąpień w każdym regionie Azure i wdrożeniu usługi Azure Resource Manager wszystkie regiony platformy Azure.  Tak, w praktyce skutecznie znacznie wyższa niż te limity są limity, jako użytkownik żądań są zazwyczaj obsługiwane przez wiele różnych wystąpień.
