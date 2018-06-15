@@ -18,6 +18,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: pl-PL
   ms.lasthandoff: 05/07/2018
+  ms.locfileid: "33767958"
 abstract:
   description: Usługa Azure Container Registry umożliwia kompilowanie i przechowywanie obrazów wdrożeń kontenerów dowolnego typu oraz zarządzanie nimi. Dowiedz się, jak używać usługi Azure Container Registry, korzystając z tych przewodników Szybki start, samouczków i przykładów.
 sections:
