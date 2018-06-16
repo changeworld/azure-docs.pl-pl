@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/12/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: ad76046a092a37a2dc1f59459ac3c3e48bc284e5
-ms.sourcegitcommit: 8659efc885be98f42edae0b516ca576e38940c97
+ms.openlocfilehash: 7c7540a650d8726fb0a376788073968af6b48834
+ms.sourcegitcommit: 5821eef990c26fa045e4beacce39f6b02b83156b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2018
-ms.locfileid: "35568130"
+ms.lasthandoff: 06/15/2018
+ms.locfileid: "35683036"
 ---
 <a name="virtual-networking-limits-classic"></a>Poniższe limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu klasycznego modelu wdrażania, które przypadają na jedną subskrypcję. Dowiedz się, jak [wyświetlać z bieżącego wykorzystania zasobów względem swoje limity subskrypcji](../articles/networking/check-usage-against-limits.md).
 
@@ -50,7 +50,7 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 | Sieciowe grupy zabezpieczeń (NSG) |100 |5000 |
 | Reguły sieciowej grupy zabezpieczeń na sieciową grupę zabezpieczeń |1000 ** |1000 |
 | Adresy IP i zakresów określony dla źródła lub miejsca docelowego w grupie zabezpieczeń |2000 |4000 |
-| Grupy zabezpieczeń aplikacji |200 |500 |
+| Grupy zabezpieczeń aplikacji |500 |3000 |
 | Stosowanie grup zabezpieczeń dla konfiguracji IP dla karty Sieciowej |10 |20 |
 | Konfiguracje adresów IP na grupy zabezpieczeń aplikacji |1000 |4000 |
 | Grupy zabezpieczeń aplikacji, które można określić w ramach wszystkich reguł zabezpieczeń grupy zabezpieczeń sieci |50 |100 |

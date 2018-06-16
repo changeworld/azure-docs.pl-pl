@@ -1,11 +1,11 @@
 ---
 ms.topic: include
-ms.openlocfilehash: 8e710bebf979b60f61552593ae550e95a8340d2b
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 99eaa667e4c6a9d63b4cc43ada8c6e36f7365610
+ms.sourcegitcommit: 39f4911b5933f7062dcf5d57af94eab8a0740b2b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34307570"
+ms.lasthandoff: 06/16/2018
+ms.locfileid: "35683053"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Przedpłaty dla maszyn wirtualnych z wystąpień zastrzeżone maszyna wirtualna platformy Azure
 
@@ -16,7 +16,14 @@ Zarezerwowane wystąpień Azure można kupić [portalu Azure](https://portal.azu
 -   Dla subskrypcji Enterprise zakupy zastrzeżone wystąpienie musi być włączony w [EA portal](https://ea.azure.com).
 -   Dla programu Cloud Solution Provider (CSP) tylko agentów administratora lub agentom sprzedaży można kupić zastrzeżone wystąpień.
 
-## <a name="buy-a-reserved-instance"></a>Kup zastrzeżone wystąpienia
+[!IMPORTANT]
+Należy użyć jednej z metod opisanych poniżej, aby zidentyfikować poprawnie rozmiar maszyny Wirtualnej dla zakupu rezerwacji.
+
+## <a name="determine-the-right-vm-size-before-purchase"></a>Określić właściwego rozmiaru maszyny Wirtualnej przed zakupu
+1. Odwołuje się do pola części informacje dodatkowe aby w pliku użycia lub użycia interfejsu API, aby określić odpowiedni rozmiar maszyny Wirtualnej dla zakupu rezerwacji. Nie należy używać wartości pól podkategorii miernika lub produktu, ponieważ te pola nie rozróżnianie między wersjami S i Non-S maszyny wirtualnej.
+2. Można także uzyskać dokładne informacje rozmiar maszyny Wirtualnej przy użyciu programu Powershell, usługi Azure Resource Manager lub z maszyny Wirtualnej szczegółów w portalu Azure.
+
+## <a name="buy-a-reserved-virtual-machine-instance"></a>Kup wystąpienia zastrzeżonej maszyny wirtualnej
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 2. Wybierz **wszystkie usługi** > **zastrzeżenia**.
 3. Wybierz **Dodaj** zakupu nowego wystąpienia zastrzeżone.
