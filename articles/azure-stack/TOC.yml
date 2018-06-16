@@ -130,8 +130,6 @@
           href: azure-stack-viewing-public-ip-address-consumption.md
         - name: Zmień właściciela subskrypcji użytkownika
           href: azure-stack-change-subscription-owner.md
-        - name: Zarządzanie maszynami wirtualnymi pakietu Microsoft Azure Pack
-          href: azure-stack-manage-windows-azure-pack.md
         - name: Uruchamianie i zatrzymywanie Azure stosu
           href: azure-stack-start-and-stop.md
         - name: Zarządzanie pojemnością
