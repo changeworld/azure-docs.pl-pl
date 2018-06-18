@@ -16,6 +16,8 @@
       href: tutorial-explore-js-client-lib.md
     - name: Tworzenie środowiska usługi TSI
       href: tutorial-create-populate-tsi-environment.md
+    - name: Tworzenie jednostronicowej aplikacji internetowej usługi TSI
+      href: tutorial-create-tsi-sample-spa.md
 - name: Pojęcia
   items:
     - name: Planowanie środowiska
