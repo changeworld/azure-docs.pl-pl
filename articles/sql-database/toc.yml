@@ -343,7 +343,7 @@
         - name: Ładowanie danych za pomocą narzędzia BCP
           href: sql-database-load-from-csv-with-bcp.md
         - name: Ładowanie danych za pomocą usługi ADF
-          href: ../data-factory/connector-azure-sql-database.md
+          href: ../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json
         - name: Synchronizowanie danych
           href: sql-database-get-started-sql-data-sync.md
     - name: Monitorowanie i dostrajanie
