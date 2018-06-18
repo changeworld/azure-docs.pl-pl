@@ -13,7 +13,7 @@
 
 # Rozpoczęcie pracy
 ## [Rozpoczynanie pracy z usługą Azure AD](fundamentals/get-started-azure-ad.md)
-## [Tworzenie konta w usłudze Azure AD Premium](active-directory-get-started-premium.md)
+## [Tworzenie konta w usłudze Azure AD Premium](fundamentals/active-directory-get-started-premium.md)
 ## [Dodawanie niestandardowej nazwy domeny](fundamentals/add-custom-domain.md)
 ## [Configure company branding (Konfigurowanie oznaczenia marką firmy)](fundamentals/customize-branding.md)
 ## [Dodawanie użytkowników do usługi Azure AD](fundamentals/add-users-azure-active-directory.md)
@@ -82,10 +82,10 @@
 
 ## [Zarządzanie grupami i członkami](fundamentals/active-directory-manage-groups.md)
 ### Zarządzanie grupami
-#### [Azure Portal](active-directory-groups-create-azure-portal.md)
+#### [Azure Portal](fundamentals/active-directory-groups-create-azure-portal.md)
 #### [Moduł Azure AD PowerShell dla programu Graph (wersja )](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
 #### [Azure AD PowerShell MSOnline](active-directory-accessmanagement-groups-settings-cmdlets.md)
-### [Zarządzanie członkami grup](active-directory-groups-members-azure-portal.md)
+### [Zarządzanie członkami grup](fundamentals/active-directory-groups-members-azure-portal.md)
 ### [Zarządzenie właścicielami grup](fundamentals/active-directory-accessmanagement-managing-group-owners.md)
 ### [Zarządzanie członkostwem w grupie](fundamentals/active-directory-groups-membership-azure-portal.md)
 ### [Przypisywanie licencji za pomocą grup](fundamentals/active-directory-licensing-whatis-azure-portal.md)
