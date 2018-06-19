@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: aa21168f1e19ccddc190379b30e1b612d96b56d5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 536118c61fe204351374d2b5b3cbc0514f6cd435
+ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32202676"
+ms.lasthandoff: 06/18/2018
+ms.locfileid: "36205658"
 ---
 # <a name="sign-in-users-and-all-the-microsoft-graph-api-from-an-android-app"></a>Logowania użytkowników i wszystkie Microsoft interfejsu API programu Graph z aplikacji systemu Android
 
