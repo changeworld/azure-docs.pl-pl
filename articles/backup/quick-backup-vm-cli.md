@@ -1,26 +1,22 @@
 ---
-title: "Azure: Szybki start — Tworzenie kopii zapasowej maszyny wirtualnej za pomocą interfejsu wiersza polecenia platformy Azure | Microsoft Docs"
-description: "Informacje na temat tworzenia kopii zapasowych maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure"
+title: 'Azure: Szybki start — tworzenie kopii zapasowej maszyny wirtualnej za pomocą interfejsu wiersza polecenia platformy Azure'
+description: Informacje na temat tworzenia kopii zapasowych maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure
 services: backup
-documentationcenter: virtual-machines
 author: markgalioto
 manager: carmonm
-editor: 
 tags: azure-resource-manager, virtual-machine-backup
-ms.assetid: 
 ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-linux
-ms.workload: storage-backup-recovery
 ms.date: 2/14/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 3696f57c0520cd8cb3d9fbf22a708c2323d666fc
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 68aeb6e96e7588696d31b7b03e0c639506e0c89b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607178"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>Tworzenie kopii zapasowej maszyny wirtualnej na platformie Azure za pomocą interfejsu wiersza polecenia
 Interfejs wiersza polecenia platformy Azure umożliwia tworzenie zasobów Azure i zarządzanie nimi z poziomu wiersza polecenia lub skryptów. Możesz chronić swoje dane, tworząc kopie zapasowe w regularnych odstępach czasu. Usługa Azure Backup tworzy punkty odzyskiwania, które można przechowywać w geograficznie nadmiarowych magazynach odzyskiwania. Ten artykuł szczegółowo opisuje sposób tworzenia kopii zapasowej maszyny wirtualnej na platformie Azure za pomocą interfejsu wiersza polecenia platformy Azure. Te kroki można również wykonać przy użyciu programu [Azure PowerShell](quick-backup-vm-powershell.md) lub w witrynie [Azure Portal](quick-backup-vm-portal.md).
@@ -61,6 +57,16 @@ az backup protection enable-for-vm \
     --policy-name DefaultPolicy
 ```
 
+> [!NOTE]
+Jeśli maszyna wirtualna nie znajduje się w tej samej grupie zasobów, co magazyn, element myResourceGroup odnosi się do grupy zasobów, w której magazyn został utworzony. Zamiast nazwy maszyny wirtualnej podaj jej identyfikator, jak opisano poniżej.
+
+```azurecli-interactive 
+az backup protection enable-for-vm \
+    --resource-group myResourceGroup \
+    --vault-name myRecoveryServicesVault \
+    --vm $(az vm show -g VMResourceGroup -n MyVm --query id) \
+    --policy-name DefaultPolicy
+```
 
 ## <a name="start-a-backup-job"></a>Uruchamianie zadania tworzenia kopii zapasowej
 Aby uruchomić tworzenie kopii zapasowej od razu, zamiast czekać, aż zasady domyślne uruchomią zadanie w zaplanowanym czasie, użyj polecenia [az backup protection backup-now](https://docs.microsoft.com/cli/azure/backup/protection#az_backup_protection_backup_now). Pierwsze zadanie tworzenia kopii zapasowej tworzy punkt pełnego odzyskiwania. Każde zadanie tworzenia kopii zapasowej uruchomione po początkowej kopii zapasowej tworzy przyrostowe punkty odzyskiwania. Przyrostowe punkty odzyskiwania są oszczędne pod względem czasu i miejsca w magazynie, ponieważ przesyłają wyłącznie zmiany wprowadzone od czasu ostatniej kopii zapasowej.

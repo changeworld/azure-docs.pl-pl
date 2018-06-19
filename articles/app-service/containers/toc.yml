@@ -29,13 +29,13 @@
       items:
         - name: .NET Core z bazą danych SQL DB
           href: tutorial-dotnetcore-sqldb-app.md
-        - name: Ruby z bazą danych MySQL
-          href: tutorial-ruby-mysql-app.md
+        - name: Ruby z bazą danych Postgres
+          href: tutorial-ruby-postgres-app.md
         - name: PHP z bazą danych MySQL
           href: tutorial-php-mysql-app.md
         - name: Środowisko Node.js z bazą danych MongoDB
           href: tutorial-nodejs-mongodb-app.md
-        - name: Kontener niestandardowy Python z bazą danych PostgreSQL
+        - name: Niestandardowy kontener Python z bazą danych Postgres
           href: tutorial-docker-python-postgresql-app.md
     - name: Aplikacja z wieloma kontenerami
       href: tutorial-multi-container-app.md

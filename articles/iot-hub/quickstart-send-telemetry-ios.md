@@ -1,25 +1,24 @@
 ---
 title: Wysyłanie danych telemetrycznych do usługi Azure IoT Hub — Szybki start | Microsoft Docs
 description: W tym przewodniku Szybki start uruchomisz przykładową aplikację systemu iOS wysyłającą symulowane dane telemetryczne do centrum IoT oraz odczytującą dane telemetryczne z centrum IoT na potrzeby przetwarzania w chmurze.
-services: iot-hub
 author: kgremban
 manager: timlt
-editor: ''
 ms.service: iot-hub
-ms.devlang: ''
+services: iot-hub
 ms.topic: quickstart
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: ns
-ms.date: 04/20//2018
+ms.date: 04/20/2018
 ms.author: kgremban
-ms.openlocfilehash: 0f1d3a5f714a2202836f477e78a30aa080947239
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 7b7f8e1805850861b30eb2a54991e5ab7fa96335
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808183"
 ---
-# <a name="send-telemetry-from-a-device-to-an-iot-hub-swift"></a>Wysyłanie danych telemetrycznych z urządzenia do centrum IoT (Swift)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>Szybki start: wysyłanie danych telemetrycznych z urządzenia do centrum IoT (iOS)
+
+[!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
 IoT Hub to usługa platformy Azure, która umożliwia pozyskiwanie dużych ilości danych telemetrycznych z urządzeń IoT do chmury w celu magazynowania lub przetwarzania. W tym artykule opisano wysyłanie danych telemetrycznych z aplikacji urządzenia symulowanego do usługi IoT Hub, a następnie wyświetlanie tych danych z poziomu aplikacji zaplecza. 
 
@@ -42,32 +41,8 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT
 
-Pierwszym krokiem jest utworzenie centrum IoT w subskrypcji za pomocą witryny Azure Portal. Centrum IoT umożliwia pozyskiwanie dużych ilości danych telemetrycznych z wielu urządzeń do chmury. Następnie dzięki centrum jedna lub więcej usług zaplecza uruchomionych w chmurze może odczytywać i przetwarzać te dane telemetryczne.
+[!INCLUDE [iot-hub-quickstarts-create-hub](../../includes/iot-hub-quickstarts-create-hub.md)]
 
-1. Zaloguj się w [Portalu Azure](http://portal.azure.com).
-
-1. Wybierz pozycję **Utwórz zasób** > **Internet rzeczy** > **IoT Hub**. 
-
-   ![Wybierz, aby zainstalować usługę IoT Hub](media/quickstart-send-telemetry-ios/selectiothub.png)
-
-1. Aby utworzyć centrum IoT, użyj wartości z poniższej tabeli:
-
-    | Ustawienie | Wartość |
-    | ------- | ----- |
-    | Name (Nazwa) | Unikatowa nazwa centrum |
-    | Warstwa cenowa i warstwa skali | Bezpłatna F1 |
-    | Jednostki usługi IoT Hub | 1 |
-    | Partycje na potrzeby komunikacji między urządzeniem i chmurą | 2 partycje |
-    | Subskrypcja | Swoją subskrypcję platformy Azure. |
-    | Grupa zasobów | Utwórz nową. Wprowadź nazwę dla grupy zasobów. |
-    | Lokalizacja | Lokalizacja najbliższa Twojej. |
-    | Przypnij do pulpitu nawigacyjnego | Yes |
-
-1. Kliknij przycisk **Utwórz**.  
-
-   ![Ustawienia centrum](media/quickstart-send-telemetry-ios/hubdefinition.png)
-
-1. Zanotuj nazwy centrum IoT i grupy zasobów. Użyjesz tych wartości w dalszej części tego przewodnika Szybki start.
 
 ## <a name="register-a-device"></a>Rejestrowanie urządzenia
 
@@ -168,10 +143,13 @@ Jeśli nie potrzebujesz już tego centrum IoT, usuń je oraz grupę zasobów z p
 
 W tym artykule opisano konfigurowanie centrum IoT, rejestrowanie urządzenia, wysyłanie symulowanych danych telemetrycznych do centrum z urządzenia z systemem iOS oraz odczytywanie danych telemetrycznych z centrum. 
 
-Aby kontynuować zapoznawanie się z informacjami o tym, jak urządzenia z systemem iOS mogą współdziałać z usługą IoT Hub, zobacz [Wysyłanie komunikatów z chmury do urządzeń za pomocą systemu iOS (Swift)](iot-hub-ios-swift-c2d.md)
+Aby dowiedzieć się, jak kontrolować urządzenie symulowane z poziomu aplikacji zaplecza, przejdź do następnego przewodnika Szybki start.
+
+> [!div class="nextstepaction"]
+> [Szybki start: kontrolowanie urządzenia podłączonego do centrum IoT](quickstart-control-device-node.md)
 
 <!-- Links -->
-[lnk-process-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
+[lnk-process-d2c-tutorial]: tutorial-routing.md
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md
 [lnk-iot-edge]: ../iot-edge/tutorial-simulate-device-linux.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/

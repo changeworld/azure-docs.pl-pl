@@ -1,143 +1,141 @@
 ---
-title: Wprowadzenie do platformy Azure rozwiązania Cosmos DB Graph API | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można użyć bazy danych rozwiązania Cosmos Azure do przechowywania, kwerendy i przechodzenia ogromną wykresów z niskim opóźnieniem przy użyciu języka zapytań wykres Gremlin Apache TinkerPop.
+title: Wprowadzenie do interfejsów API programu Graph usługi Azure Cosmos DB | Microsoft Docs
+description: Dowiedz się, jak można używać usługi Azure Cosmos DB do przechowywania dużych grafów, wykonywania na nich zapytań i przechodzenia ich z krótkim czasem oczekiwania za pomocą języka zapytań dotyczących grafów w środowisku Gremlin witryny Apache TinkerPop.
 services: cosmos-db
 author: LuisBosquez
-documentationcenter: ''
 manager: kfile
-ms.assetid: b916644c-4f28-4964-95fe-681faa6d6e08
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
-ms.topic: article
+ms.component: cosmosdb-graph
+ms.devlang: na
+ms.topic: overview
 ms.date: 01/05/2017
 ms.author: lbosq
-ms.openlocfilehash: 6deaf57b6314ed4077369beb3195e97281d918e6
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.openlocfilehash: 6fcd6389e3ff23c1cb2b2f0e5183ea43bae9f313
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796142"
 ---
-# <a name="introduction-to-azure-cosmos-db-graph-api"></a>Wprowadzenie do platformy Azure rozwiązania Cosmos DB: interfejs API programu Graph
+# <a name="introduction-to-azure-cosmos-db-graph-api"></a>Wprowadzenie do interfejsu API programu Graph usługi Azure Cosmos DB
 
-[Azure DB rozwiązania Cosmos](introduction.md) globalnie rozproszone, multimodel bazy danych usługi firmy Microsoft dla aplikacji o krytycznym znaczeniu. Azure DB rozwiązania Cosmos zapewnia następujące funkcje, których wszystkie bazują na [SLA branży](https://azure.microsoft.com/support/legal/sla/cosmos-db/):
+[Azure Cosmos DB](introduction.md) to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft do aplikacji o krytycznym znaczeniu. Usługa Azure Cosmos DB zapewnia następujące funkcje, z których wszystkie bazują na [wiodących w branży umowach SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/):
 
 * [Gotowa do użytku dystrybucja globalna](distribute-data-globally.md)
-* [Elastyczne skalowanie przepływność i magazyn](partition-data.md) na całym świecie
-* Jednocyfrowej milisekundy opóźnienia w 99-ty percentyl
-* [Pięć dobrze zdefiniowane poziomy spójności](consistency-levels.md)
-* Zagwarantować wysokiej dostępności 
+* [Elastyczne skalowanie przepływności i magazynu](partition-data.md) na całym świecie
+* Opóźnienie rzędu kilku milisekund wyrażone przy użyciu jednej cyfry na poziomie 99. percentyla
+* [Pięć dokładnie zdefiniowanych poziomów spójności](consistency-levels.md)
+* Gwarantowana wysoka dostępność 
 
-Usługa Azure Cosmos DB [automatycznie indeksuje dane](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) bez konieczności zarządzania schematami i indeksami. Jest multimodel i obsługuje dokumentu, klucz wartość, wykres i modeli danych kolumnowym.
+Usługa Azure Cosmos DB [automatycznie indeksuje dane](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) bez konieczności zarządzania schematami i indeksami. To usługa wielomodelowa, obsługująca modele danych dokumentów, par klucz-wartość, grafów i kolumn.
 
-Firma Microsoft zaleca, aby obejrzeć poniższego klipu wideo, w którym wyjaśniono, jak wprowadzenie wykresy dla bazy danych Azure rozwiązania Cosmos Kirill Gavrylyuk:
+Zalecamy obejrzenie poniższego wideo, w którym Kirill Gavrylyuk wyjaśnia, jak rozpocząć pracę z grafami w usłudze Azure Cosmos DB:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Graphs-with-Azure-Cosmos-DB-Gremlin-API/player]
 > 
 > 
 
-Udostępnia interfejs API Graph Azure rozwiązania Cosmos bazy danych:
+Interfejs API programu Graph w usłudze Azure Cosmos DB zapewnia:
 
-- Wykres modelowania.
-- Traversal interfejsów API.
-- Gotowe dystrybucji globalnego.
-- Elastyczne Skalowanie pamięci masowej i przepływność z mniej niż 10 ms odczytu opóźnienia i mniej niż 15 ms na 99-ty percentyl.
-- Automatyczne indeksowanie z dostępności błyskawicznych zapytania.
-- Dostosowywalne poziomy spójności.
-- Kompleksowe SLA, w tym o dostępności 99,99% umowy SLA dla wszystkich kont w pojedynczym regionie i wszystkich kont w przypadku z swobodna spójności i 99,999% odczytu dostępności na wszystkich kontach w przypadku bazy danych.
+- Modelowanie grafów.
+- Interfejsy API przejścia.
+- Gotową do użytku dystrybucję globalną.
+- Elastyczne skalowanie pamięci masowej i przepływności z opóźnieniami odczytu poniżej 10 ms oraz poniżej 15 ms na poziomie 99. percentyla.
+- Automatyczne indeksowanie z błyskawiczną dostępnością zapytań.
+- Poziomy z możliwością dostosowania spójności.
+- Kompleksowe umowy SLA gwarantujące dostępność na poziomie co najmniej 99,99% dla wszystkich kont w obrębie jednego regionu i wszystkich kont w wielu regionach w przypadku rozluźnionej spójności, a także dostępność do odczytu na poziomie co najmniej 99,999% dla wszystkich kont bazy danych w wielu regionach.
 
-Aby zapytania bazy danych Azure rozwiązania Cosmos, można użyć [Apache TinkerPop](http://tinkerpop.apache.org) wykresu języka przechodzenie [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), lub tak jak inne systemy wykres TinkerPop zgodnego [Apache Spark GraphX](spark-connector-graph.md).
+Aby wykonać zapytania dla usługi Azure Cosmos DB, można użyć języka przechodzenia przez grafy w witrynie [Apache TinkerPop](http://tinkerpop.apache.org), środowiska [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) lub innych systemów grafów zgodnych z witryną TinkerPop, np. [Apache Spark GraphX](spark-connector-graph.md).
 
-Ten artykuł zawiera omówienie interfejsu API Graph usługi Azure rozwiązania Cosmos bazy danych i wyjaśniono, jak go użyć do przechowywania ogromną wykresów z miliardy wierzchołki i krawędzi. Można zbadać wykresów za pomocą milisekundy opóźnienia i łatwo rozwijać struktury wykres i schematu.
+Ten artykuł zawiera omówienie interfejsu API programu Graph usługi Azure Cosmos DB i wyjaśnienie, jak można go użyć do przechowywania dużych grafów zawierających miliardy wierzchołków i krawędzi. Można wykonać zapytania dla grafów z opóźnieniem rzędu kilku milisekund i łatwo rozwinąć strukturę i schemat graf.
 
-## <a name="graph-database"></a>Baza danych wykresu
-Dane w świecie rzeczywistym naturalnie są połączone. Modelowanie tradycyjnych danych skupia się na jednostek. Dla wielu aplikacji jest również potrzebę modelu lub model naturalnie zarówno jednostki i relacje.
+## <a name="graph-database"></a>Baza danych grafu
+W świecie rzeczywistym dane w sposób naturalny łączą się ze sobą. Tradycyjne modelowanie danych skupia się na obiektach. W przypadku wielu aplikacji również występuje potrzeba naturalnego modelowania lub modelowania zarówno obiektów, jak i relacji.
 
-A [wykres](http://mathworld.wolfram.com/Graph.html) jest strukturą, która składa się z [wierzchołków](http://mathworld.wolfram.com/GraphVertex.html) i [krawędzi](http://mathworld.wolfram.com/GraphEdge.html). Zarówno wierzchołki i krawędzi może mieć dowolną liczbę właściwości. Wierzchołki oznaczenia odrębny obiekty, takie jak osoby, miejsca lub zdarzenia. Krawędziach oznaczenia relacje między wierzchołków. Na przykład osoba może znać innej osobie, można zaangażowane w przypadku i został ostatnio w danej lokalizacji. Właściwości express informacji o wierzchołki i krawędzi. Przykład właściwości obejmują wierzchołek ma nazwę, wieku oraz krawędzi, który ma sygnaturę czasową i/lub wagi. Więcej formalnie ten model jest nazywany [wykresu właściwości](http://tinkerpop.apache.org/docs/current/reference/#intro). Azure DB rozwiązania Cosmos obsługuje właściwości modelu wykresu.
+[Graf](http://mathworld.wolfram.com/Graph.html) jest strukturą składającą się z [wierzchołków](http://mathworld.wolfram.com/GraphVertex.html) i [krawędzi](http://mathworld.wolfram.com/GraphEdge.html). Zarówno wierzchołki, jak i krawędzie mogą mieć dowolną liczbę właściwości. Wierzchołki określają odrębne obiekty, takie jak osoby, miejsca lub zdarzenia. Krawędzi określają relacje między wierzchołkami. Na przykład dana osoba może znać inną osobę, brać udział w wydarzeniu lub była niedawno w danej lokalizacji. Właściwości zawierają informacje na temat wierzchołków i krawędzi. Przykładowe właściwości obejmują wierzchołek, który ma nazwę i wiek oraz krawędź, która ma sygnaturę czasową i/lub wagę. Bardziej oficjalnie model ten jest określany jak [graf właściwości](http://tinkerpop.apache.org/docs/current/reference/#intro). Usługa Azure Cosmos DB obsługuje model grafu właściwości.
 
-Na przykład próbki Wykres ukazuje relacje osób, urządzeń przenośnych, udziałów i systemów operacyjnych:
+Na przykład poniższy przykładowy graf przedstawia relacje między ludźmi, urządzeniami przenośnymi, zainteresowaniami oraz systemami operacyjnymi:
 
-![Przykładowa baza danych przedstawiający osób, urządzeń i udziałów](./media/graph-introduction/sample-graph.png)
+![Przykładowa baza danych przedstawiająca osoby, urządzenia i zainteresowania](./media/graph-introduction/sample-graph.png)
 
-Wykresy są przydatne zrozumienie szeroką gamę zestawów danych w nauki, technologii i biznesowych. Wykres bazy danych pozwalają modelu i przechowywania wykresy naturalnie i wydajne, który przydatne w różnych scenariuszach. Wykres baz danych są zwykle bazy danych NoSQL, ponieważ użycie tych przypadkach często również potrzeby elastyczność schematu i szybkie iteracji.
+Grafy pomagają zrozumieć najróżniejsze zestawy danych dotyczących nauki, technologii i biznesu. Bazy danych programu Graph umożliwiają modelowanie i przechowywanie grafów w naturalny i skuteczny sposób, dzięki czemu są przydatne w wielu scenariuszach. Bazy danych programu Graph są zwykle bazami danych NoSQL, ponieważ te przypadki użycia często wymagają również elastyczności schematów i szybkiej iteracji.
 
-Wykresy oferują nowe i danych zaawansowanych technik modelowania. Ale ten fakt samodzielnie nie jest wystarczające powody do korzystania z bazy danych wykresu. Dla wielu przypadki użycia i wzorce, które obejmują traversals wykresu wykresy przewyższyć tradycyjnych baz danych SQL i NoSQL o rzędów. Różnica w wydajności jest dalsze rozszerzone podczas przesyłania więcej niż jedną relację, takich jak friend z przyjaznego.
+Grafy oferują nowatorską i zaawansowaną technikę modelowania danych. Jednak ten fakt sam w sobie nie jest wystarczającym powodem używania bazy danych grafów. Dla wielu przypadków użycia i wzorców, które obejmują przejścia grafów, grafy przewyższają tradycyjne bazy danych SQL i NoSQL w zakresie rzędów wielkości. Ta różnica w wydajności staje się jeszcze większa w przypadku przechodzenia poza więcej niż jedną relację, np. gdy chodzi o znajomego znajomego.
 
-Szybkie traversals, zapewniające baz danych wykresu można połączyć z algorytmów wykresu, takie jak pierwszy głębokość wyszukiwania, najpierw szerokość wyszukiwania i algorytmu Dijkstra w, do rozwiązywania problemów w różnych domenach, takich jak sieci społecznościowych, zarządzania zawartością, dane geograficzne, i zalecenia.
+Do szybkich przejść, które oferują bazy danych grafów, można dołączyć algorytmy grafów, np. wyszukiwanie pierwszej głębi, wyszukiwanie pierwszej szerokości oraz algorytm Dijkstry w celu rozwiązania różnego typu problemów, np. dotyczących sieci społecznościowych, zarządzania zawartością, danych geoprzestrzennych oraz rekomendacji.
 
-## <a name="planet-scale-graphs-with-azure-cosmos-db"></a>Wykresy planety skali z bazy danych Azure rozwiązania Cosmos
-Azure DB rozwiązania Cosmos jest bazy danych wykresu w pełni zarządzana, która oferuje dystrybucji globalnych, elastyczne skalowanie magazynu i przepustowości, automatycznego indeksowania zapytania, dostosowywalne poziomy spójności i obsłudze standardu TinkerPop.
+## <a name="planet-scale-graphs-with-azure-cosmos-db"></a>Grafy w skali globalnej przy użyciu usługi Azure Cosmos DB
+Usługa Azure Cosmos DB jest w pełni zarządzaną bazą danych grafów, która oferuje globalną dystrybucję, elastyczne skalowanie magazynu i przepływności, automatyczne indeksowanie i wykonywanie zapytań, dostosowywalne poziomy spójności oraz obsługę standardu TinkerPop.
 
-![Architektura wykresu w usłudze Azure DB rozwiązania Cosmos](./media/graph-introduction/cosmosdb-graph-architecture.png)
+![Architektura grafów w usłudze Azure Cosmos DB](./media/graph-introduction/cosmosdb-graph-architecture.png)
 
-Azure DB rozwiązania Cosmos oferuje następujące możliwości zróżnicowanych w porównaniu do innych baz danych wykresu w rynku:
+W porównaniu z innymi bazami danych grafów na rynku usługa Azure Cosmos DB oferuje następujące zróżnicowane funkcje:
 
-* Elastycznie skalowalne przepływność i Magazyn
+* Elastycznie skalowalna przepływność i magazyn
 
- Wykresy w świecie rzeczywistym musi przebiegać proces skalowania poza pojemność pojedynczego serwera. Z bazy danych rozwiązania Cosmos platformy Azure możesz bezproblemowo skalować wykresów na wielu serwerach. Można również skalować przepływność wykresie niezależnie oparte na Twoich wzorców dostępu. Azure DB rozwiązania Cosmos obsługuje wykresu bazy danych, które można skalować do niemal nieograniczonego rozmiaru magazynu i udostępnionej przepływności.
+ Skalowanie grafów w świecie rzeczywistym wymaga skalowania przekraczającego pojemność pojedynczego serwera. Za pomocą usługi Azure Cosmos DB można płynnie skalować grafy na wielu serwerach. Można również niezależnie skalować przepływność grafy w oparciu o wzorce dostępu. Usługa Azure Cosmos DB obsługuje bazy danych grafów, które można skalować do niemal nieograniczonego rozmiaru magazynu i aprowizowanej przepływności.
 
-* W przypadku replikacji
+* Replikacja w wielu regionach
 
- Azure DB rozwiązania Cosmos niewidocznie replikuje dane wykresu do wszystkich regionów, które zostały skojarzone z Twoim kontem. Replikacji umożliwia tworzenie aplikacji, które wymagają globalnego dostępu do danych. W zakresie spójności, dostępności i wydajności oraz odpowiednie gwarancje są wady i zalety. Azure DB rozwiązania Cosmos zapewnia przezroczysty tryb failover regionalnych, z wielu interfejsów API. Można elastycznie skalować przepływność i magazyn na całym świecie.
+ Usługa Azure Cosmos DB w sposób niewidoczny dla użytkownika replikuje dane grafu na wszystkie regiony skojarzone z kontem. Replikacja umożliwia tworzenie aplikacji, które wymagają globalnego dostępu do danych. Doszło do kompromisu w zakresie spójności, dostępności, wydajności i odpowiednich gwarancji. Usługa Cosmos DB oferuje niewidoczne dla użytkownika regionalne przejście w tryb failover z wykorzystaniem interfejsów API podłączonych do wielu sieci. Na całym świecie można elastycznie skalować przepływność i magazyn.
 
-* Szybkie zapytania i traversals z zwykłego składni Gremlin
+* Szybkie zapytania i przejścia ze znaną składnią języka Gremlin
 
- Przechowywanie heterogenicznych wierzchołki i krawędzi oraz nich zapytań przy użyciu zwykłego składni Gremlin. Azure DB rozwiązania Cosmos wykorzystuje wysoce współbieżną, zwolnić blokady, opartą na strukturze dziennika technologię indeksowania do automatycznego indeksowania całej zawartości. Ta funkcja umożliwia zaawansowane zapytania w czasie rzeczywistym i traversals bez konieczności określania wskazówek schematu, indeksów pomocniczych czy widoków. Dowiedz się więcej w [zapytanie wykresów za pomocą Gremlin](gremlin-support.md).
+ Można przechowywać heterogeniczne wierzchołki i krawędzie oraz wykonywać zapytania dla tych dokumentów przy użyciu znanej składni języka Gremlin. Usługa Azure Cosmos DB wykorzystuje wysoce współbieżną, nieblokującą, opartą na strukturze dziennika technologię indeksowania do automatycznego indeksowania całej zawartości. Ta funkcja umożliwia wykonywanie zaawansowanych zapytań i przejść w czasie rzeczywistym bez konieczności określania wskazówek schematu, indeksów pomocniczych czy widoków. Więcej informacji znajduje się w temacie [Query graphs by using Gremlin](gremlin-support.md) (Wykonywanie zapytań dla grafów przy użyciu środowiska Gremlin).
 
-* W pełni zarządzana
+* Pełne zarządzanie
 
- Azure DB rozwiązania Cosmos eliminuje konieczność zarządzania zasobami maszyn i bazy danych. Jako w pełni zarządzana usługa Microsoft Azure nie trzeba zarządzać maszynami wirtualnymi, wdrażanie i konfigurowanie oprogramowania, zarządzać skalowaniem ani postępowania w przypadku uaktualnienia złożonych warstwy danych. Każdy wykres jest automatycznie kopii zapasowej i chroniona przed regionalnymi awariami. Możesz łatwo dodać konto bazy danych Azure rozwiązania Cosmos i aprowizować pojemność odpowiednio do potrzeb, dzięki czemu można skupić się na aplikacji zamiast pracy i zarządzania bazą danych.
+ Usługa Azure Cosmos DB eliminuje konieczność zarządzania zasobami maszyn i baz danych. Ponieważ jest to w pełni zarządzana usługa platformy Microsoft Azure, nie trzeba zarządzać maszynami wirtualnymi, wdrażać ani konfigurować oprogramowania, zarządzać skalowaniem ani obsługiwać złożonych aktualizacji warstwy danych. Dla każdego grafu jest automatycznie tworzona kopia zapasowa w celu ochrony przed regionalnymi awariami. Możesz łatwo dodać konto usługi Azure Cosmos DB i aprowizować pojemność odpowiednio do potrzeb, co pozwala skupić się na aplikacji, zamiast zajmować się obsługą bazy danych i zarządzaniem nią.
 
-* Automatycznego indeksowania
+* Automatyczne indeksowanie
 
- Domyślnie bazy danych rozwiązania Cosmos Azure automatycznie indeksuje wszystkie właściwości w węzłach i krawędzi na wykresie i nie oczekują lub wymaga żadnego schematu lub tworzenia indeksów pomocniczych.
+ Domyślnie usługa Azure Cosmos DB automatycznie indeksuje wszystkie właściwości w węzłach oraz krawędziach grafu i nie oczekuje ani nie wymaga żadnego schematu ani tworzenia indeksów pomocniczych.
 
-* Zgodność z Apache TinkerPop
+* Zgodność z witryną Apache TinkerPop
 
- Azure DB rozwiązania Cosmos natywnie obsługuje standard Apache TinkerPop open source i może być zintegrowane z innymi systemami włączone TinkerPop wykresu. Tak, można łatwo przeprowadzić migrację z innej bazy danych wykresu, takich jak Titan lub Neo4j, lub przy użyciu bazy danych Azure rozwiązania Cosmos z wykresu analytics platform takich jak [Apache Spark GraphX](spark-connector-graph.md).
+ Usługa Azure Cosmos DB natywnie obsługuje standard Apache TinkerPop typu open-source i można ją zintegrować z innymi systemami grafów z obsługą witryny TinkerPop. Można więc łatwo przeprowadzić migrację z innej bazy danych grafów, np. Titan lub Neo4j, lub użyć usługi Azure Cosmos DB ze strukturami analizy grafów, takimi jak [Apache Spark GraphX](spark-connector-graph.md).
 
-* Dostosowywalne poziomy spójności
+* Poziomy z możliwością dostosowania spójności
 
- Wybierz z pięciu dobrze zdefiniowane poziomy spójności, aby osiągnąć optymalną zależności między wydajnością a spójnością. Dla zapytań i operacji odczytu usługa Azure Cosmos DB oferuje pięć różnych poziomów spójności: „silna”, „powiązana nieaktualność”, „sesja”, „spójny prefiks” i „ostateczna”. Te poziomy spójności szczegółowe, dokładnie zdefiniowane umożliwiają dźwięku kompromisy między spójności, dostępnością i opóźnieniem. Dowiedz się więcej w [danych dostosowywalne poziomy spójności w usłudze Azure DB rozwiązania Cosmos](consistency-levels.md).
+ Można wybrać spośród pięciu dobrze zdefiniowanych poziomów spójności w celu osiągnięcia optymalnego kompromisu między wydajnością a spójnością. Dla zapytań i operacji odczytu usługa Azure Cosmos DB oferuje pięć różnych poziomów spójności: „silna”, „powiązana nieaktualność”, „sesja”, „spójny prefiks” i „ostateczna”. Te szczegółowe, dokładnie zdefiniowane poziomy spójności umożliwiają ustalanie optymalnych kompromisów między spójnością, dostępnością i opóźnieniem. Więcej informacji znajduje się w temacie [Tunable data consistency levels in Azure Cosmos DB](consistency-levels.md) (Dostosowywalne poziomy spójności danych w usłudze Azure Cosmos DB).
 
-Azure DB rozwiązania Cosmos można również użyć wielu modeli, takie jak dokument i wykres w tej samej kontenery lub bazy danych. Kolekcja dokumentów służy do przechowywania danych wykresu równolegle z dokumentów. Zarówno zapytania SQL w formacie JSON i zapytań Gremlin umożliwia kwerendy te same dane w postaci wykresu.
+Usługa Azure Cosmos DB może również korzystać z wielu modeli, np. dokumentów lub grafów, w tych samych kontenerach/bazach danych. Kolekcja dokumentów służy do przechowywania danych grafów równolegle z dokumentami. Aby wykonać zapytania dla tych samych danych w formie grafu, można użyć zarówno zapytań SQL w formacie JSON, jak i zapytań Gremlin.
 
 ## <a name="get-started"></a>Rozpoczęcie pracy
-Służy Azure interfejsu wiersza polecenia (CLI), programu Azure PowerShell lub w portalu Azure z obsługą interfejsu API Graph do utworzenia konta Azure DB rozwiązania Cosmos. Po utworzeniu konta w portalu Azure tak samo, jak zawiera punkt końcowy usługi `https://<youraccount>.gremlin.cosmosdb.azure.com`, Gremlin zapewnia frontonu protokołu WebSocket. Tak samo, jak skonfigurować narzędziami TinkerPop zgodnego [konsoli Gremlin](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console), aby podłączyć się do tego punktu końcowego i tworzenie aplikacji w języku Java, Node.js lub dowolnego Gremlin sterownika klienta.
+Do tworzenia kont usługi Azure Cosmos DB można użyć interfejsu wiersza polecenia (CLI) platformy Azure, programu Azure PowerShell lub witryny Azure Portal z obsługą interfejsu API programu Graph. Po utworzeniu kont witryna Azure Portal zapewnia punkt końcowy usługi, np. `https://<youraccount>.gremlin.cosmosdb.azure.com`, który dostarcza fronton WebSocket dla środowiska Gremlin. Można skonfigurować narzędzia zgodne z witryną TinkerPop, np. [Konsolę Gremlin](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console), aby podłączyć się do tego punktu końcowego i tworzyć aplikacje w środowisku Java, Node.js lub w dowolnym sterowniku klienta Gremlin.
 
-W poniższej tabeli przedstawiono popularne sterowniki Gremlin korzystających z bazy danych rozwiązania Cosmos Azure:
+W poniższej tabeli przedstawiono popularne sterowniki Gremlin, których można użyć do usługi Azure Cosmos DB:
 
 | Do pobrania | Dokumentacja | Wprowadzenie |
 | --- | --- | --- |
-| [.NET](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [Gremlin.NET w witrynie GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [Utwórz wykres przy użyciu platformy .NET](create-graph-dotnet.md) |
-| [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](http://tinkerpop.apache.org/javadocs/current/full/) | [Utwórz wykres przy użyciu języka Java](create-graph-java.md) |
-| [Node.js](https://www.npmjs.com/package/gremlin) | [Gremlin języka JavaScript w witrynie GitHub](https://github.com/jbmusso/gremlin-javascript) | [Utwórz wykres przy użyciu środowiska Node.js](create-graph-nodejs.md) |
-| [Python](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [Gremlin języka Python w witrynie GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Utwórz wykres używany język Python](create-graph-python.md) |
-| [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Gremlin-PHP w witrynie GitHub](https://github.com/PommeVerte/gremlin-php) | [Tworzenie za pomocą języka PHP](create-graph-php.md) |
-| [Gremlin konsoli](https://tinkerpop.apache.org/downloads.html) | [TinkerPop dokumentów](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Utwórz wykres przy użyciu konsoli Gremlin](create-graph-gremlin-console.md) |
+| [.NET](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [Gremlin.NET w witrynie GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [Tworzenie grafu przy użyciu platformy .NET](create-graph-dotnet.md) |
+| [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](http://tinkerpop.apache.org/javadocs/current/full/) | [Tworzenie grafu przy użyciu środowiska Java](create-graph-java.md) |
+| [Node.js](https://www.npmjs.com/package/gremlin) | [Gremlin-JavaScript w witrynie GitHub](https://github.com/jbmusso/gremlin-javascript) | [Tworzenie grafu przy użyciu platformy Node.js](create-graph-nodejs.md) |
+| [Python](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [Gremlin-Python w witrynie GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Tworzenie grafu przy użyciu środowiska Python](create-graph-python.md) |
+| [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Gremlin-PHP w witrynie GitHub](https://github.com/PommeVerte/gremlin-php) | [Tworzenie grafu przy użyciu środowiska PHP](create-graph-php.md) |
+| [Konsola Gremlin](https://tinkerpop.apache.org/downloads.html) | [Dokumentacja dotycząca witryny TinkerPop](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Tworzenie grafu przy użyciu Konsoli Gremlin](create-graph-gremlin-console.md) |
 
-## <a name="scenarios-for-graph-support-of-azure-cosmos-db"></a>Scenariusze obsługi wykres Azure DB rozwiązania Cosmos
-Poniżej przedstawiono kilka scenariuszy, w której wykres obsługę bazy danych Azure rozwiązania Cosmos może służyć:
+## <a name="scenarios-for-graph-support-of-azure-cosmos-db"></a>Scenariusze obsługi grafów w usłudze Azure Cosmos DB
+Poniżej przedstawiono kilka scenariuszy, w których można użyć obsługi grafów w usłudze Azure Cosmos DB:
 
-* Sieci społecznościowych
+* Sieci społecznościowe
 
- Łącząc dane dotyczące klientów i ich interakcji z innymi osobami, można utworzyć spersonalizowanego doświadczenia, przewidzieć zachowania klienta lub uzyskuj osobom podobne zainteresowań osoby. Azure DB rozwiązania Cosmos może służyć do zarządzania sieci społecznościowych i śledzenia preferencji klienta i dane.
+ Łącząc dane dotyczące klientów i ich interakcji z innymi osobami, można zaprojektować spersonalizowaną obsługę, przewidzieć zachowanie klientów lub umożliwić nawiązanie kontaktu z innymi osobami o podobnych zainteresowaniach. Usługa Azure Cosmos DB może służyć do zarządzania sieciami społecznościowymi oraz śledzenia preferencji i danych klientów.
 
 * Aparaty rekomendacji
 
- Ten scenariusz jest często stosowany w sprzedaży detalicznej. Łącząc informacji o produktach, użytkownikach i interakcji użytkownika, takich jak zakupu, przeglądanie lub klasyfikacji elementu, można tworzyć niestandardowe zalecenia. Małe opóźnienia, elastyczne skalowanie i native wykres obsługę bazy danych Azure rozwiązania Cosmos jest idealny dla modelowania tych interakcji.
+ Ten scenariusz jest powszechnie stosowany w branży sprzedaży detalicznej. Przez łączenie informacji na temat produktów, użytkowników oraz interakcji użytkownika, np. zakupów, przeglądania witryn internetowych lub oceny produktów, można tworzyć niestandardowe rekomendacje. Małe opóźnienia, elastyczne skalowanie i natywna obsługa grafów w usłudze Azure Cosmos DB nadają się idealnie do modelowania tych interakcji.
 
 * Dane geoprzestrzenne
 
- Wiele aplikacji w telekomunikacyjnych logistyki i planowania podróży muszą znaleźć lokalizację zainteresowania wewnątrz obszaru zlokalizować najkrótszy/optymalnej trasy między dwiema lokalizacjami. Azure DB rozwiązania Cosmos jest naturalna nadające się do tych problemów.
+ Wiele aplikacji stosowanych w telekomunikacji, logistyce i planowaniu podróży musi znaleźć lokalizację będącą przedmiotem zainteresowania na danym obszarze lub zlokalizować najkrótszą/optymalną trasę między dwoma lokalizacjami. Usługa Azure Cosmos DB stanowi naturalne rozwiązanie tych problemów.
 
 * Internet rzeczy
 
- Z siecią i połączeń między urządzeniami IoT formę wykres można tworzyć lepsze zrozumienie stanu urządzeń i zasobów. Możesz także dowiedzieć się jak zmiany w jednej części sieci mogą wpłynąć na innej części.
+ Gdy sieć i połączenia między urządzeniami IoT zostają przedstawione w formie grafu, można lepiej rozumieć stan urządzeń i zasobów. Można także dowiedzieć się, jak zmiany w jednej części sieci mogą teoretycznie wpłynąć na inną część.
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się więcej o obsłudze graph w usłudze Azure DB rozwiązania Cosmos, zobacz:
+## <a name="next-steps"></a>Następne kroki
+Aby dowiedzieć się więcej na temat obsługi grafów w usłudze Azure Cosmos DB, zobacz:
 
-* Rozpoczynanie pracy z [samouczek wykres bazy danych Azure rozwiązania Cosmos](create-graph-dotnet.md).
-* Więcej informacji na temat sposobu [zapytanie wykresy w usłudze Azure DB rozwiązania Cosmos za pomocą Gremlin](gremlin-support.md).
+* Rozpocznij pracę od [samouczka dotyczącego grafów usługi Azure Cosmos DB](create-graph-dotnet.md).
+* Uzyskaj informacje na temat [wykonywania zapytań dla grafów w usłudze Azure Cosmos DB przy użyciu środowiska Gremlin](gremlin-support.md).

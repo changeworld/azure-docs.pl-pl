@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/06/2017
+ms.date: 05/22/2018
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: f05b0baee3f11f498976377c69c38b3118f3c922
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 190d4713f5c84281bc2637fc0d8323a2dabf6f21
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358663"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603767"
 ---
 # <a name="use-visual-studio-code-extension-to-create-azure-resource-manager-template"></a>Tworzenie szablonów usługi Azure Resource Manager przy użyciu rozszerzenia programu Visual Studio Code
 W tym artykule przedstawiono korzyści płynące z zainstalowania i używania rozszerzenia Narzędzia usługi Azure Resource Manager w programie Visual Studio Code. Można tworzyć szablony usługi Resource Manager w programie VS Code bez korzystania z rozszerzenia, ale rozszerzenie udostępnia opcje autouzupełniania, które upraszczają proces tworzenia szablonu. Sugerują one funkcje szablonu, parametry i zmienne, które są dostępne w szablonie.
@@ -171,7 +171,18 @@ Ten artykuł wykorzystuje szablon utworzony w samouczku [Tworzenie i wdrażanie 
 
    ![Wyświetlanie zmiennych](./media/resource-manager-vscode-extension/show-variables.png) 
 
-10. Wybierz zmienną **storageName**. Dodaj prawy nawias kwadratowy. Poniższy przykład przedstawia sekcję danych wyjściowych:
+10. Wybierz zmienną **storageName**. Kod wygląda teraz następująco:
+
+   ```json
+   "storageUri": {
+      "type": "string",
+      "value": "[reference(variables('storageName'))"
+   }
+   ```
+   
+11. Poprzedni kod nie będzie działać, ponieważ `reference` zwraca obiekt, ale Twoja wartość wyjściowa została ustawiona na *ciąg*. Musisz określić jedną z wartości w tym obiekcie. Funkcji odwołania można używać z dowolnym typem zasobu, dlatego program VS Code nie sugeruje właściwości obiektu. W zamian można zobaczyć, że jedna wartość [zwrócona dla konta magazynu](/rest/api/storagerp/storageaccounts/getproperties) to `.primaryEndpoints.blob`. 
+
+   Dodaj tę właściwość po ostatnim nawiasie. Dodaj prawy nawias kwadratowy. Poniższy przykład przedstawia sekcję danych wyjściowych:
 
    ```json
    "outputs": { 
@@ -181,7 +192,7 @@ Ten artykuł wykorzystuje szablon utworzony w samouczku [Tworzenie i wdrażanie 
        },
        "storageUri": {
          "type": "string",
-         "value": "[reference(concat('Microsoft.Storage/storageAccounts/',variables('storageName'))).primaryEndpoints.blob]"
+         "value": "[reference(variables('storageName')).primaryEndpoints.blob]"
        }
    }
    ```
@@ -249,7 +260,7 @@ Ostateczny szablon wygląda tak:
     },
     "storageUri": {
       "type": "string",
-      "value": "[reference(concat('Microsoft.Storage/storageAccounts/',variables('storageName'))).primaryEndpoints.blob]"
+      "value": "[reference(variables('storageName')).primaryEndpoints.blob]"
     }
   }
 }

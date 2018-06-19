@@ -1,22 +1,22 @@
 ---
-title: "Szybki start — Eksplorator usługi Azure Time Series Insights | Microsoft Docs"
-description: "W tym przewodniku Szybki start pokazano, jak rozpocząć pracę z eksploratorem usługi Azure Time Series Insights w przeglądarce internetowej, aby wizualizować duże ilości danych IoT. Poznaj najważniejsze funkcje w środowisku pokazu."
-services: time-series-insights
+title: Szybki start — Eksplorator usługi Azure Time Series Insights | Microsoft Docs
+description: W tym przewodniku Szybki start pokazano, jak rozpocząć pracę z eksploratorem usługi Azure Time Series Insights w przeglądarce internetowej, aby wizualizować duże ilości danych IoT. Poznaj najważniejsze funkcje w środowisku pokazu.
 ms.service: time-series-insights
+services: time-series-insights
 author: MarkMcGeeAtAquent
 ms.author: v-mamcge
 manager: jhubbard
-editor: MarkMcGeeAtAquent, jasonwhowell, kfile, MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc
 ms.date: 11/15/2017
-ms.openlocfilehash: a2f88ab65a8f9948b83f491896d53b34f162747c
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: dbf0aef7a032c9b9808db14031555c7498874ac3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652121"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Szybki start: poznawanie usługi Azure Time Series Insights
 W tym przewodniku Szybki start pokazano, jak rozpocząć pracę z eksploratorem usługi Azure Time Series Insights w bezpłatnym środowisku pokazowym. Dowiesz się, jak przy użyciu przeglądarki internetowej wizualizować duże ilości danych IoT, i poznasz najważniejsze funkcje eksploratora usługi Time Series Insights. 
@@ -27,7 +27,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="explore-time-series-insights-explorer-in-a-demo-environment"></a>Poznawanie eksploratora usługi Time Series Insights w środowisku pokazowym
 
-1. W przeglądarce przejdź do witryny [https://insights.timeseries.azure.com/demo](https://insights.timeseries.azure.com/demo). 
+1. W przeglądarce przejdź do [https://insights.timeseries.azure.com/demo](https://insights.timeseries.azure.com/demo). 
 
 2. Jeśli zostanie wyświetlony monit, zaloguj się do eksploratora usługi Time Series Insights przy użyciu poświadczeń konta platformy Azure. 
  

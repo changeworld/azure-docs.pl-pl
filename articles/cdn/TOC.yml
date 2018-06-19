@@ -16,6 +16,8 @@
   items:
     - name: Dodawanie usługi Azure CDN do aplikacji internetowej
       href: cdn-add-to-web-app.md
+    - name: Dostęp do obiektów blob przy użyciu domeny niestandardowej za pomocą protokołu HTTPS
+      href: cdn-storage-custom-domain-https.md
     - name: Dodawanie domeny niestandardowej
       href: cdn-map-content-to-custom-domain.md
     - name: Konfigurowanie protokołu HTTPS w domenie niestandardowej

@@ -97,6 +97,8 @@
           href: api-management-howto-integrate-internal-vnet-appgateway.md
         - name: Wzajemne uwierzytelnianie certyfikatów
           href: api-management-howto-mutual-certificates.md
+        - name: Zarządzanie protokołami i szyfrowaniem
+          href: api-management-howto-manage-protocols-ciphers.md
     - name: Dostosowywanie środowiska deweloperów
       items:
         - name: Modyfikowanie zawartości i układu strony

@@ -5,15 +5,15 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 04/05/2018
+ms.date: 06/04/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: a16a9bdb866803a65bf7204628b735bd9ac60aee
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: fa6a232c657d9d96943f241eb05221e42f0f599b
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302563"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763344"
 ---
 # <a name="create-and-route-custom-events-with-the-azure-portal-and-event-grid"></a>Tworzenie i kierowanie zdarzeń niestandardowych za pomocą witryny Azure Portal i usługi Event Grid
 
@@ -71,7 +71,7 @@ Przed zasubskrybowaniem tematu utwórzmy punkt końcowy dla komunikatów o zdarz
 
    ![Tworzenie funkcji](./media/custom-event-quickstart-portal/create-function.png)
 
-1. Podaj unikatową nazwę dla funkcji platformy Azure. Nie należy używać nazwy użytej na obrazie. Wybierz grupę zasobów utworzoną w ramach tego artykułu. Jako plan hostingu użyj **planu Zużycie**. Użyj sugerowanego nowego konta magazynu. Po podaniu wartości wybierz pozycję **Utwórz**.
+1. Podaj unikatową nazwę dla funkcji platformy Azure. Nie należy używać nazwy użytej na obrazie. Wybierz grupę zasobów utworzoną w ramach tego artykułu. Jako plan hostingu użyj **planu Zużycie**. Użyj sugerowanego nowego konta magazynu. Możesz wyłączyć usługę Application Insights. Po podaniu wartości wybierz pozycję **Utwórz**.
 
    ![Podawanie wartości funkcji](./media/custom-event-quickstart-portal/provide-function-values.png)
 

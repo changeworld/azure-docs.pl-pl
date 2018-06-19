@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/04/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9522e1f56c7aa8ce8fbe2b5b7b04f5482738342c
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: f18e94b6f788609dc5a0466e9d8ffa0c02056b1e
+ms.sourcegitcommit: 5821eef990c26fa045e4beacce39f6b02b83156b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236706"
+ms.lasthandoff: 06/15/2018
+ms.locfileid: "35678059"
 ---
 ### <a name="supportedclientos"></a>Których systemów operacyjnych klienta można używać z połączeniami typu punkt-lokacja?
 
@@ -21,14 +21,13 @@ Obsługiwane są następujące systemy operacyjne klientów:
 
 * Windows 7 (32-bitowy i 64-bitowy)
 * Windows Server 2008 R2 (tylko 64-bitowy)
-* Windows 8 (32-bitowy i 64-bitowy)
 * Windows 8.1 (32-bitowy i 64-bitowy)
 * Windows Server 2012 (tylko 64-bitowy)
 * Windows Server 2012 R2 (tylko 64-bitowy)
 * Windows Server 2016 (tylko 64-bitowy)
 * Windows 10
-* Wersja systemu Mac OS X 10.11 (El Capitan)
-* Mac OS X w wersji 10.12 (Sierra)
+* Mac OS X 10.11 (El Capitan)
+* Mac OS X 10.12 (Sierra)
 * Linux (StrongSwan)
 * iOS
 
@@ -74,28 +73,28 @@ Nie. Możesz używać wyłącznie natywnego klienta sieci VPN w systemie Windows
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Czy platforma Azure obsługuje sieć VPN z protokołem IKEv2 w systemie Windows?
 
-Protokół IKEv2 jest obsługiwany w systemie Windows 10 i Server 2016. Jednak aby można było używać protokołu IKEv2, należy zainstalować aktualizacje i ustaw wartość klucza rejestru lokalnie. Wersje systemu operacyjnego starsze niż Windows 10 nie są obsługiwane i może używać tylko protokołu SSTP.
+Protokół IKEv2 jest obsługiwany w systemach Windows 10 i Server 2016. Jednak aby można było używać protokołu IKEv2, należy zainstalować aktualizacje i lokalnie ustawić wartość klucza rejestru. Wersje systemu operacyjnego starsze niż Windows 10 nie są obsługiwane i mogą używać tylko protokołu SSTP.
 
-Do przygotowywania systemu Windows 10 lub Server 2016 dla protokołu IKEv2:
+Aby przygotowywać system Windows 10 lub Server 2016 pod kątem protokołu IKEv2:
 
 1. Zainstaluj aktualizację.
 
-  | Wersja systemu operacyjnego | Date | Numer/Link |
+  | Wersja systemu operacyjnego | Date | Numer/link |
   |---|---|---|---|
   | Windows Server 2016<br>Windows 10 w wersji 1607 | 17 stycznia 2018 r. | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
-  | Wersja systemu Windows 10 1703 | 17 stycznia 2018 r. | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
+  | Windows 10 w wersji 1703 | 17 stycznia 2018 r. | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
   |  |  |  |  |
 
-2. Ustaw wartość klucza rejestru. Utwórz lub ustawić REG_DWORD "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload" klucza rejestru na wartość 1.
+2. Ustaw wartość klucza rejestru. Utwórz lub ustaw klucz rejestru REG_DWORD „HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload”na wartość 1.
 
-### <a name="what-happens-when-i-configure-both-sstp-and-ikev2-for-p2s-vpn-connections"></a>Co się dzieje podczas konfigurowania zarówno SSTP i IKEv2 dla połączeń sieci VPN P2S?
+### <a name="what-happens-when-i-configure-both-sstp-and-ikev2-for-p2s-vpn-connections"></a>Co się stanie po jednoczesnym skonfigurowaniu protokołów SSTP i IKEv2 dla połączeń sieci VPN P2S?
 
-Po skonfigurowaniu zarówno SSTP i IKEv2 w środowisku mieszanym (składające się z urządzeniami z systemem Windows i Mac), zawsze będą usiłować tunelowania IKEv2 najpierw klienta VPN systemu Windows, ale powróci do SSTP Jeśli połączenia IKEv2 nie powiedzie. MacOSX połączy się tylko za pomocą protokołu IKEv2.
+Po jednoczesnym skonfigurowaniu protokołów SSTP i IKEv2 w środowisku mieszanym (składającym się z urządzeń z systemem Windows i komputerów Mac) klient sieci VPN z systemem Windows będzie zawsze próbował najpierw użyć tunelu IKEv2, a gdy to się nie uda, wróci do protokołu SSTP. Klienci z systemem MacOSX będą łączyć się tylko za pomocą protokołu IKEv2.
 
 ### <a name="other-than-windows-and-mac-which-other-platforms-does-azure-support-for-p2s-vpn"></a>Jakie platformy, oprócz systemów Windows i Mac, platforma Azure obsługuje dla sieci VPN P2S?
 
 Platforma Azure obsługuje tylko systemy Windows i Mac dla sieci VPN typu punkt-lokacja.
 
-### <a name="i-already-have-an-azure-vpn-gateway-deployed-can-i-enable-radius-andor-ikev2-vpn-on-it"></a>Mam już wdrożoną usługę Azure VPN Gateway. Na nim można włączyć usługi RADIUS i/lub IKEv2 sieci VPN?
+### <a name="i-already-have-an-azure-vpn-gateway-deployed-can-i-enable-radius-andor-ikev2-vpn-on-it"></a>Mam już wdrożoną usługę Azure VPN Gateway. Czy mogę w niej włączyć sieć VPN z protokołem RADIUS i/lub IKEv2?
 
-Tak, aby umożliwić te nowe funkcje w bramach już wdrożony przy użyciu programu Powershell lub w portalu Azure, pod warunkiem, że jednostka SKU, używanej bramy obsługuje usługi RADIUS i/lub IKEv2. Na przykład podstawowa jednostka SKU bramy sieci VPN nie obsługuje usługi RADIUS lub IKEv2.
+Tak, te nowe funkcje możesz włączyć w już wdrożonych bramach, używając do tego programu PowerShell lub witryny Azure Portal. Warunkiem jest, aby używane przez Ciebie jednostki SKU bramy obsługiwały protokół RADIUS i/lub protokół IKEv2. Na przykład podstawowa jednostka SKU bramy sieci VPN nie obsługuje protokołu RADIUS ani protokołu IKEv2.

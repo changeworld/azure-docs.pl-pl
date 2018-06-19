@@ -1,10 +1,10 @@
 ---
 title: Szybki start — tworzenie profilu i punktu końcowego usługi Azure CDN | Microsoft Docs
-description: W tym przewodniku Szybki start przedstawiono sposób włączania usługi Azure CDN przez utworzenie nowego profilu i punktu końcowego usługi CDN.
+description: W tym przewodniku Szybki start przedstawiono sposób włączania usługi Azure CDN przez utworzenie nowego profilu usługi CDN i punktu końcowego usługi CDN.
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.assetid: 4ca51224-5423-419b-98cf-89860ef516d2
 ms.service: cdn
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/13/2018
-ms.author: mazha
+ms.date: 05/24/2018
+ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 87216a861aa150c5f9a16f6193f2abf2af6d57d1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: cf0a0b10d8df3b119f5abbd8060f8821d54172bb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198711"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607875"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Szybki start: tworzenie profilu i punktu końcowego usługi Azure CDN
 W tym przewodniku Szybki start włączysz usługę Azure Content Delivery Network (CDN) przez utworzenie nowego profilu i punktu końcowego usługi CDN. Po utworzeniu profilu i punktu końcowego można rozpocząć dostarczanie zawartości do klientów.
@@ -28,7 +28,7 @@ W tym przewodniku Szybki start włączysz usługę Azure Content Delivery Networ
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Na potrzeby tego przewodnika Szybki start trzeba wcześniej utworzyć konto magazynu o nazwie *mystorageacct123*, które będzie używane jako nazwa hosta źródła. Aby uzyskać więcej informacji, zobacz [Integrate an Azure storage account with Azure CDN (Integrowanie konta usługi Azure Storage z usługą Azure CDN)](cdn-create-a-storage-account-with-cdn.md)
+Na potrzeby tego przewodnika Szybki start trzeba wcześniej utworzyć konto magazynu o nazwie *mystorageacct123*, które będzie używane jako nazwa hosta źródła. Aby uzyskać więcej informacji, zobacz [Integrate an Azure storage account with Azure CDN (Integrowanie konta usługi Azure Storage z usługą Azure CDN)](cdn-create-a-storage-account-with-cdn.md).
 
 ## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) przy użyciu konta platformy Azure.
@@ -47,23 +47,23 @@ Utworzony profil usługi CDN może służyć do tworzenia punktu końcowego.
    
     ![Profil CDN](./media/cdn-create-new-endpoint/cdn-select-endpoint.png)
    
-    Zostanie wyświetlona strona **Dodawanie punktu końcowego**.
+    Zostanie wyświetlone okienko **Dodawanie punktu końcowego**.
 
-    Użyj ustawień określonych w tabeli pod obrazem.
-   
-    ![Okienko Dodawanie punktu końcowego](./media/cdn-create-new-endpoint/cdn-add-endpoint.png)
+3. Dla ustawień punktu końcowego należy użyć wartości podanych w poniższej tabeli:
 
     | Ustawienie | Wartość |
     | ------- | ----- |
-    | **Nazwa** | Wprowadź ciąg *my-endpoint-123* jako nazwę hosta punktu końcowego. Ta nazwa musi być globalnie unikatowa; jeśli jest już używana, wprowadź inną nazwę. Ta nazwa jest używana do uzyskiwania dostępu do buforowanych zasobów w domenie _&lt;nazwa punktu końcowego&gt;_.azureedge.net.|
+    | **Nazwa** | Wprowadź ciąg *my-endpoint-123* jako nazwę hosta punktu końcowego. Ta nazwa musi być globalnie unikatowa; jeśli jest już używana, można wprowadzić inną nazwę. Ta nazwa jest używana do uzyskiwania dostępu do buforowanych zasobów w domenie _&lt;nazwa punktu końcowego&gt;_.azureedge.net.|
     | **Typ źródła** | Wybierz pozycję **Magazyn**. | 
-    | **Nazwa hosta źródła** | Wprowadź ciąg *mystorageacct123.blob.core.windows.net* jako nazwę hosta. Ta nazwa musi być globalnie unikatowa; jeśli jest już używana, wprowadź inną nazwę |
+    | **Nazwa hosta źródła** | Wprowadź ciąg *mystorageacct123.blob.core.windows.net* jako nazwę hosta. Ta nazwa musi być globalnie unikatowa; jeśli jest już używana, można wprowadzić inną nazwę. |
     | **Ścieżka do źródła** | Pozostaw to pole puste. |
     | **Nagłówek hosta źródła** | Pozostaw wygenerowaną wartość domyślną. |  
     | **Protokół** | Pozostaw domyślnie wybrane opcje **HTTP** i **HTTPS**. |
     | **Port źródła** | Pozostaw domyślne wartości portów. | 
     | **Zoptymalizowano pod kątem** | Pozostaw domyślnie wybraną pozycję **Ogólne dostarczanie w Internecie**. |
-    
+
+    ![Okienko Dodawanie punktu końcowego](./media/cdn-create-new-endpoint/cdn-add-endpoint.png)
+
 3. Wybierz pozycję **Dodaj**, aby utworzyć nowy punkt końcowy.
    
    Po utworzeniu punktu końcowego zostanie on wyświetlony na liście punktów końcowych dla profilu.

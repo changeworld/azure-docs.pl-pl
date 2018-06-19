@@ -69,6 +69,8 @@
       href: post-to-custom-topic.md
     - name: Odbieranie zdarzeń w punkcie końcowym HTTP
       href: receive-events.md
+    - name: Zarządzanie dostarczaniem zdarzeń
+      href: manage-event-delivery.md
     - name: Monitorowanie dostarczania zdarzeń
       href: monitor-event-delivery.md
     - name: Wykonywanie zapytań o subskrypcje zdarzeń

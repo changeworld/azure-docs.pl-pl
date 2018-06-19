@@ -318,7 +318,7 @@
           maintainContext: true
     - name: Rozwiązywanie problemów
       items:
-        - name: Debugowanie zadań usługi Spark
+        - name: Zadania debugowania usługi Spark
           href: apache-spark-job-debugging.md
         - name: Debugowanie zadania usługi Spark za pomocą programu IntelliJ
           href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
@@ -394,13 +394,10 @@
         - name: Łączenie usługi HDInsight z siecią lokalną
           href: ../connect-on-premises-network.md
           maintainContext: true
-    - name: Monitorowanie przy użyciu pakietu OMS
+    - name: Monitorowanie za pomocą usługi Log Analytics
       items:
         - name: Korzystanie z usługi Azure Log Analytics
           href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-          maintainContext: true
-        - name: Pulpity nawigacyjne specyficzne dla klastra
-          href: ../hdinsight-hadoop-oms-log-analytics-management-solutions.md
           maintainContext: true
         - name: Używanie zapytań z usługą Log Analytics
           href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md

@@ -1,23 +1,21 @@
 ---
 title: Wysyłanie danych telemetrycznych do usługi Azure IoT Hub — Szybki start (Python) | Microsoft Docs
 description: W tym przewodniku Szybki start uruchomisz przykładową aplikację języka Python wysyłającą symulowane dane telemetryczne do centrum IoT oraz używającą narzędzia do odczytywania danych telemetrycznych z centrum IoT.
-services: iot-hub
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: ns
 ms.date: 04/30/2018
 ms.author: dobett
-ms.openlocfilehash: 2abc978d6f40808a1bea46a01647444bb79b1211
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: a6bece43f003ed5ddd2db2b03f12c02c1ccaa28e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636277"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-python"></a>Szybki start: wysyłanie danych telemetrycznych z urządzenia do centrum IoT oraz odczytywanie danych telemetrycznych z centrum przy użyciu aplikacji zaplecza (Python)
 
@@ -100,7 +98,7 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
 
 Aplikacja urządzenia symulowanego łączy się z punktem końcowym specyficznym dla urządzenia w centrum IoT i wysyła symulowane dane telemetryczne dotyczące temperatury oraz wilgotności.
 
-1. W oknie terminalu przejdź do folderu głównego przykładowego projektu Python. Następnie przejdź do folderu **Quickstarts\simulated-device**.
+1. W oknie terminalu przejdź do folderu głównego przykładowego projektu Python. Następnie przejdź do folderu **iot-hub\Quickstarts\simulated-device**.
 
 1. Otwórz plik **SimulatedDevice.py** w wybranym edytorze tekstów.
 

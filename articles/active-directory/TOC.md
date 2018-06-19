@@ -122,7 +122,6 @@
 ### Dokumentacja
 #### [Przechowywanie](active-directory-reporting-retention.md)
 #### [Czasy oczekiwania](active-directory-reporting-latencies-azure-portal.md)
-#### [Powiadomienia](active-directory-reporting-notifications.md)
 #### [Dokumentacja działań inspekcji](active-directory-reporting-activity-audit-reference.md)
 #### [Sign-in activity error codes (Kody błędów działań logowania)](active-directory-reporting-activity-sign-ins-errors.md)
 #### [Multi-Factor Authentication](active-directory-reporting-activity-sign-ins-mfa.md)
@@ -152,6 +151,12 @@
 ### [Dostosowywanie samoobsługowego resetowania haseł](authentication/concept-sspr-customization.md)
 ### [Wymagania dotyczące danych związane z samoobsługowym resetowaniem haseł](authentication/howto-sspr-authenticationdata.md)
 ### [Raportowanie samoobsługowego resetowania haseł](authentication/howto-sspr-reporting.md)
+### [Eliminowanie słabych haseł](authentication/concept-password-ban-bad.md)
+### [Konfigurowanie listy zakazanych haseł](authentication/howto-password-ban-bad.md)
+### [Integracja lokalna](authentication/concept-password-ban-bad-on-premises.md)
+### [Wdrażanie ochrony haseł w usłudze Azure AD](authentication/howto-password-ban-bad-on-premises.md)
+### [Konfigurowanie ochrony haseł w usłudze Azure AD](authentication/howto-password-ban-bad-on-premises-operations.md)
+### [Monitorowanie ochrony haseł w usłudze Azure AD](authentication/howto-password-ban-bad-on-premises-troubleshoot.md)
 ### Administratorzy IT: resetowanie haseł
 #### [Azure Portal](fundamentals/active-directory-users-reset-password-azure-portal.md)
 ### [Licencjonowanie funkcji samoobsługowego resetowania haseł](authentication/concept-sspr-licensing.md)
@@ -178,14 +183,14 @@
 ## Zarządzanie aplikacjami
 ### [Omówienie](manage-apps/what-is-application-management.md)
 ### [Rozpoczęcie pracy](manage-apps/plan-an-application-integration.md)
-### [Samouczki integracji aplikacji SaaS](active-directory-saas-tutorial-list.md)
+### [Samouczki integracji aplikacji SaaS](saas-apps/tutorial-list.md)
 ### [Cloud App Discovery](manage-apps/cloud-app-discovery.md)
 #### [Tworzenie raportów migawek](manage-apps/cloud-app-discovery-create-snapshot-reports.md)
 #### [Konfigurowanie ciągłego raportowania](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 #### [Korzystanie z niestandardowego analizatora dziennika](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
 
 ### [Aprowizacja i anulowanie aprowizacji użytkowników w aplikacjach SaaS](active-directory-saas-app-provisioning.md) 
-#### [Samouczki integracji aplikacji](active-directory-saas-tutorial-list.md) 
+#### [Samouczki integracji aplikacji](saas-apps/tutorial-list.md) 
 #### [Automatyzowanie aprowizacji w aplikacjach obsługujących standard SCIM](manage-apps/use-scim-to-provision-users-and-groups.md) 
 #### [Dostosowywanie mapowań atrybutów](active-directory-saas-customizing-attribute-mappings.md) 
 #### [Pisanie wyrażeń do mapowania atrybutów](active-directory-saas-writing-expressions-for-attribute-mappings.md) 

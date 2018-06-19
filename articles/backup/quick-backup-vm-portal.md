@@ -1,26 +1,22 @@
 ---
-title: "Azure: Szybki start — Tworzenie kopii zapasowej maszyny wirtualnej za pomocą witryny Azure Portal | Microsoft Docs"
-description: "Informacje na temat tworzenia kopii zapasowych maszyn wirtualnych przy użyciu witryny Azure Portal"
+title: 'Azure: Szybki start — tworzenie kopii zapasowej maszyny wirtualnej za pomocą witryny Azure Portal'
+description: Informacje na temat tworzenia kopii zapasowych maszyn wirtualnych przy użyciu witryny Azure Portal
 services: backup
-documentationcenter: virtual-machines
 author: saurabhsensharma
 manager: shivamg
-editor: 
 tags: azure-resource-manager, virtual-machine-backup
-ms.assetid: 
 ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure
 ms.date: 2/14/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 60963553e012e6655e7ef9bf90d4ff6958427c9f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 19711fcac4bdcca93abb4dcbb830dd9869360362
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609039"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Tworzenie kopii zapasowej maszyny wirtualnej na platformie Azure
 Kopie zapasowe platformy Azure można utworzyć za pomocą witryny Azure Portal. Ta metoda bazuje na opartym na przeglądarce interfejsie użytkownika umożliwiającym tworzenie i konfigurowanie kopii zapasowych platformy Azure oraz wszystkich pokrewnych zasobów. Możesz chronić swoje dane, tworząc kopie zapasowe w regularnych odstępach czasu. Usługa Azure Backup tworzy punkty odzyskiwania, które można przechowywać w geograficznie nadmiarowych magazynach odzyskiwania. Ten artykuł szczegółowo opisuje sposób tworzenia kopii zapasowej maszyny wirtualnej za pomocą witryny Azure Portal. 
@@ -29,7 +25,7 @@ W tym przewodniku Szybki start opisano wykonywanie kopii zapasowej istniejącej 
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
-Zaloguj się w witrynie Azure Portal pod adresem http://portal.azure.com.
+Zaloguj się do witryny Azure Portal na stronie http://portal.azure.com.
 
 ## <a name="select-a-vm-to-back-up"></a>Wybór maszyny wirtualnej, której kopia zapasowa ma być tworzona
 Utwórz prostą, zaplanowaną, codzienną operację tworzenia kopii zapasowych w magazynie usługi Recovery Services. 

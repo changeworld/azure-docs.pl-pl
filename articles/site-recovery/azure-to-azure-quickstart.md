@@ -6,21 +6,21 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 05/15/2018
+ms.date: 05/31/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: aec0d93cb9358e7654f8ee1a334b7529fbee604a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d52691dbec932a3515c90e757863be01ade086cc
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208842"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715959"
 ---
 # <a name="replicate-an-azure-vm-to-another-azure-region"></a>Replikowanie maszyny wirtualnej platformy Azure w innym regionie platformy Azure
 
 Usługa [Azure Site Recovery](site-recovery-overview.md) stanowi część strategii związanej z ciągłością biznesową i odzyskiwaniem po awarii przez zapewnienie niezawodnego działania aplikacji biznesowych podczas planowanych i nieplanowanych przestojów. Usługa Site Recovery zarządza odzyskiwaniem po awarii maszyn lokalnych i maszyn wirtualnych platformy Azure, a także organizuje to odzyskiwanie. Obejmuje to replikację, przechodzenie w tryb failover i odzyskiwanie.
 
-W tym samouczku Szybki start opisano sposób replikowania maszyny wirtualnej platformy Azure w innym regionie platformy Azure. Replikacja z platformy Azure na platformę Azure jest obecnie w wersji zapoznawczej
+W tym samouczku Szybki start opisano sposób replikowania maszyny wirtualnej platformy Azure w innym regionie platformy Azure. 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -47,7 +47,7 @@ Zaloguj się do witryny Azure Portal na stronie http://portal.azure.com.
 
 Po zakończeniu zadania replikacji można sprawdzić stan replikacji, zmodyfikować ustawienia replikacji i przetestować wdrożenie.
 
-1. W menu maszyny wirtualnej kliknij przycisk **Odzyskiwanie po awarii (wersja zapoznawcza)**.
+1. W menu maszyny wirtualnej kliknij pozycję **Odzyskiwanie po awarii**.
 2. Można sprawdzić kondycję replikacji, utworzone punkty odzyskiwania oraz regiony źródłowy i docelowy na mapie.
 
    ![Stan replikacji](media/azure-to-azure-quickstart/replication-status.png)

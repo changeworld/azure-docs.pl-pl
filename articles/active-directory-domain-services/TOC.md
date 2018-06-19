@@ -27,7 +27,7 @@
 ### [Maszyna wirtualna z systemem Windows Server z szablonu](active-directory-ds-join-windows-vm-template.md)
 ### [CentOS](active-directory-ds-join-centos-linux-vm.md)
 ### [CoreOS](active-directory-ds-join-coreos-linux-vm.md)
-### [RedHat Enterprise Linux](active-directory-ds-join-rhel-linux-vm.md)
+### [Red Hat Enterprise Linux](active-directory-ds-join-rhel-linux-vm.md)
 ### [Serwer Ubuntu](active-directory-ds-join-ubuntu-linux-vm.md)
 ## Administrowanie domeną zarządzaną
 ### [Administrowanie domeną zarządzaną](active-directory-ds-admin-guide-administer-domain.md)

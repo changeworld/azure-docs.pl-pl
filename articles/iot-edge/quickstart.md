@@ -1,82 +1,83 @@
 ---
-title: Szybki Start Azure IoT krawędzi + Windows | Dokumentacja firmy Microsoft
-description: Wypróbować usługę Azure IoT krawędzi, uruchamiając analytics na urządzeniu symulowane krawędzi
-services: iot-edge
-keywords: ''
+title: 'Szybki start: usługa Azure IoT Edge + system Windows | Microsoft Docs'
+description: Wypróbuj usługę Azure IoT Edge, uruchamiając analizy na symulowanym urządzeniu Edge
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 05/03/2018
-ms.topic: article
+ms.topic: quickstart
 ms.service: iot-edge
-ms.openlocfilehash: 888f74d215956f4ad38605ca247f681da700a787
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
-ms.translationtype: MT
+services: iot-edge
+ms.custom: mvc
+ms.openlocfilehash: 2fd16ab4ade61b1a08f93294051f4246e47839b1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631738"
 ---
-# <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Szybki Start: Wdrażanie modułu pierwszy krawędzi IoT z portalu Azure do urządzenia z systemem Windows — w wersji preview
+# <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Szybki start: wdrażanie pierwszego modułu IoT Edge z witryny Azure Portal do urządzenia z systemem Windows — wersja zapoznawcza
 
-W tym Szybki Start Użyj interfejsu chmury Azure IoT krawędzi do zdalnego wdrożenia kodu wbudowane urządzenia IoT. Aby wykonać to zadanie, należy najpierw użyć urządzenia z systemem Windows do symulacji urządzenia IoT, następnie można wdrożyć modułu do niego.
+W tym przewodniku Szybki start użyjesz interfejsu chmury usługi Azure IoT Edge do zdalnego wdrożenia wstępnie utworzonego kodu na urządzeniu z usługą IoT Edge. Aby wykonać to zadanie, użyj najpierw urządzenia z systemem Windows do symulacji urządzenia z usługą IoT Edge, co pozwoli wdrożyć na nim moduł.
 
-Jeśli nie masz aktywnych subskrypcji platformy Azure, Utwórz [bezpłatne konto] [ lnk-account] przed rozpoczęciem.
+Jeśli nie masz aktywnej subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto][lnk-account].
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ten samouczek zakłada, że używasz komputera lub maszyny wirtualnej z systemem Windows do symulacji urządzenia Internetu rzeczy. Jeśli korzystasz z systemu Windows na maszynie wirtualnej, należy włączyć [zagnieżdżonych wirtualizacji] [ lnk-nested] i przydziel co najmniej 2 GB pamięci RAM. 
+W tym samouczku założono, że używasz komputera lub maszyny wirtualnej z uruchomionym systemem Windows do symulacji urządzenia Internetu rzeczy. Jeśli korzystasz z systemu Windows na maszynie wirtualnej, włącz [zagnieżdżoną wirtualizację][lnk-nested] i przydziel co najmniej 2 GB pamięci. 
 
-1. Upewnij się, że używasz wersji systemu Windows:
+1. Upewnij się, że używasz obsługiwanej wersji systemu Windows:
    * Windows 10 
    * Windows Server
-2. Zainstaluj [Docker dla systemu Windows] [ lnk-docker] i upewnij się, że jest uruchomiona.
-3. Zainstaluj [Python w systemie Windows] [ lnk-python] i upewnij się, możesz użyć polecenia pip. Ta opcja szybkiego startu była testowana przy wersji języka Python > = 2.7.9 i > = 3.5.4.  
-4. Uruchom następujące polecenie, aby pobrać skryptu kontroli IoT krawędzi.
+2. Zainstaluj aplikację [Docker for Windows][lnk-docker] i upewnij się, że jest uruchomiona.
+3. Zainstaluj środowisko [Python w systemie Windows][lnk-python] i upewnij się, że możesz użyć polecenia pip. Ten przewodnik Szybki start przetestowano przy użyciu wersji środowiska Python >=2.7.9 i >=3.5.4.  
+4. Uruchom następujące polecenie, aby pobrać skrypt kontroli usługi IoT Edge.
 
    ```cmd
    pip install -U azure-iot-edge-runtime-ctl
    ```
 
 > [!NOTE]
-> Kontenery systemu Windows lub Linux kontenerów, można uruchomić Azure IoT krawędzi. Aby użyć kontenery systemu Windows, należy uruchomić:
->    * Windows 10 twórców spadku zaktualizować, lub
->    * Windows Server (kompilacja 16299) 1709, lub
->    * Windows IoT Core (16299 kompilacji) na urządzenia z systemem x64
+> Usługa Azure IoT Edge może uruchamiać kontenery systemów Windows lub Linux. Aby użyć kontenerów systemu Windows, należy uruchomić:
+>    * Windows 10 Fall Creators Update lub
+>    * Windows Server 1709 (kompilacja 16299) lub
+>    * Windows IoT Core (kompilacja 16299) na urządzeniu z systemem x64
 >
-> Dla systemu Windows IoT Core, postępuj zgodnie z instrukcjami [zainstaluj środowisko uruchomieniowe IoT Edge w systemie Windows IoT Core][lnk-install-iotcore]. W przeciwnym razie po prostu [skonfigurować Docker na używanie kontenerów Windows][lnk-docker-containers]i opcjonalnie zweryfikować Twoje wymagania wstępne przy użyciu następującego polecenia programu powershell:
+> W przypadku systemu Windows IoT Core postępuj zgodnie z instrukcjami w temacie [Zainstaluj środowisko uruchomieniowe usługi IoT Edge w systemie Windows IoT Core][lnk-install-iotcore]. W pozostałych przypadkach wystarczy [skonfigurować program Docker do korzystania z kontenerów systemu Windows][lnk-docker-containers] i opcjonalnie zweryfikować wymagania wstępne przy użyciu następującego polecenia programu Powershell:
 >    ```powershell
 >    Invoke-Expression (Invoke-WebRequest -useb https://aka.ms/iotedgewin)
 >    ```
 
-## <a name="create-an-iot-hub-with-azure-cli"></a>Tworzenie Centrum IoT z wiersza polecenia platformy Azure
+## <a name="create-an-iot-hub-with-azure-cli"></a>Tworzenie centrum IoT za pomocą interfejsu wiersza polecenia platformy Azure
 
-Utwórz Centrum IoT w Twojej subskrypcji platformy Azure. Poziom wolnego Centrum IoT działa w przypadku tego przewodnika Szybki Start. Jeśli używano Centrum IoT w przeszłości i już koncentratora wolnego utworzony, można pominąć tę sekcję i przejdź do [zarejestrować urządzenia IoT][anchor-register]. Każda subskrypcja może mieć tylko jeden bezpłatne Centrum IoT. 
+Utwórz centrum IoT w subskrypcji platformy Azure. W tym przewodniku Szybki start wystarcza warstwa bezpłatna usługi IoT Hub. Jeśli usługa IoT Hub była używana w przeszłości i bezpłatne centrum zostało już utworzone, możesz pominąć tę sekcję i przejść do tematu [Rejestrowanie urządzenia IoT Edge][anchor-register]. Każda subskrypcja może zawierać tylko jedno bezpłatne centrum IoT. 
 
 1. Zaloguj się w witrynie [Azure Portal][lnk-portal]. 
-1. Wybierz **powłoki chmury** przycisku. 
+1. Wybierz przycisk **Cloud Shell**. 
 
-   ![Przycisk powłoki w chmurze][1]
+   ![Przycisk Cloud Shell][1]
 
-1. Utwórz grupę zasobów. Poniższy kod tworzy grupę zasobów o nazwie **IoTEdge** w **zachodnie stany USA** regionu:
+1. Utwórz grupę zasobów. Poniższy kod tworzy grupę zasobów o nazwie **IoTEdge** w regionie **Zachodnich stanów USA**:
 
    ```azurecli
    az group create --name IoTEdge --location westus
    ```
 
-1. Utwórz Centrum IoT w nowej grupy zasobów. Poniższy kod tworzy bezpłatny **F1** koncentratora o nazwie **MyIotHub** w grupie zasobów **IoTEdge**:
+1. Utwórz centrum IoT w nowej grupie zasobów. Poniższy kod tworzy bezpłatne centrum **F1** o nazwie **MyIotHub** w grupie zasobów **IoTEdge**:
 
    ```azurecli
    az iot hub create --resource-group IoTEdge --name MyIotHub --sku F1 
    ```
 
-## <a name="register-an-iot-edge-device"></a>Zarejestruj urządzenia IoT
+## <a name="register-an-iot-edge-device"></a>Rejestracja urządzenia usługi IoT Edge
 
 [!INCLUDE [iot-edge-register-device](../../includes/iot-edge-register-device.md)]
 
-## <a name="configure-the-iot-edge-runtime"></a>Konfigurowanie środowiska uruchomieniowego krawędzi IoT
+## <a name="configure-the-iot-edge-runtime"></a>Konfigurowanie środowiska uruchomieniowego usługi IoT Edge
 
-Środowisko uruchomieniowe krawędzi IoT jest wdrażana na wszystkich urządzeniach IoT krawędzi. Zawiera dwa moduły. Najpierw agenta krawędzi IoT ułatwia wdrażanie i monitorowanie modułów na urządzeniu IoT krawędzi. Po drugie Centrum IoT krawędzi zarządza komunikacji między modułami na urządzeniu IoT krawędzi i między urządzeniami a Centrum IoT. 
+Środowisko uruchomieniowe usługi IoT Edge jest wdrożone na wszystkich urządzeniach usługi IoT Edge. Zawiera dwa moduły. Po pierwsze agent usługi IoT Edge ułatwia wdrażanie i monitorowanie modułów na urządzeniu usługi IoT Edge. Po drugie centrum usługi IoT Edge zarządza komunikacją między modułami na urządzeniu usługi IoT Edge oraz między urządzeniem a usługą IoT Hub. 
 
-Konfigurowanie środowiska uruchomieniowego z parametrów połączenia urządzenia IoT krawędzi z poprzedniej sekcji.
+Skonfiguruj środowisko uruchomieniowe za pomocą ciągu połączenia urządzenia usługi IoT Edge z poprzedniej sekcji.
 
 ```cmd
 iotedgectl setup --connection-string "{device connection string}" --nopass
@@ -88,13 +89,13 @@ Uruchom środowisko uruchomieniowe.
 iotedgectl start
 ```
 
-Sprawdź Docker, aby zobaczyć, czy agent krawędzi IoT jest uruchomiony jako moduł.
+Sprawdź aplikację Docker, aby zobaczyć, że agent usługi IoT Edge jest uruchomiony jako moduł.
 
 ```cmd
 docker ps
 ```
 
-![Zobacz edgeAgent w Docker](./media/tutorial-simulate-device-windows/docker-ps.png)
+![Zobacz agenta usługi Edge w aplikacji Docker](./media/tutorial-simulate-device-windows/docker-ps.png)
 
 ## <a name="deploy-a-module"></a>Wdrażanie modułu
 
@@ -102,15 +103,15 @@ docker ps
 
 ## <a name="view-generated-data"></a>Wyświetlanie wygenerowanych danych
 
-W tego przewodnika Szybki Start utworzyć nowe urządzenie brzegowe IoT, a na nim zainstalowany środowiska uruchomieniowego IoT krawędzi. Następnie użyto portalu Azure do umieszczenia krawędzi IoT modułu do uruchomienia na urządzeniu bez konieczności zmiany na urządzeniu. W takim przypadku moduł, który zostanie przypisany tworzy dane środowiska, używanego programu samouczków. 
+W tym przewodniku Szybki start utworzono nowe urządzenie usługi IoT Edge i zainstalowano na nim środowisko uruchomieniowe usługi IoT Edge. Następnie użyto witryny Azure Portal do wypchnięcia modułu usługi IoT Edge do uruchomienia na urządzeniu bez konieczności wprowadzenia zmian na samym urządzeniu. W tym przypadku wypchnięty moduł tworzy dane środowiskowe, których można użyć do samouczków. 
 
-Otwórz wiersz polecenia na komputerze z uruchomionym symulowane urządzenie ponownie. Upewnij się, że moduł wdrożonych w chmurze jest uruchomiona na urządzeniu IoT krawędzi. 
+Otwórz ponownie wiersz polecenia na komputerze z uruchomionym symulowanym urządzeniem. Upewnij się, że moduł wdrożony z chmury jest uruchomiony na urządzeniu usługi IoT Edge. 
 
 ```cmd
 docker ps
 ```
 
-![Wyświetl trzech modułów na urządzeniu](./media/tutorial-simulate-device-windows/docker-ps2.png)
+![Wyświetlanie trzech modułów na urządzeniu](./media/tutorial-simulate-device-windows/docker-ps2.png)
 
 Wyświetl komunikaty wysyłane z modułu tempSensor do chmury. 
 
@@ -120,28 +121,28 @@ docker logs -f tempSensor
 
 ![Wyświetlanie danych z modułu](./media/tutorial-simulate-device-windows/docker-logs.png)
 
-Można również wyświetlić dane telemetryczne, wysyła urządzenia przy użyciu [narzędzia explorer Centrum IoT][lnk-iothub-explorer]. 
+Możesz też wyświetlić telemetrię wysyłaną przez urządzenie przy użyciu [narzędzia eksploratora usługi IoT Hub][lnk-iothub-explorer]. 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli chcesz usunąć symulowane urządzenie, które zostały utworzone, oraz kontenerów Docker, które zostały uruchomione dla każdego modułu, użyj następującego polecenia: 
+Jeśli chcesz usunąć utworzone przez siebie symulowane urządzenie, razem z kontenerami aplikacji Docker, które zostały uruchomione dla każdego modułu, użyj następującego polecenia: 
 
 ```cmd
 iotedgectl uninstall
 ```
 
-Podczas tworzenia Centrum IoT nie są już potrzebne, można użyć [usuwania Centrum iot az] [ lnk-delete] polecenie, aby usunąć zasób i wszystkie skojarzone z nią urządzenia:
+Jeżeli nie potrzebujesz już utworzonej przez siebie usługi IoT Hub, możesz użyć polecenia [az iot hub delete][lnk-delete], aby usunąć zasób oraz wszystkie powiązane z nim urządzenia:
 
 ```azurecli
 az iot hub delete --name {your iot hub name} --resource-group {your resource group name}
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Wiesz, jak wdrożyć moduł krawędzi IoT urządzenia IoT. Teraz spróbuj wdrażanie różnych typów usług Azure modułów, dzięki czemu można analizować dane na krawędzi. 
+Wiesz, jak wdrożyć moduł usługi IoT Edge na urządzeniu usługi IoT Edge. Teraz spróbuj wdrożyć różne typy usług Azure jako moduły, dzięki czemu będzie można analizować dane na krawędzi. 
 
-* [Wdrażanie funkcji platformy Azure jako moduł](tutorial-deploy-function.md)
+* [Wdrażanie usługi Azure Functions jako modułu](tutorial-deploy-function.md)
 * [Wdrażanie usługi Azure Stream Analytics jako modułu](tutorial-deploy-stream-analytics.md)
-* [Wdrożyć własny kod jako moduł](tutorial-csharp-module.md)
+* [Wdrażanie własnego kodu jako modułu](tutorial-csharp-module.md)
 
 
 <!-- Images -->

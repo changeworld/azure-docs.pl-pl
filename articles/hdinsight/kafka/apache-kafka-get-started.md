@@ -13,13 +13,14 @@ ms.devlang: ''
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/16/2018
+ms.date: 05/23/2018
 ms.author: larryfr
-ms.openlocfilehash: c405d95c53baa07ff21a7d919177bd720202ac14
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d0917894250c8cf907d721749be506d2c247111a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626321"
 ---
 # <a name="quickstart-create-a-kafka-on-hdinsight-cluster"></a>Szybki start: tworzenie platformy Kafka w klastrze usługi HDInsight
 
@@ -182,10 +183,13 @@ W tej sekcji uzyskasz informacje o hoście z interfejsu API REST Ambari w klastr
     Po wyświetleniu monitu wprowadź nazwę klastra platformy Kafka.
 
 3. Aby ustawić zmienną środowiskową na informacje hosta Zookeeper, użyj następującego polecenia:
-
+    
     ```bash
-    export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
+    export KAFKAZKHOSTS=`curl -sS -u admin -G http://headnodehost:8080/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
     ```
+
+    > [!TIP]
+    > To polecenie bezpośrednio wykonuje zapytanie dotyczące usługi Ambari w węźle głównym klastra. Można również uzyskać dostęp do usługi Ambari przy użyciu adresu publicznego `https://$CLUSTERNAME.azurehdinsight.net:80/`. Niektóre konfiguracje sieci mogą uniemożliwić dostęp do adresu publicznego. Na przykład można użyć sieciowych grup zabezpieczeń, aby ograniczyć dostęp do usługi HDInsight w sieci wirtualnej.
 
     Po wyświetleniu monitu wprowadź hasło dla konta logowania klastra (nie dla konta SSH).
 
@@ -205,7 +209,7 @@ W tej sekcji uzyskasz informacje o hoście z interfejsu API REST Ambari w klastr
 5. Aby ustawić zmienną środowiskową na informacje hosta brokera platformy Kafka, użyj następującego polecenia:
 
     ```bash
-    export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
+    export KAFKABROKERS=`curl -sS -u admin -G http://headnodehost:8080/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
     ```
 
     Po wyświetleniu monitu wprowadź hasło dla konta logowania klastra (nie dla konta SSH).

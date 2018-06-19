@@ -4,17 +4,17 @@ description: W tym artykule opisano kroki tworzenia definicji zasad umożliwiaj�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/07/2018
+ms.date: 05/24/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 9b1cfd762d6f050994688d1cd6afd91f0e43bfc3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 43f069fbd8f4fcc13bbc4d9e75763fa98aec1065
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195781"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34601466"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment"></a>Tworzenie przypisania zasad w celu zidentyfikowania niezgodnych zasobów w środowisku platformy Azure
 
@@ -49,7 +49,7 @@ W tym przewodniku Szybki start utworzysz przypisanie zasad i przypiszesz definic
    - Apply tag and its value (Zastosuj tag i jego wartość)
    - Require SQL Server Version 12.0 (Wymagaj programu SQL Server w wersji 12.0)
 
-    Aby uzyskać pełną listę wszystkich dostępnych zasad wbudowanych, zobacz [Szablony zasad](json-samples.md).
+    Aby uzyskać pełną listę wszystkich dostępnych zasad wbudowanych, zobacz [Przykłady zasad](json-samples.md).
 
 7. Przeszukaj listę definicji zasad, aby znaleźć definicję *Audit VMs that do not use managed disks* (Przeprowadź inspekcję maszyn wirtualnych, które nie używają dysków zarządzanych). Kliknij te zasady, a następnie kliknij pozycję **Wybierz**.
 

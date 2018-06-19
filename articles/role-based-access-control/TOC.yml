@@ -1,5 +1,5 @@
-- name: Omówienie zarządzania dostępem
-  href: manage-access-to-azure-resources.md
+- name: Dokumentacja kontroli dostępu opartej na rolach
+  href: index.yml
   items: null
 - name: Omówienie
   items:
@@ -36,6 +36,7 @@
     - name: Dostęp warunkowy do zarządzania platformy Azure
       href: conditional-access-azure-management.md
 - name: Przewodniki z instrukcjami
+  expanded: true
   items:
     - name: Zarządzanie dostępem
       items:

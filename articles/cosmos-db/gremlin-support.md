@@ -1,95 +1,93 @@
 ---
-title: Obsługa rozwiązania Cosmos Gremlin bazy danych Azure | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat języka Gremlin z Apache TinkerPop. Dowiedz się, które funkcje i kroki są dostępne w usłudze Azure DB rozwiązania Cosmos
+title: Obsługa języka Gremlin w usłudze Azure Cosmos DB | Microsoft Docs
+description: Poznaj język Gremlin ze struktury Apache TinkerPop. Dowiedz się, jakie funkcjonalności i kroki są dostępne w usłudze Azure Cosmos DB
 services: cosmos-db
-documentationcenter: ''
 author: LuisBosquez
 manager: kfile
-ms.assetid: 6016ccba-0fb9-4218-892e-8f32a1bcc590
 ms.service: cosmos-db
+ms.component: cosmosdb-graph
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: ''
+ms.topic: overview
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: c3d80fcaa38d0f1d7fa1770879ca9b40642bb796
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: c675f37e50f5b8a259048d9a92fcdbe5b947068c
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34797621"
 ---
-# <a name="azure-cosmos-db-gremlin-graph-support"></a>Pomoc techniczna platformy Azure wykres Gremlin DB rozwiązania Cosmos
-Obsługuje bazę danych systemu Azure rozwiązania Cosmos [Apache Tinkerpop](http://tinkerpop.apache.org) wykresu języka przechodzenie [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), która jest interfejs API programu Graph do tworzenia jednostek wykres i wykonywanie operacji zapytania wykresu. Język Gremlin służy do tworzenia jednostek graph (wierzchołki i krawędzi), zmodyfikuj właściwości w ramach tych jednostek, wykonywania zapytań i traversals i usuwania jednostek. 
+# <a name="azure-cosmos-db-gremlin-graph-support"></a>Obsługa grafu Gremlin w usłudze Azure Cosmos DB
+Usługa Azure Cosmos DB obsługuje język przechodzenia przez graf struktury [Apache TinkerPop](http://tinkerpop.apache.org), [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), stanowiący interfejs API programu Graph do tworzenia jednostek grafu oraz wykonywania operacji zapytań na grafie. Język Gremlin służy do tworzenia jednostek grafu (wierzchołków i krawędzi), modyfikacji właściwości w ramach tych elementów, wykonywania zapytań i przejść oraz usuwania elementów. 
 
-Azure DB rozwiązania Cosmos oferuje funkcje gotowe enterprise baz danych wykresu. Obejmuje dystrybucji globalnych, niezależne skalowanie magazynu i przepływności, opóźnienia przewidywalną milisekund jednocyfrowej automatycznego indeksowania umów SLA, przeczytaj dostępności dla bazy danych kont spanning co najmniej dwóch regionach platformy Azure. Ponieważ bazy danych rozwiązania Cosmos Azure obsługuje TinkerPop/Gremlin, możesz łatwo przeprowadzić migrację aplikacji napisanych przy użyciu innej bazy danych wykresu bez wprowadzania zmian w kodzie. Ponadto z obsługi Gremlin bazy danych rozwiązania Cosmos Azure bezproblemowo integruje się z włączony TinkerPop analytics platform takich jak [Apache Spark GraphX](http://spark.apache.org/graphx/). 
+Usługa Azure Cosmos DB oferuje funkcje gotowe do użycia w firmie do baz danych grafu. Obejmują one dystrybucję globalną, niezależne skalowanie magazynu i przepływności, przewidywalne opóźnienia wyrażone w milisekundach za pomocą pojedynczej cyfry, automatyczne indeksowanie, umowy SLA, dostępność odczytu dla kont baz danych obejmujących co najmniej dwa regiony świadczenia usługi Azure. Ze względu na to, że usługa Azure Cosmos DB obsługuje strukturę TinkerPop/język Gremlin, można łatwo migrować aplikacje napisane przy użyciu innej bazy danych grafów bez konieczności wprowadzania zmian w kodzie. Ponadto, ze względu na obsługę języka Gremlin usługa Azure Cosmos DB płynnie integruje się ze strukturami analizy z obsługą TinkerPop, np. [Apache Spark GraphX](http://spark.apache.org/graphx/). 
 
-W tym artykule firma Microsoft stanowią Przewodnik Szybki Gremlin i wyliczania Gremlin funkcji i kroków, które są obsługiwane przez interfejs API programu Graph.
+Ten artykuł zawiera krótki przewodnik na temat języka Gremlin oraz listę funkcji języka Gremlin oraz kroków obsługiwanych przez interfejs API programu Graph.
 
-## <a name="gremlin-by-example"></a>Gremlin przykładzie
-Aby zrozumieć, jak zapytania może zostać wyrażona w Gremlin Użyjmy wykres próbki. Na poniższej ilustracji przedstawiono aplikacja biznesowa, która zarządza dane o użytkownikach, udziałów i urządzeń w formie wykresu.  
+## <a name="gremlin-by-example"></a>Język Gremlin w przykładach
+Przykładowy graf pomoże dowiedzieć się, jak można wyrazić zapytania w języku Gremlin. Na poniższej ilustracji przedstawiono w formie grafu aplikację biznesową, która zarządza danymi o użytkownikach, zainteresowaniach i urządzeniach.  
 
-![Przykładowa baza danych przedstawiający osób, urządzeń i udziałów](./media/gremlin-support/sample-graph.png) 
+![Przykładowa baza danych przedstawiająca osoby, urządzenia i zainteresowania](./media/gremlin-support/sample-graph.png) 
 
-Ten wykres ma następujące typy wierzchołków (o nazwie "label" w Gremlin):
+Ten graf obejmuje następujące typy wierzchołków (nazywanych w języku Gremlin „label”, czyli etykieta):
 
-- Osoby: Wykres ma trzy osób, działanie okrężne blogu Thomasa i Ben
-- Zainteresowań: Ich zainteresowaniami, w tym przykładzie gry Football
-- Urządzenia: Urządzenia, które osoby użycia
-- Systemy operacyjne: Systemy operacyjne uruchamianych na urządzeniach
+- People (Osoby): graf przedstawia trzy osoby, Robina, Thomasa i Bena
+- Interests (Zainteresowania): ich zainteresowaniem w tym przykładzie jest football
+- Devices (Urządzenia): urządzenia używane przez osoby
+- Operating Systems (Systemy operacyjne): systemy operacyjne uruchomione na urządzeniach
 
-Firma Microsoft reprezentują relacje między tych jednostek za pośrednictwem następujących typów krawędzi/etykiety:
+Przedstawiamy relacje między tymi jednostkami przy użyciu następujących typów krawędzi/etykiet:
 
-- Zna: na przykład "blogu Thomasa zna działania okrężnego"
-- Planuje: Do reprezentowania do zainteresowań osoby w naszym wykresu, na przykład "Ben jest zainteresowana Football"
-- RunsOS: Laptop działa system operacyjny Windows
-- Używa: Do reprezentowania urządzenia, które osoba używa. Na przykład działanie okrężne używa telefonu firmie o numerze seryjnym 77
+- Knows (Zna): na przykład „Thomas zna Robina”
+- Interested (Interesuje się): służy do przedstawienia zainteresowań osób znajdujących się na grafie, na przykład „Ben interesuje się footballem”
+- RunsOS (Ma system operacyjny): na laptopie jest uruchomiony system operacyjny Windows
+- Uses (Używa): służy do przedstawienia, którego urządzenia używa dana osoba. Na przykład Robin używa telefonu firmy Motorola o numerze seryjnym 77
 
-Teraz uruchom kilka operacji względem tego wykresu przy użyciu [konsoli Gremlin](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console). Można również wykonywać te operacje, przy użyciu Gremlin sterowników na platformie wybór (Java, Node.js, Python lub .NET).  Zanim przyjrzymy co to jest obsługiwana w usłudze Azure DB rozwiązania Cosmos, Oto kilka przykładów, aby zapoznać się ze składnią.
+Możemy uruchomić pewne operacje zgodnie z tym grafem przy użyciu [Konsoli Gremlin](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console). Można również wykonywać te operacje przy użyciu sterowników Gremlin na wybranej platformie (Java, Node.js, Python lub .NET).  Zanim zajmiemy się tym, co jest obsługiwane w usłudze Azure Cosmos DB, przyjrzymy się kilku przykładom, aby zapoznać się ze składnią.
 
-Pierwszy Przyjrzyjmy się CRUD. Następująca instrukcja Gremlin wstawia wierzchołka "Blogu Thomasa" do wykresu:
+Najpierw zajmijmy się CRUD. Następująca instrukcja języka Gremlin wstawia do grafu wierzchołek „Thomas”:
 
 ```
 :> g.addV('person').property('id', 'thomas.1').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44)
 ```
 
-Następnie następująca instrukcja Gremlin wstawia krawędź "wie", między blogu Thomasa i działania okrężnego.
+Następnie poniższa instrukcja języka Gremlin wstawia krawędź „knows” między wierzchołkami „Thomas” i „Robin”.
 
 ```
 :> g.V('thomas.1').addE('knows').to(g.V('robin.1'))
 ```
 
-Następujące zapytanie zwraca "osoba" wierzchołków w kolejności ich imiona:
+Poniższe zapytanie zwraca wierzchołki „person” w porządku malejącym według ich imion:
 ```
 :> g.V().hasLabel('person').order().by('firstName', decr)
 ```
 
-W przypadku wykresów świecisz podczas należy odpowiedzieć na pytania "systemy operacyjne, które korzystają znajomych blogu Thomasa?". Możesz uruchomić to proste przechodzenie Gremlin można pobrać informacji z wykresu:
+Wyjątkowość grafów docenia się, gdy trzeba odpowiedzieć na takie pytania jak: „Jakich systemów operacyjnych używają znajomi Thomasa?” Aby uzyskać te informacje z grafu, można uruchomić proste przejście w języku Gremlin, jak poniżej:
 
 ```
 :> g.V('thomas.1').out('knows').out('uses').out('runsos').group().by('name').by(count())
 ```
-Teraz Przyjrzyjmy się bazy danych rozwiązania Cosmos Azure udostępnia deweloperom Gremlin.
+Teraz sprawdźmy, co oferuje usługa Azure Cosmos DB deweloperom języka Gremlin.
 
-## <a name="gremlin-features"></a>Funkcje gremlin
-TinkerPop jest standard, który obejmuje wiele różnych technologii wykresu. Dlatego ma terminologii do opisywania, jakie funkcje są udostępniane przez dostawcę wykresu. Azure DB rozwiązania Cosmos zapewnia współbieżność trwałe, wysoka, bazy danych wykresu zapisywalny, która może zostać podzielony na partycje w wielu serwerów lub klastrów. 
+## <a name="gremlin-features"></a>Funkcje języka Gremlin
+TinkerPop jest standardem, który obejmuje szeroki zakres technologii grafów. Dlatego ma standardową terminologię do opisywania, jakie funkcje są udostępniane przez dostawcę grafu. Usługa Azure Cosmos DB zapewnia trwałą, zapisywalną bazę danych grafów o dużej współbieżności, którą można podzielić na partycje w wielu serwerach lub klastrach. 
 
-W poniższej tabeli wymieniono funkcje TinkerPop implementowane za pomocą bazy danych rozwiązania Cosmos Azure: 
+W poniższej tabeli wymieniono funkcje struktury TinkerPop wdrażane przez usługę Azure Cosmos DB: 
 
-| Kategoria | Implementacja rozwiązania Cosmos bazy danych Azure |  Uwagi | 
+| Kategoria | Wdrożenie usługi Azure Cosmos DB |  Uwagi | 
 | --- | --- | --- |
-| Funkcje wykresu | Zapewnia trwałość i ConcurrentAccess. Przeznaczony do obsługi transakcji | Można zaimplementować metody komputera za pośrednictwem łącznika Spark. |
-| Funkcje zmiennych | Obsługuje wartość logiczną, liczbą całkowitą, Byte, kliknij dwukrotnie, Float, Integer, Long, ciąg | Obsługuje typy pierwotne, jest niezgodny z typami złożonymi za pośrednictwem modelu danych |
-| Funkcje wierzchołków | Obsługuje RemoveVertices, MetaProperties, AddVertices, MultiProperties, StringIds, UserSuppliedIds, AddProperty, RemoveProperty  | Obsługuje tworzenie, modyfikowanie i usuwanie wierzchołków |
-| Funkcje właściwości wierzchołków | StringIds, UserSuppliedIds, AddProperty, RemoveProperty, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Obsługuje tworzenie, modyfikowanie i usuwanie właściwości wierzchołków |
-| Funkcje krawędzi | AddEdges, RemoveEdges, StringIds, UserSuppliedIds, AddProperty, RemoveProperty | Obsługuje tworzenie, modyfikowanie i usuwanie krawędzi. |
-| Funkcje właściwości Edge | Właściwości, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Obsługuje tworzenie, modyfikowanie i usuwanie właściwości edge |
+| Funkcjonalności grafu | Zapewnia funkcjonalności Persistence i ConcurrentAccess. Zaprojektowana obsługa funkcjonalności Transactions | Metody komputera mogą być wdrażane przy użyciu łącznika Spark. |
+| Funkcjonalności zmiennych | Obsługuje zmienne Boolean, Byte, Double, Float, Integer, Long, String | Obsługuje typy pierwotne, a zgodność z typami złożonymi jest osiągana za pomocą modelu danych |
+| Funkcjonalności wierzchołków | Obsługuje funkcje RemoveVertices, MetaProperties, AddVertices, MultiProperties, StringIds, UserSuppliedIds, AddProperty, RemoveProperty  | Obsługuje tworzenie, modyfikowanie i usuwanie wierzchołków |
+| Funkcjonalności właściwości wierzchołków | StringIds, UserSuppliedIds, AddProperty, RemoveProperty, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Obsługuje tworzenie, modyfikowanie i usuwanie właściwości wierzchołków |
+| Funkcjonalności krawędzi | AddEdges, RemoveEdges, StringIds, UserSuppliedIds, AddProperty, RemoveProperty | Obsługuje tworzenie, modyfikowanie i usuwanie krawędzi |
+| Funkcjonalności właściwości krawędzi | Properties, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Obsługuje tworzenie, modyfikowanie i usuwanie właściwości krawędzi |
 
-## <a name="gremlin-wire-format-graphson"></a>Format przesyłania gremlin: GraphSON
+## <a name="gremlin-wire-format-graphson"></a>Format połączeń Gremlin: GraphSON
 
-Używa Azure DB rozwiązania Cosmos [GraphSON format](https://github.com/thinkaurelius/faunus/wiki/GraphSON-Format) podczas zwracania wyników z Gremlin operacji. GraphSON jest Gremlin standardowy format wierzchołków, krawędzi oraz właściwości (jedno- i wielowartościowych właściwości), za pomocą formatu JSON. 
+Usługa Azure Cosmos DB korzysta z [formatu GraphSON](https://github.com/thinkaurelius/faunus/wiki/GraphSON-Format) podczas zwracania wyników z operacji Gremlin. GraphSON jest standardowym formatem środowiska Gremlin do przedstawiania wierzchołków, krawędzi i właściwości (jedno- i wielowartościowych) przy użyciu formatu JSON. 
 
-Na przykład poniższy fragment kodu przedstawia GraphSON reprezentację wierzchołek *zwracana do klienta* z bazy danych usługi Azure rozwiązania Cosmos. 
+Na przykład poniższy fragment kodu przedstawia widok w formacie GraphSON wierzchołka *zwracanego do klienta* z usługi Azure Cosmos DB. 
 
 ```json
   {
@@ -128,25 +126,25 @@ Na przykład poniższy fragment kodu przedstawia GraphSON reprezentację wierzch
   }
 ```
 
-Właściwości używanych przez GraphSON dla wierzchołków są następujące:
+Właściwości używane przez format GraphSON dla wierzchołków są następujące:
 
 | Właściwość | Opis |
 | --- | --- |
-| id | Identyfikator wierzchołka. Muszą być unikatowe (w połączeniu z wartością _partition, jeśli ma to zastosowanie) |
-| Etykiety | Etykieta wierzchołka. Jest to opcjonalne i używany do opisu typu jednostki. |
-| type | Używany do odróżnienia wierzchołki z systemem innym niż wykres — dokumenty |
-| properties | Pakiet właściwości zdefiniowanych przez użytkownika skojarzonych z wierzchołka. Każda właściwość może mieć wielu wartości. |
-| _partition (można konfigurować) | Klucz partycji wierzchołka. Może służyć do skalowania w poziomie wykresów na wielu serwerach |
-| outE | Zawiera listę limit krawędzi wierzchołka. Przechowuje informacje sąsiedztwa z wierzchołków umożliwia szybkie wykonywanie traversals. Krawędzi są pogrupowane w oparciu o ich etykiety. |
+| id | Identyfikator wierzchołka. Musi być unikatowy (w połączeniu z wartością _partition w stosownych przypadkach) |
+| label | Etykieta wierzchołka. Jest opcjonalna i służy do opisu typu jednostki. |
+| type | Służy do odróżnienia wierzchołków od dokumentów bez grafów |
+| properties | Pakiet właściwości zdefiniowanych przez użytkownika skojarzonych z wierzchołkiem. Każda właściwość może mieć wiele wartości. |
+| _partition (można konfigurować) | Klucz partycji wierzchołka. Może służyć do skalowania grafów na wielu serwerach |
+| outE | Zawiera listę krawędzi wyjściowych z wierzchołka. Przechowywanie informacji sąsiedztwa razem z wierzchołkiem umożliwia szybkie wykonanie przejść. Krawędzie są pogrupowane w oparciu o etykiety. |
 
-I krawędzi zawiera następujące informacje, aby pomóc w nawigacji do innych części wykresu.
+Krawędź zawiera następujące informacje, aby pomóc w nawigacji do innych części grafu.
 
 | Właściwość | Opis |
 | --- | --- |
-| id | Identyfikator dla granicy. Muszą być unikatowe (w połączeniu z wartością _partition, jeśli ma to zastosowanie) |
-| Etykiety | Etykieta krawędzi. Ta właściwość jest opcjonalna i używany do opisu typu relacji. |
-| inV | Zawiera listę w wierzchołków Edge. Przechowuje informacje sąsiedztwa z krawędzią umożliwia szybkie wykonywanie traversals. Wierzchołków są pogrupowane w oparciu o ich etykiety. |
-| properties | Pakiet właściwości zdefiniowanych przez użytkownika skojarzonych z krawędzią. Każda właściwość może mieć wielu wartości. |
+| id | Identyfikator krawędzi. Musi być unikatowy (w połączeniu z wartością _partition w stosownych przypadkach) |
+| label | Etykieta krawędzi. Ta właściwość jest opcjonalna i służy do opisu typu relacji. |
+| inV | Zawiera listę wierzchołków wejściowych dla krawędzi. Przechowywanie informacji sąsiedztwa razem z krawędzią umożliwia szybkie wykonanie przejść. Wierzchołki są pogrupowane w oparciu o etykiety. |
+| properties | Pakiet właściwości zdefiniowanych przez użytkownika skojarzonych z krawędzią. Każda właściwość może mieć wiele wartości. |
 
 Każda właściwość może przechowywać wiele wartości w tablicy. 
 
@@ -154,48 +152,48 @@ Każda właściwość może przechowywać wiele wartości w tablicy.
 | --- | --- |
 | wartość | Wartość właściwości
 
-## <a name="gremlin-steps"></a>Kroki gremlin
-Teraz Przyjrzyjmy się kroki Gremlin obsługiwane przez bazy danych Azure rozwiązania Cosmos. Aby uzyskać pełną dokumentację Gremlin, zobacz [odwołania TinkerPop](http://tinkerpop.apache.org/docs/current/reference).
+## <a name="gremlin-steps"></a>Kroki w środowisku Gremlin
+Teraz przyjrzyjmy się krokom w środowisku Gremlin obsługiwanym przez usługę Azure Cosmos DB. Aby uzyskać pełną dokumentację dotyczącą języka Gremlin, zobacz [odwołanie do struktury TinkerPop](http://tinkerpop.apache.org/docs/current/reference).
 
-| Krok | Opis | Dokumentacja TinkerPop 3.2 |
+| krok | Opis | Dokumentacja dotycząca struktury TinkerPop 3.2 |
 | --- | --- | --- |
-| `addE` | Dodaje krawędź między dwoma wierzchołków | [krok addE](http://tinkerpop.apache.org/docs/current/reference/#addedge-step) |
-| `addV` | Dodaje wierzchołka do wykresu | [krok addV](http://tinkerpop.apache.org/docs/current/reference/#addvertex-step) |
-| `and` | Zapewnia, że wszystkie traversals zwracają wartość | [i kroku](http://tinkerpop.apache.org/docs/current/reference/#and-step) |
-| `as` | Modulator krok można przypisać zmiennej do wyniku kroku | [krok](http://tinkerpop.apache.org/docs/current/reference/#as-step) |
-| `by` | Używane z modulator krok `group` i `order` | [krok](http://tinkerpop.apache.org/docs/current/reference/#by-step) |
-| `coalesce` | Zwraca pierwszy przechodzenie, która zwraca wynik | [połączenie kroku](http://tinkerpop.apache.org/docs/current/reference/#coalesce-step) |
-| `constant` | Zwraca wartość stałą. Używane z `coalesce`| [krok stałej](http://tinkerpop.apache.org/docs/current/reference/#constant-step) |
-| `count` | Zwraca liczbę z podczas przechodzenia | [Liczba kroku](http://tinkerpop.apache.org/docs/current/reference/#count-step) |
-| `dedup` | Zwraca wartości usunięciu duplikatów | [krok deduplikacji](http://tinkerpop.apache.org/docs/current/reference/#dedup-step) |
-| `drop` | Porzucania wartości (wierzchołków/krawędź) | [Upuść krok](http://tinkerpop.apache.org/docs/current/reference/#drop-step) |
-| `fold` | Działa jako barierę oblicza agregacji wyników| [fold kroku](http://tinkerpop.apache.org/docs/current/reference/#fold-step) |
-| `group` | Grupy na podstawie etykiet określonej wartości| [krok grupa](http://tinkerpop.apache.org/docs/current/reference/#group-step) |
-| `has` | Używane do filtrowania właściwości, wierzchołki i krawędzi. Obsługuje `hasLabel`, `hasId`, `hasNot`, i `has` wariantów. | [ma kroku](http://tinkerpop.apache.org/docs/current/reference/#has-step) |
-| `inject` | Wstaw wartości do strumienia| [Wstaw kroku](http://tinkerpop.apache.org/docs/current/reference/#inject-step) |
-| `is` | Używane w celu wykonania filtru za pomocą wyrażenia logicznego | [jest kroku](http://tinkerpop.apache.org/docs/current/reference/#is-step) |
-| `limit` | Pozwala ograniczyć liczbę elementów w podczas przechodzenia| [krok limit](http://tinkerpop.apache.org/docs/current/reference/#limit-step) |
-| `local` | Lokalny opakowuje sekcję przechodzenie, podobnie jak podzapytania | [krok lokalnego](http://tinkerpop.apache.org/docs/current/reference/#local-step) |
-| `not` | Użyta do wyprodukowania negacji filtru | [nie kroku](http://tinkerpop.apache.org/docs/current/reference/#not-step) |
-| `optional` | Zwraca wynik określonej przechodzenie, jeśli jego daje w wyniku przeciwnym wypadku zwraca wartość elementu wywołującego | [krok opcjonalny](http://tinkerpop.apache.org/docs/current/reference/#optional-step) |
-| `or` | Gwarantuje, że co najmniej jeden z traversals zwraca wartość | [lub krok](http://tinkerpop.apache.org/docs/current/reference/#or-step) |
-| `order` | Zwraca wyniki w kolejności określonej sortowania | [krok kolejności](http://tinkerpop.apache.org/docs/current/reference/#order-step) |
-| `path` | Zwraca pełną ścieżkę podczas przechodzenia | [krok ścieżki](http://tinkerpop.apache.org/docs/current/reference/#path-step) |
-| `project` | Projekty jako Mapowanie właściwości | [krok projektu](http://tinkerpop.apache.org/docs/current/reference/#project-step) |
-| `properties` | Zwraca właściwości dla określonej etykiety | [krok właściwości](http://tinkerpop.apache.org/docs/current/reference/#properties-step) |
-| `range` | Filtry do wartości z określonego zakresu| [krok zakresu](http://tinkerpop.apache.org/docs/current/reference/#range-step) |
-| `repeat` | Powtarza kroku określoną liczbę razy. Używany do pętli | [Powtórz krok](http://tinkerpop.apache.org/docs/current/reference/#repeat-step) |
-| `sample` | Używany do przykładowe wyniki z podczas przechodzenia | [krok próbki](http://tinkerpop.apache.org/docs/current/reference/#sample-step) |
-| `select` | Używany do wyników projektu z podczas przechodzenia |  [Zaznacz krok](http://tinkerpop.apache.org/docs/current/reference/#select-step) | |
-| `store` | Używane dla nieblokujące wartości zagregowanych z podczas przechodzenia | [krok magazynu](http://tinkerpop.apache.org/docs/current/reference/#store-step) |
-| `tree` | Łączny ścieżek wierzchołków w drzewie | [krok drzewa](http://tinkerpop.apache.org/docs/current/reference/#tree-step) |
-| `unfold` | Skorzystaj z odwijania krokiem iteratora| [unfold — krok](http://tinkerpop.apache.org/docs/current/reference/#unfold-step) |
-| `union` | Wyniki z wielu traversals scalania| [krok Unii](http://tinkerpop.apache.org/docs/current/reference/#union-step) |
-| `V` | Zawiera opis kroków wymaganych do traversals między wierzchołki i krawędzi `V`, `E`, `out`, `in`, `both`, `outE`, `inE`, `bothE`, `outV`, `inV`, `bothV`, i `otherV` dla | [kroki wierzchołków](http://tinkerpop.apache.org/docs/current/reference/#vertex-steps) |
-| `where` | Używane do filtrowania wyników z podczas przechodzenia. Obsługuje `eq`, `neq`, `lt`, `lte`, `gt`, `gte`, i `between` operatorów  | [gdy krok](http://tinkerpop.apache.org/docs/current/reference/#where-step) |
+| `addE` | Dodaje krawędź między dwoma wierzchołkami | [krok addE](http://tinkerpop.apache.org/docs/current/reference/#addedge-step) |
+| `addV` | Dodaje wierzchołek do grafu | [krok addV](http://tinkerpop.apache.org/docs/current/reference/#addvertex-step) |
+| `and` | Gwarantuje, że wszystkie przejścia zwracają wartość | [krok and](http://tinkerpop.apache.org/docs/current/reference/#and-step) |
+| `as` | Modulator kroku do przypisania zmiennej do wyniku kroku | [krok as](http://tinkerpop.apache.org/docs/current/reference/#as-step) |
+| `by` | Modulator kroku używany z elementami `group` i `order` | [krok by](http://tinkerpop.apache.org/docs/current/reference/#by-step) |
+| `coalesce` | Zwraca pierwsze przejście, które zwraca wynik | [krok coalesce](http://tinkerpop.apache.org/docs/current/reference/#coalesce-step) |
+| `constant` | Zwraca wartość stałą. Używany z krokiem `coalesce`| [krok constant](http://tinkerpop.apache.org/docs/current/reference/#constant-step) |
+| `count` | Zwraca liczbę z przejścia | [krok count](http://tinkerpop.apache.org/docs/current/reference/#count-step) |
+| `dedup` | Zwraca wartości z usuniętymi duplikatami | [krok dedup](http://tinkerpop.apache.org/docs/current/reference/#dedup-step) |
+| `drop` | Upuszcza wartości (wierzchołek/krawędź) | [krok drop](http://tinkerpop.apache.org/docs/current/reference/#drop-step) |
+| `fold` | Działa jak bariera, która oblicza agregację wyników| [krok fold](http://tinkerpop.apache.org/docs/current/reference/#fold-step) |
+| `group` | Grupuje wartości w oparciu o określone etykiety| [krok group](http://tinkerpop.apache.org/docs/current/reference/#group-step) |
+| `has` | Służy do filtrowania właściwości, wierzchołków i krawędzi. Obsługuje warianty `hasLabel`, `hasId`, `hasNot` i `has`. | [krok step](http://tinkerpop.apache.org/docs/current/reference/#has-step) |
+| `inject` | Wstawia wartości do strumienia| [krok inject](http://tinkerpop.apache.org/docs/current/reference/#inject-step) |
+| `is` | Służy do wykonywania filtru przy użyciu wyrażenia logicznego | [krok is](http://tinkerpop.apache.org/docs/current/reference/#is-step) |
+| `limit` | Pozwala ograniczyć liczbę elementów podczas przechodzenia| [krok limit](http://tinkerpop.apache.org/docs/current/reference/#limit-step) |
+| `local` | Krok local opakowuje sekcję przejścia, podobnie jak podzapytanie | [krok local](http://tinkerpop.apache.org/docs/current/reference/#local-step) |
+| `not` | Służy do tworzenia negacji filtru | [krok not](http://tinkerpop.apache.org/docs/current/reference/#not-step) |
+| `optional` | Zwraca wynik określonego przejścia, jeśli wstrzymuje wynik lub zwraca wywołujący element | [krok optional](http://tinkerpop.apache.org/docs/current/reference/#optional-step) |
+| `or` | Gwarantuje, że co najmniej jedno przejście zwróci wartość | [krok or](http://tinkerpop.apache.org/docs/current/reference/#or-step) |
+| `order` | Zwraca wyniki w określonej kolejności sortowania | [krok order](http://tinkerpop.apache.org/docs/current/reference/#order-step) |
+| `path` | Zwraca pełną ścieżkę przejścia | [krok path](http://tinkerpop.apache.org/docs/current/reference/#path-step) |
+| `project` | Projektuje właściwości jako mapę | [krok project](http://tinkerpop.apache.org/docs/current/reference/#project-step) |
+| `properties` | Zwraca właściwości dla określonych etykiet | [krok properties](http://tinkerpop.apache.org/docs/current/reference/#properties-step) |
+| `range` | Filtruje do określonego zakresu wartości| [krok range](http://tinkerpop.apache.org/docs/current/reference/#range-step) |
+| `repeat` | Powtarza krok określoną liczbę razy. Używany do zapętlenia | [krok repeat](http://tinkerpop.apache.org/docs/current/reference/#repeat-step) |
+| `sample` | Służy do próbkowania wyników z przejścia | [krok sample](http://tinkerpop.apache.org/docs/current/reference/#sample-step) |
+| `select` | Służy do projektowania wyników z przejścia |  [krok select](http://tinkerpop.apache.org/docs/current/reference/#select-step) | |
+| `store` | Używany do nieblokujących agregacji z przejścia | [krok store](http://tinkerpop.apache.org/docs/current/reference/#store-step) |
+| `tree` | Agreguje ścieżki z wierzchołka do drzewa | [krok tree](http://tinkerpop.apache.org/docs/current/reference/#tree-step) |
+| `unfold` | Odwija iterator w ramach kroku| [krok unfold](http://tinkerpop.apache.org/docs/current/reference/#unfold-step) |
+| `union` | Scalanie wyników z wielu przejść| [krok union](http://tinkerpop.apache.org/docs/current/reference/#union-step) |
+| `V` | Zawiera kroki niezbędne do przejść między wierzchołkami i krawędziami `V`, `E`, `out`, `in`, `both`, `outE`, `inE`, `bothE`, `outV`, `inV`, `bothV`, oraz `otherV` do | [kroki vertex](http://tinkerpop.apache.org/docs/current/reference/#vertex-steps) |
+| `where` | Służy do filtrowania wyników z przejścia. Obsługuje operatory `eq`, `neq`, `lt`, `lte`, `gt`, `gte` i `between`  | [krok where](http://tinkerpop.apache.org/docs/current/reference/#where-step) |
 
-Aparat zoptymalizowanych pod kątem zapisu pochodzącymi z bazy danych rozwiązania Cosmos Azure obsługuje automatycznego indeksowania wszystkie właściwości w wierzchołki i krawędzi domyślnie. W związku z tym zapytania z filtrami, zakres kwerendy, sortowanie, lub agregacji w dowolnej właściwości są przetwarzane z indeksem i skutecznie obsługiwane. Aby uzyskać więcej informacji na działa jak indeksowania w usłudze Azure DB rozwiązania Cosmos, zobacz nasze dokument na [indeksowania niezależny od schematu](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf).
+Aparat zoptymalizowany pod kątem zapisu oferowany w usłudze Azure Cosmos DB obsługuje domyślnie automatyczne indeksowanie wszystkich właściwości w wierzchołkach i krawędziach. W związku z tym zapytania z filtrami, zapytania zakresu, sortowanie lub agregacje na dowolnej właściwości są przetwarzane z indeksu i skutecznie obsługiwane. Więcej informacji na temat działania indeksowania w usłudze Azure Cosmos DB znajduje się w dokumencie dotyczącym [indeksowania niezależnie od schematu](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf).
 
-## <a name="next-steps"></a>Kolejne kroki
-* Rozpocząć tworzenie aplikacji wykres [przy użyciu nasze zestawy SDK](create-graph-dotnet.md) 
-* Dowiedz się więcej o [pomocy technicznej programu graph](graph-introduction.md) w usłudze Azure DB rozwiązania Cosmos
+## <a name="next-steps"></a>Następne kroki
+* Rozpocznij tworzenie aplikacji grafu [przy użyciu zestawów SDK firmy Microsoft](create-graph-dotnet.md) 
+* Dowiedz się więcej na temat [obsługi grafów](graph-introduction.md) w usłudze Azure Cosmos DB
