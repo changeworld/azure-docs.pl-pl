@@ -1,4 +1,4 @@
-# [Azure IoT Edge — podstawy](../iot-fundamentals/index.yml)
+# [Azure IoT Edge — podstawy](/azure/iot-fundamentals)
 # [Dokumentacja usługi IoT Hub](index.yml)
 
 # Omówienie
@@ -84,10 +84,10 @@
 ### [Korzystanie z usługi IoTHubClient](iot-hub-device-sdk-c-iothubclient.md)
 ### [Korzystanie z serializatora](iot-hub-device-sdk-c-serializer.md)
 
-## [Zabezpieczenia od podstaw](iot-hub-security-ground-up.md)
-## [Najlepsze rozwiązania dotyczące zabezpieczeń](iot-hub-security-best-practices.md)
-## [Architektura zabezpieczeń](iot-hub-security-architecture.md)
-## [Zabezpieczanie wdrożenia IoT](iot-hub-security-deployment.md)
+## [Zabezpieczenia od podstaw](/azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-hub/rc/rc)
+## [Najlepsze rozwiązania dotyczące zabezpieczeń](/azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-hub/rc/rc)
+## [Architektura zabezpieczeń](/azure/iot-fundamentals/iot-security-architecture?context=azure/iot-hub/rc/rc)
+## [Zabezpieczanie wdrożenia IoT](/azure/iot-fundamentals/iot-security-deployment?context=azure/iot-hub/rc/rc)
 ## Zabezpieczanie przy użyciu certyfikatów X.509 urzędu certyfikacji
 ### [Przegląd zabezpieczeń certyfikatu X.509 urzędu certyfikacji](iot-hub-x509ca-overview.md)
 #### [Pojęcia dotyczące zabezpieczeń certyfikatu X.509 urzędu certyfikacji](iot-hub-x509ca-concept.md)

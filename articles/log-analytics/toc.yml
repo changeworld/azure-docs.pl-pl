@@ -33,14 +33,6 @@
           href: log-analytics-oms-portal-transition.md
         - name: Często zadawane pytania
           href: log-analytics-oms-portal-faq.md
-    - name: Uaktualnianie obszaru roboczego
-      items:
-        - name: Omówienie uaktualnienia
-          href: log-analytics-log-search-upgrade.md
-        - name: Podsumowanie zmian
-          href: log-analytics-log-search-upgrade-changes.md
-        - name: Uaktualnienie — często zadawane pytania
-          href: log-analytics-log-search-faq.md
     - name: Log Analytics — często zadawane pytania
       href: log-analytics-faq.md
     - name: Bezpieczeństwo danych

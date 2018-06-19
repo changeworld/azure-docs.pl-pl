@@ -51,12 +51,12 @@
 ## [Podręcznik wdrażania systemu DBMS](dbms-guide.md)
 ## [Odzyskiwanie po awarii oprogramowania SAP za pomocą usługi Azure Site Recovery](../../../site-recovery/site-recovery-workload.md#protect-sap)
 # Integracja tożsamości usługi AAD i oprogramowania SAP oraz logowanie jednokrotne
-## [Integracja z rozwiązaniem SAP Cloud](../../../active-directory/active-directory-saas-sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-## [Integracja usługi AAD z uwierzytelnianiem tożsamości na platformie SAP Cloud Platform](../../../active-directory/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-## [Konfigurowanie logowania jednokrotnego z użyciem platformy SAP Cloud Platform](../../../active-directory/active-directory-saas-sap-hana-cloud-platform-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-## [Integracja usługi AAD z oprogramowaniem SAP NetWeaver](../../../active-directory/active-directory-saas-sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-## [Integracja usługi AAD z oprogramowaniem SAP Business ByDesign](../../../active-directory/active-directory-saas-sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-## [Integracja usługi AAD z oprogramowaniem SAP HANA DBMS](../../../active-directory/active-directory-saas-saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+## [Integracja z rozwiązaniem SAP Cloud](../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+## [Integracja usługi AAD z uwierzytelnianiem tożsamości na platformie SAP Cloud Platform](../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+## [Konfigurowanie logowania jednokrotnego z użyciem platformy SAP Cloud Platform](../../../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+## [Integracja usługi AAD z oprogramowaniem SAP NetWeaver](../../../active-directory/saas-apps/sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+## [Integracja usługi AAD z oprogramowaniem SAP Business ByDesign](../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+## [Integracja usługi AAD z oprogramowaniem SAP HANA DBMS](../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ##[Jednokrotne logowanie protokołu SAML w programie SAP Fiori Launchpad przy użyciu usługi Azure AD](https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad)
 # Zasoby
 ## [Harmonogram działania dla platformy Azure](https://azure.microsoft.com/roadmap/)

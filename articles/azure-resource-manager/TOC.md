@@ -17,6 +17,7 @@
 ### [Sekcje szablonu](resource-group-authoring-templates.md)
 #### [Parametry](resource-manager-templates-parameters.md)
 #### [Zmienne](resource-manager-templates-variables.md)
+#### [Funkcje](resource-group-authoring-templates.md#functions)
 #### [Zasoby](resource-manager-templates-resources.md)
 #### [Dane wyjściowe](resource-manager-templates-outputs.md)
 ### [Linked and nested templates (Połączone i zagnieżdżone szablony)](resource-group-linked-templates.md)
