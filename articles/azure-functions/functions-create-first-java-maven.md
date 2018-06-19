@@ -11,14 +11,15 @@ ms.devlang: java
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 04/02/2018
+ms.date: 05/15/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 9cf1d485f32c861ac5b5720cd77a988eee624f4d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f9b8046e0fb730f55dbdacf567869ae88df2a524
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34600599"
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>Tworzenie pierwszej funkcji przy użyciu języka Java i narzędzia Maven (wersja zapoznawcza)
 
@@ -43,23 +44,9 @@ Aby opracowywać aplikacje funkcji przy użyciu języka Java, trzeba mieć zains
 
 ## <a name="install-the-azure-functions-core-tools"></a>Instalowanie podstawowych narzędzi usługi Azure Functions
 
-[Podstawowe narzędzia usługi Azure Functions w wersji 2.0](https://www.npmjs.com/package/azure-functions-core-tools) zapewniają lokalne środowisko deweloperskie do pisania, uruchamiania i debugowania usługi Azure Functions. 
+Podstawowe narzędzia usługi Azure Functions zapewniają lokalne środowisko deweloperskie do programowania, uruchamiania i debugowania w usłudze Azure Functions z terminalu lub wiersza polecenia. 
 
-Aby je zainstalować, odwiedź sekcję [Installing (Instalowanie)](https://github.com/azure/azure-functions-core-tools#installing) projektu podstawowych narzędzi usługi Azure Functions w celu uzyskania szczegółowych instrukcji dla używanego systemu operacyjnego.
-
-Możesz także zainstalować je ręcznie za pomocą programu [npm](https://www.npmjs.com/), dołączonego do platformy [Node.js](https://nodejs.org/), po zainstalowaniu następujących wymaganych składników:
-
--  Oprogramowanie [.NET Core](https://www.microsoft.com/net/core), najnowsza wersja.
--  Środowisko [Node.js](https://nodejs.org/download/), wersja 8.6 lub nowsza.
-
-Aby kontynuować instalację z użyciem programu npm, uruchom następujące polecenie:
-
-```
-npm install -g azure-functions-core-tools@core
-```
-
-> [!NOTE]
-> Jeśli podczas instalowania podstawowych narzędzi usługi Azure Functions w wersji 2.0 występują problemy, zobacz [Środowisko uruchomieniowe w wersji 2.x](/azure/azure-functions/functions-run-local#version-2x-runtime).
+Zainstaluj [podstawowe narzędzia w wersji 2](functions-run-local.md#v2) na komputerze lokalnym, aby móc kontynuować.
 
 ## <a name="generate-a-new-functions-project"></a>Generowanie nowego projektu usługi Functions
 
@@ -194,7 +181,7 @@ Hello AzureFunctions!
 
 ## <a name="next-steps"></a>Następne kroki
 
-Utworzyliśmy aplikację funkcji języka Java z prostym wyzwalaczem HTTP i wdrożyliśmy ją w usłudze Azure Functions.
+Aplikacja funkcji języka Java z prostym wyzwalaczem HTTP została utworzona i wdrożona w usłudze Azure Functions.
 
 - Zapoznaj się z [Przewodnikiem dewelopera po funkcjach języka Java](functions-reference-java.md), aby uzyskać więcej informacji na temat tworzenia funkcji języka Java.
 - Dodaj do swojego projektu kolejne funkcje z różnymi wyzwalaczami, używając elementu docelowego `azure-functions:add` narzędzia Maven.

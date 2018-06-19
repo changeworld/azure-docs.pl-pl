@@ -1,6 +1,6 @@
 ---
 title: Tworzenie pierwszej funkcji na platformie Azure przy użyciu programu Visual Studio | Microsoft Docs
-description: Tworzenie prostej funkcji wyzwalanej przez protokół HTTP i publikowanie jej na platformie Azure przy użyciu narzędzi usługi Azure Functions dla programu Visual Studio.
+description: Utwórz i opublikuj funkcję Azure wyzwalaną przez protokół HTTP przy użyciu programu Visual Studio.
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -14,14 +14,15 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/13/2018
+ms.date: 05/22/2018
 ms.author: glenga
-ms.custom: mvc, devcenter
-ms.openlocfilehash: a1f0a022b4620b15e2d76a127ed48e5472e4a5bb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.custom: mvc, devcenter, 23113853-34f2-4f
+ms.openlocfilehash: d815bf3fa4b63f12ac9f0d871e353e872a5aca25
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699975"
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Tworzenie pierwszej funkcji przy użyciu programu Visual Studio
 
@@ -29,23 +30,17 @@ Usługa Azure Functions umożliwia wykonywanie kodu w środowisku [bezserwerowym
 
 W tym artykule przedstawiono użycie narzędzi programu Visual Studio 2017 dla usługi Azure Functions w celu lokalnego utworzenia i przetestowania funkcji „hello world”. Kod funkcji zostanie następnie opublikowany na platformie Azure. Te narzędzia są dostępne jako część obciążenia projektowania na platformie Azure w programie Visual Studio 2017.
 
-![Kod usługi Azure Functions w projekcie programu Visual Studio](./media/functions-create-your-first-function-visual-studio/functions-vstools-intro.png)
-
 Ten temat zawiera [wideo](#watch-the-video) demonstrujące te same podstawowe kroki.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 W celu ukończenia tego samouczka:
 
-* Zainstaluj program [Visual Studio 2017 w wersji 15.5](https://www.visualstudio.com/vs/) lub nowszej zawierający pakiet roboczy **Programowanie na platformie Azure**.
+* Zainstaluj program [Visual Studio 2017](https://azure.microsoft.com/downloads/) i upewnij się, że jest również zainstalowane obciążenie **Programowanie na platformie Azure**.
 
-    ![Instalowanie programu Visual Studio 2017 z obciążeniem Programowanie na platformie Azure](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+* Upewnij się, że masz [najnowsze narzędzia usługi Azure Functions](functions-develop-vs.md#check-your-tools-version).
 
-    Jeśli masz już zainstalowany program Visual Studio, upewnij się, że zainstalowano wszystkie oczekujące aktualizacje. 
-
-* Jeśli zainstalowano pakiet roboczy Programowanie na platformie Azure z programem Visual Studio 2017 wersji 15.4 lub starszym, może być również konieczne [zaktualizowanie narzędzi usługi Azure Functions](functions-develop-vs.md#check-your-tools-version). 
-    
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-a-function-app-project"></a>Tworzenie projektu aplikacji funkcji
 
@@ -53,17 +48,15 @@ W celu ukończenia tego samouczka:
 
 Program Visual Studio tworzy projekt, a w nim klasę zawierającą standardowy kod dla wybranego typu funkcji. Atrybut **FunctionName** metody ustawia nazwę funkcji. Atrybut **HttpTrigger** określa, że funkcja jest wyzwalana przez żądanie HTTP. Standardowy kod wysyła odpowiedź HTTP zawierającą wartość z treści żądania lub ciągu zapytania. Do funkcji można dodać powiązania danych wejściowych i wyjściowych przez zastosowanie odpowiednich atrybutów do metody. Aby uzyskać więcej informacji, zobacz sekcję [Triggers and bindings](functions-dotnet-class-library.md#triggers-and-bindings) (Wyzwalacze i powiązania) [dokumentacji usługi Azure Functions dla deweloperów w C#](functions-dotnet-class-library.md).
 
-![Plik kodu funkcji](./media/functions-create-your-first-function-visual-studio/functions-code-page.png)
-
 Po utworzeniu projektu funkcji i funkcji wyzwalanej przez protokół HTTP można je przetestować na komputerze lokalnym.
 
 ## <a name="test-the-function-locally"></a>Lokalne testowanie funkcji
 
-Podstawowe narzędzia usługi Azure Functions umożliwiają uruchamianie projektu usługi Azure Functions na lokalnym komputerze deweloperskim. Monit o zainstalowanie tych narzędzi pojawia się przy pierwszym uruchomieniu funkcji w programie Visual Studio.  
+Podstawowe narzędzia usługi Azure Functions umożliwiają uruchamianie projektu usługi Azure Functions na lokalnym komputerze deweloperskim. Monit o zainstalowanie tych narzędzi pojawia się przy pierwszym uruchomieniu funkcji w programie Visual Studio.
 
 1. Aby przetestować funkcję, naciśnij klawisz F5. Po wyświetleniu monitu zaakceptuj żądanie programu Visual Studio dotyczące pobrania i zainstalowania podstawowych narzędzi usługi Azure Functions (CLI). Może także być konieczne włączenie wyjątku zapory, aby umożliwić narzędziom obsługę żądań HTTP.
 
-2. Skopiuj adres URL funkcji z danych wyjściowych środowiska uruchomieniowego usługi Azure Functions.  
+2. Skopiuj adres URL funkcji z danych wyjściowych środowiska uruchomieniowego usługi Azure Functions.
 
     ![Lokalne środowisko uruchomieniowe platformy Azure](./media/functions-create-your-first-function-visual-studio/functions-vstools-f5.png)
 
@@ -89,7 +82,7 @@ Aby opublikować projekt, musisz mieć aplikację funkcji w swojej subskrypcji p
 
         http://<functionappname>.azurewebsites.net/api/<functionname>?name=<yourname> 
 
-2. Wklej nowy adres URL żądania HTTP na pasku adresu przeglądarki. Na poniższym obrazie przedstawiono wyświetloną w przeglądarce odpowiedź na zdalne żądanie GET zwróconą przez funkcję: 
+2. Wklej nowy adres URL żądania HTTP na pasku adresu przeglądarki. Na poniższym obrazie przedstawiono wyświetloną w przeglądarce odpowiedź na zdalne żądanie GET zwróconą przez funkcję:
 
     ![Odpowiedź funkcji wyświetlona w przeglądarce](./media/functions-create-your-first-function-visual-studio/functions-test-remote-browser.png)
 
@@ -99,9 +92,8 @@ Aby opublikować projekt, musisz mieć aplikację funkcji w swojej subskrypcji p
 
 ## <a name="next-steps"></a>Następne kroki
 
-W programie Visual Studio utworzono i opublikowano aplikację funkcji C# z prostą funkcją wyzwalaną przez protokół HTTP. 
+W programie Visual Studio utworzono i opublikowano aplikację funkcji C# z prostą funkcją wyzwalaną przez protokół HTTP.
 
-+ Aby dowiedzieć się, jak skonfigurować projekt w celu obsługi innych typów wyzwalaczy i powiązań, zobacz sekcję [Configure the project for local development (Konfigurowanie projektu na potrzeby lokalnego projektowania)](functions-develop-vs.md#configure-the-project-for-local-development) w temacie [Azure Functions Tools for Visual Studio (Narzędzia usługi Azure Functions dla programu Visual Studio)](functions-develop-vs.md).
-+ Aby dowiedzieć się więcej na temat lokalnego testowania i debugowania przy użyciu podstawowych narzędzi usługi Azure Functions, zobacz [Code and test Azure Functions locally (Kodowanie i lokalne testowanie usługi Azure Functions)](functions-run-local.md). 
-+ Aby dowiedzieć się więcej o projektowaniu funkcji jako bibliotek klasy .NET, zobacz [Korzystanie z bibliotek klasy .NET w usłudze Azure Functions](functions-dotnet-class-library.md). 
-
+* [Dowiedz się, jak dodać powiązania danych wejściowych i wyjściowych, które integrują się z innymi usługami.](functions-develop-vs.md#add-bindings)
+* [Dowiedz się więcej na temat lokalnego testowania i debugowania przy użyciu podstawowych narzędzi usługi Azure Functions.](functions-run-local.md#vs-debug)
+* [Dowiedz się więcej o programowaniu funkcji jako bibliotek klas .NET](functions-dotnet-class-library.md).

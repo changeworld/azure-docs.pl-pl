@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 6b01a4c88f3dbb4d24566e514fd5989cda11005a
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 47b3ca20b32188f3cf102934c7f21d6418f3c2f6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639347"
 ---
 # <a name="what-is-azure-network-watcher"></a>Co to jest Azure Network Watcher?
 
@@ -48,11 +49,11 @@ Edytowalną wersję tego obrazu można pobrać w formacie SVG. Dowiedz się wię
 
 ### <a name="diagnose-network-traffic-filtering-problems-to-or-from-a-vm"></a>Diagnozowanie problemów z filtrowaniem ruchu sieciowego wychodzącego z maszyny wirtualnej i przychodzącego do niej
 
-Podczas wdrażania maszyny wirtualnej platforma Azure stosuje wobec niej kilka domyślnych reguł zabezpieczeń, które akceptują lub odrzucają ruch do/z maszyny wirtualnej. Można zastąpić reguły domyślne platformy Azure lub utworzyć dodatkowe reguły. Ze względu na zasady zabezpieczeń maszyna wirtualna może w pewnym momencie przestać komunikować się z innymi zasobami. Funkcja *weryfikowania przepływu adresów IP* umożliwia określenie źródłowego i docelowego adresu IPv4, portu, protokołu (TCP lub UDP) i kierunku ruchu sieciowego (przychodzącego lub wychodzącego). Funkcja weryfikuje przepływ adresów IP, a następnie sprawdza komunikację i informuje o powodzeniu lub niepowodzeniu połączenia. Jeśli połączenie nie powiedzie się, funkcja weryfikacji informuje, która reguła zabezpieczeń akceptuje lub odrzuca połączenie, dzięki czemu można rozwiązać problem. Dowiedz się więcej o [weryfikowaniu przepływu adresów IP](network-watcher-ip-flow-verify-overview.md).
+Podczas wdrażania maszyny wirtualnej platforma Azure stosuje wobec niej kilka domyślnych reguł zabezpieczeń, które akceptują lub odrzucają ruch do/z maszyny wirtualnej. Można zastąpić reguły domyślne platformy Azure lub utworzyć dodatkowe reguły. Ze względu na zasady zabezpieczeń maszyna wirtualna może w pewnym momencie przestać komunikować się z innymi zasobami. Funkcja *weryfikowania przepływu adresów IP* umożliwia określenie źródłowego i docelowego adresu IPv4, portu, protokołu (TCP lub UDP) i kierunku ruchu sieciowego (przychodzącego lub wychodzącego). Funkcja weryfikuje przepływ adresów IP, a następnie sprawdza komunikację i informuje o powodzeniu lub niepowodzeniu połączenia. Jeśli połączenie nie powiedzie się, funkcja weryfikacji informuje, która reguła zabezpieczeń akceptuje lub odrzuca połączenie, dzięki czemu można rozwiązać problem. Więcej informacji na temat funkcji weryfikowania przepływu adresów IP znajduje się w samouczku [Diagnozowanie problemu z filtrowaniem ruchu sieciowego maszyny wirtualnej](diagnose-vm-network-traffic-filtering-problem.md).
 
 ### <a name="diagnose-network-routing-problems-from-a-vm"></a>Diagnozowanie problemów z routingiem sieci na maszynie wirtualnej
 
-Po utworzeniu sieci wirtualnej platforma Azure tworzy kilka domyślnych tras wychodzącego ruchu sieciowego. Ruch wychodzący ze wszystkich zasobów, takich jak maszyny wirtualne wdrożone w sieci wirtualnej, jest kierowany w oparciu o trasy domyślne platformy Azure. Można zastąpić trasy domyślne platformy Azure lub utworzyć dodatkowe trasy. Może się okazać, że maszyna wirtualna nie może już komunikować się z innymi zasobami ze względu na określoną trasę. Funkcja *następnego przeskoku* umożliwia określenie źródłowego i docelowego adresu IPv4. Funkcja ta przeprowadza wówczas testy komunikacji i informuje o typie następnego przeskoku używanego do kierowania ruchu. Następnie w celu rozwiązania problemu z routingiem można usunąć, zmienić lub dodać trasę. Dowiedz się więcej o funkcji [następnego przeskoku](network-watcher-next-hop-overview.md?).
+Po utworzeniu sieci wirtualnej platforma Azure tworzy kilka domyślnych tras wychodzącego ruchu sieciowego. Ruch wychodzący ze wszystkich zasobów, takich jak maszyny wirtualne wdrożone w sieci wirtualnej, jest kierowany w oparciu o trasy domyślne platformy Azure. Można zastąpić trasy domyślne platformy Azure lub utworzyć dodatkowe trasy. Może się okazać, że maszyna wirtualna nie może już komunikować się z innymi zasobami ze względu na określoną trasę. Funkcja *następnego przeskoku* umożliwia określenie źródłowego i docelowego adresu IPv4. Funkcja ta przeprowadza wówczas testy komunikacji i informuje o typie następnego przeskoku używanego do kierowania ruchu. Następnie w celu rozwiązania problemu z routingiem można usunąć, zmienić lub dodać trasę. Dowiedz się więcej o funkcji [następnego przeskoku](diagnose-vm-network-routing-problem.md).
 
 ### <a name="connection-troubleshoot"></a>Diagnozowanie połączeń wychodzących z maszyny wirtualnej
 
@@ -64,7 +65,7 @@ Bardzo przydatne są zaawansowane opcje filtrowania i dostosowywania ustawień, 
 
 ### <a name="diagnose-problems-with-an-azure-virtual-network-gateway-and-connections"></a>Diagnozowanie problemów z bramą sieci wirtualnej i połączeniami Azure
 
-Bramy sieci wirtualnej zapewniają łączność między zasobami lokalnymi i sieciami wirtualnymi platformy Azure. Monitorowania bram i ich połączeń jest niezbędne do zapewnienia nieprzerwanej komunikacji. Funkcja *diagnostyki sieci VPN* daje możliwość diagnozowania bram i połączeń. Funkcja diagnostyki sieci VPN umożliwia diagnozowanie kondycji lub połączenia bramy oraz informuje o dostępności bramy i jej połączeń. Jeśli brama lub połączenie nie są dostępne, funkcja diagnostyki sieci VPN informuje o przyczynie, dzięki czemu można rozwiązać problem. Dowiedz się więcej o [diagnostyce VPN](network-watcher-troubleshoot-overview.md).
+Bramy sieci wirtualnej zapewniają łączność między zasobami lokalnymi i sieciami wirtualnymi platformy Azure. Monitorowania bram i ich połączeń jest niezbędne do zapewnienia nieprzerwanej komunikacji. Funkcja *diagnostyki sieci VPN* daje możliwość diagnozowania bram i połączeń. Funkcja diagnostyki sieci VPN umożliwia diagnozowanie kondycji lub połączenia bramy oraz informuje o dostępności bramy i jej połączeń. Jeśli brama lub połączenie nie są dostępne, funkcja diagnostyki sieci VPN informuje o przyczynie, dzięki czemu można rozwiązać problem. Więcej informacji na temat diagnostyki sieci VPN znajduje się w samouczku [Diagnozowanie problemu z komunikacją między sieciami](diagnose-communication-problem-between-networks.md).
 
 ### <a name="determine-relative-latencies-between-azure-regions-and-internet-service-providers"></a>Określanie opóźnień względnych między regionami platformy Azure i usługodawcami internetowymi
 
@@ -90,7 +91,7 @@ Sieciowe grupy zabezpieczeń (NSG) mogą akceptować lub odrzucać ruch przychod
 
 ![Analiza ruchu](./media/network-watcher-monitoring-overview/traffic-analytics.png)
 
-Dowiedz się więcej o [dziennikach przepływu NSG](network-watcher-nsg-flow-logging-overview.md) i funkcji [analizy ruchu](traffic-analytics.md).
+Więcej informacji na temat dzienników przepływu NSG znajduje się w samouczku [Rejestrowanie przepływu ruchu sieciowego do i z maszyny wirtualnej](network-watcher-nsg-flow-logging-portal.md) oraz w temacie dotyczącym wdrażania [analizy ruchu](traffic-analytics.md).
 
 ### <a name="view-diagnostic-logs-for-network-resources"></a>Wyświetlanie dzienników diagnostycznych dla zasobów sieciowych
 

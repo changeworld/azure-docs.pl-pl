@@ -15,17 +15,18 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: f930cec984a8b92e00ec613ce3bba91a40518911
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1f7396ac761ce5eeb5a671d3b04aabf944c361b8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597930"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Porównanie usług App Service, Virtual Machines, Service Fabric i Cloud Services
 ## <a name="overview"></a>Omówienie
 Platforma Azure oferuje kilka sposobów hostowania witryn internetowych. Są to usługi [Azure App Service][Azure App Service], [Virtual Machines][Virtual Machines], [Service Fabric][Service Fabric] i [Cloud Services][Cloud Services]. Ten artykuł ułatwia poznanie dostępnych opcji i dokonanie dobrego wyboru dla aplikacji internetowej.
 
-Usługa Azure App Service to najlepszy wybór w przypadku większości aplikacji internetowych. Wdrażanie i zarządzanie są zintegrowane z platformą, witryny można szybko skalować na potrzeby obsługi dużych obciążeń generowanych przez ruch sieciowy, a wbudowane równoważenie obciążenia i usługa Traffic Manager zapewniają wysoką dostępność. Istniejące witryny możesz łatwo przenieść do usługi Azure App Service za pomocą [narzędzia do migracji online](https://www.migratetoazure.net/), używając aplikacji open source z galerii aplikacji internetowych lub tworząc nową witrynę za pomocą wybranej platformy i narzędzi. Zadania [WebJob][ WebJobs] upraszczają dodawanie przetwarzania zadań w tle do aplikacji internetowej usługi App Service.
+Usługa Azure App Service to najlepszy wybór w przypadku większości aplikacji internetowych. Wdrażanie i zarządzanie są zintegrowane z platformą, witryny można szybko skalować na potrzeby obsługi dużych obciążeń generowanych przez ruch sieciowy, a wbudowane równoważenie obciążenia i usługa Traffic Manager zapewniają wysoką dostępność. Możesz w ławy sposób przenieść istniejące witryny do usługi Azure App Service za pomocą [narzędzia do migracji online][migrate-tool], użyć aplikacji open source z galerii aplikacji internetowych lub utworzyć nową witrynę za pomocą wybranej struktury i wybranych narzędzi. Zadania [WebJob][ WebJobs] upraszczają dodawanie przetwarzania zadań w tle do aplikacji internetowej usługi App Service.
 
 Usługa Service Fabric to dobry wybór w przypadku tworzenia nowej aplikacji lub ponownego tworzenia istniejącej aplikacji w architekturze mikrousług. Wdrożenie aplikacji działających w ramach współużytkowanej puli maszyn początkowo może być niewielkie i później rosnąć na wielką skalę w razie potrzeby — do setek lub tysięcy maszyn. Usługi stanowe ułatwiają spójne i niezawodne przechowywanie stanu aplikacji, a usługa Service Fabric automatycznie zarządza partycjonowaniem usługi, skalowaniem i dostępnością.  Usługa Service Fabric obsługuje także interfejs WebAPI z interfejsem Open Web Interface for .NET (OWIN) oraz platformę ASP.NET Core.  W porównaniu do usługi App Service usługa Service Fabric udostępnia więcej kontroli nad bazową infrastrukturą oraz bezpośredni dostęp do niej. Możesz zalogować się do serwerów z lokalizacji zdalnej lub skonfigurować zadania uruchamiania serwera. Usługa Cloud Services jest podobna do usługi Service Fabric w zakresie stopnia kontroli i łatwości użycia, lecz teraz jest to starsza usługa i do nowych projektów zaleca się użycie usługi Service Fabric.
 
@@ -97,7 +98,7 @@ Usługa Azure App Service to doskonałe rozwiązanie do hostowania internetowych
 * Integrację z usługą Active Directory
 
 ### <a id="iis6"></a>Mam aplikację usług IIS 6 działającą w systemie Windows Server 2003.
-Usługa Azure App Service umożliwia uniknięcie kosztów infrastruktury powiązanych z migrowaniem starszych aplikacji usług IIS 6. Firma Microsoft opracowała [łatwe w użyciu narzędzia do migracji i szczegółowy przewodnik migracji](https://www.migratetoazure.net/), które umożliwiają sprawdzenie zgodności i zidentyfikowanie wszelkich zmian, które należy wprowadzić. Integracja z programem Visual Studio, serwerem TFS i popularnymi narzędziami CMS ułatwia wdrażanie aplikacji usług IIS 6 bezpośrednio do chmury. Po wdrożeniu witryna Azure Portal udostępnia niezawodne narzędzia do zarządzania, które umożliwiają skalowanie w dół na potrzeby zarządzania kosztami i w górę odpowiednio do wymagań. Narzędzie do migracji umożliwia:
+Usługa Azure App Service umożliwia uniknięcie kosztów infrastruktury powiązanych z migrowaniem starszych aplikacji usług IIS 6. Firma Microsoft opracowała [łatwe w użyciu narzędzia do migracji i szczegółowy przewodnik migracji][migrate-tool], które umożliwiają sprawdzenie zgodności i zidentyfikowanie wszelkich zmian, które należy wprowadzić. Integracja z programem Visual Studio, serwerem TFS i popularnymi narzędziami CMS ułatwia wdrażanie aplikacji usług IIS 6 bezpośrednio do chmury. Po wdrożeniu witryna Azure Portal udostępnia niezawodne narzędzia do zarządzania, które umożliwiają skalowanie w dół na potrzeby zarządzania kosztami i w górę odpowiednio do wymagań. Narzędzie do migracji umożliwia:
 
 * Szybkie i łatwe migrowanie starszych aplikacji internetowych dla systemu Windows Server 2003 do chmury.
 * Pozostawienie dołączonej bazy danych SQL w lokalizacji lokalnej w celu utworzenia aplikacji hybrydowej.
@@ -191,3 +192,4 @@ Aby zacząć pracę za pomocą opcji wybranej dla aplikacji, zobacz następując
 <!-- IMG List -->
 
 [ChoicesDiagram]: ./media/choose-web-site-cloud-service-vm/Websites_CloudServices_VMs_3.png
+[migrate-tool]: https://www.movemetothecloud.net/
