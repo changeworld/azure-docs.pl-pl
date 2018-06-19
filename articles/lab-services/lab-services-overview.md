@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 04/19/2018
 ms.author: spelluru
-ms.openlocfilehash: b42183369b9ad88c77a05a91fdba8fe0efca2a8c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8f8de53f03cc1378e8aaafa9a2f486eadc23fe14
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637857"
 ---
-# <a name="an-introduction-to-azure-lab-services-formerly-azure-devtest-labs"></a>Wprowadzenie do usługi Azure Lab Services (wcześniej nazywanej usługą Azure DevTest Labs)
+# <a name="an-introduction-to-azure-lab-services"></a>Wprowadzenie do usługi Azure Lab Services
 Usługa Azure Lab Services pozwala szybko skonfigurować środowisko dla zespołu (na przykład środowisko deweloperskie, środowisko testowe lub środowisko laboratorium na potrzeby zajęć) w chmurze. Właściciel laboratorium tworzy laboratorium, aprowizuje maszyny wirtualne z systemem Windows lub Linux, instaluje niezbędne oprogramowanie i narzędzia oraz udostępnia je użytkownikom laboratorium. Użytkownicy laboratorium łączą się z maszynami wirtualnymi w laboratorium, a następnie używają ich w codziennej pracy lub krótkoterminowych projektach albo do wykonywania ćwiczeń w klasie. Gdy użytkownicy rozpoczną korzystanie z zasobów w laboratorium, administrator laboratorium może analizować koszty i użycie w wielu laboratoriach, a następnie ustawić nadrzędne zasady w celu zoptymalizowania kosztów organizacji lub zespołu.
 
 > [!IMPORTANT]
-> Usługa Azure DevTest Labs jest rozszerzana o nowe typy laboratoriów (Azure Lab Services)! 
+> Usługa **Azure DevTest Labs** jest rozszerzana o nowe typy laboratoriów (Azure Lab Services)! 
 > 
 > Usługa Azure Lab Services umożliwia tworzenie laboratoriów zarządzanych, takich jak laboratoria na potrzeby zajęć. Sama usługa obsługuje całe zarządzanie infrastrukturą w laboratoriach zarządzanych, od inicjowania maszyn wirtualnych do obsługi błędów i skalowania infrastruktury. Laboratoria zarządzane są obecnie w wersji zapoznawczej. Po zakończeniu wersji zapoznawczej nowe typy laboratoriów i istniejące laboratoria usługi DevTest Labs będą wspólnie nazywane usługą Azure Lab Services i w jej ramach wszystkie typy laboratoriów będą dalej rozwijane. 
 
@@ -31,7 +32,7 @@ Usługa Azure Lab Services pozwala szybko skonfigurować środowisko dla zespoł
 Usługa Azure Lab Services obsługuje następujące kluczowe możliwości/funkcje: 
 
 - **Szybka i elastyczna konfiguracja laboratorium**. Przy użyciu usługi Azure Lab Services właściciele laboratoriów mogą szybko skonfigurować laboratorium odpowiednio do swoich potrzeb. Usługa może zająć się całą pracą związaną z infrastrukturą platformy Azure w laboratoriach zarządzanych. Alternatywnie właściciele laboratoriów mogą samodzielnie zarządzać infrastrukturą i dostosowywać ją w swojej subskrypcji. Usługa zapewnia wbudowane skalowanie i odporność infrastruktury w laboratoriach zarządzanych przez usługę. 
-- **Uproszczone środowisko dla użytkowników laboratorium**. W laboratorium zarządzanym, takim jak laboratorium na potrzeby zajęć, użytkownicy laboratorium mogą się zarejestrować za pomocą kodu rejestracji, a następnie uzyskać dostęp do laboratorium w dowolnym czasie, aby korzystać z zasobów laboratorium. W laboratorium niestandardowym utworzonym w usłudze DevTest Labs właściciel laboratorium może nadać użytkownikom laboratorium uprawnienia do tworzenia maszyn wirtualnych i uzyskiwania do nich dostępu, ponownego używania dysków z danymi i zarządzania nimi oraz konfigurowania wpisów tajnych wielokrotnego użytku.  
+- **Uproszczone środowisko dla użytkowników laboratorium**. W laboratorium zarządzanym, takim jak laboratorium na potrzeby zajęć, użytkownicy laboratorium mogą się zarejestrować za pomocą kodu rejestracji, a następnie uzyskać dostęp do laboratorium w dowolnym czasie, aby korzystać z zasobów laboratorium. W laboratorium utworzonym w usłudze DevTest Labs właściciel laboratorium może nadać użytkownikom laboratorium uprawnienia do tworzenia maszyn wirtualnych i uzyskiwania do nich dostępu, ponownego używania dysków z danymi i zarządzania nimi oraz konfigurowania wpisów tajnych wielokrotnego użytku.  
 - **Optymalizacja i analiza kosztów**. Właściciel laboratorium może ustawić harmonogramy laboratorium w celu automatycznego zamykania i uruchamiania maszyn wirtualnych. Właściciel laboratorium może ustawić harmonogram, aby określić przedziały czasu, gdy maszyny wirtualne laboratorium są dostępne dla użytkowników, ustawić zasady użytkowania dla poszczególnych użytkowników lub laboratoriów w celu optymalizacji kosztów oraz analizować trendy używania i działań w laboratorium. W laboratoriach zarządzanych, takich jak laboratoria na potrzeby zajęć, obecnie dostępny jest mniejszy podzbiór opcji optymalizacji i analizy kosztów. 
 - **Osadzone zabezpieczenia**. Właściciel laboratorium może skonfigurować prywatne sieci i podsieci wirtualne dla laboratorium oraz włączyć udostępniony publiczny adres IP. Użytkownicy laboratorium mogą bezpiecznie uzyskać dostęp do zasobów przy użyciu sieci wirtualnej skonfigurowanej za pomocą usługi ExpressRoute i sieci VPN typu lokacja–lokacja. (Obecnie są one dostępne tylko w usłudze DevTest Labs).
 - **Integracja z przepływami pracy i narzędziami**. Usługa Azure Lab Services umożliwia integrację laboratoriów z systemami witryny internetowej i zarządzania organizacji. Możesz automatycznie aprowizować środowiska za pomocą narzędzi ciągłej integracji/ciągłego wdrażania. (Obecnie są one dostępne tylko w usłudze DevTest Labs).
@@ -93,5 +94,5 @@ Użytkownik laboratorium wykonuje następujące zadania:
 ## <a name="next-steps"></a>Następne kroki
 Wprowadzenie do konfigurowania laboratorium przy użyciu usługi Azure Lab Services:
 
-- [Konfigurowanie laboratorium na potrzeby zajęć](tutorial-setup-classroom-lab.md)
-- [Konfigurowanie laboratorium niestandardowego](tutorial-create-custom-lab.md)
+- [Konfigurowanie laboratorium na potrzeby zajęć](classroom-labs/tutorial-setup-classroom-lab.md)
+- [Konfigurowanie laboratorium](tutorial-create-custom-lab.md)

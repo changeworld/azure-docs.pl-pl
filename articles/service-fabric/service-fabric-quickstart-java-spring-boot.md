@@ -15,17 +15,17 @@ ms.workload: NA
 ms.date: 11/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 6c84b60018ec03b7f9bc572db9181b8a47a0c595
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 860d28cb6726a86194460977b822197a37ab7279
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365410"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642873"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-application-to-azure"></a>Szybki start: wdrażanie aplikacji Java Spring Boot na platformie Azure
 Usługa Azure Service Fabric to platforma systemów rozproszonych umożliwiająca wdrażanie mikrousług i kontenerów, a także zarządzanie nimi. 
 
-Ten przewodnik Szybki start przedstawia sposób wdrażania aplikacji Spring Boot w usłudze Service Fabric za pomocą maszyny dewelopera z systemem Mac lub Linux. W tym przewodniku Szybki start użyto przykładu [Wprowadzenie](https://spring.io/guides/gs/spring-boot/) z witryny internetowej platformy Spring. W tym przewodniku Szybki start objaśniono wdrażanie przykładu ze środowiska Spring Boot jako aplikacji usługi Service Fabric za pomocą znanych narzędzi wiersza polecenia. Po zakończeniu w usłudze Service Fabric będzie działać przykład Wprowadzenie środowiska Spring Boot. 
+Ten przewodnik Szybki start zawiera wskazówki dotyczące wdrażania funkcjonalnej aplikacji Spring Boot w usłudze Service Fabric na komputerze Mac lub Linux dewelopera za pomocą znanych narzędzi wiersza polecenia przy użyciu przykładu z [Wprowadzenia](https://spring.io/guides/gs/spring-boot/) w witrynie internetowej Spring.
 
 ![Zrzut ekranu aplikacji](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
 
@@ -246,7 +246,7 @@ Aby skalować usługę internetową frontonu, wykonaj następujące czynności:
     sfctl cluster select --endpoint https://<ConnectionIPOrURL>:19080 --pem <path_to_certificate> --no-verify
 
     # Run Bash command to scale instance count for your service
-    sfctl service update --service-id 'SpringServiceFabric~SpringGettingStarted` --instance-count 3 --stateless 
+    sfctl service update --service-id 'SpringServiceFabric~SpringGettingStarted' --instance-count 3 --stateless 
     ``` 
 
 4. Kliknij węzeł **fabric:/SpringServiceFabric/SpringGettingStarted** w widoku drzewa i rozwiń węzeł partycji (reprezentowany przez identyfikator GUID).

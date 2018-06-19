@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 6a42f4b5b54056424bc3e2d865408ad6711403e0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4a5e613169bf3173b7585b49803fc7ac7f5186ce
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297975"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>Aktywowanie subskrypcji i kont platformy Azure za pomocą usługi Azure Cost Management
 
@@ -59,7 +60,7 @@ W przypadku dodawania konta lub aktualizowania subskrypcji przyznajesz usłudze 
 1. Jeśli chcesz zaktualizować _nieaktywowaną_ subskrypcję, która już istnieje w usłudze Azure Cost Management w rozwiązaniu do zarządzania kontami, kliknij symbol ołówka (edycja) z prawej strony nadrzędnego _identyfikatora GUID dzierżawy_. Subskrypcje są grupowane w ramach dzierżawy nadrzędnej, należy więc unikać ich indywidualnego aktywowania.
     ![Ponowne odnajdowanie subskrypcji](./media/activate-subs-accounts/existing-sub.png)
 2. W razie potrzeby wprowadź identyfikator dzierżawy. Jeśli nie znasz identyfikatora dzierżawy, wykonaj następujące czynności, aby go znaleźć:
-    1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
+    1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
     2. W witrynie Azure Portal wybierz pozycję **Azure Active Directory**.
     3. Aby uzyskać identyfikator dzierżawy, wybierz pozycję **Właściwości** dla swojej dzierżawy usługi Azure AD.
     4. Skopiuj identyfikator GUID katalogu. Ta wartość jest Twoim identyfikatorem dzierżawy.
@@ -95,14 +96,39 @@ Oto sposoby rozwiązywania tych problemów:
 1. Odsprzedawca musi włączyć _znaczniki_ dla Twojego konta. Aby uzyskać instrukcje, zapoznaj się z dokumentem [Indirect Customer Onboarding Guide (Przewodnik dołączania klienta pośredniego)](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
 2. Wygenerujesz klucz umowy Azure Enterprise Agreement do użycia w usłudze Azure Cost Management. Aby uzyskać instrukcje, zobacz [Register an Azure Enterprise Agreement and view cost data (Rejestrowanie umowy Azure Enterprise Agreement i wyświetlanie danych kosztów)](https://docs.microsoft.com/azure/cost-management/quick-register-ea).
 
-Tylko administrator usług platformy Azure może włączyć usługę Cost Management. Uprawnienia współadministratora są niewystarczające.
-
 Przed wygenerowaniem klucza interfejsu API umowy Azure Enterprise Agreement w celu skonfigurowania usługi Azure Cost Management musisz włączyć interfejs API rozliczeń platformy Azure, wykonując następujące instrukcje:
 
 - [Overview of Reporting APIs for Enterprise customers (Omówienie interfejsów API raportowania dla klientów korporacyjnych)](../billing/billing-enterprise-api.md)
 - [Interfejs API raportowania w witrynie Microsoft Azure dla przedsiębiorstw](https://ea.azure.com/helpdocs/reportingAPI) w obszarze **Włączanie dostępu danych do interfejsu API**
 
 Być może trzeba będzie również nadać administratorom działów, właścicielom kont i administratorom przedsiębiorstwa uprawnienia do _wyświetlania opłat_ przy użyciu interfejsu API rozliczeń.
+
+Tylko administrator usług platformy Azure może włączyć usługę Cost Management. Uprawnienia współadministratora są niewystarczające. Można jednak obejść wymaganie uprawnień administratora. Można zażądać, aby administrator usługi Azure Active Directory przyznał uprawnienia do autoryzacji **CloudynAzureCollector** za pomocą skryptu programu PowerShell. Poniższy skrypt udziela uprawnień do rejestrowania jednostki usługi Azure Active Directory **CloudynAzureCollector**.
+
+```
+#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+#Tenant - enter your tenant ID or Name
+$tenant = "<ReplaceWithYourTenantID>"
+
+#Cloudyn Collector application ID
+$appId = "83e638ef-7885-479f-bbe8-9150acccdb3d"
+
+#URL to activate the consent screen
+$url = "https://login.windows.net/"+$tenant+"/oauth2/authorize?api-version=1&response_type=code&client_id="+$appId+"&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2FCloudynJava&prompt=consent"
+
+#Choose your browser, the default is Internet Explorer
+
+#Chrome
+#[System.Diagnostics.Process]::Start("chrome.exe", "--incognito $url")
+
+#Firefox
+#[System.Diagnostics.Process]::Start("firefox.exe","-private-window $url" )
+
+#IExplorer
+[System.Diagnostics.Process]::Start("iexplore.exe","$url -private" )
+
+```
 
 ## <a name="next-steps"></a>Następne kroki
 

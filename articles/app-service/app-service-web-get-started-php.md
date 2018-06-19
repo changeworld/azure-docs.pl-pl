@@ -15,13 +15,14 @@ ms.topic: quickstart
 ms.date: 12/13/2017
 ms.author: cephalin;cfowler
 ms.custom: mvc
-ms.openlocfilehash: aaac2fa4d62fb02bf17342a0db27fad79e495693
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 4eaae22f1ccbcb73eb7244f55ea4629aae053171
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597760"
 ---
-# <a name="create-a-php-web-app-in-azure"></a>Tworzenie aplikacji sieci Web w języku PHP na platformie Azure
+# <a name="create-a-php-web-app-in-azure"></a>Tworzenie aplikacji internetowej w języku PHP na platformie Azure
 
 > [!NOTE]
 > W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Windows. Aby wdrożyć aplikację w usłudze App Service w systemie _Linux_, zobacz [Tworzenie aplikacji internetowej w języku PHP w usłudze App Service w systemie Linux](./containers/quickstart-php.md).
@@ -75,7 +76,7 @@ W oknie terminalu naciśnij kombinację klawiszy **Ctrl + C**, aby zamknąć ser
 
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan.md)]
 
-## <a name="create-a-web-app"></a>Tworzenie aplikacji sieci Web
+## <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 
 W usłudze Cloud Shell utwórz aplikację internetową w planie usługi App Service `myAppServicePlan` za pomocą polecenia [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create). 
 
@@ -104,7 +105,7 @@ Po utworzeniu aplikacji internetowej w interfejsie wiersza polecenia platformy A
 }
 ```
 
-Przejdź do nowo utworzonej aplikacji internetowej. Zastąp ciąg _&lt;nazwa aplikacji>_ unikatową nazwą aplikacji.
+Przejdź do nowo utworzonej aplikacji internetowej. Zastąp element _&lt;nazwa_aplikacji>_ unikatową nazwą aplikacji utworzonej w poprzednim kroku.
 
 ```bash
 http://<app name>.azurewebsites.net
@@ -170,23 +171,23 @@ git commit -am "updated output"
 git push azure master
 ```
 
-Po zakończeniu wdrożenia przejdź z powrotem do okna przeglądarki otwartego w kroku **przechodzenia do aplikacji**, a następnie odśwież stronę.
+Po zakończeniu wdrożenia wróć do okna przeglądarki otwartego w kroku **przechodzenia do aplikacji**, a następnie odśwież stronę.
 
 ![Zaktualizowana przykładowa aplikacja działająca na platformie Azure](media/app-service-web-get-started-php/hello-azure-in-browser.png)
 
-## <a name="manage-your-new-azure-web-app"></a>Zarządzanie nową aplikacją sieci Web platformy Azure
+## <a name="manage-your-new-azure-web-app"></a>Zarządzanie nową aplikacją internetową platformy Azure
 
 Przejdź do witryny <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, aby zarządzać utworzoną aplikacją internetową.
 
 W menu po lewej stronie kliknij pozycję **App Services**, a następnie kliknij nazwę swojej aplikacji internetowej platformy Azure.
 
-![Nawigacja w portalu do aplikacji sieci Web platformy Azure](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
+![Nawigacja w portalu do aplikacji internetowej platformy Azure](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
 
 Zostanie wyświetlona strona Omówienie aplikacji internetowej. Tutaj możesz wykonywać podstawowe zadania zarządzania, takie jak przeglądanie, zatrzymywanie, uruchamianie, ponowne uruchamianie i usuwanie.
 
 ![Strona usługi App Service w witrynie Azure Portal](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
 
-Menu po lewej stronie zawiera różne strony służące do konfigurowania aplikacji. 
+Menu po lewej stronie zawiera różne opcje służące do konfigurowania aplikacji. 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
