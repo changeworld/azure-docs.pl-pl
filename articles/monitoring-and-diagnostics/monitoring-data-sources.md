@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 3/27/2017
+ms.date: 06/12/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 7b3cb869f3c220c20db53216c96449d01c16eaf6
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 97eca81a8ddc2726bf5de0f4ad7ba0bdf1df1d05
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263181"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36220088"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Wykorzystują dane monitorowania z platformy Azure
 
@@ -40,7 +40,7 @@ Na platformie Azure możemy są łączące dane monitorowania w jednym miejscu z
 | Azure metryki monitorowanie alertów | Powiadomienia | [Zobacz tutaj](monitoring-supported-metrics.md) | <ul><li>**Element Webhook:** [Azure metryki alertów](insights-webhooks-alerts.md)</li></ul> |
 | Alerty monitora dziennik aktywności platformy Azure | Powiadomienia | Wszystkie usługi Azure | <ul><li>**Element Webhook:** alerty dziennik aktywności platformy Azure</li></ul> |
 | Powiadomienia skalowania automatycznego | Powiadomienia | [Zobacz tutaj](monitoring-overview-autoscale.md#supported-services-for-autoscale) | <ul><li>**Element Webhook:** [skalowania automatycznego powiadamiania elementu webhook ładunku schematu](insights-autoscale-to-webhook-email.md#autoscale-notification-webhook-payload-schema)</li></ul> |
-| Rejestrowania alertów zapytania wyszukiwania | Powiadomienia | Log Analytics | <ul><li>**Element Webhook:** [alerty analizy dzienników](../log-analytics/log-analytics-alerts-actions.md#webhook-actions)</li></ul> |
+| Rejestrowania alertów zapytania wyszukiwania | Powiadomienia | Log Analytics | <ul><li>**Element Webhook:** [akcji elementu Webhook dla dziennika reguły alertów](../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md)</li></ul> |
 | Alerty metryki Insights aplikacji | Powiadomienia | Application Insights | <ul><li>**Element Webhook:** [alerty usługi Application Insights](../application-insights/app-insights-alerts.md)</li></ul> |
 | Testy sieci web Application Insights | Powiadomienia | Application Insights | <ul><li>**Element Webhook:** [alerty usługi Application Insights](../application-insights/app-insights-alerts.md)</li></ul> |
 

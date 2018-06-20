@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 729f510de59fe27761389fb1f6edb4025021565a
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: f68e05ba40827375fbd76448e38916c682075228
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35356395"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36264013"
 ---
 # <a name="best-practices"></a>Najlepsze praktyki
 Umożliwia tworzenie aplikacji LUIS procesu tworzenia aplikacji. 
@@ -114,4 +114,5 @@ Dodaj 10 lub 15 zniesławiających przed szkolenia i publikowania. Który pozwal
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się, jak [Planowanie aplikacji](plan-your-app.md) w aplikacji LUIS.
-[LUIS]: luis — odwołanie regions.md #luis-witryny sieci Web
+
+[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

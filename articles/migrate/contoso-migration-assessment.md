@@ -3,17 +3,16 @@ title: Oceny obciążeń lokalnych do migracji firmy Contoso na platformie Azure
 description: Dowiedz się, jak Contoso ocenia ich maszyn lokalnych do migracji do usługi Azure z migracji bazy danych i migracji Azure
 services: site-recovery
 author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: 8568668032a97e574a85758080818311839a9caa
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: fb987c95afc0f77386f4f78c44f3c6825f86ee43
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301137"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232497"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Migracja Contoso: oceny obciążeń lokalnych do migracji do usługi Azure
 
@@ -23,15 +22,15 @@ Ten dokument jest innej serii artykuły, które dokumentów, jak fikcyjnej firmy
 
 **Artykuł** | **Szczegóły** | **Stan**
 --- | --- | ---
-Artykuł 1: omówienie | Zawiera omówienie strategii migracji firmy Contoso, serii artykułu i przykładowe aplikacje, których będziemy używać. | Dostępne
-Artykuł 2: Wdrażanie infrastruktury platformy Azure | W tym artykule opisano, jak Contoso przygotowuje jego lokalnymi i infrastruktury platformy Azure do migracji. Infrastruktura jest używana w przypadku wszystkich scenariuszy migracji Contoso. | Dostępne
-Artykuł 3: Oceny zasobów lokalnych (w tym artykule) | Pokazuje, jak Contoso uruchamia ocenę ich lokalnych dwuwarstwowa SmartHotel aplikacji uruchomionej na VMware. Ich oceny maszyn wirtualnych aplikacji o [migracji Azure](migrate-overview.md) usługi i bazy danych programu SQL Server aplikacji z [Asystenta migracji bazy danych Azure](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Dostępne
-Artykuł 4: Refaktoryzuj (przyrostu i zmiana), maszynach wirtualnych platformy Azure i zarządzane wystąpienia programu SQL | Pokazuje, jak Contoso migruje SmartHotel aplikacji na platformie Azure. Migrowania aplikacji frontonu maszyny Wirtualnej w programie [usługi Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)i przy użyciu bazy danych aplikacji [migracja bazy danych Azure](https://docs.microsoft.com/azure/dms/dms-overview) usługi migrację do zarządzanego wystąpienie serwera SQL. | Dostępne
-Artykuł 5: Zrefaktoryzuj (przyrostu i zmiana) na maszynach wirtualnych platformy Azure | Pokazuje, jak Contoso migracji aplikacji SmartHotel maszyn wirtualnych tylko przy użyciu usługi Site Recovery.
-Artykuł 6: Refaktoryzuj (przyrostu i zmiana), maszynach wirtualnych platformy Azure i grup dostępności programu SQL Server | Pokazuje, jak Contoso migruje SmartHotel aplikacji. Site Recovery ich użyć do migracji aplikacji maszyny wirtualne i usługi migracja bazy danych do migracji aplikacji bazy danych do grupy dostępności programu SQL Server. | Dostępne
-Artykuł 7: Refaktoryzuj (przyrostu i zmiany), maszynach wirtualnych platformy Azure i serwer MySQL Azure | Pokazuje, jak Contoso migruje SmartHotel aplikacji maszyn wirtualnych przy użyciu usługi Site Recovery i MySQL Workbench do migracji (kopii zapasowej i przywracania) na wystąpienie serwera Azure MySQL. | Dostępne
+[Artykuł 1: omówienie](contoso-migration-overview.md) | Zawiera omówienie strategii migracji firmy Contoso, serii artykułu i przykładowe aplikacje, których będziemy używać. | Dostępne
+[Artykuł 2: Wdrażanie infrastruktury platformy Azure](contoso-migration-infrastructure.md) | W tym artykule opisano, jak Contoso przygotowuje jego lokalnymi i infrastruktury platformy Azure do migracji. Infrastruktura jest używana w przypadku wszystkich scenariuszy migracji Contoso. | Dostępne
+Artykuł 3: Oceny zasobów lokalnych (w tym artykule)  | Pokazuje, jak Contoso uruchamia ocenę ich lokalnych dwuwarstwowa SmartHotel aplikacji uruchomionej na VMware. Ich oceny maszyn wirtualnych aplikacji o [migracji Azure](migrate-overview.md) usługi i bazy danych programu SQL Server aplikacji z [Asystenta migracji bazy danych Azure](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Dostępne
+[Artykuł 4: Rehost maszyny wirtualne platformy Azure i zarządzanych wystąpienie serwera SQL](contoso-migration-rehost-vm-sql-managed-instance.md) | Pokazuje, jak Contoso migruje SmartHotel aplikacji na platformie Azure. Migrowania aplikacji frontonu maszyny Wirtualnej w programie [usługi Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)i przy użyciu bazy danych aplikacji [migracja bazy danych Azure](https://docs.microsoft.com/azure/dms/dms-overview) usługi migrację do zarządzanego wystąpienie serwera SQL. | Dostępne
+[Artykuł 5: Rehost na maszynach wirtualnych platformy Azure](contoso-migration-rehost-vm.md) | Pokazuje, jak Contoso migracji aplikacji SmartHotel maszyn wirtualnych tylko przy użyciu usługi Site Recovery.
+[Artykuł 6: Rehost maszyny wirtualne platformy Azure i grup dostępności programu SQL Server](contoso-migration-rehost-vm-sql-ag.md) | Pokazuje, jak Contoso migruje SmartHotel aplikacji. Site Recovery ich użyć do migracji aplikacji maszyny wirtualne i usługi migracja bazy danych do migracji aplikacji bazy danych do grupy dostępności programu SQL Server. | Dostępne
+[Artykuł 7: Rehost aplikacji systemu Linux, aby maszyny wirtualne platformy Azure](contoso-migration-rehost-linux-vm.md) | Pokazuje, jak Contoso migruje osService aplikacji systemu Linux przy użyciu usługi Azure Site Recovery.
+[Artykuł 8: Rehost aplikację systemu Linux, aby maszyny wirtualne platformy Azure i serwerem MySQL Azure](contoso-migration-rehost-linux-vm-mysql.md) | Pokazuje, jak Contoso przeprowadzanie migracji aplikacji Linux osService, przy użyciu usługi Site Recovery dla maszyny Wirtualnej migracji i MySQL Workbench do migracji (na wystąpienie serwera Azure MySQL. | Dostępne
 
-Jeśli chcesz użyć przykładowej aplikacji używane w tym artykule, jest podana jako typu open source i można go pobrać z [github](https://github.com/Microsoft/SmartHotel360).
 
 ## <a name="overview"></a>Przegląd
 
@@ -41,7 +40,7 @@ Aby uzyskać ich mokro stopy i Poznaj lepiej technologii, masz zamiar oceny dwa 
 
 **Nazwa aplikacji** | **Platformy** | **Warstwy aplikacji** | **Szczegóły**
 --- | --- | --- | ---
-SmartHotel<br/><br/> Służy do zarządzania wymaganiami podróży firmy Contoso | Uruchamianie w systemie Windows z bazy danych programu SQL Server | Dwuwarstwowej aplikacji z witryną internetową serwera sieci Web platformy ASP.NET działających na jednej maszyny Wirtualnej (WEBVM) i SQL Server uruchomiony na innym maszyny Wirtualnej (SQLVM) | Maszyny wirtualne są VMware uruchomiona na hoście ESXi zarządzany przez serwer vCenter.<br/><br/> Przykładowa aplikacja można pobrać z [github](https://github.com/Microsoft/SmartHotel360).
+SmartHotel<br/><br/> Służy do zarządzania wymaganiami podróży firmy Contoso | Uruchamianie w systemie Windows z bazy danych programu SQL Server | Dwuwarstwowej aplikacji z witryną internetową serwera sieci Web platformy ASP.NET działających na jednej maszyny Wirtualnej (WEBVM) i SQL Server uruchomiony na innym maszyny Wirtualnej (SQLVM) | Maszyny wirtualne są VMware uruchomiona na hoście ESXi zarządzany przez serwer vCenter.<br/><br/> Przykładowa aplikacja można pobrać z [GitHub](https://github.com/Microsoft/SmartHotel360).
 OSTicket<br/><br/> Usługi contoso technicznej aplikacji | Uruchomiony na systemie Linux/Apache za pomocą języka PHP MySQL (światła). | Dwuwarstwowej aplikacji z frontonu witryny PHP w jednej maszyny Wirtualnej (OSTICKETWEB) i bazy danych MySQL przeprowadzana na innej maszyny Wirtualnej (OSTICKETMYSQL) | Aplikacja jest używany przez klienta aplikacji usługi do śledzenia problemów dla pracowników wewnętrznych i zewnętrznych klientów.<br/><br/> Przykładowa aplikacja można pobrać z [GitHub](https://github.com/osTicket/osTicket).
 
 ## <a name="current-architecture"></a>Architektura bieżącego
@@ -545,7 +544,7 @@ Ten widok przedstawia łączne koszty zasobów obliczeniowych i magazynowych w p
 - Po zakończeniu oceny Contoso zachowuje urządzenia Azure migracji dla przyszłych oceny.
 - Wyłącz one maszyny Wirtualnej VMware. One będzie uruchomić ją ponownie po ich oceny kolejnych maszyn wirtualnych.
 - Będzie prowadzą Contoso migrację na platformie Azure.  Obecnie jest wdrożona w grupie zasobów ContosoFailoverRG Wschodnia nam Azure obszaru.
--  Maszyna wirtualna modułu zbierającego ma licencji 180-dniowa wersja ewaluacyjna. Po przekroczeniu tego limitu muszą pobrać i skonfigurować moduł zbierający ponownie.
+-  Maszyna wirtualna modułu zbierającego ma licencji 180-dniowa wersja ewaluacyjna. Po przekroczeniu tego limitu program muszą pobrać i skonfigurować moduł zbierający ponownie.
 
 
 ## <a name="conclusion"></a>Podsumowanie

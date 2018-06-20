@@ -3,25 +3,25 @@ title: Raporty dotyczące logowań w portalu usługi Azure Active Directory | Mi
 description: Wprowadzenie do raportów dotyczących logowań w portalu Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 05/17/2018
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6414be82e57741bf2af1de3650a3d9a28c4d6427
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: d9c2f210204122947c24eb42f643450537f3b9a8
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34588611"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232450"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące logowań w portalu Azure Active Directory
 
@@ -153,7 +153,7 @@ Jeśli chcesz pracować z danymi dotyczącymi działań związanych z logowaniem
 
 ![Pobierz](./media/active-directory-reporting-activity-sign-ins/71.png "Pobierz")
 
-Kliknięcie przycisku **Pobierz** spowoduje utworzenie pliku CSV zawierającego 5000 najnowszych rekordów. Jeśli potrzebujesz bardziej elastycznych opcji, możesz użyć rozwiązania do tworzenia skryptu. Kliknięcie przycisku **Skrypt** spowoduje utworzenie skryptu uwzględniającego wszystkie ustawione filtry. Liczba rekordów, które możesz pobrać, jest ograniczona przez kwestie techniczne oraz przez [reguły przechowywania raportów w usłudze Azure Active Directory](active-directory-reporting-retention.md).  
+Kliknięcie przycisku **Pobierz** spowoduje utworzenie pliku CSV zawierającego 5000 najnowszych rekordów. Jeśli potrzebujesz bardziej elastycznych opcji, możesz użyć rozwiązania do tworzenia skryptu. Kliknięcie przycisku **skryptu** tworzy skryptu programu PowerShell, który zawiera wszystkie filtry, które zostało ustawione. Pobierz i uruchom ten skrypt **trybu administratora** do wygenerowania pliku CSV. Liczba rekordów, które możesz pobrać, jest ograniczona przez kwestie techniczne oraz przez [reguły przechowywania raportów w usłudze Azure Active Directory](active-directory-reporting-retention.md).  
 
 
 
@@ -245,7 +245,7 @@ Opcja **Logowania** umożliwia pełny przegląd zdarzeń logowania do aplikacji.
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Jeśli chcesz dowiedzieć się więcej na temat kodów błędów działań związanych z logowaniem, zobacz [Kody błędów w raportach działań związanych z logowaniem w portalu usługi Azure Active Directory](active-directory-reporting-activity-sign-ins-errors.md).
 

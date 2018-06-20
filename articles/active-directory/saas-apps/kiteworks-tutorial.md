@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: f7984aaf-ab1f-4a85-9646-a9523f5275d9
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jeedes
-ms.openlocfilehash: eb315a1e4869dfebe34ecfc9d7326878ff3581ae
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 94452c8a41130006ea7924e52e0b6698e093122b
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35953965"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36229597"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kiteworks"></a>Samouczek: Integracji Azure Active Directory z Kiteworks
 

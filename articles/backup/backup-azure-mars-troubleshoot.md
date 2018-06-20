@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/4/2017
 ms.author: saurse
-ms.openlocfilehash: aee0a3044ea4d1b9b867e795e94a37f8835ad212
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 89a39f6189367f91248b3868b1e1cb9f6abf0407
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605760"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228394"
 ---
 # <a name="troubleshoot-azure-backup-agent-configuration-and-registration-issues"></a>Rozwiązywanie problemów dotyczących konfiguracji agenta usługi Kopia zapasowa Azure i problemy dotyczące rejestracji
 ## <a name="recommended-steps"></a>Zalecane czynności
@@ -36,13 +36,19 @@ Zapoznaj się z działania opisane w poniższych tabelach, aby naprawić błędy
 
 | Szczegóły błędu | Możliwe przyczyny | Zalecane akcje |
 | ---     | ---     | ---    |      
-| **Error** </br>*Nie można ustawić klucza szyfrowania bezpiecznego tworzenia kopii zapasowych. Bieżąca operacja nie powiodła się z powodu wewnętrznego błędu "Nieprawidłowa wejściowych błędu usługi". Spróbuj ponownie wykonać operację po pewnym czasie. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną firmy Microsoft*. |Serwer jest już zarejestrowany w innym magazynie.| Wyrejestruj serwer z magazynu i Zarejestruj ponownie.
+| **Error** </br>*Nie można ustawić klucza szyfrowania dla bezpieczne kopie zapasowe aktywacji nie powiodło się całkowicie, ale hasło szyfrowania został zapisany w następującym pliku*. |<li>Serwer jest już zarejestrowany w innym magazynie.<li>Podczas konfigurowania hasło jest uszkodzony| Wyrejestruj serwer z magazynu i Zarejestruj ponownie za pomocą nowego hasła.
 
 ## <a name="the-activation-did-not-complete-successfully-the-current-operation-failed-due-to-an-internal-service-error-0x1fc07"></a>Aktywacja nie została pomyślnie ukończona. Bieżąca operacja nie powiodła się z powodu wewnętrznego błędu usługi [0x1FC07]
 
 | Szczegóły błędu | Możliwe przyczyny | Zalecane akcje |
 | ---     | ---     | ---    |          
-| **Error** </br><ol><li>*Aktywacja nie została pomyślnie ukończona. Bieżąca operacja nie powiodła się z powodu wewnętrznego błędu usługi [0x1FC07]. Spróbuj ponownie wykonać operację po pewnym czasie. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną firmy Microsoft* <li>*Błąd 34506. Hasło szyfrowania zapisane na tym komputerze nie jest poprawnie skonfigurowany*. | <li> Pliki tymczasowe folder znajduje się na woluminie, który ma za mało miejsca. <li> Pliki tymczasowe folder został przeniesiony niepoprawnie do innej lokalizacji. <li> Brak pliku OnlineBackup.KEK. | <li>Przenieś pliki tymczasowe folderu lub lokalizacji pamięci podręcznej do woluminu z wolnego miejsca odpowiednikiem 5 – 10% całkowitego rozmiaru danych kopii zapasowej. Można poprawnie przenieść lokalizację pamięci podręcznej, skorzystaj z procedury opisanej w [pytania dotyczące agenta kopii zapasowej Azure](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup).<li> Upewnij się, że plik OnlineBackup.KEK jest obecny. <br>*Domyślna lokalizacja dla pliki tymczasowe folder lub ścieżka lokalizacji pamięci podręcznej to C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.
+| **Error** </br><ol><li>*Aktywacja nie została pomyślnie ukończona. Bieżąca operacja nie powiodła się z powodu wewnętrznego błędu usługi [0x1FC07]. Spróbuj ponownie wykonać operację po pewnym czasie. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną firmy Microsoft*| <li> Pliki tymczasowe folder znajduje się na woluminie, który ma za mało miejsca. <li> Pliki tymczasowe folder został przeniesiony niepoprawnie do innej lokalizacji. <li> Brak pliku OnlineBackup.KEK. | <li>Uaktualnij do [najnowszej wersji](http://aka.ms/azurebackup_agent) agenta MARS.<li>Przenieś pliki tymczasowe folderu lub lokalizacji pamięci podręcznej do woluminu z wolnego miejsca odpowiednikiem 5 – 10% całkowitego rozmiaru danych kopii zapasowej. Można poprawnie przenieść lokalizację pamięci podręcznej, skorzystaj z procedury opisanej w [pytania dotyczące agenta kopii zapasowej Azure](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup).<li> Upewnij się, że plik OnlineBackup.KEK jest obecny. <br>*Domyślna lokalizacja dla pliki tymczasowe folder lub ścieżka lokalizacji pamięci podręcznej to C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.
+  
+## <a name="error-34506-the-encryption-passphrase-stored-on-this-computer-is-not-correctly-configured"></a>Błąd 34506. Hasło szyfrowania zapisane na tym komputerze nie jest poprawnie skonfigurowany.
+
+| Szczegóły błędu | Możliwe przyczyny | Zalecane akcje |
+| ---     | ---     | ---    |          
+| **Error** </br><ol><li>*Błąd 34506. Hasło szyfrowania zapisane na tym komputerze nie jest poprawnie skonfigurowany*. | <li> Pliki tymczasowe folder znajduje się na woluminie, który ma za mało miejsca. <li> Pliki tymczasowe folder został przeniesiony niepoprawnie do innej lokalizacji. <li> Brak pliku OnlineBackup.KEK. | <li>Uaktualnij do [najnowszej wersji](http://aka.ms/azurebackup_agent) agenta MARS.<li>Przenieś pliki tymczasowe folderu lub lokalizacji pamięci podręcznej do woluminu z wolnego miejsca odpowiednikiem 5 – 10% całkowitego rozmiaru danych kopii zapasowej. Można poprawnie przenieść lokalizację pamięci podręcznej, skorzystaj z procedury opisanej w [pytania dotyczące agenta kopii zapasowej Azure](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup).<li> Upewnij się, że plik OnlineBackup.KEK jest obecny. <br>*Domyślna lokalizacja dla pliki tymczasowe folder lub ścieżka lokalizacji pamięci podręcznej to C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.  
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
 Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) uzyskać szybkie rozwiązanie problemu.

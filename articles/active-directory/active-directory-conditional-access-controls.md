@@ -1,5 +1,5 @@
 ---
-title: Dostęp do formantów w usłudze Azure Active Directory dostępu warunkowego | Dokumentacja firmy Microsoft
+title: Co to są kontroli dostępu w usłudze Azure Active Directory dostępu warunkowego? | Microsoft Docs
 description: Dowiedz się, jak dostęp do formantów w pracy dostępu warunkowego w usłudze Azure Active Directory.
 services: active-directory
 keywords: dostęp warunkowy do aplikacji, dostęp warunkowy przy użyciu usługi Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/01/2018
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 85c91ee7a03df221b2bf591aca6bf937c98313c7
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 924c41b060f56b4a21e4d29e059eb2968fa19330
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34723647"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232475"
 ---
-# <a name="access-controls-in-azure-active-directory-conditional-access"></a>Kontrola dostępu w usłudze Azure Active Directory dostępu warunkowego 
+# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co to są kontroli dostępu w usłudze Azure Active Directory dostępu warunkowego? 
 
 Z [dostępu warunkowego w usłudze Azure Active Directory (Azure AD)](active-directory-conditional-access-azure-portal.md), można kontrolować sposób autoryzowanym użytkownikom dostępu aplikacji w chmurze. W zasadach dostępu warunkowego zdefiniowanego odpowiedzi ("tym") Przyczyna służącą do wyzwalania zasad ("w takim przypadku"). 
 
@@ -173,6 +173,6 @@ Aby dowiedzieć się więcej na temat sposobu wymagać ograniczony dostęp z pro
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wprowadzenie dostępu warunkowego w usłudze Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md).
+- Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](active-directory-conditional-access-app-based-mfa.md).
 
 - Jeśli wszystko jest gotowe do skonfigurowania zasad dostępu warunkowego dla danego środowiska, zobacz [najlepszych rozwiązań dotyczących dostępu warunkowego w usłudze Azure Active Directory](active-directory-conditional-access-best-practices.md). 

@@ -3,16 +3,15 @@ title: Grupy komputerów w celu oceny z migracji Azure | Dokumentacja firmy Micr
 description: Opisuje sposób grupowania maszyny przed uruchomieniem oceny w usłudze Azure migracji.
 author: rayne-wiselman
 ms.service: azure-migrate
-ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: 5c5b5dc97c0faf43c9543422406c4fa1c30ed679
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ccab88c0195a7ca459c8579b7870d121dfd0fe1d
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34203703"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231410"
 ---
 # <a name="group-machines-for-assessment"></a>Grupy komputerów w celu oceny
 

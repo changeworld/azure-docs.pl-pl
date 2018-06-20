@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: v-geberr
-ms.openlocfilehash: 07c26753ed7198a2d98f4b7d5afb4cc7845fbcbe
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 060baa6578f8a31234a1a667e2d591b92c39a06f
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349812"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36264288"
 ---
 # <a name="api-v2-migration-guide"></a>Przewodnik migracji interfejsu API w wersji 2
 Wersja 1 [punktu końcowego](https://aka.ms/v1-endpoint-api-docs) i [tworzenia](https://aka.ms/v1-authoring-api-docs) zostaną wycofane interfejsów API. Użyj tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do wersji 2 [punktu końcowego](https://aka.ms/luis-endpoint-apis) i [tworzenia](https://aka.ms/luis-authoring-apis) interfejsów API. 
@@ -170,4 +170,4 @@ Zobacz [kody odpowiedzi interfejsu API LUIS](luis-reference-response-codes.md).
 
 Użyj wywołań w dokumentacji interfejsu API w wersji 2 do zaktualizowania istniejącej REST LIUS [punktu końcowego](https://aka.ms/luis-endpoint-apis) i [tworzenia](https://aka.ms/luis-authoring-apis) interfejsów API. 
 
-[LUIS]: luis-reference-regions.md
+[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

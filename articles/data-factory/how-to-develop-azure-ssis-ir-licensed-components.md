@@ -3,21 +3,22 @@ title: Zainstaluj składniki licencjonowane środowiska uruchomieniowego integra
 description: Dowiedz się, jak można programować niezależnego dostawcy oprogramowania i instalacji płatnej lub licencji niestandardowych składników środowiska uruchomieniowego integracji usług SSIS Azure
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/13/2018
-ms.author: douglasl
-ms.openlocfilehash: 6351381e525d256ef5e9693ea1fb5e3a6f4e5ea3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+author: swinarko
+ms.author: sawinark
+ms.reviewer: douglasl
+manager: craigg
+ms.openlocfilehash: 146dc8c4475a041f28d7fe7ca464dfbc104258c7
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298580"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36265958"
 ---
 # <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Zainstaluj składniki niestandardowe płatną lub licencjonowanych środowiska uruchomieniowego integracji usług SSIS Azure
 

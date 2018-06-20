@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory dostępu warunkowego co zrobić, jeśli narzędzie - preview | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można przetestować konfiguracji zasad dostępu warunkowego usługi Azure Active Directory.
+title: Co to jest co jeśli narzędzie dostępu warunkowego w usłudze Azure Active Directory? -preview | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zrozumienie wpływu zasad dostępu warunkowego w środowisku.
 services: active-directory
 keywords: dostęp warunkowy do aplikacji, dostęp warunkowy przy użyciu usługi Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/08/2018
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 2c4ca3685d15ddd2446590e1ef297362f9aa52ee
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 661ada8de8821d489732e1f36dc2406eaa0ee4a7
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34723834"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232405"
 ---
-# <a name="azure-active-directory-conditional-access-what-if-tool---preview"></a>Azure Active Directory dostępu warunkowego co zrobić, jeśli narzędzie - preview
+# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access---preview"></a>Co to jest co jeśli narzędzie dostępu warunkowego w usłudze Azure Active Directory? -preview
 
 [Dostęp warunkowy](active-directory-conditional-access-azure-portal.md) jest możliwości usługi Azure Active Directory (Azure AD), który umożliwia kontrolowanie sposobu autoryzacji dostępu użytkowników do aplikacji w chmurze. Skąd wiadomo, czego można oczekiwać formularza zasady dostępu warunkowego w środowisku? Aby odpowiedzieć na to pytanie, można użyć **dostępu warunkowego co zrobić, jeśli narzędzie**.
 
@@ -121,7 +121,7 @@ Na liście zasad, które nie dotyczą użytkowników można, a także znaleźć 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wprowadzenie dostępu warunkowego w usłudze Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md).
+- Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](active-directory-conditional-access-app-based-mfa.md).
 
 - Jeśli wszystko jest gotowe do skonfigurowania zasad dostępu warunkowego dla danego środowiska, zobacz [najlepszych rozwiązań dotyczących dostępu warunkowego w usłudze Azure Active Directory](active-directory-conditional-access-best-practices.md). 
 

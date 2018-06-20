@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 0b6846a68806354a58516fcbc87913815af87343
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: eaf490979167ea5cbfe5846e62444526310452f8
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29958745"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36269548"
 ---
 Niektórych obciążeń bazy danych, takich jak SQL Server lub Oracle wymagają pamięci wysokiej, magazynu i przepustowości we/wy, ale nie liczba rdzeni wysoki. Wiele obciążeń bazy danych nie są użycie Procesora CPU. System Azure oferuje niektórych rozmiarów maszyn wirtualnych, w którym można ograniczyć liczbę vCPU maszyny Wirtualnej, aby zredukować koszty licencjonowania oprogramowania, przy zachowaniu tej samej pamięci, magazynu i przepustowości we/wy.
 
@@ -21,11 +21,17 @@ Liczba vCPU może być ograniczona do połowy lub co kwartał oryginalnego rozmi
 
 Na przykład, bieżący rozmiar maszyny Wirtualnej Standard_GS5 jest dostarczany z 32 Vcpu, 448 GB pamięci RAM, 64 dyski (do 256 TB) i 80 000 IOPs lub 2 GB/s przepustowości we/wy. Nowa maszyna wirtualna rozmiary Standard_GS5 16 i Standard_GS5 8 jest dostarczany z 16 i 8 active Vcpu, przy zachowaniu reszty specyfikacji Standard_GS5 pamięci, magazynu i przepustowości we/wy.
 
-Licencjonowania opłaty dla programu SQL Server lub Oracle są ograniczone do liczby nowych vCPU i innych produktów należy naliczane na podstawie nowych vCPU liczby. Powoduje to 50% do 75% wzrost stosunek specyfikacji maszyny Wirtualnej do aktywnego Vcpu (rozliczeniowy). Te nowe rozmiary maszyn wirtualnych, które są dostępne tylko w Azure, umożliwiając obciążeń wypychanej kosztu większe użycie procesora CPU w ułamku licencjonowania (na rdzeń). W tej chwili koszt obliczeń, w tym licencjonowania systemu operacyjnego, pozostaje ten sam jako oryginalny rozmiar. Aby uzyskać więcej informacji, zobacz [rozmiary maszyn wirtualnych Azure więcej obciążeń ekonomicznego bazy danych](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
+Licencjonowania opłaty dla programu SQL Server lub Oracle są ograniczone do liczby nowych vCPU i innych produktów należy naliczane na podstawie nowych vCPU liczby. Powoduje to 50% do 75% wzrost stosunek specyfikacji maszyny Wirtualnej do aktywnego Vcpu (rozliczeniowy). Te nowe rozmiary maszyn wirtualnych, które są dostępne tylko na platformie Azure, umożliwiają obciążeniom większe użycie procesora za ułamek kosztu licencjonowania na rdzeń. W tej chwili koszt obliczeń, w tym licencjonowania systemu operacyjnego, pozostaje ten sam jako oryginalny rozmiar. Aby uzyskać więcej informacji, zobacz [rozmiary maszyn wirtualnych Azure więcej obciążeń ekonomicznego bazy danych](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
 
 
 | Name (Nazwa)                | Procesor wirtualny | Specyfikacja           |
 |---------------------|------|-----------------|
+| 2 Standard_M8 MS     | 2    | Identyczny M8ms    |
+| Standard_M8 4ms     | 4    | Identyczny M8ms    |
+| Standard_M16 4ms    | 4    | Identyczny M16ms   |
+| Standard_M16 — zazwyczaj około 8 MS    | 8    | Identyczny M16ms   |
+| Standard_M32 — zazwyczaj około 8 MS    | 8    | Identyczny M32ms   |
+| 16 Standard_M32 MS   | 16   | Identyczny M32ms   |
 | Standard_M64 32ms   | 32   | Identyczny M64ms   |
 | 16 Standard_M64 MS   | 16   | Identyczny M64ms   |
 | Standard_M128 64ms  | 64   | Identyczny M128ms  |

@@ -188,6 +188,8 @@
           href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Uzyskiwanie dostępu do obiektów blob z zastosowaniem domen niestandardowych przy użyciu protokołu HTTPS za pomocą sieci Azure CDN
           href: storage-https-custom-domain-cdn.md
+        - name: Niezmienna funkcja magazynu usługi Azure Blob Storage (wersja zapoznawcza)
+          href: storage-blob-immutable-storage.md
     - name: Monitorowanie i rozwiązywanie problemów
       items:
         - name: Samouczek dotyczący rozwiązywania problemów
@@ -350,11 +352,11 @@
     - name: .NET
       items:
         - name: 'Obiekty blob, kolejki, tabele i pliki'
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client?view=azure-dotnet'
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client'
         - name: Przenoszenie danych
-          href: 'https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement?view=azure-dotnet'
+          href: 'https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement'
         - name: Resource Manager
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management?view=azure-dotnet'
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
     - name: Java
       items:
         - name: 'Obiekty blob, kolejki, tabele i pliki'

@@ -1,6 +1,6 @@
 ---
-title: Warunki dostępu warunkowego w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przypisania są używane w dostępu warunkowego w usłudze Azure Active Directory do wyzwalania zasad.
+title: Jakie są warunki dostępu warunkowego w usłudze Azure Active Directory? | Microsoft Docs
+description: Dowiedz się, jak warunki są używane w dostępu warunkowego w usłudze Azure Active Directory do wyzwalania zasad.
 services: active-directory
 keywords: dostęp warunkowy do aplikacji, dostęp warunkowy przy użyciu usługi Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/01/2018
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 5f0ff092a7535448d48642e972d1d36652f1b83f
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 42792170593dbd94d0eae9b408c70f326891508a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34735145"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232471"
 ---
-# <a name="conditions-in-azure-active-directory-conditional-access"></a>Warunki dostępu warunkowego w usłudze Azure Active Directory 
+# <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Jakie są warunki dostępu warunkowego w usłudze Azure Active Directory? 
 
 Z [dostępu warunkowego w usłudze Azure Active Directory (Azure AD)](active-directory-conditional-access-azure-portal.md), można kontrolować sposób autoryzowanym użytkownikom dostępu aplikacji w chmurze. W zasadach dostępu warunkowego zdefiniowanego odpowiedzi ("tym") Przyczyna służącą do wyzwalania zasad ("w takim przypadku"). 
 
@@ -140,7 +140,7 @@ Typowe przypadki użycia tego warunku są zasadami, które:
 
 - Zablokuj dostęp użytkowników uzyskujących dostęp do usługi z określonego krajach lub regionach. 
 
-Aby uzyskać więcej informacji, zobacz [lokalizacji warunki dostępu warunkowego w usłudze Azure Active Directory](active-directory-conditional-access-locations.md).
+Aby uzyskać więcej informacji, zobacz [co to jest warunek lokalizację w usłudze Azure Active Directory dostępu warunkowego?](active-directory-conditional-access-locations.md)
 
 
 ## <a name="client-apps"></a>Aplikacje klienckie
@@ -241,7 +241,7 @@ Nie. Nie została zmieniona w domyślne zachowanie zasady. Zasady nadal mają za
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wprowadzenie dostępu warunkowego w usłudze Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md).
+- Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](active-directory-conditional-access-app-based-mfa.md).
 
 - Jeśli wszystko jest gotowe do skonfigurowania zasad dostępu warunkowego dla danego środowiska, zobacz [najlepszych rozwiązań dotyczących dostępu warunkowego w usłudze Azure Active Directory](active-directory-conditional-access-best-practices.md). 
 
