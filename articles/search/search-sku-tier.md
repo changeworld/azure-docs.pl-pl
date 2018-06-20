@@ -7,14 +7,14 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/12/2018
+ms.date: 06/19/2018
 ms.author: heidist
-ms.openlocfilehash: bbf535c5b446fd654331374d29c106b6e43d55f5
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 241d24746d82a359b4bbf4febbbaaf91180dd23e
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34266884"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36210928"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Wybierz warstwę cenową dla usługi wyszukiwanie Azure
 
@@ -39,7 +39,7 @@ Pojęcia, które należy zrozumieć wyboru warstwy obejmują definicje pojemnoś
 Pojemność mają strukturę jako *replik* i *partycji*. Repliki są wystąpieniami usługi wyszukiwania, której każdej repliki hostem jednej kopii indeksu równoważeniem obciążenia. Na przykład usługi z replikami 6 ma 6 kopie każdy indeks załadowany w usłudze. Partycje przechowywania indeksy i automatycznie podziału danych z możliwością: dwie partycje podzielone indeksu w połowie, trzy partycje trzecie i tak dalej. Pod względem wydajności *rozmiar partycji* jest głównych funkcji różnego między warstwami.
 
 > [!NOTE]
-> Wszystkie **standardowe** warstwy obsługi [repliki kombinacji elastyczne i partycji](search-capacity-planning.md#chart) , co pozwala [wagi systemu dla szybkości lub magazynu](search-performance-optimization.md) zmieniając saldo. **Podstawowe** zapewnia trzy repliki dla wysokiej dostępności, ale ma tylko partycji. **Bezpłatne** warstw nie udostępniają zasobów dedykowanych: obliczeniowych, zasobów są współużytkowane przez wiele bezpłatnych usług.
+> Wszystkie **standardowe** warstwy obsługi [repliki kombinacji elastyczne i partycji](search-capacity-planning.md#chart) , co pozwala [wagi systemu dla szybkości lub magazynu](search-performance-optimization.md) zmieniając saldo. **Podstawowe** zapewnia trzy repliki dla wysokiej dostępności, ale ma tylko jedną partycję. **Bezpłatne** warstw nie udostępniają zasobów dedykowanych: obliczeniowych, zasobów są współużytkowane przez wiele bezpłatnych usług.
 
 ### <a name="limits"></a>Limity
 

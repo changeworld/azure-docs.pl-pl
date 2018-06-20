@@ -3,24 +3,24 @@ title: Usługa Azure Active Directory raportowania — często zadawane pytania 
 description: Raportowanie często zadawane pytania dotyczące usługi Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 ms.assetid: 534da0b1-7858-4167-9986-7a62fbd10439
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: compliance-reports
 ms.date: 05/10/2018
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: bf253e0b8451b3798360a657485289f089239c70
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2ceaf4ecf7da78377c52135b7de5191c1dc3dd28
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34588594"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232454"
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Usługa Azure Active Directory raportowania — często zadawane pytania
 
@@ -72,7 +72,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 
 **Pytanie: jak wiele rekordów I można pobrać z portalu Azure?**
 
-**Odpowiedź:** maksymalnie 120 rekordów K można pobrać z portalu Azure. Rekordy są sortowane według *najnowszych* i domyślnie uzyskać najnowsze rekordy 120 K. 
+**Odpowiedź:** rekordów do 5000 można pobrać z portalu Azure. Rekordy są sortowane według *najnowszych* i domyślnie uzyskać najnowsze rekordy 5000. Dla rekordów rozmiarach większych niż 5000, wybierz warunki filtru, a następnie kliknij przycisk *skryptu* przycisk w portalu Azure. To spowoduje pobranie skrypt programu PowerShell, który można uruchomić, aby wygenerować plik CSV wszystkich rekordów dopasowania warunki filtru. Należy uruchomić skrypt programu PowerShell *trybu administratora*. Aby uzyskać więcej informacji, zobacz [pobrać logowania działania](active-directory-reporting-activity-sign-ins.md#download-sign-in-activities).
 
 ---
 
@@ -84,7 +84,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 
 **Pytanie: jak uzyskać licencję premium?**
 
-**Odpowiedź:** zobacz [wprowadzenie do korzystania z usługi Azure Active Directory Premium](active-directory-get-started-premium.md) dla odpowiedzi na to pytanie.
+**Odpowiedź:** zobacz [wprowadzenie do korzystania z usługi Azure Active Directory Premium](fundamentals/active-directory-get-started-premium.md) dla odpowiedzi na to pytanie.
 
 ---
 

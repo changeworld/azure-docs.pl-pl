@@ -13,20 +13,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2018
+ms.date: 06/18/2018
 ms.author: msangapu
-ms.openlocfilehash: 162f9e4a6ad18cc95ccc0b14ce5d8c6318b86ba5
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 5b3b3d3946b56ff53ad74c2ab93a646baa787d05
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294015"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222981"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Usługa aplikacji Azure w systemie Linux — często zadawane pytania
 
 Wraz z wydaniem usługi App Service w systemie Linux pracujemy nad Dodawanie funkcji i wprowadzać ulepszenia platformy. Ten artykuł zawiera odpowiedzi na pytania, że naszym klientom ma zostały prośbą ostatnio.
 
-Jeśli masz pytania, komentarza, w artykule i firma Microsoft będzie odpowiedź tak szybko, jak to możliwe.
+Jeśli masz pytania, dodać komentarz dotyczący tego artykułu.
 
 ## <a name="built-in-images"></a>Wbudowane obrazów
 
@@ -60,7 +60,7 @@ Należy ustawić **zastrzeżone** pole app service w celu *true*.
 
 **Moja aplikacja sieci web nadal używa stary obraz kontenera Docker po po aktualizacji obraz Centrum Docker. Są obsługiwane ciągłej integracji i wdrażanie niestandardowych kontenery?**
 
-Aby skonfigurować ciągłej integracji/wdrożenia do rejestru kontenera platformy Azure lub DockerHub obrazy sprawdzając następujący artykuł [ciągłego wdrażania aplikacji sieci Web dla kontenerów](./app-service-linux-ci-cd.md). Dla prywatnych rejestrów można odświeżyć kontenera przez zatrzymanie i uruchomienie następnie aplikacji sieci web. Lub możesz zmienić lub Dodaj ustawienie aplikacji fikcyjny, aby wymusić odświeżenie z kontenera.
+Tak, aby skonfigurować ciągłej integracji/wdrożenia rejestru kontenera platformy Azure lub DockerHub, następujące [ciągłego wdrażania aplikacji sieci Web dla kontenerów](./app-service-linux-ci-cd.md). Dla prywatnych rejestrów można odświeżyć kontenera przez zatrzymanie i uruchomienie następnie aplikacji sieci web. Lub możesz zmienić lub Dodaj ustawienie aplikacji fikcyjny, aby wymusić odświeżenie z kontenera.
 
 **Czy obsługują środowisk przemieszczania?**
 
@@ -70,15 +70,15 @@ Tak.
 
 Tak, należy określić aplikację nosi nazwę `WEBSITE_WEBDEPLOY_USE_SCM` do *false*.
 
-**Wdrażanie Git Moja aplikacja zakończy się niepowodzeniem podczas korzystania z aplikacji sieci web systemu Linux. Jak mogę obejścia tego problemu?**
+**Wdrażanie Git Moja aplikacja zakończy się niepowodzeniem podczas korzystania z aplikacji sieci web systemu Linux. Jak można obejść problem?**
 
-W przypadku niepowodzenia wdrożenia usługi Git do aplikacji sieci web systemu Linux można wybrać następujące opcje alternatywny, aby wdrożyć kod aplikacji:
+W przypadku niepowodzenia wdrożenia usługi Git do aplikacji sieci web systemu Linux można wybrać jedną z poniższych opcji, aby wdrożyć kod aplikacji:
 
 - Użyj funkcji ciągłego dostarczania (wersja zapoznawcza): w repozytorium Git programu Team Services lub repozytorium GitHub, aby użyć ciągłego dostarczania Azure można przechowywać kodu źródłowego aplikacji. Aby uzyskać więcej informacji, zobacz [Konfigurowanie ciągłego dostarczania dla aplikacji sieci web Linux](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
 
-- Użyj [ZIP wdrażania interfejsu API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): Aby użyć tego interfejsu API [SSH do aplikacji sieci web](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection) i przejdź do folderu, w której chcesz wdrożyć kod. Uruchom następujące polecenie:
+- Użyj [ZIP wdrażania interfejsu API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): Aby użyć tego interfejsu API [SSH do aplikacji sieci web](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection) i przejdź do folderu, w której chcesz wdrożyć kod. Uruchom poniższy kod:
 
-   ```
+   ```bash
    curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy
    ```
 
@@ -86,10 +86,11 @@ W przypadku niepowodzenia wdrożenia usługi Git do aplikacji sieci web systemu 
 
 ## <a name="language-support"></a>Obsługa języków
 
-**Chcę użyć websocket we własnej aplikacji Node.js ani specjalne ustawienia konfiguracji, aby ustawić?**
+**Chcę użyć gniazda sieci web w mojej aplikacji Node.js, wszystkie ustawienia specjalne lub konfiguracje można ustawić?**
 
-Tak, wyłącz `perMessageDeflate` w kodzie Node.js po stronie serwera. Na przykład jeśli używasz użyciu biblioteki socket.io, wykonaj następujące czynności:
-```
+Tak, wyłącz `perMessageDeflate` w kodzie Node.js po stronie serwera. Na przykład jeśli używasz użyciu biblioteki socket.io, należy użyć poniższego kodu:
+
+```nodejs
 var io = require('socket.io')(server,{
   perMessageDeflate :false
 });
@@ -101,16 +102,16 @@ Tak.
 
 **Są obsługiwane Composer Menedżer zależności dla aplikacji PHP?**
 
-Tak. Podczas wdrażania narzędzia Git Kudu powinna wykryć wdrażana jest aplikacja PHP (dzięki użyciu obecność pliku composer.lock), czy aparat Kudu następnie wyzwoli instalacji composer dla Ciebie.
+Tak, podczas wdrażania narzędzia Git, Kudu powinna wykryć wdrażana aplikacja PHP (dzięki użyciu obecność pliku composer.lock), czy aparat Kudu następnie wyzwoli instalacji composer.
 
 ## <a name="custom-containers"></a>Kontenery niestandardowych
 
 **Korzystam z własnych niestandardowych kontenera. Chcę platformy w celu zainstalowania udziału SMB do `/home/` katalogu.**
 
-Możesz to zrobić przez ustawienie `WEBSITES_ENABLE_APP_SERVICE_STORAGE` ustawienia aplikacji na *true* lub przez usunięcie aplikacji ustawienie całkowicie. Należy pamiętać, że w ten sposób spowoduje ponowne uruchomienie kontenera, gdy magazynu platformy przechodzi przez zmianę. 
+Możesz to zrobić przez ustawienie `WEBSITES_ENABLE_APP_SERVICE_STORAGE` ustawienia aplikacji na *true*. Należy pamiętać, że spowoduje to kontener zostanie ponownie uruchomiony po magazynu platformy przechodzi przez zmianę.
 
 >[!NOTE]
->Jeśli `WEBSITES_ENABLE_APP_SERVICE_STORAGE` jest ustawienie *false*, `/home/` katalogu nie będą udostępniane między wystąpieniami skali i pliki, które są zapisywane nie zostaną utrwalone uruchomieniach.
+>Jeśli `WEBSITES_ENABLE_APP_SERVICE_STORAGE` ustawienie jest nieokreślona lub wartość *false*, `/home/` katalogu nie będą udostępniane między wystąpieniami skali i pliki, które są zapisywane nie zostaną utrwalone uruchomieniach.
 
 **Moje niestandardowe kontenera zajmuje dużo czasu do uruchomienia, i platformy ponownego uruchomienia kontenera, przed zakończeniem uruchamiania.**
 
@@ -162,6 +163,6 @@ Możesz podać Twój pomysł na [forum opinii aplikacje sieci Web](https://aka.m
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Co to jest Azure App Service w systemie Linux?](app-service-linux-intro.md)
-* [Konfigurowanie środowisk przejściowych w usłudze Azure App Service](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-* [Ciągłe wdrażanie w aplikacji sieci Web dla kontenerów](./app-service-linux-ci-cd.md)
+- [Co to jest Azure App Service w systemie Linux?](app-service-linux-intro.md)
+- [Konfigurowanie środowisk przejściowych w usłudze Azure App Service](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [Ciągłe wdrażanie w aplikacji sieci Web dla kontenerów](./app-service-linux-ci-cd.md)

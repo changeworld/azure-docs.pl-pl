@@ -16,12 +16,12 @@ ms.date: 04/19/2018
 ms.author: hirsin
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: 086a2fde5905321da7d5689b6f1ee2f5139209ba
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 95a3c1d3effe6d4b73354fb3ef871aeb7767bfb4
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34588866"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228573"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Można skonfigurować tokenu okresy istnienia w usłudze Azure Active Directory (publicznej wersji zapoznawczej)
 Można określić okres istnienia token wystawiony przez usługę Azure Active Directory (Azure AD). Można ustawić tokenu okresy istnienia dla wszystkich aplikacji w organizacji, dla wielodostępnych aplikacji (wielu organizacji) lub nazwy głównej usługi określonego w organizacji.
@@ -335,7 +335,7 @@ W tym przykładzie utworzysz kilka zasad, aby dowiedzieć się, jak działa syst
 
     Masz teraz zasady, która ma zastosowanie do całej organizacji. Należy zachować te zasady 30-dniowej dla podmiotu określonej usługi, ale zmienić domyślne zasady organizacji do górnej granicy "do odwołanych."
 
-    1.  Aby wyświetlić nazwy główne usług wszystkich organizacji, można zbadać albo [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) lub [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Ponadto można to sprawdzić w [Explorer Azure AD Graph](https://graphexplorer.cloudapp.net/)i [Eksplorator systemu Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer) przy użyciu konta usługi Azure AD.
+    1.  Aby wyświetlić nazwy główne usług wszystkich organizacji, można zbadać albo [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) lub [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Ponadto można to sprawdzić w [Explorer Azure AD Graph](https://graphexplorer.azurewebsites.net/)i [Eksplorator systemu Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer) przy użyciu konta usługi Azure AD.
 
     2.  Jeśli masz **ObjectId** z Twojej nazwy głównej usługi, uruchom następujące polecenie:
 

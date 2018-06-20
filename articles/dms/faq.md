@@ -10,25 +10,25 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 06/08/2018
-ms.openlocfilehash: 0e10907ac3db2d792b73e0a37aa2d0f6a916d746
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.date: 06/19/2018
+ms.openlocfilehash: 2fd5049b8b65620087e3c1ec42b6a5dcb0e0741a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850076"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36214107"
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>Często zadawane pytania dotyczące korzystania z usługi migracji bazy danych Azure
 W tym artykule wymieniono często zadawane pytania dotyczące korzystania z usługi migracji bazy danych Azure oraz powiązanych odpowiedzi.
 
 ### <a name="q-what-is-azure-database-migration-service"></a>Q. Co to jest usługa migracji bazy danych Azure?
-Usługa Azure bazy danych migracji jest pełni zarządzana usługa zaprojektowana w celu umożliwienia bezproblemowego migracji z wielu źródeł bazy danych do platformy Azure danych z minimalnym czasem przestojów. Usługa jest obecnie w wersji zapoznawczej, z programistycznych koncentruje się na:
+Usługa Azure bazy danych migracji jest pełni zarządzana usługa zaprojektowana w celu umożliwienia bezproblemowego migracji z wielu źródeł bazy danych do platformy Azure danych z minimalnym czasem przestojów. Usługa jest obecnie ogólnie dostępna z trwającej programistycznych koncentruje się na:
 - Niezawodność i wydajność.
 - Iteracyjny dodanie par źródłowy i docelowy.
 - Dalsze inwestycje w bez tarcia migracji.
 
 ### <a name="q-what-source-target-pairs-does-the-azure-database-migration-service-currently-support"></a>Q. Jakie pary źródłowy i docelowy usługa migracji bazy danych Azure obecnie obsługuje?
-Usługi w publicznej wersji zapoznawczej obsługuje obecnie migracji z programu SQL Server z bazą danych SQL Azure i można przejść do portalu Azure teraz, aby rozpocząć korzystanie z usługi migracji bazy danych Azure, w tym scenariuszu. Inne pary źródłowy i docelowy, takich jak SQL Server do wystąpienia zarządzane bazy danych SQL Azure i Oracle do bazy danych SQL Azure są dostępne za pośrednictwem ograniczone prywatnej wersji zapoznawczej. Dla możliwość uczestnictwa w ograniczonym prywatnej wersji zapoznawczej te scenariusze, zarejestruj się [tutaj](https://sqldatabase-migrationpreview.azurewebsites.net/).
+Usługa jest obecnie obsługuje migracji z programu SQL Server z bazą danych SQL Azure i można przejść do portalu Azure teraz, aby rozpocząć korzystanie z usługi migracji bazy danych Azure, w tym scenariuszu. Inne pary źródłowy i docelowy, takich jak Oracle do bazy danych SQL Azure są dostępne za pośrednictwem ograniczone prywatnej wersji zapoznawczej. Dla możliwość uczestnictwa w ograniczonym prywatnej wersji zapoznawczej te scenariusze, zarejestruj się [tutaj](https://aka.ms/dms-preview/).
 
 ### <a name="q-how-does-the-azure-database-migration-service-compare-to-other-microsoft-database-migration-tools-such-as-the-database-migration-assistant-dma-or-sql-server-migration-assistant-ssma"></a>Q. Jak usługa Azure bazy danych migracji porównać do innych narzędzi migracji bazy danych firmy Microsoft, takich jak bazy danych migracji Asystenta (DMA) lub SQL Server Migration Assistant (SSMA)?
 Usługa Azure bazy danych migracji jest preferowaną metodą migracja bazy danych do systemu Microsoft Azure na dużą skalę. Aby uzyskać więcej szczegółów na jak usługa Azure bazy danych migracji porównuje do innych firmy Microsoft bazy danych narzędzi migracji, a aby uzyskać zalecenia dotyczące korzystania z usługi dla różnych scenariuszy, zobacz Publikowanie blogu [rozróżnianie Microsoft bazy danych Narzędzia migracji i usługi](https://blogs.msdn.microsoft.com/datamigration/2017/10/13/differentiating-microsofts-database-migration-tools-and-services/).
@@ -93,4 +93,4 @@ Jeśli użytkownik jawnie zatrzymuje usługę migracji bazy danych Azure (DMS) l
 Chcemy poznać Twoją opinię. Wyślij opinię i / pomysły mają o usłudze Azure bazy danych migracji za pomocą User Voice [tutaj](https://feedback.azure.com/forums/906100-azure-database-migration-service).
 
 ## <a name="next-steps"></a>Kolejne kroki
-Omówienie usługi migracji bazy danych Azure i regionalnych dostępność w publicznej wersji zapoznawczej, zobacz artykuł [co to jest podgląd z migracji bazy danych Azure](dms-overview.md). 
+Omówienie usługi migracji bazy danych Azure i regionalnych dostępności, zobacz artykuł [co to jest usługa Azure bazy danych migracji](dms-overview.md). 

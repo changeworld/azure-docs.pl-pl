@@ -12,23 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 06/19/2018
 ms.author: terrylan
-ms.openlocfilehash: 6a2ece3fc908963a6c8ea68f9746788278407fdc
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 7cb6927b8de07566428050e06a981c8f3afabb05
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2017
-ms.locfileid: "25542150"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227527"
 ---
 # <a name="azure-security-overview"></a>Przegląd zabezpieczeń platformy Azure
-Witryny Microsoft Azure zabezpieczeń informacji w witrynie Azure.com jest Twoje miejsce techniczne odpowiedzi na pytania zabezpieczeń platformy Azure. Jeśli interesuje Cię zgodności platformy Azure i jak Azure zabezpiecza własnej infrastruktury, odwiedź stronę [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/default.aspx).
+
+Witryny Microsoft Azure zabezpieczeń informacji w witrynie Azure.com jest Twoje miejsce techniczne odpowiedzi na pytania zabezpieczeń platformy Azure. Jeśli interesuje Cię zgodności platformy Azure i jak Azure zabezpiecza własnej infrastruktury, odwiedź stronę [Microsoft Trust Center](https://www.microsoft.com/en-us/TrustCenter/).
 
 Wiemy, że zabezpieczenia są zadania, co w chmurze i jak ważne jest aby znaleźć dokładne i aktualne informacje na temat zabezpieczeń platformy Azure. Najważniejsze przyczyny na potrzeby aplikacji i usług Azure ma korzystać z szerokiej gamy narzędzi zabezpieczeń i możliwości są dostępne. Te narzędzia i funkcje pomocy umożliwiają tworzenie bezpiecznych rozwiązań na bezpiecznej platformie Azure.
 
 Tę stronę i tę witrynę, rozpoczyna się nowych usług Azure przejdzie w tryb online, a istniejące usługi zostały zaktualizowane. Stale poprawy naszych ofert zabezpieczeń i będzie udostępniana szczegóły techniczne dotyczące tych ulepszeń w tym miejscu. Zaleca się regularnie wróć do tej lokacji, a następnie zobacz, co nowego!
 
 ## <a name="using-the-azure-security-information-site"></a>Za pomocą witryny informacji zabezpieczeń platformy Azure
+
 Podczas wyszukiwania w lewej części strony zostanie wyświetlony kolekcji kategorii zabezpieczeń. Kliknij lub naciśnij polecenie tematu, aby wyświetlić artykuły, które zostały dla tej kategorii.
 
 Każda kategoria ma artykuł z omówieniem. Celem tego artykułu omówienie jest zapewnienie podsumowanie platforma Azure ma oferować pod względem zabezpieczeń dla tej kategorii. Artykuły omówienie pomaga w zrozumieniu produktów, usług i funkcji dostępnych w Azure, której można użyć w celu podniesienia poziomu zabezpieczeń wdrożeń. Te artykuły omówienie zawiera wiele łącza do zawartości technicznej, aby dowiedzieć się więcej o tematach i sposobu ich wdrażania.

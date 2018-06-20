@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 4c12875f-de71-40cb-b9ac-216a805334e5
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 0d71618b0f8c7c0eceef3659d70ef866fc49b022
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 1fd7fc6560c3378765623b46f8af59cfc8c65286
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35938391"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231461"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dome9-arc"></a>Samouczek: Integracji Azure Active Directory z Dome9 łuk
 

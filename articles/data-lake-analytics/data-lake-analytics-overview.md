@@ -1,26 +1,23 @@
 ---
-title: Omówienie usługi Microsoft Azure Data Lake Analytics | Microsoft Docs
-description: Usługa Data Lake Analytics pozwala kierować firmą w oparciu o szczegółowe dane uzyskane z danych w chmurze w dowolnej skali.
+title: Omówienie usługi Azure Data Lake Analytics
+description: Usługa Data Lake Analytics pozwala kierować firmą w oparciu o szczegółowe informacje uzyskane z danych w chmurze w dowolnej skali.
 services: data-lake-analytics
-documentationcenter: ''
 author: saveenr
-manager: saveenr
-editor: cgronlun
+ms.author: saveenr
+manager: kfile
+editor: jasonwhowell
 ms.assetid: 1e1d443a-48a2-47fb-bc00-bf88274222de
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: overview
 ms.date: 06/23/2017
-ms.author: saveenr
-ms.openlocfilehash: 8a70311825d0ef548660f8ce4d12b5100b530170
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: f5425abc484d30f07ce29d6b7b6ec36dad79b651
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623625"
 ---
-# <a name="welcome-to-azure-data-lake-analytics"></a>Zapraszamy do usługi Azure Data Lake Analytics
+# <a name="what-is-azure-data-lake-analytics"></a>Co to jest usługa Azure Data Lake Analytics?
 
 Usługa Azure Data Lake Analytics jest usługą zadań analizy na żądanie, która pozwala uprościć analizowanie danych big data. Zamiast wdrażać, konfigurować i dostosowywać sprzęt, możesz pisać zapytania umożliwiające przekształcanie danych i wyodrębniać wartościowe informacje. Usługa analizy może od razu rozpocząć obsługę zadań w dowolnej skali — należy wybrać ustawienie wskazujące potrzebną moc. Płacisz tylko za uruchomione zadanie, dzięki czemu oszczędzasz pieniądze. 
 

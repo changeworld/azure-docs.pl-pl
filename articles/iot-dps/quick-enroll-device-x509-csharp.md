@@ -1,22 +1,21 @@
 ---
 title: Rejestrowanie urządzenia X.509 w usłudze Azure Device Provisioning przy użyciu kodu C# | Microsoft Docs
 description: Szybki start na platformie Azure — rejestrowanie urządzenia X.509 w usłudze Azure IoT Hub Device Provisioning przy użyciu zestawu SDK usługi C#
-services: iot-dps
-keywords: ''
 author: bryanla
-ms.author: v-jamebr
+ms.author: bryanla
 ms.date: 01/21/2018
-ms.topic: hero-article
+ms.topic: quickstart
 ms.service: iot-dps
-documentationcenter: ''
+services: iot-dps
 manager: timlt
-ms.devlang: na
+ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: ef00191e524e93d1ed578193d37fb6002c15a0b8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 444b59da487aa88d42ca6713bba86cabc620a0c7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630201"
 ---
 # <a name="enroll-x509-devices-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>Rejestrowanie urządzeń X.509 w usłudze IoT Hub Device Provisioning przy użyciu zestawu SDK usługi C#
 
@@ -30,7 +29,7 @@ W tych krokach pokazano, jak programowo utworzyć grupę rejestracji dla pośred
 1. Upewnij się, że na Twojej maszynie jest zainstalowany program [Visual Studio 2017](https://www.visualstudio.com/vs/). 
 2. Upewnij się, że na maszynie jest zainstalowany [zestaw SDK dla platformy .NET Core](https://www.microsoft.com/net/download/windows). 
 3. Pamiętaj, aby wcześniej wykonać kroki przedstawione w części [Konfigurowanie usługi IoT Hub Device Provisioning za pomocą witryny Azure Portal](./quick-setup-auto-provision.md).
-4. Potrzebny będzie plik pem lub cer zawierający publiczną część pośredniego lub głównego certyfikatu X.509 urzędu certyfikacji, który został przekazany do usługi aprowizacji i przez nią zweryfikowany. [Zestaw SDK języka C usługi Azure IoT](https://github.com/Azure/azure-iot-sdk-c) zawiera narzędzia, które mogą ułatwić tworzenie łańcucha certyfikatów X.509, przekazywanie certyfikatu głównego lub pośredniego z tego łańcucha oraz wykonywanie operacji dowodu posiadania w usłudze w celu weryfikacji certyfikatu. Aby skorzystać z tych narzędzi, pobierz zawartość folderu [azure-iot-sdk-c/tools/CACertificates](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) do folderu roboczego na Twojej maszynie i postępuj zgodnie z instrukcjami podanymi w pliku [azure-iot-sdk-c\tools\CACertificates\CACertificateOverview.md](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md). Oprócz narzędzi z zestawu SDK języka C w przykładzie weryfikacji certyfikatu grupy [Group certificate verification sample](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples/GroupCertificateVerificationSample) z **zestawu SDK usługi C#** pokazano, jak wykonać operację dowodu posiadania z użyciem istniejącego pośredniego lub głównego certyfikatu X.509 urzędu certyfikacji. 
+4. Potrzebny będzie plik pem lub cer zawierający publiczną część pośredniego lub głównego certyfikatu X.509 urzędu certyfikacji, który został przekazany do usługi aprowizacji i przez nią zweryfikowany. [Zestaw SDK języka C usługi Azure IoT](https://github.com/Azure/azure-iot-sdk-c) zawiera narzędzia, które mogą ułatwić tworzenie łańcucha certyfikatów X.509, przekazywanie certyfikatu głównego lub pośredniego z tego łańcucha oraz wykonywanie operacji dowodu posiadania w usłudze w celu weryfikacji certyfikatu. Aby skorzystać z tych narzędzi, pobierz zawartość folderu [azure-iot-sdk-c/tools/CACertificates](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) do folderu roboczego na Twojej maszynie i postępuj zgodnie z instrukcjami podanymi w pliku [azure-iot-sdk-c\tools\CACertificates\CACertificateOverview.md](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md). Oprócz narzędzi z zestawu SDK języka C w przykładzie [Group certificate verification sample](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples/GroupCertificateVerificationSample) (przykład weryfikacji certyfikatu grupy) z **zestawu SDK usługi C#** pokazano, jak wykonać operację dowodu posiadania z użyciem istniejącego pośredniego lub głównego certyfikatu X.509 urzędu certyfikacji. 
 
   > [!IMPORTANT]
   > Certyfikaty utworzone za pomocą narzędzi zestawu SDK są przeznaczone tylko do użycia na potrzeby programowania. Informacje na temat uzyskiwania certyfikatów odpowiednich dla kodu produkcyjnego znajdują się w artykule [Jak uzyskać certyfikat X.509 urzędu certyfikacji](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) w dokumentacji usługi Azure IoT Hub.

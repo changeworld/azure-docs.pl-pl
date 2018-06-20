@@ -4,14 +4,14 @@ description: Opisuje sposób uściślić oceny w usłudze Azure migracji za pomo
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: 690231b938f60f16dcd10656b9a1f99c8c8f29cb
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a91543dcea1fb9fb6a33b5a7bc3892a2bac7b241
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34203160"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215787"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Dostosuj grupę za pomocą mapowania grup zależności
 

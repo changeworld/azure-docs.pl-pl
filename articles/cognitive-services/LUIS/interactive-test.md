@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 760434253a3ece14352154a22cc68142ec2b0531
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: fb4c3bb117d1ea60c9cc28d2b193ee3c01f6c945
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35760242"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221635"
 ---
 # <a name="test-your-luis-app"></a>Testowanie aplikacji LUIS
 <a name="train-your-app"></a>
@@ -92,18 +92,23 @@ Jeśli masz kilka LUIS punktów końcowych, użyj **dodatkowe ustawienia** łąc
 
 
 ### <a name="view-bing-spell-check-corrections-in-test-panel"></a>Wyświetl korekty sprawdzania pisowni usługi Bing w panelu testu
-Możesz wyświetlić pisowni dostarczonych przez [sprawdzania pisowni usługi Bing w wersji 7](https://azure.microsoft.com/services/cognitive-services/spell-check/) interfejsu API w widoku JSON **opublikowano** panelu okienku testu. 
+Wymagania dotyczące wyświetlania poprawek pisowni: 
 
-Aby użyć tej funkcji, należy po opublikowaniu aplikacji, i mieć sprawdzania pisowni usługi Bing [klucza usługi](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api). Klucz usługi nie są przechowywane i powinna zostać zresetowana w każdej sesji przeglądarki. 
+* Opublikowanych aplikacji
+* Sprawdzanie pisowni usługi Bing [klucza usługi](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api). Klucz usługi nie są przechowywane i powinna zostać zresetowana w każdej sesji przeglądarki. 
 
-Użyj następującego polecenia można użyć klucza usługi sprawdzania pisowni usługi Bing w wersji 7 w okienku testu. 
+Użyj poniższej procedury, aby uwzględnić [sprawdzania pisowni usługi Bing w wersji 7](https://azure.microsoft.com/services/cognitive-services/spell-check/) w okienku wyników testu. 
 
-1. W panelu testu na **opublikowano** okienku wybierz **dodatkowe ustawienia**.
+1. W **testu** okienku, wprowadź utterance. Gdy utterance jest przydatna, wybierz **[inspekcję](#inspect-score)** pod utterance wprowadzona. 
 
-2. W oknie podręcznym wprowadź Twojej **sprawdzania pisowni usługi Bing** klucza usługi. 
+2. Gdy **inspekcję** zostanie otwarty panel, wybierz opcję  **[porównania z opublikowaną](#compare-with-published-version)**. 
+
+3. Gdy **opublikowano** zostanie otwarty panel, wybierz opcję  **[dodatkowe ustawienia](#additional-settings-in-test-panel)**.
+
+4. W oknie podręcznym wprowadź Twojej **sprawdzania pisowni usługi Bing** klucza usługi. 
     ![Wprowadź klucz usługi sprawdzania pisowni usługi Bing](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
 
-3. Wprowadź kwerendę niepoprawne sprawdzania pisowni takich jak `book flite to seattle` , a następnie wybierz opcję Wprowadź. Niepoprawne pisownię wyrazu `flite` zostanie zastąpiony w zapytaniu wysyłane do LUIS i wynikowy JSON zawiera zarówno oryginalne zapytanie, jako `query`i poprawiony pisowni w zapytaniu, jako `alteredQuery`.
+5. Wprowadź kwerendę niepoprawne sprawdzania pisowni takich jak `book flite to seattle` , a następnie wybierz opcję Wprowadź. Niepoprawne pisownię wyrazu `flite` zostanie zastąpiony w zapytaniu wysyłane do LUIS i wynikowy JSON zawiera zarówno oryginalne zapytanie, jako `query`i poprawiony pisowni w zapytaniu, jako `alteredQuery`.
 
     ![Skorygowane Pisownia JSON](./media/luis-how-to-interactive-test/interactive-with-spell-check-results.png)
 

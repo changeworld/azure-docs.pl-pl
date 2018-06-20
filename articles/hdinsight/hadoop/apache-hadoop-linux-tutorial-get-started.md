@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: jgao
-ms.openlocfilehash: 4cf20dacf66ee334dcd455ce1770609c175d3b88
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 48dbd89216d27e9495a9129c6b873f86a9a23338
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763259"
 ---
 # <a name="quickstart-get-started-with-hadoop-and-hive-in-azure-hdinsight-using-resource-manager-template"></a>Szybki start: rozpoczynanie pracy z usługami Hadoop i Hive w usłudze Azure HDInsight przy użyciu szablonu usługi Resource Manager
 
@@ -77,6 +78,110 @@ W tej sekcji utworzysz klaster Hadoop w usłudze HDInsight przy użyciu szablonu
 > Inne metody tworzenia klastrów i opis właściwości używanych w tym samouczku znajdziesz w artykule [Tworzenie klastrów usługi HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).       
 > 
 >
+
+## <a name="use-vscode-to-run-hive-queries"></a>Uruchamianie zapytań usługi Hive za pomocą programu VS Code
+
+Aby uzyskać informacje dotyczące korzystania z narzędzi dla usługi HDInsight w programie VS Code, zobacz temat [Use Azure HDInsight Tools for Visual Studio Code](../hdinsight-for-vscode.md) (Użycie narzędzi dla usługi HDInsight Azure w programie Visual Studio Code).
+
+### <a name="submit-interactive-hive-queries"></a>Przesyłanie interaktywnych zapytań Hive
+
+Za pomocą narzędzi dla usługi HDInsight dla programu VS Code można przesłać interaktywne zapytania Hive do interaktywnych klastrów zapytań usługi HDInsight.
+
+1. Utwórz nowy folder roboczy i nowy plik skryptu Hive, jeśli jeszcze ich nie masz.
+
+2. Połącz się z kontem platformy Azure, a następnie skonfiguruj klaster domyślny, jeśli nie zostało to jeszcze zrobione.
+
+3. Skopiuj i wklej następujący kod do pliku Hive, a następnie zapisz go.
+
+    ```hiveql
+    SELECT * FROM hivesampletable;
+    ```
+4. Kliknij prawym przyciskiem myszy edytor skryptów, a następnie wybierz pozycję **HDInsight: interakcyjny klaster Hive**, aby przesłać zapytanie. Narzędzia pozwalają również na przesyłanie bloku kodu zamiast całego pliku skryptu za pomocą menu kontekstowego. Wkrótce wyniki zapytań zostają wyświetlone w nowej tabeli.
+
+   ![Wynik interakcyjnego klastra Hive](./media/apache-hadoop-linux-tutorial-get-started/interactive-hive-result.png)
+
+    - Panel **WYNIKI**: cały wynik można zapisać jako plik w formacie CSV, JSON lub Excel w lokalnej ścieżce lub po prostu zaznaczyć wiele wierszy.
+
+    - Panel **KOMUNIKATY**: po wybraniu numeru **wiersza** następuje przejście do pierwszego wiersza uruchomionego skryptu.
+
+Uruchamianie interaktywnego zapytania zajmuje o wiele mniej czasu niż [uruchamianie zadania wsadowego Hive](#submit-hive-batch-scripts).
+
+### <a name="submit-hive-batch-scripts"></a>Przesyłanie skryptów wsadowych Hive
+
+1. Utwórz nowy folder roboczy i nowy plik skryptu Hive, jeśli jeszcze ich nie masz.
+
+2. Połącz się z kontem platformy Azure, a następnie skonfiguruj klaster domyślny, jeśli nie zostało to jeszcze zrobione.
+
+3. Skopiuj i wklej następujący kod do pliku Hive, a następnie zapisz go.
+
+    ```hiveql
+    SELECT * FROM hivesampletable;
+    ```
+4. Kliknij prawym przyciskiem myszy edytor skryptów, a następnie wybierz pozycję **HDInsight: partia Hive**, aby przesłać zadanie Hive. 
+
+5. Wybierz klaster, do którego chcesz przesłać.  
+
+    Po przesłaniu zadania Hive informacje o powodzeniu przesłania oraz identyfikator zadania zostają wyświetlone w panelu **DANE WYJŚCIOWE**. Zadanie Hive otwiera również **PRZEGLĄDARKĘ SIECI WEB**, w której są wyświetlane w czasie rzeczywistym dzienniki i stan zadań.
+
+   ![przysyłanie wyniku zadania Hive](./media/apache-hadoop-linux-tutorial-get-started/submit-Hivejob-result.png)
+
+[Przesyłanie interaktywnych zapytań Hive](#submit-interactive-hive-queries) zajmuje dużo mniej czasu niż przesyłanie zadania wsadowego.
+
+## <a name="use-visualstudio-to-run-hive-queries"></a>Korzystanie z programu VisualStudio do uruchamiania zapytań Hive
+
+Aby uzyskać informacje dotyczące korzystania z narzędzi dla usługi HDInsight w programie Visual Studio, zobacz temat [Use Data Lake Tools for Visual Studio](./apache-hadoop-visual-studio-tools-get-started.md) (Użycie narzędzi dla usługi Data Lake w programie Visual Studio).
+
+### <a name="run-hive-queries"></a>Uruchamianie zapytań Hive
+
+Masz dwie opcje umożliwiające utworzenie i uruchomienie zapytań Hive:
+
+* Tworzenie zapytań ad hoc
+* Tworzenie aplikacji Hive
+
+Aby utworzyć i uruchomić zapytania ad hoc:
+
+1. W **Eksploratorze serwera** wybierz kolejno pozycje **Azure** > **Klastry usługi HDInsight**.
+
+2. Kliknij prawym przyciskiem myszy klaster, w którym chcesz uruchomić zapytanie, a następnie wybierz przycisk **Napisz zapytanie Hive**.  
+
+3. Wprowadź zapytania Hive. 
+
+    Edytor Hive obsługuje funkcję IntelliSense. Narzędzia Data Lake Tools for Visual Studio obsługują ładowanie zdalnych metadanych podczas edycji skryptu Hive. Na przykład po wpisaniu **SELECT * FROM** funkcja IntelliSense wyświetla wszystkie sugerowane nazwy tabel. Po określeniu nazwy tabeli funkcja IntelliSense wyświetla nazwy kolumn. Narzędzia obsługują większość instrukcji DML programu Hive, podzapytań i wbudowanych sterowników UDF.
+   
+    ![Zrzut ekranu przykładu 1 funkcji IntelliSense narzędzi HDInsight Visual Studio Tools](./media/apache-hadoop-linux-tutorial-get-started/vs-intellisense-table-name.png "U-SQL IntelliSense")
+   
+    ![Zrzut ekranu przykładu 2 funkcji IntelliSense narzędzi HDInsight Visual Studio Tools](./media/apache-hadoop-linux-tutorial-get-started/vs-intellisense-column-name.png "U-SQL IntelliSense")
+   
+   > [!NOTE]
+   > Funkcja IntelliSense zasugeruje tylko metadane klastra zaznaczonego na pasku narzędzi usługi HDInsight.
+   > 
+   
+4. Wybierz pozycję **Prześlij** lub **Prześlij (zaawansowane)**. 
+   
+    ![Zrzut ekranu przedstawiający przesyłanie zapytania Hive](./media/apache-hadoop-linux-tutorial-get-started/vs-batch-query.png)
+
+   W przypadku wybrania zaawansowanych opcji przesyłania należy skonfigurować dla skryptu wartości takie jak **Nazwa zadania**, **Argumenty**, **Dodatkowe konfiguracje** i **Katalog stanu**:
+
+    ![Zrzut ekranu zapytania programu Hive w usłudze HDInsight Hadoop](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.submit.jobs.advanced.png "Przesłanie zapytań")
+
+   Uruchamianie zapytań interaktywnych Hive
+
+   * kliknij strzałkę w dół, aby wybrać opcję **interaktywne**. 
+   
+   * Kliknij przycisk **Execute** (Wykonaj).
+
+   ![Zrzut ekranu przedstawiający wykonywanie zapytań interaktywnych Hive](./media/apache-hadoop-linux-tutorial-get-started/vs-execute-hive-query.png)
+
+Tworzenie i uruchamianie rozwiązania Hive:
+
+1. W menu **Plik** wybierz polecenie **Nowy**, a następnie wybierz pozycję **Projekt**.
+2. W lewym okienku wybierz opcję **HDInsight**. W środkowym okienku wybierz opcję **Aplikacja Hive**. Wprowadź właściwości, a następnie wybierz opcję **OK**.
+   
+    ![Zrzut ekranu nowego projektu programu Hive w narzędziach HDInsight Visual Studio Tools](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.new.hive.project.png "Tworzenie aplikacji Hive z programu Visual Studio")
+3. W **Eksploratorze rozwiązań** kliknij dwukrotnie plik **Script.hql**, aby otworzyć skrypt.
+4. Wprowadź zapytania Hive i prześlij je. (Zobacz kroki 3 i 4 powyżej)  
+
+
 
 ## <a name="run-hive-queries"></a>Uruchamianie zapytań Hive
 
@@ -158,7 +263,7 @@ Aby dowiedzieć się więcej na temat analizowania danych za pomocą usługi HDI
 * Aby dowiedzieć się więcej na temat języka Pig używanego do przekształcania danych, zobacz [Korzystanie z języka Pig z usługą HDInsight](hdinsight-use-pig.md).
 * Aby dowiedzieć się więcej o MapReduce, czyli sposobie pisania programów przetwarzających dane w usłudze Hadoop, zobacz [Używanie MapReduce z usługą HDInsight](hdinsight-use-mapreduce.md).
 * Aby dowiedzieć się więcej o używaniu narzędzi HDInsight Tools for Visual Studio do analizowania danych w usłudze HDInsight, zobacz [Wprowadzenie do używania narzędzi Visual Studio Hadoop dla usługi HDInsight](apache-hadoop-visual-studio-tools-get-started.md).
-
+* Aby uzyskać informacje na temat korzystania z narzędzi dla usługi HDInsight w programie VS Code do analizowania danych w usłudze HDInsight, zobacz temat [Use Azure HDInsight Tools for Visual Studio Code](../hdinsight-for-vscode.md) (Korzystanie z narzędzi dla usługi Azure HDInsight w programie Visual Studio Code).
 
 
 Jeśli chcesz dowiedzieć się więcej o tworzeniu klastra usługi HDInsight i zarządzaniu nim, zobacz następujące artykuły:

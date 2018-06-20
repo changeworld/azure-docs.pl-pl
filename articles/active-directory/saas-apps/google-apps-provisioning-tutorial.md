@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 6dbd50b5-589f-4132-b9eb-a53a318a64e5
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 7bd2cc871300ca9aa9e7cccb5222bb003d199780
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 4c685e03e5b7532f50d1eee1590eebedfba2b7c2
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35942573"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36212908"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie G Suite dla użytkownika automatycznego inicjowania obsługi administracyjnej.
 

@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 04/27/2018
+ms.date: 06/01/2018
 ms.author: babanisa
-ms.openlocfilehash: f1d235fe431cfe14019ffef7c043dfbc367bb2bc
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 6d0f769d65bc8ed4f41469b96edf4f0595d994de
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303981"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725245"
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Wprowadzenie do usługi Azure Event Grid
 
@@ -71,8 +71,6 @@ Aktualnie obsługa zdarzeń pochodzących z usługi Event Grid jest zapewniona w
 * Queue Storage
 * Elementy webhook
 
-W przypadku używania usługi Azure Functions jako procedury obsługi należy korzystać z wyzwalaczy usługi Event Grid, a nie ogólnych wyzwalaczy HTTP. Usługa Event Grid automatycznie weryfikuje wyzwalacze funkcji usługi Event Grid. W przypadku ogólnych wyzwalaczy HTTP trzeba zaimplementować [odpowiedź weryfikacji](security-authentication.md#webhook-event-delivery).
-
 Linki do artykułów, w których omówiono, jak używać poszczególnych procedur obsługi zdarzeń, można znaleźć w temacie [Event handlers in Azure Event Grid (Procedury obsługi zdarzeń w usłudze Azure Event Grid)](event-handlers.md).
 
 ## <a name="concepts"></a>Pojęcia
@@ -80,7 +78,7 @@ Linki do artykułów, w których omówiono, jak używać poszczególnych procedu
 Oto pięć pojęć związanych z usługą Azure Event Grid, które ułatwiają rozpoczęcie pracy:
 
 * **Zdarzenia** — co miało miejsce.
-* **Źródła/wydawcy zdarzeń** — gdzie wystąpiło zdarzenie.
+* **Źródła zdarzeń** — gdzie wystąpiło zdarzenie.
 * **Tematy** — punkt końcowy, do którego wydawcy wysyłają zdarzenia.
 * **Subskrypcje zdarzeń** — punkt końcowy lub wbudowany mechanizm przekierowywania zdarzeń, czasami do wielu procedur obsługi. Subskrypcje są również używane przez procedury obsługi w celu inteligentnego filtrowania zdarzeń przychodzących.
 * **Procedura obsługi zdarzeń** — aplikacja lub usługa reagująca na zdarzenie.
@@ -126,7 +124,7 @@ Usługa Event Grid łączy aplikację z innymi usługami. Przykładowo możesz u
 
 ## <a name="how-much-does-event-grid-cost"></a>Ile kosztuje korzystanie z usługi Event Grid?
 
-Usługa Azure Event Grid korzysta z modelu płatności za zdarzenia, w którym płaci się wyłącznie za użyte zasoby. Pierwsze 100 000 operacji w danym miesiącu jest bezpłatnych. Operacje obejmują transfer zdarzeń przychodzących, zaawansowane dopasowania, próby dostarczenia i wywołania zarządzania. Aby uzyskać więcej informacji, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/event-grid/).
+Usługa Azure Event Grid korzysta z modelu płatności za zdarzenia, w którym płaci się wyłącznie za użyte zasoby. Pierwsze 100 000 operacji w danym miesiącu jest bezpłatnych. Operacje są zdefiniowane jako ruch przychodzący zdarzenia, próby dostarczenia subskrypcji, wywołania zarządzania oraz filtrowanie według sufiksu tematu. Aby uzyskać więcej informacji, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/event-grid/).
 
 ## <a name="next-steps"></a>Następne kroki
 

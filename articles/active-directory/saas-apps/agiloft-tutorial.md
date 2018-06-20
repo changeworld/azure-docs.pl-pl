@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: aca13814-cdbd-46b8-93dc-1578099c5ee4
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: jeedes
-ms.openlocfilehash: c55eca5fb9b49244fcfc582b34d94bf13b7b27ac
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 2eddeae47e8279e9eb4d6bbb8386cbbe7c53a366
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35943454"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36214240"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>Samouczek: Integracji Azure Active Directory z Agiloft
 

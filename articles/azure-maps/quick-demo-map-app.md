@@ -1,22 +1,20 @@
 ---
 title: Interaktywne wyszukiwanie na mapie przy użyciu usługi Azure Maps | Microsoft Docs
 description: Przewodnik Szybki start platformy Azure — Uruchamianie pokazu interaktywnego wyszukiwania na mapie za pomocą usługi Azure Maps
-services: azure-maps
-keywords: ''
 author: kgremban
 ms.author: kgremban
 ms.date: 05/07/2018
 ms.topic: quickstart
 ms.service: azure-maps
-documentationcenter: ''
+services: azure-maps
 manager: timlt
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 8dedaf95289d9637f5f3d1e80a763b5fb400c617
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8765b634b81742acf9fb4d40be8864800025351d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599766"
 ---
 # <a name="launch-an-interactive-search-map-using-azure-maps"></a>Uruchamianie interaktywnego wyszukiwania na mapie przy użyciu usługi Azure Maps
 
@@ -77,3 +75,11 @@ W tym przewodniku Szybki start utworzyliśmy konto usługi Maps i uruchomiliśmy
 
 > [!div class="nextstepaction"]
 > [Wyszukiwanie punktów orientacyjnych za pomocą usługi Maps](./tutorial-search-location.md)
+
+Aby uzyskać dodatkowe przykłady kodu i zapoznać się z interaktywnym środowiskiem kodowania, zobacz poniższe przewodniki z instrukcjami.
+
+> [!div class="nextstepaction"]
+> [How to search for an address using Azure Maps REST APIs](./how-to-search-for-address.md) (Jak wyszukać adres przy użyciu interfejsów API REST usługi Azure Maps)
+
+> [!div class="nextstepaction"]
+> [How to use Azure Maps map control](./how-to-use-map-control.md) (Jak używać formantu mapy usługi Azure Maps)

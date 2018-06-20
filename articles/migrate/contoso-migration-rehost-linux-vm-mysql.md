@@ -1,19 +1,17 @@
 ---
 title: Rehost Contoso Linux usługi technicznej aplikacji na platformie Azure oraz Azure MySQL | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak Contoso rehostowaniu lokalnych aplikacji systemu Linux przy użyciu funkcji migracji na maszynach wirtualnych platformy Azure i MySQL na platformie Azure.
-services: site-recovery
 author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/10/2018
+ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: 4367bf7cb02bb6a1e343dc3fb171be731e15c32b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 15a429c033cfd1598dd01b5c8cd2743c397dacdb
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300715"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225521"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms-and-azure-mysql"></a>Migracja Contoso: Rehost aplikację Linux lokalnego na maszynach wirtualnych platformy Azure i MySQL na platformie Azure
 

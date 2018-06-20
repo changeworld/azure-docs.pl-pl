@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: afc04efa-2eba-4e47-8ce4-b71eb293cd09
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 586518b6e82e1ae11f738bc57d69c67f04a9b279
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 9cd6a373f23c69f920d0e46bad368f17c8d21035
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35938740"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215002"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-supermood"></a>Samouczek: Integracji Azure Active Directory z Supermood
 
