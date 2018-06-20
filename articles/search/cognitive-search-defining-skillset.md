@@ -3,17 +3,18 @@ title: Utwórz skillset w potoku kognitywnych wyszukiwania (Azure Search) | Doku
 description: Zdefiniuj wyodrębniania danych, przetwarzanie, języka naturalnego lub obrazu analizy kroki, aby uzupełnić i wyodrębniania informacji z danych do użycia w usłudze Azure Search.
 manager: pablocas
 author: luiscabrer
+services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: luisca
-ms.openlocfilehash: 816951ac128fb76d748262cfbc5f064a44e6376c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 997b106f748a2f18e8141f77f3b9ff8bb6b9d971
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640930"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36268234"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Jak utworzyć skillset w potoku wzbogacenia
 
@@ -106,11 +107,11 @@ Content-Type: application/json
       "httpHeaders": {
           "Ocp-Apim-Subscription-Key": "foobar"
       },
-      "context": "/document/content/organizations/*",
+      "context": "/document/organizations/*",
       "inputs": [
         {
           "name": "query",
-          "source": "/document/content/organizations/*"
+          "source": "/document/organizations/*"
         }
       ],
       "outputs": [
@@ -210,11 +211,11 @@ Odwołaj struktury niestandardowych enricher wyszukiwania jednostki Bing:
       "httpHeaders": {
           "Ocp-Apim-Subscription-Key": "foobar"
       }
-      "context": "/document/content/organizations/*",
+      "context": "/document/organizations/*",
       "inputs": [
         {
           "name": "query",
-          "source": "/document/content/organizations/*"
+          "source": "/document/organizations/*"
         }
       ],
       "outputs": [
@@ -228,9 +229,9 @@ Odwołaj struktury niestandardowych enricher wyszukiwania jednostki Bing:
 
 Ta definicja jest niestandardowe umiejętności, która wywołuje interfejs API sieci web w ramach procesu wzbogacenia. Dla każdej organizacji identyfikowana na podstawie rozpoznawania nazwanej jednostki to umiejętności wymaga składnika web API, aby znaleźć opis tej organizacji. Orchestration sytuacji, w których do wywołania interfejsu API sieci web oraz sposób przepływu otrzymanych informacji jest obsługiwany wewnętrznie przez aparat wzbogacenia. Jednak inicjowania niezbędne do wywoływania ten niestandardowy interfejs API należy podać w formacie JSON (na przykład identyfikator uri, httpHeaders i wejść oczekiwano). Aby uzyskać wskazówki dotyczące tworzenia niestandardowego interfejsu API sieci web dla potoku wzbogacenia, zobacz [sposób definiowania niestandardowy interfejs](cognitive-search-custom-skill-interface.md).
 
-Należy zauważyć, że ma ustawioną wartość w polu "context" ```"/document/content/organizations/*"``` gwiazdką, co oznacza wzbogacenia krok jest nazywany *dla każdego* organizacji w obszarze ```"/document/content/organizations"```. 
+Należy zauważyć, że ma ustawioną wartość w polu "context" ```"/document/organizations/*"``` gwiazdką, co oznacza wzbogacenia krok jest nazywany *dla każdego* organizacji w obszarze ```"/document/organizations"```. 
 
-Dane wyjściowe, w tym przypadku opis firmy, jest generowany dla każdej organizacji zidentyfikowane. Podczas odwoływania się z opisem w kroku podrzędnych (na przykład w wyodrębniania klucza frazy), należy użyć ścieżki ```"/document/content/organizations/*/description"``` Aby to zrobić. 
+Dane wyjściowe, w tym przypadku opis firmy, jest generowany dla każdej organizacji zidentyfikowane. Podczas odwoływania się z opisem w kroku podrzędnych (na przykład w wyodrębniania klucza frazy), należy użyć ścieżki ```"/document/organizations/*/description"``` Aby to zrobić. 
 
 ## <a name="enrichments-create-structure-out-of-unstructured-information"></a>Wzbogacenia utworzyć strukturę poza niestrukturalnych informacji
 

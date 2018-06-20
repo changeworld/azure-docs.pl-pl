@@ -1,21 +1,22 @@
 ---
 title: Monitorowanie urządzeń w usłudze Azure IoT Central | Microsoft Docs
 description: Jako operator możesz monitorować urządzenia za pomocą aplikacji usługi Azure IoT Central.
-services: iot-central
-author: tanmaybhagwat
+author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/16/2018
 ms.topic: tutorial
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: a07c9e3c28fadaead8bfaaebe4d1ee06ac66a99e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.service: iot-central
+services: iot-central
+ms.custom: mvc
+manager: peterpr
+ms.openlocfilehash: 9a3b7383651d679b079818fb32bd8f98160d0a4c
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201391"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235485"
 ---
-# <a name="use-azure-iot-central-to-monitor-your-devices"></a>Korzystanie z usługi Azure IoT Central do monitorowania urządzeń
+# <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>Samouczek: Korzystanie z usługi Azure IoT Central do monitorowania urządzeń
 
 W tym samouczku przedstawiono, jak operator może użyć aplikacji usługi Microsoft Azure IoT Central do monitorowania urządzeń i zmieniania ustawień.
 
@@ -50,11 +51,11 @@ Strona **Urządzenie** dla symulowanego urządzenia **Połączony klimatyzator-1
 
 Jako operator możesz przejrzeć informacje o urządzeniu na stronach **Miary**, **Ustawienia**, **Właściwości**, **Reguły** i **Pulpit nawigacyjny**. Konstruktor dostosował **pulpit nawigacyjny** pod kątem wyświetlania ważnych informacji o połączonym klimatyzatorze.
 
-* Wybierz widok **Pulpit nawigacyjny**, aby wyświetlić informacje o urządzeniu:
+Wybierz widok **Pulpit nawigacyjny**, aby wyświetlić informacje o urządzeniu.
 
-    ![Pulpit nawigacyjny urządzenia](media/tutorial-monitor-devices/initial_screen.png)
+![Pulpit nawigacyjny urządzenia](media/tutorial-monitor-devices/initial_screen.png)
 
-    Wykres na pulpicie nawigacyjnym pokazuje wykreśloną temperaturę urządzenia. Bieżącą temperaturę docelową urządzenia można także zobaczyć na kafelku **Ustaw temperaturę docelową**. Decydujesz, że temperatura docelowa jest zbyt wysoka.
+Wykres na pulpicie nawigacyjnym pokazuje wykreśloną temperaturę urządzenia. Bieżącą temperaturę docelową urządzenia można także zobaczyć na kafelku **Ustaw temperaturę docelową**. Decydujesz, że temperatura docelowa jest zbyt wysoka.
 
 ## <a name="remediate-an-issue"></a>Rozwiązywanie problemu
 
@@ -64,7 +65,7 @@ Aby zmienić temperaturę docelową urządzenia, użyj strony **Ustawienia**:
 
     ![Aktualizowanie ustawień](media/tutorial-monitor-devices/change_settings.png)
 
-1. Wybierz pozycję **Pulpit nawigacyjny** i zweryfikuj nową wartość ustawienia:
+2. Wybierz pozycję **Pulpit nawigacyjny** i zweryfikuj nową wartość ustawienia:
 
     ![Zaktualizowany pulpit nawigacyjny urządzenia](media/tutorial-monitor-devices/new_settings.png)
 
@@ -77,4 +78,4 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Badanie problemu
 > * Rozwiązywanie problemu
 
-Teraz, po wykonaniu działań monitorowania urządzenia, sugerowanym następnym krokiem jest [dodanie urządzenia](tutorial-add-device.md).
+Teraz, gdy już wiesz, jak monitorować urządzenie, sugerowanym następnym krokiem jest [dodanie urządzenia](tutorial-add-device.md).

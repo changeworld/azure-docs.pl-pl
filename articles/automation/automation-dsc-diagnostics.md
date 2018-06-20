@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: dsc
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d01042a02f2339f039f23d4f6e021de503dc3815
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 822d0e285e6f1cc9907625d7928dff3d9bf66921
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195968"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218959"
 ---
 # <a name="forward-azure-automation-dsc-reporting-data-to-log-analytics"></a>Przekazuj Konfiguracja DSC automatyzacji Azure raportowania danych do analizy dzienników
 
@@ -86,14 +86,14 @@ Można również ograniczyć zapytanie według nazwy operacji. Na przykład: "ty
 
 Jeden z naszych żądań najwyższym odbiorcy jest możliwość wysyłania wiadomości e-mail lub tekstu w przypadku wystąpienia problemów z konfiguracją usługi Konfiguracja DSC.   
 
-Aby utworzyć regułę alertu, rozpoczyna się od utworzenia dziennika wyszukiwanie rekordów raportu DSC, które powinny wywoływać alert.  Kliknij przycisk **Alert** przycisk, aby utworzyć i skonfigurować regułę alertu.
+Aby utworzyć regułę alertu, rozpoczyna się od utworzenia dziennika wyszukiwanie rekordów raportu DSC, które powinny wywoływać alert.  Kliknij przycisk **+ nową regułę alertu** przycisk, aby utworzyć i skonfigurować regułę alertu.
 
 1. Na stronie Przegląd analizy dziennika kliknij **wyszukiwania dziennika**.
 1. Utwórz kwerendę wyszukiwania dziennika dla alertu przez wpisanie następującego wyszukiwania w polu kwerendy:  `Type=AzureDiagnostics Category=DscNodeStatus NodeName_s=DSCTEST1 OperationName=DscNodeStatusData ResultType=Failed`
 
   Jeśli zdefiniowano dzienniki z więcej niż jednego konta automatyzacji lub subskrypcji do swojego obszaru roboczego, można grupować alerty subskrypcji i konto automatyzacji.  
   Nazwa konta automatyzacji mogą pochodzić z pola zasobów do wyszukiwania DscNodeStatusData.  
-1. Aby otworzyć **Dodaj regułę alertu** kliknij **alertu** w górnej części strony. Aby uzyskać więcej informacji na temat opcji, aby skonfigurować alert, zobacz [alertów w analizy dzienników](../log-analytics/log-analytics-alerts.md#alert-rules).
+1. Aby otworzyć **Utwórz reguły** kliknij **+ nową regułę alertu** w górnej części strony. Aby uzyskać więcej informacji na temat opcji, aby skonfigurować alert, zobacz [Tworzenie alertów rulelert](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
 
 ### <a name="find-failed-dsc-resources-across-all-nodes"></a>Znajdź zasoby DSC nie powiodło się we wszystkich węzłach
 

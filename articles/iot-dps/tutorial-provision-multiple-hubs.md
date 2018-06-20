@@ -1,73 +1,71 @@
 ---
-title: "Użyj Azure IoT Centrum inicjowania obsługi usługi urządzeń zainicjować obsługę administracyjną urządzeń między obciążenia zrównoważonym centra IoT | Dokumentacja firmy Microsoft"
-description: "Punktu dystrybucji automatyczne Inicjowanie obsługi administracyjnej urządzeń między obciążenia zrównoważonym centra IoT w portalu Azure"
-services: iot-dps
-keywords: 
+title: Aprowizowanie urządzeń w wielu centrach IoT Hub z równoważeniem obciążenia przy użyciu usługi Azure IoT Hub Device Provisioning Service | Microsoft Docs
+description: Automatyczne aprowizowanie urządzeń w wielu centrach IoT Hub przy użyciu usługi DPS w witrynie Azure Portal
 author: sethmanheim
 ms.author: sethm
 ms.date: 09/05/2017
 ms.topic: tutorial
 ms.service: iot-dps
-documentationcenter: 
+services: iot-dps
 manager: timlt
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 4842944cd0d980fb7e817165da23b9c3c4037e94
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: d0a3720fe729d5e260bbe5b0902460c8c7cfc7cb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34629630"
 ---
-# <a name="provision-devices-across-load-balanced-iot-hubs"></a>Zainicjować obsługę administracyjną urządzeń między centra IoT równoważeniem obciążenia
+# <a name="provision-devices-across-load-balanced-iot-hubs"></a>Aprowizowanie urządzeń w centrach IoT Hub z równoważeniem obciążenia
 
-Ten samouczek pokazuje, jak inicjowania obsługi urządzeń dla wielu centra IoT równoważeniem obciążenia za pomocą urządzenia inicjowania obsługi usługi (punktu dystrybucji). Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym samouczku przedstawiono sposób aprowizacji urządzeń w wielu centrach IoT Hub z równoważeniem obciążenia przy użyciu usługi Device Provisioning Service (DPS). Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Użyj portalu Azure do obsługi administracyjnej drugiego urządzenia z drugiego Centrum IoT 
-> * Dodawanie wpisu listy rejestracji do drugiego urządzenia
-> * Ustaw zasady alokacji punktu dystrybucji **nawet dystrybucji**
-> * Połącz nowego centrum IoT z punktu dystrybucji
+> * Aprowizowanie drugiego urządzenia w drugim centrum IoT Hub za pomocą witryny Azure Portal 
+> * Dodawanie wpisu listy rejestracji na drugim urządzeniu
+> * Ustawianie zasad alokacji usługi DPS na **dystrybucja z równymi wagami**
+> * Łączenie nowego centrum IoT Hub z usługą DPS
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym samouczku opiera się na poprzedniej [urządzenie prowizji z koncentratorem](tutorial-provision-device-to-hub.md) samouczka.
+W tym samouczku wykorzystywane są informacje z poprzedniego samouczka, [Aprowizacja urządzenia w centrum](tutorial-provision-device-to-hub.md).
 
-## <a name="use-the-azure-portal-to-provision-a-second-device-to-a-second-iot-hub"></a>Użyj portalu Azure do obsługi administracyjnej drugiego urządzenia z drugiego Centrum IoT
+## <a name="use-the-azure-portal-to-provision-a-second-device-to-a-second-iot-hub"></a>Aprowizowanie drugiego urządzenia w drugim centrum IoT Hub za pomocą witryny Azure Portal
 
-Postępuj zgodnie z instrukcjami [urządzenie prowizji z koncentratorem](tutorial-provision-device-to-hub.md) samouczkiem, aby udostępnić drugiego urządzenia do innego Centrum IoT.
+Wykonaj czynności opisane w samouczku [Aprowizacja urządzenia w centrum](tutorial-provision-device-to-hub.md), aby aprowizować drugie urządzenie w innym centrum IoT Hub.
 
-## <a name="add-an-enrollment-list-entry-to-the-second-device"></a>Dodawanie wpisu listy rejestracji do drugiego urządzenia
+## <a name="add-an-enrollment-list-entry-to-the-second-device"></a>Dodawanie wpisu listy rejestracji na drugim urządzeniu
 
-Lista rejestracji informuje punktu dystrybucji, którego metoda zaświadczania (metody potwierdzania tożsamości urządzenia) korzysta ona z urządzeniem. Następnym krokiem jest dodanie wpisu listy rejestracji dla drugiego urządzenia. 
+Lista rejestracji wskazuje, jaka metoda zaświadczania (potwierdzania tożsamości urządzenia) powinna być używana w usłudze DPS w przypadku tego urządzenia. Następnym krokiem jest dodanie wpisu listy rejestracji dotyczącego drugiego urządzenia. 
 
-1. Na stronie z punktu dystrybucji, kliknij przycisk **Zarządzanie rejestracji**. **Dodaj wpis na liście rejestracji** zostanie wyświetlona strona. 
-2. W górnej części strony kliknij **Dodaj**.
-2. Wypełnij pola, a następnie kliknij przycisk **zapisać**.
+1. Na stronie usługi DPS kliknij pozycję **Zarządzanie rejestracjami**. Zostanie wyświetlona strona **Dodawanie wpisu listy rejestracji**. 
+2. Kliknij pozycję **Dodaj** w górnej części strony.
+2. Wypełnij pola, a następnie kliknij przycisk **Zapisz**.
 
-## <a name="set-the-dps-allocation-policy"></a>Ustaw zasady alokacji punktu dystrybucji
+## <a name="set-the-dps-allocation-policy"></a>Ustawianie zasad alokacji usługi DPS
 
-Zasady alokacji jest ustawienie punktu dystrybucji, który określa, jak urządzenia są przypisane do Centrum IoT. Istnieją trzy zasady alokacji obsługiwane: 
+Zasady alokacji to ustawienie usługi DPS określające, w jaki sposób urządzenia są przypisane do centrum IoT Hub. Są obsługiwane trzy zasady alokacji: 
 
-1. **Można uzyskać najmniejsze opóźnienia**: urządzeń są udostępnione do Centrum IoT na podstawie koncentratora o najniższym opóźnieniu na urządzeniu.
-2. **Równomiernie ważone dystrybucji** (domyślnie): centra IoT połączonego prawdopodobnie jednakowo urządzenia udostępnione do nich. Jest to ustawienie domyślne. W przypadku udostępniania urządzeń tylko jedno centrum IoT można zachować to ustawienie. 
-3. **Statyczne konfiguracji za pomocą listy rejestracji**: specyfikacja żądaną Centrum IoT na liście rejestracji ma wyższy priorytet niż zasady alokacji poziomu punktu dystrybucji.
+1. **Najmniejsze opóźnienie**: urządzenia są aprowizowane do centrum IoT z uwzględnieniem centrum z najmniejszym opóźnieniem do urządzenia.
+2. **Dystrybucja z równymi wagami** (domyślnie): aprowizacja do każdego z połączonych centrów IoT jest jednakowo prawdopodobna. Jest to ustawienie domyślne. W przypadku aprowizowania urządzeń tylko do jednego centrum IoT można pozostawić to ustawienie. 
+3. **Konfiguracja statyczna za pośrednictwem listy rejestracji**: określenie żądanego centrum IoT na liście rejestracji ma wyższy priorytet niż zasady alokacji na poziomie usługi DPS.
 
-Wykonaj następujące kroki, aby skonfigurować zasadę alokacji:
+Wykonaj następujące czynności, aby skonfigurować zasady alokacji:
 
-1. Aby skonfigurować zasady alokacji, na stronie punktu dystrybucji kliknij **Zarządzanie zasadami alokacji**.
-2. Ustaw zasady alokacji **równomiernie ważone dystrybucji**.
+1. Aby ustawić zasady alokacji, na stronie usługi DPS kliknij pozycję **Zarządzanie zasadami alokacji**.
+2. Wybierz zasady alokacji **Dystrybucja z równymi wagami**.
 3. Kliknij pozycję **Zapisz**.
 
-## <a name="link-the-new-iot-hub-to-dps"></a>Połącz nowego centrum IoT z punktu dystrybucji
+## <a name="link-the-new-iot-hub-to-dps"></a>Łączenie nowego centrum IoT Hub z usługą DPS
 
-Połącz punktu dystrybucji i IoT hub punktu dystrybucji można zarejestrować urządzeń do koncentratora.
+Połącz usługę DPS z centrum IoT Hub, aby umożliwić rejestrowanie urządzeń w tym centrum przez usługę DPS.
 
-1. W **wszystkie zasoby** kliknij przycisk punktu dystrybucji, którą utworzono wcześniej.
-2. Na stronie punktu dystrybucji, kliknij przycisk **centra IoT połączonego**.
-3. Kliknij pozycję **Dodaj**.
-4. W **Dodaj łącze do Centrum IoT** użyj przycisków radiowych, aby określić, czy połączonego Centrum IoT znajduje się w bieżącej subskrypcji lub w innej subskrypcji. Następnie wybierz nazwę Centrum IoT z **Centrum IoT** pole.
+1. Na stronie **Wszystkie zasoby** kliknij utworzone wcześniej wystąpienie usługi DPS.
+2. Na stronie usługi DPS kliknij pozycję **Połączone centra IoT Hub**.
+3. Kliknij pozycję **Add** (Dodaj).
+4. Na stronie **Dodawanie linku do centrum IoT Hub** użyj przycisków opcji, aby określić, czy połączone centrum IoT znajduje się w bieżącej subskrypcji, czy w innej subskrypcji. Następnie wybierz nazwę centrum IoT w polu **Centrum IoT**.
 5. Kliknij pozycję **Zapisz**.
 
 ## <a name="next-steps"></a>Następne kroki
@@ -75,10 +73,10 @@ Połącz punktu dystrybucji i IoT hub punktu dystrybucji można zarejestrować u
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Użyj portalu Azure do obsługi administracyjnej drugiego urządzenia z drugiego Centrum IoT 
-> * Dodawanie wpisu listy rejestracji do drugiego urządzenia
-> * Ustaw zasady alokacji punktu dystrybucji **nawet dystrybucji**
-> * Połącz nowego centrum IoT z punktu dystrybucji
+> * Aprowizowanie drugiego urządzenia w drugim centrum IoT Hub za pomocą witryny Azure Portal 
+> * Dodawanie wpisu listy rejestracji na drugim urządzeniu
+> * Ustawianie zasad alokacji usługi DPS na **dystrybucja z równymi wagami**
+> * Łączenie nowego centrum IoT Hub z usługą DPS
 
 <!-- Advance to the next tutorial to learn how to 
  Replace this .md

@@ -3,21 +3,22 @@ title: Dostosowywanie ustawień środowiska uruchomieniowego integracji usług S
 description: W tym artykule opisano sposób użycia interfejsu niestandardowych ustawień środowiska uruchomieniowego integracji usług SSIS Azure do instalowania dodatkowych składników lub zmienić ustawienia
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/03/2018
-ms.author: douglasl
-ms.openlocfilehash: 7b6cae9eaa4674e60edfae13c571d89153c9b498
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+author: swinarko
+ms.author: sawinark
+ms.reviewer: douglasl
+manager: craigg
+ms.openlocfilehash: d724de8d5252318b37ae539ba2513faaf2313a76
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298396"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36268129"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Dostosowywanie ustawień środowiska uruchomieniowego integracji usług SSIS Azure
 
@@ -30,13 +31,13 @@ Można zainstalować składniki wolne lub użytkowaniem i płatną lub licencjon
 
 ## <a name="current-limitations"></a>Bieżące ograniczenia
 
--   Jeśli chcesz użyć `gacutil.exe` do zainstalowania zestawów w globalnej pamięci podręcznej zestawów (GAC), należy podać go jako część ustawień niestandardowych, lub użyj kopii w kontenerze publicznej wersji zapoznawczej.
+-   Jeśli chcesz użyć `gacutil.exe` zainstalować zestawów w globalnej pamięci podręcznej zestawów (GAC), musisz podać `gacutil.exe` w ramach instalacji niestandardowej, lub użyj kopii w kontenerze publicznej wersji zapoznawczej.
+
+-   Jeśli chcesz odwołać podfolderu w skrypcie, `msiexec.exe` nie obsługuje `.\` zapisu do folderu głównego odwołania. Użyj polecenia, takich jak `msiexec /i "MySubfolder\MyInstallerx64.msi" ...` zamiast `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...`.
 
 -   Jeśli potrzebujesz sprzęgać z IR Azure SSIS z niestandardowych ustawień do sieci wirtualnej, tylko usługi Azure Resource Manager sieci wirtualnej jest obsługiwane. Klasyczne sieci wirtualnej nie jest obsługiwane.
 
 -   Udział administracyjny nie jest aktualnie obsługiwana w podczerwieni Azure SSIS.
-
--   Jeśli do mapowania udział plików na dysku w ustawieniach niestandardowych `net use` polecenia nie jest obecnie obsługiwany. W związku z tym nie można użyć polecenia, takich jak `net use d: \\fileshareserver\sharename`. Zamiast tego należy użyć `cmdkey` polecenia — na przykład `cmdkey /add:fileshareserver /user:yyy /pass:zzz` — Aby uzyskać dostęp do `\\fileshareserver\folder` bezpośrednio w pakietach.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -58,8 +59,7 @@ Aby dostosować Twojej IR Azure SSIS, należy następujących czynności:
 
     1.  Musi mieć plik skryptu o nazwie `main.cmd`, która jest punkt wejścia ustawienia niestandardowe.
 
-    2.  Jeśli chcesz, dodatkowe dzienniki generowane przez inne narzędzia (na przykład `msiexec.exe`), które zostaną przekazane do programu kontenera należy określić zmienną środowiskową wstępnie zdefiniowanych `CUSTOM_SETUP_SCRIPT_LOG_DIR` jako folder dziennika w skryptach (na przykład `msiexec /i xxx.msi /quiet
-        /lv %CUSTOM_SETUP_SCRIPT_LOG_DIR%\install.log`).
+    2.  Jeśli chcesz, dodatkowe dzienniki generowane przez inne narzędzia (na przykład `msiexec.exe`), które zostaną przekazane do programu kontenera należy określić zmienną środowiskową wstępnie zdefiniowanych `CUSTOM_SETUP_SCRIPT_LOG_DIR` jako folder dziennika w skryptach (na przykład `msiexec /i xxx.msi /quiet /lv %CUSTOM_SETUP_SCRIPT_LOG_DIR%\install.log`).
 
 4.  Pobieranie, instalowanie i uruchamianie [Eksploratora usługi Storage Azure](http://storageexplorer.com/).
 

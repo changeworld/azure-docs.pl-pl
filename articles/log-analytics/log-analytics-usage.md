@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/29/2018
+ms.date: 06/05/2018
 ms.author: magoedte
-ms.openlocfilehash: 7e141dcf69c1a173c60cb96907cae2ba9f119b03
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: ed2e77553cc72caa6a7b48fe6fa6baab0ffafec5
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802055"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analizowanie użycia danych w usłudze Log Analytics
 Usługa Log Analytics zawiera informacje na temat ilości zebranych danych, źródeł, z których zostały one wysłane, oraz typów danych.  Użyj pulpitu nawigacyjnego **Użycie usługi Log Analytics** do przeglądania i analizowania użycia danych. Na pulpicie nawigacyjnym prezentowana jest ilość danych zebranych przez każde rozwiązanie i ilość danych wysyłanych przez komputery.
@@ -116,7 +117,7 @@ Na poniższym zrzucie ekranu widać, że w przypadku tego komputera większość
 
 Następnie wróć do pulpitu nawigacyjnego *Użycie* i spójrz na wykres *Objętość danych według rozwiązania*. Aby sprawdzić, które komputery wysyłają większość danych z określonego rozwiązania, kliknij nazwę rozwiązania na liście. Kliknij nazwę pierwszego rozwiązania na liście. 
 
-Na poniższym zrzucie ekranu widać, że najwięcej danych związanych z rozwiązaniem Zarządzanie dziennikiem wysyła komputer *acmetomcat*.<br><br> ![wolumin danych dla rozwiązania](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)<br><br>
+Na poniższym zrzucie ekranu widać, że najwięcej danych związanych z rozwiązaniem Zarządzanie dziennikami wysyła komputer *mycon*.<br><br> ![wolumin danych dla rozwiązania](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)<br><br>
 
 Jeśli to konieczne, wykonaj dodatkową analizę w celu zidentyfikowania dużych woluminów w ramach rozwiązania lub typu danych. Przykładowe zapytania:
 

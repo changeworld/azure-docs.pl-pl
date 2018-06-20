@@ -1,27 +1,25 @@
 ---
-title: Tworzenie aplikacji bazy danych rozwiązania Cosmos Azure przy użyciu interfejsów API bazy danych MongoDB | Dokumentacja firmy Microsoft
-description: Samouczek, która tworzy bazy danych online za pomocą interfejsów API usługi Azure rozwiązania Cosmos bazy danych dla bazy danych MongoDB.
-keywords: Przykłady bazy danych mongodb
+title: Tworzenie aplikacji usługi Azure Cosmos DB przy użyciu interfejsów API bazy danych MongoDB | Microsoft Docs
+description: Samouczek, w którym przedstawiono tworzenie bazy danych online za pomocą interfejsów API dla bazy danych MongoDB w usłudze Azure Cosmos DB.
+keywords: mongodb examples
 services: cosmos-db
-author: AndrewHoh
+author: SnehaGunda
 manager: kfile
 editor: ''
-documentationcenter: ''
-ms.assetid: fb38bc53-3561-487d-9e03-20f232319a87
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.component: cosmosdb-mongo
+ms.devlang: nodejs
+ms.topic: sample
 ms.date: 03/23/2018
-ms.author: anhoh
-ms.openlocfilehash: 81eff479c94af938918e6a221d45184ca1a84aef
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.author: sngun
+ms.openlocfilehash: bd31656404f11c9676b321e2e40454c33f61e3f5
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34795197"
 ---
-# <a name="build-an-azure-cosmos-db-api-for-mongodb-app-using-nodejs"></a>Tworzenie bazy danych Azure rozwiązania Cosmos: interfejs API dla aplikacji bazy danych MongoDB przy użyciu środowiska Node.js
+# <a name="build-an-azure-cosmos-db-api-for-mongodb-app-using-nodejs"></a>Tworzenie aplikacji usługi Azure Cosmos DB z interfejsem API bazy danych MongoDB przy użyciu środowiska Node.js
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
@@ -32,16 +30,16 @@ ms.lasthandoff: 04/16/2018
 >  
 >
 
-W tym przykładzie przedstawiono sposób tworzenia bazy danych Azure rozwiązania Cosmos: interfejs API dla aplikacji konsoli bazy danych MongoDB przy użyciu środowiska Node.js.
+W tym przykładzie przedstawiono sposób tworzenia aplikacji konsolowej usługi Azure Cosmos DB z interfejsem API bazy danych MongoDB przy użyciu środowiska Node.js.
 
-Aby użyć tego przykładu, należy:
+Aby użyć tego przykładu, musisz:
 
-* [Utwórz](create-mongodb-dotnet.md#create-account) bazy danych Azure rozwiązania Cosmos: interfejsu API dla konta bazy danych MongoDB.
-* Pobieranie Twojej bazy danych MongoDB [ciąg połączenia](connect-mongodb-account.md) informacji.
+* [Utworzyć](create-mongodb-dotnet.md#create-account) konto usługi Azure Cosmos DB z interfejsem API bazy danych MongoDB.
+* Pobrać informacje o [parametrach połączenia](connect-mongodb-account.md) bazy danych MongoDB.
 
 ## <a name="create-the-app"></a>Tworzymy aplikację.
 
-1. Utwórz *app.js* pliku skopiuj i Wklej kod poniżej.
+1. Utwórz plik *app.js*, a następnie skopiuj i wklej poniższy kod.
 
     ```nodejs
     var MongoClient = require('mongodb').MongoClient;
@@ -123,9 +121,9 @@ Aby użyć tego przykładu, należy:
     });
     ```
     
-    **Opcjonalne**: Jeśli używasz **sterownik bazy danych MongoDB Node.js 2.2**, Zamień poniższy fragment kodu:
+    **Opcjonalnie**: jeśli używasz **sterownika MongoDB Node.js 2.2**, zamień następujący fragment kodu:
 
-    Oryginał:
+    Oryginalny kod:
 
     ```nodejs
     MongoClient.connect(url, function(err, client) {
@@ -143,7 +141,7 @@ Aby użyć tego przykładu, należy:
     });
     ```
     
-    Powinien zostać zamieniony:
+    Należy zamienić na:
 
     ```nodejs
     MongoClient.connect(url, function(err, db) {
@@ -160,14 +158,14 @@ Aby użyć tego przykładu, należy:
     });
     ```
     
-2. Zmodyfikuj następujące zmienne w *app.js* plik na ustawienia konta (Znajdowanie użytkownika [ciąg połączenia](connect-mongodb-account.md)):
+2. Zmodyfikuj następujące zmienne w pliku *app.js* zgodnie z ustawieniami konta (dowiedz się, jak znaleźć [parametry połączenia](connect-mongodb-account.md)):
 
     > [!IMPORTANT]
-    > **Sterownik bazy danych MongoDB Node.js 3.0** wymaga kodowania znaków specjalnych w haśle DB rozwiązania Cosmos. Upewnij się, że do kodowania znaków "=" % 3
+    > **Sterownik MongoDB Node.js 3.0** wymaga kodowania znaków specjalnych w haśle usługi Cosmos DB. Upewnij się, że znaki „=” są kodowane jako %3D
     >
-    > Przykład: Hasło *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv ==* koduje o *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv 3D % 3D*
+    > Przykład: hasło *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv==* jest kodowane jako *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv%3D%3D*
     >
-    > **Sterownik bazy danych MongoDB Node.js 2.2** nie jest wymagane kodowanie znaków specjalnych w haśle DB rozwiązania Cosmos.
+    > **Sterownik MongoDB Node.js 2.2** nie wymaga kodowania znaków specjalnych w haśle usługi Cosmos DB.
     >
     >
    
@@ -175,7 +173,7 @@ Aby użyć tego przykładu, należy:
     var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.com:10255/?ssl=true';
     ```
      
-3. Otwórz swój ulubiony terminal, uruchom **npm zainstalować bazy danych mongodb — Zapisz**, następnie uruchom aplikację w usłudze **węzła app.js**
+3. Otwórz swój ulubiony terminal, uruchom polecenie **npm install mongodb --save**, następnie uruchom aplikację za pomocą polecenia **node app.js**
 
-## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się, jak [Użyj MongoChef](mongodb-mongochef.md) Twojego Azure DB rozwiązania Cosmos: interfejsu API dla konta bazy danych MongoDB.
+## <a name="next-steps"></a>Następne kroki
+* Dowiedz się, jak [korzystać z programu MongoChef](mongodb-mongochef.md) za pomocą konta usługi Azure Cosmos DB z interfejsem API bazy danych MongoDB.

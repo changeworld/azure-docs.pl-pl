@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: v-geberr
-ms.openlocfilehash: 3db2588edefa2f07d22609d7c454367d5572d5e0
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 273fca51d83f25e2657b51b68179e46f4295f92b
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35356132"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36263884"
 ---
 # <a name="web-app-bot-using-the-luis-template-for-c"></a>Bot aplikacji sieci Web przy użyciu szablonu LUIS w języku C#
 
@@ -80,7 +80,7 @@ Otwórz **ustawienia aplikacji** i edytować **LuisAppId** pole ma zawierać ide
 > Jeśli nie masz identyfikator aplikacji LUIS [aplikacji Home automatyzacji](luis-get-started-create-app.md), zaloguj się do [LUIS](luis-reference-regions.md) witryny sieci Web przy użyciu tego samego konta, które są używane do logowania się do platformy Azure. 
 > 1. Polecenie **Moje aplikacje**. 
 > 2. Znajdź LUIS utworzonego wcześniej, zawierający intencje i jednostek z domeny HomeAutomation.
-> 3. W **ustawienia** stronie LUIS aplikacji, należy znaleźć i skopiować identyfikator aplikacji. Upewnij się, że jest [uczonego](Train-Test.md) i [opublikowane](PublishApp.md). 
+> 3. W **ustawienia** stronie LUIS aplikacji, należy znaleźć i skopiować identyfikator aplikacji. Upewnij się, że jest [uczonego](interactive-test.md) i [opublikowane](PublishApp.md). 
 
     > [!WARNING]
     > If you delete your app ID or LUIS key, the bot will stop working.
@@ -145,7 +145,7 @@ W portalu Azure kliknij **testów w sieci Web rozmowę** do testowania bot. Wpis
    ![Testowanie HomeAutomation bot w sieci Web rozmowę](./media/luis-tutorial-cscharp-web-bot/bot-service-chat-results.png)
 
 > [!TIP]
-> Można ponownie ucz aplikacji LUIS bez żadnych modyfikacji kodu z bot. Zobacz [dodać zniesławiających przykład](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) i [nauczenia i przetestowania aplikacji LUIS](https://docs.microsoft.com/azure/cognitive-services/LUIS/train-test). 
+> Można ponownie ucz aplikacji LUIS bez żadnych modyfikacji kodu z bot. Zobacz [dodać zniesławiających przykład](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) i [nauczenia i przetestowania aplikacji LUIS](https://docs.microsoft.com/azure/cognitive-services/LUIS/interactive-test). 
 
 ## <a name="download-the-bot-to-debug"></a>Pobierz bot do debugowania
 Jeśli Twoje bot nie działa, Pobierz projektu na komputerze lokalnym i kontynuować [debugowania](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-an-azure-app-service-web-app-c-bot). 
@@ -160,6 +160,8 @@ Dodaj LUIS intencje i Bot okien obsługi **pomocy**, **anulować**, i **pozdrowi
 > [!div class="nextstepaction"]
 > [Dodaj intencje](./luis-how-to-add-intents.md)
 > [plucia mowy](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)
+
+
 <!-- Links -->
 [Github-BotFramework-Emulator-Download]: https://aka.ms/bot-framework-emulator
 [Github-LUIS-Samples]: https://github.com/Microsoft/LUIS-Samples
@@ -168,7 +170,7 @@ Dodaj LUIS intencje i Bot okien obsługi **pomocy**, **anulować**, i **pozdrowi
 [BFPortal]: https://dev.botframework.com/
 [RegisterInstructions]: https://docs.microsoft.com/bot-framework/portal-register-bot
 [BotFramework]: https://docs.microsoft.com/bot-framework/
-[AssignedEndpointDoc]:https://docs.microsoft.com/azure/cognitive-services/LUIS/manage-keys
+[AssignedEndpointDoc]: https://docs.microsoft.com/azure/cognitive-services/LUIS/manage-keys
 [VisualStudio]: https://www.visualstudio.com/
-[LUIS]:luis-reference-regions.md
+[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
 <!-- tested on Win10 -->

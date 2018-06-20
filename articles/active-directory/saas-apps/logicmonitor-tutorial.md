@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 496156c3-0e22-4492-b36f-2c29c055e087
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 79ff0a23850cfec57c36a837314bfa46beba535e
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: eda98e4ed7e5ac4fad2ea6f0cef00a117959f4f9
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35938581"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36220747"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>Samouczek: Integracji Azure Active Directory z LogicMonitor
 

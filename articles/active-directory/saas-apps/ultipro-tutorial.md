@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: afc0f2b9-2eac-47ec-af04-65ed0fb0ca5a
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 858296491d056f10315c948ef0552ecbc817099d
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 3641eb3b38782772fb8641b1ddb5bb1230b2ec48
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35942607"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36217129"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ultipro"></a>Samouczek: Integracji Azure Active Directory z UltiPro
 

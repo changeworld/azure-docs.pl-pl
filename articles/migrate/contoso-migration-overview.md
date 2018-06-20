@@ -2,17 +2,16 @@
 title: Omówienie migracji firmy Contoso na platformie Azure | Dokumentacja firmy Microsoft
 description: Zawiera omówienie strategii migracji i scenariusze używany przez firmę Contoso do migracji ich lokalnego centrum danych Azure.
 author: rayne-wiselman
-manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: 659627eb6241bf31350b5a51c2e6c449c7f731c2
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: ec0308bb2e39c3801305748f19783e70d58b0b7e
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300807"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232496"
 ---
 # <a name="contoso-migration-overview"></a>Migracja Contoso: omówienie
 
@@ -37,9 +36,9 @@ Strategii migracji do chmury można podzielić na cztery ogólne kategorie: reho
 **Strategia** | **Definicja** | **Kiedy używać** 
 --- | --- | --- 
 **Rehost** | Często określany jako "przyrostu i shift" migracji. Ta opcja nie wymaga zmian kodu i umożliwia migracji istniejącej aplikacji na platformę Azure szybko. Każdej aplikacji są migrowane, ponieważ jest do czerpania korzyści z chmury, bez ryzyka, kosztów związanych z zmian w kodzie. | Jeśli musisz szybkie przenoszenie aplikacji w chmurze.<br/><br/> Jeśli chcesz przenieść aplikacji bez modyfikowania jej.<br/><br/> Gdy aplikacji są zaprojektowana, dzięki czemu mogą oni korzystać z [Azure IaaS](https://azure.microsoft.com/overview/what-is-iaas/) skalowalność po migracji.<br/><br/> Gdy aplikacje są istotnym elementem do firmy, ale nie jest konieczne natychmiastowe zmiany do funkcji aplikacji.
-**Zrefaktoryzuj** | Często określany jako "ponowne utworzenie pakietu", refaktoryzacji wymaga minimalne zmiany dotyczące aplikacji, tak aby umożliwić im połączenie z [Azure PaaS](https://azure.microsoft.com/overview/what-is-paas/)i użyj ofert chmury.<br/><br/> Na przykład można przeprowadzić migracji istniejących aplikacji do usługi Azure App Service lub usługi Kubernetes Azure (AKS). Lub może Refaktoryzuj relacyjnych i nierelacyjnych baz danych w opcji, takich jak wystąpienia zarządzane bazy danych SQL Azure, Azure bazy danych MySQL, baza danych Azure PostgreSQL i bazy danych Azure rozwiązania Cosmos. | Jeśli aplikację można z łatwością można udostępniane do pracy na platformie Azure.<br/><br/> Jeśli chcesz zastosować innowacyjnych rozwiązań DevOps dostarczany przez platformę Azure lub myślisz o DevOps przy użyciu strategii kontener dla obciążeń.<br/><br/> Do refaktoryzacji, należy zastanowić przenośność istniejące ścieżki bazowej kodu i dostępne programistami.
-**Rearchitect** | Oszczędzasz migracji koncentruje się na modyfikowanie i rozszerzanie funkcjonalności aplikacji i kodu w celu zoptymalizowania Architektura aplikacji skalowalności chmury.<br/><br/> Na przykład można podzielić wbudowanymi aplikacji w grupie mikrousług, które współpracują ze sobą i łatwe skalowanie. Lub, można rearchitect relacyjnych i nierelacyjnych baz danych do pełnego zarządzania DBaaS rozwiązań, takich jak wystąpienia zarządzane bazy danych SQL Azure, Azure bazy danych MySQL, baza danych Azure, PostgreSQL i bazy danych Azure rozwiązania Cosmos. | Gdy aplikacji muszą główne wersje uwzględnienie nowych funkcji lub działał efektywnie na platformy w chmurze.<br/><br/> Jeśli chcesz wykorzystać istniejące inwestycje w technologie aplikacji wymagań skalowalności w sposób ekonomiczny Zastosuj innowacyjne rozwiązania Azure DevOps, a zminimalizować korzystanie z maszyn wirtualnych.
-**Skompiluj ponownie** | Odbuduj ma dalszych czynności w kroku po ponownym utworzeniu aplikacji od podstaw przy użyciu technologii chmury systemu Azure. Na przykład można utworzyć pola zielony aplikacji za pomocą natywnego chmury technologii, takich jak pliki, Azure AI wystąpienia zarządzane bazy danych SQL Azure i bazy danych Azure rozwiązania Cosmos. | Gdy ma szybkie opracowywanie i istniejące aplikacje mają ograniczoną funkcjonalność i cykl życia.<br/><br/> Jeśli wszystko jest gotowe do przyspieszenia innowacyjnych firm (w tym rozwiązania w zakresie opracowywania oprogramowania dostarczany przez platformę Azure), tworzenie nowej aplikacji przy użyciu technologii chmury natywne i wykorzystać innowacyjny AI, blockchain i IoT.
+**Zrefaktoryzuj** | Często określany jako "ponowne utworzenie pakietu", refaktoryzacji wymaga minimalne zmiany dotyczące aplikacji, tak aby umożliwić im połączenie z [Azure PaaS](https://azure.microsoft.com/overview/what-is-paas/)i użyj ofert chmury.<br/><br/> Na przykład można przeprowadzić migracji istniejących aplikacji do usługi Azure App Service lub usługi Kubernetes Azure (AKS).<br/><br/> Lub może Refaktoryzuj relacyjnych i nierelacyjnych baz danych w opcji, takich jak wystąpienia zarządzane bazy danych SQL Azure, Azure bazy danych MySQL, baza danych Azure PostgreSQL i bazy danych Azure rozwiązania Cosmos. | Jeśli aplikację można z łatwością można udostępniane do pracy na platformie Azure.<br/><br/> Jeśli chcesz zastosować innowacyjnych rozwiązań DevOps dostarczany przez platformę Azure lub myślisz o DevOps przy użyciu strategii kontener dla obciążeń.<br/><br/> Do refaktoryzacji, należy zastanowić przenośność istniejące ścieżki bazowej kodu i dostępne programistami.
+**Rearchitect** | Oszczędzasz migracji koncentruje się na modyfikowanie i rozszerzanie funkcjonalności aplikacji i kodu w celu zoptymalizowania Architektura aplikacji skalowalności chmury.<br/><br/> Na przykład można podzielić wbudowanymi aplikacji w grupie mikrousług, które współpracują ze sobą i łatwe skalowanie.<br/><br/> Lub, można rearchitect relacyjnych i nierelacyjnych baz danych do pełnego zarządzania DBaaS rozwiązań, takich jak wystąpienia zarządzane bazy danych SQL Azure, Azure bazy danych MySQL, baza danych Azure, PostgreSQL i bazy danych Azure rozwiązania Cosmos. | Gdy aplikacji muszą główne wersje uwzględnienie nowych funkcji lub działał efektywnie na platformy w chmurze.<br/><br/> Jeśli chcesz wykorzystać istniejące inwestycje w technologie aplikacji wymagań skalowalności Zastosuj innowacyjne rozwiązania Azure DevOps, a zminimalizować korzystanie z maszyn wirtualnych.
+**Skompiluj ponownie** | Odbuduj ma dalszych czynności w kroku po ponownym utworzeniu aplikacji od podstaw przy użyciu technologii chmury systemu Azure.<br/><br/> Na przykład można utworzyć pola zielony aplikacji za pomocą natywnego chmury technologii, takich jak pliki, Azure AI wystąpienia zarządzane bazy danych SQL Azure i bazy danych Azure rozwiązania Cosmos. | Gdy ma szybkie opracowywanie i istniejące aplikacje mają ograniczoną funkcjonalność i cykl życia.<br/><br/> Jeśli wszystko jest gotowe do przyspieszenia innowacyjnych firm (w tym rozwiązania w zakresie opracowywania oprogramowania dostarczany przez platformę Azure), tworzenie nowej aplikacji przy użyciu technologii chmury natywne i wykorzystać innowacyjny AI, blockchain i IoT.
 
 ## <a name="migration-articles"></a>Artykuły migracji
 
@@ -57,8 +56,8 @@ Artykuł 1: Omówienie (w tym artykule) | Zawiera omówienie strategii migracji 
 [Artykuł 4: Rehost maszyny wirtualne platformy Azure i zarządzanych wystąpienie serwera SQL](contoso-migration-rehost-vm-sql-managed-instance.md) | Pokazuje, jak Contoso migruje SmartHotel aplikacji na platformie Azure. Migrowania aplikacji sieci web maszyny Wirtualnej w programie [usługi Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview), bazy danych aplikacji przy użyciu zarządzanego wystąpienia serwera SQL i [migracja bazy danych Azure](https://docs.microsoft.com/azure/dms/dms-overview) usługi. | Dostępne
 [Artykuł 5: Rehost na maszynach wirtualnych platformy Azure](contoso-migration-rehost-vm.md) | Pokazuje, jak Contoso migracji aplikacji SmartHotel maszyn wirtualnych przy użyciu usługi Site Recovery.
 [Artykuł 6: Rehost maszyny wirtualne platformy Azure i grup dostępności programu SQL Server](contoso-migration-rehost-vm-sql-ag.md) | Pokazuje, jak Contoso migruje SmartHotel aplikacji. Usługa Site Recovery ich użyć do migracji aplikacji maszyny Wirtualnej, a usługi migracja bazy danych do migracji aplikacji bazy danych do grupy dostępności AlwaysOn programu SQL Server. | Dostępne
-Artykuł 7: Rehost aplikacji systemu Linux, aby maszyny wirtualne platformy Azure | Pokazuje, jak Contoso migruje aplikacji maszyn wirtualnych na platformie Azure przy użyciu usługi Site Recovery. | Planowany
-Artykuł 8: Rehost aplikację systemu Linux, aby maszyny wirtualne platformy Azure i serwerem MySQL Azure | Pokazuje, jak Contoso przeprowadzanie migracji aplikacji maszyny Wirtualnej przy użyciu usługi Site Recovery, a używa MySQL Workbench migrację do wystąpienia serwera MySQL Azure. | Planowany
+[Artykuł 7: Rehost aplikacji systemu Linux, aby maszyny wirtualne platformy Azure](contoso-migration-rehost-linux-vm.md) | Pokazuje, jak Contoso migruje aplikacji maszyn wirtualnych na platformie Azure przy użyciu usługi Site Recovery. | Planowany
+[Artykuł 8: Rehost aplikację systemu Linux, aby maszyny wirtualne platformy Azure i serwerem MySQL Azure](contoso-migration-rehost-linux-vm-mysql.md) | Pokazuje, jak Contoso przeprowadzanie migracji aplikacji maszyny Wirtualnej przy użyciu usługi Site Recovery, a używa MySQL Workbench migrację do wystąpienia serwera MySQL Azure. | Planowany
 
 
 
@@ -66,8 +65,8 @@ Artykuł 8: Rehost aplikację systemu Linux, aby maszyny wirtualne platformy Azu
 
 Artykuły korzystanie z dwóch aplikacji demonstracyjnej - SmartHotel i osTicket.
 
-- SmartHotel360: Ta aplikacja został opracowany przez firmę Microsoft jako przetestuj aplikację, pomocne podczas pracy z platformą Azure. Jest podana jako typu open source i można go pobrać z [GitHub](https://github.com/Microsoft/SmartHotel360). Jest połączona z bazą danych programu SQL Server aplikacji ASP.NET. Aplikacja jest obecnie na dwóch maszyn wirtualnych VMware systemem Windows Server 2008 R2 i SQL Server 2008 R2. Maszyny wirtualne są obsługiwana lokalnie i aplikacji zarządzanych przez serwer vCenter.
-- osTicket jest biletów aplikację, która działa w systemie Linux działu open source. Możesz pobrać go z [GitHub](https://github.com/osTicket/osTicket). Bieżąca aplikacja jest na dwóch maszyn wirtualnych VMware systemem Ubuntu 16.04LTS, przy użyciu Apache 2, PHP 7.0 i MySQL 5.7
+- **SmartHotel360**: Ta aplikacja został opracowany przez firmę Microsoft jako przetestuj aplikację, pomocne podczas pracy z platformą Azure. Jest podana jako typu open source i można go pobrać z [GitHub](https://github.com/Microsoft/SmartHotel360). Jest połączona z bazą danych programu SQL Server aplikacji ASP.NET. Aplikacja jest obecnie na dwóch maszyn wirtualnych VMware systemem Windows Server 2008 R2 i SQL Server 2008 R2. Maszyny wirtualne są obsługiwana lokalnie i aplikacji zarządzanych przez serwer vCenter.
+- **osTicket**: biletów aplikację, która działa w systemie Linux działu open source. Możesz pobrać go z [GitHub](https://github.com/osTicket/osTicket). Bieżąca aplikacja jest na dwóch maszyn wirtualnych VMware systemem Ubuntu 16.04LTS, przy użyciu Apache 2, PHP 7.0 i MySQL 5.7
     
 
 ## <a name="next-steps"></a>Kolejne kroki

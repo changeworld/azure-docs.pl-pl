@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: 618ed0f72886fff1c2de11e2fd856f6cc065a7b3
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 11178c574bcfa2224d15f81653f7d202ba88fb55
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657591"
 ---
 # <a name="network-security"></a>Bezpieczeństwo sieci
 
@@ -138,7 +139,7 @@ Nie można usunąć reguł domyślnych, ale można je przesłonić, tworząc reg
 
 Grupy zabezpieczeń aplikacji umożliwiają skonfigurowanie zabezpieczeń sieci jako naturalnego rozszerzenia struktury aplikacji, co pozwala na grupowanie maszyn wirtualnych i definiowanie zasad zabezpieczeń sieci na podstawie tych grup. Ta funkcja umożliwia ponowne używanie zasady zabezpieczeń na dużą skalę bez ręcznej obsługi jawnych adresów IP. Platforma obsługuje złożoność jawnych adresów IP i wiele zestawów reguł, co pozwala skupić się na logice biznesowej.
 
-Grupę zabezpieczeń aplikacji można określić jako źródło i obiekt docelowy reguły zabezpieczeń. Po zdefiniowaniu zasad zabezpieczeń można utworzyć maszyny wirtualne i przypisać interfejsy sieciowe w maszynie wirtualnej do grupy zabezpieczeń aplikacji. Zasady są stosowane na podstawie członkostwa w grupie zabezpieczeń aplikacji każdego interfejsu sieciowego w maszynie wirtualnej. Poniższy przykład przedstawia sposób użycia grupy zabezpieczeń aplikacji dla wszystkich serwerów sieci web w danej subskrypcji:
+Jako źródło i obiekt docelowy reguły zabezpieczeń można określić pojedynczą grupę zabezpieczeń aplikacji. Jako źródło i obiekt docelowy nie można podać kilku grup zabezpieczeń aplikacji. Po zdefiniowaniu zasad zabezpieczeń można utworzyć maszyny wirtualne i przypisać interfejsy sieciowe w maszynie wirtualnej do grupy zabezpieczeń aplikacji. Zasady są stosowane na podstawie członkostwa w grupie zabezpieczeń aplikacji każdego interfejsu sieciowego w maszynie wirtualnej. Poniższy przykład przedstawia sposób użycia grupy zabezpieczeń aplikacji dla wszystkich serwerów sieci web w danej subskrypcji:
 
 1. Utwórz grupę zabezpieczeń aplikacji o nazwie *WebServers*.
 2. Utwórz grupę zabezpieczeń sieci o nazwie *MyNSG*.
@@ -152,7 +153,7 @@ Aby dowiedzieć się więcej o limitach podczas tworzenia grup zabezpieczeń apl
 Grupy zabezpieczeń aplikacji mają następujące ograniczenia:
 
 -   Wszystkie interfejsy sieciowe przypisane do grupy zabezpieczeń aplikacji muszą istnieć w tej samej sieci wirtualnej, co pierwszy interfejs sieciowy przypisany do danej grupy zabezpieczeń aplikacji. Na przykład, jeśli pierwszy interfejs sieciowy przypisany do grupy zabezpieczeń aplikacji o nazwie *ASG1* istnieje w sieci wirtualnej o nazwie *VNet1*, wszystkie kolejne interfejsy sieciowe przypisane do *ASG1* muszą istnieć w sieci *VNet1*. Interfejsy sieciowe z różnych sieci wirtualnych nie mogą być dodawane do tej samej grupy zabezpieczeń aplikacji.
-- Jeśli określisz grupy zabezpieczeń aplikacji jako źródło i miejsce docelowe w regule zabezpieczeń, interfejsy sieciowe w obu grupach zabezpieczeń aplikacji muszą istnieć w tej samej sieci wirtualnej. Na przykład jeśli grupa ASG1 zawiera interfejsy sieciowe z sieci VNet1, a grupa ASG2 zawiera interfejsy sieciowe z sieci VNet2, nie można przypisać grupy ASG1 jako źródła i grupy ASG2 jako miejsca docelowego w regule — wszystkie interfejsy sieciowe muszą istnieć w sieci VNet1.
+- Jeśli określisz grupy zabezpieczeń aplikacji jako źródło i obiekt docelowy w regule zabezpieczeń, interfejsy sieciowe w obu grupach zabezpieczeń aplikacji muszą istnieć w tej samej sieci wirtualnej. Na przykład jeśli grupa ASG1 zawiera interfejsy sieciowe z sieci VNet1, a grupa ASG2 zawiera interfejsy sieciowe z sieci VNet2, nie można przypisać grupy ASG1 jako źródła i grupy ASG2 jako obiektu docelowego w regule. Wszystkie interfejsy sieciowe muszą istnieć w sieci VNet1.
 
 ## <a name="azure-platform-considerations"></a>Zagadnienia dotyczące platformy Azure
 

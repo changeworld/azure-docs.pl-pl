@@ -11,11 +11,12 @@ ms.topic: tutorial
 ms.date: 05/09/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: 198a637fcfc2268e393a63b27a153b163dc4331e
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e337a5c7c203e2e1048149dfeff71436a4d2752f
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850614"
 ---
 # <a name="create-an-azure-sql-database-managed-instance-in-the-azure-portal"></a>Tworzenie wystąpienia zarządzanego usługi Azure SQL Database w witrynie Azure Portal
 
@@ -161,16 +162,16 @@ Poniższe kroki pokazują, jak utworzyć wystąpienie zarządzane po zatwierdzen
 
    ![tworzenie wystąpienia zarządzanego](./media/sql-database-managed-instance-tutorial/managed-instance-create.png)
 
-3. Wybierz subskrypcję i upewnij się, że warunki dotyczące wersji zapoznawczej są oznaczone jako **Zaakceptowane**.
+4. Wybierz subskrypcję i upewnij się, że warunki dotyczące wersji zapoznawczej są oznaczone jako **Zaakceptowane**.
 
    ![zaakceptowana wersja zapoznawcza wystąpienia zarządzanego](./media/sql-database-managed-instance-tutorial/preview-accepted.png)
 
-4. Wypełnij formularz wystąpienia zarządzanego, podając wymagane informacje. Skorzystaj z informacji w następującej tabeli:
+5. Wypełnij formularz wystąpienia zarządzanego, podając wymagane informacje. Skorzystaj z informacji w następującej tabeli:
 
    | Ustawienie| Sugerowana wartość | Opis |
    | ------ | --------------- | ----------- |
    |**Nazwa wystąpienia zarządzanego**|Dowolna prawidłowa nazwa|Prawidłowe nazwy opisano w artykule [Ograniczenia i reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
-   |**Identyfikator logowania administratora wystąpienia zarządzanego**|Dowolna prawidłowa nazwa użytkownika|Prawidłowe nazwy opisano w artykule [Ograniczenia i reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).| 
+   |**Identyfikator logowania administratora wystąpienia zarządzanego**|Dowolna prawidłowa nazwa użytkownika|Prawidłowe nazwy opisano w artykule [Ograniczenia i reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Nie używaj nazwy „serveradmin”, gdyż jest ona zarezerwowana dla roli poziomu serwera.| 
    |**Hasło**|Dowolne prawidłowe hasło|Hasło musi mieć co najmniej 16 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
    |**Grupa zasobów**|Grupa zasobów, która została utworzona wcześniej||
    |**Lokalizacja**|Lokalizacja, która została wybrana wcześniej|Aby uzyskać informacje na temat regionów, zobacz temat [Regiony systemu Azure](https://azure.microsoft.com/regions/).|
@@ -178,17 +179,17 @@ Poniższe kroki pokazują, jak utworzyć wystąpienie zarządzane po zatwierdzen
 
    ![formularz tworzenia wystąpienia zarządzanego](./media/sql-database-managed-instance-tutorial/managed-instance-create-form.png)
 
-5. Kliknij pozycję **Warstwa cenowa**, aby ustalić rozmiar zasobów obliczeniowych i magazynu, a także sprawdzić opcje warstw cenowych. Domyślnie wystąpienie zyskuje bezpłatnie 32 GB miejsca do magazynowania, co może nie być wystarczające dla Twoich aplikacji.
-6. Użyj suwaków lub pól tekstowych, aby określić ilość pamięci i liczbę rdzeni wirtualnych. 
-   ![formularz tworzenia wystąpienia zarządzanego](./media/sql-database-managed-instance-tutorial/managed-instance-pricing-tier.png)
+6. Kliknij pozycję **Warstwa cenowa**, aby ustalić rozmiar zasobów obliczeniowych i magazynu, a także sprawdzić opcje warstw cenowych. Domyślnie wystąpienie zyskuje bezpłatnie 32 GB miejsca do magazynowania, co może nie być wystarczające dla Twoich aplikacji.
+7. Użyj suwaków lub pól tekstowych, aby określić ilość pamięci i liczbę rdzeni wirtualnych. 
+   ![wystąpienie zarządzane warstwy cenowej](./media/sql-database-managed-instance-tutorial/managed-instance-pricing-tier.png)
 
-7. Po zakończeniu kliknij pozycję **Zastosuj**, aby zapisać wybór.  
-8. Kliknij pozycję **Utwórz**, aby wdrożyć wystąpienie zarządzane.
-9. Kliknij ikonę **Powiadomienia**, aby wyświetlić stan wdrożenia.
+8. Po zakończeniu kliknij pozycję **Zastosuj**, aby zapisać wybór.  
+9. Kliknij pozycję **Utwórz**, aby wdrożyć wystąpienie zarządzane.
+10. Kliknij ikonę **Powiadomienia**, aby wyświetlić stan wdrożenia.
  
    ![postęp wdrażania](./media/sql-database-managed-instance-tutorial/deployment-progress.png)
 
-9. Kliknij pozycję **Wdrażanie jest w toku**, aby otworzyć okno wystąpienia zarządzanego i dokładniej monitorować postęp wdrażania.
+11. Kliknij pozycję **Wdrażanie jest w toku**, aby otworzyć okno wystąpienia zarządzanego i dokładniej monitorować postęp wdrażania.
  
    ![postęp wdrażania 2](./media/sql-database-managed-instance-tutorial/managed-instance.png)
 
@@ -248,18 +249,18 @@ Poniższe kroki pokazują sposób utworzenia maszyny wirtualnej w tej samej siec
 
    ![formularz tworzenia maszyny wirtualnej](./media/sql-database-managed-instance-tutorial/virtual-machine-create-form.png)
 
-3. Kliknij przycisk **OK**.
-4. Wybierz rozmiar maszyny wirtualnej. Aby wyświetlić więcej rozmiarów, wybierz pozycje **Wyświetl wszystkie** lub zmień filtr **Obsługiwany typ dysku**. Na potrzeby tego samouczka wystarczy jedynie mała maszyna wirtualna.
+4. Kliknij przycisk **OK**.
+5. Wybierz rozmiar maszyny wirtualnej. Aby wyświetlić więcej rozmiarów, wybierz pozycje **Wyświetl wszystkie** lub zmień filtr **Obsługiwany typ dysku**. Na potrzeby tego samouczka wystarczy jedynie mała maszyna wirtualna.
 
     ![Rozmiary maszyn wirtualnych](./media/sql-database-managed-instance-tutorial/virtual-machine-size.png)  
 
-5. Kliknij pozycję **Wybierz**.
-6. W formularzu **Ustawienia** kliknij opcję **Podsieć** i wybierz pozycję **vm_subnet**. Nie wybieraj podsieci, w której aprowizowano wystąpienie zarządzane, ale inną podsieć w tej samej sieci wirtualnej.
+6. Kliknij pozycję **Wybierz**.
+7. W formularzu **Ustawienia** kliknij opcję **Podsieć** i wybierz pozycję **vm_subnet**. Nie wybieraj podsieci, w której aprowizowano wystąpienie zarządzane, ale inną podsieć w tej samej sieci wirtualnej.
 
     ![Ustawienia maszyny wirtualnej](./media/sql-database-managed-instance-tutorial/virtual-machine-settings.png)  
 
-7. Kliknij przycisk **OK**.
-8. Na stronie z podsumowaniem sprawdź szczegóły oferty i kliknij przycisk **Utwórz**, aby rozpocząć wdrażanie maszyny wirtualnej.
+8. Kliknij przycisk **OK**.
+9. Na stronie z podsumowaniem sprawdź szczegóły oferty i kliknij przycisk **Utwórz**, aby rozpocząć wdrażanie maszyny wirtualnej.
  
 ## <a name="connect-to-virtual-machine"></a>Nawiązywanie połączenia z maszyną wirtualną
 

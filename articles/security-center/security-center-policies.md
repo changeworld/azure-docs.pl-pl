@@ -3,7 +3,7 @@ title: Ustawianie zasad zabezpieczeń w usłudze Azure Security Center | Microso
 description: Ten artykuł zawiera informacje pomocne podczas konfigurowania zasad zabezpieczeń w usłudze Azure Security Center.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: 3b9e1c15-3cdb-4820-b678-157e455ceeba
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2018
-ms.author: yurid
-ms.openlocfilehash: fed4a587d2258cdab35d09f5e3947a8cacade157
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.date: 06/05/2018
+ms.author: terrylan
+ms.openlocfilehash: f12cede430a94da937a874ade2e50e4ed9860da9
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364390"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34756995"
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>Ustawianie zasad zabezpieczeń w usłudze Azure Security Center
 Ten artykuł zawiera informacje pomocne podczas konfigurowania zasad zabezpieczeń w usłudze Security Center.
@@ -28,7 +28,7 @@ Ten artykuł zawiera informacje pomocne podczas konfigurowania zasad zabezpiecze
 Usługa Security Center automatycznie tworzy domyślne zasady zabezpieczeń dla każdej Twojej subskrypcji platformy Azure. W usłudze Security Center możesz edytować zasady i monitorować ich zgodność.
 
 > [!NOTE]
-> Teraz można rozszerzyć zasady zabezpieczeń w usłudze Security Center za pomocą usługi Azure Policy dostępnej w ograniczonej wersji zapoznawczej. Aby dołączyć do wersji zapoznawczej, przejdź na stronę [tworzenia nowego konta usługi Azure Policy](https://aka.ms/getpolicy). Aby uzyskać więcej informacji, zobacz temat [Integracja zasad zabezpieczeń w usłudze Security Center z usługą Azure Policy](security-center-azure-policy.md).
+> Teraz można rozszerzyć zasady zabezpieczeń w usłudze Security Center za pomocą usługi [Azure Policy](../azure-policy/azure-policy-introduction.md). Aby uzyskać więcej informacji, zobacz temat [Integracja zasad zabezpieczeń w usłudze Security Center z usługą Azure Policy](security-center-azure-policy.md).
 
 Wymagania w zakresie zabezpieczeń dotyczące zasobów używanych do celów projektowania lub testowania mogą różnić się od wymagań dotyczących zasobów używanych do aplikacji produkcyjnych. Aplikacje wykorzystujące dane podlegające ochronie, takie jak dane osobowe, mogą wymagać wyższego poziomu zabezpieczeń. Zasady zabezpieczeń włączone w usłudze Azure Security Center regulują zalecenia dotyczące zabezpieczeń i monitorowania, które ułatwiają znalezienie potencjalnych luk i uniknięcie zagrożeń. Aby uzyskać więcej informacji na temat sposobu określenia, która opcja jest dla Ciebie odpowiednia, zobacz temat [Przewodnik planowania i obsługi usługi Azure Security Center](security-center-planning-and-operations-guide.md).
 
@@ -57,7 +57,7 @@ Aby uzyskać informacje o definicjach zasad dostępnych w ramach domyślnych zas
 | Ochrona punktów końcowych |Zalecają ochronę punktów końcowych do skonfigurowania dla wszystkich maszyn wirtualnych systemu Windows, aby ułatwić identyfikację i usuwanie wirusów, programów szpiegujących oraz innego złośliwego oprogramowania. |
 | Szyfrowanie dysków |Zaleca włączenie szyfrowania dysków na wszystkich maszynach wirtualnych w celu zwiększenia ochrony magazynowanych danych. |
 | Grupy zabezpieczeń sieci |Zaleca się, aby [sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) były skonfigurowane do kontrolowania ruchu przychodzącego i wychodzącego do maszyn wirtualnych z publicznymi punktami końcowymi. Sieciowe grupy zabezpieczeń skonfigurowane dla podsieci są dziedziczone przez wszystkie interfejsy sieciowe maszyny wirtualnej, chyba że określono inaczej. Oprócz sprawdzania, czy sieciowa grupa zabezpieczeń została skonfigurowana, ta opcja również ocenia reguły zabezpieczeń ruchu przychodzącego w celu określenia, czy istnieją takie, które zezwalają na ruch przychodzący. |
-| Zapora aplikacji sieci Web |Zalecają skonfigurowanie zapory aplikacji internetowej na maszynach wirtualnych, gdy został spełniony dowolny z następujących warunków: <ul><li>Używany jest [publiczny adres IP na poziomie wystąpienia](../virtual-network/virtual-networks-instance-level-public-ip.md), a konfiguracja reguł zabezpieczeń ruchu przychodzącego dla skojarzonej sieciowej grupy zabezpieczeń umożliwia dostęp do portu 80/443.</li><li>Używany jest adres IP ze zrównoważonym obciążeniem, a konfiguracja skojarzonych reguł równoważenia obciążenia i reguł translatora adresów sieciowych (NAT) dla ruchu przychodzącego umożliwia dostęp do portu 80/443. Aby uzyskać więcej informacji, zobacz artykuł [Azure Resource Manager support for Load Balancer](../load-balancer/load-balancer-arm.md) (Obsługa usługi Azure Resource Manager dla modułu równoważenia obciążenia).</li> |
+| Zapora aplikacji internetowej |Zalecają skonfigurowanie zapory aplikacji internetowej na maszynach wirtualnych, gdy został spełniony dowolny z następujących warunków: <ul><li>Używany jest [publiczny adres IP na poziomie wystąpienia](../virtual-network/virtual-networks-instance-level-public-ip.md), a konfiguracja reguł zabezpieczeń ruchu przychodzącego dla skojarzonej sieciowej grupy zabezpieczeń umożliwia dostęp do portu 80/443.</li><li>Używany jest adres IP ze zrównoważonym obciążeniem, a konfiguracja skojarzonych reguł równoważenia obciążenia i reguł translatora adresów sieciowych (NAT) dla ruchu przychodzącego umożliwia dostęp do portu 80/443. Aby uzyskać więcej informacji, zobacz artykuł [Azure Resource Manager support for Load Balancer](../load-balancer/load-balancer-arm.md) (Obsługa usługi Azure Resource Manager dla modułu równoważenia obciążenia).</li> |
 | Zapora nowej generacji |Powoduje rozszerzenie ochrony sieci poza grupy zabezpieczeń sieci, które są wbudowane w platformę Azure. Usługa Security Center wykryje wdrożenia, dla których zaleca się zaporę nowej generacji, i umożliwi skonfigurowanie urządzenia wirtualnego. |
 | Inspekcja SQL i wykrywanie zagrożeń |Zaleca się, aby inspekcja dostępu do bazy danych SQL była włączona w celu zapewnienia zgodności, umożliwienia zaawansowanego wykrywania zagrożeń i na potrzeby analizy. |
 | Szyfrowanie SQL |Zaleca się, aby funkcja szyfrowania nieaktywnych danych była włączona dla bazy danych SQL, skojarzonych kopii zapasowych i plików dziennika transakcji. Dzięki temu nawet w przypadku włamania się do danych nie będzie można ich odczytać. |
@@ -75,3 +75,5 @@ W tym artykule przedstawiono sposób konfigurowania zasad zabezpieczeń w usłud
 * [Monitorowanie rozwiązań partnerskich w usłudze Azure Security Center](security-center-partner-solutions.md) — informacje na temat monitorowania stanu kondycji rozwiązań partnerskich.
 * [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
 * [Blog Azure Security](http://blogs.msdn.com/b/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.
+
+Aby dowiedzieć się więcej na temat usługi Azure Policy, zobacz [Co to jest Azure Policy?](../azure-policy/azure-policy-introduction.md)

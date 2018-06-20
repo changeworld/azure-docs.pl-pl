@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 06/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 33998d72ae2a57ae5226c2ec7a1d5dbcebef155e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9d34c06461ea5f264f762494d93d76f1dc1bcb3e
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637178"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221547"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics — często zadawane pytania
 Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące analizy dzienników platformy Microsoft Azure. Jeśli masz dodatkowe pytania dotyczące analizy dzienników, przejdź do [forum dyskusyjne](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) i opublikuj swoje pytania. Po zadawane pytania możemy dodać ją do tego artykułu, aby można je znaleźć szybkie i łatwe.
@@ -75,18 +75,21 @@ Analiza dzienników używa czas UTC i uruchamia każdego dnia o północy czasu 
 
 ### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>Q. Jak można zostanie wyświetlone powiadomienie po zatrzymaniu zbierania danych?
 
-Odpowiedź: wykonaj kroki opisane w [Tworzenie reguły alertu](log-analytics-alerts-creating.md#create-an-alert-rule) zgłaszane po zatrzymaniu zbierania danych.
+Odpowiedź: wykonaj kroki opisane w [Utwórz nowy alert dziennika](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) zgłaszane po zatrzymaniu zbierania danych.
 
 Podczas tworzenia alertu dla po zatrzymaniu zbierania danych należy skonfigurować:
-- **Nazwa** do *zatrzymać zbieranie danych*
-- **Ważność** na *Ostrzeżenie*
-- **Zapytanie wyszukiwania** na `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
-- **Przedział czasu** do *30 minut*.
-- **Alert częstotliwości** do każdego *dziesięć* minut.
-- **Generuj alert w oparciu o** na *Liczba wyników*
-- **Liczba wyników** na *Większa niż 0*
 
-Ten alert zostanie zastosowana, gdy kwerenda zwraca wyniki tylko wtedy, gdy pulsu Brak więcej niż 15 minut.  Wykonaj kroki opisane w sekcji dotyczącej [dodawania akcji do reguł alertów](log-analytics-alerts-actions.md) i skonfiguruj wiadomość e-mail, element webhook lub akcję runbook dla reguły alertu.
+- **Zdefiniuj warunek alertu** określić obszaru roboczego analizy dzienników jako element docelowy zasobów.
+- **Kryteria alertu** , podaj następujące informacje:
+   - **Nazwa sygnału** wybierz **wyszukiwania dziennika niestandardowego**.
+   - **Zapytanie wyszukiwania** na `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
+   - **Alert logiki** jest **na podstawie** *liczba wyników* i **warunku** jest *większa niż* **wartości progowej**  z *0*
+   - **Okres czasu** z *30* minut i **Alert częstotliwości** do każdego *10* minut
+- **Zdefiniuj szczegóły alertu** , podaj następujące informacje:
+   - **Nazwa** do *zatrzymać zbieranie danych*
+   - **Ważność** na *Ostrzeżenie*
+
+Określ istniejącą lub Utwórz nową [grupy akcji](../monitoring-and-diagnostics/monitoring-action-groups.md) tak, aby po alert dziennika kryteria, otrzymasz powiadomienie, jeśli masz pulsu Brak więcej niż 15 minut.
 
 ## <a name="configuration"></a>Konfigurowanie
 ### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>Q. Czy można zmienić nazwę tabeli/blobcontainer używany do odczytu z diagnostyki Azure (WAD)?

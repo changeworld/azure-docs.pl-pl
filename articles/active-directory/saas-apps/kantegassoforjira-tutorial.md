@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: e2af4891-e3c8-43b3-bdcb-0500c493e9b4
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: d6f94e702d41d335674cf88c6aeeeef9200f5bab
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: ebbb61b8612418fbec37769ee56907ff99d5214a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35942805"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228768"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-jira"></a>Samouczek: Azure Active Directory integracji z logowaniem Jednokrotnym Kantega dla JIRA
 

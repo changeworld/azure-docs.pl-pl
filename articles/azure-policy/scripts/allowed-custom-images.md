@@ -15,11 +15,12 @@ ms.workload: ''
 ms.date: 10/30/2017
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: f20fc596783e348805977e2a8dceb29cd5cf6fb8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 18ad65fda35571a57a73c9a9215fae7a89ae8a3f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34602656"
 ---
 # <a name="approved-vm-images"></a>Zatwierdzone obrazy maszyn wirtualnych
 
@@ -76,5 +77,5 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dodatkowe przykłady szablonów usługi Azure Policy można znaleźć na stronie [Templates for Azure Policy (Szablony dla usługi Azure Policy)](../json-samples.md).
-- Dodatkowe przykłady usługi Azure Policy dla maszyn wirtualnych na stronie [Apply policies to Windows VMs (Stosowanie zasad na maszynach wirtualnych z systemem Windows)](/azure/virtual-machines/windows/policy)
+- Zobacz więcej przykładów w witrynie [Przykłady dla usługi Azure Policy](../json-samples.md).
+- Dodatkowe przykłady usługi Azure Policy dla maszyn wirtualnych na stronie [Apply policies to Windows VMs (Stosowanie zasad na maszynach wirtualnych z systemem Windows)](../../virtual-machines/windows/policy.md).

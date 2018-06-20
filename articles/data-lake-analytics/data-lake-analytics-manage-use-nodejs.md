@@ -1,32 +1,28 @@
 ---
-title: Zarządzanie usługą Azure Data Lake Analytics za pomocą zestawu Azure SDK dla środowiska Node.js | Microsoft Docs
-description: Dowiedz się, jak zarządzać kontami, źródłami danych, zadaniami i użytkownikami usługi Data Lake Analytics za pomocą zestawu Azure SDK dla środowiska Node.js
+title: Zarządzanie usługą Azure Data Lake Analytics za pomocą zestawu Azure SDK dla środowiska Node.js
+description: W tym artykule opisano, jak zarządzać kontami, źródłami danych, zadaniami i użytkownikami usługi Data Lake Analytics za pomocą zestawu Azure SDK dla środowiska Node.js.
 services: data-lake-analytics
-documentationcenter: ''
-author: saveenr
-manager: kfile
-editor: cgronlun
-ms.assetid: 9de1bcf4-b15b-4d0b-9284-8889ecf0c438
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 12/05/2016
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: f11695df74e30f7ba9b1459f443a720208e542c4
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+manager: kfile
+editor: jasonwhowell
+ms.assetid: 9de1bcf4-b15b-4d0b-9284-8889ecf0c438
+ms.topic: get-started-article
+ms.date: 12/05/2016
+ms.openlocfilehash: 7af56c7770de7eef0fcf33b2c29f02d3b9fe7170
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624315"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-sdk-for-nodejs"></a>Zarządzanie usługą Azure Data Lake Analytics za pomocą zestawu Azure SDK dla środowiska Node.js
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Zestaw Azure SDK dla środowiska Node.js może służyć do zarządzania kontami, zadaniami i katalogami usługi Azure Data Lake Analytics. Aby wyświetlić temat zarządzania za pomocą innych narzędzi, kliknij łącze powyżej.
+W tym artykule opisano, jak zarządzać kontami, źródłami danych, użytkownikami i zadaniami usługi Azure Data Lake Analytics za pomocą aplikacji napisanych przy użyciu zestawu Azure SDK dla środowiska Node.js. 
 
-W tej chwili obsługiwane są:
-
+Obsługiwane są następujące wersje:
 * **Środowisko Node.js w wersji 0.10.0 lub wyższej**
 * **Wersja interfejsu API REST dla konta: 2015-10-01-preview**
 * **Wersja interfejsu API REST dla katalogu: 2015-10-01-preview**

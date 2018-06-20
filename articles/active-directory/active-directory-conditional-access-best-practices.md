@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/15/2018
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: c155e18ddc4f1713aa9c62a991f4e849e024c5da
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 88e6b1a64d4ceff64c1ee74a297e7af0c5a27379
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34723664"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232508"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory
 
@@ -31,7 +31,7 @@ Z [dostępu warunkowego w usłudze Azure Active Directory (Azure AD)](active-dir
 - Rzeczy, o których należy wiedzieć 
 - Co to jest należy unikać wykonywania podczas konfigurowania zasad dostępu warunkowego. 
 
-W tym artykule przyjęto założenie, że należy zapoznać się pojęć i terminologii opisane w temacie [dostępu warunkowego w usłudze Azure Active Directory](active-directory-conditional-access-azure-portal.md)
+W tym artykule przyjęto założenie, że należy zapoznać się pojęć i terminologii opisane w temacie [co to jest dostępu warunkowego w usłudze Azure Active Directory?](active-directory-conditional-access-azure-portal.md)
 
 
 
@@ -154,4 +154,4 @@ Aby uzyskać więcej informacji, zobacz [migracji klasycznego zasad w portalu Az
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wprowadzenie dostępu warunkowego w usłudze Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md).
+Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](active-directory-conditional-access-app-based-mfa.md).

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 791871fc3da98b380da9dbe32333a55f670c22e8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 541a8e83029fe1dc0ba386d1906b366e63041882
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638283"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36268241"
 ---
 # <a name="assets"></a>Elementy zawartości
 
@@ -88,7 +88,7 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 
 Podział na strony jest obsługiwana dla każdego z czterech włączone sortowania. 
 
-Jeśli odpowiedź na zapytanie zawiera wiele (obecnie ponad 1000) elementów, usługa zwraca "@odata.nextLink" właściwości do pobrania następnej strony wyników. Może to służyć do strony za pomocą cały zestaw wyników. Rozmiar strony nie jest konfigurowane przez użytkownika. 
+Jeśli odpowiedź na zapytanie zawiera wiele (obecnie ponad 1000) elementów, usługa zwraca "\@odata.nextLink" właściwości do pobrania następnej strony wyników. Może to służyć do strony za pomocą cały zestaw wyników. Rozmiar strony nie jest konfigurowane przez użytkownika. 
 
 Jeśli zasoby są tworzone lub usuwane podczas stronicowania za pomocą kolekcji, zmiany są uwzględniane w zwracanych wyników (Jeśli te zmiany w części w kolekcji, która nie została pobrana.) 
 
@@ -105,6 +105,21 @@ while (currentPage.NextPageLink != null)
 ```
 
 Przykłady REST, zobacz [zasoby — listy](https://docs.microsoft.com/rest/api/media/assets/list)
+
+
+### <a name="storage-side-encryption"></a>Szyfrowanie po stronie magazynu
+
+Aby chronić zasobów magazynowane, zasoby powinny być szyfrowane za pomocą szyfrowania po stronie magazynu. W poniższej tabeli przedstawiono, jak działa szyfrowanie po stronie magazynu w usłudze Media Services:
+
+|Opcja szyfrowania|Opis|Media Services v2|Media Services v3|
+|---|---|---|---|
+|Szyfrowanie magazynu usługi multimediów|AES 256 szyfrowanie klucza zarządzane przez usługę Media Services|Obsługiwane<sup>(1)</sup>|Nieobsługiwane<sup>(2)</sup>|
+|[Szyfrowanie usługi Magazyn danych w stanie spoczynku](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Szyfrowanie po stronie serwera oferowanych przez usługi Azure Storage, klucz zarządzany przez usługę Azure lub przez klienta|Obsługiwane|Obsługiwane|
+|[Szyfrowanie magazynu po stronie klienta](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Oferowane przez usługi Azure storage, klucz zarządzany przez klienta w magazynie kluczy szyfrowania po stronie klienta|Nieobsługiwane|Nieobsługiwane|
+
+<sup>1</sup> podczas Media Services obsługuje obsługi zawartości w czyszczeniu/bez jakiejkolwiek formy szyfrowania, to nie jest to zalecane.
+
+<sup>2</sup> Media Services w wersji 3 szyfrowanie magazynu (szyfrowanie AES 256) jest tylko wykorzystywać dla zapewnienia zgodności z zasoby zostały utworzone za pomocą usługi Media Services w wersji 2. Co oznacza działa w wersji 3 z dotychczasowej pamięci masowej zaszyfrowany zasoby, ale nie zezwala na tworzenie nowych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

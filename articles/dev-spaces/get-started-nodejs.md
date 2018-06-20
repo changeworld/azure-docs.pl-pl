@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 manager: douge
-ms.openlocfilehash: deb651170b0fd58f8c89b591f3e42b5b629f4095
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 0507208e58323fd31bb7c6cdb3a293ec0179cabe
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361476"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823915"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Rozpoczęcie pracy w usłudze Azure Dev Spaces przy użyciu środowiska Node.js
 
@@ -32,7 +32,7 @@ Teraz możesz przystąpić do tworzenia środowiska deweloperskiego Kubernetes n
 Usługa Azure Dev Spaces wymaga minimalnej konfiguracji komputera lokalnego. Większość ustawień środowiska deweloperskiego jest przechowywana w chmurze i udostępniana innym użytkownikom. Zacznij od pobrania i uruchomienia [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 > [!IMPORTANT]
-> Jeśli masz już zainstalowany interfejs wiersza polecenia platformy Azure, upewnij się, że używasz wersji 2.0.32 lub nowszej.
+> Jeśli masz już zainstalowany interfejs wiersza polecenia platformy Azure, upewnij się, że używasz wersji 2.0.33 lub nowszej.
 
 [!INCLUDE[](includes/sign-into-azure.md)]
 
@@ -89,7 +89,7 @@ Jak widać, niektóre problemy występują dopiero podczas testów na urządzeni
 ### <a name="update-a-code-file"></a>Aktualizowanie pliku kodu
 Aktualizacja plików kodu po stronie serwera wymaga nieco więcej pracy, ponieważ aplikacja Node.js musi zostać uruchomiona ponownie.
 
-1. W oknie terminalu naciśnij klawisze `Ctrl+C` (aby zatrzymać polecenie `azds up`).
+1. W oknie terminalu naciśnij klawisze `Ctrl+C`, aby zatrzymać polecenie `azds up`.
 1. Otwórz plik kodu o nazwie `server.js` i zmodyfikuj komunikat powitalny usługi: 
 
     ```javascript
@@ -185,25 +185,25 @@ Napiszmy w aplikacji `webfrontend` kod, który będzie wysyłał żądanie do ap
 1. Dodaj następujące wiersze kodu w górnej części pliku `server.js`:
     ```javascript
     var request = require('request');
-    var propagateHeaders = require('./propagateHeaders');
     ```
 
 3. *Zastąp* kod procedury obsługi GET `/api`. Podczas obsługi żądania wywołuje ono usługę `mywebapi`, a następnie zwraca wyniki z obu usług.
 
     ```javascript
     app.get('/api', function (req, res) {
-        request({
-            uri: 'http://mywebapi',
-            headers: propagateHeaders.from(req) // propagate headers to outgoing requests
-        }, function (error, response, body) {
-            res.send('Hello from webfrontend and ' + body);
-        });
+       request({
+          uri: 'http://mywebapi',
+          headers: {
+             /* propagate the dev space routing header */
+             'azds-route-as': req.headers['azds-route-as']
+          }
+       }, function (error, response, body) {
+           res.send('Hello from webfrontend and ' + body);
+       });
     });
     ```
 
-Zwróć uwagę, że do odwoływania się do usługi `http://mywebapi` jest używana funkcja odnajdywania usług DNS w środowisku Kubernetes. **Kod w środowisku deweloperskim działa tak samo, jakby był uruchamiany w środowisku produkcyjnym**.
-
-W powyższym przykładzie kodu jest używany moduł pomocnika o nazwie `propagateHeaders`. Ten pomocnik został dodany do folderu kodu w momencie uruchomienia polecenia `azds prep`. Funkcja `propagateHeaders.from()` propaguje określone nagłówki z istniejącego obiektu http.IncomingMessage na obiekt nagłówków na potrzeby żądania wychodzącego. Później zobaczysz, jak ułatwia to zespołom programowanie zespołowe.
+W poprzednim przykładzie kodu nagłówek `azds-route-as` jest przekazywany z żądania przychodzącego do żądania wychodzącego. Później zobaczysz, jak ułatwia to zespołom programowanie zespołowe.
 
 ### <a name="debug-across-multiple-services"></a>Debugowanie w wielu usługach
 1. W tym momencie aplikacja `mywebapi` powinna być nadal uruchomiona z dołączonym debugerem. Jeśli nie jest, naciśnij klawisz F5 w projekcie `mywebapi`.

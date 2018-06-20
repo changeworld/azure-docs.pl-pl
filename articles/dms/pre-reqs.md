@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 04/22/2018
-ms.openlocfilehash: b3fe97343d844eb5c030cf0aaa9da2a6f54a2472
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 06/19/2018
+ms.openlocfilehash: 3dc449724e405f83ce976b9f8b01a89c25d693fe
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32168211"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221254"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>Przegląd wymagań wstępnych dotyczących używania usługi Azure bazy danych migracji
 Istnieje kilka wymagań wstępnych dotyczących upewnić, że usługa migracji bazy danych Azure przeprowadzane bezproblemowego podczas przeprowadzania migracji bazy danych. Niektóre wymagania wstępne są stosowane we wszystkich scenariuszach (pary źródłowy i docelowy), obsługiwane przez usługę, podczas gdy inne wymagania wstępne są unikatowe dla danego scenariusza.
@@ -63,4 +63,4 @@ Podczas korzystania z usługi migracji bazy danych Azure do wykonania programu S
    > Aby uzyskać pełną listę wymagań wstępnych dotyczących korzystania z usługi migracji bazy danych Azure do przeprowadzenia migracji z programu SQL Server do wystąpienia zarządzane bazy danych SQL Azure, zobacz samouczek [migracji programu SQL Server do wystąpienia zarządzane bazy danych SQL Azure ](https://aka.ms/migratetomiusingdms).
 
 ## <a name="next-steps"></a>Kolejne kroki
-Omówienie usługi migracji bazy danych Azure i regionalnych dostępność w publicznej wersji zapoznawczej, zobacz artykuł [co to jest podgląd z migracji bazy danych Azure](dms-overview.md). 
+Omówienie usługi migracji bazy danych Azure i regionalnych dostępności, zobacz artykuł [co to jest usługa Azure bazy danych migracji](dms-overview.md). 

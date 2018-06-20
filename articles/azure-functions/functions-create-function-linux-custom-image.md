@@ -11,11 +11,12 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
-ms.openlocfilehash: 758906126b42c103853e0047bb19d2e96a84fae6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c5de0b1384958bc8553aa3722ad6a5829b69ab12
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261325"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>Tworzenie funkcji w systemie Linux przy użyciu niestandardowego obrazu (wersja zapoznawcza)
 
@@ -43,7 +44,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 * [Git](https://git-scm.com/downloads)
 * Aktywna [subskrypcja platformy Azure](https://azure.microsoft.com/pricing/free-trial/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-* [Docker](https://docs.docker.com/get-started/#setup)
+* [Docker](https://docs.docker.com/install/)
 * [Konto usługi Docker Hub](https://docs.docker.com/docker-id/)
 
 [!INCLUDE [Free trial note](../../includes/quickstarts-free-trial-note.md)]
@@ -226,7 +227,8 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Wdrażanie aplikacji funkcji z usługi Docker Hub.
 > * Dodawanie ustawień aplikacji do aplikacji funkcji.
 
-Dowiedz się więcej o lokalnym programowaniu w usłudze Azure Functions przy użyciu podstawowych narzędzi usługi Azure Functions.
+Dowiedz się, jak włączyć funkcję ciągłej integracji wbudowaną na podstawowej platformie App Service. Aplikację funkcji możesz skonfigurować tak, aby po zaktualizowaniu obrazu w usłudze Docker Hub kontener był wdrażany ponownie.
 
 > [!div class="nextstepaction"] 
-> [Kodowanie i testowanie usługi Azure Functions lokalnie](functions-run-local.md)
+> 
+  [Ciągłe wdrażanie za pomocą usługi Web App for Containers](../app-service/containers/app-service-linux-ci-cd.md)

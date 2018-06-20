@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: 57cbf436-fc1d-4bab-b991-7d25b6e987ef
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-ms.openlocfilehash: d44420505ebf08e199ee482d78baa8fdb5654c14
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 77453d05667e0520b4da550803902f01631aa5e1
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34587163"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232411"
 ---
 # <a name="third-party-software-compatible-with-azure-ad-domain-services"></a>Zgodny z usług domenowych Azure AD oprogramowania innych firm
 
@@ -35,10 +35,10 @@ Jeden usługi uwierzytelniania tożsamości umożliwia systemów Unix, Linux i M
 [Artykuł bazy wiedzy — jeden usługi uwierzytelniania tożsamości z usług domenowych Azure AD](https://support.quest.com/authentication-services/kb/208427)
 
 
-## <a name="redhat-enterprise-linux"></a>RedHat Enterprise Linux
+## <a name="red-hat-enterprise-linux"></a>Red Hat Enterprise Linux
 
-![RedHat](./media/compatible-software-icons/RedHat.png)
+![Red Hat](./media/compatible-software-icons/RedHat.png)
 
 Red Hat Enterprise Linux jest na świecie wiodące enterprise platformy Linux utworzone w celu zaspokajania potrzeb współczesnych przedsiębiorstwach modern. Red Hat Enterprise Linux jest preferowanym rozwiązaniem dla obciążeń maszyny wirtualnej (VM) przedsiębiorstwa systemu Linux w systemie Microsoft Azure. Red Hat Enterprise Linux jest otwarty, niezawodną i bezpieczną platformą przeznaczone dla klientów, którzy chcą elastyczność wdrażania ich obciążeń biznesowych o znaczeniu krytycznym - danych z Centrum w chmurze platformy Azure — kopie przez ściśle zintegrowane, obsługa korporacyjnej od firmy Microsoft i Red Hat.
 
-[Dołącz RedHat Enterprise Linux 7.2 maszyny Wirtualnej do usług domenowych Azure AD](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
+[Red Hat Enterprise Linux 7.2 przyłączyć maszyny Wirtualnej do usług domenowych Azure AD](active-directory-ds-admin-guide-join-rhel-linux-vm.md)

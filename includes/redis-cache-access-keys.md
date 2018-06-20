@@ -1,31 +1,31 @@
-Aby połączyć się z wystąpieniem usługi Azure Redis Cache, klienci pamięci podręcznej potrzebują nazwy hosta, portów i kluczy pamięci podręcznej. Niektórzy klienci mogą odwoływać się do tych elementów przy użyciu nieco innych nazw. Te informacje można pobrać z witryny Azure Portal lub przy użyciu narzędzi wiersza polecenia, takich jak interfejs wiersza polecenia platformy Azure.
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: redis-cache
+author: wesmc7777
+ms.service: cache
+ms.topic: include
+ms.date: 03/28/2018
+ms.author: wesmc
+ms.custom: include file
+ms.openlocfilehash: 4148370828f4ac2b7e75b49ed13cf1d1dafb8844
+ms.sourcegitcommit: 7de1432648c4ff3bcd09530c079418477d9f4d00
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 06/18/2018
+ms.locfileid: "35719441"
+---
+### <a name="retrieve-host-name-ports-and-access-keys-by-using-the-azure-portal"></a>Uzyskiwanie nazwy hosta, portów i kluczy dostępu przy użyciu witryny Azure Portal
 
-### <a name="retrieve-host-name-ports-and-access-keys-using-the-azure-portal"></a>Pobieranie nazwy hosta, portów i kluczy dostępu przy użyciu witryny Azure Portal
-Aby pobrać nazwy hosta, porty i klucze dostępu przy użyciu witryny Azure Portal, za pomocą pozycji [Przeglądaj](../articles/redis-cache/cache-configure.md#configure-redis-cache-settings) przejdź do pamięci podręcznej w witrynie [Azure Portal](https://portal.azure.com), a następnie kliknij pozycje **Klucze dostępu** i **Właściwości** w **menu Zasób**. 
+Aby połączyć się z wystąpieniem usługi Azure Redis Cache, klienci pamięci podręcznej potrzebują nazwy hosta, portów i klucza pamięci podręcznej. Niektórzy klienci mogą odwoływać się do tych elementów przy użyciu nieco innych nazw. Te informacje można znaleźć w witrynie Azure Portal.
 
-![Ustawienia pamięci podręcznej Redis](media/redis-cache-access-keys/redis-cache-hostname-ports-keys.png)
+#### <a name="to-retrieve-the-access-keys-and-host-name"></a>Aby uzyskać klucze dostępu i nazwę hosta
 
-### <a name="retrieve-host-name-ports-and-access-keys-using-azure-cli"></a>Pobieranie nazwy hosta, portów i kluczy dostępu przy użyciu interfejsu wiersza polecenia platformy Azure
-Aby pobrać nazwę hosta i porty przy użyciu interfejsu wiersza polecenia platformy Azure CLI w wersji 2.0, możesz wywołać pozycję [az redis show](https://docs.microsoft.com/cli/azure/redis#az_redis_show), a aby pobrać kluczem, możesz wywołać pozycję [az redis list-keys](https://docs.microsoft.com/cli/azure/redis#az_redis_list_keys). Poniższy skrypt wywołuje te dwa polecenia i przesyła nazwę hosta, porty i klucze do konsoli.
+1. Aby uzyskać klucze dostępu za pomocą witryny [Azure Portal](https://portal.azure.com), przejdź do pamięci podręcznej i wybierz pozycję **Klucze dostępu**. 
 
-```azurecli
-#/bin/bash
+    ![Klucze usługi Azure Redis Cache](media/redis-cache-access-keys/redis-cache-keys.png)
 
-# Retrieve the hostname, ports, and keys for contosoCache located in contosoGroup
+2. Aby uzyskać nazwę hosta i porty, wybierz pozycję **Właściwości**.
 
-# Retrieve the hostname and ports for an Azure Redis Cache instance
-redis=($(az redis show --name contosoCache --resource-group contosoGroup --query [hostName,enableNonSslPort,port,sslPort] --output tsv))
+    ![Właściwości usługi Azure Redis Cache](media/redis-cache-access-keys/redis-cache-hostname-ports.png)
 
-# Retrieve the keys for an Azure Redis Cache instance
-keys=($(az redis list-keys --name contosoCache --resource-group contosoGroup --query [primaryKey,secondaryKey] --output tsv))
-
-# Display the retrieved hostname, keys, and ports
-echo "Hostname:" ${redis[0]}
-echo "Non SSL Port:" ${redis[2]}
-echo "Non SSL Port Enabled:" ${redis[1]}
-echo "SSL Port:" ${redis[3]}
-echo "Primary Key:" ${keys[0]}
-echo "Secondary Key:" ${keys[1]}
-```
-
-Aby uzyskać więcej informacji na temat tego skryptu, zobacz [Get the hostname, ports, and keys for Azure Redis Cache](../articles/redis-cache/scripts/cache-keys-ports.md) (Uzyskiwanie nazwy hosta, portów i kluczy dla usługi Azure Redis Cache). Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure w wersji 2.0, zobacz [Install Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (Instalowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0) i [Get started with Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) (Rozpoczynanie pracy z interfejsem wiersza polecenia platformy Azure w wersji 2.0).

@@ -12,13 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/02/2018
+ms.date: 06/07/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d7d1beff419ed2bf4c58f0646cd6c8aacf8e5e7b
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: f40f2102729cc317f74bd5a91b17a349a7824476
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849995"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Niestandardowa instalacja programu Azure AD Connect
 Opcja **Ustawienia niestandardowe** programu Azure AD Connect umożliwia skorzystanie z większej liczby opcji instalacji. Jest używana w przypadku występowania wielu lasów lub w celu skonfigurowania funkcji opcjonalnych, których nie obejmuje instalacja ekspresowa. Jest przydatna w każdej sytuacji, gdy opcja [**instalacji ekspresowej**](active-directory-aadconnect-get-started-express.md) nie zaspokaja potrzeb związanych z wdrożeniem lub topologią.
@@ -214,12 +216,11 @@ Na komputerze, na którym są zainstalowane narzędzia do zarządzania zasadami 
 1.  Otwórz narzędzia do zarządzania zasadami grupy.
 2.  Poddaj edycji zasady grupy, które zostaną zastosowane do wszystkich użytkowników. Mogą to być na przykład domyślne zasady domeny.
 3.  Przejdź do obszaru **Konfiguracja użytkownika\Szablony administracyjne\Składniki systemu Windows\Internet Explorer\Internetowy panel sterowania\Strona zabezpieczeń** i wybierz pozycję **Lista przypisywanie witryn do stref** (jak na poniższym obrazie).
-4.  Włącz zasady, a następnie wprowadź dwa poniższe elementy w oknie dialogowym.
+4.  Włącz zasady, a następnie wprowadź poniższy element w oknie dialogowym.
 
         Value: `https://autologon.microsoftazuread-sso.com`  
         Data: 1  
-        Value: `https://aadg.windows.net.nsatc.net`  
-        Data: 1
+    
 
 5.  Zawartość okna powinna wyglądać mniej więcej tak:  
 ![Strefy intranetowe](./media/active-directory-aadconnect-get-started-custom/sitezone.png)
@@ -227,7 +228,7 @@ Na komputerze, na którym są zainstalowane narzędzia do zarządzania zasadami 
 6.  Dwa razy kliknij przycisk **OK**.
 
 ## <a name="configuring-federation-with-ad-fs"></a>Konfigurowanie federacji przy użyciu usług AD FS
-Konfigurowanie usług AD FS przy użyciu programu Azure AD Connect jest proste — wystarczy kilka kliknięć. Przed przystąpieniem do konfiguracji potrzebne są następujące elementy:
+Konfigurowanie usług AD FS przy użyciu programu Azure AD Connect jest proste i wymaga zaledwie kilku kliknięć. Przed przystąpieniem do konfiguracji potrzebne są następujące elementy:
 
 * Serwer Windows Server 2012 R2 lub nowszy dla serwera federacyjnego z włączonym zarządzaniem zdalnym
 * Serwer Windows Server 2012 R2 lub nowszy dla serwera proxy aplikacji internetowej z włączonym zarządzaniem zdalnym
@@ -259,18 +260,18 @@ Należy wprowadzić serwery, na których mają być zainstalowane usługi AD FS.
 
 ![Serwery usług AD FS](./media/active-directory-aadconnect-get-started-custom/adfs2.png)
 
-### <a name="specify-the-web-application-proxy-servers"></a>Określanie serwerów proxy aplikacji sieci Web
-Należy wprowadzić serwery, które mają służyć jako serwery proxy aplikacji sieci Web. Serwer proxy aplikacji sieci web jest wdrażany w strefie DMZ (ukierunkowanej na sieć ekstranet) i obsługuje żądania uwierzytelniania z ekstranetu. Można dodać jeden serwer lub większą ich liczbę w zależności od tego, jakie są potrzeby związane z planowaniem wydajności. Firma Microsoft zaleca instalowanie jednego serwera proxy aplikacji sieci Web do celów wdrożeń testowych i pilotażowych. Następnie można dodać i wdrożyć więcej serwerów w zależności od potrzeb związanych ze skalowaniem przez ponowne uruchomienie programu Azure AD Connect po wstępnej konfiguracji. Zaleca się równoważną liczbę serwerów proxy, aby spełnić wymagania uwierzytelniania z sieci intranet.
+### <a name="specify-the-web-application-proxy-servers"></a>Określanie serwerów proxy aplikacji internetowych
+Należy wprowadzić serwery, które mają służyć jako serwery proxy aplikacji internetowych. Serwer proxy aplikacji internetowej jest wdrażany w strefie DMZ (ukierunkowanej na sieć ekstranet) i obsługuje żądania uwierzytelniania z ekstranetu. Można dodać jeden serwer lub większą ich liczbę w zależności od tego, jakie są potrzeby związane z planowaniem wydajności. Firma Microsoft zaleca instalowanie jednego serwera proxy aplikacji internetowej do celów wdrożeń testowych i pilotażowych. Następnie można dodać i wdrożyć więcej serwerów w zależności od potrzeb związanych ze skalowaniem przez ponowne uruchomienie programu Azure AD Connect po wstępnej konfiguracji. Zaleca się równoważną liczbę serwerów proxy, aby spełnić wymagania uwierzytelniania z sieci intranet.
 
 > [!NOTE]
 > <li> Jeśli używane konto nie jest lokalnym kontem administratora na serwerach WAP, zostanie wyświetlony monit o podanie poświadczeń administratora.</li>
-> <li> Przed wykonaniem tego kroku upewnij się, że istnieje połączenie HTTP/HTTPS między serwerem programu Azure AD Connect a serwerem proxy aplikacji sieci Web.</li>
-> <li> Upewnij się, że istnieje połączenie HTTP/HTTPS między serwerem aplikacji sieci Web a serwerem usług AD FS, które umożliwi przepływ żądań uwierzytelniania.</li>
+> <li> Przed wykonaniem tego kroku upewnij się, że istnieje połączenie HTTP/HTTPS między serwerem programu Azure AD Connect a serwerem proxy aplikacji internetowej.</li>
+> <li> Upewnij się, że istnieje połączenie HTTP/HTTPS między serwerem aplikacji internetowej a serwerem usług AD FS, które umożliwi przepływ żądań uwierzytelniania.</li>
 >
 
-![Aplikacja sieci Web](./media/active-directory-aadconnect-get-started-custom/adfs3.png)
+![Aplikacja internetowa](./media/active-directory-aadconnect-get-started-custom/adfs3.png)
 
-Zostanie wyświetlony monit o podanie poświadczeń, aby serwer aplikacji sieci Web mógł nawiązać bezpieczne połączenie z serwerem usług AD FS. Wymagane są poświadczenia lokalnego administratora na serwerze usług AD FS.
+Zostanie wyświetlony monit o podanie poświadczeń, aby serwer aplikacji internetowej mógł nawiązać bezpieczne połączenie z serwerem usług AD FS. Wymagane są poświadczenia lokalnego administratora na serwerze usług AD FS.
 
 ![Serwer proxy](./media/active-directory-aadconnect-get-started-custom/adfs4.png)
 
@@ -303,7 +304,7 @@ Po wybraniu domeny do sfederowania program Azure AD Connect dostarcza niezbędne
 >
 
 ## <a name="configuring-federation-with-pingfederate"></a>Konfigurowanie federacji z serwerem PingFederate
-Konfigurowanie serwera PingFederate przy użyciu programu Azure AD Connect jest proste — wystarczy kilka kliknięć. Przed przystąpieniem do konfiguracji potrzebne są następujące elementy:  Wymagane jest spełnienie wymienionych niżej wymagań wstępnych.
+Konfigurowanie serwera PingFederate przy użyciu programu Azure AD Connect jest proste i wymaga zaledwie kilku kliknięć. Jednak wymagane jest spełnienie wymienionych niżej wymagań wstępnych.
 - Serwer PingFederate 8.4 lub nowszy.  Aby uzyskać więcej informacji, zobacz temat [PingFederate Integration with Azure Active Directory and Office 365](https://docs.pingidentity.com/bundle/O365IG20_sm_integrationGuide/page/O365IG_c_integrationGuide.html) (Integracja serwera PingFederate z usługą Azure Active Directory i usługą Office 365)
 - Certyfikat protokołu SSL dla nazwy usługi federacyjnej, która ma być używana (na przykład sts.contoso.com)
 

@@ -1,6 +1,6 @@
 ---
-title: "Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure na dużą skalę | Microsoft Docs"
-description: "Równoczesne tworzenie kopii zapasowych wielu maszyn wirtualnych platformy Azure"
+title: Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure na dużą skalę
+description: Równoczesne tworzenie kopii zapasowych wielu maszyn wirtualnych platformy Azure
 services: backup
 keywords: kopia zapasowa maszyny wirtualnej; tworzenie kopii maszyny wirtualnej; tworzenie kopii vm, kopia zapasowa vm; kopia zapasowa maszyny wirtualnej platformy Azure; kopia zapasowa i odzyskiwanie po awarii
 author: markgalioto
@@ -9,11 +9,12 @@ ms.date: 2/14/2018
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: f1cfa72d0fb3c83ef6265649b740dec317f0e4b2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ecbf583a9b64868004b246bb01e7f174a21496b0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607468"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Tworzenie kopii zapasowych wielu maszyn wirtualnych za pomocą witryny Azure Portal
 
@@ -115,17 +116,17 @@ Aby uruchomić zadanie tworzenia kopii zapasowej na żądanie:
 
     ![Zadanie tworzenia kopii zapasowej zostało wyzwolone](./media/tutorial-backup-vm-at-scale/initial-backup-context-menu.png)
 
-3. Na liście **Elementy kopii zapasowej** kliknij przycisk z wielokropkiem **...**, aby otworzyć menu Kontekst.
+3. Na liście **Elementy kopii zapasowej** kliknij przycisk z wielokropkiem **...**, aby otworzyć menu kontekstowe.
 
 4. W menu kontekstowym wybierz pozycję **Utwórz teraz kopię zapasową**.
 
-    ![Menu Kontekst](./media/tutorial-backup-vm-at-scale/context-menu.png)
+    ![Menu kontekstowe](./media/tutorial-backup-vm-at-scale/context-menu.png)
 
     Zostanie otwarte menu Utwórz teraz kopię zapasową.
 
 5. W menu Utwórz teraz kopię zapasową wprowadź ostatni dzień zachowania punktu odzyskiwania i kliknij pozycję **Kopia zapasowa**.
 
-    ![ustawianie ostatniego dnia okresu zachowywania punktu odzyskiwania Utwórz teraz punkt odzyskiwania](./media/tutorial-backup-vm-at-scale/backup-now-short.png)
+    ![Ustawianie ostatniego dnia okresu zachowywania punktu odzyskiwania w menu Utwórz teraz kopię zapasową](./media/tutorial-backup-vm-at-scale/backup-now-short.png)
 
     Powiadomienia dotyczące wdrożenia informują o wyzwoleniu zadania tworzenia kopii zapasowej, dzięki czemu możesz monitorować postęp zadania na stronie zadań tworzenia kopii zapasowych. W zależności od rozmiaru maszyny wirtualnej tworzenie początkowej kopii zapasowej może potrwać pewien czas.
 

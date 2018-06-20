@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 30b4a7ea0d3f68e48d02e5cb72e70de74dc2addf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3962b2e598f94767bd0fbbe990084875deec5e40
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658693"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36266903"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Tworzenie, zmienianie lub usuwanie publicznego adresu IP
 
@@ -90,7 +90,7 @@ Chociaż portalu udostępnia opcję, aby utworzyć dwa zasoby publicznych adres�
 |Narzędzie|Polecenie|
 |---|---|
 |Interfejs wiersza polecenia|[Lista ip publicznej sieci az](/cli/azure/network/public-ip#az-network-public-ip-list) publiczne adresy IP, [az sieci ip publicznego Pokaż](/cli/azure/network/public-ip#az-network-public-ip-show) pokazanie ustawień; [az sieci ip publicznego aktualizacji](/cli/azure/network/public-ip#az-network-public-ip-update) zaktualizować; [usunąć publicznej sieci az ip](/cli/azure/network/public-ip#az-network-public-ip-delete) do usunięcia|
-|PowerShell|[Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) można pobrać obiektu publiczny adres IP i wyświetlić jej ustawienia [AzureRmPublicIpAddress zestaw](/powershell/resourcemanager/azurerm.network/set-azurermpublicipaddress) można zaktualizować ustawień; [AzureRmPublicIpAddress Usuń](/powershell/module/azurerm.network/remove-azurermpublicipaddress) do usunięcia|
+|PowerShell|[Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) można pobrać obiektu publiczny adres IP i wyświetlić jej ustawienia [AzureRmPublicIpAddress zestaw](/powershell/module/azurerm.network/set-azurermpublicipaddress) można zaktualizować ustawień; [AzureRmPublicIpAddress Usuń](/powershell/module/azurerm.network/remove-azurermpublicipaddress) do usunięcia|
 
 ## <a name="permissions"></a>Uprawnienia
 

@@ -13,22 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: bbc0cee8a44773c025c6174eaf7eccaba81b8d1b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 4fc71432707c981c0f3f12e74ad7c499d36a17d2
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "26617080"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231342"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Wystąpił nieoczekiwany błąd podczas wykonywania zgody do aplikacji
 
-W tym artykule omówiono błędy, które mogą wystąpić w trakcie procesu zgodę aplikacji. Jeśli jesteś rozwiązywanie nieoczekiwany zgody monity nie zawiera komunikaty o błędach, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios).
+W tym artykule omówiono błędy, które mogą wystąpić w trakcie procesu zgodę aplikacji. Nieoczekiwany zgody monity, które nie zawierają komunikaty o błędach przypadku rozwiązywania problemów, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios).
 
-Wiele aplikacji, które integrują się z usługą Azure Active Directory wymaga uprawnienia dostępu do innych zasobów prawidłowego działania. Jeśli te zasoby również są zintegrowane z usługą Azure Active Directory, uprawnienia dostępu do nich jest często żądana za pomocą wspólnej struktury zgody. 
+Wiele aplikacji, które integrują się z usługą Azure Active Directory wymaga uprawnienia dostępu do innych zasobów prawidłowego działania. Jeśli te zasoby również są zintegrowane z usługą Azure Active Directory, uprawnienia dostępu do nich jest często żądana za pomocą wspólnej struktury zgody. Zostanie wyświetlony monit zgody, którego działanie ma zazwyczaj miejsce po raz pierwszy aplikacja jest używana, ale może również wystąpić w kolejnych za pomocą aplikacji.
 
-Powoduje to monit o zgodę będzie wyświetlany, którego działanie ma zazwyczaj miejsce po raz pierwszy aplikacja jest używana, ale może również wystąpić w kolejnych za pomocą aplikacji.
-
-Określone warunki musi mieć wartość true dla użytkownika o zgodę na uprawnienia wymagane przez aplikację. Jeśli te warunki nie są spełnione, mogą wystąpić różne błędy. Należą do nich:
+Określone warunki musi mieć wartość true dla użytkownika o zgodę na uprawnienia wymagane przez aplikację. Jeśli te warunki nie są spełnione, mogą wystąpić następujące błędy.
 
 ## <a name="requesting-not-authorized-permissions-error"></a>Błąd uprawnień nie Autoryzowano żądania
 * **AADSTS90093:** &lt;clientAppDisplayName&gt; żąda jedno lub więcej uprawnień, które nie autoryzacji do przyznawania. Skontaktuj się z administratorem, który można wyrazić zgodę na tę aplikację w Twoim imieniu.
@@ -41,7 +39,7 @@ Ten błąd występuje, gdy użytkownik, który nie jest administratorem firmy pr
 Ten błąd występuje, gdy administrator firmy wyłącza przez użytkowników wyrazić zgodę na aplikacje, a następnie użytkownik bez uprawnień administratora próbuje użyć aplikacji, która wymaga zgody. Ten błąd można rozwiązać przez administratora udzielanie dostępu do aplikacji w imieniu swojej organizacji.
 
 ## <a name="intermittent-problem-error"></a>Problem tymczasowy błąd
-* **AADSTS90090:** prawdopodobnie wystąpił problem tymczasowy rejestrowania próbował udzielać uprawnienia &lt;clientAppDisplayName&gt;. Spróbuj ponownie później.
+* **AADSTS90090:** wygląda procesu logowania napotkała problem tymczasowy rejestrowania próbował udzielać uprawnienia &lt;clientAppDisplayName&gt;. Spróbuj ponownie później.
 
 Ten błąd wskazuje, że wystąpił problem po stronie usługi tymczasowymi. Można można rozwiązać przez próby wyrażenia zgody na ponownie aplikację.
 
@@ -62,7 +60,7 @@ Te błędy, wszystkie wystąpić, gdy aplikacja użytkownik próbuje wyrażenia 
 
 -   Deweloper aplikacji klienta ma ich stosowania nieprawidłowo skonfigurowane, powodowania umożliwia zażądanie dostępu do nieprawidłowy zasób. W takim przypadku Deweloper aplikacji musi zaktualizować konfigurację aplikacji klienta, aby rozwiązać ten problem.
 
--   Nazwy głównej usługi reprezentujących zasobu aplikacji docelowej nie istnieje w organizacji, lub istniał w przeszłości, ale została usunięta. Aby rozwiązać ten problem, nazwy głównej usługi dla aplikacji zasobów należy udostępnić w organizacji, więc aplikacja kliencka może zażądać uprawnień do niego. Może to wystąpić w różne sposoby, w zależności od typu aplikacji, w tym:
+-   Nazwy głównej usługi reprezentujących zasobu aplikacji docelowej nie istnieje w organizacji, lub istniał w przeszłości, ale została usunięta. Aby rozwiązać ten problem, nazwy głównej usługi dla aplikacji zasobów należy udostępnić w organizacji, więc aplikacja kliencka może zażądać uprawnień do niego. Nazwy głównej usługi można udostępnić na kilka sposobów, w zależności od typu aplikacji, w tym:
 
     -   Uzyskiwanie subskrypcji dla aplikacji zasobów (Firma Microsoft opublikowała aplikacji)
 

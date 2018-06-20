@@ -1,51 +1,56 @@
 ---
-title: Zarządzanie wiele modułów Azure IoT krawędzi w kodzie VS | Dokumentacja firmy Microsoft
-description: Użyj programu Visual Studio Code umożliwiające tworzenie rozwiązań IoT Edge, które użycia wielu modułów.
-services: iot-edge
-keywords: ''
+title: Zarządzanie wieloma modułami usługi Azure IoT Edge w programie VS Code | Microsoft Docs
+description: Użyj programu Visual Studio Code, aby tworzyć rozwiązania usługi Azure IoT Edge korzystające z wielu modułów.
 author: shizn
-manager: timlt
+manager: ''
 ms.author: xshi
 ms.date: 03/18/2018
-ms.topic: article
+ms.topic: tutorial
 ms.service: iot-edge
-ms.openlocfilehash: 4d9caa7aa95c99fa30e8ec76c5b6362615725622
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
-ms.translationtype: MT
+services: iot-edge
+ms.custom: mvc
+ms.openlocfilehash: 4a624994f93e7a3cbb04db2a0ec0b2b823a12ee7
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763038"
 ---
-# <a name="develop-an-iot-edge-solution-with-multiple-modules-in-visual-studio-code---preview"></a>Tworzenie rozwiązania IoT krawędź z wielu modułów w programie Visual Studio Code - preview
-Visual Studio Code służy do opracowywania rozwiązania IoT krawędź z wielu modułów. W tym artykule przedstawiono tworzenie, aktualizowanie i wdrażanie rozwiązań IoT Edge potoków danych czujnika na symulowane urządzenie brzegowe IoT w programie Visual Studio Code. 
+# <a name="develop-an-iot-edge-solution-with-multiple-modules-in-visual-studio-code-preview"></a>Tworzenie rozwiązania usługi IoT Edge z wieloma modułami w programie Visual Studio Code (wersja zapoznawcza)
+
+Za pomocą programu Visual Studio Code można tworzyć rozwiązania usługi Azure IoT Edge z wieloma modułami. W tym artykule przedstawiono sposób tworzenia, aktualizowania i wdrażania rozwiązania usługi IoT Edge, które przesyła potokiem dane czujnika na symulowanym urządzeniu usługi IoT Edge w programie VS Code. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby wykonać wszystkie kroki opisane w tym artykule, w obowiązują następujące wymagania wstępne:
+Do wykonania kroków opisanych w tym artykule potrzebne jest spełnienie następujących wymagań wstępnych:
 
-- [Visual Studio Code](https://code.visualstudio.com/) 
-- [Rozszerzenie krawędzi IoT Azure dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
-- [C# dla rozszerzenia Visual Studio Code (obsługiwane przez OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) 
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Rozszerzenie usługi Azure IoT Edge dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)
+- [Rozszerzenie C# for Visual Studio Code (obsługiwane przez technologię OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
 - [Docker](https://docs.docker.com/engine/installation/)
-- [.NET core 2.0 SDK](https://www.microsoft.com/net/core#windowscmd) 
+- [Zestaw .NET Core 2.0 SDK](https://www.microsoft.com/net/core#windowscmd)
 - Szablon AzureIoTEdgeModule (`dotnet new -i Microsoft.Azure.IoT.Edge.Module`)
-- Aktywnym Centrum IoT z co najmniej jedno urządzenie brzegowe IoT
+- Aktywne centrum IoT Hub z co najmniej jednym urządzeniem brzegowym usługi IoT Edge
 
+Aby zarządzać obrazami i kontenerami, wymagana jest również integracja rozszerzenia [platformy Docker dla programu VS Code](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker) z narzędziem Device Explorer w usłudze Azure IoT Hub.
 
-* [Docker dla kodu VS](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker) z Eksploratora integracji zarządzania obrazami i kontenerów.
+## <a name="prepare-your-first-iot-edge-solution"></a>Przygotowanie pierwszego rozwiązania usługi IoT Edge
 
-
-## <a name="prepare-your-first-iot-edge-solution"></a>Przygotowanie rozwiązania IoT krawędź pierwszego
-1. W kodzie VS palety polecenia, wpisz i uruchom polecenie **krawędzi: rozwiązanie graniczne IoT nowe**. Następnie wybierz folder roboczy, podaj nazwę rozwiązania (nazwa domyślna to **EdgeSolution**) i Utwórz moduł C# (**SampleModule**) jako pierwszego modułu użytkownika w tym rozwiązaniu. Należy również określić repozytorium obrazów Docker dla pierwszego modułu. Repozytorium obrazów domyślna jest oparta na lokalnym rejestrze Docker (`localhost:5000/<first module name>`). Można również zmienić do rejestru kontenera platformy Azure lub Centrum Docker.
+1. W obszarze **Command Palette** (Paleta poleceń) programu VS Code wprowadź i uruchom polecenie **Edge: New IoT Edge solution** (Edge: Nowe rozwiązanie usługi IoT Edge). Wybierz folder obszaru roboczego i podaj nazwę rozwiązania (wartość domyślna to EdgeSolution). Utwórz moduł w języku C# (o nazwie **SampleModule**) jako pierwszy moduł użytkownika w tym rozwiązaniu. Należy również określić repozytorium obrazów platformy Docker dla pierwszego modułu. Domyślne repozytorium obrazów jest oparte na lokalnym rejestrze platformy Docker (**localhost:5000/<first module name>**). Można go zmienić na usługę Azure Container Registry lub Docker Hub.
 
    > [!NOTE]
-   > Jeśli korzystasz z lokalnego rejestru Docker, upewnij się, rejestru jest uruchomiona, wpisując polecenie `docker run -d -p 5000:5000 --restart=always --name registry registry:2` w oknie konsoli.
+   > Jeśli korzystasz z lokalnego rejestru platformy Docker, sprawdź, czy rejestr jest uruchomiony. W oknie konsoli wprowadź następujące polecenie:
+   > 
+   > `docker run -d -p 5000:5000 --restart=always --name registry registry:2`
 
-2. Okno kodzie VS ładuje rozwiązania IoT krawędzi obszaru roboczego. Folder główny zawiera `modules` folderu, `.vscode` folderu i pliku manifestu szablonu wdrożenia. Można zobaczyć konfiguracje w debugowania `.vscode` folderu. Wszystkie kody modułu użytkownika będzie podfolderów w folderze `modules`. `deployment.template.json` Jest manifestu szablonu wdrożenia. Niektóre parametry w tym pliku zostaną wydzielone z `module.json`, który istnieje w folderze co moduł.
+2. W oknie programu VS Code zostanie załadowany obszar roboczy rozwiązania usługi IoT Edge. Folder główny zawiera folder **modules** i **.vscode** oraz plik szablonu manifestu wdrożenia. Konfiguracje debugowania znajdują się w folderze .vscode. Cały kod modułu użytkownika znajduje się podfolderach folderu modułów. Plik deployment.template.json to szablon manifestu wdrożenia. Niektóre parametry w tym pliku są analizowane na podstawie pliku module.json, który istnieje w każdym folderze modułu.
 
-3. Dodaj drugi modułu do projektu tego rozwiązania. Wpisz w tym momencie, a następnie uruchom **krawędzi: Dodaj krawędzi IoT modułu** i wybierz plik szablonu wdrażania aktualizacji. Następnie wybierz **funkcji platformy Azure - C#** o nazwie **SampleFunction** i jego Docker repozytorium obrazów.
+3. Dodaj drugi moduł do tego projektu rozwiązania. Wprowadź i uruchom polecenie **Edge: Add IoT Edge module** (Edge: Dodaj moduł usługi IoT Edge). Wybierz plik szablonu wdrożenia do zaktualizowania. Wybierz moduł **Azure Function - C#** o nazwie **SampleFunction** i jego repozytorium obrazów platformy Docker.
 
-4. Otwórz `deployment.template.json` i sprawdzić deklaruje trzy modułów oprócz środowiska uruchomieniowego. Wiadomość zostanie wygenerowane z `tempSensor` modułu i będzie można bezpośrednio przetwarzana potokowo za pośrednictwem `SampleModule` i `SampleFunction`, następnie wysyłane do Centrum IoT. 
-5. Zaktualizuj trasy dla tych modułów o następującej zawartości:
+4. Otwórz plik deployment.template.json. Sprawdź, czy w pliku zadeklarowano trzy moduły i środowisko uruchomieniowe. Z modułu tempSensor zostanie wygenerowany komunikat. Komunikat ten jest bezpośrednio przesyłany potokiem za pośrednictwem modułów SampleModule i SampleFunction, a następnie wysyłany do centrum IoT Hub. 
+
+5. Zaktualizuj trasy dla tych modułów za pomocą następującej treści:
+
    ```json
    "routes": {
       "SensorToPipeModule": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/SampleModule/inputs/input1\")",
@@ -56,21 +61,22 @@ Aby wykonać wszystkie kroki opisane w tym artykule, w obowiązują następując
 
 6. Zapisz ten plik.
 
-## <a name="build-and-deploy-your-iot-edge-solution"></a>Tworzenie i wdrażanie rozwiązania IoT krawędzi
-1. W kodzie VS palety polecenia, wpisz i uruchom polecenie **krawędzi: rozwiązań IoT Edge kompilacji**. Na podstawie `module.json` plik w folderze każdego modułu, to polecenie start do tworzenia, containerize i push każdego obrazu docker modułu. Następnie przekazuje wymagana wartość do `deployment.template.json` i generuje `deployment.json` pliku z informacjami z `config` folderu. Można wyświetlić postęp kompilacji w kodzie VS terminal zintegrowanego.
+## <a name="build-and-deploy-your-iot-edge-solution"></a>Tworzenie i wdrażanie rozwiązania usługi IoT Edge
 
-2. W Eksploratorze urządzenia Centrum IoT Azure, kliknij prawym przyciskiem myszy identyfikator urządzenia IoT krawędzi, a następnie wybierz **tworzenie wdrożenia dla urządzenie brzegowe**. Wybierz `deployment.json` w obszarze `config` folderu. Następnie można zauważyć, że pomyślnie utworzono wdrożenie z wdrożeniem, który zintegrowane Identyfikatora w kodzie VS terminala.
+1. W obszarze **Command Palette** (Paleta poleceń) programu VS Code wprowadź i uruchom polecenie **Edge: Build IoT Edge solution** (Edge: Skompiluj rozwiązanie usługi IoT Edge). Na podstawie pliku module.json znajdującego się w każdym folderze modułu polecenie rozpoczyna kompilowanie, konteneryzowanie i wypychanie obrazów platformy Docker poszczególnych modułów. Następnie polecenie przekazuje wymaganą wartość do pliku deployment.template.json i generuje plik deployment.json z informacjami z folderu konfiguracji. W zintegrowanym terminalu w programie VS Code wyświetlany jest postęp kompilacji.
 
-3. Urządzenia IoT są symulację na komputerze deweloperskim, pojawi się że wszystkich kontenerów obrazu modułu zostanie uruchomiony w ciągu kilku minut.
+2. W narzędziu **Device Explorer** w usłudze Azure IoT Hub kliknij prawym przyciskiem myszy identyfikator urządzenia usługi IoT Edge, a następnie wybierz polecenie **Utwórz wdrożenie dla urządzenia usługi Edge**. Wybierz plik deployment.json w folderze konfiguracji. W zintegrowanym terminalu w programie VS Code wyświetlane jest pomyślnie utworzone wdrożenie wraz z jego identyfikatorem.
 
-## <a name="view-generated-data"></a>Wyświetlanie wygenerowanych danych
+3. Jeśli urządzenie usługi IoT Edge jest symulowane na maszynie deweloperskiej, sprawdź, czy wszystkie kontenery obrazów modułów zostaną uruchomione w ciągu kilku minut.
 
-1. Aby monitorować dane otrzymywane przez centrum IoT Hub, wybierz pozycję **Widok** > **Paleta poleceń...** , a następnie wyszukaj ciąg **IoT: rozpocznij monitorowania komunikatu D2C**. 
-2. Aby zatrzymać monitorowanie danych, użyj polecenia **IoT: zatrzymaj monitorowanie komunikatu D2C** w palecie poleceń. 
+## <a name="view-the-generated-data"></a>Wyświetlanie wygenerowanych danych
 
-## <a name="next-steps"></a>Kolejne kroki
+1. Aby monitorować dane docierające do centrum IoT Hub, wybierz polecenie **View** (Widok) > **Command Palette** (Paleta poleceń). Następnie wybierz polecenie **IoT: rozpocznij monitorowania komunikatu D2C**. 
+2. Aby zatrzymać monitorowanie danych, użyj polecenia **IoT: Stop monitoring D2C message** (IoT: Zatrzymaj monitorowanie komunikatu D2C) w obszarze **Command Palette** (Paleta poleceń). 
 
-Więcej informacji na temat innych scenariuszy programowania brzegowe IoT Azure w programie Visual Studio Code:
+## <a name="next-steps"></a>Następne kroki
 
-* [Debugowanie modułu C# w kodzie VS](how-to-vscode-debug-csharp-module.md)
-* [Debugowanie funkcji języka C# w kodzie VS](how-to-vscode-debug-azure-function.md)
+Dowiedz się więcej na temat innych scenariuszy dotyczących programowania przy użyciu usługi Azure IoT Edge w programie Visual Studio Code:
+
+* [Debugowanie modułu w języku C# w programie VS Code](how-to-vscode-debug-csharp-module.md)
+* [Debugowanie funkcji w języku C# w programie VS Code](how-to-vscode-debug-azure-function.md)

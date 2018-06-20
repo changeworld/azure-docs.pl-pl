@@ -7,13 +7,14 @@ author: eamonoreilly
 ms.author: eamono
 manager: carmonm
 ms.topic: tutorial
-ms.date: 03/16/2018
+ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 97db493b77483d68860c6124f1063bc4a743c3be
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5d03ec7c5e0aaa68c1db34fedbd428f264e49e43
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830524"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Dołączanie rozwiązań aktualizacji i śledzenia zmian w usłudze Azure Automation
 
@@ -36,7 +37,7 @@ Do wykonania czynności przedstawionych w tym samouczku są wymagane następują
 
 ## <a name="onboard-an-azure-vm"></a>Dołączanie maszyny wirtualnej platformy Azure
 
-Istnieje wiele sposobów dołączania maszyn. Rozwiązanie można dołączyć [z maszyny wirtualnej](automation-onboard-solutions-from-vm.md), [z konta usługi Automation](automation-onboard-solutions-from-automation-account.md) lub przy użyciu elementu runbook. W tym samouczki przedstawiono procedurę włączania rozwiązania Update Management przy użyciu elementu runbook. Aby można było dołączać maszyny wirtualne platformy Azure na dużą skalę, do istniejącej maszyny wirtualnej należy dołączyć rozwiązanie Change tracking lub Update management. W tym kroku dołączysz maszynę wirtualną z rozwiązaniami Update management i Change tracking.
+Istnieje wiele sposobów dołączania maszyn. Rozwiązanie można dołączyć [z maszyny wirtualnej](automation-onboard-solutions-from-vm.md), [z wyników przeglądania wielu maszyn](automation-onboard-solutions-from-browse.md) [z konta usługi Automation](automation-onboard-solutions-from-automation-account.md) lub przy użyciu elementu runbook. W tym samouczki przedstawiono procedurę włączania rozwiązania Update Management przy użyciu elementu runbook. Aby można było dołączać maszyny wirtualne platformy Azure na dużą skalę, do istniejącej maszyny wirtualnej należy dołączyć rozwiązanie Change tracking lub Update management. W tym kroku dołączysz maszynę wirtualną z rozwiązaniami Update management i Change tracking.
 
 ### <a name="enable-change-tracking-and-inventory"></a>Włączanie rozwiązania Change Tracking and Inventory
 

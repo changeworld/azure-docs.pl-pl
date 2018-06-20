@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/30/2018
+ms.date: 06/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 17fb10f4b39361a99d3f51ed753d333c6ec0bf15
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: febd43586ab3006303143ca04ce8a37941a6fd60
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618593"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36268164"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Ciągłej integracji i wdrażania w fabryce danych Azure
 
@@ -89,42 +89,9 @@ Poniżej przedstawiono kroki, aby skonfigurować zlecenia VSTS co umożliwia aut
 
 4.  Wprowadź nazwę danego środowiska.
 
-5.  Dodaj artefaktu Git i wybierz tym samym repozytorium, które są skonfigurowane przy użyciu fabryki danych. Wybierz `adf\_publish` jako gałąź domyślną najnowszej wersji domyślnej.
+5.  Dodaj artefaktu Git i wybierz tym samym repozytorium, które są skonfigurowane przy użyciu fabryki danych. Wybierz `adf_publish` jako gałąź domyślną najnowszej wersji domyślnej.
 
     ![](media/continuous-integration-deployment/continuous-integration-image7.png)
-
-6.  Pobierz kluczy tajnych z usługi Azure Key Vault. Istnieją dwa sposoby obsługi kluczy tajnych:
-
-    a.  Dodawanie kluczy tajnych do pliku parametrów:
-
-       -   Tworzenie kopii pliku parametrów, który jest przekazywany do publikowania gałęzi i ustaw wartości parametrów, który chcesz pobrać z magazynu kluczy o następującym formacie:
-
-        ```json
-        {
-            "parameters": {
-                "azureSqlReportingDbPassword": {
-                    "reference": {
-                        "keyVault": {
-                            "id": "/subscriptions/<subId>/resourceGroups/<resourcegroupId> /providers/Microsoft.KeyVault/vaults/<vault-name> "
-                        },
-                        "secretName": " < secret - name > "
-                    }
-                }
-            }
-        }
-        ```
-
-       -   Korzystając z tej metody, klucz tajny są automatycznie pobierane z magazynu kluczy.
-
-       -   Plik parametrów musi być w w gałęzi publikowania.
-
-    b.  Dodaj [zadań usługi Azure Key Vault](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault):
-
-       -   Wybierz **zadania** karcie, Utwórz nowe zadanie, wyszukaj **usługi Azure Key Vault** i dodaj go.
-
-       -   W zadaniu Key Vault, wybierz subskrypcję, w którym został utworzony magazyn kluczy, podaj poświadczenia, jeśli to konieczne, a następnie wybierz magazyn kluczy.
-
-       ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 7.  Dodaj zadanie wdrażania usługi Azure Resource Manager:
 
@@ -134,7 +101,7 @@ Poniżej przedstawiono kroki, aby skonfigurować zlecenia VSTS co umożliwia aut
 
     c.  Wybierz **Tworzenie lub aktualizacja grupy zasobów** akcji.
 
-    d.  Wybierz **...** w "**szablonu**" pola. Przeglądaj w poszukiwaniu szablonu usługi Resource Manager (*ARMTemplateForFactory.json*) utworzony przez akcję publikowanie w portalu. Ten plik w folderze głównym `adf\_publish` gałęzi.
+    d.  Wybierz **...** w **szablonu** pola. Przeglądaj w poszukiwaniu szablonu usługi Resource Manager (*ARMTemplateForFactory.json*) utworzony przez akcję publikowanie w portalu. Ten plik w folderze `<FactoryName>` z `adf_publish` gałęzi.
 
     e.  Tak samo postąpić w pliku parametrów. Wybierz poprawnego pliku, w zależności od tego, czy utworzono kopię lub korzystasz z domyślnego pliku *ARMTemplateParametersForFactory.json*.
 
@@ -147,6 +114,43 @@ Poniżej przedstawiono kroki, aby skonfigurować zlecenia VSTS co umożliwia aut
 9.  Utwórz nową wersją z tej definicji wersji.
 
     ![](media/continuous-integration-deployment/continuous-integration-image10.png)
+
+### <a name="optional---get-the-secrets-from-azure-key-vault"></a>Opcjonalne — Pobierz kluczy tajnych z usługi Azure Key Vault
+
+Jeśli masz kluczy tajnych umożliwia przekazywanie szablonu usługi Azure Resource Manager, zaleca się przy użyciu usługi Azure Key Vault wraz z wydaniem programu VSTS.
+
+Istnieją dwa sposoby obsługi kluczy tajnych:
+
+1.  Dodawanie kluczy tajnych do pliku parametrów. Aby uzyskać więcej informacji, zobacz [użycia usługi Azure Key Vault w celu Przekaż wartość parametru bezpieczne podczas wdrażania](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+
+    -   Tworzenie kopii pliku parametrów, który jest przekazywany do publikowania gałęzi i ustaw wartości parametrów, który chcesz pobrać z magazynu kluczy o następującym formacie:
+
+    ```json
+    {
+        "parameters": {
+            "azureSqlReportingDbPassword": {
+                "reference": {
+                    "keyVault": {
+                        "id": "/subscriptions/<subId>/resourceGroups/<resourcegroupId> /providers/Microsoft.KeyVault/vaults/<vault-name> "
+                    },
+                    "secretName": " < secret - name > "
+                }
+            }
+        }
+    }
+    ```
+
+    -   Korzystając z tej metody, klucz tajny są automatycznie pobierane z magazynu kluczy.
+
+    -   Plik parametrów musi być w w gałęzi publikowania.
+
+2.  Dodaj [zadań usługi Azure Key Vault](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault) przed wdrożeniem Menedżera zasobów Azure opisano w poprzedniej sekcji:
+
+    -   Wybierz **zadania** karcie, Utwórz nowe zadanie, wyszukaj **usługi Azure Key Vault** i dodaj go.
+
+    -   W zadaniu Key Vault, wybierz subskrypcję, w którym został utworzony magazyn kluczy, podaj poświadczenia, jeśli to konieczne, a następnie wybierz magazyn kluczy.
+
+    ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 ### <a name="grant-permissions-to-the-vsts-agent"></a>Udzielanie uprawnień do agenta programu VSTS
 Zadania usługi Azure Key Vault może zakończyć się niepowodzeniem z powodu błędu odmowy dostępu po raz pierwszy. Pobierz dzienniki wersji, a następnie zlokalizuj `.ps1` pliku przy użyciu polecenia, aby nadać uprawnienia do agenta programu VSTS. Polecenie można uruchomić bezpośrednio lub można skopiować identyfikator podmiotu zabezpieczeń z pliku i ręcznie dodać zasady dostępu w portalu Azure. (*Uzyskać* i *listy* są minimalne uprawnienia wymagane).
@@ -161,14 +165,9 @@ Wdrażanie może zakończyć się niepowodzeniem, jeśli podczas próby aktualiz
 3.  Wybierz **wbudowanego skryptu** jako skrypt typu, a następnie podaj swój kod. Poniższy przykład zatrzymuje wyzwalaczy:
 
     ```powershell
-    $armTemplate="$(env:System.DefaultWorkingDirectory)/Dev/ARMTemplateForFactory.json"
+    $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
 
-    $templateJson = Get-Content "$(env:System.DefaultWorkingDirectory)/Dev/ARMTemplateForFactory.json" | ConvertFrom-Json
-
-    $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName
-    $DataFactoryName -ResourceGroupName $ResourceGroupName
-
-    $triggersADF | ForEach-Object { Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $\_.name -Force }
+    $triggersADF | ForEach-Object { Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.name -Force }
     ```
 
     ![](media/continuous-integration-deployment/continuous-integration-image11.png)

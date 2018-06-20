@@ -18,6 +18,7 @@
 ### [Uaktualnianie z poprzedniej wersji](active-directory-aadconnect-upgrade-previous-version.md)
 ### [Instalowanie przy użyciu istniejącej bazy danych ADSync](active-directory-aadconnect-existing-database.md)
 ### [Install using SQL delegated administrator permissions (Instalowanie przy użyciu delegowanych uprawnień administratora programu SQL)](active-directory-aadconnect-sql-delegation.md)
+### [Przenoszenie bazy danych programu Azure AD Connect na zdalny serwer SQL Server](active-directory-aadconnect-move-db.md)
 
 # Instrukcje
 ## Planowanie i projektowanie

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: fa03d62a3125b3bf8f23a53903a733dbec8ea662
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 4bcc691e00b373028acaf0936af8336a76306aec
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839467"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232440"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Danych Azure szyfrowania na Rest
 
@@ -130,7 +130,7 @@ Dla wielu klientów upewnij się, że dane są szyfrowane, gdy jest w stanie spo
 
 Szyfrowanie po stronie serwera za pomocą kluczy usługi zarządzania w związku z tym szybko adresów musi mieć szyfrowania magazynowane z małym obciążeniem do klienta. Jeśli jest dostępny, klient zazwyczaj otwiera portalu Azure dla subskrypcji docelowej i dostawcy zasobów i sprawdza dialogowe informujące, chciałby do szyfrowania danych. W niektórych menedżerowie zasobów szyfrowania po stronie serwera z usługami zarządzać kluczami jest domyślnie włączone.
 
-Szyfrowanie po stronie serwera za pomocą kluczy zarządzany przez firmę Microsoft oznaczać usługi ma pełny dostęp do przechowywania i zarządza nimi klucze. Gdy jest kilku klientów może być konieczne zarządzanie kluczy, ponieważ uznać, że będą mogli większe bezpieczeństwo, koszt i ryzyko związane z rozwiązaniem do magazynu kluczy niestandardowych należy uwzględnić podczas szacowania tego modelu. W manIn wielu przypadkach ganization mogą określić ograniczenia zasobów lub zagrożenia związane z rozwiązania lokalnego może większe niż ryzyko zarządzania chmurą w pozostałych kluczy szyfrowania.  Jednak ten model nie może być wystarczający do organizacji, które mają wymagania dotyczące kontroli tworzenie i cyklem życia kluczy szyfrowania lub innego personelu zarządzać kluczami szyfrowania usługi niż zarządzanie usługą (np. podział Zarządzanie kluczami z ogólną model zarządzania dla usługi).
+Szyfrowanie po stronie serwera za pomocą kluczy zarządzany przez firmę Microsoft oznaczać usługi ma pełny dostęp do przechowywania i zarządza nimi klucze. Gdy jest kilku klientów może być konieczne zarządzanie kluczy, ponieważ uznać, że będą mogli większe bezpieczeństwo, koszt i ryzyko związane z rozwiązaniem do magazynu kluczy niestandardowych należy uwzględnić podczas szacowania tego modelu. W wielu przypadkach organizacji mogą określić ograniczenia zasobów lub zagrożenia związane z rozwiązania lokalnego może większe niż ryzyko zarządzania chmurą w pozostałych kluczy szyfrowania.  Jednak ten model nie może być wystarczający do organizacji, które mają wymagania dotyczące kontroli tworzenie i cyklem życia kluczy szyfrowania lub innego personelu zarządzać kluczami szyfrowania usługi niż zarządzanie usługą (np. podział Zarządzanie kluczami z ogólną model zarządzania dla usługi).
 
 ##### <a name="key-access"></a>Dostęp do klucza
 
@@ -233,7 +233,7 @@ Zaleca się, że jeśli to możliwe, IaaS aplikacje korzystać z szyfrowania dys
 
 ## <a name="azure-resource-providers-encryption-model-support"></a>Obsługa modelu szyfrowania dostawcy zasobów platformy Azure
 
-Usługi Microsoft Azure każdego obsługuje jednego lub więcej szyfrowania w modelach rest. W przypadku niektórych usług, co najmniej jeden z modeli szyfrowania nie można stosować. Ponadto usługi może zwolnić obsługę tych scenariuszy, w różne harmonogramy. W tej sekcji opisano szyfrowania w witrynie pomocy technicznej rest w momencie pisania tego dokumentu dla każdej z usług magazynu najważniejszych danych Azure.
+Usługi Microsoft Azure każdego obsługuje jednego lub więcej szyfrowania w modelach rest. W przypadku niektórych usług, co najmniej jeden z modeli szyfrowania nie można stosować. Dla usług, które obsługują zarządzany przez klienta kluczowych scenariuszy ich może obsługiwać tylko podzestaw typów kluczy, obsługiwanych przez usługi Azure Key Vault dla kluczy szyfrowania. Ponadto usługi może zwolnić obsługę tych scenariuszy i typów kluczy w różne harmonogramy. W tej sekcji opisano szyfrowania w witrynie pomocy technicznej rest w momencie pisania tego dokumentu dla każdej z usług magazynu najważniejszych danych Azure.
 
 ### <a name="azure-disk-encryption"></a>Szyfrowanie dysków Azure
 
@@ -243,7 +243,7 @@ Każdy klient jako usługa (IaaS) przy użyciu infrastruktury platformy Azure fu
 
 Wszystkie usługi Azure Storage (magazynu obiektów Blob, magazyn kolejek, Magazyn tabel i plików Azure) obsługuje szyfrowanie po stronie serwera magazynowanych, z niektórych usług pomocniczych zarządzany przez klienta kluczy i szyfrowania po stronie klienta.  
 
-- Po stronie serwera: Wszystkich usług magazynu Azure Włącz szyfrowanie po stronie serwera, domyślnie przy użyciu zarządzanych przez usługę kluczy, który jest niewidoczny dla aplikacji. Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Magazyn Azure dla danych magazynowanych](https://docs.microsoft.com/azure/storage/storage-service-encryption). Azure Blob storage i pliki Azure obsługują także zarządzane przez klienta klucze w usłudze Azure Key Vault. Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Magazyn przy użyciu kluczy zarządzany przez klienta w usłudze Azure Key Vault](https://docs.microsoft.com/en-us/azure/storage/common/storage-service-encryption-customer-managed-keys).
+- Po stronie serwera: Wszystkich usług magazynu Azure Włącz szyfrowanie po stronie serwera, domyślnie przy użyciu zarządzanych przez usługę kluczy, który jest niewidoczny dla aplikacji. Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Magazyn Azure dla danych magazynowanych](https://docs.microsoft.com/azure/storage/storage-service-encryption). Azure Blob storage i pliki Azure obsługuje również RSA 2048-bitowe klucze zarządzany przez klienta w usłudze Azure Key Vault. Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Magazyn przy użyciu kluczy zarządzany przez klienta w usłudze Azure Key Vault](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys).
 - Po stronie klienta: Obiekty BLOB platformy Azure, tabel i kolejek obsługuje szyfrowania po stronie klienta. Podczas korzystania z szyfrowania po stronie klienta, klienci szyfrowania danych i przekazywanie danych jako obiekt blob zaszyfrowany. Zarządzanie kluczami jest realizowane przez klienta. Aby uzyskać więcej informacji, zobacz [szyfrowania po stronie klienta i usługi Azure Key Vault dla magazynu Microsoft Azure](https://docs.microsoft.com/azure/storage/storage-client-side-encryption).
 
 
@@ -251,40 +251,38 @@ Wszystkie usługi Azure Storage (magazynu obiektów Blob, magazyn kolejek, Magaz
 
 Baza danych SQL Azure obecnie obsługuje szyfrowanie przechowywanych dla scenariuszy szyfrowania po stronie klienta i po stronie usługi zarządzany przez firmę Microsoft.
 
-Obsługa szyfrowania obecnie jest zapewniana za pomocą funkcji SQL o nazwie przezroczystego szyfrowania danych. Po klienta bazy danych SQL Azure umożliwia klucz funkcji TDE automatycznie są tworzone i zarządzane dla nich. Można włączyć szyfrowanie przechowywanych na poziomie bazy danych i serwera. Począwszy od czerwca 2017 r. [funkcji przezroczystego szyfrowania danych (TDE)](https://msdn.microsoft.com/library/bb934049.aspx) zostanie włączona domyślnie na nowo utworzone bazy danych.
+Obsługa szyfrowania obecnie jest zapewniana za pomocą funkcji SQL o nazwie przezroczystego szyfrowania danych. Po klienta bazy danych SQL Azure umożliwia klucz funkcji TDE automatycznie są tworzone i zarządzane dla nich. Można włączyć szyfrowanie przechowywanych na poziomie bazy danych i serwera. Począwszy od czerwca 2017 r. [funkcji przezroczystego szyfrowania danych (TDE)](https://msdn.microsoft.com/library/bb934049.aspx) jest domyślnie włączony w nowo utworzonej bazy danych. Baza danych SQL Azure obsługuje RSA 2048-bitowe klucze zarządzany przez klienta usługi Azure Key Vault. Aby uzyskać więcej informacji, zobacz [przezroczystego szyfrowania danych z obsługą Bring Your Own Key dla bazy danych SQL Azure i magazynem danych](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql?view=azuresqldb-current).
 
 Szyfrowanie po stronie klienta danych bazy danych SQL Azure jest obsługiwane przez [zawsze zaszyfrowane](https://msdn.microsoft.com/library/mt163865.aspx) funkcji. Zawsze zaszyfrowane używa klucza tworzone i przechowywane przez klienta. Klientów można przechowywać klucz główny w magazynie certyfikatów systemu Windows, usługi Azure Key Vault lub lokalnego sprzętowego modułu zabezpieczeń. Użytkowników SQL przy użyciu programu SQL Server Management Studio, wybierz jakie klucza chce używać do szyfrowania, która kolumna.
 
-|                                  |                |                     | **Model szyfrowania**             |                              |        |
-|----------------------------------|----------------|---------------------|------------------------------|------------------------------|--------|
-|                                  |                |                     |                              |                              | **Klienta** |
-|                                  | **Zarządzanie kluczami** | **Klucz zarządzany przez usługę** | **Klientów zarządzanych w magazynie kluczy** | **Zarządzany przez klienta lokalnego** |        |
-| **Magazyn i baz danych**            |                |                     |                              |                              |        |
-| Dysku (IaaS)                      |                | -                   | Yes                          | Tak*                         | -      |
-| Program SQL Server (IaaS)                |                | Yes                 | Yes                          | Yes                          | Yes    |
-| Baza danych Azure SQL (PaaS)                 |                | Yes                 | Yes                          | -                            | Yes    |
-| Usługa Azure Storage (bloku/stronicowych obiektów blob) |                | Yes                 | Yes                          | -                            | Yes    |
-| Magazyn Azure (pliki)            |                | Yes                 | Yes                          | -                            | -      |
-| Usługa Azure Storage (tabel, kolejek)   |                | Yes                 | -                            | -                            | Yes    |
-| Rozwiązania cosmos bazy danych (dokument DB)          |                | Yes                 | -                            | -                            | -      |
-| Magazyn StorSimple                       |                | Yes                 | -                            | -                            | Yes    |
-| Backup                           |                | -                   | -                            | -                            | Yes    |
-| **Analiza i analiza**       |                |                     |                              |                              |        |
-| Azure Data Factory               |                | Yes                 | -                            | -                            | -      |
-| Azure Machine Learning           |                | -                   | Wersja zapoznawcza                      | -                            | -      |
-| Usługa Azure Stream Analytics           |                | Yes                 | -                            | -                            | -      |
-| HDInsight (magazyn obiektów Blob platformy Azure)  |                | Yes                 | -                            | -                            | -      |
-| HDInsight (Data Lake Storage)   |                | Yes                 | -                            | -                            | -      |
-| Azure Data Lake Store            |                | Yes                 | Yes                          | -                            | -      |
-| Azure Data Catalog               |                | Yes                 | -                            | -                            | -      |
-| Power BI                         |                | Yes                 | -                            | -                            | -      |
-| **Usługi IoT**                     |                |                     |                              |                              |        |
-| Usługa IoT Hub                          |                | -                   | -                            | -                            | Yes    |
-| Service Bus                      |                | Yes              | -                            | -                            | Yes    |
-| Event Hubs                       |                | Yes             | -                            | -                            | -      |
+|                                  |                    | **Model szyfrowania i zarządzania kluczami** |                   |                    |
+|----------------------------------|--------------------|--------------------|--------------------|--------------------|
+|                                  | **Strona serwera przy użyciu klucza zarządzane przez usługę**     | **— Po stronie serwera za pomocą zarządzanego przez klienta w magazynie kluczy**             |  **— Po stronie serwera za pomocą zarządzanego przez klienta lokalnie**                  | **Klienta przy użyciu zarządzanego klienta**      |
+| **Magazyn i baz danych**        |                    |                    |                    |                    |                    |
+| Dysku (IaaS)                      | -                  | Tak, RSA 2048-bitowego  | Tak*               | -                  |
+| Program SQL Server (IaaS)                | Yes                | Tak, RSA 2048-bitowego  | Yes                | Yes                |
+| Baza danych Azure SQL (PaaS)        | Yes                | Tak, RSA 2048-bitowego  | -                  | Yes                |
+| Usługa Azure Storage (bloku/stronicowych obiektów blob) | Yes                | Tak, RSA 2048-bitowego  | -                  | Yes                |
+| Magazyn Azure (pliki)            | Yes                | Tak, RSA 2048-bitowego  | -                  | -                  |
+| Usługa Azure Storage (tabel, kolejek)   | Yes                | -                  | -                  | Yes                |
+| Rozwiązania cosmos bazy danych (dokument DB)          | Yes                | -                  | -                  | -                  |
+| Magazyn StorSimple                       | Yes                | -                  | -                  | Yes                |
+| Backup                           | -                  | -                  | -                  | Yes                |
+| **Analiza i analiza**   |                    |                    |                    |                    |
+| Azure Data Factory               | Yes                | -                  | -                  | -                  |
+| Azure Machine Learning           | -                  | Podgląd i RSA 2048-bitowego | -                  | -                  |
+| Usługa Azure Stream Analytics           | Yes                | -                  | -                  | -                  |
+| HDInsight (magazyn obiektów Blob platformy Azure)   | Yes                | -                  | -                  | -                  |
+| HDInsight (Data Lake Storage)    | Yes                | -                  | -                  | -                  |
+| Azure Data Lake Store            | Yes                | Tak, RSA 2048-bitowego  | -                  | -                  |
+| Azure Data Catalog               | Yes                | -                  | -                  | -                  |
+| Power BI                         | Yes                | -                  | -                  | -                  |
+| **Usługi IoT**                 |                    |                    |                    |                    |
+| Usługa IoT Hub                          | -                  | -                  | -                  | Yes                |
+| Service Bus                      | Yes                | -                  | -                  | Yes                |
+| Event Hubs                       | Yes                | -                  | -                  | -                  |
 
 
 ## <a name="conclusion"></a>Podsumowanie
 
 Ochrona danych klienta przechowywanych w usługach Azure jest najważniejsze do firmy Microsoft. Wszystkie platformy Azure hostowanej usługi zobowiązaniem jest zapewnienie szyfrowania w pozostałych opcji. Podstawowych usług, takich jak usługi Azure Storage, baza danych SQL Azure i analiza klucza i usług analizy już zapewnia szyfrowanie na pozostałe opcje. Niektóre z tych usług obsługuje kluczy odbiorcy kontrolowane i szyfrowania po stronie klienta, a także zarządzane przez usługę kluczy i szyfrowania. Usług Microsoft Azure są szeroko udoskonalanie szyfrowania na dostępność Rest i nowe opcje są planowane do wersji zapoznawczej i ogólnej dostępności w ciągu przyszłych miesięcy.
-

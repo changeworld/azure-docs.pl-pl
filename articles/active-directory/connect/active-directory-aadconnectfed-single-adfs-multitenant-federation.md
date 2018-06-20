@@ -14,12 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
+ms.component: hybrid
 ms.author: anandy; billmath
-ms.openlocfilehash: c55a4232c54308c5d000cfefc2c7dca2800b462c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f9a8abc6e5d66f31a59ba895250861708689aa6d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593109"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Federowanie wielu wystąpień usługi Azure AD przy użyciu jednego wystąpienia usługi AD FS
 
@@ -43,7 +45,7 @@ Aby usługa AD FS w domenie contoso.com mogła uwierzytelniać użytkowników w 
  
 ## <a name="step-2-modify-contosocom-federation-settings"></a>Krok 2. Zmodyfikuj ustawienia federacji domeny contoso.com 
  
-Domyślny wystawca ustawiany dla jednej domeny federacyjnej z usługą AD FS to „http://nazwa_FQDN_ADFS/adfs/services/trust”, na przykład „http://fs.contoso.com/adfs/services/trust”. Usługa Azure Active Directory wymaga unikatowego wystawcy dla każdej domeny federacyjnej. Ponieważ ta sama usługa AD FS będzie federować dwie domeny, wartość wystawcy należy zmodyfikować tak, aby była unikatowa dla każdej domeny federowanej przez usługę AD FS z usługą Azure Active Directory. 
+Domyślny wystawca ustawiany dla jednej domeny federacyjnej z usługą AD FS to „http://ADFSServiceFQDN/adfs/services/trust”, na przykład „http://fs.contoso.com/adfs/services/trust”. Usługa Azure Active Directory wymaga unikatowego wystawcy dla każdej domeny federacyjnej. Ponieważ ta sama usługa AD FS będzie federować dwie domeny, wartość wystawcy należy zmodyfikować tak, aby była unikatowa dla każdej domeny federowanej przez usługę AD FS z usługą Azure Active Directory. 
  
 Na serwerze usługi AD FS otwórz program Azure AD PowerShell i wykonaj następujące czynności:
  

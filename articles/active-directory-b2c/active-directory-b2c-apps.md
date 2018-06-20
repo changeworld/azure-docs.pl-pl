@@ -1,24 +1,21 @@
 ---
-title: Typy aplikacji — Azure AD B2C | Microsoft Docs
+title: Typy aplikacji w usłudze Azure Active Directory B2C | Microsoft Docs
 description: Typy aplikacji, które można tworzyć w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.assetid: bb9d4abe-0db7-4bd9-b0c4-2f43b2c9cf33
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/06/2016
 ms.author: davidmu1
-ms.openlocfilehash: 0329cb9e49196f77ba12940e5987487eb2b6fda9
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: 63bf3725eddd14d665e51427a65a339116ceb09b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34710087"
 ---
 # <a name="azure-active-directory-b2c-types-of-applications"></a>Usługa Azure Active Directory B2C: typy aplikacji
 Usługa Azure Active Directory (Azure AD) B2C obsługuje uwierzytelnianie w wielu nowoczesnych architekturach aplikacji. Wszystkie one są oparte na standardowych protokołach branżowych [OAuth 2.0](active-directory-b2c-reference-protocols.md) lub [OpenID Connect](active-directory-b2c-reference-protocols.md). W tym dokumencie krótko opisano typy aplikacji, które można tworzyć, niezależnie od preferowanego języka lub platformy. Ułatwia on także zrozumienie ogólnych scenariuszy przed [rozpoczęciem tworzenia aplikacji](active-directory-b2c-overview.md).
@@ -44,8 +41,8 @@ Interakcja każdej aplikacji jest realizowana według następującego ogólnego 
 <!-- TODO: Need a page for libraries to link to -->
 Te kroki mogą się nieznacznie różnić w zależności od typu tworzonej aplikacji.
 
-## <a name="web-apps"></a>Aplikacje sieci Web
-W przypadku aplikacji sieci Web (w tym .NET, PHP, Java, Ruby, Python i Node.js), które są hostowane na serwerze i dostępne za pośrednictwem przeglądarki, usługa Azure AD B2C obsługuje protokół [OpenID Connect](active-directory-b2c-reference-protocols.md) w odniesieniu wszystkich funkcji środowiska użytkownika. Obejmuje to logowanie, rejestrację i zarządzanie profilami. Podczas wdrażania protokołu OpenID Connect w usłudze Azure AD B2C aplikacja sieci Web inicjuje te funkcje środowiska użytkownika, wysyłając żądania uwierzytelniania do usługi Azure AD. Wynikiem żądania jest token `id_token`. Ten token zabezpieczający reprezentuje tożsamość użytkownika. Zawiera także informacje o użytkowniku w formie oświadczeń:
+## <a name="web-apps"></a>Aplikacje internetowe
+W przypadku aplikacji internetowych (w tym .NET, PHP, Java, Ruby, Python i Node.js), które są hostowane na serwerze i dostępne za pośrednictwem przeglądarki, usługa Azure AD B2C obsługuje protokół [OpenID Connect](active-directory-b2c-reference-protocols.md) w odniesieniu wszystkich funkcji środowiska użytkownika. Obejmuje to logowanie, rejestrację i zarządzanie profilami. Podczas wdrażania protokołu OpenID Connect w usłudze Azure AD B2C aplikacja internetowa inicjuje te funkcje środowiska użytkownika, wysyłając żądania uwierzytelniania do usługi Azure AD. Wynikiem żądania jest token `id_token`. Ten token zabezpieczający reprezentuje tożsamość użytkownika. Zawiera także informacje o użytkowniku w formie oświadczeń:
 
 ```
 // Partial raw id_token
@@ -62,15 +59,15 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 
 Aby uzyskać więcej informacji o typach tokenów i oświadczeń dostępnych dla aplikacji, zobacz [informacje o tokenach usługi B2C](active-directory-b2c-reference-tokens.md).
 
-W aplikacji sieci Web każde wykonanie [zasad](active-directory-b2c-reference-policies.md) obejmuje następujące ogólne kroki:
+W aplikacji internetowej każde wykonanie [zasad](active-directory-b2c-reference-policies.md) obejmuje następujące ogólne kroki:
 
-![Obraz ścieżek aplikacji sieci Web](./media/active-directory-b2c-apps/webapp.png)
+![Obraz ścieżek aplikacji internetowej](./media/active-directory-b2c-apps/webapp.png)
 
 Sprawdzenie tokenu `id_token` przy użyciu publicznego klucza podpisywania otrzymanego z usługi Azure AD jest wystarczające do zweryfikowania tożsamości użytkownika. Powoduje ono również ustawienie pliku cookie sesji, którego można użyć do identyfikacji użytkownika w żądaniach na kolejnych stronach.
 
-Aby zapoznać się z tym scenariuszem w praktyce, wypróbuj jedną z próbek kodu logowania aplikacji sieci Web w [sekcji Wprowadzenie](active-directory-b2c-overview.md).
+Aby zapoznać się z tym scenariuszem w praktyce, wypróbuj jedną z próbek kodu logowania aplikacji internetowej w [sekcji Wprowadzenie](active-directory-b2c-overview.md).
 
-Oprócz ułatwienia prostego logowania aplikacja serwera sieci Web może również potrzebować dostępu do usługi sieci Web zaplecza. W takim przypadku aplikacja sieci Web może wykonać nieco inny [przepływ protokołu OpenID Connect](active-directory-b2c-reference-oidc.md) i uzyskać tokeny przy użyciu kodów autoryzacji i tokenów odświeżania. Ten scenariusz jest opisany w [sekcji dotyczącej interfejsów API sieci Web](#web-apis) poniżej.
+Oprócz ułatwienia prostego logowania aplikacja serwera sieci Web może również potrzebować dostępu do usługi sieci Web zaplecza. W takim przypadku aplikacja internetowa może wykonać nieco inny [przepływ protokołu OpenID Connect](active-directory-b2c-reference-oidc.md) i uzyskać tokeny przy użyciu kodów autoryzacji i tokenów odświeżania. Ten scenariusz jest opisany w [sekcji dotyczącej interfejsów API sieci Web](#web-apis) poniżej.
 
 <!--, and in our [WebApp-WebAPI Getting started topic](active-directory-b2c-devquickstarts-web-api-dotnet.md).-->
 
@@ -92,9 +89,9 @@ Interfejs API sieci Web może następnie użyć tego tokenu do zweryfikowania to
 >
 >
 
-Interfejs API sieci Web może odbierać tokeny od wielu typów klientów, m.in. aplikacji sieci Web, aplikacji klasycznych i aplikacji, aplikacji jednej strony, demonów po stronie serwera oraz innych interfejsów API sieci Web. Oto przykład pełnego przepływu aplikacji sieci Web, która wywołuje interfejs API sieci Web:
+Internetowy interfejs API może odbierać tokeny od wielu typów klientów, m.in. aplikacji internetowych, klasycznych, mobilnych i jednostronicowych, demonów po stronie serwera oraz innych internetowych interfejsów API. Oto przykład pełnego przepływu aplikacji internetowej, która wywołuje internetowy interfejs API:
 
-![Obraz ścieżek interfejsu API sieci Web aplikacji sieci Web](./media/active-directory-b2c-apps/webapi.png)
+![Obraz ścieżek internetowego interfejsu API aplikacji internetowej](./media/active-directory-b2c-apps/webapi.png)
 
 Aby dowiedzieć się więcej o kodach autoryzacji, tokenach odświeżania i krokach uzyskiwania tokenów, zapoznaj się z informacjami na temat [protokołu OAuth 2.0](active-directory-b2c-reference-oauth-code.md).
 

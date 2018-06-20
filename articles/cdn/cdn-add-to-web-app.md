@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: de8b354cf0199d36d5e0b1410a9f79d4a9e3e05c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: efd8e93f32020d1ef3695e7fc6b9907374275848
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359785"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608393"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Samouczek: dodawanie usługi Azure CDN do aplikacji internetowej usługi Azure App Service
 
@@ -47,13 +47,16 @@ W celu ukończenia tego samouczka:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-the-web-app"></a>Tworzenie aplikacji sieci Web
+## <a name="create-the-web-app"></a>Tworzenie aplikacji internetowej
 
 Aby utworzyć aplikację internetową, z którą będziesz pracować, postępuj zgodnie z instrukcjami opisanymi w artykule [Tworzenie statycznej witryny HTML — szybki start](../app-service/app-service-web-get-started-html.md) do kroku **Przechodzenie do aplikacji**.
 
 ## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal
 
 Otwórz przeglądarkę i przejdź do witryny [Azure Portal](https://portal.azure.com).
+
+### <a name="dynamic-site-acceleration-optimization"></a>Optymalizacja przyspieszania witryn dynamicznych
+Aby zoptymalizować punkt końcowy usługi CDN na potrzeby przyspieszania witryn dynamicznych (DSA), należy użyć [portalu CDN](cdn-create-new-endpoint.md) do utworzenia profilu i punktu końcowego. Dzięki [optymalizacji DSA](cdn-dynamic-site-acceleration.md) wydajność stron internetowych z zawartością dynamiczną jest zauważalnie większa. Aby uzyskać instrukcje dotyczące sposobu optymalizacji punktu końcowego usługi CDN na potrzeby funkcji DSA w portalu usługi CDN, zobacz [Konfigurowanie punktu końcowego usługi CDN w celu przyspieszenia dostarczania plików dynamicznych](cdn-dynamic-site-acceleration.md#cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files). Jeśli jednak nie chcesz zoptymalizować nowego punktu końcowego, możesz skorzystać z portalu aplikacji internetowych, aby go utworzyć, wykonując kroki znajdujące się w następnej sekcji. Należy zauważyć, że w przypadku profilów usługi **Azure CDN from Verizon** nie można zmienić ustawień optymalizacji punktu końcowego usługi CDN po jego utworzeniu.
 
 ## <a name="create-a-cdn-profile-and-endpoint"></a>Tworzenie profilu i punktu końcowego usługi CDN
 
@@ -64,9 +67,6 @@ Na lewym panelu nawigacyjnym wybierz pozycję **App Services**, a następnie wyb
 Na stronie **App Service** w sekcji **Ustawienia** wybierz pozycję **Sieć > Skonfiguruj usługę Azure CDN dla aplikacji**.
 
 ![Wybieranie usługi CDN w portalu](media/cdn-add-to-web-app/portal-select-cdn.png)
-
-### <a name="dynamic-site-acceleration-optimization"></a>Optymalizacja przyspieszania witryn dynamicznych
-Jeśli chcesz zoptymalizować punkt końcowy usługi CDN na potrzeby przyspieszania witryn dynamicznych (DSA), skorzystać z portalu CDN, aby bezpośrednio utworzyć punkt końcowy. Dzięki [optymalizacji DSA](cdn-dynamic-site-acceleration.md) wydajność stron internetowych z zawartością dynamiczną jest zauważalnie większa. Aby uzyskać więcej informacji na temat optymalizacji punktu końcowego usługi CDN na potrzeby funkcji DSA w portalu usługi CDN, zobacz [Konfigurowanie punktu końcowego usługi CDN w celu przyspieszenia dostarczania plików dynamicznych](cdn-dynamic-site-acceleration.md#cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files). W przypadku profili usługi **Azure CDN from Verizon** nie można zmienić optymalizacji punktu końcowego usługi CDN po jego utworzeniu.
 
 Na stronie **Azure Content Delivery Network** określ ustawienia dla **nowego punktu końcowego** zgodnie z informacjami podanymi w tabeli.
 
@@ -117,13 +117,13 @@ Aby uzyskać więcej informacji o sposobie tworzenia profilów i punktów końco
 
 ## <a name="purge-the-cdn"></a>Przeczyszczanie usługi CDN
 
-Usługa CDN okresowo odświeża swoje zasoby z oryginalnej aplikacji sieci Web zgodnie z konfiguracją czasu wygaśnięcia (TTL). Domyślny czas wygaśnięcia wynosi siedem dni.
+Usługa CDN okresowo odświeża swoje zasoby z oryginalnej aplikacji internetowej zgodnie z konfiguracją czasu wygaśnięcia (TTL). Domyślny czas wygaśnięcia wynosi siedem dni.
 
 Czasami może zajść konieczność odświeżenia usługi CDN przed upływem czasu wygaśnięcia — na przykład podczas wdrażania zaktualizowanej zawartości w aplikacji internetowej. Aby wyzwolić odświeżanie, ręcznie przeczyść zasoby usługi CDN. 
 
-W tej części samouczka zostanie wdrożona zmiana w aplikacji sieci Web i nastąpi przeczyszczenie usługi CDN w celu wyzwolenia odświeżenia pamięci podręcznej tej usługi.
+W tej części samouczka zostanie wdrożona zmiana w aplikacji internetowej i nastąpi przeczyszczenie usługi CDN w celu wyzwolenia odświeżenia pamięci podręcznej tej usługi.
 
-### <a name="deploy-a-change-to-the-web-app"></a>Wdrażanie zmiany w aplikacji sieci Web
+### <a name="deploy-a-change-to-the-web-app"></a>Wdrażanie zmiany w aplikacji internetowej
 
 Otwórz plik *index.html* i dodaj ciąg *- V2* do nagłówka H1, jak pokazano w poniższym przykładzie: 
 
@@ -131,7 +131,7 @@ Otwórz plik *index.html* i dodaj ciąg *- V2* do nagłówka H1, jak pokazano w 
 <h1>Azure App Service - Sample Static HTML Site - V2</h1>
 ```
 
-Zatwierdź zmianę i wdróż ją w aplikacji sieci Web.
+Zatwierdź zmianę i wdróż ją w aplikacji internetowej.
 
 ```bash
 git commit -am "version 2"
@@ -144,7 +144,7 @@ Po zakończeniu wdrażania przejdź do adresu URL aplikacji internetowej, aby zo
 http://<appname>.azurewebsites.net/index.html
 ```
 
-![Ciąg V2 w tytule aplikacji sieci Web](media/cdn-add-to-web-app/v2-in-web-app-title.png)
+![Ciąg V2 w tytule aplikacji internetowej](media/cdn-add-to-web-app/v2-in-web-app-title.png)
 
 Jeśli przejdziesz do adresu URL punktu końcowego usługi CDN dla strony głównej, nie zobaczysz zmiany, ponieważ wersja buforowana w usłudze CDN jeszcze nie wygasła. 
 
@@ -158,7 +158,7 @@ http://<endpointname>.azureedge.net/index.html
 
 Aby w usłudze CDN wyzwolić zaktualizowanie zbuforowanej wersji, przeczyść usługę CDN.
 
-Na lewym panelu nawigacyjnym portalu wybierz pozycję **Grupy zasobów**, a następnie wybierz grupę zasobów utworzoną na potrzeby aplikacji sieci Web (myResourceGroup).
+Na lewym panelu nawigacyjnym portalu wybierz pozycję **Grupy zasobów**, a następnie wybierz grupę zasobów utworzoną na potrzeby aplikacji internetowej (myResourceGroup).
 
 ![Wybieranie grupy zasobów](media/cdn-add-to-web-app/portal-select-group.png)
 

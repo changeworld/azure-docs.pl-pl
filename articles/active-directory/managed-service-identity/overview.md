@@ -14,11 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/28/2018
 ms.author: daveba
-ms.openlocfilehash: 3493c726b600c1fd70e0c6041ec57c8f0ba01c38
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 851f788adee46436bd4286c803427f49ce0ed89a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724102"
 ---
 #  <a name="what-is-managed-service-identity-msi-for-azure-resources"></a>Co to jest tożsamość usługi zarządzanej (MSI) dla zasobów platformy Azure?
 
@@ -26,12 +27,14 @@ ms.lasthandoff: 05/10/2018
 
 Typowym wyzwaniem podczas kompilowania aplikacji w chmurze jest sposób zarządzania poświadczeniami, które muszą znajdować się w kodzie w przypadku uwierzytelniania przy użyciu usług w chmurze. Zabezpieczanie tych poświadczeń to ważne zadanie. W idealnej sytuacji nie będą one nigdy wyświetlane na stacjach roboczych deweloperów ani zaewidencjonowane do kontroli źródła. Usługa Azure Key Vault oferuje bezpieczny sposób przechowywania poświadczeń oraz innych kluczy i wpisów tajnych, ale w celu ich pobrania należy uwierzytelnić kod w usłudze Key Vault. Tożsamość usługi zarządzanej (MSI) ułatwia rozwiązywanie tego problemu, udostępniając usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure Active Directory (Azure AD). Za pomocą tej tożsamości można uwierzytelnić się w dowolnej usłudze obsługującej uwierzytelnianie usługi Azure AD, w tym w usłudze Key Vault, bez konieczności przechowywania poświadczeń w kodzie.
 
+Tożsamość usługi zarządzanej jest dodawana do warstwy Bezpłatna usługi Azure Active Directory. Jest to ustawienie domyślne subskrypcji platformy Azure. Za używanie tożsamości usługi zarządzanej nie ponosi się żadnych dodatkowych kosztów.
+
 ## <a name="how-does-it-work"></a>Jak to działa?
 
 Istnieją dwa typy tożsamości usługi zarządzanej: **przypisana przez system** i **przypisana przez użytkownika**.
 
 - **Tożsamość przypisana przez system** jest włączana bezpośrednio w wystąpieniu usługi platformy Azure. Po włączeniu platforma Azure tworzy tożsamość wystąpienia usługi w dzierżawie usługi Azure AD, która jest zaufaną dzierżawą subskrypcji wystąpienia usługi. Po utworzeniu tożsamości jej poświadczenia są aprowizowane w wystąpieniu usługi. Cykl życiowy tożsamości przypisanej przez system jest bezpośrednio powiązany z wystąpieniem usługi platformy Azure, w którym została ona włączona. Usunięcie wystąpienia usługi spowoduje, że platforma Azure automatycznie oczyści poświadczenia i tożsamość w usłudze Azure AD.
-- **Tożsamość przypisana przez użytkownika** (publiczna wersja zapoznawcza) jest tworzona jako autonomiczny zasób platformy Azure. W ramach procesu tworzenia platforma Azure tworzy tożsamość w dzierżawie usługi Azure AD, której ufa używana subskrypcja. Utworzoną tożsamość można przypisać do co najmniej jednego wystąpienia usługi platformy Azure. Cykl życiowy tożsamości przypisanej przez użytkownika jest zarządzany oddzielnie od cyklu życiowego wystąpień usługi platformy Azure, do których został przypisany.
+- **Tożsamość przypisana przez użytkownika** jest tworzona jako autonomiczny zasób platformy Azure. W ramach procesu tworzenia platforma Azure tworzy tożsamość w dzierżawie usługi Azure AD, której ufa używana subskrypcja. Utworzoną tożsamość można przypisać do co najmniej jednego wystąpienia usługi platformy Azure. Cykl życiowy tożsamości przypisanej przez użytkownika jest zarządzany oddzielnie od cyklu życiowego wystąpień usługi platformy Azure, do których został przypisany.
 
 W wyniku kod może używać tożsamości przypisanej przez system lub użytkownika w celu żądania tokenów dostępu do usług, które obsługują uwierzytelnianie usługi Azure AD. W trakcie tych wszystkich procesów platforma Azure zapewnia stopniową obsługę poświadczeń używanych przez wystąpienie usługi.
 
@@ -103,17 +106,6 @@ Zapoznaj się z samouczkiem dotyczącym tożsamość usługi zarządzanej, aby d
 
 Tożsamości zarządzane mogą służyć do uwierzytelniania w usługach obsługujących uwierzytelnianie usługi Azure AD. Listę usług platformy Azure, które obsługują tożsamość usługi zarządzanej, można znaleźć w artykule:
 - [Usługi, które obsługują tożsamość usługi zarządzanej](services-support-msi.md)
-
-## <a name="how-much-does-managed-service-identity-cost"></a>Ile kosztuje tożsamość usługi zarządzanej?
-
-Tożsamość usługi zarządzanej jest dodawana do warstwy Bezpłatna usługi Azure Active Directory. Jest to ustawienie domyślne subskrypcji platformy Azure. Za używanie tożsamości usługi zarządzanej nie ponosi się żadnych dodatkowych kosztów.
-
-## <a name="support-and-feedback"></a>Pomoc techniczna i opinie
-
-Chcemy poznać Twoje zdanie!
-
-* Zadaj pytania dotyczące instrukcji w witrynie Stack Overflow, używając tagu [azure-msi](http://stackoverflow.com/questions/tagged/azure-msi).
-* Do zgłaszania propozycji funkcji lub przesyłania opinii służy [forum opinii dotyczących usługi Azure AD dla deweloperów](https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences).
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,26 +1,24 @@
 ---
-title: 'Samouczek NoSQL: interfejsu API SQL dla usługi Azure rozwiązania Cosmos DB Java SDK | Dokumentacja firmy Microsoft'
-description: Samouczek NoSQL, który powoduje utworzenie bazy danych w trybie online i aplikacji konsoli w języku Java za pomocą interfejsu API SQL dla bazy danych Azure rozwiązania Cosmos. Azure SQL jest bazą danych NoSQL dla formatu JSON.
+title: 'Samouczek NoSQL: zestaw Java SDK interfejsu SQL API dla usługi Azure Cosmos DB | Microsoft Docs'
+description: Samouczek NoSQL, który pokazuje tworzenie bazy danych w trybie online i aplikacji konsolowej Java przy użyciu interfejsu API SQL dla usługi Azure Cosmos DB. Usługa Azure SQL jest bazą danych NoSQL dla formatu JSON.
 keywords: nosql tutorial, online database, java console application
 services: cosmos-db
-documentationcenter: Java
 author: SnehaGunda
 manager: kfile
-ms.assetid: 75a9efa1-7edd-4fed-9882-c0177274cbb2
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: java
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: sngun
-ms.openlocfilehash: 8405894451c60f0661922584d9927960e3d0f611
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 36d65d7755b45f0da02776a90b09df3c6a3bcf02
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796982"
 ---
-# <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>Samouczek NoSQL: tworzenie aplikacji konsoli Java interfejsu API SQL
+# <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>Samouczek NoSQL: tworzenie aplikacji konsolowej w języku Java dla interfejsu API SQL
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
@@ -31,7 +29,7 @@ ms.lasthandoff: 04/16/2018
 >  
 > 
 
-Samouczek NoSQL dla interfejsu API SQL dla Zapraszamy Azure rozwiązania Cosmos DB Java SDK! W ramach tego samouczka zostanie utworzona aplikacja konsolowa, która tworzy zasoby usługi Azure Cosmos DB i wykonuje dla nich zapytania.
+Witamy w samouczku NoSQL dla zestawu Java SDK interfejsu API SQL dla usługi Azure Cosmos DB! W ramach tego samouczka zostanie utworzona aplikacja konsolowa, która tworzy zasoby usługi Azure Cosmos DB i wykonuje dla nich zapytania.
 
 Zostaną opisane:
 
@@ -72,7 +70,7 @@ Możesz rozpocząć od sklonowania repozytorium GitHub na potrzeby pracy z temat
 
     cd azure-cosmos-db-documentdb-java-getting-started
 
-Katalog zawiera `pom.xml` dla projektu i `src` folder zawierający kod źródłowy Java w tym `Program.java` które pokazuje sposób wykonywaniem prostych operacji dotyczących bazy danych rozwiązania Cosmos platformy Azure, takich jak tworzenie dokumentów i wykonywanie zapytania na danych w ramach kolekcji . `pom.xml` Zawiera zależności na [Azure rozwiązania Cosmos DB Java SDK na Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb).
+Katalog zawiera plik `pom.xml` dla projektu i folder `src` zawierający kod źródłowy języka Java łącznie z plikiem `Program.java`, który pokazuje sposób wykonywania prostych operacji za pomocą usługi Azure Cosmos DB, takich jak tworzenie dokumentów oraz wykonywanie zapytań o dane w ramach kolekcji. Plik `pom.xml` zawiera zależność dla [zestawu Java SDK usługi Azure Cosmos DB w Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb).
 
     <dependency>
         <groupId>com.microsoft.azure</groupId>
@@ -120,7 +118,7 @@ Własną [bazę danych](sql-api-resources.md#databases) usługi Azure Cosmos DB 
     this.client.createCollection("/dbs/familydb", collectionInfo, requestOptions);
 
 ## <a id="CreateDoc"></a>Krok 6. Tworzenie dokumentów JSON
-[Dokument](sql-api-resources.md#documents) można utworzyć za pomocą metody [createDocument](/java/api/com.microsoft.azure.documentdb._document_client.createdocument) klasy **DocumentClient**. Dokumenty są zawartością JSON zdefiniowaną przez użytkownika (dowolną). Można teraz wstawić jeden lub więcej dokumentów. Jeśli masz już dane, które chcesz przechowywać w bazie danych, możesz użyć Azure rozwiązania Cosmos DB [narzędzia migracji danych](import-data.md) do importowania danych do bazy danych.
+[Dokument](sql-api-resources.md#documents) można utworzyć za pomocą metody [createDocument](/java/api/com.microsoft.azure.documentdb._document_client.createdocument) klasy **DocumentClient**. Dokumenty są zawartością JSON zdefiniowaną przez użytkownika (dowolną). Można teraz wstawić jeden lub więcej dokumentów. Jeśli masz już dane, które chcesz przechowywać w bazie danych, możesz użyć [narzędzia migracji danych](import-data.md) usługi Azure Cosmos DB, aby zaimportować dane do bazy danych.
 
     // Insert your Java objects as documents 
     Family andersenFamily = new Family();
@@ -177,7 +175,7 @@ Usunięcie utworzonej bazy danych usunie bazę danych i wszystkie zasoby podrzę
     this.client.deleteDatabase("/dbs/familydb", null);
 
 ## <a id="Run"></a>Krok 11. Uruchamianie całej aplikacji konsolowej Java!
-Aby uruchomić aplikację z poziomu konsoli, przejdź do folderu projektu i skompilować za pomocą programu Maven:
+Aby uruchomić aplikację z poziomu konsoli, przejdź do folderu projektu i przeprowadź kompilację za pomocą narzędzia Maven:
     
     mvn package
 
@@ -187,8 +185,8 @@ Uruchomienie polecenia `mvn package` spowoduje pobranie najnowszej biblioteki Az
 
 Gratulacje! Pomyślnie ukończono ten samouczek NoSQL i utworzono działającą aplikację konsolową Java!
 
-## <a name="next-steps"></a>Kolejne kroki
-* Czy chcesz samouczek aplikacji sieci Web w języku Java? Zobacz [Build a web application with Java using Azure Cosmos DB](sql-api-java-application.md) (Tworzenie aplikacji internetowej w języku Java przy użyciu usługi Azure Cosmos DB).
+## <a name="next-steps"></a>Następne kroki
+* Czy chcesz zapoznać się z samouczkiem aplikacji internetowej w języku Java? Zobacz [Build a web application with Java using Azure Cosmos DB](sql-api-java-application.md) (Tworzenie aplikacji internetowej w języku Java przy użyciu usługi Azure Cosmos DB).
 * Dowiedz się, jak [monitorować konto usługi Azure Cosmos DB](monitor-accounts.md).
 * Uruchom zapytania względem naszego przykładowego zestawu danych na [placu zabaw dla zapytań](https://www.documentdb.com/sql/demo).
 

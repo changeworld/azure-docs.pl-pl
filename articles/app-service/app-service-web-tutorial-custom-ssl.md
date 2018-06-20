@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: b9adae07bc95e385e9932250f7eb91115396f275
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ec58b5ef2b9095ba420a4518b84c4e2e6200abc3
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193458"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714582"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Samouczek: wiązanie istniejącego niestandardowego certyfikatu protokołu SSL z usługą Azure Web Apps
 
@@ -84,17 +84,17 @@ W lewym obszarze nawigacji na stronie Twojej aplikacji internetowej przewiń do 
 
 ![Menu skalowania w górę](./media/app-service-web-tutorial-custom-ssl/scale-up-menu.png)
 
-Upewnij się, że Twoja aplikacja internetowa nie znajduje się w warstwie **Bezpłatna** ani **Współdzielona**. Bieżąca warstwa Twojej aplikacji internetowej jest wyróżniona ciemnoniebieskim polem.
+Upewnij się, że Twoja aplikacja internetowa nie znajduje się w warstwie **F1** ani **D1**. Bieżąca warstwa Twojej aplikacji internetowej jest wyróżniona ciemnoniebieskim polem.
 
 ![Sprawdzanie warstwy cenowej](./media/app-service-web-tutorial-custom-ssl/check-pricing-tier.png)
 
-Niestandardowy protokół SSL nie jest obsługiwany w warstwie **Bezpłatna** ani **Współdzielona**. Jeśli musisz skalować w górę, wykonaj kroki opisane w następnej sekcji. W przeciwnym razie zamknij stronę **Wybieranie warstwy cenowej** i przejdź do [przekazywania i wiązania certyfikatu protokołu SSL](#upload).
+Niestandardowy protokół SSL nie jest obsługiwany w warstwie **F1** ani **D1**. Jeśli musisz skalować w górę, wykonaj kroki opisane w następnej sekcji. W przeciwnym razie zamknij stronę **Skalowanie w górę** i przejdź do [przekazywania i wiązania certyfikatu protokołu SSL](#upload).
 
 ### <a name="scale-up-your-app-service-plan"></a>Skalowanie w górę planu usługi App Service
 
-Wybierz jedną z następujących warstw: **Podstawowa**, **Standardowa** lub **Premium**.
+Wybierz jedną z płatnych warstw (**B1**, **B2**, **B3** lub dowolną warstwę z kategorii **Produkcja**). Aby uzyskać dodatkowe opcje, kliknij pozycję **Wyświetl dodatkowe opcje**.
 
-Kliknij pozycję **Wybierz**.
+Kliknij przycisk **Zastosuj**.
 
 ![Wybieranie warstwy cenowej](./media/app-service-web-tutorial-custom-ssl/choose-pricing-tier.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Tworzenie laboratorium niestandardowego przy użyciu usługi Azure DevTest Labs | Microsoft Docs
-description: W tym przewodniku Szybki start utworzysz laboratorium niestandardowe za pomocą usługi Azure DevTest Labs.
+title: Tworzenie laboratorium przy użyciu usługi Azure DevTest Labs | Microsoft Docs
+description: W tym przewodniku Szybki start utworzysz laboratorium za pomocą usługi Azure DevTest Labs.
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
 author: spelluru
@@ -14,26 +14,26 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 3a4f964fe4f103e970a6edb3e9ba716fd72b8c79
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5a93feec7996fc0ebf742b8d62b159dca5f1c1ed
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34362247"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636991"
 ---
-# <a name="tutorial-set-up-a-custom-lab-by-using-azure-devtest-labs"></a>Samouczek: konfigurowanie laboratorium niestandardowego przy użyciu usługi Azure DevTest Labs
-W tym samouczku utworzysz laboratorium niestandardowe za pomocą witryny Azure Portal. Administrator laboratorium konfiguruje laboratorium w organizacji, tworzy maszyny wirtualne w laboratorium i konfiguruje zasady. Użytkownicy laboratorium (na przykład deweloper i testerzy) przejmują maszyny wirtualne w laboratorium, nawiązują połączenie z nimi i korzystają z nich. 
+# <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Samouczek: konfigurowanie laboratorium przy użyciu usługi Azure DevTest Labs
+W tym samouczku utworzysz laboratorium za pomocą witryny Azure Portal. Administrator laboratorium konfiguruje laboratorium w organizacji, tworzy maszyny wirtualne w laboratorium i konfiguruje zasady. Użytkownicy laboratorium (na przykład deweloper i testerzy) przejmują maszyny wirtualne w laboratorium, nawiązują połączenie z nimi i korzystają z nich. 
 
 W tym samouczku wykonasz następujące czynności:
 
 > [!div class="checklist"]
-> * Tworzenie laboratorium niestandardowego
+> * Tworzenie laboratorium
 > * Dodawanie maszyn wirtualnych do laboratorium
 > * Dodawanie użytkownika do roli użytkownika laboratorium
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
-## <a name="create-a-custom-lab"></a>Tworzenie laboratorium niestandardowego
+## <a name="create-a-lab"></a>Tworzenie laboratorium
 Następujące kroki ilustrują tworzenie laboratorium w usłudze Azure DevTest Labs przy użyciu witryny Azure Portal. 
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
@@ -97,8 +97,8 @@ W następnym samouczku pokazano, jak użytkownik laboratorium może przejąć ma
 4. Powtórz te czynności, aby usunąć dodatkową utworzoną grupę zasobów o nazwie `<your resource group name><random numbers>`. Na przykład: `splab3988722144001`. Maszyny wirtualne są tworzone w tej grupie zasobów, a nie w grupie zasobów, w której istnieje laboratorium. 
 
 ## <a name="next-steps"></a>Następne kroki
-W tym samouczku utworzono niestandardowe laboratorium z maszyną wirtualną i udzielono użytkownikowi dostępu do laboratorium. Aby dowiedzieć się, jak uzyskać dostęp laboratorium jako użytkownik laboratorium, przejdź do następnego samouczka:
+W tym samouczku utworzono laboratorium z maszyną wirtualną i udzielono użytkownikowi dostępu do laboratorium. Aby dowiedzieć się, jak uzyskać dostęp laboratorium jako użytkownik laboratorium, przejdź do następnego samouczka:
 
 > [!div class="nextstepaction"]
-> [Samouczek: uzyskiwanie dostępu do laboratorium niestandardowego](tutorial-use-custom-lab.md)
+> [Samouczek: uzyskiwanie dostępu do laboratorium](tutorial-use-custom-lab.md)
 

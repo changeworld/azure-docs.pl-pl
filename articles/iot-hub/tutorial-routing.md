@@ -1,25 +1,20 @@
 ---
 title: Konfigurowanie routingu komunikatów przy użyciu usługi Azure IoT Hub (.NET) | Microsoft Docs
 description: Konfigurowanie routingu komunikatów przy użyciu usługi Azure IoT Hub
-services: iot-hub
-documentationcenter: .net
 author: robinsh
 manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: iot-hub
-ms.devlang: dotnet
+services: iot-hub
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 05/01/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 0674ed033f77d7d2eca319d0b1e82171dfa4256d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ab354410ba3b0b37ae630a2b68daec63a9051555
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700829"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>Samouczek: konfigurowanie routingu wiadomości przy użyciu usługi IoT Hub
 
@@ -46,7 +41,7 @@ Ten samouczek obejmuje wykonanie następujących zadań:
 
 - Zainstaluj program [Visual Studio dla systemu Windows](https://www.visualstudio.com/). 
 
-- Konto usługi Power BI do analizowania danych analitycznych strumienia domyślnego punktu końcowego. ([Wypróbuj bezpłatnie usługę Power BI](https://app.powerbi.com/signupredirect?pbi_source=web))
+- Konto usługi Power BI do analizowania danych analitycznych strumienia domyślnego punktu końcowego. ([Wypróbuj bezpłatnie usługę Power BI](https://app.powerbi.com/signupredirect?pbi_source=web)).
 
 - Konto usługi Office 365 do wysyłania powiadomień e-mail. 
 
@@ -104,24 +99,24 @@ Najprostszym sposobem użycia tego skryptu jest skopiowanie i wklejenie go w us�
 # You need it to create the device identity. 
 az extension add --name azure-cli-iot-ext
 
-# Set the values for the resource names.
+# Set the values for the resource names that don't have to be globally unique.
+# The resources that have to have unique names are named in the script below
+#   with a random number concatenated to the name so you can probably just
+#   run this script, and it will work with no conflicts.
 location=westus
 resourceGroup=ContosoResources
 iotHubConsumerGroup=ContosoConsumers
 containerName=contosoresults
 iotDeviceName=Contoso-Test-Device 
 
-# These resource names must be globally unique.
-# You might need to change these if they are already in use by someone else.
-iotHubName=ContosoTestHub 
-storageAccountName=contosoresultsstorage 
-sbNameSpace=ContosoSBNamespace 
-sbQueueName=ContosoSBQueue
-
 # Create the resource group to be used
 #   for all the resources for this tutorial.
 az group create --name $resourceGroup \
     --location $location
+
+# The IoT hub name must be globally unique, so add a random number to the end.
+iotHubName=ContosoTestHub$RANDOM
+echo "IoT hub name = " $iotHubName
 
 # Create the IoT hub.
 az iot hub create --name $iotHubName \
@@ -131,6 +126,10 @@ az iot hub create --name $iotHubName \
 # Add a consumer group to the IoT hub.
 az iot hub consumer-group create --hub-name $iotHubName \
     --name $iotHubConsumerGroup
+
+# The storage account name must be globally unique, so add a random number to the end.
+storageAccountName=contosostorage$RANDOM
+echo "Storage account name = " $storageAccountName
 
 # Create the storage account to be used as a routing destination.
 az storage account create --name $storageAccountName \
@@ -154,11 +153,19 @@ az storage container create --name $containerName \
     --account-key $storageAccountKey \
     --public-access off 
 
+# The Service Bus namespace must be globally unique, so add a random number to the end.
+sbNameSpace=ContosoSBNamespace$RANDOM
+echo "Service Bus namespace = " $sbNameSpace
+
 # Create the Service Bus namespace.
 az servicebus namespace create --resource-group $resourceGroup \
     --name $sbNameSpace \
     --location $location
     
+# The Service Bus queue name must be globally unique, so add a random number to the end.
+sbQueueName=ContosoSBQueue$RANDOM
+echo "Service Bus queue name = " $sbQueueName
+
 # Create the Service Bus queue to be used as a routing destination.
 az servicebus queue create --name $sbQueueName \
     --namespace-name $sbNameSpace \
@@ -183,23 +190,23 @@ Najprostszym sposobem użycia tego skryptu jest otwarcie [środowiska ISE progra
 # Log into Azure account.
 Login-AzureRMAccount
 
-# Set the values for the resource names.
+# Set the values for the resource names that don't have to be globally unique.
+# The resources that have to have unique names are named in the script below
+#   with a random number concatenated to the name so you can probably just
+#   run this script, and it will work with no conflicts.
 $location = "West US"
 $resourceGroup = "ContosoResources"
 $iotHubConsumerGroup = "ContosoConsumers"
 $containerName = "contosoresults"
 $iotDeviceName = "Contoso-Test-Device"
 
-# These resource names must be globally unique.
-# You might need to change these if they are already in use by someone else.
-$iotHubName = "ContosoTestHub"
-$storageAccountName = "contosoresultsstorage"
-$serviceBusNamespace = "ContosoSBNamespace"
-$serviceBusQueueName  = "ContosoSBQueue"
-
-# Create the resource group to be used  
+# Create the resource group to be used 
 #   for all resources for this tutorial.
 New-AzureRmResourceGroup -Name $resourceGroup -Location $location
+
+# The IoT hub name must be globally unique, so add a random number to the end.
+$iotHubName = "ContosoTestHub$(Get-Random)"
+Write-Host "IoT hub name is " $iotHubName
 
 # Create the IoT hub.
 New-AzureRmIotHub -ResourceGroupName $resourceGroup `
@@ -213,6 +220,10 @@ Add-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName $resourceGroup `
   -Name $iotHubName `
   -EventHubConsumerGroupName $iotHubConsumerGroup `
   -EventHubEndpointName "events"
+
+# The storage account name must be globally unique, so add a random number to the end.
+$storageAccountName = "contosostorage$(Get-Random)"
+Write-Host "storage account name is " $storageAccountName
 
 # Create the storage account to be used as a routing destination.
 # Save the context for the storage account 
@@ -228,10 +239,20 @@ $storageContext = $storageAccount.Context
 New-AzureStorageContainer -Name $containerName `
     -Context $storageContext
 
+# The Service Bus namespace must be globally unique,
+#   so add a random number to the end.
+$serviceBusNamespace = "ContosoSBNamespace$(Get-Random)"
+Write-Host "Service Bus namespace is " $serviceBusNamespace
+
 # Create the Service Bus namespace.
 New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroup `
     -Location $location `
     -Name $serviceBusNamespace 
+
+# The Service Bus queue name must be globally unique,
+#  so add a random number to the end.
+$serviceBusQueueName  = "ContosoSBQueue$(Get-Random)"
+Write-Host "Service Bus queue name is " $serviceBusQueueName 
 
 # Create the Service Bus queue to be used as a routing destination.
 New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
@@ -256,8 +277,6 @@ W kolejnym kroku utwórz tożsamość urządzenia i zapisz jego klucz do późni
 
    ![Zrzut ekranu przedstawiający szczegóły urządzenia, w tym klucze.](./media/tutorial-routing/device-details.png)
 
-
-
 ## <a name="set-up-message-routing"></a>Konfigurowanie routingu komunikatów
 
 Planujesz rozsyłać komunikaty do różnych zasobów na podstawie właściwości dołączonych do komunikatu za pośrednictwem urządzenia symulowanego. Komunikaty bez tras niestandardowych są wysyłane do domyślnego punktu końcowego (wiadomości/zdarzenia). 
@@ -278,7 +297,7 @@ Teraz należy skonfigurować routing dla konta magazynu. Zdefiniuj punkt końcow
    
    **Typ punktu końcowego**: z listy rozwijanej wybierz pozycję **Kontener usługi Azure Storage**.
 
-   Kliknij pozycję **Wybierz kontener**, aby wyświetlić listę kont magazynu. Wybierz swoje konto magazynu. W tym samouczku jest używane konto **contosoresultsstorage**. Następnie wybierz kontener. W tym samouczku jest używany kontener **contosoresults**. Kliknij pozycję **Wybierz**, aby wrócić do okienka Dodawanie punktu końcowego. 
+   Kliknij pozycję **Wybierz kontener**, aby wyświetlić listę kont magazynu. Wybierz swoje konto magazynu. W tym samouczku jest używana kolejka **contosostorage**. Następnie wybierz kontener. W tym samouczku jest używany kontener **contosoresults**. Kliknij pozycję **Wybierz**, aby wrócić do okienka **Dodawanie punktu końcowego**. 
    
    ![Zrzut ekranu przedstawiający dodawanie punktu końcowego.](./media/tutorial-routing/add-endpoint-storage-account.png)
    
@@ -390,7 +409,7 @@ Kolejka usługi Service Bus jest używana do odbierania komunikatów oznaczonych
 
 ## <a name="set-up-azure-stream-analytics"></a>Konfigurowanie usługi Azure Stream Analytics
 
-Aby wyświetlić dane w wizualizacji usługi Power BI, najpierw skonfiguruj zadanie usługi Stream Analytics w celu pobrania danych. Pamiętaj, że tylko komunikaty, w których właściwość **level** ma wartość **normal**, są wysyłane do domyślnego punktu końcowego i zostaną pobrane przez zadanie usługi Log Analytics na potrzeby wizualizacji usługi Power BI.
+Aby wyświetlić dane w wizualizacji usługi Power BI, najpierw skonfiguruj zadanie usługi Stream Analytics w celu pobrania danych. Pamiętaj, że tylko komunikaty, w których właściwość **level** ma wartość **normal**, są wysyłane do domyślnego punktu końcowego i zostaną pobrane przez zadanie usługi Stream Analytics na potrzeby wizualizacji usługi Power BI.
 
 ### <a name="create-the-stream-analytics-job"></a>Tworzenie zadania usługi Stream Analytics
 
@@ -405,6 +424,8 @@ Aby wyświetlić dane w wizualizacji usługi Power BI, najpierw skonfiguruj zada
    **Lokalizacja**: użyj lokalizacji stosowanej już w skrypcie konfiguracji. W tym samouczku jest używany region **Zachodnie stany USA**. 
 
    ![Zrzut ekranu pokazujący sposób tworzenia zadania usługi Log Analytics.](./media/tutorial-routing/stream-analytics-create-job.png)
+
+3. Kliknij pozycję **Utwórz**, aby utworzyć zadanie. Aby powrócić do zadania, kliknij pozycję **Grupy zasobów**. W tym samouczku jest używana grupa **ContosoResources**. Wybierz grupę zasobów, a następnie kliknij zadanie usługi Stream Analytics na liście zasobów. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Dodawanie danych wejściowych do zadania usługi Stream Analytics
 
@@ -462,7 +483,7 @@ Aby wyświetlić dane w wizualizacji usługi Power BI, najpierw skonfiguruj zada
 
 4. Kliknij pozycję **Zapisz**.
 
-5. Zamknij okienko Zapytanie.
+5. Zamknij okienko Zapytanie. Nastąpi powrót do widoku zasobów w grupie zasobów. Kliknij zadanie usługi Stream Analytics. W tym samouczku nosi ono nazwę **contosoJob**.
 
 ### <a name="run-the-stream-analytics-job"></a>Uruchamianie zadania usługi Stream Analytics
 
@@ -474,7 +495,7 @@ Do skonfigurowania raportu usługi Power BI potrzebujesz danych, dlatego po utwo
 
 Wcześniej w sekcji konfigurowania skryptu skonfigurowano urządzenia do symulowania użycia urządzenia IoT. Ta sekcja zawiera instrukcje dotyczące pobierania aplikacji konsolowej .NET, która symuluje urządzenie wysyłające komunikaty z urządzenia do chmury do centrum IoT Hub. Ta aplikacja wysyła komunikaty przy użyciu każdej z różnych metod routingu. 
 
-Pobierz rozwiązanie na potrzeby [symulacji urządzenia IoT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Spowoduje to pobranie do niego repozytorium zawierającego kilka aplikacji; szukane rozwiązanie znajduje się w lokalizacji Tutorials/Routing/SimulatedDevice/.
+Pobierz rozwiązanie na potrzeby [symulacji urządzenia IoT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Spowoduje to pobranie do niego repozytorium zawierającego kilka aplikacji; szukane rozwiązanie znajduje się w lokalizacji iot-hub/Tutorials/Routing/SimulatedDevice/.
 
 Kliknij dwukrotnie plik rozwiązania (SimulatedDevice.sln), aby otworzyć kod w programie Visual Studio, a następnie otwórz plik Program.cs. Zastąp element `{iot hub hostname}` nazwą hosta centrum IoT Hub. Format nazwy hosta centrum IoT Hub to **{nazwa-centrum-iot}.azure-devices.net**. W tym samouczku jest używana nazwa hosta centrum **ContosoTestHub.azure-devices.net**. Następnie zastąp ciąg `{device key}` kluczem urządzenia, który został wcześniej zapisany podczas konfigurowania urządzenia symulowanego. 
 
@@ -514,9 +535,9 @@ Oznacza to, że:
 
 Teraz — przy nadal działającej aplikacji — skonfiguruj wizualizację usługi Power BI, aby widzieć komunikaty przechodzące przez trasę domyślną. 
 
-## <a name="set-up-the-powerbi-visualizations"></a>Konfigurowanie wizualizacji usługi Power BI
+## <a name="set-up-the-power-bi-visualizations"></a>Konfigurowanie wizualizacji usługi Power BI
 
-1. Zaloguj się do konta usługi [PowerBI](https://powerbi.microsoft.com/).
+1. Zaloguj się do swojego konta usługi [Power BI](https://powerbi.microsoft.com/).
 
 2. Przejdź do obszaru **Obszary robocze** i wybierz obszar roboczy ustawiony podczas tworzenia danych wyjściowych zadania usługi Stream Analytics. W tym samouczku jest używana nazwa **Mój obszar roboczy**. 
 
@@ -552,7 +573,7 @@ Powinny być widoczne dane na obydwu wykresach. Oznacza to, że:
 
    * Routing do domyślnego punktu końcowego działa poprawnie.
    * Zadanie usługi Azure Stream Analytics jest poprawnie przesyłane strumieniowo.
-   * Wizualizacja usługi PowerBI została prawidłowo skonfigurowana.
+   * Wizualizacja usługi Power BI została prawidłowo skonfigurowana.
 
 Wykresy można odświeżać w celu wyświetlenia najnowszych danych, klikając przycisk Odśwież w górnej części okna usługi Power BI. 
 
@@ -560,9 +581,9 @@ Wykresy można odświeżać w celu wyświetlenia najnowszych danych, klikając p
 
 Jeśli chcesz usunąć wszystkie utworzone przez siebie zasoby, usuń grupę zasobów. Ta akcja spowoduje również usunięcie wszystkich zasobów znajdujących się w grupie. W naszym przypadku nastąpi usunięcie centrum IoT Hub, przestrzeni nazw i kolejki usługi Service Bus, aplikacji logiki, konta magazynu i samej grupy zasobów. 
 
-### <a name="clean-up-resources-in-the-powerbi-visualization"></a>Oczyszczanie zasobów w wizualizacji usługi Power BI
+### <a name="clean-up-resources-in-the-power-bi-visualization"></a>Oczyszczanie zasobów w wizualizacji usługi Power BI
 
-Zaloguj się do konta usługi [PowerBI](https://powerbi.microsoft.com/). Przejdź do swojego obszaru roboczego. W tym samouczku jest używana nazwa **Mój obszar roboczy**. Aby usunąć wizualizację usługi Power BI, przejdź do obszaru zestawów danych i kliknij ikonę kosza, aby usunąć zestaw danych. W tym samouczku jest używany zestaw danych **contosodataset**. Podczas usuwania zestawu danych usuwany jest również raport.
+Zaloguj się do swojego konta usługi [Power BI](https://powerbi.microsoft.com/). Przejdź do swojego obszaru roboczego. W tym samouczku jest używana nazwa **Mój obszar roboczy**. Aby usunąć wizualizację usługi Power BI, przejdź do obszaru zestawów danych i kliknij ikonę kosza w celu usunięcia zestawu danych. W tym samouczku jest używany zestaw danych **contosodataset**. Podczas usuwania zestawu danych usuwany jest również raport.
 
 ### <a name="clean-up-resources-using-azure-cli"></a>Oczyszczanie zasobów przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -598,6 +619,6 @@ W tym samouczku przedstawiono sposób użycia routingu komunikatów do rozsyłan
 Przejdź do następnego samouczka, aby dowiedzieć się, jak zarządzać stanem urządzenia IoT. 
 
 > [!div class="nextstepaction"]
-[Rozpoczynanie pracy z bliźniaczą reprezentacją urządzenia usługi Azure IoT Hub](iot-hub-node-node-twin-getstarted.md)
+[Konfigurowanie urządzeń z poziomu usługi zaplecza](tutorial-device-twins.md)
 
  <!--  [Manage the state of a device](./tutorial-manage-state.md) -->

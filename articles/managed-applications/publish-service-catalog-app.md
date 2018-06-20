@@ -8,14 +8,14 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 05/15/2018
+ms.date: 06/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: b7f8bbcad39000e7e71149824535a6a82b26c758
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 39d2979aad3aee80ba010d5fc3cf83ad486baf2d
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305314"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35247884"
 ---
 # <a name="publish-a-managed-application-for-internal-consumption"></a>Publikowanie aplikacji zarządzanej do użytku wewnątrz organizacji
 
@@ -29,11 +29,13 @@ Aby opublikować aplikację zarządzaną w katalogu usług, należy wykonać nas
 * Wybierz użytkowników, grupy lub aplikacje, dla których jest wymagany dostęp do grupy zasobów w ramach subskrypcji użytkownika.
 * Utwórz definicję aplikacji zarządzanej, wskazującą pakiet zip i zawierającą żądanie dostępu dla określonej tożsamości.
 
-Ten artykuł opisuje aplikację zarządzaną, która zawiera tylko konto magazynu. Ma on na celu przedstawienie kroków publikowania aplikacji zarządzanej. Kompletne przykłady znajdziesz w temacie [Sample projects for Azure managed applications](sample-projects.md) (Przykładowe projekty aplikacji zarządzanych platformy Azure).
+W tym artykule opisano aplikację zarządzaną, która zawiera tylko konto magazynu. Celem artykułu jest przedstawienie kroków publikowania aplikacji zarządzanej. Kompletne przykłady znajdziesz w temacie [Sample projects for Azure managed applications](sample-projects.md) (Przykładowe projekty aplikacji zarządzanych platformy Azure).
+
+Przykłady w języku PowerShell w tym artykule wymagają programu Azure PowerShell w wersji 6.2 lub nowszej. W razie potrzeby [zaktualizuj swoją wersję](/powershell/azure/install-azurerm-ps).
 
 ## <a name="create-the-resource-template"></a>Tworzenie szablonu zasobów
 
-Każda definicja aplikacji zarządzanej zawiera plik o nazwie **mainTemplate.json**. W tym pliku należy zdefiniować zasoby platformy Azure, które zostaną zainicjowane. Szablon nie różni się niczym od zwykłego szablonu usługi Resource Manager.
+Każda definicja aplikacji zarządzanej zawiera plik o nazwie **mainTemplate.json**. W tym pliku należy zdefiniować zasoby platformy Azure, które zostaną wdrożone. Szablon nie różni się niczym od zwykłego szablonu usługi Resource Manager.
 
 Utwórz plik o nazwie **mainTemplate.json**. W nazwie jest rozróżniana wielkość liter.
 
@@ -209,6 +211,10 @@ New-AzureRmManagedApplicationDefinition `
   -PackageFileUri $blob.ICloudBlob.StorageUri.PrimaryUri.AbsoluteUri
 ```
 
+### <a name="make-sure-users-can-see-your-definition"></a>Upewnij się, że użytkownicy będą mogli zobaczyć definicję
+
+Masz dostęp do definicji aplikacji zarządzanej, ale chcesz mieć pewność, że inni użytkownicy w Twojej organizacji również mają do niej dostęp. Z definicji przyznaj im co najmniej rolę czytelnika. Użytkownicy mogą odziedziczyć ten poziom dostępu z subskrypcji lub grupy zasobów. Aby sprawdzić, kto ma dostęp do definicji, i dodać użytkowników lub grupy, zobacz [Używanie kontroli dostępu opartej na rolach do zarządzania dostępem do zasobów subskrypcji platformy Azure](../role-based-access-control/role-assignments-portal.md).
+
 ## <a name="create-the-managed-application"></a>Tworzenie aplikacji zarządzanej
 
 Możesz wdrożyć aplikację zarządzaną przy użyciu witryny Azure Portal, programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
@@ -256,6 +262,16 @@ Teraz przedstawione zostanie wdrożenie aplikacji zarządzanej w witrynie Azure 
 1. Znajdź aplikację zarządzaną, którą chcesz utworzyć, na liście dostępnych rozwiązań i wybierz ją. Wybierz pozycję **Utwórz**.
 
    ![Znajdowanie aplikacji zarządzanej](./media/publish-service-catalog-app/find-application.png)
+
+   Jeśli definicja aplikacji zarządzanych nie jest widoczna za pośrednictwem portalu, może być konieczna zmiana ustawień portalu. Wybierz opcję **Filtr katalogów i subskrypcji**.
+
+   ![Wybieranie filtru subskrypcji](./media/publish-service-catalog-app/select-filter.png)
+
+   Sprawdź, czy globalny filtr subskrypcji obejmuje subskrypcję, która zawiera definicję aplikacji zarządzanej.
+
+   ![Sprawdzanie filtru subskrypcji](./media/publish-service-catalog-app/check-global-filter.png)
+
+   Po wybraniu subskrypcji rozpocznij od nowa tworzenie katalogu usług aplikacji zarządzanych. Powinny być teraz widoczne.
 
 1. Podaj wymagane podstawowe informacje dotyczące aplikacji zarządzanej. Określ subskrypcję i nową grupę zasobów, która będzie zawierała aplikację zarządzaną. Wybierz lokalizację **Zachodnio-środkowe stany USA**. Po zakończeniu wybierz polecenie **Zamknij**.
 

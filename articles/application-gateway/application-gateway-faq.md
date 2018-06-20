@@ -7,14 +7,14 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 5/21/2018
+ms.date: 6/19/2018
 ms.author: victorh
-ms.openlocfilehash: bf4e92636424e7d8f4a1bc2eb5ee9ba7e97667c6
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: a2f664525235fa97b0694362d7dc82086e31f71d
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34699907"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36229339"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Często zadawane pytania dotyczące bramy aplikacji
 
@@ -166,6 +166,10 @@ W tym scenariuszu można zrobić za pomocą grup NSG podsieci bramy aplikacji. N
 * Blokuj wszystkie pozostałe ruch przychodzący z odmowy wszystkie reguły.
 
 * Zezwalaj na ruch wychodzący do Internetu dla wszystkich miejsc docelowych.
+
+**Q. Można użyć tego samego portu w przypadku odbiorników połączonej publiczny i prywatny?**
+
+Nie. Takie rozwiązanie nie jest obsługiwane.
 
 ## <a name="performance"></a>Wydajność
 

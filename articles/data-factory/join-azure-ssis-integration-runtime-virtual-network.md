@@ -3,28 +3,29 @@ title: Dołącz do sieci wirtualnej środowiska uruchomieniowego integracji usł
 description: Dowiedz się, jak sprzęgać środowiska uruchomieniowego integracji usług SSIS Azure z sieci wirtualnej platformy Azure.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/29/2018
-ms.author: douglasl
-ms.openlocfilehash: 344bd9beff03f423d3dc3431dec56334e721d811
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.date: 06/13/2018
+author: swinarko
+ms.author: sawinark
+ms.reviewer: douglasl
+manager: craigg
+ms.openlocfilehash: fa496271d949f131da53a4cdab0f3b9a15e82007
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298070"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36268143"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Dołącz do środowiska uruchomieniowego integracji usług SSIS Azure do sieci wirtualnej
 Dołącz do programu Azure SSIS integracji runtime (IR) do sieci wirtualnej platformy Azure w następujących scenariuszach: 
 
 - Chcesz połączyć się z lokalnymi magazynami danych z pakietów usług SSIS działającymi w środowisku Azure SSIS Integration Runtime.
 
-- Obsługiwana baza danych SQL Server Integration Services (SSIS) katalogu w wystąpieniu usługi Azure SQL bazy danych zarządzanych (wersja zapoznawcza) w sieci wirtualnej.
+- Obsługiwana baza danych katalogu usług SQL Server Integration Services (SSIS) w bazie danych SQL Azure z punktów końcowych usługi sieci wirtualnej/zarządzane wystąpienia (wersja zapoznawcza).
 
  Fabryka danych Azure w wersji 2 (wersja zapoznawcza) umożliwia dołączenie Twojego środowiska uruchomieniowego integracji usług SSIS Azure do sieci wirtualnej, która została utworzona za pośrednictwem klasycznego modelu wdrażania lub modelu wdrażania usługi Azure Resource Manager. 
 
@@ -41,18 +42,17 @@ Oto kilka ważnych kwestii, które należy pamiętać:
 - W przypadku istniejącej sieci wirtualnej klasycznego podłączone do sieci lokalnej w innej lokalizacji z Twojej IR Azure SSIS, można najpierw utworzyć [klasycznej sieci wirtualnej](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) dla Twojego IR Azure SSIS do przyłączenia. Następnie należy skonfigurować [klasycznego do klasycznej sieci wirtualnej](../vpn-gateway/vpn-gateway-howto-vnet-vnet-portal-classic.md) połączenia. Lub można utworzyć [sieci wirtualnej Azure Resource Manager](../virtual-network/quick-create-portal.md#create-a-virtual-network) Twojego środowiska uruchomieniowego integracji Azure SSIS do przyłączenia. Następnie skonfiguruj [sieci wirtualnej klasycznego do usługi Azure Resource Manager](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md) połączenia.
 - W przypadku istniejącego Menedżera zasobów Azure sieci wirtualnej podłączone do sieci lokalnej w innej lokalizacji z Twojej IR Azure SSIS, można najpierw utworzyć [sieci wirtualnej Azure Resource Manager](../virtual-network/quick-create-portal.md##create-a-virtual-network) dla usług Azure-SSIS IR do przyłączenia. Skonfiguruj połączenie wirtualnej sieci usługi Azure Resource Manager do usługi Azure Resource Manager. Można utworzyć [klasycznej sieci wirtualnej](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) dla Twojego IR Azure SSIS do przyłączenia. Następnie należy skonfigurować [sieci wirtualnej klasycznego do usługi Azure Resource Manager](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md) połączenia.
 
-## <a name="host-the-ssis-catalog-database-on-azure-sql-database-managed-instance"></a>Bazę danych usług SSIS katalogu wystąpienia zarządzane bazy danych SQL Azure 
-Jeżeli katalog SSIS znajduje się w wystąpieniu zarządzane bazy danych SQL (wersja zapoznawcza) w sieci wirtualnej, możesz także dołączyć do IR Azure SSIS, aby:
+## <a name="host-the-ssis-catalog-database-in-azure-sql-database-with-virtual-network-service-endpointsmanaged-instance-preview"></a>Bazę danych usług SSIS katalogu w bazie danych SQL Azure z punktów końcowych usługi sieci wirtualnej/zarządzane wystąpienia (wersja zapoznawcza)
+Jeżeli katalogu SSIS znajduje się w bazie danych SQL Azure z punktów końcowych usługi sieci wirtualnej/zarządzane wystąpienia (wersja zapoznawcza), może dołączyć do Twojej IR Azure SSIS do:
 
-- Tej samej sieci wirtualnej.
-- Inną sieć wirtualną mającą połączenie siecią sieci z jedną, która ma wystąpienia zarządzane bazy danych SQL (wersja zapoznawcza). 
+- Tej samej sieci wirtualnej
+- Innej sieci wirtualnej, która ma połączenie z siecią sieci o tym, który jest używany w bazie danych SQL Azure z punktów końcowych usługi sieci wirtualnej/zarządzane wystąpienia (wersja zapoznawcza)
 
-Sieć wirtualną można wdrożyć przy użyciu klasycznego modelu wdrażania lub modelu wdrażania usługi Azure Resource Manager. Jeśli planujesz przyłączyć IR Azure SSIS *tej samej sieci wirtualnej* zawierającego wystąpienia zarządzane bazy danych SQL (wersja zapoznawcza), upewnij się, że IR Azure SSIS znajduje się w *innej podsieci* z jedną, która ma SQL Zarządzane wystąpienia bazy danych (wersja zapoznawcza).   
+Sieć wirtualną można wdrożyć przy użyciu klasycznego modelu wdrażania lub modelu wdrażania usługi Azure Resource Manager. Jeśli planujesz przyłączyć Twojej IR Azure SSIS do *tej samej sieci wirtualnej* jest już dołączona przez wystąpienie zarządzane (wersja zapoznawcza), upewnij się, że Twoje IR Azure SSIS znajduje się w *innej podsieci* niż używana dla wystąpienia zarządzanego (wersja zapoznawcza).   
 
 Więcej informacji można znaleźć w poniższych sekcjach.
 
 ## <a name="requirements-for-virtual-network-configuration"></a>Wymagania dotyczące konfiguracji sieci wirtualnej
-
 -   Upewnij się, że `Microsoft.Batch` zarejestrowanego dostawcę w ramach subskrypcji obsługującego IR. Azure SSIS podsieć sieci wirtualnej Jeśli używasz klasycznej sieci wirtualnej również dołączyć `MicrosoftAzureBatch` do roli klasycznego współautora maszyny wirtualnej dla tej sieci wirtualnej.
 
 -   Wybierz odpowiednie podsieci do obsługi podczerwieni Azure SSIS. Zobacz [wybrać podsieć](#subnet).
@@ -61,7 +61,7 @@ Więcej informacji można znaleźć w poniższych sekcjach.
 
 -   Jeśli korzystasz z grupy zabezpieczeń sieci (NSG) w tej podsieci, zobacz [grupy zabezpieczeń sieci](#nsg)
 
--   Jeśli używasz Azure Express Route lub konfiguracji użytkownika zdefiniowanych tras przez, zobacz [używana usługa Azure ExpressRoute lub trasy zdefiniowany przez użytkownika](#route).
+-   Jeśli są przy użyciu Azure Express Route lub konfigurowania użytkowników zdefiniowanych tras przez, zobacz [używana usługa Azure ExpressRoute lub trasy zdefiniowany przez użytkownika](#route).
 
 -   Upewnij się, grupy zasobów w sieci wirtualnej może tworzyć i usuwać określonych zasobów sieci platformy Azure. Zobacz [wymagania dla grupy zasobów](#resource-group).
 
@@ -70,7 +70,7 @@ Więcej informacji można znaleźć w poniższych sekcjach.
 
 -   Upewnij się, że podsieci, którą wybierzesz ma wystarczającą ilość miejsca dostępnego adresu na IR Azure SSIS do użycia. Pozostaw co najmniej 2 * numer węzła IR w dostępnych adresów IP. Azure rezerwuje niektórych adresów IP w każdej podsieci, a nie można użyć tych adresów. Imię i nazwisko adresów IP podsieci są zastrzeżone dla protokołu zgodność, wraz z trzech więcej adresów używanych na potrzeby usług Azure. Aby uzyskać więcej informacji, zobacz [istnieją wszystkie ograniczenia dotyczące używania adresów IP w ramach tych podsieci?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets).
 
--   Nie używaj podsieci, które wyłącznie jest zajęta przez inne usługi platformy Azure (na przykład wystąpienia bazy danych SQL zarządzane, usługi App Service).
+-   Nie używaj podsieci, które wyłącznie jest zajęta przez inne usługi platformy Azure (na przykład wystąpienia zarządzane bazy danych SQL (wersja zapoznawcza), usługi aplikacji, itp.).
 
 ### <a name="dns_server"></a> Serwer usługi nazw domeny 
 Jeśli należy użyć serwera usługi nazw domen (DNS) w sieci wirtualnej dołączane za pomocą Twojego środowiska uruchomieniowego integracji usług SSIS Azure, upewnij się, można rozwiązać nazwy publicznej Azure hosta (na przykład nazwą obiektu blob magazynu Azure, `<your storage account>.blob.core.windows.net`).
@@ -90,11 +90,10 @@ Jeśli musisz wdrożyć grupę zabezpieczeń sieci (NSG) w sieci wirtualnej doł
 |---|---|---|---|---|---|---|
 | Przychodzący | TCP | Internet | * | VirtualNetwork | 29876, 29877 (Jeśli dołączysz IR sieci wirtualnej platformy Azure Resource Manager) <br/><br/>10100, 20100, 30100 (Jeśli dołączysz IR klasycznej sieci wirtualnej)| Usługi fabryka danych te porty są używane do komunikacji z węzłami Twojego środowiska uruchomieniowego integracji usług SSIS Azure w sieci wirtualnej. <br/><br/> Czy lub nie określono grupy NSG, fabryki danych zawsze konfiguruje grupy NSG na poziomie kart interfejsu sieciowego (NIC) dołączonych do maszyn wirtualnych, które host podczerwieni Azure SSIS. Dozwolone jest tylko na ruch przychodzący z adresów IP fabryki danych. Nawet jeśli możesz otworzyć te porty, aby ruch internetowy, ruch sieciowy z adresów IP, które nie są adresami IP fabryki danych jest zablokowany na poziomie karty Sieciowej. |
 | Wychodzący | TCP | VirtualNetwork | * | Internet | 443 | Węzły sieci środowiska uruchomieniowego integracji usług SSIS Azure w sieci wirtualnej użyć tego portu dostępu do usług Azure, takich jak usługi Azure Storage i Azure Event Hubs. |
-| Wychodzący | TCP | VirtualNetwork | * | Internet lub Sql | 1433, 11000 11999, 14000 14999 | Węzły sieci środowiska uruchomieniowego integracji usług SSIS Azure w sieci wirtualnej umożliwia dostęp do bazy danych SSISDB obsługiwanych przez serwer bazy danych SQL Azure te porty. (Ten cel, nie ma zastosowania do wystąpienia zarządzane bazy danych SQL (wersja zapoznawcza) na użytek bazy danych SSISDB). |
+| Wychodzący | TCP | VirtualNetwork | * | Internet lub Sql | 1433, 11000 11999, 14000 14999 | Węzły sieci środowiska uruchomieniowego integracji usług SSIS Azure w przypadku użycia sieci wirtualnej, te porty, które mają dostęp do bazy danych SSISDB obsługiwanych przez serwer bazy danych SQL Azure - tego celu nie ma zastosowania do bazy danych SSISDB hostowane przez zarządzane wystąpienia (wersja zapoznawcza). |
 ||||||||
 
 ### <a name="route"></a> Użyj usługi Azure ExpressRoute lub trasy zdefiniowane przez użytkownika
-
 Możesz połączyć [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) obwód do infrastruktury sieci wirtualnej rozszerzenie sieci lokalnej na platformie Azure. 
 
 Typowa konfiguracja jest użycie tunelowania wymuszonego (anonsowanie trasy protokołu BGP, 0.0.0.0/0 do sieci wirtualnej) który wymusza wychodzący ruch internetowy pochodzący z przepływów sieci wirtualnej do lokalnego urządzenia sieci inspekcji i rejestrowania. Ten przepływ ruchu dzieli łączność między IR Azure SSIS w sieci wirtualnej z usług zależnych usługi fabryka danych Azure. Rozwiązanie jest określenie jednego (lub więcej) [trasy zdefiniowane przez użytkownika (Udr)](../virtual-network/virtual-networks-udr-overview.md) w podsieci, która zawiera podczerwieni Azure SSIS. PRZEZ definiuje tras specyficzne dla podsieci, które są honorowane zamiast trasy protokołu BGP.
@@ -138,9 +137,9 @@ Należy skonfigurować sieć wirtualną, zanim dołączysz IR Azure SSIS do nieg
 
    b. Wybierz subskrypcję. 
    
-   c. Wybierz **dostawców zasobów** po lewej stronie i upewnij się, że **Microsoft.Batch** zarejestrowanego dostawcy.     
+   c. Wybierz **dostawców zasobów** po lewej stronie i upewnij się, że **Microsoft.Batch** zarejestrowanego dostawcy.
       ![Potwierdzenie stanu "Zarejestrowanej"](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
-
+      
    Jeśli nie widzisz **Microsoft.Batch** na liście, aby zarejestrować go, [jest tworzone puste konto partii zadań Azure](../batch/batch-account-create-portal.md) w ramach subskrypcji. Później można usunąć go.
 
 ### <a name="use-the-portal-to-configure-a-classic-virtual-network"></a>Skonfiguruj sieć wirtualną klasycznego za pomocą portalu
@@ -150,40 +149,39 @@ Należy skonfigurować sieć wirtualną, zanim dołączysz IR Azure SSIS do nieg
 2. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 3. Wybierz **więcej usług**. Filtruj i wybierz **sieci wirtualnych (klasyczne)**.
 4. Filtruj i wybierz z listy sieci wirtualnej. 
-5. Na **sieć wirtualna (klasyczna)** wybierz pozycję **właściwości**. 
-
+5. Na **sieć wirtualna (klasyczna)** wybierz pozycję **właściwości**.
     ![Identyfikator zasobu klasycznej sieci wirtualnej](media/join-azure-ssis-integration-runtime-virtual-network/classic-vnet-resource-id.png)
-5. Wybierz przycisk kopia **identyfikator ZASOBU** można skopiować identyfikator zasobu sieci klasycznego do Schowka. Zapisz identyfikator ze Schowka w programie OneNote lub pliku.
-6. Wybierz **podsieci** w menu po lewej stronie. Upewnij się, że liczba **dostępnych adresów** jest większa niż w węzłach programu runtime integracji usług SSIS Azure.
-
+    
+6. Wybierz przycisk kopia **identyfikator ZASOBU** można skopiować identyfikator zasobu sieci klasycznego do Schowka. Zapisz identyfikator ze Schowka w programie OneNote lub pliku.
+7. Wybierz **podsieci** w menu po lewej stronie. Upewnij się, że liczba **dostępnych adresów** jest większa niż w węzłach programu runtime integracji usług SSIS Azure.
     ![Liczba dostępnych adresów w sieci wirtualnej](media/join-azure-ssis-integration-runtime-virtual-network/number-of-available-addresses.png)
-7. Dołącz **MicrosoftAzureBatch** do **klasycznego współautora maszyny wirtualnej** roli dla sieci wirtualnej.
+    
+8. Dołącz **MicrosoftAzureBatch** do **klasycznego współautora maszyny wirtualnej** roli dla sieci wirtualnej.
 
-    a. Wybierz **(IAM) kontroli dostępu** w menu po lewej stronie, a następnie wybierz **Dodaj** na pasku narzędzi. 
-       !["Kontrola dostępu" i "Dodaj" przycisków](media/join-azure-ssis-integration-runtime-virtual-network/access-control-add.png)
-
-    b. Na **dodać uprawnienia** wybierz pozycję **klasycznego współautora maszyny wirtualnej** dla **roli**. Wklej **ddbf3205-c6bd-46ae-8127-60eb93363864** w **wybierz** , a następnie wybierz **partia zadań Microsoft Azure** z listy wyników wyszukiwania.   
-       ![Wyniki wyszukiwania na stronie "Dodaj uprawnienia"](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
-
-    c. Wybierz **zapisać** Aby zapisać ustawienia i zamknąć stronę.  
-       ![Zapisz ustawienia dostępu](media/join-azure-ssis-integration-runtime-virtual-network/save-access-settings.png)
-
-    d. Upewnij się, że widoczny **partia zadań Microsoft Azure** na liście uczestników.  
-       ![Potwierdź dostęp partii zadań Azure](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-in-list.png)
-
-5. Upewnij się, że dostawca partii zadań Azure jest zarejestrowany w subskrypcji platformy Azure, który ma sieci wirtualnej. Lub zarejestruj dostawcę w partii zadań Azure. Jeśli masz już konto partii zadań Azure w ramach subskrypcji, subskrypcja jest zarejestrowana dla partii zadań Azure. (Jeśli tworzysz IR Azure SSIS w portalu usługi fabryka danych dostawcy partii zadań Azure jest automatycznie rejestrowana.)
+    a. Wybierz **(IAM) kontroli dostępu** w menu po lewej stronie, a następnie wybierz **Dodaj** na pasku narzędzi.
+      !["Kontrola dostępu" i "Dodaj" przycisków](media/join-azure-ssis-integration-runtime-virtual-network/access-control-add.png)
+      
+    b. Na **dodać uprawnienia** wybierz pozycję **klasycznego współautora maszyny wirtualnej** dla **roli**. Wklej **ddbf3205-c6bd-46ae-8127-60eb93363864** w **wybierz** , a następnie wybierz **partia zadań Microsoft Azure** z listy wyników wyszukiwania.
+      ![Wyniki wyszukiwania na stronie "Dodaj uprawnienia"](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
+      
+    c. Wybierz **zapisać** Aby zapisać ustawienia i zamknąć stronę.
+      ![Zapisz ustawienia dostępu](media/join-azure-ssis-integration-runtime-virtual-network/save-access-settings.png)
+      
+    d. Upewnij się, że widoczny **partia zadań Microsoft Azure** na liście uczestników.
+      ![Potwierdź dostęp partii zadań Azure](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-in-list.png)
+      
+9. Upewnij się, że dostawca partii zadań Azure jest zarejestrowany w subskrypcji platformy Azure, który ma sieci wirtualnej. Lub zarejestruj dostawcę w partii zadań Azure. Jeśli masz już konto partii zadań Azure w ramach subskrypcji, subskrypcja jest zarejestrowana dla partii zadań Azure. (Jeśli tworzysz IR Azure SSIS w portalu usługi fabryka danych dostawcy partii zadań Azure jest automatycznie rejestrowana.)
 
    a. W portalu Azure, wybierz **subskrypcje** w menu po lewej stronie.
 
    b. Wybierz subskrypcję.
 
-   c. Wybierz **dostawców zasobów** po lewej stronie i upewnij się, że **Microsoft.Batch** zarejestrowanego dostawcy.     
+   c. Wybierz **dostawców zasobów** po lewej stronie i upewnij się, że **Microsoft.Batch** zarejestrowanego dostawcy.
       ![Potwierdzenie stanu "Zarejestrowanej"](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
-
+      
    Jeśli nie widzisz **Microsoft.Batch** na liście, aby zarejestrować go, [jest tworzone puste konto partii zadań Azure](../batch/batch-account-create-portal.md) w ramach subskrypcji. Później można usunąć go. 
 
 ### <a name="join-the-azure-ssis-ir-to-a-virtual-network"></a>Dołącz IR Azure SSIS do sieci wirtualnej
-
 1. Uruchom Microsoft Edge lub Google Chrome. Obecnie interfejsu użytkownika z fabryki danych jest obsługiwana tylko w tych przeglądarek sieci web.
 2. W [portalu Azure](https://portal.azure.com), wybierz pozycję **fabryki danych** w menu po lewej stronie. Jeśli nie widzisz **fabryki danych** menu, wybierz **więcej usług**, a następnie wybierz polecenie **fabryki danych** w **analizy i analiza**sekcji. 
     
@@ -210,31 +208,29 @@ Należy skonfigurować sieć wirtualną, zanim dołączysz IR Azure SSIS do nieg
 
    a. Zaznacz pole wyboru dla **wybierz sieć wirtualną dla Twojego środowiska uruchomieniowego integracji Azure SSIS do przyłączania a Zezwalaj usługom platformy Azure można skonfigurować ustawienia uprawnień sieci wirtualnej**.
 
-   b. Aby uzyskać **typu**, określ, czy sieci wirtualnej jest klasycznej sieci wirtualnej lub sieci wirtualnej platformy Azure Resource Manager. 
+   b. Aby uzyskać **typu**wybierz, czy sieć wirtualna jest w klasycznej sieci wirtualnej lub sieci wirtualnej platformy Azure Resource Manager. 
 
    c. Aby uzyskać **nazwa sieci wirtualnej**, wybierz sieci wirtualnej.
 
    d. Aby uzyskać **nazwy podsieci**, wybierz podsieć w sieci wirtualnej.
 
-   e. Wybierz **aktualizacji**. 
+   e. Kliknij przycisk **weryfikacji sieci wirtualnej** i w razie powodzenia kliknij **aktualizacji**. 
 
    ![Zaawansowane ustawienia IR.](media/join-azure-ssis-integration-runtime-virtual-network/ir-setup-advanced-settings.png)
-8. Teraz, można uruchomić IR za pomocą **Start** przycisk **akcje** kolumny dla Twojego podczerwieni Azure SSIS. Trwa około 20 minut, aby rozpocząć podczerwieni Azure SSIS. 
-
+8. Teraz, można uruchomić IR za pomocą **Start** przycisk **akcje** kolumny dla Twojego podczerwieni Azure SSIS. Trwa około 20 – 30 minut, aby rozpocząć podczerwieni Azure SSIS. 
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
 ### <a name="configure-a-virtual-network"></a>Skonfiguruj sieć wirtualną
-Należy skonfigurować sieć wirtualną, zanim dołączysz IR Azure SSIS do niego. Aby automatycznie skonfigurować sieć wirtualną/ustawienia uprawnień dla Twojego środowiska uruchomieniowego integracji Azure SSIS można dołączyć do sieci wirtualnej, należy dodać następujący skrypt:
+Należy skonfigurować sieć wirtualną, zanim dołączysz Twojej IR Azure SSIS do niego. Aby automatycznie skonfigurować sieć wirtualną/ustawienia uprawnień dla Twojego środowiska uruchomieniowego integracji Azure SSIS można dołączyć do sieci wirtualnej, należy dodać następujący skrypt:
 
 ```powershell
-# Register to the Azure Batch resource provider
 # Make sure to run this script against the subscription to which the virtual network belongs.
 if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 {
+    # Register to the Azure Batch resource provider
     $BatchApplicationId = "ddbf3205-c6bd-46ae-8127-60eb93363864"
     $BatchObjectId = (Get-AzureRmADServicePrincipal -ServicePrincipalName $BatchApplicationId).Id
-
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
     while(!(Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Batch").RegistrationState.Contains("Registered"))
     {
@@ -259,15 +255,13 @@ Skrypt w [utworzyć środowiska uruchomieniowego integracji usług SSIS Azure](c
 3. Uruchom podczerwieni Azure SSIS. 
 
 ### <a name="define-the-variables"></a>Zdefiniuj zmienne
-
 ```powershell
-$ResourceGroupName = "<Azure resource group name>"
-$DataFactoryName = "<Data factory name>" 
-$AzureSSISName = "<Specify Azure-SSIS IR name>"
-## These two parameters apply if you are using a virtual network and Azure SQL Database Managed Instance (Preview) 
-# Specify information about your classic or Azure Resource Manager virtual network.
-$VnetId = "<Name of your Azure virtual network>"
-$SubnetName = "<Name of the subnet in the virtual network>"
+$ResourceGroupName = "<your Azure resource group name>"
+$DataFactoryName = "<your Data Factory name>" 
+$AzureSSISName = "<your Azure-SSIS IR name>"
+# Specify the information about your classic or Azure Resource Manager virtual network.
+$VnetId = "<your Azure virtual network resource ID>"
+$SubnetName = "<the name of subnet in your virtual network>"
 ```
 
 ### <a name="stop-the-azure-ssis-ir"></a>Zatrzymaj IR Azure SSIS
@@ -275,18 +269,19 @@ Zatrzymać środowiska uruchomieniowego integracji usług SSIS Azure, zanim moż
 
 ```powershell
 Stop-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
-                                             -DataFactoryName $DataFactoryName `
-                                             -Name $AzureSSISName `
-                                             -Force 
+                                            -DataFactoryName $DataFactoryName `
+                                            -Name $AzureSSISName `
+                                            -Force 
 ```
-### <a name="configure-virtual-network-settings-for-the-azure-ssis-ir-to-join"></a>Konfigurowanie ustawień sieci wirtualnej dla IR Azure SSIS dołączyć
 
+### <a name="configure-virtual-network-settings-for-the-azure-ssis-ir-to-join"></a>Konfigurowanie ustawień sieci wirtualnej dla IR Azure SSIS dołączyć
 ```powershell
-# Register to the Azure Batch resource provider
 # Make sure to run this script against the subscription to which the virtual network belongs.
 if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 {
-    $BatchObjectId = (Get-AzureRmADServicePrincipal -ServicePrincipalName "MicrosoftAzureBatch").Id
+    # Register to the Azure Batch resource provider
+    $BatchApplicationId = "ddbf3205-c6bd-46ae-8127-60eb93363864"
+    $BatchObjectId = (Get-AzureRmADServicePrincipal -ServicePrincipalName $BatchApplicationId).Id
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
     while(!(Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Batch").RegistrationState.Contains("Registered"))
     {
@@ -304,12 +299,12 @@ if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 Aby skonfigurować dołączyć do sieci wirtualnej środowiska uruchomieniowego integracji usług SSIS Azure, uruchom `Set-AzureRmDataFactoryV2IntegrationRuntime` polecenia: 
 
 ```powershell
-Set-AzureRmDataFactoryV2IntegrationRuntime  -ResourceGroupName $ResourceGroupName `
-                                            -DataFactoryName $DataFactoryName `
-                                            -Name $AzureSSISName `
-                                            -Type Managed `
-                                            -VnetId $VnetId `
-                                            -Subnet $SubnetName
+Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+                                           -DataFactoryName $DataFactoryName `
+                                           -Name $AzureSSISName `
+                                           -Type Managed `
+                                           -VnetId $VnetId `
+                                           -Subnet $SubnetName
 ```
 
 ### <a name="start-the-azure-ssis-ir"></a>Uruchom IR Azure SSIS
@@ -322,13 +317,14 @@ Start-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupNa
                                              -Force
 
 ```
+
 To polecenie pobiera 20-30 minut.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać informacje o środowisku uruchomieniowym usług SSIS Azure zobacz następujące tematy: 
 
 - [Środowisko uruchomieniowe integracji usług SSIS Azure](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ten artykuł zawiera informacje o pojęciach dotyczących środowiska uruchomieniowe integracji ogólnie rzecz biorąc, w tym IR. Azure SSIS 
-- [Samouczek: Wdrażanie pakietów usług SSIS na platformie Azure](tutorial-create-azure-ssis-runtime-portal.md). Ten artykuł zawiera szczegółowe instrukcje dotyczące tworzenia podczerwieni Azure SSIS. Używa bazy danych Azure SQL do hostowania katalogu usług SSIS. 
-- [Create an Azure-SSIS integration runtime (Tworzenie środowiska Azure-SSIS Integration Runtime)](create-azure-ssis-integration-runtime.md) W tym artykule rozszerzenie samouczka i zawiera instrukcje dotyczące przy użyciu usługi Azure bazy danych zarządzanych wystąpienia SQL (wersja zapoznawcza) i dołączenie IR do sieci wirtualnej. 
+- [Samouczek: Wdrażanie pakietów usług SSIS na platformie Azure](tutorial-create-azure-ssis-runtime-portal.md). Ten artykuł zawiera szczegółowe instrukcje dotyczące tworzenia podczerwieni Azure SSIS. Używa bazy danych SQL Azure do hostowania katalogu usług SSIS. 
+- [Create an Azure-SSIS integration runtime (Tworzenie środowiska Azure-SSIS Integration Runtime)](create-azure-ssis-integration-runtime.md) W tym artykule rozszerzenie samouczka i zawiera instrukcje dotyczące przy użyciu bazy danych SQL Azure z punktów końcowych usługi sieci wirtualnej/zarządzane wystąpienia (wersja zapoznawcza) na potrzeby hostowania katalogu SSIS i przyłączanie do IR do sieci wirtualnej. 
 - [Monitor an Azure-SSIS IR (Monitorowanie środowiska Azure-SSIS IR)](monitor-integration-runtime.md#azure-ssis-integration-runtime). W tym artykule przedstawiono sposób pobierania informacji o środowisku Azure-SSIS IR i opisów stanów w pobranych informacjach. 
 - [Manage an Azure-SSIS IR (Zarządzanie środowiskiem Azure-SSIS IR)](manage-azure-ssis-integration-runtime.md). W tym artykule przedstawiono sposób zatrzymywania, uruchamiania lub usuwania środowiska Azure-SSIS IR. On również pokazano, jak do skalowania w poziomie z IR Azure SSIS, dodając węzły. 

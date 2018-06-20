@@ -1,34 +1,29 @@
 ---
-title: Rozpoczynanie pracy z usługą Azure Data Lake Analytics przy użyciu programu Visual Studio | Microsoft Docs
+title: Rozpoczynanie pracy z usługą Azure Data Lake Analytics przy użyciu programu Visual Studio
 description: Poznaj sposoby instalowania narzędzi Data Lake Tools for Visual Studio oraz tworzenia i testowania skryptów U-SQL.
 services: data-lake-analytics
-documentationcenter: ''
-author: saveenr
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.service: data-lake-analytics
-ms.devlang: na
+author: saveenr
+ms.author: saveenr
+manager: kfile
+editor: jasonwhowell
+ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 05/02/2018
-ms.author: saveenr, yanacai
-ms.openlocfilehash: d0974e3258e0def09fe12d348180dcedf216401c
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 0acaace474d62f18b9b6ca4aaae324405a2f43db
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34735797"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>Tworzenie skryptów U-SQL przy użyciu narzędzi Data Lake Tools for Visual Studio
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-
 Poznaj sposoby tworzenia kont usługi Azure Data Lake Analytics przy użyciu programu Visual Studio, definiowania zadań w języku [U-SQL](data-lake-analytics-u-sql-get-started.md) oraz przesyłania zadań do usługi Data Lake Analytics. Więcej informacji na temat usługi Data Lake Analytics można znaleźć w artykule [Omówienie usługi Azure Data Lake Analytics](data-lake-analytics-overview.md).
 
 >[!IMPORTANT]
->
->W ramach przygotowania do wprowadzenia nowego Ogólnego rozporządzenia o ochronie danych (RODO), które zacznie obowiązywać od 25 maja 2018 r., zaleca się, aby użytkownicy narzędzi Azure Data Lake Tools for Visual Studio uaktualnili je do wersji 2.3.3000.4 lub nowszej. Ta wersja obejmuje zmiany oparte na najnowszych wymaganiach dotyczących ochrony danych. Należy pamiętać, że poprzednie wersje są niedostępne do pobrania i przestarzałe. 
+> Firma Microsoft zaleca uaktualnienie do narzędzi Azure Data Lake Tools for Visual Studio w wersji 2.3.3000.4 lub nowszej. Poprzednie wersje są niedostępne do pobrania i przestarzałe. 
 >
 >**Co muszę zrobić?**
 >
@@ -52,19 +47,7 @@ Poznaj sposoby tworzenia kont usługi Azure Data Lake Analytics przy użyciu pro
 
 ## <a name="install-azure-data-lake-tools-for-visual-studio"></a>Instalowanie narzędzi Azure Data Lake Tools for Visual Studio
 
-### <a name="install-azure-data-lake-tools-for-visual-studio-2017"></a>Instalowanie narzędzi Azure Data Lake Tools for Visual Studio 2017
-
-Narzędzia Azure Data Lake Tools for Visual Studio są obsługiwane w programie Visual Studio 2017 15.3 lub nowszym. Narzędzia te stanowią część obciążeń **Magazyn danych i przetwarzanie** oraz **Tworzenie aplikacji na platformie Azure** w instalatorze programu Visual Studio. Włącz jedno z tych dwóch obciążeń w ramach instalacji programu Visual Studio.  
-
-Włącz obciążenie **Magazyn danych i przetwarzanie** w następujący sposób: ![Włączanie obciążenia Magazyn danych i przetwarzanie](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-01.png)
-
-Włącz obciążenie **Tworzenie aplikacji na platformie Azure** w następujący sposób: ![Włączanie obciążenia Tworzenie aplikacji na platformie Azure](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-02.png)
-
-### <a name="install-azure-data-lake-tools-for-visual-studio-2013-and-2015"></a>Instalowanie narzędzi Azure Data Lake Tools for Visual Studio w wersji 2013 i 2015
-
-Narzędzia Azure Data Lake Tools for Visual Studio możesz pobrać i zainstalować [z Centrum pobierania](http://aka.ms/adltoolsvs). Po instalacji pamiętaj, że:
-* Węzeł **Eksplorator serwera** > **Azure** zawiera węzeł **Data Lake Analytics**. 
-* Menu **Narzędzia** zawiera element **Data Lake**.
+Ten samouczek wymaga zainstalowania narzędzi Data Lake Tools for Visual Studio. Postępuj zgodnie z [instrukcjami instalacji](data-lake-analytics-data-lake-tools-install.md).
 
 ## <a name="connect-to-an-azure-data-lake-analytics-account"></a>Łączenie z kontem usługi Azure Data Lake Analytics
 

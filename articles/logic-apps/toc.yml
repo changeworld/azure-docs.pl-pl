@@ -290,6 +290,13 @@
           href: logic-apps-enterprise-integration-b2b.md
 - name: Dokumentacja
   items:
+    - name: Wzorce architektury
+      href: logic-apps-architectures-simple-enterprise-integration.md
+      items:
+        - name: Prosta integracja dla przedsiębiorstw
+          href: logic-apps-architectures-simple-enterprise-integration.md
+        - name: Integracja dla przedsiębiorstw z kolejkami i ze zdarzeniami
+          href: logic-apps-architectures-enterprise-integration-with-queues-events.md
     - name: Łączniki — pełne szczegóły
       href: 'https://docs.microsoft.com/connectors/'
     - name: Limity i konfiguracja

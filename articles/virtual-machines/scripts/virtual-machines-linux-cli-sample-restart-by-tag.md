@@ -16,11 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: a9f7cf8ba492004cb6d9e359bfb392448dfbe813
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 4c409dfcfba14093d5e2cf28df4bb6c5d1bd9533
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725976"
 ---
 # <a name="restart-vms"></a>Ponowne uruchamianie maszyn wirtualnych
 
@@ -42,7 +43,7 @@ Drugi sposób powoduje pobranie oznakowanych maszyn wirtualnych przy użyciu pol
 az vm restart --ids $(az resource list --tag "restart-tag" --query "[?type=='Microsoft.Compute/virtualMachines'].id" -o tsv)
 ```
 
-Ten przykład działa w powłoce Bash. Aby uzyskać informacje na temat opcji uruchamiania skryptów interfejsu wiersza polecenia platformy Azure w ramach klienta systemu Windows, zobacz [Running the Azure CLI in Windows (Uruchamianie interfejsu wiersza polecenia platformy Azure w systemie Windows)](../windows/cli-options.md).
+Ten przykład działa w powłoce Bash. Aby uzyskać informacje na temat opcji uruchamiania skryptów interfejsu wiersza polecenia platformy Azure w ramach klienta systemu Windows, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure w systemie Windows](/cli/azure/install-azure-cli-windows).
 
 
 ## <a name="sample-script"></a>Przykładowy skrypt

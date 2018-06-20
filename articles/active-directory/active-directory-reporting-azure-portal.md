@@ -3,25 +3,25 @@ title: Raporty usługi Azure Active Directory | Microsoft Docs
 description: Zawiera ogólne omówienie raportów usługi Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: 6141a333-38db-478a-927e-526f1e7614f4
 ms.service: active-directory
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 01/15/2018
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 816caf0e65520c1f6fede55b522681ae0a46f955
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 1bcd7f9e0a134173a8942b71259428a720a3d076
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34588560"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222505"
 ---
 # <a name="azure-active-directory-reporting"></a>Raporty w usłudze Azure Active Directory
 
@@ -104,7 +104,7 @@ Aby uzyskać dostęp do raportu działań związanych z logowaniem, dzierżawa m
 Oprócz interfejsu użytkownika funkcja raportowania w usłudze Azure Active Directory zapewnia [dostęp programowy ](active-directory-reporting-api-getting-started-azure-portal.md) do danych raportów. Dane z tych raportów mogą być bardzo przydatne w aplikacjach, takich jak systemy SIEM oraz narzędzia do inspekcji i analizy biznesowej. Interfejsy API raportów usługi Azure AD umożliwiają dostęp programowy do danych za pomocą zestawu interfejsów API opartych na architekturze REST. Te interfejsy API można wywoływać przy użyciu różnych języków i narzędzi do programowania. 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Jeśli chcesz dowiedzieć się więcej o różnych typach raportów w usłudze Azure Active Directory, zobacz:
 

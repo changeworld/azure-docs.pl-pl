@@ -1,108 +1,105 @@
 ---
-title: Wyeksportowanie certyfikatów emulatora DB rozwiązania Cosmos Azure | Dokumentacja firmy Microsoft
-description: Podczas tworzenia w językach i środowisk uruchomieniowych, który nie należy używać magazynu certyfikatów systemu Windows należy wyeksportować i zarządzanie certyfikatami SSL. Ten wpis zawiera instrukcje krok po kroku.
+title: Eksportowanie certyfikatów emulatora usługi Azure Cosmos DB | Microsoft Docs
+description: W przypadku programowania w językach i środowiskach uruchomieniowych, które nie korzystają z magazynu certyfikatów systemu Windows, należy wyeksportować certyfikaty SSL i zarządzać nimi. Ten wpis zawiera instrukcje krok po kroku.
 services: cosmos-db
-documentationcenter: ''
-keywords: Emulator usługi Azure rozwiązania Cosmos bazy danych
+keywords: Emulator usługi Azure Cosmos DB
 author: voellm
 manager: kfile
 editor: ''
-ms.assetid: ef43deda-c2e9-4193-99e2-7f6a88a0319f
 ms.service: cosmos-db
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.devlang: na
+ms.topic: tutorial
 ms.date: 06/06/2017
 ms.author: tvoellm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 87d453cd544b3e913209f50e4e08b77282efab39
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 5fce6553ce7407f892ed1de1f71bc812798f91c0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34611810"
 ---
-# <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Wyeksportowanie certyfikatów emulatora DB rozwiązania Cosmos Azure do użycia z programem Java, Python i Node.js
+# <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Eksportowanie certyfikatów emulatora usługi Azure Cosmos DB do użycia w językach Java, Python i Node.js
 
-[**Pobierz Emulator**](https://aka.ms/cosmosdb-emulator)
+[**Pobieranie emulatora**](https://aka.ms/cosmosdb-emulator)
 
-Emulator DB rozwiązania Cosmos Azure zapewnia środowisko lokalne, które emuluje usługę Azure DB rozwiązania Cosmos do celów programistycznych, łącznie z jej użycie połączenia SSL. Ten wpis pokazano, jak można wyeksportować certyfikaty SSL dla języków i środowisk uruchomieniowych, który nie jest integrowana z magazynu certyfikatów systemu Windows, takich jak Java, który używa własnego [magazyn certyfikatów](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html) i języka Python, który używa [gniazda otoki](https://docs.python.org/2/library/ssl.html) i Node.js, który używa [tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback). Więcej o emulatora w [użyć emulatora DB rozwiązania Cosmos Azure do programowania i testowania](./local-emulator.md).
+Emulator usługi Azure Cosmos DB zapewnia środowisko lokalne, które emuluje usługę Azure Cosmos DB do celów programistycznych, w tym jej użycie połączeń SSL. W tym wpisie przedstawiono sposób eksportowania certyfikatów SSL do użycia w językach i środowiskach uruchomieniowych, które nie są zintegrowane z magazynem certyfikatów systemu Windows, takich jak język Java, który używa własnego [magazynu certyfikatów](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html), język Python, który używa [otok gniazda](https://docs.python.org/2/library/ssl.html), i środowisko Node.js, które używa klasy [tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback). Więcej informacji na temat emulatora zawiera artykuł [Use the Azure Cosmos DB Emulator for development and testing](./local-emulator.md) (Korzystanie z emulatora usługi Azure Cosmos DB na potrzeby programowania i testowania).
 
 Ten samouczek obejmuje następujące zadania:
 
 > [!div class="checklist"]
-> * Obracanie certyfikatów
-> * Eksportowanie certyfikatu protokołu SSL
-> * Poznanie certyfikatu w języku Java, Python i Node.js
+> * Wymiana certyfikatów
+> * Eksportowanie certyfikatu SSL
+> * Poznanie sposobu używania certyfikatu w środowiskach Java, Python i Node.js
 
-## <a name="certification-rotation"></a>Obracanie certyfikacji
+## <a name="certification-rotation"></a>Wymiana certyfikatów
 
-Certyfikaty w lokalnym emulatorze DB rozwiązania Cosmos Azure są generowane podczas pierwszego uruchomienia emulator. Istnieją dwa certyfikaty. Jeden używane do łączenia z lokalnym emulatorze i jeden do zarządzania kluczy tajnych w emulatorze. Certyfikat, który chcesz wyeksportować jest certyfikatu połączenia z przyjazną nazwą "DocumentDBEmulatorCertificate".
+Certyfikaty w lokalnym emulatorze usługi Azure Cosmos DB są generowane podczas pierwszego uruchomienia emulatora. Istnieją dwa certyfikaty. Jeden używany do nawiązywania połączenia z lokalnym emulatorem i jeden do zarządzania wpisami tajnymi w emulatorze. Certyfikat, który chcesz wyeksportować, to certyfikat połączenia z przyjazną nazwą „DocumentDBEmulatorCertificate”.
 
-Oba certyfikaty mogą zostać wygenerowane ponownie, klikając **Resetuj dane** w sposób przedstawiony poniżej z emulatora DB rozwiązania Cosmos Azure działa w na pasku zadań systemu Windows. Ponowne generowanie certyfikatów i ich instalacji do magazynu certyfikatów Java lub używać ich w innym miejscu należy zaktualizować je, w przeciwnym razie aplikacji już nie będzie łączyć się emulatora lokalnego.
+Oba certyfikaty można wygenerować ponownie, klikając pozycję **Reset Data** (Resetuj dane) w emulatorze usługi Azure Cosmos DB uruchomionym w obszarze powiadomień systemu Windows. Jeśli certyfikaty zostaną ponownie wygenerowane i zainstalowane w magazynie certyfikatów języka Java lub użyte w innym miejscu, konieczne będzie ich zaktualizowanie, ponieważ w przeciwnym razie aplikacja nie będzie już nawiązywała połączenia z lokalnym emulatorem.
 
-![Resetuj Azure DB rozwiązania Cosmos emulatora lokalne dane](./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png)
+![Resetowanie danych lokalnego emulatora usługi Azure Cosmos DB](./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png)
 
-## <a name="how-to-export-the-azure-cosmos-db-ssl-certificate"></a>Jak wyeksportować certyfikat protokołu SSL DB rozwiązania Cosmos Azure
+## <a name="how-to-export-the-azure-cosmos-db-ssl-certificate"></a>Jak wyeksportować SSL usługi Azure Cosmos DB
 
-1. Uruchom Menedżera certyfikatów systemu Windows przez systemem certlm.msc i przejdź do folderu certyfikatów osobiste-> i otwórz certyfikat o przyjaznej nazwie **DocumentDbEmulatorCertificate**.
+1. Uruchom menedżera certyfikatów systemu Windows, uruchamiając plik certlm.msc, przejdź do folderu Osobiste->Certyfikaty i otwórz certyfikat o przyjaznej nazwie **DocumentDbEmulatorCertificate**.
 
-    ![Krok 1 eksportu Azure emulator lokalnej bazy danych rozwiązania Cosmos](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-1.png)
+    ![Eksportowanie lokalnego emulatora usługi Azure Cosmos DB — krok 1](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-1.png)
 
-2. Polecenie **szczegóły** następnie **OK**.
+2. Kliknij pozycję **Szczegóły**, a następnie przycisk **OK**.
 
-    ![Krok 2 wyeksportować Azure emulator lokalnej bazy danych rozwiązania Cosmos](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png)
+    ![Eksportowanie lokalnego emulatora usługi Azure Cosmos DB — krok 2](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png)
 
-3. Kliknij przycisk **Kopiuj do pliku...** .
+3. Kliknij pozycję **Kopiuj do pliku...**.
 
-    ![Krok 3 wyeksportować Azure emulator lokalnej bazy danych rozwiązania Cosmos](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png)
+    ![Eksportowanie lokalnego emulatora usługi Azure Cosmos DB — krok 3](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png)
 
 4. Kliknij przycisk **Dalej**.
 
-    ![Krok 4 wyeksportować Azure emulator lokalnej bazy danych rozwiązania Cosmos](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png)
+    ![Eksportowanie lokalnego emulatora usługi Azure Cosmos DB — krok 4](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png)
 
-5. Kliknij przycisk **nie eksportuj klucza prywatnego**, następnie kliknij przycisk **dalej**.
+5. Kliknij pozycję **Nie eksportuj klucza prywatnego**, a następnie kliknij przycisk **Dalej**.
 
-    ![Krok 5 wyeksportować Azure emulator lokalnej bazy danych rozwiązania Cosmos](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png)
+    ![Eksportowanie lokalnego emulatora usługi Azure Cosmos DB — krok 5](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png)
 
-6. Polecenie **certyfikat x.509 szyfrowany algorytmem Base-64 (. CER)** , a następnie **dalej**.
+6. Kliknij pozycję **Certyfikat X.509 szyfrowany algorytmem Base-64 (.CER)**, a następnie przycisk **Dalej**.
 
-    ![Krok 6 wyeksportować Azure emulator lokalnej bazy danych rozwiązania Cosmos](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png)
+    ![Eksportowanie lokalnego emulatora usługi Azure Cosmos DB — krok 6](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png)
 
-7. Nadaj nazwę certyfikatu. W takim przypadku **documentdbemulatorcert** , a następnie kliknij przycisk **dalej**.
+7. Nadaj certyfikatowi nazwę. W tym przypadku wpisz nazwę **documentdbemulatorcert**, a następnie kliknij przycisk **Dalej**.
 
-    ![Krok 7 wyeksportować Azure emulator lokalnej bazy danych rozwiązania Cosmos](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png)
+    ![Eksportowanie lokalnego emulatora usługi Azure Cosmos DB — krok 7](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png)
 
 8. Kliknij przycisk **Zakończ**.
 
-    ![Krok 8 wyeksportować Azure emulator lokalnej bazy danych rozwiązania Cosmos](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png)
+    ![Eksportowanie lokalnego emulatora usługi Azure Cosmos DB — krok 8](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png)
 
-## <a name="how-to-use-the-certificate-in-java"></a>Sposób użycia certyfikatu w języku Java
+## <a name="how-to-use-the-certificate-in-java"></a>Sposób użycia certyfikatu w środowisku Java
 
-Podczas uruchamiania aplikacji Java lub aplikacji bazy danych MongoDB, które używają klienta Java łatwiej Zainstaluj certyfikat w domyślnym magazynie certyfikatów Java niż przekazywanie "-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword = "<password>" flag. Na przykład dołączonej [aplikacji Java pokaz](https://localhost:8081/_explorer/index.html) zależy od domyślnym magazynie certyfikatów.
+W przypadku uruchamiania aplikacji Java lub aplikacji MongoDB korzystających z klienta Java łatwiej jest zainstalować certyfikat w domyślnym magazynie certyfikatów Java niż przekazywać flagi "-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>". Na przykład dołączona [aplikacja demonstracyjna Java](https://localhost:8081/_explorer/index.html) zależy od domyślnego magazynu certyfikatów.
 
-Postępuj zgodnie z instrukcjami [Dodawanie certyfikatu do magazynu certyfikatów urzędu certyfikacji Java](https://docs.microsoft.com/azure/java-add-certificate-ca-store) można zaimportować certyfikatu X.509 w domyślnym magazynie certyfikatów Java. Zwróć Pamiętaj można pracować w katalogu % JAVA_HOME % podczas uruchamiania keytool.
+Postępuj zgodnie z instrukcjami w artykule [Dodawanie certyfikatu do magazynu certyfikatów Java CA](https://docs.microsoft.com/azure/java-add-certificate-ca-store), aby zaimportować certyfikat X.509 do domyślnego magazynu certyfikatów Java. Pamiętaj, że podczas uruchamiania narzędzia keytool będziesz pracować w katalogu %JAVA_HOME%.
 
-Po "CosmosDBEmulatorCertificate" SSL jest instalowany certyfikat aplikacji powinno być możliwe do nawiązywania połączeń i użyć lokalnego emulatora DB rozwiązania Cosmos Azure. Jeśli nadal występują problemy można wykonać [debugowania połączeń SSL/TLS](http://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/ReadDebug.html) artykułu. Jest bardzo prawdopodobne, certyfikat nie został zainstalowany w magazynie %JAVA_HOME%/jre/lib/security/cacerts. Na przykład, jeśli masz wiele zainstalowanych wersji programu Java aplikacji może używać magazynu cacerts innego niż zaktualizowane.
+Po zainstalowaniu certyfikatu SSL „CosmosDBEmulatorCertificate” aplikacja powinna być w stanie nawiązać połączenie z lokalnym emulatorem usługi Azure Cosmos DB i korzystać z niego. Jeśli nadal występują problemy, możesz wykonać czynności opisane w artykule [Debugowanie połączeń SSL/TLS](http://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/ReadDebug.html). Jest bardzo prawdopodobne, że certyfikat nie został zainstalowany w magazynie %JAVA_HOME%/jre/lib/security/cacerts. Na przykład jeśli masz wiele zainstalowanych wersji języka Java, aplikacja może używać innego magazynu cacerts niż ten, który został zaktualizowany.
 
-## <a name="how-to-use-the-certificate-in-python"></a>Sposób użycia certyfikatu w języku Python
+## <a name="how-to-use-the-certificate-in-python"></a>Sposób użycia certyfikatu w środowisku Python
 
-Domyślnie [Python SDK(version 2.0.0 or higher)](sql-api-sdk-python.md) interfejsu API SQL nie będą spróbuj i użyć certyfikatu SSL, podczas nawiązywania połączenia z lokalnym emulatora. Jeśli jednak chcesz używać protokołu SSL weryfikacji można wykonać w przykładach w [Python gniazda otoki](https://docs.python.org/2/library/ssl.html) dokumentacji.
+Domyślnie zestaw [SDK dla języka Python (wersja 2.0.0 lub nowsza)](sql-api-sdk-python.md) dla interfejsu API środowiska SQL nie będzie sprawdzać ani używać certyfikatu SSL podczas nawiązywania połączenia z lokalnym emulatorem. Jeśli jednak chcesz używać weryfikacji protokołu SSL, możesz skorzystać z przykładów w dokumentacji [Python socket wrappers](https://docs.python.org/2/library/ssl.html) (Otoki gniazd języka Python).
 
 ## <a name="how-to-use-the-certificate-in-nodejs"></a>Sposób użycia certyfikatu w środowisku Node.js
 
-Domyślnie [Node.js SDK(version 1.10.1 or higher)](sql-api-sdk-node.md) interfejsu API SQL nie będą spróbuj i użyć certyfikatu SSL, podczas nawiązywania połączenia z lokalnym emulatora. Jeśli jednak chcesz używać protokołu SSL weryfikacji można wykonać w przykładach w [dokumentacji Node.js](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback).
+Domyślnie zestaw [Node.js SDK (wersja 1.10.1 lub nowsza)](sql-api-sdk-node.md) dla interfejsu API środowiska SQL nie będzie sprawdzać ani używać certyfikatu SSL podczas nawiązywania połączenia z lokalnym emulatorem. Jeśli jednak chcesz używać weryfikacji protokołu SSL, możesz skorzystać z przykładów w [dokumentacji środowiska Node.js](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku wykonano następujące czynności:
 
 > [!div class="checklist"]
-> * Obrócony certyfikatów
-> * Wyeksportowany certyfikat SSL
-> * Przedstawiono sposób używania certyfikatu w języku Java, Python i Node.js
+> * Wymieniono certyfikaty
+> * Wyeksportowano certyfikat SSL
+> * Przedstawiono sposób używania certyfikatu w językach Java, Python i Node.js
 
-Możesz teraz przejść do tworzenia wyzwalacza HTTP funkcji Azure z bazy danych Azure rozwiązania Cosmos samouczek powiązania wejściowego.
+Możesz teraz przejść do samouczka Tworzenie wyzwalacza HTTP usługi Azure Functions przy użyciu powiązania danych wejściowych usługi Azure Cosmos DB.
 
 > [!div class="nextstepaction"]
-> [Tworzenie funkcji platformy Azure przy użyciu danych wejściowych z bazy danych usługi Azure rozwiązania Cosmos](tutorial-functions-http-trigger.md) 
+> [Tworzenie funkcji platformy Azure przy użyciu danych wyjściowych z usługi Azure Cosmos DB](tutorial-functions-http-trigger.md) 

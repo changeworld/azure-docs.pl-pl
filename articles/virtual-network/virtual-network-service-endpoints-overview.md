@@ -12,14 +12,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/04/2018
+ms.date: 06/06/2018
 ms.author: anithaa
 ms.custom: ''
-ms.openlocfilehash: 001aadc3dee03a9868a2a78e8dfc280d504633e1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f612eb9647bf64a9435b1c667700bf717d445931
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824690"
 ---
 # <a name="virtual-network-service-endpoints"></a>Punkty końcowe usługi sieci wirtualnej
 
@@ -31,6 +32,7 @@ Ta funkcja jest dostępna dla następujących regionów i usług platformy Azure
 - **Azure SQL Database**: ogólnie dostępna we wszystkich regionach świadczenia usługi Azure
 - **Azure Cosmos DB**: ogólnie dostępna we wszystkich regionach chmury publicznej Azure 
 - **Azure SQL Data Warehouse**: dostępna w wersji zapoznawczej we wszystkich regionach chmury publicznej Azure
+- **Usługi bazy danych platformy Azure dla baz danych PostgreSQL i MySQL**: dostępne w wersji zapoznawczej w tych regionach świadczenia usługi Azure, w których dostępna jest usługa bazy danych.
 
 Najbardziej aktualne powiadomienia można znaleźć na stronie [aktualizacji usługi Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
 
@@ -98,7 +100,7 @@ Po skonfigurowaniu punktów końcowych usługi do określonej usługi zweryfikuj
   - Wskazuje, że istnieje bardziej bezpośrednie — w porównaniu z trasami tunelowania wymuszanego — połączenie z usługą.
 
 >[!NOTE]
-> Trasy punktu końcowego usługi zastępują trasy BGP lub UDR dla dopasowania prefiksu adresu usługi platformy Azure. Dowiedz się więcej na temat [rozwiązywania problemów ze skutecznymi trasami](virtual-network-routes-troubleshoot-portal.md#using-effective-routes-to-troubleshoot-vm-traffic-flow)
+> Trasy punktu końcowego usługi zastępują trasy BGP lub UDR dla dopasowania prefiksu adresu usługi platformy Azure. Dowiedz się więcej na temat [rozwiązywania problemów ze skutecznymi trasami](diagnose-network-routing-problem.md)
 
 ## <a name="provisioning"></a>Inicjowanie obsługi
 

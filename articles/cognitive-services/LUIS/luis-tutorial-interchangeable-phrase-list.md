@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2017
 ms.author: v-geberr
-ms.openlocfilehash: 4ced7bcec87a9edde2e3ded8c8c61abe96003572
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: feb8acb674fd2dc62b62c26da6a6b42515f30242
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35356084"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36265975"
 ---
 # <a name="tutorial-add-phrase-list-to-improve-predictions"></a>Samouczek: Dodaj wyrażenie listy w celu poprawienia prognoz
 W tym samouczku, zwiększyć dokładność wyniki konwersji i zidentyfikować jednostek wyrazy, które mają takie samo znaczenie (synonimy), dodając wymienne [funkcja listy frazy](./luis-concept-feature.md).
@@ -33,7 +33,7 @@ W tym artykule należy bezpłatny [LUIS] [ LUIS] konta, aby można było tworzy�
 
 2. Zgodnie z opisem w [Utwórz aplikację](Create-new-app.md#import-new-app), zaimportuj plik do [LUIS] [ LUIS] witryny sieci Web jako nową aplikację. Nazwa aplikacji jest "Mój frazy samouczek." Składa się z lokalizacji docelowych, jednostki i zniesławiających. 
 
-3. [Train](luis-how-to-train.md) aplikacji. Dopiero po jego przygotowaniu nie [interaktywnie test](Train-Test.md#interactive-testing) w [LUIS] [ LUIS] witryny sieci Web. 
+3. [Train](luis-how-to-train.md) aplikacji. Dopiero po jego przygotowaniu nie [interaktywnie test](interactive-test.md#interactive-testing) w [LUIS] [ LUIS] witryny sieci Web. 
 
 4. Na [publikowania](PublishApp.md) wybierz pozycję **uwzględnianie wszystkich przewidzieć wyniki konwersji** pole wyboru. Po zaznaczeniu pola wyboru, zwracane są wszystkie opcje. Gdy pole wyboru jest wyczyszczone, jest zwracany top celem. 
 
@@ -174,7 +174,7 @@ Muszą uczyć LUIS *mają* i *wymagają* oznaczają to samo w tej domenie aplika
 5. W górnym pasku nawigacyjnym, wybierz **uczenia** do uczenia aplikacji, ale nie publikuj go. Masz teraz dwa modele. Możesz porównać wartości w obu modeli.
 
 ## <a name="compare-the-phrase-list-model-to-the-published-model"></a>Porównywanie modelu listy frazę do opublikowanego modelu
-W tej aplikacji opublikowanych modelu nie jest uczenia z synonimy. Aktualnie edytowany model zawiera listę frazy synonimów. Aby porównać modele, użyj [interakcyjne testowania](Train-Test.md#interactive-testing). 
+W tej aplikacji opublikowanych modelu nie jest uczenia z synonimy. Aktualnie edytowany model zawiera listę frazy synonimów. Aby porównać modele, użyj [interakcyjne testowania](interactive-test.md#interactive-testing). 
 
 1. Otwórz **testu** okienku, a następnie wprowadź następujące utterance:
 
@@ -196,7 +196,7 @@ Po dodaniu listy frazy większą dokładność utterance i **sprzętu** odnaleź
 | Obecnie edycji |✔| 0.92 | Podmiot sprzętu |
 
 > [!TIP]
-> * Za pomocą [interakcyjne testowania](Train-Test.md#interactive-testing), możesz porównać opublikowanego modelu do wszelkich przeszkolone zmian wprowadzonych po opublikowaniu. 
+> * Za pomocą [interakcyjne testowania](interactive-test.md#interactive-testing), możesz porównać opublikowanego modelu do wszelkich przeszkolone zmian wprowadzonych po opublikowaniu. 
 > * Za pomocą [testowania punktu końcowego](PublishApp.md#test-your-published-endpoint-in-a-browser), można wyświetlić dokładna reakcja LUIS JSON. 
 
 ## <a name="get-the-entity-score-with-the-endpoint-test"></a>Pobierz wynik jednostki z testem punktu końcowego
@@ -261,8 +261,6 @@ Gdy nie są już potrzebne, usunięcie aplikacji LUIS. Aby to zrobić, należy w
 > [!div class="nextstepaction"]
 > [Pobierz utterance prognozowania z zapytaniem punktu końcowego](luis-get-started-cs-get-intent.md)
 
-[LUIS]: luis-reference-regions.md
-
-  [LUIS]:luis-reference-regions.md
-  [LuisFeatures]: luis-concept-feature.md
-  [LuisSampleApp]:https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/phrase_list/interchangeable/luis-app-before-phrase-list.json
+[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+[LuisFeatures]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-feature
+[LuisSampleApp]: https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/phrase_list/interchangeable/luis-app-before-phrase-list.json

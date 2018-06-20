@@ -1,62 +1,60 @@
 ---
-title: Importowanie danych do użycia z interfejsu API Azure rozwiązania Cosmos DB tabeli | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zaimportować dane do użycia z interfejsu API Azure rozwiązania Cosmos bazy danych tabeli.
+title: Importowanie danych do użycia z interfejsem API tabel usługi Azure Cosmos DB | Microsoft Docs
+description: Dowiedz się, jak zaimportować dane do użycia z interfejsem API tabel usługi Azure Cosmos DB.
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: b60743e2-0227-43ab-965a-0ae3ebacd917
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/28/2017
 ms.author: sngun
-ms.openlocfilehash: b6e912d450e1a2fed98fab5b18ba835396257ac9
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
-ms.translationtype: MT
+ms.openlocfilehash: 25e922e211304774462c747ea6a003e47fb38736
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34797774"
 ---
-# <a name="import-data-for-use-with-the-azure-cosmos-db-table-api"></a>Importowanie danych do użycia z interfejsu API Azure rozwiązania Cosmos DB tabeli
+# <a name="import-data-for-use-with-the-azure-cosmos-db-table-api"></a>Importowanie danych do użycia z interfejsem API tabel usługi Azure Cosmos DB
 
-Ten samouczek zawiera instrukcje dotyczące importowania danych do użycia z programem Azure DB rozwiązania Cosmos [API tabeli](table-introduction.md). Jeśli masz dane przechowywane w magazynie tabel Azure, można użyć narzędzia migracji danych albo AzCopy do zaimportowania danych. Jeśli masz dane przechowywane na koncie Azure rozwiązania Cosmos tabeli bazy danych interfejsu API (wersja zapoznawcza), należy użyć narzędzia migracji danych, aby przeprowadzić migrację danych. Po zaimportowaniu danych będzie mógł korzystać z funkcji premium oferty Azure DB rozwiązania Cosmos, takich jak gotowe dystrybucji globalnych, dedykowanych przepływności, jednocyfrowej milisekundy opóźnienia w 99-ty percentyl, zagwarantować wysokiej dostępności i dodatkowej automatycznego indeksowania.
+Ten samouczek zawiera instrukcje dotyczące importowania danych do użycia z [interfejsem API tabel](table-introduction.md) usługi Azure Cosmos DB. Jeśli masz dane przechowywane w usłudze Azure Table Storage, możesz zaimportować je za pomocą narzędzia do migracji danych lub narzędzia AzCopy. Jeśli masz dane przechowywane na koncie interfejsu API tabel usługi Azure Cosmos DB w wersji zapoznawczej, musisz użyć narzędzia do migracji danych, aby przenieść dane. Po zaimportowaniu danych możesz korzystać z zaawansowanych funkcji usługi Azure Cosmos DB, takich jak gotowa do użytku dystrybucja globalna, dedykowana przepływność, opóźnienie rzędu kilku milisekund na poziomie 99. percentyla, gwarantowana wysoka dostępność i automatyczne indeksowanie pomocnicze.
 
 Ten samouczek obejmuje następujące zadania:
 
 > [!div class="checklist"]
-> * Importowanie danych za pomocą narzędzia migracji danych
-> * Importowanie danych z narzędzia AzCopy
-> * Migrowanie z tabeli interfejsu API (wersja zapoznawcza) do tabeli interfejsu API 
+> * Importowanie danych za pomocą narzędzia do migracji danych
+> * Importowanie danych za pomocą narzędzia AzCopy
+> * Migracja z interfejsu API tabel w wersji zapoznawczej do interfejsu API tabel 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Zwiększyć przepływność: czas trwania migracji danych zależy od ilości przepływności, możesz skonfigurować dla poszczególnych kolekcji lub zestaw kolekcji. Pamiętaj zwiększyć przepływność większych migracji danych. Po zakończeniu migracji należy zmniejszyć przepustowość w celu ograniczenia kosztów. Aby uzyskać więcej informacji na temat zwiększa wydajność w portalu Azure Zobacz poziomy wydajności i warstw cenowych w usłudze Azure DB rozwiązania Cosmos.
+* Zwiększenie przepływności: czas trwania migracji danych zależy od przepływności skonfigurowanej dla pojedynczej kolekcji lub dla zestawu kolekcji. Pamiętaj o zwiększeniu przepływności w przypadku większych migracji danych. Po ukończeniu migracji zmniejsz przepływność, aby ograniczyć koszty. Aby uzyskać więcej informacji na temat zwiększania przepływności w witrynie Azure Portal, zobacz Performance levels and pricing tiers in Azure Cosmos DB (Poziomy wydajności i warstwy cenowe w usłudze Azure Cosmos DB).
 
-## <a name="data-migration-tool"></a>Narzędzie migracji danych
+## <a name="data-migration-tool"></a>Narzędzie do migracji danych
 
-Narzędzie wiersza polecenia migracji danych DB rozwiązania Cosmos Azure (dt.exe) może służyć do zaimportowania istniejących danych magazynu tabel Azure z kontem API tabeli GA lub migracji danych z konta tabeli interfejsu API (wersja zapoznawcza) w tabeli API GA konto. Inne źródła nie są obecnie obsługiwane. Migracja danych na podstawie interfejsu użytkownika narzędzia (dtui.exe) nie jest obsługiwana dla kont tabeli interfejsu API. 
+Narzędzie wiersza polecenia usługi Azure Cosmos DB do migracji danych (dt.exe) umożliwia importowanie istniejących danych z usługi Azure Table Storage na konto ogólnie dostępnej wersji interfejsu API tabel oraz migrowanie danych z konta wersji zapoznawczej interfejsu API tabel na konto ogólnie dostępnej wersji interfejsu API tabel. Inne źródła nie są obecnie obsługiwane. Narzędzie do migracji danych z interfejsem użytkownika (dtui.exe) nie jest obecnie obsługiwane w przypadku kont interfejsu API tabel. 
 
-Aby przeprowadzić migrację danych z tabeli, należy wykonać następujące zadania:
+Aby przeprowadzić migrację danych tabeli, wykonaj następujące czynności:
 
-1. Pobierz narzędzie do migracji z [GitHub](https://github.com/azure/azure-documentdb-datamigrationtool).
-2. Uruchom `dt.exe` przy użyciu argumentów wiersza polecenia dla danego scenariusza.
+1. Pobierz narzędzie do migracji danych z witryny [GitHub](https://github.com/azure/azure-documentdb-datamigrationtool).
+2. Uruchom narzędzie `dt.exe` przy użyciu argumentów wiersza polecenia odpowiednich do scenariusza.
 
-DT.exe wykonuje polecenie w następującym formacie:
+Narzędzie dt.ext przyjmuje polecenia w następującym formacie:
 
     dt.exe [/<option>:<value>] /s:<source-name> [/s.<source-option>:<value>] /t:<target-name> [/t.<target-option>:<value>] 
 
-Dostępne są następujące opcje dla polecenia:
+Dostępne są następujące opcje polecenia:
 
     /ErrorLog: Optional. Name of the CSV file to redirect data transfer failures
     /OverwriteErrorLog: Optional. Overwrite error log file
     /ProgressUpdateInterval: Optional, default is 00:00:01. Time interval to refresh on-screen data transfer progress
     /ErrorDetails: Optional, default is None. Specifies that detailed error information should be displayed for the following errors: None, Critical, All
 
-### <a name="command-line-source-settings"></a>Ustawienia źródła wiersza polecenia
+### <a name="command-line-source-settings"></a>Ustawienia źródła w wierszu polecenia
 
-Podczas definiowania Podgląd Azure Table Storage lub interfejsu API tabeli jako źródło migracji, należy użyć następujących opcji źródła.
+Podczas definiowania usługi Azure Table Storage lub interfejsu API tabel w wersji zapoznawczej jako źródła migracji użyj następujących opcji źródła.
 
     /s:AzureTable: Reads data from Azure Table storage
     /s.ConnectionString: Connection string for the table endpoint. This can be retrieved from the Azure portal
@@ -66,21 +64,21 @@ Podczas definiowania Podgląd Azure Table Storage lub interfejsu API tabeli jako
     /s.Filter: Optional. Filter string to apply
     /s.Projection: Optional. List of columns to select
 
-Aby pobrać parametry połączenia źródła podczas importowania z magazynem tabel Azure, otwórz Azure portal, a następnie kliknij przycisk **kont magazynu** > **konta**  >   **Klucze dostępu**, a następnie użyj przycisku kopiowania, aby skopiować **ciąg połączenia**.
+Aby pobrać parametry połączenia źródła podczas importu z usługi Azure Table Storage, otwórz witrynę Azure Portal i kliknij kolejno pozycje **Konta magazynu** > **Konto** > **Klucze dostępu**, a następnie skopiuj **Parametry połączenia** za pomocą przycisku Kopiuj.
 
-![Zrzut ekranu HBase Opcje źródła](./media/table-import/storage-table-access-key.png)
+![Zrzut ekranu przedstawiający opcje źródła dla bazy danych HBase](./media/table-import/storage-table-access-key.png)
 
-Aby pobrać parametry połączenia źródła podczas importowania z konta Azure rozwiązania Cosmos tabeli bazy danych interfejsu API (wersja zapoznawcza), otwórz Azure portalu, kliknij przycisk **bazy danych Azure rozwiązania Cosmos** > **konta**  >  **Ciąg połączenia** i użyj przycisku kopiowania, aby skopiować **ciąg połączenia**.
+Aby pobrać parametry połączenia źródła podczas importu z konta wersji zapoznawczej interfejsu API tabel usługi Azure Cosmos DB, otwórz witrynę Azure Portal, kliknij kolejno pozycje **Azure Cosmos DB** > **Konto** > **Parametry połączenia** i skopiuj **Parametry połączenia** za pomocą przycisku Kopiuj.
 
-![Zrzut ekranu HBase Opcje źródła](./media/table-import/cosmos-connection-string.png)
+![Zrzut ekranu przedstawiający opcje źródła dla bazy danych HBase](./media/table-import/cosmos-connection-string.png)
 
-[Przykład polecenia Azure Table Storage](#azure-table-storage)
+[Przykład polecenia dla usługi Azure Table Storage](#azure-table-storage)
 
-[Przykład polecenia Azure rozwiązania Cosmos tabeli bazy danych interfejsu API (wersja zapoznawcza)](#table-api-preview)
+[Przykład polecenia dla wersji zapoznawczej interfejsu API tabel usługi Azure Cosmos DB](#table-api-preview)
 
-### <a name="command-line-target-settings"></a>Ustawienia obiektu docelowego wiersza polecenia
+### <a name="command-line-target-settings"></a>Ustawienia miejsca docelowego w wierszu polecenia
 
-Podczas definiowania interfejsu API Azure rozwiązania Cosmos DB tabeli jako miejsce docelowe migracji, należy użyć następujących opcji docelowej.
+Podczas definiowania interfejsu API tabel usługi Azure Cosmos DB jako miejsca docelowego migracji użyj następujących opcji miejsca docelowego.
 
     /t:TableAPIBulk: Uploads data into Azure CosmosDB Table in batches
     /t.ConnectionString: Connection string for the table endpoint
@@ -91,60 +89,60 @@ Podczas definiowania interfejsu API Azure rozwiązania Cosmos DB tabeli jako mie
     /t.MaxBatchSize: Optional, default is 2MB. Specify the batch size in bytes
 
 <a id="azure-table-storage"></a>
-### <a name="sample-command-source-is-azure-table-storage"></a>Przykładowe polecenia: źródło jest magazynem tabel Azure
+### <a name="sample-command-source-is-azure-table-storage"></a>Przykładowe polecenie: źródłem jest usługa Azure Table Storage
 
-Oto przykład wiersza polecenia przedstawiający sposób importowania z magazynu tabel Azure Table do tabeli interfejsu API:
+Oto przykład wiersza polecenia przedstawiający sposób importowania danych z usługi Azure Table Storage do interfejsu API tabel:
 
 ```
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Table storage account name>;AccountKey=<Account Key>;EndpointSuffix=core.windows.net /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
 <a id="table-api-preview"></a>
-### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>Przykładowe polecenia: źródło jest interfejs API tabeli bazy danych rozwiązania Cosmos Azure (wersja zapoznawcza)
+### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>Przykładowe polecenie: źródłem jest wersja zapoznawcza interfejsu API tabel usługi Azure Cosmos DB
 
-Oto przykład wiersza polecenia do importowania z tabeli interfejsu API w wersji zapoznawczej do interfejsu API tabeli GA:
+Oto przykład wiersza polecenia przedstawiający sposób importowania danych z wersji zapoznawczej interfejsu API tabel do wersji ogólnie dostępnej interfejsu API tabel:
 
 ```
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Table API preview account name>;AccountKey=<Table API preview account key>;TableEndpoint=https://<Account Name>.documents.azure.com; /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
 
-## <a name="azcopy-command"></a>Polecenia programu AzCopy
+## <a name="azcopy-command"></a>Polecenie AzCopy
 
-Przy użyciu wiersza polecenia azcopy jest opcję przeprowadzenia migracji danych z magazynem tabel Azure do interfejsu API Azure rozwiązania Cosmos bazy danych tabeli. Aby użyć narzędzia AzCopy, najpierw wyeksportować dane zgodnie z opisem w [eksportowania danych z magazynu tabel](../storage/common/storage-use-azcopy.md#export-data-from-table-storage), następnie zaimportuj dane do bazy danych rozwiązania Cosmos Azure, zgodnie z opisem w [interfejsu API Azure rozwiązania Cosmos DB tabeli](../storage/common/storage-use-azcopy.md#import-data-into-table-storage).
+Inną opcją migracji danych z usługi Azure Table Storage do interfejsu API tabel usługi Azure Cosmos DB jest użycie narzędzia wiersza polecenia AzCopy. Aby użyć narzędzia AzCopy, należy najpierw wyeksportować dane zgodnie z opisem w sekcji [Export data from Table Storage (Eksportowanie danych z usługi Table Storage)](../storage/common/storage-use-azcopy.md#export-data-from-table-storage), a następnie zaimportować dane do usługi Azure Cosmos DB zgodnie z opisem w sekcji [Azure Cosmos DB Table API (Interfejs API tabel usługi Azure Cosmos DB)](../storage/common/storage-use-azcopy.md#import-data-into-table-storage).
 
-Podczas importowania do bazy danych Azure rozwiązania Cosmos, odwoływać się do poniższego przykładu. Należy pamiętać, że wartość/dest używa cosmosdb, nie core.
+Podczas importowania danych do usługi Azure Cosmos DB skorzystaj z poniższego przykładu. Zwróć uwagę, że dla parametru /Dest jest używana wartość „cosmosdb”, nie „core”.
 
-Przykład polecenia import:
+Przykładowe polecenie importu:
 
 ```
 AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.table.cosmosdb.windows.net/mytable1/ /DestKey:key /Manifest:"myaccount_mytable_20140103T112020.manifest" /EntityOperation:InsertOrReplace
 ```
 
-## <a name="migrate-from-table-api-preview-to-table-api"></a>Migracja z tabeli interfejsu API (wersja zapoznawcza) do tabeli interfejsu API
+## <a name="migrate-from-table-api-preview-to-table-api"></a>Migracja z interfejsu API tabel w wersji zapoznawczej do interfejsu API tabel
 
 > [!WARNING]
-> Jeśli chcesz od razu korzystać z zalet tabel ogólnie dostępna, a następnie przeprowadź migrację z istniejącymi tabelami Podgląd określonych w tej sekcji, w przeciwnym razie firma Microsoft będzie wykonywać automatycznych migracji dla istniejących klientów w wersji zapoznawczej w najbliższych tygodniach, należy pamiętać, jednak który auto migracji tabel Podgląd ma pewne ograniczenia do nich, które nowo utworzone zostanie tabele nie.
+> Jeśli chcesz od razu skorzystać z możliwości, jakie dają tabele w wersji ogólnie dostępnej, przeprowadź migrację istniejących tabel w wersji zapoznawczej zgodnie z instrukcjami przedstawionymi w tej sekcji. W przeciwnym razie dla obecnych klientów korzystających z wersji zapoznawczej będzie w nadchodzących tygodniach prowadzona migracja automatyczna. Należy zwrócić uwagę, że tabele z wersji zapoznawczej po migracji automatycznej będą objęte pewnymi ograniczenia, które nie będą dotyczyć nowo utworzonych tabel.
 > 
 
-Interfejs API tabeli teraz jest ogólnie dostępna (GA). Istnieją różnice między Podgląd i wersją GA tabel zarówno w kodzie, który działa w chmurze, a także w kod uruchamiany po stronie klienta. W związku z tym nie jest zalecana próby mieszać przy użyciu konta GA tabeli API klienta SDK w wersji zapoznawczej i na odwrót. Tabela interfejsu API w wersji zapoznawczej klientów, którzy chcesz nadal używać ich istniejące tabele, ale w środowisku produkcyjnym konieczne migracji z wersji zapoznawczej w środowisku GA lub poczekaj na potrzeby automatycznej migracji. Aby czekać na potrzeby automatycznej migracji, dowiesz się ograniczeń dotyczących tabel zmigrowane. Po zakończeniu migracji można utworzyć nowe tabele na istniejące konto bez ograniczeń (tylko tabele migrowanych będzie mieć ograniczenia).
+Interfejs API tabel jest teraz ogólnie dostępny. Istnieją różnice między wersją zapoznawczą a wersją ogólnie dostępną tabel, dotyczące zarówno kodu działającego w chmurze, jak i kodu działającego po stronie klienta. Dlatego nie zalecamy używania klienta SDK w wersji zapoznawczej z kontem interfejsu API tabel w wersji ogólnie dostępnej i na odwrót. Klienci korzystający z wersji zapoznawczej interfejsu API tabel, którzy chcą nadal korzystać z istniejących tabel, ale w środowisku produkcyjnym, muszą przeprowadzić migrację ze środowiska wersji zapoznawczej do środowiska ogólnie dostępnego lub zaczekać na migrację automatyczną. Jeśli zaczekasz na migrację automatyczną, otrzymasz powiadomienie na temat ograniczeń dotyczących zmigrowanych tabel. Po migracji będziesz mieć możliwość tworzenia na obecnym koncie nowych tabel bez ograniczeń (ograniczenia dotyczą tylko zmigrowanych tabel).
 
-Aby przeprowadzić migrację z tabeli interfejsu API (wersja zapoznawcza) ogólnie dostępna API tabeli:
+Aby przeprowadzić migrację z wersji zapoznawczej interfejsu API tabel do wersji ogólnie dostępnej interfejsu API tabel:
 
-1. Utwórz nowe konto bazy danych Azure rozwiązania Cosmos i ustaw jej typ interfejsu API do tabel Azure, zgodnie z opisem w [Tworzenie konta bazy danych](create-table-dotnet.md#create-a-database-account).
+1. Utwórz nowe konto usługi Azure Cosmos DB i wybierz typ interfejsu API „Tabela platformy Azure”, zgodnie z opisem w sekcji [Tworzenie konta bazy danych](create-table-dotnet.md#create-a-database-account).
 
-2. Zmień klienci używają wersji GA [zestawów SDK interfejsu API tabeli](table-sdk-dotnet.md).
+2. Zmień ustawienia klientów tak, aby korzystały z ogólnie dostępnej wersji [zestawów SDK interfejsu API tabel](table-sdk-dotnet.md).
 
-3. Migrację danych klienta z wersji zapoznawczej tabel do tabel GA przy użyciu narzędzia do migracji danych. Instrukcje dotyczące używania narzędzia migracji danych w tym celu są opisane w [narzędzia migracji danych](#data-migration-tool). 
+3. Przeprowadź migrację danych klientów z tabel w wersji zapoznawczej do wersji ogólnie dostępnej za pomocą narzędzia do migracji danych. Instrukcje dotyczące używania narzędzia do migracji danych do tego celu znajdziesz w sekcji [Narzędzie do migracji danych](#data-migration-tool). 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Importuj dane z tego narzędzia migracji danych
-> * Importuj dane z narzędzia AzCopy
-> * Migracja z tabeli interfejsu API (wersja zapoznawcza) do tabeli interfejsu API
+> * Importowanie danych za pomocą narzędzia do migracji danych
+> * Importowanie danych za pomocą narzędzia AzCopy
+> * Migracja z interfejsu API tabel w wersji zapoznawczej do interfejsu API tabel
 
-Możesz teraz przejść do następnego samouczek i Dowiedz się, jak wykonać zapytanie dotyczące danych przy użyciu interfejsu API Azure rozwiązania Cosmos DB tabeli. 
+Teraz możesz przejść do następnego samouczka, aby dowiedzieć się, jak wykonywać zapytania dotyczące danych za pomocą interfejsu API tabel usługi Azure Cosmos DB. 
 
 > [!div class="nextstepaction"]
->[Jak wykonać zapytanie dotyczące danych?](../cosmos-db/tutorial-query-table.md)
+>[Jak wykonywać zapytania dotyczące danych?](../cosmos-db/tutorial-query-table.md)

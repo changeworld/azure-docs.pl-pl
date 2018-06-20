@@ -10,12 +10,12 @@ ms.service: multi-factor-authentication
 ms.workload: identity
 ms.topic: article
 ms.date: 05/01/2018
-ms.openlocfilehash: d28bb4b8e171ef6189f81acc337088b3c5499ccf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2281a35d1616aa88b0c646fb96cb9f95c3272536
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655038"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36264372"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Zbierania danych użytkownika w usłudze Azure Multi-Factor Authentication
 
@@ -151,39 +151,39 @@ Z poziomu wiersza polecenia serwera usługi MFA, uruchom następujące polecenie
 
 ## <a name="gather-data-from-nps-extension"></a>Zbieranie danych z rozszerzenia serwera NPS
 
-Użyj [Portal prywatności Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.) Wyślij żądanie eksportu.
+Użyj [Portal prywatności Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) Wyślij żądanie eksportu.
 
 - Uwierzytelnianie wieloskładnikowe informacje znajdują się w pliku eksportu, co może zająć godziny a nawet dni.
 - Wystąpienia nazwę użytkownika w dziennikach zdarzeń AzureMfa/autoryzacja/AuthZOptCh AzureMfa/AuthN/AuthNOptCh, AuthZAdminCh-AzureMfa/autoryzacja i są traktowane jako działania i powielanymi dostarczony do eksportu.
 
 ## <a name="delete-data-from-nps-extension"></a>Usuwanie danych z rozszerzenia serwera NPS
 
-Użyj [Portal prywatności Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.) żądania dla konta Zamknij, aby usunąć wszystkie MFA informacji usługi chmury zbierane dla tego użytkownika.
+Użyj [Portal prywatności Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) żądania dla konta Zamknij, aby usunąć wszystkie MFA informacji usługi chmury zbierane dla tego użytkownika.
 
 - Może upłynąć dane mają zostać całkowicie usunięte w ciągu 30 dni.
 
 ## <a name="gather-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Zbieranie danych z systemu Windows Server 2016 Azure MFA Adapter AD FS
 
-Użyj [Portal prywatności Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.) Wyślij żądanie eksportu. 
+Użyj [Portal prywatności Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) Wyślij żądanie eksportu. 
 
 - Uwierzytelnianie wieloskładnikowe informacje znajdują się w pliku eksportu, co może zająć godziny a nawet dni.
 - Wystąpienia nazwy użytkownika w dziennikach zdarzeń AD FS śledzenie/Debug (jeśli jest włączona) są traktowane jako działania i powielanymi dostarczony do eksportu.
 
 ## <a name="delete-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Usuwanie danych z systemu Windows Server 2016 Azure MFA Adapter AD FS
 
-Użyj [Portal prywatności Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.) żądania dla konta Zamknij, aby usunąć wszystkie MFA informacji usługi chmury zbierane dla tego użytkownika.
+Użyj [Portal prywatności Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) żądania dla konta Zamknij, aby usunąć wszystkie MFA informacji usługi chmury zbierane dla tego użytkownika.
 
 - Może upłynąć dane mają zostać całkowicie usunięte w ciągu 30 dni.
 
 ## <a name="gather-data-for-azure-mfa"></a>Zbieranie danych dla usługi Azure MFA
 
-Użyj [Portal prywatności Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.) Wyślij żądanie eksportu.
+Użyj [Portal prywatności Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) Wyślij żądanie eksportu.
 
 - Uwierzytelnianie wieloskładnikowe informacje znajdują się w pliku eksportu, co może zająć godziny a nawet dni.
 
 ## <a name="delete-data-for-azure-mfa"></a>Usuń dane dla usługi Azure MFA
 
-Użyj [Portal prywatności Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.) żądania dla konta Zamknij, aby usunąć wszystkie MFA informacji usługi chmury zbierane dla tego użytkownika.
+Użyj [Portal prywatności Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) żądania dla konta Zamknij, aby usunąć wszystkie MFA informacji usługi chmury zbierane dla tego użytkownika.
 
 - Może upłynąć dane mają zostać całkowicie usunięte w ciągu 30 dni.
 

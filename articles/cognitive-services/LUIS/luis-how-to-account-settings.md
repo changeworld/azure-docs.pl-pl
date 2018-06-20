@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: v-geberr
-ms.openlocfilehash: 25989d07b7d879ac68283ee56a7ccb0c07e09623
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
-ms.translationtype: HT
+ms.openlocfilehash: 76300b307c8e87a3dd108fc53d3b30a53d3276dd
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "35356060"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36263928"
 ---
 # <a name="manage-your-luis-account"></a>Zarządzanie kontem LUIS
 Dwa kluczowych informacji dotyczących konta LUIS są konta użytkowników i tworzenia klucza. Informacje logowania jest zarządzana w [account.microsoft.com](https://account.microsoft.com). Klucz tworzenia odbywa się z [LUIS][LUIS] witryny sieci Web **ustawienia** strony. 
@@ -50,8 +50,12 @@ Jeśli Administrator dzierżawy nie będzie zalogować do LUIS, administrator mo
 
 Jeśli Administrator dzierżawy chce tylko niektórych użytkowników, aby użyć LUIS, odwołują się do tego [blog tożsamość](https://blogs.technet.microsoft.com/tfg/2017/10/15/english-tips-to-manage-azure-ad-users-consent-to-applications-using-azure-ad-graph-api/).
 
+### <a name="user-accounts-with-multiple-emails-for-collaborators"></a>Konta użytkowników z wielu wiadomości e-mail do współpracowników
+Jeśli dodasz współpracowników do aplikacji LUIS są określenie adresu e-mail dokładne współpracownika musi używać LUIS jako współpracownika. Chociaż usługi Azure Active Directory (Azure AD) pozwala na jednego użytkownika, ma więcej niż jedno konto e-mail używane zamiennie, LUIS wymaga logowania się za pomocą adresu e-mail znajduje się na liście współpracownika. 
+
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej o sieci [tworzenia klucza](luis-concept-keys.md#authoring-key). 
 
-[LUIS]: luis-reference-regions.md
+[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

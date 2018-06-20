@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: a9a7ff71-c389-4169-aafd-d7a505244797
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 5bc72964b24ffd3b8c53f752e822b95d6694e44e
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: b2503affa302d991e48aa97dbdd9f54be47a560b
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35938425"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36224977"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-workplace"></a>Samouczek: Integracji Azure Active Directory z Autotask w miejscu pracy
 

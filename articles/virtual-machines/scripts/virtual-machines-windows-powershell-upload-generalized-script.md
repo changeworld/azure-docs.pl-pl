@@ -1,30 +1,31 @@
 ---
-title: "Przekaż uogólniony wirtualny dysk twardy do przykładowy skrypt programu PowerShell Azure | Dokumentacja firmy Microsoft"
-description: "Przykładowy skrypt programu PowerShell do przekazywania uogólniony wirtualny dysk twardy na platformie Azure i utworzyć nową maszynę Wirtualną przy użyciu modelu wdrażania Menedżera zasobów i dysków zarządzanych."
+title: Przykładowy skrypt języka PowerShell przekazujący uogólniony wirtualny dysk twardy do platformy Azure | Dokumentacja firmy Microsoft
+description: Przykładowy skrypt programu PowerShell do przekazania uogólnionego wirtualnego dysku twardego na platformę Azure i utworzenia nowej maszyny wirtualnej przy użyciu modelu wdrażania Menedżera zasobów i dysków zarządzanych.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 01/02/2017
+ms.date: 01/02/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9534ce2a32ac57a441535cfa26f2981b804182d1
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
-ms.translationtype: MT
+ms.openlocfilehash: c1887bc7dc3cddce7f1c9f91f077388df2e73e9a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716775"
 ---
-# <a name="sample-script-to-upload-a-vhd-to-azure-and-create-a-new-vm"></a>Przykładowy skrypt do przekazania dysku VHD na platformie Azure i utworzyć nową maszynę Wirtualną
+# <a name="sample-script-to-upload-a-vhd-to-azure-and-create-a-new-vm"></a>Przykładowy skrypt do przekazania wirtualnego dysku twardego na platformę Azure i utworzenia nowej maszyny wirtualnej
 
-Ten skrypt ma plik VHD lokalnego z ogólnych maszyny Wirtualnej i przekazuje ją do platformy Azure, tworzy obraz dysku zarządzane i używa do tworzenia nowej maszyny Wirtualnej.
+Ten skrypt pobiera lokalny plik vhd z uogólnionej maszyny wirtualnej i przekazuje go na platformę Azure, tworzy obraz dysku zarządzanego i używa go do tworzenia nowej maszyny wirtualnej.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -118,41 +119,41 @@ $vmList.Name
 
 ## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia 
 
-Uruchom następujące polecenie, aby usunąć grupę zasobów, maszyny Wirtualnej i wszystkie powiązane zasoby.
+Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-## <a name="script-explanation"></a>Wyjaśnienie skryptu
+## <a name="script-explanation"></a>Objaśnienia dla skryptu
 
-Ten skrypt używa następujących poleceń w celu utworzenia wdrożenia. Każdy element w tabeli łącza do dokumentacji określonego polecenia.
+Ten skrypt używa następujących poleceń w celu utworzenia wdrożenia. Każda pozycja w tabeli stanowi link do dokumentacji polecenia.
 
 | Polecenie                                                                                                             | Uwagi                                                                                                                                                                                |
 |---------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Nowe AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)                           | Tworzy grupę zasobów, w którym przechowywane są wszystkie zasoby.                                                                                                                          |
-| [Nowe AzureRmStorageAccount](/powershell/module/azurerm.resources/new-azurermstorageaccount)                         | Tworzy konto magazynu.                                                                                                                                                           |
-| [Dodaj AzureRmVhd](/powershell/module/azurerm.resources/add-azurermvhd)                                               | Przekazywanie wirtualnego dysku twardego z lokalnej maszyny wirtualnej do obiektu blob w konta magazynu w chmurze na platformie Azure.                                                                       |
-| [Nowe AzureRmImageConfig](/powershell/module/azurerm.resources/new-azurermimageconfig)                               | Tworzy obiekt obrazu można konfigurować.                                                                                                                                                 |
-| [Zestaw AzureRmImageOsDisk](/powershell/module/azurerm.resources/set-azurermimageosdisk)                               | Ustawia właściwości dysku systemu operacyjnego, w obiekcie image.                                                                                                                        |
-| [Nowe AzureRmImage](/powershell/module/azurerm.resources/new-azurermimage)                                           | Tworzy nowy obraz.                                                                                                                                                                 |
-| [Nowe AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.resources/new-azurermvirtualnetworksubnetconfig) | Tworzy konfiguracji podsieci. Ta konfiguracja jest używana z procesu tworzenia sieci wirtualnej.                                                                                |
-| [Nowy AzureRmVirtualNetwork](/powershell/module/azurerm.resources/new-azurermvirtualnetwork)                         | Tworzy sieć wirtualną.                                                                                                                                                           |
-| [Nowe AzureRmPublicIpAddress](/powershell/module/azurerm.resources/new-azurermpublicipaddress)                       | Tworzy publiczny adres IP.                                                                                                                                                         |
-| [Nowe AzureRmNetworkInterface](/powershell/module/azurerm.resources/new-azurermnetworkinterface)                     | Tworzy interfejs sieciowy.                                                                                                                                                         |
-| [Nowe AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.resources/new-azurermnetworksecurityruleconfig)   | Tworzy konfiguracji reguły grupy zabezpieczeń sieci. Ta konfiguracja jest używana do utworzenia reguły NSG, gdy grupa NSG jest tworzona.                                                       |
-| [Nowe AzureRmNetworkSecurityGroup](/powershell/module/azurerm.resources/new-azurermnetworksecuritygroup)             | Tworzy sieciową grupę zabezpieczeń.                                                                                                                                                    |
+| [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)                           | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby.                                                                                                                          |
+| [New-AzureRmStorageAccount](/powershell/module/azurerm.resources/new-azurermstorageaccount)                         | Tworzy konto magazynu.                                                                                                                                                           |
+| [Add-AzureRmVhd](/powershell/module/azurerm.resources/add-azurermvhd)                                               | Przekazuje wirtualny dysk twardy z lokalnej maszyny wirtualnej do obiektu blob w koncie magazynu w chmurze na platformie Azure.                                                                       |
+| [New-AzureRmImageConfig](/powershell/module/azurerm.resources/new-azurermimageconfig)                               | Tworzy konfigurowalny obiekt obrazu.                                                                                                                                                 |
+| [Set-AzureRmImageOsDisk](/powershell/module/azurerm.resources/set-azurermimageosdisk)                               | Ustawia właściwości dysku systemu operacyjnego w obiekcie obrazu.                                                                                                                        |
+| [New-AzureRmImage](/powershell/module/azurerm.resources/new-azurermimage)                                           | Tworzy nowy obraz.                                                                                                                                                                 |
+| [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.resources/new-azurermvirtualnetworksubnetconfig) | Tworzy konfigurację podsieci. Ta konfiguracja jest używana podczas procesu tworzenia sieci wirtualnej.                                                                                |
+| [New-AzureRmVirtualNetwork](/powershell/module/azurerm.resources/new-azurermvirtualnetwork)                         | Tworzy sieć wirtualną.                                                                                                                                                           |
+| [New-AzureRmPublicIpAddress](/powershell/module/azurerm.resources/new-azurermpublicipaddress)                       | Tworzy publiczny adres IP.                                                                                                                                                         |
+| [New-AzureRmNetworkInterface](/powershell/module/azurerm.resources/new-azurermnetworkinterface)                     | Tworzy interfejs sieciowy.                                                                                                                                                         |
+| [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.resources/new-azurermnetworksecurityruleconfig)   | Tworzy konfiguracji reguły sieciowej grupy zabezpieczeń. Ta konfiguracja jest używana do tworzenia reguły sieciowej grupy zabezpieczeń podczas tworzenia sieciowej grupy zabezpieczeń.                                                       |
+| [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.resources/new-azurermnetworksecuritygroup)             | Tworzy sieciową grupę zabezpieczeń.                                                                                                                                                    |
 | [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.resources/get-azurermvirtualnetwork)                         | Pobiera sieć wirtualną w grupie zasobów.                                                                                                                                          |
-| [Nowe AzureRmVMConfig](/powershell/module/azurerm.resources/new-azurermvmconfig)                                     | Tworzy konfiguracji maszyny Wirtualnej. Ta konfiguracja zawiera informacje, takie jak nazwa maszyny Wirtualnej, system operacyjny i poświadczenia administracyjne. Konfiguracja jest używany podczas tworzenia maszyny Wirtualnej. |
-| [Zestaw AzureRmVMSourceImage](/powershell/module/azurerm.resources/set-azurermvmsourceimage)                           | Określa obraz maszyny wirtualnej.                                                                                                                                            |
-| [Zestaw AzureRmVMOSDisk](/powershell/module/azurerm.resources/set-azurermvmosdisk)                                     | Ustawia właściwości dysku systemu operacyjnego, na maszynie wirtualnej.                                                                                                                      |
-| [Zestaw AzureRmVMOperatingSystem](/powershell/module/azurerm.resources/set-azurermvmoperatingsystem)                   | Ustawia właściwości dysku systemu operacyjnego, na maszynie wirtualnej.                                                                                                                      |
-| [Dodaj AzureRmVMNetworkInterface](/powershell/module/azurerm.resources/add-azurermvmnetworkinterface)                 | Dodaje interfejs sieciowy do maszyny wirtualnej.                                                                                                                                       |
-| [Nowe AzureRmVM](/powershell/module/azurerm.resources/new-azurermvm)                                                 | Utwórz maszynę wirtualną.                                                                                                                                                            |
-| [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup)                     | Usuwa grupę zasobów i wszystkie zasoby zawarte w ciągu.                                                                                                                         |
+| [New-AzureRmVMConfig](/powershell/module/azurerm.resources/new-azurermvmconfig)                                     | Tworzy konfigurację maszyny wirtualnej. Ta konfiguracja zawiera informacje, takie jak nazwa maszyny wirtualnej, system operacyjny i poświadczenia administracyjne. Jest ona używana podczas tworzenia maszyny wirtualnej. |
+| [Set-AzureRmVMSourceImage](/powershell/module/azurerm.resources/set-azurermvmsourceimage)                           | Określa obraz dla maszyny wirtualnej.                                                                                                                                            |
+| [Set-AzureRmVMOSDisk](/powershell/module/azurerm.resources/set-azurermvmosdisk)                                     | Ustawia właściwości dysku systemu operacyjnego dla maszyny wirtualnej.                                                                                                                      |
+| [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.resources/set-azurermvmoperatingsystem)                   | Ustawia właściwości dysku systemu operacyjnego dla maszyny wirtualnej.                                                                                                                      |
+| [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.resources/add-azurermvmnetworkinterface)                 | Dodaje interfejs sieciowy do maszyny wirtualnej.                                                                                                                                       |
+| [New-AzureRmVM](/powershell/module/azurerm.resources/new-azurermvm)                                                 | Tworzy maszynę wirtualną.                                                                                                                                                            |
+| [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup)                     | Usuwa grupę zasobów i wszystkie zasoby w niej zawarte.                                                                                                                         |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji dotyczących modułu Azure PowerShell, zobacz [dokumentacji programu Azure PowerShell](/powershell/azure/overview).
+Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 
-Przykłady skryptów PowerShell dodatkowe maszyny wirtualnej znajdują się w [dokumentacji maszyny Wirtualnej systemu Windows Azure](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Więcej przykładowych skryptów programu PowerShell na potrzeby maszyny wirtualnej można znaleźć w [dokumentacji dotyczącej maszyny wirtualnej platformy Azure z systemem Windows](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

@@ -1,31 +1,28 @@
 ---
-title: Rozpoczynanie pracy z usługą Azure Data Lake Analytics przy użyciu interfejsu wiersza polecenia platformy Azure 2.0 | Microsoft Docs
-description: 'Dowiedz się, jak za pomocą interfejsu wiersza polecenia platformy Azure 2.0 utworzyć konto usługi Data Lake Analytics oraz utworzyć i przesłać zadanie usługi Data Lake Analytics, korzystając z języka U-SQL. '
-services: data-lake-analytics
-documentationcenter: ''
-author: saveenr
-manager: saveenr
-editor: cgronlun
+title: Rozpoczynanie pracy z usługą Azure Data Lake Analytics przy użyciu interfejsu wiersza polecenia platformy Azure 2.0
+description: Dowiedz się, jak za pomocą interfejsu wiersza polecenia platformy Azure 2.0 utworzyć konto usługi Azure Data Lake Analytics i przesyłać zadanie w języku U-SQL.
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+services: data-lake-analytics
+author: saveenr
+ms.author: saveenr
+manager: kfile
+editor: jasonwhowell
+ms.topic: get-started-article
 ms.date: 06/18/2017
-ms.author: jgao
-ms.openlocfilehash: e7ce65446a6af49f15b3ce1881757b16f8fcaa35
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 3095c3281e1797c8103e0c229c62aca1aae3444f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34625105"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli-20"></a>Rozpoczynanie pracy z usługą Azure Data Lake Analytics przy użyciu interfejsu wiersza polecenia platformy Azure 2.0
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-W ramach tego samouczka utworzysz zadanie, które odczytuje zawartość pliku z wartościami rozdzielanymi tabulatorami (TSV) i konwertuje je do pliku z wartościami rozdzielanymi przecinkami (CSV). Aby wykonać kroki opisane w tym samouczku, korzystając z innych obsługiwanych narzędzi, użyj listy rozwijanej w górnej części tej sekcji.
+W tym artykule opisano, jak używać interfejsu wiersza polecenia platformy Azure 2.0 do tworzenia kont usługi Azure Data Lake Analytics oraz przesyłania zadań i wykazów U-SQL. Zadanie odczytuje zawartość pliku z wartościami rozdzielanymi tabulatorami (TSV) i konwertuje je do pliku z wartościami rozdzielanymi przecinkami (CSV). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed przystąpieniem do wykonywania kroków opisanych w tym samouczku musisz mieć poniższe:
+Przed rozpoczęciem musisz mieć następujące elementy:
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Interfejs wiersza polecenia platformy Azure 2.0**. Zobacz temat [Instalowanie i konfigurowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).

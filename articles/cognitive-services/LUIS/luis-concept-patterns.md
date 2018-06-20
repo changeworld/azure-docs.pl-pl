@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr
-ms.openlocfilehash: 7ccc8353c91c354c745d52f9fc9663131f2b1c4e
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: f45a9dfaf2863b81083fbfb647f420d9a4baed5a
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35356444"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36264667"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Wzorce poprawić precyzję przewidywania
 Wzorce są przeznaczone do poprawy dokładności po kilku zniesławiających są bardzo podobne. Udostępniając wzorca utterance, LUIS może mieć wysokiego zaufania prognozowania. 
@@ -119,4 +119,4 @@ Dowiedz się [najlepsze rozwiązania](luis-concept-best-practices.md).
 > [!div class="nextstepaction"]
 > [Dowiedz się, jak Implementowanie wzorców w tym samouczku](luis-tutorial-pattern.md)
 
-[LUIS]: luis-reference-regions.md
+[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

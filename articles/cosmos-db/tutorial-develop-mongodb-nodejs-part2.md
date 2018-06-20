@@ -2,24 +2,22 @@
 title: Samouczek bazy danych MongoDB, usługi Angular i języka Node dla platformy Azure — część 2 | Microsoft Doc
 description: Część 2 z serii samouczków o tworzeniu aplikacji bazy danych MongoDB przy użyciu usługi Angular i języka Node dla usługi Azure Cosmos DB przy użyciu dokładnie tych samych interfejsów API, które były używane dla bazy danych MongoDB.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
 editor: ''
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: ''
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 9d3c3209807a201f11d4d0a4ddd905f332a3951f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b35f003c18e19eafd3dfa9988409ceacb44e3bc4
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798070"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-2-create-a-nodejs-express-app-with-the-angular-cli"></a>Tworzenie aplikacji bazy danych MongoDB przy użyciu usług Angular i Azure Cosmos DB— część 2: tworzenie aplikacji Node.js Express przy użyciu interfejsu wiersza polecenia usługi Angular 
 
@@ -65,10 +63,10 @@ Dla tego samouczka wymagane są również następujące elementy:
 
 ## <a name="use-the-angular-cli-to-create-a-new-project"></a>Tworzenie nowego projektu przy użyciu interfejsu wiersza polecenia usługi Angular
 
-1. W wierszu polecenia przejdź do folderu, w którym chcesz utworzyć nowy projekt, a następnie uruchom poniższe polecenie. To polecenie tworzy nowy folder i projekt o nazwie angular-cosmosdb i instaluje składniki usługi Angular wymagane dla nowej aplikacji. Powoduje ono także zainstalowanie kodu źródłowego w folderze src/client (-sd src/client), używa minimalnej instalacji (--minimal) i wskazuje, że projekt korzysta z rozwiązania Sass (składnia przypominająca CSS z flagą --style scss).
+1. W wierszu polecenia przejdź do folderu, w którym chcesz utworzyć nowy projekt, a następnie uruchom poniższe polecenie. To polecenie tworzy nowy folder i projekt o nazwie angular-cosmosdb i instaluje składniki usługi Angular wymagane dla nowej aplikacji. Używa ono minimalnej instalacji (--minimal) i wskazuje, że projekt korzysta z rozwiązania Sass (składnia przypominająca język CSS ustawiana za pomocą flagi --style scss).
 
     ```bash
-    ng new angular-cosmosdb -sd src/client --minimal --style scss
+    ng new angular-cosmosdb --minimal --style scss
     ```
 
 2. Po wykonaniu polecenia przejdź do katalogów w folderze src/client.
@@ -151,11 +149,9 @@ Dla tego samouczka wymagane są również następujące elementy:
 
 7. Zapisz wszystkie zmodyfikowane pliki. 
 
-8. W programie Visual Studio Code kliknij przycisk **Debuguj** ![Ikona Debuguj w programie Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png), kliknij przycisk z kołem zębatym ![Przycisk z kołem zębatym w programie Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png), a następnie wybierz pozycję **Node.js** w celu utworzenia konfiguracji.
+8. W programie Visual Studio Code kliknij przycisk **Debug** (Debuguj) ![Ikona Debuguj w programie Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png), a następnie kliknij przycisk z kołem zębatym ![Przycisk z kołem zębatym w programie Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png). Nowy plik launch.json zostanie otwarty w programie Visual Studio Code.
 
-   Nowy plik launch.json zostanie otwarty w programie Visual Studio Code.
-
-8. W wierszu 11 pliku launch.json, zmień wartość `"program": "${file}"` na `"program": "${workspaceRoot}/src/server/index.js"` i zapisz plik.
+8. W wierszu 11 pliku launch.json, zmień wartość `"${workspaceFolder}\\server"` na `"program": "${workspaceRoot}/src/server/index.js"` i zapisz plik.
 
 9. Kliknij przycisk **Rozpocznij debugowanie** przycisk ![Ikona Debuguj w programie Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png) w celu uruchomienia aplikacji.
 

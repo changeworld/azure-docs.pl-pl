@@ -3,17 +3,16 @@ title: Contoso — Konfigurowanie infrastruktury migracji | Dokumentacja firmy M
 description: Dowiedz się, jak Contoso konfiguruje infrastruktury platformy Azure dla migracji na platformie Azure.
 services: azure-migrate
 author: rayne-wiselman
-manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: 8b7f0675c1bbf378d02eb52843caf27a1dce2fb8
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: bf861dc6317a8cc3a3ed862dfd6c133a1dcbe685
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301205"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232462"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso — wdrażanie infrastruktury migracji
 
@@ -42,11 +41,12 @@ W tym artykule Contoso zdefiniowane wszystkie elementy infrastruktury muszą zak
 
 Przed ich można migrować na platformie Azure, jest krytyczny, że Contoso przygotowanie infrastruktury.  Ogólnie rzecz biorąc istnieją pięć obszary potrzebnych można traktować:
 
-1. **Subskrypcje platformy Azure**: jak będą one zakupu platformy Azure i interakcji z platformą Azure i usługi?
-2. **Tożsamość hybrydowa**: jak będą one zarządzania i kontrolować dostęp do lokalnych i dostępnych zasobów platformy Azure po zakończeniu migracji? Jak one rozszerzać lub Przenieś zarządzania tożsamościami w chmurze?
-3. **Odzyskiwanie po awarii i odporności**: jak będzie zapewnić że infrastruktura i aplikacje są odporne po wystąpieniu awarii i awarii?
-4. **Sieć**: jak powinny one projektowania infrastruktury sieci i nawiąż łączność programów ich lokalnych centrów danych i Azure?
-5. **Zabezpieczenia i nadzór nad**: jak będą one zabezpieczania wdrożenia ich hybrydowych/Azure i przechowuj je wyrównane wymagania dotyczące zabezpieczeń i zarządzania?
+**Krok 1: Subskrypcji platformy Azure**: jak będą one zakupu platformy Azure i interakcji z platformą Azure i usługi?  
+**Krok 2: Tożsamość hybrydowa**: jak będą one zarządzania i kontrolować dostęp do lokalnych i dostępnych zasobów platformy Azure po zakończeniu migracji? Jak one rozszerzać lub Przenieś zarządzania tożsamościami w chmurze?  
+**Krok 3: Odzyskiwanie po awarii i odporności**: jak będzie zapewnić że infrastruktura i aplikacje są odporne po wystąpieniu awarii i awarii?  
+**Krok 4: Sieć**: jak powinny one projektowania infrastruktury sieci i nawiąż łączność programów ich lokalnych centrów danych i Azure?  
+**Krok 5: Zabezpieczeń**: jak będą one zabezpieczyć wdrożenia ich hybrydowych/Azure?  
+**Krok 6: Zarządzanie**: jak one zachowa ich wdrożenia wyrównane wymagania dotyczące zabezpieczeń i zarządzania?
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
@@ -780,4 +780,4 @@ Z tej infrastruktury w miejscu są one gotowe do przeniesienia i wypróbować mi
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Jako pierwszego scenariusza migracji Contoso mają migracji ich lokalnych SmartHotel dwuwarstwowej aplikacji działające na maszynach wirtualnych VMware do platformy Azure. Będzie migrowania maszyn wirtualnych do aplikacji na maszynach wirtualnych platformy Azure i bazę danych aplikacji na wystąpienie zarządzane SQL Azure.
+Jako pierwszego scenariusza migracji, będą Contoso [oceny ich lokalnych SmartHotel dwuwarstwowej aplikacji do migracji do usługi Azure](contoso-migration-assessment.md). 

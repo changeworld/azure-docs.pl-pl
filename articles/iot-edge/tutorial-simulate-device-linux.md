@@ -1,80 +1,81 @@
 ---
-title: Symulowanie Azure IoT Edge w systemie Linux | Dokumentacja firmy Microsoft
-description: Instalowanie środowiska uruchomieniowego Azure IoT Edge na symulowane urządzenie w systemie Linux i wdrażanie pierwszego modułu
-services: iot-edge
-keywords: ''
+title: Symulacja usługi Azure IoT Edge w systemie Linux | Microsoft Docs
+description: Instalowanie środowiska uruchomieniowego usługi Azure IoT Edge na urządzeniu symulowanym w systemie Linux i wdrażanie pierwszego modułu
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.reviewer: elioda
 ms.date: 01/11/2018
-ms.topic: article
+ms.topic: tutorial
 ms.service: iot-edge
-ms.openlocfilehash: b7f0aa514cfffb8fb2ca76238a6a65a8e6443e56
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
-ms.translationtype: MT
+services: iot-edge
+ms.custom: mvc
+ms.openlocfilehash: 0b8b2658af9173cea6a7cdcb0147c7b0dc13a455
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631000"
 ---
-# <a name="deploy-azure-iot-edge-on-a-simulated-device-in-linux-or-macos---preview"></a>Wdrażanie usługi Azure IoT krawędzi na symulowane urządzenie w systemie Linux lub MacOS — podglądu
+# <a name="deploy-azure-iot-edge-on-a-simulated-device-in-linux-or-macos---preview"></a>Wdrażanie usługi Azure IoT Edge na urządzeniu symulowanym w systemie Linux lub MacOS — wersja zapoznawcza
 
-Krawędź IoT Azure umożliwia przeprowadzanie analizy i przetwarzania danych na urządzeniach, zamiast do dystrybuowania wszystkich danych w chmurze. Samouczki krawędzi IoT przedstawiają sposób wdrażania różnego rodzaju moduły skompilowane z usług Azure lub kodu niestandardowego, ale najpierw należy urządzenia do testowania. 
+Usługa Azure IoT Edge umożliwia wykonywanie analiz i przetwarzanie danych na urządzeniach, bez konieczności wypychania wszystkich danych do chmury. W samouczkach usługi IoT Edge przedstawiono sposób wdrażania różnych typów modułów tworzonych przy użyciu usług platformy Azure lub własnego kodu — ale najpierw potrzebne jest urządzenie do ich testowania. 
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
-1. Tworzenie Centrum IoT
-2. Zarejestruj urządzenia IoT
-3. Uruchom środowisko uruchomieniowe krawędzi IoT
+1. Tworzenie centrum IoT Hub
+2. Rejestrowanie urządzenia usługi IoT Edge
+3. Uruchamianie środowiska uruchomieniowego usługi IoT Edge
 4. Wdrażanie modułu
 
 ![Architektura samouczka][2]
 
-Symulowane urządzenie, które możesz utworzyć w tym samouczku jest monitor, który generuje temperatury, wilgotności i wykorzystania danych. Innych samouczków usługi Azure IoT krawędzi zależą od pracy, w tym miejscu poprzez wdrożenie modułów, które analiz biznesowych. 
+Urządzenie symulowane tworzone podczas pracy z tym samouczkiem to monitor generujący dane dotyczące temperatury, wilgotności i ciśnienia. Z wykonanej tutaj pracy będziesz korzystać w pozostałych samouczkach usługi Azure IoT Edge, wdrażając moduły do analizy tych danych na potrzeby biznesowe. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym samouczku korzysta z komputera lub maszyny wirtualnej, takie jak urządzenie Internetu rzeczy. Aby wyłączyć komputer do urządzenia IoT, wymagane są następujące usługi:
+Podczas pracy z tym samouczkiem będziesz korzystać ze swojego komputera lub z maszyny wirtualnej jak z urządzenia Internetu rzeczy. Aby używać maszyny jako urządzenia usługi IoT Edge, potrzebne są następujące usługi:
 
-* Python pip, aby zainstalować środowisko uruchomieniowe IoT krawędzi.
+* Menedżer pakietów pip języka Python do zainstalowania środowiska uruchomieniowego usługi IoT Edge.
    * Linux: `sudo apt-get install python-pip`.
-     * _Należy pamiętać, że w niektórych dystrybucji (np. Raspbian), może być również konieczne uaktualnienie niektórych pakietów pip i zainstalować dodatkowe zależności:_
+     * _Należy pamiętać, że w przypadku niektórych dystrybucji (takich jak Raspbian) może być również konieczne uaktualnienie niektórych pakietów pip i zainstalowanie dodatkowych zależności:_
      ```
      sudo pip install --upgrade setuptools pip
      
      sudo apt-get install python2.7-dev libffi-dev libssl-dev
      ```
    * MacOS: `sudo easy_install pip`.
-* Docker do uruchamiania krawędzi IoT modułów
-   * [Zainstaluj dla systemu Linux Docker] [ lnk-docker-ubuntu] i upewnij się, że jest uruchomiona. 
-   * [Zainstaluj Docker dla komputerów Mac] [ lnk-docker-mac] i upewnij się, że jest uruchomiona. 
+* Aplikacja Docker do uruchamiania modułów usługi IoT Edge
+   * [Zainstaluj aplikację Docker dla systemu Linux][lnk-docker-ubuntu] i upewnij się, że jest uruchomiona. 
+   * [Zainstaluj aplikację Docker dla komputerów Mac][lnk-docker-mac] i upewnij się, że jest uruchomiona. 
 
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT
 
-Uruchom samouczek tworzenia Centrum IoT.
-![Tworzenie Centrum IoT][3]
+Rozpocznij pracę z samouczkiem od utworzenia centrum IoT Hub.
+![Tworzenie centrum IoT Hub][3]
 
 [!INCLUDE [iot-hub-create-hub](../../includes/iot-hub-create-hub.md)]
 
-## <a name="register-an-iot-edge-device"></a>Zarejestruj urządzenia IoT
+## <a name="register-an-iot-edge-device"></a>Rejestrowanie urządzenia usługi IoT Edge
 
-Zarejestruj urządzenia IoT z nowo utworzonego Centrum IoT.
-![Zarejestruj urządzenie][4]
+Zarejestruj urządzenie usługi IoT Edge, korzystając z nowo utworzonego centrum IoT Hub.
+![Rejestrowanie urządzenia][4]
 
 [!INCLUDE [iot-edge-register-device](../../includes/iot-edge-register-device.md)]
 
-## <a name="install-and-start-the-iot-edge-runtime"></a>Zainstaluj i uruchom środowisko uruchomieniowe krawędzi IoT
+## <a name="install-and-start-the-iot-edge-runtime"></a>Instalowanie i uruchamianie środowiska uruchomieniowego usługi IoT Edge
 
-Zainstaluj i uruchom środowiska uruchomieniowego Azure IoT Edge na urządzeniu. 
-![Zarejestruj urządzenie][5]
+Zainstaluj i uruchom środowisko uruchomieniowe usługi Azure IoT Edge na urządzeniu. 
+![Rejestrowanie urządzenia][5]
 
-Środowisko uruchomieniowe krawędzi IoT jest wdrażana na wszystkich urządzeniach IoT krawędzi. Zawiera dwa moduły. **IoT krawędź agent** ułatwia wdrażanie i monitorowanie modułów na urządzeniu IoT krawędzi. **Centrum IoT krawędzi** zarządza komunikacji między modułami na urządzeniu IoT krawędzi i między urządzeniami a Centrum IoT. Po skonfigurowaniu środowiska uruchomieniowego na nowe urządzenia tylko agent krawędzi IoT rozpocznie się na początku. Centrum IoT krawędzi jest dostarczany później, podczas wdrażania modułu. 
+Środowisko uruchomieniowe usługi IoT Edge jest wdrożone na wszystkich urządzeniach usługi IoT Edge. Zawiera dwa moduły. **Agent usługi IoT Edge** ułatwia wdrażanie i monitorowanie modułów na urządzeniu usługi IoT Edge. **Centrum usługi IoT Edge** zarządza komunikacją między modułami na urządzeniu usługi IoT Edge oraz między urządzeniem a usługą IoT Hub. Po skonfigurowaniu środowiska uruchomieniowego na nowym urządzeniu najpierw zostanie uruchomiony tylko agent usługi IoT Edge. Centrum usługi IoT Edge będzie używane później, po wdrożeniu modułu. 
 
-Na komputerze, na którym będzie uruchamiane urządzenie brzegowe IoT Pobierz skrypt kontroli krawędzi IoT:
+Na komputerze, na którym ma działać urządzenie usługi IoT Edge, pobierz skrypt sterujący usługi IoT Edge:
 ```cmd
 sudo pip install -U azure-iot-edge-runtime-ctl
 ```
 
-Skonfiguruj środowisko uruchomieniowe za pomocą parametrów połączenia urządzenia IoT krawędzi z poprzedniej sekcji:
+Skonfiguruj środowisko uruchomieniowe za pomocą parametrów połączenia urządzenia usługi IoT Edge z poprzedniej sekcji:
 ```cmd
 sudo iotedgectl setup --connection-string "{device connection string}" --nopass
 ```
@@ -84,31 +85,31 @@ Uruchom środowisko uruchomieniowe:
 sudo iotedgectl start
 ```
 
-Docker wyboru, aby zobaczyć, czy agent krawędzi IoT jest uruchomiony jako moduł:
+Sprawdź w aplikacji Docker, czy agent usługi IoT Edge jest uruchomiony jako moduł:
 ```cmd
 sudo docker ps
 ```
 
-![Zobacz edgeAgent w Docker](./media/tutorial-simulate-device-linux/docker-ps.png)
+![Wyświetlanie modułu edgeAgent w aplikacji Docker](./media/tutorial-simulate-device-linux/docker-ps.png)
 
 ## <a name="deploy-a-module"></a>Wdrażanie modułu
 
-Zarządzanie urządzeniem krawędzi IoT Azure w chmurze, aby wdrożyć moduł, który będzie wysyłać dane telemetryczne z Centrum IoT.
-![Zarejestruj urządzenie][6]
+Zarządzając urządzeniem usługi Azure IoT Edge z chmury, wdróż moduł przesyłający dane telemetryczne do centrum IoT Hub.
+![Rejestrowanie urządzenia][6]
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
 
 ## <a name="view-generated-data"></a>Wyświetlanie wygenerowanych danych
 
-W tym samouczku zostało utworzone nowe urządzenie brzegowe IoT i na nim zainstalowany środowiska uruchomieniowego IoT krawędzi. Następnie użyto portalu Azure do umieszczenia krawędzi IoT modułu do uruchomienia na urządzeniu bez konieczności zmiany na urządzeniu. W takim przypadku moduł, który zostanie przypisany tworzy dane środowiska, używanego programu samouczków. 
+W tym samouczku utworzono nowe urządzenie usługi IoT Edge i zainstalowano na nim środowisko uruchomieniowe usługi IoT Edge. Następnie użyto witryny Azure Portal do wypchnięcia modułu usługi IoT Edge do uruchomienia na urządzeniu bez konieczności wprowadzenia zmian na samym urządzeniu. W tym przypadku wypchnięty moduł tworzy dane środowiskowe, których można użyć na potrzeby samouczków. 
 
-Otwórz wiersz polecenia na komputerze z uruchomionym symulowane urządzenie ponownie. Upewnij się, że moduł wdrożonych w chmurze jest uruchomiona na urządzeniu IoT krawędzi:
+Otwórz ponownie wiersz polecenia na komputerze z uruchomionym urządzeniem symulowanym. Upewnij się, że moduł wdrożony z chmury jest uruchomiony na urządzeniu usługi IoT Edge:
 
 ```cmd
 sudo docker ps
 ```
 
-![Wyświetl trzech modułów na urządzeniu](./media/tutorial-simulate-device-linux/docker-ps2.png)
+![Wyświetlanie trzech modułów na urządzeniu](./media/tutorial-simulate-device-linux/docker-ps2.png)
 
 Wyświetl komunikaty wysyłane z modułu tempSensor do chmury:
 
@@ -118,16 +119,16 @@ sudo docker logs -f tempSensor
 
 ![Wyświetlanie danych z modułu](./media/tutorial-simulate-device-linux/docker-logs.png)
 
-Można również wyświetlić dane telemetryczne, wysyła urządzenia przy użyciu [narzędzia explorer Centrum IoT][lnk-iothub-explorer]. 
+Możesz też wyświetlić dane telemetryczne wysyłane przez urządzenie przy użyciu [narzędzia eksploratora usługi IoT Hub][lnk-iothub-explorer]. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku został utworzony nowe urządzenie brzegowe IoT i interfejs chmury Azure IoT krawędzi można wdrożyć kod na urządzeniu. Pojawiły się symulowane urządzenie generowania nieprzetworzone dane o jego środowisku. 
+W tym samouczku utworzono nowe urządzenie usługi IoT Edge i wdrożono na nim kod przy użyciu interfejsu usługi Azure IoT Edge w chmurze. Masz teraz urządzenie symulowane generujące dane pierwotne dotyczące jego otoczenia. 
 
-W tym samouczku jest wstępnym dla wszystkich innych samouczków IoT krawędzi. Można kontynuować do wszystkich innych samouczków, aby dowiedzieć się, jak Azure IoT krawędzi można przekształcić danych biznesowych na krawędzi.
+Wykonanie czynności przedstawionych w tym samouczku jest wymagane do pracy z wszystkimi pozostałymi samouczkami usługi IoT Edge. Możesz teraz kontynuować pracę, korzystając ze wszystkich innych samouczków, aby dowiedzieć, jak usługa Azure IoT Edge może ułatwiać przekształcanie tych danych w analizy biznesowe na urządzeniach brzegowych.
 
 > [!div class="nextstepaction"]
-> [Tworzenie i wdrażanie kodu C# jako moduł](tutorial-csharp-module.md)
+> [Tworzenie i wdrażanie kodu w języku C# jako modułu](tutorial-csharp-module.md)
 
 
 <!-- Images -->

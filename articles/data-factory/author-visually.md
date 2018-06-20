@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/01/2018
 ms.author: shlo
-ms.openlocfilehash: b588fd4b67dbed1e0dc3d4ad2cbd75b462ce311f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: a7efe75507fad8e0391f9ad433ba416ed771063b
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725146"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36265292"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Tworzenie Visual w fabryce danych Azure
 Fabryka danych Azure użytkownika interfejsu środowisko (UX) pozwala wizualnie tworzyć i wdrażać zasobów dla fabrykę danych bez konieczności pisania kodu. Można przeciągnij działania kanwy potoku, wykonaj uruchomień testów, wielokrotnie powtarzane, debugowanie i wdrażanie i monitorowanie sekwencji potoku. Istnieją dwa podejścia do wykonywania visual tworzenia przy użyciu środowiska użytkownika:
@@ -63,11 +63,11 @@ W okienku wyświetlana następujący kod programu VSTS ustawienia repozytorium:
 |:--- |:--- |:--- |
 | **Typ repozytorium** | Typ repozytorium kodu usługi VSTS.<br/>**Uwaga**: GitHub nie jest obecnie obsługiwany. | Visual Studio Team Services Git |
 | **Azure Active Directory** | Nazwa dzierżawy usługi Azure AD. | <your tenant name> |
-| **Visual Studio Team Services konta** | Nazwa konta usługi VSTS. Możesz znaleźć nazwę konta usługi VSTS na `https://{account name}.visualstudio.com`. Możesz [Zaloguj się do konta usługi VSTS](https://www.visualstudio.com/team-services/git/) dostępu do profilu programu Visual Studio i zobacz, projektów i repozytoriów. | \<Nazwa konta > |
-| **ProjectName** | VSTS nazwę projektu. Można znaleźć programu VSTS nazwę projektu w `https://{account name}.visualstudio.com/{project name}`. | \<Nazwa projektu programu VSTS > |
-| **RepositoryName** | Nazwę repozytorium kodu usługi VSTS. Projekty programu VSTS zawierają repozytoriów narzędzia Git, aby zarządzać kodu źródłowego w miarę rozwoju projektu. Możesz utworzyć nowe repozytorium lub użyj istniejącego repozytorium, który jest już w projekcie. | \<nazwę repozytorium kodu programu VSTS > |
-| **Współpraca z gałęzi** | Gałąź współpracy VSTS używany do publikowania. Domyślnie jest `master`. Zmiany, w przypadku, gdy chcesz opublikować zasobów z innej gałęzi. | \<Nazwa gałęzi współpracy > |
-| **Folder główny** | Folder główny w gałęzi współpracy VSTS. | \<nazwę folderu głównego > |
+| **Visual Studio Team Services konta** | Nazwa konta usługi VSTS. Możesz znaleźć nazwę konta usługi VSTS na `https://{account name}.visualstudio.com`. Możesz [Zaloguj się do konta usługi VSTS](https://www.visualstudio.com/team-services/git/) dostępu do profilu programu Visual Studio i zobacz, projektów i repozytoriów. | <your account name> |
+| **ProjectName** | VSTS nazwę projektu. Można znaleźć programu VSTS nazwę projektu w `https://{account name}.visualstudio.com/{project name}`. | <your VSTS project name> |
+| **RepositoryName** | Nazwę repozytorium kodu usługi VSTS. Projekty programu VSTS zawierają repozytoriów narzędzia Git, aby zarządzać kodu źródłowego w miarę rozwoju projektu. Możesz utworzyć nowe repozytorium lub użyj istniejącego repozytorium, który jest już w projekcie. | <your VSTS code repository name> |
+| **Współpraca z gałęzi** | Gałąź współpracy VSTS używany do publikowania. Domyślnie jest `master`. Zmiany, w przypadku, gdy chcesz opublikować zasobów z innej gałęzi. | <your collaboration branch name> |
+| **Folder główny** | Folder główny w gałęzi współpracy VSTS. | <your root folder name> |
 | **Importowanie istniejących zasobów fabryki danych do repozytorium** | Określa, czy importowanie istniejących zasobów fabryka danych z środowiska użytkownika **tworzenia obszaru roboczego** do repozytorium Git programu VSTS. Wybierz pole, aby zaimportować zasoby fabryki danych do repozytorium Git skojarzonego w formacie JSON. Ta akcja Eksportuje każdy z zasobów pojedynczo (oznacza to połączone usługi i zestawy danych zostaną wyeksportowane do oddzielnych JSONs). Gdy to pole nie jest zaznaczone, nie są importowane istniejących zasobów. | Wybrany (ustawienie domyślne) |
 
 #### <a name="configuration-method-2-ux-authoring-canvas"></a>Metoda konfiguracji 2: UX tworzenia obszaru roboczego

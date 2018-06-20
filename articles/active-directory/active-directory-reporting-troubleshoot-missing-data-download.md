@@ -3,27 +3,27 @@ title: 'Rozwiązywanie problemów: Brak danych w pobranych dziennikach aktywnoś
 description: Zawiera rozwiązanie problemu dotyczącego braku danych w pobranych dziennikach aktywności usługi Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: ffce7eb1-99da-4ea7-9c4d-2322b755c8ce
 ms.service: active-directory
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 01/15/2018
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6878ff8175514b97fbeab70b932349ce400394dd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: d0638404ec6f5b6d13aa207ef54913c1bd3ecc1a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34589869"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232503"
 ---
-# <a name="i-cant-find-any-data-in-the-azure-active-directory-activity-logs-i-have-downloaded"></a>Nie mogę znaleźć danych w pobranych dziennikach aktywności usługi Azure Active Directory
+# <a name="i-cant-find-any-data-in-the-azure-active-directory-activity-logs-i-downloaded"></a>Nie można znaleźć żadnych danych w dziennikach działania usługi Azure Active Directory pobrany
 
 
 ## <a name="symptoms"></a>Objawy
@@ -35,12 +35,12 @@ Pobrano dzienniki aktywności (inspekcji lub logowania), ale nie widać wszystki
 
 ## <a name="cause"></a>Przyczyna
 
-Dzienniki aktywności pobierane z witryny Azure Portal mają nałożony limit wynoszący 120 tysięcy rekordów posortowanych według najnowszych wpisów. 
+Podczas pobierania dzienników aktywności w portalu Azure, jest ograniczona skali do 5000 rekordy posortowane według ostatniego. 
 
 ## <a name="resolution"></a>Rozwiązanie
 
-Można wykorzystać [interfejsy API raportowania usługi Azure AD](active-directory-reporting-api-getting-started.md), aby pobrać do miliona rekordów z dowolnego okresu. Zalecamy regularne uruchamianie skryptu wywołującego interfejsy API raportowania w celu pobrania rekordów w sposób przyrostowy w podanym okresie (np. codziennie lub co tydzień).
+Można wykorzystać [interfejsy API raportowania usługi Azure AD](active-directory-reporting-api-getting-started.md), aby pobrać do miliona rekordów z dowolnego okresu. Nasze podejście zalecane jest uruchomienie skryptu zgodnie z harmonogramem, który wywołuje raportowania interfejsów API, aby pobrać rekordy w sposób przyrostowy w danym okresie czasu (na przykład codziennie lub co tydzień).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Zobacz temat[Azure Active Directory reporting FAQ](active-directory-reporting-faq.md) (Często zadawane pytania dotyczące raportowania usługi Azure Active Directory).
 

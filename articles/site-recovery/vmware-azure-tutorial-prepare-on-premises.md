@@ -6,37 +6,38 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2018
+ms.date: 06/04/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: f7722891af15111fd0151055c35bf24100ed79b1
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8a9b33469a439c9f99c80391bfeb1fb4040dbbc2
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737599"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Przygotowywanie lokalnych serwerów VMware do odzyskiwania po awarii na platformie Azure
 
-W tym samouczku pokazano, jak przygotować infrastrukturę lokalną VMware do replikowania maszyn wirtualnych VMware na platformie Azure. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Usługa [Azure Site Recovery](site-recovery-overview.md) przyczynia się do strategii związanej z ciągłością biznesową i odzyskiwaniem po awarii (BCDR, business continuity and disaster recovery) przez zapewnienie niezawodnego działania aplikacji biznesowych podczas planowanych lub nieplanowanych przestojów. Usługa Site Recovery zarządza odzyskiwaniem po awarii maszyn lokalnych i maszyn wirtualnych platformy Azure, a także organizuje to odzyskiwanie. Obejmuje to replikację, przechodzenie w tryb failover i odzyskiwanie.
+
+- Z drugiego samouczka z serii dowiesz się, jak skonfigurować odzyskiwanie po awarii na platformie Azure dla lokalnych maszyn wirtualnych VMware. W pierwszym samouczku [konfigurowaliśmy składniki Azure](tutorial-prepare-azure.md) potrzebne do odzyskiwania po awarii programu VMware.
+- Samouczki pokazują najprostsze ścieżki wdrożenia scenariusza. Jeśli jest to możliwe, są używane opcje domyślne, i nie są przedstawione wszystkie ustawienia i ścieżki. 
+
+W tym artykule opisano, jak lokalnie przygotować środowisko VMware, w którym można replikować maszyny wirtualne VMware do platformy Azure przy użyciu usługi Azure Site Recovery. Omawiane kwestie:
 
 > [!div class="checklist"]
 > * Przygotowywanie konta na serwerze vCenter lub hoście vSphere ESXi w celu zautomatyzowania odnajdowania maszyn wirtualnych
 > * Przygotowywanie konta do automatycznej instalacji usługi Mobility na maszynach wirtualnych VMware
-> * Przegląd wymagań dotyczących serwerów VMware
-> * Przegląd wymagań dotyczących maszyn wirtualnych VMware
+> * Przegląd wymagań dotyczących serwerów VMware i maszyn wirtualnych
+> * Przygotowanie do połączenia z maszynami wirtualnymi Azure po przejściu do trybu failover
 
-W tej serii samouczków pokazano, jak zreplikować pojedynczą maszynę wirtualną za pomocą usługi Azure Site Recovery. 
-
-Jest to drugi samouczek z tej serii. Upewnij się, że są już [skonfigurowane składniki platformy Azure](tutorial-prepare-azure.md) zgodnie z opisem w poprzednim samouczku.
-
-W przypadku replikowania wielu maszyn wirtualnych pobierz [narzędzie Planista wdrażania](https://aka.ms/asr-deployment-planner) na potrzeby replikacji maszyn wirtualnych programu VMware. [Dowiedz się więcej](site-recovery-deployment-planner.md).
 
 
 ## <a name="prepare-an-account-for-automatic-discovery"></a>Przygotowywanie konta do automatycznego odnajdowania
 
 Usługa Site Recovery musi mieć dostęp do serwerów VMware w następujących celach:
 
-- Automatyczne odnajdowanie maszyn wirtualnych. Wymagane jest co najmniej konto tylko do odczytu.
+- Automatyczne odnajdywanie maszyn wirtualnych. Wymagane jest co najmniej konto tylko do odczytu.
 - Organizowanie replikacji, trybu failover i powrotu po awarii. Potrzebne jest konto, na którym można uruchamiać operacje, takie jak tworzenie i usuwanie dysków, a także włączanie maszyn wirtualnych.
 
 Utwórz konto w następujący sposób:
@@ -54,12 +55,17 @@ Utwórz konto w następujący sposób:
 
 ## <a name="prepare-an-account-for-mobility-service-installation"></a>Przygotowywanie konta do instalacji usługi Mobility
 
-Usługa Mobility musi być zainstalowana na każdej maszynie wirtualnej, która ma być replikowana. Usługa Site Recovery automatycznie instaluje tę usługę po włączeniu replikacji dla danej maszyny wirtualnej. Instalacja automatyczna wymaga przygotowania konta, za pomocą którego usługa Site Recovery będzie uzyskiwać dostęp do maszyny wirtualnej. To konto określa się podczas konfigurowania odzyskiwania po awarii w konsoli platformy Azure.
+Usługę Mobility należy zainstalować na każdej maszynie, która ma być replikowana. Usługa Site Recovery może wykonać instalację typu push tej usługi po włączeniu replikacji dla maszyny. Można też zainstalować usługę ręcznie lub przy użyciu narzędzi instalacji.
 
-1. Przygotuj domenę lub konto lokalne z uprawnieniami do instalowania na maszynie wirtualnej.
-2. Aby zainstalować na maszynach wirtualnych z systemem Windows, jeśli nie korzystasz z konta domeny, wyłącz kontrolę dostępu użytkowników zdalnych na komputerze lokalnym.
-   - W kluczu rejestru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** dodaj wpis DWORD **LocalAccountTokenFilterPolicy** o wartości 1.
-3. Aby zainstalować na maszynach wirtualnych z systemem Linux, przygotuj konto superużytkownika na serwerze źródłowym z systemem Linux.
+- W tym samouczku zamierzamy zainstalować usługę Mobility przy użyciu instalacji typu push.
+- Ta instalacja typu push wymaga przygotowania konta, za pomocą którego usługa Site Recovery może uzyskiwać dostęp do maszyny wirtualnej. To konto określa się podczas konfigurowania odzyskiwania po awarii w konsoli platformy Azure.
+
+Przygotuj konto w następujący sposób:
+
+Przygotuj domenę lub konto lokalne z uprawnieniami do instalowania na maszynie wirtualnej.
+
+- **Maszyny wirtualne Windows**: Aby zainstalować na maszynach wirtualnych z systemem Windows, jeśli nie korzystasz z konta domeny, wyłącz kontrolę dostępu użytkowników zdalnych na komputerze lokalnym. Aby to zrobić, w kluczu rejestru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** dodaj wpis DWORD **LocalAccountTokenFilterPolicy** o wartości 1.
+- **Maszyny wirtualne Linux**: Aby zainstalować na maszynach wirtualnych z systemem Linux, przygotuj konto superużytkownika na serwerze źródłowym z systemem Linux.
 
 
 ## <a name="check-vmware-requirements"></a>Sprawdzanie wymagań dotyczących programu VMware
@@ -75,21 +81,31 @@ Upewnij się, że serwery VMware i maszyny wirtualne spełniają wymagania.
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Przygotowanie do połączenia z maszynami wirtualnymi Azure po przejściu do trybu failover
 
-Podczas scenariusza trybu failover może zaistnieć potrzeba połączenia się z replikowanymi maszynami wirtualnymi na platformie Azure z sieci lokalnej.
+Po przejściu do trybu failover można połączyć się z maszynami wirtualnymi Azure z sieci lokalnej.
 
 Aby nawiązać połączenie z maszynami wirtualnymi z systemem Windows przy użyciu protokołu RDP po przejściu do trybu failover, wykonaj następujące czynności:
 
-1. Aby uzyskać dostęp przez Internet, włącz protokół RDP na lokalnej maszynie wirtualnej przed włączeniem trybu failover. Upewnij się, że reguły TCP i UDP zostały dodane do profilu **publicznego** oraz że w pozycji **Zapora systemu Windows** > **Dozwolone aplikacje** zezwolono na użycie protokołu RDP we wszystkich profilach.
-2. Aby uzyskać dostęp za pośrednictwem połączenia VPN typu lokacja-lokacja, włącz protokół RDP na maszynie lokalnej. Używanie protokołu RDP powinno być dozwolone w pozycji **Zapora systemu Windows** -> **Dozwolone aplikacje i funkcje** dla sieci typu **Domena i prywatne**.
-   Upewnij się, że zasady sieci SAN systemu operacyjnego są ustawione na **OnlineAll**. [Dowiedz się więcej](https://support.microsoft.com/kb/3031135). Podczas wyzwalania trybu failover na maszynie wirtualnej nie powinno być żadnych oczekujących aktualizacji systemu Windows. W przeciwnym razie nie będzie można zalogować się na maszynie wirtualnej do momentu ukończenia aktualizacji.
-3. Na maszynie wirtualnej platformy Azure z systemem Windows po przejściu do trybu failover sprawdź **diagnostykę rozruchu**, aby wyświetlić zrzut ekranu maszyny wirtualnej. Jeśli nie możesz się połączyć, upewnij się, że maszyna wirtualna jest uruchomiona, i przejrzyj te [porady dotyczące rozwiązywania problemów](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
+- **Dostęp do Internetu**. Przed włączeniem trybu failover włącz protokół RDP na lokalnej maszynie wirtualnej. Upewnij się, że reguły TCP i UDP zostały dodane do profilu **publicznego** oraz że w pozycji **Zapora systemu Windows** > **Dozwolone aplikacje** zezwolono na użycie protokołu RDP we wszystkich profilach.
+- **Dostęp do sieci VPN typu lokacja-lokacja**:
+    - Przed przejściem do trybu failover włącz protokół RDP na maszynie lokalnej.
+    - Używanie protokołu RDP powinno być dozwolone w pozycji **Zapora systemu Windows** -> **Dozwolone aplikacje i funkcje** dla sieci typu **Domena i prywatne**.
+    - Upewnij się, że zasady sieci SAN systemu operacyjnego są ustawione na **OnlineAll**. [Dowiedz się więcej](https://support.microsoft.com/kb/3031135).
+- Podczas wyzwalania trybu failover na maszynie wirtualnej nie powinno być żadnych oczekujących aktualizacji systemu Windows. W przeciwnym razie nie będzie można zalogować się na maszynie wirtualnej do momentu ukończenia aktualizacji.
+- Na maszynie wirtualnej platformy Azure z systemem Windows po przejściu do trybu failover sprawdź **diagnostykę rozruchu**, aby wyświetlić zrzut ekranu maszyny wirtualnej. Jeśli nie możesz się połączyć, upewnij się, że maszyna wirtualna jest uruchomiona, i przejrzyj te [porady dotyczące rozwiązywania problemów](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 Aby nawiązać połączenie z maszynami wirtualnymi z systemem Linux przy użyciu powłoki SSH po przejściu do trybu failover, wykonaj następujące czynności:
 
-1. Na komputerze lokalnym przed włączeniem trybu failover upewnij się, że skonfigurowano automatyczne uruchamianie usługi Secure Shell przy rozruchu systemu. Sprawdź, czy reguły zapory zezwalają na połączenie SSH.
+- Na komputerze lokalnym przed włączeniem trybu failover upewnij się, że skonfigurowano automatyczne uruchamianie usługi Secure Shell przy rozruchu systemu.
+- Sprawdź, czy reguły zapory zezwalają na połączenie SSH.
+- Na maszynie wirtualnej platformy Azure po przejściu do trybu failover zezwól na połączenia przychodzące do portu SSH w regułach grupy zabezpieczeń sieci na maszynie wirtualnej w trybie failover i w podsieci platformy Azure.
+- [Dodaj publiczny adres IP](site-recovery-monitoring-and-troubleshooting.md) dla maszyny wirtualnej.
+- Możesz sprawdzić **diagnostykę rozruchu**, aby wyświetlić zrzut ekranu maszyny wirtualnej.
 
-2. Na maszynie wirtualnej platformy Azure po przejściu do trybu failover zezwól na połączenia przychodzące do portu SSH w regułach grupy zabezpieczeń sieci na maszynie wirtualnej w trybie failover i w podsieci platformy Azure.
-   [Dodaj publiczny adres IP](site-recovery-monitoring-and-troubleshooting.md) dla maszyny wirtualnej. Możesz sprawdzić **diagnostykę rozruchu**, aby wyświetlić zrzut ekranu maszyny wirtualnej.
+## <a name="useful-links"></a>Przydatne łącza
+
+Jeśli przeprowadzasz replikację wielu maszyn wirtualnych, przed rozpoczęciem należy zaplanować pojemność i wdrożenie. [Dowiedz się więcej](site-recovery-deployment-planner.md).
+
+
 
 ## <a name="next-steps"></a>Następne kroki
 

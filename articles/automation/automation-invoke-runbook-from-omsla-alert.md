@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5a3b14bd8409226772d210f60dadd525960f7890
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0094362ee083511b05027f22b37ed62d56d68d41
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34192666"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36217137"
 ---
 # <a name="call-an-azure-automation-runbook-from-a-log-analytics-alert"></a>Wywoływanie elementu runbook usługi Azure Automation z alertu usługi Log Analytics
 
@@ -33,7 +33,7 @@ Podczas konfigurowania alertu dostępne są dwie opcje wywołania elementu runbo
 
 ## <a name="calling-a-runbook-by-using-a-webhook"></a>Wywoływanie elementu runbook przy użyciu elementu webhook
 
-Elementu webhook można użyć do uruchomienia określonego elementu runbook w usłudze Azure Automation za pośrednictwem pojedynczego żądania HTTP. Zanim skonfigurujesz [alert usługi Log Analytics](../log-analytics/log-analytics-alerts.md#alert-rules) do wywoływania elementu runbook za pomocą elementu webhook jako akcji alertu, musisz [utworzyć element webhook](automation-webhooks.md#creating-a-webhook) dla elementu runbook, który jest wywoływany za pośrednictwem tej metody. Pamiętaj o zapisaniu adresu URL elementu webhook, aby podać go podczas konfigurowania reguły alertu.   
+Elementu webhook można użyć do uruchomienia określonego elementu runbook w usłudze Azure Automation za pośrednictwem pojedynczego żądania HTTP. Przed skonfigurowaniem [akcji elementu Webhook dla alertów dziennika](../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md) do wywołania elementu runbook przy użyciu elementu webhook jako Akcja alertu, musisz [tworzenia elementu webhook](automation-webhooks.md#creating-a-webhook) dla elementu runbook, która jest wywoływana za pomocą tej metody. Pamiętaj o zapisaniu adresu URL elementu webhook, aby podać go podczas konfigurowania reguły alertu.   
 
 ## <a name="calling-a-runbook-directly"></a>Bezpośrednie uruchamianie elementu runbook
 
@@ -99,6 +99,6 @@ Alternatywnie Jeśli nie masz konta automatyzacji połączone z obszaru roboczeg
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby dowiedzieć się więcej o alertach w usłudze Log Analytics i o sposobie ich tworzenia, zobacz temat [Alerts in Log Analytics](../log-analytics/log-analytics-alerts.md) (Alerty w usłudze Log Analytics).
+* Aby dowiedzieć się więcej na temat tworzenia przy użyciu wyszukiwania dziennika alertu Azure, zobacz [rejestrowania alertów w usłudze Azure](../monitoring-and-diagnostics/monitor-alerts-unified-log.md).
 
 * Aby dowiedzieć się, jak wyzwalać elementy runbook przy użyciu elementu webhook, zobacz [Elementy webhook w usłudze Azure Automation](automation-webhooks.md).

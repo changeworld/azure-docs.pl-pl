@@ -1,23 +1,25 @@
 ---
-title: "Raport o zabezpieczeniach dotyczący użytkowników oflagowanych w związku z ryzykiem w portalu usługi Azure Active Directory | Microsoft Docs"
-description: "Dowiedz się więcej o raporcie o zabezpieczeniach dotyczącym użytkowników oflagowanych w związku z ryzykiem w portalu usługi Azure Active Directory"
+title: Raport o zabezpieczeniach dotyczący użytkowników oflagowanych w związku z ryzykiem w portalu usługi Azure Active Directory | Microsoft Docs
+description: Dowiedz się więcej o raporcie o zabezpieczeniach dotyczącym użytkowników oflagowanych w związku z ryzykiem w portalu usługi Azure Active Directory
 services: active-directory
-author: MarkusVi
-manager: femila
+author: rolyon
+manager: mtillman
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/24/2017
-ms.author: markvi
+ms.component: compliance-reports
+ms.date: 05/23/2018
+ms.author: rolyon
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ed6201e9edcef39b14b948b6b2f6e0b5da01ec60
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 030a45335f06c4f15a5136842a7f6477bac8253b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34588713"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Rozwiązywanie problemów dotyczących użytkowników oflagowanych w związku z ryzykiem w portalu usługi Azure Active Directory
 
@@ -29,12 +31,20 @@ Firma Microsoft dokłada starań, aby pomóc zapewnić bezpieczne środowisko. W
 Gdy zostaną wykryte nietypowe działania, które mogą wskazywać na nieautoryzowany dostęp do pewnych kont Twoich użytkowników, otrzymasz powiadomienia umożliwiające podjęcie działań. Dostarczanie powiadomień nie oznacza, że systemy firmy Microsoft w jakikolwiek sposób zostały naruszone.
  
 
-## <a name="azure-active-directory-report-access"></a>Dostęp do raportów usługi Azure Active Directory
+## <a name="access-the-users-flagged-for-risk-report"></a>Uzyskiwanie dostępu do raportu dotyczącego użytkowników oflagowanych w związku z ryzykiem
 
-Możesz przejrzeć użytkowników oflagowanych z powodu ryzyka, korzystając z raportu online usługi Azure Active Directory. Jeśli nie masz subskrypcji platformy Azure, możesz przejść przez proces subskrypcji bez ponoszenia kosztów na stronie [http://aka.ms/AccessAAD](http://aka.ms/AccessAAD).  
-Po wykonaniu tych czynności możesz użyć poświadczeń usługi Office 365 do uzyskania dostępu do Centrum administracyjnego platformy Azure. Należy pamiętać, że na poziomie subskrypcji podstawowej udostępniany zakres szczegółowości jest ograniczony. Dodatkowe dane i analizy będą dostępne dla subskrybentów platformy Azure w wersji Premium. Aby uzyskać więcej informacji, zobacz [raport o zabezpieczeniach dotyczący użytkowników oflagowanych w związku z ryzykiem w portalu usługi Azure Active Directory](active-directory-reporting-security-user-at-risk.md).
+Możesz przejrzeć użytkowników oflagowanych z powodu ryzyka, korzystając z powiązanego [raportu](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk) w usłudze Azure Active Directory (AD). Jeśli nie masz subskrypcji usługi Azure AD, możesz przejść przez proces subskrypcji jednorazowej bez ponoszenia kosztów na stronie [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD). W tym raporcie możesz wykonywać różne akcje:
 
-Po uaktywnieniu dostępu do usługi Azure AD nastąpi przekierowanie do [portalu usługi Azure AD](https://portal.azure.com). Aby przejść bezpośrednio do raportu, użyj następującego adresu URL: [https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk).
+- Wygenerować hasło tymczasowe
+- Wymagać od użytkownika bezpiecznego zresetowania hasła przy następnym logowaniu
+- Odrzucić ryzyko związane z użytkownikiem bez podejmowania żadnej akcji korygowania.
+
+Aby uzyskać więcej informacji, zobacz [raport o zabezpieczeniach dotyczący użytkowników oflagowanych w związku z ryzykiem w portalu usługi Azure Active Directory](active-directory-reporting-security-user-at-risk.md).
+
+### <a name="azure-ad-subscription-for-office-365-customers"></a>Subskrypcja usługi Azure AD dla klientów usługi Office 365
+
+Po wykonaniu tych czynności możesz użyć poświadczeń usługi Office 365 do uzyskania dostępu do Centrum administracyjnego platformy Azure. Po uaktywnieniu dostępu do usługi Azure AD nastąpi przekierowanie do portalu usługi Azure AD. Na poziomie subskrypcji podstawowej ilość szczegółów udostępnianych w raportach jest ograniczona. Dodatkowe dane i analizy będą dostępne dla subskrybentów platformy Azure w wersji Premium.
+
 
 **Aby uzyskać dostęp do raportów o użytkownikach oflagowanych w związku z ryzykiem w Centrum administracyjnym usługi Office 365:**
 
@@ -59,7 +69,7 @@ Wykonaj następujące akcje, aby pomóc usunąć zagrożenie z kont i zabezpiecz
 
     b. Usunąć delegatów skrzynki pocztowej.
 
-    c. Wyłączyć reguły przekazywania poczty do domen zewnętrznych.
+    d. Wyłączyć reguły przekazywania poczty do domen zewnętrznych.
 
     d. Usunąć globalną właściwość przekazywania poczty w skrzynce pocztowej.
 

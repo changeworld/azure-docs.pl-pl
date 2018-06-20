@@ -1,21 +1,22 @@
 ---
 title: Konfigurowanie reguł i akcji w usłudze Azure IoT Central | Microsoft Docs
 description: W tym samouczku przedstawiono, jak konstruktor konfiguruje reguły i akcje oparte na danych telemetrycznych w aplikacji usługi Azure IoT Central.
-services: iot-central
 author: ankitgupta
 ms.author: ankitgup
 ms.date: 04/16/2018
 ms.topic: tutorial
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 5ac19e0e25ea3e25ede4d87776c01f8bcaea4655
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.service: iot-central
+services: iot-central
+ms.custom: mvc
+manager: peterpr
+ms.openlocfilehash: af2aa8d7b01d973da400808fd3e97d0739693cd2
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202241"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236335"
 ---
-# <a name="2---configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>2 — Konfigurowanie reguł i akcji dla urządzenia w usłudze Azure IoT Central
+# <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Samouczek: Konfigurowanie reguł i akcji dla urządzenia w usłudze Azure IoT Central
 
 W tym samouczku przedstawiono, jak konstruktor konfiguruje reguły i akcje oparte na danych telemetrycznych w aplikacji usługi Microsoft Azure IoT Central.
 
@@ -39,21 +40,21 @@ Przed rozpoczęciem należy ukończyć samouczek [Definiowanie nowego typu urzą
 
     Zostanie wyświetlony szablon urządzenia **Połączony klimatyzator (1.0.0)** i urządzenie **Połączony klimatyzator-1** utworzone w ramach poprzedniego samouczka.
 
-1. Aby rozpocząć dostosowywanie połączonego klimatyzatora, wybierz urządzenie utworzone w ramach poprzedniego samouczka:
+2. Aby rozpocząć dostosowywanie połączonego klimatyzatora, wybierz urządzenie utworzone w ramach poprzedniego samouczka:
 
     ![Strona Połączony klimatyzator](media/tutorial-configure-rules/builderdevicelist.png)
 
-1. Aby rozpocząć dodawanie reguły w widoku **Reguły**, wybierz pozycję **Reguły**:
+3. Aby rozpocząć dodawanie reguły w widoku **Reguły**, wybierz pozycję **Reguły**:
 
     ![Widok Reguły](media/tutorial-configure-rules/builderrulesview.png)
 
-1. W tym samouczku dodaje się regułę telemetrii opartą na wartości progowej. Aby rozpocząć tworzenie reguły opartej na wartości progowej, wybierz pozycję **Nowa reguła**, a następnie **Telemetria**.
+4. Aby rozpocząć tworzenie reguły telemetrii opartej na wartości progowej, wybierz pozycję **Nowa reguła**, a następnie **Telemetria**.
 
-1. Aby zdefiniować regułę, użyj informacji w poniższej tabeli:
+5. Aby zdefiniować regułę, użyj informacji w poniższej tabeli:
 
     | Ustawienie     | Wartość                          |
     | ----------- | ------------------------------ |
-    | Nazwa        | Temperatura klimatyzatora    |
+    | Name (Nazwa)        | Temperatura klimatyzatora    |
     | Włącz regułę | Włączone                             |
     | Warunek   | Temperatura jest wyższa niż 90 |
 
@@ -67,7 +68,7 @@ W ramach definiowania reguły definiuje się także akcję uruchamianą, gdy war
 
     ![Akcja reguły temperatury](media/tutorial-configure-rules/builderaddaction.png)
 
-1. Aby zdefiniować akcję, użyj informacji w poniższej tabeli:
+2. Aby zdefiniować akcję, użyj informacji w poniższej tabeli:
 
     | Ustawienie   | Wartość                          |
     | --------- | ------------------------------ |
@@ -79,7 +80,7 @@ W ramach definiowania reguły definiuje się także akcję uruchamianą, gdy war
 
     ![Akcja temperatury w Konstruktorze aplikacji](media/tutorial-configure-rules/buildertemperatureaction.png)
 
-1. Wybierz pozycję **Zapisz**. Reguła zostanie wyświetlona na stronie **Reguły**:
+3. Wybierz pozycję **Zapisz**. Reguła zostanie wyświetlona na stronie **Reguły**:
 
     ![Reguły Konstruktora aplikacji](media/tutorial-configure-rules/builderrules.png)
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/26/2018
 ms.author: victorh
-ms.openlocfilehash: 4ffaeedf125b6f74aeb88e22248040c6c3ef001c
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 3fcbcbe5d5f8dab956f40cde112f3536e1ae668c
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34356175"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36263996"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Utwórz bramę aplikacji przy użyciu ścieżki na podstawie reguł routingu przy użyciu portalu Azure
 
@@ -141,8 +141,8 @@ W tym przykładzie należy utworzyć trzy maszyny wirtualne do użycia jako serw
 
 1. Kliknij przycisk **reguły** , a następnie kliknij przycisk **na podstawie ścieżki**.
 2. Wprowadź *rule2* dla nazwy.
-3. Wprowadź *obrazów* dla nazwy pierwszej ścieżki. Wprowadź */images/** dla ścieżki. Wybierz **imagesBackendPool** puli wewnętrznej bazy danych.
-4. Wprowadź *wideo* nazwę drugiego ścieżki. Wprowadź */video/** dla ścieżki. Wybierz **videoBackendPool** puli wewnętrznej bazy danych.
+3. Wprowadź *obrazów* dla nazwy pierwszej ścieżki. Wprowadź */images/* \* dla ścieżki. Wybierz **imagesBackendPool** puli wewnętrznej bazy danych.
+4. Wprowadź *wideo* nazwę drugiego ścieżki. Wprowadź */video/* \* dla ścieżki. Wybierz **videoBackendPool** puli wewnętrznej bazy danych.
 
     ![Tworzenie reguły na podstawie ścieżki](./media/application-gateway-create-url-route-portal/application-gateway-route-rule.png)
 

@@ -5,20 +5,18 @@ services: cosmos-db
 author: SnehaGunda
 manager: kfile
 tags: azure-service-management
-ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: database
 ms.date: 11/29/2017
 ms.author: sngun
-ms.openlocfilehash: 38b211ec17a2bbe70f2975bd6c8f668c3c30a036
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c83d8ad5b424be1a9a695f3b9a466d45ddf8f0b4
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700285"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db"></a>Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Cosmos DB
 
@@ -29,6 +27,7 @@ Poniższa tabela zawiera linki do przykładowych skryptów interfejsu wiersza po
 |**Tworzenie konta, bazy danych i kontenerów usługi Azure Cosmos DB**||
 |[Tworzenie konta interfejsu API SQL](scripts/create-database-account-collections-cli.md?toc=%2fcli%2fazure%2ftoc.json)| Tworzy pojedyncze konto, bazę danych i kontener interfejsu API usługi Azure Cosmos DB do użytku z interfejsem API SQL. |
 | [Tworzenie konta interfejsu API bazy danych MongoDB](scripts/create-mongodb-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tworzy pojedyncze konto, bazę danych i kolekcję interfejsu API bazy danych MongoDB w usłudze Azure Cosmos DB. |
+| [Tworzenie konta interfejsu Gremlin API](scripts/create-graph-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tworzy pojedyncze konto, bazę danych i kolekcję interfejsu Gremlin API w usłudze Azure Cosmos DB. |
 |**Skalowanie usługi Azure Cosmos DB**||
 | [Skalowanie przepływności kontenerów](scripts/scale-collection-throughput-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Zmienia aprowizowaną przepływność w kontenerze.|
 |[Replikowanie konta bazy danych usługi Azure Cosmos DB w wielu regionach i konfigurowanie priorytetów trybu failover](scripts/scale-multiregion-cli.md?toc=%2fcli%2fazure%2ftoc.json)|Globalnie replikuje dane konta w wielu regionach z określonym priorytetem trybu failover.|

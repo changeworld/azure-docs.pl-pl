@@ -1,8 +1,8 @@
 ---
-title: "Uzyskiwanie dostępu do usługi Key Vault za zaporą | Microsoft Docs"
-description: "Dowiedz się, jak uzyskać dostęp do usługi Azure Key Vault z aplikacji znajdującej się za zaporą"
+title: Uzyskiwanie dostępu do usługi Key Vault za zaporą | Microsoft Docs
+description: Dowiedz się, jak uzyskać dostęp do usługi Azure Key Vault z aplikacji znajdującej się za zaporą
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: amitbapat
 manager: mbaldwin
 tags: azure-resource-manager
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
-ms.openlocfilehash: ad31e869d998d29d403ff97c17150c5078ce856d
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: d017c0d9940288cb5eeaa45694b324f93b9bb144
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736252"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Uzyskiwanie dostępu do usługi Azure Key Vault za zaporą
 ### <a name="q-my-key-vault-client-application-needs-to-be-behind-a-firewall-what-ports-hosts-or-ip-addresses-should-i-open-to-enable-access-to-a-key-vault"></a>Pyt. Moja aplikacja kliencka magazynu kluczy musi znajdować się za zaporą. Które porty, hosty lub adresy IP należy otworzyć, aby umożliwić dostęp do magazynu kluczy?
@@ -26,7 +27,7 @@ Aby uzyskać dostęp do magazynu kluczy, aplikacja kliencka magazynu kluczy musi
 
 * Uwierzytelnianie za pośrednictwem usługi Azure Active Directory (Azure AD).
 * Zarządzanie usługą Azure Key Vault. Obejmuje to tworzenie, odczytywanie, aktualizowanie, usuwanie oraz ustawianie zasad dostępu za pośrednictwem usługi Azure Resource Manager.
-* Uzyskiwanie dostępu do obiektów (kluczy i wpisów tajnych) przechowywanych w usłudze Key Vault i zarządzanie tymi obiektami, przechodząc przez punkt końcowy specyficzny dla usługi Key Vault (na przykład [https://nazwamagazynu.vault.azure.net](https://yourvaultname.vault.azure.net)).  
+* Uzyskiwanie dostępu do obiektów (kluczy i wpisów tajnych) przechowywanych w usłudze Key Vault i zarządzanie tymi obiektami, przechodząc przez punkt końcowy specyficzny dla usługi Key Vault (na przykład [https://yourvaultname.vault.azure.net](https://yourvaultname.vault.azure.net)).  
 
 W zależności od konfiguracji i środowiska istnieją pewne odstępstwa.   
 
@@ -60,7 +61,7 @@ We wszystkich przypadkach operacji kryptograficznych na obiektach (kluczach i wp
 | Operacje, takie jak operacje kryptograficzne na kluczach, tworzenie, odczytywanie, aktualizowanie i usuwanie kluczy oraz wpisów tajnych, ustawianie lub pobieranie tagów i innych atrybutów obiektów magazynu kluczy (klucze lub wpisy tajne) |**Cały świat:**<br> &lt;nazwa_magazynu&gt;.vault.azure.net:443<br><br> **Chińska wersja platformy Azure:**<br> &lt;nazwa_magazynu&gt;.vault.azure.cn:443<br><br> **Wersja platformy Azure dla administracji USA:**<br> &lt;nazwa_magazynu&gt;.vault.usgovcloudapi.net:443<br><br> **Niemiecka wersja platformy Azure:**<br> &lt;nazwa_magazynu&gt;.vault.microsoftazure.de:443 |
 
 ## <a name="ip-address-ranges"></a>Zakresy adresów IP
-Usługa Key Vault używa innych zasobów platformy Azure, takich jak infrastruktura PaaS. W związku z tym nie jest możliwe podanie konkretnego zakresu adresów IP, których będą używać punkty końcowe usługi Key Vault w określonym czasie. Jeśli zapora obsługuje tylko zakresy adresów IP, zapoznaj się z dokumentem [Microsoft Azure Datacenter IP Ranges](https://www.microsoft.com/download/details.aspx?id=41653) (Zakresy adresów IP centrów danych platformy Microsoft Azure). W przypadku uwierzytelniania i tożsamości (usługa Azure Active Directory) aplikacja musi być w stanie nawiązać połączenie z punktami końcowymi opisanymi w artykule [Authentication and identity Addresses](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) (Adresy uwierzytelniania i tożsamości).
+Usługa Key Vault używa innych zasobów platformy Azure, takich jak infrastruktura PaaS. W związku z tym nie jest możliwe podanie konkretnego zakresu adresów IP, których będą używać punkty końcowe usługi Key Vault w określonym czasie. Jeśli zapora obsługuje tylko zakresy adresów IP, zapoznaj się z dokumentem [Microsoft Azure Datacenter IP Ranges](https://www.microsoft.com/download/details.aspx?id=41653) (Zakresy adresów IP centrów danych platformy Microsoft Azure). Authentication and Identity (w ramach usługi Azure Active Directory) to usługa globalna, która może przeprowadzić przełączenie w tryb failover do innych regionów lub przenieść ruch bez powiadomienia. W tym scenariuszu wszystkie zakresy IP znajdujące się na liście [Adresy IP usługi Authentication and Identity](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip) należy dodać do zapory.
 
 ## <a name="next-steps"></a>Następne kroki
 Jeśli masz pytania dotyczące usługi Key Vault, odwiedź [forum usługi Azure Key Vault](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).

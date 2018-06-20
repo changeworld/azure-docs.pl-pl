@@ -11,14 +11,14 @@ ms.workload: infrastructure-services
 ms.date: 3/22/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a3bd3e772c6c80bb86af7f6aac6a578e857a3f2d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 0ef9ad7705c240e1c06c80ba3b765fa7aad8c70a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34356277"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598848"
 ---
-# <a name="restrict-web-traffic-with-a-web-application-firewall-using-azure-powershell"></a>Ograniczanie ruchu internetowego za pomocą zapory aplikacji internetowych przy użyciu programu Azure PowerShell
+# <a name="enable-web-application-firewall-using-azure-powershell"></a>Włączanie zapory aplikacji internetowej przy użyciu programu Azure PowerShell
 
 Ruch na [bramie aplikacji](overview.md) można ograniczyć za pomocą [zapory aplikacji internetowych](waf-overview.md). Zapora aplikacji internetowych chroni Twoje aplikacje, używając reguł [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project). Reguły te obejmują ochronę przed atakami, takimi jak iniekcja kodu SQL, działanie skryptów między witrynami i porywanie sesji. 
 
@@ -31,6 +31,8 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Tworzenie konta magazynu i konfigurowanie diagnostyki
 
 ![Przykład zapory aplikacji internetowych](./media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
+
+Jeśli chcesz, możesz wykonać ten samouczek przy użyciu [interfejsu wiersza polecenia platformy Azure](tutorial-restrict-web-traffic-cli.md).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

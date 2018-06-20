@@ -1,5 +1,5 @@
 ---
-title: Uzyskiwanie dostępu do laboratorium niestandardowego w usłudze Azure DevTest Labs | Microsoft Docs
+title: Uzyskiwanie dostępu do laboratorium w usłudze Azure DevTest Labs | Microsoft Docs
 description: W tym samouczku będziesz uzyskiwać dostęp do laboratorium tworzonego przy użyciu usługi Azure DevTest Labs, przejmować maszyny wirtualne, korzystać z nich, a następnie cofać ich przejęcie.
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
@@ -14,20 +14,20 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: be4bde6bd320e8af7cd3119ff4ccdabd942963ca
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: cd623767c9627810afb64ca9185c991c5c9f3858
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361842"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638028"
 ---
-# <a name="tutorial-access-a-custom-lab-in-azure-devtest-labs"></a>Samouczek: uzyskiwanie dostępu do laboratorium niestandardowego w usłudze Azure DevTest Labs
-W tym samouczku używasz laboratorium niestandardowego, które zostało utworzone w temacie [Samouczek: tworzenie laboratorium niestandardowego](tutorial-create-custom-lab.md).
+# <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Samouczek: uzyskiwanie dostępu do laboratorium w usłudze Azure DevTest Labs
+W tym samouczku będziesz używać laboratorium, które zostało utworzone w temacie [Samouczek: tworzenie laboratorium w usłudze Azure DevTest Labs](tutorial-create-custom-lab.md).
 
 W tym samouczku wykonasz następujące czynności:
 
 > [!div class="checklist"]
-> * Przejmowanie maszyny wirtualnej w laboratorium niestandardowym
+> * Przejmowanie maszyny wirtualnej w laboratorium
 > * Łączenie z maszyną wirtualną
 > * Cofanie przejęcia maszyny wirtualnej
 
@@ -70,8 +70,8 @@ Po zakończeniu korzystania z maszyny wirtualnej cofnij jej przejęcie, wykonuj�
 1. Po ukończeniu operacji cofania przejęcia maszyna wirtualna zostanie wyświetlona na liście **Maszyny wirtualne możliwe do przejęcia** w dolnej części strony. 
     
 ## <a name="next-steps"></a>Następne kroki
-W tym samouczku pokazano, jak uzyskiwać dostęp do laboratorium niestandardowego, które zostało utworzone za pomocą usługi Azure DevTest Labs, i korzystać z niego. Aby uzyskać więcej informacji na temat uzyskiwania dostępu do maszyn wirtualnych i używania ich w laboratorium niestandardowym, zobacz 
+W tym samouczku pokazano, jak uzyskiwać dostęp do laboratorium, które zostało utworzone za pomocą usługi Azure DevTest Labs, i korzystać z niego. Aby uzyskać więcej informacji na temat uzyskiwania dostępu do maszyn wirtualnych i używania ich w laboratorium, zobacz 
 
 > [!div class="nextstepaction"]
-> [How to: Use VMs in a custom lab (Jak: używanie maszyn wirtualnych w laboratorium niestandardowym)](devtest-lab-add-vm.md)
+> [Instrukcje: korzystanie z maszyn wirtualnych w laboratorium](devtest-lab-add-vm.md)
 

@@ -12,16 +12,16 @@ ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: virtual-networ
+ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/14/2018
 ms.author: jdial
-ms.custom: mvc
-ms.openlocfilehash: f53544e756bde623a604513f17f9cc92c8efe42b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2efbd6e0fc3f90909553bc839a8b61ff3ed681ad
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267394"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Samouczek: ograniczanie dostępu sieciowego do zasobów PaaS za pomocą punktów końcowych usługi sieci wirtualnej z użyciem witryny Azure Portal
 
@@ -65,6 +65,8 @@ Zaloguj się do witryny Azure Portal na stronie http://portal.azure.com.
 
 ## <a name="enable-a-service-endpoint"></a>Włączanie punktu końcowego usługi
 
+Punkty końcowe usługi są włączane dla poszczególnych usług i podsieci. Utwórz podsieć i włącz punkt końcowy usługi dla podsieci.
+
 1. W polu **Szukaj zasobów, usług i dokumentów** w górnej części portalu wprowadź ciąg *myVirtualNetwork*. Gdy pozycja **myVirtualNetwork** pojawi się w wynikach wyszukiwania, wybierz ją.
 2. Dodaj podsieć do sieci wirtualnej. W obszarze **USTAWIENIA** wybierz pozycję **Podsieci**, a następnie wybierz pozycję **+ Podsieć**, jak pokazano na poniższym obrazie:
 
@@ -78,11 +80,16 @@ Zaloguj się do witryny Azure Portal na stronie http://portal.azure.com.
     |Zakres adresów| 10.0.1.0/24|
     |Punkty końcowe usługi| Wybierz pozycję **Microsoft.Storage** w obszarze **Usługi**|
 
+> [!CAUTION]
+> Przed włączeniem punktu końcowego usługi dla istniejącej podsieci zawierającej zasoby zapoznaj się z sekcją [Zmiana ustawień podsieci](virtual-network-manage-subnet.md#change-subnet-settings).
+
 ## <a name="restrict-network-access-for-a-subnet"></a>Ograniczanie dostępu sieciowego dla podsieci
+
+Domyślnie wszystkie maszyny wirtualne w podsieci mogą komunikować się ze wszystkimi zasobami. Można ograniczyć komunikację z zasobami w podsieci, tworząc grupę zabezpieczeń sieci i kojarząc ją z podsiecią.
 
 1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **+ Utwórz zasób**.
 2. Wybierz pozycję **Sieć**, a następnie wybierz pozycję **Sieciowa grupa zabezpieczeń**.
-W obszarze **Tworzenie sieciowej grupy zabezpieczeń** wprowadź lub wybierz następujące informacje, a następnie wybierz pozycję **Utwórz**:
+3. W obszarze **Tworzenie sieciowej grupy zabezpieczeń** wprowadź lub wybierz następujące informacje, a następnie wybierz pozycję **Utwórz**:
 
     |Ustawienie|Wartość|
     |----|----|
@@ -94,7 +101,7 @@ W obszarze **Tworzenie sieciowej grupy zabezpieczeń** wprowadź lub wybierz nas
 4. Po utworzeniu sieciowej grupy zabezpieczeń wprowadź ciąg *myNsgPrivate* w polu **Szukaj zasobów, usług i dokumentów** w górnej części portalu. Gdy pozycja **myNsgPrivate** pojawi się w wynikach wyszukiwania, wybierz ją.
 5. W obszarze **USTAWIENIA** wybierz pozycję **Reguły zabezpieczeń dla ruchu wychodzącego**.
 6. Wybierz pozycję **+ Dodaj**.
-7. Utwórz regułę, która umożliwia dostęp ruchu wychodzącego do publicznych adresów IP przypisanych do usługi Azure Storage. Wprowadź lub wybierz następujące informacje, a następnie wybierz pozycję **OK**:
+7. Utwórz regułę, która umożliwia komunikację wychodzącą do usługi Azure Storage. Wprowadź lub wybierz następujące informacje, a następnie wybierz pozycję **OK**:
 
     |Ustawienie|Wartość|
     |----|----|
@@ -107,7 +114,8 @@ W obszarze **Tworzenie sieciowej grupy zabezpieczeń** wprowadź lub wybierz nas
     |Akcja|Zezwalaj|
     |Priorytet|100|
     |Name (Nazwa)|Allow-Storage-All|
-8. Utwórz regułę zastępującą domyślną regułę zabezpieczeń, która umożliwia ruchowi wychodzącemu dostęp do wszystkich publicznych adresów IP. Ponownie wykonaj kroki 6 i 7, używając następujących wartości:
+    
+8. Utwórz regułę, która nie zezwala na komunikację wychodzącą do Internetu. Ta reguła zastępuje regułę domyślną we wszystkich grupach zabezpieczeń sieci, umożliwiającą wychodzącą komunikacja internetową. Ponownie wykonaj kroki 6 i 7, używając następujących wartości:
 
     |Ustawienie|Wartość|
     |----|----|
@@ -171,9 +179,9 @@ Kroki niezbędne do ograniczenia dostępu sieciowego do zasobów utworzonych za 
 4. Wprowadź wartość *my-file-share* w obszarze **Nazwa**, a następnie wybierz przycisk **OK**.
 5. Zamknij pole **Usługa pliku**.
 
-### <a name="enable-network-access-from-a-subnet"></a>Włączanie dostępu sieciowego z podsieci
+### <a name="restrict-network-access-to-a-subnet"></a>Ograniczanie dostępu sieciowego do podsieci
 
-Domyślnie konta magazynu akceptują połączenia sieciowe od klientów w dowolnej sieci. Aby zezwolić na dostęp tylko z określonej podsieci i zabronić dostępu sieciowego ze wszystkich innych sieci, wykonaj następujące czynności:
+Domyślnie konta magazynu akceptują połączenia sieciowe od klientów znajdujących się w dowolnej sieci, w tym w Internecie. Zabroń dostępu z Internetu i wszystkich innych podsieci we wszystkich sieciach wirtualnych z wyjątkiem podsieci *Private* sieci wirtualnej *myVirtualNetwork*.
 
 1. W obszarze **USTAWIENIA** dla konta magazynu wybierz pozycję **Zapory i sieci wirtualne**.
 2. W obszarze **Sieci wirtualne** wybierz pozycję **Wybrane sieci**.
@@ -256,13 +264,13 @@ Wdrożenie maszyny wirtualnej potrwa kilka minut. Nie należy przechodzić do na
 
     Udział plików platformy Azure został pomyślnie mapowany na dysk Z.
 
-7. Z poziomu wiersza polecenia upewnij się, że maszyna wirtualna nie ma łączności wychodzącej do innych publicznych adresów IP:
+7. Z poziomu wiersza polecenia upewnij się, że maszyna wirtualna nie ma łączności wychodzącej do Internetu:
 
     ```
     ping bing.com
     ```
     
-    Nie otrzymasz żadnych odpowiedzi, ponieważ sieciowa grupa zabezpieczeń skojarzona z podsiecią *Private* nie zezwala na dostęp ruchu wychodzącego do publicznych adresów IP innych niż adresy przypisane do usługi Azure Storage.
+    Nie otrzymasz żadnych odpowiedzi, ponieważ sieciowa grupa zabezpieczeń skojarzona z podsiecią *Private* nie zezwala na dostęp ruchu wychodzącego do Internetu.
 
 8. Zamknij sesję pulpitu zdalnego dla maszyny wirtualnej *myVmPrivate*.
 
@@ -272,7 +280,7 @@ Wdrożenie maszyny wirtualnej potrwa kilka minut. Nie należy przechodzić do na
 2. Gdy pozycja **myVmPublic** pojawi się w wynikach wyszukiwania, wybierz ją.
 3. Wykonaj kroki 1–6 w sekcji [Potwierdzanie dostępu do konta magazynu](#confirm-access-to-storage-account) dla maszyny wirtualnej *myVmPublic*.
 
-    Nastąpi odmowa dostępu i pojawi się błąd `New-PSDrive : Access is denied`. Odmowa dostępu nastąpi, ponieważ maszyna wirtualna *myVmPublic* jest wdrożona w podsieci *Public*. Podsieć *Public* nie ma punktu końcowego usługi obsługującego usługę Azure Storage, a konto magazynu zezwala tylko na dostęp sieciowy z podsieci *Private*, a nie z podsieci *Public*.
+    Nastąpi odmowa dostępu i pojawi się błąd `New-PSDrive : Access is denied`. Odmowa dostępu nastąpi, ponieważ maszyna wirtualna *myVmPublic* jest wdrożona w podsieci *Public*. W podsieci *Public* nie ma punktu końcowego usługi włączonego dla usługi Azure Storage. Konto magazynu zezwala jedynie na dostęp do sieci z podsieci *Private*, ale nie z podsieci *Public*.
 
 4. Zamknij sesję pulpitu zdalnego dla maszyny wirtualnej *myVmPublic*.
 

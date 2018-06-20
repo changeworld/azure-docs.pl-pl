@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/23/2018
 ms.author: v-geberr
-ms.openlocfilehash: bf131877080f46781e74991ef627922384cc4c08
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 70bca3b181e02f42da50e827154193936544131a
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349780"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36263822"
 ---
 # <a name="keys-in-luis"></a>Klucze w LUIS
 LUIS wykorzystuje dwa klucze: [tworzenia](#programmatic-key) i [punktu końcowego](#endpoint-key). Po utworzeniu konta LUIS tworzenia klucza jest tworzony automatycznie. Gdy wszystko będzie gotowe do publikowania aplikacji LUIS należy [Utwórz klucz punktu końcowego](luis-how-to-azure-subscription.md#create-luis-endpoint-key), [Przypisz do niego](Manage-keys.md#assign-endpoint-key) do aplikacji LUIS, i [korzystania z niego zapytanie punktu końcowego](#use-endpoint-key-in-query). 
@@ -76,4 +76,4 @@ Po przekroczeniu użytkownika na drugim przydziału komunikat o błędzie HTTP 4
 
 * Dowiedz się [pojęcia](Manage-Keys.md#assign-endpoint-key) o kluczach do tworzenia i punktu końcowego.
 
-[LUIS]:luis-reference-regions.md#luis-website
+[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

@@ -2,25 +2,20 @@
 title: Tworzenie kopii zapasowych maszyn wirtualnych na platformie Azure na dużą skalę | Microsoft Docs
 description: Ten samouczek zawiera szczegółowe instrukcje tworzenia kopii zapasowych wielu maszyn wirtualnych platformy Azure w magazynie usługi Recovery Services.
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
 keywords: kopia zapasowa maszyny wirtualnej; tworzenie kopii zapasowej maszyny wirtualnej; kopia zapasowa i odzyskiwanie po awarii
-ms.assetid: ''
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/06/2017
-ms.author: trinadhk;jimpark;markgal;
+ms.author: trinadhk
 ms.custom: mvc
-ms.openlocfilehash: 62cc623dc3130119c5ec803933012c5545d703e5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 863960e012a8e345434459ad16526c8971f00b6b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607008"
 ---
 # <a name="back-up-azure-virtual-machines-in-azure-at-scale"></a>Tworzenie kopii zapasowych maszyn wirtualnych na platformie Azure na dużą skalę
 

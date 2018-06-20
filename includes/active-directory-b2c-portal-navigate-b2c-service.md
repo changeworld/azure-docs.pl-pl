@@ -1,3 +1,1 @@
-Wybierz usługę **Azure AD B2C** z listy usług w witrynie Azure Portal.
-
-![Wybierz usługę B2C](media/active-directory-b2c-find-service-settings/select-b2c-service.png)
+Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**. Teraz powinna być używana dzierżawa utworzona w poprzednim samouczku.

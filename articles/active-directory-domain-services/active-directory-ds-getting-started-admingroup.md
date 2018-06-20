@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: maheshu
-ms.openlocfilehash: 6f7c0372ec53157d42a229feddb5b3fce92ff4cd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d5b81a6d4bdda24208673e42757807aba60fea97
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34587906"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36263979"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Włączanie usługi Azure Active Directory Domain Services przy użyciu portalu Azure
 
@@ -72,6 +72,9 @@ Proces inicjowania obsługi administracyjnej domeny zarządzanej może potrwać 
 4. Gdy domeny zarządzanej jest w pełni zaaprowizowanym, **omówienie** stan wyświetlany na karcie domeny jako **systemem**.
 
     ![Usługi Domain Services — karta Przegląd po pełnej aprowizacji](./media/getting-started/domain-services-provisioned.png)
+    >[!NOTE]
+    >Podczas procesu inicjowania obsługi administracyjnej usług domenowych Azure AD tworzy aplikacje dla przedsiębiorstw o nazwie "Usługi kontrolera domeny" i "AzureActiveDirectoryDomainControllerServices" w katalogu. Te aplikacje przedsiębiorstwa są wymagane do obsługi domeny zarządzanej. Konieczne jest te nie są usuwane w dowolnym momencie.
+    >
 
 5. Na **właściwości** kartę, zobacz dwa adresy IP, w której domeny kontrolery są dostępne dla sieci wirtualnej.
 

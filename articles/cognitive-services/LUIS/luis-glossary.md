@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 420f268090dbcfcc4f2fa7383b8b8892952030ca
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7cfcc5b907b28a877bea57ea869e17f01aae00cb
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349792"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36265391"
 ---
 # <a name="glossary"></a>Słownik
 
@@ -179,7 +179,7 @@ Klucz subskrypcji jest skojarzony z usługą LUIS [utworzona na platformie Azure
 
 ## <a name="test"></a>Test
 
-[Testowanie](train-test.md#test-your-app) aplikacji LUIS oznacza powoduje przekazanie utterance do LUIS i wyświetlanie JSON.
+[Testowanie](interactive-test.md#test-your-app) aplikacji LUIS oznacza powoduje przekazanie utterance do LUIS i wyświetlanie JSON.
 
 ## <a name="timezoneoffset"></a>Przesunięcie strefy czasowej
 
@@ -210,4 +210,4 @@ Utterance oznacza języka naturalnego takie jak "biletów książki 2 do Seattle
 
 LUIS [wersji](luis-how-to-manage-versions.md) to model określonych danych skojarzonych z Identyfikatorem aplikacji LUIS i opublikowanych punktu końcowego. Każda aplikacja LUIS ma co najmniej jedną wersję.
 
-[batch-testing]: train-test.md#batch-testing
+[batch-testing]: https://docs.microsoft.com/azure/cognitive-services/luis/interactive-test#batch-testing

@@ -1,6 +1,6 @@
 ---
-title: Dowiedz się, jak dołączyć rozwiązań do zarządzania aktualizacjami, śledzenia zmian i magazynu z maszyny wirtualnej platformy Azure
-description: Dowiedz się, jak można dołączyć wirtualnej Azure maszyny z rozwiązań zarządzania aktualizacjami, śledzenia zmian i magazynu, które są częścią usługi Automatyzacja Azure
+title: Dołączyć rozwiązań zarządzania aktualizacjami, śledzenia zmian i magazynu z maszyny Wirtualnej platformy Azure
+description: Dowiedz się, jak można dołączyć maszyny wirtualnej platformy Azure z rozwiązaniami do zarządzania aktualizacjami, śledzenia zmian i spisu które są częścią usługi Automatyzacja Azure.
 services: automation
 author: georgewallace
 ms.author: gwallace
@@ -9,71 +9,69 @@ ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 675aebf35a6bee6e4cc4fd884204edb5bae4b848
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: f270b2ccea51e83bc6475051b8667bf73d7fd717
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830565"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221516"
 ---
-# <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Zintegrowanego rozwiązania zarządzania aktualizacjami, śledzenia zmian i magazynu z maszyny wirtualnej platformy Azure
+# <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Dołączyć rozwiązań zarządzania aktualizacjami, śledzenia zmian i magazynu z maszyny wirtualnej platformy Azure
 
-Automatyzacja Azure zapewnia rozwiązania do zarządzania aktualizacjami zabezpieczeń systemu operacyjnego, śledzenie zmian i magazynowych zainstalowanych w komputerach. Istnieje wiele sposobów, aby dołączyć maszyny, możesz dołączyć rozwiązania z maszyną wirtualną [z Twojego konta automatyzacji](automation-onboard-solutions-from-automation-account.md), [z wieloma maszynami przeglądania](automation-onboard-solutions-from-browse.md), lub [runbook](automation-onboard-solutions.md). W tym artykule omówiono dołączania tych rozwiązań z maszyny wirtualnej platformy Azure.
+Automatyzacja Azure udostępnia rozwiązania ułatwiające zarządzanie aktualizacjami zabezpieczeń systemu operacyjnego, śledzenie zmian i spisu zainstalowanych na komputerach. Istnieje wiele sposobów, aby dołączyć maszyn. Możesz dołączyć rozwiązania z maszyny wirtualnej, [z Twojego konta automatyzacji](automation-onboard-solutions-from-automation-account.md), [z wieloma maszynami przeglądania](automation-onboard-solutions-from-browse.md), lub za pomocą [runbook](automation-onboard-solutions.md). W tym artykule omówiono dołączania tych rozwiązań z maszyny wirtualnej platformy Azure.
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do platformy Azure na stronie https://portal.azure.com
+Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
 ## <a name="enable-the-solutions"></a>Włącz rozwiązania
 
-Przejdź do istniejącej maszyny wirtualnej, a następnie wybierz opcję **zarządzanie aktualizacjami**, **spisu**, lub **śledzenie zmian** w obszarze **operacji**.
+Przejdź do istniejącej maszyny wirtualnej. W obszarze **operacji**, wybierz pozycję **zarządzanie aktualizacjami**, **spisu**, lub **śledzenia zmian**.
 
-Aby włączyć tylko zapewnić rozwiązanie dla maszyny Wirtualnej **Włącz dla tej maszyny Wirtualnej** przycisk radiowy zostanie wybrany, aby dołączyć wiele maszyn do rozwiązania wybierz **włączanie dla maszyn wirtualnych w tej subskrypcji** i kliknij przycisk **Kliknij, aby wybrać komputerach, aby umożliwić**. Zobacz, [rozwiązania zintegrowanego zarządzania aktualizacjami, śledzenia zmian i spisu](automation-onboard-solutions-from-automation-account.md) Aby wyświetlić kroki dotyczące dołączyć wiele maszyn jednocześnie.
+Aby włączyć rozwiązania dla tylko maszynę Wirtualną, upewnij się, że **Włącz dla tej maszyny Wirtualnej** jest zaznaczone. Aby dołączyć wiele maszyn do rozwiązania, wybierz **włączanie dla maszyn wirtualnych w tej subskrypcji**, a następnie wybierz **kliknij, aby wybrać komputerach, aby umożliwić**. Aby dowiedzieć się, jak Aby dołączyć wiele maszyn jednocześnie, zobacz [rozwiązania zintegrowanego zarządzania aktualizacjami, śledzenia zmian i spisu](automation-onboard-solutions-from-automation-account.md).
 
-Wybierz obszar roboczy usługi Log Analytics i konto usługi Automation, a następnie kliknij przycisk **Włącz**, aby włączyć to rozwiązanie. Włączanie rozwiązania może trwać do 15 minut.
+Wybierz obszar roboczy analizy dzienników Azure oraz konta automatyzacji, a następnie wybierz **włączyć** umożliwiające rozwiązanie. Włączanie rozwiązania może trwać do 15 minut.
 
-![Dołączanie rozwiązania Update](media/automation-onboard-solutions-from-vm/onboard-solution.png)
+![Dodaj rozwiązanie do zarządzania aktualizacjami](media/automation-onboard-solutions-from-vm/onboard-solution.png)
 
-Przejdź do innych rozwiązań i kliknij **włączyć**, analizy dzienników, a konto automatyzacji list rozwijanych są wyłączone, ponieważ używają tego samego konta dla obszaru roboczego automatyzacji jako rozwiązanie wcześniej włączony.
+Przejdź do innych rozwiązań, a następnie wybierz **włączyć**. Listy rozwijanej konta analizy dzienników i automatyzacji są wyłączone, ponieważ te rozwiązania użyć tego samego obszaru roboczego i konto automatyzacji jako rozwiązanie wcześniej włączony.
 
 > [!NOTE]
-> **Śledzenie zmian** i **spisu** używać tego samego rozwiązania, gdy jeden jest włączona innych także włączone.
+> **Śledzenie zmian** i **spisu** za pomocą tego samego rozwiązania. Jeśli jedno z tych rozwiązań jest włączona, druga również jest włączona.
 
 ## <a name="scope-configuration"></a>Konfiguracja zakresu
 
-Każde rozwiązanie używa konfiguracji zakresu w obszarze roboczym pod kątem komputerów, które rozwiązanie. Konfiguracja zakresu jest grupą co najmniej jeden zapisanych wyszukiwań służy do ograniczania zakresu rozwiązanie do określonych komputerów. Do konfiguracji zakresu, na Twoim koncie automatyzacji w obszarze **powiązane zasoby**, wybierz pozycję **obszaru roboczego** następnie w obszarze roboczym **źródeł danych obszaru roboczego**, Wybierz **konfiguracji zakresu**.
+Każde rozwiązanie używa konfiguracji zakresu w obszarze roboczym pod kątem komputerów, które rozwiązanie. Ta konfiguracja zakresu to grupa co najmniej jeden zapisanych wyszukiwań, które są używane do ograniczenia zakresu rozwiązanie do określonych komputerów. W obszarze dostępu konfiguracji zakresu, na Twoim koncie automatyzacji do **powiązane zasoby**, wybierz pozycję **obszaru roboczego**. W obszarze roboczym w obszarze **źródeł danych obszaru roboczego**, wybierz pozycję **konfiguracji zakresu**.
 
-Jeśli wybranego obszaru roboczego nie ma rozwiązania zarządzania aktualizacjami lub śledzenia zmian, ale są tworzone następujące konfiguracje w zakresie:
+Jeśli wybranego obszaru roboczego nie ma już rozwiązania zarządzania aktualizacjami lub śledzenia zmian, tworzone są następujące konfiguracje w zakresie:
 
 * **Śledzenia zmian MicrosoftDefaultScopeConfig**
 
 * **Aktualizacje MicrosoftDefaultScopeConfig**
 
-Jeśli wybranego obszaru roboczego jest już w rozwiązaniu. Rozwiązanie nie jest ponownie wdrożone i konfigurację zakresu nie zostaną dodane do niego.
+Jeśli wybranego obszaru roboczego ma już rozwiązania, rozwiązanie nie jest wdrożone i nie jest dodawany konfigurację zakresu.
 
-Kliknij przycisk wielokropka (...) na wszystkich konfiguracji i wybierz **Edytuj**. Na **konfigurację zakresu edycji** wybierz pozycję **wybierz grupy komputerów** otworzyć **grup komputerów** strony. Ta strona przedstawia zapisanych wyszukiwań, które są używane do tworzenia zakresu konfiguracji.
+Wybierz wielokropek (**...** ) na wszystkich konfiguracji, a następnie wybierz **Edytuj**. W **konfigurację zakresu edycji** okienku wybierz **wybierz grupy komputerów**. **Grup komputerów** w okienku zostaną wyświetlone zapisane wyszukiwania, które są używane do tworzenia zakresu konfiguracji.
 
 ## <a name="saved-searches"></a>Zapisane wyszukiwania
 
-Po dodaniu komputera do zarządzania aktualizacjami lub śledzenia zmian i spisu rozwiązań, ich dodawania do jednej z dwóch zapisane wyszukiwania w obszarze roboczym. Zapisane wyszukiwania są zapytania, które zawierają komputery, które są przeznaczone dla tych rozwiązań.
+Po dodaniu komputera do zarządzania aktualizacjami, śledzenia zmian lub rozwiązań magazynu, komputer jest dodawany do jednej z dwóch zapisane wyszukiwania w obszarze roboczym. Zapisane wyszukiwania są zapytania, które zawierają komputery, które są przeznaczone dla tych rozwiązań.
 
-Przejdź do obszaru roboczego i wybierz **zapisane wyszukiwania** w obszarze **ogólne**. Dwa zapisanych wyszukiwań używane przez te rozwiązania są widoczne w poniższej tabeli:
+Przejdź do swojego obszaru roboczego. W obszarze **ogólne**, wybierz pozycję **zapisane wyszukiwania**. Dwa zapisanych wyszukiwań, które są używane przez te rozwiązania są przedstawione w poniższej tabeli:
 
 |Name (Nazwa)     |Kategoria  |Alias  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  Śledzenia zmian       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Aktualizacje        | Updates__MicrosoftDefaultComputerGroup         |
 
-Wybierz albo zapisane wyszukiwanie, aby wyświetlić zapytania używany do wypełniania grupy. Na poniższej ilustracji przedstawiono zapytania, a jego wyniki.
+Wybierz jedną z zapisane wyszukiwania, aby wyświetlić zapytania, który służy do wypełniania grupy. Na poniższej ilustracji przedstawiono zapytania, a jego wyniki:
 
 ![Zapisane wyszukiwania](media/automation-onboard-solutions-from-vm/logsearch.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Nadal samouczki dotyczące rozwiązań informacje na temat korzystania z nich.
+Nadal samouczki dotyczące rozwiązania, aby dowiedzieć się, jak ich używać:
 
 * [Samouczek — Zarządzanie aktualizacji dla maszyny Wirtualnej](automation-tutorial-update-management.md)
-
 * [Samouczek — identyfikacji oprogramowania na maszynie Wirtualnej](automation-tutorial-installed-software.md)
-
 * [Samouczek — Rozwiązywanie problemów z zmiany na maszynie Wirtualnej](automation-tutorial-troubleshoot-changes.md)

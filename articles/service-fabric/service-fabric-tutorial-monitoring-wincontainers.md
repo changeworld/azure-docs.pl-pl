@@ -12,14 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/20/2017
+ms.date: 06/08/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 9024036c5340e9afb2369feedde140d84e880265
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 035deabd04b8b838e0009f2cae96b0761733897f
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248245"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>Samouczek: monitorowanie kontenerów systemu Windows w usłudze Service Fabric przy użyciu usługi Log Analytics
 
@@ -212,18 +213,14 @@ Po kliknięciu jednego z tych paneli nastąpi przeniesienie do zapytania usługi
 
 ## <a name="configure-oms-agent-to-pick-up-performance-counters"></a>Konfigurowanie agenta pakietu OMS w celu zbierania liczników wydajności
 
-Kolejną zaletą korzystania z agenta pakietu OMS jest możliwość zmiany liczników wydajności pobieranych za pośrednictwem interfejsu użytkownika pakietu OMS bez konieczności konfigurowania agenta funkcji Diagnostyka Azure i każdorazowego uaktualniania opartego na szablonie usługi Resource Manager. Aby to zrobić, kliknij pozycję **Portal OMS** na stronie docelowej rozwiązania do monitorowania kontenerów (lub usługi Service Fabric).
+Kolejną zaletą korzystania z agenta pakietu OMS jest możliwość zmiany liczników wydajności pobieranych za pośrednictwem interfejsu użytkownika pakietu OMS bez konieczności konfigurowania agenta funkcji Diagnostyka Azure i każdorazowego uaktualniania opartego na szablonie usługi Resource Manager. Aby to zrobić, kliknij pozycję **Obszar roboczy OMS** na stronie docelowej rozwiązania do monitorowania kontenerów (lub usługi Service Fabric).
 
-![Portal pakietu OMS](./media/service-fabric-tutorial-monitoring-wincontainers/oms-portal.png)
-
-Spowoduje to przejście do obszaru roboczego w portalu OMS, w którym można wyświetlać rozwiązania, tworzyć niestandardowe pulpity nawigacyjne, a także konfigurować agenta pakietu OMS. 
-* Kliknij **koło zębate** w prawym górnym rogu ekranu, aby otworzyć menu *Ustawienia*.
+Spowoduje to przejście do obszaru roboczego OMS, w którym można wyświetlać rozwiązania, tworzyć niestandardowe pulpity nawigacyjne, a także konfigurować agenta pakietu OMS. 
+* Kliknij opcję **Ustawienia zaawansowane** aby otworzyć menu Ustawienia zaawansowane.
 * Kliknij pozycję **Połączone źródła** > **Serwery z systemem Windows**, aby upewnić się, że *Połączono komputery z systemem Windows (5)*.
-* Kliknij pozycję **Dane** > **Liczniki wydajności systemu Windows**, aby wyszukać i dodać nowe liczniki wydajności. W tym miejscu zostanie wyświetlona lista zaleceń usługi Log Analytics dotyczących liczników wydajności, których dane można zbierać, a także opcja wyszukiwania innych liczników. Kliknij pozycję **Dodaj wybrane liczniki wydajności**, aby rozpocząć zbieranie zalecanych metryk.
+* Kliknij pozycję **Dane** > **Liczniki wydajności systemu Windows**, aby wyszukać i dodać nowe liczniki wydajności. W tym miejscu zostanie wyświetlona lista zaleceń usługi Log Analytics dotyczących liczników wydajności, których dane można zbierać, a także opcja wyszukiwania innych liczników. Sprawdź, czy zbierane są liczniki **Processor(_Total)\%Processor Time** i **\Memory(*)\Available MBytes**.
 
-    ![Liczniki wydajności](./media/service-fabric-tutorial-monitoring-wincontainers/perf-counters.png)
-
-W witrynie Azure Portal po kilku minutach **odśwież** rozwiązanie do monitorowania kontenerów, aby wyświetlić dane przychodzące dotyczące *wydajności komputera*. Pomoże to zrozumieć, w jaki sposób zasoby są używane. Tych metryk można również używać na potrzeby podejmowania odpowiednich decyzji dotyczących skalowania klastra lub potwierdzania, że klaster równoważy obciążenie zgodnie z oczekiwaniami.
+Po kilku minutach **odśwież** rozwiązanie do monitorowania kontenerów, aby wyświetlić dane przychodzące dotyczące *wydajności komputera*. Pomoże to zrozumieć, w jaki sposób zasoby są używane. Tych metryk można również używać na potrzeby podejmowania odpowiednich decyzji dotyczących skalowania klastra lub potwierdzania, że klaster równoważy obciążenie zgodnie z oczekiwaniami.
 
 *Uwaga: upewnij się, że filtry czasu zostały odpowiednio ustawione i umożliwiają korzystanie z tych metryk.* 
 

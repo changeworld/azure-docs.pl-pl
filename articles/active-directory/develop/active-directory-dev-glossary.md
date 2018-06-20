@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 11/16/2017
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 12c1a4b2b1f3e433721b9c8a335c6b55de746643
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: HT
+ms.openlocfilehash: ab053e9b132630c19b6966286035d38c71c6b4d9
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34158153"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36268136"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Słownik dewelopera usługi Azure Active Directory
 Ten artykuł zawiera definicje dla niektórych podstawowe koncepcje dla deweloperów usługi Azure Active Directory (AD), które są przydatne podczas nauki opracowywanie aplikacji dla usługi Azure AD.
@@ -45,7 +45,7 @@ Funkcja dostarczonych przez [portalu Azure][AZURE-portal], która tworzy repreze
 ## <a name="application-object"></a>Obiekt aplikacji
 Gdy użytkownik rejestru/aktualizacji aplikacji w [portalu Azure][AZURE-portal], portalu utworzeń/aktualizacji obiekt aplikacji i odpowiadające mu [obiekt główny usługi](#service-principal-object) dla tego dzierżawcy. Obiekt application *definiuje* aplikacji do konfiguracji tożsamości globalnie (za pośrednictwem wszystkich dzierżaw który ma dostęp), zapewniając szablonu, z którego są odpowiednie obiekty główne usługi  *pochodnych* do użytku lokalnie w czasie wykonywania (w określonym dzierżawcy).
 
-Zobacz [aplikacji i nazwy głównej usługi obiektów] [ AAD-App-SP-Objects] Aby uzyskać więcej informacji.
+Aby uzyskać więcej informacji, zobacz [aplikacji i nazwy głównej usługi obiektów][AAD-App-SP-Objects].
 
 ## <a name="application-registration"></a>Rejestracja aplikacji
 Aby można było zezwolić aplikacji na integrują się z i delegować funkcje Zarządzanie tożsamościami i dostępem do usługi Azure AD, musi być zarejestrowana w usłudze Azure AD [dzierżawy](#tenant). Podczas rejestrowania aplikacji z usługą Azure AD, czy podajesz konfiguracji tożsamości aplikacji, dzięki któremu można zintegrować z usługą Azure AD i korzystać z funkcji takich jak:
@@ -132,7 +132,7 @@ Podobnie jak [zakresy](#scopes), role umożliwiają [serwer zasobów](#resource-
 
 Role są zdefiniowane zasobów ciągów (na przykład "osoba zatwierdzająca wydatków", "Tylko do odczytu", "Directory.ReadWrite.All"), są zarządzane w [portalu Azure] [ AZURE-portal] za pośrednictwem zasobu [aplikacji Manifest](#application-manifest)i przechowywane w zasobie [właściwości appRoles][AAD-Graph-Sp-Entity]. Azure portal służy również do przypisywania użytkowników do ról "użytkownika" i skonfiguruj klienta [uprawnienia aplikacji](#permissions) do roli "aplikacji".
 
-Szczegółowe omówienie ról aplikacji udostępnianych przez interfejs API programu Graph usługi Azure AD, zobacz [zakresy uprawnień interfejsu API Graph][AAD-Graph-Perm-Scopes]. Na przykład implementacji krok po kroku, zobacz [oparta na rolach kontrola dostępu w aplikacji w chmurze przy użyciu usługi Azure AD][Duyshant-Role-Blog].
+Szczegółowe omówienie ról aplikacji udostępnianych przez interfejs API programu Graph usługi Azure AD, zobacz [zakresy uprawnień interfejsu API Graph][AAD-Graph-Perm-Scopes]. Na przykład implementacji krok po kroku, zobacz [zarządzanie dostępem przy użyciu RBAC i portalu Azure][AAD-RBAC].
 
 ## <a name="scopes"></a>Zakresy
 Podobnie jak [ról](#roles), zakresy umożliwiają [serwer zasobów](#resource-server) dotyczące dostępu do chronionych zasobów. Zakresy są używane do implementowania [zakresu] [ OAuth2-Access-Token-Scopes] kontroli dostępu, aby uzyskać [aplikacji klienckiej](#client-application) że została podana dostęp delegowany do zasobu przez jego właściciela.
@@ -147,15 +147,15 @@ Podpisanego dokumentu zawierające te oświadczenia, takich jak tokenu OAuth2 lu
 ## <a name="service-principal-object"></a>Obiekt główny usługi
 Gdy użytkownik rejestru/aktualizacji aplikacji w [portalu Azure][AZURE-portal], portalu utworzeń/aktualizacji zarówno [obiektu aplikacji](#application-object) i odpowiedni obiekt główny usługi dla tego dzierżawcy. Obiekt application *definiuje* Konfiguracja tożsamości aplikacji globalnie (za pośrednictwem wszystkich dzierżaw gdzie skojarzonej aplikacji udzielono dostępu), i szablon, z którego jest jego odpowiedniej nazwy głównej usługi obiekty są *pochodnych* do użytku lokalnie w czasie wykonywania (w określonym dzierżawcy).
 
-Zobacz [aplikacji i nazwy głównej usługi obiektów] [ AAD-App-SP-Objects] Aby uzyskać więcej informacji.
+Aby uzyskać więcej informacji, zobacz [aplikacji i nazwy głównej usługi obiektów][AAD-App-SP-Objects].
 
 ## <a name="sign-in"></a>logowanie
-Proces [aplikacji klienckiej](#client-application) inicjowanie uwierzytelniania użytkownika końcowego i przechwytywanie stanu na potrzeby pobierania powiązane [tokenu zabezpieczającego](#security-token) i określania zakresu sesji aplikacji do tego stanu. Stanu może zawierać artefaktów na przykład informacje o profilu użytkownika i informacji pochodzących z tokenu oświadczeń.
+Proces [aplikacji klienckiej](#client-application) inicjowanie uwierzytelniania użytkowników końcowych i przechwytywanie stanu na potrzeby pobierania powiązane [tokenu zabezpieczającego](#security-token) i określania zakresu sesji aplikacji do tego stanu. Stanu może zawierać artefaktów na przykład informacje o profilu użytkownika i informacji pochodzących z tokenu oświadczeń.
 
 Funkcja logowania aplikacji jest zwykle używane do implementacji-jednokrotnej (SSO). Go może być poprzedzone funkcję "zapisywania do" jako punkt wejścia dla użytkownika końcowego w celu uzyskania dostępu do aplikacji (na po w wypadku pierwszego logowania). Funkcja tworzenia konta służy do zbierania i utrwalić stanu dodatkowe specyficzne dla użytkownika i może wymagać [zgody użytkownika](#consent).
 
 ## <a name="sign-out"></a>wylogowanie
-Proces odinstalowywania uwierzytelniania użytkownika końcowego, odłączenie stanu użytkownika skojarzony z [aplikacji klienckiej](#client-application) sesji podczas [logowania](#sign-in)
+Proces unauthenticating użytkownik końcowy odłączanie stanu użytkownika skojarzonego z [aplikacji klienckiej](#client-application) sesji podczas [logowania](#sign-in)
 
 ## <a name="tenant"></a>dzierżawa
 Wystąpienie katalogu usługi Azure AD jest określana jako dzierżawa usługi Azure AD. Zapewnia kilka funkcji, takich jak:
@@ -170,18 +170,18 @@ Dzierżaw usługi Azure AD są tworzone lub skojarzyć za pomocą subskrypcji pl
 Jeden z punktów końcowych, implementowane przez [serwera autoryzacji](#authorization-server) do obsługi protokołu OAuth2 [przyznaje autoryzacji](#authorization-grant). W zależności od grant, może służyć do uzyskania [token dostępu](#access-token) (i powiązanych tokenu "Odśwież") do [klienta](#client-application), lub [token Identyfikatora](#ID-token) w przypadku użycia z [OpenID Połącz] [ OpenIDConnect] protokołu.
 
 ## <a name="user-agent-based-client"></a>Na podstawie agent użytkownika klienta
-Typ [aplikacji klienckiej](#client-application) pobierania kodu z serwera sieci web i wykonuje w agent użytkownika (na przykład przeglądarki sieci web), takich jak jednej strony aplikacji JEDNOSTRONICOWEJ. Ponieważ cały kod jest wykonywane na urządzeniu, jest traktowane jako "public" klienta z powodu jego brakiem do przechowywania poświadczeń prywatnie/jako poufne. Zobacz [OAuth2 klienta typów i profile] [ OAuth2-Client-Types] więcej szczegółów.
+Typ [aplikacji klienckiej](#client-application) pobierania kodu z serwera sieci web i wykonuje w agent użytkownika (na przykład przeglądarki sieci web), takich jak jednej strony aplikacji JEDNOSTRONICOWEJ. Ponieważ cały kod jest wykonywane na urządzeniu, jest traktowane jako "public" klienta z powodu jego brakiem do przechowywania poświadczeń prywatnie/jako poufne. Aby uzyskać więcej informacji, zobacz [OAuth2 klienta typów i profile][OAuth2-Client-Types].
 
 ## <a name="user-principal"></a>głównej nazwy użytkownika
 Podobnie jak obiekt główny usługi jest używana do reprezentowania wystąpienia aplikacji, obiekt główny użytkownik jest innego typu podmiot zabezpieczeń, który reprezentuje użytkownika. Azure AD Graph [jednostki użytkownika] [ AAD-Graph-User-Entity] definiuje schemat dla obiekt użytkownika, w tym właściwości skojarzone z użytkownikiem, takie jak imię i nazwisko, główna nazwa użytkownika, członkostwo w roli katalogu itp. Zapewnia to konfiguracja tożsamości użytkownika dla usługi Azure AD ustanowić podmiot zabezpieczeń użytkownika w czasie wykonywania. Głównej nazwy użytkownika jest używana do reprezentowania uwierzytelnionego użytkownika dla logowania jednokrotnego, rejestrowanie [zgody](#consent) delegowania, co decyzje dotyczące kontroli dostępu, itd.
 
 ## <a name="web-client"></a>Klient sieci Web
-Typ [aplikacji klienckiej](#client-application) , który jest wykonywany całego kodu na serwerze sieci web i może działać jako klient "poufne dane" przez bezpieczne przechowywanie swoich poświadczeń na serwerze. Zobacz [OAuth2 klienta typów i profile] [ OAuth2-Client-Types] więcej szczegółów.
+Typ [aplikacji klienckiej](#client-application) , który jest wykonywany całego kodu na serwerze sieci web i może działać jako klient "poufne dane" przez bezpieczne przechowywanie swoich poświadczeń na serwerze. Aby uzyskać więcej informacji, zobacz [OAuth2 klienta typów i profile][OAuth2-Client-Types].
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Przewodnik dewelopera usługi Azure AD] [ AAD-Dev-Guide] jest strony docelowej, można użyć dla wdrożenia usługi Azure AD wszystkich powiązanych tematów, w tym omówienie [integracji aplikacji] [ AAD-How-To-Integrate] i podstawy [uwierzytelniania usługi Azure AD i scenariusze obsługiwane uwierzytelniania][AAD-Auth-Scenarios]. Możesz również znaleźć przykłady kodu i samouczki dotyczące sposobu uzyskiwania szybkiego skonfigurowania i uruchomienia na [Github](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
+[Przewodnik dewelopera usługi Azure AD] [ AAD-Dev-Guide] jest strona docelowa dla wszystkich usługi Azure AD związane z rozwojem tematy, w tym omówienie [integracji aplikacji] [ AAD-How-To-Integrate] i podstawy [uwierzytelniania usługi Azure AD i scenariusze obsługiwane uwierzytelniania][AAD-Auth-Scenarios]. Możesz również znaleźć przykłady kodu i samouczki dotyczące sposobu uzyskiwania szybkiego skonfigurowania i uruchomienia na [Github](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
 
-Użyj poniższej sekcji komentarzy, aby wyrazić swoją opinię i pomóc nam dostosować i kształtu zawartość, włącznie z żądaniami dostępność nowych definicji lub aktualizowania istniejących!
+Użyj następujących sekcji komentarzy wyrazić swoją opinię i pomoc, aby doprecyzować i kształtu tej zawartości, włącznie z żądaniami dostępność nowych definicji lub aktualizowania istniejących!
 
 <!--Image references-->
 
@@ -194,7 +194,7 @@ Użyj poniższej sekcji komentarzy, aby wyrazić swoją opinię i pomóc nam dos
 [AAD-Graph-App-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
 [AAD-Graph-Sp-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity
 [AAD-Graph-User-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity
-[AAD-How-Subscriptions-Assoc]: ../active-directory-how-subscriptions-associated-directory.md
+[AAD-How-Subscriptions-Assoc]:../fundamentals/active-directory-how-subscriptions-associated-directory.md
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md
 [AAD-How-To-Tenant]: active-directory-howto-tenant.md
 [AAD-Integrating-Apps]: ./active-directory-integrating-applications.md
@@ -202,7 +202,7 @@ Użyj poniższej sekcji komentarzy, aby wyrazić swoją opinię i pomóc nam dos
 [AAD-Security-Token-Claims]: ./active-directory-authentication-scenarios/#claims-in-azure-ad-security-tokens
 [AAD-Tokens-Claims]: ./active-directory-token-and-claims.md
 [AZURE-portal]: https://portal.azure.com
-[Duyshant-Role-Blog]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
+[AAD-RBAC]: ../../role-based-access-control/role-assignments-portal.md
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
 [Microsoft-Graph]: https://graph.microsoft.io
 [O365-Perm-Ref]: https://msdn.microsoft.com/office/office365/howto/application-manifest

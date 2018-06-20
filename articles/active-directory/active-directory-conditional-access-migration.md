@@ -1,5 +1,5 @@
 ---
-title: Migracja zasad klasycznego w portalu Azure | Dokumentacja firmy Microsoft
+title: Co to jest migracja zasad dostępu warunkowego w usłudze Azure Active Directory? | Microsoft Docs
 description: Dowiedz się, co należy wiedzieć, aby migrować klasyczny zasad w portalu Azure.
 services: active-directory
 keywords: dostęp warunkowy do aplikacji, dostęp warunkowy przy użyciu usługi Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/11/2017
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: b6285381833526cdbdd7c1392894458a47c1cf34
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 4a9b3df66567c4170ba861d3e597261e37271bf1
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34723732"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232428"
 ---
-# <a name="migrate-classic-policies-in-the-azure-portal"></a>Migracja zasad klasycznego w portalu Azure 
+# <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>Co to jest migracja zasad dostępu warunkowego w usłudze Azure Active Directory? 
 
 
 [Dostęp warunkowy](active-directory-conditional-access-azure-portal.md) jest możliwość Azure Active Directory (Azure AD), który umożliwia kontrolowanie sposobu autoryzacji dostępu użytkowników aplikacji w chmurze. Gdy celem jest taka sama, wersji portalu Azure ma wprowadzono znaczne ulepszenia w sposobie działania dostępu warunkowego.
@@ -85,11 +85,11 @@ Przy użyciu dostępu warunkowego w portalu Azure możesz zarządzać wszystkich
 
 Zobacz:
 
-- [Dostęp warunkowy w usłudze Azure Active Directory](active-directory-conditional-access-azure-portal.md) informacje na temat podstawowych pojęć i terminologii.
+- [Co to jest dostępu warunkowego w usłudze Azure Active Directory](active-directory-conditional-access-azure-portal.md) informacje na temat podstawowych pojęć i terminologii.
 
 - [Najlepsze rozwiązania dla dostępu warunkowego w usłudze Azure Active Directory](active-directory-conditional-access-best-practices.md) Aby uzyskać instrukcje na temat wdrażania dostępu warunkowego w Twojej organizacji.
 
-- [Rozpoczynanie pracy z dostępu warunkowego w usłudze Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md) zapoznać się z interfejsu użytkownika w portalu Azure.
+- [Uwierzytelniania MFA można wymagać dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](active-directory-conditional-access-app-based-mfa.md) zapoznać się z interfejsu użytkownika w portalu Azure.
 
 
  
@@ -170,6 +170,6 @@ W nowych zasad, musisz wybrać [platform urządzeń](active-directory-conditiona
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wprowadzenie dostępu warunkowego w usłudze Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md).
+- Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [GRequire MFA dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](active-directory-conditional-access-app-based-mfa.md).
 
 - Jeśli wszystko jest gotowe do skonfigurowania zasad dostępu warunkowego dla danego środowiska, zobacz [najlepszych rozwiązań dotyczących dostępu warunkowego w usłudze Azure Active Directory](active-directory-conditional-access-best-practices.md). 

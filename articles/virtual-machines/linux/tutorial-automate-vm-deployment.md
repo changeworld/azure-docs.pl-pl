@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/13/2017
+ms.date: 05/30/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: fa1e95263559906ebfd0df82b2756043e38852a6
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 9947ff74ac1256ab7f493697798aaf2776d19eff
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305161"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716503"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Samouczek — dostosowywanie maszyny wirtualnej z systemem Linux na platformie Azure podczas pierwszego rozruchu za pomocą pakietu cloud-init
 
@@ -51,7 +51,7 @@ Wraz z partnerami pracujemy nad tym, aby pakiet cloud-init był uwzględniany i 
 | UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |najnowsza |
 | CoreOS |CoreOS |CoreOS |Stable |najnowsza |
 | | OpenLogic | CentOS | 7-CI | najnowsza |
-| | RedHat | RHEL | 7-RAW-CI | najnowsza
+| | RedHat | RHEL | 7-RAW-CI | najnowsza |
 
 
 ## <a name="create-cloud-init-config-file"></a>Tworzenie pliku konfiguracji cloud-init
@@ -104,15 +104,15 @@ runcmd:
 Aby uzyskać więcej informacji o opcjach konfiguracji pakietu cloud-init, zobacz [przykłady konfiguracji pakietu cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/examples.html).
 
 ## <a name="create-virtual-machine"></a>Tworzenie maszyny wirtualnej
-Zanim będzie można utworzyć maszynę wirtualną, utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroupAutomate* w lokalizacji *eastus*:
+Zanim będzie można utworzyć maszynę wirtualną, utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az-group-create). Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroupAutomate* w lokalizacji *eastus*:
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroupAutomate --location eastus
 ```
 
-Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create). Użyj parametru `--custom-data` do przekazania w pliku konfiguracji cloud-init. Podaj pełną ścieżkę do pliku konfiguracji *cloud-init.txt*, jeśli plik został zapisany poza aktualnym katalogiem roboczym. W poniższym przykładzie utworzono maszynę wirtualną o nazwie *myAutomatedVM*:
+Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az-vm-create). Użyj parametru `--custom-data` do przekazania w pliku konfiguracji cloud-init. Podaj pełną ścieżkę do pliku konfiguracji *cloud-init.txt*, jeśli plik został zapisany poza aktualnym katalogiem roboczym. W poniższym przykładzie utworzono maszynę wirtualną o nazwie *myAutomatedVM*:
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create \
     --resource-group myResourceGroupAutomate \
     --name myVM \
@@ -124,14 +124,14 @@ az vm create \
 
 Utworzenie maszyny wirtualnej, zainstalowanie pakietów i uruchomienie aplikacji potrwa kilka minut. Pewne zadania w tle działają nadal po powrocie do wiersza polecenia w interfejsie wiersza polecenia platformy Azure. Może upłynąć kilka minut, zanim będzie można uzyskać dostęp do aplikacji. Podczas tworzenia maszyny wirtualnej zanotuj wartość `publicIpAddress` wyświetlaną w wierszu polecenia platformy Azure. Ten adres służy do uzyskiwania dostępu do aplikacji Node.js w przeglądarce internetowej.
 
-Aby zezwolić na ruch internetowy do maszyny wirtualnej, otwórz port 80 z Internetu za pomocą polecenia [az vm open-port](/cli/azure/vm#az_vm_open_port):
+Aby zezwolić na ruch internetowy do maszyny wirtualnej, otwórz port 80 z Internetu za pomocą polecenia [az vm open-port](/cli/azure/vm#az-vm-open-port):
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myVM
 ```
 
 ## <a name="test-web-app"></a>Testowanie aplikacji internetowej
-Teraz możesz otworzyć przeglądarkę internetową i wprowadzić ciąg *http://<publicIpAddress>* na pasku adresu. Podaj własny publiczny adres IP z procesu tworzenia maszyny wirtualnej. Aplikacja Node.js jest wyświetlana, jak w poniższym przykładzie:
+Teraz możesz otworzyć przeglądarkę internetową i wprowadzić ciąg *http://<publicIpAddress>* na pasku adresu. Podaj własny publiczny adres IP z procesu tworzenia maszyny wirtualnej. Aplikacja Node.js jest wyświetlana jak w poniższym przykładzie:
 
 ![Wyświetlanie uruchomionej witryny serwera NGINX](./media/tutorial-automate-vm-deployment/nginx.png)
 
@@ -149,9 +149,9 @@ Poniższa procedura przedstawia:
 - Tworzenie maszyny wirtualnej i wstrzykiwanie certyfikatu
 
 ### <a name="create-an-azure-key-vault"></a>Tworzenie usługi Azure Key Vault
-Najpierw utwórz usługę Key Vault za pomocą polecenia [az keyvault create](/cli/azure/keyvault#az_keyvault_create) i włącz ją do użycia podczas wdrażania maszyny wirtualnej. Każda usługa Key Vault wymaga unikatowej nazwy, która powinna zawierać tylko małe litery. Zamień wartość *mykeyvault* w poniższym przykładzie na własną unikatową nazwę usługi Key Vault:
+Najpierw utwórz usługę Key Vault za pomocą polecenia [az keyvault create](/cli/azure/keyvault#az-keyvault-create) i włącz ją do użycia podczas wdrażania maszyny wirtualnej. Każda usługa Key Vault wymaga unikatowej nazwy, która powinna zawierać tylko małe litery. Zamień wartość *mykeyvault* w poniższym przykładzie na własną unikatową nazwę usługi Key Vault:
 
-```azurecli-interactive 
+```azurecli-interactive
 keyvault_name=mykeyvault
 az keyvault create \
     --resource-group myResourceGroupAutomate \
@@ -160,9 +160,9 @@ az keyvault create \
 ```
 
 ### <a name="generate-certificate-and-store-in-key-vault"></a>Generowanie certyfikatu i zapisywanie go w usłudze Key Vault
-Do użycia w środowisku produkcyjnym należy zaimportować prawidłowy certyfikat podpisany przez zaufanego dostawcę, używając polecenia [az keyvault certificate import](/cli/azure/keyvault/certificate#az_keyvault_certificate_import). W tym samouczku poniższy przykład przedstawia, jak można wygenerować certyfikat z podpisem własnym za pomocą polecenia [az keyvault certificate create](/cli/azure/keyvault/certificate#az_keyvault_certificate_create) z użyciem domyślnych zasad certyfikatów:
+Do użycia w środowisku produkcyjnym należy zaimportować prawidłowy certyfikat podpisany przez zaufanego dostawcę, używając polecenia [az keyvault certificate import](/cli/azure/keyvault/certificate#az-keyvault-certificate-import). W tym samouczku poniższy przykład przedstawia, jak można wygenerować certyfikat z podpisem własnym za pomocą polecenia [az keyvault certificate create](/cli/azure/keyvault/certificate#az-keyvault-certificate-create) z użyciem domyślnych zasad certyfikatów:
 
-```azurecli-interactive 
+```azurecli-interactive
 az keyvault certificate create \
     --vault-name $keyvault_name \
     --name mycert \
@@ -171,9 +171,9 @@ az keyvault certificate create \
 
 
 ### <a name="prepare-certificate-for-use-with-vm"></a>Przygotowywanie certyfikatu do użycia z maszyną wirtualną
-Aby użyć certyfikatu podczas tworzenia maszyny wirtualnej, uzyskaj identyfikator certyfikatu za pomocą polecenia [az keyvault secret list-versions](/cli/azure/keyvault/secret#az_keyvault_secret_list_versions). Maszyna wirtualna wymaga certyfikatu w określonym formacie w celu wstrzyknięcia go podczas rozruchu, więc należy skonwertować certyfikat przy użyciu polecenia [az vm format-secret](/cli/azure/vm#az_vm_format_secret). W poniższym przykładzie przypisano dane wyjściowe tych poleceń do zmiennych w celu łatwiejszego użycia w następnych krokach:
+Aby użyć certyfikatu podczas tworzenia maszyny wirtualnej, uzyskaj identyfikator certyfikatu za pomocą polecenia [az keyvault secret list-versions](/cli/azure/keyvault/secret#az-keyvault-secret-list-versions). Maszyna wirtualna wymaga wstrzyknięcia certyfikatu w określonym formacie podczas rozruchu, więc należy skonwertować certyfikat przy użyciu polecenia [az vm secret format](/cli/azure/vm#az-vm-secret-format). W poniższym przykładzie przypisano dane wyjściowe tych poleceń do zmiennych w celu łatwiejszego użycia w następnych krokach:
 
-```azurecli-interactive 
+```azurecli-interactive
 secret=$(az keyvault secret list-versions \
           --vault-name $keyvault_name \
           --name mycert \
@@ -237,9 +237,9 @@ runcmd:
 ```
 
 ### <a name="create-secure-vm"></a>Tworzenie bezpiecznej maszyny wirtualnej
-Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create). Dane certyfikatu są wstrzykiwane z usługi Key Vault za pomocą parametru `--secrets`. Tak jak w poprzednim przykładzie możesz też przekazać plik konfiguracji cloud-init za pomocą parametru `--custom-data`:
+Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az-vm-create). Dane certyfikatu są wstrzykiwane z usługi Key Vault za pomocą parametru `--secrets`. Tak jak w poprzednim przykładzie możesz też przekazać plik konfiguracji cloud-init za pomocą parametru `--custom-data`:
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create \
     --resource-group myResourceGroupAutomate \
     --name myVMSecured \
@@ -252,9 +252,9 @@ az vm create \
 
 Utworzenie maszyny wirtualnej, zainstalowanie pakietów i uruchomienie aplikacji potrwa kilka minut. Pewne zadania w tle działają nadal po powrocie do wiersza polecenia w interfejsie wiersza polecenia platformy Azure. Może upłynąć kilka minut, zanim będzie można uzyskać dostęp do aplikacji. Podczas tworzenia maszyny wirtualnej zanotuj wartość `publicIpAddress` wyświetlaną w wierszu polecenia platformy Azure. Ten adres służy do uzyskiwania dostępu do aplikacji Node.js w przeglądarce internetowej.
 
-Aby zezwolić na bezpieczny ruch internetowy do maszyny wirtualnej, otwórz port 443 z Internetu za pomocą polecenia [az vm open-port](/cli/azure/vm#az_vm_open_port):
+Aby zezwolić na bezpieczny ruch internetowy do maszyny wirtualnej, otwórz port 443 z Internetu za pomocą polecenia [az vm open-port](/cli/azure/vm#az-vm-open-port):
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm open-port \
     --resource-group myResourceGroupAutomate \
     --name myVMSecured \
@@ -262,7 +262,7 @@ az vm open-port \
 ```
 
 ### <a name="test-secure-web-app"></a>Testowanie bezpiecznej aplikacji internetowej
-Teraz możesz otworzyć przeglądarkę sieci Web i wprowadzić ciąg *https://<publicIpAddress>*  na pasku adresu. Podaj własny publiczny adres IP z procesu tworzenia maszyny wirtualnej. Jeśli został użyty certyfikat z podpisem własnym, zaakceptuj ostrzeżenie dotyczące zabezpieczeń:
+Teraz możesz otworzyć przeglądarkę sieci Web i wprowadzić ciąg *https://<publicIpAddress>*  na pasku adresu. Podaj własny publiczny adres IP, widoczny w danych wyjściowych poprzedniego procesu tworzenia maszyny wirtualnej. Jeśli został użyty certyfikat z podpisem własnym, zaakceptuj ostrzeżenie dotyczące zabezpieczeń:
 
 ![Akceptowanie ostrzeżenia dotyczącego zabezpieczeń w przeglądarce sieci Web](./media/tutorial-automate-vm-deployment/browser-warning.png)
 

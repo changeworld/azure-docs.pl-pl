@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
+ms.component: hybrid
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 76ed05d55389e2c05b38fe1f2c239f544c6a5d38
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b5ac1e4c62242c088a0ac84fffc0211baf442b53
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595203"
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Wdrażanie usług Active Directory Federation Services na platformie Azure
 Usługi AD FS udostępniają uproszczone, zabezpieczone funkcje federacji tożsamości i logowania jednokrotnego (SSO) w sieci Web. Federacja z usługą Azure AD lub O365 umożliwia użytkownikom uwierzytelnianie się przy użyciu poświadczeń lokalnych i uzyskiwanie dostępu do wszystkich zasobów w chmurze. Tym samym ważne staje się zapewnienie infrastruktury usług AD FS o wysokiej dostępności, która gwarantuje dostęp zarówno do zasobów lokalnych, jak i przechowywanych w chmurze. Wdrożenie usług AD FS na platformie Azure może pomóc w osiągnięciu wymaganej wysokiej dostępności w prosty sposób.
@@ -37,12 +39,16 @@ Wdrożenie usług AD FS na platformie Azure niesie ze sobą szereg korzyści, ta
 Na powyższym diagramie przedstawiono zalecaną podstawową topologię umożliwiającą rozpoczęcie wdrażania infrastruktury usług AD FS na platformie Azure. Poniżej przedstawiono zasady dotyczące różnych składników tej topologii:
 
 * **Kontrolery domeny (DC) / serwery usług AD FS**: jeśli liczba użytkowników nie przekracza 1000, można po prostu zainstalować rolę usług AD FS na kontrolerach domeny. Jeśli liczba użytkowników przekracza 1000 lub konieczne jest wyeliminowanie wszelkich wpływów na wydajność kontrolerów domeny, usługi AD FS należy wdrożyć na oddzielnych serwerach.
-* **Serwer proxy aplikacji sieci Web (WAP)** — konieczne jest wdrożenie serwerów proxy aplikacji sieci Web w celu umożliwienia użytkownikom korzystania z usług AD FS również spoza sieci firmowej.
-* **Strefa DMZ**: serwery proxy aplikacji sieci Web zostaną umieszczone w strefie DMZ. Komunikacja między strefą DMZ i podsiecią wewnętrzną jest możliwa TYLKO przez port TCP 443.
-* **Moduły równoważenia obciążenia**: aby zapewnić wysoką dostępność usług AD FS i serwerów proxy aplikacji sieci Web, zaleca się użycie wewnętrznego modułu równoważenia obciążenia dla serwerów usług AD FS oraz usługi Azure Load Balancer dla serwerów proxy aplikacji sieci Web.
+* 
+  **Serwer proxy aplikacji internetowej (WAP)** — konieczne jest wdrożenie serwerów proxy aplikacji internetowych w celu umożliwienia użytkownikom korzystania z usług AD FS również spoza sieci firmowej.
+* 
+  **Strefa DMZ**: serwery proxy aplikacji internetowej zostaną umieszczone w strefie DMZ. Komunikacja między strefą DMZ i podsiecią wewnętrzną jest możliwa TYLKO przez port TCP 443.
+* 
+  **Moduły równoważenia obciążenia**: aby zapewnić wysoką dostępność usług AD FS i serwerów proxy aplikacji internetowych, zaleca się użycie wewnętrznego modułu równoważenia obciążenia dla serwerów usług AD FS oraz usługi Azure Load Balancer dla serwerów proxy aplikacji internetowych.
 * **Zestawy dostępności**: aby zapewnić nadmiarowość wdrożenia usług AD FS, zaleca się umieszczenie co najmniej dwóch maszyn wirtualnych w zestawie dostępności w celu uzyskania podobnych obciążeń. Taka konfiguracja zapewnia dostępność co najmniej jednej maszyny wirtualnej podczas planowanych i nieplanowanych zdarzeń związanych z konserwacją.
 * **Konta magazynu**: zaleca się korzystanie z dwóch kont magazynu. Korzystanie z jednego konta magazynu może prowadzić do utworzenia pojedynczego punktu awarii. Jeśli konto magazynu przestanie funkcjonować (w mało prawdopodobnym scenariuszu), wdrożenie stanie się niedostępne. Użycie dwóch kont magazynu pozwala powiązać każde konto z linią awarii.
-* **Separacja sieci**: serwery proxy aplikacji sieci Web powinny zostać wdrożone w oddzielnej sieci DMZ. Sieć wirtualną można podzielić na dwie odizolowane podsieci, a następnie wdrożyć w nich serwery proxy aplikacji sieci Web. Dla każdej podsieci można po prostu skonfigurować ustawienia sieciowej grupy zabezpieczeń, zezwalając tylko na wymaganą komunikację między tymi podsieciami. Więcej szczegółów podano w poniższych scenariuszach wdrażania.
+* 
+  **Separacja sieci**: serwery proxy aplikacji internetowych powinny zostać wdrożone w oddzielnej sieci DMZ. Sieć wirtualną można podzielić na dwie odizolowane podsieci, a następnie wdrożyć w nich serwery proxy aplikacji internetowej. Dla każdej podsieci można po prostu skonfigurować ustawienia sieciowej grupy zabezpieczeń, zezwalając tylko na wymaganą komunikację między tymi podsieciami. Więcej szczegółów podano w poniższych scenariuszach wdrażania.
 
 ## <a name="steps-to-deploy-ad-fs-in-azure"></a>Kroki umożliwiające wdrożenie usług AD FS na platformie Azure
 Kroki zawarte w tej sekcji służą jako przewodnik umożliwiający wdrożenie opisanej poniżej infrastruktury usług AD FS na platformie Azure.
@@ -207,15 +213,15 @@ Reguły równoważenia obciążenia pozwalają modułowi skutecznie równoważy�
 Przejdź do serwera DNS i utwórz rekord CNAME dla wewnętrznego modułu równoważenia obciążenia. Rekord CNAME jest przeznaczony dla usługi federacyjnej. Adres IP powinien wskazywać adres IP wewnętrznego modułu równoważenia obciążenia. Na przykład jeśli docelowy adres IP modułu to 10.3.0.8, a zainstalowana usługa federacyjna jest dostępna pod adresem fs.contoso.com, należy utworzyć rekord CNAME dla adresu fs.contoso.com wskazujący na adres 10.3.0.8.
 Dzięki temu cała komunikacja dla adresu fs.contoso.com będzie odpowiednio kierowana i przekazywana do wewnętrznego modułu równoważenia obciążenia.
 
-### <a name="7-configuring-the-web-application-proxy-server"></a>7. Konfigurowanie serwera proxy aplikacji sieci Web
-**7.1. Konfigurowanie połączenia między serwerami proxy aplikacji sieci Web i serwerami usług AD FS**
+### <a name="7-configuring-the-web-application-proxy-server"></a>7. Konfigurowanie serwera proxy aplikacji internetowej
+**7.1. Konfigurowanie połączenia między serwerami proxy aplikacji internetowych i serwerami usług AD FS**
 
-Aby zapewnić komunikację między serwerami proxy aplikacji sieci Web a serwerami usług AD FS znajdującymi się za wewnętrznym modułem równoważenia obciążenia, w katalogu %systemroot%\system32\drivers\etc\hosts utwórz rekord dla wewnętrznego modułu równoważenia obciążenia. Pamiętaj o tym, że nazwa wyróżniająca (DN) powinna być nazwą usługi federacyjnej, na przykład fs.contoso.com. Ponadto wpis adresu IP powinien odpowiadać adresowi IP wewnętrznego modułu równoważenia obciążenia (w tym przykładzie: 10.3.0.8).
+Aby zapewnić komunikację między serwerami proxy aplikacji internetowej a serwerami usług AD FS znajdującymi się za wewnętrznym modułem równoważenia obciążenia, w katalogu %systemroot%\system32\drivers\etc\hosts utwórz rekord dla wewnętrznego modułu równoważenia obciążenia. Pamiętaj o tym, że nazwa wyróżniająca (DN) powinna być nazwą usługi federacyjnej, na przykład fs.contoso.com. Ponadto wpis adresu IP powinien odpowiadać adresowi IP wewnętrznego modułu równoważenia obciążenia (w tym przykładzie: 10.3.0.8).
 
-**7.2. Instalowanie roli serwera proxy aplikacji sieci Web**
+**7.2. Instalowanie roli serwera proxy aplikacji internetowej**
 
-Gdy serwery proxy aplikacji sieci Web mają zapewniony dostęp do serwerów usług AD FS znajdujących się za wewnętrznym modułem równoważenia obciążenia, można zainstalować serwery proxy aplikacji sieci Web. Serwery proxy aplikacji internetowej nie muszą być przyłączone do domeny. Zainstaluj role serwera proxy aplikacji sieci Web na dwóch serwerach proxy aplikacji sieci Web, wybierając rolę dostępu zdalnego. Menedżer serwera poprowadzi Cię przez proces instalacji serwera proxy aplikacji sieci Web.
-Aby uzyskać więcej informacji na temat wdrażania serwera proxy aplikacji sieci Web, zapoznaj się z artykułem [Instalowanie i konfigurowanie usługi Serwer proxy aplikacji sieci Web](https://technet.microsoft.com/library/dn383662.aspx).
+Gdy serwery proxy aplikacji internetowej mają zapewniony dostęp do serwerów usług AD FS znajdujących się za wewnętrznym modułem równoważenia obciążenia, można zainstalować serwery proxy aplikacji internetowej. Serwery proxy aplikacji internetowej nie muszą być przyłączone do domeny. Zainstaluj role serwera proxy aplikacji internetowej na dwóch serwerach proxy aplikacji internetowej, wybierając rolę dostępu zdalnego. Menedżer serwera poprowadzi Cię przez proces instalacji serwera proxy aplikacji sieci Web.
+Aby uzyskać więcej informacji na temat wdrażania serwera proxy aplikacji internetowej, zapoznaj się z artykułem [Instalowanie i konfigurowanie usługi Serwer proxy aplikacji internetowej](https://technet.microsoft.com/library/dn383662.aspx).
 
 ### <a name="8--deploying-the-internet-facing-public-load-balancer"></a>8.  Wdrażanie modułu równoważenia obciążenia połączonego z Internetem (publicznego)
 **8.1.  Tworzenie modułu równoważenia obciążenia połączonego z Internetem (publicznego)**
@@ -354,7 +360,8 @@ Podczas wdrażania tego szablonu możesz użyć istniejącej sieci wirtualnej lu
 * [Moduł równoważenia obciążenia połączony z Internetem](https://aka.ms/Azure/ILB/Internet)
 * [Konta magazynu](https://aka.ms/Azure/Storage)
 * [Sieci wirtualne platformy Azure](https://aka.ms/Azure/VNet)
-* [Linki prowadzące do informacji dotyczących usług AD FS i serwera proxy aplikacji sieci Web](https://aka.ms/ADFSLinks) 
+* 
+  [Linki prowadzące do informacji dotyczących usług AD FS i serwera proxy aplikacji internetowej](https://aka.ms/ADFSLinks) 
 
 ## <a name="next-steps"></a>Następne kroki
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](active-directory-aadconnect.md)
