@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 04/30/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: d78dbc9a32e804e37eb76047edcc050482df5761
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b868ac82951a831013d66fc0ca0a420cb94968d5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642067"
 ---
 # <a name="quickstart-deploy-a-service-fabric-windows-container-application-on-azure"></a>Szybki start: wdrażanie aplikacji kontenera systemu Windows w usłudze Service Fabric na platformie Azure
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych oraz niezawodnych mikrousług i kontenerów, a także zarządzanie nimi. 
@@ -57,6 +58,26 @@ Skonfiguruj mapowanie portów kontenera typu „port do hosta” w taki sposób,
 Nazwij usługę „MyContainerService”, a następnie kliknij przycisk **OK**.
 
 ![Okno dialogowe nowej usługi][new-service]
+
+## <a name="specify-the-os-build-for-your-container-image"></a>Określanie kompilacji systemu operacyjnego dla obrazu kontenera
+Kontenery utworzone za pomocą określonej wersji systemu Windows Server mogą nie działać na hoście z uruchomioną inną wersją tego systemu. Na przykład kontenery utworzone przy użyciu systemu Windows Server w wersji 1709 nie działają na hostach z systemem Windows Server w wersji 2016. Aby dowiedzieć się więcej, zobacz temat [Windows Server container OS and host OS compatibility](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility) (Zgodność między systemami operacyjnymi Windows Server kontenera i hosta). 
+
+W przypadku środowiska uruchomieniowego usługi Service Fabric w wersji 6.1 i nowszych można określić wiele obrazów systemu operacyjnego dla kontenera i oznaczyć każdy z nich wersją kompilacji systemu operacyjnego, na którym powinien zostać wdrożony. Ułatwia to zapewnienie, że aplikację będzie można uruchomić na hostach z różnymi wersjami systemu operacyjnego Windows. Aby dowiedzieć się więcej, zobacz temat [Określanie obrazów kontenera dla kompilacji systemu operacyjnego](service-fabric-get-started-containers.md#specify-os-build-specific-container-images). 
+
+Firma Microsoft publikuje różne obrazy dla wersji oprogramowania IIS opartych na różnych wersjach systemu Windows Serwer. Aby się upewnić, że usługa Service Fabric wdraża kontener zgodny z wersją systemu Windows Server uruchomionego na węzłach klastra, na których wdraża aplikację, dodaj następujące wiersze do pliku *ApplicationManifest.xml*. Wersja kompilacji dla systemu Windows Server 2016 to 14393, a dla systemu Windows Server w wersji 1709 — 16299. 
+
+```xml
+    <ContainerHostPolicies CodePackageRef="Code"> 
+      <ImageOverrides> 
+        ...
+          <Image Name="microsoft/iis:nanoserverDefault" /> 
+          <Image Name= "microsoft/iis:nanoserver" Os="14393" /> 
+          <Image Name="microsoft/iis:windowsservercore-1709" Os="16299" /> 
+      </ImageOverrides> 
+    </ContainerHostPolicies> 
+```
+
+Manifest usługi nadal określa tylko jeden obraz dla nanoserwera, `microsoft/iis:nanoserver`. 
 
 ## <a name="create-a-cluster"></a>Tworzenie klastra
 Aby wdrożyć aplikację w klastrze na platformie Azure, możesz dołączyć do klastra testowego. Klastry testowe to bezpłatne, ograniczone czasowo klastry usługi Service Fabric hostowane na platformie Azure i uruchamiane przez zespół usługi Service Fabric, w których każdy może wdrażać aplikacje i poznawać platformę.  Klaster używa jednego certyfikatu z podpisem własnym w przypadku zabezpieczeń między węzłami, jak i zabezpieczeń między klientem i węzłem. Klastry testowe obsługują kontenery. Jeśli zdecydujesz się skonfigurować własny klaster i używać go, musi on działać w jednostce SKU obsługującej kontenery (np. Windows Server Datacenter 2016 z kontenerami).

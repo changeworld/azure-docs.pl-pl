@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/30/2018
+ms.date: 06/12/2018
 ms.author: magoedte
-ms.openlocfilehash: f0501d4404375ee44b96ae4514c15e69b616d38a
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 3aca03d39221ffe32d7a4198c83c0cfad27f6349
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36266943"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Monitorowanie kondycji kontenera Azure Kubernetes usługi (AKS) (wersja zapoznawcza)
 
@@ -38,8 +39,8 @@ Przed rozpoczęciem, przejrzyj następujące informacje, aby zrozumieć, obsług
 
 - Obsługiwane są następujące wersje klastra AKS: 1.7.7 pytanie 1.9.6.
 - Konteneryzowanych agent pakietu OMS dla wersji systemu Linux microsoft / oms:ciprod04202018 i nowszych. Ten agent jest instalowany automatycznie podczas dołączania kondycji kontenera.  
-- Obszar roboczy analizy dzienników.  Można tworzyć, gdy monitorowanie nowego klastra AKS lub można go utworzyć za pomocą [usługi Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md), [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), lub z [portalu Azure](../log-analytics/log-analytics-quick-create-workspace.md).
-
+- Obszar roboczy usługi Log Analytics.  Można tworzyć, gdy monitorowanie nowego klastra AKS lub można go utworzyć za pomocą [usługi Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md), [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), lub z [portalu Azure](../log-analytics/log-analytics-quick-create-workspace.md).
+- Członek roli współautora analizy dzienników, aby włączyć monitorowanie kontenera.  Aby uzyskać więcej informacji na temat kontrolowania dostępu do obszaru roboczego analizy dzienników, zobacz [zarządzanie obszarami roboczymi](../log-analytics/log-analytics-manage-access.md).
 
 ## <a name="components"></a>Składniki 
 
@@ -49,7 +50,7 @@ Ta funkcja opiera się na konteneryzowanych Agent pakietu OMS dla systemu Linux 
 >Jeśli zostały już wdrożone AKS klastra, zostanie włączone monitorowanie za pomocą podanego szablonu Azure Resource Manager, jak pokazano w dalszej części tego artykułu. Nie można użyć `kubectl` do uaktualnienia, Usuń, Wdróż ponownie lub wdrożyć agenta programu.  
 >
 
-## <a name="log-in-to-azure-portal"></a>Logowanie do witryny Azure Portal
+## <a name="log-in-to-azure-portal"></a>Zaloguj się do portalu Azure
 Zaloguj się do witryny Azure Portal na stronie [https://portal.azure.com](https://portal.azure.com). 
 
 ## <a name="enable-container-health-monitoring-for-a-new-cluster"></a>Włącz monitorowanie kondycji kontener dla nowego klastra
@@ -65,7 +66,27 @@ Po włączeniu monitorowania wszystkie zadania konfiguracji zostały zakończone
 Po włączeniu monitorowania może potrwać około 15 minut, zanim będzie można wyświetlić danych operacyjnych dla klastra.  
 
 ## <a name="enable-container-health-monitoring-for-existing-managed-clusters"></a>Włącz monitorowanie kondycji kontener dla istniejących klastrów zarządzanych
-Włączanie monitorowania z kontenera AKS już wdrożona, nie można dokonać z portalu, tylko można zainstalować, za pomocą polecenia cmdlet programu PowerShell przy użyciu podanego szablonu Azure Resource Manager **New-AzureRmResourceGroupDeployment** lub interfejsu wiersza polecenia platformy Azure.  Jeden szablon JSON Określa konfigurację, aby włączyć monitorowanie i szablonie JSON zawiera wartości parametrów, które określają następujące czynności:
+Włączanie monitorowania z kontenera AKS już wdrożony można zrobić w portalu Azure lub przy użyciu dostarczonego szablonu usługi Azure Resource Manager przy użyciu polecenia cmdlet programu PowerShell **AzureRmResourceGroupDeployment nowy** lub Azure CLI.  
+
+
+### <a name="enable-from-azure-portal"></a>Włącz z portalu Azure
+Wykonaj poniższe kroki, aby włączyć funkcję monitorowania z kontenera AKS z portalu Azure.
+
+1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **kontenery**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **usług Kubernetes**.<br><br> ![Azure Portal](./media/monitoring-container-health/azure-portal-01.png)<br><br>  
+2. Na liście kontenerów Wybierz kontener.
+3. Na stronie Przegląd kontenera wybierz **monitorowanie kondycji kontenera** i **dołączania do kontenera kondycji i dzienniki** zostanie wyświetlona strona.
+4. Na **dołączania do kontenera kondycji i dzienniki** strony, jeśli masz istniejące usługi Analiza dzienników obszaru roboczego w tej samej subskrypcji co klaster, wybierz ją z listy rozwijanej.  Listy preselects domyślny obszar roboczy i lokalizację kontenera AKS jest wdrożona w subskrypcji. Umożliwia wybranie **Utwórz nowy** i określ nowy obszar roboczy w tej samej subskrypcji.<br><br> ![Aby włączyć monitorowanie kondycji kontenera AKS](./media/monitoring-container-health/container-health-enable-brownfield.png) 
+
+    W przypadku wybrania **Utwórz nowy**, **Utwórz nowy obszar roboczy** pojawi się okienko. **Region** wartość domyślna to region zasobu kontener jest tworzony w i można zaakceptować ustawienie domyślne lub wybierz inny region, a następnie określ nazwę obszaru roboczego.  Kliknij przycisk **Utwórz** aby zaakceptować wybór.<br><br> ![Definiowanie obszaru roboczego dla monintoring kontenera](./media/monitoring-container-health/create-new-workspace-01.png)  
+
+    >[!NOTE]
+    >W tej chwili nie można utworzyć nowego obszaru roboczego w regionie Zachód centralnej nam wstępnie istniejącym obszarem roboczym można wybrać tylko w tym regionie.  Mimo tego regionu można wybrać z listy, wdrożenia zostanie uruchomiony, ale nie jest on wkrótce później.  
+    >
+ 
+Po włączeniu monitorowania może potrwać około 15 minut, zanim będzie można wyświetlić danych operacyjnych dla klastra. 
+
+### <a name="enable-using-azure-resource-manager-template"></a>Włącz przy użyciu szablonu Azure Resource Manager
+Ta metoda obejmuje dwa szablony JSON, jeden szablon Określa konfigurację, aby włączyć monitorowanie i szablonie JSON zawiera wartości parametrów, które określają następujące czynności:
 
 * Identyfikator zasobu kontenera AKS 
 * Grupa zasobów klastra jest wdrażany w 
@@ -77,7 +98,7 @@ Jeśli nie znasz pojęcia związane z wdrażaniem zasobów przy użyciu programu
 
 Jeśli wybrano opcję Użyj interfejsu wiersza polecenia Azure, należy najpierw zainstalować i używać interfejsu wiersza polecenia lokalnie.  Jest to wymagane używasz interfejsu wiersza polecenia Azure w wersji 2.0.27 lub nowszej. Uruchom `az --version` do identyfikowania wersji. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
-### <a name="create-and-execute-template"></a>Tworzenie i wykonywanie szablonu
+#### <a name="create-and-execute-template"></a>Tworzenie i wykonywanie szablonu
 
 1. Skopiuj i wklej następującą składnię JSON do pliku:
 
@@ -89,7 +110,7 @@ Jeśli wybrano opcję Użyj interfejsu wiersza polecenia Azure, należy najpierw
       "aksResourceId": {
         "type": "string",
         "metadata": {
-           "description": "AKS Cluster resource id"
+           "description": "AKS Cluster Resource ID"
         }
     },
     "aksResourceLocation": {
@@ -101,7 +122,7 @@ Jeśli wybrano opcję Użyj interfejsu wiersza polecenia Azure, należy najpierw
       "workspaceId": {
         "type": "string",
         "metadata": {
-          "description": "Azure Monitor Log Analytics resource id"
+          "description": "Azure Monitor Log Analytics Resource ID"
         }
       },
       "workspaceRegion": {
@@ -223,12 +244,12 @@ Jeśli wybrano opcję Użyj interfejsu wiersza polecenia Azure, należy najpierw
 Po włączeniu monitorowania może potrwać około 15 minut, zanim będzie można wyświetlić danych operacyjnych dla klastra.  
 
 ## <a name="verify-agent-deployed-successfully"></a>Sprawdź pomyślnie wdrożony agent
-Aby sprawdzić, agent pakietu OMS prawidłowo wdrożony, uruchom następujące polecenie: ` kubectl get ds omsagent -—namespace=kube-system`.
+Aby sprawdzić, agent pakietu OMS prawidłowo wdrożony, uruchom następujące polecenie: ` kubectl get ds omsagent --namespace=kube-system`.
 
 Dane wyjściowe powinno przypominać następujące wskazujący, który został wdrożony prawidłowo:
 
 ```
-User@aksuser:~$ kubectl get ds omsagent -—namespace=kube-system 
+User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```  
@@ -248,7 +269,7 @@ Możesz wybrać kontrolerów lub kontenerów w górnej części strony i sprawd�
 
 Domyślnie dane wydajności są oparte na ostatnich sześciu godzin, ale można zmienić okna z **zakres czasu** znaleziono listy rozwijanej w prawym górnym rogu strony. W tej chwili strony nie automatycznego odświeżania, dlatego należy go ręcznie odświeżyć. 
 
-W poniższym przykładzie, można zauważyć dla węzła *aks-obiektu agentpool-3402399-0*, wartość **kontenery** to 10, który jest to wartość zbiorcza z całkowitej liczby kontenery wdrożone.<br><br> ![Pakiet zbiorczy kontenerów, na przykład węzła](./media/monitoring-container-health/container-performance-and-health-view-07.png)<br><br> Ułatwia to szybkie ustalenie, czy nie ma właściwej równowagi kontenery między węzłami w klastrze.  
+W poniższym przykładzie, można zauważyć dla węzła *aks-obiektu agentpool-3402399-0*, wartość **kontenery** to 10, który jest to wartość zbiorcza z całkowitej liczby kontenery wdrożone.<br><br> ![Pakiet zbiorczy kontenerów, na przykład węzła](./media/monitoring-container-health/container-performance-and-health-view-07.png)<br><br> Ułatwia on szybkie ustalenie, czy nie ma właściwej równowagi kontenerów między węzłami w klastrze.  
 
 W poniższej tabeli opisano informacje podane podczas wyświetlania węzłów.
 
@@ -276,7 +297,7 @@ W poniższej tabeli opisano informacje podane podczas wyświetlania kontrolerów
 | Kolumna | Opis | 
 |--------|-------------|
 | Name (Nazwa) | Nazwa kontrolera|
-| Stan | Stan kontenery po ukończeniu uruchomione o stanie, takie jak *zwolniony*, ** *zatrzymane*, lub *Paused*. Jeśli kontener jest uruchomiona, ale stan był niepoprawnie przedstawione lub nie została pobrana przez agenta nie odpowiedział ponad 30 minut, stan będzie *nieznany*. |
+| Stan | Stan kontenery po ukończeniu uruchomione o stanie, takie jak *zwolniony*, *zatrzymane*, lub *Paused*. Jeśli kontener jest uruchomiona, ale stan był niepoprawnie przedstawione lub nie została pobrana przez agenta nie odpowiedział ponad 30 minut, stan będzie *nieznany*. |
 | % ŚR. | Przedstawia średnią średni procent każdej jednostki dla wybranego metryki. |
 | ŚREDNIA | Przedstawia średnią millicore lub pamięci wydajność Procesora kontenera.  Średnia wartość jest podawana z Procesora/pamięci limit ustawiony dla pod. |
 | Containers | Całkowita liczba kontenery pod lub kontrolera. |
@@ -325,8 +346,8 @@ W poniższej tabeli przedstawiono przykłady rekordów zebrane przez kontener ko
 | Magazynu węzłami częścią klastra Kubernetes | `KubeNodeInventory` | TimeGenerated, komputera, ClusterName, ClusterId, LastTransitionTimeReady, etykiet, stan, KubeletVersion, KubeProxyVersion, CreationTimeStamp, SourceSystem | 
 | Zdarzenia Kubernetes | `KubeEvents_CL` | TimeGenerated, komputer, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, wiadomości, SourceSystem | 
 | Usługi w klastrze Kubernetes | `KubeServices_CL` | TimeGenerated, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, SourceSystem | 
-| Metryki wydajności dla węzłów częścią klastra Kubernetes | Wydajności &#124; gdzie ObjectName == "K8SNode" | cpuUsageNanoCores, memoryWorkingSetBytes, memoryRssBytes, networkRxBytes, networkTxBytes, restartTimeEpoch, networkRxBytesPerSec, networkTxBytesPerSec, cpuAllocatableNanoCores, memoryAllocatableBytes, cpuCapacityNanoCores, memoryCapacityBytes | 
-| Metryki wydajności dla kontenerów częścią klastra Kubernetes | Wydajności &#124; gdzie ObjectName == "K8SContainer" | cpuUsageNanoCores, memoryWorkingSetBytes, memoryRssBytes, restartTimeEpoch, cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryLimitBytes | 
+| Metryki wydajności dla węzłów częścią klastra Kubernetes | Wydajności &#124; gdzie ObjectName == "K8SNode" | Komputer, nazwa obiektu, CounterName &#40;cpuUsageNanoCores, memoryWorkingSetBytes, memoryRssBytes, networkRxBytes, networkTxBytes, restartTimeEpoch, networkRxBytesPerSec, networkTxBytesPerSec, cpuAllocatableNanoCores, memoryAllocatableBytes, cpuCapacityNanoCores, memoryCapacityBytes&#41;, równowartości, TimeGenerated, Ścieżka_licznika, SourceSystem | 
+| Metryki wydajności dla kontenerów częścią klastra Kubernetes | Wydajności &#124; gdzie ObjectName == "K8SContainer" | CounterName &#40;cpuUsageNanoCores, memoryWorkingSetBytes, memoryRssBytes, restartTimeEpoch, cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryLimitBytes&#41;, równowartości, TimeGenerated, Ścieżka_licznika, SourceSystem | 
 
 ## <a name="search-logs-to-analyze-data"></a>Dzienniki wyszukiwania do analizowania danych
 Analiza dzienników ułatwiają obserwować trendy, diagnozowanie wąskich gardeł, prognozy lub korelowanie danych, które mogą pomóc ustalić, czy bieżąca konfiguracja klastra działa optymalnie.  Wstępnie zdefiniowane dziennik wyszukiwania podano aby od razu rozpocząć korzystanie z lub dostosować w celu zwracania informacji w taki sposób, który ma. 
@@ -363,7 +384,7 @@ Jeśli wybrano opcję Użyj interfejsu wiersza polecenia Azure, należy najpierw
         "aksResourceId": {
            "type": "string",
            "metadata": {
-             "description": "AKS Cluster resource id"
+             "description": "AKS Cluster Resource ID"
            }
        },
       "aksResourceLocation": {
@@ -429,7 +450,7 @@ Jeśli wybrano opcję Użyj interfejsu wiersza polecenia Azure, należy najpierw
         New-AzureRmResourceGroupDeployment -Name opt-out -ResourceGroupName <ResourceGroupName> -TemplateFile .\OptOutTemplate.json -TemplateParameterFile .\OptOutParam.json
         ```
 
-        Zmiana konfiguracji może potrwać kilka minut. Po zakończeniu zostanie wyświetlony komunikat o podobne do poniższych opcji obejmujących wynik:
+        Zmiana konfiguracji może potrwać kilka minut. Po ukończeniu, jest zwracany komunikat podobny do poniższych opcji obejmujących wynik:
 
         ```powershell
         ProvisioningState       : Succeeded
@@ -443,7 +464,7 @@ Jeśli wybrano opcję Użyj interfejsu wiersza polecenia Azure, należy najpierw
         az group deployment create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
         ```
 
-        Zmiana konfiguracji może potrwać kilka minut. Po zakończeniu zostanie wyświetlony komunikat o podobne do poniższych opcji obejmujących wynik:
+        Zmiana konfiguracji może potrwać kilka minut. Po ukończeniu, jest zwracany komunikat podobny do poniższych opcji obejmujących wynik:
 
         ```azurecli
         ProvisioningState       : Succeeded

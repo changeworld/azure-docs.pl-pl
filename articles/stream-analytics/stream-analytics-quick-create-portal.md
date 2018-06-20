@@ -9,11 +9,12 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 86d4bab282db0ffc7b48813b9817eed0b45c3199
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 1e7245afe36d348b1cbd955900e34876b8e34511
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34651730"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Szybki start: tworzenie zadania usługi Stream Analytics przy użyciu witryny Azure Portal
 
@@ -41,7 +42,7 @@ Przed zdefiniowaniem zadania usługi Stream Analytics przygotuj dane, które bę
    ```
 2. Zaloguj się do Portalu Azure.  
 
-3. W lewym górnym rogu witryny Azure Portal wybierz pozycję **Utwórz zasób** > **Magazyn** > **Konto magazynu**. Wypełnij stronę zadania konta usługi Storage, ustawiając pozycję **Nazwa** na wartość „myasastorageaccount”, pozycję **Lokalizacja** na „Zachodnie stany USA 2”, a pozycję **Grupa zasobów** na „MyRG” (umieść konto magazynu w tej samej grupie zasobów, co zadanie przesyłania strumieniowego, aby zwiększyć wydajność). W przypadku pozostałych ustawień można pozostawić ich wartości domyślne.  
+3. W lewym górnym rogu witryny Azure Portal wybierz pozycję **Utwórz zasób** > **Magazyn** > **Konto magazynu**. Wypełnij stronę zadania konta usługi Storage, ustawiając pozycję **Nazwa** na wartość „asaquickstartstorage”, pozycję **Lokalizacja** na „Zachodnie stany USA 2”, a pozycję **Grupa zasobów** na „asaquickstart-resourcegroup” (umieść konto magazynu w tej samej grupie zasobów co zadanie przesyłania strumieniowego, aby zwiększyć wydajność). W przypadku pozostałych ustawień można pozostawić ich wartości domyślne.  
 
    ![Tworzenie konta magazynu](./media/stream-analytics-quick-create-portal/create-a-storage-account.png)
 
@@ -67,9 +68,9 @@ Przed zdefiniowaniem zadania usługi Stream Analytics przygotuj dane, które bę
 
    |**Ustawienie**  |**Sugerowana wartość**  |**Opis**  |
    |---------|---------|---------|
-   |Nazwa zadania   |  myJob   |   Wprowadź nazwę identyfikującą zadanie usługi Stream Analytics. Nazwa zadania usługi Stream Analytics może zawierać wyłącznie znaki alfanumeryczne, łączniki i podkreślenia oraz musi składać się z od 3 do 63 znaków. |
+   |Nazwa zadania   |  myasajob   |   Wprowadź nazwę identyfikującą zadanie usługi Stream Analytics. Nazwa zadania usługi Stream Analytics może zawierać wyłącznie znaki alfanumeryczne, łączniki i podkreślenia oraz musi składać się z od 3 do 63 znaków. |
    |Subskrypcja  | \<Twoja subskrypcja\> |  Wybierz subskrypcję platformy Azure, której chcesz użyć dla tego zadania. |
-   |Grupa zasobów   |   myResourceGroup  |   Wybierz pozycję **Utwórz nową** i wprowadź nazwę nowej grupy zasobów dla swojego konta. |
+   |Grupa zasobów   |   asaquickstart-resourcegroup  |   Wybierz pozycję **Utwórz nową** i wprowadź nazwę nowej grupy zasobów dla swojego konta. |
    |Lokalizacja  |  \<Wybierz region, który jest najbliżej Twoich użytkowników\> | Wybierz lokalizację geograficzną, w której możesz hostować swoje zadania usługi Stream Analytics. Użyj lokalizacji, która jest najbliżej Twoich użytkowników, aby zapewnić lepszą wydajność i zmniejszyć koszty transferu danych. |
    |Jednostki przesyłania strumieniowego  | 1  |   Jednostki przesyłania strumieniowego reprezentują zasoby obliczeniowe, które są wymagane do wykonania zadania. Domyślnie to ustawienie ma wartość 1. Aby dowiedzieć się więcej na temat skalowania jednostek przesyłania strumieniowego, zobacz artykuł [Understanding and adjusting streaming units (Opis i dostosowywanie jednostek przesyłania strumieniowego)](stream-analytics-streaming-unit-consumption.md).   |
    |Środowisko hostingu  |  Chmura  |   Zadania usługi Stream Analytics można wdrożyć w chmurze lub na urządzeniu brzegowym. Wartość Chmura umożliwia wdrożenie w usłudze Azure Cloud, a Urządzenie brzegowe umożliwia wdrożenie na urządzeniu usługi IoT Edge. |
@@ -116,7 +117,8 @@ W tej sekcji skonfigurujesz magazyn usługi Blob Storage jako dane wejściowe do
    |Alias danych wyjściowych |   BlobOutput   |   Wprowadź nazwę identyfikującą dane wyjściowe zadania. |
    |Subskrypcja  |  \<Twoja subskrypcja\>  |  Wybierz subskrypcję platformy Azure, która ma utworzone konto magazynu. Konto magazynu może być w tej samej lub innej subskrypcji. W tym przykładzie przyjęto założenie, że konto magazynu zostało utworzone w tej samej subskrypcji. |
    |Konto magazynu |  myasastorageaccount |   Wybierz lub wprowadź nazwę konta magazynu. Nazwy kont magazynu są wykrywane automatycznie, jeśli są one tworzone w tej samej subskrypcji.       |
-   |Kontener |   container2  |  Utwórz nowy kontener na tym samym koncie magazynu, które było używane dla danych wejściowych.   |
+   |Kontener |   container1  |  Wybierz istniejący kontener utworzony na koncie magazynu.   |
+   |Wzorzec ścieżki |   output  |  Wprowadź nazwę jako ścieżkę w ramach istniejącego kontenera dla danych wyjściowych.   |
 
 4. Dla pozostałych opcji pozostaw ich wartości domyślne i wybierz polecenie **Zapisz**, aby zapisać ustawienia.  
 
@@ -153,7 +155,7 @@ W tej sekcji skonfigurujesz magazyn usługi Blob Storage jako dane wejściowe do
 
    ![Uruchamianie zadania](./media/stream-analytics-quick-create-portal/start-the-job.png)
 
-3. Po kilku minutach znajdź w portalu konto magazynu i kontener, który został skonfigurowany jako dane wyjściowe zadania. Plik wyjściowy jest teraz widoczny w kontenerze. Pierwsze uruchomienie zadania trwa kilka minut, natomiast po uruchomieniu będzie ono działać stale, w miarę nadchodzenia danych.  
+3. Po kilku minutach znajdź w portalu konto magazynu i kontener, który został skonfigurowany jako dane wyjściowe zadania. Wybierz ścieżkę wyjściową. Plik wyjściowy jest teraz widoczny w kontenerze. Pierwsze uruchomienie zadania trwa kilka minut, natomiast po uruchomieniu będzie ono działać stale, w miarę nadchodzenia danych.  
 
    ![Przekształcone dane wyjściowe](./media/stream-analytics-quick-create-portal/transformed-output.png)
 

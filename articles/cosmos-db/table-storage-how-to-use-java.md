@@ -1,33 +1,31 @@
 ---
-title: Jak używać magazynu tabel Azure lub interfejsu API tabeli bazy danych rozwiązania Cosmos Azure za pomocą języka Java | Dokumentacja firmy Microsoft
-description: Przechowywanie danych strukturalnych w chmurze za pomocą Magazynu tabel Azure, magazyn danych NoSQL.
+title: Jak korzystać z usługi Azure Table Storage lub interfejsu API tabel usługi Azure Cosmos DB przy użyciu języka Java | Microsoft Docs
+description: Przechowywanie danych strukturalnych w chmurze za pomocą usługi Azure Table Storage lub interfejsu Table API usługi Azure Cosmos DB.
 services: cosmos-db
-documentationcenter: java
 author: SnehaGunda
 manager: kfile
-ms.assetid: 45145189-e67f-4ca6-b15d-43af7bfd3f97
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: Java
-ms.topic: article
+ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 4ac25fd9e1d7233546b34da89eb1bcaf37f6f38b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: f4ebcf51ab6682009190e467ca9dbf67caf1c182
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34797900"
 ---
-# <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Jak używać magazynu tabel Azure lub interfejsu API tabeli bazy danych rozwiązania Cosmos Azure za pomocą języka Java
+# <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Jak korzystać z usługi Azure Table Storage lub interfejsu API tabel usługi Azure Cosmos DB przy użyciu języka Java
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
+[!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-## <a name="overview"></a>Przegląd
-W tym artykule przedstawiono sposób wykonywania typowych scenariuszy przy użyciu usługa Azure Table storage i Azure DB rozwiązania Cosmos. Przykłady są napisane w języku Java i użyj [Azure Storage SDK for Java][Azure Storage SDK for Java]. Omówione scenariusze obejmują **tworzenie**, **wyświetlania**, i **usuwanie** tabel, a także **wstawianie**, **zapytań**, **modyfikowanie**, i **usuwanie** jednostek w tabeli. Aby uzyskać więcej informacji o tabelach zobacz [następne kroki](#next-steps) sekcji.
+## <a name="overview"></a>Omówienie
+W tym artykule przedstawiono sposób wykonywania typowych zadań przy użyciu usług Azure Table Storage oraz Azure Cosmos DB. Przykłady zostały napisane w języku Java i wymagają użycia [zestawu SDK usługi Azure Storage dla języka Java][Azure Storage SDK for Java]. Omówiono scenariusze **tworzenia**, **wyświetlania listy** i **usuwania** tabel, a także **wstawiania** jednostek w tabeli i **wykonywania na nich zapytań** oraz **modyfikowania** i **usuwania** jednostek w tabeli. Aby uzyskać więcej informacji na temat tabel, zobacz sekcję [Następne kroki](#next-steps).
 
 > [!NOTE]
-> Zestaw SDK jest dostępny dla deweloperów, którzy korzystają z usługi Azure Storage na urządzeniach z systemem Android. Aby uzyskać więcej informacji, zobacz [zestawu SDK usługi Magazyn Azure dla systemu Android][Azure Storage SDK for Android].
+> Jest dostępny zestaw SDK dla deweloperów korzystających z usługi Azure Storage na urządzeniach z systemem Android. Aby uzyskać więcej informacji, zobacz [zestaw SDK usługi Azure Storage dla systemu Android][Azure Storage SDK for Android].
 >
 
 ## <a name="create-an-azure-service-account"></a>Tworzenie konta usługi Azure
@@ -36,16 +34,16 @@ W tym artykule przedstawiono sposób wykonywania typowych scenariuszy przy użyc
 ### <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure Storage
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-### <a name="create-an-azure-cosmos-db-table-api-account"></a>Tworzenie konta usługi interfejsu API Azure rozwiązania Cosmos DB tabeli
+### <a name="create-an-azure-cosmos-db-account"></a>Tworzenie konta usługi Azure Cosmos DB
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="create-a-java-application"></a>Tworzenie aplikacji Java
-W tym przewodniku użyje funkcji magazynu, które aplikacji Java można uruchomić lokalnie lub w kodu działającego w roli sieci web lub roli proces roboczy na platformie Azure.
+Podczas pracy z tym przewodnikiem będziesz używać funkcji magazynu, które można uruchamiać lokalnie w aplikacji Java lub w kodzie działającym w ramach roli internetowej lub roli procesu roboczego na platformie Azure.
 
-Aby użyć przykłady w tym artykule, zainstalować Java Development Kit (JDK), a następnie utworzyć konto magazynu Azure w ramach subskrypcji platformy Azure. Po zostało to zrobione, sprawdź, czy platformie programistycznej spełnia minimalne wymagania i zależności, które są wymienione w [Azure Storage SDK for Java] [ Azure Storage SDK for Java] repozytorium w witrynie GitHub. Jeżeli system spełnia te wymagania, należy wykonać instrukcje, aby pobrać i zainstalować biblioteki magazynu Azure dla języka Java w systemie z tego repozytorium. Po wykonaniu tych zadań, można utworzyć aplikacji Java, która używa przykłady w tym artykule.
+Aby skorzystać z przykładów przedstawionych w tym artykule, zainstaluj zestaw Java Development Kit (JDK), a następnie utwórz konto usługi Azure Storage lub Azure Cosmos DB w ramach swojej subskrypcji platformy Azure. Po wykonaniu tych czynności sprawdź, czy Twój system programistyczny spełnia wymagania minimalne i zależności wymienione w repozytorium [Azure Storage SDK for Java][Azure Storage SDK for Java] w witrynie GitHub. Jeśli Twój system spełnia te wymagania, możesz pobrać biblioteki usługi Azure Storage dla języka Java z tego repozytorium i zainstalować je w systemie zgodnie z instrukcjami. Po wykonaniu tych zadań możesz utworzyć aplikację Java z użyciem przykładów zawartych w tym artykule.
 
-## <a name="configure-your-application-to-access-table-storage"></a>Konfigurowanie aplikacji na dostęp do magazynu tabel
-Dodaj następujące instrukcje import u góry pliku języka Java, której chcesz używać interfejsów API magazynu Azure lub rozwiązania Cosmos DB tabeli interfejsu API Azure do dostępu do tabel:
+## <a name="configure-your-application-to-access-table-storage"></a>Konfigurowanie aplikacji na potrzeby dostępu do usługi Table Storage
+Na początku pliku Java, w którym chcesz używać interfejsów API usługi Azure Storage lub interfejsu API tabel usługi Azure Cosmos DB w celu uzyskania dostępu do tabel, dodaj następujące instrukcje import:
 
 ```java
 // Include the following imports to use table APIs
@@ -54,10 +52,10 @@ import com.microsoft.azure.storage.table.*;
 import com.microsoft.azure.storage.table.TableQuery.*;
 ```
 
-## <a name="add-an-azure-storage-connection-string"></a>Dodaj parametry połączenia magazynu Azure
-Klienta usługi Azure storage używa parametrów połączenia magazynu do przechowywania punktów końcowych i poświadczeń do uzyskiwania dostępu do danych usługi zarządzania. Podczas uruchamiania w aplikacji klienckiej, należy podać parametry połączenia magazynu w następującym formacie, przy użyciu nazwy konta magazynu i podstawowy klucz dostępu dla konta magazynu na liście [portalu Azure](https://portal.azure.com) dla *AccountName* i *AccountKey* wartości. 
+## <a name="add-an-azure-storage-connection-string"></a>Dodawanie parametrów połączenia usługi Azure Storage
+W kliencie usługi Azure Storage punkty końcowe i poświadczenia wymagane do uzyskania dostępu do usług zarządzania danymi są przechowywane w parametrach połączenia magazynu. W aplikacji klienckiej należy podać parametry połączenia magazynu we wskazanym poniżej formacie, używając nazwy konta magazynu i podstawowego klucza dostępu do konta magazynu widocznego w witrynie [Azure Portal](https://portal.azure.com) jako wartości *AccountName* i *AccountKey*. 
 
-Ten przykład przedstawia, jak można zadeklarować pola statycznego do przechowywania parametrów połączenia:
+W tym przykładzie pokazano, jak można zadeklarować pole statyczne w celu przechowywania parametrów połączenia:
 
 ```java
 // Define the connection-string with your values.
@@ -67,10 +65,10 @@ public static final String storageConnectionString =
     "AccountKey=your_storage_account_key";
 ```
 
-## <a name="add-an-azure-cosmos-db-connection-string"></a>Dodaj ciąg połączenia bazy danych Azure rozwiązania Cosmos
-Konto bazy danych Azure rozwiązania Cosmos używa parametrów połączenia do przechowywania punkt końcowy tabel i poświadczeń. Podczas uruchamiania w aplikacji klienckiej, należy podać parametry połączenia bazy danych Azure rozwiązania Cosmos w następującym formacie, przy użyciu nazwy konta bazy danych Azure rozwiązania Cosmos i podstawowy klucz dostępu dla konta na liście [portalu Azure](https://portal.azure.com) dla *AccountName* i *AccountKey* wartości. 
+## <a name="add-an-azure-cosmos-db-table-api-connection-string"></a>Dodawanie parametrów połączenia interfejsu API tabel usługi Azure Cosmos DB
+Na koncie usługi Azure Cosmos DB punkt końcowy tabeli i Twoje poświadczenia są przechowywane w parametrach połączenia. W aplikacji klienckiej należy podać parametry połączenia usługi Azure Cosmos DB we wskazanym poniżej formacie, używając nazwy konta usługi Azure Cosmos DB i podstawowego klucza dostępu do tego konta widocznego w witrynie [Azure Portal](https://portal.azure.com) jako wartości *AccountName* i *AccountKey*. 
 
-Ten przykład przedstawia, jak można zadeklarować pola statycznego do przechowywania bazy danych Azure rozwiązania Cosmos parametry połączenia:
+W tym przykładzie pokazano, jak można zadeklarować pole statyczne w celu przechowywania parametrów połączenia usługi Azure Cosmos DB:
 
 ```java
 public static final String storageConnectionString =
@@ -80,7 +78,7 @@ public static final String storageConnectionString =
     "TableEndpoint=https://your_endpoint;" ;
 ```
 
-W aplikacji działającej w ramach roli na platformie Azure, można przechowywać ten ciąg w pliku konfiguracji usługi *pliku ServiceConfiguration.cscfg*, i można do niego dostęp z wywołaniem do  **RoleEnvironment.getConfigurationSettings** metody. Oto przykład pobierania parametrów połączenia z **ustawienie** elementu o nazwie *StorageConnectionString* w pliku konfiguracji usługi:
+W aplikacji działającej w ramach roli na platformie Azure można przechowywać te parametry w pliku konfiguracji usługi *ServiceConfiguration.cscfg* i uzyskiwać do nich dostęp za pomocą wywołania metody **RoleEnvironment.getConfigurationSettings**. Oto przykład pobierania parametrów połączenia z **ustawienia** o nazwie *StorageConnectionString* w pliku konfiguracji usługi:
 
 ```java
 // Retrieve storage account from connection-string.
@@ -88,19 +86,19 @@ String storageConnectionString =
     RoleEnvironment.getConfigurationSettings().get("StorageConnectionString");
 ```
 
-Można również przechowywanie parametrów połączenia w pliku config.properties projektu:
+Można również przechowywać parametry połączenia w pliku config.properties w projekcie:
 
 ```java
 StorageConnectionString = DefaultEndpointsProtocol=https;AccountName=your_account;AccountKey=your_account_key;TableEndpoint=https://your_table_endpoint/
 ```
 
-Poniższe przykłady założono użycie jednej z tych metod można pobrać parametry połączenia magazynu.
+W poniższych przykładach założono, że uzyskano parametry połączenia za pomocą jednej z tych metod.
 
 ## <a name="create-a-table"></a>Tworzenie tabeli
-A **CloudTableClient** obiektu pozwala pobierać obiekty odwołania do tabel i jednostek. Poniższy kod tworzy **CloudTableClient** obiektu i używa go do tworzenia nowego **CloudTable** obiekt, który reprezentuje tabeli o nazwie "osoby". 
+Obiekt **CloudTableClient** umożliwia pobieranie obiektów referencyjnych dla tabel i jednostek. Poniższy kod tworzy obiekt **CloudTableClient**, a następnie za jego pomocą tworzy nowy obiekt **CloudTable** reprezentujący tabelę o nazwie „people” (osoby). 
 
 > [!NOTE]
-> Istnieją inne sposoby tworzenia **CloudStorageAccount** obiektów; Aby uzyskać więcej informacji, zobacz **CloudStorageAccount** w [odwołania do zestawu SDK klienta magazynu Azure]).
+> Istnieją inne sposoby tworzenia obiektów **CloudStorageAccount**. Aby uzyskać więcej informacji zobacz sekcję **CloudStorageAccount** w [Dokumentacja zestawu SDK klienta usługi Azure Storage].
 >
 
 ```java
@@ -125,8 +123,8 @@ catch (Exception e)
 }
 ```
 
-## <a name="list-the-tables"></a>Wyświetl tabele
-Aby uzyskać listę tabel, należy wywołać **CloudTableClient.listTables()** metoda pobierania iterable listę nazw tabel.
+## <a name="list-the-tables"></a>Wyświetlanie listy tabel
+Aby uzyskać listę tabel, wywołaj metodę **CloudTableClient.listTables()**, aby pobrać iterowaną listę nazw tabel.
 
 ```java
 try
@@ -153,7 +151,7 @@ catch (Exception e)
 ```
 
 ## <a name="add-an-entity-to-a-table"></a>Dodawanie jednostki do tabeli
-Jednostki są mapowane do obiektów języka Java przy użyciu niestandardowej klasy implementacja **TableEntity**. Dla wygody **TableServiceEntity** klasa implementuje **TableEntity** i używa odbicia do mapowania właściwości do metody pobierającej i ustawiającej o nazwie właściwości. Aby dodać jednostkę do tabeli, należy najpierw utworzyć klasę, która definiuje właściwości jednostki. Poniższy kod definiuje klasę jednostki, która używa imienia klienta jako klucza wiersza i nazwiska jako klucza partycji. Razem klucz partycji i klucz wiersza jednostki jednoznacznie identyfikują jednostkę w tabeli. Jednostki z tym samym kluczem partycji mogą być przeszukiwane szybciej niż jednostki o różnych kluczach partycji.
+Jednostki są mapowane na obiekty Java za pomocą niestandardowej klasy implementującej obiekt **TableEntity**. Dla wygody klasa **TableServiceEntity** implementuje obiekt **TableEntity** i za pomocą odbicia mapuje właściwości na metody pobierające i ustawiające nazwane od tych właściwości. Aby dodać jednostkę do tabeli, należy najpierw utworzyć klasę, która definiuje właściwości jednostki. Poniższy kod definiuje klasę jednostki, która używa imienia klienta jako klucza wiersza i nazwiska klienta jako klucza partycji. Razem klucz partycji i klucz wiersza jednostki jednoznacznie identyfikują jednostkę w tabeli. Zapytania mogą być wykonywane szybciej w przypadku jednostek mających taki sam klucz partycji niż w przypadku jednostek z różnymi kluczami partycji.
 
 ```java
 public class CustomerEntity extends TableServiceEntity {
@@ -185,7 +183,7 @@ public class CustomerEntity extends TableServiceEntity {
 }
 ```
 
-Operacje tabeli obejmujące jednostki wymagają **TableOperation** obiektu. Ten obiekt definiuje operacji wykonywanych w ramach jednostki, które mogą być wykonywane przez **CloudTable** obiektu. Poniższy kod tworzy nowe wystąpienie klasy **CustomerEntity** klasy z niektóre dane klienta mają być przechowywane. Kod wywołuje dalej **TableOperation.insertOrReplace** utworzyć **TableOperation** obiekt do wstawiania jednostek do tabeli i kojarzy nowe **CustomerEntity** z nim. Na koniec kod wywołuje **wykonania** metoda **CloudTable** obiektu, określając w tabeli "osoby" i nowych **TableOperation**, który następnie wysyła żądanie do usługi magazynu, aby wstawić nową jednostkę klienta do tabeli "osoby", lub Zastąp jednostki, jeśli już istnieje.
+Operacje na jednostkach w tabelach wymagają użycia obiektu **TableOperation**. Ten obiekt definiuje operację do wykonania na jednostce, którą można wykonać przy użyciu obiektu **CloudTable**. Poniższy kod tworzy nowe wystąpienie klasy **CustomerEntity**, zawierające dane klienta, które mają być przechowywane. Następnie wywołuje metodę**TableOperation.insertOrReplace**, aby utworzyć obiekt **TableOperation** w celu wstawienia jednostki do tabeli, i kojarzy z nim nową jednostkę **CustomerEntity**. Na koniec kod wywołuje metodę **execute** względem obiektu **CloudTable**, wskazując tabelę „people” i nowy obiekt **TableOperation**, co powoduje wysłanie żądania do usługi magazynu w celu wstawienia nowej jednostki klienta do tabeli „people” lub zastąpienia tej jednostki, jeśli już istnieje.
 
 ```java
 try
@@ -219,7 +217,7 @@ catch (Exception e)
 ```
 
 ## <a name="insert-a-batch-of-entities"></a>Zbiorcze wstawianie jednostek
-Możesz wstawić partię jednostek do usługi tabel w jednej operacji zapisu. Poniższy kod tworzy **TableBatchOperation** obiekt, a następnie dodaje Wstaw trzy operacje do niego. Każda operacja insert jest dodawany przez utworzenie nowego obiektu jednostki, jego wartości ustawienia, a następnie wywołując **Wstaw** metoda **TableBatchOperation** obiektu jednostki z nowej operacji insert. Następnie kod wywołuje **wykonania** na **CloudTable** obiektu, określając w tabeli "osoby" i **TableBatchOperation** obiektu, który wysyła do usługi magazynu w ramach pojedynczego żądania partii operacje tabeli.
+Możesz wstawić partię jednostek do usługi tabel w ramach jednej operacji zapisu. Poniższy kod tworzy obiekt **TableBatchOperation**, a następnie dodaje do niego trzy operacje wstawiania. Każda operacja wstawiania zostaje dodana przez utworzenie nowego obiektu jednostki, ustawienie jego wartości i wywołanie metody **insert** względem obiektu **TableBatchOperation** w celu skojarzenia jednostki z nową operacją wstawiania. Następnie kod wywołuje metodę **execute** względem obiektu **CloudTable**, wskazując tabelę „people” i obiekt **TableBatchOperation**, co powoduje wysłanie partii operacji na tabeli do usługi magazynu w ramach jednego żądania.
 
 ```java
 try
@@ -265,15 +263,15 @@ catch (Exception e)
 }
 ```
 
-Należy pamiętać, dotyczące operacji zbiorczych w kilku kwestiach:
+Kilka uwag dotyczących operacji zbiorczych:
 
-* Można wykonać wstawiania do 100, Usuń, scalić, Zastąp, Wstaw lub scalania i Wstaw lub zamienianie operacji w dowolnej kombinacji w pojedynczej partii.
-* Operacji zbiorczej może mieć operacji pobierania, jeśli jest jedyną operacją w partii.
+* W ramach jednej partii można wykonać maksymalnie 100 operacji wstawiania, usuwania, łączenia, zastępowania, wstawiania lub łączenia i wstawiania lub zastępowania — w dowolnej kombinacji.
+* Operacja zbiorcza może zawierać operację pobierania, o ile jest to jedyna operacja w partii.
 * Wszystkie jednostki w jednej operacji zbiorczej muszą mieć ten sam klucz partycji.
-* Operacji zbiorczej jest ograniczony do 4MB danych ładunku.
+* Maksymalny rozmiar ładunku danych operacji zbiorczej to 4 MB.
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>Pobieranie wszystkich jednostek w partycji
-Aby odpytać tabeli dla jednostek w partycji, można użyć **TableQuery**. Wywołanie **TableQuery.from** utworzyć zapytanie dla konkretnej tabeli, która zwraca typ określony wynik. Poniższy kod określa filtr jednostek, gdzie "Smith" jest kluczem partycji. **TableQuery.generateFilterCondition** metodę pomocnika, aby utworzyć filtry dla zapytań. Wywołanie **gdzie** na odwołanie zwrócone przez **TableQuery.from** metody, aby zastosować filtr do zapytania. Podczas wykonywania zapytania w wyniku wywołania **wykonania** na **CloudTable** obiektu i zwraca **Iterator** z **CustomerEntity** określony typ wyniku. Następnie można użyć **iteratora** zwracane w dla każdej pętli do pracy z wyników. Ten kod drukowane są pola każdej jednostki w wynikach zapytania do konsoli.
+Aby wysłać do tabeli zapytanie dotyczące jednostek w partycji, możesz użyć obiektu **TableQuery**. Wywołaj metodę **TableQuery.from**, aby utworzyć zapytanie dotyczące określonej tabeli, zwracające wyniki określonego typu. Poniższy kod określa filtr jednostek, gdzie „Smith” jest kluczem partycji. Metoda **TableQuery.generateFilterCondition** to metoda pomocnicza, umożliwiająca tworzenie filtrów zapytań. Wywołaj metodę **where** względem odwołania zwróconego przez metodę **TableQuery.from**, aby zastosować filtr do zapytania. Po wykonaniu zapytania przez wywołanie metody **execute** względem obiektu **CloudTable** zostanie zwrócony **Iterator** z określonym typem wyniku **CustomerEntity**. Następnie możesz użyć zwróconego **Iteratora** w instrukcji for dla każdej pętli, aby korzystać z wyników. Ten kod drukuje pola każdej jednostki w wynikach zapytania w konsoli.
 
 ```java
 try
@@ -320,7 +318,7 @@ catch (Exception e)
 ```
 
 ## <a name="retrieve-a-range-of-entities-in-a-partition"></a>Pobieranie zakresu jednostek w partycji
-Jeśli nie chcesz zbadać wszystkich jednostek w partycji, możesz określić zakres przy użyciu operatory porównania w filtrze. Poniższy kod łączy dwa filtry do pobrania wszystkich jednostek w partycji "Smith", gdzie klucz wiersza (imię) rozpoczyna się od litery do "E" alfabetu. Następnie drukuje wyniki zapytania. Jeśli używasz dodane do tabeli w partii jednostek wstawić części tego przewodnika, tylko dwie jednostki są zwracane w tej chwili (Ben i Adam Nowak); Jan Kowalski nie jest włączony.
+Jeśli nie chcesz wykonywać zapytania dla wszystkich jednostek w partycji, możesz określić zakres, korzystając z operatorów porównania w filtrze. Poniższy kod łączy dwa filtry w celu pobrania wszystkich jednostek w partycji „Smith”, w których klucz wiersza (imię) rozpoczyna się od litery alfabetu wcześniejszej niż „E”. Następnie drukuje wyniki zapytania. W przypadku użycia jednostek dodanych do tabeli w sekcji tego przewodnika dotyczącej wstawiania zbiorczego zostaną zwrócone tylko dwie jednostki, Ben i Denise Smith — nie zostanie zwrócona jednostka Jeff Smith.
 
 ```java
 try
@@ -378,7 +376,7 @@ catch (Exception e)
 ```
 
 ## <a name="retrieve-a-single-entity"></a>Pobieranie pojedynczej jednostki
-Można napisać zapytanie do pobrania jednej, określonej jednostki. Poniższy kod wywołania **TableOperation.retrieve** z partycją klucza i wiersz klucza parametrów do określenia klienta "Jan Kowalski", zamiast tworzyć **TableQuery** i za pomocą filtrów, aby zrobić to samo. Po wykonaniu operacji pobierania zwraca tylko jedną jednostkę zamiast kolekcji. **GetResultAsType** metody rzutuje wynik, który ma typ elementu docelowego przypisania **CustomerEntity** obiektu. Jeśli ten typ nie jest zgodny z typem określonym w zapytaniu, jest zwracany wyjątek. Jeśli jednostka nie ma dokładnie partycji i klucz wiersza zgodne, jest zwracana wartość null. Określenie kluczy partycji i wiersza w pojedynczym zapytaniu jest najszybszym sposobem na pobranie jednej jednostki z usługi tabel.
+Można napisać zapytanie do pobrania jednej, określonej jednostki. Poniższy kod wywołuje metodę **TableOperation.retrieve** z parametrami klucza partycji i klucza wiersza w celu wskazania klienta o nazwisku Jeff Smith — zamiast utworzenia obiektu **TableQuery** i użycia filtrów w tym samym celu. Po wykonaniu tego kodu operacja pobierania zwróci tylko jedną jednostkę, a nie zbiór jednostek. Metoda **getResultAsType** rzutuje wynik na typ elementu docelowego przypisania, obiekt **CustomerEntity**. Jeśli ten typ nie jest zgodny z typem określonym w zapytaniu, zostanie zwrócony wyjątek. Jeśli żadna jednostka nie ma dokładnie pasującego klucza partycji i wiersza, zostanie zwrócona wartość null. Określenie kluczy partycji i wiersza w pojedynczym zapytaniu jest najszybszym sposobem na pobranie jednej jednostki z usługi tabel.
 
 ```java
 try
@@ -417,8 +415,8 @@ catch (Exception e)
 }
 ```
 
-## <a name="modify-an-entity"></a>Modyfikowanie jednostek
-Aby zmodyfikować jednostkę, pobierz ją z usługi tabel zmiany obiektu jednostki i zapisać zmian z powrotem do usługi tabel za pomocą operacji zamiany lub scalania. Poniższy kod zmienia istniejący numer telefonu klienta. Zamiast wywoływać metodę **TableOperation.insert** jak robiliśmy Wstaw ten kod wywołuje **TableOperation.replace**. **CloudTable.execute** metoda wywołuje usługi tabel, a jednostka zostanie zastąpiony, chyba że inna aplikacja uległ zmianie w czasie od pobrany tej aplikacji. W takim przypadku jest zwracany wyjątek, a jednostka musi być pobierane, zmodyfikowane i zapisane ponownie. Ten wzorzec ponawiania optymistycznej współbieżności jest typowe w przypadku rozproszony systemem przechowywania.
+## <a name="modify-an-entity"></a>Modyfikowanie jednostki
+Aby zmodyfikować jednostkę, pobierz ją z usługi tabel, wprowadź zmiany w obiekcie jednostki, a następnie zapisz zmiany w usłudze tabel przy użyciu operacji zastępowania lub łączenia. Poniższy kod zmienia istniejący numer telefonu klienta. Zamiast wywołania metody **TableOperation.insert**, jak w przypadku wstawiania, jest w nim wywoływana metoda **TableOperation.replace**. Metoda **CloudTable.execute** wywołuje usługę tabel i zastępuje jednostkę, o ile jednostka nie została zmieniona przez inną aplikację po pobraniu jej przez tę aplikację. W takim przypadku zostanie zwrócony wyjątek i będzie konieczne ponowne pobranie, zmodyfikowanie i zapisanie jednostki. Taki wzorzec ponawiania z optymistyczną współbieżnością jest typowy w rozproszonych systemach przechowywania danych.
 
 ```java
 try
@@ -458,7 +456,7 @@ catch (Exception e)
 ```
 
 ## <a name="query-a-subset-of-entity-properties"></a>Tworzenie zapytania do podzbioru właściwości jednostki
-Zapytanie do tabeli może pobrać kilka właściwości jednostki. Ta technika, zwana projekcją, redukuje przepustowość i może poprawiać wydajność zapytań, zwłaszcza w przypadku dużych jednostek. Zapytanie w poniższym kodzie używa **wybierz** metodę, aby zwrócić tylko adresy e-mail jednostek w tabeli. Wyniki są przedstawione jako kolekcja **ciąg** za pomocą **EntityResolver**, która działa konwersji typu na jednostkach zwrócone z serwera. Dowiedz się więcej o projekcji w [tabel Azure: Introducing Upsert i projekcji zapytań][Azure Tables: Introducing Upsert and Query Projection]. Należy pamiętać, że projekcji nie jest obsługiwana w lokalnym emulatorze magazynu, dlatego ten kod zadziała tylko wtedy, gdy przy użyciu konta w usłudze tabel.
+Za pomocą zapytania wykonywanego względem tabeli można pobrać tylko kilka właściwości z jednostki. Ta technika, zwana projekcją, redukuje przepustowość i może poprawiać wydajność zapytań, zwłaszcza w przypadku dużych jednostek. Zapytanie w poniższym kodzie zwraca wyłącznie adresy e-mail jednostek w tabeli dzięki użyciu metody **select**. Te wyniki są projektowane do kolekcji obiektów **String** za pomocą zapytania **EntityResolver**, wykonującego konwersję typu jednostek zwróconych z serwera. Aby dowiedzieć się więcej o projekcji, zobacz [Azure Tables: Introducing Upsert and Query Projection (Tabele platformy Azure: wprowadzenie operacji upsert i projekcji zapytań)][Azure Tables: Introducing Upsert and Query Projection]. Należy zauważyć, że funkcja projekcji nie jest obsługiwana w lokalnym emulatorze magazynu, dlatego ten kod zadziała tylko w przypadku użycia konta w usłudze tabel.
 
 ```java
 try
@@ -500,7 +498,7 @@ catch (Exception e)
 ```
 
 ## <a name="insert-or-replace-an-entity"></a>Wstawianie lub zastępowanie jednostki
-Często chcesz dodać jednostkę do tabeli bez wiedzy o Jeśli już istnieje w tabeli. Operacja wstawiania lub Zastąp pozwala na zapewnienie pojedynczego żądania, które powoduje wstawienie jednostki, jeśli nie istnieje lub Zastąp istniejącą, jeśli tak. Korzystając z poprzednich przykładach, poniższy kod wstawia lub zamienia jednostki dla "Walter Harp". Po utworzeniu nowego obiektu, ten kod wywołuje **TableOperation.insertOrReplace** metody. Ten kod wywołuje **wykonania** na **CloudTable** obiekt z tabeli i Wstaw lub Zastąp operacja tabeli jako parametry. Aby zaktualizować tylko część jednostki **TableOperation.insertOrMerge** metody można użyć zamiast niego. Należy pamiętać, że wstawianie lub zastępowanie nie jest obsługiwane w emulatorze magazynu lokalnego, dlatego ten kod zadziała tylko wtedy, gdy przy użyciu konta w usłudze tabel. Możesz dowiedzieć się więcej o Wstawianie lub zastępowanie i Wstaw lub scalania w tym [tabel Azure: Introducing Upsert i projekcji zapytań][Azure Tables: Introducing Upsert and Query Projection].
+Często zdarza się, że chcesz dodać jednostkę do tabeli, ale nie wiesz, czy taka jednostka już istnieje. Operacja wstawiania lub zastępowania umożliwia przesłanie jednego żądania, w wyniku którego jednostka zostanie wstawiona (jeśli jeszcze nie istnieje) lub zastąpiona (jeśli istnieje). Poniższy kod, oparty na poprzednich przykładach, wstawia lub zastępuje jednostkę „Walter Harp”. Po utworzeniu nowej jednostki kod wywołuje metodę **TableOperation.insertOrReplace**. Następnie wywołuje metodę **execute** względem obiektu **CloudTable**, używając tabeli i operacji wstawiania lub zastępowania jako parametrów. Aby zaktualizować tylko część jednostki, można użyć zamiast tego metody **TableOperation.insertOrMerge**. Należy zauważyć, że funkcja wstawiania lub zastępowania nie jest obsługiwana w lokalnym emulatorze magazynu, dlatego ten kod zadziała tylko w przypadku użycia konta w usłudze tabel. Aby dowiedzieć się więcej na temat operacji wstawiania lub zastępowania i wstawiania lub scalania, zobacz [Azure Tables: Introducing Upsert and Query Projection (Tabele platformy Azure: wprowadzenie operacji upsert i projekcji zapytań)][Azure Tables: Introducing Upsert and Query Projection].
 
 ```java
 try
@@ -534,7 +532,7 @@ catch (Exception e)
 ```
 
 ## <a name="delete-an-entity"></a>Usuwanie jednostki
-Po jej pobraniu można z łatwością usunąć jednostkę. Po pobraniu jednostki wywołać **TableOperation.delete** z jednostką do usunięcia. Następnie wywołaj **wykonania** na **CloudTable** obiektu. Poniższy kod umożliwia pobranie i usunięcie jednostki klienta.
+Można łatwo usunąć pobraną jednostkę. Po pobraniu jednostki wywołaj metodę **TableOperation.delete**, wskazując jednostkę do usunięcia. Następnie wywołaj metodę **execute** względem obiektu **CloudTable**. Poniższy kod umożliwia pobranie i usunięcie jednostki klienta.
 
 ```java
 try
@@ -570,7 +568,7 @@ catch (Exception e)
 ```
 
 ## <a name="delete-a-table"></a>Usuwanie tabeli
-Na koniec następującego kodu usuwa tabelę z konta magazynu. Około 40 sekund po usunięciu tabeli, nie można odtworzyć go. 
+Poniższy kod usuwa tabelę z konta magazynu. Nie można ponownie utworzyć tabeli przez około 40 sekund po jej usunięciu. 
 
 ```java
 try
@@ -594,21 +592,21 @@ catch (Exception e)
 ```
 [!INCLUDE [storage-check-out-samples-java](../../includes/storage-check-out-samples-java.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Wprowadzenie do korzystania z usługi Azure tabel w języku Java](https://github.com/Azure-Samples/storage-table-java-getting-started)
+* [Wprowadzenie do usługi Azure Table Service w języku Java](https://github.com/Azure-Samples/storage-table-java-getting-started)
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) jest bezpłatną aplikacją autonomiczną oferowaną przez firmę Microsoft, która umożliwia wizualną pracę z danymi w usłudze Azure Storage w systemach Windows, macOS i Linux.
-* [Magazyn Azure SDK dla języka Java][Azure Storage SDK for Java]
-* [Odwołanie do zestawu SDK klienta usługi Azure Storage][odwołania do zestawu SDK klienta magazynu Azure]
-* [Interfejs API REST usługi Azure Storage][Azure Storage REST API]
-* [Blog zespołu usługi Magazyn Azure][Azure Storage Team Blog]
+* [Zestaw SDK usługi Azure Storage dla języka Java][Azure Storage SDK for Java]
+* [Dokumentacja zestawu SDK klienta usługi Azure Storage][Dokumentacja zestawu SDK klienta usługi Azure Storage]
+* [Usługa Azure Storage — interfejs API REST][Azure Storage REST API]
+* [Blog zespołu odpowiedzialnego za usługę Azure Storage][Azure Storage Team Blog]
 
 Aby uzyskać więcej informacji, odwiedź stronę [Azure dla deweloperów języka Java](/java/azure).
 
 [Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
-[odwołania do zestawu SDK klienta magazynu Azure]: http://azure.github.io/azure-storage-java/
+[Dokumentacja zestawu SDK klienta usługi Azure Storage]: http://azure.github.io/azure-storage-java/
 [Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Tables: Introducing Upsert and Query Projection]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx

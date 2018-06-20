@@ -4,15 +4,15 @@ description: Ten artykuł zawiera omówienie usługi Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 05/15/2018
+ms.date: 06/08/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5c63d74158087d2011478d038d41fc1bae44190e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 68f335762e1fdd68296d7056ef5826f69c868d70
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202851"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236369"
 ---
 # <a name="about-azure-migrate"></a>Informacje o usłudze Azure Migrate
 
@@ -48,8 +48,8 @@ Ocena pomaga określić, czy maszyny lokalne są odpowiednie dla platformy Azure
 **Właściwość** | **Szczegóły**
 --- | ---
 **Lokalizacja docelowa** | Lokalizacja platformy Azure, do której chcesz przeprowadzić migrację.<br/><br/>Usługa Azure Migrate obsługuje obecnie 30 regionów, w tym: Australia Południowo-Wschodnia, Australia Wschodnia, Azja Południowo-Wschodnia, Azja Wschodnia, Brazylia Południowa, Chiny Północne, Chiny Wschodnie, Europa Północna, Europa Zachodnia, Indie Południowe, Indie Środkowe, Indie Zachodnie, Japonia Wschodnia, Japonia Zachodnia, Kanada Środkowa, Kanada Wschodnia, Korea Południowa, Korea Środkowa, Niemcy Północno-Wschodnie, Niemcy Środkowe, Południowe Zjednoczone Królestwo, Południowo-środkowe stany USA, Północno-środkowe stany USA, Środkowe stany USA, US Gov Arizona, US Gov Teksas, US Gov Wirginia, Wschodnie stany USA, Wschodnie stany USA 2, Zachodnie stany USA, Zachodnie stany USA 2, Zachodnie Zjednoczone Królestwo i Zachodnio-środkowe stany USA. Domyślna lokalizacja docelowa to Zachodnie stany USA 2.
-**Nadmiarowość magazynu** | Typ [nadmiarowości magazynu](https://docs.microsoft.com/azure/storage/common/storage-redundancy), który będzie używany przez maszyny wirtualne platformy Azure po zakończeniu migracji. Ustawienie domyślne to Magazyn lokalnie nadmiarowy (LRS). Zwróć uwagę na to, że usługa Azure Migrate obsługuje tylko oceny oparte na dyskach zarządzanych, a dyski zarządzane obsługują tylko magazyn LRS, dlatego dla właściwości jest obecnie dostępna tylko opcja magazynu LRS.
-**Kryterium rozmiaru** | Kryterium do użycia przez usługę Azure Migrate w celu określenia odpowiedniego rozmiaru dla maszyn wirtualnych platformy Azure. Na potrzeby platformy Azure rozmiar można określić na podstawie *historii wydajności* lokalnych maszyn wirtualnych lub jako rozmiar *lokalnych* maszyn wirtualnych bez uwzględniania historii wydajności. Wartość domyślna to określanie rozmiaru na podstawie wydajności.
+**Typ magazynu** | Można określić typ dysków, które mają zostać przydzielone na platformie Azure. Ta właściwość ma zastosowanie, gdy kryterium zmiany rozmiaru jest takie jak lokalna zmiana rozmiaru. Typem dysku docelowego mogą być dyski zarządzane w warstwie Premium lub dyski zarządzane w warstwie Standardowa. Wartością domyślną są dyski zarządzane w warstwie Premium. Jeśli rozmiar zostanie określony na podstawie wydajności, rekomendacje dotyczące dysku odbywają się automatycznie na podstawie danych wydajności maszyn wirtualnych. Usługa Azure Migrate obsługuje dyski zarządzane tylko na potrzeby oceny migracji.
+**Kryterium rozmiaru** | Kryterium do użycia przez usługę Azure Migrate w celu określenia odpowiedniego rozmiaru dla maszyn wirtualnych platformy Azure. Na potrzeby platformy Azure rozmiar można określić na podstawie *historii wydajności* lokalnych maszyn wirtualnych lub jako rozmiar *lokalnych* maszyn wirtualnych bez uwzględniania historii wydajności. Wartością domyślną jest ustalanie rozmiaru lokalnie.
 **Plany cenowe** | W ramach obliczania kosztów funkcja oceny uwzględnia posiadanie pakietu Software Assurance i uprawnienie do [korzyści użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/). Uwzględniane są również [oferty platformy Azure](https://azure.microsoft.com/support/legal/offer-details/), jeśli są dostępne. Można też wskazać dowolne procentowe zniżki skojarzone z daną subskrypcją i stosowane dodatkowo do całej oferty.
 **Warstwa cenowa** | Możesz określić [warstwę cenową (Podstawowa/Standardowa)](../virtual-machines/windows/sizes-general.md) dla docelowych maszyn wirtualnych platformy Azure. Na przykład jeśli planujesz migrację środowiska produkcyjnego, rozważ warstwę Standardowa, która udostępnia maszyny wirtualne o małych opóźnieniach, lecz które mogą kosztować więcej. Z drugiej strony w przypadku środowiska deweloperskiego i testowego rozważ warstwę Podstawowa, która udostępnia maszyny wirtualnych o większych opóźnieniach, lecz przy niższych kosztach. Domyślnie jest używana warstwa [Standardowa](../virtual-machines/windows/sizes-general.md).
 **Historia wydajności** | Domyślnie usługa Azure Migrate ocenia wydajność maszyn lokalnych na podstawie historii wydajności obejmującej ostatni dzień, przy wartości percentylu równej 95%. Możesz zmodyfikować te wartości we właściwościach oceny.
@@ -100,4 +100,6 @@ Po dokonaniu oceny maszyn lokalnych pod kątem migracji przy użyciu usługi Azu
 
 
 ## <a name="next-steps"></a>Następne kroki
-[Wykonaj czynności opisane w samouczku](tutorial-assessment-vmware.md) dotyczącym tworzenia oceny lokalnej maszyny wirtualnej VMware.
+
+- [Wykonaj czynności opisane w samouczku](tutorial-assessment-vmware.md) dotyczącym tworzenia oceny lokalnej maszyny wirtualnej VMware.
+- [Dowiedz się więcej](resources-faq.md) na temat usługi Azure Migrate w Często zadawanych pytaniach

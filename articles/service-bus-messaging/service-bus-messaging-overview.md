@@ -1,59 +1,131 @@
 ---
-title: "Omówienie obsługi komunikatów w usłudze Azure Service Bus | Microsoft Docs"
-description: "Opis obsługi komunikatów w usłudze Service Bus oraz usługi Azure Relay"
+title: Omówienie obsługi komunikatów w usłudze Azure Service Bus | Microsoft Docs
+description: Opis obsługi komunikatów w usłudze Service Bus
 services: service-bus-messaging
-documentationcenter: .net
+documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: f99766cb-8f4b-4baf-b061-4b1e2ae570e4
+editor: ''
 ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: multiple
-ms.topic: get-started-article
-ms.date: 12/21/2017
+ms.topic: overview
+ms.date: 05/22/2018
+ms.custom: mvc
 ms.author: sethm
-ms.openlocfilehash: e299ccfe587d37757cd67cb4367f019b21a09b4a
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 0357602e6085b25fc6d11363113ebc962dc4d008
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643094"
 ---
-# <a name="service-bus-messaging-flexible-data-delivery-in-the-cloud"></a>Obsługa komunikatów w usłudze Service Bus: elastyczne dostarczanie danych w chmurze
+# <a name="what-is-azure-service-bus"></a>Co to jest Azure Service Bus?
 
-Usługa Microsoft Azure Service Bus to niezawodna usługa dostarczania informacji. Celem tej usługi jest ułatwienie komunikacji. Gdy dwie lub więcej stron przystępuje do wymiany informacji, niezbędne jest rozwiązanie do komunikacji. Usługa Service Bus to mechanizm obsługiwany przez brokera lub mechanizm komunikacji innej firmy. Przypomina to usługi pocztowe w świecie rzeczywistym. Usługi pocztowe bardzo ułatwiają wysyłanie różnego rodzaju listów i przesyłek z różną gwarancją dostarczania w dowolnym miejscu na świecie.
+Usługa Microsoft Azure Service Bus jest w pełni zarządzanym brokerem komunikatów do integracji przedsiębiorstw. Usługa Service Bus jest najczęściej używana do rozdzielania aplikacji i usług i jest niezawodną i bezpieczną platformą do przesyłania danych asynchronicznych i stanu. Dane są przesyłane między różnymi aplikacjami i usługami przy użyciu *komunikatów*. Komunikat jest w formacie binarnym, który może zawierać plik JSON, XML lub tylko tekst. 
 
-Podobnie jak listy dostarczane za pomocą usług pocztowych, usługa Service Bus jest elastyczną usługą dostarczania informacji zarówno od nadawcy, jak i adresata. Usługa obsługi komunikatów gwarantuje dostarczenie informacji, nawet jeśli obie strony nigdy nie są w trybie online w tym samym czasie lub jeśli nie są dostępne dokładnie w tym samym czasie. W ten sposób obsługa komunikatów przypomina wysyłanie listu, podczas gdy komunikacja nieobsługiwana przez brokera jest podobna do wykonania rozmowy telefonicznej (lub do rozmów telefonicznych, jakie były kiedyś — przed połączeniami oczekującymi i identyfikatorem dzwoniącego, które bardziej przypominają komunikaty obsługiwane przez brokera).
+Niektóre typowe scenariusze obsługi komunikatów:
 
-Nadawca komunikatu może również wymagać różnych właściwości dostarczania, w tym transakcji, wykrywania duplikatów, wygaśnięcia działającego w tle lub tworzenia partii. Te wzorce również mają cechy wspólne z usługami pocztowymi: powtórne dostarczenie, wymagany podpis, zmiana adresu lub wycofanie.
+* Obsługa komunikatów: przesyłanie danych biznesowych, takich jak zamówienia sprzedaży lub zakupu, dzienniki i przesunięcia magazynowe.
+* Oddzielanie aplikacji: zwiększanie niezawodności i skalowalności aplikacji i usług (klient i usługa nie muszą być w tym samym czasie w trybie online).
+* Tematy i subskrypcje: włączanie relacji 1:*n* między wydawcami i subskrybentami.
+* Sesje komunikatów: wdrażanie przepływów pracy, które wymagają porządkowania lub odraczania komunikatów.
 
-Usługa Service Bus obsługuje dwa różne wzorce obsługi komunikatów: usługa *Azure Relay* i *obsługa komunikatów w usłudze Service Bus*.
+## <a name="namespaces"></a>Przestrzenie nazw
 
-## <a name="azure-relay"></a>Azure Relay
+Przestrzeń nazw jest kontenerem określania zakresu dla wszystkich składników służących do obsługi komunikatów. W jednej przestrzeni nazw może znajdować się wiele kolejek i tematów, a przestrzenie nazw często pełnią rolę kontenerów aplikacji.
 
-Składnik [WCF Relay](../service-bus-relay/relay-what-is-it.md) usługi Azure Relay jest scentralizowaną (ale wysoce zrównoważoną pod względem obciążenia) usługą, która obsługuje wiele różnych protokołów transportu i standardów usług internetowych. Obejmuje to usługi SOAP, WS-*, a nawet REST. [Usługa przekazywania](../service-bus-relay/service-bus-dotnet-how-to-use-relay.md) zapewnia różnorodność opcji łączności przekazywania i może pomóc podczas negocjowania bezpośrednich połączeń peer-to-peer, gdy jest to możliwe. Usługa Service Bus jest zoptymalizowana pod kątem programistów platformy .NET, którzy korzystają z usługi Windows Communication Foundation (WCF) ze względu na wydajność i użyteczność, oraz zapewnia pełny dostęp do jej usługi przekazywania danych za pomocą interfejsów SOAP i REST. Dzięki temu możliwa jest integracja dowolnego środowiska programowania SOAP lub REST z usługą Service Bus.
+## <a name="queues"></a>Kolejki
 
-Usługa przekaźnika obsługuje tradycyjne, jednokierunkowe komunikaty, komunikaty żądań/odpowiedzi oraz komunikaty równorzędne. Obsługuje ona również dystrybucję zdarzeń w zakresie Internetu w celu umożliwienia scenariuszy publikacji/subskrypcji i komunikacji poprzez gniazdo dwukierunkowe dla zwiększonej wydajności point-to-point. We wzorcu komunikatów obsługiwanych przez przekaźnik usługa lokalna łączy się z usługą przekazywania za pomocą portu wychodzącego i tworzy gniazdo dwukierunkowe dla komunikacji powiązanej z konkretnym adresem spotkania. Klient następnie może komunikować się z lokalną usługą poprzez wysyłanie komunikatów do usługi przekazywania kierującej komunikaty do adresu spotkania. Usługa przekazywania następnie „przekazuje” komunikaty do usługi lokalnej za pośrednictwem już istniejących gniazd dwukierunkowych. Klient nie potrzebuje bezpośredniego połączenia z usługą lokalną ani nie musi wiedzieć, gdzie usługa się znajduje. Usługa lokalna nie wymaga otwarcia w zaporze żadnych portów przychodzących.
+Komunikaty są wysyłane do i odbierane z *kolejek*. Kolejki umożliwiają przechowywanie komunikatów tak długo, aż aplikacja odbierająca stanie się dostępna, pobierze je i rozpocznie ich przetwarzanie.
 
-Należy zainicjować połączenie między usługą lokalną i usługą przekaźnika przy użyciu zestawu powiązań „przekaźników” WCF. W tle powiązania przekaźników są mapowane na elementy powiązania transportu przeznaczone do tworzenia składników kanału WCF, które integrują się w chmurze z usługą Service Bus.
+![Kolejka](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
-Usługa WCF Relay oferuje wiele korzyści, lecz wymaga, aby serwer i klient byli w trybie online w tym samym czasie w celu wysyłania i odbierania komunikatów. Nie jest to optymalne rozwiązanie dla komunikacji typu HTTP, w której żądania nie mogą mieć typowo długiego okresu życia, ani dla klientów łączących się tylko okazjonalnie, na przykład przeglądarek, aplikacji mobilnych itd. Komunikaty obsługiwane przez brokera obsługują komunikację odłączoną i mają wiele zalet. Klienci i serwery mogą łączyć się w zależności od potrzeb i wykonywać operacje w sposób asynchroniczny.
+Po odebraniu komunikaty w kolejkach są porządkowane i oznaczane znacznikami czasu. Po zaakceptowaniu komunikat jest bezpiecznie przechowywany w magazynie nadmiarowym. Komunikaty są dostarczane w trybie *ściągania*, który dostarcza komunikaty na żądanie.
 
-## <a name="brokered-messaging"></a>Komunikaty obsługiwane przez brokera
+## <a name="topics"></a>Tematy
 
-W przeciwieństwie do schematu przekaźnika komunikaty usługi Service Bus z [kolejkami, tematami i subskrypcjami](service-bus-queues-topics-subscriptions.md) mogą być traktowane jako asynchroniczne lub „tymczasowo odłączone”. Producenci (nadawcy) i konsumenci (odbiorcy) nie muszą być w trybie online w tym samym czasie. Infrastruktura obsługi komunikatów w niezawodny sposób przechowuje komunikaty w „brokerze” (np. w kolejce) do momentu, w którym strona odbierająca będzie gotowa do ich odebrania. Dzięki temu składniki aplikacji rozproszonej mogą być rozłączone zarówno dobrowolnie, na przykład w celu przeprowadzenia konserwacji, jak i z powodu awarii składników, bez wywierania wpływu na cały system. Ponadto aplikacja odbierająca może wymagać połączenia z Internetem tylko w pewnych porach dnia, jak w przypadku systemu zarządzania spisem, którego uruchomienie jest wymagane na koniec dnia roboczego.
+Do wysyłania i odbierania komunikatów można również używać *tematów*. Kolejka jest często używana do komunikacji typu punkt-punkt, natomiast tematy są przydatne w scenariuszach publikowania/subskrypcji.
 
-Podstawowymi składnikami infrastruktury komunikatów usługi Service Bus są kolejki, tematy i subskrypcje. Główną różnicą jest to, że tematy obsługują możliwości publikowania/subskrypcji, które mogą być użyte dla zaawansowanej, opartej na zawartości logiki routingu i dostarczania, w tym wysyłania do wielu adresatów. Te składniki umożliwiają nowe asynchroniczne scenariusze obsługi komunikatów, takie jak czasowe oddzielenie, publikowanie/subskrypcja i równoważenie obciążenia. Aby uzyskać więcej informacji na temat tych jednostek obsługi komunikatów, zobacz sekcję [Kolejki, tematy i subskrypcje usługi Magistrala usług](service-bus-queues-topics-subscriptions.md).
+![Temat](./media/service-bus-messaging-overview/about-service-bus-topic.png)
 
-Podobnie jak w przypadku infrastruktury przekaźnika WCF Relay możliwości komunikatów obsługiwanych przez brokera są dostarczane dla programistów platform WCF oraz .NET, a także za pośrednictwem interfejsu REST.
+Tematy mogą mieć wiele niezależnych subskrypcji. Subskrybent tematu może otrzymywać kopie wszystkich komunikatów wysłanych do tego tematu. Subskrypcje są nazywane jednostkami, które są trwale tworzone, ale mogą opcjonalnie wygasać lub być automatycznie usuwane.
 
+W niektórych scenariuszach odbieranie przez subskrypcje wszystkich komunikaty wysłanych do tematu może być niepożądane. Jeśli tak jest, możesz użyć [reguł i filtrów](topic-filters.md), aby określić warunki, które wyzwalają opcjonalne [akcje](topic-filters.md#actions), przefiltrować określone komunikaty i ustawić lub zmodyfikować właściwości komunikatów.
+
+## <a name="advanced-features"></a>Funkcje zaawansowane
+
+Usługa Service Bus ma również zaawansowane funkcje, które umożliwiają rozwiązywanie bardziej złożonych problemów z obsługą komunikatów. Te kluczowe funkcje zostały opisane w sekcjach poniżej:
+
+### <a name="message-sessions"></a>Sesje komunikatów
+
+Aby zrealizować w usłudze Service Bus metodę FIFO („pierwszy na wejściu, pierwszy na wyjściu”), użyj sesji. [Sesje komunikatów](message-sessions.md) umożliwiają wspólną i uporządkowaną obsługę niepowiązanych sekwencji powiązanych komunikatów. 
+
+### <a name="auto-forwarding"></a>Automatyczne przekazywanie
+
+Funkcja [Automatyczne przekazywanie](service-bus-auto-forwarding.md) służy do łączenia kolejki lub subskrypcji z inną kolejką lub innym tematem, które należą do tej samej przestrzeni nazw. Gdy funkcja automatycznego przekazywania jest włączona, usługa Service Bus automatycznie usuwa komunikaty znajdujące się w pierwszej kolejce lub subskrypcji (źródle) i umieszcza je w drugiej kolejce lub drugim temacie (obiekcie docelowym).
+
+### <a name="dead-lettering"></a>Obsługa utraconych komunikatów
+
+Usługa Service Bus obsługuje [kolejkę utraconych komunikatów](service-bus-dead-letter-queues.md) (DLQ) do przechowywania komunikatów, których nie można dostarczyć do żadnego odbiorcy lub których nie można przetworzyć. Potem można usunąć komunikaty z kolejki DLQ lub sprawdzić je.
+
+### <a name="scheduled-delivery"></a>Zaplanowane dostarczanie
+
+Można przesyłać komunikaty do kolejki lub tematu [w celu opóźnionego przetwarzania](message-sequencing.md#scheduled-messages); np., aby zaplanować udostępnienie zadania do przetwarzania przez system w określonym czasie.
+
+### <a name="message-deferral"></a>Odraczanie komunikatów
+
+Gdy klient kolejki lub subskrypcji odbiera komunikat, który chce przetworzyć, ale w przypadku którego przetwarzanie nie jest obecnie możliwe ze względu na określone okoliczności w aplikacji, obiekt ma możliwość [odroczenia pobrania komunikatu](message-deferral.md) i pobrania go później. Komunikat pozostanie w kolejce lub subskrypcji, ale zostanie odłożony.
+
+### <a name="batching"></a>Tworzenie partii
+
+[Dzielenie na partie po stronie klienta](service-bus-performance-improvements.md#client-side-batching) umożliwia klientowi kolejki lub tematu opóźnienie wysłania komunikatu na pewien czas. Jeśli klient wysyła dodatkowe komunikaty w tym okresie, przesyła komunikaty w jednej partii. 
+
+### <a name="transactions"></a>Transakcje
+
+Funkcja [Transakcja](service-bus-transactions.md) grupuje razem co najmniej dwie operacje w zakresie wykonywania. Usługa Service Bus obsługuje grupowanie operacji względem jednej jednostki obsługi komunikatów (kolejki, tematu, subskrypcji) w zakresie transakcji.
+
+### <a name="filtering-and-actions"></a>Filtrowanie i akcje
+
+Subskrybenci mogą zdefiniować, które komunikaty chcą odbierać z tematu. Komunikaty te są określone w formie co najmniej jednej [nazwanej reguły subskrypcji](topic-filters.md). Dla każdego pasującego warunku reguły subskrypcja tworzy kopię komunikatu, która może być inaczej adnotowana dla każdej pasującej reguły.
+
+### <a name="auto-delete-on-idle"></a>Automatyczne usuwanie w stanie bezczynności
+
+[Automatyczne usuwanie w stanie bezczynności](/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle) służy do określania interwału bezczynności, po którym kolejka zostaje automatycznie usunięta. Minimalny czas trwania wynosi 5 minut.
+
+### <a name="duplicate-detection"></a>Wykrywanie duplikatów
+
+Jeśli wystąpi błąd, który powoduje, że klient ma wątpliwości dotyczące wyniku operacji wysyłania, funkcja [wykrywania duplikatów](duplicate-detection.md) eliminuje te wątpliwości, umożliwiając wysyłającemu ponowne wysłanie tego samego komunikatu, a kolejka lub temat odrzuca wszystkie kopie duplikatów.
+
+### <a name="sas-rbac-and-msi"></a>Protokoły SAS, RBAC i MSI
+
+Usługa Service Bus obsługuje protokoły zabezpieczeń, np. [sygnaturę dostępu współdzielonego](service-bus-sas.md) (SAS), [kontrolę dostępu na podstawie ról](service-bus-role-based-access-control.md) (RBAC) i [tożsamość usługi zarządzanej](service-bus-managed-service-identity.md) (MSI).
+
+### <a name="geo-disaster-recovery"></a>Geograficzne odzyskiwanie po awarii
+
+Jeżeli w regionach lub centrach danych Azure dojdzie do przestoju, [Geograficzne odzyskiwanie po awarii](service-bus-geo-dr.md) umożliwia kontynuowanie przetwarzania danych w innym regionie lub centrum danych.
+
+### <a name="security"></a>Bezpieczeństwo
+
+Usługa Service Bus obsługuje standardowe protokoły [AMQP 1.0](service-bus-amqp-overview.md) i [HTTP/REST](/rest/api/servicebus/).
+
+## <a name="client-libraries"></a>Biblioteki klienckie
+
+Usługa Service Bus obsługuje biblioteki klienckie środowisk [.NET](https://github.com/Azure/azure-service-bus-dotnet/tree/master), [Java](https://github.com/Azure/azure-service-bus-java/tree/master) i [JMS](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client).
+
+## <a name="integration"></a>Integracja
+
+Usługa Service Bus w pełni integruje się z następującymi usługami platformy Azure:
+
+- [Event Grid](https://azure.microsoft.com/services/event-grid/) 
+- [Logic Apps](https://azure.microsoft.com/services/logic-apps/) 
+- [Funkcje](https://azure.microsoft.com/services/functions/) 
+- [Dynamics 365](https://dynamics.microsoft.com)
+- [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
+ 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat obsługi komunikatów usługi Service Bus, zobacz następujące tematy.
+Aby rozpocząć korzystanie z obsługi komunikatów usługi Service Bus, zobacz następujące artykuły:
 
-* [Podstawy usługi Service Bus](service-bus-fundamentals-hybrid-solutions.md)
-* [Kolejki, tematy i subskrypcje usługi Service Bus](service-bus-queues-topics-subscriptions.md)
-* [Wprowadzenie do kolejek usługi Service Bus](service-bus-dotnet-get-started-with-queues.md)
-* [Jak używać tematów i subskrypcji usługi Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)
-
+* [Porównanie usług obsługi komunikatów platformy Azure](../event-grid/compare-messaging-services.md?toc=%2fazure%2fservice-bus-messaging%2ftoc.json&bc=%2fazure%2fservice-bus-messaging%2fbreadcrumb%2ftoc.json)
+* Dodatkowe informacje na temat warstw [Standardowej i Premium](https://azure.microsoft.com/pricing/details/service-bus/) usługi Azure Service Bus oraz ich cen
+* [Performance and Latency of Azure Service Bus Premium tier](https://blogs.msdn.microsoft.com/servicebus/2016/07/18/premium-messaging-how-fast-is-it/) (Wydajność i opóźnienie warstwy Premium usługi Azure Service Bus)
+* Znajdowanie informacji w przewodnikach Szybki start dla środowisk [.NET](service-bus-quickstart-powershell.md), [Java](service-bus-quickstart-powershell.md) lub [JMS](service-bus-quickstart-powershell.md)

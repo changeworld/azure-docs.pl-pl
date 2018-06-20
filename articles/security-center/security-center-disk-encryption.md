@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
-ms.openlocfilehash: bde17a47e0e3e70daf52f4c460118c054b7c1152
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 29d843e2752046e8ab66a4f46fcbb212f6fb57c6
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824401"
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>Szyfrowanie maszyny wirtualnej platformy Azure
 Jeśli masz maszyny wirtualne, które nie są szyfrowane, w Centrum zabezpieczeń Azure zostanie wyświetlony alert. Te alerty będą widoczne jako alerty o wysokiej ważności. Zaleca się zaszyfrowanie tych maszyn wirtualnych.
@@ -61,7 +62,7 @@ Skrypt konfiguracji wymagań wstępnych szyfrowania dysków Azure umożliwia sko
 
 Po zapisaniu zawartości skryptu otwórz skrypt w środowisku PowerShell ISE:
 
-1. W menu Start kliknij opcję **Cortana**. Zapytaj **Cortanę** o „PowerShell”, wpisując nazwę **PowerShell** w polu tekstowym wyszukiwania Cortany.
+1. Start — Windows PowerShell ISE
 2. Kliknij prawym przyciskiem myszy pozycję **Windows PowerShell ISE** i kliknij opcję **Uruchom jako administrator**.
 3. W oknie **Administrator: Windows PowerShell ISE** kliknij opcję **View** (Widok), a następnie kliknij pozycję **Show Script Pane** (Pokaż okienko skryptu).
 4. Jeśli po prawej stronie okna jest widoczne okienko **Commands** (Polecenia), kliknij przycisk **„x”** w prawym górnym rogu okienka, aby je zamknąć. Jeśli tekst jest zbyt mały, aby go przeczytać, użyj skrótu klawiaturowego **CTRL+Add** („Add” odpowiada znakowi „+”). Jeśli tekst jest zbyt duży, użyj skrótu klawiaturowego **CTRL+Subtract** („Subtract” odpowiada znakowi „-”).
@@ -74,8 +75,8 @@ Zawartość na ekranie powinna wyglądać jak poniżej.
 
 Górne okienko jest nazywane „okienkiem skryptu”, a dolne okienko jest określane jako „konsola”. Terminy te będą używane w dalszej części artykułu.
 
-## <a name="run-the-azure-disk-encryption-prerequisites-powershell-command"></a>Uruchamianie polecenia skryptu wymagań wstępnych szyfrowania dysków Azure w programie PowerShell
-Po uruchomieniu skryptu wymagań wstępnych szyfrowania dysków Azure zostaną wyświetlone zapytania o następujące informacje:
+## <a name="run-the-azure-disk-encryption-prerequisites-powershell-script"></a>Uruchamianie polecenia skryptu wymagań wstępnych Azure Disk Encryption w programie PowerShell
+Skrypt wymagań wstępnych Azure Disk Encryption przyjmuje następujące parametry: 
 
 * **Resource Group Name** (Nazwa grupy zasobów) — nazwa grupy zasobów, w której ma być umieszczony magazyn kluczy.  Jeśli grupa zasobów o podanej nazwie nie istnieje, zostanie utworzona nowa grupa zasobów o nazwie zgodnej z wprowadzoną. Jeśli masz już grupę zasobów, której chcesz użyć w tej subskrypcji, wprowadź nazwę tej grupy zasobów.
 * **Key Vault Name** (Nazwa magazynu kluczy) — nazwa magazynu kluczy, w którym mają być umieszczone klucze szyfrowania. Jeśli magazyn kluczy o podanej nazwie nie istnieje, zostanie utworzony nowy magazyn kluczy o nazwie zgodnej z wprowadzoną. Jeśli masz już magazyn kluczy, którego chcesz użyć, wprowadź nazwę istniejącego magazynu kluczy.
@@ -92,18 +93,18 @@ Wykonaj poniższe kroki, aby zaszyfrować maszynę wirtualną platformy Azure:
 1. Jeśli program PowerShell ISE został zamknięty, otwórz wystąpienie programu PowerShell ISE z podwyższonym poziomem uprawnień. Jeśli program PowerShell ISE nie jest jeszcze otwarty, wykonaj instrukcje przedstawione wcześniej w tym artykule. Jeśli skrypt został zamknięty, otwórz plik **ADEPrereqScript.ps1**, klikając menu **File** (Plik) i polecenie **Open** (Otwórz), a następnie wybierając skrypt w folderze **c:\AzureADEScript**. W przypadku wykonywania instrukcji zawartych w artykule od początku przejdź po prostu do kolejnego kroku.
 2. W konsoli programu PowerShell ISE (w dolnym okienku programu PowerShell ISE) zmień fokus na fokus lokalny skryptu, wpisując ciąg **cd c:\AzureADEScript**, po czym naciśnij klawisz **ENTER**.
 3. Ustaw zasady wykonywania na komputerze, aby umożliwić uruchamianie skryptu. Wpisz w konsoli polecenie **Set-ExecutionPolicy Unrestricted**, a następnie naciśnij klawisz ENTER. Jeśli zostanie wyświetlone okno dialogowe z informacją o skutkach zmiany zasad wykonywania, kliknij opcję **Yes to all** (Tak dla wszystkich) lub **Yes** (Tak) (jeśli jest widoczna opcja **Yes to all**, wybierz tę opcję, jeśli opcja **Yes to all** nie jest wyświetlona, kliknij przycisk **Yes**).
-4. Zaloguj się do konta platformy Azure. W konsoli wpisz polecenie **Connect-AzureRmAccount** i naciśnij klawisz **ENTER**. Zostanie wyświetlone okno dialogowe, w którym należy wprowadzić poświadczenia. (Upewnij się, że masz uprawnienia do zmiany maszyn wirtualnych — jeśli nie masz takich uprawnień, nie możesz zaszyfrować maszyn. Jeśli nie masz pewności, zapytaj właściciela subskrypcji lub administratora). Powinny być widoczne informacje dotyczące takich parametrów, jak **Environment**, **Account**, **TenantId**, **SubscriptionId** i **CurrentStorageAccount**. Skopiuj wartość parametru **SubscriptionId** do Notatnika. Będzie ona potrzebna w kroku 6.
+4. Zaloguj się do konta platformy Azure. W konsoli wpisz polecenie **Login-AzureRmAccount** i naciśnij klawisz **ENTER**. Zostanie wyświetlone okno dialogowe, w którym należy wprowadzić poświadczenia. (Upewnij się, że masz uprawnienia do zmiany maszyn wirtualnych — jeśli nie masz takich uprawnień, nie możesz zaszyfrować maszyn. Jeśli nie masz pewności, zapytaj właściciela subskrypcji lub administratora). Powinny być widoczne informacje dotyczące takich parametrów, jak **Environment**, **Account**, **TenantId**, **SubscriptionId** i **CurrentStorageAccount**. Skopiuj wartość parametru **SubscriptionId** do Notatnika. Będzie ona potrzebna w kroku 6.
 5. Sprawdź subskrypcję, do której należy maszyna wirtualna, oraz jej lokalizację. Przejdź do witryny [https://portal.azure.com](ttps://portal.azure.com) i zaloguj się.  W lewej części strony kliknij pozycję **Virtual Machines**. Zobaczysz listę maszyn wirtualnych i subskrypcje, do których należą.
 
    ![Maszyny wirtualne](./media/security-center-disk-encryption/security-center-disk-encryption-fig3.png)
 6. Wróć do programu PowerShell ISE. Ustaw kontekst subskrypcji, w którym skrypt będzie uruchamiany. W konsoli wpisz polecenie **Select-AzureRmSubscription –SubscriptionId <ID_subskrypcji>** (zastąp **<ID_subskrypcji>** swoim faktycznym identyfikatorem subskrypcji) i naciśnij klawisz **ENTER**. Zostaną wyświetlone informacje o dotyczące takich parametrów, jak Environment, **Account**, **TenantId**, **SubscriptionId** i **CurrentStorageAccount**.
-7. Teraz można przystąpić do uruchomienia skryptu. Kliknij przycisk **Run Script** (Uruchom skrypt) lub naciśnij klawisz **F5** na klawiaturze.
+7. W oknie polecenia wykonaj polecenie skryptu, przekazując następujące parametry: 
 
    ![Wykonywanie skryptu programu PowerShell](./media/security-center-disk-encryption/security-center-disk-encryption-fig4.png)
-8. Po wyświetleniu zapytania o parametr **resourceGroupName:** wprowadź nazwę *grupy zasobów*, której chcesz użyć, a następnie naciśnij klawisz **ENTER**. Jeśli nie masz grupy zasobów, wprowadź nazwę, której chcesz użyć dla nowej grupy. Jeśli masz już *grupę zasobów*, której chcesz użyć (np. taką, w której znajduje się maszyna wirtualna), wprowadź nazwę istniejącej grupy zasobów.
-9. Po wyświetleniu zapytania o parametr **keyVaultName:** wprowadź nazwę *magazynu kluczy*, którego chcesz użyć, a następnie naciśnij klawisz ENTER. Jeśli nie masz magazynu kluczy, wprowadź nazwę, której chcesz użyć dla nowego magazynu. Jeśli masz już magazyn kluczy, którego chcesz użyć, wprowadź nazwę istniejącego *magazynu kluczy*.
+8. **-resourceGroupName:** wprowadź nazwę *grupy zasobów*, której chcesz użyć. Jeśli nie masz aplikacji usługi Azure Active Directory, wprowadź nazwę, której chcesz użyć dla nowej aplikacji. Jeśli masz już *grupę zasobów*, której chcesz użyć (np. taką, w której znajduje się maszyna wirtualna), wprowadź nazwę istniejącej grupy zasobów.
+9. **-keyVaultName:** wprowadź nazwę *magazynu kluczy*, którego chcesz użyć. Jeśli nie masz aplikacji usługi Azure Active Directory, wprowadź nazwę, której chcesz użyć dla nowej aplikacji. Jeśli masz już magazyn kluczy, którego chcesz użyć, wprowadź nazwę istniejącego *magazynu kluczy*.
 10. Po wyświetleniu zapytania o parametr **location:** wprowadź nazwę lokalizacji, w której znajduje się maszyna wirtualna do zaszyfrowania, a następnie naciśnij klawisz **ENTER**. Jeśli nie pamiętasz lokalizacji, wróć do kroku 5.
-11. Po wyświetleniu zapytania o parametr **aadAppName:** wprowadź nazwę aplikacji usługi *Azure Active Directory*, której chcesz użyć, następnie naciśnij klawisz **ENTER**. Jeśli nie masz aplikacji usługi Azure Active Directory, wprowadź nazwę, której chcesz użyć dla nowej aplikacji. Jeśli masz już *aplikację usługi Azure Active Directory*, której chcesz użyć, wprowadź nazwę istniejącej *aplikacji usługi Azure Active Directory*.
+11. **-aadAppName:** wprowadź nazwę aplikacji usługi *Azure Active Directory*, której chcesz użyć. Jeśli nie masz aplikacji usługi Azure Active Directory, wprowadź nazwę, której chcesz użyć dla nowej aplikacji. Jeśli masz już *aplikację usługi Azure Active Directory*, której chcesz użyć, wprowadź nazwę istniejącej *aplikacji usługi Azure Active Directory*.
 12. Zostanie wyświetlone okno dialogowe logowania. Podaj poświadczenia (logowanie zostało już raz wykonane, ale trzeba zalogować się ponownie).
 13. Skrypt zostanie uruchomiony i po zakończeniu działania zostanie wyświetlony monit o skopiowanie wartości parametrów **aadClientID**, **aadClientSecret**, **diskEncryptionKeyVaultUrl** i **keyVaultResourceId**. Skopiuj poszczególne wartości do schowka i wklej je do Notatnika.
 14. Wróć do programu PowerShell ISE, umieść kursor na końcu ostatniego wiersza i naciśnij klawisz **ENTER**.

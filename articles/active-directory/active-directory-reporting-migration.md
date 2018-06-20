@@ -3,34 +3,28 @@ title: Znajdź raporty aktywności użytkownika usługi Azure Active Directory w
 description: Dowiedz się, gdy są raporty aktywności użytkownika usługi Azure Active Directory w portalu Azure.
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.component: users-groups-roles
 ms.date: 12/06/2017
-ms.author: curtand
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 985bdc3c00549844958c23a83496a019d7a31944
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f22219a0e2ff342e25a2efdeb319f389250ecfef
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231325"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Znajdź raporty dotyczące działań w portalu Azure
 
 W tym artykule firma Microsoft opisano, jak znaleźć raporty aktywności użytkownika usługi Azure Active Directory w portalu Azure.
 
-## <a name="whats-new"></a>Co nowego
-
-Raporty w klasycznym portalu Azure zostały podzielone na kategorie:
-* Raporty dotyczące zabezpieczeń
-* Raporty dotyczące działań
-* Raporty zintegrowanych aplikacji
-
-### <a name="activity-and-integrated-app-reports"></a>Działanie i raporty zintegrowanych aplikacji
+## <a name="activity-and-integrated-app-reports"></a>Działanie i raporty zintegrowanych aplikacji
 
 Kontekstowa raportowanie w portalu Azure, istniejących raportów są scalane w ramach jednego widoku. Jeden podstawowy interfejs API udostępnia dane do widoku.
 
@@ -87,7 +81,7 @@ Aby wyświetlić szczegóły dotyczące użycia aplikacji dla wszystkich aplikac
 
 #### <a name="azure-ad-anomalous-activity-reports"></a>Raporty nietypowe działanie usługi Azure AD
 
-Azure AD nietypowego działania zabezpieczeń raportów z klasycznego portalu Azure zostały skonsolidowane dostarczają jeden, widok centralnej. Ten widok przedstawia wszystkie zdarzenia związane z zabezpieczeniami ryzyka może wykrywać i raport dotyczący usługi Azure AD.
+Raporty zabezpieczeń nietypowe działania usługi Azure AD są konsolidowane dostarczają jeden widok centralnej. Ten widok przedstawia wszystkie zdarzenia związane z zabezpieczeniami ryzyka może wykrywać i raport dotyczący usługi Azure AD.
 
 Następujące tabeli list programu Azure AD nietypowego działania zabezpieczeń raportów i odpowiednie typy zdarzeń ryzyko w portalu Azure.
 
@@ -104,8 +98,6 @@ Następujące zabezpieczeń usługi Azure AD w nietypowych działań raporty nie
 
 * Logowania po wielokrotnych niepowodzeniach
 * Logowania z wielu lokalizacji geograficznych
-
-Te raporty są nadal dostępne w klasycznym portalu Azure, ale zostaną wycofane w czasie w przyszłości.
 
 Aby uzyskać więcej informacji, zobacz [Zdarzenia o podwyższonym ryzyku w usłudze Azure Active Directory](active-directory-identity-protection-risk-events.md).  
 
@@ -125,29 +117,10 @@ Aby uzyskać więcej informacji o raportach zabezpieczeń zobacz:
 - [Ryzykowne raportu logowania w portalu usługi Azure Active Directory](active-directory-reporting-security-risky-sign-ins.md)
 
 
-## <a name="activity-reports-in-the-azure-classic-portal-vs-the-azure-portal"></a>Raporty dotyczące działań w klasycznym portalu Azure, a portalu Azure
-
-W tej sekcji tabela zawiera listę istniejących raportów w klasycznym portalu Azure. Opisuje również, jak te same informacje można uzyskać w portalu Azure.
-
-Aby wyświetlić wszystkich danych inspekcji, na **usługi Azure Active Directory** bloku, w obszarze **działania**, przejdź do **dzienniki inspekcji**.
-
-![Dzienniki inspekcji](./media/active-directory-reporting-migration/61.png "Dzienniki inspekcji")
-
-| Klasyczny portal Azure                 | Aby znaleźć w portalu Azure                                                         |
-| ---                                  | ---                                                                        |
-| Dzienniki inspekcji                           | Dla **kategorii działań**, wybierz pozycję **katalogu Core**.                       |
-| Działania związane z resetowaniem haseł              | Aby uzyskać **kategorii działań**, wybierz pozycję **Samoobsługowe zarządzanie hasłami**. |
-| Aktywność rejestracji resetowania haseł | Aby uzyskać **kategorii działań**, wybierz pozycję **Samoobsługowe zarządzanie hasłami**.     |
-| Raport aktywności grup samoobsługi         | Aby uzyskać **kategorii działań**, wybierz pozycję **Samoobsługowe zarządzanie grupami**.        |
-| Działanie aprowizacji kont        | Aby uzyskać **kategorii działań**, wybierz pozycję **Inicjowanie obsługi konta użytkownika**.         |
-| Stan przerzucania hasła             | Aby uzyskać **kategorii działań**, wybierz pozycję **automatycznego przerzucania hasła aplikacji**.      |
-| Błędy aprowizacji kont          | Aby uzyskać **kategorii działań**, wybierz pozycję **Inicjowanie obsługi konta użytkownika**.        |
-| Zmiany nazwy grupy usługi Office 365         | Aby uzyskać **kategorii działań**, wybierz pozycję **Samoobsługowe zarządzanie hasłami**. Dla **typu zasobu działania**, wybierz pozycję **grupy**. Aby uzyskać **źródło działania**, wybierz pozycję **grup usługi Office 365**.|
-
 Aby wyświetlić **użycia aplikacji** raportu na **usługi Azure Active Directory** bloku, w obszarze **ZARZĄDZAJ**, wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz **logowania**.
 
 
-![Raport logowania aplikacji przedsiębiorstwa](./media/active-directory-reporting-migration/199.png "raport logowania aplikacji przedsiębiorstwa")
+![Raport logowania aplikacji przedsiębiorstwa](./media/active-directory-reporting-migration/199.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

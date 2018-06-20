@@ -13,18 +13,19 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/08/2018
 ms.author: juliako
-ms.openlocfilehash: 40759fc65caa181651de68756f4374f879fd9c9c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e17a800ff61822a5040737e479c3e1855eeb8893
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701042"
 ---
 # <a name="quickstart-stream-video-files---net"></a>Szybki start: przesyłanie strumieniowe plików wideo — .NET
 
 > [!NOTE]
 > Najnowsza wersja usługi Azure Media Services jest w wersji zapoznawczej i może być nazywana wersją 3. Aby rozpocząć korzystanie z interfejsów API w wersji 3, należy utworzyć nowe konto usługi Media Services zgodnie z opisem w tym przewodniku Szybki start. 
 
-Ten przewodnik Szybki start pokazuje, jak łatwo jest rozpocząć strumieniowe przesyłanie filmów wideo do różnych przeglądarek i urządzeń za pomocą usługi Azure Media Services. 
+Ten przewodnik Szybki start pokazuje, jak łatwo jest rozpocząć strumieniowe przesyłanie filmów wideo do różnych przeglądarek i urządzeń za pomocą usługi Azure Media Services. W przykładzie w tym temacie kodowana jest zawartość, która jest udostępniana za pośrednictwem adresu URL protokołu HTTPS. 
 
 Na końcu tego przewodnika Szybki start będziesz umieć przesyłać strumieniowo filmy wideo.  
 
@@ -43,6 +44,18 @@ Sklonuj repozytorium GitHub zawierające przykład przesyłania strumieniowego p
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts.git
  ```
+
+Przykład znajduje się w folderze [EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles).
+
+W przykładzie są wykonywane następujące akcje:
+
+1. Utworzenie przekształcenia (najpierw sprawdzenie, czy istnieje określone przekształcenie). 
+2. Utworzenie zasobu danych wyjściowych, który zostaje użyty jako dane wyjściowe zadania kodowania.
+3. Utworzenie danych wejściowych zadania oparte na adresie URL protokołu HTTPS.
+4. Przesłanie zadania kodowania przy użyciu danych przychodzących i wychodzących, które zostały utworzone wcześniej.
+5. Sprawdzenie stanu zadania.
+6. Utworzenie obiektu StreamingLocator.
+7. Utworzenie adresów URL przesyłania strumieniowego.
 
 Objaśnienia działania poszczególnych funkcji w przykładzie znajdziesz po sprawdzeniu kodu i przyjrzeniu się komentarzom w [tym pliku źródłowym](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs).
 

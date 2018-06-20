@@ -1,29 +1,26 @@
 ---
-title: Automatyzowanie zadań i procesów przy użyciu programu Visual Studio i usługi Azure Logic Apps | Microsoft Docs
-description: W tym przewodniku Szybki start przedstawiono sposób tworzenia przepływów pracy, które automatyzują zadania i procesy przy użyciu usługi Azure Logic Apps w programie Visual Studio
-author: ecfan
-manager: SyntaxC4
-editor: ''
+title: Tworzenie aplikacji logiki, które automatyzują przepływy pracy z programem Visual Studio — usługa Azure Logic Apps | Microsoft Docs
+description: W tym przewodniku Szybki start przedstawiono automatyzację zadań, procesów i przepływów pracy z usługą Azure Logic Apps w programie Visual Studio
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
+ms.date: 03/15/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/15/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 02e19de97654d751dc0cd557791a61a863a9a4e0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: a35c46bd67a157416844c4054b75f993304298b4
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300756"
 ---
-# <a name="quickstart-automate-tasks-and-processes-with-azure-logic-apps---visual-studio"></a>Szybki start: automatyzowanie zadań i procesów przy użyciu usługi Azure Logic Apps — Visual Studio
+# <a name="quickstart-create-and-automate-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Szybki start: tworzenie i automatyzacja zadań, procesów i przepływów pracy z usługą Azure Logic Apps — w programie Visual Studio
 
-Dzięki usłudze [Azure Logic Apps](../logic-apps/logic-apps-overview.md) można tworzyć przepływy pracy, które automatyzują zadania i procesy w celu integrowania aplikacji, danych, systemów i usług w przedsiębiorstwach i organizacjach. W tym przewodniku Szybki start przedstawiono sposób projektowania i kompilowania tych przepływów pracy przez tworzenie aplikacji logiki w programie Visual Studio i wdrażanie ich na platformie <a href="https://docs.microsoft.com/azure/guides/developer/azure-developer-guide" target="_blank">Azure</a> w chmurze. I chociaż można wykonać te zadania w witrynie <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, program Visual Studio umożliwia dodawanie aplikacji logiki do kontroli źródła, publikowanie różnych wersji i tworzenie szablonów usługi Azure Resource Manager dla różnych środowisk wdrożeń. 
+Za pomocą usługi [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i programu Visual Studio można utworzyć przepływy pracy do automatyzacji zadań i procesów, które integrują aplikacje, dane, systemy i usługi w przedsiębiorstwach i organizacjach. W tym przewodniku Szybki start przedstawiono sposób projektowania i kompilowania tych przepływów pracy przez tworzenie aplikacji logiki w programie Visual Studio i wdrażanie ich na platformie <a href="https://docs.microsoft.com/azure/guides/developer/azure-developer-guide" target="_blank">Azure</a> w chmurze. I chociaż można wykonać te zadania w witrynie <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, program Visual Studio umożliwia dodawanie aplikacji logiki do kontroli źródła, publikowanie różnych wersji i tworzenie szablonów usługi Azure Resource Manager dla różnych środowisk wdrożeń. 
 
 Jeśli jesteś nowym użytkownikiem usługi Azure Logic Apps i potrzebujesz dostępu do podstawowych pojęć, wypróbuj w zamian [przewodnik Szybki Start dotyczący tworzenia aplikacji logiki w witrynie Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md). Projektant aplikacji logiki w witrynie Azure Portal i programie Visual Studio działa podobnie. 
 
@@ -161,7 +158,7 @@ Przed uruchomieniem aplikacji logiki wdróż aplikację z programu Visual Studio
    Z technicznego punktu widzenia, gdy wyzwalacz sprawdza źródło danych RSS i znajduje nowe elementy, jest on wyzwalany, a aparat usługi Logic Apps tworzy wystąpienie przepływu pracy aplikacji logiki, które uruchamia akcje w ramach przepływu pracy.
    Jeśli wyzwalacz nie znajdzie nowych elementów, nie zostanie wyzwolony i pominie tworzenie wystąpienia przepływu pracy.
 
-Gratulacje, masz teraz aplikację logiki pomyślnie skompilowaną i wdrożoną przy użyciu programu Visual Studio. Aby zarządzać aplikacją logiki i przeglądać historię jej uruchomień, zobacz [Zarządzanie aplikacjami logiki w programie Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md).
+Gratulacje, aplikacja logiki została pomyślnie skompilowana i wdrożona przy użyciu programu Visual Studio. Aby zarządzać aplikacją logiki i przeglądać historię jej uruchomień, zobacz [Zarządzanie aplikacjami logiki w programie Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -187,4 +184,5 @@ Gdy grupa zasobów zawierająca aplikację logiki i powiązane zasoby nie będzi
 W tym artykule kompilowano, wdrożono i uruchomiono aplikację logiki przy użyciu programu Visual Studio. Aby dowiedzieć się więcej na temat wykonywania zaawansowanego wdrażania aplikacji logiki i zarządzania nim przy użyciu programu Visual Studio, zobacz następujące artykuły:
 
 > [!div class="nextstepaction"]
-> [Zarządzanie aplikacjami logiki w programie Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)
+> * [Zarządzanie aplikacjami logiki w programie Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)
+> * [Create deployment templates for logic apps with Visual Studio](../logic-apps/logic-apps-create-deploy-template.md) (Tworzenie szablonów wdrożenia dla aplikacji logiki za pomocą programu Visual Studio)

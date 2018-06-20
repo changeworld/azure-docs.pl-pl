@@ -1,28 +1,24 @@
 ---
-title: Tworzenie pierwszego zautomatyzowanego przepływu pracy — Azure Logic Apps | Microsoft Docs
-description: W tym przewodniku Szybki start pokazano, jak zautomatyzować pierwszy przepływ pracy za pomocą usługi Azure Logic Apps na potrzeby scenariuszy integracji systemów i usług Enterprise Application Integration (EAI), które integrują systemy i usługi w chmurze.
-author: ecfan
-manager: anneta
-editor: ''
+title: Tworzenie i automatyzacja pierwszego przepływu pracy — Azure Logic Apps | Microsoft Docs
+description: Przewodnik Szybki start opisujący tworzenie pierwszej aplikacji logiki, która automatyzuje zadania, procesy i przepływy pracy za pomocą usługi Azure Logic Apps. Tworzenie aplikacji logiki na potrzeby rozwiązań integracji systemów i usługi Enterprise Application Integration (EAI) do systemów i usług w chmurze
 services: logic-apps
-keywords: workflows, cloud services, system integration, enterprise application integration, EAI
-documentationcenter: ''
-ms.assetid: ce3582b5-9c58-4637-9379-75ff99878dcd
 ms.service: logic-apps
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
+ms.date: 1/12/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 1/12/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: ccd00fbb3c5dc0f78a31adcaed31bbe6e4a6e785
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 0a629deec0cc18f65dfe5e88a3eaea528636dd0f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300943"
 ---
-# <a name="quickstart-build-your-first-logic-app-workflow---azure-portal"></a>Szybki start: Tworzenie pierwszego przepływu pracy aplikacji logiki — Azure Portal
+# <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Szybki start: tworzenie pierwszego zautomatyzowanego przepływu pracy za pomocą usługi Azure Logic Apps — witryna Azure Portal
 
 W tym przewodniku Szybki start wyjaśniono, jak utworzyć pierwszy zautomatyzowany przepływ pracy za pomocą usługi [Azure Logic Apps](../logic-apps/logic-apps-overview.md). W tym artykule opisano, jak utworzyć aplikację logiki regularnie sprawdzającą kanał informacyjny RSS witryny internetowej pod kątem nowych elementów. Jeśli istnieją nowe elementy, aplikacja logiki wysyła wiadomość e-mail dotyczącą każdego elementu. Po ukończeniu aplikacja logiki będzie ogólnie wyglądać jak ten przepływ pracy:
 

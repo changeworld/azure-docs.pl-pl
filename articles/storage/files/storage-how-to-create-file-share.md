@@ -5,7 +5,7 @@ services: storage
 documentationcenter: ''
 author: RenaShahMSFT
 manager: aungoo
-editor: tysonn
+editor: tamram
 ms.assetid: ''
 ms.service: storage
 ms.workload: storage
@@ -14,20 +14,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: 4dfc4bca4453b5a8027086bd7c3625efc8feda03
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 85e021d439698e864a26bde9515369ae801c3796
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737864"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Tworzenie udziału plików w usłudze Azure Files
 Udziały plików platformy Azure można tworzyć przy użyciu witryny [Azure Portal](https://portal.azure.com/), poleceń cmdlet programu PowerShell usługi Azure Storage, bibliotek klienckich usługi Azure Storage lub interfejsu API REST usługi Azure Storage. Z tego samouczka dowiesz się:
-* [Jak utworzyć udział plików platformy Azure przy użyciu portalu Azure](#Create file share through the Portal)
-* [Jak utworzyć udział plików platformy Azure przy użyciu programu PowerShell](#Create file share using PowerShell)
-* [Jak utworzyć udział plików platformy Azure przy użyciu interfejsu wiersza polecenia](#create-file-share-using-command-line-interface-cli)
+* [Jak utworzyć udział plików platformy Azure przy użyciu portalu Azure](#create-file-share-through-the-azure-portal)
+* [Jak utworzyć udział plików platformy Azure przy użyciu programu PowerShell](#create-file-share-through-powershell)
+* [Jak utworzyć udział plików platformy Azure przy użyciu interfejsu wiersza polecenia](#create-file-share-through-command-line-interface-cli)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby utworzyć udział plików Azure, można użyć już istniejącego konta magazynu lub [utworzyć nowe konto magazynu Azure](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Aby utworzyć udział plików Azure przy użyciu programu PowerShell, konieczny jest klucz konta i nazwa konta magazynu. Jeśli planujesz użyć programu PowerShell lub interfejsu wiersza polecenia, niezbędny będzie klucz konta magazynu.
+Aby utworzyć udział plików Azure, można użyć istniejącego konta magazynu lub [utworzyć nowe konto usługi Azure Storage](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Aby utworzyć udział plików Azure przy użyciu programu PowerShell, konieczny jest klucz konta i nazwa konta magazynu. Jeśli planujesz użyć programu PowerShell lub interfejsu wiersza polecenia, niezbędny będzie klucz konta magazynu.
 
 ## <a name="create-file-share-through-the-azure-portal"></a>Tworzenie udziału plików za pośrednictwem witryny Azure Portal
 1. **Przejdź do bloku Konto magazynu w witrynie Azure Portal**:    

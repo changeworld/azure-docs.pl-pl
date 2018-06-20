@@ -7,11 +7,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 278fbd5d7f5925b802303910222c5a13379bfad6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c5b6036efa4fcd6b7b8d756fa20d63952482518e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640265"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Szybki start: tworzenie potoku wyszukiwania poznawczego przy użyciu umiejętności i przykładowych danych
 
@@ -95,6 +96,8 @@ Jedną z zalet korzystania z kreatora **Import danych** jest to, że może on r�
 ### <a name="step-2-add-cognitive-skills"></a>Krok 2. Dodawanie umiejętności poznawczych
 
 Następnie dodaj kroki wzbogacenia do potoku indeksowania. Portal udostępnia wstępnie zdefiniowane umiejętności poznawcze na potrzeby analizy obrazu i analizy tekstu. W portalu zestaw umiejętności pracuje na jednym polu źródła. Może się to wydawać małym celem, ale w przypadku obiektów blob platformy Azure pole `content` zawiera większość dokumentu obiektu blob (na przykład dokument programu Word lub pokaz slajdów programu PowerPoint). Z tego względu to pole jest idealnym polem wejściowym, ponieważ obejmuje całą zawartość obiektu blob.
+
+Czasami może być potrzebne wyodrębnienie tekstowej reprezentacji z plików, które składają się w większości z zeskanowanych obrazów, np. z pliku PDF wygenerowanego przez skaner. Usługa Azure Search może automatycznie wyodrębniać zawartość z obrazów osadzonych w dokumencie. W tym celu wybierz opcję **Włącz optyczne rozpoznawanie znaków (OCR) i scal cały tekst w polu merged_content**. W ten sposób zostanie automatycznie utworzone pole `merged_content` zawierające tekst wyodrębniony z dokumentu oraz tekstową reprezentację obrazów osadzonych w dokumencie. Po wybraniu tej opcji wartość `Source data field` zostanie ustawiona na `merged_content`.
 
 W kroku **Dodawanie umiejętności poznawczych** wybierz umiejętności, które wykonują przetwarzanie języka naturalnego. W ramach tego przewodnika Szybki start wybierz rozpoznawanie jednostek dla osób, organizacji i lokalizacji.
 

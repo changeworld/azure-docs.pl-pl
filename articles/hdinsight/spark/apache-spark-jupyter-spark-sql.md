@@ -12,11 +12,12 @@ ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: jgao
 ms.custom: mvc
-ms.openlocfilehash: ca44354b6aa51cae9218594ba5120d9c4a6f5ece
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 06d711c99a6aaffe85adf740d2041c9fcc35ac23
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628100"
 ---
 # <a name="quickstart-create-a-spark-cluster-in-hdinsight-using-template"></a>Szybki start: tworzenie klastra Spark w usłudze HDInsight przy użyciu szablonu
 
@@ -53,6 +54,12 @@ Utwórz klaster HDInsight Spark przy użyciu szablonu usługi Azure Resource Man
 3. Wybierz pozycję **Wyrażam zgodę na powyższe warunki i postanowienia** i pozycję **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz przycisk **Kup**. Zostanie wyświetlony nowy kafelek zatytułowany **Wdrażanie szablonu wdrożenia**. Utworzenie klastra trwa około 20 minut. Przed przejściem do następnej sesji należy utworzyć klaster.
 
 Problemy podczas tworzenia klastrów usługi HDInsight mogą świadczyć o braku odpowiednich uprawnień. Aby uzyskać więcej informacji, zobacz [Wymagania dotyczące kontroli dostępu](../hdinsight-administer-use-portal-linux.md#create-clusters).
+
+## <a name="install-intellijeclipse-for-spark-application"></a>Instalowanie środowiska IntelliJ/Eclipse dla aplikacji Spark
+Użyj zestawu narzędzi platformy Azure dla wtyczki IntelliJ/Eclipse, aby utworzyć aplikacje Spark napisane w języku Scala, a następnie prześlij je do klastra Azure HDInsight Spark bezpośrednio ze zintegrowanego środowiska projektowego (IDE) IntelliJ/Eclipse. Aby uzyskać więcej informacji, zobacz tematy [Use IntelliJ to author/submit Spark application](./apache-spark-intellij-tool-plugin.md) (Używanie środowiska IntelliJ do tworzenia/przesyłania aplikacji Spark) i [Use Eclipse to author/submit Spark application](./apache-spark-eclipse-tool-plugin.md) (Używanie środowiska Eclipse do tworzenia/przesyłania aplikacji Spark).
+
+## <a name="install-vscode-for-pysparkhive-applications"></a>Instalowanie programu VSCode dla aplikacji PySpark/Hive
+Dowiedz się, jak za pomocą zestawu narzędzi Azure HDInsight Tools for Visual Studio Code (VSCode) tworzyć i przesyłać zadania wsadowe programu Hive, interaktywne zapytania programu Hive, partię PySpark oraz skrypty interaktywne PySpark. Zestaw narzędzi Azure HDInsight Tools można zainstalować na platformach obsługiwanych przez program VSCode. Są to systemy Windows, Linux i macOS. Aby uzyskać więcej informacji, zobacz temat [Use VSCode to author/submit PySpark application](../hdinsight-for-vscode.md) (Używanie programu VSCode do tworzenia/przesyłania aplikacji PySpark).
 
 ## <a name="create-a-jupyter-notebook"></a>Tworzenie notesu Jupyter
 

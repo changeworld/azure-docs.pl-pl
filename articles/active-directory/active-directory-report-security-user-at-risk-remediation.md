@@ -2,24 +2,24 @@
 title: Raport o zabezpieczeniach dotyczący użytkowników oflagowanych w związku z ryzykiem w portalu usługi Azure Active Directory | Microsoft Docs
 description: Dowiedz się więcej o raporcie o zabezpieczeniach dotyczącym użytkowników oflagowanych w związku z ryzykiem w portalu usługi Azure Active Directory
 services: active-directory
-author: rolyon
+author: priyamohanram
 manager: mtillman
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 05/23/2018
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 030a45335f06c4f15a5136842a7f6477bac8253b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 60a77a8bee54c0582cbc9c88b9d517820a2760e0
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34588713"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221984"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Rozwiązywanie problemów dotyczących użytkowników oflagowanych w związku z ryzykiem w portalu usługi Azure Active Directory
 
@@ -69,7 +69,7 @@ Wykonaj następujące akcje, aby pomóc usunąć zagrożenie z kont i zabezpiecz
 
     b. Usunąć delegatów skrzynki pocztowej.
 
-    d. Wyłączyć reguły przekazywania poczty do domen zewnętrznych.
+    c. Wyłączyć reguły przekazywania poczty do domen zewnętrznych.
 
     d. Usunąć globalną właściwość przekazywania poczty w skrzynce pocztowej.
 
@@ -94,7 +94,7 @@ Ponadto wykonaj następujące czynności:
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać więcej informacji na temat ochrony tożsamości w usłudze Azure Active Directory, zobacz [Ochrona tożsamości w usłudze Azure Active Directory](active-directory-identityprotection.md).
 

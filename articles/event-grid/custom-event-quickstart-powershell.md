@@ -5,24 +5,23 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 03/20/2018
+ms.date: 05/24/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 695aa5c567882ef7742666146877e1fbc660492b
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: aad4fa9e8a3cfeaa01abc0512830bba63f90d4be
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34300955"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626022"
 ---
 # <a name="create-and-route-custom-events-with-azure-powershell-and-event-grid"></a>Tworzenie i kierowanie zdarzeń niestandardowych za pomocą programu Azure PowerShell i usługi Event Grid
 
-Azure Event Grid to usługa obsługi zdarzeń dla chmury. W tym artykule omówiono tworzenie tematu niestandardowego, subskrybowanie go i wyzwalanie zdarzenia w celu wyświetlenia wyniku za pomocą programu Azure PowerShell. Zazwyczaj wysyła się zdarzenia do punktu końcowego, który na nie reaguje, takiego jak element webhook lub funkcja platformy Azure. Jednak aby uprościć ten artykuł, omówimy wysłanie zdarzenia na adres URL, który tylko zbiera komunikaty. Ten adres URL jest tworzony w narzędziu innej firmy przy użyciu narzędzia [Hookbin](https://hookbin.com/).
+Azure Event Grid to usługa obsługi zdarzeń dla chmury. W tym artykule omówiono tworzenie tematu niestandardowego, subskrybowanie go i wyzwalanie zdarzenia w celu wyświetlenia wyniku za pomocą programu Azure PowerShell. Zazwyczaj użytkownik wysyła zdarzenia do punktu końcowego, w którym następuje przetwarzanie danych zdarzenia i są wykonywane akcje. Jednak aby uprościć ten artykuł, zdarzenia zostaną wysłane do aplikacji sieci Web, która zbiera i wyświetla komunikaty.
 
->[!NOTE]
->Narzędzie **Hookbin** nie jest przeznaczone do użycia w przypadku wysokiej przepływności. Zastosowanie tego narzędzia ma charakter czysto poglądowy. W przypadku wypchnięcia więcej niż jednego zdarzenia w tym samym czasie w narzędziu mogą nie być widoczne wszystkie zdarzenia.
+Po zakończeniu przekonasz się, że dane zdarzenia zostały wysłane do aplikacji sieci Web.
 
-Po zakończeniu przekonasz się, że dane zdarzenia zostały wysłane do punktu końcowego.
+![Wyświetlanie wyników](./media/custom-event-quickstart-powershell/view-result.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
@@ -36,42 +35,72 @@ Utwórz grupę zasobów na pomocą polecenia [New-AzureRmResourceGroup](/powersh
 
 Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *gridResourceGroup* w lokalizacji *westus2*.
 
-```powershell
+```powershell-interactive
 New-AzureRmResourceGroup -Name gridResourceGroup -Location westus2
 ```
 
 ## <a name="create-a-custom-topic"></a>Tworzenie tematu niestandardowego
 
-Temat usługi Event Grid udostępnia zdefiniowany przez użytkownika punkt końcowy, w którym publikowane są zdarzenia. Poniższy przykład obejmuje tworzenie tematu niestandardowego w grupie zasobów. Zamień `<topic_name>` na unikatową nazwę tematu. Nazwa tematu musi być unikatowa, ponieważ jest reprezentowana przez wpis DNS.
+Temat usługi Event Grid udostępnia zdefiniowany przez użytkownika punkt końcowy, w którym publikowane są zdarzenia. Poniższy przykład obejmuje tworzenie tematu niestandardowego w grupie zasobów. Zamień `<your-topic-name>` na unikatową nazwę tematu. Nazwa tematu musi być unikatowa, ponieważ stanowi część wpisu DNS.
 
-```powershell
-New-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Location westus2 -Name <topic_name>
+```powershell-interactive
+$topicname="<your-topic-name>"
+
+New-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Location westus2 -Name $topicname
 ```
 
 ## <a name="create-a-message-endpoint"></a>Tworzenie punktu końcowego komunikatów
 
-Przed subskrybowaniem tematu niestandardowego utwórzmy punkt końcowy dla komunikatu o zdarzeniach. Zamiast pisać kod w celu zareagowania na zdarzenie, utwórzmy punkt końcowy, który będzie zbierać komunikaty, aby można było je wyświetlić. Hookbin to narzędzie innego producenta, które umożliwia utworzenie punktu końcowego i wyświetlanie wysyłanych do niego żądań. Przejdź do narzędzia [Hookbin](https://hookbin.com/) i kliknij pozycję **Create New Endpoint** (Utwórz nowy punkt końcowy).  Skopiuj adres URL pojemnika, ponieważ będzie on potrzebny podczas subskrybowania tematu.
+Przed zasubskrybowaniem tematu utwórzmy punkt końcowy dla komunikatów o zdarzeniach. Zazwyczaj w punkcie końcowym akcje są wykonywane na podstawie danych zdarzenia. Aby uprościć ten przewodnik Szybki Start, wdrożysz [wstępnie zbudowaną aplikację sieci Web](https://github.com/dbarkol/azure-event-grid-viewer), która będzie wyświetlać komunikaty o zdarzeniach. Wdrożone rozwiązanie zawiera plan usługi App Service, aplikację internetową usługi App Service i kod źródłowy z repozytorium GitHub.
+
+Zastąp `<your-site-name>` unikatową nazwą aplikacji sieci Web. Nazwa aplikacji sieci Web musi być unikatowa, ponieważ stanowi część wpisu DNS.
+
+```powershell-interactive
+$sitename="<your-site-name>"
+
+New-AzureRmResourceGroupDeployment `
+  -ResourceGroupName gridResourceGroup `
+  -TemplateUri "https://raw.githubusercontent.com/dbarkol/azure-event-grid-viewer/master/azuredeploy.json" `
+  -siteName $sitename `
+  -hostingPlanName viewerhost
+```
+
+Wdrożenie może potrwać kilka minut. Po pomyślnym wdrożeniu należy wyświetlić aplikację sieci Web i upewnić się, że jest uruchomiona. W przeglądarce sieci Web przejdź do: `https://<your-site-name>.azurewebsites.net`
+
+Powinna być widoczna witryna internetowa bez żadnych aktualnie wyświetlanych komunikatów.
 
 ## <a name="subscribe-to-a-topic"></a>Subskrybowanie tematu
 
-Subskrybowanie tematu ma poinformować usługę Event Grid o tym, które zdarzenia chcesz śledzić. Poniższy przykład ilustruje subskrybowanie utworzonego tematu niestandardowego i przekazanie adresu URL z narzędzia Hookbin jako punktu końcowego dla powiadomień o zdarzeniach. Zamień `<event_subscription_name>` na unikatową nazwę subskrypcji, a `<endpoint_URL>` wartością z poprzedniej sekcji. Dzięki określeniu punktu końcowego podczas subskrybowania usługa Event Grid obsługuje kierowanie zdarzeń do tego punktu końcowego. Jako `<topic_name>` użyj wartości utworzonej wcześniej.
+Subskrybowanie tematu to dla usługi Event Grid informacja o tym, które zdarzenia chcesz śledzić i gdzie mają być one wysyłane. Poniższy przykład ilustruje subskrybowanie utworzonego tematu i przekazanie adresu URL z aplikacji sieci Web jako punktu końcowego dla powiadomień o zdarzeniach.
 
-```powershell
-New-AzureRmEventGridSubscription -EventSubscriptionName <event_subscription_name> -Endpoint <endpoint_URL> -ResourceGroupName gridResourceGroup -TopicName <topic_name>
+Punkt końcowy dla aplikacji sieci Web musi zawierać sufiks `/api/updates/`.
+
+```powershell-interactive
+$endpoint="https://$sitename.azurewebsites.net/api/updates"
+
+New-AzureRmEventGridSubscription `
+  -EventSubscriptionName demoViewerSub `
+  -Endpoint $endpoint `
+  -ResourceGroupName gridResourceGroup `
+  -TopicName $topicname
 ```
+
+Wyświetl aplikację sieci Web ponownie i zwróć uwagę, że zdarzenie sprawdzania poprawności subskrypcji zostało do niej wysłane. Wybierz ikonę oka, aby rozwinąć dane zdarzenia. Usługa Event Grid wysyła zdarzenie weryfikacji, aby w punkcie końcowym mogło nastąpić sprawdzenie, czy dane zdarzenia mają być odbierane. Aplikacja sieci Web zawiera kod do sprawdzania poprawności subskrypcji.
+
+![Wyświetlanie zdarzenia subskrypcji](./media/custom-event-quickstart-powershell/view-subscription-event.png)
 
 ## <a name="send-an-event-to-your-topic"></a>Wysyłanie zdarzenia do tematu
 
-Wyzwólmy zdarzenie, aby zobaczyć, jak usługa Event Grid dystrybuuje komunikat do punktu końcowego. Po pierwsze uzyskajmy adres URL i klucz dla tematu. Ponownie jako `<topic_name>` użyj nazwy tematu.
+Wyzwólmy zdarzenie, aby zobaczyć, jak usługa Event Grid dystrybuuje komunikat do punktu końcowego. Po pierwsze uzyskajmy adres URL i klucz dla tematu.
 
-```powershell
-$endpoint = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name <topic-name>).Endpoint
-$keys = Get-AzureRmEventGridTopicKey -ResourceGroupName gridResourceGroup -Name <topic-name>
+```powershell-interactive
+$endpoint = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name $topicname).Endpoint
+$keys = Get-AzureRmEventGridTopicKey -ResourceGroupName gridResourceGroup -Name $topicname
 ```
 
 Aby uprościć ten artykuł, skonfiguruj przykładowe dane zdarzenia do wysłania do tematu niestandardowego. Zwykle dane zdarzenia są wysyłane przez aplikację lub usługę platformy Azure. W poniższym przykładzie użyto tabeli skrótów (Hashtable) do skonstruowania danych zdarzenia `htbody`, a następnie przekonwertowano je na poprawnie sformułowany obiekt ładunku JSON `$body`:
 
-```powershell
+```powershell-interactive
 $eventID = Get-Random 99999
 
 #Date format should be SortableDateTimePattern (ISO 8601)
@@ -99,11 +128,11 @@ Jeśli wyświetlisz `$body`, zobaczysz pełne zdarzenie. Element `data` danych J
 
 Teraz wyślij zdarzenie do swojego tematu.
 
-```powershell
+```powershell-interactive
 Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
 ```
 
-Zdarzenie zostało wyzwolone, a usługa Event Grid wysłała komunikat do punktu końcowego skonfigurowanego podczas subskrybowania. Przejdź do adresu URL punktu końcowego utworzonego wcześniej. Ewentualnie kliknij przycisk Refresh (Odśwież) w otwartej przeglądarce. Zobaczysz właśnie wysłane zdarzenie.
+Zdarzenie zostało wyzwolone, a usługa Event Grid wysłała komunikat do punktu końcowego skonfigurowanego podczas subskrybowania. Wyświetl aplikację sieci Web, aby wyświetlić właśnie wysłane zdarzenie.
 
 ```json
 [{
@@ -123,7 +152,7 @@ Zdarzenie zostało wyzwolone, a usługa Event Grid wysłała komunikat do punktu
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli zamierzasz kontynuować pracę z tym zdarzeniem, nie usuwaj zasobów utworzonych w tym artykule. W przeciwnym razie użyj poniższego polecenia, aby usunąć zasoby utworzone w ramach tego artykułu.
+Jeśli zamierzasz kontynuować pracę z tym zdarzeniem lub aplikacją podglądu zdarzeń, nie usuwaj zasobów utworzonych w tym artykule. W przeciwnym razie użyj poniższego polecenia, aby usunąć zasoby utworzone w ramach tego artykułu.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name gridResourceGroup

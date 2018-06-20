@@ -3,25 +3,25 @@ title: Kody błędów w raportach działań związanych z logowaniem w portalu u
 description: Dokumentacja dotycząca kodów błędów w raportach działań związanych z logowaniem.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 05/31/2018
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: cb636db4e6e2097f494fcbc7a6584f0172514b95
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
-ms.translationtype: HT
+ms.openlocfilehash: dc01a775579455ae24c95ecc6f3858ce28149dea
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34698513"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232447"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Kody błędów w raportach działań związanych z logowaniem w portalu usługi Azure Active Directory
 
@@ -65,13 +65,13 @@ W poniższej sekcji przedstawiono kompletne omówienie wszystkich możliwych bł
 |40008|Wystąpił problem z Twoim dostawcą tożsamości federacyjnej. Skontaktuj się ze swoim dostawcą tożsamości, aby rozwiązać ten problem.|
 |40009|Wystąpił problem z Twoim dostawcą tożsamości federacyjnej. Skontaktuj się ze swoim dostawcą tożsamości, aby rozwiązać ten problem.|
 |40014|Wystąpił problem z Twoim dostawcą tożsamości federacyjnej. Skontaktuj się ze swoim dostawcą tożsamości, aby rozwiązać ten problem.|
-|50000|Wystąpił problem z naszą usługą logowania. [Otwórz bilet pomocy technicznej](active-directory-troubleshooting-support-howto.md), aby rozwiązać ten problem.|
+|50000|Wystąpił problem z naszą usługą logowania. [Otwórz bilet pomocy technicznej](fundamentals/active-directory-troubleshooting-support-howto.md), aby rozwiązać ten problem.|
 |50001|Nie odnaleziono głównej nazwy usługi w tej dzierżawie. Może to się zdarzyć, jeśli aplikacja nie została zainstalowana przez administratora dzierżawy. Lub w katalogu nie znaleziono jednostki Zasób albo jest ona nieprawidłowa.|
 |50002|Logowanie nie powiodło się z powodu ograniczonego dostępu serwera proxy w dzierżawie. Jeśli są to zasady Twojej własnej dzierżawy, możesz zmienić ustawienia ograniczonej dzierżawy, aby rozwiązać ten problem|
 |50003|Logowanie nie powiodło się z powodu braku klucza lub certyfikatu podpisywania. Przyczyną może być to, że w aplikacji nie skonfigurowano żadnego klucza podpisywania. Sprawdź rozwiązania opisane tutaj: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured). Jeśli nadal występują problemy, skontaktuj się z właścicielem aplikacji lub administratorem aplikacji|
 |50005|Użytkownik próbował zalogować się do urządzenia z platformy, która nie jest obecnie obsługiwana za pomocą zasad dostępu warunkowego|
 |50006| Weryfikacja podpisu nie powiodła się z powodu nieprawidłowego podpisu. Sprawdź rozwiązanie opisane tutaj: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery). Jeśli nadal występują problemy, skontaktuj się z właścicielem aplikacji lub administratorem aplikacji|
-|50007|Nie znaleziono certyfikatu szyfrowania partnera dla tej aplikacji. [Otwórz bilet pomocy technicznej](active-directory-troubleshooting-support-howto.md) dla działu pomocy technicznej firmy Microsoft, aby rozwiązać ten problem|
+|50007|Nie znaleziono certyfikatu szyfrowania partnera dla tej aplikacji. [Otwórz bilet pomocy technicznej](fundamentals/active-directory-troubleshooting-support-howto.md) dla działu pomocy technicznej firmy Microsoft, aby rozwiązać ten problem|
 |50008|Brak potwierdzenia SAML lub zostało ono nieprawidłowo skonfigurowane w tokenie. Skontaktuj się z dostawcą federacji.|
 |50010|Weryfikacja identyfikatora URI odbiorców dla aplikacji nie powiodła się, ponieważ nie skonfigurowano żadnych odbiorców z tokenem. Skontaktuj się z właścicielem aplikacji|
 |50011|Brak adresu zwrotnego, został nieprawidłowo skonfigurowany lub jest inny niż adresy zwrotne skonfigurowane dla aplikacji. Wypróbuj rozwiązanie opisane tutaj: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application). Jeśli nadal występują problemy, skontaktuj się z właścicielem aplikacji lub administratorem aplikacji|
@@ -114,8 +114,8 @@ W poniższej sekcji przedstawiono kompletne omówienie wszystkich możliwych bł
 |50133|Sesja jest nieprawidłowa z powodu wygaśnięcia lub niedawnej zmiany hasła.|
 |50135|Wymagana jest zmiana hasła ze względu na ryzyko dotyczące konta|
 |50136|Przekierowanie sesji zarządzanego konta usługi do aplikacji — wykryto jedną sesję konta MSA |
-|50140|Ten błąd wystąpił z powodu przerwania „Nie wylogowuj mnie” w trakcie logowania użytkownika. [Otwórz bilet pomocy technicznej](active-directory-troubleshooting-support-howto.md) z identyfikatorem korelacji, identyfikatorem żądania i kodem błędu, aby uzyskać więcej informacji. |
-|50143|Niezgodność sesji — sesja jest nieprawidłowa, ponieważ dzierżawa użytkownika nie odpowiada wskazówce dotyczącej domeny z powodu innego zasobu. [Otwórz bilet pomocy technicznej](active-directory-troubleshooting-support-howto.md) z identyfikatorem korelacji, identyfikatorem żądania i kodem błędu, aby uzyskać więcej informacji.|
+|50140|Ten błąd wystąpił z powodu przerwania „Nie wylogowuj mnie” w trakcie logowania użytkownika. [Otwórz bilet pomocy technicznej](fundamentals/active-directory-troubleshooting-support-howto.md) z identyfikatorem korelacji, identyfikatorem żądania i kodem błędu, aby uzyskać więcej informacji. |
+|50143|Niezgodność sesji — sesja jest nieprawidłowa, ponieważ dzierżawa użytkownika nie odpowiada wskazówce dotyczącej domeny z powodu innego zasobu. [Otwórz bilet pomocy technicznej](fundamentals/active-directory-troubleshooting-support-howto.md) z identyfikatorem korelacji, identyfikatorem żądania i kodem błędu, aby uzyskać więcej informacji.|
 |50144|Ważność hasła użytkownika usługi Active Directory wygasła. Wygeneruj nowe hasło dla użytkownika lub poproś użytkownika końcowego o skorzystanie z narzędzia samoobsługowego resetowania hasła|
 |50146|Ta aplikacja musi być skonfigurowana przy użyciu klucza podpisywania specyficznego dla aplikacji. Albo nie została skonfigurowana przy jego użyciu, albo klucz wygasł lub nie jest jeszcze ważny. Skontaktuj się z właścicielem aplikacji|
 |50148|Wartość parametru code_verifier jest niezgodna z elementem code_challenge podanym w żądaniu autoryzacji dla PKCE. Skontaktuj się z deweloperem aplikacji. |
@@ -150,7 +150,7 @@ W poniższej sekcji przedstawiono kompletne omówienie wszystkich możliwych bł
 |70007|Aplikacja zwróciła nieobsługiwaną wartość parametru „response_mode” podczas żądania tokenu. Skontaktuj się z właścicielem aplikacji|
 |70008|Podany kod autoryzacji lub token odświeżania wygasł i został odwołany. Użytkownik powinien spróbować ponownie się zalogować|
 |70011|Zakres żądany przez aplikację jest nieprawidłowy. Skontaktuj się z właścicielem aplikacji|
-|70012|Wystąpił błąd serwera podczas uwierzytelniania użytkownika zarządzanego konta usługi (użytkownika). Spróbuj ponownie. Jeśli próba ponownie nie powiedzie się, [otwórz bilet pomocy technicznej](active-directory-troubleshooting-support-howto.md) |
+|70012|Wystąpił błąd serwera podczas uwierzytelniania użytkownika zarządzanego konta usługi (użytkownika). Spróbuj ponownie. Jeśli próba ponownie nie powiedzie się, [otwórz bilet pomocy technicznej](fundamentals/active-directory-troubleshooting-support-howto.md) |
 |70018|Nieprawidłowy kod weryfikacyjny — użytkownik wpisał niewłaściwy kod użytkownika dla przepływu kodu urządzenia. Autoryzacja nie została zatwierdzona|
 |70019|Kod weryfikacyjny wygasł. Użytkownik powinien ponowić próbę logowania|
 |70037|Podano nieprawidłową odpowiedź na wezwanie. Odrzucono sesję uwierzytelniania zdalnego.|
@@ -161,20 +161,20 @@ W poniższej sekcji przedstawiono kompletne omówienie wszystkich możliwych bł
 |75011|Metoda uwierzytelniania użyta do uwierzytelnienia użytkownika w usłudze jest niezgodna z żądaną metodą uwierzytelniania. Skontaktuj się z właścicielem aplikacji|
 |75016|Żądanie uwierzytelniania SAML2 ma nieprawidłowy element NameIdPolicy. Skontaktuj się z właścicielem aplikacji|
 |80001|Agent uwierzytelniania nie może nawiązać połączenia z usługą Active Directory. Upewnij się, że agent uwierzytelniania jest zainstalowany na komputerze przyłączonym do domeny, który ma kontakt z kontrolerem domeny, który może obsługiwać żądania logowania użytkownika.|
-|80002|Błąd wewnętrzny. Upłynął limit czasu żądania weryfikacji hasła. Nie możemy wysłać żądania uwierzytelnienia do wewnętrznej usługi tożsamości hybrydowej. [Otwórz bilet pomocy technicznej](active-directory-troubleshooting-support-howto.md), aby uzyskać więcej informacji na temat błędu|
-|80003|Agent uwierzytelniania odebrał nieprawidłową odpowiedź. Wystąpił nieznany błąd podczas próby uwierzytelniania za pomocą lokalnej usługi Active Directory. [Otwórz bilet pomocy technicznej](active-directory-troubleshooting-support-howto.md), aby uzyskać więcej informacji na temat błędu.|
-|80005|Agent uwierzytelniania: wystąpił nieznany błąd podczas przetwarzania odpowiedzi od agenta uwierzytelniania. [Otwórz bilet pomocy technicznej](active-directory-troubleshooting-support-howto.md), aby uzyskać więcej informacji na temat błędu.|
+|80002|Błąd wewnętrzny. Upłynął limit czasu żądania weryfikacji hasła. Nie możemy wysłać żądania uwierzytelnienia do wewnętrznej usługi tożsamości hybrydowej. [Otwórz bilet pomocy technicznej](fundamentals/active-directory-troubleshooting-support-howto.md), aby uzyskać więcej informacji na temat błędu|
+|80003|Agent uwierzytelniania odebrał nieprawidłową odpowiedź. Wystąpił nieznany błąd podczas próby uwierzytelniania za pomocą lokalnej usługi Active Directory. [Otwórz bilet pomocy technicznej](fundamentals/active-directory-troubleshooting-support-howto.md), aby uzyskać więcej informacji na temat błędu.|
+|80005|Agent uwierzytelniania: wystąpił nieznany błąd podczas przetwarzania odpowiedzi od agenta uwierzytelniania. [Otwórz bilet pomocy technicznej](fundamentals/active-directory-troubleshooting-support-howto.md), aby uzyskać więcej informacji na temat błędu.|
 |80007|Agent uwierzytelniania nie może zweryfikować hasła użytkownika.|
 |80010|Agent uwierzytelniania nie może odszyfrować hasła. |
 |80011|Agent uwierzytelniania nie może pobrać klucza szyfrowania.|
 |80012|Użytkownicy próbowali zalogować się poza dozwolonymi godzinami (określonymi w usłudze AD)|
 |80013|Nie można ukończyć próby uwierzytelnienia z powodu niesymetryczności czasu między maszyną, na której działa agent uwierzytelniania, a usługą AD. Rozwiąż problemy z synchronizacją czasu|
-|80014|Upłynął limit czasu agenta uwierzytelniania. [Otwórz bilet pomocy technicznej](active-directory-troubleshooting-support-howto.md) z kodem błędu, identyfikatorem korelacji oraz datą/godziną, aby uzyskać więcej informacji na temat tego błędu|
+|80014|Upłynął limit czasu agenta uwierzytelniania. [Otwórz bilet pomocy technicznej](fundamentals/active-directory-troubleshooting-support-howto.md) z kodem błędu, identyfikatorem korelacji oraz datą/godziną, aby uzyskać więcej informacji na temat tego błędu|
 |81001|Bilet Kerberos użytkownika jest zbyt duży. Może to się zdarzyć, jeśli użytkownik jest w zbyt wielu grupach i w związku z tym bilet Kerberos zawiera zbyt wiele członkostw w grupach. Zmniejsz liczbę członkostw użytkownika w grupach i spróbuj ponownie.|
 |81005|Pakiet uwierzytelniania nie jest obsługiwany|
 |81007|Dzierżawa nie jest włączona dla bezproblemowego logowania jednokrotnego|
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Więcej informacji można znaleźć w temacie [Raporty dotyczące logowań w portalu usługi Azure Active Directory](active-directory-reporting-activity-sign-ins.md).

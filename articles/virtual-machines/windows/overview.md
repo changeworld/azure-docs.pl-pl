@@ -16,11 +16,12 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: ff709d021c9d4201301edd9890f1e4a94f555313
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 105eb95ed28d9a278d60d538aabaadb412c16f4f
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267115"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Omówienie maszyn wirtualnych z systemem Windows na platformie Azure
 
@@ -75,7 +76,7 @@ Subskrypcje mają domyślne [limity przydziałów](../../azure-subscription-serv
 ### <a name="operating-system-disks-and-images"></a>Dyski i obrazy z systemem operacyjnym
 System operacyjny i dane maszyny wirtualnej są przechowywane na [wirtualnym dysku twardym (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Wirtualne dyski twarde są również używane do obsługi obrazów, spośród których można wybierać, chcąc zainstalować system operacyjny. 
 
-Na platformie Azure jest dostępnych wiele [obrazów z portalu Marketplace](https://azure.microsoft.com/marketplace/virtual-machines/), których można używać z różnymi wersjami i typami systemów operacyjnych Windows Server. Obrazy z Marketplace są oznaczone nazwą wydawcy i oferty, jednostką SKU i wersją (zwykle najnowszą). 
+Na platformie Azure jest dostępnych wiele [obrazów z portalu Marketplace](https://azure.microsoft.com/marketplace/virtual-machines/), których można używać z różnymi wersjami i typami systemów operacyjnych Windows Server. Obrazy z Marketplace są oznaczone nazwą wydawcy i oferty, jednostką SKU i wersją (zwykle najnowszą). Obsługiwane są tylko 64-bitowe systemy operacyjne. Aby uzyskać więcej informacji dotyczących obsługiwanych systemów operacyjnych gościa, ról oraz funkcji, zobacz temat [Microsoft server software support for Microsoft Azure virtual machines](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) (Obsługa oprogramowania serwera Microsoft maszyn wirtualnych Microsoft Azure).
 
 W poniższej tabeli pokazano, jak można znaleźć informacje o obrazie.
 

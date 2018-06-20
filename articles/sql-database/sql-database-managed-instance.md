@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: 0c4acf6e8e236d46a9db2b4ab730b8333e4f6ca6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f07ce542c176f4038378d54497d7114109ac5bd3
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648129"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215528"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co to jest wystąpienie zarządzane (wersja zapoznawcza)?
 
@@ -39,7 +39,7 @@ Wytyczne tabeli klucza różnice i Zaplanowaliśmy scenariusze użycia między S
 
 | | Scenariusz użycia | 
 | --- | --- | 
-|Wystąpienie zarządzane usługi SQL Database |Dla klientów chcących migracji duża liczba aplikacji z lokalnymi lub IaaS własnym utworzony lub niezależnego dostawcy oprogramowania, pod warunkiem z jako niskie migracji nakładu pracy, jak to możliwe, zaproponować zarządzane wystąpienia. Przy użyciu w pełni zautomatyzowanego [usługi migracji danych (DMS)](/sql/dma/dma-overview) na platformie Azure, klientom przyrostu i przesunięcia ich lokalnego programu SQL Server do wystąpienia zarządzane, który zapewnia zgodność z lokalnej instalacji programu SQL Server i pełne izolacji wystąpienia klienta macierzystą obsługę sieci Wirtualnej.  Pakiet Software Assurance należy wymienić ich istniejących licencji dla rabaty na zarządzane wystąpienia bazy danych SQL za pomocą [korzyści Użyj hybrydowe platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  Zarządzane wystąpienia bazy danych SQL jest najlepsze miejsce docelowe migracji w chmurze dla wystąpień programu SQL Server, które wymagają wysokiego poziomu zabezpieczeń i powierzchni programowalności sformatowanego. |
+|Wystąpienie zarządzane usługi SQL Database |Dla klientów chcących migracji duża liczba aplikacji z lokalnymi lub IaaS własnym utworzony lub niezależnego dostawcy oprogramowania, pod warunkiem z jako niskie migracji nakładu pracy, jak to możliwe, zaproponować zarządzane wystąpienia. Przy użyciu w pełni zautomatyzowanego [usługi migracji danych (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) na platformie Azure, klientom przyrostu i przesunięcia ich lokalnego programu SQL Server do wystąpienia zarządzane, który zapewnia zgodność z lokalnej instalacji programu SQL Server i pełne izolacji wystąpienia klienta macierzystą obsługę sieci Wirtualnej.  Pakiet Software Assurance należy wymienić ich istniejących licencji dla rabaty na zarządzane wystąpienia bazy danych SQL za pomocą [korzyści Użyj hybrydowe platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  Zarządzane wystąpienia bazy danych SQL jest najlepsze miejsce docelowe migracji w chmurze dla wystąpień programu SQL Server, które wymagają wysokiego poziomu zabezpieczeń i powierzchni programowalności sformatowanego. |
 |Baza danych SQL Azure (pojedyncza lub puli) |**Pule elastyczne**: dla klientów, tworzenie nowych aplikacji z wieloma dzierżawcami SaaS lub celowo Przekształcanie istniejącej lokalnej aplikacji do wielodostępnych aplikacji SaaS, zaproponować elastyczne pule. Zalety tego modelu to: <br><ul><li>Konwersja modelu biznesowego, ze sprzedaży licencji sprzedaży subskrypcji usługi (dla ISV)</li></ul><ul><li>Łatwe i dowód punktor dzierżawy izolacji</li></ul><ul><li>Uproszczony model programowania skoncentrowane bazy danych</li></ul><ul><li>Możliwość skalowania bez naciśnięcie twardych limitu</li></ul>**Pojedyncze bazy danych**: dla klientów, tworzenie nowych aplikacji innych niż wielodostępne SaaS, której obciążenie jest stabilne i przewidywalne, zaproponować pojedynczych baz danych. Zalety tego modelu to:<ul><li>Uproszczony model programowania skoncentrowane bazy danych</li></ul>  <ul><li>Przewidywalna wydajność dla każdej bazy danych</li></ul>|
 |Maszyny wirtualne SQL IaaS|W przypadku konieczności dostosowywania systemu operacyjnego lub serwer bazy danych, jak również klientów mających określone wymagania w zakresie uruchamianie aplikacji innych firm siebie z programem SQL Server (w tej samej maszyny Wirtualnej), klienci zaproponować maszyn wirtualnych SQL / IaaS jako najlepszego rozwiązania|
 |||
@@ -186,11 +186,10 @@ Usługa Azure bazy danych migracji jest pełni zarządzana usługa zaprojektowan
 
 Metoda migracji wykorzystuje kopii zapasowych SQL do przechowywania obiektów blob platformy Azure. Kopie zapasowe przechowywane w obiekcie blob magazynu Azure może bezpośrednio przywrócony do zarządzanego wystąpienia. Aby przywrócić istniejącej bazy danych SQL do wystąpienia zarządzany, możesz:
 
-- Użyj [usługi migracji danych (DMS)](/sql/dma/dma-overview). Samouczek, zobacz [migracji do wystąpienia zarządzane przy użyciu usługi migracji bazy danych Azure (DMS)](../dms/tutorial-sql-server-to-managed-instance.md) przywrócenie z pliku kopii zapasowej bazy danych
+- Użyj [usługi migracji danych (DMS)](../dms/dms-overview.md). Samouczek, zobacz [migracji do wystąpienia zarządzane przy użyciu usługi migracji bazy danych Azure (DMS)](../dms/tutorial-sql-server-to-managed-instance.md) przywrócenie z pliku kopii zapasowej bazy danych
 - Użyj [polecenia T-SQL Przywróć](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql). 
   - Samouczek przedstawiający sposób przywracania World Wide Importers — standardowe pliku kopii zapasowej, zobacz [przywrócić pliku kopii zapasowej do wystąpienia zarządzane](sql-database-managed-instance-restore-from-backup-tutorial.md). Ten samouczek pokazuje, że masz przekazywany plik kopii zapasowej do magazynu Azure blogu i bezpieczne przy użyciu klucza sygnatury dostępu Współdzielonego dostępu współużytkowanego.
   - Aby uzyskać informacje dotyczące przywracania z adresu URL, zobacz [natywnego Przywracanie z adresu URL](sql-database-managed-instance-migrate.md#native-restore-from-url).
-- [Importuj z pliku pliku BACPAC](sql-database-import.md)
 
 ## <a name="sql-features-supported"></a>Obsługiwane funkcje SQL 
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: 57c0030ac613167dc3ed567c2876b8e2e110d47a
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 97107bb5ca1a598906cac9adbf508b2d15668e7d
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836379"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227244"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning"></a>Samouczek szybkiego startu dotyczący języka programowania R dla usługi Azure Machine Learning
 
@@ -41,7 +41,7 @@ Czas serii danych jest danych, w której wartości mają indeks czasu. Indeks cz
 
 W tym przewodniku Szybki Start możemy zostanie praca z mleczarskie Kalifornijskiej i cenach danych. Te dane obejmują miesięczne informacji na temat produkcji kilka mleczarskich i ceny mleka fat zwykłych stawek.
 
-Dane używane w tym artykule, wraz ze skryptami R, mogą być [pobrana w tym miejscu][download]. Te dane został pierwotnie syntezatora z informacji dostępnych w uniwersytecie Wisconsin na http://future.aae.wisc.edu/tab/production.html.
+Dane używane w tym artykule, wraz ze skryptami R, mogą być [pobrana w tym miejscu](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/blob/master/studio-samples/cadairydata.csv). Te dane został pierwotnie syntezatora z informacji dostępnych w uniwersytecie Wisconsin na https://dairymarkets.com.
 
 ### <a name="organization"></a>Organizacja
 Firma Microsoft będzie postęp kilku kroków zdobędziesz sposobu tworzenia, testowania i wykonanie kodu manipulowania R analizy i danych w środowisku Azure Machine Learning.  
@@ -123,15 +123,15 @@ Usługa Azure Machine Learning jest dostarczany z ponad 350 wstępnie zainstalow
 Jeśli nie znasz ostatniego wiersza kodu w tej chwili, poniżej. W pozostałej części tego dokumentu często omówimy użycia języka R w środowisku Azure Machine Learning.
 
 ### <a name="introduction-to-rstudio"></a>Wprowadzenie do programu RStudio
-Programu RStudio jest powszechnie używaną IDE dla R. Użyję programu RStudio edycji, testowanie i debugowanie części kodu języka R używanych w tym przewodniku Szybki start. Po kodzie R przetestowane i gotowe, po prostu wyciąć i wkleić w edytorze programu RStudio do Machine Learning Studio [wykonanie skryptu języka R] [ execute-r-script] modułu.  
+Programu RStudio jest powszechnie używaną IDE dla R. Użyję programu RStudio edycji, testowanie i debugowanie części kodu języka R używanych w tym przewodniku Szybki Start. Po kodzie R przetestowane i gotowe, można po prostu wyciąć i wkleić w edytorze programu RStudio Machine Learning Studio [wykonanie skryptu języka R] [ execute-r-script] modułu.  
 
-Jeśli nie masz język programowania R zainstalowana na tym komputerze pulpitu, zaleca się, że możesz to zrobić teraz. Bezpłatne materiały do pobrania języka typu open source R są dostępne w kompleksowe R archiwum sieci (sieci CRAN) na [ http://www.r-project.org/ ](http://www.r-project.org/). Brak dostępnych pliki do pobrania dla systemu Windows, Mac OS i Linux/UNIX. Wybierz pobliskich dublowania i postępuj zgodnie z instrukcjami pobierania. Ponadto sieci CRAN zawiera wiele pakietów manipulowania przydatne analizy i danych.
+Jeśli nie masz język programowania R zainstalowana na tym komputerze pulpitu, zaleca się, że możesz to zrobić teraz. Bezpłatne materiały do pobrania open source języka R są dostępne w kompleksowe R archiwum sieci (sieci CRAN) na [ http://www.r-project.org/ ](http://www.r-project.org/). Brak dostępnych pliki do pobrania dla systemu Windows, Mac OS i Linux/UNIX. Wybierz pobliskich dublowania i postępuj zgodnie z instrukcjami pobierania. Ponadto sieci CRAN zawiera wiele pakietów manipulowania przydatne analizy i danych.
 
 Jeśli jesteś nowym użytkownikiem programu RStudio, należy pobrać i zainstalować wersję pulpitu. Można znaleźć programu RStudio pliki do pobrania dla systemu Windows, Mac OS i Linux/UNIX w http://www.rstudio.com/products/RStudio/. Wykonaj instrukcje podane do zainstalowania programu RStudio na komputera stacjonarnego.  
 
 Samouczek Wprowadzenie do programu RStudio znajduje się w temacie https://support.rstudio.com/hc/sections/200107586-Using-RStudio.
 
-I Podaj dodatkowe informacje na temat używania programu RStudio w [dodatek a.][appendixa].  
+I Podaj dodatkowe informacje na temat używania programu RStudio w [dodatek a][appendixa].  
 
 ## <a id="scriptmodule"></a>Pobieranie danych i modułu wykonania skryptu języka R
 W tej sekcji omówimy, jak pobrać dane do i z [wykonanie skryptu języka R] [ execute-r-script] modułu. Zapoznamy się sposób obsługi różnych typów danych do odczytu do i z [wykonanie skryptu języka R] [ execute-r-script] modułu.
@@ -837,7 +837,7 @@ Uruchomienie tego kodu tworzy dziennika pokazano na rysunku 18.
 
 *Rysunek 18. Lista KKS obiektów z analizy parowania korelacji.*
 
-Brak wartości korelacji dla każdego opóźnienie. Żadna z tych wartości korelacji jest wystarczająco duży, aby mieć znaczenie. Firma Microsoft w związku z tym stwierdzić, czy możemy modelu każdej zmiennej niezależnie.
+Brak wartości korelacji dla każdego opóźnienie. Żaden z tych wartości korelacji nie jest wystarczająco duży, aby mieć znaczenie. Firma Microsoft w związku z tym stwierdzić, czy możemy modelu każdej zmiennej niezależnie.
 
 ### <a name="output-a-dataframe"></a>Dane wyjściowe dataframe
 Firma Microsoft ma obliczana parowania korelacji jako listę obiektów KKS R. Przedstawia nieco problem, jako port wyjściowy zestaw danych wyników wymaga naprawdę dataframe. Ponadto obiektu KKS jest listą i chcemy tylko wartości w pierwszym elemencie tej listy korelacji w różnych odchyłki.
@@ -1241,7 +1241,7 @@ Istnieje wiele — książki na R, które mogą pomóc Ci rozpocząć. Poniżej 
 * R Inferno przez oparzenia Patrick jest zaskakująco żartobliwy książki, która zajmuje się liczbę trudnych i trudne tematy, które mogą wystąpić podczas programowania w języku R. Książce jest dostępny bezpłatnie na http://www.burns-stat.com/documents/books/the-r-inferno/.
 * Jeśli chcesz nowości w zaawansowanych tematów w R mają wygląd książki zaawansowane R przez Hadley Wickham. Wersję online tego podręcznika jest dostępny bezpłatnie na http://adv-r.had.co.nz/.
 
-Katalog R czasu serii pakietów można znaleźć w widoku zadań sieci CRAN do analizy serii czasowych: http://cran.r-project.org/web/views/TimeSeries.html. Informacje w określonym czasie serii obiekt pakietów należy się z dokumentacją tego pakietu.
+Wykaz R czasu serii pakietów można znaleźć w widoku zadań sieci CRAN do analizy serii czasowych: http://cran.r-project.org/web/views/TimeSeries.html. Informacje w określonym czasie serii obiekt pakietów należy się z dokumentacją tego pakietu.
 
 Podręcznik wprowadzające szeregu czasowego z R Cowpertwait Pawła i Andrew Metcalfe zawiera wprowadzenie do użycia języka R do analizy serii czasowych. Wiele więcej teoretycznego teksty zawierają przykłady R.
 

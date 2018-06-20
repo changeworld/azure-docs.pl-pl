@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 02/06/2018
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: e80fad4d0bddff89ff4dda7feed90fc622369ee9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 678ca45d12fd10a02d967cd32743b4d7b6ea26af
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642703"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster"></a>Samouczek: skalowanie klastra usługi Service Fabric
 
@@ -85,7 +86,7 @@ sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.az
 --pem ./aztestcluster201709151446.pem --no-verify
 ```
 
-Po nawiązaniu połączenia możesz pobrać stan poszczególnych węzłów w klastrze za pomocą polecenia. W programie PowerShell użyj polecenia `Get-ServiceFabricClusterHealth`, a w programie **sfctl** — polecenia `sfctl cluster select`.
+Po nawiązaniu połączenia możesz pobrać stan poszczególnych węzłów w klastrze za pomocą polecenia. W programie **PowerShell** użyj polecenia `Get-ServiceFabricClusterHealth`, a w programie **sfctl** polecenia `sfctl cluster select`.
 
 ## <a name="scale-out"></a>Skalowanie w poziomie
 
@@ -131,15 +132,15 @@ Klaster usługi Service Fabric musi „wiedzieć”, że ten węzeł ma zostać 
 
 1. Wyłącz węzeł, aby zatrzymać replikację danych.  
 PowerShell: `Disable-ServiceFabricNode`  
-sfcli: `sfctl node disable`
+sfctl: `sfctl node disable`
 
 2. Zatrzymaj węzeł, aby środowisko uruchomieniowe usługi Service Fabric zostało prawidłowo zamknięte, a aplikacja otrzymała żądanie przerwania.  
 PowerShell: `Start-ServiceFabricNodeTransition -Stop`  
-sfcli: `sfctl node transition --node-transition-type Stop`
+sfctl: `sfctl node transition --node-transition-type Stop`
 
 2. Usuń węzeł z klastra.  
 PowerShell: `Remove-ServiceFabricNodeState`  
-sfcli: `sfctl node remove-state`
+sfctl: `sfctl node remove-state`
 
 Po wykonaniu powyższych kroków węzeł może zostać usunięty z zestawu skalowania. Jeśli korzystasz z innej warstwy trwałości niż [brązowa][durability], kroki te są wykonywane automatycznie w przypadku usunięcia wystąpienia zestawu skalowania.
 

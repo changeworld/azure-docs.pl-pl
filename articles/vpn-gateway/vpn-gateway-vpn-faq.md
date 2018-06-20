@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/05/2018
+ms.date: 06/06/2018
 ms.author: cherylmc
-ms.openlocfilehash: 9ebdbb8958779e074195623aec90b7a6f6de2bb4
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 99ecf8af278823fbae41cb14df5c2372d6451e0c
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236199"
 ---
 # <a name="vpn-gateway-faq"></a>Brama sieci VPN — często zadawane pytania
 
@@ -166,13 +167,13 @@ W ramach konfiguracji typu lokacja-lokacja obejmującej wiele lokalizacji obsłu
 
 Inne rozwiązania o charakterze oprogramowania pełniącego rolę sieci VPN powinny współpracować z bramą, o ile są one zgodne ze standardowymi implementacjami protokołu IPsec stosowanymi w branży. W celu uzyskania pomocy technicznej oraz instrukcji konfiguracji należy skontaktować się z dostawcą oprogramowania.
 
-## <a name="P2S"></a>Punkt-lokacja — natywne uwierzytelnianie certyfikatu platformy Azure
+## <a name="P2S"></a>Punkt-lokacja przy użyciu natywnego uwierzytelniania certyfikatu platformy Azure
 
 Ta sekcja dotyczy modelu wdrażania przy użyciu usługi Resource Manager.
 
 [!INCLUDE [P2S Azure cert](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
-## <a name="P2SRADIUS"></a>Punkt-lokacja — uwierzytelnianie za pomocą protokołu RADIUS
+## <a name="P2SRADIUS"></a>Punkt-lokacja przy użyciu uwierzytelniania za pomocą protokołu RADIUS
 
 Ta sekcja dotyczy modelu wdrażania przy użyciu usługi Resource Manager.
 

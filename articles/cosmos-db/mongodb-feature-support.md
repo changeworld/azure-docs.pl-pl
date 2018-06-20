@@ -1,66 +1,64 @@
 ---
-title: Azure obsługę funkcji rozwiązania Cosmos DB dla bazy danych MongoDB | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o obsłudze funkcji interfejsu API Azure rozwiązania Cosmos bazy danych MongoDB zapewnia 3.4 bazy danych MongoDB.
+title: Obsługa funkcji Azure Cosmos DB dla bazy danych MongoDB | Microsoft Docs
+description: Dowiedz się więcej o obsłudze funkcji dostępnych w interfejsach API bazy danych MongoDB usługi Azure Cosmos DB dla bazy danych MongoDB w wersji 3.4.
 services: cosmos-db
 author: alekseys
 manager: kfile
-documentationcenter: ''
-ms.assetid: 29b6547c-3201-44b6-9e0b-e6f56e473e24
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-mongo
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 11/15/2017
 ms.author: alekseys
-ms.openlocfilehash: cadf637dd3a71e040fef8188f7290907659e5cdb
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.openlocfilehash: 9202e8eb328f098f7ab68a18f4629a95ecc10991
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796359"
 ---
 # <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>Obsługa interfejsu API bazy danych MongoDB dla funkcji i składni bazy danych MongoDB
 
-Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firmy Microsoft. Użytkownik może komunikować się z bazy danych MongoDB API za pomocą dowolnego klienta bazy danych MongoDB typu open source [sterowniki](https://docs.mongodb.org/ecosystem/drivers). Interfejs API bazy danych MongoDB umożliwia korzystanie z istniejących sterowników klienta przez do bazy danych MongoDB [okablować protokołu](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
+Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firmy Microsoft. Możesz komunikować się z interfejsem API bazy danych MongoDB za pośrednictwem dowolnych [sterowników](https://docs.mongodb.org/ecosystem/drivers) klienta bazy danych MongoDB typu „open source”. Interfejs API bazy danych MongoDB umożliwia korzystanie z istniejących sterowników klienta dzięki przestrzeganiu [protokołu przewodowego](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol) MongoDB.
 
-Za pomocą interfejsu API Azure rozwiązania Cosmos bazy danych MongoDB, można korzystać z zalet interfejsów API bazy danych MongoDB użyto, biorąc pod uwagę możliwości przedsiębiorstwa zawiera bazy danych Azure rozwiązania Cosmos: [globalne dystrybucji](distribute-data-globally.md), [automatycznego dzielenia na fragmenty](partition-data.md), gwarancje dostępności i czas oczekiwania, automatycznego indeksowania każdego pola, szyfrowanie w rest, kopie zapasowe i o wiele więcej.
+Używając interfejsu API bazy danych MongoDB usługi Azure Cosmos DB, można korzystać z dobrze znanych zalet interfejsów API bazy danych MongoDB oraz wszystkich funkcji na poziomie korporacyjnym dostarczanych przez usługę Azure Cosmos DB: [globalnej dystrybucji](distribute-data-globally.md), [automatycznego fragmentowania](partition-data.md), gwarancji dostępności i opóźnień, automatycznego indeksowania każdego pola, szyfrowania magazynowanego, tworzenia kopii zapasowych itd.
 
-## <a name="mongodb-query-language-support"></a>Obsługa języków kwerendy bazy danych MongoDB
+## <a name="mongodb-query-language-support"></a>Obsługa języka zapytań bazy danych MongoDB
 
-Interfejs API Azure rozwiązania Cosmos bazy danych MongoDB zapewnia obsługę kompleksowe konstrukcji języka zapytań bazy danych MongoDB. Poniżej można znaleźć szczegółową listę aktualnie obsługiwanych operacji, operatory, etapy, poleceń i opcji.
+Interfejs API bazy danych MongoDB usługi Azure Cosmos DB zapewnia niemal pełną obsługę konstrukcji języka zapytań bazy danych MongoDB. Poniżej można znaleźć szczegółową listę obecnie obsługiwanych operacji, operatorów, etapów, poleceń i opcji.
 
 
 ## <a name="database-commands"></a>Polecenia bazy danych
 
-Azure DB rozwiązania Cosmos obsługuje następujące polecenia bazy danych na wszystkich kontach API bazy danych MongoDB. 
+Usługa Azure Cosmos DB obsługuje następujące polecenia bazy danych na wszystkich kontach interfejsu API bazy danych MongoDB. 
 
-### <a name="query-and-write-operation-commands"></a>Polecenia operacji zapytania i zapisu
-- usuwanie
-- Znajdź
+### <a name="query-and-write-operation-commands"></a>Polecenia operacji zapytań i zapisu
+- delete
+- find
 - findAndModify
 - getLastError
 - getMore
-- Wstaw
-- Aktualizacja
+- insert
+- update
 
 ### <a name="authentication-commands"></a>Polecenia uwierzytelniania
-- wyloguj
-- uwierzytelniania
+- logout
+- authenticate
 - getnonce
 
 ### <a name="administration-commands"></a>Polecenia administracyjne
 - dropDatabase
 - listCollections
-- Upuść
+- drop
 - create
 - filemd5
 - createIndexes
 - listIndexes
 - dropIndexes
-- ConnectionStatus
-- Ponowna indeksacja
+- connectionStatus
+- reIndex
 
-### <a name="diagnostics-commands"></a>Diagnostyka poleceń
+### <a name="diagnostics-commands"></a>Polecenia diagnostyki
 - buildInfo
 - collStats
 - dbStats
@@ -72,12 +70,12 @@ Azure DB rozwiązania Cosmos obsługuje następujące polecenia bazy danych na w
 
 ## <a name="aggregation-pipelinea"></a>Potok agregacji</a>
 
-Azure DB rozwiązania Cosmos obsługuje potoku agregacji w publicznej wersji zapoznawczej. Zobacz [Azure blog](https://aka.ms/mongodb-aggregation) instrukcje na temat dołączyć do publicznej wersji zapoznawczej.
+Usługa Azure Cosmos DB obsługuje potok agregacji w publicznej wersji zapoznawczej. Instrukcje dotyczące dołączenia do publicznej wersji zapoznawczej znajdują się na [blogu platformy Azure](https://aka.ms/mongodb-aggregation).
 
 ### <a name="aggregation-commands"></a>Polecenia agregacji
-- agregacji
-- liczba
-- Różne
+- aggregate
+- count
+- distinct
 
 ### <a name="aggregation-stages"></a>Etapy agregacji
 - $project
@@ -96,11 +94,11 @@ Azure DB rozwiązania Cosmos obsługuje potoku agregacji w publicznej wersji zap
 ### <a name="aggregation-expressions"></a>Wyrażenia agregacji
 
 #### <a name="boolean-expressions"></a>Wyrażenia logiczne
-- $i
-- $lub
+- $and
+- $or
 - $not
 
-#### <a name="set-expressions"></a>Zestaw wyrażeń
+#### <a name="set-expressions"></a>Stałe wyrażenia
 - $setEquals
 - $setIntersection
 - $setUnion
@@ -109,7 +107,7 @@ Azure DB rozwiązania Cosmos obsługuje potoku agregacji w publicznej wersji zap
 - $anyElementTrue
 - $allElementsTrue
 
-#### <a name="comparison-expressions"></a>Porównywanie wyrażeń
+#### <a name="comparison-expressions"></a>Wyrażenia porównania
 - $cmp
 - $eq
 - $gt
@@ -120,7 +118,7 @@ Azure DB rozwiązania Cosmos obsługuje potoku agregacji w publicznej wersji zap
 
 #### <a name="arithmetic-expressions"></a>Wyrażenia arytmetyczne
 - $abs
-- Dodaj $
+- $add
 - $ceil
 - $divide
 - $exp
@@ -129,13 +127,13 @@ Azure DB rozwiązania Cosmos obsługuje potoku agregacji w publicznej wersji zap
 - $log
 - $log10
 - $mod
-- $mnożenia
+- $multiply
 - $pow
 - $sqrt
-- odejmowanie $
+- $subtract
 - $trunc
 
-#### <a name="string-expressions"></a>Wyrażenia parametrów
+#### <a name="string-expressions"></a>Wyrażenia ciągu
 - $concat
 - $indexOfBytes
 - $indexOfCP
@@ -159,9 +157,9 @@ Azure DB rozwiązania Cosmos obsługuje potoku agregacji w publicznej wersji zap
 - $reverseArray
 - $size
 - $slice
-- $w
+- $in
 
-#### <a name="date-expressions"></a>Data wyrażenia
+#### <a name="date-expressions"></a>Wyrażenia daty
 - $dayOfYear
 - $dayOfMonth
 - $dayOfWeek
@@ -170,7 +168,7 @@ Azure DB rozwiązania Cosmos obsługuje potoku agregacji w publicznej wersji zap
 - $week
 - $hour
 - $minute
-- $drugi
+- $second
 - $millisecond
 - $isoDayOfWeek
 - $isoWeek
@@ -182,8 +180,8 @@ Azure DB rozwiązania Cosmos obsługuje potoku agregacji w publicznej wersji zap
 ## <a name="aggregation-accumulators"></a>Akumulatory agregacji
 - $sum
 - $avg
-- $pierwszy
-- $ostatniego
+- $first
+- $last
 - $max
 - $min
 - $push
@@ -191,7 +189,7 @@ Azure DB rozwiązania Cosmos obsługuje potoku agregacji w publicznej wersji zap
 
 ## <a name="operators"></a>Operatory
 
-Następujące operatory są obsługiwane przez odpowiednie przykłady ich użycia. Należy wziąć pod uwagę ten przykładowy dokument używane w zapytaniach poniżej:
+Poniżej znajdują się obsługiwane operatory razem z odpowiednimi przykładami ich użycia. Warto zapoznać się z przykładowym dokumentem użytym w zapytaniach poniżej:
 
 ```json
 {
@@ -220,58 +218,58 @@ $gte | ``` { "Elevation": { $gte: 4392 } } ``` |  | -
 $lt | ``` { "Elevation": { $lt: 5000 } } ``` |  | -
 $lte | ``` { "Elevation": { $lte: 5000 } } ``` | | -
 $ne | ``` { "Elevation": { $ne: 1 } } ``` |  | -
-$w | ``` { "Volcano Name": { $in: ["St. Helens", "Rainier", "Glacier Peak"] } } ``` |  | -
+$in | ``` { "Volcano Name": { $in: ["St. Helens", "Rainier", "Glacier Peak"] } } ``` |  | -
 $nin | ``` { "Volcano Name": { $nin: ["Lassen Peak", "Hood", "Baker"] } } ``` | | -
-$lub | ``` { $or: [ { Elevation: { $lt: 4000 } }, { "Volcano Name": "Rainier" } ] } ``` |  | -
-$i | ``` { $and: [ { Elevation: { $gt: 4000 } }, { "Volcano Name": "Rainier" } ] } ``` |  | -
+$or | ``` { $or: [ { Elevation: { $lt: 4000 } }, { "Volcano Name": "Rainier" } ] } ``` |  | -
+$and | ``` { $and: [ { Elevation: { $gt: 4000 } }, { "Volcano Name": "Rainier" } ] } ``` |  | -
 $not | ``` { "Elevation": { $not: { $gt: 5000 } } } ```|  | -
-$ani | ``` { $nor: [ { "Elevation": { $lt: 4000 } }, { "Volcano Name": "Baker" } ] } ``` |  | -
-istnieje $ | ``` { "Status": { $exists: true } } ```|  | -
+$nor | ``` { $nor: [ { "Elevation": { $lt: 4000 } }, { "Volcano Name": "Baker" } ] } ``` |  | -
+$exists | ``` { "Status": { $exists: true } } ```|  | -
 $type | ``` { "Status": { $type: "string" } } ```|  | -
 $mod | ``` { "Elevation": { $mod: [ 4, 0 ] } } ``` |  | -
 $regex | ``` { "Volcano Name": { $regex: "^Rain"} } ```|  | -
 
 ### <a name="notes"></a>Uwagi
 
-W zapytaniach $regex zakotwiczony lewej strony wyrażenia Zezwalaj indeksu wyszukiwania. Jednak za pomocą "i" modyfikator (Ignorowanie) i 'M ' modyfikator (multiline) powoduje, że skanowanie kolekcji w wszystkie wyrażenia.
-Gdy istnieje potrzeba zawierają "$" lub "|", zaleca się tworzenie zapytań regex dwie (lub więcej). Na przykład podane następujące oryginalne zapytanie: ```find({x:{$regex: /^abc$/})```, musi on być modyfikowany w następujący sposób: ```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```.
-Pierwsza część użyje ograniczyć wyszukiwanie do tych dokumentów, począwszy od indeksu ^ abc i drugiej części będą zgodne dokładne wpisów. Pasek operator "|" działa jako funkcję "lub" - zapytanie ```find({x:{$regex: /^abc|^def/})``` odpowiada dokumentów, w którym polu "x" zawiera wartości, które zaczynają się od "abc" albo "def". Korzystanie z indeksu, zaleca się break zapytanie na dwie różne połączonych $lub operator: ```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```.
+W zapytaniach $regex wyrażenia zakotwiczone z lewej strony umożliwiają wyszukiwanie indeksu. Jednak użycie modyfikatora „i” (wielkość liter nie ma znaczenia) oraz modyfikatora „m” (wiele wierszy) powoduje skanowanie kolekcji we wszystkich wyrażeniach.
+Jeśli istnieje potrzeba dołączenia „$” lub „|”, najlepiej utworzyć dwa lub więcej zapytań regex. Jeśli na przykład oryginalne zapytanie jest następujące: ```find({x:{$regex: /^abc$/})``` należy je zmodyfikować w następujący sposób: ```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```.
+Pierwsza część użyje indeksu, aby ograniczyć wyszukiwanie do dokumentów, które rozpoczynają się od ^abc, a druga część będzie dokładnie dopasowywana do wpisów. Operator kreski „|” działa jako funkcja „or” — zapytanie ```find({x:{$regex: /^abc|^def/})``` pasuje do dokumentów, w których pole „x” ma wartości zaczynające się od „abc” lub „def”. Aby korzystać z indeksu, zaleca się podzielenie zapytania na dwa różne zapytania połączone operatorem $or: ```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```.
 
 ### <a name="update-operators"></a>Operatory aktualizacji
 
-#### <a name="field-update-operators"></a>Pola, operatory aktualizacji
+#### <a name="field-update-operators"></a>Operatory do aktualizacji pól
 - $inc
 - $mul
 - $rename
 - $setOnInsert
 - $set
-- Nie ustawiono $
+- $unset
 - $min
 - $max
 - $currentDate
 
-#### <a name="array-update-operators"></a>Operatory aktualizacji tablicy
+#### <a name="array-update-operators"></a>Operatory do aktualizacji tablic
 - $addToSet
 - $pop
 - $pullAll
-- $pull (Uwaga: $pull z warunkiem nie jest obsługiwane)
+- $pull  (Uwaga: operator $pull z warunkiem nie jest obsługiwany)
 - $pushAll
 - $push
-- $każdego
+- $each
 - $slice
 - $sort
 - $position
 
-#### <a name="bitwise-update-operator"></a>Aktualizacja z bitowego operatora
+#### <a name="bitwise-update-operator"></a>Operator do aktualizacji Bitwise
 - $bit
 
-### <a name="geospatial-operators"></a>Operatory lokalizacji geograficznych
+### <a name="geospatial-operators"></a>Operatory danych geoprzestrzennych
 
 Operator | Przykład 
 --- | --- |
 $geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Yes
 $geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Yes
-$pobliżu | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Yes
+$near | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Yes
 $nearSphere | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | Yes
 $geometry | ```{ "Location.coordinates": { $geoWithin: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Yes
 $minDistance | ```{ "Location.coordinates": { $nearSphere : { $geometry: {type: "Point", coordinates: [ -121, 46 ]}, $minDistance: 1000, $maxDistance: 1000000 } } }``` | Yes
@@ -289,7 +287,7 @@ $all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` |
 $elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |  
 $size | ```{ "Location.coordinates": { $size: 2 } }``` | 
 $comment |  ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}``` | 
-$text |  | Nieobsługiwane. Zamiast tego użyj $regex 
+$text |  | Nieobsługiwane. Zamiast tego użyj operatora $regex 
 
 ### <a name="methods"></a>Metody
 
@@ -299,32 +297,32 @@ Obsługiwane są następujące metody:
 
 Metoda | Przykład | Uwagi 
 --- | --- | --- |
-cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | Dokumenty bez klucza sortowania nie zwracana
+cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | Dokumenty bez klucza sortowania nie zostaną zwrócone
 
-## <a name="unique-indexes"></a>Unikatowe indeksy
+## <a name="unique-indexes"></a>Indeksy unikatowe
 
-Azure DB rozwiązania Cosmos indeksuje każdego pola w dokumentach, które są domyślnie zapisywane w bazie danych. Unikatowe indeksy upewnij się, że określone pole nie zawiera zduplikowane wartości dla wszystkich dokumentów w kolekcji, podobnie jak unikatowości sposób są zachowywane w kluczu domyślne "_id". Teraz można utworzyć niestandardowy indeksy w usłudze Azure DB rozwiązania Cosmos za pomocą polecenia createIndex, w tym ograniczenia "unique".
+Usługa Azure Cosmos DB indeksuje każde pole w dokumentach, które są domyślnie zapisywane w bazie danych. Indeksy unikatowe zapewniają, że wartości w danym polu nie dublują się we wszystkich dokumentach w kolekcji; również klucz domyślny „_id” jest kluczem unikatowym. Teraz w usłudze Azure Cosmos DB można tworzyć niestandardowe indeksy – za pomocą polecenia createIndex, w którym można używać ograniczenia „unique”.
 
-Unikatowe indeksy są dostępne dla wszystkich kont API bazy danych MongoDB.
+Indeksy unikatowe są dostępne dla wszystkich kont interfejsu API bazy danych MongoDB.
 
 ## <a name="time-to-live-ttl"></a>Czas wygaśnięcia (TTL)
 
-Azure DB rozwiązania Cosmos obsługuje względny czas wygaśnięcia (TTL) oparte na sygnatury czasowej dokumentu. Czas wygaśnięcia można włączyć dla interfejsu API bazy danych MongoDB kolekcji za pomocą [portalu Azure](https://portal.azure.com).
+Usługa Azure Cosmos DB obsługuje względny czas wygaśnięcia (TTL) na podstawie znacznika czasu dokumentu. Czas wygaśnięcia można włączyć dla kolekcji interfejsu API bazy danych MongoDB w witrynie [Azure Portal](https://portal.azure.com).
 
-## <a name="user-and-role-management"></a>Zarządzanie użytkownikami i rola
+## <a name="user-and-role-management"></a>Zarządzanie użytkownikami i rolami
 
-Azure DB rozwiązania Cosmos nie obsługuje jeszcze użytkowników i ról. Kontrola dostępu oparta na rolach (RBAC) obsługuje bazę danych systemu Azure rozwiązania Cosmos i do odczytu / zapisu i tylko do odczytu haseł/kluczy, które można uzyskać za pośrednictwem [portalu Azure](https://portal.azure.com) (strona parametry połączenia).
+Usługa Azure Cosmos DB nie obsługuje jeszcze użytkowników i ról. Usługa Azure Cosmos DB obsługuje kontrolę dostępu opartą na rolach (RBAC) oraz hasła/klucze do odczytu-zapisu i tylko do odczytu, które można uzyskać w witrynie [Azure Portal](https://portal.azure.com) (na stronie Parametry połączenia).
 
 ## <a name="replication"></a>Replikacja
 
-Azure DB rozwiązania Cosmos obsługuje automatyczne natywnego replikacji w najniższej warstwy. Istotą takiej logiki jest rozszerzony limit do osiągnięcia replikacji małe opóźnienia, globalnych. Azure DB rozwiązania Cosmos nie obsługuje polecenia ręczna replikacja.
+Usługa Azure Cosmos DB obsługuje automatyczną, natywną replikację na najniższych warstwach. Ta logika została rozszerzona, aby osiągnąć małe opóźnienia oraz replikację globalną. Usługa Azure Cosmos DB nie obsługuje poleceń dotyczących replikacji ręcznej.
 
 ## <a name="sharding"></a>Dzielenie na fragmenty
 
-Azure DB rozwiązania Cosmos obsługuje dzielenia na fragmenty automatycznego, po stronie serwera. Azure DB rozwiązania Cosmos nie obsługuje polecenia ręcznego dzielenia na fragmenty.
+Usługa Azure Cosmos DB obsługuje automatyczne dzielenie na fragmenty po stronie serwera. Usługa Azure Cosmos DB nie obsługuje poleceń dotyczących ręcznego dzielenia na fragmenty.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się, jak [Użyj Studio 3T](mongodb-mongochef.md) z interfejsu API dla bazy danych MongoDB.
-- Dowiedz się, jak [Użyj Robo 3T](mongodb-robomongo.md) z interfejsu API dla bazy danych MongoDB.
-- Eksploruj bazy danych Azure rozwiązania Cosmos z obsługą protokołu bazy danych mongodb [przykłady](mongodb-samples.md).
+- Dowiedz się, jak [używać programu Studio 3T](mongodb-mongochef.md) z interfejsem API dla bazy danych MongoDB.
+- Dowiedz się, jak [używać programu Robo 3T](mongodb-robomongo.md) z interfejsem API dla bazy danych MongoDB.
+- Eksploruj usługę Azure Cosmos DB, korzystając z pomocy dla protokołów do bazy danych [MongoDB](mongodb-samples.md).

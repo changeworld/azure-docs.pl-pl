@@ -1,24 +1,20 @@
 ---
-title: "Omówienie podstaw usługi Azure Service Bus | Microsoft Docs"
-description: "Wprowadzenie do używania usługi Service Bus w celu łączenia aplikacji Azure z innym oprogramowaniem."
+title: Omówienie podstaw usługi Azure Service Bus | Microsoft Docs
+description: Wprowadzenie do używania usługi Service Bus w celu łączenia aplikacji Azure z innym oprogramowaniem.
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 12654cdd-82ab-4b95-b56f-08a5a8bbc6f9
 ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/31/2018
+ms.date: 05/23/2018
 ms.author: sethm
-ms.openlocfilehash: fab765480a2f480e8c54035d903d24843490ee38
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 994510b415e21288fd38a116f7e77a59ba79af59
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641326"
 ---
 # <a name="azure-service-bus"></a>Azure Service Bus
 
@@ -37,14 +33,14 @@ Service Bus to wielodostępna usługa w chmurze, co oznacza, że usługa jest ws
 W przestrzeni nazw można używać jednego lub większej liczby wystąpień trzech różnych mechanizmów komunikacji, z których każdy łączy aplikacje w inny sposób. Dostępne są następujące mechanizmy:
 
 * *Kolejki*, które umożliwiają komunikację jednokierunkową. Każda kolejka działa jako pośrednik (nazywany czasem *brokerem*), który przechowuje wysyłane wiadomości, dopóki nie zostaną odebrane. Każdy komunikat jest odbierany przez jednego adresata.
-* *Tematy*, które zapewniają komunikację jednokierunkową przy użyciu *subskrypcji* (jeden temat może mieć wiele subskrypcji). Podobnie jak kolejka temat działa jako broker, ale każda subskrypcja może opcjonalnie korzystać z filtru w celu odbierania tylko komunikatów spełniających określone kryteria.
+* *Tematy*, które zapewniają komunikację jednokierunkową przy użyciu *subskrypcji*. Jeden temat może mieć wiele subskrypcji. Podobnie jak kolejka temat działa jako broker, ale każda subskrypcja może opcjonalnie korzystać z filtru w celu odbierania tylko komunikatów spełniających określone kryteria.
 * *Przekaźniki*, które zapewniają komunikację dwukierunkową. W przeciwieństwie do kolejek i tematów przekaźnik nie przechowuje transmitowanych komunikatów (nie jest brokerem). Zamiast tego po prostu przekazuje je do aplikacji docelowej.
 
 Podczas tworzenia kolejki, tematu lub przekaźnika tworzonemu elementowi nadawana jest nazwa. W połączeniu z przestrzenią nazw ta nazwa tworzy unikatowy identyfikator obiektu. Aplikacje mogą udostępnić tę nazwę usłudze Service Bus, a następnie używać kolejki, tematu lub przekaźnika do komunikowania się ze sobą. 
 
 Aby użyć dowolnego z tych obiektów w scenariuszu dotyczącym przekaźnika, aplikacje systemu Windows mogą korzystać z technologii Windows Communication Foundation (WCF). Ta usługa jest określana jako [przekaźnik WCF](../service-bus-relay/relay-what-is-it.md). W przypadku kolejek i tematów aplikacje systemu Windows mogą używać interfejsów API obsługi komunikatów zdefiniowanych przez usługę Service Bus. Aby ułatwić korzystanie z tych obiektów aplikacjom innych niż aplikacje systemu Windows, firma Microsoft udostępnia zestawy SDK dla języka Java, Node.js i innych języków. Dostęp do kolejek i tematów można także uzyskać za pomocą [interfejsów API REST](/rest/api/servicebus/) i protokołu HTTP lub HTTPS. 
 
-Należy pamiętać, że chociaż usługa Service Bus sama działa w chmurze (to znaczy w centrach danych platformy Microsoft Azure), aplikacje z niej korzystające mogą być uruchamiane w dowolnym miejscu. Usługa Service Bus umożliwia na przykład łączenie aplikacji działających na platformie Azure lub aplikacji uruchamianych wewnątrz własnego centrum danych. Umożliwia także łączenie aplikacji działających na platformie Azure lub innej platformie chmurowej z aplikacjami lokalnymi lub z tabletami i telefonami. Istnieje nawet możliwość łącznia się urządzeń gospodarstwa domowego, czujników i innych urządzeń z centralną aplikacją lub między sobą. Usługa Service Bus jest mechanizmem komunikacji w chmurze, który jest dostępny niemal z dowolnego miejsca. Sposób korzystania z usługi Service Bus zależy od tego, co aplikacja ma robić.
+Należy pamiętać, że chociaż usługa Service Bus sama działa w chmurze (to znaczy w centrach danych platformy Microsoft Azure), aplikacje z niej korzystające mogą być uruchamiane w dowolnym miejscu. Usługa Service Bus umożliwia na przykład łączenie aplikacji działających na platformie Azure lub aplikacji uruchamianych wewnątrz własnego centrum danych. Umożliwia także łączenie aplikacji działających na platformie Azure lub innej platformie w chmurze z aplikacjami lokalnymi lub z tabletami i telefonami. Usługa Service Bus jest mechanizmem komunikacji w chmurze, który jest dostępny niemal z dowolnego miejsca. Sposób korzystania z usługi Service Bus zależy od tego, co aplikacja ma robić.
 
 ## <a name="queues"></a>Kolejki
 
@@ -54,9 +50,9 @@ Załóżmy, że użytkownik łączy dwie aplikacje przy użyciu kolejki usługi 
 
 **Rysunek 2. Kolejki usługi Service Bus zapewniają jednokierunkowe kolejkowanie asynchroniczne.**
 
-Nadawca wysyła komunikat do kolejki usługi Service Bus, a odbiornik pobiera ten komunikat w późniejszym czasie. Kolejka może zawierać tylko jeden odbiornik, jak pokazano na rysunku 2. Możliwa jest również sytuacja, gdy wiele aplikacji odczytuje dane z tej samej kolejki. W tej ostatniej sytuacji każdy komunikat jest odczytywany tylko przez jeden odbiornik. W przypadku usługi multiemisji należy zamiast kolejki użyć tematu.
+Nadajnik wysyła komunikat do kolejki usługi Service Bus, a odbiornik przetwarza go w późniejszym czasie. Kolejka może zawierać tylko jeden odbiornik, jak pokazano na rysunku 2. Możliwa jest również sytuacja, gdy wiele aplikacji odczytuje dane z tej samej kolejki. W tej ostatniej sytuacji każdy komunikat jest odczytywany tylko przez jeden odbiornik. W przypadku usługi multiemisji należy zamiast kolejki użyć tematu.
 
-Każdy komunikat ma dwie części: zbiór właściwości, z których każda jest parą klucz/wartość, oraz ładunek komunikatu. Ładunkiem mogą być dane binarne, tekstowe, a nawet plik XML. Sposób ich używania zależy od tego, co aplikacja próbuje zrobić. Na przykład aplikacja wysyłająca komunikat o ostatniej sprzedaży może dołączać właściwości **Seller="Ava"** i **Amount=10000**. Treść komunikatu może zawierać zeskanowany obraz podpisanej umowy sprzedaży lub, jeśli nie istnieje, pozostać pusta.
+Każdy komunikat ma dwie części: zestaw właściwości, parę klucz/wartość, oraz ładunek komunikatu. Ładunkiem mogą być dane binarne, tekstowe, a nawet plik XML. Sposób ich używania zależy od tego, co aplikacja próbuje zrobić. Na przykład aplikacja wysyłająca komunikat o ostatniej sprzedaży może dołączać właściwości **Seller="Ava"** i **Amount=10000**. Treść komunikatu może zawierać zeskanowany obraz podpisanej umowy sprzedaży lub, jeśli nie istnieje, pozostać pusta.
 
 Odbiornik może odczytywać komunikaty z kolejki usługi Service Bus na dwa różne sposoby. Pierwsza opcja o nazwie *[ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode)* otrzymuje komunikat z kolejki i natychmiast go usuwa. Jest to proste, ale jeśli odbiornik ulegnie awarii przed zakończeniem przetwarzania komunikatu, komunikat zostanie utracony. Ponieważ został usunięty z kolejki, żaden inny odbiornik nie może już uzyskać do niego dostępu. 
 
@@ -78,11 +74,11 @@ Pomimo swojej przydatności, kolejki nie zawsze są odpowiednim rozwiązaniem. C
 
 **Rysunek 3. Na podstawie filtru określonego przez subskrybującą aplikację może ona odbierać niektóre lub wszystkie komunikaty wysyłane do tematu usługi Service Bus.**
 
-*Temat* jest pod wieloma względami podobny do kolejki. Nadawcy wysyłają komunikaty do tematu w taki sam sposób jak do kolejki, a komunikaty wyglądają tak samo jak w przypadku kolejek. Różnica polega na tym, że tematy umożliwiają każdej aplikacji odbierającej utworzenie własnej *subskrypcji* i opcjonalnie zdefiniowanie *filtru*. Subskrybent będzie zatem widział tylko komunikaty zgodne z filtrem. Przykładowo, Rysunek 3 przedstawia nadawcę i temat z trzema subskrybentami, z których każdy ma własny filtr:
+*Temat* jest pod wieloma względami podobny do kolejki. Nadawcy wysyłają komunikaty do tematu w taki sam sposób jak do kolejki, a komunikaty wyglądają tak samo jak w przypadku kolejek. Różnica polega na tym, że tematy umożliwiają każdej aplikacji odbierającej utworzenie własnej *subskrypcji* i opcjonalnie zdefiniowanie *filtru*. Subskrybent odbiera kopię każdego komunikatu w temacie, ale jeśli użyje filtru, może odbierać tylko komunikaty zgodne z jego ustawieniem. Przykładowo, Rysunek 3 przedstawia nadawcę i temat z trzema subskrybentami, z których każdy ma własny filtr:
 
-* Subskrybent 1 odbiera tylko komunikaty, które zawierają właściwość *Seller="Ava"*.
-* Subskrybent 2 odbiera komunikaty, które zawierają właściwość *Seller="Ruby"* i/lub zawierają właściwość *Amount* o wartości większej niż 100 000. Być może Ruby jest kierownikiem ds. sprzedaży, więc chce widzieć własną sprzedaż i wszystkie duże transakcje sprzedaży niezależnie od tego, kto ich dokonuje.
-* Subskrybent 3 ustawił filtr na wartość *True*, co oznacza, że odbiera wszystkie komunikaty. Ta aplikacja może być na przykład odpowiedzialna za utrzymanie dziennika inspekcji i w związku z tym musi widzieć wszystkie komunikaty.
+* Subskrybent 1 odbiera tylko komunikaty, które zawierają właściwość **Seller="Ava"**.
+* Subskrybent 2 odbiera komunikaty, które zawierają właściwość **Seller="Ruby"** i/lub zawierają właściwość **Amount** o wartości większej niż 100 000. Być może Ruby jest kierownikiem ds. sprzedaży, więc chce widzieć własną sprzedaż i wszystkie duże transakcje sprzedaży niezależnie od tego, kto ich dokonuje.
+* Subskrybent 3 ustawił filtr na wartość **True**, co oznacza, że odbiera wszystkie komunikaty. Ta aplikacja może być na przykład odpowiedzialna za utrzymanie dziennika inspekcji, dlatego musi widzieć wszystkie komunikaty.
 
 Podobnie jak w przypadku kolejek, subskrybenci tematu mogą odczytywać komunikaty przy użyciu metody [ReceiveAndDelete lub PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode). W przeciwieństwie do kolejek pojedynczy komunikat wysłany do tematu może zostać odebrany w ramach wielu subskrypcji. Takie podejście, często nazywane *publikowaniem i subskrybowaniem* (lub *publikowaniem/subskrypcją*), jest przydatne, gdy wiele aplikacji jest zainteresowanych tymi samymi komunikatami. Dzięki zdefiniowaniu właściwego filtru każdy subskrybent może korzystać tylko z tej części strumienia komunikatów, którą chce wyświetlać.
 
@@ -92,7 +88,7 @@ Kolejki i tematy zapewniają jednokierunkową asynchroniczną komunikację za po
 
 ![][4]
 
-**Rysunek 4. Przekaźnik usługi Service Bus zapewnia synchroniczną, dwukierunkową komunikację między aplikacjami.**
+**Rysunek 4. Service Bus Relay zapewnia synchroniczną, dwukierunkową komunikację między aplikacjami.**
 
 Oczywistym pytaniem, jeśli chodzi o przekaźniki, jest: po co z nich korzystać? Nawet jeśli nie potrzebujesz kolejek, dlaczego warto udostępnić aplikacjom możliwość komunikacji za pomocą usługi w chmurze zamiast bezpośredniej interakcji? Odpowiedź brzmi: komunikacja bezpośrednia może być trudniejsza, niż się wydaje.
 
