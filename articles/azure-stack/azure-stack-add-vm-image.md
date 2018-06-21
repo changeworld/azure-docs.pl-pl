@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 05/24/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 309bd35eabe1d5c4af9a35d5f2b879bce225a402
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 714afa1da5d2c8c5695dfe33edd0257f69af149d
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604373"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287708"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Udostępnić obraz maszyny wirtualnej Azure stosu
 
@@ -207,7 +207,7 @@ Jeśli nie ma potrzeby obraz maszyny wirtualnej, który został przekazany, nale
     Na przykład: `1.0.0`  
     Wersja obrazu maszyny Wirtualnej, wykorzystywanym przez użytkowników po wdrożeniu przez nich obrazu maszyny Wirtualnej. Ta wersja jest w formacie *\#.\#.\#*. Na przykład **1.0.0**. Nie dołączaj spację lub inne znaki specjalne w tym polu.  
     
-    Aby uzyskać więcej informacji na temat theRemove AzsPlatformImage polecenia cmdlet, zobacz programu PowerShell Microsoft [dokumentacji modułu Azure stosu Operator](https://docs.microsoft.com/powershell/module/).
+    Aby uzyskać więcej informacji na temat polecenia cmdlet Remove-AzsPlatformImage Zobacz programu PowerShell Microsoft [dokumentacji modułu Azure stosu Operator](https://docs.microsoft.com/powershell/module/).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
