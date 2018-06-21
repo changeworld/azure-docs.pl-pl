@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: jeedes
-ms.openlocfilehash: aee99add093a6da14a4d146ed29e48604eabfb1f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 96608c491fe4d62b6b4bdb48ee5386c9a72212cf
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229074"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286249"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-seat-lms"></a>Samouczek: Integracji Azure Active Directory z LMS stanowisko Learning
 
@@ -207,7 +207,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu. 
 
-Kliknij Kafelek LMS stanowisko Learning w panelu dostępu, użytkownik będzie można automatycznie zalogowane do aplikacji LMS stanowisko Learning. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](https://msdn.microsoft.com/library/dn308586).
+Kliknij Kafelek LMS stanowisko Learning w panelu dostępu, użytkownik będzie można automatycznie zalogowane do aplikacji LMS stanowisko Learning. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 

@@ -1,20 +1,17 @@
 ---
 title: Instalowanie serwera głównego celu Linux do trybu failover z platformy Azure do lokalnego | Dokumentacja firmy Microsoft
 description: Przed ponownej ochrony maszyny wirtualnej systemu Linux, należy Linux głównego serwera docelowego. Dowiedz się, jak zainstalować jedną.
-services: site-recovery
-documentationcenter: ''
 author: nsoneji
-manager: gauravd
 ms.service: site-recovery
-ms.topic: article
-ms.date: 05/08/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: nisoneji
-ms.openlocfilehash: 4d28a9a840b25ea415021da149ab145836cbed28
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 338a104de6fadeff842e6e135db395758c8f8dce
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802514"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285937"
 ---
 # <a name="install-a-linux-master-target-server"></a>Zainstaluj serwer główny cel systemu Linux
 Po przejścia w tryb failover maszyn wirtualnych na platformie Azure, możesz w trybie wstecz maszyn wirtualnych do lokacji lokalnej. Aby wykonaj powrót po awarii, musisz Włącz ponownie ochronę maszyny wirtualnej z platformy Azure do lokacji lokalnej. W przypadku tego procesu należy lokalny główny serwer docelowy do odbierania ruchu. 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 51912bab0a038e99ecf77b8012c4087b029d4508
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 9ade63c07003ead55e63093ae74e876589ec8d61
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264344"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287841"
 ---
 # <a name="create-view-and-manage-alerts-using-azure-monitor"></a>Utwórz, Wyświetl, alerty i zarządzaj nimi za pomocą monitora Azure  
 
@@ -148,7 +148,13 @@ Aby uzyskać **alerty dziennika** alerty mogą być oparte na:
 2. **Pulpitu nawigacyjnego alerty** wyświetleniem - którym unified i wyświetlane w liczbie pojedynczej tablicy wszystkie alerty Azure ![alertu pulpitu nawigacyjnego](./media/monitoring-alerts-unified-usage/alerts-preview-overview.png)
 3. Z góry od lewej do prawej pulpit nawigacyjny zawiera jeden rzut oka, następujące — które można kliknąć, aby wyświetlić listę szczegółowe:
     - *Alerty generowane*: Liczba aktualnie, alerty, które zostały spełnione logiki i w uruchamiany stanu
-    - *Łączna liczba reguł alertów*: liczba alertów reguł utworzonych i w subtext, liczba, która jest włączona
+    - *Łączna liczba reguł alertów*: liczba alertów reguł utworzonych i w subtext, liczba, która jest włączona 
+    
+
+        > [!NOTE]
+        > Aby zapewnić spójne pulpitu nawigacyjnego ze szczegółami wszystkie wywoływane alerty, między innymi alertów dziennika dla usługi application insights i analizy dzienników; [Rozszerzony ujednoliconego alert (wersja zapoznawcza)](monitoring-overview-unified-alerts.md#enhanced-unified-alerts-public-preview) powinien być używany
+  
+  
 4. Lista wszystkich alertów wypalane jest wyświetlany, które użytkownik może kliknąć, aby wyświetlić szczegóły
 5. Nawiąże w określonych znajdowanie alertów; jeden, można użyć opcji listy rozwijanej na górze do filtrowania określonych *subskrypcji, grupy zasobów i/lub zasób*. Dalsze dla żadnego nierozpoznane alertów, użyj jednego *alert filtru* opcję, aby znaleźć podane słowo kluczowe — konkretnych alertów zgodnego z *nazwy, Alert kryteria, grupy zasobów oraz zasób docelowy*
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 061269050ad598e1877c3b7bc6745d4095816020
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: f11db2009328118dda036057918ba853f5032200
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301222"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293527"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Monitorowanie stanu, konfigurowanie rejestrowania diagnostyki i Włącz alerty dla usługi Azure Logic Apps
 
@@ -118,19 +118,11 @@ Aby znaleźć i wyświetlić zdarzenia w aplikacji logiki, takie jak wyzwolenia 
 
    ![Wybierz obszar roboczy analizy dzienników](media/logic-apps-monitor-your-logic-apps/selectla.png)
 
-3. W obszarze **zarządzania**, wybierz **portalu OMS**.
+3. W obszarze **zarządzania**, wybierz **wyszukiwania dziennika**.
 
-   ![Wybierz pozycję "Portalu OMS"](media/logic-apps-monitor-your-logic-apps/omsportalpage.png)
+   ![Wybierz pozycję "Dziennik wyszukiwania"](media/logic-apps-monitor-your-logic-apps/log-search.png)
 
-4. Na stronie głównej wybierz **wyszukiwania dziennika**.
-
-   ![Na stronie głównej wybierz pozycję "Dziennik wyszukiwania"](media/logic-apps-monitor-your-logic-apps/logsearch.png)
-
-   — lub —
-
-   ![W menu wybierz "Dziennik wyszukiwania"](media/logic-apps-monitor-your-logic-apps/logsearch-2.png)
-
-5. W polu wyszukiwania określ pola, które chcesz odnaleźć, a następnie naciśnij klawisz **Enter**. Po rozpoczęciu wprowadzania, zobacz możliwe dopasowania i operacje, które są dostępne. 
+4. W polu wyszukiwania określ pola, które chcesz odnaleźć, a następnie naciśnij klawisz **Enter**. Po rozpoczęciu wprowadzania, zobacz możliwe dopasowania i operacje, które są dostępne. 
 
    Na przykład, aby znaleźć zdarzenia pierwszych 10, które wystąpiły, wprowadź i wybierz tego zapytania wyszukiwania: **wyszukiwania kategorii == "WorkflowRuntime" | ograniczyć 10**
 
@@ -138,27 +130,27 @@ Aby znaleźć i wyświetlić zdarzenia w aplikacji logiki, takie jak wyzwolenia 
 
    Dowiedz się więcej o [jak wyszukiwania danych analizy dzienników](../log-analytics/log-analytics-log-searches.md).
 
-6. Na stronie wyników na pasku po lewej stronie Wybierz przedział czasu, który chcesz wyświetlić.
+5. Na stronie wyników na pasku po lewej stronie Wybierz przedział czasu, który chcesz wyświetlić.
 Aby zawęzić kwerendę, dodając filtr, wybierz **+ Dodaj**.
 
    ![Wybierz przedział czasu dla wyników zapytania](media/logic-apps-monitor-your-logic-apps/query-results.png)
 
-7. W obszarze **Dodaj filtry**, wprowadź nazwę filtru, aby umożliwić znalezienie filtr ma. Wybierz filtr, a następnie wybierz pozycję **+ Dodaj**.
+6. W obszarze **Dodaj filtry**, wprowadź nazwę filtru, aby umożliwić znalezienie filtr ma. Wybierz filtr, a następnie wybierz pozycję **+ Dodaj**.
 
    W tym przykładzie użyto słowa "status" do znalezienia zdarzeń nie powiodło się w obszarze **AzureDiagnostics**.
    Tutaj filtr dla **status_s** jest już wybrana.
 
    ![Wybierz filtr](media/logic-apps-monitor-your-logic-apps/log-search-add-filter.png)
 
-8. Na pasku po lewej stronie wybierz wartości filtru, który chcesz użyć, a następnie wybierz pozycję **Zastosuj**.
+7. Na pasku po lewej stronie wybierz wartości filtru, który chcesz użyć, a następnie wybierz pozycję **Zastosuj**.
 
    ![Wybierz wartości filtru, wybierz polecenie "Zastosuj"](media/logic-apps-monitor-your-logic-apps/log-search-apply-filter.png)
 
-9. Teraz wróć do zapytania, które tworzysz. Zapytanie jest aktualizowana z wybranego filtru i wartość. Poprzednie wyniki teraz są zbyt filtrowane.
+8. Teraz wróć do zapytania, które tworzysz. Zapytanie jest aktualizowana z wybranego filtru i wartość. Poprzednie wyniki teraz są zbyt filtrowane.
 
    ![Wróć do filtrowane wyniki zapytania](media/logic-apps-monitor-your-logic-apps/log-search-query-filtered-results.png)
 
-10. Aby zapisać kwerendę do użycia w przyszłości, należy wybrać **zapisać**. Dowiedz się [jak zapisać zapytanie](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md#save-oms-query).
+9. Aby zapisać kwerendę do użycia w przyszłości, należy wybrać **zapisać**. Dowiedz się [jak zapisać zapytanie](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md#save-oms-query).
 
 <a name="extend-diagnostic-data"></a>
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: jeedes
-ms.openlocfilehash: e8295d7cba023697e803bce2d8a321a943761f2a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: bb2d6194b5a515d89e3204679860ab19a052ba03
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222910"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285168"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-datahug"></a>Samouczek: Integracji Azure Active Directory z Datahug
 
@@ -240,7 +240,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 ### <a name="testing-single-sign-on"></a>Testowanie rejestracji jednokrotnej
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
-Po kliknięciu kafelka Datahug w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji Datahug. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](https://msdn.microsoft.com/library/dn308586). 
+Po kliknięciu kafelka Datahug w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji Datahug. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 

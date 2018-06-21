@@ -1,6 +1,6 @@
 ---
-title: Wbudowane role do kontroli dostępu opartej na rolach (RBAC) na platformie Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano wbudowanych ról dla kontroli dostępu opartej na rolach (RBAC) na platformie Azure. Zawiera listę działań i notActions.
+title: Wbudowane role na platformie Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano wbudowanych ról dla kontroli dostępu opartej na rolach (RBAC) na platformie Azure. Zawiera listę działań, notActions, dataActions i notDataActions.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 06/06/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: cea928d5a4ea5cddaa9942c9535945e11f0f80ad
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 861b4ca360ef3fb9bc752d79009570ee2cfc9ade
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267377"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294500"
 ---
-# <a name="built-in-roles-for-azure-role-based-access-control"></a>Role wbudowane dla kontroli dostępu opartej na rolach na platformie Azure
+# <a name="built-in-roles-in-azure"></a>Wbudowane role na platformie Azure
 [Kontrola dostępu oparta na rolach (RBAC)](overview.md) ma kilka definicji wbudowanych ról, które można przypisać do użytkowników, grup i nazwy główne usług. Przypisania ról są sposób kontrolowania dostępu do zasobów na platformie Azure. Jeśli wbudowane role nie spełnienia specyficznych potrzeb Twojej organizacji, możesz utworzyć własne [role niestandardowe](custom-roles.md).
 
 Zawsze ewoluuje wbudowane role. Aby uzyskać najnowsze definicje ról, należy użyć [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) lub [listy definicji roli az](/cli/azure/role/definition#az-role-definition-list).
@@ -39,7 +39,7 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 | [AcrImageSigner](#acrimagesigner) | osoba podpisująca obraz ACR |
 | [AcrQuarantineReader](#acrquarantinereader) | czytnik danych kwarantanny ACR |
 | [AcrQuarantineWriter](#acrquarantinewriter) | moduł zapisywania danych kwarantanny ACR |
-| [Interfejs API zarządzania usługi współautora](#api-management-service-contributor) | Może zarządzać usługą i interfejsami API |
+| [Interfejs API zarządzania usługi współautora](#api-management-service-contributor) | Można zarządzać usług i interfejsów API |
 | [Rola operatora usługi zarządzania interfejsu API](#api-management-service-operator-role) | Może zarządzać usługą, lecz nie interfejsami API |
 | [Interfejs API zarządzania usługi czytnika roli](#api-management-service-reader-role) | Dostęp tylko do odczytu do usługi i interfejsów API |
 | [Application Insights składnika współautora](#application-insights-component-contributor) | Umożliwia zarządzanie składnikami usługi Application Insights |
@@ -63,10 +63,10 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 | [Współautor klasyczne maszyny wirtualnej](#classic-virtual-machine-contributor) | Umożliwia zarządzanie klasycznymi maszynami wirtualnymi, ale nie dostęp do nich ani do sieci wirtualnych i konta magazynu, z którymi są połączone. |
 | [Współautor ClearDB MySQL bazy danych](#cleardb-mysql-db-contributor) | Umożliwia zarządzanie bazami danych ClearDB MySQL, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Rozwiązania cosmos bazy danych konta czytnik roli](#cosmos-db-account-reader-role) | Można odczytać danych konta bazy danych Azure rozwiązania Cosmos. Zobacz [współautora konta usługi DocumentDB](#documentdb-account-contributor) do zarządzania kontami bazy danych Azure rozwiązania Cosmos. |
-| [Współautor fabryki danych](#data-factory-contributor) | Tworzenie fabryk danych i zawartych w nich zasobów podrzędnych oraz zarządzanie nimi. |
+| [Współautor fabryki danych](#data-factory-contributor) | Utwórz i Zarządzaj fabryk danych, jak również zasoby podrzędne w nich. |
 | [Data Lake Analytics Developer](#data-lake-analytics-developer) | Umożliwia przesyłanie własnych zadań, monitorowanie ich i zarządzanie nimi, ale nie tworzenie ani usuwanie kont usługi Data Lake Analytics. |
-| [Purger danych](#data-purger) | Przeczyścić dane analityczne |
-| [DevTest Labs użytkownika](#devtest-labs-user) | Umożliwia łączenie, uruchamianie, ponowne uruchamianie i zamykanie maszyn wirtualnych w usłudze Azure DevTest Labs. |
+| [Purger danych](#data-purger) | Może czyścić dane analizy |
+| [DevTest Labs użytkownika](#devtest-labs-user) | Pozwala połączyć, start, ponowne uruchamiania i zamykania maszyn wirtualnych w sieci Azure DevTest Labs. |
 | [Współautor strefy DNS](#dns-zone-contributor) | Umożliwia zarządzanie strefami DNS i zestawami rekordów w usłudze Azure DNS, ale nie zapewnia kontroli dostępu do nich. |
 | [Współautor konta usługi DocumentDB](#documentdb-account-contributor) | Można zarządzać kontami bazy danych Azure rozwiązania Cosmos. Azure DB rozwiązania Cosmos jest znanego wcześniej jako usługi DocumentDB. |
 | [Współautor konta systemów inteligentnych](#intelligent-systems-account-contributor) | Umożliwia zarządzanie kontami usługi Intelligent Systems, ale nie umożliwia uzyskiwania do nich dostępu. |
@@ -178,7 +178,7 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Może zarządzać usługą i interfejsami API |
+> | **Opis** | Można zarządzać usług i interfejsów API |
 > | **Identyfikator** | 312a565d-c81f-4fd8-895a-4e21e48d571c |
 > | **Akcje** |  |
 > | Microsoft.ApiManagement/service/* | Tworzenie i zarządzanie nimi usługi Zarządzanie interfejsami API |
@@ -660,7 +660,7 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Tworzenie fabryk danych i zawartych w nich zasobów podrzędnych oraz zarządzanie nimi. |
+> | **Opis** | Utwórz i Zarządzaj fabryk danych, jak również zasoby podrzędne w nich. |
 > | **Identyfikator** | 673868aa-7521-48A0-acc6-0f60742d39f5 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Role odczytu i przypisania roli |
@@ -703,11 +703,11 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 > | Microsoft.DataLakeAnalytics/accounts/computePolicies/Write | Utwórz lub zaktualizuj zasady obliczeń. |
 > | Microsoft.DataLakeAnalytics/accounts/computePolicies/Delete | Usuń zasady obliczeń. |
 
-## <a name="data-purger"></a>Purger danych
+## <a name="data-purger"></a>Oczyszczacz danych
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Przeczyścić dane analityczne |
+> | **Opis** | Może czyścić dane analizy |
 > | **Identyfikator** | 150f5e0c-0603-4f03-8c7f-cf70034c4e90 |
 > | **Akcje** |  |
 > | Microsoft.Insights/components/*/read |  |
@@ -719,7 +719,7 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Umożliwia łączenie, uruchamianie, ponowne uruchamianie i zamykanie maszyn wirtualnych w usłudze Azure DevTest Labs. |
+> | **Opis** | Pozwala połączyć, start, ponowne uruchamiania i zamykania maszyn wirtualnych w sieci Azure DevTest Labs. |
 > | **Identyfikator** | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Role odczytu i przypisania roli |
@@ -1110,7 +1110,7 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 > | Microsoft.Security/policies/write | Aktualizacje zasad zabezpieczeń |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 
-## <a name="security-manager-legacy"></a>Menedżer zabezpieczeń (starsza wersja)
+## <a name="security-manager-legacy"></a>Menedżer zabezpieczeń (starsze)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |

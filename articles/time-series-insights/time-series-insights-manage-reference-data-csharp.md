@@ -3,7 +3,7 @@ title: Zarządzanie danymi odwołania w środowisku Azure czas serii Insights pr
 description: W tym artykule opisano sposób zarządzania danych referencyjnych do środowiska Azure czas serii Insights przez tworzenie niestandardowych aplikacji napisanych w języku C# (c sharp) platformy .NET.
 ms.service: time-series-insights
 services: time-series-insights
-author: venkatgct
+author: ashannon7
 ms.author: venkatja
 manager: jhubbard
 ms.reviewer: jasonh, kfile, anshan
@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/23/2018
-ms.openlocfilehash: 6cbc95f3af1fc65967248d0b1e8501498a4be68c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0bb216e8be98b0ee795176a6d3ca9ed73baad231
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652893"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294128"
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Zarządzanie danymi odwołania dla środowiska Azure czas serii Insights przy użyciu języka C#
 

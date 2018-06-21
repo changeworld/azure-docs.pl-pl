@@ -1,6 +1,6 @@
 ---
 title: Użyć emulatora magazynu Azure do programowania i testowania | Dokumentacja firmy Microsoft
-description: Emulatora magazynu Azure udostępnia wolnego lokalne Środowisko deweloperskie do tworzenia i testowania aplikacji usługi Azure Storage. Dowiedz się, sposób uwierzytelniania żądań, sposób nawiązywania połączenia z emulatora z aplikacji i jak używać narzędzia wiersza polecenia.
+description: Emulatora magazynu Azure udostępnia wolnego lokalne Środowisko deweloperskie do tworzenia i testowania aplikacji usługi Azure Storage. Dowiedz się, jak żądania są autoryzowane, sposób nawiązywania połączenia z emulatora z aplikacji i jak używać narzędzia wiersza polecenia.
 services: storage
 author: tamram
 manager: jeconnoc
@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: tamram
-ms.openlocfilehash: c16bf1e750ea059e663e05c91835884eb0bc54a5
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
-ms.translationtype: HT
+ms.openlocfilehash: c6500cd1ddd31d789b8cd5d72d6e4614db3f88db
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34305110"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295589"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Użyć emulatora magazynu Azure do programowania i testowania
 
@@ -81,14 +81,14 @@ Aby uzyskać więcej informacji na temat tych poleceń, zobacz [odwołanie do na
 > Można użyć [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS), aby zarządzać wystąpień programu SQL Server, w tym zainstalowanie LocalDB. W Menedżer SMSS **Połącz z serwerem** okna dialogowego, określ `(localdb)\MSSQLLocalDb` w **nazwa serwera:** pola, aby połączyć się z wystąpieniem LocalDB.
 
 ## <a name="authenticating-requests-against-the-storage-emulator"></a>Uwierzytelniania żądań dotyczących emulator magazynu
-Po zainstalowaniu i uruchomiony emulator magazynu, można przetestować kod na nim. Podobnie jak w przypadku usługi Azure Storage w chmurze, każde żądanie, wprowadzone dla emulatora magazynu musi zostać uwierzytelniony, chyba że jest żądania od użytkowników anonimowych. Może uwierzytelnić żądania dla emulatora magazynu przy użyciu uwierzytelniania klucza współużytkowanego lub za pomocą sygnatury dostępu współdzielonego (SAS).
+Po zainstalowaniu i uruchomiony emulator magazynu, można przetestować kod na nim. Podobnie jak w przypadku usługi Azure Storage w chmurze, każde żądanie, wprowadzone dla emulatora magazynu muszą być autoryzowane, chyba że jest żądania od użytkowników anonimowych. Można autoryzować żądania dla emulatora magazynu przy użyciu uwierzytelniania klucza współużytkowanego lub za pomocą sygnatury dostępu współdzielonego (SAS).
 
-### <a name="authenticate-with-shared-key-credentials"></a>Uwierzytelnianie przy użyciu poświadczeń klucz wstępny
+### <a name="authorize-with-shared-key-credentials"></a>Autoryzacji przy użyciu poświadczeń klucz wstępny
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
 
 Aby uzyskać więcej informacji na parametry połączenia, zobacz [parametry połączenia Konfigurowanie usługi Azure Storage](../storage-configure-connection-string.md).
 
-### <a name="authenticate-with-a-shared-access-signature"></a>Uwierzytelniania za pomocą sygnatury dostępu współdzielonego
+### <a name="authorize-with-a-shared-access-signature"></a>Autoryzacja sygnatury dostępu współdzielonego
 Niektóre biblioteki klienta magazynu Azure, takiej jak biblioteka Xamarin obsługuje tylko uwierzytelnianie za pomocą tokenu sygnatury dostępu Współdzielonego dostępu współdzielonego. Możesz utworzyć token sygnatury dostępu Współdzielonego przy użyciu narzędzia, takiego jak [Eksploratora usługi Storage](http://storageexplorer.com/) lub innej aplikacji, która obsługuje uwierzytelnianie klucza wspólnego.
 
 Można również generować tokenu sygnatury dostępu Współdzielonego przy użyciu programu Azure PowerShell. Poniższy przykład generuje token SAS z pełnymi uprawnieniami do kontenera obiektów blob:
@@ -204,12 +204,23 @@ Następujące różnice dotyczą magazynu tabel w emulatorze:
 Nie ma żadnych różnic specyficzne dla magazynu kolejek w emulatorze.
 
 ## <a name="storage-emulator-release-notes"></a>Informacje o wersji emulatora magazynu
+
+### <a name="version-55"></a>W wersji 5.5
+* Emulator magazynu obsługuje teraz 2017-11-09 wersji usług magazynu dla punktów końcowych usługi obiektów Blob, kolejki i tabeli.
+* Dodano obsługę dla obiektu blob **utworzony** właściwość, która zwraca czas utworzenia obiektu blob.
+
+### <a name="version-54"></a>W wersji 5.4
+Aby poprawić stabilność instalacji, emulator próbuje już zarezerwować portów w czasie instalacji. W razie potrzeby są rezerwacji portu można używać *- reserveports* opcji **init** polecenie, aby je określić.
+
+### <a name="version-53"></a>W wersji 5.3
+Emulator magazynu obsługuje teraz 2017-07-29 wersji usług magazynu dla punktów końcowych usługi obiektów Blob, kolejki i tabeli.
+
 ### <a name="version-52"></a>W wersji 5.2
 * Emulator magazynu obsługuje teraz 2017-04-17 wersji usług magazynu dla punktów końcowych usługi obiektów Blob, kolejki i tabeli.
 * Stałe usterki, których wartości właściwości tabeli zostały nie jest poprawnie zaszyfrowana.
 
 ### <a name="version-51"></a>W wersji 5.1
-* Stałej usterki, gdzie został zwracanie emulator magazynu `DataServiceVersion` nagłówka w niektórych odpowiedzi, gdy usługa nie była.
+Stałej usterki, gdzie został zwracanie emulator magazynu `DataServiceVersion` nagłówka w niektórych odpowiedzi, gdy usługa nie była.
 
 ### <a name="version-50"></a>W wersji 5.0
 * Instalator emulatora magazynu nie sprawdza, czy istniejące MSSQL i instaluje .NET Framework.

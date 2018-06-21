@@ -1,3 +1,3 @@
-## <a name="create-a-web-app"></a>Tworzenie aplikacji sieci Web
+## <a name="create-a-web-app"></a>Utwórz aplikację internetową
 
 [!INCLUDE [web-app-no-h](app-service-web-create-web-app-no-h.md)]

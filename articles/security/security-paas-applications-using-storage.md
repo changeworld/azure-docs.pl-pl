@@ -12,39 +12,41 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 06/20/2018
 ms.author: TomShinder
-ms.openlocfilehash: 9d4251e61b60d8da6ce5072ba66aeaedb60cb33a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ffc04973a003c65f52f3387292f11fede65edce3
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31418224"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295299"
 ---
 # <a name="securing-paas-web-and-mobile-applications-using-azure-storage"></a>Zabezpieczanie PaaS w sieci web i aplikacji dla urządzeń przenośnych przy użyciu usługi Azure Storage
+
 W tym artykule omówiono kolekcję usługi Azure Storage zabezpieczeń najlepsze rozwiązania dotyczące zabezpieczania PaaS w sieci web i aplikacji dla urządzeń przenośnych. Następujące najlepsze rozwiązania są uzyskiwane z wiemy z doświadczenia z platformy Azure i doświadczenia klientów, takie jak samodzielnie.
 
 [Przewodnik zabezpieczeń usługi Azure Storage](../storage/common/storage-security-guide.md) jest doskonałym źródłem szczegółowe informacje dotyczące usługi Azure Storage i zabezpieczeń.  W tym artykule opisano na wysokim poziomie niektóre z pojęć w przewodniku po zabezpieczeniach i linki do innych źródeł, aby uzyskać więcej informacji, a także w przewodniku po zabezpieczeniach.
 
 ## <a name="azure-storage"></a>Azure Storage
+
 Azure umożliwia wdrażanie i sposoby używania magazynu lokalnego łatwo nieosiągalne. Z usługą Azure storage można osiągnąć wysoką skalowalność i dostępność o stosunkowo dużego wysiłku. Nie tylko stanowi podstawę magazynu Azure dla systemu Windows i maszyn wirtualnych systemu Linux platformy Azure, może również obsługiwać dużych aplikacji rozproszonej.
 
 Magazyn Azure obejmuje cztery następujące usługi: Magazyn obiektów Blob, Magazyn tabel, Magazyn kolejek i Magazyn plików. Aby dowiedzieć się więcej, zobacz [wprowadzenie do usługi Microsoft Azure Storage](../storage/storage-introduction.md).
 
 ## <a name="best-practices"></a>Najlepsze praktyki
+
 W tym artykule opisano następujące najlepsze rozwiązania:
 
 - Ochrona dostępu do:
    - Sygnatury dostępu współdzielonego (SAS)
-   - Dysk zarządzany
    - Kontrola dostępu oparta na rolach (RBAC)
 
 - Szyfrowanie magazynu:
    - Szyfrowanie po stronie klienta dla danych wysokiej wartości.
-   - Szyfrowanie dysków Azure maszynach wirtualnych (VM)
    - Szyfrowanie usługi Storage
 
 ## <a name="access-protection"></a>Ochrona dostępu do
+
 ### <a name="use-shared-access-signature-instead-of-a-storage-account-key"></a>Użyj sygnatura dostępu współdzielonego zamiast klucz konta magazynu
 
 W rozwiązaniu IaaS, zazwyczaj uruchomionych maszyn wirtualnych systemu Windows Server lub Linux pliki są chronione przed ujawnieniem oraz manipulacją zagrożeń przy użyciu mechanizmy kontroli dostępu. W systemie Windows można użyć [(ACL). listy kontroli dostępu](../virtual-network/virtual-networks-acl.md) i w systemie Linux prawdopodobnie użyje [chmod](https://en.wikipedia.org/wiki/Chmod). Zasadniczo jest dokładnie co może zrobić, jeśli zostały ochrona plików na serwerze w centrum danych dzisiaj.
@@ -66,12 +68,6 @@ Sygnatury dostępu Współdzielonego pozwala na udostępnianie zawartości w tak
 
 Aby dowiedzieć się więcej, zobacz [przy użyciu sygnatury dostępu współdzielonego](../storage/common/storage-dotnet-shared-access-signature-part-1.md) (SAS). Aby dowiedzieć się więcej na temat potencjalnego ryzyka i zalecenia dotyczące ich eliminowania, zobacz [najlepszych rozwiązań przy użyciu sygnatury dostępu Współdzielonego](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
-### <a name="use-managed-disks-for-vms"></a>Użyj zarządzanego dyski dla maszyn wirtualnych
-
-Po wybraniu [dysków zarządzanych Azure](../storage/storage-managed-disks-overview.md), Azure zarządza kontami magazynu, których używasz dla dysków maszyny Wirtualnej. To wszystko, co należy zrobić, wybierz typ dysku (Premium lub Standard) i rozmiar dysku. Usługa Azure storage wykona resztę. Nie trzeba martwić limity skalowalności, które mogą w przeciwnym razie ma wymagane do użytkownika do wielu kont magazynu.
-
-Aby dowiedzieć się więcej, zobacz [— często zadawane pytania o zarządzanych i niezarządzanych dyski premium](../storage/storage-faq-for-disks.md).
-
 ### <a name="use-role-based-access-control"></a>Za pomocą kontroli dostępu opartej na rolach
 
 Wcześniej wspomniano, aby przyznać ograniczony dostęp do obiektów na koncie magazynu innym klientom bez narażania klucz konta magazynu konta przy użyciu dostępu sygnatury dostępu Współdzielonego. Czasami ryzyko związane z określoną operację względem konta magazynu przeważają korzyści wynikające z sygnatury dostępu Współdzielonego. Czasami jest łatwiejsze zarządzanie dostępem w inny sposób.
@@ -89,6 +85,7 @@ Aby dowiedzieć się więcej o RBAC, zobacz:
 - [Przewodnik po zabezpieczeniach magazynu Azure](../storage/common/storage-security-guide.md) szczegółowe informacje na temat sposobu zabezpieczenia konta magazynu o RBAC
 
 ## <a name="storage-encryption"></a>Szyfrowanie w usłudze Storage
+
 ### <a name="use-client-side-encryption-for-high-value-data"></a>Użyj szyfrowania po stronie klienta danych wysokiej wartości.
 
 Szyfrowanie po stronie klienta umożliwia programowo szyfrowania przesyłanych danych przed przekazaniem do usługi Azure Storage i programowo odszyfrowywania danych podczas pobierania go z magazynu.  Zapewnia szyfrowanie danych podczas przesyłania, ale również zapewnia szyfrowanie danych magazynowanych.  Szyfrowanie po stronie klienta jest najbezpieczniejszą metodą szyfrowania danych, ale wymaga zmiany programowy do aplikacji i wprowadzenia procesy zarządzania kluczami.
@@ -97,15 +94,12 @@ Szyfrowanie po stronie klienta umożliwia również wyłączną kontrolę kluczy
 
 Szyfrowanie po stronie klienta jest wbudowana w języku Java i biblioteki klienta magazynu .NET.  Zobacz [szyfrowania po stronie klienta i usługi Azure Key Vault dla magazynu Microsoft Azure](../storage/storage-client-side-encryption.md) informacji na temat szyfrowania danych w aplikacjach klienckich i generowania i zarządzanie kluczy szyfrowania.
 
-### <a name="azure-disk-encryption-for-vms"></a>Szyfrowanie dysków Azure dla maszyn wirtualnych
-Szyfrowanie dysków Azure jest możliwość, która pomaga szyfrowania dysków maszyny wirtualnej systemu Windows i Linux IaaS. Szyfrowanie dysków Azure korzysta z branży funkcje BitLocker standardowych systemu Windows i DM-Crypt systemu Linux w celu zapewnienia szyfrowania woluminów systemu operacyjnego i dysków z danymi. Rozwiązanie jest zintegrowany z usługą Azure Key Vault ułatwia kontrolowanie i zarządzanie nimi klucze szyfrowania dysku i kluczy tajnych w magazynie kluczy subskrypcji. Rozwiązanie zapewnia również, że wszystkie dane na dyskach maszyny wirtualnej są szyfrowane, gdy w magazynie Azure.
-
-Zobacz [szyfrowania dysków Azure dla systemu Windows oraz maszyny wirtualne systemu Linux IaaS](azure-security-disk-encryption.md).
-
 ### <a name="storage-service-encryption"></a>Szyfrowanie usługi Storage
+
 Gdy [szyfrowanie usługi Magazyn](../storage/storage-service-encryption.md) magazyn plików jest włączona, dane są szyfrowane automatycznie przy użyciu szyfrowania AES 256. Firma Microsoft podchodzi do szyfrowania, odszyfrowywania i zarządzania kluczami. Ta funkcja jest dostępna dla typów nadmiarowość LRS i GRS.
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 W tym artykule wprowadzona w kolekcji usługi Azure Storage zabezpieczeń najlepsze rozwiązania dotyczące zabezpieczania PaaS w sieci web i aplikacji dla urządzeń przenośnych. Aby dowiedzieć się więcej na temat zabezpieczania wdrożeń typu PaaS, zobacz:
 
 - [Zabezpieczanie wdrożeń typu PaaS](security-paas-deployments.md)

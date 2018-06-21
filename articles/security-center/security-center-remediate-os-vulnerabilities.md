@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2018
+ms.date: 06/19/2018
 ms.author: terrylan
-ms.openlocfilehash: 477973298d8cc9d99da78e36274933e0bb737c4f
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 3af8f211c19fde9d2fc79f41fc13009570a9b4de
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2018
-ms.locfileid: "28103935"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285920"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Korygowanie konfiguracjach zabezpieczeń w Centrum zabezpieczeń Azure
 Centrum zabezpieczeń Azure codziennie analizuje systemu operacyjnego (OS), maszynach wirtualnych (VM) i na komputerach w konfiguracji, który można utworzyć maszyny wirtualne i bardziej narażony na ataki. Centrum zabezpieczeń zaleca Rozwiąż luk w zabezpieczeniach w przypadku konfiguracji systemu operacyjnego jest niezgodny z reguły konfiguracji zabezpieczeń i zaleca zmiany konfiguracji, aby rozwiązać te luki w zabezpieczeniach.
@@ -51,7 +51,7 @@ W tym przykładzie przedstawiono zalecenia "Skorygować konfiguracjach zabezpiec
 
   - **CCEID**: CCE Unikatowy identyfikator reguły. Centrum zabezpieczeń używane typowych konfiguracji wyliczenie CCE () do przypisywania unikatowych identyfikatorów do reguły konfiguracji.
   - **Nazwa**: Nazwa reguły nie powiodło się.
-  - **Typ reguły**: *klucza rejestru*, *zasady zabezpieczeń*, lub *zasady inspekcji* typ reguły.
+  - **Typ reguły**: *klucza rejestru*, *zasady zabezpieczeń*, *zasady inspekcji*, lub *IIS* typ reguły.
   - **Nie. maszyny wirtualne i komputerach**: Całkowita liczba maszyn wirtualnych i komputery, których dotyczy reguła nie powiodło się.
   - **Reguły ważność**: wartość CCE *krytyczny*, *ważne*, lub *ostrzeżenie*.
   - **Stan**: bieżący stan zalecenia:
@@ -100,10 +100,10 @@ Aby przejrzeć konkretnych konfiguracji, które są monitorowane, zobacz [lista 
 
 Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące zasoby:
 
-* Aby uzyskać listę obsługiwanych systemu Windows i maszyn wirtualnych systemu Linux, zobacz [obsługiwanych platform w Centrum zabezpieczeń Azure](security-center-os-coverage.md). 
-* Aby dowiedzieć się, jak skonfigurować zasady zabezpieczeń dla subskrypcji platformy Azure i grup zasobów, zobacz [Ustawianie zasad zabezpieczeń w Centrum zabezpieczeń Azure](security-center-policies.md). 
-* Aby dowiedzieć się, w jaki sposób zalecenia ułatwiają ochronę zasobów platformy Azure, zobacz [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Centrum zabezpieczeń Azure](security-center-recommendations.md). 
-* Informacje na temat monitorowania kondycji zasobów platformy Azure, zobacz [monitorowanie kondycji zabezpieczeń w Centrum zabezpieczeń Azure](security-center-monitoring.md). 
+* Aby uzyskać listę obsługiwanych systemu Windows i maszyn wirtualnych systemu Linux, zobacz [obsługiwanych platform w Centrum zabezpieczeń Azure](security-center-os-coverage.md).
+* Aby dowiedzieć się, jak skonfigurować zasady zabezpieczeń dla subskrypcji platformy Azure i grup zasobów, zobacz [Ustawianie zasad zabezpieczeń w Centrum zabezpieczeń Azure](security-center-policies.md).
+* Aby dowiedzieć się, w jaki sposób zalecenia ułatwiają ochronę zasobów platformy Azure, zobacz [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Centrum zabezpieczeń Azure](security-center-recommendations.md).
+* Informacje na temat monitorowania kondycji zasobów platformy Azure, zobacz [monitorowanie kondycji zabezpieczeń w Centrum zabezpieczeń Azure](security-center-monitoring.md).
 * Informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi, zobacz [reagowanie na alerty zabezpieczeń w Centrum zabezpieczeń Azure i zarządzanie nimi](security-center-managing-and-responding-alerts.md).
 * Aby dowiedzieć się, jak monitorować stan kondycji rozwiązań partnerskich, zobacz [monitorowanie rozwiązań partnerskich w Centrum zabezpieczeń Azure](security-center-partner-solutions.md).
 * Aby uzyskać odpowiedzi na często zadawane pytania dotyczące korzystania z usługi, zobacz [często zadawane pytania dotyczące usługi Azure Security Center](security-center-faq.md).

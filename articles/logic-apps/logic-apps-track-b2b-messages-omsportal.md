@@ -12,14 +12,14 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 06/19/2018
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 30e6adfe2a15598acceccc56160622f234af163a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 82d1fbc4167d1df4cb2c976395c181e4abd1ba3c
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299981"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293208"
 ---
 # <a name="track-b2b-communication-with-azure-log-analytics"></a>Śledzenie komunikacji B2B z usługi Analiza dzienników Azure
 
@@ -56,39 +56,31 @@ Aby analizy dzienników, śledzenie wiadomości B2B aplikacji logiki, należy do
 
    ![Wybierz obszar roboczy analizy dzienników](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
 
-3. W obszarze **zarządzania**, wybierz **portalu OMS**.
+3. W obszarze **zarządzania**, wybierz **omówienie**.
 
-   ![Wybierz portalu OMS](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
+   ![Wybierz portal analizy dzienników](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
 
-4. Po otwarciu strony głównej wybierz **galerii rozwiązań**.    
+4. Po otwarciu strony głównej wybierz **Dodaj** zainstalować rozwiązanie B2B aplikacji logiki.    
+   ![Wybierz galerii rozwiązań](media/logic-apps-track-b2b-messages-omsportal/add-b2b-solution.png)
 
-   ![Wybierz galerii rozwiązań](media/logic-apps-track-b2b-messages-omsportal/omshomepage1.png)
-
-5. W obszarze **wszystkie rozwiązania**, Znajdź i wybierz **B2B aplikacje logiki**.     
-
-   ![Wybierz B2B aplikacje logiki](media/logic-apps-track-b2b-messages-omsportal/omshomepage2.png)
-
-6. W obszarze **B2B aplikacje logiki**, wybierz **Dodaj**.
-
-   ![Wybierz opcję Dodaj](media/logic-apps-track-b2b-messages-omsportal/omshomepage3.png)
+5. W obszarze **rozwiązań do zarządzania**, znajdowanie i tworzenie **B2B aplikacje logiki** rozwiązania.     
+   ![Wybierz B2B aplikacje logiki](media/logic-apps-track-b2b-messages-omsportal/create-b2b-solution.png)
 
    Na stronie głównej Kafelek **wiadomości B2B aplikacje logiki** pojawi się teraz. 
    Ten Kafelek aktualizuje liczba komunikatów podczas przetwarzania wiadomości B2B.
-
-   ![Strona główna, kafelka wiadomości B2B aplikacje logiki](media/logic-apps-track-b2b-messages-omsportal/omshomepage4.png)
 
 <a name="message-status-details"></a>
 
 ## <a name="track-message-status-and-details-in-log-analytics"></a>Śledzenie stanu komunikat i szczegóły analizy dzienników
 
-1. Po przetworzeniu wiadomości B2B można wyświetlić stan i szczegółowe informacje dla tych wiadomości. Na stronie głównej wybierz **wiadomości B2B aplikacje logiki** kafelka.
+1. Po przetworzeniu wiadomości B2B można wyświetlić stan i szczegółowe informacje dla tych wiadomości. Na stronie Przegląd wybierz **wiadomości B2B aplikacje logiki** kafelka.
 
-   ![Liczba komunikatów zaktualizowane](media/logic-apps-track-b2b-messages-omsportal/omshomepage6.png)
+   ![Liczba komunikatów zaktualizowane](media/logic-apps-track-b2b-messages-omsportal/b2b-overview-tile.png)
 
    > [!NOTE]
    > Domyślnie **wiadomości B2B aplikacje logiki** kafelka zawiera dane oparte na jeden dzień. Aby zmienić zakres danych na inny interwał, wybierz kontrola zakresu w górnej części strony:
    > 
-   > ![Zmień zakres danych](media/logic-apps-track-b2b-messages-omsportal/change-interval.png)
+   > ![Zmień zakres danych](media/logic-apps-track-b2b-messages-omsportal/server-filter.png)
    >
 
 2. Po komunikat stanu pulpitu nawigacyjnego zostanie wyświetlony, można wyświetlić więcej szczegółów dla typu określonego komunikatu, która zawiera dane oparte na jeden dzień. Wybierz Kafelek **AS2**, **X12**, lub **EDIFACT**.

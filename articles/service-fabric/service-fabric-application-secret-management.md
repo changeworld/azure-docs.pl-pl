@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
 ms.author: vturecek
-ms.openlocfilehash: fa79d50d6ef2899dcaf4116dcfe8ac7fae077959
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 85eb1cd40986bd6fb83c80a274046bbae3756b7e
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212691"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295457"
 ---
 # <a name="manage-secrets-in-service-fabric-applications"></a>Zarządzanie kluczy tajnych w aplikacji sieci szkieletowej usług
 Ten przewodnik zawiera opis kroków związanych z zarządzaniem kluczy tajnych w aplikacji sieci szkieletowej usług. Klucze tajne można poufne informacje, takie jak parametry połączenia magazynu, hasła lub inne wartości, które nie powinny być traktowane w postaci zwykłego tekstu.
@@ -43,7 +43,7 @@ Certyfikat Szyfrowanie danych jest używane wyłącznie do szyfrowania i odszyfr
 Ten certyfikat należy zainstalować na każdym węźle w klastrze. Będzie on używany w czasie wykonywania można odszyfrować wartości przechowywane w pliku Settings.xml usługi. Zobacz [Tworzenie klastra przy użyciu usługi Azure Resource Manager] [ service-fabric-cluster-creation-via-arm] instrukcje instalacji. 
 
 ## <a name="encrypt-application-secrets"></a>Szyfrowanie hasła aplikacji
-W przypadku wdrażania aplikacji, tajne wartości przy użyciu certyfikatu szyfrowania i wstawić je do pliku konfiguracji Settings.xml usługi. Zestaw SDK sieci szkieletowej usług ma wbudowane funkcje tajny szyfrowania i odszyfrowywania. Tajny wartości może być szyfrowane w czasie zbudowany odszyfrować i programowo odczytać w kodzie usługi. 
+W przypadku wdrażania aplikacji, tajne wartości przy użyciu certyfikatu szyfrowania i wstawić je do pliku konfiguracji Settings.xml usługi. Zestaw SDK sieci szkieletowej usług ma wbudowane funkcje tajny szyfrowania i odszyfrowywania. Tajny wartości można być szyfrowane w czasie kompilacji odszyfrować i programowo odczytać w kodzie usługi. 
 
 Następujące polecenia programu PowerShell jest używany do szyfrowania klucza tajnego. To polecenie szyfruje wartości; robi **nie** zarejestrować tekst zaszyfrowany. Należy użyć tego samego certyfikatu szyfrowanie zainstalowanym w klastrze do produkcji tekstu szyfrowanego tajny wartości:
 

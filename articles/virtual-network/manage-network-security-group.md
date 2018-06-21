@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 22cf62f201b21f3035687b7f0f2ff07dc94f1a29
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: f2fe02a6e7e696fa2c0ab301e7469060d6bd4ab6
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658676"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295673"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Tworzenie, zmienianie lub usuwanie grupy zabezpieczeń sieci
 
@@ -39,7 +39,7 @@ Konta, zaloguj się do lub z usługą Azure z musi być przypisany do [współau
 
 ## <a name="work-with-network-security-groups"></a>Praca z sieciowymi grupami zabezpieczeń
 
-Można utworzyć [Wyświetl wszystkie](#view-all-network-security-groups), [szczegóły](#view-details-of-a-network-security-group), [zmienić](#change-a-network-security-group), i [usunąć](#delete-a-network-security-group) grupy zabezpieczeń sieci. Możesz również [skojarzyć lub usunąć skojarzenie](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource) sieciową grupę zabezpieczeń z interfejsu sieciowego lub podsieci.
+Można utworzyć [Wyświetl wszystkie](#view-all-network-security-groups), [szczegóły](#view-details-of-a-network-security-group), [zmienić](#change-a-network-security-group), i [usunąć](#delete-a-network-security-group) grupy zabezpieczeń sieci. Możesz również [skojarzyć lub usunąć skojarzenie](#associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface) sieciową grupę zabezpieczeń z interfejsu sieciowego lub podsieci.
 
 ### <a name="create-a-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
 
@@ -121,9 +121,9 @@ Istnieje limit liczby reguł na grupę zabezpieczeń sieci można utworzyć dla 
     
     |Ustawienie  |Wartość  |Szczegóły  |
     |---------|---------|---------|
-    |Element źródłowy     | Wybierz **żadnych**, **adresów IP**, lub **usługi tagu**.        | W przypadku wybrania **adresów IP**, wówczas musisz określić **źródłowy adres IP, zakresy adresów/CIDR**. Można określić pojedynczą wartością lub rozdzielaną przecinkami listę wielu wartości. Przykład wielu wartości to 10.0.0.0/16, 192.188.1.1. Brak ograniczeń dotyczących liczbę wartości, które można określić. Zobacz [Azure ogranicza](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) szczegółowe informacje. W przypadku wybrania **numer seryjny**, następnie należy wybrać jeden numer seryjny. Numer seryjny usługi jest identyfikatorem wstępnie zdefiniowanych kategorii adresów IP. Aby dowiedzieć się więcej na temat znaczników dostępność usług i reprezentuje tagami, zobacz [usługi tagów](security-overview.md#service-tags)        |
+    |Element źródłowy     | Wybierz **żadnych**, **adresów IP**, lub **usługi tagu**.        | W przypadku wybrania **adresów IP**, wówczas musisz określić **źródłowy adres IP, zakresy adresów/CIDR**. Można określić pojedynczą wartością lub rozdzielaną przecinkami listę wielu wartości. Przykład wielu wartości to 10.0.0.0/16, 192.188.1.1. Brak ograniczeń dotyczących liczbę wartości, które można określić. Zobacz [Azure ogranicza](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) szczegółowe informacje. W przypadku wybrania **numer seryjny**, następnie należy wybrać jeden numer seryjny. Numer seryjny usługi jest identyfikatorem wstępnie zdefiniowanych kategorii adresów IP. Aby dowiedzieć się więcej na temat znaczników dostępność usług i reprezentuje tagami, zobacz [usługi tagi](security-overview.md#service-tags). Jeśli adres IP, które określisz jest przypisany do maszyny wirtualnej platformy Azure, upewnij się, określ prywatnego adresu IP nie publiczny adres IP, jeśli przypisano publiczny adres IP do maszyny wirtualnej. Zasady zabezpieczeń są przetwarzane po Azure tłumaczy publiczny adres IP do prywatnego adresu IP dla reguł zabezpieczeń dla ruchu przychodzącego, ale przed Azure tłumaczy prywatnego adresu IP do publicznego adresu IP dla reguł ruchu wychodzącego. Aby dowiedzieć się więcej na temat publiczne i prywatne adresy IP na platformie Azure, zobacz [typów adresu IP](virtual-network-ip-addresses-overview-arm.md).        |
     |Zakresy portów źródłowych     | Określ pojedynczym portem, np. 80, zakres portów, np. 1024 – 65535 lub rozdzielaną przecinkami listę pojedynczego portów i/lub zakresów portów, np. 80, 1024 – 65 535. Wprowadź znak gwiazdki, aby zezwolić na ruch na dowolnym porcie. | Porty i zakresy należy określić, jaki ruch portów jest dozwolony lub odrzucany przez tę zasadę. Brak ograniczeń dotyczących liczbę portów, które można określić. Zobacz [Azure ogranicza](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) szczegółowe informacje.  |
-    |Element docelowy     | Wybierz **żadnych**, **adresów IP**, lub **sieci wirtualnej**.        | W przypadku wybrania **adresów IP**, wówczas musisz określić **docelowy adres IP, zakresy adresów/CIDR**. Podobnie jak **źródła** i **źródłowy adres IP, zakresy adresów/CIDR**, można określić jeden lub wiele adresy lub zakresy i istnieją ograniczenia do liczby można określić. Wybieranie **sieci wirtualnej**oznacza, że ruch jest dozwolony dla wszystkich adresów IP w przestrzeni adresowej sieci wirtualnej, która jest numer seryjny usługi.        |
+    |Element docelowy     | Wybierz **żadnych**, **adresów IP**, lub **sieci wirtualnej**.        | W przypadku wybrania **adresów IP**, wówczas musisz określić **docelowy adres IP, zakresy adresów/CIDR**. Podobnie jak **źródła** i **źródłowy adres IP, zakresy adresów/CIDR**, można określić jeden lub wiele adresy lub zakresy i istnieją ograniczenia do liczby można określić. Wybieranie **sieci wirtualnej**oznacza, że ruch jest dozwolony dla wszystkich adresów IP w przestrzeni adresowej sieci wirtualnej, która jest numer seryjny usługi. Jeśli adres IP, które określisz jest przypisany do maszyny wirtualnej platformy Azure, upewnij się, określ prywatnego adresu IP nie publiczny adres IP, jeśli przypisano publiczny adres IP do maszyny wirtualnej. Zasady zabezpieczeń są przetwarzane po Azure tłumaczy publiczny adres IP do prywatnego adresu IP dla reguł zabezpieczeń dla ruchu przychodzącego, ale przed Azure tłumaczy prywatnego adresu IP do publicznego adresu IP dla reguł ruchu wychodzącego. Aby dowiedzieć się więcej na temat publiczne i prywatne adresy IP na platformie Azure, zobacz [typów adresu IP](virtual-network-ip-addresses-overview-arm.md).        |
     |Zakresy portów docelowych     | Określ pojedynczą wartość lub listę wartości oddzielanych przecinkami. | Podobnie jak **źródła zakresy portów**, można określić jeden lub wiele porty i zakresy i istnieją ograniczenia do liczby można określić. |
     |Protokół     | Wybierz **żadnych**, **TCP**, lub **UDP**.        |         |
     |Akcja     | Wybierz **Zezwalaj** lub **odmowy**.        |         |

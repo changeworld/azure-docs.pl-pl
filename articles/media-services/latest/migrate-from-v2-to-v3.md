@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 05/22/2018
+ms.date: 06/12/2018
 ms.author: juliako
-ms.openlocfilehash: 4e644db12a74d6ef132a0c8d64ef517a0c2253cc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: a382af644d30f9f0ebb586273c982ef1766f50b0
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655630"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295687"
 ---
 # <a name="migrate-from-media-services-v2-to-v3"></a>Migrowanie z usługi Media Services w wersji 2 do 3
 
@@ -50,6 +50,10 @@ W tym artykule opisano zmiany, które zostały wprowadzone w usłudze Azure Medi
 
 ## <a name="changes-from-v2"></a>Zmiany w wersji 2
 
+* W wersji 3 usługi Media Services, szyfrowanie magazynu (szyfrowanie AES 256) jest tylko wykorzystywać dla zapewnienia zgodności z zasoby zostały utworzone za pomocą usługi Media Services w wersji 2. Co oznacza działa w wersji 3 z dotychczasowej pamięci masowej zaszyfrowany zasoby, ale nie zezwala na tworzenie nowych.
+
+    Dla zasobów tworzone za pomocą wersji 3, usługa Media Services obsługuje [usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) szyfrowania magazynu po stronie serwera.
+    
 * Zestawy SDK usługi Media całkowicie niezależna od zestawu SDK magazynu, który zapewnia większą kontrolę nad zestawu SDK usługi Magazyn używany i pozwala uniknąć problemów z kontroli wersji. 
 * W wersji 3 są wszystkie kodowania szybkości transmisji bitów w bitów na sekundę. To jest inny niż v2 REST, które ustawienia standardu Media Encoder Standard. Na przykład szybkości transmisji bitów w wersji 2 zostałaby określona jako 128, ale w wersji 3 byłoby 128000. 
 * IngestManifests AssetFiles, AccessPolicies, nie istnieją w wersji 3.
@@ -141,7 +145,7 @@ new Job {Input = jobInput, Outputs = jobOutputs});
 1. Tworzenie zasad klucza zawartości
 2. Tworzenie zasobu
 3. Przekaż zawartość lub Użyj zasobów jako JobOutput
-4. Utwórz Lokalizator
+4. Utwórz StreamingLocator
 
 ## <a name="next-steps"></a>Kolejne kroki
 

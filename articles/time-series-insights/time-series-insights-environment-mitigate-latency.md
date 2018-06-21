@@ -3,7 +3,7 @@ title: Jak monitorować i zmniejszenia przepustowości w usłudze Azure czas ser
 description: W tym artykule opisano, jak monitorowanie, diagnozowanie i ograniczyć problemy z wydajnością powodujących opóźnienia i ograniczania przepustowości w usłudze Azure czas serii Insights.
 ms.service: time-series-insights
 services: time-series-insights
-author: jasonwhowell
+author: ashannon7
 ms.author: jasonh
 manager: jhubbard
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/27/2017
-ms.openlocfilehash: 9a7720934870818a4e13d3d6b5d391d9bd3cddcd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bbd5e7d91e982a3dce320ea10a7fe8da435ff212
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653675"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293778"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorowanie i ograniczenia przepustowości w celu zmniejszenia opóźnień w usłudze Azure czas serii Insights
 Gdy ilość przychodzących danych przekracza konfiguracji w danym środowisku, mogą wystąpić opóźnienia lub ograniczanie w usłudze Azure czas serii Insights.

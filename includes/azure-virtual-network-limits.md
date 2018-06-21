@@ -5,15 +5,15 @@ services: networking
 author: jimdial
 ms.service: networking
 ms.topic: include
-ms.date: 06/12/2018
+ms.date: 06/20/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 7c7540a650d8726fb0a376788073968af6b48834
-ms.sourcegitcommit: 5821eef990c26fa045e4beacce39f6b02b83156b
+ms.openlocfilehash: b9e06865b4a401cd925cce564b9c30594c912bae
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/15/2018
-ms.locfileid: "35683036"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36297970"
 ---
 <a name="virtual-networking-limits-classic"></a>Poniższe limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu klasycznego modelu wdrażania, które przypadają na jedną subskrypcję. Dowiedz się, jak [wyświetlać z bieżącego wykorzystania zasobów względem swoje limity subskrypcji](../articles/networking/check-usage-against-limits.md).
 
@@ -25,7 +25,7 @@ ms.locfileid: "35683036"
 | Prywatne adresy IP na sieć wirtualną |4096 |4096 |
 | Współbieżne TCP lub UDP przepływów na kartę Sieciową maszyny wirtualnej lub wystąpienia roli |500 000 |500 000 |
 | Sieciowe grupy zabezpieczeń (NSG) |100 |200 |
-| Reguły sieciowej grupy zabezpieczeń na sieciową grupę zabezpieczeń |200 |400 |
+| Reguły sieciowej grupy zabezpieczeń na sieciową grupę zabezpieczeń |200 |1000 |
 | Zdefiniowane przez użytkownika tabele tras |100 |200 |
 | Zdefiniowane przez użytkownika trasy na tabelę tras |100 |400 |
 | Publiczne adresy IP (dynamiczne) |5 |kontakt z pomocą techniczną |
@@ -64,6 +64,7 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 ** Te domyślne limity dotyczą subskrypcje, które wcześniej nie było te limity zwiększona za pomocą techniczną
 
 #### <a name="load-balancer"></a>Limity usługi równoważenia obciążenia
+Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu usługi Azure Resource Manager, które przypadają na region na subskrypcję. Dowiedz się, jak [wyświetlać z bieżącego wykorzystania zasobów względem swoje limity subskrypcji](../articles/networking/check-usage-against-limits.md)
 
 | Zasób | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |

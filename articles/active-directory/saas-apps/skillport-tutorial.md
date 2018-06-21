@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: jeedes
-ms.openlocfilehash: d7d22355ba3521bd080e7229a6254d0f992942f2
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d9199f96c4263a8027067b0784a63aaeafe0a06d
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218925"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294656"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Samouczek: Integracji Azure Active Directory z Skillport
 
@@ -210,7 +210,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
 Po kliknięciu kafelka Skillport w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji Skillport.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](https://msdn.microsoft.com/library/dn308586). 
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 

@@ -1,26 +1,26 @@
 ---
-title: Rozwiązywanie problemów z synchronizacji danych Azure SQL (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Sposoby rozwiązywania typowych problemów z synchronizacją danych SQL Azure (wersja zapoznawcza).
+title: Rozwiązywanie problemów z synchronizacji danych Azure SQL | Dokumentacja firmy Microsoft
+description: Sposoby rozwiązywania typowych problemów z synchronizacją danych SQL Azure.
 services: sql-database
-ms.date: 04/01/2018
+ms.date: 06/20/2018
 ms.topic: conceptual
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 8c3476a81c10c9e1754302da4ac5c703ce7375bc
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 43d230b013f95c56fb162be3e361a6b68d1b26fe
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757540"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36296134"
 ---
-# <a name="troubleshoot-issues-with-sql-data-sync-preview"></a>Rozwiązywanie problemów z synchronizacją danych SQL (wersja zapoznawcza)
+# <a name="troubleshoot-issues-with-sql-data-sync"></a>Rozwiązywanie problemów z synchronizacją danych SQL
 
-W tym artykule opisano sposób rozwiązywania znanych problemów z synchronizacją danych SQL Azure (wersja zapoznawcza). W przypadku rozwiązania problemu, jest podana w tym miejscu.
+W tym artykule opisano sposób rozwiązywania znanych problemów z synchronizacją danych SQL Azure. W przypadku rozwiązania problemu, jest podana w tym miejscu.
 
-Omówienie synchronizacji danych SQL (wersja zapoznawcza), zobacz [synchronizacji danych między wieloma bazami danych chmury i lokalnych z synchronizacji danych SQL Azure (wersja zapoznawcza)](sql-database-sync-data.md).
+Omówienie synchronizacji danych SQL, zobacz [synchronizacji danych między wieloma bazami danych chmury i lokalnych z synchronizacji danych SQL Azure](sql-database-sync-data.md).
 
 ## <a name="sync-issues"></a>Problemy z synchronizacją
 
@@ -28,7 +28,7 @@ Omówienie synchronizacji danych SQL (wersja zapoznawcza), zobacz [synchronizacj
 
 #### <a name="description-and-symptoms"></a>Opis i objawy
 
-Synchronizacja nie powiedzie się w portalu synchronizacji danych SQL (wersja zapoznawcza) interfejsu użytkownika dla lokalnych baz danych, które są skojarzone z agentem. Na komputerze lokalnym, który jest uruchomiony agent zobacz temat System.IO.IOException błędy w dzienniku zdarzeń. Błędy powiedzieć, że dysk jest za mało miejsca.
+Synchronizacja nie powiedzie się w portalu synchronizacji danych SQL interfejsu użytkownika dla lokalnych baz danych, które są skojarzone z agentem. Na komputerze lokalnym, który jest uruchomiony agent zobacz temat System.IO.IOException błędy w dzienniku zdarzeń. Błędy powiedzieć, że dysk jest za mało miejsca.
 
 #### <a name="resolution"></a>Rozwiązanie
 
@@ -38,7 +38,7 @@ Utwórz więcej miejsca na dysku, na którym znajduje się katalogu % TEMP %.
 
 #### <a name="description-and-symptoms"></a>Opis i objawy
 
-Grupy synchronizacji w synchronizacji danych SQL (wersja zapoznawcza) był w stanie przetwarzania przez długi czas. Nie odpowiada na **zatrzymać** polecenia i dzienniki Pokaż nie nowych wpisów.
+Grupy synchronizacji w synchronizacji danych SQL została w stanie przetwarzania przez długi czas. Nie odpowiada na **zatrzymać** polecenia i dzienniki Pokaż nie nowych wpisów.
 
 #### <a name="cause"></a>Przyczyna
 
@@ -48,14 +48,14 @@ Jeden z następujących warunków może spowodować grupy synchronizacji są zab
 
 -   **Agent klienta jest niezainstalowana lub Brak**. Jeśli agent klienta jest niezainstalowana lub w inny sposób, Brak:
 
-    1. Jeśli plik istnieje, usuń plik XML agenta z folderu instalacji synchronizacji danych SQL (wersja zapoznawcza).
+    1. Jeśli plik istnieje, usuń plik XML agenta z folderu instalacji synchronizacji danych SQL.
     2. Zainstaluj agenta na komputerze lokalnym (może to być taka sama lub innego komputera). Następnie należy przesłać klucz agenta, który jest generowany w portalu dla agenta, który jest wyświetlany w trybie offline.
 
 -   **Usługa synchronizacji danych SQL została zatrzymana**.
 
     1. W **Start** menu, wyszukaj **usług**.
     2. W wynikach wyszukiwania wybierz **usług**.
-    3. Znajdź **synchronizacji danych SQL (wersja zapoznawcza)** usługi.
+    3. Znajdź **synchronizacji danych SQL** usługi.
     4. Jeśli stan usługi jest **zatrzymane**, kliknij prawym przyciskiem myszy nazwę usługi, a następnie wybierz **Start**.
 
 #### <a name="resolution"></a>Rozwiązanie
@@ -70,7 +70,7 @@ Jeśli tabele, które mają taką samą nazwę, ale które są z inną bazą dan
 
 #### <a name="cause"></a>Przyczyna
 
-Synchronizacja danych SQL (wersja zapoznawcza) procesie inicjowania obsługi używa tego samego tabel śledzenia dla tabel, które mają taką samą nazwę, ale które są w różnych schematach. W związku z tym zmiany z obu tabel są uwzględniane w tej samej tabeli śledzenia. Powoduje to błędne dane zmian podczas synchronizacji.
+Synchronizacja danych SQL procesie inicjowania obsługi używa tego samego tabel śledzenia dla tabel, które mają taką samą nazwę, ale które są w różnych schematach. W związku z tym zmiany z obu tabel są uwzględniane w tej samej tabeli śledzenia. Powoduje to błędne dane zmian podczas synchronizacji.
 
 #### <a name="resolution"></a>Rozwiązanie
 
@@ -109,10 +109,10 @@ Najlepiej będzie zapobiegania. Upewnij się, że w Twoich grupach synchronizacj
 ### <a name="i-see-this-message-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-it"></a>Pojawia się następujący komunikat: "nie można wstawić wartości NULL do kolumny \<kolumny\>. Kolumna nie dopuszcza wartości null." Co to znaczy i jak to naprawić? 
 Ten komunikat o błędzie wskazuje, że wystąpił jeden z dwóch następujących problemów:
 -  Tabela nie ma klucza podstawowego. Aby rozwiązać ten problem, należy dodać do wszystkich tabel, które są synchronizowanie klucza podstawowego.
--  Brak klauzuli WHERE w instrukcji CREATE INDEX. Synchronizacja danych (wersja zapoznawcza) nie obsługuje tego warunku. Aby rozwiązać ten problem, Usuń klauzuli WHERE lub ręcznie wprowadzić zmiany do wszystkich baz danych. 
+-  Brak klauzuli WHERE w instrukcji CREATE INDEX. Synchronizacja danych nie obsługuje tego warunku. Aby rozwiązać ten problem, Usuń klauzuli WHERE lub ręcznie wprowadzić zmiany do wszystkich baz danych. 
  
-### <a name="how-does-data-sync-preview-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a>Jak synchronizacja danych (wersja zapoznawcza) obsługuje odwołania cykliczne? Oznacza to, gdy te same dane jest zsynchronizowany w wielu grupach synchronizacji i śledzi zmiany w związku z tym?
-Synchronizacja danych (wersja zapoznawcza) nie obsługuje odwołań cyklicznych. Pamiętaj uniknąć ich. 
+### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a>Jak synchronizacja danych obsługuje odwołania cykliczne? Oznacza to, gdy te same dane jest zsynchronizowany w wielu grupach synchronizacji i śledzi zmiany w związku z tym?
+Synchronizacja danych nie obsługuje odwołań cyklicznych. Pamiętaj uniknąć ich. 
 
 ## <a name="client-agent-issues"></a>Problemy dotyczące agenta klienta
 
@@ -131,27 +131,6 @@ Aby znaleźć określone przyczynę niepowodzenia, generowanie i znaleźć w dzi
 
 Można również włączyć rejestrowanie dla wszystkich instalacji, które są wykonywane przez Instalatora Windows. W artykule bazy wiedzy Microsoft Knowledge Base [włączania rejestrowania Instalatora Windows](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging) zapewnia rozwiązanie jednego kliknięcia, aby włączyć rejestrowanie dla Instalatora Windows. Umożliwia także lokalizacji dzienników.
 
-### <a name="my-client-agent-doesnt-work"></a>Moje agenta klienta nie działa
-
-#### <a name="description-and-symptoms"></a>Opis i objawy
-
-Podczas próby użycia agenta klienta można uzyskać następujące komunikaty:
-
-"Synchronizacja nie powiodła się z powodu wyjątku, który wystąpił błąd podczas próby zdeserializowania parametru www.microsoft.com/.../05:GetBatchInfoResult. Zobacz wyjątek wewnętrzny, aby uzyskać więcej informacji."
-
-"Komunikat wyjątku wewnętrznego: typ"Microsoft.Synchronization.ChangeBatch"jest nieprawidłowym typem kolekcji, ponieważ nie ma domyślnego konstruktora."
-
-#### <a name="cause"></a>Przyczyna
-
-Jest to znany problem z instalacją synchronizacji danych SQL (wersja zapoznawcza). Najbardziej prawdopodobną przyczyną tego komunikatu jest jednym z następujących czynności:
-
--   Używasz systemu Windows 8 Developer Preview.
--   Masz zainstalowany program .NET Framework 4.5.
-
-#### <a name="resolution"></a>Rozwiązanie
-
-Upewnij się, zainstaluj agenta klienta na komputerze, który nie jest uruchomiony system Windows 8 Developer Preview i że nie jest zainstalowany program .NET Framework 4.5.
-
 ### <a name="my-client-agent-doesnt-work-after-i-cancel-the-uninstall"></a>Moje agenta klienta nie działa po anulować dezinstalacji
 
 #### <a name="description-and-symptoms"></a>Opis i objawy
@@ -160,7 +139,7 @@ Agent klienta nie działa, nawet po anulowaniu jej dezinstalacji.
 
 #### <a name="cause"></a>Przyczyna
 
-Dzieje się tak, ponieważ agent klienta synchronizacji danych SQL (wersja zapoznawcza) nie przechowuje poświadczeń.
+Dzieje się tak, ponieważ agent klienta synchronizacji danych SQL i nie przechowuje poświadczeń.
 
 #### <a name="resolution"></a>Rozwiązanie
 
@@ -215,18 +194,18 @@ Prawdopodobną przyczyną tego błędu jest to, że hasła na lokalnym serwerze 
 
 Zaktualizuj hasło agenta, aby bieżące hasło serwera:
 
-1. Znajdź agenta klienta synchronizacji danych SQL (wersja zapoznawcza) w wersji zapoznawczej usługi.  
+1. Znajdź usługę agenta klienta synchronizacji danych SQL.  
     a. Wybierz **Start**.  
     b. W polu wyszukiwania wprowadź **services.msc**.  
     c. W wynikach wyszukiwania wybierz **usług**.  
-    d. W **usług** okna, przewiń do wpisu dla **Agent synchronizacji danych SQL (wersja zapoznawcza) w wersji zapoznawczej**.  
-2. Kliknij prawym przyciskiem myszy **Agent synchronizacji danych SQL (wersja zapoznawcza) w wersji zapoznawczej**, a następnie wybierz **zatrzymać**.
-3. Kliknij prawym przyciskiem myszy **Agent synchronizacji danych SQL (wersja zapoznawcza) w wersji zapoznawczej**, a następnie wybierz **właściwości**.
-4. Na **synchronizacji danych SQL (wersja zapoznawcza) Agent Podgląd właściwości**, wybierz pozycję **Zaloguj** kartę.
+    d. W **usług** okna, przewiń do wpisu dla **SQL Agent synchronizacji danych**.  
+2. Kliknij prawym przyciskiem myszy **SQL Agent synchronizacji danych**, a następnie wybierz **zatrzymać**.
+3. Kliknij prawym przyciskiem myszy **SQL Agent synchronizacji danych**, a następnie wybierz **właściwości**.
+4. Na **właściwości agenta synchronizacji danych SQL**, wybierz pozycję **Zaloguj** kartę.
 5. W **hasło** wprowadź hasło.
 6. W **Potwierdź hasło** należy ponownie wprowadzić hasło.
 7. Wybierz pozycję **Apply** (Zastosuj), a następnie wybierz przycisk **OK**.
-8. W **usług** okna, kliknij prawym przyciskiem myszy **Agent synchronizacji danych SQL (wersja zapoznawcza) w wersji zapoznawczej** usługi, a następnie kliknij przycisk **Start**.
+8. W **usług** okna, kliknij prawym przyciskiem myszy **SQL Agent synchronizacji danych** usługi, a następnie kliknij przycisk **Start**.
 9. Zamknij **usług** okna.
 
 ### <a name="i-cant-submit-the-agent-key"></a>Nie można przesłać klucz agenta
@@ -239,8 +218,8 @@ Po utworzeniu lub ponownie utworzyć klucz dla agenta, spróbuj przesłać klucz
 
 Przed kontynuowaniem sprawdź następujące warunki:
 
--   Usługa synchronizacji danych SQL (wersja zapoznawcza) systemu Windows jest uruchomiona.  
--   Konto usługi dla usługi systemu Windows w wersji zapoznawczej synchronizacji danych SQL (wersja zapoznawcza) ma dostęp do sieci.    
+-   Usługa Windows synchronizacji danych SQL jest uruchomiona.  
+-   Konto usługi dla usługi Windows synchronizacji danych SQL ma dostęp do sieci.    
 -   Wychodzące port 1433 jest otwarty w regule zapory lokalnej.
 -   Lokalny adres ip jest dodawany do serwera lub reguły zapory bazy danych dla bazy danych usługi synchronizacji metadanych.
 
@@ -248,7 +227,7 @@ Przed kontynuowaniem sprawdź następujące warunki:
 
 Klucz agenta unikatowo identyfikuje każdy agent lokalny. Klucz musi spełniać dwa warunki:
 
--   Klucz agenta klienta na serwerze synchronizacji danych SQL (wersja zapoznawcza) i komputer lokalny musi być identyczne.
+-   Klucz agenta klienta na serwerze synchronizacji danych SQL i komputera lokalnego muszą być identyczne.
 -   Klucz agenta klienta mogą być użyte tylko raz.
 
 #### <a name="resolution"></a>Rozwiązanie
@@ -272,7 +251,7 @@ Aby zastosować nowego klucza do agenta:
 
 #### <a name="description-and-symptoms"></a>Opis i objawy
 
-Jeśli lokalny punkt końcowy (to znaczy bazy danych), który został zarejestrowany za pomocą agenta klienta synchronizacji danych SQL (wersja zapoznawcza) staje się niedostępny, nie można usunąć agenta klienta.
+Jeśli lokalny punkt końcowy (to znaczy bazy danych) zarejestrowana w usłudze agenta klienta synchronizacji danych SQL staje się niedostępny, nie można usunąć agenta klienta.
 
 #### <a name="cause"></a>Przyczyna
 
@@ -295,8 +274,8 @@ Spróbuj wykonać następujące kroki:
 2. Otwórz Panel usług składowych.  
     a. W polu wyszukiwania na pasku zadań, wprowadź **services.msc**.  
     b. W wynikach wyszukiwania kliknij dwukrotnie **usług**.  
-3. Zatrzymaj **synchronizacji danych SQL (wersja zapoznawcza) w wersji zapoznawczej** usługi.
-4. Uruchom ponownie **synchronizacji danych SQL (wersja zapoznawcza) w wersji zapoznawczej** usługi.  
+3. Zatrzymaj **synchronizacji danych SQL** usługi.
+4. Uruchom ponownie **synchronizacji danych SQL** usługi.  
 5. Otwórz ponownie aplikację.
 
 ## <a name="setup-and-maintenance-issues"></a>Instalacja i konserwacja problemów
@@ -335,12 +314,12 @@ Aby rozwiązać nie powiodło się usunięcie grupy synchronizacji:
 
 -   Upewnij się, że agent klienta jest w trybie online, a następnie spróbuj ponownie.
 -   Jeśli agent klienta jest niezainstalowana lub w inny sposób, Brak:  
-    a. Jeśli plik istnieje, usuń plik XML agenta z folderu instalacji synchronizacji danych SQL (wersja zapoznawcza).  
+    a. Jeśli plik istnieje, usuń plik XML agenta z folderu instalacji synchronizacji danych SQL.  
     b. Zainstaluj agenta na komputerze lokalnym (może to być taka sama lub innego komputera). Następnie należy przesłać klucz agenta, który jest generowany w portalu dla agenta, który jest wyświetlany w trybie offline.
--   Upewnij się, że jest uruchomiona usługa synchronizacji danych SQL (wersja zapoznawcza):  
+-   Upewnij się, że usługa synchronizacji danych SQL jest uruchomiona:  
     a. W **Start** menu, wyszukaj **usług**.  
     b. W wynikach wyszukiwania wybierz **usług**.  
-    c. Znajdź **synchronizacji danych SQL (wersja zapoznawcza) w wersji zapoznawczej** usługi.  
+    c. Znajdź **synchronizacji danych SQL** usługi.  
     d. Jeśli stan usługi jest **zatrzymane**, kliknij prawym przyciskiem myszy nazwę usługi, a następnie wybierz **Start**.
 -   Upewnij się, że bazy danych SQL i baz danych programu SQL Server są wszystkie online.
 -   Poczekaj na zakończenie procesu inicjowania obsługi administracyjnej lub synchronizacji, a następnie ponów usunięcie grupy synchronizacji.
@@ -361,7 +340,7 @@ Jeśli ta operacja nie powiedzie się usunąć bazę danych z grupy synchronizac
     a. Wybierz **Start** menu.  
     b. W polu wyszukiwania wprowadź **services.msc**.  
     c. W **programy** sekcji wyszukiwania powoduje okienku kliknij dwukrotnie **usług**.  
-    d. Kliknij prawym przyciskiem myszy **synchronizacji danych SQL (wersja zapoznawcza)** usługi.  
+    d. Kliknij prawym przyciskiem myszy **synchronizacji danych SQL** usługi.  
     e. Jeśli usługa jest uruchomiona, zatrzymaj ją.  
     f. Kliknij prawym przyciskiem myszy usługę, a następnie wybierz **Start**.  
     g. Sprawdź, czy baza danych jest nadal zarejestrowany. Jeśli nie jest już zarejestrowana, wszystko będzie gotowe. W przeciwnym razie przejdź do następnego kroku.
@@ -391,7 +370,7 @@ Przyznanie dziennika na — jako — usługa poświadczeń dla konta użytkownik
 
 #### <a name="cause"></a>Przyczyna
 
-Synchronizacja danych SQL (wersja zapoznawcza) usuwa baz danych, które są w trybie offline z usługi do 45 dni lub więcej (zliczane od momentu przejścia w tryb offline bazy danych). Jeśli bazy danych jest w trybie offline, przez co najmniej 45 dni, a następnie wraca do trybu online, jego stan jest **nieaktualne**.
+Synchronizacja danych SQL spowoduje usunięcie bazy danych, które są w trybie offline z usługi do 45 dni lub więcej (zliczane od momentu przejścia w tryb offline bazy danych). Jeśli bazy danych jest w trybie offline, przez co najmniej 45 dni, a następnie wraca do trybu online, jego stan jest **nieaktualne**.
 
 #### <a name="resolution"></a>Rozwiązanie
 
@@ -421,14 +400,14 @@ Jeśli jest w stanie grupy synchronizacji **nieaktualne**, Usuń grupę synchron
 
 #### <a name="description-and-symptoms"></a>Opis i objawy
 
-Nie można usunąć grupy synchronizacji w ciągu trzech minut Odinstalowywanie lub zatrzymywanie skojarzone agenta klienta synchronizacji danych SQL (wersja zapoznawcza).
+Nie można usunąć grupy synchronizacji w ciągu trzech minut Odinstalowywanie lub zatrzymywanie skojarzone agenta klienta synchronizacji danych SQL.
 
 #### <a name="resolution"></a>Rozwiązanie
 
 1. Usuwanie grupy synchronizacji podczas synchronizacji skojarzone agentów są w trybie online (zalecane).
-2. Jeśli agent jest w trybie offline, ale jest zainstalowany, przełącz go w trybie online na komputerze lokalnym. Poczekaj, aż stan agenta były wyświetlane jako **Online** w portalu synchronizacji danych SQL (wersja zapoznawcza). Następnie można usunąć grupy synchronizacji.
+2. Jeśli agent jest w trybie offline, ale jest zainstalowany, przełącz go w trybie online na komputerze lokalnym. Poczekaj, aż stan agenta były wyświetlane jako **Online** w portalu synchronizacji danych SQL. Następnie można usunąć grupy synchronizacji.
 3. Jeśli agent jest w trybie offline, ponieważ została ona odinstalowana:  
-    a.  Jeśli plik istnieje, usuń plik XML agenta z folderu instalacji synchronizacji danych SQL (wersja zapoznawcza).  
+    a.  Jeśli plik istnieje, usuń plik XML agenta z folderu instalacji synchronizacji danych SQL.  
     b.  Zainstaluj agenta na komputerze lokalnym (może to być taka sama lub innego komputera). Następnie należy przesłać klucz agenta, który jest generowany w portalu dla agenta, który jest wyświetlany w trybie offline.  
     c. Spróbuj usunąć grupy synchronizacji.
 
@@ -437,16 +416,16 @@ Nie można usunąć grupy synchronizacji w ciągu trzech minut Odinstalowywanie 
 W przypadku utraty lub uszkodzenia bazy danych można przywrócić z kopii zapasowej, może być nonconvergence danych w grupach synchronizacji, do których należy bazy danych.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji na temat synchronizacji danych SQL (wersja zapoznawcza) zobacz:
+Aby uzyskać więcej informacji na temat synchronizacji danych SQL zobacz:
 
--   [Synchronizowanie danych w wielu w chmurze i lokalnych baz danych z synchronizacji danych SQL Azure (wersja zapoznawcza)](sql-database-sync-data.md)  
--   [Konfigurowanie synchronizacji danych SQL Azure (wersja zapoznawcza)](sql-database-get-started-sql-data-sync.md)  
--   [Najlepsze rozwiązania dotyczące synchronizacji danych SQL Azure (wersja zapoznawcza)](sql-database-best-practices-data-sync.md)  
--   [Synchronizacja danych Azure SQL monitora (wersja zapoznawcza) z analizy dzienników](sql-database-sync-monitor-oms.md)  
--   Wykonaj przykłady z programu PowerShell, które przedstawiają sposób konfigurowania synchronizacji danych SQL (wersja zapoznawcza):  
+-   [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Synchronizowanie danych między wieloma bazami danych w chmurze i lokalnie za pomocą usługi Azure SQL Data Sync)](sql-database-sync-data.md)  
+-   [Set up Azure SQL Data Sync (Konfigurowanie usługi Azure SQL Data Sync)](sql-database-get-started-sql-data-sync.md)  
+-   [Best practices for Azure SQL Data Sync (Najlepsze rozwiązania dotyczące korzystania z usługi Azure SQL Data Sync)](sql-database-best-practices-data-sync.md)  
+-   [Monitor Azure SQL Data Sync with Log Analytics (Monitorowanie usługi Azure SQL Data Sync za pomocą usługi Log Analytics)](sql-database-sync-monitor-oms.md)  
+-   Pełne przykładowe skrypty programu PowerShell przedstawiające sposób konfigurowania usługi SQL Data Sync:  
     -   [Użycie programu PowerShell do synchronizowania wielu baz danych Azure SQL Database](scripts/sql-database-sync-data-between-sql-databases.md)  
     -   [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)  
--   [Pobrać dokumentację interfejsu API REST synchronizacji danych SQL (wersja zapoznawcza)](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
+-   [Pobierz dokumentację interfejsu API REST usługi SQL Data Sync](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 
 Aby uzyskać więcej informacji dotyczących bazy danych SQL zobacz:
 

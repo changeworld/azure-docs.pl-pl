@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 63d22a3213e7a3d8d2f8bf7714eb5bc8f3f0f477
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ee9c1494cb2bca4193bfe8b16b72ba5d317f9f3e
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212642"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295474"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wingspan-etmf"></a>Samouczek: Integracji Azure Active Directory z Wingspan eTMF
 
@@ -204,7 +204,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu. 
 
-Kliknij Kafelek eTMF Wingspan w panelu dostępu, nastąpi przekierowanie do logowania organizacji na stronie. Po pomyślnego logowania użytkownik będzie można zalogowane Wingspan eTMF aplikacji. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](https://msdn.microsoft.com/library/dn308586).
+Kliknij Kafelek eTMF Wingspan w panelu dostępu, nastąpi przekierowanie do logowania organizacji na stronie. Po pomyślnego logowania użytkownik będzie można zalogowane Wingspan eTMF aplikacji. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 

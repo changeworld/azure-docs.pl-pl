@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
-ms.openlocfilehash: c2b28d4f5d29855bf438f0e411bfb7c2fe82a6be
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 5accb676c7fb732c9b59dbbbeda944a3a3015d50
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224994"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285420"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benefithub"></a>Samouczek: Integracji Azure Active Directory z BenefitHub
 
@@ -227,7 +227,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
 Po kliknięciu kafelka BenefitHub w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji BenefitHub.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](https://msdn.microsoft.com/library/dn308586).
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
@@ -247,4 +247,3 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 [201]: ./media/benefithub-tutorial/tutorial_general_201.png
 [202]: ./media/benefithub-tutorial/tutorial_general_202.png
 [203]: ./media/benefithub-tutorial/tutorial_general_203.png
-

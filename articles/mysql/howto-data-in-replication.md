@@ -8,17 +8,17 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 05/18/2018
-ms.openlocfilehash: f9517cb552130e340310abc4affdad8bdadc26fe
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 06/20/2018
+ms.openlocfilehash: e099597eae419653a2a40c7f01ee7abbbc4657f0
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265755"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294425"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Jak skonfigurować bazy danych platformy Azure dla danych MySQL w replikacji
 
-W tym artykule dowiesz się, jak skonfigurować replikacji w danych w bazie danych Azure dla usługi MySQL przez Konfigurowanie podstawowego i serwery repliki.
+W tym artykule dowiesz się, jak skonfigurować replikacji w danych w bazie danych Azure dla usługi MySQL konfigurując serwer podstawowy i repliki. W danych replikacji umożliwia synchronizowanie danych z serwera podstawowego MySQL uruchomione w siedzibie firmy, na maszynach wirtualnych lub bazy danych usług hostowanych przez innych dostawców chmury do repliki w bazie danych Azure dla usługi MySQL. 
 
 W tym artykule przyjęto założenie, że masz co najmniej pewne doświadczenie z serwerów MySQL i baz danych.
 
@@ -29,7 +29,7 @@ W tym artykule przyjęto założenie, że masz co najmniej pewne doświadczenie 
    Utwórz nowy serwer MySQL (np. "replica.mysql.database.azure.com"). Zapoznaj się [utworzenia Azure bazy danych MySQL serwera przy użyciu portalu Azure](quickstart-create-mysql-server-database-using-azure-portal.md) do utworzenia serwera. Ten serwer jest serwerem "repliki" w danych w ramach replikacji.
 
    > [!IMPORTANT]
-   > Ten serwer muszą być tworzone w warstw cenowych ogólnego przeznaczenia lub zoptymalizowanych pod kątem pamięci.
+   > Baza danych Azure, dla serwera MySQL muszą być tworzone w warstw cenowych ogólnego przeznaczenia lub zoptymalizowanych pod kątem pamięci.
    > 
 
 2. Tworzenie tych samych kont użytkowników i odpowiednie uprawnienia.
@@ -37,6 +37,7 @@ W tym artykule przyjęto założenie, że masz co najmniej pewne doświadczenie 
    Konta użytkowników nie są replikowane z serwera podstawowego na serwer repliki. Jeśli planujesz zapewnia użytkownikom dostęp do serwera repliki, należy ręcznie utworzyć na nowo utworzonej bazy danych platformy Azure dla serwera MySQL wszystkich kont i odpowiednie uprawnienia.
 
 ## <a name="configure-the-primary-server"></a>Konfiguracja serwera podstawowego
+Poniższe kroki przygotowania i skonfigurowania MySQL hostowanej serwera lokalnego, w maszynie wirtualnej lub usługi baza danych obsługiwanych przez innych dostawców chmury do replikacji danych w. Ten serwer jest "primary" w danych w ramach replikacji. 
 
 1. Włączanie rejestrowania binarnego
 
@@ -226,3 +227,6 @@ Aby pominąć błąd replikacji i umożliwić replikacji kontynuować, należy u
 ```sql
 CALL mysql.az_replication_skip_counter;
 ```
+
+## <a name="next-steps"></a>Kolejne kroki
+- Dowiedz się więcej o [replikacji danych w](concepts-data-in-replication.md) bazy danych Azure dla programu MySQL. 

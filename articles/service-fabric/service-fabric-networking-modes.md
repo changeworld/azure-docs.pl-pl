@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: f831c046bcf8f633841f9dc4a0fce6d1e419e6c2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 869b87b8df3b1f532a33e943e728681b358ed8b4
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205658"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287632"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Tryby sieci kontenera sieci szkieletowej usług
 
@@ -231,7 +231,23 @@ Gdy usługi kontenera uruchamia ponownie lub przenoszone do innego węzła w kla
      </Endpoints>
    </Resources>
    ```
+   
+6. W systemie Windows ponowne uruchomienie maszyny Wirtualnej spowoduje, że otwartej sieci do odtworzenia. To jest ograniczyć podstawowego problemu w stos sieciowy. Domyślne zachowanie jest odtworzyć sieci. Jeśli to zachowanie musi być wyłączona, następującą konfigurację można następuje uaktualnienie konfiguracji.
 
+```json
+"fabricSettings": [
+                {
+                    "name": "Setup",
+                    "parameters": [
+                    {
+                            "name": "SkipContainerNetworkResetOnReboot",
+                            "value": "true"
+                    }
+                    ]
+                }
+            ],          
+ ``` 
+ 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Informacje o modelu aplikacji usługi Service Fabric](service-fabric-application-model.md)
 * [Dowiedz się więcej o zasoby manifestu usługi sieci szkieletowej usług](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)

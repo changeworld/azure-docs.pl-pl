@@ -8,18 +8,24 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 03/20/2018
+ms.date: 06/20/2018
 ms.author: heidist
-ms.openlocfilehash: 4215795b7cd2a25427a3ce9b3cde16bfc69cb009
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2ec720f26cfbadb9963ff3991ad1795c9b30c136
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32185947"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284985"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Tworzenie i zarządzanie nimi klucze interfejsu api dla usługi Azure Search
 
-Wszystkie żądania do usługi wyszukiwania należy klucz interfejsu api wygenerowany specjalnie dla usługi. Ten klucz interfejsu api jest jedynym mechanizmu uwierzytelniania dostępu do punktu końcowego usługi wyszukiwania. 
+Wszystkie żądania do usługi wyszukiwania należy tylko do odczytu klucza api-key wygenerowany specjalnie dla usługi. Klucz interfejsu api jest jedynym mechanizmu uwierzytelniania dostępu do punktu końcowego usługi wyszukiwania i muszą być zawarte na każde żądanie. W [rozwiązań REST](search-get-started-nodejs.md#update-the-configjs-with-your-search-service-url-and-api-key), klucz interfejsu api jest zazwyczaj określana w nagłówku żądania. W [rozwiązań .NET](search-howto-dotnet-sdk.md#core-scenarios), często określony jako ustawienie konfiguracji klucza i następnie przekazywane jako [poświadczenia](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) (klucz administratora) lub [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.searchcredentials) (klucz zapytania) na [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient).
+
+Klucze są tworzone przy użyciu usługi wyszukiwania podczas inicjowania obsługi usługi. Możesz wyświetlić i uzyskać wartości klucza w [portalu Azure](https://portal.azure.com).
+
+![Sekcję klucze strony portalu, ustawienia](media/search-manage/azure-search-view-keys.png)
+
+## <a name="what-is-an-api-key"></a>Co to jest klucz interfejsu api
 
 Klucz interfejsu api to ciąg składający się z losowo generowany liter i cyfr. Za pomocą [uprawnienia oparte na rolach](search-security-rbac.md), możesz usunąć lub odczytu kluczy, ale nie można zastąpić klucz przy użyciu hasła użytkownika lub użyć usługi Active Directory jako metody uwierzytelniania podstawowego do uzyskiwania dostępu do operacji wyszukiwania. 
 

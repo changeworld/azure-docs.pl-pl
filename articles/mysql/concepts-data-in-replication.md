@@ -8,17 +8,17 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 05/18/2018
-ms.openlocfilehash: 14ed3ef57da28b6929115cf3e5746653d199b140
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 06/20/2018
+ms.openlocfilehash: 72f8211ecc0534b15402911de8fc0ec3d541a835
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263752"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294908"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Replikowanie danych do bazy danych Azure dla programu MySQL
 
-Funkcja replikacji danych pozwala na synchronizowanie danych z serwera MySQL, uruchamiane lokalnie, na maszynach wirtualnych lub bazy danych usług hostowanych przez innych dostawców chmury do bazy danych Azure dla usługi MySQL. W danych replikacji jest oparta na dziennik binarny (binlog) na podstawie pozycji replikacji macierzysty MySQL. Aby dowiedzieć się więcej na temat replikacji binlog, zobacz [Omówienie replikacji binlog MySQL](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html). 
+W danych replikacji umożliwia synchronizowanie danych z MySQL serwerem lokalnym, na maszynach wirtualnych lub bazy danych usług hostowanych przez innych dostawców chmury do bazy danych Azure dla usługi MySQL. W danych replikacji jest oparta na dziennik binarny (binlog) na podstawie pozycji replikacji macierzysty MySQL. Aby dowiedzieć się więcej na temat replikacji binlog, zobacz [Omówienie replikacji binlog MySQL](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html). 
 
 ## <a name="when-to-use-data-in-replication"></a>Kiedy należy używać w danych replikacji
 Główne scenariusze wziąć pod uwagę przy użyciu replikacji w danych są następujące:
@@ -41,5 +41,5 @@ Główne scenariusze wziąć pod uwagę przy użyciu replikacji w danych są nas
 ### <a name="other"></a>Inne
 - Identyfikatory transakcji globalnej (GTID) nie są obsługiwane.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się, jak [replikacji danych w](howto-data-in-replication.md)

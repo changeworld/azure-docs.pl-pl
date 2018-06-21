@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: aab2446a21739beb029b103241431fb9998e1861
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 0bd31270ca67dc993cc7ac72ab2bab9bf70005ca
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34735462"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293999"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Bezpieczny dostęp do konta bazy danych rozwiązania Cosmos Azure przy użyciu punktu końcowego usługi Azure Virtual Network
 
@@ -80,7 +80,7 @@ Po włączeniu punktów końcowych usługi sieci wirtualnej platformy Azure dla 
 
 Jeśli konta bazy danych Azure rozwiązania Cosmos jest używane przez inne usługi Azure, takich jak usługi Azure Search lub uzyskać dostępu do usługi analiza strumienia lub usługi Power BI, zezwolisz na dostęp przez sprawdzenie **zezwolić na dostęp do usług Azure**.
 
-Aby upewnić się, masz dostęp do bazy danych Azure rozwiązania Cosmos metryki z portalu, należy włączyć **zezwolić na dostęp do portalu Azure** opcje. Aby dowiedzieć się więcej o tych opcjach, zobacz [połączenia z portalu Azure](firewall-support.md#connections-from-the-azure-portal) i [połączeń z usług Azure PaaS](firewall-support.md#connections-from-other-azure-paas-services) sekcje. Po wybraniu dostępu, wybierz **zapisać** Aby zapisać ustawienia.
+Aby upewnić się, masz dostęp do bazy danych Azure rozwiązania Cosmos metryki z portalu, należy włączyć **zezwolić na dostęp do portalu Azure** opcje. Aby dowiedzieć się więcej o tych opcjach, zobacz [połączenia z portalu Azure](firewall-support.md#connections-from-the-azure-portal) i [połączeń z usług Azure PaaS](firewall-support.md#connections-from-public-azure-datacenters-or-azure-paas-services) sekcje. Po wybraniu dostępu, wybierz **zapisać** Aby zapisać ustawienia.
 
 ## <a name="remove-a-virtual-network-or-subnet"></a>Usuwanie podsieci lub sieci wirtualnej 
 

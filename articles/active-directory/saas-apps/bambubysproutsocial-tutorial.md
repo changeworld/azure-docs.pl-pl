@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 7a9ffacdcb871bcd79d937b9349d76b29681c77c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 12859384ce79a34dbdb437aa402189fbf039c44c
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225392"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285343"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bambu-by-sprout-social"></a>Samouczek: Integracji Azure Active Directory z Bambu przez Sprout społecznościowych
 
@@ -212,7 +212,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
-Kliknięcie Bambu Sprout społecznościowych kafelka w panelu dostępu, możesz należy pobrać automatycznie zalogowane do Twojej Bambu przez aplikację Sprout społecznościowych. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](https://msdn.microsoft.com/library/dn308586). 
+Kliknięcie Bambu Sprout społecznościowych kafelka w panelu dostępu, możesz należy pobrać automatycznie zalogowane do Twojej Bambu przez aplikację Sprout społecznościowych. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
@@ -234,4 +234,3 @@ Kliknięcie Bambu Sprout społecznościowych kafelka w panelu dostępu, możesz 
 [201]: ./media/bambubysproutsocial-tutorial/tutorial_general_201.png
 [202]: ./media/bambubysproutsocial-tutorial/tutorial_general_202.png
 [203]: ./media/bambubysproutsocial-tutorial/tutorial_general_203.png
-

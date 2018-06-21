@@ -10,30 +10,32 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 78d4d721f2821a8365185c0bad6d795c67a75292
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: b1cfb76c7e196441ebad3bcfcd1d788bd544ab74
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33864668"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36292563"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Wymagania dotyczące usługi Azure AD samoobsługi hasła licencjonowania resetowania
 
-Aby usługi Azure Active Directory (Azure AD) resetowania hasła, aby funkcja możesz *musi mieć co najmniej jedną licencję przypisane w Twojej organizacji*. Firma Microsoft nie wymuszają licencjonowania na środowisku resetowania hasła użytkownika. Wymagana jest właściwa licencja, jeśli użytkownik odnosi korzyści z dowolnej funkcji objętej licencją w sposób bezpośredni lub pośredni.
+Aby usługi Azure Active Directory (Azure AD) resetowania hasła, aby funkcja możesz *musi mieć co najmniej jedną licencję przypisane w Twojej organizacji* dla tego użytkownika. Wymagana jest właściwa licencja, jeśli użytkownik odnosi korzyści z dowolnej funkcji objętej licencją w sposób bezpośredni lub pośredni.
 
 * **Tylko w chmurze użytkowników**: usługi Office 365 żadnego płatnej SKU lub Azure AD podstawowa
 * **Chmura** lub **lokalnych użytkowników**: Azure AD Premium P1 lub P2 pakietu Enterprise Mobility + Security (EMS) i Microsoft 365
 
-## <a name="licenses-required-for-password-writeback"></a>Licencjami wymaganymi do zapisywania zwrotnego haseł
+## <a name="licensing-requirements-for-password-writeback"></a>Wymagania dotyczące funkcji zapisywania zwrotnego haseł licencjonowania
+
+**Samoobsługi hasła resetowania/Zmień/odblokowywanie z lokalnymi zapisywania zwrotnego jest funkcją premium usługi Azure AD**. Aby uzyskać więcej informacji na temat licencjonowania, zobacz [usługi Azure Active Directory cennik lokacji](https://azure.microsoft.com/pricing/details/active-directory/).
 
 Aby użyć funkcji zapisywania zwrotnego haseł, musi mieć jedną z następujących licencji przypisanych na dzierżawy:
 
 * Usługa Azure AD — warstwa Premium P1
 * Usługa Azure AD — warstwa Premium P2
-* Enterprise Mobility + Security E3
-* Enterprise Mobility + Security E5
-* Microsoft 365 E3
-* Microsoft 365 E5
+* Enterprise Mobility + Security E3 lub A3
+* Enterprise Mobility + Security E5 lub A5
+* Microsoft 365 E3 lub A3
+* Microsoft 365 E5 lub A5
 * Microsoft 365 F1
 
 > [!WARNING]

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: v-geberr
-ms.openlocfilehash: 918f5d9efa1163558e44c2c67028dbf802f479a5
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: ccb7269109309355e2af95f6fb2aa060c1998b22
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266791"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286022"
 ---
 # <a name="entities-in-luis"></a>Jednostki w LUIS
 
@@ -66,7 +66,7 @@ LUIS oferuje wiele typów jednostek; wbudowane jednostek niestandardowych maszyn
 | Name (Nazwa) | Można opisać | Opis |
 | -- |--|--|
 | **Wbudowane** <br/>[Custom](#prebuilt)| |  **Definicja**<br>Wbudowane typy, które reprezentują wspólne pojęcia. <br><br>**Lista**<br/>numer frazy klucza, liczba porządkowa temperatury, wymiaru, pieniędzy, wieku, procent, poczty e-mail, adres URL, numer telefonu i hasło klucza. <br><br>Nazwy jednostek wbudowane są zastrzeżone. <br><br>Wszystkie wbudowane jednostki, które są dodawane do aplikacji są zwracane w [punktu końcowego](luis-glossary.md#endpoint) zapytania. Aby uzyskać więcej informacji, zobacz [wbudowane jednostek](./Pre-builtEntities.md). <br/><br/>[Przykład odpowiedzi dla jednostki](luis-concept-data-extraction.md#prebuilt-entity-data)|
-|<!-- added week of 3/21/08 --> **Wyrażenie regularne**<br/>[Wyrażenia regularnego](#regex)||**Definicja**<br>Niestandardowe wyrażenie regularne tekst sformatowany. Ignoruje wielkość liter, a ignoruje kultury variant.  <br><br>Ta jednostka jest prawidłowa dla słów ani fraz spójnie sformatowane przy każdej zmianie, który również jest spójna.<br><br>Dopasowywanie wyrażeń regularnych są stosowane po zmiany sprawdzanie pisowni. <br><br>Jeśli wyrażenie regularne jest zbyt złożone, takiej jak dużo nawiasów, nie jest możliwe do dodania do modelu wyrażenie. <br><br>**Przykład**<br>`kb[0-9]{6,}` kb123456 dopasowań.<br/><br/>[Szybki start](luis-quickstart-intents-regex-entity.md)<br>[Przykład odpowiedzi dla jednostki](luis-concept-data-extraction.md)|
+|<!-- added week of 3/21/08 --> **Wyrażenie regularne**<br/>[Wyrażenia regularnego](#regex)||**Definicja**<br>Niestandardowe wyrażenie regularne tekstu sformatowanego utterance raw. Ignoruje wielkość liter, a ignoruje kultury variant.  <br><br>Ta jednostka jest prawidłowa dla słów ani fraz spójnie sformatowane przy każdej zmianie, który również jest spójna.<br><br>Dopasowywanie wyrażeń regularnych są stosowane po zmiany sprawdzanie pisowni. <br><br>Jeśli wyrażenie regularne jest zbyt złożone, takiej jak dużo nawiasów, nie jest możliwe do dodania do modelu wyrażenie. <br><br>**Przykład**<br>`kb[0-9]{6,}` kb123456 dopasowań.<br/><br/>[Szybki start](luis-quickstart-intents-regex-entity.md)<br>[Przykład odpowiedzi dla jednostki](luis-concept-data-extraction.md)|
 | **Proste** <br/>[Rozpoznane maszyny](#machine-learned) | ✔ | **Definicja**<br>Proste jednostka jest ogólny jednostki, która opisuje jednej koncepcji i jest zostały uzyskane na podstawie kontekstu rozpoznane maszyny. Kontekst obejmują wybór word, umieszczania programu word i utterance długości.<br/><br/>Jest to dobry jednostki dla słów ani fraz, które nie są spójnie sformatowane, ale wskazać to samo. <br/><br/>[Szybki start](luis-quickstart-primary-and-secondary-data.md)<br/>[Przykład odpowiedzi dla jednostki](luis-concept-data-extraction.md#simple-entity-data)|  
 | **Lista** <br/>[Dokładnego dopasowania](#exact-match)|| **Definicja**<br>Listy jednostek reprezentują zestaw stały, zamkniętego powiązanych słów wraz z ich synoymns w systemie. <br><br>Każdy obiekt listy mogą mieć jeden lub więcej formularzy. Najlepiej nadaje się do znanego zestawu odmiany sposoby reprezentują tego samego pojęcia.<br/><br/>LUIS nie wykryje dodatkowe wartości dla jednostek z listy. Użyj wyświetlić [semantycznego słownika](luis-glossary.md#semantic-dictionary) propozycje dla nowych słów na podstawie bieżącej listy.<br/><br>Jeśli istnieje więcej niż jednej jednostki listy z tą samą wartością, każdy obiekt jest zwracany w zapytania punktu końcowego. <br/><br/>[Szybki start](luis-quickstart-intent-and-list-entity.md)<br>[Przykład odpowiedzi dla jednostki](luis-concept-data-extraction.md#list-entity-data)| 
 | **Pattern.any** <br/>[Mieszane](#mixed) | ✔|**Definicja**<br>Patterns.any jest używana tylko w utterance szablonu wzorzec do oznaczania, gdy jednostka rozpoczęcia i zakończenia symbol zastępczy o zmiennej długości.  <br><br>**Przykład**<br>Podana utterance wyszukiwanie na podstawie tytułu książek, pattern.any wyodrębnia pełną tytułu. Jest utterance szablonu, za pomocą pattern.any `Who wrote {BookTitle}[?]`.<br/><br/>[Samouczek](luis-tutorial-pattern.md)<br>[Przykład odpowiedzi dla jednostki](luis-concept-data-extraction.md#composite-entity-data)|  

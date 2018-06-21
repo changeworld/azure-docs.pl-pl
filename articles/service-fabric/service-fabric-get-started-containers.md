@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 8511af935eb2427724ace1f39ec9948e3b0b5537
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f52861411a34d1fbff577fbbc37cf926151a97d8
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643213"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294816"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Windows
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-Uruchomienie istniejącej aplikacji w kontenerze systemu Windows w klastrze usługi Service Fabric nie wymaga dokonywania żadnych zmian w aplikacji. W tym artykule przedstawiono proces tworzenia obrazu Docker zawierającego aplikację sieci Web w języku Python na platformie [Flask](http://flask.pocoo.org/) oraz wdrażania go w klastrze usługi Service Fabric. Będziesz również udostępniać aplikację skonteneryzowaną za pomocą usługi [Azure Container Registry](/azure/container-registry/). W tym artykule przyjęto założenie, że masz podstawową wiedzą dotyczącą platformy Docker. Aby uzyskać informacje dotyczące platformy Docker, przeczytaj artykuł [Docker Overview](https://docs.docker.com/engine/understanding-docker/) (Przegląd platformy Docker).
+Uruchomienie istniejącej aplikacji w kontenerze systemu Windows w klastrze usługi Service Fabric nie wymaga dokonywania żadnych zmian w aplikacji. W tym artykule przedstawiono proces tworzenia obrazu Docker zawierającego aplikację internetową w języku Python na platformie [Flask](http://flask.pocoo.org/) oraz wdrażania go w klastrze usługi Service Fabric. Będziesz również udostępniać aplikację skonteneryzowaną za pomocą usługi [Azure Container Registry](/azure/container-registry/). W tym artykule przyjęto założenie, że masz podstawową wiedzą dotyczącą platformy Docker. Aby uzyskać informacje dotyczące platformy Docker, przeczytaj artykuł [Docker Overview](https://docs.docker.com/engine/understanding-docker/) (Przegląd platformy Docker).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Komputer dewelopera z następującym oprogramowaniem:
@@ -40,17 +40,17 @@ Uruchomienie istniejącej aplikacji w kontenerze systemu Windows w klastrze usł
   
   Aby określić wersji systemu Windows Server z kontenerami należy do klastra, należy uruchomić `ver` polecenia z wiersza polecenia systemu Windows na komputerze deweloperskim:
 
-  * Jeśli wersja zawiera *x.x.14323.x*, następnie [utworzyć klaster](service-fabric-cluster-creation-via-portal.md) upewnić się *2016 Windows Server Datacenter z kontenerów* dla systemu operacyjnego lub [bezpłatnie spróbuj sieci szkieletowej usług](https://aka.ms/tryservicefabric) z klastrem strony.
-  * Jeśli wersja zawiera *x.x.16299.x*, następnie [utworzyć klaster](service-fabric-cluster-creation-via-portal.md) upewnić się *WindowsServerSemiAnnual Datacenter-Core-1709-z — kontenery* dla System operacyjny. Nie można używać klastra strony.
+  * Jeśli wersja zawiera *x.x.14323.x*, a następnie wybierz pozycję *2016 Windows Server Datacenter z kontenerów* dla systemu operacyjnego podczas [tworzenia klastra](service-fabric-cluster-creation-via-portal.md). Możesz również [bezpłatnie spróbuj sieci szkieletowej usług](https://aka.ms/tryservicefabric) z klastrem strony.
+  * Jeśli wersja zawiera *x.x.16299.x*, a następnie wybierz pozycję *WindowsServerSemiAnnual Datacenter-Core-1709-z — kontenery* dla systemu operacyjnego podczas [tworzenia klastra](service-fabric-cluster-creation-via-portal.md). Jednak nie można używać klastra strony.
 
 * Rejestr w usłudze Azure Container Registry — [utwórz rejestr kontenera](../container-registry/container-registry-get-started-portal.md) w subskrypcji platformy Azure.
 
 > [!NOTE]
-> Wdrażanie kontenerów do klastra usługi Service Fabric w systemie Windows 10 lub w klastrze z programem Docker CE nie jest obsługiwane. Ten przewodnik przy użyciu aparatu platformy Docker w systemie Windows 10 lokalnie testuje i na koniec wdraża usługi kontenerów do klastra systemu Windows Server na platformie Azure z programem Docker EE. 
+> Wdrażanie kontenerów do klastra sieci szkieletowej usług z systemem Windows 10 jest obsługiwana.  Zobacz [w tym artykule](service-fabric-how-to-debug-windows-containers.md) informacji na temat konfigurowania systemu Windows 10, aby uruchomić kontenery systemu Windows.
 >   
 
 > [!NOTE]
-> Usługa Service Fabric w wersji 6.1 obejmuje obsługę wersji zapoznawczej systemu Windows Server w wersji 1709. Otwarta sieć i usługa DNS w usłudze Service Fabric nie działają w systemie Windows Server w wersji 1709. 
+> Wersje usługi sieć szkieletowa 6.2 i nowsze obsługują wdrażanie kontenerów do klastrów w systemie Windows Server w wersji 1709.  
 > 
 
 ## <a name="define-the-docker-container"></a>Definiowanie kontenera platformy Docker
@@ -109,7 +109,7 @@ if __name__ == "__main__":
 
 <a id="Build-Containers"></a>
 ## <a name="build-the-image"></a>Tworzenie obrazu
-Uruchom polecenie `docker build`, aby utworzyć obraz uruchamiający aplikację sieci Web. Otwórz okno programu PowerShell i przejdź do katalogu zawierającego plik Dockerfile. Uruchom następujące polecenie:
+Uruchom polecenie `docker build`, aby utworzyć obraz uruchamiający aplikację internetową. Otwórz okno programu PowerShell i przejdź do katalogu zawierającego plik Dockerfile. Uruchom następujące polecenie:
 
 ```
 docker build -t helloworldapp .

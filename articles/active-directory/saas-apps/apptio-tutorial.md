@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/6/2017
 ms.author: jeedes
-ms.openlocfilehash: fd393107fa8e142f042b0bf1e4283b3cacd4050e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e39bd40a25333f6b2e323439d29e2a85e67d20d5
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218218"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284934"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apptio"></a>Samouczek: Integracji Azure Active Directory z Apptio
 
@@ -121,7 +121,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     ![Konfigurowanie rejestracji jednokrotnej](./media/apptio-tutorial/tutorial_apptio_attributes.png)     
     
     > [!NOTE]
-    > Kliknij [tutaj](http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/) wiedzieć, jak skonfigurować **roli** w usłudze Azure AD
+    > Kliknij [tutaj](../../role-based-access-control/role-assignments-portal.md) wiedzieć, jak skonfigurować **roli** w usłudze Azure AD
     
 6. W **atrybuty użytkownika** sekcji na **logowanie jednokrotne** okna dialogowego, skonfiguruj atrybut tokenu SAML, jak pokazano w obrazie i wykonaj następujące czynności:
 
@@ -243,4 +243,3 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 [201]: ./media/apptio-tutorial/tutorial_general_201.png
 [202]: ./media/apptio-tutorial/tutorial_general_202.png
 [203]: ./media/apptio-tutorial/tutorial_general_203.png
-

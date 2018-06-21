@@ -1,24 +1,22 @@
 ---
 title: Planista wdrażania usługi Azure Site Recovery dla funkcji Hyper-V na platformie Azure | Microsoft Docs
-description: W tym artykule opisano tryb uruchamiania planisty wdrażania usługi Azure Site Recovery w przypadku przechodzenia z funkcji Hyper-V na platformę Azure.
-services: site-recovery
+description: Ten artykuł zawiera sposób uruchamiania replikacji usługi Azure Site Recovery wdrożenia planistę foro funkcji Hyper-V.
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/14/2018
+ms.date: 06/20/2018
 ms.author: nisoneji
-ms.openlocfilehash: 49243eaa4d3413509e569a88e1d7a2f6359d7876
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 0293ace13dbcd30988ce571c60f2d7c6a338e779
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236233"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287494"
 ---
 # <a name="run-azure-site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Uruchamianie planisty wdrożenia usługi Azure Site Recovery dla funkcji Hyper-V na platformie Azure
 
-## <a name="modes-of-running-the-deployment-planner"></a>Tryby uruchamiania planisty wdrażania
-Narzędzie wiersza polecenia (ASRDeploymentPlanner.exe) można uruchomić w dowolnym z czterech następujących trybów: 
+Odzyskiwanie lokacji można uruchomić wdrożenia planistę narzędzia wiersza polecenia (ASRDeploymentPlanner.exe) w jednym z czterech trybów: 
 -   [Pobieranie listy maszyn wirtualnych](#get-vm-list-for-profiling-hyper-v-vms)
 -   [Profil](#profile-hyper-v-vms)
 -   [Generowanie raportu](#generate-report)
@@ -40,14 +38,14 @@ ASRDeploymentPlanner.exe -Operation GetVMList /?
 |---|---|
 | -Operation | GetVMList |
 | -User | Nazwa użytkownika używana do nawiązywania połączenia z hostem lub klastrem funkcji Hyper-V. Użytkownik musi mieć dostęp administracyjny.|
-|-ServerListFile | Plik z listą serwerów zawierającą maszyny wirtualne do profilowania. Można użyć bezwzględnej lub względnej ścieżki pliku. Ten plik powinien zawierać w każdym wierszu jeden z następujących elementów:<ul><li>Nazwa hosta funkcji Hyper-V lub jego adres IP</li><li>Nazwa klastra funkcji Hyper-V lub jego adres IP</li></ul><br>**Przykład:** plik ServerList.txt zawiera informacje o następujących serwerach:<ul><li>Host_1</li><li>10.8.59.27</li><li>Klaster_1</li><li>Host_2</li>|
+| -ServerListFile | Plik z listą serwerów zawierającą maszyny wirtualne do profilowania. Można użyć bezwzględnej lub względnej ścieżki pliku. Ten plik powinien zawierać w każdym wierszu jeden z następujących elementów:<ul><li>Nazwa hosta funkcji Hyper-V lub jego adres IP</li><li>Nazwa klastra funkcji Hyper-V lub jego adres IP</li></ul><br>**Przykład:** plik ServerList.txt zawiera informacje o następujących serwerach:<ul><li>Host_1</li><li>10.8.59.27</li><li>Klaster_1</li><li>Host_2</li>|
 | -Directory|(Opcjonalnie) Ścieżka UNC (Universal Naming Convention) lub ścieżka katalogu lokalnego, w której mają być przechowywane dane wygenerowane podczas tej operacji. Jeśli nie podano nazwy, jako katalog domyślny zostanie użyty katalog o nazwie „ProfiledData” w bieżącej ścieżce.|
-|-OutputFile| (Opcjonalnie) Plik, w którym jest zapisywana lista maszyn wirtualnych pobrana z serwerów funkcji Hyper-V. Jeśli nazwa nie zostanie podana, szczegółowe informacje zostaną zapisane w pliku VMList.txt.  Użyj tego pliku do uruchomienia profilowania po usunięciu z niego maszyn wirtualnych, które nie muszą być profilowane.|
+|-OutputFile| (Opcjonalnie) Plik z listą maszyn wirtualnych pobranych z serwerów funkcji Hyper-V jest zapisywany. Jeśli nazwa nie zostanie podana, szczegółowe informacje zostaną zapisane w pliku VMList.txt.  Użyj tego pliku do uruchomienia profilowania po usunięciu z niego maszyn wirtualnych, które nie muszą być profilowane.|
 |-Password|(Opcjonalnie) Hasło wymagane do nawiązania połączenia z hostem funkcji Hyper-V. Jeśli nie zostanie ono określone jako parametr, po uruchomieniu polecenia zostanie wyświetlony związany z tym monit.|
 
 ### <a name="getvmlist-discovery"></a>Odnajdywanie GetVMList
-**Klaster funkcji Hyper-V**: jeśli w pliku zawierającym listę serwerów zostanie podana nazwa klastra funkcji Hyper-V, narzędzie znajdzie wszystkie węzły klastra funkcji Hyper-V i pobierze informacje o maszynach wirtualnych istniejących na poszczególnych hostach funkcji Hyper-V.
 
+- **Klaster funkcji Hyper-V**: jeśli w pliku zawierającym listę serwerów zostanie podana nazwa klastra funkcji Hyper-V, narzędzie znajdzie wszystkie węzły klastra funkcji Hyper-V i pobierze informacje o maszynach wirtualnych istniejących na poszczególnych hostach funkcji Hyper-V.
 **Host funkcji Hyper-V**: jeśli podano nazwę hosta funkcji Hyper-V, narzędzie najpierw sprawdza, czy należy on do klastra. Jeśli tak, narzędzie pobiera węzły, które należą do klastra. Następnie pobierane są informacje o maszynach wirtualnych z poszczególnych hostów funkcji Hyper-V. 
 
 Można również wyświetlić w pliku listę przyjaznych nazw lub adresów IP maszyn wirtualnych, które będą profilowane ręcznie.
@@ -96,7 +94,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Virtualization|Typ wirtualizacji (VMware lub Hyper-V).|
 |-Directory|(Opcjonalnie) Ścieżka UNC lub ścieżka do katalogu lokalnego, w której są przechowywane dane profilowania wygenerowane podczas profilowania. Jeśli nie podano nazwy, jako katalog domyślny zostanie użyty katalog o nazwie „ProfiledData” w bieżącej ścieżce.|
 |-Password|(Opcjonalnie) Hasło wymagane do nawiązania połączenia z hostem funkcji Hyper-V. Jeśli nie zostanie ono określone jako parametr, po uruchomieniu polecenia zostanie wyświetlony związany z tym monit.|
-|-StorageAccountName|(Opcjonalnie) Nazwa konta magazynu używana do wyszukiwania osiągalnej przepływności na potrzeby replikacji danych ze środowiska lokalnego na platformę Azure. Narzędzie przekazuje dane testowe na to konto magazynu w celu obliczenia przepływności. Musi to być konto magazynu ogólnego przeznaczenia v1 typu (GPv1).|
+|-StorageAccountName|(Opcjonalnie) Nazwa konta magazynu używana do wyszukiwania osiągalnej przepływności na potrzeby replikacji danych ze środowiska lokalnego na platformę Azure. Narzędzie przekazuje dane testowe na to konto magazynu w celu obliczenia przepływności. Musi to być konto magazynu ogólnego przeznaczenia typu v1 (GPv1).|
 |-StorageAccountKey|(Opcjonalnie) Klucz używany do uzyskiwania dostępu do konta magazynu. W witrynie Azure Portal przejdź do pozycji **Konta magazynu** > *nazwa_konta_magazynu* > **Ustawienia** > **Klucze dostępu** > **Klucz1** (lub podstawowy klucz dostępu w przypadku klasycznego konta magazynu).|
 |-Environment|(Opcjonalnie) Docelowe środowisko na potrzeby konta usługi Azure Storage. Ten parametr może przyjmować jedną z trzech wartości — AzureCloud, AzureUSGovernment lub AzureChinaCloud. Wartość domyślna to AzureCloud. Użyj tego parametru, jeśli docelowy region to Wersja platformy Azure dla administracji USA lub Chińska wersja platformy Azure.|
 
@@ -154,7 +152,7 @@ Jeśli serwer, na którym uruchomione jest narzędzie, został ponownie uruchomi
 
 Jeśli przekazano nazwę i klucz konta magazynu, narzędzie mierzy przepływność na ostatnim etapie profilowania. Jeśli narzędzie zostanie zamknięte przed ukończeniem profilowania, przepływność nie zostanie obliczona. Aby znaleźć przepływność przed wygenerowaniem raportu, można uruchomić operację GetThroughput w konsoli wiersza polecenia. W przeciwnym razie wygenerowany raport nie będzie zawierać informacji o przepływności.
 
-Usługa Azure Site Recovery nie obsługuje maszyn wirtualnych z dyskami iSCSI i pass-through. Jednak narzędzie nie wykrywa takich dysków i profiluje dyski iSCSI oraz pass-through dołączone do maszyn wirtualnych.
+Usługa Azure Site Recovery nie obsługuje maszyn wirtualnych mających dyski iSCSI i przekazywania. Narzędzie nie może wykryć i profilu iSCSI i przekazywanego dysków, które są dołączone do maszyn wirtualnych.
 
 ## <a name="generate-a-report"></a>Generowanie raportu
 Narzędzie generuje plik programu Microsoft Excel z włączoną obsługą makr (plik XLSM) jako dane wyjściowe raportu. Plik ten zawiera podsumowanie wszystkich zaleceń dotyczących wdrożenia. Raport nosi nazwę DeploymentPlannerReport_*unikatowy_identyfikator_numeryczny*.xlsm i jest umieszczany w wybranym katalogu.
@@ -278,7 +276,7 @@ ASRDeploymentPlanner.exe -Operation GetThroughput /?
 | -Operation | GetThroughput |
 |-Virtualization|Typ wirtualizacji (VMware lub Hyper-V).|
 |-Directory|(Opcjonalnie) Ścieżka UNC lub ścieżka katalogu lokalnego, w której są przechowywane profilowane dane (pliki wygenerowane podczas profilowania). Te dane są wymagane do wygenerowania raportu. Jeśli nie podano nazwy, jako katalog domyślny zostanie użyty katalog o nazwie „ProfiledData” w bieżącej ścieżce.|
-| -StorageAccountName | Nazwa konta magazynu używana w celu znalezienia użytej przepustowości na potrzeby replikacji danych ze środowiska lokalnego na platformę Azure. Narzędzie przekazuje dane testowe na to konto magazynu w celu określenia użytej przepustowości. Musi to być konto magazynu ogólnego przeznaczenia v1 typu (GPv1).|
+| -StorageAccountName | Nazwa konta magazynu używana w celu znalezienia użytej przepustowości na potrzeby replikacji danych ze środowiska lokalnego na platformę Azure. Narzędzie przekazuje dane testowe na to konto magazynu w celu określenia użytej przepustowości. Musi to być konto magazynu ogólnego przeznaczenia typu v1 (GPv1).|
 | -StorageAccountKey | Klucz konta magazynu używany do uzyskiwania dostępu do konta magazynu. W witrynie Azure Portal przejdź do pozycji **Konta magazynu** > *nazwa_konta_magazynu* > **Ustawienia** > **Klucze dostępu** > **Klucz1**.|
 | -VMListFile | Plik zawierający listę maszyn wirtualnych, które mają być profilowane, na potrzeby obliczenia użytej przepustowości. Można użyć bezwzględnej lub względnej ścieżki pliku. W przypadku funkcji Hyper-V jest to plik wyjściowy operacji GetVMList. Jeśli jest on przygotowywany ręcznie, powinien zawierać w każdym wierszu jedną nazwę serwera lub adres IP, po którym występuje nazwa maszyny wirtualnej. Oba elementy powinny być rozdzielone znakiem \. Nazwa maszyny wirtualnej określona w pliku powinna być taka sama jak nazwa maszyny wirtualnej na hoście funkcji Hyper-V.<br><br>**Przykład:** plik VMList.txt zawiera informacje o następujących maszynach wirtualnych:<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
 |-Environment|(Opcjonalnie) Docelowe środowisko na potrzeby konta usługi Azure Storage. Ten parametr może przyjmować jedną z trzech wartości — AzureCloud, AzureUSGovernment lub AzureChinaCloud. Wartość domyślna to AzureCloud. Użyj tego parametru, jeśli docelowy region świadczenia usługi Azure to Wersja platformy Azure dla administracji USA lub Chińska wersja platformy Azure.|

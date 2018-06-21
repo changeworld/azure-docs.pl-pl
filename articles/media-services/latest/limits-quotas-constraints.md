@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: juliako
-ms.openlocfilehash: 75bfb0d5d29f0b8e038e68af08130564b72a05bf
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 14779306815681c368a98d698a6688d528a6c747
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266757"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294033"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Przydziały i ograniczenia dotyczące usługi Azure Media Services w wersji 3
 
@@ -25,10 +25,11 @@ W tym artykule opisano, przydziały i ograniczenia dotyczące usługi Azure Medi
 | Zasób | Limit domyślny | 
 | --- | --- | 
 | Zasoby dla konta usługi Azure Media Services | 1 000 000|
-| JobInputs na zadanie | 50 |
-| JobOutputs na zadanie | 20 (rozwiązany) |
+| JobInputs na zadanie | 50 (rozwiązany)|
+| JobOutputs na zadania/TransformOutputs w transformacji | 20 (rozwiązany) |
+| Pliki na JobInput|10 (rozwiązany)|
 | Rozmiar pliku| W niektórych scenariuszach istnieje limit na maksymalny obsługiwany rozmiar pliku do przetwarzania w usłudze Media Services. <sup>(1)</sup> |
-| Zadań na konta usługi Media Services | 500 000 <sup>(2)</sup>|
+| Zadań na konta usługi Media Services | 500 000 <sup>(2)</sup> (rozwiązany)|
 | Lista transformacji|Odpowiedź z 1000 przekształcenia na stronie z podziałem na strony|
 | Lista zadań|Odpowiedź, 500 zadań na stronie z podziałem na strony|
 | LiveEvents na konto usługi Media Services |5|
@@ -36,11 +37,9 @@ W tym artykule opisano, przydziały i ograniczenia dotyczące usługi Azure Medi
 | StreamingPolicies | 1 000 000<sup>(3)</sup> |
 | LiveOutputs uruchomiona na LiveEvent |3|
 | LiveOutputs w stanie zatrzymania na LiveEvent |50|
-| Liczba plików na JobInput|10|
 | Konta magazynu | 100<sup>(4)</sup> (rozwiązany) |
 | Punkty końcowe przesyłania strumieniowego uruchomiona na koncie usługi Media Services|2|
-| Przekształca na konto usługi Media Services | 100 |
-| TransformOutputs w transformacji| 20|
+| Przekształca na konto usługi Media Services | 100 (rozwiązany)|
 | Unikatowy StreamingLocators skojarzony z zasobem w tym samym czasie | 20<sup>(5)</sup> |
 
 <sup>1</sup> maksymalny rozmiar obsługiwany dla pojedynczego obiektu blob jest aktualnie w magazynie obiektów Blob Azure do 5 TB. Jednak dodatkowe ograniczenia mają zastosowanie w usłudze Azure Media Services oparte na rozmiarów maszyn wirtualnych, które są używane przez usługę. Jeśli plik źródłowy jest większy niż 260 GB, zadanie prawdopodobnie zakończy się niepowodzeniem. Jeśli masz zawartość 4K, który jest większy niż limit 260 GB, skontaktuj się z nami pod adresem amshelp@microsoft.com dla potencjalnych środki zaradcze do obsługi danego scenariusza.

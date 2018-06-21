@@ -10,16 +10,16 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 1c44b2738fb21450c5a37f715c995a3e7aecc4a6
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: 164760355077e2b905aa0e0f03e1efaf28941e55
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33868829"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36296162"
 ---
 # <a name="password-writeback-overview"></a>Omówienie funkcji zapisywania zwrotnego haseł
 
-Dzięki funkcji zapisywania zwrotnego haseł można skonfigurować usługi Azure Active Directory (Azure AD), aby zapisywać hasła zwrotnie do lokalnej usługi Active Directory. Zapisywanie zwrotne haseł eliminuje to potrzebę konfigurowania i zarządzania rozwiązania Resetowanie hasła samoobsługi skomplikowane lokalnymi i zapewnia wygodny sposób oparte na chmurze użytkownikom resetowania swoich haseł lokalnych, wszędzie tam, gdzie są one. Zapisywanie zwrotne haseł jest składnikiem [Azure Active Directory Connect](./../connect/active-directory-aadconnect.md) czy włączone i używane przez bieżące subskrybentów Premium [wersje usługi Azure Active Directory](../active-directory-whatis.md).
+Dzięki funkcji zapisywania zwrotnego haseł można skonfigurować usługi Azure Active Directory (Azure AD), aby zapisywać hasła zwrotnie do lokalnej usługi Active Directory. Zapisywanie zwrotne haseł eliminuje to potrzebę konfigurowania i zarządzania rozwiązania Resetowanie hasła samoobsługi skomplikowane lokalnymi i zapewnia wygodny sposób oparte na chmurze użytkownikom resetowania swoich haseł lokalnych, wszędzie tam, gdzie są one. Zapisywanie zwrotne haseł jest składnikiem [Azure Active Directory Connect](./../connect/active-directory-aadconnect.md) czy włączone i używane przez bieżące subskrybentów Premium [wersje usługi Azure Active Directory](../fundamentals/active-directory-whatis.md).
 
 Zapisywanie zwrotne haseł oferuje następujące funkcje:
 
@@ -129,7 +129,7 @@ Aby skonfigurować odpowiednie uprawnienia do zapisywania zwrotnego haseł wyst�
 
 ## <a name="licensing-requirements-for-password-writeback"></a>Wymagania dotyczące funkcji zapisywania zwrotnego haseł licencjonowania
 
-Aby uzyskać informacje na temat licencjonowania, zobacz [licencji wymagane dla funkcji zapisywania zwrotnego haseł](concept-sspr-licensing.md#licenses-required-for-password-writeback) lub następujących witryn:
+Aby uzyskać informacje na temat licencjonowania, zobacz [licencji wymagane dla funkcji zapisywania zwrotnego haseł](concept-sspr-licensing.md) lub następujących witryn:
 
 * [Usługa Azure Active Directory cennik lokacji](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)

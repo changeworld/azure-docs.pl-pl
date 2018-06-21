@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f54f0fb16838b245ac09c08c7afd9e6a53449afc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59bc6652a61e0c61188bbfd09251161411923628
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594231"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287581"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizacja programu Azure AD Connect: konfigurowanie filtrowania
 Za pomocą filtrowania, można kontrolować obiekty, które są wyświetlane w usłudze Azure Active Directory (Azure AD) z katalogu lokalnego. Domyślna konfiguracja pobiera wszystkie obiekty we wszystkich domenach w lesie skonfigurowanym. Ogólnie rzecz biorąc jest to zalecana konfiguracja. Użytkowników przy użyciu usługi Office 365 obciążeń, takich jak Exchange Online i Skype dla firm, korzystać z pełną globalnej listy adresowej, wysyłać wiadomości e-mail i wywołać Wszyscy. W konfiguracji domyślnej zostałyby to samo środowisko korzystania, które zostałyby implementacja lokalnego programu Exchange lub Lync.
@@ -40,7 +40,7 @@ W tym artykule opisano sposób konfigurowania różnych metod filtrowania.
 ## <a name="basics-and-important-notes"></a>Podstawy i ważne uwagi
 Synchronizacja programu Azure AD Connect można włączyć, filtrowanie, w dowolnym momencie. Jeśli rozpoczynać się od domyślnej konfiguracji synchronizacji katalogów, a następnie skonfigurować filtrowanie, obiekty, które są odfiltrowywane nie są synchronizowane z usługą Azure AD. Z powodu tej zmiany wszystkie obiekty w usłudze Azure AD, które wcześniej zostały zsynchronizowane, ale następnie zostały przefiltrowane są usuwane z usługi Azure AD.
 
-Przed rozpoczęciem wprowadzania zmian do filtrowania, upewnij się, że możesz [wyłączyć zaplanowane zadanie](#disable-scheduled-task) tak przypadkowo nie Eksportuj zmiany, które jeszcze nie zweryfikowano są prawidłowe.
+Przed rozpoczęciem wprowadzania zmian do filtrowania, upewnij się, że możesz [wyłączyć zaplanowane zadanie](#disable-the-scheduled-task) tak przypadkowo nie Eksportuj zmiany, które jeszcze nie zweryfikowano są prawidłowe.
 
 Ponieważ filtrowanie można usunąć wiele obiektów w tym samym czasie, chcesz upewnij się, że nowe filtry są poprawne, przed rozpoczęciem eksportowania wszystkie zmiany do usługi Azure AD. Po ukończeniu czynności konfiguracyjnych, zdecydowanie zaleca się przestrzeganie [kroki weryfikacji](#apply-and-verify-changes) przed wyeksportować i wprowadzać zmiany do usługi Azure AD.
 

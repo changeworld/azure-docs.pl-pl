@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: a57337acadafe40839e16d6a31861ff7c892c071
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9cfdd6828a6d7ec699501a485519f843c59d0422
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31602505"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295582"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>Migracja zasobów IaaS ze środowiska klasycznego do usługi Azure Resource Manager przy użyciu programu Azure PowerShell
 Te kroki pokazują, jak używać poleceń programu Azure PowerShell do migracji infrastruktury jako zasoby usługi (IaaS) z klasycznym modelu wdrażania modelu wdrażania usługi Azure Resource Manager.
@@ -46,8 +46,6 @@ Poniżej przedstawiono kilka najlepsze rozwiązania, które są zalecane jako oc
 > Bramy aplikacji nie są obecnie obsługiwane dla migracji ze środowiska klasycznego do Menedżera zasobów. Aby przeprowadzić migrację z bramy aplikacji klasycznej sieci wirtualnej, należy usunąć bramę, przed uruchomieniem operacji Prepare, aby przenieść sieć. Po zakończeniu migracji należy ponownie podłączyć bramy w usłudze Azure Resource Manager.
 >
 >Bram usługi ExpressRoute nawiązywania obwody usługi ExpressRoute w innej subskrypcji nie może być migrowane automatycznie. W takiej sytuacji należy usunąć bramę usługi ExpressRoute, migrację sieci wirtualnej i Utwórz ponownie bramę. Zobacz [ExpressRoute migracji obwody i skojarzone sieci wirtualne z klasycznego modelu wdrażania usługi Resource Manager](../../expressroute/expressroute-migration-classic-resource-manager.md) Aby uzyskać więcej informacji.
->
->
 
 ## <a name="step-2-install-the-latest-version-of-azure-powershell"></a>Krok 2: Zainstaluj najnowszą wersję programu Azure PowerShell
 Istnieją dwie główne opcje instalacji programu Azure PowerShell: [galerii programu PowerShell](https://www.powershellgallery.com/profiles/azure-sdk/) lub [Instalatora platformy sieci Web (WebPI)](http://aka.ms/webpi-azps). WebPI odbiera comiesięcznych aktualizacji. Galerii programu PowerShell odbiera aktualizacje w sposób ciągły. W tym artykule jest oparta na program Azure PowerShell w wersji 2.1.0.
@@ -90,8 +88,6 @@ Ustaw subskrypcji platformy Azure dla bieżącej sesji. W tym przykładzie ustaw
 > Rejestracja jest jednorazowe krok, ale należy to robić raz przed próbą wykonania migracji. Bez rejestrowania, zobacz się następujący komunikat o błędzie:
 >
 > *Element BadRequest: Subskrypcja nie jest zarejestrowana do migracji.*
->
->
 
 Rejestracja dostawcy zasobów migracji za pomocą następującego polecenia:
 
@@ -137,12 +133,15 @@ Get-AzureRmVMUsage -Location "West US"
 ```
 
 ## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>Krok 6: Uruchamianie poleceń, aby przeprowadzić migrację zasobów IaaS
+* [Migrowanie maszyn wirtualnych w usłudze w chmurze (nie w sieci wirtualnej)](#step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
+* [Migrowanie maszyn wirtualnych w sieci wirtualnej](#step-61-option-2---migrate-virtual-machines-in-a-virtual-network)
+* [Migrowanie konta magazynu](#step-62-migrate-a-storage-account)
+
 > [!NOTE]
 > Wszystkie czynności opisane w tym miejscu są idempotentności. Jeśli masz problem niż nieobsługiwanej funkcji lub błąd konfiguracji, zalecamy możesz ponowić próbę o przygotowaniu przerwania lub przekazania operacji. Platforma próbuje wykonać akcję ponownie.
->
->
 
-## <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>Krok 6.1: Opcja 1 — migracji maszyn wirtualnych w usłudze w chmurze (nie w sieci wirtualnej)
+
+### <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>Krok 6.1: Opcja 1 — migracji maszyn wirtualnych w usłudze w chmurze (nie w sieci wirtualnej)
 Pobierz listę usług w chmurze za pomocą następującego polecenia, a następnie wybierz usługę w chmurze, które chcesz migrować. Jeśli w sieci wirtualnej maszyn wirtualnych w usłudze w chmurze lub mają one role sieci web lub procesu roboczego, polecenie zwróci komunikat o błędzie.
 
 ```powershell
@@ -169,7 +168,7 @@ Przygotuj maszyny wirtualne w usłudze w chmurze do migracji. Dostępne są dwie
     $validate.ValidationMessages
     ```
 
-    Poprzednie polecenie wyświetla wszystkie ostrzeżenia i błędy, które blokują migracji. Jeśli weryfikacja zakończy się pomyślnie, a następnie można przenieść na **Prepare** krok:
+    Polecenie wyświetla wszystkie ostrzeżenia i błędy, które blokują migracji. Jeśli weryfikacja zakończy się pomyślnie, a następnie można przenieść na **Prepare** krok:
 
     ```powershell
     Move-AzureService -Prepare -ServiceName $serviceName `
@@ -193,7 +192,7 @@ Przygotuj maszyny wirtualne w usłudze w chmurze do migracji. Dostępne są dwie
     $validate.ValidationMessages
     ```
 
-    Poprzednie polecenie wyświetla wszystkie ostrzeżenia i błędy, które blokują migracji. Jeśli weryfikacja zakończy się pomyślnie, można przejść z następujący krok przygotowania:
+    Polecenie wyświetla wszystkie ostrzeżenia i błędy, które blokują migracji. Jeśli weryfikacja zakończy się pomyślnie, można przejść z następujący krok przygotowania:
 
     ```powershell
         Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName `
@@ -223,7 +222,7 @@ Jeśli przygotowane Konfiguracja wygląda dobrze, możesz przejść do przodu i 
     Move-AzureService -Commit -ServiceName $serviceName -DeploymentName $deploymentName
 ```
 
-## <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>Krok 6.1: Opcja 2 — migracji maszyn wirtualnych w sieci wirtualnej
+### <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>Krok 6.1: Opcja 2 — migracji maszyn wirtualnych w sieci wirtualnej
 
 Aby dokonać migracji maszyn wirtualnych w sieci wirtualnej, należy przeprowadzić migrację sieci wirtualnej. Maszyny wirtualne są automatycznie migracji z siecią wirtualną. Wybierz sieć wirtualną, która mają zostać zmigrowane.
 > [!NOTE]
@@ -241,8 +240,6 @@ W tym przykładzie nazwa sieci wirtualnej **myVnet**. Przykładowa nazwa sieci w
 
 > [!NOTE]
 > Jeśli sieć wirtualna zawiera sieci web lub roli proces roboczy lub maszyn wirtualnych z nieobsługiwaną konfiguracją, otrzymasz komunikat o błędzie weryfikacji.
->
->
 
 Po pierwsze sprawdzanie poprawności w przypadku migrowania sieci wirtualnej przy użyciu następującego polecenia:
 
@@ -250,7 +247,7 @@ Po pierwsze sprawdzanie poprawności w przypadku migrowania sieci wirtualnej prz
     Move-AzureVirtualNetwork -Validate -VirtualNetworkName $vnetName
 ```
 
-Poprzednie polecenie wyświetla wszystkie ostrzeżenia i błędy, które blokują migracji. Jeśli weryfikacja zakończy się pomyślnie, można przejść z następujący krok przygotowania:
+Polecenie wyświetla wszystkie ostrzeżenia i błędy, które blokują migracji. Jeśli weryfikacja zakończy się pomyślnie, można przejść z następujący krok przygotowania:
 
 ```powershell
     Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName
@@ -268,82 +265,85 @@ Jeśli przygotowane Konfiguracja wygląda dobrze, możesz przejść do przodu i 
     Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
 ```
 
-## <a name="step-62-migrate-a-storage-account"></a>Krok 6.2 migracji konta magazynu
-Po zakończeniu migracji maszyn wirtualnych, firma Microsoft zaleca migracji kont magazynu.
+### <a name="step-62-migrate-a-storage-account"></a>Krok 6.2 migracji konta magazynu
+Po zakończeniu migracji maszyn wirtualnych, zalecane jest wykonanie następujących wymagań wstępnych, przed przeprowadzeniem migracji kont magazynu.
 
-Przed przeprowadzeniem migracji konta magazynu, należy wykonać przed wymagań wstępnych:
+> [!NOTE]
+> Jeśli Twoje konto magazynu nie może nie skojarzone dyski lub dane dotyczące maszyny Wirtualnej, można przejść bezpośrednio do **zweryfikować konta magazynu i rozpocząć migrację** sekcji.
 
-* **Migrowanie klasycznych maszyn wirtualnych, których dyski są przechowywane na koncie magazynu**
+* **Sprawdzanie wymagań wstępnych, jeśli zostały zmigrowane wszystkie maszyny wirtualne lub Twoje konto magazynu ma zasoby dysku**
+    * **Migrowanie klasycznych maszyn wirtualnych, których dyski są przechowywane na koncie magazynu**
 
-    Poprzedzających polecenie zwraca RoleName i DiskName właściwości wszystkich klasycznego dysków maszyny Wirtualnej na koncie magazynu. RoleName jest nazwa maszyny wirtualnej, do której jest dołączona dysku. Jeśli poprzedzających polecenie zwraca dysków następnie upewnij się, że maszyn wirtualnych, do których są dołączone dyski te są migrowane przed przeprowadzeniem migracji konta magazynu.
+        Poniższe polecenie zwraca RoleName i DiskName właściwości wszystkich klasycznego dysków maszyny Wirtualnej na koncie magazynu. RoleName jest nazwa maszyny wirtualnej, do której jest dołączona dysku. Jeśli to polecenie zwraca dysków następnie upewnij się, że maszyny wirtualne, do których są dołączone dyski te są migrowane przed przeprowadzeniem migracji konta magazynu.
+        ```powershell
+         $storageAccountName = 'yourStorageAccountName'
+          Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Select-Object -ExpandProperty AttachedTo -Property `
+          DiskName | Format-List -Property RoleName, DiskName
+
+        ```
+    * **Usuń niedołączonej klasycznego dyski maszyn wirtualnych przechowywanych w ramach konta magazynu**
+
+        Find niedołączonej klasycznego dysków maszyny Wirtualnej w magazynie konta przy użyciu następujących poleceń:
+
+        ```powershell
+            $storageAccountName = 'yourStorageAccountName'
+            Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Where-Object -Property AttachedTo -EQ $null | Format-List -Property DiskName  
+
+        ```
+        Jeśli powyżej polecenie zwraca dysków Usuń te dyski za pomocą następujących poleceń:
+
+        ```powershell
+           Remove-AzureDisk -DiskName 'yourDiskName'
+        ```
+    * **Usuwanie obrazów maszyn wirtualnych przechowywanych w ramach konta magazynu**
+
+        Poniższe polecenie zwraca wszystkie obrazy maszyny Wirtualnej z dyskiem systemu operacyjnego przechowywane na koncie magazynu.
+         ```powershell
+            Get-AzureVmImage | Where-Object { $_.OSDiskConfiguration.MediaLink -ne $null -and $_.OSDiskConfiguration.MediaLink.Host.Contains($storageAccountName)`
+                                    } | Select-Object -Property ImageName, ImageLabel
+         ```
+         Poniższe polecenie zwraca wszystkie obrazy maszyny Wirtualnej z dyskami danych przechowywanych w ramach konta magazynu.
+         ```powershell
+
+            Get-AzureVmImage | Where-Object {$_.DataDiskConfigurations -ne $null `
+                                             -and ($_.DataDiskConfigurations | Where-Object {$_.MediaLink -ne $null -and $_.MediaLink.Host.Contains($storageAccountName)}).Count -gt 0 `
+                                            } | Select-Object -Property ImageName, ImageLabel
+         ```
+        Usuń wszystkie obrazy maszyny Wirtualnej zwrócony przez powyżej poleceń za pomocą tego polecenia:
+        ```powershell
+        Remove-AzureVMImage -ImageName 'yourImageName'
+        ```
+* **Sprawdzanie poprawności magazynu konta, a następnie uruchom migrację**
+
+    Sprawdzanie poprawności każdego konta magazynu, migracji za pomocą następującego polecenia. W tym przykładzie nazwa konta magazynu jest **Mojekontomagazynu**. Przykładowa nazwa należy zastąpić nazwę konta magazynu.
+
     ```powershell
-     $storageAccountName = 'yourStorageAccountName'
-      Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Select-Object -ExpandProperty AttachedTo -Property `
-      DiskName | Format-List -Property RoleName, DiskName
-
+        $storageAccountName = "myStorageAccount"
+        Move-AzureStorageAccount -Validate -StorageAccountName $storageAccountName
     ```
-* **Usuń niedołączonej klasycznego dyski maszyn wirtualnych przechowywanych w ramach konta magazynu**
 
-    Find niedołączonej klasycznego dysków maszyny Wirtualnej w magazynie konta przy użyciu następujących poleceń:
+    Następnym krokiem jest przygotowania do migracji konta magazynu
 
     ```powershell
-        $storageAccountName = 'yourStorageAccountName'
-        Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Where-Object -Property AttachedTo -EQ $null | Format-List -Property DiskName  
-
+        $storageAccountName = "myStorageAccount"
+        Move-AzureStorageAccount -Prepare -StorageAccountName $storageAccountName
     ```
-    Jeśli powyżej polecenie zwraca dysków Usuń te dyski za pomocą następujących poleceń:
+
+    Sprawdź konfigurację dla konta magazynu przygotowanego przy użyciu programu Azure PowerShell lub w portalu Azure. Jeśli chcesz powrócić do poprzedni stan nie jest jeszcze gotowa do migracji, użyj następującego polecenia:
 
     ```powershell
-       Remove-AzureDisk -DiskName 'yourDiskName'
+        Move-AzureStorageAccount -Abort -StorageAccountName $storageAccountName
     ```
-* **Usuwanie obrazów maszyn wirtualnych przechowywanych w ramach konta magazynu**
 
-    Poprzedzających polecenie zwraca wszystkie obrazy maszyny Wirtualnej z dyskiem systemu operacyjnego przechowywane na koncie magazynu.
-     ```powershell
-        Get-AzureVmImage | Where-Object { $_.OSDiskConfiguration.MediaLink -ne $null -and $_.OSDiskConfiguration.MediaLink.Host.Contains($storageAccountName)`
-                                } | Select-Object -Property ImageName, ImageLabel
-     ```
-     Poprzedzających polecenie zwraca wszystkie obrazy maszyny Wirtualnej z dyskami danych przechowywanych w ramach konta magazynu.
-     ```powershell
+    Jeśli przygotowane Konfiguracja wygląda dobrze, możesz przejść do przodu i zatwierdzić zasobów za pomocą następującego polecenia:
 
-        Get-AzureVmImage | Where-Object {$_.DataDiskConfigurations -ne $null `
-                                         -and ($_.DataDiskConfigurations | Where-Object {$_.MediaLink -ne $null -and $_.MediaLink.Host.Contains($storageAccountName)}).Count -gt 0 `
-                                        } | Select-Object -Property ImageName, ImageLabel
-     ```
-    Usuń wszystkie obrazy maszyny Wirtualnej zwrócony przez powyżej poleceń przy użyciu poprzedniego polecenia:
     ```powershell
-    Remove-AzureVMImage -ImageName 'yourImageName'
+        Move-AzureStorageAccount -Commit -StorageAccountName $storageAccountName
     ```
-
-Sprawdzanie poprawności każdego konta magazynu, migracji za pomocą następującego polecenia. W tym przykładzie nazwa konta magazynu jest **Mojekontomagazynu**. Przykładowa nazwa należy zastąpić nazwę konta magazynu.
-
-```powershell
-    $storageAccountName = "myStorageAccount"
-    Move-AzureStorageAccount -Validate -StorageAccountName $storageAccountName
-```
-
-Następnym krokiem jest przygotowania do migracji konta magazynu
-
-```powershell
-    $storageAccountName = "myStorageAccount"
-    Move-AzureStorageAccount -Prepare -StorageAccountName $storageAccountName
-```
-
-Sprawdź konfigurację dla konta magazynu przygotowanego przy użyciu programu Azure PowerShell lub w portalu Azure. Jeśli chcesz powrócić do poprzedni stan nie jest jeszcze gotowa do migracji, użyj następującego polecenia:
-
-```powershell
-    Move-AzureStorageAccount -Abort -StorageAccountName $storageAccountName
-```
-
-Jeśli przygotowane Konfiguracja wygląda dobrze, możesz przejść do przodu i zatwierdzić zasobów za pomocą następującego polecenia:
-
-```powershell
-    Move-AzureStorageAccount -Commit -StorageAccountName $storageAccountName
-```
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Omówienie migracji zasobów IaaS ze środowiska klasycznego do usługi Azure Resource Manager obsługiwane platformy](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Techniczne szczegółowe informacje na temat obsługiwanych platform migracji ze środowiska klasycznego do usługi Azure Resource Manager](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Rozbudowana technicznie migracja z obsługą platformy od modelu klasycznego do modelu opartego na usłudze Azure Resource Manager](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Planowanie migracji zasobów rozwiązania IaaS z wdrożenia klasycznego do usługi Azure Resource Manager](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Migracja zasobów IaaS ze środowiska klasycznego do usługi Azure Resource Manager za pomocą interfejsu wiersza polecenia](../linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Narzędzia społeczności z migracji zasobów IaaS ze środowiska klasycznego do usługi Azure Resource Manager](migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

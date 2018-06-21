@@ -3,17 +3,16 @@ title: Planowanie wydajności i skalowania dla replikacji maszyn wirtualnych VMw
 description: Użyj w tym artykule Planowanie wydajności i skalowania podczas replikowania maszyn wirtualnych VMware do platformy Azure z usługą Azure Site Recovery
 services: site-recovery
 author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 02/27/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: rayne
-ms.openlocfilehash: dbaf1e29fbf4be8ef9432842b7ea4d6511b21cbb
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 30e4534fbc235a228ac887ddc3336f09909b4fa6
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29692202"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287358"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-replication-with-azure-site-recovery"></a>Planowanie wydajności i skalowania w przypadku replikacji maszyn wirtualnych VMware z usługą Azure Site Recovery
 
@@ -21,7 +20,7 @@ Użyj w tym artykule, aby zorientować się planowanie pojemności i skalowanie 
 
 ## <a name="how-do-i-start-capacity-planning"></a>Jak rozpocząć planowanie pojemności
 
-Zbierz informacje o środowisku replikacji, uruchamiając [Azure lokacji odzyskiwania wdrożenia Planistę](https://aka.ms/asr-deployment-planner-doc) dla replikacji maszyn wirtualnych VMware. [Dowiedz się więcej](site-recovery-deployment-planner.md) o tym narzędziu. Będzie zbierać informacje o zgodnych i niezgodnych maszyn wirtualnych, dysków dla maszyny Wirtualnej, a danych churn — na dysku. Narzędzie uwzględnia również wymagania dotyczące przepustowości sieci i infrastruktury platformy Azure potrzebnej do pomyślnej replikacji i testowania trybu failover.
+Zbierz informacje o środowisku replikacji, uruchamiając [Azure lokacji odzyskiwania wdrożenia Planistę](https://aka.ms/asr-deployment-planner-doc) dla replikacji maszyn wirtualnych VMware. [Dowiedz się więcej](site-recovery-deployment-planner.md) na temat tego narzędzia. Będzie zbierać informacje o zgodnych i niezgodnych maszyn wirtualnych, dysków dla maszyny Wirtualnej, a danych churn — na dysku. Narzędzie uwzględnia również wymagania dotyczące przepustowości sieci i infrastruktury platformy Azure potrzebnej do pomyślnej replikacji i testowania trybu failover.
 
 ## <a name="capacity-considerations"></a>Zagadnienia dotyczące wydajności
 

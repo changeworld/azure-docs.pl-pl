@@ -14,15 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 4555bc85489f557cf6b6b744df7063fc14b0602a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7147b282d9bcbf48391d60466c77d28eca396832
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34590382"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294279"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: historia wersji
 Zespół usługi Azure Active Directory regularnie aktualizuje Azure AD Connect Health z nowych funkcji. W tym artykule wymieniono wersje i funkcje, które zostały wydane.
+
+## <a name="june-2018"></a>2018 czerwca 
+**Nowe funkcje w wersji zapoznawczej:** 
+* Azure AD Connect Health do celów synchronizacji - zdiagnozować i rozwiązać błędy synchronizacji zduplikowany atrybut z portalu 
+
+**Aktualizacja agenta:** 
+*   Agent Azure AD Connect Health dla usług AD FS (wersja 3.1.2.0)  
+   1. Poprawki błędów i poprawy dla alertów 
+
 
 ## <a name="may-2018"></a>Maj 2018 r.
 **Aktualizacja agenta:**
@@ -35,7 +44,7 @@ Zespół usługi Azure Active Directory regularnie aktualizuje Azure AD Connect 
  2. Poprawa ochrony prywatności agenta  
  3. Ogólne ulepszenia i poprawki błędów
 
-* Agent Azure AD Connect Health do celów synchronizacji (wersja 3.0.244.0)
+* Agent Azure AD Connect Health zwolnione z programem Azure AD Connect wersji 1.1.819.0 synchronizacji (wersja 3.0.164.0)
  1. Poprawa ochrony prywatności agenta  
  2. Ogólne ulepszenia i poprawki błędów
 
@@ -98,7 +107,7 @@ Zespół usługi Azure Active Directory regularnie aktualizuje Azure AD Connect 
 ## <a name="october-2016"></a>Października 2016
 **Aktualizacja agenta:**
 
-* Agent Azure AD Connect Health dla usług AD FS \(wersji 2.6.408.0\)
+* Agent Azure AD Connect Health dla usług AD FS (wersja 2.6.408.0)
 1. Ulepszenia w wykrywaniu adresów IP klientów w żądania uwierzytelniania
 2. Poprawki błędów związane z alertami
 * Agent Azure AD Connect Health dla usług AD DS (wersja 2.6.408.0)

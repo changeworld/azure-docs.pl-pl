@@ -9,12 +9,12 @@ ms.date: 02/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9c90cc28956e4dd7730cc7ba09a173f505f056fc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 30dc833edabfe3d13769bafc9fa0eb6bdd51bb23
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632404"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287211"
 ---
 # <a name="store-data-at-the-edge-with-sql-server-databases"></a>Przechowywanie danych na krawędzi, z baz danych programu SQL Server
 
@@ -33,7 +33,7 @@ Następujące artykuły nie są wymagane do pomyślnego ukończenia tego samoucz
 * [Użyj programu Visual Studio Code do opracowywania i wdrażania usługi Azure Functions do krawędzi IoT Azure](how-to-vscode-develop-azure-function.md)
 
 Po ukończeniu wymagane samouczki powinny mieć wymagania wstępne gotowy na komputerze: 
-* Aktywnym Centrum Azure IoT.
+* Aktywnym Centrum Azure IoT z co najmniej IoT urządzenia.
 * Urządzenie brzegowe IoT z co najmniej 2 GB pamięci RAM i dysku 2 GB.
 * [Program Visual Studio Code](https://code.visualstudio.com/) 
 * [Rozszerzenie usługi Azure IoT Edge dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
@@ -43,7 +43,6 @@ Po ukończeniu wymagane samouczki powinny mieć wymagania wstępne gotowy na kom
 * [Python 2.7](https://www.python.org/downloads/)
 * [IoT krawędzią formantu skryptu](https://pypi.python.org/pypi/azure-iot-edge-runtime-ctl)
 * Szablon AzureIoTEdgeFunction (`dotnet new -i Microsoft.Azure.IoT.Edge.Function`)
-* Aktywnym Centrum IoT z co najmniej IoT urządzenia.
 
 Zarówno systemu Windows i Linux kontenery x64 architektury procesora działa w tym samouczku. SQL Server nie obsługuje procesorów ARM.
 
@@ -109,7 +108,7 @@ W kroku 3, możesz dodać utworzyć opcje do kontenera programu SQL Server, któ
       "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"MSSQL_SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"C:\\\\mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}}"
       ```
 
-   * Linux:
+   * W systemie Linux:
 
       ```json
       "image": "microsoft/mssql-server-linux:2017-latest",

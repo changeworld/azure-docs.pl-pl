@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 8796cd3224670c6d1c8b1b3c6da8d1c096b01d03
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 40a8cd256164bb66e82c651e58d37b1afbb4a652
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716724"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287807"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurowanie zawsze włączonej grupy dostępności w maszynie Wirtualnej platformy Azure ręcznie
 
@@ -56,7 +56,7 @@ Przed rozpoczęciem tego samouczka należy [ukończyć wymagania wstępne dotycz
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->
 
 <a name="CreateCluster"></a>
-## Tworzenie klastra
+## <a name="create-the-cluster"></a>Tworzenie klastra
 
 Po ukończeniu wymagania wstępne, pierwszym krokiem jest tworzenie klastra trybu Failover serwera systemu Windows, która zawiera dwa serwery SQL i serwer monitora.
 
@@ -413,8 +413,8 @@ Aby skonfigurować usługę równoważenia obciążenia, musisz utworzyć puli w
    | **Nazwa** | Tekst | SQLAlwaysOnEndPointListener |
    | **Adres IP frontonu** | Wybierz adres |Użyj adresu, który został utworzony podczas tworzenia modułu równoważenia obciążenia. |
    | **Protokół** | Wybierz protokół TCP |TCP |
-   | **Port** | Użyj portu dla wystąpienia programu SQL Server | 1433 |
-   | **Port zaplecza** | To pole nie jest używany, gdy pływający adres IP jest wartość dla serwera bezpośredniego zwrotu | 1433 |
+   | **Port** | Korzystając z portu odbiornika grupy dostępności | 1435 |
+   | **Port zaplecza** | To pole nie jest używany, gdy pływający adres IP jest wartość dla serwera bezpośredniego zwrotu | 1435 |
    | **Sondy** |Nazwa określona dla sondy | SQLAlwaysOnEndPointProbe |
    | **Trwałość sesji** | Listy rozwijanej | **Brak** |
    | **Limit czasu bezczynności** | Minut, aby utrzymać otwarte połączenie TCP | 4 |

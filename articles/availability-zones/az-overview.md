@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 06/08/2018
 ms.author: iainfou
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: 7cfd3fba459f409079cb0c621edab3197070285e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 7a67d65621da129640d3bb551cb0976ec1912050
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232423"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284808"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Co to są strefy dostępności na platformie Azure?
 Dostępność strefy jest oferty, który chroni aplikacje i dane awarii centrum danych wysokiej dostępności. Dostępność strefy są unikatowe lokalizacje fizyczne w obrębie regionu platformy Azure. Każdej strefy składa się z co najmniej jeden centrów danych z niezależnej od zasilania, chłodzenia i sieci. W celu zapewnienia odporności, istnieje co najmniej trzech oddzielnych stref we wszystkich regionach włączone. Fizyczne rozdzielenie dostępności stref w obrębie regionu chroni aplikacje i dane z błędami centrum danych. Usługi strefowo nadmiarowy replikowanie danych i aplikacji w dostępności strefa chroni przed jednym punktów z awarią. W strefach dostępności Azure oferuje branży najlepsze 99,99% wirtualna przestojów umowy SLA. Pełna treść [umowy SLA dotyczącej usługi Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/) wyjaśnia w całości kwestię gwarantowanej dostępności platformy Azure.
@@ -57,6 +57,8 @@ Usług Azure, które obsługują dostępność strefy są:
 - Publiczny adres IP
 - Magazyn strefowo nadmiarowy
 - SQL Database
+- Event Hubs
+- Service Bus
 
 
 ## <a name="pricing"></a>Cennik

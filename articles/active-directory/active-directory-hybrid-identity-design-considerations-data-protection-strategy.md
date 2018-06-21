@@ -16,12 +16,12 @@ ms.date: 11/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: d65e4c76d6c9bc0b1f6a9f2827a0ae2d7dec5d93
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
-ms.translationtype: HT
+ms.openlocfilehash: f0def105997213ae5d356de89e6189b6441facbd
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824172"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295575"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Definiowanie strategii ochrony danych dla rozwiązania z tożsamością hybrydową
 W tym zadaniu będziesz definiować hybrydowego tożsamości rozwiązanie, aby spełniać wymagania biznesowe zdefiniowaną w strategii ochrony danych:
@@ -57,7 +57,7 @@ W zależności od odpowiedzi na pytania w [ustalenie wymagań dotyczących ochro
 >
 
 ## <a name="define-content-management-options"></a>Zdefiniuj opcje zarządzania zawartością
-Jedną z zalet Zarządzanie hybrydowej infrastruktury tożsamości za pomocą usługi Azure AD jest, że proces jest w pełni przezroczyste z perspektywy użytkownika końcowego. Użytkownik próbuje uzyskać dostęp do udostępnionych zasobów, zasób wymaga uwierzytelnienia, użytkownik musi wysłać żądanie uwierzytelnienia do usługi Azure AD w celu uzyskania tokenu i uzyskać dostęp do zasobu. Ta cały proces przebiega w tle, bez interakcji z użytkownikiem. Istnieje również możliwość udzielenia uprawnienia do [grupy](active-directory-manage-groups.md#getting-started-with-access-management) użytkowników, aby umożliwić im wykonywanie niektórych typowych akcji.
+Jedną z zalet Zarządzanie hybrydowej infrastruktury tożsamości za pomocą usługi Azure AD jest, że proces jest w pełni przezroczyste z perspektywy użytkownika końcowego. Użytkownik próbuje uzyskać dostęp do udostępnionych zasobów, zasób wymaga uwierzytelnienia, użytkownik musi wysłać żądanie uwierzytelnienia do usługi Azure AD w celu uzyskania tokenu i uzyskać dostęp do zasobu. Ta cały proces przebiega w tle, bez interakcji z użytkownikiem. Istnieje również możliwość udzielenia uprawnienia do [grupy](fundamentals/active-directory-manage-groups.md#getting-started-with-access-management) użytkowników, aby umożliwić im wykonywanie niektórych typowych akcji.
 
 Organizacje, które są obawy dotyczące prywatności danych zwykle wymagają klasyfikacji danych dla ich rozwiązania. Jeśli ich bieżącej infrastruktury lokalnej jest już z klasyfikacji danych, istnieje możliwość użycia usługi Azure AD jako głównym repozytorium dla tożsamości użytkownika. Typowe narzędzia jest używane lokalnymi klasyfikacji danych jest nazywana [Data Classification Toolkit](https://msdn.microsoft.com/library/Hh204743.aspx) dla systemu Windows Server 2012 R2. To narzędzie może pomóc zidentyfikować, klasyfikować i chronić dane na serwerach plików w chmurze prywatnej. Istnieje również możliwość użycia [automatycznej klasyfikacji plików](https://technet.microsoft.com/library/hh831672.aspx) w systemie Windows Server 2012, aby wykonać to zadanie.
 
@@ -131,12 +131,12 @@ Każdy interakcji na diagramie pokazano na rysunku x reprezentuje jeden scenariu
 
   3. Dostęp warunkowy dla aplikacji usługi Office 365 w usłudze Microsoft Intune: Administratorzy IT mogą aprowizować zasady dostępu warunkowego urządzeń, aby zabezpieczyć zasoby firmowe, w tym samym czasie, dzięki czemu pracownicy przetwarzający informacje na zgodnych urządzeniach na dostęp do usług. Aby uzyskać więcej informacji, zobacz artykuł [Conditional Access Device Policies for Office 365 services](active-directory-conditional-access-device-policies.md) (Zasady dostępu warunkowego urządzeń dla usług Office 365).
 
-  4. Dostęp warunkowy dla aplikacji Saas: [ta funkcja](http://blogs.technet.com/b/ad/archive/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work.aspx) umożliwia konfigurowanie reguł dostępu do poszczególnych aplikacji usługi Multi-Factor authentication i możliwość blokowania dostępu dla użytkowników nie znajduje się w zaufanej sieci. Reguły uwierzytelniania wieloskładnikowego można stosować do wszystkich użytkowników, które są przypisane do aplikacji lub tylko dla użytkowników z określonych grup zabezpieczeń. Użytkownicy mogą być wyłączone z wymaganie uwierzytelniania wieloskładnikowego, jeśli uzyskują dostęp do aplikacji z adresu IP, który w wewnątrz organizacji w sieci.
+  4. Dostęp warunkowy dla aplikacji Saas: [ta funkcja](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/) umożliwia konfigurowanie reguł dostępu do poszczególnych aplikacji usługi Multi-Factor authentication i możliwość blokowania dostępu dla użytkowników nie znajduje się w zaufanej sieci. Reguły uwierzytelniania wieloskładnikowego można stosować do wszystkich użytkowników, które są przypisane do aplikacji lub tylko dla użytkowników z określonych grup zabezpieczeń. Użytkownicy mogą być wyłączone z wymaganie uwierzytelniania wieloskładnikowego, jeśli uzyskują dostęp do aplikacji z adresu IP, który w wewnątrz organizacji w sieci.
 
 Ponieważ opcje kontroli dostępu używa wielowarstwowych podejście, porównanie te opcje nie są stosowane dla tego zadania. Upewnij się, że są wykorzystuje wszystkie opcje dostępne dla każdego scenariusza, który należy kontrolować dostęp do zasobów.
 
 ## <a name="define-incident-response-options"></a>Zdefiniuj opcje odpowiedzi na zdarzenia
-Usługi Azure AD może pomóc IT do tożsamości potencjalne zagrożenia bezpieczeństwa w środowisku przez monitorowanie aktywności użytkownika. IT mogą używać usługi Azure AD dostępu i użycia raporty wgląd we integralności i bezpieczeństwa katalogu organizacji. Dzięki tym informacjom administrator IT może lepiej określić, gdzie może znajdować się możliwe zagrożenia bezpieczeństwa, tak aby ich odpowiednio zaplanować ich eliminowania.  [Subskrypcję usługi Azure AD Premium](active-directory-get-started-premium.md) ma zestaw raporty dotyczące zabezpieczeń, które można włączyć IT w celu uzyskania tych informacji. [Raporty usługi Azure AD](active-directory-view-access-usage-reports.md) są podzielone na następujące kategorie:
+Usługi Azure AD może pomóc IT do tożsamości potencjalne zagrożenia bezpieczeństwa w środowisku przez monitorowanie aktywności użytkownika. IT mogą używać usługi Azure AD dostępu i użycia raporty wgląd we integralności i bezpieczeństwa katalogu organizacji. Dzięki tym informacjom administrator IT może lepiej określić, gdzie może znajdować się możliwe zagrożenia bezpieczeństwa, tak aby ich odpowiednio zaplanować ich eliminowania.  [Subskrypcję usługi Azure AD Premium](fundamentals/active-directory-get-started-premium.md) ma zestaw raporty dotyczące zabezpieczeń, które można włączyć IT w celu uzyskania tych informacji. [Raporty usługi Azure AD](active-directory-view-access-usage-reports.md) są podzielone na następujące kategorie:
 
 * **Raporty anomalii**: zdarzenia logowania, które zostały uznane za nietypowych zawiera. Celem jest uświadomić możesz takiego działania i które umożliwia wprowadzania określenie, czy zdarzenie jest podejrzane.
 * **Zintegrowane raport aplikacji**: zapewnia wgląd w sposób aplikacji w chmurze są używane w organizacji. Usługa Azure Active Directory oferuje integrację z tysiącami aplikacji w chmurze.
@@ -145,9 +145,9 @@ Usługi Azure AD może pomóc IT do tożsamości potencjalne zagrożenia bezpiec
 * **Dzienniki aktywności**: zawiera rekord wszystkich zdarzeń inspekcji w ostatnich 24 godzinach, ostatnich 7 dni lub ostatnich 30 dni, a także grupy działania zmiany i działanie resetowania i rejestracji hasła.
 
 > [!TIP]
-> Jest innego raportu, który może również pomóc zespołu reagowania na zdarzenia pracy w przypadku [użytkownik mający poświadczenia ujawnione](http://blogs.technet.com/b/ad/archive/2015/06/15/azure-active-directory-premium-reporting-now-detects-leaked-credentials.aspx) raportu. Ten raport wyświetla dopasowań między listą ujawnione poświadczenia i dzierżawy.
+> Jest innego raportu, który może również pomóc zespołu reagowania na zdarzenia pracy w przypadku [użytkownik mający poświadczenia ujawnione](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/15/azure-active-directory-premium-reporting-now-detects-leaked-credentials/) raportu. Ten raport wyświetla dopasowań między listą ujawnione poświadczenia i dzierżawy.
 >
->
+
 
 Inne ważne wbudowanych raportów w usłudze Azure AD, które mogą być używane podczas analizy odpowiedzi na zdarzenia i są:
 

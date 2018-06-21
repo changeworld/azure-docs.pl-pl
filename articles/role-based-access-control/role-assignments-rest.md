@@ -1,6 +1,6 @@
 ---
-title: Kontrola dostępu oparta na rolach przy użyciu REST - usługi Azure AD | Dokumentacja firmy Microsoft
-description: Zarządzanie kontrolą dostępu opartej na rolach przy użyciu interfejsu API REST
+title: Zarządzanie dostępem przy użyciu RBAC i interfejsu API REST - Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zarządzać dostępem dla użytkowników, grup i aplikacji, przy użyciu kontroli dostępu opartej na rolach (RBAC) i interfejsu API REST. W tym listę dostępu, udzielanie dostępu i usuwanie dostępu.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,25 +15,21 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f81c84f5db4b595acf851a315c03cd4189514afa
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: fdf246ede9fd030c03a70a90b35d4dd1fb645df1
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267479"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294466"
 ---
-# <a name="manage-role-based-access-control-with-the-rest-api"></a>Zarządzanie kontrolą dostępu opartej na rolach przy użyciu interfejsu API REST
-> [!div class="op_single_selector"]
-> * [Program PowerShell](role-assignments-powershell.md)
-> * [Interfejs wiersza polecenia platformy Azure](role-assignments-cli.md)
-> * [Interfejs API REST](role-assignments-rest.md)
+# <a name="manage-access-using-rbac-and-the-rest-api"></a>Zarządzanie dostępem przy użyciu RBAC i interfejsu API REST
 
-Z opartej na rolach kontroli dostępu (RBAC), należy zdefiniować dostęp dla użytkowników, grup i nazwy główne usług poprzez przypisywanie ról w określonym zakresie. W tym artykule opisano, jak zarządzać dostępem przy użyciu interfejsu API REST.
+[Kontrola dostępu oparta na rolach (RBAC)](overview.md) jest sposób zarządzania dostępem do zasobów na platformie Azure. W tym artykule opisano, jak zarządzać dostępu dla użytkowników, grup i aplikacji przy użyciu RBAC i interfejsu API REST.
 
 ## <a name="list-all-role-assignments"></a>Wyświetl listę wszystkich przypisań ról
 Wyświetla listę wszystkich przypisań ról w określonym zakresie i subscopes.
 
-Na liście przypisań ról musi mieć dostęp do `Microsoft.Authorization/roleAssignments/read` operacji w tym zakresie. Wbudowane role mają dostęp do tej operacji. Aby uzyskać więcej informacji na temat przypisania ról i zarządzanie dostęp do zasobów platformy Azure, zobacz [kontroli dostępu](role-assignments-portal.md).
+Na liście przypisań ról musi mieć dostęp do `Microsoft.Authorization/roleAssignments/read` operacji w tym zakresie. Wbudowane role mają dostęp do tej operacji. Aby uzyskać więcej informacji na temat przypisania ról i zarządzanie dostęp do zasobów platformy Azure, zobacz [kontroli dostępu opartej na rolach na platformie Azure](role-assignments-portal.md).
 
 ### <a name="request"></a>Żądanie
 Użyj **UZYSKAĆ** metody za pomocą następującego identyfikatora URI:
@@ -83,7 +79,7 @@ Kod stanu: 200
 ## <a name="get-information-about-a-role-assignment"></a>Pobierz informacje o przypisaniu roli
 Pobiera informacje o przypisaniu roli jednej, określonej przez identyfikator przypisania roli.
 
-Aby uzyskać informacje o przypisaniu roli, musi mieć dostęp do `Microsoft.Authorization/roleAssignments/read` operacji. Wbudowane role mają dostęp do tej operacji. Aby uzyskać więcej informacji na temat przypisania ról i zarządzanie dostęp do zasobów platformy Azure, zobacz [kontroli dostępu](role-assignments-portal.md).
+Aby uzyskać informacje o przypisaniu roli, musi mieć dostęp do `Microsoft.Authorization/roleAssignments/read` operacji. Wbudowane role mają dostęp do tej operacji. Aby uzyskać więcej informacji na temat przypisania ról i zarządzanie dostęp do zasobów platformy Azure, zobacz [kontroli dostępu opartej na rolach na platformie Azure](role-assignments-portal.md).
 
 ### <a name="request"></a>Żądanie
 Użyj **UZYSKAĆ** metody za pomocą następującego identyfikatora URI:
@@ -124,7 +120,7 @@ Kod stanu: 200
 ## <a name="create-a-role-assignment"></a>Tworzy przypisanie roli
 Tworzy przypisanie roli w podanym zakresie dla określonego podmiotu zabezpieczeń udzielanie określonej roli.
 
-Aby utworzyć przypisanie roli, musi mieć dostęp do `Microsoft.Authorization/roleAssignments/write` operacji. Wbudowanych ról, tylko *właściciela* i *Administrator dostępu użytkowników* udzielany jest dostęp do tej operacji. Aby uzyskać więcej informacji na temat przypisania ról i zarządzanie dostęp do zasobów platformy Azure, zobacz [kontroli dostępu](role-assignments-portal.md).
+Aby utworzyć przypisanie roli, musi mieć dostęp do `Microsoft.Authorization/roleAssignments/write` operacji. Wbudowanych ról, tylko *właściciela* i *Administrator dostępu użytkowników* udzielany jest dostęp do tej operacji. Aby uzyskać więcej informacji na temat przypisania ról i zarządzanie dostęp do zasobów platformy Azure, zobacz [kontroli dostępu opartej na rolach na platformie Azure](role-assignments-portal.md).
 
 ### <a name="request"></a>Żądanie
 Użyj **PUT** metody za pomocą następującego identyfikatora URI:
@@ -182,7 +178,7 @@ Kod stanu: 201
 ## <a name="delete-a-role-assignment"></a>Usuwa przypisanie roli
 Usuwa przypisanie roli w podanym zakresie.
 
-Aby usunąć przypisanie roli, musi mieć dostęp do `Microsoft.Authorization/roleAssignments/delete` operacji. Wbudowanych ról, tylko *właściciela* i *Administrator dostępu użytkowników* udzielany jest dostęp do tej operacji. Aby uzyskać więcej informacji na temat przypisania ról i zarządzanie dostęp do zasobów platformy Azure, zobacz [kontroli dostępu](role-assignments-portal.md).
+Aby usunąć przypisanie roli, musi mieć dostęp do `Microsoft.Authorization/roleAssignments/delete` operacji. Wbudowanych ról, tylko *właściciela* i *Administrator dostępu użytkowników* udzielany jest dostęp do tej operacji. Aby uzyskać więcej informacji na temat przypisania ról i zarządzanie dostęp do zasobów platformy Azure, zobacz [kontroli dostępu opartej na rolach na platformie Azure](role-assignments-portal.md).
 
 ### <a name="request"></a>Żądanie
 Użyj **usunąć** metody za pomocą następującego identyfikatora URI:
@@ -223,7 +219,7 @@ Kod stanu: 200
 ## <a name="list-all-roles"></a>Wyświetl listę wszystkich ról
 Wyświetla wszystkie role, które są dostępne do przypisania w podanym zakresie.
 
-Do listy ról musi mieć dostęp do `Microsoft.Authorization/roleDefinitions/read` operacji w tym zakresie. Wbudowane role mają dostęp do tej operacji. Aby uzyskać więcej informacji na temat przypisania ról i zarządzanie dostęp do zasobów platformy Azure, zobacz [kontroli dostępu](role-assignments-portal.md).
+Do listy ról musi mieć dostęp do `Microsoft.Authorization/roleDefinitions/read` operacji w tym zakresie. Wbudowane role mają dostęp do tej operacji. Aby uzyskać więcej informacji na temat przypisania ról i zarządzanie dostęp do zasobów platformy Azure, zobacz [kontroli dostępu opartej na rolach na platformie Azure](role-assignments-portal.md).
 
 ### <a name="request"></a>Żądanie
 Użyj **UZYSKAĆ** metody za pomocą następującego identyfikatora URI:
@@ -306,7 +302,7 @@ Kod stanu: 200
 ## <a name="get-information-about-a-role"></a>Uzyskiwanie informacji o roli
 Pobiera informacje o pojedynczej roli określonej przez identyfikator definicji roli. Aby uzyskać informacje o pojedynczej roli przy użyciu nazwy wyświetlanej, zobacz [listy wszystkich ról](role-assignments-rest.md#list-all-roles).
 
-Aby uzyskać informacje o roli, musi mieć dostęp do `Microsoft.Authorization/roleDefinitions/read` operacji. Wbudowane role mają dostęp do tej operacji. Aby uzyskać więcej informacji na temat przypisania ról i zarządzanie dostęp do zasobów platformy Azure, zobacz [kontroli dostępu](role-assignments-portal.md).
+Aby uzyskać informacje o roli, musi mieć dostęp do `Microsoft.Authorization/roleDefinitions/read` operacji. Wbudowane role mają dostęp do tej operacji. Aby uzyskać więcej informacji na temat przypisania ról i zarządzanie dostęp do zasobów platformy Azure, zobacz [kontroli dostępu opartej na rolach na platformie Azure](role-assignments-portal.md).
 
 ### <a name="request"></a>Żądanie
 Użyj **UZYSKAĆ** metody za pomocą następującego identyfikatora URI:
@@ -386,7 +382,7 @@ Kod stanu: 200
 ## <a name="create-a-custom-role"></a>Tworzenie niestandardowej roli zabezpieczeń
 Tworzenie niestandardowej roli zabezpieczeń.
 
-Aby utworzyć niestandardową rolę, musi mieć dostęp do `Microsoft.Authorization/roleDefinitions/write` operację na wszystkich `AssignableScopes`. Wbudowanych ról, tylko *właściciela* i *Administrator dostępu użytkowników* udzielany jest dostęp do tej operacji. Aby uzyskać więcej informacji na temat przypisania ról i zarządzanie dostęp do zasobów platformy Azure, zobacz [kontroli dostępu](role-assignments-portal.md).
+Aby utworzyć niestandardową rolę, musi mieć dostęp do `Microsoft.Authorization/roleDefinitions/write` operację na wszystkich `AssignableScopes`. Wbudowanych ról, tylko *właściciela* i *Administrator dostępu użytkowników* udzielany jest dostęp do tej operacji. Aby uzyskać więcej informacji na temat przypisania ról i zarządzanie dostęp do zasobów platformy Azure, zobacz [kontroli dostępu opartej na rolach na platformie Azure](role-assignments-portal.md).
 
 ### <a name="request"></a>Żądanie
 Użyj **PUT** metody za pomocą następującego identyfikatora URI:
@@ -489,7 +485,7 @@ Kod stanu: 201
 ## <a name="update-a-custom-role"></a>Aktualizacja niestandardowej roli zabezpieczeń
 Zmodyfikuj niestandardowej roli zabezpieczeń.
 
-Aby zmodyfikować niestandardową rolę, musi mieć dostęp do `Microsoft.Authorization/roleDefinitions/write` operację na wszystkich `AssignableScopes`. Wbudowanych ról, tylko *właściciela* i *Administrator dostępu użytkowników* udzielany jest dostęp do tej operacji. Aby uzyskać więcej informacji na temat przypisania ról i zarządzanie dostęp do zasobów platformy Azure, zobacz [kontroli dostępu](role-assignments-portal.md).
+Aby zmodyfikować niestandardową rolę, musi mieć dostęp do `Microsoft.Authorization/roleDefinitions/write` operację na wszystkich `AssignableScopes`. Wbudowanych ról, tylko *właściciela* i *Administrator dostępu użytkowników* udzielany jest dostęp do tej operacji. Aby uzyskać więcej informacji na temat przypisania ról i zarządzanie dostęp do zasobów platformy Azure, zobacz [kontroli dostępu opartej na rolach na platformie Azure](role-assignments-portal.md).
 
 ### <a name="request"></a>Żądanie
 Użyj **PUT** metody za pomocą następującego identyfikatora URI:
@@ -592,7 +588,7 @@ Kod stanu: 201
 ## <a name="delete-a-custom-role"></a>Usunięcia niestandardowej roli zabezpieczeń
 Usunięcia niestandardowej roli zabezpieczeń.
 
-Aby usunąć rolę niestandardową, należy mieć dostęp do `Microsoft.Authorization/roleDefinitions/delete` operację na wszystkich `AssignableScopes`. Wbudowanych ról, tylko *właściciela* i *Administrator dostępu użytkowników* udzielany jest dostęp do tej operacji. Aby uzyskać więcej informacji na temat przypisania ról i zarządzanie dostęp do zasobów platformy Azure, zobacz [kontroli dostępu](role-assignments-portal.md).
+Aby usunąć rolę niestandardową, należy mieć dostęp do `Microsoft.Authorization/roleDefinitions/delete` operację na wszystkich `AssignableScopes`. Wbudowanych ról, tylko *właściciela* i *Administrator dostępu użytkowników* udzielany jest dostęp do tej operacji. Aby uzyskać więcej informacji na temat przypisania ról i zarządzanie dostęp do zasobów platformy Azure, zobacz [kontroli dostępu opartej na rolach na platformie Azure](role-assignments-portal.md).
 
 ### <a name="request"></a>Żądanie
 Użyj **usunąć** metody za pomocą następującego identyfikatora URI:

@@ -3,15 +3,15 @@ title: VMware do platformy Azure replikacji architektury w usłudze Azure Site R
 description: Ten artykuł zawiera omówienie składników i architektury używane podczas replikowania lokalnych maszyn wirtualnych VMware do platformy Azure z usługą Azure Site Recovery
 author: rayne-wiselman
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/19/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: raynew
-ms.openlocfilehash: c1aa89f14edab7d0e560c20d6bc48480aff1631f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 61c283c178936c98a9a18509c1b46035e48f8f24
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30184585"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285274"
 ---
 # <a name="vmware-to-azure-replication-architecture"></a>VMware do platformy Azure replikacji architektury
 
@@ -42,7 +42,7 @@ Czynności tworzenia VMware do odzyskiwania danych platformy Azure lub migracji 
 3. **Konfigurowanie replikacji**. Wybierz gdzie chcesz replikować do. Należy skonfigurować środowisko replikacji źródło przez skonfigurowanie VMware pojedynczym lokalnym maszyny Wirtualnej (serwer konfiguracji), który uruchamia wszystkie lokalną potrzebne składniki usługi Site Recovery. Po zakończeniu instalacji należy zarejestrować w magazynie usług odzyskiwania z maszyną serwera konfiguracji. Następnie możesz wybrać ustawienia obiektu docelowego. [Dowiedz się więcej](vmware-azure-tutorial.md).
 4. **Utwórz zasady replikacji**. Możesz utworzyć zasady replikacji, który określa, jak powinno się zdarzyć replikacji. 
     - **Próg RPO**: Monitorowanie to ustawienie stanów Jeśli replikacja nie występuje w określonym czasie, alert (i opcjonalnie wiadomość e-mail) wystawienia. Na przykład jeśli próg RPO jest ustawiany na 30 minut, a problem uniemożliwia replikację zapobiec przez 30 minut, zdarzenie zostanie wygenerowane. To ustawienie nie ma wpływu na replikację. Replikacja jest ciągły i punkty odzyskiwania są tworzone co kilka minut
-    - **Przechowywania**: punkt odzyskiwania przechowywania Określa, jak długo punkty odzyskiwania powinny być przechowywane na platformie Azure. Określ wartość z zakresu od 0 do 24 godzin magazyn w warstwie premium lub wyższej do 72 godzin dla magazynu w warstwie standardowa. Można korzystać z trybu failover do najnowszego punktu odzyskiwania lub do punktu przechowywanych Jeśli ustawisz wartość większą niż zero. Po okna przechowywania punkty odzyskiwania zostaną usunięte.
+    - **Przechowywania**: punkt odzyskiwania przechowywania Określa, jak długo punkty odzyskiwania powinny być przechowywane na platformie Azure. Określ wartość z zakresu od 0 do 24 godzin magazyn w warstwie premium lub wyższej do 72 godzin dla magazynu w warstwie standardowa. Możesz w trybie Failover do najnowszego punktu odzyskiwania lub do punktu przechowywanych Jeśli ustawisz wartość większą niż zero. Po okna przechowywania punkty odzyskiwania zostaną usunięte.
     - **Migawki spójne z awarii**: domyślnie przyjmuje migawki spójne z awarii usługi Site Recovery i tworzy punkty odzyskiwania z nimi co kilka minut. Punkt odzyskiwania jest spójne, jeśli wszystkie składniki powiązanych danych są spójne zapisu kolejności awarii, jakie były natychmiast utworzenia punktu odzyskiwania. Aby lepiej zrozumieć, załóżmy stan danych na dysku twardym komputera po awarii zasilania lub podobne zdarzenie. Punkt odzyskiwania spójna w razie awarii jest zwykle wystarczające, jeśli aplikacja została zbudowana Aby dokonać odzyskiwania po awarii bez niespójności danych.
     - **Migawki spójne z aplikacjami**: Jeśli ta wartość nie jest zero, usługa mobilności uruchomionych na Maszynie wirtualnej prób wygenerowania migawki spójne z systemu plików i punktów odzyskiwania. Pierwszy migawki po zakończeniu replikacji początkowej. Następnie migawki są wykonywane przez użytkownika częstotliwością. Punkt odzyskiwania jest spójne z aplikacjami oprócz kolejności zapisu spójne, uruchomionej aplikacji należy wykonać wszystkie operacje i opróżnienia buforów ich na dysku (przełączany w stan spoczynku aplikacji). Zaleca się punktów odzyskiwania zapewniających spójność aplikacji dla aplikacji baz danych, takich jak SQL, Oracle i Exchange. Jeśli migawka spójna w razie awarii jest wystarczająca, tę wartość można ustawić na wartość 0.  
     - **Spójność wielu maszyn wirtualnych**: można opcjonalnie utworzyć grupy replikacji. Następnie po włączeniu replikacji można zbierać maszyn wirtualnych w tej grupie. Maszyn wirtualnych w replikacji grupy replikacji ze sobą i udostępnione punkty odzyskiwania spójna w razie awarii i spójności aplikacji podczas przejścia w tryb failover. Tej opcji należy używać ostrożnie, ponieważ może wpłynąć na wydajność obciążenia jako migawki potrzebne do zebrania na wielu komputerach. Jeśli na maszynach wirtualnych Uruchom te same obciążenia i muszą być zgodne, a maszyny wirtualne mają podobne maselnic. Można dodać maksymalnie 8 maszyn wirtualnych do grupy. 

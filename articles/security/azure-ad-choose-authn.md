@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 062b5e48cfba5de64aa11f79629e82645df87f96
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 7e2eb9bad8c95e61d5b750cacd0724fc2536f2c5
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809264"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294113"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wybierz metodę uwierzytelniania prawo do rozwiązania tożsamości hybrydowej usługi Azure Active Directory 
 
@@ -41,6 +41,8 @@ Organizacje, które nie mają istniejących rozmiaru katalogu lokalnego nie ma f
 Gdy rozwiązania z tożsamością hybrydową usługi Azure AD jest nowe płaszczyzny kontroli, uwierzytelnianie jest podstawą dostęp do chmury. Wybieranie metody poprawnego uwierzytelnienia jest kluczową rolę pierwszej decyzji dotyczących konfigurowania rozwiązania z tożsamością hybrydową usługi Azure AD. Implementuje metodę uwierzytelniania, która jest konfigurowana przy użyciu usługi Azure AD Connect, który udostępnia również użytkowników w chmurze.
 
 Aby wybrać metodę uwierzytelniania, należy wziąć pod uwagę czas, istniejącej infrastruktury, złożoność i kosztów wdrożenia wybór. Czynniki te są różne dla każdej organizacji i może ulec zmianie. 
+
+>[!VIDEO https://www.youtube.com/embed/YtW2cmVqSEw]
 
 Usługi Azure AD obsługuje następujące metody uwierzytelniania dla hybrydowych rozwiązań tożsamości.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: jeedes
-ms.openlocfilehash: b3c22182f995b36d23f632cf1478a863de91c57f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c5a55f00273ea070d824f0b3d75fc86b4ff6be11
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225698"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286895"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asc-contracts"></a>Samouczek: Integracji Azure Active Directory z kontraktami ASC
 
@@ -201,7 +201,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
-Po kliknięciu kafelka ASC kontraktów w panelu dostępu należy należy pobrać automatycznie zalogowane do aplikacji ASC umów. Aby uzyskać więcej informacji na temat panelu dostępu Zobacz. [Wprowadzenie do panelu dostępu](https://msdn.microsoft.com/library/dn308586).
+Po kliknięciu kafelka ASC kontraktów w panelu dostępu należy należy pobrać automatycznie zalogowane do aplikacji ASC umów. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
@@ -223,4 +223,3 @@ Po kliknięciu kafelka ASC kontraktów w panelu dostępu należy należy pobrać
 [201]: ./media/asccontracts-tutorial/tutorial_general_201.png
 [202]: ./media/asccontracts-tutorial/tutorial_general_202.png
 [203]: ./media/asccontracts-tutorial/tutorial_general_203.png
-

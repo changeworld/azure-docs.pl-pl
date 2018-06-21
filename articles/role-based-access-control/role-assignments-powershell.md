@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie kontrolą dostępu opartej na rolach (RBAC) przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft
-description: Jak zarządzać RBAC z programem Azure PowerShell, w tym role, przypisywanie ról i usuwanie przypisań ról.
+title: Zarządzanie dostępem przy użyciu programu Azure PowerShell i RBAC | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zarządzać dostępem dla użytkowników, grup i aplikacji, przy użyciu kontroli dostępu opartej na rolach (RBAC) i programu Azure PowerShell. W tym listę dostępu, udzielanie dostępu i usuwanie dostępu.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,27 +14,23 @@ ms.workload: identity
 ms.date: 04/17/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 00646187da1f93c01c3a57b50905239afd5e2bc8
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 231f7b915c324a5af91564c80d17bbad335d658d
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266802"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294775"
 ---
-# <a name="manage-role-based-access-control-with-azure-powershell"></a>Zarządzanie kontrolą dostępu opartej na rolach przy użyciu programu Azure PowerShell
-> [!div class="op_single_selector"]
-> * [Program PowerShell](role-assignments-powershell.md)
-> * [Interfejs wiersza polecenia platformy Azure](role-assignments-cli.md)
-> * [Interfejs API REST](role-assignments-rest.md)
+# <a name="manage-access-using-rbac-and-azure-powershell"></a>Zarządzanie dostępem przy użyciu programu Azure PowerShell i RBAC
 
-Przy użyciu kontroli dostępu opartej na rolach (RBAC) należy zdefiniować dostęp dla użytkowników, grup i nazwy główne usług poprzez przypisywanie ról w określonym zakresie. W tym artykule opisano, jak zarządzać dostępem przy użyciu programu Azure PowerShell.
+[Kontrola dostępu oparta na rolach (RBAC)](overview.md) jest sposób zarządzania dostępem do zasobów na platformie Azure. W tym artykule opisano, jak zarządzać dostępu dla użytkowników, grup i aplikacji przy użyciu programu Azure PowerShell i RBAC.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed użyciem programu PowerShell do zarządzania RBAC, należy jedną z następujących czynności:
 
 * [PowerShell w chmurze Azure powłoki](/azure/cloud-shell/overview)
-* [Program Azure PowerShell 5.1.0 lub nowszy](/powershell/azure/install-azurerm-ps)
+* [Azure PowerShell](/powershell/azure/install-azurerm-ps)
 
 ## <a name="list-roles"></a>Lista ról
 
@@ -146,9 +142,9 @@ Microsoft.Network/loadBalancers/backendAddressPools/join/action
 ...
 ```
 
-## <a name="see-who-has-access"></a>Zobacz, kto ma dostęp
+## <a name="list-access"></a>Dostęp do listy
 
-Aby wyświetlić listę przypisań dostępu RBAC, użyj [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment).
+W RBAC na liście dostępu, możesz listę przypisań ról.
 
 ### <a name="list-role-assignments-at-a-specific-scope"></a>Lista przypisań ról w określonym zakresie
 
@@ -174,7 +170,7 @@ RoleDefinitionName : Virtual Machine Contributor
 Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales-projectforecast
 ```
 
-### <a name="list-roles-assigned-to-a-user"></a>Lista ról przypisana do użytkownika
+### <a name="list-role-assignments-for-a-user"></a>Lista przypisań ról dla użytkownika
 
 Aby wyświetlić listę wszystkich ról, które są przypisane do określonego użytkownika, należy użyć [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment).
 
@@ -200,15 +196,17 @@ Get-AzureRmRoleAssignment -SignInName <user email> -ExpandPrincipalGroups
 Get-AzureRmRoleAssignment -SignInName isabella@example.com -ExpandPrincipalGroups | FL DisplayName, RoleDefinitionName, Scope
 ```
 
-### <a name="list-classic-service-administrator-and-coadmin-role-assignments"></a>Wyświetl listę przypisań ról administratora i coadmin klasycznym usługi
+### <a name="list-role-assignments-for-classic-service-administrator-and-co-administrators"></a>Lista przypisań ról administratora klasycznym usługi i współadministratorzy
 
-Aby wyświetlić listę przypisań dostępu dla subskrypcji klasycznego administratora i współadministratorzy, użyj [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment):
+Aby wyświetlić listę przypisań ról administratora subskrypcji klasycznego i współadministratorzy, użyj [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment):
 
 ```azurepowershell
 Get-AzureRmRoleAssignment -IncludeClassicAdministrators
 ```
 
 ## <a name="grant-access"></a>Udzielanie dostępu
+
+W RBAC Aby udzielić dostępu, należy utworzyć przypisania roli.
 
 ### <a name="search-for-object-ids"></a>Wyszukaj identyfikatory obiektów
 
@@ -228,7 +226,7 @@ Aby uzyskać identyfikator obiektu dla nazwy głównej usługi Azure AD lub apli
 Get-AzureRmADServicePrincipal -SearchString <service name in quotes>
 ```
 
-### <a name="assign-a-role-to-an-application-at-the-subscription-scope"></a>Przypisywanie roli do aplikacji w zakresie subskrypcji
+### <a name="create-a-role-assignment-for-an-application-at-a-subscription-scope"></a>Tworzenie przypisania roli dla aplikacji w zakresie subskrypcji
 
 Aby udzielić dostępu do aplikacji w zakresie subskrypcji, należy użyć [AzureRmRoleAssignment nowy](/powershell/module/azurerm.resources/new-azurermroleassignment):
 
@@ -250,7 +248,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-### <a name="assign-a-role-to-a-user-at-the-resource-group-scope"></a>Przypisywanie roli użytkownika w zakresie grupy zasobów
+### <a name="create-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>Tworzy przypisanie roli użytkownika w zakresie grupy zasobów
 
 Aby udzielić dostępu do użytkownika w zakresie grupy zasobów, należy użyć [AzureRmRoleAssignment nowy](/powershell/module/azurerm.resources/new-azurermroleassignment):
 
@@ -274,7 +272,7 @@ ObjectType         : User
 CanDelegate        : False
 ```
 
-### <a name="assign-a-role-to-a-group-at-the-resource-scope"></a>Przypisywanie roli do grupy w zakresie zasobów
+### <a name="create-a-role-assignment-for-a-group-at-a-resource-scope"></a>Tworzy przypisanie roli w grupie w zakresie zasobów
 
 Aby udzielić dostępu do grupy w zakresie zasobów, użyj [AzureRmRoleAssignment nowy](/powershell/module/azurerm.resources/new-azurermroleassignment):
 
@@ -307,7 +305,7 @@ CanDelegate        : False
 
 ## <a name="remove-access"></a>Usuń dostęp
 
-Aby usunąć dostęp dla użytkowników, grup i aplikacji, należy użyć [AzureRmRoleAssignment Usuń](/powershell/module/azurerm.resources/remove-azurermroleassignment):
+RBAC, aby usunąć dostęp, można usunąć przypisania roli używając [AzureRmRoleAssignment Usuń](/powershell/module/azurerm.resources/remove-azurermroleassignment):
 
 ```azurepowershell
 Remove-AzureRmRoleAssignment -ObjectId <object id> -RoleDefinitionName <role name> -Scope <scope such as subscription id>
@@ -581,7 +579,7 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 ```
 
-## <a name="see-also"></a>Zobacz także
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Używanie programu Azure PowerShell z usługą Azure Resource Manager](../azure-resource-manager/powershell-azure-resource-manager.md)
 

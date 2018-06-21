@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: b85a92e60bb897bfd5f1b1c7af6f724a6afd3340
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ba24422f7ff5759153a6e067cc61251b43a7a091
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220247"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286936"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purelyhr"></a>Samouczek: Integracji Azure Active Directory z PurelyHR
 
@@ -228,7 +228,7 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 
 Kliknij Kafelek LMS przyjęcia w panelu dostępu, możesz pobrać automatycznie zalogowane do przyjęcia LMS aplikacji.
 
-Aby uzyskać więcej informacji na temat panelu dostępu Zobacz. [Wprowadzenie do panelu dostępu](https://msdn.microsoft.com/library/dn308586).
+Aby uzyskać więcej informacji na temat panelu dostępu Zobacz. [Wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 

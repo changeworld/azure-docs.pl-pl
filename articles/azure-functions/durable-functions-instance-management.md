@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: d6f7c924491614190952ce620f33572307a22c22
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 3c6602bdd90c82568a50ad7354d7abb7c6a472ae
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265439"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287752"
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Zarządzanie wystąpieniami w funkcjach trwałe (usługi Azure Functions)
 
@@ -216,6 +216,41 @@ Istnieją dwa przypadki, w zależności od czas potrzebny na odpowiedź z wystą
 
 > [!NOTE]
 > Format adresów URL elementu webhook mogą się różnić w zależności od posiadanej wersji programu host usługi Azure Functions. Powyższy przykład jest przeznaczony dla hosta Azure funkcji 2.0.
+
+## <a name="retrieving-http-management-webhook-urls"></a>Pobieranie adresów URL protokołu HTTP zarządzania elementu Webhook
+
+Systemami zewnętrznymi może komunikować się z trwałe funkcji za pomocą adresów URL elementu webhook, które są częścią domyślny opisanego w [odnajdywania HTTP URL interfejsu API](durable-functions-http-api.md). Jednak adresy URL elementu webhook również można uzyskać programistycznie w kliencie aranżacji lub w funkcji działania za pomocą [CreateHttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateHttpManagementPayload_) metody [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html)klasy. 
+
+[CreateHttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateHttpManagementPayload_) ma jeden parametr:
+
+* **Identyfikator wystąpienia**: Unikatowy identyfikator wystąpienia.
+
+Metoda zwraca wystąpienie klasy [HttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.HttpManagementPayload.html#Microsoft_Azure_WebJobs_Extensions_DurableTask_HttpManagementPayload_) z następującymi właściwościami ciągu:
+
+* **Identyfikator**: Identyfikatora wystąpienia orchestration (powinna być taka sama jak `InstanceId` wejściowych).
+* **StatusQueryGetUri**: adres URL stan wystąpienia aranżacji.
+* **SendEventPostUri**: "Zgłoś zdarzenie" adres URL wystąpienia aranżacji.
+* **TerminatePostUri**: adres URL wystąpienia aranżacji "Zakończ".
+
+Działanie funkcji można wysłać wystąpienia [HttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.HttpManagementPayload.html#Microsoft_Azure_WebJobs_Extensions_DurableTask_HttpManagementPayload_) z systemami zewnętrznymi, monitorowanie lub wywoływanie zdarzeń do aranżacji:
+
+```csharp
+#r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
+
+public static void SendInstanceInfo(
+    [ActivityTrigger] DurableActivityContext ctx,
+    [OrchestrationClient] DurableOrchestrationClient client,
+    [DocumentDB(
+        databaseName: "MonitorDB",
+        collectionName: "HttpManagementPayloads",
+        ConnectionStringSetting = "CosmosDBConnection")]out dynamic document)
+{
+    HttpManagementPayload payload = client.CreateHttpManagementPayload(ctx.InstanceId);
+
+    // send the payload to Cosmos DB
+    document = new { Payload = payload, id = ctx.InstanceId };
+}
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

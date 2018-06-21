@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: a2a1c916543da07f25b2b9727e309709632afe00
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 3feed9c1c8903db66a0506f09161982dadaa79ba
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267275"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284968"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>Uruchamiać skrypty programu PowerShell w sieci maszyny Wirtualnej systemu Windows za pomocą polecenia Uruchom
 
@@ -33,6 +33,7 @@ Korzystając z polecenia Uruchom, obowiązują następujące ograniczenia:
 * Minimalny czas do uruchomienia skryptu to około 20 sekund
 * Skrypty uruchamiane jako System w systemie Windows
 * Może uruchomić skrypt w czasie
+* Skrypty, które monit o podanie informacji (w trybie interaktywnym) nie są obsługiwane.
 * Nie można anulować uruchamianie skryptu
 * Maksymalny czas, który można uruchomić skryptu wynosi 90 minut, po jakim zostanie limit czasu
 

@@ -4,14 +4,14 @@ description: Zawiera omówienie obliczeń oceny w usłudze Azure migracji.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 06/20/2018
 ms.author: raynew
-ms.openlocfilehash: ec8e026fc9bab192f6944e590fa703dbbd5772c0
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6fd0af65e63e9fc1c09232cd1e002da105a9d086
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221363"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287892"
 ---
 # <a name="assessment-calculations"></a>Obliczenia dotyczące oceny
 
@@ -109,7 +109,7 @@ W przypadku zmiany rozmiaru kryterium *jako lokalne zmiany rozmiaru*, Azure migr
 
 Każda ocena w usłudze Azure Migrate jest skojarzona z oceną zaufania obejmującą zakres od 1 gwiazdki do 5 gwiazdek (1 gwiazdka to najniższa ocena, 5 gwiazdek — najwyższa). Ocena zaufania jest przypisana do oceny na podstawie dostępności punktów danych potrzebnych do obliczenia oceny. Ocena zaufania do oceny pomaga oszacować niezawodność zaleceń dotyczących rozmiaru określanych przez usługę Azure Migrate.
 
-Przedziałem zaufania ocenę jest bardziej użyteczna w przypadku oceny z kryterium zmiany rozmiaru jako "na podstawie zmiany rozmiaru. Na podstawie wydajności zmiany rozmiaru migracji Azure wymaga danych wykorzystania procesora, pamięci maszyny wirtualnej. Ponadto dla każdego dysku do maszyny Wirtualnej, musi on dysku IOPS i danych o przepływności. Podobnie dla każdej karty sieciowej podłączony do maszyny Wirtualnej Azure migracji musi sieci lub brak zgody na celu wydajności na podstawie rozmiaru. Jeśli którekolwiek z powyższych danych użycia są niedostępne w programie vCenter Server, zalecenie dotyczące rozmiaru określone przez usługę Azure Migrate może nie być wiarygodne. W zależności od odsetka dostępnych punktów danych ocena zaufania dla oceny jest określana w następujący sposób:
+Większe zaufanie można mieć w przypadku używania wydajności jako kryterium. W przypadku ustalania rozmiaru na podstawie wydajności usługa Azure Migrate potrzebuje danych o użyciu procesora CPU i pamięci maszyny wirtualnej. Ponadto dla każdego dysku podłączonego do maszyny wirtualnej potrzebuje ona danych o liczbie operacji odczytu/zapisu na sekundę i przepływności. Analogicznie dla każdej karty sieciowej podłączonej do maszyny wirtualnej usługa Azure Migrate potrzebuje danych o ruchu wchodzącym/wychodzącym sieci do ustalenia rozmiaru na podstawie wydajności. Jeśli którekolwiek z powyższych danych użycia są niedostępne w programie vCenter Server, zalecenie dotyczące rozmiaru określone przez usługę Azure Migrate może nie być wiarygodne. W zależności od odsetka dostępnych punktów danych ocena zaufania dla oceny jest określana w następujący sposób:
 
    **Dostępność punktów danych** | **Ocenę zaufania**
    --- | ---
@@ -132,7 +132,7 @@ Ocena może nie mieć dostępnych wszystkich punktów danych z jednego z następ
 
 Po zakończeniu zmiany rozmiaru zalecenia dotyczące migracji Azure oblicza koszty obliczeniowej i pamięci masowej po migracji.
 
-- **Obliczanie kosztu**: przy użyciu zalecany rozmiar maszyny Wirtualnej platformy Azure, Azure migracji używa interfejsu API rozliczeń do obliczenia miesięczny koszt dla maszyny Wirtualnej. Obliczenie ma systemu operacyjnego, software assurance, lokalizacji i ustawienia waluty pod uwagę. Agreguje koszt na wszystkich komputerach, aby obliczyć całkowity miesięczny koszt obliczeń.
+- **Obliczanie kosztu**: przy użyciu zalecany rozmiar maszyny Wirtualnej platformy Azure, Azure migracji używa interfejsu API rozliczeń do obliczenia miesięczny koszt dla maszyny Wirtualnej. Obliczenie ma systemu operacyjnego, software assurance zastrzeżone wystąpień, maszyna wirtualna przestojów, lokalizacji i ustawienia waluty pod uwagę. Agreguje koszt na wszystkich komputerach, aby obliczyć całkowity miesięczny koszt obliczeń.
 - **Koszt magazynowania**: Magazyn miesięczny koszt maszyna jest obliczana przez agregowanie miesięczny koszt wszystkich dysków dołączonych do maszyny. Azure migracji oblicza całkowity miesięczny kosztów magazynowania przez agregowanie kosztów magazynowania wszystkich maszyn. Obecnie obliczenia nie przyjmuje oferty określonego w ustawieniach ocenę pod uwagę.
 
 Koszty są wyświetlane w walucie określonego w ustawieniach oceny.

@@ -1,31 +1,39 @@
 ---
-title: Bezpieczeństwo danych i operacji w usłudze Azure Search | Dokumentacja firmy Microsoft
-description: Azure zabezpieczenia wyszukiwania jest oparte na zgodności SOC 2, szyfrowania, uwierzytelnianie i tożsamość dostęp za pośrednictwem użytkowników i identyfikatorach grup zabezpieczeń w filtrach usługi Azure Search.
+title: Prywatność zabezpieczeń i danych w usłudze Azure Search | Dokumentacja firmy Microsoft
+description: Usługa Azure Search jest zgodne z SOC 2, HIPAA i innych certyfikatów. Filtruje połączenia i szyfrowania, uwierzytelnianie i tożsamość dostępem do danych przez użytkowników i identyfikatorach grup zabezpieczeń w usłudze Azure Search.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 06/19/2018
 ms.author: heidist
-ms.openlocfilehash: 7db1b6c6f72f3cea7446b5f96dac7cd6e9b4252d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 888f7c3ced0ef48cff222bffdbf0f278fa5f42b3
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795803"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285733"
 ---
-# <a name="security-and-controlled-access-in-azure-search"></a>Bezpieczeństwo i kontrolą dostępu w usłudze Azure Search
+# <a name="security-and-data-privacy-in-azure-search"></a>Prywatność zabezpieczeń i danych w usłudze Azure Search
 
-Usługa Azure Search jest [SOC 2 zgodne](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports)z zabezpieczeń kompleksowe Architektura rozszerzania zabezpieczeń fizycznych, zaszyfrowane transmisje zaszyfrowanych magazynów i zabezpieczenia całej platformy oprogramowania. Pod względem operacyjnym usługi Azure Search akceptuje tylko uwierzytelnione żądania. Opcjonalnie można dodać użytkownika kontroli dostępu do zawartości. W tym artykule dotyczące zabezpieczeń w każdej warstwie, ale koncentruje się przede wszystkim na jak są zabezpieczone dane i operacji w usłudze Azure Search.
+Funkcje kompleksowe zabezpieczeń i kontroli dostępu są wbudowane w usłudze Azure Search, aby upewnić się, że prywatną zawartość pozostaje w ten sposób. W tym artykule wylicza zgodności funkcji i standardów zabezpieczeń wbudowanych w usłudze Azure Search.
 
-![Diagram blokowy serwera warstwy zabezpieczeń](media/search-security-overview/azsearch-security-diagram.png)
+Architektura zabezpieczeń usługi Azure Search zakresów zabezpieczeń fizycznych, zaszyfrowane transmisje zaszyfrowanych magazynów i zgodność ze standardami całej platformy. Pod względem operacyjnym usługi Azure Search akceptuje tylko uwierzytelnione żądania. Opcjonalnie można dodać użytkownika kontroli dostępu do zawartości za pomocą filtrów zabezpieczeń. W tym artykule dotyczące zabezpieczeń w każdej warstwie, ale koncentruje się przede wszystkim na jak są zabezpieczone dane i operacji w usłudze Azure Search.
 
-## <a name="physical-security"></a>Zabezpieczenia fizyczne
+## <a name="standards-compliance-iso-27001-soc-2-hipaa"></a>Zgodność ze standardami: ISO 27001, SOC 2, HIPAA
 
-Centrach danych firmy Microsoft Podaj branży zabezpieczeń fizycznych i są zgodne z szeroką gamę portfolio standardów i przepisami. Aby dowiedzieć się więcej, przejdź do [centrów danych globalnych](https://www.microsoft.com/cloud-platform/global-datacenters) strony lub Obejrzyj krótki klip wideo na danych Centrum zabezpieczeń.
+Częściowa lista zgodność ze standardami obejmuje SOC 2 typu 2 i HIPAA funkcji ogólnie dostępna. Funkcje w wersji zapoznawczej certyfikowanych jako część ogólnej dostępności i nie mogą być używane w rozwiązaniach o standardy określone wymagania. Certyfikacji zgodności jest udokumentowany w [zgodności Przegląd platformy Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) i [Centrum zaufania](https://www.microsoft.com/en-us/trustcenter). 
 
-> [!VIDEO https://www.youtube.com/embed/r1cyTL8JqRg]
+Certyfikacja następujące standardy został [ogłaszane w 2018 czerwca](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/).
+
++ [ISO 27001: 2013](https://www.iso.org/isoiec-27001-information-security.html) 
++ [Zgodność SOC 2 typu 2](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) pełny raport, aby uzyskać [Azure - i Azure dla instytucji rządowych SOC 2 typu II raport](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports). 
++ [Health Insurance Portability and Accountability Act (HIPAA)](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
++ [GxP (część 21 CFR 11)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
++ [HITRUST](https://en.wikipedia.org/wiki/HITRUST)
++ [PCI DSS poziom 1](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
++ [Australia IRAP Niesklasyfikowanego DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
 
 ## <a name="encrypted-transmission-and-storage"></a>Zaszyfrowane transmisji i przechowywania
 
@@ -35,15 +43,14 @@ Rozszerza szyfrowania w całym potoku indeksowania całej: z połączeń, za pom
 |----------------|-------------|
 | Szyfrowanie podczas przesyłania | Usługa Azure Search nasłuchuje na porcie protokołu HTTPS 443. Na platformie połączenia do usług platformy Azure są szyfrowane. |
 | Szyfrowanie w spoczynku | Szyfrowanie jest w pełni internalized indeksowaniem bez zauważalnego wpływu na indeksowania czas do zakończenia lub rozmiar indeksu. Nastąpi to automatycznie indeksowania wszystkich tym na aktualizacje przyrostowe indeksu, który nie jest w pełni szyfrowane (utworzone przed 2018 styczeń).<br><br>Wewnętrznie, szyfrowanie jest oparte na [szyfrowanie usługi Magazyn Azure](https://docs.microsoft.com/azure/storage/common/storage-service-encryption), za pomocą 256-bitowego [szyfrowania AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).|
-| [Zgodność SOC 2](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) | Wszystkie usługi wyszukiwania są w pełni AICPA SOC 2 zgodne, wszystkie centrum danych, zapewniając usługi Azure Search. Aby przejrzeć pełny raport, przejdź do [Azure - i Azure dla instytucji rządowych SOC 2 typu II raport](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports). |
 
 Szyfrowanie jest wewnętrzny do usługi Azure Search, certyfikaty i klucze szyfrujące wewnętrznie zarządzany przez firmę Microsoft i powszechnie stosowane. Nie można włączyć lub wyłączyć szyfrowanie, zarządzanie lub Zastąp własnych kluczy lub wyświetlić ustawienia szyfrowania w portalu lub programowo. 
 
 Szyfrowanie magazynowanych ogłoszono w 24 stycznia 2018 i dotyczy wszystkich warstwy usług, w tym usług udostępnionych (bezpłatnie), we wszystkich regionach. Opcja szyfrowania pełnego indeksy utworzone przed tą datą należy porzucić i odbudować aby szyfrowania. W przeciwnym razie tylko nowe dane dodane po 24 stycznia są szyfrowane.
 
-## <a name="azure-wide-logical-security"></a>Azure zabezpieczeń logicznych
+## <a name="azure-wide-user-access-controls"></a>Kontrolę dostępu użytkowników w całej platformy Azure
 
-Kilka mechanizmów zabezpieczeń są dostępne w stosie Azure i w związku z tym automatycznie dostępne zasoby usługi Azure Search, które można utworzyć.
+Kilka mechanizmów zabezpieczeń są dostępne całej Azure i utworzyć automatycznie w związku z tym jest dostępny do zasobów usługi Azure Search.
 
 + [Blokad na poziomie zasobów, aby zapobiec usunięciu lub subskrypcji](../azure-resource-manager/resource-group-lock-resources.md)
 + [Oparta na rolach kontroli dostępu (RBAC) do kontrolowania dostępu do informacji i wykonywanie operacji administracyjnych](../role-based-access-control/overview.md)
@@ -67,7 +74,7 @@ Wymagane jest uwierzytelnienie na każdym żądaniu, gdzie każde żądanie skł
 
 W usłudze Azure Search konkretnego indeksu nie jest zabezpieczanego obiektu. Zamiast tego dostęp do indeksu jest określany w warstwie usług (odczytu lub zapisu), wraz z kontekstu operacji.
 
-W przypadku dostępu użytkownika końcowego można tworzyć struktury żądań zapytań w aplikacji nawiązywanie połączeń za pomocą klucza zapytania, co sprawia, że wszystkie żądania tylko do odczytu i obejmują określonego indeksu używany przez aplikację. W żądanie kwerendy nie ma żadnych koncepcji indeksy lub jednocześnie dostęp do wielu indeksów, więc wszystkie żądania target jeden indeks przez definicję. Tak struktura żądania zapytania sam (klucz oraz indeksu pojedynczym elementem docelowym) definiuje granicy zabezpieczeń.
+Dostęp użytkownika końcowego można struktury żądań zapytań nawiązywanie połączeń za pomocą klucza zapytania, co sprawia, że wszystkie żądania tylko do odczytu i obejmują określonego indeksu używany przez aplikację. W żądanie kwerendy nie ma żadnych koncepcji indeksy lub jednocześnie dostęp do wielu indeksów, więc wszystkie żądania target jeden indeks przez definicję. W efekcie konstruowania żądania zapytania sam (klucz oraz indeksu pojedynczym elementem docelowym) definiuje granicy zabezpieczeń.
 
 Jest niesortowalne administratorów i deweloperów do indeksów: zarówno musi uzyskać dostęp do tworzenia, usuwania i aktualizowania obiektów zarządzanych przez usługę. Każda osoba mająca klucz administratora do usługi można odczytać, zmodyfikować lub usunąć indeksu w tej samej usługi. Do ochrony przed przypadkowym lub złośliwymi usuwania indeksów do kontroli źródła wewnętrznych zasobów kodu jest remedy dla cofania niechciane indeksu usunięcie lub zmiana. Usługa wyszukiwanie Azure ma trybu failover w klastrze, aby zapewnić dostępność, ale nie przechowuje ani nie wykonać zastrzeżonych kod służący do tworzenia lub załadować indeksów.
 
@@ -106,6 +113,12 @@ W poniższej tabeli przedstawiono operacje dozwolone w usłudze Azure Search i k
 | Wyślij zapytanie do informacji o systemie, takich jak zwracanie statystyk, liczby i listy obiektów. | Klucz administratora, RBAC zasobu (czytnik właściciela, współautora) |
 | Zarządzanie kluczami administratora | Klucz administratora, RBAC właścicielem lub współautorem zasobu. |
 | Zarządzanie kluczami zapytań |  Klucz administratora, RBAC właścicielem lub współautorem zasobu.  |
+
+## <a name="physical-security"></a>Zabezpieczenia fizyczne
+
+Centrach danych firmy Microsoft Podaj branży zabezpieczeń fizycznych i są zgodne z szeroką gamę portfolio standardów i przepisami. Aby dowiedzieć się więcej, przejdź do [centrów danych globalnych](https://www.microsoft.com/cloud-platform/global-datacenters) strony lub Obejrzyj krótki klip wideo na danych Centrum zabezpieczeń.
+
+> [!VIDEO https://www.youtube.com/embed/r1cyTL8JqRg]
 
 
 ## <a name="see-also"></a>Zobacz także

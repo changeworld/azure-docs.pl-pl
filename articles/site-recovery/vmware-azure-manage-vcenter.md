@@ -1,20 +1,18 @@
 ---
 title: " Zarządzanie programu VMware vCenter Server w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft"
 description: W tym artykule opisano sposób dodawania i zarządzania nimi w usłudze Azure Site Recovery program VMware vCenter.
-services: site-recovery
 author: AnoopVasudavan
-manager: gauravd
 ms.service: site-recovery
 ms.devlang: na
-ms.topic: article
-ms.date: 03/05/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: anoopkv
-ms.openlocfilehash: be415340da09043eccd361b0168bb304d8904bef
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 48b6cf9b90b429520df435aee00f57ea7b588748
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852306"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285002"
 ---
 # <a name="manage-vmware-vcenter-servers"></a>Zarządzanie programu VMware vCenter Server 
 
@@ -29,7 +27,7 @@ Odzyskiwanie lokacji musi mieć dostęp do programu VMware, serwera przetwarzani
 2. Otwórz uruchomienie cspsconfigtool.exe za pomocą skrótu na pulpicie.
 3. Kliknij przycisk **Dodaj konto** na **Zarządzaj kontem** kartę.
 
-  ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
+  ![Dodaj konto](./media/vmware-azure-manage-vcenter/addaccount.png)
 1. Podaj szczegóły konta, a następnie kliknij przycisk **OK** ją dodać.  Konto musi mieć uprawnienia podsumowane w poniższej tabeli. 
 
 Trwa około 15 minut, aby uzyskać informacje o koncie, które można synchronizować się z usługą Site Recovery.
@@ -57,7 +55,7 @@ Zmień poświadczenia użyte do nawiązania połączenia z serwerem vCenter lub 
 1. Zaloguj się do konfiguracji serwera, a następnie uruchom cspsconfigtool.exe z pulpitu.
 2. Kliknij przycisk **Dodaj konto** na **Zarządzaj kontem** kartę.
 
-  ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
+  ![Dodaj konto](./media/vmware-azure-manage-vcenter/addaccount.png)
 3. Podaj nowe szczegóły konta, a następnie kliknij przycisk **OK** ją dodać. Konto musi mieć uprawnienia wymienione [powyżej](#account-permissions).
 4. W portalu Azure, Otwórz magazyn > **infrastruktura usługi Site Recovery** > **serwery konfiguracji**i otwórz serwera konfiguracji.
 5. W **szczegóły** kliknij przycisk **odświeżania serwera**.

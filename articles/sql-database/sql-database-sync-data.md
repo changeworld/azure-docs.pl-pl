@@ -1,6 +1,6 @@
 ---
-title: Synchronizacja danych Azure SQL (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: W tym omówieniu przedstawiono synchronizacji danych SQL Azure (wersja zapoznawcza)
+title: Synchronizacja danych Azure SQL | Dokumentacja firmy Microsoft
+description: W tym omówieniu przedstawiono synchronizacji danych SQL Azure
 services: sql-database
 author: douglaslms
 manager: craigg
@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 18177e0671ddf36d0e02e6b943467d703f78ffd0
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c31735719e559a25b53acf0bfcf1efff0cee4d5e
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301052"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36296183"
 ---
-# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>Synchronizowanie danych w wielu w chmurze i lokalnych baz danych z opcją synchronizacji danych SQL (wersja zapoznawcza)
+# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizowanie danych między wieloma bazami danych chmury i lokalnych z opcją synchronizacji danych SQL
 
 Synchronizacja danych SQL to usługa oparta na bazie danych SQL Azure, która umożliwia synchronizowanie danych, wybranych dwukierunkowo przez wiele baz danych i wystąpień programu SQL Server.
 
@@ -53,15 +53,15 @@ Synchronizacja danych jest przydatne w sytuacjach, gdy danych musi być aktualiz
 
 -   **Globalny aplikacji rozproszonych:** wiele firm span kilka regionów i nawet kilka krajów. Aby zminimalizować opóźnienie sieci, jest najlepszym rozwiązaniem jest dane w regionie blisko Ciebie. Z opcją synchronizacji danych można pracować z baz danych w regionach na świecie zsynchronizowane.
 
-Synchronizacja danych nie jest odpowiedni dla następujących scenariuszy:
+Synchronizacja danych nie jest najlepszym rozwiązaniem w następujących scenariuszach:
 
--   Odzyskiwanie po awarii
-
--   Przeczytaj skali
-
--   ETL (OLTP do OLAP)
-
--   Migracja z lokalnego serwera SQL z bazą danych Azure SQL
+| Scenariusz | Niektóre zalecane rozwiązania |
+|----------|----------------------------|
+| Odzyskiwanie po awarii | [Kopii zapasowych geograficznie nadmiarowego Azure](sql-database-automated-backups.md) |
+| Przeczytaj skali | [Użyj repliki tylko do odczytu, aby załadować równoważenie obciążeń zapytania tylko do odczytu (wersja zapoznawcza)](sql-database-read-scale-out.md) |
+| ETL (OLTP do OLAP) | [Fabryka danych Azure](https://azure.microsoft.com/services/data-factory/) lub [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services?view=sql-server-2017) |
+| Migracja z lokalnego serwera SQL z bazą danych Azure SQL | [Usługa migracji bazy danych Azure](https://azure.microsoft.com/services/database-migration/) |
+|||
 
 ## <a name="how-does-data-sync-work"></a>Jak działa synchronizacji danych? 
 
@@ -127,13 +127,13 @@ Alokowania i anulowania alokowania podczas tworzenia grupy synchronizacji, aktua
 
 ## <a name="faq-about-sql-data-sync"></a>Często zadawane pytania dotyczące synchronizacji danych SQL
 
-### <a name="how-much-does-the-sql-data-sync-preview-service-cost"></a>Ile kosztuje usługa synchronizacji danych SQL (wersja zapoznawcza)
+### <a name="how-much-does-the-sql-data-sync-service-cost"></a>Ile kosztuje usługa synchronizacji danych SQL
 
-W wersji zapoznawczej jest bezpłatna dla samej usługi synchronizacji danych SQL (wersja zapoznawcza).  Jednak możesz nadal Naliczanie opłat za transfer danych do przenoszenia danych i wystąpienie bazy danych SQL. Aby uzyskać więcej informacji, zobacz [SQL Database — cennik](https://azure.microsoft.com/pricing/details/sql-database/).
+Brak bezpłatnie przez usługę synchronizacji danych SQL.  Jednak możesz nadal Naliczanie opłat za transfer danych do przenoszenia danych i wystąpienie bazy danych SQL. Aby uzyskać więcej informacji, zobacz [SQL Database — cennik](https://azure.microsoft.com/pricing/details/sql-database/).
 
 ### <a name="what-regions-support-data-sync"></a>Jakie regionów obsługi synchronizacji danych?
 
-Synchronizacja danych SQL (wersja zapoznawcza) jest dostępna we wszystkich regionach chmury publicznej.
+Synchronizacja danych SQL jest dostępna we wszystkich regionach chmury publicznej.
 
 ### <a name="is-a-sql-database-account-required"></a>Jest wymagane konto bazy danych SQL? 
 
@@ -152,7 +152,7 @@ Tak. Tworzenie schematu ręcznie w nowej bazy danych za pomocą skryptu go od or
 
 ### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Synchronizacja danych SQL należy używać kopii zapasowej i przywracanie baz danych?
 
-Nie zaleca się synchronizacja danych SQL (wersja zapoznawcza) umożliwia tworzenie kopii zapasowej danych. Nie można utworzyć kopię zapasową i przywrócić do określonego punktu w czasie, ponieważ synchronizacje synchronizacji danych SQL (wersja zapoznawcza) nie są numerów wersji. Ponadto synchronizacji danych SQL (wersja zapoznawcza) nie kopii zapasowej innych obiektów SQL, takich jak procedury składowane i nie szybko odpowiednikiem operacji przywracania.
+Nie zaleca się używać synchronizacji danych SQL do tworzenia kopii zapasowej danych. Nie można utworzyć kopię zapasową i przywrócić do określonego punktu w czasie, ponieważ synchronizacje synchronizacji danych SQL nie są numerów wersji. Ponadto synchronizacji danych SQL nie kopii zapasowej innych obiektów SQL, takich jak procedury składowane i nie szybko odpowiednikiem operacji przywracania.
 
 Dla jednego zalecane techniki tworzenia kopii zapasowych, zobacz [kopiowania bazy danych Azure SQL](sql-database-copy.md).
 
@@ -172,7 +172,7 @@ Tak. Synchronizacja danych SQL obsługuje sortowanie w następujących scenarius
 
 ### <a name="is-federation-supported-in-sql-data-sync"></a>Federacyjnej jest obsługiwana w synchronizacji danych SQL?
 
-Główna baza danych Federacji może służyć usługi synchronizacji danych SQL (wersja zapoznawcza) nie podlega żadnym ograniczeniom. Nie można dodać punktu końcowego federacyjnych bazy danych do wersji bieżącej synchronizacji danych SQL (wersja zapoznawcza).
+Główna baza danych Federacji służą usługi synchronizacji danych SQL, która nie podlega żadnym ograniczeniom. Nie można dodać punktu końcowego federacyjnych bazy danych do wersji bieżącej synchronizacji danych SQL.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

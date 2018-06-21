@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/15/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: raynew
-ms.openlocfilehash: 345b73db423c6e12b56bb3308f7700917a372dda
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1764f4ed9dfe73763c288844be85d4805401887e
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30185224"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285971"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Często zadawane pytania — VMware do platformy Azure replikacji
 
@@ -29,7 +29,7 @@ Podczas replikacji dane są replikowane do magazynu Azure, a nie płacisz zmiany
 
 ### <a name="what-can-i-do-with-vmware-to-azure-replication"></a>Co mogę zrobić przy VMware do platformy Azure replikacji?
 - **Odzyskiwanie po awarii**: można skonfigurować pełne odzyskiwanie. W tym scenariuszu lokalnych maszyn wirtualnych VMware są replikowane do magazynu Azure. Następnie jeśli infrastruktury lokalnej jest niedostępny, możesz w trybie Failover na platformie Azure. Podczas przejścia w tryb failover, maszynach wirtualnych platformy Azure są tworzone przy użyciu zreplikowanych danych. Dostępne aplikacje i obciążenia na maszynach wirtualnych Azure, do momentu lokalnego centrum danych jest ponownie dostępny. Następnie możesz w trybie platformy Azure z do lokacji lokalnej.
-- **Migracja**: można użyć usługi Site Recovery do migrowania maszyn wirtualnych VMware lokalnego do platformy Azure. W tym scenariuszu lokalnych maszyn wirtualnych VMware są replikowane do magazynu Azure. Następnie należy przełączyć się z lokalnymi na platformie Azure. Po przejściu w tryb failover, masz aplikacje i obciążenia są dostępne i działają na maszynach wirtualnych platformy Azure.
+- **Migracja**: można użyć usługi Site Recovery do migrowania maszyn wirtualnych VMware lokalnego do platformy Azure. W tym scenariuszu lokalnych maszyn wirtualnych VMware są replikowane do magazynu Azure. Następnie należy przełączyć się z lokalnymi na platformie Azure. Po przejściu w tryb failover aplikacji i obciążeń są dostępne i działają na maszynach wirtualnych platformy Azure.
 
 
 
@@ -41,7 +41,7 @@ Potrzebujesz subskrypcji platformy Azure, Magazyn usług odzyskiwania konta maga
 Potrzebujesz konta magazynu LRS lub GRS. Zalecamy użycie konta GRS, dzięki czemu dane będą odporne w przypadku regionalnej awarii lub sytuacji, w której nie można odzyskać regionu podstawowego. Magazyn w warstwie Premium jest obsługiwana.
 
 ### <a name="does-my-azure-account-need-permissions-to-create-vms"></a>Czy Moje konto Azure potrzebuje uprawnień do tworzenia maszyn wirtualnych?
-Jeśli jesteś administratorem subskrypcji, masz uprawnienia do replikacji, które są potrzebne. Jeśli nie masz potrzebne uprawnienia do tworzenia maszyny Wirtualnej platformy Azure w grupie zasobów i sieć wirtualną, której można określić podczas konfigurowania lokacji Reocvery i uprawnienia do zapisu accout wybranego magazynu. [Dowiedz się więcej](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines).
+Jeśli jesteś administratorem subskrypcji, masz uprawnienia do replikacji, które są potrzebne. Jeśli nie masz potrzebne uprawnienia do tworzenia maszyny Wirtualnej platformy Azure w grupie zasobów i sieć wirtualną, której można określić podczas konfigurowania usługi Site Recovery i uprawnienia do zapisywania na wybranym koncie magazynu. [Dowiedz się więcej](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines).
 
 
 

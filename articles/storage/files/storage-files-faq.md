@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 05/31/2018
 ms.author: renash
-ms.openlocfilehash: e93e55161d965210e260e1664b330f2d77ff75c6
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 9121726cc8500da87cf71cb1ca3035e6cc5a303b
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737813"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294094"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Pliki Azure — często zadawane pytania (FAQ)
 [Usługa pliki Azure](storage-files-introduction.md) oferuje pełni zarządzanych udziałów plików w chmurze, które są dostępne za pośrednictwem standardu branżowego [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można zainstalować w chmurze lub lokalnie wdrożeń systemu Windows, Linux i macOS jednocześnie. Możesz również buforować udziały plików platformy Azure na komputerach z systemem Windows Server przy użyciu synchronizacji plików Azure (wersja zapoznawcza) zapewniania szybkiego dostępu bliski gdzie dane są używane.
@@ -91,7 +91,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania na temat funkcji us�
 
 * <a id="afs-region-availability"></a>
 **Jakie regiony są obsługiwane w przypadku synchronizacji plików Azure (wersja zapoznawcza)?**  
-    Obecnie synchronizacji plików Azure jest dostępna w Australia Wschodnia Kanada centralnej, wschodnie stany USA, Azja południowo-wschodnia, Wielka Brytania Południowa, Europa Zachodnia, zachodnie stany USA. Obsługa kolejnych regionach zostanie dodany jako pracujemy kierunku ogólnej dostępności. Aby uzyskać więcej informacji, zobacz [dostępność w danym regionie](storage-sync-files-planning.md#region-availability).
+    Obecnie synchronizacji plików Azure jest dostępna w Australia Wschodnia, Australia Południowo-Wschodnia, Kanada centralnej, Kanada Wschodnia, środkowe stany USA, Azja Wschodnia, wschodnie stany USA, wschodnie US2, Europa Północna, Azja południowo-wschodnia, Wielka Brytania Południowa, Wielka Brytania Zachodnia, Europa Zachodnia i zachodnie stany USA. Obsługa kolejnych regionach zostanie dodany jako pracujemy kierunku ogólnej dostępności. Aby uzyskać więcej informacji, zobacz [dostępność w danym regionie](storage-sync-files-planning.md#region-availability).
 
 * <a id="cross-domain-sync"></a>
 **Czy można mieć serwery przyłączone do domeny i przyłączone do domeny w tej samej grupie synchronizacji?**  

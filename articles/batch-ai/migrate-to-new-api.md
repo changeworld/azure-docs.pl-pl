@@ -15,18 +15,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: danlep
-ms.openlocfilehash: b59173259aa86a429b9f926a8e5ffbfd046451a1
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c5e4c1569464d2e204edf13fe7534d80780524e8
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294881"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294963"
 ---
 # <a name="migrate-to-the-updated-batch-ai-api"></a>Migrowanie zaktualizowane API partii AI
 
-W nadchodzących interfejsu API REST AI partii wersji 2018-05-01 i powiązane partii AI zestawy SDK i narzędzia są trwa wprowadzono znaczące zmiany i nowe funkcje.
+W partii interfejsu API REST AI wersji 2018-05-01 i powiązane partii AI zestawy SDK i narzędzia znaczących zmian i nowe funkcje zostały wprowadzone.
 
-Jeśli poprzednia wersja interfejsu API partii AI była używana, w tym artykule opisano sposób modyfikowania kod i skrypty do pracy z nowym interfejsem API. Należy wprowadzić te zmiany dopiero po nowy interfejs API jest dostępna.
+Jeśli poprzednia wersja interfejsu API partii AI była używana, w tym artykule opisano sposób modyfikowania kod i skrypty do pracy z nowym interfejsem API. 
 
 ## <a name="whats-changing"></a>Co to jest zmiana?
 

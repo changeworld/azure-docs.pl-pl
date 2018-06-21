@@ -12,20 +12,20 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/9/2017
+ms.date: 06/19/2018
 ms.author: LADocs; divswa
-ms.openlocfilehash: 493d82f59600d83a083bb13cdd0a21b872d77a43
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 0dc7f28ebe3816ba317eb3a4e28fc640c8a12a4e
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299947"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294578"
 ---
 # <a name="monitor-and-get-insights-about-logic-app-runs-with-log-analytics"></a>Monitorowanie i uzyskiwanie szczegółowych informacji o uruchomieniu aplikacji logiki z analizy dzienników
 
 Do monitorowania i bardziej rozbudowane informacje debugowania można włączyć analizy dzienników w tym samym czasie, podczas tworzenia aplikacji logiki. Analiza dzienników zapewnia diagnostyki rejestrowania i monitorowania aplikacji logiki uruchamia się za pośrednictwem portalu Azure. Po dodaniu rozwiązania do zarządzania aplikacji logiki, otrzymasz zagregowany stan logiki aplikacji działa i konkretne szczegółowe informacje, takie jak stan, czas wykonywania, stan ponownego wysyłania i identyfikatorów korelacji.
 
-W tym temacie pokazano, jak włączyć funkcję analizy dzienników, dzięki czemu można wyświetlać zdarzenia środowiska uruchomieniowego i uruchom danych aplikacji logiki.
+W tym artykule pokazano, jak włączyć funkcję analizy dzienników, dzięki czemu można wyświetlać zdarzenia środowiska uruchomieniowego i uruchom danych aplikacji logiki.
 
  > [!TIP]
  > Aby monitorować istniejących aplikacji logiki, wykonaj następujące kroki, aby [włączyć rejestrowania diagnostycznego i wysyłać dane środowiska uruchomieniowego aplikacji logiki do analizy dzienników](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
@@ -67,17 +67,17 @@ Jeśli już włączone analizy dzienników, podczas tworzenia aplikacji logiki, 
 
    ![Wybierz obszar roboczy analizy dzienników](media/logic-apps-monitor-your-logic-apps-oms/select-logic-app.png)
 
-3. W obszarze **zarządzania**, wybierz **portalu OMS**.
+3. W obszarze **zarządzania**, wybierz **omówienie**.
 
-   ![Wybierz pozycję "Portalu OMS"](media/logic-apps-monitor-your-logic-apps-oms/oms-portal-page.png)
+   ![Wybierz pozycję "Portalu OMS"](media/logic-apps-monitor-your-logic-apps-oms/ibiza-portal-page.png)
 
-4. W obszarze **wszystkie rozwiązania**, Znajdź i wybierz Kafelek **zarządzania aplikacje logiki** rozwiązania.
+4. Na stronie Przegląd wybierz **Dodaj** otworzyć Kafelek rozwiązania do zarządzania. 
 
-   ![Wybierz pozycję "Zarządzanie aplikacje logiki"](media/logic-apps-monitor-your-logic-apps-oms/logic-apps-management-tile2.png)
+   ![Wybierz pozycję "Zarządzanie aplikacje logiki"](media/logic-apps-monitor-your-logic-apps-oms/add-logic-apps-management-solution.png)
 
-5. Aby zainstalować rozwiązania, w obszarze roboczym analizy dzienników, wybierz **Dodaj**.
+5. Przewiń listę **rozwiązań do zarządzania**, wybierz **zarządzania aplikacje logiki** rozwiązania i wybierz polecenie **Utwórz** do zainstalowania go na stronie przeglądu.
 
-   ![Wybierz opcję "Dodaj", "Zarządzania aplikacjami logiki"](media/logic-apps-monitor-your-logic-apps-oms/add-logic-apps-management-solution.png)
+   ![Wybierz opcję "Dodaj", "Zarządzania aplikacjami logiki"](media/logic-apps-monitor-your-logic-apps-oms/create-logic-apps-management-solution.png)
 
 <a name="view-logic-app-runs-oms"></a>
 

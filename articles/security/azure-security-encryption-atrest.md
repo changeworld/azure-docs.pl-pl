@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/06/2018
+ms.date: 06/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 4bcc691e00b373028acaf0936af8336a76306aec
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 21438b107632166f3717c07b0fd01a56a2944f34
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232440"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294060"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Danych Azure szyfrowania na Rest
 
@@ -259,7 +259,7 @@ Szyfrowanie po stronie klienta danych bazy danych SQL Azure jest obsługiwane pr
 |----------------------------------|--------------------|--------------------|--------------------|--------------------|
 |                                  | **Strona serwera przy użyciu klucza zarządzane przez usługę**     | **— Po stronie serwera za pomocą zarządzanego przez klienta w magazynie kluczy**             |  **— Po stronie serwera za pomocą zarządzanego przez klienta lokalnie**                  | **Klienta przy użyciu zarządzanego klienta**      |
 | **Magazyn i baz danych**        |                    |                    |                    |                    |                    |
-| Dysku (IaaS)                      | -                  | Tak, RSA 2048-bitowego  | Tak*               | -                  |
+| Dysku (IaaS)                      | -                  | Tak, RSA 2048-bitowego  | Yes               | -                  |
 | Program SQL Server (IaaS)                | Yes                | Tak, RSA 2048-bitowego  | Yes                | Yes                |
 | Baza danych Azure SQL (PaaS)        | Yes                | Tak, RSA 2048-bitowego  | -                  | Yes                |
 | Usługa Azure Storage (bloku/stronicowych obiektów blob) | Yes                | Tak, RSA 2048-bitowego  | -                  | Yes                |

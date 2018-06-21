@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 3962b2e598f94767bd0fbbe990084875deec5e40
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 4345199ed952b6d0e044d4ac99c29c47c477780d
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266903"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287072"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Tworzenie, zmienianie lub usuwanie publicznego adresu IP
 
@@ -92,6 +92,16 @@ Chociaż portalu udostępnia opcję, aby utworzyć dwa zasoby publicznych adres�
 |Interfejs wiersza polecenia|[Lista ip publicznej sieci az](/cli/azure/network/public-ip#az-network-public-ip-list) publiczne adresy IP, [az sieci ip publicznego Pokaż](/cli/azure/network/public-ip#az-network-public-ip-show) pokazanie ustawień; [az sieci ip publicznego aktualizacji](/cli/azure/network/public-ip#az-network-public-ip-update) zaktualizować; [usunąć publicznej sieci az ip](/cli/azure/network/public-ip#az-network-public-ip-delete) do usunięcia|
 |PowerShell|[Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) można pobrać obiektu publiczny adres IP i wyświetlić jej ustawienia [AzureRmPublicIpAddress zestaw](/powershell/module/azurerm.network/set-azurermpublicipaddress) można zaktualizować ustawień; [AzureRmPublicIpAddress Usuń](/powershell/module/azurerm.network/remove-azurermpublicipaddress) do usunięcia|
 
+## <a name="assign-a-public-ip-address"></a>Przypisz do publicznego adresu IP
+
+Dowiedz się, jak można przypisać do publicznego adresu IP w następujących zasobach:
+
+- A [Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) maszyny Wirtualnej (podczas tworzenia) lub [istniejącej maszyny Wirtualnej](virtual-network-network-interface-addresses.md#add-ip-addresses)
+- [Moduł równoważenia obciążenia z Internetem](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Brama aplikacji Azure](../application-gateway/application-gateway-create-gateway-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Połączenie lokacja lokacja za pomocą bramy sieci VPN platformy Azure](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Zestaw skali maszyny wirtualnej platformy Azure](../virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+
 ## <a name="permissions"></a>Uprawnienia
 
 Do wykonywania zadań na publiczne adresy IP, Twoje konto musi mieć przypisaną do [współautora sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [niestandardowych](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rola przypisana odpowiednie akcje wymienione w poniższej tabeli:
@@ -107,4 +117,3 @@ Do wykonywania zadań na publiczne adresy IP, Twoje konto musi mieć przypisaną
 
 - Utwórz publiczny adres IP, za pomocą [PowerShell](powershell-samples.md) lub [interfejsu wiersza polecenia Azure](cli-samples.md) przykładowe skrypty lub przy użyciu usługi Azure [szablonów Resource Manager](template-samples.md)
 - Tworzenie i stosowanie [Azure zasad](policy-samples.md) publicznego adresu IP adresów
-- Przypisz publicznych adresów IP podczas tworzenia [Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) maszyny wirtualnej platformy Azure, [modułu równoważenia obciążenia Azure Azure internetowych](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Azure Brama aplikacji w](../application-gateway/application-gateway-create-gateway-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [połączenia lokacja lokacja przy użyciu bramy sieci VPN Azure](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json), lub [zestawu skalowania maszyn wirtualnych Azure](../virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

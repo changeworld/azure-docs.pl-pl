@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie kontrolą dostępu na podstawie ról (RBAC) przy użyciu interfejsu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Informacje o sposobie zarządzania opartego na rolach kontrola dostępu (RBAC) przy użyciu interfejsu wiersza polecenia platformy Azure za pomocą listę ról i akcje ról i przypisywania ról do zakresów subskrypcji i aplikacji.
+title: Zarządzanie dostępem przy użyciu RBAC i interfejsu wiersza polecenia Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zarządzać dostępem dla użytkowników, grup i aplikacji, przy użyciu kontroli dostępu opartej na rolach (RBAC) i wiersza polecenia platformy Azure. W tym listę dostępu, udzielanie dostępu i usuwanie dostępu.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,30 +14,24 @@ ms.workload: identity
 ms.date: 04/03/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8b50d04bcbd067059bf4816468585e5d56a63d41
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 15ff519f5af7471d6adaae44e2af19422ad44fea
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266741"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294408"
 ---
-# <a name="manage-role-based-access-control-with-the-azure-command-line-interface"></a>Zarządzanie oparte na rolach kontrola dostępu przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="manage-access-using-rbac-and-azure-cli"></a>Zarządzanie dostępem przy użyciu RBAC i wiersza polecenia platformy Azure
 
-> [!div class="op_single_selector"]
-> * [Program PowerShell](role-assignments-powershell.md)
-> * [Interfejs wiersza polecenia platformy Azure](role-assignments-cli.md)
-> * [Interfejs API REST](role-assignments-rest.md)
-
-
-Przy użyciu kontroli dostępu opartej na rolach (RBAC) należy zdefiniować dostęp dla użytkowników, grup i nazwy główne usług poprzez przypisywanie ról w określonym zakresie. W tym artykule opisano sposób zarządzania przypisań ról przy użyciu interfejsu wiersza polecenia platformy Azure (CLI).
+[Kontrola dostępu oparta na rolach (RBAC)](overview.md) jest sposób zarządzania dostępem do zasobów na platformie Azure. W tym artykule opisano, jak zarządzać dostępu dla użytkowników, grup i aplikacji przy użyciu RBAC oraz wiersza polecenia platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby zarządzać przypisań ról przy użyciu interfejsu wiersza polecenia Azure, musi mieć następujące wymagania wstępne:
 
-* [Interfejs wiersza polecenia platformy Azure 2.0](/cli/azure). Możesz używać go w przeglądarce dzięki usłudze [Azure Cloud Shell](../cloud-shell/overview.md), albo [zainstalować](/cli/azure/install-azure-cli) w systemach macOS, Linux i Windows, a następnie uruchamiać z wiersza polecenia.
+* [Interfejs wiersza polecenia platformy Azure](/cli/azure). Możesz używać go w przeglądarce dzięki usłudze [Azure Cloud Shell](../cloud-shell/overview.md), albo [zainstalować](/cli/azure/install-azure-cli) w systemach macOS, Linux i Windows, a następnie uruchamiać z wiersza polecenia.
 
-## <a name="list-role-definitions"></a>Definicje ról listy
+## <a name="list-roles"></a>Lista ról
 
 Aby wyświetlić listę wszystkich dostępnych definicji ról, należy użyć [listy definicji roli az](/cli/azure/role/definition#az-role-definition-list):
 
@@ -94,7 +88,7 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 ...
 ```
 
-### <a name="list-actions-of-a-role-definition"></a>Akcje listy definicji roli
+### <a name="list-actions-of-a-role"></a>Akcje listy roli
 
 Aby wyświetlić listę akcji definicji roli, należy użyć [listy definicji roli az](/cli/azure/role/definition#az-role-definition-list):
 
@@ -182,7 +176,9 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 ]
 ```
 
-## <a name="list-role-assignments"></a>Lista przypisań ról
+## <a name="list-access"></a>Dostęp do listy
+
+W RBAC na liście dostępu, możesz listę przypisań ról.
 
 ### <a name="list-role-assignments-for-a-user"></a>Lista przypisań ról dla użytkownika
 
@@ -240,7 +236,9 @@ az role assignment list --resource-group pharma-sales-projectforecast --output j
 ...
 ```
 
-## <a name="create-role-assignments"></a>Tworzenie przypisań ról
+## <a name="grant-access"></a>Udzielanie dostępu
+
+W RBAC Aby udzielić dostępu, należy utworzyć przypisania roli.
 
 ### <a name="create-a-role-assignment-for-a-user"></a>Tworzy przypisanie roli użytkownika
 
@@ -290,9 +288,9 @@ W poniższym przykładzie przypisano *Współautor·maszyny·wirtualnej* roli do
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 44444444-4444-4444-4444-444444444444 --resource-group pharma-sales-projectforecast
 ```
 
-## <a name="remove-a-role-assignment"></a>Usuń przypisanie roli
+## <a name="remove-access"></a>Usuń dostęp
 
-Aby usunąć przypisanie roli, należy użyć [usunąć przypisanie roli az](/cli/azure/role/assignment#az-role-assignment-delete):
+RBAC, aby usunąć dostęp, można usunąć przypisania roli używając [usunąć przypisanie roli az](/cli/azure/role/assignment#az-role-assignment-delete):
 
 ```azurecli
 az role assignment delete --assignee <assignee> --role <role> --resource-group <resource_group>

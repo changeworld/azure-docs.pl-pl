@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 160f01c3094548277e1f68e0002954ae63c79ce6
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 81b760e3a911bacb9c01106d59577d794788abe8
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738339"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36296176"
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Planowanie wdrożenia synchronizacji plików Azure (wersja zapoznawcza)
 Umożliwia synchronizacji plików Azure (wersja zapoznawcza) scentralizowanie udziałów plików w organizacji w plikach Azure, przy zachowaniu elastyczności, wydajności i zgodności serwera plików lokalnych. Synchronizacja programu Azure pliku przy użyciu systemu Windows Server do szybkiego pamięci podręcznej udziału plików na platformę Azure. Można użyć każdego protokołu, który jest dostępny w systemie Windows Server dostępu do danych lokalnie, w tym protokołu SMB, systemu plików NFS i FTPS. Może mieć dowolną liczbę pamięci podręcznych zgodnie z potrzebami na całym świecie.
@@ -145,6 +145,9 @@ W przypadku synchronizacji plików Azure i systemu plików DFS-R pracy side-by-s
 
 Aby uzyskać więcej informacji, zobacz [Omówienie replikacji systemu plików DFS](https://technet.microsoft.com/library/jj127250).
 
+### <a name="windows-search"></a>Usługa wyszukiwania systemu Windows
+Jeśli chmury na punktu końcowego serwera włączono obsługę poziomów, pliki, które są masz dość są pominięty i nie są indeksowane według wyszukiwania systemu Windows. Pliki inne niż do warstwy są poprawnie indeksowane.
+
 ### <a name="antivirus-solutions"></a>Programy antywirusowe
 Ponieważ oprogramowanie antywirusowe polega na skanowanie plików do znanego złośliwego kodu, antywirusowe może spowodować odwołania warstwowych plików. Ponieważ pliki warstwowych ma ustawiony atrybut "offline", firma Microsoft zaleca konsultacji z dostawcą oprogramowania, aby dowiedzieć się, jak skonfigurować ich rozwiązanie, aby pominąć odczytywania plików trybu offline. 
 
@@ -158,6 +161,11 @@ Znane są następujące rozwiązania do obsługi pomijanie plików trybu offline
 
 ### <a name="backup-solutions"></a>Rozwiązania kopii zapasowej
 Na przykład oprogramowania antywirusowego rozwiązań tworzenia kopii zapasowych może spowodować odwołania warstwowych plików. Firma Microsoft zaleca, aby utworzyć kopię zapasową udziału plików na platformę Azure zamiast lokalnie instalowanym produktem kopii zapasowej za pomocą rozwiązania kopii zapasowych w chmurze.
+
+Jeśli korzystasz z lokalnego rozwiązania do tworzenia kopii zapasowej, należy wykonać kopie zapasowe na serwerze w grupy synchronizacji, która ma chmurę, dodając funkcje warstw wyłączone. Podczas przywracania plików w lokalizacji punktu końcowego serwera, należy użyć opcji przywracania na poziomie pliku. Do wszystkich punktów końcowych w grupie synchronizacji zostaną zsynchronizowane przywróconych plików i istniejące pliki zostaną zastąpione wersji przywrócone z kopii zapasowej.
+
+> [!Note]  
+> Aplikacja obsługująca, opcje przywracania (BMR) na poziomie woluminu i bez systemu operacyjnego może spowodować nieoczekiwane wyniki i nie są obecnie obsługiwane. Przywracanie, te opcje będą obsługiwane w przyszłej wersji.
 
 ### <a name="encryption-solutions"></a>Rozwiązania
 Obsługa szyfrowania rozwiązań zależy od sposobu implementacji. Synchronizacja programu Azure pliku jest znany do pracy z:
@@ -180,6 +188,7 @@ Synchronizacja programu Azure plik jest dostępny tylko w następujących region
 | Region | Lokalizacja centrum danych |
 |--------|---------------------|
 | Australia Wschodnia | Stan Nowa Południowa Walia |
+| Australia Południowo-Wschodnia | Stan Wiktoria |
 | Kanada Środkowa | Toronto |
 | Kanada Wschodnia | Quebec |
 | Środkowe stany USA | Iowa |
@@ -189,6 +198,7 @@ Synchronizacja programu Azure plik jest dostępny tylko w następujących region
 | Europa Północna | Irlandia |
 | Azja Południowo-Wschodnia | Singapur |
 | Południowe Zjednoczone Królestwo | Londyn |
+| Zachodnie Zjednoczone Królestwo | Cardiff |
 | Europa Zachodnia | Holandia |
 | Zachodnie stany USA | Kalifornia |
 

@@ -1,22 +1,19 @@
 ---
 title: Zarządzanie serwerem procesu w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
 description: W tym artykule opisano zarządzanie serwera przetwarzania, ustaw dla maszyny Wirtualnej VMware i replikacji serwera fizycznego w usłudze Azure Site Recovery.
-services: site-recovery
 author: AnoopVasudavan
-manager: gauravd
-editor: ''
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/05/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: anoopkv
-ms.openlocfilehash: 096b2890d41402448809ae87759fcd6b67bee2fe
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: d1f880a5ec9f0343891999ef3bad11279cb0cfe6
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29812740"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285534"
 ---
-# <a name="manage-process-servers"></a>Zarządzanie serwerami procesu
+# <a name="manage-process-servers"></a>Zarządzanie serwerami przetwarzania
 
 Domyślnie serwer przetwarzania używany w przypadku replikacji maszyn wirtualnych VMware lub serwerów fizycznych do platformy Azure jest instalowany na komputerze z serwerem konfiguracji lokalnej. Istnieje kilka wystąpień, w których należy skonfigurować oddzielnego serwera przetwarzania:
 

@@ -12,14 +12,14 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 06/19/2018
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 520a1212eaccc48f8b8b423f7dede9c16409220b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 48cca9919bd09906bdcc3faaaef186ec109c9169
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300331"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294313"
 ---
 # <a name="query-for-as2-x12-and-edifact-messages-in-log-analytics"></a>Wykonanie kwerendy AS2, X 12 i EDIFACT wiadomości w analizy dzienników
 
@@ -53,41 +53,33 @@ Ten przykład przedstawia, jak można znaleźć na podstawie ich liczby kontroli
 
    ![Wybierz obszar roboczy analizy dzienników](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/selectla.png)
 
-3. W obszarze **zarządzania**, wybierz **portalu OMS**.
+3. W obszarze **zarządzania**, wybierz **wyszukiwania dziennika**.
 
-   ![Wybierz portalu OMS](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/omsportalpage.png)
+   ![Wybierz Lo wyszukiwania](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/azure-portal-page.png)
 
-4. Na stronie głównej wybierz **wyszukiwania dziennika**.
-
-   ![Na stronie głównej wybierz pozycję "Dziennik wyszukiwania"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
-
-   — lub —
-
-   ![W menu wybierz "Dziennik wyszukiwania"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
-
-5. W polu wyszukiwania wprowadź pola, które chcesz odnaleźć, a następnie naciśnij klawisz **Enter**. Po rozpoczęciu wprowadzania, analizy dzienników pokazuje, pasujących i operacje, które są dostępne. Dowiedz się więcej o [jak wyszukiwania danych analizy dzienników](../log-analytics/log-analytics-log-searches.md).
+4. W polu wyszukiwania wprowadź pola, które chcesz odnaleźć, a następnie naciśnij klawisz **Enter**. Po rozpoczęciu wprowadzania, analizy dzienników pokazuje, pasujących i operacje, które są dostępne. Dowiedz się więcej o [jak wyszukiwania danych analizy dzienników](../log-analytics/log-analytics-log-searches.md).
 
    W tym przykładzie wyszukuje zdarzeń o **typu = AzureDiagnostics**.
 
    ![Wpisz ciąg zapytania](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-start-query.png)
 
-6. Na pasku po lewej stronie Wybierz przedział czasu, który chcesz wyświetlić. Aby dodać filtr do zapytania, wybierz **+ Dodaj**.
+5. Na pasku po lewej stronie Wybierz przedział czasu, który chcesz wyświetlić. Aby dodać filtr do zapytania, wybierz **+ Dodaj**.
 
    ![Dodaj filtr do zapytania](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/query1.png)
 
-7. W obszarze **Dodaj filtry**, wprowadź nazwę filtru, aby umożliwić znalezienie filtr ma. Wybierz filtr, a następnie wybierz pozycję **+ Dodaj**.
+6. W obszarze **Dodaj filtry**, wprowadź nazwę filtru, aby umożliwić znalezienie filtr ma. Wybierz filtr, a następnie wybierz pozycję **+ Dodaj**.
 
    Aby znaleźć numer formantu wymiany, w tym przykładzie wyszukuje dla słowa "wymiany" i wybiera **event_record_messageProperties_interchangeControlNumber_s** jako filtr.
 
    ![Wybierz filtr](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-add-filter.png)
 
-9. Na pasku po lewej stronie wybierz wartości filtru, który chcesz użyć, a następnie wybierz pozycję **Zastosuj**.
+7. Na pasku po lewej stronie wybierz wartości filtru, który chcesz użyć, a następnie wybierz pozycję **Zastosuj**.
 
    W tym przykładzie wybiera numer kontroli wymiany wiadomości, którą chcemy udostępnić.
 
    ![Wybierz wartości filtru](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-select-filter-value.png)
 
-10. Teraz wróć do zapytania, które tworzysz. Kwerenda została zaktualizowana wybrany filtr zdarzeń i wartość. Poprzednie wyniki teraz są zbyt filtrowane.
+8. Teraz wróć do zapytania, które tworzysz. Kwerenda została zaktualizowana wybrany filtr zdarzeń i wartość. Poprzednie wyniki teraz są zbyt filtrowane.
 
     ![Wróć do filtrowane wyniki zapytania](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-filtered-results.png)
 

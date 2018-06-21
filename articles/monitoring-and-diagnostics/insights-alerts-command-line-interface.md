@@ -1,6 +1,6 @@
 ---
-title: Tworzenie klasycznej alertów dla usług Azure - interfejsu wiersza polecenia i platform
-description: Wyzwalacz wiadomości e-mail, powiadomienia, Wywołaj adresy URL witryny sieci Web (elementy webhook) lub automatyzacji po spełnieniu warunków, które określisz.
+title: Tworzenie klasycznej alertów dla usług Azure za pomocą wiersza polecenia platformy Azure i platform | Dokumentacja firmy Microsoft
+description: Wyzwalanie powiadomienia lub wiadomości e-mail, lub zadzwoń adresów URL witryny sieci Web (elementy webhook) lub automatyzacji, po spełnieniu warunków, które określisz.
 author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,62 +8,60 @@ ms.topic: conceptual
 ms.date: 10/24/2016
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: 35f87f140772be1777ddfb184e78b61446bb3bd6
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 8112b868bc8d2ca2a9478d38ee702d8b3350d48e
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267751"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287111"
 ---
-# <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---cross-platform-cli"></a>Tworzenie klasycznego metryki alertów w monitorze Azure dla usług Azure - CLI między platformami
+# <a name="use-the-cross-platform-azure-cli-to-create-classic-metric-alerts-in-azure-monitor-for-azure-services"></a>Tworzenie klasycznego metryki alertów w monitorze Azure dla usług Azure za pomocą wiersza polecenia platformy Azure i platform 
+
 > [!div class="op_single_selector"]
 > * [Portal](insights-alerts-portal.md)
 > * [Program PowerShell](insights-alerts-powershell.md)
 > * [Interfejs wiersza polecenia](insights-alerts-command-line-interface.md)
 >
 >
-
-## <a name="overview"></a>Przegląd
 > [!NOTE]
-> W tym artykule opisano sposób tworzenia starsze klasycznego alerty metryki. Azure obsługuje teraz Monitor [nowszą, lepiej metryki alerty](monitoring-near-real-time-metric-alerts.md). Te alerty można monitorować wiele metryk i umożliwić alertów na wymiarów metryki. Obsługa interfejsu wiersza polecenia dla nowszej alertów metryki będzie dostępna wkrótce.
+> W tym artykule opisano sposób tworzenia starsze klasycznego alerty metryki. Azure obsługuje teraz Monitor [nowszą, lepiej metryki alerty](monitoring-near-real-time-metric-alerts.md). Te alerty można monitorować wiele metryk i umożliwić alertów na wymiarów metryki. Azure CLI obsługę nowszych alerty metryki będzie dostępna wkrótce.
 >
 >
 
-W tym artykule przedstawiono sposób konfigurowania za pomocą interfejsu wiersza polecenia i platform (CLI) Azure klasycznego alertów metryki.
+W tym artykule przedstawiono sposób skonfigurować Azure classic alerty metryki przy użyciu interfejsu wiersza polecenia i platform (Azure CLI).
 
 > [!NOTE]
-> Azure Monitor to nowa nazwa dla proponowaną "Azure Insights" do 25 września 2016 r. Jednak przestrzenie nazw, dlatego poniższe polecenia nadal zawierają "insights".
->
->
+> Azure Monitor to nowa nazwa dla proponowaną "Azure Insights" do 25 września 2016 r. Jednak przestrzenie nazw, dlatego poleceń, które zostały opisane w tym miejscu nadal zawierać słowo "insights".
 
-Możesz otrzymywać alertu na podstawie metryki monitorowania lub zdarzenia na usługami Azure.
+Możesz otrzymywać alert oparciu metryki dla usług Azure, lub na podstawie zdarzeń, które występują w systemie Azure.
 
-* **Wartości metryki** — uruchamia alert, gdy wartość określonej metryki przekracza próg przypisać w żadnym kierunku. Oznacza to, że oba wyzwala po spełnieniu warunku zostanie najpierw i następnie później podczas warunku jest już spełniane.    
-* **Zdarzenia dziennika aktywności** -alert może wyzwolić na *co* zdarzenia lub tylko wtedy, gdy wystąpi określone zdarzenie. Aby dowiedzieć się więcej o alertach dziennika aktywności [kliknij tutaj](monitoring-activity-log-alerts.md)
+* **Wartości metryki**: uruchamia alert, gdy wartość określonej metryki przekracza próg, który przypisywać w żadnym kierunku. Oznacza to, że oba wyzwala po raz pierwszy warunek jest spełniony, a następnie po już trwa spełnienia warunku.    
+
+* **Zdarzenia dziennika aktywności**: alert może wyzwolić na *co* zdarzenia lub w przypadku wystąpienia określonych zdarzeń. Aby dowiedzieć się więcej o Dzienniki aktywności, zobacz [Utwórz działanie alertów dziennika (klasyczne)](monitoring-activity-log-alerts.md). 
 
 Można skonfigurować klasycznego alertu metryki wyzwala, wykonaj następujące czynności:
 
-* wysyłanie powiadomień e-mail do administratora usługi i współadministratorzy
-* Wyślij wiadomość e-mail do dodatkowych wiadomości e-mail przez użytkownika.
-* Wywołanie elementu webhook
-* Uruchamia wykonywanie elementów runbook platformy Azure (tylko z portalu Azure w tej chwili)
+* Administrator usługi i współadministratorzy wysyłania powiadomień e-mail. 
+* Wysyłanie określonych adresów e-mail do wiadomości e-mail.
+* Wywołanie elementu webhook.
+* Uruchamia wykonywanie elementów runbook platformy Azure (tylko z portalu Azure w tym momencie).
 
-Można skonfigurować i uzyskać informacje na temat przy użyciu klasycznego metryki reguły alertów
+Można skonfigurować i uzyskiwania informacji o klasycznym metryki reguły alertów za pomocą następujących czynności: 
 
-* [Azure Portal](insights-alerts-portal.md)
+* [Witryna Azure Portal](insights-alerts-portal.md)
 * [Program PowerShell](insights-alerts-powershell.md)
-* [Interfejs wiersza polecenia (CLI)](insights-alerts-command-line-interface.md)
+* [Interfejs wiersza polecenia platformy Azure](insights-alerts-command-line-interface.md)
 * [Interfejs API REST Azure monitora](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
-Zawsze może odbierać pomocy dla poleceń, wpisując polecenie i odkładanie — pomoc na końcu. Na przykład:
+Można również uzyskać pomoc dotyczącą poleceń, wpisując polecenie z **— Pomoc** na końcu. Poniżej przedstawiono przykładowy: 
 
-    ```console
-    azure insights alerts -help
-    azure insights alerts actions email create -help
-    ```
+```console
+ azure insights alerts -help
+ azure insights alerts actions email create -help
+ ```
 
-## <a name="create-alert-rules-using-the-cli"></a>Tworzyć reguły alertów za pomocą interfejsu wiersza polecenia
-1. Wykonaj warunki wstępne i logowania do platformy Azure. Zobacz [przykłady interfejsu wiersza polecenia Azure Monitor](insights-cli-samples.md). Krótko mówiąc instalowanie interfejsu wiersza polecenia i uruchom następujące polecenia. Ona się zalogować, Pokaż subskrypcję, a przygotowanie do uruchomienia poleceń Azure monitora.
+## <a name="create-alert-rules-by-using-azure-cli"></a>Tworzyć reguły alertów za pomocą wiersza polecenia platformy Azure
+1. Po zainstalowaniu wymagań wstępnych, logowanie do platformy Azure. Zobacz [przykłady interfejsu wiersza polecenia Azure Monitor](insights-cli-samples.md) poleceń, które należy rozpocząć pracę. Te polecenia ułatwiające uzyskać zalogowany, opisano, jakie subskrypcji używasz i przygotowanie do uruchomienia poleceń Azure monitora.
 
     ```console
     azure login
@@ -72,42 +70,47 @@ Zawsze może odbierać pomocy dla poleceń, wpisując polecenie i odkładanie �
 
     ```
 
-2. Aby wyświetlić listę istniejących reguł dla grupy zasobów, użyj następującej składni **insights azure alerty reguły listy** *[opcje] &lt;grupa zasobów&gt;*
+2. Aby wyświetlić listę istniejących reguł dla grupy zasobów, użyj następującego formatu: 
+
+   **Azure insights alerty reguły listy** *[opcje] &lt;grupa zasobów&gt;*
 
    ```console
    azure insights alerts rule list myresourcegroupname
 
    ```
 3. Aby utworzyć regułę, musisz mieć najpierw kilku ważnych informacji.
-  * **Identyfikator zasobu** dla zasobu, aby ustawić alert dla
-  * **Definicji metryk** dostępne dla tego zasobu
+    * **Identyfikator zasobu** chcesz ustawić alert dla zasobu.
+    * **Definicji metryk** dostępnych dla tego zasobu.
 
-     Jednym ze sposobów Pobierz identyfikator zasobu jest korzystanie z portalu Azure. Zakładając, że zasób został już utworzony, wybierz go w portalu. Następnie w bloku dalej wybierz *właściwości* w obszarze *ustawienia* sekcji. *Identyfikator ZASOBU* jest polem w następnym bloku. Innym sposobem jest użycie [Eksploratora zasobów Azure](https://resources.azure.com/).
+     Jednym ze sposobów Pobierz identyfikator zasobu jest korzystanie z portalu Azure. Przy założeniu, że zasób został już utworzony, wybierz je w portalu. Następnie w bloku dalej w **ustawienia** zaznacz **właściwości**. **Identyfikator ZASOBU** jest polem w następnym bloku. 
+     
+     Identyfikator zasobu można również uzyskać za pomocą [Eksploratora zasobów Azure](https://resources.azure.com/).
 
-     Identyfikator zasobu przykład dla aplikacji sieci web jest
+     Poniżej przedstawiono przykład identyfikator zasobu dla aplikacji sieci web:
 
      ```console
      /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename
      ```
 
-     Aby uzyskać listę dostępnych metryk i jednostki dla tych metryk w poprzednim przykładzie zasobów, użyj następującego polecenia interfejsu wiersza polecenia:  
+     Aby uzyskać listę dostępnych metryk i jednostki na podstawie metryk w poprzednim przykładzie zasobów, użyj następującego polecenia wiersza polecenia platformy Azure:  
 
      ```console
      azure insights metrics list /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename PT1M
      ```
 
-     *PT1M* jest stopień szczegółowości miary dostępne (1-minutowy). Przy użyciu różnych szczegółowości zapewnia różne opcje metryki.
-4. Aby utworzyć regułę alertu metryki, użyj polecenia mają następującą postać:
+     *PT1M* jest stopień szczegółowości dostępnych miar (w 1-minutowy). Masz różne opcje metryki, korzystając z różnych szczegółowości.
+     
+4. Aby utworzyć regułę alertu na podstawie metryki, należy użyć polecenia w następującym formacie:
 
     **Usługa Azure insights metryki zestaw reguł alertów** *[opcje] &lt;ruleName&gt; &lt;lokalizacji&gt; &lt;resourceGroup&gt; &lt;Rozmiar_okna&gt; &lt;operator&gt; &lt;próg&gt; &lt;element targetResourceId&gt; &lt;metricName&gt; &lt;timeAggregationOperator&gt;*
 
-    Poniższy przykład powoduje ustawienie alertu dla zasobu witryny sieci web. Wyzwalacze alertu zawsze, gdy odbierze spójnie cały ruch do 5 minut i ponownie po otrzymaniu żaden ruch na 5 minut.
+    Poniższy przykład powoduje ustawienie alertu dla zasobu witryny sieci Web. Wyzwalacze alertu zawsze, gdy odbierze spójnie cały ruch do 5 minut i ponownie po otrzymaniu żaden ruch na 5 minut.
 
     ```console
     azure insights alerts rule metric set myrule eastus myreasourcegroup PT5M GreaterThan 2 /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename BytesReceived Total
 
     ```
-5. Aby utworzyć elementu webhook lub Wyślij wiadomość e-mail po zgłoszeniu klasycznego alertu metryki, należy najpierw utworzyć wiadomości e-mail i/lub elementów webhook. Od razu utworzyć regułę później. Nie można skojarzyć elementu webhook lub wiadomości e-mail przy użyciu już utworzone zasady przy użyciu interfejsu wiersza polecenia.
+5. Aby utworzyć elementu webhook lub Wyślij wiadomość e-mail po zgłoszeniu klasycznego alertu metryki, należy najpierw utworzyć adres e-mail lub elementu webhook. Od razu utworzyć regułę później. Nie można skojarzyć elementów webhook lub wiadomości e-mail przy użyciu reguł, które zostały już utworzone.
 
     ```console
     azure insights alerts actions email create --customEmails myemail@contoso.com
@@ -122,11 +125,11 @@ Zawsze może odbierać pomocy dla poleceń, wpisując polecenie i odkładanie �
     ```console
     azure insights alerts rule list myresourcegroup --ruleName myrule
     ```
-7. Aby usunąć zasady, użyj polecenia formularza:
+7. Aby usunąć zasady, użyj polecenia w następującym formacie:
 
     **szczegółowe informacje, Usuń regułę alertów** [opcje] &lt;resourceGroup&gt; &lt;ruleName&gt;
 
-    Te polecenia usuwania reguł utworzonych wcześniej w tym artykule.
+    Te polecenia usuwania reguł, które wcześniej zostały utworzone w tym artykule.
 
     ```console
     azure insights alerts rule delete myresourcegroup myrule
@@ -135,9 +138,9 @@ Zawsze może odbierać pomocy dla poleceń, wpisując polecenie i odkładanie �
     ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Omówienie monitorowania Azure](monitoring-overview.md) w tym typy informacji, można zbierać i monitorowania.
+* [Omówienie monitorowania Azure](monitoring-overview.md), w tym typy informacji, można zbierać i monitorowania.
 * Dowiedz się więcej o [konfigurowaniu elementów webhook w alertach](insights-webhooks-alerts.md).
 * Dowiedz się więcej o [konfigurowania alertów na zdarzenia dziennika aktywności](monitoring-activity-log-alerts.md).
-* Dowiedz się więcej o [elementów Runbook automatyzacji Azure](../automation/automation-starting-a-runbook.md).
-* Pobierz [omówienie zbierania dzienników diagnostycznych](monitoring-overview-of-diagnostic-logs.md) zbierania szczegółowych o dużej częstotliwości metryk usługi.
+* Dowiedz się więcej o [elementu runbook usługi Automatyzacja Azure](../automation/automation-starting-a-runbook.md).
+* Pobierz [omówienie zbierania dzienników diagnostycznych](monitoring-overview-of-diagnostic-logs.md) służąca do gromadzenia szczegółowych o dużej częstotliwości metryki dla usługi.
 * Pobierz [omówienie zbierania metryk](insights-how-to-customize-monitoring.md) się upewnić, że usługa jest dostępna i elastyczny.

@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 536118c61fe204351374d2b5b3cbc0514f6cd435
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: e25c8d97698d7a61501094a457174202322d146f
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "36205658"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36297953"
 ---
-# <a name="sign-in-users-and-all-the-microsoft-graph-api-from-an-android-app"></a>Logowania użytkowników i wszystkie Microsoft interfejsu API programu Graph z aplikacji systemu Android
+# <a name="sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Logowania użytkowników i wywołania interfejsu API programu Microsoft Graph aplikacji systemu Android
 
 W tym przewodniku pokazano, jak natywnych aplikacji systemu Android mogą pobrać token dostępu i wywołania interfejsu API programu Graph firmy Microsoft lub innych interfejsów API, które wymagają tokenów dostępu z punktu końcowego usługi Azure Active Directory w wersji 2.
 

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 4/2/2018
+ms.date: 6/20/2018
 ms.author: amitsriva
-ms.openlocfilehash: 982ae712320cb390b1822de6a7a3980ebfb6251e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 256eac99feacc18a51e45c3f07cdceb7d687cacf
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30314052"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293625"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Kondycji zaplecza, dzienniki diagnostyczne i metryki bramy aplikacji
 
@@ -36,7 +36,7 @@ Brama aplikacji umożliwia monitorowanie kondycji poszczególnych członków pul
 Raport o kondycji zaplecza odzwierciedla dane wyjściowe do wystąpień zaplecza sondy kondycji bramy aplikacji. Podczas badania zakończy się pomyślnie i wewnętrznej mogą odbierać dane, jest on uznawany za dobrej kondycji. W przeciwnym razie jego jest określana jako zła.
 
 > [!IMPORTANT]
-> Jeśli istnieje grupa zabezpieczeń sieci (NSG) w podsieci bramy aplikacji, otwórz zakresy portów 65503 65534 podsieci bramy aplikacji dla ruchu przychodzącego. Te porty są wymagane dla kondycji zaplecza interfejsu API do pracy.
+> Jeśli istnieje grupa zabezpieczeń sieci (NSG) w podsieci bramy aplikacji, otwórz zakresy portów 65503 65534 podsieci bramy aplikacji dla ruchu przychodzącego. Ten zakres portów jest wymagana do komunikacji z infrastrukturą systemu Azure. Są one zabezpieczone (zablokowane) z użyciem certyfikatów Azure. Bez prawidłowego certyfikatów jednostek zewnętrznych, w tym klientów w tych bramach będzie nie można zainicjować wszelkie zmiany w tych punktach końcowych.
 
 
 ### <a name="view-back-end-health-through-the-portal"></a>Wyświetl kondycję zaplecza za pośrednictwem portalu
@@ -262,9 +262,9 @@ Dziennik zapory jest generowany tylko wtedy, gdy włączono dla każdej bramy ap
 |witryna     | Witryna, dla którego wygenerowano dziennika. Obecnie tylko Global jest na liście, ponieważ reguły są globalne.|
 |szczegóły     | Szczegóły wyzwalająca zdarzenia.        |
 |details.Message     | Opis reguły.        |
-|details.data     | Znaleziono żądania, które pasowało reguły określone dane.         |
-|details.file     | Plik konfiguracji zawiera reguły.        |
-|details.line     | Numer wiersza w pliku konfiguracji, który wywołał zdarzenie.       |
+|details.Data     | Znaleziono żądania, które pasowało reguły określone dane.         |
+|details.File     | Plik konfiguracji zawiera reguły.        |
+|details.Line     | Numer wiersza w pliku konfiguracji, który wywołał zdarzenie.       |
 
 ```json
 {

@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: a7e828aa79d3a7fba53c0ef9f683ed16afc9a3e6
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 0e87243b4b6e8362cb840a6510c175d2712b8a1a
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267462"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285760"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>Uruchamianie skryptów powłoki w sieci maszyny Wirtualnej systemu Linux przy użyciu polecenia Uruchom
 
@@ -33,6 +33,7 @@ Poniżej przedstawiono listę ograniczenia, które są dostępne za pomocą pole
 * Minimalny czas, aby uruchomić skrypt około 20 sekund
 * Skrypty są domyślnie uruchamiane jako użytkownik z podwyższonym poziomem uprawnień w systemie Linux
 * Może uruchomić skrypt w czasie
+* Skrypty, które monit o podanie informacji (w trybie interaktywnym) nie są obsługiwane.
 * Nie można anulować uruchamianie skryptu
 * Maksymalny czas, który można uruchomić skryptu wynosi 90 minut, po jakim zostanie limit czasu
 

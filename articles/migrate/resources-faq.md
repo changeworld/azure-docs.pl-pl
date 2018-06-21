@@ -4,14 +4,14 @@ description: Często zadawane pytania na migrację Azure adresów
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/06/2018
+ms.date: 06/20/2018
 ms.author: snehaa
-ms.openlocfilehash: a18cab73a019039bf5e5829ad1faa4b8f1a70391
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: db47f774dd4f73692d0b6ab2c4a511f687864e37
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36209949"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285709"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Migrowanie Azure — często zadawane pytania (FAQ)
 
@@ -21,7 +21,7 @@ Ten artykuł zawiera często zadawane pytania dotyczące usługi Azure migracji.
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery"></a>Jak migrować Azure różni się od usługi Azure Site Recovery?
 
-Migracji Azure jest usługą ocenę, która pomaga wykrywać obciążeń lokalnych oraz planowanie migracji do usługi Azure. [Usługa Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure), wraz z stanowi rozwiązanie odzyskiwania po awarii, ułatwia migrację obciążeń lokalnych do maszyn wirtualnych IaaS na platformie Azure. 
+Migracji Azure jest usługą ocenę, która pomaga wykrywać obciążeń lokalnych oraz planowanie migracji do usługi Azure. [Usługa Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure), wraz z stanowi rozwiązanie odzyskiwania po awarii, ułatwia migrację obciążeń lokalnych do maszyn wirtualnych IaaS na platformie Azure.
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery-deployment-planner"></a>Jak migrować Azure różni się od Azure lokacji odzyskiwania wdrożenia Planistę?
 
@@ -36,6 +36,10 @@ Azure migracji jest migracji za pomocą narzędzia do planowania i Azure lokacji
 ### <a name="does-azure-migrate-need-vcenter-server-to-discover-a-vmware-environment"></a>Czy migracja Azure potrzebuje serwerowi odnajdywania w środowisku programu VMware vCenter?
 
 Tak, migracja Azure wymaga serwera odnajdywania w środowisku programu VMware vCenter. Nie obsługuje odnajdowania hostach ESXi, które nie są zarządzane przez oprogramowanie vCenter Server.
+
+### <a name="which-azure-regions-are-supported-by-azure-migrate"></a>Regiony platformy Azure są obsługiwane przez migrację Azure?
+
+Azure migracji obecnie obsługuje wschodnie stany USA i zachodnie centralnej nam jako lokalizacje projektu. Należy pamiętać, że nawet jeśli projekty migracji można tworzyć tylko w zachodnie centralnej nam i wschodnie stany USA, można nadal oceny, maszynach dla [wiele lokalizacji docelowej](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties). Lokalizacja projektu jest używana tylko do przechowywania odnalezionych danych.
 
 ## <a name="discovery"></a>Odnajdowanie
 

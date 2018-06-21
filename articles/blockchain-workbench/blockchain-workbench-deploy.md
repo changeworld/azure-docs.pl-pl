@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: bcd08ac8563edfaf4297e26ad42ed8bc62d86918
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: e226aadbe499d5905b1814bec5d042f67d898c18
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831639"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294853"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Wdrażanie usługi Azure Workbench Blockchain
 
@@ -48,7 +48,10 @@ Azure Blockchain Workbench wymaga kilka wymagań wstępnych przed ich wdrożenie
 
 ### <a name="blockchain-workbench-api-app-registration"></a>Rejestracja aplikacji interfejsu API Workbench Blockchain
 
-Deployment Blockchain Workbench wymaga rejestracji aplikacji usługi Azure AD. Należy dzierżawy usługi Azure Active Directory (Azure AD) do rejestrowania aplikacji. Można użyć istniejącej dzierżawy lub utworzyć nową dzierżawę. Jeśli korzystasz z istniejącej dzierżawy usługi Azure AD, należy wystarczające uprawnienia do rejestrowania aplikacji w dzierżawie usługi Azure AD. Rejestracje aplikacji muszą być administratora subskrypcji dzierżawcy subskrypcji, w którym jest wdrażany Workbench. Aby uzyskać więcej informacji dotyczących dzierżaw usługi Azure AD, zobacz [jak uzyskać dzierżawę usługi Active Directory](../active-directory/develop/active-directory-howto-tenant.md) i [Integrowanie aplikacji z usługą Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md).
+Deployment Blockchain Workbench wymaga rejestracji aplikacji usługi Azure AD. Należy dzierżawy usługi Azure Active Directory (Azure AD) do rejestrowania aplikacji. Można użyć istniejącej dzierżawy lub utworzyć nową dzierżawę. Jeśli korzystasz z istniejącej dzierżawy usługi Azure AD, należy się wystarczające uprawnienia do rejestrowania aplikacji i udzielanie uprawnień interfejsu API programu Graph w dzierżawie usługi Azure AD. Jeśli nie masz wystarczających uprawnień w istniejącej dzierżawy usługi Azure AD utworzenia nowej dzierżawy. 
+
+> [!IMPORTANT]
+> Workbench nie ma zostać wdrożony w tej samej dzierżawy, które są używane do rejestrowania aplikacji usługi Azure AD. Workbench należy wdrożyć w dzierżawie, gdzie masz wystarczające uprawnienia do wdrażania zasobów. Aby uzyskać więcej informacji dotyczących dzierżaw usługi Azure AD, zobacz [jak uzyskać dzierżawę usługi Active Directory](../active-directory/develop/active-directory-howto-tenant.md) i [Integrowanie aplikacji z usługą Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md).
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz konto w prawym górnym rogu i przejdź do żądanego usługi Azure AD dzierżawy. Dzierżawa powinna być administratora subskrypcji dzierżawcy subskrypcji, w którym jest wdrażany Workbench i masz wystarczające uprawnienia do rejestrowania aplikacji.

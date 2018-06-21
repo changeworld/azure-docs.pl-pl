@@ -7,14 +7,14 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 6/19/2018
+ms.date: 6/20/2018
 ms.author: victorh
-ms.openlocfilehash: a2f664525235fa97b0694362d7dc82086e31f71d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 989ecf209dc5093b5e4c73f01f9e382fc1ad21e8
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229339"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295532"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Często zadawane pytania dotyczące bramy aplikacji
 
@@ -115,7 +115,7 @@ Nie, ale można wdrożyć inne bramy aplikacji w podsieci.
 
 Grup zabezpieczeń sieci są obsługiwane w tej podsieci bramy aplikacji z następującymi ograniczeniami:
 
-* Wyjątki musi być włączony dla ruchu przychodzącego na portach 65503-65534 wewnętrznej bazy danych kondycji działał prawidłowo.
+* Wyjątki musi być włączony dla ruchu przychodzącego na portach 65503 65534. Zakres portów jest wymagana do komunikacji z infrastrukturą systemu Azure. Są one zabezpieczone (zablokowane) z użyciem certyfikatów Azure. Bez prawidłowego certyfikatów jednostek zewnętrznych, w tym klientów w tych bramach będzie nie można zainicjować wszelkie zmiany w tych punktach końcowych.
 
 * Nie można zablokować wychodzące połączenie z Internetem.
 
@@ -159,7 +159,7 @@ W tym scenariuszu można zrobić za pomocą grup NSG podsieci bramy aplikacji. N
 
 * Zezwalaj na ruch przychodzący z zakresu adresów IP/IP źródła.
 
-* Zezwalaj na przychodzące żądania ze wszystkich źródeł do portów 65503 65534 dla [zaplecza kondycji komunikacji](application-gateway-diagnostics.md).
+* Zezwalaj na przychodzące żądania ze wszystkich źródeł do portów 65503 65534 dla [zaplecza kondycji komunikacji](application-gateway-diagnostics.md). Ten zakres portów jest wymagana do komunikacji z infrastrukturą systemu Azure. Są one zabezpieczone (zablokowane) z użyciem certyfikatów Azure. Bez prawidłowego certyfikatów jednostek zewnętrznych, w tym klientów w tych bramach będzie nie można zainicjować wszelkie zmiany w tych punktach końcowych.
 
 * Zezwalaj na przychodzące sondy modułu równoważenia obciążenia Azure (znacznik AzureLoadBalancer) i przychodzącego ruchu w sieci wirtualnej (znacznik VirtualNetwork) na [NSG](../virtual-network/security-overview.md).
 
