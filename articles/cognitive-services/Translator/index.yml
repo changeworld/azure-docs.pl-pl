@@ -1,0 +1,72 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentacja interfejsu API tłumaczenia tekstu w usłudze Translator
+metadata:
+  title: Dokumentacja tłumaczenia tekstu w usłudze Translator — przewodniki Szybki start, samouczki i dokumentacja interfejsu API — Azure Cognitive Services | Microsoft Docs
+  description: Dowiedz się, jak tłumaczyć tekst w wielu językach za pomocą interfejsu API tłumaczenia tekstu w usłudze Translator.
+  services: cognitive-services
+  author: Jann-Skotdal
+  manager: Chris.Wendt
+  ms.service: cognitive-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 10/30/2017
+  ms.author: v-jansko
+  ms.openlocfilehash: 55ec3147a07c5c76fe1f1b356d633a9afeb783cc
+  ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 06/20/2018
+  ms.locfileid: "36286912"
+abstract:
+  description: Interfejs API tłumaczenia tekstu w usłudze Microsoft Translator to oparta na chmurze usługa tłumaczenia maszynowego. Ten interfejs API umożliwia tłumaczenie tekstu niemal w czasie rzeczywistym z dowolnej aplikacji lub usługi za pomocą prostego wywołania interfejsu API REST. Interfejs API korzysta z najnowocześniejszej technologii neuronowego tłumaczenia maszynowego oraz udostępnia technologię statystycznego tłumaczenia maszynowego. Lista obsługiwanych języków (dla neuronowego i statystycznego tłumaczenia maszynowego) jest dostępna na stronie <a href="languages.md">Obsługiwane języki</a>.
+sections:
+- title: 5-minutowe przewodniki Szybki start
+  items:
+  - type: paragraph
+    text: 'Wprowadzenie do interfejsu API tłumaczenia tekstu w usłudze Translator:'
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/logo_csharp.svg
+      title: C#
+    - image:
+        src: media/index/logo_java.svg
+      title: Java
+    - image:
+        src: media/index/logo_nodejs.svg
+      title: Node.js
+    - image:
+        src: media/index/logo_python.svg
+      title: Python
+    rows:
+    - title: Tłumaczenie tekstu na inny język
+      values:
+      - href: quickstart-csharp-translate
+      - href: quickstart-java-translate
+      - href: 
+      - href: 
+    - title: Konwertowanie tekstu na inny skrypt
+      values:
+      - href: quickstart-csharp-transliterate
+      - href: quickstart-java-transliterate
+      - href: 
+      - href: 
+    - title: Identyfikowanie języka tekstu
+      values:
+      - href: quickstart-csharp-detect
+      - href: quickstart-java-detect
+      - href: 
+      - href: 
+    - title: Uzyskiwanie alternatywnych tłumaczeń i użycia
+      values:
+      - href: quickstart-csharp-dictionary
+      - href: quickstart-java-dictionary
+      - href: 
+      - href: 
+- title: Dokumentacja
+  items:
+  - type: paragraph
+    text: <p><a href="reference/v3-0-reference.md">Dokumentacja interfejsu API</a></p>

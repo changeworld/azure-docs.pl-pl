@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.date: 2/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4caa4dfcfdc468c69241c5cf61d3c520609a088a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: e52674014a888913e288f7b0749d9b2e05bedf45
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34710268"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36292790"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>Szybki start: konfigurowanie logowania dla aplikacji platformy ASP.NET przy użyciu usługi Azure Active Directory B2C
 
@@ -57,10 +57,8 @@ Na potrzeby tego przewodnika Szybki start uruchom równocześnie projekty `TaskW
 
 Naciśnij klawisz **F5**, aby debugować obie aplikacje. Każda z aplikacji zostanie otwarta we własnej karcie przeglądarki:
 
-
-  `https://localhost:44316/` — ta strona to internetowa aplikacja platformy ASP.NET. W przewodniku Szybki start ta aplikacja jest używana bezpośrednio.
-
-  `https://localhost:44332/` — ta strona to internetowy interfejs API wywoływany przez internetową aplikację platformy ASP.NET.
+`https://localhost:44316/` — ta strona to internetowa aplikacja platformy ASP.NET. W przewodniku Szybki start ta aplikacja jest używana bezpośrednio.
+`https://localhost:44332/` — ta strona to internetowy interfejs API wywoływany przez internetową aplikację platformy ASP.NET.
 
 ## <a name="create-an-account"></a>Tworzenie konta
 
@@ -126,4 +124,4 @@ W tym przewodniku Szybki start użyto przykładowej aplikacji platformy ASP.NET 
 Kontynuuj pracę w samouczku, aby dowiedzieć się, jak skonfigurować przykład dla platformy ASP.NET pod kątem użycia własnej dzierżawy usługi Azure AD B2C.
 
 > [!div class="nextstepaction"]
-> [Samouczek: uwierzytelnianie użytkowników za pomocą usługi Azure Active Directory B2C w aplikacji internetowej platformy ASP.NET](active-directory-b2c-tutorials-web-app.md)
+> [Tworzenie dzierżawy usługi Azure Active Directory B2C w witrynie Azure Portal](tutorial-create-tenant.md)

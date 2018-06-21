@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5771d3319194ff4952f4c93140594db2d93bb7f8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 46d4d095ef71870c7f5b3eabaf66e26797b7331e
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593558"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286323"
 ---
 # <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>Program Azure AD Connect w usłudze Microsoft Cloud w Niemczech — publiczna wersja zapoznawcza
 ## <a name="introduction"></a>Wprowadzenie
@@ -34,9 +34,7 @@ Obecnie wiele scenariuszy w usłudze [Microsoft Cloud w Niemczech](https://www.m
   * *.windows.net
   * * Listy odwołania certyfikatów
 * Po zalogowaniu do katalogu usługi Azure AD należy używać konta w domenie onmicrosoft.de.
-* Następujące funkcje nie są dostępne:
-  * Azure AD Connect Health
-  * Automatyczne aktualizacje
+
  
 ## <a name="download"></a>Do pobrania
 Usługę Azure AD Connect można pobrać z bloku programu Azure AD Connect w portalu.  Znajdź blok programu Azure AD Connect, korzystając z poniższych instrukcji.

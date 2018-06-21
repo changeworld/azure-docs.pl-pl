@@ -205,6 +205,8 @@
           href: backup-azure-mars-troubleshoot.md
         - name: Udział plików platformy Azure
           href: troubleshoot-azure-files.md
+        - name: Oprogramowanie SQL Server
+          href: backup-sql-server-azure-troubleshoot.md
 - name: Dokumentacja
   items:
     - name: .NET

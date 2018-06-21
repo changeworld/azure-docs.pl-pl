@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/30/2018
+ms.date: 06/19/2018
 ms.author: dobett
-ms.openlocfilehash: a173b77d969697f85eab0d5976e5bc0a1796fe75
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 8d771fb17019e39da93995d0244c8089ea4a08b7
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808574"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286549"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-nodejs"></a>Szybki start: kontrolowanie urządzenia podłączonego do centrum IoT (Node.js)
 
@@ -131,9 +131,8 @@ Aplikacja zaplecza łączy się z punktem końcowym po stronie usługi w usłudz
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli planujesz przejść do samouczków, pozostaw grupę zasobów i centrum IoT, aby użyć ich później.
+[!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-Jeśli nie potrzebujesz już tego centrum IoT, usuń je oraz grupę zasobów z poziomu portalu. Aby to zrobić, wybierz grupę zasobów zawierającą centrum IoT, a następnie kliknij przycisk **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 

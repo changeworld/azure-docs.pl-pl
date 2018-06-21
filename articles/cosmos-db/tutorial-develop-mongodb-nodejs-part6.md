@@ -9,15 +9,15 @@ ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 09/05/2017
+ms.date: 06/17/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: c3e13ba48e3c8bfe94fb8f6bb5afd02852e1a5da
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 2a437c02c9391b09cc2adfe84efe677d31f486b4
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798053"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231665"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-6-add-post-put-and-delete-functions-to-the-app"></a>Tworzenie aplikacji bazy danych MongoDB przy użyciu usług Angular i Azure Cosmos DB — część 6: dodawanie funkcji Post, Put i Delete do aplikacji
 
@@ -54,7 +54,7 @@ Przed rozpoczęciem tej części samouczka upewnij się, że zostały wykonane c
 
    ```javascript
    function postHero(req, res) {
-     const originalHero = { id: req.body.id, name: req.body.name, saying: req.body.saying };
+     const originalHero = { uid: req.body.uid, name: req.body.name, saying: req.body.saying };
      const hero = new Hero(originalHero);
      hero.save(error => {
        if (checkServerError(res, error)) return;
@@ -105,11 +105,11 @@ Przed rozpoczęciem tej części samouczka upewnij się, że zostały wykonane c
 1. W pliku **routes.js** dodaj routery `put` i `delete` po routerze post.
 
     ```javascript
-    router.put('/hero/:id', (req, res) => {
+    router.put('/hero/:uid', (req, res) => {
       heroService.putHero(req, res);
     });
 
-    router.delete('/hero/:id', (req, res) => {
+    router.delete('/hero/:uid', (req, res) => {
       heroService.deleteHero(req, res);
     });
     ```
@@ -122,11 +122,11 @@ Przed rozpoczęciem tej części samouczka upewnij się, że zostały wykonane c
    ```javascript
    function putHero(req, res) {
      const originalHero = {
-       id: parseInt(req.params.id, 10),
+       uid: parseInt(req.params.uid, 10),
        name: req.body.name,
        saying: req.body.saying
      };
-     Hero.findOne({ id: originalHero.id }, (error, hero) => {
+     Hero.findOne({ uid: originalHero.uid }, (error, hero) => {
        if (checkServerError(res, error)) return;
        if (!checkFound(res, hero)) return;
 
@@ -141,8 +141,8 @@ Przed rozpoczęciem tej części samouczka upewnij się, że zostały wykonane c
    }
 
    function deleteHero(req, res) {
-     const id = parseInt(req.params.id, 10);
-     Hero.findOneAndRemove({ id: id })
+     const uid = parseInt(req.params.uid, 10);
+     Hero.findOneAndRemove({ uid: uid })
        .then(hero => {
          if (!checkFound(res, hero)) return;
          res.status(200).json(hero);
