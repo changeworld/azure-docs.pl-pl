@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/09/2018
 ms.author: juliako
-ms.openlocfilehash: 0fdc8c6dc9fae96a79e2ab2b05b7db3012834c1e
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: e81544d263bea3f367eaf2100ddb36a2835034c4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34362298"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637916"
 ---
 # <a name="tutorial-analyze-videos-with-azure-media-services"></a>Samouczek: analizowanie wideo za pomocą usługi Azure Media Services 
 
@@ -26,11 +26,10 @@ W tym samouczku przedstawiono sposób analizowania wideo za pomocą usługi Azur
 Ten samouczek przedstawia sposób wykonania następujących czynności:    
 
 > [!div class="checklist"]
-> * Uruchamianie usługi Azure Cloud Shell
 > * Tworzenie konta usługi Media Services
 > * Uzyskiwanie dostępu do interfejsu API usługi Media Services
 > * Konfigurowanie przykładowej aplikacji
-> * Szczegółowe analizowanie przykładowego kodu
+> * Badanie kodu do analizy wybranego wideo
 > * Uruchamianie aplikacji
 > * Sprawdzanie danych wyjściowych
 > * Oczyszczanie zasobów
@@ -49,23 +48,48 @@ Sklonuj repozytorium GitHub zawierające przykład dla platformy .NET na swoją 
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git
  ```
 
+Przykład znajduje się w folderze [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/AnalyzeVideos).
+
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 [!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
-## <a name="examine-the-sample-code-in-detail"></a>Szczegółowe analizowanie przykładowego kodu
+## <a name="examine-the-code-that-analyzes-the-specified-video"></a>Badanie kodu do analizy wybranego wideo
 
 W tej sekcji są analizowane funkcje zdefiniowane w pliku [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/Program.cs) projektu *AnalyzeVideos*.
 
+Przykład wykonuje następujące akcje:
+
+1. Tworzy przekształcenie i zadanie analizujące wideo.
+2. Tworzy zasób wejściowy i przekazuje do niego wideo. Zasób jest używany jako dane wejściowe zadania.
+3. Tworzy zasób wyjściowy, w którym są przechowywane dane wyjściowe zadania. 
+4. Przesyła zadanie.
+5. Sprawdza stan zadania.
+6. Pobiera pliki, które powstały w wyniku uruchomienia zadania. 
+
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>Rozpoczynanie korzystania z interfejsów API usługi Media Services przy użyciu zestawu .NET SDK
 
-Aby rozpocząć korzystanie z interfejsów API usługi Media Services na platformie .NET, należy utworzyć obiekt **AzureMediaServicesClient**. Aby utworzyć obiekt, należy podać poświadczenia wymagane do nawiązania połączenia z platformą Azure przez klienta przy użyciu usługi Azure AD. Najpierw należy uzyskać token, a następnie utworzyć obiekt **ClientCredential** na podstawie zwróconego tokenu. W kodzie sklonowanym na początku tego artykułu do uzyskania tokenu jest używany obiekt **ArmClientCredential**.  
+Aby rozpocząć korzystanie z interfejsów API usługi Media Services na platformie .NET, należy utworzyć obiekt **AzureMediaServicesClient**. Aby utworzyć obiekt, należy podać poświadczenia wymagane do nawiązania połączenia z platformą Azure przez klienta przy użyciu usługi Azure AD. W kodzie sklonowanym na początku tego artykułu funkcja **GetCredentialsAsync** tworzy obiekt ServiceClientCredentials na podstawie poświadczeń podanych w lokalnym pliku konfiguracji. 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateMediaServicesClient)]
 
-### <a name="create-an-output-asset-to-store-the-result-of-a-job"></a>Tworzenie zasobu wyjściowego na potrzeby przechowywania wyników zadania 
+### <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>Tworzenie zasobu wejściowego i przekazywanie do niego pliku lokalnego 
+
+Funkcja **CreateInputAsset** tworzy nowy [zasób](https://docs.microsoft.com/rest/api/media/assets) wejściowy i przekazuje do niego określony lokalny plik wideo. Ten zasób służy jako dane wejściowe zadania kodowania. W usłudze Media Services 3 danymi wejściowymi zadania może być zasób lub zawartość udostępniona dla konta usługi Media Services za pośrednictwem adresów URL protokołu HTTPS. Jeśli chcesz dowiedzieć się, jak kodować, korzystając z adresu URL protokołu HTTPS jako wejścia, zobacz [ten](job-input-from-http-how-to.md) artykuł.  
+
+W usłudze Media Services 3 do przekazywania plików służą interfejsy API usługi Azure Storage. Przedstawia to poniższy fragment kodu dla platformy .NET.
+
+Poniższa funkcja wykonuje następujące akcje:
+
+* Utworzenie zasobu 
+* Pobranie zapisywalnego [adresu URL sygnatury dostępu współdzielonego](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) do [kontenera zasobu w magazynie](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=windows#upload-blobs-to-the-container)
+* Przekazanie pliku do kontenera w magazynie przy użyciu adresu URL sygnatury dostępu współdzielonego
+
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateInputAsset)]
+
+### <a name="create-an-output-asset-to-store-the-result-of-the-job"></a>Tworzenie zasobu wyjściowego do przechowywania wyników zadania 
 
 [Zasób](https://docs.microsoft.com/rest/api/media/assets) wyjściowy przechowuje wynik zadania. Projekt definiuje funkcję **DownloadResults**, która pobiera wyniki z zasobu wyjściowego do folderu wyjściowego, umożliwiając zapoznanie się z nimi.
 
@@ -111,7 +135,7 @@ Następująca funkcja umożliwia pobranie wyników z [zasobu](https://docs.micro
 
 ### <a name="clean-up-resource-in-your-media-services-account"></a>Czyszczenie zasobów na koncie usługi Media Services
 
-Zazwyczaj należy wyczyścić wszystko z wyjątkiem obiektów, których zamierzasz użyć ponownie (zazwyczaj są to obiekty Transform, obiekty StreamingLocator są utrwalane itd.). Jeśli Twoje konto ma być czyste po przeprowadzeniu eksperymentów, należy usunąć zasoby, których ponowne użycie nie jest planowane. Na przykład następujący kod usuwa zadania.
+Zazwyczaj należy wyczyścić wszystko z wyjątkiem obiektów, które mają być używane ponownie (zazwyczaj są to obiekty Transform, obiekty StreamingLocator są utrwalane). Jeśli Twoje konto ma być czyste po przeprowadzeniu eksperymentów, należy usunąć zasoby, których ponowne użycie nie jest planowane. Na przykład następujący kod usuwa zadania.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CleanUp)]
 

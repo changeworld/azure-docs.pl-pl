@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: bfd9552a0d7c3b1e631fcc1a25d240608754c6a3
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 9b13b8ae0b64dc84e476f5fc5da59ea30702fd8d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639031"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Samouczek: monitorowanie komunikacji sieciowej między dwiema maszynami wirtualnymi przy użyciu witryny Azure Portal
 
@@ -141,7 +142,7 @@ Domyślnie platforma Azure zezwala na komunikację na wszystkich portach między
 
 5. Ponieważ monitor połączeń sonduje co 60 sekund, zaczekaj kilka minut, po lewej stronie portalu wybierz kolejno pozycje **Network Watcher** i **Monitor połączeń**, a następnie ponownie wybierz monitor  **myVm1-myVm2(22)**. Teraz wyniki są inne, jak pokazano na poniższej ilustracji:
 
-    ![Błąd w szczegółach monitora](./media/connection-monitor/vm-monitor-fault .png)
+    ![Błąd szczegółów monitora](./media/connection-monitor/vm-monitor-fault.png)
 
     Widać, że w kolumnie Stan znajduje się ikona czerwonego wykrzyknika dla interfejsu sieciowego **myvm2529**.
 

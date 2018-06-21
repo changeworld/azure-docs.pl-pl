@@ -1,18 +1,19 @@
 ---
-title: "Konfigurowanie odzyskiwania po awarii lokalnych maszyn wirtualnych VMware funkcji Hyper V (bez użycia programu VMM) na platformie Azure przy użyciu usługi Azure Site Recovery | Microsoft Docs"
-description: "Dowiedz się, jak skonfigurować odzyskiwanie po awarii lokalnych maszyn wirtualnych funkcji Hyper-V (bez użycia programu VMM) na platformie Azure przy użyciu usługi Azure Site Recovery."
+title: Konfigurowanie odzyskiwania po awarii lokalnych maszyn wirtualnych VMware funkcji Hyper V (bez użycia programu VMM) na platformie Azure przy użyciu usługi Azure Site Recovery | Microsoft Docs
+description: Dowiedz się, jak skonfigurować odzyskiwanie po awarii lokalnych maszyn wirtualnych funkcji Hyper-V (bez użycia programu VMM) na platformie Azure przy użyciu usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/14/2018
+ms.date: 05/21/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: e7ddb3046b0725b3afcea2ed6a533388a89cf306
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 9ee5478412b02615efec983dd0b99c12fc2d9213
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643587"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Konfigurowanie odzyskiwania po awarii lokalnych maszyn wirtualnych funkcji Hyper-V na platformie Azure
 
@@ -40,19 +41,31 @@ Przed rozpoczęciem warto [zapoznać się z architekturą](concepts-hyper-v-to-a
 2. W obszarze **Wprowadzenie** kliknij pozycję **Site Recovery**. Następnie kliknij pozycję **Przygotowywanie infrastruktury**
 3. W obszarze **Cel ochrony** > **Gdzie znajdują się maszyny** wybierz pozycję **Lokalne**.
 4. W obszarze **Gdzie chcesz zreplikować maszyny** wybierz pozycję **Na platformę Azure**.
-5. W obszarze **Czy maszyny są zwirtualizowane?**, wybierz pozycję **Nie**. Następnie kliknij przycisk **OK**.
+5. W oknie **Czy używasz usługi System Center VMM do zarządzania hostami funkcji Hyper-V?** wybierz opcję **Nie**. Następnie kliknij przycisk **OK**.
 
     ![Cel replikacji](./media/hyper-v-azure-tutorial/replication-goal.png)
 
+## <a name="confirm-deployment-planning"></a>Potwierdzanie planowania wdrożenia
+
+Jeśli planujesz duże wdrożenie, pamiętaj o [planowaniu wdrożenia dla replikacji funkcji Hyper-V](hyper-v-deployment-planner-overview.md). Na potrzeby tego samouczka w oknie **Czy ukończono planowanie wdrożenia?**, wybierz na liście rozwijanej pozycję **Zrobię to później**.
+
+![Planowanie wdrożenia](./media/hyper-v-azure-tutorial/deployment-planning.png)
+
 ## <a name="set-up-the-source-environment"></a>Konfigurowanie środowiska źródłowego
 
-Aby skonfigurować środowisko źródłowe, należy dodać hosty funkcji Hyper-V do lokacji usługi Hyper-V, pobrać i zainstalować dostawcę usługi Azure Site Recovery oraz agenta usługi Azure Recovery Services i zarejestrować lokację funkcji Hyper-V w magazynie. 
+Aby skonfigurować środowisko źródłowe, utwórz lokację funkcji Hyper-V i dodaj do niej hosty funkcji Hyper-V. Następnie pobierz i zainstaluj dostawcę usługi Azure Site Recovery oraz agenta usługi Azure Recovery Services na każdym hoście i zarejestruj lokację funkcji Hyper-V w magazynie. 
 
 1. W obszarze **Przygotowanie infrastruktury**, kliknij przycisk **Źródło**.
 2. Kliknij przycisk **+ Lokacja funkcji Hyper-V** i wprowadź nazwę lokacji utworzonej w poprzednim samouczku: **ContosoHyperVSite**.
-3. Kliknij przycisk **+ Serwer funkcji Hyper-V**.
+
+    ![Lokacja funkcji Hyper-V](./media/hyper-v-azure-tutorial/hyperv-site.png)
+
+3. Po utworzeniu lokacji kliknij pozycję **+Hyper-V Server**.
+
+    ![Serwer funkcji Hyper-V](./media/hyper-v-azure-tutorial/hyperv-server.png)
+
 4. Pobierz plik instalatora dostawcy.
-5. Pobierz klucz rejestracji magazynu. Będzie on potrzebny podczas instalacji dostawcy. Klucz jest ważny przez pięć dni po jego wygenerowaniu.
+6. Pobierz klucz rejestracji magazynu. Będzie on potrzebny podczas instalacji dostawcy. Klucz jest ważny przez pięć dni po jego wygenerowaniu.
 
     ![Pobieranie dostawcy](./media/hyper-v-azure-tutorial/download.png)
     

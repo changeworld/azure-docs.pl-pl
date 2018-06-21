@@ -16,11 +16,12 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 3508631336ac322268f12ff97e35827767ae1bb9
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 27b8c9391de4014f45257e3808647b3e49c250b2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34651951"
 ---
 # <a name="azure-powershell-samples-for-virtual-machine-scale-sets"></a>Przykłady dla programu Azure PowerShell dla zestawów skalowania maszyn wirtualnych
 
@@ -29,7 +30,8 @@ Poniższa tabela zawiera linki do skryptów bash utworzonych za pomocą programu
 | | |
 |---|---|
 |**Tworzenie zestawu skalowania i zarządzanie nim**||
-| [Tworzenie zestawu skalowania maszyn wirtualnych](scripts/powershell-sample-create-simple-scale-set.md?toc=%2fpowershell%2fazure%2ftoc.json) | Tworzy zestaw skalowania maszyn wirtualnych z minimalną konfiguracją. |
+| [Tworzenie prostego zestawu skalowania maszyn wirtualnych](scripts/powershell-sample-create-simple-scale-set.md?toc=%2fpowershell%2fazure%2ftoc.json) | Tworzy zestaw skalowania maszyn wirtualnych z minimalną konfiguracją. |
+| [Tworzenie pełnego zestawu skalowania maszyn wirtualnych](scripts/powershell-sample-create-complete-scale-set.md?toc=%2fpowershell%2fazure%2ftoc.json) | Tworzy zestaw skalowania maszyn wirtualnych oraz skojarzone zasoby za pomocą pliku konfiguracji. |
 | [Tworzenie zestawu skalowania na podstawie niestandardowego obrazu maszyny wirtualnej](scripts/powershell-sample-create-scale-set-from-custom-image.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tworzy zestaw skalowania maszyn wirtualnych, który używa niestandardowego obrazu maszyny wirtualnej. |
 | [Instalowanie aplikacji w zestawie skalowania](scripts/powershell-sample-install-apps.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Używa niestandardowego rozszerzenia skryptu platformy Azure, aby zainstalować podstawową aplikację internetową w zestawie skalowania. |
 |**Zarządzanie magazynem**||

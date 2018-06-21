@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: fc589b79cf91dcbe24e6d99da44aeee883b58e5f
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: b98c1995aa9051029049711ece18aeb23c444f1a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365389"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642798"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application"></a>Samouczek: tworzenie pakietów kontenerów i wdrażanie ich jako aplikacji usługi Service Fabric
 
@@ -237,7 +237,7 @@ Aby uzyskać informacje na temat tworzenia własnego klastra, zobacz [Tworzenie 
 ## <a name="build-and-deploy-the-application-to-the-cluster"></a>Tworzenie i wdrażanie aplikacji w klastrze
 Aplikację można wdrożyć w klastrze platformy Azure za pomocą interfejsu wiersza polecenia usługi Service Fabric. Jeśli interfejs wiersza polecenia usługi Service Fabric nie jest zainstalowany, wykonaj instrukcje podane [tutaj](service-fabric-get-started-linux.md#set-up-the-service-fabric-cli), aby go zainstalować. 
 
-Połącz się z klastrem usługi Service Fabric na platformie Azure. Zamień zastępczy punkt końcowy na własny. Punkt końcowy musi być pełnym adresem URL podobnym do przedstawionego poniżej.
+Połącz się z klastrem usługi Service Fabric na platformie Azure. Zastąp przykładowy punkt końcowy własnym. Punkt końcowy musi być pełnym adresem URL podobnym do przedstawionego poniżej.
 
 ```bash
 sfctl cluster select --endpoint https://linh1x87d1d.westus.cloudapp.azure.com:19080 --pem party-cluster-1277863181-client-cert.pem --no-verify

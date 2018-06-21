@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/16/2018
+ms.date: 05/17/2018
 ms.author: magoedte
-ms.openlocfilehash: d2480936ed54ec58ba289eae1ba605a16e27f0b3
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 80ce7337717376b05dc9539abaf49b1a933a78f2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271674"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637535"
 ---
 # <a name="manage-workspaces"></a>Zarządzanie obszarami roboczymi
 
@@ -98,7 +98,7 @@ Następujące działania również wymagają uprawnień platformy Azure:
 
 | Akcja                                                          | Wymagane uprawnienia platformy Azure | Uwagi |
 |-----------------------------------------------------------------|--------------------------|-------|
-| Dodawanie i usuwanie rozwiązań do zarządzania                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | |
+| Dodawanie i usuwanie rozwiązań do zarządzania                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | Te uprawnienia należy nadać na poziomie grupy zasobów lub subskrypcji. |
 | Zmienianie warstwy cenowej                                       | `Microsoft.OperationalInsights/workspaces/*/write` | |
 | Wyświetlanie danych w kafelkach rozwiązań *Backup* i *Site Recovery* | Administrator/współadministrator | Uzyskuje dostęp do zasobów wdrożonych przy użyciu klasycznego modelu wdrażania |
 | Tworzenie obszaru roboczego w witrynie Azure Portal                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/workspaces/*` ||
@@ -125,11 +125,14 @@ Członkowie roli *Czytelnik usługi Log Analytics* mogą wykonywać następując
 
 
 Członkowie roli *Współautor usługi Log Analytics* mogą wykonywać następujące czynności:
-- Odczytywanie wszystkich danych monitorowania 
-- Tworzenie i konfigurowanie kont usługi Automation
-- Dodawanie i usuwanie rozwiązań do zarządzania
-- Odczytywanie kluczy kont magazynu 
-- Konfigurowanie kolekcji dzienników z usługi Azure Storage
+- Odczytywanie wszystkich danych monitorowania  
+- Tworzenie i konfigurowanie kont usługi Automation  
+- Dodawanie i usuwanie rozwiązań do zarządzania    
+    > [!NOTE] 
+    > Aby pomyślnie wykonać obie akcje, to uprawnienie musi zostać nadane na poziomie grupy zasobów lub subskrypcji.  
+
+- Odczytywanie kluczy kont magazynu   
+- Konfigurowanie kolekcji dzienników z usługi Azure Storage  
 - Edytowanie ustawień monitorowania dla zasobów platformy Azure, w tym:
   - Dodawanie rozszerzenia do maszyn wirtualnych
   - Konfigurowanie diagnostyki platformy Azure dla wszystkich zasobów platformy Azure
@@ -157,7 +160,7 @@ Za pomocą następujących ról możesz udzielić użytkownikom dostępu w róż
 - Grupa zasobów — dostęp do wszystkich obszarów roboczych w grupie zasobów
 - Zasób — dostęp tylko do określonego obszaru roboczego
 
-Za pomocą [ról niestandardowych](../active-directory/role-based-access-control-custom-roles.md) możesz utworzyć role z określonymi, wymaganymi uprawnieniami.
+Zaleca się wykonanie przypisań na poziomie zasobów (obszar roboczy), aby zapewnić dokładną kontrolę dostępu.  Za pomocą [ról niestandardowych](../active-directory/role-based-access-control-custom-roles.md) możesz utworzyć role z określonymi, wymaganymi uprawnieniami.
 
 ### <a name="azure-user-roles-and-log-analytics-portal-user-roles"></a>Role użytkownika platformy Azure oraz role użytkownika portalu usługi Log Analytics
 Jeśli masz co najmniej uprawnienie do odczytu platformy Azure w obszarze roboczym usługi Log Analytics, możesz otworzyć portal usługi Log Analytics, klikając zadanie **Portal OMS** podczas przeglądania obszaru roboczego usługi Log Analytics.
