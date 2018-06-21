@@ -54,15 +54,17 @@
     - name: Azure Machine Learning
       href: walkthroughs-aml-with-tdsp.md
       items:
-        - name: Klasyfikowanie opinii
+        - name: Klasyfikowanie opinii za pomocą bibliotek Keras i Scikit Learn
           href: predict-twitter-sentiment.md
+        - name: Klasyfikowanie opinii za pomocą pakietu do analizy tekstu usługi AML
+          href: predict-twitter-sentiment-amltextpackage.md
         - name: Klasyfikacja dochodu USA
           href: ../desktop-workbench/scenario-tdsp-classifying-us-incomes.md
           maintainContext: true
         - name: Rozpoznawanie jednostek biomedycznych
           href: ../desktop-workbench/scenario-tdsp-biomedical-recognition.md
           maintainContext: true
-        - name: Klasyfikacja obrazów przedstawiających raka skóry
+        - name: Klasyfikacja obrazów przedstawiających raka skóry przy użyciu pakietu do przetwarzania obrazów usługi AML
           href: isic-image-classification.md
           maintainContext: true
     - name: Platforma Spark z interfejsem PySpark i środowiskiem Scala
@@ -271,7 +273,7 @@
                   href: cortana-analytics-playbook-vehicle-telemetry.md
                 - name: Podręcznik
                   href: cortana-analytics-playbook-vehicle-telemetry-deep-dive.md
-                - name: Konfiguracja
+                - name: Konfigurowanie
                   href: cortana-analytics-playbook-vehicle-telemetry-powerbi.md
 - name: Zasoby
   items:

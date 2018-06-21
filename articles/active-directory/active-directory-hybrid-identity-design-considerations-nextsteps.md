@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e63df0832431ddc1502ab7b07c60c8d4abf59ac4
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 4ac8e517e68f7cbba3019fa27065468b387c1b65
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801494"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284674"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Azure Active Directory hybrydowego tożsamości projektu dalej zagadnienia dotyczące czynności
 Teraz, gdy przeprowadzisz zdefiniowaniu wymagań i sprawdzeniu wszystkich opcji rozwiązania do zarządzania urządzeniami przenośnymi, możesz wykonać kolejne kroki w celu wdrożenia infrastruktury pomocniczej odpowiedniej dla Ciebie i Twojej organizacji.
@@ -42,7 +42,7 @@ Koncepcyjna i proceduralna zawartość planowania, wdrażania i administrowania 
 ## <a name="hybrid-identity-resources"></a>Zasoby hybrydowego tożsamości
 Często monitorowanie następujących zasobów zapewni dostęp do najnowszych wiadomości i aktualizacji dotyczących rozwiązań do zarządzania urządzeniami przenośnymi:
 
-* [Blog dotyczący pakietu Microsoft Enterprise Mobility](http://blogs.technet.com/b/enterprisemobility/)
+* [Blog dotyczący pakietu Microsoft Enterprise Mobility](https://cloudblogs.microsoft.com/ENTERPRISEMOBILITY/)
 * [Blog firmy Microsoft w chmurze](http://blogs.technet.com/b/in_the_cloud/)
 * [Blog usługi Microsoft Intune](http://blogs.technet.com/b/microsoftintune/)
 * [Blog programu Microsoft System Center Configuration Manager](http://blogs.technet.com/b/configurationmgr/)

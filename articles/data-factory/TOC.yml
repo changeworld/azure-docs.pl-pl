@@ -398,6 +398,8 @@
           href: how-to-create-schedule-trigger.md
         - name: Tworzenie wyzwalacza okna wirowania
           href: how-to-create-tumbling-window-trigger.md
+        - name: Tworzenie wyzwalacza opartego na zdarzeniach
+          href: how-to-create-event-trigger.md
 - name: Dokumentacja
   items:
     - name: .NET

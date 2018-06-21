@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 0c1cea1646c71698318e94932248e08955359b9e
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 84bd2019e9586fa008560dba07119323ecb7f02e
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234529"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293720"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Konfigurowanie aplikacji sieci Web w usłudze Azure App Service
 
@@ -46,7 +46,7 @@ W tym temacie opisano sposób konfigurowania aplikacji sieci web za pomocą [Azu
 Ze względów technicznych włączenie Java aplikacji powoduje wyłączenie opcji .NET, PHP i Python.
 
 <a name="platform"></a>
-**Platforma**. Wybiera, czy aplikacja sieci web jest uruchamiana w środowisku 32-bitowy lub 64-bitowych. 64-bitowego środowiska wymaga trybu Basic lub Standard. Zwolnij i tryby udostępnione są zawsze uruchamiane w środowisku 32-bitowym.
+**Platforma**. Wybiera, czy aplikacja sieci web jest uruchamiana w środowisku 32-bitowy lub 64-bitowych. 64-bitowego środowiska wymaga warstwy Basic lub Standard. Zwolnij i warstwy współużytkowane są zawsze uruchamiane w środowisku 32-bitowym.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -56,6 +56,13 @@ Ze względów technicznych włączenie Java aplikacji powoduje wyłączenie opcj
 **Zawsze włączone**. Domyślnie aplikacje sieci web są usuwane, jeśli są one bezczynności przez niektóre czas. Pozwala to zaoszczędzić zasoby systemu. W trybie Basic lub Standard, aby umożliwić **zawsze na** do zachowania aplikacji załadowana przez cały czas. Jeśli aplikacja będzie działać ciągłe zadania Webjob lub uruchamia zadania Webjob wyzwolone przy użyciu wyrażenia CRON, należy włączyć **zawsze na**, lub zadania sieci web mogą nie działać prawidłowo.
 
 **Zarządzane wersji potoku**. Ustawia IIS [tryb potokowy]. Pozostaw tego zestawu na zintegrowane (ustawienie domyślne), chyba że masz starszej wersji aplikacji, która wymaga starszej wersji programu IIS.
+
+**Wersja protokołu HTTP**. Ustaw **2.0** włączyć obsługę [HTTPS/2](https://wikipedia.org/wiki/HTTP/2) protokołu. 
+
+> [!NOTE]
+> Większość nowoczesnych przeglądarek obsługi protokołu HTTP/2 za pośrednictwem protokołu TLS, podczas gdy niezaszyfrowane ruchu w dalszym ciągu używa protokołu HTTP/1.1. Aby upewnić się, że klient przeglądarki połączyć się z aplikacji za pomocą protokołu HTTP/2, albo [kupić certyfikat usługi aplikacji](web-sites-purchase-ssl-web-site.md) dla domeny niestandardowej aplikacji lub [Powiąż certyfikat innej](app-service-web-tutorial-custom-ssl.md).
+
+**Moduł ARR koligacji**. W aplikacji, która jest skalowana w poziomie do wielu wystąpień maszyny Wirtualnej, koligacji ARR plików cookie gwarantuje, że klient jest kierowane do tego samego wystąpienia przez cały okres istnienia sesji. Aby zwiększyć wydajność aplikacji bezstanowych, ustaw tę opcję, **poza**.   
 
 **Automatycznie wymiany**. Po włączeniu automatycznej wymiany dla miejsca wdrożenia usługi aplikacji — automatycznie zamianę aplikacji sieci web w środowisku produkcyjnym po naciśnięciu aktualizacji do tego miejsca. Aby uzyskać więcej informacji, zobacz [wdrażanie na tymczasowej miejsc aplikacji sieci web w usłudze Azure App Service](web-sites-staged-publishing.md).
 

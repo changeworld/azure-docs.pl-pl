@@ -161,12 +161,8 @@
               href: virtual-networks-dmz-nsg.md
     - name: Konfigurowanie
       items:
-        - name: Maszyny wirtualne
-          items:
-            - name: Dodawanie lub usuwanie interfejsów sieciowych
-              href: virtual-network-network-interface-vm.md
-            - name: Rozpoznawanie nazw dla maszyn wirtualnych i usług w chmurze
-              href: virtual-networks-name-resolution-for-vms-and-role-instances.md
+        - name: Rozpoznawanie nazw dla maszyn wirtualnych i usług w chmurze
+          href: virtual-networks-name-resolution-for-vms-and-role-instances.md
         - name: Używanie dynamicznej usługi DNS z własnym serwerem DNS
           href: virtual-networks-name-resolution-ddns.md
         - name: Optymalizowanie przepływności sieci
@@ -191,17 +187,16 @@
               href: virtual-network-nsg-manage-log.md
         - name: Tabele tras
           href: manage-route-table.md
-        - name: Interfejsy sieciowe
-          href: virtual-network-network-interface.md
+        - name: Sieć maszyny wirtualnej
           items:
-            - name: Adresy IP
+            - name: Tworzenie lub usuwanie interfejsu sieciowego
+              href: virtual-network-network-interface.md
+            - name: Dodawanie lub usuwanie interfejsów sieciowych
+              href: virtual-network-network-interface-vm.md
+            - name: Dodawanie lub usuwanie adresów IP
               href: virtual-network-network-interface-addresses.md
         - name: Publiczne adresy IP
           href: virtual-network-public-ip-address.md
-        - name: Maszyny wirtualne
-          items:
-            - name: Przenoszenie maszyny wirtualnej do innej podsieci
-              href: virtual-networks-move-vm-role-to-subnet.md
     - name: Rozwiązywanie problemów
       items:
         - name: Grupy zabezpieczeń sieci
@@ -277,6 +272,8 @@
                       href: ../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json
                     - name: Azure PowerShell
                       href: virtual-networks-acl-powershell.md
+                - name: Przenoszenie maszyny wirtualnej do innej podsieci
+                  href: virtual-networks-move-vm-role-to-subnet.md
         - name: Zabezpieczenia usługi w chmurze i sieci
           href: ../best-practices-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json
           items:

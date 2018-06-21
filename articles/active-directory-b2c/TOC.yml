@@ -16,8 +16,8 @@
       href: active-directory-b2c-quickstarts-spa.md
 - name: Samouczki
   items:
-    - name: 1 — Rejestrowanie aplikacji
-      href: tutorial-register-applications.md
+    - name: 1 — Tworzenie dzierżawy B2C
+      href: tutorial-create-tenant.md
     - name: 2 — Uwierzytelnianie kont
       items:
         - name: ASP.NET
