@@ -36,6 +36,8 @@
       href: cdn-china-delivery.md
     - name: Obsługa protokołu HTTP/2
       href: cdn-http2.md
+    - name: Migrowanie z warstwy Verizon — Standardowa do Verizon — Premium
+      href: cdn-migrate.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Optymalizowanie zawartości

@@ -417,6 +417,7 @@
 #### Samouczki
 ##### [Migrowanie klasycznych zasad MFA](active-directory-conditional-access-migration-mfa.md)
 #### Pojęcia
+##### [Ochrona punktu odniesienia](active-directory-conditional-access-baseline-protection.md)
 ##### [Warunki](active-directory-conditional-access-conditions.md)
 ##### [Warunki lokalizacji](active-directory-conditional-access-locations.md)
 ##### [Kontrolki](active-directory-conditional-access-controls.md)
