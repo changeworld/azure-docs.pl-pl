@@ -12,35 +12,35 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/04/2018
+ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: f9793156b3728f617b92624651ff89ab2665c061
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 1c7fd3ac1a4cf62dd8f909acc26615ea5f96f32c
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235811"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309102"
 ---
 # <a name="determine-the-listing-type-for-your-solution"></a>Określić typ oferty dla rozwiązania  
 Sklepy obsługują wiele opcji publikowania: Lista typów i oferują typy. Wybierz typ oferty, które najlepiej informują szczegóły rozwiązania i usługi. Wszystkie opcje publikowania zapewniają dostęp do prowadzić do udostępniania.   
 
 | Witryna sklepu | Typ oferty | Typ aplikacji | Wytyczne techniczne |  
 |:--- |:--- |:--- |:--- |  
-| AppSource | [Lista](#list) | [Usługi konsultingowe](#requirements:-appSource:-list:-consulting-service) | [smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf) |  
-| Azure Marketplace | [Lista](#list) | [Usługi konsultingowe](#requirements:-azure-marketplace:-list:-consulting-service) | [](#) |  
-| Azure Marketplace | [Lista](#list) | [Przesyłać do mnie](#requirements:-azure-marketplace:-list:-contact-me) | [](#) |  
-| Azure Marketplace | [Wersja próbna](#trial) | [Bezpłatna wersja próbna / wersja próbna SaaS](#requirements:-azure-marketplace:-trial:-free-trial-/-saas-trial) | [](#) |  
+| AppSource | [Lista](#list) | [Usługi konsultingowe](#requirements-appSource-list-consulting-service) | [smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf) |  
+| Azure Marketplace | [Lista](#list) | [Usługi konsultingowe](#requirements-azure-marketplace-list-consulting-service) | [](#) |  
+| Azure Marketplace | [Lista](#list) | [Przesyłać do mnie](#requirements-azure-marketplace-list-contact-me) | [](#) |  
+| Azure Marketplace | [Wersja próbna](#trial) | [Bezpłatna wersja próbna / wersja próbna SaaS](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) | [](#) |  
 | AppSource |  | Cortana Intelligence | [docs.microsoft.com/Azure/Machine-Learning/Team-Data-Science-Process/cortana-Intelligence-appsource-Publishing-Guide](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide) |  
 | AppSource |  |Dynamics 365 naboru klienta | [docs.microsoft.com/dynamics365/Customer-Engagement/Developer/publish-App-appsource](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource) |  
 | AppSource |  | Dynamics 365 Finanse i operacje | [docs.microsoft.com/dynamics365/Unified-Operations/dev-ITPro/LCS-Solutions/LCS-Solutions-App-Source](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source) |  
-| Azure Marketplace | [Wersja próbna](#trial) | [Pokaz interaktywny](#requirements:-azure-marketplace:-trial:-interactive-demo) | [](#) |  
-| Azure Marketplace | [Wersja próbna](#trial) | [Przetestuj](#requirements:-azure-marketplace:-trial:-test-drive) | [](#) |  
+| Azure Marketplace | [Wersja próbna](#trial) | [Pokaz interaktywny](#requirements-azure-marketplace-trial-interactive-demo) | [](#) |  
+| Azure Marketplace | [Wersja próbna](#trial) | [Przetestuj](#requirements-azure-marketplace-trial-test-drive) | [](#) |  
 | AppSource |  | Office 365 | [docs.microsoft.com/Office/dev/Store/Submit-to-the-Office-Store](https://docs.microsoft.com/office/dev/store/submit-to-the-office-store) |  
-| AppSource |  | Power BI | [docs.microsoft.com/Power-BI/Developer/Office-Store](https://docs.microsoft.com/power-bi/developer/office-store) | | Azure Marketplace | [Transact](#transact) | [Aplikacje platformy Azure: zarządzanej aplikacji](#requirements:-azure-marketplace:-transact:-azure-apps:-managed-app) |  [docs.microsoft.com/Azure/Managed-Applications/overview](https://docs.microsoft.com/azure/managed-applications/overview) |  
-| Azure Marketplace | [Transact](#transact) | [Aplikacje platformy Azure: szablon rozwiązania](#requirements:-azure-marketplace:-transact:-azure-apps:-solution-template) |  [](#) |  
-| Azure Marketplace | [Transact](#transact) | [Kontener](#requirements:-azure-marketplace:-transact:-container) |  [](#) |  
-| Azure Marketplace | [Transact](#transact) | [Aplikacja SaaS](#requirements:-azure-marketplace:-transact:-saas-app) |  [](#) |  
-| Azure Marketplace | [Transact](#transact) | [Maszyny wirtualne](#requirements:-azure-marketplace:-transact:-virtual-machine) |  [](#) |   
+| AppSource |  | Power BI | [docs.microsoft.com/Power-BI/Developer/Office-Store](https://docs.microsoft.com/power-bi/developer/office-store) | | Azure Marketplace | [Transact](#transact) | [Aplikacje platformy Azure: zarządzanej aplikacji](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  [docs.microsoft.com/Azure/Managed-Applications/overview](https://docs.microsoft.com/azure/managed-applications/overview) |  
+| Azure Marketplace | [Transact](#transact) | [Aplikacje platformy Azure: szablon rozwiązania](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  [](#) |  
+| Azure Marketplace | [Transact](#transact) | [Kontener](#requirements-azure-marketplace-transact-container) |  [](#) |  
+| Azure Marketplace | [Transact](#transact) | [Aplikacja SaaS](#requirements-azure-marketplace-transact-saas-app) |  [](#) |  
+| Azure Marketplace | [Transact](#transact) | [Maszyny wirtualne](#requirements-azure-marketplace-transact-virtual-machine) |  [](#) |   
 
 ## <a name="azure-certified-program"></a>Azure Certified program  
 Wszystkich maszynach wirtualnych (VM) opublikowane w portalu Azure Marketplace są sprawdzane pod kątem programu certyfikowane Azure.  
@@ -58,7 +58,7 @@ Poniższa tabela zawiera więcej informacji na temat określonych wymagań dotyc
 
 | Typ oferty | Typ aplikacji | Wytyczne techniczne |  
 |:--- |:--- |:--- |  
-| [Lista](#list) | [Usługi konsultingowe](#requirements:-appSource:-list:-consulting-service) | [smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf) |  
+| [Lista](#list) | [Usługi konsultingowe](#requirements-appSource-list-consulting-service) | [smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf) |  
 |  | Cortana Intelligence | [docs.microsoft.com/Azure/Machine-Learning/Team-Data-Science-Process/cortana-Intelligence-appsource-Publishing-Guide](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide) |  
 |  |Dynamics 365 naboru klienta | [docs.microsoft.com/dynamics365/Customer-Engagement/Developer/publish-App-appsource](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource) |  
 |  | Dynamics 365 Finanse i operacje | [docs.microsoft.com/dynamics365/Unified-Operations/dev-ITPro/LCS-Solutions/LCS-Solutions-App-Source](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source) |  
@@ -68,20 +68,23 @@ Poniższa tabela zawiera więcej informacji na temat określonych wymagań dotyc
 ---   
 
 ## <a name="azure-marketplace-publishing-by-product"></a>Publikowanie witrynę Azure Marketplace produktu  
+
+![](./media/marketplace-publishers-guide/workflow-azure-marketplace.png)  
+
 Poniższa tabela zawiera oferują więcej informacji na temat określonych wymagań dotyczących portalu Azure Marketplace.  
 
 | Typ oferty | Typ oferty |  Wytyczne techniczne |  
 |:--- |:--- |:--- |  
-| [Lista](#list) | [Usługi konsultingowe](#requirements:-azure-marketplace:-list:-consulting-service) | [](#) |  
-| [Lista](#list) | [Przesyłać do mnie](#requirements:-azure-marketplace:-list:-contact-me) | [](#) |  
-| [Wersja próbna](#trial) | [Bezpłatna wersja próbna / wersja próbna SaaS](#requirements:-azure-marketplace:-trial:-free-trial-/-saas-trial) | [](#) |  
-| [Wersja próbna](#trial) | [Pokaz interaktywny](#requirements:-azure-marketplace:-trial:-interactive-demo) | [](#) |  
-| [Wersja próbna](#trial) | [Przetestuj](#requirements:-azure-marketplace:-trial:-test-drive) | [](#) |  
-| [Transact](#transact) | [Aplikacje platformy Azure: zarządzanej aplikacji](#requirements:-azure-marketplace:-transact:-azure-apps:-managed-app) |  [docs.microsoft.com/Azure/Managed-Applications/overview](https://docs.microsoft.com/azure/managed-applications/overview) |  
-| [Transact](#transact) | [Aplikacje platformy Azure: szablon rozwiązania](#requirements:-azure-marketplace:-transact:-azure-apps:-solution-template) |  [](#) |  
-| [Transact](#transact) | [Kontener](#requirements:-azure-marketplace:-transact:-container) |  [](#) |  
-| [Transact](#transact) | [Aplikacja SaaS](#requirements:-azure-marketplace:-transact:-saas-app) |  [](#) |  
-| [Transact](#transact) | [Maszyny wirtualne](#requirements:-azure-marketplace:-transact:-virtual-machine) |  [](#) |  
+| [Lista](#list) | [Usługi konsultingowe](#requirements-azure-marketplace-list-consulting-service) | [](#) |  
+| [Lista](#list) | [Przesyłać do mnie](#requirements-azure-marketplace-list-contact-me) | [](#) |  
+| [Wersja próbna](#trial) | [Bezpłatna wersja próbna / wersja próbna SaaS](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) | [](#) |  
+| [Wersja próbna](#trial) | [Pokaz interaktywny](#requirements-azure-marketplace-trial-interactive-demo) | [](#) |  
+| [Wersja próbna](#trial) | [Przetestuj](#requirements-azure-marketplace-trial-test-drive) | [](#) |  
+| [Transact](#transact) | [Aplikacje platformy Azure: zarządzanej aplikacji](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  [docs.microsoft.com/Azure/Managed-Applications/overview](https://docs.microsoft.com/azure/managed-applications/overview) |  
+| [Transact](#transact) | [Aplikacje platformy Azure: szablon rozwiązania](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  [](#) |  
+| [Transact](#transact) | [Kontener](#requirements-azure-marketplace-transact-container) |  [](#) |  
+| [Transact](#transact) | [Aplikacja SaaS](#requirements-azure-marketplace-transact-saas-app) |  [](#) |  
+| [Transact](#transact) | [Maszyny wirtualne](#requirements-azure-marketplace-transact-virtual-machine) |  [](#) |  
 
 ---   
 
@@ -93,10 +96,10 @@ Lista Typ oferty zawiera następujące typy oferta na sklepy w witrynie marketpl
 
 | Typ oferty | Witryna sklepu | Szczegóły |  
 |:---        |:---        |:---     |  
-| Usługi konsultingowe | AppSource | [Wymagania dotyczące: AppSource: lista: usługi doradcze](#requirements:-appsource:-list:-consulting-service) |  
-| Usługi konsultingowe | Azure Marketplace | [Wymagania dotyczące: Azure Marketplace: lista: usługi doradcze](#requirements:-azure-marketplace:-list:-consulting-service) |  
+| Usługi konsultingowe | AppSource | [Wymagania dotyczące: AppSource: lista: usługi doradcze](#requirements-appsource-list-consulting-service) |  
+| Usługi konsultingowe | Azure Marketplace | [Wymagania dotyczące: Azure Marketplace: lista: usługi doradcze](#requirements-azure-marketplace-list-consulting-service) |  
 | Kontakt ze mną | AppSource | [](#) |  
-| Kontakt ze mną | Azure Marketplace | [Wymagania dotyczące: AppSource: lista: przesyłać do mnie](#requirements:-azure-marketplace:-list:-contact-me) |  
+| Kontakt ze mną | Azure Marketplace | [Wymagania dotyczące: AppSource: lista: przesyłać do mnie](#requirements-azure-marketplace-list-contact-me) |  
 
 #### <a name="requirements-appsource-list-consulting-service"></a>Wymagania dotyczące: AppSource: lista: konsultacji usługi  
 Gdy oferta obejmuje głównie profesjonalne usługi, na przykład: ocen, implementacji, zakładów, użyj usługi konsultingowe oferują typu.  
@@ -130,12 +133,12 @@ Wersja próbna, typ oferty zawiera następujące typy oferta na sklepy w witryni
 
 | Typ oferty | Witryna sklepu | Szczegóły |  
 |:---        |:---        |:---     |  
-| Bezpłatne / wersja próbna SaaS | AppSource | [Lista wymagań dotyczących typu: wersja próbna](#Listing-Type-Requirements:-trial) |  
-| Bezpłatne / wersja próbna SaaS | Azure Marketplace | [Wymagania dotyczące: Azure Marketplace: wersji próbnej: bezpłatnej wersji próbnej / wersja próbna SaaS](#requirements:-azure-marketplace:-trial:-free-trial-/-saas-trial) |  
-| Interaktywna demonstracja | AppSource | [Lista wymagań dotyczących typu: wersja próbna](#Listing-Type-Requirements:-trial) |  
-| Interaktywna demonstracja | Azure Marketplace | [Wymagania dotyczące: Azure Marketplace: wersja próbna: pokaz interaktywny](#requirements:-azure-marketplace:-trial:-interactive-demo) |  
-| Wersja testowa | AppSource | [Lista wymagań dotyczących typu: wersja próbna](#Listing-Type-Requirements:-trial) |  
-| Wersja testowa | Azure Marketplace | [Wymagania dotyczące: Azure Marketplace: wersja próbna: przetestuj](#requirements:-azure-marketplace:-trial:-test-drive) |  
+| Bezpłatne / wersja próbna SaaS | AppSource | [Lista wymagań dotyczących typu: wersja próbna](#listing-type-requirements-trial) |  
+| Bezpłatne / wersja próbna SaaS | Azure Marketplace | [Wymagania dotyczące: Azure Marketplace: wersji próbnej: bezpłatnej wersji próbnej / wersja próbna SaaS](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) |  
+| Interaktywna demonstracja | AppSource | [Lista wymagań dotyczących typu: wersja próbna](#listing-type-requirements-trial) |  
+| Interaktywna demonstracja | Azure Marketplace | [Wymagania dotyczące: Azure Marketplace: wersja próbna: pokaz interaktywny](#requirements-azure-marketplace-trial-interactive-demo) |  
+| Wersja testowa | AppSource | [Lista wymagań dotyczących typu: wersja próbna](#listing-type-requirements-trial) |  
+| Wersja testowa | Azure Marketplace | [Wymagania dotyczące: Azure Marketplace: wersja próbna: przetestuj](#requirements-azure-marketplace-trial-test-drive) |  
 
 #### <a name="requirements-azure-marketplace-trial"></a>Wymagania dotyczące: Azure Marketplace: wersja próbna  
 
@@ -177,11 +180,11 @@ Typ oferty Transact zawiera następujące typy oferta na sklepy w witrynie marke
 
 | Typ oferty | Witryna sklepu | Szczegóły |   
 |:---        |:---        | :--- |  
-| Aplikacje platformy Azure: zarządzanej aplikacji | Azure Marketplace | [Wymagania dotyczące: Azure Marketplace: Transact: aplikacje platformy Azure: zarządzanej aplikacji](#requirements:-azure-marketplace:-transact:-Azure-apps:-Managed-app) |  
-| Aplikacje platformy Azure: szablon rozwiązania | Azure Marketplace | [Wymagania dotyczące: Azure Marketplace: Transact: aplikacje platformy Azure: szablon rozwiązania](#requirements:-azure-marketplace:-transact:-Azure-apps:-Solution-template) |  
-| Containers | Azure Marketplace | [Wymagania dotyczące: Azure Marketplace: Transact: kontenera](#requirements:-azure-marketplace:-transact:-Container) |  
-| Aplikacja SaaS  | Azure Marketplace | [Wymagania dotyczące: Azure Marketplace: Transact: aplikacji SaaS](#requirements:-azure-marketplace:-transact:-SaaS-app) |  
-| Maszyna wirtualna | Azure Marketplace | [Wymagania dotyczące: Azure Marketplace: Transact: maszyny wirtualne](#requirements:-azure-marketplace:-transact:-Virtual-Machine) |  
+| Aplikacje platformy Azure: zarządzanej aplikacji | Azure Marketplace | [Wymagania dotyczące: Azure Marketplace: Transact: aplikacje platformy Azure: zarządzanej aplikacji](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  
+| Aplikacje platformy Azure: szablon rozwiązania | Azure Marketplace | [Wymagania dotyczące: Azure Marketplace: Transact: aplikacje platformy Azure: szablon rozwiązania](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  
+| Containers | Azure Marketplace | [Wymagania dotyczące: Azure Marketplace: Transact: kontenera](#requirements-azure-marketplace-transact-container) |  
+| Aplikacja SaaS  | Azure Marketplace | [Wymagania dotyczące: Azure Marketplace: Transact: aplikacji SaaS](#requirements-azure-marketplace-transact-saas-app) |  
+| Maszyna wirtualna | Azure Marketplace | [Wymagania dotyczące: Azure Marketplace: Transact: maszyny wirtualne](#requirements-azure-marketplace-transact-virtual-machine) |  
 
 #### <a name="requirements-azure-marketplace-transact-azure-apps-managed-app"></a>Wymagania dotyczące: Azure Marketplace: Transact: aplikacje platformy Azure: zarządzanej aplikacji  
 Przy użyciu aplikacji Azure: zarządzanego typu oferty aplikacji, gdy wymagane są następujące warunki.  
@@ -209,11 +212,10 @@ Firma Microsoft obsługuje obecnie bezpłatne i przełączyć your właściciele
 
 | Wymaganie | Szczegóły |  
 |:--- |:--- |  
-|Rozliczenia i pomiarów  |  Twoje kontenera musi obsługiwać albo Zwolnij lub użycie własnej licencji rozliczeń modeli.       |  
-|Zbudowany z plik Dockerfile obrazu   |   Kontener obrazów muszą być oparte na specyfikacji obrazu Docker i muszą być zbudowane z plik Dockerfile. Dowiedz się więcej o tworzeniu [tutaj] obrazy usługi docker. (https://docs.docker.com/engine/reference/builder/#usage)
-|Hosting w ACR   |   Kontener obrazów muszą być obsługiwane w repozytorium Azure kontenera rejestru (ACR). Dowiedz się więcej o pracy z ACR [tutaj]. (https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal)     
-|Znakowanie obrazu   |   Obrazy kontenera musi zawierać co najmniej 1 znaczników (tagów maksymalna: 16). Dowiedz się więcej o znakowanie [tutaj] obrazu. (https://docs.docker.com/engine/reference/commandline/tag/)     | 
-
+| Rozliczenia i pomiarów | Obsługuje albo wolnego lub BYOL modelu rozliczeń. |  
+| Zbudowany z plik Dockerfile obrazu | Kontener obrazów muszą być oparte na specyfikacji obrazu Docker i muszą być zbudowane z plik Dockerfile.<ul> <li>Aby uzyskać więcej informacji na temat tworzenia obrazów docker można znaleźć w sekcji użycia znajduje się w [docs.docker.com/engine/reference/builder/#usage](https://docs.docker.com/engine/reference/builder/#usage).</li> </ul> |  
+| Hosting w ACR | Kontener obrazów muszą być obsługiwane w repozytorium Azure kontenera rejestru (ACR).<ul> <li>Aby uzyskać więcej informacji na temat pracy z ACR, odwiedź stronę Szybki Start: tworzenie za pomocą strony portalu Azure w lokalizacji rejestru kontenera [docs.microsoft.com/azure/container-registry/container-registry-get-started-portal](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal).</li> </ul> |  
+| Znakowanie obrazu | Obrazy kontenera musi zawierać co najmniej 1 znaczników (tagów maksymalna: 16).<ul> <li>Aby uzyskać więcej informacji na temat znakowanie obrazu, odwiedź stronę tag docker znajdujący się w [docs.docker.com/engine/reference/commandline/tag](https://docs.docker.com/engine/reference/commandline/tag).</li> </ul> |  
 
 
 #### <a name="requirements-azure-marketplace-transact-saas-app"></a>Wymagania dotyczące: Azure Marketplace: Transact: aplikacji SaaS  
@@ -225,12 +227,10 @@ Microsoft hostuje transakcję commerce. Microsoft rachunków klienta w Twoim imi
 
 | Wymaganie | Szczegóły |  
 |:--- |:--- |  
-|Rozliczenia i pomiarów   |   Ofertę kosztuje szybkością miesięczne płaski. Opartej na użyciu cennik i możliwości opartej na użyciu "wartość true w górę" nie są obsługiwane w tej chwili.      |  
-|Anulowanie  |   Twoja oferta jest można anulować przez klienta w dowolnym momencie.      |  
-|Strona początkowa transakcji   |   Możesz udostępniać Azure markami transakcji strony docelowej, gdzie użytkownicy mogą tworzyć i zarządzania swoim kontem usługi SaaS.      |   
-|Subskrypcja interfejsu API    |   Naraża usługi, które mogą kontaktować się z subskrypcją SaaS na tworzenie, aktualizowanie i usuwanie planu usługi oraz konta użytkownika. Krytyczne zmiany interfejsu API musi być obsługiwane w ciągu 24 godzin. Niekrytyczny zmiany interfejsu API zostanie wydana okresowo.      | 
-
-
+|Rozliczenia i pomiarów | Ofertę kosztuje szybkością miesięczne płaski. Opartej na użyciu cennik i możliwości opartej na użyciu "wartość true w górę" nie są obsługiwane w tej chwili. |  
+|Anulowanie | Twoja oferta jest można anulować przez klienta w dowolnym momencie. |  
+|Strona początkowa transakcji | Możesz udostępniać Azure markami transakcji strony docelowej, gdzie użytkownicy mogą tworzyć i zarządzania swoim kontem usługi SaaS. |   
+| Subskrypcja interfejsu API | Naraża usługi, które mogą kontaktować się z subskrypcją SaaS na tworzenie, aktualizowanie i usuwanie planu usługi oraz konta użytkownika. Krytyczne zmiany interfejsu API musi być obsługiwane w ciągu 24 godzin. Niekrytyczny zmiany interfejsu API zostanie wydana okresowo. |  
 
 #### <a name="requirements-azure-marketplace-transact-virtual-machine"></a>Wymagania dotyczące: Azure Marketplace: Transact: maszyny wirtualne  
 Użyj typu oferty maszyny wirtualnej, podczas wdrażania urządzenia wirtualnego do subskrypcji skojarzonych z klientem. Maszyny wirtualne są w pełni commerce włączyć za pomocą płatność za rzeczywiste użycie lub Bring-your właścicielem — licencji (BYOL) modeli licencjonowania. Firma Microsoft hostuje transakcję commerce i rachunków klienta w Twoim imieniu. Możesz skorzystać z zalet przy użyciu relacji preferowanych płatności od klienta oraz firmy Microsoft, w tym umowy Enterprise.  

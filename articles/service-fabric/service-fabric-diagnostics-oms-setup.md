@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 4/03/2018
 ms.author: srrengar
-ms.openlocfilehash: 25db5075e2099dee354c4c5ef999b26c8e0c50c9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 90a28162fb1f455c154ad4d2da7beac6bc785bc7
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642669"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301040"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>Konfigurowanie analizy dzienników dla klastra
 
@@ -38,20 +38,20 @@ Jeśli chcesz dodać obszaru roboczego analizy dzienników po wdrożeniu klastra
 
 3. Wybierz pozycję **Utwórz**.
 
-    ![OMS rz Analytics w portalu Marketplace](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
+    ![Usługa sieci szkieletowej Analytics w portalu Marketplace](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
 4. W oknie tworzenia analiz sieci szkieletowej usług wybierz **wybierz obszar roboczy** dla **obszarem roboczym pakietu OMS** pola, a następnie **Utwórz nowy obszar roboczy**. Wypełnij odpowiednie wpisy. Jedynym wymaganiem jest subskrypcji dla klastra usługi sieć szkieletowa usług oraz obszaru roboczego jest taki sam. Po sprawdzeniu poprawności wpisy rozpocznie wdrażanie obszaru roboczego. Wdrożenie zajmuje tylko kilka minut.
 
 5. Po zakończeniu wybierz **Utwórz** ponownie w dolnej części okna Tworzenie usługi Analytics sieci szkieletowej. Upewnij się, że nowy obszar roboczy zostaną wyświetlone w obszarze **obszarem roboczym pakietu OMS**. Ta akcja dodaje rozwiązania do obszaru roboczego, który został utworzony.
 
-Jeśli korzystasz z systemu Windows, wykonaj następujące kroki, aby nawiązać połączenia z usługą OMS konta magazynu przechowywania zdarzeń klastra. 
+Jeśli korzystasz z systemu Windows, wykonaj następujące kroki, aby połączyć do konta magazynu analizy dzienników przechowywania zdarzeń klastra. 
 
 >[!NOTE]
 >Włączenie tej czynności w przypadku klastrów systemu Linux nie jest jeszcze dostępna. 
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>Połączyć się z klastrem obszaru roboczego analizy dzienników 
 
-1. Obszar roboczy musi być połączona z danych diagnostycznych z klastra. Przejdź do grupy zasobów, w której utworzono rozwiązania analizy sieci szkieletowej usług. Wybierz **ServiceFabric\<nameOfWorkspace\>**  i przejdź do strony Przegląd. Z tego miejsca można zmienić ustawienia rozwiązania, ustawień obszaru roboczego i dostęp do obszaru roboczego OMS.
+1. Obszar roboczy musi być połączona z danych diagnostycznych z klastra. Przejdź do grupy zasobów, w której utworzono rozwiązania analizy sieci szkieletowej usług. Wybierz **ServiceFabric\<nameOfWorkspace\>**  i przejdź do strony Przegląd. Z tego miejsca można zmienić ustawienia rozwiązania, ustawienia obszaru roboczego i dostęp do obszaru roboczego analizy dzienników.
 
 2. W menu nawigacji po lewej stronie w obszarze **źródeł danych obszaru roboczego**, wybierz pozycję **dzienników kont magazynu**.
 
@@ -65,16 +65,16 @@ Jeśli korzystasz z systemu Windows, wykonaj następujące kroki, aby nawiązać
 
 7. Wybierz **OK** nawiązać obszaru roboczego dzienników z klastra.
 
-    ![Dodaj dzienniki konta magazynu z usługą OMS](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
+    ![Dodaj dzienniki konta magazynu do analizy dzienników](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
 
 Konto teraz wyświetlone jako część konta magazynu dzienniki w źródłach danych obszaru roboczego.
 
-W obszarze roboczym analizy dzienników OMS, który jest teraz prawidłowo podłączone do sieci klastra platformy oraz tabeli dziennika aplikacji dodaniu rozwiązania analizy sieci szkieletowej usług. Możesz dodać dodatkowe źródła do obszaru roboczego w taki sam sposób.
+W obszarze roboczym analizy dzienników, która jest teraz prawidłowo podłączone do sieci klastra platformy oraz tabeli dziennika aplikacji dodano rozwiązania analizy sieci szkieletowej usług. Możesz dodać dodatkowe źródła do obszaru roboczego w taki sam sposób.
 
 
-## <a name="deploy-oms-by-using-a-resource-manager-template"></a>Wdrażanie pakietu OMS przy użyciu szablonu usługi Resource Manager
+## <a name="deploy-log-analytics-by-using-a-resource-manager-template"></a>Wdrażanie usługi Analiza dzienników przy użyciu szablonu usługi Resource Manager
 
-W przypadku wdrażania klastra przy użyciu szablonu usługi Resource Manager szablon tworzy nowy obszar roboczy OMS, dodaje rozwiązania sieci szkieletowej usług do obszaru roboczego i skonfiguruje je odczytać danych z tabel odpowiedniego magazynu.
+W przypadku wdrażania klastra przy użyciu szablonu usługi Resource Manager szablon tworzy nowy obszar roboczy analizy dzienników, dodaje rozwiązania sieci szkieletowej usług do obszaru roboczego i skonfiguruje je odczytać danych z tabel odpowiedniego magazynu.
 
 Można użyć i modyfikować [ten przykładowy szablon](https://github.com/krnese/azure-quickstart-templates/tree/master/service-fabric-oms) zgodnie z wymaganiami.
 
@@ -86,7 +86,7 @@ Wprowadź następujące zmiany:
         "type": "string",
         "defaultValue": "sfomsworkspace",
         "metadata": {
-            "description": "Name of your OMS Log Analytics Workspace"
+            "description": "Name of your Log Analytics Workspace"
         }
     },
     "omsRegion": {
@@ -98,21 +98,21 @@ Wprowadź następujące zmiany:
             "Southeast Asia"
         ],
         "metadata": {
-            "description": "Specify the Azure Region for your OMS workspace"
+            "description": "Specify the Azure Region for your Log Analytics workspace"
         }
     }
     ```
 
     `omsRegion` Wartości muszą być zgodne z określonego zestawu wartości. Wybierz jedną, która jest najbardziej zbliżony do wdrożenia klastra.
 
-2. Jeśli wszystkie dzienniki aplikacji zostanie wysłana do OMS, najpierw upewnij się, że `applicationDiagnosticsStorageAccountType` i `applicationDiagnosticsStorageAccountName` są dołączone jako parametry w szablonie. Jeśli nie są uwzględnione, dodaj je do sekcji zmiennych i Edytuj ich wartości zgodnie z potrzebami. Można również uwzględnić je jako parametry, postępując w poprzednim formacie.
+2. Jeśli wszystkie dzienniki aplikacji zostanie wysłana do analizy dzienników, najpierw upewnij się, że `applicationDiagnosticsStorageAccountType` i `applicationDiagnosticsStorageAccountName` są dołączone jako parametry w szablonie. Jeśli nie są uwzględnione, dodaj je do sekcji zmiennych i Edytuj ich wartości zgodnie z potrzebami. Można również uwzględnić je jako parametry, postępując w poprzednim formacie.
 
     ```json
     "applicationDiagnosticsStorageAccountType": "Standard_LRS",
     "applicationDiagnosticsStorageAccountName": "[toLower(concat('oms', uniqueString(resourceGroup().id), '3' ))]"
     ```
 
-3. Dodaj rozwiązanie usługi sieć szkieletowa OMS do zmiennych do szablonu:
+3. Dodaj rozwiązanie sieci szkieletowej usług do zmiennych do szablonu:
 
     ```json
     "solution": "[Concat('ServiceFabric', '(', parameters('omsWorkspacename'), ')')]",
@@ -188,16 +188,16 @@ Wprowadź następujące zmiany:
 
     Usługa Azure Resource Manager wykryje, że to polecenie aktualizacji do istniejącego zasobu. Przetwarza tylko zmiany między szablonu zwiększają istniejącego wdrożenia i nowy szablon, pod warunkiem.
 
-## <a name="deploy-oms-by-using-azure-powershell"></a>Wdrażanie pakietu OMS przy użyciu programu Azure PowerShell
+## <a name="deploy-log-analytics-by-using-azure-powershell"></a>Wdrażanie usługi Analiza dzienników przy użyciu programu Azure PowerShell
 
-Można także wdrożyć zasobu OMS Log Analytics za pomocą programu PowerShell przy użyciu `New-AzureRmOperationalInsightsWorkspace` polecenia. Aby użyć tej metody, upewnij się, zainstalowano [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.1.1). Użyj tego skryptu do tworzenia nowego obszaru roboczego analizy dzienników OMS i Dodaj do niej rozwiązania sieci szkieletowej usług: 
+Można także wdrożyć zasobu analizy dzienników za pośrednictwem programu PowerShell przy użyciu `New-AzureRmOperationalInsightsWorkspace` polecenia. Aby użyć tej metody, upewnij się, zainstalowano [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.1.1). Użyj tego skryptu do tworzenia nowego obszaru roboczego analizy dzienników i Dodaj do niej rozwiązania sieci szkieletowej usług: 
 
 ```PowerShell
 
 $SubscriptionName = "<Name of your subscription>"
 $ResourceGroup = "<Resource group name>"
 $Location = "<Resource group location>"
-$WorkspaceName = "<OMS Log Analytics workspace name>"
+$WorkspaceName = "<Log Analytics workspace name>"
 $solution = "ServiceFabric"
 
 # Log in to Azure and access the correct subscription
@@ -216,11 +216,11 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup
 
 ```
 
-Gdy wszystko będzie gotowe, wykonaj kroki opisane w poprzedniej sekcji do nawiązania połączenia z kontem magazynu odpowiednie OMS analizy dzienników.
+Gdy wszystko będzie gotowe, wykonaj kroki opisane w poprzedniej sekcji do nawiązania połączenia z kontem magazynu odpowiednie analizy dzienników.
 
-Można także dodać inne rozwiązania lub wprowadzić inne zmiany na obszar roboczy OMS przy użyciu programu PowerShell. Aby dowiedzieć się więcej, zobacz [analizy dzienników zarządzania przy użyciu programu PowerShell](../log-analytics/log-analytics-powershell-workspace-configuration.md).
+Można także dodać inne rozwiązania lub wprowadzić inne zmiany do swojego obszaru roboczego analizy dzienników przy użyciu programu PowerShell. Aby dowiedzieć się więcej, zobacz [analizy dzienników zarządzania przy użyciu programu PowerShell](../log-analytics/log-analytics-powershell-workspace-configuration.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Wdrażanie agenta pakietu OMS](service-fabric-diagnostics-oms-agent.md) na węzły do zbierania liczników wydajności i zbieranie statystyk docker i dzienniki dla kontenerów
+* [Wdrażanie agenta analizy dziennika](service-fabric-diagnostics-oms-agent.md) na węzły do zbierania liczników wydajności i zbieranie statystyk docker i dzienniki dla kontenerów
 * Pobierz zapoznaniu się z [wyszukiwania i badania dziennika](../log-analytics/log-analytics-log-searches.md) funkcje dostępne w ramach analizy dzienników
 * [Projektant widoków umożliwia tworzenie niestandardowych widoków w analizy dzienników](../log-analytics/log-analytics-view-designer.md)

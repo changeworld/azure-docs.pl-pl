@@ -10,21 +10,21 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 12cbffdbd9ab299d4405aa50c0e49db9c20ab0fa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 74a4b77bd9823e5462eecd438cf4c1d863e79892
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349789"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300642"
 ---
 # <a name="add-example-utterances-and-label-with-entities"></a>Dodaj zniesławiających przykład i etykiety z jednostki
 
-Zniesławiających przedstawiono pytania użytkownika lub polecenia. Nauczenie opis języka (LUIS), musisz dodać [zniesławiających przykład](luis-concept-utterance.md) do [zamiar](luis-concept-intent.md).
+Przykład zniesławiających przedstawiono tekst pytania użytkownika lub poleceń. Nauczenie opis języka (LUIS), musisz dodać [zniesławiających przykład](luis-concept-utterance.md) do [zamiar](luis-concept-intent.md).
 
-Ogólnie rzecz biorąc najpierw Dodaj utterance, a następnie utwórz jednostki i etykieta zniesławiających na stronie konwersji. Jeśli czy raczej najpierw utworzyć jednostki, zobacz [Dodaj jednostki](luis-how-to-add-entities.md).
+Ogólnie rzecz biorąc najpierw Dodaj utterance przykład celem, a następnie utwórz jednostki i zniesławiających etykiety na stronie konwersji. Jeśli czy raczej najpierw utworzyć jednostki, zobacz [Dodaj jednostki](luis-how-to-add-entities.md).
 
 ## <a name="add-an-utterance"></a>Dodaj utterance
-Na stronie konwersji, wprowadź odpowiednie utterance oczekiwać od użytkowników, takich jak `book 2 adult business tickets to Paris tomorrow on Air France` w polu tekstowym pod konwersji nazwy, a następnie naciśnij klawisz Enter. 
+Na stronie konwersji, wprowadź utterance odpowiedni przykład spodziewasz się od użytkowników, takich jak `book 2 adult business tickets to Paris tomorrow on Air France` w polu tekstowym pod konwersji nazwy, a następnie naciśnij klawisz Enter. 
  
 >[!NOTE]
 >LUIS konwertuje wszystkie zniesławiających na małe litery.
@@ -32,6 +32,9 @@ Na stronie konwersji, wprowadź odpowiednie utterance oczekiwać od użytkownik�
 ![Zrzut ekranu opcji strony szczegółów, z wyróżnioną pozycją utterance](./media/luis-how-to-add-example-utterances/add-new-utterance-to-intent.png) 
 
 Zniesławiających zostaną dodane do listy zniesławiających dla bieżącego celem. 
+
+## <a name="ignoring-words-and-punctuation"></a>Ignorowanie słów i znaków interpunkcyjnych
+Jeśli chcesz zignorować słów lub znaki interpunkcyjne w przykładzie utterance, użyj [wzorzec](luis-concept-patterns.md#pattern-syntax) z _Ignoruj_ składni. 
 
 ## <a name="add-simple-entity-label"></a>Dodawanie jednostki prostej etykiety
 W poniższej procedurze Utwórz i etykiet niestandardowych obiektów w ramach następujących utterance na stronie opcji:

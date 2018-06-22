@@ -10,14 +10,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 04/02/2018
+ms.topic: conceptual
+ms.reviewer: Dale.Koetke
+ms.date: 06/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 22c8616c1585e3f728a03a794c527cb34fc0c4eb
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: a401bc3ed68dc9273ac14cfd357b9c05111dd54c
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309855"
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Zarządzanie wolumin ceny i danych w usłudze Application Insights
 
@@ -88,7 +90,7 @@ Ilość danych wysyłanych jest ograniczona na trzy sposoby:
 
     Po ustawieniu codzienne centralnych zasad dostępu, należy zachować ostrożność. Z celem powinno być *nigdy nie osiągnęła limit dzienny*. Jeśli zostanie osiągnięty dzienny limit, utratę danych do końca dnia, a nie można monitorować aplikacji. Aby zmienić dzienny limit, użyj **dzienny limit woluminu** opcji. Można uzyskać dostępu do tej opcji w **użycia i szacowane koszty** okienka (opisany bardziej szczegółowo w dalszej części tego artykułu).
     Usunęliśmy ograniczenie niektórych typów subskrypcji, które mają kredyt, który nie może być używane dla usługi Application Insights. Wcześniej, jeśli subskrypcja jest objęta limitem wydatków, codzienne zakończenia okno dialogowe ma okno instrukcjami, aby usunąć limit wydatków i włączyć codzienne WPR wygenerowany poza 32,3 MB/dzień.
-* **Ograniczanie**: ograniczenie szybkość transmisji do 32 000 zdarzeń na sekundę, średnio ponad 1 minutę.
+* **Ograniczanie**: ograniczenie szybkość transmisji do 32 000 zdarzeń na sekundę, średnio ponad 1 minutę na klucz instrumentacji.
 
 *Co się stanie, jeśli Moja aplikacja przekracza ograniczenie przepustowości?*
 

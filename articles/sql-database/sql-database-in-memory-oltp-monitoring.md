@@ -7,20 +7,22 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 06/20/2018
 ms.author: jodebrui
-ms.openlocfilehash: aff0f82f07e9129c8f7c131f055447ad578ad15b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f74c9bf06cad8b84d08baf7a0a0504b9cb729bf4
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647344"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308683"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>Monitor OLTP w pamięci magazynu
-Korzystając z [OLTP w pamięci](sql-database-in-memory.md), dane w tabelach zoptymalizowanych pod kątem pamięci i zmiennych tabel znajdują się w magazynie OLTP w pamięci. Każda warstwa usług Premium i biznesowe krytyczne ma maksymalny rozmiar magazynu OLTP w pamięci, które opisano w [limity zasobów na podstawie jednostek dtu w warstwie](sql-database-dtu-resource-limits.md) i [limity zasobów na podstawie vCore](sql-database-vcore-resource-limits.md). Po przekroczeniu tego limitu insert i zaktualizować operacji mogą kończyć się niepowodzeniem z błędem 41823 autonomiczny baz danych i błąd 41840 dla pul elastycznych. W tym momencie możesz należy usunąć dane w celu odzyskania pamięci, lub Uaktualnij warstwę wydajności bazy danych.
+Korzystając z [OLTP w pamięci](sql-database-in-memory.md), dane w tabelach zoptymalizowanych pod kątem pamięci i zmiennych tabel znajdują się w magazynie OLTP w pamięci. Każda warstwa usług Premium i biznesowe krytyczne ma maksymalny rozmiar magazynu OLTP w pamięci. Zobacz [limity zasobów na podstawie jednostek dtu w warstwie - pojedynczej bazy danych](sql-database-dtu-resource-limits-single-databases.md), [limity zasobów na podstawie jednostek dtu w warstwie - pule elastyczne](sql-database-dtu-resource-limits-elastic-pools.md),[limity zasobów na podstawie vCore - pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md) i [limity zasobów na podstawie vCore - pule elastyczne](sql-database-vcore-resource-limits-elastic-pools.md).
+
+Po przekroczeniu tego limitu insert i zaktualizować operacji mogą kończyć się niepowodzeniem z błędem 41823 autonomiczny baz danych i błąd 41840 dla pul elastycznych. W tym momencie możesz należy usunąć dane w celu odzyskania pamięci, lub Uaktualnij warstwę wydajności bazy danych.
 
 ## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>Określić, czy danych mieści się w zakończenia magazynu OLTP w pamięci
-Określ caps magazynu warstwy z innej usługi. Zobacz [limity zasobów na podstawie jednostek dtu w warstwie](sql-database-dtu-resource-limits.md) i [limity zasobów na podstawie vCore](sql-database-vcore-resource-limits.md).
+Określ caps magazynu warstwy z innej usługi. Zobacz [limity zasobów na podstawie jednostek dtu w warstwie - pojedynczej bazy danych](sql-database-dtu-resource-limits-single-databases.md), [limity zasobów na podstawie jednostek dtu w warstwie - pule elastyczne](sql-database-dtu-resource-limits-elastic-pools.md),[limity zasobów na podstawie vCore - pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md) i [limity zasobów na podstawie vCore - pule elastyczne](sql-database-vcore-resource-limits-elastic-pools.md).
 
 Trwa szacowanie wymagań pamięci dla działania tabel zoptymalizowanych pod kątem pamięci jest taki sam sposób dla programu SQL Server, ponieważ w bazie danych SQL Azure. Potrwać kilka minut, aby przejrzeć ten artykuł na [MSDN](https://msdn.microsoft.com/library/dn282389.aspx).
 

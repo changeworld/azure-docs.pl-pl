@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: iainfou
 ms.custom: include file
-ms.openlocfilehash: 08b0cd35294a6cd4086fd5640b09d944ed361c41
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ba7a13a94d01de9d284282cbed25c873778e46e0
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34367136"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309568"
 ---
 W tym artykule przedstawiono zestaw sprawdzonych rozwiązań dotyczących uruchamiania maszyny wirtualnej z systemem Linux na platformie Azure z uwzględnieniem zagadnień dotyczących skalowalności, dostępności, możliwości zarządzania i zabezpieczeń. Platforma Azure obsługuje różne popularne dystrybucje systemu Linux, w tym CentOS, Debian, Red Hat Enterprise, Ubuntu i FreeBSD. Aby uzyskać więcej informacji, zobacz [Azure and Linux][azure-linux] (Platforma Azure i system Linux).
 
@@ -139,7 +139,7 @@ Następujące polecenie interfejsu wiersza polecenia umożliwia cofnięcie przyd
 azure vm deallocate <resource-group> <vm-name>
 ```
 
-W witrynie Azure Portal przycisk **Zatrzymaj** powoduje cofnięcie przydziału maszyny wirtualnej. Jednak jeśli maszyna wirtualna zostanie zamknięta za pomocą systemu operacyjnego przez zalogowanego użytkownika, to zostanie zatrzymana, lecz przydział *nie zostanie* cofnięty, więc w dalszym ciągu będą naliczane opłaty.
+W witrynie Azure Portal przycisk **Zatrzymaj** powoduje cofnięcie przydziału maszyny wirtualnej. Jednak Jeśli wyłączysz się za pośrednictwem systemu operacyjnego, użytkownik jest zalogowany Maszynie wirtualnej jest zatrzymana, ale *nie* alokację, więc możesz nadal będą naliczane.
 
 **Usuwanie maszyny wirtualnej.** Jeśli usuniesz maszynę wirtualną, jej dyski VHD nie zostaną usunięte. Oznacza to, że możesz bezpiecznie usunąć maszyną wirtualną bez utraty danych. Jednak opłaty za magazyn będą w dalszym ciągu naliczane. Aby usunąć dysk VHD, usuń plik z usługi [Blob Storage][blob-storage].
 

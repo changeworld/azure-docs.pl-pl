@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: c8b0529b0ae45d7bcee5574991551a424c13ba70
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 60b77f5956cb627905eb955995652098337c4dea
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34713868"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309862"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Zarządzanie urządzeniami w usłudze Azure Active Directory — często zadawane pytania
 
@@ -44,7 +44,7 @@ ms.locfileid: "34713868"
 **Pytanie: czy mogę ostatnio zarejestrowane urządzenia. Dlaczego nie widzę urządzenia w obszarze Moje informacje użytkownika w portalu Azure?**
 
 **Odpowiedź:** urządzenia systemu Windows 10, które są hybrydowego przyłączonych do usługi Azure AD nie są wyświetlane w obszarze urządzenia użytkowników.
-Należy użyć programu PowerShell, aby wyświetlić wszystkie urządzenia. 
+Należy użyć widoku wszystkich urządzeń w portalu Azure. Można również użyć środowiska PowerShell [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) polecenia cmdlet.
 
 Urządzenia użytkowników należą następujące urządzenia:
 
@@ -52,25 +52,24 @@ Urządzenia użytkowników należą następujące urządzenia:
 - Wszystkie z systemem innym niż Windows 10 / urządzeń z systemem Windows Server 2016.
 - Wszystkie urządzenia z systemem innym niż Windows 
 
----
-
-**Pytanie: Dlaczego nie można wyświetlić wszystkich urządzeń zarejestrowanych w usłudze Azure Active Directory w portalu Azure?** 
-
-**Odpowiedź:** można przeglądać je w obszarze Katalog usługi Azure AD -> wszystkie urządzenia menu. Za pomocą programu PowerShell Azure można również znaleźć wszystkie urządzenia. Aby uzyskać więcej informacji, zobacz [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) polecenia cmdlet.
-
 --- 
 
 **Pytanie: jak sprawdzić, co to jest stan rejestracji urządzenia klienta?**
 
-**Odpowiedź:** dla systemu Windows 10 i Windows Server 2016 lub urządzenia z nowszymi wersjami, uruchom dsregcmd.exe/status.
+**Odpowiedź:** mogą korzystać z portalu Azure, przejdź do wszystkich urządzeń i wyszukaj urządzenia przy użyciu identyfikatora urządzenia. Sprawdź wartość w kolumnie Typ sprzężenia.
 
-Dla wcześniejszych wersji systemu operacyjnego uruchom "%programFiles%\Microsoft Join\autoworkplace.exe obszar roboczy"
+Jeśli chcesz sprawdzić stan rejestracji urządzenia lokalnego z zarejestrowanym urządzeniem:
+
+- W przypadku systemu Windows 10 i Windows Server 2016 lub urządzenia z nowszymi wersjami uruchomić dsregcmd.exe/status.
+- Dla wcześniejszych wersji systemu operacyjnego uruchom "%programFiles%\Microsoft Join\autoworkplace.exe obszar roboczy"
 
 ---
 
-**Pytanie: Dlaczego jest to urządzenie I został usunięty w portalu Azure lub nadal przy użyciu programu Windows PowerShell wymienione w zarejestrowany?**
+**Pytanie: czy mogę został usunięty w portalu Azure lub za pomocą środowiska Windows PowerShell, ale stanu lokalnego na urządzeniu wskazuje, że wskazuje on nadal zarejestrowany?**
 
-**Odpowiedź:** to jest celowe. Urządzenie nie ma dostępu do zasobów w chmurze. Jeśli chcesz ponownie zarejestrować ponownie akcji ręcznej musi być podejmowane na urządzeniu. 
+**Odpowiedź:** to jest celowe. Urządzenie nie ma dostępu do zasobów w chmurze. 
+
+Jeśli chcesz ponownie zarejestrować ponownie akcji ręcznej musi być podejmowane na urządzeniu. 
 
 Wyczyść stan przyłączenia z systemem Windows 10 i Windows Server 2016, które są lokalne przyłączonych do domeny usługi AD:
 
@@ -85,6 +84,13 @@ Dla wersji systemu operacyjnego Windows niższego poziomu, które są lokalne AD
 1.  Otwórz wiersz polecenia jako administrator.
 2.  Wpisz polecenie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`.
 3.  Wpisz polecenie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`.
+
+---
+** Pytanie: Jak I odłączanie urządzenia z systemem Azure AD Joined lokalnie na urządzeniu?
+**ODP.:** 
+- Dla hybrydowe usługi Azure AD urządzeń w miejscu pracy upewnij się, że wyłączyć rejestracji automatycznej tak, aby zaplanowane zadanie nie rejestruje urządzenie ponownie. Następnie otwórz wiersz polecenia jako administrator, a typ `dsregcmd.exe /debug /leave`. Alternatywnie to polecenie może działać jako skrypt na wielu urządzeniach można odłączyć od zbiorczo.
+
+- Dla czystego Joined Azure AD urządzeń, upewnij się, że masz w trybie offline administrator lokalny, konto lub utworzyć, ponieważ nie można zalogować się przy użyciu dowolnego poświadczeń użytkownika usługi Azure AD. Następnie należy przejść do **ustawienia** > **kont** > **dostępu służbowego**. Wybierz konto, a następnie wybierz polecenie **rozłączenia**. Postępuj zgodnie z monitami i podaj poświadczenia administratora lokalnego, po wyświetleniu monitu. Uruchom ponownie urządzenie, aby ukończyć proces odłączania.
 
 ---
 
@@ -119,7 +125,7 @@ Dla wersji systemu operacyjnego Windows niższego poziomu, które są lokalne AD
 ---
 
 
-**Pytanie: Zobacz rekordem urządzenia w obszarze informacje o użytkowniku w portalu Azure i można zobaczyć stan zarejestrowany na kliencie. Czy prawidłowo skonfigurować do korzystania z dostępu warunkowego?**
+**Pytanie: Zobacz rekordem urządzenia w obszarze informacje o użytkowniku w portalu Azure i można zobaczyć stan w zarejestrowany na urządzeniu. Czy prawidłowo skonfigurować do korzystania z dostępu warunkowego?**
 
 **Odpowiedź:** stan przyłączenia urządzenia, sprawdzając deviceID, musi zgodne ze specyfikacją na usługi Azure AD i spełniać wszystkie kryteria oceny dostępu warunkowego. Aby uzyskać więcej informacji, zobacz [wprowadzenie do rejestracji urządzeń usługi Azure Active Directory](active-directory-device-registration.md).
 
@@ -137,6 +143,8 @@ Dla wersji systemu operacyjnego Windows niższego poziomu, które są lokalne AD
 
 - Logowania federacyjnego wymaga serwerze federacyjnym w celu obsługi aktywny punkt końcowy protokołu WS-Trust. 
 
+- Włączono przekazywania uwierzytelniania i użytkownik ma hasło tymczasowe, które muszą być zmienione podczas logowania.
+
 ---
 
 **Pytanie: Dlaczego zobacz "Oops... Wystąpił błąd!" okna dialogowego przy próbie, czy usługi Azure AD join komputer?**
@@ -147,7 +155,7 @@ Dla wersji systemu operacyjnego Windows niższego poziomu, które są lokalne AD
 
 **Pytanie: Dlaczego moja próby dołączenia komputera nie chociaż uzyskane informacje o błędzie?**
 
-**Odpowiedź:** prawdopodobną przyczyną jest to, że użytkownik jest zalogowany do urządzenia przy użyciu wbudowanego konta administratora. Utwórz konto lokalne różnych przed przy użyciu usługi Azure Active Directory Join, aby ukończyć instalację. 
+**Odpowiedź:** prawdopodobną przyczyną jest, że użytkownik jest zalogowany do urządzenia przy użyciu konta wbudowanego konta administratora lokalnego. Utwórz konto lokalne różnych przed przy użyciu usługi Azure Active Directory Join, aby ukończyć instalację. 
 
 ---
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 3c0ad4a0e1a5f4f2fd6def4f29599e2e55eb1a9d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fe75781629e8d6416405cc9eec9ce14e61a00b14
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364458"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301431"
 ---
 # <a name="enable-network-security-groups-in-azure-security-center"></a>Włącz sieciowych grup zabezpieczeń w Centrum zabezpieczeń Azure
 Centrum zabezpieczeń Azure zaleca włączyć grupę zabezpieczeń sieci (NSG), jeśli nie jest jeszcze włączone. Grupy NSG zawierają listę reguł listy kontroli dostępu (ACL), które akceptować lub odrzucać ruch sieciowy do wystąpień maszyn wirtualnych w sieci wirtualnej. Grupy NSG można kojarzyć z podsieciami lub poszczególnymi wystąpieniami maszyn wirtualnych w danej podsieci. Gdy sieciowa grupa zabezpieczeń jest skojarzona z podsiecią, reguły listy ACL dotyczą wszystkich wystąpień maszyn wirtualnych w tej podsieci. Ponadto ruch do poszczególnych maszyn wirtualnych można ograniczyć jeszcze bardziej przez skojarzenie grupy NSG bezpośrednio z tą maszyną Wirtualną. Aby dowiedzieć się więcej, zobacz [co to jest grupa zabezpieczeń sieci (NSG)?](../virtual-network/security-overview.md)
@@ -43,7 +43,7 @@ Jeśli nie ma włączone grup NSG, Centrum zabezpieczeń przedstawia dwa zalece�
 
    ![Wybieranie grupy zabezpieczeń sieci][4]
 
-Jeśli utworzysz grupy NSG, postępuj zgodnie z instrukcjami [jak zarządzać przy użyciu portalu Azure grup NSG](../virtual-network/virtual-networks-create-nsg-arm-pportal.md) do utworzenia grupy NSG i ustawienia zasad zabezpieczeń.
+Jeśli utworzysz grupy NSG, postępuj zgodnie z instrukcjami [Zarządzanie sieciowej grupy zabezpieczeń](../virtual-network/manage-network-security-group.md) do utworzenia grupy NSG i ustawienia zasad zabezpieczeń.
 
 ## <a name="see-also"></a>Zobacz także
 W tym artykule pokazano sposób wykonania "Włącz sieciowe grupy zabezpieczeń" zalecenia Centrum zabezpieczeń dla podsieci maszyny wirtualnej lub maszyny wirtualnej. Aby dowiedzieć się więcej na temat włączania grup NSG, zobacz następujące tematy:

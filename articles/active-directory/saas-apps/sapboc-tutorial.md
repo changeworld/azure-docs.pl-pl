@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 4848132254736aca12be5e31325d98a936754af2
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 42eb1c8332a29ff07c83b962aaa8f8e2f04fd07b
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220638"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308303"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>Samouczek: Integracji Azure Active Directory z SAP Business obiektu chmury
 
@@ -129,7 +129,7 @@ Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z SAP Business obie
     ![Adresy URL i SAP Business obiektu chmury domeny adresów URL stron](./media/sapboc-tutorial/tutorial_sapboc_url.png)
  
     > [!NOTE] 
-    > Wartości te adresy URL są do pokazania tylko. Zaktualizuj wartości z rzeczywisty adres URL logowania i adres URL identyfikatora. Aby uzyskać adres URL logowania, skontaktuj się z [zespołem pomocy technicznej SAP Business obiektu chmury klienta](https://www.sap.com/product/analytics/cloud-analytics.support.html). Adres URL identyfikatora można uzyskać, pobierając metadanych SAP Business obiektu chmury z poziomu konsoli administracyjnej. Wyjaśnienie jest zawarte w dalszej części tego samouczka. 
+    > Wartości te adresy URL są do pokazania tylko. Zaktualizuj wartości z rzeczywisty adres URL logowania i adres URL identyfikatora. Aby uzyskać adres URL logowania, skontaktuj się z [zespołem pomocy technicznej SAP Business obiektu chmury klienta](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/en-US). Adres URL identyfikatora można uzyskać, pobierając metadanych SAP Business obiektu chmury z poziomu konsoli administracyjnej. Wyjaśnienie jest zawarte w dalszej części tego samouczka. 
 
 4. W obszarze **certyfikat podpisywania SAML**, wybierz pozycję **XML metadanych**. Następnie zapisz plik metadanych na tym komputerze.
 

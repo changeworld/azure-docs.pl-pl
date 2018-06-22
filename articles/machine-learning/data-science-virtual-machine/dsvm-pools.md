@@ -1,6 +1,6 @@
 ---
-title: Pule danych do maszyny wirtualnej nauki - Azure | Dokumentacja firmy Microsoft
-description: Wdrażanie pul wirtualna nauki danych jako zasób udostępniony dla zespołu
+title: Dane maszyny wirtualnej nauki pule - Azure | Dokumentacja firmy Microsoft
+description: Wdrażanie pul maszyn wirtualnych nauki danych jako zasób udostępniony dla zespołu
 keywords: bezpośrednie uczenia AI, narzędzia do analizy danych, maszyna wirtualna nauki danych, dane geograficzne analytics, proces nauki danych zespołu
 services: machine-learning
 documentationcenter: ''
@@ -15,56 +15,64 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: c7aab0435ecbd0aee57a15008ac0270159ec2eb3
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 0740ff7542d066442146b8e80e188ad5ba49a2b5
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837086"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309402"
 ---
-# <a name="creating-a-shared-pool-of-data-science-virtual-machines"></a>Tworzenie udostępnionego puli maszyn wirtualnych nauki danych
+# <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Tworzenie udostępnionego puli maszyn wirtualnych nauki danych
 
-W tym artykule opisano, jak można utworzyć puli udostępnionych z danych nauki maszyn wirtualnych (DSVM) do użycia przez zespół. Zaletą używania współużytkowanej puli jest lepsze wykorzystanie zasobów ułatwiających udostępnianie i współpracy, dzięki czemu IT skuteczniej zarządzać zasobami DSVM. 
+W tym artykule opisano sposób tworzenia współużytkowanej puli z danych nauki maszyn wirtualnych (DSVMs) do zespołu do użycia. Korzyści wynikające ze stosowania współużytkowanej puli są lepsze wykorzystanie zasobów ułatwiających udostępnianie i współpracy i skuteczniejsze zarządzanie zasobami DSVM. 
 
-Istnieje wiele sposobów i różnych technologii, których można użyć do utworzenia puli DSVM.  Poniżej przedstawiono główne scenariusze:
+Aby utworzyć pulę DSVMs, można użyć wielu metod i technologii. Ten artykuł dotyczy pule przetwarzania wsadowego i interaktywne maszyn wirtualnych.
 
-* Puli do przetwarzania wsadowego
-* Pula interakcyjne maszyny wirtualne
+## <a name="batch-processing-pool"></a>Przetwarzanie wsadowe puli
+Jeśli chcesz skonfigurować pulę DSVMs głównie w celu uruchomienia zadań w partii w trybie offline, możesz użyć [AI usługi partia zadań Azure](https://docs.microsoft.com/azure/batch-ai/) lub [partii zadań Azure](https://docs.microsoft.com/azure/batch/) usługi. Ten artykuł dotyczy AI usługi partia zadań Azure.
 
-## <a name="batch-processing-pool"></a>Pula przetwarzania wsadowego
-Jeśli chcesz skonfigurować pulę DSVM głównie w celu uruchomienia zadań w partii w trybie offline, a następnie można użyć [AI usługi partia zadań Azure](https://docs.microsoft.com/azure/batch-ai/) usługi lub [partii zadań Azure](https://docs.microsoft.com/azure/batch/). 
+Edycja Ubuntu DSVM jest obsługiwany jako jeden z obrazów w AI usługi partia zadań Azure. Azure CLI lub zestaw SDK Python, w której utworzono klaster AI usługi partia zadań Azure, można określić `image` parametru i wartości `UbuntuDSVM`. Można wybrać, jaki rodzaj węzłach przetwarzania ma: oparte na procesorze Graficznym wystąpień i wystąpień tylko do Procesora, liczbę procesorów i pamięci z [szeroki wybór wystąpień maszyn wirtualnych](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) dostępnych na platformie Azure. 
 
-### <a name="azure-batch-ai"></a>Sztuczna inteligencja w usłudze Azure Batch
-Edycja Ubuntu DSVM jest obsługiwany jako jeden z obrazów w AI usługi partia zadań Azure. W wiersza polecenia platformy Azure lub zestawu SDK Python, w której utworzono klaster AI usługi partia zadań Azure, można określić ```image``` parametru i wartości ```UbuntuDSVM```. Można wybrać, jakiego rodzaju przetwarzania węzły mają — oparte na procesorze Graficznym wystąpień CPU vs tylko wystąpienia, liczba procesorów CPU, pamięć z [szeroki wybór wystąpień maszyn wirtualnych](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) dostępnych na platformie Azure. Używanie obrazu Ubuntu DSVM w partii AI oparte na procesorze Graficznym węzłów, wszystkie niezbędne sterowniki procesora GPU i głębokie uczenia struktury są preinstalowany, co pozwala zaoszczędzić wiele czasu przygotowania węzłów partii. W rzeczywistości Jeśli tworzysz na DSVM Ubuntu interaktywnego, można zauważyć, że węzły AI partii są dokładnie tego samego instalację i konfigurację środowiska. Zwykle podczas tworzenia klastra AI partii można również utworzyć udziału plików, które są instalowane przez wszystkie węzły i jest używany dla danych wejściowych i wyjściowych danych, jak również przechowywanie kodu zadania wsadowego / skrypty. 
+Gdy używasz obrazu Ubuntu DSVM w partii AI z węzłami oparte na procesorze Graficznym preinstalowany wszystkie niezbędne wersji sterowników procesora GPU i bezpośrednie uczenia struktury. Preinstalacji zapisuje wiele czasu przygotowania węzłów partii. W rzeczywistości projektujesz na DSVM Ubuntu interaktywnego, można zauważyć, że węzły AI partii są dokładnie tę samą konfigurację i Konfiguracja środowiska. 
 
-Po utworzeniu klastra AI partii, można użyć tego samego interfejsu wiersza polecenia lub zestawu SDK Python umożliwiają przesyłanie zadań do uruchomienia. Płacisz tylko za czas, który służy do uruchamiania zadań wsadowych. 
+Zwykle podczas tworzenia klastra AI partii, możesz również utworzyć udział plików, który został zainstalowany przez wszystkie węzły. Udział plików jest używany dla danych wejściowych i wyjściowych danych, jak również przechowywanie zadania wsadowego kodu/skryptów. 
 
-#### <a name="more-information"></a>Więcej informacji
-* Przewodnik krok po kroku dotyczący użycia [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/azure/batch-ai/quickstart-cli) zarządzania partii AI
-* Przewodnik krok po kroku dotyczący użycia [Python](https://docs.microsoft.com/azure/batch-ai/quickstart-python) zarządzania partii AI
-* [Partii przepisami AI](https://github.com/Azure/BatchAI) są dostępne, pokazująca, jak używać różnych AI/bezpośrednich uczenia struktury z AI partii.
+Po utworzeniu klastra AI partii, można użyć tego samego interfejsu wiersza polecenia lub zestawu SDK Python umożliwiają przesyłanie zadań do uruchomienia. Płaci się tylko czas, który służy do uruchamiania zadań wsadowych. 
+
+Aby uzyskać więcej informacji, zobacz:
+* Przewodnik krok po kroku dotyczący użycia [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/azure/batch-ai/quickstart-cli) do zarządzania partii AI
+* Przewodnik krok po kroku dotyczący użycia [Python](https://docs.microsoft.com/azure/batch-ai/quickstart-python) do zarządzania partii AI
+* [Partii przepisami AI](https://github.com/Azure/BatchAI) które pokazują, jak używać różnych AI i bezpośrednie uczenia struktury z partii AI
 
 ## <a name="interactive-vm-pool"></a>Interakcyjne puli maszyn wirtualnych
 
-Pula DSVMs interaktywne, współużytkowane przez cały AI / zespołu nauki danych pozwala użytkownikom na logowanie się do dowolnego dostępnego wystąpienia DSVM zamiast dedykowanego wystąpienia dla każdej grupy użytkowników. Dzięki temu można lepiej dostępności i bardziej efektywne wykorzystanie zasobów. 
+Pula interakcyjne maszyn wirtualnych, które są udostępniane przez cały zespół nauki AI/danych umożliwia użytkownikom zalogować się do dowolnego dostępnego wystąpienia DSVM zamiast dedykowanego wystąpienia dla każdej grupy użytkowników. Taka konfiguracja ułatwia większą dostępność i bardziej efektywne wykorzystanie zasobów. 
 
-Jest to technologia umożliwiająca tworzenie interaktywnych puli maszyn wirtualnych [zestawy skalowania maszyny wirtualnej Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/) (VMSS), która umożliwia tworzenie i zarządzanie grupy identyczne, równoważenia obciążenia i skalowanie automatyczne maszyn wirtualnych. Dzienniki użytkownika do głównej puli adresów IP lub DNS. Skala ustawioną automatycznie trasy sesji DSVM dostępne w zestawie skalowania. Ponieważ użytkownik chcieliby środowisko podobne niezależnie od maszyny Wirtualnej logowania się do, wszystkie wystąpienia maszyny wirtualnej w zestawie skalowania instaluje udostępnionego dysku sieciowego, takich jak pliki Azure lub udziału NFS. Udostępniony obszar roboczy użytkownika zwykle jest przechowywana na magazynu udostępnionego pliku, który jest zainstalowany na wszystkich wystąpień. 
+Jest to technologia, która umożliwia tworzenie interaktywnych puli maszyn wirtualnych [zestawy skalowania maszyny wirtualnej platformy Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/). Zestawy skalowania służy do tworzenia i zarządzania nimi grupa identyczne, równoważeniem obciążenia i maszyny wirtualne Skalowanie automatyczne. 
 
-Przykładowy szablon usługi Azure Resource Manager, który tworzy zestawu skali maszyny Wirtualnej z wystąpieniami Ubuntu DSVMs można znaleźć w [github](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.json). Przykładowe szablonu usługi Azure Resource Manager [pliku parametrów](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.parameters.json) jest również udostępniany w tej samej lokalizacji. 
+Użytkownik loguje się do głównej puli adresów IP lub DNS. Skala ustawioną automatycznie trasy sesji DSVM dostępne w zestawie skalowania. Ponieważ użytkownicy mają podobne środowisko niezależnie od maszyny Wirtualnej jest logowanie do, wszystkie wystąpienia maszyny wirtualnej w zestawie skalowania instalacji udostępnionego dysku sieciowego, takich jak udział plików Azure lub udziału NFS. Udostępniony obszar roboczy użytkownika zwykle jest przechowywana na magazynu udostępnionego pliku, który jest zainstalowany na wszystkich wystąpień. 
 
-Możesz utworzyć zestaw z szablonu usługi Azure Resource Manager przez określenie odpowiedniej wartości dla pliku parametrów przy użyciu interfejsu wiersza polecenia Azure skalowania maszyny Wirtualnej. 
+Przykładowy szablon usługi Azure Resource Manager, który pozwala ustawić wystąpieniami Ubuntu DSVM na skali można znaleźć [GitHub](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.json). Przykładowe [pliku parametrów](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.parameters.json) dla Menedżera zasobów Azure szablon jest w tej samej lokalizacji. 
+
+Możesz utworzyć zestaw z szablonu usługi Azure Resource Manager za pośrednictwem wartości dla pliku parametrów wiersza polecenia platformy Azure skalowania. 
 
 ```
 az group create --name [[NAME OF RESOURCE GROUP]] --location [[ Data center. For eg: "West US 2"]
 az group deployment create --resource-group  [[NAME OF RESOURCE GROUP ABOVE]]  --template-uri https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.json --parameters @[[PARAMETER JSON FILE]]
 ```
-Powyższych poleceń założono, że kopia pliku parametru o wartości określone dla swojego wystąpienia zestawu skalowania maszyny Wirtualnej, liczba wystąpień maszyn wirtualnych, wskaźników do plików Azure oraz poświadczenia dla konta magazynu będzie instalowany na każdej maszynie Wirtualnej. Plik parametr jest używany lokalnie w powyższym poleceniu. Można przekazać również wbudowanego parametrów lub monit dla nich w skrypcie.  
+Powyższych poleceniach założono, że masz:
+* Kopia pliku parametrów przy użyciu wartości określone dla swojego wystąpienia zestawu skali.
+* Liczba wystąpień maszyn wirtualnych.
+* Udostępnianie wskaźników do usługi pliki Azure.
+* Poświadczenia dla konta magazynu będzie instalowany na każdej maszynie Wirtualnej. 
 
-Szablon powyżej umożliwia SSH i Ustaw port Jupyterhub z frontonu skalowania maszyny Wirtualnej Ubuntu DSVMs puli wewnętrznej bazy danych.  Jako użytkownik po prostu logujesz się do maszyny Wirtualnej na SSH lub JupyterHub w normalnym trybie. Ponieważ wystąpień maszyn wirtualnych można skalować w lub w dół dynamicznie, każdy stan musi być zapisany w zainstalowanym udziału plików platformy Azure. Te same podejście może służyć do tworzenia puli DSVMs systemu Windows. 
+Plik parametr jest używany lokalnie w poleceniach. Można również przekazać wbudowanego parametrów lub monit dla nich w skrypcie.  
 
-[Skrypt, który instaluje pliki Azure](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Extensions/General/mountazurefiles.sh) jest również dostępna w serwisie DataScienceVM Github Azure. Oprócz instalowania plików Azure w punkcie instalacji określony w pliku parametrów, tworzy również dodatkowe linki, które znajdują się na dysku zainstalowanego w katalogu macierzystego użytkownika początkowej i katalog notesu specyficzne dla użytkownika w ramach udostępnionych plików Azure to elastyczne połączone z ```$HOME/notebooks/remote``` directory umożliwiające użytkownikowi dostępu, uruchamiania i zapisywanie ich notesów Jupyter.  Podczas tworzenia dodatkowych użytkowników na maszynie Wirtualnej, aby wskazywał każdego użytkownika roboczym Jupyter do udostępnionych plików Azure można tej samej Konwencji. 
+Powyższy szablon umożliwia SSH i portu JupyterHub z frontonu zestaw do puli zaplecza Ubuntu DSVMs skalowania. Jako użytkownik po prostu logujesz się do maszyny Wirtualnej na SSH lub JupyterHub w zwykły sposób. Ponieważ wystąpień maszyn wirtualnych można skalować w lub w dół dynamicznie, każdy stan musi być zapisany w zainstalowanym udział plików Azure. Te same podejście umożliwia utworzenie puli DSVMs systemu Windows. 
 
-Skalowania maszyny Wirtualnej Azure ustawia Skalowanie automatyczne pomocy technicznej, którym można ustawić zasady, na kiedy należy utworzyć dodatkowe wystąpienia i w obszarze co okoliczności skali wystąpień, łącznie z jej przejściem w tryb dół zero wystąpień do zapisania na chmury koszty sprzętu użycia w przypadku maszyn wirtualnych nie są używane na wszystkich . Na stronach dokumentacji zestawów skali maszyny Wirtualnej znajdują się szczegółowe informacje na temat [automatyczne skalowanie](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview).
+[Skrypt, który instaluje udział plików Azure](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Extensions/General/mountazurefiles.sh) jest również dostępna w repozytorium Azure DataScienceVM w witrynie GitHub. Skrypt instaluje udział plików Azure w punkcie instalacji określony w pliku parametrów. Skrypt tworzy również linki do zainstalowanego dysku w katalogu macierzystego użytkownika początkowej. Katalog notesu specyficzne dla użytkownika w obrębie udziału plików Azure to elastyczne połączone z `$HOME/notebooks/remote` katalogu, dzięki czemu użytkownicy mogą uzyskać dostępu, uruchamiania i zapisywać ich notesów Jupyter. Podczas tworzenia dodatkowych użytkowników na maszynie Wirtualnej, aby wskazywały roboczym Jupyter każdego użytkownika do udziału plików platformy Azure, można użyć tej samej Konwencji. 
+
+Obsługa Skalowanie automatyczne zestawach skali maszyn wirtualnych. Można ustawić reguły, kiedy należy utworzyć dodatkowe wystąpienia i kiedy skalować w dół wystąpień. Na przykład można skalować w dół zero wystąpień do zapisania na koszty użycia sprzętu chmury, gdy maszyny wirtualne nie są używane na wszystkich. Na stronach dokumentacji zestawów skali maszyny wirtualnej znajdują się szczegółowe informacje na temat [Skalowanie automatyczne](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

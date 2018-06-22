@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 9610a8b37ead976cfdfa2fed81d4d3932055ddcc
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d97e380f83cc4e5e5a2d9686a7ac8426967f4b93
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30237787"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36302203"
 ---
-# <a name="expressroute-manager"></a>ExpressRoute Manager
+# <a name="expressroute-manager"></a>Menedżer usługi ExpressRoute
 
 Korzystając z możliwości usługi Azure ExpressRoute Manager w [monitora wydajności sieci](log-analytics-network-performance-monitor.md) do monitorować wydajność między oddziałach i Azure i na trasie łączności za pośrednictwem usługi Azure ExpressRoute. Dostępne są następujące kluczowe korzyści: 
 
@@ -37,7 +37,7 @@ Aby otworzyć konfigurację monitora wydajności w sieci, otwórz [rozwiązania 
 ### <a name="configure-network-security-group-rules"></a>Konfigurowanie reguł grup zabezpieczeń sieci 
 Dla serwerów na platformie Azure, które są używane do monitorowania za pomocą Monitora wydajności w sieci należy skonfigurować reguły grupa zabezpieczeń sieci zezwalająca na ruch TCP na porcie używanym przez Monitor wydajności sieci dla transakcji syntetycznych. Domyślny port to 8084. Ta konfiguracja pozwala agentowi Operations Management Suite zainstalowanych na maszynach wirtualnych Azure do komunikowania się z lokalnymi agenta monitorowania. 
 
-Aby uzyskać więcej informacji na temat grupy NSG, zobacz [sieciowej grupy zabezpieczeń](../virtual-network/virtual-networks-create-nsg-arm-pportal.md). 
+Aby uzyskać więcej informacji na temat grup NSG, zobacz [sieciowej grupy zabezpieczeń](../virtual-network/manage-network-security-group.md). 
 
 >[!NOTE]
 > Przed kontynuowaniem w tym kroku Zainstaluj agenta programu server lokalnymi i agent serwera usługi Azure, a następnie uruchom skrypt programu EnableRules.ps1 PowerShell. 

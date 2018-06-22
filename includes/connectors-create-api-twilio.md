@@ -16,9 +16,9 @@ Poniżej przedstawiono kroki, aby zezwolić aplikacji logiki do łączenia się 
    ![](./media/connectors-create-api-twilio/twilio-0.png)
 2. Jeśli nie utworzono wszystkie połączenia z usługi Twilio, zanim będzie zostanie wyświetlony monit o podanie poświadczeń usługi Twilio. Te poświadczenia będą używane do autoryzacji aplikację logiki, aby nawiązać połączenie i dostęp do danych konta usługi Twilio:  
    ![](./media/connectors-create-api-twilio/twilio-1.png)  
-3. Będziesz potrzebować **identyfikator konta usługi Twilio** i **token dostępu usługi Twilio** z poziomu pulpitu nawigacyjnego usługi Twilio, aby zalogować się do konta usługi Twilio teraz do pobrania tych dwóch rodzajów informacji:  
+3. Będziesz potrzebować **identyfikator konta usługi Twilio** i **token dostępu usługi Twilio** z poziomu pulpitu nawigacyjnego usługi Twilio, więc Zaloguj się do konta usługi Twilio teraz do pobrania informacji o tych dwóch elementów:  
    ![](./media/connectors-create-api-twilio/twilio-2.png)  
-4. Usługi Twilio i logiki aplikacji użyj innej nazwy, aby zidentyfikować te dwa rodzaje informacji. Oto, jak należy zamapować je do okna dialogowego aplikacje logiki:![](./media/connectors-create-api-twilio/twilio-3.png)  
+4. Usługi Twilio i logiki aplikacji użyj innej nazwy, aby zidentyfikować te dwa rodzaje informacji. Oto, jak należy zamapować je do okna dialogowego aplikacje logiki: ![](./media/connectors-create-api-twilio/twilio-3.png)  
 5. Wybierz **utworzyć połączenie** przycisk:  
    ![](./media/connectors-create-api-twilio/twilio-4.png)
 6. Zwróć uwagę, utworzono połączenie i wszystko jest teraz mógł kontynuować wykonywanie innych czynności w aplikacji logiki:  

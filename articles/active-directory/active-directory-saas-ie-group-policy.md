@@ -15,12 +15,12 @@ ms.date: 10/31/2017
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a39e454bd0993f07efd1168404df453f3013e0fa
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 2d719a31700e8d693dd7edb7de603682daae14ea
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34341010"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308540"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Wdrażanie rozszerzenia Panel dostępu dla programu Internet Explorer przy użyciu zasad grupy
 Ten samouczek przedstawia sposób użycia zasad grupy można zdalnie zainstalować rozszerzenia Panel dostępu dla programu Internet Explorer na komputerach użytkowników. To rozszerzenie jest wymagane dla programu Internet Explorer, użytkownicy muszą logowanie do aplikacji, które są skonfigurowane przy użyciu [opartego na hasłach rejestracji jednokrotnej](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on).
@@ -44,7 +44,7 @@ Najpierw należy umieścić pakiet Instalatora w lokalizacji sieciowej, które s
    
     ![Otwieranie plików i usługi magazynu](./media/active-directory-saas-ie-group-policy/shares.png)
 4. Zakończenie **Kreator nowego udziału** i ustaw uprawnienia, aby upewnić się, że jest dostępny z komputerów użytkowników. [Dowiedz się więcej na temat udziałów.](https://technet.microsoft.com/library/cc753175.aspx)
-5. Pobierz następujące pakiet Instalatora systemu Microsoft Windows (plik .msi): [Extension.msi panelu dostępu](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access Panel Extension.msi)
+5. Pobierz następujące pakiet Instalatora systemu Microsoft Windows (plik .msi): [Extension.msi panelu dostępu](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
 6. Skopiuj pakiet Instalatora do odpowiedniej lokalizacji w udziale.
    
     ![Skopiuj plik MSI do udziału.](./media/active-directory-saas-ie-group-policy/copy-package.png)

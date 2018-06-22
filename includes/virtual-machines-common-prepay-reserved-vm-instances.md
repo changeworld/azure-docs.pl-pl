@@ -1,11 +1,11 @@
 ---
 ms.topic: include
-ms.openlocfilehash: 99eaa667e4c6a9d63b4cc43ada8c6e36f7365610
-ms.sourcegitcommit: 39f4911b5933f7062dcf5d57af94eab8a0740b2b
+ms.openlocfilehash: 32fdc23aded78ca491fbde2ef5c76247c56d0c4c
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/16/2018
-ms.locfileid: "35683053"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36313748"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Przedpłaty dla maszyn wirtualnych z wystąpień zastrzeżone maszyna wirtualna platformy Azure
 
@@ -24,7 +24,7 @@ Należy użyć jednej z metod opisanych poniżej, aby zidentyfikować poprawnie 
 2. Można także uzyskać dokładne informacje rozmiar maszyny Wirtualnej przy użyciu programu Powershell, usługi Azure Resource Manager lub z maszyny Wirtualnej szczegółów w portalu Azure.
 
 ## <a name="buy-a-reserved-virtual-machine-instance"></a>Kup wystąpienia zastrzeżonej maszyny wirtualnej
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz **wszystkie usługi** > **zastrzeżenia**.
 3. Wybierz **Dodaj** zakupu nowego wystąpienia zastrzeżone.
 4. Wypełnij wymagane pola. Uruchomionej maszyny Wirtualnej wystąpienia zgodnych wybrane atrybuty zakwalifikować uzyskać rabat wystąpienia zastrzeżone. Rzeczywista liczba wystąpień maszyn wirtualnych, które zawierają rabat są zależne od zakresu i ilość wybrana.

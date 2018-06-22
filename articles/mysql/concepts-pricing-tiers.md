@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 05/18/2018
-ms.openlocfilehash: bbd38380370821c749a70d59a819a84ed06458a7
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 06/21/2018
+ms.openlocfilehash: 2a71e405c36c632b7c396e2f06564aa4be9d1464
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264803"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36313304"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Bazy danych platformy Azure dla programu MySQL warstw cenowych
 
@@ -25,7 +25,7 @@ Można utworzyć bazy danych Azure MySQL serwera w jednym z trzech różnych war
 | Generowanie obliczeniowe | Gen 4, 5 Gen | Gen 4, 5 Gen | 5. generacja |
 | Rdzenie wirtualne | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
 | Ilość pamięci na vCore | 2 GB | 5 GB | 10 GB |
-| Rozmiar magazynu | 5 GB do 1 TB | 5 GB do 2 TB | 5 GB do 2 TB |
+| Rozmiar magazynu | 5 GB do 1 TB | 5 GB do 4 TB | 5 GB do 4 TB |
 | Typ magazynu | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | Okres przechowywania kopii zapasowych bazy danych | 7-35 dni | 7-35 dni | 7-35 dni |
 
@@ -37,7 +37,7 @@ Wybierz warstwę cenową, skorzystaj z poniższej tabeli jako punktu wyjścia.
 | Ogólne zastosowanie | Większość obciążeń biznesowych, które wymagają zrównoważonym obliczeniową i pamięć z skalowalne przepływność we/wy. Przykłady obejmują serwery hostingu sieci web i aplikacji mobilnych i inne aplikacje przedsiębiorstwa.|
 | Pamięć | Obciążeń wysokiej wydajności bazy danych, które wymagają wydajności w pamięci dla szybsze przetwarzanie transakcji i wyższe współbieżności. Przykładami serwerów na potrzeby przetwarzania danych w czasie rzeczywistym i wysokiej wydajności aplikacji transakcyjnej lub analitycznych.|
 
-Po utworzeniu serwera liczba vCores można zmienić w górę lub w dół (w ramach tej samej warstwie cenowej) w ciągu kilku sekund. Ponadto można niezależnie dostosować ilość pamięci masowej w górę i okres przechowywania kopii zapasowych w górę lub w dół bez przestojów aplikacji. Po utworzeniu serwera nie można zmienić warstwy cenowej lub typ magazynu kopii zapasowej. Aby uzyskać więcej informacji, zobacz [zasoby są skalowane](#scale-resources) sekcji.
+Po utworzeniu serwera liczbę vCores, generowanie sprzętu i cenach warstwy (z wyjątkiem do i z Basic) można zmienić w górę lub w dół w ciągu kilku sekund. Ponadto można niezależnie dostosować ilość pamięci masowej w górę i okres przechowywania kopii zapasowych w górę lub w dół bez przestojów aplikacji. Typ magazynu kopii zapasowej nie można zmienić po utworzeniu serwera. Aby uzyskać więcej informacji, zobacz [zasoby są skalowane](#scale-resources) sekcji.
 
 ## <a name="compute-generations-and-vcores"></a>Generacje obliczeń i vCores
 
@@ -48,7 +48,7 @@ Obliczeń zasoby są dostarczane jako vCores, reprezentujące Procesora logiczne
 | Środkowe stany USA | X |  |
 | Wschodnie stany USA | X | X |
 | Wschodnie stany USA 2 | X | X |
-| Środkowo-północne stany USA | X |  |
+| Środkowo-północne stany USA | X | X |
 | Środkowo-południowe stany USA | X | X |
 | Zachodnie stany USA | X | X |
 | Zachodnie stany USA 2 |  | X |
@@ -59,7 +59,7 @@ Obliczeń zasoby są dostarczane jako vCores, reprezentujące Procesora logiczne
 | Europa Zachodnia |  | X |
 | Zachodnie Zjednoczone Królestwo |  | X |
 | Południowe Zjednoczone Królestwo |  | X |
-| Azja Wschodnia | X |  |
+| Azja Wschodnia | X | X |
 | Azja Południowo-Wschodnia | X | X |
 | Australia Wschodnia |  | X |
 | Australia Południowo-Wschodnia |  | X |
@@ -77,9 +77,9 @@ Zainicjowanie obsługi magazynu jest pojemności magazynu dostępnych do bazy da
 |    | **Podstawowa** | **Ogólnego przeznaczenia** | **Zoptymalizowana pod kątem pamięci** |
 |:---|:----------|:--------------------|:---------------------|
 | Typ magazynu | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
-| Rozmiar magazynu | 5 GB do 1 TB | 5 GB do 2 TB | 5 GB do 2 TB |
+| Rozmiar magazynu | 5 GB do 1 TB | 5 GB do 4 TB | 5 GB do 4 TB |
 | Rozmiar przyrost magazynu | 1 GB | 1 GB | 1 GB |
-| Operacje wejścia/wyjścia | Zmienna |3 IOPS/GB<br/>Min 100 IOPS | 3 IOPS/GB<br/>Min 100 IOPS |
+| Operacje wejścia/wyjścia | Zmienna |3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalna liczba IOPS 7500 | 3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalna liczba IOPS 7500 |
 
 Podczas i po utworzeniu serwera można dodać dodatkowej pojemności. Warstwa podstawowa nie ma gwarancji IOPS. Ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci, warstw cenowych IOPS skalowania o rozmiarze zainicjowanego magazynu w stosunku 3:1.
 
@@ -97,9 +97,9 @@ Usługa automatycznie wykonuje kopie zapasowe serwera. Minimalny okres przechowy
 
 ## <a name="scale-resources"></a>Skalowanie zasobów
 
-Po utworzeniu serwera niezależnie zmienić vCores, ilość miejsca w magazynie i okres przechowywania kopii zapasowych. Po utworzeniu serwera nie można zmienić warstwy cenowej lub typ magazynu kopii zapasowej. Liczba vCores można skalować w górę lub w dół w ramach tej samej warstwie cenowej. Okres przechowywania kopii zapasowych można skalować w górę lub w dół od 7 do 35 dni. Tylko można zwiększyć rozmiar magazynu. Skalowanie zasobów można zrobić za pomocą portalu lub wiersza polecenia platformy Azure. Na przykład skalowania za pomocą interfejsu wiersza polecenia Azure, zobacz [monitora i skalowania bazy danych Azure MySQL serwera przy użyciu interfejsu wiersza polecenia Azure](scripts/sample-scale-server.md).
+Po utworzeniu serwera niezależnie można zmienić vCores, generowanie sprzętu, warstwa cenowa (z wyjątkiem do i z Basic), ilość pamięci masowej, a okres przechowywania kopii zapasowych. Typ magazynu kopii zapasowej nie można zmienić po utworzeniu serwera. Liczba vCores można skalować w górę lub w dół. Okres przechowywania kopii zapasowych można skalować w górę lub w dół od 7 do 35 dni. Tylko można zwiększyć rozmiar magazynu. Skalowanie zasobów można zrobić za pomocą portalu lub wiersza polecenia platformy Azure. Na przykład skalowania za pomocą interfejsu wiersza polecenia Azure, zobacz [monitora i skalowania bazy danych Azure MySQL serwera przy użyciu interfejsu wiersza polecenia Azure](scripts/sample-scale-server.md).
 
-Jeśli zmienisz numer vCores z nowej alokacji obliczeniowe jest utworzona kopia oryginalnego serwera. Po skonfigurowaniu i uruchomieniu nowego serwera połączeń są przełączono się na nowym serwerze. W momencie gdy system przełącza się na nowym serwerze można ustalić bez nowych połączeń, a wszystkie niezatwierdzone transakcje są wycofywane. To okno jest różny, ale w większości przypadków jest mniej niż minutę.
+Jeśli zmienisz numer vCores generowania sprzętu lub warstwy cenowej kopię oryginalny serwer jest tworzony z nowej alokacji obliczeń. Po skonfigurowaniu i uruchomieniu nowego serwera połączeń są przełączono się na nowym serwerze. W momencie gdy system przełącza się na nowym serwerze można ustalić bez nowych połączeń, a wszystkie niezatwierdzone transakcje są wycofywane. To okno jest różny, ale w większości przypadków jest mniej niż minutę.
 
 Skalowanie magazynu i zmienić okres przechowywania kopii zapasowych to PRAWDA operacje online. Bez przestojów nie istnieje i nie ma wpływu na aplikację. IOPS skalowania o rozmiarze zainicjowanego magazynu, można zwiększyć IOPS dostępne z serwerem, skalując w górę magazynu.
 

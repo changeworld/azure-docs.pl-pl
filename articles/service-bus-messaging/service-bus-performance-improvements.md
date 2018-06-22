@@ -5,27 +5,22 @@ services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: e756c15d-31fc-45c0-8df4-0bca0da10bb2
 ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 06/05/2018
+ms.date: 06/14/2018
 ms.author: sethm
-ms.openlocfilehash: e6762d988da7d34893852505d8ce0fd30622eaaf
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: e168dcab182f9eb30291b58bdde252ec66d18e8c
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802548"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301805"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Najlepsze rozwiązania dotyczące poprawy wydajności przy użyciu usługi magistrali komunikatów
 
 W tym artykule opisano sposób użycia usługi Azure Service Bus w celu zoptymalizowania wydajności podczas wymiany komunikatów obsługiwanych przez brokera. Pierwsza część w tym artykule opisano różne mechanizmy, które są oferowane w celu zwiększenia wydajności. Druga sekcja zawiera wskazówki dotyczące sposobu używania usługi Service Bus w sposób, który można zaoferować najlepszą wydajność w danym scenariuszu.
 
-W tym temacie termin "klient" oznacza każda jednostka, która uzyskuje dostęp do usługi Service Bus. Klient może zająć roli nadawcy i adresata. Termin "sender" jest używana dla usługi Service Bus kolejka lub temat klienta, który wysyła wiadomości do kolejki lub temat subskrypcji usługi Service Bus. Termin "odbiorcy" odnosi się do usługi Service Bus kolejki lub subskrypcji klienta, który odbiera komunikaty z kolejki usługi Service Bus lub subskrypcji.
+W tym artykule określenie "client" odnosi się do dowolnej jednostki, który uzyskuje dostęp do usługi Service Bus. Klient może zająć roli nadawcy i adresata. Termin "sender" jest używana dla usługi Service Bus kolejka lub temat klienta, który wysyła wiadomości do kolejki lub temat subskrypcji usługi Service Bus. Termin "odbiorcy" odnosi się do usługi Service Bus kolejki lub subskrypcji klienta, który odbiera komunikaty z kolejki usługi Service Bus lub subskrypcji.
 
 Tych sekcjach przedstawiono kilka pojęcia, które używa usługi Service Bus, aby ułatwić wydajnością.
 
@@ -37,7 +32,7 @@ Usługa Service Bus umożliwia klientom wysyłanie i odbieranie wiadomości za p
 2. Protokół (SBMP) do obsługi komunikatów usługi Service Bus
 3. HTTP
 
-Protokół AMQP i SBMP są bardziej wydajne, ponieważ utrzymują one połączenia usługi Service Bus, tak długo, jak istnieje fabryki obsługi komunikatów. Implementuje również przetwarzanie wsadowe i Odczyt z wyprzedzeniem. Chyba że jawnie wspomniano, całej zawartości w tym temacie założono użycie protokołu AMQP lub SBMP.
+Protokół AMQP i SBMP są bardziej wydajne, ponieważ utrzymują one połączenia usługi Service Bus, tak długo, jak istnieje fabryki obsługi komunikatów. Implementuje również przetwarzanie wsadowe i Odczyt z wyprzedzeniem. Chyba że jawnie wspomniano, cała zawartość w tym artykule przyjęto założenie użycia protokołu AMQP lub SBMP.
 
 ## <a name="reusing-factories-and-clients"></a>Ponowne wykorzystywanie fabryk i klientów
 
@@ -45,13 +40,13 @@ Klient usługi Service Bus obiekty, takie jak [QueueClient] [ QueueClient] lub [
 
 ## <a name="concurrent-operations"></a>Równoczesne wykonywanie operacji
 
-Wykonywanie operacji (wysyłanie, odbierania, usuwanie, itp.) dopiero po pewnym czasie. Teraz obejmuje przetwarzanie operacji przez usługi Service Bus, oprócz opóźnienia żądania i odpowiedzi. Aby zwiększyć liczbę operacji na czas, operacji musi być wykonywany współbieżnie. Ta zgodzie można uzyskać na kilka różnych sposobów:
+Wykonywanie operacji (wysyłanie, odbierania, usuwanie, itp.) dopiero po pewnym czasie. Teraz obejmuje przetwarzanie operacji przez usługi Service Bus, oprócz opóźnienia żądania i odpowiedzi. Aby zwiększyć liczbę operacji na czas, operacji musi być wykonywany współbieżnie. 
 
-* **Operacje asynchroniczne**: klient planuje operacji przez wykonanie operacji asynchronicznych. Przy następnym żądaniu została uruchomiona przed zakończeniem poprzedniego żądania. Poniższy fragment kodu jest przykładem operacja asynchronicznego wysyłania:
+Klient planuje jednoczesnych operacji za wykonywanie operacji asynchronicznych. Przy następnym żądaniu została uruchomiona przed zakończeniem poprzedniego żądania. Poniższy fragment kodu jest przykładem operacja asynchronicznego wysyłania:
   
  ```csharp
-  BrokeredMessage m1 = new BrokeredMessage(body);
-  BrokeredMessage m2 = new BrokeredMessage(body);
+  Message m1 = new BrokeredMessage(body);
+  Message m2 = new BrokeredMessage(body);
   
   Task send1 = queueClient.SendAsync(m1).ContinueWith((t) => 
     {
@@ -65,25 +60,14 @@ Wykonywanie operacji (wysyłanie, odbierania, usuwanie, itp.) dopiero po pewnym 
   Console.WriteLine("All messages sent");
   ```
   
-  Następujący kod jest przykładem asynchronicznej operacji odbierania:
+  Następujący kod jest przykładem asynchronicznej operacji odbioru. Zobacz pełną program [tutaj](https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.Azure.ServiceBus/SendersReceiversWithQueues):
   
   ```csharp
-  Task receive1 = queueClient.ReceiveAsync().ContinueWith(ProcessReceivedMessage);
-  Task receive2 = queueClient.ReceiveAsync().ContinueWith(ProcessReceivedMessage);
-  
-  Task.WaitAll(receive1, receive2);
-  Console.WriteLine("All messages received");
-  
-  async void ProcessReceivedMessage(Task<BrokeredMessage> t)
-  {
-    BrokeredMessage m = t.Result;
-    Console.WriteLine("{0} received", m.Label);
-    await m.CompleteAsync();
-    Console.WriteLine("{0} complete", m.Label);
-  }
-  ```
+  var receiver = new MessageReceiver(connectionString, queueName, ReceiveMode.PeekLock);
+  var doneReceiving = new TaskCompletionSource<bool>();
 
-* **Wiele fabryk**: wszystkich klientów (nadawców oprócz odbiorniki), które zostały utworzone przy użyciu tej samej fabryki udostępniania jednego połączenia TCP. Przepustowość maksymalna wiadomości jest ograniczona liczba operacji, które może przejść przez to połączenie TCP. Przepływność, którą można uzyskać za pomocą pojedynczego fabryki różny czasami opóźnienia TCP i rozmiar wiadomości. Aby uzyskać wyższy przepływności, użyj wielu fabryki obsługi komunikatów.
+  receiver.RegisterMessageHandler(
+  ```
 
 ## <a name="receive-mode"></a>Tryb odbierania
 
@@ -108,7 +92,7 @@ mfs.NetMessagingTransportSettings.BatchFlushInterval = TimeSpan.FromSeconds(0.05
 MessagingFactory messagingFactory = MessagingFactory.Create(namespaceUri, mfs);
 ```
 
-Przetwarzanie wsadowe nie wpływa na liczbę rozliczeniowy operacji obsługi wiadomości i jest dostępna tylko dla protokołu klienta usługi Service Bus. Protokół HTTP nie obsługuje przetwarzanie wsadowe.
+Przetwarzanie wsadowe nie wpływa na liczbę rozliczeniowy operacji obsługi wiadomości i jest dostępny tylko dla usługi Service Bus klienta protokołu za pomocą [Microsoft.ServiceBus.Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) biblioteki. Protokół HTTP nie obsługuje przetwarzanie wsadowe.
 
 ## <a name="batching-store-access"></a>Przetwarzanie wsadowe dostęp do sklepu
 
@@ -135,7 +119,7 @@ Dostęp do sklepu wsadów nie wpływa na liczbę rozliczeniowy operacji obsługi
 
 Gdy komunikat jest prefetched, usługa blokuje prefetched wiadomości. Z blokadą prefetched komunikat nie może zostać odebrany przez inny odbiornik. Jeśli odbiornik nie może ukończyć komunikatu przed upływem blokady, komunikat staną się dostępne dla innych odbiorców. Prefetched kopia wiadomości pozostaje w pamięci podręcznej. Odbiornik, który wykorzystuje wygasłe buforowanej kopii otrzyma Wystąpił wyjątek podczas próby wykonania tej wiadomości. Domyślnie blokady komunikat wygasa po 60 sekund. Ta wartość może zostać rozszerzony do 5 minut. Aby zapobiec wykorzystywaniu komunikaty wygasłe, rozmiar pamięci podręcznej zawsze powinna być krótsza niż liczba wiadomości, które mogą być używane przez klienta w ramach interwał limitu czasu blokady.
 
-Korzystając z okresu ważności blokady domyślne 60 sekund, wartość jest dobrą [SubscriptionClient.PrefetchCount] [ SubscriptionClient.PrefetchCount] 20 razy maksymalną przetwarza stawki wszystkich odbiorników fabryki. Na przykład fabrykę tworzy odbiorniki trzy, a każdy odbiorca może przetwarzać maksymalnie 10 komunikatów na sekundę. Liczba pobierania z wyprzedzeniem nie może przekraczać 20 X 3 X 10 = 600. Domyślnie [QueueClient.PrefetchCount] [ QueueClient.PrefetchCount] jest ustawiona na 0, co oznacza, że pobrane żadnych dodatkowych komunikatów z usługi.
+Korzystając z okresu ważności blokady domyślne 60 sekund, wartość jest dobrą [PrefetchCount] [ SubscriptionClient.PrefetchCount] 20 razy maksymalną przetwarza stawki wszystkich odbiorników fabryki. Na przykład fabrykę tworzy odbiorniki trzy, a każdy odbiorca może przetwarzać maksymalnie 10 komunikatów na sekundę. Liczba pobierania z wyprzedzeniem nie może przekraczać 20 X 3 X 10 = 600. Domyślnie [PrefetchCount] [ QueueClient.PrefetchCount] jest ustawiona na 0, co oznacza, że pobrane żadnych dodatkowych komunikatów z usługi.
 
 Odczyt z wyprzedzeniem wiadomości zwiększa ogólną przepustowość kolejki lub subskrypcji, ponieważ zmniejsza ogólną liczbę operacje dotyczące komunikatów lub rund. Pobieranie pierwszej wiadomości, jednak będzie trwało dłużej (ze względu na rozmiar komunikatu zwiększona). Odbieranie komunikatów prefetched będzie przebiegać szybciej, ponieważ komunikaty te zostały już pobrane przez klienta.
 
@@ -158,12 +142,12 @@ Jeśli wiadomość zawierającą krytyczne informacje, które nie mogą być utr
 > [!NOTE]
 > Jednostki ekspresowe nie obsługuje transakcji.
 
-## <a name="use-of-partitioned-queues-or-topics"></a>Korzystanie z podzielonym na partycje kolejki i tematy
+## <a name="partitioned-queues-or-topics"></a>Partycjonowane kolejki i tematy
 
 Wewnętrznie Usługa Service Bus używa tego samego węzła i magazynu do obsługi komunikatów do przetwarzania i przechowywania wszystkie komunikaty dla jednostki obsługi komunikatów (kolejki lub tematu). A [partycjonowanej kolejka lub temat](service-bus-partitioning.md), z drugiej strony, będzie rozmieszczona na wielu węzłach i wiadomości magazynów. Partycjonowane kolejek i tematów nie tylko uzyskanie wyższej przepustowości niż regularne kolejek i tematów, charakteryzują wysokiej dostępności. Aby utworzyć partycjonowane jednostki, ustaw [parametr EnablePartitioning] [ EnablePartitioning] właściwości **true**, jak pokazano w poniższym przykładzie. Aby uzyskać więcej informacji na temat partycjonowane jednostki, zobacz [partycjonowane jednostki do obsługi komunikatów][Partitioned messaging entities].
 
 > [!NOTE]
-> Partycjonowane jednostki są już obsługiwane w [warstwy Premium](service-bus-premium-messaging.md). 
+> Partycjonowane jednostki są nieobsługiwane w [warstwy Premium](service-bus-premium-messaging.md). 
 
 ```csharp
 // Create partitioned queue.
@@ -172,7 +156,7 @@ qd.EnablePartitioning = true;
 namespaceManager.CreateQueue(qd);
 ```
 
-## <a name="use-of-multiple-queues"></a>Korzystanie z wielu kolejek
+## <a name="multiple-queues"></a>Wielu kolejek
 
 Jeśli nie jest możliwe za pomocą partycjonowanego kolejki lub tematu lub spodziewane obciążenie nie mogą być obsługiwane przez partycjonowanej kolejka lub temat, należy użyć wiele jednostek obsługi komunikatów. Korzystając z wielu jednostek, Utwórz dedykowane klienta dla każdej jednostki, zamiast używać tego samego klienta dla wszystkich obiektów.
 

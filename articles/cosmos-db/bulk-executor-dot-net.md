@@ -1,6 +1,6 @@
 ---
-title: Za pomocą biblioteki BulkExecutor .NET do wykonywania operacji zbiorczej w usłudze Azure DB rozwiązania Cosmos | Dokumentacja firmy Microsoft
-description: Biblioteka BulkExecutor .NET Azure rozwiązania Cosmos DB służy do importowania zbiorczego i aktualizowanie dokumentów do bazy danych Azure rozwiązania Cosmos kolekcji.
+title: Przy użyciu biblioteki .NET Moduł wykonujący zbiorczo do wykonywania operacji zbiorczej w usłudze Azure DB rozwiązania Cosmos | Dokumentacja firmy Microsoft
+description: Azure rozwiązania Cosmos DB zbiorczego Moduł wykonujący .NET biblioteka służy do importowania zbiorczego i aktualizowanie dokumentów do bazy danych Azure rozwiązania Cosmos kolekcji.
 keywords: Moduł wykonujący zbiorczego .net
 services: cosmos-db
 author: tknandu
@@ -10,16 +10,16 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 0e8c5f9a848eaa1543ce9d58895b035e23d9f335
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b09fd415c442c1e605987a6b25fd938ce04ce5c1
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611164"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300775"
 ---
-# <a name="using-bulkexecutor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Za pomocą biblioteki BulkExecutor .NET do wykonywania operacji zbiorczej w usłudze Azure DB rozwiązania Cosmos
+# <a name="using-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Przy użyciu biblioteki .NET Moduł wykonujący zbiorczo do wykonywania operacji zbiorczej w usłudze Azure DB rozwiązania Cosmos
 
-W tym samouczku instrukcje na temat używania biblioteki BulkExecutor .NET DB rozwiązania Cosmos Azure do importowania i aktualizowania dokumentów do kolekcji bazy danych Azure rozwiązania Cosmos. Aby dowiedzieć się więcej o BulkExecutor biblioteki i jej można wykorzystać ogromnej przepływności i magazynu, zobacz [Przegląd biblioteki BulkExecutor](bulk-executor-overview.md) artykułu. Ten samouczek przeprowadzi użytkownika przykładową aplikację .NET zbiorcze importów losowo generowany dokumentów w kolekcji usługi Azure DB rozwiązania Cosmos. Po zaimportowaniu, pokazuje sposób można zbiorczego aktualizacji importowanych danych, określając poprawki jako operacje do wykonania w polach określonego dokumentu.
+W tym samouczku instrukcje przy użyciu modułu wykonującego zbiorczego Azure DB rozwiązania Cosmos biblioteki .NET do importowania i aktualizowania dokumentów do kolekcji bazy danych Azure rozwiązania Cosmos. Informacje na temat zbiorczego Moduł wykonujący biblioteki i jej można wykorzystać ogromnej przepływności i magazynu, zobacz [Przegląd biblioteki Moduł wykonujący zbiorczego](bulk-executor-overview.md) artykułu. Ten samouczek przeprowadzi użytkownika przykładową aplikację .NET zbiorcze importów losowo generowany dokumentów w kolekcji usługi Azure DB rozwiązania Cosmos. Po zaimportowaniu, pokazuje sposób można zbiorczego aktualizacji importowanych danych, określając poprawki jako operacje do wykonania w polach określonego dokumentu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -27,7 +27,7 @@ W tym samouczku instrukcje na temat używania biblioteki BulkExecutor .NET DB ro
 
 * Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 
-* Możesz [bezpłatnie wypróbować usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) bez subskrypcji platformy Azure — nie wymaga to opłat ani zobowiązań. Można użyć [Azure rozwiązania Cosmos DB emulatora](https://docs.microsoft.com/azure/cosmos-db/local-emulator) z `https://localhost:8081` identyfikatora URI. Klucz podstawowy znajduje się w [uwierzytelniania żądań](local-emulator.md#authenticating-requests).
+* Możesz [bezpłatnie wypróbować usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) bez subskrypcji platformy Azure — nie wymaga to opłat ani zobowiązań. Można użyć [Azure rozwiązania Cosmos DB emulatora](https://docs.microsoft.com/azure/cosmos-db/local-emulator) z `https://localhost:8081` identyfikatora URI. Klucz podstawowy został podany w sekcji [Uwierzytelnianie żądań](local-emulator.md#authenticating-requests).
 
 * Utwórz konto interfejsu API Azure rozwiązania Cosmos bazy danych SQL przy użyciu procedury opisanej w [Tworzenie konta bazy danych](create-sql-api-dotnet.md#create-a-database-account) artykułu szybkiego startu .NET. 
 
@@ -166,7 +166,7 @@ Należy zaktualizować istniejące dokumenty przy użyciu interfejsu API BulkUpd
     
 ## <a name="performance-tips"></a>Porady dotyczące wydajności 
 
-Należy wziąć pod uwagę następujące kwestie w celu poprawy wydajności podczas korzystania z biblioteki BulkExecutor:
+Korzystając z biblioteki Moduł wykonujący zbiorczego, należy wziąć pod uwagę następujące kwestie w celu poprawy wydajności:
 
 * Aby uzyskać najlepszą wydajność uruchomienie aplikacji z maszyny wirtualnej platformy Azure, który znajduje się w tym samym regionie co regionu zapisu konta DB rozwiązania Cosmos.  
 
@@ -196,4 +196,4 @@ Należy wziąć pod uwagę następujące kwestie w celu poprawy wydajności podc
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby poznać szczegóły pakietu Nuget i wersji biblioteki BulkExecutor .net, zobacz[szczegóły BulkExecutor SDK](sql-api-sdk-bulk-executor-dot-net.md). 
+* Aby poznać szczegóły pakietu Nuget i biblioteki .net Moduł wykonujący zbiorcze informacje o wersji, zobacz[zbiorcze Szczegóły zestawu SDK modułu wykonującego](sql-api-sdk-bulk-executor-dot-net.md). 

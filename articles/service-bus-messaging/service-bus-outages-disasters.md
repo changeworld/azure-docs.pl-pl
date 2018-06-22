@@ -6,18 +6,18 @@ author: sethmanheim
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/14/2018
 ms.author: sethm
-ms.openlocfilehash: 38aaf6d7ddad1527e113efa502ae47b82165b079
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 1d960349b50e2618365fd085cba7b3e55fa53874
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802310"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301720"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Najlepsze rozwiązania dotyczące izolacji aplikacji przed awariami usługi Service Bus i awarii
 
-Kluczowych aplikacji musi działać w sposób ciągły, nawet obecności nieplanowanych przestojów lub awarii. W tym temacie opisano metod, które służy do ochrony aplikacji usługi Service Bus względem potencjalnych awarii usługi lub po awarii.
+Kluczowych aplikacji musi działać w sposób ciągły, nawet obecności nieplanowanych przestojów lub awarii. W tym artykule opisano metod, które służy do ochrony aplikacji usługi Service Bus względem potencjalnych awarii usługi lub po awarii.
 
 Awaria jest zdefiniowany jako tymczasowej niedostępności usługi Azure Service Bus. Awaria może mieć wpływ na niektórych składników usługi Service Bus, takich jak magazynie obsługi komunikatów, lub nawet całe centrum danych. Po problem został rozwiązany, usługi Service Bus znowu dostępne. Zazwyczaj awarii nie powoduje utraty wiadomości lub innych danych. Przykładem awarii składnika jest niedostępności określonym magazynie obsługi komunikatów. Przykład awaria sieci centrum danych jest awarii zasilania w centrum danych lub przełącznik sieciowy błędny centrum danych. Awaria może trwać od kilku minut do kilku dni.
 
@@ -78,6 +78,17 @@ Korzystając z pasywnym replikacji, w następujących scenariuszach komunikaty m
 
 Usługa Service Bus obsługuje odzyskiwania po awarii geograficznie i replikacja geograficzna, na poziomie przestrzeni nazw. Aby uzyskać więcej informacji, zobacz [Azure Service Bus geograficznie-odzyskiwaniem](service-bus-geo-dr.md). Funkcja odzyskiwania po awarii, dostępna dla [warstwy Premium](service-bus-premium-messaging.md) tylko implementuje odzyskiwania po awarii metadanych i zależy od usługi przestrzenie nazw odzyskiwania po awarii podstawowego i pomocniczego.
 
+## <a name="availability-zones-preview"></a>Dostępność strefy (wersja zapoznawcza)
+
+Warstwy Premium magistrali usługi obsługuje [stref dostępności](../availability-zones/az-overview.md), zapewniając izolowane błędów lokalizacji w obrębie regionu platformy Azure. 
+
+> [!NOTE]
+> Podgląd stref dostępności jest obsługiwana tylko w programie **środkowe stany USA**, **wschodnie stany USA 2**, i **Francja centralnej** regionów.
+
+Dostępność strefy można włączyć w nowej przestrzeni nazw, przy użyciu portalu Azure. Usługa Service Bus nie obsługuje migracji istniejącej przestrzeni nazw. Nie można wyłączyć nadmiarowość strefy po jej włączeniu na przestrzeni nazw.
+
+![1][]
+
 ## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej na temat odzyskiwania po awarii, zobacz następujące artykuły:
 
@@ -93,3 +104,5 @@ Aby dowiedzieć się więcej na temat odzyskiwania po awarii, zobacz następują
 [Geo-replication with Service Bus Brokered Messages]: https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoReplication
 [Azure SQL Database Business Continuity]: ../sql-database/sql-database-business-continuity.md
 [Azure resiliency technical guidance]: /azure/architecture/resiliency
+
+[1]: ./media/service-bus-outages-disasters/az.png

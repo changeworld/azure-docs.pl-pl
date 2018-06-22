@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2018
+ms.date: 06/20/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19cdf81a355bae4d59cb49c1c588b995b040309b
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 12880ba3aa918873343ee8eb98e92130106e8362
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32310540"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36304451"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Limity przydziału i limity usługi Batch
 
@@ -51,14 +51,10 @@ Jeśli utworzono konto usługi partia zadań z trybem przydziału puli ustawion�
 | [Równoczesnych zadań](batch-parallel-node-tasks.md) na węzeł obliczeń |4 x liczba rdzeni węzła |
 | [Aplikacje](batch-application-packages.md) na konto usługi partia zadań |20 |
 | Pakiety aplikacji na aplikację |40 |
-| Rozmiar pakietu aplikacji (wszystkie) |Około 195GB<sup>1</sup> |
-| Maksymalna początkowy rozmiar zadań | znaki 32768<sup>2</sup> |
-| Zadanie maksymalny okres istnienia | 7 dni<sup>3</sup> |
+| Zadanie maksymalny okres istnienia | 7 dni<sup>1</sup> |
 | Węzły obliczeniowe komunikacji między węzłami włączone puli | 100 |
 
-<sup>1</sup> limit bloku maksymalny rozmiar obiektu blob magazynu azure<br />
-<sup>2</sup> obejmuje plików zasobów i zmienne środowiskowe<br />
-<sup>3</sup> maksymalny okres istnienia zadania, gdy jest ona dodawana do zadania, po jego ukończeniu, wynosi 7 dni. Ukończone zadania podrzędne są utrwalone przez czas nieokreślony. Dane dla zadań podrzędnych nieukończonych w ciągu maksymalnego okresu istnienia nie są dostępne.
+<sup>1</sup> maksymalny okres istnienia zadania, gdy jest ona dodawana do zadania, po jego ukończeniu, wynosi 7 dni. Ukończone zadania podrzędne są utrwalone przez czas nieokreślony. Dane dla zadań podrzędnych nieukończonych w ciągu maksymalnego okresu istnienia nie są dostępne.
 
 
 ## <a name="view-batch-quotas"></a>Przydziały partii widoku

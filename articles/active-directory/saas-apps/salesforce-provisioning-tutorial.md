@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: be6e5fb83ea88ce30b64f5e1eb53422f0404410f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: bbf4e2a35667484fea66a1888cdfc0184a806583
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229657"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308320"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usług Salesforce dla użytkownika automatycznego inicjowania obsługi administracyjnej.
 
@@ -95,7 +95,7 @@ Celem tej sekcji jest przedstawiają sposób włączania Inicjowanie obsługi u�
 
 10. Skopiuj token, przejdź do okna usługi Azure AD i wklej ją do **klucz tajny tokenu** pola.
 
-11. **Adres URL dzierżawy** powinien zostać wprowadzony, jeśli wystąpienie usług Salesforce jest w chmurze dla instytucji rządowych Salesforce. W przeciwnym razie wartość jest opcjonalna. Wprowadź adres URL dzierżawy w formacie https://your-instance.my.salesforce.com, zastępując Twoje wystąpienie nazwy wystąpienia usług Salesforce.
+11. **Adres URL dzierżawy** powinien zostać wprowadzony, jeśli wystąpienie usług Salesforce jest w chmurze dla instytucji rządowych Salesforce. W przeciwnym razie wartość jest opcjonalna. Wprowadź adres URL dzierżawy w formacie "https://\<Twoje wystąpienie\>. my.salesforce.com," Zastępowanie \<Twoje wystąpienie\> o nazwie wystąpienia usług Salesforce.
 
 12. W portalu Azure kliknij **Testuj połączenie** zapewniające usługi Azure AD mogą łączyć się z aplikacji Salesforce.
 

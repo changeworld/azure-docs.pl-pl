@@ -2,23 +2,18 @@
 title: Azure awarii usługi Service Bus geograficznie | Dokumentacja firmy Microsoft
 description: Jak używać regionów geograficznych do trybu failover i odzyskiwania po awarii w Azure Service Bus
 services: service-bus-messaging
-documentationcenter: ''
-author: christianwolf42
+author: sethmanheim
 manager: timlt
-editor: ''
 ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 06/14/2018
 ms.author: sethm
-ms.openlocfilehash: 652adcf78add8ae699a7f827a915e90ce1694c61
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b43c5bd6ff6b386e1a2ee0b5e3ae8ec8fa61fb4b
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30237349"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301523"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure awarii usługi Service Bus Geo
 
@@ -54,7 +49,7 @@ Poniższa sekcja zawiera omówienie procesu pracy awaryjnej i wyjaśniono, jak s
 
 ![1][]
 
-### <a name="setup"></a>Konfiguracja
+### <a name="setup"></a>Konfigurowanie
 
 Należy najpierw utworzyć lub użyj istniejącej głównej przestrzeni nazw i nowej dodatkowej przestrzeni nazw, a następnie skojarzyć dwa. Połączenie umożliwia alias, który służy do połączenia. Ponieważ używasz aliasu, nie trzeba zmienić parametry połączenia. Tylko nowych przestrzeni nazw można dodać do Twojej pracy awaryjnej parowania. Na koniec należy dodać pewne aspekty monitorowania do wykrywania, czy tryb failover jest konieczne. W większości przypadków usługa jest częścią dużych ekosystem, w związku z tym automatycznego przechodzenia w tryb failover są rzadko możliwe, jak bardzo często trybu failover musi zostać wykonana w pozostałych podsystemu lub infrastruktury.
 
@@ -68,7 +63,7 @@ Można zautomatyzować tryb failover z systemów monitorowania lub z niestandard
 
 Zainicjuj tryb failover, wymagane są dwa kroki:
 
-1. Inny awarii, ma możliwość pracy awaryjnej ponownie. W związku z tym ustawienie innej przestrzeni nazw pasywnego i zaktualizuj parowanie. 
+1. W przypadku awarii innego chcesz mieć możliwość pracy awaryjnej ponownie. W związku z tym ustawienie innej przestrzeni nazw pasywnego i zaktualizuj parowanie. 
 
 2. Ściągać komunikaty z poprzedniego głównej przestrzeni nazw, gdy jest ona dostępna ponownie. Po wykonaniu tej tej przestrzeni nazw używany do regularnych wiadomości poza ustawień odzyskiwania z magazynu geograficznie lub Usuń stare głównej przestrzeni nazw.
 
@@ -89,7 +84,7 @@ Jeśli masz scenariusz, w którym nie można zmienić połączeń producenci i k
 
 [Przykłady z witryny GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/) pokazują, jak skonfigurować i zainicjuj tryb failover. Te przykłady pokazują następujące kwestie:
 
-- Przykładowe .net i ustawienia wymagane w usłudze Azure Active Directory do użycia usługi Azure Resource Manager z usługą Service Bus można skonfigurować i włączyć odzyskiwanie po awarii z magazynu geograficznie.
+- Przykładowe .NET i ustawienia, które są wymagane w usłudze Azure Active Directory do użycia usługi Azure Resource Manager z usługą Service Bus, aby skonfigurować i włączyć odzyskiwanie po awarii z magazynu geograficznie.
 - Kroki wymagane do wykonania w przykładowym kodzie.
 - Jak używać istniejącej przestrzeni nazw jako alias.
 - Kroki, aby można również włączyć odzyskiwania po awarii geograficznie za pomocą programu PowerShell lub interfejsu wiersza polecenia.
@@ -107,6 +102,17 @@ Należy uwzględnić następujące kwestie należy wziąć pod uwagę w tej wers
 
 4. Synchronizowanie jednostek może zająć trochę czasu, około 50-100 jednostek na minutę. Subskrypcje i reguły również liczba jednostki. 
 
+## <a name="availability-zones-preview"></a>Dostępność strefy (wersja zapoznawcza)
+
+Obsługuje również warstwy Premium usługi magistrali [stref dostępności](../availability-zones/az-overview.md), zapewniając izolowane błędów lokalizacji w obrębie regionu platformy Azure. 
+
+> [!NOTE]
+> Podgląd stref dostępności jest obsługiwana tylko w programie **środkowe stany USA**, **wschodnie stany USA 2**, i **Francja centralnej** regionów.
+
+Dostępność strefy można włączyć w nowej przestrzeni nazw, przy użyciu portalu Azure. Usługa Service Bus nie obsługuje migracji istniejącej przestrzeni nazw. Nie można wyłączyć nadmiarowość strefy po jej włączeniu na przestrzeni nazw.
+
+![3][]
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Zobacz odzyskiwania po awarii geograficznie [tutaj dokumentacji interfejsu API REST](/rest/api/servicebus/disasterrecoveryconfigs).
@@ -123,3 +129,4 @@ Aby dowiedzieć się więcej na temat komunikatów usługi Service Bus, zobacz n
 
 [1]: ./media/service-bus-geo-dr/geo1.png
 [2]: ./media/service-bus-geo-dr/geo2.png
+[3]: ./media/service-bus-geo-dr/az.png

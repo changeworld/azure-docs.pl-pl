@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: jroth
-ms.openlocfilehash: 7285cf47c3a5ec731cd9cfe311053e9d19886f1d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 522ece2528e43c1037dc6bb707201ecda8074dd9
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29400243"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301390"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Połączenie z maszyną wirtualną programu SQL Server na platformie Azure
 
@@ -139,7 +139,7 @@ Poniższa lista zawiera wymagania dotyczące nawiązywania połączenia z progra
 | [Utwórz identyfikator logowania SQL](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | Jeśli korzystasz z uwierzytelniania SQL, należy identyfikatora logowania SQL przy użyciu nazwy użytkownika i hasła, który ma także uprawnienia do docelowej bazy danych. |
 | [Włącz protokół TCP/IP](#manualTCP) | SQL Server należy zezwolić na połączenia za pośrednictwem protokołu TCP. |
 | [Włącz regułę zapory dla portu programu SQL Server](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) | Zapora na maszynie Wirtualnej musi zezwalać na ruch przychodzący na porcie programu SQL Server (domyślnie 1433). |
-| [Tworzenie reguły grupy zabezpieczeń sieci dla TCP 1433](../../../virtual-network/virtual-networks-create-nsg-arm-pportal.md#create-rules-in-an-existing-nsg) | Musisz zezwolić na maszynie Wirtualnej, aby odbierać ruch na port serwera SQL (domyślnie 1433), jeśli chcesz się połączyć za pośrednictwem Internetu. Lokalne i wirtualne sieci — tylko połączenia nie wymagają to. Jest to jedyny krok wymagany w portalu Azure. |
+| [Tworzenie reguły grupy zabezpieczeń sieci dla TCP 1433](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) | Musisz zezwolić na maszynie Wirtualnej, aby odbierać ruch na port serwera SQL (domyślnie 1433), jeśli chcesz się połączyć za pośrednictwem Internetu. Lokalne i wirtualne sieci — tylko połączenia nie wymagają to. Jest to jedyny krok wymagany w portalu Azure. |
 
 > [!TIP]
 > Kroki opisane w powyższej tabeli są wykonywane automatycznie, podczas konfigurowania połączenia w portalu. Tylko wykonaj następujące czynności w celu potwierdzenia konfiguracji lub można ręcznie skonfigurować łączności dla programu SQL Server.

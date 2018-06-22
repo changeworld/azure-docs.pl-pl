@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 135f934cd6b352dad9e4cea5a14406804f31b66b
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 4da6f5c4513477d1adbf4d7645a66de112eeab23
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825215"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36307489"
 ---
 # <a name="guidelines"></a>Wytyczne  
 
@@ -35,7 +35,7 @@ Jeśli więcej niż jedna osoba wymaga dostępu do tego samego Identyfikatora Mi
 
 >[!IMPORTANT]
 >Aby autoryzować wielu użytkownikom na dostęp do tego konta Microsoft Developer Center (Centrum deweloperów), firma Microsoft zaleca, należy użyć usługi Azure Active Directory (Azure AD) do przypisania ról do poszczególnych użytkowników. Każdy użytkownik musi uzyskać dostępu do konta poprzez zalogowanie za pomocą poszczególnych poświadczenia usługi Azure AD. Utwórz identyfikator firmy Microsoft przy użyciu adresu e-mail w domenie, w zarejestrowany w firmie Microsoft sugeruje, że wiadomości e-mail nie można przypisać do osoby. Może to być na przykład `windowsapps@fabrikam.com`.  
->*   Aby uzyskać więcej informacji, odwiedź stronę [problem: identyfikator firmy Microsoft w usłudze Azure AD federacyjnych domeny](#issue:-microsoft-id-in-an-azure-ad-federated-domain) sekcji.  
+>*   Aby uzyskać więcej informacji, odwiedź stronę [problem: identyfikator firmy Microsoft w usłudze Azure AD federacyjnych domeny](#issue-microsoft-id-in-an-azure-ad-federated-domain) sekcji.  
 
 *   Ograniczanie dostępu do tego Identyfikatora Microsoft najmniejszą możliwą liczbę deweloperzy. 
 *   Konfigurowanie listy dystrybucyjnej firmowej poczty e-mail (DL), która zawiera wszystkich użytkowników, którzy muszą uzyskać dostęp do danych konta Centrum deweloperów. Dodaj adres e-mail DL do informacji zabezpieczających. Listy Dystrybucyjnej, włącza wszystkich pracowników na liście do odbierania kodów zabezpieczeń na żądanie i zarządzać informacji o zabezpieczeniach dla programu Microsoft ID. Jeśli ustawienie listy dystrybucyjnej nie jest to możliwe, właściciel konta e-mail poszczególnych musi być dostępny do uzyskania dostępu i udostępniania kodu zabezpieczeń po wyświetleniu monitu.  

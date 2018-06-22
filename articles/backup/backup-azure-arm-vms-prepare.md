@@ -7,14 +7,14 @@ manager: carmonm
 keywords: Tworzenie kopii zapasowych; Tworzenie kopii zapasowej;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 3/1/2018
+ms.date: 6/21/2018
 ms.author: markgal
-ms.openlocfilehash: 3727fab8f5d19e8f9178c9029177a2c1479422ae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5aa07d7861413fa0ddc0d5af7aefe828df412b4d
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606640"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309150"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Przygotowywanie środowiska do tworzenia kopii zapasowych maszyn wirtualnych wdrożonych przez program Resource Manager
 
@@ -34,11 +34,14 @@ Przed ochrony (lub utworzyć kopię zapasową) maszyny wirtualnej wdrożone usł
 Jeśli te warunki istnieje już w danym środowisku, przejdź do [kopii zapasowych maszyn wirtualnych](backup-azure-arm-vms.md) artykułu. Jeśli musisz skonfigurować lub sprawdzanie wszystkich wymagań wstępnych, w tym artykule poprowadzi Cię przez kroki.
 
 ## <a name="supported-operating-systems-for-backup"></a>Obsługiwane systemy operacyjne dla kopii zapasowej
- * **Linux**: kopia zapasowa Azure obsługuje [listę dystrybucji, które zatwierdza Azure](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), z wyjątkiem CoreOS Linux. 
- 
+
+ * **Linux**: kopia zapasowa Azure obsługuje [listę dystrybucji, które zatwierdza Azure](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), z wyjątkiem CoreOS Linux. Aby uzyskać listę systemów operacyjnych Linux, które obsługują Przywracanie plików, zobacz [odzyskać pliki z kopii zapasowej maszyny wirtualnej](backup-azure-restore-files-from-vm.md#for-linux).
+
     > [!NOTE] 
     > Innych bring-your — właścicielem — dystrybucje systemu Linux może działać, dopóki agent maszyny Wirtualnej jest dostępne na maszynie wirtualnej, a także obsługę języka Python istnieje. Jednak te dystrybucji nie są obsługiwane.
- * **Windows Server**: wersje starsze niż Windows Server 2008 R2 nie są obsługiwane.
+    >
+ * **Windows Server**, **klienta systemu Windows**: wersje starsze niż Windows Server 2008 R2 lub Windows 7 nie są obsługiwane.
+
 
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Ograniczenia w przypadku tworzenia kopii zapasowej i przywracanie maszyny Wirtualnej
 Aby przygotować środowisko, należy zrozumieć następujące ograniczenia:

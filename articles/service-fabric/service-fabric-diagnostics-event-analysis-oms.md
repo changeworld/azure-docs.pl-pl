@@ -14,16 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/29/2018
 ms.author: srrengar
-ms.openlocfilehash: 184faa0f6171ff00ab3c2398f693e9c7ad015d33
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 49d9b5306a0fcf51cc0de036c725fca8345cd0ec
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839592"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36302186"
 ---
 # <a name="event-analysis-and-visualization-with-log-analytics"></a>Analiza zdarzeń i wizualizacji z analizy dzienników
-
-Analiza dzienników, znanej także jako OMS (Operations Management Suite), to zbiór usług zarządzania, które pomagają w monitorowania i diagnostyki dla aplikacji i usług hostowanych w chmurze. W tym artykule opisano sposób uruchamiania kwerend w analizy dzienników, aby uzyskać wgląd i rozwiązywanie problemów z tym, co dzieje się w klastrze. Poniższe często zadawane pytania dotyczą:
+Analiza dzienników zbiera i analizuje dane telemetryczne z aplikacji i usług hostowanych w chmurze oraz zapewnia narzędzia analizy do zwiększenia ich dostępności i wydajności. W tym artykule opisano sposób uruchamiania kwerend w analizy dzienników, aby uzyskać wgląd i rozwiązywanie problemów z tym, co dzieje się w klastrze. Poniższe często zadawane pytania dotyczą:
 
 * Jak rozwiązywać zdarzenia kondycji?
 * Jak sprawdzić, gdy węzeł ulegnie awarii?
@@ -43,9 +42,9 @@ Po odebraniu danych przez analizy dzienników, platforma Azure ma kilka *rozwią
 
 2. Podsumowując zobaczysz Kafelki w formie wykresu dla każdego z rozwiązań włączone, w tym dla sieci szkieletowej usług. Kliknij przycisk **sieci szkieletowej usług** graph (pierwszy obraz poniżej) w dalszym ciągu rozwiązania analizy sieci szkieletowej usług (drugi obraz poniżej).
 
-    ![Rozwiązanie rz OMS](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
+    ![Rozwiązanie sieci szkieletowej usług](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
 
-    ![Rozwiązanie rz OMS](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
+    ![Rozwiązanie sieci szkieletowej usług](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
 
 Powyższy obraz jest stroną główną rozwiązania analizy sieci szkieletowej usług. Jest to widok miniatur, co się dzieje w klastrze. Jeśli włączono diagnostyki po utworzeniu klastra można przejrzeć zdarzenia dla 
 
@@ -60,11 +59,11 @@ Powyższy obraz jest stroną główną rozwiązania analizy sieci szkieletowej u
 
 1. Na stronie usługi sieć szkieletowa Analytics kliknij na wykresie dla **zdarzenia sieci szkieletowej usług**.
 
-    ![Kanał operacyjne rozwiązania rz OMS](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
+    ![Usługa sieci szkieletowej rozwiązania operacyjne kanału](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
 
 2. Kliknij przycisk **listy** do wyświetlania na liście zdarzeń. Gdy w tym miejscu zobaczysz wszystkich zdarzeń systemowych, które zostały zebrane. Odwołania są one z WADServiceFabricSystemEventsTable na koncie magazynu Azure, a podobnie reliable services i zdarzeń podmiotów, które widać obok są z tych tabel odpowiednich.
     
-    ![Kanał operacyjny kwerendy OMS](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
+    ![Kanał operacyjny kwerendy](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
 
 Można kliknąć Lupa po lewej stronie i używać języka kwerend Kusto można znaleźć, czego szukasz. Na przykład aby znaleźć wszystkie akcje wykonywane w węzłach w klastrze, używając następujące zapytanie. Identyfikatory zdarzeń, poniżej znajdują się w [dotyczące zdarzeń operacyjnych kanału](service-fabric-diagnostics-event-generation-operational.md).
 
@@ -79,11 +78,11 @@ Umożliwia wysyłanie zapytań o wiele więcej pól, takich jak określonych wę
 
 1. Na stronie usługi sieć szkieletowa Analytics kliknij wykresu dla **niezawodne usługi**.
 
-    ![Niezawodne usługi rozwiązania rz OMS](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
+    ![Usługa sieci szkieletowej rozwiązania niezawodne usługi](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
 
 2. Kliknij przycisk **listy** do wyświetlania na liście zdarzeń. Tutaj można zobaczyć zdarzenia z niezawodne usługi. Widoczny różnych zdarzeń dla runasync usługi zostanie rozpoczęte i zakończone, zwykle nastąpi na wdrożenia i uaktualnienia. 
 
-    ![OMS zapytania niezawodne usługi](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
+    ![Niezawodne usługi zapytania](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
 
 W podobny sposób można wyświetlać zdarzenia niezawodnego aktora. Aby skonfigurować więcej szczegółowych informacji o zdarzeniach dla elementów reliable actors, musisz zmienić `scheduledTransferKeywordFilter` w pliku config diagnostycznych rozszerzenia (pokazana poniżej). Szczegółowe informacje o wartości te są w [dotyczące zdarzeń niezawodnej podmiotów](service-fabric-reliable-actors-diagnostics.md#keywords).
 
@@ -101,12 +100,12 @@ W podobny sposób można wyświetlać zdarzenia niezawodnego aktora. Aby skonfig
 
 Język kwerendy Kusto jest zaawansowanym. Inne przydatne zapytanie można uruchamiać jest aby dowiedzieć się węzły, które generują najwięcej zdarzeń. Zapytanie na poniższym zrzucie ekranu wyświetla zdarzenia operacyjne sieci szkieletowej usług, łącznie z określonej usługi i węzła.
 
-![Zdarzenia OMS na węzeł](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
+![Zdarzenia na węzeł](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby włączyć monitorowanie, tj. liczniki wydajności infrastruktury, przejdź do [Dodawanie agent pakietu OMS](service-fabric-diagnostics-oms-agent.md). Agent zbiera dane liczników wydajności i dodaje je do swojego istniejącego obszaru roboczego.
-* W przypadku klastrów lokalnymi OMS oferuje bramy (do przodu serwer Proxy HTTP), która może służyć do wysyłania danych z usługą OMS. Dowiedz się więcej o tym, że w [łączenia komputerów bez dostępu do Internetu z usługą OMS przy użyciu bramy OMS](../log-analytics/log-analytics-oms-gateway.md)
-* Skonfiguruj OMS, aby skonfigurować [automatycznego alerty](../log-analytics/log-analytics-alerts.md) ułatwiających wykrywania i Diagnostyka
+* Aby włączyć monitorowanie, tj. liczniki wydajności infrastruktury, przejdź do [dodanie agenta analizy dzienników](service-fabric-diagnostics-oms-agent.md). Agent zbiera dane liczników wydajności i dodaje je do swojego istniejącego obszaru roboczego.
+* W przypadku klastrów lokalnymi analizy dzienników oferuje bramy (do przodu serwer Proxy HTTP), która może służyć do wysyłania danych do analizy dzienników. Dowiedz się więcej o tym, że w [łączenie komputerów bez dostępu do Internetu z analizy dzienników przy użyciu bramy OMS](../log-analytics/log-analytics-oms-gateway.md)
+* Skonfiguruj [automatycznego alerty](../log-analytics/log-analytics-alerts.md) ułatwiających wykrywania i Diagnostyka
 * Pobierz zapoznaniu się z [wyszukiwania i badania dziennika](../log-analytics/log-analytics-log-searches.md) funkcje dostępne w ramach analizy dzienników
 * Uzyskać bardziej szczegółowy przegląd analizy dzienników, jakie oferuje, przeczytaj [co to jest analiza dziennika?](../operations-management-suite/operations-management-suite-overview.md)

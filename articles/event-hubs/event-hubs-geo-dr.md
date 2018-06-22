@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 06/14/2018
 ms.author: sethm
-ms.openlocfilehash: 237b0639be75e12cff56f40ac76426aba7a8a701
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 0192f65f394a3bb6d5cffc90639966b5f913b291
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/16/2017
-ms.locfileid: "26745898"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36302117"
 ---
 # <a name="azure-event-hubs-geo-disaster-recovery"></a>Azure awarii usługi Event Hubs Geo
 
@@ -54,7 +54,7 @@ Poniższa sekcja zawiera omówienie procesu pracy awaryjnej i wyjaśniono, jak s
 
 ![1][]
 
-### <a name="setup"></a>Konfiguracja
+### <a name="setup"></a>Konfigurowanie
 
 Należy najpierw utworzyć lub użyj istniejącej głównej przestrzeni nazw i nowej dodatkowej przestrzeni nazw, a następnie skojarzyć dwa. Połączenie umożliwia alias, który służy do połączenia. Ponieważ używasz aliasu, nie trzeba zmienić parametry połączenia. Tylko nowych przestrzeni nazw można dodać do Twojej pracy awaryjnej parowania. Na koniec należy dodać pewne aspekty monitorowania do wykrywania, czy tryb failover jest konieczne. W większości przypadków usługa jest częścią dużych ekosystem, w związku z tym automatycznego przechodzenia w tryb failover są rzadko możliwe, jak bardzo często trybu failover musi zostać wykonana w pozostałych podsystemu lub infrastruktury.
 
@@ -101,7 +101,18 @@ Należy uwzględnić następujące kwestie należy wziąć pod uwagę w tej wers
 
 4. Synchronizowanie jednostek może zająć trochę czasu, około 50-100 jednostek na minutę.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="availability-zones-preview"></a>Dostępność strefy (wersja zapoznawcza)
+
+Obsługuje także w wersji Standard centra zdarzeń [stref dostępności](../availability-zones/az-overview.md), zapewniając izolowane błędów lokalizacji w obrębie regionu platformy Azure. 
+
+> [!NOTE]
+> Podgląd stref dostępności jest obsługiwana tylko w programie **środkowe stany USA**, **wschodnie stany USA 2**, i **Francja centralnej** regionów.
+
+Dostępność strefy można włączyć w nowej przestrzeni nazw, przy użyciu portalu Azure. Usługa Event Hubs nie obsługuje migracji istniejącej przestrzeni nazw. Nie można wyłączyć nadmiarowość strefy po jej włączeniu na przestrzeni nazw.
+
+![3][]
+
+## <a name="next-steps"></a>Kolejne kroki
 
 * [w witrynie GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient) przeprowadzi Cię przez prosty przepływ pracy, który tworzy parowanie geograficznie i inicjuje trybu failover do scenariusza odzyskiwania po awarii.
 * [Dokumentacji interfejsu API REST](/rest/api/eventhub/disasterrecoveryconfigs) opisuje interfejsy API do wykonywania konfiguracji odzyskiwania po awarii Geo.
@@ -114,3 +125,4 @@ Aby uzyskać więcej informacji na temat usługi Event Hubs, skorzystaj z nastę
 
 [1]: ./media/event-hubs-geo-dr/geo1.png
 [2]: ./media/event-hubs-geo-dr/geo2.png
+[3]: ./media/event-hubs-geo-dr/eh-az.png

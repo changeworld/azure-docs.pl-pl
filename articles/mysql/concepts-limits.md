@@ -2,19 +2,19 @@
 title: Ograniczenia dotyczące bazy danych platformy Azure dla programu MySQL
 description: W tym artykule opisano ograniczenia w bazie danych Azure dla programu MySQL, takie jak liczba połączeń i opcje aparatu magazynu.
 services: mysql
-author: kamathsun
-ms.author: sukamat
+author: ajlam
+ms.author: andrela
 manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/04/2018
-ms.openlocfilehash: 3ec78b9aad45500a92a8f46f4bb2e654f97da8cb
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 06/21/2018
+ms.openlocfilehash: 2fc224445f89a0b0b4afdc0ef1d0eb1b25b45f36
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264888"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309925"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Ograniczenia dotyczące bazy danych platformy Azure dla programu MySQL
 W poniższych sekcjach opisano pojemności, magazynu aparat obsługę, uprawnień, obsługi instrukcji manipulacji danych oraz limity funkcjonalności usługi bazy danych. Zobacz też [ogólne ograniczenia](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) mające zastosowanie do aparatu bazy danych MySQL.
@@ -60,29 +60,29 @@ Gdy połączenia przekracza limit, może zostać wyświetlony następujący bł�
 ## <a name="data-manipulation-statement-support"></a>Obsługa instrukcji manipulacji danych
 
 ### <a name="supported"></a>Obsługiwane
-- PLIKWEJŚCIOWY danych obciążenia — obsługiwane, ale należy określić parametr [LOCAL], który jest przekierowywany do ścieżki UNC (zainstalowane za pomocą XSMB magazynu Azure).
+- `LOAD DATA INFILE` jest obsługiwana, ale `[LOCAL]` parametru musi być określona i Przekierowanie do ścieżki UNC (zainstalowane za pomocą protokołu SMB magazynu Azure).
 
 ### <a name="unsupported"></a>Nieobsługiwane
-- WYBIERZ... DO PLIKWYJŚCIOWY
+- `SELECT ... INTO OUTFILE`
 
 ## <a name="functional-limitations"></a>Ograniczenia funkcjonalności
 
 ### <a name="scale-operations"></a>Operacje skalowania
-- Dynamiczne skalowanie serwerów między warstwa cenowa nie jest obecnie obsługiwane. Oznacza to przełączaniu między Basic, ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci, warstw cenowych.
+- Dynamiczne skalowanie do i z warstw cenowych podstawowa nie jest obecnie obsługiwane.
 - Zmniejszenie rozmiaru magazynu serwera nie jest obsługiwana.
 
 ### <a name="server-version-upgrades"></a>Uaktualniania wersji
 - Automatycznej migracji między wersjami aparatu bazy danych głównych nie jest obecnie obsługiwane.
 
 ### <a name="point-in-time-restore"></a>Przywracanie do punktu w czasie
-- Przywracanie do warstwy z innej usługi i/lub jednostki obliczeniowe i rozmiaru magazynu nie jest dozwolone.
+- Podczas korzystania z funkcji PITR tworzona jest nowy serwer jako serwer, który jest oparty na takie same konfiguracje.
 - Przywracanie usuniętych serwera nie jest obsługiwane.
 
 ### <a name="subscription-management"></a>Zarządzanie subskrypcjami
 - Dynamicznie przenoszenie serwerów wstępnie utworzone w subskrypcji i grupy zasobów nie jest obecnie obsługiwane.
 
 ## <a name="current-known-issues"></a>Obecnie znane problemy
-- Wystąpienie serwera MySQL Wyświetla wersję niewłaściwy serwer, po nawiązaniu połączenia. Aby uzyskać z właściwym serwerem versioning wystąpienia, należy użyć wybierz version(); polecenie w wierszu polecenia programu MySQL.
+- Wystąpienie serwera MySQL Wyświetla wersję niewłaściwy serwer, po nawiązaniu połączenia. Aby uzyskać wystąpienia aparatu wersji z właściwym serwerem, użyj `select version();` polecenia.
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Co to jest dostępne w poszczególnych warstwach usług](concepts-pricing-tiers.md)

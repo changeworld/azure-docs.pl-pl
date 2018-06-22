@@ -1,24 +1,19 @@
 ---
 title: Planowanie zadań z Centrum IoT Azure (.NET/.NET) | Dokumentacja firmy Microsoft
 description: Sposób tworzenia harmonogramu zadań Centrum IoT Azure do wywołania metody bezpośrednio na wielu urządzeniach. Urządzenia Azure IoT SDK dla platformy .NET umożliwia wdrożenie symulowane urządzenie aplikacje i usługi aplikacji w celu uruchomienia zadania.
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 2233356e-b005-4765-ae41-3a4872bda943
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 012/16/2018
-ms.author: v-masebo;dobett
-ms.openlocfilehash: 76c8d3739b2af3c010cd80585c93c097fc9eb466
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+services: iot-hub
+ms.topic: conceptual
+ms.date: 03/06/2018
+ms.author: dobett
+ms.openlocfilehash: beb1e1e166325cb41a5d4e4fa07565b1f3d4b3bb
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308588"
 ---
 # <a name="schedule-and-broadcast-jobs-netnet"></a>Zadania harmonogramu i emisji (.NET/.NET)
 
@@ -87,8 +82,9 @@ W tej sekcji utworzysz odpowiadający do bezpośredniego metody wywoływane prze
     ```csharp
     static string DeviceConnectionString = "<yourDeviceConnectionString>";
     static DeviceClient Client = null;
+    ```
 
-1. Add the following to implement the direct method on the device:
+1. Dodaj następujący kod do implementacji metody bezpośredniej na urządzeniu:
 
     ```csharp
     static Task<MethodResponse> LockDoor(MethodRequest methodRequest, object userContext)
@@ -100,8 +96,9 @@ W tej sekcji utworzysz odpowiadający do bezpośredniego metody wywoływane prze
         string result = "'Door was locked.'";
         return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(result), 200));
     }
+    ```
 
-1. Add the following to implement the device twins listener on the device:
+1. Dodaj następujący kod do implementacji odbiornika twins urządzenia na urządzeniu:
 
     ```csharp
     private static async Task OnDesiredPropertyChanged(TwinCollection desiredProperties, object userContext)
@@ -175,6 +172,7 @@ W tej sekcji Tworzenie aplikacji konsoli .NET (przy użyciu języka C#) korzysta
 1. Dodaj następujące pola do klasy **Program**: Zastąp symbole zastępcze Centrum IoT ciąg połączenia dla koncentratora, który został utworzony w poprzedniej sekcji oraz nazwę urządzenia.
 
     ```csharp
+    static JobClient jobClient;
     static string connString = "<yourIotHubConnectionString>";
     static string deviceId = "<yourDeviceId>";
     ```

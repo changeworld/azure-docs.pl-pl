@@ -1,6 +1,6 @@
 ---
-title: Rozszerzenie maszyny wirtualnej OMS Azure dla systemu Windows | Dokumentacja firmy Microsoft
-description: Wdróż agenta pakietu OMS na maszynie wirtualnej z systemem Windows przy użyciu rozszerzenia maszyny wirtualnej.
+title: Rozszerzenie maszyny wirtualnej Azure Log Analytics dla systemu Windows | Dokumentacja firmy Microsoft
+description: Wdróż agenta analizy dzienników na maszynie wirtualnej z systemem Windows przy użyciu rozszerzenia maszyny wirtualnej.
 services: virtual-machines-windows
 documentationcenter: ''
 author: danielsollondon
@@ -15,33 +15,33 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danis
-ms.openlocfilehash: c365c43eb5abb975bf77e28ad061ff091f5ec627
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 49e5033f6c77b19dd8545e9b6fd30ce03ce21f34
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942641"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301784"
 ---
-# <a name="oms-virtual-machine-extension-for-windows"></a>Rozszerzenie maszyny wirtualnej OMS dla systemu Windows
+# <a name="log-analytics-virtual-machine-extension-for-windows"></a>Zaloguj się Analytics rozszerzenie maszyny wirtualnej dla systemu Windows
 
-Operations Management Suite (OMS) zapewnia możliwości korygowania monitorowania, alertów i alertów w chmurze i lokalnych zasobów. Agent pakietu OMS rozszerzenie maszyny wirtualnej dla systemu Windows publikowana i obsługiwane przez firmę Microsoft. Rozszerzenie instaluje agenta pakietu OMS na maszynach wirtualnych platformy Azure i rejestrowania maszyn wirtualnych w istniejącym obszarem roboczym pakietu OMS. Ten dokument zawiera szczegóły dotyczące obsługiwanych platform, konfiguracji i opcje wdrażania dla rozszerzenia maszyny wirtualnej OMS dla systemu Windows.
+Analiza dzienników zapewnia możliwości monitorowania w chmurze i lokalnych zasobów. Rozszerzenie maszyny wirtualnej agenta analizy dziennika dla systemu Windows publikowana i obsługiwane przez firmę Microsoft. Rozszerzenie instaluje agenta analizy dzienników na maszynach wirtualnych platformy Azure i rejestrowania maszyn wirtualnych w istniejącym obszarem roboczym analizy dzienników. Ten dokument zawiera szczegóły dotyczące obsługiwanych platform, konfiguracji i opcje wdrażania dla rozszerzenia maszyny wirtualnej analizy dzienników dla systemu Windows.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="operating-system"></a>System operacyjny
 
-Rozszerzenie Agent pakietu OMS dla systemu Windows mogą być uruchamiane na systemie Windows Server 2008 R2, 2012 i 2012 R2, 2016 wersje.
+Rozszerzenie agenta analizy dzienników dla systemu Windows mogą być uruchamiane na systemie Windows Server 2008 R2, 2012 i 2012 R2, 2016 wersje.
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
-Centrum zabezpieczeń Azure automatycznie udostępnia agent pakietu OMS i łączy go z obszaru roboczego analizy dzienników domyślne subskrypcji platformy Azure. Jeśli korzystasz z Centrum zabezpieczeń Azure, nie należy uruchamiać kroków w tym dokumencie. Spowoduje to zastąpienie obszaru roboczego skonfigurowana i podział połączenie z Centrum zabezpieczeń Azure.
+Centrum zabezpieczeń Azure automatycznie udostępnia agenta usługi Analiza dzienników i łączy go z obszaru roboczego analizy dzienników domyślne subskrypcji platformy Azure. Jeśli korzystasz z Centrum zabezpieczeń Azure, nie należy uruchamiać kroków w tym dokumencie. Spowoduje to zastąpienie obszaru roboczego skonfigurowana i podział połączenie z Centrum zabezpieczeń Azure.
 
 ### <a name="internet-connectivity"></a>Łączność z Internetem
-Rozszerzenia Agent pakietu OMS dla systemu Windows wymaga, aby docelowa maszyna wirtualna jest połączony z Internetem. 
+Rozszerzenia agenta analizy dziennika dla systemu Windows wymaga, że docelowa maszyna wirtualna jest połączony z Internetem. 
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
 
-Następujące JSON zawiera schemat rozszerzenia Agent pakietu OMS. Rozszerzenie wymaga obszaru roboczego identyfikator i klucz obszaru roboczego z docelowy obszar roboczy OMS, te można znaleźć w portalu OMS. Ponieważ klucz obszaru roboczego powinien być traktowany jako dane poufne, powinny być przechowywane w chronionej konfiguracji. Dane Azure ustawienia rozszerzenia chronione maszyny Wirtualnej jest szyfrowany i odszyfrowane tylko na docelowej maszynie wirtualnej. Należy pamiętać, że **workspaceId** i **workspaceKey** jest rozróżniana wielkość liter.
+Następujące JSON zawiera schemat rozszerzenia agenta analizy dziennika. Rozszerzenie wymaga obszaru roboczego identyfikator i klucz obszaru roboczego z obszaru roboczego analizy dzienników docelowych. Te można znaleźć w ustawieniach dla obszaru roboczego w portalu Azure. Ponieważ klucz obszaru roboczego powinien być traktowany jako dane poufne, powinny być przechowywane w chronionej konfiguracji. Dane Azure ustawienia rozszerzenia chronione maszyny Wirtualnej jest szyfrowany i odszyfrowane tylko na docelowej maszynie wirtualnej. Należy pamiętać, że **workspaceId** i **workspaceKey** jest rozróżniana wielkość liter.
 
 ```json
 {
@@ -79,11 +79,11 @@ Następujące JSON zawiera schemat rozszerzenia Agent pakietu OMS. Rozszerzenie 
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 
-Rozszerzenia maszyny Wirtualnej platformy Azure można wdrożyć przy użyciu szablonów usługi Azure Resource Manager. Schematu JSON szczegółowo opisane w poprzedniej sekcji można w szablonie usługi Azure Resource Manager rozszerzenia Agent pakietu OMS są uruchamiane podczas wdrażania szablonu usługi Azure Resource Manager. Przykładowy szablon, który uwzględnia również rozszerzenie maszyny Wirtualnej agenta pakietu OMS można znaleźć w [Azure Szybki Start galerii](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
+Rozszerzenia maszyny Wirtualnej platformy Azure można wdrożyć przy użyciu szablonów usługi Azure Resource Manager. Schematu JSON szczegółowo opisane w poprzedniej sekcji można w szablonie usługi Azure Resource Manager rozszerzenia agenta analizy dziennika są uruchamiane podczas wdrażania szablonu usługi Azure Resource Manager. Przykładowy szablon, który uwzględnia również rozszerzenie maszyny Wirtualnej agenta analizy dziennika można znaleźć w [Azure Szybki Start galerii](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
 
 JSON dla rozszerzenia maszyny wirtualnej mogą być zagnieżdżone wewnątrz zasobu maszyny wirtualnej lub umieszczony w katalogu głównego lub najwyższego poziomu szablonu usługi Resource Manager JSON. Umieszczanie JSON ma wpływ na wartość nazwy zasobów i typu. Aby uzyskać więcej informacji, zobacz [Ustaw nazwę i typ zasoby podrzędne](../../azure-resource-manager/resource-manager-templates-resources.md#child-resources). 
 
-Poniższy przykład przyjęto założenie, że rozszerzenie OMS jest zagnieżdżona zasobu maszyny wirtualnej. Podczas zagnieżdżania rozszerzenia zasobu, JSON jest umieszczany w `"resources": []` obiektu maszyny wirtualnej.
+Poniższy przykład przyjęto założenie, że rozszerzenie Log Analytics jest zagnieżdżona zasobu maszyny wirtualnej. Podczas zagnieżdżania rozszerzenia zasobu, JSON jest umieszczany w `"resources": []` obiektu maszyny wirtualnej.
 
 
 ```json
@@ -138,7 +138,7 @@ Podczas umieszczania rozszerzenia JSON w elemencie głównym szablonu, nazwy zas
 
 ## <a name="powershell-deployment"></a>Wdrożenie programu PowerShell
 
-`Set-AzureRmVMExtension` Polecenia można wdrożyć agenta pakietu OMS rozszerzenie maszyny wirtualnej na istniejącej maszyny wirtualnej. Przed uruchomieniem polecenia, konfiguracje publicznymi i prywatnymi muszą być przechowywane w tablicy skrótów programu PowerShell. 
+`Set-AzureRmVMExtension` Polecenia można wdrożyć agenta analizy dziennika rozszerzenie maszyny wirtualnej na istniejącej maszyny wirtualnej. Przed uruchomieniem polecenia, konfiguracje publicznymi i prywatnymi muszą być przechowywane w tablicy skrótów programu PowerShell. 
 
 ```powershell
 $PublicSettings = @{"workspaceId" = "myWorkspaceId"}

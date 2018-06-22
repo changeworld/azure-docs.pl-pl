@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 45b645fe556d1f9630ee15b1f2f605bbaf3f87f9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a51923738642b0e6a8ffd420b3cf433f7e869f59
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648068"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309337"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Konfigurowanie sieci wirtualnej dla zarządzanego wystąpienia bazy danych Azure SQL
 
 Azure wystąpienia bazy danych SQL zarządzane (wersja zapoznawcza) musi być wdrażana w obrębie platformy Azure [sieć wirtualną (VNet)](../virtual-network/virtual-networks-overview.md). To wdrożenie umożliwia następujące scenariusze: 
-- Nawiązywanie połączenia z wystąpieniem zarządzane bezpośrednio tworzą sieci lokalnej 
+- Nawiązywanie połączenia z wystąpieniem zarządzane bezpośrednio z sieci lokalnej 
 - Nawiązywanie połączenia z wystąpieniem zarządzane połączonego serwera lub innego lokalnego magazynu danych 
 - Wystąpienie usługi zarządzania nawiązywania połączenia z zasobami Azure  
 

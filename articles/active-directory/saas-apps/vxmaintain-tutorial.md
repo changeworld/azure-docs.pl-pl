@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 6d43e446d1ee1ed4dafc63481b4c874d994896d3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: fc8918ed2901d2f443b94bac8587e24c3f04eeec
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230271"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308751"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Samouczek: Integracji Azure Active Directory z vxMaintain
 
@@ -111,7 +111,7 @@ W tej sekcji można zarówno włączenia funkcji logowania jednokrotnego usługi
     b. W **adres URL odpowiedzi** wpisz adres URL, który ma następującą składnię: `https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
 
     > [!NOTE] 
-    > Poprzednie wartości nie są prawdziwe. Zaktualizuj je z rzeczywistego identyfikatora i adres URL odpowiedzi. Aby uzyskać wartości, skontaktuj się z [zespołem pomocy technicznej vxMaintain](http://www.verisae.com/contact-us).
+    > Poprzednie wartości nie są prawdziwe. Zaktualizuj je z rzeczywistego identyfikatora i adres URL odpowiedzi. Aby uzyskać wartości, skontaktuj się z [zespołem pomocy technicznej vxMaintain](https://www.hubspot.com/company/contact).
  
 4. W obszarze **certyfikat podpisywania SAML**, wybierz pozycję **XML metadanych**, a następnie zapisz plik metadanych do komputera.
 
@@ -121,7 +121,7 @@ W tej sekcji można zarówno włączenia funkcji logowania jednokrotnego usługi
 
     ![Przycisk Zapisz](./media/vxmaintain-tutorial/tutorial_general_400.png)
 
-6. Aby skonfigurować **vxMaintain** logowania jednokrotnego, Wyślij pobrany **XML metadanych** pliku na [vxMaintain zespołem pomocy technicznej](http://www.verisae.com/contact-us).
+6. Aby skonfigurować **vxMaintain** logowania jednokrotnego, Wyślij pobrany **XML metadanych** pliku na [vxMaintain zespołem pomocy technicznej](https://www.hubspot.com/company/contact).
 
 > [!TIP]
 > Po skonfigurowaniu aplikacji może odczytywać zwięzły wersji poprzednich instrukcji w [portalu Azure](https://portal.azure.com). Po dodaniu aplikacji z **usługi Active Directory** > **aplikacje dla przedsiębiorstw** zaznacz **rejestracji jednokrotnej** karcie i uzyskuje dostęp do osadzonego Dokumentacja z **konfiguracji** sekcji. 
@@ -161,7 +161,7 @@ W tej sekcji możesz tworzyć użytkownika testowego Simona Britta w portalu Azu
  
 ### <a name="create-a-vxmaintain-test-user"></a>Tworzenie użytkownika testowego vxMaintain
 
-W tej sekcji utworzysz użytkownika testowego Simona Britta w vxMaintain. Aby dodać użytkowników do platformy vxMaintain, pracy z [zespołem pomocy technicznej vxMaintain](http://www.verisae.com/contact-us). Przed użyciem logowania jednokrotnego, Utwórz i Aktywuj użytkowników.
+W tej sekcji utworzysz użytkownika testowego Simona Britta w vxMaintain. Aby dodać użytkowników do platformy vxMaintain, pracy z [zespołem pomocy technicznej vxMaintain](https://www.hubspot.com/company/contact). Przed użyciem logowania jednokrotnego, Utwórz i Aktywuj użytkowników.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
 

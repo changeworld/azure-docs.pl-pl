@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: c87b90e82b1300e147533256e3286421a73f08d2
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 42d1b40e01653e8fb5fa5bf118c65de758832f4d
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218898"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308612"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>Samouczek: Integracji Azure Active Directory z Tangoe polecenia Premium Mobile
 
@@ -114,7 +114,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://sso.tangoe.com/sp/ACS.saml2`
 
     > [!NOTE] 
-    > Wartości te nie są prawdziwe. Rzeczywisty adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta Mobile Premium polecenia Tangoe](https://www.tangoe.com/contact-2/) uzyskać te wartości. 
+    > Wartości te nie są prawdziwe. Rzeczywisty adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta Mobile Premium polecenia Tangoe](https://www.tangoe.com/contact-us/) uzyskać te wartości. 
 
 4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
@@ -128,7 +128,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Sekcja konfiguracji Mobile Premium polecenia Tangoe](./media/tangoe-tutorial/tutorial_tangoe_configure.png) 
 
-7. Aby uzyskać logowania jednokrotnego skonfigurowane dla aplikacji, skontaktuj się z z [zespołem pomocy technicznej klienta Mobile Premium polecenia Tangoe](https://www.tangoe.com/contact-2/) i zapewnia następujące korzyści:
+7. Aby uzyskać logowania jednokrotnego skonfigurowane dla aplikacji, skontaktuj się z z [zespołem pomocy technicznej klienta Mobile Premium polecenia Tangoe](https://www.tangoe.com/contact-us/) i zapewnia następujące korzyści:
 
    - Plik metadanych pobranych
    - **Identyfikator jednostki SAML**
@@ -174,7 +174,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
 
 W tej sekcji należy utworzyć użytkownika o nazwie Simona Britta w Tangoe polecenia Premium Mobile. 
 
-Aplikacji mobilnych — wersja Premium polecenia Tangoe musi wszystkich użytkowników na potrzeby aprowizacji w aplikacji przed wykonaniem rejestracji jednokrotnej. Pracy, dlatego należy z [zespołem pomocy technicznej klienta Mobile Premium polecenia Tangoe](https://www.tangoe.com/contact-2/) do udostępnienia tych użytkowników do aplikacji. 
+Aplikacji mobilnych — wersja Premium polecenia Tangoe musi wszystkich użytkowników na potrzeby aprowizacji w aplikacji przed wykonaniem rejestracji jednokrotnej. Pracy, dlatego należy z [zespołem pomocy technicznej klienta Mobile Premium polecenia Tangoe](https://www.tangoe.com/contact-us/) do udostępnienia tych użytkowników do aplikacji. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
 

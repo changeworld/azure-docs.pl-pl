@@ -1,6 +1,6 @@
 ---
-title: Za pomocą języka BulkExecutor Java biblioteki do wykonywania operacji zbiorczej w usłudze Azure DB rozwiązania Cosmos | Dokumentacja firmy Microsoft
-description: Biblioteka języka BulkExecutor Java DB rozwiązania Cosmos Azure umożliwia zbiorczego importu i aktualizowanie dokumentów do bazy danych Azure rozwiązania Cosmos kolekcji.
+title: Używanie zbiorczego Moduł wykonujący Java biblioteki do wykonania operacji zbiorczych w usłudze Azure DB rozwiązania Cosmos | Dokumentacja firmy Microsoft
+description: Biblioteka języka Java Moduł wykonujący zbiorczego DB rozwiązania Cosmos Azure umożliwia zbiorczego importu i aktualizowanie dokumentów do bazy danych Azure rozwiązania Cosmos kolekcji.
 keywords: Moduł wykonujący zbiorczego języka Java
 services: cosmos-db
 author: tknandu
@@ -10,22 +10,22 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 77135ec5f62636d1dd634361da345b00d98ad918
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f241a98cdcc847ddb579b86b51034d1438ee1395
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34610246"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300717"
 ---
-# <a name="use-bulkexecutor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Biblioteka BulkExecutor Java służy do wykonywania operacji zbiorczych danych bazy danych Azure rozwiązania Cosmos
+# <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Biblioteka języka Java Moduł wykonujący zbiorczego służy do wykonywania operacji zbiorczych danych bazy danych Azure rozwiązania Cosmos
 
-W tym samouczku instrukcje na temat używania biblioteka języka Java Moduł wykonujący zbiorczego Azure DB rozwiązania Cosmos do importowania i aktualizowania dokumentów bazy danych Azure rozwiązania Cosmos. Aby dowiedzieć się więcej o BulkExecutor biblioteki i jej można wykorzystać ogromnej przepływności i magazynu, zobacz [Przegląd biblioteki BulkExecutor](bulk-executor-overview.md) artykułu. W tym samouczku tworzenia aplikacji Java, która generuje losowe dokumentów i są importowane do bazy danych Azure rozwiązania Cosmos kolekcji zbiorczego. Po zaimportowaniu, będzie zbiorczego zaktualizować niektóre właściwości dokumentu. 
+W tym samouczku instrukcje na temat używania biblioteka języka Java Moduł wykonujący zbiorczego Azure DB rozwiązania Cosmos do importowania i aktualizowania dokumentów bazy danych Azure rozwiązania Cosmos. Informacje na temat zbiorczego Moduł wykonujący biblioteki i jej można wykorzystać ogromnej przepływności i magazynu, zobacz [zbiorcze Przegląd biblioteki Moduł wykonujący](bulk-executor-overview.md) artykułu. W tym samouczku tworzenia aplikacji Java, która generuje losowe dokumentów i są importowane do bazy danych Azure rozwiązania Cosmos kolekcji zbiorczego. Po zaimportowaniu, będzie zbiorczego zaktualizować niektóre właściwości dokumentu. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).  
 
-* Możesz [bezpłatnie wypróbować usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) bez subskrypcji platformy Azure — nie wymaga to opłat ani zobowiązań. Można użyć [Azure rozwiązania Cosmos DB emulatora](https://docs.microsoft.com/azure/cosmos-db/local-emulator) z `https://localhost:8081` identyfikatora URI. Klucz podstawowy znajduje się w [uwierzytelniania żądań](local-emulator.md#authenticating-requests).  
+* Możesz [bezpłatnie wypróbować usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) bez subskrypcji platformy Azure — nie wymaga to opłat ani zobowiązań. Można użyć [Azure rozwiązania Cosmos DB emulatora](https://docs.microsoft.com/azure/cosmos-db/local-emulator) z `https://localhost:8081` identyfikatora URI. Klucz podstawowy został podany w sekcji [Uwierzytelnianie żądań](local-emulator.md#authenticating-requests).  
 
 * [Zestaw Java Development Kit (JDK) 1.7+](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)  
   - W systemie Ubuntu uruchom polecenie `apt-get install default-jdk`, aby zainstalować zestaw JDK.  
@@ -197,7 +197,7 @@ Należy zaktualizować istniejące dokumenty przy użyciu interfejsu API BulkUpd
 
 ## <a name="performance-tips"></a>Porady dotyczące wydajności 
 
-Należy wziąć pod uwagę następujące kwestie w celu poprawy wydajności podczas korzystania z biblioteki BulkExecutor:
+Korzystając z biblioteki Moduł wykonujący zbiorczego, należy wziąć pod uwagę następujące kwestie w celu poprawy wydajności:
 
 * Aby uzyskać najlepszą wydajność uruchomienie aplikacji z maszyny Wirtualnej platformy Azure, w tym samym regionie co regionu zapisu konta DB rozwiązania Cosmos.  
 * Do osiągnięcia wyższej przepustowości:  
@@ -211,6 +211,6 @@ Należy wziąć pod uwagę następujące kwestie w celu poprawy wydajności podc
 
     
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby poznać szczegóły pakietu maven i wersji biblioteki BulkExecutor Java, zobacz[szczegóły BulkExecutor SDK](sql-api-sdk-bulk-executor-java.md).
+* Aby poznać szczegóły pakietu maven i biblioteki Java Moduł wykonujący zbiorcze informacje o wersji, zobacz[zbiorcze Szczegóły zestawu SDK modułu wykonującego](sql-api-sdk-bulk-executor-java.md).
 
 

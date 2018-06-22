@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/11/2018
 ms.author: ellacroi
-ms.openlocfilehash: 4b7d861ee0207c6a16c83e23d259411f7e874354
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: e40b3a9f1454e892e07f7749ba900cd74c42c339
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823388"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309235"
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Przewodnik AppSource wydawcy i portalu Azure Marketplace  
 
@@ -118,7 +118,7 @@ Każdy sklepu zawiera specjalne opcje ułatwiające zmaksymalizowaniu zwrotu z i
 ---   
 
 ## <a name="how-to-publish-in-the-storefronts-on-the-marketplace"></a>Instrukcje publikowania w sklepach na platformie handlowej  
-Poniższe sekcje pomóc w nawigowaniu opcje publikowania AppSource i portalu Azure Marketplace.  
+Następujące strony pomóc w nawigowaniu opcje publikowania AppSource i portalu Azure Marketplace.  
 
 Stają się wydawcy w sklepy w witrynie marketplace w trzy łatwe kroki.  
 1.  Odwiedź stronę [określają typ wyświetlania dla rozwiązania](./determine-your-listing-type.md) strony.  
@@ -135,7 +135,6 @@ Stają się wydawcy w sklepy w witrynie marketplace w trzy łatwe kroki.
 ---  
 
 ## <a name="support"></a>Pomoc techniczna  
-
 *   Odwiedź stronę [obsługę AppSource](./support-appsource.md) strony.  
 *   Odwiedź stronę [obsługę portalu Azure Marketplace](./support-azure-marketplace.md) strony.  
 
@@ -147,6 +146,7 @@ Stają się wydawcy w sklepy w witrynie marketplace w trzy łatwe kroki.
 
 ## <a name="guidelines"></a>Wytyczne  
 *   Odwiedź stronę [wytyczne](./guidelines.md) strony.  
+    *   Odwiedź stronę [wytyczne dotyczące tworzenia Identyfikatora Microsoft do zarządzania konta witryny marketplace](./guidelines.md#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account) sekcji.  
 *   Odwiedź stronę [Zarejestruj w Centrum deweloperów](./register-dev-center.md) strony.  
 *   Odwiedź stronę [Bank Dodaj i informacje o podatku](./add-bank-tax-info.md) strony.  
 *   Odwiedź stronę [włączyć za pomocą usługi Azure AD wersji próbnej](./enable-trial-using-azure-ad.md) strony.  

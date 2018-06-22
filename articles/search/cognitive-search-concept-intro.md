@@ -3,17 +3,18 @@ title: Wyszukiwanie kognitywnych wyodrębniania danych, języka naturalnego prze
 description: Wyodrębnianie danych, przetwarzanie języka naturalnego (NLP) i przetwarzania obrazu do tworzenia zawartości można wyszukiwać w usłudze Azure Search indeksowanie za pomocą kognitywnych umiejętności.
 manager: cgronlun
 author: HeidiSteen
+services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: heidist
-ms.openlocfilehash: ca6c285348208a7ad24faf966073d641810039fc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 64b4c0a315e206cd260f2f1108362e92f55d1843
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641115"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36304633"
 ---
 # <a name="what-is-cognitive-search"></a>Co to jest kognitywnych wyszukiwania?
 
@@ -25,12 +26,12 @@ Integracja AI jest za pośrednictwem *kognitywnych umiejętności* który wzboga
 
 Używane podczas indeksowania umiejętności można wstępnie zdefiniowanych lub niestandardowych:
 
-+ [Prefined umiejętności](cognitive-search-predefined-skills.md) są oparte na tej samej AI algorytmów w kognitywnych interfejsów API usługi: [rozpoznawanie jednostek o nazwie](cognitive-search-skill-named-entity-recognition.md), [wyodrębniania frazy klucza](cognitive-search-skill-keyphrases.md), i [Rozpoznawania](cognitive-search-skill-ocr.md) jest kilka. 
++ [Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md) są oparte na tej samej AI algorytmów w kognitywnych interfejsów API usługi: [rozpoznawanie jednostek o nazwie](cognitive-search-skill-named-entity-recognition.md), [wyodrębniania frazy klucza](cognitive-search-skill-keyphrases.md), i [Rozpoznawania](cognitive-search-skill-ocr.md)są kilku. 
 
 + [Niestandardowe umiejętności](cognitive-search-create-custom-skill-example.md) mogą być opracowane przez Ciebie wszelkie specjalne przetwarzania wymagany. Przykłady niestandardowych umiejętności może być przeznaczonych dla określonej domeny, takie jak finance, publikacji naukowych lub medycznych klasyfikatora modułu lub dokument niestandardowej jednostki.
 
 > [!NOTE]
-> Usługa Cognitive Search jest w publicznej wersji zapoznawczej i wykonywanie zestawu umiejętności jest obecnie oferowane bezpłatnie. Cennik dla tej możliwości zostanie opublikowany w późniejszym czasie.
+> Kognitywnych wyszukiwania w publicznej wersji zapoznawczej, a wykonanie skillset obecnie jest oferowane bezpłatnie. Cennik dla tej możliwości zostanie opublikowany w późniejszym czasie.
 
 ## <a name="components-of-cognitive-search"></a>Składniki wyszukiwania kognitywnych
 

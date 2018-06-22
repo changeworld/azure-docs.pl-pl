@@ -2,7 +2,7 @@
 
 
 #### <a name="to-create-a-new-service"></a>Aby utworzyć nową usługę
-1. Użyj poświadczeń konta Microsoft do logowania się na [portalu Microsoft Azure dla instytucji rządowych](https://portal.azure.us/).
+1. Użyj swoich poświadczeń konta Microsoft do logowania się na [portalu Microsoft Azure dla instytucji rządowych](https://portal.azure.us/).
 2. W portalu dla instytucji rządowych kliknij **+** , a następnie w witrynie marketplace, kliknij przycisk **zobaczyć wszystkie**. Wyszukaj pozycję _Urządzenie fizyczne StorSimple_. Wybierz i kliknij pozycję **Seria urządzeń fizycznych StorSimple**, a następnie kliknij pozycję **Utwórz**. Alternatywnie w portalu dla instytucji rządowych kliknij **+** , a następnie w obszarze **magazynu**, kliknij przycisk **fizycznych serii urządzenia StorSimple**.
 3. W bloku **Menedżer urządzeń StorSimple** wykonaj następujące kroki:
    

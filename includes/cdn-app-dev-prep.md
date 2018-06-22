@@ -6,8 +6,8 @@ Przed zapisaniem CDN kod zarządzania, należy wykonać pewne przygotowania do w
 * Zastosuj uprawnienia do grupy zasobów, tak aby tylko autoryzowani użytkownicy z dzierżawy usługi Azure AD mogą współdziałać z profilu CDN
 
 ### <a name="creating-the-resource-group"></a>Tworzenie grupy zasobów
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
-2. Kliknij przycisk **Utwórz zasób**.
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+2. Kliknij pozycję **Utwórz zasób**.
 3. Wyszukaj **grupy zasobów** i w okienku grupy zasobów, kliknij przycisk **Utwórz**.
 
     ![Tworzenie nowej grupy zasobów](./media/cdn-app-dev-prep/cdn-new-rg-1-include.png)

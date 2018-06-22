@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 06/04/2018
+ms.date: 06/15/2018
 ms.author: marsma
-ms.openlocfilehash: d6f42a5f3ce907fdb759bef29ca25bdc7fe365d9
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 207accc30e10c4e2bed5b713fc59e2f9ad86a876
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757012"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309848"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Konfiguracja sieci w Azure usługa Kubernetes (AKS)
 
@@ -28,7 +28,7 @@ Węzły w klastrze AKS skonfigurowany do użycia sieci podstawowej [kubenet] [ k
 ## <a name="advanced-networking"></a>Zaawansowane funkcje sieciowe
 
 **Zaawansowane** sieci umieszcza Twojej stanowiskami w sieci wirtualnej platformy Azure (VNet) skonfigurowanego, zapewniając ich automatyczne połączenie z zasobami sieci wirtualnej i integracja z zaawansowanej zestaw możliwości tej oferty sieci wirtualnych.
-Zaawansowane funkcje sieciowe jest obecnie dostępny tylko podczas wdrażania AKS klastrów w [portalu Azure] [ portal] lub za pomocą szablonu usługi Resource Manager.
+Zaawansowane funkcje sieciowe jest dostępne, gdy wdrażanie AKS klastry [portalu Azure][portal], Azure CLI lub za pomocą szablonu usługi Resource Manager.
 
 W węzłach klastra AKS skonfigurowany do użycia sieci zaawansowane [interfejsu sieciowego kontenera platformy Azure (CNI)] [ cni-networking] Kubernetes wtyczki.
 
@@ -47,7 +47,7 @@ Zaawansowane funkcje sieciowe zapewnia następujące korzyści:
 * Stanowiskami można uzyskać dostępu do zasobów w publicznej sieci Internet. Również funkcji sieci podstawowej.
 
 > [!IMPORTANT]
-> Każdy węzeł w klastrze AKS skonfigurowane zaawansowane funkcje sieciowe mogą obsługiwać maksymalnie **30 stanowiskami**. Każda sieć wirtualną udostępnionymi w celu użycia z wtyczki Azure CNI jest ograniczona do **4096 skonfigurowane adresy IP**.
+> Każdy węzeł w klastrze AKS skonfigurowane zaawansowane funkcje sieciowe mogą obsługiwać maksymalnie **30 stanowiskami** po skonfigurowaniu przy użyciu portalu Azure.  Maksymalna wartość można zmienić tylko modyfikując właściwość maxPods podczas wdrażania klastra przy użyciu szablonu usługi Resource Manager. Każda sieć wirtualną udostępnionymi w celu użycia z wtyczki Azure CNI jest ograniczona do **4096 skonfigurowane adresy IP**.
 
 ## <a name="advanced-networking-prerequisites"></a>Zaawansowany wymagania wstępne dotyczące sieci
 
@@ -75,19 +75,47 @@ Plan adresów IP dla klastra AKS składa się z sieci wirtualnej, co najmniej je
 
 Jak wspomniano wcześniej, każdej sieci wirtualnej udostępnionymi w celu użycia z wtyczki Azure CNI jest ograniczona do **4096 skonfigurowane adresy IP**. Każdy węzeł w klastrze, który został skonfigurowany na potrzeby zaawansowane funkcje sieciowe mogą obsługiwać maksymalnie **30 stanowiskami**.
 
-## <a name="configure-advanced-networking"></a>Skonfiguruj zaawansowane funkcje sieciowe
+## <a name="deployment-parameters"></a>Parametry wdrożenia
 
-Gdy użytkownik [utworzyć klaster AKS](kubernetes-walkthrough-portal.md) w portalu Azure, można skonfigurować dla zaawansowane funkcje sieciowe są następujące parametry:
+Podczas tworzenia klastra AKS, można skonfigurować dla zaawansowane funkcje sieciowe są następujące parametry:
 
 **Sieć wirtualna**: sieci wirtualnej, w której chcesz wdrożyć w klastrze Kubernetes. Jeśli chcesz utworzyć nową sieć wirtualną dla klastra, wybierz *Utwórz nowy* i postępuj zgodnie z instrukcjami *Utwórz sieć wirtualną* sekcji.
 
 **Podsieci**: podsieci w sieci wirtualnej, w której chcesz wdrożyć w klastrze. Jeśli chcesz utworzyć nową podsieć w sieci wirtualnej klastra, wybierz *Utwórz nowy* i postępuj zgodnie z instrukcjami *Utwórz podsieć* sekcji.
 
-**Zakres adresów usługi Kubernetes**: zakres adresów IP dla usługi klastrowania Kubernetes adresów IP. Ten zakres nie może być w zakresie adresów IP sieci wirtualnej klastra.
+**Zakres adresów usługi Kubernetes**: *Kubernetes usługi zakres adresów* jest zakres adresów IP, z którego adresy są przypisane do usługi Kubernetes w klastrze (Aby uzyskać więcej informacji dotyczących usług Kubernetes, zobacz [ Usługi] [ services] w dokumentacji Kubernetes).
+
+Zakres adresów IP usługi Kubernetes:
+
+* Nie może być w zakresie adresów IP sieci wirtualnej klastra
+* Nie należy nakłada się żadnych innych sieci wirtualnych, z którym równorzędnymi użytkownikami klastra sieci wirtualnej
+* Należy nie nakładać się na wszystkie adresy IP lokalnych
+
+Może spowodować nieprzewidywalne zachowanie, jeśli są używane nakładających się zakresów IP. Na przykład jeśli pod próbuje uzyskać dostęp IP poza klastrem, a wykonywanej IP również być IP usługi, mogą pojawić błędy i nieprzewidywalne zachowanie.
 
 **Adres IP usługi Kubernetes DNS**: adres IP dla klastra usługi DNS. Ten adres musi znajdować się w *Kubernetes usługi zakres adresów*.
 
 **Mostek docker adres**: adres IP i maski podsieci, można przypisać do mostka Docker. Ten adres IP nie musi być w zakresie adresów IP sieci wirtualnej klastra.
+
+## <a name="configure-networking---cli"></a>Konfigurowanie sieci — interfejsu wiersza polecenia
+
+Podczas tworzenia klastra AKS z wiersza polecenia platformy Azure, można również skonfigurować zaawansowane funkcje sieciowe. Użyj następujących poleceń do utworzenia nowego klastra AKS z zaawansowanych funkcji sieci włączone.
+
+Najpierw Pobierz identyfikator zasobu podsieci na istniejącą podsieć, do której dołączy AKS klastra:
+
+```console
+$ az network vnet subnet list --resource-group myVnet --vnet-name myVnet --query [].id --output tsv
+
+/subscriptions/d5b9d4b7-6fc1-46c5-bafe-38effaed19b2/resourceGroups/myVnet/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/default
+```
+
+Użyj [utworzyć az aks] [ az-aks-create] z `--network-plugin azure` argumentu, aby utworzyć klaster z zaawansowanych w sieci. Aktualizacja `--vnet-subnet-id` wartość Identyfikatora podsieci zebrane w poprzednim kroku:
+
+```azurecli
+az aks create --resource-group myAKSCluster --name myAKSCluster --network-plugin azure --vnet-subnet-id <subnet-id> --docker-bridge-address 172.17.0.1/16 --dns-service-ip 10.2.0.10 --service-cidr 10.2.0.0/24
+```
+
+## <a name="configure-networking---portal"></a>Konfigurowanie sieci — portal
 
 Poniższy zrzut ekranu portalu Azure przedstawiono przykład konfigurowania tych ustawień podczas tworzenia klastra AKS:
 
@@ -143,7 +171,9 @@ Klastry Kubernetes, utworzone za pomocą aparatu ACS obsługują zarówno [kuben
 [acs-engine]: https://github.com/Azure/acs-engine
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
+[services]: https://kubernetes.io/docs/concepts/services-networking/service/
 [portal]: https://portal.azure.com
 
 <!-- LINKS - Internal -->
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [aks-ssh]: aks-ssh.md

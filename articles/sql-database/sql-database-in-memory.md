@@ -9,12 +9,12 @@ ms.custom: develop databases
 ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: jodebrui
-ms.openlocfilehash: 89e5497c10f3e24dd84333f095a9bd7c0017ea88
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a21ce5c9cbf5517733a6b491124e51b163f6c2b9
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647871"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309303"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optymalizacja wydajności za pomocą technologii w pamięci w bazie danych SQL
 
@@ -72,7 +72,7 @@ Szczegółowe wideo na temat technologii sieci:
 
 OLTP w pamięci zawiera tabele zoptymalizowane pod kątem pamięci, które są używane do przechowywania danych użytkownika. Te tabele są wymagane, aby zmieścić ją w pamięci. Ponieważ zarządzanie pamięci bezpośrednio w usłudze SQL Database, mamy pojęcie limit przydziału dla danych użytkownika. Tę koncepcję jest określany jako *magazynu OLTP w pamięci*.
 
-Każda baza danych z obsługiwanych autonomiczny warstwa cenowa i każda pula elastyczna warstwa cenowa zawiera pewne magazynu OLTP w pamięci. Zobacz [limity zasobów na podstawie jednostek dtu w warstwie](sql-database-dtu-resource-limits.md) i [limity zasobów na podstawie vCore](sql-database-vcore-resource-limits.md).
+Każda baza danych z obsługiwanych autonomiczny warstwa cenowa i każda pula elastyczna warstwa cenowa zawiera pewne magazynu OLTP w pamięci. Zobacz [limity zasobów na podstawie jednostek dtu w warstwie - pojedynczej bazy danych](sql-database-dtu-resource-limits-single-databases.md), [limity zasobów na podstawie jednostek dtu w warstwie - pule elastyczne](sql-database-dtu-resource-limits-elastic-pools.md),[limity zasobów na podstawie vCore - pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md) i [limity zasobów na podstawie vCore - pule elastyczne](sql-database-vcore-resource-limits-elastic-pools.md).
 
 Następujące elementy są wliczane do Twojej zakończenia magazynu OLTP w pamięci:
 

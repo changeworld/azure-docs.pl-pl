@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2018
 ms.author: chackdan
-ms.openlocfilehash: 78cff3ba5bd2f8bc80f302a232e45864159ca88f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a5046a5e3771e95d76bb6edc7987a1e3176abeb0
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641887"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309419"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Zagadnienia związane z planowaniem pojemności klastra sieci szkieletowej usług
 Wszystkie wdrożenia produkcyjnego planowania pojemności jest ważnym krokiem. Poniżej przedstawiono niektóre elementy, które należy wziąć pod uwagę w ramach tego procesu.
@@ -46,6 +46,8 @@ Ustal liczbę typy węzeł klastra musi zaczynać.  Każdy typ węzła jest mapo
 Każdy typ węzła jest różne skali ustawić i można skalować w lub w dół niezależnie, mają różne zestawy otwartych portów i metryki pojemności różnych. Aby uzyskać więcej informacji na temat relacji między typami węzła i zestawy skalowania maszyny wirtualnej, jak dla protokołu RDP w jedno wystąpienie, sposobu otwierania nowych portów i tak dalej, zobacz [typy węzłów klastra usługi sieć szkieletowa](service-fabric-cluster-nodetypes.md).
 
 Klastra usługi sieć szkieletowa może składać się z więcej niż jednego typu węzła. W takim przypadku klaster składa się z jednego typu węzła podstawowego i co najmniej jeden typ węzła innej niż podstawowa.
+
+Typ jednego węzła po prostu nie może przekraczać 100 węzłów na zestaw skali maszyny wirtualnej. Należy dodać do osiągnięcia docelowych skali zestawach skali maszyn wirtualnych i skalowania automatycznego nie automagically dodać zestawy skalowania maszyny wirtualnej. Dodanie zestawach skali maszyn wirtualnych w miejscu do klastra na żywo jest trudne zadań i często skutkuje inicjowania obsługi administracyjnej nowych klastrów z typami odpowiedni węzeł udostępniane w czasie tworzenia użytkowników. 
 
 ### <a name="primary-node-type"></a>Typ węzła podstawowego
 
@@ -188,7 +190,7 @@ W tych wskazówkach bezstanowe uruchomionych na nodetype innej niż podstawowa.
 
 **Liczba wystąpień maszyn wirtualnych:** dla obciążeń produkcyjnych, które są bezstanowych, rozmiar typu minimalne obsługiwane z systemem innym niż podstawowy węzłami wynosi 2. Dzięki temu można przeprowadzić dwa bezstanowych wystąpienia aplikacji, dzięki czemu usługi na przetrwanie utraty wystąpienia maszyny Wirtualnej. 
 
-**Maszyna wirtualna SKU:** . to jest typ węzła którym działają usługi aplikacji, dlatego SKU maszyny Wirtualnej wybierz dla niego, należy wziąć pod uwagę obciążenia szczytowego planowane jest umieszczenie w każdym węźle. Wymagana pojemność elementu nodetype, zależy od obciążenia, który ma zostać uruchomiona w klastrze, dlatego firma Microsoft nie może zapewnić jakościowe wskazówek dla określonego obciążenia, jednak w tym miejscu jest szerokie wskazówki ułatwiające rozpoczęcie pracy
+**Maszyna wirtualna SKU:** . to jest typ węzła którym działają usługi aplikacji, dlatego SKU maszyny Wirtualnej wybierz dla niego, należy wziąć pod uwagę obciążenia szczytowego planowane jest umieszczenie w każdym węźle. Wymagana pojemność typu węzła zależy od obciążenia, który ma zostać uruchomiona w klastrze, dlatego firma Microsoft nie może zapewnić jakościowe wskazówek dla określonego obciążenia, jednak w tym miejscu jest szerokie wskazówki ułatwiające rozpoczęcie pracy
 
 W przypadku obciążeń produkcyjnych 
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 23abf13aca84bde3a9e4a82722051689cc177a2b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ab668a905b435287a4eaf96ff04b2fa5b54deb1d
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34371273"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36313517"
 ---
 Istnieją różne powody, gdy nie można uruchomić lub połączyć do aplikacji działających na maszynie wirtualnej platformy Azure (VM). Przyczyny aplikacji nie jest uruchomiona lub nasłuchuje na oczekiwanych portach, port nasłuchujący zablokowane lub sieć zasady prawidłowo przekazywanie ruchu do aplikacji. W tym artykule opisano metodyczny podejście, aby odnaleźć i rozwiązać problem.
 
@@ -32,7 +32,7 @@ Jeśli masz problemy z połączeniem z aplikacji, spróbuj następujące ogólne
 
 * Uruchom ponownie maszynę wirtualną
 * Utwórz ponownie punkt końcowy / reguł zapory / sieci reguł zabezpieczeń grupy (NSG)
-  * [Model usługi Resource Manager — Zarządzanie grupami zabezpieczeń sieci](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+  * [Model usługi Resource Manager — Zarządzanie grupami zabezpieczeń sieci](../articles/virtual-network/manage-network-security-group.md)
   * [Model klasyczny — punkty końcowe usługi zarządzania w chmurze](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
 * Nawiązywanie połączenia z innej lokalizacji, takiej jak innej sieci wirtualnej platformy Azure
 * Wdróż ponownie maszynę wirtualną
@@ -93,7 +93,7 @@ Jeśli nie można uzyskać dostęp do aplikacji, należy sprawdzić następując
 * Sieci, monitorowanie oprogramowania uruchomionego w systemie docelowym maszyny Wirtualnej lub wykrywania nieautoryzowanego dostępu zezwala na ruch.
 * Punkty końcowe usług chmury lub grupy zabezpieczeń sieci umożliwia ruch:
   * [Model klasyczny — punkty końcowe usługi zarządzania w chmurze](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
-  * [Model usługi Resource Manager — Zarządzanie grupami zabezpieczeń sieci](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+  * [Model usługi Resource Manager — Zarządzanie grupami zabezpieczeń sieci](../articles/virtual-network/manage-network-security-group.md)
 * Oddzielny składnik uruchomione w maszynie Wirtualnej w ścieżce między testu maszyny Wirtualnej i maszyny Wirtualnej, takie jak usługi równoważenia obciążenia lub zapora zezwala na ruch.
 
 Na maszynie wirtualnej z systemem Windows użyj zapory systemu Windows z zabezpieczeniami zaawansowanymi, aby określić, czy reguły zapory wykluczenia ruchu przychodzącego i wychodzącego aplikacji.

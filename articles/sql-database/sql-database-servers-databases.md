@@ -1,33 +1,22 @@
 ---
-title: Tworzenie i zarządzanie serwerami Azure SQL & bazy danych | Dokumentacja firmy Microsoft
-description: Informacje o serwerze bazy danych SQL Azure i pojęcia dotyczące bazy danych i dotyczących tworzenia i zarządzania serwerami i bazami danych.
+title: Serwerów logicznego SQL Azure i pojedynczych baz danych | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat serwera logicznego bazy danych SQL Azure i koncepcje pojedynczej bazy danych i ich zasobów.
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 06/20/2018
 ms.author: carlrab
-ms.openlocfilehash: 2600e39dec91fc6916fa7bbd02e318d33cfa3c99
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 505fd88959feb1c84abc53c6435776a5c5b4123c
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649061"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309184"
 ---
-# <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Utwórz i Zarządzaj serwerami bazy danych SQL Azure i baz danych
-
-Baza danych SQL oferuje trzy typy baz danych:
-
-- Pojedyncza baza danych utworzona w ciągu [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) z [łączyć zestaw zasobów obliczeniowych i przestrzeni dyskowej](sql-database-service-tiers-dtu.md) lub [niezależnie od skalowania zasobów obliczeniowych i przestrzeni dyskowej](sql-database-service-tiers-vcore.md). Baza danych Azure SQL jest skojarzony z serwera logicznego bazy danych SQL Azure, który jest tworzony w określonym regionie Azure.
-- Bazy danych utworzonej w ramach [puli baz danych](sql-database-elastic-pool.md) w [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) z [łączyć zestaw zasobów obliczeniowych i magazynu (w oparciu o jednostek dtu w warstwie)](sql-database-service-tiers-dtu.md) lub [niezależnie od skalowania zasobów obliczeniowych i magazynu (w oparciu o vCore)](sql-database-service-tiers-vcore.md) współdzielenia wszystkie bazy danych w puli. Baza danych Azure SQL jest skojarzony z serwera logicznego bazy danych SQL Azure, który jest tworzony w określonym regionie Azure.
-- [Wystąpienia programu SQL server](sql-database-managed-instance.md) (zarządzane) tworzone wystąpienie w ramach [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) ze zdefiniowanym zestawem zasobów obliczeniowych i magazynu dla wszystkich baz danych w tym wystąpieniu serwera. Zarządzane wystąpienie zawiera systemowych i użytkownika bazy danych. Zarządzane wystąpienia zaprojektowana w celu umożliwienia bazy danych przyrostu i shift do w pełni zarządzane rozwiązanie typu PaaS, bez zmiany projektu aplikacji. Zarządzane wystąpienia zapewnia wysoką zgodność z modelem programowania lokalnego programu SQL Server i obsługuje dużych większość funkcji programu SQL Server i towarzyszące narzędzi i usług.  
-
-Baza danych SQL Azure Microsoft obsługuje danych tabelarycznych (TDS) protokół klienta wersja strumienia 7.3 lub nowszym i zezwala na tylko zaszyfrowanego połączenia TCP/IP.
-
-> [!IMPORTANT]
-> Wystąpienia zarządzane bazy danych SQL w publicznej wersji zapoznawczej, oferuje pojedynczej warstwie usługi ogólnego przeznaczenia. Aby uzyskać więcej informacji, zobacz [Wystąpienie zarządzane usługi SQL Database](sql-database-managed-instance.md). W dalszej części tego artykułu, nie ma zastosowania do zarządzanego wystąpienia.
+# <a name="azure-sql-database-logical-servers-and-single-databases-and-their-resources"></a>Serwerów logicznej bazy danych SQL Azure i pojedynczych baz danych i ich zasobów
 
 ## <a name="what-is-an-azure-sql-logical-server"></a>Co to jest serwer logiczny Azure SQL?
 
@@ -59,6 +48,20 @@ Serwer logiczny bazy danych Azure:
 - Logowania główne na poziomie serwera mogą zarządzać wszystkimi bazami danych na serwerze
 - Może zawierać logowania podobne do tych w lokalnych wystąpieniach programu SQL Server, którym udzielono dostępu do co najmniej jednej bazy danych na serwerze, i może otrzymać ograniczone prawa administracyjne. Aby uzyskać więcej informacji, zobacz temat [Logowania](sql-database-manage-logins.md).
 - Jest sortowanie domyślne dla wszystkich baz danych użytkowników utworzone na serwerze logicznym `SQL_LATIN1_GENERAL_CP1_CI_AS`, gdzie `LATIN1_GENERAL` jest angielski (Stany Zjednoczone), `CP1` jest strona kodowa 1252, `CI` nie uwzględnia wielkości liter, a `AS` jest akcentów.
+
+## <a name="logical-servers-and-databases"></a>Logiczne serwerów i baz danych
+
+Na serwerze logicznym można utworzyć:
+
+- Pojedyncza baza danych utworzona w ciągu [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) z [łączyć zestaw zasobów obliczeniowych i przestrzeni dyskowej](sql-database-service-tiers-dtu.md) lub [niezależnie od skalowania zasobów obliczeniowych i przestrzeni dyskowej](sql-database-service-tiers-vcore.md). Baza danych Azure SQL jest skojarzony z serwera logicznego bazy danych SQL Azure, który jest tworzony w określonym regionie Azure.
+- Bazy danych utworzonej w ramach [puli baz danych](sql-database-elastic-pool.md) w [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) z [łączyć zestaw zasobów obliczeniowych i magazynu (w oparciu o jednostek dtu w warstwie)](sql-database-service-tiers-dtu.md) lub [niezależnie od skalowania zasobów obliczeniowych i magazynu (w oparciu o vCore)](sql-database-service-tiers-vcore.md) współdzielenia wszystkie bazy danych w puli. Baza danych Azure SQL jest skojarzony z serwera logicznego bazy danych SQL Azure, który jest tworzony w określonym regionie Azure.
+
+> [!IMPORTANT]
+> Wystąpienie zarządzane bazy danych SQL w publicznej wersji zapoznawczej, jest [wystąpienia programu SQL server](sql-database-managed-instance.md) (zarządzane) tworzone wystąpienie w ramach [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) ze zdefiniowanym zestawem zasobów obliczeniowych i magazynowania zasoby dla wszystkich baz danych w tym wystąpieniu serwera. Zarządzane wystąpienie zawiera systemowych i użytkownika bazy danych. Zarządzane wystąpienia zaprojektowana w celu umożliwienia bazy danych przyrostu i shift do w pełni zarządzane rozwiązanie typu PaaS, bez zmiany projektu aplikacji. Zarządzane wystąpienia zapewnia wysoką zgodność z modelem programowania lokalnego programu SQL Server i obsługuje dużych większość funkcji programu SQL Server i towarzyszące narzędzi i usług. Aby uzyskać więcej informacji, zobacz [Wystąpienie zarządzane usługi SQL Database](sql-database-managed-instance.md). W dalszej części tego artykułu, nie ma zastosowania do zarządzanego wystąpienia.
+
+## <a name="tds-and-tcpip-connections"></a>Połączenia TDS i protokołu TCP/IP
+
+Baza danych SQL Azure Microsoft obsługuje danych tabelarycznych (TDS) protokół klienta wersja strumienia 7.3 lub nowszym i zezwala na tylko zaszyfrowanego połączenia TCP/IP.
 
 ## <a name="azure-sql-databases-protected-by-sql-database-firewall"></a>Chronione przez zaporę bazy danych SQL Azure bazy danych SQL
 
@@ -109,7 +112,7 @@ Tworzenie i zarządzanie nimi Azure SQL server, baz danych i zapory przy użyciu
 |[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)|Pobiera jeden lub więcej baz danych|
 |[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase)|Ustawia właściwości dla bazy danych lub przenosi istniejącą bazę danych do puli elastycznej|
 |[Remove-AzureRmSqlDatabase](/powershell/module/azurerm.sql/remove-azurermsqldatabase)|Usuwa z bazy danych|
-|[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)|Tworzy grupę zasobów]
+|[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)|Tworzy grupę zasobów|
 |[New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver)|Tworzy serwer|
 |[Get-AzureRmSqlServer](/powershell/module/azurerm.sql/get-azurermsqlserver)|Zwraca informacje na temat serwerów|
 |[Set-AzureRmSqlServer](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlserver)|Modyfikuje właściwości serwera|

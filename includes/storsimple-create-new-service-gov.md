@@ -2,7 +2,7 @@
 
 
 #### <a name="to-create-a-new-service"></a>Aby utworzyć nową usługę
-1. Użyj poświadczeń konta Microsoft do logowania się na [portalu Microsoft Azure dla instytucji rządowych](https://manage.windowsazure.us/).
+1. Użyj swoich poświadczeń konta Microsoft do logowania się na [portalu Microsoft Azure dla instytucji rządowych](https://manage.windowsazure.us/).
 2. W portalu dla instytucji rządowych kliknij **nowy** > **usług danych** > **Menedżer StorSimple** > **szybkie tworzenie** .
 3. W wyświetlonym formularzu wykonaj następujące czynności:
    

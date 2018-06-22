@@ -19,7 +19,7 @@ Wykonaj następujące kroki, aby zainstalować i skonfigurować narzędzie `kube
 > 
 
 ### <a name="install-kubectl"></a>Instalowanie narzędzia kubectl
-Jednym ze sposobów instalacji tego narzędzia jest użycie polecenia `az acs kubernetes install-cli` interfejsu wiersza polecenia platformy Azure 2.0. Aby uruchomić to polecenie, upewnij się, że [zainstalowano](/cli/azure/install-az-cli2) najnowszy interfejs wiersza polecenia platformy Azure 2.0 i zalogowano się na koncie platformy Azure (`az login`).
+Jednym ze sposobów instalacji tego narzędzia jest użycie polecenia `az acs kubernetes install-cli` interfejsu wiersza polecenia platformy Azure 2.0. Upewnij się, że aby uruchomić to polecenie, użytkownik [zainstalowane](/cli/azure/install-az-cli2) najnowsze Azure CLI 2.0 i zalogowany do konta platformy Azure (`az login`).
 
 ```azurecli
 # Linux or macOS
@@ -193,7 +193,7 @@ Po skonfigurowaniu tunelu dla koordynatora DC/OS można uzyskiwać dostęp do po
 
 Po skonfigurowaniu tunelu dla koordynatora Docker Swarm otwórz ustawienia systemu Windows, aby skonfigurować systemową zmienną środowiskową o nazwie `DOCKER_HOST` przy użyciu wartości `:2375`. Następnie możesz uzyskać dostęp do klastra Swarm za pośrednictwem interfejsu wiersza polecenia platformy Docker.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Wdrażanie kontenerów i zarządzanie nimi w klastrze:
 
 * [Współpraca z usługą Azure Container Service i rozwiązaniem Kubernetes](../articles/container-service/kubernetes/container-service-kubernetes-ui.md)

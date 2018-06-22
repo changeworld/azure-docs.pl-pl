@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/07/2018
 ms.author: ellacroi
-ms.openlocfilehash: d93f66282e3f735565389904c65436ed2ad79480
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 11a4fe4cd7b4b08b4468e08bba754518d27abb99
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825257"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309542"
 ---
 # <a name="grow-your-business-with-appsource"></a>Rozwoju firmy z AppSource  
 Użyj AppSource, gdy zaangażowania firmy, aby znaleźć, spróbuj i biznesowych — oprogramowanie jako usługa (SaaS) aplikacje i usługi implementacji pomoc wyników biznesowych dysku i skrócić czas wartości.  
@@ -32,8 +32,7 @@ Użyj AppSource, gdy zaangażowania firmy, aby znaleźć, spróbuj i biznesowych
 | ***Aplikacje, aby poprawić wydajność, wydajności i biznesowych*** | Zapewnia rodzajach działalności gospodarczej, w tym obsługi klienta, HR, operacje i aplikacji |  
 | ***Implementacja doświadczonym partnera, aby pomóc dostosować aplikacje do sytuacji unikatowy dla klienta*** | Udostępnia katalog ofert usługi konsultingowe dla rozwiązań opartych na Dynamics 365, usługi Power BI, PowerApps i aplikacji partnerów, ułatwiające użytkownicy biznesowi dostarczania przewidywalną wyników |  
 
-<!-- # Grow your business with AppSource  -->
-Zarówno w portalu Azure Marketplace, jak i AppSource są uruchamiania punkty dla wspólnych działań przejdź na rynek z firmą Microsoft i zamachowym dla rozwoju firmy. Przy użyciu uruchamiania podwyższania poziomu, generowanie żądanie i wspólnych sprzedaży i marketingu, ofert witryny marketplace można bezpośrednio z aparatu firm chmury. Nie ma żadnych opłat za udział. Microsoft odwiedzić sklepy w witrynie marketplace każdego dnia można znaleźć prawo aplikacji i usług, aby pomóc zwiększyć biznesową dla klienta. Celem firmy Microsoft to połączenie organizacji do rozwiązań i usług firmy Microsoft i Microsoft partnerów.  
+<!-- # Grow your business with AppSource  --> Zarówno w portalu Azure Marketplace, jak i AppSource są uruchamiania punkty dla wspólnych działań przejdź na rynek z firmą Microsoft i zamachowym dla rozwoju firmy. Przy użyciu uruchamiania podwyższania poziomu, generowanie żądanie i wspólnych sprzedaży i marketingu, ofert witryny marketplace można bezpośrednio z aparatu firm chmury. Nie ma żadnych opłat za udział. Microsoft odwiedzić sklepy w witrynie marketplace każdego dnia można znaleźć prawo aplikacji i usług, aby pomóc zwiększyć biznesową dla klienta. Celem firmy Microsoft to połączenie organizacji do rozwiązań i usług firmy Microsoft i Microsoft partnerów.  
 
 ## <a name="business-benefits-of-joining-a-cloud-marketplace"></a>Korzyści biznesowe przyłączania marketplace chmury  
 Istnieje wiele atrakcyjnych przyczyn, dlaczego należy dołączyć sklepy w witrynie marketplace. Poniżej przedstawiono zalety przeznaczony do wyświetlania oferty na AppSource ułatwiające rozwoju firmy:  
@@ -53,7 +52,7 @@ Istnieje wiele atrakcyjnych przyczyn, dlaczego należy dołączyć sklepy w witr
 *   **Lista konsultingowe tworzeniu ofert usługi**  
     Użytkownicy biznesowi szukasz doświadczonym partnerami, aby pomóc odbiorcy Rozpoczynanie pracy z pewnością oferując jakości usługi konsultingowe na celu zapewnienie przewidywalnej wyników. Wyświetl listę konsultingowe tworzeniu ofert usług do potrzeb użytkowników biznesowych find szybkie rozpoczęcie pracy oferty, aby pomóc odbiorcy.  
 *   **Rozpoczynanie pracy z zaufania**  
-    Zespół Microsoft AppSource jest tutaj do zapewnienia bezproblemowego dołączenia do środowiska. W tym miejscu zespołu AppSource ma pomóc w każdym kroku — Określa, czy działa na środowisko dysku testu lub wersji próbnej, pomaga spełniają kryteria listy i inne.  
+    Zespół Microsoft AppSource jest tutaj do zapewnienia bezproblemowego dołączenia do środowiska. W tym miejscu zespołu AppSource ma pomóc w każdym kroku; Określa, czy działa na środowisko dysku testu lub wersji próbnej, pomaga spełnić kryteria listy i inne.  
 *   **Dostosowywanie strony listę aplikacji**  
     Masz elastyczność, jeśli chodzi o podjęcie, jak na rynek aplikacji na AppSource. Podaj wideo, arkusze danych, dokumentacji i szczegółowy opis. Firma Microsoft współpracuje z Tobą w celu przedstawienia aplikacji na AppSource w istotny sposób.  
 *   **Uzyskiwanie przydatnych wyników analiz**  
@@ -112,7 +111,7 @@ Poniższe tabele szczegóły każdego kroku wypełniania listy Twojej oferty.
 | Ustawienia sklepu | Najlepsze praktyki | 
 |:---------------------------------------- |:----------------------------------------------------- |
 | **Nazwa oferty** | Podsumowanie oferty jest wyświetlany na stronie wyszukiwania oferty w galerii AppSource strony głównej i aplikacji. Podsumowując oferty, aby pomóc w udoskonalaniu klasyfikacji aplikacji w wynikach wyszukiwarki, obejmują słowa kluczowe do wyszukania. |
-| **Opis oferty** | **Podaj opis dobrej oferty**<br />Opisz wyraźnie wartości oferty oferty w pierwszych kilku zdaniach opisu. Należy pamiętać, że pierwszy zdań kilka mogą być wyświetlane w wynikach aparatu wyszukiwania.<br />Nie należy polegać na funkcje i możliwości sprzedaży na produkt. Zamiast tego należy skoncentrować się na wartość, którą należy dostarczyć. Za pomocą słownika branżowe lub na podstawie korzyści treść, jak to możliwe.<br />Podstawowe składniki Twojej oferty wartość powinna zawierać informacje o:<br />•What jest produktu<br />•WHO uzyska od niego najbardziej<br />Konieczność •What lub słabe nie jej adres.<br />Poinformuj klientów, sposobu ich biznesowe lub życia pracy mogą być różne za pomocą rozwiązania.<br />Dołączyć do nich słowa kluczowe do wyszukania i zmiany słów kluczowych w opisie oferty, aby pomóc w udoskonalaniu klasyfikacji oferty w wynikach aparatu wyszukiwania.<br />Podaj opis oferty przy użyciu prostego języka HTML.<br />Oto przykład prostego oferty wyświetlania strony (jak pokazano w powyższym przykładzie lista), który zawiera podsumowanie oferty następuje lista funkcji, kluczowych. Maksymalna liczba znaków to 3000.<br />_Przykładowe HTML_<br /><p>Organizacja Insights dla usługi Dynamics 365 (online) zawiera ważne metryki wdrażania i użycia dla danej organizacji Dynamics 365 i narzędzia umożliwiające zapobiegać problemów dotyczących wydajności i pomocy technicznej.</p> <ul><li><strong>Dostosuj pulpity nawigacyjne</strong><br /> Konfigurowanie pulpitu nawigacyjnego do zapewnienia wygody pracy użytkowników i migawek ważnych danych.<ul> <li><strong>Monitorowanie wdrożenia i użyj:</strong> zidentyfikować najbardziej aktywni użytkownicy, liczba żądań strony, najczęściej używane jednostek, przepływy pracy i.</li> </ul><p>Minimalna obsługiwana wersja platformy: 8.1.1</p> |
+| **Opis oferty** | **Podaj opis dobrej oferty**<br />Opisz wyraźnie wartości oferty oferty w pierwszych kilku zdaniach opisu. Należy pamiętać, że pierwszy zdań kilka mogą być wyświetlane w wynikach aparatu wyszukiwania.<br />Nie należy polegać na funkcje i możliwości sprzedaży na produkt. Zamiast tego należy skoncentrować się na wartość, którą należy dostarczyć. Za pomocą słownika branżowe lub na podstawie korzyści treść, jak to możliwe.<br />Podstawowe składniki Twojej oferty wartość powinna zawierać informacje o:<ul> <li>Co to jest produktu</li>  <li>Uzyskuje który od niego najbardziej</li> <li>Adres ona jakie potrzeby lub słabe.</li> </ul>Poinformuj klientów, sposobu ich biznesowe lub życia pracy mogą być różne za pomocą rozwiązania.<br />Dołączyć do nich słowa kluczowe do wyszukania i zmiany słów kluczowych w opisie oferty, aby pomóc w udoskonalaniu klasyfikacji oferty w wynikach aparatu wyszukiwania.<br />Podaj opis oferty przy użyciu prostego języka HTML.<br />Oto przykład prostego oferty wyświetlania strony (jak pokazano w powyższym przykładzie lista), który zawiera podsumowanie oferty następuje lista funkcji, kluczowych. Maksymalna liczba znaków to 3000.<br />*Przykładowe HTML*<br />Organizacja Insights dla usługi Dynamics 365 (online) zawiera ważne metryki wdrażania i użycia dla danej organizacji Dynamics 365 i narzędzia umożliwiające zapobiegać problemów dotyczących wydajności i pomocy technicznej. <ul> <li>**Dostosuj pulpity nawigacyjne**<br />Konfigurowanie pulpitu nawigacyjnego do zapewnienia wygody pracy użytkowników i migawek ważnych danych.<ul> <li>**Monitorowanie wdrożenia i użycia**<br />Zidentyfikuj najbardziej aktywni użytkownicy, liczba żądań strony, najczęściej używane jednostek, przepływy pracy i.</li> </ul></li> </ul>Wersja minimalna obsługiwanych platform: `8.1.1` |
 
 **Szczegóły sklepu — Lista szczegółów**  
 
@@ -134,7 +133,7 @@ Poniższe tabele szczegóły każdego kroku wypełniania listy Twojej oferty.
 | **Zrzuty ekranu** | Dodaj maksymalnie pięć zrzutów ekranu, dołączyć klucza słów kluczowych w nazwach. |
 
 ### <a name="promote-the-availability-of-your-offer-on-appsource"></a>Podwyższ poziom dostępności oferty na AppSource  
-Ofertę znajduje się na AppSource, zdobyciu prawo, aby wyświetlić wskaźnika "Dostępne na AppSource" na stronie. 
+Gdy ofertę znajduje się na AppSource, przyznano Ci prawa do wyświetlania ***dostępne na AppSource*** wskaźnika na stronie. 
 
  ![AppSource wskaźnika](./media/marketplace-appsource/appsourcebadge.png)
     

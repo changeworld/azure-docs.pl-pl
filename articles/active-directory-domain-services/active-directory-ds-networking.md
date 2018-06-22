@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: maheshu
-ms.openlocfilehash: bb69c217c1038a66333e65629023357e5854d242
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: a91120e2592e6fdaa38334f36bfd9b67c0f1b50d
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265048"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300999"
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Zagadnienia dotyczące sieci dla usług domenowych Azure AD
 ## <a name="how-to-select-an-azure-virtual-network"></a>Jak wybrać sieć wirtualną platformy Azure
@@ -107,7 +107,7 @@ Ponadto grupa NSG również ilustruje sposób zablokowanie bezpiecznego dostępu
 
 ![Przykład grupy NSG bezpieczny dostęp do LDAPS w Internecie](.\media\active-directory-domain-services-alerts\default-nsg.png)
 
-**Więcej informacji** - [Utwórz grupę zabezpieczeń sieci](../virtual-network/virtual-networks-create-nsg-arm-pportal.md).
+**Więcej informacji** - [Utwórz grupę zabezpieczeń sieci](../virtual-network/manage-network-security-group.md).
 
 
 ## <a name="network-connectivity"></a>Połączenie sieciowe
@@ -145,4 +145,4 @@ Azure classic sieci wirtualnej, w której włączono usługi domenowe Azure AD u
 * [Komunikacja równorzędna sieci wirtualnej platformy Azure](../virtual-network/virtual-network-peering-overview.md)
 * [Konfigurowanie połączenia do wirtualnymi klasycznym modelu wdrażania](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
 * [Grupy zabezpieczeń sieci platformy Azure](../virtual-network/security-overview.md)
-* [Utwórz grupę zabezpieczeń sieci](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+* [Utwórz grupę zabezpieczeń sieci](../virtual-network/manage-network-security-group.md)

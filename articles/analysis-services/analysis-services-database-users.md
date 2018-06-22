@@ -5,19 +5,19 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 06/20/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8a2338045c43f9eb240ce55fd1ec31a4db40fd4e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8870c4199d5f24d1e8d07bc97d61a09c07052c1e
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598355"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36307983"
 ---
 # <a name="manage-database-roles-and-users"></a>Zarządzanie ról bazy danych i użytkowników
 
-Na poziomie bazy danych modelu wszyscy użytkownicy muszą należeć do roli. Role definiują użytkowników z uprawnieniami określonego dla bazy danych modelu. Dowolnemu użytkownikowi lub grupie zabezpieczeń dodany do roli musi mieć konto w dzierżawie usługi Azure AD w tej samej subskrypcji co serwer.
+Na poziomie bazy danych modelu wszyscy użytkownicy muszą należeć do roli. Role definiują użytkowników z uprawnieniami określonego dla bazy danych modelu. Dowolnemu użytkownikowi lub grupie zabezpieczeń dodany do roli musi mieć konto w dzierżawie usługi Azure AD w tej samej subskrypcji co serwer. 
 
 Sposób definiowania ról różni się w zależności od używanego narzędzia, ale efekt jest taki sam.
 
@@ -27,6 +27,9 @@ Uprawnienia roli obejmują:
 *  **Odczyt** — użytkownicy mogą używać aplikacji klienta do nawiązania połączenia i analizowania danych bazy danych modelu.
 
 Podczas tworzenia projektu modelu tabelarycznego, tworzyć role i dodać użytkowników lub grupy do tych ról za pomocą menedżera ról programu SSDT. Po wdrożeniu na serwerze, użyj narzędzia SSMS, [poleceń cmdlet programu PowerShell usługi analizy](https://msdn.microsoft.com/library/hh758425.aspx), lub [język skryptów modelu tabelarycznego](https://msdn.microsoft.com/library/mt614797.aspx) (TMSL), aby dodać lub usunąć role i członkowie.
+
+> [!NOTE]
+> Grupy zabezpieczeń musi mieć `MailEnabled` ustawioną właściwość `True`.
 
 ## <a name="to-add-or-manage-roles-and-users-in-ssdt"></a>Aby dodać lub zarządzania rolami i użytkownicy programu SSDT  
   

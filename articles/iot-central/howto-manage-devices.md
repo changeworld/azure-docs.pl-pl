@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 8a1b88621feaaaff3f787cca8c4b4e45d4974931
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: b0772e3186c86239c773222a2b2e8d602a46aa52
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807479"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300598"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Zarządzanie urządzeniami w aplikacji Azure IoT centralnej
 
@@ -49,7 +49,7 @@ Aby dodać urządzenie do aplikacji Azure IoT centralnej:
 1. Wybierz **rzeczywistych** lub **symulowane**. Jest rzeczywiste urządzenie fizyczne urządzenia, które można połączyć się z aplikacją Azure IoT centralnej. Symulowane urządzenie ma przykładowych danych, wygenerowane automatycznie przez Azure IoT centralnej. W tym przykładzie użyto rzeczywistego urządzenia. Wybierz **rzeczywistych** można przejść do **szczegóły urządzenia** strony dla nowego urządzenia.
 
 
-## <a name="bulk-import-devices"></a>Importowania zbiorczego urządzeń
+## <a name="import-devices"></a>Importuj urządzeń
 
 Do nawiązania połączenia z aplikacji Azure IoT centralnej dużej liczby urządzeń oferty zbiorcze importowania urządzeń przy użyciu pliku CSV. 
 
@@ -65,9 +65,12 @@ Do zbiorczego rejestrowania urządzeń w aplikacji:
 
 1. W lewym panelu wybierz szablon urządzenia, dla którego chcesz zbiorcze utworzyć urządzenia.
 
-1. Wybierz **nowy** i wybierz **importowania zbiorczego**.
+ >   [!NOTE] 
+    Jeśli nie ma szablonu urządzenia jeszcze zaimportowanie urządzeń bez względu na **nieskojarzonych urządzeń** i zarejestruj je bez żadnych szablonów. Gdy urządzenia zostały zaimportowane, następnie można skojarzyć je z szablonem jako kolejnych czynności.
 
-    [![Działania importowania zbiorczego](./media/howto-manage-devices/BulkImport1.png)](./media/howto-manage-devices/BulkImport1.png#lightbox)
+1. Kliknij przycisk **Importuj**.
+
+    [![Akcja importu](./media/howto-manage-devices/BulkImport1.png)](./media/howto-manage-devices/BulkImport1.png#lightbox)
 
 1. Wybierz plik CSV, który zawiera listę identyfikatorów urządzenia do zaimportowania.
 
@@ -75,9 +78,25 @@ Do zbiorczego rejestrowania urządzeń w aplikacji:
 
 1. Po zakończeniu importowania komunikat z potwierdzeniem jest wyświetlana na siatce urządzenia.
 
-    [![Powodzenie importowania zbiorczego](./media/howto-manage-devices/BulkImport3.png)](./media/howto-manage-devices/BulkImport3.png#lightbox)
+    [![Powodzenie importu](./media/howto-manage-devices/BulkImport3.png)](./media/howto-manage-devices/BulkImport3.png#lightbox)
 
 Jeśli urządzenie zaimportować operacja kończy się niepowodzeniem, zostanie wyświetlony komunikat o błędzie na siatce urządzenia. Plik dziennika Przechwytywanie wszystkich błędów jest generowana i mogą być pobierane przez kliknięcie przycisku komunikat o błędzie.
+
+
+**Kojarzenie urządzeń z szablonu**
+
+Po zarejestrowaniu urządzeń przez uruchomienie importu w obszarze **nieskojarzonych urządzeń**, następnie urządzenia są tworzone bez skojarzenia szablonu urządzenia. Urządzenie musi być powiązany z szablonem, aby eksplorować dane i inne szczegółowe informacje o urządzeniu. Wykonaj następujące kroki, aby skojarzyć urządzenia z szablonu:
+1. Wybierz **Explorer** w menu nawigacji po lewej stronie.
+1. W lewym panelu, wybierz **nieskojarzonych urządzeń**.
+    [![Nieskojarzony urządzeń](./media/howto-manage-devices/UnassociatedDevices1.png)](./media/howto-manage-devices/UnassociatedDevices1.png#lightbox)
+1. Wybierz urządzenia, które chcesz skojarzyć z szablonem.
+1. Kliknij przycisk **skojarzyć** opcji.
+    [![Kojarzenie urządzeń](./media/howto-manage-devices/UnassociatedDevices2.png)](./media/howto-manage-devices/UnassociatedDevices2.png#lightbox)
+1. Wybierz szablon z listy dostępnych szablonów, a następnie kliknij przycisk **skojarzyć** przycisku.
+1. Wybrane urządzenia zostaną przeniesione na podstawie szablonu odpowiednich urządzeń.
+
+ >   [!NOTE] 
+    Gdy urządzenie został skojarzony z szablonem, nie można zmienić ani skojarzony z innego szablonu.
 
 ## <a name="export-devices"></a>Eksportuj urządzeń
 
@@ -86,7 +105,7 @@ Aby udostępnić urządzeniom na łączenie z centralnego IoT, konieczne będzie
 Do zbiorczego eksportu urządzenia z poziomu aplikacji:
 1. Wybierz **Explorer** w menu nawigacji po lewej stronie.
 
-1. Jeden lewego panelu, wybierz szablon urządzenia, dla którego chcesz wyeksportować urządzenia.
+1. W lewym panelu wybierz szablon urządzenia, dla którego chcesz wyeksportować urządzenia.
 
 1. Wybierz urządzenia, które chcesz wyeksportować, a następnie kliknij przycisk **wyeksportować** akcji.
 

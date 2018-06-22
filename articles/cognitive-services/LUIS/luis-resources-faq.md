@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 9804b9d5187637fe509d79134f93280d93daca76
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: b6b333937e7c88f566fc401967b26cbd31ca158b
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266145"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301506"
 ---
 # <a name="language-understanding-faq"></a>Opis języka — często zadawane pytania
 
@@ -49,6 +49,9 @@ Poprzedni **funkcja wzorca** jest obecnie przestarzałe, zastępuje  **[wzorce](
 
 ### <a name="how-do-i-use-an-entity-to-pull-out-the-correct-data"></a>Jak używać jednostki, aby wysunąć prawidłowe dane? 
 Zobacz [jednostek](luis-concept-entity-types.md) i [wyodrębniania danych](luis-concept-data-extraction.md).
+
+### <a name="should-variations-of-an-example-utterance-include-punctuation"></a>Zmiany utterance przykład powinna zawierać znaki interpunkcyjne? 
+Dodaj możliwych kombinacji zniesławiających przykład do zamiar albo dodać wzorzec utterance przykład z [składni, aby zignorować](luis-concept-patterns.md#pattern-syntax) znak interpunkcyjny. 
 
 ## <a name="luis-endpoint"></a>Punkt końcowy LUIS
 

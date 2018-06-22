@@ -7,17 +7,17 @@ manager: craigg
 ms.service: sql-database
 ms.custom: migrate
 ms.topic: conceptual
-ms.date: 03/16/2018
+ms.date: 06/20/2018
 ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: e0c849efa402bdfcf3ed6091cccf47ca722f23d7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2a0a411d5f2b19eda844cba160429ecfe958c45e
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650115"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309617"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nowy model DBA w chmurze — zarządzania bazą danych w bazie danych SQL Azure
 
@@ -31,7 +31,6 @@ W tym artykule omówiono niektóre właściwości podstawowej bazy danych SQL Az
 - Zabezpieczenia i zgodność z przepisami
 - Inteligentnego bazy danych monitorowania i konserwacji
 - Przenoszenie danych
-
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr"></a>Biznesowe ciągłości i odzyskiwanie po awarii (BCDR)
 Możliwości odzyskiwania ciągłości i odzyskiwaniem po awarii firm umożliwiają kontynuować firmy, w zwykły sposób, w przypadku awarii. Po awarii może być zdarzeniu poziomu bazy danych (na przykład ktoś przez pomyłkę porzuca kluczowe tabeli) lub centrum danych zdarzenia poziomu (katastrofy regionalnych, na przykład tsunami). 
@@ -235,7 +234,7 @@ Baza danych SQL oferuje różnych warstwach usług podstawowa, standardowa i Pre
 
 Upewnić się, że jesteś na poziomie wydajności prawo, można monitorować zapytań i bazy danych użycia zasobów za pomocą jednego z wyżej wymienionych metod "Jak monitorować wydajności i użycia zasobów w bazie danych SQL". Użytkownik stwierdzi, że zapytania lub bazy danych działają spójnie gorących na Procesora/pamięci itp., należy rozważyć skalowaniu na wyższy poziom wydajności. Podobnie jeśli użytkownik należy pamiętać, że nawet w Twojej godzinach szczytu, prawdopodobnie nie korzystać z zasobów tyle; należy rozważyć skalowania z bieżący poziom wydajności. 
 
-Jeśli wzorzec aplikacji SaaS lub scenariusza konsolidacji bazy danych, rozważ użycie puli elastycznej dla optymalizację kosztów. Pula elastyczna jest doskonałym sposobem uzyskania konsolidacji bazy danych i optymalizację kosztów. Aby uzyskać więcej informacji na temat zarządzania wieloma bazami danych przy użyciu puli elastycznej, zobacz: [Zarządzanie pul i baz danych](sql-database-elastic-pool.md#manage-elastic-pools-and-databases-using-the-azure-portal). 
+Jeśli wzorzec aplikacji SaaS lub scenariusza konsolidacji bazy danych, rozważ użycie puli elastycznej dla optymalizację kosztów. Pula elastyczna jest doskonałym sposobem uzyskania konsolidacji bazy danych i optymalizację kosztów. Aby uzyskać więcej informacji na temat zarządzania wieloma bazami danych przy użyciu puli elastycznej, zobacz: [Zarządzanie pul i baz danych](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases). 
 
 ### <a name="how-often-do-i-need-to-run-database-integrity-checks-for-my-database"></a>Jak często konieczne, uruchom sprawdzanie integralności bazy danych dla bazy danych?
 Baza danych SQL używa niektóre techniki inteligentne, umożliwiające obsługę określonych klas uszkodzenie danych i automatycznie bez utraty danych. Te techniki wbudowanych w usługę i są wykorzystywane przez usługę podczas muszą powstaje. Regularnie sprawdzane są kopie zapasowe bazy danych przez usługę Przywracanie ich, a na nim uruchomione polecenie DBCC CHECKDB. Jeśli występują problemy, baza danych SQL aktywne adresy je. [Naprawy strony](/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring) jest wykorzystywana do ustalenia stron, które nie są uszkodzone lub mają problemy z integralnością danych. Strony bazy danych zawsze są weryfikowane z domyślnym ustawieniem sumę KONTROLNĄ, która weryfikuje integralność strony. Baza danych SQL aktywnie monitoruje i monitoruje integralność bazy danych oraz, jeśli wystąpią problemy, adresów je o najwyższym priorytecie. Oprócz tych można opcjonalnie uruchamiaj własne sprawdzanie integralności momencie użytkownika.  Aby uzyskać więcej informacji, zobacz [integralność danych w bazie danych SQL](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)

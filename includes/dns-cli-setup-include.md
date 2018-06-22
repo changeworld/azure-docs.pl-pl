@@ -9,7 +9,7 @@ Przed rozpoczęciem konfiguracji sprawdź, czy dysponujesz następującymi eleme
 
 ### <a name="sign-in-to-your-azure-account"></a>Zaloguj się do swojego konta platformy Azure
 
-Otwórz okno konsoli i uwierzytelnij się przy użyciu swoich poświadczeń. Aby uzyskać więcej informacji, zobacz [Log in to Azure from the Azure CLI](/cli/azure/authenticate-azure-cli) (Logowanie do platformy Azure z poziomu wiersza polecenia platformy Azure)
+Otwórz okno konsoli i uwierzytelnij się przy użyciu swoich poświadczeń. Aby uzyskać więcej informacji, zobacz [logowanie do platformy Azure z wiersza polecenia platformy Azure](/cli/azure/authenticate-azure-cli)
 
 ```azurecli
 azure login

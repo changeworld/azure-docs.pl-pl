@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: v-geberr
-ms.openlocfilehash: 7c2cd84df8f1eccbd30a7c8054ec8d06336cf2dd
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 66a23876eebe177c767b20f60f86891c35da3385
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264650"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301866"
 ---
 # <a name="utterances-in-luis"></a>Zniesławiających w LUIS
 
@@ -52,6 +52,9 @@ W każdej iteracji modelu nie należy dodawać dużej ilości zniesławiających
 LUIS kompilacje skuteczne modeli z zniesławiających wybranych uważnie. Dodawanie zbyt wiele zniesławiających nie jest przydatna ponieważ wprowadza ona pomyłek.  
 
 Zaleca się rozpoczynać się od kilku zniesławiających, następnie [Przejrzyj zniesławiających punktu końcowego](label-suggested-utterances.md) poprawne konwersji ekstrakcji prognozowania i jednostek.
+
+## <a name="ignoring-words-and-punctuation"></a>Ignorowanie słów i znaków interpunkcyjnych
+Jeśli chcesz zignorować słów lub znaki interpunkcyjne w przykładzie utterance, użyj [wzorzec](luis-concept-patterns.md#pattern-syntax) z _Ignoruj_ składni. 
 
 ## <a name="training-utterances"></a>Zniesławiających szkolenia
 Szkolenie jest deterministyczna: prognozowania utterance mogą się nieco różnić między wersjami lub aplikacji.

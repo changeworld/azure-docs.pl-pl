@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 99b1e39b764f27d4638e8bb0f0d210043fde8643
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: de85e4295a59c54cb68306bf0cbc516bf5e1f8e2
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236403"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36313297"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analiza ruchu — często zadawane pytania
 
@@ -28,17 +28,25 @@ ms.locfileid: "35236403"
 
     - Subskrypcja obserwatora sieciowego włączony
     - Dzienniki przepływu NSG włączona dla grupy NSG, który chcesz monitorować
-    - Konto usługi Azure Storage do przechowywania raw flog dzienniki
+    - Konto usługi Azure Storage do przechowywania dzienników raw przepływu
     - Obszar roboczy analizy dzienników (OMS), z odczytu i zapisu
     - Użytkownik musi być przypisany z jednego z następujących ról na poziomie subskrypcji:
     
-            All permissions *
-            All Read permissions */read
-            All network permissions Microsoft.Network/*
-            All network read permissions Microsoft.Network/*/read
+    1.  Musi być jednym z następujących klasycznego administratora
+    
+        - Administrator konta
+        - Administrator usługi 
+        - Współadministrator
+        
+    2.  Twoje konto musi mieć jeden z następujących ról RBAC w zakresie subskrypcji
+    
+        - Właściciel
+        - Współautor
+        - Czytelnik
+        - Współautor sieci
 
-    Lub, użytkownik musi być przypisany o następującej wszystkich ról na poziomie subskrypcji: 
-
+    3. Twoje konto musi mieć wszystkie niestandardowe role RBAC z uprawnieniami do wszystkich następujących akcji wymienionych na poziomie subskrypcji
+            
         - Microsoft.Network/applicationGateways/read
         - Microsoft.Network/connections/read
         - Microsoft.Network/loadBalancers/read 
@@ -50,22 +58,22 @@ ms.locfileid: "35236403"
         - Microsoft.Network/virtualNetworkGateways/read 
         - Microsoft.Network/virtualNetworks/read
         
-Aby sprawdzić role przypisane do użytkownika w przypadku subskrypcji, wykonaj następujące czynności:
+    Aby sprawdzić role przypisane do użytkownika w przypadku subskrypcji, wykonaj następujące czynności:
 
-Logowanie do platformy Azure przy użyciu Login-AzureRmAccount 
+    Logowanie do platformy Azure przy użyciu **Login-AzureRmAccount** 
 
-Wybierz subskrypcję wymagane przy użyciu Select-AzureRmSubscription 
+    Wybierz wymagane subskrypcją za pomocą **Select-AzureRmSubscription** 
 
-Teraz, aby wyświetlić listę wszystkich ról, które są przypisane do określonego użytkownika, użyj Get AzureRmRoleAssignment - SignInName <user email> - IncludeClassicAdministrators 
+    Aby wyświetlić listę wszystkich ról, które są przypisane do określonego użytkownika, wykonując **Get AzureRmRoleAssignment - SignInName <user email> - IncludeClassicAdministrators** 
 
-Jeśli nie widać żadnych danych wyjściowych po wykonywania commends następnie skontaktuj dotrzeć do odpowiednich administratora subskrypcji, uzyskania dostępu do wykonania polecenia.  
+    Jeśli nie widać żadnych danych wyjściowych po wykonywania commends następnie skontaktuj dotrzeć do odpowiednich administratora subskrypcji, uzyskania dostępu do wykonania polecenia.  
 
-Dla więcej szczegółowych informacji można znaleźć [Zarządzanie kontroli dostępu opartej na rolach przy użyciu programu Azure PowerShell](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-powershell)
+    Dla więcej szczegółowych informacji można znaleźć [Zarządzanie kontroli dostępu opartej na rolach przy użyciu programu Azure PowerShell](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-powershell)
 
 
 2.  Regiony platformy Azure są dostępne w ruchu analytics?
 
-    W wersji zapoznawczej, można użyć analizy ruchu dla grup NSG w następujących **obsługiwane regiony**: zachodnie centralnej nam wschodnie stany USA, wschodnie stany USA 2, północno-środkowe stany, południowo-środkowe stany, środkowe stany USA, zachodnie stany USA, zachodnie stany USA 2, Europa Zachodnia, Europa Północna , Wielka Brytania Zachodnia, Wielka Brytania Południowa, Australia Wschodnia i Australia południowo-wschodnia. Obszar roboczy analizy dzienników musi istnieć w zachodnie centralnej nam wschodnie stany USA, Europa Zachodnia, Południowo-Wschodnia Australia albo region Wielka Brytania Południowa.
+    W wersji zapoznawczej, można użyć analizy ruchu dla grup NSG w następujących **obsługiwane regiony**: zachodnie centralnej nam wschodnie stany USA, wschodnie stany USA 2, północno-środkowe stany, południowo-środkowe stany, środkowe stany USA, zachodnie stany USA, zachodnie stany USA 2, Europa Zachodnia, Europa Północna Wielka Brytania Zachodnia, Wielka Brytania Południowa, Australia Wschodnia, Australia Południowo-Wschodnia i Azja południowo-wschodnia. Obszar roboczy analizy dzienników musi istnieć w zachodnie centralnej nam wschodnie stany USA, Europa Zachodnia, Wielka Brytania Południowa, Południowo-Wschodnia Australia albo regionu Azja południowo-wschodnia.
 
 3.  Można włączyć przepływ grup NSG dzienniki znajdować się w różnych regionach niż obszar Mój obszar roboczy OMS?
 
@@ -127,11 +135,11 @@ Dla więcej szczegółowych informacji można znaleźć [Zarządzanie kontroli d
 
 14. Można skonfigurować analytics ruchu przy użyciu programu PowerShell lub szablonu usługi Azure Resource Manager?
 
-Tak, przy użyciu systemu windows powershell jest obsługiwana z wersji 6.2.1 konfiguracji analizy ruchu lub nowszej, usługi Azure Resource Manager Obsługa szablonów nie jest dostępny na przedstawić. Aby dowiedzieć się więcej, jak PowerShell może służyć do konfigurowania ruchu analytics można znaleźć w następujących [dokumentacji](https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog?view=azurermps-6.2.0). 
+        Yes, traffic analytics configuration using windows powershell is supported from version 6.2.1 onwards, however Azure Resource Manager template support is not available at present. To learn more, how PowerShell can be used to configure traffic analytics please refer following [documentation](https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog?view=azurermps-6.2.0). 
 
 15.  Jak kosztuje analizy ruchu
 
-Analiza ruchu taryfowych dla przepływu danych dziennika przetworzone przez usługę i przechowywanie resulted dzienniki rozszerzone w obszarze roboczym analizy dzienników. Aby dowiedzieć się więcej na temat cen planu, zapoznaj się z [kliknij tutaj](https://azure.microsoft.com/en-us/pricing/details/network-watcher/) 
+        Analiza ruchu taryfowych dla przepływu danych dziennika przetworzone przez usługę i przechowywanie resulted dzienniki rozszerzone w obszarze roboczym analizy dzienników. Aby dowiedzieć się więcej na temat cen planu, zapoznaj się z [kliknij tutaj](https://azure.microsoft.com/en-us/pricing/details/network-watcher/) 
 
 16.  Jak można przejść za pomocą klawiatury w widoku mapy geograficznie?
 
@@ -162,3 +170,47 @@ Analiza ruchu taryfowych dla przepływu danych dziennika przetworzone przez usł
         - `ESC` Zwija zaznaczenie rozwinięte.
         - `UP Arrow` Klucza wykonuje ta sama akcja co `ESC`. `Down arrow` Klucza wykonuje ta sama akcja co `Enter`.
         - Użyj `Shift+Plus` Aby powiększyć, i `Shift+Minus` Aby pomniejszyć.
+
+17. Jak można przejść za pomocą klawiatury w widoku topologii sieci wirtualnej?
+
+    Na stronie topologia sieci wirtualne zawiera dwóch głównych sekcji:
+    
+    - **Transparent**: transparent umieszczone w górnej części topologię sieci wirtualnej oferuje możliwość Wybierz Filtry dystrybucji ruchu za pomocą przycisków, takich jak połączone sieci wirtualnych/Rozłączono sieci wirtualnych/Active/Inactive/na — lokalnych/Azure region/publiczne adresy IP / Ciężki/średnia liczba godzin/niski/dozwolone/zablokowane, a informacje legendy. Na wybór przycisków zdefiniowanych w topologii, na przykład jeśli użytkownik wybierze przycisk filtru "Active" w obszarze transparentu, topologii wyróżnia "Active" sieci wirtualne w danym wdrożeniu, a następnie jest stosowany filtr odpowiednich.
+    - **Topologia**: sekcja topologia umieszczone pod nagłówkiem pokazuje Dystrybucja ruchu między sieciami wirtualnymi.
+    
+    **Nawigacji klawiatury na transparencie**
+    
+    - Domyślnie zaznaczenie na stronie topologia sieci wirtualnych na banerze jest filtr przycisk "Połączone sieci wirtualne".
+    - Aby przejść do innego przycisku filtrów, można użyć `Tab` klawisz, aby przejść dalej. Aby przejść do tyłu, należy użyć `Shift+Tab` klucza. Pierwszeństwo kierunku nawigacji do przodu jest od lewej do prawej, a następnie góry do dołu.
+    - Naciśnij klawisz `Enter` klawisz, aby zastosować wybrany filtr. Na podstawie wyboru filtru i wdrażania, jednego lub wielu węzłów (sieci wirtualnej) w sekcji topologii są wyróżnione.
+        - Aby przełączyć między **transparent** i **topologii**, naciśnij klawisz `Ctrl+F6`.
+        
+    **Nawigacji klawiatury w topologii**
+    
+    - Po wybrać dowolny filtr na banerze i naciśnięciu `Ctrl+F6`, fokus do jednego z węzłów wyróżnione (**sieci wirtualnej**) w widoku topologii.
+    - Aby przejść do innych wyróżnione węzły w widoku topologii, można użyć `Shift+Right arrow` klucza dla ruch do przodu. 
+    - Na wyróżnione węzły fokus do **informacji przybornika** dla węzła. Domyślnie fokusu na przycisk "Więcej informacji" **informacji przybornika**. Aby umożliwić dalsze nawigację **pole** przeglądać, `Right` i `Left arrow` kluczy, aby przejść do przodu i do tyłu, odpowiednio. Naciśnięcie przycisku `Enter` ma sam efekt co wybierając przycisk ukierunkowanych na **informacji przybornika**.
+    - Wyboru tych węzłów, jego można odwiedzić wszystkich połączeń, co naciskając się `Shift+Left arrow` klucza. Przenieś fokus do **informacji przybornika** tego połączenia. W dowolnym momencie można przesunięte fokus do węzła, naciskając klawisz `Shift+Right arrow` ponownie.
+    
+
+18. Jak można przejść za pomocą klawiatury w widoku topologii podsieci?
+
+    Strona topologii podsieci wirtualne zawiera dwóch głównych sekcji:
+    
+    - **Transparent**: transparent umieszczone w górnej części wirtualnej topologii podsieci oferuje możliwość Wybierz Filtry dystrybucji ruchu za pomocą przycisków, takich jak Active/Inactive/zewnętrzne połączenia/na — lokalnych/Azure region/publicznych adresów IP/przepływa aktywny / Ciężki/średnia liczba godzin/niski/złośliwym kodem ruchu/dozwolone/zablokowany, podsieciami bramy podsieci/wewnętrznej bazy danych i podsieci frontonu. Na wybór przycisków zdefiniowanych w topologii, na przykład jeśli użytkownik wybierze przycisk filtru "Active" w obszarze transparentu, topologii wyróżnia "Active" podsieci wirtualnych w danym wdrożeniu, a następnie jest stosowany filtr odpowiednich.
+    - **Topologia**: Dystrybucja ruchu między podsieciami wirtualnych, które zawiera sekcja topologia umieszczone pod nagłówkiem.
+    
+    **Nawigacji klawiatury na transparencie**
+    
+    - Domyślnie zaznaczenie na stronie topologia podsieci wirtualnej transparentu jest filtr przycisk "Podsieci".
+    - Aby przejść do innego przycisku filtrów, można użyć `Tab` klawisz, aby przejść dalej. Aby przejść do tyłu, należy użyć `Shift+Tab` klucza. Pierwszeństwo kierunku nawigacji do przodu jest od lewej do prawej, a następnie góry do dołu.
+    - Naciśnij klawisz `Enter` klawisz, aby zastosować wybrany filtr. Na podstawie wyboru filtru i wdrażania, jednego lub wielu węzłów (podsieć) w sekcji topologii są wyróżnione.
+        - Aby przełączyć między **transparent** i **topologii**, naciśnij klawisz `Ctrl+F6`.
+        
+    **Nawigacji klawiatury w topologii**
+    
+    - Po wybrać dowolny filtr na banerze i naciśnięciu `Ctrl+F6`, fokus do jednego z węzłów wyróżnione (**podsieci**) w widoku topologii.
+    - Aby przejść do innych wyróżnione węzły w widoku topologii, można użyć `Shift+Right arrow` klucza dla ruch do przodu. 
+    - Na wyróżnione węzły fokus do **informacji przybornika** dla węzła. Domyślnie fokusu na przycisk "Więcej informacji" **informacji przybornika**. Aby umożliwić dalsze nawigację **pole** przeglądać, `Right` i `Left arrow` kluczy, aby przejść do przodu i do tyłu, odpowiednio. Naciśnięcie przycisku `Enter` ma sam efekt co wybierając przycisk ukierunkowanych na **informacji przybornika**.
+    - Wyboru tych węzłów, jego można odwiedzić wszystkich połączeń, co naciskając się `Shift+Left arrow` klucza. Przenieś fokus do **informacji przybornika** tego połączenia. W dowolnym momencie można przesunięte fokus do węzła, naciskając klawisz `Shift+Right arrow` ponownie.    
+

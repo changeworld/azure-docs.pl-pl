@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 21e1e3041d7b1f4dc205355f6c0b8d4fd2e82775
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a72873678323d31181654923caf07ba509c9ab81
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212279"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301584"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Zwrotny serwer proxy w sieci szkieletowej usług Azure
 Zwrotny serwer proxy wbudowanych w sieci szkieletowej usług Azure pomaga mikrousług działającego w klastrze usługi sieć szkieletowa odnajdywania i komunikować się z innymi usługami, których punkty końcowe http.
@@ -57,8 +57,13 @@ Zamiast konfigurować port poszczególnych usług w usłudze równoważenia obci
 ![Komunikacji zewnętrznej][0]
 
 > [!WARNING]
-> Po skonfigurowaniu portu zwrotnego serwera proxy w usłudze równoważenia obciążenia wszystkie mikrousług w klastrze, które udostępniają punkt końcowy HTTP adresowane z spoza klastra.
+> Po skonfigurowaniu portu zwrotnego serwera proxy w usłudze równoważenia obciążenia wszystkie mikrousług w klastrze, które udostępniają punkt końcowy HTTP adresowane z spoza klastra. Oznacza to, że mikrousług, która miała być wewnętrzne może być wykrywalny przez określony złośliwy użytkownik. Przedstawia informacje o tym potenially poważnych usterek, które można wykorzystać; na przykład:
 >
+> * Złośliwy użytkownik będą mogły uruchamiać wielokrotnie, wywołując wewnętrzny usługi, który nie ma wystarczająco ze wzmocnionymi zabezpieczeniami ataku typu "odmowa usługi".
+> * Złośliwy użytkownik może dostarczyć nieprawidłowej postaci pakietów do wewnętrznego usługi, co powoduje niezamierzone zachowanie.
+> * Usługi, która miała być wewnętrzne może zwrócić informacji prywatnych lub poufnych nie mają być widoczne dla usługi poza klastrem, w związku z tym udostępnianie tych informacji poufnych przez złośliwego użytkownika. 
+>
+> Upewnij się, w pełni zrozumieć i ograniczyć potencjalne konsekwencje zabezpieczeń dla klastra i aplikacje, systemem, przed wprowadzeniem zwrotnego serwera proxy portu publicznego. 
 >
 
 

@@ -1,6 +1,6 @@
 ---
-title: Rozszerzenie maszyny wirtualnej OMS Azure dla systemu Linux | Dokumentacja firmy Microsoft
-description: Wdróż agenta pakietu OMS na maszynie wirtualnej systemu Linux przy użyciu rozszerzenia maszyny wirtualnej.
+title: Rozszerzenie maszyny wirtualnej Azure Log Analytics dla systemu Linux | Dokumentacja firmy Microsoft
+description: Wdróż agenta analizy dzienników na maszynie wirtualnej systemu Linux przy użyciu rozszerzenia maszyny wirtualnej.
 services: virtual-machines-linux
 documentationcenter: ''
 author: danielsollondon
@@ -15,24 +15,24 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/21/2018
 ms.author: danis
-ms.openlocfilehash: f0d8224e5578a5ae46245e6c70792e962a44c933
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cc8b3f6a4ff6b683fc4ed2777adf6ab0b17f05be
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652859"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301489"
 ---
-# <a name="oms-virtual-machine-extension-for-linux"></a>Rozszerzenie maszyny wirtualnej OMS dla systemu Linux
+# <a name="log-analytics-virtual-machine-extension-for-linux"></a>Zaloguj się Analytics rozszerzenie maszyny wirtualnej dla systemu Linux
 
 ## <a name="overview"></a>Przegląd
 
-Analiza dzienników zapewnia możliwości korygowania monitorowania, alertów i alertów w chmurze i lokalnych zasobów. Agent pakietu OMS rozszerzenie maszyny wirtualnej dla systemu Linux publikowania i obsługiwane przez firmę Microsoft. Rozszerzenie instaluje agenta pakietu OMS na maszynach wirtualnych platformy Azure i rejestrowania maszyn wirtualnych w istniejącym obszarem roboczym analizy dzienników. Ten dokument zawiera szczegóły dotyczące obsługiwanych platform, konfiguracji i opcje wdrażania dla OMS rozszerzenia maszyny wirtualnej systemu Linux.
+Analiza dzienników zapewnia możliwości korygowania monitorowania, alertów i alertów w chmurze i lokalnych zasobów. Rozszerzenie maszyny wirtualnej agenta analizy dziennika dla systemu Linux publikowania i obsługiwane przez firmę Microsoft. Rozszerzenie instaluje agenta analizy dzienników na maszynach wirtualnych platformy Azure i rejestrowania maszyn wirtualnych w istniejącym obszarem roboczym analizy dzienników. Ten dokument zawiera szczegóły dotyczące obsługiwanych platform, konfiguracji i opcje wdrażania dla rozszerzenia maszyny wirtualnej analizy dzienników dla systemu Linux.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="operating-system"></a>System operacyjny
 
-Można uruchomić rozszerzenia Agent pakietu OMS, względem tych dystrybucje systemu Linux.
+Można uruchomić rozszerzenia agenta analizy dziennika, względem tych dystrybucje systemu Linux.
 
 | Dystrybucja | Wersja |
 |---|---|
@@ -44,9 +44,9 @@ Można uruchomić rozszerzenia Agent pakietu OMS, względem tych dystrybucje sys
 | SUSE Linux Enterprise Server | 11 i 12 (x86/x64) |
 
 ### <a name="agent-and-vm-extension-version"></a>Wersja agenta i rozszerzenia maszyny Wirtualnej
-Poniższa tabela zawiera mapowania wersji wirtualna OMS rozszerzenia i Agent pakietu OMS pakietu dla każdej wersji. Łącze do informacji o wersji wersji pakietu OMS agent jest dołączony. Informacje o wersji zawierają szczegółowe informacje o poprawki i nowe funkcje dostępne w wersji danego agenta.  
+W poniższej tabeli przedstawiono mapowanie wersji rozszerzenia maszyny Wirtualnej analizy dziennika i Agent analizy dziennika pakietu dla każdej wersji. Łącze do informacji o wersji wersji pakietu agent analizy dzienników jest dołączony. Informacje o wersji zawierają szczegółowe informacje o poprawki i nowe funkcje dostępne w wersji danego agenta.  
 
-| Wersja rozszerzenia maszyny Wirtualnej systemu Linux OMS | Wersja pakietu OMS agenta | 
+| Wersja rozszerzenia maszyny Wirtualnej systemu Linux analizy dzienników | Wersja pakietu agenta analizy dzienników | 
 |--------------------------------|--------------------------|
 | 1.6.42.0 | [1.6.0-42](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.0-42)| 
 | 1.4.60.2 | [1.4.4-210](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.4-210)| 
@@ -62,15 +62,15 @@ Poniższa tabela zawiera mapowania wersji wirtualna OMS rozszerzenia i Agent pak
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
-Centrum zabezpieczeń Azure automatycznie udostępnia agent pakietu OMS i łączy go do obszaru roboczego analizy dzienników domyślny utworzony przez ASC w Twojej subskrypcji platformy Azure. Jeśli korzystasz z Centrum zabezpieczeń Azure, nie należy uruchamiać kroków w tym dokumencie. Dzięki temu zastępuje skonfigurowanego obszaru roboczego i przerywa połączenie z Centrum zabezpieczeń Azure.
+Centrum zabezpieczeń Azure automatycznie udostępnia agenta usługi Analiza dzienników i łączy go do obszaru roboczego analizy dzienników domyślny utworzony przez ASC w Twojej subskrypcji platformy Azure. Jeśli korzystasz z Centrum zabezpieczeń Azure, nie należy uruchamiać kroków w tym dokumencie. Dzięki temu zastępuje skonfigurowanego obszaru roboczego i przerywa połączenie z Centrum zabezpieczeń Azure.
 
 ### <a name="internet-connectivity"></a>Łączność z Internetem
 
-Rozszerzenia Agent pakietu OMS dla systemu Linux wymaga, aby docelowa maszyna wirtualna jest połączony z Internetem. 
+Rozszerzenia agenta analizy dziennika dla systemu Linux wymaga, że docelowa maszyna wirtualna jest połączony z Internetem. 
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
 
-Następujące JSON zawiera schemat rozszerzenia Agent pakietu OMS. Rozszerzenie wymaga identyfikator i klucz obszaru roboczego z obszaru roboczego analizy dzienników docelowym; te wartości mogą być [odnaleźć w obszarze roboczym analizy dzienników](../../log-analytics/log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key) w portalu Azure. Ponieważ klucz obszaru roboczego powinien być traktowany jako dane poufne, powinny być przechowywane w chronionej konfiguracji. Dane Azure ustawienia rozszerzenia chronione maszyny Wirtualnej jest szyfrowany i odszyfrowane tylko na docelowej maszynie wirtualnej. Należy pamiętać, że **workspaceId** i **workspaceKey** jest rozróżniana wielkość liter.
+Następujące JSON zawiera schemat rozszerzenia agenta analizy dziennika. Rozszerzenie wymaga identyfikator i klucz obszaru roboczego z obszaru roboczego analizy dzienników docelowym; te wartości mogą być [odnaleźć w obszarze roboczym analizy dzienników](../../log-analytics/log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key) w portalu Azure. Ponieważ klucz obszaru roboczego powinien być traktowany jako dane poufne, powinny być przechowywane w chronionej konfiguracji. Dane Azure ustawienia rozszerzenia chronione maszyny Wirtualnej jest szyfrowany i odszyfrowane tylko na docelowej maszynie wirtualnej. Należy pamiętać, że **workspaceId** i **workspaceKey** jest rozróżniana wielkość liter.
 
 ```json
 {
@@ -109,7 +109,7 @@ Następujące JSON zawiera schemat rozszerzenia Agent pakietu OMS. Rozszerzenie 
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 
-Rozszerzenia maszyny Wirtualnej platformy Azure można wdrożyć przy użyciu szablonów usługi Azure Resource Manager. Szablony są idealne w przypadku wdrażania maszyn wirtualnych, które wymagają konfiguracji wdrożenia post, takich jak dołączania do analizy dzienników. Przykładowy szablon usługi Resource Manager zawierający rozszerzenia maszyny Wirtualnej agenta pakietu OMS można znaleźć w [Azure Szybki Start galerii](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
+Rozszerzenia maszyny Wirtualnej platformy Azure można wdrożyć przy użyciu szablonów usługi Azure Resource Manager. Szablony są idealne w przypadku wdrażania maszyn wirtualnych, które wymagają konfiguracji wdrożenia post, takich jak dołączania do analizy dzienników. Przykładowy szablon usługi Resource Manager zawierający rozszerzenia maszyny Wirtualnej agenta analizy dziennika można znaleźć w [Azure Szybki Start galerii](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
 
 Konfiguracji JSON dla rozszerzenia maszyny wirtualnej mogą być zagnieżdżone wewnątrz zasobu maszyny wirtualnej lub umieszczony w katalogu głównego lub najwyższego poziomu szablonu usługi Resource Manager JSON. Umieszczanie konfiguracji JSON ma wpływ na wartość nazwy zasobów i typu. Aby uzyskać więcej informacji, zobacz [Ustaw nazwę i typ zasoby podrzędne](../../azure-resource-manager/resource-manager-templates-resources.md#child-resources). 
 
@@ -165,7 +165,7 @@ Podczas umieszczania rozszerzenia JSON w elemencie głównym szablonu, nazwy zas
 
 ## <a name="azure-cli-deployment"></a>Wdrożenia usługi Azure CLI
 
-Interfejsu wiersza polecenia Azure może służyć do wdrożenia rozszerzenia maszyny Wirtualnej agenta pakietu OMS na istniejącej maszyny wirtualnej. Zastąp *workspaceId* i *workspaceKey* z tymi z obszaru roboczego analizy dzienników. 
+Interfejsu wiersza polecenia Azure może służyć do wdrożenia rozszerzenia dziennika analizy agenta z maszyny Wirtualnej na istniejącej maszyny wirtualnej. Zastąp *workspaceId* i *workspaceKey* z tymi z obszaru roboczego analizy dzienników. 
 
 ```azurecli
 az vm extension set \

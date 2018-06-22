@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 02/12/2018
+ms.date: 06/20/2018
 ms.author: carlrab
-ms.openlocfilehash: 613fc4d914635f46d09552858706975006fcbff6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2956dfab3b9c1e6e8de54648dae9d2be99788ac2
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650472"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309218"
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Dostrajanie wydajności w bazie danych SQL Azure
 
@@ -25,7 +25,7 @@ W przypadku nie ma żadnych odpowiednich zaleceń i nadal masz problemy z wydajn
 - Dostrajanie aplikacji i stosować najlepsze rozwiązania, które może poprawić wydajność. 
 - Dostrajanie bazy danych, zmieniając indeksów i zapytań na bardziej efektywną pracę z danymi.
 
-Te są metod ręcznych, ponieważ należy zdecydować, co [limity zasobów jednostek dtu w warstwie na podstawie modelu](sql-database-dtu-resource-limits.md) i [limity zasobów opartych na vCore modelu (wersja zapoznawcza)](sql-database-vcore-resource-limits.md) odpowiadają Twoim potrzebom. W przeciwnym razie konieczne będzie ponowne zapisywanie adresów aplikacji lub kodu bazy danych i wdrażanie zmiany.
+Są one ręcznej metody, ponieważ należy określić ilość zasobów spełniają potrzeb. W przeciwnym razie konieczne będzie ponowne zapisywanie adresów aplikacji lub kodu bazy danych i wdrażanie zmiany.
 
 ## <a name="increasing-performance-tier-of-your-database"></a>Zwiększenie poziomu wydajności bazy danych
 
@@ -271,8 +271,8 @@ Niektóre aplikacje intensywnie zapisu. Czasami można zmniejszyć całkowitego 
 Niektóre aplikacje bazy danych mają obciążeń intensywnie odczytu. Buforowanie warstwy może zmniejszyć obciążenie bazy danych i może zmniejszyć poziom wydajności, wymagany do obsługi bazy danych przy użyciu bazy danych SQL Azure. Z [pamięć podręczna Redis Azure](https://azure.microsoft.com/services/cache/), jeśli masz obciążenie intensywnie odczytu danych może odczytywać raz (lub raz na maszynie warstwy aplikacji, w zależności od sposobu skonfigurowania) i następnie przechowywania tych danych spoza Twojej bazy danych SQL. Jest to sposób, aby zmniejszyć obciążenie bazy danych (CPU i odczytu We/Wy), ale nie wpływa na spójności transakcyjnej, ponieważ odczytywane z pamięci podręcznej dane mogą być zsynchronizowane z danymi w bazie danych. Chociaż w wielu aplikacjach pewnego poziomu niespójności jest dopuszczalna, który nie jest spełniony dla wszystkich obciążeń. Wszelkie wymagania aplikacji należy zapoznać się przed zaimplementowaniem strategii buforowania warstwy aplikacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby uzyskać więcej informacji na temat warstw na podstawie jednostek dtu w warstwie usług, zobacz [na podstawie jednostek dtu w warstwie model kupna](sql-database-service-tiers-dtu.md) i [limity zasobów jednostek dtu w warstwie na podstawie modelu](sql-database-dtu-resource-limits.md)
-* Aby uzyskać więcej informacji na temat warstw usług opartych na vCore, zobacz [na podstawie vCore model kupna (wersja zapoznawcza)](sql-database-service-tiers-vcore.md) i [limity zasobów na podstawie vCore (wersja zapoznawcza)](sql-database-vcore-resource-limits.md)
+* Aby uzyskać więcej informacji na temat warstw na podstawie jednostek dtu w warstwie usług, zobacz [na podstawie jednostek dtu w warstwie model kupna](sql-database-service-tiers-dtu.md).
+* Aby uzyskać więcej informacji na temat warstw usług opartych na vCore, zobacz [na podstawie vCore model kupna (wersja zapoznawcza)](sql-database-service-tiers-vcore.md).
 * Aby uzyskać więcej informacji na temat pule elastyczne, zobacz [co to jest puli elastycznej platformy Azure?](sql-database-elastic-pool.md)
 * Aby uzyskać informacje o wydajności i elastyczne pule, zobacz [kiedy należy wziąć pod uwagę puli elastycznej](sql-database-elastic-pool-guidance.md)
 

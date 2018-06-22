@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 06/20/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 027a10e687673bdeedf2858b4c23ff459df61b70
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ad4725ff6871ef489c6a10656af9a76e588edfa1
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649112"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308425"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Odzyskiwanie bazy danych Azure SQL przy użyciu kopii zapasowych bazy danych automatycznych
 Baza danych SQL oferuje następujące opcje bazy danych odzyskiwania przy użyciu [automatyczne kopie zapasowe bazy danych](sql-database-automated-backups.md) i [kopie zapasowe w przechowywania długoterminowego](sql-database-long-term-retention.md). Można przywrócić z kopii zapasowej bazy danych, aby:
@@ -32,7 +32,7 @@ Przywrócona baza danych generuje koszt dodatkowe miejsce do magazynowania w nas
 - Przywracanie P11 — P15 S4 S12 lub P1 — P6 Jeśli maksymalnego rozmiaru bazy danych jest większa niż 500 GB.
 - Przywracanie P1 — P6 do S4 S12 Jeśli maksymalnego rozmiaru bazy danych jest większa niż 250 GB.
 
-Nadmiarowe jest koszt, ponieważ maksymalny rozmiar przywróconej bazy danych jest większa niż ilość miejsca w magazynie uwzględnione na poziomie wydajności i wszelkie dodatkowe miejsce do magazynowania elastycznie powyżej uwzględniona ilość jest bardzo obciążona.  Aby cenach szczegóły dodatkowe miejsce do magazynowania, zobacz [bazy danych SQL cennikiem](https://azure.microsoft.com/pricing/details/sql-database/).  Jeśli rzeczywista ilość miejsca jest mniejsza niż ilość miejsca w magazynie uwzględnione, następnie z żadnymi dodatkowymi kosztami można tego uniknąć przez ograniczenie maksymalnego rozmiaru bazy danych do uwzględniona ilość. Aby uzyskać więcej informacji dotyczących rozmiaru magazynu bazy danych i zmiana maksymalnego rozmiaru bazy danych, zobacz [pojedyncze bazy danych zasobów na podstawie jednostek dtu w warstwie limity](sql-database-dtu-resource-limits.md#single-database-storage-sizes-and-performance-levels) i [pojedyncze bazy danych zasobów na podstawie vCore limity](sql-database-vcore-resource-limits.md#single-database-storage-sizes-and-performance-levels).  
+Nadmiarowe jest koszt, ponieważ maksymalny rozmiar przywróconej bazy danych jest większa niż ilość miejsca w magazynie uwzględnione na poziomie wydajności i wszelkie dodatkowe miejsce do magazynowania elastycznie powyżej uwzględniona ilość jest bardzo obciążona.  Aby cenach szczegóły dodatkowe miejsce do magazynowania, zobacz [bazy danych SQL cennikiem](https://azure.microsoft.com/pricing/details/sql-database/).  Jeśli rzeczywista ilość miejsca jest mniejsza niż ilość miejsca w magazynie uwzględnione, następnie z żadnymi dodatkowymi kosztami można tego uniknąć przez ograniczenie maksymalnego rozmiaru bazy danych do uwzględniona ilość.  
 
 > [!NOTE]
 > [Automatyczne kopie zapasowe bazy danych](sql-database-automated-backups.md) są używane podczas tworzenia [kopiowanie bazy danych](sql-database-copy.md). 

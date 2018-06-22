@@ -1,65 +1,24 @@
 ---
 title: Usługa Azure SQL Database - vCore | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat warstwy usługi dla pojedynczej i baz danych puli zapewnienie poziomy wydajności i rozmiaru magazynu.
+description: Na podstawie vCore model kupna (wersja zapoznawcza) umożliwia niezależnie skalowania zasobów obliczeniowych i magazynu, zgodne lokalnymi wydajności i zoptymalizowania cen.
 services: sql-database
 author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 05/14/2018
+ms.date: 06/20/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: d37bf4fd131e700d4f4c3b07c84754b4014ca228
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bfa32796b40033a13d1ced9f8431bd19492e6498
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648357"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309583"
 ---
-# <a name="vcore-based-purchasing-model-for-azure-sql-database-preview"></a>na podstawie vCore model kupna bazy danych SQL Azure (wersja zapoznawcza)
+# <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>Wybieranie warstwy usług vCore, obliczeniowych, pamięci, magazynu i zasobów we/wy
 
-[Baza danych SQL Azure](sql-database-technical-overview.md) oferuje dwa modele zakupów dla zasobów obliczeniowych, magazynu i zasobów we/wy: model kupna DTU i na podstawie vCore model kupna (wersja zapoznawcza). Następujących tabel i wykresów porównania i kontrastu te dwa modele zakupów.
-
-> [!IMPORTANT]
-> Na podstawie jednostek dtu w warstwie model kupna dla [na podstawie jednostek dtu w warstwie model kupna](sql-database-service-tiers-dtu.md).
-
-
-|**Model kupna**|**Opis**|**Najlepsze dla**|
-|---|---|---|
-|Jednostek dtu w warstwie na podstawie modelu|Ten model jest oparty na powiązane miary obliczeniowej, magazynu i zasobów we/wy. Poziomy wydajności są wyrażane jako liczba jednostek DTU (Database Transaction Unit) dla pojedynczych baz danych oraz jako liczba jednostek eDTU (elastic Database Transaction Unit) dla pul elastycznych. Aby uzyskać więcej informacji na temat jednostek Dtu a Edtu, zobacz [co to są Dtu a Edtu](sql-database-what-is-a-dtu.md)?|Najlepsze dla klientów, którzy zasobów proste, wstępnie skonfigurowane opcje.| 
-|vCore na podstawie modelu|Ten model umożliwia niezależnie skalowanie zasoby obliczeniowe i magazynujące - vCores maksymalnie 80, 4 TB pamięci masowej i 200000 IOPS. Umożliwia on również używać korzyści hybrydowe platformy Azure dla programu SQL Server w celu uzyskania oszczędności.|Najlepsze dla klientów, którzy wartość elastyczność, kontroli i przejrzystości.|
-||||  
-
-![model cenowy](./media/sql-database-service-tiers/pricing-model.png)
-
-## <a name="vcore-based-purchasing-model--preview"></a>na podstawie vCore model kupna (wersja zapoznawcza)
-
-Wirtualne podstawowe reprezentuje Procesora logicznego oferowany z opcją wybór między generacje sprzętu. Na podstawie vCore model kupna (wersja zapoznawcza) zapewnia elastyczność, przezroczystość zużycia pojedynczego zasobu, formantowi i łatwe do tłumaczenia lokalne wymagania obciążenia w chmurze. Ten model umożliwia skalowanie możliwości obliczeniowych, pamięci oraz Magazyn ustalane na podstawie jego potrzeb obciążenia. W oparciu vCore model kupna (wersja zapoznawcza), klienci można wybrać ogólnego przeznaczenia i warstwy krytycznych usług biznesowych (wersja zapoznawcza) dla obu [baz danych z jednym](sql-database-single-database-resources.md) i [pule elastyczne](sql-database-elastic-pool.md). 
-
-Warstwy usług są zróżnicowane przez zakres poziomów wydajności, projekt wysokiej dostępności, izolacji błędów, typów pamięci masowej i zakres we/wy. Klienta należy skonfigurować osobno wymagane okres przechowywania i przechowywania kopii zapasowych. Gdy używany jest vCore model, pojedynczych baz danych i pul elastycznych kwalifikują się do się do 30 procent oszczędności za pomocą [korzyści Użyj hybrydowe platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
-
-W podstawie vCore zakupów modelu (wersja zapoznawcza) klienci płatności dla:
-- Obliczeniowe (warstwy usług + liczba vCores + generowania sprzętu) *
-- Typ i ilość miejsca w magazynie danych i dziennika 
-- Liczba operacji We-Wy **
-- Kopia zapasowa magazynu (RA-GRS) ** 
-
-\* W początkowej publicznej wersji zapoznawczej procesorów logicznych 4 Gen są oparte na Intel E5-2673 v3 procesorów 2,4 GHz (Haswell)
-
-\*\* Podczas udostępniania wersji zapoznawczej mogą 7 dni i IOs
-
-> [!IMPORTANT]
-> Obliczeniowe, IOs, danych i przechowywanie dziennika są naliczane na bazę danych lub puli elastycznej. Magazyn kopii zapasowych jest pobierana dla każdej bazy danych. Szczegółowe opłaty za wystąpienia zarządzane znaleźć [wystąpienia zarządzane bazy danych SQL Azure](sql-database-managed-instance.md).
-
-> [!IMPORTANT]
-> Ograniczenia regionu: 
->
-> Na podstawie vCore model kupna (wersja zapoznawcza) nie jest jeszcze dostępna w Australia południowo-wschodnia. Wersja zapoznawcza nie jest dostępna w następujących regionach: Europa Zachodnia, Francja centralnej Wielka Brytania Południowa i Zjednoczone Królestwo zachodnie.
-> 
-
-## <a name="choosing-service-tier-compute-memory-storage-and-io-resources"></a>Wybieranie warstwy usług, obliczeniowych, pamięci, magazynu i zasobów we/wy
-
-Konwertowanie na podstawie vCore model kupna (wersja zapoznawcza) umożliwia niezależnie skalowania zasobów obliczeniowych i magazynu, zgodne lokalnymi wydajności i zoptymalizowania cen. Jeśli bazy danych lub puli elastycznej zużywa ponad 300 Konwersja jednostek dtu w warstwie vCore może zmniejszyć koszt. Możesz przekonwertować przy użyciu interfejsu API wyboru lub przy użyciu portalu Azure, bez przestojów. Jednak konwersja nie jest wymagana. Jeśli model kupna jednostek dtu w warstwie spełnia wymagania biznesowe i wydajności, na których, można nadal używać. Jeśli zdecydujesz się do konwersji z modelu jednostek dtu w warstwie vCore modelu, należy wybrać poziom wydajności przy użyciu następujących zasadą: każdego 100 jednostek DTU w warstwie standardowa wymaga co najmniej 1 vCore w warstwie ogólnego przeznaczenia; Każdy 125 jednostek DTU w warstwie Premium wymaga co najmniej 1 vCore w warstwie Business krytyczne.
+Warstwy usług są zróżnicowane przez zakres poziomów wydajności, projekt wysokiej dostępności, izolacji błędów, typów pamięci masowej i zakres we/wy. Klienta należy skonfigurować osobno wymagane okres przechowywania i przechowywania kopii zapasowych. Z modelem vCore pojedyncze bazy danych oraz pul elastycznych kwalifikują się do się do 30 procent oszczędności za pomocą [korzyści Użyj hybrydowe platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
 
 Poniższa tabela pomoże Ci poznać różnice między tymi dwoma warstwami:
 
@@ -79,8 +38,6 @@ Poniższa tabela pomoże Ci poznać różnice między tymi dwoma warstwami:
 
 > [!IMPORTANT]
 > Jeśli potrzebujesz mniejszej niż jeden vCore pojemności obliczeń, użyj model kupna jednostek dtu w warstwie.
-
-Aby uzyskać szczegółowe informacje o określonych poziomów wydajności i opcje rozmiaru magazynu dostępne dla pojedynczej bazy danych, zobacz [limity zasobów na podstawie vCore bazy danych SQL dla pojedynczych baz danych](sql-database-vcore-resource-limits.md#single-database-storage-sizes-and-performance-levels) i elastyczne pule można znaleźć [bazy danych SQL limity pul elastycznych zasobów na podstawie vCore](sql-database-vcore-resource-limits.md#elastic-pool-storage-sizes-and-performance-levels).
 
 Zobacz [bazy danych SQL — często zadawane pytania](sql-database-faq.md) odpowiedzi na często zadawane pytania. 
 
@@ -118,7 +75,7 @@ Na podstawie vCore zakupów modelu (wersja zapoznawcza), należy wymienić istni
 
 Migrowania jednostek dtu w warstwie na podstawie modelu na podstawie vCore model jest podobny do uaktualnienia lub zmiany na starszą wersję — replikacja geograficzna relacje między bazami danych standardowa i Premium. Nie wymaga się, że przerywa — replikacja geograficzna, ale użytkownik musi być zgodna z regułami sekwencjonowania. Podczas uaktualniania, należy najpierw uaktualnić dodatkowej bazy danych, a następnie Uaktualnij serwera podstawowego. Podczas zmiany na starszą wersję, odwrócić kolejność: należy najpierw obniżyć podstawowej bazy danych i starszą wersję pomocniczą. 
 
-Korzystając z replikacja geograficzna między dwoma pule elastyczne, zdecydowanie zaleca się wyznaczyć jedną pulę jako podstawowy, a drugi — lokacji dodatkowej. W takim przypadku Migrowanie pule elastyczne należy używać te same wskazówki.  Jednak jest technicznie możliwe, że puli elastycznej zawiera podstawowe i pomocnicze bazy danych jest. W takim przypadku poprawnie migracji należy należy traktować puli z większe użycie jako "primary" i odpowiednio postępuj zgodnie z regułami sekwencjonowania.  
+Używając — replikacja geograficzna między dwoma pule elastyczne, zalecane jest, możesz określić jedną pulę jako podstawowy, a drugi — lokacji dodatkowej. W takim przypadku Migrowanie pule elastyczne należy używać te same wskazówki.  Jednak jest technicznie możliwe, że puli elastycznej zawiera podstawowe i pomocnicze bazy danych jest. W takim przypadku poprawnie migracji należy należy traktować puli z większe użycie jako "primary" i odpowiednio postępuj zgodnie z regułami sekwencjonowania.  
 
 W poniższej tabeli przedstawiono wskazówki dotyczące scenariuszy migracji: 
 
@@ -142,7 +99,7 @@ Migracja grup trybu failover z wieloma bazami danych wymaga migracji podstawowyc
 
 ## <a name="creation-of-a-geo-replication-secondary"></a>Tworzenie pomocniczej — replikacja geograficzna
 
-Można utworzyć tylko przy użyciu tej samej warstwie usługi jako podstawowej dodatkowej geograficzna. W przypadku bazy danych o szybkości generowania rekordów dziennika wysokiej stanowczo zalecane utworzony pomocniczej z tym samym poziomie wydajności jako podstawowy. W przypadku tworzenia dodatkowej geograficzna w puli elastycznej dla jednej podstawowej bazy danych, zdecydowanie zaleca się czy puli ma `maxVCore` ustawienie odpowiada poziom wydajności podstawowej bazy danych. W przypadku tworzenia dodatkowej geograficzna w puli elastycznej dla podstawowego w innej puli elastycznej, zdecydowanie zaleca się pule mają taki sam `maxVCore` ustawienia
+Można utworzyć tylko przy użyciu tej samej warstwie usługi jako podstawowej dodatkowej geograficzna. Baza danych o szybkości generowania rekordów dziennika wysoka zaleca się czy pomocniczy został utworzony z tym samym poziomie wydajności jako podstawowy. W przypadku tworzenia dodatkowej geograficzna w puli elastycznej dla jednej podstawowej bazy danych, zaleca się czy puli ma `maxVCore` ustawienie odpowiada poziom wydajności podstawowej bazy danych. W przypadku tworzenia dodatkowej geograficzna w puli elastycznej dla podstawowego w innej puli elastycznej, zalecane jest pule mają taki sam `maxVCore` ustawienia
 
 ## <a name="using-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Konwertowanie na podstawie jednostek dtu w warstwie bazy danych do bazy danych na podstawie vCore przy użyciu kopii bazy danych.
 
@@ -150,6 +107,5 @@ Wszystkie bazy danych z poziomu wydajności na podstawie jednostek dtu w warstwi
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Szczegółowe informacje o określonych poziomów wydajności i dostępnych wyborów rozmiar magazynu, zobacz [zasobów jednostek dtu w warstwie bazy danych SQL na podstawie limitów](sql-database-dtu-resource-limits.md) i [limity zasobów na podstawie vCore bazy danych SQL](sql-database-vcore-resource-limits.md).
-- Zobacz [bazy danych SQL — często zadawane pytania](sql-database-faq.md) odpowiedzi na często zadawane pytania.
-- Dowiedz się więcej o [subskrypcji platformy Azure i usługi limity, przydziały i ograniczenia](../azure-subscription-service-limits.md)
+- Aby uzyskać szczegółowe informacje o określonych poziomów wydajności i opcje rozmiaru magazynu dostępne dla pojedynczej bazy danych, zobacz [limity zasobów na podstawie vCore bazy danych SQL dla pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md#single-database-storage-sizes-and-performance-levels)
+- Szczegółowe informacje dotyczące określonych poziomów wydajności i magazynowania zawiera rozmiar dostępnych dla pul elastycznych [limity zasobów na podstawie vCore bazy danych SQL dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-performance-levels).

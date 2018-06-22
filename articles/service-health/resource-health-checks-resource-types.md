@@ -14,15 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 10/09/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 3b4d99fe883cf52ca7f1ef98e70b7f3a1bccd5ae
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 831383ffa3aa3464f3d62da4e1609cf3f1a4707e
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795949"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309600"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy zasobów i kondycji sprawdza w kondycji zasobów platformy Azure
 Poniżej przedstawiono pełną listę wszystkie testy wykonane przez kondycja zasobów według typów zasobów.
+
+## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
+|Wykonanie testów|
+|---|
+|<ul><li>Jest serwer działa prawidłowo?</li><li>Serwer zabrakło pamięci?</li><li>Serwer uruchamiania?</li><li>Trwa odzyskiwanie serwera?</li></ul>|
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 |Wykonanie testów|
@@ -105,6 +110,11 @@ Poniżej przedstawiono pełną listę wszystkie testy wykonane przez kondycja za
 |Wykonanie testów|
 |---|
 |<ul><li> Nie ma w niej logowania do bazy danych?</li></ul>|
+
+## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
+|Wykonanie testów|
+|---|
+|<ul><li>Żądania do odczytywania danych z konta magazynu występują problemy z platformy Azure Storage?</li><li>Żądania do zapisywania danych na koncie magazynu występują problemy z platformy Azure Storage?</li><li>Klastra magazynów, w którym znajduje się konto magazynu jest niedostępny?</li></ul>|
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 |Wykonanie testów|
