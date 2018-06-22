@@ -16,10 +16,10 @@ ms.date: 05/30/2018
 ms.author: brenduns
 ms.reviewer: justini
 ms.openlocfilehash: 2c2813a7f2d909a23c8f5d4f5ac0280b3f932ba6
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
+ms.lasthandoff: 06/21/2018
 ms.locfileid: "34700128"
 ---
 # <a name="azure-stack-1804-update"></a>Azure aktualizacji 1804 stosu
@@ -37,11 +37,11 @@ Numer kompilacji aktualizacji 1804 stosu Azure jest **20180513.1**.
 ### <a name="new-features"></a>Nowe funkcje
 Ta aktualizacja obejmuje następujące ulepszenia stosu Azure.
 
-- <!-- 15028744 - IS -->  **Visual Studio support for disconnected Azure Stack deployments using AD FS**. Within Visual Studio you now can add subscriptions and authenticate using AD FS federated User credentials. 
+- <!-- 15028744 - IS -->  **Visual Studio obsługę odłączonego wdrożeń stosu Azure przy użyciu usług AD FS**. W programie Visual Studio, możesz teraz dodawać subskrypcje i uwierzytelniania za pomocą usług AD FS federacyjnych poświadczeń użytkownika. 
  
-- <!-- 1779474, 1779458 - IS --> **Use Av2 and F series virtual machines**. Azure Stack can now use virtual machines based on the Av2-series and F-series virtual machine sizes. For more information see [Virtual machine sizes supported in Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes). 
+- <!-- 1779474, 1779458 - IS --> **Użyj maszyn wirtualnych serii Av2 i F**. Stos Azure można teraz używać maszyn wirtualnych na podstawie Av2 serii i F-series rozmiarów maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [rozmiarów maszyn wirtualnych obsługiwanych w stosie Azure](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes). 
 
-- <!-- 1759172 - IS, ASDK --> **New administrative subscriptions**. With 1804 there are two new subscription types available in the portal. These new subscription types are in addition to the Default Provider subscription and visible with new Azure Stack installations beginning with version 1804. *Do not use these new subscription types with this version of Azure Stack*. We will announce the availability to use these subscription types in with a future update. 
+- <!-- 1759172 - IS, ASDK --> **Nowe subskrypcje administracyjne**. Z 1804 istnieją dwa typy nowej subskrypcji dostępne w portalu. Te nowe typy subskrypcji są oprócz domyślny dostawca subskrypcji i są widoczne w przypadku nowych instalacji Azure stosu, począwszy od wersji 1804. *Nie należy używać tych nowych typów subskrypcji z tej wersji programu Azure stosu*. Firma Microsoft będzie poinformować o udostępnieniu używanie tych typów subskrypcji przy użyciu przyszłej aktualizacji. 
 
   Po zaktualizowaniu stosu Azure do wersji 1804 dwóch nowych typów subskrypcji nie są widoczne. Jednak nowych wdrożeń stosu Azure zintegrowanych systemów i instalacje wersji Azure stosu Development Kit 1804 lub nowszym mają dostęp do wszystkich typów trzy subskrypcji.  
 
@@ -58,11 +58,11 @@ Ta aktualizacja obejmuje następujące ulepszenia stosu Azure.
 
 ## <a name="fixed-issues"></a>Rozwiązane problemy
 
-- <!-- IS, ASDK -->  In the admin portal, you no longer have to refresh the Update tile before it displays information.
+- <!-- IS, ASDK -->  W portalu administracyjnym, masz już odświeżanie kafelka aktualizacji przed wyświetleniem informacji.
  
-- <!-- 2050709  -->  You can now use the admin portal to edit storage metrics for Blob service, Table service, and Queue service.
+- <!-- 2050709  -->  Można teraz korzystać z portalu administratora do edytowania metryki magazynu dla usługi obiektów Blob, usługi tabel i kolejek usługi.
  
-- <!-- IS, ASDK --> Under **Networking**, when you click **Connection** to set up a VPN connection, **Site-to-site (IPsec)** is now the only available option.
+- <!-- IS, ASDK --> W obszarze **sieci**, po kliknięciu **połączenia** do skonfigurowania połączenia sieci VPN, **lokacja lokacja (IPsec)** jest obecnie jedyną dostępną opcją.
 
 - **Różne poprawki** wydajności, trwałości, zabezpieczeń i systemu operacyjnego, który jest używany przez stos Azure.
 
@@ -85,7 +85,7 @@ Poniżej są teraz dostępne, ale nie wymagają aktualizacji stosu Azure 1804.
 ### <a name="known-issues-with-the-update-process"></a>Znane problemy związane z procesem aktualizacji   
 - Podczas instalacji aktualizacji 1804, użytkownik może widzieć alerty z tytułem *błąd — szablon FaultType UserAccounts.New Brak.*  Te alerty można bezpiecznie zignorować. Te alerty zostanie zamknięte automatycznie po zakończeniu aktualizacji do 1804.   
  
-- <!-- TBD - IS --> Do not attempt to create virtual machines during the installation of this update. For more information about managing updates, see [Manage updates in Azure Stack overview](azure-stack-updates.md#plan-for-updates).
+- <!-- TBD - IS --> Nie należy próbować tworzyć maszyn wirtualnych podczas instalacji tej aktualizacji. Aby uzyskać więcej informacji na temat zarządzania aktualizacjami, zobacz [zarządzania aktualizacjami w omówieniu stosu Azure](azure-stack-updates.md#plan-for-updates).
 
 
 ### <a name="post-update-steps"></a>Czynności po aktualizacji
@@ -97,37 +97,37 @@ Poniżej są teraz dostępne, ale nie wymagają aktualizacji stosu Azure 1804.
 Poniżej przedstawiono znane problemy występujące po instalacji w kompilacji **20180513.1**.
 
 #### <a name="portal"></a>Portal
-- <!-- 1272111 - IS --> After you install or update to this version of Azure Stack, you might not be able to view Azure Stack scale units in the Admin portal.  
+- <!-- 1272111 - IS --> Po zainstalowaniu lub aktualizacji do tej wersji programu Azure stosu nie można wyświetlić jednostki skalowania stosu Azure w portalu administracyjnym.  
   Obejście problemu: Użyj programu PowerShell do wyświetlania informacji o jednostkach skalowania. Aby uzyskać więcej informacji, zobacz [pomocy](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0) zawartości dla usługi Azure stosu modułu 1.3.0. 
 
-- <!-- 2332636 - IS -->  When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  
+- <!-- 2332636 - IS -->  Jeśli używasz usług AD FS dla systemu tożsamości stosu Azure i aktualizacji do tej wersji programu Azure stosu domyślnego właściciela subskrypcji dostawcy domyślnego jest ustawiany na wbudowanych **CloudAdmin** użytkownika.  
   Obejście: Aby rozwiązać ten problem, po zainstalowaniu tej aktualizacji, należy użyć krok 3 z [wyzwalacza automatyzacji do skonfigurowania zaufania dostawcy oświadczeń w stosie Azure](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1) procedury, aby zresetować właściciela subskrypcji dostawcy domyślnego.   
 
-- <!-- TBD - IS ASDK --> Some administrative subscription types are not available.  When you upgrade Azure Stack to this version, the two subscription types that were [introduced with version 1804](#new-features) are not visible in the console. This is expected. The unavailable subscription types are *Metering subscription*, and *Consumption subscription*. These subscription types are visible in new Azure Stack environments beginning with version 1804 but are not yet ready for use. You should continue to use the *Default Provider* subscription type.  
+- <!-- TBD - IS ASDK --> Niektóre typy subskrypcji administracyjne nie są dostępne.  Po uaktualnieniu stosu Azure do tej wersji subskrypcji dwa typy, które były [wprowadzonym w wersji 1804](#new-features) nie są widoczne w konsoli. Jest to oczekiwane. Typy subskrypcji niedostępne są *zliczania subskrypcji*, i *subskrypcji zużycie*. Te typy subskrypcji są widoczne w nowych środowisk Azure stosu, począwszy od wersji 1804, ale nie jest jeszcze gotowa do użycia. Można nadal używać *domyślny dostawca* typ subskrypcji.  
 
 
-- <!-- TBD -  IS ASDK -->The ability [to open a new support request from the dropdown](azure-stack-manage-portals.md#quick-access-to-help-and-support) from within the administrator portal isn’t available. Instead, use the following link:     
+- <!-- TBD -  IS ASDK -->Możliwość [aby otworzyć nowe żądanie pomocy technicznej z listy rozwijanej](azure-stack-manage-portals.md#quick-access-to-help-and-support) z wewnątrz administrator portalu nie jest dostępna. Zamiast tego użyj następującego łącza:     
     - Azure stosu Użyj zintegrowanych systemów https://aka.ms/newsupportrequest.
 
-- <!-- 2403291 - IS ASDK --> You might not have use of the horizontal scroll bar along the bottom of the admin and user portals. If you can’t access the horizontal scroll bar, use the breadcrumbs to navigate to a previous blade in the portal by selecting the name of the blade you want to view from the breadcrumb list found at the top left of the portal.
+- <!-- 2403291 - IS ASDK --> Nie masz użyj poziomego paska przewijania wzdłuż dolnej części portali administratora i użytkownika. Jeśli nie masz dostępu do poziomego paska przewijania, za pomocą nawigacyjnej na przejście do poprzedniego bloku w portalu po wybraniu nazwy bloku mają być wyświetlane na liście stron nadrzędnych znajdujących się u góry po lewej portalu.
   ![Nawigacją](media/azure-stack-update-1804/breadcrumb.png) 
 
-- <!-- TBD - IS --> It might not be possible to view compute or storage resources in the administrator portal. The cause of this issue is an error during the installation of the update that causes the update to be incorrectly reported as successful. If this issue occurs, contact Microsoft Customer Support Services for assistance.
+- <!-- TBD - IS --> Może nie być możliwe do wyświetlania zasobów obliczeniowych i magazynu w portalu administratora. Przyczyną tego problemu jest błąd podczas instalacji aktualizacji, które powoduje, że aktualizacja niepoprawnie zgłaszana jako powiodło się. Jeśli ten problem występuje, skontaktuj się z pomocą techniczną firmy Microsoft w celu uzyskania pomocy.
 
-- <!-- TBD - IS --> You might see a blank dashboard in the portal. To recover the dashboard, select the gear icon in the upper right corner of the portal, and then select **Restore default settings**.
+- <!-- TBD - IS --> Może pojawić się pustego pulpitu nawigacyjnego w portalu. Aby odzyskać pulpitu nawigacyjnego, wybierz koło zębate ikonę w prawym górnym rogu portalu, a następnie wybierz **przywrócić ustawienia domyślne**.
 
-- <!-- TBD - IS ASDK --> Deleting user subscriptions results in orphaned resources. As a workaround, first delete user resources or the entire resource group, and then delete user subscriptions.
+- <!-- TBD - IS ASDK --> Usunięcie użytkownika powoduje subskrypcje zasoby oddzielone. Jako obejście najpierw usuń zasoby użytkownika lub grupy zasobów całej, a następnie usuń subskrypcji użytkownika.
 
-- <!-- TBD - IS ASDK --> You cannot view permissions to your subscription using the Azure Stack portals. As a workaround, use PowerShell to verify permissions.
+- <!-- TBD - IS ASDK --> Nie można wyświetlić uprawnienia do subskrypcji przy użyciu portali stosu Azure. Aby uniknąć tego problemu Sprawdź uprawnienia za pomocą programu PowerShell.
 
-- <!-- TBD - IS ASDK --> In the admin portal, you might see a critical alert for the *Microsoft.Update.Admin* component. The Alert name, description, and remediation all display as:  
+- <!-- TBD - IS ASDK --> W portalu administracyjnym, zostanie wyświetlony alert krytyczny dotyczący *Microsoft.Update.Admin* składnika. Nazwa alertu, opis i korygowania wszystkich wyświetlania jako:  
     - *Błąd — szablon FaultType ResourceProviderTimeout Brak.*
 
   Można bezpiecznie zignorować ten alert. 
 
 
 #### <a name="health-and-monitoring"></a>Monitorowania kondycji i
-- <!-- 1264761 - IS ASDK -->  You might see alerts for the *Health controller* component that have the following details:  
+- <!-- 1264761 - IS ASDK -->  Użytkownik może widzieć alerty dla *kondycji kontrolera* składnika, który ma następujące informacje:  
 
    Alert #1:
    - Nazwa: Rolę infrastruktury złej kondycji
@@ -145,7 +145,7 @@ Poniżej przedstawiono znane problemy występujące po instalacji w kompilacji *
  
 
 #### <a name="compute"></a>Wystąpienia obliczeniowe
-- <!-- TBD - IS --> When selecting a virtual machine size for a virtual machine deployment, some F-Series VM sizes are not visible as part of the size selector when you create a VM. The following VM sizes do not appear in the selector: *F8s_v2*, *F16s_v2*, *F32s_v2*, and *F64s_v2*.  
+- <!-- TBD - IS --> Podczas wybierania rozmiaru maszyny wirtualnej dla wdrożenia maszyny wirtualnej, niektóre rozmiary serii F maszyny Wirtualnej nie są widoczne jako część selektora rozmiar podczas tworzenia maszyny Wirtualnej. Następujących rozmiarów maszyn wirtualnych nie pojawiają się w selektorze: *F8s_v2*, *F16s_v2*, *F32s_v2*, i *F64s_v2*.  
   Jako obejście użyj jednej z następujących metod można wdrożyć maszyny Wirtualnej. W każdej metodzie należy określić rozmiar maszyny Wirtualnej, który ma być używany.
 
   - **Szablonu usługi Azure Resource Manager:** w przypadku użycia szablonu ustawić *vmSize* w szablonie równe żądany rozmiar maszyny Wirtualnej. Na przykład następujące służy do wdrażania maszyny Wirtualnej, która używa *F32s_v2* rozmiar:  
@@ -161,46 +161,46 @@ Poniżej przedstawiono znane problemy występujące po instalacji w kompilacji *
   - **Środowiska PowerShell:** przy użyciu programu PowerShell, można użyć [AzureRMVMConfig nowy](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0) z parametrem, który określa rozmiar maszyny Wirtualnej, podobnie jak `-VMSize "Standard_F32s_v2"`.
 
 
-- <!-- TBD - IS ASDK --> Scaling settings for virtual machine scale sets are not available in the portal. As a workaround, you can use [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Because of PowerShell version differences, you must use the `-Name` parameter instead of `-VMScaleSetName`.
+- <!-- TBD - IS ASDK --> Ustawienia skalowania dla zestawy skalowania maszyny wirtualnej nie są dostępne w portalu. Jako rozwiązanie alternatywne można zastosować [programu Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Z powodu różnic wersji programu PowerShell, należy użyć `-Name` parametru zamiast `-VMScaleSetName`.
 
-- <!-- TBD - IS --> When you create an availability set in the portal by going to **New** > **Compute** > **Availability set**, you can only create an availability set with a fault domain and update domain of 1. As a workaround, when creating a new virtual machine, create the availability set by using PowerShell, CLI, or from within the portal.
+- <!-- TBD - IS --> Po utworzeniu zestawem dostępności w portalu, przechodząc do **nowy** > **obliczeniowe** > **zestawu dostępności**, można tworzyć tylko z domeny błędów i Aktualizacja domeny 1 zestawu dostępności. Jako obejście, podczas tworzenia nowej maszyny wirtualnej, Utwórz dostępności przy użyciu programu PowerShell, interfejsu wiersza polecenia, lub z poziomu portalu.
 
-- <!-- TBD - IS ASDK --> When you create virtual machines on the Azure Stack user portal, the portal displays an incorrect number of data disks that can attach to a D series VM. All supported D series VMs can accommodate as many data disks as the Azure configuration.
+- <!-- TBD - IS ASDK --> Po utworzeniu maszyny wirtualnej w portalu Azure stosu użytkownika portalu zawiera nieprawidłową liczbę dysków z danymi, które można załączyć do serii D maszyny Wirtualnej. Wszystkie obsługiwane D serii maszyn wirtualnych może obsłużyć jako wiele dysków z danymi jako konfiguracji platformy Azure.
 
-- <!-- TBD - IS ASDK --> When a VM image fails to be created, a failed item that you cannot delete might be added to the VM images compute blade.
+- <!-- TBD - IS ASDK --> Gdy nie można utworzyć obrazu maszyny Wirtualnej, elementu nie powiodło się, że nie można usunąć mogą być dodane do bloku obliczeń obrazów maszyny Wirtualnej.
 
   Jako obejście, Utwórz nowy obraz maszyny Wirtualnej z fikcyjny wirtualnego dysku twardego, który można utworzyć za pomocą funkcji Hyper-V (New-VHD-C:\dummy.vhd ścieżka-stałej SizeBytes — 1 GB). Ten proces powinno rozwiązać problem, który uniemożliwia usunięcie elementu nie powiodło się. Następnie 15 minut po utworzeniu obrazu zastępczego, można pomyślnie usunąć go.
 
   Następnie spróbujesz ponownie Pobierz obraz maszyny Wirtualnej, który zakończył się niepowodzeniem.
 
-- <!-- TBD - IS ASDK --> If provisioning an extension on a VM deployment takes too long, users should let the provisioning time-out instead of trying to stop the process to deallocate or delete the VM.  
+- <!-- TBD - IS ASDK --> Jeśli Inicjowanie obsługi rozszerzenia w ramach wdrożenia maszyny Wirtualnej trwa zbyt długo, użytkownicy powinno pozwolić limit czasu inicjowania obsługi zamiast próby zatrzymania procesu deallocate lub Usuń maszynę Wirtualną.  
 
-- <!-- 1662991 IS ASDK --> Linux VM diagnostics is not supported in Azure Stack. When you deploy a Linux VM with VM diagnostics enabled, the deployment fails. The deployment also fails if you enable the Linux VM basic metrics through diagnostic settings.  
+- <!-- 1662991 IS ASDK --> Diagnostyka maszyny Wirtualnej systemu Linux nie jest obsługiwana w stosie Azure. Podczas wdrażania maszyny Wirtualnej systemu Linux z włączoną diagnostykę maszyny Wirtualnej, wdrożenie zakończy się niepowodzeniem. Wdrożenie nie powiedzie się także włączenie metryk podstawowej maszyny Wirtualnej systemu Linux za pomocą ustawień diagnostycznych.  
 
 
 #### <a name="networking"></a>Networking
-- <!-- 1766332 - IS ASDK --> Under **Networking**, if you click **Create VPN Gateway** to set up a VPN connection, **Policy Based** is listed as a VPN type. Do not select this option. Only the **Route Based** option is supported in Azure Stack.
+- <!-- 1766332 - IS ASDK --> W obszarze **sieci**, jeśli klikniesz przycisk **Tworzenie bramy sieci VPN** do skonfigurowania połączenia sieci VPN, **oparta na zasadach** jest wymieniony jako typ sieci VPN. Nie należy zaznaczać tej opcji. Tylko **na podstawie trasy** opcja jest obsługiwana w stosie Azure.
 
-- <!-- 2388980 - IS ASDK --> After a VM is created and associated with a public IP address, you can't disassociate that VM from that IP address. Disassociation appears to work, but the previously assigned public IP address remains associated with the original VM.
+- <!-- 2388980 - IS ASDK --> Po utworzeniu maszyny Wirtualnej i skojarzonych z publicznym adresem IP, nie można usunąć skojarzenie tej maszyny Wirtualnej z tego adresu IP. Usuwanie skojarzeń wydaje się działać, ale poprzednio przypisanych publiczny adres IP pozostają skojarzone z oryginalna maszyna wirtualna.
 
   Obecnie możesz korzystać tylko nowe publiczne adresy IP do tworzenia nowych maszyn wirtualnych.
 
   Dzieje się tak nawet w przypadku ponownego przypisywania adresów IP do nowej maszyny Wirtualnej (nazywane *wymiany wirtualnych adresów IP*). Wszystkie przyszłe próbuje nawiązać połączenie za pośrednictwem tego wyniku adresów IP w przypadku połączenia pierwotnie skojarzonego VM, a nie nowy.
 
-- <!-- 2292271 - IS ASDK --> If you raise a Quota limit for a Network resource that is part of an Offer and Plan that is associated with a tenant subscription, the new limit is not applied to that subscription. However, the new limit does apply to new subscriptions that are created after the quota is increased. 
+- <!-- 2292271 - IS ASDK --> Po podniesieniu limitu przydziału dla zasobu sieciowego, będącej częścią ofertę i Plan, który jest skojarzony z subskrypcją dzierżawy, nowy limit nie ma zastosowania do tej subskrypcji. Jednakże nowy limit dotyczą nowe subskrypcje, które są tworzone po zwiększeniu limit przydziału. 
 
   Aby obejść ten problem, użyj planu dodatku, aby zwiększyć limit przydziału sieci, gdy plan jest już skojarzony z subskrypcją. Aby uzyskać więcej informacji, zobacz temat jak [udostępnić plan dodatek](azure-stack-subscribe-plan-provision-vm.md#to-make-an-add-on-plan-available).
 
-- <!-- 2304134 IS ASDK --> You cannot delete a subscription that has DNS Zone resources or Route Table resources associated with it. To successfully delete the subscription, you must first delete DNS Zone and Route Table resources from the tenant subscription. 
+- <!-- 2304134 IS ASDK --> Nie można usunąć subskrypcji, która ma zasobów strefy DNS lub zasobów tabeli tras skojarzonych z nim. Aby pomyślnie usunąć subskrypcję, należy najpierw usunąć strefy DNS i tabeli tras zasobów z subskrypcji dzierżawcy. 
   
 
-- <!-- 1902460 - IS ASDK --> Azure Stack supports a single *local network gateway* per IP address. This is true across all tenant subscriptions. After the creation of the first local network gateway connection, subsequent attempts to create a local network gateway resource with the same IP address are blocked.
+- <!-- 1902460 - IS ASDK --> Stos Azure obsługuje jeden *bramy sieci lokalnej* według adresu IP. Dotyczy to we wszystkich subskrypcji dzierżawcy. Po utworzenia pierwszego lokalnej bramy połączenia sieciowego, kolejne podejmuje próbę utworzenia zasobu bramy sieci lokalnej przy użyciu tego samego adresu IP są zablokowane.
 
-- <!-- 16309153 - IS ASDK --> On a Virtual Network that was created with a DNS Server setting of *Automatic*, changing to a custom DNS Server fails. The updated settings are not pushed to VMs in that Vnet.
+- <!-- 16309153 - IS ASDK --> W sieci wirtualnej, który został utworzony przy użyciu ustawienia serwera DNS z *automatyczne*, zmieniających się do niestandardowego błąd serwera DNS. Zaktualizowano ustawienia nie są przenoszone do maszyn wirtualnych w tej sieci wirtualnej.
 
-- <!-- TBD - IS ASDK --> Azure Stack does not support adding additional network interfaces to a VM instance after the VM is deployed. If the VM requires more than one network interface, they must be defined at deployment time.
+- <!-- TBD - IS ASDK --> Stos Azure nie obsługuje dodawania dodatkowe interfejsy do wystąpienia maszyny Wirtualnej, po wdrożeniu maszyny Wirtualnej. Jeśli maszyna wirtualna wymaga więcej niż jeden interfejs sieciowy, muszą być zdefiniowane w czasie wdrażania.
 
-- <!-- 2096388 IS --> You cannot use the admin portal to update rules for a network security group. 
+- <!-- 2096388 IS --> Nie można korzystać z portalu administratora, można zaktualizować reguł sieciowej grupy zabezpieczeń. 
 
     Obejście usługi aplikacji: Jeśli potrzebujesz pulpitu zdalnego do wystąpień kontrolera, zmodyfikować zasady zabezpieczeń w ramach grup zabezpieczeń sieci przy użyciu programu PowerShell.  Poniżej przedstawiono przykłady *Zezwalaj*, a następnie Przywróć konfigurację, aby *odmowy*:  
     
@@ -265,13 +265,13 @@ Poniżej przedstawiono znane problemy występujące po instalacji w kompilacji *
 
 #### <a name="sql-and-mysql"></a>SQL i bazy danych MySQL
 
-- <!-- TBD - IS --> Only the resource provider is supported to create items on servers that host SQL or MySQL. Items created on a host server that are not created by the resource provider might result in a mismatched state.  
+- <!-- TBD - IS --> Tylko dostawcy zasobów jest obsługiwane tworzenie elementów na serwerach, że host SQL lub MySQL. Elementy utworzone na serwerze hosta, które nie są tworzone przez dostawcę zasobów może spowodować niezgodne stanu.  
 
-- <!-- IS, ASDK --> Special characters, including spaces and periods, are not supported in the **Family** or **Tier** names when you create a SKU for the SQL and MySQL resource providers.
+- <!-- IS, ASDK --> Znaki specjalne, łącznie ze spacjami i okresów, nie są obsługiwane w **rodziny** lub **warstwy** nazwy podczas tworzenia jednostki SKU dla dostawców zasobów SQL i MySQL.
 
 
 > [!NOTE]  
-> <!-- TBD - IS --> After you update to Azure Stack 1804, you can continue to use the SQL and MySQL resource providers that you previously deployed.  We recommend you update SQL and MySQL when a new release becomes available. Like Azure Stack, apply updates to SQL and MySQL resource providers sequentially.  For example, if you use version 1802, first apply version 1803, and then update to 1804.      
+> <!-- TBD - IS --> Po aktualizacji do 1804 stosu Azure, można użyć dostawcy zasobów SQL i MySQL, które wcześniej wdrożona.  Firma Microsoft zaleca się, że po udostępnieniu nowej wersji aktualizacji SQL i MySQL. Podobnie jak stosu Azure sekwencyjnie Zastosuj aktualizacje do dostawców zasobów SQL i MySQL.  Na przykład jeśli używasz wersji 1802 najpierw zastosować wersji 1803, a następnie zaktualizuj do 1804.      
 >   
 > Instalowanie aktualizacji 1804 nie wpływa na użycie bieżącej bazy danych SQL lub MySQL dostawców zasobów przez użytkowników.
 > Niezależnie od wersji dostawców zasobów, których używasz danych użytkowników w swoich baz danych nie jest dotknąć i pozostanie dostępny.    
@@ -279,14 +279,14 @@ Poniżej przedstawiono znane problemy występujące po instalacji w kompilacji *
 
 
 #### <a name="app-service"></a>App Service
-- <!-- 2352906 - IS ASDK --> Users must register the storage resource provider before they create their first Azure Function in the subscription.
+- <!-- 2352906 - IS ASDK --> Użytkownicy muszą zarejestrować dostawcy zasobów magazynu przed utworzeniem ich pierwszej funkcji platformy Azure w ramach subskrypcji.
 
-- <!-- TBD - IS ASDK --> In order to scale out infrastructure (workers, management, front-end roles), you must use PowerShell as described in the release notes for Compute.
+- <!-- TBD - IS ASDK --> Aby skalować w poziomie infrastruktury (pracowników, zarządzania, role frontonu), musi być programu PowerShell, zgodnie z opisem w informacjach o wersji dla obliczania.
 
-- <!-- TBD - IS ASDK --> App Service can only be deployed into the **Default Provider Subscription** at this time.  In a future update App Service will deploy into the new Metering Subscription introduced in Azure Stack 1804 and all existing deployments will be migrated to this new subscription also.
+- <!-- TBD - IS ASDK --> Usługi aplikacji można wdrożyć tylko do **domyślny dostawca subskrypcji** w tej chwili.  W przyszłej aktualizacji usługi aplikacji — zostanie wdrożona na nową subskrypcję pomiaru wprowadzone w 1804 stosu Azure i wszystkie istniejące wdrożenia będą migrowane do tej nowej subskrypcji również.
 
 #### <a name="usage"></a>Sposób użycia  
-- <!-- TBD - IS ASDK --> Usage Public IP address usage meter data shows the same *EventDateTime* value for each record instead of the *TimeDate* stamp that shows when the record was created. Currently, you can’t use this data to perform accurate accounting of public IP address usage.
+- <!-- TBD - IS ASDK --> Dane pomiaru użycia adres publiczny adres IP użycia zawiera takie same *Data/godzina zdarzenia* wartość dla każdego rekordu zamiast *TimeDate* sygnatury pokazujący utworzenia rekordu. Obecnie nie można używać tych danych do wykonania dokładnego rozliczania użycie publicznego adresu IP.
 
 
 <!-- #### Identity -->
