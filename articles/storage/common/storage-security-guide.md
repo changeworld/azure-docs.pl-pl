@@ -6,22 +6,23 @@ author: craigshoemaker
 manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 05/31/2018
 ms.author: cshoe
-ms.openlocfilehash: 4145f7edb93801aa6f98df7e9cff34ae7370fc52
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: ba008a86f76a526967bb9dab6ba37043a85f5cf3
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36304528"
 ---
 # <a name="azure-storage-security-guide"></a>Przewodnik po zabezpieczeniach magazynu Azure
-
-## <a name="overview"></a>Przegląd
 
 Magazyn Azure oferuje rozbudowany zestaw funkcji zabezpieczeń, które razem umożliwiają deweloperom tworzenie bezpiecznych aplikacji:
 
 - Wszystkie dane zapisane w magazynie Azure automatycznie jest szyfrowana przy użyciu [szyfrowanie usługi Magazyn (SSE)](storage-service-encryption.md). Aby uzyskać więcej informacji, zobacz [Announcing domyślne szyfrowanie dla obiektów blob Azure, plików, tabeli i magazynu kolejek](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
-- Samo konto magazynu mogą być chronione przy użyciu kontroli dostępu opartej na rolach i Azure Active Directory. 
+- Azure Active Directory (Azure AD) i kontroli dostępu opartej na rolach (RBAC) są obsługiwane dla usługi Azure Storage dla operacji zarządzania zasobów i operacje na danych, w następujący sposób:   
+    - Można przypisać role RBAC ograniczone do konta magazynu do podmiotów zabezpieczeń i użycia usługi Azure AD, do autoryzacji zasobów operacji zarządzania, takich jak zarządzanie kluczami.
+    - Integracja z usługą Azure AD jest obsługiwana w wersji zapoznawczej danych operacje w ramach usług obiektów Blob i kolejek. Można przypisać role RBAC ograniczone do subskrypcji, grupy zasobów, konta magazynu lub poszczególnych kontenera lub kolejki do podmiotu zabezpieczeń lub tożsamości usługi zarządzanej. Aby uzyskać więcej informacji, zobacz [uwierzytelniania dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza)](storage-auth-aad.md).   
 - Dane mogą być chronione przy użyciu przesyłanych między aplikacją a Azure [szyfrowania po stronie klienta](../storage-client-side-encryption.md), HTTPS lub SMB 3.0.  
 - Systemu operacyjnego i dysków z danymi używanych przez maszyny wirtualne Azure mogą być szyfrowane przy użyciu [szyfrowania dysków Azure](../../security/azure-security-disk-encryption.md). 
 - Delegowany dostęp do obiektów danych w usłudze Azure Storage można otrzymać za pomocą [sygnatury dostępu współdzielonego](../storage-dotnet-shared-access-signature-part-1.md).
@@ -38,7 +39,7 @@ Tematy, które mają być uwzględnione w tym artykule są:
   W tej sekcji wyjaśniono zezwalania na dostęp do danych rzeczywistych obiektów na koncie magazynu obiektów blob, plików, kolejek i tabel, np. przy użyciu sygnatury dostępu współdzielonego i przechowywane zasad dostępu. Omówimy SAS poziomu usług i poziomie konta sygnatury dostępu Współdzielonego. Firma Microsoft będzie również sprawdzić, jak ograniczyć dostęp do określonego adresu IP (lub zakres adresów IP), jak ograniczyć protokół używany do HTTPS i jak odwołać sygnaturę dostępu współdzielonego bez oczekiwania na jej wygaśnięcie.
 * [Szyfrowanie podczas transferu](#encryption-in-transit)
 
-  W tej sekcji omówiono sposób do zabezpieczania danych podczas transferu do lub z usługi Azure Storage. Będzie omawianiu zalecane użycie protokołu HTTPS i szyfrowania używany przez protokół SMB 3.0 do udziały plików platformy Azure. Firma Microsoft będzie także Spójrz na szyfrowanie po stronie klienta, co umożliwia szyfrowanie danych, zanim zostanie przekazany do magazynu w aplikacji klienckiej oraz do odszyfrowania danych po przeniesieniu poza magazynu.
+  W tej sekcji omówiono sposób do zabezpieczania danych podczas transferu do lub z usługi Azure Storage. Będzie omawianiu zalecane użycie protokołu HTTPS i szyfrowania używany przez protokół SMB 3.0 udziałów plików na platformę Azure. Firma Microsoft będzie także Spójrz na szyfrowanie po stronie klienta, co umożliwia szyfrowanie danych, zanim zostanie przekazany do magazynu w aplikacji klienckiej oraz do odszyfrowania danych po przeniesieniu poza magazynu.
 * [Szyfrowanie w spoczynku](#encryption-at-rest)
 
   Firma Microsoft będzie się komunikował o magazynu usługi szyfrowania (SSE), który teraz jest automatycznie włączona dla magazynu nowych i istniejących kont. Ponadto przedstawiono sposób użycia szyfrowania dysków Azure i poznać różnice podstawowych i przypadków szyfrowania dysku i SSE i szyfrowania po stronie klienta. Krótko przedstawiono zgodności ze standardem FIPS dla Stanów Zjednoczonych Komputery dla instytucji rządowych.
@@ -100,7 +101,7 @@ Poniżej przedstawiono główne punkty, które musisz wiedzieć o dostęp do ope
 * [Dokumentacja interfejsu API REST dostawcy zasobów magazynu Azure](https://msdn.microsoft.com/library/azure/mt163683.aspx)
 
   Ta dokumentacja interfejsu API opisano interfejsów API, można programowo zarządzać konta magazynu.
-* [Przewodnik dewelopera do uwierzytelniania z interfejsu API usługi Azure Resource Manager](http://www.dushyantgill.com/blog/2015/05/23/developers-guide-to-auth-with-azure-resource-manager-api/)
+* [Użyj Menedżera zasobów uwierzytelniania interfejsu API do dostępu do subskrypcji](../../azure-resource-manager/resource-manager-api-authentication.md)
 
   W tym artykule przedstawiono sposób uwierzytelniania przy użyciu interfejsów API Menedżera zasobów.
 * [Kontrola dostępu oparta na rolach dla platformy Microsoft Azure — konferencja Ignite](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
@@ -108,7 +109,7 @@ Poniżej przedstawiono główne punkty, które musisz wiedzieć o dostęp do ope
   To jest link do filmu wideo w witrynie Channel 9 z konferencji Microsoft Ignite 2015. W tej sesji rozmawiamy o możliwościach zarządzania dostępem i raportowania na platformie Azure i eksplorujemy najlepsze rozwiązania dotyczące zabezpieczania dostępu do subskrypcji Azure za pomocą usługi Azure Active Directory.
 
 ### <a name="managing-your-storage-account-keys"></a>Zarządzanie kluczami konta magazynu
-Klucze konta magazynu są ciągami 512-bitowe utworzony przez platformy Azure, która wraz z nazwy konta magazynu może służyć do dostępu do obiektów danych przechowywanych w ramach konta magazynu, na przykład, obiekty BLOB, jednostek w tabeli, kolejki komunikatów i plików w udziale plików Azure. Kontrolowanie dostępu do magazynu konta klucze kontroli dostępu do płaszczyzna danych dla tego konta magazynu.
+Klucze konta magazynu są ciągami 512-bitowe utworzone przez platformę Azure, która wraz z nazwy konta magazynu mogą być używane do dostępu do obiektów danych przechowywanych w ramach konta magazynu, na przykład, obiekty BLOB podmiotów w obrębie tabeli, kolejki komunikatów i plików w udziale plików na platformę Azure. Kontrolowanie dostępu do magazynu konta klucze kontroli dostępu do płaszczyzna danych dla tego konta magazynu.
 
 Każde konto magazynu ma dwa klucze określane jako "Klucz 1" i "Klucz 2" w [portalu Azure](http://portal.azure.com/) i polecenia cmdlet programu PowerShell. Te mogą zostać wygenerowane ponownie ręcznie przy użyciu jednej z kilku metod, w tym między innymi przy użyciu [portalu Azure](https://portal.azure.com/), programu PowerShell, interfejsu wiersza polecenia Azure albo programowo z użyciem biblioteki klienta usługi Storage platformy .NET lub interfejsu API REST usług magazynu Azure.
 
@@ -160,12 +161,15 @@ Uwaga: zalecane jest tylko jeden z kluczy Użyj we wszystkich aplikacji, w tym s
 ## <a name="data-plane-security"></a>Zabezpieczenia warstwy danych
 Bezpieczeństwo płaszczyzna danych odwołuje się do metody używane do zabezpieczania obiektów danych przechowywanych w usłudze Azure Storage — obiekty BLOB, kolejek, tabel i plików. Firma Microsoft w tym samouczku metod do szyfrowania danych i zabezpieczeń podczas przesyłania danych, ale jak uzyskać temat kontrolowania dostępu do obiektów?
 
-Istnieją dwie metody w celu autoryzowania dostępu do danych same obiekty. Obejmują one kontrolowanie dostępu do kluczy konta magazynu i przy użyciu sygnatury dostępu współdzielonego, aby udzielić dostępu do obiektów dane specyficzne dla określonego przedziału czasu.
+Dostępne są trzy opcje w celu autoryzowania dostępu do danych obiektów w usłudze Azure Storage, w tym:
+
+- Używanie programu Azure AD do autoryzacji dostępu do kontenerów i kolejek (wersja zapoznawcza). Usługa Azure AD zapewnia zalet w porównaniu z innych metod do autoryzacji, łącznie z usunięciem trzeba przechowywać kluczy tajnych w kodzie. Aby uzyskać więcej informacji, zobacz [uwierzytelniania dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza)](storage-auth-aad.md). 
+- Przy użyciu kluczy konta magazynu do autoryzowania dostępu za pomocą klucza wspólnego. Autoryzowanie za pomocą klucza wspólnego wymaga przechowywanie kluczy konta magazynu w aplikacji, dlatego firma Microsoft zaleca używanie usługi Azure AD zamiast tego, jeśli jest to możliwe. Przez aplikacje produkcyjne lub w celu autoryzowania dostępu do tabel platformy Azure i pliki nadal przy użyciu klucza wspólnego podczas integracji z usługą Azure AD jest w wersji zapoznawczej.
+- Przy użyciu sygnatury dostępu współdzielonego do przyznawania uprawnień kontrolowane określone dane obiektów dla określonego przedziału czasu.
 
 Ponadto dla magazynu obiektów Blob, można zezwolić publiczny dostęp do obiektów blob ustawiając poziom dostępu dla kontenera, który zawiera obiekty BLOB w związku z tym. Jeśli ustawisz dostępu do kontenera obiektów Blob lub kontenera, umożliwia publiczny dostęp do odczytu obiektów blob w tym kontenerze. Oznacza to, że każdy użytkownik z adresem URL wskazującym na obiekt blob w tym kontenerze otworzyć go w przeglądarce bez przy użyciu sygnaturę dostępu współdzielonego lub posiadanie kluczy konta magazynu.
 
 Oprócz ograniczania dostępu do autoryzacji, należy użyć [zapory i sieci wirtualne](storage-network-security.md) Aby ograniczyć dostęp do konta magazynu, na podstawie reguł w sieci.  Ta umożliwia podejście Odmów dostępu do publicznej ruchu internetowego i przyznać dostęp tylko do określonych sieciach wirtualnych platformy Azure lub publicznego Internetu zakresów adresów IP.
-
 
 ### <a name="storage-account-keys"></a>Klucze kont magazynu
 Klucze konta magazynu są ciągami 512-bitowe utworzone przez platformę Azure, którego wraz z nazwy konta magazynu, można uzyskać dostęp do obiektów danych przechowywanych w ramach konta magazynu.
@@ -205,7 +209,7 @@ http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
 &sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D (signature used for the authentication of the SAS)
 ```
 
-#### <a name="how-the-shared-access-signature-is-authenticated-by-the-azure-storage-service"></a>Jak sygnatura dostępu współdzielonego zostanie uwierzytelniony przez usługi Azure Storage
+#### <a name="how-the-shared-access-signature-is-authorized-by-the-azure-storage-service"></a>W jaki sposób sygnatura dostępu współdzielonego jest autoryzowane przez usługi Azure Storage
 Gdy Usługa magazynu odbiera żądanie, przyjmuje parametry zapytania i tworzy podpis przy użyciu tej samej metody co program wywołujący. Porównuje dwa podpisów. Jeśli użytkownik wyrazi zgodę, usługa Magazyn można sprawdzić wersji usług magazynu, upewnij się, że jest prawidłowy, sprawdź, czy bieżąca data i godzina są w określonym przedziale, upewnij się, że dostęp zażądał odpowiada żądania itp.
 
 Na przykład z naszych powyżej adresu URL, jeśli adres URL został wskazuje plik zamiast obiektu blob to żądanie nie powiedzie się, ponieważ określa ona, że sygnatura dostępu współdzielonego jest dla obiekt blob. Jeśli polecenie REST wywoływana nie można zaktualizować obiektu blob, będą się kończyć niepowodzeniem, ponieważ sygnatura dostępu współdzielonego Określa, czy jest dozwolony dostęp tylko do odczytu.
@@ -263,22 +267,10 @@ Aby bezpieczny kanał komunikacyjny, zawsze należy używać protokołu HTTPS po
 
 Można wymusić użycie protokołu HTTPS podczas wywoływania interfejsów API REST, aby uzyskać dostęp do obiektów na kontach magazynu przez włączenie [bezpieczny transfer wymagane](../storage-require-secure-transfer.md) dla konta magazynu. Połączenia przy użyciu protokołu HTTP będą przyjmowane, gdy ta opcja jest włączona.
 
-### <a name="using-encryption-during-transit-with-azure-file-shares"></a>Szyfrowanie podczas przesyłania z udziałami plików Azure
-Usługa pliki Azure obsługuje HTTPS przy użyciu interfejsu API REST, ale jest więcej powszechnie używany jako udział plików SMB dołączony do maszyny Wirtualnej. Protokół SMB 2.1 nie obsługuje szyfrowania, więc połączeń są dozwolone tylko w obrębie tego samego regionu platformy Azure. Jednak protokół SMB 3.0 obsługuje szyfrowanie i jest dostępna w systemie Windows Server 2012 R2, Windows 8, Windows 8.1 i Windows 10, dzięki czemu zarówno między region dostępu i dostęp na pulpicie.
+### <a name="using-encryption-during-transit-with-azure-file-shares"></a>Szyfrowanie podczas przesyłania z udziałami plików na platformę Azure
+[Usługa pliki Azure](../files/storage-files-introduction.md) obsługuje szyfrowanie za pomocą protokołu SMB 3.0 i protokół HTTPS, korzystając z interfejsu API REST pliku. Podczas instalowania poza region platformy Azure udziału plików na platformę Azure znajduje się w, takich jak lokalnie lub w innym regionie Azure, SMB 3.0, szyfrowanie jest zawsze wymagane. Protokół SMB 2.1 nie obsługuje szyfrowania, więc domyślnie połączenia są dozwolone tylko w obrębie tego samego regionu platformy Azure, ale protokół SMB 3.0 przy użyciu szyfrowania może być wymuszana przez [wymagające zapewnienia bezpiecznego transferu](../storage-require-secure-transfer.md) dla konta magazynu.
 
-Chociaż udziały plików platformy Azure mogą być używane w systemie Unix, klient protokołu SMB w systemie Linux nie obsługuje jeszcze szyfrowania, więc dostęp jest dozwolony tylko w obrębie regionu platformy Azure. Obsługa szyfrowania dla systemu Linux znajduje się na plan deweloperów Linux odpowiedzialny za funkcje protokołu SMB. Podczas dodawania szyfrowania, będziesz mieć możliwości samej do uzyskiwania dostępu do udziału plików Azure w systemie Linux, podobnie jak w przypadku systemu Windows.
-
-Przez włączenie mogą wymusić użycie szyfrowania w usłudze Azure pliki [bezpieczny transfer wymagane](../storage-require-secure-transfer.md) dla konta magazynu. Jeśli przy użyciu interfejsów API REST, wymagany jest protokół HTTPs. Dla protokołu SMB tylko połączenia protokołu SMB, które obsługuje szyfrowanie połączenie zostanie nawiązane pomyślnie.
-
-#### <a name="resources"></a>Zasoby
-* [Usługa pliki Azure wprowadzenie](../files/storage-files-introduction.md)
-* [Wprowadzenie do usługi pliki Azure w systemie Windows](../files/storage-how-to-use-files-windows.md)
-
-  Ten artykuł zawiera omówienie udziały plików platformy Azure oraz jak zainstalować i używać ich w systemie Windows.
-
-* [How to use Azure Files with Linux (Jak używać usługi Azure Files z systemem Linux)](../files/storage-how-to-use-files-linux.md)
-
-  W tym artykule przedstawiono sposób instalacji udziału plików platformy Azure na pliki systemu i przekaż/Pobierz systemu Linux.
+Protokół SMB 3.0, szyfrowanie jest dostępne w [wszystkie obsługiwane systemy operacyjne Windows i Windows Server](../files/storage-how-to-use-files-windows.md) z wyjątkiem systemu Windows 7 i Windows Server 2008 R2, który obsługuje tylko protokół SMB 2.1. Protokół SMB 3.0 jest również obsługiwany w [macOS](../files/storage-how-to-use-files-mac.md) i podziału [Linux](../files/storage-how-to-use-files-linux.md) przy użyciu jądra systemu Linux 4.11 i powyżej. Obsługa szyfrowania protokołu SMB 3.0 również zostały backported ze starszymi wersjami jądra systemu Linux przez kilka dystrybucje systemu Linux, zapoznaj się [wymagania dotyczące klienta SMB opis](../files/storage-how-to-use-files-linux.md#smb-client-reqs).
 
 ### <a name="using-client-side-encryption-to-secure-data-that-you-send-to-storage"></a>Za pomocą szyfrowania po stronie klienta w celu zabezpieczenia danych, który możesz wysłać do magazynu
 Inną opcją, która pomaga zagwarantować, że dane są bezpieczne podczas ich przesyłania między aplikacją klienta i magazynu jest szyfrowanie po stronie klienta. Dane są szyfrowane przed przesyłane do usługi Azure Storage. Podczas pobierania danych z usługi Azure Storage, dane zostaną odszyfrowane po odebraniu po stronie klienta. Nawet jeśli dane są szyfrowane, przechodzi przez sieć, zalecamy również używać protokołu HTTPS, ponieważ ta kolumna ma wbudowane zmniejszenia którego błędy sieciowe wpływających na integralność danych, sprawdzania integralności danych.
@@ -412,11 +404,11 @@ Brak wymienionym w zasobach poniżej zawiera listę wiele pól w dziennikach i i
 
 ![Migawki pól w pliku dziennika](./media/storage-security-guide/image3.png)
 
-Interesuje nas wpisy GetBlob i sposób ich uwierzytelniania, dlatego musimy Wyszukaj wpisy z operacji typu "Get-obiektu Blob" i sprawdź stan żądania (czwarty</sup> kolumny) i typ autoryzacji (ósmego</sup> kolumny).
+Interesuje nas wpisy GetBlob i w jaki sposób użytkownik jest uprawniony, więc musimy Wyszukaj wpisy z operacji typu "Get-obiektu Blob" i sprawdź stan żądania (czwarty</sup> kolumny) i typ autoryzacji (ósmego</sup> kolumny).
 
-Na przykład w kilka pierwszych wierszy na liście powyżej, stan żądania jest "Powodzenie" i typ autoryzacji "uwierzytelnieniu". Oznacza to, że żądania została zweryfikowana przy użyciu klucza konta magazynu.
+Na przykład w kilka pierwszych wierszy na liście powyżej, stan żądania jest "Powodzenie" i typ autoryzacji "uwierzytelnieniu". Oznacza to, że żądanie było autoryzowane przy użyciu klucza konta magazynu.
 
-#### <a name="how-are-my-blobs-being-authenticated"></a>Jak są jest uwierzytelniane Moje obiektów blob?
+#### <a name="how-is-access-to-my-blobs-being-authorized"></a>W jaki sposób dostępu do obiektów blob, Moje autoryzowanego?
 Mamy trzech przypadkach, w których Dbamy o.
 
 1. Obiekt blob jest publiczny i jest on dostępny przy użyciu adresu URL bez sygnaturę dostępu współdzielonego. W takim przypadku stan żądania jest "AnonymousSuccess" i "anonymous" jest typ autoryzacji.
@@ -513,8 +505,7 @@ Aby uzyskać więcej informacji na temat CORS oraz jak je włączyć zapoznaj si
 
    Microsoft pozostawia go do każdego klienta w celu podjęcie decyzji o włączeniu w trybie FIPS. Mamy nadzieję, że to nie ma powodu istotnych dla klientów, którzy nie podlegają dla instytucji rządowych przepisy, aby włączyć tryb FIPS domyślnie.
 
-   **Zasoby**
-
+### <a name="resources"></a>Zasoby
 * [Dlaczego jest nie zalecamy "Tryb FIPS" już](https://blogs.technet.microsoft.com/secguide/2014/04/07/why-were-not-recommending-fips-mode-anymore/)
 
   W tym artykule na blogu powinien zawierać omówienie FIPS i objaśniono, dlaczego nie umożliwiają one trybie FIPS domyślnie.
