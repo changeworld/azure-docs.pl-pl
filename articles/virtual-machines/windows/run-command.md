@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 3feed9c1c8903db66a0506f09161982dadaa79ba
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: ddbac24020110e32792286a1ac64070316cfb081
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284968"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332718"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>Uruchamiać skrypty programu PowerShell w sieci maszyny Wirtualnej systemu Windows za pomocą polecenia Uruchom
 
@@ -23,7 +23,7 @@ Uruchom polecenie używa agenta maszyny Wirtualnej do uruchamiania skryptów pow
 
 Istnieje wiele opcji, które mogą być używane do dostępu maszyn wirtualnych. Polecenie uruchomienia można uruchamiać skrypty na maszynach wirtualnych zdalnie przy użyciu agenta maszyny Wirtualnej. Uruchom polecenie może być używane za pośrednictwem portalu Azure [interfejsu API REST](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [interfejsu wiersza polecenia Azure](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke), lub [PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand).
 
-Ta funkcja jest przydatna we wszystkich scenariuszach, w którym chcesz uruchomić maszyny wirtualnej związanej z nauką skrypt, a jest jednym ze sposobów tylko Rozwiązywanie problemów i korygowanie maszynę wirtualną, która nie ma protokołu RDP lub Otwórz SSH port z powodu nieprawidłowej sieci lub użytkownik administracyjny Konfiguracja.
+Ta funkcja jest przydatna we wszystkich scenariuszach, w którym chcesz uruchomić skrypt w maszynach wirtualnych, a jest jednym ze sposobów tylko Rozwiązywanie problemów i korygowanie maszynę wirtualną, która nie ma protokołu RDP lub Otwórz SSH port z powodu nieprawidłowej sieci lub użytkownik administracyjny Konfiguracja.
 
 ## <a name="restrictions"></a>Ograniczenia
 
@@ -33,9 +33,10 @@ Korzystając z polecenia Uruchom, obowiązują następujące ograniczenia:
 * Minimalny czas do uruchomienia skryptu to około 20 sekund
 * Skrypty uruchamiane jako System w systemie Windows
 * Może uruchomić skrypt w czasie
-* Skrypty, które monit o podanie informacji (w trybie interaktywnym) nie są obsługiwane.
 * Nie można anulować uruchamianie skryptu
 * Maksymalny czas, który można uruchomić skryptu wynosi 90 minut, po jakim zostanie limit czasu
+
+**PermissionsConfig-OrchestratorUsersGroup***GroupName***-OrchestratorUser***UserName***\-remote** 
 
 ## <a name="run-a-command"></a>Uruchom polecenie
 

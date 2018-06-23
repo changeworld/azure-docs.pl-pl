@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych z Impala przy użyciu fabryki danych Azure (wersja beta) | Dokumentacja firmy Microsoft
+title: Kopiowanie danych z Impala przy użyciu fabryki danych Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skopiować dane z Impala do zbiornika obsługiwane magazyny danych za pomocą działania kopiowania w potoku fabryki danych.
 services: data-factory
 documentationcenter: ''
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 73987d03cb96fa421d193504fe6eaf6c3b5ddb18
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 49e9c338128cc857347bbf052c19dc34dd08f9c6
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618773"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337618"
 ---
-# <a name="copy-data-from-impala-by-using-azure-data-factory-beta"></a>Kopiowanie danych z Impala przy użyciu fabryki danych Azure (wersja beta)
+# <a name="copy-data-from-impala-by-using-azure-data-factory-preview"></a>Kopiowanie danych z Impala przy użyciu fabryki danych Azure (wersja zapoznawcza)
 
 Ten artykuł przedstawia sposób użycia działanie kopiowania w fabryce danych Azure, aby skopiować dane z Impala. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
@@ -28,7 +28,7 @@ Ten artykuł przedstawia sposób użycia działanie kopiowania w fabryce danych 
 > Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 fabryki danych, która jest ogólnie dostępna, zobacz [aktywności kopiowania w wersji 1](v1/data-factory-data-movement-activities.md).
 
 > [!IMPORTANT]
-> Ten łącznik jest obecnie w wersji beta. Możesz wypróbować jej możliwości i wyrazić swoją opinię. Nie należy używać go w środowisku produkcyjnym.
+> Ten łącznik jest obecnie w przeglądzie. Możesz wypróbować jej możliwości i wyrazić swoją opinię. Jeśli w swoim rozwiązaniu chcesz wprowadzić zależność od łączników w wersji zapoznawczej, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
@@ -38,7 +38,7 @@ Możesz skopiować dane z Impala żadnych obsługiwanych ujścia magazynu danych
 
 ## <a name="get-started"></a>Rozpoczęcie pracy
 
-[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek fabryki danych określonej do łącznika Impala.
 

@@ -10,28 +10,25 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 05/10/2018
+ms.topic: conceptual
+ms.date: 06/22/2018
 ms.author: mbullwin
-ms.openlocfilehash: 0be54c47965c6a27c3506fd37a7bf67e4b2b7924
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 4a639b51fd930c5c74ee78b37fbe8e97e39dbc32
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337562"
 ---
-# <a name="application-insights-overview-dashboard-preview"></a>Pulpit nawigacyjny aplikacji — omówienie Insights (wersja zapoznawcza)
+# <a name="application-insights-overview-dashboard"></a>Pulpit nawigacyjny szczegółowych informacji Omówienie aplikacji
 
-Usługa Application Insights zawsze udostępnił okienko Podsumowanie, aby umożliwić szybkie, w skrócie ocenę kondycji i wydajności aplikacji. Nowy pulpit nawigacyjny Omówienie podglądu zapewnia szybsze, bardziej elastyczne środowisko.
+Usługa Application Insights zawsze udostępnił okienko Podsumowanie, aby umożliwić szybkie, w skrócie ocenę kondycji i wydajności aplikacji. Nowego pulpitu nawigacyjnego przeglądu zapewnia szybsze, bardziej elastyczne środowisko.
 
 ## <a name="how-do-i-test-out-the-new-experience"></a>Jak przetestować nowe środowisko
 
- W usłudze Application Insights w obszarze: _omówienie_, wybierz pozycję _spróbuj nowy przegląd przed staje się on środowisko domyślne_.
+Nowego pulpitu nawigacyjnego przeglądu teraz uruchamia się domyślnie:
 
-![Omówienie podglądu](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-01.png)
-
-Spowoduje to uruchomienie nowego pulpitu nawigacyjnego przeglądu domyślne:
-
-![Okienko podglądu — omówienie](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-02.png)
+![Okienko podglądu — omówienie](.\media\app-insights-overview-dashboard\overview-0001.png)
 
 ## <a name="better-performance"></a>Lepszą wydajność
 
@@ -39,7 +36,7 @@ Prosty interfejs jednym kliknięciem uproszczonej wybranego zakresu czasu.
 
 ![Przedział czasu](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-03.png)
 
-Ogólna wydajność znacząco zwiększono. Każdy domyślne dynamiczne aktualizowanie kafelka kluczowego wskaźnika wydajności jest połączony z odpowiedniej funkcji usługi Application Insights. Na przykład uruchamiają zaznaczając żądań zakończonych niepowodzeniem _błędów_ okienka:
+Ogólna wydajność znacząco zwiększono. Masz dostęp jednym kliknięciem do popularnych funkcji, takich jak **wyszukiwania** i **Analytics**. Każdy domyślne dynamiczne aktualizowanie kafelka kluczowego wskaźnika wydajności zapewnia wgląd w odpowiednie funkcje usługi Application Insights. Aby dowiedzieć się więcej o nie powiodło się wybierz żądań **błędów** w obszarze **zbadaj** nagłówka:
 
 ![Awarie](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-04.png)
 
@@ -51,11 +48,11 @@ Wybierz pulpit nawigacyjny domyślnego dostępu do _pulpit nawigacyjny aplikacji
 
 ![Widok pulpitu nawigacyjnego](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-05.png)
 
-Jeśli jest to pierwszy raz podczas uzyskiwania dostępu do pulpitu nawigacyjnego uruchamia widok domyślny:
+Jeśli jest to pierwszy raz podczas uzyskiwania dostępu do pulpitu nawigacyjnego, uruchomi domyślny widok:
 
 ![Widok pulpitu nawigacyjnego](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-06.png)
 
-Podczas mogą zachować widok domyślny, jeśli chcesz tak, można również dodać, a następnie usuń z pulpitu nawigacyjnego, aby jak najlepiej zgodnie z potrzebami zespołu.
+Należy dysponować widok domyślny, jeśli chcesz go. Lub można również dodawać i usuwać z poziomu pulpitu nawigacyjnego do optymalnego dopasowania na potrzeby Twojego zespołu.
 
 > [!NOTE]
 > Wszyscy użytkownicy z dostępem do zasobu usługi Application Insights udostępnianie tego samego środowiska pulpitu nawigacyjnego aplikacji. Zmiany wprowadzone przez jeden użytkownik zmodyfikuje widoku dla wszystkich użytkowników.
@@ -63,6 +60,12 @@ Podczas mogą zachować widok domyślny, jeśli chcesz tak, można również dod
 Aby wrócić do obsługi omówienie po prostu wybierz:
 
 ![Przycisk — omówienie](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-07.png)
+
+## <a name="access-the-classic-overview-dashboard"></a>Dostęp do pulpitu nawigacyjnego przeglądu klasycznego
+
+Jeśli pominiesz starego omówienie wybierz **klasycznego omówienie**.
+
+![Omówienie klasycznego](.\media\app-insights-overview-dashboard\overview-classic.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

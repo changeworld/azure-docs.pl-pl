@@ -8,12 +8,12 @@ ms.date: 04/30/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a8b58eae9aa08d8f6539370fa6e78a7a4813c18f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5fbac725894d01b2dc622d3542f865a66b240743
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631024"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333780"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge---preview"></a>Ciągłej integracji i ciągłe wdrażanie na krawędzi IoT Azure — wersja zapoznawcza
 W tym samouczku przedstawiono sposób użycia ciągłej integracji i funkcji ciągłego wdrażania programu Visual Studio Team Services (VSTS) i Microsoft Team Foundation Server (TFS) do tworzenia, testowania i wdrażania aplikacji szybkie i skuteczne do użytkownika Usługa Azure IoT krawędzi. 
@@ -33,7 +33,7 @@ Potrwa 30 minut do ukończenia tego samouczka.
 
 W tej sekcji utworzysz próbkę krawędzi IoT rozwiązania zawierającego testy jednostkowe które mogą być wykonywane jako część procesu kompilacji. Przed wykonaniem wskazówki zawarte w tej sekcji, wykonaj kroki [opracowywania rozwiązań IoT Edge z wieloma modułami w programie Visual Studio Code](tutorial-multiple-modules-in-vscode.md).
 
-1. W kodzie VS palety polecenia, wpisz i uruchom polecenie **krawędzi: rozwiązanie graniczne IoT nowe**. Następnie wybierz folder roboczy, podaj nazwę rozwiązania (nazwa domyślna to **EdgeSolution**) i Utwórz moduł C# (**FilterModule**) jako pierwszego modułu użytkownika w tym rozwiązaniu. Należy również określić repozytorium obrazów Docker dla pierwszego modułu. Repozytorium obrazów domyślna jest oparta na lokalnym rejestrze Docker (`localhost:5000/filtermodule`). Należy je zmienić w rejestrze kontenera platformy Azure (`<your container registry address>/filtermodule`) lub Centrum Docker dla dalszego ciągłej integracji.
+1. W kodzie VS palety polecenia, wpisz i uruchom polecenie **krawędzi: rozwiązanie graniczne IoT nowe**. Następnie wybierz folder roboczy, podaj nazwę rozwiązania (nazwa domyślna to **EdgeSolution**) i Utwórz moduł C# (**FilterModule**) jako pierwszego modułu użytkownika w tym rozwiązaniu. Należy również określić repozytorium obrazów platformy Docker dla pierwszego modułu. Repozytorium obrazów domyślna jest oparta na lokalnym rejestrze Docker (`localhost:5000/filtermodule`). Należy je zmienić w rejestrze kontenera platformy Azure (`<your container registry address>/filtermodule`) lub Centrum Docker dla dalszego ciągłej integracji.
 
     ![Instalator ACR](./media/how-to-ci-cd/acr.png)
 
@@ -452,7 +452,7 @@ Tak podczas wdrażania urządzenia brzegowe IoT, istnieją trzy główne środow
 W tym samouczku przedstawiono sposób użycia ciągłej integracji i funkcji ciągłego wdrażania programu VSTS lub TFS. 
 
 * Zrozumienie wdrożenia IoT krawędzi w [wdrożeń zrozumieć IoT Edge dla urządzeń z jednego lub na dużą skalę](module-deployment-monitoring.md)
-* Szczegółowe kroki umożliwiające tworzenie, aktualizowanie lub usuwanie wdrożenia w [wdrażanie i monitorowanie krawędzi IoT modułów na dużą skalę] [how-do-wdrażanie monitor.md].
+* Szczegółowe kroki umożliwiające tworzenie, aktualizowanie lub usuwanie wdrożenia w [wdrażanie i monitorowanie krawędzi IoT modułów na dużą skalę](how-to-deploy-monitor.md).
 
 
 

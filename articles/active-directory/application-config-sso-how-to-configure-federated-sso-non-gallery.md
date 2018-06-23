@@ -3,21 +3,23 @@ title: Jak skonfigurować federacyjne logowanie jednokrotne dla aplikacji z syst
 description: Konfigurowanie federacyjnych rejestracji jednokrotnej dla niestandardowej aplikacji z systemem innym niż galerii, który chcesz zintegrować z usługą Azure AD
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 65df07b6fca62476953ad98dc9e17d9a82c97a53
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: barbkess
+ms.openlocfilehash: 916261de1f53c7b859378e83e423dea44b58af9b
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331946"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>Jak skonfigurować federacyjne logowanie jednokrotne dla aplikacji z systemem innym niż galerii
 
@@ -136,7 +138,7 @@ Aby pobrać metadanych aplikacji lub certyfikatu z usługi Azure AD, wykonaj nas
 
 8.  Przejdź do **certyfikat podpisywania SAML** sekcji, a następnie kliknij przycisk **Pobierz** wartość w kolumnie. W zależności od tego, jakie aplikacji wymaga Konfigurowanie logowania jednokrotnego zobaczysz opcję, aby pobrać metadane XML albo certyfikatu.
 
-Usługi Azure AD nie udostępnia adresu URL można pobrać metadanych. Można pobrać metadanych jako plik XML.
+Usługa Azure AD zapewnia również adres URL do pobrania metadanych. Wykonaj ten wzorzec, aby uzyskać adres URL metadanych specyficznych dla aplikacji: https://login.microsoftonline.com/ <Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>.
 
 ## <a name="assign-users-to-the-application"></a>Przypisywanie użytkowników do aplikacji
 

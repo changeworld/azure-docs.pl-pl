@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: juliako
-ms.openlocfilehash: 804a418f6ee88974d6e74a2c18bc5d01b6adf838
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c488060b9db0ba482d12eee2394e5149b918950e
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788753"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331524"
 ---
 # <a name="media-intelligence"></a>Inteligentna analiza multimediów
 
@@ -50,8 +50,8 @@ Dane wyjściowe zawiera plik JSON (insights.json) z wszystkich szczegółowych d
 |Name (Nazwa)|Opis|
 |---|---|
 |id|Identyfikator wiersza.|
-|Tekst|Wykaz, samej siebie.|
-|Język|Język zapis. Przeznaczony do obsługi wykaz, w którym każdy wiersz może mieć inną wersją językową.|
+|tekst|Wykaz, samej siebie.|
+|język|Język zapis. Przeznaczony do obsługi wykaz, w którym każdy wiersz może mieć inną wersją językową.|
 |wystąpienia|Lista przedziałów czasu, w której znajdowały się tego wiersza. Jeśli wystąpienie jest zapisu, będzie mieć tylko 1 wystąpieniem.|
 
 Przykład:
@@ -87,10 +87,10 @@ Przykład:
 
 |Name (Nazwa)|Opis|
 |---|---|
-|id|Identyfikator wiersza Rozpoznawania.|
-|Tekst|Tekst Rozpoznawania.|
+|id|Identyfikator Rozpoznawania wiersza.|
+|tekst|Tekst Rozpoznawania.|
 |Zaufania|Zaufanie rozpoznawania.|
-|Język|Język Rozpoznawania.|
+|język|Język Rozpoznawania.|
 |wystąpienia|Lista przedziałów czasu, w której znajdowały się tym Rozpoznawania (tego samego Rozpoznawania może pojawić się wiele razy).|
 
 ```json
@@ -126,14 +126,14 @@ Przykład:
   ],
 ```
 
-### <a name="keywords"></a>Słowa kluczowe
+### <a name="keywords"></a>słowa kluczowe
 
 |Name (Nazwa)|Opis|
 |---|---|
 |id|Identyfikator — słowo kluczowe.|
-|Tekst|Tekst — słowo kluczowe.|
+|tekst|Tekst — słowo kluczowe.|
 |Zaufania|Słowo kluczowe rozpoznawania zaufania.|
-|Język|Język — słowo kluczowe (po translacji).|
+|język|Język — słowo kluczowe (po translacji).|
 |wystąpienia|Lista przedziałów czasu, w której znajdowały się to słowo kluczowe (słowo kluczowe może pojawić się wiele razy).|
 
 ```json
@@ -174,20 +174,20 @@ Przykład:
 
 ```
 
-### <a name="faces"></a>kroje
+### <a name="faces"></a>Kroje
 
 |Name (Nazwa)|Opis|
 |---|---|
 |id|Identyfikator twarzy na obrazie.|
 |name|Nazwa czcionki. Może to być "Nieznany #0", zidentyfikowanych renomy lub osoby przeszkolone klienta.|
 |Zaufania|Zaufanie identyfikacji twarzy na obrazie.|
-|description|W przypadku renomy, jego opisu ("Satya Nadella powstał na..."). |
+|description|W przypadku renomy jego opis. |
 |thumbnalId|Identyfikator miniatury napotykane przez.|
 |knownPersonId|W przypadku znanych osoby, jego identyfikator wewnętrzny.|
-|Identyfikator odwołania|W przypadku renomy Bing identyfikatora Bing.|
+|Identyfikator odwołania|W przypadku Bing gwiazdach ekranu, jego identyfikator Bing.|
 |Typ odwołania|Obecnie tylko Bing.|
 |tytuł|W przypadku renomy tytułu (na przykład "Prezes firmy Microsoft").|
-|ImageUrl|W przypadku renomy jej adres url obrazu.|
+|imageUrl|W przypadku renomy jej adres url obrazu.|
 |wystąpienia|Są to wystąpień z którym kroju znajdowały się w danym okresie. Każde wystąpienie ma również thumbnailsId. |
 
 ```json
@@ -219,13 +219,13 @@ Przykład:
 }]
 ```
 
-### <a name="labels"></a>Etykiety
+### <a name="labels"></a>etykiety
 
 |Name (Nazwa)|Opis|
 |---|---|
 |id|Identyfikator etykiety.|
 |name|Nazwa etykiety (na przykład "Komputer", "TV").|
-|Język|Etykieta nazwy języka (po translacji). NARZĘDZIE BCP 47|
+|język|Etykieta nazwy języka (po translacji). NARZĘDZIE BCP 47|
 |wystąpienia|Lista przedziałów czasu, w której znajdowały się etykieta (etykiety może pojawić się wiele razy). Każde wystąpienie ma pole zaufania. |
 
 
@@ -282,7 +282,7 @@ Przykład:
 
 |Name (Nazwa)|Opis|
 |---|---|
-|id|Identyfikator zrzut.|
+|id|Zrzut identyfikatora.|
 |Klatek|Lista klatek kluczowych w zrzut (każda ma identyfikator i listę wystąpień przedziałów czasu).|
 |wystąpienia|Lista zakresów czasu ten zrzut (zrzuty jest tylko 1 wystąpienie).|
 
@@ -329,33 +329,6 @@ Przykład:
       ]
     }
   ]
-```
-
-### <a name="audioeffects"></a>audioEffects
-
-|Name (Nazwa)|Opis|
-|---|---|
-|id|Identyfikator efekt audio.|
-|type|Typ efektu audio (na przykład Clapping, mowy, wyciszenia).|
-|wystąpienia|Lista przedziałów czasu, w której znajdowały się w tym celu audio.|
-
-```json
-"audioEffects": [
-{
-    "id": 0,
-    "type": "Clapping",
-    "instances": [
-    {
-        "start": "00:00:00",
-        "end": "00:00:03"
-    },
-    {
-        "start": "00:01:13",
-        "end": "00:01:21"
-    }
-    ]
-}
-]
 ```
 
 

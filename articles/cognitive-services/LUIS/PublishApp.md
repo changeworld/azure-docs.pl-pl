@@ -10,17 +10,17 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 056608e7843c8feab28359de5f2762164287f09d
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 12a63e65a739be08d436f8f1b53df566255b1fb1
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35356140"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36322058"
 ---
 # <a name="publish-your-trained-app"></a>Publikowanie aplikacji przeszkolone
 Po zakończeniu tworzenia i testowania aplikacji LUIS go opublikować. Po opublikowaniu aplikacji strony publikowania zawiera wszystkie skojarzone HTTP [punkty końcowe](luis-glossary.md#endpoint). Te punkty końcowe na [region](luis-reference-regions.md) i na [klucza](Manage-Keys.md), następnie są zintegrowane z dowolnej aplikacji klienta, chatbot lub wewnętrznej bazy danych. 
 
-Możesz zawsze [test](train-test.md) aplikacji przed jej opublikowaniem. 
+Możesz zawsze [test](interactive-test.md) aplikacji przed jej opublikowaniem. 
 
 ## <a name="production-and-staging-slots"></a>Produkcyjne i przejściowe gniazd
 Możesz opublikować aplikację, aby **miejsca przemieszczania** lub **gniazda produkcyjnego**. Za pomocą dwóch miejsc publikowania, dzięki temu można mieć dwie różne wersje z opublikowanych punktów końcowych lub tej samej wersji na dwóch różnych punktów końcowych. 
@@ -138,11 +138,11 @@ Następujące parametry ciągu zapytania mogą służyć do adresu URL punktu ko
 
 |Ciąg zapytania|Typ|Przykładowa wartość|Przeznaczenie|
 |--|--|--|--|
-|Pełne|wartość logiczna|true|Obejmują [wszystkie wyniki konwersji](#include-all-predicted-intent-scores) dla utterance|
-|wartości timezoneOffset|numer (jednostka jest w minutach)|60|Ustaw [przesunięcie strefy czasowej](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) dla [datetimeV2 wbudowane jednostek](luis-reference-prebuilt-entities.md#builtindatetimev2)|
+|pełne|wartość logiczna|true|Obejmują [wszystkie wyniki konwersji](#include-all-predicted-intent-scores) dla utterance|
+|wartości timezoneOffset|numer (jednostka jest w minutach)|60|Ustaw [przesunięcie strefy czasowej](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) dla [datetimeV2 wbudowane jednostek](luis-reference-prebuilt-datetimev2.md)|
 |Sprawdzanie pisowni|wartość logiczna|true|[Popraw pisownię](#enable-bing-spell-checker) z utterance — używany w połączeniu z parametru ciągu zapytania usługi bing pisowni wyboru subskrypcji klucza|
 |Bing pisowni wyboru subskrypcji klucza|Identyfikator subskrypcji||używane w połączeniu z parametru ciągu zapytania sprawdzanie pisowni|
-|Przemieszczania|wartość logiczna|false|Wybierz punkt końcowy tymczasowym czy produkcyjnym|
+|przemieszczania|wartość logiczna|false|Wybierz punkt końcowy tymczasowym czy produkcyjnym|
 |Dziennik|wartość logiczna|true|Dodawanie zapytań i wyniki do logowania|
 
 
@@ -154,4 +154,4 @@ Testowanie opublikowanego punktu końcowego, wybierając adres URL w **punktu ko
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Zobacz [zarządzanie kluczami](./Manage-Keys.md) Dodawanie kluczy do aplikacji LUIS i więcej informacji na temat sposobu mapowania klucze regionów.
-* Zobacz [pociągu i testowanie aplikacji](Train-Test.md) instrukcje na temat testowania opublikowanych aplikacji w konsoli testu.
+* Zobacz [pociągu i testowanie aplikacji](interactive-test.md) instrukcje na temat testowania opublikowanych aplikacji w konsoli testu.

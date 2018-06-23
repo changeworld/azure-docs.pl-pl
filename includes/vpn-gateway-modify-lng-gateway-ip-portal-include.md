@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a929149f115d716bf7f9d850abe5ba97bd5a8189
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a79184a5e08aa43a4675194adf5f10b9807418db
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30198098"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36329556"
 ---
 ### <a name="gwipnoconnection"></a> Aby zmodyfikować adres IP bramy sieci lokalnej — Brak połączenia bramy
 
@@ -23,7 +23,7 @@ Użyj przykładu, aby zmodyfikować bramę sieci lokalnej bez połączenia bramy
 2. W **adres IP** zmodyfikuj adres IP.
 3. Kliknij polecenie **Zapisz**, aby zapisać ustawienia.
 
-### <a name="gwipwithconnection"></a>Aby zmodyfikować sieci lokalnej bramy adresu IP bramy - istniejące połączenie z bramą
+### <a name="gwipwithconnection"></a>Aby zmodyfikować adres IP bramy sieci lokalnej - istniejące połączenie z bramą
 
 Aby zmodyfikować bramy sieci lokalnej, która ma połączenie, należy najpierw usunąć połączenie. Po usunięciu połączenia możesz zmodyfikować adres IP bramy i ponownie utworzyć nowe połączenie. Jednocześnie możesz również zmodyfikować prefiksy adresów. Spowoduje to pewien przestój połączenia sieci VPN. W przypadku modyfikowania adresu IP bramy nie musisz usuwać bramy sieci VPN. Musisz usunąć tylko połączenie.
  

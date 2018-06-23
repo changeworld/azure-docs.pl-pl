@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 01a34eed3ea073deaaf449d28d7f8462f12b5a33
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 8295abfae8d82a7c7762c6b27a8bac7487f6afff
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294313"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335285"
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Samouczek analizy w usłudze Application Insights
 [Analiza](app-insights-analytics.md) to funkcja wyszukiwania zaawansowanego [usługi Application Insights](app-insights-overview.md). Te strony opisano język zapytań usługi Analiza dzienników.
@@ -180,7 +180,7 @@ Inne przykłady:
 
 
 ## <a name="projecthttpsdocsloganalyticsiodocslanguage-referencetabular-operatorsproject-operator-select-rename-and-compute-columns"></a>[Projekt](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator): Wybierz, Zmień nazwę, a kolumny obliczeniowe
-Użyj [ `project` ](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html) do wybierania tylko kolumny, które chcesz:
+Użyj [ `project` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator) do wybierania tylko kolumny, które chcesz:
 
 ```AIQL
 
@@ -203,7 +203,7 @@ Można również zmienić nazwy kolumny i zdefiniować nowe:
             ['time of day'] = floor(timestamp % 1d, 1s)
 ```
 
-![wynik](./media/app-insights-analytics-tour/270.png)
+![Wynik](./media/app-insights-analytics-tour/270.png)
 
 * Nazwy kolumny może zawierać spacje lub symbole, jeśli są one oddzielona podobnie do następującej: `['...']` lub `["..."]`
 * `%` jest zwykle operatora modulo.
@@ -433,7 +433,7 @@ Użyj powyższego zapytania, ale zastępuje ostatni wiersz:
 
 Górny limit usunęliśmy także w przypadku, gdy klauzula, aby uzyskać prawidłowe dane, w tym wszystkie sesje z więcej niż jedno żądanie:
 
-![wynik](./media/app-insights-analytics-tour/180.png)
+![Wynik](./media/app-insights-analytics-tour/180.png)
 
 Z którego możemy stwierdzić, że:
 
@@ -525,7 +525,7 @@ Użyj *Let* Aby zdefiniować funkcję:
 ## <a name="accessing-nested-objects"></a>Uzyskiwanie dostępu do obiektów zagnieżdżonych
 Zagnieżdżone obiekty są łatwo dostępne. Na przykład w strumieniu wyjątków można wyświetlić obiekty strukturalne następująco:
 
-![wynik](./media/app-insights-analytics-tour/520.png)
+![Wynik](./media/app-insights-analytics-tour/520.png)
 
 Można jej spłaszczenia, wybierając pozycję Właściwości, które chcesz:
 

@@ -16,7 +16,7 @@
 6. Wpisz następujące polecenie:
    
      `Invoke-HcsSetupWizard` 
-7. Zostanie uruchomiony Kreator instalacji, który ułatwi konfigurowanie ustawień sieciowych urządzenia. Wprowadź następujące informacje: 
+7. Zostanie uruchomiony Kreator instalacji, który ułatwi konfigurowanie ustawień sieciowych urządzenia. Podaj następujące informacje: 
    
    * Adres IP dla interfejsu sieciowego protokołu DATA 0
    * Maska podsieci

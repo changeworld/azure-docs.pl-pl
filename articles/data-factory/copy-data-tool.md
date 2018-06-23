@@ -3,20 +3,20 @@ title: Kopiuj dane narzędzia fabryki danych Azure | Dokumentacja firmy Microsof
 description: Informacje na temat narzędzia kopii danych w interfejsie użytkownika fabryki danych Azure
 services: data-factory
 documentationcenter: ''
-author: linda33wj
+author: dearandyxu
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/10/2018
-ms.author: jingwang
-ms.openlocfilehash: 5180a490a543b6cfc2a8129423f0e663de2e06e1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 06/18/2018
+ms.author: yexu
+ms.openlocfilehash: 8941ec26cef5e3dc2f17faf0d7eb843b76f8926f
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619426"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331843"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Skopiuj narzędzie dane z fabryki danych Azure
 Narzędzie Kopia fabryki danych Azure ułatwia i optymalizuje proces wprowadzania danych w usłudze data lake, który zazwyczaj jest to pierwszy krok w scenariuszu integracji danych na całej trasie.  Zaoszczędzić czas, zwłaszcza jeśli używasz usługi fabryka danych Azure do pozyskiwania danych ze źródła danych po raz pierwszy. Korzyści wynikające ze stosowania tego narzędzia, należą:

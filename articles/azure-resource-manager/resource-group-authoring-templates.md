@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: f7dfdc4319e50e7a6c1c6032c27de5c76397e8de
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f1ce47874b759748f4a2e2ce1fb438b394443058
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603080"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334802"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Struktura i składni szablony Menedżera zasobów Azure
 W tym artykule opisano strukturę szablonu usługi Azure Resource Manager. Stanowi różne sekcje szablonu i właściwości, które są dostępne w tych sekcjach. Szablon składa się z kodu JSON i wyrażeń, które służy do tworzenia wartości na potrzeby wdrożenia. Samouczek krok po kroku dotyczące tworzenia szablonu, zobacz [Tworzenie pierwszego szablonu usługi Azure Resource Manager](resource-manager-create-first-template.md).
@@ -214,6 +214,7 @@ W szablonie można tworzyć własnych funkcji. Te funkcje są dostępne do użyc
 Podczas definiowania funkcji użytkownika, istnieją pewne ograniczenia:
 
 * Funkcja nie może uzyskać dostępu do zmiennych.
+* Funkcja nie można wywołać inne funkcje zdefiniowane przez użytkownika.
 * Nie można użyć funkcji [odwołania funkcja](resource-group-template-functions-resource.md#reference).
 * Parametrów funkcji nie może mieć wartości domyślne.
 

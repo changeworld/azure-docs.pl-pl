@@ -3,22 +3,23 @@ title: Problem podczas konfiguracji hasła logowanie jednokrotne dla aplikacji w
 description: Zrozumienie kroju osób typowe problemy podczas konfigurowania haseł logowanie jednokrotne dla aplikacji, które są już wyświetlane w galerii aplikacji usługi Azure AD
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: f19b684a6c7426134844a2657b886280af2f061c
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: barbkess
+ms.openlocfilehash: 37c2a50a3aca281596a06e0d666edff05347f660
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34067065"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331159"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Problem podczas konfiguracji hasła logowanie jednokrotne dla aplikacji w galerii Azure AD
 
@@ -40,13 +41,13 @@ Aby rozwiązać ten problem, należy najpierw spróbuj użyć następujących ro
 
   * Jeśli działa logowanie ma użytkownika, kliknij przycisk **zaktualizować poświadczenia** znajdującego się na **kafelka aplikacji** w **aplikacje** sekcji [dostęp do aplikacji Panel](https://myapps.microsoft.com/) ich aktualizacji do najnowszej znane pracy nazwy użytkownika i hasła.
 
-   * Jeśli użytkownik lub inny administrator przypisane poświadczenia dla tego użytkownika, znaleźć użytkownika lub grupy aplikacji przydziału, przechodząc do **użytkownicy i grupy** aplikacji, wybierając przypisania i klikając pozycję **poświadczenia aktualizacji** przycisku.
+   * Jeśli użytkownik lub inny administrator przypisane poświadczenia dla tego użytkownika, znaleźć użytkownika lub grupy aplikacji przydziału, przechodząc do **użytkownicy i grupy** aplikacji, wybierając przypisania i klikając pozycję  **Zaktualizuj poświadczenia** przycisku.
 
 -   Jeśli użytkownik jest przypisany własnymi poświadczeniami, ma użytkownika **wyboru należy upewnić się, że ich hasła nie wygasł w aplikacji** , a jeśli tak, **aktualizacja wygasłego hasła** logując się do aplikacji bezpośrednio.
 
-   * Po zaktualizowaniu hasło aplikacji żądania użytkownika do kliknięcia **zaktualizować poświadczenia** znajdującego się na **kafelka aplikacji** w **aplikacje** sekcji [panelu dostępu aplikacji](https://myapps.microsoft.com/) ich aktualizacji do najnowszej znane pracy nazwy użytkownika i hasła.
+   * Po zaktualizowaniu hasło aplikacji żądania użytkownika do kliknięcia **zaktualizować poświadczenia** znajdującego się na **kafelka aplikacji** w **aplikacji** sekcji [Panelu dostępu aplikacji](https://myapps.microsoft.com/) ich aktualizacji do najnowszej znane pracy nazwy użytkownika i hasła.
 
-   * Jeśli użytkownik lub inny administrator przypisane poświadczenia dla tego użytkownika, znaleźć użytkownika lub grupy aplikacji przydziału, przechodząc do **użytkownicy i grupy** aplikacji, wybierając przypisania i klikając pozycję **poświadczenia aktualizacji** przycisku.
+   * Jeśli użytkownik lub inny administrator przypisane poświadczenia dla tego użytkownika, znaleźć użytkownika lub grupy aplikacji przydziału, przechodząc do **użytkownicy i grupy** aplikacji, wybierając przypisania i klikając pozycję  **Zaktualizuj poświadczenia** przycisku.
 
 -   Użytkownik powinien zaktualizować rozszerzenia przeglądarki panel dostępu, wykonując poniższe kroki w [jak zainstalować rozszerzenie przeglądarki panelu dostępu](#how-to-install-the-access-panel-browser-extension) sekcji.
 

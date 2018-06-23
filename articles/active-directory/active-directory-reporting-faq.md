@@ -15,12 +15,12 @@ ms.component: compliance-reports
 ms.date: 05/10/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2ceaf4ecf7da78377c52135b7de5191c1dc3dd28
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8d627abfe7b686eeeb5a65c4515e184f4ce62f4e
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232454"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335061"
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Usługa Azure Active Directory raportowania — często zadawane pytania
 
@@ -72,7 +72,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 
 **Pytanie: jak wiele rekordów I można pobrać z portalu Azure?**
 
-**Odpowiedź:** rekordów do 5000 można pobrać z portalu Azure. Rekordy są sortowane według *najnowszych* i domyślnie uzyskać najnowsze rekordy 5000. Dla rekordów rozmiarach większych niż 5000, wybierz warunki filtru, a następnie kliknij przycisk *skryptu* przycisk w portalu Azure. To spowoduje pobranie skrypt programu PowerShell, który można uruchomić, aby wygenerować plik CSV wszystkich rekordów dopasowania warunki filtru. Należy uruchomić skrypt programu PowerShell *trybu administratora*. Aby uzyskać więcej informacji, zobacz [pobrać logowania działania](active-directory-reporting-activity-sign-ins.md#download-sign-in-activities).
+**Odpowiedź:** rekordów do 5000 można pobrać z portalu Azure. Rekordy są sortowane według *najnowszych* i domyślnie uzyskać najnowsze rekordy 5000.
 
 ---
 

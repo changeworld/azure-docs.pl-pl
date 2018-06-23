@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 0e87243b4b6e8362cb840a6510c175d2712b8a1a
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 93972c88676cceef07b39b4a4ed34bab5b74cbd3
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285760"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334877"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>Uruchamianie skryptów powłoki w sieci maszyny Wirtualnej systemu Linux przy użyciu polecenia Uruchom
 
@@ -23,7 +23,7 @@ Uruchom polecenie używa agenta maszyny Wirtualnej do uruchamiania skryptów pow
 
 Istnieje wiele opcji, które mogą być używane do dostępu maszyn wirtualnych. Polecenie uruchomienia można uruchamiać skrypty na maszynach wirtualnych zdalnie przy użyciu agenta maszyny Wirtualnej. Uruchom polecenie może być używane za pośrednictwem portalu Azure [interfejsu API REST](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [interfejsu wiersza polecenia Azure](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke), lub [PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand).
 
-Ta funkcja jest przydatna we wszystkich scenariuszach, w którym chcesz uruchomić maszyny wirtualnej związanej z nauką skrypt, a jest jednym ze sposobów tylko Rozwiązywanie problemów i korygowanie maszynę wirtualną, która nie ma protokołu RDP lub Otwórz SSH port z powodu nieprawidłowej sieci lub użytkownik administracyjny Konfiguracja.
+Ta funkcja jest przydatna we wszystkich scenariuszach, w którym chcesz uruchomić skrypt w maszynach wirtualnych, a jest jednym ze sposobów tylko Rozwiązywanie problemów i korygowanie maszynę wirtualną, która nie ma protokołu RDP lub Otwórz SSH port z powodu nieprawidłowej sieci lub użytkownik administracyjny Konfiguracja.
 
 ## <a name="restrictions"></a>Ograniczenia
 

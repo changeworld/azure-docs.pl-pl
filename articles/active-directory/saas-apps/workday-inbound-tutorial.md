@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: df1981443d8c55f07f86394967e357a599a7b3a3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 262c864a9e580ab5e2ebb0d4fc1e6ec16adeacb3
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213145"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334330"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie produktu Workday do inicjowania obsługi użytkowników
 
@@ -60,6 +60,8 @@ Ten użytkownik produktu Workday inicjowania obsługi administracyjnej rozwiąza
 * Organizacje wymagają dołączenie, przenoszenie, i pozostawienie użytkownikom synchronizowane z jednego lub więcej lasy usługi Active Directory, domeny i jednostki organizacyjne, tylko na podstawie zmienić informacje użytkownika w module HCM produktu Workday (zobacz [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html))
 
 * Organizacji do obsługi poczty e-mail przy użyciu usługi Office 365
+
+[!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]
 
 ## <a name="planning-your-solution"></a>Planowanie rozwiązania
 
@@ -362,12 +364,12 @@ W tej sekcji skonfigurujesz, jak dane użytkownika wypływających z produktu Wo
 | **WorkerID**  |  Identyfikator pracownika | **Tak** | Napisane przy tworzeniu tylko |
 | **Nazwa użytkownika**    |  cn    |   |   Napisane przy tworzeniu tylko |
 | **Dołącz ("@", [UserID] "contoso.com")**   | userPrincipalName     |     | Napisane przy tworzeniu tylko 
-| **Zastąp (Mid (Zastąp (\[UserID\],, "(\[ \\ \\ / \\ \\ \\ \\ \\ \\ \[ \\\\\]\\\\:\\\\;\\ \\|\\\\=\\\\,\\\\+\\\\\*\\ \\? \\ \\ &lt; \\ \\ &gt; \]) "," ",), 1, 20)," ([\\\\.) \* \$] (file:///\\.) *$)", , "", , )**      |    sAMAccountName            |     |         Napisane przy tworzeniu tylko |
-| **Przełącznik (\[Active\],, "0", "True", "1")** |  AccountDisabled      |     | Tworzenie i aktualizowanie |
+| **Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Napisane przy tworzeniu tylko |
+| **Przełącznik (\[Active\],, "0", "True", "1")** |  accountDisabled      |     | Tworzenie i aktualizowanie |
 | **Imię**   | givenName       |     |    Tworzenie i aktualizowanie |
 | **Nazwisko**   |   SN   |     |  Tworzenie i aktualizowanie |
 | **PreferredNameData**  |  displayName |     |   Tworzenie i aktualizowanie |
-| **Firmy**         | Firmy   |     |  Tworzenie i aktualizowanie |
+| **Firmy**         | firmy   |     |  Tworzenie i aktualizowanie |
 | **SupervisoryOrganization**  | dział  |     |  Tworzenie i aktualizowanie |
 | **ManagerReference**   | menedżer  |     |  Tworzenie i aktualizowanie |
 | **BusinessTitle**   |  tytuł     |     |  Tworzenie i aktualizowanie | 
@@ -378,9 +380,9 @@ W tej sekcji skonfigurujesz, jak dane użytkownika wypływających z produktu Wo
 | **CountryRegionReference** |  St     |     | Tworzenie i aktualizowanie |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  Tworzenie i aktualizowanie |
 | **PostalCode**  |   postalCode  |     | Tworzenie i aktualizowanie |
-| **PrimaryWorkTelephone**  |  TelephoneNumber   |     | Tworzenie i aktualizowanie |
+| **PrimaryWorkTelephone**  |  telephoneNumber   |     | Tworzenie i aktualizowanie |
 | **Faksów**      | facsimileTelephoneNumber     |     |    Tworzenie i aktualizowanie |
-| **Mobile**  |    Telefon komórkowy       |     |       Tworzenie i aktualizowanie |
+| **Mobile**  |    przenośne       |     |       Tworzenie i aktualizowanie |
 | **LocalReference** |  preferredLanguage  |     |  Tworzenie i aktualizowanie |                                               
 | **Przełącznik (\[jednostki administracyjnej\], "jednostki Organizacyjnej użytkowników standardowych, OU = użytkowników, OU = domyślne, OU = lokalizacjach, DC = = contoso, DC = com", "Dallas", "jednostki Organizacyjnej użytkowników standardowych, OU = użytkowników, OU = Dallas, OU = lokalizacjach, DC = = contoso, DC = com", "Austin", "jednostki Organizacyjnej użytkowników standardowych, OU = Użytkownicy, OU = Austin, OU = lokalizacjach, DC = = contoso, DC = com ","Seattle"," jednostki Organizacyjnej użytkowników standardowych, OU = użytkowników, OU = Seattle, OU = lokalizacjach, DC = = contoso, DC = com ","Londyn"," jednostki Organizacyjnej użytkowników standardowych, OU = użytkowników, OU = Londyn, OU = lokalizacjach, DC = = contoso, DC = com ")**  | parentDistinguishedName     |     |  Tworzenie i aktualizowanie |
   
@@ -543,14 +545,13 @@ W poniższych sekcjach opisano konfigurowanie połączenia między produktu Work
 
    * Jeśli test połączenia powiedzie się, kliknij przycisk **zapisać** na górze. W przypadku niepowodzenia dokładnie sprawdzić, czy produktu Workday adresu URL i poświadczenia są prawidłowe w pracy.
 
-
 ### <a name="part-2-configure-attribute-mappings"></a>Część 2: Konfigurowanie mapowań atrybutów 
 
 W tej sekcji skonfigurujesz, jak dane użytkownika wypływających z produktu Workday do usługi Azure Active Directory dla użytkowników tylko w chmurze.
 
-1.  Na karcie inicjowania obsługi administracyjnej w obszarze **mapowania**, kliknij przycisk **pracowników zsynchronizować z usługą Azure AD**.
+1. Na karcie inicjowania obsługi administracyjnej w obszarze **mapowania**, kliknij przycisk **pracowników zsynchronizować z usługą Azure AD**.
 
-2.   W **zakres obiektu źródłowego** pole, można wybrać, które zestawów użytkowników w pracy powinna być w zakresie obsługi do usługi Azure AD, definiując zestaw opartych na atrybutach filtrów. Domyślny zakres to "wszyscy użytkownicy w pracy". Przykładowe filtry:
+2. W **zakres obiektu źródłowego** pole, można wybrać, które zestawów użytkowników w pracy powinna być w zakresie obsługi do usługi Azure AD, definiując zestaw opartych na atrybutach filtrów. Domyślny zakres to "wszyscy użytkownicy w pracy". Przykładowe filtry:
 
    * Przykład: Zakres dla użytkowników z procesu roboczego identyfikatorów 1000000 i 2000000
 
@@ -566,9 +567,9 @@ W tej sekcji skonfigurujesz, jak dane użytkownika wypływających z produktu Wo
 
       * Operator: Nie ma wartości NULL
 
-3.  W **akcji obiektów docelowych** pole globalnie filtrowania, jakie akcje mogą wykonać na usługi Azure AD. **Utwórz** i **aktualizacji** są najczęściej.
+3. W **akcji obiektów docelowych** pole globalnie filtrowania, jakie akcje mogą wykonać na usługi Azure AD. **Utwórz** i **aktualizacji** są najczęściej.
 
-4.  W **mapowania atrybutów** sekcji, można zdefiniować poszczególne produktu Workday atrybuty mapy do atrybutów usługi Active Directory.
+4. W **mapowania atrybutów** sekcji, można zdefiniować poszczególne produktu Workday atrybuty mapy do atrybutów usługi Active Directory.
 
 5. Kliknij na istniejące mapowanie atrybutu go zaktualizować lub **Dodaj nowe mapowanie** u dołu ekranu, aby dodawać nowe mapowania. Mapowanie atrybutu poszczególnych obsługuje następujące właściwości:
 
@@ -602,7 +603,7 @@ W tej sekcji skonfigurujesz, jak dane użytkownika wypływających z produktu Wo
 ### <a name="part-3-start-the-service"></a>Część 3: Uruchom usługę programu
 Po zakończeniu części 1 i 2, można uruchomić usługę inicjowania obsługi administracyjnej.
 
-1.  W **inicjowania obsługi administracyjnej** ustaw **stan inicjowania obsługi administracyjnej** do **na**.
+1. W **inicjowania obsługi administracyjnej** ustaw **stan inicjowania obsługi administracyjnej** do **na**.
 
 2. Kliknij pozycję **Zapisz**.
 
@@ -612,7 +613,6 @@ Po zakończeniu części 1 i 2, można uruchomić usługę inicjowania obsługi 
 
 5. Jeden ukończone, będą zapisywane podsumowanie inspekcji **inicjowania obsługi administracyjnej** karcie, jak pokazano poniżej.
 
-
 ## <a name="configuring-writeback-of-email-addresses-to-workday"></a>Konfigurowanie funkcji zapisywania zwrotnego adresów e-mail do pracy
 Wykonaj te instrukcje, aby skonfigurować zapisywanie zwrotne adresu e-mail użytkownika z usługi Azure Active Directory do produktu Workday.
 
@@ -620,21 +620,21 @@ Wykonaj te instrukcje, aby skonfigurować zapisywanie zwrotne adresu e-mail uży
 
 **Aby skonfigurować produktu Workday do inicjowania obsługi usługi Active Directory:**
 
-1.  Przejdź do strony <https://portal.azure.com>
+1. Przejdź do strony <https://portal.azure.com>
 
-2.  Na pasku nawigacyjnym po lewej stronie wybierz **usługi Azure Active Directory**
+2. Na pasku nawigacyjnym po lewej stronie wybierz **usługi Azure Active Directory**
 
-3.  Wybierz **aplikacje dla przedsiębiorstw**, następnie **wszystkie aplikacje**.
+3. Wybierz **aplikacje dla przedsiębiorstw**, następnie **wszystkie aplikacje**.
 
-4.  Wybierz **dodać aplikację**, a następnie wybierz pozycję **wszystkie** kategorii.
+4. Wybierz **dodać aplikację**, a następnie wybierz pozycję **wszystkie** kategorii.
 
-5.  Wyszukaj **zapisywania zwrotnego produktu Workday**i Dodaj danej aplikacji w galerii.
+5. Wyszukaj **zapisywania zwrotnego produktu Workday**i Dodaj danej aplikacji w galerii.
 
-6.  Po dodaniu aplikacji i ekran szczegółów aplikacji jest wyświetlane, wybierz pozycję **inicjowania obsługi administracyjnej**
+6. Po dodaniu aplikacji i ekran szczegółów aplikacji jest wyświetlane, wybierz pozycję **inicjowania obsługi administracyjnej**
 
-7.  Zmień **inicjowania obsługi administracyjnej** **tryb** do **automatyczne**
+7. Zmień **inicjowania obsługi administracyjnej** **tryb** do **automatyczne**
 
-8.  Zakończenie **poświadczeń administratora** sekcji w następujący sposób:
+8. Zakończenie **poświadczeń administratora** sekcji w następujący sposób:
 
    * **Nazwa użytkownika administratora** — wprowadź nazwę użytkownika konta systemu integracji produktu Workday, z dołączoną nazwą domeny dzierżawy. Powinien wyglądać mniej więcej tak: username@contoso4
 
@@ -646,24 +646,22 @@ Wykonaj te instrukcje, aby skonfigurować zapisywanie zwrotne adresu e-mail uży
 
    * Kliknij przycisk **Testuj połączenie** przycisku. Jeśli test połączenia powiedzie się, kliknij przycisk **zapisać** na górze. W przypadku niepowodzenia dokładnie sprawdzić, czy produktu Workday adresu URL i poświadczenia są prawidłowe w pracy.
 
-
 ### <a name="part-2-configure-attribute-mappings"></a>Część 2: Konfigurowanie mapowań atrybutów 
-
 
 W tej sekcji skonfigurujesz, jak dane użytkownika wypływających z produktu Workday do usługi Active Directory.
 
-1.  Na karcie inicjowania obsługi administracyjnej w obszarze **mapowania**, kliknij przycisk **synchronizacji Azure AD użytkownikom produktu Workday**.
+1. Na karcie inicjowania obsługi administracyjnej w obszarze **mapowania**, kliknij przycisk **synchronizacji Azure AD użytkownikom produktu Workday**.
 
-2.  W **zakres obiektu źródłowego** pole, można również filtrować które zestawów użytkowników w usłudze Azure Active Directory powinny mieć ich adresów e-mail zapisywane z powrotem do produktu Workday. Domyślny zakres to "wszyscy użytkownicy w usłudze Azure AD". 
+2. W **zakres obiektu źródłowego** pole, można również filtrować które zestawów użytkowników w usłudze Azure Active Directory powinny mieć ich adresów e-mail zapisywane z powrotem do produktu Workday. Domyślny zakres to "wszyscy użytkownicy w usłudze Azure AD". 
 
-3.  W **mapowania atrybutów** sekcji, można zdefiniować poszczególne produktu Workday atrybuty mapy do atrybutów usługi Active Directory. Brak mapowania dla adresu e-mail domyślnie. Jednak należy zaktualizować dopasowania Identyfikatora do dopasowania użytkowników w usłudze Azure AD z ich odpowiednie pozycje w pracy. Popularne odpowiadającej metody jest synchronizowane identyfikator pracownika do extensionAttribute1 15 lub identyfikator procesu roboczego produktu Workday w usłudze Azure AD, a następnie użyć tego atrybutu w usłudze Azure AD, aby dopasować użytkowników, po powrocie do produktu Workday.
+3. W **mapowania atrybutów** sekcji, można zdefiniować poszczególne produktu Workday atrybuty mapy do atrybutów usługi Active Directory. Brak mapowania dla adresu e-mail domyślnie. Jednak należy zaktualizować dopasowania Identyfikatora do dopasowania użytkowników w usłudze Azure AD z ich odpowiednie pozycje w pracy. Popularne odpowiadającej metody jest synchronizowane identyfikator pracownika do extensionAttribute1 15 lub identyfikator procesu roboczego produktu Workday w usłudze Azure AD, a następnie użyć tego atrybutu w usłudze Azure AD, aby dopasować użytkowników, po powrocie do produktu Workday.
 
-4.  Aby zapisać mapowania, kliknij przycisk **zapisać** w górnej części sekcji mapowanie atrybutu.
+4. Aby zapisać mapowania, kliknij przycisk **zapisać** w górnej części sekcji mapowanie atrybutu.
 
 ### <a name="part-3-start-the-service"></a>Część 3: Uruchom usługę programu
 Po zakończeniu części 1 i 2, można uruchomić usługę inicjowania obsługi administracyjnej.
 
-1.  W **inicjowania obsługi administracyjnej** ustaw **stan inicjowania obsługi administracyjnej** do **na**.
+1. W **inicjowania obsługi administracyjnej** ustaw **stan inicjowania obsługi administracyjnej** do **na**.
 
 2. Kliknij pozycję **Zapisz**.
 
@@ -672,7 +670,6 @@ Po zakończeniu części 1 i 2, można uruchomić usługę inicjowania obsługi 
 4. Synchronizacja poszczególnych zdarzeń można wyświetlać w **dzienników inspekcji** kartę. **[W podręczniku obsługi administracyjnej raportowania szczegółowe instrukcje na temat sposobu czytanie dzienników inspekcji](../active-directory-saas-provisioning-reporting.md)**
 
 5. Jeden ukończone, będą zapisywane podsumowanie inspekcji **inicjowania obsługi administracyjnej** karcie, jak pokazano poniżej.
-
 
 ## <a name="customizing-the-list-of-workday-user-attributes"></a>Dostosowywanie listę atrybutów użytkowników produktu Workday
 Udostępnianie aplikacji dla usługi Active Directory i Azure AD obejmują domyślną listę atrybutów użytkowników z produktu Workday pracy można wybrać z. Jednak te listy nie są wyczerpujące. Dzień roboczy obsługuje wiele setki użytkowników możliwe atrybuty, które mogą być standardowe lub unikatowym dla Twojej dzierżawy produktu Workday. 
@@ -799,15 +796,9 @@ Aby to zrobić, należy użyć [Studio produktu Workday](https://community.workd
 
 * Poprzedni problem z dziennikami inspekcji nie są widoczne w dzierżaw usługi Azure AD, znajduje się w Unii Europejskiej został rozwiązany. Jednak konfiguracji dodatkowych agenta jest wymagane dla dzierżaw usługi Azure AD w UE. Aby uzyskać więcej informacji, zobacz [część 3: Konfigurowanie agenta synchronizacji lokalnej](#Part 3: Configure the on-premises synchronization agent)
 
-
 ## <a name="managing-personal-data"></a>Zarządzanie danych osobowych
 
 Dzień roboczy, inicjowanie obsługi administracyjnej rozwiązania dla usługi Active Directory wymaga agent synchronizacji musi zostać zainstalowany na serwerze przyłączonym do domeny, a ten agent tworzy dzienniki w dzienniku zdarzeń systemu Windows, który może zawierać dane osobowe.
-
-[!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]  gdzie... / odwołań do dopasowania struktury hierarchii artykułu
-
-> [!NOTE]
-> Jeśli interesuje Cię przeglądanie lub usuwanie danych osobowych, przejrzyj wskazówki firmy Microsoft w [danych systemu Windows podmiotu żądania dla GDPR](https://review.docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-windows) lokacji. Jeśli szukasz ogólne informacje o GDPR, zobacz [GDPR części portalu zaufania usługi](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

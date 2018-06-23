@@ -3,22 +3,24 @@ title: Problemy przy logowaniu do aplikacji firmy Microsoft | Dokumentacja firmy
 description: Rozwiązywanie typowych problemów, które muszą ponieść po zalogowaniu się do firmy Microsoft Applications przy użyciu usługi Azure AD (takich jak usługi Office 365)
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 1dc727f46785d2896544d8ef9098259f9ab994d1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: 4053c272fe78647ac646e0feefa884cf014a6b72
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29384229"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334228"
 ---
 ## <a name="problems-signing-in-to-a-microsoft-application"></a>Problemy przy logowaniu do aplikacji firmy Microsoft
 
@@ -32,7 +34,7 @@ Istnieją trzy sposoby, czy użytkownik może uzyskać dostęp do aplikacji publ
 
 -   Dla aplikacji, które firmy Microsoft lub 3rd Strona publikuje za darmo dla każdego z nich do używania, użytkownicy mogą również uzyskać dostęp za pośrednictwem **zgody administratora**. Oznacza to, że administrator wykrył, że aplikacja może być używany przez wszyscy użytkownicy w organizacji, aby zalogować się do aplikacji przy użyciu konta administratora globalnego i przyznać dostęp wszystkim użytkownikom w organizacji.
 
-Aby rozwiązać problem, uruchom przy użyciu [ogólne obszarów problemów z dostępem do aplikacji wziąć pod uwagę](#general-problem-areas-with-application-access-to-consider) , a następnie odczytywane [wskazówki: kroki rozwiązywania problemów z Microsoft Application dostępu](#walkthrough-steps-to-troubleshoot-microsoft-application-access) uzyskanie do szczegółów.
+Aby rozwiązać problem, uruchom przy użyciu [ogólne obszarów problemów z dostępem do aplikacji wziąć pod uwagę](#general-problem-areas-with-application-access-to-consider) , a następnie odczytywane [wskazówki: kroki rozwiązywania problemów z Microsoft Application dostępu](#walkthrough-steps-to-troubleshoot-microsoft-application-access) umożliwia pobranie do szczegółowe informacje.
 
 ## <a name="general-problem-areas-with-application-access-to-consider"></a>Ogólne obszarów problemów z dostępem aplikacji do uwzględnienia
 
@@ -76,7 +78,7 @@ Poniżej przedstawiono kilka typowych problemów, które pracowników wystąpił
 
    * W przypadku licencji **przypisane do** **Dynamiczna grupa**, upewnij się, że **grupa dynamiczna reguła została poprawnie ustawiona**. [Sprawdź kryteria członkostwa grupy dynamicznej](#check-a-dynamic-groups-membership-criteria)
 
-   * W przypadku licencji **przypisane do** **Dynamiczna grupa**, upewnij się, że grupa dynamiczna ma **zakończyło się przetwarzanie** członkostwa oraz że **użytkownik jest członkiem** (może to zająć pewien czas). [Sprawdzanie członkostwa w grupach użytkownika](#check-a-users-group-memberships)
+   * W przypadku licencji **przypisane do** **Dynamiczna grupa**, upewnij się, że grupa dynamiczna ma **zakończyło się przetwarzanie** członkostwa oraz że **użytkownik jest członkiem**  (może to zająć pewien czas). [Sprawdzanie członkostwa w grupach użytkownika](#check-a-users-group-memberships)
 
    *  Po należy upewnić się, licencja jest przypisany, upewnij się, że licencja jest **niewygasły**.
 
@@ -84,9 +86,9 @@ Poniżej przedstawiono kilka typowych problemów, które pracowników wystąpił
 
 -   Dla **Microsoft** **aplikacje, które nie wymagają licencji**, poniżej przedstawiono niektóre inne czynności do wykonania:
 
-   * Jeśli aplikacja żąda **uprawnienia na poziomie użytkownika** (na przykład "dostęp do skrzynek pocztowych użytkowników"), upewnij się, że użytkownik zalogował się do aplikacji i wykonał **operacji zgody użytkownika na poziomie** aby umożliwić aplikacji dostęp do swoich danych.
+   * Jeśli aplikacja żąda **uprawnienia na poziomie użytkownika** (na przykład "dostęp do skrzynek pocztowych użytkowników"), upewnij się, że użytkownik zalogował się do aplikacji i wykonał **zgody użytkownika na poziomie operacji** aby umożliwić aplikacji dostęp do swoich danych.
 
-   * Jeśli aplikacja żąda **uprawnień na poziomie administratora** (na przykład "dostęp do skrzynek pocztowych wszystkich użytkowników"), upewnij się, że przeprowadził administratora globalnego **operacji zgody na poziomie administratora w imieniu wszystkich użytkowników** w organizacji.
+   * Jeśli aplikacja żąda **uprawnień na poziomie administratora** (na przykład "dostęp do skrzynek pocztowych wszystkich użytkowników"), upewnij się, że przeprowadził administratora globalnego **operacja zgody na poziomie administratora imieniu wszyscy użytkownicy** w organizacji.
 
 ## <a name="problems-with-the-users-account"></a>Problemy z kontem użytkownika
 
@@ -509,15 +511,15 @@ Dostęp do aplikacji mogą zostać zablokowane, ponieważ nie przeprowadzono ope
 
 ### <a name="perform-administrator-level-consent-operation-for-any-application"></a>Operacja zgody na poziomie administratora dla dowolnej aplikacji
 
--   Dla **tylko aplikacje opracowane za pomocą modelu aplikacji V1**, możesz wymusić występuje przez dodanie poziomu zgody użytkownika tego administratora "**? prompt = administratora\_zgody**" na końcu aplikacji znaku w adresie URL.
+-   Dla **tylko aplikacje opracowane za pomocą modelu aplikacji V1**, możesz wymusić występuje przez dodanie poziomu zgody użytkownika tego administratora "**? prompt = admin\_zgody**" na końcu Zaloguj się adres URL aplikacji.
 
--   Dla **wszelkie aplikacje opracowane za pomocą modelu aplikacji V2**, można wymusić tej zgody poziomie administratora nastąpić, postępując zgodnie z instrukcjami dotyczącymi **poprosić uprawnienia administratora katalogu** sekcji [przy użyciu punktu końcowego zgody administratora](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+-   Dla **wszelkie aplikacje opracowane za pomocą modelu aplikacji V2**, można wymusić tej zgody poziomie administratora nastąpić, postępując zgodnie z instrukcjami dotyczącymi **poprosić uprawnienia administratora usługi directory** sekcji [przy użyciu punktu końcowego zgody administratora](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
 
 ### <a name="perform-administrator-level-consent-for-a-single-tenant-application"></a>Wykonaj zgody na poziomie administratora dla aplikacji pojedynczej dzierżawy
 
 -   Dla **aplikacji pojedynczej dzierżawy** który zażądać uprawnień (np. te opracowujesz lub własny w organizacji), można wykonać **zgody na poziomie administracyjnym** operacji imieniu wszystkie użytkownikom zalogować się jako Administrator globalny i klikając **udzielić uprawnień** przycisk w górnej części **rejestru aplikacji -&gt; wszystkie aplikacje —&gt; wybierz aplikację -&gt; Wymagane uprawnienia** okienka.
 
--   Dla **wszelkie aplikacje opracowane za pomocą modelu aplikacji V1 lub V2**, można wymusić tej zgody poziomie administratora nastąpić, postępując zgodnie z instrukcjami dotyczącymi **poprosić uprawnienia administratora katalogu** sekcji [przy użyciu punktu końcowego zgody administratora](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+-   Dla **wszelkie aplikacje opracowane za pomocą modelu aplikacji V1 lub V2**, można wymusić tej zgody poziomie administratora nastąpić, postępując zgodnie z instrukcjami dotyczącymi **poprosić uprawnienia administratora katalogu**  sekcji [przy użyciu punktu końcowego zgody administratora](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
 
 ### <a name="perform-administrator-level-consent-for-a-multi-tenant-application"></a>Wykonaj zgody na poziomie administratora dla wielodostępnych aplikacji
 

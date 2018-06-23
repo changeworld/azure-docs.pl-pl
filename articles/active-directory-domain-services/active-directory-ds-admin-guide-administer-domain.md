@@ -13,17 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 6a4e25dd3f819ad4f0fee7846e87df2202f5227f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 2ee5250147a82199057a3bf6f043627616e7443d
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210622"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333690"
 ---
 # <a name="administer-an-azure-active-directory-domain-services-managed-domain"></a>Administrowanie domeną zarządzaną usług domenowych Azure Active Directory
 W tym artykule przedstawiono sposób administrowania domeny zarządzanej usług domenowych w usłudze Azure Active Directory (AD).
+
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 Aby wykonać zadania opisane w tym artykule, należy:
@@ -37,7 +39,7 @@ Aby wykonać zadania opisane w tym artykule, należy:
 <br>
 
 ## <a name="administrative-tasks-you-can-perform-on-a-managed-domain"></a>Zadania administracyjne, które można wykonywać na domeny zarządzanej
-Członkowie grupy "Administratorzy kontrolera domeny usługi AAD" udzielono uprawnień na domeny zarządzanej, umożliwiających im wykonywanie zadań takich jak:
+Członków grupy "Administratorzy kontrolera domeny usługi AAD" udzielono uprawnień na domeny zarządzanej, umożliwiające wykonywanie zadań takich jak:
 
 * Dołącz maszyny do domeny zarządzanej.
 * Konfigurowanie wbudowanego obiektu zasad grupy dla kontenerów „Komputery usługi AAD DC” i „Użytkownicy usługi AAD DC” w domenie zarządzanej.
@@ -46,15 +48,15 @@ Członkowie grupy "Administratorzy kontrolera domeny usługi AAD" udzielono upra
 * Uzyskiwanie dostępu administracyjnego do komputerów przyłączonych do domeny zarządzanej.
 
 ## <a name="administrative-privileges-you-do-not-have-on-a-managed-domain"></a>Uprawnienia administracyjne, które nie znajdują się w domeny zarządzanej
-Domena jest zarządzany przez firmę Microsoft, w tym działania, takie jak stosowanie poprawek, monitorowania i wykonywania kopii zapasowych. W związku z tym domeny jest zablokowana i nie masz uprawnień do wykonania niektórych zadań administracyjnych w domenie. Przykładowe zadania, którego nie można wykonać to poniżej.
+Domena jest zarządzany przez firmę Microsoft, łącznie z działania, takie jak stosowanie poprawek, monitorowania i wykonywania kopii zapasowych. Domena jest zablokowany i nie masz uprawnień do niektórych zadań administracyjnych w domenie. Przykładowe zadania, które nie są poniżej.
 
-* Nie udzielono uprawnień administratora domeny lub administratora przedsiębiorstwa dla domeny zarządzanej.
+* Nie masz uprawnień administratora domeny lub administratora przedsiębiorstwa dla domeny zarządzanej.
 * Nie można rozszerzyć schemat domeny zarządzanej.
 * Nie można nawiązać połączenia kontrolery domeny dla domeny zarządzanej przy użyciu pulpitu zdalnego.
 * Nie można dodać kontrolerów domeny do domeny zarządzanej.
 
-## <a name="task-1---provision-a-domain-joined-windows-server-virtual-machine-to-remotely-administer-the-managed-domain"></a>Zadanie 1 - udostępnić maszynie wirtualnej przyłączonych do domeny systemu Windows Server do zdalnego administrowania domeny zarządzanej
-Azure domen zarządzanych w usługach domenowych AD mogą być zarządzane przy użyciu znanych narzędzi administracyjnych usługi Active Directory takie jak Centrum administracyjne Active Directory (ADAC) lub AD PowerShell. Administratorzy dzierżawy nie masz uprawnień do połączenia się z kontrolerami domeny w domenie zarządzanych za pomocą pulpitu zdalnego. W związku z tym członków grupy "Administratorzy kontrolera domeny usługi AAD" można administrować domen zarządzanych zdalnie przy użyciu narzędzi administracyjnych AD z komputera klienta serwera systemu Windows, który jest przyłączony do domeny zarządzanej. Narzędzia administracyjne AD można zainstalować jako część opcjonalna funkcja narzędzi administracji zdalnej serwera (RSAT) systemu Windows Server i komputerów klienckich przyłączony do domeny zarządzanej.
+## <a name="task-1---create-a-domain-joined-windows-server-virtual-machine-to-remotely-administer-the-managed-domain"></a>Zadanie 1 — Tworzenie przyłączonych do domeny systemu Windows Server maszynę wirtualną do zdalnego administrowania domeny zarządzanej
+Azure domen zarządzanych w usługach domenowych AD mogą być zarządzane przy użyciu znanych narzędzi administracyjnych usługi Active Directory takie jak Centrum administracyjne Active Directory (ADAC) lub AD PowerShell. Administratorzy dzierżawy nie masz uprawnień do połączenia się z kontrolerami domeny w domenie zarządzanych za pomocą pulpitu zdalnego. Członkowie grupy "Administratorzy kontrolera domeny usługi AAD" mogą administrować domen zarządzanych zdalnie przy użyciu narzędzi administracyjnych AD z komputera klienta serwera systemu Windows, który jest przyłączony do domeny zarządzanej. Narzędzia administracyjne AD można zainstalować jako część opcjonalna funkcja narzędzi administracji zdalnej serwera (RSAT) systemu Windows Server i komputerów klienckich przyłączony do domeny zarządzanej.
 
 Pierwszym krokiem jest ustanowienie maszynę wirtualną systemu Windows Server, który jest przyłączony do domeny zarządzanej. Aby uzyskać instrukcje, zobacz artykuł zatytułowany [Dołącz maszynę wirtualną systemu Windows Server do domeny zarządzanej usług domenowych Azure AD](active-directory-ds-admin-guide-join-windows-vm.md).
 
@@ -70,7 +72,7 @@ Wykonaj następujące kroki, aby zainstalować narzędzia do administrowania Act
 2. Kliknij przycisk **Connect** przycisk na karcie Przegląd. Plik protokołu Remote Desktop Protocol (RDP) jest utworzony i pobrane.
 
     ![Połącz z maszyną wirtualną systemu Windows](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
-3. Aby połączyć się z maszyną wirtualną, otwórz pobrany plik RDP. Jeśli zostanie wyświetlony monit, kliknij przycisk **Połącz**. W wierszu logowania Użyj poświadczeń użytkownika należącego do grupy "Administratorzy usługi AAD kontrolera domeny". Na przykład używamy "bob@domainservicespreview.onmicrosoft.com" w tym przypadku. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Kliknij przycisk Tak, lub Kontynuuj, aby nawiązać połączenie.
+3. Aby połączyć się z maszyną wirtualną, otwórz pobrany plik RDP. Jeśli zostanie wyświetlony monit, kliknij przycisk **Połącz**. Użyj poświadczeń użytkownika należącego do grupy "Administratorzy usługi AAD kontrolera domeny". Na przykład "bob@domainservicespreview.onmicrosoft.com". Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Kliknij przycisk Tak, lub Kontynuuj, aby nawiązać połączenie.
 4. Na ekranie startowym Otwórz **Menedżera serwera**. Kliknij przycisk **Dodaj role i funkcje** w okienku centralnym okna Menedżera serwera.
 
     ![Uruchom Menedżera serwera na maszynie wirtualnej](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
@@ -83,7 +85,7 @@ Wykonaj następujące kroki, aby zainstalować narzędzia do administrowania Act
 7. Na **wybór serwera** strony, wybierz bieżącej maszyny wirtualnej z puli serwerów, a następnie kliknij przycisk **dalej**.
 
     ![Strona wybierania serwera](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
-8. Na **ról serwera** kliknij przycisk **dalej**. Ponieważ firma Microsoft nie zainstalowano żadnych ról na serwerze, Pomiń tę stronę.
+8. Na **ról serwera** kliknij przycisk **dalej**.
 9. Na **funkcje** strony, kliknij, aby rozwinąć **narzędzi administracji zdalnej serwera** węzeł, a następnie kliknij przycisk aby rozwinąć **narzędzia do administrowania rolami** węzła. Wybierz **usług AD DS i AD LDS narzędzia** funkcję z listy narzędzia do administrowania rolami.
 
     ![Strona funkcji](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-ad-tools.png)
@@ -92,7 +94,7 @@ Wykonaj następujące kroki, aby zainstalować narzędzia do administrowania Act
     ![Strona potwierdzenia](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-confirmation.png)
 
 ## <a name="task-3---connect-to-and-explore-the-managed-domain"></a>Zadanie 3 - nawiązać połączenie i Eksploruj domeny zarządzanej
-Teraz, narzędzi administracyjnych AD są zainstalowane na przyłączonym do domeny maszyny wirtualnej, możemy użyć tych narzędzi do eksplorowania i administrowania domeny zarządzanej.
+Teraz można narzędzi administracyjnych systemu Windows Server AD Eksploruj i administrować domeny zarządzanej.
 
 > [!NOTE]
 > Musisz być członkiem grupy "Administratorzy kontrolera domeny usługi AAD", aby administrować domeny zarządzanej.

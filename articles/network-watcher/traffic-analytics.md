@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: badd2d63ffaf8e88ff672087783f2bce150bc7c3
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: ad26772650cf052926a2534d343f64765f47b78f
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264994"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333398"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -267,9 +267,9 @@ Niektóre szczegółowe informacje, które można uzyskać po ruchu Analytics je
 
 **Szukać**
 
-- Dystrybucja ruchu na podsieci, topologia, top źródeł ruchu do podsieci, sieci top rouge konwersację podsieci i górnej konwersację protokołów aplikacji.
+- Ruch dystrybucji na podsieci, topologia, top źródeł ruchu z podsiecią sieci nieautoryzowanych top konwersację podsieci i górnej konwersację protokołów aplikacji.
     - Wiedząc, które podsieci jest konwersację, do których podsieci. Jeśli widzisz nieoczekiwany konwersacji, można poprawić konfigurację.
-    - Jeśli rouge sieci są konwersację z podsiecią, jest możliwość go poprawić, konfigurując reguły NSG do blokowania sieci nieautoryzowany.
+    - Jeśli nieautoryzowany sieci są konwersację z podsiecią, jest możliwość go poprawić, konfigurując reguły NSG do blokowania sieci nieautoryzowany.
 - Topologia podsieci pokazuje top wstążki do wyboru parametry, takie jak podsieci, połączeń zewnętrznych, aktywnych przepływów i złośliwych przepływów podsieci Active/Inactive.
 - Topologii podsieci przedstawia rozkład ruchu do sieci wirtualnej w odniesieniu do przepływów (dozwolonych/zablokowanych/ruchu przychodzącego/wychodzącego/Benign/złośliwym kodem), protokołu aplikacji i grup NSG, na przykład:
 
@@ -277,10 +277,10 @@ Niektóre szczegółowe informacje, które można uzyskać po ruchu Analytics je
 
 **Szukać**
 
-Dystrybucja ruchu dla bramy aplikacji i usługi równoważenia obciążenia, topologia, top źródeł ruchu top rouge sieci konwersację brama aplikacji w & modułu równoważenia obciążenia i górnej konwersację protokołów aplikacji. 
+Dystrybucja ruchu dla bramy aplikacji i usługi równoważenia obciążenia, topologia, top źródeł ruchu top nieautoryzowane sieci konwersację brama aplikacji w & modułu równoważenia obciążenia i górnej konwersację protokołów aplikacji. 
     
  - Znajomość podsieci, które jest konwersację, do którego bramę aplikacji lub usługi równoważenia obciążenia. Jeśli zauważysz nieoczekiwany konwersacji, można poprawić konfigurację.
- - Jeśli rouge sieci są konwersację z bramą aplikacji lub usługi równoważenia obciążenia, jest możliwość go poprawić, konfigurując reguły NSG do blokowania sieci nieautoryzowany. 
+ - Jeśli nieautoryzowany sieci są konwersację z bramą aplikacji lub usługi równoważenia obciążenia, jest możliwość go poprawić, konfigurując reguły NSG do blokowania sieci nieautoryzowany. 
 
     ![Subnet-Topology-showcasing-Traffic-Distribution-to-a-Application-Gateway-Subnet-with-regards-to-Flows](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
 

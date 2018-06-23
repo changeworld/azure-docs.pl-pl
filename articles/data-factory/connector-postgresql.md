@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 06/23/2018
 ms.author: jingwang
-ms.openlocfilehash: 7b75bd5987ccf89c77509d0f2b4d8def5583e928
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a4f300666d0ab5345274d69d9ad6ad6871ce85e3
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617437"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334044"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Kopiowanie danych z PostgreSQL przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -39,10 +39,9 @@ W szczególności ten łącznik PostgreSQL obsługuje PostgreSQL **wersji 7.4 lu
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby użyć tego łącznika PostgreSQL, musisz:
+PostgreSQL bazy danych nie jest dostępny publicznie, należy skonfigurować środowisko uruchomieniowe Self-hosted integracji. Informacje na temat środowisk uruchomieniowych siebie integracji, zobacz [środowiska uruchomieniowego integracji Self-hosted](create-self-hosted-integration-runtime.md) artykułu. Środowiska uruchomieniowego integracji zawiera wbudowane sterownik PostgreSQL, począwszy od wersji 3.7, dlatego nie trzeba ręcznie zainstalowania sterownika.
 
-- Konfigurowanie środowiska uruchomieniowego integracji Self-hosted. Zobacz [środowiska uruchomieniowego integracji Self-hosted](create-self-hosted-integration-runtime.md) artykułu, aby uzyskać szczegółowe informacje.
-- Zainstaluj [Ngpsql dostawcy danych PostgreSQL](http://go.microsoft.com/fwlink/?linkid=282716) z wersją między 2.0.12 i 3.1.9 na komputerze środowiska uruchomieniowego integracji.
+Dla Self-hosted IR w wersji niższej niż 3.7, musisz zainstalować [Ngpsql dostawcy danych PostgreSQL](http://go.microsoft.com/fwlink/?linkid=282716) z wersją między 2.0.12 i 3.1.9 na komputerze środowiska uruchomieniowego integracji.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
@@ -57,14 +56,36 @@ PostgreSQL połączone usługi, obsługiwane są następujące właściwości:
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi mieć ustawioną: **PostgreSql** | Yes |
-| serwer | Nazwa serwera PostgreSQL. |Yes |
-| baza danych | Nazwa bazy danych PostgreSQL. |Yes |
-| Schemat | Nazwa schematu w bazie danych. Nazwa schematu jest rozróżniana wielkość liter. |Nie |
-| nazwa użytkownika | Określ nazwę użytkownika do połączenia z bazą danych PostgreSQL. |Yes |
-| hasło | Określ hasło dla konta użytkownika, określone nazwy użytkownika. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
-| connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. Środowisko uruchomieniowe integracji Self-hosted jest wymagana, jak wspomniano w [wymagania wstępne](#prerequisites). |Yes |
+| Parametry połączenia | Parametry połączenia ODBC do łączenia z bazą danych Azure dla PostgreSQL. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. (Jeśli w magazynie danych znajduje się w sieci prywatnej), można użyć środowiska uruchomieniowego integracji Azure lub Self-hosted integracji w czasie wykonywania. Jeśli nie zostanie określony, używa domyślnej środowiska uruchomieniowego integracji Azure. |Nie |
+
+Ciąg połączenia typowe jest `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`. Więcej właściwości, które można ustawić dla tej sprawy:
+
+| Właściwość | Opis | Opcje | Wymagane |
+|:--- |:--- |:--- |:--- |:--- |
+| EncryptionMethod (EM)| Metoda sterownik używa do szyfrowania danych przesyłanych między sterownika i serwer bazy danych. Na przykład `ValidateServerCertificate=<0/1/6>;`| 0 (brak szyfrowania) **(domyślna)** / 1 (SSL) / 6 (RequestSSL) | Nie |
+| ValidateServerCertificate (wirtualnej karty Inteligentnej) | Określa, czy sterownik weryfikuje certyfikat, który jest wysyłany przez serwer bazy danych, jeśli jest włączone szyfrowanie SSL (metoda szyfrowania = 1). Na przykład `ValidateServerCertificate=<0/1>;`| 0 (wyłączone) **(domyślna)** / 1 (włączone) | Nie |
 
 **Przykład:**
+
+```json
+{
+    "name": "PostgreSqlLinkedService",
+    "properties": {
+        "type": "PostgreSql",
+        "typeProperties": {
+            "connectionString": {
+                 "type": "SecureString",
+                 "value": "Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>"
+            }
+        }
+    }
+}
+```
+
+Jeśli następujące ładunek były używane PostgreSQL połączone usługi, nadal jest obsługiwany jako — jest, gdy zaleca się użyć nowego idąc dalej.
+
+**Poprzednie ładunku:**
 
 ```json
 {

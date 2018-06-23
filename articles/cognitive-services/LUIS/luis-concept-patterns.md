@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr
-ms.openlocfilehash: f45a9dfaf2863b81083fbfb647f420d9a4baed5a
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 58bfae51fda10d14d9b1c4ea34cc10345d9a90ac
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264667"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318062"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Wzorce poprawić precyzję przewidywania
 Wzorce są przeznaczone do poprawy dokładności po kilku zniesławiających są bardzo podobne. Udostępniając wzorca utterance, LUIS może mieć wysokiego zaufania prognozowania. 
@@ -50,7 +50,9 @@ Mając wystarczająco dużo przykład zniesławiających, LUIS będą mogli zwi�
 Wzorzec jest takie samo oparte na wykrywanie jednostek wewnątrz wzorzec najpierw, a następnie sprawdzanie poprawności rest słów i kolejność słów wzorca. Jednostki są wymagane we wzorcu dla wzorzec do dopasowania. 
 
 ## <a name="pattern-syntax"></a>Składnia wzorca
-Jednostki w wzorce są ujęte w nawiasach klamrowych. Wzorce mogą obejmować jednostek i obiektów z rolami. Pattern.any to jednostka tylko używane we wzorcach. Składnia dla każdego z nich jest wyjaśnione w poniższych sekcjach.
+Składnia wzorzec jest szablon utterance. Szablon powinien zawierać słów i jednostek, które chcesz dopasować, a także słów i znaków interpunkcyjnych, które chcesz zignorować. Jest **nie** wyrażenia regularnego. 
+
+Jednostki w wzorce są ujęte w nawiasach klamrowych `{}`. Wzorce mogą obejmować jednostek i obiektów z rolami. Pattern.any to jednostka tylko używane we wzorcach. Składnia jest wyjaśnione w poniższych sekcjach.
 
 ### <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Składni, aby dodać jednostkę do szablonu wzorca
 Aby dodać jednostkę do szablonu wzorzec, otaczające nazwa jednostki w nawiasach klamrowych, takich jak `Who does {Employee} manage?`. 
@@ -90,7 +92,7 @@ Na przykład załóżmy, że masz wzorca zawierający zarówno opcjonalnych skł
 
 Należy wziąć pod uwagę wzorzec "[Znajdź] poczty e-mail, {temat} [{osoby}]". W poniższych zniesławiających **podmiotu** i **osoby** jednostki są wyodrębniane poprawnie i niepoprawnie:
 
-|Utterance|Jednostka|Poprawne wyodrębniania|
+|utterance|Jednostka|Poprawne wyodrębniania|
 |--|--|:--:|
 |wiadomości e-mail o psów z Krzysztof|temat = psów<br>osoba = Krzysztof|✔|
 |Wyślij wiadomość e-mail o man z La Mancha|temat = man<br>osoba = La Mancha|X|
@@ -109,7 +111,7 @@ Tekst jest opcjonalne w utterance przy użyciu składni wyrażeń regularnych na
 Znaki interpunkcyjne takie jak `.`, `!`, i `?` można zignorować przy użyciu nawiasy kwadratowe. Aby ignorować te znaczniki, każdego znaku musi być w oddzielnym wzorca. Opcjonalne składni nie obsługuje obecnie ignorowanie elementu na liście kilka elementów.
 
 ## <a name="patterns-only"></a>Wzorce tylko
-LUIS umożliwia aplikacji bez żadnych zniesławiających przykład z celem. Jest to dozwolone tylko wtedy, gdy są używane wzorce. Wzorce wymagają co najmniej jedną jednostkę w każdym wzorca. Dla aplikacji tylko do wzorca wzorzec nie powinna zawierać rozpoznane maszyny jednostki, ponieważ wymagają one wykonywania zniesławiających przykład. 
+LUIS umożliwia aplikacji bez żadnych zniesławiających przykład z celem. To użycie jest dozwolone tylko wtedy, gdy są używane wzorce. Wzorce wymagają co najmniej jedną jednostkę w każdym wzorca. Dla aplikacji tylko do wzorca wzorzec nie powinna zawierać rozpoznane maszyny jednostki, ponieważ wymagają one wykonywania zniesławiających przykład. 
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 Dowiedz się [najlepsze rozwiązania](luis-concept-best-practices.md).

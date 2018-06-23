@@ -9,12 +9,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 4be591a15c7ba2c6deaa17f1847233f409179472
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: e80c69657dfb7cbab7d29c94d3dd3c56574de7b7
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "35356220"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36321995"
 ---
 # <a name="speech-service-rest-apis"></a>Usługa rozpoznawania mowy interfejsów API REST
 
@@ -31,11 +31,14 @@ Azja Wschodnia| `https://eastasia.stt.speech.microsoft.com/speech/recognition/co
 Europa Północna| `https://northeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1`
 
 > [!NOTE]
-> Jeśli dostosowano akustycznego modelu lub model języka lub wymowy należy użyć niestandardowego punktu końcowego.
+> Należy dołączyć wymagany język w identyfikatorze URI w celu uniknięcia błędu http 401. Aby uzyskać en US poprawny identyfikator URI będzie mieć: https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US
 
 Mowy API tekstu w przeciwnym razie jest podobny do [interfejsu API REST](https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest) poprzedniego interfejsu API mowy.
 
 Mowy tekst REST API obsługuje tylko krótki zniesławiających. Żądań może zawierać maksymalnie 10 sekund dźwięku i ostatniej sekundy 14 ogólnej. Interfejs API REST zwraca tylko wyniki końcowe nie wyniki częściowe lub tymczasowe.
+
+> [!NOTE]
+> Jeśli dostosowano akustycznego modelu lub model języka lub wymowy należy użyć niestandardowego punktu końcowego.
 
 ## <a name="text-to-speech"></a>Zamiana tekstu na mowę
 
@@ -143,7 +146,7 @@ C# klasy poniżej przedstawiono sposób uzyskiwania tokenu dostępu. Podczas two
     public class Authentication
     {
         public static readonly string FetchTokenUri =
-            "https://westus.api.cognitive.microsoft.com/sts/v1.0";
+            "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
         private string subscriptionKey;
         private string token;
 
@@ -164,7 +167,6 @@ C# klasy poniżej przedstawiono sposób uzyskiwania tokenu dostępu. Podczas two
             {
                 client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
                 UriBuilder uriBuilder = new UriBuilder(fetchUri);
-                uriBuilder.Path += "/issueToken";
 
                 var result = await client.PostAsync(uriBuilder.Uri.AbsoluteUri, null);
                 Console.WriteLine("Token Uri: {0}", uriBuilder.Uri.AbsoluteUri);
@@ -210,7 +212,7 @@ Jak wcześniej, upewnij się, że `FetchTokenUri` wartość odpowiada regionie T
     public class Authentication
     {
         public static readonly string FetchTokenUri = 
-            "https://westus.api.cognitive.microsoft.com/sts/v1.0";
+            "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
         private string subscriptionKey;
         private string token;
         private Timer accessTokenRenewer;
@@ -270,7 +272,6 @@ Jak wcześniej, upewnij się, że `FetchTokenUri` wartość odpowiada regionie T
             {
                 client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
                 UriBuilder uriBuilder = new UriBuilder(fetchUri);
-                uriBuilder.Path += "/issueToken";
 
                 var result = await client.PostAsync(uriBuilder.Uri.AbsoluteUri, null);
                 Console.WriteLine("Token Uri: {0}", uriBuilder.Uri.AbsoluteUri);
@@ -279,3 +280,8 @@ Jak wcześniej, upewnij się, że `FetchTokenUri` wartość odpowiada regionie T
         }
     }
 ```
+
+## <a name="next-steps"></a>Kolejne kroki
+
+* [Pobierz wersję próbną subskrypcji mowy](https://azure.microsoft.com/try/cognitive-services/)
+* [Zobacz dostosowywanie modelu mowy](how-to-customize-speech-models.md)

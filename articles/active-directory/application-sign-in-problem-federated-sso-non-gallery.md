@@ -3,22 +3,24 @@ title: Problemy przy logowaniu do aplikacji z systemem innym niż galerii skonfi
 description: Wskazówki dotyczące określonych problemów, które mogą się spodziewać po zalogowaniu się do aplikacji skonfigurowane na podstawie SAML federacyjne logowanie jednokrotne z usługą Azure AD
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: cfd4e478850783983caa3042cbbb2b096a576292
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: d72fe88ef955dbe821a1fab55de8356ac14619a1
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2018
-ms.locfileid: "29383467"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334170"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Problemy przy logowaniu do aplikacji z systemem innym niż galerii skonfigurowane dla federacyjnego logowania jednokrotnego
 
@@ -148,7 +150,7 @@ Po krótkim czasie użytkowników, dla których wybrano mieć możliwość uruch
 
 **Możliwa przyczyna**
 
-Usługi Azure AD nie obsługuje SAML żądania wysyłane przez aplikację do logowania jednokrotnego. Dostępne są następujące typowe problemy:
+Usługa Azure AD nie obsługuje żądania SAML wysłanego przez aplikację na potrzeby logowania jednokrotnego. Dostępne są następujące typowe problemy:
 
 -   Brak wymaganego pola w żądaniu SAML
 

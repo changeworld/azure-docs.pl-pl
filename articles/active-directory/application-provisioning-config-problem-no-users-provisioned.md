@@ -3,22 +3,24 @@ title: Użytkownicy nie są aprowizowany do aplikacji w galerii Azure AD | Dokum
 description: Sposoby rozwiązywania typowych problemów, które muszą ponieść Jeśli nie widzisz użytkowników znajdujących się w moduł usługi Azure AD galerii aplikacji została skonfigurowana dla Inicjowanie obsługi użytkowników z usługą Azure AD
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
-ms.author: asteen
-ms.openlocfilehash: a36d60b8915ae0b46226bb2127829a8f1767daba
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: 394e8642c177312c8990ea211f77fb802d4228fd
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26616296"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332413"
 ---
 # <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Użytkownicy nie są aprowizowany do aplikacji w galerii Azure AD
 
@@ -45,7 +47,7 @@ Poniżej przedstawiono listę obszarów problemów ogólne, które można przej�
 
 ## <a name="provisioning-service-does-not-appear-to-start"></a>Inicjowanie obsługi usługi nie rozpoczyna się
 
-Jeśli ustawisz **stan inicjowania obsługi administracyjnej** jako **na** w **usługi Azure Active Directory &gt; aplikacje przedsiębiorstwa &gt; \[Nazwa aplikacji\] &gt;inicjowania obsługi administracyjnej** części portalu Azure. Jednak żaden inny stan są wyświetlane szczegóły na tej stronie po kolejne ponowne załadowanie, istnieje duże prawdopodobieństwo, że usługa jest uruchomiona, ale nie ukończono jeszcze wstępnej synchronizacji. Sprawdź **dzienniki inspekcji** opisane powyżej, aby określić, jakie operacje usługi jest wykonywane, i czy wystąpiły żadne błędy.
+Jeśli ustawisz **stan inicjowania obsługi administracyjnej** jako **na** w **usługi Azure Active Directory &gt; aplikacje przedsiębiorstwa &gt; \[Nazwa aplikacji\] &gt;Inicjowania obsługi administracyjnej** części portalu Azure. Jednak żaden inny stan są wyświetlane szczegóły na tej stronie po kolejne ponowne załadowanie, istnieje duże prawdopodobieństwo, że usługa jest uruchomiona, ale nie ukończono jeszcze wstępnej synchronizacji. Sprawdź **dzienniki inspekcji** opisane powyżej, aby określić, jakie operacje usługi jest wykonywane, i czy wystąpiły żadne błędy.
 
 >[!NOTE]
 >Początkowa synchronizacja może zająć od 20 minut do kilku godzin, zależnie od rozmiaru katalogu usługi Azure AD i liczbę użytkowników w zakresie obsługi. Kolejne synchronizacje po początkowej synchronizacji są szybsze, jak znaki wodne, przedstawiające stan obu systemów po początkowej synchronizacji magazyny inicjowania obsługi usługi. Poprawia to wydajność kolejne synchronizacje.
@@ -64,6 +66,6 @@ Gdy użytkownik jest wyświetlany jako "pominięte" w dziennikach inspekcji, jes
 
   * **Mapowania dla grupy atrybutów:** inicjowania obsługi administracyjnej Nazwa grupy i szczegóły grupy, oprócz członków, jeśli są obsługiwane w przypadku niektórych aplikacji. Można włączyć lub wyłączyć tę funkcję przez włączenie lub wyłączenie **mapowania** dla obiektów grupy pokazano **inicjowania obsługi administracyjnej** kartę. Jeśli Inicjowanie obsługi grup jest włączone, należy przejrzeć mapowań atrybutów do upewnij się, że odpowiednie pole jest używany przez "Pasujących ID". Może to być wyświetlaną nazwę lub alias e-mail), jak grupy i jej elementów członkowskich nie można zainicjować obsługi administracyjnej Jeśli zgodnej właściwości jest pusta lub nie jest wypełnione dla grupy w usłudze Azure AD.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 [Synchronizacja programu Azure AD Connect: opis Aprowizacją deklaratywną](active-directory-aadconnectsync-understanding-declarative-provisioning.md)
 

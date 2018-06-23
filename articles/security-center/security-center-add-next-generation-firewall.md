@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 9f70cb03a26fd5bea7e1e034c653ece8e0b8c349
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 25601b01489b95de0e86b314b4b934d3cffd38c2
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34363693"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330744"
 ---
 # <a name="add-a-next-generation-firewall-in-azure-security-center"></a>Dodaj zaporę nowej generacji w Centrum zabezpieczeń Azure
 Centrum zabezpieczeń Azure może zaleca dodanie zaporę nowej generacji (NGFW) od partnera firmy Microsoft w celu zwiększenia z ochrony zabezpieczeń. Ten dokument przeprowadzi Cię przez przykładowy jak to zrobić.
@@ -58,7 +58,7 @@ Wróć do **zalecenia** bloku. Wygenerowano nowy wpis po dodaniu NGFW za pośred
 Ten dokument pokazano sposób wykonania zalecenia Centrum zabezpieczeń "Dodaj zaporę nowej generacji". Aby dowiedzieć się więcej na temat NGFWs i rozwiązaniem partnerskim Check Point, zobacz następujące tematy:
 
 * [Zapora nowej generacji](https://en.wikipedia.org/wiki/Next-Generation_Firewall)
-* [Punkt wyboru vSEC](https://azure.microsoft.com/marketplace/partners/checkpoint/check-point-r77-10/)
+* [Punkt wyboru vSEC](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/checkpoint.vsec)
 
 Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 

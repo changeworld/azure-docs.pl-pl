@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 280c91d6a871984959d587e9895166853e89cc45
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 85c854e697e7178bbdb3429c5384d67731770117
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34615686"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335516"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Kopiowanie danych do indeksu usługi Azure Search przy użyciu fabryki danych Azure
 
@@ -37,7 +37,7 @@ Możesz skopiować dane z dowolnego źródła obsługiwanych magazynu danych do 
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek fabryki danych określonej do łącznika usługi Azure Search.
 
@@ -176,7 +176,7 @@ Poniższa tabela określa, czy lub nie obsługuje typu danych usługi Azure Sear
 | Ciąg | Tak |
 | Int32 | Tak |
 | Int64 | Tak |
-| O podwójnej precyzji | Tak |
+| podwójne | Tak |
 | Wartość logiczna | Tak |
 | DataTimeOffset | Tak |
 | Tablica ciągów | Nie |

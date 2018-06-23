@@ -11,13 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/27/2018
+ms.date: 06/21/2018
 ms.author: mabrigg
-ms.openlocfilehash: de5712fd7b48a759b366f5b9808bbbefc6e305cd
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.reviewer: thoroet
+ms.openlocfilehash: 3c9f114c2844021d515765888aa19f18a0adc10b
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36320758"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>Udzielić dostępu aplikacji do zasobów Azure stosu przez utworzenie nazwy główne usług
 
@@ -93,54 +95,7 @@ Jeśli wdrożono stosu Azure jako magazynu tożsamości za pomocą usług AD FS,
 * Przypisz nazwę główną usługi do roli.
 * Zaloguj się przy użyciu nazwy głównej usługi tożsamości.
 
-### <a name="before-you-begin"></a>Przed rozpoczęciem
-
-[Pobierz wymagane narzędzia Azure stosu na komputerze lokalnym.](azure-stack-powershell-download.md)
-
-### <a name="import-the-identity-powershell-module"></a>Zaimportuj moduł programu PowerShell tożsamości
-
-Przejdź do folderu pobierania narzędzia Azure stosu i zaimportować moduł programu PowerShell tożsamości za pomocą następującego polecenia:
-
-```PowerShell
-Import-Module .\Identity\AzureStack.Identity.psm1
-```
-
-Podczas importowania modułu tożsamości, może uzyskać ten komunikat o błędzie: "AzureStack.Connect.psm1 nie jest podpisany cyfrowo. Skrypt nie zostanie wykonany w systemie".
-
-Aby rozwiązać ten problem, należy skonfigurować zasady wykonywania, aby umożliwić uruchomienie skryptu. Aby ustawić zasady wykonywania, uruchom następujące polecenie w sesji programu PowerShell z podwyższonym poziomem uprawnień:
-
-```PowerShell
-Set-ExecutionPolicy Unrestricted
-```
-
-### <a name="create-the-service-principal"></a>Tworzenie jednostki usługi
-
-Można utworzyć nazwy głównej usługi, uruchamiając następujące polecenie, upewniając się zaktualizować **DisplayName** parametru:
-
-```powershell
-$servicePrincipal = New-AzSADGraphServicePrincipal `
- -DisplayName "<YourServicePrincipalName>" `
- -AdminCredential $(Get-Credential) `
- -AdfsMachineName "AZS-ADFS01" `
- -Verbose
-
-```
-
-### <a name="assign-a-role"></a>Przypisywanie roli
-
-Po utworzeniu nazwy głównej usługi, należy najpierw [przypisać rolę](azure-stack-create-service-principals.md#assign-role-to-service-principal).
-
-### <a name="sign-in-using-powershell"></a>Zaloguj się przy użyciu programu PowerShell
-
-Aby móc zalogować się stosu Azure, uruchamiając następujące polecenie, upewniając się zaktualizować **EnvironmentName** parametr o nazwie aplikacji:
-
-```powershell
-Add-AzureRmAccount -EnvironmentName "<AzureStackEnvironmentName>" `
- -ServicePrincipal `
- -CertificateThumbprint $servicePrincipal.Thumbprint `
- -ApplicationId $servicePrincipal.ApplicationId `
- -TenantId $directoryTenantId
-```
+Aby uzyskać więcej informacji na temat tworzenia nazwy głównej usługi, zobacz [Tworzenie nazwy głównej usługi dla usług AD FS](../azure-stack-create-service-principals.md#create-service-principal-for-ad-fs).
 
 ## <a name="assign-the-service-principal-to-a-role"></a>Przypisz nazwę główną usługi do roli
 

@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych do/z usługi Azure SQL Data Warehouse przy użyciu fabryki danych | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skopiować dane z magazynów obsługiwanych źródłowych do usługi Azure SQL Data Warehouse (lub) z magazynu danych SQL sklepów zbiornika obsługiwane przy użyciu fabryki danych.
+title: Kopiowanie danych do i z usługi Azure SQL Data Warehouse przy użyciu fabryki danych Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skopiować dane z obsługiwanej źródłowej sklepami, aby Magazyn danych SQL Azure lub usługi SQL Data Warehouse sklepów zbiornika obsługiwanych przy użyciu fabryki danych.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,44 +13,48 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/28/2018
 ms.author: jingwang
-ms.openlocfilehash: c862f269a8e32814dfb6d311706e65b57d52d1bb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5a7ee7862e102093efa2c203eac2497b025af4e5
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617080"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337821"
 ---
-# <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure SQL Data Warehouse przy użyciu fabryki danych Azure
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](v1/data-factory-azure-sql-data-warehouse-connector.md)
-> * [Wersja 2 — wersja zapoznawcza](connector-azure-sql-data-warehouse.md)
+#  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure SQL Data Warehouse przy użyciu fabryki danych Azure 
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
+> * [Wersja 1: GA](v1/data-factory-azure-sql-data-warehouse-connector.md)
+> * [W wersji 2: Podgląd](connector-azure-sql-data-warehouse.md)
 
-W tym artykule omówiono sposób użycia działanie kopiowania w fabryce danych Azure, aby skopiować dane do i z usługi Azure SQL Data Warehouse. Opiera się na [skopiuj omówienie działania](copy-activity-overview.md) artykułu, który przedstawia ogólny przegląd działanie kopiowania.
+W tym artykule opisano sposób korzystania działanie kopiowania w fabryce danych Azure, aby skopiować dane do lub z usługi Azure SQL Data Warehouse. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólny przegląd działanie kopiowania.
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [łącznika usługi Azure SQL Data Warehouse w wersji 1](v1/data-factory-azure-sql-data-warehouse-connector.md).
+> Ten artykuł dotyczy wersji 2 fabryki danych obecnie w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [łącznika usługi Azure SQL Data Warehouse w wersji 1](v1/data-factory-azure-sql-data-warehouse-connector.md).
 
 ## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
-Kopiowanie danych z/do usługi Azure SQL Data Warehouse żadnych obsługiwanych ujścia magazynu danych lub skopiować dane z dowolnego źródła obsługiwanych magazynu danych do usługi Azure SQL Data Warehouse. Lista magazynów danych, które są obsługiwane jako źródła/wychwytywanie przez działanie kopiowania, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Wszystkie obsługiwanych ujścia magazynu danych można skopiować danych z magazynu danych SQL Azure. I można skopiować danych z dowolnego źródła obsługiwanych magazynu danych Azure SQL Data Warehouse. Lista magazynów danych, które są obsługiwane jako źródła lub wychwytywanie przez działanie kopiowania, zobacz [obsługiwane formaty i magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
-W szczególności ten łącznik usługi Azure SQL Data Warehouse obsługuje:
+W szczególności ten łącznik usługi Azure SQL Data Warehouse obsługuje następujące funkcje:
 
-- Kopiowanie danych przy użyciu **uwierzytelniania SQL**, i **token uwierzytelniania aplikacji usługi Azure Active Directory** z nazwy głównej usługi lub zarządzane tożsamości usługi (MSI).
-- Jako źródło pobierania danych przy użyciu zapytania SQL lub procedurę składowaną.
-- Jako zbiornika, ładowanie danych przy użyciu **PolyBase** lub wstawiania zbiorczego. Jest **zalecane** w celu poprawy wydajności kopii.
-
-> [!IMPORTANT]
-> Uwaga PolyBase obsługuje tylko SQL authentcation, ale nie uwierzytelniania usługi Azure Active Directory.
+- Kopiowanie danych przy użyciu uwierzytelniania programu SQL i aplikacji usługi Azure Active Directory (Azure AD) tokenu uwierzytelniania przy użyciu nazwy głównej usługi lub zarządzane tożsamości usługi (MSI).
+- Jako źródła pobierania danych przy użyciu zapytania SQL lub procedurę składowaną.
+- Jako zbiorniku ładowanie danych przy użyciu programu PolyBase lub zbiorczego wstawiania. Firma Microsoft zaleca PolyBase w celu poprawy wydajności kopii.
 
 > [!IMPORTANT]
-> Po skopiowaniu danych przy użyciu środowiska uruchomieniowego integracji Azure, skonfiguruj [zapory serwera SQL Azure](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) do [Zezwalaj usługom Azure na dostęp do serwera](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Po skopiowaniu danych przy użyciu środowiska uruchomieniowego integracji Self-hosted, należy skonfigurować zapory serwera SQL Azure umożliwiają odpowiedni zakres adresów IP, w tym IP na komputerze, który służy do łączenia z bazą danych SQL Azure.
+> Należy pamiętać, że aparat PolyBase obsługuje tylko uwierzytelnianie SQL, ale nie usługi Azure AD authentication.
 
-## <a name="getting-started"></a>Wprowadzenie
+> [!IMPORTANT]
+> Po skopiowaniu danych za pomocą obsługi integracji fabryki danych Azure, skonfiguruj [zapory serwera Azure SQL](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) tak, aby dostęp do serwera usług platformy Azure.
+> Po skopiowaniu danych przy użyciu środowiska uruchomieniowego integracji siebie, należy skonfigurować zapory serwera Azure SQL umożliwiają odpowiedni zakres adresów IP. Ten zakres obejmuje IP na komputerze, który służy do łączenia z bazą danych SQL Azure.
+
+## <a name="get-started"></a>Rozpoczęcie pracy
+
+> [!TIP]
+> Aby uzyskać najlepszą wydajność, użyj programu PolyBase, aby załadować dane do usługi Azure SQL Data Warehouse. [Użyj programu PolyBase, aby załadować dane do usługi Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) sekcja zawiera szczegółowe informacje. Aby uzyskać wskazówki z przypadkiem użycia, zobacz [załadować 1 TB do usługi Azure SQL Data Warehouse z fabryką danych Azure w obszarze 15 minut](load-azure-sql-data-warehouse.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek fabryki danych określonej do łącznika usługi Azure SQL Data Warehouse.
+Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które definiują jednostek fabryki danych określonej do łącznika usługi Azure SQL Data Warehouse.
 
 ## <a name="linked-service-properties"></a>Połączona usługa właściwości
 
@@ -58,22 +62,22 @@ Obsługiwane są następujące właściwości dla usługi Azure SQL Data Warehou
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi mieć ustawioną: **AzureSqlDW** | Yes |
-| Parametry połączenia |Podaj informacje wymagane do połączenia z wystąpieniem usługi Azure SQL Data Warehouse właściwości connectionString. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
-| servicePrincipalId | Określ identyfikator aplikacji klienta. | Tak, podczas korzystania z jednostki usługi uwierzytelniania w usłudze AAD. |
-| servicePrincipalKey | Określ klucz aplikacji. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak, podczas korzystania z jednostki usługi uwierzytelniania w usłudze AAD. |
-| dzierżawa | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można go pobrać, ustawiając kursor myszy w prawym górnym rogu portalu Azure. | Tak, podczas korzystania z jednostki usługi uwierzytelniania w usłudze AAD. |
-| connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. (Jeśli w magazynie danych znajduje się w sieci prywatnej), można użyć środowiska uruchomieniowego integracji Azure lub Self-hosted integracji w czasie wykonywania. Jeśli nie zostanie określony, używa domyślnej środowiska uruchomieniowego integracji Azure. |Nie |
+| type | Właściwość type musi mieć ustawioną **AzureSqlDW**. | Yes |
+| Parametry połączenia | Podaj informacje wymagane do połączenia z wystąpieniem usługi Azure SQL Data Warehouse dla **connectionString** właściwości. Oznacz to pole jako **SecureString** Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| servicePrincipalId | Określ identyfikator aplikacji klienta. | Tak, gdy użytkownik korzysta z nazwy głównej usługi uwierzytelniania usługi Azure AD. |
+| servicePrincipalKey | Określ klucz aplikacji. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak, gdy użytkownik korzysta z nazwy głównej usługi uwierzytelniania usługi Azure AD. |
+| dzierżawa | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można go pobrać, ustawiając kursor myszy w prawym górnym rogu portalu Azure. | Tak, gdy użytkownik korzysta z nazwy głównej usługi uwierzytelniania usługi Azure AD. |
+| connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. (Jeśli w magazynie danych znajduje się w sieci prywatnej), można użyć środowiska uruchomieniowego integracji Azure lub runtime siebie integracji. Jeśli nie zostanie określony, używa domyślnej środowiska uruchomieniowego integracji Azure. | Nie |
 
 Różnymi typami uwierzytelniania można znaleźć w poniższych sekcjach na warunki wstępne i przykłady JSON odpowiednio:
 
-- [Przy użyciu uwierzytelniania programu SQL](#using-sql-authentication)
-- [Przy użyciu uwierzytelniania tokenu usługi AAD aplikacji - nazwy głównej usługi](#using-service-principal-authentication)
-- [Przy użyciu uwierzytelniania tokenu usługi AAD aplikacji - tożsamość usługi zarządzanej](#using-managed-service-identity-authentication)
+- [Uwierzytelnianie SQL](#sql-authentication)
+- Azure AD aplikacji token uwierzytelniania: [nazwy głównej usługi](#service-principal-authentication)
+- Azure AD aplikacji token uwierzytelniania: [zarządzane tożsamości usługi](#managed-service-identity-authentication)
 
-### <a name="using-sql-authentication"></a>Przy użyciu uwierzytelniania programu SQL
+### <a name="sql-authentication"></a>Uwierzytelnianie SQL
 
-**Przykład połączonej usługi przy użyciu uwierzytelniania programu SQL:**
+#### <a name="linked-service-example-that-uses-sql-authentication"></a>Przykład połączonej usługi, w którym jest używane uwierzytelnianie SQL
 
 ```json
 {
@@ -94,34 +98,34 @@ Różnymi typami uwierzytelniania można znaleźć w poniższych sekcjach na war
 }
 ```
 
-### <a name="using-service-principal-authentication"></a>Przy użyciu uwierzytelniania głównej usługi
+### <a name="service-principal-authentication"></a>Uwierzytelnianie jednostki usługi
 
-Aby użyć usługi głównej na podstawie aplikacji token uwierzytelniania w usłudze AAD, wykonaj następujące kroki:
+Aby używać uwierzytelniania tokenu aplikacji usługi na podstawie podmiot zabezpieczeń usługi Azure AD, wykonaj następujące kroki:
 
-1. **[Tworzenie aplikacji usługi Azure Active Directory przy użyciu portalu Azure](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application).**  Zanotuj nazwę aplikacji i następujące wartości, których można użyć do zdefiniowania połączonej usługi:
+1. **[Tworzenie aplikacji usługi Azure Active Directory](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)**  z portalu Azure. Zanotuj nazwę aplikacji i następujące wartości, które definiują połączonej usługi:
 
     - Identyfikator aplikacji
     - Klucz aplikacji
     - Identyfikator dzierżawy
 
-2. **[Administrator usługi Azure Active Directory do udostępnienia](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  dla serwera SQL Azure w portalu Azure, jeśli nie zostało to jeszcze zrobione. Administrator usługi AAD może być AAD użytkownika lub grupy usługi AAD. Przyznanie grupie msi rolę administratora, pomiń krok 3 i 4 poniżej, jak administrator może mieć pełny dostęp do bazy danych.
+2. **[Administrator usługi Azure Active Directory do udostępnienia](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  dla serwera Azure SQL w portalu Azure, jeśli jeszcze tego nie zrobiono. Administrator usługi Azure AD może być użytkownika usługi Azure AD lub grupy usługi Azure AD. Przyznanie grupie msi rolę administratora, pomiń kroki 3 i 4. Administrator będą mieli pełny dostęp do bazy danych.
 
-3. **Utwórz użytkowników zawartej bazy danych dla nazwy głównej usługi**, łącząc w magazynie danych z i do których chcesz skopiować dane za pomocą takich narzędzi jak SSMS przy użyciu usługi AAD tożsamości o co najmniej ALTER żadnych uprawnień i wykonywanie T-SQL . Dowiedz się więcej informacji na temat użytkowników zawartej bazy danych z [tutaj](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities).
+3. **[Utwórz użytkowników zawartej bazy danych](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  dla nazwy głównej usługi. Połącz w magazynie danych z lub do których chcesz skopiować dane za pomocą takich narzędzi jak SSMS, przy użyciu tożsamości usługi Azure AD, który ma co najmniej uprawnienie ALTER ANY użytkownika. Uruchom T-SQL:
     
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-4. **Przyznaj nazwy głównej usługi wymaganych uprawnień** w zwykły sposób dla użytkowników programu SQL, np., wykonując poniżej:
+4. **Przyznaj nazwy głównej usługi wymaganych uprawnień** w zwykły sposób dla użytkowników SQL lub innym osobom. Uruchom poniższy kod:
 
     ```sql
     EXEC sp_addrolemember [role name], [your application name];
     ```
 
-5. W ADF należy skonfigurować usługę Azure SQL Data Warehouse połączone.
+5. **Konfigurowanie usługi Azure SQL Data Warehouse połączone** w fabryce danych Azure.
 
 
-**Przykład połączonej usługi przy użyciu uwierzytelniania głównej usługi:**
+#### <a name="linked-service-example-that-uses-service-principal-authentication"></a>Przykład połączonej usługi, w którym jest używane uwierzytelnianie głównej usługi
 
 ```json
 {
@@ -148,42 +152,42 @@ Aby użyć usługi głównej na podstawie aplikacji token uwierzytelniania w us�
 }
 ```
 
-### <a name="using-managed-service-identity-authentication"></a>Uwierzytelnianie tożsamości zarządzanych usług
+### <a name="managed-service-identity-authentication"></a>Uwierzytelnianie tożsamości usługi zarządzanej
 
-Fabryka danych może być skojarzony z [zarządzane tożsamości usługi (MSI)](data-factory-service-identity.md), reprezentuje tej fabryki danych. Ta tożsamość usługi służy do uwierzytelniania usługi Azure SQL Data Warehouse, dzięki czemu Ta fabryka wyznaczonych do dostępu i skopiować dane z/do magazynu danych.
+Fabryka danych mogą być skojarzone z [zarządzane tożsamość usługi](data-factory-service-identity.md) reprezentujący określonego fabryki. Ta tożsamość usługi służy do uwierzytelniania usługi Azure SQL Data Warehouse. Fabryka wyznaczonych mogą uzyskiwać dostęp do i skopiować dane z lub do danych magazynu przy użyciu tej tożsamości.
 
 > [!IMPORTANT]
-> Należy pamiętać, że program PolyBase nie jest obecnie obsługiwany dla MSI authentcation.
+> Należy pamiętać, że program PolyBase nie jest obecnie obsługiwany dla uwierzytelniania MSI.
 
-Aby użyć MSI na podstawie uwierzytelniania tokenu usługi AAD aplikacji, wykonaj następujące kroki:
+Aby używać uwierzytelniania tokenu aplikacji MSI na podstawie usługi Azure AD, wykonaj następujące kroki:
 
-1. **Utwórz grupę w usłudze Azure AD i dołącz je fabryki MSI grupy**.
+1. **Utwórz grupę w usłudze Azure AD.** Należy do grupy fabryki MSI.
 
-    a. Znajdź tożsamość usługi fabryka danych z portalu Azure. Przejdź z fabryką danych -> Właściwości -> kopiowania **Identyfikatora tożsamości usługi**.
+    a. Znajdź tożsamość usługi fabryka danych z portalu Azure. Przejdź z fabryką danych **właściwości**. Skopiuj identyfikator tożsamości usługi.
 
-    b. Zainstaluj [programu Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modułu, zalogować się przy użyciu `Connect-AzureAD` polecenia i uruchom następujące polecenia, aby utworzyć grupę, a następnie dodaj jako członka fabryki danych MSI.
+    b. Zainstaluj [programu Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modułu. Zaloguj się przy użyciu `Connect-AzureAD` polecenia. Uruchom następujące polecenia, aby utworzyć grupę, a następnie dodaj jako członka fabryki danych MSI.
     ```powershell
     $Group = New-AzureADGroup -DisplayName "<your group name>" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory service identity ID>"
     ```
 
-2. **[Administrator usługi Azure Active Directory do udostępnienia](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  dla serwera SQL Azure w portalu Azure, jeśli nie zostało to jeszcze zrobione.
+2. **[Administrator usługi Azure Active Directory do udostępnienia](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  dla serwera Azure SQL w portalu Azure, jeśli jeszcze tego nie zrobiono.
 
-3. **Utwórz użytkownika zawartej bazy danych dla grupy usługi AAD**, łącząc w magazynie danych z i do których chcesz skopiować dane za pomocą takich narzędzi jak SSMS przy użyciu usługi AAD tożsamości o co najmniej ALTER żadnych uprawnień i wykonywanie T-SQL. Dowiedz się więcej informacji na temat użytkowników zawartej bazy danych z [tutaj](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities).
+3. **[Utwórz użytkowników zawartej bazy danych](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  dla grupy usługi Azure AD. Połącz w magazynie danych z lub do których chcesz skopiować dane za pomocą takich narzędzi jak SSMS, przy użyciu tożsamości usługi Azure AD, który ma co najmniej uprawnienie ALTER ANY użytkownika. Uruchom T-SQL. 
     
     ```sql
-    CREATE USER [your AAD group name] FROM EXTERNAL PROVIDER;
+    CREATE USER [your Azure AD group name] FROM EXTERNAL PROVIDER;
     ```
 
-4. **Przyznaj grupie AAD wymaganych uprawnień** w zwykły sposób dla użytkowników programu SQL, np., wykonując poniżej:
+4. **Przyznaj grupie usługi Azure AD wymaganych uprawnień** w zwykły sposób użytkowników SQL i innych użytkowników. Na przykład uruchom poniższy kod.
 
     ```sql
-    EXEC sp_addrolemember [role name], [your AAD group name];
+    EXEC sp_addrolemember [role name], [your Azure AD group name];
     ```
 
-5. W ADF należy skonfigurować usługę Azure SQL Data Warehouse połączone.
+5. **Konfigurowanie usługi Azure SQL Data Warehouse połączone** w fabryce danych Azure.
 
-**Przykład połączonej usługi przy użyciu uwierzytelniania MSI:**
+#### <a name="linked-service-example-that-uses-msi-authentication"></a>Przykład połączonej usługi, który korzysta z uwierzytelniania MSI
 
 ```json
 {
@@ -206,16 +210,16 @@ Aby użyć MSI na podstawie uwierzytelniania tokenu usługi AAD aplikacji, wykon
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę właściwości dostępnych do definiowania zestawów danych i sekcje zobacz artykuł zestawów danych. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Azure SQL Data Warehouse.
+Aby uzyskać pełną listę właściwości dostępnych do definiowania zestawów danych i sekcje, zobacz [zestawów danych](https://docs.microsoft.com/en-us/azure/data-factory/concepts-datasets-linked-services) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Azure SQL Data Warehouse.
 
-Aby skopiować dane z i do usługi Azure SQL Data Warehouse, ustaw właściwość Typ zestawu danych do **AzureSqlDWTable**. Obsługiwane są następujące właściwości:
+Aby skopiować dane z lub do magazynu danych SQL Azure, należy ustawić **typu** właściwości zestawu danych na **AzureSqlDWTable**. Obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi mieć ustawioną właściwość type zestawu danych: **AzureSqlDWTable** | Yes |
-| tableName |Nazwa tabeli lub widoku w wystąpieniu usługi Azure SQL Data Warehouse, odnoszący się do połączonej usługi. | Yes |
+| type | **Typu** musi mieć ustawioną właściwość dataset **AzureSqlDWTable**. | Yes |
+| tableName | Nazwa tabeli lub widoku w wystąpieniu usługi Azure SQL Data Warehouse, odnoszący się do połączonej usługi. | Yes |
 
-**Przykład:**
+#### <a name="dataset-properties-example"></a>Przykład właściwości zestawu danych
 
 ```json
 {
@@ -238,24 +242,24 @@ Aby skopiować dane z i do usługi Azure SQL Data Warehouse, ustaw właściwoś�
 
 Pełną listę sekcje i właściwości dostępnych dla definiowania działań, zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę obsługiwanych przez Magazyn danych SQL Azure źródłowy i odbiorczy właściwości.
 
-### <a name="azure-sql-data-warehouse-as-source"></a>Usługa Azure SQL Data Warehouse jako źródło
+### <a name="azure-sql-data-warehouse-as-the-source"></a>Usługa Azure SQL Data Warehouse jako źródło
 
-Aby skopiować dane z usługi Azure SQL Data Warehouse, należy ustawić typ źródła w przypadku działania kopiowania do **SqlDWSource**. Następujące właściwości są obsługiwane w przypadku działania kopiowania **źródła** sekcji:
+Aby skopiować dane z usługi Azure SQL Data Warehouse, ustaw **typu** właściwości w źródle działanie kopiowania **SqlDWSource**. Następujące właściwości są obsługiwane w przypadku działania kopiowania **źródła** sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi mieć ustawioną właściwość type źródła działania kopiowania: **SqlDWSource** | Yes |
-| sqlReaderQuery |Użyj niestandardowych zapytania SQL można odczytać danych. Przykład: `select * from MyTable`. |Nie |
-| sqlReaderStoredProcedureName |Nazwa procedury przechowywanej, która odczytuje dane z tabeli źródłowej. Ostatniej instrukcji SQL musi być instrukcji SELECT w procedurze składowanej. |Nie |
-| storedProcedureParameters |Parametry dla procedury składowanej.<br/>Dozwolone wartości to: par nazwa/wartość. Nazwy i wielkość liter w wyrazie parametry muszą być zgodne, nazwy i wielkość liter w wyrazie parametry procedury składowanej. |Nie |
+| type | **Typu** musi mieć ustawioną właściwość źródła działanie kopiowania **SqlDWSource**. | Yes |
+| sqlReaderQuery | Użyj niestandardowych zapytania SQL można odczytać danych. Przykład: `select * from MyTable`. | Nie |
+| sqlReaderStoredProcedureName | Nazwa procedury przechowywanej, która odczytuje dane z tabeli źródłowej. Ostatniej instrukcji SQL musi być instrukcji SELECT w procedurze składowanej. | Nie |
+| storedProcedureParameters | Parametry dla procedury składowanej.<br/>Dozwolone wartości to par nazw ani wartości. Nazwy i wielkość liter w wyrazie parametry muszą być zgodne, nazwy i wielkość liter w wyrazie parametry procedury składowanej. | Nie |
 
-**Informacje, które należy zwrócić uwagę:**
+### <a name="points-to-note"></a>Uwagi na
 
-- Jeśli **sqlReaderQuery** określono dla SqlSource, odbywa się działanie kopii tego zapytania względem źródła magazynu danych SQL Azure umożliwiają pobieranie danych. Można również określić procedury składowanej, podając **sqlReaderStoredProcedureName** i **storedProcedureParameters** (jeśli jest to procedura składowana pobiera parametry).
-- Jeśli nie określisz "sqlReaderQuery" lub "sqlReaderStoredProcedureName" kolumn określona w sekcji "structure" zestawu danych JSON służą do utworzenia kwerendy (`select column1, column2 from mytable`) w celu uruchomienia usługi Azure SQL Data Warehouse. Jeśli definicji zestawu danych nie ma "structure", wszystkie kolumny są wybierane w tabeli.
+- Jeśli **sqlReaderQuery** określono **SqlSource**, odbywa się działanie kopii tego zapytania względem źródła magazynu danych SQL Azure umożliwiają pobieranie danych. Lub możesz określić procedury składowanej. Określ **sqlReaderStoredProcedureName** i **storedProcedureParameters** Jeśli procedura składowana pobiera parametry.
+- Jeśli nie określisz, albo **sqlReaderQuery** lub **sqlReaderStoredProcedureName**, kolumn zdefiniowanych w **struktury** części zestawu danych JSON są używane do Utwórz zapytanie. `select column1, column2 from mytable` Uruchamiany przed magazyn danych SQL Azure. Jeśli nie ma definicji zestawu danych **struktury**, wybrano wszystkich kolumn z tabeli.
 - Jeśli używasz **sqlReaderStoredProcedureName**, nadal należy określić manekina **tableName** właściwość w zestawie danych JSON.
 
-**Przykład: przy użyciu zapytania SQL**
+#### <a name="sql-query-example"></a>Przykład zapytania SQL
 
 ```json
 "activities":[
@@ -287,7 +291,7 @@ Aby skopiować dane z usługi Azure SQL Data Warehouse, należy ustawić typ źr
 ]
 ```
 
-**Przykład: przy użyciu procedury składowanej**
+#### <a name="stored-procedure-example"></a>Przykład procedury składowanej
 
 ```json
 "activities":[
@@ -323,7 +327,7 @@ Aby skopiować dane z usługi Azure SQL Data Warehouse, należy ustawić typ źr
 ]
 ```
 
-**Definicja procedury składowanej:**
+### <a name="stored-procedure-definition"></a>Definicja procedury składowanej
 
 ```sql
 CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
@@ -342,24 +346,24 @@ END
 GO
 ```
 
-### <a name="azure-sql-data-warehouse-as-sink"></a>Usługa Azure SQL Data Warehouse jako obiekt sink
+### <a name="azure-sql-data-warehouse-as-sink"></a> Usługa Azure SQL Data Warehouse jako obiekt sink
 
-Aby skopiować dane do usługi Azure SQL Data Warehouse, należy ustawić typ ujścia w działaniu kopiowania do **SqlDWSink**. Następujące właściwości są obsługiwane w przypadku działania kopiowania **zbiornika** sekcji:
+Aby skopiować dane do usługi Azure SQL Data Warehouse, należy ustawić typ ujścia w przypadku działania kopiowania do **SqlDWSink**. Następujące właściwości są obsługiwane w przypadku działania kopiowania **zbiornika** sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi mieć ustawioną właściwość typu sink działania kopiowania: **SqlDWSink** | Yes |
-| allowPolyBase |Wskazuje, czy do użycia zamiast mechanizmu BULKINSERT PolyBase (jeśli jest to wymagane). <br/><br/> **Przy użyciu programu PolyBase jest zalecanym sposobem ładowanie danych do usługi SQL Data Warehouse.** Zobacz [Użyj programu PolyBase, aby załadować dane do usługi Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) sekcji dla ograniczenia i szczegółów.<br/><br/>Dozwolone wartości to: **True**, i **False** (ustawienie domyślne).  |Nie |
-| Usługi |Grupy właściwości, które można określić, kiedy **allowPolybase** właściwość jest ustawiona na **true**. |Nie |
-| rejectValue |Określa liczbę lub odsetek wierszy, które można odrzucić przed zapytanie nie powiedzie się.<br/><br/>Dowiedz się więcej o opcjach Odrzuć PolyBase **argumenty** sekcji [Tworzenie tabeli zewnętrznej (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) tematu. <br/><br/>Dozwolone wartości to: 0 (domyślnie), 1, 2,... |Nie |
-| dla właściwości rejectType |Określa, czy opcja rejectValue jest określona jako wartość literału lub wartość procentowa.<br/><br/>Dozwolone wartości to: **wartość** (ustawienie domyślne) i **procent**. |Nie |
-| rejectSampleValue |Określa liczbę wierszy do pobrania przed PolyBase ponownie oblicza procent odrzuconych wierszy.<br/><br/>Dozwolone wartości to: 1, 2,... |Tak, jeśli **dla właściwości rejectType** jest **procent** |
-| useTypeDefault |Określa sposób obsługi brakujących wartości w rozdzielane pliki tekstowe, jeśli PolyBase pobiera dane z pliku tekstowego.<br/><br/>Dowiedz się więcej o tej właściwości z sekcji argumenty w [utworzyć EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx).<br/><br/>Dozwolone wartości to: **True**, **False** (ustawienie domyślne). |Nie |
-| writeBatchSize |Wstawia dane do tabeli SQL, gdy writeBatchSize osiągnie rozmiar buforu. Ma zastosowanie tylko wtedy, gdy aparat PolyBase nie jest używany.<br/><br/>Dozwolone wartości to: liczba całkowita (liczba wierszy). |Nie (domyślna to 10 000) |
-| writeBatchTimeout |Czas na ukończenie zanim upłynie limit czasu operacji wstawiania wsadowego oczekiwania. Ma zastosowanie tylko wtedy, gdy aparat PolyBase nie jest używany.<br/><br/>Dozwolone wartości to: timespan. Przykład: "00: 30:00" (30 minut). |Nie |
-| preCopyScript |Określ zapytanie SQL dla aktywności kopiowania do wykonania przed zapisaniem danych do usługi Azure SQL Data Warehouse w każdym przebiegu. Ta właściwość służy do oczyszczania danych wstępnie załadowane. |Nie |(#repeatability podczas kopiowania). |Instrukcja zapytania. |Nie |
+| type | **Typu** musi mieć ustawioną właściwość zbiornika działanie kopiowania **SqlDWSink**. | Yes |
+| allowPolyBase | Wskazuje, czy do korzystania z programu PolyBase, jeśli ma to zastosowanie, zamiast mechanizmu BULKINSERT. <br/><br/> Zaleca się załadowanie danych do usługi SQL Data Warehouse przy użyciu programu PolyBase. Zobacz [Użyj programu PolyBase, aby załadować dane do usługi Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) sekcji dla ograniczenia i szczegółów.<br/><br/>Dozwolone wartości to **True** i **False** (ustawienie domyślne).  | Nie |
+| Usługi | Grupy właściwości, które można określić, kiedy **allowPolybase** właściwość jest ustawiona na **true**. | Nie |
+| rejectValue | Określa liczbę lub odsetek wierszy, które można odrzucić przed zapytanie nie powiedzie się.<br/><br/>Dowiedz się więcej o opcjach Odrzuć przez aparat PolyBase w sekcji argumenty [Tworzenie tabeli zewnętrznej (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx). <br/><br/>Dozwolone wartości to 0 (domyślnie), 1, 2, itp. |Nie |
+| dla właściwości rejectType | Określa, czy **rejectValue** opcja jest wartość literału lub wartość procentowa.<br/><br/>Dozwolone wartości to **wartość** (ustawienie domyślne) i **procent**. | Nie |
+| rejectSampleValue | Określa liczbę wierszy do pobrania przed PolyBase ponownie oblicza procent odrzuconych wierszy.<br/><br/>Dozwolone wartości to 1, 2, itp. | Tak, jeśli **dla właściwości rejectType** jest **procent**. |
+| useTypeDefault | Określa sposób obsługi brakujących wartości w rozdzielane pliki tekstowe, jeśli PolyBase pobiera dane z pliku tekstowego.<br/><br/>Dowiedz się więcej o tej właściwości z sekcji argumenty w [utworzyć EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx).<br/><br/>Dozwolone wartości to **True** i **False** (ustawienie domyślne). | Nie |
+| writeBatchSize | Wstawia dane do tabeli SQL, gdy osiągnie rozmiar buforu **writeBatchSize**. Dotyczy tylko, jeśli używany nie jest program PolyBase.<br/><br/>Dozwolone wartości to **całkowitą** (liczba wierszy). | Nie. Wartość domyślna to 10 000. |
+| writeBatchTimeout | Czas na zakończenie zanim upłynie limit czasu operacji wstawiania wsadowego oczekiwania. Dotyczy tylko, jeśli używany nie jest program PolyBase.<br/><br/>Dozwolone wartości to **timespan**. Przykład: "00: 30:00" (30 minut). | Nie |
+| preCopyScript | Określ zapytanie SQL dla aktywności kopiowania do uruchomienia przed zapisaniem danych do usługi Azure SQL Data Warehouse w każdym przebiegu. Ta właściwość służy do oczyszczania załadowanych danych. | Nie | (#repeatability podczas kopiowania). | Instrukcja zapytania. | Nie |
 
-**Przykład:**
+#### <a name="sql-data-warehouse-sink-example"></a>Przykład ujścia magazynu danych SQL
 
 ```json
 "sink": {
@@ -375,34 +379,34 @@ Aby skopiować dane do usługi Azure SQL Data Warehouse, należy ustawić typ uj
 }
 ```
 
-Dowiedz się więcej na temat korzystania z programu PolyBase do załadowania do usługi SQL Data Warehouse wydajnie z następnej sekcji.
+Dowiedz się więcej o sposobie używania programu PolyBase do efektywnie załadowania SQL Data Warehouse w następnej sekcji.
 
 ## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Użyj programu PolyBase, aby załadować dane do magazynu danych SQL Azure
 
-Przy użyciu **[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)** jest wydajny sposób ładowania dużych ilości danych do magazynu danych SQL Azure z wysokiej przepływności. Przy użyciu programu PolyBase zamiast domyślnego mechanizmu BULKINSERT widać duże korzyści w przepływności. Zobacz [skopiuj numer odwołania wydajności](copy-activity-performance.md#performance-reference) z szczegółowe porównanie. Aby uzyskać wskazówki z przypadkiem użycia, zobacz [załadować 1 TB do usługi Azure SQL Data Warehouse z fabryką danych Azure w obszarze 15 minut](connector-azure-sql-data-warehouse.md).
+Przy użyciu [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) jest wydajny sposób załadować dużej ilości danych do usługi Azure SQL Data Warehouse z wysokiej przepływności. Przy użyciu programu PolyBase zamiast domyślnego mechanizmu BULKINSERT zobaczysz duże korzyści w przepływności. Zobacz [dotyczące wydajności](copy-activity-performance.md#performance-reference) szczegółowe porównanie. Aby uzyskać wskazówki z przypadkiem użycia, zobacz [załadować 1 TB w usłudze Azure SQL Data Warehouse](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-load-sql-data-warehouse).
 
-* Jeśli źródło danych jest w **obiektów Blob platformy Azure lub usługi Azure Data Lake Store**i format jest zgodny z PolyBase, można skopiować bezpośrednio do usługi Azure SQL Data Warehouse przy użyciu programu PolyBase. Zobacz **[bezpośrednich kopii przy użyciu programu PolyBase](#direct-copy-using-polybase)** ze szczegółami.
-* Jeśli Twoje źródła magazynu danych i format nie jest początkowo obsługiwana przez aparat PolyBase, możesz użyć **[przemieszczane kopiowania przy użyciu programu PolyBase](#staged-copy-using-polybase)** funkcji zamiast tego. Udostępnia również możesz lepszą przepustowość automatycznie konwersji danych do formatu zgodnego PolyBase i przechowywanie danych w magazynie obiektów Blob platformy Azure. Następnie ładuje dane do usługi SQL Data Warehouse.
+* Jeśli źródło danych znajduje się w magazynie obiektów Blob Azure lub usługi Azure Data Lake Store i format jest zgodny z PolyBase, bezpośrednio kopiowania do magazynu danych SQL Azure przy użyciu programu PolyBase. Aby uzyskać więcej informacji, zobacz  **[kierowanie kopiowania za pomocą programu PolyBase](#direct-copy-by-using-polybase)**.
+* Jeśli Twoje źródła magazynu danych i format pierwotnie nie jest obsługiwany przez aparat PolyBase, użyj **[przemieszczane kopiowania przy użyciu programu PolyBase](#staged-copy-by-using-polybase)** zamiast funkcji. Funkcja kopiowania przemieszczanego zapewnia również lepszą przepustowość. Automatycznie konwertuje dane w formacie zgodnym z PolyBase. I przechowuje dane w magazynie obiektów Blob Azure. Następnie ładuje dane do usługi SQL Data Warehouse.
 
 > [!IMPORTANT]
-> Należy pamiętać, że program PolyBase nie jest obecnie obsługiwany dla tożsamości usługi zarządzania (MSI) na podstawie authentcation token usługi AAD aplikacji.
+> Należy pamiętać, że program PolyBase nie jest obecnie obsługiwany dla tokenu uwierzytelniania na podstawie MSI aplikacji usługi Azure AD.
 
-### <a name="direct-copy-using-polybase"></a>Bezpośrednie kopiowania przy użyciu programu PolyBase
+### <a name="direct-copy-by-using-polybase"></a>Bezpośrednie kopiowania przy użyciu programu PolyBase
 
-Aparat PolyBase magazynu danych SQL obsługuje bezpośrednio obiektów Blob platformy Azure i usługi Azure Data Lake Store (przy użyciu nazwy głównej usługi) jako źródło i wymagania format określonego pliku. Jeśli źródło danych spełnia kryteria opisane w tej sekcji, możesz bezpośrednio skopiować z magazynu danych źródła do usługi Azure SQL Data Warehouse przy użyciu programu PolyBase. W przeciwnym razie można użyć [przemieszczane kopiowania przy użyciu programu PolyBase](#staged-copy-using-polybase).
+Aparat PolyBase magazynu danych SQL obsługuje bezpośrednio obiektów Blob platformy Azure i usługi Azure Data Lake Store. Używa nazwy głównej usługi jako źródła, a ma wymagania format określonego pliku. Jeśli źródło danych spełnia kryteria opisane w tej sekcji, użyj programu PolyBase, aby skopiować bezpośrednio z magazynu danych źródła do usługi Azure SQL Data Warehouse. W przeciwnym razie użyj [przemieszczane kopiowania przy użyciu programu PolyBase](#staged-copy-by-using-polybase).
 
 > [!TIP]
-> Aby skopiować dane z usługi Data Lake Store SQL Data Warehouse wydajnie, Dowiedz się więcej o [fabryki danych Azure ułatwia nawet wygodny do ujawniania wgląd w dane dotyczące danych podczas korzystania z usługi Data Lake Store z usługi SQL Data Warehouse](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/).
+> Aby skopiować dane wydajnie z usługi Data Lake Store SQL Data Warehouse, Dowiedz się więcej o [fabryki danych Azure ułatwia nawet wygodny do ujawniania wgląd w dane dotyczące danych podczas korzystania z usługi Data Lake Store z usługi SQL Data Warehouse](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/).
 
-Jeśli nie zostały spełnione wymagania, fabryki danych Azure sprawdza ustawienia i automatycznie powraca do mechanizmu BULKINSERT przenoszenia danych.
+Jeśli nie są spełnione wymagania, fabryki danych Azure sprawdza ustawienia i automatycznie powraca do mechanizmu BULKINSERT przenoszenia danych.
 
-1. **Źródło połączona usługa** jest typu: **AzureStorage** lub **AzureDataLakeStore** z uwierzytelnianiem główną usługi.
-2. **Wejściowy zestaw danych** jest typu: **AzureBlob** lub **AzureDataLakeStoreFile**i wpisz w formacie `type` właściwości **OrcFormat** , **ParquetFormat**, lub **TextFormat** z następujących konfiguracji:
+1. **Źródła połączona usługa** jest typu **AzureStorage** lub **AzureDataLakeStore** z uwierzytelnianiem główną usługi.
+2. **Wejściowy zestaw danych** jest typu **AzureBlob** lub **AzureDataLakeStoreFile**. Typ formatu w obszarze `type` właściwości **OrcFormat**, **ParquetFormat**, lub **TextFormat**, z następujących konfiguracji:
 
    1. `rowDelimiter` musi być **\n**.
    2. `nullValue` ustawiono **pusty ciąg** (""), lub `treatEmptyAsNull` ustawiono **true**.
-   3. `encodingName` ustawiono **utf-8**, która jest **domyślne** wartość.
-   4. `escapeChar`, `quoteChar`, `firstRowAsHeader`, i `skipLineCount` nie zostały określone.
+   3. `encodingName` ustawiono **utf-8**, która jest wartością domyślną.
+   4. `escapeChar`, `quoteChar`, `firstRowAsHeader`, i `skipLineCount` nie są określone.
    5. `compression` może być **bez kompresji**, **GZip**, lub **Deflate**.
 
     ```json
@@ -422,8 +426,8 @@ Jeśli nie zostały spełnione wymagania, fabryki danych Azure sprawdza ustawien
     },
     ```
 
-3. Brak nie `skipHeaderLineCount` w obszarze **BlobSource** lub **AzureDataLakeStore** dla działania kopiowania w potoku.
-4. Brak nie `sliceIdentifierColumnName` w obszarze **SqlDWSink** dla działania kopiowania w potoku. (PolyBase gwarantuje, że wszystkie dane są aktualizowane lub nic nie jest aktualizowana w jednym przebiegu. Aby osiągnąć **powtarzalności**, można użyć `sqlWriterCleanupScript`).
+3. Brak nie `skipHeaderLineCount` w obszarze **BlobSource** lub **AzureDataLakeStore** dla aktywności kopiowania w potoku.
+4. Brak nie `sliceIdentifierColumnName` w obszarze **SqlDWSink** dla aktywności kopiowania w potoku. Program PolyBase gwarantuje, że wszystkie dane są aktualizowane, lub nie jest aktualizowana w jednym przebiegu. Aby osiągnąć **powtarzalności**, użyj `sqlWriterCleanupScript`.
 
 ```json
 "activities":[
@@ -455,11 +459,11 @@ Jeśli nie zostały spełnione wymagania, fabryki danych Azure sprawdza ustawien
 ]
 ```
 
-### <a name="staged-copy-using-polybase"></a>Kopiuj przygotowanego przy użyciu programu PolyBase
+### <a name="staged-copy-by-using-polybase"></a>Kopiuj przygotowanego przy użyciu programu PolyBase
 
-Źródło danych nie spełnia kryteriów wprowadzone w poprzedniej sekcji, umożliwia kopiowanie danych za pośrednictwem tymczasowego przemieszczania magazynu obiektów Blob Azure (nie może być magazyn w warstwie Premium). W takim przypadku fabryki danych Azure automatycznie wykonuje przekształcenia danych spełnia wymagania dotyczące formatu danych PolyBase, a następnie użyj programu PolyBase, aby załadować dane do usługi SQL Data Warehouse i następnie wyczyść tymczasowego danych z magazynu obiektów Blob. Zobacz [przemieszczane kopiowania](copy-activity-performance.md#staged-copy) szczegółowe informacje na temat jak kopiowanie danych za pośrednictwem tymczasowych obiektów Blob platformy Azure działa na ogół.
+Jeśli źródło danych nie spełnia kryteriów w poprzedniej sekcji, włączać dane kopiowanie za pośrednictwem tymczasowego przemieszczania wystąpienia magazynu obiektów Blob platformy Azure. Nie można go Azure Premium Storage. W takim przypadku fabryki danych Azure automatycznie uruchamia przekształcenia danych w celu spełnienia wymagań formatu danych programu PolyBase. Następnie używa PolyBase, aby załadować dane do usługi SQL Data Warehouse. Na koniec czyści jej tymczasowe dane z magazynu obiektów blob. Zobacz [przemieszczane kopiowania](copy-activity-performance.md#staged-copy) Aby uzyskać więcej informacji o kopiowaniu danych za pomocą przemieszczania wystąpienia magazynu obiektów Blob platformy Azure.
 
-Aby użyć tej funkcji, należy utworzyć [połączonej usługi magazynu Azure](connector-azure-blob-storage.md#linked-service-properties) odwołujący się do konta magazynu Azure, które ma magazynu tymczasowego obiektu blob, następnie określ `enableStaging` i `stagingSettings` właściwości dla działania kopiowania, jak pokazano w poniższym kodzie:
+Aby użyć tej funkcji, należy utworzyć [połączonej usługi magazynu Azure](connector-azure-blob-storage.md#linked-service-properties) odwołujący się do konta magazynu platformy Azure z magazynu tymczasowego obiektu blob. Następnie określ `enableStaging` i `stagingSettings` właściwości dla działania kopiowania, jak pokazano w poniższym kodzie:
 
 ```json
 "activities":[
@@ -498,36 +502,36 @@ Aby użyć tej funkcji, należy utworzyć [połączonej usługi magazynu Azure](
 ]
 ```
 
-## <a name="best-practices-when-using-polybase"></a>Najlepsze rozwiązania w sytuacji, gdy przy użyciu programu PolyBase
+## <a name="best-practices-for-using-polybase"></a>Najlepsze rozwiązania dotyczące przy użyciu programu PolyBase
 
-Poniższe sekcje zawierają dodatkowe wskazówki te, które są wymienione w [najlepsze rozwiązania dotyczące usługi Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-best-practices.md).
+W poniższych sekcjach przedstawiono najlepsze rozwiązania w zakresie oprócz wymienione w [najlepsze rozwiązania dotyczące usługi Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-best-practices.md).
 
 ### <a name="required-database-permission"></a>Uprawnienia wymagane bazy danych
 
-Aby użyć programu PolyBase, wymaga użytkownika używane do ładowania danych do usługi SQL Data Warehouse [uprawnienia "CONTROL"](https://msdn.microsoft.com/library/ms191291.aspx) w docelowej bazie danych. Jest jednym ze sposobów osiągnięcia, które można dodać tego użytkownika jako członka roli "db_owner". Dowiedz się, jak to zrobić, postępując [w tej sekcji](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization).
+Aby użyć programu PolyBase, użytkownik, który ładuje dane do magazynu danych SQL musi mieć [uprawnienia "CONTROL"](https://msdn.microsoft.com/library/ms191291.aspx) w docelowej bazie danych. Jednym ze sposobów osiągnięcia, który jest dodanie użytkownik jest członkiem **db_owner** roli. Dowiedz się, jak to zrobić w [omówienie SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization).
 
-### <a name="row-size-and-data-type-limitation"></a>Rozmiar wiersza i danych typu ograniczenia
+### <a name="row-size-and-data-type-limits"></a>Rozmiar wiersza i danych typu limity
 
-Program Polybase obciążenia są ograniczone do ładowania wierszy, zarówno mniejszy niż **1 MB** i nie można załadować VARCHR(MAX), NVARCHAR(MAX) lub VARBINARY(MAX). Zapoznaj się [tutaj](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads).
+Program PolyBase obciążenia są ograniczone do wierszy jest mniejszy niż 1 MB. Nie można ich załadować VARCHR(MAX), NVARCHAR(MAX) lub VARBINARY(MAX). Aby uzyskać więcej informacji, zobacz [poziomów wydajności usługi SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads).
 
-Jeśli masz dane źródłowe z wierszami o rozmiarze większym niż 1 MB, można podzielić tabel źródłowych w pionie na kilka małych sieci, gdy największy rozmiar wiersza dla każdego z nich nie przekracza limit. Mniejsze tabele następnie można załadować przy użyciu programu PolyBase i scalane w usłudze Azure SQL Data Warehouse.
+Źródło danych zawiera wiersze większa niż 1 MB, można w pionie podzielone tabel źródłowych kilka małych sieci. Upewnij się, że największy rozmiar każdego wiersza nie przekracza limit. Mniejsze tabele można następnie ładowane przy użyciu programu PolyBase i scalane w usłudze Azure SQL Data Warehouse.
 
 ### <a name="sql-data-warehouse-resource-class"></a>Klasa zasobów magazynu danych SQL
 
-Aby uzyskać najlepsze możliwe przepływności, należy wziąć pod uwagę przypisywanie większych klasa zasobów do użytkownika używane do ładowania danych do usługi SQL Data Warehouse przy użyciu programu PolyBase.
+Aby uzyskać najlepsze możliwe przepływności, przypisać klasę zasobu o większych użytkownikowi, który ładuje dane do usługi SQL Data Warehouse przy użyciu programu PolyBase.
 
-### <a name="tablename-in-azure-sql-data-warehouse"></a>tableName w magazynie danych SQL Azure
+### <a name="tablename-in-azure-sql-data-warehouse"></a>**tableName** w magazynie danych SQL Azure
 
-Poniższa tabela zawiera przykłady dotyczące sposobu określania **tableName** właściwość w zestawie danych JSON dla różnych kombinacji nazwy schematu i tabeli.
+W poniższej tabeli przedstawiono przykłady sposobu określania **tableName** właściwość w zestawie danych JSON. Przedstawia on kilku kombinacji nazwy schematu i tabeli.
 
-| Schemat bazy danych | Nazwa tabeli | Właściwość tableName JSON |
+| Schemat bazy danych | Nazwa tabeli | **tableName** właściwości JSON |
 | --- | --- | --- |
-| dbo |MyTable |MyTable lub dbo. MyTable lub [dbo]. [MyTable] |
-| dbo1 |MyTable |dbo1. MyTable lub [dbo1]. [MyTable] |
-| dbo |My.Table |[My.Table] lub [dbo]. [My.Table] |
-| dbo1 |My.Table |[dbo1]. [My.Table] |
+| dbo | MyTable | MyTable lub dbo. MyTable lub [dbo]. [MyTable] |
+| dbo1 | MyTable | dbo1. MyTable lub [dbo1]. [MyTable] |
+| dbo | My.Table | [My.Table] lub [dbo]. [My.Table] |
+| dbo1 | My.Table | [dbo1]. [My.Table] |
 
-Jeśli zostanie wyświetlony następujący błąd, może to być problem z wartość określona dla właściwości tableName. Poniższa tabela dla poprawne sposobu na określenie wartości dla właściwości tableName JSON.
+Jeśli zostanie wyświetlony następujący błąd, problem może być wybrana dla **tableName** właściwości. Można znaleźć w poprzedniej tabeli poprawne sposobu na określenie wartości **tableName** właściwości JSON.
 
 ```
 Type=System.Data.SqlClient.SqlException,Message=Invalid object name 'stg.Account_test'.,Source=.Net SqlClient Data Provider
@@ -535,52 +539,52 @@ Type=System.Data.SqlClient.SqlException,Message=Invalid object name 'stg.Account
 
 ### <a name="columns-with-default-values"></a>Kolumn z wartościami domyślnymi
 
-Obecnie funkcja PolyBase w fabryce danych akceptuje tylko taką samą liczbę kolumn w tabeli docelowej. Przykład tabeli z kolumnami cztery i jeden z nich jest zdefiniowana z wartością domyślną. Dane wejściowe nadal powinien zawierać cztery kolumny. Udostępnia zestaw danych wejściowych 3 kolumny spowoduje uzyskanie błąd podobny do następującego:
+Obecnie funkcja PolyBase w fabryce danych akceptuje tylko taką samą liczbę kolumn w tabeli docelowej. Przykładem jest tabelę z czterech kolumn, gdy jeden z nich jest zdefiniowana z wartości domyślnej. Dane wejściowe nadal musi mieć cztery kolumny. Trzy kolumny zestawu danych wejściowych zwraca błąd podobny do następującego:
 
 ```
 All columns of the table must be specified in the INSERT BULK statement.
 ```
 
-Wartość NULL jest specjalny rodzaj wartości domyślnej. W przypadku wartości Null kolumny danych wejściowych (w obiekcie blob) dla tej kolumny może być pusta (nie może być brakuje wejściowy zestaw danych). Program PolyBase wstawia wartość NULL w przypadku ich w magazynie danych SQL Azure.
+Wartość NULL jest specjalny rodzaj wartości domyślnej. W przypadku wartości Null kolumny danych wejściowych w obiekcie blob dla tej kolumny może być pusta. Ale nie może być Brak wejściowego zestawu danych. Program PolyBase wstawia wartości NULL dla brakujących wartości w usłudze Azure SQL Data Warehouse.
 
 ## <a name="data-type-mapping-for-azure-sql-data-warehouse"></a>Mapowanie typu danych dla usługi Azure SQL Data Warehouse
 
-Podczas kopiowania danych z/na magazyn danych SQL Azure, z typów danych Azure SQL Data Warehouse są używane następujące mapowania do typów danych tymczasowych fabryki danych Azure. Zobacz [schemat i dane typu mapowania](copy-activity-schema-and-type-mapping.md) Aby poznać sposób działania kopiowania mapowania typu źródłowego: schemat i dane sink.
+Podczas kopiowania danych z lub do magazynu danych SQL Azure, z typów danych Azure SQL Data Warehouse są używane następujące mapowania do typów danych tymczasowych fabryki danych Azure. Zobacz [schemat i dane typu mapowania](copy-activity-schema-and-type-mapping.md) Aby dowiedzieć się, jak działanie kopiowania mapy typ źródła: schemat i dane do ujścia.
 
 | Typ danych w usłudze Azure SQL Data Warehouse | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
-| bigint |Int64 |
-| Binarne |Byte[] |
-| bitowe |Wartość logiczna |
-| char |Ciąg, Char] |
-| data |DateTime |
-| Data/godzina |DateTime |
-| datetime2 |DateTime |
-| Datetimeoffset |DateTimeOffset |
-| Decimal |Decimal |
-| Atrybut FILESTREAM (varbinary(max)) |Byte[] |
-| Liczba zmiennoprzecinkowa |O podwójnej precyzji |
-| Obraz |Byte[] |
-| int |Int32 |
-| oszczędność pieniędzy |Decimal |
-| nchar |Ciąg, Char] |
-| ntext |Ciąg, Char] |
-| numeryczne |Decimal |
-| nvarchar |Ciąg, Char] |
-| rzeczywiste |Pojedyncze |
-| ROWVERSION |Byte[] |
-| smalldatetime |DateTime |
-| smallint |Int16 |
-| smallmoney |Decimal |
-| sql_variant |Obiekt * |
-| tekst |Ciąg, Char] |
-| time |Zakres czasu |
-| sygnatura czasowa |Byte[] |
-| tinyint |Bajtów |
-| Unikatowy identyfikator |Identyfikator GUID |
-| varbinary |Byte[] |
-| varchar |Ciąg, Char] |
-| xml |Xml |
+| bigint | Int64 |
+| dane binarne | Byte[] |
+| bitowe | Wartość logiczna |
+| char | Ciąg, Char] |
+| data | DateTime |
+| Data/godzina | DateTime |
+| datetime2 | DateTime |
+| Datetimeoffset | DateTimeOffset |
+| Decimal | Decimal |
+| Atrybut FILESTREAM (varbinary(max)) | Byte[] |
+| Liczba zmiennoprzecinkowa | podwójne |
+| image | Byte[] |
+| int | Int32 |
+| oszczędność pieniędzy | Decimal |
+| nchar | Ciąg, Char] |
+| ntext | Ciąg, Char] |
+| numeryczne | Decimal |
+| nvarchar | Ciąg, Char] |
+| rzeczywiste | Pojedyncze |
+| ROWVERSION | Byte[] |
+| smalldatetime | DateTime |
+| smallint | Int16 |
+| smallmoney | Decimal |
+| sql_variant | Obiekt * |
+| tekst | Ciąg, Char] |
+| time | Zakres czasu |
+| sygnatura czasowa | Byte[] |
+| tinyint | Bajt |
+| Unikatowy identyfikator | Identyfikator GUID |
+| varbinary | Byte[] |
+| varchar | Ciąg, Char] |
+| xml | Xml |
 
 ## <a name="next-steps"></a>Kolejne kroki
-Lista magazynów danych obsługiwane jako źródła i wychwytywanie przez działanie kopiowania w fabryce danych Azure, zobacz [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).
+Lista magazynów danych obsługiwane jako źródła i wychwytywanie przez działanie kopiowania w fabryce danych Azure, zobacz [obsługiwane formaty i magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: b6b333937e7c88f566fc401967b26cbd31ca158b
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: fd63ffd312e3ac17a6376eb3c9bef8f1978e3935
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301506"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333619"
 ---
 # <a name="language-understanding-faq"></a>Opis języka — często zadawane pytania
 
@@ -127,7 +127,9 @@ Aby przetransferować aplikacji LUIS do innej subskrypcji platformy Azure, ekspo
 Domyślnie aplikacja LUIS rejestruje zniesławiających od użytkowników. Aby pobrać dziennik zniesławiających wysyłających użytkowników do aplikacji LUIS, przejdź do **Moje aplikacje**i kliknij przycisk wielokropka (***...*** ) na liście aplikacji. Następnie kliknij przycisk **wyeksportować dzienniki punktu końcowego**. Dziennik jest w formacie pliku wartości rozdzielanych przecinkami (CSV).
 
 ### <a name="how-can-i-disable-the-logging-of-utterances"></a>Jak wyłączyć rejestrowanie zniesławiających?
-Można wyłączyć rejestrowanie zniesławiających użytkownika przez ustawienie `log=false` w adresie URL punktu końcowego używaną do zapytania LUIS aplikacji klienta. Jednak wyłączenie rejestrowania wyłącza możliwość aplikację LUIS Sugeruj zniesławiających oraz pomagają w poprawieniu wydajności na podstawie kwerend użytkownika. Jeśli ustawisz `log=false` z powodu prywatności danych, nie można pobrać rekordu zniesławiających tych użytkowników z LUIS lub za pomocą tych zniesławiających zwiększyć aplikacji.
+Można wyłączyć rejestrowanie zniesławiających użytkownika przez ustawienie `log=false` w adresie URL punktu końcowego używaną do zapytania LUIS aplikacji klienta. Jednak wyłączenie rejestrowania wyłącza możliwość aplikację LUIS Sugeruj zniesławiających lub zwiększyć wydajność, która jest oparta na [active learning](luis-concept-review-endpoint-utterances.md#what-is-active-learning). Jeśli ustawisz `log=false` z powodu prywatności danych, nie można pobrać rekordu zniesławiających tych użytkowników z LUIS lub za pomocą tych zniesławiających zwiększyć aplikacji.
+
+Rejestrowanie jest przechowywanie tylko zniesławiających. 
 
 ### <a name="why-dont-i-want-all-my-endpoint-utterances-logged"></a>Dlaczego nie chcesz Moje zniesławiających punktu końcowego rejestrowane?
 Jeśli używasz dziennik analizy prognozowania, nie należy przechwytywać zniesławiających testu w dzienniku.

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/19/2018
+ms.date: 06/22/2018
 ms.author: magoedte
-ms.openlocfilehash: 7c4294947cba72b1638e77c2dd8de1f5ee37b62a
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 23109a74fa707759cc3300896392dcc129f3e28c
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285994"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335758"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Monitorowanie kondycji kontenera Azure Kubernetes usługi (AKS) (wersja zapoznawcza)
 
@@ -37,7 +37,7 @@ Jeśli interesuje Cię w monitorowaniu i zarządzania systemu Windows i Docker h
 ## <a name="requirements"></a>Wymagania 
 Przed rozpoczęciem, przejrzyj następujące informacje, aby zrozumieć, obsługiwane wymagania wstępne.
 
-- Obsługiwane są następujące wersje klastra AKS: 1.7.7 pytanie 1.9.6.
+- Nowego lub istniejącego klastra AKS
 - Konteneryzowanych agent pakietu OMS dla wersji systemu Linux microsoft / oms:ciprod04202018 i nowszych. Ten agent jest instalowany automatycznie podczas dołączania kondycji kontenera.  
 - Obszar roboczy usługi Log Analytics.  Można tworzyć, gdy monitorowanie nowego klastra AKS lub można go utworzyć za pomocą [usługi Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md), [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), lub z [portalu Azure](../log-analytics/log-analytics-quick-create-workspace.md).
 - Członek roli współautora analizy dzienników, aby włączyć monitorowanie kontenera.  Aby uzyskać więcej informacji na temat kontrolowania dostępu do obszaru roboczego analizy dzienników, zobacz [zarządzanie obszarami roboczymi](../log-analytics/log-analytics-manage-access.md).
@@ -244,7 +244,7 @@ Jeśli wybrano opcję Użyj interfejsu wiersza polecenia Azure, należy najpierw
 Po włączeniu monitorowania może potrwać około 15 minut, zanim będzie można wyświetlić danych operacyjnych dla klastra.  
 
 ## <a name="verify-agent-deployed-successfully"></a>Sprawdź pomyślnie wdrożony agent
-Aby sprawdzić, agent pakietu OMS prawidłowo wdrożony, uruchom następujące polecenie: ` kubectl get ds omsagent --namespace=kube-system`.
+Aby sprawdzić, agent pakietu OMS prawidłowo wdrożony, uruchom następujące polecenie: `kubectl get ds omsagent --namespace=kube-system`.
 
 Dane wyjściowe powinno przypominać następujące wskazujący, który został wdrożony prawidłowo:
 

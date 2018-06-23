@@ -1,6 +1,6 @@
 ---
-title: Warstwy usługi bazy danych SQL Azure | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat warstwy usługi dla pojedynczej i baz danych puli zapewnienie poziomy wydajności i rozmiaru magazynu.
+title: Azure SQL Database zakupu modeli | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat zakupu modelu bazy danych SQL Azure.
 services: sql-database
 author: CarlRabeler
 ms.service: sql-database
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 6ca78596ad6c4ed2e14b127fe55a70bd2f55411a
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 0b38054ec623dc34daa3d18612e3356475655f35
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309890"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331329"
 ---
-# <a name="service-tier-purchasing-models-and-resources"></a>Warstwy usług zakupu modeli i zasoby 
+# <a name="azure-sql-database-purchasing-models-and-resources"></a>Azure SQL Database zakupu modeli i zasoby 
 
 Logiczne serwerów w [bazy danych SQL Azure](sql-database-technical-overview.md) oferuje dwa modele zakupów dla zasobów obliczeniowych, magazynu i zasobów we/wy: model kupna DTU i na podstawie vCore model kupna (wersja zapoznawcza). 
 
@@ -30,8 +30,8 @@ Następujących tabel i wykresów porównania i kontrastu te dwa modele zakupów
 
 |**Model kupna**|**Opis**|**Najlepsze dla**|
 |---|---|---|
-|Jednostek dtu w warstwie na podstawie modelu|Ten model jest oparty na powiązane miary obliczeniowej, magazynu i zasobów we/wy. Poziomy wydajności są wyrażane jako liczba jednostek DTU (Database Transaction Unit) dla pojedynczych baz danych oraz jako liczba jednostek eDTU (elastic Database Transaction Unit) dla pul elastycznych. Aby uzyskać więcej informacji na temat jednostek Dtu a Edtu, zobacz [co to są Dtu a Edtu](sql-database-what-is-a-dtu.md)?|Najlepsze dla klientów, którzy zasobów proste, wstępnie skonfigurowane opcje.| 
-|vCore na podstawie modelu|Ten model umożliwia niezależnie skalowanie zasobów obliczeniowych i magazynu. Umożliwia on również używać korzyści hybrydowe platformy Azure dla programu SQL Server w celu uzyskania oszczędności.|Najlepsze dla klientów, którzy wartość elastyczność, kontroli i przejrzystości.|
+|Model oparty na jednostkach DTU|Ten model jest oparty na powiązane miary obliczeniowej, magazynu i zasobów we/wy. Poziomy wydajności są wyrażane jako liczba jednostek DTU (Database Transaction Unit) dla pojedynczych baz danych oraz jako liczba jednostek eDTU (elastic Database Transaction Unit) dla pul elastycznych. Aby uzyskać więcej informacji na temat jednostek Dtu a Edtu, zobacz [co to są Dtu a Edtu](sql-database-what-is-a-dtu.md)?|Najlepsze dla klientów, którzy zasobów proste, wstępnie skonfigurowane opcje.| 
+|Model oparty na rdzeniach wirtualnych|Ten model umożliwia niezależnie skalowanie zasobów obliczeniowych i magazynu. Umożliwia on również używać korzyści hybrydowe platformy Azure dla programu SQL Server w celu uzyskania oszczędności.|Najlepsze dla klientów, którzy wartość elastyczność, kontroli i przejrzystości.|
 ||||  
 
 ![model cenowy](./media/sql-database-service-tiers/pricing-model.png)

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6933d9f9951925888c92e35f6b1e2962cc29b0ce
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 74051ae8ad4ca7065561607feb13a2b98094fffc
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801783"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333186"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>W systemie dostawcy SAML 2.0 tożsamości (IdP) dla funkcji logowania jednokrotnego
 
@@ -34,7 +34,7 @@ Firma Microsoft zapewnia to środowisko logowania jako integracji usługi w chmu
 
 >- Oparte na sieci Web klientów, takie jak program Outlook Web Access i usługi SharePoint Online
 - Klienci bogate w wiadomości e-mail używający uwierzytelniania podstawowego i obsługiwanych — metoda dostępu do programu Exchange, takie jak IMAP POP, ActiveSync, MAPI, itp. (punkt końcowy rozszerzony protokół klienta jest wymagane do wdrożenia), w tym:
-    - Program Microsoft Outlook 2010/Outlook 2013/Outlook 2016, Apple iPhone (różne wersje systemu iOS)
+    - Outlook 2016-Microsoft Outlook 2010/Outlook 2013, Apple iPhone (różne wersje systemu iOS)
     - Różnych urządzeń systemu Google Android
     - Windows Phone 7, Windows Phone 7.8 i Windows Phone 8.0
     - Klient poczty systemu Windows 8 i Windows 8.1 klienta poczty E-mail
@@ -47,7 +47,7 @@ Ten dokument zawiera szczegółowe wymagania dla protokołu i formatowanie, że 
 
 Zaleca się, że zapewnia Twój dostawca tożsamości SAML 2.0 komunikaty wyjściowe był jak podobny do śledzenia dostarczona próbka jak to możliwe. Należy także użyć wartości określonych atrybutów z podane metadanych usługi Azure AD w miarę możliwości. Po przejściu wszystkiego wiadomości dane wyjściowe można przetestować z analizatora łączności firmy Microsoft zgodnie z poniższym opisem.
 
-Można pobrać metadanych usługi Azure AD z tego adresu URL: [ https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml ](http://https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml).
+Można pobrać metadanych usługi Azure AD z tego adresu URL: [ https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml ](https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml).
 Klienci w Chinach, przy użyciu określonych Chin wystąpienie usługi Office 365, powinien być używany następujący punkt końcowy federacyjnej: [ https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml ](https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml).
 
 ## <a name="saml-protocol-requirements"></a>Wymagania dotyczące protokołu SAML

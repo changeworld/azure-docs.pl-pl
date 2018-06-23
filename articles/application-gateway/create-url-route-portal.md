@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: e923167ef0b7cdb300fa5ad1421cc18489393ce2
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: ecb8a46c57d31c8a19f3a7b75306e42a7d3981bd
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265182"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335741"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Utwórz bramę aplikacji przy użyciu ścieżki na podstawie reguł routingu przy użyciu portalu Azure
 
@@ -155,7 +155,7 @@ W tym przykładzie należy utworzyć trzy maszyny wirtualne do użycia jako serw
 
     ![Rejestrowanie publicznego adresu IP bramy aplikacji](./media/create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki. Na przykład http://http://40.121.222.19.
+2. Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki. Na przykład http://40.121.222.19.
 
     ![Testowanie podstawowego adresu URL w bramie aplikacji](./media/create-url-route-portal/application-gateway-iistest.png)
 

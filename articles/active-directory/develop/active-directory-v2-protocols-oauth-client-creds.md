@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: celested
-ms.reviewer: dastrock
+ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 892cf2cfc93c86b9196000d94f976407156ec248
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b71cac474c915d0ebcc9beed29551fbce8b515ea
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594282"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319000"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>V2.0 usługi Azure Active Directory i że przepływ poświadczeń klienta OAuth 2.0
 Można użyć [przyznania poświadczeń klienta OAuth 2.0](http://tools.ietf.org/html/rfc6749#section-4.4) określona w specyfikacji RFC 6749, nazywane również *bokami dwa OAuth*, aby uzyskać dostęp do zasobów hostowanych w sieci web przy użyciu tożsamości aplikacji. Ten typ grant często służy do interakcji do serwera, które muszą zostać uruchomione w tle, bez natychmiastowego interakcji z użytkownikiem. Często aplikacje tego typu są określane jako *demony* lub *kont usługi*.

@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych z HubSpot przy użyciu fabryki danych Azure (wersja Beta) | Dokumentacja firmy Microsoft
+title: Kopiowanie danych z HubSpot przy użyciu fabryki danych Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skopiować dane z HubSpot do zbiornika obsługiwane magazyny danych za pomocą działania kopiowania w potoku fabryki danych Azure.
 services: data-factory
 documentationcenter: ''
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 25713504721bd6b767804be62334db1633680961
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cb0eb612f76f6673a919d9d5c92f0f524129f9fa
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618066"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337660"
 ---
-# <a name="copy-data-from-hubspot-using-azure-data-factory-beta"></a>Kopiowanie danych z HubSpot przy użyciu fabryki danych Azure (wersja Beta)
+# <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Kopiowanie danych z HubSpot przy użyciu fabryki danych Azure (wersja zapoznawcza)
 
 W tym artykule omówiono sposób użycia działanie kopiowania w fabryce danych Azure, aby skopiować dane z HubSpot. Opiera się na [skopiuj omówienie działania](copy-activity-overview.md) artykułu, który przedstawia ogólny przegląd działanie kopiowania.
 
@@ -28,7 +28,7 @@ W tym artykule omówiono sposób użycia działanie kopiowania w fabryce danych 
 > Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [działanie kopiowania w wersji 1](v1/data-factory-data-movement-activities.md).
 
 > [!IMPORTANT]
-> Ten łącznik jest obecnie w wersji Beta. Możesz wypróbować jej możliwości i przekaż nam swoją opinię. Nie należy używać go w środowisku produkcyjnym.
+> Ten łącznik jest obecnie w przeglądzie. Możesz wypróbować jej możliwości i przekaż nam swoją opinię. Jeśli w swoim rozwiązaniu chcesz wprowadzić zależność od łączników w wersji zapoznawczej, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
@@ -38,7 +38,7 @@ Fabryka danych Azure oferuje wbudowane sterowników, aby umożliwić łącznoś�
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek fabryki danych określonej do HubSpot łącznika.
 

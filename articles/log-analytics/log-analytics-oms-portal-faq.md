@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: bwren
-ms.openlocfilehash: cb48d6f61991fd16112b3507a413946ec01b4871
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 1e0fd56b6e420103b4f786985f71a84737db642d
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34851337"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333636"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Często zadawane pytania przejścia z portalu OMS do portalu Azure Log Analytics użytkowników
 Analizy dzienników początkowo umożliwia własną portalu o nazwie portalu OMS zarządzanie jej konfiguracją i analizowanie zebranych danych.  Wszystkie funkcje z tego portalu został przeniesiony do portalu Azure której będzie można rozwijać.
@@ -39,7 +39,7 @@ Na liście obszarów roboczych w portalu Azure kliknij **Dodaj** na liście obsz
 ![Strona przeglądu](media/log-analytics-new-portal/new-workspace.png)
 
 ## <a name="where-is-my-overview-page"></a>Gdzie jest strony Przegląd?
-Ekranie głównym w portalu OMS Wyświetla kafelków dla wszystkich rozwiązań zarządzania zainstalowany w obszarze roboczym i niestandardowe widoki, które zostały utworzone. W portalu Azure, jest to określane jako **omówienie** strony. Z obszaru roboczego w portalu Azure, albo wybierz **omówienie** w menu lub kliknij **omówienie** przycisk na stronie głównej.
+Ekranie głównym w portalu OMS Wyświetla kafelków dla wszystkich rozwiązań zarządzania zainstalowany w obszarze roboczym i niestandardowe widoki, które zostały utworzone. W tym samym widoku jest dostępna w portalu Azure. Z obszaru roboczego wybierz **podsumowanie obszaru roboczego**.
 
 ![Strona przeglądu](media/log-analytics-new-portal/overview.png)
 

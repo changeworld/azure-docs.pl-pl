@@ -10,7 +10,7 @@ Skonfiguruj swoje lokalne wdrożenie Git, aby było możliwe wypychanie do lokal
 git remote add azure <URI from previous step>
 ```
 
-Wypchnij na zdalną platformę Azure w celu wdrożenia aplikacji. Zostanie wyświetlony monit o podanie hasła utworzonego wcześniej podczas tworzenia użytkownika wdrożenia. Upewnij się, że zostało wprowadzone hasło utworzone wcześniej podczas postępowania zgodnie z przewodnikiem szybkiego startu, a nie hasło, którego używasz do logowania się w witrynie Azure Portal.
+Wypchnij na zdalną platformę Azure w celu wdrożenia aplikacji. Zostanie wyświetlony monit o podanie hasła utworzonego wcześniej podczas tworzenia użytkownika wdrożenia. Upewnij się, że możesz wprowadzić hasło, które utworzono we wcześniejszej części szybkiego startu i nie hasło, którego używasz do logowania do portalu Azure.
 
 ```bash
 git push azure master

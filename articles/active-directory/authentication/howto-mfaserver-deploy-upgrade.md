@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: a94d97fb90e65fd569047a3d55945437002d97ab
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 9537380daab80529c3ba6307f1b2cd82a8c0ca41
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33867395"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334673"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Uaktualnij do najnowszej Azure aplikacji serwer Multi-Factor Authentication
 
@@ -48,21 +48,12 @@ Jeśli uaktualniasz z 6.x lub w starszej do v7.x lub nowszej, wszystkie składni
 
 Jeśli Portal użytkowników na wielu serwerach, powtórz instalacji na wszystkich z nich. 
 
-
 ## <a name="upgrade-the-mobile-app-web-service"></a>Uaktualnianie usługi sieci Web aplikacji mobilnej
 
-1. Wykonaj kopię zapasową pliku web.config, który znajduje się w katalogu wirtualnego w lokalizacji instalacji usługi Mobile App Web Service (na przykład C:\inetpub\wwwroot\app lub C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService).
-2. Skopiuj plik MultiFactorAuthenticationMobileAppWebServiceSetup64.msi z lokalizacji instalacji serwerów MFA i umieść je na serwerze sieci web rejestracji aplikacji mobilnej.
-3. Uruchom Instalatora. 
-
-  Jeśli wystąpi błąd informujący, że program Microsoft Visual C++ 2015 Redistributable Update 1 lub nowszy jest wymagany, Pobierz i zainstaluj najnowszy pakiet aktualizacji z [Microsoft Download Center](https://www.microsoft.com/download/). Zainstalowanie wersji x86 i x64.
-
-4. Po zainstalowaniu zaktualizowanej oprogramowania Mobile App Web Service, porównaj plik web.config, która została skopiowana w kroku 1 nowy plik web.config. Jeśli nie istnieją żadne nowe atrybuty w nowego pliku web.config, możesz skopiować zapisanego pliku web.config wrócić do katalogu wirtualnego i zastąpić nowym. Innym rozwiązaniem jest kopiowania/wklejania wartości appSettings i adres URL zestawu SDK usługi sieci Web z pliku kopii zapasowej do nowego pliku web.config.
-
-Jeśli masz usługi Mobile App Web Service na wielu serwerach, powtórz instalacji na wszystkich z nich. 
+> [!NOTE]
+> Podczas uaktualniania z wersji serwera usługi Azure MFA starsze niż 8.0 do 8.0 i nowsze, że po uaktualnieniu można odinstalować usługę sieci web aplikacji mobilnej
 
 ## <a name="upgrade-the-ad-fs-adapters"></a>Uaktualnienie karty AD FS
-
 
 ### <a name="if-mfa-runs-on-different-servers-than-ad-fs"></a>Jeśli uwierzytelnianie wieloskładnikowe jest uruchomiony na różnych serwerach niż usługi AD FS
 

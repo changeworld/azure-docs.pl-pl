@@ -3,22 +3,24 @@ title: Błąd na stronie aplikacji po zalogowaniu się | Dokumentacja firmy Micr
 description: Jak rozwiązać problemy z logowaniem usługi Azure AD po zgłoszeniu emituje błąd
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 02236e7f7ec6be0df5082d2cde3d616e628c3927
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: ce37ab8ac3324226d0d50491b334fe837b77c49d
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29384909"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330309"
 ---
 # <a name="error-on-an-applications-page-after-signing-in"></a>Błąd na stronie aplikacji po zalogowaniu
 

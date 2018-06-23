@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 81b760e3a911bacb9c01106d59577d794788abe8
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 1927ab29e82836c60b2ba36c3eec0acf49778082
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36296176"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335843"
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Planowanie wdrożenia synchronizacji plików Azure (wersja zapoznawcza)
 Umożliwia synchronizacji plików Azure (wersja zapoznawcza) scentralizowanie udziałów plików w organizacji w plikach Azure, przy zachowaniu elastyczności, wydajności i zgodności serwera plików lokalnych. Synchronizacja programu Azure pliku przy użyciu systemu Windows Server do szybkiego pamięci podręcznej udziału plików na platformę Azure. Można użyć każdego protokołu, który jest dostępny w systemie Windows Server dostępu do danych lokalnie, w tym protokołu SMB, systemu plików NFS i FTPS. Może mieć dowolną liczbę pamięci podręcznych zgodnie z potrzebami na całym świecie.
@@ -144,6 +144,9 @@ W przypadku synchronizacji plików Azure i systemu plików DFS-R pracy side-by-s
 2. Punkty końcowe serwera nie powinno być skonfigurowane w folderach tylko do odczytu replikacji systemu plików DFS-R.
 
 Aby uzyskać więcej informacji, zobacz [Omówienie replikacji systemu plików DFS](https://technet.microsoft.com/library/jj127250).
+
+### <a name="sysprep"></a>Narzędzie Sysprep
+Na serwerze, na którym jest zainstalowany agent synchronizacji plików Azure za pomocą programu sysprep nie jest obsługiwana i może prowadzić do nieoczekiwanych wyników. Rejestracja agenta instalacji i serwer powinien wystąpić po wdrażania obrazu serwera i zakończeniu miniinstalacji programu sysprep.
 
 ### <a name="windows-search"></a>Usługa wyszukiwania systemu Windows
 Jeśli chmury na punktu końcowego serwera włączono obsługę poziomów, pliki, które są masz dość są pominięty i nie są indeksowane według wyszukiwania systemu Windows. Pliki inne niż do warstwy są poprawnie indeksowane.

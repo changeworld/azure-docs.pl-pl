@@ -12,20 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2017
+ms.date: 06/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: ce442793a9917320b6b2b0a7014a20f885c3720c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 580ecc98913dc35e2d1e21f1dcfa19936bb59826
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337961"
 ---
-# <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Wdrażanie wielu wystąpień zasobów lub właściwości w szablonach usługi Azure Resource Manager
+# <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Wdrażanie wielu wystąpień zasobów lub właściwości w szablonach Menedżera zasobów Azure
 W tym artykule przedstawiono warunkowo wdrażanie zasobu i porady dotyczące iteracji po do szablonu usługi Azure Resource Manager, aby utworzyć wiele wystąpień zasobu.
 
 ## <a name="conditionally-deploy-resource"></a>Warunkowo wdrażanie zasobów
 
-Jeśli podczas wdrażania należy zdecydować, aby utworzyć jedno wystąpienie lub żadnych wystąpień zasobu, użyj `condition` elementu. Wartość dla tego elementu jest rozpoznawany jako PRAWDA lub FAŁSZ. Gdy ma wartość true, zasób zostanie wdrożona. Gdy wartość jest równa false, zasób nie została wdrożona. Na przykład aby określić, czy nowe konto magazynu jest wdrażana, czy istniejące konto magazynu jest używana, należy użyć:
+Jeśli podczas wdrażania należy zdecydować, aby utworzyć jedno wystąpienie lub żadnych wystąpień zasobu, użyj `condition` elementu. Wartość dla tego elementu jest rozpoznawany jako PRAWDA lub FAŁSZ. Gdy ma wartość true, zasób zostanie wdrożona. Gdy wartość jest równa false, zasób nie jest wdrożona. Na przykład aby określić, czy nowe konto magazynu jest wdrażana, czy istniejące konto magazynu jest używana, należy użyć:
 
 ```json
 {
@@ -127,9 +128,9 @@ Tworzy następujące nazwy:
 * storagefabrikam
 * storagecoho
 
-Domyślnie usługi Resource Manager tworzy zasoby równolegle. W związku z tym nie jest gwarantowana kolejności ich utworzenia. Można określić, że zasoby są wdrażane w sekwencji. Na przykład podczas aktualizacji do środowiska produkcyjnego, można tak skonfigurować aktualizacje tylko pewne są aktualizowane w dowolnym momencie.
+Domyślnie usługi Resource Manager tworzy zasoby równolegle. W związku z tym nie jest gwarantowana kolejność, w którym są tworzone. Można określić, że zasoby są wdrażane w sekwencji. Na przykład podczas aktualizacji do środowiska produkcyjnego, można tak skonfigurować aktualizacje tylko pewne są aktualizowane w dowolnym momencie.
 
-Aby wdrożyć kolejno wielu wystąpień zasobu, należy ustawić `mode` do **serial** i `batchSize` liczby wystąpień do wdrożenia w czasie. Serial w trybie Menedżera zasobów tworzy zależność w wystąpieniach wcześniej w pętli, więc nie zostanie uruchomiony serii do chwili zakończenia poprzedniej wsadowym.
+Aby wdrożyć kolejno wielu wystąpień zasobu, należy ustawić `mode` do **serial** i `batchSize` liczby wystąpień do wdrożenia w czasie. W trybie serial Resource Manager tworzy zależność w wystąpieniach wcześniej w pętli, więc nie uruchamia jedno zadanie wsadowe, do chwili zakończenia poprzedniej wsadowym.
 
 Na przykład pojedynczo wdrożenie kont magazynu, dwa w czasie, należy użyć:
 
@@ -191,7 +192,7 @@ Poniższy przykład przedstawia sposób zastosowania `copy` właściwości dataD
       ...
 ```
 
-Zwróć uwagę, że przy użyciu `copyIndex` wewnątrz iteracji właściwości, należy podać nazwę iteracji. Nie masz Podaj nazwę, gdy jest używany z zasobów iteracji.
+Zwróć uwagę, że przy użyciu `copyIndex` wewnątrz iteracji właściwości, należy podać nazwę iteracji. Nie trzeba podać nazwę w przypadku użycia z zasobów iteracji.
 
 Menedżer zasobów rozszerza `copy` tablicy podczas wdrażania. Nazwa tablicy staje się nazwa właściwości. Wartości wejściowe stają się właściwości obiektu. Wdrożone szablon staje się:
 
@@ -220,6 +221,34 @@ Menedżer zasobów rozszerza `copy` tablicy podczas wdrażania. Nazwa tablicy st
           }
       }],
       ...
+```
+
+Copy element jest tablicą, można określić więcej niż jedną właściwość dla zasobu. Dodaj obiekt, dla każdej właściwości do utworzenia.
+
+```json
+{
+    "name": "string",
+    "type": "Microsoft.Network/loadBalancers",
+    "apiVersion": "2017-10-01",
+    "properties": {
+        "copy": [
+          {
+              "name": "loadBalancingRules",
+              "count": "[length(parameters('loadBalancingRules'))]",
+              "input": {
+                ...
+              }
+          },
+          {
+              "name": "probes",
+              "count": "[length(parameters('loadBalancingRules'))]",
+              "input": {
+                ...
+              }
+          }
+        ]
+    }
+}
 ```
 
 Iteracja zasobów i właściwości można użyć razem. Odwołanie do iteracji właściwości według nazwy.
@@ -309,8 +338,29 @@ Aby utworzyć wiele wystąpień w zmiennej, użyj `copy` element w sekcji zmienn
 }
 ```
 
+Albo podejście copy element jest tablicą, można określić więcej niż jedną zmienną. Dodaj obiekt, dla każdej zmiennej utworzyć.
+
+```json
+"copy": [
+  {
+    "name": "first-variable",
+    "count": 5,
+    "input": {
+      "demoProperty": "[concat('myProperty', copyIndex('first-variable'))]",
+    }
+  },
+  {
+    "name": "second-variable",
+    "count": 3,
+    "input": {
+      "demoProperty": "[concat('myProperty', copyIndex('second-variable'))]",
+    }
+  },
+]
+```
+
 ## <a name="depend-on-resources-in-a-loop"></a>Są zależne od zasobów w pętli
-Określ, czy zasób jest wdrażane za pomocą po inny zasób `dependsOn` elementu. Aby wdrożyć z zasobem, który jest zależny od kolekcji zasobów w pętli, podaj nazwę pętlę kopiowania w elemencie dependsOn. Poniższy przykład przedstawia sposób wdrażania trzy konta magazynu przed wdrożeniem maszyny wirtualnej. Nie ma pełnej definicji maszyny wirtualnej. Zwróć uwagę, że copy element ma nazwę ustawioną `storagecopy` element dependsOn dla maszyn wirtualnych jest również ustawiono `storagecopy`.
+Określ, czy zasób jest wdrażane za pomocą po inny zasób `dependsOn` elementu. Aby wdrożyć z zasobem, który jest zależny od kolekcji zasobów w pętli, podaj nazwę pętlę kopiowania w elemencie dependsOn. Poniższy przykład przedstawia sposób wdrażania trzy konta magazynu przed wdrożeniem maszyny wirtualnej. Pełnej definicji maszyny wirtualnej nie jest widoczne. Zwróć uwagę, że copy element ma nazwę ustawioną `storagecopy` element dependsOn dla maszyn wirtualnych jest również ustawiono `storagecopy`.
 
 ```json
 {
@@ -409,7 +459,7 @@ Poniżej przedstawiono typowe scenariusze dotyczące tworzenia wielu zasobów lu
 |[Maszyna wirtualna z nowej lub istniejącej sieci wirtualnej, magazynu i publicznego adresu IP](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions) |Warunkowo wdraża nowych lub istniejących zasobów z maszyną wirtualną. |
 |[Wdrażanie maszyny Wirtualnej ze zmienną liczbą dysków z danymi](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Wdraża wiele dysków z danymi z maszyną wirtualną. |
 |[Skopiuj zmiennych](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Przedstawia różne sposoby iteracja na zmiennych. |
-|[Wiele reguł zabezpieczeń](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Wdraża wiele reguł zabezpieczeń grupy zabezpieczeń sieci. Tworzy ona zasady zabezpieczeń z parametrem. |
+|[Wiele reguł zabezpieczeń](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Wdraża wiele reguł zabezpieczeń grupy zabezpieczeń sieci. Tworzy ona zasady zabezpieczeń z parametrem. W parametrze, zobacz [wielu pliku parametrów NSG](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Jeśli chcesz dowiedzieć się więcej o części szablonu, zobacz [Authoring Azure Resource Manager szablony](resource-group-authoring-templates.md).

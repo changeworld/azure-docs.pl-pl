@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/09/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 92c4544a0dee4c875b1c802a8c4d77d48bfb94ef
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 2da5d05767dddfe653e0a0ba65a21b7e755b3828
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711067"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330722"
 ---
 # <a name="azure-ad-b2c-requesting-access-tokens"></a>Usługa Azure AD B2C: Żądanie tokeny dostępu
 
@@ -39,7 +39,7 @@ Przed wysłaniem żądania tokenu dostępu, należy najpierw zarejestrować inte
 1. W menu funkcje usługi Azure AD B2C w portalu Azure kliknij **aplikacji**.
 1. Kliknij przycisk **+ Dodaj** w górnej części menu.
 1. Wprowadź wartość **Nazwa**, która będzie opisywać aplikację na potrzeby klientów. Na przykład można wprowadzić "Interfejsu API firmy Contoso".
-1. Przestaw przełącznik **Uwzględnij aplikację sieci Web/interfejs API sieci Web** na wartość **Tak**.
+1. Przestaw przełącznik **Uwzględnij aplikację internetową/internetowy interfejs API** na wartość **Tak**.
 1. Należy wprowadzić dowolną wartość dla **adresy URL odpowiedzi**. Na przykład wprowadź wartość `https://localhost:44316/`. Wartość nie ma znaczenia, ponieważ interfejs API powinni nie otrzymywać token bezpośrednio z usługi Azure AD B2C.
 1. Wprowadź **identyfikator URI aplikacji**. Jest to identyfikator używany na potrzeby interfejsu API sieci Web. Na przykład wprowadź "informacje" w polu. **Identyfikator URI aplikacji** będzie wówczas `https://{tenantName}.onmicrosoft.com/notes`.
 1. Kliknij pozycję **Utwórz**, aby zarejestrować aplikację.
@@ -79,7 +79,7 @@ Podczas żądania tokenu dostępu, aplikacja kliencka musi określać odpowiedni
 > Obecnie domen niestandardowych nie są obsługiwane razem z tokenów dostępu. Należy użyć domeny tenantName.onmicrosoft.com w adresie URL żądania.
 
 ```
-https://login.microsoftonline.com/<tenantName>.onmicrosoft.com/<yourPolicyId>/oauth2/v2.0/authorize?client_id=<appID_of_your_client_application>&nonce=anyRandomValue&redirect_uri=<redirect_uri_of_your_client_application>&scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fnotes%2Fread&response_type=code 
+https://login.microsoftonline.com/tfp/<tenantName>.onmicrosoft.com/<yourPolicyId>/oauth2/v2.0/authorize?client_id=<appID_of_your_client_application>&nonce=anyRandomValue&redirect_uri=<redirect_uri_of_your_client_application>&scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fnotes%2Fread&response_type=code 
 ```
 
 Uzyskanie wiele uprawnień w jednym żądaniu, można dodać wiele wpisów w pojedynczej **zakres** parametru rozdzielone spacjami. Na przykład:

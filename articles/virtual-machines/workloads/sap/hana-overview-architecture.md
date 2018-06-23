@@ -11,21 +11,21 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/04/2018
+ms.date: 06/19/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bfcab5a84d9e8b0bf164c666162636ede2e1b06f
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 18b6aaf7396c16714370435d2ee6d3a4960ecf21
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763786"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337975"
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Architektura na platformie Azure i SAP HANA (duże wystąpień) — omówienie
 
 ## <a name="what-is-sap-hana-on-azure-large-instances"></a>Co to jest SAP HANA na platformie Azure (wystąpienia duże)?
 
-SAP HANA na platformie Azure (wystąpienia duże) to rozwiązanie unikatowa na platformie Azure. Oprócz zapewnienia maszyn wirtualnych do wdrażania i uruchamiania SAP HANA, system Azure oferuje możliwości do uruchamiania i wdrożenia SAP HANA na serwerach bez systemu operacyjnego, które są przeznaczone dla użytkownika. SAP HANA dla rozwiązania Azure (wystąpienia duże) oparty na sprzętu bez systemu operacyjnego nieudostępnione/serwera hosta, który jest przypisane do Ciebie. Sprzęt serwera jest osadzony w większych sygnatury, które zawiera compute/serwer, sieci i infrastruktury magazynu. Jako połączenie jest certyfikowane HANA dostosowane danych integracji center (TDI). SAP HANA na platformie Azure (wystąpienia duże) oferuje jednostki SKU inny serwer lub rozmiary. Jednostki można mieć 72 procesorów i 768 GB pamięci i do góry do jednostki, które mają 960 procesorów i 20 TB pamięci.
+SAP HANA na platformie Azure (wystąpienia duże) to rozwiązanie unikatowa na platformie Azure. Oprócz zapewnienia maszyn wirtualnych do wdrażania i uruchamiania SAP HANA, system Azure oferuje możliwości do uruchamiania i wdrożenia SAP HANA na serwerach bez systemu operacyjnego, które są przeznaczone dla użytkownika. SAP HANA dla rozwiązania Azure (wystąpienia duże) oparty na sprzętu bez systemu operacyjnego nieudostępnione/serwera hosta, który jest przypisane do Ciebie. Sprzęt serwera jest osadzony w większych sygnatury, które zawiera compute/serwer, sieci i infrastruktury magazynu. Jako połączenie jest certyfikowane HANA dostosowane danych integracji center (TDI). SAP HANA na platformie Azure (wystąpienia duże) oferuje jednostki SKU inny serwer lub rozmiary. Jednostki mogą mieć 36 rdzeni procesora CPU Intel i 768 GB pamięci i przejdź do jednostki, które mają do 480 rdzeni procesora CPU Intel i maksymalnie 24 TB pamięci.
 
 Izolacji klienta w ramach infrastruktury sygnatury jest wykonywane w dzierżaw, która wygląda następująco:
 
@@ -80,9 +80,9 @@ Oprócz certyfikacji NetWeaver SAP wymaga specjalnych certyfikacji dla SAP HANA 
 
 Podstawowe SAP Uwaga na NetWeaver i certyfikacji SAP HANA stopnia jest [1928533 # Uwaga SAP — aplikacje SAP na platformie Azure: obsługiwane produktów i typy maszyny Wirtualnej Azure](https://launchpad.support.sap.com/#/notes/1928533).
 
-[SAP Uwaga #2316233 - SAP HANA w systemie Microsoft Azure (wystąpienia duże)](https://launchpad.support.sap.com/#/notes/2316233/E) również jest znacząca. Obejmuje ona rozwiązania opisane w tym przewodniku. Ponadto są obsługiwane do uruchamiania w typie GS5 maszyny Wirtualnej Azure SAP HANA. Informacje w tym przypadku jest opublikowany w [SAP witryny sieci Web](http://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html).
+Rekordy certyfikacji dla SAP HANA w jednostkach Azure (wystąpienia duże) można znaleźć w [SAP HANA certyfikowane platform IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) lokacji. 
 
-SAP HANA na określone w 2316233 # Uwaga SAP rozwiązania Azure (wystąpienia duże) zapewnia klientom firmy Microsoft i SAP możliwość wdrażania duży pakiet Business SAP, programu SAP BW, S/4 HANA, BW/4HANA lub innych obciążeń SAP HANA na platformie Azure. Rozwiązanie opiera się na sygnatury certyfikowanym sprzętem dedykowanym SAP HANA ([SAP HANA dostosowane integracji centrum danych — TDI](https://scn.sap.com/docs/DOC-63140)). Po uruchomieniu rozwiązanie skonfigurowane SAP HANA TDI wszystkich SAP HANA aplikacji (np. SAP Business Suite na SAP HANA, programu SAP BW SAP HANA, S4/HANA i BW4/HANA) działa w infrastrukturze sprzętu.
+SAP HANA na typach Azure (wystąpienia duże), określonych w SAP HANA certyfikowane lokacji IaaS platformy zapewnia firmy Microsoft i SAP klientom możliwość wdrażania duży pakiet Business SAP, programu SAP BW, S/4 HANA, BW/4HANA lub innych obciążeń SAP HANA na platformie Azure. Rozwiązanie opiera się na sygnatury certyfikowanym sprzętem dedykowanym SAP HANA ([SAP HANA dostosowane integracji centrum danych — TDI](https://scn.sap.com/docs/DOC-63140)). Po uruchomieniu rozwiązanie skonfigurowane SAP HANA TDI wszystkich SAP HANA aplikacji (np. SAP Business Suite na SAP HANA, programu SAP BW SAP HANA, S4/HANA i BW4/HANA) działa w infrastrukturze sprzętu.
 
 W porównaniu do uruchomionego SAP HANA na maszynach wirtualnych, to rozwiązanie ma korzyści. Zapewnia znacznie większych woluminów pamięci. Aby włączyć to rozwiązanie, należy zrozumieć następujące kluczowe aspekty:
 
@@ -132,7 +132,9 @@ Podobnie jak w przypadku maszyn wirtualnych, SAP HANA na platformie Azure (wyst�
 
 Tak samo, jak można wybrać różne typy maszyny Wirtualnej z maszyn wirtualnych platformy Azure, są dostępne różne jednostki SKU z HANA dużych wystąpienie, które są dostosowane do obciążenia różne rodzaje SAP HANA. SAP stosuje współczynnik pamięci do procesora gniazda dla różnych obciążeń oparte na Intel generacje procesora. W poniższej tabeli przedstawiono typy jednostki SKU oferowane.
 
-Począwszy od 2017 lipca SAP HANA na platformie Azure (wystąpienia duże) są dostępne w kilka konfiguracji w regionach platformy Azure nam zachodnie nam wschodnie, Australia Wschodnia, Australia Południowo-Wschodnia, Europa Zachodnia i Europa Północna.
+SAP HANA w usłudze Azure (wystąpienia duże) są dostępne w kilka konfiguracji w regionach platformy Azure nam zachodnie nam wschodnie, Australia Wschodnia, Australia Południowo-Wschodnia, Europa Zachodnia, Europa Północna, Japonia Wschodnia i Japonia Zachodnia.
+
+[SAP HANA certyfikowane wystąpień duże jednostki SKU HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) listę takich jak:
 
 | Rozwiązania SAP | Procesor CPU | Memory (Pamięć) | Magazyn | Dostępność |
 | --- | --- | --- | --- | --- |
@@ -148,17 +150,31 @@ Począwszy od 2017 lipca SAP HANA na platformie Azure (wystąpienia duże) są d
 |---| SAP HANA na Azure S576m<br /> – 12 procesor Intel Xeon® x E7 8890 v4<br /> 288 rdzeni Procesora i 576 wątków CPU |  12.0 TB |  28 TB | Dostępne |
 |---| SAP HANA na Azure S768m<br /> – 16 procesor Intel Xeon® x E7 8890 v4<br /> 384 rdzeni Procesora i 768 wątków CPU |  16.0 TB |  36 TB | Dostępne |
 |---| SAP HANA na Azure S960m<br /> – 20 procesor Intel Xeon® x E7 8890 v4<br /> 480 rdzeni Procesora i 960 wątków CPU |  20.0 TB |  46 TB | Dostępne |
-| Zoptymalizowana pod kątem OLTP **TDIv5**: SAP Business Suite<br /> SAP HANA lub S/4HANA (OLTP)<br /> ogólny OLTP | SAP HANA na Azure S192xm<br /> – 4 procesor Intel Xeon® x E7 8890 v4<br /> 96 rdzeni Procesora i 192 wątków CPU |  6.0 TB |  16 TB | Dostępne |
-|---| SAP HANA na Azure S384xxm<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 rdzeni Procesora i 384 wątków CPU |  12.0 TB |  28 TB | Dostępne |
-|---| SAP HANA na Azure S576xm<br /> – 12 procesor Intel Xeon® x E7 8890 v4<br /> 288 rdzeni Procesora i 576 wątków CPU |  18,0 TB |  41 TB | Dostępne |
-|---| SAP HANA na Azure S768xm<br /> – 16 procesor Intel Xeon® x E7 8890 v4<br /> 384 rdzeni Procesora i 768 wątków CPU |  24.0 TB |  56 TB | Dostępne |
+
+
+W obszarze SAP HANA TDIv5 SAP umożliwia rozmiaru właściwe dla klienta i projektów właściwe dla klienta, które mogą prowadzić do konfiguracji serwera, które nie są wymienione jako potwierdzonych w:
+
+- [SAP HANA certyfikowanych urządzeń](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/appliances.html)
+- [SAP HANA certyfikowane platform IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
+
+W partii przypadków te konfiguracje specyficzne dla klienta serwera zawiera więcej pamięci niż jednostek serwera z SAP. W pracy z SAP, klienci mają możliwość, aby uzyskać pomoc techniczną SAP i wystawi certyfikat dla ich konfiguracji serwera o rozmiarze właściwe dla klienta. Na platformie Azure następujące wystąpienia dużych HANA SKU standardowe są dostępne i w programie Microsoft cennik dla projektów TDIv5 rozmiaru właściwe dla klienta.
+
+
+| Oryginalna jednostka SKU, które mogą być <br /> rozszerzony w pamięci | Procesor CPU | Memory (Pamięć) | Magazyn | Dostępność |
+| --- | --- | --- | --- | --- |
+| S192m może zostać rozszerzony do | SAP HANA na Azure S192xm<br /> – 4 procesor Intel Xeon® x E7 8890 v4<br /> 96 rdzeni Procesora i 192 wątków CPU |  6.0 TB |  16 TB | Dostępne |
+| S384xm może zostać rozszerzony do | SAP HANA na Azure S384xxm<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 rdzeni Procesora i 384 wątków CPU |  12.0 TB |  28 TB | Dostępne |
+| S576m może zostać rozszerzony do | SAP HANA na Azure S576xm<br /> – 12 procesor Intel Xeon® x E7 8890 v4<br /> 288 rdzeni Procesora i 576 wątków CPU |  18,0 TB |  41 TB | Dostępne |
+| S768m może zostać rozszerzony do | SAP HANA na Azure S768xm<br /> – 16 procesor Intel Xeon® x E7 8890 v4<br /> 384 rdzeni Procesora i 768 wątków CPU |  24.0 TB |  56 TB | Dostępne |
+
 - Rdzenie procesora CPU = suma nie-Procesora rdzeni hiperwątkowych sumy procesorów jednostki serwera.
-- Wątków procesora CPU = Suma wątków obliczeniowe udostępniane przez hiperwątkowych rdzeni procesora CPU sumy procesorów jednostki serwera. Wszystkie jednostki są domyślnie skonfigurowane, aby używać technologii Hyper-Threading.
+- Wątków procesora CPU = Suma wątków obliczeniowe udostępniane przez hiperwątkowych rdzeni procesora CPU sumy procesorów jednostki serwera. Większość jednostki są domyślnie skonfigurowane, aby używać technologii Hyper-Threading.
+- Na podstawie dostawcy zaleceń S768m, S768xm i S960m nie są skonfigurowane do używania funkcji Hyper-Threading uruchamiania SAP HANA.
 
 
 Konkretne konfiguracje wybrane są zależne od obciążenia, zasobów procesora CPU i pamięci żądany. Istnieje możliwość dla obciążenia OLTP użyć wersji produktu, które są zoptymalizowane dla obciążeń OLAP. 
 
-Podstawowa dla wszystkich ofert sprzętu są certyfikowane SAP HANA TDI. Dwóch różnych klas sprzętu dzielą jednostki SKU do:
+Sprzęt podstawowego w przypadku ofert, z wyjątkiem jednostki dla projektów rozmiaru właściwe dla klienta, są certyfikowane SAP HANA TDI. Dwóch różnych klas sprzętu dzielą jednostki SKU do:
 
 - S72, S72m S144, S144m, S192, S192m i S192xm, które są określane jako "Typ klasy I" z jednostki SKU.
 - S384, S384m, S384xm, S384xxm, S576m, S576xm S768m, S768xm i S960m, które są określane jako "Typ klasy II" z jednostki SKU.
@@ -296,7 +312,7 @@ Ta lista składana wymagania dotyczące systemu SAP HANA na platformie Azure (wy
    > System operacyjny dostarczane przez firmę Microsoft nie jest zarejestrowany w usłudze SUSE. Nie jest ona dołączona do wystąpienia narzędzia do zarządzania subskrypcją.
 
 - SUSE Linux subskrypcji narzędzia do zarządzania wdrożona na platformie Azure na maszynie Wirtualnej. To narzędzie udostępnia możliwości dla SAP HANA na platformie Azure (wystąpienia duże) były rejestrowane i odpowiednio aktualizowane przez SUSE. (Brak Brak dostępu do Internetu w obrębie centrum danych wystąpienia dużych HANA.) 
-- Licencje Red Hat Enterprise Linux 6.7 lub 7.2 dla SAP HANA.
+- Licencje dla Red Hat Enterprise Linux 6.7 lub 7.x dla SAP HANA.
 
    > [!NOTE]
    > Red Hat systemu operacyjnego dostarczane przez firmę Microsoft nie jest zarejestrowany. Nie jest ona dołączona do wystąpienia Red Hat subskrypcji Menedżera.
@@ -347,7 +363,7 @@ Zobacz poniższą tabelę pod względem Alokacja magazynu. W tabeli wymieniono n
 | S72m | 3,328 GB | 768 GB |1,280 GB | 768 GB |
 | S192 | 4,608 GB | 1024 GB | 1,536 GB | 1024 GB |
 | S192m | 11,520 GB | 1,536 GB | 1,792 GB | 1,536 GB |
-| S192xm |  12 000 GB |  2050 GB |  2050 GB |  OD 2.040 GB |
+| S192xm |  11,520 GB |  1,536 GB |  1,792 GB |  1,536 GB |
 | S384 | 11,520 GB | 1,536 GB | 1,792 GB | 1,536 GB |
 | S384m | 12 000 GB | 2050 GB | 2050 GB | 2,040 GB |
 | S384xm | 16 000 GB | 2050 GB | 2050 GB | 2,040 GB |
@@ -480,9 +496,7 @@ Aby uzyskać większą skalowalność architektury sieci:
 
 ![Wdrażanie programu SAP warstwy aplikacji przez wiele sieci wirtualnych](./media/hana-overview-architecture/image4-networking-architecture.png)
 
-Na rysunku przedstawiono SAP warstwy aplikacji lub składników wdrożone przez wiele sieci wirtualnych. Ta konfiguracja wprowadzono koszty nieuniknione opóźnienia, który wystąpił podczas komunikacji między aplikacjami hostowanej w tych sieciach wirtualnych. Domyślnie ruch sieciowy między maszynami wirtualnymi znajdującymi się w różnych sieciach wirtualnych Rozsyłanie za pomocą routery brzegowe przedsiębiorstwa w tej konfiguracji. Od września 2016 r. mogą być optymalizowane marszruty. 
-
-Sposobem optymalizacji i zmniejszyć opóźnienia w łączności między dwiema sieciami wirtualnymi jest komunikacji równorzędnej sieci wirtualnych w tym samym regionie. Ta metoda działa, nawet jeśli te sieci wirtualne są w różnych subskrypcji. Z sieci wirtualnej komunikacji równorzędnej, komunikacja między maszynami wirtualnymi w dwóch różnych sieciach wirtualnych może być bezpośrednio komunikować się ze sobą szkieletu sieci platformy Azure. Czas oczekiwania pokazuje tak, jakby maszyn wirtualnych znajdują się w tej samej sieci wirtualnej. Ruch, który dotyczy zakresów adresów IP, które są połączone za pośrednictwem bramy sieci wirtualnej platformy Azure jest kierowany przez poszczególnych sieci wirtualnej bramy sieci wirtualnej. 
+Na rysunku przedstawiono SAP warstwy aplikacji lub składników wdrożone przez wiele sieci wirtualnych. Ta konfiguracja wprowadzono koszty nieuniknione opóźnienia, który wystąpił podczas komunikacji między aplikacjami hostowanej w tych sieciach wirtualnych. Domyślnie ruch sieciowy między maszynami wirtualnymi znajdującymi się w różnych sieciach wirtualnych Rozsyłanie za pomocą routery brzegowe przedsiębiorstwa w tej konfiguracji. Sposobem optymalizacji i zmniejszyć opóźnienia w łączności między dwiema sieciami wirtualnymi jest komunikacji równorzędnej sieci wirtualnych w tym samym regionie. Ta metoda działa, nawet jeśli te sieci wirtualne są w różnych subskrypcji. Z sieci wirtualnej komunikacji równorzędnej, komunikacja między maszynami wirtualnymi w dwóch różnych sieciach wirtualnych może być bezpośrednio komunikować się ze sobą szkieletu sieci platformy Azure. Czas oczekiwania pokazuje tak, jakby maszyn wirtualnych znajdują się w tej samej sieci wirtualnej. Ruch, który dotyczy zakresów adresów IP, które są połączone za pośrednictwem bramy sieci wirtualnej platformy Azure jest kierowany przez poszczególnych sieci wirtualnej bramy sieci wirtualnej. 
 
 Aby uzyskać więcej informacji o sieci wirtualnej komunikacji równorzędnej, zobacz [równorzędna sieci wirtualnej](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
 

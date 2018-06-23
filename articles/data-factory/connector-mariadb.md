@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 906ad488d1851658f71d6308e8d0385ae8bc69a7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 74e41608ad60817e582fc38e37ee0b6f403a6832
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617226"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335309"
 ---
 # <a name="copy-data-from-mariadb-using-azure-data-factory"></a>Kopiowanie danych z MariaDB przy użyciu fabryki danych Azure 
 
@@ -37,7 +37,7 @@ Ten łącznik obsługuje obecnie MariaDB wersji wcześniejszej niż 10.2.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek fabryki danych określonej do MariaDB łącznika.
 

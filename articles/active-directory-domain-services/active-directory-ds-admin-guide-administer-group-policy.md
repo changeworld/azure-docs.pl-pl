@@ -13,17 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 3f49e4ac0073c81a6e55e6653acc7c6531989379
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ea7aa6c9dbde9a161567a815870b05da06cc82c8
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212244"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331715"
 ---
 # <a name="administer-group-policy-on-an-azure-ad-domain-services-managed-domain"></a>Administrowanie zasad grupy w domenie zarządzanej usług domenowych Azure AD
 Azure Active Directory Domain Services zawiera wbudowane obiekty zasad grupy (GPO) dla kontenerów "Użytkownicy AADDC" i "Komputery AADDC". Można dostosować te wbudowane obiekty zasad grupy do konfigurowania zasad grupy w domenie zarządzanej. Ponadto członkowie grupy "Administratorzy kontrolera domeny usługi AAD" mogą tworzyć własne niestandardowe jednostek organizacyjnych w domenie zarządzanej. Mogą także tworzyć niestandardowe obiekty zasad grupy oraz łączenia ich z tych niestandardowych jednostek organizacyjnych. Użytkownicy, którzy należą do grupy "Administratorzy kontrolera domeny usługi AAD" udzielono uprawnień administracyjnych zasad grupy do domeny zarządzanej.
+
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 Aby wykonać zadania opisane w tym artykule, należy:

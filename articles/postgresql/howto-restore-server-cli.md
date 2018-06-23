@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 5c5cc1fdbe48fb93eea204e4619038052e685f1f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4e745a5de8000e0f26491c9f4f236f7f8a735ae9
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31411502"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319645"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>Jak wykonać kopię zapasową i przywrócić serwera w bazie danych Azure PostgreSQL przy użyciu wiersza polecenia platformy Azure
 
@@ -32,32 +32,6 @@ Aby ukończyć ten przewodnik, potrzebne są:
 
 > [!IMPORTANT]
 > Ten przewodnik wymaga użycia interfejsu wiersza polecenia Azure w wersji 2.0 lub nowszej. Aby upewnić się, wersja, w wierszu polecenia interfejsu wiersza polecenia Azure, wprowadź `az --version`. Aby zainstalować lub uaktualnić, zobacz [zainstalować Azure CLI 2.0]( /cli/azure/install-azure-cli).
-
-## <a name="add-the-extension"></a>Dodawanie rozszerzenia
-Dodaj zaktualizowane rozszerzenie zarządzania usługi Azure Database for PostgreSQL za pomocą następującego polecenia:
-```azurecli-interactive
-az extension add --name rdbms
-``` 
-
-Sprawdź, czy masz zainstalowaną poprawną wersję rozszerzenia. 
-```azurecli-interactive
-az extension list
-```
-
-Zwracany kod JSON powinien zawierać następujące informacje: 
-```json
-{
-    "extensionType": "whl",
-    "name": "rdbms",
-    "version": "0.0.5"
-}
-```
-
-Jeśli nie jest zwracana wersja 0.0.5, uruchom następujące polecenie, aby zaktualizować rozszerzenie: 
-```azurecli-interactive
-az extension update --name rdbms
-```
-
 
 ## <a name="set-backup-configuration"></a>Zestaw kopii zapasowych konfiguracji
 

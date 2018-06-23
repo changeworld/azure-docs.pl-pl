@@ -1,5 +1,5 @@
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 2. Kliknij kolejno pozycje **Utwórz zasób**, **Sieć Web + aplikacje mobilne** i **Mobile Engagement**.
    
     ![](./media/mobile-engagement-create-app-in-portal-new/browse-azme-extension.png)

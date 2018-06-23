@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: abc542f79d722f24ff6a6e9d96d12364ed76894b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d28d25b74ce46c0323b01670bfdb639c02b92d8a
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621187"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335809"
 ---
 # <a name="data-management-gateway"></a>Brama zarządzania danymi
 > [!NOTE]
@@ -46,7 +46,7 @@ Brama zarządzania danymi oferuje następujące możliwości:
 * Zarządzanie bezpieczny dostęp do lokalnych źródeł danych.
   * Brak zmian wymagane do firmowej zapory. Brama podejmuje tylko połączeń wychodzących oparte na protokole HTTP można otworzyć internet.
   * Szyfrowania poświadczeń dostępu do sieci lokalnych magazynów danych przy użyciu certyfikatu.
-* Wydajnie przenosić dane są przesyłane dane równolegle, sieci odporność na sporadyczne problemy z automatycznego Logika ponawiania próby w.
+* Przenoszenie danych wydajnie — dane są przesyłane równolegle, sieci odporność na sporadyczne problemy z automatycznego Logika ponawiania próby w.
 
 ### <a name="command-flow-and-data-flow"></a>Polecenie przepływu i przepływu danych
 Gdy działanie kopiowania umożliwia kopiowanie danych między lokalnymi i w chmurze, działanie używa bramy na przesyłanie danych z lokalnego źródła danych do chmury i na odwrót.
@@ -134,7 +134,7 @@ Na poniższej ilustracji przedstawiono niektóre ikony na pasku zadań, które s
 Jeśli Przenieś kursor nad komunikat ikona/powiadomień na pasku zadań systemu, zobaczysz szczegółowe informacje o stanie operacji bramy/aktualizacji w oknie podręcznym.
 
 ### <a name="ports-and-firewall"></a>Porty i zapory
-Istnieją dwa zapory, należy wziąć pod uwagę: **firmowej zapory** uruchomionego na routerze centralnej organizacji, i **zapory systemu Windows** skonfigurowany jako demon na komputerze lokalnym, w którym zainstalowano bramę.  
+Istnieją dwa zapory, należy wziąć pod uwagę: **firmowej zapory** uruchomionego na routerze centralnej organizacji, i **zapory systemu Windows** skonfigurowany jako demon na komputerze lokalnym, gdzie jest bramy zainstalowana.  
 
 ![zapory](./media/data-factory-data-management-gateway/firewalls2.png)
 
@@ -184,7 +184,7 @@ Dostępne są trzy opcje konfiguracji:
 
 * **Nie używaj serwera proxy**: bramy nie jawnie używać dowolnego serwera proxy do łączenia z usług w chmurze.
 * **Użyj serwera proxy systemu**: Brama używa serwera proxy, ustawienie skonfigurowane w diahost.exe.config i diawp.exe.config.  Jeśli żadnego serwera proxy jest skonfigurowany w diahost.exe.config i diawp.exe.config, bramy łączy się z usługą w chmurze bezpośrednio, bez przechodzenia przez serwer proxy.
-* **Użyć niestandardowego serwera proxy**: Konfiguruj ustawienia do użycia dla bramy, zamiast konfiguracje diahost.exe.config i diawp.exe.config proxy HTTP.  Wymagane są adres i Port.  Nazwa użytkownika i hasło są opcjonalne, w zależności od ustawienia uwierzytelniania serwera proxy s.  Wszystkie ustawienia są zaszyfrowane za pomocą certyfikat poświadczeń bramy i przechowywane lokalnie na komputerze hosta bramy.
+* **Użyć niestandardowego serwera proxy**: Konfiguruj ustawienia do użycia dla bramy, zamiast konfiguracje diahost.exe.config i diawp.exe.config proxy HTTP.  Wymagane są adres i Port.  Nazwa użytkownika i hasło są opcjonalne, w zależności od ustawienia uwierzytelniania serwer proxy.  Wszystkie ustawienia są zaszyfrowane za pomocą certyfikat poświadczeń bramy i przechowywane lokalnie na komputerze hosta bramy.
 
 Usługa hosta bramy zarządzania danymi do automatycznego uruchomienia po zapisaniu zaktualizowanych ustawień serwera proxy.
 
@@ -208,7 +208,7 @@ Można wyświetlać i aktualizować serwer proxy HTTP za pomocą narzędzia Conf
 W przypadku wybrania **użycia serwera proxy systemu** ustawienie serwera proxy HTTP, brama używa ustawienie diahost.exe.config i diawp.exe.config serwera proxy.  Jeśli w diahost.exe.config i diawp.exe.config określono żadnego serwera proxy, bramy łączy się z usługą w chmurze bezpośrednio, bez przechodzenia przez serwer proxy. Poniższa procedura zawiera instrukcje dotyczące aktualizacji pliku diahost.exe.config.  
 
 1. W Eksploratorze plików wykonaj kopię bezpieczne C:\Program Files\Microsoft danych zarządzania Gateway\2.0\Shared\diahost.exe.config Aby utworzyć kopię zapasową oryginalnego pliku.
-2. Uruchamianie Notepad.exe uruchomioną jako administrator, a następnie otwórz plik tekstowy C:\Program Files\Microsoft danych zarządzania Gateway\2.0\Shared\diahost.exe.config. Domyślny znacznik można znaleźć system.net zgodnie z poniższym kodem:
+2. Uruchamianie Notepad.exe uruchomioną jako administrator, a następnie otwórz plik tekstowy "C:\Program Files\Microsoft danych zarządzania Gateway\2.0\Shared\diahost.exe.config. Domyślny znacznik można znaleźć system.net zgodnie z poniższym kodem:
 
          <system.net>
              <defaultProxy useDefaultCredentials="true" />
@@ -225,19 +225,19 @@ W przypadku wybrania **użycia serwera proxy systemu** ustawienie serwera proxy 
    Dodatkowe właściwości są dozwolone wewnątrz tagu serwera proxy do określenia wymagane ustawienia, takie jak scriptLocation. Zapoznaj się [serwera proxy elementu (ustawienia sieciowe)](https://msdn.microsoft.com/library/sa91de1e.aspx) na składni.
 
          <proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
-3. Zapisz plik konfiguracji do oryginalnej lokalizacji, a następnie ponownie uruchom usługę hosta bramy zarządzania danymi, które przejmuje zmiany. Aby ponownie uruchomić usługę: użyj apletu usługi w Panelu sterowania lub z **Menedżera konfiguracji bramy zarządzania danymi** > kliknij **Zatrzymaj usługę** przycisk, a następnie kliknij przycisk **Uruchom usługę**. Jeśli usługa nie zostanie uruchomiona, istnieje prawdopodobieństwo, że dodano niepoprawną składnię tagu XML w pliku konfiguracji aplikacji, który był edytowany.
+3. Zapisz plik konfiguracji do oryginalnej lokalizacji, a następnie ponownie uruchom usługę hosta bramy zarządzania danymi, które przejmuje zmiany. Aby ponownie uruchomić usługę: użyj apletu usługi w Panelu sterowania lub z **Menedżera konfiguracji bramy zarządzania danymi** > kliknij **Zatrzymaj usługę** przycisk, a następnie kliknij przycisk **Start Usługa**. Jeśli usługa nie zostanie uruchomiona, istnieje prawdopodobieństwo, że dodano niepoprawną składnię tagu XML w pliku konfiguracji aplikacji, który był edytowany.
 
 > [!IMPORTANT]
 > Pamiętaj zaktualizować **zarówno** diahost.exe.config i diawp.exe.config.  
 
 
-Oprócz tych punktów należy również upewnij się, że jest Microsoft Azure w dozwolonych s Twojej firmy. Lista prawidłowych adresów IP firmy Microsoft Azure można pobrać z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=41653).
+Oprócz tych punktów należy również upewnij się, że jest dozwolonych w firmie Microsoft Azure. Lista prawidłowych adresów IP firmy Microsoft Azure można pobrać z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=41653).
 
 #### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>Symptomów zapory i serwera proxy problemów związanych z serwerami
 Jeśli wystąpią błędy podobne do następujących pól, prawdopodobnie z powodu nieprawidłowej konfiguracji zapory lub serwera proxy serwera, która blokuje bramy połączenie z fabryki danych do samodzielnego uwierzytelnienia. Zapoznaj się z poprzedniej sekcji, aby upewnić się, zapory i serwera proxy są poprawnie skonfigurowane.
 
 1. Podczas próby zarejestrowania bramy, zostanie wyświetlony następujący błąd: "nie można zarejestrować klucz bramy. Zanim spróbujesz ponownie zarejestrować klucz bramy, upewnij się, że brama zarządzania danymi jest w stanie połączenia i usługa hosta bramy zarządzania danymi została uruchomiona."
-2. Po otwarciu programu Configuration Manager, wyświetlić stan Rozłączono lub łączenie. podczas przeglądania dzienników zdarzeń systemu Windows, w Podglądzie zdarzeń > Dzienniki aplikacji i usług > brama zarządzania danymi, możesz wyświetlić komunikaty o błędach, takich jak następujący błąd: `Unable to connect to the remote server`
+2. Po otwarciu Menedżera konfiguracji zostanie wyświetlony stan jako "Rozłączono" lub "Łączenie." Podczas przeglądania dzienników zdarzeń systemu Windows, w obszarze "Podglądu zdarzeń" > "I usługi Dzienniki aplikacji" > "Brama zarządzania danymi", można wyświetlić komunikaty o błędach, takich jak następujący błąd: `Unable to connect to the remote server`
    `A component of Data Management Gateway has become unresponsive and restarts automatically. Component name: Gateway.`
 
 ### <a name="open-port-8050-for-credential-encryption"></a>Otwórz port 8050 na potrzeby szyfrowania poświadczeń
@@ -369,7 +369,7 @@ Dostępna pamięć | Dostępna pamięć na węzeł bramy. Ta wartość jest blis
 Użycie procesora CPU | Użycie procesora CPU przez węzeł bramy. Ta wartość jest blisko migawka w czasie rzeczywistym. 
 Sieć (We/Wy) | Użycie sieci węzeł bramy. Ta wartość jest blisko migawka w czasie rzeczywistym. 
 Równoczesnych zadań (systemem / Limit) | Liczba zadań lub zadania uruchomione w każdym węźle. Ta wartość jest blisko migawka w czasie rzeczywistym. Limit oznacza maksymalny współbieżnych zadań dla każdego węzła. Ta wartość jest określona na podstawie rozmiaru maszyny. Można zwiększyć limit skalowanie w górę wykonywania zadań jednoczesnych w zaawansowanych scenariuszach, w których procesora CPU i pamięci/sieci jest używane w obszarze, ale limit czasu są działania. Ta funkcja jest również dostępna przy użyciu bramy jednowęzłowej (nawet jeśli nie włączono funkcji skalowalność i dostępność).  
-Rola | Istnieją dwa typy ról wielowęzłowego bramy dyspozytora i proces roboczy. Wszystkie węzły są pracowników, co oznacza, że ich wszystkich służy do wykonywania zadań. Istnieje tylko jeden węzeł dyspozytora, który służy do pobierania zadania/zadań z usługi w chmurze i wysyłania ich do węzłów innego procesu roboczego (w tym sam).
+Rola | Istnieją dwa typy ról wielowęzłowego brama - dyspozytora i proces roboczy. Wszystkie węzły są pracowników, co oznacza, że ich wszystkich służy do wykonywania zadań. Istnieje tylko jeden węzeł dyspozytora, który służy do pobierania zadania/zadań z usługi w chmurze i wysyłania ich do węzłów innego procesu roboczego (w tym sam).
 
 Na tej stronie zobacz temat niektórych ustawień, które będą bardziej zrozumiałe, gdy istnieją co najmniej dwa węzły (skalowanie w poziomie scenariusz) w bramie. Zobacz [brama zarządzania danymi - wysokiej dostępności i skalowalności](data-factory-data-management-gateway-high-availability-scalability.md) szczegółowe informacje na temat konfigurowania bramy wieloma węzłami.
 
@@ -468,7 +468,7 @@ Aby zaszyfrować poświadczenia Edytor fabryki danych, wykonaj następujące czy
     ```
 Jeśli uzyskujesz dostęp do portalu z komputera, który różni się od maszyna bramy, należy się upewnić, że aplikacji Menedżer poświadczeń może połączyć się z komputerem bramy. Jeśli aplikacja nie może połączyć się z maszyną bramy, nie zezwala można ustawić poświadczenia dla źródła danych i przetestować połączenie ze źródłem danych.  
 
-Jeśli używasz **ustawienie poświadczeń** aplikacji portalu szyfruje poświadczenia z certyfikatu podanego w **certyfikatu** karty **Menedżera konfiguracji bramy** na komputerze bramy.
+Jeśli używasz **ustawienie poświadczeń** aplikacji portalu szyfruje poświadczenia z certyfikatu określonego w **certyfikatu** karcie **Menedżera konfiguracji bramy**  na komputerze bramy.
 
 Jeśli szukasz oparty na interfejsach API podejście do szyfrowania poświadczeń, można użyć [AzureRmDataFactoryEncryptValue nowy](https://msdn.microsoft.com/library/mt603802.aspx) polecenia cmdlet programu PowerShell do szyfrowania poświadczeń. Polecenie cmdlet używa certyfikatu, że brama jest skonfigurowana na potrzeby szyfrowania poświadczeń. Dodaj zaszyfrowane poświadczenia do **EncryptedCredential** elementu **connectionString** w formacie JSON. Użyj formatu JSON z [AzureRmDataFactoryLinkedService nowy](https://msdn.microsoft.com/library/mt603647.aspx) polecenia cmdlet lub Edytor fabryki danych.
 
@@ -490,12 +490,12 @@ W tej sekcji opisano sposób tworzenia i zarejestruj bramę przy użyciu polece�
 3. Użyj **AzureRmDataFactoryGateway nowy** polecenia cmdlet, aby utworzyć bramę logicznych w następujący sposób:
 
     ```PowerShell
-    $MyDMG = New-AzureRmDataFactoryGateway -Name <gatewayName> -DataFactoryName <dataFactoryName> -ResourceGroupName ADF �Description <desc>
+    $MyDMG = New-AzureRmDataFactoryGateway -Name <gatewayName> -DataFactoryName <dataFactoryName> -ResourceGroupName ADF –Description <desc>
     ```
     **Przykład polecenia i dane wyjściowe**:
 
     ```
-    PS C:\> $MyDMG = New-AzureRmDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF �Description �gateway for walkthrough�
+    PS C:\> $MyDMG = New-AzureRmDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF –Description “gateway for walkthrough”
 
     Name              : MyGateway
     Description       : gateway for walkthrough

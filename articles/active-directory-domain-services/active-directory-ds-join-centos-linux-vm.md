@@ -13,17 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: d570428f3e3ea23302e3cecc6bfa759468419986
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d76371935fddbfe94c6dc45e27971487e7fa4277
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216830"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333585"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>Dołącz do maszyny wirtualnej CentOS Linux do domeny zarządzanej
 W tym artykule przedstawiono sposób przyłączyć maszyny wirtualnej CentOS Linux na platformie Azure do domeny zarządzanej usług domenowych Azure AD.
+
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 Aby wykonać zadania opisane w tym artykule, należy:
@@ -87,7 +89,7 @@ Teraz, wymagane pakiety są zainstalowane na maszynie wirtualnej systemu Linux, 
     > [!NOTE]
     > **Rozwiązywanie problemów:** Jeśli *odnajdowanie obszaru* nie może znaleźć domeny zarządzanej:  
       * Upewnij się, że domena jest osiągalna z poziomu maszyny wirtualnej (ping spróbuj).  
-      * Sprawdź maszyny wirtualnej w rzeczywistości został wdrożony do tej samej sieci wirtualnej, w których są dostępne domeny zarządzanej. 
+      * Sprawdź maszyny wirtualnej w rzeczywistości został wdrożony do tej samej sieci wirtualnej, w których są dostępne domeny zarządzanej.
       * Sprawdź, czy ustawienia serwera DNS dla sieci wirtualnej, aby wskazywał kontrolerów domeny zarządzanej zostały zaktualizowane.  
       >
 

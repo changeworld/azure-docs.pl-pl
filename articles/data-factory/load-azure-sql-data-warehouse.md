@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/17/2018
+ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: c7549297f040e251f3c0109debf757c28750d0a0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b035141c443c3dad18c3e9bfbc53581a7d180e5a
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619273"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333831"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Ładowanie danych do usługi Azure SQL Data Warehouse przy użyciu fabryki danych Azure
 
@@ -75,47 +75,72 @@ W tym artykule przedstawiono sposób użycia narzędzia kopii fabryki danych do 
 2. W **właściwości** określ **CopyFromSQLToSQLDW** dla **Nazwa zadania** pola i wybierz pozycję **dalej**:
 
     ![Strona właściwości](./media/load-azure-sql-data-warehouse/copy-data-tool-properties-page.png)
-3. W **magazynu danych źródła** wybierz pozycję **bazy danych SQL Azure**i wybierz **dalej**:
 
-    ![Strona Źródłowy magazyn danych](./media/load-azure-sql-data-warehouse/specify-source.png)
-4. Na stronie **Określanie bazy danych SQL Azure** wykonaj następujące czynności: 
-   1. W polu **Nazwa serwera** wybierz swój serwer usługi Azure SQL.
-   2. W polu **Nazwa bazy danych** wybierz swoją bazę danych usługi Azure SQL.
-   3. W polu **Nazwa użytkownika** podaj nazwę użytkownika.
-   4. Określ hasło użytkownika **hasło**.
-   5. Wybierz opcję **Dalej**.
+3. W **magazynu danych źródła** wykonaj następujące kroki:
+
+    a. Kliknij przycisk **+ Utwórz nowe połączenie**:
+
+    ![Strona Źródłowy magazyn danych](./media/load-azure-sql-data-warehouse/new-source-linked-service.png)
+
+    b. Wybierz **bazy danych SQL Azure** z galerii, a następnie wybierz **Kontynuuj**. W polu wyszukiwania, aby filtrować łączników można wpisać "SQL".
+
+    ![Wybierz bazy danych Azure SQL](./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png)
+
+    c. W **nowej usługi połączonej** strony, wybierz nazwę serwera i nazwa bazy danych z listy rozwijanej i określić nazwę użytkownika i passworkd. Kliknij przycisk **połączenie testowe** sprawdzania poprawności ustawień, następnie wybierz **Zakończ**.
    
-   ![Określ bazy danych Azure SQL](./media/load-azure-sql-data-warehouse/specify-source-connection.png)
-5. W **wybierz tabele, z których chcesz skopiować dane, lub użyć niestandardowej kwerendy** wprowadź **SalesLT** do filtrowania tabel. Wybierz **(Zaznacz wszystko)** korzystać ze wszystkich tabel dla kopii, a następnie wybierz **dalej**: 
+    ![Konfigurowanie bazy danych Azure SQL](./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png)
+
+    d. Wybierz nowo utworzony połączonej usługi jako źródła, a następnie kliknij przycisk **dalej**.
+
+    ![Wybierz źródło połączone usługi](./media/load-azure-sql-data-warehouse/select-source-linked-service.png)
+
+4. W **wybierz tabele, z których chcesz skopiować dane, lub użyć niestandardowej kwerendy** wprowadź **SalesLT** do filtrowania tabel. Wybierz **(Zaznacz wszystko)** korzystać ze wszystkich tabel dla kopii, a następnie wybierz **dalej**: 
 
     ![Wybierz tabele źródła](./media/load-azure-sql-data-warehouse/select-source-tables.png)
 
-6. W **magazyn danych docelowy** wybierz pozycję **magazyn danych SQL Azure**i wybierz **dalej**:
+6. W **magazyn danych docelowy** wykonaj następujące kroki:
 
-    ![Strona Docelowy magazyn danych](./media/load-azure-sql-data-warehouse/specify-sink.png)
-7. W **określić magazyn danych SQL Azure** wykonaj następujące czynności: 
+    a. Kliknij przycisk **+ Utwórz nowe połączenie** Aby dodać połączenie
 
-   1. W polu **Nazwa serwera** wybierz swój serwer usługi Azure SQL.
-   2. Wybierz magazyn danych SQL Azure do **Nazwa bazy danych**.
-   3. W polu **Nazwa użytkownika** podaj nazwę użytkownika.
-   4. Określ hasło użytkownika **hasło**.
-   5. Wybierz opcję **Dalej**.
+    ![Obiekt sink strony magazynu danych](./media/load-azure-sql-data-warehouse/new-sink-linked-service.png)
+
+    b. Wybierz **magazyn danych SQL Azure** z galerii, a następnie wybierz **dalej**.
+
+    ![Wybierz magazynu danych Azure SQL](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
+
+    c. W **nowej usługi połączonej** strony, wybierz nazwę serwera i nazwa bazy danych z listy rozwijanej i określić nazwę użytkownika i passworkd. Kliknij przycisk **połączenie testowe** sprawdzania poprawności ustawień, następnie wybierz **Zakończ**.
    
-   ![Określ magazyn danych Azure SQL](./media/load-azure-sql-data-warehouse/specify-sink-connection.png)
-8. W **mapowania tabeli** strony, przejrzyj zawartość, a następnie wybierz **dalej**. Wyświetla mapowania tabeli inteligentnego. Tabel źródłowych są mapowane na podstawie tabeli nazw tabel docelowych. Jeśli tabela źródłowa nie istnieje w docelowym, fabryki danych Azure tworzy domyślnie docelowej tabeli o takiej samej nazwie. Można również mapować tabelę źródłową do istniejącej tabeli docelowej. 
+    ![Konfigurowanie magazynu danych Azure SQL](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
+
+    d. Wybierz nowo utworzony połączonej usługi jako odbioru, a następnie kliknij przycisk **dalej**.
+
+    ![Wybierz obiekt sink połączonej usługi](./media/load-azure-sql-data-warehouse/select-sink-linked-service.png)
+
+6. W **mapowania tabeli** strony, przejrzyj zawartość, a następnie wybierz **dalej**. Wyświetla mapowania tabeli inteligentnego. Tabel źródłowych są mapowane na podstawie tabeli nazw tabel docelowych. Jeśli tabela źródłowa nie istnieje w docelowym, fabryki danych Azure tworzy domyślnie docelowej tabeli o takiej samej nazwie. Można również mapować tabelę źródłową do istniejącej tabeli docelowej. 
 
    > [!NOTE]
    > Tworzenie tabeli automatycznej dla ujścia magazynu danych SQL ma zastosowanie, gdy serwer SQL lub bazy danych SQL Azure jest źródłem. Po skopiowaniu danych z innego źródła danych magazynu, należy wstępnie utworzyć schematu w ujściu usługi Azure SQL Data Warehouse przed wykonaniem kopii danych.
 
-   ![Strona Mapowanie tabeli](./media/load-azure-sql-data-warehouse/specify-table-mapping.png)
+   ![Strona Mapowanie tabeli](./media/load-azure-sql-data-warehouse/table-mapping.png)
 
 9. W **mapowanie schematu** strony, przejrzyj zawartość, a następnie wybierz **dalej**. Mapowania tabeli inteligentnego opiera się na nazwę kolumny. Jeśli umożliwisz fabryka danych automatycznie tworzy tabele konwersji typów danych może wystąpić, gdy między magazynami źródłowy i docelowy są niezgodne. W przypadku konwersji typu nieobsługiwanych danych między kolumną źródłowym i docelowym, zostanie wyświetlony komunikat o błędzie obok tej tabeli.
 
-    ![Strona Mapowanie schematu](./media/load-azure-sql-data-warehouse/specify-schema-mapping.png)
+    ![Strona Mapowanie schematu](./media/load-azure-sql-data-warehouse/schema-mapping.png)
 
-11. W **ustawienia** wybierz konto magazynu Azure w **nazwy konta magazynu** listy rozwijanej. Konto jest używane do przemieszczania danych przed załadowaniem do usługi SQL Data Warehouse przy użyciu programu PolyBase. Po zakończeniu kopiowania danych tymczasowych w usłudze Azure Storage zostanie automatycznie oczyszczony. W obszarze **Zaawansowane ustawienia**, usuń zaznaczenie **domyślny typ użycia** opcji:
+11. W **ustawienia** wykonaj następujące kroki:
 
-    ![Strona Ustawienia](./media/load-azure-sql-data-warehouse/copy-settings.png)
+    a. W **przemieszczania ustawienia** kliknij **+ nowy** do nowego magazynu tymczasowego. Magazyn jest używany do przemieszczania danych przed załadowaniem do usługi SQL Data Warehouse przy użyciu programu PolyBase. Po zakończeniu kopiowania danych tymczasowych w usłudze Azure Storage zostanie automatycznie oczyszczony. 
+
+    ![Skonfiguruj przemieszczania](./media/load-azure-sql-data-warehouse/configure-staging.png)
+
+    b. W **nowej usługi połączonej** strony, wybierz konto magazynu i wybierz **Zakończ**.
+   
+    ![Skonfiguruj Magazyn Azure](./media/load-azure-sql-data-warehouse/configure-blob-storage.png)
+
+    c. W **Zaawansowane ustawienia** sekcji, usuń zaznaczenie **domyślny typ użycia** opcji, a następnie wybierz **dalej**.
+
+    ![Konfigurowanie programu PolyBase](./media/load-azure-sql-data-warehouse/configure-polybase.png)
+
 12. W **Podsumowanie** strony, przejrzyj ustawienia, a następnie wybierz **dalej**:
 
     ![Strona podsumowania](./media/load-azure-sql-data-warehouse/summary-page.png)
@@ -124,10 +149,10 @@ W tym artykule przedstawiono sposób użycia narzędzia kopii fabryki danych do 
     ![Strona Wdrażanie](./media/load-azure-sql-data-warehouse/deployment-page.png)
 14. Zwróć uwagę, że karta **Monitor** po lewej stronie jest automatycznie wybrana. **Akcje** kolumna zawiera łącza, aby wyświetlić szczegóły uruchomienia działania i ponownie uruchomić potoku: 
 
-    ![Monitorowanie uruchomień potoku](./media/load-azure-sql-data-warehouse/monitor-pipeline-run.png)
-15. Zaznacz, aby wyświetlić uruchomień działania, które są skojarzone z potoku Uruchom **odbywa się działanie widoku** łącze w **akcje** kolumny. Brak 10 działania kopiowania w potoku, a każde działanie kopiuje jedna tabela danych. Wybierz, aby wrócić do potoku uruchamia widok **potoki** łącze u góry. Wybierz pozycję **Odśwież**, aby odświeżyć listę. 
+    ![Monitorowanie uruchomień potoku](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)
+15. Zaznacz, aby wyświetlić uruchomień działania, które są skojarzone z potoku Uruchom **odbywa się działanie widoku** łącze w **akcje** kolumny. Wybierz, aby wrócić do potoku uruchamia widok **potoki** łącze u góry. Wybierz pozycję **Odśwież**, aby odświeżyć listę. 
 
-    ![Monitorowanie uruchomień działania](./media/load-azure-sql-data-warehouse/monitor-activity-run.png)
+    ![Monitorowanie uruchomień działania](./media/load-azure-sql-data-warehouse/activity-monitoring.png)
 
 16. Aby monitorować szczegóły wykonywania dla każdego działania kopiowania, wybierz **szczegóły** łącze w obszarze **akcje** w działaniu widok monitorowania. Możliwość monitorowania szczegółów, takich jak ilość danych skopiowana ze źródła do zbiornika, przepływność danych, wykonywanie czynności z odpowiedni czas trwania używane konfiguracje:
 

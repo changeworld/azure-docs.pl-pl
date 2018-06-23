@@ -13,12 +13,12 @@ ms.service: azure
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: 9f9099c0ebd65ba84e171314e6f04d858648a805
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 905cedd6ee781ca163731a6f71b083acfc11b5eb
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29800741"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332375"
 ---
 # <a name="microsoft-hybrid-identity-solutions"></a>Microsoft hybrydowych rozwiązań tożsamości
 [Microsoft Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) hybrydowych rozwiązań tożsamości umożliwiają do synchronizowania obiektów katalogu lokalnego z usługą Azure AD nadal użytkowników lokalnej i zarządzania nimi. Pierwsza decyzja, aby podczas planowania do synchronizowania lokalnej systemu Windows serwer usługi Active Directory z usługą Azure AD jest Określa, czy ma być używany do synchronizacji tożsamości lub tożsamości federacyjnych. Tożsamości synchronizowane i opcjonalnie skrótów haseł, użytkownicy będą używać tego samego hasła dostępu do zarówno lokalnie, jak i oparte na chmurze zasobów organizacji. Bardziej zaawansowane wymagań scenariusza, takich jak-jednokrotnej (SSO) lub lokalnej usługi MFA należy wdrożyć usługi Active Directory Federation Services (AD FS), możliwości utworzenia federacji tożsamości. 
@@ -53,7 +53,7 @@ Przekazywanego uwierzytelniania jest skonfigurowane z programem Azure AD Connect
 - Przyłączony do domeny w lesie, za pomocą którego użytkownicy są weryfikowane
 
 ## <a name="federated-identity-ad-fs"></a>Tożsamości federacyjnych (AD FS)
-Aby uzyskać większą kontrolę nad dostęp użytkowników usługi Office 365 i innych usług w chmurze, można skonfigurować synchronizacji katalogów z logowaniem jednokrotnym (SSO) przy użyciu [Active Directory Federation Services (AD FS)](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/whats-new-active-directory-federation-services-windows-server-2016). Federowania logowania użytkownika z usługami AD FS deleguje uwierzytelniania do serwera lokalnego, która weryfikuje poświadczenia użytkownika. W tym modelu lokalnej usługi Active Directory poświadczenia nigdy nie są przekazywane do usługi Azure AD.
+Aby uzyskać większą kontrolę nad dostęp użytkowników usługi Office 365 i innych usług w chmurze, można skonfigurować synchronizacji katalogów z logowaniem jednokrotnym (SSO) przy użyciu [Active Directory Federation Services (AD FS)](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/whats-new-active-directory-federation-services-windows-server). Federowania logowania użytkownika z usługami AD FS deleguje uwierzytelniania do serwera lokalnego, która weryfikuje poświadczenia użytkownika. W tym modelu lokalnej usługi Active Directory poświadczenia nigdy nie są przekazywane do usługi Azure AD.
 
 ![Tożsamości federacyjnych](./media/choose-hybrid-identity-solution/federated-identity.png)
 

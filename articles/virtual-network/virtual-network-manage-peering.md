@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 85919ccdc13ab363b32e593159abe54498ca98c9
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 314920d4aae2bd364ea93451fcbda2034a36cc7e
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34702037"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332103"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Tworzenie, zmienianie lub usunąć sieci wirtualnej komunikacji równorzędnej
 
@@ -117,7 +117,7 @@ Jeśli chcesz sieci wirtualne do komunikowania się czasami, ale nie zawsze, zam
     - Zasoby w jednej sieci wirtualnej nie może komunikować się z adresem IP Azure wewnętrznego modułu równoważenia obciążenia w sieci wirtualnej peered. Moduł równoważenia obciążenia i zasobów, które komunikują się z nim muszą być w tej samej sieci wirtualnej.
     - Nie można użyć bramy zdalnego lub zezwolić przesyłania bramy. Aby użyć bramy zdalnego lub zezwolić przesyłania bramy, obie sieci wirtualne w komunikacji równorzędnej musi istnieć w tym samym regionie. 
     - Komunikacja za pośrednictwem globalnie połączyć za pomocą sieci wirtualnych za pomocą następujących typów maszyny Wirtualnej nie jest obsługiwany: [wysokiej wydajności obliczeniowej](../virtual-machines/windows/sizes-hpc.md) i [GPU](../virtual-machines/windows/sizes-gpu.md). W tym H, NC, wirtualizacją sieci, NCv2 NCv3 i ND maszyny wirtualne z serii.
-- Sieci wirtualne mogą mieć tych samych lub różnych subskrypcji. Jeśli sieci wirtualne są w różnych subskrypcji, zarówno subskrypcji musi być skojarzony z tej samej dzierżawy usługi Azure Active Directory. Jeśli nie masz już dzierżawę AD, możesz szybko [utworzyć](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Można użyć [bramy sieci VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) Aby połączyć dwie sieci wirtualne, które istnieją w ramach różnych subskrypcji, które są skojarzone z różnych dzierżawców usługi Active Directory.
+- Sieci wirtualne mogą mieć tych samych lub różnych subskrypcji. Jeśli równorzędnego sieci wirtualnych w ramach różnych subskrypcji, zarówno subskrypcji musi być skojarzony z tej samej dzierżawy usługi Azure Active Directory. Jeśli nie masz już dzierżawę AD, możesz szybko [utworzyć](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Można użyć [bramy sieci VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) Aby połączyć dwie sieci wirtualne, które istnieją w ramach różnych subskrypcji, które są skojarzone z różnych dzierżawców usługi Active Directory.
 - Sieci wirtualne, które możesz elementu równorzędnego musi mieć-nakładającymi się obszarami adresów IP.
 - Nie można dodać zakresów adresów, lub Usuń zakresy adresów z przestrzeń adresową sieci wirtualnej, po sieci wirtualnej jest połączyć z inną siecią wirtualną za pomocą. Aby dodać lub usunąć zakresy adresów, usunąć komunikację równorzędną, dodać lub usunąć zakresów adresów, następnie utworzyć je ponownie komunikację równorzędną. Aby zakresów adresów, aby dodać lub usunąć zakresy adresów sieci wirtualnej, zobacz [Zarządzanie sieciami wirtualnymi](manage-virtual-network.md).
 - Można równorzędne dwie sieci wirtualne wdrożone za pośrednictwem Menedżera zasobów lub sieci wirtualnej wdrożone za pomocą Menedżera zasobów z siecią wirtualną wdrożone za pośrednictwem klasycznego modelu wdrażania. Nie można równorzędne dwie sieci wirtualne utworzone za pośrednictwem klasycznego modelu wdrażania. Jeśli nie masz doświadczenia w obsłudze modele wdrażania platformy Azure, przeczytaj [modele wdrażania zrozumieć Azure](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) artykułu. Do połączenia dwóch sieci wirtualnych utworzonych za pomocą klasycznego modelu wdrażania można użyć usługi [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V).

@@ -3,7 +3,7 @@ title: Automatyzowanie Inicjowanie obsługi aplikacji w usłudze Azure Active Di
 description: Usługa Azure Active Directory mogą automatycznie obsługiwać użytkowników i grup do aplikacji lub tożsamości magazynu, który jest fronted przez usługę sieci web przy użyciu interfejsu zdefiniowane w specyfikacji protokołu SCIM
 services: active-directory
 documentationcenter: ''
-author: asmalser-msft
+author: barbkess
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
-ms.author: asmalser
+ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 2bbea8f082e482ec5f5a08ce9978940e05c2325b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 40fa7959fc27692489a6317df0eddb9208c57bd6
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35303687"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337968"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Przy użyciu systemu dla zarządzania tożsamości między domenami (SCIM) do automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji
 
@@ -360,7 +360,7 @@ Grupy zasobów są identyfikowane za pomocą identyfikatora schematu http://sche
 | poczta |.value wiadomości e-mail [eq typu "Praca"] |
 | mailNickname |externalId |
 | menedżer |menedżer |
-| Telefon komórkowy |.value phoneNumbers [eq typu "mobile"] |
+| przenośne |.value phoneNumbers [eq typu "mobile"] |
 | Identyfikator obiektu |ID |
 | postalCode |.postalCode adresów [eq typu "Praca"] |
 | proxy-Addresses |wiadomości e-mail [Wpisz eq "other"]. Wartość |
@@ -697,7 +697,7 @@ Na poniższej ilustracji pokazano komunikatów wysyła Azure AcD z usługą SCIM
 * [Tworzenie wyrażeń na potrzeby mapowań atrybutów](../active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Filtry zakresu dla Inicjowanie obsługi użytkowników](../active-directory-saas-scoping-filters.md)
 * [Powiadomienia aprowizacji kont](../active-directory-saas-app-provisioning.md)
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS](../active-directory-saas-tutorial-list.md)
+* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS](../saas-apps/tutorial-list.md)
 
 <!--Image references-->
 [0]: ./media/use-scim-to-provision-users-and-groups/scim-figure-1.png

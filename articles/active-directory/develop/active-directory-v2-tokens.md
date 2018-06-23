@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/22/2018
+ms.date: 06/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: d7b9ad5c76b0e20a3c58bddcc4947482b237fb8f
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 93d551bcc6e517702c064ec0bdf6be61d3230cb3
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164462"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36316672"
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Azure Active Directory w wersji 2.0 tokeny odwołania
 Punktu końcowego v2.0 usługi Azure Active Directory (Azure AD) emituje kilka typów tokenów zabezpieczających w każdym [przepływ uwierzytelniania](active-directory-v2-flows.md). To odwołanie opisuje format właściwości zabezpieczeń i zawartości każdego typu tokenu.
@@ -60,7 +60,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 | Name (Nazwa) | Claim | Przykładowa wartość | Opis |
 | --- | --- | --- | --- |
 | grupy odbiorców |`aud` |`6731de76-14a6-49ae-97bc-6eba6914391e` |Identyfikuje adresata tokenu. W tokenach identyfikator odbiorców jest identyfikator aplikacji aplikacji, przypisany do aplikacji w portalu rejestracji aplikacji firmy Microsoft. Aplikację należy sprawdzić tę wartość i odrzucenie tokenu, jeśli wartość nie jest zgodna. |
-| Wystawcy |`iss` |`https://login.microsoftonline.com/b9419818-09af-49c2-b0c3-653adc1f376e/v2.0 ` |Identyfikuje usługę tokenu zabezpieczającego (STS), które tworzy i zwraca token i dzierżawy usługi Azure AD, w którym użytkownik został uwierzytelniony. Aplikację należy zweryfikować oświadczenia wystawcy, aby upewnić się, że token pochodzą z punktem końcowym v2.0. On również należy używać części identyfikatora GUID oświadczenie tak, aby ograniczyć zestaw dzierżawcami, które można zalogować się do aplikacji. Identyfikator GUID, który wskazuje, czy użytkownik jest użytkownikiem użytkownika z konta Microsoft jest `9188040d-6c67-4c5b-b112-36a304b66dad`. |
+| wystawcy |`iss` |`https://login.microsoftonline.com/b9419818-09af-49c2-b0c3-653adc1f376e/v2.0 ` |Identyfikuje usługę tokenu zabezpieczającego (STS), które tworzy i zwraca token i dzierżawy usługi Azure AD, w którym użytkownik został uwierzytelniony. Aplikację należy zweryfikować oświadczenia wystawcy, aby upewnić się, że token pochodzą z punktem końcowym v2.0. On również należy używać części identyfikatora GUID oświadczenie tak, aby ograniczyć zestaw dzierżawcami, które można zalogować się do aplikacji. Identyfikator GUID, który wskazuje, czy użytkownik jest użytkownikiem użytkownika z konta Microsoft jest `9188040d-6c67-4c5b-b112-36a304b66dad`. |
 | wystawiony w |`iat` |`1452285331` |Czas, w którym token został wystawiony, reprezentowane w czasie epoki. |
 | czas wygaśnięcia |`exp` |`1452289231` |Czas, w którym token staje się nieprawidłowy, reprezentowane w czasie epoki. Aby sprawdzić ważność okres istnienia tokenu aplikacji należy użyć tego oświadczenia. |
 | nie wcześniej niż |`nbf` |`1452285331` |Czas, w którym token staje się nieprawidłowy, reprezentowane w czasie epoki. Zazwyczaj jest taka sama jak godzina wystawienia. Aby sprawdzić ważność okres istnienia tokenu aplikacji należy użyć tego oświadczenia. |
@@ -95,8 +95,7 @@ Gdy zrealizować token odświeżania, aby uzyskać nowy token dostępu (i jeśli
 ## <a name="validating-tokens"></a>Sprawdzanie poprawności tokenów
 Obecnie tylko token weryfikacji, należy potrzebnych do wykonania dla aplikacji jest sprawdzanie poprawności tokenów identyfikator. Aby sprawdzić poprawność Identyfikatora tokenu, aplikacji powinni sprawdzać zarówno token Identyfikatora podpisu i oświadczenia w tokenie identyfikator.
 
-<!-- TODO: Link -->
-Firma Microsoft udostępnia biblioteki i przykłady kodu, których opisano, jak łatwo obsługi tokenu weryfikacji. W kolejnych sekcjach opisano proces podstawowej. Kilka bibliotek open source innych firm również są dostępne do weryfikacji tokenu JWT. Ma co najmniej jedną bibliotekę opcji dla prawie wszystkich platform i języków.
+<!-- TODO: Link --> Firma Microsoft udostępnia biblioteki i przykłady kodu, których opisano, jak łatwo obsługi tokenu weryfikacji. W kolejnych sekcjach opisano proces podstawowej. Kilka bibliotek open source innych firm również są dostępne do weryfikacji tokenu JWT. Ma co najmniej jedną bibliotekę opcji dla prawie wszystkich platform i języków.
 
 ### <a name="validate-the-signature"></a>Sprawdzanie poprawności podpisu
 Token JWT zawiera trzy segmentów, które są rozdzielone `.` znaków. Pierwszy segment nosi nazwę *nagłówka*, drugi segment jest *treści*, a trzeci segment jest *podpisu*. Segment podpisu umożliwia sprawdzenie oryginalności token Identyfikatora, dzięki czemu mogą być zaufane przez aplikację.
@@ -113,7 +112,7 @@ Tokeny Identyfikatora zalogowano się za pomocą standardowych szyfrowanie asyme
 
 `alg` Oświadczeń wskazuje algorytm używany do podpisywania tokenu. `kid` Oświadczeń wskazuje klucz publiczny, który został użyty do podpisania tokenu.
 
-W dowolnym momencie punktu końcowego v2.0 może podpisać identyfikator tokenu przy użyciu jednej z określonych par kluczy publicznych i prywatnych. Punktu końcowego v2.0 okresowo obraca możliwe zestaw kluczy, więc aplikacja powinna być zapisana automatycznie obsługiwać te zmiany klucza. Uzasadnione częstotliwość, aby wyszukać aktualizacje do kluczy publicznych używane przez punktu końcowego v2.0 jest co 24 godziny.
+Punktu końcowego v2.0 podpisuje tokenów dostępu i identyfikator za pomocą jednego z określonych par kluczy publicznych i prywatnych. Punktu końcowego v2.0 okresowo obraca możliwe zestaw kluczy, więc aplikacja powinna być zapisana automatycznie obsługiwać te zmiany klucza. Uzasadnione częstotliwość, aby wyszukać aktualizacje do kluczy publicznych używane przez punktu końcowego v2.0 jest co 24 godziny.
 
 Można uzyskać dane klucza podpisywania należy dokonać weryfikacji podpisu za pomocą dokumentów metadanych OpenID Connect w lokalizacji:
 
@@ -123,10 +122,11 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 
 > [!TIP]
 > Spróbuj użyć adresu URL w przeglądarce!
->
->
 
 Ten dokument metadanych jest obiekt JSON, który ma kilka części przydatne informacje, takie jak lokalizacja różne punkty końcowe wymagane do uwierzytelniania OpenID Connect. Dokument zawiera również *jwks_uri*, co daje lokalizacji zestawu kluczy publicznych używane do podpisywania tokenów. Dokument JSON, znajdujący się w jwks_uri ma wszystkie informacje klucza publicznego, który jest aktualnie używany. Może używać aplikacja `kid` oświadczeń w nagłówku JWT, aby wybrać, które klucz publiczny w tym dokumencie został użyty do podpisywania tokenu. Następnie wykonuje sprawdzanie poprawności podpisu za pomocą prawidłowy klucz publiczny i algorytm wskazane.
+
+> [!NOTE]
+> `x5t` Oświadczenia jest przestarzała w punkcie końcowym v2.0. Firma Microsoft zaleca używanie `kid` oświadczeń można sprawdzić poprawności token.
 
 Zostanie wykonana Walidacja podpisu wykracza poza zakres tego dokumentu. Wiele open source biblioteki są dostępne dla pomocy w związku z tym.
 
@@ -142,7 +142,7 @@ Aby uzyskać pełną listę operacji sprawdzania poprawności oświadczenia, kt�
 
 Szczegóły oczekiwanych wartości oświadczenia te są objęte [tokeny Identyfikatora](# ID tokens) sekcji.
 
-## <a name="token-lifetimes"></a>Czasy życia tokenu
+## <a name="token-lifetimes"></a>Okresy istnienia tokenu
 Firma Microsoft udostępnia następujące okresy tokenu tylko charakter informacyjny. Informacje mogą ułatwić opracowanie i debugowania aplikacji. Aplikacji nie powinna być zapisana oczekiwać żadnego z tych okresy istnienia pozostaje stała. Token może okresy istnienia i zmieni się w dowolnym momencie.
 
 | Token | Cykl życia | Opis |

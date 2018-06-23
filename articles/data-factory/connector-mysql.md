@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/06/2018
+ms.date: 06/23/2018
 ms.author: jingwang
-ms.openlocfilehash: 4c9c97f30801ff901677156b0ea37c1eeb348502
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 43a27b98d8b53523bee8694ed3071e65a03355a6
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808727"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335877"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopiowanie danych z programu MySQL przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -38,13 +38,9 @@ W szczególności ten łącznik MySQL obsługuje MySQL **w wersji 5.1 i powyżej
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby użyć tego łącznika MySQL, musisz:
+Bazy danych MySQL nie jest dostępny publicznie, należy skonfigurować środowisko uruchomieniowe Self-hosted integracji. Informacje na temat środowisk uruchomieniowych siebie integracji, zobacz [środowiska uruchomieniowego integracji Self-hosted](create-self-hosted-integration-runtime.md) artykułu. Środowiska uruchomieniowego integracji zawiera wbudowane sterownika MySQL, począwszy od wersji 3.7, dlatego nie trzeba ręcznie zainstalowania sterownika.
 
-- Konfigurowanie środowiska uruchomieniowego integracji Self-hosted. Zobacz [środowiska uruchomieniowego integracji Self-hosted](create-self-hosted-integration-runtime.md) artykułu, aby uzyskać szczegółowe informacje.
-- Zainstaluj [MySQL Connector/Net systemu Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) wersji między 6.6.5 i 6.10.7 na komputerze środowiska uruchomieniowego integracji. Ten sterownik 32-bitowych jest zgodna z 64-bitowym IR.
-
-> [!TIP]
-> Jeśli zostanie osiągnięty błąd "Uwierzytelnianie nie powiodło się, ponieważ strona zdalna zamknęła strumień transportu.", należy wziąć pod uwagę, aby uaktualnić MySQL Connector/Net do nowszej wersji.
+Dla Self-hosted IR w wersji niższej niż 3.7, musisz zainstalować [MySQL Connector/Net systemu Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) wersji między 6.6.5 i 6.10.7 na komputerze środowiska uruchomieniowego integracji. Ten sterownik 32-bitowych jest zgodna z 64-bitowym IR.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
@@ -59,14 +55,40 @@ Obsługiwane są następujące właściwości usługi MySQL połączone:
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi mieć ustawioną: **MySql** | Yes |
-| serwer | Nazwa serwera MySQL. | Yes |
-| baza danych | Nazwa bazy danych MySQL. | Yes |
-| Schemat | Nazwa schematu w bazie danych. | Nie |
-| nazwa użytkownika | Określ nazwę użytkownika do połączenia z bazą danych MySQL. | Yes |
-| hasło | Określ hasło dla określonego konta użytkownika. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. Środowisko uruchomieniowe integracji Self-hosted jest wymagana, jak wspomniano w [wymagania wstępne](#prerequisites). |Yes |
+| Parametry połączenia | Podaj informacje wymagane do połączenia z bazą danych Azure dla wystąpienia MySQL. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. Możesz użyć środowiska uruchomieniowego integracji Self-hosted (Jeśli w magazynie danych znajduje się w sieci prywatnej) lub środowiska uruchomieniowego integracji Azure. Jeśli nie zostanie określony, używa domyślnej środowiska uruchomieniowego integracji Azure. |Nie |
+
+Ciąg połączenia typowe jest `Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`. Więcej właściwości, które można ustawić dla tej sprawy:
+
+| Właściwość | Opis | Opcje | Wymagane |
+|:--- |:--- |:--- |:--- |:--- |
+| SSLMode | Ta opcja określa, czy sterownik używa szyfrowania SSL i weryfikacji podczas nawiązywania połączenia MySQL. Na przykład `SSLMode=<0/1/2/3/4>`| WYŁĄCZONE (0) / PREFEROWANYCH (1) **(domyślna)** / wymagane (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Nie |
+| UseSystemTrustStore | Ta opcja określa, czy ma być używany certyfikat urzędu certyfikacji z magazynu zaufania systemu lub z określonego pliku PEM. Na przykład `UseSystemTrustStore=<0/1>;`| (1) włączone / wyłączone (0) **(domyślna)** | Nie |
 
 **Przykład:**
+
+```json
+{
+    "name": "MySQLLinkedService",
+    "properties": {
+        "type": "MySql",
+        "typeProperties": {
+            "connectionString": {
+                 "type": "SecureString",
+                 "value": "Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+Jeśli zostały za pomocą usługi MySQL połączone następujące ładunek, nadal jest obsługiwany jako — jest, gdy zaleca się użyć nowego idąc dalej.
+
+**Poprzednie ładunku:**
 
 ```json
 {

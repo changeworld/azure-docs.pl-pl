@@ -11,22 +11,25 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/16/2018
+ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 234dacca152dca6e8e212a86f3921c9355f640e4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e60f368115e91cbd8972af8dfa7f0f3d6ea8765b
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620344"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337597"
 ---
-# <a name="monitor-data-factories-using-azure-monitor"></a>Monitorowanie za pomocą monitora Azure fabryki danych  
+# <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Alert i Monitor fabryki danych Azure monitora
 Aplikacje w chmurze są złożonych z wielu części ruchu. Monitorowanie zawiera danych, aby upewnić się, że aplikacja pozostaje w górę i działa w dobrej kondycji. Pomaga również umożliwia stave potencjalne problemy i rozwiązywanie problemów w przeszłości te. Ponadto można użyć danych monitorowania w celu uzyskania szczegółowych informacji o aplikacji. Wiedzy może pomóc zwiększyć wydajność aplikacji lub utrzymania lub automatyzować czynności, które w przeciwnym razie wymagają ręcznej interwencji.
 
-Azure Monitor udostępnia na podstawowym poziomie infrastruktury metryki i dzienniki dla większości usług platformy Microsoft Azure. Aby uzyskać więcej informacji, zobacz [omówienie monitorowania](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor). Azure dzienników diagnostycznych są dzienniki emitowane przez zasób, które zawierają rozbudowane, często dane dotyczące operacji tego zasobu. Fabryka danych danych wyjściowych dzienników diagnostycznych w monitorze Azure. 
+Azure Monitor udostępnia na podstawowym poziomie infrastruktury metryki i dzienniki dla większości usług platformy Microsoft Azure. Aby uzyskać więcej informacji, zobacz [omówienie monitorowania](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor). Azure dzienników diagnostycznych są dzienniki emitowane przez zasób, które zawierają rozbudowane, często dane dotyczące operacji tego zasobu. Fabryka danych danych wyjściowych dzienników diagnostycznych w monitorze Azure.
 
 > [!NOTE]
 > Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [monitorowanie i zarządzanie nimi potoków w fabryce danych version1](v1/data-factory-monitor-manage-pipelines.md).
+
+## <a name="persist-data-factory-data"></a>Utrwalanie fabryki danych
+Fabryka danych przechowuje dane tylko potoku Uruchom danych 45 dni. Jeśli chcesz zachować potoku Uruchom danych przez więcej niż 45 dni, za pomocą monitora Azure, nie można tylko trasy dzienników diagnostycznych do analizy, można ją utrwalić je do konta magazynu, który pozwala uzyskać fabryki informacji czasie trwania chossing Twojego.
 
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
 
@@ -101,18 +104,18 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
             ]
     },
     "location": ""
-} 
+}
 ```
 
 | Właściwość | Typ | Opis |
 | --- | --- | --- |
 | storageAccountId |Ciąg | Identyfikator zasobu konta magazynu, do którego chcesz wysłać dzienniki diagnostyczne |
-| serviceBusRuleId |Ciąg | Identyfikator reguły magistrali usługi z przestrzeń nazw magistrali usług, w którym chcesz mieć centra zdarzeń utworzonych dla przesyłania strumieniowego dzienników diagnostycznych. Reguła identyfikator jest w formacie: {identyfikator zasobu magistrali usługi} /authorizationrules/ {nazwa klucza}.|
+| serviceBusRuleId |Ciąg | Identyfikator reguły magistrali usługi z przestrzeń nazw magistrali usług, w którym chcesz mieć centra zdarzeń utworzonych dla przesyłania strumieniowego dzienników diagnostycznych. Reguła identyfikator jest w formacie: "{identyfikator zasobu magistrali usługi} /authorizationrules/ {nazwa klucza}".|
 | workspaceId | Typ złożony | Tablica ziarno czasu metryki i ich zasad przechowywania. Obecnie ta właściwość jest pusta. |
-|metrics| Wartości parametrów potoku Uruchom do przekazania do wywoływanej potoku| Obiekt JSON mapowania nazw parametrów do wartości argumentów | 
+|metrics| Wartości parametrów potoku Uruchom do przekazania do wywoływanej potoku| Obiekt JSON mapowania nazw parametrów do wartości argumentów |
 | dzienniki| Typ złożony| Nazwa kategorii dzienników diagnostycznych dla typu zasobu. Aby uzyskać listę kategorii dzienników diagnostycznych dla zasobu, należy najpierw wykonać operację pobierania ustawień diagnostycznych. |
 | category| Ciąg| Tablica kategorii dzienników i ich zasady przechowywania |
-| Ziarnem czasu | Ciąg | Poziom szczegółowości metryk, które są przechwytywane w formacie czasu trwania ISO 8601. Musi być PT1M (jednej minuty)|
+| ziarnem czasu | Ciąg | Poziom szczegółowości metryk, które są przechwytywane w formacie czasu trwania ISO 8601. Musi być PT1M (jednej minuty)|
 | enabled| Wartość logiczna | Określa, czy kolekcja tej kategorii Metryka lub dziennika jest włączona dla tego zasobu|
 | retentionPolicy| Typ złożony| Opis zasad przechowywania dla kategorii Metryka lub dziennika. Używany tylko opcji konta magazynu.|
 | dni| Int| Liczba dni przechowywania metryki lub dzienniki. Wartość 0 zachowuje dzienniki w nieskończoność. Używany tylko opcji konta magazynu. |
@@ -231,14 +234,14 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     "identity": null
 }
 ```
-[Aby dowiedzieć się więcej tutaj](https://msdn.microsoft.com/library/azure/dn931932.aspx)
+[Aby dowiedzieć się więcej tutaj](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings)
 
 ## <a name="schema-of-logs--events"></a>Schemat dzienniki & zdarzenia
 
 ### <a name="activity-run-logs-attributes"></a>Atrybuty dzienniki wykonywania działań
 
 ```json
-{  
+{
    "Level": "",
    "correlationId":"",
    "time":"",
@@ -252,7 +255,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
    "activityName":"",
    "start":"",
    "end":"",
-   "properties:" 
+   "properties:"
        {
           "Input": "{
               "source": {
@@ -294,7 +297,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ### <a name="pipeline-run-logs-attributes"></a>Dzienniki wykonywania atrybutów w potoku
 
 ```json
-{  
+{
    "Level": "",
    "correlationId":"",
    "time":"",
@@ -307,7 +310,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
    "start":"",
    "end":"",
    "status":"",
-   "properties": 
+   "properties":
     {
       "Parameters": {
         "<parameter1Name>": "<parameter1Value>"
@@ -340,7 +343,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ### <a name="trigger-run-logs-attributes"></a>Wykonywania wyzwalacza logowania atrybutów
 
 ```json
-{ 
+{
    "Level": "",
    "correlationId":"",
    "time":"",
@@ -362,7 +365,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
       },
       "SystemParameters": {}
     }
-} 
+}
 
 ```
 
@@ -397,7 +400,7 @@ ADFV2 emituje następujące metryki
 | TriggerSucceededRuns | Pomyślnie metryki uruchamia wyzwalacz  | Licznik    | Łącznie                | Całkowita wyzwalacz uruchamia zakończyło się pomyślnie w ciągu minuty okna   |
 | TriggerFailedRuns    | Nie powiodło się wyzwalacz uruchamia metryk     | Licznik    | Łącznie                | Całkowita wyzwalacz uruchamia nie powiodło się w ciągu minuty okna      |
 
-Aby uzyskać dostęp do metryk, postępuj zgodnie z instrukcjami w artykule- https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics 
+Aby uzyskać dostęp do metryk, postępuj zgodnie z instrukcjami w artykule- https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics
 
 ## <a name="alerts"></a>Alerty
 
@@ -417,7 +420,7 @@ Możesz również zalogować się do portalu Azure i kliknij przycisk **Monitor 
 
 1.  Kliknij przycisk **+ nową regułę alertu** do utworzenia nowego alertu.
 
-    ![nowe reguły alertu](media/monitor-using-azure-monitor/alerts_image4.png)
+    ![Nowe reguły alertu](media/monitor-using-azure-monitor/alerts_image4.png)
 
 2.  Zdefiniuj **alertów warunku**.
 
@@ -445,4 +448,4 @@ Możesz również zalogować się do portalu Azure i kliknij przycisk **Monitor 
     ![Grupy akcji, ekranu 4 z 4](media/monitor-using-azure-monitor/alerts_image12.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz [monitora i programowe zarządzanie potoki](monitor-programmatically.md) artykułu, aby uzyskać informacje o monitorowaniu i zarządzaniu nimi potoki, uruchamiając. 
+Zobacz [monitora i programowe zarządzanie potoki](monitor-programmatically.md) artykułu, aby uzyskać informacje o monitorowaniu i zarządzaniu nimi potoki, uruchamiając.
