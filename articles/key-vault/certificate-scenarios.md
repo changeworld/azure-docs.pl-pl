@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: 5f3b8a7b9c7bf582ebc2fac2be8ff55134fbc6f2
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 665365e06ef02698c10259628f6bf2442ab8d612
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333517"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Wprowadzenie do magazynu kluczy certyfikatów
 Poniższe scenariusze przedstawiają kilka głównej użycia usługi Key Vault certyfikatu zarządzania dodatkowe kroki wymagane do utworzenia pierwszego certyfikatu w magazynie kluczy, w tym.
@@ -82,8 +83,9 @@ Uwaga — Ten proces, za pomocą kroku 3.1, jest jednorazowe operacji.
       -   Informacje o odnowienie - > np. 90 dni przed wygaśnięciem  
 
   - Proces tworzenia certyfikatu jest zwykle proces asynchroniczny i obejmuje sondowania magazynu kluczy dla stanu operacji tworzenia certyfikatu.  
-[Operacja certyfikatu pobierania](https://docs.microsoft.com/en-us/rest/api/keyvault/getcertificateoperation) — stan: zakończona, nie powiodło się z informacji o błędach lub anulowane  
-            — Z powodu opóźnienia, aby utworzyć można zainicjować operacji anulowania. Anuluj może lub nie może być skuteczne.  
+[Pobierz certyfikat operacji](https://docs.microsoft.com/en-us/rest/api/keyvault/getcertificateoperation)  
+      -   Stan: zakończona, nie powiodło się. informacje o błędzie lub anulowane  
+      -   Z powodu opóźnienia, aby utworzyć można zainicjować operacji anulowania. Anuluj może lub nie może być skuteczne.  
 
 ## <a name="import-a-certificate"></a>Importowanie certyfikatu  
  Alternatywnie — certyfikatów można zaimportować do magazynu kluczy — PFX lub PEM.  

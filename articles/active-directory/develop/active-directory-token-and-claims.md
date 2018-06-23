@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/22/2018
+ms.date: 06/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7d10f4bc772382f0ea48d32e7493be496946c455
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: a12ac87eba14db4ff13868446cf8d14b10d1f5fb
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801868"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317830"
 ---
 # <a name="azure-ad-token-reference"></a>Odwołania do usługi Azure AD tokenu
 Azure Active Directory (Azure AD) emituje kilka typów tokenów zabezpieczających do przetworzenia każdy przepływ uwierzytelniania. Ten dokument zawiera opis format właściwości zabezpieczeń i zawartości każdego typu tokenu. 
@@ -113,7 +113,8 @@ Tokenów wystawionych przez usługę Azure AD są podpisane za pomocą branżowy
 {
   "typ": "JWT",
   "alg": "RS256",
-  "x5t": "kriMPdmBvx68skT8-mPAB3BseeA"
+  "x5t": "iBjL1Rcqzhiy4fpxIxdZqohM2Yk"
+  "kid": "iBjL1Rcqzhiy4fpxIxdZqohM2Yk"
 }
 ```
 
@@ -129,12 +130,13 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 
 > [!TIP]
 > Sprawdź ten adres URL w przeglądarce!
-> 
-> 
 
 Ten dokument metadanych jest obiekt JSON zawierający kilku przydatne informacje, takie jak lokalizacja różne punkty końcowe wymagane do wykonywania uwierzytelniania OpenID Connect. 
 
 Zawiera także `jwks_uri`, co daje lokalizacji zestawu kluczy publicznych używane do podpisywania tokenów. Dokument JSON znajdujący się w `jwks_uri` zawiera wszystkie informacje o kluczu publicznym używany w tej chwili określonego czasu. Może używać aplikacja `kid` oświadczeń w nagłówku JWT do wybrania, którego klucz publiczny w tym dokumencie został użyty do podpisania określonej tokenu. Następnie można przeprowadzić weryfikacji podpisu za pomocą prawidłowy klucz publiczny i algorytm wskazany.
+
+> [!NOTE]
+> Zwraca punkt końcowy w wersji 1.0, zarówno `x5t` i `kid` oświadczeń. `x5t` Oświadczeń brakuje tokenów w wersji 2.0. Odpowiada punktu końcowego v2.0 `kid` oświadczeń. Idąc dalej, zaleca się używanie `kid` oświadczeń można sprawdzić poprawności token.
 
 Zostanie wykonana Walidacja podpisu wykracza poza zakres tego dokumentu — Brak dostępnych wiele bibliotek typu open source za pomoc, możesz to zrobić w razie potrzeby.
 

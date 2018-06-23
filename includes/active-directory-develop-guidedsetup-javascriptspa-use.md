@@ -1,4 +1,4 @@
-## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>Użyj biblioteki uwierzytelniania firmy Microsoft (MSAL) do logowania użytkownika
+## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>Zaloguj użytkownika za pomocą biblioteki uwierzytelniania firmy Microsoft (MSAL)
 
 1.  Utwórz plik o nazwie `app.js`. Jeśli używasz programu Visual Studio, wybierz projekt (folder główny projekt), kliknij prawym przyciskiem myszy i wybierz: `Add`  >  `New Item`  >  `JavaScript File`:
 2.  Dodaj następujący kod do Twojej `app.js` pliku:
@@ -50,7 +50,7 @@ function callGraphApi() {
         userInfoElement.parentElement.classList.remove("hidden");
         userInfoElement.innerHTML = JSON.stringify(user, null, 4);
 
-        // Show Sign-Out button
+        // Show sign-off button
         document.getElementById("signOutButton").classList.remove("hidden");
 
         // Now Call Graph API to show the user profile information:
@@ -81,7 +81,7 @@ function callGraphApi() {
 /**
  * Callback method from sign-in: if no errors, call callGraphApi() to show results.
  * @param {string} errorDesc - If error occur, the error message
- * @param {object} token - The token received from login
+ * @param {object} token - The token received from sign-in
  * @param {object} error - The error string
  * @param {string} tokenType - The token type: For loginRedirect, tokenType = "id_token". For acquireTokenRedirect, tokenType:"access_token".
  */
@@ -119,16 +119,16 @@ SPA wygenerowane przez ten przewodnik nie oznacza, że użycie bezpośrednio tok
 
 #### <a name="getting-a-user-token-interactively"></a>Pobieranie tokenu użytkownika interakcyjnego
 
-Po początkowej logowania, nie ma użytkowników poproś ponownego uwierzytelnienia za każdym razem, należy uzyskać token dostępu do zasobu — tak *acquireTokenSilent* powinny być używane w większości przypadków do uzyskania tokenów. Istnieje jednak sytuacji potrzebne wymusić interakcji użytkowników z punktem końcowym w wersji 2 usługi Azure Active Directory — Oto kilka przykładów:
--   Użytkownicy mogą potrzebować ponownie wprowadzić swoje poświadczenia, ponieważ hasło wygasło
--   Żąda dostępu do zasobu, który użytkownik musi wyrazić zgodę na aplikację
--   Uwierzytelnianie dwuskładnikowe jest wymagana
+Po początkowej logowania, czy chcesz o konieczności ponownego uwierzytelnienia za każdym razem, należy uzyskać token dostępu do zasobu — tak *acquireTokenSilent* powinny być używane w większości przypadków do uzyskania tokenów. Istnieje jednak sytuacji, należy wymusić użytkownikom na interakcję z punktem końcowym w wersji 2 usługi Azure Active Directory — Oto kilka przykładów:
+- Użytkownicy mogą potrzebować ponownie wprowadzić swoje poświadczenia, ponieważ hasło wygasło
+- Żąda dostępu do zasobu, który użytkownik musi wyrazić zgodę na aplikację
+- Uwierzytelnianie dwuskładnikowe jest wymagana
 
-Wywoływanie *acquireTokenRedirect(scope)* spowodować przekierowaniu użytkowników do punktu końcowego usługi Azure Active Directory w wersji 2 (lub *acquireTokenPopup(scope)* wynik w oknie podręcznym) gdzie użytkownicy muszą wchodzić w interakcje o potwierdzenie poświadczeń, zapewniając zgody wymaganego zasobu lub kończenie uwierzytelniania dwuskładnikowego.
+Wywoływanie *acquireTokenRedirect(scope)* spowodować przekierowaniu użytkowników do punktu końcowego usługi Azure Active Directory w wersji 2 (lub *acquireTokenPopup(scope)* wynik w oknie podręcznym) gdzie użytkownicy muszą wchodzić w interakcje Potwierdzenie poświadczeń, zapewniając zgody wymaganego zasobu lub kończenie uwierzytelniania dwuskładnikowego.
 
 #### <a name="getting-a-user-token-silently"></a>Pobieranie tokenu użytkownika dyskretnej
 ` acquireTokenSilent` Metoda obsługuje przejęć tokenu i wznowienie bez interakcji użytkownika. Po `loginRedirect` (lub `loginPopup`) jest wykonywana po raz pierwszy `acquireTokenSilent` jest metoda często używane do uzyskiwania tokenów umożliwiają dostęp do chronionych zasobów w kolejnych wywołaniach — jako wywołania żądania lub odnowić tokeny zostały wprowadzone w trybie dyskretnym.
-`acquireTokenSilent`może się nie powieść w niektórych przypadkach — na przykład hasło użytkownika wygasło. Aplikacja może obsłużyć tego wyjątku na dwa sposoby:
+`acquireTokenSilent` może się nie powieść w niektórych przypadkach — na przykład hasło użytkownika wygasło. Aplikacja może obsłużyć tego wyjątku na dwa sposoby:
 
 1.  Wywoływania `acquireTokenRedirect` natychmiast, która powoduje monitowanie użytkownika do logowania. Ten wzorzec jest często używana w aplikacji online w przypadku, gdy brak nieuwierzytelnione zawartości w aplikacji dostępne dla użytkownika. Przykładowe wygenerowane za pomocą tego Instalatora z przewodnikiem używa tego wzorca.
 
@@ -198,13 +198,13 @@ W przykładowej aplikacji utworzonych przez ten przewodnik `callWebApiWithToken(
 
 <!--end-collapse-->
 
-## <a name="add-a-method-to-sign-out-the-user"></a>Dodaj metodę, aby się wylogować użytkownika
+## <a name="add-a-method-to-sign-off-the-user"></a>Dodaj metodę, aby wyrejestrować użytkownika
 
 Dodaj następujący kod do Twojej `app.js` pliku:
 
 ```javascript
 /**
- * Sign-out the user
+ * Sign off the user
  */
 function signOut() {
     userAgentApplication.logout();

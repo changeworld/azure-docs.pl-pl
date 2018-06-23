@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 57bf8b81d8d7fee6eaee216b9a2e0c52aa625257
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: a4a882781562ae71ad6c578577a9f9cd9096ef36
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33868334"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331793"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integracja istniejącej infrastrukturze serwera NPS z usługi Azure Multi-Factor Authentication
 
@@ -82,7 +82,7 @@ Serwer zasad Sieciowych łączy do usługi Azure Active Directory i uwierzytelni
 1. Na serwerze otwórz **Kreatora dodawania ról i funkcji** w menu Menedżera serwera — Szybki Start.
 2. Wybierz **Instalacja roli lub funkcji** dla danego typu instalacji.
 3. Wybierz **usług zasad sieciowych i dostępu** roli serwera. Okno wyskakujące może informujące o wymaganych funkcji, aby uruchomić tę rolę.
-4. Kontynuuj pracę z kreatorem, aż do strony potwierdzenia. Wybierz **zainstalować**.
+4. Kontynuuj pracę z kreatorem, aż do strony potwierdzenia. Wybierz pozycję **Zainstaluj**.
 
 Teraz, gdy masz serwer wyznaczony serwera zasad sieciowych, należy także skonfigurować ten serwer do obsługi przychodzących żądań RADIUS z rozwiązania sieci VPN.
 
@@ -172,7 +172,7 @@ Ta sekcja obejmuje zagadnienia dotyczące projektowania oraz sugestie dotyczące
 ### <a name="configuration-limitations"></a>Ograniczenia konfiguracji
 
 - Rozszerzenia serwera zasad Sieciowych dla usługi Azure MFA nie zawiera narzędzia do migracji użytkowników i ustawienia z serwera usługi MFA w chmurze. Z tego powodu zaleca się nowych wdrożeń zamiast istniejącego wdrożenia przy użyciu rozszerzenia. Jeśli używasz rozszerzenia na istniejące wdrożenie, użytkownicy mają do wykonania w górę dowód ponownie, aby wypełnić ich szczegóły usługi MFA w chmurze.  
-- Rozszerzenia serwera zasad Sieciowych używa nazwy UPN z lokalnej usługi Active directory do identyfikacji użytkownika na usługę Azure MFA do wykonywania dodatkowej uwierzytelniania Rozszerzenie można skonfigurować do używania innego identyfikatora alternatywnego Identyfikatora logowania lub pole niestandardowe usługi Active Directory niż głównej nazwy użytkownika. Zobacz [zaawansowane opcje konfiguracji dla rozszerzenia serwera NPS uwierzytelnianie wieloskładnikowe](howto-mfaserver-nps-vpn.md) Aby uzyskać więcej informacji.
+- Rozszerzenia serwera zasad Sieciowych używa nazwy UPN z lokalnej usługi Active directory do identyfikacji użytkownika na usługę Azure MFA do wykonywania dodatkowej uwierzytelniania Rozszerzenie można skonfigurować do używania innego identyfikatora alternatywnego Identyfikatora logowania lub pole niestandardowe usługi Active Directory niż głównej nazwy użytkownika. Zobacz [zaawansowane opcje konfiguracji dla rozszerzenia serwera NPS uwierzytelnianie wieloskładnikowe](howto-mfa-nps-extension-advanced.md) Aby uzyskać więcej informacji.
 - Nie wszystkie protokoły szyfrowania obsługuje wszystkie metody weryfikacji.
    - **PAP** obsługuje połączenie telefoniczne, wiadomość tekstowa jednokierunkowe powiadomienie aplikacji mobilnej i kod weryfikacyjny z aplikacji mobilnej
    - **CHAPV2** i **EAP** obsługi połączeń telefonicznych i powiadomienia aplikacji mobilnej

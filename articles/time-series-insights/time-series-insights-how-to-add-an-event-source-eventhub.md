@@ -10,12 +10,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/21/2017
-ms.openlocfilehash: 780a7cb3035dbe19c45b5fe9c6dfae54fccafd03
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 8b1fe447cb673b9bc1f4fe4e73f7412a21f701a5
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293652"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330866"
 ---
 # <a name="how-to-add-an-event-hub-event-source-to-time-series-insights-environment"></a>Jak dodać źródła zdarzenia Centrum zdarzeń do środowiska Insights serii czasu
 
@@ -26,6 +26,22 @@ W tym artykule opisano, jak przy użyciu portalu Azure Dodaj źródło zdarzenia
 - Tworzenie centrum zdarzeń. Aby uzyskać więcej informacji dotyczących usługi Event Hubs, zobacz [tworzenie przestrzeni nazw usługi Event Hubs i Centrum zdarzeń za pomocą portalu Azure](../event-hubs/event-hubs-create.md)
 - Zdarzenia aktywne wiadomości wysyłane podczas musi Centrum zdarzeń. Aby uzyskać więcej informacji, zobacz [wysyłania zdarzeń do usługi Azure Event Hubs przy użyciu programu .NET Framework](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md).
 - Utwórz dedykowanej grupy klientów w Centrum zdarzeń środowiska szczegółowe informacje o czasie serii, aby korzystać z. Każdego źródła zdarzeń Insights serii czasu musi mieć własną dedykowanej grupy klientów, które nie są współużytkowane z innym klientom. Jeśli wielu czytników korzystanie ze zdarzeń z tej samej grupy konsumentów, wszystkich czytelników prawdopodobnie błędy. Należy pamiętać, że jest również maksymalnie 20 grup odbiorców, na Centrum zdarzeń. Aby uzyskać więcej informacji, zobacz [Event Hubs Programming Guide](../event-hubs/event-hubs-programming-guide.md).
+
+### <a name="add-a-consumer-group-to-your-event-hub"></a>Dodaj grupy odbiorców do Centrum zdarzeń
+Grupy konsumentów są używane przez aplikacje w celu pobierania danych z usługi Azure Event Hubs. Podaj dedykowanej grupy klientów, na potrzeby używania przez tego czasu serii Insights środowiska, niezawodnie odczytać danych z Centrum zdarzeń.
+
+Aby dodać nowe grupy odbiorców w Centrum zdarzeń, wykonaj następujące kroki:
+1. W portalu Azure zlokalizuj i Otwórz Centrum zdarzeń.
+
+2. W obszarze **jednostek** nagłówek, wybierz **grupy konsumentów**.
+
+   ![Centrum zdarzeń — Dodawanie grupy odbiorców](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png)
+
+3. Wybierz **+ grupy odbiorców** Aby dodać nowe grupy odbiorców. 
+
+4. Na **grupy konsumentów** Podaj nowy unikatowy **nazwa**.  Podczas tworzenia nowego źródła zdarzeń w środowisku czasu serii wgląd, należy użyć tej samej nazwie.
+
+5. Wybierz **Utwórz** do tworzenia nowej grupy odbiorców.
 
 ## <a name="add-a-new-event-source"></a>Dodaj nowe źródło zdarzeń
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
@@ -78,29 +94,14 @@ W tym artykule opisano, jak przy użyciu portalu Azure Dodaj źródło zdarzenia
    | Format serializacji zdarzeń | Kod JSON jest dostępne tylko serializacji w chwili obecnej. Komunikaty zdarzeń musi być w następującym formacie, lub żadne dane nie mogą być odczytywane. |
    | Nazwa właściwości sygnatury czasowej | Aby określić tę wartość, należy zrozumieć format komunikatu z danymi wiadomości wysyłane do Centrum zdarzeń. Ta wartość jest **nazwa** właściwości określonego zdarzenia w danych wiadomości, który ma być używany jako znacznik czasu zdarzeń. Wartość jest rozróżniana wielkość liter. Jeśli pole pozostanie puste, **czasu umieścić w kolejce zdarzenia** w zdarzeniu źródła jest używany jako znacznik czasu zdarzeń. |
 
+10. Dodaj dedykowane TSI konsumenta nazwę grupy dodane do Centrum zdarzeń.
 
-10. Wybierz **Utwórz** można dodać nowego źródła zdarzenia.
+11. Wybierz **Utwórz** można dodać nowego źródła zdarzenia.
    
    ![Kliknięcie pozycji Utwórz](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png)
 
    Po utworzeniu źródła zdarzeń usługa Time Series Insights automatycznie rozpocznie przesyłanie strumieni danych do środowiska.
 
-
-### <a name="add-a-consumer-group-to-your-event-hub"></a>Dodaj grupy odbiorców do Centrum zdarzeń
-Grupy konsumentów są używane przez aplikacje w celu pobierania danych z usługi Azure Event Hubs. Podaj dedykowanej grupy klientów, na potrzeby używania przez tego czasu serii Insights środowiska, niezawodnie odczytać danych z Centrum zdarzeń.
-
-Aby dodać nowe grupy odbiorców w Centrum zdarzeń, wykonaj następujące kroki:
-1. W portalu Azure zlokalizuj i Otwórz Centrum zdarzeń.
-
-2. W obszarze **jednostek** nagłówek, wybierz **grupy konsumentów**.
-
-   ![Centrum zdarzeń — Dodawanie grupy odbiorców](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png)
-
-3. Wybierz **+ grupy odbiorców** Aby dodać nowe grupy odbiorców. 
-
-4. Na **grupy konsumentów** Podaj nowy unikatowy **nazwa**.  Podczas tworzenia nowego źródła zdarzeń w środowisku czasu serii wgląd, należy użyć tej samej nazwie.
-
-5. Wybierz **Utwórz** do tworzenia nowej grupy odbiorców.
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Definiowanie zasad dostępu danych](time-series-insights-data-access.md) do zabezpieczania danych.

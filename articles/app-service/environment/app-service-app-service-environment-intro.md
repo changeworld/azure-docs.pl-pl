@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: b13f726ada6deba67d5ed484eca769fed354e400
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ca30818b015e95594d3b2c9861d98f24174c0aea
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23836784"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318167"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>Wprowadzenie do aplikacji usługi v1 środowiska
 
@@ -27,7 +27,7 @@ ms.locfileid: "23836784"
 > Ten artykuł dotyczy v1 środowiska usługi aplikacji.  Istnieje nowsza wersja środowiska usługi aplikacji jest łatwiejsza w użyciu, który jest uruchamiany na bardziej zaawansowanych infrastruktury. Aby dowiedzieć się więcej o nowy początek wersji z [wprowadzenie do środowiska usługi aplikacji](intro.md).
 > 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Środowiska usługi aplikacji jest [Premium] [ PremiumTier] usługi opcji plan [usłudze Azure App Service](../app-service-web-overview.md) który udostępnia środowisko pełni izolowanym środowisku, aby bezpiecznie pracować z Aplikacje platformy Azure App Service na dużą skalę, w tym aplikacji Web Apps, Mobile Apps i aplikacji API Apps.  
 
 Środowiska usługi aplikacji to idealne rozwiązanie w przypadku obciążeń aplikacji wymagających:
@@ -71,7 +71,7 @@ Aby uzyskać więcej informacji na temat rozmiarów zasobów obliczeniowych dost
 
 Można użyć [sieciowej grupy zabezpieczeń] [ NetworkSecurityGroups] do ograniczenia komunikacji sieciowej dla ruchu przychodzącego do podsieci, w której znajduje się środowiska usługi aplikacji.  Dzięki temu można korzystać z aplikacji za nadrzędnego urządzeń i usług, takich jak zapory aplikacji sieci web i dostawców SaaS sieci.
 
-Aplikacje muszą również często dostępu do zasobów firmy, takich jak wewnętrznej bazy danych i usług sieci web.  Typowym podejściem jest, aby udostępnić te punkty końcowe tylko ruchu w sieci wewnętrznej przepływu w ramach sieci wirtualnej platformy Azure.  Po środowiska usługi aplikacji jest dołączony do tej samej sieci wirtualnej co wewnętrzny usługi, aplikacje działające w środowisku może uzyskiwać do nich dostęp, łącznie z punktów końcowych osiągalne za pomocą [lokacja-lokacja] [ SiteToSite] i [Azure ExpressRoute] [ ExpressRoute] połączenia.
+Aplikacje często muszą również uzyskiwać dostęp do zasobów firmy, takich jak wewnętrzne bazy danych i usługi internetowe.  Typowym podejściem jest, aby udostępnić te punkty końcowe tylko ruchu w sieci wewnętrznej przepływu w ramach sieci wirtualnej platformy Azure.  Po środowiska usługi aplikacji jest dołączony do tej samej sieci wirtualnej co wewnętrzny usługi, aplikacje działające w środowisku może uzyskiwać do nich dostęp, łącznie z punktów końcowych osiągalne za pomocą [lokacja-lokacja] [ SiteToSite] i [Azure ExpressRoute] [ ExpressRoute] połączenia.
 
 Dla więcej szczegółowych informacji na temat środowiska usługi App Service z sieciami wirtualnymi i sieciami lokalnymi zapoznaj się następujące artykuły na [architektury sieci][NetworkArchitectureOverview], [kontrolowanie ruchu przychodzącego Ruch][ControllingInboundTraffic], i [bezpiecznego połączenia Zapleczy][SecurelyConnectingToBackends]. 
 
@@ -93,7 +93,7 @@ Aby uzyskać więcej informacji o używaniu środowiska usługi aplikacji z usł
 [AzureConDeepDive]:  https://azure.microsoft.com/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/
 [GeodistributedAppFootprint]:  app-service-app-service-environment-geo-distributed-scale.md
 [NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
-[SiteToSite]: https://azure.microsoft.com/documentation/articles/vpn-gateway-site-to-site-create/
+[SiteToSite]: https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-multi-site
 [ExpressRoute]: http://azure.microsoft.com/services/expressroute/
 [HowToConfigureanAppServiceEnvironment]:  app-service-web-configure-an-app-service-environment.md
 [ControllingInboundTraffic]:  app-service-app-service-environment-control-inbound-traffic.md

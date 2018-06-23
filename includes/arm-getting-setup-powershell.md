@@ -24,7 +24,7 @@ Sprawdź, czy wartość **PSVersion** 3.0 lub 4.0. Jeśli nie, zobacz [Windows M
 ### <a name="set-your-azure-account-and-subscription"></a>Ustawianie konta i subskrypcji platformy Azure
 Jeśli nie masz jeszcze subskrypcji platformy Azure, możesz przeprowadzić aktywację Twojej [korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) lub zarejestrować się w celu [bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
 
-Otwórz wiersz polecenia programu PowerShell systemu Azure i zaloguj się do platformy Azure z tego polecenia.
+Otwórz wiersz polecenia programu PowerShell systemu Azure i zaloguj się na platformie Azure za pomocą tego polecenia.
 
     Connect-AzureRmAccount
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: c2209a06921ffd6a8efb6fc38dacfa88fc87fa05
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 840d3737efe4314359ba3a3bf0f5c4f888f92567
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29958728"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36329573"
 ---
 Magazynu zoptymalizowane rozmiarów maszyn wirtualnych alokację dysku wysokiej przepływności oraz we/wy i idealnie nadają się do bazy danych Big Data, SQL i NoSQL. Ten artykuł zawiera informacje o liczbie Vcpu, dysków z danymi i karty sieciowe, a także przepustowości przepływności i sieć magazynu dla każdego rozmiaru w tej metodzie grupowania. 
 
@@ -31,7 +31,7 @@ ACU: 180–240
 | Standard_L32s <sup>1</sup> | 32   | 256  | 5,630 | 64   | 160,000 / 1,600   | 40 000 / 1000     | 8 / 20,000 | 
  
 
-Maksymalna przepływność dysków możliwa dla maszyn wirtualnych serii Ls może być ograniczona przez liczbę, rozmiar i rozłożenie wszelkich dołączonych dysków. Aby uzyskać szczegółowe informacje, zobacz [Premium Storage: High-performance storage for Azure virtual machine workloads](../articles/virtual-machines/windows/premium-storage.md) (Premium Storage: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure). 
+Przepustowość maksymalna liczba dyskowych operacji możliwe Ls serii maszyn wirtualnych może być ograniczona liczba, rozmiar i zastosowanie rozkładania dowolnego dołączone dyski. Aby uzyskać szczegółowe informacje, zobacz [Premium Storage: High-performance storage for Azure virtual machine workloads](../articles/virtual-machines/windows/premium-storage.md) (Premium Storage: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure). Ls serii maszyn wirtualnych są przeznaczone dla obciążeń z użyciem wysokiej Magazyn lokalny i zwykle Użyj dołączonych dysków ładowania początkowego i rejestrowanie jako buforowanie jest nieefektywne w tych przypadkach seria Ls nie obsługuje tylko buforowanie hosta dołączone dyski, dyski muszą być dołączone w trybie bez buforowania. 
 
 <sup>1</sup> wystąpienia jest izolowana sprzętu przeznaczonego do jednego odbiorcy.
 

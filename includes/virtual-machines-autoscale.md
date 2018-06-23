@@ -2,13 +2,13 @@ Możesz z łatwością [automatycznie skalować](../articles/monitoring-and-diag
 
 ## <a name="horizontal-or-vertical-scaling"></a>Skalowanie w poziomie lub pionie
 
-Funkcja automatycznego skalowania monitora Azure tylko skalowanie w poziomie, wzrost ("out") lub spadek ("") liczby maszyn wirtualnych. Skalowanie w poziomie jest bardziej elastyczna w sytuacji, w chmurze, ponieważ umożliwia uruchamianie potencjalnie tysiące maszyn wirtualnych do obsługi obciążenia. Możesz skalować w poziomie, automatycznie lub ręcznie zmieniając pojemności (lub liczba wystąpień) z zestawu skalowania. 
+Funkcja automatycznego skalowania monitora Azure tylko skalowanie w poziomie, wzrost ("out") lub spadek ("") liczby maszyn wirtualnych. Skalowanie w poziomie jest bardziej elastyczna w sytuacji, w chmurze, ponieważ umożliwia uruchamianie potencjalnie tysiące maszyn wirtualnych do obsługi obciążenia. Możesz skalować w poziomie, automatycznie lub ręcznie zmieniając pojemności (lub liczba wystąpień) zestaw skali. 
 
 Skalowanie w pionie zachowuje tę samą liczbę maszyn wirtualnych, ale powoduje, że maszyny wirtualne więcej ("w górę") lub mniej ("wyłączone") zaawansowane. Power jest mierzony w atrybutów, takich jak pamięci, szybkości procesora CPU lub miejsca na dysku. Skalowanie w pionie jest zależna od dostępności sprzętu większych i szybko trafienia górny limit i zależą od regionu. Skalowanie w pionie również zwykle wymaga maszyny Wirtualnej, aby zatrzymać i uruchomić ponownie. Skalowanie w pionie, ustawiając nowy rozmiar w konfiguracji w zestawie skalowania maszyn wirtualnych.
 
 Używanie elementów runbook w [usługi Automatyzacja Azure](../articles/automation/automation-intro.md), możesz z łatwością [skalowania maszyn wirtualnych w zestawie skalowania](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-vertical-scale-reprovision.md) w górę lub w dół.
 
-## <a name="create-a-virtual-machine-scale-set"></a>Utwórz zestaw skali maszyny wirtualnej
+## <a name="create-a-virtual-machine-scale-set"></a>Tworzenie zestawu skalowania maszyn wirtualnych
 
 Zestawy skalowania ułatwiają wdrażanie i zarządzanie identycznych maszyn wirtualnych jako zestaw. Można utworzyć systemu Linux lub Windows skali ustawia przy użyciu [portalu Azure](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md), [programu Azure PowerShell](../articles/virtual-machines/windows/tutorial-create-vmss.md), lub [interfejsu wiersza polecenia Azure](../articles/virtual-machines/linux/tutorial-create-vmss.md). Można również utworzyć i zarządzać takie jak zestawy skalowania z zestawów SDK [Python](/develop/python) lub [Node.js](/nodejs/azure), lub bezpośrednio z [interfejsów API REST](/rest/api/compute/virtualmachinescalesets). Automatyczne skalowanie maszyn wirtualnych odbywa się przez zastosowanie metryki i reguły w zestawie skali.
 
@@ -18,7 +18,7 @@ Automatyczne skalowanie zapewnia prawo liczby maszyn wirtualnych do obsługi obc
 
 Można włączyć automatycznego skalowania, podczas tworzenia skali ustawić za pomocą [programu Azure PowerShell](../articles/monitoring-and-diagnostics/insights-powershell-samples.md#create-and-manage-autoscale-settings) lub [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/monitor/autoscale-settings). Możesz je również włączyć po utworzeniu zestawu skalowania. Utwórz zestaw skali, należy zainstalować rozszerzenie i skonfigurować za pomocą automatycznego skalowania [szablonu usługi Azure Resource Manager](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md). W portalu Azure włączyć automatycznego skalowania z monitora Azure lub skalowania automatycznego z ustawień zestaw skalowania.
 
-![Włączanie automatycznego skalowania](./media/virtual-machines-autoscale/virtual-machines-autoscale-enable.png)
+![Włącz skalowanie automatyczne](./media/virtual-machines-autoscale/virtual-machines-autoscale-enable.png)
  
 ### <a name="metrics"></a>Metryki
 
@@ -50,7 +50,7 @@ Przy użyciu programu Azure PowerShell, należy uzyskać, używając obiektu zes
 
 Należy ręcznie zmienić rozmiar w portalu Azure na ekranie rozmiar dla zestawu skalowania maszyn wirtualnych. Za pomocą programu Azure PowerShell Get-AzureRmVmss, ustawienia właściwości sku obrazu odniesienia, a następnie za pomocą [AzureRmVmss aktualizacji](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) i [AzureRmVmssInstance aktualizacji](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmssinstance).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o zestawy skalowania w [projektowania zestawach skali](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview.md).
 

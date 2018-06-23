@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: 76387733b1511593280f4a9439f5ddbf12d60975
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: de52521824c146f63fb16e2690e2a24167ae2efe
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36302006"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333916"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Bezpieczny dostęp do konta bazy danych rozwiązania Cosmos Azure przy użyciu punktu końcowego usługi Azure Virtual Network
 
@@ -80,7 +80,7 @@ Po włączeniu punktów końcowych usługi sieci wirtualnej platformy Azure dla 
 
 Jeśli konta bazy danych Azure rozwiązania Cosmos jest używane przez inne usługi Azure, takich jak usługi Azure Search lub uzyskać dostępu do usługi analiza strumienia lub usługi Power BI, zezwolisz na dostęp przez sprawdzenie **zezwolić na dostęp do usług Azure**.
 
-Aby upewnić się, masz dostęp do bazy danych Azure rozwiązania Cosmos metryki z portalu, należy włączyć **zezwolić na dostęp do portalu Azure** opcje. Aby dowiedzieć się więcej o tych opcjach, zobacz [połączenia z portalu Azure](firewall-support.md#connections-from-the-azure-portal) i [połączeń z usług Azure PaaS](firewall-support.md#connections-from-public-azure-datacenters-or-azure-paas-services) sekcje. Po wybraniu dostępu, wybierz **zapisać** Aby zapisać ustawienia.
+Aby upewnić się, masz dostęp do bazy danych Azure rozwiązania Cosmos metryki z portalu, należy włączyć **zezwolić na dostęp do portalu Azure** opcje. Aby dowiedzieć się więcej o tych opcjach, zobacz [połączenia z portalu Azure](firewall-support.md#connections-from-the-azure-portal) i [połączeń z usług Azure PaaS](firewall-support.md#connections-from-global-azure-datacenters-or-azure-paas-services) sekcje. Po wybraniu dostępu, wybierz **zapisać** Aby zapisać ustawienia.
 
 ## <a name="remove-a-virtual-network-or-subnet"></a>Usuwanie podsieci lub sieci wirtualnej 
 
@@ -145,11 +145,20 @@ Aby skonfigurować punkt końcowy usługi do konta bazy danych Azure rozwiązani
 
    ```powershell
    $locations = @(@{})
+
+   <# If you have read regions in addition to a write region, use the following code to set the $locations variable instead.
+
+   $locations = @(@{"locationName"="<Write location>"; 
+                 "failoverPriority"=0}, 
+               @{"locationName"="<Read location>"; 
+                  "failoverPriority"=1}) #>
+
    $consistencyPolicy = @{}
    $cosmosDBProperties = @{}
 
    $locations[0]['failoverPriority'] = $cosmosDBConfiguration.Properties.failoverPolicies.failoverPriority
    $locations[0]['locationName'] = $cosmosDBConfiguration.Properties.failoverPolicies.locationName
+
    $consistencyPolicy = $cosmosDBConfiguration.Properties.consistencyPolicy
 
    $accountVNETFilterEnabled = $True

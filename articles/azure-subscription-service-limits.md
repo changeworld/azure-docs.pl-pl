@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: byvinyal
-ms.openlocfilehash: 9e4ea16193824e63298b19d4401c110385fa7feb
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 1d67266bf599a4dc57fc2e9e0d1c5f9f2562346c
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700196"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318966"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity subskrypcji i usługi Azure, przydziały i ograniczenia
 Ten dokument przedstawia niektóre z najczęściej limity Microsoft Azure, nazywane również przydziałów. Ten dokument obecnie nie obejmuje wszystkich usług platformy Azure. Wraz z upływem czasu listy zostanie rozwinięty, a zaktualizowane, aby pokrywał się z platformy.
@@ -40,8 +40,7 @@ W obszarze poniżej ograniczenia dodano nową tabelę odzwierciedlają różnice
 
 > [!NOTE]
 > Należy wyróżnić przydziałów dla zasobów w grupach zasobów platformy Azure są na regionem dostępny dla Twojej subskrypcji i nie są na subskrypcji, jak przydziały usługi zarządzania. Na przykład użyjmy vCPU przydziałów. Jeśli potrzebujesz zażądać zwiększenia limitu przydziału o obsługę Vcpu, należy zdecydować, jak wiele Vcpu, które chcesz użyć, w których regionach, a następnie wprowadź określone żądanie dla grupy zasobów platformy Azure vCPU przydziały dla kwoty i regionów, które mają. W związku z tym jeśli musisz użyć 30 Vcpu w Europie zachodnie do uruchamiania aplikacji istnieje, należy w szczególności zażądać 30 Vcpu w Europa Zachodnia. Ale nie ma limit przydziału vCPU zwiększyć w innym regionie — tylko Europa Zachodnia ma limit przydziału 30 vCPU.
-> <!-- -->
-> W związku z tym może warto wziąć pod uwagę przy wyborze co przydziałami grupy zasobów platformy Azure musi być dla obciążenia w dowolnym regionie, co i żądania wielkość w każdym regionie, w którym rozważane jest wdrożenie. Zobacz [Rozwiązywanie problemów dotyczących wdrożenia](resource-manager-common-deployment-errors.md) Aby uzyskać dodatkową pomoc odnajdywania bieżącego przydziałami dla konkretnych regionów.
+> <!-- --> W związku z tym może warto wziąć pod uwagę przy wyborze co przydziałami grupy zasobów platformy Azure musi być dla obciążenia w dowolnym regionie, co i żądania wielkość w każdym regionie, w którym rozważane jest wdrożenie. Zobacz [Rozwiązywanie problemów dotyczących wdrożenia](resource-manager-common-deployment-errors.md) Aby uzyskać dodatkową pomoc odnajdywania bieżącego przydziałami dla konkretnych regionów.
 >
 >
 
@@ -325,7 +324,7 @@ Aby dowiedzieć się więcej na temat limitów na bardziej szczegółowym poziom
 [!INCLUDE [role-based-access-control-limits](../includes/role-based-access-control-limits.md)]
 
 ### <a name="sql-database-limits"></a>Limity bazy danych SQL
-Limitów bazy danych SQL, zobacz [limity zasobów bazy danych SQL](sql-database/sql-database-resource-limits.md).
+Limitów bazy danych SQL, zobacz [limity zasobów bazy danych SQL dla pojedynczych baz danych](sql-database/sql-database-vcore-resource-limits-single-databases.md) i [limity zasobów bazy danych SQL puli baz danych i pul elastycznych](sql-database/sql-database-vcore-resource-limits-elastic-pools.md).
 
 ### <a name="sql-data-warehouse-limits"></a>Limity magazynu danych SQL
 Limitów SQL Data Warehouse, zobacz [limity zasobów magazynu danych SQL](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: anoopkv
-ms.openlocfilehash: b2c564e8d49e39d9cdc09d3fe168388d579de70e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 01b0717660265b28d4ea7d804a761e7e425c997c
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29812656"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319604"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>Konfigurowanie środowiska źródłowego dla VMware do platformy Azure replikacji
 
@@ -30,7 +30,7 @@ Artykuł założono, że masz już:
 ## <a name="choose-your-protection-goals"></a>Wybranie celów ochrony
 
 1. W portalu Azure, przejdź do **usług odzyskiwania** magazyn bloku i wybierz magazyn.
-2. W menu zasobów magazynu, przejdź do **wprowadzenie** > **usługi Site Recovery** > **krok 1: Przygotowanie infrastruktury** > **cel ochrony**.
+2. W menu zasobów magazynu, przejdź do **wprowadzenie** > **usługi Site Recovery** > **krok 1: Przygotowanie infrastruktury**  >  **Cel ochrony**.
 
     ![Wybieranie celów](./media/vmware-azure-set-up-source/choose-goals.png)
 3. W **cel ochrony**, wybierz pozycję **do platformy Azure**i wybierz polecenie **tak, z programem VMware vSphere Hypervisor**. Następnie kliknij przycisk **OK**.
@@ -39,12 +39,12 @@ Artykuł założono, że masz już:
 
 ## <a name="set-up-the-configuration-server"></a>Konfigurowanie serwera konfiguracji
 
-Konfigurowanie serwera konfiguracji jako VMware lokalnej maszyny Wirtualnej, użyj szablonu Open Virtualization Format (OVF). [Dowiedz się więcej](concepts-vmware-to-azure-architecture.md) o składnikach, które zostaną zainstalowane na Maszynie wirtualnej VMware. 
+Można skonfigurować serwer konfiguracji jako VMware lokalnej maszyny Wirtualnej przy użyciu szablonu aplikacji komórek (Open Virtualization jajowych). [Dowiedz się więcej](concepts-vmware-to-azure-architecture.md) o składnikach, które zostaną zainstalowane na Maszynie wirtualnej VMware.
 
 1. Dowiedz się więcej o [wymagania wstępne](vmware-azure-deploy-configuration-server.md#prerequisites) dla wdrożenia serwera konfiguracji.
 2. [Sprawdź pojemność liczby](vmware-azure-deploy-configuration-server.md#capacity-planning) dla wdrożenia.
-3. [Pobierz](vmware-azure-deploy-configuration-server.md#download-the-template) i [zaimportować](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) szablonu OVF (how-do-wdrażanie konfiguracji server.md), aby skonfigurować VMware lokalnej maszyny Wirtualnej, który uruchamia serwer konfiguracji.
-4. Włączaj maszynę Wirtualną VMware, i [go zarejestrować](vmware-azure-deploy-configuration-server.md#register-the-configuration-server) w usługach odzyskiwania magazynu.
+3. [Pobierz](vmware-azure-deploy-configuration-server.md#download-the-template) i [zaimportować](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) szablonu komórki jajowe skonfigurować VMware lokalnej maszyny Wirtualnej, który uruchamia serwer konfiguracji. Licencja podana przy użyciu szablonu jest licencji ewaluacyjnej i jest ważna przez 180 dni. Post tego okresu, nabywca musi wykonać aktywację systemu windows z licencji uzyskiwanych.
+4. Włączaj maszynę Wirtualną VMware, i [go zarejestrować](vmware-azure-deploy-configuration-server.md#register-the-configuration-server-with-azure-site-recovery-services) w usługach odzyskiwania magazynu.
 
 
 ## <a name="add-the-vmware-account-for-automatic-discovery"></a>Dodaj konto VMware automatycznego wykrywania

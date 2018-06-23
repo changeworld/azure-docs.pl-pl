@@ -8,19 +8,18 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 85b8d4d0-3f6a-4913-b9d3-8cc327d8280d
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2018
+ms.date: 06/14/2018
 ms.author: jeedes
-ms.openlocfilehash: 8cae1e2670ba449c0db28209c54b740e927bbb73
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 02421ace226f42da58eb9864fe0ef2e1ca550391
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210381"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319286"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Samouczek: Integracji Azure Active Directory z programu SharePoint
 
@@ -74,7 +73,7 @@ Aby skonfigurować integrację usługi Azure AD programu SharePoint, należy dod
 
 4. W polu wyszukiwania wpisz **programu SharePoint**, wybierz pozycję **SharePoint lokalnymi** z panelu wyników kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
-    ![SharePoint lokalnie na liście wyników](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_addfromgallery.png)
+    ![SharePoint lokalnie na liście wyników](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
 
@@ -102,11 +101,11 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
 2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_samlbase.png)
+    ![Okno dialogowe rejestracji jednokrotnej](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_samlbase.png)
 
 3. Na **SharePoint lokalnej domeny i adres URL** sekcji, wykonaj następujące czynności:
 
-    ![SharePoint lokalnej domeny i adres URL pojedynczego logowania jednokrotnego informacji](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_url1.png)
+    ![SharePoint lokalnej domeny i adres URL pojedynczego logowania jednokrotnego informacji](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_url1.png)
 
     a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<YourSharePointServerURL>/_trust/default.aspx`
 
@@ -117,15 +116,15 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
 4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na komputerze z rozszerzeniem cer. Skopiuj i Wklej Pełna ścieżka pliku metadanych pobranych do Notatnika.
 
-    ![Łącze pobierania certyfikatu](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_certificate.png)
+    ![Łącze pobierania certyfikatu](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_certificate.png)
 
 5. Kliknij przycisk **zapisać** przycisku.
 
-    ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/sharepoint-on-premises-tutorial/tutorial_general_400.png)
+    ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media\sharepoint-on-premises-tutorial/tutorial_general_400.png)
 
 6. Na **SharePoint lokalnej konfiguracji** kliknij **Konfigurowanie programu SharePoint** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
 
-    ![Konfiguracja lokalnego programu SharePoint](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_configure.png)
+    ![Konfiguracja lokalnego programu SharePoint](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_configure.png)
 
     > [!NOTE]
     > Aplikacja programu SharePoint używa SAML 1.1 token, więc żądania WS Fed z serwera programu SharePoint i po uwierzytelnieniu oczekuje usługi Azure AD wystawia SAML 1.1. token.
@@ -148,6 +147,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     $map = New-SPClaimTypeMapping -IncomingClaimType "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name" -IncomingClaimTypeDisplayName "name" -LocalClaimType "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"
     $map2 = New-SPClaimTypeMapping -IncomingClaimType "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname" -IncomingClaimTypeDisplayName "GivenName" -SameAsIncoming
     $map3 = New-SPClaimTypeMapping -IncomingClaimType "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname" -IncomingClaimTypeDisplayName "SurName" -SameAsIncoming
+    $map4 = New-SPClaimTypeMapping -IncomingClaimType "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress" -IncomingClaimTypeDisplayName "Email" -SameAsIncoming
     $ap = New-SPTrustedIdentityTokenIssuer -Name "AzureAD" -Description "SharePoint secured by Azure AD" -realm $realm -ImportTrustCertificate $cert -ClaimsMappings $map,$map2,$map3 -SignInUrl $wsfedurl -IdentifierClaim "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"
     ```
 
@@ -163,7 +163,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     e. Kliknij przycisk **OK**.
 
-    ![Konfigurowanie dostawcy uwierzytelniania](./media/sharepoint-on-premises-tutorial/fig10-configauthprovider.png)
+    ![Konfigurowanie dostawcy uwierzytelniania](./media\sharepoint-on-premises-tutorial/fig10-configauthprovider.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -175,19 +175,19 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
 
 1. W portalu Azure, w okienku po lewej stronie kliknij **usługi Azure Active Directory** przycisku.
 
-    ![Przycisk usługi Azure Active Directory](./media/sharepoint-on-premises-tutorial/create_aaduser_01.png)
+    ![Przycisk usługi Azure Active Directory](./media\sharepoint-on-premises-tutorial/create_aaduser_01.png)
 
 2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "Wszyscy użytkownicy" łącza](./media/sharepoint-on-premises-tutorial/create_aaduser_02.png)
+    !["Użytkownicy i grupy" i "Wszyscy użytkownicy" łącza](./media\sharepoint-on-premises-tutorial/create_aaduser_02.png)
 
 3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
-    ![Przycisk Dodaj](./media/sharepoint-on-premises-tutorial/create_aaduser_03.png)
+    ![Przycisk Dodaj](./media\sharepoint-on-premises-tutorial/create_aaduser_03.png)
 
 4. W **użytkownika** okna dialogowego wykonaj następujące czynności:
 
-    ![Okno dialogowe użytkownika](./media/sharepoint-on-premises-tutorial/create_aaduser_04.png)
+    ![Okno dialogowe użytkownika](./media\sharepoint-on-premises-tutorial/create_aaduser_04.png)
 
     a. W **nazwa** wpisz **BrittaSimon**.
 
@@ -207,7 +207,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
 
 4. W zasadach dla aplikacji sieci Web, kliknij przycisk **Dodaj użytkowników**.
 
-    ![Wyszukiwanie według ich oświadczenia nazwy użytkownika](./media/sharepoint-on-premises-tutorial/fig11-searchbynameclaim.png)
+    ![Wyszukiwanie według ich oświadczenia nazwy użytkownika](./media\sharepoint-on-premises-tutorial/fig11-searchbynameclaim.png)
 
 5. W **Dodaj użytkowników** okna dialogowego kliknij odpowiedniej strefy **strefy**, a następnie kliknij przycisk **dalej**.
 
@@ -219,7 +219,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
 
 9. W polu uprawnienia kliknij **Pełna kontrola**.
 
-    ![Udzielanie uprawnień Pełna kontrola do oświadczenia użytkownika](./media/sharepoint-on-premises-tutorial/fig12-grantfullcontrol.png)
+    ![Udzielanie uprawnień Pełna kontrola do oświadczenia użytkownika](./media\sharepoint-on-premises-tutorial/fig12-grantfullcontrol.png)
 
 10. Kliknij przycisk **Zakończ**, a następnie kliknij przycisk **OK**.
 
@@ -227,7 +227,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
 
 Użytkownicy mogą teraz zalogować się do programu SharePoint 2016 przy użyciu tożsamości z usługi Azure AD, ale są nadal możliwości poprawy środowiska użytkownika. Na przykład wyszukiwanie użytkownika przedstawia wiele wyników wyszukiwania w selektora osób. Brak wyniku wyszukiwania dla poszczególnych typów oświadczeń 3, które zostały utworzone w mapowaniu oświadczeń. Aby wybrać użytkownika, za pomocą selektora osób, musisz wpisać dokładnie nazwy użytkownika i wybrać **nazwa** oświadczeń wynik.
 
-![Wyniki wyszukiwania oświadczeń](./media/sharepoint-on-premises-tutorial/fig16-claimssearchresults.png)
+![Wyniki wyszukiwania oświadczeń](./media\sharepoint-on-premises-tutorial/fig16-claimssearchresults.png)
 
 Nie istnieje żadne sprawdzanie poprawności wartości wyszukiwania, które mogą prowadzić do błędów pisowni lub typ można przypisać takich jak oświadczenia użytkowników przypadkowo Wybieranie nieprawidłowa **nazwisko** oświadczeń. Może to uniemożliwić użytkownikom dostęp do zasobów.
 
@@ -237,7 +237,7 @@ Aby pomóc w tym scenariuszu, jest open source rozwiązanie o nazwie [AzureCP](h
 
 W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu do programu SharePoint.
 
-![Przypisanie roli użytkownika][200] 
+![Przypisanie roli użytkownika][200]
 
 **Aby przypisać Simona Britta programu SharePoint, wykonaj następujące czynności:**
 
@@ -247,7 +247,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 2. Na liście aplikacji zaznacz **SharePoint lokalnymi**.
 
-    ![Łącza programu SharePoint na liście aplikacji](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_app.png)
+    ![Łącza programu SharePoint na liście aplikacji](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_app.png)
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
@@ -275,17 +275,18 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
+
 <!--Image references-->
 
-[1]: ./media/sharepoint-on-premises-tutorial/tutorial_general_01.png
-[2]: ./media/sharepoint-on-premises-tutorial/tutorial_general_02.png
-[3]: ./media/sharepoint-on-premises-tutorial/tutorial_general_03.png
-[4]: ./media/sharepoint-on-premises-tutorial/tutorial_general_04.png
+[1]: ./media\sharepoint-on-premises-tutorial/tutorial_general_01.png
+[2]: ./media\sharepoint-on-premises-tutorial/tutorial_general_02.png
+[3]: ./media\sharepoint-on-premises-tutorial/tutorial_general_03.png
+[4]: ./media\sharepoint-on-premises-tutorial/tutorial_general_04.png
 
-[100]: ./media/sharepoint-on-premises-tutorial/tutorial_general_100.png
+[100]: ./media\sharepoint-on-premises-tutorial/tutorial_general_100.png
 
-[200]: ./media/sharepoint-on-premises-tutorial/tutorial_general_200.png
-[201]: ./media/sharepoint-on-premises-tutorial/tutorial_general_201.png
-[202]: ./media/sharepoint-on-premises-tutorial/tutorial_general_202.png
-[203]: ./media/sharepoint-on-premises-tutorial/tutorial_general_203.png
+[200]: ./media\sharepoint-on-premises-tutorial/tutorial_general_200.png
+[201]: ./media\sharepoint-on-premises-tutorial/tutorial_general_201.png
+[202]: ./media\sharepoint-on-premises-tutorial/tutorial_general_202.png
+[203]: ./media\sharepoint-on-premises-tutorial/tutorial_general_203.png
 

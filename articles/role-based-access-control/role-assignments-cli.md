@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie dostępem przy użyciu RBAC i interfejsu wiersza polecenia Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zarządzać dostępem dla użytkowników, grup i aplikacji, przy użyciu kontroli dostępu opartej na rolach (RBAC) i wiersza polecenia platformy Azure. W tym listę dostępu, udzielanie dostępu i usuwanie dostępu.
+description: Dowiedz się, jak zarządzać dostępem dla użytkowników, grup i aplikacji, przy użyciu kontroli dostępu opartej na rolach (RBAC) i wiersza polecenia platformy Azure. W tym jak lista dostępu, udzielić dostępu i spowodować usunięcie dostępu.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/03/2018
+ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 15ff519f5af7471d6adaae44e2af19422ad44fea
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 16577339f1aa33fbd1a8b90f4beaef1ee4ce806c
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294408"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36316400"
 ---
 # <a name="manage-access-using-rbac-and-azure-cli"></a>Zarządzanie dostępem przy użyciu RBAC i wiersza polecenia platformy Azure
 
@@ -27,9 +27,10 @@ ms.locfileid: "36294408"
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby zarządzać przypisań ról przy użyciu interfejsu wiersza polecenia Azure, musi mieć następujące wymagania wstępne:
+Aby zarządzać dostępem, jedną z następujących należy:
 
-* [Interfejs wiersza polecenia platformy Azure](/cli/azure). Możesz używać go w przeglądarce dzięki usłudze [Azure Cloud Shell](../cloud-shell/overview.md), albo [zainstalować](/cli/azure/install-azure-cli) w systemach macOS, Linux i Windows, a następnie uruchamiać z wiersza polecenia.
+* [Bash w chmurze Azure powłoki](/azure/cloud-shell/overview)
+* [Interfejs wiersza polecenia platformy Azure](/cli/azure)
 
 ## <a name="list-roles"></a>Lista ról
 
@@ -308,139 +309,7 @@ Poniższy przykład umożliwia usunięcie *czytnika* rolę z *zespołu Mack pods
 az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --scope /subscriptions/11111111-1111-1111-1111-111111111111
 ```
 
-## <a name="custom-roles"></a>Role niestandardowe
-
-### <a name="list-custom-roles"></a>Lista ról niestandardowych
-
-Aby wyświetlić listę ról, które są dostępne do przypisania w zakresie, należy użyć [listy definicji roli az](/cli/azure/role/definition#az-role-definition-list).
-
-Oba poniższe przykłady listy role niestandardowe w bieżącej subskrypcji:
-
-```azurecli
-az role definition list --custom-role-only true --output json | jq '.[] | {"roleName":.roleName, "roleType":.roleType}'
-```
-
-```azurecli
-az role definition list --output json | jq '.[] | if .roleType == "CustomRole" then {"roleName":.roleName, "roleType":.roleType} else empty end'
-```
-
-```Output
-{
-  "roleName": "My Management Contributor",
-  "type": "CustomRole"
-}
-{
-  "roleName": "My Service Operator Role",
-  "type": "CustomRole"
-}
-{
-  "roleName": "My Service Reader Role",
-  "type": "CustomRole"
-}
-
-...
-```
-
-### <a name="create-a-custom-role"></a>Tworzenie niestandardowej roli zabezpieczeń
-
-Aby utworzyć niestandardową rolę, użyj [utworzenia definicji roli az](/cli/azure/role/definition#az-role-definition-create). Definicja roli może być opisu JSON lub ścieżka do pliku zawierającego opis JSON.
-
-```azurecli
-az role definition create --role-definition <role_definition>
-```
-
-W poniższym przykładzie tworzona rola niestandardowa o nazwie *Operator maszyny wirtualnej*. Tę rolę niestandardową przypisuje dostęp do wszystkich operacji odczytu z *Microsoft.Compute*, *Microsoft.Storage*, i *Microsoft.Network* dostęp do dostawcy i przypisuje zasobów Aby rozpocząć, uruchom ponownie i monitorowania maszyn wirtualnych. Tę rolę niestandardową można w dwóch subskrypcji. W tym przykładzie używany jest plik JSON jako danych wejściowych.
-
-vmoperator.json
-
-```json
-{
-  "Name": "Virtual Machine Operator",
-  "IsCustom": true,
-  "Description": "Can monitor and restart virtual machines.",
-  "Actions": [
-    "Microsoft.Storage/*/read",
-    "Microsoft.Network/*/read",
-    "Microsoft.Compute/*/read",
-    "Microsoft.Compute/virtualMachines/start/action",
-    "Microsoft.Compute/virtualMachines/restart/action",
-    "Microsoft.Authorization/*/read",
-    "Microsoft.Resources/subscriptions/resourceGroups/read",
-    "Microsoft.Insights/alertRules/*",
-    "Microsoft.Support/*"
-  ],
-  "NotActions": [
-
-  ],
-  "AssignableScopes": [
-    "/subscriptions/11111111-1111-1111-1111-111111111111",
-    "/subscriptions/33333333-3333-3333-3333-333333333333"
-  ]
-}
-```
-
-```azurecli
-az role definition create --role-definition ~/roles/vmoperator.json
-```
-
-### <a name="update-a-custom-role"></a>Aktualizacja niestandardowej roli zabezpieczeń
-
-Aby zaktualizować niestandardowej roli zabezpieczeń, należy najpierw użyć [listy definicji roli az](/cli/azure/role/definition#az-role-definition-list) można pobrać definicji roli. Po drugie wprowadź żądane zmiany do definicji roli. Na koniec użyj [aktualizacji definicji roli az](/cli/azure/role/definition#az-role-definition-update) można zapisać definicji roli zaktualizowane.
-
-```azurecli
-az role definition update --role-definition <role_definition>
-```
-
-W poniższym przykładzie dodano *Microsoft.Insights/diagnosticSettings/* operacji *akcje* z *Operator maszyny wirtualnej* niestandardowej roli zabezpieczeń.
-
-vmoperator.json
-
-```json
-{
-  "Name": "Virtual Machine Operator",
-  "IsCustom": true,
-  "Description": "Can monitor and restart virtual machines.",
-  "Actions": [
-    "Microsoft.Storage/*/read",
-    "Microsoft.Network/*/read",
-    "Microsoft.Compute/*/read",
-    "Microsoft.Compute/virtualMachines/start/action",
-    "Microsoft.Compute/virtualMachines/restart/action",
-    "Microsoft.Authorization/*/read",
-    "Microsoft.Resources/subscriptions/resourceGroups/read",
-    "Microsoft.Insights/alertRules/*",
-    "Microsoft.Insights/diagnosticSettings/*",
-    "Microsoft.Support/*"
-  ],
-  "NotActions": [
-
-  ],
-  "AssignableScopes": [
-    "/subscriptions/11111111-1111-1111-1111-111111111111",
-    "/subscriptions/33333333-3333-3333-3333-333333333333"
-  ]
-}
-```
-
-```azurecli
-az role definition update --role-definition ~/roles/vmoperator.json
-```
-
-### <a name="delete-a-custom-role"></a>Usunięcia niestandardowej roli zabezpieczeń
-
-Aby usunąć niestandardową rolę, użyj [usunąć definicji roli az](/cli/azure/role/definition#az-role-definition-delete). Aby określić roli do usunięcia, użyj nazwy roli lub identyfikator roli. Aby określić identyfikator roli, należy użyć [listy definicji roli az](/cli/azure/role/definition#az-role-definition-list).
-
-```azurecli
-az role definition delete --name <role_name or role_id>
-```
-
-W następującym przykładzie *Operator maszyny wirtualnej* niestandardowej roli zabezpieczeń:
-
-```azurecli
-az role definition delete --name "Virtual Machine Operator"
-```
-
 ## <a name="next-steps"></a>Kolejne kroki
 
-[!INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
-
+- [Samouczek: Tworzenie niestandardowej roli zabezpieczeń przy użyciu wiersza polecenia platformy Azure](tutorial-custom-role-cli.md)
+- [Użyj wiersza polecenia platformy Azure do zarządzania zasobami Azure i grup zasobów](../azure-resource-manager/xplat-cli-azure-resource-manager.md)

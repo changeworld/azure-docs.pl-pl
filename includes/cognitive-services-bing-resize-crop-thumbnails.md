@@ -1,67 +1,76 @@
-Some Bing responses include URLs to thumbnail images served by Bing. You may resize and crop the thumbnail images. 
+Niektóre odpowiedzi Bing uwzględnić adresów URL do obrazów miniatur obsługiwane przez usługi Bing. Możesz zmieniać rozmiar i przycinanie obrazów miniatur. 
 
 > [!NOTE]
-> Ensure the size and cropping of the thumbnail provide a search scenario and respect third party rights, as required by [Search API Use and Display Requirements](/useanddisplayrequirements.md).
+> Sprawdź, czy rozmiar i przycinanie miniatury udostępniają scenariusza wyszukiwania oraz przestrzegania prawa innych firm, co jest wymagane przez użycie interfejsu API wyszukiwania usługi Bing i wyświetlić wymagania.
 
 
-To resize an image, include the w (width) and h (height) query parameters in the thumbnail’s URL. Specify the width and height in pixels. For example:  
+Aby zmienić rozmiar obrazu, obejmują Sz (szerokość) i (wysokość) parametry w adresie URL miniatury zapytania. Określ szerokość i wysokość w pikselach. Na przykład:  
   
 `https://<host>/th?id=JN.5l3yzwy%2f%2fHj59U6XhssIQ&pid=Api&w=200&h=200`  
   
-If you resize the image, its aspect ratio is maintained. To maintain the aspect ratio, white padding may be added to the boarder of the image. For example, if you resize a 480x359 image to 200x200 without cropping, the full width contains the image but the height contains 25 pixels of white padding at the top and bottom of the image. The same would be true if the image was 359x480 except the left and right boarders would contain white padding. If you crop the image, white padding is not added.  
-  
-The following picture shows the original size of a thumbnail image (480x300).  
-  
-![Original landscape image](./media/cognitive-services-bing-resize-crop/bing-resize-crop-landscape.PNG)  
-  
-The following picture shows the image resized to 200x200. The aspect ratio is maintained and the top and bottom boarders are padded with white (the black boarder is included to show the padding).  
-  
-![Resized landscape image](./media/cognitive-services-bing-resize-crop/bing-resize-crop-landscape-resized.PNG)  
-  
-If you specify dimensions that are greater than the image’s original width and height, the image is padded with white on the left and top boarders.  
-  
-To crop an image, include the c (crop) query parameter. The following are the possible values that you may specify.  
-  
-- 4&mdash;Blind Ratio  
-- 7&mdash;Smart Ratio  
-  
-If you request Smart Ratio cropping (c=7), the image is cropped from the center of the image’s region of interest outward while maintaining the image’s aspect ratio. The region of interest is the area of the image that Bing determines contains the most import parts. The following shows an example region of interest.  
-  
-![Region of interest](./media/cognitive-services-bing-resize-crop/bing-resize-crop-regionofinterest.PNG)
+Jeśli zmiana rozmiaru obrazu, jego współczynnik proporcji jest obsługiwane. Aby zachować współczynnik proporcji, Wypełnienie białe może można dodać do obramowania obrazu. Na przykład jeśli zmieniasz obraz 480 x 359 do 200 x 200 bez przycinania, pełnej szerokości zawiera obraz, ale wysokość zawiera 25 pikseli biały dopełnienie u góry i u dołu obrazu. Taki sam będzie mieć wartość true, jeśli obraz został 359 x 480, z wyjątkiem po lewej stronie i prawe krawędzie zawiera białe dopełnienia. Jeśli Przytnij obraz, Wypełnienie białe nie została dodana.  
 
-If you resize an image and request Smart Ratio cropping, the image is reduced to the requested size while maintaining the aspect ratio. The image is then cropped based on the resized dimensions. For example, if the resized width is less than or equal to the height, the image is cropped to the left and right of the center of the region of interest. Otherwise, the image is cropped to the top and bottom of the center of the region of interest.  
+ 
+Na poniższej ilustracji przedstawiono oryginalnego rozmiaru obrazów miniatur (480 x 300).  
   
-The following shows the image reduced to 200x200 using Smart Ratio cropping.  
+![Oryginalny obraz orientacji poziomej](./media/cognitive-services-bing-resize-crop/bing-resize-crop-landscape.PNG)  
   
-![Landscape image cropped to 200x200](./media/cognitive-services-bing-resize-crop/bing-resize-crop-landscape200x200c7.PNG)
+Na poniższej ilustracji przedstawiono zmiany rozmiaru 200 x 200 obrazu. Współczynnik proporcji jest obsługiwana i obramowań górny i dolny są dopełniane przy białe (czarnym obramowaniem jest dołączony do wyświetlenia uzupełnienie).  
   
-The following shows the image reduced to 200x100 using Smart Ratio cropping.  
+![Obraz po zmianie rozmiaru orientacji poziomej](./media/cognitive-services-bing-resize-crop/bing-resize-crop-landscape-resized.PNG)  
+
+
+
+Jeśli określisz wymiarów, które są większe niż oryginalna szerokość i wysokość obrazu, obraz jest wypełniane biały na lewej i górnej krawędzi.  
+  
+Aby przyciąć obraz, obejmują c (przycięcia) parametr zapytania. Poniżej przedstawiono możliwe wartości, które można określić.  
+  
+- 4&mdash;niewidome współczynnik  
+- 7&mdash;inteligentne współczynnik  
+  
+Jeśli żądanie jest wskaźnik inteligentny przycinanie (c = 7), obraz jest przycięty od środka obrazu obszaru zainteresowania na zewnątrz przy zachowaniu współczynnika proporcji obrazu. Obszaru zainteresowania jest obszar obrazu, który określa Bing zawiera większość elementów importu. Poniżej przedstawiono przykład region odsetek.  
+  
+![Region zainteresowań](./media/cognitive-services-bing-resize-crop/bing-resize-crop-regionofinterest.PNG)
+
+Jeśli rozmiar obrazu i żądania wskaźnik inteligentny przycinanie obrazu zostanie zmniejszona żądanego rozmiaru przy zachowaniu współczynnika proporcji. Obraz jest następnie przycięty, na podstawie którego rozmiar jest zmieniany wymiarów. Na przykład jeśli po zmianie rozmiaru szerokość jest większa niż wysokość, obraz jest przycięty po lewej i prawej centrum obszaru zainteresowania. W przeciwnym razie obraz jest przycięty do góry i u dołu centrum obszaru zainteresowania.  
+  
+ 
+Poniżej przedstawiono zmniejszona do 200 x 200 przy użyciu wskaźnik inteligentny przycinanie obrazu.  
+  
+![Przycięty 200 x 200 obrazu orientacji poziomej](./media/cognitive-services-bing-resize-crop/bing-resize-crop-landscape200x200c7.PNG)
+  
+Poniżej przedstawiono zmniejszona do 200 x 100 przy użyciu wskaźnik inteligentny przycinanie obrazu.  
    
-![Landscape image cropped to 200x100](./media/cognitive-services-bing-resize-crop/bing-resize-crop-landscape200x100c7.PNG)
+![Obraz pozioma przycięte do 200 x 100](./media/cognitive-services-bing-resize-crop/bing-resize-crop-landscape200x100c7.PNG)
   
-The following shows the image reduced to 100x200 using Smart Ratio cropping.  
+Poniżej przedstawiono zmniejszona do 100 x 200 przy użyciu wskaźnik inteligentny przycinanie obrazu.  
   
-![Landscape image cropped to 100x200](./media/cognitive-services-bing-resize-crop/bing-resize-crop-landscape100x200c7.PNG)
+![Przycięty 100 x 200 obrazu orientacji poziomej](./media/cognitive-services-bing-resize-crop/bing-resize-crop-landscape100x200c7.PNG)
+
+
+
+Jeśli Bing nie może określić region obrazu zainteresowań, Bing używa przycinanie stosunek ukryta.  
   
-If Bing cannot determine the image’s region of interest, Bing uses Blind Ratio cropping.  
+Jeśli żądanie jest ukryta stosunek przycinanie (c = 4), aby przyciąć obraz Bing stosowane są następujące reguły.  
   
-If you request Blind Ratio cropping (c=4), Bing uses the following rules to crop the image.  
+- Jeśli (oryginalną szerokość obrazu / oryginalną wysokość obrazu) < (żądanie szerokość obrazu / zażądał wysokość obrazu), obraz jest mierzony z lewym górnym rogu przycięte u dołu.  
+- Jeśli (oryginalny szerokość obrazu / oryginalną wysokość obrazu) > (żądanie szerokość obrazu / zażądał wysokość obrazu), obraz jest mierzony z Centrum i przycięte w lewo i prawo.  
+
+
+
+Poniżej przedstawiono obrazu pionowy, który jest 225 x 300.  
   
-- If (Original Image Width / Original Image Height) < (Requested Image Width / Requested Image Height), the image is measured from top left corner and cropped at the bottom.  
-- If (Original Image Width / Original Image Height) > (Requested Image Width / Requested Image Height), the image is measured from the center and cropped to the left and right.  
+![Oryginalny obraz słonecznika](./media/cognitive-services-bing-resize-crop/bing-resize-crop-sunflower.PNG)
   
-The following shows a portrait image that’s 225x300.  
+Poniżej przedstawiono obrazu zmniejszona do 200 x 200 przy użyciu przycinanie stosunek ukryta. Obraz jest mierzony z lewym górnym rogu, co w dolnej części obrazu jest obcinane.  
   
-![Original sunflower image](./media/cognitive-services-bing-resize-crop/bing-resize-crop-sunflower.PNG)
+![Obraz słonecznika przycięte 200 x 200](./media/cognitive-services-bing-resize-crop/bing-resize-crop-sunflower200x200c4.PNG)
   
-The following shows the image reduced to 200x200 using Blind Ratio cropping. The image is measured from the top left corner resulting in the bottom part of the image being cropped.  
+Poniżej przedstawiono obrazu zmniejszona do 200 x 100 przy użyciu przycinanie stosunek ukryta. Obraz jest mierzony z lewym górnym rogu, co w dolnej części obrazu jest obcinane.  
   
-![Sunflower image cropped to 200x200](./media/cognitive-services-bing-resize-crop/bing-resize-crop-sunflower200x200c4.PNG)
+![Obraz słonecznika przycięte do 200 x 100](./media/cognitive-services-bing-resize-crop/bing-resize-crop-sunflower200x100c4.PNG)
   
-The following shows the image reduced to 200x100 using Blind Ratio cropping. The image is measured from the top left corner resulting in the bottom part of the image being cropped.  
+Poniżej przedstawiono obrazu zmniejszona do 100 x 200 przy użyciu przycinanie stosunek ukryta. Obraz jest mierzony z Centrum powodujące lewy i prawy części obrazu jest obcinane.  
   
-![Sunflower image cropped to 200x100](./media/cognitive-services-bing-resize-crop/bing-resize-crop-sunflower200x100c4.PNG)
-  
-The following shows the image reduced to 100x200 using Blind Ratio cropping. The image is measured from the center resulting in the left and right parts of the image being cropped.  
-  
-![Sunflower image cropped to 100x200](./media/cognitive-services-bing-resize-crop/bing-resize-crop-sunflower100x200c4.PNG)
+![Obraz słonecznika przycięte 100 x 200](./media/cognitive-services-bing-resize-crop/bing-resize-crop-sunflower100x200c4.PNG)
+

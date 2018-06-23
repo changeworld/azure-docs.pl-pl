@@ -10,12 +10,12 @@ ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 23c9056bbfa6ae0be0f7c73a34250a2fff77f4d2
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 5325f23a13a181d912bbc8b26042de72855dc41e
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266010"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319092"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Jak wykonać kopię zapasową i przywrócić serwer w bazie danych Azure dla programu MySQL przy użyciu wiersza polecenia platformy Azure
 
@@ -32,32 +32,6 @@ Aby ukończyć ten przewodnik, potrzebne są:
 
 > [!IMPORTANT]
 > Ten przewodnik wymaga użycia interfejsu wiersza polecenia Azure w wersji 2.0 lub nowszej. Aby upewnić się, wersja, w wierszu polecenia interfejsu wiersza polecenia Azure, wprowadź `az --version`. Aby zainstalować lub uaktualnić, zobacz [zainstalować Azure CLI 2.0]( /cli/azure/install-azure-cli).
-
-## <a name="add-the-extension"></a>Dodawanie rozszerzenia
-Dodaj zaktualizowane rozszerzenie zarządzania usługi Azure Database for MySQL za pomocą następującego polecenia:
-```azurecli-interactive
-az extension add --name rdbms
-``` 
-
-Sprawdź, czy masz zainstalowaną poprawną wersję rozszerzenia. 
-```azurecli-interactive
-az extension list
-```
-
-Zwracany kod JSON powinien zawierać następujące informacje: 
-```json
-{
-    "extensionType": "whl",
-    "name": "rdbms",
-    "version": "0.0.5"
-}
-```
-
-Jeśli nie jest zwracana wersja 0.0.5, uruchom następujące polecenie, aby zaktualizować rozszerzenie: 
-```azurecli-interactive
-az extension update --name rdbms
-```
-
 
 ## <a name="set-backup-configuration"></a>Zestaw kopii zapasowych konfiguracji
 

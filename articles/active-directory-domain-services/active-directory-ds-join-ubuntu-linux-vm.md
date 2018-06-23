@@ -13,18 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 5cbed14553462d8aff16304e52b66da7ad2652e3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d9f4dc0883ced599dd13d0c5d52ff865e03b73ed
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217235"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332915"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Dołączanie maszyny wirtualnej systemu Ubuntu na platformie Azure do domeny zarządzanej
 W tym artykule przedstawiono sposób przyłączyć maszyny wirtualnej systemu Ubuntu Linux do domeny zarządzanej usług domenowych Azure AD.
 
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 Aby wykonać zadania opisane w tym artykule, należy:  
@@ -122,17 +123,17 @@ Teraz, wymagane pakiety są zainstalowane na maszynie wirtualnej systemu Linux, 
     sudo realm discover CONTOSO100.COM
     ```
 
-   > [!NOTE] 
+   > [!NOTE]
    > **Rozwiązywanie problemów:** Jeśli *odnajdowanie obszaru* nie może znaleźć domeny zarządzanej:
      * Upewnij się, że domena jest osiągalna z poziomu maszyny wirtualnej (ping spróbuj).
      * Sprawdź maszyny wirtualnej w rzeczywistości został wdrożony do tej samej sieci wirtualnej, w których są dostępne domeny zarządzanej.
      * Sprawdź, czy ustawienia serwera DNS dla sieci wirtualnej, aby wskazywał kontrolerów domeny zarządzanej zostały zaktualizowane.
    >
 
-2. Inicjowanie protokołu Kerberos. W terminalu SSH wpisz następujące polecenie: 
+2. Inicjowanie protokołu Kerberos. W terminalu SSH wpisz następujące polecenie:
 
-    > [!TIP] 
-    > * Upewnij się, że określ użytkownika, który należy do grupy "Administratorzy kontrolera domeny usługi AAD". 
+    > [!TIP]
+    > * Upewnij się, że określ użytkownika, który należy do grupy "Administratorzy kontrolera domeny usługi AAD".
     > * Określ nazwę domeny wielkimi literami, else kinit kończy się niepowodzeniem.
     >
 
@@ -140,9 +141,9 @@ Teraz, wymagane pakiety są zainstalowane na maszynie wirtualnej systemu Linux, 
     kinit bob@CONTOSO100.COM
     ```
 
-3. Dołącz maszynę do domeny. W terminalu SSH wpisz następujące polecenie: 
+3. Dołącz maszynę do domeny. W terminalu SSH wpisz następujące polecenie:
 
-    > [!TIP] 
+    > [!TIP]
     > Użyj tego samego konta użytkownika określonego w poprzednim kroku (kinit).
     >
 
@@ -175,7 +176,7 @@ Aby włączyć automatyczne tworzenie katalogu macierzystego po zalogowaniu uży
 ```
 sudo vi /etc/pam.d/common-session
 ```
-    
+
 Dodaj następujący wiersz w tym pliku poniżej wiersza "pam_sss.so opcjonalne sesji" i zapisz go:
 ```
 session required pam_mkhomedir.so skel=/etc/skel/ umask=0077

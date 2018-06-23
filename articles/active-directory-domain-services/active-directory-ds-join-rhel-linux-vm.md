@@ -13,17 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 93c96e71aea98598492ec32f13fddb0b0732196e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: fceeb9655562d7abf6930cc484b4a9eb275ee81e
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217059"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330805"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Przyłączanie maszyny wirtualnej z systemem Red Hat Enterprise Linux 7 do domeny zarządzanej
 W tym artykule przedstawiono sposób Dołącz maszynę wirtualną Red Hat Enterprise Linux (RHEL) 7 do domeny zarządzanej usług domenowych Azure AD.
+
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 Aby wykonać zadania opisane w tym artykule, należy:  
@@ -84,17 +86,17 @@ Teraz, wymagane pakiety są zainstalowane na maszynie wirtualnej systemu Linux, 
     sudo realm discover CONTOSO100.COM
     ```
 
-     > [!NOTE] 
+     > [!NOTE]
      > **Rozwiązywanie problemów:** Jeśli *odnajdowanie obszaru* nie może znaleźć domeny zarządzanej:
      * Upewnij się, że domena jest osiągalna z poziomu maszyny wirtualnej (ping spróbuj).
      * Sprawdź maszyny wirtualnej w rzeczywistości został wdrożony do tej samej sieci wirtualnej, w których są dostępne domeny zarządzanej.
      * Sprawdź, czy ustawienia serwera DNS dla sieci wirtualnej, aby wskazywał kontrolerów domeny zarządzanej zostały zaktualizowane.
      >
 
-2. Inicjowanie protokołu Kerberos. W terminalu SSH wpisz następujące polecenie: 
+2. Inicjowanie protokołu Kerberos. W terminalu SSH wpisz następujące polecenie:
 
-    > [!TIP] 
-    > * Upewnij się, że określ użytkownika, który należy do grupy "Administratorzy kontrolera domeny usługi AAD". 
+    > [!TIP]
+    > * Upewnij się, że określ użytkownika, który należy do grupy "Administratorzy kontrolera domeny usługi AAD".
     > * Określ nazwę domeny wielkimi literami, else kinit kończy się niepowodzeniem.
     >
 
@@ -102,9 +104,9 @@ Teraz, wymagane pakiety są zainstalowane na maszynie wirtualnej systemu Linux, 
     kinit bob@CONTOSO100.COM
     ```
 
-3. Dołącz maszynę do domeny. W terminalu SSH wpisz następujące polecenie: 
+3. Dołącz maszynę do domeny. W terminalu SSH wpisz następujące polecenie:
 
-    > [!TIP] 
+    > [!TIP]
     > Użyj tego samego konta użytkownika określonego w poprzednim kroku (kinit).
     >
 

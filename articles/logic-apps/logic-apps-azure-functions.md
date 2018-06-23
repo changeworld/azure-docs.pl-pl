@@ -15,12 +15,12 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: befdd7af0a91623af4c5ea0fd957141cad84eb53
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d8d07e2ba58b7067d59baf5f0a4ea3228d6aabbc
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297873"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331176"
 ---
 # <a name="add-and-run-custom-code-for-logic-apps-through-azure-functions"></a>Dodaj i uruchomienia niestandardowego kodu dla usługi logic apps za pomocą usługi Azure Functions
 
@@ -62,7 +62,7 @@ Możesz wyzwolić aplikacji logiki z wewnątrz funkcji. Zobacz [logiki aplikacji
 
 ### <a name="create-a-function-from-logic-app-designer"></a>Tworzenie funkcji przy użyciu projektanta aplikacji logiki
 
-Można również utworzyć funkcję webhook node.js przy użyciu projektanta. Najpierw wybierz **usługi Azure Functions w moim regionie** , a następnie wybierz kontener dla funkcji. Jeśli jeszcze nie masz kontenera, należy utworzyć jeden z [portalu Azure Functions](https://functions.azure.com/signin). Następnie wybierz **Utwórz nowy**.  
+Można również utworzyć funkcję webhook node.js przy użyciu projektanta. Najpierw wybierz **usługi Azure Functions w moim regionie** , a następnie wybierz kontener dla funkcji. Jeśli jeszcze nie masz kontenera, należy utworzyć jeden z [portalu Azure Functions](https://functions.azure.com/). Następnie wybierz **Utwórz nowy**.  
 
 Aby wygenerować szablon na podstawie danych, który ma zostać obliczeniowe, należy określić obiekt kontekstu, który chcesz przekazać do funkcji. Ten obiekt musi być obiektem JSON. Na przykład jeśli przekazać zawartość pliku z akcji FTP, ładunku kontekstu wygląda w tym przykładzie:
 

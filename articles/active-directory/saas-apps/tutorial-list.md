@@ -16,12 +16,12 @@ ms.date: 06/18/2018
 ms.author: markvi
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: 9aa060c6f28adb8361fcb9267ea658fda27b442c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 193be37f4c804d087bf404f14bc60e27349038ad
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223454"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319041"
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>Integracja aplikacji SaaS w usłudze Azure Active Directory
 
@@ -137,7 +137,7 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-ciscocloud-tutorial.png)| [Chmura firmy Cisco](ciscocloud-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-ciscocloudlock-tutorial.png)| [Cisco Cloudlock](ciscocloudlock-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-cisco-spark-tutorial.png)| [Cisco Spark](cisco-spark-tutorial.md)|
-| ![logo](./media/tutorial-list/active-directory-saas-cisco-webex-tutorial.png)| [Cisco Webex](cisco-webex-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-cisco-webex-tutorial.png)| [Cisco Webex](cisco-webex-tutorial.md)|[Cisco Webex — Inicjowanie obsługi użytkowników](cisco-webex-provisioning-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-sharefile-tutorial.png)| [Citrix ShareFile](sharefile-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-clarizen-tutorial.png)| [Clarizen](clarizen-tutorial.md)|[Clarizen — Inicjowanie obsługi użytkowników](clarizen-provisioning-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-clearreview-tutorial.png)| [Wyczyść przeglądu](clearreview-tutorial.md)|
@@ -302,7 +302,7 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-kantegassoforjira-tutorial.png)| [Usługa rejestracji Jednokrotnej Kantega dla JIRA](kantegassoforjira-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-keeperpasswordmanager-tutorial.png)| [Menedżer haseł Opiekun & cyfrowe magazynu](keeperpasswordmanager-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-kindling-tutorial.png)| [Kindling](kindling-tutorial.md)|
-| ![logo](./media/tutorial-list/active-directory-saas-kintone-tutorial.png)| [kintone](kintone-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-kintone-tutorial.png)| [Kintone](kintone-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-kiteworks-tutorial.png)| [Kiteworks](kiteworks-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-klue-tutorial.png)| [Klue](klue-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-knowbe4-tutorial.png)| [Rozpoznawanie szkolenia w zakresie zabezpieczeń KnowBe4](knowbe4-tutorial.md)|
@@ -403,7 +403,7 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-pantheon-tutorial.png)| [Pantheon](pantheon-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-patentsquare-tutorial.png)| [PatentSQUARE](patentsquare-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-pegasystems-tutorial.png)| [Systemy Pega](pegasystems-tutorial.md)|
-| ![logo](./media/tutorial-list/active-directory-saas-people-tutorial.png)| [Osoby](people-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-people-tutorial.png)| [osoby](people-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-peoplecart-tutorial.png)| [Peoplecart](peoplecart-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-perceptionunitedstates-tutorial.png)| [Z punktu widzenia użytkownika Stanów Zjednoczonych (z systemem innym niż UltiPro)](perceptionunitedstates-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-performancecentre-tutorial.png)| [PerformanceCentre](performancecentre-tutorial.md)|

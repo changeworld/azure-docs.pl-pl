@@ -10,21 +10,21 @@ editor: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 07/14/2017
-ms.openlocfilehash: de41120a3a9d399dafecde4225d56767efcd9f38
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 850b13becb2137c9e881b2d6a657bbd06216e96e
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624833"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317150"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>Uruchamianie skryptu U-SQL i lokalnie debugowania w programie Visual Studio Code
 W tym artykule opisano sposób uruchamiania zadań U-SQL na maszynie lokalnej, aby przyspieszyć we wczesnej fazie kodowania lub Aby debugować kod lokalnie w programie Visual Studio Code. Aby uzyskać instrukcje dotyczące usługi Azure Data Lake narzędzia dla programu Visual Studio Code, zobacz [narzędzi użycia usługi Azure Data Lake Tools dla Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md). 
 
 ## <a name="set-up-the-u-sql-local-run-environment"></a>Konfigurowanie środowiska lokalnego uruchamiania skryptu U-SQL
 
-1. Wybierz kombinację klawiszy Ctrl + Shift + P, aby otworzyć palety polecenia, a następnie wprowadź **ADL: pobieranie lokalne Uruchom zależności** pobierania pakietów.  
+1. Wybierz kombinację klawiszy Ctrl + Shift + P, aby otworzyć palety polecenia, a następnie wprowadź **ADL: Pobierz pakiet lokalny Uruchom** pobierania pakietów.  
 
-   ![Pobieranie pakietów ADL LocalRun zależności](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/DownloadLocalRun.png)
+   ![Pobieranie pakietów ADL LocalRun zależności](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/downloadtheadllocalrunpackage.png)
 
 2. Zlokalizuj pakiety zależności ze ścieżki pokazano **dane wyjściowe** okienku, a następnie zainstaluj BuildTools i Win10SDK 10240. Oto przykład ścieżki:  
 `C:\Users\xxx\AppData\Roaming\LocalRunDependency` 
@@ -44,7 +44,7 @@ W tym artykule opisano sposób uruchamiania zadań U-SQL na maszynie lokalnej, a
 
 
 ## <a name="start-the-local-run-service-and-submit-the-u-sql-job-to-a-local-account"></a>Uruchom usługę uruchamiania lokalnego i przesłać zadanie U-SQL do lokalnego konta 
-Użytkownik po raz pierwszy, można użyć **ADL: pobieranie lokalne Uruchom zależności** pobierania lokalnego uruchamiania pakietów, jeśli nie masz [Konfigurowanie lokalnego środowiska uruchamiania skryptu U-SQL](#set-up-the-u-sql-local-run-environment).
+Aby użytkownik po raz pierwszy, należy użyć **ADL: Pobierz pakiet lokalny Uruchom** pobierania lokalnego uruchamiania pakietów, jeśli nie masz [Konfigurowanie lokalnego środowiska uruchamiania skryptu U-SQL](#set-up-the-u-sql-local-run-environment).
 
 1. Wybierz kombinację klawiszy Ctrl + Shift + P, aby otworzyć palety polecenia, a następnie wprowadź **ADL: Uruchom usługę lokalnego uruchamiania**.   
 2. Wybierz **Akceptuj** aby zaakceptować postanowienia licencyjne dotyczące oprogramowania firmy Microsoft po raz pierwszy. 
@@ -65,7 +65,7 @@ Użytkownik po raz pierwszy, można użyć **ADL: pobieranie lokalne Uruchom zal
 ## <a name="start-a-local-debug-for-the-u-sql-job"></a>Uruchom lokalny debugowania dla zadania skryptu U-SQL  
 Dla pierwszego użytkownika:
 
-1. Użyj **ADL: pobieranie lokalne Uruchom zależności** pobierania lokalnego uruchamiania pakietów, jeśli nie masz [Konfigurowanie lokalnego środowiska uruchamiania skryptu U-SQL](#set-up-the-u-sql-local-run-environment).
+1. Użyj **ADL: Pobierz pakiet lokalny Uruchom** pobierania lokalnego uruchamiania pakietów, jeśli nie masz [Konfigurowanie lokalnego środowiska uruchamiania skryptu U-SQL](#set-up-the-u-sql-local-run-environment).
 2. Zainstaluj .NET Core SDK 2.0 zgodnie z sugestią podaną w oknie komunikatu, jeśli nie jest zainstalowany.
  
   ![Przypomnienie instaluje Dotnet](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/remind-install-dotnet.png)

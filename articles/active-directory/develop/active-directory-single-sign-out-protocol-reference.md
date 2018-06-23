@@ -3,7 +3,7 @@ title: Azure pojedynczego Wyloguj protokołu SAML | Dokumentacja firmy Microsoft
 description: W tym artykule opisano jednego protokołu SAML Sign-Out w usłudze Azure Active Directory
 services: active-directory
 documentationcenter: .net
-author: priyamohanram
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 0e4aa75d-d1ad-4bde-a94c-d8a41fb0abe6
@@ -14,21 +14,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
-ms.author: priyamo
+ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 9ec99ffc64138cf1cd94e0f11077cdc5d86dbc57
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.reviewer: hirsin
+ms.openlocfilehash: c8373df67adbb93e25ab5a31a254efe70581d32d
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34155501"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317681"
 ---
 # <a name="single-sign-out-saml-protocol"></a>Protokół pojedynczego SAML wylogowania
-Azure Active Directory (Azure AD) obsługuje SAML 2.0 sieci web przeglądarce jeden profil wylogowania. Dla pojedynczego wylogowania działał prawidłowo **LogoutURL** dla aplikacji musi być jawnie zarejestrowana w usłudze Azure AD podczas rejestracji aplikacji. Usługi Azure AD używa LogoutURL przekierowywać użytkowników po ich wyrejestrowany.
 
-Ten diagram przedstawia przepływ pracy pojedynczy proces wylogowywania usługi Azure AD.
+Azure Active Directory (Azure AD) obsługuje SAML 2.0 sieci web przeglądarce jeden profil wylogowania. Dla pojedynczego wylogowania działał prawidłowo **LogoutURL** dla aplikacji musi być jawnie zarejestrowana w usłudze Azure AD podczas rejestracji aplikacji. Usługi Azure AD używa LogoutURL przekierowywać użytkowników po ich zarejestrowaniu.
 
-![Pojedynczy Wyloguj przepływu pracy](media/active-directory-single-sign-out-protocol-reference/active-directory-saml-single-sign-out-workflow.png)
+Na poniższym diagramie przedstawiono przepływ pracy pojedynczy proces wylogowywania usługi Azure AD.
+
+![Azure AD logowania jednokrotnego limit przepływu pracy](media/active-directory-single-sign-out-protocol-reference/active-directory-saml-single-sign-out-workflow.png)
 
 ## <a name="logoutrequest"></a>LogoutRequest
 Wysyła usługi chmury `LogoutRequest` komunikatu do usługi Azure AD, aby wskazać, że sesja została zakończona. Poniższy fragment przedstawiono przykładowe `LogoutRequest` elementu.
@@ -43,9 +45,9 @@ Wysyła usługi chmury `LogoutRequest` komunikatu do usługi Azure AD, aby wskaz
 ### <a name="logoutrequest"></a>LogoutRequest
 `LogoutRequest` Element wysyłane do usługi Azure AD wymaga następujących atrybutów:
 
-* `ID` : Identyfikuje wylogowania żądania. Wartość `ID` nie powinny rozpoczynać się cyfrą. Typowy rozwiązaniem jest Dołącz **identyfikator** reprezentacji ciągu identyfikatora GUID.
-* `Version` : Wartość tego elementu, aby ustawić **2.0**. Ta wartość jest wymagana.
-* `IssueInstant` : W tym `DateTime` ciąg o wartości koordynować czasu uniwersalnego (UTC) i [obustronne formatu ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Usługi Azure AD oczekuje wartości tego typu, ale nie obsługuje wymuszania.
+* `ID` -Identyfikuje wylogowania żądania. Wartość `ID` nie powinny rozpoczynać się cyfrą. Typowy rozwiązaniem jest Dołącz **identyfikator** reprezentacji ciągu identyfikatora GUID.
+* `Version` — Wartość tego elementu, aby ustawić **2.0**. Ta wartość jest wymagana.
+* `IssueInstant` -To jest `DateTime` ciąg o wartości koordynować czasu uniwersalnego (UTC) i [obustronne formatu ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Usługi Azure AD oczekuje wartości tego typu, ale nie jej wymusić.
 
 ### <a name="issuer"></a>Wystawca
 `Issuer` Element `LogoutRequest` musi dokładnie pasować **ServicePrincipalNames** w usłudze w chmurze w usłudze Azure AD. Zwykle ta jest równa **identyfikator URI aplikacji** określonym podczas rejestracji aplikacji.

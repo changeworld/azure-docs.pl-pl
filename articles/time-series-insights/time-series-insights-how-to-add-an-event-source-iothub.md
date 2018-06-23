@@ -10,12 +10,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/21/2017
-ms.openlocfilehash: b970d01c586e016d47b0f0480d73f06211969814
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 1cc8518e84bd9fe7a1f03a2f5d6ccdbac8fb78e3
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294884"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330598"
 ---
 # <a name="how-to-add-an-iot-hub-event-source-to-time-series-insights-environment"></a>Jak dodać źródła zdarzenia Centrum IoT środowiska Insights serii czasu
 W tym artykule opisano, jak przy użyciu portalu Azure Dodaj źródło zdarzenia, które odczytuje dane z Centrum IoT w środowisku Insights serii czasu.
@@ -25,6 +25,22 @@ W tym artykule opisano, jak przy użyciu portalu Azure Dodaj źródło zdarzenia
 - Tworzenie Centrum IoT. Aby uzyskać więcej informacji o centra IoT, zobacz [tworzenia Centrum IoT przy użyciu portalu Azure](../iot-hub/iot-hub-create-through-portal.md)
 - Centrum IoT musi wysyłane podczas zdarzenia aktywne wiadomości.
 - Utwórz dedykowanej grupy klientów w Centrum IoT dla środowiska szczegółowe informacje o czasie serii korzystać z. Każdego źródła zdarzeń Insights serii czasu musi mieć własną dedykowanej grupy klientów, które nie są współużytkowane z innym klientom. Jeśli wielu czytników korzystanie ze zdarzeń z tej samej grupy konsumentów, wszystkich czytelników prawdopodobnie błędy. Aby uzyskać więcej informacji, zobacz [Centrum IoT — przewodnik dewelopera](../iot-hub/iot-hub-devguide.md).
+
+### <a name="add-a-consumer-group-to-your-iot-hub"></a>Dodaj grupy odbiorców do Centrum IoT
+Grupy konsumentów są używane przez aplikacje w celu pobierania danych z usługą centra IoT Azure. Podaj dedykowanej grupy klientów, na potrzeby używania przez tego czasu serii Insights środowiska, niezawodnie odczytać danych z Centrum IoT.
+
+Aby dodać nowe grupy odbiorców do Centrum IoT, wykonaj następujące kroki:
+1. W portalu Azure zlokalizuj i Otwórz Centrum IoT.
+
+2. W obszarze **wiadomości** nagłówek, wybierz **punkty końcowe**. 
+
+   ![Dodaj grupy odbiorców](media/time-series-insights-how-to-add-an-event-source-iothub/5-add-consumer-group.png)
+
+3. Wybierz **zdarzenia** punktu końcowego, a **właściwości** zostanie otwarta strona.
+
+4. W obszarze **grupy konsumentów** nagłówek, podaj nową nazwę unikatową dla grupy odbiorców. Użyj tej samej nazwie w środowisku Insights serii czasu podczas tworzenia nowego źródła zdarzenia.
+
+5. Wybierz **zapisać** Aby zapisać nową grupę odbiorców.
 
 ## <a name="add-a-new-event-source"></a>Dodaj nowe źródło zdarzeń
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
@@ -73,27 +89,13 @@ W tym artykule opisano, jak przy użyciu portalu Azure Dodaj źródło zdarzenia
    | Format serializacji zdarzeń | Kod JSON jest dostępne tylko serializacji w chwili obecnej. Komunikaty zdarzeń musi być w następującym formacie, lub żadne dane nie mogą być odczytywane. |
    | Nazwa właściwości sygnatury czasowej | Aby określić tę wartość, należy zrozumieć format komunikatu z danymi wiadomości wysyłane do Centrum IoT. Ta wartość jest **nazwa** właściwości określonego zdarzenia w danych wiadomości, który ma być używany jako znacznik czasu zdarzeń. Wartość jest rozróżniana wielkość liter. Jeśli pole pozostanie puste, **czasu umieścić w kolejce zdarzenia** w zdarzeniu źródła jest używany jako znacznik czasu zdarzeń. |
 
-10. Wybierz **Utwórz** można dodać nowego źródła zdarzenia.
+10. Dodaj dedykowane TSI konsumenta nazwę grupy dodane do Centrum IoT.
+
+11. Wybierz **Utwórz** można dodać nowego źródła zdarzenia.
 
    ![Kliknięcie pozycji Utwórz](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png)
 
    Po utworzeniu źródła zdarzeń usługa Time Series Insights automatycznie rozpocznie przesyłanie strumieni danych do środowiska.
-
-### <a name="add-a-consumer-group-to-your-iot-hub"></a>Dodaj grupy odbiorców do Centrum IoT
-Grupy konsumentów są używane przez aplikacje w celu pobierania danych z usługą centra IoT Azure. Podaj dedykowanej grupy klientów, na potrzeby używania przez tego czasu serii Insights środowiska, niezawodnie odczytać danych z Centrum IoT.
-
-Aby dodać nowe grupy odbiorców do Centrum IoT, wykonaj następujące kroki:
-1. W portalu Azure zlokalizuj i Otwórz Centrum IoT.
-
-2. W obszarze **wiadomości** nagłówek, wybierz **punkty końcowe**. 
-
-   ![Dodaj grupy odbiorców](media/time-series-insights-how-to-add-an-event-source-iothub/5-add-consumer-group.png)
-
-3. Wybierz **zdarzenia** punktu końcowego, a **właściwości** zostanie otwarta strona.
-
-4. W obszarze **grupy konsumentów** nagłówek, podaj nową nazwę unikatową dla grupy odbiorców. Użyj tej samej nazwie w środowisku Insights serii czasu podczas tworzenia nowego źródła zdarzenia.
-
-5. Wybierz **zapisać** Aby zapisać nową grupę odbiorców.
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Definiowanie zasad dostępu danych](time-series-insights-data-access.md) do zabezpieczania danych.

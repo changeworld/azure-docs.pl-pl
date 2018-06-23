@@ -7,19 +7,18 @@ author: jeevansd
 manager: mtillman
 ms.assetid: e15206ac-74b0-46e4-9329-892c7d242ec0
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/21/2017
+ms.date: 06/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 6fe7cad2910bed2dc08180d28fdf1af1d6cffd9a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 7267f8fa1ed900d1bac58b4fa61f076e5949d712
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223420"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319109"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hightail"></a>Samouczek: Integracji Azure Active Directory z Hightail
 
@@ -105,31 +104,29 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     ![Konfigurowanie rejestracji jednokrotnej][4]
 
 2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
- 
+
     ![Konfigurowanie rejestracji jednokrotnej](./media/hightail-tutorial/tutorial_hightail_samlbase.png)
 
-3. Na **Hightail domeny i adres URL** sekcji, wykonaj następujące czynności:
+3. Na **Hightail domeny i adres URL** sekcji, wykonaj następujące kroki, aby skonfigurować aplikację w **IDP** inicjowane tryb:
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/hightail-tutorial/tutorial_hightail_url.png)
 
-     W **adres URL odpowiedzi** tekstowym, wpisz adres URL jako: `https://www.hightail.com/samlLogin?phi_action=app/samlLogin&subAction=handleSamlResponse`
+    W **adres URL odpowiedzi** tekstowym, wpisz adres URL jako: `https://www.hightail.com/samlLogin?phi_action=app/samlLogin&subAction=handleSamlResponse`
 
-    > [!NOTE] 
-    > Powyższe nie jest rzeczywistą wartość. Wartość zaktualizuje rzeczywiste odpowiedzi adres URL, który znajduje się w dalszej części tego samouczka.
- 
-4. Na **Hightail domeny i adres URL** sekcji, jeśli chcesz skonfigurować aplikację w **SP zainicjował tryb**, wykonaj następujące czynności:
-    
+    > [!NOTE]
+    > Wartość adresu URL odpowiedzi nie jest rzeczywistą wartość. Wartość adresu URL odpowiedzi zaktualizuje rzeczywiste odpowiedzi adres URL, który znajduje się w dalszej części tego samouczka.
+
+4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** inicjowane tryb:
+
     ![Konfigurowanie rejestracji jednokrotnej](./media/hightail-tutorial/tutorial_hightail_url1.png)
 
-    a. Kliknij przycisk **Pokaż zaawansowane ustawienia adresu URL**.
-
-    b. W **na adres URL logowania** tekstowym, wpisz adres URL jako: `https://www.hightail.com/loginSSO`
+    W **na adres URL logowania** tekstowym, wpisz adres URL jako: `https://www.hightail.com/loginSSO`
 
 4. Na **certyfikat podpisywania SAML** kliknij **certyfikatu (Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/hightail-tutorial/tutorial_hightail_certificate.png) 
 
-5. Hightail aplikacji oczekuje potwierdzenia języka SAML w określonym formacie. Skonfiguruj następujące oświadczeń dla tej aplikacji. Możesz zarządzać wartości tych atrybutów z **"Atrribute"** aplikacji. Poniższy zrzut ekranu przedstawia przykład tego. 
+5. Hightail aplikacji oczekuje potwierdzenia języka SAML w określonym formacie. Skonfiguruj następujące oświadczeń dla tej aplikacji. Możesz zarządzać wartości tych atrybutów z **"Atrybutu"** aplikacji. Poniższy zrzut ekranu przedstawia przykład tego. 
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/hightail-tutorial/tutorial_hightail_attribute.png) 
 
@@ -153,7 +150,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     c. Z **wartość** listy, wpisz wartość atrybutu wyświetlany dla danego wiersza.
 
     d. Pozostaw **Namespace** puste.
-    
+
     e. Kliknij przycisk **OK**.
 
 7. Kliknij przycisk **zapisać** przycisku.
@@ -162,41 +159,32 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
 8. Na **Hightail konfiguracji** kliknij **skonfigurować Hightail** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/hightail-tutorial/tutorial_hightail_configure.png) 
+    ![Konfigurowanie rejestracji jednokrotnej](./media/hightail-tutorial/tutorial_hightail_configure.png)
 
-    >[!NOTE] 
+    >[!NOTE]
     >Przed rozpoczęciem konfigurowania rejestracji jednokrotnej w aplikacji Hightail, skontaktuj się z białą listę domenę poczty e-mail z Hightail zespołu, aby wszyscy użytkownicy, którzy korzystają z tej domeny można używać funkcji rejestracji jednokrotnej.
 
+9. W innym oknie przeglądarki Otwórz **Hightail** portalu administratora.
 
-9. Aby uzyskać logowania jednokrotnego skonfigurowane dla aplikacji, należy logowania jednokrotnego dla Twojej dzierżawy Hightail jako administrator.
-   
-    a. W menu u góry kliknij **konta** i wybierz **skonfigurować SAML**.
- 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/hightail-tutorial/tutorial_hightail_001.png) 
+10. Polecenie **ikona użytkownika** w prawym górnym rogu strony. 
 
-    b. Zaznacz pole wyboru z **Włącz uwierzytelnianie SAML**.
+    ![Konfigurowanie rejestracji jednokrotnej](./media/hightail-tutorial/configure1.png)
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/hightail-tutorial/tutorial_hightail_002.png) 
+11. Kliknij przycisk **widoku konsoli administracyjnej** kartę.
 
-    c. Otwórz w Notatniku pobrany z portalu Azure certyfikatu zakodowanego base-64, skopiuj zawartość go do Schowka, a następnie wklej go do **SAML certyfikat podpisywania tokenu** pola tekstowego.
+    ![Konfigurowanie rejestracji jednokrotnej](./media/hightail-tutorial/configure2.png)
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/hightail-tutorial/tutorial_hightail_003.png) 
+12. W menu u góry kliknij **SAML** karcie i wykonaj następujące czynności:
 
-    d. W **SAML urzędu (dostawcy tożsamości)** pole tekstowe, Wklej wartość **SAML pojedynczy znak na adres URL usługi** skopiowany z portalu Azure.
+    ![Konfigurowanie rejestracji jednokrotnej](./media/hightail-tutorial/configure3.png)
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/hightail-tutorial/tutorial_hightail_004.png)
+    a. W **adres URL logowania** pole tekstowe, Wklej wartość **SAML pojedynczy znak na adres URL usługi** skopiowany z portalu Azure.
 
-    e. Jeśli chcesz skonfigurować aplikację w **IDP zainicjował tryb** wybierz **"Dostawcy tożsamości (IdP) zainicjował logowania"**. Jeśli **SP zainicjował tryb** wybierz **"Dostawcy usług (SP) zainicjował logowania"**.
+    b. Otwórz w Notatniku pobrany z portalu Azure certyfikatu zakodowanego base-64, skopiuj zawartość go do Schowka, a następnie wklej go do **certyfikatu SAML** pola tekstowego.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/hightail-tutorial/tutorial_hightail_006.png)
+    c. Kliknij przycisk **KOPIOWANIA** Aby skopiować adres URL klienta SAML dla swojego wystąpienia, a następnie wklej je **adres URL odpowiedzi** textbox w **Hightail domeny i adres URL** sekcji z portalu Azure.
 
-    f. Skopiuj adres URL klienta SAML dla swojego wystąpienia, a następnie wklej je **adres URL odpowiedzi** textbox w **Hightail domeny i adres URL** sekcji z portalu Azure.
-    
-    g. Kliknij pozycję **Zapisz**.
-
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    d. Kliknij przycisk **zapisać konfiguracje**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
@@ -256,7 +244,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Przypisz użytkownika][202] 
+    ![Przypisz użytkownika][202]
 
 4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
@@ -267,7 +255,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
-    
+
 ### <a name="testing-single-sign-on"></a>Testowanie rejestracji jednokrotnej
 
 Celem tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
@@ -279,8 +267,6 @@ Po kliknięciu kafelka Hightail w panelu dostępu użytkownik powinien pobrać a
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
-
 
 <!--Image references-->
 

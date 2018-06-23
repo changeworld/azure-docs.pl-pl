@@ -2,9 +2,9 @@
 Po utworzeniu magazynu usług odzyskiwania, należy zainstalować agenta kopii zapasowej na wszystkich maszynach z systemem Windows (Windows Server, klienta systemu Windows, serwer System Center Data Protection Manager lub serwer kopii zapasowej Azure machine) umożliwia wykonywanie kopii zapasowych danych na platformie Azure.
 
 1. Otwórz swoją subskrypcję w [Azure Portal](https://ms.portal.azure.com/).
-2. W menu po lewej stronie wybierz **wszystkie usługi** i na liście usług wpisz **usług odzyskiwania**. Kliknij przycisk **Magazyny usług odzyskiwania**.
+2. W menu po lewej stronie wybierz pozycję **Wszystkie usługi**, a następnie na liście usług wpisz **Recovery Services**. Kliknij pozycję **Magazyny usługi Recovery Services**.
 
-   ![Otwórz magazyn usług odzyskiwania](../articles/backup/media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault_2.png)
+   ![Otwieranie magazynu usługi Recovery Services](../articles/backup/media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault_2.png)
 3. Na stronie Szybki Start kliknij **klienta dla systemu Windows Server lub System Center Data Protection Manager lub Windows** opcję w obszarze **Pobierz agenta**. Kliknij przycisk **zapisać** Aby skopiować go na komputerze lokalnym.
    
     ![Zapisz agenta](./media/backup-install-agent/agent.png)
@@ -18,7 +18,7 @@ Po utworzeniu magazynu usług odzyskiwania, należy zainstalować agenta kopii z
    
     ![Poświadczenia magazynu](./media/backup-install-agent/vc.png)
    
-    Plik poświadczeń magazynu jest prawidłowa tylko dla 48 godzin (po jej pobraniu, z portalu). W przypadku napotkania jakiegokolwiek błędu w tym ekranu (np. "plik poświadczeń magazynu określony limit czasu"), zaloguj się do portalu Azure i ponownie Pobierz plik poświadczeń magazynu.
+    Plik poświadczeń magazynu jest prawidłowa tylko dla 48 godzin (po jej pobraniu, z portalu). W razie wystąpienia błędu w tym ekranie (np. "poświadczenia magazynu utracił ważność podany plik"), zaloguj się do portalu Azure i ponownie Pobierz plik poświadczeń magazynu.
    
     Upewnij się, że aplikacja Instalator ma dostęp do pliku poświadczeń magazynu. Jeśli wystąpią błędy dotyczące dostępu, skopiuj plik poświadczeń magazynu do tymczasowej lokalizacji na komputerze lokalnym i spróbuj ponownie wykonać operację.
    

@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/14/2017
 ms.author: celested
-ms.reviewer: dastrock
-ms.openlocfilehash: c1c86f21d5a99cf251b0b83f41576c2cdaf96dfb
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.reviewer: hirsin, dastrock
+ms.openlocfilehash: 0b3e7d9b7a01767e44c7c59c7250808290a03c30
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157609"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319228"
 ---
 # <a name="migrate-from-the-azure-access-control-service"></a>Migrowanie z usługi kontroli dostępu platformy Azure
 
@@ -154,7 +154,7 @@ Na wysokim poziomie *usługi Azure Active Directory jest prawdopodobnie najlepsz
 | **Protokoły i zgodności zestawu SDK** | | |
 | WIF | Obsługiwane | Obsługiwane, ale ograniczone instrukcje są dostępne |
 | WS-Federation | Obsługiwane | Obsługiwane |
-| Uwierzytelnianie OAuth 2.0 | Obsługa wersji roboczej 13 | Obsługa RFC 6749, większość nowoczesnych specyfikacji |
+| OAuth 2.0 | Obsługa wersji roboczej 13 | Obsługa RFC 6749, większość nowoczesnych specyfikacji |
 | WS-Trust | Obsługiwane | Nieobsługiwane |
 | **Formaty tokenów** | | |
 | JWT | Obsługiwane w wersji Beta | Obsługiwane |
@@ -217,7 +217,7 @@ W poniższej tabeli porównano funkcje kontroli dostępu, które mają zastosowa
 | **Protokoły i zgodności zestawu SDK** | | |
 | Program Windows Identity Foundation (WIF) | Obsługiwane | Nieobsługiwane |
 | WS-Federation | Obsługiwane | Nieobsługiwane |
-| Uwierzytelnianie OAuth 2.0 | Obsługa wersji roboczej 13 | Obsługa RFC 6749, większość nowoczesnych specyfikacji |
+| OAuth 2.0 | Obsługa wersji roboczej 13 | Obsługa RFC 6749, większość nowoczesnych specyfikacji |
 | WS-Trust | Obsługiwane | Nieobsługiwane |
 | **Formaty tokenów** | | |
 | JWT | Obsługiwane w wersji Beta | Obsługiwane |
@@ -292,7 +292,7 @@ Umożliwia także usługi Azure AD do uwierzytelniania serwera do serwera przy u
 | ---------- | ----------- | ---------------- |
 | Jak zarejestrować usługi sieci web | Utwórz jednostki uzależnionej w portalu zarządzania kontroli dostępu | Tworzenie aplikacji sieci web usługi Azure AD w portalu Azure |
 | Jak zarejestrować klienta | Tworzenie tożsamości usługi w portalu zarządzania kontroli dostępu | Utwórz inną aplikację sieci web usługi Azure AD w portalu Azure |
-| Protokół używany |-Protokół OAuth WRAP<br />-Przyznanie poświadczeń klienta OAuth 2.0 projekt 13 | Przyznanie poświadczeń klienta OAuth 2.0 |
+| Protokół używany |-Protokół OAuth WRAP<br />-Przyznanie poświadczeń klienta OAuth 2.0 projekt 13 | Przyznawanie poświadczeń klienta OAuth 2.0 |
 | Metody uwierzytelniania klienta |-Proste hasło<br />-Podpisem SWT<br />— Token SAML od dostawcy tożsamości federacyjnych |-Proste hasło<br />-Podpisany token JWT. |
 | Formaty tokenów |- JWT<br />- SAML 1.1<br />- SAML 2.0<br />- SWT<br /> | Tylko JWT |
 | Token przekształcania |-Dodaj oświadczenia niestandardowe<br />-Logika wystawiania oświadczeń Jeżeli to proste | Dodawanie oświadczenia niestandardowe | 

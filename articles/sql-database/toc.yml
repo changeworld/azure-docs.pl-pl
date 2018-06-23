@@ -98,22 +98,22 @@
           href: sql-database-dtu-resource-limits-single-databases.md
         - name: Skalowanie zasobów pojedynczych baz danych
           href: sql-database-single-database-scale.md
-        - name: Elastyczne pule i bazy danych w puli
-          items:
-            - name: Elastyczne pule i bazy danych w puli
-              href: sql-database-elastic-pool.md
-            - name: Zarządzanie pulami i bazami danych w puli
-              href: sql-database-elastic-pool-manage.md
-            - name: Limity zasobów na podstawie rdzeni wirtualnych
-              href: sql-database-vcore-resource-limits-elastic-pools.md
-            - name: Limity zasobów na podstawie jednostek DTU
-              href: sql-database-dtu-resource-limits-elastic-pools.md
-        - name: Skalowanie zasobów elastycznej puli
-          href: sql-database-elastic-pool-scale.md
         - name: Architektura łączności
           href: sql-database-connectivity-architecture.md
         - name: Różnice w języku T-SQL
           href: sql-database-transact-sql-information.md
+    - name: Elastyczne pule i bazy danych w puli
+      items:
+        - name: Elastyczne pule i bazy danych w puli
+          href: sql-database-elastic-pool.md
+        - name: Zarządzanie pulami i bazami danych w puli
+          href: sql-database-elastic-pool-manage.md
+        - name: Limity zasobów na podstawie rdzeni wirtualnych
+          href: sql-database-vcore-resource-limits-elastic-pools.md
+        - name: Limity zasobów na podstawie jednostek DTU
+          href: sql-database-dtu-resource-limits-elastic-pools.md
+        - name: Skalowanie zasobów elastycznej puli
+          href: sql-database-elastic-pool-scale.md
     - name: Wystąpienia zarządzane
       items:
         - name: Wystąpienia zarządzane

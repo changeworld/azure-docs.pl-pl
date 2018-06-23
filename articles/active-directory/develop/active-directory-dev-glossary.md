@@ -16,12 +16,13 @@ ms.workload: identity
 ms.date: 11/16/2017
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: ab053e9b132630c19b6966286035d38c71c6b4d9
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.reviewer: elisol
+ms.openlocfilehash: d9379a54258b33277904d88b62dfdd7dfdec59a0
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268136"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317752"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Słownik dewelopera usługi Azure Active Directory
 Ten artykuł zawiera definicje dla niektórych podstawowe koncepcje dla deweloperów usługi Azure Active Directory (AD), które są przydatne podczas nauki opracowywanie aplikacji dla usługi Azure AD.
@@ -39,10 +40,10 @@ Zobacz [odwołania do usługi Azure AD tokenu] [ AAD-Tokens-Claims] więcej szcz
 ## <a name="application-id-client-id"></a>Identyfikator aplikacji (identyfikator klienta)
 Unikatowy identyfikator usługi Azure AD problemy rejestracji aplikacji, który identyfikuje określoną aplikację i skojarzony konfiguracji. Ten identyfikator aplikacji ([identyfikator klienta](https://tools.ietf.org/html/rfc6749#page-15)) jest używany podczas uwierzytelniania żądań i jest dostarczane do bibliotek uwierzytelniania w czasie opracowywania. Identyfikator aplikacji (identyfikator klienta) nie jest klucz tajny. 
 
-## <a name="application-manifest"></a>Manifest aplikacji
+## <a name="application-manifest"></a>manifest aplikacji
 Funkcja dostarczonych przez [portalu Azure][AZURE-portal], która tworzy reprezentację JSON Konfiguracja tożsamości aplikacji, używane jako mechanizm aktualizacji skojarzone [ Aplikacja] [ AAD-Graph-App-Entity] i [ServicePrincipal] [ AAD-Graph-Sp-Entity] jednostek. Zobacz [opis manifestu aplikacji usługi Azure Active Directory] [ AAD-App-Manifest] więcej szczegółów.
 
-## <a name="application-object"></a>Obiekt aplikacji
+## <a name="application-object"></a>obiekt aplikacji
 Gdy użytkownik rejestru/aktualizacji aplikacji w [portalu Azure][AZURE-portal], portalu utworzeń/aktualizacji obiekt aplikacji i odpowiadające mu [obiekt główny usługi](#service-principal-object) dla tego dzierżawcy. Obiekt application *definiuje* aplikacji do konfiguracji tożsamości globalnie (za pośrednictwem wszystkich dzierżaw który ma dostęp), zapewniając szablonu, z którego są odpowiednie obiekty główne usługi  *pochodnych* do użytku lokalnie w czasie wykonywania (w określonym dzierżawcy).
 
 Aby uzyskać więcej informacji, zobacz [aplikacji i nazwy głównej usługi obiektów][AAD-App-SP-Objects].
@@ -68,7 +69,7 @@ Czynność udzielenia uprawnienia głównego uwierzytelnionego zabezpieczeń co�
 ## <a name="authorization-code"></a>Kod autoryzacji
 Krótko 'token' dostarczony do [aplikacji klienckiej](#client-application) przez [punktu końcowego autoryzacji](#authorization-endpoint), jako część przepływu "Kod autoryzacji", za pomocą jednej z czterech OAuth2 [przyznajeautoryzacji](#authorization-grant). Kod jest zwracana do aplikacji klienckiej w odpowiedzi na uwierzytelnianie [właściciel zasobu](#resource-owner), wskazujący właściciela zasobów przekazała autoryzacji dostępu do żądanych zasobów. W ramach przepływu, kod później zrealizowane dla [token dostępu](#access-token).
 
-## <a name="authorization-endpoint"></a>Punkt końcowy autoryzacji
+## <a name="authorization-endpoint"></a>punkt końcowy autoryzacji
 Jeden z punktów końcowych, implementowane przez [serwera autoryzacji](#authorization-server), używana do interakcji z [właściciel zasobu](#resource-owner) zapewnić [udzielania autoryzacji](#authorization-grant) podczas OAuth2 Przepływ grant autoryzacji. W zależności od przepływ grant autoryzacji używany, rzeczywistego przyznania podane mogą się różnić, łącznie z [kod autoryzacji](#authorization-code) lub [tokenu zabezpieczającego](#security-token).
 
 Zobacz specyfikację OAuth2 [typy przydziałów autoryzacji] [ OAuth2-AuthZ-Grant-Types] i [punktu końcowego autoryzacji] [ OAuth2-AuthZ-Endpoint] sekcje i [Specyfikacji OpenIDConnect] [ OpenIDConnect-AuthZ-Endpoint] więcej szczegółów.
@@ -91,7 +92,7 @@ Zgodnie z definicją w [Framework autoryzacji OAuth2][OAuth2-Role-Def], aplikacj
 
 Aplikacja kliencka żąda [autoryzacji](#authorization) od właściciela zasobu, aby uczestniczyć w [udzielania autoryzacji OAuth2](#authorization-grant) przepływu i może uzyskać dostępu do interfejsów API/danych w imieniu właściciela zasobów. Framework autoryzacji OAuth2 [definiują dwa typy klientów][OAuth2-Client-Types]"poufne dane" i "public", oparte na możliwość zachowania poufności swoich poświadczeń klienta. Aplikacje można wdrożyć [klienta sieci web (poufne)](#web-client) na serwerze sieci web, które są uruchamiane [aplikacja native client (publicznej)](#native-client) zainstalowana na urządzeniu, lub [na podstawie agent użytkownika klienta (publicznej)](#user-agent-based-client)które są uruchamiane w przeglądarce urządzenia.
 
-## <a name="consent"></a>Zgody
+## <a name="consent"></a>zgody
 Proces [właściciel zasobu](#resource-owner) autoryzacji do przyznawania [aplikacji klienckiej](#client-application), aby uzyskiwać dostęp do chronionych zasobów w obszarze określonej [uprawnienia](#permissions), zastępczy właściciel zasobu. W zależności od uprawnień żądany przez klienta administrator lub użytkownik zostanie poproszony o zgodę na dostęp do swoich danych organizacji/osoba odpowiednio. Uwaga: w [wielodostępne](#multi-tenant-application) scenariusza, aplikacji [nazwy głównej usługi](#service-principal-object) jest zarejestrowany w dzierżawie consenting użytkownika.
 
 ## <a name="id-token"></a>Identyfikator tokenu
@@ -134,7 +135,7 @@ Role są zdefiniowane zasobów ciągów (na przykład "osoba zatwierdzająca wyd
 
 Szczegółowe omówienie ról aplikacji udostępnianych przez interfejs API programu Graph usługi Azure AD, zobacz [zakresy uprawnień interfejsu API Graph][AAD-Graph-Perm-Scopes]. Na przykład implementacji krok po kroku, zobacz [zarządzanie dostępem przy użyciu RBAC i portalu Azure][AAD-RBAC].
 
-## <a name="scopes"></a>Zakresy
+## <a name="scopes"></a>zakresy
 Podobnie jak [ról](#roles), zakresy umożliwiają [serwer zasobów](#resource-server) dotyczące dostępu do chronionych zasobów. Zakresy są używane do implementowania [zakresu] [ OAuth2-Access-Token-Scopes] kontroli dostępu, aby uzyskać [aplikacji klienckiej](#client-application) że została podana dostęp delegowany do zasobu przez jego właściciela.
 
 Zakresy są zdefiniowane zasobów ciągów (na przykład "Mail.Read", "Directory.ReadWrite.All"), zarządzane w [portalu Azure] [ AZURE-portal] za pośrednictwem zasobu [manifest aplikacji](#application-manifest)i przechowywane w zasobie [właściwości oauth2Permissions][AAD-Graph-Sp-Entity]. Portalu Azure umożliwia również skonfigurowanie aplikacji klienta [delegowane uprawnienia](#permissions) do zakresu dostępu.
@@ -166,7 +167,7 @@ Wystąpienie katalogu usługi Azure AD jest określana jako dzierżawa usługi A
 
 Dzierżaw usługi Azure AD są tworzone lub skojarzyć za pomocą subskrypcji platformy Azure i usługi Office 365 podczas tworzenia konta, zapewniając funkcje tożsamość i zarządzanie dostępem dla subskrypcji. Administratorzy subskrypcji platformy Azure można również utworzyć dodatkowych dzierżaw usługi Azure AD za pomocą portalu Azure. Zobacz [jak uzyskać dzierżawę usługi Azure Active Directory] [ AAD-How-To-Tenant] szczegółowe informacje na temat sposobów możesz uzyskać dostęp do dzierżawy. Zobacz [jak subskrypcje platformy Azure są kojarzone z usługi Azure Active Directory] [ AAD-How-Subscriptions-Assoc] szczegółowe informacje na temat relacji między subskrypcjami i dzierżawa usługi Azure AD.
 
-## <a name="token-endpoint"></a>Token punktu końcowego
+## <a name="token-endpoint"></a>token punktu końcowego
 Jeden z punktów końcowych, implementowane przez [serwera autoryzacji](#authorization-server) do obsługi protokołu OAuth2 [przyznaje autoryzacji](#authorization-grant). W zależności od grant, może służyć do uzyskania [token dostępu](#access-token) (i powiązanych tokenu "Odśwież") do [klienta](#client-application), lub [token Identyfikatora](#ID-token) w przypadku użycia z [OpenID Połącz] [ OpenIDConnect] protokołu.
 
 ## <a name="user-agent-based-client"></a>Na podstawie agent użytkownika klienta

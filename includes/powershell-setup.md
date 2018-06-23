@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/12/2015
 ms.author: rasquill
-ms.openlocfilehash: 19c704d965ff3e2fc9ac8c5b623aeb386cb0b974
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: be5089b825a873006696eb074ed4355f415e680b
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2018
-ms.locfileid: "23886183"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319524"
 ---
 ## <a name="setting-up-powershell"></a>Konfigurowanie środowiska PowerShell
 Przed użyciem programu Azure PowerShell, wykonaj następujące kroki.
@@ -56,7 +56,7 @@ Aby uzyskać instrukcje i łącza do najnowszej wersji, zobacz [Instalowanie i k
 ### <a name="set-your-azure-account-and-subscription"></a>Ustawianie konta i subskrypcji platformy Azure
 Jeśli nie masz jeszcze subskrypcji platformy Azure, możesz przeprowadzić aktywację Twojej [korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) lub zarejestrować się w celu [bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
 
-Otwórz wiersz polecenia programu PowerShell systemu Azure i zaloguj się do platformy Azure z tego polecenia.
+Otwórz wiersz polecenia programu PowerShell systemu Azure i zaloguj się na platformie Azure za pomocą tego polecenia.
 
     Add-AzureAccount
 
