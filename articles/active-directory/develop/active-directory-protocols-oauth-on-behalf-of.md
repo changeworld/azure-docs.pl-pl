@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: celested
-ms.reviewer: hirsin; nacanuma
+ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 2bb0d10fee04c4ee48344695769fa7768b0f3a85
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: e8957db002dd6fdeaf6da03b02e518e3e423539d
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823870"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317735"
 ---
 # <a name="service-to-service-calls-using-delegated-user-identity-in-the-on-behalf-of-flow"></a>Usługi w celu wywołania usługi za pomocą delegowanego tożsamość użytkownika w imieniu — z przepływu
 OAuth 2.0 On-Behalf-Of (OBO) przepływ służy przypadek użycia, w którym aplikacja wywołuje usługi/składnika web API, który z kolei musi wywołać inny usługi/interfejs API sieci web. Będzie propagację uprawnień za pomocą łańcucha żądań i tożsamości użytkowników delegowanego. Dla usługi warstwy środkowej na wysyłanie żądań uwierzytelnionych usługi podrzędne należy go secure token dostępu z usługi Azure Active Directory (Azure AD), w imieniu użytkownika.
@@ -83,7 +83,7 @@ Korzystając z wspólny klucz tajny, żądania tokenu dostępu do usługi zawier
 | Parametr |  | Opis |
 | --- | --- | --- |
 | Typ grant_type |wymagane | Typ żądania tokenu. Dla żądania przy użyciu token JWT, wartość musi być **urn: ietf:params:oauth:grant — typ: jwt-elementu nośnego**. |
-| Potwierdzenia |wymagane | Wartość tokenu użytego w żądaniu. |
+| potwierdzenia |wymagane | Wartość tokenu użytego w żądaniu. |
 | client_id |wymagane | Identyfikator aplikacji przypisany do wywoływania usługi podczas rejestracji w usłudze Azure AD. Aby znaleźć identyfikator aplikacji w portalu zarządzania Azure, kliknij przycisk **usługi Active Directory**, kliknij katalog, a następnie kliknij nazwę aplikacji. |
 | client_secret |wymagane | Klucz jest zarejestrowany dla wywołania usługi w usłudze Azure AD. Ta wartość powinna zauważyć w chwili rejestracji. |
 | zasób |wymagane | Identyfikator URI aplikacji odbierającej usługi (zabezpieczonych zasobów). Aby znaleźć identyfikator URI aplikacji w portalu zarządzania Azure, kliknij przycisk **usługi Active Directory**kliknij katalog, kliknij nazwę aplikacji, kliknij przycisk **wszystkie ustawienia** , a następnie kliknij przycisk **właściwości**. |
@@ -115,7 +115,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 | Parametr |  | Opis |
 | --- | --- | --- |
 | Typ grant_type |wymagane | Typ żądania tokenu. Dla żądania przy użyciu token JWT, wartość musi być **urn: ietf:params:oauth:grant — typ: jwt-elementu nośnego**. |
-| Potwierdzenia |wymagane | Wartość tokenu użytego w żądaniu. |
+| potwierdzenia |wymagane | Wartość tokenu użytego w żądaniu. |
 | client_id |wymagane | Identyfikator aplikacji przypisany do wywoływania usługi podczas rejestracji w usłudze Azure AD. Aby znaleźć identyfikator aplikacji w portalu zarządzania Azure, kliknij przycisk **usługi Active Directory**, kliknij katalog, a następnie kliknij nazwę aplikacji. |
 | client_assertion_type |wymagane |Wartość musi być `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
 | client_assertion |wymagane | (JSON Web Token) potwierdzenia, że musisz utworzyć i podpisać przy użyciu certyfikatu został zarejestrowany jako poświadczeń dla aplikacji. Przeczytaj informacje o [certyfikatu poświadczeń](active-directory-certificate-credentials.md) informacje na temat rejestracji certyfikatu i format potwierdzenia.|

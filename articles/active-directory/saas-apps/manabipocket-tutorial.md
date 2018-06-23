@@ -8,19 +8,18 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 8e521099-bf7d-43ab-a0e0-86aa1c9e577e
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 44b34c20c8b21b58ef67beedc1074f0664048b90
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f4ef40ea5e3d68ed8c04dc2a67042abd74df42aa
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212380"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317812"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-manabi-pocket"></a>Samouczek: Integracji Azure Active Directory z Manabi Pocket
 
@@ -101,35 +100,29 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
 2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
- 
+
     ![Okno dialogowe rejestracji jednokrotnej](./media/manabipocket-tutorial/tutorial_manabipocket_samlbase.png)
 
-3. Na **Manabi Pocket domeny i adres URL** sekcji, wykonaj następujące kroki, aby skonfigurować aplikację w **IDP** inicjowane tryb:
+3. Na **Manabi Pocket domeny i adres URL** sekcji, wykonaj następujące czynności:
 
     ![Adresy URL i domeny Pocket Manabi pojedynczy informacje logowania jednokrotnego](./media/manabipocket-tutorial/tutorial_manabipocket_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<SERVER-NAME>.ed-cl.com/<TENANT-ID>/idp/provider`
-    
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<SERVER-NAME>.ed-cl.com/<TENANT-ID>/idp/assertion_post`
+    a. W **adres URL logowania** tekstowym, wpisz adres URL: `https://ed-cl.com/`
+
+    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<SERVER-NAME>.ed-cl.com/<TENANT-ID>/idp/provider`
 
     > [!NOTE]
-    > Wartości te nie są prawdziwe. Rzeczywisty identyfikator i adres URL odpowiedzi, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta Pocket Manabi](mailto:info-ed-cl@ntt.com) uzyskać te wartości.
+    > Wartość identyfikatora nie jest prawdziwe. Zaktualizuj tę wartość z rzeczywistego identyfikatora. Skontaktuj się z [zespołem pomocy technicznej klienta Pocket Manabi](mailto:info-ed-cl@ntt.com) aby zyskać tę wartość.
 
-4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** inicjowane tryb:
-
-    ![Adresy URL i domeny Pocket Manabi pojedynczy informacje logowania jednokrotnego](./media/manabipocket-tutorial/tutorial_manabipocket_url1.png)
-
-    W **adres URL logowania** tekstowym, wpisz adres URL: `https://ed-cl.com/`
-
-5. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
     ![Łącze pobierania certyfikatu](./media/manabipocket-tutorial/tutorial_manabipocket_certificate.png) 
 
-6. Kliknij przycisk **zapisać** przycisku.
+5. Kliknij przycisk **zapisać** przycisku.
 
     ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/manabipocket-tutorial/tutorial_general_400.png)
 
-7. Skonfigurować logowanie jednokrotne w **Manabi Pocket** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej Manabi Pocket](mailto:info-ed-cl@ntt.com). To ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML one wartość.
+6. Skonfigurować logowanie jednokrotne w **Manabi Pocket** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej Manabi Pocket](mailto:info-ed-cl@ntt.com). To ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML one wartość.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -196,7 +189,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
-    
+
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
@@ -222,4 +215,3 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 [201]: ./media/manabipocket-tutorial/tutorial_general_201.png
 [202]: ./media/manabipocket-tutorial/tutorial_general_202.png
 [203]: ./media/manabipocket-tutorial/tutorial_general_203.png
-

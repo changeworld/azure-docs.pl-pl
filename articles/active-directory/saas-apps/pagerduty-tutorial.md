@@ -8,19 +8,18 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 0410456a-76f7-42a7-9bb5-f767de75a0e0
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 37409ee72591d943a834ff38f077a002a1724ab9
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 18c3dbdcf85c5b06b4f0f20c85b9fe751a3719fe
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215396"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317986"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagerduty"></a>Samouczek: Integracji Azure Active Directory z PagerDuty
 
@@ -60,14 +59,14 @@ Aby skonfigurować integrację usługi Azure AD PagerDuty, należy dodać PagerD
 
 **Aby dodać PagerDuty z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony.
 
     ![Przycisk usługi Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Blok aplikacje przedsiębiorstwa][2]
-    
+
 3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
@@ -102,8 +101,8 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
- 
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+
     ![Okno dialogowe rejestracji jednokrotnej](./media/pagerduty-tutorial/tutorial_pagerduty_samlbase.png)
 
 3. Na **PagerDuty domeny i adres URL** sekcji, wykonaj następujące czynności:
@@ -114,12 +113,12 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<tenant-name>.pagerduty.com`
 
-    > [!NOTE] 
-    > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta PagerDuty](https://www.pagerduty.com/support/) uzyskać te wartości. 
+    > [!NOTE]
+    > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta PagerDuty](https://www.pagerduty.com/support/) uzyskać te wartości.
 
 4. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
 
-    ![Łącze pobierania certyfikatu](./media/pagerduty-tutorial/tutorial_pagerduty_certificate.png) 
+    ![Łącze pobierania certyfikatu](./media/pagerduty-tutorial/tutorial_pagerduty_certificate.png)
 
 5. Kliknij przycisk **zapisać** przycisku.
 
@@ -127,34 +126,33 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
 6. Na **konfiguracji PagerDuty** , kliknij przycisk **skonfigurować PagerDuty** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **Sign-Out adresu URL i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
 
-    ![Konfiguracja PagerDuty](./media/pagerduty-tutorial/tutorial_pagerduty_configure.png) 
+    ![Konfiguracja PagerDuty](./media/pagerduty-tutorial/tutorial_pagerduty_configure.png)
 
 7. W oknie przeglądarki innej witryny sieci web Zaloguj się do witryny firmy Pagerduty jako administrator.
 
 8. W menu u góry kliknij **ustawienia konta**.
-   
+
     ![Ustawienia konta](./media/pagerduty-tutorial/ic778535.png "ustawienia konta")
 
 9. Kliknij przycisk **logowanie jednokrotne**.
-   
+
     ![Logowanie jednokrotne](./media/pagerduty-tutorial/ic778536.png "logowanie jednokrotne")
 
 10. Na **włączyć logowanie jednokrotne (SSO)** wykonaj następujące czynności:
-   
+
     ![Włącz rejestrację jednokrotną](./media/pagerduty-tutorial/ic778537.png "Włącz rejestrację jednokrotną")
-   
+
     a. Otwórz base-64 zakodowany certyfikat pobrany z portalu Azure w programie Notatnik, skopiuj zawartość go do Schowka, a następnie wklej go do **certyfikatu X.509** pole tekstowe
   
     b. W **adres URL logowania** pole tekstowe, Wklej **SAML pojedynczy znak na adres URL usługi** którego została skopiowana z portalu Azure.
   
     c. W **adresu URL wylogowania** pole tekstowe, Wklej **Sign-Out URL** którego została skopiowana z portalu Azure.
- 
-    d. Wybierz **włączyć pojedynczego logowania jednokrotnego**.
- 
-    e. Kliknij przycisk **zapisać zmiany**.
 
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+    d. Wybierz **Zezwalaj nazwy użytkownika i hasła logowania**.
+
+    e. Wybierz **wymaga DOKŁADNEGO porównania kontekstu uwierzytelniania** wyboru.
+
+    f. Kliknij przycisk **zapisać zmiany**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -262,8 +260,6 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-
-
 <!--Image references-->
 
 [1]: ./media/pagerduty-tutorial/tutorial_general_01.png
@@ -277,4 +273,3 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 [201]: ./media/pagerduty-tutorial/tutorial_general_201.png
 [202]: ./media/pagerduty-tutorial/tutorial_general_202.png
 [203]: ./media/pagerduty-tutorial/tutorial_general_203.png
-

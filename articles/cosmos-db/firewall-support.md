@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: sngun
-ms.openlocfilehash: 0407d3c58fa63a11c8391f069039f7c35a15ceb7
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: c55f90b944038a0e4ca216a357fc30f4cf6a6ddc
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294741"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317290"
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Obsługa zapory w usłudze Azure DB rozwiązania Cosmos
 Aby zabezpieczyć dane przechowywane na koncie Azure DB rozwiązania Cosmos bazy danych, bazy danych Azure rozwiązania Cosmos udostępnił pomocy technicznej na podstawie klucza tajnego [modelu autoryzacji](https://msdn.microsoft.com/library/azure/dn783368.aspx) , która zawiera kod uwierzytelniania wiadomości Hash-based silne (HMAC). Oprócz modelu autoryzacji na podstawie tajnego bazy danych Azure rozwiązania Cosmos obsługuje teraz, zasady kontroli dostępu na podstawie adresu IP dla strony Obsługa zapory dla ruchu przychodzącego zmiennych. Ten model jest podobne do reguł zapory systemu tradycyjne bazy danych i zapewnia dodatkowy poziom zabezpieczeń do bazy danych Azure rozwiązania Cosmos konta bazy danych. Z tym modelem można teraz skonfigurować konto bazy danych DB rozwiązania Cosmos Azure można uzyskiwać tylko z zatwierdzonych zbiór maszyny i/lub usług w chmurze. Dostęp do zasobów bazy danych Azure rozwiązania Cosmos z tych zestawów zatwierdzonych komputery i usługi wymagają nadal obiekt wywołujący, aby przedstawić token prawidłowego autoryzacji.
@@ -56,10 +56,10 @@ Dostęp do portalu Azure jest domyślnie włączona po zmianie ustawienia zapory
 
 ![Zrzut ekranu pokazujący sposób włączania dostępu do portalu Azure](./media/firewall-support/enable-azure-portal.png)
 
-## <a name="connections-from-public-azure-datacenters-or-azure-paas-services"></a>Połączenia z publicznego centrach danych platformy Azure lub usługi Azure PaaS
+## <a name="connections-from-global-azure-datacenters-or-azure-paas-services"></a>Połączenia z centrów danych globalnych Azure lub usługi Azure PaaS
 Na platformie Azure PaaS usług takich jak Azure Stream analytics, usługi Azure Functions i usłudze Azure App Service są używane w połączeniu z bazy danych Azure rozwiązania Cosmos. Aby włączyć dostęp do bazy danych Azure rozwiązania Cosmos konto bazy danych z tych usług, których adresy IP nie są łatwo dostępne, należy dodać adres IP 0.0.0.0 do listy dozwolonych adresów IP skojarzonych z Twoim kontem bazy danych Azure DB rozwiązania Cosmos programowo. 
 
-Dostęp do połączeń z w centrach danych platformy Azure publiczny jest domyślnie włączona po zmianie ustawienia zapory, aby **wybrane sieci** w portalu Azure. 
+Dostęp do połączeń z wewnątrz Globalne centra danych platformy Azure jest domyślnie włączona po zmianie ustawienia zapory, aby **wybrane sieci** w portalu Azure. 
 
 ![Zrzut ekranu pokazujący sposób otworzyć stronę zapory w portalu Azure](./media/firewall-support/enable-azure-services.png)
 
@@ -87,6 +87,25 @@ Po dodaniu wystąpień dodatkowych maszyn wirtualnych do grupy są automatycznie
 
 ## <a name="connections-from-the-internet"></a>Połączenia z Internetu
 Gdy uzyskujesz dostęp do bazy danych Azure rozwiązania Cosmos konto bazy danych z komputera w Internecie, adres IP klienta lub zakres adresów IP komputera, należy dodać do listy dozwolonych adresów IP do bazy danych Azure rozwiązania Cosmos konta bazy danych. 
+
+## <a name="using-azure-resource-manager-template-to-set-up-the-ip-access-control"></a>Za pomocą szablonu usługi Resource Manager Azure skonfigurować kontroli dostępu IP
+
+Dodaj następujący kod JSON do szablonu, aby skonfigurować IP kontroli dostępu. Szablon usługi Resource Manager dla konta, ma atrybut ipRangeFilter, który jest listą zakresów IP, które powinny być białej.
+
+```json
+   {
+     "apiVersion": "2015-04-08",
+     "type": "Microsoft.DocumentDB/databaseAccounts",
+     "kind": "GlobalDocumentDB",
+     "name": "[parameters('databaseAccountName')]",
+     "location": "[resourceGroup().location]",
+     "properties": {
+     "databaseAccountOfferType": "Standard",
+     "name": "[parameters('databaseAccountName')]",
+     "ipRangeFilter":"10.0.0.1,10.0.0.2,183.240.196.255"
+   }
+   }
+```
 
 ## <a name="troubleshooting-the-ip-access-control-policy"></a>Rozwiązywanie problemów z zasady kontroli dostępu do adresu IP
 ### <a name="portal-operations"></a>Operacje portalu

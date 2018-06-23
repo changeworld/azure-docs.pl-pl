@@ -16,13 +16,13 @@ ms.workload: identity
 ms.date: 07/20/2017
 ms.author: celested
 ms.custom: aaddev
-ms.reviewer: elisol
-ms.openlocfilehash: 9f73f31c7afd7ca13107653d097e1ac11ef94f0d
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.reviewer: elisol, sureshja
+ms.openlocfilehash: 7448a6c37df2c0bbffbebf23d211e3ace8d12edc
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157079"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317399"
 ---
 # <a name="azure-active-directory-application-manifest"></a>Manifest aplikacji w usłudze Azure Active Directory
 Aplikacje do zintegrowania z usługą Azure AD musi być zarejestrowana w dzierżawie usługi Azure AD. Tę aplikację można skonfigurować przy użyciu manifest aplikacji (w ramach bloku usługi Azure AD) w [portalu Azure](https://portal.azure.com).
@@ -35,10 +35,10 @@ Aplikacje do zintegrowania z usługą Azure AD musi być zarejestrowana w dzier�
 |---------|---------|---------|---------|
 |appID     |  Ciąg identyfikatora       |""|  Unikatowy identyfikator dla aplikacji, która jest przypisany do aplikacji przez usługę Azure AD.|
 |appRoles     |    Typ tablicy     |<code>[{<br>&emsp;"allowedMemberTypes": [<br>&emsp;&nbsp;&nbsp;&nbsp;"User"<br>&emsp;],<br>&emsp;"description":"Read-only access to device information",<br>&emsp;"displayName":"Read Only",<br>&emsp;"id":guid,<br>&emsp;"isEnabled":true,<br>&emsp;"value":"ReadOnly"<br>}]</code>|Kolekcja ról, które mogą zadeklarować aplikacji. Te role można przypisać do użytkowników, grupy lub podmiotów zabezpieczeń usługi.|
-|AvailableToOtherTenants|wartość logiczna|`true`|Jeśli ta wartość jest równa true, aplikacja jest dostępna na innych dzierżawców. Jeśli ma wartość false, aplikacja jest dostępna tylko dla dzierżawcy jest zarejestrowany w. Aby uzyskać więcej informacji, zobacz: [jak zarejestrować każdy użytkownik usługi Azure Active Directory (AD) przy użyciu wzorca wielodostępnych aplikacji](active-directory-devhowto-multi-tenant-overview.md). |
+|availableToOtherTenants|wartość logiczna|`true`|Jeśli ta wartość jest równa true, aplikacja jest dostępna na innych dzierżawców. Jeśli ma wartość false, aplikacja jest dostępna tylko dla dzierżawcy jest zarejestrowany w. Aby uzyskać więcej informacji, zobacz: [jak zarejestrować każdy użytkownik usługi Azure Active Directory (AD) przy użyciu wzorca wielodostępnych aplikacji](active-directory-devhowto-multi-tenant-overview.md). |
 |displayName     |ciąg         |`MyRegisteredApp`         |Nazwa wyświetlana dla aplikacji. |
 |errorURL     |ciąg         |`http://MyRegisteredAppError`         |Adres URL błędów występujących w aplikacji. |
-|GroupMembershipClaims     |    ciąg     |    `1`     |   Maska bitowa konfigurującego wystawione oświadczenie "grupy" użytkownika lub tokenu dostępu protokołu OAuth 2.0, który oczekuje aplikacji. Wartości maski to: 0: Brak 1: grup zabezpieczeń i role usługi Azure AD, 2: zarezerwowane i 4: zastrzeżone. Ustawienie maski bitów 7 otrzyma wszystkich grup zabezpieczeń, grup dystrybucyjnych i ról katalogu usługi Azure AD, które zalogowany użytkownik jest członkiem. |
+|groupMembershipClaims     |    ciąg     |    `1`     |   Maska bitowa konfigurującego wystawione oświadczenie "grupy" użytkownika lub tokenu dostępu protokołu OAuth 2.0, który oczekuje aplikacji. Wartości maski to: 0: Brak 1: grup zabezpieczeń i role usługi Azure AD, 2: zarezerwowane i 4: zastrzeżone. Ustawienie maski bitów 7 otrzyma wszystkich grup zabezpieczeń, grup dystrybucyjnych i ról katalogu usługi Azure AD, które zalogowany użytkownik jest członkiem. |
 |optionalClaims     |  ciąg       |     `null`    |    [Opcjonalnych oświadczeń](active-directory-optional-claims.md) zwrócony w tokenie przez usługę tokenu zabezpieczającego dla określonej aplikacji. |
 |acceptMappedClaims    |      wartość logiczna   | `true`        |    Jeśli ta wartość jest ustawiana na wartość true pozwala aplikacji na używanie oświadczeń mapowania bez określania niestandardowych klucza podpisywania.|
 |Strona główna     |  ciąg       |`http://MyRegistererdApp`         |    Adres URL do strony głównej aplikacji. |
@@ -52,10 +52,10 @@ Aplikacje do zintegrowania z usługą Azure AD musi być zarejestrowana w dzier�
 |oauth2RequiredPostResponse     | wartość logiczna        |    `false`     |      Określa, czy w ramach żądania tokenu OAuth 2.0, usługi Azure AD będzie zezwalał na żądania POST, w przeciwieństwie do żądania GET. Wartość domyślna to false, która określa, czy mogą być tylko żądania GET. 
 |Identyfikator obiektu     | Ciąg identyfikatora        |     ""    |    Unikatowy identyfikator dla aplikacji w katalogu. Ten identyfikator nie jest identyfikator używany do identyfikowania aplikacji w każdej transakcji protokołu. Odwołanie do obiektu w katalogu zapytania jest użytkownika.|
 |passwordCredentials     | Typ tablicy        |   <code>[{<br>"customKeyIdentifier":null,<br>"endDate":"2018-10-19T17:59:59.6521653Z",<br>"keyId":"\<guid>",<br>"startDate":"2016-10-19T17:59:59.6521653Z",<br>"value":null<br>}]  </code>    |    Zobacz opis właściwości keyCredentials. |
-|PublicClient     |  wartość logiczna       |      `false`   | Określa, czy aplikacja ma publicznego klienta (na przykład zainstalowanych aplikacji uruchomionej na urządzeniu przenośnym). Wartość domyślna to false. |
+|publicClient     |  wartość logiczna       |      `false`   | Określa, czy aplikacja ma publicznego klienta (na przykład zainstalowanych aplikacji uruchomionej na urządzeniu przenośnym). Wartość domyślna to false. |
 |supportsConvergence     |  wartość logiczna       |   `false`      | Tej właściwości nie powinny być edytowane. Zaakceptuj wartość domyślną. |
 |replyUrls     |  Tablica ciągów       |   `http://localhost`     |  Ta właściwość wielowartościowe przechowuje listę zarejestrowanych redirect_uri wartości, które będzie akceptować usługi Azure AD jako miejsca docelowe, zwracając tokenów. |
-|RequiredResourceAccess     |     Typ tablicy    |    <code>[{<br>"resourceAppId":"00000002-0000-0000-c000-000000000000",<br>"resourceAccess":[{<br>&nbsp;&nbsp;&nbsp;&nbsp;"id":"311a71cc-e848-46a1-bdf8-97ff7156d8e6",<br>&nbsp;&nbsp;&nbsp;&nbsp;"type":"Scope"<br>&nbsp;&nbsp;}]<br>}] </code>    |   Określa zasoby, które ta aplikacja wymaga dostępu do i z zestawem zakresy uprawnień uwierzytelniania OAuth i role aplikacji, które należy w każdej z tych zasobów. Tej wstępnej konfiguracji dostępu do wymaganych zasobów stacji środowisko zgody.|
+|requiredResourceAccess     |     Typ tablicy    |    <code>[{<br>"resourceAppId":"00000002-0000-0000-c000-000000000000",<br>"resourceAccess":[{<br>&nbsp;&nbsp;&nbsp;&nbsp;"id":"311a71cc-e848-46a1-bdf8-97ff7156d8e6",<br>&nbsp;&nbsp;&nbsp;&nbsp;"type":"Scope"<br>&nbsp;&nbsp;}]<br>}] </code>    |   Określa zasoby, które ta aplikacja wymaga dostępu do i z zestawem zakresy uprawnień uwierzytelniania OAuth i role aplikacji, które należy w każdej z tych zasobów. Tej wstępnej konfiguracji dostępu do wymaganych zasobów stacji środowisko zgody.|
 |resourceAppId     |    Ciąg identyfikatora     |  ""      |   Unikatowy identyfikator dla aplikacji wymaga dostępu do zasobu. Ta wartość powinna być równa appId zadeklarowana w aplikacji docelowej zasobów. |
 |resourceAccess     |  Typ tablicy       | Zobacz przykład wartość właściwości requiredResourceAccess. |   Lista OAuth2.0 zakresy uprawnień i ról aplikacji, które wymaga aplikacji z określonego zasobu (zawiera identyfikator i typ wartości określonych zasobów)        |
 |samlMetadataUrl    |ciąg| `http://MyRegisteredAppSAMLMetadata` |Adres URL metadanych SAML aplikacji.| 

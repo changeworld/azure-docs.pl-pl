@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/15/2018
+ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: dbfbafccc1bc735927535a5ee0f8d232be355dca
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8e3c4ec0062b6a155d0f4b11da1c699a0906c442
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618627"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318232"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Mapowanie schematu w przypadku działania kopiowania
 W tym artykule opisano, jak aktywność kopiowania fabryki danych Azure mapowania schematu i mapowanie typu danych ze źródła danych do zbiornika danych kiedy wykonać kopię danych.
@@ -128,11 +128,18 @@ Następujące JSON definiuje działanie kopiowania w potoku. Kolumny źródłowe
         "translator":
         {
             "type": "TabularTranslator",
-            "ColumnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"
+            "columnMappings": 
+            {
+                "UserId": "MyUserId",
+                "Group": "MyGroup",
+                "Name": "MyName"
+            }
         }
     }
 }
 ```
+
+Przy użyciu składni `"columnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"` Aby określić mapowanie kolumny, jest nadal obsługiwane jako — jest.
 
 **Przepływ mapowanie kolumn:**
 
@@ -156,7 +163,7 @@ Fabryka danych obsługuje następujące typy danych tymczasowych: można określ
 * Data/godzina
 * Datetimeoffset
 * Decimal
-* O podwójnej precyzji
+* podwójne
 * Identyfikator GUID
 * Int16
 * Int32

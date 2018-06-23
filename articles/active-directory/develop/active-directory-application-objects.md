@@ -16,12 +16,13 @@ ms.workload: identity
 ms.date: 10/19/2017
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: e8e693355fb9b30e1a69b49f20d5044c531e2fcd
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.reviewer: elisol
+ms.openlocfilehash: d7194846dbeab2a5da8a8ceaa5a1040f33e8d515
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34155623"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317133"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory-azure-ad"></a>Aplikacji i usług obiektów principal w usłudze Azure Active Directory (Azure AD)
 Czasami znaczenie "aplikacja" może być błędnie interpretowane w kontekście usługi Azure AD. Celem tego artykułu jest wyjaśnienia dotyczące pojęć i konkretnych aspektów integracji aplikacji usługi Azure AD, z ilustracja rejestracji i zgoda na [wielodostępnych aplikacji](active-directory-dev-glossary.md#multi-tenant-application).
@@ -32,7 +33,7 @@ Aplikacji, które zostało zintegrowane z usługą Azure AD ma znaczenie, które
 ## <a name="application-registration"></a>Rejestracja aplikacji
 Podczas rejestrowania aplikacji usługi Azure AD w [portalu Azure][AZURE-Portal], dwa obiekty są tworzone w dzierżawie usługi Azure AD: obiekt aplikacji, a obiekt główny usługi.
 
-#### <a name="application-object"></a>Obiekt aplikacji
+#### <a name="application-object"></a>obiekt aplikacji
 Aplikację usługi Azure AD jest zdefiniowana przez jego jedno i tylko obiekt aplikacji, który znajduje się w dzierżawie usługi Azure AD, gdzie aplikacja została zarejestrowana, nazywany "home" dzierżawy aplikacji. Azure AD Graph [jednostek aplikacji] [ AAD-Graph-App-Entity] definiuje schemat dla właściwości obiektu aplikacji. 
 
 #### <a name="service-principal-object"></a>Obiekt główny usługi

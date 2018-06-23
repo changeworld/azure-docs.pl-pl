@@ -8,19 +8,18 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: d8fac770-bb57-4e1f-b50b-9ffeae239d07
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2018
+ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 2d22720e71788493d3663524f2b70783ba26b84d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0b5fb84f8d8fbed7e1d4112e96b00af3e460661a
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218169"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317106"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fluxx-labs"></a>Samouczek: Integracji Azure Active Directory z Fluxx Labs
 
@@ -67,7 +66,7 @@ Aby skonfigurować integrację usługi Azure AD Fluxx Labs, należy dodać Fluxx
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Blok aplikacje przedsiębiorstwa][2]
-    
+
 3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
@@ -103,7 +102,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
 2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
- 
+
     ![Okno dialogowe rejestracji jednokrotnej](./media/fluxxlabs-tutorial/tutorial_fluxxlabs_samlbase.png)
 
 3. Na **Fluxx Labs domeny i adres URL** sekcji, wykonaj następujące czynności:
@@ -123,8 +122,8 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     |-------------|------------|
     | Produkcja | `https://<subdomain>.fluxx.io/auth/saml/callback` |
     | Produkcja wstępna | `https://<subdomain>.preprod.fluxxlabs.com/auth/saml/callback`|
-        
-    > [!NOTE] 
+
+    > [!NOTE]
     > Wartości te nie są prawdziwe. Rzeczywisty identyfikator i adres URL odpowiedzi, należy zaktualizować te wartości. Skontaktuj się z [Fluxx Labs obsługuje zespołu](mailto:travis@fluxxlabs.com) uzyskać te wartości.
 
 4. Na **certyfikat podpisywania SAML** kliknij **certyfikatu (Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
@@ -135,7 +134,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/fluxxlabs-tutorial/tutorial_general_400.png)
 
-6. Na **Fluxx Labs konfiguracji** , kliknij przycisk **skonfigurować Labs Fluxx** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
+6. Na **Fluxx Labs konfiguracji** , kliknij przycisk **skonfigurować Labs Fluxx** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
 
     ![Fluxx Labs konfiguracji](./media/fluxxlabs-tutorial/tutorial_fluxxlabs_configure.png)
 
@@ -148,9 +147,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 9. Panel administracyjny, wybierz **dodatków plug-in** > **integracji** , a następnie wybierz **SAML SSO-(Disabled)**
 
     ![Fluxx Labs konfiguracji](./media/fluxxlabs-tutorial/config2.png)
-    
+
 10. W sekcji atrybutu wykonaj następujące czynności:
-    
+
     ![Fluxx Labs konfiguracji](./media/fluxxlabs-tutorial/config3.png)
 
     a. Wybierz **logowania jednokrotnego SAML** wyboru.
@@ -159,15 +158,17 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     c. W **ścieżki wywołania zwrotnego** pole tekstowe, typ **/auth/saml/callback**.
 
-    d. W **potwierdzenia konsumenta usługi Url(Single Sign-On URL)** pole tekstowe, Wklej wartość **SAML pojedynczy znak na adres URL usługi**, które zostały skopiowane z portalu Azure.
+    d. W **potwierdzenia konsumenta usługi Url(Single Sign-On URL)** pole tekstowe, wprowadź **adres URL odpowiedzi** wartości, którą wprowadzono w portalu Azure.
 
-    e. W **odbiorców (identyfikator jednostki SP)** pole tekstowe, Wklej wartość **identyfikator jednostki SAML**, które zostały skopiowane z portalu Azure.
+    e. W **odbiorców (identyfikator jednostki SP)** pole tekstowe, wprowadź **identyfikator** wartości, którą wprowadzono w portalu Azure.
 
-    f. Otwórz w Notatniku certyfikatu zakodowanego base-64, skopiuj zawartość go do Schowka, a następnie wklej go do **certyfikat dostawcy tożsamości** pola tekstowego.
+    f. W **tożsamości dostawcy logowania jednokrotnego docelowy URL** pole tekstowe, Wklej **SAML pojedynczy znak na adres URL usługi** wartość, która została skopiowana z portalu Azure.
 
-    g. W **identyfikator nazwy formatu** pole tekstowe, wprowadź wartość `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`.
+    g. Otwórz w Notatniku certyfikatu zakodowanego base-64, skopiuj zawartość go do Schowka, a następnie wklej go do **certyfikat dostawcy tożsamości** pola tekstowego.
 
-    h. Kliknij pozycję **Zapisz**.
+    h. W **identyfikator nazwy formatu** pole tekstowe, wprowadź wartość `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`.
+
+    i. Kliknij pozycję **Zapisz**.
 
     > [!NOTE]
     > Gdy zawartość zapisane, pole zostanie wyświetlona pusta zabezpieczeń, ale wartość została zapisana w konfiguracji.
@@ -221,7 +222,7 @@ Aby umożliwić użytkownikom usługi Azure AD do logowania się w laboratoriach
     ![Fluxx Labs konfiguracji](./media/fluxxlabs-tutorial/config4.png)
 
 4. Na **nowych osób** sekcji, wykonaj następujące czynności:
-    
+
     ![Fluxx Labs konfiguracji](./media/fluxxlabs-tutorial/config5.png)
 
     a. Laboratoria Fluxx Użyj adresu e-mail jako identyfikator unikatowy dla logowania jednokrotnego logowania. Wypełnij **UID logowania jednokrotnego** pole z adres e-mail użytkownika zgodnego z adresem e-mail, używają jako Zaloguj się za pomocą logowania jednokrotnego.
@@ -232,7 +233,7 @@ Aby umożliwić użytkownikom usługi Azure AD do logowania się w laboratoriach
 
 W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu do laboratoriów Fluxx.
 
-![Przypisanie roli użytkownika][200] 
+![Przypisanie roli użytkownika][200]
 
 **Aby przypisać Simona Britta Fluxx Labs, wykonaj następujące czynności:**
 
@@ -257,7 +258,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
-    
+
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
