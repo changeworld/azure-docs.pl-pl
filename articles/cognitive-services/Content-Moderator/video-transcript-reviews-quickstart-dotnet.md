@@ -13,7 +13,7 @@ ms.openlocfilehash: 3286da6e38f0fba02386d877a835fb694ed0fdec
 ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
+ms.lasthandoff: 06/25/2018
 ms.locfileid: "35347584"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Utwórz przeglądami wykaz wideo przy użyciu platformy .NET

@@ -13,7 +13,7 @@ ms.openlocfilehash: a084b50e44fe26ba2547d0f7b7ed184fb71b190c
 ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
+ms.lasthandoff: 06/25/2018
 ms.locfileid: "35347633"
 ---
 # <a name="video-and-transcript-moderation-tutorial"></a>Samouczek łagodzenia wideo i zapis

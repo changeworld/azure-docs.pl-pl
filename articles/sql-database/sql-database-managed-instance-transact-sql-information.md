@@ -6,15 +6,16 @@ author: jovanpop-msft
 ms.reviewer: carlrab, bonova
 ms.service: sql-database
 ms.custom: managed instance
-ms.topic: article
-ms.date: 04/10/2018
+ms.topic: conceptual
+ms.date: 06/22/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: b36099c6fd2deb6b627c8ccd7cc9e13c328f54e3
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 95eca05d695e039f59b71caa4d730f4e1f84fc97
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337947"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL bazy danych zarządzanych wystąpienia T-SQL różnice z programu SQL Server 
 
@@ -146,7 +147,7 @@ Sortowania serwera jest `SQL_Latin1_General_CP1_CI_AS` i nie można zmienić. Zo
 
 Poniżej przedstawiono `CREATE DATABASE` ograniczenia: 
 - Nie można zdefiniować plików i grup plików.  
-- `CONTAINMENT` Opcja nie jest obsługiwana.  
+- `CONTAINMENT` opcja nie jest obsługiwana.  
 - `WITH`Opcje nie są obsługiwane.  
    > [!TIP]
    > Jako obejście, za pomocą `ALTER DATABASE` po `CREATE DATABASE` można ustawić opcji bazy danych, aby dodać pliki lub ustawienie zawierania.  
@@ -206,6 +207,10 @@ Nieudokumentowanej instrukcji DBCC, które są włączone w programie SQL Server
 - `Trace Flags` nie są obsługiwane. Zobacz [flagi śledzenia](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
 - `DBCC TRACEOFF` nie jest obsługiwane. Zobacz [polecenia DBCC TRACEOFF](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql).
 - `DBCC TRACEON` nie jest obsługiwane. Zobacz [DBCC TRACEON](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql).
+
+### <a name="distributed-transactions"></a>Transakcje rozproszone
+
+Żadna usługa MSDTC ani [transakcji elastycznej](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-transactions-overview) są obecnie obsługiwane w przypadku zarządzanych.
 
 ### <a name="extended-events"></a>Rozszerzone zdarzenia 
 
@@ -375,12 +380,10 @@ Aby uzyskać informacje dotyczące tworzenia i modyfikowania tabel, zobacz [CREA
  
 Następujące zmienne, funkcje i widoki zwraca różne wyniki:  
 - `SERVERPROPERTY('EngineEdition')` Zwraca wartość 8. Ta właściwość jednoznacznie identyfikuje wystąpienie zarządzane. Zobacz [SERVERPROPERTY](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
-- `SERVERPROPERTY('InstanceName')` Zwraca nazwę krótką wystąpienia, na przykład "MójSerwer". Zobacz [SERVERPROPERTY('InstanceName')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
+- `SERVERPROPERTY('InstanceName')` Zwraca wartość NULL, ponieważ istnieje pojęcie wystąpienia, ponieważ dla programu SQL Server nie ma zastosowania do zarządzanego wystąpienia. Zobacz [SERVERPROPERTY('InstanceName')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
 - `@@SERVERNAME` Zwraca pełną "składnika" nazwą DNS, na przykład Moje instance.wcus17662feb9ce98.database.windows.net zarządzane. Zobacz [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql).  
 - `SYS.SERVERS` -Zwraca pełną "składnika" nazwą DNS, takich jak `myinstance.domain.database.windows.net` dla właściwości "name" i "data_source". Zobacz [SYS. SERWERY](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql). 
-- `@@SERVERNAME` Zwraca pełną "składnika" nazwą DNS, takich jak `my-managed-instance.wcus17662feb9ce98.database.windows.net`. Zobacz [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql).  
-- `SYS.SERVERS` -Zwraca pełną "składnika" nazwą DNS, takich jak `myinstance.domain.database.windows.net` dla właściwości "name" i "data_source". Zobacz [SYS. SERWERY](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql). 
-- `@@SERVICENAME` Zwraca wartość NULL, ponieważ nie ma sensu w środowisku zarządzane wystąpienia. Zobacz [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).   
+- `@@SERVICENAME` Zwraca wartość NULL, ponieważ istnieje pojęcie usługi, ponieważ dla programu SQL Server nie ma zastosowania do zarządzanego wystąpienia. Zobacz [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).   
 - `SUSER_ID` jest obsługiwana. Zwraca wartość NULL, jeśli logowanie usługi AAD nie jest sys.syslogins. Zobacz [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql).  
 - `SUSER_SID` nie jest obsługiwane. Zwraca nieodpowiedniego (tymczasowego znany problem). Zobacz [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql). 
 - `GETDATE()` i inne funkcje wbudowane daty/godziny zawsze zwraca czas w strefie czasowej UTC. Zobacz [GETDATE](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql).

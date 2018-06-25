@@ -14,7 +14,7 @@ ms.openlocfilehash: e8558ecf4a64dbccef6e6367c1447bdcdb005126
 ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
+ms.lasthandoff: 06/25/2018
 ms.locfileid: "35347136"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Użyj jednostki listy, aby zwiększyć wykrywania jednostki 

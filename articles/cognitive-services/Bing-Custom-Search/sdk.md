@@ -15,7 +15,7 @@ ms.openlocfilehash: b1e81207773839eebb9eca08c50dc4fc62daa7d8
 ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
+ms.lasthandoff: 06/25/2018
 ms.locfileid: "35346856"
 ---
 # <a name="bing-search-sdk"></a>Wyszukiwania usługi Bing zestawu SDK
