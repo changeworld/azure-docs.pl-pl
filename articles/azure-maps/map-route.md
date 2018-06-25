@@ -1,28 +1,26 @@
 ---
 title: Pokaż kierunki przy użyciu map Azure | Dokumentacja firmy Microsoft
 description: Jak wyświetlić między dwiema lokalizacjami na mapie kodu Javascript
-services: azure-maps
-keywords: ''
-author: jinzh-azureiot
+author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
+services: azure-maps
 manager: timlt
-ms.devlang: na
 ms.custom: codepen
-ms.openlocfilehash: 9007afd1bc4d2361addc2a554fab1330174e88e7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5e9ab73ddc16517e17894cddd9bc102f3941f00c
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "35759799"
 ---
-# <a name="show-directions-from-a-to-b"></a>Pokaż instrukcjami z zakresu od A do B 
+# <a name="show-directions-from-a-to-b"></a>Wyświetlanie instrukcji dotyczących trasy z punktu A do punktu B 
 
 W tym artykule przedstawiono sposób tworzenia żądania trasy i wyświetlenie trasy na mapie. 
 
-## <a name="understand-the-code"></a>Kodu
+## <a name="understand-the-code"></a>Zrozumienie kodu
 
 <iframe height='500' scrolling='no' title='Pokaż ona instrukcje od A do B na mapie' src='//codepen.io/azuremaps/embed/zRyNmP/?height=469&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/zRyNmP/'>Pokaż instrukcjami z zakresu od A do B na mapie</a> mapach Azure (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -41,7 +39,11 @@ Ostatni blok kodu analizuje przychodzące odpowiedzi. Dla pomyślnej odpowiedzi 
 
 Dowiedz się więcej na temat klasy i metody używane w tym artykule: 
 
-* [mapy](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
+* [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
     * [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#setcamerabounds)
     * [addLinestrings](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addlinestrings)
     * [addPins](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addpins)
+
+Aby uzyskać więcej przykładów kodu do dodania do map zobacz następujące artykuły: 
+* [Pokaż ruchu na mapie](./map-show-traffic.md)
+* [Interakcja z mapą - zdarzenia myszy](./map-events.md)
