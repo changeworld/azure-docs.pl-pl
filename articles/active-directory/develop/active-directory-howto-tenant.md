@@ -16,12 +16,12 @@ ms.topic: hero-article
 ms.date: 03/23/2018
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 26d336c9d896859d8012b1eaad1a16d0cbd9b628
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7ed0103b8ad8f23cd45a3a9ee94e01ce69e1e45b
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34596213"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287269"
 ---
 # <a name="how-to-get-an-azure-active-directory-tenant"></a>Jak uzyskać dzierżawę usługi Azure Active Directory
 
@@ -36,7 +36,7 @@ Aby umożliwić użytkownikom usługi Azure AD zalogowanie się do Twojej aplika
 Wielu deweloperów już ma dzierżawy za pośrednictwem usług lub subskrypcji, które są powiązane z dzierżawami usługi Azure AD (takich jak subskrypcje usługi Office 365 lub platformy Azure). Aby sprawdzić, czy masz już dzierżawę, zaloguj się w witrynie [Azure Portal](https://portal.azure.com) przy użyciu konta, którego chcesz użyć do zarządzania aplikacją, i sprawdź prawy górny róg, w którym są wyświetlane informacje o Twoim koncie. Jeśli masz dzierżawę, nastąpi automatyczne zalogowanie do niej i nazwa dzierżawy zostanie wyświetlona bezpośrednio pod nazwą Twojego konta. Gdy wskaźnik myszy znajdzie się nad nazwą konta po prawej stronie górnej części okna Azure Portal, zobaczysz swoją nazwę, adres e-mail, identyfikator katalogu i dzierżawy (GUID) oraz domenę. Jeśli Twoje konto jest skojarzone z wieloma dzierżawami, możesz wybrać nazwę swojego konta, aby otworzyć menu, w którym można przełączać się między dzierżawami. Każda dzierżawa ma własny identyfikator dzierżawy.
 
 > [!TIP]
-> Istnieje wiele sposobów znalezienia identyfikatora dzierżawy. Można w tym celu przesunąć wskaźnik myszy nad nazwę konta lub wybrać opcje **Azure Active Directory > Właściwości > Identyfikator katalogu** w witrynie Azure Portal.
+> Istnieje wiele sposobów znalezienia identyfikatora dzierżawy. Można w tym celu umieścić wskaźnik myszy nad nazwą konta lub wybrać opcje **Azure Active Directory > Właściwości > Identyfikator katalogu** w witrynie Azure Portal.
 
 Jeśli nie masz istniejącej dzierżawy skojarzonej z kontem, pod nazwą konta zostanie wyświetlony identyfikator GUID i nie będzie można wykonywać takich działań, jak rejestrowanie aplikacji, dopóki nie [utworzysz nowej dzierżawy](#create-a-new-azure-ad-tenant).
 

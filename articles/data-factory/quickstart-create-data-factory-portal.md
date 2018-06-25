@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: hero-article
-ms.date: 02/01/2018
+ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: ea70d6053f12c33d9c3ff4c69f22a41130c783e4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 69c0661f515f062a6a99b0692130d52eb23d20d6
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30171081"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285903"
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Tworzenie fabryki danych za pomocą interfejsu użytkownika usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -70,7 +70,7 @@ Obejrzenie tego filmu wideo ułatwi zapoznanie się z interfejsem użytkownika u
 9. Po zakończeniu tworzenia zostanie wyświetlona strona **Fabryka danych**. Wybierz kafelek **Tworzenie i monitorowanie**, aby na osobnej karcie uruchomić aplikację interfejsu użytkownika usługi Azure Data Factory.
    
    ![Strona główna fabryki danych z kafelkiem „Tworzenie i monitorowanie”](./media/quickstart-create-data-factory-portal/data-factory-home-page.png)
-10. Na stronie **Wprowadzenie** przejdź do karty **Edycja** na lewym panelu. 
+10. Na stronie **Wprowadzenie** przejdź do karty **Tworzenie** na lewym panelu. 
 
     ![Strona „Wprowadzenie”](./media/quickstart-create-data-factory-portal/get-started-page.png)
 
@@ -82,7 +82,7 @@ Podczas tej procedury utworzysz połączoną usługę służącą do łączenia 
    ![Przyciski do tworzenia nowego połączenia](./media/quickstart-create-data-factory-portal/new-connection-button.png)    
 2. Na stronie **Nowa połączona usługa** wybierz pozycję **Azure Blob Storage**, a następnie wybierz pozycję **Dalej**. 
 
-   ![Wybieranie kafelka „Azure Blob Storage”](./media/quickstart-create-data-factory-portal/select-azure-storage.png)
+   ![Wybieranie kafelka „Azure Blob Storage”](./media/quickstart-create-data-factory-portal/select-azure-blob-linked-service.png)
 3. Wykonaj następujące czynności: 
 
    a. Wprowadź wartość **AzureStorageLinkedService** w polu **Nazwa**.
@@ -94,9 +94,6 @@ Podczas tej procedury utworzysz połączoną usługę służącą do łączenia 
    d. Wybierz opcję **Zapisz**, aby zapisać połączoną usługę. 
 
    ![Połączona usługa Azure Storage — ustawienia](./media/quickstart-create-data-factory-portal/azure-storage-linked-service.png) 
-4. Upewnij się, że usługa **AzureSqlLinkedService** jest wyświetlana na liście połączonych usług. 
-
-   ![Połączona usługa Azure Storage wyświetlana na liście](./media/quickstart-create-data-factory-portal/azure-storage-linked-service-in-list.png)
 
 ## <a name="create-datasets"></a>Tworzenie zestawów danych
 W tej procedurze tworzone są dwa zestawy danych: **InputDataset** i **OutputDataset**. Te zestawy danych są typu **AzureBlob**. Odwołują się one do połączonej usługi Azure Storage utworzonej w poprzedniej sekcji. 
@@ -112,19 +109,18 @@ W ustawieniach połączonej usługi określono konto usługi Azure Storage, któ
    ![Menu do tworzenia zestawu danych](./media/quickstart-create-data-factory-portal/new-dataset-menu.png)
 2. Na stronie **Nowy zestaw danych** wybierz pozycję **Azure Blob Storage**, a następnie wybierz przycisk **Zakończ**. 
 
-   ![Wybieranie usługi „Azure Blob Storage”](./media/quickstart-create-data-factory-portal/select-azure-blob-storage.png)
-3. W oknie **Właściwości** zestawu danych wprowadź wartość **InputDataset** w polu **Nazwa**. 
+   ![Wybieranie usługi „Azure Blob Storage”](./media/quickstart-create-data-factory-portal/select-azure-blob-dataset.png)
+3. Na karcie **Ogólne** zestawu danych wprowadź wartość **InputDataset** w polu **Nazwa**. 
 
-   ![Ustawienia ogólne zestawu danych](./media/quickstart-create-data-factory-portal/dataset-general-page.png)
 4. Przejdź do karty **Połączenie** i wykonaj następujące czynności: 
 
-   a. Wybierz pozycję **AzureStorageLinkedService** w polu **Połączona usługa**.
+    a. Wybierz pozycję **AzureStorageLinkedService** w polu **Połączona usługa**.
 
-   b. Kliknij przycisk **Przeglądaj** w polu **Ścieżka pliku**.
+    b. Kliknij przycisk **Przeglądaj** w polu **Ścieżka pliku**.
 
-      ![Karta „Połączenie” i przycisk „Przeglądaj”](./media/quickstart-create-data-factory-portal/file-path-browse-button.png) c. W oknie **Wybieranie pliku lub folderu** przejdź do folderu **input** w kontenerze **adftutorial**, wybierz plik **emp.txt**, a następnie wybierz przycisk **Zakończ**.
+    ![Karta „Połączenie” i przycisk „Przeglądaj”](./media/quickstart-create-data-factory-portal/file-path-browse-button.png) c. W oknie **Wybieranie pliku lub folderu** przejdź do folderu **input** w kontenerze **adftutorial**, wybierz plik **emp.txt**, a następnie wybierz przycisk **Zakończ**.
 
-      ![Przeglądanie w poszukiwaniu pliku wejściowego](./media/quickstart-create-data-factory-portal/choose-file-folder.png)
+    ![Przeglądanie w poszukiwaniu pliku wejściowego](./media/quickstart-create-data-factory-portal/choose-file-folder.png)
     
    d. Opcjonalnie: wybierz pozycję **Podgląd danych**, aby wyświetlić dane w pliku emp.txt.     
 5. Powtórz kroki, aby utworzyć wyjściowy zestaw danych:  
@@ -133,15 +129,9 @@ W ustawieniach połączonej usługi określono konto usługi Azure Storage, któ
 
    b. Na stronie **Nowy zestaw danych** wybierz pozycję **Azure Blob Storage**, a następnie wybierz przycisk **Zakończ**.
 
-   d. Określ wartość **OutputDataset** jako nazwę.
+   d. Na karcie **Ogólne** określ wartość **OutputDataset** jako nazwę.
 
-   d. Wprowadź wartość **adftutorial/output** jako nazwę folderu. Jeśli folder **output** nie istnieje, działanie kopiowania utworzy go w czasie wykonywania.
-
-   e. Wprowadź wartość `@CONCAT(pipeline().RunId, '.txt')` jako nazwę pliku. 
-   
-      Każde uruchomienie potoku ma skojarzony ze sobą unikatowy identyfikator. Wyrażenie łączy identyfikator uruchomienia potoku z rozszerzeniem **.txt** w celu obliczenia nazwy pliku wyjściowego. Aby uzyskać listę obsługiwanych zmiennych systemowych i wyrażeń, zobacz [Zmienne systemowe](control-flow-system-variables.md) i [Język wyrażeń](control-flow-expression-language-functions.md).
-
-   ![Ustawienia wyjściowego zestawu danych](./media/quickstart-create-data-factory-portal/output-dataset-settings.png)
+   d. Na karcie **Połączenie** wybierz pozycję **AzureStorageLinkedService** jako połączoną usługę, a następnie wprowadź **adftutorial/output** jako folder. Jeśli folder **output** nie istnieje, działanie kopiowania utworzy go w czasie wykonywania.
 
 ## <a name="create-a-pipeline"></a>Tworzenie potoku 
 Podczas tej procedury utworzysz potok i zweryfikujesz go za pomocą działania kopiowania, które korzysta z wejściowego i wyjściowego zestawu danych. Działanie kopiowania służy do kopiowania danych z pliku określonego w ustawieniach wejściowego zestawu danych do pliku określonego w ustawieniach wyjściowego zestawu danych. Jeśli wejściowy zestaw danych określa tylko folder (a nie nazwę pliku), działanie kopiowania kopiuje wszystkie pliki w folderze źródłowym do lokalizacji docelowej. 
@@ -149,45 +139,33 @@ Podczas tej procedury utworzysz potok i zweryfikujesz go za pomocą działania k
 1. Wybierz przycisk **+** (znak plus), a następnie wybierz pozycję **Potok**. 
 
    ![Menu do tworzenia nowego potoku](./media/quickstart-create-data-factory-portal/new-pipeline-menu.png)
-2. W oknie **Właściwości** wprowadź wartość **CopyPipeline** w polu **Nazwa**. 
+2. Na karcie **Ogólne** określ wartość **CopyPipeline** w polu **Nazwa**. 
 
-   ![Ogólne ustawienia potoku](./media/quickstart-create-data-factory-portal/pipeline-general-settings.png)
 3. W przyborniku **Działania** rozwiń pozycję **Przepływ danych**. Przeciągnij działanie **Copy** (Kopiowanie) z przybornika **Działania** na powierzchnię projektanta potoku. Możesz również wyszukać działania w przyborniku **Działania**. Wprowadź wartość **CopyFromBlobToBlob** w polu **Nazwa**.
 
    ![Ustawienia ogólne działania kopiowania](./media/quickstart-create-data-factory-portal/copy-activity-general-settings.png)
 4. Przejdź do karty **Źródło** w ustawieniach działania kopiowania, a następnie wybierz wartość **InputDataset** w polu **Zestaw danych źródłowych**.
 
-   ![Ustawienia źródła działania kopiowania](./media/quickstart-create-data-factory-portal/copy-activity-source-settings.png)    
 5. Przejdź do karty **Ujście** w ustawieniach działania kopiowania, a następnie wybierz wartość **OutputDataset** w polu **Zestaw danych ujścia**.
 
-   ![Ustawienia ujścia działania kopiowania](./media/quickstart-create-data-factory-portal/copy-activity-sink-settings.png)    
-7. Wybierz pozycję **Weryfikuj**, aby zweryfikować ustawienia potoku. Sprawdź, czy potok został pomyślnie zweryfikowany. Wybierz przycisk **>>** (strzałka w prawo), aby zamknąć dane wyjściowe weryfikacji. 
+6. Aby sprawdzić poprawność ustawień potoku, kliknij pozycję **Weryfikuj** na pasku narzędzi potoku powyżej kanwy. Sprawdź, czy potok został pomyślnie zweryfikowany. Wybierz przycisk **>>** (strzałka w prawo), aby zamknąć dane wyjściowe weryfikacji. 
 
-   ![Weryfikowanie potoku](./media/quickstart-create-data-factory-portal/pipeline-validate-button.png)
+## <a name="debug-the-pipeline"></a>Debugowanie potoku
+W tym kroku przeprowadzisz debugowanie potoku przed jego wdrożeniem w usłudze Data Factory. 
 
-## <a name="test-run-the-pipeline"></a>Testowe uruchamianie potoku
-W tym kroku uruchomisz przebieg testowy potoku przed jego wdrożeniem w fabryce Data Factory. 
-
-1. Na pasku narzędzi potoku wybierz pozycję **Przebieg testowy**. 
+1. Na pasku narzędzi nad kanwą potoku kliknij pozycję **Debugowanie**, aby wyzwolić przebieg testu. 
     
-   ![Przebiegi testowe potoku](./media/quickstart-create-data-factory-portal/pipeline-test-run.png)
-2. Sprawdź, czy na karcie **Dane wyjściowe** ustawień potoku wyświetlany jest stan przebiegu potoku. 
+2. Sprawdź, czy w dolnej części karty **Dane wyjściowe** ustawień potoku wyświetlany jest stan przebiegu potoku. 
 
-   ![Dane wyjściowe przebiegu testowego](./media/quickstart-create-data-factory-portal/test-run-output.png)    
 3. Sprawdź, czy w folderze **output** kontenera **adftutorial** znajduje się plik wyjściowy. Jeśli folder wyjściowy nie istnieje, usługa Data Factory automatycznie go utworzy. 
-    
-   ![Weryfikacja danych wyjściowych](./media/quickstart-create-data-factory-portal/verify-output.png)
-
 
 ## <a name="trigger-the-pipeline-manually"></a>Ręczne wyzwalanie potoku
 Podczas tej procedury wdrożysz jednostki (połączone usługi, zestawy danych i potoki) w usłudze Azure Data Factory. Następnie ręcznie wyzwolisz przebieg potoku. Możesz również opublikować jednostki za pomocą własnego repozytorium GIT programu Visual Studio Team Services (VSTS), co zostało omówione w [innym samouczku](tutorial-copy-data-portal.md?#configure-code-repository).
 
-1. Przed wyzwoleniem potoku należy opublikować jednostki w usłudze Data Factory. Aby przeprowadzić publikowanie, w okienku po lewej stronie wybierz pozycję **Opublikuj wszystkie**. 
+1. Przed wyzwoleniem potoku należy opublikować jednostki w usłudze Data Factory. Aby przeprowadzić publikowanie, w górnej części wybierz przycisk **Opublikuj wszystkie**. 
 
    ![Przycisk Opublikuj](./media/quickstart-create-data-factory-portal/publish-button.png)
-2. Aby ręcznie wyzwolić potok, wybierz pozycję **Wyzwól** na pasku narzędzi, a następnie wybierz pozycję **Wyzwól teraz**. 
-    
-   ![Polecenie „Wyzwól teraz”](./media/quickstart-create-data-factory-portal/pipeline-trigger-now.png)
+2. Aby ręcznie wyzwolić potok, wybierz pozycję **Wyzwól** na pasku narzędzi potoku, a następnie wybierz pozycję **Wyzwól teraz**. 
 
 ## <a name="monitor-the-pipeline"></a>Monitorowanie potoku
 
@@ -206,15 +184,12 @@ Podczas tej procedury wdrożysz jednostki (połączone usługi, zestawy danych i
 ## <a name="trigger-the-pipeline-on-a-schedule"></a>Wyzwalanie potoku zgodnie z harmonogramem
 W tym samouczku ta procedura jest opcjonalna. Możesz utworzyć *wyzwalacz harmonogramu*, aby zaplanować okresowe uruchamianie potoku (co godzinę, codziennie itd.). Podczas tej procedury utworzysz wyzwalacz, który będzie uruchamiany co minutę, aż do daty/godziny określonej jako data zakończenia. 
 
-1. Przejdź do karty **Edycja**. 
+1. Przejdź do karty **Tworzenie**. 
 
-   ![Przycisk Edytuj](./media/quickstart-create-data-factory-portal/switch-edit-tab.png)
-1. Wybierz pozycję **Wyzwalacz** w menu, a następnie wybierz pozycję **Nowy/Edytuj**. 
+2. Przejdź do potoku, wybierz opcję **Wyzwalacz** na pasku narzędzi potoku, a następnie wybierz pozycję **Nowy/Edytuj**. 
 
-   ![Menu dla nowego wyzwalacza](./media/quickstart-create-data-factory-portal/new-trigger-menu.png)
 2. Na stronie **Dodawanie wyzwalaczy** wybierz pozycję **Wybierz wyzwalacz**, a następnie wybierz przycisk **Nowy**. 
 
-   ![Opcje dodawania nowego wyzwalacza](./media/quickstart-create-data-factory-portal/add-trigger-new-button.png)
 3. Na stronie **Nowy wyzwalacz** w polu **Koniec** wybierz pozycję **W dniu**, określ czas zakończenia jako kilka minut późniejszy niż czas bieżący, a następnie wybierz pozycję **Zastosuj**. 
 
    Za poszczególne uruchomienia potoku są naliczane opłaty, zatem określ czas zakończenia jako późniejszy tylko o kilka minut od czasu rozpoczęcia. Upewnij się, że przypada on tego samego dnia. Upewnij się również, że okres między czasem publikowania i czasem zakończenia będzie wystarczający do uruchomienia potoku. Wyzwalacz zaczyna obowiązywać dopiero po opublikowaniu rozwiązania w fabryce Data Factory, a nie po zapisaniu go w interfejsie użytkownika. 
@@ -228,7 +203,6 @@ W tym samouczku ta procedura jest opcjonalna. Możesz utworzyć *wyzwalacz harmo
    ![Komunikat ostrzegawczy i przycisk „Zakończ”](./media/quickstart-create-data-factory-portal/new-trigger-finish.png)
 6. Wybierz pozycję **Opublikuj wszystkie**, aby opublikować zmiany w usłudze Data Factory. 
 
-   ![Przycisk Opublikuj](./media/quickstart-create-data-factory-portal/publish-button.png)
 8. Przejdź do karty **Monitorowanie** po lewej stronie. Wybierz pozycję **Odśwież**, aby odświeżyć listę. Potok będzie uruchamiany raz na minutę od czasu opublikowania do czasu zakończenia. 
 
    Zwróć uwagę na wartości w kolumnie **Wyzwolone przez**. Ręczne uruchomienie wyzwalacza pochodzi z kroku wykonanego wcześniej (**Wyzwól teraz**). 

@@ -5,7 +5,7 @@
 
 1. Użyj poświadczeń konta Microsoft, aby zalogować się do witryny [Azure Portal](https://portal.azure.com/).
 
-2. W portalu Azure kliknij **Utwórz zasób** , a następnie w witrynie marketplace, kliknij przycisk **zobaczyć wszystkie**.
+2. W witrynie Azure Portal kliknij pozycję **Utwórz zasób**, a następnie w witrynie Marketplace kliknij pozycję **Zobacz wszystko**.
 
     ![Tworzenie usługi Menedżer urządzeń StorSimple](./media/storsimple-8000-create-new-service/createssdevman1.png)
 

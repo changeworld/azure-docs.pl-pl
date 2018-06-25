@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 7987ee8c9a127c7a41ec2cd1f726450c771d527f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ddecf2f75e80f95291b12d9c139a8da85f45ac94
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34666970"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36288072"
 ---
 Pierwszym krokiem jest utworzenie centrum IoT w subskrypcji za pomocą witryny Azure Portal. Centrum IoT umożliwia pozyskiwanie dużych ilości danych telemetrycznych z wielu urządzeń do chmury. Następnie dzięki centrum jedna lub więcej usług zaplecza uruchomionych w chmurze może odczytywać i przetwarzać te dane telemetryczne.
 
@@ -27,7 +27,7 @@ Pierwszym krokiem jest utworzenie centrum IoT w subskrypcji za pomocą witryny A
 
    * **Subskrypcja**: wybierz subskrypcję, która ma zostać użyta do utworzenia tego centrum IoT Hub.
 
-   * **Grupa zasobów**: utwórz grupę zasobów do hostowania centrum IoT Hub lub użyj istniejącej grupy zasobów. Aby uzyskać więcej informacji, zobacz [Używanie grup zasobów do zarządzania zasobami platformy Azure][lnk-resource-groups].
+   * **Grupa zasobów**: utwórz grupę zasobów do hostowania centrum IoT Hub lub użyj istniejącej grupy zasobów. Dzięki umieszczeniu wszystkich powiązanych zasobów w grupie można nimi zarządzać jednocześnie. Na przykład usunięcie grupy zasobów powoduje usunięcie wszystkich zasobów w tej grupie. Aby uzyskać więcej informacji, zobacz [Używanie grup zasobów do zarządzania zasobami platformy Azure][lnk-resource-groups].
 
    * **Region**: wybierz lokalizację znajdującą się najbliżej Ciebie.
 

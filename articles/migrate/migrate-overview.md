@@ -4,15 +4,15 @@ description: Ten artykuł zawiera omówienie usługi Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 06/08/2018
+ms.date: 06/20/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 68f335762e1fdd68296d7056ef5826f69c868d70
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 6c78554b78468329819726bfd95671a34f51b231
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236369"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285801"
 ---
 # <a name="about-azure-migrate"></a>Informacje o usłudze Azure Migrate
 
@@ -31,7 +31,7 @@ Usługa Azure Migrate ułatwia wykonywanie następujących działań:
 
 - Aktualnie można oceniać gotowość do migracji na maszyny wirtualne platformy Azure tylko dla lokalnych maszyn wirtualnych VMware. Maszyny wirtualne VMware muszą być zarządzane przez program vCenter Server (w wersji 5.5, 6.0 lub 6.5).
 - Obsługa funkcji Hyper-V znajduje się w naszym harmonogramie działania. Na razie zaleca się planowanie migracji obciążeń funkcji Hyper-V przy użyciu narzędzia [Planista wdrażania usługi Azure Site Recovery](http://aka.ms/asr-dp-hyperv-doc).
-- Można odnajdywać maksymalnie 1500 maszyn wirtualnych w jednym odnajdywaniu i maksymalnie 1500 maszyn wirtualnych w jednym projekcie. Można oceniać maksymalnie 1500 maszyn wirtualnych w ramach pojedynczej oceny.
+- Można odnajdywać maksymalnie 1500 maszyn wirtualnych w jednym odnajdywaniu i maksymalnie 1500 maszyn wirtualnych w jednym projekcie. Można oceniać maksymalnie 1500 maszyn wirtualnych w ramach pojedynczej oceny. Jeśli chcesz odnaleźć większe środowisko możesz podzielić operację odnajdywania i utworzyć wielu projektów. [Dowiedz się więcej](how-to-scale-assessment.md). Usługa Azure Migrate obsługuje maksymalnie 20 projektów na subskrypcję.
 - Projekt usługi Azure Migrate można utworzyć tylko w regionie Zachodnio-środkowe stany USA lub Wschodnie stany USA. Nie ma to jednak wpływu na możliwość planowania migracji w innej docelowej lokalizacji platformy Azure. Lokalizacja projektu migracji służy tylko do przechowywania metadanych wykrytych w środowisku lokalnym.
 - Usługa Azure Migrate obsługuje tylko dyski zarządzane na potrzeby oceny migracji.
 
@@ -50,7 +50,10 @@ Ocena pomaga określić, czy maszyny lokalne są odpowiednie dla platformy Azure
 **Lokalizacja docelowa** | Lokalizacja platformy Azure, do której chcesz przeprowadzić migrację.<br/><br/>Usługa Azure Migrate obsługuje obecnie 30 regionów, w tym: Australia Południowo-Wschodnia, Australia Wschodnia, Azja Południowo-Wschodnia, Azja Wschodnia, Brazylia Południowa, Chiny Północne, Chiny Wschodnie, Europa Północna, Europa Zachodnia, Indie Południowe, Indie Środkowe, Indie Zachodnie, Japonia Wschodnia, Japonia Zachodnia, Kanada Środkowa, Kanada Wschodnia, Korea Południowa, Korea Środkowa, Niemcy Północno-Wschodnie, Niemcy Środkowe, Południowe Zjednoczone Królestwo, Południowo-środkowe stany USA, Północno-środkowe stany USA, Środkowe stany USA, US Gov Arizona, US Gov Teksas, US Gov Wirginia, Wschodnie stany USA, Wschodnie stany USA 2, Zachodnie stany USA, Zachodnie stany USA 2, Zachodnie Zjednoczone Królestwo i Zachodnio-środkowe stany USA. Domyślna lokalizacja docelowa to Zachodnie stany USA 2.
 **Typ magazynu** | Można określić typ dysków, które mają zostać przydzielone na platformie Azure. Ta właściwość ma zastosowanie, gdy kryterium zmiany rozmiaru jest takie jak lokalna zmiana rozmiaru. Typem dysku docelowego mogą być dyski zarządzane w warstwie Premium lub dyski zarządzane w warstwie Standardowa. Wartością domyślną są dyski zarządzane w warstwie Premium. Jeśli rozmiar zostanie określony na podstawie wydajności, rekomendacje dotyczące dysku odbywają się automatycznie na podstawie danych wydajności maszyn wirtualnych. Usługa Azure Migrate obsługuje dyski zarządzane tylko na potrzeby oceny migracji.
 **Kryterium rozmiaru** | Kryterium do użycia przez usługę Azure Migrate w celu określenia odpowiedniego rozmiaru dla maszyn wirtualnych platformy Azure. Na potrzeby platformy Azure rozmiar można określić na podstawie *historii wydajności* lokalnych maszyn wirtualnych lub jako rozmiar *lokalnych* maszyn wirtualnych bez uwzględniania historii wydajności. Wartością domyślną jest ustalanie rozmiaru lokalnie.
-**Plany cenowe** | W ramach obliczania kosztów funkcja oceny uwzględnia posiadanie pakietu Software Assurance i uprawnienie do [korzyści użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/). Uwzględniane są również [oferty platformy Azure](https://azure.microsoft.com/support/legal/offer-details/), jeśli są dostępne. Można też wskazać dowolne procentowe zniżki skojarzone z daną subskrypcją i stosowane dodatkowo do całej oferty.
+**Oferta platformy Azure** | Możesz określić [ofertę platformy Azure](https://azure.microsoft.com/support/legal/offer-details/), w której przeprowadzono rejestrację, a usługa Azure Migrate odpowiednio oszacuje koszt.
+**Korzyść użycia hybrydowego platformy Azure** | Możesz określić, czy masz pakiet Software Assurance i kwalifikujesz się do otrzymania [korzyści użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/), aby uzyskać cenę z rabatem.
+**Wystąpienia zarezerwowane** |  Możesz również określić, czy masz [wystąpienia zarezerwowane](https://azure.microsoft.com/pricing/reserved-vm-instances/) na platformie Azure, a usługa Azure Migrate odpowiednio oszacuje koszt.
+**Czas pracy maszyny wirtualnej** | Jeśli Twoje maszyny wirtualne nie będą działać całą dobę na platformie Azure, możesz określić czas trwania ich działania, co spowoduje wykonanie odpowiednich szacunków kosztów.
 **Warstwa cenowa** | Możesz określić [warstwę cenową (Podstawowa/Standardowa)](../virtual-machines/windows/sizes-general.md) dla docelowych maszyn wirtualnych platformy Azure. Na przykład jeśli planujesz migrację środowiska produkcyjnego, rozważ warstwę Standardowa, która udostępnia maszyny wirtualne o małych opóźnieniach, lecz które mogą kosztować więcej. Z drugiej strony w przypadku środowiska deweloperskiego i testowego rozważ warstwę Podstawowa, która udostępnia maszyny wirtualnych o większych opóźnieniach, lecz przy niższych kosztach. Domyślnie jest używana warstwa [Standardowa](../virtual-machines/windows/sizes-general.md).
 **Historia wydajności** | Domyślnie usługa Azure Migrate ocenia wydajność maszyn lokalnych na podstawie historii wydajności obejmującej ostatni dzień, przy wartości percentylu równej 95%. Możesz zmodyfikować te wartości we właściwościach oceny.
 **Serie maszyn wirtualnych** | Określić możesz serie maszyn wirtualnych, które mają być brane pod uwagę podczas ustalania właściwego rozmiaru. Jeśli na przykład masz środowisko produkcyjne, którego nie zamierzasz migrować do maszyn wirtualnych serii A na platformie Azure, możesz wykluczyć serię A z listy serii, a ustalanie właściwego rozmiaru zostanie wykonane tylko przy użyciu wybranych serii.  
@@ -102,4 +105,4 @@ Po dokonaniu oceny maszyn lokalnych pod kątem migracji przy użyciu usługi Azu
 ## <a name="next-steps"></a>Następne kroki
 
 - [Wykonaj czynności opisane w samouczku](tutorial-assessment-vmware.md) dotyczącym tworzenia oceny lokalnej maszyny wirtualnej VMware.
-- [Dowiedz się więcej](resources-faq.md) na temat usługi Azure Migrate w Często zadawanych pytaniach
+- [Dowiedz się więcej](resources-faq.md) na temat usługi Azure Migrate z odpowiedzi na Często zadawane pytania

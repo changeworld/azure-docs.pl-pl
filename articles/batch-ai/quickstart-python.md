@@ -13,14 +13,14 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: Python
 ms.topic: quickstart
-ms.date: 10/06/2017
-ms.author: lili
-ms.openlocfilehash: da5c1181f9c4d311bdeabe837435ae4e0eb3dc1a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.date: 06/18/2018
+ms.author: danlep
+ms.openlocfilehash: 6e80996cb0359e88d2a6d5fae231523a5c69c8ca
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31513252"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295265"
 ---
 # <a name="run-a-cntk-training-job-using-the-azure-python-sdk"></a>Uruchamianie zadania szkoleniowego CNTK przy użyciu zestawu Azure Python SDK
 
@@ -32,7 +32,7 @@ W tym przykładzie używa się bazy danych MNIST ręcznie zapisanych obrazów do
 
 * Subskrypcja Azure — jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Azure Python SDK — zobacz [instrukcje dotyczące instalacji](/python/azure/python-sdk-azure-install)
+* Azure Python SDK — zobacz [instrukcje dotyczące instalacji](/python/azure/python-sdk-azure-install). W tym artykule wymagany jest co najmniej pakiet azure-mgmt-batchai w wersji 2.0.0.
 
 * Konto magazynu platformy Azure — zobacz [Tworzenie konta magazynu platformy Azure](../storage/common/storage-create-storage-account.md)
 
@@ -61,6 +61,9 @@ storage_account_key = 'FILL-IN-HERE'
 # specify the credentials used to remote login your GPU node
 admin_user_name = 'FILL-IN-HERE'
 admin_user_password = 'FILL-IN-HERE'
+
+# specify the location in which to create Batch AI resources
+mylocation = 'eastus'
 ```
 
 Pamiętaj, że wprowadzanie poświadczeń do kodu źródłowego nie jest dobrym rozwiązaniem i jest wykonywane tutaj w celu uproszczenia pracy z przewodnikiem Szybki start.
@@ -93,14 +96,14 @@ resource_group_name = 'myresourcegroup'
 resource_management_client = ResourceManagementClient(
         credentials=creds, subscription_id=subscription_id)
 resource = resource_management_client.resource_groups.create_or_update(
-        resource_group_name, {'location': 'eastus'})
+        resource_group_name, {'location': mylocation})
 ```
 
 
 ## <a name="prepare-azure-file-share"></a>Przygotowanie udziału plików platformy Azure
 W celach ilustracyjnych ten przewodnik Szybki start używa udziału plików platformy Azure do hostowania danych szkoleniowych i skryptów na potrzeby zadania szkolenia.
 
-1. Utwórz udział plików o nazwie `batchaiquickstart`.
+Utwórz udział plików o nazwie `batchaiquickstart`.
 
 ```Python
 from azure.storage.file import FileService
@@ -109,20 +112,28 @@ service = FileService(storage_account_name, storage_account_key)
 service.create_share(azure_file_share_name, fail_on_exist=False)
 ```
 
-2. Utwórz katalog w udziale o nazwie `mnistcntksample`
+Utwórz katalog w udziale o nazwie `mnistcntksample`.
 
 ```Python
 mnist_dataset_directory = 'mnistcntksample'
-service.create_directory(azure_file_share_name, mnist_dataset_directory,
-                         fail_on_exist=False)
+service.create_directory(azure_file_share_name, mnist_dataset_directory, fail_on_exist=False)
 ```
-3. Pobierz [przykładowy pakiet](https://batchaisamples.blob.core.windows.net/samples/BatchAIQuickStart.zip?st=2017-09-29T18%3A29%3A00Z&se=2099-12-31T08%3A00%3A00Z&sp=rl&sv=2016-05-31&sr=b&sig=hrAZfbZC%2BQ%2FKccFQZ7OC4b%2FXSzCF5Myi4Cj%2BW3sVZDo%3D) i rozpakuj go do bieżącego katalogu. Poniższy kod operacji przekazuje wymagane pliki do udziału plików platformy Azure:
+Pobierz [przykładowy pakiet](https://batchaisamples.blob.core.windows.net/samples/BatchAIQuickStart.zip?st=2017-09-29T18%3A29%3A00Z&se=2099-12-31T08%3A00%3A00Z&sp=rl&sv=2016-05-31&sr=b&sig=hrAZfbZC%2BQ%2FKccFQZ7OC4b%2FXSzCF5Myi4Cj%2BW3sVZDo%3D) i rozpakuj go do bieżącego katalogu. Poniższy kod operacji przekazuje wymagane pliki do udziału plików platformy Azure:
 
 ```Python
 for f in ['Train-28x28_cntk_text.txt', 'Test-28x28_cntk_text.txt',
           'ConvNet_MNIST.py']:
      service.create_file_from_path(
              azure_file_share_name, mnist_dataset_directory, f, f)
+```
+
+## <a name="create-batch-ai-workspace"></a>Tworzenie obszaru roboczego usługi Batch AI
+
+Obszar roboczy jest kolekcją najwyższego poziomu wszystkich typów zasobów usługi Batch AI. W obszarze roboczym można utworzyć klaster usługi Batch AI i eksperymenty.
+
+```Python
+workspace_name='myworkspace'
+batchai_client.workspaces.create(resource_group_name, workspace_name, mylocation)
 ```
 
 ## <a name="create-gpu-cluster"></a>Tworzenie klastra procesora GPU
@@ -135,9 +146,7 @@ cluster_name = 'mycluster'
 relative_mount_point = 'azurefileshare'
 
 parameters = models.ClusterCreateParameters(
-    # Location where the cluster will physically be deployed
-    location='eastus',
-    # VM size. Use NC or NV series for GPU
+    # VM size. Use N-series for GPU
     vm_size='STANDARD_NC6',
     # Configure the ssh users
     user_account_settings=models.UserAccountSettings(
@@ -171,7 +180,7 @@ batchai_client.clusters.create(resource_group_name, cluster_name,
 Monitoruj stan klastra przy użyciu następującego polecenia:
 
 ```Python
-cluster = batchai_client.clusters.get(resource_group_name, cluster_name)
+cluster = batchai_client.clusters.get(resource_group_name, workspace_name, cluster_name)
 print('Cluster state: {0} Target: {1}; Allocated: {2}; Idle: {3}; '
       'Unusable: {4}; Running: {5}; Preparing: {6}; Leaving: {7}'.format(
     cluster.allocation_state,
@@ -192,16 +201,18 @@ Cluster state: AllocationState.steady Target: 1; Allocated: 1; Idle: 0; Unusable
 
 Klaster będzie gotowy, gdy węzły zostaną przydzielone i zostanie zakończone przygotowanie (patrz atrybut `nodeStateCounts`). Jeśli wystąpił błąd, atrybut `errors` zawiera opis błędu.
 
-## <a name="create-training-job"></a>Tworzenie zadania szkolenia
+## <a name="create-experiment-and-training-job"></a>Tworzenie eksperymentu i zadania szkolenia
 
-Gdy klaster zostanie utworzony, skonfiguruj i prześlij zadanie uczenia:
+Po utworzeniu klastra utwórz eksperyment (kontener logiczny dla grupy powiązanych zadań). Następnie skonfiguruj i prześlij zadanie edukacyjne w eksperymencie:
 
 ```Python
+experiment_name='myexperiment'
+
+batchai_client.experiments.create(resource_group_name, workspace_name, experiment_name)
+
 job_name = 'myjob'
 
-parameters = models.job_create_parameters.JobCreateParameters(
-    # The job and cluster must be created in the same location
-    location=cluster.location,
+parameters = models.JobCreateParameters(
     # The cluster this job will run on
     cluster=models.ResourceId(id=cluster.id),
     # The number of VMs in the cluster to use
@@ -230,16 +241,16 @@ parameters = models.job_create_parameters.JobCreateParameters(
 )
 
 # Create the job
-batchai_client.jobs.create(resource_group_name, job_name, parameters).result()
+batchai_client.jobs.create(resource_group_name, workspace_name, experiment_name, job_name, parameters).result()
 ```
 
 ## <a name="monitor-job"></a>Monitorowanie zadania
 Możesz sprawdzić stan zadania przy użyciu następującego kodu:
 
 ```Python
-job = batchai_client.jobs.get(resource_group_name, job_name)
+job = batchai_client.jobs.get(resource_group_name, workspace_name, experiment_name, job_name)
 
-print('Job state: {0} '.format(job.execution_state.name))
+print('Job state: {0} '.format(job.execution_state))
 ```
 
 Dane wyjściowe są podobne do następujących: `Job state: running`.
@@ -254,7 +265,7 @@ Użyj następującego kodu w celu wyświetlenia listy wygenerowanych plików std
 
 ```Python
 files = batchai_client.jobs.list_output_files(
-    resource_group_name, job_name,
+    resource_group_name, workspace_name, experiment_name, job_name,
     models.JobsListOutputFilesOptions(outputdirectoryid="stdouterr"))
 
 for file in (f for f in files if f.download_url):
@@ -265,7 +276,7 @@ for file in (f for f in files if f.download_url):
 Użyj następującego kodu, aby wyświetlić listę wygenerowanych plików modelu:
 ```Python
 files = batchai_client.jobs.list_output_files(
-    resource_group_name, job_name,
+    resource_group_name, workspace_name, experiment_name,job_name,
     models.JobsListOutputFilesOptions(outputdirectoryid="MODEL"))
 
 for file in (f for f in files if f.download_url):
@@ -276,12 +287,12 @@ for file in (f for f in files if f.download_url):
 
 Użyj następującego kodu, aby usunąć zadanie:
 ```Python
-batchai_client.jobs.delete(resource_group_name, job_name)
+batchai_client.jobs.delete(resource_group_name, workspace_name, experiment_name, job_name)
 ```
 
 Użyj następującego kodu, aby usunąć klaster:
 ```Python
-batchai_client.clusters.delete(resource_group_name, cluster_name)
+batchai_client.clusters.delete(resource_group_name, workspace_name, cluster_name)
 ```
 
 Użyj następującego kodu, aby usunąć wszystkie przydzielone zasoby:

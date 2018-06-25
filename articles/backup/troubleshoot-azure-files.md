@@ -8,31 +8,29 @@ ms.author: markgal
 ms.date: 2/21/2018
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: bdb35cf47b339ff2089b3849283a71aa9d8fbc3d
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 797637fbaaeb0577d0437f32d4ce244a738be84b
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807418"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287332"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Rozwiązywanie problemów związanych z tworzeniem kopii zapasowej udziałów plików platformy Azure
 Korzystając z informacji znajdujących się w poniższych tabelach możesz rozwiązywać problemy i usuwać błędy napotkane podczas używania funkcji tworzenia kopii zapasowej udziałów plików platformy Azure.
 
-## <a name="preview-boundaries"></a>Granice wersji zapoznawczej
+## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Ograniczenia dotyczące tworzenia kopii zapasowej udziału plików platformy Azure w okresie korzystania z wersji zapoznawczej
 Funkcja tworzenia kopii zapasowych udziałów plików platformy Azure jest dostępna w wersji zapoznawczej. Następujące scenariusze tworzenia kopii zapasowej nie są obsługiwane w przypadku udziałów plików platformy Azure:
-- Ochrona udziałów plików platformy Azure w ramach kont magazynu przy użyciu replikacji [magazynu geograficznie nadmiarowego dostępnego do odczytu](../storage/common/storage-redundancy-grs.md) (RA-GRS)*.
-- Ochrona udziałów plików platformy Azure w ramach kont magazynu, które mają włączone sieci wirtualne lub zaporę.
-- Tworzenie kopii zapasowej udziałów plików platformy Azure za pomocą programu PowerShell lub interfejsu wiersza polecenia.
+- Nie można chronić udziałów plików platformy Azure w ramach kont magazynu przy użyciu replikacji [magazynu geograficznie nadmiarowego dostępnego do odczytu](../storage/common/storage-redundancy-grs.md) (RA-GRS)*.
+- Nie można chronić udziałów plików platformy Azure w ramach kont magazynu, które mają włączone sieci wirtualne lub zaporę.
+- Nie ma programu PowerShell ani interfejsu wiersza polecenia dostępnego dla ochrony usługi Azure Files z poziomu usługi Azure Backup.
+- Maksymalna liczba zaplanowanych kopii zapasowych to jedna dziennie.
+- Maksymalna liczba kopii zapasowych na żądanie to cztery dziennie.
+- Aby zapobiec przypadkowemu usunięciu kopii zapasowych z magazynu usługi Recovery Services, użyj [blokad zasobów](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) na koncie magazynu.
+- Nie usuwaj migawek utworzonych przy użyciu usługi Azure Backup. Usunięcie migawek może spowodować utratę punktów odzyskiwania i/lub błędy przywracania.
 
 \*Ochrona udziałów plików platformy Azure w ramach kont magazynu przy użyciu funkcji replikacji [magazynu geograficznie nadmiarowego dostępnego do odczytu](../storage/common/storage-redundancy-grs.md) (RA-GRS) jako magazynu geograficznie nadmiarowego (GRS) w cenie GRS
 
 Tworzenie kopii zapasowej udziałów plików platformy Azure w ramach kont magazynu za pomocą replikacji [magazynu strefowo nadmiarowego](../storage/common/storage-redundancy-zrs.md) (ZRS) jest obecnie dostępne tylko w środkowych stanach USA (CUS) i wschodnich stanach USA 2 (EUS2)
-
-### <a name="limitations"></a>Ograniczenia
-- Maksymalna liczba zaplanowanych kopii zapasowych na dzień wynosi 1.
-- Maksymalna liczba kopii zapasowych na żądanie na dzień wynosi 4.
-- Aby zapobiec przypadkowemu usunięciu kopii zapasowych z magazynu usługi Recovery Services, użyj blokad zasobów na koncie magazynu.
-- Nie usuwaj migawek utworzonych przy użyciu usługi Azure Backup. Usunięcie migawek może spowodować utratę punktów odzyskiwania i/lub błędy przywracania
 
 ## <a name="configuring-backup"></a>Konfigurowanie kopii zapasowej
 Poniższa tabela dotyczy konfigurowania kopii zapasowej:
@@ -53,7 +51,7 @@ Poniższa tabela dotyczy konfigurowania kopii zapasowej:
 | -------------- | ----------------------------- |
 | Operacja nie powiodła się, ponieważ nie odnaleziono udziału plików. | Sprawdź, czy udział plików, który chcesz chronić, nie został usunięty.|
 | Nie odnaleziono konta magazynu lub nie jest ono obsługiwane. | <ul><li>Sprawdź, czy konto magazynu istnieje w grupie zasobów i nie zostało usunięte ani przeniesione z grupy zasobów po ostatniej weryfikacji. <li> Sprawdź, czy dla konta magazynu obsługiwane jest tworzenie kopii zapasowej udziału plików.|
-| Osiągnięto maksymalną liczbę migawek dla tego udziału plików. Tworzenie kolejnych migawek będzie możliwe po wygaśnięciu starszych. | <ul><li> Ten błąd może wystąpić podczas tworzenia wielu kopii zapasowych na żądanie dla pliku. <li> Istnieje limit 200 migawek na udziałów plików łącznie z migawkami tworzonymi w ramach usługi Azure Backup. Starsze zaplanowane kopie zapasowych (lub migawki) są czyszczone automatycznie. Kopie zapasowe na żądanie (lub migawki) muszą zostać usunięte po osiągnięciu maksymalnego limitu.<li> Usuń kopie zapasowe na żądanie (migawki udziałów plików platformy Azure) z portalu usługi Azure Files. **Uwaga**: punkty odzyskiwania zostaną utracone w przypadku usunięcia migawek utworzonych za pomocą usługi Azure Backup. |
+| Osiągnięto maksymalną liczbę migawek dla tego udziału plików. Tworzenie kolejnych migawek będzie możliwe po wygaśnięciu starszych. | <ul><li> Ten błąd może wystąpić podczas tworzenia wielu kopii zapasowych na żądanie dla pliku. <li> Istnieje limit 200 migawek na udział plików łącznie z migawkami tworzonymi w ramach usługi Azure Backup. Starsze zaplanowane kopie zapasowych (lub migawki) są czyszczone automatycznie. Kopie zapasowe na żądanie (lub migawki) muszą zostać usunięte po osiągnięciu maksymalnego limitu.<li> Usuń kopie zapasowe na żądanie (migawki udziałów plików platformy Azure) z portalu usługi Azure Files. **Uwaga**: punkty odzyskiwania zostaną utracone w przypadku usunięcia migawek utworzonych za pomocą usługi Azure Backup. |
 | Tworzenie kopii zapasowej udziału plików lub jego przywracanie nie powiodło się z powodu ograniczania usługi magazynu. Może to być spowodowane tym, że usługa magazynu jest zajęta przetwarzaniem innych żądań dla danego konta magazynu.| Spróbuj ponownie wykonać operację po pewnym czasie. |
 | Przywracanie nie powiodło się, ponieważ docelowy udziału plików nie został odnaleziony. | <ul><li>Sprawdź, czy wybrane konto magazynu istnieje, a docelowy udziału plików nie został usunięty. <li> Sprawdź, czy dla konta magazynu obsługiwane jest tworzenie kopii zapasowej udziału plików. |
 | Kopie zapasowe usługi Azure Backup nie są obecnie obsługiwane w przypadku udziałów plików platformy Azure w ramach kont magazynu, które mają włączone sieci wirtualne. | Wyłącz sieci wirtualne w ramach konta magazynu, aby zapewnić powodzenie operacji tworzenia kopii zapasowych i przywracania. |

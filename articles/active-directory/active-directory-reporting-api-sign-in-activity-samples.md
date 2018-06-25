@@ -1,41 +1,41 @@
 ---
-title: Przykłady interfejsu API raport aktywności logowania w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
-description: Jak rozpocząć pracę z usługi Azure Active Directory raportowania interfejsu API
+title: Przykłady interfejsu API raportowania działań logowania usługi Azure Active Directory | Microsoft Docs
+description: Jak rozpocząć pracę z interfejsem API raportowania usługi Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: c41c1489-726b-4d3f-81d6-83beb932df9c
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 05/31/2018
-ms.author: dhanyahk;rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 466755d7d1cc7fbf4006826ac849b74ba306bae9
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
-ms.translationtype: MT
+ms.openlocfilehash: 52d49770014a5fb6a5eec644868e702c8a8d9ef3
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34698581"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36224902"
 ---
-# <a name="azure-active-directory-sign-in-activity-report-api-samples"></a>Przykłady interfejsu API raport aktywności logowania w usłudze Azure Active Directory
-W tym artykule jest częścią kolekcję artykułów na temat usługi Azure Active Directory raportowania interfejsu API.  
-Raportowanie na platformie Azure AD zapewnia interfejs API, który umożliwia dostęp do danych działań logowania za pomocą kodu lub narzędzia pokrewne.  
-Zakres tego artykułu jest zapewnienie przykładowy kod **logowania działanie interfejsu API**.
+# <a name="azure-active-directory-sign-in-activity-report-api-samples"></a>Przykłady interfejsu API raportów działań logowania usługi Azure Active Directory
+Ten artykuł jest częścią kolekcji artykułów na temat interfejsu API raportowania usługi Azure Active Directory.  
+Funkcja raportowania usługi Azure AD udostępnia interfejs API, który umożliwia dostęp do danych działań logowania za pomocą kodu lub narzędzi pokrewnych.  
+Zakresem tego artykułu jest przedstawienie przykładowego kodu **interfejsu API działań logowania**.
 
 Zobacz:
 
-* [Dzienniki inspekcji](active-directory-reporting-azure-portal.md#activity-reports) Aby uzyskać więcej informacji o pojęciach
-* [Wprowadzenie do usługi Azure Active Directory interfejsu API raportowania](active-directory-reporting-api-getting-started.md) Aby uzyskać więcej informacji na temat raportowania interfejsu API.
+* [Dzienniki inspekcji](active-directory-reporting-azure-portal.md#activity-reports), aby uzyskać więcej informacji koncepcyjnych
+* [Wprowadzenie do interfejsu API raportowania usługi Azure Active Directory](active-directory-reporting-api-getting-started.md), aby uzyskać więcej informacji na temat interfejsu API raportowania.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Zanim użyjesz przykłady w tym artykule, należy wykonać [wymagania wstępne dotyczące raportowania interfejsu API usługi Azure AD dostęp](active-directory-reporting-api-prerequisites.md).  
+Zanim będzie możliwe skorzystanie z przykładów w tym artykule, trzeba spełnić [warunki wstępne uzyskiwania dostępu do interfejsu API raportowania usługi Azure AD](active-directory-reporting-api-prerequisites.md).  
 
 ## <a name="powershell-script"></a>Skrypt programu PowerShell
 
@@ -91,13 +91,13 @@ if ($oauth.access_token -ne $null) {
 
 
 
-## <a name="executing-the-script"></a>Wykonanie skryptu
-Zwracany jest po Zakończ edycję skryptu, uruchom go i sprawdź, czy oczekiwane dane z przy logowaniu rejestruje raportu.
+## <a name="executing-the-script"></a>Wykonywanie skryptu
+Po zakończeniu edytowania skryptu uruchom go i sprawdź, czy zwrócone zostały oczekiwane dane z raportu dzienników logowania.
 
-Skrypt zwraca dane wyjściowe z raportu logowania w formacie JSON. Tworzy również `SignIns.json` plik o tych samych danych wyjściowych. Możesz eksperymentować, modyfikując skryptu, aby zwrócić dane z innych raportów ujmij w komentarz formatów wyjściowych, które nie ma potrzeby.
+Skrypt zwraca dane wyjściowe z raportu logowania w formacie JSON. Tworzy również plik `SignIns.json` z tymi samymi danymi wyjściowymi. Możesz poeksperymentować, modyfikując skrypt tak, aby zwracał dane z innych raportów, i wykomentowując niepotrzebne formaty danych wyjściowych.
 
 ## <a name="next-steps"></a>Następne kroki
-* Czy chcesz dostosować przykłady w tym artykule? Zapoznaj się z [działania usługi Azure Active Directory logowania dokumentacja interfejsu API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin). 
-* Jeśli chcesz zobaczyć pełny przegląd przy użyciu usługi Azure Active Directory interfejsem API raportowania, zobacz [wprowadzenie do korzystania z usługi Azure Active Directory interfejsem API raportowania](active-directory-reporting-api-getting-started.md).
-* Jeśli chcesz dowiedzieć się więcej o usłudze Azure Active Directory, zobacz [Azure Active Directory Przewodnik po raportach](active-directory-reporting-guide.md).  
+* Chcesz dostosować przykłady w tym artykule? Zapoznaj się z [dokumentacją interfejsu API działań logowania usługi Azure Active Directory](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin). 
+* Jeśli chcesz zobaczyć pełny przegląd korzystania z interfejsu API raportowania usługi Azure Active Directory, zobacz [Wprowadzenie do interfejsu API raportowania usługi Azure Active Directory](active-directory-reporting-api-getting-started.md).
+* Aby dowiedzieć się więcej na temat raportowania w usłudze Azure Active Directory, zobacz [Azure Active Directory Reporting Guide](active-directory-reporting-guide.md) (Przewodnik po raportowaniu w usłudze Azure Active Directory).  
 

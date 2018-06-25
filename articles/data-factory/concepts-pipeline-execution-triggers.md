@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/29/2018
+ms.date: 06/20/2018
 ms.author: shlo
-ms.openlocfilehash: e9fb1088110212a0971ea1af7bbfbecb7d150e21
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 8fda0eaa3c92fd750a84db345a91590163c20446
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715041"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293483"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Wyzwalacze i wykonywanie potoku w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -142,6 +142,8 @@ Wyzwalacze to inny sposób wykonywania uruchomienia potoku. Wyzwalacze reprezent
 
 - Wyzwalacz okna wirowania: wyzwalacz działający w okresowych interwałach przy zachowaniu stanu. Usługa Azure Data Factory nie obsługuje obecnie wyzwalaczy opartych na zdarzeniach. Na przykład wyzwalacz dla uruchomienia potoku reagującego na zdarzenie otrzymania pliku nie jest obsługiwany.
 
+- Wyzwalacz oparty na zdarzeniach: wyzwalacz, który odpowiada na zdarzenie.
+
 Między potokami i wyzwalaczami występuje relacja wiele-do-wielu. Wiele wyzwalaczy może uruchamiać jeden potok, a jeden wyzwalacz może uruchamiać wiele potoków. W poniższej definicji wyzwalacza właściwość **pipelines** odnosi się do listy potoków wyzwalanych przez określony wyzwalacz. Definicja właściwości zawiera wartości dla parametrów potoku.
 
 ### <a name="basic-trigger-definition"></a>Podstawowa definicja wyzwalacza
@@ -175,11 +177,6 @@ Między potokami i wyzwalaczami występuje relacja wiele-do-wielu. Wiele wyzwala
 Wyzwalacz harmonogramu uruchamia potoki zgodnie z harmonogramem zegarowym. Ten wyzwalacz obsługuje opcje okresowe i zaawansowane kalendarza. Obsługuje na przykład interwały takie jak „co tydzień” czy „w poniedziałek o godzinie 17:00 i czwartek o godzinie 21: 00”. Wyzwalacz harmonogramu jest elastyczny, ponieważ wzorzec zestawu jest niezależny, a wyzwalacz nie rozróżnia pomiędzy danymi serii czasowych a innymi.
 
 Aby uzyskać więcej informacji o wyzwalaczach harmonogramu i przykładach, zobacz [Tworzenie wyzwalacza harmonogramu](how-to-create-schedule-trigger.md).
-
-## <a name="tumbling-window-trigger"></a>Wyzwalacz okna wirowania
-Wyzwalacze okna wirowania to rodzaj wyzwalaczy uruchamianych w określonych odstępach czasu od wskazanego czasu rozpoczęcia przy zachowaniu stanu. Okna wirowania to ciągłe, nienakładające się na siebie serie odstępów czasu o stałych rozmiarach.
-
-Aby uzyskać więcej informacji o wyzwalaczach okna wirowania i przykładach, zobacz [Tworzenie wyzwalacza okna wirowania](how-to-create-tumbling-window-trigger.md).
 
 ## <a name="schedule-trigger-definition"></a>Definicja wyzwalacza harmonogramu
 Tworząc wyzwalacz harmonogramu, należy określić planowanie i powtarzanie przy użyciu definicji JSON. 
@@ -322,6 +319,17 @@ W poniższej tabeli opisano szczegółowo elementy właściwości **schedule**:
 | **weekDays** | Dni tygodnia, w które uruchamiany jest wyzwalacz. Wartość można określić tylko z częstotliwością tygodniową.|<br />- Poniedziałek<br />- Wtorek<br />- Środa<br />- Czwartek<br />- Piątek<br />- Sobota<br />- Niedziela<br />- Tablica wartości dni (maksymalny rozmiar tablicy to 7)<br /><br />W wartościach dni nie są uwzględniane wielkości liter|
 | **monthlyOccurrences** | Dni miesiąca, w których uruchamiany jest wyzwalacz. Wartość można określić tylko z częstotliwością miesięczną. |- Tablica obiektów **monthlyOccurence**: `{ "day": day,  "occurrence": occurence }`<br />- Atrybut **day** jest dniem tygodnia, w którym uruchamiany jest wyzwalacz. Na przykład właściwość **monthlyOccurrences** o wartości **day** wynoszącej `{Sunday}` oznacza każdą niedzielę miesiąca. Atrybut **day** jest wymagany.<br />- Atrybut **occurence** jest wystąpieniem określonej wartości **day** w miesiącu. Na przykład właściwość **monthlyOccurrences** o wartościach **day** i **occurence** wynoszących `{Sunday, -1}` oznacza ostatnią niedzielę miesiąca. Atrybut **occurence** jest opcjonalny.|
 | **monthDays** | Dzień miesiąca, w którym uruchamiany jest wyzwalacz. Wartość można określić tylko z częstotliwością miesięczną. |- Dowolna wartość <= -1 i >= -31<br />- Dowolna wartość >= 1 i <= 31<br />- Tablica wartości|
+
+## <a name="tumbling-window-trigger"></a>Wyzwalacz okna wirowania
+Wyzwalacze okna wirowania to rodzaj wyzwalaczy uruchamianych w określonych odstępach czasu od wskazanego czasu rozpoczęcia przy zachowaniu stanu. Okna wirowania to ciągłe, nienakładające się na siebie serie odstępów czasu o stałych rozmiarach.
+
+Aby uzyskać więcej informacji o wyzwalaczach okna wirowania i przykładach, zobacz [Tworzenie wyzwalacza okna wirowania](how-to-create-tumbling-window-trigger.md).
+
+## <a name="event-based-trigger"></a>Wyzwalacz oparty na zdarzeniach
+
+Wyzwalacze oparte na zdarzeniach uruchamiają potoki w odpowiedzi na zdarzenia, takie jak otrzymanie pliku lub usunięcie pliku z usługi Azure Blob Storage.
+
+Aby uzyskać więcej informacji dotyczących wyzwalaczy opartych na zdarzeniach, zobacz [Create a trigger that runs a pipeline in response to an event](how-to-create-event-trigger.md) (Tworzenie wyzwalacza uruchamiającego potok w odpowiedzi na zdarzenie).
 
 ## <a name="examples-of-trigger-recurrence-schedules"></a>Przykłady harmonogramów cyklu wyzwalaczy
 Ta sekcja zawiera przykłady harmonogramów cyklu. Koncentruje się ona na obiekcie **schedule** i jego elementach.

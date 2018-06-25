@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f6b2cc8f3e27b65f225014ec92a7e99851eac743
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: de8b53756c64867c9b24bcd609e5b994e870da9f
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31514547"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285587"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Szybki start: uruchamianie pierwszego zadania usługi Batch w witrynie Azure Portal
 
@@ -32,7 +32,7 @@ Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 Wykonaj następujące kroki, aby utworzyć przykładowe konto usługi Batch do celów testowych. Konto usługi Batch jest wymagane w celu tworzenia pul i zadań. Jak pokazano poniżej, z kontem usługi Batch możesz powiązać konto usługi Azure Storage. Chociaż nie jest ono wymagane na potrzeby tego przewodnika Szybki start, konto magazynu jest przydatne do wdrażania aplikacji oraz przechowywania danych wejściowych i wyjściowych w przypadku większości rzeczywistych obciążeń.
 
 
-1. Kliknij kolejno opcje **Nowy** > **Obliczenia** > **Usługa Batch**. 
+1. Wybierz pozycję **Utwórz zasób** > **Compute** > **Usługa Batch**. 
 
   ![Usługa Batch w witrynie Marketplace][marketplace_portal]
 
@@ -51,7 +51,7 @@ Po wyświetleniu komunikatu **Wdrażanie zakończyło się pomyślnie** przejdź
 Teraz, gdy masz już konto usługi Batch, utwórz przykładową pulę węzłów obliczeniowych systemu Windows do celów testowych. Pula na potrzeby tego krótkiego przykładu składa się z 2 węzłów z obrazem systemu Windows Server 2012 R2 pochodzącym z witryny Azure Marketplace.
 
 
-1. W ramach konta usługi Batch kliknij pozycję **Pule** > **Dodaj**.
+1. W ramach konta usługi Batch wybierz pozycję **Pule** > **Dodaj**.
 
 2. W polu **Identyfikator puli** podaj wartość *mypool*. 
 
@@ -75,21 +75,21 @@ Teraz, gdy masz już konto usługi Batch, utwórz przykładową pulę węzłów 
 
   ![Wybór rozmiaru puli][pool_size] 
 
-5. Pozostaw wartości domyślne pozostałych ustawień, a następnie kliknij przycisk **OK**, aby utworzyć pulę.
+5. Pozostaw wartości domyślne pozostałych ustawień, a następnie wybierz przycisk **OK**, aby utworzyć pulę.
 
 Usługa Batch tworzy pulę natychmiast, ale przydzielenie i uruchomienie węzłów obliczeniowych może potrwać kilka minut. W tym czasie **Stan alokacji** puli będzie miał wartość **Zmiana rozmiaru**. Gdy trwa zmiana rozmiaru puli, możesz kontynuować samouczek, tworząc zadanie i zadania podrzędne. 
 
 ![Pula w stanie Zmiana rozmiaru][pool_resizing]
 
-Po kilku minutach stan puli zmieni się na **Stały** i węzły zostaną uruchomione. Kliknij pozycję **Węzły**, aby sprawdzić stan węzłów. Gdy węzeł ma stan **Bezczynny**, jest gotowy do uruchamiania zadań podrzędnych. 
+Po kilku minutach stan puli zmieni się na **Stały** i węzły zostaną uruchomione. Wybierz pozycję **Węzły**, aby sprawdzić stan węzłów. Gdy węzeł ma stan **Bezczynny**, jest gotowy do uruchamiania zadań podrzędnych. 
 
 ## <a name="create-a-job"></a>Tworzenie zadania
 
 Teraz, gdy masz już pulę, utwórz zadanie, które zostanie w niej uruchomione. Zadanie usługi Batch to logiczna grupa zawierająca co najmniej jedno zadanie podrzędne. Zadanie uwzględnia wspólne ustawienia zadań podrzędnych, takie jak priorytet i pula, w której zadania podrzędne mają być uruchamiane. Początkowo zadanie nie zawiera zadań podrzędnych. 
 
-1. W widoku konta usługi Batch kliknij pozycję **Zadania** > **Dodaj**. 
+1. W widoku konta usługi Batch wybierz pozycję **Zadania** > **Dodaj**. 
 
-2. W polu **Identyfikator zadania** wprowadź wartość *myjob*. W polu **Pula** wybierz pozycję *mypool*. Pozostaw wartości domyślne pozostałych ustawień, a następnie kliknij przycisk **OK**.
+2. W polu **Identyfikator zadania** wprowadź wartość *myjob*. W polu **Pula** wybierz pozycję *mypool*. Zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz przycisk **OK**.
 
   ![Tworzenie zadania][job_create]
 
@@ -103,11 +103,11 @@ Podczas korzystania z usługi Batch aplikację lub skrypt określa się w wiersz
 
 Aby utworzyć pierwsze zadanie podrzędne:
 
-1. Kliknij pozycję **Add** (Dodaj).
+1. Wybierz pozycję **Dodaj**.
 
 2. W polu **Identyfikator zadania podrzędnego** wprowadź wartość *mytask*. 
 
-3. W polu **Wiersz polecenia** wprowadź wartość `cmd /c "set AZ_BATCH & timeout /t 90 > NUL"`. Pozostaw wartości domyślne pozostałych ustawień, a następnie kliknij przycisk **OK**.
+3. W polu **Wiersz polecenia** wprowadź wartość `cmd /c "set AZ_BATCH & timeout /t 90 > NUL"`. Zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz przycisk **OK**.
 
   ![Tworzenie zadania podrzędnego][task_create]
 
@@ -117,7 +117,7 @@ Aby utworzyć drugie zadanie podrzędne, wróć do kroku 1. Wprowadź inną wart
 
 ## <a name="view-task-output"></a>Wyświetlanie danych wyjściowych zadania podrzędnego
 
-Powyższe przykładowe zadania podrzędne zostaną ukończone w ciągu kilku minut. Aby wyświetlić dane wyjściowe ukończonego zadania podrzędnego, kliknij pozycję **Pliki w węźle**, a następnie wybierz plik `stdout.txt`. Ten plik zawiera standardowe dane wyjściowe zadania podrzędnego. Zawartość jest podobna do następującej:
+Powyższe przykładowe zadania podrzędne zostaną ukończone w ciągu kilku minut. Aby wyświetlić dane wyjściowe ukończonego zadania podrzędnego, wybierz pozycję **Pliki w węźle**, a następnie wybierz plik `stdout.txt`. Ten plik zawiera standardowe dane wyjściowe zadania podrzędnego. Zawartość jest podobna do następującej:
 
 ![Wyświetlanie danych wyjściowych zadania podrzędnego][task_output]
 
@@ -127,9 +127,9 @@ Zawartość obejmuje zmienne środowiskowe usługi Azure Batch, które są ustaw
 
 Jeśli chcesz kontynuować naukę z samouczkami i przykładami usługi Batch, skorzystaj z konta usługi Batch i powiązanego konta magazynu, które zostały utworzone w tym przewodniku Szybki start. Za samo konto usługi Batch nie są naliczane opłaty.
 
-Opłaty za pulę są naliczane, dopóki węzły działają, nawet jeśli nie zostały zaplanowane żadne zadania. Gdy pula nie jest już potrzebna, usuń ją. W widoku konta kliknij pozycję **Pule** i nazwę puli. Następnie kliknij pozycję **Usuń**.  W przypadku usunięcia puli usuwane są również wszystkie dane wyjściowe zadań podrzędnych w węzłach. 
+Opłaty za pulę są naliczane, dopóki węzły działają, nawet jeśli nie zostały zaplanowane żadne zadania. Gdy pula nie jest już potrzebna, usuń ją. W widoku konta wybierz pozycję **Pule** i nazwę puli. Następnie wybierz pozycję **Usuń**.  W przypadku usunięcia puli usuwane są również wszystkie dane wyjściowe zadań podrzędnych w węzłach. 
 
-Gdy grupa zasobów, konto usługi Batch i wszystkie pokrewne zasoby nie będą już potrzebne, usuń je. W tym celu zaznacz grupę zasobów konta usługi Batch i kliknij pozycję **Usuń grupę zasobów**.
+Gdy grupa zasobów, konto usługi Batch i wszystkie pokrewne zasoby nie będą już potrzebne, usuń je. W tym celu zaznacz grupę zasobów konta usługi Batch i wybierz pozycję **Usuń grupę zasobów**.
 
 ## <a name="next-steps"></a>Następne kroki
 

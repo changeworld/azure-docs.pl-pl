@@ -8,12 +8,12 @@ ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 40c57a00363d3952f85a053724ab7dbec257670d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9697bd5a55a5cfcdcd6958f8baff85e55c880c87
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606464"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287664"
 ---
 # <a name="back-up-azure-file-shares"></a>Tworzenie kopii zapasowej udziałów plików platformy Azure
 W tym artykule opisano sposób tworzenia kopii zapasowej i przywracania [udziałów plików platformy Azure](../storage/files/storage-files-introduction.md) przy użyciu witryny Azure Portal.
@@ -28,17 +28,21 @@ Niniejszy przewodnik zawiera informacje na temat wykonywania następujących czy
 > * Usuwanie danych kopii zapasowych
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed utworzeniem kopii zapasowej udziału plików platformy Azure sprawdź, czy znajduje się on na [koncie magazynu jednego z obsługiwanych typów](troubleshoot-azure-files.md#preview-boundaries). Jeśli tak, oznacza to, że możesz chronić swoje udziały plików.
+Przed utworzeniem kopii zapasowej udziału plików platformy Azure sprawdź, czy znajduje się on na [koncie magazynu jednego z obsługiwanych typów](backup-azure-files.md#limitations-for-azure-file-share-backup-during-preview). Jeśli tak, oznacza to, że możesz chronić swoje udziały plików.
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Ograniczenia dotyczące tworzenia kopii zapasowej udziału plików platformy Azure w okresie korzystania z wersji zapoznawczej
-Funkcja tworzenia kopii zapasowych udziałów plików platformy Azure jest dostępna w wersji zapoznawczej. Należy pamiętać o następujących ograniczeniach w okresie zapoznawczym:
-- Nie można chronić udziałów plików platformy Azure w ramach kont magazynu z replikacją [magazynu strefowo nadmiarowego (ZRS, zone-redundant storage)](../storage/common/storage-redundancy-zrs.md) ani [magazynu geograficznie nadmiarowego dostępnego do odczytu (RA-GRS, read-access geo-redundant storage)](../storage/common/storage-redundancy-grs.md).
-- Nie można chronić udziałów plików platformy Azure w ramach kont magazynu, które mają włączone sieci wirtualne.
-- Nie ma programu PowerShell ani interfejsu wiersza polecenia dostępnego dla ochrony usługi Azure Files.
+Funkcja tworzenia kopii zapasowych udziałów plików platformy Azure jest dostępna w wersji zapoznawczej. Następujące scenariusze tworzenia kopii zapasowej nie są obsługiwane w przypadku udziałów plików platformy Azure:
+- Nie można chronić udziałów plików platformy Azure w ramach kont magazynu przy użyciu replikacji [magazynu geograficznie nadmiarowego dostępnego do odczytu](../storage/common/storage-redundancy-grs.md) (RA-GRS)*.
+- Nie można chronić udziałów plików platformy Azure w ramach kont magazynu, które mają włączone sieci wirtualne lub zaporę.
+- Nie ma programu PowerShell ani interfejsu wiersza polecenia dostępnego dla ochrony usługi Azure Files z poziomu usługi Azure Backup.
 - Maksymalna liczba zaplanowanych kopii zapasowych to jedna dziennie.
 - Maksymalna liczba kopii zapasowych na żądanie to cztery dziennie.
 - Aby zapobiec przypadkowemu usunięciu kopii zapasowych z magazynu usługi Recovery Services, użyj [blokad zasobów](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) na koncie magazynu.
-- Nie usuwaj migawek utworzonych przy użyciu usługi Azure Backup. Usunięcie migawek może spowodować utratę punktów odzyskiwania i/lub błędy przywracania. 
+- Nie usuwaj migawek utworzonych przy użyciu usługi Azure Backup. Usunięcie migawek może spowodować utratę punktów odzyskiwania i/lub błędy przywracania.
+
+\*Ochrona udziałów plików platformy Azure w ramach kont magazynu przy użyciu funkcji replikacji [magazynu geograficznie nadmiarowego dostępnego do odczytu](../storage/common/storage-redundancy-grs.md) (RA-GRS) jako magazynu geograficznie nadmiarowego (GRS) w cenie GRS
+
+Tworzenie kopii zapasowej udziałów plików platformy Azure w ramach kont magazynu za pomocą replikacji [magazynu strefowo nadmiarowego](../storage/common/storage-redundancy-zrs.md) (ZRS) jest obecnie dostępne tylko w środkowych stanach USA (CUS) i wschodnich stanach USA 2 (EUS2)
 
 ## <a name="configuring-backup-for-an-azure-file-share"></a>Konfigurowanie kopii zapasowej udziału plików platformy Azure
 Wszystkie dane kopii zapasowych są przechowywane w magazynach usługi Recovery Services. W tym samouczku przyjęto założenie, że ustanowiono już udział plików platformy Azure. Aby utworzyć kopię zapasową udziału plików platformy Azure:
@@ -55,7 +59,7 @@ Wszystkie dane kopii zapasowych są przechowywane w magazynach usługi Recovery 
 
    ![Klikanie pozycji Utwórz kopię zapasową, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/set-backup-goal.png)
 
-    Po skojarzeniu magazynu z udziałem plików platformy Azure zostanie otwarte menu Kopia zapasowa oraz zostanie wyświetlony monit dotyczący wyboru konta magazynu. W menu wyświetlane są wszystkie obsługiwane konta magazynu znajdujące się w tym samym regionie, co magazyn, które nie są jeszcze skojarzone z magazynem usługi Recovery Services.
+    Po skojarzeniu magazynu z udziałem plików platformy Azure zostanie otwarte menu Kopia zapasowa oraz zostanie wyświetlony monit dotyczący wyboru konta magazynu. W menu wyświetlane są wszystkie obsługiwane konta magazynu znajdujące się w tym samym regionie co magazyn, które nie są jeszcze skojarzone z magazynem usługi Recovery Services.
 
    ![Klikanie pozycji Utwórz kopię zapasową, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/list-of-storage-accounts.png)
 
@@ -183,7 +187,7 @@ Aby wznowić ochronę udziału plików, przejdź do elementu kopii zapasowej, a 
 
 ### <a name="delete-backup-data"></a>Usuwanie danych kopii zapasowej 
 
-Możliwe jest usunięcie kopii zapasowej lub udziału plików podczas zadania zatrzymywania tworzenia kopii zapasowych lub w dowolnym momencie po zatrzymaniu ochrony. Wstrzymanie się z usunięciem punktów odzyskiwania przez określoną liczbę dni lub tygodni może być nawet korzystne. W odróżnieniu od przywracania punktów odzyskiwania podczas usuwania danych kopii zapasowej nie można wybrać punktów odzyskiwania do usunięcia. Jeśli zdecydujesz się usunąć dane kopii zapasowych, wszystkie skojarzone z tym elementem punkty odzyskiwania zostaną usunięte.
+Możliwe jest usunięcie kopii zapasowej lub udziału plików podczas zadania zatrzymywania tworzenia kopii zapasowych lub w dowolnym momencie po zatrzymaniu ochrony. Wstrzymanie się z usunięciem punktów odzyskiwania przez określoną liczbę dni lub tygodni może być nawet korzystne. W odróżnieniu od przywracania punktów odzyskiwania podczas usuwania danych kopii zapasowej nie można wybrać konkretnych punktów odzyskiwania do usunięcia. Jeśli zdecydujesz się usunąć dane kopii zapasowych, wszystkie skojarzone z tym elementem punkty odzyskiwania zostaną usunięte.
 
 Na potrzeby poniższej procedury przyjęto założenie, że zadanie tworzenia kopii zapasowej dla maszyny wirtualnej zostało zatrzymane. Po zatrzymaniu zadania tworzenia kopii zapasowej opcje Wznów tworzenie kopii zapasowej i Usuń dane kopii zapasowej są dostępne na pulpicie nawigacyjnym elementu kopii zapasowej. Kliknij pozycję Usuń dane kopii zapasowej, a następnie wpisz nazwę udziału plików, aby potwierdzić usunięcie. Opcjonalnie podaj przyczynę usunięcia lub dodaj komentarz.
 

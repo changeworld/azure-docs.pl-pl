@@ -17,12 +17,12 @@ ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b5ac1e4c62242c088a0ac84fffc0211baf442b53
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 34a5e223dfc8ff51ce03a973e88a962643c71202
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595203"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36212676"
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Wdrażanie usług Active Directory Federation Services na platformie Azure
 Usługi AD FS udostępniają uproszczone, zabezpieczone funkcje federacji tożsamości i logowania jednokrotnego (SSO) w sieci Web. Federacja z usługą Azure AD lub O365 umożliwia użytkownikom uwierzytelnianie się przy użyciu poświadczeń lokalnych i uzyskiwanie dostępu do wszystkich zasobów w chmurze. Tym samym ważne staje się zapewnienie infrastruktury usług AD FS o wysokiej dostępności, która gwarantuje dostęp zarówno do zasobów lokalnych, jak i przechowywanych w chmurze. Wdrożenie usług AD FS na platformie Azure może pomóc w osiągnięciu wymaganej wysokiej dostępności w prosty sposób.
@@ -39,16 +39,12 @@ Wdrożenie usług AD FS na platformie Azure niesie ze sobą szereg korzyści, ta
 Na powyższym diagramie przedstawiono zalecaną podstawową topologię umożliwiającą rozpoczęcie wdrażania infrastruktury usług AD FS na platformie Azure. Poniżej przedstawiono zasady dotyczące różnych składników tej topologii:
 
 * **Kontrolery domeny (DC) / serwery usług AD FS**: jeśli liczba użytkowników nie przekracza 1000, można po prostu zainstalować rolę usług AD FS na kontrolerach domeny. Jeśli liczba użytkowników przekracza 1000 lub konieczne jest wyeliminowanie wszelkich wpływów na wydajność kontrolerów domeny, usługi AD FS należy wdrożyć na oddzielnych serwerach.
-* 
-  **Serwer proxy aplikacji internetowej (WAP)** — konieczne jest wdrożenie serwerów proxy aplikacji internetowych w celu umożliwienia użytkownikom korzystania z usług AD FS również spoza sieci firmowej.
-* 
-  **Strefa DMZ**: serwery proxy aplikacji internetowej zostaną umieszczone w strefie DMZ. Komunikacja między strefą DMZ i podsiecią wewnętrzną jest możliwa TYLKO przez port TCP 443.
-* 
-  **Moduły równoważenia obciążenia**: aby zapewnić wysoką dostępność usług AD FS i serwerów proxy aplikacji internetowych, zaleca się użycie wewnętrznego modułu równoważenia obciążenia dla serwerów usług AD FS oraz usługi Azure Load Balancer dla serwerów proxy aplikacji internetowych.
+* **Serwer proxy aplikacji internetowej (WAP)** — konieczne jest wdrożenie serwerów proxy aplikacji internetowych w celu umożliwienia użytkownikom korzystania z usług AD FS również spoza sieci firmowej.
+* **Strefa DMZ**: serwery proxy aplikacji internetowej zostaną umieszczone w strefie DMZ. Komunikacja między strefą DMZ i podsiecią wewnętrzną jest możliwa TYLKO przez port TCP 443.
+* **Moduły równoważenia obciążenia**: aby zapewnić wysoką dostępność usług AD FS i serwerów proxy aplikacji internetowych, zaleca się użycie wewnętrznego modułu równoważenia obciążenia dla serwerów usług AD FS oraz usługi Azure Load Balancer dla serwerów proxy aplikacji internetowych.
 * **Zestawy dostępności**: aby zapewnić nadmiarowość wdrożenia usług AD FS, zaleca się umieszczenie co najmniej dwóch maszyn wirtualnych w zestawie dostępności w celu uzyskania podobnych obciążeń. Taka konfiguracja zapewnia dostępność co najmniej jednej maszyny wirtualnej podczas planowanych i nieplanowanych zdarzeń związanych z konserwacją.
 * **Konta magazynu**: zaleca się korzystanie z dwóch kont magazynu. Korzystanie z jednego konta magazynu może prowadzić do utworzenia pojedynczego punktu awarii. Jeśli konto magazynu przestanie funkcjonować (w mało prawdopodobnym scenariuszu), wdrożenie stanie się niedostępne. Użycie dwóch kont magazynu pozwala powiązać każde konto z linią awarii.
-* 
-  **Separacja sieci**: serwery proxy aplikacji internetowych powinny zostać wdrożone w oddzielnej sieci DMZ. Sieć wirtualną można podzielić na dwie odizolowane podsieci, a następnie wdrożyć w nich serwery proxy aplikacji internetowej. Dla każdej podsieci można po prostu skonfigurować ustawienia sieciowej grupy zabezpieczeń, zezwalając tylko na wymaganą komunikację między tymi podsieciami. Więcej szczegółów podano w poniższych scenariuszach wdrażania.
+* **Separacja sieci**: serwery proxy aplikacji internetowych powinny zostać wdrożone w oddzielnej sieci DMZ. Sieć wirtualną można podzielić na dwie odizolowane podsieci, a następnie wdrożyć w nich serwery proxy aplikacji internetowej. Dla każdej podsieci można po prostu skonfigurować ustawienia sieciowej grupy zabezpieczeń, zezwalając tylko na wymaganą komunikację między tymi podsieciami. Więcej szczegółów podano w poniższych scenariuszach wdrażania.
 
 ## <a name="steps-to-deploy-ad-fs-in-azure"></a>Kroki umożliwiające wdrożenie usług AD FS na platformie Azure
 Kroki zawarte w tej sekcji służą jako przewodnik umożliwiający wdrożenie opisanej poniżej infrastruktury usług AD FS na platformie Azure.
@@ -309,7 +305,7 @@ Najprostszym sposobem przetestowania działania usług AD FS jest użycie strony
 
 1. Aby włączyć tę stronę, uruchom poniższe polecenie cmdlet na serwerze usług AD FS przy użyciu programu PowerShell.
    Set-AdfsProperties -EnableIdPInitiatedSignonPage $true 
-2. Przy użyciu dowolnej maszyny zewnętrznej otwórz stronę https://adfs.thecloudadvocate.com/adfs/ls/IdpInitiatedSignon.aspx  
+2. Przy użyciu dowolnej maszyny zewnętrznej otwórz stronę https:\//adfs-server.contoso.com/adfs/ls/IdpInitiatedSignon.aspx.  
 3. Powinna pojawić się poniższa strona usług AD FS:
 
 ![Testowa strona logowania](./media/active-directory-aadconnect-azure-adfs/test1.png)
@@ -360,8 +356,7 @@ Podczas wdrażania tego szablonu możesz użyć istniejącej sieci wirtualnej lu
 * [Moduł równoważenia obciążenia połączony z Internetem](https://aka.ms/Azure/ILB/Internet)
 * [Konta magazynu](https://aka.ms/Azure/Storage)
 * [Sieci wirtualne platformy Azure](https://aka.ms/Azure/VNet)
-* 
-  [Linki prowadzące do informacji dotyczących usług AD FS i serwera proxy aplikacji internetowej](https://aka.ms/ADFSLinks) 
+* [Linki prowadzące do informacji dotyczących usług AD FS i serwera proxy aplikacji internetowej](https://aka.ms/ADFSLinks) 
 
 ## <a name="next-steps"></a>Następne kroki
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](active-directory-aadconnect.md)

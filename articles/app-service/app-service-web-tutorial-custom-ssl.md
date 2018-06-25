@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 11/30/2017
+ms.date: 06/19/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: ec58b5ef2b9095ba420a4518b84c4e2e6200abc3
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 9ba8eae0fe9e68e4931bcdda989e59c59fd65edd
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714582"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293333"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Samouczek: wiązanie istniejącego niestandardowego certyfikatu protokołu SSL z usługą Azure Web Apps
 
@@ -32,9 +32,11 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 > [!div class="checklist"]
 > * Uaktualnienie warstwy cenowej aplikacji
-> * Wiązanie niestandardowego certyfikatu protokołu SSL z usługą App Service
-> * Wymuszanie protokołu HTTPS dla aplikacji
-> * Automatyzacja wiązania certyfikatu protokołu SSL za pomocą skryptów
+> * Wiązanie niestandardowego certyfikatu z usługą App Service
+> * Odnawianie certyfikatów
+> * Wymuszanie protokołu HTTPS
+> * Wymuszanie protokołu TLS 1.1/1.2
+> * Automatyzacja zarządzania protokołami TLS za pomocą skryptów
 
 > [!NOTE]
 > Jeśli potrzebujesz uzyskać niestandardowy certyfikat protokołu SSL, możesz pobrać go bezpośrednio w witrynie Azure Portal i powiązać ze swoją aplikacją internetową. Postępuj zgodnie z [samouczkiem Certyfikaty usługi App Service](web-sites-purchase-ssl-web-site.md).
@@ -213,6 +215,14 @@ Teraz pozostało tylko upewnienie się, że protokół HTTPS działa dla domeny 
 
 <a name="bkmk_enforce"></a>
 
+## <a name="renew-certificates"></a>Odnawianie certyfikatów
+
+Adres IP dla ruchu przychodzącego może ulec zmianie po usunięciu powiązania, nawet jeśli to powiązanie jest oparte na adresie IP. Jest to szczególnie ważne podczas odnawiania certyfikatu, który już znajduje się w powiązaniu opartym na adresie IP. Aby uniknąć zmian w adresie IP aplikacji, wykonaj kolejno następujące kroki:
+
+1. Przekaż nowy certyfikat.
+2. Powiąż nowy certyfikat z wybraną domeną niestandardową bez usuwania starego certyfikatu. Ta akcja zastępuje powiązanie zamiast usuwania go.
+3. Usuń stary certyfikat. 
+
 ## <a name="enforce-https"></a>Wymuszanie protokołu HTTPS
 
 Domyślnie każda osoba nadal może uzyskać dostęp do Twojej aplikacji internetowej przy użyciu protokołu HTTP. Możesz przekierować wszystkie żądania HTTP do portu HTTPS.
@@ -236,14 +246,6 @@ Na stronie aplikacji internetowej, w obszarze nawigacji po lewej stronie, wybier
 ![Wymuszanie protokołu TLS 1.1 lub 1.2](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
 
 Po ukończeniu operacji aplikacja odrzuca wszystkie połączenia z niższymi wersjami protokołu TLS.
-
-## <a name="renew-certificates"></a>Odnawianie certyfikatów
-
-Adres IP dla ruchu przychodzącego może ulec zmianie po usunięciu powiązania, nawet jeśli to powiązanie jest oparte na adresie IP. Jest to szczególnie ważne podczas odnawiania certyfikatu, który już znajduje się w powiązaniu opartym na adresie IP. Aby uniknąć zmian w adresie IP aplikacji, wykonaj kolejno następujące kroki:
-
-1. Przekaż nowy certyfikat.
-2. Powiąż nowy certyfikat z wybraną domeną niestandardową bez usuwania starego certyfikatu. Ta akcja zastępuje powiązanie zamiast usuwania go.
-3. Usuń stary certyfikat. 
 
 ## <a name="automate-with-scripts"></a>Automatyzowanie przy użyciu skryptów
 
@@ -273,6 +275,15 @@ az webapp config ssl bind \
     --ssl-type SNI \
 ```
 
+Następujące polecenie wymusza minimalną wersję 1.2 protokołu TLS.
+
+```bash
+az webapp config set \
+    --name <app_name> \
+    --resource-group <resource_group_name>
+    --min-tls-version 1.2
+```
+
 ### <a name="azure-powershell"></a>Azure PowerShell
 
 Następujące polecenie przekazuje wyeksportowany plik PFX i dodaje powiązanie SNI SSL.
@@ -297,9 +308,11 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 
 > [!div class="checklist"]
 > * Uaktualnienie warstwy cenowej aplikacji
-> * Wiązanie niestandardowego certyfikatu protokołu SSL z usługą App Service
-> * Wymuszanie protokołu HTTPS dla aplikacji
-> * Automatyzacja wiązania certyfikatu protokołu SSL za pomocą skryptów
+> * Wiązanie niestandardowego certyfikatu z usługą App Service
+> * Odnawianie certyfikatów
+> * Wymuszanie protokołu HTTPS
+> * Wymuszanie protokołu TLS 1.1/1.2
+> * Automatyzacja zarządzania protokołami TLS za pomocą skryptów
 
 Przejdź do następnego samouczka, aby dowiedzieć się, jak używać usługi Azure Content Delivery Network.
 
