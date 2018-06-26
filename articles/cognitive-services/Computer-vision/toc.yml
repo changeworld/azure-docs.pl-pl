@@ -29,6 +29,14 @@
           href: QuickStarts/curl-thumb.md
         - name: Wyodrębnianie tekstu drukowanego
           href: QuickStarts/curl-print-text.md
+    - name: Przejdź
+      items:
+        - name: Analizowanie obrazu
+          href: QuickStarts/go-analyze.md
+        - name: Generowanie miniatur
+          href: QuickStarts/go-thumb.md
+        - name: Wyodrębnianie tekstu drukowanego
+          href: QuickStarts/go-print-text.md
     - name: Java
       items:
         - name: Analizowanie obrazu

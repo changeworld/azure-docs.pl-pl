@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/5/2018
 ms.author: markgal
-ms.openlocfilehash: f39f8571d4256a14f64ee2a66788cac8fa524eec
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: c9dd6a1818b0afeb5e577724568a8254a70c8228
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248898"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753357"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalowanie składnika Azure Backup Server w usłudze Azure Stack
 
@@ -42,18 +42,9 @@ Serwer kopii zapasowej systemu Azure chroni następujące obciążenia maszyny w
 | SQL Server 2016 | Database (Baza danych) |
 | SQL Server 2014 | Database (Baza danych) |
 | SQL Server 2012 z dodatkiem SP1 | Database (Baza danych) |
+| Program SharePoint 2016 | Farma, baza danych, serwera sieci Web, serwer sieci web |
 | SharePoint 2013 | Farma, baza danych, serwera sieci Web, serwer sieci web |
 | SharePoint 2010 | Farma, baza danych, serwera sieci Web, serwer sieci web |
-
-
-### <a name="host-vs-guest-backup"></a>Host vs gościa kopii zapasowej
-
-Serwer kopii zapasowej systemu Azure wykonuje hosta lub gościa poziomie kopii zapasowych maszyn wirtualnych. Na poziomie hosta agent usługi Kopia zapasowa Azure jest zainstalowana na maszynie wirtualnej lub w klastrze i chroni całej maszyny wirtualnej i plików danych uruchomiona na hoście. Na poziomie gościa agent usługi Kopia zapasowa Azure jest zainstalowany na wszystkich maszynach wirtualnych i chroni obciążenia istnieje na tym komputerze.
-
-Obie metody mają ich zalet i wad:
-
-   * Poziomie hosta kopii zapasowych pracy, niezależnie od systemu operacyjnego uruchomionych na maszynach gościa i nie wymagają instalacji na każdej maszynie Wirtualnej agenta usługi Kopia zapasowa Azure. W przypadku wdrożenia poziomie hosta kopii zapasowych można odzyskać całej maszyny wirtualnej lub plików i folderów (odzyskiwanie na poziomie elementu).
-   * Kopii zapasowych na poziomie gościa jest przydatne w przypadku ochrony konkretnych zadań działających na maszynie wirtualnej. Na poziomie hosta można odzyskać całą maszynę Wirtualną lub określonych plików, ale nie odzyskać danych w ramach określonej aplikacji. Na przykład aby odzyskać określone pliki programu SharePoint z chronionej maszyny wirtualnej, należy włączyć ochronę maszyny Wirtualnej na poziomie gościa. Jeśli chcesz chronić dane przechowywane na dyskach przekazujących, należy użyć kopii zapasowych na poziomie gościa. Przekazywanie umożliwia maszynie wirtualnej bezpośredni dostęp do urządzenia magazynującego i nie przechowują danych woluminu wirtualnego w pliku VHD.
 
 ## <a name="prerequisites-for-the-azure-backup-server-environment"></a>Wymagania wstępne dotyczące środowiska Azure kopii zapasowej serwera
 
@@ -84,13 +75,10 @@ Przechowywania danych kopii zapasowej na platformie Azure zmniejsza infrastruktu
 
 Aby przechowywać dane kopii zapasowej na platformie Azure, należy utworzyć lub użyć magazynu usług odzyskiwania. Podczas przygotowywania do tworzenia kopii zapasowych obciążeń serwera usługi Kopia zapasowa Azure możesz [skonfigurować magazyn usług odzyskiwania](backup-azure-microsoft-azure-backup.md#create-a-recovery-services-vault). Po skonfigurowaniu każdym uruchomieniu zadania tworzenia kopii zapasowej, punkt odzyskiwania jest tworzony w magazynie. Każdy magazyn usług odzyskiwania zawiera punkty odzyskiwania do 9999. W zależności od liczby punktów odzyskiwania utworzonych i jak długo są przechowywane przez wiele lat można zachować dane kopii zapasowej. Na przykład można utworzyć miesięczne punktów odzyskiwania i zachować je do pięciu lat.
  
-### <a name="using-sql-server"></a>Za pomocą programu SQL Server
-Jeśli chcesz użyć zdalnego serwera SQL dla bazy danych serwera usługi Kopia zapasowa Azure, wybierz tylko stosu maszyny Wirtualnej platformy Azure działa program SQL Server.
-
 ### <a name="scaling-deployment"></a>Skalowania wdrożenia
 Jeśli chcesz skalowania wdrożenia, dostępne są następujące opcje:
   - Skalowanie w górę — zwiększenie rozmiaru maszyny wirtualnej serwera usługi Kopia zapasowa Azure z serii D serii i zwiększyć Magazyn lokalny [zgodnie z instrukcjami maszyny wirtualnej Azure stosu](../azure-stack/user/azure-stack-manage-vm-disks.md).
-  - Korzystaj — wysyłanie starszych danych do serwera usługi Kopia zapasowa Azure i zachowywanie tylko najnowszych danych w magazynie dołączonym do serwera kopii zapasowej Azure.
+  - Korzystaj — wysyłanie starszych danych do platformy Azure i zachowywanie tylko najnowszych danych w magazynie dołączonym do serwera kopii zapasowej Azure.
   - Skalowanie w poziomie — dodawanie kolejnych serwerów kopia zapasowa Azure w celu włączenia ochrony obciążeń.
 
 ### <a name="net-framework"></a>.NET Framework
@@ -216,7 +204,7 @@ W poprzednim kroku kliknięto **Zakończ** aby zakończyć fazy wyodrębniania, 
 
 ![Kreator tworzenia kopii zapasowej Microsoft Azure](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5.png)
 
-Serwer kopii zapasowej systemu Azure udostępnia kodu z programu Data Protection Manager. Zostanie wyświetlone odwołania do programu Data Protection Manager i programu DPM w Instalatorze serwer kopii zapasowej Azure. Jeśli serwer usługi Kopia zapasowa Azure i programu Data Protection Manager są oddzielne produkty, te produkty są ściśle powiązane. W dokumentacji serwera usługi Kopia zapasowa Azure wszystkie odwołania do programu Data Protection Manager i DPM dotyczą serwer kopii zapasowej Azure.
+Serwer kopii zapasowej systemu Azure udostępnia kodu z programu Data Protection Manager. Zostanie wyświetlone odwołania do programu Data Protection Manager i programu DPM w Instalatorze serwer kopii zapasowej Azure. Jeśli serwer usługi Kopia zapasowa Azure i programu Data Protection Manager są oddzielne produkty, te produkty są ściśle powiązane.
 
 1. Aby uruchomić Kreatora instalacji, kliknij przycisk **serwer kopii zapasowej Microsoft Azure**.
 
@@ -322,7 +310,7 @@ Serwer kopii zapasowej systemu Azure udostępnia kodu z programu Data Protection
 
 ## <a name="add-backup-storage"></a>Dodawanie magazynu kopii zapasowej
 
-Pierwszej kopii zapasowej jest przechowywany w magazynie dołączonym do serwera kopii zapasowej Azure. Aby uzyskać więcej informacji na temat dodawania dysków, zobacz [Konfigurowanie pul magazynów i dysku magazynu](https://technet.microsoft.com/library/hh758075.aspx).
+Pierwszej kopii zapasowej jest przechowywany w magazynie dołączonym do serwera kopii zapasowej Azure. Aby uzyskać więcej informacji na temat dodawania dysków, zobacz [magazynu Dodaj nowoczesnych kopii zapasowej](https://docs.microsoft.com/en-us/system-center/dpm/add-storage?view=sc-dpm-1801).
 
 > [!NOTE]
 > Należy dodać magazyn kopii zapasowych, nawet wtedy, gdy planujesz do wysyłania danych do platformy Azure. W architekturze serwera kopii zapasowej Azure magazyn usług odzyskiwania i blokad *drugi* kopię danych podczas Magazyn lokalny zawiera pierwszy (i obowiązkowe) kopii zapasowej.
@@ -372,10 +360,10 @@ Można także odwoływać się do [— często zadawane pytania dotyczące usłu
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Artykuł [przygotowywanie środowiska dla programu DPM](https://technet.microsoft.com/library/hh758176.aspx), zawiera informacje o obsługiwanych konfiguracjach serwera usługi Kopia zapasowa Azure.
+Artykuł [przygotowywanie środowiska dla programu DPM](https://docs.microsoft.com/en-us/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801), zawiera informacje o obsługiwanych konfiguracjach serwera usługi Kopia zapasowa Azure.
 
 Aby lepiej zrozumieć ochrony obciążenia w programie Microsoft Azure Utwórz kopię zapasową serwera można skorzystaj z poniższych artykułów.
 
-- [Kopia zapasowa programu SQL Server](backup-azure-backup-sql.md)
-- [Kopia zapasowa programu SharePoint server](backup-azure-backup-sharepoint.md)
+- [Kopia zapasowa programu SQL Server](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sql-azure-stack)
+- [Kopia zapasowa programu SharePoint server](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sharepoint-azure-stack)
 - [Alternatywny serwer kopii zapasowej](backup-azure-alternate-dpm-server.md)

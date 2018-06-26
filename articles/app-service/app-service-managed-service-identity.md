@@ -9,24 +9,22 @@ ms.service: app-service
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/12/2018
+ms.date: 06/25/2018
 ms.author: mahender
-ms.openlocfilehash: ed2db5fd48c60601b90fc7ffb1094b8d89573b1f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e6aa0d477f94cd5ab087beface65e3a28e5094f5
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32153663"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936976"
 ---
-# <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>Jak używać Azure zarządzanych tożsamości usługi (publicznej wersji zapoznawczej) w aplikacji usługi i usługi Azure Functions
+# <a name="how-to-use-azure-managed-service-identity-in-app-service-and-azure-functions"></a>Jak używać Azure zarządzanych tożsamość usługi App Service i usługi Azure Functions
 
 > [!NOTE] 
-> Zarządzane tożsamości usługi dla usługi aplikacji i funkcji platformy Azure jest obecnie w przeglądzie. Usługa aplikacji w systemie Linux i aplikacji sieci Web dla kontenerów nie są obecnie obsługiwane.
-
+> Usługa aplikacji w systemie Linux i aplikacji sieci Web dla kontenerów aktualnie nie obsługują zarządzane tożsamości usługi.
 
 > [!Important] 
-> Zarządzane tożsamości usługi dla aplikacji usługi i usługi Azure Functions nie będzie działać zgodnie z oczekiwaniami, jeśli aplikacja migrowania między subskrypcjami i dzierżawców. Aplikacja będzie trzeba uzyskać nową tożsamość i istniejącej tożsamości nie można usunąć poprawnie bez usuwania samej lokacji. Musi zostać ponownie utworzone z nową tożsamość aplikacji, a musi mieć zasady dostępu zaktualizowane do używania nowej tożsamości zasoby podrzędne.
-
+> Zarządzane tożsamości usługi dla aplikacji usługi i usługi Azure Functions nie będzie działać zgodnie z oczekiwaniami, jeśli aplikacja migrowania między subskrypcjami i dzierżawców. Aplikacja musi uzyskać nową tożsamość, można to zrobić przez wyłączenie i ponowne włączenie funkcji. Zobacz [usuwanie tożsamości](#remove) poniżej. Zasoby podrzędne zostaną również musi być zaktualizowane do używania nowej tożsamości zasady dostępu.
 
 W tym temacie przedstawiono sposób utworzenia tożsamości zarządzanych aplikacji usługi aplikacji i usługi Azure Functions aplikacje i jak z niego korzystać, aby uzyskać dostęp do innych zasobów. Tożsamość usługi zarządzanej z usługi Azure Active Directory umożliwia aplikacji łatwo uzyskiwać dostęp do innych chronionych AAD zasoby, takie jak usługi Azure Key Vault. Tożsamość jest zarządzana przez platformę Azure i nie trzeba zapewniać ani obrócić żadnych kluczy tajnych. Więcej informacji o zarządzanych tożsamość usługi, zobacz [omówienie zarządzane tożsamość usługi](../active-directory/managed-service-identity/overview.md).
 
@@ -77,6 +75,31 @@ Poniższe kroki przeprowadzi użytkownika przez proces tworzenia aplikacji sieci
     az webapp identity assign --name myApp --resource-group myResourceGroup
     ```
 
+### <a name="using-azure-powershell"></a>Korzystanie z programu Azure PowerShell
+
+Poniższe kroki przeprowadzi użytkownika przez proces tworzenia aplikacji sieci web i przypisywania jej tożsamość przy użyciu programu Azure PowerShell:
+
+1. W razie potrzeby zainstaluj program Azure PowerShell, korzystając z instrukcji w [przewodniku programu Azure PowerShell](/powershell/azure/overview), a następnie uruchom polecenie `Login-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+
+2. Utwórz aplikację sieci web przy użyciu programu Azure PowerShell. Więcej przykładów dotyczących sposobu korzystania z usługi aplikacji Azure PowerShell, zobacz [przykłady środowiska PowerShell usługi aplikacji](../app-service/app-service-powershell-samples.md):
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzureRmResourceGroup -Name myResourceGroup -Location $location
+    
+    # Create an App Service plan in Free tier.
+    New-AzureRmAppServicePlan -Name $webappname -Location $location -ResourceGroupName myResourceGroup -Tier Free
+    
+    # Create a web app.
+    New-AzureRmWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
+    ```
+
+3. Uruchom `identity assign` polecenie w celu utworzenia tożsamości dla tej aplikacji:
+
+    ```azurepowershell-interactive
+    Set-AzureRmWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
+    ```
+
 ### <a name="using-an-azure-resource-manager-template"></a>Przy użyciu szablonu usługi Azure Resource Manager
 
 Szablon usługi Azure Resource Manager może służyć do automatyzowania wdrażania zasobów platformy Azure. Aby dowiedzieć się więcej o wdrażaniu usługi aplikacji i funkcji, zobacz [automatyzacji wdrażania zasobów w usłudze App Service](../app-service/app-service-deploy-complex-application-predictably.md) i [automatyzacji wdrażania zasobów w usługi Azure Functions](../azure-functions/functions-infrastructure-as-code.md).
@@ -121,7 +144,7 @@ Po utworzeniu witryny ma następujące dodatkowe właściwości:
 }
 ```
 
-Gdzie `<TENANTID>` i `<PRINCIPALID>` są zamieniane na GUID. Właściwość identyfikatora dzierżawcy identyfikuje dzierżawę usługi AAD, jakie należy aplikacja. PrincipalId to unikatowy identyfikator dla nowej tożsamości aplikacji. W usłudze AAD aplikacja ma taką samą nazwę, który spowodował wystąpienie usługi aplikacji lub usługi Azure Functions.
+Gdzie `<TENANTID>` i `<PRINCIPALID>` są zamieniane na GUID. Właściwość identyfikatora dzierżawcy identyfikuje dzierżawę usługi AAD, jakie należy tożsamości. PrincipalId to unikatowy identyfikator dla nowej tożsamości aplikacji. W usłudze AAD nazwy głównej usługi ma taką samą nazwę, który spowodował wystąpienie usługi aplikacji lub usługi Azure Functions.
 
 ## <a name="obtaining-tokens-for-azure-resources"></a>Uzyskiwanie tokenów dla zasobów platformy Azure
 
@@ -134,7 +157,7 @@ Brak prostego protokołu REST do uzyskania tokenu usługi aplikacji i usługi Az
 
 ### <a name="asal"></a>Za pomocą biblioteki Microsoft.Azure.Services.AppAuthentication dla platformy .NET
 
-Dla aplikacji .NET oraz funkcji Najprostszym sposobem pracy za pomocą tożsamości zarządzanych usług jest za pomocą pakietu Microsoft.Azure.Services.AppAuthentication. Ta biblioteka będzie pozwalają również do testowania kodu lokalnie na komputerze deweloperskim, przy użyciu konta użytkownika z programu Visual Studio, [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), lub zintegrowane uwierzytelnianie usługi Active Directory. Aby uzyskać więcej informacji na temat opcji wdrożenia lokalnego z tej biblioteki, zobacz [odwołania Microsoft.Azure.Services.AppAuthentication]. W tej sekcji przedstawiono, jak rozpocząć pracę z biblioteką w kodzie.
+Dla aplikacji .NET oraz funkcji Najprostszym sposobem pracy za pomocą tożsamości zarządzanych usług jest za pomocą pakietu Microsoft.Azure.Services.AppAuthentication. Ta biblioteka będzie pozwalają również do testowania kodu lokalnie na komputerze deweloperskim, przy użyciu konta użytkownika z programu Visual Studio, [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), lub zintegrowane uwierzytelnianie usługi Active Directory. Aby uzyskać więcej informacji na temat opcji wdrożenia lokalnego z tej biblioteki, zobacz [Odwołanie Microsoft.Azure.Services.AppAuthentication]. W tej sekcji przedstawiono, jak rozpocząć pracę z biblioteką w kodzie.
 
 1. Dodaj odwołania do [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) i [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) pakietów NuGet do aplikacji.
 
@@ -150,7 +173,7 @@ string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https:
 var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
 ```
 
-Aby dowiedzieć się więcej na temat Microsoft.Azure.Services.AppAuthentication i operacje, takie, zobacz [odwołania Microsoft.Azure.Services.AppAuthentication] i [usługi aplikacji i KeyVault z platformą .NET MSI Przykładowe](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
+Aby dowiedzieć się więcej na temat Microsoft.Azure.Services.AppAuthentication i operacje, takie, zobacz [Odwołanie Microsoft.Azure.Services.AppAuthentication] i [usługi aplikacji i KeyVault z platformą .NET MSI Przykładowe](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
 
 ### <a name="using-the-rest-protocol"></a>Przy użyciu protokołu REST
 
@@ -240,9 +263,24 @@ $tokenResponse = Invoke-RestMethod -Method Get -Headers @{"Secret"="$env:MSI_SEC
 $accessToken = $tokenResponse.access_token
 ```
 
+## <a name="remove"></a>Usuwanie tożsamości
+
+Tożsamość może zostać usunięty przez wyłączenie funkcji za pomocą portalu, programu PowerShell lub interfejsu wiersza polecenia w taki sam sposób, że został on utworzony. W protokole szablonu REST/ARM można to zrobić przez ustawienie typu na "Brak":
+
+```json
+"identity": {
+    "type": "None"
+}    
+```
+
+Usuwanie tożsamości w ten sposób spowoduje również usunięcie podmiotu zabezpieczeń z usługi AAD. Przypisana przez system tożsamości są automatycznie usuwane z usługi AAD po usunięciu zasobów aplikacji.
+
+> [!NOTE] 
+> Brak ustawienia aplikacji, które można ustawić, WEBSITE_DISABLE_MSI, która po prostu wyłącza lokalną usługę tokenu. Jednak pozostawia tożsamość w miejscu i narzędzi w dalszym ciągu będzie MSI jako "on" lub "enabled". W związku z tym nie recommmended jest użycie tego ustawienia.
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Dostęp do bazy danych SQL przy użyciu tożsamość usługi zarządzanej](app-service-web-tutorial-connect-msi.md)
+> [Zabezpieczony dostęp do usługi SQL Database przy użyciu tożsamości usługi zarządzanej](app-service-web-tutorial-connect-msi.md)
 
-[odwołania Microsoft.Azure.Services.AppAuthentication]: https://go.microsoft.com/fwlink/p/?linkid=862452
+[Odwołanie Microsoft.Azure.Services.AppAuthentication]: https://go.microsoft.com/fwlink/p/?linkid=862452
