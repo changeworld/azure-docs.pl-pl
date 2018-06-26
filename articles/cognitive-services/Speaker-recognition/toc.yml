@@ -1,0 +1,20 @@
+- name: Dokumentacja funkcji rozpoznawania osoby mówiącej
+- name: Omówienie
+  items:
+    - name: Informacje na temat funkcji rozpoznawania osoby mówiącej
+      href: Home.md
+- name: Dokumentacja
+  items:
+    - name: Dokumentacja interfejsu API
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c3271984551c84ec6797'
+      items:
+        - name: Zestawy SDK
+          items:
+            - name: Android
+              href: 'https://github.com/Microsoft/Cognitive-SpeakerRecognition-Android'
+            - name: Windows
+              href: 'https://github.com/Microsoft/Cognitive-SpeakerRecognition-Windows'
+- name: Zasoby
+  items:
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/'

@@ -1,11 +1,10 @@
 - name: Dokumentacja usługi Data Factory V1
   href: null
 - name: Przechodzenie do dokumentacji bieżącej wersji
-  href: ../index.yml
+  href: ../introduction.md
 - name: Omówienie
   items:
-    - name: |
-        Wprowadzenie do usługi Azure Data Factory
+    - name: Wprowadzenie do usługi Azure Data Factory
       href: data-factory-introduction.md
     - name: Pojęcia
       items:

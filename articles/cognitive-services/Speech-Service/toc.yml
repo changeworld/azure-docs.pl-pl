@@ -1,0 +1,99 @@
+- name: Dokumentacja interfejsu API usługi rozpoznawania mowy
+  href: index.yml
+- name: Omówienie
+  items:
+    - name: Czym jest usługa rozpoznawania mowy?
+      href: overview.md
+      expanded: true
+- name: Przewodniki Szybki start
+  items:
+    - name: Wypróbuj bezpłatnie usługę rozpoznawania mowy
+      href: get-started.md
+    - name: 'Rozpoznawanie mowy w języku C#'
+      href: quickstart-csharp-windows.md
+    - name: Rozpoznawanie mowy w języku C++ dla systemu Windows
+      href: cpp-windows.md
+    - name: Rozpoznawanie mowy w języku C++ dla systemu Linux
+      href: cpp-linux.md
+    - name: Rozpoczynanie pracy z zestawem Speech Devices SDK
+      href: speech-devices-sdk-qsg.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Rozpoznawanie mowy
+      href: how-to-speech-to-text.md
+    - name: Dostosowywanie modeli mowy
+      href: how-to-customize-speech-models.md
+    - name: Syntetyzowanie mowy
+      href: how-to-text-to-speech.md
+    - name: Dostosowywanie czcionek głosowych
+      href: how-to-customize-voice-font.md
+    - name: Tłumaczenie mowy
+      href: how-to-translate-speech.md
+    - name: Przygotowanie transkrypcji
+      href: prepare-transcription.md
+    - name: Korzystanie z niestandardowych strumieni audio
+      href: how-to-use-audio-input-streams.md
+    - name: Pobieranie zestawu Speech Devices SDK
+      href: get-speech-devices-sdk.md
+    - name: Dostosowywanie słowa aktywującego urządzenie
+      href: speech-devices-sdk-create-kws.md
+    - name: Transkrypcja wsadowa (biura obsługi)
+      href: batch-transcription.md
+- name: Przykłady
+  items:
+    - name: Pobierz przykłady
+      href: samples.md
+    - name: Rozpoznawanie mowy
+      href: speech-to-text-sample.md
+    - name: Rozpoznawanie intencji
+      href: intent.md
+    - name: Tłumaczenie
+      href: translation.md
+- name: Pojęcia
+  items:
+    - name: Zamiana mowy na tekst
+      href: speech-to-text.md
+    - name: Zamiana tekstu na mowę
+      href: text-to-speech.md
+    - name: Tłumaczenie mowy
+      href: speech-translation.md
+    - name: Zestaw SDK rozpoznawania mowy
+      href: speech-sdk.md
+    - name: Zestaw Speech Devices SDK
+      href: speech-devices-sdk.md
+- name: Dokumentacja
+  items:
+    - name: Obsługiwane języki
+      href: supported-languages.md
+    - name: Interfejsy API REST
+      href: rest-apis.md
+    - name: Interfejs API zestawu SDK rozpoznawania mowy
+      href: speech-sdk-reference.md
+    - name: Język znaczników syntezy mowy
+      href: speech-synthesis-markup.md
+- name: Zasoby
+  items:
+    - name: Zamiana mowy na tekst — często zadawane pytania
+      href: faq-stt.md
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/912208-speech-service'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
+    - name: Prywatność i pliki cookie
+      href: 'https://privacy.microsoft.com/privacystatement'
+    - name: Rozwiązywanie problemów
+      href: troubleshooting.md
+    - name: Wysyłanie aplikacji
+      href: ship-application.md
+    - name: Informacje o wersji
+      href: releasenotes.md
+    - name: Licencja zestawu SDK rozpoznawania mowy
+      href: license.md
+    - name: Licencja zestawu Speech Devices SDK
+      href: speech-devices-sdk-license.md
+    - name: Uwagi dotyczące innych firm
+      href: third-party-notices.md

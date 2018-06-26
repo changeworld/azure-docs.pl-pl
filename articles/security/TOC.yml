@@ -65,6 +65,8 @@
       items:
         - name: Wybieranie uwierzytelniania w usłudze Azure AD
           href: azure-ad-choose-authn.md
+        - name: Lista kontrolna zabezpieczeń
+          href: azure-ad-secure-steps.md
         - name: Najlepsze praktyki
           href: azure-security-identity-management-best-practices.md
         - name: Wymuszanie uwierzytelniania wieloskładnikowego dla administratorów subskrypcji

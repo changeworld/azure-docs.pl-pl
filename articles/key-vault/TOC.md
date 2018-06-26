@@ -12,7 +12,7 @@
 ## [Odczytywanie wpisu tajnego z usługi Key Vault](tutorial-web-application-keyvault.md)
 ## [Rozpoczęcie pracy z usługą Key Vault](key-vault-get-started.md)
 ## [Konfigurowanie rotacji i inspekcji kluczy](key-vault-key-rotation-log-monitoring.md)
-## [Korzystanie z usługi Key Vault z poziomu aplikacji sieci Web](key-vault-use-from-web-application.md)
+## [Korzystanie z usługi Key Vault z poziomu aplikacji internetowej](key-vault-use-from-web-application.md)
 # Przykłady
 ## [Przykłady kodu](https://azure.microsoft.com/resources/samples/?service=key-vault)
 # Pojęcia
@@ -41,11 +41,11 @@
 # Dokumentacja
 ## [Azure PowerShell](/powershell/module/azurerm.keyvault)
 ## [Interfejs wiersza polecenia platformy Azure](/cli/azure/keyvault)
-## [.NET](/dotnet/api/microsoft.azure.keyvault)
-## [Java](/java/api/com.microsoft.azure.keyvault)
+## [.NET](https://docs.microsoft.com/en-us/dotnet/api/overview/azure/keyvault/client?view=azure-dotnet)
+## [Java](/java/api/overview/azure/keyvault/client)
 ## Node.js
-### [Zarządzanie magazynem](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)
-### [Zarządzanie zawartością magazynu](http://azure.github.io/azure-sdk-for-node/azure-keyvault/latest)
+### [Zarządzanie magazynem](https://docs.microsoft.com/en-us/javascript/api/overview/azure/keyvault/client?view=azure-node-latest)
+### [Zarządzanie zawartością magazynu](https://docs.microsoft.com/en-us/javascript/api/azure-arm-keyvault/index?view=azure-node-latest)
 ## [REST](/rest/api/keyvault)
 ## Programowanie
 ### [Szybki start dla deweloperów — wideo](http://channel9.msdn.com/Blogs/Windows-Azure/Azure-Key-Vault-Developer-Quick-Start)

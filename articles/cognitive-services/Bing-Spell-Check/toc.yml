@@ -1,0 +1,63 @@
+- name: Dokumentacja interfejsu API sprawdzania pisowni Bing
+  href: index.yml
+- name: Omówienie
+  items:
+    - name: Czym jest interfejs API sprawdzania pisowni Bing?
+      href: proof-text.md
+- name: Interfejs API REST — przewodniki Szybki start
+  expanded: true
+  items:
+    - name: 'C#'
+      href: quickstarts/csharp.md
+    - name: Java
+      href: quickstarts/java.md
+    - name: Node.js
+      href: quickstarts/nodejs.md
+    - name: PHP
+      href: quickstarts/php.md
+    - name: Python
+      href: quickstarts/python.md
+    - name: Ruby
+      href: quickstarts/ruby.md
+- name: Zestaw SDK — przewodniki Szybki start
+  items:
+    - name: 'Zestaw SDK w języku C# — Szybki start'
+      href: sdk-quickstart-spell-check.md
+    - name: Omówienie przykładów dotyczących zestawu SDK
+      href: sdk.md
+- name: Samouczki
+  items:
+    - name: Tworzenie aplikacji internetowej do sprawdzania pisowni
+      href: tutorials/spellcheck.md
+    - name: 'Kod źródłowy: aplikacja internetowa do sprawdzania pisowni'
+      href: tutorials/spellcheck-source.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Wymagania dotyczące użycia i wyświetlania
+      href: UseAndDisplayRequirements.md
+    - name: Uaktualnienie z wersji v5 do v7
+      href: bing-spell-check-upgrade-guide-v5-to-v7.md
+- name: Dokumentacja
+  items:
+    - name: Interfejs API sprawdzania pisowni Bing v7
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference'
+    - name: Interfejs API sprawdzania pisowni Bing v5 (starsza wersja)
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference'
+- name: Zasoby
+  items:
+    - name: Często zadawane pytania
+      href: bing-spell-check-resource-faq.md
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598195-bing-spell-check'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/bing-api'
+    - name: Obsługiwane języki
+      href: bing-spell-check-supported-languages.md
+    - name: Dane analityczne na potrzeby interfejsu API sprawdzania pisowni Bing
+      href: bing-spell-check-stats.md
+    - name: Klucz subskrypcji
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api'
+    - name: Wypróbuj!
+      href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'

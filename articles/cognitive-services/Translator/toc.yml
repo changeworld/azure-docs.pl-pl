@@ -1,0 +1,111 @@
+- name: Dokumentacja interfejsu API tłumaczenia tekstu w usłudze Translator
+  href: index.yml
+- name: Omówienie
+  items:
+    - name: Czym jest interfejs API tłumaczenia tekstu w usłudze Translator?
+      href: translator-info-overview.md
+- name: Przewodniki Szybki start
+  expanded: true
+  items:
+    - name: 'C#'
+      items:
+        - name: Tłumaczenie tekstu
+          href: quickstart-csharp-translate.md
+        - name: Konwertowanie skryptu tekstowego
+          href: quickstart-csharp-transliterate.md
+        - name: Identyfikowanie języka na podstawie tekstu
+          href: quickstart-csharp-detect.md
+        - name: Uzyskiwanie alternatywnych tłumaczeń
+          href: quickstart-csharp-dictionary.md
+        - name: Uzyskiwanie obsługiwanych języków
+          href: quickstart-csharp-languages.md
+        - name: Uzyskiwanie długości zdania w tekście
+          href: quickstart-csharp-sentences.md
+    - name: Java
+      items:
+        - name: Tłumaczenie tekstu
+          href: quickstart-java-translate.md
+        - name: Konwertowanie skryptu tekstowego
+          href: quickstart-java-transliterate.md
+        - name: Identyfikowanie języka na podstawie tekstu
+          href: quickstart-java-detect.md
+        - name: Uzyskiwanie alternatywnych tłumaczeń
+          href: quickstart-java-dictionary.md
+        - name: Uzyskiwanie obsługiwanych języków
+          href: quickstart-java-languages.md
+        - name: Uzyskiwanie długości zdania w tekście
+          href: quickstart-java-sentences.md
+- name: Pojęcia
+  items:
+    - name: Obsługiwane języki
+      href: languages.md
+    - name: Dostosowywanie i poprawianie tłumaczenia tekstu
+      href: customization.md
+    - name: W jaki sposób interfejs API liczy znaki
+      href: character-counts.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Rejestrowanie się w celu skorzystania z interfejsu API tłumaczenia tekstu w usłudze Translator
+      href: translator-text-how-to-signup.md
+    - name: Migrowanie do interfejsu API V3 tłumaczenia tekstu
+      href: migrate-to-v3.md
+    - name: Dodawanie filtrowania niestosownych wyrażeń
+      href: profanity-filtering.md
+    - name: Uzyskiwanie informacji o wyrównaniu wyrazów
+      href: word-alignment.md
+    - name: Korzystanie z funkcji słownika dynamicznego
+      href: dynamic-dictionary.md
+    - name: Korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator
+      items:
+        - name: Node.js
+          href: quickstarts/nodejs.md
+        - name: PHP
+          href: quickstarts/php.md
+        - name: Python
+          href: quickstarts/python.md
+        - name: Ruby
+          href: quickstarts/ruby.md
+        - name: Tworzenie aplikacji do tłumaczenia tekstu w usłudze Translator z użyciem podsystemu WPF
+          href: tutorial-wpf-translation-csharp.md
+- name: Dokumentacja
+  items:
+    - name: Dokumentacja interfejsu API v3 tłumaczenia tekstu w usłudze Translator
+      href: reference/v3-0-reference.md
+      items:
+        - name: Języki
+          href: reference/v3-0-languages.md
+        - name: Tłumaczenie
+          href: reference/v3-0-translate.md
+        - name: Transliteracja
+          href: reference/v3-0-transliterate.md
+        - name: Wykrywanie
+          href: reference/v3-0-detect.md
+        - name: BreakSentence
+          href: reference/v3-0-break-sentence.md
+        - name: Wyszukiwanie w słowniku
+          href: reference/v3-0-dictionary-lookup.md
+        - name: Przykłady słowników
+          href: reference/v3-0-dictionary-examples.md
+    - name: Dokumentacja interfejsu API v2 tłumaczenia tekstu w usłudze Translator (przestarzały)
+      href: reference/v2-0-reference.md
+      items:
+        - name: Przekształcanie tekstu
+          href: transform-text.md
+        - name: Jak korzystać z raportowania na platformie CTF (Collaborative Translation Framework)
+          href: ctf-reporting.md
+        - name: Zwracanie N najlepszych tłumaczeń
+          href: return-n-best-translations.md
+- name: Zasoby
+  items:
+    - name: Często zadawane pytania
+      href: 'https://www.microsoft.com/translator/faq.aspx'
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/558796-translator'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
+    - name: Baza wiedzy
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/132647-translator'
+    - name: Przykłady kodu w serwisie GitHub
+      href: 'https://aka.ms/TranslatorGitHub'

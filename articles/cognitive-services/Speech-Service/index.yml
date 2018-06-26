@@ -1,0 +1,189 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentacja usługi rozpoznawania mowy (wersja zapoznawcza)
+metadata:
+  title: Dokumentacja usługi rozpoznawania mowy — samouczki, przewodniki Szybki start i dokumentacja interfejsu API — Cognitive Services | Microsoft Docs
+  meta.description: Speech SDK provides developers an easy way to create powerful speech-enabled features in their applications, such as voice command control and dialog, using natural speech conversation, speech transcription and dictation, and speech translation.
+  services: cognitive-services
+  author: noellelacharite
+  manager: nolachar
+  layout: LandingPage
+  ms.service: cognitive-services
+  ms.component: speech-service
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/01/2018
+  ms.author: nolachar
+  ms.openlocfilehash: ae9c5a62dd4f1b83f4d1317b54e5766b80d14245
+  ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 06/11/2018
+  ms.locfileid: "35358354"
+abstract:
+  description: Usługa rozpoznawania mowy firmy Microsoft oraz jej zestaw SDK ułatwia deweloperom tworzenie w swoich aplikacjach zaawansowanych funkcji rozpoznawania mowy, takich jak kontrola poleceń głosowych, transkrypcja i dyktowanie. Cortana, pakiet Microsoft Office i inne oprogramowanie korzysta z tej samej technologii. Kluczową cechą, która wyróżnia usługę rozpoznawania mowy firmy Microsoft, jest możliwość dostosowania modeli akustycznych i językowych funkcji <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-customize-speech-models">zamiany mowy na tekst</a> w celu dopasowania do specjalistycznego słownictwa, hałaśliwych środowisk i różnych sposobów mówienia. Dostępne są również dostosowane funkcje <a href="http://aka.ms/customvoice">zamiany tekstu na mowę</a> i <a href="http://aka.ms/customtranslator">tłumaczenia mowy</a>.<br/><br/>Nasz zestaw SDK rozpoznawania mowy jest dostępny na wielu platformach i w kilku językach programowania, więc, w zależności od potrzeb aplikacji, wystarczy zadbać o odpowiednie skonfigurowanie mikrofonu, przesyłanie strumieniowe w czasie rzeczywistym lub komunikację plikową opartą na partiach.
+sections:
+- title: 10-minutowe przewodniki Szybki start — nowe zestawy SDK
+  items:
+  - type: paragraph
+    text: 'Dowiedz się z naszych poradników Szybki start, jak zainstalować zestawy SDK rozpoznawania mowy i korzystać z nich:'
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/logo_csharp.svg
+    - image:
+        src: media/index/logo_cplusplus.svg
+    - image:
+        src: media/index/logo_java.jpg
+    rows:
+    - title: Windows
+      values:
+      - href: quickstart-csharp-windows
+      - href: cpp-windows
+      - href: 
+    - title: Linux
+      values:
+      - href: 
+      - href: cpp-linux
+      - href: 
+    - title: Zestaw SDK urządzeń (Android)
+      values:
+      - href: 
+      - href: 
+      - href: https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk
+- title: Przykłady i dokumentacja
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Przykłady
+      html: <ul><li><a href="speech-to-text-sample.md">Rozpoznawanie mowy</a></li><li><a href="intent.md">Rozpoznawanie intencji mowy</a></li><li><a href="translation.md">Tłumaczenie</a></li></ul>
+    - title: Dokumentacja interfejsu API
+      html: <ul><li><a href="https://aka.ms/csspeech/csharpref">Interfejs API w języku C#</a></li><li><a href="https://aka.ms/csspeech/cppref">Interfejs API w języku C++</a></li><li><a href="https://aka.ms/csspeech/javaref">Interfejs API w języku Java (zestaw SDK urządzeń)</a></li></ul>
+- title: Zamiana mowy na tekst
+  items:
+  - type: paragraph
+    text: Nasz zestaw SDK rozpoznawania mowy obsługuje funkcję <b>zamiany mowy na tekst</b> (Speech-to-Text, STT), czyli rozpoznawania mowy.  Zestaw SDK rozpoznawania mowy przekształca strumienie audio na tekst, który aplikacja może zaakceptować jako dane wejściowe. Aplikacja można następnie wprowadzić ten tekst do dokumentu lub potraktować go jako polecenie.
+  - type: paragraph
+    text: Poniżej przedstawiono typowe przypadki użycia funkcji <b>zamiany mowy na tekst</b> za pośrednictwem zestawu SDK rozpoznawania mowy&#58;
+  - type: list
+    style: unordered
+    items:
+    - text: Rozpoznawanie krótkiej wypowiedzi, takiej jak polecenie, bez wyników pośrednich.
+    - text: Przekształcanie długiej, zarejestrowanej wcześniej wypowiedzi, na przykład wiadomości poczty głosowej.
+    - text: Przekształcanie mowy przesyłanej strumieniowo w czasie rzeczywistym z wynikami częściowymi na potrzeby dyktowania.
+    - text: Określanie potrzeb użytkowników na podstawie wypowiadanych w języku naturalnym żądań.
+  - type: paragraph
+    text: Zestaw SDK rozpoznawania mowy obsługuje interaktywną transkrypcję mowy z działającą stale w czasie rzeczywistym funkcją <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-customize-speech-models">zamiany mowy na tekst</a> i wynikami pośrednimi. Obsługuje on również rozpoznawanie końca wypowiedzi, opcjonalną automatyczną interpunkcję i zamianę tekstu na wielkie litery, maskowanie niestosownych wyrażeń oraz normalizację tekstu.
+  - type: paragraph
+    text: Kluczową cechą, która wyróżnia usługę rozpoznawania mowy firmy Microsoft, jest możliwość dostosowania modeli akustycznych i językowych funkcji <a href="http://aka.ms/customspeech">zamiany mowy na tekst</a> w celu dopasowania do specjalistycznego słownictwa, hałaśliwych środowisk i różnych sposobów mówienia.
+- title: Tłumaczenie mowy
+  items:
+  - type: paragraph
+    text: Zestaw SDK rozpoznawania mowy może również być używany do <a href="https://azure.microsoft.com/services/cognitive-services/speech-translation">tłumaczenia mowy</a>.  Podczas <b>tłumaczenia mowy</b> przesyłanej strumieniowo za pomocą zestawu SDK rozpoznawania mowy usługa zwraca wyniki pośrednie, które mogą być wyświetlane użytkownikowi w celu wskazania postępu tłumaczenia. Wyniki mogą być zwracane w postaci tekstu lub głosu.
+  - type: paragraph
+    text: Przypadki użycia funkcji <b>tłumaczenia mowy</b> z zestawu SDK rozpoznawania mowy mogą być następujące&#58;
+  - type: list
+    style: unordered
+    items:
+    - text: Zaimplementowanie aplikacji mobilnej lub urządzenia do tłumaczenia rozmów dla podróżujących osób.
+    - text: Udostępnianie automatycznych tłumaczeń napisów nagrań audio i wideo.
+  - type: paragraph
+    text: Modele funkcji <b>tłumaczenia mowy</b> można też <a href="http://aka.ms/customtranslator">dostosowywać</a>.
+- title: Zamiana tekstu na mowę
+  items:
+  - type: paragraph
+    text: Obecnie funkcja <a href="https://azure.microsoft.com/services/cognitive-services/text-to-speech">zamiany tekstu na mowę</a> (Text-to-Speech, TTS) lub syntezy mowy jest obsługiwana za pomocą interfejsu API REST, który przekształca zwykły tekst na brzmiąca naturalnie mowę dostarczaną do aplikacji w postaci pliku audio. Dostępnych jest wiele głosów zróżnicowanych pod względem płci i akcentu w wielu językach.
+  - type: paragraph
+    text: Nasz zestaw SDK rozpoznawania mowy zapewnia dostęp do funkcji zamiany mowy na tekst i tłumaczenia mowy. Funkcja zamiany tekstu na mowę wykorzystuje wywołania REST POST za pośrednictwem protokołu HTTP.
+  - type: paragraph
+    text: Interfejs API REST funkcji <b>zamiany tekstu na mowę</b> obsługuje tagi języka <b>Speech-Synthesis-Markup-Language</b> (SSML), dzięki czemu można określić dokładną wymowę fonetyczną problematycznych słów. Za pomocą języka SSML można również bezpośrednio w tekście oznaczać właściwości mowy (w tym nacisk, szybkość, głośność, płeć i wysokość).
+  - type: paragraph
+    text: Jeśli aplikacja ma obsługiwać nieobsługiwany dialekt lub unikatowy głos, można utworzyć <a href="http://aka.ms/customvoice">niestandardowe czcionki głosowe</a> na podstawie własnych próbek mowy.
+  - type: paragraph
+    text: Poniżej przedstawiono typowe przypadki użycia interfejsu API REST funkcji <b>zamiany tekstu na mowę</b>&#58;
+  - type: list
+    style: unordered
+    items:
+    - text: Głosowe dane wyjściowe jako alternatywa dla danych wyjściowych wyświetlanych na ekranie dla użytkowników niedowidzących.
+    - text: Komunikaty wydawane w formie głosowej dla aplikacji dla kierowców, takich jak nawigacja samochodowa.
+    - text: Interfejsy użytkownika do konwersacji podczas koncertów z interfejsem API funkcji <b>zamiany mowy na tekst</b>.
+- title: Zestaw Speech Devices SDK
+  items:
+  - type: paragraph
+    text: Wraz z wprowadzeniem ujednoliconej usługi rozpoznawania mowy firma Microsoft i jej partnerzy oferują teraz zintegrowaną platformę oprogramowania i sprzętową zoptymalizowaną pod kątem projektowania urządzeń z funkcją rozpoznawania mowy&#58; zestaw <b>Speech Devices SDK</b>. Ten zestaw SDK umożliwia projektowanie urządzeń z inteligentną obsługą mowy dla wszystkich typów aplikacji.
+  - type: paragraph
+    text: Zestaw <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk">Speech Devices SDK</a> umożliwia projektowanie urządzeń asystujących z możliwym do dostosowania słowem aktywującym unikatowym dla Twojej marki, które wyzwala rejestrację dźwięku. Zestaw zapewnia także doskonałe przetwarzanie audio ze źródeł wielokanałowych, co zwiększa dokładność rozpoznawania mowy, a także pomijanie szumu, głos dalekiego pola i kształtowanie wiązki.
+- title: Starsze zestawy SDK
+  items:
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/uwp.jpg
+    - image:
+        src: media/index/logo_java.jpg
+    - image:
+        src: media/index/logo_objc.jpg
+    - image:
+        src: media/index/logo_js.svg
+    - image:
+        src: media/index/logo_rest_sr.svg
+    - image:
+        src: media/index/logo_rest_tts.svg
+    rows:
+    - title: Windows
+      values:
+      - href: https://docs.microsoft.com/windows/uwp/design/input/speech-recognition
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+    - title: Android
+      values:
+      - href: 
+      - href: https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedjavaandroid
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+    - title: iOS
+      values:
+      - href: 
+      - href: 
+      - href: https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/get-started-objectivec-ios
+      - href: 
+      - href: 
+      - href: 
+    - title: Sieć Web
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedjswebsockets
+      - href: https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest?tabs=Powershell
+      - href: https://docs.microsoft.com/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput
+- title: Rozważane zestawy SDK
+  items:
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/logo_python.svg
+    - image:
+        src: media/index/logo_swift.jpg
+    - image:
+        src: media/index/logo_gopher.svg
+    - image:
+        src: media/index/c.jpg
+    rows:
+    - title: SDK
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: 

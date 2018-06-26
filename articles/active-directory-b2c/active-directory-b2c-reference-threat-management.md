@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 03/27/2016
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b2686b4bb2b98d3f79d8087f6857c149cfdeb553
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 0a439a2bb485829b863d6aa666938ab58c90c61f
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711267"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750781"
 ---
 # <a name="azure-active-directory-b2c-threat-management"></a>Usługa Azure Active Directory B2C: Zarządzanie zagrożeniami
 
@@ -29,4 +29,4 @@ Azure AD B2C używa wykrywanie i zapobieganie technik, takich jak pliki cookie S
 
 Usługa Azure AD B2C ma również techniki środki zaradcze w przypadku złamania hasła. Środki zaradcze obejmuje ataków siłowych hasła i słownikowymi hasła. Hasła, które są ustawiane przez użytkowników muszą być rozsądnych złożonych. Za pomocą różnych sygnałów, usługi Azure AD B2C analizuje integralności żądań. Usługa Azure AD B2C jest przeznaczona do inteligentnie rozróżnianie uprawnionych użytkowników przed hakerami i zakłócanych. Usługi Azure AD B2C udostępnia zaawansowane strategii blokady konta oparte na wprowadzone w prawdopodobieństwo ataku hasła.
 
-Aby uzyskać więcej informacji, odwiedź stronę [Microsoft Trust Center](https://www.microsoft.com/trustcenter/security/threatmanagement).
+Aby uzyskać więcej informacji, odwiedź stronę [Microsoft Trust Center](https://www.microsoft.com/en-us/trustcenter/default.aspx).

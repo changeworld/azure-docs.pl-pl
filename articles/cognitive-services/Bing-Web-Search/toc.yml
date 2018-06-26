@@ -1,0 +1,98 @@
+- name: Dokumentacja funkcji wyszukiwania w Internecie Bing
+  href: index.yml
+- name: Omówienie
+  items:
+    - name: Czym jest funkcja wyszukiwania w Internecie Bing?
+      href: overview.md
+- name: Interfejs API REST — przewodniki Szybki start
+  expanded: true
+  items:
+    - name: 'C#'
+      href: quickstarts/csharp.md
+    - name: Przejdź
+      href: quickstarts/go.md
+    - name: Java
+      href: quickstarts/java.md
+    - name: Node.js
+      href: quickstarts/nodejs.md
+    - name: PHP
+      href: quickstarts/php.md
+    - name: Python
+      href: quickstarts/python.md
+    - name: Ruby
+      href: quickstarts/ruby.md
+- name: Zestaw SDK — przewodniki Szybki start
+  items:
+    - name: Omówienie przykładów dotyczących zestawu SDK
+      href: sdk.md
+    - name: 'Zestaw SDK funkcji wyszukiwania w Internecie w języku C# — Szybki start'
+      href: web-search-sdk-quickstart.md
+    - name: Zestaw SDK funkcji wyszukiwania w Internecie w środowisku Node.js — Szybki start
+      href: web-search-sdk-node-quickstart.md
+    - name: Zestaw SDK funkcji wyszukiwania w Internecie w języku Python — Szybki start
+      href: web-sdk-python-quickstart.md
+    - name: Zestaw SDK funkcji wyszukiwania w Internecie w języku Java — Szybki start
+      href: web-sdk-java-quickstart.md
+- name: Samouczki
+  items:
+    - name: Jednostronicowa aplikacja internetowa
+      href: tutorial-bing-web-search-single-page-app.md
+    - name: Jednostronicowa aplikacja internetowa (kod źródłowy)
+      href: tutorial-bing-web-search-single-page-app-source.md
+    - name: Aplikacja mobilna wyszukiwania wizualnego
+      href: computer-vision-web-search-tutorial.md
+    - name: Aplikacja mobilna wyszukiwania wizualnego (rozwiązanie Visual Studio)
+      href: 'https://azure.microsoft.com/resources/samples/cognitive-services-xamarin-forms-computer-vision-search/'
+      maintainContext: true
+- name: Przykłady
+  items:
+    - name: Przykłady kodu
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Web+Search'
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Wyświetlanie wyników i korzystanie z nich
+      href: UseAndDisplayRequirements.md
+    - name: Filtrowanie odpowiedzi
+      href: filter-answers.md
+    - name: Priorytetyzowanie wyników
+      href: rank-results.md
+    - name: Obsługa wyróżniania trafień
+      href: hit-highlighting.md
+    - name: Dzielenie wyników na strony
+      href: paging-webpages.md
+    - name: Zmiana rozmiaru i przycinanie miniatur
+      href: resize-and-crop-thumbnails.md
+    - name: Uaktualnienie z wersji v5 do v7
+      href: bing-web-upgrade-guide-v5-to-v7.md
+- name: Dokumentacja
+  items:
+    - name: Interfejs API wyszukiwania w Internecie Bing v7
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference'
+    - name: Interfejs API wyszukiwania w Internecie Bing v5
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference'
+- name: Zasoby
+  items:
+    - name: Często zadawane pytania
+      href: bing-web-search-resource-faq.md
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/web/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/555907-bing-web-search-api'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=bing+web+search'
+    - name: Dostępność regionalna
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Baza wiedzy
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: Uzyskiwanie klucza interfejsu API
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api'
+    - name: Wypróbuj!
+      href: 'https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/'
+    - name: Punkt końcowy funkcji wyszukiwania w Internecie Bing
+      href: web-search-endpoints.md
+    - name: Obsługiwane kraje i rynki
+      href: supported-countries-markets.md
+    - name: Dane analityczne na potrzeby interfejsu API wyszukiwania w Internecie Bing
+      href: bing-web-stats.md

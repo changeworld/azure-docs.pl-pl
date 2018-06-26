@@ -1,0 +1,84 @@
+- name: Dokumentacja funkcji wyszukiwania niestandardowego Bing
+  href: index.yml
+- name: Omówienie
+  expanded: true
+  items:
+    - name: Czym jest wyszukiwanie niestandardowe Bing?
+      href: overview.md
+- name: Interfejs API REST — przewodniki Szybki start
+  expanded: true
+  items:
+    - name: Tworzenie pierwszego wystąpienia
+      href: quick-start.md
+    - name: 'C#'
+      href: call-endpoint-csharp.md
+    - name: Java
+      href: call-endpoint-java.md
+    - name: Node.js
+      href: call-endpoint-nodejs.md
+    - name: Python
+      href: call-endpoint-python.md
+- name: Zestaw SDK — przewodniki Szybki start
+  items:
+    - name: Omówienie przykładów dotyczących zestawu SDK
+      href: sdk.md
+    - name: 'Zestaw SDK funkcji wyszukiwania niestandardowego w języku C# — Szybki start'
+      href: custom-search-sdk-quickstart.md
+- name: Samouczki
+  items:
+    - name: Tworzenie strony internetowej z funkcją wyszukiwania niestandardowego
+      href: ./tutorials/custom-search-web-page.md
+- name: Przykłady
+  items:
+    - name: Przykłady kodu
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Custom+Search'
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Konfigurowanie środowiska wyszukiwania niestandardowego
+      href: define-your-custom-view.md
+    - name: Wywoływanie funkcji wyszukiwania niestandardowego
+      href: search-your-custom-view.md
+    - name: Konfigurowanie środowiska hostowanego interfejsu użytkownika
+      href: hosted-ui.md
+    - name: Udostępnianie wyszukiwania niestandardowego
+      href: share-your-custom-search.md
+    - name: Konfigurowanie środowiska niestandardowego automatycznego sugerowania
+      href: define-custom-suggestions.md
+    - name: Pobieranie niestandardowych sugestii
+      href: get-custom-suggestions.md
+    - name: Obsługa wyróżniania trafień
+      href: hit-highlighting.md
+    - name: Dzielenie na strony wyników wyszukiwania stron internetowych
+      href: page-webpages.md
+- name: Dokumentacja
+  items:
+    - name: Dokumentacja interfejsu API niestandardowego automatycznego sugerowania Bing
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference'
+    - name: Dokumentacja interfejsu API niestandardowego wyszukiwania obrazów Bing
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference'
+    - name: Dokumentacja interfejsu API wyszukiwania niestandardowego Bing
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference'
+    - name: Wymagania dotyczące użycia i wyświetlania interfejsu API wyszukiwania Bing
+      href: use-and-display-requirements.md
+- name: Zasoby
+  items:
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598147-bing-custom-search-api'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=bing+custom+search'
+    - name: Dostępność regionalna
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Baza wiedzy
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: Uzyskiwanie klucza interfejsu API
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api'
+    - name: Wypróbuj!
+      href: 'https://aka.ms/bingcustomsearchtryit'
+    - name: Punkt końcowy wyszukiwania niestandardowego Bing
+      href: endpoint-custom.md
+    - name: Obsługiwane kraje i rynki
+      href: supported-countries-markets.md
