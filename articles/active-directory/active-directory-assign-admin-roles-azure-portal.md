@@ -14,12 +14,12 @@ ms.date: 06/07/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 0bb4a57bcc31cffba3c0e7dc50d0e2b214c50838
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 1de2482b7795bbed82874b6eea29f89f1ff52560
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260417"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938456"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Przypisywanie ról administratorów w usłudze Azure Active Directory
 
@@ -29,12 +29,18 @@ Za pomocą usługi Azure Active Directory (Azure AD), możesz określić osobne 
 Administrator globalny ma dostęp do wszystkich funkcji administracyjnych. Domyślnie osoba, która zarejestruje się w celu uzyskania subskrypcji platformy Azure przypisany do roli administratora globalnego dla katalogu. Tylko administratorzy globalni mogą przypisywać pozostałe role administratorów.
 
 ## <a name="assign-or-remove-administrator-roles"></a>Przypisywanie lub usuwanie ról administratora
-Aby dowiedzieć się, jak przypisywanie ról administracyjnych do użytkownika w usłudze Azure Active Directory, zobacz [przypisać użytkownika do ról administratora w usłudze Azure Active Directory](active-directory-users-assign-role-azure-portal.md).
+Aby dowiedzieć się, jak przypisywanie ról administracyjnych do użytkownika w usłudze Azure Active Directory, zobacz [przypisać użytkownika do ról administratora w usłudze Azure Active Directory](fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="available-roles"></a>Dostępne role
 Dostępne są następujące role administratora:
 
+* **Administrator aplikacji**: użytkownicy w tej roli mogą tworzyć i zarządzać wszystkimi aspektami aplikacje dla przedsiębiorstw, rejestracji aplikacji i ustawień serwera proxy aplikacji. Ta rola również daje możliwość wyrażenia zgody na delegowane uprawnienia, a uprawnienia aplikacji, z wyłączeniem Microsoft Graph i Azure AD Graph. Członkowie tej roli nie są dodawane jako właścicieli, podczas tworzenia nowej rejestracji aplikacji i aplikacje przedsiębiorstwa.
+
+* **Deweloper aplikacji**: użytkownicy w tej roli mogą tworzyć rejestracji aplikacji podczas "Użytkownicy będą mogli zarejestrować aplikacji" ustawioną na nie. Ta rola umożliwia również członków zgody we własnym imieniu po "Użytkownicy mogą wyrażenia zgody na dostęp do danych firmowych w ich imieniu aplikacji" ustawioną na nie. Członkowie tej roli są dodawane jako właścicieli, podczas tworzenia nowej rejestracji aplikacji i aplikacje przedsiębiorstwa.
+
 * **Administrator rozliczeń**: dokonuje zakupów, zarządza subskrypcjami, zarządza biletami pomocy technicznej i monitoruje kondycję usługi.
+
+* **Administrator aplikacji w chmurze**: użytkowników w tej roli mają te same uprawnienia, jako rola administratora aplikacji, z wyjątkiem możliwości zarządzania serwera proxy aplikacji. Ta rola umożliwia tworzenie i zarządzanie nimi wszystkich aspektów aplikacji przedsiębiorstwa i rejestracji aplikacji. Ta rola również daje możliwość wyrażenia zgody na delegowane uprawnienia, a uprawnienia aplikacji, z wyłączeniem Microsoft Graph i Azure AD Graph. Członkowie tej roli nie są dodawane jako właścicieli, podczas tworzenia nowej rejestracji aplikacji i aplikacje przedsiębiorstwa.
 
 * **Administrator zgodności**: użytkownicy z tą rolą mają uprawnienia zarządzania w ramach pakietu Office 365 zabezpieczeń & Centrum zgodności i Centrum administracyjnego programu Exchange. Więcej informacji na "[o rolach administratora usługi Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)."
 
@@ -107,11 +113,29 @@ Dostępne są następujące role administratora:
 
 ## <a name="administrator-permissions"></a>Uprawnienia administratora
 
+### <a name="application-administrator"></a>Administrator aplikacji
+
+| Możliwość | Nie można wykonać |
+| --- | --- |
+| Przeczytaj wszystkich informacji katalogowych<br>Tworzenie aplikacji rejestracji<br>Aktualizowanie właściwości rejestracji aplikacji<br>Możliwość nabycia aplikacje dla przedsiębiorstw<br>Zarządzanie uprawnieniami do rejestracji aplikacji<br>Usuwanie rejestracji aplikacji<br>Zarządzanie enterprise pojedynczego logowania jednokrotnego ustawieniami aplikacji<br>Zarządzanie aplikacją enterprise inicjowania obsługi ustawień<br>Zarządzanie ustawieniami samoobsługi aplikacji przedsiębiorstwa<br>Zarządzanie ustawieniami uprawnień aplikacji przedsiębiorstwa<br>Zarządzanie dostępem do aplikacji<br>Zarządzanie ustawieniami inicjowania obsługi administracyjnej<br>Usuń aplikacje dla przedsiębiorstw<br>Zgoda imieniu wszyscy dla wszystkich żądań delegowane uprawnienia<br>Zgoda imieniu wszyscy dla wszystkich żądań uprawnienia aplikacji z wyjątkiem Azure AD Graph lub Microsoft Graph<br>Zarządzanie ustawieniami serwera proxy aplikacji<br>Ustawienia dostępu usługi<br>Monitor kondycji usługi<br>Zarządzanie biletami pomocy technicznej<br>Członkostwo w grupie odczytu, ukryta | Tworzenie, edytowanie i usuwanie grup<br>Zarządzanie licencjami użytkowników<br>Używanie synchronizacji katalogów<br>Wyświetlanie raportów logowania i dziennikami inspekcji | 
+
+### <a name="application-developer"></a>Deweloper aplikacji
+
+| Możliwość | Nie można wykonać |
+| --- | --- |
+| Przeczytaj wszystkich informacji katalogowych<br>Tworzenie aplikacji rejestracji<br>Zgoda imieniu samodzielnie | Wyświetlanie logowania i dzienniki inspekcji<br>Członkostwo w grupie odczytu, ukryta |
+
 ### <a name="billing-administrator"></a>Administrator rozliczeń
 
 | Możliwość | Nie można wykonać |
 | --- | --- |
-|<p>Wyświetlanie informacji o firmy i użytkownika</p><p>Zarządzanie biletami pomocy technicznej pakietu Office</p><p>Wykonywanie operacji rozliczeń i zakupów dla produktów pakietu Office</p> |<p>Resetowanie haseł użytkowników</p><p>Tworzenie i zarządzanie widokami użytkownika</p><p>Tworzenie, edycję, usuwanie użytkowników i grup i zarządzanie licencjami użytkowników</p><p>Zarządzanie domenami</p><p>Zarządzanie informacjami o firmy</p><p>Delegowanie ról administracyjnych do innych użytkowników</p><p>Używanie synchronizacji katalogów</p><p>Wyświetlanie dzienników inspekcji</p>|
+|<p>Wyświetlanie informacji o firmy i użytkownika</p><p>Zarządzanie biletami pomocy technicznej pakietu Office</p><p>Wykonywanie operacji rozliczeń i zakupów dla produktów pakietu Office</p> |<p>Resetowanie haseł użytkowników</p><p>Tworzenie i zarządzanie widokami użytkownika</p><p>Tworzenie, edycję, usuwanie użytkowników i grup i zarządzanie licencjami użytkowników</p><p>Zarządzanie domenami</p><p>Zarządzanie informacjami o firmy</p><p>Delegowanie ról administracyjnych do innych użytkowników</p><p>Używanie synchronizacji katalogów</p><p>Wyświetlanie dzienników inspekcji</p> |
+
+### <a name="cloud-application-administrator"></a>Administrator aplikacji w chmurze
+
+| Możliwość | Nie można wykonać |
+| --- | --- |
+| Przeczytaj wszystkich informacji katalogowych<br>Tworzenie aplikacji rejestracji<br>Aktualizowanie właściwości rejestracji aplikacji<br>Możliwość nabycia aplikacje dla przedsiębiorstw<br>Zarządzanie uprawnieniami do rejestracji aplikacji<br>Usuwanie rejestracji aplikacji<br>Zarządzanie enterprise pojedynczego logowania jednokrotnego ustawieniami aplikacji<br>Zarządzanie aplikacją enterprise inicjowania obsługi ustawień<br>Zarządzanie ustawieniami samoobsługi aplikacji przedsiębiorstwa<br>Zarządzanie ustawieniami uprawnień aplikacji przedsiębiorstwa<br>Zarządzanie dostępem do aplikacji<br>Zarządzanie ustawieniami inicjowania obsługi administracyjnej<br>Usuń aplikacje dla przedsiębiorstw<br>Zgoda imieniu wszyscy dla wszystkich żądań delegowane uprawnienia<br>Zgoda imieniu wszyscy dla wszystkich żądań uprawnienia aplikacji z wyjątkiem Azure AD Graph lub Microsoft Graph<br>Ustawienia dostępu usługi<br>Monitor kondycji usługi<br>Zarządzanie biletami pomocy technicznej<br>Członkostwo w grupie odczytu, ukryta | Zarządzanie ustawieniami serwera proxy aplikacji<br>Tworzenie, edytowanie i usuwanie grup<br>Zarządzanie licencjami użytkowników<br>Używanie synchronizacji katalogów<br>Wyświetlanie raportów logowania i dziennikami inspekcji |
 
 ### <a name="conditional-access-administrator"></a>Administrator dostępu warunkowego
 
@@ -169,17 +193,19 @@ Widok usługi Azure AD logowania raporty i dzienniki inspekcji<br>Wyświetlanie 
 
    ![Otwieranie Centrum administracyjnego usługi azure AD](./media/active-directory-assign-admin-roles-azure-portal/active-directory-admin-center.png)
 
-2. Wybierz **użytkowników i grup &gt; wszyscy użytkownicy**
+2. Wybierz **użytkowników** > **wszyscy użytkownicy**.
 
-3. Znajdź użytkownika, które chcesz wyznaczyć jako Administrator globalny i otwórz blok dla tego użytkownika.
+3. Otwórz stronę dla użytkownika, którego chcesz wyznaczyć jako Administrator globalny.
 
-4. W bloku użytkownika, wybierz **roli katalogu**.
- 
-5. W bloku roli katalogu, wybierz **administratora globalnego** roli i Zapisz.
+4. Na pasku poleceń Wybierz **roli katalogu**.
+
+5. Wybierz **Dodaj rolę**.
+
+6. Na stronie roli katalogu wybierz **administratora globalnego** roli, a następnie kliknij przycisk **wybierz** do zapisania.
 
 ## <a name="deprecated-roles"></a>Przestarzałe ról
 
-Nie można używać następujących ról. One zostały przestarzałe i zostanie usunięte z usługi Azure AD w przyszłości.
+Nie można używać następujących ról. One są przestarzałe i zostanie usunięte z usługi Azure AD w przyszłości.
 
 * Administrator licencji ad hoc
 * Tworzenie użytkowników zweryfikowanych za pośrednictwem poczty e-mail
@@ -188,11 +214,11 @@ Nie można używać następujących ról. One zostały przestarzałe i zostanie 
 * Użytkownicy urządzeń
 * Dołączanie urządzeń w miejscu pracy
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-* Aby dowiedzieć się więcej o modyfikowaniu administratorów subskrypcji platformy Azure, zobacz [How to add or change Azure administrator roles](../billing-add-change-azure-subscription-administrator.md) (Jak dodać lub zmienić role administratora platformy Azure).
+* Aby dowiedzieć się więcej o modyfikowaniu administratorów subskrypcji platformy Azure, zobacz [Dodawanie lub zmienianie administratorów subskrypcji platformy Azure](../billing-add-change-azure-subscription-administrator.md)
 * Aby dowiedzieć się więcej o kontrolowaniu dostępu do zasobów na platformie Microsoft Azure, zobacz [Understanding resource access in Azure](../role-based-access-control/rbac-and-directory-admin-roles.md) (Opis dostępu do zasobów na platformie Azure).
-* Aby uzyskać więcej informacji dotyczących sposobu usługi Azure Active Directory odnosi się do subskrypcji platformy Azure, zobacz [jak subskrypcje platformy Azure są kojarzone z usługi Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
+* Aby uzyskać więcej informacji dotyczących relacji między usługą Azure Active Directory i subskrypcją platformy Azure, zobacz [Jak subskrypcje platformy Azure są kojarzone z usługą Azure Active Directory](fundamentals/active-directory-how-subscriptions-associated-directory.md).
 * [Zarządzanie użytkownikami](active-directory-create-users.md)
 * [Zarządzanie hasłami](active-directory-manage-passwords.md)
-* [Zarządzanie grupami](active-directory-manage-groups.md)
+* [Zarządzanie grupami](fundamentals/active-directory-manage-groups.md)

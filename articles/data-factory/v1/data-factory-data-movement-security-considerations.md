@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: cad363309b6086197ced1a5d1c1793995db11228
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2ca39490174047d83968561da98409ade2832253
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621624"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752619"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Fabryka danych Azure — zagadnienia dotyczące zabezpieczeń dla przepływu danych
 
@@ -30,7 +30,7 @@ W tym artykule opisano infrastrukturę podstawowych zabezpieczeń, która umożl
 
 W ramach rozwiązania fabryki danych jest tworzony co najmniej jeden [potok](data-factory-create-pipelines.md) danych. Potoki to logiczne grupy działań, które wspólnie wykonują zadanie. Potoki te znajdują się w regionie, w której został utworzony z fabryką danych. 
 
-Mimo że fabryki danych jest dostępna tylko w **zachodnie stany USA**, **wschodnie stany USA**, i **Europa Północna** regionach, jest dostępna usługa przenoszenia danych [globalnie w wielu regionach](data-factory-data-movement-activities.md#global). Usługi fabryka danych zapewnia, że dane nie opuści obszaru geograficznego / regionu, chyba że jawnie poinstruować usługi do używania alternatywnej region, jeśli usługa przenoszenia danych nie zostało jeszcze wdrożone do tego regionu. 
+Mimo że fabryki danych jest dostępna tylko w **zachodnie stany USA**, **wschodnie stany USA**, i **Europa Północna, Europa** regionach, usługa przenoszenia danych jest dostępna [globalnie w kilka obszarów](data-factory-data-movement-activities.md#global). Usługi fabryka danych zapewnia, że dane nie opuści obszaru geograficznego / regionu, chyba że jawnie poinstruować usługi do używania alternatywnej region, jeśli usługa przenoszenia danych nie zostało jeszcze wdrożone do tego regionu. 
 
 Fabryka danych Azure, sam nie przechowuje żadnych danych, z wyjątkiem poświadczeń połączonej usługi dla magazynów danych chmury, które są szyfrowane za pomocą certyfikatów. Usługa umożliwia tworzenie opartych na danych przepływów pracy do aranżowania przenoszenia danych między [obsługiwanymi magazynami danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) oraz przetwarzania danych przy użyciu [usług obliczeniowych](data-factory-compute-linked-services.md) w innych regionach lub w środowisku lokalnym. Umożliwia także [monitorowanie przepływów pracy i zarządzanie nimi](data-factory-monitor-manage-pipelines.md) przy użyciu zarówno mechanizmów programowych, jaki i interfejsu użytkownika.
 
@@ -40,7 +40,7 @@ Przenoszenie danych przy użyciu fabryki danych Azure została **certyfikowane**
 -   [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
 -   [CSA STAR](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
      
-Jeśli interesuje Cię zgodności platformy Azure i jak Azure zabezpiecza własnej infrastruktury, odwiedź stronę [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/default.aspx). 
+Jeśli interesuje Cię zgodności platformy Azure i jak Azure zabezpiecza własnej infrastruktury, odwiedź stronę [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx). 
 
 W tym artykule firma Microsoft analizuje zagadnienia dotyczące zabezpieczeń w następujących scenariuszach przepływu danych dwóch: 
 
@@ -94,7 +94,7 @@ Poświadczenia dla sieci lokalnych magazynów danych są przechowywane lokalnie 
 - Przy użyciu **zwykłego tekstu** (mniej bezpieczna opcja) za pośrednictwem protokołu HTTPS z portalu Azure / Kreator kopiowania. Poświadczenia są przekazywane w postaci zwykłego tekstu do bramy lokalnej.
 - Przy użyciu **biblioteki JavaScript kryptografii z Kreatora kopiowania**.
 - Przy użyciu **kliknij — gdy na podstawie aplikacji Menedżera poświadczeń**. Następnie kliknij pozycję-po wykonuje aplikacji na maszynie lokalnej, który ma dostęp do bramy i ustawia poświadczenia dla magazynu danych. Ta opcja i kolejnego są najbardziej bezpieczne opcje. Aplikacja Menedżera poświadczeń, domyślnie używa portu 8050 na komputerze z bramą na potrzeby bezpiecznej komunikacji.  
-- Użyj [AzureRmDataFactoryEncryptValue nowy](/powershell/module/azurerm.datafactories/New-AzureRmDataFactoryEncryptValue) polecenia cmdlet programu PowerShell do szyfrowania poświadczeń. Polecenie cmdlet używa certyfikatu, że brama jest skonfigurowana na potrzeby szyfrowania poświadczeń. Można użyć zaszyfrowane poświadczenia zwróconych przez to polecenie cmdlet i dodaj go do **EncryptedCredential** elementu **connectionString** w pliku JSON, który jest używany z [AzureRmDataFactoryLinkedService nowy](/powershell/module/azurerm.datafactories/new-azurermdatafactorylinkedservice) polecenia cmdlet lub we fragmencie JSON w Edytor fabryki danych w portalu. Tę opcję, a następnie kliknij — po zatwierdzeniu najbardziej bezpieczne Opcje aplikacji. 
+- Użyj [AzureRmDataFactoryEncryptValue nowy](/powershell/module/azurerm.datafactories/New-AzureRmDataFactoryEncryptValue) polecenia cmdlet programu PowerShell do szyfrowania poświadczeń. Polecenie cmdlet używa certyfikatu, że brama jest skonfigurowana na potrzeby szyfrowania poświadczeń. Można użyć zaszyfrowane poświadczenia zwróconych przez to polecenie cmdlet i dodaj go do **EncryptedCredential** elementu **connectionString** w pliku JSON, który jest używany z [ Nowy AzureRmDataFactoryLinkedService](/powershell/module/azurerm.datafactories/new-azurermdatafactorylinkedservice) polecenia cmdlet lub we fragmencie JSON w Edytor fabryki danych w portalu. Tę opcję, a następnie kliknij — po zatwierdzeniu najbardziej bezpieczne Opcje aplikacji. 
 
 #### <a name="javascript-cryptography-library-based-encryption"></a>Szyfrowanie oparte na bibliotece kryptografii JavaScript
 Można szyfrować poświadczeń magazynu danych przy użyciu [biblioteki JavaScript kryptografii](https://www.microsoft.com/download/details.aspx?id=52439) z [kreatora kopiowania](data-factory-copy-wizard.md). Po wybraniu tej opcji, Kreator kopiowania pobiera publiczny klucz bramy i używa go do zaszyfrowania poświadczeń magazynu danych. Poświadczenia są odszyfrowywane przez bramę i chroniony przez system Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx).

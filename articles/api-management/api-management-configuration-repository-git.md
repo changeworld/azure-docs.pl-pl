@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 57d14b6aa6caca0cc9b075723d4c350b0a50c9f8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 0165de82850c0c80052564c5f31a5e5cf5effb11
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29117541"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938312"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Zapisz i konfigurowaniu konfiguracji usługi Zarządzanie interfejsami API przy użyciu narzędzia Git
 
@@ -149,7 +149,7 @@ Pliki i foldery w repozytorium git lokalne zawierają informacje o konfiguracji 
 
 | Element | Opis |
 | --- | --- |
-| Folder główny zarządzanie interfejsami api |Zawiera konfigurację najwyższego poziomu dla wystąpienia usługi |
+| folder główny zarządzanie interfejsami api |Zawiera konfigurację najwyższego poziomu dla wystąpienia usługi |
 | interfejsy API folderu |Zawiera konfigurację interfejsów API w wystąpieniu usługi |
 | folder grupy |Zawiera konfigurację grup w wystąpieniu usługi |
 | folder zasady |Zawiera zasady w wystąpieniu usługi |
@@ -161,7 +161,7 @@ Każdego folderu może zawierać jeden lub więcej plików, a w niektórych przy
 
 | Typ pliku | Przeznaczenie |
 | --- | --- |
-| JSON |Informacje o konfiguracji dotyczące odpowiednich jednostek |
+| json |Informacje o konfiguracji dotyczące odpowiednich jednostek |
 | html |Opisy jednostek, często są wyświetlane w portalu dla deweloperów |
 | xml |Instrukcje zasad |
 | CSS |Arkusze stylów do dostosowania portalu dla deweloperów |
@@ -219,41 +219,41 @@ Ustawienie ostatecznego `$ref-policy`, mapy do pliku instrukcje globalne zasady 
 ### <a name="apis-folder"></a>interfejsy API folderu
 `apis` Folder zawiera folder dla każdego interfejsu API w wystąpieniu usługi, który zawiera następujące elementy.
 
-* `apis\<api name>\configuration.json`-to jest Konfiguracja interfejsu API i zawiera informacje dotyczące operacji i adres URL usługi wewnętrznej bazy danych. Jest to te same informacje, który będzie zwracany w przypadku wywołania [pobrania określonego interfejsu API](https://msdn.microsoft.com/library/azure/dn781423.aspx#GetAPI) z `export=true` w `application/json` format.
-* `apis\<api name>\api.description.html`-to jest opis interfejsu API i odpowiada `description` właściwość [jednostki interfejsu API](https://msdn.microsoft.com/library/azure/dn781423.aspx#EntityProperties).
-* `apis\<api name>\operations\`— Ten folder zawiera `<operation name>.description.html` pliki, które są mapowane na operacje w interfejsie API. Każdy plik zawiera opis jednej operacji w interfejsie API, który mapuje na `description` właściwość [operacji jednostki](https://msdn.microsoft.com/library/azure/dn781423.aspx#OperationProperties) w interfejsie API REST.
+* `apis\<api name>\configuration.json` -to jest Konfiguracja interfejsu API i zawiera informacje dotyczące operacji i adres URL usługi wewnętrznej bazy danych. Jest to te same informacje, który będzie zwracany w przypadku wywołania [pobrania określonego interfejsu API](https://docs.microsoft.com/en-us/rest/api/apimanagement/api/get) z `export=true` w `application/json` format.
+* `apis\<api name>\api.description.html` -to jest opis interfejsu API i odpowiada `description` właściwość [jednostki interfejsu API](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.table._entity_property).
+* `apis\<api name>\operations\` — Ten folder zawiera `<operation name>.description.html` pliki, które są mapowane na operacje w interfejsie API. Każdy plik zawiera opis jednej operacji w interfejsie API, który mapuje na `description` właściwość [operacji jednostki](https://docs.microsoft.com/en-us/rest/api/visualstudio/operations/list#operationproperties) w interfejsie API REST.
 
 ### <a name="groups-folder"></a>folder grupy
 `groups` Folder zawiera folder dla każdej grupy zdefiniowane w wystąpieniu usługi.
 
-* `groups\<group name>\configuration.json`— jest to konfiguracja dla grupy. Jest to te same informacje, który będzie zwracany w przypadku wywołania [Pobierz określoną grupę](https://msdn.microsoft.com/library/azure/dn776329.aspx#GetGroup) operacji.
-* `groups\<group name>\description.html`-to jest opis grupy i odpowiada `description` właściwość [grupy jednostki](https://msdn.microsoft.com/library/azure/dn776329.aspx#EntityProperties).
+* `groups\<group name>\configuration.json` — jest to konfiguracja dla grupy. Jest to te same informacje, który będzie zwracany w przypadku wywołania [Pobierz określoną grupę](https://msdn.microsoft.com/library/azure/dn776329.aspx#GetGroup) operacji.
+* `groups\<group name>\description.html` -to jest opis grupy i odpowiada `description` właściwość [grupy jednostki](https://msdn.microsoft.com/library/azure/dn776329.aspx#EntityProperties).
 
 ### <a name="policies-folder"></a>folder zasady
 `policies` Folder zawiera deklaracji zasad dla swojego wystąpienia usługi.
 
-* `policies\global.xml`-zawiera zasady zdefiniowane w zakresie globalnym wystąpienia usługi.
-* `policies\apis\<api name>\`— Jeśli masz wszystkie zasady zdefiniowane w zakresie interfejsu API są zawarte w tym folderze.
-* `policies\apis\<api name>\<operation name>\`folder — Jeśli masz wszystkie zasady zdefiniowane w zakresie operacji są zawarte w tym folderze `<operation name>.xml` plików, które mapują do deklaracji zasad dla każdej operacji.
-* `policies\products\`— Jeśli masz wszystkie zasady zdefiniowane w zakresie produktu są zawarte w tym folderze, który zawiera `<product name>.xml` plików, które mapują do deklaracji zasad dla każdego produktu.
+* `policies\global.xml` -zawiera zasady zdefiniowane w zakresie globalnym wystąpienia usługi.
+* `policies\apis\<api name>\` — Jeśli masz wszystkie zasady zdefiniowane w zakresie interfejsu API są zawarte w tym folderze.
+* `policies\apis\<api name>\<operation name>\` folder — Jeśli masz wszystkie zasady zdefiniowane w zakresie operacji są zawarte w tym folderze `<operation name>.xml` plików, które mapują do deklaracji zasad dla każdej operacji.
+* `policies\products\` — Jeśli masz wszystkie zasady zdefiniowane w zakresie produktu są zawarte w tym folderze, który zawiera `<product name>.xml` plików, które mapują do deklaracji zasad dla każdego produktu.
 
 ### <a name="portalstyles-folder"></a>portalStyles folder
 `portalStyles` Folder zawiera konfigurację i styl arkusze Dostosowywanie portalu deweloperów dla wystąpienia usługi.
 
-* `portalStyles\configuration.json`-zawiera nazwy arkuszy stylów używany przez portalu dla deweloperów
-* `portalStyles\<style name>.css`-każdego `<style name>.css` plik zawiera style portalu dla deweloperów (`Preview.css` i `Production.css` domyślnie).
+* `portalStyles\configuration.json` -zawiera nazwy arkuszy stylów używany przez portalu dla deweloperów
+* `portalStyles\<style name>.css` -każdego `<style name>.css` plik zawiera style portalu dla deweloperów (`Preview.css` i `Production.css` domyślnie).
 
 ### <a name="products-folder"></a>folder produktów
 `products` Folder zawiera folder dla każdego produktu z definicją w wystąpieniu usługi.
 
-* `products\<product name>\configuration.json`— jest to konfiguracja produktu. Jest to te same informacje, który będzie zwracany w przypadku wywołania [pobrania określonego produktu](https://msdn.microsoft.com/library/azure/dn776336.aspx#GetProduct) operacji.
-* `products\<product name>\product.description.html`-to jest opis produktu i odpowiada `description` właściwość [jednostki produktu](https://msdn.microsoft.com/library/azure/dn776336.aspx#Product) w interfejsie API REST.
+* `products\<product name>\configuration.json` — jest to konfiguracja produktu. Jest to te same informacje, który będzie zwracany w przypadku wywołania [pobrania określonego produktu](https://msdn.microsoft.com/library/azure/dn776336.aspx#GetProduct) operacji.
+* `products\<product name>\product.description.html` -to jest opis produktu i odpowiada `description` właściwość [jednostki produktu](https://msdn.microsoft.com/library/azure/dn776336.aspx#Product) w interfejsie API REST.
 
 ### <a name="templates"></a>templates
 `templates` Folder zawiera konfigurację [szablonów wiadomości e-mail](api-management-howto-configure-notifications.md) wystąpienia usługi.
 
-* `<template name>\configuration.json`-to jest konfiguracja dla szablonu wiadomości e-mail.
-* `<template name>\body.html`-to jest treść szablon wiadomości e-mail.
+* `<template name>\configuration.json` -to jest konfiguracja dla szablonu wiadomości e-mail.
+* `<template name>\body.html` -to jest treść szablon wiadomości e-mail.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać informacje na inne sposoby zarządzania wystąpienia usługi zobacz:

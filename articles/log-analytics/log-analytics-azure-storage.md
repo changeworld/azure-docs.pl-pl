@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a748cb0e2a08ed5e8ada5db171d5ef12b2fe121e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9e8c930acd12b5197238be48722947dac5380be6
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32170731"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751415"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Zbieranie dzienników usługi Azure i metryk do użycia w analizy dzienników
 
@@ -57,7 +57,7 @@ Istnieją cztery różne sposoby zbierania dzienników i metryki dla usług Azur
 | Maszyny wirtualne        | Microsoft.Compute/virtualMachines       | Wewnętrzny   | Wewnętrzny <br> Diagnostyka  | |
 | Zestawy skalowania maszyn wirtualnych | Microsoft.Compute/virtualMachines <br> Microsoft.Compute/virtualMachineScaleSets/virtualMachines |             | Diagnostyka | |
 | Farmach serwerów sieci Web        | Microsoft.Web/serverfarms               |             | Diagnostyka | |
-| Witryny sieci Web               | Microsoft.Web/sites <br> Microsoft.Web/sites/slots |             | Diagnostyka | [Analiza aplikacji sieci Web platformy Azure (wersja zapoznawcza)](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureWebAppsAnalyticsOMS?tab=Overview) |
+| Witryny sieci Web               | Microsoft.Web/sites <br> Microsoft.Web/sites/slots |             | Diagnostyka | [Analiza aplikacji sieci Web platformy Azure (wersja zapoznawcza)](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-web-apps-analytics) |
 
 
 > [!NOTE]
@@ -71,7 +71,7 @@ Możliwość zapisywania dzienników diagnostycznych są wielu zasobów platform
 Zasobów platformy Azure, które obsługują [Azure monitor](../monitoring-and-diagnostics/monitoring-overview.md) wysłać ich dzienniki i metryki bezpośrednio do analizy dzienników.
 
 > [!NOTE]
-> Wysyłanie metryki wielowymiarowej do analizy dzienników przy użyciu ustawień diagnostycznych nie jest obecnie obsługiwane. Metryki wielowymiarowe są eksportowane jako spłaszczone metryki jednowymiarowe z wartościami zagregowanymi we wszystkich wymiarach.
+> Wysyłanie metryk wielowymiarowych do usługi Log Analytics za pomocą ustawień diagnostycznych nie jest obecnie obsługiwane. Metryki wielowymiarowe są eksportowane jako spłaszczone metryki jednowymiarowe z wartościami zagregowanymi we wszystkich wymiarach.
 >
 > *Na przykład*: metrykę „Komunikaty przychodzące” w centrum zdarzeń można przeglądać i przedstawiać na wykresie na poziomie pojedynczej kolejki. Jednak podczas eksportowania za pomocą ustawień diagnostycznych metryka jest odzwierciedlona jako komunikaty przychodzące we wszystkich kolejek zdarzeń koncentratora.
 >

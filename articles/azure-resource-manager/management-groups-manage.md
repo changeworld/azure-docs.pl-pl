@@ -10,18 +10,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/15/2018
+ms.date: 06/22/2018
 ms.author: rithorn
-ms.openlocfilehash: 822a2df113b848f07e616f155881f345028cee1d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0a13627232904f4b14cdb5cbf5c3ca927d9ea167
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754671"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Zarządzanie zasobami z grupy zarządzania 
 Grupy zarządzania to kontenery ułatwiające zarządzanie dostępu, zasad i zgodności między wieloma subskrypcjami. Można zmienić, usuwanie i zarządzanie kontenery do hierarchii, które mogą być używane z [zasadami Azure](../azure-policy/azure-policy-introduction.md) i [Azure na podstawie ról dostęp do formantów (RBAC)](../role-based-access-control/overview.md). Aby dowiedzieć się więcej na temat grup zarządzania, zobacz [organizowania zasobów z grupami zarządzania platformy Azure ](management-groups-overview.md).
 
-Funkcja grupy zarządzania jest dostępna w publicznej wersji zapoznawczej. Aby rozpocząć korzystanie z zarządzania grupy, zaloguj się do [portalu Azure](https://portal.azure.com) lub użyć [programu Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview), [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az_extension_list_available), lub [interfejsu API REST](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview) do Zarządzanie grupami zarządzania.
+Funkcja grupy zarządzania jest dostępna w publicznej wersji zapoznawczej. Aby rozpocząć korzystanie z grup zarządzania, zaloguj się w [portalu Azure](https://portal.azure.com) lub użyć [programu Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview), [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az_extension_list_available), lub [interfejsu API REST](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview) do Zarządzanie grupami zarządzania.
 
 Aby wprowadzić zmiany w grupie zarządzania, musi mieć rolę właściciela lub współautora w grupie zarządzania. Aby zobaczyć, jakie uprawnienia ma, wybierz grupę zarządzania a następnie wybierz **IAM**. Aby dowiedzieć się więcej o rolach RBAC, zobacz [zarządzać dostępem i uprawnieniami RBAC](../role-based-access-control/overview.md).
 
@@ -55,8 +56,8 @@ C:\> Update-AzureRmManagementGroup -GroupName ContosoIt -DisplayName "Contoso Gr
 
 Dla wiersza polecenia platformy Azure należy użyć polecenia update. 
 
-```azure-cli
-C:\> az account management-group update --group-name Contoso --display-name "Contoso Group" 
+```azurecli-interactive
+az account management-group update --name Contoso --display-name "Contoso Group" 
 ```
 
 ---
@@ -74,12 +75,12 @@ Aby usunąć grupę zarządzania, muszą być spełnione następujące wymagania
 2. Wybierz **wszystkie usługi** > **grup zarządzania**  
 3. Wybierz grupy zarządzania, który chcesz usunąć. 
     
-    ![Usuń grupę](media/management-groups/delete.png)
+    ![Usuwanie grupy](media/management-groups/delete.png)
 4. Wybierz pozycję **Usuń**. 
     - Po wyłączeniu ikony aktywowania Twojego selektora myszy na ikonie przedstawiono przyczyny. 
 5. Istnieje okno, którego kliknięcie spowoduje otwarcie potwierdzenie, że chcesz usunąć grupę zarządzania. 
 
-    ![Usuń grupę](media/management-groups/delete_confirm.png) 
+    ![Usuwanie grupy](media/management-groups/delete_confirm.png) 
 6. Wybierz **tak** 
 
 
@@ -94,8 +95,8 @@ Remove-AzureRmManagementGroup -GroupName Contoso
 ### <a name="delete-in-azure-cli"></a>Usuwanie w interfejsie wiersza polecenia platformy Azure
 Za pomocą interfejsu wiersza polecenia Azure, Usuń polecenie az konta grupy zarządzania. 
 
-```azure-cli
-C:\> az account management-group delete --group-name Contoso
+```azurecli-interactive
+az account management-group delete --name Contoso
 ```
 ---
 
@@ -124,13 +125,13 @@ Get-AzureRmManagementGroup -GroupName Contoso
 ### <a name="view-in-azure-cli"></a>Widok w interfejsu wiersza polecenia platformy Azure
 Polecenie listy można pobrać wszystkich grup.  
 
-```azure-cli
+```azurecli-interactive
 az account management-group list
 ```
 Grupę zarządzania pojedynczego informacji użyj polecenia Pokaż
 
-```azurepowershell-interactive
-az account management-group show --group-name Contoso
+```azurecli-interactive
+az account management-group show --name Contoso
 ```
 ---
 
@@ -159,7 +160,7 @@ Aby zobaczyć, jakie uprawnienia ma, wybierz grupę zarządzania a następnie wy
 **Usuń subskrypcję z grupą zarządzania**
 1. Zaloguj się do [portalu Azure](https://portal.azure.com)
 2. Wybierz **wszystkie usługi** > **grup zarządzania** 
-3. Wybierz grupę zarządzania planowania czyli bieżącego elementu nadrzędnego.  
+3. Wybierz grupę zarządzania planujesz czyli bieżącego elementu nadrzędnego.  
 4. Wybierz elipsy na końcu wiersza subskrypcji na liście, który chcesz przenieść.
 
     ![Move](media/management-groups/move_small.png)
@@ -185,14 +186,14 @@ Remove-AzureRmManagementGroupSubscription -GroupName Contoso -SubscriptionId 123
 ### <a name="move-subscriptions-in-azure-cli"></a>Przenieś subskrypcje w wiersza polecenia platformy Azure
 Aby przenieść subskrypcję w interfejsu wiersza polecenia, należy użyć polecenia Dodaj. 
 
-```azure-cli
-C:\> az account management-group add --group-name Contoso --subscription 12345678-1234-1234-1234-123456789012
+```azurecli-interactive
+az account management-group subscription add --name Contoso --subscription 12345678-1234-1234-1234-123456789012
 ```
 
 Aby usunąć subskrypcji z grupą zarządzania, użyj polecenia remove subskrypcji.  
 
-```azure-cli
-C:\> az account management-group remove --group-name Contoso --subscription 12345678-1234-1234-1234-123456789012
+```azurecli-interactive
+az account management-group subscription remove --name Contoso --subscription 12345678-1234-1234-1234-123456789012
 ```
 
 ---
@@ -216,13 +217,13 @@ Po przeniesieniu nadrzędnej grupy zarządzania, wszystkie zasoby podrzędne obe
 Użyj polecenia AzureRmManagementGroup aktualizacji w programie PowerShell, można przenieść grupy zarządzania w ramach innej grupy.  
 
 ```powershell
-C:\> Update-AzureRmManagementGroup -GroupName Contoso  -ParentName ContosoIT
+Update-AzureRmManagementGroup -GroupName Contoso  -ParentName ContosoIT
 ```  
 ### <a name="move-management-groups-in-azure-cli"></a>Przeniesienie grup zarządzania w wiersza polecenia platformy Azure
 Polecenie aktualizacji można przenieść grupy zarządzania z wiersza polecenia platformy Azure. 
 
-```azure-cli
-C:/> az account management-group udpate --group-name Contoso --parent-id "Contoso Tenant" 
+```azurecli-interactive
+az account management-group update --name Contoso --parent "Contoso Tenant" 
 ``` 
 
 ---

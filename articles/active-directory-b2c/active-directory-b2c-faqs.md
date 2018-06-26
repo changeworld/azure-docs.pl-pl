@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1b56cdd119bac28eec819dbf38afcd2be5aaf907
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
-ms.translationtype: HT
+ms.openlocfilehash: e16130dc41418b22f2dea4ceae5e0a90ed963161
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34710736"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938444"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Usługa Azure AD B2C: Często zadawane pytania (FAQ) 
 Ta strona zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Active Directory (Azure AD) B2C. Sprawdzanie wstecz do aktualizacji.
@@ -56,7 +56,7 @@ Nie można obsługiwać aplikacji z dowolnego miejsca (w chmurze lub lokalnie). 
 Przed otwarciem usługi Azure AD B2C w menu po lewej stronie portalu Azure, musisz przełączyć się do katalogu, którą chcesz zarządzać.  Przełącz katalogi, klikając swoją tożsamość w prawym górnym rogu portalu Azure, a następnie wybierz katalog na liście rozwijanej, która pojawia się.  Aby uzyskać szczegółowe instrukcje wraz z obrazów, zobacz [przejdź do ustawień usługi Azure AD B2C](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
 
 ### <a name="how-do-i-customize-verification-emails-the-content-and-the-from-field-sent-by-azure-ad-b2c"></a>Jak dostosować weryfikacyjnych wiadomości e-mail (zawartość i "od:" pole) wysyłane przez usługę Azure AD B2C?
-Można użyć [firmowe funkcji](../active-directory/customize-branding.md) Aby dostosować zawartość weryfikacyjnych wiadomości e-mail. W szczególności można dostosować te dwa elementy wiadomości e-mail:
+Można użyć [firmowe funkcji](../active-directory/fundamentals/customize-branding.md) Aby dostosować zawartość weryfikacyjnych wiadomości e-mail. W szczególności można dostosować te dwa elementy wiadomości e-mail:
 
 * **Banner Logo**: wyświetlany w prawym dolnym rogu.
 * **Kolor tła**: wyświetlaną u góry.
@@ -89,7 +89,7 @@ Nie, ze względów bezpieczeństwa nie można otworzyć usługi Azure AD B2C str
 Integracja z usługą Microsoft Dynamics 365 portalu jest dostępny.  Zobacz [Konfigurowanie Dynamics 365 portalu usługi Azure AD B2C do uwierzytelniania](https://docs.microsoft.com/dynamics365/customer-engagement/portals/azure-ad-b2c).
 
 ### <a name="does-azure-ad-b2c-work-with-sharepoint-on-premises-2016-or-earlier"></a>Usługi Azure AD B2C jest korzystanie z programu SharePoint 2016 lokalnymi lub starszym?
-Usługa Azure AD B2C nie jest przeznaczona dla programu SharePoint zewnętrznych udostępnianie partnera scenariusza; zobacz [B2B usługi Azure AD](http://blogs.technet.com/b/ad/archive/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview.aspx) zamiast tego.
+Usługa Azure AD B2C nie jest przeznaczona dla programu SharePoint zewnętrznych udostępnianie partnera scenariusza; zobacz [B2B usługi Azure AD](https://cloudblogs.microsoft.com/enterprisemobility/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview/) zamiast tego.
 
 ### <a name="should-i-use-azure-ad-b2c-or-b2b-to-manage-external-identities"></a>Do zarządzania tożsamościami zewnętrznego należy używać usługi Azure AD B2C lub B2B?
 Przeczytaj ten artykuł o [tożsamości zewnętrznych](../active-directory/active-directory-b2b-compare-external-identities.md) Aby dowiedzieć się więcej na temat stosowania odpowiednie funkcje do scenariuszy tożsamości zewnętrznych.

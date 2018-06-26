@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: e0a04d44edf39c90533c59d67ea2dfce69f092cd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 3d4b93a604170cb3b8396562a15483923330f467
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33771096"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754684"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Przewodnik dla początkujących deweloperów platformy Azure
 
@@ -205,7 +205,7 @@ Jedną z korzyści wynikające ze stosowania Azure jest wdrożenie aplikacji do 
 
 Chociaż mało prawdopodobne, nie jest niemożliwe całe centrum danych do przejścia do trybu offline z powodu zdarzenia, takie jak klęski żywiołowej lub awaria internetowego. Jest najlepszym rozwiązaniem, umożliwia obsługę aplikacji ważnych w więcej niż jednego centrum danych do zapewnienia dostępności maksymalna. Przy użyciu wielu regionach można zmniejszenia opóźnień użytkowników globalne i zapewniają dodatkowe możliwości elastyczność podczas aktualizacji aplikacji.
 
-Niektóre usługi, takie jak maszyny wirtualne i usługi aplikacji, użyj [usługi Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) można włączyć obsługę wielu region z trybem failover między regionami do obsługi aplikacji przedsiębiorstwa wysokiej dostępności. Na przykład zobacz [architektura referencyjna Azure: aplikacja sieci Web o wysokiej dostępności](../../guidance/guidance-web-apps-multi-region.md).
+Niektóre usługi, takie jak maszyny wirtualne i usługi aplikacji, użyj [usługi Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) można włączyć obsługę wielu region z trybem failover między regionami do obsługi aplikacji przedsiębiorstwa wysokiej dostępności. Na przykład zobacz [architektura referencyjna Azure: uruchomienia aplikacji sieci web w wielu regionach](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region).
 
 >**Kiedy należy używać**: Jeśli masz aplikacje przedsiębiorstwa o wysokiej dostępności, korzystających z trybu failover i replikacji.
 
@@ -263,9 +263,9 @@ Jako deweloperów firma Microsoft, takich jak prawo Poznaj kod i spróbuj rozpoc
 
 Aby można było utworzyć lub pracy z subskrypcją platformy Azure, musi mieć konto platformy Azure. Konto platformy Azure jest po prostu tożsamości w usłudze Azure AD lub w katalogu, takie jak służbowego organizacji, który jest zaufany przez usługę Azure AD. Jeśli użytkownik nie należy do tej organizacji, zawsze można utworzyć subskrypcji przy użyciu Account Microsoft, który jest zaufany przez usługę Azure AD. Aby dowiedzieć się więcej na temat integracji lokalnego systemu Windows Server Active Directory z usługą Azure AD, zobacz [integrowanie tożsamości lokalnych z usługą Azure Active Directory](../../active-directory/active-directory-aadconnect.md).
 
-Każda subskrypcja platformy Azure jest połączona relacją zaufania z wystąpieniem usługi Azure AD. Oznacza to, że subskrypcja ufa katalogowi na potrzeby uwierzytelniania użytkowników, usług i urządzeń. Wiele subskrypcji może ufać temu samemu katalogowi, ale dana subskrypcja może ufać tylko jednemu katalogowi. Aby dowiedzieć się więcej, zobacz [jak subskrypcje platformy Azure są kojarzone z usługi Azure Active Directory](../../active-directory/active-directory-how-subscriptions-associated-directory.md).
+Każda subskrypcja platformy Azure jest połączona relacją zaufania z wystąpieniem usługi Azure AD. Oznacza to, że subskrypcja ufa katalogowi na potrzeby uwierzytelniania użytkowników, usług i urządzeń. Wiele subskrypcji może ufać temu samemu katalogowi, ale dana subskrypcja może ufać tylko jednemu katalogowi. Aby dowiedzieć się więcej, zobacz [jak subskrypcje platformy Azure są kojarzone z usługi Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-Oprócz Definiowanie poszczególnych Azure konta tożsamości, nazywany również *użytkowników*, można również zdefiniować *grup* w usłudze Azure AD. Tworzenie grup użytkowników jest sposób zarządzania dostępem do zasobów w subskrypcji przy użyciu kontroli dostępu opartej na rolach (RBAC). Aby dowiedzieć się, jak tworzyć grupy, zobacz [utworzyć grupę w wersji zapoznawczej usługi Azure Active Directory](../../active-directory/active-directory-groups-create-azure-portal.md). Można również tworzyć i zarządzania grupami przez [przy użyciu programu PowerShell](../../active-directory/active-directory-accessmanagement-groups-settings-v2-cmdlets.md).
+Oprócz Definiowanie poszczególnych Azure konta tożsamości, nazywany również *użytkowników*, można również zdefiniować *grup* w usłudze Azure AD. Tworzenie grup użytkowników jest sposób zarządzania dostępem do zasobów w subskrypcji przy użyciu kontroli dostępu opartej na rolach (RBAC). Aby dowiedzieć się, jak tworzyć grupy, zobacz [utworzyć grupę w wersji zapoznawczej usługi Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Można również tworzyć i zarządzania grupami przez [przy użyciu programu PowerShell](../../active-directory/active-directory-accessmanagement-groups-settings-v2-cmdlets.md).
 
 ### <a name="manage-your-subscriptions"></a>Zarządzanie subskrypcjami
 

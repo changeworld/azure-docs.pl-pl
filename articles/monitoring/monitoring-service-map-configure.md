@@ -3,8 +3,8 @@ title: Konfigurowanie mapy usługi na platformie Azure | Dokumentacja firmy Micr
 description: Usługa Service Map jest rozwiązaniem platformy Azure, które automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Ten artykuł zawiera szczegółowe informacje dotyczące wdrażania mapy usługi w danym środowisku i korzystania z niego w różnych scenariuszach.
 services: monitoring
 documentationcenter: ''
-author: daveirwin1
-manager: jwhit
+author: mgoedtel
+manager: carmonm
 editor: tysonn
 ms.assetid: d3d66b45-9874-4aad-9c00-124734944b2e
 ms.service: monitoring
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/18/2016
-ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: aa85f06355ad5afc8e67ff4bace3b0ed471dc703
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.date: 06/22/2018
+ms.author: daseidma;bwren
+ms.openlocfilehash: 872d5f05e4d607c9445d1af5cc9b9cb984c19e11
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34204196"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752578"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurowanie mapy usługi na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Służy on do wyświetlania serwerów jako traktować ich — jako połączonych systemy, które dostarczają usług krytycznych. Mapy usług zawiera połączeń między serwerami, procesów i portów w dowolnej architekturze połączenia TCP z konfiguracja nie jest wymagane, innego niż instalacji agenta.
@@ -49,7 +49,7 @@ W systemie Windows, Microsoft Monitoring Agent (MMA) jest używany zarówno prze
 
 W systemie Linux, Agent pakietu OMS gromadzi systemu Linux i wysyła dane do analizy dzienników monitorowania. Na serwerach z agentami bezpośredniego OMS lub na serwerach, które są dołączone do analizy dzienników za pośrednictwem grup zarządzania programu System Center Operations Manager, możesz użyć mapy usługi.  
 
-W tym artykule, firma Microsoft będzie odwoływać się do wszystkich agentów — czy Linux lub Windows, czy połączony z grupą zarządzania programu System Center Operations Manager lub bezpośrednio do analizy dzienników — jako "Agent pakietu OMS." Konkretna nazwa wdrożenia agenta jest używana tylko wtedy, gdy jest wymagana dla kontekstu.
+W tym artykule, firma Microsoft będzie odwoływać się do wszystkich agentów — czy Linux lub Windows, czy połączony z grupą zarządzania programu System Center Operations Manager lub bezpośrednio do analizy dzienników — jako *Agent pakietu OMS*. Konkretna nazwa wdrożenia agenta jest używana tylko wtedy, gdy jest wymagana dla kontekstu.
 
 Agent mapy usług nie przesyła wszystkie dane, a nie wymaga zmian zapory lub porty. Agent pakietu OMS z analizą dzienników przesyłania danych na mapie usługi zawsze, bezpośrednio lub za pośrednictwem bramy OMS.
 
@@ -60,12 +60,12 @@ Jeśli jesteś klientem programu System Center Operations Manager z grupą zarz�
 - Jeśli agentów programu System Center Operations Manager można uzyskać dostęp do Internetu do nawiązania połączenia analizy dzienników, nie jest wymagana żadna konfiguracja dodatkowych.  
 - Agentów programu System Center Operations Manager nie może uzyskać dostęp do analizy dzienników za pośrednictwem Internetu, należy skonfigurować bramę OMS do pracy z programem System Center Operations Manager.
   
-Jeśli używasz bezpośredniej Agent pakietu OMS, należy skonfigurować agenta pakietu OMS do połączenia analizy dzienników lub bramy OMS. Brama OMS można pobrać z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
+Jeśli używasz bezpośredniej Agent pakietu OMS, należy skonfigurować agenta pakietu OMS do połączenia analizy dzienników lub bramy OMS. Brama OMS można pobrać z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666). Aby uzyskać więcej informacji na temat sposobu wdrażania i konfigurowania bramy OMS, zobacz [łączenia komputerów bez dostępu do Internetu za pomocą bramy OMS](../log-analytics/log-analytics-oms-gateway.md).  
 
 ### <a name="management-packs"></a>Pakiety administracyjne
 Po aktywowaniu usługi mapy w obszarze roboczym analizy dzienników pakietu administracyjnego 300 KB są wysyłane do wszystkich serwerów z systemem Windows w tym obszarze roboczym. Jeśli używasz programu System Center Operations Manager agentów w [podłączonej grupy zarządzania](../log-analytics/log-analytics-om-agents.md), mapy usługi pakietu administracyjnego wdrażania programu System Center Operations Manager. Jeżeli agenci są połączeni bezpośrednio, usługa Log Analytics zapewni pakiet administracyjny.
 
-Pakiet administracyjny nosi nazwę Microsoft.IntelligencePacks.ApplicationDependencyMonitor. Jest ona zapisywana w %Programfiles%\Microsoft Packs\ State\Management usługi Agent\Agent\Health monitorowanie. Źródło danych, które korzysta z pakietu administracyjnego jest % Program files%\Microsoft monitorowanie Agent\Agent\Health usługi State\Resources\<AutoGeneratedID > \Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
+Pakiet administracyjny nosi nazwę Microsoft.IntelligencePacks.ApplicationDependencyMonitor. Jest ona zapisywana w %Programfiles%\Microsoft Packs\ State\Management usługi Agent\Agent\Health monitorowanie. Źródło danych, które korzysta z pakietu administracyjnego jest % Program files%\Microsoft monitorowanie Agent\Agent\Health usługi State\Resources\<AutoGeneratedID > \ Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
 
 ## <a name="installation"></a>Instalacja
 ### <a name="install-the-dependency-agent-on-microsoft-windows"></a>Zainstaluj agenta zależności w systemie Microsoft Windows
@@ -75,7 +75,7 @@ Dependency Agent jest zainstalowany na komputerach z systemem Windows za pośred
 
 Aby zainstalować agenta zależności na każdym komputerze z systemem Windows, wykonaj następujące kroki:
 
-1.  Zainstaluj agenta pakietu OMS zgodnie z instrukcjami podanymi w [komputery Windows połączenia z usługą analizy dzienników na platformie Azure](../log-analytics/log-analytics-windows-agent.md).
+1.  Zainstaluj agenta pakietu OMS po jednej z metod opisanych w [zbierania danych z komputerów w środowisku z analizy dzienników](../log-analytics/log-analytics-concept-hybrid.md).
 2.  Pobierz agenta systemu Windows i uruchom go za pomocą następującego polecenia: <br>`InstallDependencyAgent-Windows.exe`
 3.  Użyj kreatora, aby zainstalować agenta.
 4.  Jeśli agent Dependency Agent się nie uruchomi, sprawdź dzienniki, aby uzyskać szczegółowe informacje o błędzie. Agentów systemu Windows katalog dziennika jest %Programfiles%\Microsoft Agent\logs zależności. 
@@ -99,7 +99,7 @@ Agent Dependency Agent jest instalowany na komputerach z systemem Linux za pomoc
  
 Aby zainstalować agenta Dependency Agent na każdym komputerze z systemem Linux, wykonaj następujące kroki:
 
-1.  Zainstaluj agenta pakietu OMS zgodnie z instrukcjami podanymi w [zbierania danych i zarządzać nimi z komputerów z systemem Linux](https://technet.microsoft.com/library/mt622052.aspx).
+1.  Zainstaluj agenta pakietu OMS po jednej z metod opisanych w [zbierania danych z komputerów w środowisku z analizy dzienników](../log-analytics/log-analytics-concept-hybrid.md).
 2.  Zainstaluj agenta systemu Linux zależności jako główny przy użyciu następującego polecenia:<br>`sh InstallDependencyAgent-Linux64.bin`
 3.  Jeśli agent Dependency Agent się nie uruchomi, sprawdź dzienniki, aby uzyskać szczegółowe informacje o błędzie. W agencie Linux katalog dziennika jest /var/opt/microsoft/dependency-agent/log.
 
@@ -143,6 +143,7 @@ sudo sh InstallDependencyAgent-Linux64.bin -s
 Możesz z łatwością wdrożyć agenta zależności przy użyciu maszyn wirtualnych platformy Azure [rozszerzenia maszyny Wirtualnej Azure](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-features).  Rozszerzenie maszyny Wirtualnej Azure można wdrożyć agenta zależności maszyn wirtualnych za pomocą skryptu programu PowerShell lub bezpośrednio w szablonie usługi Azure Resource Manager maszyny Wirtualnej.  Rozszerzenie jest dostępna dla systemów Windows (DependencyAgentWindows), jak i Linux (DependencyAgentLinux).  W przypadku wdrożenia za pośrednictwem rozszerzenia maszyny Wirtualnej Azure, agentów może automatycznie zaktualizowana do najnowszej wersji.
 
 Aby wdrożyć rozszerzenie maszyny Wirtualnej Azure za pomocą programu PowerShell, można skorzystaj z następującego przykładu:
+
 ```PowerShell
 #
 # Deploy the Dependency Agent to every VM in a Resource Group
@@ -169,7 +170,8 @@ ForEach-Object {
 }
 ```
 
-Łatwiejsze sposobem upewnij się, że Agent zależności dla wszystkich maszyn wirtualnych jest Dołącz agenta do szablonu usługi Azure Resource Manager.  Należy pamiętać, że Dependency Agent nadal zależy od agenta pakietu OMS, więc [rozszerzenia maszyny Wirtualnej agenta pakietu OMS](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-vm-extension) należy najpierw wdrożyć.  Poniższy fragment JSON można dodać do *zasobów* części szablonu.
+Łatwiejsze sposobem upewnij się, że Agent zależności dla wszystkich maszyn wirtualnych jest Dołącz agenta do szablonu usługi Azure Resource Manager.  Należy pamiętać, że Dependency Agent nadal zależy od agenta pakietu OMS, więc [rozszerzenia maszyny Wirtualnej agenta pakietu OMS](../virtual-machines/extensions/oms-linux.md) należy najpierw wdrożyć.  Poniższy fragment JSON można dodać do *zasobów* części szablonu.
+
 ```JSON
 "type": "Microsoft.Compute/virtualMachines/extensions",
 "name": "[concat(parameters('vmName'), '/DependencyAgent')]",
@@ -190,6 +192,7 @@ ForEach-Object {
 
 ## <a name="desired-state-configuration"></a>Konfiguracja żądanego stanu
 Aby wdrożyć agenta Dependency Agent za pośrednictwem usługi Desired State Configuration, możesz użyć modułu xPSDesiredStateConfiguration i fragmentu kodu podobnego do poniższego:
+
 ```
 configuration ServiceMap {
 
@@ -231,10 +234,13 @@ Administrator może również uruchomić plik %Programfiles%\Microsoft Dependenc
 ### <a name="uninstall-the-dependency-agent-on-linux"></a>Odinstalowywanie agenta Dependency Agent w systemie Linux
 Zależności agenta można odinstalować z systemem Linux przy użyciu następującego polecenia.
 <br>RHEL, CentOs lub Oracle:
+
 ```
 sudo rpm -e dependency-agent
 ```
+
 Ubuntu:
+
 ```
 sudo apt -y purge dependency-agent
 ```
@@ -242,7 +248,7 @@ sudo apt -y purge dependency-agent
 Jeśli masz problemy z Instalowanie i uruchamianie mapy usług w tej sekcji mogą pomóc. Jeśli nadal nie możesz rozwiązać problemu, skontaktuj się z Microsoft Support.
 
 ### <a name="dependency-agent-installation-problems"></a>Problemy z instalacją agenta zależności
-#### <a name="installer-asks-for-a-reboot"></a>Instalator pyta o ponowne uruchomienie komputera
+#### <a name="installer-prompts-for-a-reboot"></a>Instalator wyświetli monit o ponowne uruchomienie komputera
 Zależności agenta *zazwyczaj* nie wymaga ponownego uruchomienia komputera po instalacji i dezinstalacji. Jednak w niektórych rzadkich przypadkach, Windows Server wymaga ponownego uruchomienia, aby kontynuować instalację. Dzieje się tak, gdy zależności, zwykle Microsoft Visual C++ Redistributable, wymaga ponownego uruchomienia ze względu na zablokowany plik.
 
 #### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--codenumber-appears"></a>Komunikat "nie można zainstalować agenta zależności: bibliotek środowiska uruchomieniowego Visual Studio nie może zainstalować (kod = [Numer_kodu])" pojawia się
@@ -272,7 +278,7 @@ Jeśli instalacji agenta zależności zakończyło się pomyślnie, ale nie widz
 
         * Computer="<your computer name here>" | measure count() by Type
         
-  Czy został wyświetlony w wynikach różnych zdarzeń? To jest ostatnie dane? Jeśli tak, agenta pakietu OMS jest prawidłowego działania i komunikacji z analizy dzienników. Jeśli nie, sprawdź, czy Agent pakietu OMS na serwerze: [Rozwiązywanie problemów z usługą OMS agenta dla systemu Windows](https://support.microsoft.com/help/3126513/how-to-troubleshoot- monitoring-onboarding-issues) lub [Agent pakietu OMS dla systemu Linux Rozwiązywanie problemów z](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md).
+  Czy został wyświetlony w wynikach różnych zdarzeń? To jest ostatnie dane? Jeśli tak, agenta pakietu OMS jest prawidłowego działania i komunikacji z analizy dzienników. Jeśli nie, sprawdź, czy Agent pakietu OMS na serwerze: [Rozwiązywanie problemów z usługą OMS agenta dla systemu Windows](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues) lub [Agent pakietu OMS dla systemu Linux Rozwiązywanie problemów z](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md).
 
 #### <a name="server-appears-in-service-map-but-has-no-processes"></a>Serwer jest wyświetlany w mapy usług, ale ma żadne procesy
 Jeśli zostanie wyświetlony w mapie usługi serwera, ale go nie ma procesu lub połączenia danych, który wskazuje Dependency Agent jest zainstalowany i działa, że sterownik jądra nie został załadowany. 

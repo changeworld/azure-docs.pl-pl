@@ -8,21 +8,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/03/2018
+ms.date: 06/21/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d724de8d5252318b37ae539ba2513faaf2313a76
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 76308bbb06d6bf1cdc9147258f7c26babae371a9
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268129"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750489"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Dostosowywanie ustawień środowiska uruchomieniowego integracji usług SSIS Azure
 
-Instalacja niestandardowa interfejs środowiska uruchomieniowego integracji usług SSIS Azure udostępnia interfejs dodać własne kroków konfiguracji podczas inicjowania obsługi administracyjnej lub zmiana konfiguracji sieci IR. Azure SSIS Instalacja niestandardowa umożliwia zmianę domyślnego, konfiguracji lub środowisku (na przykład do uruchomienia dodatkowych usług systemu Windows) lub instalowania dodatkowych składników (na przykład, zestawy, sterowniki lub rozszerzenia) w każdym węźle sieci podczerwieni Azure SSIS.
+Instalacja niestandardowa interfejs środowiska uruchomieniowego integracji usług SSIS Azure udostępnia interfejs dodać własne kroków konfiguracji podczas inicjowania obsługi administracyjnej lub zmiana konfiguracji sieci IR. Azure SSIS Instalacja niestandardowa umożliwia alter domyślnej konfiguracji lub środowisku (na przykład do uruchomienia dodatkowych usług systemu Windows lub utrwalić poświadczenia dostępu do udziałów plików) lub zainstalowanie dodatkowych składników (na przykład, zestawy, sterowniki lub rozszerzenia) w każdym węźle sieci podczerwieni Azure SSIS.
 
 Skonfiguruj ustawienia niestandardowe poprzez przygotowanie skrypt i skojarzone z nią pliki i przekazywanie ich do kontenera obiektów blob na koncie magazynu Azure. Podaj dostępu sygnatury dostępu Współdzielonego zasobu identyfikator URI (Uniform) dla kontenera programu obsługi administracyjnej lub ponownie skonfigurować Twoje podczerwieni Azure SSIS. Każdy węzeł z IR Azure SSIS następnie pobiera skrypt i skojarzone z nią pliki z Twojej kontenera i uruchamia niestandardowych ustawień z podwyższonym poziomem uprawnień. Po zakończeniu instalacji niestandardowej, każdy węzeł przekazuje standardowe dane wyjściowe wykonania a inne dzienniki do Twojej kontenera.
 
@@ -87,7 +87,10 @@ Aby dostosować Twojej IR Azure SSIS, należy następujących czynności:
 
        ![Pobierz sygnatura dostępu współdzielonego dla kontenera](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image6.png)
 
-    7.  Tworzenie identyfikatora URI połączenia SAS dla kontenera sieci i czas wygaśnięcia wystarczająco długi, a odczytu + zapisu + listę uprawnień. Potrzebujesz identyfikatora URI połączenia SAS, aby pobrać i uruchamiania skryptu instalacji niestandardowej i skojarzone z nią pliki w przypadku dowolnego węzła sieci IR Azure SSIS zostanie odtworzone z obrazu. Musisz mieć uprawnienia zapisu do przekazania dzienniki wykonywania instalacji.
+    7.  Tworzenie identyfikatora URI połączenia SAS dla kontenera sieci i czas wygaśnięcia wystarczająco długi, a odczytu + zapisu + listę uprawnień. Potrzebujesz identyfikatora URI połączenia SAS, aby pobrać i uruchamiania skryptu instalacji niestandardowej i skojarzone z nią pliki w przypadku dowolnego węzła sieci IR Azure SSIS jest odtworzyć z obrazu/ponowne uruchomienie. Musisz mieć uprawnienia zapisu do przekazania dzienniki wykonywania instalacji.
+
+        > [!IMPORTANT]
+        > Upewnij się, że identyfikator URI sygnatury dostępu Współdzielonego nie wygasa i Instalacja niestandardowa zasoby są zawsze dostępne podczas cały cykl życia z IR Azure SSIS, z tworzenia do usunięcia, zwłaszcza, jeśli należy regularnie zatrzymywania i uruchamiania programu IR Azure SSIS w tym okresie.
 
        ![Generowanie sygnatura dostępu współdzielonego dla kontenera](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image7.png)
 
@@ -124,7 +127,7 @@ Aby dostosować Twojej IR Azure SSIS, należy następujących czynności:
 
     c. Wybierz kontener połączonych w publicznej wersji zapoznawczej, a następnie kliknij dwukrotnie ikonę `CustomSetupScript` folderu. W tym folderze są następujące elementy:
 
-       1. A `Sample` folder zawierający niestandardowe Instalatora, aby zainstalować podstawowe zadania w każdym węźle sieci IR. Azure SSIS Zadanie nie działa jednak uśpienia przez kilka sekund. Folder zawiera także `gacutil` folder, który zawiera `gacutil.exe`.
+       1. A `Sample` folder zawierający niestandardowe Instalatora, aby zainstalować podstawowe zadania w każdym węźle sieci IR. Azure SSIS Zadanie nie działa jednak uśpienia przez kilka sekund. Folder zawiera także `gacutil` folder, który zawiera `gacutil.exe`. Ponadto `main.cmd` zawiera komentarze, aby utrwalić poświadczenia dostępu do udziałów plików.
 
        2. A `UserScenarios` folder, który zawiera kilka niestandardowych ustawień dla scenariuszy rzeczywistego użytkownika.
 
@@ -138,7 +141,7 @@ Aby dostosować Twojej IR Azure SSIS, należy następujących czynności:
 
        3. `EXCEL` Folder zawierający niestandardowe Instalatora, aby zainstalować zestawy open source (`DocumentFormat.OpenXml.dll`, `ExcelDataReader.DataSet.dll`, i `ExcelDataReader.dll`) w każdym węźle sieci podczerwieni Azure SSIS.
 
-       4. `MSDTC` Folder zawierający niestandardowe ustawienia do modyfikowania konfiguracji sieci i zabezpieczeń dla wystąpienia koordynatora transakcji rozproszonych (MSDTC) na każdym węźle z podczerwieni Azure SSIS.
+       4. `MSDTC` Folder zawierający niestandardowe ustawienia do modyfikowania konfiguracji sieci i zabezpieczeń dla usługi Koordynator transakcji rozproszonych (MSDTC) w każdym węźle Twojej podczerwieni Azure SSIS. Aby upewnić się, że usługa MSDTC została uruchomiona, Dodaj wykonania zadanie procesu na początku przepływu sterowania w pakietach można wykonać następujące polecenie: `%SystemRoot%\system32\cmd.exe /c powershell -Command "Start-Service MSDTC"` 
 
        5. `ORACLE ENTERPRISE` Folder, który zawiera skrypt instalacji niestandardowej (`main.cmd`) i pliku konfiguracji instalacji dyskretnej (`client.rsp`) do zainstalowania sterownika Oracle OCI w każdym węźle sieci Azure SSIS IR Enterprise Edition. Ta konfiguracja pozwala używać Menedżera połączeń Oracle, źródłowym i docelowym. Po pierwsze, Pobierz najnowszego klienta Oracle — na przykład `winx64_12102_client.zip` — z [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) , a następnie przekazać go razem z `main.cmd` i `client.rsp` do Twojej kontenera. Jeśli używasz nazwę nawiązać połączenia z programem Oracle, należy pobrać `tnsnames.ora`, edytowania i przekaż go do Twojego kontenera, mogą zostać skopiowane do folderu instalacji programu Oracle podczas instalacji.
 

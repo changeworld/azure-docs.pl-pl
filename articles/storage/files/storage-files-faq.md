@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 05/31/2018
 ms.author: renash
-ms.openlocfilehash: 9121726cc8500da87cf71cb1ca3035e6cc5a303b
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: c78138fa06da4d83774f9a2270263a48d404b17a
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294094"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751859"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Pliki Azure — często zadawane pytania (FAQ)
 [Usługa pliki Azure](storage-files-introduction.md) oferuje pełni zarządzanych udziałów plików w chmurze, które są dostępne za pośrednictwem standardu branżowego [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można zainstalować w chmurze lub lokalnie wdrożeń systemu Windows, Linux i macOS jednocześnie. Możesz również buforować udziały plików platformy Azure na komputerach z systemem Windows Server przy użyciu synchronizacji plików Azure (wersja zapoznawcza) zapewniania szybkiego dostępu bliski gdzie dane są używane.
@@ -227,7 +227,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania na temat funkcji us�
 
 * <a id="data-compliance-policies"></a>
 **Jakie zasady zgodności danych obsługuje plików Azure?**  
-   Usługa pliki Azure działa w oparciu o takiej samej architekturze magazynu, która jest używana w innych usługach magazynu w usłudze Azure Storage. Usługa pliki Azure stosuje się te same zasady zgodności danych, które są używane w innych usług magazynu Azure. Aby uzyskać więcej informacji o zgodności danych usługi Azure Storage, można pobrać i odwoływać się do [dokumentu ochrony danych Microsoft Azure](http://go.microsoft.com/fwlink/?LinkID=398382&clcid=0x409)i przejdź do [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/default.aspx).
+   Usługa pliki Azure działa w oparciu o takiej samej architekturze magazynu, która jest używana w innych usługach magazynu w usłudze Azure Storage. Usługa pliki Azure stosuje się te same zasady zgodności danych, które są używane w innych usług magazynu Azure. Aby uzyskać więcej informacji o zgodności danych usługi Azure Storage, można pobrać i odwoływać się do [dokumentu ochrony danych Microsoft Azure](http://go.microsoft.com/fwlink/?LinkID=398382&clcid=0x409)i przejdź do [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx).
 
 ## <a name="on-premises-access"></a>Dostęp do lokalnego
 * <a id="expressroute-not-required"></a>

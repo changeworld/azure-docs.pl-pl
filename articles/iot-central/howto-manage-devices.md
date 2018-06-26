@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: b0772e3186c86239c773222a2b2e8d602a46aa52
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: cf803c03d266f2a400e47fc551dea62936456177
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300598"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937622"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Zarządzanie urządzeniami w aplikacji Azure IoT centralnej
 
@@ -96,7 +96,7 @@ Po zarejestrowaniu urządzeń przez uruchomienie importu w obszarze **nieskojarz
 1. Wybrane urządzenia zostaną przeniesione na podstawie szablonu odpowiednich urządzeń.
 
  >   [!NOTE] 
-    Gdy urządzenie został skojarzony z szablonem, nie można zmienić ani skojarzony z innego szablonu.
+    Gdy urządzenie został skojarzony z szablonem nie może być Brak skojarzenia ani skojarzony z innego szablonu.
 
 ## <a name="export-devices"></a>Eksportuj urządzeń
 

@@ -1,5 +1,5 @@
 ---
-title: Utworzyć kopię zapasową farmy programu SharePoint na stosie Azure na platformie Azure
+title: Wykonaj kopię zapasową farmy programu SharePoint na stosie Azure
 description: Serwer kopii zapasowej Azure umożliwia tworzenie kopii zapasowej i przywracanie danych programu SharePoint na stosie Azure. Ten artykuł zawiera informacje, aby skonfigurować farmę programu SharePoint, tak aby żądanych danych mogą być przechowywane na platformie Azure. Chronione dane SharePoint można przywrócić z dysku lub z platformy Azure.
 services: backup
 author: pvrk
@@ -8,18 +8,18 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: pullabhk
-ms.openlocfilehash: da8421441863c8d7f840630614f4f35c16f184d5
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 309e817426fff1eb877ab02ae9aa16ddc8f5cf16
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35249344"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751901"
 ---
-# <a name="back-up-a-sharepoint-farm-on-azure-stack-to-azure"></a>Utworzyć kopię zapasową farmy programu SharePoint na stosie Azure na platformie Azure
+# <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Wykonaj kopię zapasową farmy programu SharePoint na stosie Azure
 Możesz tworzyć kopie zapasowe farmy programu SharePoint na stos Azure Microsoft Azure przy użyciu usługi Microsoft Azure kopii zapasowej serwera (MABS) w znacznie tak samo jak wykonanie kopii zapasowej innych źródeł danych. Kopia zapasowa Azure zapewnia elastyczność w harmonogram tworzenia kopii zapasowych, aby utworzyć codziennie, co tydzień, miesięcznego lub rocznego kopii zapasowej wskazuje i udostępnia opcje zasad przechowywania dla różnych punktów kopii zapasowej. Zapewnia także możliwość przechowywania kopii dysku lokalnym dla szybka celami czasu odzyskiwania (RTO) i Zapisz kopie Azure ekonomiczny, długoterminowego przechowywania.
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>Obsługiwane wersje programu SharePoint, a powiązane scenariusze ochrony
-Kopia zapasowa Azure dla programu DPM obsługuje następujące scenariusze:
+Kopia zapasowa Azure dla MABS obsługuje następujące scenariusze:
 
 | Obciążenie | Wersja | Wdrażanie SharePoint | Ochrona i odzyskiwanie |
 | --- | --- | --- | --- | --- | --- |
@@ -41,9 +41,6 @@ Dla każdych 10 milionów elementów w farmie musi istnieć co najmniej 2 GB mie
 Serwer kopii zapasowej systemu Azure działa jako konto systemu lokalnego. Aby utworzyć kopię zapasową bazy danych programu SQL Server, MABS wymaga uprawnień administratora na tym koncie dla serwera, na którym działa program SQL Server. Ustaw Zarządzanie NT\System *sysadmin* na serwerze, na którym działa program SQL Server przed jego kopię zapasową.
 
 Jeśli farma programu SharePoint zawiera bazy danych programu SQL Server, które skonfigurowano z aliasami programu SQL Server, należy zainstalować składniki klienta programu SQL Server na serwerze frontonu sieci Web, które będzie chronione MABS.
-
-### <a name="sharepoint-server"></a>Oprogramowanie SharePoint Server
-Gdy wydajność zależy od wielu czynników, takich jak rozmiar farmy programu SharePoint, stanowią ogólne wskazówki MABS jeden może chronić farmy programu SharePoint 25 TB.
 
 ### <a name="whats-not-supported"></a>Jakie operacje nie są obsługiwane
 * MABS, który zapewnia ochronę farmy programu SharePoint nie chroni indeksy wyszukiwania lub bazy danych aplikacji usługi. Należy skonfigurować osobno ochrony tych baz danych.

@@ -5,7 +5,7 @@
 > 
 > 
 
-1. Przejdź do [konsoli usługi Firebase](https://console.firebase.google.com/) i zaloguj się przy użyciu poświadczeń konta Google.
+1. Przejdź do [konsoli Firebase](https://console.firebase.google.com/) i zaloguj się przy użyciu poświadczeń konta Google.
 2. Kliknij przycisk **Utwórz nowy projekt**, aby utworzyć nowy projekt. Można również kliknąć opcję **Importuj projekt Google**, aby zaimportować istniejący projekt. 
 3. Jeśli wybrano opcję utworzenia nowego projektu, należy uzupełnić pole **Nazwa projektu** i wybrać opcję **Kraj/Region**.
 4. Na stronie projektu kliknij przycisk koła zębatego **Ustawienia** w lewym górnym rogu. W menu kliknij opcję **Ustawienia projektu**.  

@@ -10,21 +10,21 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 84734b89aeb95745d237c062e5654afc4d49f966
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
-ms.translationtype: HT
+ms.openlocfilehash: 00f1dc8c9cffbff240f96fed3d2f09888c041301
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711148"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754592"
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Usługa Azure Active Directory B2C: Dostosowywanie interfejsu użytkownika (UI) usługi Azure AD B2C
 
 Środowisko użytkownika jest podstawowym w aplikacji klientów.  Zwiększ bazę swoich klientów przez obsługuje tworzenie użytkownika, korzystając z wygląd i działanie oznakowanie. Usługa Azure Active Directory B2C (Azure AD B2C) umożliwia dostosowanie edycji profilu rejestracji, logowania, i stron z formantem pikseli idealny resetowania hasła.
 
 > [!NOTE]
-> Funkcja dostosowania interfejsu użytkownika strony opisane w tym artykule nie dotyczy tylko zasad logowania, jego towarzyszący stronę resetowania hasła i sprawdzania wiadomości e-mail.  Użyj tych funkcji [firmowe funkcji](../active-directory/customize-branding.md) zamiast tego.
+> Funkcja dostosowania interfejsu użytkownika strony opisane w tym artykule nie dotyczy tylko zasad logowania, jego towarzyszący stronę resetowania hasła i sprawdzania wiadomości e-mail.  Użyj tych funkcji [firmowe funkcji](../active-directory/fundamentals/customize-branding.md) zamiast tego.
 >
-> Podobnie jeśli użytkownik intiates edytowanie profilu zasad *przed* zalogowaniu użytkownik zostanie przekierowany do strony, który można dostosować za pomocą [firmowe funkcji](../active-directory/customize-branding.md).
+> Podobnie jeśli użytkownik intiates edytowanie profilu zasad *przed* zalogowaniu użytkownik zostanie przekierowany do strony, który można dostosować za pomocą [firmowe funkcji](../active-directory/fundamentals/customize-branding.md).
 
 W tym artykule omówiono następujące tematy:
 
@@ -214,7 +214,7 @@ Ta strona zawiera formularza dla lokalnego konta tworzenia konta na podstawie ad
 </div>
 ```
 
-### <a name="fragment-inserted-into-the-social-account-sign-up-page"></a>Fragment do "" kont społecznościowych strony zapisów"
+### <a name="fragment-inserted-into-the-social-account-sign-up-page"></a>Fragment do "strony rejestracji społecznościowych konta"
 
 Ta strona może pojawić się podczas rejestracji przy użyciu istniejącego konta od dostawcy tożsamości społecznościowych, takich jak Facebook lub Google +.  Jest używany podczas dodatkowe informacje muszą zostać pobrane od użytkownika końcowego za pomocą formularza tworzenia konta. Ta strona jest podobne do konta lokalnego strony zapisów (wyświetlone w poprzedniej sekcji) z wyjątkiem pól wprowadzania hasła.
 
@@ -315,7 +315,7 @@ Na tej stronie użytkowników można sprawdzić ich numery telefonów (przy uży
 </div>
 ```
 
-### <a name="fragment-inserted-into-the-error-page"></a>Fragment do "" strona błędu"
+### <a name="fragment-inserted-into-the-error-page"></a>Fragment wstawione na stronę"błąd"
 
 ```HTML
 <div id="api" class="error-page-content" data-name="GlobalException">

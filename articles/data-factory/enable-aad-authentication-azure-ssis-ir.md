@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 06/04/2018
+ms.date: 06/21/2018
 ms.author: douglasl
-ms.openlocfilehash: 5fce1a3b8370ce49a522f41749795362e1bf1f9b
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 93d3e25957fb1f04400fa78423a5658d32f7d5fd
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757281"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36749722"
 ---
 # <a name="enable-azure-active-directory-authentication-for-the-azure-ssis-integration-runtime"></a>Włącz uwierzytelnianie usługi Azure Active Directory dla środowiska uruchomieniowego integracji usług SSIS Azure
 
@@ -53,7 +53,7 @@ Można użyć istniejącej grupy usługi Azure AD, lub Utwórz nową przy użyci
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  Dodaj MSI fabryki danych do grupy. Możesz wykonać [tożsamości usługi fabryka danych Azure](https://docs.microsoft.com/en-us/azure/data-factory/data-factory-service-identity) można uzyskać Identyfikatora tożsamości usługi (na przykład 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc).
+3.  Dodaj MSI fabryki danych do grupy. Możesz wykonać [tożsamości usługi fabryka danych Azure](https://docs.microsoft.com/en-us/azure/data-factory/data-factory-service-identity) można pobrać Identyfikatora podmiotu zabezpieczeń tożsamości usługi (na przykład 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, ale w tym celu nie należy używać Identyfikatora aplikacji tożsamości usługi).
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -97,7 +97,7 @@ W tym kroku dalej należy [Microsoft SQL Server Management Studio](https://docs.
 
 4.  W **nazwy użytkownika** wprowadź nazwę konta usługi Azure AD, które można ustawić jako administratora — na przykład testuser@xxxonline.com.
 
-5.  Wybierz **połączyć**. Zakończenie procesu logowania.
+5.  Wybierz **Connect**. Zakończenie procesu logowania.
 
 6.  W **Eksplorator obiektów**, rozwiń węzeł **baz danych** -> folderów systemowych baz danych.
 

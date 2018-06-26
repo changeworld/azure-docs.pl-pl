@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: d1282fa005d609394dacc818c2cb729f580bc3fc
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: d48828c8d2ec439f389fe4eddabb59599cc1680b
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263494"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752830"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Archiwum dzienników diagnostycznych platformy Azure
 
@@ -74,7 +74,7 @@ Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-
 | Kategorie |Nie |Rozdzielana przecinkami lista kategorii dziennika, aby włączyć. |
 | Enabled (Włączony) |Yes |Wartość logiczna wskazująca, czy diagnostycznych są włączone lub wyłączone w przypadku tego zasobu. |
 | RetentionEnabled |Nie |Wartość logiczna wskazująca, czy zasady przechowywania są włączone dla tego zasobu. |
-| retentionInDays |Nie |Liczba dni, dla których mają być przechowywane zdarzeń od 1 do 2147483647. Wartość zero przechowuje dzienniki nieskończoność. |
+| RetentionInDays |Nie |Liczba dni, dla których mają być przechowywane zdarzeń od 1 do 2147483647. Wartość zero przechowuje dzienniki nieskończoność. |
 
 ## <a name="archive-diagnostic-logs-via-the-azure-cli-20"></a>Dzienniki diagnostyczne archiwum za pośrednictwem 2.0 interfejsu wiersza polecenia platformy Azure
 
@@ -100,7 +100,7 @@ Dodatkowe kategorie można dodać do dzienników diagnostycznych, dodając słow
 
 ## <a name="archive-diagnostic-logs-via-the-rest-api"></a>Dzienniki diagnostyczne archiwum za pośrednictwem interfejsu API REST
 
-[Zobacz ten dokument](https://docs.microsoft.com/rest/api/monitor/servicediagnosticsettings) informacji w sposób konfigurowania ustawienie diagnostyczne przy użyciu interfejsu API REST Azure monitora.
+[Zobacz ten dokument](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings) informacji w sposób konfigurowania ustawienie diagnostyczne przy użyciu interfejsu API REST Azure monitora.
 
 ## <a name="schema-of-diagnostic-logs-in-the-storage-account"></a>Schemat dzienników diagnostycznych na koncie magazynu
 

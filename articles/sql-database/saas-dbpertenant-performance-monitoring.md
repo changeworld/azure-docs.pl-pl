@@ -10,18 +10,18 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: bc24465fa0efc9c473a78503d18200ea5b361920
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d8e260b8dabb4c6823d59374a7b8661e024f1b3d
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644610"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752275"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Monitorowanie i zarządzanie nimi wydajności bazy danych Azure SQL i pul w wielodostępnych aplikacji SaaS
 
 W tym samouczku są przedstawione kilka kluczowych scenariuszy zarządzania używana w aplikacji SaaS. Za pomocą generatora obciążenia, aby symulować działanie dla wszystkich baz danych dzierżawy, wbudowaną funkcję monitorowania oraz alertów funkcje bazy danych SQL i pule elastyczne przedstawiono.
 
-Aplikacja Wingtip biletów SaaS bazy danych dla dzierżawy korzysta z modelu danych pojedynczej dzierżawy, gdzie każda właściwość (dzierżawcy) ma własne bazy danych. Podobnie jak w przypadku wielu innych aplikacji SaaS, oczekiwany wzorzec obciążenia dzierżawy charakteryzuje się nieprzewidywalnością i sporadycznością występowania. Innymi słowy, sprzedaż biletów może nastąpić w dowolnej chwili. Aby jak najlepiej wykorzystać ten typowy wzorzec korzystania z bazy danych, bazy danych dzierżaw zostały wdrożone w elastycznych pulach baz danych. Elastyczne pule umożliwiają optymalizację kosztu rozwiązania dzięki udostępnieniu zasobów pomiędzy wieloma bazami danych. W przypadku tego typu wzorca ważne jest, aby monitorować użycie zasobów bazy danych i puli, co ma na celu rozsądne równoważenie obciążenia między pulami. Należy także upewnić się, że pojedyncze bazy danych posiadają odpowiednie zasoby, i że pule nie zbliżają się do swoich limitów liczby jednostek [eDTU](sql-database-what-is-a-dtu.md). W tym samouczku przedstawiono metody monitorowania baz danych i pul oraz zarządzania nimi, a także wykonywanie akcji naprawczych w odpowiedzi na wahania obciążenia.
+Aplikacja Wingtip biletów SaaS bazy danych dla dzierżawy korzysta z modelu danych pojedynczej dzierżawy, gdzie każda właściwość (dzierżawcy) ma własne bazy danych. Podobnie jak w przypadku wielu innych aplikacji SaaS, oczekiwany wzorzec obciążenia dzierżawy charakteryzuje się nieprzewidywalnością i sporadycznością występowania. Innymi słowy, sprzedaż biletów może nastąpić w dowolnej chwili. Aby jak najlepiej wykorzystać ten typowy wzorzec korzystania z bazy danych, bazy danych dzierżaw zostały wdrożone w elastycznych pulach baz danych. Elastyczne pule umożliwiają optymalizację kosztu rozwiązania dzięki udostępnieniu zasobów pomiędzy wieloma bazami danych. W przypadku tego typu wzorca ważne jest, aby monitorować użycie zasobów bazy danych i puli, co ma na celu rozsądne równoważenie obciążenia między pulami. Należy także upewnić się, że pojedyncze bazy danych posiadają odpowiednie zasoby, i że pule nie zbliżają się do swoich limitów liczby jednostek [eDTU](sql-database-service-tiers.md#what-are-database-transaction-units-dtus). W tym samouczku przedstawiono metody monitorowania baz danych i pul oraz zarządzania nimi, a także wykonywanie akcji naprawczych w odpowiedzi na wahania obciążenia.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -42,7 +42,7 @@ Do wykonania zadań opisanych w tym samouczku niezbędne jest spełnienie nastę
 
 Zarządzanie wydajnością bazy danych polega na zbieraniu danych dotyczących wydajności i analizowaniu ich, a następnie reagowaniu na te dane przez dostosowanie parametrów w celu zachowania akceptowalnego czasu odpowiedzi aplikacji. W przypadku hostowania wielu dzierżaw elastyczne pule baz danych stanowią ekonomiczny sposób udostępniania zasobów i zarządzania nimi dla grupy baz danych obciążanych w nieprzewidywalny sposób. Przy pewnych wzorcach obciążenia korzyści mogą się pojawić przy zarządzaniu w puli zaledwie dwoma bazami danych S3.
 
-![Diagram aplikacji](./media/saas-dbpertenant-performance-monitoring/app-diagram.png)
+![diagram aplikacji](./media/saas-dbpertenant-performance-monitoring/app-diagram.png)
 
 Pul i baz danych w puli, powinny być monitorowane w celu zapewnienia, że te komputery pozostaną w dopuszczalnych zakresach wydajności. Dostrajania konfiguracji puli na potrzeby agregacji obciążenia wszystkich baz danych, zapewnienie odpowiedniej dla obciążenia ogólną jednostek Edtu puli. Dostosuj minimalne i maksymalne wartości eDTU dla bazy danych do wartości odpowiadających wymaganiom konkretnych aplikacji.
 

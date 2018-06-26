@@ -1,6 +1,6 @@
 ---
-title: Zabezpieczenia usługi komunikacji zdalnej komunikacji w sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft
-description: Informacje o sposobie zabezpieczania komunikacji między usługami zdalnymi, na podstawie usługi dla niezawodnych usług, które są uruchomione w klastrze usługi sieć szkieletowa usług Azure.
+title: Bezpieczna komunikacja komunikacji zdalnej usługi w języku C# w sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft
+description: Informacje o sposobie zabezpieczania komunikacji między usługami zdalnymi, na podstawie usługi C# niezawodnych usług uruchomionych w klastrze usługi sieć szkieletowa usług Azure.
 services: service-fabric
 documentationcenter: .net
 author: suchiagicha
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: cd7211ecda61ab2cca0f97e292d9ce2c47ed6933
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d185be26633178d8b3f147453b4c48eb77d7e425
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210277"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753527"
 ---
-# <a name="secure-service-remoting-communications-for-a-service"></a>Bezpieczna komunikacja komunikacji zdalnej usługi dla usługi
+# <a name="secure-service-remoting-communications-in-a-c-service"></a>Bezpieczna komunikacja komunikacji zdalnej usługi w usłudze C#
 > [!div class="op_single_selector"]
 > * [C# w systemie Windows](service-fabric-reliable-services-secure-communication.md)
 > * [Java w systemie Linux](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
 
-Zabezpieczeń jest jednym z najważniejszych aspektów komunikacji. Struktura aplikacji niezawodne usługi zapewnia kilka stosy wbudowane komunikacji i narzędzi, których można użyć w celu poprawy bezpieczeństwa. Ten artykuł zawiera informacje o sposób poprawiania zabezpieczeń podczas korzystania z usług zdalnych.
+Zabezpieczeń jest jednym z najważniejszych aspektów komunikacji. Struktura aplikacji niezawodne usługi zapewnia kilka stosy wbudowane komunikacji i narzędzi, których można użyć w celu poprawy bezpieczeństwa. W tym artykule omówiono sposób poprawiania zabezpieczeń podczas korzystania z usługi komunikacji zdalnej w usłudze C#. Opiera się na istniejącą [przykład](service-fabric-reliable-services-communication-remoting.md) który wyjaśnia, jak skonfigurować komunikację zdalną dla niezawodne usługi napisane w języku C#. 
 
-Używamy istniejącej [przykład](service-fabric-reliable-services-communication-remoting.md) który wyjaśnia, jak skonfigurować komunikację zdalną dla niezawodne usługi. Aby ułatwić zabezpieczanie usługi podczas korzystania z usługi komunikacji zdalnej, wykonaj następujące kroki:
+Aby ułatwić zabezpieczanie usługi podczas korzystania z komunikacji zdalnej usługi z usługami C#, wykonaj następujące kroki:
 
 1. Tworzenie interfejsu `IHelloWorldStateful`, który definiuje metody, które będą dostępne dla zdalnego wywołania procedury w usłudze. Usługa będzie używać `FabricTransportServiceRemotingListener`, która jest zadeklarowana w `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime` przestrzeni nazw. Jest to `ICommunicationListener` implementację, która zapewnia możliwości komunikacji zdalnej.
 
@@ -94,7 +94,7 @@ Używamy istniejącej [przykład](service-fabric-reliable-services-communication
        ```
    2. Podaj je za pomocą [pakietu konfiguracji](service-fabric-application-and-service-manifests.md):
 
-       Dodaj `TransportSettings` sekcji w pliku settings.xml.
+       Dodaj nazwane `TransportSettings` sekcji w pliku settings.xml.
 
        ```xml
        <Section Name="HelloWorldStatefulTransportSettings">

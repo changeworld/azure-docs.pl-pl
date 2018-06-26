@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: cherylmc
-ms.openlocfilehash: 5d01f2e402e4b793274761703ec3ca1ea3ff8164
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 10d4779d05d95822ffd487db1ce8992d199c495f
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30185989"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753454"
 ---
-# <a name="verifying-expressroute-connectivity"></a>Sprawdzanie połączenia ExpressRoute
+# <a name="verifying-expressroute-connectivity"></a>Weryfikowanie połączenia usługi ExpressRoute
 ExpressRoute, który rozciąga się sieci lokalnej do firmy Microsoft w chmurze prywatnej połączenie, które umożliwiają to dostawca połączenia, obejmuje następujące trzy strefy odrębnych sieci:
 
 -   Sieci klienta
@@ -174,7 +174,7 @@ Po zakończeniu dostawcę usługi obwodu ExpressRoute inicjowania obsługi routi
 ### <a name="verification-via-the-azure-portal"></a>Weryfikacja za pomocą portalu Azure
 
 >[!NOTE]
->Jeśli warstwy 3 jest udostępniany przez dostawcę usług i komunikacji równorzędnych znajdują się w portalu, odświeżanie konfiguracji obwodu za pomocą przycisku Odśwież na protal. Ta operacja zostanie przeprowadzona odpowiednią konfigurację routingu na obwodu. 
+>Jeśli warstwy 3 jest udostępniany przez dostawcę usług i komunikacji równorzędnych znajdują się w portalu, należy odświeżyć konfiguracji obwód, używając przycisku Odśwież w portalu. Ta operacja zostanie przeprowadzona odpowiednią konfigurację routingu na obwodu. 
 >
 >
 

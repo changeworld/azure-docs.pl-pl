@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 23bbbe9cf86268f93ae1f8fcec9303efa8a673de
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 1566cf2b61749121c4eaff5a32b0a940f3341f7e
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796720"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751782"
 ---
 # <a name="understanding-policy-effects"></a>Opis skutków zasad
 
@@ -90,7 +90,7 @@ Przykład 3: Pojedynczy **pól i wartości** łączyć się przy użyciu [alias]
 "then": {
     "effect": "append",
     "details": [{
-        "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]",
+        "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
         "value": [{
             "action": "Allow",
             "value": "134.5.0.0/21"
@@ -304,7 +304,7 @@ Przykład: Oblicza baz danych serwera SQL, aby określić, czy transparentDataEn
 
 ## <a name="layering-policies"></a>Tworzenie warstw zasad
 
-Zasób może mieć wpływ na wiele przydziałów. Te przydziały można w tym samym zakresie (określonego zasobu, grupy zasobów, subskrypcji lub grupy zarządzania) lub w innych zakresach. Każdy z tych przydziałów jest również mogące mieć wpływ różne zdefiniowane. Niezależnie od tego niezależnie od siebie oceny warunku i efekt dla każdej z zasad (przypisane bezpośrednio lub w ramach inicjatywy). Na przykład jeśli zasady 1 zawiera warunek, który ogranicza lokalizacji dla subskrypcji A utworzenie w "westus" efekt Odmów i zasad 2, która ogranicza zasobów w zasobie grupy B (czyli w subskrypcji A) utworzenie w "eastus" z inspekcji wpływ mają przypisaną, wynik wynikowy będzie:
+Zasób może mieć wpływ na wiele przydziałów. Te przydziały można w tym samym zakresie (określonego zasobu, grupy zasobów, subskrypcji lub grupy zarządzania) lub w innych zakresach. Każdy z tych przydziałów jest również mogące mieć wpływ różne zdefiniowane. Niezależnie od tego niezależnie od siebie oceny warunku i efekt dla każdej z zasad (przypisane bezpośrednio lub w ramach inicjatywy). Na przykład jeśli zasady 1 zawiera warunek, który ogranicza lokalizacji zasobów subskrypcji A można tworzyć tylko w "westus" z mocą Odmów i zasady 2 ma być warunek, który ogranicza tylko lokalizacja zasobu dla grupy zasobów B (czyli w subskrypcji A) do utworzone w "eastus" w tym celu inspekcji są przypisane do wyniku wynikowy będzie::
 
 - Żaden zasób już w grupie zasobów B w "eastus" jest zgodne z zasadami 2, ale jest oznaczony jako niezgodne z zasadami 1.
 - Żaden zasób już w grupie zasobów B nie znajduje się w "eastus" zostaną oznaczone jako niezgodne z zasadami 2 i może być również oznaczone jako nie zgodne z zasadami 1, jeśli nie "westus".
@@ -324,4 +324,4 @@ Jak każdego przydziału jest szacowana osobno, nie ma możliwości zasobów do 
 
 Teraz, gdy masz lepiej zrozumieć zasady definicji efekty, przejrzyj Przykłady zasad:
 
-- Przejrzyj więcej przykładów w [Przykłady zasad Azure](json-samples.md).
+- Zobacz więcej przykładów w witrynie [Przykłady dla usługi Azure Policy](json-samples.md).

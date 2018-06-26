@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 8545b092adf939520e15d8118e60f906b59bf92f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ead3d9be5b23d53cdc0ae9ffa3baec4a3cd74b8b
+ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232459"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36946112"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Marketplace dostępnych elementów dla usługi Azure stosu
 
@@ -91,8 +91,8 @@ Microsoft Azure stosu obsługuje następujące maszyny wirtualne Azure Marketpla
 | ![Na podstawie centOS 6,9](media/azure-stack-marketplace-azure-items/roguewave.png) | [Na podstawie centOS 6,9](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased69) | Tej dystrybucji systemu Linux jest oparta na CentOS i są dostarczane przez nieautoryzowanego oprogramowania Wave. | Nieautoryzowanego oprogramowania Wave (dawniej OpenLogic)  |
 | ![7.4 na podstawie centOS](media/azure-stack-marketplace-azure-items/roguewave.png) | [7.4 na podstawie centOS](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased74) | Tej dystrybucji systemu Linux jest oparta na CentOS i są dostarczane przez nieautoryzowanego oprogramowania Wave. | Nieautoryzowanego oprogramowania Wave (dawniej OpenLogic) |
 | ![Na podstawie centOS LVM 7.4](media/azure-stack-marketplace-azure-items/roguewave.png) | [Na podstawie centOS LVM 7.4](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased74LVM) | Tej dystrybucji systemu Linux jest oparta na CentOS i są dostarczane przez nieautoryzowanego oprogramowania Wave. | Nieautoryzowanego oprogramowania Wave (dawniej OpenLogic) |
-| ![SLES 11 Z DODATKIEM SP4 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 11 Z DODATKIEM SP4 (BYOS) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSELinuxEnterpriseServer11SP4BringYourOwnSubscription) | SUSE Linux Enterprise Server 11 SP4. | SUSE |
-| ![SLES 12 Z DODATKIEM SP3 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 12 Z DODATKIEM SP3 (BYOS) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSELinuxEnterpriseServer12SP3BringYourOwnSubscription) | SUSE Linux Enterprise Server 12 SP3. | SUSE |
+| ![SLES 11 Z DODATKIEM SP4 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 11 Z DODATKIEM SP4 (BYOS) ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SUSE.SLES?tab=PlansAndPrice) | SUSE Linux Enterprise Server 11 SP4. | SUSE |
+| ![SLES 12 Z DODATKIEM SP3 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 12 Z DODATKIEM SP3 (BYOS) ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SUSE.SLES?tab=PlansAndPrice) | SUSE Linux Enterprise Server 12 SP3. | SUSE |
 
 ## <a name="third-party-byol-free-and-trial-images-and-solution-templates"></a>Obrazy BYOL trzecich, wolnej i wersji próbnej i szablony rozwiązań
 

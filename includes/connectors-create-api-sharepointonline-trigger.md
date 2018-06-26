@@ -1,12 +1,12 @@
 W tym przykładzie, I opisano sposób użycia **usługi SharePoint Online — po utworzeniu nowego elementu** trigger, aby inicjować przepływ pracy aplikacji logiki, podczas tworzenia nowego elementu na liście programu SharePoint Online.
 
 > [!NOTE]
-> Zostanie wyświetlony monit do logowania się do konta programu SharePoint, jeśli nie została jeszcze utworzona *połączenia* do usługi SharePoint Online.  
+> Zostanie wyświetlony monit, aby zalogować się do konta programu SharePoint, jeśli nie została jeszcze utworzona *połączenia* do usługi SharePoint Online.  
 > 
 > 
 
 1. Wprowadź *sharepoint* w polu wyszukiwania w Projektancie aplikacji logiki wybiorą **usługi SharePoint Online — po utworzeniu nowego elementu** wyzwalacza.  
-   ![Obraz wyzwalacza online programu SharePoint](./media/connectors-create-api-sharepointonline/trigger-1.png)  
+   ![Obraz wyzwalacza online programu SharePoint ](./media/connectors-create-api-sharepointonline/trigger-1.png)  
 2. **Podczas tworzenia nowego elementu** formant jest wyświetlany.  
    ![SharePoint online wyzwalacza obraz 2](./media/connectors-create-api-sharepointonline/trigger-2.png)   
 3. Wybierz **adres URL witryny**. To jest witryna programu SharePoint online, które chcesz monitorować dla nowych elementów do wyzwalania przepływu pracy.  

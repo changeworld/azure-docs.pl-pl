@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/20/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 66d50c94f2aad15e0d4a1b7500e8a4aeb45b1742
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 59a00f5605f7664148b65f2ec9a88fbaa9057ccf
+ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214257"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36946061"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Zarządzanie aktualizacjami dla wielu maszyn
 
@@ -56,7 +56,7 @@ To rozwiązanie nie obsługuje agenta Operations Management Suite (OMS) dla syst
 
 W portalu Azure Otwórz Twoje konto usługi Automatyzacja, a następnie wybierz **zarządzanie aktualizacjami**.
 
-Wybierz **dodać maszyny Wirtualnej Azure**.
+Wybierz **Dodaj maszyny wirtualne platformy Azure**.
 
 ![Dodaj kartę maszyny Wirtualnej Azure](./media/manage-update-multi/update-onboard-vm.png)
 
@@ -94,7 +94,7 @@ Aby wyświetlić stan agenta, wybierz łącze w **aktualizacji AGENTA gotowości
 
 ## <a name="view-an-update-assessment"></a>Wyświetlanie oceny aktualizacji
 
-Po włączeniu zarządzania aktualizacjami **zarządzanie aktualizacjami** zostanie otwarte okienko. Możesz wyświetlić listę brakujących aktualizacji na karcie **Brakujące aktualizacje**.
+Po włączeniu rozwiązania Update Management zostanie otwarte okienko **Update Management**. Możesz wyświetlić listę brakujących aktualizacji na karcie **Brakujące aktualizacje**.
 
 ## <a name="collect-data"></a>Zbieranie danych
 
@@ -157,7 +157,7 @@ Po zakończeniu konfigurowania harmonogramu wybierz **Utwórz** przycisk, aby wr
 
 ## <a name="view-results-of-an-update-deployment"></a>Wyświetlanie wyników wdrażania aktualizacji
 
-Po uruchomieniu zaplanowanego wdrożenia, możesz wyświetlać stan tego wdrożenia na **wdrożeń aktualizacji** w obszarze **zarządzanie aktualizacjami**.
+Po rozpoczęciu zaplanowanego wdrażania stan tego wdrożenia można sprawdzić na karcie **Wdrożenia aktualizacji** w obszarze rozwiązania **Update Management**.
 
 Jeśli wdrożenie jest aktualnie uruchomione, wyświetlany jest stan **W toku**. Po zakończeniu wdrożenia pomyślnie stan zmienia się na **zakończyło się pomyślnie**.
 
@@ -170,8 +170,8 @@ Aby wyświetlić pulpit nawigacyjny wdrożenia aktualizacji, wybierz ukończone 
 **Wyniki aktualizacji** okienko zawiera całkowitą liczbę aktualizacji oraz wyniki wdrażania dla maszyny wirtualnej. W tabeli po prawej stronie przedstawiono szczegółowe podział każdej aktualizacji i wyniki instalacji. Wyniki instalacji mogą mieć jedną z następujących wartości:
 
 - **Nie podjęto**: Aktualizacja nie została zainstalowana, ponieważ mała były dostępne okno obsługi zdefiniowanych w oparciu.
-- **Pomyślnie**: Aktualizacja zakończyło się pomyślnie.
-- **Nie powiodło się**: Aktualizacja nie powiodła się.
+- **Powodzenie**: aktualizacja powiodła się.
+- **Niepowodzenie**: aktualizacja nie powiodła się.
 
 Aby wyświetlić wszystkie wpisy dziennika utworzone przez wdrożenie, wybierz pozycję **Wszystkie dzienniki**.
 

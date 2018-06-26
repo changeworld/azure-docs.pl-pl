@@ -10,22 +10,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2018
+ms.date: 06/25/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 3c80ce6e221acb8905c00e6178dd2fec1f8816af
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: eb01d31d00177560aca3aa71750cd2d1ec096f8f
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938449"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-20-in-azure-stack"></a>Profile wersji interfejsu API Azure CLI 2.0 w stosie Azure
 
-W tym artykule firma Microsoft prowadzące przez proces przy użyciu interfejsu wiersza polecenia platformy Azure (CLI) do zarządzania zasobami Azure stosu Development Kit z systemem Linux i platform klienckich Mac. 
+Możesz wykonać kroki opisane w tym artykule, aby skonfigurować Azure interfejsu wiersza polecenia (CLI) do zarządzania zasobami Azure stosu Development Kit z platform klienta Mac, Linux i Windows.
 
 ## <a name="install-cli"></a>Instalowanie interfejsu wiersza polecenia
 
-Następnie zaloguj się do stacji roboczej do rozwoju i zainstaluj interfejs wiersza polecenia. Stos Azure wymaga wersji 2.0 z wiersza polecenia platformy Azure. Który można zainstalować przy użyciu procedury opisanej w [zainstalować Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) artykułu. Aby sprawdzić, czy instalacja zakończyła się pomyślnie, Otwórz okno wiersza polecenia lub terminal i uruchom następujące polecenie:
+Zaloguj się do stacji roboczej do rozwoju i zainstaluj interfejs wiersza polecenia. Stos Azure wymaga wersji 2.0 z wiersza polecenia platformy Azure. Który można zainstalować przy użyciu procedury opisanej w [zainstalować Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) artykułu. Aby sprawdzić, czy instalacja zakończyła się pomyślnie, Otwórz okno wiersza polecenia lub terminal i uruchom następujące polecenie:
 
 ```azurecli
 az --version
@@ -35,27 +36,47 @@ Powinna zostać wyświetlona wersja interfejsu wiersza polecenia Azure i innych 
 
 ## <a name="trust-the-azure-stack-ca-root-certificate"></a>Certyfikat główny urzędu certyfikacji stosu Azure zaufania
 
-Pobierz certyfikat główny urzędu certyfikacji stosu Azure z operatora stosu Azure i zaufania temu certyfikatowi. Aby zaufać certyfikat główny urzędu certyfikacji stosu Azure, należy dołączyć do istniejącego certyfikatu Python. Jeśli używasz interfejsu wiersza polecenia z maszyny z systemem Linux, który jest tworzony w środowisku Azure stosu, uruchom następujące polecenie bash:
+1. Pobierz certyfikat główny urzędu certyfikacji stosu Azure z [operatorem stosu Azure](..\azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate) i zaufania temu certyfikatowi. Aby zaufać certyfikat główny urzędu certyfikacji stosu Azure, należy dołączyć do istniejącego certyfikatu Python.
+
+2. Znajdź lokalizację certyfikatu na tym komputerze. Lokalizacja może się różnić w zależności od tego, w którym zainstalowano języka Python. Musisz mieć [pip](https://pip.pypa.io) i [certifi](https://pypi.org/project/certifi/) zainstalowany moduł. Służy następujące polecenie języka Python z poziomu wiersza bash:
+
+  ```bash  
+    python -c "import certifi; print(certifi.where())"
+  ```
+
+  Zanotuj lokalizację certyfikatu. Na przykład `~/lib/python3.5/site-packages/certifi/cacert.pem`. Określonej ścieżki będzie zależeć od system operacyjny i wersję języka Python, który został zainstalowany.
+
+### <a name="set-the-path-for-a-development-machine-inside-the-cloud"></a>Ustaw ścieżkę na komputerze deweloperskim w chmurze
+
+Jeśli używasz interfejsu wiersza polecenia z maszyny z systemem Linux, który jest tworzony w środowisku Azure stosu, uruchom następujące polecenie bash ze ścieżką do swojego certyfikatu.
 
 ```bash
-sudo cat /var/lib/waagent/Certificates.pem >> ~/lib/azure-cli/lib/python2.7/site-packages/certifi/cacert.pem
+sudo cat /var/lib/waagent/Certificates.pem >> ~/<yourpath>/cacert.pem
 ```
 
-Jeśli używasz interfejsu wiersza polecenia na komputerze poza środowiskiem worek Azure, należy najpierw skonfigurować [połączenie z siecią VPN Azure stos](azure-stack-connect-azure-stack.md). Teraz skopiuj wyeksportowany wcześniej na deweloperskiej stacji roboczej certyfikat PEM i uruchom następujące polecenia, w zależności od systemu operacyjnego z deweloperskiej stacji roboczej.
+### <a name="set-the-path-for-a-development-machine-outside-the-cloud"></a>Ustaw ścieżkę na komputerze deweloperskim poza chmury
 
-### <a name="linux"></a>Linux
+Jeśli używasz interfejsu wiersza polecenia na komputerze **poza** środowiska Azure stosu:  
+
+1. Należy zdefiniować [połączenie z siecią VPN Azure stos](azure-stack-connect-azure-stack.md).
+
+2. Skopiuj certyfikat PEM pochodzący z operatora stosu Azure i zanotuj lokalizację pliku (PATH_TO_PEM_FILE).
+
+3. Uruchom następujące polecenia, w zależności od zakończenia na stacji roboczej rozwoju systemu operacyjnego.
+
+#### <a name="linux"></a>Linux
 
 ```bash
-sudo cat PATH_TO_PEM_FILE >> ~/lib/azure-cli/lib/python2.7/site-packages/certifi/cacert.pem
+sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
 ```
 
-### <a name="macos"></a>macOS
+#### <a name="macos"></a>macOS
 
 ```bash
-sudo cat PATH_TO_PEM_FILE >> ~/lib/azure-cli/lib/python2.7/site-packages/certifi/cacert.pem
+sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
 ```
 
-### <a name="windows"></a>Windows
+#### <a name="windows"></a>Windows
 
 ```powershell
 $pemFile = "<Fully qualified path to the PEM certificate Ex: C:\Users\user1\Downloads\root.pem>"
@@ -181,14 +202,14 @@ Jeśli grupa zasobów została utworzona pomyślnie, poprzednie polecenie wyświ
 ## <a name="known-issues"></a>Znane problemy
 Istnieją znane problemy, które trzeba pamiętać podczas przy użyciu interfejsu wiersza polecenia Azure stosu:
 
-* Tj interfejsu wiersza polecenia w trybie interakcyjnym `az interactive` polecenie nie jest jeszcze obsługiwane w stosie Azure.
-* Aby uzyskać listę dostępnych w stosie Azure obrazów maszyny wirtualnej, użyj `az vm images list --all` polecenia zamiast `az vm image list` polecenia. Określanie `--all` option zapewnia, że odpowiedzi zwraca tylko obrazy, które są dostępne w środowisku Azure stosu. 
-* Aliasy obrazu maszyny wirtualnej, które są dostępne w systemie Azure nie może być stosowane do stosu Azure. Korzystając z obrazów maszyny wirtualnej, użyć całego parametru URN (Canonical: UbuntuServer:14.04.3-LTS:1.0.0) zamiast alias obrazu. Ten URN musi odpowiadać specyfikacji obrazu wynikające z `az vm images list` polecenia.
-* Domyślnie 2.0 interfejsu wiersza polecenia używa "Standard_DS1_v2" jako domyślny rozmiar obrazu maszyny wirtualnej. Jednak ten rozmiar nie jest jeszcze dostępna w stosie Azure, dlatego należy określić `--size` parametru jawnie, podczas tworzenia maszyny wirtualnej. Można pobrać listy rozmiarów maszyn wirtualnych, które są dostępne w stosie Azure przy użyciu `az vm list-sizes --location <locationName>` polecenia.
-
+ - Tj interfejsu wiersza polecenia w trybie interakcyjnym `az interactive` polecenie nie jest jeszcze obsługiwane w stosie Azure.
+ - Aby uzyskać listę dostępnych w stosie Azure obrazów maszyny wirtualnej, użyj `az vm images list --all` polecenia zamiast `az vm image list` polecenia. Określanie `--all` option zapewnia, że odpowiedzi zwraca tylko obrazy, które są dostępne w środowisku Azure stosu.
+ - Aliasy obrazu maszyny wirtualnej, które są dostępne w systemie Azure nie może być stosowane do stosu Azure. Korzystając z obrazów maszyny wirtualnej, użyć całego parametru URN (Canonical: UbuntuServer:14.04.3-LTS:1.0.0) zamiast alias obrazu. Ten URN musi odpowiadać specyfikacji obrazu wynikające z `az vm images list` polecenia.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 [Wdrażanie szablonów z wiersza polecenia platformy Azure](azure-stack-deploy-template-command-line.md)
+
+[Włącz wiersza polecenia platformy Azure dla użytkowników usługi Azure stosu (Operator)](..\azure-stack-cli-admin.md)
 
 [Zarządzanie uprawnieniami użytkowników](azure-stack-manage-permissions.md)

@@ -2,19 +2,19 @@
 title: Rozpoczynanie pracy z inspekcji bazy danych Azure SQL | Dokumentacja firmy Microsoft
 description: Użyj inspekcji bazy danych Azure SQL, aby śledzić zdarzenia bazy danych w dzienniku inspekcji.
 services: sql-database
-author: giladm
+author: giladmit
 manager: craigg
 ms.service: sql-database
 ms.custom: security
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 06/24/2018
 ms.author: giladm
-ms.openlocfilehash: 62c6e576a5ef7fa953618dcba4ddd158df131148
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0646667caab594556cc3c2043bc36905acef6e54
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644593"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751047"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 Usługa Azure SQL database auditing śledzi zdarzenia bazy danych i zapisuje je inspekcji logowania na koncie magazynu Azure. Inspekcja również:
@@ -200,12 +200,17 @@ Na przykład skryptu, zobacz [konfigurowania inspekcji i wykrywania zagrożeń p
 
 **Interfejs API REST - Inspekcja obiektów Blob**:
 
-* [Utwórz lub zaktualizuj bazę danych obiektów Blob zasady inspekcji](https://msdn.microsoft.com/library/azure/mt695939.aspx)
-* [Utwórz lub zaktualizuj Blob serwera zasady inspekcji](https://msdn.microsoft.com/library/azure/mt771861.aspx)
-* [Pobierz bazy danych obiektów Blob zasady inspekcji](https://msdn.microsoft.com/library/azure/mt695938.aspx)
-* [Pobierz obiekt Blob serwera zasady inspekcji](https://msdn.microsoft.com/library/azure/mt771860.aspx)
+* [Utwórz lub zaktualizuj bazę danych obiektów Blob zasady inspekcji](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/createorupdate)
+* [Utwórz lub zaktualizuj Blob serwera zasady inspekcji](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/createorupdate)
+* [Pobierz bazy danych obiektów Blob zasady inspekcji](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/get)
+* [Pobierz obiekt Blob serwera zasady inspekcji](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/get)
 * [Pobierz Blob serwera inspekcji wynik operacji](https://msdn.microsoft.com/library/azure/mt771862.aspx)
 
+Rozszerzone zasady, z którym klauzuli obsługę dodatkowych filtrowania:
+* [Utwórz lub zaktualizuj bazę danych *rozszerzony* obiektu Blob zasad inspekcji](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+* [Utwórz lub zaktualizuj serwer *rozszerzony* obiektu Blob zasad inspekcji](https://docs.microsoft.com/en-us/rest/api/sql/server%20extended%20auditing%20settings/createorupdate)
+* [Pobierz bazy danych *rozszerzony* obiektu Blob zasad inspekcji](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/get)
+* [Serwera *rozszerzony* obiektu Blob zasad inspekcji](https://docs.microsoft.com/en-us/rest/api/sql/server%20extended%20auditing%20settings/get)
 
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1

@@ -15,12 +15,12 @@ ms.date: 06/15/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin, dastrock, smalser
-ms.openlocfilehash: d0c006b21e00693fe6c8b35237d4ce55f67c0f75
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 8bb0df567fbac6e8f8a2e2f64f868b4f219e05ac
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36320597"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751398"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Debugowania na języku SAML logowania jednokrotnego do aplikacji w usłudze Azure Active Directory
 
@@ -45,6 +45,9 @@ Aby przetestować na języku SAML logowania jednokrotnego między AAD i aplikacj
 3.  Z listy aplikacji przedsiębiorstwa, kliknij aplikację, dla której ma zostać przetestowana logowania jednokrotnego, a następnie opcje po lewej stronie kliknij **logowanie jednokrotne**.
 4.  Aby otworzyć SAML na podstawie pojedynczego logowania jednokrotnego testowania środowisko, w **domeny i adres URL** kliknij sekcję **ustawienia testu SAML**. Przycisk Test ustawienie SAML jest nieaktywna, musisz najpierw Wypełnij i Zapisz wymaganych atrybutów.
 5.  W **Test rejestracji jednokrotnej** bloku, użyj swoich poświadczeń firmowych logować się do aplikacji docelowej. Można zalogować się jako bieżącego użytkownika lub innego użytkownika. Jeśli logujesz się jako inny użytkownik, monit zostanie wyświetlony monit o uwierzytelniania.
+
+    ![Strona testowa SAML](media/active-directory-saml-debugging/testing.png)
+
 
 Jeśli pomyślnie zalogowano, testu są spełnione. W takim przypadku usługi Azure AD wystawiony token odpowiedzi SAML dla aplikacji. Aplikacja używa tokenu SAML pomyślnie Cię zalogować.
 

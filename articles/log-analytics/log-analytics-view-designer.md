@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/18/2018
+ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: d63d47c39054230307416e24ed1c8295fbf68d93
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 91d4efcd7fabc2f284078d752ea68778a9bd8d86
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29939873"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752043"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Tworzenie niestandardowych widoków przy użyciu projektanta widoków w analizy dzienników
 Przy użyciu narzędzia Projektant widoku w [Azure Log Analytics](log-analytics-overview.md), możesz utworzyć różne widoki niestandardowe w portalu Azure, które mogą pomóc w wizualizacji danych w obszarze roboczym analizy dzienników. Ten artykuł zawiera omówienie projektanta widoków i procedur tworzenia i edytowania widoków niestandardowych.
@@ -55,13 +55,14 @@ W poniższej tabeli opisano opcje:
 |:--|:--|
 | Odświeżanie   | Odświeża widok przy użyciu najnowszych danych. | 
 | Analiza | Otwiera [portal analityka zaawansowane](log-analytics-log-search-portals.md#advanced-analytics-portal) do analizowania danych z dziennika wyszukiwania. |
-| Filtr    | Ustawia filtr czasu dla danych, który znajduje się w widoku. |
-| Edytuj      | Otwiera widok w Projektancie widoku do edycji jej zawartości i konfiguracji.  |
-| Klonuj     | Tworzy nowy widok i otwarcie go w widoku projektanta. Nazwa nowego widoku jest taka sama, jak oryginalna nazwa, ale *kopiowania* dołączone do niego. |
+| Edytuj       | Otwiera widok w Projektancie widoku do edycji jej zawartości i konfiguracji.  |
+| Klonuj      | Tworzy nowy widok i otwarcie go w widoku projektanta. Nazwa nowego widoku jest taka sama, jak oryginalna nazwa, ale *kopiowania* dołączone do niego. |
+| Zakres dat | Ustaw datę i godzinę Filtr zakresu danych, który znajduje się w widoku. |
+| +          | Definiowanie niestandardowego filtru, który jest zdefiniowany dla widoku. |
 
 
 ## <a name="create-a-new-view"></a>Utwórz nowy widok
-Możesz utworzyć nowy widok w widoku projektanta, wybierając **Widok projektanta** Kafelek na **omówienie** strony obszaru roboczego analizy dzienników.
+Możesz utworzyć nowy widok w widoku projektanta, wybierając **Widok projektanta** w menu obszaru roboczego analizy dzienników.
 
 ![Widok projektanta kafelka](media/log-analytics-view-designer/view-designer-tile.png)
 
@@ -104,7 +105,6 @@ Praca z widokami w trybie edycji opcje są opisane w poniższej tabeli.
 | Eksportowanie      | Eksportuje widok, aby [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) , który można zaimportować do innego obszaru roboczego. Nazwa pliku jest nazwa widoku i ma *omsview* rozszerzenia. |
 | Import      | Importy *omsview* pliku, który został wyeksportowany z innego obszaru roboczego. Ta akcja spowoduje zastąpienie konfigurację istniejącego widoku. |
 | Klonuj       | Tworzy nowy widok i otwarcie go w widoku projektanta. Nazwa nowego widoku jest taka sama, jak oryginalna nazwa, ale *kopiowania* dołączone do niego. |
-| Publikowanie     | Eksportuje widok do pliku JSON, który można wstawić do [rozwiązania do zarządzania](../operations-management-suite/operations-management-suite-solutions-resources-views.md). Nazwa pliku jest taka sama jak nazwa widoku, ale z *json* rozszerzenia. Drugi plik, który jest tworzony z *resjson* rozszerzenia zawiera wartości dla zasobów, które są zdefiniowane w pliku JSON.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Dodaj [Kafelki](log-analytics-view-designer-tiles.md) do widoku niestandardowym.

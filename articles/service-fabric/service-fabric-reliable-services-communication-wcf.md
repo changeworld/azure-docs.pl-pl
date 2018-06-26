@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/07/2017
 ms.author: bharatn
-ms.openlocfilehash: f5ca579b446e5d3608d53cea73fa9392cd00db06
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4c45bc76c176ce9f2476f6a666afda1daf4cd9c5
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212228"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36749933"
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>Komunikacja oparta na WCF stos niezawodne usługi
 Niezawodne usługi framework umożliwia autorom usługi wybierz stosu komunikacji, który ma być używany dla ich usługi. Można podłączyć stosu komunikacji wybranych przez nich za pośrednictwem **ICommunicationListener** zwrócony z [CreateServiceReplicaListeners lub CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) metody. Struktury dostarcza implementację tego stosu komunikacji oparte na systemie Windows Communication Foundation (WCF) dla autorów usługi, które mają być używane do komunikacji usługi WCF.
@@ -91,7 +91,7 @@ public class WcfCommunicationClient : ServicePartitionClient<WcfCommunicationCli
 
 ```
 
-Kod klienta można użyć **WcfCommunicationClientFactory** wraz z **WcfCommunicationClient** z zaimplementowanym **ServicePartitionClient** do określenia punktu końcowego usługi i komunikować się z usługą.
+Kod klienta można użyć **WcfCommunicationClientFactory** wraz z **WcfCommunicationClient** z zaimplementowanym **ServicePartitionClient** ustalenie Usługa punktu końcowego i komunikować się z usługą.
 
 ```csharp
 // Create binding
@@ -126,5 +126,5 @@ var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
 ## <a name="next-steps"></a>Kolejne kroki
 * [Wywołanie procedury zdalnej komunikacji zdalnej niezawodne usługi](service-fabric-reliable-services-communication-remoting.md)
 * [Interfejs API OWIN w niezawodnej usługi sieci Web](service-fabric-reliable-services-communication-webapi.md)
-* [Zabezpieczenia komunikacji niezawodnej usług](service-fabric-reliable-services-secure-communication.md)
+* [Zabezpieczenia komunikacji niezawodnej usług](service-fabric-reliable-services-secure-communication-wcf.md)
 

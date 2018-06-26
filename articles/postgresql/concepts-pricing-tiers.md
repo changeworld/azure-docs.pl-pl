@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/21/2018
-ms.openlocfilehash: f4fe04b972cdd3d4f78a139ce5554ee7b6774d8a
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: fc7a2316b5b006cbbf8a237c6a95a71b6489932b
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319320"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753408"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Bazy danych platformy Azure dla PostgreSQL warstw cenowych
 
@@ -81,13 +81,13 @@ Zainicjowanie obsługi magazynu jest pojemności magazynu dostępnych do bazy da
 | Typ magazynu | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | Rozmiar magazynu | 5 GB do 1 TB | 5 GB do 4 TB | 5 GB do 4 TB |
 | Rozmiar przyrost magazynu | 1 GB | 1 GB | 1 GB |
-| Operacje wejścia/wyjścia | Zmienna |3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalna liczba IOPS 7500 | 3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalna liczba IOPS 7500 |
+| Operacje wejścia/wyjścia | Zmienna |3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalna liczba IOPS 6000 | 3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalna liczba IOPS 6000 |
 
 Podczas i po utworzeniu serwera można dodać dodatkowej pojemności. Warstwa podstawowa nie ma gwarancji IOPS. Ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci, warstw cenowych IOPS skalowania o rozmiarze zainicjowanego magazynu w stosunku 3:1.
 
 Można monitorować użycia we/wy w portalu Azure lub przy użyciu poleceń wiersza polecenia platformy Azure. Odpowiednich metryk do monitorowania są [limit magazynu, procent użycia magazynu, Magazyn używany i procent We/Wy](concepts-monitoring.md).
 
-### <a name="reaching-the-store-limit"></a>Przekroczony limit magazynu
+### <a name="reaching-the-storage-limit"></a>Przekroczony limit magazynu
 
 Serwer zostanie oznaczony jako tylko do odczytu, gdy ilość wolnego miejsca w magazynie osiągnie mniej niż 5 GB lub 5% zainicjowanego magazynu, ta wartość jest mniejsza. Na przykład, jeśli po uprzednim udostępnieniu 100 GB miejsca do magazynowania i rzeczywistego użycia przechodzi 95 GB, serwer jest oznaczony jako tylko do odczytu. Alternatywnie Jeśli po uprzednim udostępnieniu 5 GB miejsca do magazynowania, serwer jest oznaczony jako tylko do odczytu po mniej niż 250 MB wolnego miejsca.  
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 50338e05241be9ce573ff3dd3bb99711cbf15b28
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: ff2e1660ffcc1f397697b27084e000371c7c84f3
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248541"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938013"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure przewodnik AI konserwacji predykcyjnej rozwiązań
 
@@ -255,7 +255,7 @@ W tej sekcji omówiono techniki modelowania głównych problemów PdM, wraz z ic
 > Wybór etykiety w przypadkach niepowodzenia i strategii etykietowania  
 > należy określić w porozumieniu z domeny ekspertów.
 
-### <a name="binary-classification"></a>klasyfikacji binarnej
+### <a name="binary-classification"></a>Klasyfikacji binarnej
 Klasyfikacji binarnej służy do _prognozowania prawdopodobieństwo, że urządzenie nie powiedzie się w przedziale czasu przyszłych_ — wywołane _okres przyszłych typu horizon X_. X jest określana przez problem biznesowy i dane, po konsultacji z domeny ekspertów. Przykłady to:
 - _Minimalny czas realizacji_ wymagane, aby zastąpić składników, wdrażać konserwacji zasobów, wykonywanie konserwacji, aby uniknąć problemu, który może nastąpić w danym okresie.
 - _Minimalna liczba zdarzeń_ zdarzyć przed wystąpieniem problemu.
@@ -350,7 +350,7 @@ Problemy z klasyfikacji, jeśli istnieje więcej przykładów dotyczących jedne
 Wiele problemów PdM stają przed takie imbalanced zestawów danych, gdy jedna klasa jest znacznie underrepresented w porównaniu do innych klas, lub klasy. W niektórych sytuacjach klasy mniejszości może stanowić tylko 0,001% punktów Łączna ilość danych. Nierównowaga klasy nie jest unikatowa dla PdM. Inne domeny, w których rzadko wystąpienia błędów i anomalie, stają przed podobny problem, przykłady, wykrywanie oszustw i sieci nieautoryzowanego dostępu. Te błędy tworzą mniejszości przykłady klas.
 
 Z klasy nierównowaga danych wydajności większość standardowych algorytmów uczenia zostanie naruszony, ponieważ są one na celu zminimalizować szybkość ogólny błąd. Dla zestawu danych z 99% ujemna i przykłady dodatnią 1% model można można wyświetlić do 99% dokładność etykietowania wszystkie wystąpienia jako ujemne. Ale modelu zostaną nieprawidłowo klasyfikować wszystkie przykłady dodatnią; Dlatego nawet jeśli jego dokładność jest wysoka, algorytm nie jest użyteczne. W rezultacie metryki oceny z konwencjonalnej, takich jak _dokładności na wskaźnik błędów_ są niewystarczające do uczenia imbalanced. W przypadku zastosowania imbalanced zestawów danych, innych metryk służą do oceny modelu:
-- dokładność
+- Dokładność
 - Odwołaj
 - Wyniki F1
 - Koszt dostosowana ROC (odbiornika charakterystyki działania)
@@ -412,7 +412,7 @@ Z kolei obejmuje PdM _wsadowego oceniania_. Odpowiada podpisu modelu funkcji w n
 
 Ostatnia część ten przewodnik zawiera listę szablonów rozwiązania PdM, samouczki i eksperymenty zaimplementowane na platformie Azure. Te aplikacje PdM można wdrożyć do subskrypcji platformy Azure w ciągu minut w niektórych przypadkach. One może służyć jako Weryfikacja koncepcji pokazów, piaskownic eksperymentować alternatyw czy akceleratorów implementacji rzeczywistej produkcji. Te szablony znajdują się w [galerii Azure AI](http://gallery.azure.ai) lub [Azure GitHub](https://github.com/Azure). Te przykłady różnych zostanie wycofana w czasie do ten szablon rozwiązania.
 
-| # | Stanowisko | Opis |
+| # | Tytuł | Opis |
 |--:|:------|-------------|
 | 1 | [Azure konserwacji predykcyjnej Machine Learning próbki](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance) |Przykład PdM do prognozowania awarii za pośrednictwem dalej jednostki czasu N. Ten przykład jest zapisywany jako projekt Workbench uczenie Maszynowe Azure i jest idealny dla początkujących użytkowników do PdM. [Dodatkową dokumentację](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/scenario-predictive-maintenance) związane z tego przykładu.|
 | 2 | [Szablon rozwiązania Azure konserwacji predykcyjnej](https://github.com/Azure/AI-PredictiveMaintenance) | Kompleksowe framework do zaprezentowania scenariuszy z wieloma PdM. Ten szablon przedstawia dwa scenariusze: pierwsza to nowy przypadek użycia klasyfikacji warunku błędu w czasie rzeczywistym. Drugi scenariusz jest po prostu zintegrowania rozwiązania do [1] ten szablon rozwiązania. Go pokazano, jak użyć ponownie w tej samej infrastrukturze wdrożone, aby dodać inne scenariusze nowego lub istniejącego.|
@@ -434,7 +434,7 @@ Microsoft Azure oferuje zawartość wolnego i szkolenia na ogólne koncepcje AI 
 |:-------------------|--------------|
 | [AI dewelopera na platformie Azure](http://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Public |
 | [Służbowe Microsoft AI](http://aischool.microsoft.com/learning-paths) | Public |
-| [Learning Azure AI z usługi GitHub](http://azure.github.io/learnanalytics/public) | Public |
+| [Learning Azure AI z usługi GitHub](https://github.com/Azure/connectthedots/blob/master/readme.md) | Public |
 | [LinkedIn Learning](http://www.linkedin.com/learning) | Public |
 | [Microsoft AI Youtube seminaria internetowe](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Public |
 | [Pokaż AI firmy Microsoft](http://channel9.msdn.com/Shows/AI-Show) | Public |

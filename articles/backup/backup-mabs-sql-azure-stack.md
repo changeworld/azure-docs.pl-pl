@@ -8,21 +8,21 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: pullabhk
-ms.openlocfilehash: 5541a2fff6bb54f5d62518e7edf54fb9150e3109
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: ca7da7ab048b6f7bfdba81aac9bc7702b20ff967
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35249336"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751801"
 ---
-# <a name="back-up-sql-server-on-azure-stack"></a>Wykonywanie kopii zapasowej serwera SQL na stosie Azure
+# <a name="back-up-sql-server-on-stack"></a>Tworzenie kopii zapasowych programu SQL Server na stosie
 Umożliwia skonfigurowanie programu Microsoft Azure kopii zapasowej serwera (MABS) do ochrony baz danych serwera SQL na stosie Azure w tym artykule.
 
 Zarządzanie kopii zapasowej bazy danych programu SQL Server na platformie Azure oraz odzyskiwania z platformy Azure obejmuje trzy kroki:
 
-1. Tworzenie zasad tworzenia kopii zapasowej w celu ochrony baz danych serwera SQL na platformie Azure.
-2. Tworzenie kopii zapasowych na żądanie w systemie Azure.
-3. Odzyskiwanie bazy danych z platformy Azure.
+1. Tworzenie zasad tworzenia kopii zapasowej w celu ochrony baz danych programu SQL Server
+2. Tworzenie kopii zapasowych na żądanie
+3. Odzyskiwanie bazy danych z dysków i z platformy Azure
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
@@ -63,12 +63,6 @@ Zarządzanie kopii zapasowej bazy danych programu SQL Server na platformie Azure
    >
 
 7. Na **Przejrzyj przydział dysku** ekranu, sprawdź ogólną miejsca do magazynowania dostępne i miejsca na dysku. Kliknij przycisk **Dalej**.
-
-    ![Przydział dysku](./media/backup-azure-backup-sql/pg-storage.png)
-
-    Domyślnie serwer kopii zapasowej Azure tworzy jednego woluminu dla źródła danych (bazy danych programu SQL Server), który służy do początkowej kopii zapasowej. W ten sposób Menedżer dysków logicznych (LDM) ogranicza kopia zapasowa Azure ochrony źródeł danych 300 (baz danych programu SQL Server). Aby obejść to ograniczenie, wybierz **kolokuj dane w puli magazynu DPM**. Wspólnej lokalizacji serwera usługi Kopia zapasowa Azure korzysta z jednego woluminu dla źródła danych i chronić maksymalnie 2000 baz danych programu SQL Server.
-
-    W przypadku wybrania **automatycznie rozszerzaj woluminy**, Utwórz kopię zapasową serwera Azure kont dla zwiększenia woluminu kopii zapasowej wraz z rozwojem danych produkcyjnych. Jeśli nie zostanie wybrana opcja, Utwórz kopię zapasową serwera Azure ogranicza magazynu kopii zapasowych, używany do źródeł danych w grupie ochrony.
 
 8. W **wybierz metodę tworzenia repliki**, wybierz sposób utworzyć pierwszy punkt odzyskiwania. Aby uniknąć przeciążenia przepustowość można przenieść początkowa kopia zapasowa ręcznie (poza sieci) lub za pośrednictwem sieci. Wybranie opcji oczekiwania na transfer pierwszej kopii zapasowej, można określić czas przesyłania początkowej. Kliknij przycisk **Dalej**.
 
@@ -111,12 +105,7 @@ Zarządzanie kopii zapasowej bazy danych programu SQL Server na platformie Azure
     * Tworzenie kopii zapasowej sobotę o godzinie 12:00 w dniu został zachowany na potrzeby 104 tygodni
     * Tworzenie kopii zapasowej ostatniego sobotę o godzinie 12:00 w dniu są przechowywane przez 60 miesięcy
     * Tworzenie kopii zapasowej Ostatnia sobota marca, 12:00 w dniu jest zachowywana 10 lat
-13. Kliknij przycisk **dalej** i wybierz odpowiednią opcję w celu przekazania początkowa kopia zapasowa Azure. Możesz wybrać **automatycznie przez sieć** lub **w trybie Offline z kopii zapasowej**.
-
-    * **Automatycznie przez sieć** przesyła dane kopii zapasowej Azure zgodnie z harmonogramem wybranym dla kopii zapasowej.
-    * **Kopia zapasowa offline** opisanej w [przepływu pracy w trybie Offline z kopii zapasowej w programie Kopia zapasowa Azure](backup-azure-backup-import-export.md).
-
-    Wybierz mechanizm transferu odpowiednie do wysłania początkowej kopii zapasowej do platformy Azure i kliknij przycisk **dalej**.
+13. Kliknij przycisk **dalej** i wybierz odpowiednią opcję w celu przekazania początkowa kopia zapasowa Azure. Możesz wybrać **automatycznie przez sieć**
 
 14. Po szczegółowe zasady w **Podsumowanie** kliknij **Utwórz grupę** ukończenia przepływu pracy. Możesz kliknąć **Zamknij** i monitorować postęp zadania monitorowania obszaru roboczego.
 
@@ -147,11 +136,11 @@ Poniższe kroki są wymagane do odzyskania jednostki chronionej (baza danych pro
 2. Kliknij prawym przyciskiem myszy nazwę bazy danych, a następnie kliknij przycisk **odzyskać**.
 
     ![Odzyskiwanie z platformy Azure](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-3. Program DPM Wyświetla szczegóły punktu odzyskiwania. Kliknij przycisk **Dalej**. Aby zastąpić bazy danych, wybierz typ odzyskiwania **Odzyskaj do oryginalnego wystąpienia programu SQL Server**. Kliknij przycisk **Dalej**.
+3. MABS przedstawia szczegóły punktu odzyskiwania. Kliknij przycisk **Dalej**. Aby zastąpić bazy danych, wybierz typ odzyskiwania **Odzyskaj do oryginalnego wystąpienia programu SQL Server**. Kliknij przycisk **Dalej**.
 
     ![Odzyskaj do oryginalnej lokalizacji](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
-    W tym przykładzie program DPM przywraca bazę danych do innego wystąpienia programu SQL Server lub do folderu sieciowego autonomicznych.
+    W tym przykładzie MABS odzyskuje bazę danych do innego wystąpienia programu SQL Server lub do autonomicznej folderu sieciowego.
 
 4. W **opcji odzyskiwania określ** ekranu, można wybrać opcje odzyskiwania takie jak ograniczanie wykorzystania przepustowości sieci do ograniczania przepustowości, używany przez odzyskiwania. Kliknij przycisk **Dalej**.
 

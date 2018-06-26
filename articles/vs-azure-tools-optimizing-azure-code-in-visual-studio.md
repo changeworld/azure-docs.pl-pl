@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: cawa
-ms.openlocfilehash: a606c8e7d8b730b67bd8481656e099900eb39fbc
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 3ee2cc3ac5098ebf205331167faffa2b5f9b6d56
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2017
-ms.locfileid: "23890838"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937561"
 ---
 # <a name="optimizing-your-azure-code"></a>Optymalizacja kodu platformy Azure
 W przypadku programowania aplikacji, które używają programu Microsoft Azure, istnieją pewne praktyk kodowania, które należy wykonać, aby uniknąć problemów z aplikacji, skalowalność, zachowania i wydajności w środowisku chmury. Firma Microsoft udostępnia narzędzia do analizy kodu platformy Azure, która rozpoznaje i identyfikuje niektóre z tych często napotkał problemy i ułatwia ich rozwiązywania. Możesz pobrać narzędzie w programie Visual Studio za pośrednictwem pakietu NuGet.
@@ -99,7 +99,7 @@ Dostęp do sygnatury dostępu Współdzielonego jest używany do uwierzytelniani
 Udostępnij te koncepcje i opinie na [opinii analizy kodu Azure](http://go.microsoft.com/fwlink/?LinkId=403771).
 
 ### <a name="reason"></a>Przyczyna
-Aby zwiększyć bezpieczeństwo Azure Active Directory zastępuje ACS uwierzytelniania przy użyciu uwierzytelniania sygnatury dostępu Współdzielonego. Zobacz [usługi Azure Active Directory jest przyszłości ACS](http://blogs.technet.com/b/ad/archive/2013/06/22/azure-active-directory-is-the-future-of-acs.aspx) uzyskać informacji o planie przejścia.
+Aby zwiększyć bezpieczeństwo Azure Active Directory zastępuje ACS uwierzytelniania przy użyciu uwierzytelniania sygnatury dostępu Współdzielonego. Zobacz [usługi Azure Active Directory jest przyszłości ACS](https://cloudblogs.microsoft.com/enterprisemobility/2013/06/22/azure-active-directory-is-the-future-of-acs/) uzyskać informacji o planie przejścia.
 
 ### <a name="solution"></a>Rozwiązanie
 Korzystanie z uwierzytelniania sygnatury dostępu Współdzielonego w aplikacjach. Poniższy przykład przedstawia użycie istniejącego tokenu sygnatury dostępu Współdzielonego dostępu przestrzeń nazw magistrali usług lub jednostki.
@@ -364,7 +364,7 @@ Poniższy fragment kodu przedstawia kod poprawkę dotyczącą tego problemu. Rep
 
 `var settings = ConfigurationManager.AppSettings["mySettings"];`
 
-Z
+z 
 
 `var settings = CloudConfigurationManager.GetSetting("mySettings");`
 
@@ -465,5 +465,5 @@ public class BlogsController : Controller
     }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej o optymalizacji i rozwiązywanie problemów z aplikacjami platformy Azure, zobacz [Rozwiązywanie problemów aplikacji sieci web w usłudze Azure App Service przy użyciu programu Visual Studio](app-service/web-sites-dotnet-troubleshoot-visual-studio.md).

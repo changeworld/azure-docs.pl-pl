@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: c10a6367f07bf66f7a0a8968022881b3c616fb74
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: bfdc89d9bc5d5a07c04e857c1a46e4b988c125ab
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "36205607"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36943559"
 ---
 ## <a name="test-your-code"></a>Testowanie kodu
 
@@ -44,7 +44,7 @@ Po przejściu do widoku kontrolera, powinny być widoczne tabeli zawierającej p
 |Właściwość |Wartość |Opis |
 |---|---|---|
 |**Nazwa** |Imię i nazwisko użytkownika | Imię i nazwisko użytkownika.
-|**Nazwa użytkownika** |Użytkownika<span>@domain.com</span> | Nazwa użytkownika, która jest używana do identyfikacji użytkownika.
+|**Nazwa użytkownika** |użytkownika<span>@domain.com</span> | Nazwa użytkownika, która jest używana do identyfikacji użytkownika.
 |**Temat** |Temat |Ciąg, który unikatowo identyfikuje użytkownika sieci web.|
 |**Identyfikator dzierżawy** |Identyfikator GUID | A **guid** który w unikatowy sposób identyfikuje użytkownika usługi Azure AD organizacji.|
 
@@ -71,7 +71,7 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 <!--end-collapse-->
 
 ### <a name="restrict-who-can-sign-in-to-your-application"></a>Ogranicz, który można zalogować się do aplikacji
-Domyślnie podczas tworzenia aplikacji utworzonych przez ten przewodnik aplikacji będzie akceptować znak ins osobiste konta (w tym outlook.com, live.com i inne), a także pracować kont służbowych z firmy lub organizacji, który jest zintegrowany z Usługa Azure Active Directory. Jest to zalecana opcja dla aplikacji SaaS.
+Domyślnie podczas tworzenia aplikacji utworzonych przez ten przewodnik aplikacji będzie akceptować logowania konta osobiste (w tym outlook.com, live.com i inne) oraz pracy kont służbowych z firmy lub organizacji, który jest zintegrowany z Usługa Azure Active Directory. Jest to zalecana opcja dla aplikacji SaaS.
 
 Aby ograniczyć rejestrowania dostępu użytkowników dla aplikacji, jest dostępnych kilka opcji:
 

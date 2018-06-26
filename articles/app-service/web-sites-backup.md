@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 66423fecce92cd933cc8680810aa2abe5e25a90d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b87838a80c7c7706b9af2bd4ea274335d04a5c52
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32153586"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751517"
 ---
 # <a name="back-up-your-app-in-azure"></a>Tworzenie kopii zapasowej aplikacji na platformie Azure
 Funkcja Kopia zapasowa i przywracanie w [usłudze Azure App Service](app-service-web-overview.md) umożliwia łatwe tworzenie kopii zapasowych aplikacji, ręcznie lub zgodnie z harmonogramem. Zastępowanie istniejących aplikacji lub przywracania do innej aplikacji, można przywrócić aplikację do migawki poprzedniego stanu. 
@@ -38,7 +38,7 @@ Usługi aplikacji — kopię zapasową można wykonać poniższe informacje kont
 Obsługiwane są następujące rozwiązania bazy danych przy użyciu funkcji tworzenia kopii zapasowej: 
    - [SQL Database](https://azure.microsoft.com/services/sql-database/)
    - [Bazy danych platformy Azure dla programu MySQL (wersja zapoznawcza)](https://azure.microsoft.com/services/mysql)
-   - [Bazy danych platformy Azure dla PostgreSQL (wersja zapoznawcza)](https://azure.microsoft.com/services/postgres)
+   - [Bazy danych platformy Azure dla PostgreSQL (wersja zapoznawcza)](https://azure.microsoft.com/services/postgresql)
    - [MySQL w aplikacji](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
  
 
@@ -161,7 +161,7 @@ Można zautomatyzować zarządzania kopiami zapasowymi za pomocą skryptów przy
 
 Aby uzyskać przykłady zobacz:
 
-- [Przykładów dla interfejsu wiersza polecenia platformy Azure](app-service-cli-samples.md)
+- [Przykłady interfejsu wiersza polecenia platformy Azure](app-service-cli-samples.md)
 - [Przykładów dla platformy Azure PowerShell](app-service-powershell-samples.md)
 
 <a name="nextsteps"></a>

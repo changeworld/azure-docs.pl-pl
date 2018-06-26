@@ -11,12 +11,12 @@ ms.custom: managed instance
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: 8f666bc352dc1706da4812590f85adc7695e2f13
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a5a81279726e5c221d9ae4734466a04ae5912af6
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647666"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936806"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migracja wystąpienia programu SQL Server do wystąpienia zarządzane bazy danych SQL Azure
 
@@ -78,7 +78,6 @@ Zarządzane wystąpienie obsługuje następujące opcje migracji bazy danych (ob
 
 - Usługa Azure migracji bazy danych — migracji przestojów bliskie zeru
 - Natywny RESTORE z adresu URL - korzysta natywnych kopii zapasowych z programu SQL Server i wymaga Przestój
-- Przeprowadzić migrację za pomocą pliku pliku BACPAC — używa pliku BACPAC pliku z serwera SQL lub bazy danych SQL i wymaga Przestój
 
 ### <a name="azure-database-migration-service"></a>Azure Database Migration Service
 
@@ -107,10 +106,6 @@ Poniższa tabela zawiera więcej informacji dotyczących metody, których można
 > Przywracanie bazy danych systemu nie jest obsługiwane. Aby przeprowadzić migrację obiektów na poziomie wystąpienia (przechowywane w bazach danych master i msdb), zaleca się ich skryptów i uruchamianie skryptów T-SQL w wystąpieniu docelowym.
 
 Pełna samouczek obejmuje przywracanie kopii zapasowej bazy danych do wystąpienia zarządzane przy użyciu poświadczeń sygnatury dostępu Współdzielonego, zobacz [Przywracanie z kopii zapasowej do wystąpienia zarządzane](sql-database-managed-instance-restore-from-backup-tutorial.md).
-
-### <a name="migrate-using-bacpac-file"></a>Przeprowadzić migrację za pomocą pliku BACPAC pliku
-
-Można zaimportować do bazy danych SQL Azure i zarządzane wystąpienia z Utwórz kopię oryginalnej bazy danych z danymi w pliku pliku BACPAC. Zobacz [Importowanie pliku pliku BACPAC do nowej bazy danych SQL Azure](sql-database-import.md).
 
 ## <a name="monitor-applications"></a>Monitorowanie aplikacji
 

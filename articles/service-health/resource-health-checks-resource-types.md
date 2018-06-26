@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 10/09/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 831383ffa3aa3464f3d62da4e1609cf3f1a4707e
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: e37266f2438f9c6bc9de2d01624bda77f9d6ee8a
+ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309600"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36945877"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy zasobów i kondycji sprawdza w kondycji zasobów platformy Azure
 Poniżej przedstawiono pełną listę wszystkie testy wykonane przez kondycja zasobów według typów zasobów.
@@ -62,13 +62,13 @@ Poniżej przedstawiono pełną listę wszystkie testy wykonane przez kondycja za
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.datalakeanalytics/accounts
 |Wykonanie testów|
 |---|
-|<ul><li>Czy użytkownicy przesyłania zadań usługi Data Lake Analytics w regionie?</li><li>Czy wykonywania podstawowych zadań i pomyślnie w regionie?</li><li>Użytkownicy można wyświetlić listę elementów katalogu w regionie?</li>|
+|<ul><li>Występują problemy doświadczeni użytkownicy przesyłania lub listę zadań usługi Data Lake Analytics?</li><li>Możemy ukończyć błędów systemowych zadań usługi Data Lake Analytics?</li></ul>|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.datalakestore/accounts
 |Wykonanie testów|
 |---|
-|<ul><li>Można użytkownikom przekazywanie danych do usługi Data Lake Store w regionie</li><li>Użytkownicy pobrać danych z usługi Data Lake Store w regionie?</li></ul>|
+|<ul><li>Użytkownicy wystąpić problemy przekazywanie danych do usługi Data Lake Store?</li><li>Użytkownicy wystąpić problemy pobieranie danych z usługi Data Lake Store?</li></ul>|
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
 

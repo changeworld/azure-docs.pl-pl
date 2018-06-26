@@ -1,7 +1,7 @@
 W tym przewodniku będzie Dowiedz się jak używać **Salesforce — po utworzeniu obiektu** trigger, aby inicjować przepływ pracy aplikacji logiki, podczas tworzenia nowego potencjalnego klienta w Salesforce.
 
 > [!NOTE]
-> Zostanie wyświetlony monit do logowania się do konta usług Salesforce, jeśli nie została jeszcze utworzona *połączenia* do usług Salesforce.  
+> Zostanie wyświetlony monit, aby zalogować się do konta usług Salesforce, jeśli nie została jeszcze utworzona *połączenia* do usług Salesforce.  
 > 
 > 
 

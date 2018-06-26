@@ -3,7 +3,7 @@ title: Jak używać PerfInsights na platformie Microsoft Azure | Dokumentacja fi
 description: Uzyskuje informacje o sposobie używania PerfInsights do rozwiązywania problemów z wydajnością maszyny Wirtualnej systemu Windows.
 services: virtual-machines-windows'
 documentationcenter: ''
-author: genlin
+author: anandhms
 manager: cshepard
 editor: na
 tags: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: cac17b5f3ee730bf1f56dbfd05b6c6d3b02c891f
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 2f496f906eef416b35e2e59b2db93481ce65acb1
+ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34160662"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36946541"
 ---
-# <a name="how-to-use-perfinsights"></a>Jak używać PerfInsights 
+# <a name="how-to-use-perfinsights"></a>Jak używać PerfInsights
 
 [PerfInsights](http://aka.ms/perfinsightsdownload) to narzędzie Diagnostyka samodzielnej pomocy, które zbiera i analizuje dane diagnostyczne i udostępnia raport, aby ułatwić rozwiązywanie problemów z wydajnością maszyny wirtualnej systemu Windows na platformie Azure. PerfInsights może działać na maszynach wirtualnych jako autonomicznego narzędzia lub bezpośrednio z portalu, instalując [rozszerzenia maszyny Wirtualnej systemu Azure wydajności diagnostyki](performance-diagnostics-vm-extension.md).
 
@@ -31,7 +31,7 @@ Jeśli występują problemy z wydajnością maszyn wirtualnych przed skontaktowa
 
 PerfInsights można zbierać i analizować kilka rodzajów informacji. W poniższych częściach omówiono typowe scenariusze.
 
-### <a name="collect-basic-configuration"></a>Zbierz dane o konfiguracji podstawowej 
+### <a name="quick-performance-analysis"></a>Analiza wydajności szybki
 
 W tym scenariuszu zbiera konfiguracji dysku i inne ważne informacje, w tym:
 
@@ -64,11 +64,11 @@ W tym scenariuszu uruchamia [Diskspd](https://github.com/Microsoft/diskspd) test
 > W tym scenariuszu może mieć wpływ na system i nie powinny być uruchamiane na komputerze produkcyjnym. W razie potrzeby uruchom ten scenariusz, w oknie obsługi dedykowanych Aby uniknąć problemów. Większe obciążenie jest spowodowane testu śledzenia lub testu porównawczego może niekorzystnie wpłynąć na wydajność maszyny Wirtualnej.
 >
 
-### <a name="slow-vm-analysis"></a>Powolne analizy maszyny Wirtualnej 
+### <a name="slow-vm-analysis"></a>Analiza powoli maszyny Wirtualnej
 
 W tym scenariuszu uruchamia [licznika wydajności](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx) śledzenia przy użyciu liczniki, które są określone w pliku RuleEngineConfig.json. Jeśli maszyna wirtualna zostanie zidentyfikowana jako serwer, na którym działa program SQL Server, jest uruchamiany śledzenia licznika wydajności. Robi to przy użyciu liczniki, które znajdują się w pliku RuleEngineConfig.json. Taki scenariusz obejmuje również dane dotyczące wydajności diagnostyki.
 
-### <a name="azure-files-analysis"></a>Azure analizy plików 
+### <a name="azure-files-analysis"></a>Usługa pliki Azure analizy
 
 W tym scenariuszu uruchamia przechwytywania licznika wydajności specjalne wraz z śledzenia ścieżek połączeń sieciowych. Przechwytywania zawiera wszystkie bloku komunikatów serwera (SMB) udziałów liczników klienta. Poniżej przedstawiono niektóre kluczowe klienta udziału liczniki wydajności protokołu SMB należących do przechwytywania:
 
@@ -90,9 +90,9 @@ W tym scenariuszu uruchamia przechwytywania licznika wydajności specjalne wraz 
 |              | Średni Długość kolejki zapisu       |
 |              | Średni Długość kolejki danych        |
 
-### <a name="custom-slow-vm-analysis"></a>Niestandardowe powolne analizy maszyny Wirtualnej 
+### <a name="advanced-slow-vm-analysis"></a>Zaawansowane analizy powolne maszyny Wirtualnej
 
-Po uruchomieniu niestandardowych powolne analizy maszyny Wirtualnej, należy wybrać dane śledzenia do uruchomienia równoległego. Jeśli chcesz, można je uruchomić wszystkie (licznika wydajności, program Xperf, sieci i StorPort).  
+Po uruchomieniu zaawansowanej analizy powolne maszyny Wirtualnej, należy wybrać dane śledzenia do uruchomienia równoległego. Jeśli chcesz, można je uruchomić wszystkie (licznika wydajności, program Xperf, sieci i StorPort).  
 
 > [!Note]
 > W tym scenariuszu może mieć wpływ na system i nie powinny być uruchamiane na komputerze produkcyjnym. W razie potrzeby uruchom ten scenariusz, w oknie obsługi dedykowanych Aby uniknąć problemów. Większe obciążenie jest spowodowane testu śledzenia lub testu porównawczego może niekorzystnie wpłynąć na wydajność maszyny Wirtualnej.
@@ -104,7 +104,7 @@ Rejestruje informacje dotyczące maszyny Wirtualnej systemu Windows, dyski lub k
 
 |Zebrane dane                              |  |  | Scenariusze wydajności |  |  | |
 |----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
-|                               | Zbierz dane o konfiguracji podstawowej | Benchmarking | Powolne analizy maszyny Wirtualnej | Azure analizy plików | Niestandardowe powolne analizy maszyny Wirtualnej |
+|                               | Analiza wydajności szybki | Benchmarking | Analiza powoli maszyny Wirtualnej | Usługa pliki Azure analizy | Zaawansowane analizy powolne maszyny Wirtualnej |
 | Informacje z dzienników zdarzeń       | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
 | Informacje o systemie                | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
 | Mapa woluminu                        | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
@@ -171,9 +171,9 @@ Testy obciążenia We/Wy narzędzia Diskspd (dysku systemu operacyjnego [zapisu]
 
 #### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>Możliwe problemy z po uruchomieniu narzędzia na maszynach wirtualnych w środowisku produkcyjnym
 
--  Scenariusz najlepszymi lub scenariusza "Niestandardowe powolne analizy maszyny Wirtualnej", który jest skonfigurowany do używania narzędzia Xperf lub narzędzia Diskspd narzędzie może niekorzystnie wpłynąć na wydajność maszyny Wirtualnej. Te scenariusze nie powinna być uruchamiana w środowisku produkcyjnym.
+-  Scenariusz najlepszymi lub scenariusza "Zaawansowane analizy powolne maszyny Wirtualnej", który jest skonfigurowany do używania narzędzia Xperf lub narzędzia Diskspd narzędzie może niekorzystnie wpłynąć na wydajność maszyny Wirtualnej. Te scenariusze nie powinna być uruchamiana w środowisku produkcyjnym.
 
--  Scenariusz najlepszymi lub scenariusza "Niestandardowe powolne analizy maszyny Wirtualnej", który jest skonfigurowany do używania narzędzia Diskspd upewnij się, że nie inne operacje w tle zakłóca obciążenia We/Wy.
+-  Scenariusz najlepszymi lub scenariusza "Zaawansowane analizy powolne maszyny Wirtualnej", który jest skonfigurowany do używania narzędzia Diskspd upewnij się, że nie inne operacje w tle zakłóca obciążenia We/Wy.
 
 -  Domyślnie narzędzie używa dysku tymczasowego magazynu do zbierania danych. Jeśli śledzenie pozostaje włączona przez dłuższy czas, ilość zbieranych danych może być istotne. Można zmniejszyć dostępność miejsca na dysku tymczasowym, a w związku z tym może mieć wpływ na dowolnej aplikacji, która opiera się na tym dysku.
 
@@ -218,10 +218,16 @@ Aby uruchomić narzędzie PerfInsights, wykonaj następujące kroki:
     PerfInsights /run vmslow /d 300 /AcceptDisclaimerAndShareDiagnostics
     ```
 
-    Poniższy przykład umożliwia uruchamianie niestandardowych scenariusza z wydajności i narzędzia Xperf licznika danych śledzenia, co 5 minut.:
+    Poniższy przykład umożliwia uruchamianie bardziej zaawansowany scenariusz z wydajności i narzędzia Xperf licznika danych śledzenia w ciągu 5 minut:
     
     ```
-    PerfInsights /run custom xp /d 300 /AcceptDisclaimerAndShareDiagnostics
+    PerfInsights /run advanced xp /d 300 /AcceptDisclaimerAndShareDiagnostics
+    ```
+
+    Można użyć poniższym przykładzie do uruchomienia powolne scenariusz maszyny Wirtualnej w ciągu 5 minut, a następnie przekaż plik zip wynik do konta magazynu:
+    
+    ```
+    PerfInsights /run vmslow /d 300 /AcceptDisclaimerAndShareDiagnostics /sa <StorageAccountName> /sk <StorageAccountKey>
     ```
 
     Można wyszukiwać wszystkie dostępne scenariuszy i opcje przy użyciu **/list** polecenia:
@@ -237,7 +243,7 @@ Aby uruchomić narzędzie PerfInsights, wykonaj następujące kroki:
     >
     >Domyślnie PerfInsights próbuje aktualizowanie się do najnowszej wersji, jeśli jest dostępna. Użyj **/SkipAutoUpdate** lub **/sau** parametru pomijania automatycznej aktualizacji.  
     >
-    >Jeśli przełącznik czas trwania **/d** nie zostanie określony, PerfInsights spowoduje wyświetlenie monitu do odtworzenia problemu podczas uruchamiania vmslow, azurefiles i scenariusze dostosowywania. 
+    >Jeśli przełącznik czas trwania **/d** nie zostanie określony, PerfInsights spowoduje wyświetlenie monitu do odtworzenia problemu podczas uruchamiania vmslow, azurefiles i zaawansowanych scenariuszy. 
 
 Po ukończeniu operacji lub dane śledzenia w tym samym folderze co PerfInsights pojawi się nowy plik. Nazwa pliku jest **CollectedData\_RRRR MM-dd\_hh-mm-ss-fff.zip.** Można wysłać ten plik do agenta programu obsługi dla analizy lub otworzyć raport w pliku zip, aby przejrzeć wyniki i zalecenia.
 
@@ -251,9 +257,9 @@ Wybierz **ustalenia** kartę.
 ![zrzut ekranu przedstawiający raport PerfInsights](media/how-to-use-perfInsights/findings.PNG)
 
 > [!NOTE] 
-> Ustalenia skategoryzowane jako krytyczne znane problemy, które mogą powodować problemy z wydajnością. Wyniki są sklasyfikowane jako ważne reprezentują-optymalne konfiguracje, które nie muszą powodować problemy z wydajnością. Ustalenia skategoryzowane jako informacyjne są tylko szczegółowych instrukcji.
+> Ustalenia sklasyfikowane jako wysoki znane problemy, które mogą powodować problemy z wydajnością. Ustalenia skategoryzowany jako średni reprezentują-optymalne konfiguracje, które nie muszą powodować problemy z wydajnością. Ustalenia skategoryzowane jako niskie są tylko szczegółowych instrukcji.
 
-Przejrzyj zalecenia i linki do wszystkich krytycznych i ważne dane. Informacje o ich wpływu na wydajność i dotyczących najlepszych rozwiązań dotyczących konfiguracji zoptymalizowana pod kątem wydajności.
+Przejrzyj zalecenia i linki do wszystkich wyników wysokiej i średniej. Informacje o ich wpływu na wydajność i dotyczących najlepszych rozwiązań dotyczących konfiguracji zoptymalizowana pod kątem wydajności.
 
 ### <a name="storage-tab"></a>Karta magazynu
 

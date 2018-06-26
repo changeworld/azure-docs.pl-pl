@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 0b38054ec623dc34daa3d18612e3356475655f35
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: dda37600dffaf1e8e1c85c9757696f2d8219febb
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331329"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751674"
 ---
 # <a name="azure-sql-database-purchasing-models-and-resources"></a>Azure SQL Database zakupu modeli i zasoby 
 
@@ -30,7 +30,7 @@ Następujących tabel i wykresów porównania i kontrastu te dwa modele zakupów
 
 |**Model kupna**|**Opis**|**Najlepsze dla**|
 |---|---|---|
-|Model oparty na jednostkach DTU|Ten model jest oparty na powiązane miary obliczeniowej, magazynu i zasobów we/wy. Poziomy wydajności są wyrażane jako liczba jednostek DTU (Database Transaction Unit) dla pojedynczych baz danych oraz jako liczba jednostek eDTU (elastic Database Transaction Unit) dla pul elastycznych. Aby uzyskać więcej informacji na temat jednostek Dtu a Edtu, zobacz [co to są Dtu a Edtu](sql-database-what-is-a-dtu.md)?|Najlepsze dla klientów, którzy zasobów proste, wstępnie skonfigurowane opcje.| 
+|Model oparty na jednostkach DTU|Ten model jest oparty na powiązane miary obliczeniowej, magazynu i zasobów we/wy. Poziomy wydajności są wyrażane jako liczba jednostek DTU (Database Transaction Unit) dla pojedynczych baz danych oraz jako liczba jednostek eDTU (elastic Database Transaction Unit) dla pul elastycznych. Aby uzyskać więcej informacji na temat jednostek Dtu a Edtu, zobacz [co to są Dtu a Edtu](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)?|Najlepsze dla klientów, którzy zasobów proste, wstępnie skonfigurowane opcje.| 
 |Model oparty na rdzeniach wirtualnych|Ten model umożliwia niezależnie skalowanie zasobów obliczeniowych i magazynu. Umożliwia on również używać korzyści hybrydowe platformy Azure dla programu SQL Server w celu uzyskania oszczędności.|Najlepsze dla klientów, którzy wartość elastyczność, kontroli i przejrzystości.|
 ||||  
 

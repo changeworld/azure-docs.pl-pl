@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: 23ace9f643596c4519014f370cf0142540724be6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b7751bd1b309333d5ef40530b0fa499a42a57cd1
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635444"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752252"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wybierz prawa warstwy Centrum IoT dla rozwiązania
 
@@ -53,34 +53,34 @@ Różnica między warstwami podstawowa i standardowa Centrum IoT oznacza, że ni
 
 | Interfejs API | Warstwa Podstawowa | Warstwa standardowa |
 | --- | ---------- | ------------- |
-| [Usuwanie urządzenia](https://docs.microsoft.com/rest/api/iothub/deviceapi/deletedevice) | Yes | Yes |
-| [Pobierz urządzenia](https://docs.microsoft.com/rest/api/iothub/deviceapi/getdevice) | Yes | Yes |
+| [Usuwanie urządzenia](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/deletedevice) | Yes | Yes |
+| [Pobierz urządzenia](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getdevice) | Yes | Yes |
 | Usunąć modułu. | Yes | Yes |
 | Pobieranie modułu | Yes | Yes |
-| [Uzyskać statystyki rejestru](https://docs.microsoft.com/rest/api/iothub/deviceapi/getregistrystatistics) | Yes | Yes |
-| [Uzyskać statystyki usług](https://docs.microsoft.com/rest/api/iothub/deviceapi/getservicestatistics) | Yes | Yes |
+| [Uzyskać statystyki rejestru](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getdeviceregistrystatistics) | Yes | Yes |
+| [Uzyskać statystyki usług](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getservicestatistics) | Yes | Yes |
 | [Umieść urządzenia](https://docs.microsoft.com/rest/api/iothub/deviceapi/putdevice) | Yes | Yes |
 | Umieść moduł | Yes | Yes |
 | [Kwerenda urządzeń](https://docs.microsoft.com/rest/api/iothub/deviceapi/querydevices) | Yes | Yes |
 | Moduły zapytania | Yes | Yes |
-| [Tworzenie przekazywania pliku identyfikatora URI połączenia SAS](https://docs.microsoft.com/rest/api/iothub/httpruntime/createfileuploadsasuri) | Yes | Yes |
-| [Otrzymywanie powiadomień urządzenie powiązane](https://docs.microsoft.com/rest/api/iothub/httpruntime/receivedeviceboundnotification) | Yes | Yes |
-| [Wysyłanie zdarzeń urządzenia](https://docs.microsoft.com/rest/api/iothub/httpruntime/senddeviceevent) | Yes | Yes |
+| [Tworzenie przekazywania pliku identyfikatora URI połączenia SAS](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/createfileuploadsasuri) | Yes | Yes |
+| [Otrzymywanie powiadomień urządzenie powiązane](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/receivedeviceboundnotification) | Yes | Yes |
+| [Wysyłanie zdarzeń urządzenia](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/senddeviceevent) | Yes | Yes |
 | Wysyłanie zdarzeń modułu | Yes | Yes |
-| [Zaktualizuj stan przekazywania pliku](https://docs.microsoft.com/rest/api/iothub/httpruntime/updatefileuploadstatus) | Yes | Yes |
-| [Operacja zbiorcza urządzenia](https://docs.microsoft.com/rest/api/iothub/deviceapi/bulkdeviceoperation) | Tak, z wyjątkiem możliwości krawędzi IoT | Yes | 
-| [Przeczyścić kolejki poleceń](https://docs.microsoft.com/rest/api/iothub/deviceapi/purgecommandqueue) |   | Yes |
-| [Pobierz dwie urządzenia](https://docs.microsoft.com/rest/api/iothub/devicetwinapi/getdevicetwin) |   | Yes |
+| [Zaktualizuj stan przekazywania pliku](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/updatefileuploadstatus) | Yes | Yes |
+| [Operacja zbiorcza urządzenia](https://docs.microsoft.com/en-us/rest/api/iot-dps/deviceenrollment/bulkoperation) | Tak, z wyjątkiem możliwości krawędzi IoT | Yes | 
+| [Przeczyścić kolejki poleceń](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/purgecommandqueue) |   | Yes |
+| [Pobierz dwie urządzenia](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/gettwin) |   | Yes |
 | Pobierz moduł dwie |   | Yes |
-| [Wywoływanie metody urządzenia](https://docs.microsoft.com/rest/api/iothub/devicetwinapi/invokedevicemethod) |   | Yes |
-| [Zaktualizuj dwie urządzenia](https://docs.microsoft.com/rest/api/iothub/devicetwinapi/updatedevicetwin) |   | Yes | 
+| [Wywoływanie metody urządzenia](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/invokedevicemethod) |   | Yes |
+| [Zaktualizuj dwie urządzenia](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/updatetwin) |   | Yes | 
 | Dwie modułu aktualizacji |   | Yes | 
-| [Opuszczenie urządzenie powiązane powiadomień](https://docs.microsoft.com/rest/api/iothub/httpruntime/abandondeviceboundnotification) |   | Yes |
-| [Kompletne urządzenie powiązane powiadomień](https://docs.microsoft.com/rest/api/iothub/httpruntime/completedeviceboundnotification) |   | Yes |
-| [Anulowanie zadania](https://docs.microsoft.com/rest/api/iothub/jobapi/canceljob) |   | Yes |
-| [Utwórz zadanie](https://docs.microsoft.com/rest/api/iothub/jobapi/createjob) |   | Yes |
-| [Pobierz zadanie](https://docs.microsoft.com/rest/api/iothub/jobapi/getjob) |   | Yes |
-| [Zadania zapytania](https://docs.microsoft.com/rest/api/iothub/jobapi/queryjobs) |   | Yes |
+| [Opuszczenie urządzenie powiązane powiadomień](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/abandondeviceboundnotification) |   | Yes |
+| [Kompletne urządzenie powiązane powiadomień](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/completedeviceboundnotification) |   | Yes |
+| [Anulowanie zadania](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/canceljob) |   | Yes |
+| [Utwórz zadanie](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/createjob) |   | Yes |
+| [Pobierz zadanie](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getjob) |   | Yes |
+| [Zadania zapytania](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/queryjobs) |   | Yes |
 
 ## <a name="message-throughput"></a>Wydajność obsługi wiadomości
 

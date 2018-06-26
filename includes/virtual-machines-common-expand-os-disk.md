@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/18/2018
 ms.author: kirpas;iainfou;sewhee
 ms.custom: include file
-ms.openlocfilehash: c8b48c9b3ebd6b40640a744f00673158c07cdc3a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: ab4d5326fc06cc8676ea93ed529315cc47651e26
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35323803"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36943457"
 ---
 ## <a name="overview"></a>Przegląd
 Podczas tworzenia nowej maszyny wirtualnej (VM) w grupie zasobów przez wdrożenie obrazu z [portalu Azure Marketplace](https://azure.microsoft.com/marketplace/), domyślnym dysku systemu operacyjnego jest często 127 GB (niektóre obrazy mają mniejsze rozmiary dysku systemu operacyjnego domyślnie). Mimo iż możliwe jest dodawanie dysków danych do maszyny wirtualnej (ich liczba zależy od wybranej jednostki magazynowej), a ponadto zaleca się instalowanie aplikacji i obciążeń intensywnie wykorzystujących procesor CPU na tych dodatkowych dyskach, klienci często muszą rozszerzać dysk systemu operacyjnego w celu obsługi niektórych scenariuszy, takich jak następujące:
@@ -36,7 +36,7 @@ W tym artykule opisano zadanie zmiany rozmiaru dysku systemu operacyjnego przy u
 
 Otwórz okno programu Powershell ISE lub Powershell w trybie administracyjnym:
 
-1. Zaloguj się na swoje konto platformy Microsoft Azure w trybie zarządzania zasobami i wybierz swoją subskrypcję w następujący sposób:
+1. Zaloguj się do konta Microsoft Azure w trybie zarządzania zasobów i wybrać subskrypcję w następujący sposób:
    
    ```Powershell
    Connect-AzureRmAccount
@@ -79,7 +79,7 @@ Otwórz okno programu Powershell ISE lub Powershell w trybie administracyjnym:
 
 Otwórz okno programu Powershell ISE lub Powershell w trybie administracyjnym:
 
-1. Zaloguj się na swoje konto platformy Microsoft Azure w trybie zarządzania zasobami i wybierz swoją subskrypcję w następujący sposób:
+1. Zaloguj się do konta Microsoft Azure w trybie zarządzania zasobów i wybrać subskrypcję w następujący sposób:
    
    ```Powershell
    Connect-AzureRmAccount

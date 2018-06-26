@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2018
 ms.author: terrylan
-ms.openlocfilehash: 7cb6927b8de07566428050e06a981c8f3afabb05
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d6117b5b071e780841f4450a205287d005e11801
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227527"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752184"
 ---
 # <a name="azure-security-overview"></a>Przegląd zabezpieczeń platformy Azure
 
-Witryny Microsoft Azure zabezpieczeń informacji w witrynie Azure.com jest Twoje miejsce techniczne odpowiedzi na pytania zabezpieczeń platformy Azure. Jeśli interesuje Cię zgodności platformy Azure i jak Azure zabezpiecza własnej infrastruktury, odwiedź stronę [Microsoft Trust Center](https://www.microsoft.com/en-us/TrustCenter/).
+Witryny Microsoft Azure zabezpieczeń informacji w witrynie Azure.com jest Twoje miejsce techniczne odpowiedzi na pytania zabezpieczeń platformy Azure. Jeśli interesuje Cię zgodności platformy Azure i jak Azure zabezpiecza własnej infrastruktury, odwiedź stronę [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx).
 
 Wiemy, że zabezpieczenia są zadania, co w chmurze i jak ważne jest aby znaleźć dokładne i aktualne informacje na temat zabezpieczeń platformy Azure. Najważniejsze przyczyny na potrzeby aplikacji i usług Azure ma korzystać z szerokiej gamy narzędzi zabezpieczeń i możliwości są dostępne. Te narzędzia i funkcje pomocy umożliwiają tworzenie bezpiecznych rozwiązań na bezpiecznej platformie Azure.
 

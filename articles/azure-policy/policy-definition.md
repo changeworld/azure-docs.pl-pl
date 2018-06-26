@@ -8,12 +8,12 @@ ms.date: 05/24/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 320ca0da946a0f04517c9ed4e8a61a868d2bb27c
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 2f756d65fa167b3812772088aec7232d08b04b9f
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260485"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937336"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -192,7 +192,8 @@ Wynikiem warunku jest czy **pola** spełnia określone kryteria. Są obsługiwan
 - `"notContainsKey": "keyName"`
 - `"exists": "bool"`
 
-Korzystając z **jak** i **notLike** warunki, można zapewnić symbolu wieloznacznego (*) w wartości. Wartość nie może zawierać więcej niż 1 symbol wieloznaczny (*).
+Korzystając z **jak** i **notLike** warunki, można podać symbol wieloznaczny `*` wartości.
+Wartość nie powinna zawierać więcej niż jeden symbol wieloznaczny `*`.
 
 Korzystając z **odpowiada** i **notMatch** warunki `#` do reprezentowania cyfrę, `?` literę i znak reprezentują rzeczywiste znaku. Aby uzyskać przykłady, zobacz [Zezwalaj wielu wzorce nazw](scripts/allow-multiple-name-patterns.md).
 
@@ -314,9 +315,9 @@ Zawsze rośnie listę aliasów. Aby dowiedzieć się, jakie aliasy są obecnie o
   GET https://management.azure.com/providers/?api-version=2017-08-01&$expand=resourceTypes/aliases
   ```
 
-## <a name="initiatives"></a>Inicjatyw
+## <a name="initiatives"></a>Inicjatywy
 
-Włącz inicjatyw kilka grupy powiązane definicje zasad, aby uprościć zadania i zarządzania, ponieważ współdziała z grupą jako pojedynczy element. Na przykład można grupować wszystkie powiązane definicje zasad znakowania w jednym inicjatywy. Zamiast przypisywać każdej zasady pojedynczo, należy zastosować tej inicjatywy.
+Inicjatyw umożliwiają grupowanie kilku definicje pokrewnych zasad, aby uprościć zadania i zarządzania, ponieważ współdziała z grupą jako pojedynczy element. Na przykład można grupować wszystkie powiązane definicje zasad znakowania w jednym inicjatywy. Zamiast przypisywać każdej zasady pojedynczo, należy zastosować tej inicjatywy.
 
 Poniższy przykład przedstawia sposób tworzenia inicjatywą obsługi dwa tagi: `costCenter` i `productName`. Używa dwóch wbudowane zasady do zastosowania domyślną wartość tagu.
 
@@ -392,6 +393,6 @@ Poniższy przykład przedstawia sposób tworzenia inicjatywą obsługi dwa tagi:
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-- Przejrzyj więcej przykładów w [Przykłady zasad Azure](json-samples.md).
+- Zobacz więcej przykładów w witrynie [Przykłady dla usługi Azure Policy](json-samples.md).

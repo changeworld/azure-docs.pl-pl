@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: magoedte
-ms.openlocfilehash: e46ae3af3a718703f9e1d6b847b2342469bf3a1e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 52c3914cc1b51bf7c2a6d0fbf28dc0bf7756e749
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31517227"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751449"
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Wyszukiwanie zasobów między dziennika w analizy dzienników  
 
 Wcześniej z Azure Log Analytics tylko przeanalizowanie danych z poziomu bieżący obszar roboczy, a ono ograniczone możliwości zapytań przez wiele obszarów roboczych, zdefiniowane w ramach subskrypcji.  Ponadto można przeszukiwać tylko elementy dane telemetryczne zebrane z aplikacji sieci web z usługą Application Insights bezpośrednio w usłudze Application Insights lub z programu Visual Studio.  To również go wyzwanie natywnie analizowanie operacyjne i dane aplikacji jednocześnie.   
 
-Teraz można badać nie tylko przez wiele obszarów roboczych usługi Analiza dzienników, ale także dane z określonej aplikacji usługi Application Insights w tej samej grupie zasobów, w innej grupie zasobów lub w innej subskrypcji. Udostępnia systemowe widoku danych.  Można wykonać tylko te typy zapytań w [portal zaawansowane](log-analytics-log-search-portals.md#advanced-analytics-portal), a nie w portalu Azure.  
+Teraz można badać nie tylko przez wiele obszarów roboczych usługi Analiza dzienników, ale także dane z określonej aplikacji usługi Application Insights w tej samej grupie zasobów, w innej grupie zasobów lub w innej subskrypcji. Udostępnia systemowe widoku danych.  Można wykonać tylko te typy zapytań w [portal zaawansowane](log-analytics-log-search-portals.md#advanced-analytics-portal), a nie w portalu Azure. Liczba zasobów (analizy dzienników obszarów roboczych i aplikacji usługi Application Insights), które można uwzględnić w jednym zapytaniu jest ograniczona do 100. 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Wykonywanie zapytania między obszarami roboczymi analizy dzienników i z usługi Application Insights
 Aby odwołać się do innego obszaru roboczego w kwerendzie użyć [ *obszaru roboczego* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/workspace()) identyfikator i dla aplikacji z usługi Application Insights, użyj [ *aplikacji* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/app())identyfikator.  
 
 ### <a name="identifying-workspace-resources"></a>Identyfikowanie zasobów obszaru roboczego
-W poniższych przykładach pokazano kwerendy między obszarami roboczymi analizy dzienników zwraca podsumowania Licznik aktualizacji z aktualizacja tabeli w obszarze roboczym o nazwie *contosoretail-it*. 
+W poniższych przykładach pokazano zapytań przez obszar roboczy analizy dzienników, aby zwraca podsumowanie liczby aktualizacji z tabeli aktualizacji w obszarze roboczym o nazwie *contosoretail it*. 
 
 Identyfikowanie obszaru roboczego można zakończonej co kilka sposobów:
 

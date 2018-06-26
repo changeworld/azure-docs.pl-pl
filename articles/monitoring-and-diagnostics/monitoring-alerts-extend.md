@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: c01f986bfe3e6a3162988056a268423e07f429bf
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 6484142eafa8388117c1e96ab31eefeab188e488
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301154"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750276"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>Rozszerzenie alerty usługi Analiza dzienników Azure alertów
-Niedawna Azure Log Analytics uwzględnione własną funkcję alertów, która może proaktywnie powiadamia użytkownika o warunków na podstawie danych analizy dzienników. Zarządzane reguły alertów w [portal programu Microsoft Operations Management Suite](../operations-management-suite/operations-management-suite-overview.md). Nowe środowisko alertów ma teraz zintegrowane alertów w różnych usługach w Microsoft Azure. To ustawienie jest dostępne jako **alerty** w obszarze Monitor Azure w portalu Azure i obsługuje alerty z działania dzienniki, metryki oraz Dzienniki z analizy dzienników i Azure Application Insights. 
+Niedawna Azure Log Analytics uwzględnione własną funkcję alertów, która może proaktywnie powiadamia użytkownika o warunków na podstawie danych analizy dzienników. Możesz zarządzać reguły alertów w portalu programu Microsoft Operations Management Suite. Nowe środowisko alertów ma teraz zintegrowane alertów w różnych usługach w Microsoft Azure. To ustawienie jest dostępne jako **alerty** w obszarze Monitor Azure w portalu Azure i obsługuje alerty z działania dzienniki, metryki oraz Dzienniki z analizy dzienników i Azure Application Insights. 
 
 ## <a name="benefits-of-extending-your-alerts"></a>Korzyści z rozszerzenia alerty
 Istnieje kilka zalet tworzenie i Zarządzanie alertami w portalu Azure, takich jak:

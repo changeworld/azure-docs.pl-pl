@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: 0df54d1758693bce5fb5fd74c3be9c4cfd7dccb6
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 3377a0b4e6440d83962d103b3e1770ccf43bd785
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33885272"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752925"
 ---
 # <a name="management-solutions-in-azure"></a>Rozwiązania do zarządzania na platformie Azure
 Rozwiązania do zarządzania korzystać z usług Azure, aby zapewnić dodatkowy wgląd w funkcjonowanie określonej aplikacji lub usługi. Ten artykuł zawiera krótki przegląd rozwiązań do zarządzania Azure i uzyskać szczegółowe informacje na i ich instalowania.
@@ -52,21 +52,17 @@ Kliknij nazwę rozwiązania, aby otworzyć jej stronę podsumowania. Ta strona w
 ![Właściwości rozwiązania](media/monitoring-solutions/solution-properties.png)
 
 
-## <a name="find-management-solutions"></a>Znajdź rozwiązania do zarządzania
-Można przeglądanie i instalowanie dostępnych rozwiązań do zarządzania firmy Microsoft i partnerów w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace). Wykonaj [Wyszukaj *rozwiązań do zarządzania* ](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions) Filtruj rozwiązań do zarządzania, a następnie kliknij przycisk dowolny element, aby uzyskać więcej szczegółów.
-
-![Portal Marketplace](media/monitoring-solutions/marketplace.png)
 
 ## <a name="install-a-management-solution"></a>Instalowanie rozwiązania do zarządzania
+Rozwiązania do zarządzania firmy Microsoft i partnerów są dostępne z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com). Można wyszukiwanie dostępnych rozwiązań i zainstalować je za pomocą poniższej procedury.
 
-### <a name="install-a-management-solution-from-the-azure-marketplace"></a>Instalowanie rozwiązania do zarządzania z poziomu portalu Azure Marketplace
-Można użyć dowolnej z następujących metod do lokalizowania i rozpocząć instalację rozwiązania do zarządzania.
+1. Z [listę rozwiązań dla Twojej subskrypcji](#list-installed-management-solutions), kliknij przycisk **Dodaj**. 
+1. Po prawej stronie **rozwiązań do zarządzania**, kliknij przycisk **więcej**. 
+1. Znajdź rozwiązania do zarządzania mają i zapoznaj się z artykułem jego opis.
+1. Kliknij przycisk **Utwórz** do uruchamiania procesu instalacji.
+1. Podczas uruchamiania procesu instalacji, zostanie wyświetlony monit o podanie wymaganej konfiguracji, który różni się każde rozwiązanie. Wszystkie z nich wymaga wybierz obszar roboczy analizy dzienników zainstalowaną rozwiązania i gdzie będą zbierane dane. 
 
-- Kliknij przycisk **Pobierz teraz** na rozwiązanie do zarządzania w [portalu Azure Marketplace](#find-management-solutions).
-- Z [listę rozwiązań dla Twojej subskrypcji](#list-installed-management-solutions), kliknij przycisk **Dodaj**. Po prawej stronie **rozwiązań do zarządzania**, kliknij przycisk **więcej**. Znajdź rozwiązania do zarządzania i kliknij przycisk **Utwórz**.
-- W portalu Azure wybierz **Utwórz zasób** > **monitorowanie i zarządzanie** > **zobaczyć wszystkie**. Po prawej stronie **rozwiązań do zarządzania**, kliknij przycisk **więcej**. Znajdź rozwiązania do zarządzania i kliknij przycisk **Utwórz**.
-
-Podczas uruchamiania procesu instalacji, zostanie wyświetlony monit o podanie wymaganej konfiguracji, który różni się każde rozwiązanie. Wszystkie z nich wymaga wybierz obszar roboczy analizy dzienników zainstalowaną rozwiązania i gdzie będą zbierane dane. Może być również konieczne [Określ konto usługi automatyzacja](#log-analytics-workspace-and-automation-account) Jeśli wymagane w rozwiązaniu.
+![Instalowanie rozwiązania](media/monitoring-solutions/install-solution.png)
 
 ### <a name="install-a-solution-from-the-community"></a>Instalowanie rozwiązania przez społeczność
 Członków społeczności można przesłać do szablonów Szybki Start Azure rozwiązania do zarządzania. Można zainstalować te rozwiązania bezpośrednio lub je pobrać szablonów dla nowszej instalacji.

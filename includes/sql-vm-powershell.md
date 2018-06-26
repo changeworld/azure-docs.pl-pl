@@ -7,7 +7,7 @@ Najpierw musisz mieć najnowszej [programu Azure PowerShell](http://msdn.microso
 > 
 > 
 
-Uruchom [ **Connect-AzureRmAccount** ](http://msdn.microsoft.com/library/mt619267.aspx) polecenia cmdlet zostanie wyświetlone logowania na ekranie, aby wprowadzić swoje poświadczenia. Użyj tych samych poświadczeń, których używasz do logowania w witrynie Azure Portal.
+Uruchom [ **Connect-AzureRmAccount** ](http://msdn.microsoft.com/library/mt619267.aspx) polecenia cmdlet, a użytkownik zobaczy ekranu logowania o podanie poświadczeń. Użyj tych samych poświadczeń, których używasz do logowania w witrynie Azure Portal.
 
     Connect-AzureRmAccount
 

@@ -12,25 +12,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2017
+ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: 5c2201292eb085dcc043e4257580c7971dbaffbd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 21b54f60286e25c410b9d51de8be122c450080d3
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "23945884"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752779"
 ---
 # <a name="filters-in-log-analytics-views"></a>Filtry w widokach analizy dzienników
 A **filtru** w [wyświetlić analizy dzienników](log-analytics-view-designer.md) umożliwia filtrowanie danych w widoku przez wartość określonej właściwości bez modyfikowania samego widoku.  Na przykład może pozwolić użytkownikom widoku, aby filtrować widok danych tylko z określonego komputera lub zestawu komputerów.  Można utworzyć wiele filtrów w jednym widoku pozwoli użytkownikom na filtrowanie przez wiele właściwości.  W tym artykule opisano sposób używania filtru i dodaj je do widoku niestandardowego.
 
 ## <a name="using-a-filter"></a>Przy użyciu filtru
-Kliknij przycisk **filtru** aby otworzyć okienko filtru dla widoku.  Dzięki temu można wybrać zakres czasu i wartości dla wszystkie filtry, które są dostępne dla widoku.  Po wybraniu filtru Wyświetla listę dostępnych wartości.  Można wybrać jedną lub więcej wartości lub wpisz je w. Widok jest automatycznie aktualizowany można filtrować według wartości, które określisz. 
+Kliknij zakres czasu danych u góry widoku, aby otworzyć listy rozwijanej, którym można zmienić zakres czasu danych widoku.
 
-Jeśli jest wybrana żadna wartość filtru, filtr ten nie jest stosowana do widoku.  Jeśli usuniesz wszystkie wartości filtru tego filtru nie będzie można zastosować.
+![Przykład filtru](media/log-analytics-view-designer/filters-example-time.png)
+
+Kliknij przycisk **+** Aby dodać filtr przy użyciu filtrów niestandardowych, które są zdefiniowane dla widoku. Z listy rozwijanej lub wpisz wartość, albo wybrać wartość filtru. Dodaj filtry, klikając w dalszym ciągu **+**. 
 
 
-![Przykład filtru](media/log-analytics-view-designer/filters-example.png)
+![Przykład filtru](media/log-analytics-view-designer/filters-example-custom.png)
+
+Jeśli usuniesz wszystkie wartości filtru tego filtru nie będzie można zastosować.
 
 
 ## <a name="creating-a-filter"></a>Utworzenie filtru
@@ -53,7 +57,7 @@ W poniższej tabeli przedstawiono kilka przykładów typowych filtrów.
 
 | Nazwa pola | Zapytanie o wartości | Tag |
 |:--|:--|:--|
-| Komputer   | Puls &#124; distinct Computer &#124; Sortuj według asc komputera | Komputery |
+| Computer (Komputer)   | Puls &#124; distinct Computer &#124; Sortuj według asc komputera | Komputery |
 | EventLevelName | Zdarzenia &#124; EventLevelName różne | Ważność |
 | Poziom ważności | SYSLOG &#124; różne poziom ważności | Ważność |
 | SvcChangeType | Zmianakonfiguracji &#124; svcChangeType różne | ChangeType |

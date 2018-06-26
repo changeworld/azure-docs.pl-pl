@@ -9,12 +9,12 @@ ms.workload: storage
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
-ms.openlocfilehash: bd36cfd0cd03592396a2aa9a977124880f47ec90
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 9721935f005bbd9a5dc261fe801ecc14744b004f
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248473"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752796"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Zarządzanie cyklem życia z magazynu obiektów Blob platformy Azure (wersja zapoznawcza)
 
@@ -190,7 +190,7 @@ W wersji zapoznawczej Zarządzanie cyklem życia obsługuje warstwy i usuwania o
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | Obsługuje obiekty BLOB dla warstwy dostępu         | Nieobsługiwane |
 | tierToArchive | Obsługuje obiekty BLOB obecnie na aktywny lub chłodnych warstwy | Nieobsługiwane |
-| usuwanie        | Obsługiwane                                   | Obsługiwane     |
+| delete        | Obsługiwane                                   | Obsługiwane     |
 
 >[!NOTE] 
 Jeśli więcej niż jedna akcja jest zdefiniowany w tym samym obiekcie blob, Zarządzanie cyklem życia dotyczy najniższych akcję obiektu blob. (np. Akcja `delete` jest tańsze niż akcja `tierToArchive`. Akcja `tierToArchive` jest tańsze niż akcja `tierToCool`.)
@@ -265,7 +265,7 @@ Niektóre dane pozostają nieużywane w chmurze i dostęp do nich uzyskuje się 
 
 ### <a name="expire-data-based-on-age"></a>Wygasić dane według ważności
 
-Niektóre dane są oczekiwane wygaśnie dni lub miesięcy po utworzeniu do zredukowania kosztów lub zachować zgodność z przepisami dla instytucji rządowych. Zasady zarządzania cyklem życia można skonfigurować wygaśnie Data przez usunięcie oparte na wiek danych. W poniższym przykładzie przedstawiono zasady, która usuwa wszystkie blokowe (z nie prefiksu określonego) starsze niż 365 dni.
+Niektóre dane są oczekiwane wygaśnie dni lub miesięcy po utworzeniu do zredukowania kosztów lub zachować zgodność z przepisami dla instytucji rządowych. Zasady zarządzania cyklem życia można ustawić wygaśnięcie danych, przez usunięcie oparte na wiek danych. W poniższym przykładzie przedstawiono zasady, która usuwa wszystkie blokowe (z nie prefiksu określonego) starsze niż 365 dni.
 
 ```json
 {

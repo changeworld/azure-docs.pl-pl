@@ -7,14 +7,14 @@ manager: cshepard
 keywords: Kopia zapasowa Azure; Agent maszyny Wirtualnej; Łączności sieciowej;
 ms.service: backup
 ms.topic: troubleshooting
-ms.date: 01/09/2018
+ms.date: 06/25/2018
 ms.author: genli
-ms.openlocfilehash: 63cded007af499455e7bb4fc23d26d56caf96678
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 09cfda3c2c790297b0961ecac92cba61c9e6de6f
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606362"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754599"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z usługi Kopia zapasowa Azure awarii: problemy z agentem lub rozszerzenia
 
@@ -84,15 +84,15 @@ Po zarejestrować i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa Az
 ### <a name="the-vm-has-no-internet-access"></a>Maszyna wirtualna nie ma dostępu do Internetu
 Na wymagania wdrożenia maszyny Wirtualnej nie ma dostępu do Internetu. Lub może mieć ograniczenia, które uniemożliwiają dostęp do infrastruktury platformy Azure.
 
-Prawidłowe rozszerzenie usługi Backup wymaga połączenia z Azure publicznych adresów IP. Rozszerzenie wysyła polecenia do punktu końcowego usługi Azure storage (adres URL protokołu HTTP) do zarządzania migawki maszyny wirtualnej. Jeśli rozszerzenie nie ma dostępu do publicznej sieci internet, wykonaj kopię zapasową ostatecznie zakończy się niepowodzeniem.
+Prawidłowe rozszerzenie usługi Backup wymaga połączenia z Azure publicznych adresów IP. Rozszerzenie wysyła polecenia do punktu końcowego usługi Azure storage (adres URL HTTPs) do zarządzania migawki maszyny wirtualnej. Jeśli rozszerzenie nie ma dostępu do publicznej sieci internet, wykonaj kopię zapasową ostatecznie zakończy się niepowodzeniem.
 
-Go możliwe do wdrożenia serwera proxy do kierowania ruchem maszyny Wirtualnej.
-##### <a name="create-a-path-for-http-traffic"></a>Tworzenie ścieżki dla ruchu HTTP
+Istnieje możliwość wdrożenia serwera proxy do kierowania ruchem maszyny Wirtualnej.
+##### <a name="create-a-path-for-https-traffic"></a>Tworzenie ścieżki dla ruchu HTTPs
 
-1. Jeśli masz ograniczeń sieci w miejscu (na przykład grupa zabezpieczeń sieci), wdrażania serwera proxy HTTP do kierowania ruchem.
-2. Aby umożliwić dostęp do Internetu z serwera proxy HTTP, należy dodać reguły do grupy zabezpieczeń sieci, jeśli istnieje.
+1. Jeśli masz ograniczeń sieci w miejscu (na przykład grupa zabezpieczeń sieci), wdrażania serwera proxy protokołu HTTPs do kierowania ruchem.
+2. Aby umożliwić dostęp do Internetu z serwera proxy protokołu HTTPs, należy dodać reguły do grupy zabezpieczeń sieci, jeśli istnieje.
 
-Aby dowiedzieć się, jak skonfigurować serwer proxy HTTP dla kopii zapasowych maszyn wirtualnych, zobacz [przygotowania środowiska do tworzenia kopii zapasowych maszyn wirtualnych platformy Azure](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
+Aby dowiedzieć się, jak skonfigurować serwer proxy protokołu HTTPs dla kopii zapasowych maszyn wirtualnych, zobacz [przygotowania środowiska do tworzenia kopii zapasowych maszyn wirtualnych platformy Azure](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
 W kopii zapasowej maszyny Wirtualnej lub serwer proxy, przez który ruch jest kierowany wymaga dostępu do usługi Azure publiczny adres IP
 
@@ -121,7 +121,7 @@ Agent maszyny Wirtualnej może być uszkodzony lub może być zatrzymana usługa
 2. Jeśli usługa agenta gościa z systemem Windows nie jest widoczny w usługach, w Panelu sterowania, przejdź do **programy i funkcje** ustalenie, czy Usługa agenta gościa z systemem Windows jest zainstalowana.
 4. Jeśli Agent gościa Windows znajduje się w **programy i funkcje**, odinstaluj agenta gościa z systemem Windows.
 5. Pobierz i zainstaluj [najnowszej wersji pliku MSI agenta](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Musi mieć prawa administratora w celu ukończenia instalacji.
-6. Sprawdź, czy usługi agenta gościa z systemem Windows jest wyświetlany w usługach.
+6. Sprawdź, czy usługi agenta gościa z systemem Windows są wyświetlane w usługach.
 7. Uruchom kopię zapasową na żądanie: 
     * W portalu, wybierz **Utwórz kopię zapasową teraz**.
 

@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 06/24/2018
 ms.author: douglasl
-ms.openlocfilehash: 457983021034d83e0eed05bd91eae1ac30c046da
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 2bcb0d4e6af00b56d083690439be45379ce4d175
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36296155"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752813"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Utwórz wyzwalacz uruchamia potoku w odpowiedzi na zdarzenia
 
@@ -30,6 +30,9 @@ Sterowane zdarzeniami architektura (EDA) jest wspólnego wzorca integracji danyc
 ### <a name="create-a-new-event-trigger"></a>Utwórz nowy wyzwalacz zdarzeń
 
 Typowe zdarzenia jest przybyciu pliku lub usunięcie pliku na koncie magazynu Azure. Można utworzyć wyzwalaczy, które odpowiada to zdarzenie planowaną fabryki danych.
+
+> [!NOTE]
+> Integracja ta obsługuje tylko w wersji 2 kont magazynu (ogólnego przeznaczenia).
 
 ![Utwórz nowy wyzwalacz zdarzeń](media/how-to-create-event-trigger/event-based-trigger-image1.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Co to jest co jeśli narzędzie dostępu warunkowego w usłudze Azure Active Directory? -preview | Dokumentacja firmy Microsoft
+title: Co to jest co jeśli narzędzie dostępu warunkowego w usłudze Azure Active Directory?
 description: Dowiedz się, jak zrozumienie wpływu zasad dostępu warunkowego w środowisku.
 services: active-directory
 keywords: dostęp warunkowy do aplikacji, dostęp warunkowy przy użyciu usługi Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
@@ -17,14 +17,14 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 661ada8de8821d489732e1f36dc2406eaa0ee4a7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 897f1b96f0861fb13ba0e6c2427b621ea6a12a06
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232405"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750086"
 ---
-# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access---preview"></a>Co to jest co jeśli narzędzie dostępu warunkowego w usłudze Azure Active Directory? -preview
+# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Co to jest co jeśli narzędzie dostępu warunkowego w usłudze Azure Active Directory?
 
 [Dostęp warunkowy](active-directory-conditional-access-azure-portal.md) jest możliwości usługi Azure Active Directory (Azure AD), który umożliwia kontrolowanie sposobu autoryzacji dostępu użytkowników do aplikacji w chmurze. Skąd wiadomo, czego można oczekiwać formularza zasady dostępu warunkowego w środowisku? Aby odpowiedzieć na to pytanie, można użyć **dostępu warunkowego co zrobić, jeśli narzędzie**.
 

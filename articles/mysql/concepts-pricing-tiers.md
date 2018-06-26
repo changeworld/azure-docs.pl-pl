@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 06/21/2018
-ms.openlocfilehash: c1597f16dda8544908bbefaf39e75e667d38b22c
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 93665ab075de539f98eebe34c2229870bd5a1a6e
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316472"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750242"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Bazy danych platformy Azure dla programu MySQL warstw cenowych
 
@@ -41,7 +41,7 @@ Po utworzeniu serwera liczbę vCores, generowanie sprzętu i cenach warstwy (z w
 
 ## <a name="compute-generations-and-vcores"></a>Generacje obliczeń i vCores
 
-Obliczeń zasoby są dostarczane jako vCores, reprezentujące Procesora logicznego podstawowej sprzętu. Obecnie są dostępne dwie generacje obliczeń Gen 4 i Gen 5. Gen 4 procesory logiczne są oparte na Intel E5-2673 v3 procesorów 2,4 GHz (Haswell). Gen 5 procesorów logicznych są oparte na Intel E5-2673 v4 procesorów 2.3 GHz (Broadwell). Gen 4 i Gen 5 są dostępne w następujących regionach ("X" oznacza dostępna). 
+Obliczeń zasoby są dostarczane jako vCores, reprezentujące Procesora logicznego podstawowej sprzętu. Obecnie są dostępne dwie generacje obliczeń Gen 4 i Gen 5. Gen 4 procesory logiczne są oparte na Intel E5-2673 v3 procesorów 2,4 GHz (Haswell). Gen 5 procesorów logicznych są oparte na Intel E5-2673 v4 procesorów 2.3 GHz (Broadwell). Gen 4 i Gen 5 są dostępne w następujących regionach ("X" oznacza dostępna).
 
 | **Region platformy Azure** | **Gen 4** | **Gen 5** |
 |:---|:----------:|:--------------------:|
@@ -80,7 +80,7 @@ Zainicjowanie obsługi magazynu jest pojemności magazynu dostępnych do bazy da
 | Typ magazynu | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | Rozmiar magazynu | 5 GB do 1 TB | 5 GB do 4 TB | 5 GB do 4 TB |
 | Rozmiar przyrost magazynu | 1 GB | 1 GB | 1 GB |
-| Operacje wejścia/wyjścia | Zmienna |3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalna liczba IOPS 7500 | 3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalna liczba IOPS 7500 |
+| Operacje wejścia/wyjścia | Zmienna |3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalna liczba IOPS 6000 | 3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalna liczba IOPS 6000 |
 
 Podczas i po utworzeniu serwera można dodać dodatkowej pojemności. Warstwa podstawowa nie ma gwarancji IOPS. Ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci, warstw cenowych IOPS skalowania o rozmiarze zainicjowanego magazynu w stosunku 3:1.
 

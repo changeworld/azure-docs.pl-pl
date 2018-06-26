@@ -17,12 +17,12 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: b59d86ddb8422108ece66eb1a7bbea808620d063
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: b6de3094e903c3584aa4a57e7792e4b07711f74a
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319546"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937142"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integracja z usługą Azure Active Directory
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -44,7 +44,7 @@ Istnieje kilka sposobów aplikacji do integracji z usługą Azure AD. Skorzystaj
 
 **Użyj usługi Azure AD w celu kontrolowania, kto ma dostęp do aplikacji.**  Administratorzy i właściciele aplikacji w usłudze Azure AD można przypisać dostęp do aplikacji do konkretnych użytkowników i grup. Przy użyciu interfejsu API programu Graph, można czytać tej listy i użyj go do kontroli aprowizację i anulowanie obsługi zasobów i udostępnić w aplikacji.
 
-**Kontrola dostępu oparta na użycie usługi Azure AD dla ról.**  Administratorzy i właściciele aplikacji mogą przypisywać użytkowników i grup do ról, które definiują podczas rejestrowania aplikacji w usłudze Azure AD. Informacje o rolach są wysyłane do aplikacji w logowania tokeny i również mogą być odczytywane przy użyciu interfejsu API programu Graph. Dowiedz się więcej o [przy użyciu usługi Azure AD, do autoryzacji](http://blogs.technet.com/b/ad/archive/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles.aspx).
+**Kontrola dostępu oparta na użycie usługi Azure AD dla ról.**  Administratorzy i właściciele aplikacji mogą przypisywać użytkowników i grup do ról, które definiują podczas rejestrowania aplikacji w usłudze Azure AD. Informacje o rolach są wysyłane do aplikacji w logowania tokeny i również mogą być odczytywane przy użyciu interfejsu API programu Graph. Dowiedz się więcej o [przy użyciu usługi Azure AD, do autoryzacji](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/).
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Uzyskiwanie dostępu do profilu użytkownika, kalendarza, poczty E-mail, kontakty, plików i więcej
 **Usługi Azure AD jest serwerem autoryzacji dla usługi Office 365 i innych usług biznesowych firmy Microsoft.**  Jeśli są używane usługi Azure AD w celu logowania się do aplikacji lub łączenie bieżącego konta użytkownika do konta użytkownika usługi Azure AD przy użyciu protokołu OAuth 2.0 pomocy technicznej może wysłać żądanie odczytu i zapisu do profilu użytkownika, kalendarza, poczty e-mail, kontakty, plików i innych informacji. Można bezproblemowo zapisać zdarzeń do kalendarza użytkownika i do odczytu lub zapisu plików do usługi OneDrive. Dowiedz się więcej o [podczas uzyskiwania dostępu do interfejsów API Office 365](https://msdn.microsoft.com/office/office365/howto/platform-development-overview).

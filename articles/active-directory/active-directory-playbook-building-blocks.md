@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: ed64c9df6fcca8f85b200c5f738c2009ea7ae0a5
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: HT
+ms.openlocfilehash: 056821bd26e9c6c110b23a048df4aa13bc4ab8fa
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293113"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754678"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory dowód podręcznikowym koncepcji: bloki konstrukcyjne
 
@@ -100,10 +100,10 @@ Przybliżona godzina ukończone: 15 minut
 | Krok | Zasoby |
 | --- | --- |
 | Przejdź do portalu zarządzania usługi Azure AD | [Portal zarządzania usługi Azure AD — logo firmy](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/LoginTenantBranding) |
-| Przekaż zasoby na stronie logowania (bohater logo, małego logo, etykiety itp.). Opcjonalnie Jeśli usługi AD FS, align sam zasoby z strony logowania usług AD FS | [Dodawanie znakowania firmowego do logowania i panelu dostępu stron: elementy dostosowywalne](customize-branding.md) |
+| Przekaż zasoby na stronie logowania (bohater logo, małego logo, etykiety itp.). Opcjonalnie Jeśli usługi AD FS, align sam zasoby z strony logowania usług AD FS | [Dodawanie znakowania firmowego do logowania i panelu dostępu stron: elementy dostosowywalne](fundamentals/customize-branding.md) |
 | Poczekaj kilka minut, aby zmiany w pełni obowiązywać |  |
 | Zaloguj się przy użyciu poświadczeń użytkownika fazy weryfikacji Koncepcji do https://myapps.microsoft.com |  |
-| Potwierdź wygląd i działanie w przeglądarce | [Dodawanie znakowania firmowego do logowania i panelu dostępu stron](customize-branding.md) |
+| Potwierdź wygląd i działanie w przeglądarce | [Dodawanie znakowania firmowego do logowania i panelu dostępu stron](fundamentals/customize-branding.md) |
 | Opcjonalnie można potwierdzić wyglądu i działania na innych urządzeniach |  |
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
@@ -118,7 +118,7 @@ Przybliżona godzina ukończone: 10 minut
 
 | Wymagania wstępne | Zasoby |
 | --- | --- |
-| Wszyscy użytkownicy w fazie weryfikacji Koncepcji należą do grupy zabezpieczeń (chmurze lub lokalnie) | [Utwórz grupy i Dodaj elementy członkowskie w usłudze Azure Active Directory](active-directory-groups-create-azure-portal.md) |
+| Wszyscy użytkownicy w fazie weryfikacji Koncepcji należą do grupy zabezpieczeń (chmurze lub lokalnie) | [Utwórz grupy i Dodaj elementy członkowskie w usłudze Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
 
 ### <a name="steps"></a>Kroki
 
@@ -140,16 +140,16 @@ Przybliżona godzina ukończone: 60 minut
 | Wymagania wstępne | Zasoby |
 | --- | --- |
 | Środowisko testowe dostępnych aplikacji SaaS. W tym przewodniku używamy usługi ServiceNow jako przykład.<br/>Stanowczo zaleca się używanie wystąpienia testu, aby zminimalizować tarcia na nawigowanie po istniejących jakości danych i mapowania. | Przejdź do https://developer.servicenow.com/app.do#! / macierzysty można uruchomić procesu pobierania wystąpienia testu |
-| Dostęp administratora do konsoli zarządzania usługi ServiceNow | [Samouczek: Integracji Azure Active Directory z usługi ServiceNow](active-directory-saas-servicenow-tutorial.md) |
+| Dostęp administratora do konsoli zarządzania usługi ServiceNow | [Samouczek: Integracji Azure Active Directory z usługi ServiceNow](saas-apps/servicenow-tutorial.md) |
 | Docelowy zestaw użytkowników można przypisać do aplikacji. Zaleca się grupę zabezpieczeń zawierającą użytkowników fazy weryfikacji koncepcji. <br/>Tworzenie grupy nie jest realne, przypisując użytkownikom bezpośrednio do aplikacji w fazie weryfikacji koncepcji | [Przypisanie użytkownika lub grupę do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 
 ### <a name="steps"></a>Kroki
 
 | Krok | Zasoby |
 | --- | --- |
-| Udostępnianie w samouczku wszystkich podmiotów z Microsoft Documentation  | [Samouczek: Integracji Azure Active Directory z usługi ServiceNow](active-directory-saas-servicenow-tutorial.md) |
-| Ustaw spotkania pracy, a następnie wykonaj kroki samouczka z każdym aktora. | [Samouczek: Integracji Azure Active Directory z usługi ServiceNow](active-directory-saas-servicenow-tutorial.md) |
-| Przypisywanie aplikacji do grupy określonej w wymaganiach wstępnych. Jeśli fazy weryfikacji Koncepcji ma dostęp warunkowy w zakresie, można ponownie, które później i dodać uwierzytelnianie wieloskładnikowe i podobne. <br/>Należy zauważyć, że to rozpocząć w procesie inicjowania obsługi administracyjnej (jeśli jest skonfigurowane) |  [Przypisanie użytkownika lub grupę do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) <br/>[Utwórz grupy i Dodaj elementy członkowskie w usłudze Azure Active Directory](active-directory-groups-create-azure-portal.md) |
+| Udostępnianie w samouczku wszystkich podmiotów z Microsoft Documentation  | [Samouczek: Integracji Azure Active Directory z usługi ServiceNow](saas-apps/servicenow-tutorial.md) |
+| Ustaw spotkania pracy, a następnie wykonaj kroki samouczka z każdym aktora. | [Samouczek: Integracji Azure Active Directory z usługi ServiceNow](saas-apps/servicenow-tutorial.md) |
+| Przypisywanie aplikacji do grupy określonej w wymaganiach wstępnych. Jeśli fazy weryfikacji Koncepcji ma dostęp warunkowy w zakresie, można ponownie, które później i dodać uwierzytelnianie wieloskładnikowe i podobne. <br/>Należy zauważyć, że to rozpocząć w procesie inicjowania obsługi administracyjnej (jeśli jest skonfigurowane) |  [Przypisanie użytkownika lub grupę do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) <br/>[Utwórz grupy i Dodaj elementy członkowskie w usłudze Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
 | Przy użyciu usługi Azure AD management Portal Dodaj aplikację usługi ServiceNow z galerii| [Usługa Azure AD management Portal: aplikacje dla przedsiębiorstw](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/Overview) <br/>[What's new in zarządzania aplikacjami przedsiębiorstwa w usłudze Azure Active Directory](active-directory-enterprise-apps-whats-new-azure-portal.md) |
 | W bloku aplikacji usługi ServiceNow "Logowanie jednokrotne" Włącz "na podstawie SAML logowania" |  |
 | Wypełnij pola "Zaloguj się na adres URL" i "Identyfikator" z adresem URL usługi ServiceNow<br/>Pole wyboru, aby "Uaktywnij nowy certyfikat"<br/>i Zapisz ustawienia |  |
@@ -163,7 +163,7 @@ Przybliżona godzina ukończone: 60 minut
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
 
-1. Powyżej [samouczek](active-directory-saas-servicenow-tutorial.md) odwołuje się do starego Azure AD, możliwości zarządzania. Jednak fazy weryfikacji koncepcji jest obliczana na podstawie [szybkiego startu](active-directory-enterprise-apps-whats-new-azure-portal.md#quickstart-get-going-with-your-new-application-right-away) wystąpić.
+1. Powyżej [samouczek](saas-apps/servicenow-tutorial.md) odwołuje się do starego Azure AD, możliwości zarządzania. Jednak fazy weryfikacji koncepcji jest obliczana na podstawie [szybkiego startu](active-directory-enterprise-apps-whats-new-azure-portal.md#quickstart-get-going-with-your-new-application-right-away) wystąpić.
 2. Jeśli w aplikacji docelowej nie jest obecny w galerii, można "Przynieś własne aplikacji". Dowiedz się więcej: [What's new in zarządzania aplikacjami przedsiębiorstwa w usłudze Azure Active Directory: Dodawanie niestandardowych aplikacji w jednym miejscu](active-directory-enterprise-apps-whats-new-azure-portal.md#add-custom-applications-from-one-place)
 
 ## <a name="saas-password-sso-configuration"></a>Konfiguracja rejestracji Jednokrotnej SaaS hasła
@@ -242,7 +242,7 @@ Przybliżona godzina ukończone: 20 minut
 
 | Wymagania wstępne | Zasoby |
 | --- | --- |
-| Basic usługi Microsoft Azure AD lub subskrypcję usługi premium i katalog usługi Azure AD, dla którego jesteś administratorem globalnym | [Wersje usługi Azure Active Directory](active-directory-whatis.md) |
+| Basic usługi Microsoft Azure AD lub subskrypcję usługi premium i katalog usługi Azure AD, dla którego jesteś administratorem globalnym | [Wersje usługi Azure Active Directory](fundamentals/active-directory-whatis.md) |
 | Aplikacja sieci web hostowanej lokalnego, który chcesz skonfigurować dla dostępu zdalnego |  |
 | Serwer z systemem Windows Server 2012 R2 lub Windows 8.1 lub nowszym, na którym można zainstalować łącznik serwera Proxy aplikacji | [Zrozumienie łączniki serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-connectors.md) |
 | Jeśli w ścieżce znajduje się zapora, upewnij się, że jest on otwarty, aby łącznik mogą wysyłać żądania HTTPS (TCP) do serwera Proxy aplikacji | [Włącz serwer Proxy aplikacji w portalu Azure: wymagania wstępne serwera Proxy aplikacji](manage-apps/application-proxy-enable.md#application-proxy-prerequisites) |
@@ -306,8 +306,8 @@ Przybliżona godzina ukończone: 10 minut
 | Wymagania wstępne | Zasoby |
 | --- | --- |
 | Aplikacja SaaS (federacyjnej usługi logowania jednokrotnego lub hasło logowania jednokrotnego) został już skonfigurowany | Bloków konstrukcyjnych: [SaaS Federacyjna usługa rejestracji Jednokrotnej w konfiguracji](#saas-federated-sso-configuration) |
-| Określono grupy chmury, przypisany dostęp do aplikacji w #1 | Bloków konstrukcyjnych: [SaaS Federacyjna usługa rejestracji Jednokrotnej w konfiguracji](#saas-federated-sso-configuration) <br/>[Utwórz grupy i Dodaj elementy członkowskie w usłudze Azure Active Directory](active-directory-groups-create-azure-portal.md) |
-| Dostępne są poświadczenia dla właściciela grupy | [Zarządzanie dostępem do zasobów za pomocą grup usługi Azure Active Directory](active-directory-manage-groups.md) |
+| Określono grupy chmury, przypisany dostęp do aplikacji w #1 | Bloków konstrukcyjnych: [SaaS Federacyjna usługa rejestracji Jednokrotnej w konfiguracji](#saas-federated-sso-configuration) <br/>[Utwórz grupy i Dodaj elementy członkowskie w usłudze Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
+| Dostępne są poświadczenia dla właściciela grupy | [Zarządzanie dostępem do zasobów za pomocą grup usługi Azure Active Directory](fundamentals/active-directory-manage-groups.md) |
 | Wykryto poświadczeń do uzyskiwania dostępu do aplikacji Pracownik przetwarzający informacje | [Co to jest Panel dostępu?](active-directory-saas-access-panel-introduction.md) |
 
 
@@ -315,8 +315,8 @@ Przybliżona godzina ukończone: 10 minut
 
 | Krok | Zasoby |
 | --- | --- |
-| Identyfikator grupy, który ma zostać przyznany dostęp do aplikacji i skonfigurować właścicielem danej grupy| [Zarządzanie ustawieniami grupy w usłudze Azure Active Directory ](active-directory-groups-settings-azure-portal.md) |
-| Zaloguj się jako właściciel grupy, zobacz członkostwo w grupach na karcie panelu dostępu | [Strony Zarządzanie grupami w usłudze Active Directory systemu Azure](https://account.activedirectory.windowsazure.com/r/#/groups) |
+| Identyfikator grupy, który ma zostać przyznany dostęp do aplikacji i skonfigurować właścicielem danej grupy| [Zarządzanie ustawieniami grupy w usłudze Azure Active Directory ](fundamentals/active-directory-groups-settings-azure-portal.md) |
+| Zaloguj się jako właściciel grupy, zobacz członkostwo w grupach na karcie panelu dostępu | [Strony Zarządzanie grupami w usłudze Active Directory systemu Azure](https://account.activedirectory.windowsazure.com/r#/groups) |
 | Dodaj Pracownik przetwarzający informacje, które ma zostać przetestowana. |  |
 | Zaloguj się jako pracownik przetwarzający informacje, upewnij się, że Kafelek jest dostępny | [Co to jest Panel dostępu?](active-directory-saas-access-panel-introduction.md) |
 
@@ -331,7 +331,7 @@ Jeśli aplikacja ma inicjowania obsługi administracyjnej włączone, może być
 | Wymagania wstępne | Zasoby |
 | --- | --- |
 | Aplikacja SaaS (federacyjnej usługi logowania jednokrotnego lub hasło logowania jednokrotnego) został już skonfigurowany | Bloków konstrukcyjnych: [SaaS Federacyjna usługa rejestracji Jednokrotnej w konfiguracji](#saas-federated-sso-configuration) |
-| Określono grupy chmury, przypisany dostęp do aplikacji w #1 | Bloków konstrukcyjnych: [SaaS Federacyjna usługa rejestracji Jednokrotnej w konfiguracji](#saas-federated-sso-configuration) <br/>[Utwórz grupy i Dodaj elementy członkowskie w usłudze Azure Active Directory](active-directory-groups-create-azure-portal.md) |
+| Określono grupy chmury, przypisany dostęp do aplikacji w #1 | Bloków konstrukcyjnych: [SaaS Federacyjna usługa rejestracji Jednokrotnej w konfiguracji](#saas-federated-sso-configuration) <br/>[Utwórz grupy i Dodaj elementy członkowskie w usłudze Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
 | Wykryto poświadczeń do uzyskiwania dostępu do aplikacji Pracownik przetwarzający informacje | [Co to jest Panel dostępu?](active-directory-saas-access-panel-introduction.md) |
 
 
@@ -339,7 +339,7 @@ Jeśli aplikacja ma inicjowania obsługi administracyjnej włączone, może być
 
 | Krok | Zasoby |
 | --- | --- |
-| Usuń użytkownika z grupy, których aplikacja jest przypisany do | [Zarządzanie członkostwami grup użytkowników w dzierżawie usługi Azure Active Directory](active-directory-groups-members-azure-portal.md) |
+| Usuń użytkownika z grupy, których aplikacja jest przypisany do | [Zarządzanie członkostwami grup użytkowników w dzierżawie usługi Azure Active Directory](fundamentals/active-directory-groups-members-azure-portal.md) |
 | Poczekaj kilka minut, aż anulowanie obsługi. | [Automatyczne inicjowanie obsługi użytkowników aplikacji SaaS w usłudze Azure AD: jak działa automatycznego inicjowania obsługi administracyjnej?](active-directory-saas-app-provisioning.md#how-does-automatic-provisioning-work) |
 | Na sesję przeglądarki oddzielne zalogować się jako pracownik przetwarzający informacje do mojej aplikacji portalu i upewnij się, brak tego kafelka | http://myapps.microsoft.com |
 

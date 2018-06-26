@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: v-geberr
-ms.openlocfilehash: 76300b307c8e87a3dd108fc53d3b30a53d3276dd
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 1f22112a38bf32af03ffaf0493db16839b3fe794
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36263928"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36749967"
 ---
 # <a name="manage-your-luis-account"></a>Zarządzanie kontem LUIS
 Dwa kluczowych informacji dotyczących konta LUIS są konta użytkowników i tworzenia klucza. Informacje logowania jest zarządzana w [account.microsoft.com](https://account.microsoft.com). Klucz tworzenia odbywa się z [LUIS][LUIS] witryny sieci Web **ustawienia** strony. 
@@ -46,7 +46,9 @@ Po pierwsze użytkownik zaloguje się do LUIS i widzi wyskakującym oknie dialog
 
 Po drugie Administrator dzierżawy zaloguje się do LUIS i widzi okno podręczne przepływu zgody. To okno dialogowe, administrator musi nadać uprawnienia dla użytkownika. Gdy administrator zaakceptuje uprawnienia, użytkownik będzie mógł kontynuować LUIS.
 
-Jeśli Administrator dzierżawy nie będzie zalogować do LUIS, administrator może uzyskać dostęp do [zgody](https://account.activedirectory.windowsazure.com/Consent.aspx?ClientID=65920ba3-ab61-4a9b-9b10-505e5ce61b58) dla LUIS. 
+Jeśli Administrator dzierżawy nie będzie zalogować do LUIS, administrator może uzyskać dostęp do [zgody](https://account.activedirectory.windowsazure.com/r#/applications) dla LUIS. 
+
+![Uprawnienia usługi Azure active directory przez aplikację witryny sieci Web](./media/luis-how-to-account-settings/tenant-permissions.png)
 
 Jeśli Administrator dzierżawy chce tylko niektórych użytkowników, aby użyć LUIS, odwołują się do tego [blog tożsamość](https://blogs.technet.microsoft.com/tfg/2017/10/15/english-tips-to-manage-azure-ad-users-consent-to-applications-using-azure-ad-graph-api/).
 

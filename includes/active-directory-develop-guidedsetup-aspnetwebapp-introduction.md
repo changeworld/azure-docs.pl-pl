@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 9dd9185816670da1fdb59ef42f1f3ca37784eb35
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 10f5eb239fc6320e7597e5f1380f4df8873ab3b6
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "36204941"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36943440"
 ---
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Dodaj logowanie z firmy Microsoft do aplikacji sieci web platformy ASP.NET
 
 W tym przewodniku pokazano, jak do implementowania logowania z firmą Microsoft za pomocą rozwiązania ASP.NET MVC z tradycyjnego aplikacji sieci web opartej na przeglądarce przy użyciu protokołu OpenID Connect. 
 
-Na końcu tego przewodnika aplikacja będzie można zaakceptować znak ins osobiste konta (w tym outlook.com, live.com i inne), a także pracy i służbowych z firmy lub organizacji, która ma być zintegrowane z usługą Azure Active Directory. 
+Na końcu tego przewodnika aplikacja będzie akceptować logowania konta osobiste (w tym outlook.com, live.com i inne) oraz pracy i służbowych z firmy lub organizacji, która ma być zintegrowane z usługą Azure Active Directory. 
 
 > W tym przewodniku wymaga programu Visual Studio 2015 Update 3 lub Visual Studio 2017 r.  Nie masz?  [Bezpłatnie pobrać Visual Studio 2017 r.](https://www.visualstudio.com/downloads/)
 

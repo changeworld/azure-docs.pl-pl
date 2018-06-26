@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
-ms.openlocfilehash: a8866385c682e86e889ddf171cc640fe0bb8252d
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 1e2c2dc45f2cb91ca225bf183ddde5fa2d1123c4
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737473"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936993"
 ---
 # <a name="using-the-azure-cli-10-with-azure-storage"></a>Za pomocą usługi Azure CLI 1.0 z usługą Azure Storage
 
@@ -41,9 +41,9 @@ W tym przewodniku założono, że rozumiesz podstawowe pojęcia dotyczące środ
 ## <a name="get-started-with-azure-storage-and-the-azure-cli-in-5-minutes"></a>Wprowadzenie do usługi Azure Storage i wiersza polecenia platformy Azure w ciągu 5 minut
 W tym przewodniku używa Ubuntu przykłady, ale innych platform systemu operacyjnego należy wykonać w podobny sposób.
 
-**Jesteś nowym użytkownikiem usługi Azure:** subskrypcji Microsoft Azure i konta Microsoft skojarzonego z jego subskrypcją. Aby uzyskać informacje na temat opcji zakupu platformy Azure, zobacz [bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/), [opcjami zakupu](https://azure.microsoft.com/pricing/purchase-options/), i [oferty Członkowskie](https://azure.microsoft.com/pricing/member-offers/) (dla członków MSDN, Microsoft Partner Network, BizSpark i innych programów firmy Microsoft).
+**Jesteś nowym użytkownikiem usługi Azure:** subskrypcji Microsoft Azure i konta Microsoft skojarzonego z jego subskrypcją. Aby uzyskać informacje na temat opcji zakupu platformy Azure, zobacz [bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/), [opcjami zakupu](https://azure.microsoft.com/pricing/purchase-options/), i [oferty Członkowskie](https://azure.microsoft.com/pricing/member-offers/) (dla członków MSDN, Microsoft Partner Network i BizSpark, i inne programy firmy Microsoft).
 
-Zobacz [przypisywanie ról administratorów w usłudze Azure Active Directory (Azure AD)](https://msdn.microsoft.com/library/azure/hh531793.aspx) uzyskać więcej informacji o subskrypcji platformy Azure.
+Zobacz [przypisywanie ról administratorów w usłudze Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal) uzyskać więcej informacji o subskrypcji platformy Azure.
 
 **Po utworzeniu subskrypcji Microsoft Azure i konto:**
 
@@ -138,7 +138,7 @@ azure storage container create mycontainer
 ```
 
 > [!NOTE]
-> Istnieją trzy poziomy anonimowy dostęp do odczytu: **poza**, **obiektu Blob**, i **kontenera**. Aby uniemożliwić dostęp anonimowy do obiektów blob, ustaw dla parametru uprawnienia **poza**. Domyślnie nowy kontener jest prywatny i jest możliwy tylko przez właściciela konta. Umożliwia anonimowego publiczny dostęp do odczytu do zasobów obiektów blob, ale nie do metadanych kontenera lub listę obiektów blob w kontenerze, ustaw uprawnienia dla parametru **obiektu Blob**. Umożliwia pełną publiczny dostęp do odczytu do zasobów, metadanych kontenera i listę obiektów blob w kontenerze obiektu blob, ustaw dla parametru uprawnienia **kontenera**. Aby uzyskać więcej informacji, zobacz [Zarządzanie anonimowy dostęp do odczytu do kontenerów i obiektów blob](../blobs/storage-manage-access-to-resources.md).
+> Istnieją trzy poziomy anonimowy dostęp do odczytu: **poza**, **obiektu Blob**, i **kontenera**. Aby uniemożliwić dostęp anonimowy do obiektów blob, ustaw dla parametru uprawnienia **poza**. Domyślnie nowy kontener jest prywatny i jest możliwy tylko przez właściciela konta. Umożliwia anonimowego publiczny dostęp do odczytu do zasobów obiektów blob, ale nie do metadanych kontenera lub listę obiektów blob w kontenerze, ustaw uprawnienia dla parametru **obiektu Blob**. Umożliwia pełną publiczny dostęp do odczytu do zasobów, metadanych kontenera i listę obiektów blob w kontenerze obiektu blob, ustaw dla parametru uprawnienia **kontenera**. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem anonimowym w trybie odczytu do kontenerów i obiektów blob](../blobs/storage-manage-access-to-resources.md).
 >
 >
 

@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/12/2018
 ms.author: tarcher
 ms.custom: Jenkins
-ms.openlocfilehash: 552e93e9bd1b17c73fb1638fbae2ac30b051c261
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d5a832909f060ad8c8b3f0e7c7ea4504e5e5aadb
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29957553"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36943474"
 ---
 1. W przeglądarce otwórz [portalu Azure Marketplace obrazu Wpięć](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview).
 
@@ -33,7 +33,7 @@ ms.locfileid: "29957553"
 1. W **podstawy** karcie, określ następujące wartości:
 
     - **Nazwa** — wprowadź `Jenkins`.
-    - **Nazwa użytkownika** — wprowadź nazwę użytkownika używane podczas rejestrowania się w maszynie wirtualnej, na którym działa Wpięć. Nazwa użytkownika musi spełniać [konkretne wymagania](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm).
+    - **Nazwa użytkownika** — wprowadź nazwę użytkownika używane podczas logowania się na maszynie wirtualnej, na którym działa Wpięć. Nazwa użytkownika musi spełniać [konkretne wymagania](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm).
     - **Typ uwierzytelniania** — wybierz tę opcję **klucz publiczny SSH**.
     - **Klucz publiczny SSH** -kopiowania i wklejania klucza publicznego RSA w formacie jednowierszowego (począwszy od `ssh-rsa`) lub format PEM wiele wierszy. Możesz wygenerować kluczy SSH za pomocą ssh-keygen w systemach Linux i macOS lub PuTTYGen w systemie Windows. Aby uzyskać więcej informacji na temat kluczy SSH i Azure, zobacz [jak klucze używanie SSH z systemem Windows Azure](/azure/virtual-machines/linux/ssh-from-windows).
     - **Subskrypcja** — Wybierz subskrypcję platformy Azure, w którym chcesz zainstalować Wpięć.

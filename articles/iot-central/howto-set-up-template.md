@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: bda056a75ae9d696dab389b85fe1bfb2935ee1a8
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 0bef8722ee51c916652e6964305f324341052341
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261988"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754666"
 ---
 # <a name="set-up-a-device-template"></a>Konfigurowanie szablonu urządzenia
 
@@ -38,19 +38,19 @@ Na przykład konstruktora można utworzyć szablon urządzenia IoT wentylator po
 Za pomocą tego szablonu urządzenia operator można tworzyć i Podłącz urządzenia rzeczywistych wentylator o nazwach takich jak **wentylator 1** i **2 wentylator**. Wszystkie te wentylatory mieć reguły pomiarów, ustawienia i właściwości oraz pulpit nawigacyjny, który użytkownicy aplikacji można monitorować i zarządzać nimi.
 
 > [!NOTE]
-Tylko konstruktorów i Administratorzy mogą tworzenie, edytowanie i usuwanie szablonów urządzenia. Każdy użytkownik może tworzyć urządzeń w **Explorer urządzenia** strony z istniejących szablonów urządzenia.
+> Tylko konstruktorów i Administratorzy mogą tworzenie, edytowanie i usuwanie szablonów urządzenia. Każdy użytkownik może tworzyć urządzeń w **Explorer urządzenia** strony z istniejących szablonów urządzenia.
 
 ## <a name="create-a-new-device-template"></a>Tworzenie nowego szablonu urządzenia
 
 1. Przejdź do **Konstruktor aplikacji** strony.
 
-1. Można utworzyć pustego szablonu, wybierz **Utwórz szablon urządzenia**, a następnie wybierz pozycję **niestandardowy**.
+2. Można utworzyć pustego szablonu, wybierz **Utwórz szablon urządzenia**, a następnie wybierz pozycję **niestandardowy**.
 
-1. Wprowadź nazwę dla nowego szablonu urządzenia i wybierz polecenie **Utwórz**.
+3. Wprowadź nazwę dla nowego szablonu urządzenia i wybierz polecenie **Utwórz**.
 
     ![Strona szczegółów urządzenia](./media/howto-set-up-template/devicedetailspage.png)
 
-1. Teraz możesz teraz **szczegóły urządzenia** strony nowe symulowane urządzenie. Symulowane urządzenie jest utworzony automatycznie podczas tworzenia nowego szablonu urządzenia. Raporty danych, a można sterować tak samo jak rzeczywistego urządzenia.
+4. Teraz możesz teraz **szczegóły urządzenia** strony nowe symulowane urządzenie. Symulowane urządzenie jest utworzony automatycznie podczas tworzenia nowego szablonu urządzenia. Raporty danych, a można sterować tak samo jak rzeczywistego urządzenia.
 
 Teraz wyglądać na poszczególnych kartach **szczegóły urządzenia** strony.
 
@@ -133,8 +133,7 @@ Na przykład można dodać nowe ustawienie szybkości wentylator:
 
 Po wybraniu **zapisać**, **wentylatorów szybkości** ustawienie jest wyświetlana jako Kafelek i jest gotowy do do użycia, aby zmienić szybkość wentylator urządzenia.
 
-> [!NOTE]
-> Po utworzeniu nowego kafelka można wypróbować nowe ustawienie. Po pierwsze, wyłącz tryb projektowania u góry po prawej części ekranu:
+Po utworzeniu nowego kafelka można wypróbować nowe ustawienie. Po pierwsze, wyłącz tryb projektowania u góry po prawej części ekranu.
 
 ![Ustawienia](./media/howto-set-up-template/settingstile.png)
 
@@ -168,51 +167,70 @@ Istnieją dwa typy właściwości lokalizacji, które można dodać:
 - **Lokalizacja jako właściwość aplikacji** której będą przechowywane wyłącznie w aplikacji. Urządzenie nie ma informacji o właściwości aplikacji.
 - **Lokalizacja jako właściwość urządzenia** które będą zgłaszane przez urządzenie.
 
-####<a name="adding-location-as-an-application-property"></a>Dodawanie lokalizacji jako właściwości aplikacji 
+#### <a name="adding-location-as-an-application-property"></a>Dodawanie lokalizacji jako właściwości aplikacji 
+
 Możesz utworzyć lokalizację mapy właściwości jako właściwość aplikacji za pomocą platformy Azure w aplikacji Azure IoT centralnej. Na przykład można dodać adres instalacji urządzenia. 
 
 1. Przejdź do karty właściwości urządzenia; Upewnij się, że jest włączony tryb projektowania.
 
-![Właściwość lokalizacji](./media/howto-set-up-template/locationcloudproperty1.png)
+   ![Właściwość lokalizacji](./media/howto-set-up-template/locationcloudproperty1.png)
 
 2. Na karcie właściwości kliknij lokalizację.
 3. Opcjonalnie skonfiguruj nazwę wyświetlaną, nazwy pola i wartość początkową lokalizacji. 
 
-![Lokalizacja właściwości formularza](./media/howto-set-up-template/locationcloudproperty2.png)
+   ![Lokalizacja właściwości formularza](./media/howto-set-up-template/locationcloudproperty2.png)
 
-Istnieją dwa obsługiwanych formatów, aby dodać lokalizację:
-- **Lokalizacja adresu**
-- **Lokalizacja jak współrzędnych.** 
+   Istnieją dwa obsługiwanych formatów, aby dodać lokalizację:
+   - **Lokalizacja adresu**
+   - **Lokalizacja jak współrzędnych.** 
 
-4. Kliknij przycisk Zapisz. 
+4.  Kliknij pozycję **Zapisz**. 
 
-![Pole właściwości lokalizacji](./media/howto-set-up-template/locationcloudproperty3.png)
+    ![Pole właściwości lokalizacji](./media/howto-set-up-template/locationcloudproperty3.png)
 
 Operator można teraz zaktualizować wartość lokalizacji w formularzu pole lokalizacji. 
 
-####<a name="adding-location-as-a-device-property"></a>Dodawanie lokalizacji jako właściwości urządzenia 
+#### <a name="adding-location-as-a-device-property"></a>Dodawanie lokalizacji jako właściwości urządzenia 
 
 Można utworzyć właściwości location jako właściwość urządzenia zgłoszonego przez urządzenie.
 Na przykład chcesz śledzić lokalizacji urządzenia.
 
 1.  Przejdź do karty właściwości urządzenia; Upewnij się, że jest włączony tryb projektowania.
+
 2.  Kliknij przycisk Właściwości urządzenia z biblioteki.
 
-![Pole właściwości lokalizacji](./media/howto-set-up-template/locationdeviceproperty1.png)
+    ![Pole właściwości lokalizacji](./media/howto-set-up-template/locationdeviceproperty1.png)
 
 3.  Skonfigurować nazwę wyświetlaną, nazwy pola i wybierz polecenie "Lokalizacja", jako typ danych. 
 
-> [!NOTE]
-Nazwa pola musi dokładnie pasować do nazwy właściwości urządzenia raportów. 
+    > [!NOTE]
+    > Nazwa pola musi dokładnie pasować do nazwy właściwości urządzenia raportów. 
 
-![Pole właściwości lokalizacji](./media/howto-set-up-template/locationdeviceproperty2.png)
+    ![Pole właściwości lokalizacji](./media/howto-set-up-template/locationdeviceproperty2.png)
 
-![Widok operator właściwość lokalizacji](./media/howto-set-up-template/locationdeviceproperty2.png)
+    ![Widok operator właściwość lokalizacji](./media/howto-set-up-template/locationdeviceproperty2.png)
 
-Teraz, gdy skonfigurowano właściwości Twojej lokalizacji, można dodać mapy w celu wizualizowania lokalizacji na pulpicie nawigacyjnym urządzenia. Zobacz temat jak [Dodaj lokalizację mapy platformy Azure na pulpicie nawigacyjnym](howto-set-up-template.md).
+Teraz, gdy skonfigurowano właściwości Twojej lokalizacji, można dodać mapy w celu wizualizowania lokalizacji na pulpicie nawigacyjnym urządzenia. Zobacz temat jak [Dodaj lokalizację mapy platformy Azure na pulpicie nawigacyjnym](howto-set-up-template.md#add-location-azure-map-in-dashboard).
 
+## <a name="commands"></a>Polecenia
 
+Polecenia są używane do zdalnego zarządzania urządzeniem. Umożliwiają one operatory aplikacji w taki sposób, aby natychmiast uruchomić polecenia na urządzeniu. Wiele poleceń można dodać do szablonu urządzenia, które są wyświetlane jako kafelki na **polecenia** kartę dla operatorów do użycia. Jako konstruktora urządzenia możesz swobodnie do definiowania polecenia zgodnie z wymaganiami.
 
+Jak jest **polecenia** inny niż **ustawienie**? 
+
+* Ustawienie: Jest konfiguracją, które chcesz zastosować do urządzenia, a urządzenie ma utrwalić takiej konfiguracji, dopóki nie zostanie zmieniony. Na przykład chcesz ustawić temperatury zamrażalni Twojego i ma ustawienie nawet wtedy, gdy zamrażalni ponownego uruchomienia. 
+
+* Polecenie: Należy użyć poleceń Aby natychmiast uruchomić polecenie na urządzeniu zdalnie z IoTCentral, jeśli urządzenie nie jest połączony, a następnie limitu czasu polecenia, jak i kończy się niepowodzeniem. Na przykład chcesz ponowne uruchomienie/ponowne uruchomienie urządzenia.  
+
+Polecenia po wykonaniu mogą być w jednym z trzech stanów w zależności od tego, czy urządzenie odebrano polecenie. 
+
+Na przykład można dodać nowego polecenia echo:
+
+![Formularz poleceń](./media/howto-set-up-template/commandsecho.png)
+
+Po wybraniu **zapisać**, **Echo** polecenia jest wyświetlana jako Kafelek i jest gotowy do ma być używany do Echo urządzenia.
+
+Po utworzeniu nowego kafelka można wypróbować nowe polecenie.
 
 ## <a name="rules"></a>Reguły
 
@@ -234,28 +252,27 @@ Teraz po operatorze widoków pulpitu nawigacyjnego, można wyświetlić tego kaf
 
 ### <a name="add-location-azure-map-in-dashboard"></a>Dodaj lokalizację mapy platformy Azure na pulpicie nawigacyjnym
 
-Jeśli skonfigurowano właściwość lokalizacji jak kroki [Utwórz właściwość lokalizacji obsługiwane przez usługę Azure Maps]((howto-set-up-template.md), można zwizualizować lokalizacji przy użyciu mapy bezpośrednio w pulpicie nawigacyjnym urządzenia.
+Jeśli skonfigurowano właściwość lokalizacji jak kroki [utworzyć właściwość lokalizacji obsługiwane przez usługę Azure mapy](howto-set-up-template.md), będzie można zwizualizować lokalizacji przy użyciu mapy bezpośrednio w pulpicie nawigacyjnym urządzenia.
 
 1.  Przejdź do karty Pulpit nawigacyjny urządzenia; Upewnij się, że jest włączony tryb projektowania.
+
 2.  Na pulpicie nawigacyjnym urządzenia wybierz mapę z biblioteki. 
 
-![Wybierz lokalizację Azure mapy pulpitu nawigacyjnego](./media/howto-set-up-template/locationcloudproperty4map.png)
+    ![Wybierz lokalizację Azure mapy pulpitu nawigacyjnego](./media/howto-set-up-template/locationcloudproperty4map.png)
 
 3.  Nadaj tytuł, a następnie wybierz właściwość lokalizacji wcześniej skonfigurowanych jako część programu właściwości urządzenia.
 
-![Konfigurowanie usługi Azure mapy lokalizacji pulpitu nawigacyjnego](./media/howto-set-up-template/locationcloudproperty5map.png)
+    ![Konfigurowanie usługi Azure mapy lokalizacji pulpitu nawigacyjnego](./media/howto-set-up-template/locationcloudproperty5map.png)
 
 4.  Zapisz i zobaczą mapy kafelka wyświetlanie wybranej lokalizacji. 
 
-![Lokalizacja na pulpicie nawigacyjnym wizualizacji mapy platformy Azure](./media/howto-set-up-template/locationcloudproperty6map.png) 
+    ![Lokalizacja na pulpicie nawigacyjnym wizualizacji mapy platformy Azure](./media/howto-set-up-template/locationcloudproperty6map.png) 
 
-Będzie można zmienić rozmiar mapy w celu żądane rozmiary.
+    Będzie można zmienić rozmiar mapy w celu żądane rozmiary.
 
-Teraz po operatorze widoków pulpitu nawigacyjnego, będą mogli wyświetlać tego wszystkie kafelka pulpitu nawigacyjnego zostały skonfigurowane w tym miejscu Mapa!
+    Teraz po operatorze widoków pulpitu nawigacyjnego, będą mogli wyświetlać tego wszystkie kafelka pulpitu nawigacyjnego zostały skonfigurowane w tym miejscu Mapa!
 
-![Pulpit nawigacyjny Azure mapy lokalizacji pulpitu nawigacyjnego](./media/howto-set-up-template/locationcloudproperty7map.png) 
-
-
+    ![Pulpit nawigacyjny Azure mapy lokalizacji pulpitu nawigacyjnego](./media/howto-set-up-template/locationcloudproperty7map.png) 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

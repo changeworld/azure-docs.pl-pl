@@ -56,7 +56,7 @@ Po rozwiązaniu wszystkich problemów i usunięciu błędów odinstaluj i odłą
 
 Aby utworzyć Maszynę wirtualną z oryginalny wirtualny dysk twardy, użyj [portalu Azure](https://portal.azure.com).
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w [portalu Azure](https://portal.azure.com).
 2. W lewym górnym rogu portalu, wybierz opcję **Utwórz zasób** > **obliczeniowe** > **maszyny wirtualnej** > **z Galeria**.
 3. W sekcji **Wybieranie obrazu** wybierz pozycję **Moje dyski**, a następnie wybierz oryginalny wirtualny dysk twardy. Sprawdź informacje o lokalizacji. Jest to region, w którym maszyna wirtualna musi zostać wdrożona. Kliknij przycisk Dalej.
 4. W sekcji **Konfiguracja maszyny wirtualnej** wpisz nazwę maszyny wirtualnej i wybierz rozmiar maszyny wirtualnej.

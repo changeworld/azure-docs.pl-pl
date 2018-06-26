@@ -9,12 +9,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 6cc5ff1c532d67c48beac1a2a10d034f5d9d7501
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 32dd295132e26e46d64b01b194b557cae26575ad
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349720"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750799"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Rozpoczynanie pracy z zestawem SDK urządzenia mowy
 
@@ -41,7 +41,7 @@ Przed rozpoczęciem programowanie z zestawem SDK urządzenia mowy, zbieranie inf
 
 * Jeśli chcesz użyć konwersji rozpoznawania mowy usługi subskrybuje [usługi języka opis](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) (LUIS) i [uzyskać klucz subskrypcji](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/azureibizasubscription). 
 
-    Możesz [utworzyć prosty model LUIS](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/) lub użyj przykładu modelu LUIS `LUIS-example.json`, dostępne z zestawu SDK urządzenia mowy [pobrania](https://shares.datatransfer.microsoft.com/). Przekaż plik JSON modelu do [LUIS portal](https://www.lui.ai/applications) , klikając **importu nową aplikację** i wybierając plik JSON.
+    Możesz [utworzyć prosty model LUIS](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/) lub użyj przykładu modelu LUIS `LUIS-example.json`, dostępne z zestawu SDK urządzenia mowy [pobrania](https://shares.datatransfer.microsoft.com/). Przekaż plik JSON modelu do [LUIS portal](https://www.luis.ai/home) , klikając **importu nową aplikację** i wybierając plik JSON.
 
 ## <a name="set-up-the-development-kit"></a>Skonfiguruj zestaw deweloperski
 

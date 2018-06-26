@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2016
 ms.author: bwren
-ms.openlocfilehash: b4201f105a87b0a41059c061eb37fb35d4514e02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6da876a0e6c1e98683caa864a4a2bcf85195cd10
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23866317"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753323"
 ---
 # <a name="microsoft-monitoring-product-comparison"></a>Monitorowania porównanie produktów firmy Microsoft
-W tym artykule przedstawiono porównanie ich architektury, logiki jak monitorować ich zasobów i jak są analizy danych, które pobierają programu System Center Operations Manager (SCOM) i analizy dzienników w Operations Management Suite (OMS).  To zapewniają podstawowe zrozumienie ich różnice i siły względnej.  
+W tym artykule przedstawiono porównanie ich architektury, logiki jak monitorować ich zasobów i jak są analizy danych, które pobierają programu System Center Operations Manager (SCOM) i analizy dzienników w Operations Management Suite (OMS) .  To zapewniają podstawowe zrozumienie ich różnice i siły względnej.  
 
 ## <a name="basic-architecture"></a>Podstawowa architektura
 ### <a name="system-center-operations-manager"></a>System Center Operations Manager
-Wszystkie składniki programu SCOM są zainstalowane w centrum danych.  [Agenci są zainstalowani](http://technet.microsoft.com/library/hh551142.aspx) na maszynach z systemem Windows i Linux, które są zarządzane przez SCOM.  Nawiązać agenci [serwerów zarządzania](https://technet.microsoft.com/library/hh301922.aspx) którego komunikować się z magazynem danych i bazy danych SCOM.  Agenci korzystają z uwierzytelniania domeny łączyć się z serwerami zarządzania.  Te poza zaufanej domenie uwierzytelniania certyfikatów, czyli nawiązywanie [serwera bramy](https://technet.microsoft.com/library/hh212823.aspx).
+Wszystkie składniki programu SCOM są zainstalowane w centrum danych.  [Agenci są zainstalowani](https://docs.microsoft.com/system-center/scom/manage-deploy-windows-agent-console) na maszynach z systemem Windows i Linux, które są zarządzane przez SCOM.  Nawiązać agenci [serwerów zarządzania](https://technet.microsoft.com/library/hh301922.aspx) którego komunikować się z magazynem danych i bazy danych SCOM.  Agenci korzystają z uwierzytelniania domeny łączyć się z serwerami zarządzania.  Te poza zaufanej domenie uwierzytelniania certyfikatów, czyli nawiązywanie [serwera bramy](https://technet.microsoft.com/library/hh212823.aspx).
 
 SCOM wymaga dwóch baz danych, dla danych operacyjnych i inny magazyn danych do obsługi raportowanie i analiza danych.  A [Reporting Server](https://technet.microsoft.com/library/hh298611.aspx) uruchamia usługi SQL Reporting Services do raportowania danych z magazynu danych. 
 

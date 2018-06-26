@@ -1,6 +1,6 @@
 ---
 title: Planowanie skali środowiska Azure czas serii Insights | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób planowania środowiska Azure Insights serii czas, tym pojemności, przechowywanie danych, ruch przychodzący wydajność i monitorowania, należy stosować najlepsze rozwiązania.
+description: W tym artykule opisano sposób należy stosować najlepsze rozwiązania w przypadku planowania środowiska Azure Insights serii czasu, w tym pojemność magazynu, przechowywanie danych wejściowych pojemności, monitorowania i działalności odzyskiwania po awarii (BCDR).
 services: time-series-insights
 ms.service: time-series-insights
 author: ashannon7
@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: 49842f971645f97d954451ff6755294dc3c5a40f
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: f0f414e43231fc6d873d639902fd4f71e48f1002
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293268"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751173"
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Planowanie środowiska Azure czas serii Insights
 
@@ -94,8 +94,18 @@ Odwołanie do zestawu danych to kolekcja elementów, które rozszerzyć zdarzeni
 
 Uwaga: odwołanie do danych nie jest dołączony Wstecz. Oznacza to, że tylko danych wejściowych aktualnych i przyszłych jest zgodny i dołączony do zestawu odwołania data po jej skonfigurowaniu i przekazać.  Jeśli planujesz do wysyłania dużej ilości danych historycznych do TSI i nie przekazać lub tworzenie danych referencyjnych w TSI pierwszy, konieczne może być ponownie pracy (wskazówki, nie fun).  
 
-Aby dowiedzieć się więcej na temat sposobu tworzenia, przekazywanie i zarządzać danymi odwołania w TSI, przejdź do naszego *danych referencyjnych* dokumentacji [dokumentacji] (https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
+Aby dowiedzieć się więcej na temat sposobu tworzenia, przekazywanie i zarządzać danymi odwołania w TSI, przejdź do naszego *danych referencyjnych* dokumentacji [dokumentacji](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
 
+## <a name="business-disaster-recovery"></a>Odzyskiwanie po awarii biznesowa
+Jako usługi Azure czas serii Insights udostępnia wysokiej dostępności (HA), za pomocą zwolnienia na poziomie region platformy Azure, bez konieczności wykonywania dodatkowych działań wymaganych przez to rozwiązanie. Platforma Microsoft Azure obejmuje również funkcje ułatwiające tworzenie rozwiązań z możliwości odzyskiwanie po awarii lub dostępności między regionu. Jeśli chcesz zapewnić globalnych, region między wysoką dostępność dla urządzeń lub użytkowników, korzystać z tych funkcji odzyskiwania po awarii usługi Azure. Artykuł [wskazówki techniczne ciągłości biznesowej Azure](../resiliency/resiliency-technical-guidance.md) opisuje wbudowane funkcje w systemie Azure ciągłość prowadzenia działalności biznesowej i odzyskiwania po awarii. [Odzyskiwania po awarii i wysoką dostępność aplikacji Azure] [odzyskiwania po awarii i wysoką dostępność aplikacji Azure] dokument zawiera wskazówki architektura strategie aplikacjami platformy Azure w celu osiągnięcia wysokiej dostępności i odzyskiwania po awarii.
+
+Czas serii Insights nie ma firmowych wbudowanych odzyskiwania po awarii (BCDR).  Jednak klientów, które wymagają BCDR, nadal można zaimplementować strategię odzyskiwania. Utworzyć drugi środowisko czasu serii wgląd w kopii zapasowej region platformy Azure i wysyłania zdarzeń do tego środowiska dodatkowej ze źródła zdarzeń podstawowego, wykorzystaniu drugi dedykowanej grupy klientów oraz wskazówki BCDR źródła zdarzeń.  
+
+1.  Utwórz środowisko w regionie drugiego.  Więcej informacji na temat tworzenia środowiska czasu serii Insights [tutaj](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-get-started).
+2.  Tworzenie drugiej grupy konsumentów dedykowanych źródła zdarzeń i połącz źródła zdarzeń do nowego środowiska.  Pamiętaj wyznaczyć grupy odbiorców drugiego, dedykowanego.  Więcej informacji na ten temat można znaleźć, wykonując jedną [dokumentacji Centrum IoT](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) lub [dokumentacji Centrum zdarzeń](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-data-access).
+3.  Jeżeli regionu podstawowego przestaną działać podczas zdarzenia po awarii, należy przełączyć operacje tworzenia kopii zapasowej środowiska Insights serii czasu.  
+
+Aby dowiedzieć się więcej o zasadach BCDR Centrum IoT, head [tutaj](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-ha-dr).  Aby dowiedzieć się więcej o zasadach BCDR Centrum zdarzeń, head [tutaj](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-geo-dr).  
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Jak dodać źródła zdarzenia Centrum zdarzeń](time-series-insights-how-to-add-an-event-source-eventhub.md)

@@ -2,7 +2,7 @@
 Masz OpenAPI definicji dla funkcji, z [utworzyć definicję OpenAPI dla funkcji](../articles/azure-functions/functions-openapi-definition.md). Następnym krokiem w procesie jest można wyeksportować definicji interfejsu API, dzięki czemu PowerApps i Flow firmy Microsoft może być używany w niestandardowego interfejsu API.
 
 > [!IMPORTANT]
-> Należy pamiętać, że użytkownik musi zalogować się na platformie Azure z tymi samymi poświadczeniami, których można użyć dla Twojego rozwiązania PowerApps i Microsoft Flow dzierżawy. Dzięki temu Azure utworzyć niestandardowego interfejsu API i był dostępny dla obu PowerApps i Flow firmy Microsoft.
+> Należy pamiętać, że użytkownik muszą być podpisane Azure z tymi samymi poświadczeniami, których można użyć dla Twojego rozwiązania PowerApps i Microsoft Flow dzierżawy. Dzięki temu Azure utworzyć niestandardowego interfejsu API i był dostępny dla obu PowerApps i Flow firmy Microsoft.
 
 1. W [portalu Azure](https://portal.azure.com), kliknij swoją nazwę aplikacji funkcji (takich jak **funkcja Pokaz energii**) > **funkcji platformy** > **definicji interfejsu API** .
 

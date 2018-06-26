@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 38b2f57811b0e952d3020c06d39350918f2f0391
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: fcadac344e2e05c3f6cdd9003b87b819d7933fba
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31599326"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937438"
 ---
 # <a name="manage-azure-redis-cache-with-azure-powershell"></a>Zarządzanie przy użyciu programu Azure PowerShell pamięć podręczna Azure Redis
 > [!div class="op_single_selector"]
@@ -337,7 +337,7 @@ Polecenie aktualizacji pamięci podręcznej Redis, o nazwie myCache maxmemory-po
 > * Nie można skalować z **Premium** pamięci podręcznej w dół do **standardowe** lub **podstawowe** pamięci podręcznej.
 > * Nie można skalować z **standardowe** pamięci podręcznej w dół do **podstawowe** pamięci podręcznej.
 > * Możesz skalować z **podstawowe** pamięci podręcznej do **standardowe** pamięci podręcznej, ale nie można zmienić rozmiar w tym samym czasie. Jeśli potrzebujesz zmienić rozmiar, należy na żądany rozmiar kolejnych operacji skalowania.
-> * Nie można skalować z **podstawowe** bezpośrednio do pamięci podręcznej **Premium** pamięci podręcznej. Należy skalować z **podstawowe** do **standardowe** w jednej operacji skalowania, a następnie z **standardowe** do **Premium** w kolejnych operacji skalowania.
+> * Nie można skalować z **podstawowe** bezpośrednio do pamięci podręcznej **Premium** pamięci podręcznej. Należy skalować z **podstawowe** do **standardowe** w jednej operacji skalowania, a następnie z **standardowe** do **Premium** kolejnych skalowania Operacja.
 > * Nie można skalować z większego rozmiaru w dół do **C0 (250 MB)** rozmiar.
 > 
 > Aby uzyskać więcej informacji, zobacz [jak pamięć podręczna Redis Azure skali](cache-how-to-scale.md).
@@ -783,7 +783,7 @@ Aby dowiedzieć się więcej na temat korzystania z platformy Azure, programu Wi
 * [Azure dokumentację poleceń cmdlet pamięci podręcznej Redis w witrynie MSDN](https://msdn.microsoft.com/library/azure/mt634513.aspx)
 * [Polecenia cmdlet Menedżera zasobów systemu Azure](http://go.microsoft.com/fwlink/?LinkID=394765): Dowiedz się, jak używać poleceń cmdlet w module usługi Azure Resource Manager.
 * [Używanie grup zasobów do zarządzania zasobami Azure](../azure-resource-manager/resource-group-template-deploy-portal.md): informacje o sposobie tworzenia i obsługi grup zasobów w portalu Azure.
-* [Azure blog](http://blogs.msdn.com/windowsazure): więcej informacji na temat nowych funkcji w systemie Azure.
+* [Azure blog](https://azure.microsoft.com/en-us/blog/): więcej informacji na temat nowych funkcji w systemie Azure.
 * [Blog dotyczący programu Windows PowerShell](http://blogs.msdn.com/powershell): więcej informacji na temat nowych funkcji w programie Windows PowerShell.
 * ["Witaj, Twórco skryptów!" Blog](http://blogs.technet.com/b/heyscriptingguy/): Pobierz rzeczywistych porady i wskazówki związane z społeczności programu Windows PowerShell.
 

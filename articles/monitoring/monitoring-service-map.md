@@ -3,8 +3,8 @@ title: Przy użyciu mapy usługi rozwiązania na platformie Azure | Dokumentacja
 description: Usługa Service Map jest rozwiązaniem platformy Azure, które automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Ten artykuł zawiera szczegółowe informacje dotyczące wdrażania mapy usługi w danym środowisku i korzystania z niego w różnych scenariuszach.
 services: monitoring
 documentationcenter: ''
-author: daveirwin1
-manager: jwhit
+author: mgoedtel
+manager: carmonm
 editor: tysonn
 ms.assetid: 3ceb84cc-32d7-4a7a-a916-8858ef70c0bd
 ms.service: monitoring
@@ -12,20 +12,33 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/22/2016
-ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: aa9a6b54576ce8399471891c9ab5b80216f00ee1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.date: 06/22/2018
+ms.author: daseidma;bwren
+ms.openlocfilehash: 812137a8320634364a7d91fd2e61cd3e9d15fc12
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887909"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751432"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Przy użyciu mapy usługi rozwiązania na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Z mapy usługi można przeglądać serwery w taki sposób, który należy wziąć pod uwagę ich: jako połączonych systemy, które dostarczają usług krytycznych. Mapy usługi pokazuje połączeń między serwerami, procesów, i portów w dowolnej połączenia TCP architekturze, bez konieczności wykonywania konfiguracyjnych wymaganych innych niż instalację agenta.
 
-W tym artykule opisano szczegóły przy użyciu mapy usługi. Informacje o konfigurowaniu mapy usługi i dołączania agentów, zobacz [mapy usługi konfigurowanie rozwiązania na platformie Azure]( monitoring-service-map-configure.md).
+W tym artykule opisano dołączania i przy użyciu mapy usługi. Informacje o konfigurowaniu mapy usługi i dołączania agentów, zobacz [mapy usługi konfigurowanie rozwiązania na platformie Azure]( monitoring-service-map-configure.md).
 
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+
+## <a name="enable-service-map"></a>Włącz mapy usług
+1. W portalu Azure kliknij **+ Utwórz zasób**.
+2. Na pasku wyszukiwania wpisz **mapy usługi** i naciśnij klawisz **Enter**.
+3. Na stronie witryny marketplace wyników wyszukiwania wybierz **mapy usługi** z listy.<br><br> ![Wybierz rozwiązanie mapy usługi z wyniki wyszukiwania portalu Azure Marketplace](./media/monitoring-service-map/marketplace-search-results.png)<br>
+4. Na **mapy usługi** okienku przeglądu, przejrzyj szczegóły rozwiązania, a następnie kliknij przycisk **Utwórz** do rozpoczęcia procesu dołączania do swojego obszaru roboczego analizy dzienników.<br><br> ![Zintegrowanego rozwiązania mapy usługi](./media/monitoring-service-map/service-map-onboard.png).
+5. W **skonfiguruj rozwiązanie** okienku, wybierz istniejącą lub Utwórz nowy obszar roboczy analizy dzienników.  Aby uzyskać więcej informacji na temat sposobu tworzenia nowego obszaru roboczego, zobacz [Tworzenie obszaru roboczego analizy dzienników w portalu Azure](../log-analytics/log-analytics-quick-create-workspace.md). Po podaniu wymaganych informacji, kliknij przycisk **Utwórz**.  
+
+Informacje została zweryfikowana i rozwiązanie jest wdrożone, można śledzić postęp w obszarze **powiadomienia** z menu. 
+
+Dostęp do mapy usługi w portalu Azure z obszaru roboczego analizy dzienników i wybierz opcję **rozwiązań** w lewym okienku.<br><br> ![Wybierz opcję rozwiązań w obszarze roboczym](./media/monitoring-service-map/select-solution-from-workspace.png).<br> Wybierz z listy rozwiązań **ServiceMap(workspaceName)** w mapy usługi rozwiązania Przegląd kliknij Kafelek podsumowanie mapy usługi.<br><br> ![Kafelek podsumowania mapy usługi](./media/monitoring-service-map/service-map-summary-tile.png).
 
 ## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Przypadki użycia: należy go przetwarza pamiętać zależności
 
@@ -44,9 +57,10 @@ Jeśli używasz usługi Azure Site Recovery i musi pomocy definiowanie sekwencji
 ### <a name="patch-management"></a>Zarządzanie poprawkami
 Mapy usług podnosi poziom użytkowania oceny aktualizacji systemu, pokazujące, które innych zespołów i serwery są zależne od usługi, więc można powiadomić je z wyprzedzeniem przed wyłączyć przez systemy w celu wdrożenia poprawki. Mapy usług zwiększa również zarządzanie poprawkami poprzez wyświetlenie, czy usługi są dostępne i poprawnie połączone po zostaną poprawiono i ponownie uruchomione.
 
-
 ## <a name="mapping-overview"></a>Mapowanie — omówienie
-Agenci mapy usługi zbieranie informacji na temat wszystkich procesów połączenia TCP na serwerze, na którym jest zainstalowany i szczegóły dotyczące połączeń przychodzących i wychodzących dla każdego procesu. Na liście w okienku po lewej stronie możesz wybrać maszyny lub grupy, które mają mapy usługi agentów do wizualizacji ich zależności w przedziale czasu. Zależności maszyny mapuje fokus na określonym komputerze i przedstawiają wszystkie maszyny, które są bezpośrednio TCP klientów lub serwerów tej maszynie.  Mapowanie grup maszyny Pokaż zestawy serwerów oraz ich zależności.
+Agenci mapy usługi zbieranie informacji na temat wszystkich procesów połączenia TCP na serwerze, na którym jest zainstalowany i szczegóły dotyczące połączeń przychodzących i wychodzących dla każdego procesu.
+
+Na liście w okienku po lewej stronie możesz wybrać maszyny lub grupy, które mają mapy usługi agentów do wizualizacji ich zależności w przedziale czasu. Zależności maszyny mapuje fokus na określonym komputerze i przedstawiają wszystkie maszyny, które są bezpośrednio TCP klientów lub serwerów tej maszynie.  Mapowanie grup maszyny Pokaż zestawy serwerów oraz ich zależności.
 
 ![Omówienie mapy usług](media/monitoring-service-map/service-map-overview.png)
 
@@ -143,10 +157,10 @@ Nie powiodło się połączeń są wyświetlane w mapy usługi maps dla procesó
 
 Opis połączenia nie powiodło się może pomóc w rozwiązywaniu problemów, weryfikacji migracji, analizowania zabezpieczeń i zrozumienia ogólnej architektury. Czasami jest bezpieczna połączenia nie powiodło się, ale często wskazuje, bezpośrednio do problemu, takich jak środowisko trybu failover, nagle staje się niedostępny lub dwoma warstwami aplikacji nie będą mogli komunikować po migracji chmury.
 
-## <a name="client-groups"></a>Grup klientów
+## <a name="client-groups"></a>Grupy klientów
 Grup klienta są pola na mapie, które reprezentują komputery klienckie, które nie mają zależności agentów. Pojedynczej grupy klientów reprezentuje klientów dla poszczególnych procesu lub komputera.
 
-![Grup klientów](media/monitoring-service-map/client-groups.png)
+![Grupy klientów](media/monitoring-service-map/client-groups.png)
 
 Aby wyświetlić adresy IP serwerów z grupy klientów, wybierz grupę. Zawartość grupy są wymienione w **właściwości grupy klienta** okienka.
 
@@ -187,16 +201,13 @@ Szczegóły procesu można zbierać z metadanych systemu operacyjnego dotyczące
 ![Okienko Podsumowanie procesu](media/monitoring-service-map/process-summary.png)
 
 ## <a name="alerts-integration"></a>Integracja alertów
-Mapy usług integruje się z alertami w analizy dzienników do pokazania w wybranym zakresie czasu wypalane alerty dla wybranego serwera. Serwer Wyświetla ikonę, jeśli są aktualne alerty i **alerty maszyny** w okienku wyświetlana lista alertów.
+Mapy usług integruje się z alertami Azure do pokazania w wybranym zakresie czasu wypalane alerty dla wybranego serwera. Serwer Wyświetla ikonę, jeśli są aktualne alerty i **alerty maszyny** w okienku wyświetlana lista alertów.
 
 ![W okienku alertów maszyny](media/monitoring-service-map/machine-alerts.png)
 
 Aby włączyć mapy usługi do wyświetlenia powiązanych alertów, należy utworzyć zasady alertu wyzwalająca dla określonego komputera. Aby utworzyć odpowiednie alerty:
 - Zawiera klauzulę do grupy przez komputer (na przykład **komputera interwał 1 minuta**).
 - Wybierz alert w oparciu metryki pomiaru.
-
-![Konfiguracja alertów](media/monitoring-service-map/alert-configuration.png)
-
 
 ## <a name="log-events-integration"></a>Integracja z dziennika zdarzeń
 Mapa usług integruje się z dziennika wyszukiwanie, aby wyświetlić liczbę wszystkich zdarzeń dziennika dostępna dla wybranego serwera w wybranym zakresie czasu. Możesz kliknąć każdy wiersz na liście zdarzeń liczników szybkiego dostępu do dziennika wyszukiwania i zobaczyć osobny dziennik zdarzeń.
@@ -224,7 +235,7 @@ Mapa usług integracji z śledzenia zmian odbywa się automatycznie, gdy oba roz
 
 Poniższa ilustracja jest szczegółowy widok zdarzenie Zmianakonfiguracji, które można napotkać po wybraniu **Pokaż w analizy dzienników**.
 
-![Zmianakonfiguracji zdarzeń](media/monitoring-service-map/configuration-change-event.png)
+![Zmianakonfiguracji zdarzeń](media/monitoring-service-map/configuration-change-event-01.png)
 
 
 ## <a name="performance-integration"></a>Integracja wydajności
@@ -240,7 +251,7 @@ W systemie Windows:
 - Sieci Adapter(*)\\bajty wysłane/s
 - Sieci Adapter(*)\\bajty odebrane/s
 
-Linux:
+W systemie Linux:
 - Procesor(*)\\czas procesora (%)
 - Memory(*)\\% wykorzystanie pamięci
 - Sieci Adapter(*)\\bajty wysłane/s
@@ -254,7 +265,6 @@ Mapy usług integracji z zabezpieczeniami i inspekcji odbywa się automatycznie,
 **Zabezpieczeń maszyny** w okienku zostaną wyświetlone dane z rozwiązań zabezpieczeń i inspekcji dla wybranego serwera. W okienku listy podsumowanie oczekujących bezpieczeństwo serwera podczas wybranego zakresu czasu. Kliknięcie dowolnej ćwiczeń problemy dotyczące zabezpieczeń w dół do wyszukiwania dziennika, aby uzyskać szczegółowe informacje o nich.
 
 ![Okienko zabezpieczeń komputera](media/monitoring-service-map/machine-security.png)
-
 
 ## <a name="updates-integration"></a>Integracja aktualizacji
 Mapa usług integracji z zarządzania aktualizacjami odbywa się automatycznie, gdy oba rozwiązania są włączone i skonfigurowane w obszarze roboczym Anlaytics dziennika.
@@ -368,7 +378,7 @@ ServiceMapComputer_CL | gdzie contains_cs OperatingSystemFullName_s "CentOS" | r
 Wszystkie dane serwera, procesów i zależności mapy usług jest dostępna za pośrednictwem [interfejsu API REST mapy usługi](https://docs.microsoft.com/rest/api/servicemap/).
 
 
-## <a name="diagnostic-and-usage-data"></a>dane diagnostyczne i użycia
+## <a name="diagnostic-and-usage-data"></a>Dane diagnostyczne i dane dotyczące użycia
 Firma Microsoft automatycznie zbiera dane użycia i wydajności przez korzystanie z usługi mapy usługi. Firma Microsoft używa tych danych do udostępniania i ulepszania jakości, bezpieczeństwa i integralności usługi mapy usługi. Aby zapewnić dokładne i skuteczne funkcje do rozwiązywania problemów, dane obejmują informacje o konfiguracji oprogramowania, na przykład systemu operacyjnego i wersji, adres IP, nazwę DNS i nazwę stacji roboczej. Firma Microsoft gromadzi nazwisk, adresów ani innych informacji kontaktowych.
 
 Aby uzyskać więcej informacji na temat zbierania i użycia danych, zobacz [Microsoft Online Services Privacy Statement](https://go.microsoft.com/fwlink/?LinkId=512132).

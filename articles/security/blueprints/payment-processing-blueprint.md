@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
 ms.author: jomolesk
-ms.openlocfilehash: 03f13c0b1ae209cc3da211a252a9a735faad34d0
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 223829df11bb1c9add811b40b55e47ee1fbb1fe4
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301375"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751842"
 ---
 # <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Azure zabezpieczeń i zgodności plan - środowisk standardem PCI DSS przetwarzania płatności
 
@@ -204,8 +204,8 @@ Wystąpienie bazy danych SQL Azure używa następujących środków zabezpiecze�
 
 [Zaloguj się Analytics](https://azure.microsoft.com/services/log-analytics) można udostępnić magazynu sieci Web firmy Contoso szczegółowe rejestrowanie całą aktywność systemu i użytkownika, obejmują posiadacza rejestrowanie danych. Zmiany można przejrzeć i sprawdzić dokładność. 
 
-- **Dzienniki aktywności:**[Dzienniki aktywności](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) zapewniają wgląd w operacje wykonywane na zasobów w ramach subskrypcji.
-- **Dzienniki diagnostyczne:**[dzienniki diagnostyczne](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) są wszystkie dzienniki emitowane przez każdego zasobu. Dzienniki te obejmują dzienniki systemu zdarzeń systemu Windows, magazynu obiektów Blob platformy Azure, tabele i kolejki dzienników.
+- **Dzienniki aktywności:**[Dzienniki aktywności](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) zapewniają wgląd w operacje wykonywane na zasobów w ramach subskrypcji.  
+- **Dzienniki diagnostyczne:**[dzienniki diagnostyczne](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) są wszystkie dzienniki emitowane przez każdego zasobu.   Dzienniki te obejmują dzienniki systemu zdarzeń systemu Windows, magazynu obiektów Blob platformy Azure, tabele i kolejki dzienników.
 - **Dzienniki zapory:** Application Gateway udostępnia pełnej diagnostyki i dostępu do dzienników. Dzienniki zapory są dostępne dla bramy aplikacji zasoby, które mają zapory aplikacji sieci Web jest włączona.
 - **Archiwizacja dziennika:** wszystkich dzienników diagnostycznych są skonfigurowane do zapisu konto magazynu Azure scentralizowany i zaszyfrowane dla archiwizacji z okresu przechowywania określonych (2 dni). Dzienniki są następnie połączonych z Analiza dzienników Azure na potrzeby przetwarzania, przechowywania i dashboarding. [Zaloguj się Analytics](https://azure.microsoft.com/services/log-analytics) to usługa, która umożliwia zbieranie i analizowanie danych wygenerowanych przez zasobów w chmurze i lokalnych środowiskach.
 
@@ -298,7 +298,7 @@ Domyślnym wdrożeniu mają na celu dostarczenie linii bazowej zaleceń Centrum 
 
 ## <a name="deploy-the-solution"></a>Wdrażanie rozwiązania
 
-Składniki do wdrożenia tego rozwiązania są dostępne w [repozytorium kodu planu PCI] [repozytorium kodu]. Wdrażanie podstawowych architektura wymaga wykonania kilku czynności wykonywane przy użyciu v5 PowerShell firmy Microsoft. Aby połączyć z poziomu witryny sieci Web, podaj niestandardowej nazwy domeny (np. contoso.com). To jest określona za pomocą `-customHostName` przełącznika w kroku 2. Aby uzyskać więcej informacji, zobacz [kupić niestandardowej nazwy domeny dla aplikacji sieci Web Azure](/azure/app-service-web/custom-dns-web-site-buydomains-web-app). Niestandardowej nazwy domeny nie jest wymagane, aby pomyślnie wdrożyć i uruchomić rozwiązania, ale będzie mógł podłączyć się do witryny sieci Web w celach demonstracyjnych.
+Składniki wdrażania tego rozwiązania są dostępne w [repozytorium kodu planu PCI](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms). Wdrażanie podstawowych architektura wymaga wykonania kilku czynności wykonywane przy użyciu v5 PowerShell firmy Microsoft. Aby połączyć z poziomu witryny sieci Web, podaj niestandardowej nazwy domeny (np. contoso.com). Jest to określone przez użytkownika z przewodnikiem monit w skrypcie wdrażania podstawowego w kroku 2. Aby uzyskać więcej informacji, zobacz [kupić niestandardowej nazwy domeny dla aplikacji sieci Web Azure](/azure/app-service-web/custom-dns-web-site-buydomains-web-app). Niestandardowej nazwy domeny nie jest wymagane, aby pomyślnie wdrożyć i uruchomić rozwiązania, ale będzie mógł podłączyć się do witryny sieci Web w celach demonstracyjnych.
 
 Skrypty dodać użytkowników domeny do dzierżawy usługi Azure AD, który określisz. Zaleca się utworzenie nowej dzierżawy usługi Azure AD ma być używana jako testu.
 
@@ -323,19 +323,17 @@ Zdecydowanie zaleca się, że czystą instalację programu PowerShell można uż
  
     ```powershell
     .\1-DeployAndConfigureAzureResources.ps1 
-        -resourceGroupName contosowebstore
-        -globalAdminUserName adminXX@contosowebstore.com 
-        -globalAdminPassword **************
-        -azureADDomainName contosowebstore.com 
-        -subscriptionID XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX 
-        -suffix PCIcontosowebstore
-        -customHostName contosowebstore.com
-        -sqlTDAlertEmailAddress edna@contosowebstore.com 
-        -enableSSL
-        -enableADDomainPasswordPolicy 
     ```
     
-    Szczegółowe instrukcje dotyczące obsługi, zobacz [instrukcje skryptu — wdrażanie i konfigurowanie zasobów Azure](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md).
+    Szczegółowe instrukcje dotyczące obsługi, zobacz [instrukcje skryptu — wdrażanie i konfigurowanie zasobów Azure](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md). Ten skrypt można obsługi pokaz magazynu sieci Web firmy Contoso lub wdrażania pilotażowego początkowe kroki wdrażania środowiska umożliwiającego PCI zgodności. 
+    
+    ```PowerShell
+    .\1A-ContosoWebStoreDemoAzureResources.ps1
+    ```
+    
+    Szczegółowe instrukcje dotyczące obsługi do obsługi magazynu w sieci Web firmy Contoso pokaz wdrożenia, zobacz [instrukcje skryptu - zasobów Azure pokaz magazynu sieci Web firmy Contoso](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1A-ContosoWebStoreDemoAzureResources.md). Ten skrypt może służyć do wdrażania infrastruktury pokaz magazynu sieci Web firmy Contoso. 
+    
+    Te skrypty są przeznaczone do użycia od siebie niezależne. Aby poznać najlepsze rozwiązanie, zaleca się wdrażania pokaz identyfikowanie niezbędne zasoby platformy Azure wymagane do obsługi rozwiązania. 
     
 3. Monitorowanie i rejestrowanie. Po wdrożeniu rozwiązania można otworzyć obszaru roboczego analizy dzienników i przykładowe szablony w repozytorium rozwiązania może służyć do zilustrowania konfiguracji monitorowania pulpitu nawigacyjnego. Przykładowych szablonów można znaleźć w publikacji [folderu omsDashboards](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md). Należy pamiętać, że należy zbierać dane w analizy dzienników dla szablonów do wdrożenia poprawnie. To może potrwać godzinę lub dłużej w zależności od działania lokacji.
  

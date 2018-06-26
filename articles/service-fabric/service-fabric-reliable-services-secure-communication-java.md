@@ -1,6 +1,6 @@
 ---
-title: Pomoc bezpiecznej komunikacji dla usług w sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft
-description: Przegląd sposobów zapewnienia bezpiecznej komunikacji dla niezawodnych usług, które są uruchomione w klastrze usługi sieć szkieletowa usług Azure.
+title: Zabezpieczenia komunikacji remoting service za pomocą języka Java w sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak do zabezpieczania komunikacji między usługami zdalnymi, na podstawie usługi dla usług niezawodnej Java, które są uruchomione w klastrze usługi sieć szkieletowa usług Azure.
 services: service-fabric
 documentationcenter: java
 author: PavanKunapareddyMSFT
@@ -13,22 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 624d9d358145fb8b41013d686821cb157693d3c6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1843720b9700e66af8ee84766cf7d63ac62e6283
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207999"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36749916"
 ---
-# <a name="help-secure-communication-for-services-in-azure-service-fabric"></a>Pomoc w bezpiecznej komunikacji dla usług w sieci szkieletowej usług Azure
+# <a name="secure-service-remoting-communications-in-a-java-service"></a>Bezpieczna komunikacja komunikacji zdalnej usługi w usłudze Java
 > [!div class="op_single_selector"]
 > * [C# w systemie Windows](service-fabric-reliable-services-secure-communication.md)
 > * [Java w systemie Linux](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
 
-## <a name="help-secure-a-service-when-youre-using-service-remoting"></a>Zabezpieczanie usługi podczas korzystania z komunikacji zdalnej usługi
-Będziemy używać istniejącego [przykład](service-fabric-reliable-services-communication-remoting-java.md) który wyjaśnia, jak skonfigurować komunikację zdalną dla niezawodne usługi. Aby ułatwić zabezpieczanie usługi podczas korzystania z usługi komunikacji zdalnej, wykonaj następujące kroki:
+Zabezpieczeń jest jednym z najważniejszych aspektów komunikacji. Struktura aplikacji niezawodne usługi zapewnia kilka stosy wbudowane komunikacji i narzędzi, których można użyć w celu poprawy bezpieczeństwa. W tym artykule omówiono sposób poprawiania zabezpieczeń podczas korzystania z usług zdalnych za pośrednictwem usługi języka Java. Opiera się na istniejącą [przykład](service-fabric-reliable-services-communication-remoting-java.md) który wyjaśnia, jak skonfigurować komunikację zdalną dla niezawodne usługi napisane w języku Java. 
+
+Aby ułatwić zabezpieczanie usługi podczas korzystania z komunikacji zdalnej usługi z usługami Java, wykonaj następujące kroki:
 
 1. Tworzenie interfejsu `HelloWorldStateless`, który definiuje metody, które będą dostępne dla zdalnego wywołania procedury w usłudze. Usługa będzie używać `FabricTransportServiceRemotingListener`, która jest zadeklarowana w `microsoft.serviceFabric.services.remoting.fabricTransport.runtime` pakietu. Jest to `CommunicationListener` implementację, która zapewnia możliwości komunikacji zdalnej.
 
@@ -58,7 +59,7 @@ Będziemy używać istniejącego [przykład](service-fabric-reliable-services-co
 
    1. Podaj je za pomocą [pakietu konfiguracji](service-fabric-application-and-service-manifests.md):
 
-       Dodaj `TransportSettings` sekcji w pliku settings.xml.
+       Dodaj nazwane `TransportSettings` sekcji w pliku settings.xml.
 
        ```xml
        <!--Section name should always end with "TransportSettings".-->
