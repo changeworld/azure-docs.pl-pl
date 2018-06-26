@@ -10,11 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 45183e51e9071647e07cfd0738522f0dfa28bd7b
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: efdef681dd94cdb97d84de657668c49022b72d95
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751500"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Opcje raportowania dla usługi Azure AD zarządzania hasłami
 
@@ -53,25 +54,6 @@ W portalu Azure doświadczenia firma Microsoft ulepszyła sposób, że można wy
 6. Aby filtrować ten widok, aby wyświetlić tylko zdarzenia dotyczące resetowania hasła, wybierz **filtru** u góry okienka.
 7. Z **filtru** menu, wybierz opcję **kategorii** rozwijania listy i zmień go na **Samoobsługowe zarządzanie hasłami** typu kategorii.
 8. Opcjonalnie dokładniej przefiltrować listę, wybierając konkretnym **działania** Cię interesują.
-
-## <a name="how-to-retrieve-password-management-events-from-the-azure-ad-reports-and-events-api"></a>Jak pobrać hasło zdarzeń zarządzania raportów usługi Azure AD i interfejsu API zdarzenia
-
-Raporty usługi Azure AD i interfejsu API zdarzenia obsługuje pobierania wszystkich informacji objętych resetowania hasła i raporty rejestracji resetowania hasła. Przy użyciu tego interfejsu API, można pobrać hasła poszczególnych resetowania hasła resetowania rejestracji zdarzeń i i ich integracji z wykorzystaniem technologii raportowania wybranych przez użytkownika.
-
-> [!IMPORTANT]
-> Obecnie raportów usługi Azure AD i interfejsu API zdarzenia pobiera do *75,000 pojedynczych zdarzeń* z [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent) i [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent) typów. Interfejs API obejmuje ostatnich 30 dni.
-> 
-> Jeśli musisz pobrać ani do przechowywania danych po przekroczeniu tego okna, zalecamy utrwalanie go w zewnętrznej bazy danych, korzystając z interfejsu API do badania delty, które powodują. Zaleca się zacząć pobrać dane, po rozpoczęciu pracy SSPR w Twojej organizacji. Utrwalić go zewnętrznie, a następnie przejdź do śledzenia może od tej pory.
->
-
-### <a name="how-to-get-started-with-the-reporting-api"></a>Jak rozpocząć pracę z interfejsem API raportowania
-
-Aby uzyskać dostęp do tych danych, należy napisać małych aplikacji lub skryptu, można pobrać go ze swoich serwerów. Aby uzyskać więcej informacji, zobacz [wprowadzenie do raportowania interfejsu API usługi Azure AD](../active-directory-reporting-api-getting-started-azure-portal.md).
-
-Po utworzeniu skryptu pracy chcesz zbadać hasła resetowania i rejestracji zdarzenia, które można pobrać, aby spełnić scenariuszy:
-
-* [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent): Wyświetla listę dostępnych kolumn zdarzeń resetowania hasła.
-* [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent): Wyświetla listę dostępnych kolumn dla zdarzenia rejestracji resetowania hasła.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Opis kolumn raportu w portalu Azure
 

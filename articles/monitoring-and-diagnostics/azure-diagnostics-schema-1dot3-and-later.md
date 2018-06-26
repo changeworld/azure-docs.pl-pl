@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: b4fba492a57471df737896956e0b37e3da772cce
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 501e28cf3d01385d65a2308db06702d2db0d91ee
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35262379"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937917"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>1.3 diagnostyki Azure i nowszym schemat konfiguracji
 > [!NOTE]
@@ -362,7 +362,7 @@ PublicConfig i PrivateConfig są rozdzielone, ponieważ w większości przypadk�
  Tagi po około znajdują się w kolejności przedstawionej w poprzednim przykładzie.  Jeśli widzisz pełny opis, których można oczekiwać, wyszukaj strony elementu lub atrybutu.  
 
 ## <a name="common-attribute-types"></a>Popularne typy atrybutów  
- **scheduledTransferPeriod** atrybutu pojawia się w kilku elementów. Jest odstęp między zaplanowanego transferu do magazynu zaokrąglona w górę do najbliższej minutę. Wartość jest [XML "Typ danych Duration."](http://www.w3schools.com/schema/schema_dtypes_date.asp)
+ **scheduledTransferPeriod** atrybutu pojawia się w kilku elementów. Jest odstęp między zaplanowanego transferu do magazynu zaokrąglona w górę do najbliższej minutę. Wartość jest [XML "Typ danych Duration."](http://www.w3schools.com/xml/schema_dtypes_date.asp)
 
 
 ## <a name="diagnosticsconfiguration-element"></a>DiagnosticsConfiguration Element  
@@ -415,7 +415,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
 |**Zrzutów awaryjnych**|Zobacz opis w innym miejscu na tej stronie.|  
-|**DiagnosticInfrastructureLogs**|Włącz zbieranie dzienników generowanych przez diagnostyki Azure. Dzienniki diagnostyczne infrastruktury są przydatne podczas rozwiązywania problemów Diagnostyka system. Opcjonalne atrybuty:<br /><br /> - **scheduledTransferLogLevelFilter** — konfiguruje poziom ważności minimalna dzienników zbierane.<br /><br /> - **scheduledTransferPeriod** — interwał transferu zaplanowane do magazynu zaokrąglona w górę do najbliższej minutę. Wartość jest [XML "Typ danych Duration."](http://www.w3schools.com/schema/schema_dtypes_date.asp) |  
+|**DiagnosticInfrastructureLogs**|Włącz zbieranie dzienników generowanych przez diagnostyki Azure. Dzienniki diagnostyczne infrastruktury są przydatne podczas rozwiązywania problemów Diagnostyka system. Opcjonalne atrybuty:<br /><br /> - **scheduledTransferLogLevelFilter** — konfiguruje poziom ważności minimalna dzienników zbierane.<br /><br /> - **scheduledTransferPeriod** — interwał transferu zaplanowane do magazynu zaokrąglona w górę do najbliższej minutę. Wartość jest [XML "Typ danych Duration."](http://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 |**Katalogi**|Zobacz opis w innym miejscu na tej stronie.|  
 |**EtwProviders**|Zobacz opis w innym miejscu na tej stronie.|  
 |**Metryki**|Zobacz opis w innym miejscu na tej stronie.|  
@@ -488,8 +488,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|Konfiguruje zbierania zdarzeń generowanych przez [EventSource — klasa](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Wymagany atrybut:<br /><br /> **Dostawca** — Nazwa klasy zdarzenia EventSource.<br /><br /> Opcjonalne atrybuty:<br /><br /> - **scheduledTransferLogLevelFilter** -minimalny poziom ważności na transfer do konta magazynu.<br /><br /> - **scheduledTransferPeriod** — interwał transferu zaplanowane do magazynu zaokrąglona w górę do najbliższej minutę. Wartość jest [XML "Typ danych Duration."](http://www.w3schools.com/schema/schema_dtypes_date.asp) |  
-|**EtwManifestProviderConfiguration**|Wymagany atrybut:<br /><br /> **Dostawca** — identyfikator GUID dostawcy zdarzeń<br /><br /> Opcjonalne atrybuty:<br /><br /> - **scheduledTransferLogLevelFilter** -minimalny poziom ważności na transfer do konta magazynu.<br /><br /> - **scheduledTransferPeriod** — interwał transferu zaplanowane do magazynu zaokrąglona w górę do najbliższej minutę. Wartość jest [XML "Typ danych Duration."](http://www.w3schools.com/schema/schema_dtypes_date.asp) |  
+|**EtwEventSourceProviderConfiguration**|Konfiguruje zbierania zdarzeń generowanych przez [EventSource — klasa](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Wymagany atrybut:<br /><br /> **Dostawca** — Nazwa klasy zdarzenia EventSource.<br /><br /> Opcjonalne atrybuty:<br /><br /> - **scheduledTransferLogLevelFilter** -minimalny poziom ważności na transfer do konta magazynu.<br /><br /> - **scheduledTransferPeriod** — interwał transferu zaplanowane do magazynu zaokrąglona w górę do najbliższej minutę. Wartość jest [XML "Typ danych Duration."](http://www.w3schools.com/xml/schema_dtypes_date.asp) |  
+|**EtwManifestProviderConfiguration**|Wymagany atrybut:<br /><br /> **Dostawca** — identyfikator GUID dostawcy zdarzeń<br /><br /> Opcjonalne atrybuty:<br /><br /> - **scheduledTransferLogLevelFilter** -minimalny poziom ważności na transfer do konta magazynu.<br /><br /> - **scheduledTransferPeriod** — interwał transferu zaplanowane do magazynu zaokrąglona w górę do najbliższej minutę. Wartość jest [XML "Typ danych Duration."](http://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 
 
 
@@ -524,7 +524,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
-|**MetricAggregation**|Wymagany atrybut:<br /><br /> **scheduledTransferPeriod** — interwał transferu zaplanowane do magazynu zaokrąglona w górę do najbliższej minutę. Wartość jest [XML "Typ danych Duration."](http://www.w3schools.com/schema/schema_dtypes_date.asp) |  
+|**MetricAggregation**|Wymagany atrybut:<br /><br /> **scheduledTransferPeriod** — interwał transferu zaplanowane do magazynu zaokrąglona w górę do najbliższej minutę. Wartość jest [XML "Typ danych Duration."](http://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 
 
 
@@ -588,7 +588,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Nazwa elementu|Opis|  
 |------------------|-----------------|  
-|**obiekt sink**|Zobacz opis w innym miejscu na tej stronie.|  
+|**Obiekt sink**|Zobacz opis w innym miejscu na tej stronie.|  
 
 ## <a name="sink-element"></a>Sink — Element
  *Drzewa: - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - zbiornika katalogu głównego*

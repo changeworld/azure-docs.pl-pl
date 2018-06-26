@@ -177,6 +177,8 @@
           href: api-management-howto-deploy-multi-region.md
         - name: Rejestrowanie zdarzeń w usłudze Azure Event Hubs
           href: api-management-howto-log-event-hubs.md
+        - name: Rejestrowanie żądań za pomocą usługi Azure Application Insights
+          href: api-management-howto-app-insights.md
         - name: Konfigurowanie odzyskiwania po awarii przy użyciu funkcji wykonywania/przywracania kopii zapasowej
           href: api-management-howto-disaster-recovery-backup-restore.md
         - name: Zarządzanie kontami użytkowników
