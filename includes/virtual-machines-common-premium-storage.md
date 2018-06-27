@@ -1,3 +1,20 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: storage
+author: ramankumarlive
+ms.service: storage
+ms.topic: include
+ms.date: 06/05/2018
+ms.author: ramankum
+ms.custom: include file
+ms.openlocfilehash: 5cbe6f1f8f15e9da8e1fe6961d3da9b9e2a31e4b
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34806387"
+---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Magazyn w warstwie Premium wysokiej wydajności i zarządzane dyski dla maszyn wirtualnych
 Usługa Azure Premium Storage oferuje obsługę dysków o wysokiej wydajności i małych opóźnieniach maszynach wirtualnych (VM) z wejścia/wyjścia (We/Wy)-intensywnych obciążeń. Dyski maszyn wirtualnych, które używają magazyn w warstwie Premium przechowywania danych na dyskach półprzewodnikowych (SSD). Podjęcie wykorzystują szybkości i wydajności dysków w warstwie premium magazynu, można migrować istniejące dyski maszyny Wirtualnej do magazyn w warstwie Premium.
 
@@ -61,7 +78,7 @@ Oto niektóre z funkcji Premium Storage:
 
 ## <a name="supported-vms"></a>Obsługiwane maszyny wirtualne
 
-Magazyn w warstwie Premium obsługuje B-series, serii DS, DSv2-series, DSv3 serii GS-series, Ls serii, serie M i Fs serii maszyn wirtualnych. Z tych typów maszyny Wirtualnej służy dyski magazynu standard i premium. Nie można używać dysków premium magazynu serii maszyn wirtualnych, które nie są Premium zgodnych z magazynu.
+Magazyn w warstwie Premium obsługuje B-series, serii DS, DSv2-series, DSv3 serii Esv3-series, serii GS Ls serii, serie M i Fs serii maszyn wirtualnych. Z tych typów maszyny Wirtualnej służy dyski magazynu standard i premium. Nie można używać dysków premium magazynu serii maszyn wirtualnych, które nie są Premium zgodnych z magazynu.
 
 
 Aby uzyskać informacje o typach maszyn wirtualnych i rozmiarach na platformie Azure dla systemu Windows, zobacz [Windows VM sizes (Rozmiary maszyn wirtualnych z systemem Windows)](../articles/virtual-machines/windows/sizes.md). Aby uzyskać informacje o typach maszyn wirtualnych i rozmiarach na platformie Azure dla systemu Linux, zobacz [Linux VM sizes (Rozmiary maszyn wirtualnych z systemem Linux)](../articles/virtual-machines/linux/sizes.md).
@@ -218,7 +235,7 @@ Aby uzyskać szczegółowe informacje dotyczące operacji REST względem stronic
 
 ### <a name="managed-disks"></a>Dyski zarządzane
 
-Migawek dla dysków zarządzanych jest kopię zarządzanego dysku tylko do odczytu. Migawki są przechowywane jako standardowych dysków zarządzanych. Obecnie [przyrostowe migawki](../articles/virtual-machines/windows/incremental-snapshots.md) nie są obsługiwane w przypadku dysków zarządzanych. Aby dowiedzieć się, jak migawki dysków zarządzanych, zobacz [Utwórz kopię plik VHD przechowywany jako zarządzany Azure dysku przy użyciu migawek zarządzane w systemie Windows](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md) lub [Utwórz kopię plik VHD przechowywany jako zarządzany platformy Azure dysku przy użyciu migawek zarządzane w systemie Linux](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md).
+Migawek dla dysków zarządzanych jest kopię zarządzanego dysku tylko do odczytu. Migawki są przechowywane jako standardowych dysków zarządzanych. Obecnie [przyrostowe migawki](../articles/virtual-machines/windows/incremental-snapshots.md) nie są obsługiwane w przypadku dysków zarządzanych. Aby dowiedzieć się, jak migawki dysków zarządzanych, zobacz [Utwórz kopię plik VHD przechowywany jako zarządzany Azure dysku przy użyciu migawek zarządzane w systemie Windows](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md) lub [Utwórz kopię plik VHD przechowywany jako zarządzany platformy Azure dysku przy użyciu zarządzanego migawek w systemie Linux](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md).
 
 Jeśli dysków zarządzanych jest dołączony do maszyny Wirtualnej, niektóre operacje interfejsu API na dysku nie są dozwolone. Na przykład nie można wygenerować sygnaturę dostępu współdzielonego (SAS), można wykonać operacji kopiowania, gdy dysk jest dołączony do maszyny Wirtualnej. Zamiast tego należy najpierw utworzyć migawkę dysku, a następnie wykonaj kopię migawki. Alternatywnie można odłączyć dysk, a następnie wygeneruj dostępu Współdzielonego w celu wykonania operacji kopiowania.
 
@@ -241,7 +258,7 @@ Następujące dystrybucje systemu Linux zostały zatwierdzone dla usługi Azure 
 | Ubuntu | 12.04 | 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB |
 | Ubuntu | 14.04 | 3.13.0-44.73+ | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |
 | Debian | 7.x, 8.x | 3.16.7-ckt4-1+ | &nbsp; |
-| SUSE | SLES 12| 3.12.36-38.1+| suse-sles-12-priority-v20150213 <br> suse-sles-12-v20150213 |
+| SUSE | SLES 12| 3.12.36-38.1+| suse-sles-12-priority-v20150213 <br> SUSE-sles-12-v20150213 |
 | SUSE | SLES 11 Z DODATKIEM SP4 | 3.0.101-0.63.1+ | &nbsp; |
 | CoreOS | 584.0.0+| 3.18.4+ | CoreOS 584.0.0 |
 | CentOS | 6.5, 6.6, 6.7, 7.0 | &nbsp; | [LIS4 wymagane](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Patrz Uwaga w następnej sekcji* |

@@ -14,18 +14,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: 62f5ae4a9152d3f1b1641cc69136bf472527ba2a
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e2512a2af05ee7101713886c3ae1b5c6c74dd3db
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942415"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018542"
 ---
 # <a name="azure-media-services-release-notes"></a>Informacje o wersji usługi Azure Media Services
 Te informacje o wersji dla usługi Azure Media Services podsumowano zmiany z poprzednich wersji i znane problemy.
 
 > [!NOTE]
-> Chcemy usłyszeć klientów, dzięki czemu możemy skupić się na rozwiązywanie problemów, które dotyczy. Aby zgłosić problem lub zadać pytania, przesłać post w [Forum MSDN usług Media Azure].
+> Chcemy usłyszeć klientów, dzięki czemu możemy skupić się na rozwiązywanie problemów, które dotyczy. Aby zgłosić problem lub zadać pytania, przesłać post w [MSDN Forum usługi Azure Media Services].
 > 
 > 
 
@@ -44,9 +44,9 @@ Te informacje o wersji dla usługi Azure Media Services podsumowano zmiany z pop
 
 
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>Historia wersji interfejsu API REST
-Informacje o historii wersji interfejsu API REST usług nośnika, zobacz [dokumentacja interfejsu API REST usługi Azure Media].
+Informacje o historii wersji interfejsu API REST usług nośnika, zobacz [Odwołanie do interfejsu API REST usługi multimediów Azure].
 
-## <a name="may-2018"></a>2018 maja 
+## <a name="may-2018"></a>Maj 2018 r. 
 
 Uruchamianie kanałów na żywo 12 maja 2018 będzie już obsługi strumienia transportowego RTP/MPEG-2 protokołu pozyskiwania. Przeprowadź migrację z RTP/MPEG-2 RTMP lub pofragmentowany MP4 (Smooth Streaming) pozyskiwania protokołów.
 
@@ -170,7 +170,6 @@ Nowa wersja opublikowane zespołu zestawu Azure SDK [zestaw Azure SDK for PHP](h
 
 Aby uzyskać więcej informacji, zobacz:
 
-* [SDK usługi Media Services dla programu PHP](http://southworks.com/blog/2015/12/09/new-microsoft-azure-media-services-sdk-for-php-release-available-with-new-features-and-samples/) blogu.
 * Następujące [przykłady kodu](http://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices) ułatwia szybkie rozpoczęcie pracy:
   * **vodworkflow_aes.php**: plik PHP ten przedstawia sposób użycia dynamicznego szyfrowania AES-128 i usługi dostarczania klucza. Jest on oparty na przykład .NET wyjaśniono w [dynamicznego szyfrowania AES-128 użycia i usługi dostarczania klucza](media-services-protect-with-aes128.md).
   * **vodworkflow_aes.php**: plik PHP ten przedstawia sposób użycia szyfrowania dynamicznego PlayReady i usługi dostarczania licencji. Jest on oparty na przykład .NET wyjaśniono w [Użyj PlayReady i Widevine dynamicznego szyfrowania common encryption](media-services-protect-with-playready-widevine.md).
@@ -209,9 +208,7 @@ Aby uzyskać więcej informacji, zobacz [ten blog](https://azure.microsoft.com/b
 
 ## <a id="august_changes_15"></a>Zwolnij sierpień 2015
 * SDK usługi Media Services Java wersji 0.8.0 zlecenia i nowe próbki są teraz dostępne. Aby uzyskać więcej informacji, zobacz:
-  
-  * [Ten wpis w blogu](http://southworks.com/blog/2015/08/25/microsoft-azure-media-services-sdk-for-java-v0-8-0-released-and-new-samples-available/)
-  * [Repozytorium przykłady Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
+    
 * Azure Media Player został zaktualizowany o obsługę wielu audio strumienia. Aby uzyskać więcej informacji, zobacz [ten wpis w blogu](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/).
 
 ## <a id="july_changes_15"></a>Wersja z lipca 2015 r.
@@ -310,7 +307,7 @@ Ta wersja oznaczony jako domyślny konstruktor Microsoft.WindowsAzure.MediaServi
 
 ## <a id="october_changes_14"></a>Wersji z października 2014 r.
 ### <a id="new_encoder_release"></a>Wersja Media Encoder usług
- Nową wersję nośnika usługi Azure Media Encoder ogłoszono. Z najnowszych Media Encoder są pobierane tylko dla danych wyjściowych GB. W przeciwnym razie nowy koder to funkcja zgodny z poprzednim kodera. Aby uzyskać więcej informacji, zobacz [szczegóły cennika usługi Media Services].
+ Nową wersję nośnika usługi Azure Media Encoder ogłoszono. Z najnowszych Media Encoder są pobierane tylko dla danych wyjściowych GB. W przeciwnym razie nowy koder to funkcja zgodny z poprzednim kodera. Aby uzyskać więcej informacji, zobacz [Szczegóły cennika usług Media Services].
 
 ### <a id="oct_sdk"></a>Zestaw .NET SDK usługi multimediów
 SDK usługi Media Services dla platformy .NET, rozszerzenia jest teraz wersji 2.0.0.3.
@@ -355,11 +352,11 @@ Zestaw SDK usługi multimediów dla platformy .NET jest teraz wersji 3.0.0.7
 * Dynamicznego szyfrowania AES. Aby uzyskać więcej informacji, zobacz [dynamicznego szyfrowania AES-128 użycia i usługi dostarczania klucza](http://msdn.microsoft.com/library/azure/dn783457.aspx).
 * Usługi dostarczania licencji PlayReady. 
 * PlayReady szyfrowania dynamicznego. 
-* Szablon licencji PlayReady usługi multimediów. Aby uzyskać więcej informacji, zobacz [omówienie szablon licencji PlayReady usług Media].
+* Szablon licencji PlayReady usługi multimediów. Aby uzyskać więcej informacji, zobacz [Omówienie szablonu licencji PlayReady usługi Media Services].
 * Strumień zasobów szyfrowane magazynu. Aby uzyskać więcej informacji, zobacz [strumieniowo zaszyfrowana magazynu zawartości](http://msdn.microsoft.com/library/azure/dn783451.aspx).
 
 ## <a id="august_changes_14"></a>W wersji 2014 r. sierpnia
-Podczas kodowania zasób zawartości wyjściowej jest generowany po zakończeniu zadania kodowania. Do tej wersji Media Encoder usług wyprodukowanych metadanych o zasobach danych wyjściowych. Począwszy od tej wersji, koder również tworzy metadane dotyczące zasobów wejściowych. Aby uzyskać więcej informacji, zobacz [wejściowych metadanych] i [metadanych dane wyjściowe].
+Podczas kodowania zasób zawartości wyjściowej jest generowany po zakończeniu zadania kodowania. Do tej wersji Media Encoder usług wyprodukowanych metadanych o zasobach danych wyjściowych. Począwszy od tej wersji, koder również tworzy metadane dotyczące zasobów wejściowych. Aby uzyskać więcej informacji, zobacz [Metadane wejściowe] i [Metadane wyjściowe].
 
 ## <a id="july_changes_14"></a>Lipiec 2014 roku
 Azure Media Services Pakowarka i modułu szyfrującego wprowadzono następujące poprawki:
@@ -382,7 +379,7 @@ SDK .NET usługi Media Services jest teraz wersji 3.0.0.5. Wprowadzono następuj
   * Błąd przejściowy logikę wykrywania i ponów próbę zostały ulepszona pod kątem wyjątków, które są spowodowane zapytania, Zapisz zmiany oraz przekazywanie lub pobieranie plików. 
   * Po przejściu wyjątki sieci web (na przykład podczas żądania tokenu usługi kontroli dostępu) błędy krytyczne niepowodzenie szybciej teraz.
 
-Aby uzyskać więcej informacji, zobacz [ponów logikę w zestawie SDK usługi multimediów dla platformy .NET].
+Aby uzyskać więcej informacji, zobacz [Spróbuj ponownie logikę w zestawie SDK usługi multimediów dla platformy .NET].
 
 ## <a id="april_changes_14"></a>Wersja kodera kwietnia 2014 r.
 ### <a name="april_14_enocer_changes"></a>Media Encoder usług aktualizacji
@@ -544,11 +541,11 @@ Nowość w wersji listopada zestawu SDK to następujące funkcje:
 <!-- Images. -->
 
 <!--- URLs. --->
-[Forum MSDN usług Media Azure]: http://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
-[dokumentacja interfejsu API REST usługi Azure Media]: https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference
-[szczegóły cennika usługi Media Services]: http://azure.microsoft.com/pricing/details/media-services/
-[wejściowych metadanych]: http://msdn.microsoft.com/library/azure/dn783120.aspx
-[metadanych dane wyjściowe]: http://msdn.microsoft.com/library/azure/dn783217.aspx
+[MSDN Forum usługi Azure Media Services]: http://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
+[Odwołanie do interfejsu API REST usługi multimediów Azure]: https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference
+[Szczegóły cennika usług Media Services]: http://azure.microsoft.com/pricing/details/media-services/
+[Metadane wejściowe]: http://msdn.microsoft.com/library/azure/dn783120.aspx
+[Metadane wyjściowe]: http://msdn.microsoft.com/library/azure/dn783217.aspx
 [Deliver content]: http://msdn.microsoft.com/library/azure/hh973618.aspx
 [Index media files with the Azure Media Indexer]: http://msdn.microsoft.com/library/azure/dn783455.aspx
 [StreamingEndpoint]: http://msdn.microsoft.com/library/azure/dn783468.aspx
@@ -556,14 +553,14 @@ Nowość w wersji listopada zestawu SDK to następujące funkcje:
 [Use AES-128 dynamic encryption and the key delivery service]: http://msdn.microsoft.com/library/azure/dn783457.aspx
 [Use PlayReady dynamic encryption and the license delivery service]: http://msdn.microsoft.com/library/azure/dn783467.aspx
 [Preview features]: http://azure.microsoft.com/services/preview/
-[omówienie szablon licencji PlayReady usług Media]: http://msdn.microsoft.com/library/azure/dn783459.aspx
+[Omówienie szablonu licencji PlayReady usługi Media Services]: http://msdn.microsoft.com/library/azure/dn783459.aspx
 [Stream storage-encrypted content]: http://msdn.microsoft.com/library/azure/dn783451.aspx
 [Azure portal]: https://portal.azure.com
 [dynamicznego tworzenia pakietów]: http://msdn.microsoft.com/library/azure/jj889436.aspx
 [Nick Drouin's blog]: http://blog-ndrouin.azurewebsites.net/hls-v3-new-old-thing/
 [Protect Smooth Streaming with PlayReady]: http://msdn.microsoft.com/library/azure/dn189154.aspx
-[ponów logikę w zestawie SDK usługi multimediów dla platformy .NET]: http://msdn.microsoft.com/library/azure/dn745650.aspx
-[doliny trawy ogłasza 7 EDIUS strumieniowanie za pośrednictwem chmury]: http://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
+[Spróbuj ponownie logikę w zestawie SDK usługi multimediów dla platformy .NET]: http://msdn.microsoft.com/library/azure/dn745650.aspx
+[Doliny trawy ogłasza 7 EDIUS strumieniowanie za pośrednictwem chmury]: http://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
 [Control Media Services Encoder output file names]: http://msdn.microsoft.com/library/azure/dn303341.aspx
 [Create overlays]: http://msdn.microsoft.com/library/azure/dn640496.aspx
 [Stitch video segments]: http://msdn.microsoft.com/library/azure/dn640504.aspx

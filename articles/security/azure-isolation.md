@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 6f01c2938462f3912928e183fcec215a52a3ee48
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: b112eee0e33654657bc6a57eec528c8a93bb077a
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010884"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018418"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolacja w chmurze publicznej systemu Azure
 ##  <a name="introduction"></a>Wprowadzenie
@@ -39,7 +39,7 @@ Podczas tworzenia lub migracji zasobów informatycznych do dostawcy usług w chm
 
 Infrastruktura platformy Azure została zaprojektowana kompleksowo, począwszy od obiektu po aplikacje hostujące jednocześnie miliony klientów, i zapewnia wiarygodną podstawę zaspokajania potrzeb firm w zakresie bezpieczeństwa. Ponadto platforma Azure oferuje szeroki zakres konfigurowalnych opcji zabezpieczeń oraz możliwość sterowania nimi, co pozwala dostosować zabezpieczenia w taki sposób, aby spełniały unikatowe wymagania realizowanych wdrożeń. Ten dokument pomaga spełnić te wymagania.
 
-### <a name="abstract"></a>Abstrakcyjny
+### <a name="abstract"></a>abstrakcyjny
 
 Microsoft Azure umożliwia uruchamianie aplikacji i maszynach wirtualnych (VM) na bazie infrastruktury fizycznej udostępnionego. Jednym z podstawowym motywacji gospodarczego do uruchamiania aplikacji w środowisku chmury jest możliwość dystrybucji koszt zasobów udostępnionych między wielu klientów. To rozwiązanie dotyczące obsługi wielu dzierżawców zwiększa wydajność przez multipleksowania zasobów między różnymi klientów przy niskich kosztach. Niestety również wprowadza ryzyko udostępniania serwerów fizycznych i innych zasobów infrastruktury, aby uruchomić poufnych aplikacji i maszyn wirtualnych, które mogą należeć do dowolnego i potencjalnie złośliwych użytkowników.
 
@@ -121,7 +121,7 @@ Usługi biznesowe z inspekcji certyfikaty, takich jak ISO/IEC 27001 są regularn
 
 Po usunięciu wszystkich danych Microsoft Azure usuwa dane, w tym wszystkie kopie pamięci podręcznej lub kopii zapasowej. W przypadku usług-scope występujących usuwania w ciągu 90 dni, po upływie okresu przechowywania. (W zakresie usług są zdefiniowane w sekcji warunków przetwarzania danych naszych [warunki dotyczące usług Online](http://aka.ms/Online-Services-Terms).)
 
-Jeśli dysk używany do magazynowania wystąpi awaria sprzętu, jest bezpiecznie [usunięte lub zniszczone](https://www.microsoft.com/trustcenter/Privacy/You-own-your-data) przed Microsoft zwraca go do producenta dla zastąpienia lub naprawy. Danych na dysku zostanie zastąpiony, aby upewnić się, że nie można odzyskać dane w jakikolwiek sposób.
+Jeśli dysk używany do magazynowania wystąpi awaria sprzętu, jest bezpiecznie [usunięte lub zniszczone](https://microsoft.com/en-us/trustcenter/privacy/you-own-your-data) przed Microsoft zwraca go do producenta dla zastąpienia lub naprawy. Danych na dysku zostanie zastąpiony, aby upewnić się, że nie można odzyskać dane w jakikolwiek sposób.
 
 ## <a name="compute-isolation"></a>Obliczenia bazy danych izolacji
 Microsoft Azure oferuje różne przetwarzania danych usług w chmurze zawierających szeroką gamę wystąpienia obliczeniowe i usług, które można skalować w górę i w dół automatycznie na potrzeby aplikacji lub enterprise. Te wystąpienia obliczeniowe i usługi oferują izolacji na różnych poziomach do zabezpieczania danych bez ograniczania elastyczność w konfiguracji tego zapotrzebowania klientów.

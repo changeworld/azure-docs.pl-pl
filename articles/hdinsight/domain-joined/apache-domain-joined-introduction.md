@@ -10,24 +10,21 @@ ms.assetid: 7dc6847d-10d4-4b5c-9c83-cc513cf91965
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/30/2018
+ms.date: 06/26/2018
 ms.author: omidm
-ms.openlocfilehash: 6c5e32f0ed39ce2e8c1e412dcfc6c04fb0f8bd7a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 3fd3a4b8982fe2170726df03bdc884e658d0b0c2
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715262"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019492"
 ---
 # <a name="an-introduction-to-hadoop-security-with-domain-joined-hdinsight-clusters"></a>Wprowadzenie do zabezpieczeń Hadoop z klastrami HDInsight przyłączonych do domeny
 
 Do tej pory usługa Azure HDInsight obsługiwała tylko jednego użytkownika z uprawnieniami lokalnego administratora. Bardzo dobrze funkcjonowało to dla mniejszych zespołów aplikacji lub działów. Jako Hadoop oparte na obciążeń zdobytych więcej popularne sektora przedsiębiorstwa, potrzebę funkcji klasy przedsiębiorstwa, takich jak active directory uwierzytelniania, obsługa wielu użytkowników i kontroli dostępu opartej na rolach stał się coraz bardziej ważne. Za pomocą przyłączonych do domeny klastrów usługi HDInsight można utworzyć klaster usługi HDInsight przyłączony do domeny usługi Active Directory i skonfigurować listę pracowników przedsiębiorstwa, którzy mogą uwierzytelniać się za pomocą usługi Azure Active Directory podczas logowania się do klastra usługi HDInsight. Żadna osoba spoza przedsiębiorstwa nie może zalogować się lub uzyskać dostępu do klastra usługi HDInsight. Administratorzy przedsiębiorstwa można skonfigurować kontroli dostępu opartej na rolach dla gałęzi zabezpieczeń przy użyciu [zakres Apache](http://hortonworks.com/apache/ranger/), w związku z tym ograniczanie dostępu do danych tylko jako wymagane. Poza tym administrator może przeprowadzać inspekcje dostępu do danych przez pracowników oraz wszystkich zmian w zasadach kontroli dostępu, osiągając w ten sposób wysoki poziom nadzoru nad zasobami firmy.
 
 > [!NOTE]
-> Nowe funkcje opisane w tym artykule są dostępne w wersji zapoznawczej tylko na następujące typy klastrów: Hadoop, Spark i interaktywne zapytania.
-
-> [!IMPORTANT]
-> Oozie nie jest włączona w usłudze HDInsight z przyłączonych do domeny.
+> Nowe funkcje opisane w tym artykule są dostępne w wersji zapoznawczej tylko na następujące typy klastrów: Hadoop, Spark i interaktywne zapytania. Oozie jest teraz włączony w klastrach przyłączonych do domeny. Aby uzyskać dostęp do Oozie użytkowników interfejsu użytkownika sieci web należy włączyć [tunelowania](../hdinsight-linux-ambari-ssh-tunnel.md)
 
 ## <a name="benefits"></a>Korzyści
 Enterprise zabezpieczeń zawiera cztery główne słupków — granicznej zabezpieczeń, uwierzytelniania, autoryzacji i szyfrowania.

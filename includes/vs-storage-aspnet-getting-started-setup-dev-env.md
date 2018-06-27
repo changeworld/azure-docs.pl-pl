@@ -22,7 +22,7 @@ Ta sekcja przeprowadzi Cię przez Konfigurowanie środowiska deweloperskiego. W 
 
 2. Wybierz z menu kontekstowego **Dodaj** > **podłączonej usługi**.
 
-1. W **usług połączonych** okno dialogowe, wybierz opcję **magazynu w chmurze z usługą Azure Storage**, a następnie wybierz **Konfiguruj**.
+1. W **usług połączonych** okno dialogowe, wybierz opcję **magazynu w chmurze z usługą Azure Storage**.
 
     ![Zrzut ekranu połączona usług — okno dialogowe](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-3.png)
 

@@ -14,10 +14,10 @@ Ten artykuł pomoże odpowiedzi po często zadawane pytania dotyczące optymaliz
 
 Firma Microsoft umieściła wytyczne specjalnie z myślą o magazyn w warstwie Premium ponieważ obciążeń uruchomionych na magazyn w warstwie Premium są wysokiej wydajności poufnych. Firma Microsoft umieściła przykłady, gdzie jest to odpowiednie. Można również zastosować niektóre z tych wskazówek do aplikacji działających na maszynach wirtualnych IaaS z dyskami magazynu w warstwie standardowa.
 
-Przed rozpoczęciem, jeśli jesteś nowym użytkownikiem magazyn w warstwie Premium, najpierw przeczytać artykuł [magazyn w warstwie Premium: magazyn o wysokiej wydajności dla obciążeń maszyny wirtualnej Azure](../articles/virtual-machines/windows/premium-storage.md) i [cele dotyczące wydajności i skalowalności magazynu Azure](../articles/storage/common/storage-scalability-targets.md) artykułów.
+Przed rozpoczęciem, jeśli jesteś nowym użytkownikiem magazyn w warstwie Premium, najpierw przeczytać artykuł [magazyn w warstwie Premium: magazyn o wysokiej wydajności dla obciążeń maszyny wirtualnej Azure](../articles/virtual-machines/windows/premium-storage.md) i [skalowalności magazynu Azure i cele wydajności](../articles/storage/common/storage-scalability-targets.md)artykułów.
 
 ## <a name="application-performance-indicators"></a>Wskaźniki wydajności aplikacji
-Możemy oceny, czy aplikacja działa również lub nie używa wydajności, takich jak wskaźniki, tempa aplikacji przetwarza żądanie użytkownika, jak dużo danych przetwarza aplikację na żądanie, ile żądań jest przetwarzanie aplikacji w danym okresie czasu, jak długo użytkownik musi czekać na uzyskanie odpowiedzi po przesłaniu żądania. Terminy techniczne dla tych wskaźników wydajności są IOPS, przepustowości lub przepustowości i opóźnień.
+Możemy oceny, czy aplikacja działa również lub nie używa wydajności, takich jak wskaźniki, tempa aplikacji przetwarza żądanie użytkownika, jak dużo danych przetwarza aplikację na żądanie, ile żądań przetwarza aplikacji w określonej okres czasu, jak długo użytkownik musi czekać na uzyskanie odpowiedzi po przesłaniu żądania. Terminy techniczne dla tych wskaźników wydajności są IOPS, przepustowości lub przepustowości i opóźnień.
 
 W tej sekcji omówiono typowe wskaźniki wydajności w kontekście magazyn w warstwie Premium. W poniższej sekcji, zbieranie wymagania dotyczące aplikacji, dowiesz się, jak do mierzenia tych wskaźników wydajności dla aplikacji. W dalszej optymalizacji wydajności aplikacji będzie Poznaj czynników wpływających na te wskaźniki wydajności i zalecenia w celu optymalizacji ich.
 
@@ -162,7 +162,7 @@ Po ponownym uruchomieniu, projektowania aplikacji, jeden z pierwszego czynności
 
 Wysokiej skali maszyny wirtualne są dostępne w różnych rozmiarach z różną liczbę rdzeni Procesora, pamięci, systemu operacyjnego i rozmiar dysku tymczasowym. Rozmiar każdej maszyny Wirtualnej ma również maksymalną liczbę dysków z danymi, które można załączyć do maszyny Wirtualnej. W związku z tym wybrany rozmiar maszyny Wirtualnej będzie miało wpływ na ilość przetwarzania, pamięci, a pojemność magazynu jest dostępna dla aplikacji. Wpływa to również na mocy obliczeniowej i kosztów magazynowania. Na przykład poniżej przedstawiono specyfikację największy rozmiar maszyny Wirtualnej w serii DS, DSv2 serii i serii GS:
 
-| Rozmiar maszyny wirtualnej | Rdzenie procesora CPU | Memory (Pamięć) | Rozmiary dysków maszyny Wirtualnej | Maksymalnie z Dyski danych | Rozmiar pamięci podręcznej | Operacje wejścia/wyjścia | Limity przepustowości we/wy w pamięci podręcznej |
+| Rozmiar maszyny wirtualnej | Rdzenie procesora CPU | Memory (Pamięć) | Rozmiary dysków maszyny Wirtualnej | Maksymalnie z dyski danych | Rozmiar pamięci podręcznej | Operacje wejścia/wyjścia | Limity przepustowości we/wy w pamięci podręcznej |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standardowa_DS14 |16 |112 GB |SYSTEM OPERACYJNY = 1023 GB. <br> Lokalny dysk SSD = 224 GB |32 |576 GB |50 000 IOPS <br> 512 MB na sekundę |4000 IOPS i 33 MB na sekundę |
 | Standard_GS5 |32 |448 GB |SYSTEM OPERACYJNY = 1023 GB. <br> Lokalny dysk SSD = 896 GB |64 |4224 GB |80 000 IOPS <br> 2000 MB na sekundę |5000 IOPS i 50 MB / s |
@@ -239,7 +239,7 @@ Należy włączyć pamięć podręczną dla prawidłowego zestawu dysków. Okre�
 | **Typ dysku** | **Domyślne ustawienie pamięci podręcznej** |
 | --- | --- |
 | Dysk systemu operacyjnego |ReadWrite |
-| Dysk z danymi |Brak |
+| Dysk z danymi |Tylko do odczytu |
 
 Poniżej przedstawiono ustawienia pamięci podręcznej dysku zalecanych dla dysków z danymi
 

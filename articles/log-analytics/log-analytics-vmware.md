@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 77326832f42cc1ef74ae7a380f4e38d3c67d17b7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c07cc3e434a178a5f6a1ea10f7dc630c3d0d548d
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33775115"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019296"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>VMware monitorowania (wersja zapoznawcza) rozwiązania analizy dzienników
 
@@ -33,7 +33,7 @@ Rozwiązanie monitorowania VMware w analizy dzienników jest rozwiązaniem, któ
 W tym rozwiązaniu zastosowano syslog natywnej funkcji hosta ESXi przekazywaniu danych do docelowej maszyny Wirtualnej, którego Agent pakietu OMS. Jednak rozwiązanie nie zapisywać pliki na syslog w docelowej maszyny Wirtualnej. Agent pakietu OMS otwiera port 1514 i nasłuchuje to. Po otrzymaniu dane, agent pakietu OMS wypycha dane do analizy dzienników.
 
 ## <a name="install-and-configure-the-solution"></a>Instalowanie i konfigurowanie rozwiązania
-Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązania.
+Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązanie.
 
 * Dodaj rozwiązanie monitorowania VMware do subskrypcji przy użyciu procesu opisanego w [Dodaj rozwiązanie do zarządzania](log-analytics-add-solutions.md#add-a-management-solution).
 
@@ -54,9 +54,9 @@ Tworzenie maszyny Wirtualnej, aby otrzymywać wszystkie dane syslog hostach ESXi
     ![vspherefw](./media/log-analytics-vmware/vsphere2.png)  
 
     ![vspherefwproperties](./media/log-analytics-vmware/vsphere3.png)  
-4. Sprawdź vSphere konsolę, aby sprawdzić, czy ten dziennik systemowy jest prawidłowo skonfigurowane. Upewnij się na hoście ESXI, ten port **1514** jest skonfigurowany.
+4. Sprawdź vSphere konsolę, aby upewnić się, że ten dziennik systemowy jest poprawnie skonfigurowana. Upewnij się na hoście ESXI, ten port **1514** jest skonfigurowany.
 5. Pobierz i zainstaluj agenta pakietu OMS dla systemu Linux na serwer z systemem Linux. Aby uzyskać więcej informacji, zobacz [dokumentacji Agent pakietu OMS Linux](https://github.com/Microsoft/OMS-Agent-for-Linux).
-6. Po zainstalowaniu Agent pakietu OMS dla systemu Linux, przejdź do katalogu /etc/opt/microsoft/omsagent/sysconf/omsagent.d i skopiuj plik vmware_esxi.conf do katalogu /etc/opt/microsoft/omsagent/conf/omsagent.d i zmiany właściciela/grupy i uprawnienia do tego pliku. Na przykład:
+6. Po zainstalowaniu Agent pakietu OMS dla systemu Linux, przejdź do katalogu /etc/opt/microsoft/omsagent/sysconf/omsagent.d i skopiuj plik vmware_esxi.conf do katalogu /etc/opt/microsoft/omsagent/conf/omsagent.d i zmiany właściciela/grupy i uprawnienia pliku. Na przykład:
 
     ```
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
@@ -87,7 +87,7 @@ W poniższej tabeli przedstawiono metody zbierania danych i inne szczegółowe i
 
 W poniższej tabeli przedstawiono przykłady pól danych zbieranych przez rozwiązanie monitorowanie VMware:
 
-| Nazwa pola | description |
+| nazwa pola | description |
 | --- | --- |
 | Device_s |Urządzenia magazynujące VMware |
 | ESXIFailure_s |typy niepowodzenia |

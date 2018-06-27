@@ -1,23 +1,20 @@
 ---
 title: Rozpoczynanie pracy z Centrum IoT Azure urządzenia twins (Java) | Dokumentacja firmy Microsoft
 description: Jak używać twins urządzenia Azure IoT Hub Dodawanie tagów, a następnie użyć kwerendy Centrum IoT. Przy użyciu urządzenia Azure IoT SDK dla języka Java aplikacją urządzenia i usługi Azure IoT SDK dla języka Java, aby zaimplementować aplikację usługi, która dodaje znaczniki i uruchamia kwerendy Centrum IoT.
-services: iot-hub
-documentationcenter: java
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: dobett
-ms.openlocfilehash: 8611b55f6e4f33f8946d8c7c481163166d24049c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 96cad0fc7f387c5f0cb14996ae6ac015c104b81d
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37016703"
 ---
 # <a name="get-started-with-device-twins-java"></a>Rozpoczynanie pracy z urządzenia twins (Java)
 
@@ -26,7 +23,7 @@ ms.lasthandoff: 05/07/2018
 W tym samouczku można utworzyć dwie aplikacje konsoli Java:
 
 * **Dodaj tag query**, aplikacji zaplecza Java, która dodaje znaczniki i zapytanie twins urządzenia.
-* **Symulowane urządzenie**, aplikacji urządzenia Java, która łączy się z Centrum IoT i raporty łączność warunku, za pomocą właściwości zgłoszony.
+* **Symulowane urządzenie**, aplikację urządzenia Java, która łączy się z Centrum IoT i raportowanie stanu łączności za pomocą właściwości zgłoszony.
 
 > [!NOTE]
 > Artykuł [Azure IoT SDK](iot-hub-devguide-sdks.md) informacje na temat zestawów SDK IoT Azure można tworzyć aplikacje zarówno urządzenia, jak i zaplecza.
