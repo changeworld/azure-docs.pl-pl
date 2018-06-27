@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 10/09/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: e37266f2438f9c6bc9de2d01624bda77f9d6ee8a
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
+ms.openlocfilehash: 35eedb170e1c79f4d282f71608b456a271c4d59b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36945877"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018227"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy zasobów i kondycji sprawdza w kondycji zasobów platformy Azure
 Poniżej przedstawiono pełną listę wszystkie testy wykonane przez kondycja zasobów według typów zasobów.
@@ -80,6 +80,11 @@ Poniżej przedstawiono pełną listę wszystkie testy wykonane przez kondycja za
 |Wykonanie testów|
 |---|
 |<ul><li>Zostały jeszcze żądań bazy danych lub kolekcji nie jest wyświetlona z powodu niedostępności usługi bazy danych Azure rozwiązania Cosmos?</li><li>Zostały jeszcze żądań dokumentu nie jest wyświetlona z powodu niedostępności usługi bazy danych Azure rozwiązania Cosmos?</li></ul>|
+
+## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
+|Wykonanie testów|
+|---|
+|<ul><li>Żądania do magazynu kluczy występują problemy z platformy Azure KeyVault?</li><li>Są ograniczane żądania do magazynu kluczy z powodu zbyt wiele żądań wysyłanych przez klienta?</li></ul>|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |Wykonanie testów|

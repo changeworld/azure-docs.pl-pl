@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 9f37547b4b183594410b4e16b872645407ff4a6f
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 64281215d139731b61365936bc1b837798ad8fbf
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35356251"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37016838"
 ---
 # <a name="quickstart-recognize-speech-using-the-cognitive-services-speech-c-sdk"></a>Szybki Start: Rozpoznawanie mowy przy użyciu kognitywnych mowy usługi C# SDK
 
@@ -33,7 +33,7 @@ W tym artykule dowiesz się tworzenie aplikacji konsolowej C# w systemie Windows
 
     ![Tworzenie Visual C# Console aplikacji (.NET Framework)](media/sdk/speechsdk-05-vs-cs-new-console-app.png "Utwórz aplikację konsoli języka Visual C#")
 
-2. Zainstaluj i odwołują się do pakietu NuGet SDK mowy. W Eksploratorze rozwiązań kliknij rozwiązanie prawym przyciskiem myszy i wybierz **Zarządzaj pakietami NuGet dla rozwiązania**.
+2. Zainstalowania i odwołania [pakietu NuGet SDK mowy](https://aka.ms/csspeech/nuget). W Eksploratorze rozwiązań kliknij rozwiązanie prawym przyciskiem myszy i wybierz **Zarządzaj pakietami NuGet dla rozwiązania**.
 
     ![Kliknij prawym przyciskiem myszy Zarządzaj pakietami NuGet dla rozwiązania](media/sdk/speechsdk-06-vs-cs-manage-nuget-packages.png "Zarządzaj pakietami NuGet dla rozwiązania")
 

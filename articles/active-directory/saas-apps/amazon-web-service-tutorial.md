@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 6dae715343a082b56e74bc2be0ee7b2353485e75
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 884e07880b76ec1ff53071d03d0ce340188586e3
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230509"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018154"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>Samouczek: Integracji Azure Active Directory z usług sieci Web firmy Amazon (AWS)
 
@@ -340,6 +340,10 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Dodawanie użytkownika](./media/amazon-web-service-tutorial/provisioning2.png)
 
+> [!Note]
+> Jeśli chcesz zintegrować wiele kont usług AWS na jedno konto platformy Azure na logowanie jednokrotne na, zobacz [to](https://docs.microsoft.com/azure/active-directory/active-directory-saas-aws-multi-accounts-tutorial) artykułu. 
+
+
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
 Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
@@ -410,8 +414,7 @@ W tej sekcji musisz włączyć Simona Britta do użycia usługi Azure logowania 
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
-Po kliknięciu kafelka Amazon Web Services (AWS) w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji usługi sieci Web firmy Amazon (AWS).
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
+Po kliknięciu kafelka Amazon Web Services (AWS) w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji usługi sieci Web firmy Amazon (AWS). Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
@@ -452,4 +455,3 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 [39]: ./media/amazon-web-service-tutorial/tutorial_amazonwebservices_provisioning_automatic.png
 [40]: ./media/amazon-web-service-tutorial/tutorial_amazonwebservices_provisioning_testconnection.png
 [41]: ./media/amazon-web-service-tutorial/tutorial_amazonwebservices_provisioning_on.png
-

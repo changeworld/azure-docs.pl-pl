@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: b0a73ea89bec67cbf644cce60913981a0533360a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 095205752b8432a741aab16983b175c21b02c0f4
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32179694"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017874"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrowanie do narzędzi programistycznych opartych na usłudze Azure Resource Manager dla klastrów usługi HDInsight
 
@@ -59,7 +59,7 @@ Jeśli używasz `azure hdinsight job` polecenia umożliwiają przesyłanie zada�
 * [Uruchamianie zapytań Hive z usługą Hadoop w usłudze HDInsight przy użyciu programu cURL](hadoop/apache-hadoop-use-hive-curl.md)
 * [Uruchamianie zadań Pig z usługą Hadoop w usłudze HDInsight przy użyciu programu cURL](hadoop/apache-hadoop-use-pig-curl.md)
 
-Aby informacji na temat innych sposobów uruchamiania MapReduce, Hive i wieprzowa interaktywnego, zobacz [Użyj MapReduce z Hadoop w usłudze HDInsight](hadoop/hdinsight-use-mapreduce.md), [używanie Hive z usługą Hadoop w usłudze HDInsight](hadoop/hdinsight-use-hive.md), i [Use Pig z usługą Hadoop w usłudze HDInsight](hadoop/hdinsight-use-pig.md).
+Aby informacji na temat innych sposobów uruchamiania MapReduce, Hive i wieprzowa interaktywnego, zobacz [Użyj MapReduce z Hadoop w usłudze HDInsight](hadoop/hdinsight-use-mapreduce.md), [używanie Hive z usługą Hadoop w usłudze HDInsight](hadoop/hdinsight-use-hive.md), i [Use Pig z platformą Hadoop w HDInsight](hadoop/hdinsight-use-pig.md).
 
 ### <a name="examples"></a>Przykłady
 **Tworzenie klastra**
@@ -224,7 +224,7 @@ Nowe polecenie:
 * [Przesyłanie zadań Sqoop](hadoop/apache-hadoop-use-sqoop-powershell.md)
 
 ## <a name="migrating-to-the-new-hdinsight-net-sdk"></a>Migracja do nowego zestawu .NET SDK usługi HDInsight
-Systemem zarządzania usługą Azure [zestawu .NET SDK usługi HDInsight (ASM)](https://msdn.microsoft.com/library/azure/mt416619.aspx) jest już przestarzały. Zachęcamy do użycia na podstawie zarządzania zasobami Azure [na podstawie Menedżera zasobów SDK .NET usługi HDInsight](https://msdn.microsoft.com/library/azure/mt271028.aspx). Następujące pakiety usługi HDInsight opartych na funkcji ASM są przestarzałe.
+Systemem zarządzania usługą Azure [zestawu .NET SDK usługi HDInsight (ASM)](https://msdn.microsoft.com/library/azure/mt416619.aspx) jest już przestarzały. Zachęcamy do użycia na podstawie zarządzania zasobami Azure [na podstawie Menedżera zasobów SDK .NET usługi HDInsight](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight). Następujące pakiety usługi HDInsight opartych na funkcji ASM są przestarzałe.
 
 * `Microsoft.WindowsAzure.Management.HDInsight`
 * `Microsoft.Hadoop.Client`

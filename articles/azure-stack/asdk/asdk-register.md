@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/04/2018
+ms.date: 06/26/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: bc17045106b2656cdeb5f51037b3138aeac9ee0f
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 08a300d0e2d1565428f282a2073d91b5dd08c060
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757471"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017003"
 ---
 # <a name="azure-stack-registration"></a>Rejestracja w usłudze Azure stosu
 Można zarejestrować instalacji programu Azure stosu Development Kit (ASDK) z platformy Azure, aby pobrać elementów marketplace z platformy Azure i ustaw commerce dane raportowania z powrotem do firmy Microsoft. Rejestracja jest wymagany do obsługi pełnej funkcjonalności stosu Azure, łącznie z witryny marketplace zespolonego. Rejestracja jest zalecane, ponieważ umożliwia testowanie ważne funkcje stosu Azure marketplace zespolonego i raportowanie użycia. Po zarejestrowaniu stosu Azure użycia jest zgłaszane do handlu platformy Azure. Można to sprawdzić w ramach subskrypcji, używanego do rejestracji. ASDK użytkownicy nie są jednak obciążony bez użycia, które zgłaszają.
@@ -83,4 +83,4 @@ Wykonaj następujące kroki, aby zweryfikować, że ASDK rejestracji w usłudze 
     ![](media/asdk-register/3.PNG)
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Dodawanie elementu stosu Azure marketplace](asdk-marketplace-item.md)
+[Dodawanie elementu stosu Azure marketplace](.\.\azure-stack-marketplace.md)

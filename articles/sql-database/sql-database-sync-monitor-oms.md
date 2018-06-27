@@ -1,26 +1,26 @@
 ---
-title: Monitor synchronizacji danych Azure SQL (wersja zapoznawcza) z analizy dzienników | Dokumentacja firmy Microsoft
-description: Informacje o sposobie monitorowania synchronizacji danych SQL Azure (wersja zapoznawcza) przy użyciu analizy dzienników
+title: Monitor synchronizacji danych Azure SQL z analizy dzienników | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak monitorować synchronizacji danych SQL Azure za pomocą analizy dzienników
 services: sql-database
 ms.date: 04/01/2018
 ms.topic: conceptual
 ms.service: sql-database
-author: douglaslMS
-ms.author: douglasl
+author: allenwux
+ms.author: xiwu
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 4c684337a904fe6984e6b5cd5cf88ef8eb976cb6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9b64a5e913748cda7927877c50a964ede587ae30
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650251"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025854"
 ---
-# <a name="monitor-sql-data-sync-preview-with-log-analytics"></a>Synchronizacja danych SQL Monitor (wersja zapoznawcza) z analizy dzienników 
+# <a name="monitor-sql-data-sync-with-log-analytics"></a>Monitor synchronizacji danych SQL z analizy dzienników 
 
 Sprawdź dziennik aktywności synchronizacji danych SQL i wykrywać błędy i ostrzeżenia, należy wcześniej było ręcznie sprawdzić synchronizacji danych SQL w portalu Azure, lub użyj programu PowerShell lub interfejsu API REST. Wykonaj kroki opisane w tym artykule, aby skonfigurować niestandardowe rozwiązanie zwiększa monitorowania obsługi synchronizacji danych. Można dostosować to rozwiązanie do danego scenariusza.
 
-Omówienie usługi SQL Data Sync zawiera temat [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Preview) (Synchronizowanie danych między wieloma bazami danych w chmurze i lokalnie za pomocą usługi Azure SQL Data Sync — wersja zapoznawcza)](sql-database-sync-data.md).
+Omówienie synchronizacji danych SQL, zobacz [synchronizacji danych między wieloma bazami danych chmury i lokalnych z synchronizacji danych SQL Azure](sql-database-sync-data.md).
 
 ## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>Pulpit nawigacyjny monitorowania dla wszystkich grup synchronizacji 
 

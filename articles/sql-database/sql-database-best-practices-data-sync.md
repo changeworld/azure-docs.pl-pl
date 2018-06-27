@@ -1,25 +1,25 @@
 ---
-title: Najlepsze rozwiązania dotyczące synchronizacji danych SQL Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat najlepszych rozwiązań do konfigurowania i uruchamiania synchronizacji danych SQL Azure (wersja zapoznawcza).
+title: Najlepsze rozwiązania dotyczące synchronizacji danych SQL Azure | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat najlepszych rozwiązań do konfigurowania i uruchamiania synchronizacji danych SQL Azure.
 services: sql-database
 ms.date: 04/01/2018
 ms.topic: conceptual
 ms.service: sql-database
-author: douglaslMS
-ms.author: douglasl
+author: allenwux
+ms.author: xiwu
 manager: craigg
-ms.openlocfilehash: 683cf1426f01b3ab495b2380612dbf37342fc27a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b53c72f1df4f2fc2509d91220d08aff4682b6620
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646011"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025822"
 ---
-# <a name="best-practices-for-sql-data-sync-preview"></a>Najlepsze rozwiązania dotyczące synchronizacji danych SQL (wersja zapoznawcza) 
+# <a name="best-practices-for-sql-data-sync"></a>Najlepsze rozwiązania dotyczące funkcji SQL Data Sync 
 
-W tym artykule opisano najlepsze rozwiązania synchronizacji danych usługi Azure SQL (wersja zapoznawcza).
+W tym artykule opisano najlepsze rozwiązania dla synchronizacji danych SQL Azure.
 
-Omówienie synchronizacji danych SQL (wersja zapoznawcza), zobacz [synchronizacji danych między wieloma bazami danych chmury i lokalnych z synchronizacji danych SQL Azure (wersja zapoznawcza)](sql-database-sync-data.md).
+Omówienie synchronizacji danych SQL, zobacz [synchronizacji danych między wieloma bazami danych chmury i lokalnych z synchronizacji danych SQL Azure](sql-database-sync-data.md).
 
 ## <a name="security-and-reliability"></a> Bezpieczeństwo i niezawodność
 
@@ -44,16 +44,16 @@ Baza danych SQL Azure obsługuje tylko jednego zestawu poświadczeń. Aby wykona
 -   Zmiana poświadczeń dla różnych etapów (na przykład *credentials1* instalacji i *credentials2* dla trwających).  
 -   Zmiana uprawnień poświadczenia (to znaczy, Zmień uprawnienia po skonfigurowaniu synchronizacji).
 
-## <a name="setup"></a>Konfiguracja
+## <a name="setup"></a>Konfigurowanie
 
 ### <a name="database-considerations-and-constraints"></a> Zagadnienia dotyczące bazy danych i ograniczenia
 
 #### <a name="sql-database-instance-size"></a>Rozmiar wystąpienia bazy danych SQL
 
-Podczas tworzenia nowego wystąpienia bazy danych SQL, Ustaw maksymalny rozmiar, aby zawsze była większa niż baza danych, którą można wdrożyć. Jeśli nie ustawisz maksymalny rozmiar do większych niż wdrożonej bazy danych synchronizacji kończy się niepowodzeniem. Mimo że synchronizacja danych SQL (wersja zapoznawcza) nie oferują automatyczne zwiększanie rozmiaru, możesz uruchomić `ALTER DATABASE` polecenie, aby zwiększyć rozmiar bazy danych, po jego utworzeniu. Upewnij się, że pozostać w granicach rozmiar wystąpienia bazy danych SQL.
+Podczas tworzenia nowego wystąpienia bazy danych SQL, Ustaw maksymalny rozmiar, aby zawsze była większa niż baza danych, którą można wdrożyć. Jeśli nie ustawisz maksymalny rozmiar do większych niż wdrożonej bazy danych synchronizacji kończy się niepowodzeniem. Mimo że synchronizacja danych SQL nie oferują automatyczne zwiększanie rozmiaru, możesz uruchomić `ALTER DATABASE` polecenie, aby zwiększyć rozmiar bazy danych, po jego utworzeniu. Upewnij się, że pozostać w granicach rozmiar wystąpienia bazy danych SQL.
 
 > [!IMPORTANT]
-> Synchronizacja danych SQL (wersja zapoznawcza) przechowuje dodatkowe metadane z każdej bazy danych. Upewnij się, że zostało uwzględnione metadanych podczas obliczania potrzebne miejsce. Ilość dodane obciążenia jest powiązana z szerokość tabele (na przykład wąskie tabele wymagają większe obciążenie) i ilość ruchu sieciowego.
+> Synchronizacja danych SQL przechowuje dodatkowe metadane z każdej bazy danych. Upewnij się, że zostało uwzględnione metadanych podczas obliczania potrzebne miejsce. Ilość dodane obciążenia jest powiązana z szerokość tabele (na przykład wąskie tabele wymagają większe obciążenie) i ilość ruchu sieciowego.
 
 ### <a name="table-considerations-and-constraints"></a> Zagadnienia dotyczące tabeli i ograniczenia
 
@@ -63,19 +63,19 @@ Nie masz uwzględnić wszystkie tabele w bazie danych w grupie synchronizacji. T
 
 #### <a name="primary-keys"></a>Klucze podstawowe
 
-Każda tabela w grupie synchronizacji musi mieć klucz podstawowy. Usługa synchronizacji danych SQL (wersja zapoznawcza) nie może zsynchronizować tabelę, która nie ma klucza podstawowego.
+Każda tabela w grupie synchronizacji musi mieć klucz podstawowy. Usługa synchronizacji danych SQL nie można zsynchronizować tabelę, która nie ma klucza podstawowego.
 
-Przed użyciem synchronizacji danych SQL (wersja zapoznawcza) w środowisku produkcyjnym należy przetestować wydajność wstępnych i bieżących synchronizacji.
+Przed użyciem synchronizacji danych SQL w środowisku produkcyjnym należy przetestować wydajność wstępnych i bieżących synchronizacji.
 
 ### <a name="provisioning-destination-databases"></a> Inicjowanie obsługi administracyjnej docelowej bazy danych
 
-Synchronizacja danych SQL (wersja zapoznawcza) w wersji zapoznawczej oferuje autoprovisioning podstawowej bazy danych.
+Synchronizacja danych SQL zawiera autoprovisioning podstawowej bazy danych.
 
-W tej sekcji omówiono ograniczenia obsługi synchronizacji danych SQL (wersja zapoznawcza).
+W tej sekcji omówiono ograniczenia obsługi synchronizacji danych SQL.
 
 #### <a name="autoprovisioning-limitations"></a>Ograniczenia Autoprovisioning
 
-Synchronizacja danych SQL (wersja zapoznawcza) ma następujące ograniczenia na autoprovisioning:
+Synchronizacja danych SQL ma następujące ograniczenia na autoprovisioning:
 
 -   Wybierz kolumny, które są tworzone w tabeli docelowej.  
     Kolumn, które nie należą do grupy synchronizacji nie są udostępniane w tabeli docelowej.
@@ -88,7 +88,7 @@ Synchronizacja danych SQL (wersja zapoznawcza) ma następujące ograniczenia na 
 
 #### <a name="recommendations"></a>Zalecenia
 
--   Tylko wtedy, gdy okaże się usługi, należy używać funkcji autoprovisioning synchronizacji danych SQL (wersja zapoznawcza).  
+-   Możliwości autoprovisioning synchronizacji danych SQL należy używać tylko wtedy, gdy okaże się, usługa.  
 -   W środowisku produkcyjnym należy udostępnić schemat bazy danych.
 
 ### <a name="locate-hub"></a> Gdzie można znaleźć bazy danych Centrum
@@ -114,7 +114,7 @@ W tej sekcji omówiono synchronizacji początkowej synchronizacji grupy. Dowiedz
 
 #### <a name="how-initial-sync-works"></a>Jak początkowej działania synchronizacji
 
-Podczas tworzenia grupy synchronizacji, należy uruchomić z danymi w bazie danych tylko jeden. Jeśli masz dane w wielu baz danych synchronizacji danych SQL (wersja zapoznawcza) traktuje każdy wiersz jako konfliktu, który musi zostać rozpoznane. To rozwiązanie konfliktu powoduje, że synchronizacji początkowej do wolno go. Jeśli masz dane w wielu baz danych początkowej synchronizacji może potrwać od kilku dni i kilka miesięcy, w zależności od rozmiaru bazy danych.
+Podczas tworzenia grupy synchronizacji, należy uruchomić z danymi w bazie danych tylko jeden. Jeśli masz dane w wielu baz danych synchronizacji danych SQL traktuje każdy wiersz jako konfliktu, który musi zostać rozpoznane. To rozwiązanie konfliktu powoduje, że synchronizacji początkowej do wolno go. Jeśli masz dane w wielu baz danych początkowej synchronizacji może potrwać od kilku dni i kilka miesięcy, w zależności od rozmiaru bazy danych.
 
 W przypadku baz danych w różnych centrach danych, każdy wiersz musi przejść między różnych centrach danych. Powoduje to zwiększenie wartości początkowej synchronizacji.
 
@@ -209,16 +209,16 @@ Zamiast tego należy najpierw usunąć bazę danych z grupy synchronizacji. Nast
 Jeśli próbujesz usunąć bazę danych, a następnie Edytuj grupę synchronizacji bez wdrażanie pierwszej zmian, awarii jednego lub innej operacji. Interfejs portalu może stać się niespójna. Jeśli tak się stanie, Odśwież stronę, aby przywrócić stan.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji na temat synchronizacji danych SQL (wersja zapoznawcza) zobacz:
+Aby uzyskać więcej informacji na temat synchronizacji danych SQL zobacz:
 
--   [Synchronizowanie danych w wielu w chmurze i lokalnych baz danych z synchronizacji danych SQL Azure (wersja zapoznawcza)](sql-database-sync-data.md)
--   [Konfigurowanie synchronizacji danych SQL Azure (wersja zapoznawcza)](sql-database-get-started-sql-data-sync.md)
--   [Synchronizacja danych Azure SQL monitora (wersja zapoznawcza) z analizy dzienników](sql-database-sync-monitor-oms.md)
--   [Rozwiązywanie problemów z synchronizacją danych SQL Azure (wersja zapoznawcza)](sql-database-troubleshoot-data-sync.md)  
--   Wykonaj przykłady z programu PowerShell, które przedstawiają sposób konfigurowania synchronizacji danych SQL (wersja zapoznawcza):  
+-   [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Synchronizowanie danych między wieloma bazami danych w chmurze i lokalnie za pomocą usługi Azure SQL Data Sync)](sql-database-sync-data.md)
+-   [Set up Azure SQL Data Sync (Konfigurowanie usługi Azure SQL Data Sync)](sql-database-get-started-sql-data-sync.md)
+-   [Monitor Azure SQL Data Sync with Log Analytics (Monitorowanie usługi Azure SQL Data Sync za pomocą usługi Log Analytics)](sql-database-sync-monitor-oms.md)
+-   [Troubleshoot issues with Azure SQL Data Sync (Rozwiązywanie problemów z usługą Azure SQL Data Sync)](sql-database-troubleshoot-data-sync.md)  
+-   Pełne przykładowe skrypty programu PowerShell przedstawiające sposób konfigurowania usługi SQL Data Sync:  
     -   [Użycie programu PowerShell do synchronizowania wielu baz danych Azure SQL Database](scripts/sql-database-sync-data-between-sql-databases.md)  
     -   [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)  
--   [Pobrać dokumentację interfejsu API REST synchronizacji danych SQL (wersja zapoznawcza)](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)  
+-   [Pobierz dokumentację interfejsu API REST usługi SQL Data Sync](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)  
 
 Aby uzyskać więcej informacji dotyczących bazy danych SQL zobacz:
 

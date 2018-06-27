@@ -2,7 +2,7 @@
 
 #### <a name="to-install-the-storsimple-adapter-for-sharepoint"></a>Aby zainstalować StorSimple Adapter dla programu SharePoint
 1. Skopiuj Instalatora z serwerem sieci web frontonu (WFE) skonfigurowanego do uruchamiania aplikacji sieci web Administracja centralna programu SharePoint. 
-2. Użyj konta z uprawnieniami administratora do logowania się serwerze WFE.
+2. Użyj konta z uprawnieniami administratora do logowania się na serwerze WFE.
 3. Kliknij dwukrotnie plik instalacyjny. Uruchamia karty StorSimple dla Kreatora instalacji programu SharePoint. Kliknij przycisk **dalej** do rozpoczęcia instalacji.
    
     ![Strony początkowej Instalatora karty StorSimple](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup1-include.png)

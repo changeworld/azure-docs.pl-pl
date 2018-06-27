@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: c9920857f7d1910921b4bb3771e770fb4c3a42c3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4377e9902696a4ee3b5bbb5fcb44d972ec14f822
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31389717"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36958729"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Operacje platformy Azure Active Directory Connect Health
 W tym temacie opisano różne operacje, które można wykonać za pomocą usługi Azure Active Directory (Azure AD) Connect Health.
@@ -122,7 +122,7 @@ Aby zezwolić użytkownikowi dostępu w *wszystkich wystąpień usługi* poziomu
 
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>Krok 2: Dodawanie użytkowników i grup i przypisz role
 1. Z **Konfiguruj** kliknij **użytkowników**.<br>
-   ![Zrzut ekranu Azure AD Connect Health RBAC głównego bloku użytkownikom wyróżnione](./media/active-directory-aadconnect-health/RBAC_main_blade.png)
+   ![Zrzut ekranu Azure AD Connect Health zasobów bocznym](./media/active-directory-aadconnect-health/startRBAC.png)
 2. Wybierz pozycję **Dodaj**.
 3. W **wybierz rolę** okienku, wybierz rolę (na przykład **właściciela**).<br>
    ![Zrzut ekranu Azure AD Connect Health RBAC użytkowników okna](./media/active-directory-aadconnect-health/RBAC_add.png)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/05/2018
 ms.author: harijay
-ms.openlocfilehash: e891e9c9fd87f370f0c98639ff0c6fc5b8cc81af
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8e9e98a0c9f1db805d62cdee038fb4754ff047e2
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32194407"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960444"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Maszyna wirtualna konsoli szeregowej (wersja zapoznawcza) 
 
@@ -33,6 +33,7 @@ Konsoli szeregowej maszyny wirtualnej na platformie Azure zapewnia dostęp do ko
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
+* Model wdrażania zasobów zarządzania muszą używać. W przypadku wdrożeń klasycznych nie są obsługiwane. 
 * Maszyna wirtualna musi mieć [diagnostyki rozruchu](boot-diagnostics.md) włączone 
 * Konto, przy użyciu konsoli szeregowej musi mieć [roli współautora](../../role-based-access-control/built-in-roles.md) dla maszyny Wirtualnej i [diagnostyki rozruchu](boot-diagnostics.md) konta magazynu. 
 
@@ -159,7 +160,7 @@ Wymagany jest odstęp po znaku równości.
 lub
 
 `sc start termservice`
-#### <a name="stop-service"></a>Zatrzymywanie usługi
+#### <a name="stop-service"></a>Zatrzymaj usługę
 `net stop termservice`
 
 lub
@@ -373,7 +374,7 @@ Korzystając z konta usługi innych niż `NT AUTHORITY\LocalService`, `NT AUTHOR
 `Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\TermService' -Name DependOnService -Value @('RPCSS','TermDD')`
 #### <a name="start-service"></a>Uruchom usługę
 `start-service termservice`
-#### <a name="stop-service"></a>Zatrzymywanie usługi
+#### <a name="stop-service"></a>Zatrzymaj usługę
 `stop-service termservice`
 ### <a name="manage-networking-features"></a>Zarządzanie funkcjami sieci
 #### <a name="show-nic-properties"></a>Pokaż właściwości karty Sieciowej

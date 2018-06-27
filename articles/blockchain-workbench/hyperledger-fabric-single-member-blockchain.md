@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 7b60c086896506e5883607db48a64d2a2efbd967
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 28561f5f94044d19cfd07e99d7f7a736ec470cf1
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655452"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960359"
 ---
 # <a name="hyperledger-fabric-single-member-network"></a>Sieć szkieletowa Hyperledger pojedynczy element członkowski sieci
 
@@ -89,7 +89,7 @@ Następnie w obszarze **sieci rozmiaru i wydajności,** Określ dane wejściowe 
 Nazwa parametru| Opis| Dozwolone wartości|Wartość domyślna
 ---|---|---|---
 **Liczba węzłów członkostwa**|Liczba węzłów, które uruchamiania usługi członkostwa. Dodatkowe szczegóły dotyczące usługi członkostwa, obejrzyj zabezpieczeń i usługą członkostwa w obszarze Hyperledger [dokumentacji](https://media.readthedocs.org/pdf/hyperledger-fabric/latest/hyperledger-fabric.pdf).<br /><br />Ta wartość jest obecnie ograniczone do węzła 1, ale planujemy do obsługi skalowania w poziomie Dzięki klastrom w następnej wersji.|1| 1
-**Liczba węzłów osoby zamawiającej** |Liczba węzłów, które kolejność (organizowanie) transakcji w bloku.--> to instrukcja jest długi i mylące. Dodatkowe szczegóły dotyczące zamawiania usługi, odwiedź stronę Hyperledger [dokumentacji](http://hyperledger-fabric.readthedocs.io/en/latest/orderingservice.html).<br /><br />Ta wartość jest obecnie ograniczone do węzła 1. |1 |1
+**Liczba węzłów osoby zamawiającej** |Liczba węzłów, które kolejność (organizowanie) transakcji w bloku.--> to instrukcja jest długi i mylące. Dodatkowe szczegóły dotyczące zamawiania usługi, odwiedź stronę Hyperledger [dokumentacji](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html).<br /><br />Ta wartość jest obecnie ograniczone do węzła 1. |1 |1
 **Liczba węzłów równorzędnych**| Węzły, które są własnością konsorcjum elementów członkowskich, które wykonania transakcji i zachować stan i kopię księgi.<br /><br />Dodatkowe szczegóły dotyczące zamawiania usługi, odwiedź stronę Hyperledger [dokumentacji](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html).|3| 3 - 9
 **Wydajność magazynu**|Typ magazynu kopii każdego z węzłów wdrożone. Aby dowiedzieć się więcej na temat magazynu, odwiedź stronę [wprowadzenie do usługi Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction) i [magazyn w warstwie Premium](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage).|Standard lub Premium|Standardowa (Standard)
 **Rozmiar maszyny wirtualnej** |Rozmiar maszyny wirtualnej, używany dla wszystkich węzłów w sieci|Standard A<br />Standardowa D<br />Standardowa D-v2<br />Standardowa serii F,<br />Standardowa DS<br />i standardowe FS|Standardowe D1_v2

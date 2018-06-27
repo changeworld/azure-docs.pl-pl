@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d5d085e24efb7008e8275ec51afe00ba18ca9ba0
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 32d1504571c16f4aa5ea07bab32820ba10b79d60
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753561"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019468"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Fabryki danych Azure - JSON skryptów odwołania
 > [!NOTE]
@@ -1945,7 +1945,7 @@ Aby zdefiniować Oracle połączonej usługi, ustaw **typu** połączonej usług
 | --- | --- | --- |
 | driverType | Określ sterowniku można skopiować danych z/do bazy danych programu Oracle. Dozwolone wartości to **Microsoft** lub **ODP** (ustawienie domyślne). Zobacz [obsługiwanych wersji i instalacji](#supported-versions-and-installation) sekcji Szczegóły sterownika. | Nie |
 | Parametry połączenia | Podaj informacje wymagane do połączenia z wystąpieniem bazy danych programu Oracle dla właściwości connectionString. | Yes |
-| gatewayName | Nazwa bramy, czy jest używany do łączenia się z serwerem Oracle lokalnej |Yes |
+| gatewayName | Nazwa bramy, która służy do łączenia się z serwerem Oracle lokalnej |Yes |
 
 #### <a name="example"></a>Przykład
 ```json

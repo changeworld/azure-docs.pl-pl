@@ -9,19 +9,19 @@ ms.component: emotion-api
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: 64a5c4e761653748c4328e310f9a399fe62f9149
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0e7d3991b195a83a8b87e306b3b34fbed2098581
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347548"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018030"
 ---
 # <a name="emotion-api-java-for-android-quick-start"></a>Emocji Java interfejsu API dla systemu Android Szybki Start
 
 > [!IMPORTANT]
 > Interfejs API podglądu kończy się 30 października 2017 r. Testowanie nowego [wideo indeksatora interfejsu API w wersji zapoznawczej](https://azure.microsoft.com/services/cognitive-services/video-indexer/) można łatwo wyodrębnić szczegółowych informacji z wideo i celu ułatwienia pracy funkcję odnajdowania zawartości, takich jak wyniki wyszukiwania został określony poprzez wykrycie słowa rozmowy, kroje znaków i emocji. [Dowiedz się więcej](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
 
-Ten artykuł zawiera informacje i przykładowy kod, aby szybko rozpocząć pracę z [emocji rozpoznać metody](https://dev.projectoxford.ai/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) w bibliotece klienta emocji interfejsu API systemu Android. W przykładzie pokazano, jak Java można użyć do rozpoznawania emocji wyrażonych przez osoby. 
+Ten artykuł zawiera informacje i przykładowy kod, aby szybko rozpocząć pracę z [emocji rozpoznać metody](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) w bibliotece klienta emocji interfejsu API systemu Android. W przykładzie pokazano, jak Java można użyć do rozpoznawania emocji wyrażonych przez osoby. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Pobierz Java interfejsu API rozpoznawania emocji — warstwa dla zestawu SDK systemu Android [tutaj](https://github.com/Microsoft/Cognitive-emotion-android)

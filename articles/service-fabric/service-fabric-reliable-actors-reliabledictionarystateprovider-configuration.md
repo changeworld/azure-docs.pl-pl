@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: 00ae5db5fc7a327ae19e64c3d8adf653afd12677
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1c7e31f9da2b2f9fe7a3a7c64cd6927224cb9fa1
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213116"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017899"
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Konfigurowanie Reliable Actors — ReliableDictionaryActorStateProvider
 Domyślna konfiguracja ReliableDictionaryActorStateProvider można modyfikować, zmieniając pliku settings.xml generowane w głównym pakietu programu Visual Studio w folderze konfiguracji dla określonego aktora.
@@ -68,6 +68,10 @@ SharedLogSizeInMB określa ilość miejsca na dysku do przydzielenia dla dzienni
 ## <a name="replicator-security-configuration"></a>Konfiguracja zabezpieczeń replikatora
 Replikator konfiguracji zabezpieczeń służą do zabezpieczania kanał komunikacyjny używany podczas replikacji. Oznacza to, czy usługi nie widzi siebie nawzajem ruch związany z replikacją, zapewnienie, że dane, które jest zyskuje dużą dostępność również jest bezpieczne.
 Domyślnie puste zabezpieczeń sekcji konfiguracji uniemożliwia zabezpieczeń replikacji.
+
+> [!IMPORTANT]
+> W węzłach Linux certyfikaty muszą być sformatowane PEM. Aby uzyskać więcej informacji o lokalizacji i konfigurowanie certyfikatów dla systemu Linux, zobacz [Konfigurowanie certyfikatów w systemie Linux](./service-fabric-configure-certificates-linux.md). 
+> 
 
 ### <a name="section-name"></a>Nazwa sekcji
 &lt;ActorName&gt;ServiceReplicatorSecurityConfig

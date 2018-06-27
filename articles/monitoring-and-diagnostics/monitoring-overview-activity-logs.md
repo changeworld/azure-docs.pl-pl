@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 6fc4fefe6eaaf48061ea05bdbc087288ada35838
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: b6639ecc6fbd36df29458532d555b68b50b0a19c
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264572"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018981"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorowanie aktywności subskrypcji z dziennika aktywności platformy Azure
 
@@ -136,7 +136,7 @@ Get-AzureRmLogProfile
 #### <a name="add-a-log-profile"></a>Dodawanie profilu dziennika
 
 ```
-Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Locations global,westus,eastus -RetentionInDays 90 -Categories Write,Delete,Action
+Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
 ```
 
 | Właściwość | Wymagane | Opis |
@@ -144,9 +144,9 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 | Name (Nazwa) |Yes |Nazwa profilu dziennika. |
 | StorageAccountId |Nie |Identyfikator zasobu konta magazynu, do której ma zostać zapisany dziennik aktywności. |
 | serviceBusRuleId |Nie |Identyfikator reguły magistrali usługi chcesz mieć centra zdarzeń utworzonych w przestrzeni nazw usługi Service Bus. Ciąg w formacie: `{service bus resource ID}/authorizationrules/{key name}`. |
-| Lokalizacje |Yes |Rozdzielana przecinkami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. |
-| retentionInDays |Yes |Liczba dni dla zdarzenia, które mają być przechowywane, od 1 do 2147483647. Wartość zero przechowuje dzienniki w nieskończoność (zawsze). |
-| Kategorie |Nie |Rozdzielana przecinkami lista kategorii zdarzeń, które powinny być zbierane. Możliwe wartości to zapisu, usuwania i akcji. |
+| Lokalizacja |Yes |Rozdzielana przecinkami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. |
+| RetentionInDays |Yes |Liczba dni dla zdarzenia, które mają być przechowywane, od 1 do 2147483647. Wartość zero przechowuje dzienniki w nieskończoność (zawsze). |
+| Kategoria |Nie |Rozdzielana przecinkami lista kategorii zdarzeń, które powinny być zbierane. Możliwe wartości to zapisu, usuwania i akcji. |
 
 #### <a name="remove-a-log-profile"></a>Usuń profil dziennika
 ```

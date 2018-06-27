@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: d81f7889122bcf887676496a056df2148cdff6e9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 35f8937ddef54d407a6e3c83566225ca8ede8bd9
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31593716"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960131"
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>Analizowanie danych Twitter przy użyciu Hive w usłudze HDInsight
 Społecznościowych witryn sieci Web są jednym z głównych wymusza pobudzenie przyjmowania danych big data. Publiczny interfejsów API dostarczonych przez witryn, takie jak Twitter są użyteczne źródło danych do analizowania i zrozumienie trendów popularnych.
@@ -68,7 +68,7 @@ W tym samouczku użyjesz [przesyłania strumieniowego interfejsów API w usłudz
 > [!NOTE]
 > Plik zawierający 10 000 tweetów i plik skryptu Hive (opisane w następnej sekcji) zostały przekazane w publicznego kontenera obiektów Blob. W tej sekcji można pominąć, jeśli chcesz użyć do przekazywania plików.
 
-[Tweetów danych](https://dev.twitter.com/docs/platform-objects/tweets) są przechowywane w formacie JavaScript Object Notation (JSON), który zawiera złożone, zagnieżdżone struktury. Zamiast zapisywania wielu wierszy kodu, korzystając z konwencjonalnej język programowania, można przekształcić tej struktury zagnieżdżone do tabeli programu Hive, dzięki czemu mogą być przeszukiwane przez język SQL (Structured Query) — takie jak języka o nazwie HiveQL.
+Tweetów dane są przechowywane w formacie JavaScript Object Notation (JSON), który zawiera złożone, zagnieżdżone struktury. Zamiast zapisywania wielu wierszy kodu, korzystając z konwencjonalnej język programowania, można przekształcić tej struktury zagnieżdżone do tabeli programu Hive, dzięki czemu mogą być przeszukiwane przez język SQL (Structured Query) — takie jak języka o nazwie HiveQL.
 
 Twitter używa OAuth w celu zapewnienia autoryzowanego dostępu do jego interfejsu API. OAuth to protokół uwierzytelniania, którego użytkownicy mogą zatwierdzać aplikacje do działania w ich imieniu bez udostępniania swoje hasło. Więcej informacji można znaleźć w folderze [oauth.net](http://oauth.net/) lub w doskonałe [dla początkujących OAuth](http://hueniverse.com/oauth/) z Hueniverse.
 
@@ -536,7 +536,7 @@ Write-Host "==================================" -ForegroundColor Green
 > [!NOTE]
 > W tabeli Hive używa \001 jako ogranicznik pola. Ogranicznik, który nie jest widoczny w danych wyjściowych.
 
-Po wyniki analizy zostały umieszczone w magazynie obiektów Blob platformy Azure, można wyeksportować dane do serwera SQL/bazy danych Azure SQL, wyeksportować dane do programu Excel za pomocą dodatku Power Query lub połączyć aplikację z danych za pomocą sterownika ODBC Hive. Aby uzyskać więcej informacji, zobacz [Sqoop użycia z usługą HDInsight][hdinsight-use-sqoop], [analizowanie danych opóźnienie transmitowane przy użyciu usługi HDInsight][hdinsight-analyze-flight-delay-data], [łączenie programu Excel do usługi HDInsight za pomocą dodatku Power Query][hdinsight-power-query], i [łączenie programu Excel do usługi HDInsight za pomocą sterownika Microsoft Hive ODBC][hdinsight-hive-odbc].
+Po wyniki analizy zostały umieszczone w magazynie obiektów Blob platformy Azure, można wyeksportować dane do serwera SQL/bazy danych Azure SQL, wyeksportować dane do programu Excel za pomocą dodatku Power Query lub połączyć aplikację z danych za pomocą sterownika ODBC Hive. Aby uzyskać więcej informacji, zobacz [Sqoop użycia z usługą HDInsight][hdinsight-use-sqoop], [analizowanie danych opóźnienie transmitowane przy użyciu usługi HDInsight][hdinsight-analyze-flight-delay-data], [ Łączenie programu Excel do usługi HDInsight za pomocą dodatku Power Query][hdinsight-power-query], i [łączenie programu Excel do usługi HDInsight za pomocą sterownika ODBC firmy Microsoft Hive][hdinsight-hive-odbc].
 
 ## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku zaobserwowano sposób przekształcania zestaw danych JSON bez struktury w strukturze tabeli Hive zapytania Eksplorowanie i analizowanie danych z serwisem Twitter, za pomocą usługi HDInsight w systemie Azure. Aby dowiedzieć się więcej, zobacz:
@@ -545,7 +545,7 @@ W tym samouczku zaobserwowano sposób przekształcania zestaw danych JSON bez st
 * [Analizowanie danych opóźnienie transmitowane przy użyciu usługi HDInsight][hdinsight-analyze-flight-delay-data]
 * [Łączenie programu Excel do usługi HDInsight za pomocą dodatku Power Query][hdinsight-power-query]
 * [Łączenie programu Excel do usługi HDInsight za pomocą sterownika ODBC firmy Microsoft Hive][hdinsight-hive-odbc]
-* [Korzystanie z usługą HDInsight Sqoop][hdinsight-use-sqoop]
+* [Use Sqoop with HDInsight (Używanie narzędzia Sqoop z usługą HDInsight)][hdinsight-use-sqoop]
 
 [curl]: http://curl.haxx.se
 [curl-download]: http://curl.haxx.se/download.html

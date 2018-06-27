@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: d185be26633178d8b3f147453b4c48eb77d7e425
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: be5dab7b9714f13a4bd30e6ab33a5a0e2016212d
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753527"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020023"
 ---
 # <a name="secure-service-remoting-communications-in-a-c-service"></a>Bezpieczna komunikacja komunikacji zdalnej usługi w usłudze C#
 > [!div class="op_single_selector"]
@@ -57,7 +57,12 @@ Aby ułatwić zabezpieczanie usługi podczas korzystania z komunikacji zdalnej u
     ```
 2. Dodaj ustawienia odbiornika i poświadczeń zabezpieczeń.
 
-    Upewnij się, że certyfikat, który ma być używany do zabezpieczania komunikacji usługi jest zainstalowany na wszystkich węzłach w klastrze. Istnieją dwa sposoby, które można udostępniać ustawienia odbiornika i poświadczenia zabezpieczeń:
+    Upewnij się, że certyfikat, który ma być używany do zabezpieczania komunikacji usługi jest zainstalowany na wszystkich węzłach w klastrze. 
+    
+    > [!NOTE]
+    > W węzłach Linux, certyfikat musi być obecny jako pliki w formacie PEM w */var/lib/sfcerts* katalogu. Aby dowiedzieć się więcej, zobacz [lokalizacji i format certyfikatów X.509 w węzłach Linux](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes). 
+
+    Istnieją dwa sposoby, które można udostępniać ustawienia odbiornika i poświadczenia zabezpieczeń:
 
    1. Podaj je bezpośrednio w kodzie usługi:
 
@@ -202,5 +207,6 @@ Aby ułatwić zabezpieczanie usługi podczas korzystania z komunikacji zdalnej u
     string message = await client.GetHelloWorld();
 
     ```
+
 
 Jako kolejny krok, przeczytaj [interfejsu API sieci Web z oprogramowaniem OWIN w usługach niezawodnej](service-fabric-reliable-services-communication-webapi.md).

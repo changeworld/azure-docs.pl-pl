@@ -38,7 +38,7 @@
 
 4. Sprawdź konfigurację:
    
-   1. Zaloguj się w witrynie Administracja centralna programu SharePoint i przejdź do **skonfigurować karty StorSimple** strony.
+   1. Zaloguj się do witryny sieci Web Administracja centralna programu SharePoint i przejdź do **skonfigurować karty StorSimple** strony.
    2. Sprawdź szczegóły konfiguracji, aby upewnić się, że są one zgodne ustawienia, które zostały wprowadzone. 
 5. Sprawdź, czy SPZ działa prawidłowo:
    

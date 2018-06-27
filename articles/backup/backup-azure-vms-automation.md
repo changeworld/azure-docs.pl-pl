@@ -6,15 +6,15 @@ author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 12/20/2017
+ms.date: 6/26/2018
 ms.author: markgal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4d3c0d08b2a34313c10ab89f2972894ffabe19d2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 977413b700dace3e38874d7a41cbc1e16ae0bec4
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606243"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018815"
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>Tworzenie kopii zapasowych maszyn wirtualnych przy użyciu poleceń cmdlet AzureRM.RecoveryServices.Backup
 
@@ -291,7 +291,7 @@ Na poniższym rysunku przedstawiono hierarchii obiektów z RecoveryServicesVault
 Aby przywrócić dane kopii zapasowej, Zidentyfikuj element kopii zapasowej i punktu odzyskiwania, która przechowuje dane w momencie. Użyj **[AzureRmRecoveryServicesBackupItem przywracania](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/restore-azurermrecoveryservicesbackupitem)** polecenia cmdlet, aby przywrócić dane z magazynu do konta klienta.
 
 ### <a name="select-the-vm"></a>Wybierz maszynę Wirtualną
-Aby uzyskać obiekt programu PowerShell, który identyfikuje element prawo kopii zapasowej, uruchom z kontenera w magazynie, a metodą w dół hierarchii obiektów. Aby wybrać kontener, który reprezentuje maszyny Wirtualnej, użyj **[Get-AzureRmRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)** polecenia cmdlet i przekazać do **[Get-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)** polecenia cmdlet.
+Aby uzyskać obiekt programu PowerShell, który identyfikuje element prawo kopii zapasowej, uruchom z kontenera w magazynie, a metodą w dół hierarchii obiektów. Aby wybrać kontener, który reprezentuje maszyny Wirtualnej, użyj **[Get-AzureRmRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)** polecenia cmdlet i przekazać do **[ Get-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)** polecenia cmdlet.
 
 ```
 PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM"
@@ -503,6 +503,7 @@ Po przywróceniu dyski te kroki umożliwiają tworzenie i konfigurowanie maszyny
     PS C:\> $nicName="p1234"
     PS C:\> $pip = New-AzureRmPublicIpAddress -Name $nicName -ResourceGroupName "test" -Location "WestUS" -AllocationMethod Dynamic
     PS C:\> $vnet = Get-AzureRmVirtualNetwork -Name "testvNET" -ResourceGroupName "test"
+    PS C:\> $subnetindex=0
     PS C:\> $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName "test" -Location "WestUS" -SubnetId $vnet.Subnets[$subnetindex].Id -PublicIpAddressId $pip.Id
     PS C:\> $vm=Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
     ```
@@ -526,7 +527,7 @@ Podstawowe kroki, aby przywrócić plik z kopii zapasowej maszyny Wirtualnej pla
 
 
 ### <a name="select-the-vm"></a>Wybierz maszynę Wirtualną
-Aby uzyskać obiekt programu PowerShell, który identyfikuje element prawo kopii zapasowej, uruchom z kontenera w magazynie, a metodą w dół hierarchii obiektów. Aby wybrać kontener, który reprezentuje maszyny Wirtualnej, użyj **[Get-AzureRmRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)** polecenia cmdlet i przekazać do **[Get-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)** polecenia cmdlet.
+Aby uzyskać obiekt programu PowerShell, który identyfikuje element prawo kopii zapasowej, uruchom z kontenera w magazynie, a metodą w dół hierarchii obiektów. Aby wybrać kontener, który reprezentuje maszyny Wirtualnej, użyj **[Get-AzureRmRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)** polecenia cmdlet i przekazać do **[ Get-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)** polecenia cmdlet.
 
 ```
 PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM"

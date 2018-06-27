@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 06/25/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2dbe14f6c7f8f9f1dcfaf733dc884df5adf919aa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f721c371687addfe48d753e7289df78c2be1f3c7
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593175"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36958004"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Funkcje usługi synchronizacji programu Azure AD Connect
 Funkcja synchronizacji programu Azure AD Connect zawiera dwa składniki:
@@ -58,7 +58,8 @@ Następujące ustawienia są skonfigurowane przy użyciu usługi Azure AD Connec
 | DeviceWriteback |[Azure AD Connect: Włączanie zapisywania zwrotnego urządzeń](active-directory-aadconnect-feature-device-writeback.md) |
 | DirectoryExtensions |[Synchronizacja programu Azure AD Connect: rozszerzenia katalogów](active-directory-aadconnectsync-feature-directory-extensions.md) |
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Umożliwia atrybutu kwarantannie, gdy jest duplikatem innego obiektu, a nie awarii całego obiektu podczas eksportowania. |
-| PasswordSync |[Implementowanie synchronizacji skrótów haseł z synchronizacji Azure AD Connect](active-directory-aadconnectsync-implement-password-hash-synchronization.md) |
+| Synchronizacja skrótów haseł |[Implementowanie synchronizacji skrótów haseł z synchronizacji Azure AD Connect](active-directory-aadconnectsync-implement-password-hash-synchronization.md) |
+|Uwierzytelnianie przekazywane|[Logowanie użytkownika do uwierzytelniania przekazywanego Azure Active Directory](active-directory-aadconnect-pass-through-authentication.md)|
 | UnifiedGroupWriteback |[Podglądu: Zapisywanie zwrotne grup](active-directory-aadconnect-feature-preview.md#group-writeback) |
 | UserWriteback |Nie są obecnie obsługiwane. |
 

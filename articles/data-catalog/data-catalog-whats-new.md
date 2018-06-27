@@ -1,25 +1,24 @@
 ---
 title: What's New in Azure Data Catalog | Dokumentacja firmy Microsoft
-description: "Ten artykuł zawiera omówienie nowych możliwości dodane do wykazu danych Azure."
+description: Ten artykuł zawiera omówienie nowych możliwości dodane do wykazu danych Azure.
 services: data-catalog
-documentationcenter: 
+documentationcenter: ''
 author: steelanddata
 manager: NA
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 1201f8d4-6f26-4182-af3f-91e758a12303
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 9fb7814a8412200f6d31cfb9dcaee4663d7cea97
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 780ab56df19e8d6761fcf88fa7fbed3e8002fbe8
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025826"
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>What's new in Azure Data Catalog
 Aktualizacje **Azure Data Catalog** są wydawane regularnie. Nie każdy wydanie obejmuje nowe funkcje dla użytkownika, ponieważ niektóre wersje są koncentruje się na możliwości usługi zaplecza. Ta strona przedstawia nowe możliwości dla użytkownika dodane do usługi Azure Data Catalog.
@@ -99,7 +98,7 @@ Począwszy od stycznia 2017 r Azure Data Catalog dodano następujące funkcje:
 
 ## <a name="whats-new-for-december-2016"></a>Nowości dotyczące grudnia 2016
 Począwszy od grudnia 2016 r. zostały dodane do usługi Azure Data Catalog następujące możliwości:
-*   Wykaz danych Azure jest obecnie [HIPAA](https://www.microsoft.com/trustcenter/Compliance/HIPAA) i [Klauzulami modelu UE](https://www.microsoft.com/TrustCenter/Compliance/EU-Model-Clauses) zgodne.
+*   Wykaz danych Azure jest obecnie [HIPAA](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa) i [Klauzulami modelu UE](https://www.microsoft.com/en-us/TrustCenter/Compliance/EU-Model-Clauses) zgodne.
 *   Obsługa do edycji informacji dotyczących połączenia źródła danych. Właścicieli zasobów danych i administratorów usługi Data Catalog edytować informacje o połączeniu dla zarejestrowanych źródeł danych bez konieczności ponownego zarejestrowania źródeł danych.
 *   Obsługa źródeł danych witryny Salesforce.com. Użytkownicy mogą teraz zarejestrować i odnajdywanie obiektów Salesforce.
 
@@ -246,7 +245,7 @@ Począwszy od września 2015 r. zostały dodane do usługi Azure Data Catalog na
 * Nowe dane "wprowadzenie" źródła obsługi odnajdowania w portalu wykazu danych Azure. Wprowadzenie przez użytkownika na stronie portalu wykazu danych Azure "wykryć" bez wprowadzania wyszukiwanego terminu, mają być przedstawiane z omówieniem zawartości katalogu, w tym najczęściej używane znaczniki, ekspertów, typy źródeł danych i typów obiektów.
 * Możliwość rejestrowania i odnajdywanie obiektów magazynu danych SQL Azure i baz danych. Aby uzyskać dodatkowe informacje na temat usługi Azure SQL Data Warehouse, zobacz [SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/).
 * Możliwość rejestrowania i odnajdywanie modele usług SQL Server Analysis Services i serwerów SQL Server Reporting Services jako kontenerów. Podczas rejestrowania obiektów SSAS i SSRS, usługa Azure Data Catalog tworzy wpis modelu SSAS i serwer SSRS oraz raporty i inne obiekty. Kontenery mogą być wykrywane i opatrzone adnotacjami za pomocą portalu wykazu danych Azure. Użytkownicy mogą również wyszukiwanie i filtrowanie zawartości modelu lub serwerze oprócz wyszukiwanie i filtrowanie zawartości katalogu.
-* Możliwość rejestrowania i odnajdywania obiektów SQL Server Analysis Services za pośrednictwem protokołu HTTP/HTTPS. Użytkownicy mogą teraz łączyć się z serwerami SSAS przy użyciu adresu URL (na przykład https://servername/olap/msmdpump.dll) zamiast nazwy serwera i użyć uwierzytelniania podstawowego i oprócz uwierzytelniania systemu Windows na połączenia anonimowe. Aby uzyskać dodatkowe informacje w przypadku połączeń HTTP i HTTPS do usług SSAS, zobacz [skonfiguruj HTTP dostępu do usług Analysis Services](https://msdn.microsoft.com/library/gg492140.aspx).
+* Możliwość rejestrowania i odnajdywania obiektów SQL Server Analysis Services za pośrednictwem protokołu HTTP/HTTPS. Użytkownicy mogą teraz łączyć się przy użyciu adresu URL serwerów usługi SSAS (takich jak https://servername/olap/msmdpump.dll) zamiast serwer nazwy i użyć uwierzytelniania podstawowego i oprócz uwierzytelniania systemu Windows na połączenia anonimowe. Aby uzyskać dodatkowe informacje w przypadku połączeń HTTP i HTTPS do usług SSAS, zobacz [skonfiguruj HTTP dostępu do usług Analysis Services](https://msdn.microsoft.com/library/gg492140.aspx).
 * Obsługa Hive źródeł danych w usłudze HDInsight. Użytkownicy mogą teraz zarejestrować i wykrywa tabele programu Hive dla Apache Hive w Hadoop w HDInsight źródeł danych. Aby uzyskać dodatkowe informacje na temat Hive w usłudze HDInsight, zobacz [Centrum dokumentacji usługi HDInsight](../hdinsight/hadoop/hdinsight-use-hive.md).
 * Możliwość rejestrowania i odnajdywanie bazami danych Oracle i klastrów systemu plików HDFS jako kontenerów. Podczas rejestrowania programu Oracle tabele i widoki lub system plików HDFS, Azure Data Catalog tworzy wpis dla bazy danych, tabel i widoków. Bazy danych mogą być wykrywane i opatrzone adnotacjami za pomocą portalu wykazu danych Azure. Użytkownicy mogą również wyszukiwanie i filtrowanie zawartości bazy danych lub klastra oprócz wyszukiwanie i filtrowanie zawartości katalogu.
 * Obsługa ręcznie rejestrowanie typy źródeł danych nieznany. Użytkownicy, można ręcznie wprowadzić informacje o źródle danych za pomocą portalu wykazu danych Azure, dzięki czemu źródeł danych nie jest jawnie obsługiwany przez narzędzia rejestracji źródła danych można dodawać adnotacje i odnalezione.

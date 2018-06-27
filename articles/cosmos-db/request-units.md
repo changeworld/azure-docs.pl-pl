@@ -2,19 +2,19 @@
 title: Jednostek żądania i Szacowanie przepływności - DB rozwiązania Cosmos Azure | Dokumentacja firmy Microsoft
 description: Więcej informacji na temat sposobu zrozumieć, określ i oszacować wymagania dotyczące jednostki żądania w usłudze Azure DB rozwiązania Cosmos.
 services: cosmos-db
-author: SnehaGunda
+author: rimman
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rimman
-ms.openlocfilehash: 16ccda120aef0aa892bf365403f3f0bdc1209ca3
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 9021d0c3f650d64480f2881508d456ce98beab2a
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823727"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961970"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Żądanie jednostki w usłudze Azure DB rozwiązania Cosmos
 
@@ -111,7 +111,7 @@ Aby użyć narzędzia:
 > 
 
 ### <a name="use-the-azure-cosmos-db-request-charge-response-header"></a>Użyj nagłówka odpowiedzi opłat żądania bazy danych Azure rozwiązania Cosmos
-Każdy odpowiedź z usługi Azure DB rozwiązania Cosmos zawiera niestandardowy nagłówek (`x-ms-request-charge`) zawiera jednostki żądania używane dla danego żądania. Ten nagłówek można także przejść za pomocą zestawów SDK z bazy danych Azure rozwiązania Cosmos. W zestawie SDK .NET **RequestCharge** jest właściwością **ResourceResponse** obiektu. Dla zapytań Eksploratora danych Azure DB rozwiązania Cosmos w portalu Azure informacje żądania opłaty dotyczące wykonywane zapytania.
+Każdy odpowiedź z usługi Azure DB rozwiązania Cosmos zawiera niestandardowy nagłówek (`x-ms-request-charge`) zawiera jednostki żądania używane dla danego żądania. Ten nagłówek można także przejść za pomocą zestawów SDK z bazy danych Azure rozwiązania Cosmos. W zestawie SDK .NET **RequestCharge** jest właściwością **ResourceResponse** obiektu. Dla zapytań Eksploratora danych Azure DB rozwiązania Cosmos w portalu Azure informacje żądania opłaty dotyczące wykonywane zapytania. Informacje na temat sposobu uzyskania i przepływności zestawu przy użyciu różnych wiele modeli interfejsów API, zobacz [Ustawianie i pobieranie przepływności w usłudze Azure DB rozwiązania Cosmos](set-throughput.md) artykułu.
 
 Jedną z metod oszacowania zarezerwowaną przepływnością wymagane przez aplikację jest rekord opłata jednostki żądania skojarzonego z typowymi operacjami uruchamiania reprezentatywny elementu, który jest używany przez aplikację. Następnie oszacować liczbę operacji, które planujesz do wykonania w ciągu sekundy. Należy również miar i to typowe zapytania i użycie skryptu bazy danych Azure rozwiązania Cosmos.
 

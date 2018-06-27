@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: larryfr
-ms.openlocfilehash: d5df67021e997df3a6344701f50be4871a11386d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9ca8be3066254ade37c858bd62f9ce6a2e2be902
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31406034"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018386"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Tworzenie akcji skryptu za pomocą usługi HDInsight
 
 Dowiedz się, jak dostosować z klastrem usługi HDInsight przy użyciu skrypty Bash. Akcje skryptu to sposób, aby dostosować HDInsight podczas lub po utworzeniu klastra.
 
 > [!IMPORTANT]
-> Kroki opisane w tym dokumencie wymagają klastra usługi HDInsight, który używa systemu Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
+> Procedura przedstawiona w tym dokumencie wymaga klastra usługi HDInsight używającego systemu Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 ## <a name="what-are-script-actions"></a>Co to są akcji skryptu
 
@@ -41,7 +41,7 @@ Akcje skryptu można zastosować za pomocą następujących metod:
 | Azure PowerShell |✓ |✓ |
 | Interfejs wiersza polecenia platformy Azure CLI w wersji 1.0 |&nbsp; |✓ |
 | Zestaw SDK dla platformy .NET usługi HDInsight |✓ |✓ |
-| Szablonu usługi Azure Resource Manager |✓ |&nbsp; |
+| Szablon usługi Azure Resource Manager |✓ |&nbsp; |
 
 Aby uzyskać więcej informacji o używaniu tych metod do zastosowania akcji skryptu, zobacz [HDInsight dostosować klastry za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
 
@@ -377,5 +377,5 @@ Zastąp `INFILE` z pliku zawierającego BOM. `OUTFILE` powinien być nową nazw�
 ## <a name="seeAlso"></a>Następne kroki
 
 * Dowiedz się, jak [HDInsight dostosować klastry za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md)
-* Użyj [odwołania do zestawu SDK .NET usługi HDInsight](https://msdn.microsoft.com/library/mt271028.aspx) Aby dowiedzieć się więcej o tworzeniu aplikacji .NET, które zarządzają HDInsight
+* Użyj [odwołania do zestawu SDK .NET usługi HDInsight](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight) Aby dowiedzieć się więcej o tworzeniu aplikacji .NET, które zarządzają HDInsight
 * Użyj [interfejsu API REST usługi HDInsight](https://msdn.microsoft.com/library/azure/mt622197.aspx) więcej informacji na temat używania REST do wykonywania akcji związanych z zarządzaniem w klastrach usługi HDInsight.

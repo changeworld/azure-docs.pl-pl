@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/21/2018
-ms.openlocfilehash: fc7a2316b5b006cbbf8a237c6a95a71b6489932b
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 6f078823d8b911bc5ce6a36ab27b11a9c0117b80
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753408"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018343"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Bazy danych platformy Azure dla PostgreSQL warstw cenowych
 
@@ -58,6 +58,7 @@ Obliczeń zasoby są dostarczane jako vCores, reprezentujące Procesora logiczne
 | Brazylia Południowa | X | X |
 | Europa Północna | X | X |
 | Europa Zachodnia |  | X |
+| Francja Środkowa |  | X |
 | Zachodnie Zjednoczone Królestwo |  | X |
 | Południowe Zjednoczone Królestwo |  | X |
 | Azja Wschodnia | X | X |

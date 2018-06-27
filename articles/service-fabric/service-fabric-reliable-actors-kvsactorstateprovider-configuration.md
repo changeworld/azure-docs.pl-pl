@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: f29754c73db74f02214522a4de15904e65df0e98
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c01bcfecea8d79784b764e715f077c76e7d4be45
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208264"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017651"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Konfigurowanie Reliable Actors — KVSActorStateProvider
 Domyślna konfiguracja KVSActorStateProvider można modyfikować, zmieniając pliku settings.xml, generowany w folderze głównym pakietu Microsoft Visual Studio w folderze konfiguracji dla określonego aktora.
@@ -34,6 +34,10 @@ Domyślna konfiguracja KVSActorStateProvider można modyfikować, zmieniając pl
 ## <a name="replicator-security-configuration"></a>Konfiguracja zabezpieczeń replikatora
 Replikator konfiguracji zabezpieczeń służą do zabezpieczania kanał komunikacyjny używany podczas replikacji. Oznacza to, czy usługi nie widzi siebie nawzajem ruch związany z replikacją, zapewnia, że dane, które jest zyskuje dużą dostępność również jest bezpieczne.
 Domyślnie puste zabezpieczeń sekcji konfiguracji uniemożliwia zabezpieczeń replikacji.
+
+> [!IMPORTANT]
+> W węzłach Linux certyfikaty muszą być sformatowane PEM. Aby uzyskać więcej informacji o lokalizacji i konfigurowanie certyfikatów dla systemu Linux, zobacz [Konfigurowanie certyfikatów w systemie Linux](./service-fabric-configure-certificates-linux.md). 
+> 
 
 ### <a name="section-name"></a>Nazwa sekcji
 &lt;ActorName&gt;ServiceReplicatorSecurityConfig

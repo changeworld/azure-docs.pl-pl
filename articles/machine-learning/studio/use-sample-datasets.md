@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.openlocfilehash: 63f079f6c8e584ff3a89503104060daf056763ed
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 5e225a16baef53c12a5d0a719c36a2042d391c7f
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836304"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959106"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Korzystanie z przykładowych arkuszy danych w usłudze Azure Machine Learning Studio
 [top]: #machine-learning-sample-datasets
@@ -340,7 +340,7 @@ Dane pogody obejmuje uwagi z lotniska pogody stacje, obejmujący okres czas, kwi
   <li>Identyfikatory pogody stacji nie zostały zamapowane na lotnisku odpowiednich identyfikatorów</li>
   <li>Stacje pogody nie są skojarzone z 70 lotniskach zajętej zostały odfiltrowane.</li>
   <li>Data kolumny podzielono na osobne kolumny rok, miesiąc i dzień</li>
-  <li>Wybrano następujące kolumny: AirportID, rok, miesiąc, dzień, czas, strefa czasowa, SkyCondition, widoczność, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, prędkość wiatru, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, wysokościomierza</li>
+  <li>Wybrano następujące kolumny: AirportID, rok, miesiąc, dzień, czas, strefy czasowej, SkyCondition, widoczność, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, Prędkość wiatru, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, wysokościomierza</li>
 </ul>
   </td>
 </tr>
@@ -403,7 +403,7 @@ Temat przypisania dla nowych artykułów w zestawie danych wiadomości Reuters R
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
   <td>
-Te dane pochodzą z żądania oceny wydajności uczniów 2010 Pucharze KDD (<a href="http://www.kdd.org/kdd-cup-2010-student-performance-evaluation">oceny wydajności uczniowie</a>). Danych używany jest zestaw szkoleniowy Algebra_2008_2009 (Stamper, J., Niculescu-Mizil, S. A., Ritter, Gordon, G.J. & Koedinger, K.R. (2010). Algebraiczną I 2008 2009. Żądanie zestawu danych z KDD Pucharze 2010 edukacyjnych danych wyszukiwania żądania. Znajdź go w <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a> lub <a href="http://www.kdd.org/sites/default/files/kddcup/site/2010/files/algebra_2008_2009.zip">algebra_2008_2009.zip</a>.
+Te dane pochodzą z żądania oceny wydajności uczniów 2010 Pucharze KDD (<a href="http://www.kdd.org/kdd-cup-2010-student-performance-evaluation">oceny wydajności uczniowie</a>). Danych używany jest zestaw szkoleniowy Algebra_2008_2009 (Stamper, J., Niculescu-Mizil, S. A., Ritter, Gordon, G.J. & Koedinger, K.R. (2010). Algebraiczną I 2008 2009. Żądanie zestawu danych z KDD Pucharze 2010 edukacyjnych danych wyszukiwania żądania. Znajdź go w <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a>.
 <p></p>
 Zestaw danych został pobrany i przechowywane w magazynie obiektów Blob platformy Azure (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>) i zawiera pliki dziennika z studenta Korepetycje systemu. Podany cechy identyfikator problemu i jego krótki opis, ID studenta znacznik czasu i liczby prób uczniów przed rozwiązywanie problemu w sposób prawo. Oryginalny zestaw danych zawiera rekordy 8,9 M; Ten zestaw danych został próbkowany w dół do pierwszych wierszy 100 KB. Element dataset zawiera 23 tabulatorem kolumny z różnych typów: liczbowe podzielone na kategorie i sygnatura czasowa.
   </td>

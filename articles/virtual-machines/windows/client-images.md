@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: aaab69f452db9d4f11af2b5cfd2cd9ff6ac79954
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: c1fdf3e95fe0026dcb1b47dd6537008921d461fe
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2018
-ms.locfileid: "28103680"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017538"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Używanie klienta systemu Windows na platformie Azure scenariusze tworzenia/testowania
 Można użyć systemu Windows 7, Windows 8 lub Windows 10 Enterprise (x64) na platformie Azure scenariusze tworzenia/testowania, pod warunkiem, że masz odpowiednie subskrypcji programu Visual Studio (dawniej MSDN). W tym artykule opisano wymagania kwalifikujących się usług systemu Windows 7, Windows 8.1, Windows 10 Enterprise Azure i użyj następujących obrazów w galerii Azure.
@@ -41,14 +41,14 @@ W poniższej tabeli przedstawiono oferta identyfikatorów, które kwalifikują s
 
 | Nazwa oferty | Numer oferty | Obrazy dostępne klienta |
 |:--- |:---:|:---:|
-| [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/) |0023P |Windows 10 |
+| [Płatność za rzeczywiste użycie: tworzenie i testowanie](https://azure.microsoft.com/offers/ms-azr-0023p/) |0023P |Windows 10 |
 | [Subskrybentów usługi Visual Studio Enterprise (MPN)](https://azure.microsoft.com/offers/ms-azr-0029p/) |0029P |Windows 10 |
 | [Subskrybentów usługi Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/) |0059P |Windows 10 |
 | [Subskrybentów usługi Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/) |0060P |Windows 10 |
 | [Visual Studio Premium z subskrypcją MSDN (asysta)](https://azure.microsoft.com/offers/ms-azr-0061p/) |0061P |Windows 10 |
 | [Subskrybentów usługi Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) |0063P |Windows 10 |
 | [Subskrybentów usługi Visual Studio Enterprise (BizSpark)](https://azure.microsoft.com/offers/ms-azr-0064p/) |0064P |Windows 10 |
-| [Enterprise Dev/Test](https://azure.microsoft.com/ofers/ms-azr-0148p/) |0148P |Windows 10 |
+| [Enterprise Dev/Test](https://azure.microsoft.com/en-us/offers/ms-azr-0148p/) |0148P |Windows 10 |
 
 ## <a name="check-your-azure-subscription"></a>Sprawdź subskrypcji platformy Azure
 Jeśli nie znasz Identyfikatora oferty, możesz go uzyskać za pośrednictwem portalu Azure w jeden z tych dwóch sposobów:  

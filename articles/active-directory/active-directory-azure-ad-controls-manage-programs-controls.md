@@ -12,25 +12,25 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.component: compliance-reports
-ms.date: 05/14/2018
+ms.date: 06/21/2018
 ms.author: rolyon
-ms.openlocfilehash: 3bce933787e49d787c9414ef75ee0e97a41b79aa
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 06e91b4d52a70ea33f4317a6434c2bd49e5c3bd3
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233642"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020978"
 ---
 # <a name="manage-programs-and-their-controls"></a>Zarządzanie programów i ich formantów 
 
 Azure Active Directory (Azure AD) zawiera przegląd dostępu do członków grupy, a dostęp do aplikacji. Upewnij się, te przykłady formantów nadzoru dla użytkowników mających dostęp do Twojej organizacji członkostwa w grupach i aplikacji. Organizacje umożliwia wydajne rozwiązania ich ładu, zarządzania ryzykiem i wymagań dotyczących zgodności tych kontrolek.
 
 ## <a name="create-and-manage-programs-and-their-controls"></a>Tworzenie i zarządzanie programów i ich formantów
-Sposób śledzenia i zbierać przeglądami dostęp do różnych celów je zorganizować programy można uprościć. Przegląd każdego dostępu może być połączony z programem. Następnie podczas przygotowania raportów audytorzy można skoncentrować się na przeglądami dostępu w zakresie określonym Initiative.  Programy i wyników przeglądu dostępu są widoczne dla użytkowników w roli administratora globalnego, Administrator zabezpieczeń lub czytnika zabezpieczeń.
+Sposób śledzenia i zbierać przeglądami dostęp do różnych celów je zorganizować programy można uprościć. Przegląd każdego dostępu może być połączony z programem. Następnie podczas przygotowania raportów audytorzy można skoncentrować się na przeglądami dostępu w zakresie określonym Initiative.  Programy i wyników przeglądu dostępu są widoczne dla użytkowników w roli administratora globalnego, Administrator konta użytkownika, administratora zabezpieczeń lub czytnika zabezpieczeń.
 
 Aby wyświetlić listę programów, przejdź do [dostępu monitoruje strony](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/) i wybierz **programy**.
 
-**Domyślny Program** zawsze jest obecny. Jeśli pracujesz w roli administratora globalnego, możesz utworzyć dodatkowe programy. Na przykład można mieć jeden program dla każdego inicjatywy zgodności lub celach biznesowych.
+**Domyślny Program** zawsze jest obecny. Jeśli jesteś administratorem globalnym lub rola administratora konta użytkownika, możesz utworzyć dodatkowe programy. Na przykład można mieć jeden program dla każdego inicjatywy zgodności lub celach biznesowych.
 
 Jeśli program nie są już potrzebne i nie ma żadnych formantów z nim połączone, możesz go usunąć.
 

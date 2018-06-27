@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/11/2018
 ms.author: subramar
-ms.openlocfilehash: ce894f775614c5be7413a004d2237f6a5cf00926
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59dc090053c78dbddc1854f21db39f66df7bc91c
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642414"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020549"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>Tworzenie pierwszej aplikacji usługi Azure Service Fabric
 > [!div class="op_single_selector"]
@@ -108,11 +108,23 @@ Parametry tych poleceń można znaleźć w manifestach wygenerowanych w pakiecie
 
 Po wdrożeniu aplikacji otwórz przeglądarkę i przejdź do narzędzia [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) pod adresem [http://localhost:19080/Explorer](http://localhost:19080/Explorer). Następnie rozwiń węzeł **Aplikacje** i zwróć uwagę, że istnieje teraz wpis dla danego typu aplikacji i inny wpis dla pierwszego wystąpienia tego typu.
 
+> [!IMPORTANT]
+> Aby wdrożyć aplikację do bezpiecznego klastra systemu Linux na platformie Azure, należy skonfigurować certyfikat, aby zweryfikować Twojej aplikacji ze środowiskiem uruchomieniowym usługi sieć szkieletowa usług. Umożliwi to usługi niezawodne usługi, aby komunikować się z podstawowego środowiska uruchomieniowego platformy Service Fabric interfejsów API. Aby dowiedzieć się więcej, zobacz [skonfiguruj aplikację niezawodne usługi, do uruchamiania na systemie Linux klastrów](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+>
+
 ## <a name="start-the-test-client-and-perform-a-failover"></a>Uruchamianie klienta testowego i przechodzenie w tryb failover
 Projekty aktora nie działają samodzielnie. Wymagają one wysyłania im komunikatów przez inną usługę lub klienta. Szablon aktora zawiera prosty skrypt testowy, którego można użyć do interakcji z usługą aktora.
 
 1. Uruchom skrypt za pomocą narzędzia kontrolnego, aby wyświetlić dane wyjściowe usługi aktora.
 
+   W przypadku systemu MAC OS X należy skopiować myactorsvcTestClient folder do określonej lokalizacji w kontenerze, uruchamiając następujące polecenia dodatkowe.
+    
+    ```bash
+    docker cp  [first-four-digits-of-container-ID]:/home
+    docker exec -it [first-four-digits-of-container-ID] /bin/bash
+    cd /home
+    ```
+    
     ```bash
     cd myactorsvcTestClient
     watch -n 1 ./testclient.sh

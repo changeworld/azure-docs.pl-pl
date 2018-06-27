@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 9dd63e1f3ec381dd99495ebc6193198611c76c88
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8b4584e9ccd17eba385f2068709f5bbaea6df20b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31417040"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019961"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-hdinsight"></a>Wdrażanie i zarządzanie nimi topologii Apache Storm w usłudze HDInsight
 
@@ -40,9 +40,9 @@ W tym dokumencie przedstawiono podstawy zarządzania i monitorowania topologii S
 
     Jedna z następujących wersji programu Visual Studio:
 
-  * Program Visual Studio 2012 z [aktualizacja 4](http://www.microsoft.com/download/details.aspx?id=39305)
+  * Program Visual Studio 2012 z aktualizacją 4
 
-  * Visual Studio 2013 z [aktualizacja 4](http://www.microsoft.com/download/details.aspx?id=44921) lub [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
+  * Visual Studio 2013 z aktualizacją 4 lub [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
   * [Visual Studio 2015](https://www.visualstudio.com/downloads/)
 
   * Visual Studio 2015 (dowolna wersja)
@@ -64,7 +64,7 @@ Narzędzia HDInsight Tools może służyć do przesyłania C# i hybrydowych topo
 
 3. W **nowy projekt** okna dialogowego rozwiń **zainstalowana** > **szablony**, a następnie wybierz **HDInsight**. Wybierz z listy szablonów **próbki Storm**. W dolnej części okna dialogowego wpisz nazwę aplikacji.
 
-    ![Obraz](./media/apache-storm-deploy-monitor-topology-linux/sample.png)
+    ![image](./media/apache-storm-deploy-monitor-topology-linux/sample.png)
 
 4. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy projekt i wybierz **przesyłania do systemu Storm w usłudze HDInsight**.
 

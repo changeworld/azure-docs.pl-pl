@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: magoedte
-ms.openlocfilehash: f14b96b88a96f4bef24602bb9338a77352fbf375
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 8558b3b1f5a9036f1134ddce3302211b41f57c05
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025913"
 ---
 # <a name="log-analytics-data-security"></a>Rejestrować analizy danych
 Ten dokument jest przeznaczony do dostarczania informacji Azure Log Analytics załączyć na [Centrum zaufania Azure](../security/security-microsoft-trust-center.md).  
@@ -46,7 +47,7 @@ W ramach Twojej [umowy subskrypcyjnej dotyczącej usług](https://azure.microsof
 
 Poniższa tabela przedstawia niektóre z dostępnych rozwiązań oraz przykłady typu danych, które pobierają.
 
-| **Rozwiązania** | **Typy danych** |
+| **Rozwiązanie** | **Typy danych** |
 | --- | --- |
 | Pojemność i wydajność |Dane dotyczące wydajności i metadane |
 | Ocena oprogramowania chroniącego przed złośliwym kodem |Dane konfiguracji i metadane |
@@ -67,7 +68,7 @@ W poniższej tabeli przedstawiono przykłady typów danych:
 | Stan |StateChangeEventId, StateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, MonitorId, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
 
 ## <a name="physical-security"></a>Zabezpieczenia fizyczne
-Usługi analizy dzienników jest zarządzana przez personel firmy Microsoft i wszystkich działań są rejestrowane i może być sprawdzona. Analiza dzienników działa jako usługa Azure i spełnia wszystkie wymagania Azure zgodności i zabezpieczeń. Możliwość wyświetlania szczegółów dotyczących zabezpieczeń fizycznych zasobów platformy Azure na stronie 18 [Przegląd zabezpieczeń systemu Microsoft Azure](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Prawa fizyczny dostęp do bezpiecznego obszarów są zmieniane w ciągu jednego dnia roboczego dla każdego, kto nie ma już odpowiedzialność za usługę, w tym transfer i kończenie działania. Informacje o globalnej infrastruktury fizycznej używamy w [Datacenters Microsoft](https://www.microsoft.com/server-cloud/cloud-os/global-datacenters.aspx).
+Usługi analizy dzienników jest zarządzana przez personel firmy Microsoft i wszystkich działań są rejestrowane i może być sprawdzona. Analiza dzienników działa jako usługa Azure i spełnia wszystkie wymagania Azure zgodności i zabezpieczeń. Możliwość wyświetlania szczegółów dotyczących zabezpieczeń fizycznych zasobów platformy Azure na stronie 18 [Przegląd zabezpieczeń systemu Microsoft Azure](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Prawa fizyczny dostęp do bezpiecznego obszarów są zmieniane w ciągu jednego dnia roboczego dla każdego, kto nie ma już odpowiedzialność za usługę, w tym transfer i kończenie działania. Informacje o globalnej infrastruktury fizycznej używamy w [Datacenters Microsoft](https://azure.microsoft.com/en-us/global-infrastructure/).
 
 ## <a name="incident-management"></a>Zarządzanie zdarzeniami
 OMS ma procesu zarządzania zdarzeniami, które wszystkich usług firmy Microsoft jest zgodna. Podsumowując, firma Microsoft:
@@ -91,10 +92,10 @@ OMS ma procesu zarządzania zdarzeniami, które wszystkich usług firmy Microsof
 
 Gdy dojdzie do utraty danych klienta, powiadomimy każdego klienta w ciągu jednego dnia. Jednak klient wystąpiła utrata danych nigdy nie w usłudze. 
 
-Aby uzyskać więcej informacji dotyczących sposobu Microsoft reaguje na przypadki naruszenia zabezpieczeń, zobacz [Response zabezpieczeń firmy Microsoft Azure w chmurze](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/1/Microsoft Azure Security Response in the cloud.pdf).
+Aby uzyskać więcej informacji dotyczących sposobu Microsoft reaguje na przypadki naruszenia zabezpieczeń, zobacz [Response zabezpieczeń firmy Microsoft Azure w chmurze](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf).
 
 ## <a name="compliance"></a>Zgodność
-Program zabezpieczeń i nadzór nad informacji analizy dzienników oprogramowania rozwoju i usługi zespołu obsługuje jej wymagania biznesowe i stosuje przepisom eksportowym obowiązującym zgodnie z opisem w [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/) i [ Centrum zaufania Microsoft zgodności](https://www.microsoft.com/TrustCenter/Compliance/default.aspx). Jak analizy dzienników ustanawia wymagania dotyczące zabezpieczeń, identyfikuje kontroli zabezpieczeń zarządza i monitoruje ryzyka są także opisane istnieje. Co rok, możemy przeglądu zasady, normy, procedury i wskazówek.
+Program zabezpieczeń i nadzór nad informacji analizy dzienników oprogramowania rozwoju i usługi zespołu obsługuje jej wymagania biznesowe i stosuje przepisom eksportowym obowiązującym zgodnie z opisem w [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/) i [ Centrum zaufania Microsoft zgodności](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx). Jak analizy dzienników ustanawia wymagania dotyczące zabezpieczeń, identyfikuje kontroli zabezpieczeń zarządza i monitoruje ryzyka są także opisane istnieje. Co rok, możemy przeglądu zasady, normy, procedury i wskazówek.
 
 Każdego członka zespołu programowanie odbiera szkolenia formalnego aplikacji w zakresie zabezpieczeń. Wewnętrznie używamy system kontroli wersji dla rozwoju oprogramowania. Każdy projekt oprogramowania jest chroniona przez system kontroli wersji.
 
@@ -112,10 +113,10 @@ Analiza dzienników Azure spełnia następujące wymagania:
 * [ISO 22301](https://azure.microsoft.com/blog/iso22301/)
 * [Standard zabezpieczeń danych Industry (PCI zgodne) karta płatności (PCI DSS)](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI) przez Radę standardów PCI zabezpieczeń.
 * [Typ usługi organizacji formantów (SOC) 1 1 i SOC 2 typu 1](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2) zgodne
-* [HIPAA i HITECH](https://www.microsoft.com/TrustCenter/Compliance/HIPAA) dla firm, które ma umowy skojarzyć HIPAA biznesowe
+* [HIPAA i HITECH](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa) dla firm, które ma umowy skojarzyć HIPAA biznesowe
 * Wspólne kryteria Engineering systemu Windows
 * Wiarygodne technologie komputerowe firmy Microsoft (witryna może być w języku angielskim)
-* Jako usługi Azure składniki używane przez usługi Analiza dzienników spełniać wymagania zgodności platformy Azure. Więcej w [zgodności Centrum zaufania Microsoft](https://www.microsoft.com/TrustCenter/Compliance/default.aspx).
+* Jako usługi Azure składniki używane przez usługi Analiza dzienników spełniać wymagania zgodności platformy Azure. Więcej w [zgodności Centrum zaufania Microsoft](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx).
 
 > [!NOTE]
 > W niektórych certyfikaty/poświadczenia, analizy dzienników jest wyświetlana w obszarze jego poprzednią nazwę *usługi Operational Insights*.
@@ -130,8 +131,8 @@ Na poniższym diagramie przedstawiono architekturę zabezpieczeń chmury jako pr
 ## <a name="1-sign-up-for-log-analytics-and-collect-data"></a>1. Zarejestruj się, aby zbieranie danych i analizy dzienników
 Dla Twojej organizacji w celu wysyłania danych do analizy dzienników można skonfigurować agenta systemu Windows lub Linux uruchomionych na maszynach wirtualnych platformy Azure lub na komputerach wirtualnych lub fizycznych w Twoim środowisku lub innych dostawcy chmury.  Jeśli używasz programu Operations Manager z grupy zarządzania można skonfigurować agenta programu Operations Manager. Użytkownicy, (które mogą być, inne poszczególnych użytkowników lub grupy osób) utworzenie co najmniej jeden analizy dzienników obszarów roboczych i zarejestrować agentów przy użyciu jednej z następujących kont:
 
-* [Identyfikator organizacji](../active-directory/sign-up-organization.md)
-* [Konto Microsoft - Outlook pakietu Office na żywo, MSN](http://www.microsoft.com/account/default.aspx)
+* [Identyfikator organizacji](../active-directory/fundamentals/sign-up-organization.md)
+* [Konto Microsoft - Outlook pakietu Office na żywo, MSN](https://account.microsoft.com/account)
 
 Obszar roboczy analizy dzienników jest gdzie dane są zbierane, zagregowane, poddane analizie i przedstawiony. Obszar roboczy służy głównie w celu danych partycji i każdego obszaru roboczego jest unikatowa. Na przykład możesz chcieć zarządzanych za pomocą jednego obszaru roboczego danych produkcyjnych i badanie danych zarządzanych za pomocą innego obszaru roboczego. Obszary robocze również pomóc administratora kontroli dostępu użytkownika do danych. Każdy obszar roboczy może mieć wiele kont użytkowników skojarzonych z nim, a wszystkie konta użytkowników mogą uzyskiwać dostęp do wielu obszarów roboczych analizy dzienników. Możesz utworzyć obszarów roboczych na podstawie regionu centrum danych. Każdego obszaru roboczego są replikowane do innych centrów danych w regionie, przede wszystkim dotyczące dostępności usług analizy dzienników.
 

@@ -6,19 +6,19 @@ documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 5f5ca940-eef8-4125-b6a0-f44ba04ab5ab
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/23/2018
+ms.date: 06/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 14aa54277cac3369df739a1d84580624f2d3b401
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3e1dd8ad49ceb126a14070ed641146d91419640a
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025817"
 ---
 # <a name="export-an-azure-resource-manager-template-from-existing-resources"></a>Eksportowanie szablonu usługi Azure Resource Manager z istniejących zasobów
 W tym artykule opisano sposób eksportowania szablonu usługi Resource Manager z istniejących zasobów w ramach subskrypcji. Wygenerowany szablon umożliwi lepsze zrozumienie składni szablonu.
@@ -26,7 +26,7 @@ W tym artykule opisano sposób eksportowania szablonu usługi Resource Manager z
 Istnieją dwa sposoby eksportowania szablonu:
 
 * Możesz wyeksportować **szablon, który faktycznie został użyty na potrzeby wdrożenia**. W wyeksportowanym szablonie wszystkie parametry i zmienne występują dokładnie tak, jak w oryginalnym szablonie. Takie podejście jest przydatne, jeśli zasoby zostały wdrożone za pośrednictwem portalu i chcesz zobaczyć szablon, na podstawie którego utworzono te zasoby. Ten szablon jest gotowy do użycia. 
-* Możesz wyeksportować **wygenerowany szablon, który reprezentuje bieżący stan grupy zasobów**. Wyeksportowany szablon nie jest oparty na żadnym szablonie użytym do wdrożenia. Zamiast tego tworzy szablon, który jest "snapshot" lub "Kopia zapasowa" grupy zasobów. W wyeksportowanym szablonie zawartych jest wiele zakodowanych wartości i prawdopodobnie mniej parametrów, niż się zwykle definiuje. Ta opcja umożliwia wdrożenie zasoby do tej samej grupie zasobów. Aby użyć tego szablonu do innej grupy zasobów, może być znacznie zmiany.
+* Możesz wyeksportować **wygenerowany szablon, który reprezentuje bieżący stan grupy zasobów**. Wyeksportowany szablon nie jest oparty na dowolnego szablonu, który został użyty do wdrożenia. Zamiast tego tworzy szablon, który jest "snapshot" lub "Kopia zapasowa" grupy zasobów. W wyeksportowanym szablonie zawartych jest wiele zakodowanych wartości i prawdopodobnie mniej parametrów, niż się zwykle definiuje. Ta opcja umożliwia wdrożenie zasoby do tej samej grupie zasobów. Aby użyć tego szablonu do innej grupy zasobów, może być znacznie zmiany.
 
 W tym artykule przedstawiono obie opcje za pośrednictwem portalu.
 
@@ -36,13 +36,13 @@ Zacznijmy od wdrożenia zasobów na platformie Azure, których będzie można u�
 1. W [portalu Azure](https://portal.azure.com), wybierz pozycję **Utwórz zasób**.
    
       ![Wybierz nowy](./media/resource-manager-export-template/new.png)
-2. Wyszukaj pozycję **Aplikacja sieci Web i baza danych SQL** i wybierz ją z dostępnych opcji.
+2. Wyszukaj pozycję **Aplikacja internetowa i baza danych SQL** i wybierz ją z dostępnych opcji.
    
       ![Wyszukiwanie aplikacji sieci web i bazy SQL](./media/resource-manager-export-template/webapp-sql.png)
 
 3. Wybierz pozycję **Utwórz**.
 
-      ![Wybierz opcję tworzenia](./media/resource-manager-export-template/create.png)
+      ![Wybieranie pozycji Utwórz](./media/resource-manager-export-template/create.png)
 
 4. Podaj wartości wymagane dla aplikacji internetowej i bazy danych SQL. Wybierz pozycję **Utwórz**.
 
@@ -56,7 +56,7 @@ Wdrożenie może chwilę potrwać. Po zakończeniu wdrożenia Twoja subskrypcja 
       ![Grupa zasobów](./media/resource-manager-export-template/select-deployment.png)
 2. Zostanie wyświetlona historia wdrożeń dla grupy. W Twoim przypadku portalu wymieniono prawdopodobnie tylko jedno wdrożenie. Wybierz to wdrożenie.
    
-     ![poprzedniego wdrożenia](./media/resource-manager-export-template/select-history.png)
+     ![Poprzedniego wdrożenia](./media/resource-manager-export-template/select-history.png)
 3. Portal Wyświetla podsumowanie wdrożenia. Podsumowanie zawiera stan wdrożenia i jego operacji oraz wartości podanych parametrów. Aby wyświetlić szablon, który został użyty do wdrożenia, wybierz pozycję **Wyświetl szablon**.
    
      ![Wyświetlanie podsumowania wdrożenia](./media/resource-manager-export-template/view-template.png)
@@ -64,8 +64,7 @@ Wdrożenie może chwilę potrwać. Po zakończeniu wdrożenia Twoja subskrypcja 
    
    1. **Szablon** — szablon, który definiuje infrastrukturę Twojego rozwiązania. Po utworzeniu konta magazynu za pośrednictwem portalu usługa Resource Manager użyła szablonu w celu jego wdrożenia i zapisała ten szablon do użytku w przyszłości.
    2. **Parametry** — plik parametrów, który służy do przekazywania wartości podczas wdrażania. Zawiera on wartości, które podano podczas pierwszego wdrażania. Podczas ponownego wdrażania szablonu można zmienić dowolne z tych wartości.
-   3. **Interfejs wiersza polecenia** — plik skryptu interfejsu wiersza polecenia platformy Azure, którego możesz użyć do wdrożenia szablonu.
-   3. **Interfejs wiersza polecenia w wersji 2.0** — plik skryptu interfejsu wiersza polecenia platformy Azure, którego możesz użyć do wdrożenia szablonu.
+   3. **Interfejs wiersza polecenia** -plik skryptu interfejsu wiersza polecenia Azure, który można użyć do wdrożenia szablonu.
    4. **PowerShell** — plik skryptu programu Azure PowerShell, którego możesz użyć do wdrożenia szablonu.
    5. **.NET** — klasa platformy .NET, której możesz użyć do wdrożenia szablonu.
    6. **Ruby** — klasa języka Ruby, której możesz użyć do wdrożenia szablonu.
@@ -93,7 +92,7 @@ Jeśli została ręcznie zmieniona zasobów lub dodać zasoby w wielu wdrożeń,
    
 3. Istnieje kilka opcji umożliwiających dalszą pracę z tym szablonem. Szablon można pobrać i pracować nad nim lokalnie w edytorze JSON. Można też zapisać szablon w bibliotece i pracować nad nim za pośrednictwem portalu.
    
-     Jeśli praca w edytorze JSON, takim jak [VS Code](https://code.visualstudio.com/) lub [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md), nie sprawia Ci problemów, lepszym rozwiązaniem może być lokalne pobranie szablonu i skorzystanie z tego edytora. Aby pracować lokalnie, wybierz pozycję **Pobierz**.
+     Jeśli masz doświadczenia, za pomocą edytora JSON, takich jak [kodzie VS](https://code.visualstudio.com/) lub [programu Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md), można wybrać pobierania szablonu lokalnie i za pomocą tego edytora. Aby pracować lokalnie, wybierz pozycję **Pobierz**.
    
       ![Pobieranie szablonu](./media/resource-manager-export-template/download-template.png)
    
@@ -103,10 +102,10 @@ Jeśli została ręcznie zmieniona zasobów lub dodać zasoby w wielu wdrożeń,
    
      Podczas dodawania szablonu do biblioteki, Nadaj szablonowi nazwę i opis. Następnie wybierz pozycję **Zapisz**.
    
-     ![zestaw wartości szablonu](./media/resource-manager-export-template/save-library-template.png)
+     ![Zestaw wartości szablonu](./media/resource-manager-export-template/save-library-template.png)
 4. Aby wyświetlić szablon zapisany w bibliotece, wybierz pozycję **Więcej usług**, wpisz ciąg **Szablony** w celu filtrowania wyników, a następnie wybierz pozycję **Szablony**.
    
-      ![znajdowanie szablonów](./media/resource-manager-export-template/find-templates.png)
+      ![Znajdowanie szablonów](./media/resource-manager-export-template/find-templates.png)
 5. Wybierz szablon o zapisanej przez Ciebie nazwie.
    
       ![Wybierz szablon](./media/resource-manager-export-template/select-saved-template.png)
@@ -120,7 +119,7 @@ Wyeksportowany szablon nadaje się do utworzenia takiej samej aplikacji internet
 2. Wybierz szablon.
    
      ![Edytuj szablon](./media/resource-manager-export-template/select-added-template.png)
-3. Aby móc przekazać wartości, które można określać podczas wdrażania, dodaj następujące dwa parametry w sekcji **parameters** w szablonie:
+3. Aby przekazać wartości, które można określić podczas wdrażania, Dodaj następujące dwa parametry **parametry** sekcji w szablonie:
 
    ```json
    "administratorLogin": {
@@ -151,7 +150,7 @@ Wyeksportowany szablon nadaje się do utworzenia takiej samej aplikacji internet
    },
    ```
 
-6. Po zakończeniu edycji szablonu wybierz pozycję **OK**.
+6. Wybierz **OK** po zakończeniu edytowania szablonu.
 7. Wybierz przycisk **Zapisz**, aby zapisać zmiany wprowadzone w szablonie.
    
      ![Zapisywanie szablonu](./media/resource-manager-export-template/save-template.png)
@@ -162,12 +161,11 @@ Wyeksportowany szablon nadaje się do utworzenia takiej samej aplikacji internet
 
 
 ## <a name="fix-export-issues"></a>Rozwiązywanie problemów z eksportowaniem
-Nie wszystkie typy zasobów obsługują funkcję eksportowania szablonu. Aby rozwiązać ten problem, ręcznie dodaj brakujące zasoby do szablonu. Komunikat o błędzie zawiera typy zasobów, których nie można wyeksportować. Znajdź ten typ zasobów w [dokumentacji szablonu](/azure/templates/). Aby na przykład ręcznie dodać bramę sieci wirtualnej, zobacz [Microsoft.Network/virtualNetworkGateways template reference](/azure/templates/microsoft.network/virtualnetworkgateways) (Dokumentacja szablonu Microsoft.Network/virtualNetworkGateways).
+Nie wszystkie typy zasobów obsługują funkcję eksportowania szablonu. Wyświetlane są tylko wyeksportować problemy podczas eksportowania z grupy zasobów, a nie z historii wdrożenia. Jeśli ostatnie wdrożenie dokładnie reprezentuje bieżący stan grupy zasobów, należy wyeksportować szablon z historii wdrożenia — nie na podstawie grupy zasobów. Jeśli wprowadzono zmiany w grupie zasobów, które nie są zdefiniowane w jednym szablonie tylko wyeksportować z grupy zasobów.
 
-> [!NOTE]
-> Problemy związane z eksportowaniem występują tylko podczas eksportowania szablonu na podstawie grupy roboczej, a nie z historii wdrożenia. Jeśli ostatnie wdrożenie dokładnie reprezentuje bieżący stan grupy zasobów, należy wyeksportować szablon z historii wdrożenia — nie na podstawie grupy zasobów. Eksportowania na podstawie grupy zasobów dokonuje się tylko wtedy, gdy w grupie zasobów wprowadzono zmiany, które nie są zdefiniowane w pojedynczym szablonie.
-> 
-> 
+Aby rozwiązać problemy eksportu, należy ręcznie dodać brakujące zasoby do szablonu. Komunikat o błędzie zawiera typy zasobów, które nie mogą być eksportowane. Znajdź ten typ zasobów w [dokumentacji szablonu](/azure/templates/). Aby na przykład ręcznie dodać bramę sieci wirtualnej, zobacz [Microsoft.Network/virtualNetworkGateways template reference](/azure/templates/microsoft.network/virtualnetworkgateways) (Dokumentacja szablonu Microsoft.Network/virtualNetworkGateways). Odwołanie do szablonu. umożliwi JSON, aby dodać nowy zasób do szablonu.
+
+Po otrzymaniu formatu JSON dla zasobu, należy pobrać wartości zasobów. Przy użyciu operacji GET w interfejsie API REST dla typu zasobu, można zobaczyć wartości dla zasobu. Na przykład, aby pobrać wartości dla bramy sieci wirtualnej, zobacz [uzyskać bramy sieci wirtualnej -](/rest/api/network-gateway/virtualnetworkgateways/get).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

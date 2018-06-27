@@ -7,14 +7,14 @@ manager: shreeshd
 keywords: tworzenie kopii zapasowej i odzyskiwanie po awarii; usługa kopii zapasowej
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/18/2017
+ms.date: 6/25/2018
 ms.author: trinadhk
-ms.openlocfilehash: 4234b76c192ba3bbeaca9593250cc855c073e380
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ac6d2a8a152f3c6e22be962b867ef58421eda47b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605535"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37016492"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>Pytania dotyczące agenta usługi Azure Backup
 W tym artykule znajdują się odpowiedzi na często zadawane pytania pomagające w szybkim poznaniu składników agenta usługi Azure Backup. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -58,7 +58,7 @@ Naturalnie. Usługa Azure Backup udostępnia funkcję tworzenia kopii zapasowych
 Tak. Zainstaluj agenta usługi Azure Backup w systemie operacyjnym Windows gościa i wykonuj kopie zapasowe plików i folderów do magazynu tymczasowego. Zadania tworzenia kopii zapasowych zakończą się niepowodzeniem, gdy dane magazynu tymczasowego zostaną wyczyszczone. Ponadto usunięcie danych magazynu tymczasowego powoduje, że można je przywracać tylko do trwałego magazynu.
 
 ### <a name="whats-the-minimum-size-requirement-for-the-cache-folder-br"></a>Jaki jest minimalny wymagany rozmiar folderu pamięci podręcznej? <br/>
-Rozmiar folderu pamięci podręcznej określa ilość danych, które można umieścić w kopii zapasowej. Folder pamięci podręcznej powinien udostępniać 5% miejsca wymaganego do przechowywania danych.
+Rozmiar folderu pamięci podręcznej określa ilość danych, które można umieścić w kopii zapasowej. Wolumin folder pamięci podręcznej powinien być co najmniej 5 – 10% wolnego miejsca, w porównaniu do całkowity rozmiar danych kopii zapasowej. Jeśli wolumin ma mniej niż 5% wolnego miejsca, albo zwiększ rozmiar woluminu lub [Przenieś folder pamięci podręcznej wolumin z wystarczającym wolnym miejscem](backup-azure-file-folder-backup-faq.md#backup).
 
 ### <a name="how-do-i-register-my-server-to-another-datacenterbr"></a>Jak można zarejestrować serwer w innym centrum danych?<br/>
 Dane kopii zapasowej są wysyłane do centrum danych magazynu, w którym jest ona zarejestrowana. Najprostszym sposobem zmiany centrum danych jest odinstalowanie agenta oraz ponowne zainstalowanie i zarejestrowanie go w nowym magazynie należącym do odpowiedniego centrum danych.

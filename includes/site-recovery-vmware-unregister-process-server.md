@@ -12,7 +12,7 @@ Kroki wyrejestrowywania serwera przetwarzania różnią się zależnie od jego s
 > [!WARNING]
 > Poniższych kroków należy użyć, jeśli nie ma sposobu reaktywowania maszyny wirtualnej, na której zainstalowano serwer przetwarzania.
 
-1. Zaloguj się do serwera konfiguracji jako administrator.
+1. Zaloguj się do serwera konfiguracji jako Administrator.
 2. Otwórz administracyjny wiersz polecenia i przejdź do katalogu `%ProgramData%\ASR\home\svsystems\bin`.
 3. Teraz uruchom polecenie.
 

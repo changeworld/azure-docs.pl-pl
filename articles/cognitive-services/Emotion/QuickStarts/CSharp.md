@@ -9,19 +9,19 @@ ms.component: emotion-api
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: anroth
-ms.openlocfilehash: acf30e7aded92c6d07331089fabd02836a8f3e9a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 89735ae54395447e3cb421f45db3d6b99001ecd6
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347565"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37016569"
 ---
 # <a name="emotion-api-c-quick-start"></a>Emocji interfejsu API języka C# szybki start
 
 > [!IMPORTANT]
 > Wersja zapoznawcza interfejsu API wideo była dostępna do 30 października 2017. Można łatwo wyodrębnić szczegółowe informacje z plików wideo, spróbuj nowe [wideo indeksatora interfejsu API w wersji zapoznawczej](https://azure.microsoft.com/services/cognitive-services/video-indexer/). Możesz również służy do ułatwienia pracy funkcję odnajdowania zawartości, takich jak wyniki wyszukiwania został określony poprzez wykrycie słowa rozmowy, kroje znaków i emocji. Aby dowiedzieć się więcej, zobacz [Podgląd indeksatora wideo](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview) omówienie.
 
-Ten artykuł zawiera informacje i przykładowy kod, aby szybko rozpocząć pracę za pomocą [metody rozpoznaje interfejsu API rozpoznawania emocji — warstwa](https://dev.projectoxford.ai/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) języku C#. Służy on do rozpoznawania emocji wyrażonych przez osoby na obrazie. 
+Ten artykuł zawiera informacje i przykładowy kod, aby szybko rozpocząć pracę za pomocą [metody rozpoznaje interfejsu API rozpoznawania emocji — warstwa](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) języku C#. Służy on do rozpoznawania emocji wyrażonych przez osoby na obrazie. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Pobierz usługi kognitywnych [interfejsu API rozpoznawania emocji — warstwa zestaw Windows SDK](https://www.nuget.org/packages/Microsoft.ProjectOxford.Emotion/).

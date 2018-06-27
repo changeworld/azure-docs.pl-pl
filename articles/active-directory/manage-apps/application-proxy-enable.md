@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 06/26/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 58bcb3cbdf389393beb58a9f50b3e77aa2b3aae8
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: HT
+ms.openlocfilehash: 0ac14f792c63ea06a484eb5b522c4d33958538ed
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34158425"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025905"
 ---
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>Rozpoczynanie pracy z serwera Proxy aplikacji i zainstalować łącznik
 W tym artykule przedstawiono procedurę włączania serwera proxy aplikacji usługi Microsoft Azure AD dla katalogu w chmurze w ramach usługi Azure AD.
@@ -30,7 +30,7 @@ Jeśli nie masz jeszcze znane korzyści w zakresie zabezpieczeń i wydajności s
 ## <a name="application-proxy-prerequisites"></a>Wymagania wstępne serwera proxy aplikacji
 Wymagania umożliwiające włączenie i używanie usług serwera proxy aplikacji:
 
-* [Subskrypcja usługi Microsoft Azure AD w warstwie Podstawowa lub Premium](../active-directory-whatis.md) i katalog usługi Azure AD, dla którego jesteś administratorem globalnym.
+* [Subskrypcja usługi Microsoft Azure AD w warstwie Podstawowa lub Premium](../fundamentals/active-directory-whatis.md) i katalog usługi Azure AD, dla którego jesteś administratorem globalnym.
 * Serwer z systemem Windows Server 2012 R2 lub 2016, w którym można zainstalować łącznik serwera Proxy aplikacji. Serwer musi mieć możliwość łączenia się z usługami serwera Proxy aplikacji w chmurze i lokalnych aplikacji, które są publikowane.
   * Dla rejestracji jednokrotnej do aplikacji opublikowanych przy użyciu ograniczone delegowanie protokołu Kerberos tej maszyny powinny być przyłączonych do domeny w tej samej domenie AD, aplikacje, które są publikowane. Aby uzyskać informacje, zobacz [KCD dla logowania jednokrotnego przy użyciu serwera Proxy aplikacji](application-proxy-configure-single-sign-on-with-kcd.md).
 
@@ -64,7 +64,6 @@ Aby przygotować swoje środowisko dla serwera Proxy aplikacji usługi Azure AD,
 
 4. Twoje łącznika musi mieć dostęp do login.windows.net i login.microsoftonline.com dla procesu rejestracji.
 
-5. Użyj [Azure AD aplikacji serwera Proxy łącznika porty testu narzędzia](https://aadap-portcheck.connectorporttest.msappproxy.net/) można zweryfikować, że Twoje łącznika może nawiązać połączenie usługi Serwer Proxy aplikacji. Co najmniej upewnij się, że region środkowe stany USA i najbliższego region jest wszystkich zielony zaznaczeń. Ponadto więcej zaznaczeń zielony oznacza większą elastyczność.
 
 ## <a name="install-and-register-a-connector"></a>Instalowanie i rejestrowanie łącznika
 1. Zaloguj się jako administrator w [portalu Azure](https://portal.azure.com/).

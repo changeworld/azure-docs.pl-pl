@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/12/2017
 ms.author: asmalser-msft
-ms.openlocfilehash: faccaa4496eb1deda23bbfcf335088a023d229d6
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e2ab7efdec326a7f1a2c7f3e7b7d0f379efa8606
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293181"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025821"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Samouczek: Raportowania na inicjowanie obsługi konta użytkowników
 
 
-Usługa Azure Active Directory obejmuje [konta użytkownika usługi inicjowania obsługi administracyjnej](active-directory-saas-app-provisioning.md) który ułatwia automatyzację inicjowania obsługi administracyjnej anulowanie obsługi kont użytkowników w aplikacji SaaS i innymi systemami na potrzeby zarządzania cyklem życia tożsamości na trasie. Usługi Azure AD obsługuje wstępnie zintegrowanych użytkownika inicjowania obsługi administracyjnej łączniki dla wszystkich aplikacji i systemów w sekcji "Proponowanym" [galerii aplikacji Azure AD](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured).
+Usługa Azure Active Directory obejmuje [konta użytkownika usługi inicjowania obsługi administracyjnej](active-directory-saas-app-provisioning.md) który ułatwia automatyzację inicjowania obsługi administracyjnej anulowanie obsługi kont użytkowników w aplikacji SaaS i innymi systemami na potrzeby cyklu życia tożsamości end-to-end Zarządzanie. Usługi Azure AD obsługuje wstępnie zintegrowanych użytkownika inicjowania obsługi administracyjnej łączniki dla wszystkich aplikacji i systemów w sekcji "Proponowanym" [galerii aplikacji Azure AD](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured).
 
 W tym artykule opisano sposób sprawdzania stanu zadania obsługi, gdy zostały skonfigurowane i jak rozwiązywać problemy z inicjowania obsługi poszczególnych użytkowników i grup.
 
 ## <a name="overview"></a>Przegląd
 
-Łączniki inicjowania obsługi administracyjnej są głównie Konfigurowanie i skonfigurować za pomocą [portalu zarządzania Azure](https://portal.azure.com), wykonując [podane dokumentacji](active-directory-saas-tutorial-list.md) dla aplikacji, których inicjowanie obsługi konta użytkownika jest potrzebne. Gdy skonfigurowana i uruchomiona, inicjowania obsługi administracyjnej zadania dla aplikacji mogą być zgłaszane przy użyciu jednej z dwóch metod:
+Łączniki inicjowania obsługi administracyjnej są konfigurowanie i skonfigurować za pomocą [portalu Azure](https://portal.azure.com), wykonując [podane dokumentacji](saas-apps/tutorial-list.md) obsługiwanych aplikacji. Po skonfigurowaniu i uruchomione, inicjowania obsługi administracyjnej zadania mogą być zgłaszane przy użyciu jednej z dwóch metod:
 
-* **Portal zarządzania Azure** — w tym artykule opisano głównie podczas pobierania informacji w raporcie z [portalu zarządzania Azure](https://portal.azure.com), zapewniające zarówno inicjowania obsługi administracyjnej raport z podsumowaniem jak i szczegółowe inspekcji inicjowania obsługi administracyjnej Dzienniki dla danej aplikacji.
+* **Portal zarządzania platformy Azure** — w tym artykule opisano głównie podczas pobierania informacji w raporcie z [portalu Azure](https://portal.azure.com), która zapewnia zarówno inicjowania obsługi administracyjnej raport z podsumowaniem jak i inicjowania obsługi administracyjnej szczegółowe dzienniki dla inspekcji danej aplikacji.
 
 * **Interfejs API inspekcji** — Azure Active Directory oferuje również inspekcji interfejsu API, który umożliwia pobieranie programowe szczegółowe dzienniki inspekcji inicjowania obsługi administracyjnej. Zobacz [inspekcji usługi Azure Active Directory dokumentacja interfejsu API](active-directory-reporting-api-audit-reference.md) dokumentacji dotyczące korzystania z tego interfejsu API. Gdy w tym artykule nie opisano w szczególności sposób użycia interfejsu API, jego szczegóły typy obsługi zdarzeń, które są rejestrowane w dzienniku inspekcji.
 
@@ -54,28 +54,28 @@ Aby pobrać udostępniania informacji w raporcie dla danej aplikacji, najpierw u
 W tym miejscu można uzyskać dostępu do raportu podsumowania inicjowania obsługi administracyjnej i inicjowania obsługi administracyjnej dzienniki inspekcji, oba opisane poniżej.
 
 
-### <a name="provisioning-summary-report"></a>Raport z podsumowaniem inicjowania obsługi administracyjnej
+## <a name="provisioning-summary-report"></a>Raport z podsumowaniem inicjowania obsługi administracyjnej
 
-Raport podsumowania inicjowania obsługi administracyjnej jest widoczny w **inicjowania obsługi administracyjnej** karcie daną aplikację. Znajduje się w sekcji szczegółów synchronizacji poniżej **ustawienia**i zawiera następujące informacje:
+Raport podsumowania inicjowania obsługi administracyjnej jest widoczny w **inicjowania obsługi administracyjnej** karcie daną aplikację. Znajduje się on w **szczegóły synchronizacji** sekcji poniżej **ustawienia**i zawiera następujące informacje:
 
-* Całkowita liczba użytkowników i / grupy które zostały zsynchronizowane i są obecnie w zakresie obsługi między systemu źródłowego i docelowego systemu.
+* Całkowita liczba użytkowników i / grupy które zostały zsynchronizowane i są obecnie w zakresie obsługi między systemu źródłowego i docelowego systemu
 
-* Czas ostatniej synchronizacji zostało uruchomione. Synchronizacja odbyła zazwyczaj co 20 40 minut, po zakończeniu pełnej synchronizacji.
+* Czas ostatniej synchronizacji zostało uruchomione. Synchronizacja odbyła zazwyczaj co 20 40 minut, po [początkowej synchronizacji](active-directory-saas-app-provisioning.md#what-happens-during-provisioning) zostało ukończone.
 
-* Określa, czy początkowa Pełna synchronizacja została ukończona.
+* Określa, czy [początkowej synchronizacji](active-directory-saas-app-provisioning.md#what-happens-during-provisioning) została ukończona
 
-* Określa, czy Proces inicjowania obsługi administracyjnej zostały umieszczone w kwarantannie i Przyczyna stanu kwarantanny to np. (błąd komunikacji z systemu docelowego z powodu poświadczeń administratora nieprawidłowe)
+* Określa, czy Proces inicjowania obsługi administracyjnej zostały umieszczone w kwarantannie i Przyczyna stanu kwarantanny jest (na przykład błąd komunikacji z systemu docelowego z powodu poświadczeń administratora nieprawidłowe)
 
 Podsumowanie inicjowania obsługi administracyjnej powinien być pierwszym wygląd Administratorzy miejsca aby sprawdzić kondycję operacyjną zadanie inicjowania obsługi administracyjnej.
 
  ![Raport z podsumowaniem](./media/active-directory-saas-provisioning-reporting/summary_report.PNG)
 
-### <a name="provisioning-audit-logs"></a>Dzienniki inspekcji inicjowania obsługi administracyjnej
+## <a name="provisioning-audit-logs"></a>Dzienniki inspekcji inicjowania obsługi administracyjnej
 Wszystkie działania wykonywane przez usługę inicjowania obsługi administracyjnej są rejestrowane w dziennikach inspekcji usługi Azure AD, które można wyświetlić w **dzienniki inspekcji** w obszarze **Inicjowanie obsługi konta** kategorii. Typy zdarzeń rejestrowane działania:
 
 * **Importowanie zdarzeń** — "import" zdarzenie jest rejestrowane zawsze usługi Azure AD usługi inicjowania obsługi administracyjnej pobiera informacje o poszczególnych użytkowników i grup z systemu źródłowego lub systemu docelowego. Podczas synchronizacji użytkownicy są pobierane z systemu źródłowego najpierw z wynikami rejestrowane jako "przycisk Importuj, zdarzenia. Zgodnymi identyfikatorami pobrane użytkowników są następnie zapytanie względem systemu docelowego, aby sprawdzić, czy istnieją one z wynikami, w zarejestrowany jako "przycisk Importuj, zdarzenia. Te zdarzenia rejestrować wszystkie atrybuty zamapowane użytkowników i ich wartości, które zostały odebrane przez usługę Azure AD w czasie zdarzenia inicjowania obsługi usługi. 
 
-* **Zdarzenia reguły synchronizacji** — te zdarzenia raportu dotyczącego wyników reguły mapowania atrybutu i dowolne skonfigurowane filtry zakresu po dane użytkownika zostały zaimportowane i obliczone z systemów źródłowych i docelowych. Na przykład jeśli użytkownik w systemie źródłowym jest uważany w zakresie obsługi i uznane za nie istnieje w systemie docelowym, a następnie rejestruje tego zdarzenia, który użytkownik zostanie zainicjowana w systemie docelowym. 
+* **Zdarzenia reguły synchronizacji** — te zdarzenia raportu dotyczącego wyników zasad mapowanie atrybutu i dowolne skonfigurowane filtry zakresu po dane użytkownika zostały zaimportowane i obliczone z systemów źródłowych i docelowych. Na przykład jeśli użytkownik w systemie źródłowym jest uważany w zakresie obsługi i uznane za nie istnieje w systemie docelowym, a następnie rejestruje tego zdarzenia, który użytkownik zostanie zainicjowana w systemie docelowym. 
 
 * **Eksportowanie zdarzeń** — "export" zdarzenie jest rejestrowane zawsze usługi Azure AD, świadczenie usługi zapisuje obiekt konta lub grupy użytkowników do systemu docelowego. Te zdarzenia rejestrować wszystkie atrybuty użytkowników i ich wartości, które zostały napisane przez usługę Azure AD w czasie zdarzenia inicjowania obsługi usługi. Jeśli wystąpił błąd podczas zapisywania obiektu konta lub grupy użytkowników do systemu docelowego, będzie wyświetlana w tym miejscu.
 
@@ -87,9 +87,9 @@ Podczas przeglądania inicjowania obsługi zdarzeń dla poszczególnych użytkow
 
 2. Importowanie zdarzeń: system docelowy jest wysyłane do sprawdzania istnienia pobrane użytkownika.
 
-3. Zdarzenia reguły synchronizacji: dane użytkownika z systemów źródłowych i docelowych są obliczane względem skonfigurowany atrybut mapowania reguł i określania zakresu filtrów w celu określenia, jakie działania, należy wykonać.
+3. Zdarzenia reguły synchronizacji: dane użytkownika z systemów źródłowych i docelowych są oceniane przed skonfigurowanych reguł mapowanie atrybutu i zakresu filtrów w celu określenia, jakie działania, należy wykonać.
 
-4. Eksportowanie zdarzeń: Jeśli zdarzenia reguły synchronizacji definiowane, że działanie powinno być wykonywane (np. Add, Update, Delete), a następnie wyniki akcji są rejestrowane w przypadku eksportowania.
+4. Eksportowanie zdarzeń: Jeśli zdarzenia reguły synchronizacji definiowane, że działanie powinno być wykonywane (Add, Update, Delete), a następnie wyniki akcji są rejestrowane w przypadku eksportowania.
 
 ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-provisioning-reporting/audit_logs.PNG)
 
@@ -104,7 +104,7 @@ Najbardziej typowe przypadek użycia dla inicjowania obsługi administracyjnej d
 
 3. W **zakres dat** menu, wybierz zakres dat, który chcesz przeszukać,
 
-4. W **wyszukiwania** pasek, wprowadź identyfikator użytkownika, który chcesz wyszukać użytkownika. Format wartości ID powinna odpowiadać niezależnie od wybranego jako podstawowy identyfikator dopasowania w konfiguracji mapowania atrybutu (np. userPrincipalName lub pracowników numer identyfikacyjny). Wartość Identyfikatora wymagane będzie widoczny w kolumnie elementów docelowych.
+4. W **wyszukiwania** pasek, wprowadź identyfikator użytkownika, który chcesz wyszukać użytkownika. Format wartości ID powinna odpowiadać niezależnie od wybranego jako podstawowy identyfikator dopasowania w konfiguracji mapowanie atrybutu (na przykład, userPrincipalName lub pracowników numer identyfikacyjny). Wartość Identyfikatora wymagane będzie widoczny w kolumnie elementów docelowych.
 
 5. Naciśnij klawisz Enter, aby wyszukać. Najpierw zostanie zwrócony najnowszych zdarzeń, inicjowania obsługi administracyjnej.
 

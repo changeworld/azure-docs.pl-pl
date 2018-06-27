@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 48546e84b94ad0c11a159b2f88f7e21f7eb6ae0e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7e83f141791bb49130f7cf01086537f8ae08c406
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208305"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019699"
 ---
 # <a name="get-started-with-reliable-services"></a>Wprowadzenie do usług Reliable Services
 > [!div class="op_single_selector"]
@@ -116,10 +116,10 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 }
 ```
 
-W tym samouczku, możemy skupić się na `runAsync()` metoda punktu wejścia. Jest to, gdzie natychmiast można rozpocząć uruchamianie kodu.
+Ten samouczek koncentruje się na `runAsync()` metoda punktu wejścia. Jest to, gdzie natychmiast można rozpocząć uruchamianie kodu.
 
 ### <a name="runasync"></a>RunAsync
-Platforma wywołuje tę metodę, gdy wystąpienie usługi jest umieszczony i gotowa do wykonania. Dla usługi bezstanowej po prostu oznacza to, gdy wystąpienie usługi jest otwarty. Token anulowania został dostarczony do koordynowania, gdy wystąpienie usługi musi zostać zamknięty. W sieci szkieletowej usług ten cykl otwarcie i zamknięcie wystąpienia usługi może wystąpić wiele razy w okresie istnienia usługi jako całość. Może się to zdarzyć z różnych powodów, w tym:
+Platforma wywołuje tę metodę, gdy wystąpienie usługi jest umieszczony i gotowa do wykonania. Dla usługi bezstanowej oznacza to, gdy wystąpienie usługi jest otwarty. Token anulowania został dostarczony do koordynowania, gdy wystąpienie usługi musi zostać zamknięty. W sieci szkieletowej usług ten cykl otwarcie i zamknięcie wystąpienia usługi może wystąpić wiele razy w okresie istnienia usługi jako całość. Może się to zdarzyć z różnych powodów, w tym:
 
 * System przeniesie swoich wystąpień usługi dla równoważenia zasobów.
 * Błędy występują w kodzie.
@@ -201,16 +201,16 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
 ```
 
-[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) jest implementacji słownik, który umożliwia niezawodne przechowywanie stanu usługi. Z sieci szkieletowej usług i niezawodne Hashmaps można przechowywać dane bezpośrednio w usłudze bez konieczności zewnętrznych magazynu trwałego. Niezawodne Hashmaps danych wysokiej dostępności. Sieć szkieletowa usług rozwiązanie to tworzenie i zarządzanie wieloma *replik* usługi dla Ciebie. Udostępnia również interfejs API, który abstracts optymalizacji złożoności Zarządzanie tych replik, a ich przejścia stanu.
+[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) jest implementacji słownik, który umożliwia niezawodne przechowywanie stanu usługi. Z sieci szkieletowej usług i niezawodne HashMaps można przechowywać dane bezpośrednio w usłudze bez konieczności zewnętrznych magazynu trwałego. Niezawodne HashMaps danych wysokiej dostępności. Sieć szkieletowa usług rozwiązanie to tworzenie i zarządzanie wieloma *replik* usługi dla Ciebie. Udostępnia również interfejs API, który abstracts optymalizacji złożoności Zarządzanie tych replik, a ich przejścia stanu.
 
 Kolekcje niezawodnej może przechowywać dowolnego typu Java, łącznie z niestandardowych typów, za pomocą paru ostrzeżenia:
 
-* Usługa sieci szkieletowej udostępnia swój stan wysokiej przez *replikowanie* stanu między węzły i niezawodne Hashmap przechowuje dane na dysku lokalnym na każdej repliki. To oznacza, że wszystkie zasoby, które są przechowywane w niezawodnej Hashmaps muszą zostać *serializacji*. 
-* Obiekty są replikowane wysokiej dostępności po zatwierdzeniu transakcji na Hashmaps wiarygodne. Obiekty przechowywane w niezawodnej Hashmaps są przechowywane w lokalnej pamięci w usłudze. Oznacza to, że masz lokalnego odwołania do obiektu.
+* Usługa sieci szkieletowej udostępnia swój stan wysokiej przez *replikowanie* stanu między węzły i niezawodne HashMap przechowuje dane na dysku lokalnym na każdej repliki. To oznacza, że wszystkie zasoby, które są przechowywane w niezawodnej HashMaps muszą zostać *serializacji*. 
+* Obiekty są replikowane wysokiej dostępności po zatwierdzeniu transakcji na HashMaps wiarygodne. Obiekty przechowywane w niezawodnej HashMaps są przechowywane w lokalnej pamięci w usłudze. Oznacza to, że masz lokalnego odwołania do obiektu.
   
-   Należy pamiętać, że nie zmodyfikować lokalnych wystąpień tych obiektów, bez wykonywania operacji update na niezawodne kolekcji w transakcji. Jest to spowodowane zmiany do lokalnego wystąpienia obiektów, nie będą automatycznie replikowane. Musisz ponownie wstawić obiekt do słownika lub użyj jednej z *aktualizacji* metody w słowniku.
+   Należy pamiętać, że nie zmodyfikować lokalnych wystąpień tych obiektów, bez wykonywania operacji update na niezawodne kolekcji w transakcji. Jest to spowodowane zmiany do lokalnego wystąpienia obiektów, nie będą automatycznie replikowane. Musisz ponownie obiekt do słownika lub użyj jednej z *aktualizacji* metody w słowniku.
 
-Menedżer niezawodnej stanu zarządza Hashmaps wiarygodne. Po prostu poproś niezawodnej Menedżer stanu niezawodnej kolekcji o nazwie w dowolnym momencie i w dowolnym miejscu w usłudze. Niezawodne Menedżer stanu zapewnia ponownie uzyskać odwołanie. Nie zaleca się zapisywania odwołań do kolekcji niezawodnej instancji w elemencie członkowskim klasy zmiennych lub właściwości. Szczególną uwagę należy upewnić się, że odwołanie jest ustawione na wystąpienie przez cały czas w cyklu życia usługi. Niezawodne Menedżer stanu obsługuje tę pracę za Ciebie i jest zoptymalizowany do powtarzania wizytach.
+Menedżer niezawodnej stanu zarządza HashMaps wiarygodne. Poproś niezawodnej Menedżer stanu dla kolekcji niezawodnej według nazwy w dowolnym momencie i w dowolnym miejscu w usłudze. Niezawodne Menedżer stanu zapewnia ponownie uzyskać odwołanie. Nie zaleca się zapisywania odwołań do kolekcji niezawodnej instancji w zmiennych Członkowskich klas lub właściwości. Szczególną uwagę należy upewnić się, że odwołanie jest ustawione na wystąpienie przez cały czas w cyklu życia usługi. Niezawodne Menedżer stanu obsługuje tę pracę za Ciebie i jest zoptymalizowany do powtarzania wizytach.
 
 
 ### <a name="transactional-and-asynchronous-operations"></a>Operacje transakcyjne i asynchroniczne
@@ -231,12 +231,12 @@ return map.computeAsync(tx, "counter", (k, v) -> {
 });
 ```
 
-Operacje na niezawodne Hashmaps są asynchroniczne. Jest to spowodowane operacji zapisu z kolekcjami niezawodne wykonywanie operacji We/Wy do replikacji i utrwalić danych na dysku.
+Operacje na niezawodne HashMaps są asynchroniczne. Jest to spowodowane operacji zapisu z kolekcjami niezawodne wykonywanie operacji We/Wy do replikacji i utrwalić danych na dysku.
 
-Niezawodne operacji Hashmap *transakcyjnych*, dzięki czemu można zachować stanu spójności między wieloma Hashmaps niezawodnych i operacji. Na przykład może pobrać elementu roboczego z jednego słownika niezawodnej, wykonaj operację i zapisać wynik w anoter Hashmap niezawodne, wszystkie w ramach pojedynczej transakcji. Jest ona traktowana jako operacją niepodzielną i gwarantuje, że cała operacja zostanie wykonana pomyślnie lub całej operacji cofnie. Jeśli błąd wystąpi po dequeue elementu, ale przed zapisaniem wynik, cała transakcja zostanie wycofana i element pozostaje w kolejce do przetworzenia.
+Niezawodne operacji HashMap *transakcyjnych*, dzięki czemu można zachować stanu spójności między wieloma HashMaps niezawodnych i operacji. Na przykład może pobrać elementu roboczego z jednego słownika niezawodnej, wykonaj operację i zapisać wynik w innym HashMap niezawodne, wszystkie w ramach pojedynczej transakcji. Jest ona traktowana jako operacją niepodzielną i gwarantuje, że cała operacja zostanie wykonana pomyślnie lub całej operacji cofnie. Jeśli błąd wystąpi po dequeue elementu, ale przed zapisaniem wynik, cała transakcja zostanie wycofana i element pozostaje w kolejce do przetworzenia.
 
 
-## <a name="run-the-application"></a>Uruchamianie aplikacji
+## <a name="build-the-application"></a>Kompilowanie aplikacji
 
 Narzędzia Yeoman szkieletów zawiera skrypt narzędzia gradle do tworzenia aplikacji i skryptów służących do wdrażania i Usuń aplikację bash. Aby uruchomić aplikację, należy najpierw utworzyć aplikację z narzędziem gradle:
 
@@ -246,13 +246,31 @@ $ gradle
 
 Daje to pakiet aplikacji sieci szkieletowej usług, które można wdrożyć przy użyciu interfejsu wiersza polecenia usługi sieci szkieletowej.
 
-### <a name="deploy-with-service-fabric-cli"></a>Wdrażanie z sieci szkieletowej usług interfejsu wiersza polecenia
+## <a name="deploy-the-application"></a>Wdrażanie aplikacji
 
-Skrypt install.sh zawiera niezbędne polecenia interfejsu wiersza polecenia usługi sieci szkieletowej w celu wdrożenia pakietu aplikacji. Uruchom skrypt install.sh do wdrożenia aplikacji.
+Skompilowaną aplikację można wdrożyć w klastrze lokalnym.
 
-```bash
-$ ./install.sh
-```
+1. Połącz się z lokalnym klastrem usługi Service Fabric.
+
+    ```bash
+    sfctl cluster select --endpoint http://localhost:19080
+    ```
+
+2. Uruchom skrypt instalacji udostępniony w szablonie, aby skopiować pakiet aplikacji do magazynu obrazów klastra, zarejestrować typ aplikacji i utworzyć wystąpienie aplikacji.
+
+    ```bash
+    ./install.sh
+    ```
+
+Wdrażanie skompilowanej aplikacji przebiega tak samo jak w przypadku innych aplikacji usługi Service Fabric. Szczegółowe instrukcje są dostępne w dokumentacji dotyczącej [zarządzania aplikacją usługi Service Fabric za pomocą interfejsu wiersza polecenia usługi Service Fabric](service-fabric-application-lifecycle-sfctl.md).
+
+Parametry tych poleceń można znaleźć w manifestach wygenerowanych w pakiecie aplikacji.
+
+Po wdrożeniu aplikacji otwórz przeglądarkę i przejdź do narzędzia [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) pod adresem [http://localhost:19080/Explorer](http://localhost:19080/Explorer). Następnie rozwiń węzeł **Aplikacje** i zwróć uwagę, że istnieje teraz wpis dla danego typu aplikacji i inny wpis dla pierwszego wystąpienia tego typu.
+
+> [!IMPORTANT]
+> Aby wdrożyć aplikację do bezpiecznego klastra systemu Linux na platformie Azure, należy skonfigurować certyfikat, aby zweryfikować Twojej aplikacji ze środowiskiem uruchomieniowym usługi sieć szkieletowa usług. Umożliwi to usługi niezawodne usługi, aby komunikować się z podstawowego środowiska uruchomieniowego platformy Service Fabric interfejsów API. Aby dowiedzieć się więcej, zobacz [skonfiguruj aplikację niezawodne usługi, do uruchamiania na systemie Linux klastrów](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+>
 
 ## <a name="next-steps"></a>Kolejne kroki
 

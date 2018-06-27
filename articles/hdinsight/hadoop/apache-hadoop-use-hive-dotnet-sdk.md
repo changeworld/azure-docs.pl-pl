@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: jgao
-ms.openlocfilehash: 1372dab2685d62a12d0d1fb186c803f8906156b1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 41c568191ab47faba8f67e855f0a52d5d97ffc6b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200677"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020651"
 ---
 # <a name="run-hive-queries-using-hdinsight-net-sdk"></a>Uruchamianie zapytań Hive przy użyciu zestawu .NET SDK usługi HDInsight
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -145,7 +145,7 @@ W tym artykule uzyskanych kilka sposobów tworzenia klastra usługi HDInsight. A
 * [Rozpoczynanie pracy z usługą Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md)
 * [Tworzenie klastrów Hadoop w usłudze HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
 * [Zarządzanie klastrami Hadoop w usłudze HDInsight przy użyciu portalu Azure](../hdinsight-administer-use-management-portal.md)
-* [Odwołanie do zestawu SDK .NET usługi HDInsight](https://msdn.microsoft.com/library/mt271028.aspx)
+* [Odwołanie do zestawu SDK .NET usługi HDInsight](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
 * [Korzystanie z języka Pig z usługą HDInsight](hdinsight-use-pig.md)
 * [Korzystanie z usługą HDInsight Sqoop](apache-hadoop-use-sqoop-mac-linux.md)
 * [Tworzenie aplikacji usługi HDInsight platformy .NET z uwierzytelnianiem nieinterakcyjnym](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)

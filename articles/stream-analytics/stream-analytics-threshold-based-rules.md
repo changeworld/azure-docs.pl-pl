@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 1c131c2c9ca12556c1d2cd52e7976d2f4272a0c8
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 802be1ad5b1029add249430ee7760002407c4641
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32767973"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021629"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Proces można skonfigurować reguły progu w Azure Stream Analytics
 W tym artykule opisano sposób używania danych referencyjnych do osiągnięcia rozwiązanie alertów, które używa można skonfigurować reguły progu w Azure Stream Analytics.
@@ -45,7 +45,7 @@ Dane referencyjne to przykład pokazuje, jak można reprezentowane reguły opart
 - Przykładowa reguła jest używana do reprezentowania regulowany alertu, gdy procesora CPU przekracza (średnia jest większa niż lub równe) wartość `90` procent. `value` Pole jest konfigurowalne, zgodnie z potrzebami.
 - Zwróć uwagę, reguła ma **operator** pola, które dynamicznie interpretowany w składni zapytania później `AVGGREATEROREQUAL`. 
 - Reguła filtruje dane dla klucza wymiaru `2` o wartości `C1`. Pozostałe pola są pusty ciąg wskazujący nie, aby filtrować strumień wejściowy według pól tych zdarzeń. Aby filtrować inne pola dopasowania, w razie potrzeby można skonfigurować dodatkowe reguły procesora CPU.
-- Nie wszystkie kolumny są do uwzględnienia w zdarzeniu alertu danych wyjściowych. W takim przypadku `includedDim` klucza numer `2` jest włączona `TRUE` do reprezentowania, że czy numer pola 2 w strumieniu danych dotyczących zdarzeń zostaną uwzględnione w kwalifikujących się dane wyjściowe zdarzenia. Pozostałe pola nie znajdują się w danych wyjściowych alertu, ale można dostosować w oknie Lista pól.
+- Nie wszystkie kolumny są do uwzględnienia w zdarzeniu alertu danych wyjściowych. W takim przypadku `includedDim` klucza numer `2` jest włączona `TRUE` do reprezentowania, że numer pola 2 w strumieniu danych dotyczących zdarzeń zostaną uwzględnione w zdarzenia kwalifikujące danych wyjściowych. Pozostałe pola nie znajdują się w danych wyjściowych alertu, ale można dostosować w oknie Lista pól.
 
 
 ```json

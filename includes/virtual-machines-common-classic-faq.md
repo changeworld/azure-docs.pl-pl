@@ -48,7 +48,7 @@ Dla maszyn wirtualnych utworzonych w klasycznym modelu wdrażania możesz użyć
 Podczas tworzenia maszyny wirtualnej musisz określić sieć, do której ma należeć maszyna wirtualna. Nie możesz dołączyć istniejącej maszyny wirtualnej do sieci wirtualnej. Możesz jednak obejść ten problem, odłączając wirtualny dysk twardy od istniejącej maszyny wirtualnej, a następnie używając go do utworzenia nowej maszyny wirtualnej z żądaną konfiguracją sieci.
 
 ## <a name="how-can-i-access--my-virtual-machine"></a>Jak mogę uzyskać dostęp do mojej maszyny wirtualnej?
-Musisz nawiązać zdalne połączenie do logowania się do maszyny wirtualnej przy użyciu usługi podłączania pulpitu zdalnego dla maszyny wirtualnej z systemem Windows lub protokołu Secure Shell (SSH) dla maszyny wirtualnej z systemem Linux. Aby uzyskać instrukcje, zobacz:
+Należy ustanowić połączenia zdalnego do logowania się do maszyny wirtualnej przy użyciu usługi Podłączanie pulpitu zdalnego dla maszyny Wirtualnej systemu Windows lub protokołu Secure Shell (SSH) dla maszyny Wirtualnej systemu Linux. Aby uzyskać instrukcje, zobacz:
 
 * [Jak logować się do maszyny wirtualnej z systemem Windows Server](../articles/virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Obsługiwane są maksymalnie 2 równoczesne połączenia, chyba że serwer jest skonfigurowany jako host sesji usług pulpitu zdalnego.  
 * [Jak logować się do maszyny wirtualnej z systemem Linux](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Domyślnie protokół SSH umożliwia maksymalnie 10 równoczesnych połączeń. Możesz zwiększyć tę liczbę, edytując plik konfiguracji.
@@ -78,7 +78,7 @@ Termin uaktualnienie zazwyczaj oznacza przejście do nowszej wersji systemu oper
 Aby uzyskać ogólne informacje dotyczące narzędzi i procesów migracji systemu Windows Server, zobacz [Migrowanie ról i funkcji do systemu Windows Server](http://go.microsoft.com/fwlink/p/?LinkId=396940).
 
 ## <a name="whats-the-default-user-name-and-password-on-the-virtual-machine"></a>Jaka jest domyślna nazwa użytkownika i hasło na maszynie wirtualnej?
-Obrazy dostarczane przez platformę Azure nie mają wstępnie skonfigurowanej nazwy użytkownika ani hasła. Podczas tworzenia maszyny wirtualnej przy użyciu jednego z tych obrazów należy podać nazwę użytkownika i hasło, którego będziesz używać do logowania się do maszyny wirtualnej.
+Obrazy dostarczane przez platformę Azure nie mają wstępnie skonfigurowanej nazwy użytkownika ani hasła. Podczas tworzenia maszyny wirtualnej przy użyciu jednej z tych obrazów, należy podać nazwę użytkownika i hasło, którego będziesz używać do logowania się na maszynie wirtualnej.
 
 Jeśli nie pamiętasz nazwy użytkownika lub hasła, a został zainstalowany agent maszyny wirtualnej, możesz zainstalować rozszerzenie [VMAccess](../articles/virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) i użyć go w celu rozwiązania tego problemu.
 

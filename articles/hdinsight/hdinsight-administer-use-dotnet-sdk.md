@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jgao
-ms.openlocfilehash: 0feb1e344d70207d48e4ef07f5b45790425727ad
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 08c9d16570a923c79c81cebb8669a43488129d9a
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200320"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017941"
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Zarządzanie klastrami Hadoop w usłudze HDInsight przy użyciu zestawu .NET SDK
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Informacje o sposobie zarządzania klastrami HDInsight przy użyciu [HDInsight.NET SDK](https://msdn.microsoft.com/library/mt271028.aspx).
+Informacje o sposobie zarządzania klastrami HDInsight przy użyciu [HDInsight.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight).
 
 **Wymagania wstępne**
 
@@ -271,7 +271,7 @@ Zobacz [Oozie użycia z usługą Hadoop do definiowania i uruchomić przepływ p
 Zobacz [Przekazywanie danych do usługi HDInsight][hdinsight-upload-data].
 
 ## <a name="see-also"></a>Zobacz też
-* [Dokumentacji zestawu SDK .NET usługi HDInsight](https://msdn.microsoft.com/library/mt271028.aspx)
+* [Dokumentacji zestawu SDK .NET usługi HDInsight](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
 * [Administrowanie HDInsight przy użyciu portalu Azure][hdinsight-admin-portal]
 * [Administrowanie HDInsight przy użyciu interfejsu wiersza polecenia][hdinsight-admin-cli]
 * [Tworzenie klastrów usługi HDInsight][hdinsight-provision]

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: kakampf
-ms.openlocfilehash: 3d98ed2be7a040ad889d1d504f303569c265360b
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 170d1d9bca8ffa788560c6a015f41062dd4ed40f
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271595"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018667"
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Jakie są składniki platformy Hadoop i wersje dostępne w usłudze HDInsight?
 
@@ -29,7 +29,7 @@ Więcej informacji na temat składników ekosystemu platformy Apache Hadoop i we
 Każda wersja HDInsight jest dystrybucji chmury wersji Hortonworks Data Platform (HDP).
 
 ## <a name="hadoop-components-available-with-different-hdinsight-versions"></a>Składniki platformy Hadoop dostępne z różnych wersji usługi HDInsight
-Usługa Azure HDInsight obsługuje wielu wersjach klastra Hadoop, które można wdrożyć w dowolnym momencie. Każdy wybór wersji tworzy określonej wersji programu dystrybucji HDP i zestaw składników, które są zawarte w tej dystrybucji. Począwszy od 17 lutego 2017 wersja klastra domyślne używane przez usługi Azure HDInsight jest 3.5 i opiera się na HDP 2.5.
+Usługa Azure HDInsight obsługuje wielu wersjach klastra Hadoop, które można wdrożyć w dowolnym momencie. Każdy wybór wersji tworzy określonej wersji programu dystrybucji HDP i zestaw składników, które są zawarte w tej dystrybucji. Począwszy od 4 kwietnia 2017 wersja klastra domyślne używane przez usługi Azure HDInsight jest 3,6 i jest oparty na HDP 2.6.
 
 Wersje składników skojarzone z wersji klastra usługi HDInsight są wymienione w poniższej tabeli: 
 
@@ -213,7 +213,7 @@ Sekcja zawiera łącza do wersji dla dystrybucji na platformie Hortonworks Data 
   * [Apache Hive wersji](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12332384&styleName=Text&projectId=12310843) są dostępne w witrynie sieci Web Apache.
 * Klaster usługi HDInsight w wersji 3.2 używa dystrybucji Hadoop, która jest oparta na [Hortonworks Data Platform 2.2][hdp-2-2].
 
-  * Informacje o wersji dla konkretnych składnikach Apache są dostępne w następujący sposób: [Hive 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450), [Pig 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954), [HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810), [Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581), [M/R 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180), [HDFS 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181), [YARN 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197), [typowe](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179), [Tez 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742), [Ambari 2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486), [Storm 0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112), i [Oozie 4.1.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620).
+  * Release notes for specific Apache components are available as follows: [Hive 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450), [Pig 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954), [HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810), [Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581), [M/R 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180), [HDFS 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181), [YARN 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197), [Common](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179), [Tez 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742), [Ambari 2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486), [Storm 0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112), and [Oozie 4.1.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620).
 * Klaster usługi HDInsight w wersji 3.1 używa dystrybucji Hadoop, która jest oparta na [platformie Hortonworks Data Platform 2.1.7][hdp-2-1-7]. Klastry HDInsight 3.1 utworzone zanim listopad, 7 2014, są oparte na [platformie Hortonworks Data Platform 2.1.1][hdp-2-1-1].
 * Klaster usługi HDInsight w wersji 3.0 używa dystrybucji Hadoop, która jest oparta na [Hortonworks Data Platform 2.0][hdp-2-0-8].
 * Klaster usługi HDInsight w wersji 2.1 używa dystrybucji Hadoop, która jest oparta na [Hortonworks Data Platform 1.3][hdp-1-3-0].

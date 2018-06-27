@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: a4a882781562ae71ad6c578577a9f9cd9096ef36
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2b08c3adb0c638cdfa0ccd9ae4c5beacac822eb4
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331793"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018309"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integracja istniejącej infrastrukturze serwera NPS z usługi Azure Multi-Factor Authentication
 
@@ -222,7 +222,7 @@ Nieprawidłowa-z i prawidłowe-dopóki sygnatury czasowe, które są w formie cz
 Ten błąd może wynikać z kilku powodów. Do rozwiązywania problemów, wykonaj następujące kroki:
 
 1. Uruchom ponownie serwer NPS.
-2. Sprawdź, czy ten certyfikat klienta jest zainstalowany, zgodnie z oczekiwaniami.
+2. Sprawdź, czy ten certyfikat klienta jest zainstalowana zgodnie z oczekiwaniami.
 3. Sprawdź, czy certyfikat jest skojarzony z dzierżawą w usłudze Azure AD.
 4. Sprawdź, czy https://login.microsoftonline.com/ jest dostępny z serwera z uruchomionym programem rozszerzenia.
 

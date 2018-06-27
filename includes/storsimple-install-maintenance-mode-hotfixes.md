@@ -12,6 +12,6 @@
      `Start-HcsHotfix` 
 3. Po wyświetleniu monitu podaj ścieżkę do udostępnionego folderu sieciowego, który zawiera pliki poprawek.
 4. Pojawi się monit o potwierdzenie. Typ **Y** kontynuować instalacji poprawki.
-5. Po zastosowaniu tej poprawki na jeden kontroler, zaloguj się na inny kontroler. Zastosuj poprawkę tak samo jak dla poprzedniego kontrolera.
+5. Po zastosowaniu tej poprawki na jeden kontroler, zaloguj się do innego kontrolera. Zastosuj poprawkę tak samo jak dla poprzedniego kontrolera.
 6. Po zastosowaniu poprawki, wyjść z trybu konserwacji. Zobacz [krok 4: tryb konserwacji zakończenia](../articles/storsimple/storsimple-update-device.md#step4) instrukcje.
 

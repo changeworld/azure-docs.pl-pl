@@ -3,19 +3,19 @@ title: Platforma Apache Spark nawiązywania połączenia z rozwiązania Cosmos A
 description: Użyj tego samouczka, aby dowiedzieć się więcej o łącznika usługi Azure Spark DB rozwiązania Cosmos, który umożliwia łączenie z Apache Spark do bazy danych rozwiązania Cosmos Azure do wykonywania rozproszonej nauki agregacji i danych na wielu dzierżawców globalnie Rozproszony system bazy danych firmy Microsoft to jest zaprojektowane dla chmury.
 keywords: Platforma Apache spark
 services: cosmos-db
-author: dennyglee
+author: tknandu
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/08/2018
-ms.author: denlee
-ms.openlocfilehash: 3502a5af5de546de0b66521e29c37f5edfdbc6ea
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: ramkris
+ms.openlocfilehash: 47abd2f3534a0f3418bc09e19a61e222093e7099
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34612626"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960478"
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-the-spark-to-azure-cosmos-db-connector"></a>Przyspieszenie w czasie rzeczywistym analizy danych big data w usłudze Spark do łącznika usługi Azure DB rozwiązania Cosmos
 

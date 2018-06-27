@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 176af41197810059a17daf5ab09d29e0169e9640
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 69e9d66458409bbc744416a58ceb508349418a76
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225011"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019557"
 ---
 # <a name="steps-to-configure-an-openidoauth-application-from-azure-ad-app-gallery"></a>Kroki konfigurowania aplikacji OpenID/OAuth z galerii aplikacji Azure AD
 
@@ -42,7 +42,7 @@ ms.locfileid: "36225011"
     ![Dodawanie aplikacji](./media/openidoauth-tutorial/addfromgallery.png)
 
     > [!NOTE]
-    > W przypadku aplikacji Open ID Connect i OAuth Dodaj przycisk jest domyślnie wyłączona. W tym miejscu kliknij Administrator dzierżawy **rejestracji** przycisk i podaj zgody do aplikacji. Z tym że aplikacja będzie zostaną dodane do dzierżawy klienta, nie trzeba dodawać jawnie i czy konfiguracje.
+    > W przypadku aplikacji Open ID Connect i OAuth Dodaj przycisk jest domyślnie wyłączona. W tym miejscu kliknij Administrator dzierżawy **rejestracji** przycisk i podaj zgody do aplikacji. Z tym aplikacja będzie zostaną dodane do dzierżawy klienta, nie trzeba dodawać jawnie i czy konfiguracje.
 
     ![Przycisk dodawania](./media/openidoauth-tutorial/addbutton.png)
 

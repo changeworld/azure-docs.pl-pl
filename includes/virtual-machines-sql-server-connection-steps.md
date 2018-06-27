@@ -1,6 +1,6 @@
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>Otwieranie portów TCP w zaporze systemu Windows dla domyślnego wystąpienia aparatu bazy danych
 1. Nawiąż połączenie z maszyną wirtualną przy użyciu pulpitu zdalnego. Aby uzyskać szczegółowe instrukcje dotyczące nawiązywania połączenia z maszyną wirtualną, zobacz [Otwieranie maszyny wirtualnej SQL przy użyciu pulpitu zdalnego](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#remotedesktop).
-2. Po zalogowaniu się wpisz na ekranie startowym **WF.msc**, a następnie naciśnij klawisz ENTER.
+2. Po zalogowaniu na ekranie startowym wpisz **WF.msc**, a następnie naciśnij ENTER.
    
     ![Uruchamianie programu zapory](./media/virtual-machines-sql-server-connection-steps/12Open-WF.png)
 3. W obszarze **Zapora systemu Windows z zabezpieczeniami zaawansowanymi** w okienku po lewej stronie kliknij prawym przyciskiem myszy pozycję **Reguły ruchu przychodzącego**, a następnie kliknij pozycję **Nowa reguła** w okienku akcji.

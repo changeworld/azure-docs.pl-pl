@@ -14,17 +14,17 @@ ms.topic: conceptual
 ms.date: 02/05/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: 84facb99b2264b48ede7306ae87a79605e6e8bed
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: f5a8c33f2bd3c89b1049435f15d7bf2020248afa
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31597092"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019327"
 ---
 # <a name="use-maven-to-build-java-applications-that-use-hbase-with-windows-based-hdinsight-hadoop"></a>Używanie programu Maven do tworzenia aplikacji Java, które używają bazy danych HBase z systemem Windows HDInsight (Hadoop)
 Dowiedz się, jak utworzyć i kompilacji [bazy danych Apache HBase](http://hbase.apache.org/) aplikacji w języku Java za pomocą Apache Maven. Następnie użyj aplikacji w usłudze Azure HDInsight (Hadoop).
 
-[Maven](http://maven.apache.org/) to oprogramowanie projektu zarządzania i zrozumienia narzędzie, które umożliwia tworzenie oprogramowania, dokumentacji i raporty dla projektów języka Java. W tym artykule Dowiedz się jak go użyć do utworzenia podstawowej aplikacji Java, która tworzy kwerendy, i usuwa tabeli HBase w usłudze Azure HDInsight klastrze.
+[Maven](http://maven.apache.org/) to oprogramowanie projektu zarządzania i zrozumienia narzędzie, które umożliwia tworzenie oprogramowania, dokumentacji i raporty dla projektów języka Java. W tym artykule Dowiedz się jak z niego korzystać do utworzenia podstawowego aplikacji Java, która tworzy kwerendy i usuwa tabeli HBase na klaster Azure HDInsight.
 
 > [!IMPORTANT]
 > Kroki opisane w tym dokumencie wymagają klastra usługi HDInsight z systemem Windows. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
@@ -135,7 +135,7 @@ Dowiedz się, jak utworzyć i kompilacji [bazy danych Apache HBase](http://hbase
     To `<plugins>` konfiguruje sekcji [wtyczki kompilatora Maven](http://maven.apache.org/plugins/maven-compiler-plugin/) i [Maven cień wtyczki](http://maven.apache.org/plugins/maven-shade-plugin/). Kompilator wtyczka jest używana do kompilowania topologii. Wtyczka cień jest używany do chronienia duplikatów licencji w pakiecie JAR, który jest konstruowany przez Maven. Przyczyny, dla której ten element jest używany jest, że plików licencji zduplikowane spowodować błąd w czasie wykonywania w klastrze usługi HDInsight. Przy użyciu narzędzia maven cień wtyczki o `ApacheLicenseResourceTransformer` ten błąd uniemożliwia implementacji.
 
     Wtyczka cień maven tworzy również jar pełny (lub fat jar) zawierający wszystkie zależności wymagane przez aplikację.
-4. Zapisz **pom.xml** pliku.
+4. Zapisz plik **pom.xml**.
 5. Utwórz nowy katalog o nazwie **conf** w **hbaseapp** katalogu. W **conf** katalogu, Utwórz plik o nazwie **hbase-site.xml**. Użyj następujących jako zawartość pliku:
 
         <?xml version="1.0"?>

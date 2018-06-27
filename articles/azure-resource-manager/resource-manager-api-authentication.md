@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/15/2017
 ms.author: dugill
-ms.openlocfilehash: 1dea8d173432b05a72de72e8b17db4c97ea7924d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ba2466f58b3af0ef208474adb3e4c7ff184ceccc
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359866"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018650"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Użyj Menedżera zasobów uwierzytelniania interfejsu API do dostępu do subskrypcji
 ## <a name="introduction"></a>Wprowadzenie
@@ -88,7 +88,7 @@ Wyniki zawierają identyfikator aplikacji, należy podczas uwierzytelniania, co 
 ### <a name="optional-configuration---certificate-credential"></a>Konfiguracja opcjonalna — certyfikat poświadczeń
 Usługi Azure AD obsługuje również certyfikat poświadczeń dla aplikacji: utwórz samopodpisany certyfikat, przechowywać klucz prywatny i Dodaj klucz publiczny do rejestracji aplikacji usługi Azure AD. W przypadku uwierzytelniania aplikacji wysyła małych ładunku do usługi Azure AD podpisany przy użyciu klucza prywatnego, i usługi Azure AD sprawdza podpis przy użyciu klucza publicznego, który został zarejestrowany.
 
-Dla informacji o tworzeniu aplikacji AD przy użyciu certyfikatu znajduje się w temacie [użycia programu Azure PowerShell do tworzenia nazwy głównej usługi dostępu do zasobów](resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority) lub [Użyj wiersza polecenia platformy Azure można utworzyć nazwy głównej usługi dostępu do zasobów](resource-group-authenticate-service-principal-cli.md).
+Dla informacji o tworzeniu aplikacji AD przy użyciu certyfikatu znajduje się w temacie [użycia programu Azure PowerShell do tworzenia nazwy głównej usługi dostępu do zasobów](resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority) lub [Użyj wiersza polecenia platformy Azure można utworzyć nazwy głównej usługi dostępu do zasobów](resource-group-authenticate-service-principal-cli.md) .
 
 ## <a name="get-tenant-id-from-subscription-id"></a>Uzyskanie Identyfikatora dzierżawy z Identyfikatorem subskrypcji
 Do żądania tokenu, który może służyć do wywołania usługi Resource Manager, aplikacja musi znać identyfikator dzierżawy dzierżawy usługi Azure AD, obsługującym subskrypcji platformy Azure. Prawdopodobnie użytkownicy wiedzą, ich identyfikatorów subskrypcji, ale nie będzie wiadomo, ich dzierżawy identyfikatorów dla usługi Azure Active Directory. Uzyskanie Identyfikatora dzierżawy przez użytkownika, należy poprosić użytkownika dla identyfikatora subskrypcji. Podaj subskrypcji IDENTYFIKATORA podczas wysyłania żądania dotyczące subskrypcji:
@@ -204,7 +204,7 @@ Przykładem odpowiedzi, aby uzyskać uprawnienia użytkownika w subskrypcji jest
 
     {"value":[{"actions":["*"],"notActions":["Microsoft.Authorization/*/Write","Microsoft.Authorization/*/Delete"]},{"actions":["*/read"],"notActions":[]}]}
 
-Uprawnienia interfejsu API zwraca wiele uprawnień. Wszystkie uprawnienia składają się z dozwolonych akcji (**akcje**) i niedopuszczalne akcje (**notactions**). Jeśli akcja jest obecna w dozwolonych akcji żadnych uprawnień i nie znajduje się w niezatwierdzonych akcje te uprawnienia, użytkownik może wykonać tej operacji. **Microsoft.Authorization/RoleAssignments/Write** jest akcja management rights która udziela dostępu. Aplikację należy przeanalizować wyniku uprawnienia do wyszukania dopasowanie wyrażenia regularnego w ciągu tej akcji w **akcje** i **notactions** każdego uprawnień.
+Uprawnienia interfejsu API zwraca wiele uprawnień. Wszystkie uprawnienia składają się z dozwolonych akcji (**akcje**) i niedopuszczalne akcje (**notactions**). Jeśli akcja jest obecna w dozwolonych akcji żadnych uprawnień i nie znajduje się w niezatwierdzonych akcje te uprawnienia, użytkownik może wykonać tej operacji. **Microsoft.Authorization/RoleAssignments/Write** jest akcja udziela praw zarządzania dostępu. Aplikację należy przeanalizować wyniku uprawnienia do wyszukania dopasowanie wyrażenia regularnego w ciągu tej akcji w **akcje** i **notactions** każdego uprawnień.
 
 ## <a name="get-app-only-access-token"></a>Uzyskaj token dostępu tylko do aplikacji
 Teraz wiesz, czy użytkownik może przypisać dostęp do subskrypcji platformy Azure. Następne kroki są:

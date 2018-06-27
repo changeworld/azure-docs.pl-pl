@@ -7,7 +7,7 @@
 3. Zostanie wyświetlony monit o wybranie języka dla danego urządzenia. Wybierz język, a następnie naciśnij klawisz Enter. 
    
     ![Konfigurowanie i rejestrowanie urządzenia StorSimple 1](./media/storsimple-configure-and-register-device-u1/HCS_RegisterYourDevice1-U1-include.png)
-4. W przedstawionym menu konsoli szeregowej wybierz opcję 1, aby zalogować się z pełnymi uprawnieniami dostępu. 
+4. W menu konsoli szeregowej, które są prezentowane, wybierz opcję 1, **Zaloguj się przy użyciu pełnego dostępu**. 
    
     ![Rejestrowanie urządzenia StorSimple 2](./media/storsimple-configure-and-register-device-u1/HCS_RegisterYourDevice2_U1-include.png)
    

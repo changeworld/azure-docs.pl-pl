@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1e35d795fb65c837f7a4152920f701da5bf8f506
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7eae8aa25546fb94bbf7d006063f44f3b6e51a15
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31421434"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018800"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Tworzenie topologii C# dla Apache Storm przy użyciu narzędzi Data Lake tools dla programu Visual Studio
 
@@ -47,9 +47,9 @@ Aby użyć topologii C# z klastrem opartych na systemie Linux, musisz zaktualizo
 
 Topologie języka C# z SCP.NET można tworzyć przy użyciu jednej z następujących wersji programu Visual Studio:
 
-* Program Visual Studio 2012 z [aktualizacja 4](http://www.microsoft.com/download/details.aspx?id=39305)
+* Program Visual Studio 2012 z aktualizacją 4
 
-* Visual Studio 2013 z [aktualizacja 4](http://www.microsoft.com/download/details.aspx?id=44921) lub [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
+* Visual Studio 2013 z aktualizacją 4 lub [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
 
 * Program Visual Studio 2015 lub [Visual Studio 2015 Community](https://go.microsoft.com/fwlink/?LinkId=532606)
 
@@ -534,14 +534,14 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 
 Najnowsze wersje SCP.NET obsługuje uaktualnienie pakietu przez pakiet NuGet. Dostępna jest nowa aktualizacja, pojawi się powiadomienie uaktualnienia. Aby ręcznie sprawdzić uaktualnienia, wykonaj następujące kroki:
 
-1. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy projekt i wybierz **Zarządzaj pakietami NuGet**.
+1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy projekt, a następnie wybierz pozycję **Zarządzanie pakietami NuGet**.
 
 2. Wybierz z Menedżera pakietów, **aktualizacje**. Czy jest dostępna aktualizacja, są one dostępne. Kliknij przycisk **aktualizacji** dla pakietu go zainstalować.
 
 > [!IMPORTANT]
 > Jeśli projekt został utworzony przy użyciu starszej wersji SCP.NET, który nie używa NuGet, należy wykonać następujące kroki, aby zaktualizować do nowszej wersji:
 >
-> 1. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy projekt i wybierz **Zarządzaj pakietami NuGet**.
+> 1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy projekt, a następnie wybierz pozycję **Zarządzanie pakietami NuGet**.
 > 2. Przy użyciu **wyszukiwania** pola, Wyszukaj, a następnie dodaj **Microsoft.SCP.Net.SDK** do projektu.
 
 ## <a name="troubleshoot-common-issues-with-topologies"></a>Rozwiązywanie typowych problemów z topologii

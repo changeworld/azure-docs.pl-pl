@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/10/2018
+ms.topic: conceptual
+ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 64e8a20f72d451908c12751c0f8062bf4ae86370
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0e9ed70de6d72026b8e3469417c53d6923a8a85e
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021478"
 ---
 # <a name="copy-data-tofrom-on-premises-oracle-using-azure-data-factory"></a>Kopiowanie danych z bazy danych Oracle lokalnymi przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,6 +59,9 @@ Ten łącznik Oracle obsługuje dwie wersje sterowników:
     - Oracle 9i R1, R2 (9.0.1, 9.2)
     - Oracle 8i R3 (8.1.7)
 
+> [!NOTE]
+> Serwer proxy Oracle nie jest obsługiwane.
+
 > [!IMPORTANT]
 > Sterownik firmy Microsoft dla programu Oracle aktualnie obsługuje tylko kopiowanie danych z programem Oracle, ale bez zapisywania do bazy danych Oracle. I należy pamiętać, że możliwości połączenia testów na karcie diagnostyki bramy zarządzania danych nie obsługuje tego sterownika. Alternatywnie służy Kreator kopiowania Aby zweryfikować połączenie.
 >
@@ -75,7 +79,7 @@ Można utworzyć potok z działaniem kopiowania przenoszenia danych z lokalną b
 
 Najprostszym sposobem, aby utworzyć potok jest użycie **kreatora kopiowania**. Zobacz [samouczek: tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybkie przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
 
-Umożliwia także następujące narzędzia do tworzenia potoku: **portalu Azure**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejs API .NET**, i **interfejsu API REST**. Zobacz [samouczek działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
+Umożliwia także następujące narzędzia do tworzenia potoku: **portalu Azure**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager** , **Interfejs API .NET**, i **interfejsu API REST**. Zobacz [samouczek działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
 
 Czy można użyć narzędzia i interfejsy API, należy wykonać następujące kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródła do ujścia magazynu danych:
 
@@ -96,7 +100,7 @@ Poniższa tabela zawiera opis specyficzne dla usługi Oracle połączone element
 | type |Właściwość type musi mieć ustawioną: **OnPremisesOracle** |Yes |
 | driverType | Określ sterowniku można skopiować danych z/do bazy danych programu Oracle. Dozwolone wartości to **Microsoft** lub **ODP** (ustawienie domyślne). Zobacz [obsługiwanych wersji i instalacji](#supported-versions-and-installation) sekcji Szczegóły sterownika. | Nie |
 | Parametry połączenia | Podaj informacje wymagane do połączenia z wystąpieniem bazy danych programu Oracle dla właściwości connectionString. | Yes |
-| gatewayName | Nazwa bramy, czy jest używany do łączenia się z serwerem Oracle lokalnej |Yes |
+| gatewayName | Nazwa bramy, która służy do łączenia się z serwerem Oracle lokalnej |Yes |
 
 **Przykład: za pomocą sterownika Microsoft:**
 ```json
@@ -160,7 +164,7 @@ W przypadku działania kopiowania, gdy źródłem jest typu **OracleSource** nas
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Czas na ukończenie zanim upłynie limit czasu operacji wstawiania wsadowego oczekiwania. |Zakres czasu<br/><br/> Przykład: 00:30:00 (30 minut). |Nie |
+| writeBatchTimeout |Czas na ukończenie zanim upłynie limit czasu operacji wstawiania wsadowego oczekiwania. |zakres czasu<br/><br/> Przykład: 00:30:00 (30 minut). |Nie |
 | writeBatchSize |Wstawia dane do tabeli SQL, gdy writeBatchSize osiągnie rozmiar buforu. |Liczba całkowita (liczba wierszy) |Nie (domyślne: 100) |
 | sqlWriterCleanupScript |Określ kwerendę dla działania kopiowania do wykonania w taki sposób, że dane określonych wycinek jest wyczyszczone. |Instrukcja zapytania. |Nie |
 | sliceIdentifierColumnName |Określ nazwę kolumny dla aktywności kopiowania wypełnić automatycznie generowane wycinek identyfikator, który służy do oczyszczania danych określonego wycinek czas ponownego uruchomienia. |Nazwa kolumny kolumnę o typie danych binary(32). |Nie |
@@ -572,21 +576,21 @@ Podczas przenoszenia danych z bazy danych Oracle, następujące mapowania są u�
 | Typ danych Oracle | Typ danych .NET framework |
 | --- | --- |
 | BPLIK |Byte[] |
-| BLOB |Byte[]<br/>(obsługiwana tylko na Oracle 10 GB/s i wyższe, gdy za pomocą sterownika Microsoft) |
+| OBIEKT BLOB |Byte[]<br/>(obsługiwana tylko na Oracle 10 GB/s i wyższe, gdy za pomocą sterownika Microsoft) |
 | CHAR |Ciąg |
 | CLOB |Ciąg |
 | DATE |DateTime |
 | FLOAT |Decimal, ciąg (jeśli precyzja > 28) |
 | LICZBA CAŁKOWITA |Decimal, ciąg (jeśli precyzja > 28) |
 | INTERWAŁ ROK, MIESIĄC |Int32 |
-| INTERWAŁ DZIEŃ NA SEKUNDĘ |TimeSpan |
+| INTERWAŁ DZIEŃ NA SEKUNDĘ |Zakres czasu |
 | DŁUGA |Ciąg |
 | LONG RAW |Byte[] |
 | NCHAR |Ciąg |
 | NCLOB |Ciąg |
-| NUMBER |Decimal, ciąg (jeśli precyzja > 28) |
+| NUMER |Decimal, ciąg (jeśli precyzja > 28) |
 | NVARCHAR2 |Ciąg |
-| RAW |Byte[] |
+| NIEPRZETWORZONE |Byte[] |
 | ROWID |Ciąg |
 | ZNACZNIK CZASU |DateTime |
 | SYGNATURA CZASOWA Z LOKALNEJ STREFIE CZASOWEJ |DateTime |

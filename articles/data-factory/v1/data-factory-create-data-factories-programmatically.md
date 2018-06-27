@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 25bb16ebda29722fc8200ece525e870f6c85ef7d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dcfd24d3d0122f664655f6085bbd58bc0bfe9718
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621959"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018492"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Tworzenie, monitorowanie i zarządzanie przy użyciu zestawu SDK .NET usługi Azure Data Factory fabryki danych Azure
 > [!NOTE]
@@ -425,7 +425,7 @@ Działanie kopiowania wykonuje operację przenoszenia danych w usłudze Azure Da
     Console.WriteLine("\nPress any key to exit.");
     Console.ReadKey();
     ```
-14. Dodaj następującą metodę pomocnika używaną przez metodę **Main** do klasy **Program**. Ta metoda powoduje okno dialogowe umożliwiające podaj **nazwy użytkownika** i **hasło** używanego do logowania do portalu Azure.
+14. Dodaj następującą metodę pomocnika używaną przez metodę **Main** do klasy **Program**. Ta metoda powoduje okno dialogowe, które pozwala zapewnić **nazwy użytkownika** i **hasło** używanego do logowania do portalu Azure.
 
     ```csharp
     public static async Task<string> GetAuthorizationHeader()

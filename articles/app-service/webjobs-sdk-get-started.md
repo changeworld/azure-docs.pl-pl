@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: d0afc8b6f8e0b7ef73e5d1c3cbabf2e1542f47f4
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 5a3070582a32adeda45dff233782c3a971885c14
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234526"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018459"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Wprowadzenie do zestawu SDK zadań Webjob Azure dla przetwarzania w tle sterowane zdarzeniami
 
@@ -66,6 +66,9 @@ W tym artykule przyjęto założenie, masz [konta platformy Azure](https://azure
 2. Wybierz **klasycznego pulpitu systemu Windows > konsoli aplikacji (.NET Framework)**.
 
    Aby utworzyć projekt 3.x, wybierz **.NET Core > aplikacji konsoli (.NET Core)**.
+   
+   > [!NOTE]
+   > 3.x jest wciąż w wersji zapoznawczej i jest w fazie projektowania. Instrukcje 3.x, w tym artykule jest niekompletny. najnowsze informacje Zobacz problemów GitHub w dolnej części strony.
 
 3. Nazwij projekt *WebJobsSDKSample*, a następnie wybierz **OK**.
 
@@ -320,7 +323,7 @@ W tej sekcji możesz wykonać następujące zadania, aby skonfigurować rejestro
 
 4. W **parametry połączenia** Dodaj następujący wpis.
 
-   |Name (Nazwa)  |Parametry połączenia  |Typ bazy danych|
+   |Name (Nazwa)  |Ciąg połączenia  |Typ bazy danych|
    |---------|---------|------|
    |AzureWebJobsStorage | {Magazynu parametry połączenia, które wcześniej zostały skopiowane}|Niestandardowy|
    

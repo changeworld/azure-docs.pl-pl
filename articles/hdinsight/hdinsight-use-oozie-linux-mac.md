@@ -2,24 +2,22 @@
 title: Użyj przepływy pracy Hadoop Oozie w usłudze Azure HDInsight opartych na systemie Linux | Dokumentacja firmy Microsoft
 description: Użyj Hadoop Oozie w HDInsight opartych na systemie Linux. Dowiedz się, jak zdefiniować Oozie przepływu pracy i przesłać zadanie Oozie.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
+author: omidm1
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.assetid: d7603471-5076-43d1-8b9a-dbc4e366ce5d
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/23/2018
-ms.author: larryfr
-ms.openlocfilehash: 8a25507ab076c4eecccea4e8a503d68ff1441ae5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 06/26/2018
+ms.author: omidm
+ms.openlocfilehash: a1fd33ec83208dfd5d90a0fb11557c72a5f02e88
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32179082"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019283"
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Za pomocą Oozie Hadoop do definiowania i uruchomić przepływ pracy w usłudze Azure HDInsight opartych na systemie Linux
 
@@ -37,15 +35,13 @@ Umożliwia także Oozie do planowania zadań, które są specyficzne dla systemu
 > [!NOTE]
 > Innym rozwiązaniem do definiowania przepływów pracy z usługą HDInsight jest do używania fabryki danych Azure. Aby dowiedzieć się więcej na temat fabryki danych, zobacz [Use Pig i Hive z fabryką danych][azure-data-factory-pig-hive].
 
-> [!IMPORTANT]
-> Oozie nie jest włączona w usłudze HDInsight z przyłączonych do domeny.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * **Klaster usługi HDInsight**: zobacz [Rozpoczynanie pracy z usługą HDInsight w systemie Linux](/hadoop/apache-hadoop-linux-tutorial-get-started.md)
 
 > [!IMPORTANT]
-> Kroki opisane w tym dokumencie wymagają klastra usługi HDInsight, który używa systemu Linux. Linux jest tylko system operacyjny używany w usłudze HDInsight w wersji 3.4 lub nowszej. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
+> Procedura przedstawiona w tym dokumencie wymaga klastra usługi HDInsight używającego systemu Linux. Linux jest tylko system operacyjny używany w usłudze HDInsight w wersji 3.4 lub nowszej. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 ## <a name="example-workflow"></a>Przykładowy przepływ pracy
 
@@ -78,7 +74,7 @@ Oozie oczekuje na przechowywanie wszystkich zasobów, które są wymagane dla za
     ssh sshuser@clustername-ssh.azurehdinsight.net
     ```
 
-    Zastąp `sshuser` z nazwą użytkownika SSH dla klastra. Zastąp `clustername` nazwą klastra. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+    Zastąp ciąg `sshuser` nazwą użytkownika protokołu SSH dla klastra. Zastąp `clustername` nazwą klastra. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 2. Można utworzyć katalogu, użyj następującego polecenia:
 
@@ -240,7 +236,7 @@ Aby utworzyć bazę danych SQL, postępuj zgodnie z instrukcjami [Utwórz bazę 
 ### <a name="create-the-table"></a>Tworzenie tabeli
 
 > [!NOTE]
-> Istnieje wiele sposobów łączenia z bazą danych SQL, aby utworzyć tabelę. Następujące kroki użyj [protokół FreeTDS](http://www.freetds.org/) z klastrem usługi HDInsight.
+> Istnieje wiele sposobów łączenia z bazą danych SQL, aby utworzyć tabelę. W poniższej procedurze użyto rozwiązania [FreeTDS](http://www.freetds.org/) z klastra usługi HDInsight.
 
 
 1. Aby zainstalować protokół FreeTDS w klastrze usługi HDInsight, użyj następującego polecenia:
@@ -263,7 +259,7 @@ Aby utworzyć bazę danych SQL, postępuj zgodnie z instrukcjami [Utwórz bazę 
         Default database being set to oozietest
         1>
 
-3. W `1>` monit, wprowadź następujące wiersze:
+3. W wierszu `1>` wprowadź następujące wiersze:
 
     ```sql
     CREATE TABLE [dbo].[mobiledata](
@@ -274,7 +270,7 @@ Aby utworzyć bazę danych SQL, postępuj zgodnie z instrukcjami [Utwórz bazę 
     GO
     ```
 
-    Gdy `GO` instrukcja została wprowadzona, poprzednie instrukcje są oceniane. Te instrukcje tworzenia tabeli o nazwie **mobiledata**, który jest używany przez przepływ pracy.
+    Jeśli wprowadzono instrukcję `GO`, zostaną obliczone poprzednie instrukcje. Te instrukcje tworzenia tabeli o nazwie **mobiledata**, który jest używany przez przepływ pracy.
 
     Aby sprawdzić, czy tabela została utworzona, użyj następujących poleceń:
 

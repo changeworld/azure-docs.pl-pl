@@ -2,7 +2,7 @@
 title: Partycjonowanie i skalowanie w poziomie w usłudze Azure DB rozwiązania Cosmos | Dokumentacja firmy Microsoft
 description: Więcej informacji na temat działa jak partycjonowania bazy danych rozwiązania Cosmos Azure, jak skonfigurować partycje i kluczy partycji i Wybieranie klucza prawego partycji aplikacji.
 services: cosmos-db
-author: SnehaGunda
+author: rimman
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rimman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d083181b379301ae80e6577ccc3ac8f142767db3
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 046e45978d401e05d0ab8154aff994052f5d7717
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261087"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960376"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Partycja i skali w usłudze Azure DB rozwiązania Cosmos
 
@@ -56,7 +56,7 @@ Semantyka kluczy partycji są nieco inne odpowiadające semantykę każdego API,
 | Interfejs API | Klucz partycji | Klucz wiersza |
 | --- | --- | --- |
 | SQL | Ścieżka do klucza partycji niestandardowych | Naprawiono polecenie `id` | 
-| MongoDB | klucz w niezależnych niestandardowych  | Naprawiono polecenie `_id` | 
+| MongoDB | Klucz w niezależnych niestandardowych  | Naprawiono polecenie `_id` | 
 | Gremlin | Właściwość klucza partycji niestandardowych | Naprawiono polecenie `id` | 
 | Tabela | Naprawiono polecenie `PartitionKey` | Naprawiono polecenie `RowKey` | 
 
@@ -229,7 +229,7 @@ W przypadku wdrażania aplikacji wielodostępnym, przy użyciu bazy danych Azure
 
 Można również użyć metody hybrydowych, razem colocates małych dzierżawców i izoluje większych dzierżawcy do ich własnych kontenerów.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule podaliśmy omówienie pojęć i najlepsze rozwiązania dla skalowanie i partycjonowania w usłudze Azure DB rozwiązania Cosmos. 
 
 * Dowiedz się więcej o [udostępnionej przepływności w usłudze Azure DB rozwiązania Cosmos](request-units.md).

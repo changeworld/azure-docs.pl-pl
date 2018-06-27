@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 86b6d05538171fcf0e259e2761316529deb4fb37
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cc48bf011d95b3e60a78d2102d88dc188155ddc1
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625325"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017372"
 ---
 # <a name="using-azure-data-lake-store-for-big-data-requirements"></a>Za pomocą usługi Azure Data Lake Store wymagania danych big data
 Istnieją cztery etapy klucza podczas przetwarzania danych big:
@@ -43,7 +43,7 @@ Ta pozycja reprezentuje mniejszych zestawów danych, które są używane do twor
 | Azure Storage Blob |<ul> <li>[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)</li> <li>[Narzędzie AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[Narzędzia DistCp uruchomiona w klastrze usługi HDInsight](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
 ### <a name="streamed-data"></a>Strumienia danych
-Reprezentuje dane, które mogą być generowane przez różnych źródeł, takich jak aplikacje, urządzeń, czujników, itp. Te dane mogą pozyskanych do usługi Data Lake Store za pomocą różnych narzędzi. Te narzędzia zazwyczaj będzie przechwytywania i przetwarzania danych na podstawie zdarzeń przez zdarzenie w czasie rzeczywistym, a następnie wpisz zdarzeń w partiach do usługi Data Lake Store, aby mogą być dalej przetwarzane.
+Reprezentuje dane, które mogą być generowane przez różnych źródeł, takich jak aplikacje, urządzeń, czujników, itp. Te dane mogą pozyskanych do usługi Data Lake Store przy różnych narzędzi. Te narzędzia zazwyczaj będzie przechwytywania i przetwarzania danych na podstawie zdarzeń przez zdarzenie w czasie rzeczywistym, a następnie wpisz zdarzeń w partiach do usługi Data Lake Store, aby mogą być dalej przetwarzane.
 
 Poniżej przedstawiono narzędzia, których można użyć:
 
@@ -65,7 +65,7 @@ Tego typu dataset jest zwrócono szczególną uwagę, ponieważ analizy danych d
 * [Zestaw .NET SDK usługi Azure Data Lake Store](data-lake-store-get-started-net-sdk.md)
 * [Azure Data Factory](../data-factory/copy-activity-overview.md)
 
-Do przekazywania danych dziennika serwera sieci web, a także do przekazywania innych typów danych (np. społecznościowych opinie) jest sposobem zapisać własnych skryptów niestandardowych/aplikacji, ponieważ zapewnia elastyczność do dołączenia danych przekazywania większych aplikacji danych big data w ramach składnika. W niektórych przypadkach ten kod może mieć postać skryptu lub narzędzia wiersza polecenia proste. W innych przypadkach kod może być używany do przetwarzania danych big integracji aplikacji biznesowej lub rozwiązania.
+Do przekazywania danych dziennika serwera sieci web, a także do przekazywania innych typów danych (np. społecznościowych opinie) jest sposobem zapisu własnych skryptów niestandardowych/aplikacji, ponieważ daje możliwość obejmują przekazywanie składnika jako część danych większej aplikacji danych big data. W niektórych przypadkach ten kod może mieć postać skryptu lub narzędzia wiersza polecenia proste. W innych przypadkach kod może być używany do przetwarzania danych big integracji aplikacji biznesowej lub rozwiązania.
 
 ### <a name="data-associated-with-azure-hdinsight-clusters"></a>Dane skojarzone z klastrami Azure HDInsight
 Większość typów klastra usługi HDInsight (Hadoop, HBase, Storm) obsługuje usługi Data Lake Store jako repozytorium magazynu danych. Klastry HDInsight dostęp do danych z usługi Azure blob Storage (WASB). W celu poprawy wydajności można skopiować danych z WASB do konta usługi Data Lake Store skojarzony z klastrem. Aby skopiować dane, można użyć następujących narzędzi.

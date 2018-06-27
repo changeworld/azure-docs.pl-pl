@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/05/2018
 ms.author: harijay
-ms.openlocfilehash: 69f5e29be77f25d649ce357dae6e3905ab2bf6b8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 99d09455ed73b366fb3acfb414b9bd095df6319b
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31425337"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961939"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Maszyna wirtualna konsoli szeregowej (wersja zapoznawcza) 
 
@@ -32,6 +32,7 @@ Konsoli szeregowej maszyny wirtualnej na platformie Azure zapewnia dostęp do ko
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
+* Model wdrażania zasobów zarządzania muszą używać. W przypadku wdrożeń klasycznych nie są obsługiwane. 
 * Maszyna wirtualna musi mieć [diagnostyki rozruchu](boot-diagnostics.md) włączone 
 * Konto, przy użyciu konsoli szeregowej musi mieć [roli współautora](../../role-based-access-control/built-in-roles.md) dla maszyny Wirtualnej i [diagnostyki rozruchu](boot-diagnostics.md) konta magazynu. 
 * Dla ustawienia właściwe dla systemu Linux distro, zobacz [podczas uzyskiwania dostępu do konsoli szeregowej dla systemu Linux](#accessing-serial-console-for-linux)
@@ -90,8 +91,8 @@ Interakcja z programu inicjującego | Dostęp CHODNIKÓW/BCD za pośrednictwem k
 ## <a name="accessing-serial-console-for-linux"></a>Uzyskiwanie dostępu do konsoli szeregowej dla systemu Linux
 Aby konsoli szeregowej działał poprawnie systemu operacyjnego gościa musi być skonfigurowana do do odczytu i zapisu wiadomości konsoli portu szeregowego. Większość [zatwierdzone dystrybucje systemu Linux Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) mają konsoli szeregowej konfiguracja domyślna. Klikając w portalu w sekcji konsoli szeregowej zapewni dostęp do konsoli. 
 
-### <a name="access-for-redhat"></a>Dostęp do RedHat 
-RedHat obrazów dostępnych na platformie Azure mają dostęp konsoli domyślnie włączone. Tryb pojedynczego użytkownika w Red Hat wymaga użytkownika głównego włączenia tej funkcji, które jest domyślnie wyłączone. Jeśli trzeba włączyć tryb pojedynczego użytkownika, użyj poniższych instrukcji:
+### <a name="access-for-red-hat"></a>Dostęp do Red Hat 
+Red Hat obrazów dostępnych na platformie Azure mają dostęp konsoli domyślnie włączone. Tryb pojedynczego użytkownika w Red Hat wymaga użytkownika głównego włączenia tej funkcji, które jest domyślnie wyłączone. Jeśli trzeba włączyć tryb pojedynczego użytkownika, użyj poniższych instrukcji:
 
 1. Zaloguj się do systemu Red Hat za pośrednictwem SSH
 2. Włącz hasła dla użytkownika głównego 

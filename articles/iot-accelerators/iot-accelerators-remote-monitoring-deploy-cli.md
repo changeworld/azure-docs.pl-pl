@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 603ce00a036822fd0c7411b47cf3fe630671cc5a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 736d0394b61bd2830a155d6ad714a2a8d19af82b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628127"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017513"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Wdrażanie akcelerator rozwiązań monitorowania zdalnego przy użyciu interfejsu wiersza polecenia
 
@@ -68,7 +68,7 @@ Tworzenie podstawowego rozwiązania spowoduje wyświetlenie następujących usł
 | Licznik | Zasób                       | Typ         | Używany do |
 |-------|--------------------------------|--------------|----------|
 | 1     | [Maszyny wirtualnej systemu Linux](https://azure.microsoft.com/services/virtual-machines/) | Standardowa D1 V2  | Hosting mikrousług |
-| 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 — warstwa podstawowa | Zarządzanie urządzeniami i komunikacji |
+| 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 — warstwa standardowa | Zarządzanie urządzeniami i komunikacji |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standardowa (Standard)        | Przechowywanie danych konfiguracji i telemetrii urządzenia, takie jak zasady, alarmy i komunikatów |  
 | 1     | [Konto magazynu Azure](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standardowa (Standard)        | Magazyn dla maszyny Wirtualnej i przesyłania strumieniowego punkty kontrolne |
 | 1     | [Aplikacja sieci Web](https://azure.microsoft.com/services/app-service/web/)        |                 | Hosting aplikacji frontonu sieci web |
@@ -82,7 +82,7 @@ Tworzenie standardowego rozwiązania spowoduje wyświetlenie następujących us�
 |-------|----------------------------------------------|-----------------|----------|
 | 4     | [Maszyny wirtualne z systemem Linux](https://azure.microsoft.com/services/virtual-machines/)   | Standardowa D2 V2  | wzorzec 1 i 3 agentów do hostowania mikrousług z nadmiarowością |
 | 1     | [Usługa kontenera platformy Azure](https://azure.microsoft.com/services/container-service/) |                 | [Kubernetes](https://kubernetes.io) orchestrator |
-| 1     | [Centrum IoT azure] [https://azure.microsoft.com/services/iot-hub/]                     | S1 — warstwa podstawowa | Zarządzanie urządzeniami, polecenie i kontroli |
+| 1     | [Centrum IoT azure] [https://azure.microsoft.com/services/iot-hub/]                     | S2 — warstwa standardowa | Zarządzanie urządzeniami, polecenie i kontroli |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standardowa (Standard)        | Przechowywanie danych konfiguracji i telemetrii urządzenia, takie jak zasady, alarmy i komunikatów |
 | 5     | [Konta magazynu platformy Azure](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standardowa (Standard)        | 4 dla magazynu maszyny Wirtualnej, a 1 w przypadku przesyłania strumieniowego punkty kontrolne |
 | 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | Standardowa S1     | Brama aplikacji za pośrednictwem protokołu SSL |

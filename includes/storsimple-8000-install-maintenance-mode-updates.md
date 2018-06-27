@@ -6,7 +6,7 @@ Po zastosowaniu aktualizacji trybu konserwacji dla urządzenia StorSimple, wszys
 > * Przed trybu konserwacji, sprawdź, czy obu kontrolerów urządzeń są w dobrej kondycji w portalu Azure. Jeśli kontroler nie jest w dobrej kondycji, [skontaktuj się z pomocą techniczną firmy Microsoft](../articles/storsimple/storsimple-8000-contact-microsoft-support.md) dalsze czynności.
 > * Podczas pracy w trybie konserwacji, należy najpierw zaktualizować jednego kontrolera, a następnie inny kontroler.
 
-1. Łączenie z konsolą szeregową przy użyciu programu PuTTY. Postępuj zgodnie ze szczegółowymi instrukcjami w części [Nawiązywanie połączenia z konsolą szeregową urządzenia przy użyciu programu PuTTY](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). W wierszy polecenia naciśnij klawisz **Enter**. Wybierz opcję 1 do logowania się do urządzenia z pełnym dostępem.
+1. Łączenie z konsolą szeregową przy użyciu programu PuTTY. Postępuj zgodnie ze szczegółowymi instrukcjami w części [Nawiązywanie połączenia z konsolą szeregową urządzenia przy użyciu programu PuTTY](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). W wierszy polecenia naciśnij klawisz **Enter**. Wybierz opcję 1 **Zaloguj się przy użyciu pełnego dostępu**.
 
 2. Ustaw kontroler w trybie konserwacji, wpisz:
     
@@ -30,7 +30,7 @@ Po zastosowaniu aktualizacji trybu konserwacji dla urządzenia StorSimple, wszys
 
     `Get-HcsFirmwareVersion`
    
-    Dostępne są następujące wersje oprogramowania układowego oczekiwanego dysku:`XMGJ, XGEG, KZ50, F6C2, VR08, N003, 0107`
+    Dostępne są następujące wersje oprogramowania układowego oczekiwanego dysku:  `XMGJ, XGEG, KZ50, F6C2, VR08, N003, 0107`
 
 6. Wyjść z trybu konserwacji. Wpisz następujące polecenie dla każdego kontrolera urządzenia:
 

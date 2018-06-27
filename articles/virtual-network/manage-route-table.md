@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 93ecd0264413e0eb719c9d33f0a0b756bcee6552
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: cd97b00a522ff41a74f46195da5d8b1a0d92d344
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726452"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960012"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Tworzenie, zmienianie lub usuwanie tabeli tras
 
@@ -95,7 +95,7 @@ Podsieć może mieć zero lub jedną tabelę tras skojarzony. Tabela tras może 
 4. Wybierz podsieć, chcesz skojarzyć tabeli tras.
 5. Wybierz **tabeli tras**, wybierz tabelę routingu, które chcesz skojarzyć z podsiecią, a następnie wybierz **zapisać**.
 
-Jeśli w Twojej sieci wirtualnej jest podłączony do bramy sieci VPN platformy Azure, nie należy kojarzyć tabelę tras do [podsieci bramy](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) zawierającą trasy z docelowym 0.0.0.0/0. W ten sposób może spowodować nieprawidłowe działanie bramy. Aby uzyskać więcej informacji o używaniu 0.0.0.0/0 w trasy, zobacz [routingu ruchu sieciowego wirtualnej](virtual-networks-udr-overview.md#default-route).
+Jeśli Twoja sieć wirtualna jest podłączona do bramy sieci VPN platformy Azure, nie należy kojarzyć tabeli tras z [podsiecią bramy](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) zawierającą trasy z adresem docelowym 0.0.0.0/0. Zaniedbanie tego może spowodować nieprawidłowe działanie bramy. Aby uzyskać więcej informacji o używaniu 0.0.0.0/0 w trasy, zobacz [routingu ruchu sieciowego wirtualnej](virtual-networks-udr-overview.md#default-route).
 
 **Polecenia**
 
@@ -213,7 +213,7 @@ Skuteczne trasy dla każdego interfejsu sieciowego dołączony do maszyny wirtua
 **Polecenia**
 
 - Azure CLI: [az sieci karty sieciowej Pokaż obowiązującej--tabeli tras](/cli/azure/network/nic?view=azure-cli-latest#az_network_nic_show_effective_route_table)
-- PowerShell: [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/remove-azurermrouteconfig) 
+- PowerShell: [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable) 
 
 ## <a name="validate-routing-between-two-endpoints"></a>Sprawdź poprawność routingu między dwoma punktami końcowymi
 

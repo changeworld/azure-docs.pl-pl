@@ -10,12 +10,12 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: giladm
-ms.openlocfilehash: a40ca715c15540bf7048fae8b5dde152890eb1c1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 929c05901c54ef0e7fe0d4af28c5ba45c92091f0
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648330"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021144"
 ---
 # <a name="securing-your-sql-database"></a>Zabezpieczanie bazy danych SQL
 
@@ -79,7 +79,7 @@ Funkcja inspekcji usługi SQL Database śledzi działania bazy danych i pozwala 
 Wykrywanie zagrożeń uzupełnia inspekcji, zapewniając dodatkową warstwę zabezpieczeń analizy wbudowana w usłudze Azure SQL Database, która wykrywa nietypowe i potencjalnie szkodliwe próby dostępu lub wykorzystać baz danych. Alerty o podejrzanych działań, potencjalnych luk w zabezpieczeniach i ataki, a także bazy danych nietypowe wzorce dostępu. Można wyświetlić alertów wykrywania zagrożeń z [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) zawierają szczegółowe informacje o podejrzanych działaniach i zalecane działania dotyczące sposobu badania i ograniczyć zagrożenie. Wykrywanie zagrożeń koszty 15 USD/serwer/miesiąc. Brak opłat przez pierwsze 60 dni. Aby uzyskać więcej informacji, zobacz artykuł [Get started with SQL Database Threat Detection](sql-database-threat-detection.md) (Wprowadzenie do usługi SQL Database Threat Detection).
  
 ## <a name="compliance"></a>Zgodność
-Oprócz powyższych funkcji i funkcji, które ułatwiają także spełnić różne wymagania dotyczące zabezpieczeń, baza danych SQL Azure aplikacji uczestniczy w regularne inspekcje i jest certyfikowany na liczbie standardów zgodności. Aby uzyskać więcej informacji, zobacz witrynę [Centrum zaufania Microsoft Azure](https://azure.microsoft.com/support/trust-center/), w której można znaleźć aktualną listę [certyfikatów zgodności usługi SQL Database](https://www.microsoft.com/trustcenter/compliance/complianceofferings/).
+Oprócz powyższych funkcji i funkcji, które ułatwiają także spełnić różne wymagania dotyczące zabezpieczeń, baza danych SQL Azure aplikacji uczestniczy w regularne inspekcje i jest certyfikowany na liczbie standardów zgodności. Aby uzyskać więcej informacji, zobacz witrynę [Centrum zaufania Microsoft Azure](https://azure.microsoft.com/support/trust-center/), w której można znaleźć aktualną listę [certyfikatów zgodności usługi SQL Database](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings).
 
 
 ## <a name="security-management"></a>Zarządzanie zabezpieczeniami

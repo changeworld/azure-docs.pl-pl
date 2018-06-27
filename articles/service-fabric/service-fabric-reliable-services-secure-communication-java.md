@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 1843720b9700e66af8ee84766cf7d63ac62e6283
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: cbefb3ede6d0d1fe21065b49c84db9f4db5dd39c
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36749916"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020817"
 ---
 # <a name="secure-service-remoting-communications-in-a-java-service"></a>Bezpieczna komunikacja komunikacji zdalnej usługi w usłudze Java
 > [!div class="op_single_selector"]
@@ -55,7 +55,9 @@ Aby ułatwić zabezpieczanie usługi podczas korzystania z komunikacji zdalnej u
     ```
 2. Dodaj ustawienia odbiornika i poświadczeń zabezpieczeń.
 
-    Upewnij się, że certyfikat, który ma być używany do zabezpieczania komunikacji usługi jest zainstalowany na wszystkich węzłach w klastrze. Istnieją dwa sposoby, które można udostępniać ustawienia odbiornika i poświadczenia zabezpieczeń:
+    Upewnij się, że certyfikat, który ma być używany do zabezpieczania komunikacji usługi jest zainstalowany na wszystkich węzłach w klastrze. Dla usług uruchomionych w systemie Linux certyfikat musi być dostępny jako plik PEM formmatted; albo `.pem` plik zawierający certyfikat i klucz prywatny lub `.crt` pliku, który zawiera certyfikat oraz `.key` pliku, który zawiera klucz prywatny. Aby dowiedzieć się więcej, zobacz [lokalizacji i format certyfikatów X.509 w węzłach Linux](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes).
+    
+    Istnieją dwa sposoby, które można udostępniać ustawienia odbiornika i poświadczenia zabezpieczeń:
 
    1. Podaj je za pomocą [pakietu konfiguracji](service-fabric-application-and-service-manifests.md):
 

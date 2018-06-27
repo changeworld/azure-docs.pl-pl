@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/07/2018
+ms.date: 06/26/2018
 ms.author: asmalser
-ms.openlocfilehash: fce7ea66f5e10aae4f1a0a3f0ed92ca57e6112c7
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c7a18132a797bd7411487c233fc41647cc20dfb4
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293300"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025866"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatyzowanie użytkownika alokowania i anulowania alokowania do aplikacji SaaS w usłudze Azure Active Directory
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Co to jest automatyczne Inicjowanie obsługi użytkowników dla aplikacji SaaS?
@@ -50,7 +50,6 @@ Niektóre typowe motywacji dla tej funkcji obejmują:
 * Aby łatwo zaimportować dużą liczbę użytkowników do określonej aplikacji SaaS lub systemu.
 * Do korzystania z o jeden zestaw zasad, aby określić, który zostanie zainicjowana i który można zalogować się do aplikacji.
 
-
 ## <a name="how-does-automatic-provisioning-work"></a>Jak działa automatyczne udostępnianie?
     
 **Usługi Azure AD udostępniania** udostępnia użytkownikom aplikacji SaaS i innymi systemami, łącząc się z punktów końcowych interfejsu API zarządzania użytkownika dostarczone przez dostawcę każdej aplikacji. Zezwalaj na te punkty końcowe interfejsu API zarządzania użytkownika usługi Azure AD, można programowo tworzyć, aktualizować i usuwać użytkowników. Dla wybranych aplikacji, inicjowania obsługi usługi mogą także tworzyć aktualizować i usuwać dodatkowe obiekty dotyczące tożsamości, takie jak grup i ról. 
@@ -69,15 +68,17 @@ Niektóre typowe motywacji dla tej funkcji obejmują:
 
 Funkcje platformy Azure AD wstępnie zintegrowane pomocy technicznej w różnych popularnych aplikacji SaaS i systemami kadr, a także ogólne pomocy technicznej dla aplikacji, które implementuje określonych części standard SCIM 2.0.
 
-Aby uzyskać listę wszystkich aplikacji, dla których usługi Azure AD obsługuje wstępnie zintegrowanych łączników inicjowania obsługi administracyjnej, zobacz [lista samouczków aplikacji do inicjowania obsługi użytkowników](active-directory-saas-tutorial-list.md).
+### <a name="pre-integrated-applications"></a>Wstępnie zintegrowanych aplikacji
+Aby uzyskać listę wszystkich aplikacji, dla których usługi Azure AD obsługuje wstępnie zintegrowanych łączników inicjowania obsługi administracyjnej, zobacz [lista samouczków aplikacji do inicjowania obsługi użytkowników](saas-apps/tutorial-list.md).
 
-Aby uzyskać informacje dotyczące dodawania obsługi usługi Azure AD do aplikacji Inicjowanie obsługi użytkowników, zobacz [przy użyciu SCIM do automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji](manage-apps/use-scim-to-provision-users-and-groups.md).
-
-Skontaktuj się z usługą Azure AD engineering team do żądania obsługi inicjowania obsługi administracyjnej dodatkowych aplikacji, przesłać wiadomość za pośrednictwem [forum opinii w usłudze Azure Active Directory](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035).    
+Skontaktuj się z usługą Azure AD engineering team do żądania obsługi inicjowania obsługi administracyjnej dodatkowych aplikacji, przesłać wiadomość za pośrednictwem [forum opinii w usłudze Azure Active Directory](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035).
 
 > [!NOTE]
 > Aby aplikacja do obsługi użytkowników automatycznego inicjowania obsługi administracyjnej on zawierał Zarządzanie użytkownikami niezbędne interfejsów API, które umożliwiają automatyzację tworzenia, obsługi i usuwania użytkowników zewnętrznych programów. W związku z tym nie wszystkie aplikacje SaaS są zgodne z tą funkcją. W przypadku aplikacji, które obsługują zarządzanie użytkownikami interfejsy API zespołu inżynieryjnego usługi Azure AD będą w stanie Tworzenie łącznika inicjowania obsługi administracyjnej do tych aplikacji, a tej pracy jest priorytety zgodnie z potrzebami aktualnych i potencjalnych klientów. 
-    
+
+### <a name="connecting-applications-that-support-scim-20"></a>Łączenie aplikacji, które obsługują SCIM 2.0
+Aby uzyskać informacje dotyczące ogólnej połączyć aplikacje, które implementują SCIM 2.0 — zarządzanie użytkowników na podstawie interfejsów API, zobacz [przy użyciu SCIM do automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji](manage-apps/use-scim-to-provision-users-and-groups.md).
+
     
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Jak skonfigurować automatyczne Inicjowanie obsługi administracyjnej dla aplikacji?
 
@@ -85,7 +86,7 @@ Skontaktuj się z usługą Azure AD engineering team do żądania obsługi inicj
 
 Konfiguracja programu Azure AD usługi inicjowania obsługi administracyjnej dla wybranej aplikacji jest uruchamiany w  **[portalu Azure](https://portal.azure.com)**. W **usługi Azure Active Directory > aplikacje przedsiębiorstwa** wybierz opcję **Dodaj**, następnie **wszystkie**, a następnie dodaj jednej z następujących pozycji w zależności od danego scenariusza:
 
-* Wszystkie aplikacje w **polecanych aplikacji** automatyczne udostępnianie obsługi sekcji. Zobacz [lista samouczków aplikacji do inicjowania obsługi użytkowników](active-directory-saas-tutorial-list.md) dla dodatkowych reguł.
+* Wszystkie aplikacje w **polecanych aplikacji** automatyczne udostępnianie obsługi sekcji. Zobacz [lista samouczków aplikacji do inicjowania obsługi użytkowników](saas-apps/tutorial-list.md) dla dodatkowych reguł.
 
 * Użyj opcji "bez galerii aplikacji" opracowany niestandardowej integracji SCIM
 
@@ -152,7 +153,7 @@ Po początkowej synchronizacji wszystkie kolejne synchronizacje będą:
 >[!NOTE]
 > Można opcjonalnie wyłączyć utworzenia, aktualizacji lub usuwania za pomocą **akcji obiektów docelowych** pola wyboru w [mapowań atrybutów](active-directory-saas-customizing-attribute-mappings.md) sekcji. Logika wyłączenia użytkownika podczas aktualizacji również jest kontrolowany przez mapowanie atrybutu z pola, takie jak "accountEnabled".
 
-Usługa dostarczania będzie kontynuował działanie symetryczna synchronizacje przyrostowe przez czas nieokreślony, w odstępach czasu zdefiniowanych w [samouczek specyficzne dla poszczególnych aplikacji](active-directory-saas-tutorial-list.md), dopóki nie wystąpi jedno z następujących zdarzeń:
+Usługa dostarczania będzie kontynuował działanie symetryczna synchronizacje przyrostowe przez czas nieokreślony, w odstępach czasu zdefiniowanych w [samouczek specyficzne dla poszczególnych aplikacji](saas-apps/tutorial-list.md), dopóki nie wystąpi jedno z następujących zdarzeń:
 
 * Usługa jest zatrzymana ręcznie, za pomocą portalu Azure lub odpowiednie polecenie interfejsu API programu Graph 
 * Nowe synchronizacji początkowej zostanie wywołany za pomocą **Wyczyść stan i uruchom ponownie** opcji w portalu Azure lub za pomocą odpowiedniego polecenia interfejsu API programu Graph. Czyści wszystkie przechowywane znaku wodnego i powoduje, że wszystkie obiekty źródłowy ma zostać obliczone ponownie.
@@ -167,7 +168,7 @@ Jeśli użytkownik nie dodano, zaktualizowane lub usunięte w systemie docelowym
 
 Te błędy można rozwiązać przez dostosowanie wartości atrybutów dla danego użytkownika w systemie źródłowym lub przez dopasowanie mapowań atrybutów nie powoduje konfliktów.   
 
-### <a name="quarantine"></a>Kwarantanny
+### <a name="quarantine"></a>Kwarantanna
 Większość lub wszystkie wywołania wykonane dla docelowego systemu stale się niepowodzeniem z powodu błędu (na przykład w przypadku poświadczeń administratora nieprawidłowy), a następnie zadanie inicjowania obsługi administracyjnej przechodzi w stan "kwarantanny". To jest wskazane [inicjowania obsługi administracyjnej raport z podsumowaniem](active-directory-saas-provisioning-reporting.md)oraz za pośrednictwem poczty e-mail, jeśli powiadomienia e-mail zostały skonfigurowane w portalu Azure. 
 
 W przypadku kwarantanny, częstotliwość synchronizacje przyrostowe stopniowo ograniczono raz dziennie. 
@@ -216,33 +217,31 @@ Podsumowanie czynników wpływających na czas potrzebny do ukończenia **począ
 * Żądanie limitów szybkości i ograniczania przepustowości zaimplementowana przez system docelowy. Niektóre systemy docelowe implementuje limity szybkości żądania i ograniczania przepustowości, która może wpłynąć na wydajność podczas operacji synchronizacji dużej. W tych warunkach aplikację, która odbiera zbyt wiele żądań zbyt wysoka może spowolnić jej szybkości odpowiedzi lub zamknąć połączenie. Aby zwiększyć wydajność, łącznik musi dostosować nie szybciej, niż może je przetwarzać aplikacji wysyłania żądań aplikacji. Łączniki inicjowania obsługi administracyjnej utworzony przez firmę Microsoft należy dostosowania. 
 
 * Liczby i rozmiarów przypisanych grup. Synchronizowanie przypisanych grup trwa dłużej niż synchronizowania użytkowników. Liczba i rozmiary przypisanych grup wpływ na wydajność. Jeśli aplikacja ma [mapowania włączona dla grupy obiektów synchronizacji](active-directory-saas-customizing-attribute-mappings.md#editing-group-attribute-mappings), właściwości grupy, takie jak nazwy grup i członkostw są synchronizowane oprócz użytkowników. Te dodatkowe synchronizacje będzie trwało dłużej niż synchronizowanie tylko obiekty użytkownika.
- 
 
-## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-**Jak można śledzić postęp bieżącego zadania inicjowania obsługi administracyjnej**
+##<a name="how-can-i-tell-if-users-are-being-provisioned-properly"></a>Jak sprawdzić, jeśli użytkownicy są inicjowana prawidłowo?
 
-Zobacz [inicjowania obsługi administracyjnej Przewodnik po raportowaniu](active-directory-saas-provisioning-reporting.md).
+Wszystkie operacje wykonane przez użytkownika usługi inicjowania obsługi administracyjnej są rejestrowane w usłudze Azure AD dzienniki inspekcji. Obejmuje to wszystkie operacje wprowadzone w systemach źródłowych i docelowych, a także dane użytkownika został odczytu lub zapisu podczas każdej operacji odczytu i zapisu.
 
-**Jak wiedzą, jeśli użytkownicy nie mogą pobrać udostępniane poprawnie?**
+Informacje dotyczące sposobu odczytu inspekcji logowania w portalu Azure znajdują się w temacie [inicjowania obsługi administracyjnej Przewodnik po raportowaniu](active-directory-saas-provisioning-reporting.md).
 
-Wszystkie błędy są rejestrowane w usłudze Azure AD dzienniki inspekcji. Aby uzyskać więcej informacji, zobacz [inicjowania obsługi administracyjnej Przewodnik po raportowaniu](active-directory-saas-provisioning-reporting.md).
 
-**Jak można utworzyć aplikację, która współdziała z usługą udostępniania?**
+##<a name="how-do-i-troubleshoot-issues-with-user-provisioning"></a>Jak rozwiązywać problemy z inicjowaniem obsługi administracyjnej użytkowników?
 
-Zobacz [przy użyciu SCIM do automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning).
+Oparta na scenariuszu wskazówki na temat rozwiązywania problemów inicjowania obsługi użytkowników, zobacz [problemów, konfigurowanie i Inicjowanie obsługi użytkowników aplikacji](active-directory-application-provisioning-content-map.md).
 
-**Jak przesłać opinię do zespołu inżynieryjnego**
 
-Skontaktuj się z nami za pośrednictwem [forum opinii w usłudze Azure Active Directory](https://feedback.azure.com/forums/169401-azure-active-directory/).
+##<a name="what-are-the-best-practices-for-rolling-out-automatic-user-provisioning"></a>Jakie są najlepsze rozwiązania dotyczące wdrażania użytkownika automatycznego inicjowania obsługi?
+
+> [!VIDEO https://www.youtube.com/embed/MAy8s5WSe3A]
+
+Przykładowe wdrożenie krok po kroku planu do obsługi ruchu wychodzącego użytkownika do aplikacji, zobacz [tożsamości w przewodniku wdrażania programu Inicjowanie obsługi użytkowników](https://aka.ms/userprovisioningdeploymentplan)/
 
 
 ## <a name="related-articles"></a>Pokrewne artykuły:
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS](active-directory-saas-tutorial-list.md)
+* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS](saas-apps/tutorial-list.md)
 * [Dostosowywanie mapowań atrybutów do inicjowania obsługi użytkowników](active-directory-saas-customizing-attribute-mappings.md)
 * [Tworzenie wyrażeń na potrzeby mapowań atrybutów](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Filtry zakresu dla Inicjowanie obsługi użytkowników](active-directory-saas-scoping-filters.md)
 * [Włączanie automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji przy użyciu SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Omówienie synchronizacji interfejsu API usługi Azure AD](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
-* [Plan wdrożenia krok po kroku dla aplikacji Inicjowanie obsługi użytkowników ruchu wychodzącego](https://aka.ms/userprovisioningdeploymentplan)
-

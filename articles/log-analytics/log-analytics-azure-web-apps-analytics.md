@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 06/26/2018
 ms.author: magoedte
-ms.openlocfilehash: c44546ffe65a0849b485fb0d2dd169e4216ae80a
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 5426c9c5727d76d401c00b6e7338688b8f064ad0
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261372"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021241"
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Wyświetl dane analityczne metryki różnych zasobów aplikacji sieci Web Azure
 
@@ -57,8 +57,7 @@ W przeciwieństwie do większości innych rozwiązań analizy dzienników danych
 
 Wykonaj poniższe kroki, aby skonfigurować rozwiązanie Analytics aplikacji sieci Web platformy Azure dla obszarów roboczych.
 
-1. Włącz rozwiązania analizy aplikacji sieci Web platformy Azure z [witrynę Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureWebAppsAnalyticsOMS?tab=Overview) lub przy użyciu procesu opisanego w [rozwiązań dodać analizy dzienników z galerii rozwiązań](log-analytics-add-solutions.md).
-2. [Włącz rejestrowanie metryki zasobów platformy Azure, aby Analiza dzienników przy użyciu programu PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell).
+1. [Włącz rejestrowanie metryki zasobów platformy Azure, aby Analiza dzienników przy użyciu programu PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell).
 
 Rozwiązania Azure Web Apps Analytics zbiera dwóch zestawów metryki z platformy Azure:
 
@@ -89,7 +88,7 @@ Po dodaniu rozwiązania analizy aplikacji sieci Web platformy Azure do swojego o
 
 ### <a name="view-azure-web-apps-analytics-information"></a>Wyświetlanie informacji o Analytics aplikacji sieci Web Azure
 
-Kliknij przycisk **Analytics aplikacji sieci Web Azure** Kafelek, aby otworzyć **Analytics aplikacji sieci Web Azure** pulpitu nawigacyjnego. Pulpit nawigacyjny zawiera bloki w poniższej tabeli. Każdy blok zawiera listę elementów do dziesięciu spełniających kryteria tego bloku dla określonego zakresu i zakres czasu. Można uruchomić wyszukiwania dziennika, który zwraca wszystkie rekordy, klikając **zobaczyć wszystkie** w dolnej części bloku lub przez kliknięcie nagłówka bloku.
+Kliknij przycisk **Analytics aplikacji sieci Web Azure** Kafelek, aby otworzyć **Analytics aplikacji sieci Web Azure** pulpitu nawigacyjnego. Na pulpicie nawigacyjnym znajdują się bloki wymienione w poniższej tabeli. Każdy blok zawiera listę elementów do dziesięciu spełniających kryteria tego bloku dla określonego zakresu i zakres czasu. Możesz uruchomić przeszukiwanie dzienników, które zwróci wszystkie rekordy. W tym celu kliknij przycisk **Zobacz wszystko** na dole bloku lub kliknij nagłówek bloku.
 
 
 | Kolumna | Opis |
@@ -120,7 +119,7 @@ Główną przyczyną pokazujący, że dane są tak, aby można zidentyfikować a
 
 Z poniższą ilustracją dziennik wyszukiwania przykładzie, można stwierdzić, że *anugup3* aplikacji sieci web ma znacznie wyższa czas odpowiedzi od innych aplikacji sieci web.
 
-![Przykład wyszukiwania dziennika](./media/log-analytics-azure-web-apps-analytics/web-app-search-example.png)
+![przykład przeszukiwania dzienników](./media/log-analytics-azure-web-apps-analytics/web-app-search-example.png)
 
 ### <a name="app-service-plans"></a>Plany usługi App Service
 

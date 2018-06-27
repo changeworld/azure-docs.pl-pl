@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cshoe
-ms.openlocfilehash: 4f20e79ea6cb2d9d403f4451f595516d5c2e9373
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: ad313c11fb88ec7992220d43c25ca75bf65acc56
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650744"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025909"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Przy użyciu sygnatury dostępu współdzielonego (SAS)
 
@@ -48,11 +48,11 @@ Typowy scenariusz, w których sygnatury dostępu Współdzielonego jest użytecz
 
 Wiele usług rzeczywistych może używać hybrydowego te dwie metody. Na przykład niektóre dane może być przetwarzane i sprawdzone za pomocą frontonu serwera proxy, podczas gdy inne dane zapisane i/lub odczytać bezpośrednio przy użyciu sygnatury dostępu Współdzielonego.
 
-Ponadto będą musieli używać sygnatury dostępu Współdzielonego do uwierzytelniania obiektu źródłowego w operacji kopiowania w niektórych scenariuszach:
+Ponadto należy używać sygnatury dostępu Współdzielonego do autoryzowania dostępu do obiektu źródłowego w operacji kopiowania w niektórych scenariuszach:
 
-* Podczas kopiowania obiektu blob do innego obiektu blob, która znajduje się w innego konta magazynu, należy użyć do uwierzytelniania źródłowego obiektu blob sygnatury dostępu Współdzielonego. Opcjonalnie można sygnatury dostępu Współdzielonego docelowego obiektu blob również uwierzytelniania.
-* Podczas kopiowania pliku do innego pliku, która znajduje się w innego konta magazynu, należy użyć do uwierzytelniania w pliku źródłowym sygnatury dostępu Współdzielonego. Sygnatury dostępu Współdzielonego można opcjonalnie użyć do uwierzytelniania również plik docelowy.
-* Podczas kopiowania obiektu blob do pliku lub pliku do obiektu blob, należy użyć sygnatury dostępu Współdzielonego do uwierzytelniania obiektu źródłowego, nawet jeśli obiekty źródłowy i docelowy znajdują się w obrębie tego samego konta magazynu.
+* Podczas kopiowania obiektu blob do innego obiektu blob, która znajduje się w innego konta magazynu, należy użyć do autoryzowania dostępu do obiektu blob źródła sygnatury dostępu Współdzielonego. Sygnatury dostępu Współdzielonego można opcjonalnie użyć do autoryzowania dostępu do docelowego obiektu blob również.
+* Podczas kopiowania pliku do innego pliku, która znajduje się w innego konta magazynu, należy użyć sygnatury dostępu Współdzielonego do autoryzowania dostępu do pliku źródłowego. Sygnatury dostępu Współdzielonego można opcjonalnie użyć do autoryzowania dostępu w pliku docelowym.
+* Podczas kopiowania obiektu blob do pliku lub pliku do obiektu blob, możesz korzystać sygnatury dostępu Współdzielonego do autoryzowania dostępu do obiektu źródłowego, nawet jeśli obiekty źródłowy i docelowy znajdują się w obrębie tego samego konta magazynu.
 
 ## <a name="types-of-shared-access-signatures"></a>Rodzaje sygnatur dostępu współdzielonego
 Można utworzyć dwa rodzaje sygnatur dostępu współdzielonego:
@@ -61,7 +61,7 @@ Można utworzyć dwa rodzaje sygnatur dostępu współdzielonego:
 * **Sygnatura dostępu Współdzielonego konta.** Konto sygnatury dostępu Współdzielonego delegatów dostęp do zasobów w co najmniej jednej usługi magazynu. Wszystkie operacje dostępne za pomocą sygnatury dostępu Współdzielonego usługi są również dostępne za pośrednictwem konta sygnatury dostępu Współdzielonego. Ponadto przy użyciu sygnatury dostępu Współdzielonego konta, możesz delegować dostęp do operacji, które są stosowane do danej usługi, takie jak **pobierania/ustawiania właściwości usługi** i **uzyskać statystyki usługi**. Możesz również delegować dostęp do operacji odczytu, zapisu i usuwania dla kontenerów obiektów blob, tabel, kolejek i udziałów plików, co jest niedozwolone w wypadku sygnatury dostępu współdzielonego usługi. Zobacz [konstruowania SAS konta](https://msdn.microsoft.com/library/mt584140.aspx) Aby uzyskać szczegółowe informacje na temat tworzenia tokenu sygnatury dostępu Współdzielonego konta.
 
 ## <a name="how-a-shared-access-signature-works"></a>Jak działa sygnatury dostępu współdzielonego
-Sygnatury dostępu współdzielonego jest podpisem identyfikator URI, który wskazuje na jeden lub więcej zasobów magazynu i zawiera token, który zawiera specjalnego zestawu parametrów zapytania. Token wskazuje, jak zasoby mogą uzyskiwać przez klienta. Jeden z parametrów zapytania, podpisu, jest utworzone na podstawie parametrów sygnatury dostępu Współdzielonego i podpisany przy użyciu klucza konta. Ta sygnatura jest używany przez usługi Azure Storage do uwierzytelniania sygnatury dostępu Współdzielonego.
+Sygnatury dostępu współdzielonego jest podpisem identyfikator URI, który wskazuje na jeden lub więcej zasobów magazynu i zawiera token, który zawiera specjalnego zestawu parametrów zapytania. Token wskazuje, jak zasoby mogą uzyskiwać przez klienta. Jeden z parametrów zapytania, podpisu, jest utworzone na podstawie parametrów sygnatury dostępu Współdzielonego i podpisany przy użyciu klucza konta. Ta sygnatura jest używany przez usługi Azure Storage do autoryzowania dostępu do zasobów pamięci masowej.
 
 Oto przykład identyfikatora URI połączenia SAS, przedstawiający identyfikator URI zasobu i tokenu sygnatury dostępu Współdzielonego:
 
@@ -69,20 +69,20 @@ Oto przykład identyfikatora URI połączenia SAS, przedstawiający identyfikato
 
 SAS token jest generowanie na ciąg *klienta* po stronie (zobacz [przykłady SAS](#sas-examples) sekcji Przykłady kodu). Token sygnatury dostępu Współdzielonego, które można wygenerować z biblioteki klienta usługi storage, na przykład nie będzie śledzona przez usługi Azure Storage w dowolny sposób. Po stronie klienta, można utworzyć nieograniczoną liczbę tokeny sygnatury dostępu Współdzielonego.
 
-Gdy klient poda identyfikatora URI sygnatury dostępu Współdzielonego do magazynu Azure jako część żądania, usługa sprawdza SAS parametry i podpis, aby sprawdzić, czy jest nieprawidłowa dla żądania uwierzytelniania. Jeśli usługa sprawdza, czy podpis jest prawidłowy, a następnie żądanie jest uwierzytelniane. W przeciwnym razie żądanie zostało odrzucone z kodem błędu 403 (Dostęp zabroniony).
+Gdy klient poda identyfikatora URI sygnatury dostępu Współdzielonego do magazynu Azure jako część żądania, usługa sprawdza SAS parametry i podpis, aby sprawdzić, czy jest nieprawidłowa dla żądania uwierzytelniania. Jeśli usługa sprawdza, czy podpis jest prawidłowy, a następnie żądanie jest autoryzowane. W przeciwnym razie żądanie zostało odrzucone z kodem błędu 403 (Dostęp zabroniony).
 
 ## <a name="shared-access-signature-parameters"></a>Parametry sygnatury dostępu współdzielonego
 Sygnatura dostępu Współdzielonego konta i tokeny sygnatury dostępu Współdzielonego usługi obejmują niektóre typowe parametry, a także zająć kilka parametrów, które są inne.
 
 ### <a name="parameters-common-to-account-sas-and-service-sas-tokens"></a>Parametry wspólne dla konta sygnatury dostępu Współdzielonego i tokeny sygnatury dostępu Współdzielonego usługi
 * **Wersja interfejsu API** opcjonalny parametr określający wersję usługi magazynu do użycia, można wykonać żądania.
-* **Wersja usługi** wymaganym parametrem, który określa wersję usługi magazynu do użycia uwierzytelniania żądania.
+* **Wersja usługi** wymaganym parametrem, który określa wersję usługi magazynu do użycia autoryzować żądania.
 * **Godzina rozpoczęcia.** Jest to czas, w którym zaczyna obowiązywać sygnatury dostępu Współdzielonego. Czas rozpoczęcia sygnatury dostępu współdzielonego jest opcjonalne. W przypadku pominięcia czas rozpoczęcia sygnatury dostępu Współdzielonego obowiązuje natychmiast. Czas rozpoczęcia musi być wyrażony w formacie UTC (Coordinated Universal Time) z specjalne oznaczeniem UTC ("Z"), na przykład `1994-11-05T13:15:30Z`.
 * **Czas wygaśnięcia.** Jest to czas, po którym skojarzenia zabezpieczeń nie jest już prawidłowy. Najlepszym rozwiązaniem jest Określ czas wygaśnięcia dla sygnatury dostępu Współdzielonego lub powiązać ją z zasadami dostępu przechowywane. Czas wygaśnięcia musi być wyrażony w formacie UTC (Coordinated Universal Time) z specjalne oznaczeniem UTC ("Z"), na przykład `1994-11-05T13:15:30Z` (Zobacz więcej poniżej).
 * **Uprawnienia.** Uprawnienia określone na sygnatury dostępu Współdzielonego wskazują, jakie operacje klienta można wykonywać względem zasobów pamięci masowej przy użyciu sygnatury dostępu Współdzielonego. Uprawnienia dostępne są różne dla konta sygnatury dostępu Współdzielonego i sygnatury dostępu Współdzielonego usługi.
 * **IP.** Opcjonalny parametr określający adres IP lub zakres adresów IP poza platformą Azure (zobacz sekcję [stan konfiguracji sesji Routing](../../expressroute/expressroute-workflows.md#routing-session-configuration-state) dla Express Route) służąca do akceptowania żądań.
 * **Protokół.** Opcjonalny parametr, który określa protokół, który jest dozwolony dla żądania. Możliwe wartości to zarówno protokołu HTTPS i HTTP (`https,http`), czyli tylko wartości domyślnej lub HTTPS (`https`). Należy pamiętać, że HTTP tylko nie jest dozwoloną wartość.
-* **Podpis.** Podpis jest tworzony z innych parametrów, określony jako część tokenu i ponownie szyfrowane. Jest on używany do uwierzytelniania sygnatury dostępu Współdzielonego.
+* **Podpis.** Podpis jest tworzony z innych parametrów, określony jako część tokenu i ponownie szyfrowane. Podpis jest używany do autoryzacji dostępu do zasobów magazynu określony.
 
 ### <a name="parameters-for-a-service-sas-token"></a>Parametry dla tokenu sygnatury dostępu Współdzielonego usługi
 * **Zasobów pamięci masowej.** Zasobów magazynu, dla których możesz delegować dostęp za pomocą usługi SAS obejmują:
@@ -118,7 +118,7 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&s
 | Uprawnienia |`sp=rw` |Uprawnienia przyznane przez sygnatury dostępu Współdzielonego obejmują Read (r) i zapisu (w). |
 | Zakres adresów IP |`sip=168.1.5.60-168.1.5.70` |Zakres adresów IP, z których będą akceptowane żądania. |
 | Protokół |`spr=https` |Dozwolone są tylko żądania przy użyciu protokołu HTTPS. |
-| Podpis |`sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D` |Używany do uwierzytelniania dostępu do obiektu blob. Podpis jest HMAC obliczona ciąg do logowania i klucz przy użyciu algorytm SHA256, a następnie kodowany w formacie Base64. |
+| Podpis |`sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D` |Używany do autoryzacji dostępu do obiektu blob. Podpis jest HMAC obliczona ciąg do logowania i klucz przy użyciu algorytm SHA256, a następnie kodowany w formacie Base64. |
 
 ### <a name="account-sas-uri-example"></a>Przykład identyfikatora URI połączenia SAS konta
 
@@ -151,19 +151,19 @@ Różnica między dwoma formularzami jest ważne dla klucza scenariusz: odwołan
 1. Czas wygaśnięcia określony na sygnatury dostępu Współdzielonego zostanie osiągnięty.
 2. Czas wygaśnięcia określone w zasadach dostępu składowana odwołuje się sygnatury dostępu Współdzielonego osiągnięciu (jeśli istnieje odwołanie do zasad dostępu do przechowywanych i określa czas wygaśnięcia). Może to występować, ponieważ interwał upływa lub zmodyfikowano zasad dostępu przechowywane z upływem czasu w przeszłości, który jest jednym ze sposobów odwołać dostępu Współdzielonego.
 3. Zasady dostępu składowana odwołuje się sygnatury dostępu Współdzielonego jest usunięte, sposób, aby można było odwołać dostępu Współdzielonego. Należy pamiętać, że możesz ponownie utworzyć zasady dostępu do przechowywanych o dokładnie takiej samej nazwie, wszystkie istniejące tokeny sygnatury dostępu Współdzielonego ponownie będzie nieprawidłowa według uprawnienia skojarzone z tym zasadom dostępu przechowywanych (przy założeniu, że czas wygaśnięcia na sygnatury dostępu Współdzielonego nie przeszło). Mają zamiar odwołać dostępu Współdzielonego, należy użyć innej nazwy, jeśli należy ponownie utworzyć zasady dostępu z upływem czasu w przyszłości.
-4. Ponownego wygenerowania klucza konta, który został użyty do utworzenia sygnatury dostępu Współdzielonego. Trwa ponowne generowanie klucza konta spowoduje, że wszystkie składniki aplikacji przy użyciu tego klucza do uwierzytelnione, dopóki nie jest zaktualizowane do używania konta nowo wygenerowano ponownie klucz lub klucz prawidłowego konta.
+4. Ponownego wygenerowania klucza konta, który został użyty do utworzenia sygnatury dostępu Współdzielonego. Trwa ponowne generowanie klucza konta spowoduje, że wszystkie składniki aplikacji, które nie zezwalają, dopóki nie jest zaktualizowane do używania konta nowo wygenerowano ponownie klucz lub klucz prawidłowe konto przy użyciu tego klucza.
 
 > [!IMPORTANT]
 > Identyfikator URI sygnatury dostępu współdzielonego jest skojarzony z kluczem konta używane do tworzenia podpisu i skojarzonych przechowywane zasad dostępu (jeśli istnieje). Jeśli określono żadnych zasad dostępu przechowywane, jedynym sposobem, aby odwołać sygnatury dostępu współdzielonego jest zmienić klucz konta.
 
 ## <a name="authenticating-from-a-client-application-with-a-sas"></a>Uwierzytelniania z aplikacji klienta z sygnatury dostępu Współdzielonego
-Klient, który znajduje się w posiadaniu sygnatury dostępu Współdzielonego służy sygnatury dostępu Współdzielonego do uwierzytelniania żądań do konta magazynu, dla którego nie posiadają klucze konta. Sygnatury dostępu Współdzielonego może być uwzględniona w parametrach połączenia lub używana bezpośrednio z odpowiedniego konstruktora lub metody.
+Klient, który znajduje się w posiadaniu sygnatury dostępu Współdzielonego umożliwia autoryzować żądania do konta magazynu, dla którego nie posiadają klucze konta sygnatury dostępu Współdzielonego. Sygnatury dostępu Współdzielonego może być uwzględniona w parametrach połączenia lub używana bezpośrednio z odpowiedniego konstruktora lub metody.
 
 ### <a name="using-a-sas-in-a-connection-string"></a>W parametrach połączenia przy użyciu sygnatury dostępu Współdzielonego
 [!INCLUDE [storage-use-sas-in-connection-string-include](../../../includes/storage-use-sas-in-connection-string-include.md)]
 
 ### <a name="using-a-sas-in-a-constructor-or-method"></a>Przy użyciu sygnatury dostępu Współdzielonego w konstruktorze lub — metoda
-Kilka konstruktorów biblioteki klienta magazynu Azure i przeciążenia metody oferują parametrem sygnatury dostępu Współdzielonego, aby mógł uwierzytelnić żądania do usługi z sygnatury dostępu Współdzielonego.
+Kilka konstruktorów biblioteki klienta magazynu Azure i przeciążenia metody oferują parametrem SAS, dzięki czemu można autoryzować żądania do usługi z sygnatury dostępu Współdzielonego.
 
 Na przykład tutaj identyfikator URI sygnatury dostępu Współdzielonego służy do tworzenia odwołanie do blokowego obiektu blob. Sygnatury dostępu Współdzielonego zapewnia poświadczenia tylko wymagane dla żądania. Odwołanie do blokowych obiektów blob są używane do operacji zapisu:
 
@@ -221,7 +221,7 @@ Poniższe zalecenia dotyczące używania sygnatur dostępu współdzielonego mog
 5. **Należy zachować ostrożność, czas rozpoczęcia sygnatury dostępu Współdzielonego.** Jeśli na sygnatury dostępu Współdzielonego, aby ustawić czas rozpoczęcia **teraz**, następnie z powodu zegara pochylanie (różnice w bieżącej godziny zgodnie z różnych maszyn), błędów może występować sporadycznie w pierwszym kilka minut. Ogólnie rzecz biorąc ustawić czas rozpoczęcia w przeszłości co najmniej 15 minut. Lub nie należy ustawiać go, który ułatwi prawidłowe natychmiast we wszystkich przypadkach. Ogólnie rzecz biorąc to samo dotyczy również — czas wygaśnięcia należy pamiętać, że można zaobserwować maksymalnie 15 minut zegara pochylenia w żadnym kierunku na każde żądanie. W przypadku klientów z wersją REST przed 2012-02-12 maksymalny czas trwania SAS, która nie odwołuje się do zasad dostępu do przechowywanych jest 1 godziny, a wszystkie zasady Określanie długoterminowych niż który zakończy się niepowodzeniem.
 6. **Być określony z zasobem, aby można było uzyskać dostęp.** Najbezpieczniejszym rozwiązaniem jest zapewnienie użytkownika przy minimalnych wymaganych uprawnień. Jeśli użytkownik potrzebuje tylko do odczytu w pojedynczej jednostki, następnie przyznać im dostęp do odczytu do tego pojedynczej jednostki, a nie odczytu/zapisu/usuwania dostęp do wszystkich jednostek. Ułatwia to również zmniejszyć szkody, jeśli sygnatury dostępu Współdzielonego zostanie naruszony, ponieważ sygnatury dostępu Współdzielonego ma mniej energii w ręce osoba atakująca.
 7. **Dowiedz się, że Twoje konto będą naliczane za bez użycia, w tym odbywa się za pomocą sygnatury dostępu Współdzielonego.** Jeśli należy zapewnić dostęp do zapisu do obiektu blob, użytkownik może wybrać do przekazania obiektu blob 200GB. Jeśli zostały podane je również dostęp do odczytu, mogą one jej pobranie 10 razy ponoszenia 2 TB w kosztach wyjście dla Ciebie. Podaj ponownie, ograniczone uprawnienia, aby ułatwić uniknięcie potencjalnych akcji złośliwych użytkowników. Użyj sygnatury dostępu Współdzielonego w krótkim okresie, aby zmniejszyć to zagrożenie (ale być mając na uwadze zegara na czas zakończenia).
-8. **Sprawdzanie poprawności danych napisane przy użyciu sygnatury dostępu Współdzielonego.** Gdy aplikacja kliencka zapisuje dane do konta magazynu, należy pamiętać, że mogą być problemy z tymi danymi. Jeśli aplikacja wymaga czy danych można sprawdzić poprawności lub autoryzacji, zanim będzie gotowy do użycia, należy wykonać tej weryfikacji po zapisaniu danych i zanim zostanie on użyty przez aplikację. Takie rozwiązanie chroni także uszkodzony lub złośliwymi danych zapisywane do swojego konta przez użytkownika, który prawidłowo nabyte sygnatury dostępu Współdzielonego lub przez użytkownika, wykorzystaniu ujawnione sygnatury dostępu Współdzielonego.
+8. **Sprawdzanie poprawności danych napisane przy użyciu sygnatury dostępu Współdzielonego.** Gdy aplikacja kliencka zapisuje dane do konta magazynu, należy pamiętać, że mogą być problemy z tymi danymi. Jeśli aplikacja wymaga się, że dane można sprawdzić poprawności lub autoryzacji, zanim będzie gotowy do użycia, należy wykonać tej weryfikacji po zapisaniu danych i zanim zostanie on użyty przez aplikację. Takie rozwiązanie chroni także uszkodzony lub złośliwymi danych zapisywane do swojego konta przez użytkownika, który prawidłowo nabyte sygnatury dostępu Współdzielonego lub przez użytkownika, wykorzystaniu ujawnione sygnatury dostępu Współdzielonego.
 9. **Nie używaj sygnatury dostępu Współdzielonego.** Czasami ryzyko związane z określoną operację względem konta magazynu przeważają korzyści wynikające z sygnatury dostępu Współdzielonego. W takich operacjach utworzyć usługę warstwy środkowej, która zapisuje na koncie magazynu po wykonaniu firm reguły sprawdzania poprawności, uwierzytelnianie i inspekcji. Ponadto czasami jest łatwiejsze do zarządzania dostępem w inny sposób. Na przykład, jeśli chcesz wszystkie obiekty BLOB w kontenerze publicznie był bardziej czytelny, możesz wprowadzić kontenera publicznego, zamiast zapewnienie dostępu do wszystkich klientów sygnatury dostępu Współdzielonego.
 10. **Umożliwia monitorowanie aplikacji analityka magazynu.** Rejestrowanie i metryk umożliwia obserwować żadnych kolekcji w niepowodzeń uwierzytelniania z powodu awarii w usłudze dostawcy SAS lub przypadkowego usuwania zasad dostępu przechowywane. Zobacz [Blog zespołu usługi Magazyn Azure](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx) Aby uzyskać dodatkowe informacje.
 

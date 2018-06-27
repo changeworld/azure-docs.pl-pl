@@ -39,7 +39,7 @@ Ten krok jest wykonywane w programie Windows PowerShell dla interfejsu StorSimpl
 Jeśli używasz konsoli szeregowej urządzenia do nawiązania połączenia interfejsu programu Windows PowerShell, wykonaj następujące kroki.
 
 #### <a name="to-initiate-the-service-data-encryption-key-change"></a>Aby zainicjować zmiany klucza szyfrowania danych usługi
-1. Wybierz opcję 1, aby zalogować się z pełnym dostępem.
+1. Wybierz opcję 1, **Zaloguj się przy użyciu pełnego dostępu**.
 2. W wierszu polecenia wpisz:
    
      `Invoke-HcsmServiceDataEncryptionKeyChange`
@@ -60,7 +60,7 @@ Te czynności należy wykonać w interfejsie programu Windows PowerShell urządz
 Wykonaj poniższe kroki, aby zaktualizować usługę szyfrowania danych na urządzeniu.
 
 #### <a name="to-update-the-service-data-encryption-key"></a>Aby zaktualizować klucz szyfrowania danych usługi
-1. Umożliwia łączenie z konsolą programu Windows PowerShell dla StorSimple. Wybierz opcję 1, aby zalogować się z pełnym dostępem.
+1. Umożliwia łączenie z konsolą programu Windows PowerShell dla StorSimple. Wybierz opcję 1, **Zaloguj się przy użyciu pełnego dostępu**.
 2. W wierszu polecenia wpisz:
    
     `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`

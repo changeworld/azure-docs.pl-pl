@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: c5aaf9869326f2de86d3bff33f36e8f967f3e6fa
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 3e058242840a3fa8b86c9ae9d5a0940cc02f04d2
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210005"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020393"
 ---
 # <a name="configure-stateful-reliable-services"></a>Skonfiguruj stanowe niezawodne usługi
 Istnieją dwa zestawy ustawień konfiguracji niezawodne usługi. Jeden zestaw jest globalne dla wszystkich usług niezawodnej w klastrze, gdy drugi zestaw jest przeznaczony dla konkretnego niezawodnej usługi.
@@ -82,6 +82,11 @@ Domyślnie środowisko uruchomieniowe usługi sieć szkieletowa usług Azure szu
 
 ### <a name="replicator-security-configuration"></a>Konfiguracja zabezpieczeń replikatora
 Replikator konfiguracji zabezpieczeń służą do zabezpieczania kanał komunikacyjny używany podczas replikacji. Oznacza to, usługi nie będą widoczne siebie nawzajem ruch związany z replikacją, zapewnia, że dane, które jest zyskuje dużą dostępność również jest bezpieczne. Domyślnie puste zabezpieczeń sekcji konfiguracji uniemożliwia zabezpieczeń replikacji.
+
+> [!IMPORTANT]
+> W węzłach Linux certyfikaty muszą być sformatowane PEM. Aby uzyskać więcej informacji o lokalizacji i konfigurowanie certyfikatów dla systemu Linux, zobacz [Konfigurowanie certyfikatów w systemie Linux](./service-fabric-configure-certificates-linux.md). 
+> 
+> 
 
 ### <a name="default-section-name"></a>Domyślna nazwa sekcji
 ReplicatorSecurityConfig

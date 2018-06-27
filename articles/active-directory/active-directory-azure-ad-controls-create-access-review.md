@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.component: compliance-reports
-ms.date: 05/14/2018
+ms.date: 06/21/2018
 ms.author: rolyon
-ms.openlocfilehash: 6a1d4a55074630cc20c98202d2e94ec682c323f4
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 2c4e26bb6f2cd144d00d9e4ada92d756fe68418b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234077"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020410"
 ---
 # <a name="create-an-access-review-of-group-members-or-application-access-with-azure-ad"></a>Tworzenie przeglądu dostępu do członków grupy lub dostęp do aplikacji z usługą Azure AD
 
@@ -26,7 +26,7 @@ Przydziały dostępu nieodświeżone "", gdy użytkownicy mają dostęp, któryc
 
 ## <a name="create-an-access-review"></a>Utwórz przegląd dostępu
 
-1. Jako administrator globalny, przejdź do [dostępu monitoruje strony](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)i wybierz **programy**.
+1. Jako administrator globalny lub administrator konta użytkownika, przejdź do [dostępu monitoruje strony](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)i wybierz **programy**.
 
 2. Wybierz program, który zawiera formant przeglądu dostępu, który chcesz utworzyć. **Domyślny Program** występuje zawsze, lub można utworzyć inny program. Na przykład można mieć jeden program dla każdego inicjatywy zgodności lub celach biznesowych.
 
@@ -38,7 +38,7 @@ Przydziały dostępu nieodświeżone "", gdy użytkownicy mają dostęp, któryc
 
 6. Aby cykliczny dostęp do przeglądu, zmiana częstotliwości z jeden raz w celu co tydzień, co miesiąc, co kwartał lub co rok i użyj suwaka lub tekst pola, aby określić, ile dni każdego przeglądu serii cyklicznych będzie otwarte dla danych wejściowych recenzentów. Na przykład maksymalny czas trwania dla można ustawić dla miesięczne przeglądu jest 27 dni, aby uniknąć nakładania się recenzji. 
 
-7.  Cykl przeglądu dostępu może być zakończona na 3 sposoby: działa w sposób ciągły zacząć przeglądami przez czas nieokreślony, aż do określonej daty lub po ukończeniu zdefiniowanej liczby wystąpień. Użytkownik lub administrator globalny innej można zatrzymać serii po utworzeniu, zmieniając datę w obszarze Ustawienia, aby go kończy się w tym dniu.
+7.  Cykl przeglądu dostępu może być zakończona na 3 sposoby: działa w sposób ciągły zacząć przeglądami przez czas nieokreślony, aż do określonej daty lub po ukończeniu zdefiniowanej liczby wystąpień. Inny administrator konta użytkownika lub inny administrator globalny może zatrzymać serii po utworzeniu, zmieniając datę w obszarze Ustawienia, aby kończy się on w tym dniu.
 
 8. Przeglądy dostępu może być członkami grupy lub użytkowników, którzy są przypisani do aplikacji. Dostęp można dodatkowo zakresu przeglądu do przejrzenia tylko użytkownicy gościa który są elementami członkowskimi (lub przypisane do aplikacji), zamiast przegląd wszystkich użytkowników, którzy są członkami lub mają dostęp do aplikacji.
 

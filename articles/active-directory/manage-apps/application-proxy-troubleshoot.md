@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/21/2018
+ms.date: 06/26/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: f3c767da249d10896ef1792ce4a5ed72ba3fa418
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 8740557471d1cc528e8b7440984c7a3c624ee693
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35303604"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017668"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Rozwiązywanie problemów z serwera Proxy aplikacji i komunikaty o błędach
 Jeśli wystąpi błąd podczas uzyskiwania dostępu do opublikowanych aplikacji lub w przypadku publikowania aplikacji, sprawdź następujące opcje, aby zobaczyć, czy serwer Proxy aplikacji usługi AD Microsoft Azure działa poprawnie:
@@ -40,8 +40,6 @@ Na przykład, jeśli publikowanie ścieżka https://yourapp/app , ale aplikacja 
 W przypadku zmiany ścieżki uwzględnić zawartość, której dotyczy odwołanie, ale mimo to muszą użytkownikom trafić na bardziej łącze w ścieżce, zobacz wpis w blogu [ustawienie łącze prawym dla aplikacji serwera Proxy aplikacji w usłudze Azure AD dostęp panelu i uruchamianie aplikacji usługi Office 365](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/).
 
 ## <a name="connector-errors"></a>Błędy łącznika
-
-Użyj [Azure AD aplikacji serwera Proxy łącznika porty testu narzędzia](https://aadap-portcheck.connectorporttest.msappproxy.net/) można zweryfikować, że Twoje łącznika może nawiązać połączenie usługi Serwer Proxy aplikacji. Co najmniej upewnij się, że region środkowe stany USA i najbliższego region jest wszystkich zielony zaznaczeń. Ponadto więcej zaznaczeń zielony oznacza większą elastyczność. 
 
 Jeśli rejestracja łącznika Kreator instalacji zakończy się niepowodzeniem, istnieją dwa sposoby wyświetlania przyczynę błędu. Albo poszukaj w dzienniku zdarzeń w obszarze **aplikacji i usług Logs\Microsoft\AadApplicationProxy\Connector\Admin**, lub uruchom następujące polecenie programu Windows PowerShell:
 

@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 04/23/2018
+ms.date: 06/26/2018
 ms.author: sashan
-ms.openlocfilehash: 8de70c01f4c04d6df85c2f5acfe9efe18ff59c0b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fb6e8f4420b739b5ac84f1d5c185fddc740c551a
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649690"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018517"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Użyj repliki tylko do odczytu, aby załadować równoważenie obciążeń zapytania tylko do odczytu (wersja zapoznawcza)
 
@@ -65,6 +65,7 @@ Aby sprawdzić, czy nawiązano połączenie z repliką tylko do odczytu, urucham
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 ```
 
+
 ## <a name="enable-and-disable-read-scale-out-using-azure-powershell"></a>Włączanie i wyłączanie odczytu skalowalnego w poziomie przy użyciu programu Azure PowerShell
 
 Zarządzanie odczytu skalowalnego w poziomie w programie Azure PowerShell wymaga grudnia 2016 wersji programu Azure PowerShell lub nowszej. W najnowszej wersji programu PowerShell, zobacz [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
@@ -106,6 +107,14 @@ Body:
 ```
 
 Aby uzyskać więcej informacji, zobacz [baz danych — Tworzenie lub aktualizowanie](/rest/api/sql/databases/createorupdate).
+
+## <a name="using-read-scale-out-with-geo-replicated-databases"></a>Przy użyciu odczytu skalowalnego w poziomie z bazami danych z replikacją geograficzną
+
+Jeśli jesteś przy użyciu odczytu skalowalnego w poziomie można załadować równoważenie obciążeń tylko do odczytu w bazie danych, która jest replikacją geograficzną (np. jako członek grupy trybu failover), upewnij się, że odczytu skalowalnego w poziomie jest włączona na serwera podstawowego i pomocniczego baz danych replikacją geograficzną. Daje to pewność ten sam efekt równoważenia obciążenia, gdy aplikacja łączy się nową podstawową po pracy awaryjnej. Jeśli łączysz się do dodatkowej bazy danych replikacją geograficzną z zasięgu odczytu włączona, sesje z `ApplicationIntent=ReadOnly` będą kierowane do jednej z replik taki sam sposób jak możemy trasy połączeń w głównej bazie danych.  Sesje bez `ApplicationIntent=ReadOnly` będą kierowane do podstawowej repliki pomocniczej replikacją geograficzną, który również jest tylko do odczytu. 
+
+> [!NOTE]
+> Podczas udostępniania wersji zapoznawczej nie zostaną wykonane działanie okrężne lub inne obciążenia zrównoważonym routingu między lokalne repliki pomocniczej bazie danych. 
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

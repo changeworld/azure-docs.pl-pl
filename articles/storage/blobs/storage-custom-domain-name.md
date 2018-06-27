@@ -1,35 +1,42 @@
 ---
-title: Konfigurowanie niestandardowej nazwy domeny dla punktu końcowego magazynu obiektów Blob platformy Azure | Dokumentacja firmy Microsoft
-description: Użyj portalu Azure, aby zamapować własną nazwę kanoniczną (CNAME) do punktu końcowego magazynu obiektów Blob na koncie magazynu Azure.
+title: Konfigurowanie niestandardowej nazwy domeny dla konta usługi Azure Storage | Dokumentacja firmy Microsoft
+description: Użyj portalu Azure, aby zamapować własną nazwę kanoniczną (CNAME) do punktu końcowego na koncie magazynu Azure Blob lub sieci web.
 services: storage
 author: tamram
 manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 06/26/2018
 ms.author: tamram
-ms.openlocfilehash: 2b776e8f40f6972a60f933b0104312b119439f38
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 2f4267c25dfd31e6f1d5ae3a832be06b5ef6c828
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
-ms.locfileid: "29559931"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017924"
 ---
-# <a name="configure-a-custom-domain-name-for-your-blob-storage-endpoint"></a>Konfigurowanie niestandardowej nazwy domeny dla punktu końcowego usługi Blob Storage
+# <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Konfigurowanie niestandardowej nazwy domeny dla konta magazynu Azure
 
-Można skonfigurować niestandardową domenę na potrzeby uzyskiwania dostępu do danych obiektów blob na koncie magazynu Azure. Domyślny punkt końcowy dla magazynu obiektów Blob jest `<storage-account-name>.blob.core.windows.net`. Jeśli mapujesz niestandardowych domen i poddomen, takich jak **www.contoso.com** do punktu końcowego obiektu blob magazynu konta użytkowników można następnie uzyskać dostęp do danych obiektów blob na koncie magazynu przy użyciu tej domeny.
+Można skonfigurować niestandardową domenę na potrzeby uzyskiwania dostępu do danych obiektów blob na koncie magazynu Azure. Domyślny punkt końcowy dla magazynu obiektów Blob jest `<storage-account-name>.blob.core.windows.net`. Można również użyć punktu końcowego sieci web wygenerowane jako część [funkcji statycznych witryn sieci Web (wersja zapoznawcza)](storage-blob-static-website.md). Jeśli mapujesz niestandardowych domen i poddomen, takich jak **www.contoso.com** do punktu końcowego magazynu obiektów blob lub sieci web konta użytkowników można następnie uzyskać dostęp do danych obiektów blob na koncie magazynu przy użyciu tej domeny.
 
 > [!IMPORTANT]
 > Usługa Azure Storage jeszcze natywnie obsługuje HTTPS z domen niestandardowych. Obecnie można [umożliwia dostęp do obiektów blob z domenami niestandardowymi za pośrednictwem protokołu HTTPS Azure CDN](storage-https-custom-domain-cdn.md).
 >
 
+> [!NOTE]  
+> Konta magazynu aktualnie obsługuje tylko jedną nazwę domeny niestandardowej dla konta. Oznacza to, że nie można zamapować niestandardową nazwę domeny na punktów końcowych usługi sieci web i obiektów blob.
+
 W poniższej tabeli przedstawiono kilka przykładowych adresy URL obiektu blob danych znajdujących się na koncie magazynu o nazwie **mojekontomagazynu**. Zarejestrowany domeny niestandardowej dla konta magazynu jest **www.contoso.com**:
 
 | Typ zasobu | Domyślny adres URL | Adres URL domeny niestandardowej |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | Konto magazynu | http://mystorageaccount.blob.core.windows.net | http://www.contoso.com |
 | Obiekt blob |http://mystorageaccount.blob.core.windows.net/mycontainer/myblob | http://www.contoso.com/mycontainer/myblob |
-| Nadrzędny kontener | http://mystorageaccount.blob.core.windows.net/myblob or http://mystorageaccount.blob.core.windows.net/$root/myblob| http://www.contoso.com/myblob lub http://www.contoso.com/$ głównego/mojblob |
+| Nadrzędny kontener | http://mystorageaccount.blob.core.windows.net/myblob lub http://mystorageaccount.blob.core.windows.net/$root/mojblob| http://www.contoso.com/myblob lub http://www.contoso.com/$root/mojblob |
+| Sieć Web |  http://mystorageaccount. [zone].web.core.windows.net/$web/[indexdoc] lub http://mystorageaccount. [ Zone].Web.Core.Windows.NET/[indexdoc] lub http://mystorageaccount. [ Zone].Web.Core.Windows.NET/$Web lub http://mystorageaccount. [ Zone].Web.Core.Windows.NET/ | http://www.contoso.com/$web lub http://www.contoso.com/ lub http://www.contoso.com/$web / [indexdoc] lub http://www.contoso.com/[indexdoc] |
+
+> [!NOTE]  
+> Wszystkie przykłady punkt końcowy usługi Blob poniżej dotyczą również punkt końcowy usługi sieci web.
 
 ## <a name="direct-vs-intermediary-domain-mapping"></a>Bezpośrednie a mapowanie pośredniczące domeny
 
@@ -81,7 +88,7 @@ Ta procedura umożliwia rejestrowanie niestandardowe domeny w przypadku domeny n
 1. W polu tekstowym na *domeny niestandardowe* bloku w [portalu Azure](https://portal.azure.com), wprowadź nazwę domeny niestandardowej, łącznie z poddomeny. Nie dołączaj *asverify*. Na przykład, jeśli Twoja domena to **contoso.com** i aliasu poddomeny **www**, wprowadź **www.contoso.com**. Jeśli Twoje domeny podrzędnej jest **zdjęć**, wprowadź **photos.contoso.com**. Poddomeny jest wymagana.
 1. Wybierz **Użyj pośredniej weryfikacji CNAME** wyboru.
 1. Wybierz **zapisać** na *domeny niestandardowe* bloku, aby zarejestrować domeny niestandardowej. Jeśli rejestracja zakończy się pomyślnie, zobaczysz portalu powiadomienie, że Twoje konto magazynu zostało pomyślnie zaktualizowane. W tym momencie domeny niestandardowej została zweryfikowana przez platformę Azure, ale nie ruch do Twojej domeny jest jeszcze rozsyłane do konta magazynu.
-1. Wróć do witryny sieci Web dostawcy usługi DNS i utwórz inny rekord CNAME mapujący z poddomeny na punkt końcowy usługi Blob. Na przykład określić poddomeny jako **www** lub **zdjęć** (bez *asverify*) i nazwy hosta jako **mystorageaccount.blob.core.windows.net** (gdzie **mojekontomagazynu** jest nazwą konta magazynu). W ramach tego kroku zakończeniu rejestracji domeny niestandardowej.
+1. Wróć do witryny sieci Web dostawcy usługi DNS i utwórz inny rekord CNAME mapujący z poddomeny na punkt końcowy usługi Blob. Na przykład określić poddomeny jako **www** lub **zdjęć** (bez *asverify*) i nazwy hosta jako **mystorageaccount.blob.core.windows.net**  (gdzie **mojekontomagazynu** jest nazwą konta magazynu). W ramach tego kroku zakończeniu rejestracji domeny niestandardowej.
 1. Na koniec możesz usunąć rekord CNAME utworzonego zawierający **asverify** poddomeny, ponieważ było konieczne tylko jako etap pośredniczące.
 
 Po Twoje nowy rekord CNAME zakończeniem propagacji przy użyciu systemu DNS, użytkownicy mogą wyświetlać dane obiektów blob przy użyciu domenę niestandardową, tak długo, jak długo mają odpowiednie uprawnienia.
@@ -158,3 +165,4 @@ Użyj [Set-AzureRmStorageAccount](/powershell/module/azurerm.storage/set-azurerm
 ## <a name="next-steps"></a>Kolejne kroki
 * [Zamapować niestandardową domenę na punkt końcowy Azure sieci dostarczania zawartości (CDN)](../../cdn/cdn-map-content-to-custom-domain.md)
 * [Dostęp do obiektów blob z domenami niestandardowymi za pośrednictwem protokołu HTTPS przy użyciu usługi Azure CDN](storage-https-custom-domain-cdn.md)
+* [Statyczna witryna internetowa hosting w usłudze Azure Blob Storage (wersja zapoznawcza)](storage-blob-static-website.md)

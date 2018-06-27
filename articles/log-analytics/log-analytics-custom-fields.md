@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: bwren
-ms.openlocfilehash: f0f3311f35f954f81560cad21e7f0e3bc850a094
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 59dbc4134ee11999e54d2eba51804939e7e14229
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28030710"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020740"
 ---
 # <a name="custom-fields-in-log-analytics"></a>Pola niestandardowe w analizy dzienników
 **Pola niestandardowe** funkcji analizy dzienników umożliwia rozszerzanie istniejących rekordów w analizy dzienników przez dodanie pola wyszukiwania.  Pola niestandardowe zostaną automatycznie wypełnione z danych wyodrębnionych z innych właściwości w tym samym rekordzie.
@@ -79,7 +79,7 @@ Można wyświetlić listę wszystkich pól niestandardowych w grupie zarządzani
 ## <a name="removing-a-custom-field"></a>Usuwanie pola niestandardowego
 Istnieją dwa sposoby usuwania niestandardowego pola.  Pierwsza to **Usuń** opcji dla każdego pola podczas wyświetlania pełną listę, zgodnie z powyższym opisem.  Inne metody jest pobrać rekordu i kliknij przycisk do lewej części pola.  Menu będzie mieć opcję, aby usunąć pola niestandardowego.
 
-## <a name="sample-walkthrough"></a>Przykładowe wskazówki
+## <a name="sample-walkthrough"></a>Przewodnik po przykładzie
 Poniższa sekcja przeprowadzi Cię przez kompletnym przykładem tworzenia niestandardowego pola.  W tym przykładzie wyodrębnia nazwę usługi w zdarzeń systemu Windows, które wskazują zmiana stanu usługi.  Zależy to od zdarzenia tworzone przez Menedżera sterowania usługami w dzienniku systemu na komputerach z systemem Windows.  Jeśli chcesz wykonać w tym przykładzie, musi być [zbierania zdarzeń informacji w dzienniku systemu](log-analytics-data-sources-windows-events.md).
 
 Firma Microsoft wpisz poniższe zapytanie do zwrócenia wszystkich zdarzeń z Menedżera kontroli usług mające Identyfikatorem zdarzenia 7036, który jest zdarzenie wskazujące uruchomienie lub zatrzymanie usługi.
@@ -96,13 +96,13 @@ Chcemy nazwę usługi, która jest wyświetlana w **RenderedDescription** właś
 
 **Kreator wyodrębniania pola** jest otwarty i **EventLog** i **EventID** wybrano pola w **przykład Main** kolumny.  Oznacza to, że pole niestandardowe są definiowane dla zdarzenia w dzienniku systemu identyfikator zdarzenia 7036.  To jest wystarczająca, dlatego nie należy wybrać inne pola.
 
-![Przykład głównego](media/log-analytics-custom-fields/main-example.png)
+![Główny przykład](media/log-analytics-custom-fields/main-example.png)
 
 Możemy wyróżnić nazwy usługi w **RenderedDescription** właściwości i użyj **usługi** Aby określić nazwę usługi.  Pole niestandardowe zostanie wywołana **Service_CF**.
 
 ![Pole tytułu](media/log-analytics-custom-fields/field-title.png)
 
-Firma Microsoft Zobacz, czy nazwa usługi jest identyfikowane prawidłowo niektóre rekordy, ale nie do innych użytkowników.   **Wyniki wyszukiwania** Pokaż nazwę dla tej części **Karta wydajności WMI** nie został wybrany.  **Podsumowanie** pokazuje, które rejestruje cztery z **DPRMA** usługi nieprawidłowo włączone dodatkowe word i dwa rekordy określone **Instalator modułów** zamiast **Instalator modułów systemu Windows**.  
+Firma Microsoft Zobacz, czy nazwa usługi jest identyfikowane prawidłowo niektóre rekordy, ale nie do innych użytkowników.   **Wyniki wyszukiwania** Pokaż nazwę dla tej części **Karta wydajności WMI** nie został wybrany.  **Podsumowanie** pokazuje, które rejestruje cztery z **DPRMA** usługi nieprawidłowo włączone dodatkowe word i dwa rekordy określone **Instalator modułów** zamiast **Instalatora modułów systemu Windows**.  
 
 ![Wyniki wyszukiwania](media/log-analytics-custom-fields/search-results-01.png)
 
@@ -130,7 +130,7 @@ Zobaczysz, że **Service_CF** zostało utworzone, ale nie została jeszcze dodan
 
 ![Liczba początkowa](media/log-analytics-custom-fields/initial-count.png)
 
-Po upływie chwilę, więc nowe zdarzenia są zbierane, zobaczysz, że który **Service_CF** pole jest teraz dodawane do rekordów, które spełniają kryteriów.
+Po upływie chwilę, więc nowe zdarzenia są zbierane, zobaczysz, że **Service_CF** pole jest teraz dodawane do rekordów, które spełniają kryteriów.
 
 ![Wyniki końcowe](media/log-analytics-custom-fields/final-results.png)
 

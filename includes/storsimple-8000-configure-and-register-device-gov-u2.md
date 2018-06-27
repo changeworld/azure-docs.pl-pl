@@ -6,7 +6,7 @@
 3. Zostanie wyświetlony monit o wybranie języka dla danego urządzenia. Wybierz język, a następnie naciśnij klawisz **Enter**.
    
     ![Konfigurowanie i rejestrowanie urządzenia StorSimple 1](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice1-gov-include.png)
-4. W przedstawionym menu konsoli szeregowej wybierz opcję 1, aby zalogować się z pełnymi uprawnieniami dostępu.
+4. W menu konsoli szeregowej, które są prezentowane, wybierz opcję 1, **Zaloguj się przy użyciu pełnego dostępu**.
    
     ![Rejestrowanie urządzenia StorSimple 2](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice2-gov-include.png)
 5. Wykonaj poniższe kroki, aby skonfigurować minimalne wymagane ustawienia sieciowe urządzenia.

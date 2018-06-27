@@ -10,22 +10,22 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.component: protection
-ms.date: 06/06/2017
+ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 885c7a144a2ac588e1f1b32fb03b7ed72d058e94
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 7c536a4e7f93a2f1ef42b7600513994dd80826a0
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233456"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020874"
 ---
 # <a name="how-to-perform-an-access-review-in-azure-ad-privileged-identity-management"></a>Jak przeprowadzić przegląd dostępu w usłudze Azure AD Privileged Identity Management
 Azure Active Directory (AD) Privileged Identity Management upraszcza, jak zarządzać uprzywilejowanego dostępu do zasobów w usłudze Azure AD i innych usług online firmy Microsoft, takich jak usługi Office 365 lub Microsoft Intune w przedsiębiorstwach.  
 
 Jeśli użytkownik został przypisany do roli administratora, administrator ról uprzywilejowanych w organizacji może poprosić o regularnie potwierdzić nadal potrzebujesz tej roli dla zadania. Może spowodować, że wiadomość e-mail zawierającą łącze lub można przejść bezpośrednio do [portalu Azure](https://portal.azure.com). Wykonaj kroki opisane w tym artykule, aby wykonać własnym przeglądu przypisane role.
 
-Jeśli administrator ról uprzywilejowanych zainteresowana przeglądami dostępu, Dowiedz się więcej na [jak rozpocząć Przegląd dostępu](active-directory-privileged-identity-management-how-to-start-security-review.md).
+Jeśli jesteś administratorem ról uprzywilejowanych lub zainteresowana przeglądami dostępu administratora globalnego, Dowiedz się więcej na [jak rozpocząć Przegląd dostępu](active-directory-privileged-identity-management-how-to-start-security-review.md).
 
 ## <a name="add-the-privileged-identity-management-application"></a>Dodawanie aplikacji Privileged Identity Management
 Możesz użyć aplikacji Azure AD Privileged Identity zarządzania (PIM) w [portalu Azure](https://portal.azure.com/) przeprowadzić zapoznania się z nimi.  Jeśli nie masz aplikacji usługi Azure AD Privileged Identity Management w portalu sieci, wykonaj następujące kroki, aby rozpocząć.

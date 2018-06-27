@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 06/28/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: dfbabb3bc2702e7c6ab5d0ba5c809a1bd04d0bbc
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 74e6428cf0536a7c8016be6cdf29071128bf4a3b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293011"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025830"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Zrozumienie łączniki serwera Proxy aplikacji usługi Azure AD
 
@@ -92,7 +92,6 @@ Podczas łączników zostanie automatycznie równoważyć obciążenie spowodowa
 
 Aby uzyskać więcej informacji o konfigurowaniu wychodzących reguł zapory, zobacz [pracy przy użyciu istniejących lokalnych serwerów proxy](application-proxy-configure-connectors-with-proxy-servers.md).
 
-Użyj [Azure AD aplikacji serwera Proxy łącznika porty testu narzędzia](https://aadap-portcheck.connectorporttest.msappproxy.net/) można zweryfikować, że Twoje łącznika może nawiązać połączenie usługi Serwer Proxy aplikacji. Co najmniej upewnij się, że region środkowe stany USA i najbliższego region jest wszystkich zielony zaznaczeń. Ponadto więcej zaznaczeń zielony oznacza większą elastyczność. 
 
 ## <a name="performance-and-scalability"></a>Wydajność i skalowalność
 
@@ -104,7 +103,7 @@ Wydajność łącznika jest związana z procesora CPU i sieci. Wydajność Proce
 
 Natomiast w pamięci jest mniejsza problemu dla łączników. Usługi online odpowiada on za dużo przetwarzania, a także cały ruch nieuwierzytelnione. Wszystko, co można zrobić w chmurze odbywa się w chmurze. 
 
-Równoważenie obciążenia między odbywa się łączniki grupy danego łącznika. Jak odmianą okrężnego do określenia, które łącznika w grupie służy poszczególnych żądań. Po wybraniu łącznika, firma Microsoft zachowuje koligacji sesję tego użytkownika i aplikacji w czasie trwania sesji. Jeśli z jakiegokolwiek powodu ten łącznik lub maszyny staną się niedostępne, ruch zostanie uruchomione, przechodząc do innego łącznika w grupie. Ta odporności jest również, dlaczego zaleca się wiele łączników.
+Równoważenie obciążenia między odbywa się łączniki grupy danego łącznika. Jak odmianą okrężnego do określenia, które łącznika w grupie służy poszczególnych żądań. Jeśli z jakiegokolwiek powodu, łącznik lub komputer jest niedostępny, ruch zostanie uruchomione, przechodząc do innego łącznika w grupie. Ta odporności jest również, dlaczego zaleca się wiele łączników.
 
 Innym czynnikiem wpływającym na wydajność jest jakość sieci między łączników, w tym: 
 

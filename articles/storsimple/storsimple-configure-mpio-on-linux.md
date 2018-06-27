@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 2fbae15c1c6a9ec886f57f9df903612ae10d8e12
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: df9f53694cd72a700d593550bfde13a4f25180db
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2018
-ms.locfileid: "27779095"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021757"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurowanie wielościeżkowego wejścia/wyjścia na hoście StorSimple z systemem CentOS
 W tym artykule opisano kroki wymagane do skonfigurowania Wielościeżkowe We/Wy (MPIO) na serwerze hosta Centos 6.6. Serwer hosta jest podłączony do urządzenia Microsoft Azure StorSimple wysokiej dostępności za pośrednictwem inicjatorów iSCSI. Opisuje szczegółowo automatycznego wykrywania urządzeń wielościeżkowego i ustawieniach określonych tylko dla woluminów StorSimple.
@@ -120,7 +120,7 @@ Ta sekcja zawiera szczegóły dotyczące wymagania wstępne dotyczące konfigura
    4. Aby zapewnić włączenie podczas rozruchu z inicjatora iSCSI, należy użyć `chkconfig` polecenie, aby włączyć usługę.
       
        `chkconfig iscsi on`
-   5. Aby sprawdzić, czy został poprawnie skonfigurować, uruchom polecenie:
+   5. Aby sprawdzić, czy zostało poprawnie skonfigurowane, uruchom polecenie:
       
        `chkconfig --list | grep iscsi`
       
@@ -438,7 +438,7 @@ Aby uzyskać więcej informacji, przejdź do [Użyj Rozwiązywanie problemów z 
 | &nbsp; |`chkconfig multipathd on` </br> LUB </br> `mpathconf –with_chkconfig y` |Włącz wielościeżkowe demon można uruchomić w czasie rozruchu |
 | &nbsp; |`multipathd –k` |Uruchom konsolę interakcyjne do rozwiązywania problemów |
 | &nbsp; |`multipath –l` |Lista połączeń wielościeżkowe i urządzeń |
-| &nbsp; |`mpathconf --enable` |Utwórz plik przykładowy mulitpath.conf w`/etc/mulitpath.conf` |
+| &nbsp; |`mpathconf --enable` |Utwórz plik przykładowy mulitpath.conf w `/etc/mulitpath.conf` |
 |  | | |
 
 ## <a name="next-steps"></a>Kolejne kroki

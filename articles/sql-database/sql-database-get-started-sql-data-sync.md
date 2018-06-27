@@ -1,28 +1,28 @@
 ---
-title: Konfigurowanie synchronizacji danych SQL Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Ten samouczek pokazuje, jak skonfigurować synchronizację danych SQL Azure (wersja zapoznawcza)
+title: Konfigurowanie synchronizacji danych SQL Azure | Dokumentacja firmy Microsoft
+description: Ten samouczek pokazuje, jak skonfigurować synchronizację danych SQL Azure
 services: sql-database
-author: douglaslms
+author: allenwux
 manager: craigg
 ms.service: sql-database
 ms.custom: load & move data
 ms.topic: conceptual
 ms.date: 04/10/2018
-ms.author: douglasl
+ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 7598484a20d2d719c84e1789664ac2b40c2d0639
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: df7ca91d403374e8d320822f5fa384a866fac0ae
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647854"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025910"
 ---
-# <a name="set-up-sql-data-sync-preview"></a>Konfigurowanie synchronizacji danych SQL (wersja zapoznawcza)
+# <a name="set-up-sql-data-sync"></a>Konfigurowanie synchronizacji danych SQL
 Z tego samouczka dowiesz się sposobu konfigurowania synchronizacji danych SQL Azure, tworząc grupy synchronizacji hybrydowych, zawierającej wystąpienia zarówno usługi Azure SQL Database i programu SQL Server. Nowa grupa synchronizacji jest w pełni skonfigurowane i synchronizuje się zgodnie z harmonogramem, które można ustawić.
 
 W tym samouczku założono, że co najmniej pewne doświadczenie z bazy danych SQL i programu SQL Server. 
 
-Omówienie usługi SQL Data Sync zawiera temat [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Preview) (Synchronizowanie danych między wieloma bazami danych w chmurze i lokalnie za pomocą usługi Azure SQL Data Sync — wersja zapoznawcza)](sql-database-sync-data.md).
+Omówienie synchronizacji danych SQL, zobacz [synchronizacji danych między wieloma bazami danych chmury i lokalnych z synchronizacji danych SQL Azure](sql-database-sync-data.md).
 
 Aby uzyskać pełną przykładów programu PowerShell, które przedstawiają sposób konfigurowania synchronizacji danych SQL, zobacz następujące artykuły:
 -   [Użycie programu PowerShell do synchronizowania wielu baz danych Azure SQL Database](scripts/sql-database-sync-data-between-sql-databases.md)
@@ -199,7 +199,7 @@ Minimalna częstotliwość wynosi co pięć minut.
 
 ### <a name="does-sql-data-sync-fully-create-and-provision-tables"></a>Synchronizacja danych SQL pełni tworzenie i przydzielanie tabele?
 
-Jeśli w tabelach schematu synchronizacji nie są już tworzone w docelowej bazie danych, synchronizacja danych SQL (wersja zapoznawcza) powoduje utworzenie z kolumnami, które zostały wybrane. Jednak to zachowanie nie powoduje schematu pełnej rozdzielczości, z następujących powodów:
+Jeśli w tabelach schematu synchronizacji nie są już tworzone w docelowej bazie danych, synchronizacja danych SQL powoduje utworzenie z kolumnami, które zostały wybrane. Jednak to zachowanie nie powoduje schematu pełnej rozdzielczości, z następujących powodów:
 
 -   Tylko wybrane kolumny są tworzone w tabeli docelowej. Jeśli niektóre kolumny w tabeli źródłowej nie są częścią grupy synchronizacji, nie są udostępnione te kolumny w tabeli docelowej.
 
@@ -215,7 +215,7 @@ Jeśli w tabelach schematu synchronizacji nie są już tworzone w docelowej bazi
 
 Z powodu tych ograniczeń zaleca się następujących czynności:
 -   W środowiskach produkcyjnych udostępnić schematu pełnej wierności samodzielnie.
--   Dla wypróbowaniem usługi, funkcja automatycznego inicjowania obsługi synchronizacji danych SQL (wersja zapoznawcza) działa dobrze.
+-   Dla wypróbowaniem usługi, funkcja automatycznego inicjowania obsługi synchronizacji danych SQL działa dobrze.
 
 ### <a name="why-do-i-see-tables-that-i-did-not-create"></a>Dlaczego widzę tabel, które I nie może utworzyć?  
 Synchronizacja danych tworzy tabele w bazie danych śledzenia zmian. Nie należy usuwać je lub synchronizacji danych przestanie działać.
@@ -246,7 +246,7 @@ Po wyeksportowaniu bazy danych jako `.bacpac` pliku i zaimportować plik, aby ut
 
 ### <a name="why-do-i-need-a-client-agent"></a>Dlaczego muszę agenta klienta?
 
-Usługa synchronizacji danych SQL (wersja zapoznawcza) komunikuje się z bazy danych programu SQL Server za pośrednictwem agenta klienta. Ta funkcja zabezpieczeń uniemożliwiają bezpośrednią komunikację z bazami danych za zaporą. Po usługę synchronizacji danych SQL (wersja zapoznawcza) komunikuje się z agentem, tak więc przy użyciu szyfrowane połączeń i token unikatowy lub *klucz agenta*. Bazy danych programu SQL Server uwierzytelnienia agenta przy użyciu klucza ciągu i agent połączenia. Ten projekt zapewnia wysoki poziom zabezpieczeń danych.
+Usługa synchronizacji danych SQL komunikuje się z bazy danych programu SQL Server za pośrednictwem agenta klienta. Ta funkcja zabezpieczeń uniemożliwiają bezpośrednią komunikację z bazami danych za zaporą. Po usługę synchronizacji danych programu SQL komunikuje się z agentem, tak więc przy użyciu szyfrowane połączeń i token unikatowy lub *klucz agenta*. Bazy danych programu SQL Server uwierzytelnienia agenta przy użyciu klucza ciągu i agent połączenia. Ten projekt zapewnia wysoki poziom zabezpieczeń danych.
 
 ### <a name="how-many-instances-of-the-local-agent-ui-can-be-run"></a>Ile wystąpienia lokalnego agenta interfejsu użytkownika można uruchomić?
 
@@ -258,7 +258,7 @@ Po zainstalowaniu agenta klienta, jedynym sposobem, aby zmienić konto usługi j
 
 ### <a name="how-do-i-change-my-agent-key"></a>Jak zmienić mój klucz agenta?
 
-Klucz agenta można tylko raz przez agenta. Nie można ponownie użyć, gdy należy usunąć, a następnie ponownie zainstaluj nowego agenta nie może być on używany przez wielu agentów. Jeśli musisz utworzyć nowy klucz dla istniejącego agenta, należy się upewnić, że ten sam klucz jest rejestrowana z agentem klienta i usługi synchronizacji danych SQL (wersja zapoznawcza).
+Klucz agenta można tylko raz przez agenta. Nie można ponownie użyć, gdy należy usunąć, a następnie ponownie zainstaluj nowego agenta nie może być on używany przez wielu agentów. Jeśli musisz utworzyć nowy klucz dla istniejącego agenta, należy się upewnić, że ten sam klucz jest rejestrowana z agentem klienta i usługi synchronizacji danych SQL.
 
 ### <a name="how-do-i-retire-a-client-agent"></a>Jak wycofanie agenta klienta?
 
@@ -270,7 +270,7 @@ Jeśli chcesz uruchomić lokalnego agenta z innego komputera niż aktualnie znaj
 
 1. Zainstaluj agenta na wybrany komputer.
 
-2. Zaloguj się do portalu synchronizacji danych SQL (wersja zapoznawcza) i ponownie wygenerować klucz agenta dla nowego agenta.
+2. Zaloguj się do portalu synchronizacji danych SQL i ponownie wygenerować klucz agenta dla nowego agenta.
 
 3. Użyj nowego agenta interfejsu użytkownika, aby przesłać nowy klucz agenta.
 

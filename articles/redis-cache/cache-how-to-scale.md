@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: wesmc
-ms.openlocfilehash: 9ef988ccdcca921c0285bf983125483a38a07678
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d88fcea4a41d8402cc25a1623727284afb0e9088
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30240228"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959386"
 ---
 # <a name="how-to-scale-azure-redis-cache"></a>Jak skalować pamięć podręczna Azure Redis
 Pamięć podręczna Redis Azure ma inną pamięci podręcznej oferty, które zapewniają elastyczność w wyborze rozmiar pamięci podręcznej i funkcje. Po utworzeniu pamięci podręcznej można skalować rozmiar i warstwę cenową pamięci podręcznej w przypadku zmiany wymagań aplikacji. W tym artykule przedstawiono sposób skalowania pamięci podręcznej przy użyciu portalu Azure i narzędzi, takich jak Azure PowerShell i interfejsu wiersza polecenia Azure.
@@ -154,7 +154,7 @@ Chociaż standardowa i Premium pamięci podręcznych SLA 99,9%, dostępności, n
 * **Podstawowe** pamięci podręcznych są w trybie offline podczas skalowania na inny rozmiar operacji. Podstawowe pamięci podręcznych pozostają dostępne podczas skalowania z **podstawowe** do **standardowe** , ale mogą wystąpić blip małych połączenia. W przypadku blip połączenia klientów pamięci podręcznej redis powinno być możliwe natychmiast ponownie ustanowić połączenia.
 
 
-### <a name="scaling-limitations-with-geo-relication"></a>Skalowanie ograniczenia Geo relication
+### <a name="scaling-limitations-with-geo-replication"></a>Skalowanie ograniczenia z replikacją geograficzną
 
 Po dodaniu łącze — replikacja geograficzna między dwoma pamięci podręcznych, nie będzie zainicjowanie operacji skalowania lub zmień liczbę fragmentów w klastrze. Należy odłączyć pamięci podręcznej można wydawać następujące polecenia. Aby uzyskać więcej informacji, zobacz [replikacja geograficzna Konfiguruj](cache-how-to-geo-replication.md).
 

@@ -17,12 +17,12 @@ ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 276e53784b30c2196ad7455cf9fd801a103fdc30
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 719506e35e6abe5ac573c7ceedc1668fd2704bd4
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34590858"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961693"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Zarządzanie i dostosowania usług federacyjnych Active Directory przy użyciu usługi Azure AD Connect
 W tym artykule opisano sposób zarządzania i dostosowywania Active Directory Federation Services (AD FS) przy użyciu połączenia usługi Azure Active Directory (Azure AD). Zawiera również innych typowych zadań usług AD FS, które może być konieczne przeprowadzenie pełnej konfiguracji farmy usług AD FS.
@@ -209,7 +209,7 @@ W poniższych sekcjach opisano, jak można zapisać reguły niestandardowe dla n
 ### <a name="immutable-id-conditional-on-a-value-being-present-in-the-attribute"></a>Warunkowe na wartość jest obecny w atrybucie niezmienialnego Identyfikatora
 Azure AD Connect umożliwia określenie atrybutu ma być używany jako zakotwiczenie źródła, gdy obiekty są synchronizowane z usługą Azure AD. Jeśli wartość atrybutu niestandardowego nie jest pusta, można wystawić oświadczenie niezmienne identyfikator.
 
-Na przykład możesz wybrać pozycję **ms-ds-consistencyguid** jako atrybut zakotwiczenia źródła i problem **nazwę ImmutableID** jako **consistencyguid-ms-ds** w przypadku, gdy atrybut ma wartość na nim. Jeśli nie ma żadnej wartości tego atrybutu, **objectGuid** jako niezmienialny identyfikatora. Można utworzyć zestaw reguł oświadczeń, zgodnie z opisem w poniższej sekcji.
+Na przykład możesz wybrać pozycję **ms-ds-consistencyguid** jako atrybut zakotwiczenia źródła i problem **nazwę ImmutableID** jako **consistencyguid-ms-ds** w przypadku atrybutu ma wartość na nim. Jeśli nie ma żadnej wartości tego atrybutu, **objectGuid** jako niezmienialny identyfikatora. Można utworzyć zestaw reguł oświadczeń, zgodnie z opisem w poniższej sekcji.
 
 **Reguła 1: Atrybuty zapytania**
 
@@ -246,31 +246,8 @@ W tej regule, sprawdzamy po prostu flagę tymczasowego **idflag**. Określenie, 
 > Ważne jest sekwencji tych zasad.
 
 ### <a name="sso-with-a-subdomain-upn"></a>Usługa rejestracji Jednokrotnej z poddomeny nazwy UPN
-Można dodać więcej niż jedną domenę federacyjną za pomocą usługi Azure AD Connect, zgodnie z opisem w [Dodaj nową domenę federacyjną](active-directory-aadconnect-federation-management.md#addfeddomain). Należy zmodyfikować oświadczenia użytkownika (UPN) Nazwa główna tak, aby identyfikator wystawcy odnosi się do domeny głównej, a nie domeny podrzędnej, ponieważ domeny głównej federacyjnych obejmuje również podrzędnych.
 
-Domyślnie reguły oświadczenia dla Identyfikatora wystawcy jest ustawiony jako:
-
-    c:[Type
-    == “http://schemas.xmlsoap.org/claims/UPN“]
-
-    => issue(Type = “http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid“, Value = regexreplace(c.Value, “.+@(?<domain>.+)“, “http://${domain}/adfs/services/trust/“));
-
-![Oświadczenie Identyfikatora wystawcy domyślne](media/active-directory-aadconnect-federation-management/issuer_id_default.png)
-
-Domyślna reguła po prostu przyjmuje sufiks głównej nazwy użytkownika i używa go w oświadczenie Identyfikatora wystawcy. Na przykład Jan jest użytkownikiem w sub.contoso.com i contoso.com jest Sfederowane przy użyciu usługi Azure AD. Jan wprowadza john@sub.contoso.com jako nazwy użytkownika podczas logowania do usługi Azure AD. Domyślna reguła oświadczeń identyfikator wystawcy w usługach AD FS obsługuje go w następujący sposób:
-
-    c:[Type
-    == “http://schemas.xmlsoap.org/claims/UPN“]
-
-    => issue(Type = “http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid“, Value = regexreplace(john@sub.contoso.com, “.+@(?<domain>.+)“, “http://${domain}/adfs/services/trust/“));
-
-**Wartość oświadczenia:**  http://sub.contoso.com/adfs/services/trust/
-
-Aby w wartości oświadczenia wystawcy tylko domeny głównej, zmień reguły oświadczenia zgodne z następującymi:
-
-    c:[Type == “http://schemas.xmlsoap.org/claims/UPN“]
-
-    => issue(Type = “http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid“, Value = regexreplace(c.Value, “^((.*)([.|@]))?(?<domain>[^.]*[.].*)$”, “http://${domain}/adfs/services/trust/“));
+Można dodać więcej niż jedną domenę federacyjną za pomocą usługi Azure AD Connect, zgodnie z opisem w [Dodaj nową domenę federacyjną](active-directory-aadconnect-federation-management.md#addfeddomain). A najnowszej wersji programu Azure AD Connect 1.1.553.0 automatycznie tworzy dla reguły oświadczeń poprawne issuerID. Jeśli nie można użyć usługi Azure AD Connect wersji 1.1.553.0 lub najnowszej, zalecane jest [reguł oświadczeń, Azure AD RPT](https://aka.ms/aadrptclaimrules) narzędzie jest używane do generowania i ustawić reguły oświadczeń poprawne dla usługi Azure AD zaufania jednostki uzależnionej.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej o [opcje logowania użytkowników](active-directory-aadconnect-user-signin.md).

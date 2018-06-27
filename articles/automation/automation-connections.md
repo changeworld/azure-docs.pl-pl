@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ee866248ae7f0c1f1c49c449b777c2b68d884c5b
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 88baa1385bfd64cab08299bc31a6f003f6b87e48
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34257683"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019316"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Trwałe połączenie z usługi Automatyzacja Azure
 
@@ -80,7 +80,7 @@ $ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "Tenant
 New-AzureRmAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues 
 ```
 
-Można użyć skryptu, aby utworzyć zasób połączenia, ponieważ podczas tworzenia konta automatyzacji automatycznie zawiera kilka modułów globalnych domyślnie wraz z typu połączenia **AzurServicePrincipal** do Utwórz **AzureRunAsConnection** trwałego połączenia.  Jest to ważne, należy wziąć pod uwagę, ponieważ Jeśli próbujesz utworzyć nowy zasób połączenia, aby nawiązać połączenie z usługą lub aplikacją z innej metody uwierzytelniania, go zakończy się niepowodzeniem, ponieważ typ połączenia nie jest już zdefiniowany na Twoim koncie automatyzacji.  Aby uzyskać więcej informacji na temat tworzenia własnych typ połączenia dla niestandardowych lub modułu na podstawie [galerii programu PowerShell](https://www.powershellgallery.com), zobacz [moduły integracji](automation-integration-modules.md)
+Można użyć skryptu, aby utworzyć zasób połączenia, ponieważ podczas tworzenia konta automatyzacji automatycznie zawiera kilka modułów globalnych domyślnie wraz z typu połączenia **AzureServicePrincipal** do Utwórz **AzureRunAsConnection** trwałego połączenia.  Jest to ważne, należy wziąć pod uwagę, ponieważ Jeśli próbujesz utworzyć nowy zasób połączenia, aby nawiązać połączenie z usługą lub aplikacją z innej metody uwierzytelniania, go zakończy się niepowodzeniem, ponieważ typ połączenia nie jest już zdefiniowany na Twoim koncie automatyzacji.  Aby uzyskać więcej informacji na temat tworzenia własnych typ połączenia dla niestandardowych lub modułu na podstawie [galerii programu PowerShell](https://www.powershellgallery.com), zobacz [moduły integracji](automation-integration-modules.md)
   
 ## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>Za pomocą połączenia w element runbook lub konfiguracji DSC
 

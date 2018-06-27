@@ -68,7 +68,7 @@ Można tworzyć maszynę wirtualną w [portalu zarządzania Azure](http://go.mic
     
      ![Dziennik aktywności maszyny wirtualnej — ukończone.](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744139.png)
     
-     Jeśli operacja zakończy się pomyślnie, nowej maszyny wirtualnej jest wyświetlany w obszarze **maszyn wirtualnych** węzła w Eksploratorze serwera. Możesz zalogować się do go, klikając **łączyć się przy użyciu pulpitu zdalnego** skrótów.
+     Jeśli operacja zakończy się pomyślnie, nowej maszyny wirtualnej jest wyświetlany w obszarze **maszyn wirtualnych** węzła w Eksploratorze serwera. Zaloguj się do niego, klikając **łączyć się przy użyciu pulpitu zdalnego** skrótów.
     
      ![Maszyny wirtualnej znajdujących się w Eksploratorze serwera.](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744140.png)
 

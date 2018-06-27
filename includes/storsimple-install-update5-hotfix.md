@@ -4,7 +4,7 @@
 
 Wykonaj następujące kroki, aby pobrać aktualizację oprogramowania z Wykazu usługi Microsoft Update.
 
-1. Uruchom program Internet Explorer i przejdź pod adres [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com).
+1. Uruchom program Internet Explorer i przejdź do [ http://catalog.update.microsoft.com ](http://catalog.update.microsoft.com).
 2. Jeśli po raz pierwszy używasz Wykazu usługi Microsoft Update na danym komputerze, po wyświetleniu monitu o zainstalowanie dodatku Wykazu usługi Microsoft Update kliknij pozycję **Zainstaluj**.
 
     ![Instalowanie wykazu](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
@@ -28,7 +28,7 @@ Wykonaj następujące kroki, aby pobrać aktualizację oprogramowania z Wykazu u
 Wykonaj następujące kroki, aby zainstalować i zweryfikować poprawki przeznaczone do trybu normalnego. Jeśli została już zainstalowana ich przy użyciu portalu Azure, przejdź do [zainstalowany i sprawdź poprawki trybu konserwacji](#to-install-and-verify-maintenance-mode-hotfixes).
 
 1. Aby zainstalować poprawki, przejdź do interfejsu programu Windows PowerShell na konsoli szeregowej Twojego urządzenia StorSimple. Postępuj zgodnie ze szczegółowymi instrukcjami w części [Nawiązywanie połączenia z konsolą szeregową urządzenia przy użyciu programu PuTTY](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). W wierszy polecenia naciśnij klawisz **Enter**.
-2. Wybierz **opcję 1**, aby zalogować się do urządzenia z pełnym dostępem. Zalecamy, aby najpierw zainstalować poprawkę na kontrolerze pasywnym.
+2. Wybierz opcję 1, **Zaloguj się przy użyciu pełnego dostępu**. Zalecamy, aby najpierw zainstalować poprawkę na kontrolerze pasywnym.
 3. Aby zainstalować poprawkę, w wierszu polecenia wpisz:
    
     `Start-HcsHotfix -Path <path to update file> -Credential <credentials in domain\username format>`
@@ -164,7 +164,7 @@ Aby zainstalować aktualizacje oprogramowania układowego dysku, postępuj zgodn
         [Y] Yes [N] No (Default is "Y"): Y
         WARNING: Installation is currently in progress. This operation can take several minutes to complete.
 3. Monitoruj postęp instalacji za pomocą polecenia `Get-HcsUpdateStatus`. Aktualizacja będzie zakończona, gdy parametr `RunInProgress` zmieni wartość na `False`.
-4. Po zakończeniu instalacji kontroler, na którym została zainstalowana poprawka przeznaczona do trybu konserwacji, zostanie uruchomiony ponownie. Zaloguj się za pomocą opcji 1 (z pełnym dostępem) i sprawdź wersję oprogramowania układowego dysku. Wpisz:
+4. Po zakończeniu instalacji kontroler, na którym została zainstalowana poprawka przeznaczona do trybu konserwacji, zostanie uruchomiony ponownie. Zaloguj się w — opcja 1, **Zaloguj się przy użyciu pełnego dostępu**i sprawdź, wersja oprogramowania układowego dysku. Wpisz:
    
    `Get-HcsFirmwareVersion`
    

@@ -5,75 +5,49 @@ services: stream-analytics
 author: jseb225
 ms.author: jeanb
 manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/25/2018
-ms.openlocfilehash: 6dd96ee96201b05e4b272214983e955fcc5b9125
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 25c25a58b4c6eab5419f645e8e916e034e7803dd
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32192047"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37016894"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Przy użyciu danych odwołanie wyszukiwania w analiza strumienia
-Dane referencyjne (znanej także jako tabela odnośnika) jest ograniczone zestawu danych, który jest statyczny lub spowalniając zmianę charakteru, używany do wyszukiwania lub do skorelowania ze strumienia danych. Aby użyć danych odwołanie do zadania usługi analiza strumienia Azure, zwykle użyje [dołączenia danych odwołania](https://msdn.microsoft.com/library/azure/dn949258.aspx) w zapytaniu. Stream Analytics korzysta z magazynu obiektów Blob platformy Azure jako warstwy magazynu danych referencyjnych i z odwołaniem do fabryki danych Azure danych można przekształcone lub kopiowane do magazynu obiektów Blob platformy Azure, do użycia jako dane odwołanie z [dowolnej liczby oparte na chmurze i lokalnych magazynów danych](../data-factory/copy-activity-overview.md). Dane referencyjne ma formę sekwencji obiektów blob (zdefiniowany w konfiguracji wejściowych) w rosnącej kolejności Data/Godzina podana w nazwie obiektu blob. On **tylko** obsługuje dodawanie na końcu sekwencji za pomocą daty/godziny **większa** niż określona przez ostatnich obiektów blob w sekwencji.
+Dane referencyjne (znanej także jako tabela odnośnika) jest ograniczone zestawu danych, który jest statyczny lub powoli zmianę charakteru, używany do wyszukiwania lub do skorelowania ze strumienia danych. Usługa Azure Stream Analytics ładuje dane referencyjne w pamięci, aby osiągnąć przetwarzania strumienia małe opóźnienia. Aby użyć danych odwołanie do zadania usługi analiza strumienia Azure, zwykle użyje [dołączenia danych odwołania](https://msdn.microsoft.com/library/azure/dn949258.aspx) w zapytaniu. Stream Analytics korzysta z magazynu obiektów Blob platformy Azure jako warstwy magazynu danych referencyjnych i z odwołaniem do fabryki danych Azure danych można przekształcone lub kopiowane do magazynu obiektów Blob platformy Azure, do użycia jako dane odwołanie z [dowolną liczbę oparte na chmurze i magazyny danych lokalnymi](../data-factory/copy-activity-overview.md). Dane referencyjne ma formę sekwencji obiektów blob (zdefiniowany w konfiguracji wejściowych) w rosnącej kolejności Data/Godzina podana w nazwie obiektu blob. On **tylko** obsługuje dodawanie na końcu sekwencji za pomocą daty/godziny **większa** niż określona przez ostatnich obiektów blob w sekwencji.
 
-Analiza strumienia ma **limit 100 MB dla obiekt blob** , ale zadania można przetwarzać wielu obiektów blob odwołania przy użyciu **wzorzec ścieżki** właściwości.
+Analiza strumienia obsługuje dane referencyjne z **maksymalny rozmiar 300 MB**. 300 MB limit maksymalny rozmiar danych referencyjnych jest osiągalny tylko z prostego zapytania. Jak złożonością kwerendy wzrasta do uwzględnienia stanowe przetwarzania agregacjami sprzężenia danych czasowych i danych czasowych funkcje analityczne, np. oczekuje się, że maksymalny obsługiwany rozmiar spadku danych odwołania. Jeśli usługi Azure Stream Analytics nie można załadować danych referencyjnych i wykonywać operacje złożonych, zadanie będzie za mało pamięci i zakończyć się niepowodzeniem. W takich przypadkach SU % wykorzystania Metryka osiągną 100%.    
+
+|**Liczbę jednostek przesyłania strumieniowego**  |**Obsługiwane szacunkowa maksymalny rozmiar (w MB)**  |
+|---------|---------|
+|1   |50   |
+|3   |150   |
+|6 i nowszych   |300   |
+
+Zwiększenie liczby jednostek przesyłania strumieniowego zadania poza 6 nie zwiększyć maksymalny rozmiar obsługiwany danych referencyjnych.
 
 Obsługa kompresji nie jest dostępna dla danych referencyjnych. 
 
 ## <a name="configuring-reference-data"></a>Konfigurowanie danych referencyjnych
 Aby skonfigurować dane odwołanie, należy najpierw utworzyć danych wejściowych typu **danych referencyjnych**. W poniższej tabeli opisano każdej właściwości, które należy podać podczas tworzenia danych referencyjnych dane wejściowe z jego opisem:
 
-
-<table>
-<tbody>
-<tr>
-<td>Nazwa właściwości</td>
-<td>Opis</td>
-</tr>
-<tr>
-<td>Alias wejściowy</td>
-<td>Przyjazna nazwa, który będzie używany w zapytaniu zadania do odwołania tych danych wejściowych.</td>
-</tr>
-<tr>
-<td>Konto magazynu</td>
-<td>Nazwa konta magazynu, w którym znajdują się obiektów blob. Jeśli znajduje się w tej samej subskrypcji co Twoje zadania usługi analiza strumienia, zostanie ona wybrana z listy rozwijanej.</td>
-</tr>
-<tr>
-<td>Klucz konta magazynu</td>
-<td>Klucz tajny, skojarzone z kontem magazynu. Pobiera to wypełnione automatycznie, jeśli konto magazynu znajduje się w tej samej subskrypcji co zadania usługi analiza strumienia.</td>
-</tr>
-<tr>
-<td>Kontener magazynu</td>
-<td>Kontenery umożliwiają logiczne grupowanie dla obiektów blob przechowywanych w usłudze Microsoft Azure Blob. Przekazywanie obiektu blob do usługi Blob, należy określić kontener dla tego obiektu blob.</td>
-</tr>
-<tr>
-<td>Wzorzec ścieżki</td>
-<td>Ścieżka używana do lokalizowania obiektów blob w określonym kontenerze. W ścieżce można określić co najmniej jedno wystąpienie następujących zmiennych 2:<BR>{date} {time}<BR>Przykład 1: products/{date}/{time}/product-list.csv<BR>Przykład 2: products/{date}/product-list.csv
-</tr>
-<tr>
-<td>Format daty [opcjonalnie]</td>
-<td>{Date} użycie wewnątrz ścieżki określony format daty, w którym są zorganizowane obiektów blob można wybrać z listy rozwijanej obsługiwanych formatów.<BR>Przykład: RRRR/MM/DD/MM/DD/RRRR, itp.</td>
-</tr>
-<tr>
-<td>Format czasu [opcjonalnie]</td>
-<td>{Time} użycie wewnątrz ścieżki określony format czasu, w którym są zorganizowane obiektów blob można wybrać z listy rozwijanej obsługiwanych formatów.<BR>Przykład: HH gg/mm lub HH mm</td>
-</tr>
-<tr>
-<td>Format serializacji zdarzeń</td>
-<td>Aby zapytania działały zgodnie z oczekiwaniami, usługa Stream Analytics musi znać format serializacji używany w przypadku przychodzących strumieni danych. Dla danych referencyjnych obsługiwane formaty to CSV i JSON.</td>
-</tr>
-<tr>
-<td>Encoding</td>
-<td>UTF-8 w tej chwili jest obsługiwany tylko format kodowania</td>
-</tr>
-</tbody>
-</table>
+|**Nazwa właściwości**  |**Opis**  |
+|---------|---------|
+|Alias wejściowy   | Przyjazna nazwa, który będzie używany w zapytaniu zadania do odwołania tych danych wejściowych.   |
+|Konto magazynu   | Nazwa konta magazynu, w którym znajdują się obiektów blob. Jeśli znajduje się w tej samej subskrypcji co Twoje zadania usługi analiza strumienia, zostanie ona wybrana z listy rozwijanej.   |
+|Klucz konta magazynu   | Klucz tajny, skojarzone z kontem magazynu. Pobiera to wypełnione automatycznie, jeśli konto magazynu znajduje się w tej samej subskrypcji co zadania usługi analiza strumienia.   |
+|Kontener magazynu   | Kontenery umożliwiają logiczne grupowanie dla obiektów blob przechowywanych w usłudze Microsoft Azure Blob. Przekazywanie obiektu blob do usługi Blob, należy określić kontener dla tego obiektu blob.   |
+|Wzorzec ścieżki   | Ścieżka używana do lokalizowania obiektów blob w określonym kontenerze. W ścieżce można określić co najmniej jedno wystąpienie następujących zmiennych 2:<BR>{date} {time}<BR>Przykład 1: products/{date}/{time}/product-list.csv<BR>Przykład 2: products/{date}/product-list.csv   |
+|Format daty [opcjonalnie]   | {Date} użycie wewnątrz ścieżki określony format daty, w którym są zorganizowane obiektów blob można wybrać z listy rozwijanej obsługiwanych formatów.<BR>Przykład: RRRR/MM/DD/MM/DD/RRRR, itp.   |
+|Format czasu [opcjonalnie]   | {Time} użycie wewnątrz ścieżki określony format czasu, w którym są zorganizowane obiektów blob można wybrać z listy rozwijanej obsługiwanych formatów.<BR>Przykład: HH gg/mm lub HH mm.  |
+|Format serializacji zdarzeń   | Aby zapytania działały zgodnie z oczekiwaniami, usługa Stream Analytics musi znać format serializacji używany w przypadku przychodzących strumieni danych. Dla danych referencyjnych obsługiwane formaty to CSV i JSON.  |
+|Kodowanie   | UTF-8 to jedyny obsługiwany obecnie format kodowania.  |
 
 ## <a name="generating-reference-data-on-a-schedule"></a>Generowanie danych referencyjnych zgodnie z harmonogramem
-Jeśli dane odwołanie jest wolno zmieniającego zestawu danych, następnie obsługuje odświeżania odwołanie do danych jest włączona, określając wzorzec ścieżki w konfiguracji wejściowego przy użyciu {date} i {time} tokenów podstawienia. Analiza strumienia przejmuje zaktualizowano odwołanie definicje danych oparte na ten wzorzec ścieżki. Na przykład wzorzec `sample/{date}/{time}/products.csv` z datą o postaci **"RRRR-MM-DD"** i format czasu **"HH mm"** nakazuje Stream Analytics, aby pobrać zaktualizowane obiektu blob `sample/2015-04-16/17-30/products.csv` na 5:30 będzie 16 kwietnia 2015 UTC czasu strefy.
+Jeśli dane odwołanie jest wolno zmieniającego zestawu danych, następnie obsługuje odświeżania odwołanie do danych jest włączona, określając wzorzec ścieżki w konfiguracji wejściowego przy użyciu {date} i {time} tokenów podstawienia. Analiza strumienia przejmuje zaktualizowano odwołanie definicje danych oparte na ten wzorzec ścieżki. Na przykład wzorzec `sample/{date}/{time}/products.csv` z datą o postaci **"RRRR-MM-DD"** i format czasu **"HH mm"** nakazuje Stream Analytics, aby pobrać zaktualizowane obiektu blob `sample/2015-04-16/17-30/products.csv` na 5:30 będzie na kwietnia 16 , Strefę czasową UTC 2015.
 
 > [!NOTE]
 > Obecnie zadania usługi analiza strumienia poszukaj odświeżania obiektów blob tylko wtedy, gdy czas komputera przechodzi do czasu zakodowane w nazwie obiektu blob. Na przykład zadanie będzie szukać `sample/2015-04-16/17-30/products.csv` jak to możliwe, ale nie wcześniej niż 5:30 będzie 16 kwietnia 2015 UTC czasu strefy. Będzie on *nigdy nie* wyszukiwania dla obiektu blob z wcześniej niż ostatni odnalezionej zakodowanego czasu.
