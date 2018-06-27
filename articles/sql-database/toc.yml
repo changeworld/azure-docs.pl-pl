@@ -74,9 +74,9 @@
       href: sql-database-powershell-samples.md
 - name: Pojęcia
   items:
-    - name: Warstwy i zasoby usług
+    - name: Zakup modeli i zasobów
       items:
-        - name: Warstwy usług
+        - name: Zakup modeli
           href: sql-database-service-tiers.md
         - name: Model oparty na rdzeniach wirtualnych
           href: sql-database-service-tiers-vcore.md

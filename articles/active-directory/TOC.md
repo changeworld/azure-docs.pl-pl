@@ -250,7 +250,7 @@
 #### [Zaawansowane podpisywanie certyfikatów dla aplikacji SAML](manage-apps/certificate-signing-options.md)
 #### [Ukrywanie aplikacji w środowisku użytkownika](manage-apps/hide-application-from-user-portal.md)
 ### [Konfigurowanie automatycznego przyspieszenia logowania za pomocą zasad HRD](manage-apps/configure-authentication-for-federated-users-portal.md)
-### [Migrate AD FS apps to Azure AD (Migracja aplikacji AD FS do usługi Azure AD)](migrate-adfs-apps-to-azure.md) 
+### [Migrate AD FS apps to Azure AD (Migracja aplikacji AD FS do usługi Azure AD)](manage-apps/migrate-adfs-apps-to-azure.md) 
 ### [Zarządzanie dostępem do aplikacji](manage-apps/what-is-access-management.md)
 #### [Dostęp z użyciem logowania jednokrotnego](manage-apps/what-is-single-sign-on.md)
 #### [Certyfikaty rejestracji jednokrotnej](manage-apps/manage-certificates-for-federated-single-sign-on.md)
@@ -386,13 +386,10 @@
 
 ## Delegowanie dostępu do zasobów
 ### [Role administratorów](active-directory-assign-admin-roles-azure-portal.md)
-#### [Przypisywanie użytkownikowi roli administratora](fundamentals/active-directory-users-assign-role-azure-portal.md) 
-#### [Porównanie uprawnień członka i gościa](fundamentals/users-default-permissions.md) 
-### [Zabezpieczanie dostępu uprzywilejowanego](admin-roles-best-practices.md)  
-### [Tworzenie kont administracyjnych z dostępem awaryjnym](active-directory-admin-manage-emergency-access-accounts.md) 
-
-
-#### [Domyślne uprawnienia użytkowników](fundamentals/users-default-permissions.md)
+#### [Przypisywanie użytkownikowi roli administratora](fundamentals/active-directory-users-assign-role-azure-portal.md)
+#### [Porównanie uprawnień członka i gościa](fundamentals/users-default-permissions.md)
+### [Zabezpieczanie ról administratorów](admin-roles-best-practices.md)  
+#### [Tworzenie kont administratorów z dostępem awaryjnym](active-directory-admin-manage-emergency-access-accounts.md)
 ### [Jednostki administracyjne](active-directory-administrative-units-management.md)
 ### [Konfigurowanie okresów istnienia tokenu](active-directory-configurable-token-lifetimes.md)
 ### [Zabezpieczanie ról uprzywilejowanych](admin-roles-best-practices.md)

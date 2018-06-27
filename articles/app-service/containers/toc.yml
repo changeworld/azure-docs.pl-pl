@@ -23,6 +23,8 @@
       href: quickstart-ruby.md
     - name: Tworzenie aplikacji Docker/Go
       href: quickstart-docker-go.md
+    - name: Tworzenie aplikacji z wieloma kontenerami
+      href: quickstart-multi-container.md
 - name: Samouczki
   items:
     - name: Aplikacja z bazą danych

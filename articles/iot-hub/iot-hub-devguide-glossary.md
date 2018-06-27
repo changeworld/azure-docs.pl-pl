@@ -1,24 +1,19 @@
 ---
 title: Usługa Azure IoT Hub słownik terminów | Dokumentacja firmy Microsoft
 description: Przewodnik dewelopera — słownik terminów wspólnej odnoszących się do Centrum IoT Azure.
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 16ef29ea-a185-48c3-ba13-329325dc6716
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: aae72618da42db53304075506b4969945ff0165f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 69bc7d71e804ca33b984699ee30a44774542803f
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960495"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Słownik terminów Centrum IoT
 W tym artykule wymieniono niektóre typowe terminy używane w artykułach Centrum IoT.
@@ -110,11 +105,8 @@ Odwołuje się do informacji o stanie urządzenia, takich jak metoda łącznośc
 ## <a name="device-data"></a>Dane urządzenia
 Dane urządzenia odwołuje się do danych na urządzeniu przechowywanych w Centrum IoT [rejestru tożsamości](#identity-registry). Istnieje możliwość importowania i eksportowania tych danych.
 
-## <a name="device-explorer"></a>Eksplorator urządzenia
+## <a name="device-explorer"></a>Device Explorer
 [Explorer urządzenia](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) to narzędzie jest uruchamiana w systemie Windows, który umożliwia zarządzanie urządzeniami w [rejestru tożsamości](#identity-registry). Narzędzie można również wysyłania i odbierania wiadomości na urządzeniach.
-
-## <a name="device-identities-rest-api"></a>Interfejs API REST tożsamości urządzeń
-[Interfejsu API REST tożsamości urządzenia](https://docs.microsoft.com/rest/api/iothub/iothubresource) umożliwia zarządzanie urządzeniami zarejestrowane w [rejestru tożsamości](#identity-registry) przy użyciu interfejsu API REST. Zazwyczaj należy użyć jednej z wyższego poziomu [usługi SDK](#azure-iot-service-sdks) jak pokazano w samouczkach Centrum IoT.
 
 ## <a name="device-identity"></a>Tożsamość urządzenia
 Tożsamość tego urządzenia jest unikatowy identyfikator przypisany do wszystkich urządzeń zarejestrowanych w [rejestru tożsamości](#identity-registry).
@@ -128,8 +120,8 @@ Zarządzanie urządzeniami obejmuje pełny cykl związane z zarządzaniem urząd
 ## <a name="device-management-patterns"></a>Wzorce zarządzania urządzeniami
 [Centrum IoT](#iot-hub) umożliwia typowe wzorce zarządzania urządzenie tym ponowny rozruch, wykonywanie ustawień fabrycznych i wykonywanie aktualizacji oprogramowania układowego na urządzeniach.
 
-## <a name="device-messaging-rest-api"></a>Interfejs API REST komunikatów urządzenia
-Można użyć [interfejsu API REST wiadomości urządzenia](https://docs.microsoft.com/rest/api/iothub/httpruntime) z urządzenia do wysyłania wiadomości urządzenia do chmury do Centrum IoT i odbierania [chmury do urządzenia](#cloud-to-device) komunikaty z Centrum IoT. Zazwyczaj należy użyć jednej z wyższego poziomu [urządzenia zestawów SDK](#azure-iot-device-sdks) jak pokazano w samouczkach Centrum IoT.
+## <a name="device-rest-api"></a>Urządzenia interfejsu API REST
+Można użyć [urządzenia interfejsu API REST](https://docs.microsoft.com/rest/api/iothub/device/device) z urządzenia do wysyłania wiadomości urządzenia do chmury do Centrum IoT i odbierania [chmury do urządzenia](#cloud-to-device) komunikaty z Centrum IoT. Zazwyczaj należy użyć jednej z wyższego poziomu [urządzenia zestawów SDK](#azure-iot-device-sdks) jak pokazano w samouczkach Centrum IoT.
 
 ## <a name="device-provisioning"></a>Inicjowanie obsługi administracyjnej urządzeń
 Inicjowanie obsługi administracyjnej urządzeń jest proces dodawania początkowej [danych urządzenia](#device-data) sklepów w rozwiązaniu. Aby włączyć nowe urządzenia w celu nawiązania połączenia z koncentratorem, należy dodać identyfikator urządzenia i klucze do Centrum IoT [rejestru tożsamości](#identity-registry). W ramach procesu inicjowania obsługi administracyjnej może być konieczne Inicjuj dane specyficzne dla urządzenia w innych magazynach rozwiązania.
@@ -141,10 +133,7 @@ A [dwie urządzenia](iot-hub-devguide-device-twins.md) jest dokumentem JSON, kt�
 Podobnie jak dwie urządzenia, dwie modułu jest dokument JSON, która przechowuje informacje o stanie modułu, takich jak metadanych, konfiguracji i warunki. Centrum IoT utrzymuje dwie moduł, dla każdej tożsamości modułu dostarczanym w ramach tożsamości urządzenia w Centrum IoT. Moduł twins umożliwiają synchronizowanie modułu warunków i konfiguracje między modułem i zaplecza rozwiązania. Umożliwia wysyłanie zapytań twins modułu, aby znaleźć określone moduły i zbadać stanu długotrwałej operacji.
 
 ## <a name="twin-queries"></a>Dwie zapytań
-[Urządzenia i modułu zapytania dwie](iot-hub-devguide-query-language.md) używać języka kwerend Centrum IoT przypominającego SQL można pobrać informacji z urządzenia twins lub twins modułu. Można użyć tego samego języka zapytań Centrum IoT można pobrać informacji o [zadania](#job) uruchomiona w Centrum IoT.
-
-## <a name="device-twin-rest-api"></a>Interfejs API REST dwie urządzenia
-Można użyć [interfejsu API REST dwie urządzenia](https://docs.microsoft.com/rest/api/iothub/devicetwinapi) z rozwiązania serwer wewnętrzny, aby zarządzać twins Twojego urządzenia. Interfejs API umożliwia pobierania i aktualizowania [dwie urządzenia](#device-twin) właściwości i wywoływać [bezpośrednie metody](#direct-method). Zazwyczaj należy użyć jednej z wyższego poziomu [usługi SDK](#azure-iot-service-sdks) jak pokazano w samouczkach Centrum IoT.
+[Urządzenia i modułu zapytania dwie](iot-hub-devguide-query-language.md) używać języka kwerend Centrum IoT przypominającego SQL można pobrać informacji z urządzenia twins lub twins modułu. Można użyć tego samego języka zapytań Centrum IoT można pobrać informacji o [ ](#job) uruchomiona w Centrum IoT.
 
 ## <a name="twin-synchronization"></a>Dwie synchronizacji
 Dwie używa synchronizacji [żądanego właściwości](#desired-properties) w twins urządzenia lub twins modułu, aby skonfigurować moduły lub urządzeń i pobrać [zgłosił właściwości](#reported-properties) z nich do przechowywania w dwie.
@@ -185,22 +174,19 @@ Centrum IoT to w pełni zarządzana usługa platformy Azure, co umożliwia komun
 [Centrum IoT metryki](iot-hub-metrics.md) udostępnia dane o stanie centra IoT w Twojej [subskrypcji platformy Azure](#subscription). Centrum IoT metryk umożliwiają oceny ogólnej kondycji usługi i dołączone do niego urządzenia. Metryki Centrum IoT ułatwiają Zobacz, co dzieje się z Centrum IoT i badania głównej przyczyny problemów bez konieczności skontaktuj się z pomocą techniczną platformy Azure.
 
 ## <a name="iot-hub-query-language"></a>Język zapytań Centrum IoT
-[Język zapytań Centrum IoT](iot-hub-devguide-query-language.md) jest języka przypominającego SQL, który umożliwia utworzenie zapytania z [zadania](#job) i twins urządzenia.
+[Język zapytań Centrum IoT](iot-hub-devguide-query-language.md) jest języka przypominającego SQL, który umożliwia utworzenie zapytania z [ ](#job) i twins urządzenia.
 
-## <a name="iot-hub-resource-provider-rest-api"></a>Dostawca zasobów Centrum IoT interfejsu API REST
-Można użyć [interfejsu API REST dostawcy zasobów Centrum IoT](https://docs.microsoft.com/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest) do zarządzania centra IoT w Twojej [subskrypcji platformy Azure](#subscription) wykonywania operacji, takich jak tworzenie, aktualizowanie i Usuwanie koncentratorów.
+## <a name="iot-hub-resource-rest-api"></a>Centrum IoT zasobu interfejsu API REST
+Można użyć [API REST zasobów Centrum IoT](https://docs.microsoft.com/rest/api/iothub/iothubresource) do zarządzania centra IoT w Twojej [subskrypcji platformy Azure](#subscription) wykonywania operacji, takich jak tworzenie, aktualizowanie i Usuwanie koncentratorów.
 
-## <a name="iot-solution-accelerators"></a>Akceleratorów rozwiązania IoT
-Azure akceleratorów rozwiązania IoT pakietu jednocześnie wiele usług platformy Azure do rozwiązania. Te rozwiązania umożliwiają szybkie rozpoczęcie pracy z implementacjami na trasie o typowych scenariuszach IoT. Aby uzyskać więcej informacji, zobacz [co to są akceleratorów rozwiązania Azure IoT?](../iot-suite/iot-suite-overview.md)
+## <a name="iot-solution-accelerators"></a>Akceleratory rozwiązań IoT
+Azure akceleratorów rozwiązania IoT pakietu jednocześnie wiele usług platformy Azure do rozwiązania. Te rozwiązania umożliwiają szybkie rozpoczęcie pracy z implementacjami na trasie o typowych scenariuszach IoT. Aby uzyskać więcej informacji, zobacz [co to są akceleratorów rozwiązania Azure IoT?](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md)
 
 ## <a name="the-iot-extension-for-azure-cli-20"></a>Rozszerzenie IoT Azure CLI 2.0
 [Rozszerzenie IoT Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) to narzędzie i platform, wiersza polecenia. Narzędzie pozwala na zarządzanie urządzeniami w [rejestru tożsamości](#identity-registry), wysyłania i odbierania wiadomości oraz pliki z urządzeń i monitorować działania Centrum IoT.
 
 ## <a name="job"></a>Zadanie
-Można użyć z zaplecza rozwiązania [zadania](iot-hub-devguide-jobs.md) na planowanie i śledzenie działań na zbiór urządzeń zarejestrowanych w usłudze Centrum IoT. Działania obejmują aktualizowanie urządzenia dwie [żądanego właściwości](#desired-properties), aktualizowania dwie urządzenia [tagi](#tags)i wywoływanie [bezpośrednie metody](#direct-method). [Centrum IoT](#iot-hub) używa również zadania, aby [importowanie do i eksportowanie](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) z [rejestru tożsamości](#identity-registry).
-
-## <a name="jobs-rest-api"></a>Zadania interfejsu API REST
-[Interfejsu API REST zadania](https://docs.microsoft.com/rest/api/iothub/jobapi) umożliwia zarządzanie [zadania](#job) uruchomiona w Centrum IoT.
+Można użyć z zaplecza rozwiązania [zadania](iot-hub-devguide-jobs.md) na planowanie i śledzenie działań na zbiór urządzeń zarejestrowanych w usłudze Centrum IoT. Działania obejmują aktualizowanie urządzenia dwie [żądanego właściwości](#desired-properties), aktualizowania dwie urządzenia [tagi](#tags)i wywoływanie [bezpośrednie metody](#direct-method). [Centrum IoT](#iot-hub) używa również do [importowanie do i eksportowanie](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) z [rejestru tożsamości](#identity-registry).
 
 ## <a name="mqtt"></a>MQTT
 [MQTT](http://mqtt.org/) jest jeden z komunikatów protokołów, które [Centrum IoT](#iot-hub) obsługuje do komunikowania się z urządzeniami. Aby uzyskać więcej informacji na temat protokoły obsługi komunikatów, które obsługuje Centrum IoT, zobacz [wysyłania i odbierania wiadomości z Centrum IoT](iot-hub-devguide-messaging.md).
@@ -233,12 +219,15 @@ W kontekście [dwie urządzenia](iot-hub-devguide-device-twins.md), zgłosiła w
 Używanie zasad ponawiania do obsługi [błędów przejściowych](https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx) przypadku połączenia z usługą w chmurze.
 
 ## <a name="routing-rules"></a>Reguły routingu
-Możesz skonfigurować [reguły routingu](iot-hub-devguide-messages-read-custom.md) w Centrum IoT można przekierować wiadomości urządzenia do chmury [wbudowanym punktem końcowym](#built-in-endpoints) lub [niestandardowe punkty końcowe](#custom-endpoints) do przetworzenia przez użytkownika zaplecza rozwiązania.
+Możesz skonfigurować [reguły routingu](iot-hub-devguide-messages-read-custom.md) w Centrum IoT można przekierować wiadomości urządzenia do chmury [wbudowanym punktem końcowym](#built-in-endpoints) lub [niestandardowe punkty końcowe](#custom-endpoints) do przetworzenia przez użytkownika zaplecza rozwiązania .
 
 ## <a name="sasl-plain"></a>ZWYKŁY SASL
 ZWYKŁY SASL jest protokołem który [AMQP](#advanced-message-queue-protocol) używa protokołu transferu tokenów zabezpieczających.
 
-## <a name="shared-access-signature"></a>Sygnatury dostępu współdzielonego
+## <a name="service-rest-api"></a>Interfejs API REST usługi
+Można użyć [interfejsu API REST usługi](https://docs.microsoft.com/rest/api/iothub/service/service) z rozwiązania zaplecza do zarządzania urządzeniami. Interfejs API umożliwia pobierania i aktualizowania [dwie urządzenia](#device-twin) właściwości, wywołaj [bezpośrednie metody](#direct-method)i harmonogram [zadania](#job). Zazwyczaj należy użyć jednej z wyższego poziomu [usługi SDK](#azure-iot-service-sdks) jak pokazano w samouczkach Centrum IoT.
+
+## <a name="shared-access-signature"></a>Sygnatura dostępu współdzielonego
 Udostępniony sygnatur dostępu (SAS) są mechanizmu uwierzytelniania na podstawie bezpiecznego wartości skrótu SHA-256 lub identyfikatorów URI. Uwierzytelniania sygnatury dostępu Współdzielonego ma dwa składniki: _zasad dostępu współużytkowanego_ i _sygnatura dostępu współdzielonego_ (często nazywane token). Urządzenie korzysta SAS do uwierzytelniania za pomocą Centrum IoT. [Aplikacje zaplecza](#back-end-app) również użyć do uwierzytelniania za pomocą usługi połączonej punkty końcowe Centrum IoT sygnatury dostępu Współdzielonego. Zwykle obejmują tokenu sygnatury dostępu Współdzielonego w [ciąg połączenia](#connection-string) że aplikacja używa do ustanowienia połączenia z Centrum IoT.
 
 ## <a name="shared-access-policy"></a>Zasady dostępu współużytkowanego

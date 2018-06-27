@@ -2,7 +2,7 @@
   href: index.yml
 - name: Omówienie
   items:
-    - name: Informacje na temat usługi Language Understanding
+    - name: Co to jest usługa Language Understanding?
       href: Home.md
     - name: Obsługiwane języki
       href: luis-supported-languages.md
@@ -25,10 +25,10 @@
           href: luis-quickstart-primary-and-secondary-data.md
         - name: Jednostka hierarchiczna
           href: luis-quickstart-intent-and-hier-entity.md
-        - name: Jednostka listy
-          href: luis-quickstart-intent-and-list-entity.md
         - name: Jednostka wyrażenia regularnego
           href: luis-quickstart-intents-regex-entity.md
+        - name: Jednostka listy
+          href: luis-quickstart-intent-and-list-entity.md
         - name: Jednostka KeyPhrase
           href: luis-quickstart-intent-and-key-phrase.md
         - name: Analiza tonacji
@@ -227,7 +227,7 @@
       items:
         - name: 'Przy użyciu języka C#'
           href: find-region-csharp.md
-        - name: Przy użyciu środowiska Node.js
+        - name: Używanie środowiska Node.js
           href: find-region-nodejs.md
 - name: Dokumentacja
   items:
@@ -238,7 +238,33 @@
     - name: Granice
       href: luis-boundaries.md
     - name: Dokumentacja wstępnie utworzonych jednostek
-      href: luis-reference-prebuilt-entities.md
+      items:
+        - name: Jednostki na kulturę
+          href: luis-reference-prebuilt-entities.md
+        - name: 'Age, jednostka'
+          href: luis-reference-prebuilt-age.md
+        - name: 'Currency, jednostka'
+          href: luis-reference-prebuilt-currency.md
+        - name: 'DatetimeV2, jednostka'
+          href: luis-reference-prebuilt-datetimev2.md
+        - name: 'Dimension, jednostka'
+          href: luis-reference-prebuilt-dimension.md
+        - name: Przestarzałe jednostki
+          href: luis-reference-prebuilt-deprecated.md
+        - name: 'Email, jednostka'
+          href: luis-reference-prebuilt-email.md
+        - name: 'Number, jednostka'
+          href: luis-reference-prebuilt-number.md
+        - name: 'Ordinal, jednostka'
+          href: luis-reference-prebuilt-ordinal.md
+        - name: 'Percentage, jednostka'
+          href: luis-reference-prebuilt-percentage.md
+        - name: 'Phonenumber, jednostka'
+          href: luis-reference-prebuilt-phonenumber.md
+        - name: 'Temperature, jednostka'
+          href: luis-reference-prebuilt-temperature.md
+        - name: 'URL, jednostka'
+          href: luis-reference-prebuilt-url.md
     - name: Dokumentacja wstępnie utworzonych domen
       href: luis-reference-prebuilt-domains.md
     - name: Dokumentacja wstępnie utworzonej aplikacji Cortana

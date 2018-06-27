@@ -45,6 +45,8 @@
       href: use-reports.md
     - name: Korzystanie z pulpitów nawigacyjnych
       href: dashboards.md
+    - name: Zarządzanie budżetami
+      href: manage-budgets.md
 - name: Zasoby
   items:
     - name: Wideo na temat rozwiązania Cost Management

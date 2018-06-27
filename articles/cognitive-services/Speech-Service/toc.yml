@@ -12,31 +12,33 @@
     - name: 'Rozpoznawanie mowy w języku C#'
       href: quickstart-csharp-windows.md
     - name: Rozpoznawanie mowy w języku C++ dla systemu Windows
-      href: cpp-windows.md
+      href: quickstart-cpp-windows.md
     - name: Rozpoznawanie mowy w języku C++ dla systemu Linux
-      href: cpp-linux.md
+      href: quickstart-cpp-linux.md
     - name: Rozpoczynanie pracy z zestawem Speech Devices SDK
       href: speech-devices-sdk-qsg.md
-- name: Przewodniki z instrukcjami
+- name: Dostosowywanie
   items:
-    - name: Rozpoznawanie mowy
-      href: how-to-speech-to-text.md
     - name: Dostosowywanie modeli mowy
       href: how-to-customize-speech-models.md
-    - name: Syntetyzowanie mowy
-      href: how-to-text-to-speech.md
     - name: Dostosowywanie czcionek głosowych
       href: how-to-customize-voice-font.md
-    - name: Tłumaczenie mowy
-      href: how-to-translate-speech.md
     - name: Przygotowanie transkrypcji
       href: prepare-transcription.md
     - name: Korzystanie z niestandardowych strumieni audio
       href: how-to-use-audio-input-streams.md
+    - name: Dostosowywanie słowa aktywującego urządzenie (zestaw SDK urządzeń)
+      href: speech-devices-sdk-create-kws.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Rozpoznawanie mowy
+      href: how-to-speech-to-text.md
+    - name: Syntetyzowanie mowy
+      href: how-to-text-to-speech.md
+    - name: Tłumaczenie mowy
+      href: how-to-translate-speech.md
     - name: Pobieranie zestawu Speech Devices SDK
       href: get-speech-devices-sdk.md
-    - name: Dostosowywanie słowa aktywującego urządzenie
-      href: speech-devices-sdk-create-kws.md
     - name: Transkrypcja wsadowa (biura obsługi)
       href: batch-transcription.md
 - name: Przykłady
@@ -73,8 +75,14 @@
       href: speech-synthesis-markup.md
 - name: Zasoby
   items:
-    - name: Zamiana mowy na tekst — często zadawane pytania
-      href: faq-stt.md
+    - name: Często zadawane pytania
+      items:
+        - name: Zamiana mowy na tekst — często zadawane pytania
+          href: faq-stt.md
+        - name: Zamiana tekstu na mowę — często zadawane pytania
+          href: faq-text-to-speech.md
+        - name: Translator — często zadawane pytania
+          href: 'https://www.microsoft.com/en-us/translator/faq.aspx'
     - name: Cennik
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: UserVoice

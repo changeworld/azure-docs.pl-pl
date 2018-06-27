@@ -3,6 +3,7 @@
 ## [Certyfikaty](sap-certifications.md)
 # Oprogramowanie SAP HANA na platformie Azure (duże wystąpienia)
 ## [Omówienie i architektura](hana-overview-architecture.md)
+### [Obsługiwane scenariusze oprogramowania HANA — duże wystąpienia](hana-supported-scenario.md)
 ## [Infrastruktura i łączność](hana-overview-infrastructure-connectivity.md)
 ## [Instalowanie platformy SAP HANA](hana-installation.md)
 ## [Wysoka dostępność i odzyskiwanie po awarii](hana-overview-high-availability-disaster-recovery.md)

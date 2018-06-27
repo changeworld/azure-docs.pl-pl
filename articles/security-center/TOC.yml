@@ -48,6 +48,8 @@
           href: security-center-customize-os-security-config.md
         - name: Zasady zabezpieczeń korzystające z zasad platformy Azure
           href: security-center-azure-policy.md
+        - name: Widoczność w całej dzierżawie
+          href: security-center-management-groups.md
     - name: Zalecenia dotyczące implementowania zabezpieczeń
       href: security-center-recommendations.md
     - name: Monitoruj kondycję zabezpieczeń

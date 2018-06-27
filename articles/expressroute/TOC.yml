@@ -89,6 +89,8 @@
       href: expressroute-howto-move-arm.md
     - name: Migrowanie skojarzonych sieci wirtualnych z wersji klasycznej do usługi Resource Manager
       href: expressroute-migration-classic-resource-manager.md
+    - name: Tworzenie strefowo nadmiarowej bramy sieci wirtualnej w strefach dostępności platformy Azure
+      href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md?toc=%2fazure%2fexpressroute%2ftoc.json
     - name: Konfigurowanie routera dla usługi ExpressRoute
       items:
         - name: Konfigurowanie routera

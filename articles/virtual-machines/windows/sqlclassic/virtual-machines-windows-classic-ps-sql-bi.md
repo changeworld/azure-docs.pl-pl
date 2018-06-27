@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: maghan
-ms.openlocfilehash: 6f1a95e52def9154253192ab9d43d1e7d621cee7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c8204e204978a9fd7cda2e9c02be0c70722b01bb
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31425616"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021364"
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Analiza biznesowa programu SQL Server w usłudze Azure Virtual Machines
 > [!IMPORTANT] 
@@ -34,7 +34,7 @@ Istnieją dwa sposoby licencji programu SQL Server w maszynach wirtualnych platf
 1. Korzyści mobilności licencji, które są częścią Software Assurance. Aby uzyskać więcej informacji, zobacz [przenośność licencji za pośrednictwem programu Software Assurance na platformie Azure](https://azure.microsoft.com/pricing/license-mobility/).
 2. Należy zwrócić na godzinę szybkość maszyn wirtualnych Azure z programem SQL Server zainstalowana. Zobacz sekcję "Program SQL Server" w [cennik maszyn wirtualnych](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql).
 
-Aby uzyskać więcej informacji o licencji i bieżącej szybkości, zobacz [często zadawane pytania dotyczące licencjonowania maszyn wirtualnych](https://azure.microsoft.com/pricing/licensing-faq/%20/).
+Aby uzyskać więcej informacji o licencji i bieżącej szybkości, zobacz [często zadawane pytania dotyczące licencjonowania maszyn wirtualnych](https://azure.microsoft.com/pricing/licensing-faq/).
 
 ## <a name="sql-server-images-available-in-azure-virtual-machine-gallery"></a>SQL Server dostępnych obrazów w galerii maszyn wirtualnych platformy Azure
 Galeria maszyny wirtualnej platformy Microsoft Azure zawiera kilka obrazów, które zawierają programu Microsoft SQL Server. Oprogramowanie zostało zainstalowane na obrazy maszyny wirtualnej w zależności od wersji systemu operacyjnego i wersji programu SQL Server. Lista dostępnych obrazów w galerii Azure maszyny wirtualnej zmienia się często.
@@ -255,7 +255,7 @@ W poniższej tabeli przedstawiono niektóre opcje, aby opublikować istniejącyc
 Aby zainstalować dodatkowy serwer SQL usług, takich jak usługi Analysis Services w trybie tabelarycznym, uruchom Kreatora instalacji serwera SQL. Pliki instalacyjne są na lokalnym dysku maszyny wirtualnej.
 
 1. Kliknij przycisk **Start** , a następnie kliknij przycisk **wszystkie programy**.
-2. Kliknij przycisk **Microsoft SQL Server 2016**, **programu Microsoft SQL Server 2014** lub **programu Microsoft SQL Server 2012** , a następnie kliknij przycisk **narzędzia do konfiguracji**.
+2. Kliknij przycisk **Microsoft SQL Server 2016**, **programu Microsoft SQL Server 2014** lub **programu Microsoft SQL Server 2012** , a następnie kliknij przycisk **narzędzia do konfiguracji** .
 3. Kliknij przycisk **Centrum instalacji programu SQL Server**.
 
 Lub uruchom C:\SQLServer_13.0_full\setup.exe, C:\SQLServer_12.0_full\setup.exe lub C:\SQLServer_11.0_full\setup.exe
@@ -282,7 +282,7 @@ Kroki opisane w tej sekcji **Podsumuj** instalacji usług Analysis Services tryb
 3. Na **typu instalacji** wybierz pozycję **nowej instalacji programu SQL Server** i kliknij przycisk **dalej**.
 4. Na **Rola Instalatora** kliknij przycisk **instalacja funkcji programu SQL Server**.
 5. Na **wybór funkcji** kliknij przycisk **usług Analysis Services**.
-6. Na **Konfiguracja wystąpienia** wpisz nazwę opisową, takich jak **tabelaryczny** do **wystąpienia o nazwie** i **identyfikator wystąpienia** pól tekstowych.
+6. Na **Konfiguracja wystąpienia** wpisz nazwę opisową, takich jak **tabelaryczny** do **wystąpienia o nazwie** i **identyfikator wystąpienia** pola tekstowe .
 7. Na **Konfiguracja usługi Analysis Services** wybierz pozycję **trybie tabelarycznym**. Dodaj bieżącego użytkownika do listy uprawnień administracyjnych.
 8. Wypełnij i zamknąć kreatora instalacji programu SQL Server.
 
