@@ -1,24 +1,20 @@
 ---
 title: Rozpoczynanie pracy z Centrum IoT Azure urządzenia twins (Python) | Dokumentacja firmy Microsoft
 description: Jak używać twins urządzenia Azure IoT Hub Dodawanie tagów, a następnie użyć kwerendy Centrum IoT. Zestawy SDK IoT Azure dla języka Python umożliwia wdrożenie symulowane urządzenie aplikacji i usługi aplikacji, która dodaje znaczniki i uruchamia kwerendy Centrum IoT.
-services: iot-hub
-documentationcenter: python
 author: kgremban
 manager: timlt
-editor: ''
-ms.assetid: 314c88e4-cce1-441c-b75a-d2e08e39ae7d
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: python
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 12/04/2017
 ms.author: kgremban
-ms.openlocfilehash: 44b913d5f30a8465219a6793f48d82cfe39d12b2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 08e457febaa7522cac86e63c0c187d1e8e49daff
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34634985"
 ---
 # <a name="get-started-with-device-twins-python"></a>Rozpoczynanie pracy z urządzenia twins (Python)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
@@ -264,9 +260,9 @@ W tym samouczku opisano konfigurowanie nowego centrum IoT Hub w witrynie Azure P
 
 Użyj następujących zasobów, aby dowiedzieć się, jak:
 
-* wysyłanie danych telemetrycznych z urządzenia z [Rozpoczynanie pracy z Centrum IoT] [ lnk-iothub-getstarted] samouczka
+* Wysyłanie danych telemetrycznych z urządzenia z [Rozpoczynanie pracy z Centrum IoT] [ lnk-iothub-getstarted] samouczka
 * Konfigurowanie urządzeń przy użyciu właściwości żądaną dwie urządzenia z [Użyj żądanego właściwości, aby skonfigurować urządzenia] [ lnk-twin-how-to-configure] samouczka
-* urządzenia interakcyjne (takich jak włączanie wentylator z aplikacji kontrolowane przez użytkownika) i sterować za pomocą [metody bezpośredniego] [ lnk-methods-tutorial] samouczka.
+* Urządzenia interakcyjne (takich jak włączanie wentylator z aplikacji kontrolowane przez użytkownika) i sterować za pomocą [metody bezpośredniego] [ lnk-methods-tutorial] samouczka.
 
 <!-- images -->
 [1]: media/iot-hub-python-twin-getstarted/1.png

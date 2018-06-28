@@ -6,14 +6,15 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 05/21/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: b790213e19b9f2aaef74a3f670c89246f54fd6d7
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 4af4620ff7a17cae76c4d5f2cf1a30ce4a3dccd8
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34597071"
 ---
 # <a name="volumes-with-azure-disks"></a>Woluminy z dysku systemu Azure
 
@@ -23,34 +24,27 @@ Aby uzyskać więcej informacji na woluminach Kubernetes, zobacz [woluminów Kub
 
 ## <a name="create-an-azure-disk"></a>Tworzenie dysku platformy Azure
 
-Przed odinstalowaniem platformy Azure zarządzanych dysku jako woluminu Kubernetes dysku musi istnieć w tej samej grupie zasobów co AKS zasobów klastra. Aby znaleźć tej grupy zasobów, należy użyć [listy grup az] [ az-group-list] polecenia.
+Przed odinstalowaniem zarządzane Azure dysku jako woluminu Kubernetes, dysk musi istnieć w AKS **węzła** grupy zasobów. Pobierz nazwę grupy zasobów z [Pokaż zasobów az] [ az-resource-show] polecenia.
 
 ```azurecli-interactive
-az group list --output table
-```
+$ az resource show --resource-group myResourceGroup --name myAKSCluster --resource-type Microsoft.ContainerService/managedClusters --query properties.nodeResourceGroup -o tsv
 
-Szukasz grupy zasobów o nazwie podobny do `MC_clustername_clustername_locaton`, gdzie clustername jest nazwą klastra AKS i lokalizacja jest region platformy Azure, w którym została wdrożona klastra.
-
-```console
-Name                                 Location    Status
------------------------------------  ----------  ---------
-MC_myAKSCluster_myAKSCluster_eastus  eastus      Succeeded
-myAKSCluster                         eastus      Succeeded
+MC_myResourceGroup_myAKSCluster_eastus
 ```
 
 Użyj [Tworzenie dysku az] [ az-disk-create] polecenie, aby utworzyć dysku platformy Azure.
 
-Za pomocą tego przykładu, zaktualizuj `--resource-group` z nazwą grupy zasobów i `--name` na wybraną nazwę.
+Aktualizacja `--resource-group` z nazwą grupy zasobów zebranych w ostatnim kroku i `--name` na wybraną nazwę.
 
 ```azurecli-interactive
 az disk create \
-  --resource-group MC_myAKSCluster_myAKSCluster_eastus \
+  --resource-group MC_myResourceGroup_myAKSCluster_eastus \
   --name myAKSDisk  \
   --size-gb 20 \
   --query id --output tsv
 ```
 
-Po utworzeniu dysku, powinny zostać wyświetlone dane wyjściowe podobne do następującego. Ta wartość jest identyfikator dysku, który jest używany podczas instalowania dysku do Kubernetes pod.
+Po utworzeniu dysku, powinny zostać wyświetlone dane wyjściowe podobne do następującego. Ta wartość jest identyfikator dysku, który jest używany w przypadku instalowania z dysku.
 
 ```console
 /subscriptions/<subscriptionID>/resourceGroups/MC_myAKSCluster_myAKSCluster_eastus/providers/Microsoft.Compute/disks/myAKSDisk
@@ -60,7 +54,7 @@ Po utworzeniu dysku, powinny zostać wyświetlone dane wyjściowe podobne do nas
 
 Zainstaluj dysku platformy Azure w sieci pod przez skonfigurowanie woluminu w specyfikacji kontenera.
 
-Utwórz nowy plik o nazwie `azure-disk-pod.yaml` z następującą zawartość. Aktualizacja `diskName` o nazwie nowo utworzony dysk i `diskURI` o identyfikatorze dysku. Ponadto Zanotuj `mountPath`, jest to ścieżka, jaką dysku platformy Azure jest zainstalowany w pod.
+Utwórz nowy plik o nazwie `azure-disk-pod.yaml` z następującą zawartość. Aktualizacja `diskName` o nazwie nowo utworzony dysk i `diskURI` o identyfikatorze dysku. Ponadto Zanotuj `mountPath`, która jest ścieżka, w którym dysku platformy Azure jest zainstalowany w pod.
 
 ```yaml
 apiVersion: v1
@@ -105,3 +99,4 @@ Dowiedz się więcej na temat Kubernetes woluminów na dyskach platformy Azure.
 [az-disk-list]: /cli/azure/disk#az_disk_list
 [az-disk-create]: /cli/azure/disk#az_disk_create
 [az-group-list]: /cli/azure/group#az_group_list
+[az-resource-show]: /cli/azure/resource#az-resource-show

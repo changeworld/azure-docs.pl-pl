@@ -3,16 +3,17 @@ title: Skalowalne usług Azure Analysis Services | Dokumentacja firmy Microsoft
 description: Replikacja serwerów usług Azure Analysis Services z skalowalnego w poziomie
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/16/2018
+ms.date: 05/24/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ee9210953306fbe317e9ed63c02fb90452ffbd15
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 5d1d55a1cf29d6dc3574099cd468c42ccfc72f5b
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34597131"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Skalowalne usług Azure Analysis Services
 
@@ -33,6 +34,22 @@ Po zakończeniu operacji przetwarzania odbywa się synchronizacja między serwer
 
 > [!NOTE]
 > Skalowalny w poziomie nie zwiększyć ilość dostępnej pamięci serwera. Aby zwiększyć ilość pamięci, należy uaktualnić swój plan.
+
+## <a name="region-limits"></a>Limity regionu
+
+Liczba replik zapytania, które można skonfigurować są ograniczone przez serwer znajduje się w regionie. Stosuje się następujące ograniczenia:
+
+|Region  |Maksymalna liczba replik  |
+|---------|---------|
+|Wschodnie stany USA 2    |    7     |
+|Środkowo-zachodnie stany USA     |    7     |
+|Europa Zachodnia     |    7     |
+|Zachodnie stany USA     |     7    |
+|Środkowe stany USA     |     3    |
+|Azja Południowo-Wschodnia    |     3    |
+|Innych regionów  |   1    |
+
+
 
 ## <a name="monitor-qpu-usage"></a>Monitorowanie użycia QPU
 

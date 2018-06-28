@@ -16,20 +16,22 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: 2b0f463c009d13440f6d3eb2bbbe2315ba7b13f2
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: bf73f9419732e93c1f32f2fb39d3acee02f49b64
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34656445"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Zestawach skali maszyny wirtualnej platformy Azure — często zadawane pytania
 
 Odpowiedzi na często zadawane pytania dotyczące zestawy skalowania maszyny wirtualnej na platformie Azure.
 
 ## <a name="top-frequently-asked-questions-for-scale-sets"></a>TOP — często zadawane pytania dla zestawów skalowania
+
 **PYTANIE** Ile maszyn wirtualnych może się znajdować w zestawie skalowania?
 
-**ODPOWIEDŹ** Zestaw skalowania może zawierać od 0 do 1000 maszyn wirtualnych opartych na obrazach platformy lub od 0 do 300 maszyn wirtualnych opartych na obrazach niestandardowych. 
+**ODPOWIEDŹ** Zestaw skalowania może zawierać od 0 do 1000 maszyn wirtualnych opartych na obrazach platformy lub od 0 do 300 maszyn wirtualnych opartych na obrazach niestandardowych.
 
 **PYTANIE** Czy zestawy skalowania obsługują dyski danych?
 
@@ -47,7 +49,7 @@ Odpowiedzi na często zadawane pytania dotyczące zestawy skalowania maszyny wir
 
 **PYTANIE** Jak utworzyć zestaw skalowania za pomocą obrazu niestandardowego?
 
-**ODPOWIEDŹ** Utwórz dysk zarządzany na podstawie wirtualnego dysku twardego z obrazem niestandardowym i odwołaj się do niego w szablonie zestawu skalowania. [Oto przykład](https://github.com/chagarw/MDPP/tree/master/101-vmss-custom-os).
+**ODPOWIEDŹ** Utwórz i Przechwyć obraz maszyny Wirtualnej, a następnie użyć jej jako źródła dla zestawu skalowania. Samouczek na temat sposobu tworzenia i używania niestandardowego obrazu maszyny Wirtualnej, można użyć [Azure CLI 2.0](tutorial-use-custom-image-cli.md) lub [programu Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
 **PYTANIE** Jeśli zmniejszę pojemność zestawu skalowania z 20 do 15, które maszyny wirtualne zostaną usunięte?
 
@@ -119,7 +121,7 @@ Próbki używa Metryka Procesora poziomie hosta i metrykę liczby komunikatów.
 
 Alerty można tworzyć na metryki dla zestawy skalowania maszyny wirtualnej za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [przykłady Szybki Start Azure Monitor PowerShell](https://azure.microsoft.com/documentation/articles/insights-powershell-samples/#create-alert-rules) i [przykłady szybkiego startu interfejsu wiersza polecenia i platform Azure Monitor](https://azure.microsoft.com/documentation/articles/insights-cli-samples/#work-with-alerts).
 
-Element TargetResourceId zestawu skali maszyny wirtualnej wygląda następująco: 
+Element TargetResourceId zestawu skali maszyny wirtualnej wygląda następująco:
 
 /subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.Compute/virtualMachineScaleSets/yourvmssname
 
@@ -127,8 +129,12 @@ Jako metrykę, aby ustawić alert dla można wybrać żadnych licznika wydajnoś
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>Jak skonfigurować automatycznego skalowania w skali maszyny wirtualnej ustawić przy użyciu programu PowerShell?
 
-Aby skonfigurować automatycznego skalowania w skali maszyny wirtualnej ustawić przy użyciu programu PowerShell, zobacz wpis w blogu [sposób dodawania skalowania automatycznego do zestawu skalowania maszyny wirtualnej platformy Azure](https://msftstack.wordpress.com/2017/03/05/how-to-add-autoscale-to-an-azure-vm-scale-set/).
+Aby skonfigurować automatycznego skalowania w skali maszyny wirtualnej ustawić przy użyciu programu PowerShell, zobacz [automatycznie skalować zestaw skali maszyny wirtualnej](tutorial-autoscale-powershell.md). Istnieje również możliwość skonfigurowania automatycznego skalowania z [Azure CLI 2.0](tutorial-autoscale-cli.md) i [szablonów platformy Azure](tutorial-autoscale-template.md)
 
+
+### <a name="if-i-have-stopped-deallocated-a-vm-is-that-vm-started-as-part-of-an-autoscale-operation"></a>Jeśli po zatrzymaniu (cofnięciu przydziału) tej maszyny Wirtualnej uruchomiony jako część operacji skalowania automatycznego jest maszyny Wirtualnej?
+
+Nie. Jeśli zasady automatycznego skalowania wymagane dodatkowe wystąpienia maszyny Wirtualnej jako część zestawu skalowania, tworzona jest nowe wystąpienie maszyny Wirtualnej. Wystąpień maszyn wirtualnych, które zostały zatrzymane (cofnięciu przydziału) nie są uruchamiane jako część zdarzenie skalowania automatycznego. Jednak te zatrzymania maszyny wirtualnej (cofnięciu przydziału) mogą zostać usunięte w ramach zdarzenia automatycznego skalowania, które umożliwiają skalowanie liczby wystąpień, identyfikator taki sam sposób, że wszystkie wystąpienia maszyny Wirtualnej mogą zostać usunięte, na podstawie kolejności wystąpienia maszyny Wirtualnej.
 
 
 

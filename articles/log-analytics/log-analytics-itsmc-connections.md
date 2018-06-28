@@ -11,13 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2018
+ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: fdf3c7d1a6621437c414e2c1fe0628f2f585d98a
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 18398094dfff03739a3d3d44d2c9c58149271123
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34638640"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Zarządzanie usługami IT — produktów/usług Uzyskuj dostęp do łącznika zarządzania usługi IT
 Ten artykuł zawiera informacje o tym, jak skonfigurować połączenie między Zarządzanie usługami IT — produktu/usługi i IT usługi zarządzania łącznika (ITSMC) w analizy dzienników do centralnego zarządzania elementami pracy. Aby uzyskać więcej informacji o ITSMC, zobacz [omówienie](log-analytics-itsmc-overview.md).
@@ -85,7 +86,7 @@ ITSMC nawiązać połączenia z wystąpieniem programu System Center Service Man
 - Można utworzyć zdarzenia z alertów analizy dzienników lub rekordów dziennika lub Azure alertów w tym wystąpieniu programu Service Manager.
 
 
-Dowiedz się więcej: [Zarządzanie usługami IT — tworzenie elementów roboczych dla alertów analizy dzienników](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts), [Zarządzanie usługami IT — tworzenie elementów roboczych z dzienników analizy dzienników](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records) i [Zarządzanie usługami IT — tworzenie elementów roboczych z alertów Azure](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+Dowiedz się więcej: [Zarządzanie usługami IT — tworzenie elementów roboczych z alertów Azure](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
 
 ### <a name="create-and-deploy-service-manager-web-app-service"></a>Tworzenie i wdrażanie aplikacji sieci web programu Service Manager
 
@@ -238,7 +239,7 @@ Użyj poniższej procedury, aby utworzyć połączenie usługi ServiceNow:
 
 - Można utworzyć zdarzenia z alertów analizy dzienników lub rekordów dziennika lub Azure alertów w tym wystąpieniu usługi ServiceNow.
 
-Dowiedz się więcej: [Zarządzanie usługami IT — tworzenie elementów roboczych dla alertów analizy dzienników](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts), [Zarządzanie usługami IT — tworzenie elementów roboczych z dzienników analizy dzienników](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records) i [Zarządzanie usługami IT — tworzenie elementów roboczych z alertów Azure](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+Dowiedz się więcej: [Zarządzanie usługami IT — tworzenie elementów roboczych z alertów Azure](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
 
 ### <a name="create-integration-user-role-in-servicenow-app"></a>Utworzenie roli użytkownika integracji usługi ServiceNow aplikacji
 
@@ -329,7 +330,7 @@ Użyj poniższej procedury, aby utworzyć połączenie Provance:
 
 - Można utworzyć zdarzenia z alertów analizy dzienników lub rekordów dziennika lub Azure alertów w tym wystąpieniu Provance.
 
-Dowiedz się więcej: [Zarządzanie usługami IT — tworzenie elementów roboczych dla alertów analizy dzienników](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts), [Zarządzanie usługami IT — tworzenie elementów roboczych z dzienników analizy dzienników](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records) i [Zarządzanie usługami IT — tworzenie elementów roboczych z alertów Azure](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+Dowiedz się więcej: [Zarządzanie usługami IT — tworzenie elementów roboczych z alertów Azure](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
 
 ## <a name="connect-cherwell-to-it-service-management-connector-in-azure"></a>Połącz Cherwell usługi IT łącznika zarządzania na platformie Azure
 
@@ -381,7 +382,7 @@ Użyj poniższej procedury, aby utworzyć połączenie Provance:
 
 - Można utworzyć zdarzenia z alertów analizy dzienników lub rekordów dziennika lub Azure alertów w tym wystąpieniu Cherwell.
 
-Dowiedz się więcej: [Zarządzanie usługami IT — tworzenie elementów roboczych dla alertów analizy dzienników](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts), [Zarządzanie usługami IT — tworzenie elementów roboczych z dzienników analizy dzienników](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records) i [Zarządzanie usługami IT — tworzenie elementów roboczych z alertów Azure](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+Dowiedz się więcej: [Zarządzanie usługami IT — tworzenie elementów roboczych z alertów Azure](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
 
 ### <a name="generate-client-id-for-cherwell"></a>Generuj identyfikator klienta dla Cherwell
 
@@ -395,6 +396,4 @@ Aby wygenerować identyfikator/klucz klienta dla Cherwell, użyj następującej 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
- - [Tworzenie elementów roboczych Zarządzanie usługami IT — alerty analizy dzienników](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts)
- - [Tworzenie elementów roboczych Zarządzanie usługami IT — z dziennika analizy dzienników dzienniki rekordów](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records)
  - [Tworzenie elementów roboczych Zarządzanie usługami IT — Azure alertów](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)

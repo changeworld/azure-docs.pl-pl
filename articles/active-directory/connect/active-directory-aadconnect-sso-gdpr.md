@@ -12,13 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/21/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bffa5a3aa57c5b01e3361bc6fc6b284348707800
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a4fc779cdfb177a9817049fd7b62b0014e141ce0
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34592412"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>Zachowaniem poufności użytkownika a usługą Azure AD bezproblemowe logowanie jednokrotne
 
@@ -27,11 +29,11 @@ ms.lasthandoff: 04/28/2018
 ## <a name="overview"></a>Przegląd
 
 
-Azure AD SSO bezproblemowe tworzy następujący typ dziennika, który może zawierać EUII:
+Azure AD SSO bezproblemowe tworzy następującego typu dziennika, który może zawierać dane osobowe: 
 
 - Pliki dziennika śledzenia usługi Azure AD Connect.
 
-Zgodność prywatności użytkownika do łatwego rejestracji Jednokrotnej jest osiągalna na dwa sposoby:
+Poprawa ochrony prywatności użytkowników do łatwego logowania jednokrotnego na dwa sposoby:
 
 1.  Na żądanie wyodrębnić dane dla osoby i usuwanie danych z tej osoby z instalacji.
 2.  Upewnij się, że żadne dane nie są przechowywane poza 48 godzin.

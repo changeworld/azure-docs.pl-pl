@@ -1,24 +1,19 @@
 ---
 title: Aktualizacja oprogramowania układowego urządzenia z Centrum IoT Azure (węzeł) | Dokumentacja firmy Microsoft
 description: Jak używać zarządzania urządzeniami w usłudze Azure IoT Hub zainicjować aktualizację oprogramowania układowego urządzenia. Przy użyciu zestawów SDK IoT Azure dla środowiska Node.js aplikacji symulowane urządzenie i usługi aplikacji, które wyzwala aktualizacji oprogramowania układowego.
-services: iot-hub
-documentationcenter: .net
 author: juanjperez
-manager: timlt
-editor: ''
-ms.assetid: 70b84258-bc9f-43b1-b7cf-de1bb715f2cf
+manager: cberlin
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 09/07/2017
 ms.author: juanpere
-ms.openlocfilehash: e8ef556793534c9eb8300ee262a4b134960f862a
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 0cd8c019cf9a65e0e72227ba99c1995a45ed4067
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34634970"
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-nodenode"></a>Umożliwia zarządzanie urządzeniami zainicjować aktualizację oprogramowania układowego urządzenia (węzeł/węzeł)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
