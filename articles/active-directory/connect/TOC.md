@@ -47,7 +47,6 @@
 ##### [Bieżące ograniczenia](active-directory-aadconnect-pass-through-authentication-current-limitations.md)
 ##### [Jak to działa?](active-directory-aadconnect-pass-through-authentication-how-it-works.md)
 ##### [Uaktualnianie agentów w wersji zapoznawczej](active-directory-aadconnect-pass-through-authentication-upgrade-preview-authentication-agents.md)
-##### [Smart Lockout (Inteligentna blokada)](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)
 ##### [Często zadawane pytania](active-directory-aadconnect-pass-through-authentication-faq.md)
 ##### [Rozwiązywanie problemów](active-directory-aadconnect-troubleshoot-pass-through-authentication.md)
 ##### [Szczegółowe informacje o zabezpieczeniach](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md)

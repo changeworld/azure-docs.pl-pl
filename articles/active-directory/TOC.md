@@ -388,11 +388,10 @@
 ### [Role administratorów](active-directory-assign-admin-roles-azure-portal.md)
 #### [Przypisywanie użytkownikowi roli administratora](fundamentals/active-directory-users-assign-role-azure-portal.md)
 #### [Porównanie uprawnień członka i gościa](fundamentals/users-default-permissions.md)
-### [Zabezpieczanie ról administratorów](admin-roles-best-practices.md)  
+### [Wzmacnianie zabezpieczeń roli administratora](admin-roles-best-practices.md)  
 #### [Tworzenie kont administratorów z dostępem awaryjnym](active-directory-admin-manage-emergency-access-accounts.md)
 ### [Jednostki administracyjne](active-directory-administrative-units-management.md)
 ### [Konfigurowanie okresów istnienia tokenu](active-directory-configurable-token-lifetimes.md)
-### [Zabezpieczanie ról uprzywilejowanych](admin-roles-best-practices.md)
 
 ## Przeglądy dostępu
 ### [Omówienie przeglądów dostępu](active-directory-azure-ad-controls-access-reviews-overview.md)
