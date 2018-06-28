@@ -67,6 +67,8 @@
   items:
     - name: Obsługiwane języki
       href: supported-languages.md
+    - name: Regiony
+      href: regions.md
     - name: Interfejsy API REST
       href: rest-apis.md
     - name: Interfejs API zestawu SDK rozpoznawania mowy
