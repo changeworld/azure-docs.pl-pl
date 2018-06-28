@@ -1,6 +1,6 @@
 - name: Dokumentacja usługi Azure HDInsight
   href: /azure/hdinsight
-- name: Program R Server w usłudze HDInsight
+- name: Usługi ML w usłudze HDInsight
   items:
     - name: Omówienie
       href: r-server-overview.md
@@ -9,7 +9,7 @@
       maintainContext: true
 - name: Rozpoczęcie pracy
   items:
-    - name: Rozpoczynanie pracy z programem R Server
+    - name: Rozpoczynanie pracy z usługami ML
       href: r-server-get-started.md
     - name: Instalowanie aplikacji usługi HDInsight
       href: ../hdinsight-apps-install-applications.md
@@ -19,11 +19,11 @@
       maintainContext: true
 - name: Instrukcje
   items:
-    - name: Korzystanie z programu R Server
+    - name: Korzystanie z usług ML
       items:
-        - name: Zarządzanie klastrem R Server
+        - name: Zarządzanie klastrem usług ML
           href: r-server-hdinsight-manage.md
-        - name: Operacjonalizowanie klastra R Server
+        - name: Obsługa operacji klastra usług ML
           href: r-server-operationalize.md
         - name: Opcje magazynu
           href: r-server-storage.md

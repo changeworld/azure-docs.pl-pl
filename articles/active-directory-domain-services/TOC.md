@@ -38,6 +38,7 @@
 #### [Task 3: enable secure LDAP for the managed domain using Azure portal (Zadanie 3. Włączanie protokołu Secure LDAP dla domeny zarządzanej przy użyciu witryny Azure Portal)](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
 
 ### [Tworzenie jednostki organizacyjnej w domenie zarządzanej](active-directory-ds-admin-guide-create-ou.md)
+### [Tworzenie zarządzanego konta usługi grupy w domenie zarządzanej](active-directory-ds-create-gmsa.md)
 ### [Administrowanie zasadami grupy w domenie zarządzanej](active-directory-ds-admin-guide-administer-group-policy.md)
 ## [Wybieranie sieci wirtualnej](active-directory-ds-networking.md)
 ## Wdrażanie aplikacji

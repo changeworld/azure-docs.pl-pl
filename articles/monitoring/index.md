@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie platformą Azure — monitorowanie | Microsoft Docs
-description: Platforma Azure zawiera wiele usług i narzędzi, które współpracują ze sobą w celu zapewnienia pełnego zarządzania nie tylko dla Twoich aplikacji uruchomionych na platformie Azure, ale też dla innych chmur i rozwiązań lokalnych.  W tym artykule podano ogólny opis różnych obszarów zarządzania oraz linki do zawartości dotyczącej narzędzi platformy Azure do zarządzania aplikacjami i zasobami w chmurze.
+title: Zarządzanie platformą Azure i pakiet Operations Management Suite (OMS) | Microsoft Docs
+description: Omówienie obszarów zarządzania aplikacjami i zasobami platformy Azure oraz linki do zawartości narzędzi zarządzania platformą Azure, które zostały wcześniej połączone w obrębie pakietu Operations Management Suite (OMS).
 documentationcenter: ''
 author: bwren
 manager: carmonm
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: bwren
-ms.openlocfilehash: 36dd04be167d9e8e63ab38e4af80c5766ba55370
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8598e3528aa0a9fb171853e5f6554346ace937ef
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31410298"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37059954"
 ---
 # <a name="azure-management---monitoring"></a>Zarządzanie platformą Azure — monitorowanie
 

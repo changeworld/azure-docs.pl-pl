@@ -126,6 +126,10 @@
               href: service-bus-amqp-request-response.md
         - name: Funkcje zaawansowane
           items:
+            - name: Filtry połączenia adresu IP
+              href: service-bus-ip-filtering.md
+            - name: Punkty końcowe usługi sieci wirtualnej
+              href: service-bus-service-endpoints.md
             - name: Kolejki utraconych wiadomości
               href: service-bus-dead-letter-queues.md
             - name: Komunikaty pobrane z wyprzedzeniem

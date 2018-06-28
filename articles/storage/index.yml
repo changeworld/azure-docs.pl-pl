@@ -3,24 +3,24 @@ documentType: LandingData
 title: Dokumentacja usługi Azure Storage
 metadata:
   title: Dokumentacja usługi Azure Storage — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  description: 'Azure Storage to zarządzana przez firmę Microsoft usługa w chmurze zapewniająca bezpieczny, trwały, skalowalny i nadmiarowy magazyn o wysokiej dostępności. Usługa Azure Storage składa się z następujących usług: Blob Storage, File Storage i Queue Storage.'
+  description: 'Azure Storage to zarządzana przez firmę Microsoft usługa w chmurze zapewniająca bezpieczny, trwały, skalowalny i nadmiarowy magazyn o wysokiej dostępności. Usługa Azure Storage obejmuje następujące usługi: Azure Blobs, Azure Data Lake Storage 2. generacji, Azure Files, Azure Queues i Azure Tables.'
   services: storage
   author: tamram
-  manager: jeconnoc
+  manager: twooley
   ms.service: storage
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 06/18/2018
+  ms.date: 06/27/2018
   ms.author: tamram
-  ms.openlocfilehash: 0e8c2b7048ff9e59612e13a87506bf1209036ca6
-  ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+  ms.openlocfilehash: a2254967a9f7338e29105682ea6d496271bbbe75
+  ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 06/19/2018
-  ms.locfileid: "36266675"
+  ms.lasthandoff: 06/27/2018
+  ms.locfileid: "37030295"
 abstract:
-  description: 'Microsoft Azure Storage to zarządzana przez firmę Microsoft usługa w chmurze zapewniająca bezpieczny, trwały, skalowalny i nadmiarowy magazyn o wysokiej dostępności. Usługa Azure Storage składa się z następujących usług: Blob Storage, File Storage i Queue Storage.  Dowiedz się, jak korzystać z usługi Azure Storage w aplikacjach, dzięki naszym samouczkom i przewodnikom Szybki start.'
+  description: 'Azure Storage to zarządzana przez firmę Microsoft usługa zapewniająca bezpieczny, trwały, skalowalny i nadmiarowy magazyn w chmurze o wysokiej dostępności. Usługa Azure Storage obejmuje następujące usługi: Azure Blobs (obiekty), Azure Data Lake Storage 2. generacji, Azure Files, Azure Queues i Azure Tables. Dowiedz się, jak korzystać z usługi Azure Storage w aplikacjach, dzięki naszym samouczkom i przewodnikom Szybki start.'
 sections:
 - title: 5-minutowe przewodniki Szybki start
   items:
@@ -65,30 +65,25 @@ sections:
       - href: /azure/storage/blobs/storage-quickstart-blobs-java
       - href: /azure/storage/blobs/storage-quickstart-blobs-python
       - href: /azure/storage/blobs/storage-quickstart-blobs-nodejs
+    - title: Usługa Data Lake Storage 2. generacji
+      values:
+      - href: /azure/storage/data-lake-storage/quickstart-create-account#create-an-account-using-the-azure-portal
+      - href: /azure/storage/data-lake-storage/quickstart-create-account#create-an-account-using-powershell
+      - href: /azure/storage/data-lake-storage/quickstart-create-account#create-an-account-using-azure-cli
+      - href: 
+      - href: 
+      - href: 
+      - href: 
 - title: Samouczki krok po kroku
   items:
-  - type: paragraph
-    text: Dowiedz się, jak przekazywać i przetwarzać dane obrazu w chmurze.
   - type: list
-    style: unordered
+    style: cards
+    className: cardsD
     items:
-    - html: <a href="/azure/storage/blobs/storage-upload-process-images">Przekazywanie i pobieranie danych obrazu w chmurze</a>
-    - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">Wyzwalanie usługi Azure Functions w celu przetwarzania obiektów blob</a>
-    - html: <a href="/azure/storage/blobs/storage-secure-access-application">Zabezpieczanie danych aplikacji</a>
-    - html: <a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">Monitorowanie i rozwiązywanie problemów dotyczących magazynu</a>
-  - type: paragraph
-    text: Dowiedz się, jak projektować aplikacje wysokiej dostępności w usłudze Azure Storage.
-  - type: list
-    style: unordered
-    items:
-    - html: <a href="/azure/storage/blobs/storage-create-geo-redundant-storage">Uzyskiwanie wysokiej dostępności danych aplikacji</a>
-    - html: <a href="/azure/storage/blobs/storage-simulate-failure-ragrs-account-app">Symulowanie błędu podczas uzyskiwania dostępu do odczytu do magazynu nadmiarowego</a>
-  - type: paragraph
-    text: Dowiedz się, jak przeszukiwać dane bez struktury w usłudze Azure Storage.
-  - type: list
-    style: unordered
-    items:
-    - html: <a href="/azure/storage/blobs/storage-unstructured-search">Przeszukiwanie danych bez struktury w magazynie w chmurze</a>
+    - title: Obiekty blob
+      html: <p>Przekazywanie i przetwarzanie danych obrazu w chmurze</p><ul><li><a href="/azure/storage/blobs/storage-upload-process-images">Przekazywanie i pobieranie danych obrazu w chmurze</a></li><li><a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">Wyzwalanie usługi Azure Functions w celu przetwarzania obiektów blob</a></li><li><a href="/azure/storage/blobs/storage-secure-access-application">Zabezpieczanie danych aplikacji</a></li><li><a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">Monitorowanie i rozwiązywanie problemów dotyczących magazynu</a></li></ul><p>Projektowanie aplikacji wysokiej dostępności</p><ul><li><a href="/azure/storage/blobs/storage-create-geo-redundant-storage">Uzyskiwanie wysokiej dostępności danych aplikacji</a></li><li><a href="/azure/storage/blobs/storage-simulate-failure-ragrs-account-app">Symulowanie błędu podczas uzyskiwania dostępu do odczytu do magazynu nadmiarowego</a></li></ul><p><a href="/azure/storage/blobs/storage-unstructured-search">Przeszukiwanie danych bez struktury w usłudze Azure Storage</a></p>
+    - title: Usługa Data Lake Storage 2. generacji
+      html: <p><a href="/azure/storage/data-lake-storage/handle-data-using-databricks">Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu usługi Azure Databricks</a></p><p><a href="/azure/storage/data-lake-storage/using-databricks-spark">Uzyskiwanie dostępu do danych usługi Azure Data Lake Storage 2. generacji za pomocą usługi DataBricks przy użyciu platformy Spark</a></p><p><a href="/azure/storage/data-lake-storage/tutorial-extract-transform-load-hive">Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu oprogramowania Apache Hive w usłudze Azure HDInsight</a></p>
 - title: Przykłady
   items:
   - type: paragraph

@@ -271,7 +271,7 @@
     - name: Data Lake Analytics
       tocHref: /azure/data-lake-analytics/
       topicHref: /azure/data-lake-analytics/
-    - name: Data Lake Store
+    - name: Usługa Data Lake Storage 1. generacji
       tocHref: /azure/data-lake-store/
       topicHref: /azure/data-lake-store/
     - name: Laboratorium Devtest Labs
@@ -311,7 +311,7 @@
         - name: Zabezpieczenia przedsiębiorstwa
           tocHref: /azure/hdinsight/domain-joined
           topicHref: /azure/hdinsight/domain-joined/apache-domain-joined-introduction
-        - name: R Server
+        - name: Usługi ML
           tocHref: /azure/hdinsight/r-server
           topicHref: /azure/hdinsight/r-server-overview
         - name: platforma Spark
@@ -518,6 +518,9 @@
         - name: Obiekty blob
           tocHref: /azure/storage/blobs/
           topicHref: /azure/storage/blobs/storage-blobs-introduction
+        - name: Usługa Data Lake Storage 2. generacji
+          tocHref: /azure/storage/data-lake-storage-gen2/
+          topicHref: /azure/storage/data-lake-storage/introduction
         - name: Pliki
           tocHref: /azure/storage/files/
           topicHref: /azure/storage/files/storage-files-introduction

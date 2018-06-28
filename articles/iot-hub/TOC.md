@@ -20,6 +20,7 @@
 <!-- These will all be replaced by the new MVC tutorials as we write them -->
 ## [Routing wiadomości](tutorial-routing.md)
 ## [Konfigurowanie urządzeń](tutorial-device-twins.md)
+## [Zarządzanie aktualizacjami oprogramowania układowego](tutorial-firmware-update.md)
 ## [Testowanie łączności urządzenia](tutorial-connectivity.md)
 ## Wysyłanie komunikatów z chmury do urządzeń
 ### [.NET](iot-hub-csharp-csharp-c2d.md)
@@ -111,6 +112,8 @@
 #### [Wysyłanie komunikatów do serwera MQTT przy użyciu interfejsów Eclipse Paho API](iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md)
 #### [Monitorowanie czujnika magnetycznego i wysyłanie powiadomień e-mail za pomocą usługi Azure Functions](iot-hub-arduino-iot-devkit-az3166-door-monitor.md)
 
+## [Najlepsze rozwiązania dotyczące konfiguracji urządzeń](iot-hub-configuration-best-practices.md)
+
 # Przewodniki z instrukcjami
 ## Planowanie
 ### [Porównanie usług IoT Hub i Event Hubs](iot-hub-compare-event-hubs.md)
@@ -169,6 +172,9 @@
 ### Wprowadzenie do zarządzania bliźniaczymi reprezentacjami modułów
 #### [Portal](iot-hub-portal-csharp-module-twin-getstarted.md)
 #### [.NET](iot-hub-csharp-csharp-module-twin-getstarted.md)
+#### [Python](iot-hub-python-python-module-twin-getstarted.md)
+#### [C](iot-hub-c-c-module-twin-getstarted.md)
+#### [Node](iot-hub-node-node-module-twin-getstarted.md)
 ### Korzystanie z metod bezpośrednich
 #### [Node.js](iot-hub-node-node-direct-methods.md)
 #### [.NET](iot-hub-csharp-csharp-direct-methods.md)
@@ -221,7 +227,9 @@
 ## [Uaktualnianie centrum IoT](iot-hub-upgrade.md)
 ## [Metryki użycia](iot-hub-metrics.md)
 ## [Konfigurowanie filtrowania adresów IP](iot-hub-ip-filtering.md)
-## [Konfigurowanie urządzeń na dużą skalę](iot-hub-auto-device-config.md)
+## Konfigurowanie urządzeń na dużą skalę
+### [Korzystanie z witryny Azure Portal](iot-hub-auto-device-config.md)
+### [Korzystanie z interfejsu wiersza polecenia platformy Azure](iot-hub-auto-device-config-cli.md)
 
 # Dokumentacja
 ## [Przykłady kodu](https://azure.microsoft.com/resources/samples/?service=iot-hub)

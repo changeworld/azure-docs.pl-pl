@@ -5,62 +5,38 @@
 - name: Omówienie
   items:
     - name: Azure IoT Edge — informacje
-      href: how-iot-edge-works.md
+      href: about-iot-edge.md
 - name: Przewodniki Szybki start
   expanded: true
   items:
-    - name: Wdrażanie na brzegu — system Linux lub Mac
+    - name: Wdrażanie kodu na urządzeniu z systemem Linux
       href: quickstart-linux.md
-    - name: Wdrażanie na brzegu — system Windows
+    - name: Wdrażanie kodu na urządzeniu z systemem Windows
       href: quickstart.md
 - name: Samouczki
   items:
-    - name: Symulowanie urządzenia usługi Edge — system Linux lub Mac
-      href: tutorial-simulate-device-linux.md
-    - name: Symulowanie urządzenia usługi Edge — system Windows
-      href: tutorial-simulate-device-windows.md
-    - name: Wdrażanie kodu w module
+    - name: Wyszukiwanie szczegółowych informacji na brzegu sieci
       items:
-        - name: 'C#'
-          href: tutorial-csharp-module.md
-        - name: Python
-          href: tutorial-python-module.md
-    - name: Wdrażanie usługi Azure Stream Analytics
-      href: tutorial-deploy-stream-analytics.md
-    - name: Wdrażanie usługi Azure Machine Learning
-      href: tutorial-deploy-machine-learning.md
-    - name: Wdrażanie usługi Azure Functions
-      href: tutorial-deploy-function.md
-- name: Przewodniki z instrukcjami
-  items:
-    - name: Tworzenie bram
-      items:
-        - name: Tworzenie przezroczystej bramy
-          href: how-to-create-transparent-gateway.md
-        - name: Brama Modbus
-          href: deploy-modbus-gateway.md
-    - name: Używanie rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure w wersji 2.0
-      href: tutorial-create-deployment-with-cli-iot-extension.md
-    - name: Wdrażanie i monitorowanie na dużą skalę
-      href: how-to-deploy-monitor.md
-    - name: Aprowizowanie urządzenia IoT Core
-      href: how-to-install-iot-core.md
-    - name: Programowanie rozwiązań IoT Edge w programie VS Code
-      items:
-        - name: Praca z wieloma modułami
-          href: tutorial-multiple-modules-in-vscode.md
-        - name: 'Debugowanie modułu w języku C#'
-          href: how-to-vscode-debug-csharp-module.md
-        - name: Debugowanie usługi Azure Functions
-          href: how-to-vscode-debug-azure-function.md
-    - name: Ciągła integracja/ciągłe dostarczanie w usługach VSTS
-      href: how-to-ci-cd.md
-    - name: Przechowywanie danych na brzegu
-      href: sql-storage.md
-    - name: Rozwiązywanie problemów
-      href: troubleshoot.md
+        - name: Filtrowanie danych przy użyciu usługi Azure Functions
+          href: tutorial-deploy-function.md
+        - name: Wyszukiwanie wartości średnich przy użyciu kolekcji ASA
+          href: tutorial-deploy-stream-analytics.md
+        - name: Ocenianie danych przy użyciu usługi Azure ML
+          href: tutorial-deploy-machine-learning.md
+        - name: Filtrowanie danych przy użyciu kodu niestandardowego
+          items:
+            - name: 'C#'
+              href: tutorial-csharp-module.md
+            - name: Python
+              href: tutorial-python-module.md
+            - name: Node.js
+              href: tutorial-node-module.md
+    - name: Przechowywanie danych lokalnie przy użyciu języka SQL
+      href: tutorial-store-data-sql-server.md
 - name: Pojęcia
   items:
+    - name: Środowisko uruchomieniowe usługi IoT Edge
+      href: iot-edge-runtime.md
     - name: Moduły usługi IoT Edge
       href: iot-edge-modules.md
       items:
@@ -70,16 +46,76 @@
           href: module-composition.md
         - name: Agent usługi Edge i właściwości centrum
           href: module-edgeagent-edgehub.md
-    - name: Środowisko uruchomieniowe usługi IoT Edge
-      href: iot-edge-runtime.md
     - name: Wdrożenia
       href: module-deployment-monitoring.md
     - name: Urządzenie IoT Edge jako brama
       href: iot-edge-as-gateway.md
     - name: Bezpieczeństwo
       href: security.md
+    - name: Obsługa platform
+      href: support.md
     - name: Słownik usługi IoT Edge
       href: iot-edge-glossary.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Rejestrowanie urządzenia Edge
+      items:
+        - name: Azure Portal
+          href: how-to-register-device-portal.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: how-to-register-device-cli.md
+        - name: Visual Studio Code
+          href: how-to-register-device-vscode.md
+    - name: Instalowanie środowiska uruchomieniowego usługi IoT Edge
+      items:
+        - name: Na urządzeniu z systemem Linux X64
+          href: how-to-install-iot-edge-linux.md
+        - name: Na urządzeniu z systemem Linux ARM32
+          href: how-to-install-iot-edge-linux-arm.md
+        - name: W systemie Windows z kontenerami systemu Windows
+          href: how-to-install-iot-edge-windows-with-windows.md
+        - name: W systemie Windows z kontenerami systemu Linux
+          href: how-to-install-iot-edge-windows-with-linux.md
+    - name: Programowanie i debugowanie modułów
+      items:
+        - name: 'C#'
+          href: how-to-develop-csharp-module.md
+        - name: Node.js
+          href: how-to-develop-node-module.md
+        - name: Azure Functions
+          href: how-to-develop-csharp-function.md
+        - name: Programowanie wielu modułów
+          href: how-to-develop-multiple-modules-vscode.md
+        - name: Debugowanie wielu modułów
+          href: how-to-debug-multiple-modules-vscode.md
+    - name: Wdrażanie modułów
+      items:
+        - name: Azure Portal
+          href: how-to-deploy-modules-portal.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: how-to-deploy-modules-cli.md
+        - name: Visual Studio Code
+          href: how-to-deploy-modules-vscode.md
+    - name: Wdrażanie i monitorowanie na dużą skalę
+      items:
+        - name: Azure Portal
+          href: how-to-deploy-monitor.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: how-to-deploy-monitor-cli.md
+    - name: Używanie urządzeń Edge jako bram
+      items:
+        - name: Przezroczysta brama (Linux)
+          href: how-to-create-transparent-gateway-linux.md
+        - name: Przezroczysta brama (Windows)
+          href: how-to-create-transparent-gateway-windows.md
+        - name: Brama protokołu Modbus
+          href: deploy-modbus-gateway.md
+    - name: Aprowizowanie urządzenia IoT Core
+      href: how-to-install-iot-core.md
+    - name: Ciągła integracja/ciągłe dostarczanie w usługach VSTS
+      href: how-to-ci-cd.md
+    - name: Rozwiązywanie problemów
+      href: troubleshoot.md
 - name: Powiązane
   items:
     - name: Rozwiązania
@@ -114,6 +150,10 @@
       href: 'https://azure.microsoft.com/develop/iot/'
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+    - name: Usługa Azure IoT Edge dla edytora VS Code
+      href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge'
+    - name: Zestaw narzędzi usługi Azure IoT dla edytora VS Code
+      href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit'
     - name: Narzędzie DeviceExplorer
       href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'
     - name: Narzędzie iothub-diagnostics

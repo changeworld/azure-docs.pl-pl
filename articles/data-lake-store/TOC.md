@@ -1,11 +1,11 @@
-# [Dokumentacja usługi Data Lake Store](index.md)
+# [Dokumentacja usługi Azure Data Lake Storage 1. generacji](index.md)
 
 # Omówienie
-## [Omówienie usługi Azure Data Lake Store](data-lake-store-overview.md)
-## [Porównanie usług Azure Data Lake Store i Azure Storage](data-lake-store-comparison-with-blob-storage.md)
-## [Usługa Azure Data Lake Store do przetwarzania danych big data](data-lake-store-data-scenarios.md)
-## [Aplikacje typu „open source” współdziałające z usługą Azure Data Lake Store](data-lake-store-compatible-oss-other-applications.md)
-## [Najlepsze rozwiązania dotyczące korzystania z usługi Data Lake Store](data-lake-store-best-practices.md)
+## [Omówienie usługi Data Lake Storage 1. generacji](data-lake-store-overview.md)
+## [Porównanie usług Data Lake Storage. 1 generacji i Azure Storage](data-lake-store-comparison-with-blob-storage.md)
+## [Usługa Data Lake Storage 1. generacji do przetwarzania danych big data](data-lake-store-data-scenarios.md)
+## [Aplikacje typu „open source” współdziałające z usługą Data Lake Storage 1. generacji](data-lake-store-compatible-oss-other-applications.md)
+## [Najlepsze rozwiązania dotyczące korzystania z usługi Data Lake Storage 1. generacji](data-lake-store-best-practices.md)
 
 # Rozpoczęcie pracy
 ## [Korzystanie z portalu](data-lake-store-get-started-portal.md)
@@ -21,15 +21,15 @@
 ### [Korzystanie z narzędzia DistCp](data-lake-store-copy-data-wasb-distcp.md)
 ### [Korzystanie z narzędzia Sqoop](data-lake-store-data-transfer-sql-sqoop.md)
 ### [Przekazywanie danych ze źródeł offline](data-lake-store-offline-bulk-data-upload.md)
-### [Migrowanie usługi Azure Data Lake Store między regionami](data-lake-store-migration-cross-region.md)
+### [Migrowanie usługi Data Lake Store między regionami](data-lake-store-migration-cross-region.md)
 
 ## Zabezpieczanie danych
 ### [Omówienie zabezpieczeń](data-lake-store-security-overview.md)
-### [Kontrola dostępu w usłudze Data Lake Store](data-lake-store-access-control.md)
-### [Zabezpieczanie danych w usłudze Data Lake Store](data-lake-store-secure-data.md)
+### [Kontrola dostępu w usłudze Data Lake Storage 1. generacji](data-lake-store-access-control.md)
+### [Zabezpieczanie danych w usłudze Data Lake Storage 1. generacji](data-lake-store-secure-data.md)
 ### [Szyfrowanie](data-lake-store-encryption.md)
 
-## Uwierzytelnianie za pomocą usługi Data Lake Store
+## Uwierzytelnianie za pomocą usługi Data Lake Storage 1. generacji
 ### [Opcje uwierzytelniania](data-lakes-store-authentication-using-azure-active-directory.md)
 ### [Uwierzytelnianie użytkowników końcowych](data-lake-store-end-user-authenticate-using-active-directory.md)
 #### [Korzystanie z języka Java](data-lake-store-end-user-authenticate-java-sdk.md)
@@ -42,7 +42,7 @@
 #### [Korzystanie z interfejsu API REST](data-lake-store-service-to-service-authenticate-rest-api.md)
 #### [Korzystanie z języka Python](data-lake-store-service-to-service-authenticate-python.md)
 
-## Praca z usługą Data Lake Store
+## Praca z usługą Data Lake Storage 1. generacji
 ### Operacje zarządzania kontami
 #### [Korzystanie z zestawu SDK dla platformy .NET](data-lake-store-get-started-net-sdk.md)
 #### [Korzystanie z interfejsu API REST](data-lake-store-get-started-rest-api.md)
@@ -54,12 +54,12 @@
 #### [Korzystanie z języka Python](data-lake-store-data-operations-python.md)
 
 ## Wydajność
-### [Wskazówki dotyczące dostrajania wydajności usługi Azure Data Lake Store](data-lake-store-performance-tuning-guidance.md)
-### [Wskazówki dotyczące dostrajania wydajności w przypadku używania programu PowerShell z usługą Azure Data Lake Store](data-lake-store-performance-tuning-powershell.md)
-### [Wskazówki dotyczące dostrajania wydajności oprogramowania Spark w usługach HDInsight i Azure Data Lake Store](data-lake-store-performance-tuning-spark.md)
-### [Wskazówki dotyczące dostrajania wydajności oprogramowania Hive w usługach HDInsight i Azure Data Lake Store](data-lake-store-performance-tuning-hive.md)
-### [Wskazówki dotyczące dostrajania wydajności oprogramowania MapReduce w usługach HDInsight i Azure Data Lake Store](data-lake-store-performance-tuning-mapreduce.md)
-### [Wskazówki dotyczące dostrajania wydajności oprogramowania Storm w usługach HDInsight i Azure Data Lake Store](data-lake-store-performance-tuning-storm.md)
+### [Wskazówki dotyczące dostrajania wydajności usługi Azure Data Lake Storage 1. generacji](data-lake-store-performance-tuning-guidance.md)
+### [Wskazówki dotyczące dostrajania wydajności w przypadku używania programu PowerShell z usługą Data Lake Storage 1. generacji](data-lake-store-performance-tuning-powershell.md)
+### [Wskazówki dotyczące dostrajania wydajności oprogramowania Spark w usługach HDInsight i Data Lake Storage 1. generacji](data-lake-store-performance-tuning-spark.md)
+### [Wskazówki dotyczące dostrajania wydajności oprogramowania Hive w usługach HDInsight i Data Lake Storage 1. generacji](data-lake-store-performance-tuning-hive.md)
+### [Wskazówki dotyczące dostrajania wydajności oprogramowania MapReduce w usługach HDInsight i Data Lake Storage 1. generacji](data-lake-store-performance-tuning-mapreduce.md)
+### [Wskazówki dotyczące dostrajania wydajności oprogramowania Storm w usługach HDInsight i Data Lake Storage 1. generacji](data-lake-store-performance-tuning-storm.md)
 
 ## Integracja z usługami Azure Services
 ### Za pomocą usługi HDInsight

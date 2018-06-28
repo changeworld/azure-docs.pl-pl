@@ -1,26 +1,28 @@
 ---
-title: Dokumentacja usługi Azure Data Lake Store — samouczki i dokumentacja interfejsu API | Microsoft Docs
+title: Dokumentacja usługi Azure Data Lake Storage 1. generacji — samouczki i dokumentacja interfejsu API | Microsoft Docs
 description: Dowiedz się, jak skonfigurować zgodne z usługą Hadoop repozytorium usługi Data Lake o ogromnej skali na potrzeby przeprowadzania analiz danych o dowolnym rozmiarze, typie i szybkości wprowadzania, oraz jak nim zarządzać i uzyskiwać do niego dostęp.
 services: data-lake-store
-author: czeumault
-manager: carolz
+author: twooley
+manager: twooley
 layout: LandingPage
 ms.assetid: ''
 ms.service: data-lake-store
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: landing-page
-ms.date: 01/23/2017
-ms.author: carolz
-ms.openlocfilehash: d738676a0a9b16c32646734168546992d8595912
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.topic: conceptual
+ms.date: 06/27/2018
+ms.author: twooley
+ms.openlocfilehash: ba17c59169d00a8333bb9eb1c7bb0c1a56aaba83
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37033437"
 ---
-# <a name="data-lake-store-documentation"></a>Dokumentacja usługi Data Lake Store
+# <a name="azure-data-lake-storage-gen1-documentation"></a>Dokumentacja usługi Azure Data Lake Storage 1. generacji
 
-Dowiedz się, jak przy użyciu usługi Data Lake Store utworzyć zgodne z usługą Hadoop repozytorium o ogromnej skali na potrzeby przeprowadzania analiz danych o dowolnym rozmiarze, typie i szybkości wprowadzania. W samouczkach, dokumentacji interfejsu API i innych dokumentach pokazano, jak skonfigurować repozytorium usługi Data Lake na potrzeby analiz operacyjnych i poznawczych, oraz jak nim zarządzać i uzyskiwać do niego dostęp.
+Dowiedz się, jak przy użyciu usługi Azure Data Lake Storage 1. generacji (poprzednio znanej jako Azure Data Lake Store) utworzyć zgodne z usługą Hadoop repozytorium o ogromnej skali na potrzeby przeprowadzania analiz danych o dowolnym rozmiarze, typie i szybkości wprowadzania. W samouczkach, dokumentacji interfejsu API i innych dokumentach pokazano, jak skonfigurować repozytorium usługi Data Lake na potrzeby analiz operacyjnych i poznawczych, oraz jak nim zarządzać i uzyskiwać do niego dostęp.
+
+Jeśli chcesz dowiedzieć się więcej na temat wersji zapoznawczej usługi Data Lake Storage 2. generacji, zobacz [stronę produktu](https://aka.ms/adlsgen2-product).
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -34,7 +36,7 @@ Dowiedz się, jak przy użyciu usługi Data Lake Store utworzyć zgodne z usług
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Dowiedz się więcej o usłudze Azure Data Lake Store</h3>
+                        <h3>Dowiedz się więcej na temat usługi Data Lake Storage 1. generacji</h3>
                     </div>
                 </div>
             </div>
@@ -52,7 +54,7 @@ Dowiedz się, jak przy użyciu usługi Data Lake Store utworzyć zgodne z usług
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Biblioteka wideo dotycząca usługi Azure Data Lake Store</h3>
+                        <h3>Biblioteka wideo dotycząca usługi Azure Data Lake Storage 1. generacji</h3>
                     </div>
                 </div>
             </div>
@@ -70,7 +72,7 @@ Dowiedz się, jak przy użyciu usługi Data Lake Store utworzyć zgodne z usług
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Rozpoczynanie pracy z usługą Azure Data Lake Store za pośrednictwem witryny Azure Portal</h3>
+                        <h3>Rozpocznij pracę z usługą Data Lake Storage 1. generacji przy użyciu witryny Azure Portal</h3>
                     </div>
                 </div>
             </div>
@@ -88,7 +90,7 @@ Dowiedz się, jak przy użyciu usługi Data Lake Store utworzyć zgodne z usług
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Rozpoczynanie pracy z usługą Azure Data Lake Store przy użyciu programu Azure PowerShell</h3>
+                        <h3>Rozpocznij pracę z usługą Data Lake Storage 1. generacji przy użyciu programu PowerShell</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +108,7 @@ Dowiedz się, jak przy użyciu usługi Data Lake Store utworzyć zgodne z usług
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Rozpoczynanie pracy z usługą Azure Data Lake Store za pośrednictwem interfejsu wiersza polecenia platformy Azure</h3>
+                        <h3>Rozpocznij pracę z usługą Data Lake Storage 1. generacji przy użyciu interfejsu wiersza polecenia platformy Azure</h3>
                     </div>
                 </div>
             </div>
@@ -124,7 +126,7 @@ Dowiedz się, jak przy użyciu usługi Data Lake Store utworzyć zgodne z usług
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Rozpoczynanie pracy z usługą Azure Data Lake Store przy użyciu platformy .NET</h3>
+                        <h3>Rozpocznij pracę z usługą Data Lake Storage 1. generacji przy użyciu platformy .NET</h3>
                     </div>
                 </div>
             </div>
@@ -142,7 +144,7 @@ Dowiedz się, jak przy użyciu usługi Data Lake Store utworzyć zgodne z usług
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Rozpoczynanie pracy z usługą Azure Data Lake Store przy użyciu języka Java</h3>
+                        <h3>Rozpocznij pracę z usługą Data Lake Storage 1. generacji przy użyciu języka Java</h3>
                     </div>
                 </div>
             </div>
@@ -160,7 +162,7 @@ Dowiedz się, jak przy użyciu usługi Data Lake Store utworzyć zgodne z usług
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Rozpoczynanie pracy z usługą Azure Data Lake Store przy użyciu środowiska Node.js</h3>
+                        <h3>Rozpocznij pracę z usługą Data Lake Storage 1. generacji przy użyciu platformy Node.js</h3>
                     </div>
                 </div>
             </div>

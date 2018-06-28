@@ -43,6 +43,18 @@
 ### Magazyn
 #### [Magazyn strefowo nadmiarowy](../storage/common/storage-redundancy-zrs.md)
 
+### Event Hubs
+#### [Geograficzne odzyskiwanie po awarii w usłudze Event Hubs](../event-hubs/event-hubs-geo-dr.md#availability-zones-preview)
+
+### Service Bus
+#### [Geograficzne odzyskiwanie po awarii w usłudze Service Bus](../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview)
+
+### VPN Gateway
+#### [Tworzenie bramy sieci wirtualnej strefowo nadmiarowej](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
+
+### ExpressRoute
+#### [Tworzenie bramy sieci wirtualnej strefowo nadmiarowej](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
+
 # Odzyskiwanie po awarii
 ## [Korzystanie z usługi Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/)
 

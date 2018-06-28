@@ -151,6 +151,7 @@
 ### [Dostosowywanie samoobsługowego resetowania haseł](authentication/concept-sspr-customization.md)
 ### [Wymagania dotyczące danych związane z samoobsługowym resetowaniem haseł](authentication/howto-sspr-authenticationdata.md)
 ### [Raportowanie samoobsługowego resetowania haseł](authentication/howto-sspr-reporting.md)
+### [Inteligentna blokada](authentication/howto-password-smart-lockout.md)
 ### [Eliminowanie słabych haseł](authentication/concept-password-ban-bad.md)
 ### [Konfigurowanie listy zakazanych haseł](authentication/howto-password-ban-bad.md)
 ### [Integracja lokalna](authentication/concept-password-ban-bad-on-premises.md)

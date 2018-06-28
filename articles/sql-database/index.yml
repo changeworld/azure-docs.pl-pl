@@ -14,14 +14,14 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/01/2018
   ms.author: carlrab
-  ms.openlocfilehash: b7888a2bece1a9b601c3629deb1c1dd1fc5cbbe3
-  ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+  ms.openlocfilehash: 64c6bd7ee69f443f819676d1605aa679066e2e84
+  ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 04/06/2018
-  ms.locfileid: "30922386"
+  ms.lasthandoff: 06/27/2018
+  ms.locfileid: "37063353"
 abstract:
-  description: Usługa Azure SQL Database to relacyjna baza danych oferowana jako usługach, która korzysta z aparatu programu Microsoft SQL Server. Usługa SQL Database to wysokiej wydajności niezawodna i bezpieczna baza danych, za pomocą której można tworzyć oparte na danych aplikacje i witryny internetowe w wybranym języku programowania bez zarządzania infrastrukturą. Dowiedz się, jak używać usługi SQL Database, korzystając z przewodników Szybki Start, samouczków i przykładów.
+  description: Azure SQL Database to relacyjna baza danych jako usługa oparta na najnowszej stabilnej wersji aparatu bazy danych programu Microsoft SQL Server. Usługa SQL Database to wysokiej wydajności niezawodna i bezpieczna baza danych, za pomocą której można tworzyć oparte na danych aplikacje i witryny internetowe w wybranym języku programowania bez zarządzania infrastrukturą. Dowiedz się, jak używać usługi SQL Database, korzystając z przewodników Szybki Start, samouczków i przykładów.
   aside:
     image:
       alt: 
@@ -35,22 +35,55 @@ sections:
 - title: 5-minutowe przewodniki Szybki start
   items:
   - type: paragraph
-    text: 'Dowiedz się, jak utworzyć bazę danych SQL, zarządzać nią za pomocą narzędzia SQL Management Studio i programować z jej użyciem w językach C#, Java, Python, Node.js i Ruby:'
-  - type: list
-    style: icon48
-    items:
+    text: 'Usługa Azure SQL Database ułatwia wykonywanie podstawowych zadań zarządzania przy użyciu witryny Azure Portal, interfejsu wiersza polecenia platformy Azure i programu Azure PowerShell. Dowiedz się, jak wykonywać podstawowe zadania zarządzania dzięki przykładom z poniższych przewodników Szybki start:'
+  - type: table
+    style: dataMatrix
+    columns:
     - image:
-        src: https://docs.microsoft.com/azure/sql-database/media/index/portal.svg
-      text: Azure Portal
-      href: https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal
+        src: media/index/portal.svg
+      title: Witryna Azure Portal
     - image:
-        src: https://docs.microsoft.com/azure/sql-database/media/index/cli.svg
-      text: Interfejs wiersza polecenia platformy Azure
-      href: https://docs.microsoft.com/azure/sql-database/sql-database-get-started-cli
+        src: media/index/cli.svg
+      title: Interfejs wiersza polecenia platformy Azure
     - image:
-        src: https://docs.microsoft.com/azure/sql-database/media/index/logo_powershell.svg
-      text: Azure PowerShell
-      href: https://docs.microsoft.com/azure/sql-database/sql-database-get-started-powershell
+        src: media/index/logo_powershell.svg
+      title: PowerShell
+    rows:
+    - title: Tworzenie pojedynczej bazy danych SQL Database
+      values:
+      - href: /azure/sql-database/sql-database-get-started-portal
+      - href: /azure/sql-database/sql-database-get-started-cli
+      - href: /azure/sql-database/sql-database-get-started-powershell
+    - title: Tworzenie wystąpienia zarządzanego SQL
+      values:
+      - href: /azure/sql-database/sql-database-managed-instance-create-tutorial-portal
+      - href: 
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/
+    - title: Tworzenie puli elastycznej SQL
+      values:
+      - href: 
+      - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
+      - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
+    - title: Skalowanie pojedynczej bazy danych SQL Database
+      values:
+      - href: 
+      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-cli
+      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-powershell
+    - title: Skalowanie puli elastycznej SQL
+      values:
+      - href: 
+      - href: /azure/sql-database/scripts/sql-database-scale-pool-cli
+      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-pool-powershell
+    - title: Skalowanie wystąpienia zarządzanego
+      values:
+      - href: 
+      - href: 
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/05/31/change-size-azure-sql-managed-instance-using-powershell/
+    - title: Konfigurowanie sieci platformy Azure dla wystąpienia zarządzanego
+      values:
+      - href: /azure/sql-database/sql-database-managed-instance-create-tutorial-portal
+      - href: 
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/25/quick-start-script-setup-azure-network-environment-for-azure-sql-managed-instance/
 - title: Samouczki krok po kroku
   items:
   - type: paragraph

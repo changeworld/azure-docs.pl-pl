@@ -1,0 +1,72 @@
+- name: Dokumentacja usługi Azure Storage
+  href: /azure/storage/
+- name: Dokumentacja dotycząca przełączania do usługi Azure Data Lake Storage 1. generacji
+  href: /azure/data-lake-store/
+- name: Omówienie
+  items:
+    - name: Wprowadzenie
+      href: introduction.md
+- name: Przewodniki Szybki start
+  items:
+    - name: Tworzenie konta usługi Storage z możliwością obsługi usługi Data Lake Storage 2. generacji
+      href: quickstart-create-account.md
+    - name: Tworzenie/łączenie konta platformy Databricks
+      href: quickstart-create-databricks-account.md
+    - name: Tworzenie klastra HDInsight
+      href: quickstart-create-connect-hdi-cluster.md
+- name: Samouczki
+  items:
+    - name: 'Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu usługi Azure Databricks'
+      href: handle-data-using-databricks.md
+    - name: Uzyskiwanie dostępu do danych usługi Azure Data Lake Storage za pomocą usługi DataBricks przy użyciu platformy Spark
+      href: using-databricks-spark.md
+    - name: 'Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu oprogramowania Apache Hive w usłudze Azure HDInsight'
+      href: tutorial-extract-transform-load-hive.md
+- name: Pojęcia
+  items:
+    - name: Sterownik FileSystem usługi Azure Blob dla platformy Hadoop
+      href: abfs-driver.md
+    - name: Wprowadzenie do identyfikatora URI systemu plików usługi Azure Blob
+      href: introduction-abfs-uri.md
+    - name: Usługa hierarchicznej przestrzeni nazw
+      href: namespace.md
+    - name: Bezpieczeństwo
+      items:
+        - name: Szyfrowanie danych magazynowanych
+          href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fdata-lake-storage%2ftoc.json
+        - name: Szyfrowanie danych magazynowanych za pomocą kluczy klienta
+          href: ../common/storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fdata-lake-storage%2ftoc.json
+    - name: Ocena usługi Data Lake Storage 2. generacji
+      href: evaluation.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Korzystanie z usługi Data Lake Storage 2. generacji w połączeniu z klastrami usługi Azure HDInsight
+      href: use-hdi-cluster.md
+    - name: Korzystanie z interfejsu wiersza polecenia systemu plików usługi Hadoop w połączeniu z usługą Data Lake Storage 2. generacji
+      href: use-hdfs-data-lake-storage.md
+    - name: Pozyskiwanie danych
+      items:
+        - name: Kopiowanie danych do usługi Data Lake Storage 2. generacji za pomocą narzędzia Distcp
+          href: use-distcp.md
+        - name: Kopiowanie danych do usługi Data Lake Storage 2. generacji za pomocą usługi Azure Data Factory
+          href: ../../data-factory/load-azure-data-lake-storage-gen2.md
+    - name: Łączenie z usługą Azure DataBricks
+      href: 'https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html'
+- name: Zasoby
+  items:
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/?category=storage'
+    - name: Azure Storage Client Tools
+      href: ../common/storage-explorers.md?toc=%2fazure%2fstorage%2fdata-lake-storage%2ftoc.json
+    - name: Forum
+      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata'
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/storage/data-lake/'
+    - name: Kalkulator cen
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Aktualizacje usług
+      href: 'https://azure.microsoft.com/updates/?product=storage'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/windows-azure-storage'
+    - name: Filmy wideo
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'
