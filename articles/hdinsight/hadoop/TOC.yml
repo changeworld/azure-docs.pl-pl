@@ -202,9 +202,6 @@
         - name: Korzystanie z rozwiązania Hue
           href: ../hdinsight-hadoop-hue-linux.md
           maintainContext: true
-        - name: Używanie języka R
-          href: ../hdinsight-hadoop-r-scripts-linux.md
-          maintainContext: true
         - name: Korzystanie z platformy Solr
           href: ../hdinsight-hadoop-solr-install-linux.md
           maintainContext: true
