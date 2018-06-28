@@ -20,6 +20,10 @@
   items:
     - name: Omówienie przykładów dotyczących zestawu SDK
       href: sdk.md
+    - name: 'Zestaw SDK w języku C#'
+      href: visual-search-sdk-c-sharp.md
+    - name: Zestaw SDK w języku Node
+      href: visual-search-sdk-node.md
     - name: Zestaw SDK w języku Python
       href: visual-search-sdk-python.md
 - name: Samouczki
