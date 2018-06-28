@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/16/2018
 ms.author: larryfr
-ms.openlocfilehash: ce5555068ac4a9160657b5c2f204172c828bea50
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a9853bb8a298daab265b70b99db68de276c77048
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33779212"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018076"
 ---
 # <a name="quickstart-create-a-kafka-on-hdinsight-cluster"></a>Szybki start: tworzenie platformy Kafka w klastrze usługi HDInsight
 
@@ -105,6 +105,7 @@ New-AzureStorageContainer -Name $containerName -Context $storageContext
 Utwórz platformę Kafka w klastrze usługi HDInsight za pomocą polecenia [New-AzureRmHDInsightCluster](/powershell/module/AzureRM.HDInsight/New-AzureRmHDInsightCluster).
 
 ```powershell
+# Create a Kafka 1.0 cluster
 $clusterName = Read-Host -Prompt "Enter the name of the Kafka cluster"
 $httpCredential = Get-Credential -Message "Enter the cluster login credentials" `
     -UserName "admin"
@@ -116,6 +117,9 @@ $clusterType="Kafka"
 $clusterOS="Linux"
 $disksPerNode=2
 
+$kafkaConfig = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
+$kafkaConfig.Add("kafka", "1.0")
+
 New-AzureRmHDInsightCluster `
         -ResourceGroupName $resourceGroup `
         -ClusterName $clusterName `
@@ -124,8 +128,9 @@ New-AzureRmHDInsightCluster `
         -ClusterType $clusterType `
         -OSType $clusterOS `
         -Version $clusterVersion `
+        -ComponentVersion $kafkaConfig `
         -HttpCredential $httpCredential `
-        -DefaultStorageAccountName "$storageAccount.blob.core.windows.net" `
+        -DefaultStorageAccountName "$storageName.blob.core.windows.net" `
         -DefaultStorageAccountKey $storageKey `
         -DefaultStorageContainer $clusterName `
         -SshCredential $sshCredentials `

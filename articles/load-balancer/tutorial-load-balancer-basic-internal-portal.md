@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: a16e9ad5b72d87614f5d3630e24e6aa36def8c51
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 7902b5ad2d680a22a2d132187cdad5f96a334447
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779585"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061849"
 ---
 # <a name="tutorial-load-balance-internal-traffic-with-basic-load-balancer-to-vms-using-the-azure-portal"></a>Samouczek: równoważenie obciążenia ruchu wewnętrznego do maszyn wirtualnych przy użyciu podstawowego modułu równoważenia obciążenia w witrynie Azure Portal
 
@@ -43,6 +43,8 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
     - *myBackendSubnet* — jako nazwę podsieci.
 2. Kliknij pozycję **Utwórz**, aby utworzyć sieć wirtualną.
 
+![Tworzenie modułu równoważenia obciążenia](./media/tutorial-load-balancer-basic-internal-portal/1-load-balancer.png)
+
 ## <a name="create-a-basic-load-balancer"></a>Tworzenie podstawowego modułu równoważenia obciążenia
 Utwórz wewnętrzny podstawowy moduł równoważenia obciążenia przy użyciu portalu.
 
@@ -57,10 +59,7 @@ Utwórz wewnętrzny podstawowy moduł równoważenia obciążenia przy użyciu p
     - *myResourceGroupILB* — jako nazwę nowo tworzonej grupy zasobów.
 3. Kliknij pozycję **Utwórz**, aby utworzyć moduł równoważenia obciążenia.
    
-    ![Tworzenie modułu równoważenia obciążenia](./media/tutorial-load-balancer-basic-internal-portal/1-load-balancer.png)
-
-
-## <a name="create-backend-servers"></a>Tworzenie serwerów zaplecza
+    ## <a name="create-backend-servers"></a>Tworzenie serwerów zaplecza
 
 W tej sekcji utworzysz dwie maszyny wirtualne dla puli zaplecza podstawowego modułu równoważenia obciążenia, a następnie zainstalujesz usługi IIS na maszynach wirtualnych, aby ułatwić testowanie modułu równoważenia obciążenia.
 

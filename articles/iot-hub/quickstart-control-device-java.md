@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/30/2018
+ms.date: 06/22/2018
 ms.author: dobett
-ms.openlocfilehash: 5025eeda46f36982266a0bc3357b3d1e9249884a
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 5da4248f0b0a72c3614b4c3e5ea042c4341f4e03
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808210"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330547"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>Szybki start: kontrolowanie urządzenia podłączonego do centrum IoT (Java)
 
@@ -75,7 +75,7 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
 
     Jeśli wybierzesz inną nazwę dla swojego urządzenia, zaktualizuj nazwę urządzenia w przykładowych aplikacjach przed ich uruchomieniem.
 
-1. Uruchom następujące polecenie, aby uzyskać _parametry połączenia urządzenia_ dla urządzenia, które właśnie zostało zarejestrowane:
+2. Uruchom następujące polecenie, aby uzyskać _parametry połączenia urządzenia_ dla urządzenia, które właśnie zostało zarejestrowane:
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyJavaDevice --output table
@@ -99,17 +99,17 @@ Aplikacja urządzenia symulowanego łączy się z punktem końcowym właściwym 
 
 1. W oknie terminalu przejdź do folderu głównego przykładowego projektu Java. Następnie przejdź do folderu **iot-hub\Quickstarts\simulated-device-2**.
 
-1. Otwórz plik **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java** w wybranym edytorze tekstów.
+2. Otwórz plik **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java** w wybranym edytorze tekstów.
 
     Zastąp wartość zmiennej `connString` parametrami połączenia urządzenia zanotowanymi w poprzednim kroku. Następnie zapisz zmiany w pliku **SimulatedDevice.java**.
 
-1. W oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane biblioteki i utworzyć aplikację urządzenia symulowanego:
+3. W oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane biblioteki i utworzyć aplikację urządzenia symulowanego:
 
     ```cmd/sh
     mvn clean package
     ```
 
-1. W oknie terminalu uruchom następujące polecenia, aby uruchomić aplikację urządzenia symulowanego:
+4. W oknie terminalu uruchom następujące polecenia, aby uruchomić aplikację urządzenia symulowanego:
 
     ```cmd/sh
     java -jar target/simulated-device-2-1.0.0-with-deps.jar
@@ -125,17 +125,17 @@ Aplikacja zaplecza łączy się z punktem końcowym po stronie usługi w usłudz
 
 1. W innym oknie terminalu przejdź do folderu głównego przykładowego projektu Java. Następnie przejdź do folderu **iot-hub\Quickstarts\back-end-application**.
 
-1. Otwórz plik **src/main/java/com/microsoft/docs/iothub/samples/BackEndApplication.java** w wybranym edytorze tekstów.
+2. Otwórz plik **src/main/java/com/microsoft/docs/iothub/samples/BackEndApplication.java** w wybranym edytorze tekstów.
 
     Zastąp wartość zmiennej `iotHubConnectionString` parametrami połączenia usługi zanotowanymi w poprzednim kroku. Następnie zapisz zmiany w pliku **BackEndApplication.java**.
 
-1. W oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane biblioteki i utworzyć aplikację zaplecza:
+3. W oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane biblioteki i utworzyć aplikację zaplecza:
 
     ```cmd/sh
     mvn clean package
     ```
 
-1. W oknie terminalu uruchom następujące polecenia, aby uruchomić aplikację zaplecza:
+4. W oknie terminalu uruchom następujące polecenia, aby uruchomić aplikację zaplecza:
 
     ```cmd/sh
     java -jar target/back-end-application-1.0.0-with-deps.jar
@@ -151,9 +151,7 @@ Aplikacja zaplecza łączy się z punktem końcowym po stronie usługi w usłudz
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli planujesz przejść do samouczków, pozostaw grupę zasobów i centrum IoT, aby użyć ich później.
-
-Jeśli nie potrzebujesz już tego centrum IoT, usuń je oraz grupę zasobów z poziomu portalu. Aby to zrobić, wybierz grupę zasobów zawierającą centrum IoT, a następnie kliknij przycisk **Usuń**.
+[!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 

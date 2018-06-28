@@ -3,20 +3,20 @@ title: Samouczek tworzenia aplikacji w języku Java za pomocą usługi Azure Cos
 description: W tym samouczku aplikacji internetowej w języku Java pokazano, jak przy użyciu usługi Azure Cosmos DB i interfejsu API SQL przechowywać dane i uzyskiwać do nich dostęp z poziomu aplikacji w języku Java hostowanej w usłudze Azure Websites.
 keywords: Programowanie aplikacji, samouczek bazy danych, aplikacja Java, samouczek aplikacji internetowej Java, Azure, Microsoft Azure
 services: cosmos-db
-author: dennyglee
+author: tknandu
 manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 08/22/2017
-ms.author: denlee
-ms.openlocfilehash: 4e3fd2fc31bda1dd8172c574fe087d9fcc6068db
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.author: ramkris
+ms.openlocfilehash: 4cc29aad648f594a95f694cf0f778b55cb3145a8
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796829"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959884"
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Tworzenie aplikacji internetowej w języku Java za pomocą usługi Azure Cosmos DB i interfejsu API SQL
 > [!div class="op_single_selector"]
@@ -41,9 +41,7 @@ W tym samouczku aplikacji w języku Java pokazano, jak utworzyć aplikację do z
 > 
 > 
 
-## 
-  <a id="Prerequisites">
-  </a>Wymagania wstępne dotyczące tego samouczka aplikacji internetowej w języku Java
+## <a id="Prerequisites"></a>Wymagania wstępne dotyczące tego samouczka aplikacji internetowej w języku Java
 Przed rozpoczęciem korzystania z tego samouczka tworzenia aplikacji należy dysponować następującymi elementami:
 
 *  Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 

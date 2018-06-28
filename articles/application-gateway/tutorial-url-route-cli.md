@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 4/27/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 411baa24cc796a40f83e8530ab797f3e377ee5f6
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 61f884e186316b0b7829ef8e9f8f62d6c5df6b5d
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34356243"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36307951"
 ---
 # <a name="tutorial-route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Samouczek: kierowanie ruchu internetowego na podstawie adresu URL za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -246,7 +246,7 @@ az network public-ip show \
 
 ![Testowanie podstawowego adresu URL w bramie aplikacji](./media/tutorial-url-route-cli/application-gateway-nginx.png)
 
-Zmień adres URL na http://&lt;adres-ip&gt;:8080/video/test.html, zamieniając ciąg &lt;adres-ip&gt; na odpowiedni adres IP. Wynik powinien przypominać następujący przykład:
+Zmień adres URL na http://&lt;adres-ip&gt;:8080/images/test.html, zamieniając ciąg &lt;adres-ip&gt; na odpowiedni adres IP. Wynik powinien przypominać następujący przykład:
 
 ![Testowanie adresu URL obrazów w bramie aplikacji](./media/tutorial-url-route-cli/application-gateway-nginx-images.png)
 

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/17/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 146ea04081a4adebe4a6e9249bb1fe34ba76e3a4
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: b82eeb43c29fd52f4df2d453bb24bb2b3bd581ad
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305178"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030519"
 ---
 # <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>Samouczek: konfigurowanie aplikacji internetowej platformy Azure w celu odczytu wpisu tajnego z usługi Key Vault
 
@@ -46,7 +46,7 @@ az login
 
 Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 
-Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*.
+W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *ContosoResourceGroup* w lokalizacji *eastus*.
 
 ```azurecli
 # To list locations: az account list-locations --output table
@@ -95,13 +95,13 @@ az keyvault secret show --name "AppSecret" --vault-name "ContosoKeyVault"
 
 To polecenie wyświetla informacje o wpisie tajnym, w tym identyfikator URI. Po wykonaniu tych kroków będziesz mieć identyfikator URI wpisu tajnego w usłudze Azure Key Vault. Zanotuj te informacje. Będą one potrzebne w kolejnym kroku.
 
-## <a name="create-a-web-app"></a>Tworzenie aplikacji sieci Web
+## <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 
 W tej sekcji utworzysz aplikację platformy ASP.NET MVC i wdrożysz ją na platformie Azure jako aplikację internetową. Aby uzyskać więcej informacji o usłudze Azure Web Apps, zobacz [Przegląd usługi Web Apps](../app-service/app-service-web-overview.md).
 
 1. W programie Visual Studio utwórz nowy projekt, wybierając pozycję **Plik > Nowy > Projekt**. 
 
-2. W oknie dialogowym **Nowy projekt** wybierz pozycję **Visual C# > Sieć Web > Aplikacja sieci Web platformy ASP.NET Core**.
+2. W oknie dialogowym **Nowy projekt** wybierz pozycję **Visual C# &gt; Internet &gt; Aplikacja internetowa platformy ASP.NET Core**.
 
 3. Nadaj aplikacji nazwę **WebKeyVault**, a następnie wybierz przycisk **OK**.
    >[!IMPORTANT]

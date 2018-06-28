@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/20/2018
 ms.author: dobett
-ms.openlocfilehash: c24c311f6ee446122fea7fd7699b34ab2ae8510c
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 0bb27c23850384501afec733d24f824346b8416b
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36292844"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335479"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Szybki start: kontrolowanie urządzenia podłączonego do centrum IoT (.NET)
 
@@ -67,7 +67,7 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
 
     Jeśli wybierzesz inną nazwę dla swojego urządzenia, zaktualizuj nazwę urządzenia w przykładowych aplikacjach przed ich uruchomieniem.
 
-1. Uruchom następujące polecenie, aby uzyskać _parametry połączenia urządzenia_ dla urządzenia, które właśnie zostało zarejestrowane:
+2. Uruchom następujące polecenie, aby uzyskać _parametry połączenia urządzenia_ dla urządzenia, które właśnie zostało zarejestrowane:
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDotnetDevice --output table
@@ -91,17 +91,17 @@ Aplikacja urządzenia symulowanego łączy się z punktem końcowym właściwym 
 
 1. W oknie terminalu przejdź do folderu głównego przykładowego projektu C#. Następnie przejdź do folderu **iot-hub\Quickstarts\simulated-device-2**.
 
-1. Otwórz plik **SimulatedDevice.cs** w wybranym edytorze.
+2. Otwórz plik **SimulatedDevice.cs** w wybranym edytorze.
 
-    Zastąp wartość zmiennej `connectionString` parametrami połączenia urządzenia zanotowanymi w poprzednim kroku. Następnie zapisz zmiany w pliku **SimulatedDevice.cs**.
+    Zastąp wartość zmiennej `s_connectionString` parametrami połączenia urządzenia zanotowanymi w poprzednim kroku. Następnie zapisz zmiany w pliku **SimulatedDevice.cs**.
 
-1. W oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane pakiety dla aplikacji urządzenia symulowanego:
+3. W oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane pakiety dla aplikacji urządzenia symulowanego:
 
     ```cmd/sh
     dotnet restore
     ```
 
-1. W oknie terminalu uruchom następujące polecenia, aby utworzyć i uruchomić aplikację urządzenia symulowanego:
+4. W oknie terminalu uruchom następujące polecenia, aby utworzyć i uruchomić aplikację urządzenia symulowanego:
 
     ```cmd/sh
     dotnet run
@@ -117,17 +117,17 @@ Aplikacja zaplecza łączy się z punktem końcowym po stronie usługi w usłudz
 
 1. W innym oknie terminalu przejdź do folderu głównego przykładowego projektu C#. Następnie przejdź do folderu **iot-hub\Quickstarts\back-end-application**.
 
-1. Otwórz plik **BackEndApplication.cs** w wybranym edytorze tekstów.
+2. Otwórz plik **BackEndApplication.cs** w wybranym edytorze tekstów.
 
-    Zastąp wartość zmiennej `connectionString` parametrami połączenia usługi zanotowanymi w poprzednim kroku. Następnie zapisz zmiany w pliku **BackEndApplication.cs**.
+    Zastąp wartość zmiennej `s_connectionString` parametrami połączenia usługi zanotowanymi w poprzednim kroku. Następnie zapisz zmiany w pliku **BackEndApplication.cs**.
 
-1. W oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane biblioteki dla aplikacji zaplecza:
+3. W oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane biblioteki dla aplikacji zaplecza:
 
     ```cmd/sh
     dotnet restore
     ```
 
-1. W oknie terminalu uruchom następujące polecenia, aby utworzyć i uruchomić aplikację zaplecza:
+4. W oknie terminalu uruchom następujące polecenia, aby utworzyć i uruchomić aplikację zaplecza:
 
     ```cmd/sh
     dotnet run

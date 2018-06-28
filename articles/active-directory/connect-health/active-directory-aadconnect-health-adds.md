@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: dcfb43003e81bb51574b401c21202925b16305f8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 458d01d61872d13cee735c7098cce5dcc905c31c
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26614417"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960410"
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>Używanie programu Azure AD Connect Health z usługami AD DS
 Poniższa dokumentacja dotyczy monitorowania Usług domenowych Active Directory przy użyciu programu Azure AD Connect Health. Obsługiwane wersje usługi AD DS: Windows Server 2008 R2, Windows Server 2012,Windows Server 2012 R2 i Windows Server 2016.
 
 Aby uzyskać więcej informacji na temat monitorowania usług AD FS za pomocą programu Azure AD Connect Health, zobacz [Używanie programu Azure AD Connect Health z usługami AD FS](active-directory-aadconnect-health-adfs.md). Ponadto, aby uzyskać informacje na temat monitorowania programu Azure AD Connect (synchronizacja) za pomocą programu Azure AD Connect Health, zobacz [Używanie programu Azure AD Connect Health w celu synchronizacji](active-directory-aadconnect-health-sync.md).
 
-![Program Azure AD Connect Health dla usług AD DS](./media/active-directory-aadconnect-health/aadconnect-health-adds-entry.png)
+![Program Azure AD Connect Health dla usług AD DS](./media/active-directory-aadconnect-health-adds/domainservicesnapshot.PNG)
 
 ## <a name="alerts-for-azure-ad-connect-health-for-ad-ds"></a>Alerty programu Azure AD Connect Health dla usług AD DS
 Sekcja Alerty w ramach programu Azure AD Connect Health dla usług AD DS zawiera listę aktywnych i rozwiązanych alertów związanych z kontrolerami domeny. Wybranie aktywnego lub rozwiązanego alertu spowoduje otworzenie nowego bloku zawierającego dodatkowe informacje, a także kroki rozwiązania i linki do dodatkowej dokumentacji. Każdy typ alertu może mieć jedno lub większą liczbę wystąpień odpowiadających każdemu kontrolerowi domeny, którego dotyczy dany alert. W dolnej części bloku alertu można kliknąć dwukrotnie kontroler domeny, którego dotyczy alert, aby otworzyć nowy blok z dodatkowymi szczegółami dotyczącymi tego wystąpienia alertu.
