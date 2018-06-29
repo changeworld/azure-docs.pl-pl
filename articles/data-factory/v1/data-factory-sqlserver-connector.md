@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 67a91f8b61c1a0783d2075a13cc8cf2701496c88
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c4038ea5a450f32a46f24a306d1ee30bd61308a5
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622384"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054589"
 ---
 # <a name="move-data-to-and-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>Przenoszenie danych do i z lokalnej instalacji programu SQL Server lub na IaaS (Azure VM) przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](data-factory-sqlserver-connector.md)
-> * [Wersja 2 — wersja zapoznawcza](../connector-sql-server.md)
+> * [W wersji 1](data-factory-sqlserver-connector.md)
+> * [W wersji 2 (bieżąca wersja)](../connector-sql-server.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [łącznika programu SQL Server w wersji 2](../connector-sql-server.md).
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [łącznika programu SQL Server w wersji 2](../connector-sql-server.md).
 
 W tym artykule opisano sposób używania działania kopiowania w fabryce danych Azure do przeniesienia danych z lokalną bazą danych programu SQL Server. Opiera się na [działań przepływu danych](data-factory-data-movement-activities.md) artykułu, który przedstawia ogólny przegląd przenoszenia danych z działania kopiowania. 
 
@@ -55,7 +55,7 @@ Można utworzyć potok z działaniem kopiowania przenoszenia danych z lokalną b
 
 Najprostszym sposobem, aby utworzyć potok jest użycie **kreatora kopiowania**. Zobacz [samouczek: tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybkie przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
 
-Umożliwia także następujące narzędzia do tworzenia potoku: **portalu Azure**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejs API .NET**, i **interfejsu API REST**. Zobacz [samouczek działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
+Umożliwia także następujące narzędzia do tworzenia potoku: **portalu Azure**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager** , **Interfejs API .NET**, i **interfejsu API REST**. Zobacz [samouczek działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
 
 Czy można użyć narzędzia i interfejsy API, należy wykonać następujące kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródła do ujścia magazynu danych: 
 
@@ -167,7 +167,7 @@ Jeśli nie określisz sqlReaderQuery lub sqlReaderStoredProcedureName kolumny zd
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Czas na ukończenie zanim upłynie limit czasu operacji wstawiania wsadowego oczekiwania. |Zakres czasu<br/><br/> Przykład: "00: 30:00" (30 minut). |Nie |
+| writeBatchTimeout |Czas na ukończenie zanim upłynie limit czasu operacji wstawiania wsadowego oczekiwania. |zakres czasu<br/><br/> Przykład: "00: 30:00" (30 minut). |Nie |
 | writeBatchSize |Wstawia dane do tabeli SQL, gdy writeBatchSize osiągnie rozmiar buforu. |Liczba całkowita (liczba wierszy) |Nie (domyślne: 10000) |
 | sqlWriterCleanupScript |Określ kwerendę dla działania kopiowania do wykonania w taki sposób, że dane określonych wycinek jest wyczyszczone. Aby uzyskać więcej informacji, zobacz [powtarzalne kopiowania](#repeatable-copy) sekcji. |Instrukcja zapytania. |Nie |
 | sliceIdentifierColumnName |Określ nazwę kolumny dla aktywności kopiowania wypełnić automatycznie generowane wycinek identyfikator, który służy do oczyszczania danych określonego wycinek czas ponownego uruchomienia. Aby uzyskać więcej informacji, zobacz [powtarzalne kopiowania](#repeatable-copy) sekcji. |Nazwa kolumny kolumnę o typie danych binary(32). |Nie |
@@ -655,7 +655,7 @@ Mapowanie jest taka sama jak mapowanie typu danych serwera SQL dla ADO.NET.
 | Typ aparatu bazy danych programu SQL Server | Typ programu .NET framework |
 | --- | --- |
 | bigint |Int64 |
-| Binarne |Byte[] |
+| dane binarne |Byte[] |
 | bitowe |Wartość logiczna |
 | char |Ciąg, Char] |
 | data |DateTime |
@@ -664,8 +664,8 @@ Mapowanie jest taka sama jak mapowanie typu danych serwera SQL dla ADO.NET.
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
 | Atrybut FILESTREAM (varbinary(max)) |Byte[] |
-| Liczba zmiennoprzecinkowa |O podwójnej precyzji |
-| Obraz |Byte[] |
+| Liczba zmiennoprzecinkowa |podwójne |
+| image |Byte[] |
 | int |Int32 |
 | oszczędność pieniędzy |Decimal |
 | nchar |Ciąg, Char] |
@@ -681,7 +681,7 @@ Mapowanie jest taka sama jak mapowanie typu danych serwera SQL dla ADO.NET.
 | tekst |Ciąg, Char] |
 | time |Zakres czasu |
 | sygnatura czasowa |Byte[] |
-| tinyint |Bajtów |
+| tinyint |Bajt |
 | Unikatowy identyfikator |Identyfikator GUID |
 | varbinary |Byte[] |
 | varchar |Ciąg, Char] |
