@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: tamram
-ms.openlocfilehash: cb77bd4418e105c877202f0f1725350380ea2308
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 241808e0a7bde1d2c53cd0af1de677275c169214
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660877"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082234"
 ---
 # <a name="manage-access-rights-to-azure-storage-data-with-rbac-preview"></a>Zarządzanie prawami dostępu do danych usługi Azure Storage za pomocą RBAC (wersja zapoznawcza)
 
@@ -61,7 +61,7 @@ Poniższe sekcje pokazują, jak przypisać rolę ograniczone do konta magazynu l
 
 Aby przypisać rolę wbudowanych udzielanie dostępu do wszystkich kontenerów lub kolejek w ramach konta magazynu w portalu Azure:
 
-1. W [portalu Azure](https://azure.portal.com/), przejdź do swojego konta magazynu.
+1. W [portalu Azure](https://portal.azure.com), przejdź do swojego konta magazynu.
 2. Wybierz konto magazynu, a następnie wybierz **kontroli dostępu (IAM)** Aby wyświetlić ustawienia kontroli dostępu dla konta. Kliknij przycisk **Dodaj** przycisk, aby dodać nową rolę.
 
     ![Zrzut ekranu przedstawiający ustawienia kontroli dostępu do magazynu](media/storage-auth-aad-rbac/portal-access-control.png)
@@ -78,7 +78,7 @@ Aby przypisać rolę wbudowanych udzielanie dostępu do wszystkich kontenerów l
 
 Kroki do przypisywania roli wbudowany zakres kontener lub kolejki są podobne. Procedury pokazane przypisuje rolę zakres do kontenera, ale można wykonać te same kroki, aby przypisać rolę zakres do kolejki: 
 
-1. W [portalu Azure](https://azure.portal.com/), przejdź do swojego konta magazynu i wyświetlić **omówienie** dla konta.
+1. W [portalu Azure](https://portal.azure.com), przejdź do swojego konta magazynu i wyświetlić **omówienie** dla konta.
 2. W obszarze usługi obiektów Blob, wybierz **Przeglądaj obiekty BLOB**. 
 3. Zlokalizuj kontener, dla którego chcesz przypisać rolę, ustawienia i wyświetlania kontenera. 
 4. Wybierz **kontroli dostępu (IAM)** do wyświetlania ustawień kontroli dostępu do kontenera.

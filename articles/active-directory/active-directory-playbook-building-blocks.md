@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 056821bd26e9c6c110b23a048df4aa13bc4ab8fa
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 36cbf9249664af1cd469d7e27c617a4810d0e74f
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36754678"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098961"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory dowód podręcznikowym koncepcji: bloki konstrukcyjne
 
@@ -428,7 +428,7 @@ Przybliżona godzina ukończone: 10 minut
 ### <a name="considerations"></a>Zagadnienia do rozważenia
 
 1. Kroki weryfikacji koncepcji tego bloku konstrukcyjnego jawne ustawienie usługi MFA dla użytkownika na wszystkich identyfikatorów logowania. Brak innych narzędzi, takich jak dostęp warunkowy i ochronę tożsamości, które stosują usługę MFA na więcej określonych scenariuszach. Są to coś wziąć pod uwagę podczas przenoszenia z fazy weryfikacji Koncepcji do środowiska produkcyjnego.
-2. Kroki weryfikacji koncepcji, w tym bloku konstrukcyjnego jawnie korzystają z połączeń telefonicznych jako metody uwierzytelniania Wieloskładnikowego dla expedience. Przejście z fazy weryfikacji Koncepcji do środowiska produkcyjnego zaleca się przy użyciu aplikacji, takich jak [Microsoft Authenticator](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) jako Twoje czynnika, jeśli to możliwe.
+2. Kroki weryfikacji koncepcji, w tym bloku konstrukcyjnego jawnie korzystają z połączeń telefonicznych jako metody uwierzytelniania Wieloskładnikowego dla expedience. Przejście z fazy weryfikacji Koncepcji do środowiska produkcyjnego zaleca się przy użyciu aplikacji, takich jak [Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) jako Twoje czynnika, jeśli to możliwe.
 Dowiedz się więcej: [projekt NIST Special Publication 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html)
 
 ## <a name="mfa-conditional-access-for-saas-applications"></a>Dostęp warunkowy usługi MFA dla aplikacji SaaS
@@ -553,7 +553,7 @@ Przybliżona godzina, aby zakończyć: 20 minut
 | --- | --- |
 | Urządzenia z certyfikatu użytkownika udostępniane (z systemem Windows, iOS lub Android) z infrastruktury kluczy publicznych przedsiębiorstwa | [Wdrażanie certyfikatów użytkowników](https://msdn.microsoft.com/library/cc770857.aspx) |
 | Sfederowane domenowych Azure AD przy użyciu usług AD FS | [Program Azure AD Connect a federacja](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Usługi certyfikatów Active Directory — omówienie](https://technet.microsoft.com/library/hh831740.aspx)|
-| Dla urządzeń z systemem iOS mieć zainstalowanej aplikacji Microsoft Authenticator | [Wprowadzenie do aplikacji Microsoft Authenticator](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |
+| Dla urządzeń z systemem iOS mieć zainstalowanej aplikacji Microsoft Authenticator | [Wprowadzenie do aplikacji Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) |
 
 ### <a name="steps"></a>Kroki
 

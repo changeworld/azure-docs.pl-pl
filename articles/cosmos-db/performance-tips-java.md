@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: sngun
-ms.openlocfilehash: 2c0290ef160283f5aef8b1a4a5f67e69222aec0e
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
-ms.translationtype: HT
+ms.openlocfilehash: bf0bd715e47cc7145a76d5f8b5f2589f24b343a8
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029360"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100559"
 ---
 > [!div class="op_single_selector"]
 > * [Java (asynchroniczny)](performance-tips-async-java.md)
@@ -148,9 +148,9 @@ Dlatego jeśli "jak poprawić wydajność mojej bazy danych?" należy wziąć po
     response.getRequestCharge();
     ```             
 
-    Żądanie zwrócony w nagłówku to jest część sieci udostępnionej przepływności. Na przykład jeśli masz 2000 elastycznie RU/s, a jeśli poprzednie zapytanie zwraca 1000 dokumentów o rozmiarze 1KB, kosztów operacji 1000. Tak w ciągu sekundy, serwer będzie honorować tylko dwa takich żądań przed ograniczania kolejnych żądań. Aby uzyskać więcej informacji, zobacz [jednostek żądania](request-units.md) i [Kalkulator jednostki żądania](https://www.documentdb.com/capacityplanner).
+    Żądanie zwrócony w nagłówku to jest część sieci udostępnionej przepływności. Na przykład jeśli masz 2000 elastycznie RU/s, a jeśli poprzednie zapytanie zwraca 1000 dokumentów o rozmiarze 1KB, kosztów operacji 1000. Tak w ciągu sekundy, serwer będzie honorować tylko dwa takich żądań przed tempa ograniczania kolejnych żądań. Aby uzyskać więcej informacji, zobacz [jednostek żądania](request-units.md) i [Kalkulator jednostki żądania](https://www.documentdb.com/capacityplanner).
 <a id="429"></a>
-2. **Współczynnik ograniczanie żądań szybkość dojścia za duży**
+1. **Współczynnik ograniczanie żądań szybkość dojścia za duży**
 
     Klient próbuje przekracza zarezerwowaną przepływnością dla konta, nie ma bez spadku wydajności na serwerze i nie stosowania przepływności poza poziomem zastrzeżone. Serwer zostanie preemptively zakończyć żądania z RequestRateTooLarge (kod stanu HTTP 429) i zwraca [x-ms ponawiania — po ms](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) nagłówek wskazujący ilość czasu (w milisekundach), które użytkownik musi czekać przed ponowną próbą wykonania żądanie.
 

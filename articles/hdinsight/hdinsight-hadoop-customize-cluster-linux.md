@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: larryfr
-ms.openlocfilehash: 856a94b0cf64a20fbe9267b76422c47d88d21f43
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
-ms.translationtype: HT
+ms.openlocfilehash: 500b6ef33bb70cd5138067d88303b7db9121e867
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32778907"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37102615"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Dostosowywanie klastrów usługi HDInsight opartej na systemie Linux za pomocą akcji skryptu
 
@@ -58,7 +58,7 @@ Akcja skryptu to skrypty Bash uruchamiane w węzłach klastra usługi HDInsight.
 
 * Muszą być przechowywane na identyfikator URI, który jest dostępny z klastra usługi HDInsight. Lokalizacje magazynu możliwe są następujące:
 
-    * **Azure Data Lake Store** konta, który jest dostępny dla klastra usługi HDInsight. Aby uzyskać informacje na temat używania usługi Azure Data Lake Store z usługą HDInsight, zobacz [tworzenia klastra usługi HDInsight z usługą Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+    * **Azure Data Lake Store** konta, który jest dostępny dla klastra usługi HDInsight. Aby uzyskać informacje na temat używania usługi Azure Data Lake Store z usługą HDInsight, zobacz [Szybki Start: Ustawianie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
         Podczas używania skryptu przechowywane w usłudze Data Lake Store, format identyfikatora URI jest `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`.
 
@@ -173,9 +173,7 @@ Ta sekcja zawiera przykłady na różne sposoby, można użyć akcji skryptu, po
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>Za pomocą akcji skryptu, podczas tworzenia klastra w portalu Azure
 
-1. Rozpocznij tworzenie klastra, zgodnie z opisem w [klastrów utworzyć Hadoop w HDInsight](hdinsight-hadoop-provision-linux-clusters.md). Zatrzymać po osiągnięciu __klastra Podsumowanie__ sekcji.
-
-2. Z __klastra Podsumowanie__ zaznacz __Edytuj__ łączy dla __Zaawansowane ustawienia__.
+1. Rozpocznij tworzenie klastra, zgodnie z opisem w [klastrów utworzyć Hadoop w HDInsight](hdinsight-hadoop-provision-linux-clusters.md). Podczas tworzenia klastra będzie przyjeździe __klastra Podsumowanie__ strony. Z __klastra Podsumowanie__ wybierz pozycję __Edytuj__ łączy dla __Zaawansowane ustawienia__.
 
     ![Łącze Ustawienia zaawansowane](./media/hdinsight-hadoop-customize-cluster-linux/advanced-settings-link.png)
 

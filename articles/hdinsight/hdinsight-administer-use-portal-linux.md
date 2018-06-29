@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: jgao
-ms.openlocfilehash: b672b777e9a60f2f3d978947c06290db48e6766c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bcfa7a6b9a2ebd60ec804fe8a61c26300f003a5e
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627027"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097788"
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Zarządzanie klastrami Hadoop w usłudze HDInsight przy użyciu portalu Azure
 
@@ -105,7 +105,7 @@ Jeśli wystąpi błąd NoRegisteredProviderFound lub błąd MissingSubscriptionR
     * **Monitorowanie**: monitorowanie klastra w Analiza dzienników Azure.
     * **Właściwości**: wyświetlanie właściwości klastra.
     * **Konta magazynu**: Wyświetl konta magazynu i klucze. Konta magazynu są skonfigurowane w trakcie procesu tworzenia klastra.
-    * **Dostęp do usługi Data Lake Store**: Konfigurowanie dostępu są przechowywane w usłudze Data Lake.  Zobacz [Tworzenie klastrów usługi HDInsight z usługą Data Lake Store za pomocą portalu Azure](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+    * **Dostęp do usługi Data Lake Store**: Konfigurowanie dostępu są przechowywane w usłudze Data Lake.  Zobacz [Szybki Start: Ustawianie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
     * **Kondycja zasobów**: zobacz [Przegląd kondycji zasobów platformy Azure](../service-health/resource-health-overview.md).
     * **Nowe żądanie pomocy technicznej**: umożliwia tworzenie biletu pomocy technicznej o pomoc techniczna firmy Microsoft.
     
@@ -358,7 +358,7 @@ Przy użyciu portalu Azure, możesz przeglądać zawartość domyślnego kontene
 > [!IMPORTANT]
 > Aby monitorować usług świadczonych przez klaster usługi HDInsight, należy używać narzędzia Ambari Web lub interfejsu Ambari API REST. Aby uzyskać więcej informacji na temat używania narzędzia Ambari, zobacz [Zarządzanie klastrami usługi HDInsight przy użyciu narzędzia Ambari](hdinsight-hadoop-manage-ambari.md)
 
-## <a name="connect-to-a-cluster"></a>Połącz z klastrem
+## <a name="connect-to-a-cluster"></a>Łączenie z klastrem
 
 * [Korzystanie z programu Hive z usługą HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md)
 * [Używanie protokołu SSH z usługą HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)

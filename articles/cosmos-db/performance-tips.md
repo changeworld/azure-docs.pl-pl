@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: fa68711158bea203d4fe1605966363dd2786a038
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 9418525e60f255787f39a42657ee0dbdbd46957d
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715024"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096937"
 ---
 > [!div class="op_single_selector"]
 > * [Java (asynchroniczny)](performance-tips-async-java.md)
@@ -102,10 +102,10 @@ Dlatego jeśli "jak poprawić wydajność mojej bazy danych?" należy wziąć po
    <a id="max-connection"></a>
 3. **Zwiększ System.Net MaxConnections na host w trybie bramy**
 
-    Azure DB rozwiązania Cosmos żądania są wykonywane za pośrednictwem protokołu HTTPS/REST w trybie bramy i są poddawane domyślny limit połączeń na nazwę hosta lub adres IP. Konieczne może być ustawiona MaxConnections wyższej wartości (100-1000), aby biblioteka klienta może korzystać z wielu równoczesnych połączeń do bazy danych Azure rozwiązania Cosmos. W zestawie SDK .NET 1.8.0 i powyżej wartości domyślnej dla [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) wynosi 50 i zmienić wartość, można ustawić [Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) wyższej wartości.   
+    Azure DB rozwiązania Cosmos żądania są wykonywane za pośrednictwem protokołu HTTPS/REST w trybie bramy i są poddawane domyślny limit połączeń na nazwę hosta lub adres IP. Konieczne może być ustawiona MaxConnections wyższej wartości (100-1000), aby biblioteka klienta może korzystać z wielu równoczesnych połączeń do bazy danych Azure rozwiązania Cosmos. W zestawie SDK .NET 1.8.0 i powyżej wartości domyślnej dla [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) wynosi 50 i zmienić wartość, można ustawić [Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx)wyższej wartości.   
 4. **Dostrajanie równoległe zapytania dla kolekcji partycjonowanych**
 
-     SQL .NET SDK w wersji 1.9.0 lub nowszym zapytania równoległe pomocy technicznej, które umożliwiają kwerenda dotycząca kolekcji partycjonowanych równoległe (zobacz [Praca z zestawów SDK](sql-api-partition-data.md#working-with-the-azure-cosmos-db-sdks) i pokrewnych [przykłady kodu](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) Aby uzyskać więcej informacji). Zapytania równoległe są przeznaczone do poprawy opóźnienia zapytania i przepływności za pośrednictwem ich odpowiednika szeregowego. Zapytania równoległe podać dwa parametry, które użytkownicy można dostosować do dopasowania niestandardowe ich wymaganiami, () MaxDegreeOfParallelism: do formantu maksymalną liczbę partycji następnie można tworzyć zapytania równoległe i (b) MaxBufferedItemCount: Aby kontrolować liczbę wyników pobranych wstępnie.
+     SQL .NET SDK w wersji 1.9.0 lub nowszym zapytania równoległe pomocy technicznej, które umożliwiają kwerenda dotycząca kolekcji partycjonowanych równoległe (zobacz [Praca z zestawów SDK](sql-api-partition-data.md#working-with-the-azure-cosmos-db-sdks) i pokrewnych [przykłady kodu](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) Aby uzyskać więcej informacji). Zapytania równoległe są przeznaczone do poprawy opóźnienia zapytania i przepływności za pośrednictwem ich odpowiednika szeregowego. Zapytania równoległe podać dwa parametry, które użytkownicy można dostosować do dopasowania niestandardowe ich wymaganiami, () MaxDegreeOfParallelism: do formantu maksymalną liczbę partycji następnie można tworzyć zapytania równoległe i (b) MaxBufferedItemCount: Aby określić liczbę wstępnie pobranych wyniki.
 
     () ***dostrajanie MaxDegreeOfParallelism\:***  równoległe zapytania działa badając równocześnie wiele partycji. Jednak dane z poszczególnych zbieranie podzielonym na partycje jest pobierana szeregowo względem zapytania. Tak ustawienie MaxDegreeOfParallelism liczbę partycji przewiduje maksymalną prawdopodobieństwo osiągnięcia większości kwerend wydajność, wszystkie warunki systemu pozostają takie same. Jeśli nie znasz liczby partycji MaxDegreeOfParallelism można ustawić wyższy i co najmniej (liczba partycji, dane wejściowe podane przez użytkownika) jako MaxDegreeOfParallelism wybierana przez system.
 
@@ -153,9 +153,9 @@ Dlatego jeśli "jak poprawić wydajność mojej bazy danych?" należy wziąć po
 
     - Dla pliku wykonywalnego aplikacji, można to zrobić przez zaznaczenie pola wyboru **preferowane jest 32-bitowych** opcji **właściwości projektu** okna na **kompilacji** kartę.
 
-    - VSTest podstawie projekty testowe, można to zrobić, wybierając **Test**->**testowanie ustawień**->**domyślne architektury procesora jako X64**, z **programu Visual Studio Test** opcji menu.
+    - VSTest podstawie projekty testowe, można to zrobić, wybierając **Test**->**testowanie ustawień**->**domyślne architektury procesora jako X64**, z **Visual Studio Test** opcji menu.
 
-    - Lokalnie wdrożonych aplikacji sieci Web ASP.NET, można to zrobić przez sprawdzenie **używać 64-bitowej wersji programu IIS Express dla projektów i stron sieci web**w obszarze **narzędzia**->**opcje**->**projekty i rozwiązania**->**projekty sieci Web**.
+    - Lokalnie wdrożonych aplikacji sieci Web ASP.NET, można to zrobić przez sprawdzenie **używać 64-bitowej wersji programu IIS Express dla projektów i stron sieci web**w obszarze **narzędzia**->**opcje**  -> **Projekty i rozwiązania**->**sieci Web projektów**.
 
     - Dla aplikacji sieci Web ASP.NET wdrożonego na platformie Azure, można to zrobić, wybierając **platforma jako 64-bitowych** w **ustawienia aplikacji** w portalu Azure.
 
@@ -200,7 +200,7 @@ Dlatego jeśli "jak poprawić wydajność mojej bazy danych?" należy wziąć po
          }
     ```             
 
-    Żądanie zwrócony w nagłówku to jest część sieci udostępnionej przepływności (tj., RUs 2000 / s). Na przykład jeśli poprzednie zapytanie zwraca 1000 dokumentów o rozmiarze 1KB, kosztów operacji to 1000. Tak w ciągu sekundy, serwer będzie honorować tylko dwa takich żądań przed ograniczania kolejnych żądań. Aby uzyskać więcej informacji, zobacz [jednostek żądania](request-units.md) i [Kalkulator jednostki żądania](https://www.documentdb.com/capacityplanner).
+    Żądanie zwrócony w nagłówku to jest część sieci udostępnionej przepływności (tj., RUs 2000 / s). Na przykład jeśli poprzednie zapytanie zwraca 1000 dokumentów o rozmiarze 1KB, kosztów operacji to 1000. Tak w ciągu sekundy, serwer będzie honorować tylko dwa takich żądań przed tempa ograniczania kolejnych żądań. Aby uzyskać więcej informacji, zobacz [jednostek żądania](request-units.md) i [Kalkulator jednostki żądania](https://www.documentdb.com/capacityplanner).
 <a id="429"></a>
 2. **Współczynnik ograniczanie żądań szybkość dojścia za duży**
 

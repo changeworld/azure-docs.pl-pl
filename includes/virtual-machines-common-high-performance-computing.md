@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/11/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 32a438d393077cfe4cb7f6ee62f3a01edfce0571
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
-ms.translationtype: HT
+ms.openlocfilehash: b8bbcf81f48e82417a0d51e29f7dd8ce76681fed
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34152227"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37095339"
 ---
 Organizacje mają wielkoskalowe potrzeby przetwarzania danych. Te obciążenia obliczeniowe Big obejmują projektu inżynieryjnego i analizy, obliczeń finansowych ryzyka, renderowanie obrazów, modelowania złożonych, Symulacje Monte Carlo i więcej. 
 
@@ -40,7 +40,7 @@ Chmury Azure umożliwia wydajne działanie obciążeń systemu Linux i Windows o
     * Uruchom włączone Azure inżynieryjne i symulacji rozwiązania z producentami, w tym [Altair](http://www.altair.com/), [ponowne skalowanie](https://www.rescale.com/azure/), i [przetwarzania danych w cyklu](https://cyclecomputing.com/) (teraz [połączony z Microsoft](https://blogs.microsoft.com/blog/2017/08/15/microsoft-acquires-cycle-computing-accelerate-big-computing-cloud/)).
     * Użyj [superkomputera Cray](https://www.cray.com/solutions/supercomputing-as-a-service/cray-in-azure) usługa hostowana na platformie Azure.
 * **Rozwiązania z witryny Marketplace**
-    * Użyj skali [aplikacji HPC](#hpc-applications) i [rozwiązań](#marketplace-solutions) oferowany [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/). 
+    * Użyj skali [aplikacji HPC](#hpc-applications) i [rozwiązań](#marketplace-solutions) oferowany [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/). 
     
 
 
@@ -64,7 +64,7 @@ Odwiedź stronę [portalu Azure Marketplace](https://azuremarketplace.microsoft.
  
 ## <a name="hpc-applications"></a>Aplikacje HPC
 
-Uruchamianie aplikacji HPC niestandardowych lub komercyjnych na platformie Azure. Kilka przykładów w tej sekcji są badany wydajne skalowanie dodatkowych maszyn wirtualnych lub obliczeniowe rdzeni. Odwiedź stronę [portalu Azure Marketplace](https://marketplace.azure.com) gotowe do wdrożenia rozwiązania.
+Uruchamianie aplikacji HPC niestandardowych lub komercyjnych na platformie Azure. Kilka przykładów w tej sekcji są badany wydajne skalowanie dodatkowych maszyn wirtualnych lub obliczeniowe rdzeni. Odwiedź stronę [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) gotowe do wdrożenia rozwiązania.
 
 > [!NOTE]
 > Skontaktuj się z dostawcą komercyjnych stosowania licencjonowania lub inne ograniczenia dotyczące uruchamiania w chmurze. Nie wszyscy dostawcy oferują licencjonowanie oparte na płatności zgodnie z rzeczywistym użyciem. Może być potrzebny serwer licencjonowania w chmurze dla rozwiązania lub Połącz z lokalnego serwera licencji.

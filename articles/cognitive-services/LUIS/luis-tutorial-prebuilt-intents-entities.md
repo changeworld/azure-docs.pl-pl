@@ -9,14 +9,14 @@ ms.component: luis
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: v-geberr
-ms.openlocfilehash: 20950ced66497fb0dc96365975b37f244f677ce3
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
-ms.translationtype: MT
+ms.openlocfilehash: 37d67bef7712012a95543041744706b240b16e2d
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266383"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085501"
 ---
-# <a name="use-prebuilt-intents-and-entities-to-handle-common-intents-and-data"></a>Użyj wbudowane intencje i jednostek do obsługi wspólnej lokalizacji docelowych i danych
+# <a name="tutorial-2-add-prebuilt-intents-and-entities"></a>Samouczek: 2. Dodawanie wstępnie utworzonych intencji i jednostek
 Do aplikacji Szybki Start kadr, aby szybko uzyskać konwersji wyodrębniania danych i prognozowania, należy dodać wbudowane intencje i jednostek. 
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -28,16 +28,16 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 * Zapytania LUIS i odbierają prognozowania odpowiedzi
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-Jeśli nie masz aplikacji kadr z [domeny niestandardowej](luis-quickstart-intents-only.md) Szybki Start, [zaimportować](create-new-app.md#import-new-app) JSON do nowej aplikacji w [LUIS] [ LUIS] witryny sieci Web , z [przykłady LUIS](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json) repozytorium Github.
+Jeśli nie masz [kadr](luis-quickstart-intents-only.md) aplikacji z poprzednich samouczka [zaimportować](create-new-app.md#import-new-app) JSON do nowej aplikacji w [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web, z [LUIS próbek ](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json) Repozytorium Github.
 
-Jeśli chcesz zachować oryginalne aplikacji kadr, klonowanie wersji na [ustawienia](luis-how-to-manage-versions.md#clone-a-version) strony i nadaj mu nazwę `prebuilts`. Jest to dobry sposób na odtwarzania z różnymi funkcjami LUIS bez wpływu na oryginalną wersją klonowanie. 
+Jeśli chcesz zachować oryginalną aplikację Human Resources, sklonuj tę wersję na stronie [Settings](luis-how-to-manage-versions.md#clone-a-version) (Ustawienia) i nadaj jej nazwę `prebuilts`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. 
 
 ## <a name="add-prebuilt-intents"></a>Dodaj intencje wbudowane
 LUIS zapewnia kilka opcji wbudowane ułatwiające pracę z typowych zamiarach użytkownika.  
 
-1. Upewnij się, że aplikacja jest w **kompilacji** sekcji LUIS. W tej sekcji można zmienić, wybierając **kompilacji** u góry, kliknij prawym przyciskiem myszy pasek menu. 
+1. Upewnij się, że aplikacja jest w **kompilacji** sekcji LUIS. Możesz przejść do tej sekcji, wybierając pozycję **Build** (Kompilacja) na górnym pasku menu po prawej stronie. 
 
-    [ ![Zrzut ekranu LUIS aplikacji przy użyciu siatki kompilacji na pasku nawigacyjnym góry, prawej](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png)](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png#lightbox)
+    [ ![Zrzut ekranu aplikacji LUIS z wyróżnioną pozycją Build (Kompilacja) na górnym prawym pasku nawigacyjnym](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png)](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png#lightbox)
 
 2. Wybierz **Dodawanie domeny wbudowane zamiar**. 
 
@@ -71,20 +71,20 @@ LUIS udostępnia kilka podmiotów wbudowane dla wspólnych wyodrębniania danych
     ![Zrzut ekranu przedstawiający numerów wybierz w oknie dialogowym wbudowane jednostek](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
 
 ## <a name="train-and-publish-the-app"></a>Szkolenie i publikowanie aplikacji
-1. W górnym rogu LUIS witryny sieci Web, wybierz **pociągu** przycisku. 
+1. W górnej części witryny internetowej usługi LUIS po prawej stronie wybierz przycisk **Train** (Ucz). 
 
     ![Przycisk pociągu](./media/luis-quickstart-intents-only/train-button.png)
 
-    Szkolenie zostało ukończone, gdy zostanie wyświetlony pasek stanu zielonego w górnej części witryny sieci Web potwierdzeniem powodzenia.
+    Uczenie jest ukończone, gdy w górnej części witryny internetowej jest widoczny zielony pasek stanu potwierdzający powodzenie.
 
     ![Pasek stanu uczonego](./media/luis-quickstart-intents-only/trained.png)
 
-2. W górnej, prawej strony LUIS witryny sieci Web, wybierz **publikowania** przycisk, aby otworzyć stronę publikowania. Domyślnie jest wybrany miejsca produkcji. Wybierz **publikowania** przycisk poprzez wybór miejsca produkcji. Publikowanie została ukończona, gdy zostanie wyświetlony pasek stanu zielonego w górnej części witryny sieci Web potwierdzeniem powodzenia.
+2. W górnej, prawej strony LUIS witryny sieci Web, wybierz **publikowania** przycisk, aby otworzyć stronę publikowania. Domyślnie jest wybrany miejsca produkcji. Wybierz **publikowania** przycisk poprzez wybór miejsca produkcji. Publikowanie jest ukończone, gdy w górnej części witryny internetowej jest widoczny zielony pasek stanu potwierdzający powodzenie.
 
     Nie trzeba utworzyć klucz LUIS w portalu Azure, przed opublikowaniem lub przed przetestowaniem adres URL punktu końcowego. Każda aplikacja LUIS ma klucz wolnego początkowy do tworzenia. Umożliwia tworzenie nieograniczone i [kilka trafień punktu końcowego](luis-boundaries.md#key-limits). 
 
 ## <a name="query-endpoint-with-an-utterance"></a>Punkt końcowy zapytania o utterance
-Na **publikowania** wybierz pozycję **punktu końcowego** łącze umieszczone u dołu strony. Akcja ta Otwiera inne okno przeglądarki z adresem URL punktu końcowego na pasku adresu. Przejdź do końca w adresie URL, a następnie wprowadź `I want to cancel on March 3`. Ostatni parametr ciągu zapytania jest `q`, utterance **zapytania**. 
+Na stronie **Publish** (Publikowanie) wybierz link **endpoint** (punkt końcowy) u dołu strony. Ta czynność spowoduje otwarcie nowego okna przeglądarki z adresem URL punktu końcowego na pasku adresu. Przejdź na koniec tego adresu URL i wprowadź ciąg `I want to cancel on March 3`. Ostatni parametr ciągu zapytania jest `q`, utterance **zapytania**. 
 
 Wynik przewidzieć zamiar Utilities.Cancel i wyodrębnione daty 3 marca i liczbę 3. 
 
@@ -165,10 +165,8 @@ Wynik przewidzieć zamiar Utilities.Cancel i wyodrębnione daty 3 marca i liczb�
 
 Dodając łatwo i szybko wbudowane intencje i jednostek, aplikacja kliencka można dodawać konwersacji zarządzania i Wyodrębnij wspólnych typów danych. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Dowiedz się więcej na temat jednostek](luis-concept-entity-types.md). 
+> [!div class="nextstepaction"]
+> [Dodaj jednostki wyrażenia regularnego do aplikacji](luis-quickstart-intents-regex-entity.md)
 
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
-[LUIS-regions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#publishing-regions

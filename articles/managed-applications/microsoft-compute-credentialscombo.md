@@ -11,23 +11,35 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 914e354265754a05476e96411d35e6cb04183213
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 183075f7407b0a0ca6ea53871e239ab8c2d89490
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261058"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098624"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft.Compute.CredentialsCombo UI element
 Grupa formantów z wbudowanych weryfikacji dla systemu Windows i Linux hasła i klucze publiczne SSH.
 
 ## <a name="ui-sample"></a>Przykład interfejsu użytkownika
-![Microsoft.Compute.CredentialsCombo](./media/managed-application-elements/microsoft.compute.credentialscombo.png)
+
+W systemie Windows będzie widoczna dla użytkowników:
+
+![Microsoft.Compute.CredentialsCombo systemu Windows](./media/managed-application-elements/microsoft.compute.credentialscombo-windows.png)
+
+Widoczne dla systemu Linux z hasłem, wybrane:
+
+![Hasło Microsoft.Compute.CredentialsCombo systemu Linux](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-password.png)
+
+Dla systemu Linux z wybrany klucz publiczny SSH Zobacz użytkowników:
+
+![Klucz Microsoft.Compute.CredentialsCombo systemu Linux](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
 
 ## <a name="schema"></a>Schemat
-Jeśli `osPlatform` jest **Windows**, zostanie użyta następującego schematu:
+W systemie Windows należy użyć następującego schematu:
+
 ```json
 {
   "name": "element1",
@@ -52,7 +64,8 @@ Jeśli `osPlatform` jest **Windows**, zostanie użyta następującego schematu:
 }
 ```
 
-Jeśli `osPlatform` jest **Linux**, zostanie użyta następującego schematu:
+Aby uzyskać **Linux**, użyj następującego schematu:
+
 ```json
 {
   "name": "element1",
@@ -84,13 +97,13 @@ Jeśli `osPlatform` jest **Linux**, zostanie użyta następującego schematu:
 
 ## <a name="remarks"></a>Uwagi
 - `osPlatform` należy określić i mogą być **Windows** lub **Linux**.
-- Jeśli `constraints.required` ustawiono **true**, a następnie hasło lub pola tekstowego klucza publicznego SSH musi zawierać wartości można pomyślnie zweryfikować. Wartość domyślna to **true**.
+- Jeśli `constraints.required` ma ustawioną wartość **true**, a następnie hasło lub pola tekstowego klucza publicznego SSH musi mieć wartości można pomyślnie zweryfikować. Wartość domyślna to **true**.
 - Jeśli `options.hideConfirmation` ma ustawioną wartość **true**, a następnie drugie pole tekstowe potwierdzania hasła jest ukryty. Wartość domyślna to **false**.
 - Jeśli `options.hidePassword` ustawiono **true**, a następnie opcję uwierzytelniania za pomocą hasła jest ukryty. Można go używać tylko wtedy, gdy `osPlatform` jest **Linux**. Wartość domyślna to **false**.
 - Dodatkowe ograniczenia dotyczące dozwolonych haseł można zaimplementować przy użyciu `customPasswordRegex` właściwości. Ciąg w `customValidationMessage` jest wyświetlane, gdy hasło niestandardowego sprawdzania poprawności zakończy się niepowodzeniem. Wartość domyślna dla obu właściwości to **null**.
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
-Jeśli `osPlatform` jest **Windows**, lub użytkownik podał hasła zamiast klucz publiczny SSH, a następnie oczekuje następujące dane wyjściowe:
+Jeśli `osPlatform` jest **Windows**, lub `osPlatform` jest **Linux** i użytkownik podał hasła zamiast klucz publiczny SSH, formantu zwraca następujące dane wyjściowe:
 
 ```json
 {
@@ -99,7 +112,8 @@ Jeśli `osPlatform` jest **Windows**, lub użytkownik podał hasła zamiast kluc
 }
 ```
 
-Jeśli użytkownik podał klucz publiczny SSH, jest oczekiwany następujące dane wyjściowe:
+Jeśli `osPlatform` jest **Linux** i użytkownika podano klucz publiczny SSH, formantu zwraca następujące dane wyjściowe:
+
 ```json
 {
   "authenticationType": "sshPublicKey",

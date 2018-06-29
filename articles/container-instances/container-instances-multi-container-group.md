@@ -2,19 +2,19 @@
 title: Wdrażanie kontenera wielu grup wystąpień kontenera platformy Azure
 description: Dowiedz się, jak wdrożyć grupę kontenera o wielu kontenerów w wystąpień kontenera platformy Azure.
 services: container-instances
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: db3f616d85c21f01c751fd82532289593a6e7e45
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 6d337c9ed23ac9af884f4113b046a8e9756fd441
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850573"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097108"
 ---
 # <a name="deploy-a-container-group"></a>Wdrożenie grupy kontenera
 
@@ -124,7 +124,7 @@ Ten szablon usługi Resource Manager definiuje grupę kontenera o dwa kontenery,
 }
 ```
 
-Aby użyć rejestru obrazu Kontener prywatny, należy dodać obiektu do dokumentu JSON o następującym formacie. Na przykład implementacji tej konfiguracji, zobacz [odwołania do szablonu Menedżera zasobów ACI] [ template-reference] dokumentacji.
+Aby użyć rejestru obrazu Kontener prywatny, należy dodać obiektu do dokumentu JSON o następującym formacie. Zapoznać się z przykładem implementacji tę konfigurację, [odwołania do szablonu usługi Resource Manager ACI] [ template-reference] dokumentacji.
 
 ```JSON
 "imageRegistryCredentials": [

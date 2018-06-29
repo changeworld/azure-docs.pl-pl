@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: e606b38c626c1a4dd335c40926e89a7cf0cec17a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
-ms.translationtype: HT
+ms.openlocfilehash: 1dec40871b8842cb5e41d48c759d1f4fa85d7b66
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054657"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082509"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co to jest wystąpienie zarządzane (wersja zapoznawcza)?
 
@@ -210,7 +210,7 @@ Zarządzane wystąpienia korzyści z jest zawsze do uaktualnia w chmury, co ozna
 - Zarządzane wystąpienie nie zezwala na określanie ścieżek pełną fizyczną, więc wszystkich odpowiednich scenariuszach muszą być obsługiwane inaczej: Przywracanie bazy danych nie obsługuje przenoszenie, tworzenie bazy danych nie zezwala na ścieżki fizyczne, BULK INSERT współpracuje z obiektami blob Azure tylko itp. 
 - Zarządzane wystąpienie obsługuje [uwierzytelniania usługi Azure AD](sql-database-aad-authentication.md) chmury alternatywę dla uwierzytelniania systemu Windows. 
 - Zarządzane wystąpienia automatycznie zarządza XTP grupy plików i plików baz danych zawierających obiekty OLTP w pamięci
-- Zarządzane wystąpienie obsługuje usługi SQL Server Integration Services (SSIS) i mogą hosta katalog SSIS (SSISDB), który przechowuje pakietów SSIS, ale są one wykonywane na zarządzanych Azure SSIS integrację środowiska uruchomieniowego (IR) w fabryce danych Azure (ADF), zobacz [Utwórz IR Azure SSIS w ADF](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime).
+- Zarządzane wystąpienie obsługuje usługi SQL Server Integration Services (SSIS) i mogą hosta katalog SSIS (SSISDB), który przechowuje pakietów SSIS, ale są one wykonywane na zarządzanych Azure SSIS integrację środowiska uruchomieniowego (IR) w fabryce danych Azure (ADF), zobacz [Utwórz IR Azure SSIS w ADF](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime). Aby porównać funkcje SSIS bazy danych SQL i wystąpienia zarządzane, zobacz [porównania bazy danych SQL i wystąpienia zarządzane (wersja zapoznawcza)](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-and-managed-instance-preview).
 
 ### <a name="managed-instance-administration-features"></a>Funkcje administracyjne wystąpienia zarządzane  
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 8dd30f53dc37734e1c01b3712b5adb7d81a1489b
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 363106421e75fa2e1b220d03a7d7cbed25447bcc
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33865905"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098400"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Zarządzaj ustawieniami użytkowników z usługi Azure Multi-Factor Authentication w chmurze
 
@@ -58,7 +58,7 @@ Jedną z funkcji można skonfigurować uwierzytelnianie wieloskładnikowe Azure 
 
 Użytkownicy mogą zrezygnować z weryfikacji dwuetapowej, można skonfigurować liczbę dni na swoich urządzeniach regularne. Jeśli złamania zabezpieczeń konta lub zaufanego urządzenia zostaną utracone, należy mieć możliwość usunięcia zaufanego stanu i wymaga weryfikacji dwuetapowej ponownie.
 
-**Przywracania uwierzytelnianie wieloskładnikowe na wszystkich zapamiętanych urządzeniach** ustawienie oznacza, że użytkownik będzie wezwał do przeprowadzenia weryfikacji dwuetapowej przy następnym zalogowaniu, niezależnie od tego, czy wybrana do oznaczania ich urządzenia jako zaufany. 
+**Przywracania uwierzytelnianie wieloskładnikowe na wszystkich zapamiętanych urządzeniach** ustawienie oznacza, że użytkownik będzie wezwał do przeprowadzenia weryfikacji dwuetapowej przy następnym zalogowaniu, niezależnie od tego, czy wybrana do oznaczania ich urządzenia zaufany. 
 
 ### <a name="how-to-restore-mfa-on-all-suspended-devices-for-a-user"></a>Jak przywrócić uwierzytelnianie wieloskładnikowe na wszystkich urządzeniach wstrzymane dla użytkownika
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
@@ -75,4 +75,4 @@ Użytkownicy mogą zrezygnować z weryfikacji dwuetapowej, można skonfigurować
 
 - Uzyskaj więcej informacji o sposobie [ustawienia skonfigurować uwierzytelnianie wieloskładnikowe Azure](howto-mfa-mfasettings.md)
 
-- Jeśli użytkownicy będą potrzebować pomocy, wskazać im kierunku [Podręcznik użytkownika na potrzeby weryfikacji dwuetapowej](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user.md)
+- Jeśli użytkownicy będą potrzebować pomocy, wskazać im kierunku [Podręcznik użytkownika na potrzeby weryfikacji dwuetapowej](end-user/current/multi-factor-authentication-end-user.md)

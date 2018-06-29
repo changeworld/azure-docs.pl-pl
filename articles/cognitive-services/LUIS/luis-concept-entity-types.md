@@ -7,14 +7,14 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/22/2018
+ms.date: 06/28/2018
 ms.author: v-geberr
-ms.openlocfilehash: ccb7269109309355e2af95f6fb2aa060c1998b22
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 01f451f7a3e09aacb029c2194044320717bfae96
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286022"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083253"
 ---
 # <a name="entities-in-luis"></a>Jednostki w LUIS
 
@@ -28,10 +28,10 @@ W porównaniu zamiar reprezentuje Prognozowanie cały utterance.
 ## <a name="entities-represent-data"></a>Jednostek reprezentacji danych
 Jednostki są dane, które chcesz ściągnąć z utterance. Może to być nazwą, Data, nazwa produktu lub dowolną grupę słów. 
 
-|Utterance|Jednostka|Dane|
+|Wypowiedź|Jednostka|Dane|
 |--|--|--|
 |Kup bilety 3 w Nowym Jorku|Numer wbudowane<br>Location.Destination|3<br>Nowy Jork|
-|Kup biletu z nowego Jorku do Londynu na 5 marca|Location.Origin<br>Location.Destination<br>Wbudowane datetimeV2|Nowy Jork<br>Londyn<br>5 marca 2018 r.|
+|Kup biletu z nowego Jorku do Londynu na 5 marca|Location.Origin<br>Location.Destination<br>Wbudowane datetimeV2|Nowy Jork<br>Londyn<br>5 marca 2018|
 
 ## <a name="entities-are-optional-but-highly-recommended"></a>Jednostki są opcjonalne, ale zdecydowanie zalecane
 Profile są wymagane, jednostki są opcjonalne. Jest konieczne tworzenie jednostki dla każdej koncepcji w aplikacji, ale tylko w przypadku wymaganych aplikacji podjęcia odpowiednich działań. 
@@ -65,7 +65,7 @@ LUIS oferuje wiele typów jednostek; wbudowane jednostek niestandardowych maszyn
 
 | Name (Nazwa) | Można opisać | Opis |
 | -- |--|--|
-| **Wbudowane** <br/>[Custom](#prebuilt)| |  **Definicja**<br>Wbudowane typy, które reprezentują wspólne pojęcia. <br><br>**Lista**<br/>numer frazy klucza, liczba porządkowa temperatury, wymiaru, pieniędzy, wieku, procent, poczty e-mail, adres URL, numer telefonu i hasło klucza. <br><br>Nazwy jednostek wbudowane są zastrzeżone. <br><br>Wszystkie wbudowane jednostki, które są dodawane do aplikacji są zwracane w [punktu końcowego](luis-glossary.md#endpoint) zapytania. Aby uzyskać więcej informacji, zobacz [wbudowane jednostek](./Pre-builtEntities.md). <br/><br/>[Przykład odpowiedzi dla jednostki](luis-concept-data-extraction.md#prebuilt-entity-data)|
+| **Wbudowane** <br/>[Niestandardowe](#prebuilt)| |  **Definicja**<br>Wbudowane typy, które reprezentują wspólne pojęcia. <br><br>**Lista**<br/>numer frazy klucza, liczba porządkowa temperatury, wymiaru, pieniędzy, wieku, procent, poczty e-mail, adres URL, numer telefonu i hasło klucza. <br><br>Nazwy jednostek wbudowane są zastrzeżone. <br><br>Wszystkie wbudowane jednostki, które są dodawane do aplikacji są zwracane w [punktu końcowego](luis-glossary.md#endpoint) zapytania. Aby uzyskać więcej informacji, zobacz [wbudowane jednostek](./Pre-builtEntities.md). <br/><br/>[Przykład odpowiedzi dla jednostki](luis-concept-data-extraction.md#prebuilt-entity-data)|
 |<!-- added week of 3/21/08 --> **Wyrażenie regularne**<br/>[Wyrażenia regularnego](#regex)||**Definicja**<br>Niestandardowe wyrażenie regularne tekstu sformatowanego utterance raw. Ignoruje wielkość liter, a ignoruje kultury variant.  <br><br>Ta jednostka jest prawidłowa dla słów ani fraz spójnie sformatowane przy każdej zmianie, który również jest spójna.<br><br>Dopasowywanie wyrażeń regularnych są stosowane po zmiany sprawdzanie pisowni. <br><br>Jeśli wyrażenie regularne jest zbyt złożone, takiej jak dużo nawiasów, nie jest możliwe do dodania do modelu wyrażenie. <br><br>**Przykład**<br>`kb[0-9]{6,}` kb123456 dopasowań.<br/><br/>[Szybki start](luis-quickstart-intents-regex-entity.md)<br>[Przykład odpowiedzi dla jednostki](luis-concept-data-extraction.md)|
 | **Proste** <br/>[Rozpoznane maszyny](#machine-learned) | ✔ | **Definicja**<br>Proste jednostka jest ogólny jednostki, która opisuje jednej koncepcji i jest zostały uzyskane na podstawie kontekstu rozpoznane maszyny. Kontekst obejmują wybór word, umieszczania programu word i utterance długości.<br/><br/>Jest to dobry jednostki dla słów ani fraz, które nie są spójnie sformatowane, ale wskazać to samo. <br/><br/>[Szybki start](luis-quickstart-primary-and-secondary-data.md)<br/>[Przykład odpowiedzi dla jednostki](luis-concept-data-extraction.md#simple-entity-data)|  
 | **Lista** <br/>[Dokładnego dopasowania](#exact-match)|| **Definicja**<br>Listy jednostek reprezentują zestaw stały, zamkniętego powiązanych słów wraz z ich synoymns w systemie. <br><br>Każdy obiekt listy mogą mieć jeden lub więcej formularzy. Najlepiej nadaje się do znanego zestawu odmiany sposoby reprezentują tego samego pojęcia.<br/><br/>LUIS nie wykryje dodatkowe wartości dla jednostek z listy. Użyj wyświetlić [semantycznego słownika](luis-glossary.md#semantic-dictionary) propozycje dla nowych słów na podstawie bieżącej listy.<br/><br>Jeśli istnieje więcej niż jednej jednostki listy z tą samą wartością, każdy obiekt jest zwracany w zapytania punktu końcowego. <br/><br/>[Szybki start](luis-quickstart-intent-and-list-entity.md)<br>[Przykład odpowiedzi dla jednostki](luis-concept-data-extraction.md#list-entity-data)| 
@@ -90,6 +90,9 @@ LUIS oferuje wiele typów jednostek; wbudowane jednostek niestandardowych maszyn
 
 ## <a name="entity-limits"></a>Limity jednostki
 Przegląd [limity](luis-boundaries.md#model-boundaries) zrozumieć, jak wiele każdego typu podmiotu można dodać do modelu.
+
+## <a name="entity-roles"></a>Role jednostki
+Jednostka [ról](luis-concept-roles.md) są używane we wzorcach tylko. 
 
 ## <a name="composite-vs-hierarchical-entities"></a>Hierarchiczna jednostek złożonego vs
 Złożone jednostki i hierarchicznych jednostek zarówno mają relacji nadrzędny podrzędny i są rozpoznawane maszyny. Uczenie maszynowe umożliwia LUIS do zrozumienia jednostek, opartych na różnych kontekstach (rozmieszczenie wyrazów). Złożone jednostki są bardziej elastyczne, ponieważ umożliwiają one typy różnych jednostek jako elementy podrzędne. Hierarchiczna jednostki elementy podrzędne są tylko proste jednostki. 
@@ -208,7 +211,7 @@ W ramach przeglądu należy rozważyć dodanie listy frazy, aby dodać sygnał d
 
 Zobacz [najlepsze rozwiązania](luis-concept-best-practices.md) Aby uzyskać więcej informacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się pojęć dotyczących dobrej [zniesławiających](luis-concept-utterance.md). 
 

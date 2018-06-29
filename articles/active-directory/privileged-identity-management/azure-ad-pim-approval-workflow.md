@@ -11,15 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: protection
 ms.date: 04/28/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 6e14d91eae367ef62d1ff2e4cb6ddeb47c9fbbea
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 135c789dc6e41e07bb939ece679756c8c42de2d1
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261019"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085287"
 ---
 # <a name="approvals"></a>Zatwierdzenia
 
@@ -56,11 +57,11 @@ Prywatnej wersji zapoznawczej obsługuje następujące scenariusze:
 
 **Kwalifikujące się roli użytkownika może:**
 
--   [Żądania aktywacji roli, która wymaga zatwierdzenia](#request-activation-of-a-role-that-requires-approval)
+-   [żądanie aktywacji roli, która wymaga zatwierdzenia](#request-activation-of-a-role-that-requires-approval)
 
 -   [Wyświetl stan żądanie aktywacji](#view-the-status-of-your-request-to-activate)
 
--   [Wykonać zadanie w usłudze Azure AD, jeśli Aktywacja została zatwierdzona](#complete-your-task-in-azure-ad-if-activation-was-approved)
+-   [wykonać zadanie w usłudze Azure AD, jeśli Aktywacja została zatwierdzona](#complete-your-task-in-azure-ad-if-activation-was-approved)
 
 ### <a name="navigation"></a>Nawigacja
 
@@ -188,6 +189,6 @@ Gdy żądanie zostanie zatwierdzone, rola jest aktywna i może kontynuować prac
 
 ![](media/azure-ad-pim-approval-workflow/image043.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Twoja opinia jest przydatna do nas. Sprawdź możesz udostępniać komentarze i opinie NAS tutaj!

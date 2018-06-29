@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: larryfr
-ms.openlocfilehash: d382293ce815f24ad635b50c920d7988b664d79c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d030bdaf4c68a7e2ec9d11cdd8a2f55eccfbd67d
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32169612"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081171"
 ---
 # <a name="use-pig-with-hadoop-on-hdinsight"></a>Korzystanie z języka Pig z usługą Hadoop w usłudze HDInsight
 
@@ -55,7 +55,7 @@ Język Pig Latin umożliwia opisano przepływ danych z nieprzetworzone dane wej�
 
 Pig Latin obsługuje również funkcje zdefiniowane przez użytkownika (UDF), dzięki czemu można wywołać składników zewnętrznych, które implementują logikę, która jest trudne do modelu w Pig Latin.
 
-Aby uzyskać więcej informacji na temat Pig Latin, zobacz [1 Ręczne odwołanie Pig Latin](http://pig.apache.org/docs/r0.7.0/piglatin_ref1.html) i [2 ręczne odwołanie Pig Latin](http://pig.apache.org/docs/r0.7.0/piglatin_ref2.html).
+Aby uzyskać więcej informacji na temat Pig Latin, zobacz [1 Ręczne odwołanie Pig Latin](http://archive.cloudera.com/cdh/3/pig/piglatin_ref1.html) i [2 ręczne odwołanie Pig Latin](http://archive.cloudera.com/cdh/3/pig/piglatin_ref2.html).
 
 Przykład użycia funkcji UDF z Pig na ten temat można znaleźć w następujących dokumentach:
 

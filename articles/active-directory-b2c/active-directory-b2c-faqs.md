@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e16130dc41418b22f2dea4ceae5e0a90ed963161
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 11335079373b627bab923f63eda148b0a74307ea
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36938444"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100525"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Usługa Azure AD B2C: Często zadawane pytania (FAQ) 
 Ta strona zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Active Directory (Azure AD) B2C. Sprawdzanie wstecz do aktualizacji.
@@ -97,9 +97,9 @@ Przeczytaj ten artykuł o [tożsamości zewnętrznych](../active-directory/activ
 ### <a name="what-reporting-and-auditing-features-does-azure-ad-b2c-provide-are-they-the-same-as-in-azure-ad-premium"></a>Jakie raportowania i inspekcji funkcje usługi Azure AD B2C oferuje? Są one takie same jak Azure AD Premium?
 Nie, usługi Azure AD B2C obsługuje ten sam zestaw raportów, jako Azure AD Premium. Istnieje jednak wiele commonalities:
 
-* **Zaloguj się w raportach** są dostępne tylko w portalu Azure (Azure Active Directory > działania > logowania) i nie są dostępne za pośrednictwem interfejsu API programu Graph. Udostępniają one rejestr każdego logowania z obniżonych szczegółów.
-* **Raporty dotyczące inspekcji** są dostępne tylko w portalu Azure (Azure Active Directory > działania > Dzienniki inspekcji) i nie są dostępne za pośrednictwem interfejsu API programu Graph. Obejmują one zarówno aktywność administratora, jak i działanie aplikacji. 
-* **Raporty użycia** są dostępne za pośrednictwem tylko [użycia interfejsu API raportowania](active-directory-b2c-reference-usage-reporting-api.md) i nie są dostępne za pośrednictwem portalu Azure. Obejmują one liczbę użytkowników, liczba logowań i wolumin MFA. 
+* **Raporty logowania** Podaj rejestr każdego logowania z obniżonych szczegółów.
+* **Raporty dotyczące inspekcji** obejmują zarówno aktywność administratora, a także działania aplikacji. 
+* **Raporty użycia** obejmują liczbę użytkowników, liczba logowań i wolumin MFA. 
 
 ### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Czy można zlokalizować interfejsu użytkownika obsługiwanych przez usługę Azure AD B2C stron? Jakich języków są obsługiwane?
 Tak!  Przeczytaj informacje o [dostosowywania języka](active-directory-b2c-reference-language-customization.md), która znajduje się w publicznej wersji zapoznawczej.  Firma Microsoft udostępnia tłumaczenia dla 36 języków, można zmienić dowolny ciąg, w zależności od potrzeb.

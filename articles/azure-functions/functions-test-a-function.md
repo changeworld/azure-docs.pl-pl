@@ -3,7 +3,7 @@ title: Testowanie usługi Azure Functions | Dokumentacja firmy Microsoft
 description: Testowanie funkcji platformy Azure przy użyciu Postman, cURL i Node.js.
 services: functions
 documentationcenter: na
-author: wesmc7777
+author: tdykstra
 manager: cfowler
 editor: ''
 tags: ''
@@ -15,14 +15,14 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/02/2017
-ms.author: wesmc
+ms.author: tdykstra
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 41796a8cdde0756e5157ba276463a56b07679d04
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b4f6bf89ec5c83a497666a8a410a156c5f9bb359
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23838954"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083261"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie do testowania kodu w usługi Azure Functions
 
@@ -37,7 +37,7 @@ W tym temacie przedstawiono różne sposoby, aby przetestować funkcje, w tym o 
 Tych metod testowych używana jest funkcja wyzwalacza HTTP, który akceptuje dane wejściowe za pomocą parametru ciągu zapytania lub treści żądania. W pierwszej sekcji tworzenia tej funkcji.
 
 ## <a name="create-a-function-for-testing"></a>Utwórz funkcję do testowania
-Większość tego samouczka używamy nieco zmodyfikowaną wersję szablonu funkcji HttpTrigger JavaScript, która jest dostępna podczas tworzenia funkcji. Jeśli potrzebujesz, aby uzyskać pomoc przy tworzeniu funkcji, przejrzyj to [samouczek](functions-create-first-azure-function.md). Wybierz **HttpTrigger - JavaScript** szablonu podczas tworzenia funkcji testu w [portalu Azure].
+Większość tego samouczka używamy nieco zmodyfikowaną wersję szablonu funkcji HttpTrigger JavaScript, która jest dostępna podczas tworzenia funkcji. Jeśli potrzebujesz, aby uzyskać pomoc przy tworzeniu funkcji, przejrzyj to [samouczek](functions-create-first-azure-function.md). Wybierz **HttpTrigger - JavaScript** szablonu podczas tworzenia funkcji testu w [Azure Portal].
 
 Domyślny szablon funkcji jest zasadniczo funkcji "hello world", która zwraca ponownie nazwę z żądania treści lub zapytania parametru ciągu, `name=<your name>`.  Będziemy informować kod można również określić nazwę i adres jako zawartość JSON w treści żądania. Następnie funkcja zwraca te wstecz do klienta, jeśli jest dostępna.   
 
@@ -186,10 +186,10 @@ W portalu **dzienniki** okno dane wyjściowe podobne do następującego jest rej
 ### <a name="test-a-blob-trigger-by-using-storage-explorer"></a>Test wyzwalania obiektów blob przy użyciu Eksploratora usługi Storage
 Funkcja wyzwalacza obiektu blob można testować przy użyciu [Eksploratora usługi Storage Azure](http://storageexplorer.com/).
 
-1. W [portalu Azure] dla funkcji aplikacji, Utwórz funkcję wyzwalacza języka C#, F # lub JavaScript obiektu blob. Ustaw ścieżkę do monitorowania do nazwy kontenerze obiektu blob. Na przykład:
+1. W [Azure Portal] dla funkcji aplikacji, Utwórz funkcję wyzwalacza języka C#, F # lub JavaScript obiektu blob. Ustaw ścieżkę do monitorowania do nazwy kontenerze obiektu blob. Na przykład:
 
         files
-2. Kliknij przycisk  **+**  przycisk, aby wybrać lub utworzyć konto magazynu, którego chcesz użyć. Następnie kliknij pozycję **Utwórz**.
+2. Kliknij przycisk **+** przycisk, aby wybrać lub utworzyć konto magazynu, którego chcesz użyć. Następnie kliknij pozycję **Utwórz**.
 3. Utwórz plik tekstowy z następującym tekstem i zapisz go:
 
         A text file for blob trigger function testing.
@@ -248,15 +248,15 @@ Aby zademonstrować takie podejście, najpierw utworzymy funkcja wyzwalacza kole
 >
 >
 
-1. W [portalu Azure] dla funkcji aplikacji, kliknij przycisk **nową funkcję** > **QueueTrigger - C#**.
+1. W [Azure Portal] dla funkcji aplikacji, kliknij przycisk **nową funkcję** > **QueueTrigger - C#**.
 2. Wprowadź nazwę kolejki monitorowanych przez funkcję kolejki:
 
         queue-newusers
-3. Kliknij przycisk  **+**  przycisk, aby wybrać lub utworzyć konto magazynu, którego chcesz użyć. Następnie kliknij pozycję **Utwórz**.
+3. Kliknij przycisk **+** przycisk, aby wybrać lub utworzyć konto magazynu, którego chcesz użyć. Następnie kliknij pozycję **Utwórz**.
 4. Pozostaw to okno przeglądarki w portalu otwarty, więc można monitorować wpisów dziennika dla kodu szablonu domyślnego kolejki funkcji.
 
 #### <a name="create-a-timer-trigger-to-drop-a-message-in-the-queue"></a>Tworzenie wyzwalacza bazującego na czasomierzu można usunąć wiadomości w kolejce
-1. Otwórz [portalu Azure] w nowym oknie przeglądarki, a następnie przejdź do aplikacji funkcji.
+1. Otwórz [Azure Portal] w nowym oknie przeglądarki, a następnie przejdź do aplikacji funkcji.
 2. Kliknij przycisk **nową funkcję** > **TimerTrigger - C#**. Wprowadź wyrażenie cron, aby ustawić częstotliwość kodu czasomierza testów funkcji kolejki. Następnie kliknij pozycję **Utwórz**. Jeśli chcesz testów do uruchomienia co 30 sekund, można użyć następujących [wyrażenie CRON](https://wikipedia.org/wiki/Cron#CRON_expression):
 
         */30 * * * * *
@@ -268,7 +268,7 @@ Aby zademonstrować takie podejście, najpierw utworzymy funkcja wyzwalacza kole
 6. Wprowadź nazwę kolejki wysyłania wiadomości:
 
         queue-newusers
-7. Kliknij przycisk  **+**  przycisk, aby wybrać poprzednio używany z wyzwalaczem kolejki konta magazynu. Następnie kliknij przycisk **Save** (Zapisz).
+7. Kliknij przycisk **+** przycisk, aby wybrać poprzednio używany z wyzwalaczem kolejki konta magazynu. Następnie kliknij przycisk **Save** (Zapisz).
 8. Kliknij przycisk **opracowanie** kartę wyzwalacza czasomierza.
 9. Tak długo, jak użyć tej samej kolejki wiadomości nazwę obiektu przedstawiona wcześniej, można użyć poniższego kodu dla funkcji czasomierza C#. Następnie kliknij przycisk **Save** (Zapisz).
 
@@ -443,4 +443,4 @@ W oknie przeglądarki dla funkcji kolejki można wyświetlić każdego przetwarz
 
 <!-- URLs. -->
 
-[portalu Azure]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

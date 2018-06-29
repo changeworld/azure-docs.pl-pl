@@ -1,6 +1,6 @@
 ---
-title: Architektura zdalnego rozwiązanie monitorowania - Azure | Dokumentacja firmy Microsoft
-description: Przewodnik architektury zdalnego monitorowania akcelerator rozwiązań.
+title: Zdalne monitorowanie akceleratora Omówienie rozwiązania - Azure | Dokumentacja firmy Microsoft
+description: Przegląd akcelerator rozwiązań monitorowania zdalnego.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,14 +8,14 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: af7feb6c95a7de1d2211378c5eb71f09907221ff
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: a8b5d9e3917c854cb255a35d3bbc901bcce52c24
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757437"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084533"
 ---
-# <a name="remote-monitoring-solution-accelerator-architecture"></a>Zdalna architektura akceleratora rozwiązanie monitorowania
+# <a name="remote-monitoring-solution-accelerator-overview"></a>Omówienie akceleratora rozwiązań monitorowania zdalnego
 
 Zdalne monitorowanie [akcelerator rozwiązań](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md) implementuje end-to-end rozwiązanie monitorowania dla wielu komputerów w lokalizacjach zdalnych. Rozwiązanie to łączy najważniejsze usługi platformy Azure, aby umożliwić ogólną implementację scenariusza biznesowego. Za pomocą rozwiązania jako punkt początkowy dla własnego implementacji i [dostosować](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md) go zgodnie z wymaganiami firmy.
 

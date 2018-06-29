@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: b809097e50a17178da12fdb424eba08dc8e0c4cb
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 204910ff6e02eafd62eeb56bf82b77b91b3cb5ad
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866895"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099613"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user-or-group"></a>Jak zażądać weryfikacji dwuetapowej dla użytkownika lub grupy
 
@@ -71,7 +71,7 @@ Aby uzyskać dostęp do strony, gdzie można przeglądać i zarządzać stanu u�
 
 5. Potwierdź wybór w otwartym oknie podręcznym. 
 
-Po włączeniu użytkowników powiadamiać użytkowników za pośrednictwem poczty e-mail. Poinformuj go, pojawi się pytanie do zarejestrowania przy następnym zalogowaniu. Ponadto jeśli Twoja organizacja korzysta z aplikacji korzystających z przeglądarki, które nie obsługują nowoczesnego uwierzytelniania, muszą utworzyć hasła aplikacji. Możesz również uwzględnić łącze do [przewodnik dla użytkowników końcowych usługi Azure MFA](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user.md) ułatwiającego rozpoczęcie pracy.
+Po włączeniu użytkowników powiadamiać użytkowników za pośrednictwem poczty e-mail. Poinformuj go, pojawi się pytanie do zarejestrowania przy następnym zalogowaniu. Ponadto jeśli Twoja organizacja korzysta z aplikacji korzystających z przeglądarki, które nie obsługują nowoczesnego uwierzytelniania, muszą utworzyć hasła aplikacji. Możesz również uwzględnić łącze do [przewodnik dla użytkowników końcowych usługi Azure MFA](end-user/current/multi-factor-authentication-end-user.md) ułatwiającego rozpoczęcie pracy.
 
 ### <a name="use-powershell"></a>Korzystanie z programu PowerShell
 Aby zmienić stan użytkownika przy użyciu [programu Azure AD PowerShell](/powershell/azure/overview), zmień `$st.State`. Istnieją trzy stany:

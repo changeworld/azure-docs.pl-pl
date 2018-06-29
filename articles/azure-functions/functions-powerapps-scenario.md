@@ -17,12 +17,12 @@ ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: 02cd491be5336abe708cce0f6e268b38514d4e88
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 3693b167f196b82c520703fa50ffabb27b555050
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234958"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082669"
 ---
 # <a name="call-a-function-from-powerapps"></a>Wywoływanie funkcji z usługi PowerApps
 [Rozwiązania PowerApps](https://powerapps.microsoft.com) platformy jest przeznaczona dla ekspertów biznesowych do tworzenia aplikacji bez kodu tradycyjnych aplikacji. Professional deweloperzy mogą używać usługi Azure Functions, aby rozszerzyć możliwości rozwiązania PowerApps, podczas osłaniania rozwiązania PowerApps konstruktorów aplikacji z szczegóły techniczne.
@@ -46,7 +46,7 @@ W tym temacie dowiesz się, jak:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-+ Aktywny [konta rozwiązania PowerApps](https://powerapps.microsoft.com/tutorials/signup-for-powerapps.md) przy użyciu tego samego konta w poświadczeniach jako konto platformy Azure. 
++ Aktywny [konta rozwiązania PowerApps](https://docs.microsoft.com/en-us/powerapps/maker/signup-for-powerapps) przy użyciu tego samego konta w poświadczeniach jako konto platformy Azure. 
 + Program Excel i [Excel przykładowy plik](https://procsi.blob.core.windows.net/docs/turbine-data.xlsx) , który będzie używany jako źródło danych dla aplikacji.
 + Ukończ samouczek [utworzyć definicję OpenAPI dla funkcji](functions-openapi-definition.md).
 
@@ -139,7 +139,7 @@ Teraz, źródła danych są dostępne w aplikacji, dodaniu do aplikacji, aby wy�
 
 1. W **danych** panelu, wybierz opcję **turbin** z listy.
 
-    ![Wybierz źródło danych](media/functions-powerapps-scenario/select-data-source.png)
+    ![Wybieranie źródła danych](media/functions-powerapps-scenario/select-data-source.png)
 
     Zestaw danych nie zawiera obrazu, dlatego dalej zmiany układu, aby lepiej dopasować dane. 
 

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2018
+ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 183c5f3196653ce9519c0742db7a67cd36c63fb9
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c60d736798adbbcb47b94172768dc8b8e5c366fe
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35292841"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37088640"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Przewodnik Wprowadzenie do integracji Azure Active Directory z aplikacjami pobierania
 ## <a name="overview"></a>Przegląd
@@ -61,8 +61,8 @@ Być może nie masz odpowiedzi na wszystkie pytania na początku, ale nie szkodz
 * Subskrypcja platformy Azure i katalogu usługi Azure Active Directory.  Jeśli nie masz jeszcze subskrypcji platformy Azure, Azure można Wypróbuj bezpłatnie przez 30 dni. [Wypróbuj](https://azure.microsoft.com/trial/get-started-active-directory/)
 
 ## <a name="application-integration-with-azure-ad"></a>Integracja aplikacji z usługą Azure AD
-### <a name="finding-unsanctioned-cloud-applications-with-cloud-app-discovery"></a>Znajdowanie niezatwierdzona aplikacji w chmurze z usługi Cloud App Discovery
-Jak wspomniano powyżej, może to być aplikacje, które nie zostały zarządzanych przez organizację do tej pory.  W ramach procesu spisu prawdopodobnie można znaleźć chmury niezatwierdzonych aplikacji. Zobacz [znajdowania aplikacji w chmurze niezatwierdzone z usługi Cloud App Discovery](cloud-app-discovery.md).
+### <a name="finding-unsanctioned-cloud-applications-with-cloud-discovery"></a>Znajdowanie niezatwierdzona aplikacji w chmurze z usługi Cloud Discovery
+Jak wspomniano powyżej, może to być aplikacje, które nie zostały zarządzanych przez organizację do tej pory.  W ramach procesu spisu prawdopodobnie można znaleźć chmury niezatwierdzonych aplikacji. Zobacz [konfigurowanie rozwiązania Cloud Discovery](/cloud-app-security/set-up-cloud-discovery.md).
 
 ### <a name="authentication-types"></a>Typy uwierzytelniania
 Poszczególnych aplikacji może być wymagania dotyczące różnych uwierzytelniania. Z usługą Azure AD certyfikaty podpisywania można z aplikacji, które używają SAML 2.0, WS-Federation, lub OpenID Connect protokoły oraz jak hasło rejestracji jednokrotnej. Aby uzyskać więcej informacji o aplikacji Zobacz typy uwierzytelniania do użycia z usługą Azure AD [Zarządzanie certyfikatów dla federacyjnych rejestracji jednokrotnej w usłudze Azure Active Directory](manage-certificates-for-federated-single-sign-on.md) i [hasła na podstawie jednokrotnego](what-is-single-sign-on.md).
@@ -73,9 +73,9 @@ Dzięki serwerowi Proxy aplikacji usługi AD Microsoft Azure można zapewnić do
 ### <a name="integrating-applications-with-azure-ad"></a>Integrowanie aplikacji z usługą Azure AD
 W następujących artykułach omówiono sposoby aplikacje integrują się z usługi Azure AD i niektóre wytyczne.
 
-* [Określanie, które usługi Active Directory do użycia](../active-directory-administer.md)
+* [Określanie, które usługi Active Directory do użycia](../fundamentals/active-directory-administer.md)
 * [Przy użyciu aplikacji w galerii aplikacji Azure](what-is-single-sign-on.md)
-* [Integrowanie listę samouczków aplikacji SaaS](../active-directory-saas-tutorial-list.md)
+* [Integrowanie listę samouczków aplikacji SaaS](../saas-apps/tutorial-list.md)
 
 ## <a name="managing-access-to-applications"></a>Zarządzanie dostępem do aplikacji
 Następujące artykuły opisano sposoby możesz zarządzać dostępem do aplikacji po zostały zintegrowane z usługą Azure AD za pomocą łączników usługi Azure AD i Azure AD.

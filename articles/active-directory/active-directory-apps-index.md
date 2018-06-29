@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: ed1179663823bc5a16f3ef348a649731814cdd5a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: HT
+ms.openlocfilehash: d091a56fd5190ea9b40f7933e217eabac87967a5
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293096"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098767"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory
 Ta strona zawiera pełną listę wszystkich dokumentów zapisywane o różnych funkcjach związanych z aplikacji w usłudze Azure Active Directory (Azure AD).
@@ -54,8 +54,8 @@ Logowania jednokrotnego pozwala użytkownikom na dostęp do różnych aplikacji 
 | Przewodnik artykułu |  |
 |:---:| --- |
 | Wprowadzenie do Federacji i inne typy logowania jednokrotnego |[Logowanie jednokrotne z usługą Azure AD](manage-apps/what-is-single-sign-on.md) |
-| Tysiące aplikacji SaaS, które są wstępnie zintegrowane z usługą Azure AD z uproszczony czynności konfiguracyjnych rejestracji jednokrotnej |[Wprowadzenie do korzystania z galerii aplikacji Azure AD](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Pełną listę wstępnie zintegrowanych aplikacji, które obsługują federacyjnego](active-directory-saas-tutorial-list.md)<br /><br />[Jak dodać aplikację do galerii aplikacji Azure AD](active-directory-app-gallery-listing.md) |
-| Więcej niż 150 samouczków aplikacji o tym, jak skonfigurować logowanie jednokrotne dla aplikacji takich jak [Salesforce](active-directory-saas-salesforce-tutorial.md), [ServiceNow](active-directory-saas-servicenow-tutorial.md), [usługi Google Apps](active-directory-saas-google-apps-tutorial.md), [produktu Workday](active-directory-saas-workday-tutorial.md)i o wiele więcej. |[Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md) |
+| Tysiące aplikacji SaaS, które są wstępnie zintegrowane z usługą Azure AD z uproszczony czynności konfiguracyjnych rejestracji jednokrotnej |[Wprowadzenie do korzystania z galerii aplikacji Azure AD](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Pełną listę wstępnie zintegrowanych aplikacji, które obsługują federacyjnego](saas-apps/tutorial-list.md)<br /><br />[Jak dodać aplikację do galerii aplikacji Azure AD](active-directory-app-gallery-listing.md) |
+| Więcej niż 150 samouczków aplikacji o tym, jak skonfigurować logowanie jednokrotne dla aplikacji takich jak [Salesforce](saas-apps/salesforce-tutorial.md), [ServiceNow](saas-apps/servicenow-tutorial.md), [usługi Google Apps](saas-apps/google-apps-tutorial.md), [produktu Workday](saas-apps/workday-tutorial.md)i o wiele więcej. |[Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](saas-apps/tutorial-list.md) |
 | Jak ręcznie skonfigurować i dostosować jednej konfiguracji logowania jednokrotnego |[Jak można skonfigurować federacyjne logowanie jednokrotne do aplikacji, które nie znajdują się w galerii aplikacji Azure Active Directory](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[Dostosowywanie oświadczeń wydanych w tokenie SAML dla wstępnie zintegrowanych aplikacji](active-directory-saml-claims-customization.md) |
 | Podręcznik rozwiązywania problemów dotyczących aplikacji federacyjnych, które używają protokołu SAML |[Rozwiązywanie problemów z systemem SAML logowania jednokrotnego](active-directory-saml-debugging.md) |
 | Jak skonfigurować datę wygaśnięcia certyfikatu aplikacji i jak odnowić certyfikaty użytkownika |[Zarządzanie certyfikatami dla federacyjnego logowania jednokrotnego w usłudze Azure Active Directory](manage-apps/manage-certificates-for-federated-single-sign-on.md) |
@@ -112,23 +112,18 @@ Po skonfigurowaniu rejestracji jednokrotnej do aplikacji i zasobów, można nast
 | Sposób włączania dostępu warunkowego dla następujących typów zasobów |[Dostęp warunkowy dla aplikacji SaaS](active-directory-conditional-access-azure-portal-get-started.md)<br /><br />[Dostęp warunkowy dla usługi Office 365](active-directory-conditional-access-device-policies.md)<br /><br />[Dostęp warunkowy do aplikacji lokalnych](active-directory-conditional-access-azure-portal.md)<br /><br />[Dostęp warunkowy do aplikacji lokalnych opublikowane za pośrednictwem serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
 | Jak zarejestrować urządzenia z usługą Azure Active Directory, aby włączyć zasady dostępu warunkowego opartego na urządzeniu |[Omówienie usługi Azure Active Directory rejestracji urządzenia](active-directory-conditional-access-device-registration-overview.md)<br /><br />[Włączanie automatycznej rejestracji urządzeń dla domeny przyłączone do urządzeń z systemem Windows](active-directory-conditional-access-automatic-device-registration.md)<br />— [Urządzeń kroki dla Windows 8.1](active-directory-conditional-access-automatic-device-registration-setup.md)<br />— [Urządzeń kroki dla systemu Windows 7](active-directory-conditional-access-automatic-device-registration-setup.md) |
 
-| Sposób użycia aplikacji Authenticator firmy Microsoft na potrzeby weryfikacji dwuetapowej | [Uwierzytelniania firmy Microsoft](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |
+| Sposób użycia aplikacji Authenticator firmy Microsoft na potrzeby weryfikacji dwuetapowej | [Uwierzytelniania firmy Microsoft](authentication/end-user/current/microsoft-authenticator-app-how-to.md) |
 
 Dostęp warunkowy jest [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) funkcji.
 
 ## <a name="apps--azure-ad"></a>Aplikacje i usługi Azure AD
-### <a name="cloud-app-discovery-find-which-saas-apps-are-being-used-in-your-organization"></a>Usługa cloud App Discovery: Znajdowanie aplikacji SaaS, które są używane w organizacji
-Usługa cloud App Discovery pomaga działów IT informacje aplikacje SaaS, które są używane w całej organizacji. Go Mierz użycie aplikacji i popularność, którego nie można określić aplikacje, które będą korzystać z najbardziej przed sterowane przez dział IT kontrolę i zostanie zintegrowanych z usługą Azure AD.
+### <a name="cloud-discovery-find-which-saas-apps-are-being-used-in-your-organization"></a>Rozwiązania cloud Discovery: Znajdź aplikacje SaaS, które są używane w organizacji
+Rozwiązania cloud Discovery analizuje dzienników ruchu sieciowego dla wykazu aplikacji w chmurze firmy Microsoft Cloud App Security przez ponad 16 000 chmury, które aplikacje, które są pozycjonowane i oceniane w oparciu więcej niż 70 czynników ryzyka, aby zapewnić trwającą wgląd w chmurze użyć, cień IT oraz ryzykiem Cienia stanowi IT w Twojej organizacji.
 
 | Przewodnik artykułu |  |
 |:---:| --- |
-| Ogólne omówienie jak to działa |[Znajdowanie niezatwierdzona aplikacji w chmurze z usługi Cloud App Discovery](manage-apps/cloud-app-discovery.md) |
-| Bardziej zgłębić temat do jej działania, o odpowiedzi na pytania dotyczące ochrony prywatności |[Bezpieczeństwo i zagadnienia dotyczące ochrony prywatności](active-directory-cloudappdiscovery-security-and-privacy-considerations.md) |
-| Często zadawane pytania |[Często zadawane pytania dotyczące Cloud App Discovery](http://social.technet.microsoft.com/wiki/contents/articles/24037.cloud-app-discovery-frequently-asked-questions.aspx) |
-| Samouczki dotyczące wdrażania Cloud App Discovery |[Przewodnik dotyczący wdrażania zasad grupy](http://social.technet.microsoft.com/wiki/contents/articles/30965.cloud-app-discovery-group-policy-deployment-guide.aspx)<br /><br />[Przewodnik wdrażania programu System Center](http://social.technet.microsoft.com/wiki/contents/articles/30968.cloud-app-discovery-system-center-deployment-guide.aspx)<br /><br />[Instalowanie na serwerach Proxy z portami niestandardowe](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md) |
-| Dziennik zmian dla aktualizacji agenta Cloud App Discovery |[Dziennik zmian](http://social.technet.microsoft.com/wiki/contents/articles/24616.cloud-app-discovery-agent-changelog.aspx) |
+| Ogólne omówienie jak to działa |[Konfigurowanie rozwiązania Cloud Discovery](/cloud-app-security/set-up-cloud-discovery) |
 
-Usługa cloud App Discovery jest [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) funkcji.
 
 ### <a name="automatically-provision-and-deprovision-user-accounts-in-saas-apps"></a>Automatycznie udostępnić i anulowanie zastrzeżenia kont użytkowników w aplikacji SaaS
 Umożliwia automatyzację tworzenia, obsługi i usuwania tożsamości użytkowników w aplikacji SaaS, takich jak Dropbox, Salesforce, ServiceNow i inne. Zgodne i synchronizowanie istniejących tożsamości między usługą Azure AD i SaaS aplikacji i kontroli dostępu przez wyłączenie konta automatycznie, gdy użytkownicy opuszczają organizację.
@@ -160,9 +155,9 @@ Aby ułatwić zarządzanie, kto ma dostęp do określonych zasobów, usługi Azu
 
 | Przewodnik artykułu |  |
 |:---:| --- |
-| Omówienie funkcji zarządzania dostęp do usługi Azure AD |[Wprowadzenie do zarządzania dostępem do aplikacji](manage-apps/what-is-access-management.md)<br /><br />[Jak działa Zarządzanie dostępu w usłudze Azure AD](active-directory-manage-groups.md)<br /><br />[Jak używać grup do zarządzania dostępem do aplikacji SaaS](active-directory-accessmanagement-group-saasapps.md) |
+| Omówienie funkcji zarządzania dostęp do usługi Azure AD |[Wprowadzenie do zarządzania dostępem do aplikacji](manage-apps/what-is-access-management.md)<br /><br />[Jak działa Zarządzanie dostępu w usłudze Azure AD](fundamentals/active-directory-manage-groups.md)<br /><br />[Jak używać grup do zarządzania dostępem do aplikacji SaaS](active-directory-accessmanagement-group-saasapps.md) |
 | Włącz samoobsługowe zarządzanie aplikacji i grup |[Zarządzanie aplikacjami samoobsługi](active-directory-self-service-application-access.md)<br /><br />[Zarządzanie grupami samoobsługi](active-directory-accessmanagement-self-service-group-management.md) |
-| Instrukcje dotyczące konfigurowania grup w usłudze Azure AD |[Tworzenie grup zabezpieczeń](active-directory-groups-create-azure-portal.md)<br /><br />[Jak wyznaczyć właścicielami grupy](active-directory-accessmanagement-managing-group-owners.md)<br /><br />[Jak używać grupie "Wszyscy użytkownicy"](active-directory-accessmanagement-dedicated-groups.md) |
+| Instrukcje dotyczące konfigurowania grup w usłudze Azure AD |[Tworzenie grup zabezpieczeń](fundamentals/active-directory-groups-create-azure-portal.md)<br /><br />[Jak wyznaczyć właścicielami grupy](fundamentals/active-directory-accessmanagement-managing-group-owners.md)<br /><br />[Jak używać grupie "Wszyscy użytkownicy"](active-directory-accessmanagement-dedicated-groups.md) |
 | Użyj grup dynamicznych, które automatycznie wypełnić członkostwa grupy przy użyciu reguł członkostwa na podstawie atrybutu |[Członkostwa w grupie dynamiczne: Zaawansowanych reguł](active-directory-groups-dynamic-membership-azure-portal.md)<br /><br />[Rozwiązywanie problemów z członkostwa w grupach dynamiczne](active-directory-accessmanagement-troubleshooting.md) |
 
 Zarządzanie dostępem na podstawie grupy aplikacji jest dostępna dla [Azure AD podstawowa](https://azure.microsoft.com/pricing/details/active-directory/) i [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/). Samoobsługowe zarządzanie grupami, zarządzanie aplikacjami samoobsługi i grupami dynamicznymi [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) funkcji.
@@ -205,7 +200,7 @@ Azure Active Directory oferuje kilka raporty i alerty ułatwiają monitorowanie 
 Aby zobaczyć, które raporty są dołączone do różnych wersjach usługi Azure Active Directory, [kliknij tutaj](active-directory-view-access-usage-reports.md).
 
 ## <a name="see-also"></a>Zobacz także
-[Co to jest usługa Azure Active Directory?](active-directory-whatis.md)
+[Co to jest usługa Azure Active Directory?](fundamentals/active-directory-whatis.md)
 
 [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/)
 

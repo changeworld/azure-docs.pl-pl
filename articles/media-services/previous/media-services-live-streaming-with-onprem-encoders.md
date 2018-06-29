@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: b01e4498e63ab989b0b78246636cba50ed4f82d6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d08ac9f2cbdf98493b3132fa9dd3a3e973576451
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33943216"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098821"
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>Transmisja strumieniowa za pomocą koderów lokalnych, które tworzą strumienie o różnych szybkościach transmisji bitów na żywo
 
@@ -146,7 +146,7 @@ Kanały zapewniają punktu końcowego podglądu (adres URL w wersji zapoznawczej
 
 Po utworzeniu kanału możesz uzyskać adres URL w wersji zapoznawczej. Aby móc uzyskać adres URL, kanał nie muszą być w **systemem** stanu. Po uruchomieniu kanału wprowadzania danych można wyświetlić podgląd strumienia.
 
-Obecnie strumienia w wersji zapoznawczej mogą być dostarczane tylko w pofragmentowane MP4 (Smooth Streaming) formacie, bez względu na określony typ danych wejściowych. Można użyć [Smooth Streaming Monitor kondycji](http://smf.cloudapp.net/healthmonitor) player do testowania smooth stream. Umożliwia także player, który znajduje się w portalu Azure, aby wyświetlić strumienia.
+Obecnie strumienia w wersji zapoznawczej mogą być dostarczane tylko w pofragmentowane MP4 (Smooth Streaming) formacie, bez względu na określony typ danych wejściowych. Można użyć [Smooth Streaming Monitor kondycji](http://playready.directtaps.net/smoothstreaming/) player do testowania smooth stream. Umożliwia także player, który znajduje się w portalu Azure, aby wyświetlić strumienia.
 
 #### <a name="allowed-ip-addresses"></a>Dozwolonych adresów IP
 Można zdefiniować adresy IP, które mogą łączyć się z punktem końcowym w wersji zapoznawczej. Jeżeli nie określono żadnych adresów IP, adres IP jest dozwolone. Dozwolonych adresów IP można określić jedną z następujących czynności:

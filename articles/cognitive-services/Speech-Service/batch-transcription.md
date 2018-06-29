@@ -9,12 +9,12 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: 01bbf4ca19b0fb702aa76d5149fb0e38389fe455
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
-ms.translationtype: HT
+ms.openlocfilehash: cf58f676be52aa16ce6de59c3566613c7ee9276d
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054827"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084086"
 ---
 # <a name="batch-transcription"></a>Przekształcenia partii
 
@@ -40,7 +40,7 @@ WAV |  Stereo  |
 
 Stereo strumieni audio przekształcania partii podzieli lewy i prawy kanał podczas zapisu. Każdy dwa pliki JSON z wynikiem są tworzone z jednego kanału. Sygnatury czasowe na utterance umożliwiają deweloperom tworzenie uporządkowanego wykaz końcowego. W poniższym przykładzie JSON zawierają dane wyjściowe kanału.
 
-    ```
+```json
        {
         "recordingsUrl": "https://mystorage.blob.core.windows.net/cris-e2e-datasets/TranscriptionsDataset/small_sentence.wav?st=2018-04-19T15:56:00Z&se=2040-04-21T15:56:00Z&sp=rl&sv=2017-04-17&sr=b&sig=DtvXbMYquDWQ2OkhAenGuyZI%2BYgaa3cyvdQoHKIBGdQ%3D",
         "resultsUrls": {
@@ -53,7 +53,7 @@ Stereo strumieni audio przekształcania partii podzieli lewy i prawy kanał podc
         "status": "Succeeded",
         "locale": "en-US"
     },
-    ```
+```
 
 > [!NOTE]
 > Przekształcenia interfejsu API partii jest przy użyciu usługi REST żądanych transcriptions, stanu i skojarzone wyników. Jest on oparty na platformie .NET i nie ma żadnych zależności zewnętrzne. W następnej sekcji opisano, jak będą wykorzystywane.
@@ -77,7 +77,24 @@ Zgodnie z wszystkimi funkcjami usługi mowy Unified, użytkownik musi utworzyć 
 
 ## <a name="sample-code"></a>Przykładowy kod
 
-Użyj interfejsu API jest dość proste do przodu. Poniższy przykładowy kod ma można dostosować za pomocą klucza subskrypcji i klucz interfejsu API.
+Użyj interfejsu API jest dość proste do przodu. Poniższy przykładowy kod musi można dostosować za pomocą klucza subskrypcji i klucz interfejsu API, który włącza umożliwia deweloperowi do uzyskania tokenu elementu nośnego jako kod następujący kod fragment kodu przedstawia:
+
+```cs
+    public static async Task<CrisClient> CreateApiV1ClientAsync(string username, string key, string hostName, int port)
+        {
+            var client = new HttpClient();
+            client.Timeout = TimeSpan.FromMinutes(25);
+            client.BaseAddress = new UriBuilder(Uri.UriSchemeHttps, hostName, port).Uri;
+
+            var tokenProviderPath = "/oauth/ctoken";
+            var clientToken = await CreateClientTokenAsync(client, hostName, port, tokenProviderPath, username, key).ConfigureAwait(false);
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", clientToken.AccessToken);
+
+            return new CrisClient(client);
+        }
+```
+
+Po uzyskaniu tokenu deweloper musi zmiennoprzecinkową identyfikatora Uri połączenia SAS wskazuje plik dźwiękowy wymagających zapisu. Pozostałe kod po prostu iteruje stan i wyświetla wyniki.
 
 ```cs
    static async Task TranscribeAsync()
@@ -93,7 +110,7 @@ Użyj interfejsu API jest dość proste do przodu. Poniższy przykładowy kod ma
             var newLocation = 
                 await client.PostTranscriptionAsync(
                     "<selected locale i.e. en-us>", // Locale 
-                    "<your subscripition key>", // Subscription Key
+                    "<your subscription key>", // Subscription Key
                     new Uri("<SAS URI to your file>")).ConfigureAwait(false);
 
             var transcription = await client.GetTranscriptionAsync(newLocation).ConfigureAwait(false);
@@ -146,7 +163,7 @@ Bieżący kod przykładowy nie określa żadnych niestandardowych modeli. Usług
 Jeśli jeden nie chce używać linii bazowej, jeden musi przejść pomyślnie identyfikatory modelu dla modeli zarówno akustycznego i języka.
 
 > [!NOTE]
-> Dla linii bazowej przekształcania użytkownik nie ma zadeklarować punkty końcowe modeli linii bazowej. Jeśli użytkownik chce używać niestandardowych modeli on będzie musiał podać ich identyfikatorów punkty końcowe jako [próbki](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI). Jeśli użytkownik chce używać akustycznego linii bazowej z modelem języka linii bazowej następnie on tylko musi zadeklarować identyfikatora modelu niestandardowe punktu końcowego. Wewnętrznie naszym systemie zorientować się modelu linii bazowej partnera (można go akustycznego lub języka) i użyj jej fullfill żądań zapisu.
+> Dla linii bazowej przekształcania użytkownik nie ma zadeklarować punkty końcowe modeli linii bazowej. Jeśli użytkownik chce używać niestandardowych modeli on będzie musiał podać ich identyfikatorów punkty końcowe jako [próbki](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI). Jeśli użytkownik chce używać akustycznego linii bazowej z modelem języka linii bazowej następnie on tylko musi zadeklarować identyfikatora modelu niestandardowe punktu końcowego. Wewnętrznie naszym systemie zorientować się modelu linii bazowej partnera (można go akustycznego lub język) i używać, aby wykonać żądanie zapisu.
 
 ### <a name="supported-storage"></a>Obsługiwanego magazynu
 

@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: f85772aa74e876764181330b6d29c4f8d2b48508
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: b9298b081baf94350ab19a5d9a8af2705327eed6
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37102374"
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>Rozpoczynanie pracy z przykładem bazy danych Apache HBase w usłudze HDInsight
 
@@ -34,7 +35,7 @@ Przed rozpoczęciem prób korzystania z tego przykładu bazy danych HBase należ
 * [Program curl](http://curl.haxx.se/download.html).
 
 ## <a name="create-hbase-cluster"></a>Tworzenie klastra HBase
-W poniższej procedurze użyto szablonu usługi Azure Resource Manager do utworzenia klastra HBase i zależnego domyślnego konta usługi Azure Storage. Aby zapoznać się z parametrami używanymi w tej procedurze oraz innymi metodami tworzenia klastra, zobacz temat [Tworzenie opartych na systemie Linux klastrów Hadoop w usłudze HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
+W poniższej procedurze użyto szablonu usługi Azure Resource Manager do utworzenia klastra HBase i zależnego domyślnego konta usługi Azure Storage. Aby zapoznać się z parametrami używanymi w tej procedurze oraz innymi metodami tworzenia klastra, zobacz temat [Tworzenie opartych na systemie Linux klastrów Hadoop w usłudze HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Aby uzyskać więcej informacji na temat używania Data Lake magazynu Gen2, zobacz [Szybki Start: Ustawianie klastrów w usłudze HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
 1. Kliknij poniższy obraz, aby otworzyć szablon w usłudze Azure Portal. Szablon znajduje się w [szablonach szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/).
    
@@ -42,7 +43,7 @@ W poniższej procedurze użyto szablonu usługi Azure Resource Manager do utworz
 2. W bloku **Wdrożenie niestandardowe** wprowadź następujące wartości:
    
    * **Subskrypcja**: wybierz subskrypcję platformy Azure używaną do utworzenia klastra.
-   * **Grupa zasobów**: utwórz grupę usługi Azure Resource Management lub użyj istniejącej.
+   * **Grupa zasobów**: tworzenie zasobów Azure grupy zarządzania lub użyć istniejącego.
    * **Lokalizacja**: określ lokalizację grupy zasobów. 
    * **ClusterName**: wprowadź nazwę klastra HBase.
    * **Nazwa logowania i hasło klastra**: domyślna nazwa logowania to **admin**.

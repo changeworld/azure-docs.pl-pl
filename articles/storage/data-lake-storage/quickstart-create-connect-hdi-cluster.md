@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 6707610fc3410eab6eb2985c7d8a0ef821354689
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
-ms.translationtype: HT
+ms.openlocfilehash: 9e986507269d9d7d8822e6f6088901be7d92edd8
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062083"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096557"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>Szybki Start: Ustawianie klastrów w usłudze HDInsight
 
@@ -117,7 +117,7 @@ Mimo że instalacji lokalnej platformy Hadoop używa systemu Distributed plików
 
 Podczas konfigurowania dla domyślnego punktu końcowego magazynu należy określić usługi Data Lake Storage. Magazyn domyślny zawiera aplikacji i systemu dzienników. Opcjonalnie można określić dodatkowe połączone konta usługi Azure Data Lake Storage, które mogą uzyskiwać dostęp do klastra. Klaster usługi HDInsight i kont magazynu zależnego musi być w tej samej lokalizacji platformy Azure.
 
-![Ustawienia magazynu klastra: zgodnego systemem plików HDFS punkty końcowe usługi storage](media/quickstart-create-connect-hdi-cluster/hdinsight-cluster-creation-storage-TEMP.png)
+![Ustawienia magazynu klastra: zgodnego systemem plików HDFS punkty końcowe usługi storage](media/quickstart-create-connect-hdi-cluster/hdinsight-cluster-creation-storage2.png)
 
 > [!IMPORTANT]
 > Upewnij się, **wyłączyć dostęp do usługi Data Lake Store**. To ustawienie dotyczy stary *usługi Data Lake Store* funkcje i musi być wyłączona, aby *usługi Data Lake Storage* funkcje, aby działać poprawnie.

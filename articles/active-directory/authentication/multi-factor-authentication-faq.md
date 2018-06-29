@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 226400c6da5db589db6ce2f1887c3e96cf9e1f14
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 2b006976aef59c55ccb51362e05ceb4275602fd1
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869873"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096496"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Często zadawane pytania dotyczące usługi Azure Multi-Factor Authentication
 
@@ -131,7 +131,7 @@ Aby uniemożliwić nieautoryzowany dostęp, Usuń wszystkie użytkownika hasła 
 
 **Pytanie: co zrobić, jeśli użytkownik nie może zalogować się do aplikacji niekorzystających z przeglądarki?**
 
-Jeśli Twoja organizacja nadal korzysta starszych klientów, a [dozwolone stosowanie haseł aplikacji](howto-mfa-mfasettings.md#app-passwords), a następnie użytkownicy nie logują się do tych starszych klientów z swoją nazwę użytkownika i hasło. Zamiast tego należy [skonfigurować hasła aplikacji](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-app-passwords.md). Użytkownikom należy wyczyścić (Usuń) informacje logowania, uruchom ponownie aplikację, a następnie zaloguj się przy użyciu swoją nazwę użytkownika i *hasła aplikacji* zamiast ich prawidłowe hasło.
+Jeśli Twoja organizacja nadal korzysta starszych klientów, a [dozwolone stosowanie haseł aplikacji](howto-mfa-mfasettings.md#app-passwords), a następnie użytkownicy nie logują się do tych starszych klientów z swoją nazwę użytkownika i hasło. Zamiast tego należy [skonfigurować hasła aplikacji](end-user/current/multi-factor-authentication-end-user-app-passwords.md). Użytkownikom należy wyczyścić (Usuń) informacje logowania, uruchom ponownie aplikację, a następnie zaloguj się przy użyciu swoją nazwę użytkownika i *hasła aplikacji* zamiast ich prawidłowe hasło.
 
 Jeśli Twoja organizacja nie ma starszych klientów, należy nie zezwalaj użytkownikom na tworzenie haseł aplikacji.
 

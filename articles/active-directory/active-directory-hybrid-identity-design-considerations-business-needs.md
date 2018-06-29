@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 06/27/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 68a7e71cf374f10b4c5ced3e64da36138b0d2e4d
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: a641464e04421b90de15cd953bb8a0fbf9b687d3
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34800728"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084726"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>Określenie wymagań dotyczących tożsamości dla rozwiązania z tożsamością hybrydową
 Pierwszy krok w projektowaniu rozwiązania z tożsamością hybrydową jest ustalenie wymagań dotyczących organizacji biznesowych, która będzie wykorzystanie tego rozwiązania.  Tożsamość hybrydowa uruchamia rolę pomocniczych (obsługuje on innych rozwiązań w chmurze, zapewniając uwierzytelniania) i przechodzi do mają nowe, ciekawe funkcje, które odblokować nowych obciążeń dla użytkowników.  Te obciążenia lub usługi, które chcesz przyjąć dla użytkowników będzie określać wymagania dotyczące projektowania tożsamości hybrydowej.  Te usługi i obciążeń należy wykorzystać tożsamość hybrydowa lokalnie i w chmurze.  
@@ -58,7 +58,7 @@ Należy mieć świadomość usługi w chmurze, które firma może mieć. Bardzo 
 * Trwa tej integracji w środowisku produkcyjnym lub jest on pilotażu?
 
 > [!NOTE]
-> Jeśli nie masz dokładne mapowania wszystkich aplikacji i usług w chmurze, można użyć narzędzia Cloud App Discovery. To narzędzie można udostępnić dział IT wgląd w Twojej organizacji wszystkie działalności biznesowej i użytkownika aplikacji w chmurze. Znacznie ułatwia to odkrywanie działań IT w organizacji, w tym szczegółów wzorów użytkowania oraz wszystkich użytkowników uzyskujących dostęp do aplikacji w chmurze. Aby uzyskać wstępne informacje, zobacz [Cloud app discovery](manage-apps/cloud-app-discovery.md).
+> Rozwiązania cloud Discovery analizuje dzienników ruchu sieciowego dla wykazu aplikacji w chmurze firmy Microsoft Cloud App Security przez ponad 16 000 chmury, które aplikacje, które są pozycjonowane i oceniane w oparciu więcej niż 70 czynników ryzyka, aby zapewnić trwającą wgląd w chmurze użyć, cień IT oraz ryzykiem Cienia stanowi IT w Twojej organizacji. Aby uzyskać wstępne informacje, zobacz [konfigurowanie rozwiązania Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
 > 
 > 
 

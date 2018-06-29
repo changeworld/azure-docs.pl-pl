@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/24/2018
 ms.author: tdykstra
-ms.openlocfilehash: 5e7e6608003b365d5516ca2e94a51c0710ad1125
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
-ms.translationtype: HT
+ms.openlocfilehash: 305f7a54e290b8628401c21f033f8be7017d4a91
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061357"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083869"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure funkcje wyzwalaczy i powiązań pojęcia
 
@@ -37,62 +37,6 @@ Wyzwalaczy i powiązań pozwalają uniknąć hardcoding szczegółowe informacje
 Podczas opracowywania funkcji przy użyciu portalu Azure, wyzwalaczy i powiązań są konfigurowane w *function.json* pliku. Portal zawiera interfejsu użytkownika dla tej konfiguracji, ale plik można edytować bezpośrednio przez zmianę na **Zaawansowany edytor**.
 
 Podczas opracowywania funkcji za pomocą programu Visual Studio do tworzenia biblioteki klas, skonfiguruj wyzwalaczy i powiązań przez dekoracji parametry z atrybutami i metod.
-
-## <a name="supported-bindings"></a>Obsługiwane powiązania
-
-[!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
-
-Aby uzyskać informacje o tym, które są w wersji zapoznawczej powiązań, lub są zatwierdzone do użycia w środowisku produkcyjnym, zobacz [obsługiwanych języków](supported-languages.md).
-
-## <a name="register-binding-extensions"></a>Zarejestruj rozszerzenia powiązania
-
-W niektórych środowiskach programistycznych, należy jawnie *zarejestrować* powiązanie, którego chcesz użyć. Rozszerzenia powiązania znajdują się w pakietach NuGet, a aby zarejestrować rozszerzenie, należy zainstalować pakiet. Poniższa tabela wskazuje, kiedy i jak zarejestrować rozszerzenia powiązania.
-
-|Środowisko deweloperskie |Rejestracja<br/> w funkcjach 1.x  |Rejestracja<br/> w funkcjach 2.x  |
-|---------|---------|---------|
-|Azure Portal|Automatyczny|[Automatyczny z monitem](#azure-portal-development)|
-|Lokalne za pomocą narzędzi podstawowych funkcji platformy Azure|Automatyczny|[Użyj polecenia podstawowych narzędzi interfejsu wiersza polecenia](#local-development-azure-functions-core-tools)|
-|Biblioteki klas C# za pomocą programu Visual Studio 2017 r.|[Użyj narzędzia NuGet](#c-class-library-with-visual-studio-2017)|[Użyj narzędzia NuGet](#c-class-library-with-visual-studio-2017)|
-|Biblioteki klas C# za pomocą programu Visual Studio Code|ND|[Użyj platformy .NET Core interfejsu wiersza polecenia](#c-class-library-with-visual-studio-code)|
-
-Wyjątki, które nie wymagają rejestracji jawne, ponieważ są one automatycznie rejestrowane we wszystkich wersjach i środowisk są następujące typy powiązań: HTTP, czasomierza i usługi Azure Storage (obiekty BLOB, kolejek i tabel). 
-
-### <a name="azure-portal-development"></a>Programowanie portalu Azure
-
-Podczas tworzenia funkcji lub dodać powiązanie, zostanie wyświetlony monit, gdy rozszerzenie wyzwalacza lub powiązanie wymaga rejestracji. Odpowiadanie na ten monit, klikając **zainstalować** do zarejestrowania rozszerzenia. Instalacja może trwać do 10 minut na plan zużycia.
-
-Każdego rozszerzenia, należy zainstalować jeden raz dla danej funkcji aplikacji. 
-
-### <a name="local-development-azure-functions-core-tools"></a>Lokalne działania projektowe Azure funkcje podstawowe narzędzia
-
-[!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
-
-<a name="local-csharp"></a>
-### <a name="c-class-library-with-visual-studio-2017"></a>Biblioteki klas C# z programu Visual Studio 2017 r.
-
-W **programu Visual Studio 2017**, można instalować pakiety z konsoli Menedżera pakietów przy użyciu [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) polecenia, jak pokazano w poniższym przykładzie:
-
-```powershell
-Install-Package Microsoft.Azure.WebJobs.ServiceBus --Version <target_version>
-```
-
-Nazwa pakietu do użycia dla danego powiązania znajduje się w artykule odwołania dla tego powiązania. Na przykład zobacz [pakietów w dalszej części artykułu odwołanie powiązania usługi Service Bus](functions-bindings-service-bus.md#packages---functions-1x).
-
-Zastąp `<target_version>` w przykładzie z określoną wersją pakietu, takich jak `3.0.0-beta5`. Prawidłowe wersje są wyświetlane na stronach poszczególnych pakietów w [NuGet.org](https://nuget.org). Wersji głównych, które odpowiadają środowisko uruchomieniowe Functions 1.x lub 2.x podano w artykule dla wiązania.
-
-### <a name="c-class-library-with-visual-studio-code"></a>Biblioteki klas C# z kodem Visual Studio
-
-W **Visual Studio Code**, można instalować pakiety z wiersza polecenia przy użyciu [dotnet Dodaj pakiet](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) poleceń w .NET Core interfejsu wiersza polecenia, jak pokazano w poniższym przykładzie:
-
-```terminal
-dotnet add package Microsoft.Azure.WebJobs.ServiceBus --version <target_version>
-```
-
-.NET Core interfejsu wiersza polecenia można tylko dla usługi Azure Functions programowanie 2.x.
-
-Nazwa pakietu do użycia dla danego powiązania znajduje się w artykule odwołania dla tego powiązania. Na przykład zobacz [pakietów w dalszej części artykułu odwołanie powiązania usługi Service Bus](functions-bindings-service-bus.md#packages---functions-1x).
-
-Zastąp `<target_version>` w przykładzie z określoną wersją pakietu, takich jak `3.0.0-beta5`. Prawidłowe wersje są wyświetlane na stronach poszczególnych pakietów w [NuGet.org](https://nuget.org). Wersji głównych, które odpowiadają środowisko uruchomieniowe Functions 1.x lub 2.x podano w artykule dla wiązania.
 
 ## <a name="example-trigger-and-binding"></a>Przykład wyzwalacza i powiązania
 
@@ -202,6 +146,66 @@ W bibliotece klas, taki sam wyzwalacz i informacje o powiązaniu &mdash; nazwy k
      public string MobileNumber { get; set; }
  }
 ```
+
+## <a name="supported-bindings"></a>Obsługiwane powiązania
+
+[!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
+
+Aby uzyskać informacje o tym, które są w wersji zapoznawczej powiązań, lub są zatwierdzone do użycia w środowisku produkcyjnym, zobacz [obsługiwanych języków](supported-languages.md).
+
+## <a name="register-binding-extensions"></a>Zarejestruj rozszerzenia powiązania
+
+W niektórych środowiskach programistycznych, należy jawnie *zarejestrować* powiązanie, którego chcesz użyć. Rozszerzenia powiązania znajdują się w pakietach NuGet, a aby zarejestrować rozszerzenie, należy zainstalować pakiet. Poniższa tabela wskazuje, kiedy i jak zarejestrować rozszerzenia powiązania.
+
+|Środowisko deweloperskie |Rejestracja<br/> w funkcjach 1.x  |Rejestracja<br/> w funkcjach 2.x  |
+|---------|---------|---------|
+|Azure Portal|Automatyczny|[Automatyczny z monitem](#azure-portal-development)|
+|Lokalne za pomocą narzędzi podstawowych funkcji platformy Azure|Automatyczny|[Użyj polecenia podstawowych narzędzi interfejsu wiersza polecenia](#local-development-azure-functions-core-tools)|
+|Biblioteki klas C# za pomocą programu Visual Studio 2017 r.|[Użyj narzędzia NuGet](#c-class-library-with-visual-studio-2017)|[Użyj narzędzia NuGet](#c-class-library-with-visual-studio-2017)|
+|Biblioteki klas C# za pomocą programu Visual Studio Code|ND|[Użyj platformy .NET Core interfejsu wiersza polecenia](#c-class-library-with-visual-studio-code)|
+
+Wyjątki, które nie wymagają rejestracji jawne, ponieważ są one automatycznie rejestrowane we wszystkich wersjach i środowisk są następujące typy powiązań: HTTP, czasomierza i usługi Azure Storage (obiekty BLOB, kolejek i tabel). 
+
+### <a name="azure-portal-development"></a>Programowanie portalu Azure
+
+Ta sekcja dotyczy tylko na funkcje 2.x. Rozszerzenia powiązania nie musi być jawnie zarejestrowana w funkcji 1.x.
+
+Podczas tworzenia funkcji lub dodać powiązanie, zostanie wyświetlony monit, gdy rozszerzenie wyzwalacza lub powiązanie wymaga rejestracji. Odpowiadanie na ten monit, klikając **zainstalować** do zarejestrowania rozszerzenia. Instalacja może trwać do 10 minut na plan zużycia.
+
+Każdego rozszerzenia, należy zainstalować jeden raz dla danej funkcji aplikacji. 
+
+### <a name="local-development-azure-functions-core-tools"></a>Lokalne działania projektowe Azure funkcje podstawowe narzędzia
+
+Ta sekcja dotyczy tylko na funkcje 2.x. Rozszerzenia powiązania nie musi być jawnie zarejestrowana w funkcji 1.x.
+
+[!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
+
+<a name="local-csharp"></a>
+### <a name="c-class-library-with-visual-studio-2017"></a>Biblioteki klas C# z programu Visual Studio 2017 r.
+
+W **programu Visual Studio 2017**, można instalować pakiety z konsoli Menedżera pakietów przy użyciu [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) polecenia, jak pokazano w poniższym przykładzie:
+
+```powershell
+Install-Package Microsoft.Azure.WebJobs.ServiceBus --Version <target_version>
+```
+
+Nazwa pakietu do użycia dla danego powiązania znajduje się w artykule odwołania dla tego powiązania. Na przykład zobacz [pakietów w dalszej części artykułu odwołanie powiązania usługi Service Bus](functions-bindings-service-bus.md#packages---functions-1x).
+
+Zastąp `<target_version>` w przykładzie z określoną wersją pakietu, takich jak `3.0.0-beta5`. Prawidłowe wersje są wyświetlane na stronach poszczególnych pakietów w [NuGet.org](https://nuget.org). Wersji głównych, które odpowiadają środowisko uruchomieniowe Functions 1.x lub 2.x podano w artykule dla wiązania.
+
+### <a name="c-class-library-with-visual-studio-code"></a>Biblioteki klas C# z kodem Visual Studio
+
+W **Visual Studio Code**, można instalować pakiety z wiersza polecenia przy użyciu [dotnet Dodaj pakiet](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) poleceń w .NET Core interfejsu wiersza polecenia, jak pokazano w poniższym przykładzie:
+
+```terminal
+dotnet add package Microsoft.Azure.WebJobs.ServiceBus --version <target_version>
+```
+
+.NET Core interfejsu wiersza polecenia można tylko dla usługi Azure Functions programowanie 2.x.
+
+Nazwa pakietu do użycia dla danego powiązania znajduje się w artykule odwołania dla tego powiązania. Na przykład zobacz [pakietów w dalszej części artykułu odwołanie powiązania usługi Service Bus](functions-bindings-service-bus.md#packages---functions-1x).
+
+Zastąp `<target_version>` w przykładzie z określoną wersją pakietu, takich jak `3.0.0-beta5`. Prawidłowe wersje są wyświetlane na stronach poszczególnych pakietów w [NuGet.org](https://nuget.org). Wersji głównych, które odpowiadają środowisko uruchomieniowe Functions 1.x lub 2.x podano w artykule dla wiązania.
 
 ## <a name="binding-direction"></a>Kierunek powiązania
 

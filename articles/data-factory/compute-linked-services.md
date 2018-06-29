@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: douglasl
-ms.openlocfilehash: b4e8a2dba65973919d9716655c4fbb4d533b1c78
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 14cb59487788f272533fd7ec7eccf313654bf857
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824935"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082811"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Obliczenia bazy danych środowiskach obsługiwanych przez usługi fabryka danych Azure
 W tym artykule opisano różne środowiska obliczeniowe, w których można użyć do procesu lub przekształcenia danych. Podano również szczegółowe informacje o różnych konfiguracjach (na żądanie i użycie własnego) obsługiwane przez fabrykę danych podczas konfigurowania usług połączonych łączenia tych obliczeniowe środowisk do fabryki danych Azure.
@@ -106,7 +106,7 @@ Następujące JSON definiuje opartych na systemie Linux usługi HDInsight połą
 | linkedServiceName            | Azure połączonej usługi magazynu do użycia przez klaster na żądanie do przechowywania i przetwarzania danych. W tym samym regionie co konto usługi Azure Storage jest tworzenie klastra usługi HDInsight. Usługa Azure HDInsight ma ograniczenia całkowitej liczby rdzeni, których możesz użyć w każdym obsługiwanym przez nią regionie platformy Azure. Upewnij się, że masz wystarczająco dużo przydziały core w tym regionie Azure, aby spełnić wymagana wartość clusterSize. Aby uzyskać więcej informacji, zapoznaj się [Ustawianie klastrów w usłudze HDInsight Hadoop, Spark, Kafka i](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)<p>Obecnie nie można utworzyć klastra usługi HDInsight na żądanie, która używa usługi Azure Data Lake Store jako magazynu. Jeśli chcesz przechowywać dane wynikowe z HDInsight przetwarzania w usłudze Azure Data Lake Store, umożliwia działanie kopiowania skopiować dane z magazynu obiektów Blob Azure do usługi Azure Data Lake Store. </p> | Yes      |
 | clusterResourceGroup         | Klaster usługi HDInsight jest tworzony w tej grupie zasobów. | Yes      |
 | wartość TimeToLive                   | Limit czasu bezczynności klastra usługi HDInsight na żądanie. Określa, jak długo klastra usługi HDInsight na żądanie pozostaje aktywne po zakończeniu działania uruchamiania, jeśli w klastrze nie ma żadnych aktywnych działań. Minimalne dozwolone wartości to 5 minut (00: 05:00).<br/><br/>Na przykład jeśli uruchomienia działania trwa 6 minut i timetolive jest ustawiony na 5 minut, klaster pozostanie aktywności 5 minut po uruchomieniu 6 minut przetwarzania działania. Jeśli inny uruchamiania działania jest wykonywane z okna 6 minut, jednak jest przetwarzany przez tego samego klastra.<br/><br/>Tworzenie klastra usługi HDInsight na żądanie jest kosztowna operacja (może to potrwać pewien czas), użyj tak, to ustawienie jako potrzebne do zwiększenia wydajności fabryki danych przez ponowne użycie klastra usługi HDInsight na żądanie.<br/><br/>Jeśli wartość timetolive jest ustawiona na 0, klastra jest usuwany natychmiast po zakończeniu wykonywania działania. Natomiast jeśli ustawisz wysokiej wartości, klaster może pozostać bezczynny logowania na rozwiązywanie niektórych problemów z celem, ale może spowodować wysokich kosztów. Dlatego jest ważne, aby ustawić odpowiednią wartość, na podstawie Twoich potrzeb.<br/><br/>Jeśli skonfigurowana wartość timetolive właściwości wielu potoki można udostępniać wystąpienia klastra usługi HDInsight na żądanie. | Yes      |
-| clusterType                  | Typ klastra usługi HDInsight, który ma zostać utworzony. Dozwolone wartości to "hadoop" i "spark". Jeśli nie zostanie określony, wartością domyślną jest hadoop. | Nie       |
+| clusterType                  | Typ klastra usługi HDInsight, który ma zostać utworzony. Dozwolone wartości to "hadoop" i "spark". Jeśli nie zostanie określony, wartością domyślną jest hadoop. Pakiet zabezpieczeń organizacji włączono klaster nie jest obecnie obsługiwana | Nie       |
 | wersja                      | Wersja klastra usługi HDInsight. Jeśli nie zostanie określony, jest przy użyciu bieżącej wersji usługi HDInsight w zdefiniowanej wartości domyślnej. | Nie       |
 | hostSubscriptionId           | Identyfikator subskrypcji platformy Azure, używany do tworzenia klastra usługi HDInsight. Jeśli nie zostanie określony, używany identyfikator subskrypcji kontekst logowania do systemu Azure. | Nie       |
 | clusterNamePrefix           | Prefiks nazwy klastra HDI, sygnatura czasowa zostaną automatycznie dodane na końcu nazwy klastra| Nie       |
@@ -123,6 +123,10 @@ Następujące JSON definiuje opartych na systemie Linux usługi HDInsight połą
 
 > [!IMPORTANT]
 > HDInsight obsługuje wielu wersjach klastra Hadoop, które można wdrożyć. Każdy wybór wersji tworzy określonej wersji programu dystrybucji Hortonworks Data Platform (HDP) i zestaw składników, które są zawarte w tej dystrybucji. Lista obsługiwanych wersji usługi HDInsight przechowuje zaktualizowano w celu najnowsze składniki ekosystemu Hadoop i poprawki. Upewnij się, że zawsze odwołuje się do najnowsze informacje [HDInsight obsługiwanych wersji i typ systemu operacyjnego](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions) zapewnienie używasz obsługiwanej wersji usługi hdinsight. 
+>
+> 
+> [!IMPORTANT]
+> Obecnie usługa HDInsight połączonych usług nie obsługuje bazy danych HBase, zapytania interakcyjne (Hive LLAP), Storm i Enterprise z włączonymi zabezpieczeniami (przyłączonych do domeny) klastrów. 
 >
 > 
 
@@ -149,7 +153,7 @@ Uwierzytelnianie usługi głównej przez określenie następujących właściwo�
 | :---------------------- | :--------------------------------------- | :------- |
 | **servicePrincipalId**  | Określ identyfikator aplikacji klienta.     | Yes      |
 | **servicePrincipalKey** | Określ klucz aplikacji.           | Yes      |
-| **Dzierżawy**              | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można go pobrać, ustawiając kursor myszy w prawym górnym rogu portalu Azure. | Yes      |
+| **dzierżawy**              | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można go pobrać, ustawiając kursor myszy w prawym górnym rogu portalu Azure. | Yes      |
 
 ### <a name="advanced-properties"></a>Zaawansowane właściwości
 
@@ -295,6 +299,10 @@ Można utworzyć usługi Azure HDInsight połączony do zarejestrowania klastrem
 > [!IMPORTANT]
 > HDInsight obsługuje wielu wersjach klastra Hadoop, które można wdrożyć. Każdy wybór wersji tworzy określonej wersji programu dystrybucji Hortonworks Data Platform (HDP) i zestaw składników, które są zawarte w tej dystrybucji. Lista obsługiwanych wersji usługi HDInsight przechowuje zaktualizowano w celu najnowsze składniki ekosystemu Hadoop i poprawki. Upewnij się, że zawsze odwołuje się do najnowsze informacje [HDInsight obsługiwanych wersji i typ systemu operacyjnego](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions) zapewnienie używasz obsługiwanej wersji usługi hdinsight. 
 >
+> [!IMPORTANT]
+> Obecnie usługa HDInsight połączonych usług nie obsługuje bazy danych HBase, zapytania interakcyjne (Hive LLAP), Storm i Enterprise z włączonymi zabezpieczeniami (przyłączonych do domeny) klastrów. 
+>
+> 
 
 ## <a name="azure-batch-linked-service"></a>Usługa Azure partii połączone
 
@@ -481,7 +489,7 @@ Można utworzyć **Azure Databricks połączona usługa** zarejestrować Databri
 | type                 | Powinien mieć ustawioną właściwość type: **AzureDatabricks**. | Yes                                      |
 | domena               | Określ Region platformy Azure, odpowiednio oparte na obszaru roboczego Databricks. Przykład: https://eastus.azuredatabricks.net | Yes                                 |
 | accessToken          | Token dostępu jest wymagane dla fabryki danych do uwierzytelniania Azure Databricks. Token dostępu musi być uzyskane z obszaru roboczego databricks. Szczegółowe kroki, aby znaleźć tokenu dostępu można znaleźć [tutaj](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token)  | Yes                                       |
-| existingClusterId    | Identyfikator klastra z istniejącego klastra do uruchamiania wszystkich zadań na tym. Powinno to być już utworzonego klastra interaktywnego. Może być konieczne ręczne ponowne uruchomienie klastra, jeśli przestaje odpowiadać. Databricks sugeruje uruchomionych zadań na nowych klastrów zwiększa niezawodność. Identyfikator klastra można znaleźć interakcyjne klastra na Databricks -> obszar roboczy klastrów -> interaktywnego nazwa klastra -> Konfiguracja -> tagów. [więcej informacji](https://docs.databricks.com/user-guide/clusters/tags.html) | Nie 
+| existingClusterId    | Identyfikator klastra z istniejącego klastra do uruchamiania wszystkich zadań na tym. Powinno to być już utworzonego klastra interaktywnego. Może być konieczne ręczne ponowne uruchomienie klastra, jeśli przestaje odpowiadać. Databricks sugeruje uruchomionych zadań na nowych klastrów zwiększa niezawodność. Identyfikator klastra można znaleźć interakcyjne klastra na Databricks -> obszar roboczy klastrów -> interaktywnego nazwa klastra -> Konfiguracja -> tagów. [Więcej informacji](https://docs.databricks.com/user-guide/clusters/tags.html) | Nie 
 | newClusterVersion    | Wersja klastra Spark. Klaster zadania zostanie utworzony w databricks. | Nie  |
 | newClusterNumOfWorker| Liczba węzłów procesu roboczego, które powinny mieć tego klastra. Klaster ma jeden sterownika Spark i num_workers z modułów wykonujących dla danych całkowitych num_workers + 1 węzłów Spark. Ciąg sformatowany Int32, jak jest "1" oznacza numOfWorker 1 lub "1:10" oznacza automatycznego skalowania z 1 min i 10 jako max.  | Nie                |
 | newClusterNodeType   | To pole koduje za pośrednictwem pojedynczej wartości zasoby dostępne dla każdego z węzłów Spark, w tym klastrze. Na przykład Spark węzłów może być udostępniane i zoptymalizowane pod kątem pamięci lub obliczeniowych intensywnych obciążeń to pole jest wymagane dla nowego klastra                | Nie               |

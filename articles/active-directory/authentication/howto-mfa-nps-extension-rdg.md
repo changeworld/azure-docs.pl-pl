@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: fbca491e845ad96ecafc6afb5f40d46b99c047bf
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 19d602570337b101e4a5cf759fc56822313c631c
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33932102"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098009"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrowanie infrastruktury bramy usług pulpitu zdalnego przy użyciu rozszerzenia serwera zasad sieciowych (NPS) i Azure AD
 
@@ -34,7 +34,7 @@ Zazwyczaj organizacji, Użyj serwera zasad Sieciowych (RADIUS), aby uprościć i
 
 Organizacje można również zintegrować serwera NPS z usługą Azure MFA do zwiększenia poziomu bezpieczeństwa i zapewnienia wysokiego poziomu zgodności. Pomaga to zapewnić, że użytkownicy ustanowić weryfikacji dwuetapowej do logowania się do bramy usług pulpitu zdalnego. Aby użytkownicy mogli uzyskać dostęp użytkownik musi podać ich kombinacja nazwy użytkownika i hasła oraz informacje, które użytkownik ma w ich kontroli. Te informacje musi być zaufany i nie jest łatwo zduplikowany, takie jak numer telefonu komórkowego, numer telefonu stacjonarnego aplikacji na urządzeniu przenośnym i tak dalej.
 
-Wcześniej dostępności rozszerzenia serwera zasad Sieciowych na platformie Azure, klientów, którzy chcieliby implementuje weryfikację dwuetapową dla zintegrowanego środowiska serwera zasad Sieciowych i usługi Azure MFA było konfigurowania i konserwacji osobny serwer usługi MFA w środowisku lokalnym, zgodnie z opisem w [bramy usług pulpitu zdalnego i Azure przy użyciu usługi RADIUS serwera Multi-Factor Authentication](howto-mfaserver-nps-rdg.md).
+Wcześniej dostępności rozszerzenia serwera zasad Sieciowych na platformie Azure klientów, którzy chcieliby implementuje weryfikację dwuetapową dla zintegrowanego środowiska serwera zasad Sieciowych i usługi Azure MFA było konfigurowania i konserwacji osobny serwer usługi MFA w środowisku lokalnym, zgodnie z opisem w [ Zdalne bramy usług pulpitu i platformy Azure przy użyciu usługi RADIUS serwera Multi-Factor Authentication](howto-mfaserver-nps-rdg.md).
 
 Dostępność rozszerzenia serwera zasad Sieciowych na platformie Azure pozwala organizacjom wyboru do wdrożenia rozwiązania MFA lokalne lub rozwiązanie MFA oparte na chmurze do bezpiecznego uwierzytelniania klienta RADIUS.
 
@@ -95,7 +95,7 @@ Postępuj zgodnie z instrukcjami [wprowadzenie do korzystania z usługi Azure Mu
 ### <a name="configure-accounts-for-two-step-verification"></a>Konfigurowanie konta na potrzeby weryfikacji dwuetapowej
 Po włączeniu konta dla usługi MFA, nie możesz się zarejestrować do zasobów objętych zasady MFA, dopóki nie została pomyślnie skonfigurowana zaufanego urządzenia dla drugiego etapu uwierzytelniania i został uwierzytelniony przy użyciu weryfikacji dwuetapowej.
 
-Postępuj zgodnie z instrukcjami [co oznacza Azure Multi-Factor Authentication dla mnie?](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user.md) do zrozumienia i poprawnie skonfigurować urządzenia dla usługi MFA z kontem użytkownika.
+Postępuj zgodnie z instrukcjami [co oznacza Azure Multi-Factor Authentication dla mnie?](end-user/current/multi-factor-authentication-end-user.md) do zrozumienia i poprawnie skonfigurować urządzenia dla usługi MFA z kontem użytkownika.
 
 ## <a name="install-and-configure-nps-extension"></a>Instalowanie i Konfigurowanie rozszerzeń serwera NPS
 Ta sekcja zawiera instrukcje dotyczące konfigurowania infrastruktury usług pulpitu zdalnego do użycia usługi Azure MFA na potrzeby uwierzytelniania klienta z bramy usług pulpitu zdalnego.

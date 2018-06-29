@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a8ac62986eb7eb184ae6d102a956ee051e3aa88a
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
-ms.translationtype: HT
+ms.openlocfilehash: 3de93c06285f36353d91a66db975c0a579c1379c
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063514"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097448"
 ---
 # <a name="update-management-solution-in-azure"></a>Aktualizacja rozwiązania do zarządzania na platformie Azure
 
@@ -35,9 +35,9 @@ Na poniższym diagramie przedstawiono koncepcję zachowanie, a przepływ danych 
 
 ![Aktualizowanie przepływu procesów zarządzania](media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Po komputerze wykonuje skanowanie zgodności aktualizacji, agent przekazuje informacje zbiorcze Analiza dzienników Azure. Na komputerze z systemem Windows domyślnie skanowania zgodności jest wykonywane co 12 godzin. 
+Po komputerze wykonuje skanowanie zgodności aktualizacji, agent przekazuje informacje zbiorcze Analiza dzienników Azure. Na komputerze z systemem Windows domyślnie skanowania zgodności jest wykonywane co 12 godzin.
 
-Oprócz harmonogram skanowania w poszukiwaniu skanowanie pod kątem zgodności aktualizacji jest inicjowana w ciągu 15 minut po uruchomieniu MMA przed instalacją aktualizacji i po zainstalowaniu aktualizacji. 
+Oprócz harmonogram skanowania w poszukiwaniu skanowanie pod kątem zgodności aktualizacji jest inicjowana w ciągu 15 minut po uruchomieniu MMA przed instalacją aktualizacji i po zainstalowaniu aktualizacji.
 
 Dla komputera z systemem Linux domyślnie skanowania zgodności jest wykonywane co 3 godziny. Po uruchomieniu MMA agent skanowania zgodności jest inicjowana w ciągu 15 minut.
 
@@ -86,7 +86,7 @@ Agentów systemu Windows musi być skonfigurowana do komunikowania się z serwer
 
 #### <a name="linux"></a>Linux
 
-Dla systemu Linux komputer musi mieć dostęp do repozytorium aktualizacji. Repozytorium aktualizacji może być prywatny lub publiczny. Agenta Operations Management Suite (OMS) dla systemu Linux, który jest skonfigurowany pod kątem raportowania do wielu obszarów roboczych usługi Analiza dzienników nie jest obsługiwany w tym rozwiązaniu.
+Dla systemu Linux komputer musi mieć dostęp do repozytorium aktualizacji. Repozytorium aktualizacji może być prywatny lub publiczny. Protokołu TLS 1.1 i TLS 1.2 jest wymagany do interakcji z zarządzania aktualizacjami. Agenta Operations Management Suite (OMS) dla systemu Linux, który jest skonfigurowany pod kątem raportowania do wielu obszarów roboczych usługi Analiza dzienników nie jest obsługiwany w tym rozwiązaniu.
 
 Aby uzyskać informacje o sposobach instalowania agenta pakietu OMS dla systemu Linux i pobrać najnowszą wersję, zobacz [Operations Management Suite agenta dla systemu Linux](https://github.com/microsoft/oms-agent-for-linux). Aby uzyskać informacje o sposobie instalowania OMS agenta dla systemu Windows, temacie [Operations Management Suite agenta dla systemu Windows](../log-analytics/log-analytics-windows-agent.md).
 
@@ -213,11 +213,11 @@ Aby utworzyć nowe wdrożenie aktualizacji, wybierz **harmonogram wdrożenia akt
 |Name (Nazwa) |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
 |System operacyjny| Wybierz **Linux** lub **Windows**.|
 |Komputery do zaktualizowania |Wybierz zapisanego kryterium wyszukiwania lub **maszyny** z listy rozwijanej, a następnie wybierz poszczególne maszyny. |
-|Aktualizuj klasyfikacje|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne. CentOS nie obsługują tych poza pole.|
-|Aktualizacje do wykluczenia|Wprowadź aktualizacje, które mają zostać wykluczone. W systemie Windows, wprowadź artykułu KB bez **KB** prefiks. Dla systemu Linux wprowadź nazwę pakietu, lub użyj symbolu wieloznacznego.  |
+|Klasyfikacje aktualizacji|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne. CentOS nie obsługują tych poza pole.|
+|Aktualizacje, które mają zostać wykluczone|Wprowadź aktualizacje, które mają zostać wykluczone. W systemie Windows, wprowadź artykułu KB bez **KB** prefiks. Dla systemu Linux wprowadź nazwę pakietu, lub użyj symbolu wieloznacznego.  |
 |Ustawienia harmonogramu|Wybierz godzinę rozpoczęcia, a następnie wybierz opcję **raz** lub **cykliczny** cyklu.|| Okno obsługi |Liczba minut dla aktualizacji. Wartość nie może być mniejsza niż 30 minut lub więcej niż 6 godzin. |
 
-## <a name="update-classifications"></a>Aktualizuj klasyfikacje
+## <a name="update-classifications"></a>Klasyfikacje aktualizacji
 
 W poniższych tabelach przedstawiono klasyfikacje aktualizacji w przystawce Zarządzanie aktualizacji definicji dla każdej klasyfikacji.
 
@@ -253,7 +253,7 @@ Nie jest obecnie żadna metoda metoda obsługiwana umożliwiające dostępności
 
 Następujące adresy są wymagane w szczególności do zarządzania aktualizacjami. Dane na te adresy są przesyłane za pośrednictwem portu 443.
 
-|Azure Public  |Azure Government  |
+|Azure publicznego  |Azure Government  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
@@ -509,7 +509,7 @@ Wdrażanie aktualizacji przez aktualizację klasyfikacji nie działa na CentOS p
 
 Aby dowiedzieć się, jak rozwiązywać problemy z zarządzania aktualizacjami, zobacz [Rozwiązywanie problemów z zarządzaniem aktualizacji](troubleshoot/update-management.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Nadal samouczkiem, aby dowiedzieć się, jak zarządzanie aktualizacjami dla maszyn wirtualnych systemu Windows.
 

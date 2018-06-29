@@ -9,12 +9,12 @@ ms.component: linguistic-analysis
 ms.topic: article
 ms.date: 03/21/2016
 ms.author: davl
-ms.openlocfilehash: 4681098a0e56640e95463272be44f7432be26839
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 78e539f365728ad540308e9cfb07af44bf6d8fe7
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347045"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084046"
 ---
 # <a name="sentence-separation-and-tokenization"></a>Rozdzielenie zdanie i Tokenizacji
 
@@ -68,4 +68,4 @@ Ponadto istnieją bardziej nietypowe tokenów do reprezentowania skrótów, taki
 ## <a name="specification"></a>Specyfikacja
 
 Należy podjąć spójne decyzje dotyczące co obejmuje zdania i token.
-Firma Microsoft zależą od specyfikacji z [Penn Treebank](https://www.cis.upenn.edu/~treebank/) (niektóre dodatkowe szczegóły są dostępne w tym miejscu: [https://www.cis.upenn.edu/~treebank/tokenization.html]).
+Firma Microsoft zależą od specyfikacji z [Penn Treebank](https://catalog.ldc.upenn.edu/ldc99t42) (niektóre dodatkowe szczegóły są dostępne pod adresem ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html).

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
-ms.openlocfilehash: 2916252c08c599d2e528595a8cdf2abca8ea89a3
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 3715dcceb4330f6eaab01f49aee9d4d19663b62e
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36938450"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099669"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Podręcznik techniczny do szablonu Cortana analizy rozwiązania dla konserwacji predykcyjnej aerospace i innych firm
 
@@ -54,7 +54,7 @@ W poniższych sekcjach opisano elementy rozwiązania.
 ### <a name="synthetic-data-source"></a>Źródło danych syntetycznego
 W przypadku tego szablonu źródło danych używane jest generowana z aplikacją, która Pobierz i uruchom lokalnie, po pomyślnym wdrożeniu.
 
-Aby uzyskać instrukcje, aby pobrać i zainstalować tę aplikację, wybierz węzeł pierwszy, Generator danych konserwacji predykcyjnej, na diagramie szablon rozwiązania. Instrukcje znajdują się w pasku właściwości. Ta aplikacja źródła [Azure Event Hub](#azure-event-hub) usługi z punktów danych lub zdarzenia, używane w pozostałej części przepływu rozwiązania. To źródło danych jest określana na podstawie publicznie dostępnych danych z [repozytorium danych NASA](https://c3.nasa.gov/dashlink/resources/139/) przy użyciu [zestawu danych symulacji turbowentylatorowe aparat degradacji](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan).
+Aby uzyskać instrukcje, aby pobrać i zainstalować tę aplikację, wybierz węzeł pierwszy, Generator danych konserwacji predykcyjnej, na diagramie szablon rozwiązania. Instrukcje znajdują się w pasku właściwości. Ta aplikacja źródła [Azure Event Hub](#azure-event-hub) usługi z punktów danych lub zdarzenia, używane w pozostałej części przepływu rozwiązania. To źródło danych jest określana na podstawie publicznie dostępnych danych z [repozytorium danych NASA](https://c3.nasa.gov/dashlink/resources/139/) przy użyciu [zestawu danych symulacji turbowentylatorowe aparat degradacji](http://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan).
 
 Aplikacja generowania zdarzeń wypełnia Azure Event Hub tylko wtedy, gdy jest wykonywane na tym komputerze.  
 
@@ -82,7 +82,7 @@ Użyj [usługi Power BI](https://powerbi.microsoft.com) Aby wyświetlić pulpit 
 ## <a name="how-to-bring-in-your-own-data"></a>Jak przenieść własne dane
 W tej sekcji opisano dotyczące przywracania danych użytkownika na platformie Azure, a obszary wymagają zmian danych, które można przenosić w tej architekturze.
 
-Jest mało prawdopodobne, czy zestaw danych jest zgodna zestawu danych używany przez [zestawu danych symulacji degradacji aparat turbowentylatorowe](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan) używane dla tego szablonu rozwiązania. Opis danych i wymagania są niezwykle istotne w sposób zmodyfikować ten szablon służy do pracy z własnych danych. 
+Jest mało prawdopodobne, czy zestaw danych jest zgodna zestawu danych używany przez [zestawu danych symulacji degradacji aparat turbowentylatorowe](http://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan) używane dla tego szablonu rozwiązania. Opis danych i wymagania są niezwykle istotne w sposób zmodyfikować ten szablon służy do pracy z własnych danych. 
 
 W poniższych sekcjach omówiono części szablonu, które wymagają modyfikacji, jeśli wprowadzono nowy zestaw danych.
 

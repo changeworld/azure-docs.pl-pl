@@ -11,19 +11,31 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 06/27/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 150d1c40463aa04527bdd6e356a4c24ef68b02ef
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: b73deebb10d0c81a06df9cd192eaa2ef28de744d
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301902"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083044"
 ---
 # <a name="remove-the-sql-resource-provider"></a>Usuń dostawcę zasobów SQL
 
 Przed usunięciem dostawcy zasobów SQL, należy usunąć wszystkie zależności dostawcy. Należy również kopię pakiet wdrożeniowy, który został użyty do zainstalowania dostawcy zasobów.
+
+Istnieje kilka zadań oczyszczania zrobić przed uruchomieniem _DeploySqlProvider.ps1_ skryptu, aby usunąć dostawcę zasobów.
+Dzierżawcy są odpowiedzialne za następujące zadania oczyszczania:
+
+* Usuń wszystkie ich bazy danych od dostawcy zasobów. (Usuwanie baz danych dzierżawy nie powoduje usunięcia danych.)
+* Wyrejestruj z przestrzeni nazw dostawcy zasobów.
+
+Administrator jest odpowiedzialny za następujące zadania oczyszczania:
+
+* Usuwa serwerami hostingu od dostawcy zasobów SQL.
+* Usuwa wszystkie plany odwołujące się do dostawcy zasobów SQL.
+* Usuwa wszelkie przydziały, które są skojarzone z dostawcą zasobów SQL.
 
 ## <a name="to-remove-the-sql-resource-provider"></a>Aby usunąć dostawcę zasobów SQL
 
@@ -38,10 +50,10 @@ Przed usunięciem dostawcy zasobów SQL, należy usunąć wszystkie zależności
 
 4. Uruchom skrypt DeploySqlProvider.ps1, korzystając z następujących parametrów:
 
-    - **Odinstaluj**. Usuwa dostawcy zasobów i wszystkie powiązane zasoby.
-    - **PrivilegedEndpoint**. Adres IP lub nazwa DNS uprzywilejowanych punktu końcowego.
-    - **CloudAdminCredential**. Poświadczenia dla administratora chmury niezbędnych do uzyskania dostępu uprzywilejowanego punktu końcowego.
-    - **AzCredential**. Poświadczenia dla konta administratora usługi Azure stosu. Użyj tych samych poświadczeń, które używane do wdrożenia usługi Azure stosu.
+    * **Odinstaluj**. Usuwa dostawcy zasobów i wszystkie powiązane zasoby.
+    * **PrivilegedEndpoint**. Adres IP lub nazwa DNS uprzywilejowanych punktu końcowego.
+    * **CloudAdminCredential**. Poświadczenia dla administratora chmury niezbędnych do uzyskania dostępu uprzywilejowanego punktu końcowego.
+    * **AzCredential**. Poświadczenia dla konta administratora usługi Azure stosu. Użyj tych samych poświadczeń, które używane do wdrożenia usługi Azure stosu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 11e0a4e38739a775d977cf76b72d4dc92942a7b0
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: e93b241c79a50380f4ef1538dfbf7615232e6c49
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725095"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096513"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Łączenie do bazy danych rozwiązania Cosmos Azure przy użyciu narzędzia do analizy BI ze sterownikiem ODBC
 
@@ -63,7 +63,7 @@ Teraz umożliwia wprowadzenie sterownik ODBC.
 4. Kliknij przycisk **testu** przycisk, aby się upewnić, że możesz nawiązać połączenie konta bazy danych Azure rozwiązania Cosmos. 
 5. Kliknij przycisk **zaawansowane opcje** i ustaw następujące wartości:
     - **Zapytanie spójności**: Wybierz [poziomu spójności](consistency-levels.md) dla operacji. Wartość domyślna to sesji.
-    - **Liczba ponownych prób**: Wprowadź liczbę ponownych prób operacji, jeśli żądania początkowego nie została zakończona z powodu dławienia usługi.
+    - **Liczba ponownych prób**: Wprowadź liczbę ponownych prób operacji, jeśli żądania początkowego nie została zakończona z powodu limitów szybkości usług.
     - **Plik schematu**: w tym miejscu masz kilka opcji.
         - Domyślnie ten wpis jest (pusty), pozostawiając sterownika skanuje pierwsze dane strony dla wszystkich kolekcji w celu określenia schematu każdej kolekcji. Jest to nazywane mapowania kolekcji. Bez pliku schematu zdefiniowane sterownik musi wykonać skanowania dla każdej sesji sterowników i może skutkować wyższej czas uruchamiania aplikacji przy użyciu nazwy DSN. Firma Microsoft zaleca zawsze skojarzenia pliku schematu dla nazwy DSN.
         - Jeśli masz już plik schematu (prawdopodobnie jedną, które zostały utworzone za pomocą [Edytor schematów](#schema-editor)), możesz kliknąć **Przeglądaj**, przejdź do pliku, kliknij przycisk **zapisać**, a następnie kliknij przycisk **OK**.
@@ -196,4 +196,4 @@ Jeśli zostanie wyświetlony następujący błąd, upewnij się, **hosta** i **k
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej na temat bazy danych rozwiązania Cosmos Azure, zobacz [Zapraszamy do bazy danych Azure rozwiązania Cosmos](introduction.md).
+Aby dowiedzieć się więcej na temat usługi Azure Cosmos DB, zobacz [Azure Cosmos DB — Zapraszamy!](introduction.md)

@@ -14,25 +14,25 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/27/2018
 ms.author: aljo
-ms.openlocfilehash: 6783c2b3b431e99050bc6762c1855b22e0701686
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
-ms.translationtype: HT
+ms.openlocfilehash: 84f8827a58d7f3c5dcc32943d2ba891b02c1e1ab
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062283"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083196"
 ---
-# <a name="description-of-the-different-upgrade-policies"></a>Opis różnych zasad uaktualniania
-
-- **Dynamiczne** — zmiany w konfiguracji dynamicznej nie powodują ponowne uruchomienia procesu procesów usługi sieć szkieletowa usług lub procesów hosta usługi. 
-- **Statyczne** — zmian do konfiguracji statycznej spowoduje ponowne uruchomienie w celu korzystania z zmiany węzeł sieci szkieletowej usług. Usługi w węzłach zostanie uruchomiona ponownie.
-- **NotAllowed** — nie można modyfikować tych ustawień. Zmiana tych ustawień wymaga niszczone klastra i utworzyć nowy klaster. 
-
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Dostosowywanie ustawień klastra sieci szkieletowej usług i zasady uaktualniania sieci szkieletowej
 Ten dokument zawiera informacje dotyczące dostosować różne ustawienia sieci szkieletowej i sieci szkieletowej uaktualniania zasad dla klastra usługi sieć szkieletowa usług. Możesz dostosować je za pomocą [portalu Azure](https://portal.azure.com) lub przy użyciu szablonu usługi Azure Resource Manager.
 
 > [!NOTE]
 > Nie wszystkie ustawienia są dostępne w portalu. W przypadku, gdy ustawienie wymienionych poniżej nie jest dostępny za pośrednictwem portalu dostosować go za pomocą szablonu usługi Azure Resource Manager.
 > 
+
+## <a name="description-of-the-different-upgrade-policies"></a>Opis różnych zasad uaktualniania
+
+- **Dynamiczne** — zmiany w konfiguracji dynamicznej nie powodują ponowne uruchomienia procesu procesów usługi sieć szkieletowa usług lub procesów hosta usługi. 
+- **Statyczne** — zmian do konfiguracji statycznej spowoduje ponowne uruchomienie w celu korzystania z zmiany węzeł sieci szkieletowej usług. Usługi w węzłach zostanie uruchomiona ponownie.
+- **NotAllowed** — nie można modyfikować tych ustawień. Zmiana tych ustawień wymaga niszczone klastra i utworzyć nowy klaster. 
 
 ## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Dostosowywanie ustawień klastra przy użyciu szablonów usługi Resource Manager
 Poniższe kroki zilustrować dodać nowe ustawienie *MaxDiskQuotaInMB* do *diagnostyki* sekcji.

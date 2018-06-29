@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 85450119b9ab25b6f812cbf8c6c64174dd6f322c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
-ms.translationtype: HT
+ms.openlocfilehash: 1b9b1fa5b67e37181ff4c76773c6666ccbbcf275
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061730"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082869"
 ---
 # <a name="create-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Tworzenie środowiska uruchomieniowego integracji usług SSIS Azure w fabryce danych Azure
 Ten artykuł zawiera kroki do inicjowania obsługi środowiska uruchomieniowego integracji usług SSIS Azure w fabryce danych Azure. Następnie możesz użyć programu SQL Server Data Tools (SSDT) lub SQL Server Management Studio (SSMS) do wdrożenia pakietów usług SQL Server Integration Services (SSIS) w tym środowisku uruchomieniowym na platformie Azure. 
@@ -54,9 +54,9 @@ Podczas aprowizowania wystąpienia środowiska Azure-SSIS IR są instalowane ró
 - Zainstalowanie programu **Azure PowerShell**. Postępuj zgodnie z instrukcjami [jak instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-azurerm-ps), jeśli używasz programu PowerShell do uruchamiania skryptu do obsługi integracji świadczenia usług SSIS Azure uruchamiania pakietów SSIS w chmurze. 
 
 ### <a name="region-support"></a>Obsługa regionu
-Można utworzyć fabryki danych w następujących regionach: wschodnie stany USA, wschodnie stany USA 2, Azja południowo-wschodnia i Europa. 
+Lista regiony platformy Azure, w których fabryki danych jest obecnie dostępna, zaznacz regionów, które zainteresowania na następującej stronie, a następnie rozwiń **Analytics** zlokalizować **fabryki danych**: [ Produkty, które są dostępne w regionie](https://azure.microsoft.com/global-infrastructure/services/).
 
-Środowisko Azure-SSIS IR możesz utworzyć w następujących regionach: Wschodnie stany USA, Wschodnie stany USA 2, Środkowe stany USA, Zachodnie stany USA 2, Europa Północna, Europa Zachodnia, Południowe Zjednoczone Królestwo i Australia Wschodnia. 
+Lista regiony platformy Azure, w których środowiska uruchomieniowego integracji usług SSIS Azure jest obecnie dostępna, zaznacz regionów, które zainteresowania na następującej stronie, a następnie rozwiń **Analytics** zlokalizować **środowiska uruchomieniowego integracji usług SSIS** : [Produkty, które są dostępne w regionie](https://azure.microsoft.com/global-infrastructure/services/). ### porównania bazy danych SQL i wystąpienia zarządzane (wersja zapoznawcza)
 
 ### <a name="compare-sql-database-and-managed-instance-preview"></a>Porównaj bazę danych SQL i wystąpienie zarządzanych (wersja zapoznawcza)
 
@@ -220,13 +220,11 @@ Zdefiniuj zmienne do wykorzystania w skrypcie w tym samouczku:
 $SubscriptionName = "[your Azure subscription name]"
 $ResourceGroupName = "[your Azure resource group name]"
 $DataFactoryName = "[your data factory name]"
-# You can create a data factory in the following regions: East US, East US 2, Southeast Asia, and West Europe. 
 $DataFactoryLocation = "EastUS" 
 
 ### Azure-SSIS integration runtime information - This is the Data Factory compute resource for running SSIS packages
 $AzureSSISName = "[specify a name for your Azure-SSIS IR]"
 $AzureSSISDescription = "[specify a description for your Azure-SSIS IR]"
-# You can create an Azure-SSIS IR in the following regions: East US, East US 2, Central US, West US 2, North Europe, West Europe, UK South, and Australia East.
 $AzureSSISLocation = "EastUS" 
 # Only Standard_A4_v2|Standard_A8_v2|Standard_D1_v2|Standard_D2_v2|Standard_D3_v2|Standard_D4_v2 are supported.
 $AzureSSISNodeSize = "Standard_D4_v2"
@@ -392,13 +390,11 @@ W tym miejscu jest pełna skrypt, który tworzy środowiska uruchomieniowego int
 $SubscriptionName = "[your Azure subscription name]"
 $ResourceGroupName = "[your Azure resource group name]"
 $DataFactoryName = "[your data factory name]"
-# You can create a data factory in the following regions: East US, East US 2, Southeast Asia, and West Europe. 
 $DataFactoryLocation = "EastUS" 
 
 ### Azure-SSIS integration runtime information - This is the Data Factory compute resource for running SSIS packages
 $AzureSSISName = "[specify a name for your Azure-SSIS IR]"
 $AzureSSISDescription = "[specify a description for your Azure-SSIS IR]"
-# You can create an Azure-SSIS IR in the following regions: East US, East US 2, Central US, West US 2, North Europe, West Europe, UK South, and Australia East.
 $AzureSSISLocation = "EastUS" 
 # Only Standard_A4_v2|Standard_A8_v2|Standard_D1_v2|Standard_D2_v2|Standard_D3_v2|Standard_D4_v2 are supported.
 $AzureSSISNodeSize = "Standard_D4_v2"

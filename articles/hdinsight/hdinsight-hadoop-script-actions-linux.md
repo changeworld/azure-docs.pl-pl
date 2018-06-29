@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: larryfr
-ms.openlocfilehash: 9ca8be3066254ade37c858bd62f9ce6a2e2be902
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 5f6609018f2582ebfc6e2ecbe48bde6a6f2d0f5d
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018386"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098264"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Tworzenie akcji skryptu za pomocą usługi HDInsight
 
@@ -284,7 +284,7 @@ Skrypty używane w celu dostosowania klastra musi być przechowywany w jednym z 
 
 * A __publicznie można odczytać identyfikatora URI__. Na przykład adres URL, do danych przechowywanych na OneDrive, Dropbox lub innych plików obsługującego usługę.
 
-* __Konta usługi Azure Data Lake Store__ skojarzonego z klastrem usługi HDInsight. Aby uzyskać więcej informacji na temat używania usługi Azure Data Lake Store z usługą HDInsight, zobacz [tworzenia klastra usługi HDInsight z usługą Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+* __Konta usługi Azure Data Lake Store__ skojarzonego z klastrem usługi HDInsight. Aby uzyskać więcej informacji na temat używania usługi Azure Data Lake Store z usługą HDInsight, zobacz [Szybki Start: Ustawianie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
     > [!NOTE]
     > Nazwy głównej usługi, które HDInsight używa do uzyskiwania dostępu usługi Data Lake Store musi mieć dostęp do odczytu do skryptu.

@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 5cb93941751c8744a19a5473d13f1e135a589eaa
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6177758eaa3e611ad67da0778d889df48b052d90
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347121"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37095755"
 ---
 # <a name="ecommerce-catalog-moderation-with-machine-learning"></a>łagodzenie katalogu handlu elektronicznego z uczenia maszynowego
 
@@ -158,7 +158,7 @@ W tym przypadku definiujemy znaczniki niestandardowe (**renomy**, **flagi**, **n
 
 ## <a name="classify-into-flags-toys-and-pens"></a>Klasyfikowanie w flagi, toys i pióra
 
-1. [Zaloguj się](https://www.customvision.ai/account/signin) do [Podgląd niestandardowe wizji API](https://www.customvision.ai/).
+1. [Zaloguj się](https://azure.microsoft.com/en-us/services/cognitive-services/custom-vision-service/) do [Podgląd niestandardowe wizji API](https://www.customvision.ai/).
 2. Użyj [szybkiego startu](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) do kompilacji z klasyfikatora niestandardowego do wykrycia obecności potencjalnych flagi, toys i pióra.
    ![Wizja niestandardowe obrazy szkolenia](images/tutorial-ecommerce-custom-vision.PNG)
 3. [Pobierz adres URL punktu końcowego prognozowania](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api) dla Twojego niestandardowego klasyfikatora.

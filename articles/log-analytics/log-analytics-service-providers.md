@@ -13,70 +13,67 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/22/2016
-ms.author: richrund
-ms.openlocfilehash: 6934e92df562099122eaede39fd26cf51cf1ee44
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: meirm
+ms.openlocfilehash: 97e36c624e865010ada67f5163af6d7f03de079f
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31593053"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096574"
 ---
 # <a name="log-analytics-features-for-service-providers"></a>Funkcje analizy dziennika dla dostawców usług
 Analiza dzienników może pomóc dostawców usługi zarządzane (MSPs), dużych przedsiębiorstw niezależnym dostawcom oprogramowania (ISV) i dostawcy usług hostingowych zarządzanie i monitorowanie serwerów w lokalnym przez klienta lub infrastruktury chmury. 
 
 Duże przedsiębiorstwa udostępniać wiele podobieństw dostawców usług, zwłaszcza w przypadku scentralizowane zespół IT, który jest odpowiedzialny za zarządzanie IT dla wielu różnych jednostek biznesowych. Dla uproszczenia tego dokumentu, używany jest termin *dostawcy usług* , ale te same funkcje jest również dostępny do przedsiębiorstwa i innych klientów.
 
-## <a name="cloud-solution-provider"></a>Cloud Solution Provider
 Dla partnerów i dostawców usług, którzy należą do elementu [Cloud Solution Provider (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) program, analizy dzienników jest jednym z usług Azure, która jest dostępna w [subskrypcji Azure dostawcy usług Kryptograficznych](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview). 
 
-Dla analizy dzienników, następujące funkcje są włączone w *Cloud Solution Provider* subskrypcji.
+## <a name="architectures-for-service-providers"></a>Architektury dla dostawców usług
 
-Jako *Cloud Solution Provider* można wykonywać następujące czynności:
+Obszary robocze analizy dziennika umożliwiają administratorowi sterowanie przepływem i izolacji dzienniki i utworzyć architekturę dziennika, która dotyczy jej potrzebami. [W tym artykule](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-manage-access) opisano ogólne zagadnienia dotyczące zarządzania obszaru roboczego. Dostawcy usług mają dodatkowe zagadnienia.
 
-* Tworzenie obszarów roboczych usługi Analiza dzienników w ramach subskrypcji dzierżawy (klienta).
-* Dostęp do obszarów roboczych utworzonych przez dzierżawców. 
-* Dodawanie i usuwanie dostępu użytkownika do obszaru roboczego przy użyciu zarządzania użytkowników platformy Azure. Jeśli w obszarze roboczym dzierżawcy w portalu OMS strony zarządzania użytkownikami, w obszarze Ustawienia nie jest dostępny
-  * Analiza dzienników nie obsługuje dostępu opartej na rolach jeszcze - nadanie użytkownika `reader` uprawnienia w portalu Azure pozwala na zmianę konfiguracji w portalu OMS
+Istnieją trzy możliwe architektury dla dostawców usług dotyczących analizy dzienników obszarów roboczych:
 
-Aby zalogować się do subskrypcji dzierżawcy, należy określić identyfikator dzierżawy. Identyfikator dzierżawy jest często ostatnia część adres e-mail używany do logowania.
+### <a name="1-distributed---logs-are-stored-in-workspaces-located-in-the-customers-tenant"></a>1. Rozproszone — dzienniki są przechowywane w obszarach roboczych znajdujących się w dzierżawie klienta 
 
-* W portalu OMS dodać `?tenant=contoso.com` w adresie URL portalu. Na przykład: `mms.microsoft.com/?tenant=contoso.com`
-* W programie PowerShell, użyj `-Tenant contoso.com` parametr przy użyciu `Connect-AzureRmAccount` polecenia cmdlet
-* Identyfikator dzierżawy jest automatycznie dodawane, gdy używasz `OMS portal` łącza z portalu Azure, aby otworzyć i zaloguj się do portalu OMS dla wybranego obszaru roboczego
+W ramach tej architektury obszaru roboczego zostanie wdrożona w dzierżawy przez klienta, która służy do wszystkie dzienniki tego klienta. Administratorzy dostawcy usług mają prawo dostępu do tego obszaru roboczego przy użyciu [gości usługi Azure Active Directory (B2B)](https://docs.microsoft.com/en-us/azure/active-directory/b2b/what-is-b2b). Administrator dostawcy usług należy przełączyć w portalu Azure do katalogu ich klienta, aby można było uzyskać dostępu do tych obszarów roboczych.
 
-Jako *klienta* programu Cloud Solution Provider można wykonywać następujące czynności:
+Zalety tej architektury są następujące:
+* Klienta można zarządzać dostępem do dzienników przy użyciu własnych [dostępu opartej na rolach](https://docs.microsoft.com/en-us/azure/role-based-access-control/overview).
+* Każdy klient może mieć różne ustawienia dla ich obszaru roboczego, takich jak przechowywania i danych są takie same.
+* Izolację między klientami przepisami i zgodności.
+* Opłata za każdym obszarze roboczym zostanie zawarta w subskrypcji klienta.
+* Dzienniki mogą być zbierane z wszystkich typów zasobów, nie tylko agenta na podstawie. Na przykład inspekcji Azure.
 
-* Tworzenie dziennika analytics obszarów roboczych w ramach subskrypcji dostawcy usług Kryptograficznych
-* Dostęp do obszarów roboczych utworzone przez dostawcę usług Kryptograficznych
-  * Użyj `OMS portal` łącza z portalu Azure, aby otworzyć i zaloguj się do portalu OMS dla wybranego obszaru roboczego
-* Wyświetlanie i używanie strony zarządzania użytkownikami w obszarze Ustawienia w portalu OMS
+Wady tej architektury są następujące:
+* Jest trudniejsze dla dostawcy usług do zarządzania dużą liczbę klientów dzierżawcy na raz.
+* Administratorzy dostawcy usług mają na potrzeby aprowizacji w katalogu klienta.
+* Dostawca usług nie można przeanalizować danych przez jej klientów.
 
-> [!NOTE]
-> Uwzględnione rozwiązania w zakresie tworzenia kopii zapasowych i odzyskiwania lokacji dla analizy dzienników, nie będą mogły nawiązać połączenia z magazynu usług odzyskiwania i nie można skonfigurować w ramach subskrypcji dostawcy usług Kryptograficznych. 
-> 
-> 
+### <a name="2-central---logs-are-stored-in-workspace-located-in-the-service-provider-tenant"></a>2. Środkowo - dzienniki są przechowywane w obszarze roboczym znajduje się w dzierżawie dostawca usługi
 
-## <a name="managing-multiple-customers-using-log-analytics"></a>Zarządzanie wielu klientów przy użyciu analizy dzienników
-Zalecane jest tworzenie obszaru roboczego analizy dzienników dla poszczególnych klientów, którym zarządzasz. Udostępnia obszaru roboczego analizy dzienników:
+W ramach tej architektury dzienniki nie są przechowywane w dzierżaw klienta, ale tylko w centralnej lokalizacji, w ramach jednej subskrypcji dostawcy usług. Agenci, którzy są instalowane na maszynach wirtualnych klienta są skonfigurowane do wysyłania dzienników do tego obszaru roboczego przy użyciu obszaru roboczego identyfikator i klucz tajny.
 
-* Lokalizację geograficzną dla przechowywania danych. 
-* Poziom szczegółowości rozliczeń 
-* Izolacja danych 
-* Unikatowy konfiguracji
+Zalety tej architektury są następujące:
+* To ułatwia zarządzanie dużą liczbę klientów i ich integracji różnych systemów wewnętrznej bazy danych.
+* Dostawcy usług ma pełne prawa własności przez dzienniki i różnych artefaktów, takich jak funkcje i zapisane kwerendy.
+* Usługodawcy mogą wykonywać analizy dla wszystkich klientów.
 
-Tworząc obszar roboczy na odbiorcy, jest możliwość przechowywania danych poszczególnych klientów oddzielne i również śledzić wykorzystanie każdego klienta.
+Wady tej architektury są następujące:
+* Trudno będzie do oddzielania danych między klientów. Jedynym dobrym metoda w tym celu jest do używania nazwy domeny komputera.
+* Wszystkie dane ze wszystkich klientów będą przechowywane w tym samym regionie z jednym BOM i tego samego ustawienia przechowywania i konfiguracji.
+* Sieci szkieletowej Azure i PaaS usług, takich jak diagnostyki Azure i inspekcji Azure wymaga obszar roboczy, aby być w tej samej dzierżawy jako zasób w związku z tym nie mogą wysyłać dzienniki do obszaru roboczego centralnej.
 
-Więcej informacji na temat kiedy i dlaczego można utworzyć wiele obszarów roboczych jest opisany w [zarządzanie dostępem do dziennika analizy](log-analytics-manage-access.md#determine-the-number-of-workspaces-you-need).
+### <a name="3-hybrid---logs-are-stored-in-workspace-located-in-the-customers-tenant-and-some-of-them-are-pulled-to-a-central-location"></a>3. Hybrydowe — dzienniki są przechowywane w obszarze roboczym znajduje się w dzierżawie klienta i niektóre z nich są pobierane w centralnej lokalizacji.
 
-Tworzenie i Konfiguracja klienta obszarów roboczych można zautomatyzować za pomocą [PowerShell](log-analytics-powershell-workspace-configuration.md), [szablonów Resource Manager](log-analytics-template-workspace-configuration.md), lub za pomocą [interfejsu API REST](https://www.nuget.org/packages/Microsoft.Azure.Management.OperationalInsights/).
+Trzeci architektura łączyć się z dwóch opcji. Jest on oparty na pierwszym architektura rozproszona, których dzienniki znajdują się lokalnie do każdego klienta, ale tworzenie centralnym repozytorium dzienników przy użyciu mechanizmu. Część dzienniki są pobierane w centralnej lokalizacji dla raportowania i analiz. Ta część może być małą liczbą typów danych lub podsumowanie działań, takich jak statystyka codziennie.
 
-Korzystanie z szablonów usługi Resource Manager dla obszaru roboczego konfiguracji umożliwia wzorca konfiguracji, który może służyć do tworzenia i konfigurowania obszarów roboczych. Można mieć pewność, że podczas tworzenia obszarów roboczych dla klientów, a ich są automatycznie konfigurowane do wymagań. Po zaktualizowaniu wymagań szablon zostanie zaktualizowana i ponownie zastosować istniejących obszarów roboczych. Daje to pewność, że nawet istniejących obszarów roboczych spełniających określone standardy nowe.    
+Dostępne są dwie opcje do zaimplementowania centralnej lokalizacji w analizy dzienników:
 
-Podczas zarządzania wiele obszarów roboczych usługi Analiza dzienników, firma Microsoft zaleca integrowanie każdego obszaru roboczego z istniejącego systemu obsługi biletów / za pomocą konsoli operacje [alerty](log-analytics-alerts.md) funkcji. Dzięki integracji z istniejących systemów, zespół pomocy technicznej mogą nadal postępuj zgodnie z ich znanych procesów. Analiza dzienników regularnie sprawdza każdego obszaru roboczego kryteriów alertu, które określisz i generuje alert, gdy potrzebny jest akcja.
+1. Centralnej obszaru roboczego: dostawcę usługi można utworzyć obszaru roboczego w swojej dzierżawie i użyć skryptu, który używa [zapytania interfejsu API](https://dev.loganalytics.io/) z [interfejsu API kolekcji danych](log-analytics-data-collector-api.md) do przeniesienia danych z różnych obszarów roboczych do tego centralnej lokalizacji. Inną opcją niż skryptu jest użycie [aplikacji logiki Azure](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview).
 
-Dostosowanych widoków danych, można użyć [pulpitu nawigacyjnego](../azure-portal/azure-portal-dashboards.md) możliwości w portalu Azure.  
+2. Usługa Power BI jako lokalizacji centralnej: usługi Power BI może działać jako centralnej lokalizacji różnych obszarów roboczych eksportowania danych do niej przy użyciu integracji między analizy dzienników i [usługi Power BI](log-analytics-powerbi.md). 
 
-Wykonawczego poziomu raportów, które Podsumuj dane między obszarami roboczymi umożliwia integrację między usługą analizy dzienników i [PowerBI](log-analytics-powerbi.md). Jeśli chcesz zintegrować z innego systemu raportowania, można użyć interfejsu API Search (za pośrednictwem programu PowerShell lub [REST](log-analytics-log-search-api.md)) do wykonywania kwerend i eksportowanie wyników wyszukiwania.
 
 ## <a name="next-steps"></a>Następne kroki
 * Zautomatyzować tworzenie i konfiguracja obszarów roboczych przy użyciu [szablonów Resource Manager](log-analytics-template-workspace-configuration.md)

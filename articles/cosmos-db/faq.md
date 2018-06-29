@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: ed69d4de56d23210cc9133d74ab81530f924b5ae
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 769d530d85199e3f38890589e3719ba35f7cf5d6
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261563"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097975"
 ---
 # <a name="azure-cosmos-db-faq"></a>Często zadawane pytania dotyczące usługi Azure rozwiązania Cosmos bazy danych
 ## <a name="azure-cosmos-db-fundamentals"></a>Podstawowe informacje na temat usługi Azure DB rozwiązania Cosmos
@@ -80,7 +80,7 @@ Aby zadać pytania techniczne, możesz post do jednej z tych dwóch pytania i od
 
 Aby poprosić o nowe funkcje, Utwórz nowe żądanie na [Uservoice](https://feedback.azure.com/forums/263030-azure-cosmos-db).
 
-Aby rozwiązać problem z Twoim kontem, pliku [żądania obsługi](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) w portalu Azure.
+Aby rozwiązać problem z Twoim kontem, wyślij [żądanie obsługi](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) w portalu Azure Portal.
 
 Inne pytania można przesłać do zespołu w [ askcosmosdb@microsoft.com ](mailto:askcosmosdb@microsoft.com); jednak nie jest to alias pomocy technicznej. 
 
@@ -201,7 +201,7 @@ Oprócz często występujące kody błędów bazy danych MongoDB API bazy danych
 | Błąd               | Kod  | Opis  | Rozwiązanie  |
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | Całkowita liczba zużywane jednostki żądania przekroczył wskaźnik elastycznie jednostka żądania dla kolekcji i został ograniczony. | Należy rozważyć skalowanie przepływności przypisany do kontenera lub grupy kontenerów z platformy Azure, w portalu lub ponawianie ponownie. |
-| ExceededMemoryLimit | 16501 | Jako usługę wielodostępną operacja przekroczyła przydział pamięci klienta. | Zmniejsz zakres operacji przy użyciu bardziej restrykcyjnego zapytania kryteria lub skontaktuj się z pomocy technicznej z [portalu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br>Przykład:  *&nbsp; &nbsp; &nbsp; &nbsp;db.getCollection('users').aggregate ([<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {Nazwa: "Adama"}}, <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$sort: {wieku: -1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])*) |
+| ExceededMemoryLimit | 16501 | Jako usługę wielodostępną operacja przekroczyła przydział pamięci klienta. | Zmniejsz zakres operacji przy użyciu bardziej restrykcyjnego zapytania kryteria lub skontaktuj się z pomocy technicznej z [portalu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br>Przykład:  *&nbsp; &nbsp; &nbsp; &nbsp;db.getCollection('users').aggregate ([<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$match: {Nazwa: "Adama"}}, <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$sort: {wieku: -1} }<br>&nbsp;&nbsp;&nbsp;&nbsp;])*) |
 
 ## <a name="develop-with-the-table-api"></a>Tworzenie tabeli interfejsu API
 
@@ -280,9 +280,6 @@ Aby przeglądać dane, można użyć portalu Azure. Umożliwia także kodu inter
 Można użyć [Eksploratora usługi Storage Azure](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 
 Narzędzia elastyczność podjęcie parametry połączenia w formacie określonym wcześniej może obsłużyć nowy interfejs API tabeli. Lista narzędzi tabeli są przekazywane w [narzędzi klienta magazynu Azure](../storage/common/storage-explorers.md) strony. 
-
-### <a name="do-powershell-or-azure-cli-work-with-the-table-api"></a>Programu PowerShell lub interfejsu wiersza polecenia Azure działają przy użyciu interfejsu API tabeli?
-Brak obsługi dla [PowerShell](table-powershell.md). Obsługa interfejsu wiersza polecenia platformy Azure nie jest obecnie dostępna.
 
 ### <a name="is-the-concurrency-on-operations-controlled"></a>W operacji kontrolowane jest współbieżność?
 Tak, optymistycznej współbieżności jest zapewniana przez użycie mechanizmu ETag. 
@@ -410,7 +407,7 @@ Brak. Nie została zmieniona w cenie dla istniejących klientów usługi Magazyn
 ### <a name="how-is-the-price-calculated-for-the-table-api"></a>Sposób obliczania ceny dla interfejsu API tabeli? 
 Cena zależy od TableThroughput przydzielone. 
 
-### <a name="how-do-i-handle-any-throttling-on-the-tables-in-table-api-offering"></a>Jak obsługiwać żadnych ograniczania przepustowości w tabelach w ofercie tabeli interfejsu API 
+### <a name="how-do-i-handle-any-rate-limiting-on-the-tables-in-table-api-offering"></a>Jak obsługiwać żadnych limitów szybkości w tabelach w ofercie tabeli interfejsu API 
 Jeśli szybkość żądania przekracza pojemność udostępnionej przepływności dla kontenera, w podstawowej lub zbiór kontenerów, wystąpi błąd i zestawu SDK ponowi próbę połączenia, stosując zasady ponawiania.
 
 ### <a name="why-do-i-need-to-choose-a-throughput-apart-from-partitionkey-and-rowkey-to-take-advantage-of-the-table-api-offering-of-azure-cosmos-db"></a>Dlaczego należy wybrać przepływności oprócz PartitionKey i RowKey, aby móc korzystać z oferty tabeli interfejsu API Azure DB rozwiązania Cosmos

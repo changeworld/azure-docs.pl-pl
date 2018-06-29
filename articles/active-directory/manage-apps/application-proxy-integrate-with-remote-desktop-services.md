@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2018
+ms.date: 06/27/2018
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 5c6d6b9580b123dafb03af2acc885d2416ca2a56
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 0a004ee6e5dbdd2ceb8546a4b7ce20b2b551fac9
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35292545"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084069"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikowanie pulpitu zdalnego z serwerem Proxy aplikacji usługi Azure AD
 
@@ -44,6 +44,8 @@ We wdrożeniu usług pulpitu zdalnego roli usług pulpitu zdalnego w sieci Web i
 >Dowiedz się, jeśli nie zostały wdrożone RDS przed lub chcesz uzyskać więcej informacji, aby rozpocząć, jak [bezproblemowo wdrożenia usług pulpitu zdalnego z usługi Azure Resource Manager i portalu Azure Marketplace](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure).
 
 ## <a name="requirements"></a>Wymagania
+
+- Za pomocą klienta inne niż klienta sieci web usług pulpitu zdalnego, ponieważ klient sieci web nie obsługuje serwer Proxy aplikacji.
 
 - Punktów końcowych sieci Web usług pulpitu zdalnego i Brama usług pulpitu zdalnego musi znajdować się na na tym samym komputerze, a także z typowy katalog główny. Sieci Web usług pulpitu zdalnego i Brama usług pulpitu zdalnego są publikowane jako pojedynczą aplikacją przy użyciu serwera Proxy aplikacji, dzięki czemu może mieć pojedynczy jednokrotnego między dwiema aplikacjami.
 

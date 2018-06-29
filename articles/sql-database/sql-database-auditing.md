@@ -9,12 +9,12 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 06/24/2018
 ms.author: giladm
-ms.openlocfilehash: 0646667caab594556cc3c2043bc36905acef6e54
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: f187a5fe1541f5508e55443abe80fc295ee63c87
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751047"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081459"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 Usługa Azure SQL database auditing śledzi zdarzenia bazy danych i zapisuje je inspekcji logowania na koncie magazynu Azure. Inspekcja również:
@@ -62,20 +62,18 @@ Zasady inspekcji mogą być definiowane dla określonej bazy danych lub jako dom
 W poniższej sekcji opisano konfigurację inspekcji przy użyciu portalu Azure.
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
-2. Przejdź do **ustawienia** bloku programu SQL server bazy danych/SQL chcesz inspekcji. W **ustawienia** bloku, wybierz opcję **Inspekcja i wykrywanie zagrożeń**.
+2. Przejdź do **inspekcji** pozycji zabezpieczeń w okienku serwera/bazy danych SQL.
 
     <a id="auditing-screenshot"></a> ![Okienko nawigacji][1]
 3. Jeśli wolisz skonfigurować zasady inspekcji serwera, możesz wybrać **wyświetlić ustawienia serwera** łącze w bloku inspekcji bazy danych. Można następnie wyświetlić lub zmodyfikować ustawienia inspekcji serwera. Zasady inspekcji serwera dotyczą wszystkich istniejących i nowo utworzone bazy danych na tym serwerze.
 
     ![Okienko nawigacji][2]
-4. Jeśli wolisz włączyć inspekcję obiektu blob na poziomie bazy danych **inspekcji**, wybierz pozycję **ON**oraz **inspekcji typu**, wybierz pozycję **obiektu Blob**.
+4. Jeśli wolisz włączyć inspekcję na poziomie bazy danych, Przełącz **inspekcji** do **ON**.
 
-    Jeśli inspekcja obiektów blob serwera jest włączone, skonfigurować bazy danych inspekcji będą istniały równolegle z obiektu blob inspekcji serwera.
+    Po włączeniu inspekcji serwera skonfigurowane bazy danych inspekcji będą istniały side-by-side z inspekcji serwera.
 
     ![Okienko nawigacji][3]
 5. Aby otworzyć **magazyn dzienników inspekcji** bloku, wybierz opcję **szczegóły magazynu**. Wybierz konto magazynu Azure, w którym zostaną zapisane dzienniki, a następnie wybierz okres przechowywania. Stare dzienniki zostaną usunięte. Następnie kliknij przycisk **OK**.
-    >[!TIP]
-    >Aby uzyskać maksymalne wykorzystanie inspekcji szablonów raportów, należy użyć tego samego konta magazynu dla wszystkich baz danych inspekcji.
 
     <a id="storage-screenshot"></a> ![Okienko nawigacji][4]
 6. Jeśli chcesz dostosować zdarzeń inspekcji, możesz to zrobić za pomocą [poleceń cmdlet programu PowerShell](#subheading-7) lub [interfejsu API REST](#subheading-9).
@@ -102,7 +100,8 @@ Istnieje kilka metod, których można użyć do wyświetlenia obiektu blob, dzie
     **Rekordów inspekcji** zostanie otwarty blok, z których będziesz mieć możliwość wyświetlania w dziennikach.
 
     - Konkretne daty można wyświetlić, klikając **filtru** w górnej części **rekordów inspekcji** bloku.
-    - Można przełączać się między rekordów inspekcji, które zostały utworzone przez serwer zasad lub bazy danych zasad kontroli.
+    - Można przełączać się między rekordów inspekcji, które zostały utworzone przez *zasady inspekcji serwera* i *bazy danych zasady inspekcji* przełączając **inspekcji źródła**.
+    - Możesz wyświetlić tylko iniekcja kodu SQL powiązanych rekordów inspekcji sprawdzając **Pokaż tylko inspekcji rekordy iniekcji SQL** wyboru.
 
        ![Okienko nawigacji][8]
 
@@ -147,8 +146,8 @@ W przypadku baz danych z replikacją geograficzną po włączeniu inspekcji w g�
 * Poziomu serwera (**zalecane**): Włączanie inspekcji zarówno **serwera podstawowego** , jak również **serwer pomocniczy** — podstawowych i pomocniczych baz danych zostanie każdego przeprowadzać inspekcję niezależnie od siebie na podstawie ich odpowiednich zasad poziomu serwera.
 
 * Poziom bazy danych: Poziom bazy danych inspekcji dla pomocniczej bazy danych można skonfigurować tylko z podstawowej bazy danych, ustawienia inspekcji.
-   * Inspekcja obiektów blob musi być włączona na *podstawowa baza danych sam*, nie na serwerze.
-   * Po włączeniu inspekcji obiektu blob na podstawowej bazy danych, również będą stają się włączone w pomocniczej bazie danych.
+   * Inspekcja musi być włączona na *podstawowa baza danych sam*, nie na serwerze.
+   * Po włączeniu inspekcji na podstawowej bazy danych, również będą stają się włączone w pomocniczej bazie danych.
 
     >[!IMPORTANT]
     >Z poziomu bazy danych inspekcji, ustawienia magazynu dla pomocniczej bazy danych będzie identyczne z podstawowej bazy danych, powodując ruchu między regionalne. Zaleca się włączania inspekcji tylko poziomu serwera i pozostawić inspekcji bazy danych na poziomie wyłączona dla wszystkich baz danych.
@@ -204,7 +203,6 @@ Na przykład skryptu, zobacz [konfigurowania inspekcji i wykrywania zagrożeń p
 * [Utwórz lub zaktualizuj Blob serwera zasady inspekcji](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/createorupdate)
 * [Pobierz bazy danych obiektów Blob zasady inspekcji](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/get)
 * [Pobierz obiekt Blob serwera zasady inspekcji](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/get)
-* [Pobierz Blob serwera inspekcji wynik operacji](https://msdn.microsoft.com/library/azure/mt771862.aspx)
 
 Rozszerzone zasady, z którym klauzuli obsługę dodatkowych filtrowania:
 * [Utwórz lub zaktualizuj bazę danych *rozszerzony* obiektu Blob zasad inspekcji](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)

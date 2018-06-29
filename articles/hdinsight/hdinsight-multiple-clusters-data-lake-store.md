@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 48e5a8d270701c43276e1d248d8ea4dc748d15b2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 1d073732b5dd9b9867813d9ffcfad5caa1131d81
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31404571"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37102375"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-store-account"></a>Użyj wielu klastrów usługi HDInsight przy użyciu konta usługi Azure Data Lake Store
 
 Począwszy od usługi HDInsight w wersji 3.5, można utworzyć klastry usługi HDInsight przy użyciu kont usługi Azure Data Lake Store jako domyślny system plików.
-Data Lake Store obsługuje nieograniczony magazyn, który to idealny nie tylko do obsługi dużych ilości danych. można jednak również hostingu HDInsight wielu klastrów korzystających z jednego konta magazynu Data Lake. Aby uzyskać instrukcje dotyczące sposobu tworzenia klastra usługi HDInsight z usługą Data Lake Store jako magazynu, zobacz [Tworzenie klastrów usługi HDInsight z usługą Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+Data Lake Store obsługuje nieograniczony magazyn, który to idealny nie tylko do obsługi dużych ilości danych. można jednak również hostingu HDInsight wielu klastrów korzystających z jednego konta magazynu Data Lake. Aby uzyskać instrukcje dotyczące sposobu tworzenia klastra usługi HDInsight z usługą Data Lake Store jako magazynu, zobacz [Szybki Start: Ustawianie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
 Ten artykuł zawiera zalecenia dotyczące usługi Data Lake administratora magazynu do konfigurowania pojedynczego i udostępnionych przechowywania konta usługi Data Lake używany w wielu **active** klastrów usługi HDInsight. Te zalecenia dotyczą hosting wielu klastrów platformy Hadoop bezpieczny, a także niezabezpieczonego udostępnionego konta sklepu usługi Data Lake.
 
@@ -41,9 +41,9 @@ Aby włączyć tę strukturę folderów skutecznie używanego przez klastry usł
 
 |Folder  |Uprawnienia  |Użytkownik będący właścicielem  |Grupa będąca właścicielem  | Użytkownik nazwany | Uprawnienia użytkownika o nazwie | Grupa o nazwie | Uprawnienia grupy o nazwie |
 |---------|---------|---------|---------|---------|---------|---------|---------|
-|/ | rwxr-x--x  |administrator |administrator  |Jednostka usługi |--x  |FINGRP   |r-x         |
-|/Clusters | rwxr-x--x |administrator |administrator |Jednostka usługi |--x  |FINGRP |r-x         |
-|/ klastrów/finance | rwxr-x--t |administrator |FINGRP  |Jednostka usługi |rwx  |-  |-     |
+|/ | rwxr-x--x  |Administrator |Administrator  |Jednostka usługi |--x  |FINGRP   |r-x         |
+|/Clusters | rwxr-x--x |Administrator |Administrator |Jednostka usługi |--x  |FINGRP |r-x         |
+|/ klastrów/finance | rwxr-x--t |Administrator |FINGRP  |Jednostka usługi |rwx  |-  |-     |
 
 W tabeli
 
@@ -51,7 +51,7 @@ W tabeli
 - **Nazwy głównej usługi** jest nazwy głównej usługi Azure Active Directory (AAD), które zostały skojarzone z kontem.
 - **FINGRP** to grupa użytkowników utworzone w usłudze AAD, zawierającą użytkowników z finansowych organizacji.
 
-Aby uzyskać instrukcje dotyczące tworzenia aplikacji usługi AAD (która także tworzy nazwy głównej usługi), zobacz [utworzyć aplikację AAD](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application). Aby uzyskać instrukcje, jak utworzyć grupę użytkowników w usłudze AAD, zobacz [Zarządzanie grupami w usłudze Azure Active Directory](../active-directory/active-directory-groups-create-azure-portal.md).
+Aby uzyskać instrukcje dotyczące tworzenia aplikacji usługi AAD (która także tworzy nazwy głównej usługi), zobacz [utworzyć aplikację AAD](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application). Aby uzyskać instrukcje, jak utworzyć grupę użytkowników w usłudze AAD, zobacz [Zarządzanie grupami w usłudze Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 Niektóre kluczowe kwestie do rozważenia.
 
@@ -92,11 +92,11 @@ Wiadomo, że te ustawienia mają wpływ na jednego określonego HDInsight przypa
 
 Zgodnie z JIRA YARN połączone wcześniej, podczas lokalizowania publicznego zasobów lokalizatora sprawdza, czy wszystkie wymagane zasoby są rzeczywiście publiczny, sprawdzając uprawnień w zdalnym systemie plików. Lokalizacja odrzucenia żadnych LocalResource, który nie mieści się tego warunku. Sprawdzanie uprawnień, obejmuje dostęp do odczytu do pliku "inne". W tym scenariuszu nie działa poza pole odnośnie do hostowania klastrów HDInsight w usłudze Azure Data Lake, ponieważ usługa Azure Data Lake nie zezwala na dostęp do "inne" na poziomie folderu głównego.
 
-#### <a name="workaround"></a>Obejście problemu
+#### <a name="workaround"></a>Obejście
 Zestaw odczytu-uprawnienia do uruchamiania **innym** w hierarchii, na przykład **/**, **/klastrów** i   **/klastrów/finance** opisane w powyższej tabeli.
 
 ## <a name="see-also"></a>Zobacz także
 
-* [Tworzenie klastra usługi HDInsight z usługą Data Lake Store jako magazyn](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Szybki Start: Ustawianie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 
 

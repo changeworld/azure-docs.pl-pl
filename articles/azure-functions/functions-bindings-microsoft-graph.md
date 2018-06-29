@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: mahender
-ms.openlocfilehash: 3b9a7d998e7153318b21adcada7c143b428e591f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: af748f234a27ed9b37ac50438d7497fd680bc193
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724778"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085576"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Program Microsoft Graph powiązania dla usługi Azure Functions
 
@@ -217,7 +217,7 @@ W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które mo
 |**direction**||Wymagana — musi być ustawiona `in`.|
 |**Tożsamości**|**Tożsamość**|Wymagana — tożsamości, która będzie służyć do wykonania akcji. Może to być jedna z następujących wartości:<ul><li><code>userFromRequest</code> — Jedyne prawidłowe z [Wyzwalacz protokołu HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> -Używa tożsamości wcześniej zalogowanego użytkownika o określonym identyfikatorze. Zobacz <code>userId</code> właściwości.</li><li><code>userFromToken</code> -Używa tożsamości reprezentowany przez określony token. Zobacz <code>userToken</code> właściwości.</li><li><code>clientCredentials</code> -Ma zostać użyta tożsamość aplikacji funkcji.</li></ul>|
 |**Nazwa użytkownika**|**Nazwa użytkownika**  |Wymagane w przypadku i tylko wtedy, gdy _tożsamości_ ma ustawioną wartość `userFromId`. Użytkownik identyfikator podmiotu zabezpieczeń skojarzone z wcześniej zalogowanego użytkownika.|
-|**UserToken**|**UserToken**|Wymagane w przypadku i tylko wtedy, gdy _tożsamości_ ma ustawioną wartość `userFromToken`. Token nieprawidłowy dla funkcji aplikacji. |
+|**userToken**|**UserToken**|Wymagane w przypadku i tylko wtedy, gdy _tożsamości_ ma ustawioną wartość `userFromToken`. Token nieprawidłowy dla funkcji aplikacji. |
 |**Zasób**|**resource**|Wymagana — adres URL zasobu usługi Azure AD, dla którego token jest wymagany.|
 
 <a name="token-input-code"></a>
@@ -350,10 +350,10 @@ W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które mo
 |**direction**||Wymagana — musi być ustawiona `in`.|
 |**Tożsamości**|**Tożsamość**|Wymagana — tożsamości, która będzie służyć do wykonania akcji. Może to być jedna z następujących wartości:<ul><li><code>userFromRequest</code> — Jedyne prawidłowe z [Wyzwalacz protokołu HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> -Używa tożsamości wcześniej zalogowanego użytkownika o określonym identyfikatorze. Zobacz <code>userId</code> właściwości.</li><li><code>userFromToken</code> -Używa tożsamości reprezentowany przez określony token. Zobacz <code>userToken</code> właściwości.</li><li><code>clientCredentials</code> -Ma zostać użyta tożsamość aplikacji funkcji.</li></ul>|
 |**Nazwa użytkownika**|**Nazwa użytkownika**  |Wymagane w przypadku i tylko wtedy, gdy _tożsamości_ ma ustawioną wartość `userFromId`. Użytkownik identyfikator podmiotu zabezpieczeń skojarzone z wcześniej zalogowanego użytkownika.|
-|**UserToken**|**UserToken**|Wymagane w przypadku i tylko wtedy, gdy _tożsamości_ ma ustawioną wartość `userFromToken`. Token nieprawidłowy dla funkcji aplikacji. |
+|**userToken**|**UserToken**|Wymagane w przypadku i tylko wtedy, gdy _tożsamości_ ma ustawioną wartość `userFromToken`. Token nieprawidłowy dla funkcji aplikacji. |
 |**Ścieżka**|**Ścieżka**|Wymagana — ścieżka w usłudze OneDrive do skoroszytu programu Excel.|
-|**WorksheetName**|**WorksheetName**|Arkusz, w którym znajduje się tabela.|
-|**TableName**|**TableName**|Nazwa tabeli. Jeśli nie zostanie określony, będzie używany zawartość arkusza.|
+|**worksheetName**|**WorksheetName**|Arkusz, w którym znajduje się tabela.|
+|**tableName**|**tableName**|Nazwa tabeli. Jeśli nie zostanie określony, będzie używany zawartość arkusza.|
 
 <a name="excel-input-code"></a>
 ### <a name="excel-input---usage"></a>Excel wejściowych — użycie
@@ -510,10 +510,10 @@ W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które mo
 |**direction**||Wymagana — musi być ustawiona `out`.|
 |**Tożsamości**|**Tożsamość**|Wymagana — tożsamości, która będzie służyć do wykonania akcji. Może to być jedna z następujących wartości:<ul><li><code>userFromRequest</code> — Jedyne prawidłowe z [Wyzwalacz protokołu HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> -Używa tożsamości wcześniej zalogowanego użytkownika o określonym identyfikatorze. Zobacz <code>userId</code> właściwości.</li><li><code>userFromToken</code> -Używa tożsamości reprezentowany przez określony token. Zobacz <code>userToken</code> właściwości.</li><li><code>clientCredentials</code> -Ma zostać użyta tożsamość aplikacji funkcji.</li></ul>|
 |**Nazwa użytkownika** |**Nazwa użytkownika** |Wymagane w przypadku i tylko wtedy, gdy _tożsamości_ ma ustawioną wartość `userFromId`. Użytkownik identyfikator podmiotu zabezpieczeń skojarzone z wcześniej zalogowanego użytkownika.|
-|**UserToken**|**UserToken**|Wymagane w przypadku i tylko wtedy, gdy _tożsamości_ ma ustawioną wartość `userFromToken`. Token nieprawidłowy dla funkcji aplikacji. |
+|**userToken**|**UserToken**|Wymagane w przypadku i tylko wtedy, gdy _tożsamości_ ma ustawioną wartość `userFromToken`. Token nieprawidłowy dla funkcji aplikacji. |
 |**Ścieżka**|**Ścieżka**|Wymagana — ścieżka w usłudze OneDrive do skoroszytu programu Excel.|
-|**WorksheetName**|**WorksheetName**|Arkusz, w którym znajduje się tabela.|
-|**TableName**|**TableName**|Nazwa tabeli. Jeśli nie zostanie określony, będzie używany zawartość arkusza.|
+|**worksheetName**|**WorksheetName**|Arkusz, w którym znajduje się tabela.|
+|**tableName**|**tableName**|Nazwa tabeli. Jeśli nie zostanie określony, będzie używany zawartość arkusza.|
 |**updateType**|**UpdateType**|Wymagana — typ zmiany należy do tabeli. Może to być jedna z następujących wartości:<ul><li><code>update</code> -Zastępuje zawartość tabeli w usłudze OneDrive.</li><li><code>append</code> -Dodaje ładunku na koniec tabeli w usłudze OneDrive, tworząc nowe wiersze.</li></ul>|
 
 <a name="excel-output-code"></a>
@@ -654,7 +654,7 @@ W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które mo
 |**direction**||Wymagana — musi być ustawiona `in`.|
 |**Tożsamości**|**Tożsamość**|Wymagana — tożsamości, która będzie służyć do wykonania akcji. Może to być jedna z następujących wartości:<ul><li><code>userFromRequest</code> — Jedyne prawidłowe z [Wyzwalacz protokołu HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> -Używa tożsamości wcześniej zalogowanego użytkownika o określonym identyfikatorze. Zobacz <code>userId</code> właściwości.</li><li><code>userFromToken</code> -Używa tożsamości reprezentowany przez określony token. Zobacz <code>userToken</code> właściwości.</li><li><code>clientCredentials</code> -Ma zostać użyta tożsamość aplikacji funkcji.</li></ul>|
 |**Nazwa użytkownika**|**Nazwa użytkownika**  |Wymagane w przypadku i tylko wtedy, gdy _tożsamości_ ma ustawioną wartość `userFromId`. Użytkownik identyfikator podmiotu zabezpieczeń skojarzone z wcześniej zalogowanego użytkownika.|
-|**UserToken**|**UserToken**|Wymagane w przypadku i tylko wtedy, gdy _tożsamości_ ma ustawioną wartość `userFromToken`. Token nieprawidłowy dla funkcji aplikacji. |
+|**userToken**|**UserToken**|Wymagane w przypadku i tylko wtedy, gdy _tożsamości_ ma ustawioną wartość `userFromToken`. Token nieprawidłowy dla funkcji aplikacji. |
 |**Ścieżka**|**Ścieżka**|Wymagana — ścieżka w usłudze OneDrive do pliku.|
 
 <a name="onedrive-input-code"></a>
@@ -799,7 +799,7 @@ W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które mo
 |**direction**||Wymagana — musi być ustawiona `out`.|
 |**Tożsamości**|**Tożsamość**|Wymagana — tożsamości, która będzie służyć do wykonania akcji. Może to być jedna z następujących wartości:<ul><li><code>userFromRequest</code> — Jedyne prawidłowe z [Wyzwalacz protokołu HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> -Używa tożsamości wcześniej zalogowanego użytkownika o określonym identyfikatorze. Zobacz <code>userId</code> właściwości.</li><li><code>userFromToken</code> -Używa tożsamości reprezentowany przez określony token. Zobacz <code>userToken</code> właściwości.</li><li><code>clientCredentials</code> -Ma zostać użyta tożsamość aplikacji funkcji.</li></ul>|
 |**Nazwa użytkownika** |**Nazwa użytkownika** |Wymagane w przypadku i tylko wtedy, gdy _tożsamości_ ma ustawioną wartość `userFromId`. Użytkownik identyfikator podmiotu zabezpieczeń skojarzone z wcześniej zalogowanego użytkownika.|
-|**UserToken**|**UserToken**|Wymagane w przypadku i tylko wtedy, gdy _tożsamości_ ma ustawioną wartość `userFromToken`. Token nieprawidłowy dla funkcji aplikacji. |
+|**userToken**|**UserToken**|Wymagane w przypadku i tylko wtedy, gdy _tożsamości_ ma ustawioną wartość `userFromToken`. Token nieprawidłowy dla funkcji aplikacji. |
 |**Ścieżka**|**Ścieżka**|Wymagana — ścieżka w usłudze OneDrive do pliku.|
 
 <a name="onedrive-output-code"></a>
@@ -948,7 +948,7 @@ W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które mo
 |**direction**||Wymagana — musi być ustawiona `out`.|
 |**Tożsamości**|**Tożsamość**|Wymagana — tożsamości, która będzie służyć do wykonania akcji. Może to być jedna z następujących wartości:<ul><li><code>userFromRequest</code> — Jedyne prawidłowe z [Wyzwalacz protokołu HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> -Używa tożsamości wcześniej zalogowanego użytkownika o określonym identyfikatorze. Zobacz <code>userId</code> właściwości.</li><li><code>userFromToken</code> -Używa tożsamości reprezentowany przez określony token. Zobacz <code>userToken</code> właściwości.</li><li><code>clientCredentials</code> -Ma zostać użyta tożsamość aplikacji funkcji.</li></ul>|
 |**Nazwa użytkownika**|**Nazwa użytkownika**  |Wymagane w przypadku i tylko wtedy, gdy _tożsamości_ ma ustawioną wartość `userFromId`. Użytkownik identyfikator podmiotu zabezpieczeń skojarzone z wcześniej zalogowanego użytkownika.|
-|**UserToken**|**UserToken**|Wymagane w przypadku i tylko wtedy, gdy _tożsamości_ ma ustawioną wartość `userFromToken`. Token nieprawidłowy dla funkcji aplikacji. |
+|**userToken**|**UserToken**|Wymagane w przypadku i tylko wtedy, gdy _tożsamości_ ma ustawioną wartość `userFromToken`. Token nieprawidłowy dla funkcji aplikacji. |
 
 <a name="outlook-output-code"></a>
 ### <a name="outlook-output---usage"></a>Wyjście - Outlook użycia
@@ -976,7 +976,7 @@ Elementów Webhook umożliwiają reagowania na zdarzenia w programie Microsoft G
 - A [powiązania danych wejściowych subskrypcji elementu webhook Microsoft Graph](#webhook-input) pozwala na liście istniejące subskrypcje i opcjonalnie odświeżać je.
 - A [powiązania wyjściowego subskrypcji elementu webhook Microsoft Graph](#webhook-output) służy do tworzenia lub usuwania elementu webhook subskrypcji.
 
-Powiązania się nie wymagają żadnych uprawnień usługi Azure AD, ale musisz zażądać uprawnień odpowiedni typ zasobu, który ma zostać reagowania na. Dla listy, które są potrzebne uprawnienia dla każdego typu zasobu, zobacz [uprawnienia subskrypcji](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/subscription_post_subscriptions#permissions).
+Powiązania się nie wymagają żadnych uprawnień usługi Azure AD, ale musisz zażądać uprawnień odpowiedni typ zasobu, który ma zostać reagowania na. Dla listy, które są potrzebne uprawnienia dla każdego typu zasobu, zobacz [uprawnienia subskrypcji](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/subscription_post_subscriptions).
 
 Aby uzyskać więcej informacji na temat elementów webhook, zobacz [Praca z elementów webhook w programie Microsoft Graph].
 
@@ -1243,7 +1243,7 @@ W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które mo
 ### <a name="webhook-input---usage"></a>Element Webhook wejściowych — użycie
 
 Powiązanie udostępnia następujące funkcje platformy .NET:
-- ciąg]
+- Ciąg]
 - Tablice typu niestandardowego obiektu
 - Newtonsoft.Json.Linq.JObject[]
 - Microsoft.Graph.Subscription[]
@@ -1380,9 +1380,9 @@ W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które mo
 |**direction**||Wymagana — musi być ustawiona `out`.|
 |**Tożsamości**|**Tożsamość**|Wymagana — tożsamości, która będzie służyć do wykonania akcji. Może to być jedna z następujących wartości:<ul><li><code>userFromRequest</code> — Jedyne prawidłowe z [Wyzwalacz protokołu HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> -Używa tożsamości wcześniej zalogowanego użytkownika o określonym identyfikatorze. Zobacz <code>userId</code> właściwości.</li><li><code>userFromToken</code> -Używa tożsamości reprezentowany przez określony token. Zobacz <code>userToken</code> właściwości.</li><li><code>clientCredentials</code> -Ma zostać użyta tożsamość aplikacji funkcji.</li></ul>|
 |**Nazwa użytkownika**|**Nazwa użytkownika**  |Wymagane w przypadku i tylko wtedy, gdy _tożsamości_ ma ustawioną wartość `userFromId`. Użytkownik identyfikator podmiotu zabezpieczeń skojarzone z wcześniej zalogowanego użytkownika.|
-|**UserToken**|**UserToken**|Wymagane w przypadku i tylko wtedy, gdy _tożsamości_ ma ustawioną wartość `userFromToken`. Token nieprawidłowy dla funkcji aplikacji. |
+|**userToken**|**UserToken**|Wymagane w przypadku i tylko wtedy, gdy _tożsamości_ ma ustawioną wartość `userFromToken`. Token nieprawidłowy dla funkcji aplikacji. |
 |**Akcja**|**Akcja**|Niewymagana — określa akcji powiązanie powinny być obsługiwane. Może to być jedna z następujących wartości:<ul><li><code>create</code> -Rejestruje nową subskrypcję.</li><li><code>delete</code> — Usuwa z określonej subskrypcji.</li><li><code>refresh</code> -Odświeża określonej subskrypcji, aby zapobiec wygaśnięciu.</li></ul>|
-|**SubscriptionResource**|**SubscriptionResource**|Wymagane w przypadku i tylko wtedy, gdy _akcji_ ma ustawioną wartość `create`. Określa zasób Microsoft Graph, które będą monitorowane zmian. Zobacz [Praca z elementów webhook w programie Microsoft Graph]. |
+|**subscriptionResource**|**SubscriptionResource**|Wymagane w przypadku i tylko wtedy, gdy _akcji_ ma ustawioną wartość `create`. Określa zasób Microsoft Graph, które będą monitorowane zmian. Zobacz [Praca z elementów webhook w programie Microsoft Graph]. |
 |**changeType**|**ChangeType**|Wymagane w przypadku i tylko wtedy, gdy _akcji_ ma ustawioną wartość `create`. Wskazuje typ zmiany w subskrybowanego zasób, który zostanie podniesiony powiadomienie. Obsługiwane wartości to: `created`, `updated`, `deleted`. Można łączyć wiele wartości, używając listy rozdzielanej przecinkami.|
 
 ### <a name="webhook-output---usage"></a>Element Webhook wyjście - użycia

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 13f746697a7e694da79a6e376b45f95529049a44
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5a6fa3f2bb6ab76bf323fe3ca829797878f5e774
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31401965"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100508"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-azure-portal"></a>Tworzenie klastrów z systemem Linux w usłudze HDInsight przy użyciu portalu Azure
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -74,14 +74,14 @@ Azure portal udostępnia większość właściwości klastra. Przy użyciu szabl
 
     * Kliknij przycisk **Dalej**.
 
-4. Aby uzyskać **magazynu**, określ, czy usługi Azure Storage (WASB) lub usługi Data Lake Store jako domyślnego magazynu. Szukaj w poniższej tabeli, aby uzyskać więcej informacji.
+4. Aby uzyskać **magazynu**, określ, czy usługi Azure Storage (WASB) lub usługi Data Lake Storage jako domyślnego magazynu. Szukaj w poniższej tabeli, aby uzyskać więcej informacji.
 
     ![Tworzenie nowego klastra w portalu Azure](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-storage.png "tworzenia nowego klastra w portalu Azure")
 
     | Magazyn                                      | Opis |
     |----------------------------------------------|-------------|
-    | **Obiektów blob magazynu Azure jako domyślnego magazynu**   | <ul><li>Dla **typu podstawowego magazynu**, wybierz pozycję **usługi Azure Storage**. Po wykonaniu tej dla **metodę wyboru**, można wybrać **Moje subskrypcje** Jeśli chcesz określić konto magazynu, który jest częścią subskrypcji platformy Azure, a następnie wybierz konto magazynu. W przeciwnym razie kliknij przycisk **klucz dostępu** i podaj informacje dotyczące konta magazynu, który chcesz wybrać poza subskrypcją platformy Azure.</li><li>Aby uzyskać **domyślny kontener**, można przejść z domyślną nazwą kontenera sugerowane w portalu lub określić własne.</li><li>Jeśli używasz WASB jako domyślny magazyn, (opcjonalnie) można kliknąć **dodatkowych kont magazynu** do określenia dodatkowych kont magazynu do skojarzenia z klastrem. Dla **klucze magazynu Azure**, kliknij przycisk **Dodaj klucz magazynu**, a następnie można podać konto magazynu z subskrypcjami platformy Azure lub inne subskrypcje (przez dostarczanie klucz dostępu do konta magazynu).</li><li>Jeśli używasz WASB jako domyślny magazyn, (opcjonalnie) można kliknąć **dostępu do usługi Data Lake Store** umożliwia określenie Azure Data Lake Store jako dodatkowego magazynu. Aby uzyskać więcej informacji, zobacz [tworzenia klastra usługi HDInsight z Data Lake Store za pomocą portalu Azure](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).</li></ul> |
-    | **Azure Data Lake Store jako domyślnego magazynu** | Dla **typu podstawowego magazynu**, wybierz pozycję **usługi Data Lake Store** , a następnie zapoznaj się z artykułem [tworzenia klastra usługi HDInsight z Data Lake Store za pomocą portalu Azure](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md) instrukcje. |
+    | **Obiektów blob magazynu Azure jako domyślnego magazynu**   | <ul><li>Dla **typu podstawowego magazynu**, wybierz pozycję **usługi Azure Storage**. Po wykonaniu tej dla **metodę wyboru**, można wybrać **Moje subskrypcje** Jeśli chcesz określić konto magazynu, który jest częścią subskrypcji platformy Azure, a następnie wybierz konto magazynu. W przeciwnym razie kliknij przycisk **klucz dostępu** i podaj informacje dotyczące konta magazynu, który chcesz wybrać poza subskrypcją platformy Azure.</li><li>Aby uzyskać **domyślny kontener**, można przejść z domyślną nazwą kontenera sugerowane w portalu lub określić własne.</li><li>Jeśli używasz WASB jako domyślny magazyn, (opcjonalnie) można kliknąć **dodatkowych kont magazynu** do określenia dodatkowych kont magazynu do skojarzenia z klastrem. Dla **klucze magazynu Azure**, kliknij przycisk **Dodaj klucz magazynu**, a następnie można podać konto magazynu z subskrypcjami platformy Azure lub inne subskrypcje (przez dostarczanie klucz dostępu do konta magazynu).</li><li>Jeśli używasz WASB jako domyślny magazyn, (opcjonalnie) można kliknąć **dostępu do usługi Data Lake Store** umożliwia określenie usługi Azure Data Lake Storage jako dodatkowego magazynu. Aby uzyskać więcej informacji, zobacz [Szybki Start: Ustawianie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).</li></ul> |
+    | **Azure Data Lake Storage jako domyślnego magazynu** | Dla **typu podstawowego magazynu**, wybierz pozycję **Azure Data Lake magazynu Gen1** lub **Azure Data Lake magazynu Gen2 (wersja zapoznawcza)** , a następnie zapoznaj się z artykułem [Szybki Start : Ustawianie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) instrukcje. |
     | **Zewnętrznych magazynów metadanych**                      | Opcjonalnie można określić bazy danych SQL można zapisać metadanych Hive i Oozie skojarzony z klastrem. Aby uzyskać **wybierz bazę danych SQL dla gałęzi** wybierz bazę danych SQL, a następnie podaj nazwę użytkownika/hasło dla bazy danych. Powtórz te kroki dla metadanych Oozie.<br><br>Niektóre kwestie wymagające rozważenia podczas korzystania z bazy danych Azure SQL dla magazynów metadanych. <ul><li>Baza danych Azure SQL używana na potrzeby magazynu metadanych muszą zezwalać na łączności z innymi usługami Azure, w tym Azure HDInsight. Na pulpicie nawigacyjnym bazy danych Azure SQL, po prawej stronie kliknij nazwę serwera. Jest to serwer, na którym działa wystąpienie bazy danych SQL. Po przejściu do widoku serwerów, kliknij przycisk **Konfiguruj**, a następnie **usług Azure**, kliknij przycisk **tak**, a następnie kliknij przycisk **zapisać**.</li><li>Podczas tworzenia potrzeby magazynu metadanych, nie należy używać nazwy bazy danych, która zawiera łączniki lub łączników, ponieważ może to spowodować niepowodzenie procesu tworzenia klastra.</li></ul> |
 
     Kliknij przycisk **Dalej**. 
@@ -99,13 +99,13 @@ Azure portal udostępnia większość właściwości klastra. Przy użyciu szabl
    > [!IMPORTANT]
    > Jeśli planowane jest więcej niż 32 węzłami procesów roboczych, podczas tworzenia klastra lub przez skalowanie klastra po utworzeniu, musi wybierz rozmiar węzła głównego z co najmniej 8 rdzeniami i 14 GB pamięci RAM.
    > 
-   > Aby uzyskać więcej informacji na węzeł rozmiary i koszty, zobacz [cennik usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
+   > Aby uzyskać więcej informacji o rozmiarach węzła i powiązanych kosztach, zobacz [Cennik usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
    > 
    > 
    
    Kliknij przycisk **dalej** zapisać cenową konfiguracji węzła.
 
-7. Kliknij przycisk **Zaawansowane ustawienia** skonfigurować inne opcjonalne ustawienia, takie jak przy użyciu **akcji skryptu** dostosować klastra, aby zainstalować składniki niestandardowe lub dołączenie **sieci wirtualnej**. Szukaj w poniższej tabeli, aby uzyskać więcej informacji.
+7. Kliknij przycisk **Zaawansowane ustawienia** skonfigurować inne opcjonalne ustawienia, takie jak przy użyciu **akcji skryptu** dostosować klastra, aby zainstalować składniki niestandardowe lub dołączenie **sieciwirtualnej**. Szukaj w poniższej tabeli, aby uzyskać więcej informacji.
 
     ![Węzeł warstw cenowych](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-advanced.png "Określ liczbę węzłów klastra")
 

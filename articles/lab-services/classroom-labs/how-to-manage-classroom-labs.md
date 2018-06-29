@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 311e58f01fac6d7786992b3c11e4b1b7c02ca838
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: f8cf5a46e1d1e3242fd46900b56f7d8cf15d3fc5
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36304521"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082527"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Zarządzanie klasy laboratoriów w usług Azure laboratorium 
 W tym artykule opisano, jak utworzyć i skonfigurować laboratorium klas, wyświetlić wszystkie klasy labs lub usunąć laboratorium klasy.
@@ -86,8 +86,8 @@ Podczas publikowania szablonu usługi laboratorium Azure tworzy maszyny wirtualn
 2. Teraz, wybierz **publikowania** przycisku. Ten proces może zająć pewien czas w zależności od liczby maszyn wirtualnych są tworzone, która jest taka sama jak liczba użytkowników, którzy mogą w laboratorium.
     
     > [!IMPORTANT]
-    > Gdy szablon jest dostępny publicznie, nie można zmienić dostępu do niego na prywatny. 
-4. Przełącz się do **maszyn wirtualnych** strony i upewnij się, że widoczny pięciu maszyn wirtualnych, które znajdują się w **anulowaniem przypisania** stanu. Te maszyny wirtualne nie zostały jeszcze przypisane do studenta. 
+    > Po opublikowaniu szablonu nie można anulować jego publikacji. 
+4. Przełącz się do **maszyn wirtualnych** strony i upewnij się, że widoczny maszyn wirtualnych, które znajdują się w **anulowaniem przypisania** stanu. Te maszyny wirtualne nie zostały jeszcze przypisane do studenta. 
 
     ![Maszyny wirtualne](../media/tutorial-setup-classroom-lab/virtual-machines.png)
 5. Poczekaj, aż do utworzenia maszyn wirtualnych. Należy je w **zatrzymane** stanu. Można uruchomić uczniów maszyny Wirtualnej, połączenie z maszyną Wirtualną, Zatrzymaj maszynę Wirtualną i Usuń maszynę Wirtualną na tej stronie. Można je uruchomić w tej strony lub pozwolić Twojej studentów start maszyn wirtualnych. 

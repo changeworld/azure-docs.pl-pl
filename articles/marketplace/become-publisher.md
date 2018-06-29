@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: b3b9228c0733d34ea909a501e8ca6f9e11948381
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 58e3646588e500c4dd5334966d559aaed333b689
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825250"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083165"
 ---
 # <a name="become-a-publisher-in-the-storefronts-on-the-marketplace"></a>Stają się wydawcy w sklepy w witrynie marketplace  
 Poniższe kroki ułatwiają rejestrowanie jako wydawca w sklepy w witrynie marketplace. Oparte na Twoje istniejące interakcji użytkowników z firmy Microsoft i wybrany typ oferty, niektóre kroki przedstawione poniżej mogą nie być wymagane.  
@@ -29,8 +29,7 @@ Poniższe kroki ułatwiają rejestrowanie jako wydawca w sklepy w witrynie marke
 | 1 | Rejestrowanie w sieci Microsoft Partner Network | 15 min | [Rejestrowanie w sieci Microsoft Partner Network](#register-in-microsoft-partner-network) |  
 | 2 | Utwórz identyfikator firmy Microsoft | 15 minut | [Utwórz identyfikator firmy Microsoft](#create-a-microsoft-id) |  
 | 3 | Prześlij formularz wyznaczenie marketplace | 1-3 dni | [Prześlij formularz wyznaczenie marketplace](#submit-the-marketplace-nomination-form) |  
-| 4 | Zarejestruj się w programie Microsoft Developer Center (Centrum deweloperów) | 5 – 10 dni | [Zarejestruj w Centrum deweloperów](#register-in-dev-center) |  
-| 5 | Zaloguj się do AppSource | 15 minut | [Zaloguj się do AppSource](#sign-into-appSource) |  
+| 4 | Zarejestruj się w programie Microsoft Developer Center (Centrum deweloperów) | 5 – 10 dni | [Rejestracja w Centrum deweloperów](#register-in-dev-center) |  
 | 5 |  Zaloguj się do portalu dla partnerów chmury | 15 minut | [Zaloguj się do portalu dla partnerów chmury](#sign-into-cloud-partner-portal) |  
 
 ## <a name="register-in-microsoft-partner-network"></a>Rejestrowanie w sieci Microsoft Partner Network  
@@ -81,18 +80,6 @@ Konto Centrum deweloperów jest wymagane do publikowania aplikacji, które mają
 >[!Important]
 >Przed podjęciem próby utworzenia konta Centrum deweloperów, upewnij się, że firma nie ma już konto Centrum deweloperów. 
 >*   Aby uzyskać więcej informacji, odwiedź stronę [jak rejestr w Centrum deweloperów](#how-to-register-in-dev-center) sekcji.  
-
----  
-
-## <a name="sign-into-appsource"></a>Zaloguj się do AppSource  
-| 15 minut |  
-Po zatwierdzeniu Twoje wyznaczenie i zarejestrowano w Centrum deweloperów i MPN, dostęp do AppSource Trwa tworzenie konta witryny marketplace. Po raz pierwszy poświadczenia logowania są wysyłane w wiadomości e-mail zatwierdzania nazwy. 
-*   Aby uzyskać dostęp, MPN, odwiedź stronę członkostwa znajdujący się w [partner.microsoft.com/membership](https://partner.microsoft.com/membership).  
-*   Aby uzyskać dostęp do Centrum deweloperów, odwiedź stronę znajdujący się w Centrum deweloperów systemu Windows [dev.windows.com](https://dev.windows.com).  
-*   Aby uzyskać dostęp do AppSource, odwiedź stronę AppSource znajdujący się w [appsource.microsoft.com](https://appsource.microsoft.com).  
-*   Aby uzyskać dostęp do portalu dla partnerów firmy Microsoft w chmurze, odwiedź Portal dla partnerów chmury strony znajduje się w [cloudpartner.azure.com](https://cloudpartner.azure.com).  
-*   Aby uzyskać więcej informacji o korzystaniu z portalu dla partnerów chmury można znaleźć w sekcji więcej informacji znajduje się w [cloudpartner.azure.com/#Learn](https://cloudpartner.azure.com/#Learn).  
-*   Dokumentację dotyczącą chmury portalu dla partnerów, można znaleźć w sekcji dokumentacji znajduje się w [cloudpartner.azure.com/#documentation](https://cloudpartner.azure.com/#documentation).  
 
 ---  
 

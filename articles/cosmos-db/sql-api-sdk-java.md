@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 05/16/2018
 ms.author: khdang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 62555d3ba3513ce7183e24506530edcf78368247
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 352fa562a09d343d4a01b94343a60e3f6610c73f
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798631"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097169"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure rozwiązania Cosmos DB Java SDK dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -150,7 +150,7 @@ Zestaw SDK Java interfejsu API SQL obsługuje synchronicznych operacji. Obsługa
 * Przestarzałe IPartitionResolver na podstawie niestandardowych kodów partycjonowania. Użyj kolekcji partycjonowanych wyżej magazynu i przepustowości.
 
 ### <a name="a-name171171"></a><a name="1.7.1"/>1.7.1
-* Obsługa zasad ponawiania dodano ograniczania.  
+* Obsługa zasad ponawiania dodano limitów szybkości.  
 
 ### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
 * Czas do live (TTL) — Pomoc techniczna dla dokumentów.

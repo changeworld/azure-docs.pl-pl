@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: search
 ms.date: 05/17/2018
 ms.author: HeidiSteen
-ms.openlocfilehash: ce5771777762414a0229cf83425c2f3601cb979a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.openlocfilehash: 2e000628ebec393147328125a04d5d6f55afd3c6
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655731"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100491"
 ---
 # <a name="azure-search-service-rest-api-version-2017-11-11-preview"></a>Wersja interfejsu api REST usługi Azure Search 2017-11-11-Preview
 W tym artykule opisano `api-version=2017-11-11-Preview` wersji usługi Azure Search interfejsu API REST, oferty eksperymentalną nie jeszcze ogólnie dostępna.
@@ -27,11 +27,11 @@ W tym artykule opisano `api-version=2017-11-11-Preview` wersji usługi Azure Sea
 
 ## <a name="new-in-2017-11-11-preview"></a>Nowość w 2017-11-11-Preview
 
-[Wyszukiwanie kognitywnych](cognitive-search-concept-intro.md), nowa funkcja wzbogacenia w usłudze Azure Search znajduje ukryty informacje w źródłach nietekstowych i niesortowalne tekstu, przekształcania go w zawartości wyszukiwanie pełnotekstowe w usłudze Azure Search.
+[**Funkcja automatycznego uzupełniania** ](search-autocomplete-tutorial.md) łączy istniejące [API sugestie](https://docs.microsoft.com/rest/api/searchservice/suggestions) można dodać uzupełniające wpisywaniu napotyka na pasku wyszukiwania. Funkcja automatycznego uzupełniania zwraca candidate terminów zapytania, które użytkownik może wybrać jako ciąg zapytania dla następnego przeszukiwania. Sugestie zwraca rzeczywiste dokumenty w odpowiedzi na dane wejściowe częściowe: wyniki wyszukiwania są natychmiastowe i zmienia się dynamicznie wraz z rozwojem wprowadzania terminu wyszukiwania w długości i szczegółowością.
 
-Następujące reources są wprowadzone lub modyfikowane w wersji zapoznawczej interfejsu API REST. Wszystkie inne interfejsy API REST są takie same, czy wywołać ogólnie dostępna lub podejrzeć wersji.
+[**Wyszukiwanie kognitywnych**](cognitive-search-concept-intro.md), nowa funkcja wzbogacenia w usłudze Azure Search znajduje ukryty informacje w źródłach nietekstowych i niesortowalne tekstu, przekształcania go w zawartości wyszukiwanie pełnotekstowe w usłudze Azure Search. Następujące zasoby są wprowadzone lub modyfikowane w wersji zapoznawczej interfejsu API REST. Wszystkie inne interfejsy API REST są takie same, czy wywołać ogólnie dostępna lub podejrzeć wersji.
 
-+ [Utwórz Skillset (interfejs api-version = 2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Skillset operations(api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/skillset-operations)
 
 + [Utwórz indeksator (interfejs api-version = 2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 

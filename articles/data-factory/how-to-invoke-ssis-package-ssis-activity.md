@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 5ff397e8b13d56b3b034854c507f8bef05008812
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
-ms.translationtype: HT
+ms.openlocfilehash: 26b9271744d7be45c2a879fde3bb3fb5d6049a3b
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054725"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083789"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Uruchom pakiet SSIS z działaniami pakietu SSIS wykonania w fabryce danych Azure
 W tym artykule opisano sposób uruchamiania pakietów SSIS w potoku fabryki danych Azure za pomocą działania wykonanie pakietu usług SSIS. 
@@ -174,7 +174,7 @@ Pamiętaj o następujących kwestiach:
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Aby utworzyć wystąpienia usługi Data Factory, konto użytkownika używane do logowania się na platformie Azure musi być członkiem roli **współautora** lub **właściciela** albo **administratorem** subskrypcji platformy Azure.
-* Obecnie fabryki danych umożliwia tworzenie fabryki danych tylko w wschodnie stany USA, wschodnie US2, Europa Zachodnia i regiony Azja południowo-wschodnia. Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
+* Lista regiony platformy Azure, w których fabryki danych jest obecnie dostępna, zaznacz regionów, które zainteresowania na następującej stronie, a następnie rozwiń **Analytics** zlokalizować **fabryki danych**: [ Produkty, które są dostępne w regionie](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 
 ### <a name="create-a-pipeline-with-an-ssis-activity"></a>Tworzenie potoku do działania SSIS 
 W tym kroku możesz utworzyć potok z działaniem SSIS. Działanie jest uruchomione pakietu SSIS. 

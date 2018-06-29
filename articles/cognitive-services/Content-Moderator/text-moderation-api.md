@@ -9,24 +9,22 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: sajagtap
-ms.openlocfilehash: 5783a7a06d75a409969abad011de3bbd31dec292
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6924807a64cec074d9688eaad158bb9bb638f6bb
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347768"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085763"
 ---
 # <a name="text-moderation"></a>Moderowanie tekstu
 
-Użyj łagodzenia tekst pomocy maszyny moderatora zawartości i [ludzkich w pętli](Review-Tool-User-Guide/human-in-the-loop.md) możliwości na średni zawartości tekstowej.
+Użyj łagodzenia tekst pomocy maszyny moderatora zawartości i [człowieka przeglądu](Review-Tool-User-Guide/human-in-the-loop.md) możliwości na średni zawartości tekstowej.
 
-Firmy jest używana usługa łagodzenia tekstu do blokowania, zatwierdzanie lub przejrzyj zawartość, na podstawie jego zasad i progi. Usługa łagodzenia tekst można rozszerzyć człowieka łagodzenia środowisk, które wymagają partnerów, pracowników i konsumentów do generowania zawartości tekstowej. Obejmują one pokoje rozmów, tablice dyskusyjne, chatbots, katalogi handlu elektronicznego, dokumentów i innych. 
-
-Interfejsu API szuka tekstu przychodzące (maksymalnie 1024 znaków) niestosownych wyrażeń, klasyfikuje tekst autocorrects możliwe tekstu niepożądane (wersja zapoznawcza) i wykrywa potencjalne osobiście informacji osobowych. Również zgodna z listy warunków. Funkcja Autokorekta pomaga, catch celowo pisowni. Po przetworzeniu zawartości usługa zwraca szczegółowe odpowiedzi. Odpowiedź umożliwia utworzyć człowieka przeglądu w narzędziu przeglądu lub przełączyć go w dół, itp.
+Możesz zablokować, Zatwierdź albo przejrzyj zawartość, w oparciu o progi i zasady. Użyj, aby rozszerzyć człowieka łagodzenia środowisk gdzie partnerów, pracowników i konsumentów Generowanie zawartości tekstowej. Obejmują one pokoje rozmów, tablice dyskusyjne chatbots, katalogi handlu elektronicznego i dokumenty. 
 
 Odpowiedź usługi zawiera następujące informacje:
 
-- Niestosownych wyrażeń: wbudowane listy profanujących warunków w wielu językach na podstawie terminu dopasowywanie
+- Niestosownych wyrażeń: na podstawie terminu dopasowywanie wbudowanej listy profanujących warunki w różnych językach
 - Klasyfikacja: wspierana maszyny klasyfikacji na trzy kategorie
 - Dane osobowe (dane osobowe)
 - Poprawił tekstu
@@ -52,12 +50,9 @@ W przypadku wykrycia przez interfejs API wszelkie warunki profanujących w żadn
 
 ## <a name="classification"></a>Klasyfikacja
 
-Moderatora zawartości elementu wspierana maszyny **funkcji klasyfikacji tekst** obsługuje **tylko angielski**, co ułatwia wykrywanie potencjalnie niepożądane zawartości. Zawartość oflagowane uzna jako niestosowną w zależności od kontekstu. Oprócz przekazywania prawdopodobieństwo wystąpienia każdej kategorii, to może zalecić człowieka przeglądu zawartości. Funkcja używa uczonego modelu do identyfikowania możliwych obraźliwe, derogacyjnego lub porównawczego języka. W tym żargon, skróconej wyrazy, obraźliwe i celowo błędnie wpisane słowa do przeglądu. 
+Moderatora zawartości elementu wspierana maszyny **funkcji klasyfikacji tekst** obsługuje **tylko angielski**, co ułatwia wykrywanie potencjalnie niepożądane zawartości. Oflagowane zawartość może zostać oceniona jako nieodpowiednie w zależności od kontekstu. Przekazuje prawdopodobieństwo wystąpienia każdej kategorii, a może zalecić człowieka przeglądu. Funkcja używa uczonego modelu do identyfikowania możliwych obraźliwe, derogacyjnego lub porównawczego języka. W tym żargon, skróconej wyrazy, obraźliwe i celowo błędnie wpisane słowa do przeglądu. 
 
 Następujące wyodrębniania w wyodrębniania JSON przedstawiono przykładowe dane wyjściowe:
-
-> [!NOTE]
-> Funkcja "Klasyfikacja" wspierana maszyny jest w wersji zapoznawczej.
 
     "Classification": {
         "ReviewRecommended": true,
@@ -74,9 +69,9 @@ Następujące wyodrębniania w wyodrębniania JSON przedstawiono przykładowe da
 
 ### <a name="explanation"></a>Wyjaśnienie
 
-- `Category1` reprezentuje potencjalnych obecności język, który można uznać za płciowo jawne lub dla dorosłych w niektórych sytuacjach.
-- `Category2` reprezentuje potencjalnych obecności język, który można uznać za płciowo sugerujących lub dojrzałe w niektórych sytuacjach.
-- `Category3` reprezentuje potencjalnych obecności język, który może zostać uznany za obraźliwy w niektórych sytuacjach.
+- `Category1` odnosi się do potencjalnych obecności język, który można uznać za płciowo jawne lub dla dorosłych w niektórych sytuacjach.
+- `Category2` odnosi się do potencjalnych obecności język, który można uznać za płciowo sugerujących lub dojrzałe w niektórych sytuacjach.
+- `Category3` odnosi się do potencjalnych obecności język, który może zostać uznany za obraźliwy w niektórych sytuacjach.
 - `Score` to od 0 do 1. Im wyższa jest ocena wyższa modelu jest prognozowanie kategorii można stosować. Ta wersja zapoznawcza zależy od statystyczne modelu zamiast wyników kodowane ręcznie. Zaleca się testowanie na własną zawartość, aby określić, jak każda kategoria wyrównuje do własnych potrzeb.
 - `ReviewRecommended` jest wartość PRAWDA lub FAŁSZ w zależności od wewnętrznego wynik progów. Klienci powinna ocenić, czy ta wartość lub zdecydować o progami niestandardowymi na podstawie ich zawartości zasad.
 
@@ -151,7 +146,7 @@ Jeśli zadajesz dla korekty automatycznej odpowiedzi zawiera poprawiony wersję 
 
 ## <a name="creating-and-managing-your-custom-lists-of-terms"></a>Tworzenie i zarządzanie nimi z listy warunków
 
-Gdy domyślne, globalnej listy warunków działa dobrze w większości przypadków, warto ekranu względem warunki, które są specyficzne dla potrzeb biznesowych. Na przykład można odfiltrować żadnych konkurencyjnych firmowe z wpisów przez użytkowników. Twoje próg zawartości tekstowej dozwolonych mogą różnić się od domyślnej listy.
+Gdy domyślne, globalnej listy warunków działa dobrze w większości przypadków, warto ekranu względem warunki, które są specyficzne dla potrzeb biznesowych. Na przykład można odfiltrować żadnych konkurencyjnych firmowe z wpisów przez użytkowników.
 
 > [!NOTE]
 > Istnieje limit maksymalny wynoszący **wymieniono 5 termin** z każdej listy **przekracza 10 000 warunki**.

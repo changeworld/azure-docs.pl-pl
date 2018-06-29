@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: dda37600dffaf1e8e1c85c9757696f2d8219febb
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 1a5424b69fc70f69359b12beac86060f4e23ff27
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751674"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083995"
 ---
 # <a name="azure-sql-database-purchasing-models-and-resources"></a>Azure SQL Database zakupu modeli i zasoby 
 
@@ -40,7 +40,7 @@ Następujących tabel i wykresów porównania i kontrastu te dwa modele zakupów
 
 Wirtualne podstawowe reprezentuje Procesora logicznego oferowany z opcją wybór między generacje sprzętu. Na podstawie vCore model kupna (wersja zapoznawcza) zapewnia elastyczność, przezroczystość zużycia pojedynczego zasobu, formantowi i łatwe do tłumaczenia lokalne wymagania obciążenia w chmurze. Ten model umożliwia skalowanie możliwości obliczeniowych, pamięci oraz Magazyn ustalane na podstawie jego potrzeb obciążenia. W oparciu vCore model kupna (wersja zapoznawcza), klienci można wybrać ogólnego przeznaczenia i warstwy krytycznych usług biznesowych (wersja zapoznawcza) dla obu [baz danych z jednym](sql-database-single-database-scale.md) i [pule elastyczne](sql-database-elastic-pool.md). 
 
-HE na podstawie vCore model kupna (wersja zapoznawcza) umożliwia niezależnie skalowania zasobów obliczeniowych i magazynu, zgodne lokalnymi wydajności i zoptymalizowania cen. Jeśli bazy danych lub puli elastycznej zużywa ponad 300 Konwersja jednostek dtu w warstwie vCore może zmniejszyć koszt. Możesz przekonwertować przy użyciu interfejsu API wyboru lub przy użyciu portalu Azure, bez przestojów. Jednak konwersja nie jest wymagana. Jeśli model kupna jednostek dtu w warstwie spełnia wymagania biznesowe i wydajności, na których, można nadal używać. Jeśli zdecydujesz się do konwersji z modelu jednostek dtu w warstwie vCore modelu, należy wybrać poziom wydajności przy użyciu następujących zasadą: każdego 100 jednostek DTU w warstwie standardowa wymaga co najmniej 1 vCore w warstwie ogólnego przeznaczenia; Każdy 125 jednostek DTU w warstwie Premium wymaga co najmniej 1 vCore w warstwie Business krytyczne.
+Na podstawie vCore model kupna (wersja zapoznawcza) umożliwia niezależnie skalowania zasobów obliczeniowych i magazynu, zgodne lokalnymi wydajności i zoptymalizowania cen. Jeśli bazy danych lub puli elastycznej zużywa ponad 300 Konwersja jednostek dtu w warstwie vCore może zmniejszyć koszt. Możesz przekonwertować przy użyciu interfejsu API wyboru lub przy użyciu portalu Azure, bez przestojów. Jednak konwersja nie jest wymagana. Jeśli model kupna jednostek dtu w warstwie spełnia wymagania biznesowe i wydajności, na których, można nadal używać. Jeśli zdecydujesz się do konwersji z modelu jednostek dtu w warstwie vCore modelu, należy wybrać poziom wydajności przy użyciu następujących zasadą: każdego 100 jednostek DTU w warstwie standardowa wymaga co najmniej 1 vCore w warstwie ogólnego przeznaczenia; Każdy 125 jednostek DTU w warstwie Premium wymaga co najmniej 1 vCore w warstwie Business krytyczne.
 
 Na podstawie vCore zakupów modelu (wersja zapoznawcza) klienci płacić za:
 - Obliczeniowe (warstwy usług + liczba vCores + generowania sprzętu) *

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: 5a3070582a32adeda45dff233782c3a971885c14
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 6cdcfbf16f77525d6cee2085fdde9fdd630027e3
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018459"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096683"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Wprowadzenie do zestawu SDK zadań Webjob Azure dla przetwarzania w tle sterowane zdarzeniami
 
@@ -48,6 +48,9 @@ public static void Run(
 
 Instrukcje informują, jak utworzyć projekt 2.x wersji zestawu SDK zadań Webjob, z uwagi na temat co różni 3.x (w wersji zapoznawczej). Główne zmiany wprowadzone przez 3.x jest korzystanie z platformy .NET Core zamiast .NET Framework.
 
+> [!NOTE]
+> 3.x jest w wersji zapoznawczej i jest w fazie projektowania i instrukcje 3.x, w tym artykule są nieaktualne. Najnowsze informacje Zobacz problemów GitHub w dolnej części strony.
+
 ### <a name="azure-functions"></a>Azure Functions
 
 [Środowisko Azure Functions](../azure-functions/functions-overview.md) opiera się na zestaw SDK zadań Webjob i jest opcją w przypadku nie trzeba korzystać bezpośrednio z zestawu SDK zadań Webjob. Azure używa 1.x funkcje zestawu SDK WebJobs 2.x. Aby uzyskać więcej informacji, zobacz [porównanie usługi Azure Functions i zestaw SDK zadań Webjob](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs).
@@ -68,7 +71,7 @@ W tym artykule przyjęto założenie, masz [konta platformy Azure](https://azure
    Aby utworzyć projekt 3.x, wybierz **.NET Core > aplikacji konsoli (.NET Core)**.
    
    > [!NOTE]
-   > 3.x jest wciąż w wersji zapoznawczej i jest w fazie projektowania. Instrukcje 3.x, w tym artykule jest niekompletny. najnowsze informacje Zobacz problemów GitHub w dolnej części strony.
+   > 3.x jest w wersji zapoznawczej i jest w fazie projektowania i instrukcje 3.x, w tym artykule są nieaktualne. Najnowsze informacje Zobacz problemów GitHub w dolnej części strony.
 
 3. Nazwij projekt *WebJobsSDKSample*, a następnie wybierz **OK**.
 

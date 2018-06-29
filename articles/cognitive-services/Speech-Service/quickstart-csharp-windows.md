@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 64281215d139731b61365936bc1b837798ad8fbf
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
-ms.translationtype: MT
+ms.openlocfilehash: f0a2ec617c71f9e86610017d3b6fa961bbd14322
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37016838"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083090"
 ---
 # <a name="quickstart-recognize-speech-using-the-cognitive-services-speech-c-sdk"></a>Szybki Start: Rozpoznawanie mowy przy użyciu kognitywnych mowy usługi C# SDK
 
@@ -101,4 +101,5 @@ Dla zestawu najnowsze przykłady, zobacz [repozytorium GitHub próbki SDK kognit
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Tłumaczenie mowy](how-to-translate-speech.md)
-- [Dostosowywanie mowy modeli](how-to-customize-speech-models.md)
+- [Dostosowywanie akustycznego modeli](how-to-customize-acoustic-models.md)
+- [Dostosowywanie modeli języka](how-to-customize-language-model.md)

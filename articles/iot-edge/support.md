@@ -8,12 +8,12 @@ ms.date: 6/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a6bf918428312c511505304bd23b68cd19e46471
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 0a5cbabf8080efd1ae25ba151a1be339e8f5cad2
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37036667"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081758"
 ---
 # <a name="azure-iot-edge-support"></a>Obsługa krawędzi IoT Azure
 Istnieją różne sposoby poszukuje produktu Azure IoT krawędzi.
@@ -33,8 +33,8 @@ Systemy warstwy 1 można traktować jako oficjalnie obsługiwana. Oznacza to, ż
 * zawiera pakiety instalacyjne dla nich
 
 Ogólnie dostępna
-* Ubuntu 18.04
-* Ubuntu 16.04
+* Ubuntu Server 18.04
+* Ubuntu Server 16.04
 * Raspbian stretch
 
 W publicznej wersji zapoznawczej
@@ -47,9 +47,9 @@ Systemy warstwy 2 można traktować jako zgodna z Azure IoT Edge i względnie ł
 * Wystąpiło ad hoc testowania na platformach firmy Microsoft lub zna partnera pomyślnie uruchomione na platformie Azure IoT krawędzi
 * Pakiety instalacyjne dla innych platform może działać na tych platformach
 
-Ubuntu Server 18.04
+Ubuntu 18.04
 
-Ubuntu Server 16.04
+Ubuntu 16.04
 
 Rzeka knie 8
 

@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 06/20/2018
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 10b5fbe0a03d3ea712edc9df603bbcea5e188a02
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 5529a4510b6d9f005dc46165e1be799585e5a153
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36296536"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100848"
 ---
 Oto ograniczenia używania i inne limity usługi dotyczące usługi Azure Active Directory.
 
 | Kategoria | Limity |
 | --- | --- |
-| Katalogi |Pojedynczego użytkownika można skojarzyć z maksymalnie 20 katalogów usługi Azure Active Directory.<br />Przykłady możliwych kombinacji: <ul> <li>Jeden użytkownik tworzy 20 katalogów.</li><li>Jeden użytkownik zostaje dodany do 20 katalogów jako członek.</li><li>Jeden użytkownik tworzy 10 katalogów, a później zostaje dodany przez inne osoby do 10 różnych katalogów.</li></ul> |
+| Katalogi |Pojedynczego użytkownika można skojarzyć z maksymalnie 500 katalogów usługi Azure Active Directory.<br />Przykłady możliwych kombinacji: <ul> <li>Jeden użytkownik tworzy katalogi 500.</li><li>Pojedynczego użytkownika jest dodawana do 500 katalogi jako element członkowski.</li><li>Pojedynczego użytkownika tworzy 250 katalogi, a później są dodawane przez inne osoby do 250 różnych katalogach.</li></ul> |
 | Domeny | Możesz dodać maksymalnie 900 nazw domen zarządzanych. Jeśli podczas konfigurowania wszystkie domeny dla federacji z lokalną usługą Active Directory można dodawać nie więcej niż 450 nazwy domeny w każdym katalogu. |
 | Obiekty |<ul><li>W jednym katalogu, można utworzyć maksymalnie 500 000 obiektów przez użytkowników bezpłatna wersja programu Azure Active Directory.</li><li>Użytkownik niebędący administratorem może utworzyć maksymalnie 250 obiektów.</li></ul> |
 | Rozszerzenia schematu |<ul><li>Rozszerzenia typu string mogą mieć maksymalnie 256 znaków. </li><li>Rozmiar rozszerzeń typu binary jest ograniczony do 256 bajtów.</li><li>Do każdego pojedynczego obiektu można zapisać 100 wartości rozszerzeń (we WSZYSTKICH typach i WSZYSTKICH aplikacjach).</li><li>Jednostki „User”, „Group”, „TenantDetail”, „Device”, „Application” i „ServcicePrincipal” można rozszerzyć za pomocą jednowartościowych atrybutów typu „String” lub „Binary”.</li><li>Rozszerzenia schematu są dostępne tylko w interfejsie API programu Graph w wersji 1.21 — wersja zapoznawcza. Aby zarejestrować rozszerzenie, należy przyznać aplikacji prawa dostępu do zapisu.</li></ul> |

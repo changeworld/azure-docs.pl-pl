@@ -10,12 +10,12 @@ ms.date: 03/05/2018
 ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: e8d84944d44588602593c762c4f60c375e480343
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d4e69d33e07f484b4ccc5343786865230368c7ca
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298172"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096380"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Utwórz warunkowe instrukcje sterujące przepływu pracy akcji w aplikacjach logiki platformy Azure
 
@@ -46,36 +46,31 @@ Na przykład załóżmy, że masz aplikację logiki, która wysyła zbyt dużo �
 
    Jeśli chcesz dodać warunek na końcu przepływu pracy, w dolnej części aplikacji logiki, wybierz **+ nowy krok** > **Dodaj warunek**.
 
-3. W obszarze **warunku**, Utwórz warunku. 
+3. W obszarze **warunku**, tworzenie warunku. 
 
    1. W polu po lewej stronie Określ dane lub pola, które chcesz porównać.
 
-      Z **dodać zawartość dynamiczną** listy, możesz wybrać istniejące pola z aplikacji logiki.
+      Po kliknięciu wewnątrz po lewej stronie pola, pojawi się listy zawartości dynamicznej, można wybrać dane wyjściowe z poprzednich kroków w aplikacji logiki. 
+      Na przykład wybierz Podsumowanie kanału informacyjnego RSS.
+
+      ![Tworzenie warunku](./media/logic-apps-control-flow-conditional-statement/edit-condition.png)
 
    2. W środkowym listy wybierz operacji do wykonania. 
-   3. W prawym polu Określ wartość lub pola kryterium.
+   Na przykład wybierz pozycję "**zawiera**". 
 
-   Na przykład:
-
-   ![Edytuj warunek w trybie podstawowym](./media/logic-apps-control-flow-conditional-statement/edit-condition-basic-mode.png)
+   3. W prawym polu Określ wartość lub pola kryterium. 
+   Na przykład określ następujący ciąg: **firmy Microsoft**
 
    Oto pełny warunek:
 
-   ![Gotowy warunek](./media/logic-apps-control-flow-conditional-statement/edit-condition-basic-mode-2.png)
+   ![Gotowy warunek](./media/logic-apps-control-flow-conditional-statement/edit-condition-2.png)
+
+5. W obszarze **w przypadku wartości PRAWDA** i **w przypadku wartości FAŁSZ**, dodaj kroki do wykonania oparte na Określa, czy warunek jest spełniony. Na przykład:
+
+   ![Warunek z "true" czy "w przypadku wartości FAŁSZ" ścieżki](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
 
    > [!TIP]
-   > Aby utworzyć warunek bardziej zaawansowanych lub za pomocą wyrażeń, wybierz **edytowanie w trybie zaawansowanym**. Można użyć wyrażenia zdefiniowane przez [język definicji przepływu pracy](../logic-apps/logic-apps-workflow-definition-language.md).
-   > 
-   > Na przykład:
-   >
-   > ![Edytuj warunek w kodzie](./media/logic-apps-control-flow-conditional-statement/edit-condition-advanced-mode.png)
-
-5. W obszarze **tak, jeśli** i **nr IF**, dodaj kroki do wykonania oparte na Określa, czy warunek jest spełniony. Na przykład:
-
-   ![Stan tak i ścieżek](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
-
-   > [!TIP]
-   > Możesz przeciągnąć istniejących działań do **tak, jeśli** i **nr IF** ścieżki.
+   > Możesz przeciągnąć istniejących działań do **w przypadku wartości PRAWDA** i **w przypadku wartości FAŁSZ** ścieżki.
 
 6. Zapisz aplikację logiki.
 
@@ -87,14 +82,21 @@ Teraz, gdy utworzono aplikację logiki, za pomocą instrukcji warunkowej, Przyjr
 
 ``` json
 "actions": {
-  "myConditionName": {
+  "Condition": {
     "type": "If",
-    "expression": "@contains(triggerBody()?['summary'], 'Microsoft')",
     "actions": {
       "Send_an_email": {
-        "inputs": { },
+        "inputs": {},
         "runAfter": {}
-      }
+    },
+    "expression": {
+      "and": [ 
+        { 
+          "contains": [ 
+            "@triggerBody()?['summary']", "Microsoft"
+          ]
+        } 
+      ]
     },
     "runAfter": {}
   }

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: cfac573bc9f1bdec3fd884f8090e11514f1e93b3
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: b5adc1bb5a5aae96f37cc312588aa71e57d8342e
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604713"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083230"
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Azure stosu certyfikaty podpisywania generowania żądania
 
@@ -30,8 +30,6 @@ Narzędzie sprawdzania gotowości stosu Azure (AzsReadinessChecker) wykonuje nas
 
  - **Standardowy certyfikat żądań**  
     Żądania zgodnie z [wygenerować certyfikaty PKI dla wdrożenia stosu Azure](azure-stack-get-pki-certs.md).
- - **Typ żądania**  
-    Określa, czy żądania podpisania certyfikatu będzie żądanie jednego lub wielu żądań.
  - **Platforma jako usługa**  
     Opcjonalnie żądania platforma jako usługa (PaaS) nazwy z certyfikatami określonymi w [wymagania certyfikatów infrastruktury kluczy publicznych stosu Azure - opcjonalne certyfikaty PaaS](azure-stack-pki-certs.md#optional-paas-certificates).
 
@@ -98,22 +96,22 @@ Do przygotowania i sprawdzania poprawności certyfikatów PKI stosu Azure, wykon
     > [!note]  
     > `<regionName>.<externalFQDN>` stanowi podstawę, w którym zewnętrznych nazw DNS w stosie Azure są tworzone w tym przykładzie, portalu będzie `portal.east.azurestack.contoso.com`.  
 
-6. Aby wygenerować żądanie certyfikatu jednego z wielu nazwy alternatywnej podmiotu:
+6. Aby wygenerować certyfikat podpisywania żądań dla każdej nazwy DNS:
+
+    ```PowerShell  
+    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
+    ````
+
+    Aby uwzględnić PaaS usługi określają przełącznika ```-IncludePaaS```
+
+7. Można również w środowiskach: tworzenie i testowanie. Do wygenerowania żądania certyfikatu jednego z wielu nazwy alternatywnej podmiotu dodać **- RequestType SingleCSR** parametr i wartość (**nie** zalecana dla środowisk produkcyjnych):
 
     ```PowerShell  
     Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ````
 
     Aby uwzględnić PaaS usługi określają przełącznika ```-IncludePaaS```
-
-7. Aby wygenerować certyfikat podpisywania żądań dla każdej nazwy DNS:
-
-    ```PowerShell  
-    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType MultipleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
-    ````
-
-    Aby uwzględnić PaaS usługi określają przełącznika ```-IncludePaaS```
-
+    
 8. Przejrzyj dane wyjściowe:
 
     ````PowerShell  

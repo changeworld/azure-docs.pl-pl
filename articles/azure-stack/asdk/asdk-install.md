@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 7b8fe61731a9412c61152bc58e55deebb611d011
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 74a81901c8ad38a84357a9f3c2e1d948aa81e8bc
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30171200"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084335"
 ---
 # <a name="install-the-azure-stack-development-kit-asdk"></a>Zainstaluj zestaw Azure stosu Development Kit (ASDK)
 Po [Przygotowywanie komputera hosta ASDK](asdk-prepare-host.md), ASDK można wdrożyć w obrazie CloudBuilder.vhdx, wykonując następujące kroki w tym artykule.
@@ -58,7 +58,7 @@ Kroki opisane w tym artykule opisano sposób wdrażania ASDK przy użyciu grafic
     - Wpisz w prawidłowy **czasu adres IP serwera** adres. Wymaganego pola ustawia czas server używanego przez zestaw deweloperski. Ten parametr musi być dostarczona jako adres IP serwera czas ważności. Nazwy serwerów nie są obsługiwane.
 
       > [!TIP]
-      > Aby znaleźć adres IP serwera czasu, odwiedź stronę [pool.ntp.org](http:\\pool.ntp.org) lub polecenie ping time.windows.com. 
+      > Aby znaleźć adres IP serwera czasu, odwiedź stronę [pool.ntp.org](http://pool.ntp.org) lub polecenie ping time.windows.com. 
 
     - **Opcjonalnie**, ustaw następujące wartości:
         - **Identyfikator sieci VLAN**: Określa identyfikator sieci VLAN. Tej opcji należy używać tylko wtedy, gdy host i AzS BGPNAT01 należy skonfigurować identyfikator sieci VLAN umożliwiający dostęp do sieci fizycznej (i Internetu). 

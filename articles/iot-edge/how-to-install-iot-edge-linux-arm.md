@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: ad70fcc6b9779cb33772a3fce2fb11b4cec804ee
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
-ms.translationtype: HT
+ms.openlocfilehash: 2f25faa6957f9a8a42e64829e62506ae2add13ae
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062602"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096162"
 ---
 # <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>Zainstaluj środowisko uruchomieniowe krawędzi IoT Azure w systemie Linux (ARM32v7/armhf)
 
@@ -102,7 +102,7 @@ journalctl -u iotedge --no-pager --no-full
 I uruchomione moduły z listy:
 
 ```cmd/sh
-iotedge list
+sudo iotedge list
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

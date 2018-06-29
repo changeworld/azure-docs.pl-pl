@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: cfdb89ae833dc2450a4670a84af305f1caa10591
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: dfd28c5abea668e704fb5ee8b02d85d552e9ae77
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869516"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098876"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrowanie infrastruktury sieci VPN z usługą Azure MFA za pomocą rozszerzenia serwera zasad sieciowych na platformie Azure
 
@@ -305,7 +305,7 @@ Aby rozwiązać te problemy, doskonale nadaje się do uruchomienia jest zbadanie
  
 ## <a name="configure-multi-factor-authentication"></a>Skonfiguruj usługę Multi-Factor Authentication
 
-Aby uzyskać pomoc w konfigurowaniu użytkowników w usłudze Multi-Factor Authentication, zobacz artykuły [sposobu wymagać weryfikacji dwuetapowej dla użytkownika lub grupy](howto-mfa-userstates.md) i [Skonfiguruj moje konto na potrzeby weryfikacji dwuetapowej](../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-first-time.md)
+Aby uzyskać pomoc w konfigurowaniu użytkowników w usłudze Multi-Factor Authentication, zobacz artykuły [sposobu wymagać weryfikacji dwuetapowej dla użytkownika lub grupy](howto-mfa-userstates.md) i [Skonfiguruj moje konto na potrzeby weryfikacji dwuetapowej](end-user/current/multi-factor-authentication-end-user-first-time.md)
 
 ## <a name="install-and-configure-the-nps-extension"></a>Instalowanie i Konfigurowanie rozszerzeń serwera NPS
 
@@ -393,7 +393,7 @@ Aby użyć skryptu, dostarczają rozszerzenie poświadczeń administracyjnych us
 
 6. Uruchom ponownie serwer.
 
-### <a name="verify-the-configuration"></a>Sprawdź konfigurację
+### <a name="verify-the-configuration"></a>Sprawdź, czy konfiguracja
 Aby sprawdzić konfigurację, należy ustanowić nowe połączenie sieci VPN z serwerem sieci VPN. Po pomyślnym wprowadzeniu poświadczeń dla uwierzytelniania podstawowego, połączenie sieci VPN czeka dodatkowego uwierzytelniania się powodzeniem przed połączenie zostanie nawiązane, jak pokazano poniżej. 
 
 ![Okno sieci VPN ustawienia systemu Windows](./media/howto-mfa-nps-extension-vpn/image42.png)

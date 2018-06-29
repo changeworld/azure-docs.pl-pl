@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 893888904b6afc583c3c20b94d08eb3255a98cad
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 7c490aa958cf9e78c260dd0fbcf7952b55d8d88c
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36304430"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096180"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Przegląd biblioteki Moduł wykonujący zbiorczego Azure DB rozwiązania Cosmos
  
@@ -33,7 +33,7 @@ Biblioteka modułu wykonującego zbiorczego pomaga to ogromnej przepływności i
  
 * Znacznie zmniejsza zasoby obliczeniowe po stronie klienta, konieczne jest nasycenia przepływności przydzielone do kontenera. Pojedyncza aplikacja wątków, która zapisuje danych przy użyciu interfejsu API importowania zbiorczego osiąga 10 razy większa przepływność zapisu w porównaniu do aplikacji wielowątkowej, który zapisuje dane równocześnie nasycenia klienta Procesora komputera.  
 
-* Optymalizacji abstracts żmudnych zadaniach pisania logiki aplikacji do obsługi ograniczanie żądań przekroczeń limitu czasu żądania i pozostałe wyjątki przejściowej przez wydajnie obsługuje je w bibliotece.  
+* Optymalizacji abstracts żmudnych zadaniach pisania logiki aplikacji do obsługi limitów szybkości żądania, limity czasu żądania i pozostałe wyjątki przejściowej za wydajnie obsługuje je w bibliotece.  
 
 * Zapewnia uproszczony mechanizm aplikacji operacji zbiorczej do skalowania w poziomie. Zbiorczego pojedynczego wystąpienia modułu wykonującego, uruchomione na maszynie Wirtualnej platformy Azure, jaką może wykorzystać większa niż 500 KB RU/s i można osiągnąć wyższy przepustowość, dodając dodatkowe wystąpienia na kliencie poszczególnych maszyn wirtualnych.  
  
@@ -47,7 +47,7 @@ Po wyzwoleniu operacji zbiorczej do importowania lub zaktualizować dokumenty z 
 
 ![Architektura modułu wykonującego zbiorcze](./media/bulk-executor-overview/bulk-executor-architecture.png)
 
-Biblioteka modułu wykonującego zbiorczego upewnia się, maksymalnie wykorzystać przepływności przydzielone do kolekcji. Używa [mechanizmu kontroli przeciążenia stylu AIMD](https://tools.ietf.org/html/rfc5681) dla każdej bazy danych rozwiązania Cosmos Azure partycji zakresem kluczy do efektywnej obsługi ograniczania przepustowości i przekroczeń limitu czasu. 
+Biblioteka modułu wykonującego zbiorczego upewnia się, maksymalnie wykorzystać przepływności przydzielone do kolekcji. Używa [mechanizmu kontroli przeciążenia stylu AIMD](https://tools.ietf.org/html/rfc5681) dla każdej bazy danych rozwiązania Cosmos Azure partycji klucza zakres, aby efektywnie obsługiwać limitów szybkości i przekroczeń limitu czasu. 
 
 ## <a name="next-steps"></a>Następne kroki 
   

@@ -3,7 +3,7 @@ title: Wprowadzenie — przewodnik dla operatorów Azure IT | Dokumentacja firmy
 description: Przewodnik Wprowadzenie dla operatorów IT na platformie Azure
 services: ''
 documentationcenter: ''
-author: neilpeterson
+author: iainfoulds
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: ''
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/12/2017
-ms.author: nepeters
-ms.openlocfilehash: b63beffdd3b10071c6d18128e78a949374c171b2
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.author: iainfou
+ms.openlocfilehash: f79f727ed46f85866f59468be418ba8975c17bd8
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361659"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099497"
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>Wprowadzenie do przetwarzania danych w chmurze i Microsoft Azure
 
@@ -61,7 +61,7 @@ SaaS to oprogramowanie, które centralnie jest hostowany i zarządzany. Zwykle j
 
 Microsoft Office 365 jest dobrym przykładem SaaS, oferty. Subskrybenci opłata miesięcznego lub rocznego subskrypcji i otrzymują Microsoft Exchange, Microsoft OneDrive oraz pozostała część pakietu Microsoft Office jako usługa. Subskrybenci zawsze uzyskać najnowszą wersję i Exchange server odbywa się. W porównaniu do instalowania i uaktualniania pakietu Office co roku, jest mniej kosztowne i wymaga mniej wysiłku.
 
-#### <a name="paas-platform-as-a-service"></a>PaaS: Platforma jako usługa 
+#### <a name="paas-platform-as-a-service"></a>PaaS: Platforma jako usługa
 
 Z PaaS w przypadku wdrażania aplikacji w środowisku, które umożliwia dostawcy usług chmury. Dostawca zawiera wszystkie infrastruktury zarządzania, aby skupić się na projektowanie aplikacji.
 
@@ -381,11 +381,11 @@ Z różnymi poziomami nadmiarowości można skonfigurować konta magazynu Azure:
 
 -   **Dostęp do odczytu magazynu geograficznie nadmiarowego** jest magazynu geograficznie nadmiarowego oraz możliwość odczytania danych w regionie pomocniczym. Ta możliwość sprawia, że odpowiedni w przypadku odzyskiwania po awarii częściowej. W przypadku problemu z regionu podstawowego, można zmienić aplikacji na dostęp tylko do odczytu do regionu sparowany.
 
-### <a name="use-cases"></a>Przypadki zastosowań 
+### <a name="use-cases"></a>Przypadki zastosowań
 
 Każdy typ magazynu ma przypadek użycia innego.
 
-**Blob Storage** 
+**Blob Storage**
 
 Wyraz *obiektu blob* jest akronimem *dużego obiektu binarnego*. Obiekty BLOB są bez struktury plików, takich jak te, które są przechowywane na tym komputerze. Magazyn obiektów blob umożliwia przechowywanie dowolnego typu danych tekstowych lub binarnych, takich jak dokumenty, pliki multimedialne lub instalatory aplikacji. Magazyn obiektów blob jest również nazywany magazynem obiektów. Magazyn obiektów Blob Azure przechowuje także dysków danych maszyny wirtualnej platformy Azure.
 
@@ -411,7 +411,7 @@ Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z magazynem plików
 
 Magazyn tabel Azure to usługa, która przechowuje dane strukturalne NoSQL w chmurze. Magazyn tabel jest magazynem kluczy/atrybutów z projektem bez schematu. Ponieważ Magazyn tabel jest bez schematu, jest łatwo zaadaptować dane rozwijających się potrzeb aplikacji. Dostęp do danych jest szybki i ekonomiczny dla wszystkich rodzajów aplikacji. Magazyn tabel jest zwykle znacznie tańszy niż tradycyjne bazy SQL dla podobnych ilości danych.
 
-Magazyn tabel umożliwia przechowywanie elastycznych zestawów danych, takich jak dane użytkownika dla aplikacji sieci Web, książki adresowe, informacje o urządzeniach i wszelkie inne metadane, których wymaga Twoja usługa. W tabeli można przechowywać dowolną liczbę jednostek. Konto magazynu może zawierać dowolną liczbę tabel w granicach pojemności konta magazynu.
+Magazyn tabel umożliwia przechowywanie elastycznych zestawów danych, takich jak dane użytkownika dla aplikacji internetowych, książki adresowe, informacje o urządzeniach i wszelkie inne metadane, których wymaga Twoja usługa. W tabeli można przechowywać dowolną liczbę jednostek. Konto magazynu może zawierać dowolną liczbę tabel w granicach pojemności konta magazynu.
 
 Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z magazynem tabel Azure](../../cosmos-db/table-storage-how-to-use-dotnet.md).
 
@@ -445,7 +445,7 @@ Analogicznie można użyć wiersza polecenia platformy Azure do wdrożenia szabl
 
 ### <a name="access-and-security-for-azure-storage"></a>Dostęp i większe bezpieczeństwo usługi Azure Storage
 
-Usługa Azure Storage jest dostępny na różne sposoby, w tym jednak portalu Azure, podczas tworzenia maszyny Wirtualnej i operacji i z bibliotek klienckich magazynu. 
+Usługa Azure Storage jest dostępny na różne sposoby, w tym jednak portalu Azure, podczas tworzenia maszyny Wirtualnej i operacji i z bibliotek klienckich magazynu.
 
 **Dyski maszyny wirtualnej**
 

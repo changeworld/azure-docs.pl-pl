@@ -12,15 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.component: protection
 ms.date: 06/01/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 69a27a2a75eb2a08a93b8b70648733673eac36db
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: a83b1b32bc7c1ba8dcfb0e96b11540253903a01f
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260050"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085151"
 ---
 # <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Wymagania subskrypcji w usłudze Azure Active Directory Privileged Identity Management
 
@@ -58,7 +59,7 @@ Po wygaśnięciu subskrypcji Azure AD Premium P2 lub subskrypcji EMS E5 lub jako
 - Zakończy wszystkie przeglądy trwającą dostępu ról usługi Azure AD i będzie można usunąć ustawień konfiguracji usługi Azure AD Privileged Identity Management.
 - Azure AD Privileged Identity Management nie będzie wysyłać wiadomości e-mail na zmiany przypisania roli.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Wprowadzenie do usługi Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md)
 - [Role w usłudze Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-roles.md)

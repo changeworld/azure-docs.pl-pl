@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 93cd4b6c4264c5905746b85f9fa46ce31ebd9e9f
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: b1945c68f0e320c834ae93a590f420403263a0fd
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937673"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098944"
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>Uruchom klaster Cassandra w systemie Linux na platformie Azure za pomocą języka Node.js
 
@@ -61,7 +61,7 @@ Zauważ, że w momencie pisania tego Azure nie zezwalają jawne mapowanie grupy 
 
 **Ziarna klastra:** ważne jest, aby wybrać większości węzłów wysokiej dostępności DS, jak nowe węzły komunikować się z węzłami inicjatora umożliwia odnalezienie topologii klastra. Jeden węzeł z każdym zestawie dostępności jest wyznaczony jako węzłów inicjatora, aby uniknąć pojedynczego punktu awarii.
 
-**Współczynnik replikacji i poziomu spójności:** Cassandra w kompilacji w wysokiej dostępności i danych trwałości charakteryzuje się współczynnik replikacji (RF - liczby kopii każdego wiersza przechowywane w klastrze) i poziomu spójności (liczba replik być odczytana/zapisana przed zwróceniem wyniku do obiektu wywołującego). Współczynnik replikacji jest określone podczas tworzenia przestrzeni KLUCZY (podobnie jak relacyjna baza danych), określić poziom spójności podczas CRUD zapytania. W dokumentacji Cassandra [Konfigurowanie spójności](http://www.datastax.com/documentation/cassandra/2.0/cassandra/dml/dml_config_consistency_c.html) szczegóły spójności i formułę obliczenia kworum.
+**Współczynnik replikacji i poziomu spójności:** Cassandra w kompilacji w wysokiej dostępności i danych trwałości charakteryzuje się współczynnik replikacji (RF - liczby kopii każdego wiersza przechowywane w klastrze) i poziomu spójności (liczba replik być odczytana/zapisana przed zwróceniem wyniku do obiektu wywołującego). Współczynnik replikacji jest określone podczas tworzenia przestrzeni KLUCZY (podobnie jak relacyjna baza danych), określić poziom spójności podczas CRUD zapytania. W dokumentacji Cassandra [Konfigurowanie spójności](https://docs.datastax.com/en/cassandra/3.0/cassandra/dml/dmlConfigConsistency.html) szczegóły spójności i formułę obliczenia kworum.
 
 Cassandra obsługuje dwa typy modeli integralności danych — spójność i spójność ostateczna; Współczynnik replikacji i poziomu spójności wspólnie określają, jeśli dane są spójne, jak operacja zapisu jest ukończona lub ostatecznie spójne. Na przykład określenie KWORUM, zgodnie z poziomu spójności zawsze gwarantuje spójności danych dowolnego poziomu spójności poniżej liczba replik do zapisania w celu osiągnięcia KWORUM, (na przykład jeden) powoduje ostatecznie spójności danych.
 
@@ -75,8 +75,8 @@ Konfiguracja klastra Cassandra jednego regionu:
 | Współczynnik replikacji (RF) |3 |Liczba replik danego wiersza |
 | Poziom zgodności (Zapisz) |QUORUM[(RF/2) +1) = 2 wynik formuły zostać zaokrąglona w dół |Zapisuje najwyżej 2 replik przed wysłaniem odpowiedzi do wywołującego 3 repliki są zapisywane w sposób spójny po pewnym czasie. |
 | Poziom zgodności (odczyt) |KWORUM [(RF/2) + 1 = 2] jest zaokrąglana wynik formuły |Odczytuje 2 replik przed wysłaniem odpowiedzi do obiektu wywołującego. |
-| Strategii replikacji |Zobacz NetworkTopologyStrategy [replikacji danych](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html) w Cassandra dokumentacji, aby uzyskać więcej informacji |Rozumie topologii wdrożenia i umieszcza replik w węzłach, tak, aby wszystkie repliki nie trafiają do tej samej stojak |
-| Snitch |Zobacz GossipingPropertyFileSnitch [przełączniki](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html) w Cassandra dokumentacji, aby uzyskać więcej informacji |NetworkTopologyStrategy używa pojęcie snitch zrozumienie topologii. GossipingPropertyFileSnitch zapewnia lepszą kontrolę w mapowaniu każdego węzła do centrum danych i stojaku. Klaster używa następnie plotki propagację te informacje. To jest znacznie prostsza w dynamicznej ustawienie adresu IP względem PropertyFileSnitch |
+| Strategii replikacji |Zobacz NetworkTopologyStrategy [replikacji danych](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archDataDistributeAbout.html) w Cassandra dokumentacji, aby uzyskać więcej informacji |Rozumie topologii wdrożenia i umieszcza replik w węzłach, tak, aby wszystkie repliki nie trafiają do tej samej stojak |
+| Snitch |Zobacz GossipingPropertyFileSnitch [przełączniki](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archSnitchesAbout.html) w Cassandra dokumentacji, aby uzyskać więcej informacji |NetworkTopologyStrategy używa pojęcie snitch zrozumienie topologii. GossipingPropertyFileSnitch zapewnia lepszą kontrolę w mapowaniu każdego węzła do centrum danych i stojaku. Klaster używa następnie plotki propagację te informacje. To jest znacznie prostsza w dynamicznej ustawienie adresu IP względem PropertyFileSnitch |
 
 **Azure zagadnienia dotyczące klastra Cassandra:** możliwości maszyny wirtualne Microsoft Azure korzysta z magazynu obiektów Blob platformy Azure dysku trwałości; Usługa Azure Storage zapisuje trzy repliki każdego dysku, aby uzyskać wysoką trwałością. Oznacza to, że każdy wiersz danych wstawione do tabeli Cassandra jest już zapisana w trzech replik. Dlatego spójność danych jest już wykonane obsługę nawet, jeśli współczynnik replikacji (RF) wynosi 1. Główny problem z współczynnik replikacji jest 1 jest aplikacja napotyka przestojów, nawet w przypadku awarii jednego węzła Cassandra. Jednak jeśli węzeł nie działa dla problemów (na przykład sprzętu, błędów oprogramowania systemu) rozpoznawany przez kontroler sieci szkieletowej Azure, inicjuje nowego węzła w tym miejscu przy użyciu tego samego dysków. Inicjowanie obsługi nowego węzła do zastąpi stare hasło może potrwać kilka minut.  Podobnie czynności zaplanowanej konserwacji, jak zmiany systemu operacyjnego gościa, uaktualnia Cassandra, i zmian w aplikacji Kontroler sieci szkieletowej Azure wykonuje wprowadzanie uaktualnień węzłów w klastrze.  Również uaktualnień stopniowych może potrwać kilka węzłów w dół w czasie, a tym samym klastrze może wystąpić krótki przestój w przypadku kilku partycji. Jednak dane nie utracone z powodu wbudowane funkcje nadmiarowości usługi Azure Storage.  
 
@@ -110,8 +110,8 @@ W przypadku systemu wymagające wysokiej spójności LOCAL_QUORUM spójności po
 | Współczynnik replikacji (RF) |3 |Liczba replik danego wiersza |
 | Poziom zgodności (Zapisz) |LOCAL_QUORUM [(sum(RF)/2) +1) = 4] wynik formuły zostać zaokrąglona w dół |2 węzły są zapisywane w centrum danych pierwszego synchronicznie; dodatkowe węzły 2 potrzebne do kworum jest zapisywany asynchronicznie 2 centrum danych. |
 | Poziom zgodności (odczyt) |LOCAL_QUORUM ((RF/2) + 1) = 2, wynik formuły zostać zaokrąglona w dół |Żądań odczytu są spełnione przy tylko jeden region; 2 węzły są odczytywane przed wysłaniem odpowiedzi do klienta. |
-| Strategii replikacji |Zobacz NetworkTopologyStrategy [replikacji danych](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html) w Cassandra dokumentacji, aby uzyskać więcej informacji |Rozumie topologii wdrożenia i umieszcza replik w węzłach, tak, aby wszystkie repliki nie trafiają do tej samej stojak |
-| Snitch |Zobacz GossipingPropertyFileSnitch [Snitches](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html) w Cassandra dokumentacji, aby uzyskać więcej informacji |NetworkTopologyStrategy używa pojęcie snitch zrozumienie topologii. GossipingPropertyFileSnitch zapewnia lepszą kontrolę w mapowaniu każdego węzła do centrum danych i stojaku. Klaster używa następnie plotki propagację te informacje. To jest znacznie prostsza w dynamicznej ustawienie adresu IP względem PropertyFileSnitch |
+| Strategii replikacji |Zobacz NetworkTopologyStrategy [replikacji danych](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archDataDistributeAbout.html) w Cassandra dokumentacji, aby uzyskać więcej informacji |Rozumie topologii wdrożenia i umieszcza replik w węzłach, tak, aby wszystkie repliki nie trafiają do tej samej stojak |
+| Snitch |Zobacz GossipingPropertyFileSnitch [Snitches](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archSnitchesAbout.html) w Cassandra dokumentacji, aby uzyskać więcej informacji |NetworkTopologyStrategy używa pojęcie snitch zrozumienie topologii. GossipingPropertyFileSnitch zapewnia lepszą kontrolę w mapowaniu każdego węzła do centrum danych i stojaku. Klaster używa następnie plotki propagację te informacje. To jest znacznie prostsza w dynamicznej ustawienie adresu IP względem PropertyFileSnitch |
 
 ## <a name="the-software-configuration"></a>KONFIGURACJA OPROGRAMOWANIA
 Następujące wersje oprogramowania są używane podczas wdrażania:
@@ -525,7 +525,7 @@ W portalu Azure użyj menu "Pulpitu NAWIGACYJNEGO" sieciami wirtualnymi Nawiąza
 ### <a name="step-8-create-the-virtual-machines-in-region-2"></a>Krok 8: Tworzenie maszyn wirtualnych w regionie #2
 Utwórz obraz Ubuntu zgodnie z opisem w regionie #1 wdrożenia, wykonując kroki tego samego lub kopiowania pliku obrazu dysku VHD do konta magazynu Azure znajduje się w regionie #2 a obrazu. Skorzystaj z tego obrazu i Utwórz następującą listę maszyn wirtualnych do nowej usługi w chmurze hk-c-svc wschód nam:
 
-| Nazwa maszyny | Podsieć | Adres IP | Zestaw dostępności | DC/Rack | Inicjatora? |
+| Nazwa komputera | Podsieć | Adres IP | Zestaw dostępności | DC/Rack | Inicjatora? |
 | --- | --- | --- | --- | --- | --- |
 | HK-c1-wschód us |dane |10.2.2.4 |hk-c-aset-1 |DC = stojak EASTUS = szafa1 |Yes |
 | HK-c2-wschód us |dane |10.2.2.5 |hk-c-aset-1 |DC = stojak EASTUS = szafa1 |Nie |

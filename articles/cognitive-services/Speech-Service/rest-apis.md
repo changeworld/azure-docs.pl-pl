@@ -9,12 +9,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: a25c2b7ea7fdfcc6bcaa10baff3a5ae14ae9753b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
-ms.translationtype: HT
+ms.openlocfilehash: 53560fd4f8240c4446898f58992a9319e5177435
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37044824"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085375"
 ---
 # <a name="speech-service-rest-apis"></a>Usługa rozpoznawania mowy interfejsów API REST
 
@@ -265,5 +265,7 @@ Jak wcześniej, upewnij się, że `FetchTokenUri` wartość odpowiada regionie T
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Pobierz wersję próbną subskrypcji mowy](https://azure.microsoft.com/try/cognitive-services/)
-* [Zobacz dostosowywanie modelu mowy](how-to-customize-speech-models.md)
+- [Pobierz wersję próbną subskrypcji mowy](https://azure.microsoft.com/try/cognitive-services/)
+- [Dostosowywanie akustycznego modeli](how-to-customize-acoustic-models.md)
+- [Dostosowywanie modeli języka](how-to-customize-language-model.md)
+

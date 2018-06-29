@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 509df5274a5e44342390036511689fa8f8146807
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: bf25ae5703a632005dd73820fc05347f7b5e16a6
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869805"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097499"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurowanie ustawień usługi Azure Multi-Factor Authentication
 
@@ -292,7 +292,7 @@ Domyślnie użytkownicy nie mogą tworzyć hasła aplikacji. Musi być włączon
 
 Użytkownicy mogą tworzyć hasła aplikacji podczas ich początkowe rejestracyjny. Użytkownik może tworzyć hasła aplikacji na końcu procesu rejestracji.
 
-Użytkownicy mogą także tworzyć hasła aplikacji po rejestracji. Hasła aplikacji można zmienić za pomocą ustawień w portalu Azure lub w portalu usługi Office 365. Aby uzyskać więcej informacji i uzyskać szczegółowe instrukcje dla użytkowników, zobacz [co to są hasła aplikacji w usłudze Azure Multi-Factor Authentication?](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-app-passwords.md)
+Użytkownicy mogą także tworzyć hasła aplikacji po rejestracji. Hasła aplikacji można zmienić za pomocą ustawień w portalu Azure lub w portalu usługi Office 365. Aby uzyskać więcej informacji i uzyskać szczegółowe instrukcje dla użytkowników, zobacz [co to są hasła aplikacji w usłudze Azure Multi-Factor Authentication?](end-user/current/multi-factor-authentication-end-user-app-passwords.md)
 
 <a name="remember-multi-factor-authentication-for-devices-that-users-trust"></a>
 ## <a name="remember-multi-factor-authentication-for-trusted-devices"></a>Należy pamiętać, uwierzytelniania wieloskładnikowego na zaufanych urządzeniach
@@ -301,7 +301,7 @@ _Pamiętaj uwierzytelnianie wieloskładnikowe_ funkcji urządzeń i przeglądare
 >[!IMPORTANT]
 >W przypadku złamania zabezpieczeń konta lub urządzenia, pamiętaj o tym uwierzytelniania wieloskładnikowego na zaufanych urządzeniach może wpłynąć na bezpieczeństwo. Jeśli zostanie naruszone bezpieczeństwo konta firmowego lub zaufanego urządzenia utraty lub kradzieży, [Przywróć uwierzytelnianie wieloskładnikowe na wszystkich urządzeniach](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user).
 >
->Akcja przywracania odwołuje zaufanego stanu ze wszystkich urządzeń, a użytkownik jest wymagane do przeprowadzenia weryfikacji dwuetapowej ponownie. Można również Poinstruuj użytkowników, aby przywrócić usługi Multi-Factor Authentication na urządzeniach z instrukcjami w [zarządzać ustawieniami na potrzeby weryfikacji dwuetapowej](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted).
+>Akcja przywracania odwołuje zaufanego stanu ze wszystkich urządzeń, a użytkownik jest wymagane do przeprowadzenia weryfikacji dwuetapowej ponownie. Można również Poinstruuj użytkowników, aby przywrócić usługi Multi-Factor Authentication na urządzeniach z instrukcjami w [zarządzać ustawieniami na potrzeby weryfikacji dwuetapowej](end-user/current/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted).
 >
 
 ### <a name="how-the-feature-works"></a>Jak działa funkcja
@@ -341,7 +341,7 @@ Po włączeniu funkcji uwierzytelniania wieloskładnikowego Zapamiętaj użytkow
 
 Można wybrać metody weryfikacji, które są dostępne dla użytkowników za pomocą _metody weryfikacji počítačů, které_ funkcji. Poniższa tabela zawiera krótki przegląd metod.
 
-Gdy użytkownicy rejestrują swoje konta dla usługi Azure Multi-Factor Authentication, ich metodę weryfikacji preferowanego one wybierz opcje, które mają włączone. Wskazówki dotyczące procesu rejestracji użytkownika znajduje się w [Skonfiguruj moje konto na potrzeby weryfikacji dwuetapowej](../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-first-time.md).
+Gdy użytkownicy rejestrują swoje konta dla usługi Azure Multi-Factor Authentication, ich metodę weryfikacji preferowanego one wybierz opcje, które mają włączone. Wskazówki dotyczące procesu rejestracji użytkownika znajduje się w [Skonfiguruj moje konto na potrzeby weryfikacji dwuetapowej](end-user/current/multi-factor-authentication-end-user-first-time.md).
 
 | Metoda | Opis |
 |:--- |:--- |

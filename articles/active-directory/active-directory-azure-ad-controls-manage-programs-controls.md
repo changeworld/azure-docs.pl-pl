@@ -3,9 +3,9 @@ title: Zarządzanie programy i kontroluje dla usługi Azure AD dostęp przegląd
 description: Możesz utworzyć dodatkowe programy dla każdego ładu, zarządzania ryzykiem i inicjatywy zgodności w Twojej organizacji, aby zebrać i organizowanie przeglądami dostępu do usługi Azure Active Directory jako formantów.
 services: active-directory
 documentationcenter: ''
-author: markwahl-msft
+author: rolyon
 manager: mtillman
-editor: ''
+editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,12 +14,13 @@ ms.topic: article
 ms.component: compliance-reports
 ms.date: 06/21/2018
 ms.author: rolyon
-ms.openlocfilehash: 06e91b4d52a70ea33f4317a6434c2bd49e5c3bd3
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.reviewer: mwahl
+ms.openlocfilehash: fe2cddbe47f49ee93d3e58beb63d9d82286ec441
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37020978"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37080932"
 ---
 # <a name="manage-programs-and-their-controls"></a>Zarządzanie programów i ich formantów 
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: mbullwin
-ms.openlocfilehash: 0ee712b24478b52dfc5864e59e885e3b9dd6137b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: MT
+ms.openlocfilehash: 95e576eb5ce6834e67d997cde57426fd09db4e6a
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294070"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099800"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Zbieranie, przechowywanie i magazynowanie danych w usłudze Application Insights
 
@@ -128,22 +128,9 @@ Wszystkie dane są szyfrowane podczas przenoszenia go między centrami danych.
 #### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>Czy dane są szyfrowane podczas przesyłania z mojej aplikacji na serwerach usługi Application Insights?
 Tak, firma Microsoft używania protokołu https do wysyłania danych do portalu z niemal wszystkich zestawów SDK, w tym serwerów sieci web, urządzeń i stron sieci web protokołu HTTPS. Jedynym wyjątkiem jest dane przesyłane z zwykłych stron sieci web HTTP. 
 
-## <a name="personally-identifiable-information"></a>Dane osobowe
-#### <a name="could-personally-identifiable-information-pii-be-sent-to-application-insights"></a>Czy osobiście informacji osobowych mógł zostać wysłany do usługi Application Insights?
-Tak, jest możliwe. 
+## <a name="personal-data-stored-in-application-insights"></a>Dane osobowe przechowywane w usłudze Application Insights
 
-Jako ogólne wytyczne:
-
-* Większość standardowych telemetrii (to znaczy telemetrii wysyłane bez pisania żadnego kodu) nie ma jawnego dane osobowe. Jednak może być możliwe do identyfikowania osób przez wnioskowania z kolekcji zdarzeń.
-* Komunikaty wyjątku i śledzenia mogą zawierać dane osobowe
-* Telemetria niestandardowa — to znaczy wywołań takich jak TrackEvent napisany za pomocą interfejsu API lub dziennika śledzenia kodu — może zawierać żadnych danych, którą wybierzesz.
-
-Tabela na końcu tego dokumentu zawiera bardziej szczegółowe opisy zebranych danych.
-
-#### <a name="am-i-responsible-for-complying-with-laws-and-regulations-in-regard-to-pii"></a>Mogę zobowiązani do przestrzegania przepisów eksportowych w odniesieniu do danych osobowych?
-Tak. Jest obowiązek upewnij się, że zbierania i używania danych spełnia z prawami i przepisami oraz z warunkami usług Online firmy Microsoft.
-
-Klientów należy odpowiednio informuje o dane, które aplikacji służy do zbierania i używania danych.
+Nasze [usługi Application Insights danych osobowych artykułu](app-insights-customer-data.md) omówiono w tym temacie szczegółowe.
 
 #### <a name="can-my-users-turn-off-application-insights"></a>Moi użytkownicy mogą wyłączyć funkcję usługi Application Insights?
 Nie bezpośrednio. Firma Microsoft nie udostępnia przełącznik, który użytkownicy mogą pracować wyłączyć usługi Application Insights.
@@ -154,7 +141,7 @@ Jednak taka funkcja można zaimplementować w aplikacji. Wszystkie zestawy SDK o
 Usługa Application Insights nie filtru lub usuwać dane. Należy odpowiednio zarządzania danymi i unikanie wysyłania tych danych do usługi Application Insights.
 
 ## <a name="data-sent-by-application-insights"></a>Dane wysyłane przez usługę Application Insights
-Zestawy SDK różnią się między platformami i jest wiele składników, które można zainstalować. (Zobacz [usługi Application Insights — omówienie][start].) Każdy składnik wysyła innych danych.
+Zestawy SDK różnią się między platformami, a istnieje kilka składników, które można zainstalować. (Zobacz [usługi Application Insights — omówienie][start].) Każdy składnik wysyła innych danych.
 
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>Klasy danych przesyłanych w różnych scenariuszy
 | Twoja Akcja | Klasy danych zebranych (patrz tabela dalej) |
@@ -164,9 +151,9 @@ Zestawy SDK różnią się między platformami i jest wiele składników, które
 | [Dodaj zestaw SDK usługi Application Insights do aplikacji sieci web Java][java] |Kontekstu serwera<br/>Wywnioskowane<br/>Żądanie<br/>Sesja<br/>użytkownicy |
 | [Dodaj zestaw SDK JavaScript do strony sieci web][client] |ClientContext <br/>Wywnioskowane<br/>Strona<br/>ClientPerf<br/>Ajax |
 | [Definiowanie właściwości domyślne][apiproperties] |**Właściwości** na wszystkie standardowe i niestandardowe zdarzenia |
-| [Wywołanie TrackMetric][api] |Wartości numeryczne<br/>**właściwości** |
-| [Wywołanie Śledź *][api] |Nazwa zdarzenia<br/>**właściwości** |
-| [Wywołanie TrackException][api] |**Wyjątki**<br/>Zrzut stosu<br/>**właściwości** |
+| [Wywołanie TrackMetric][api] |Wartości numeryczne<br/>**Właściwości** |
+| [Wywołanie Śledź *][api] |Nazwa zdarzenia<br/>**Właściwości** |
+| [Wywołanie TrackException][api] |**Wyjątki**<br/>Zrzut stosu<br/>**Właściwości** |
 | Zestaw SDK nie można zebrać danych. Na przykład: <br/> -Nie można uzyskać dostępu do liczników wydajności<br/> -wyjątku w inicjatorze telemetrii |Diagnostyka zestawu SDK |
 
 Aby uzyskać [zestawy SDK dla innych platform][platforms], zobacz swoje dokumenty.
@@ -174,7 +161,7 @@ Aby uzyskać [zestawy SDK dla innych platform][platforms], zobacz swoje dokument
 #### <a name="the-classes-of-collected-data"></a>Klasy zebranych danych
 | Klasa zebranych danych | Obejmuje (nie stanowi wyczerpującej listy) |
 | --- | --- |
-| **właściwości** |**Wszystkie dane - ustaleniami kodu** |
+| **Właściwości** |**Wszystkie dane - ustaleniami kodu** |
 | DeviceContext |Identyfikator, adresu IP, ustawienia regionalne, model urządzenia, sieci, typ sieci, nazwa producenta OEM, rozdzielczość ekranu wystąpienia roli, nazwa roli, typu urządzenia |
 | ClientContext |System operacyjny, ustawienia regionalne, języka, sieci, rozdzielczość okna |
 | Sesja |Identyfikator sesji |

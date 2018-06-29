@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: e2512a2af05ee7101713886c3ae1b5c6c74dd3db
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 1a874e31c05d287522810782f743d389c86dbe27
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018542"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098927"
 ---
 # <a name="azure-media-services-release-notes"></a>Informacje o wersji usługi Azure Media Services
 Te informacje o wersji dla usługi Azure Media Services podsumowano zmiany z poprzednich wersji i znane problemy.
@@ -366,7 +366,7 @@ Azure Media Services Pakowarka i modułu szyfrującego wprowadzono następujące
 
 ## <a id="may_changes_14"></a>Zwolnij maja 2014
 ### <a id="may_14_changes"></a>Aktualizuje ogólne usługi Media Services
-Można teraz używać [dynamicznego tworzenia pakietów] do strumienia HLS w wersji 3. Strumień HLS w wersji 3, Dodaj następujący format do ścieżki lokalizatora pochodzenia: * .ism/manifest(format=m3u8-aapl-v3). Aby uzyskać więcej informacji, zobacz [ten blog](http://blog-ndrouin.azurewebsites.net/hls-v3-new-old-thing/).
+Można teraz używać [dynamicznego tworzenia pakietów] do strumienia HLS w wersji 3. Strumień HLS w wersji 3, Dodaj następujący format do ścieżki lokalizatora pochodzenia: * .ism/manifest(format=m3u8-aapl-v3). Aby uzyskać więcej informacji, zobacz [tym forum](https://social.msdn.microsoft.com/Forums/en-US/13b8a776-9519-4145-b9ed-d2b632861fde/dynamic-packaging-to-hls-v3).
 
 Dynamiczne tworzenie pakietów teraz obsługuje także dostarczanie HLS (w wersji 3 i w wersji 4) szyfrowany za pomocą PlayReady oparte na Smooth Streaming statycznie zaszyfrowane za pomocą PlayReady. Aby uzyskać informacje na temat szyfrowania, Smooth Streaming z PlayReady, zobacz [chronić Smooth Streaming z PlayReady](http://msdn.microsoft.com/library/azure/dn189154.aspx).
 

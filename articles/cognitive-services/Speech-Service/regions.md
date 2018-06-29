@@ -7,36 +7,41 @@ manager: wolmfa61
 ms.service: cognitive-services
 ms.technology: speech
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 06/28/2018
 ms.author: mahilleb
-ms.openlocfilehash: a201cc043f673e2285ea48950804d97b96f881ed
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
-ms.translationtype: HT
+ms.openlocfilehash: 1eb3768f5a5c5a27a45dde3f62f862f36fa3e8ac
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055008"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098502"
 ---
-# <a name="regions-and-endpoints-of-the-speech-service"></a>Punktów końcowych usługi mowy i regiony
+# <a name="regions-of-the-speech-service"></a>Regiony usługi mowy
 
-> [!NOTE]
-> Obszar nazw w [mowy SDK](speech-sdk.md) pasuje do pierwszej części domeny punkty końcowe podane poniżej.
-> Na przykład użyć `westus` do określenia regionu zachodnie stany USA w zestawie SDK mowy.
+Usługa rozpoznawania mowy jest dostępna w różnych regionach.
+Po utworzeniu subskrypcji można wybrać dostępny region, w zależności od potrzeb.
 
-## <a name="speech-to-text"></a>Zamiana mowy na tekst
+Podczas korzystania z subskrypcji masz konto dla tego obszaru przez Ciebie.
 
-[!include[](includes/endpoints-speech-to-text.md)]
+## <a name="rest-api"></a>Interfejs API REST
 
-## <a name="text-to-speech"></a>Zamiana tekstu na mowę
+Przy użyciu interfejsu API REST, wybierz punkty końcowe prawo określonego regionu.
+Zobacz [interfejsów API REST](rest-apis.md) szczegółowe informacje.
 
-[!include[](includes/endpoints-text-to-speech.md)]
 
-## <a name="authentication"></a>Authentication
 
-[!include[](includes/endpoints-token-service.md)]
+## <a name="speech-sdk"></a>Zestaw SDK rozpoznawania mowy
 
-Zobacz [tutaj](rest-apis.md#authentication) szczegółowe uzyskiwania i odświeżanie tokeny autoryzacji.
+W [mowy SDK](speech-sdk.md), regiony są określone jako ciąg (na przykład jako parametr [SpeechFactory.FromSubscription](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechfactory.fromsubscription) mowy zestawu SDK dla języka C#).
 
-## <a name="language-understanding-speech-sdk-only"></a>Opis języka (tylko SDK mowy)
+W poniższej tabeli przedstawiono dostępne regiony rozpoznawania mowy i translację:
 
-Regiony usługi opis języka są wyświetlane [tutaj](/azure/cognitive-services/luis/luis-reference-regions).
-W zestawie SDK mowy Określ tych regionów, w pierwszej części nazwy domeny dla punktu końcowego (na przykład `westus`).
+Region| Wartość parametru regionu w zestawie SDK mowy
+-|-
+Zachodnie stany USA| `westus`
+Azja Wschodnia| `eastasia`
+Europa Północna| `northeurope`
+
+Dostępne regiony konwersji uznania za pośrednictwem usługi SDK mowy są wymienione w [strony region usługi języka opis](/azure/cognitive-services/luis/luis-reference-regions).
+Dla każdego regionu publikowania na liście odpowiadającego mu parametru region mowy SDK jest określana jako pierwsza część nazwy punktu końcowego.
+Na przykład użyć `westus` do określenia publikowania regionu zachodnie stany USA.

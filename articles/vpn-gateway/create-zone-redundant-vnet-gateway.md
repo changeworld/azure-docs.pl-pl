@@ -7,14 +7,14 @@ author: cherylmc
 Customer intent: As someone with a basic network background, I want to understand how to create zone-redundant gateways.
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 06/25/2018
+ms.date: 06/28/2018
 ms.author: cherylmc
-ms.openlocfilehash: a08c0f772965ddb2b40ac1ced1f26ade4cba3197
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: c484358bf98f0121cfc3ce270b162b01c75b5b09
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37017036"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096237"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones---preview"></a>Utwórz bramę sieci wirtualnej strefowo nadmiarowy w strefach dostępności Azure - Preview
 
@@ -177,7 +177,7 @@ W tym kroku wybierz instrukcje dotyczące bramy, która ma zostać utworzona. Wy
 Żądaj publicznego adresu IP z **standardowe** SKU publicznego adresu IP i nie określaj żadnej strefy. W tym przypadku standardowe publiczny adres IP utworzona będzie strefowo nadmiarowy publicznego adresu IP.   
 
 ```azurepowershell-interactive
-$pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Dynamic -Sku Standard
+$pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard
 ```
 
 ### <a name="ipzonalgw"></a>Zonal bram
@@ -185,7 +185,7 @@ $pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Nam
 Żądaj publicznego adresu IP z **standardowe** SKU publicznego adresu IP. Określ strefę (1, 2 lub 3). Wszystkie wystąpienia bramy zostanie wdrożony w tej strefie.
 
 ```azurepowershell-interactive
-$pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Dynamic -Sku Standard -Zone 1
+$pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard -Zone 1
 ```
 
 ### <a name="ipregionalgw"></a>Regionalne bram

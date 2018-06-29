@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
-ms.openlocfilehash: 867a48674fe2489629a887ff9626d8e10b41e653
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e3ee75a07f19fef50d9aca61773bd7ea860f2ca4
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34613986"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37102476"
 ---
 > [!div class="op_single_selector"]
 > * [Java (asynchroniczny)](performance-tips-async-java.md)
@@ -49,7 +49,7 @@ Dlatego jeśli "jak poprawić wydajność mojej bazy danych?" należy wziąć po
 
 3. **Dostrajanie ConnectionPolicy**
 
-    Azure DB rozwiązania Cosmos żądania są wykonywane za pośrednictwem protokołu HTTPS/REST podczas przy użyciu zestawu SDK Java Async i są poddawane domyślny rozmiar puli połączeń maksymalna (w 1000). Ta wartość domyślna powinna być idealne w większości przypadków użycia. Jednak w przypadku, gdy istnieje bardzo duże kolekcja wiele partycji, można ustawić połączenia maksymalny rozmiar puli na większą liczbę (powiedzieć, 1500) przy użyciu setMaxPoolSize.
+    Azure DB rozwiązania Cosmos żądania są wykonywane za pośrednictwem protokołu HTTPS/REST podczas przy użyciu zestawu SDK Java Async i są poddawane domyślny rozmiar puli połączeń maksymalna (w 1000). Ta wartość domyślna powinna być idealne w większości przypadków użycia. Jednak w przypadku, gdy masz dużą kolekcję wiele partycji, można ustawić połączenia maksymalny rozmiar puli na większą liczbę (powiedzieć, 1500) przy użyciu setMaxPoolSize.
 
 4. **Dostrajanie równoległe zapytania dla kolekcji partycjonowanych**
 
@@ -83,11 +83,11 @@ Dlatego jeśli "jak poprawić wydajność mojej bazy danych?" należy wziąć po
 
     Mogą również ustawić za pomocą metody setMaxItemCount rozmiar strony.
     
-9. **Użyć odpowiednich harmonogramu (należy unikać kradzież Netty we/wy eventloop — wątków)**
+9. **Użyć odpowiednich harmonogramu (należy unikać kradzież zdarzeń pętli we/wy Netty wątków)**
 
-    Zestaw SDK Java Async używa [netty](https://netty.io/) dla nieblokujące we/wy. Zestaw SDK używa stałej liczby wątków netty eventloop — we/wy (rdzeni tyle Procesora, które na komputerze) do wykonywania operacji We/Wy. Według zwracane przez interfejs API emituje wyników na jednym z udostępnionego wątków netty eventloop — we/wy. Dlatego należy blokuje udostępnionego wątków netty eventloop — we/wy. Podczas pracy znacznym procesora CPU lub zablokowania operacji We/Wy wątku netty eventloop — może spowodować zakleszczenie lub znacznie ograniczyć przepustowość zestawu SDK.
+    Zestaw SDK Java Async używa [netty](https://netty.io/) dla nieblokujące we/wy. Zestaw SDK używa stałej liczby wątków pętli zdarzenia netty we/wy (rdzeni tyle Procesora, które na komputerze) do wykonywania operacji We/Wy. Według zwracane przez interfejs API emituje wyników na jednym z udostępnionego pętli zdarzenia we/wy: netty wątków. Dlatego należy blokuje udostępnionego pętli zdarzenia we/wy: netty wątków. Podczas pracy znacznym procesora CPU lub blokowanie operacji We/Wy wątku netty pętli zdarzenia mogą spowodować zakleszczenie lub znacznie ograniczyć przepustowość zestawu SDK.
 
-    Na przykład następujący kod wykonuje intensywne prac procesora cpu w wątku netty we/wy eventloop —:
+    Na przykład następujący kod wykonuje intensywne prac procesora cpu w pętli zdarzenia netty wątków We/Wy:
 
     ```java
     Observable<ResourceResponse<Document>> createDocObs = asyncDocumentClient.createDocument(
@@ -103,7 +103,7 @@ Dlatego jeśli "jak poprawić wydajność mojej bazy danych?" należy wziąć po
       });
     ```
 
-    Po otrzymaniu wyników, jeśli chcesz wykonać intensywnie z Procesora działają w wyniku należy unikać wykonywania wątku netty we/wy eventloop — itd. Zamiast tego możesz podać własne harmonogramu do zapewnienia systemem pracy własne wątku.
+    Po otrzymaniu wyników, jeśli chcesz wykonać intensywnie z Procesora działają w wyniku należy unikać wykonywania wątku netty we/wy pętli zdarzeń itd. Zamiast tego możesz podać własne harmonogramu do zapewnienia systemem pracy własne wątku.
 
     ```java
     import rx.schedulers;
@@ -126,13 +126,13 @@ Dlatego jeśli "jak poprawić wydajność mojej bazy danych?" należy wziąć po
 
     Aby uzyskać więcej informacji, zapoznaj się [Github strony](https://github.com/Azure/azure-cosmosdb-java) dla zestawu SDK Java asynchronicznego.
 
-10. **Wyłącz rejestrowanie w netty** rejestrowanie biblioteki Netty jest chatty i musi być wyłączona (pomijanie dziennika w konfiguracji może być za mało) aby uniknąć dodatkowych kosztów procesora CPU. Jeśli nie jesteś w trybie debugowania, netty Wyłącz rejestrowanie całkowicie. Dlatego w przypadku korzystania z narzędzia log4j do usunięcia dodatkowych kosztów Procesora poniesionych przez ``org.apache.log4j.Category.callAppenders()`` z netty Dodaj następujący wiersz do baza kodu:
+10. **Wyłącz rejestrowanie w netty** rejestrowanie biblioteki Netty jest chatty i musi być wyłączona (pomijanie logowania w konfiguracji może być za mało) aby uniknąć dodatkowych kosztów procesora CPU. Jeśli nie jesteś w trybie debugowania, netty Wyłącz rejestrowanie całkowicie. Dlatego w przypadku korzystania z narzędzia log4j do usunięcia dodatkowych kosztów Procesora poniesionych przez ``org.apache.log4j.Category.callAppenders()`` z netty Dodaj następujący wiersz do baza kodu:
 
     ```java
     org.apache.log4j.Logger.getLogger("io.netty").setLevel(org.apache.log4j.Level.OFF);
     ```
 
-11. **OS otwartych plików Limit zasobów** systemy Linux niektóre (na przykład Redhat) mają górny limit liczby otwarte pliki i dlatego całkowitą liczbę połączeń. Uruchom następujące polecenie, aby wyświetlić bieżące ograniczenia:
+11. **OS otwartych plików Limit zasobów** systemy Linux niektóre (na przykład Red Hat) mają górny limit liczby otwarte pliki i dlatego całkowitą liczbę połączeń. Uruchom następujące polecenie, aby wyświetlić bieżące ograniczenia:
 
     ```bash
     ulimit -a
@@ -170,7 +170,7 @@ Dlatego jeśli "jak poprawić wydajność mojej bazy danych?" należy wziąć po
     </dependency>
     ```
 
-W przypadku innych platform (Redhat, Windows, Mac, itp.) dotyczą te instrukcje https://netty.io/wiki/forked-tomcat-native.html
+Dla innych platform (Red Hat, Windows, Mac, itp.) dotyczą te instrukcje https://netty.io/wiki/forked-tomcat-native.html
 
 ## <a name="indexing-policy"></a>Zasady indeksowania
  
@@ -209,7 +209,7 @@ W przypadku innych platform (Redhat, Windows, Mac, itp.) dotyczą te instrukcje 
     response.getRequestCharge();
     ```             
 
-    Żądanie zwrócony w nagłówku to jest część sieci udostępnionej przepływności. Na przykład jeśli masz 2000 elastycznie RU/s, a jeśli poprzednie zapytanie zwraca 1000 dokumentów o rozmiarze 1KB, kosztów operacji 1000. Tak w ciągu sekundy, serwer będzie honorować tylko dwa takich żądań przed ograniczania kolejnych żądań. Aby uzyskać więcej informacji, zobacz [jednostek żądania](request-units.md) i [Kalkulator jednostki żądania](https://www.documentdb.com/capacityplanner).
+    Żądanie zwrócony w nagłówku to jest część sieci udostępnionej przepływności. Na przykład jeśli masz 2000 elastycznie RU/s, a jeśli poprzednie zapytanie zwraca 1000 dokumentów o rozmiarze 1KB, kosztów operacji 1000. Tak w ciągu sekundy, serwer będzie honorować tylko dwa takich żądań przed tempa ograniczania kolejnych żądań. Aby uzyskać więcej informacji, zobacz [jednostek żądania](request-units.md) i [Kalkulator jednostki żądania](https://www.documentdb.com/capacityplanner).
 <a id="429"></a>
 2. **Współczynnik ograniczanie żądań szybkość dojścia za duży**
 

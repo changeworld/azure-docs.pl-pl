@@ -8,12 +8,12 @@ ms.date: 06/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b7418947c44c62883ef13c4be130458bb9f9ce6c
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
-ms.translationtype: HT
+ms.openlocfilehash: aa371ef2ebad01fba379675e8438f56dca9ce356
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030383"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096971"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Zrozumienie jego architektura i środowiska uruchomieniowego krawędzi IoT Azure
 
@@ -40,12 +40,12 @@ Zarówno Centrum krawędzi, jak i agenta krawędzi są moduły, podobnie jak inn
 Koncentrator krawędzi jest jednym z dwóch modułów, które tworzą środowiska uruchomieniowego Azure IoT krawędzi. Działa ona jako lokalny serwer proxy dla Centrum IoT przez udostępnianie tego samego punkty końcowe protokołu jako centrum IoT. Ta spójności oznacza, że klienci (czy urządzeń lub moduły) mogą łączyć się z środowiska uruchomieniowego krawędzi IoT tak samo, jak z Centrum IoT. 
 
 >[!NOTE]
-> W publicznej wersji zapoznawczej Centrum krawędzi obsługuje tylko klientów łączących się za pomocą MQTT.
+>Koncentrator krawędzi obsługuje klientów łączących się za pomocą MQTT lub AMQP. Nie obsługuje klientów korzystających z protokołu HTTP. 
 
 Koncentrator Edge nie jest pełną wersję Centrum IoT uruchomionej na komputerze lokalnym. Istnieje kilka kwestii, które Centrum krawędzi w trybie dyskretnym deleguje do Centrum IoT. Na przykład Centrum krawędzi przekazuje żądania uwierzytelniania do Centrum IoT, gdy urządzenia po raz pierwszy próbuje nawiązać. Po pierwsze połączenie zostanie nawiązane, informacje o zabezpieczeniach są buforowane lokalnie przez koncentrator krawędzi. Kolejnych połączeń z tym urządzenia mogą bez konieczności uwierzytelniania w chmurze. 
 
 >[!NOTE]
-> W publicznej wersji zapoznawczej środowiska uruchomieniowego musi być podłączony za każdym razem, gdy próbuje uwierzytelniania urządzenia.
+>Środowisko uruchomieniowe muszą być połączone za każdym razem, gdy próbuje uwierzytelniania urządzenia.
 
 Aby ograniczyć przepustowość rozwiązania IoT krawędzi używa, Centrum krawędzi optymalizuje, ile rzeczywiste połączenia są nawiązywane do chmury. Koncentrator krawędzi ma logiczny połączenia od klientów, takie jak moduły lub urządzeń typu liść i łączy je dla pojedynczego połączenia fizycznego do chmury. Szczegóły tego procesu są niewidoczne dla pozostałej części rozwiązania. Klienci wydaje się, że mają własne połączenie w chmurze, nawet jeśli ich są wszystkie wysyłane za pośrednictwem tego samego połączenia. 
 

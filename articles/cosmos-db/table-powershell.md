@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: cce1cfc4cf883fcecab0e339177bc70c18e7af0b
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 9365fd70036c8b489efaea42bda9c670182c496c
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798648"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082278"
 ---
 # <a name="perform-azure-cosmos-db-table-api-operations-with-azure-powershell"></a>Wykonywanie operacji interfejsu API Azure rozwiązania Cosmos DB tabeli przy użyciu programu Azure PowerShell 
 
@@ -45,7 +45,7 @@ Po zainstalowaniu programu Azure PowerShell lub zaktualizowaniu, należy zainsta
 Install-Module AzureRmStorageTable
 ```
 
-Następnie zainstaluj zestawy Azure DB rozwiązania Cosmos lokalnie, aby używać tych poleceń cmdlet programu PowerShell. Aby uzyskać instrukcje, jak to zrobić, zobacz [modułu PowerShell tabel magazynu Menedżera zasobów Azure dla rozwiązania Cosmos tabel bazy danych](https://blogs.technet.microsoft.com/paulomarques/2017/05/23/azure-rm-storage-tables-powershell-module-now-includes-support-for-cosmos-db-tables/).
+Następnie zainstaluj zestawy Azure DB rozwiązania Cosmos lokalnie, aby używać tych poleceń cmdlet programu PowerShell. Aby uzyskać instrukcje, jak to zrobić, zobacz [modułu PowerShell tabel magazynu Menedżera zasobów Azure dla rozwiązania Cosmos tabel bazy danych](https://blogs.technet.microsoft.com/paulomarques/2017/01/17/working-with-azure-storage-tables-from-powershell/).
 
 Wypróbowanie następujących czynnościach, musisz mieć konto bazy danych Azure DB rozwiązania Cosmos. Jeśli nie masz jeszcze jeden tworzenia rozwiązania Cosmos Azure nowej bazy danych konta przy użyciu [portalu Azure](https://portal.azure.com). Aby uzyskać pomoc przy tworzeniu nowego konta bazy danych, zobacz [bazy danych Azure rozwiązania Cosmos: Tworzenie konta bazy danych](create-table-dotnet.md#create-a-database-account).
 
@@ -88,7 +88,7 @@ Nie można wyświetlić listę tabel w ramach konta bazy danych rozwiązania Cos
 
 ## <a name="delete-a-table"></a>Usuwanie tabeli 
 
-PowerShell nie obsługuje usuwania tabel z bazy danych Azure rozwiązania Cosmos. Aby usunąć tabeli, przejdź do [portalu Azure](https://azure.portal.com), Znajdź konto bazy danych Azure rozwiązania Cosmos używasz, następnie znajdź i Usuń tabelę. 
+PowerShell nie obsługuje usuwania tabel z bazy danych Azure rozwiązania Cosmos. Aby usunąć tabeli, przejdź do [portalu Azure](https://portal.azure.com), Znajdź konto bazy danych Azure rozwiązania Cosmos używasz, następnie znajdź i Usuń tabelę. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

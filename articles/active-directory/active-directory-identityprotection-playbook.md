@@ -2,7 +2,7 @@
 title: Azure Active Directory Identity Protection podręcznika dotyczącego | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak Azure AD Identity Protection umożliwia ograniczenie możliwości osoby atakującej, która wykorzystać, którego bezpieczeństwo zostało naruszone tożsamości lub urządzenie i secure tożsamości lub urządzeń, które wcześniej podejrzenia lub znane naruszenia.
 services: active-directory
-keywords: ochronę tożsamości usługi Azure active directory, usługa cloud app discovery, zarządzanie aplikacjami, zabezpieczeń, ryzyka, poziom ryzyka, luki w zabezpieczeniach, zasady zabezpieczeń
+keywords: ochronę tożsamości usługi Azure active directory, rozwiązania cloud discovery, zarządzanie aplikacjami, zabezpieczeń, ryzyka, poziom ryzyka, luki w zabezpieczeniach, zasady zabezpieczeń
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 06/27/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: ff4a8bfb5a92f0969aef726893bebb6aacd4d942
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 566748d7d7a2ec89c69ab706700583a9db1f5246
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714310"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083961"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure podręcznikowym ochronę tożsamości w usłudze Active Directory
 
@@ -104,7 +104,7 @@ Rejestrowanie zostaną wyświetlone na pulpicie nawigacyjnym ochronę tożsamoś
 Luki w zabezpieczeniach występują słabych w środowisku usługi Azure AD, które mogą być używane przez aktora nieprawidłowy. Obecnie 3 typy luk w zabezpieczeniach są udostępniane w Azure AD Identity Protection, zwiększają inne funkcje usługi Azure AD. Te luki w zabezpieczeniach będą wyświetlane na pulpicie nawigacyjnym Identity Protection automatycznie po skonfigurowaniu tych funkcji.
 
 * Usługi Azure AD [uwierzytelnianie wieloskładnikowe](authentication/multi-factor-authentication.md)
-* Usługi Azure AD [Cloud App Discovery](manage-apps/cloud-app-discovery.md).
+* Usługi Azure AD [Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
 * Usługi Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md). 
 
 

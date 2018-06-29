@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 634cecb247686afd8c5c749d6e28b301d7e07c4f
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: d8966edb6061ed07f5aecb9682fca081ed589040
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263511"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083978"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>Strumienia Azure dzienników diagnostycznych do analizy dzienników
 
@@ -30,7 +30,7 @@ Analiza dzienników Azure jest narzędziem elastyczne dziennik wyszukiwania i an
 
 ## <a name="enable-streaming-of-diagnostic-logs-to-log-analytics"></a>Przesyłania strumieniowego dzienników diagnostycznych do analizy dzienników
 
-Można włączyć przesyłania strumieniowego dzienników diagnostycznych programowo, w portalu lub przy użyciu [interfejsów API REST Monitor Azure](https://docs.microsoft.com/rest/api/monitor/servicediagnosticsettings). W obu przypadkach należy utworzyć ustawienie diagnostyczne, w którym można określić obszaru roboczego analizy dzienników i kategorie dziennika i metryki, aby wysłać do tego obszaru roboczego. Diagnostyka **kategorii dziennika** jest typem dziennika, która może zapewnić zasobu.
+Można włączyć przesyłania strumieniowego dzienników diagnostycznych programowo, w portalu lub przy użyciu [interfejsów API REST Monitor Azure](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings). W obu przypadkach należy utworzyć ustawienie diagnostyczne, w którym można określić obszaru roboczego analizy dzienników i kategorie dziennika i metryki, aby wysłać do tego obszaru roboczego. Diagnostyka **kategorii dziennika** jest typem dziennika, która może zapewnić zasobu.
 
 Obszar roboczy analizy dzienników nie musi znajdować się w tej samej subskrypcji co zasób emitowanie dzienniki, dopóki użytkownik, który konfiguruje ustawienia ma odpowiedni dostęp RBAC do obu subskrypcji.
 

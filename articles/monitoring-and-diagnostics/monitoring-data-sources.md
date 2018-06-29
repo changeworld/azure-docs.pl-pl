@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 97eca81a8ddc2726bf5de0f4ad7ba0bdf1df1d05
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 78b3288cf4973efa2684252581000d0e4fc56cae
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220088"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083002"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Wykorzystują dane monitorowania z platformy Azure
 
@@ -28,7 +28,7 @@ Na platformie Azure możemy są łączące dane monitorowania w jednym miejscu z
 | Metryki niestandardowe lub aplikacji | Metryki | Wszelkie aplikacje instrumentowane przy użyciu usługi Application Insights | <ul><li>**Interfejs API REST:** [usługi Application Insights interfejsu API REST](https://dev.applicationinsights.io/reference)</li></ul> |
 | Metryki magazynu | Metryki | Azure Storage | <ul><li>**Tabela magazynu:** [analityka magazynu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
 | Dane dotyczące rozliczeń | Metryki | Wszystkie usługi Azure | <ul><li>**Interfejs API REST:** [API RateCard i użycia zasobów platformy Azure](../billing/billing-usage-rate-card-overview.md)</li></ul> |
-| Dziennik aktywności | Zdarzenia | Wszystkie usługi Azure | <ul><li>**Interfejs API REST:** [Azure monitorowania zdarzeń interfejsu API](https://docs.microsoft.com/rest/api/monitor/events)</li><li>**Magazyn obiektów blob lub zdarzenia koncentratora:** [profilu dziennika](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)</li></ul> |
+| Dziennik aktywności | Zdarzenia | Wszystkie usługi Azure | <ul><li>**Interfejs API REST:** [Azure monitorowania zdarzeń interfejsu API](https://docs.microsoft.com/en-us/rest/api/monitor/eventcategories)</li><li>**Magazyn obiektów blob lub zdarzenia koncentratora:** [profilu dziennika](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)</li></ul> |
 | Dzienniki diagnostyczne Azure monitora | Zdarzenia | [Zobacz tutaj](monitoring-diagnostic-logs-schema.md) | <ul><li>**Magazyn obiektów blob lub zdarzenia koncentratora:** [ustawień diagnostycznych](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)</li></ul> |
 | Obliczenia bazy danych (np dzienniki systemu operacyjnego gościa. IIS, ETW, syslogs) | Zdarzenia | [Windows](../virtual-machines-dotnet-diagnostics.md) i maszyn wirtualnych systemu Linux (v2) [usługi w chmurze](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md), [usługi sieci szkieletowej](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**Tabela magazynu lub obiektu blob:** [Diagnostyka systemu Windows lub Linux Azure](../cloud-services/cloud-services-dotnet-diagnostics-storage.md)</li><li>**Centrum zdarzeń:** [diagnostyki Windows Azure](../event-hubs/event-hubs-streaming-azure-diags-data.md)</li></ul> |
 | Dzienniki usługi aplikacji | Zdarzenia | Usługi aplikacji | <ul><li>**Plik, tabeli lub magazynu obiektów blob:** [sieci Web diagnostyki aplikacji](../app-service/web-sites-enable-diagnostic-log.md)</li></ul> |
