@@ -13,23 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 2c25bff60adc1f3d462cc6a437eab0d46f9fa413
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 034c9a321f402bada87290f6aa72fc7e416ef2c6
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287875"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054548"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Kopiowanie danych z systemu plików HDFS przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](v1/data-factory-hdfs-connector.md)
-> * [Wersja 2 — wersja zapoznawcza](connector-hdfs.md)
+> * [W wersji 1](v1/data-factory-hdfs-connector.md)
+> * [Bieżąca wersja](connector-hdfs.md)
 
 W tym artykule omówiono sposób używania działania kopiowania w fabryce danych Azure można skopiować danych z systemu plików HDFS. Opiera się na [skopiuj omówienie działania](copy-activity-overview.md) artykułu, który przedstawia ogólny przegląd działanie kopiowania.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [łącznika systemu plików HDFS w wersji 1](v1/data-factory-hdfs-connector.md).
-
 
 ## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
@@ -164,7 +160,7 @@ Aby skopiować dane z systemu plików HDFS, Ustaw typ źródła w przypadku dzia
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi mieć ustawioną właściwość type źródła działania kopiowania: **HdfsSource** |Yes |
-| Cykliczne | Wskazuje, czy dane są odczytywane rekursywnie z folderów sub lub tylko określonego folderu. Uwaga: po cykliczne ma ustawioną wartość PRAWDA, a obiekt sink jest magazynu opartych na plikach, pusty folder/podrzędne-folder nie będą kopiowane utworzone w ujścia.<br/>Dozwolone wartości to: **true** (ustawienie domyślne), **false** | Nie |
+| cykliczne | Wskazuje, czy dane są odczytywane rekursywnie z folderów sub lub tylko określonego folderu. Uwaga: po cykliczne ma ustawioną wartość PRAWDA, a obiekt sink jest magazynu opartych na plikach, pusty folder/podrzędne-folder nie będą kopiowane utworzone w ujścia.<br/>Dozwolone wartości to: **true** (ustawienie domyślne), **false** | Nie |
 | distcpSettings | Grupy właściwości, korzystając z narzędzia DistCp systemu plików HDFS. | Nie |
 | resourceManagerEndpoint | Punkt końcowy Yarn ResourceManager | Tak, jeśli za pomocą narzędzia DistCp |
 | tempScriptPath | Ścieżka folderu, używany do przechowywania tymczasowego narzędzia DistCp polecenia skryptu. Plik skryptu jest generowany przez fabryki danych i zostaną usunięte po zakończeniu zadania kopiowania. | Tak, jeśli za pomocą narzędzia DistCp |

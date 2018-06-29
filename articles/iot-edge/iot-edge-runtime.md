@@ -4,18 +4,18 @@ description: Więcej informacji na temat obsługi krawędzi IoT Azure oraz jak p
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 02/15/2018
+ms.date: 06/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4c44713d6b58edd3a18b0d20992d31dec7377fa7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.openlocfilehash: b7418947c44c62883ef13c4be130458bb9f9ce6c
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632078"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030383"
 ---
-# <a name="understand-the-azure-iot-edge-runtime-and-its-architecture---preview"></a>Zrozumienie środowiska uruchomieniowego Azure IoT Edge i jego architektura - preview
+# <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Zrozumienie jego architektura i środowiska uruchomieniowego krawędzi IoT Azure
 
 Środowisko uruchomieniowe krawędzi IoT jest kolekcją programów, które muszą być zainstalowane na urządzeniu, aby można je było uważać urządzenia IoT. Zbiorczo składników środowiska uruchomieniowego krawędzi IoT Włącz urządzenia brzegowe IoT otrzymać kod wymagany do uruchomienia na brzegu i komunikacji wyniki. 
 
@@ -90,9 +90,9 @@ Aby rozpocząć wykonywania agenta krawędzi, uruchom polecenie start azure-iot-
 
 Każdy element w słowniku modułów zawiera informacje na temat modułu i jest używana przez agenta krawędzi kontroli cyklu życia modułu. Niektóre z bardziej interesującego właściwości to: 
 
-* **Settings.Image** — obraz kontenera, który używa krawędź agent można uruchomić modułu. Musi być skonfigurowany agent krawędzi przy użyciu poświadczeń dla kontenera rejestru, jeśli obraz jest chroniony hasłem. Aby skonfigurować agenta krawędzi, użyj następującego polecenia: `azure-iot-edge-runtime-ctl.py –configure`
+* **Settings.Image** — obraz kontenera, który używa krawędź agent można uruchomić modułu. Musi być skonfigurowany agent krawędzi przy użyciu poświadczeń dla kontenera rejestru, jeśli obraz jest chroniony hasłem. Aby skonfigurować agenta krawędzi, zaktualizuj `config.yaml` pliku. W systemie Linux Użyj następującego polecenia: `sudo nano /etc/iotedge/config.yaml`
 * **settings.createOptions** — ciąg, który jest przekazywany bezpośrednio do demona Docker podczas uruchamiania modułu kontenera. Umożliwia dodanie opcji Docker w tej właściwości zaawansowane opcje, takie jak port przekazywania lub instalowanie woluminów do kontenera modułu.  
-* **Stan** — stan, w którym agent krawędzi umieszcza modułu. Ta wartość jest zazwyczaj równa *systemem* większość użytkowników ma agenta krawędzi, aby natychmiast uruchomić wszystkie moduły na urządzeniu. Można jednak określić początkowy stan modułu, aby zostać zatrzymane i poczekaj, aż przyszłości mówić krawędź agent można uruchomić modułu. Agent krawędzi raportuje stan każdego modułu ją z chmurą we właściwościach zgłoszony. Różnica między żądanej właściwości, a właściwość zgłoszone jest wskaźnik lub zachowania urządzeń. Dostępne są następujące stany obsługiwane:
+* **Stan** — stan, w którym agent krawędzi umieszcza modułu. Ta wartość jest zazwyczaj równa *systemem* większość użytkowników ma agenta krawędzi, aby natychmiast uruchomić wszystkie moduły na urządzeniu. Można jednak określić początkowy stan modułu, aby zostać zatrzymane i poczekaj, aż przyszłości mówić krawędź agent można uruchomić modułu. Agent krawędzi raportuje stan każdego modułu ją z chmurą we właściwościach zgłoszony. Różnica między żądanej właściwości, a właściwość zgłoszone jest wskaźnikiem błędna urządzenia. Dostępne są następujące stany obsługiwane:
    * Pobieranie
    * Działanie
    * W złej kondycji
@@ -114,7 +114,7 @@ IoT krawędź agent wysyła odpowiedź środowiska uruchomieniowego Centrum IoT.
 
 ### <a name="security"></a>Bezpieczeństwo
 
-Agent krawędzi IoT odgrywa kluczową rolę w oknie zabezpieczenia urządzenia IoT. Na przykład wykonuje akcje, takie jak weryfikacja obrazu moduł przed jego uruchomienie. Te funkcje zostaną dodane w wersji ogólnodostępnej funkcji w wersji 2. 
+Agent krawędzi IoT odgrywa kluczową rolę w oknie zabezpieczenia urządzenia IoT. Na przykład wykonuje akcje, takie jak weryfikacja obrazu moduł przed jego uruchomienie. Te funkcje zostaną dodane ogólnie dostępna. 
 
 <!-- For more information about the Azure IoT Edge security framework, see []. -->
 

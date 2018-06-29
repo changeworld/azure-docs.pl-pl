@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: maghan
-ms.openlocfilehash: c8204e204978a9fd7cda2e9c02be0c70722b01bb
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
-ms.translationtype: MT
+ms.openlocfilehash: e9d43d46f1979e985a5da96fda608eec55ad7830
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021364"
+ms.locfileid: "37031060"
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Analiza biznesowa programu SQL Server w usłudze Azure Virtual Machines
 > [!IMPORTANT] 
@@ -351,5 +351,5 @@ Na poniższym diagramie przedstawiono porty do otwarcia w zaporze maszyny Wirtua
 > [Prześlij opinię i informacje kontaktowe za pomocą programu Microsoft SQL Server Connect](https://connect.microsoft.com/SQLServer/Feedback)
 
 ### <a name="community-content"></a>Zawartość społeczności
-* [Zarządzanie bazą danych Azure SQL przy użyciu programu PowerShell](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
+* [Zarządzanie bazą danych Azure SQL przy użyciu programu PowerShell](https://azure.microsoft.com/blog/windows-azure-sql-database-management-with-powershell/)
 
