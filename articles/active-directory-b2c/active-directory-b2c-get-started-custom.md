@@ -1,21 +1,21 @@
 ---
-title: 'Usługa Azure Active Directory B2C: Wprowadzenie do zasad niestandardowych | Dokumentacja firmy Microsoft'
-description: Jak rozpocząć pracę z niestandardowych zasad usługi Azure Active Directory B2C
+title: Wprowadzenie do zasad niestandardowych w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Jak rozpocząć pracę z niestandardowych zasad usługi Azure Active Directory B2C.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 502f88bd08c05f71988763fedeba4d596aa409b6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 8ff69942971950e2d4a274e7d3502379a26326c7
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34709295"
 ---
 # <a name="azure-active-directory-b2c-get-started-with-custom-policies"></a>Usługa Azure Active Directory B2C: Wprowadzenie do zasad niestandardowych
 
@@ -73,8 +73,8 @@ Usługa Azure AD B2C wymaga zarejestrować dwa dodatkowe aplikacje, które są u
 
 1. W [portalu Azure](https://portal.azure.com), przejdź do [kontekstu dzierżawy usługi Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md).
 2. Otwórz **usługi Azure Active Directory** bloku (nie **usługi Azure AD B2C** bloku). Może być konieczne wybranie **więcej usług** go znaleźć.
-3. Wybierz **rejestracji aplikacji**.
-4. Wybierz **nowej rejestracji aplikacji**.
+3. Wybierz pozycję **Rejestracje aplikacji**.
+4. Wybierz pozycję **Rejestrowanie nowej aplikacji**.
    * Aby uzyskać **nazwa**, użyj `IdentityExperienceFramework`.
    * Aby uzyskać **typu aplikacji**, użyj **aplikacji/interfejs API sieci Web**.
    * Dla **adres URL logowania**, użyj `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`, gdzie `yourtenant` oznacza nazwę domeny dzierżawy usługi Azure AD B2C.
@@ -85,8 +85,8 @@ Usługa Azure AD B2C wymaga zarejestrować dwa dodatkowe aplikacje, które są u
 
 ### <a name="create-the-proxyidentityexperienceframework-application"></a>Tworzenie aplikacji ProxyIdentityExperienceFramework
 
-1. Wybierz **rejestracji aplikacji**.
-1. Wybierz **nowej rejestracji aplikacji**.
+1. Wybierz pozycję **Rejestracje aplikacji**.
+1. Wybierz pozycję **Rejestrowanie nowej aplikacji**.
    * Aby uzyskać **nazwa**, użyj `ProxyIdentityExperienceFramework`.
    * Dla **typu aplikacji**, użyj **natywnego**.
    * Dla **identyfikator URI przekierowania**, użyj `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`, gdzie `yourtenant` jest dzierżawy usługi Azure AD B2C.
@@ -99,7 +99,7 @@ Usługa Azure AD B2C wymaga zarejestrować dwa dodatkowe aplikacje, które są u
 1. Wybierz **wybierz interfejs API**.
 1. Wyszukaj nazwę IdentityExperienceFramework. Wybierz **IdentityExperienceFramework** wyników, a następnie kliknij polecenie **wybierz**.
 1. Zaznacz pole wyboru obok pozycji **IdentityExperienceFramework dostępu**, a następnie kliknij przycisk **wybierz**.
-1. Wybierz **gotowe**.
+1. Wybierz pozycję **Done** (Gotowe).
 1. Wybierz **udzielanie uprawnień**, a następnie potwierdź wybierając **tak**.
 
 ## <a name="download-starter-pack-and-modify-policies"></a>Pobierz pakiet starter i modyfikowania zasad
@@ -143,7 +143,7 @@ Każdy pakiet początkowy zawiera:
    >`PolicyId` jest widoczny w portalu nazwę zasady i nazwy za pomocą którego ten plik zasad jest używany przez inne pliki zasad.
 
 5. Zapisz plik.
-6. Open TrustFrameworkExtensions.xml. Wprowadzenie identycznych zmian dwóch zastępując `yourtenant.onmicrosoft.com` z dzierżawą usługi Azure AD B2C. Należy tego samego zastąpienia w `<TenantId>` elementu dla wszystkich trzech zmian. Zapisz plik.
+6. Otwórz TrustFrameworkExtensions.xml. Wprowadzenie identycznych zmian dwóch zastępując `yourtenant.onmicrosoft.com` z dzierżawą usługi Azure AD B2C. Należy tego samego zastąpienia w `<TenantId>` elementu dla wszystkich trzech zmian. Zapisz plik.
 7. Open SignUpOrSignIn.xml. Wprowadzenie identycznych zmian przez zastąpienie `yourtenant.onmicrosoft.com` z dzierżawą usługi Azure AD B2C w trzech miejscach. Zapisz plik.
 8. Otwórz resetowania hasła i edytować pliki profilu. Wprowadzenie identycznych zmian przez zastąpienie `yourtenant.onmicrosoft.com` z dzierżawą usługi Azure AD B2C w trzech miejscach w każdym pliku. Zapisz plik.
 
@@ -168,7 +168,7 @@ Dodaj identyfikatory aplikacji do pliku rozszerzenia (`TrustFrameworkExtensions.
     >[!WARNING]
     >Pliki zasad niestandardowych, należy przekazać w następującej kolejności:
 
-1. Upload TrustFrameworkBase.xml.
+1. Przekaż TrustFrameworkBase.xml.
 2. Przekaż TrustFrameworkExtensions.xml.
 3. Upload SignUpOrSignin.xml.
 4. Przekazywanie plików zasad.

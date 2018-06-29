@@ -1,21 +1,21 @@
 ---
-title: Dostosowywanie interfejsu użytkownika za pomocą niestandardowych zasad — usługi Azure AD B2C | Dokumentacja firmy Microsoft
+title: Dostosowywanie interfejsu użytkownika za pomocą niestandardowych zasad w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Więcej informacji na temat dostosowywania interfejsu użytkownika (UI), gdy użycie zasad niestandardowych w usłudze Azure AD B2C.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 41b756855ea91db291f4fdb5a963993de4b9cd7e
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.component: B2C
+ms.openlocfilehash: 3a8d797793b0e54df112ec44cdb37cbb1b40ce86
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34710145"
 ---
 # <a name="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy"></a>Usługa Azure Active Directory B2C: Konfigurowanie dostosowywania interfejsu użytkownika w zasadach niestandardowych
 

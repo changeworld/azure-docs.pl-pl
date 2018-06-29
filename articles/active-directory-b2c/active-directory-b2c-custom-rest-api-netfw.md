@@ -1,21 +1,21 @@
 ---
-title: 'Usługa Azure Active Directory B2C: Integrowanie wymiany oświadczenia interfejsu API REST w podróży użytkownika usługi Azure AD B2C jako weryfikacji danych wejściowych użytkownika'
+title: Integracja wymiany oświadczenia interfejsu API REST w podróży użytkownika usługi Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Integracja wymiany oświadczenia interfejsu API REST usługi Azure AD B2C podróży użytkownika jako weryfikacji danych wejściowych użytkownika.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 09/30/2017
 ms.author: davidmu
-ms.openlocfilehash: c4a530b3d6b4f6d4f5ec6087adcee839422dd01d
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: e17647016da0e877bd8f21357a4bd38121820f22
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34709363"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Integracja wymiany oświadczenia interfejsu API REST usługi Azure AD B2C podróży użytkownika jako weryfikacji danych wejściowych użytkownika
 
@@ -82,7 +82,7 @@ Modele reprezentują oświadczenia wejściowe i danych w usłudze RESTful oświa
 Tworzenie modelu, który reprezentuje oświadczenia wejściowe, wykonując następujące czynności:
 
 1. Jeśli w Eksploratorze rozwiązań nie jest jeszcze otwarty, wybierz **widoku** > **Eksploratora rozwiązań**. 
-2. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **modele** folderu, wybierz opcję **Dodaj**, a następnie wybierz **klasy**.
+2. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy folder **Modele**, wybierz polecenie **Dodaj**, a następnie kliknij pozycję **Klasa**.
 
     ![Dodawanie modelu](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-model.png)
 
@@ -136,7 +136,7 @@ Tworzenie modelu, który reprezentuje oświadczenia wejściowe, wykonując nast�
 ### <a name="step-22-add-a-controller"></a>Krok 2.2: Dodawanie kontrolera
 W składniku web API _kontrolera_ jest obiekt, który obsługuje żądania HTTP. Kontroler zwraca dane wyjściowe oświadczeń lub, jeśli nie jest prawidłowy, imię zgłasza wyjątek, komunikat o błędzie HTTP konflikt.
 
-1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **kontrolerów** folderu, wybierz opcję **Dodaj**, a następnie wybierz **kontrolera**.
+1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy folder **Kontrolery**, wybierz polecenie **Dodaj**, a następnie kliknij pozycję **Kontroler**.
 
     ![Dodawanie nowego kontrolera](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-1.png)
 
