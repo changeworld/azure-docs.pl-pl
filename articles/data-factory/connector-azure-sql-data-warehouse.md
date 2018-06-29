@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 5a7ee7862e102093efa2c203eac2497b025af4e5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 42ffdbf117b3f522e27e6e46628231ddb8221018
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337821"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051631"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure SQL Data Warehouse przy użyciu fabryki danych Azure 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
-> * [Wersja 1: GA](v1/data-factory-azure-sql-data-warehouse-connector.md)
-> * [W wersji 2: Podgląd](connector-azure-sql-data-warehouse.md)
+> * [Version1 ](v1/data-factory-azure-sql-data-warehouse-connector.md)
+> * [Bieżąca wersja](connector-azure-sql-data-warehouse.md)
 
 W tym artykule opisano sposób korzystania działanie kopiowania w fabryce danych Azure, aby skopiować dane do lub z usługi Azure SQL Data Warehouse. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólny przegląd działanie kopiowania.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 fabryki danych obecnie w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [łącznika usługi Azure SQL Data Warehouse w wersji 1](v1/data-factory-azure-sql-data-warehouse-connector.md).
 
 ## <a name="supported-capabilities"></a>Obsługiwane możliwości
 

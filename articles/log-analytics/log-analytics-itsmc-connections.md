@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 18398094dfff03739a3d3d44d2c9c58149271123
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 1c1c294a877a996dc0e6cb916b038dc0ca27ed5c
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/27/2018
-ms.locfileid: "34638640"
+ms.locfileid: "37061713"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Zarządzanie usługami IT — produktów/usług Uzyskuj dostęp do łącznika zarządzania usługi IT
 Ten artykuł zawiera informacje o tym, jak skonfigurować połączenie między Zarządzanie usługami IT — produktu/usługi i IT usługi zarządzania łącznika (ITSMC) w analizy dzienników do centralnego zarządzania elementami pracy. Aby uzyskać więcej informacji o ITSMC, zobacz [omówienie](log-analytics-itsmc-overview.md).
@@ -191,7 +191,7 @@ Upewnij się, że są spełnione następujące wymagania wstępne:
 **Administratorzy usługi ServiceNow musi wykonać następujące czynności w ich wystąpienia usługi ServiceNow**:
 - Generują identyfikator klienta i klucz tajny klienta usługi ServiceNow produktu. Aby uzyskać informacje na temat generowania identyfikator klienta i klucz tajny zobacz poniższe informacje zgodnie z wymaganiami:
 
-    - [Konfigurowanie uwierzytelniania OAuth dla Kingston](https://docs.servicenow.com/bundle/kingston-platform-administration/page/administer/security/concept/OAuth-setup.html)
+    - [Konfigurowanie uwierzytelniania OAuth dla Kingston](https://docs.servicenow.com/bundle/kingston-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Konfigurowanie uwierzytelniania OAuth dla Dżakarta](https://docs.servicenow.com/bundle/jakarta-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Konfigurowanie uwierzytelniania OAuth dla Stambuł](https://docs.servicenow.com/bundle/istanbul-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Konfigurowanie uwierzytelniania OAuth dla Helsinkach](https://docs.servicenow.com/bundle/helsinki-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)

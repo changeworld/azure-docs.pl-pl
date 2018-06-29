@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: db7f1f85601cfcf4531bb11176a21126625ce7f0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c5819d39bf3ab7c0f4af32171aadea56e4f6a241
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31422015"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063531"
 ---
 # <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>Za pomocą opartego na czasie Oozie coordinator Hadoop w usłudze HDInsight do definiowania przepływów pracy i koordynowania zadania
 W tym artykule dowiesz się, jak zdefiniować przepływy pracy i koordynatora i sposób włączania zadania koordynatora, w oparciu o czas. Warto przeprowadzić [Oozie użycia z usługą HDInsight] [ hdinsight-use-oozie] przed przeczytaniem tego artykułu. Oprócz Oozie można również zaplanować zadania przy użyciu fabryki danych Azure. Aby uzyskać fabryki danych Azure, zobacz [Use Pig i Hive z fabryką danych](../data-factory/transform-data.md).
@@ -220,7 +220,7 @@ Akcja gałęzi w przepływie pracy wywołuje skrypt HiveQL. Ten plik skryptu zaw
     <tr><td>${hiveOutputFolder}</td><td>Folder wyjściowy dla instrukcji Hive Wstaw zastąpić. To jest tym samym folderze eksportu Sqoop (export-dir).</td></tr>
     </table>
 
-    Aby uzyskać więcej informacji o przepływie pracy Oozie i przy użyciu działań przepływu pracy, zobacz [dokumentację Apache Oozie 4.0] [ apache-oozie-400] (dla usługi HDInsight klastra w wersji 3.0) lub [dokumentację Apache Oozie 3.3.2] [ apache-oozie-332] (dla usługi HDInsight klastra w wersji 2.1).
+    Aby uzyskać więcej informacji o przepływie pracy Oozie i przy użyciu działań przepływu pracy, zobacz [dokumentację Apache Oozie 4.0] [ apache-oozie-400] (dla usługi HDInsight klastra w wersji 3.0) lub [dokumentację Apache Oozie 3.3.2 ] [ apache-oozie-332] (dla usługi HDInsight klastra w wersji 2.1).
 
 1. Zapisz plik jako **C:\Tutorials\UseOozie\workflow.xml** przy użyciu kodowania ANSI (ASCII). (Użyj Notatnik, jeśli ta opcja nie są dostępne w edytorze tekstów).
 
@@ -718,7 +718,7 @@ W tym samouczku przedstawiono sposób definiowania przepływów pracy Oozie i Oo
 * [Użyj magazynu obiektów Blob platformy Azure z usługą HDInsight][hdinsight-storage]
 * [Administrowanie HDInsight przy użyciu programu Azure PowerShell][hdinsight-admin-powershell]
 * [Przekazywanie danych do usługi HDInsight][hdinsight-upload-data]
-* [Korzystanie z usługą HDInsight Sqoop][hdinsight-use-sqoop]
+* [Use Sqoop with HDInsight (Używanie narzędzia Sqoop z usługą HDInsight)][hdinsight-use-sqoop]
 * [Korzystanie z programu Hive z usługą HDInsight][hdinsight-use-hive]
 * [Korzystanie z języka Pig z usługą HDInsight][hdinsight-use-pig]
 * [Tworzenie programów Java MapReduce dla usługi HDInsight][hdinsight-develop-java-mapreduce]
@@ -752,7 +752,7 @@ W tym samouczku przedstawiono sposób definiowania przepływów pracy Oozie i Oo
 [powershell-download]: http://azure.microsoft.com/downloads/
 [powershell-about-profiles]: http://go.microsoft.com/fwlink/?LinkID=113729
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
-[powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
+[powershell-start]: https://docs.microsoft.com/en-us/powershell/scripting/setup/starting-windows-powershell?view=powershell-6
 [powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
 
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx

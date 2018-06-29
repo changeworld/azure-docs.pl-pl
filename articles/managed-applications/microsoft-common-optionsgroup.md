@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2e0b448b5ab48e7be3429d3d3b5b898b6bf22115
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: e51061dc781e4ec6e822cde9cc450887ff3b1368
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261852"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061189"
 ---
 # <a name="microsoftcommonoptionsgroup-ui-element"></a>Element Microsoft.Common.OptionsGroup interfejsu użytkownika
 Formant wyboru z wierszem dostępnych opcji.
@@ -44,7 +44,8 @@ Formant wyboru z wierszem dostępnych opcji.
         "label": "Value two",
         "value": "two"
       }
-    ]
+    ],
+    "required": true
   },
   "visible": true
 }
@@ -53,14 +54,13 @@ Formant wyboru z wierszem dostępnych opcji.
 ## <a name="remarks"></a>Uwagi
 - Etykieta dla `constraints.allowedValues` jest wyświetlany tekst dla elementu i jego wartość jest wartością danych wyjściowych w przypadku wybrania elementu.
 - Jeśli jest określony, wartość domyślna musi być obecne w etykiecie `constraints.allowedValues`. Jeśli nie zostanie określony, pierwszy element `constraints.allowedValues` jest domyślnie zaznaczona. Wartość domyślna to **null**.
-- `constraints.allowedValues` musi zawierać co najmniej jeden element.
-- Ten element nie obsługuje `constraints.required` właściwości; można pomyślnie zweryfikować należy wybrać element.
+- `constraints.allowedValues` musi mieć co najmniej jeden element.
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
 ```json
 "two"
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Aby obejrzeć wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie CreateUiDefinition](create-uidefinition-overview.md).
 * Opis właściwości wspólnych elementów interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).

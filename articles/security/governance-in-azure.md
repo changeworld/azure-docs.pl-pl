@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: a5f323b98fa30d2c4c89fa8fe8e75c1d89089b6e
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c0794ebd953160c8569502db5d58c6d2b9ad892a
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895280"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061500"
 ---
 # <a name="governance-in-azure"></a>Ład na platformie Azure
 
@@ -37,7 +37,7 @@ Infrastruktury platformy Azure umożliwiają z funkcji aplikacji do obsługi jed
 
 Ten dokument pomaga zrozumieć, jak możliwości zarządzania Azure można spełnić te wymagania.
 
-## <a name="abstract"></a>Abstrakcyjny
+## <a name="abstract"></a>abstrakcyjny
 
 Zarządzanie chmury Microsoft Azure oferuje zintegrowane inspekcji i konsultingowe podejście do sprawdzenia i udzielanie porad organizacji na ich użycie platformy Azure. Zarządzanie chmury Microsoft Azure odwołuje się do procesów decyzyjnych, kryteria i zasady objętego planowania, architektura, przejęcia, wdrożenie i operacji zarządzania chmury obliczeniowej.
 
@@ -178,21 +178,21 @@ W ramach każdej subskrypcji można przyznać maksymalnie 2000 przypisań ról.
 
 ## <a name="resource-management"></a>Zarządzanie zasobami
 
-Dostarczana przez platformę Azure pierwotnie tylko klasycznym modelu wdrażania. W tym modelu każdy zasób istniał niezależnie; nie było możliwości wykonania do grupowania powiązanych zasobów. Zamiast tego trzeba było ręcznie śledzić zasoby, które składają się rozwiązania lub aplikacji i pamiętaj, aby zarządzać nimi w skoordynowany sposób podejście.
+Pierwotnie na platformie Azure dostępny był tylko klasyczny model wdrażania. W tym modelu każdy zasób istniał niezależnie; nie było możliwości grupowania powiązanych zasobów. Zamiast tego trzeba było ręcznie śledzić, z których zasobów składa się dane rozwiązanie lub aplikacja, i pamiętać o zarządzaniu nimi w sposób skoordynowany.
 
-Aby wdrożyć rozwiązanie, trzeba było utworzyć każdego zasobu indywidualnie za pośrednictwem portalu Azure lub utworzyć skrypt wdrożone wszystkie zasoby w odpowiedniej kolejności. Aby usunąć rozwiązania, trzeba było indywidualnie usunąć wszystkie zasoby. Nie można zastosować i zaktualizuj zasady kontroli dostępu dla powiązanych zasobów. Na koniec, nie możesz zastosować tagów do zasobów się z postanowieniami, które ułatwiają monitorowanie zasobów i Zarządzanie rozliczeniami.
+Aby wdrożyć rozwiązanie, trzeba było utworzyć każdego zasobu indywidualnie za pośrednictwem portalu Azure lub utworzyć skrypt wdrożone wszystkie zasoby w odpowiedniej kolejności. Aby usunąć rozwiązanie, trzeba było usunąć każdy zasób osobno. Nie można było łatwo stosować ani aktualizować zasad kontroli dostępu dla powiązanych zasobów. Nie można było też stosować tagów do zasobów w celu oznaczenia ich terminami ułatwiającymi monitorowanie zasobów i zarządzanie rozliczeniami.
 
-W 2014 r. Azure wprowadzono Menedżera zasobów dodane pojęcie grupę zasobów. Grupa zasobów to kontener dla zasobów, które mają wspólne cyklu życia. Model wdrażania usługi Resource Manager zapewnia kilka korzyści:
+W 2014 roku na platformie Azure dodano usługę Resource Manager, która wprowadziła pojęcie grupy zasobów. Grupa zasobów to kontener dla zasobów mających wspólny cykl życia. Model wdrażania przy użyciu usługi Resource Manager zapewnia kilka korzyści:
 
-- Można wdrożyć, zarządzanie i monitorowanie wszystkich usług do rozwiązania jako grupy, zamiast obsługi tych usług indywidualnie.
+- Możliwość grupowego wdrożenia i monitorowania wszystkich usług w ramach rozwiązania oraz zarządzania nimi (zamiast obsługiwania usług pojedynczo).
 
-- Można wielokrotnie wdrażania rozwiązania przez cały cykl życia i mieć pewność, zasoby są wdrażane w spójnym stanie.
+- Możliwość wielokrotnego wdrażania rozwiązania w całym jego cyklu życia z gwarancją spójnego stanu zasobów po każdym wdrożeniu.
 
-- Możliwość stosowania kontroli dostępu do wszystkich zasobów w grupie zasobów, a te zasady są stosowane automatycznie, gdy nowe zasoby są dodawane do grupy zasobów.
+- Możliwość stosowania kontroli dostępu do wszystkich zasobów w grupie zasobów. Te zasady są automatycznie stosowane podczas dodawania nowych zasobów do grupy.
 
 - Możliwość dodawania tagów do zasobów w celu logicznego uporządkowania wszystkich zasobów w ramach subskrypcji.
 
-- JavaScript Object Notation (JSON) służy do definiowania infrastruktury dla rozwiązania. Plik JSON jest nazywany szablonem usługi Resource Manager.
+- Możliwość definiowania infrastruktury rozwiązania za pomocą formatu JavaScript Object Notation (JSON). Plik JSON jest nazywany szablonem usługi Resource Manager.
 
 - Możliwość definiowania zależności między zasobami, aby wdrażać je w odpowiedniej kolejności.
 
@@ -276,7 +276,7 @@ W przeciwieństwie do kontroli dostępu opartej na rolach blokady zarządzania s
 
 Po zastosowaniu blokady w zakresie nadrzędnym, wszystkie zasoby w ramach tego zakresu dziedziczą tego samego blokady. Nawet zasoby, które później zostaną dodane dziedziczą blokady z obiektu nadrzędnego. Najbardziej restrykcyjne blokady w dziedziczenia ma pierwszeństwo.
 
-Aby utworzyć lub usunąć blokady zarządzania, musi mieć dostęp do Microsoft.Authorization/ _lub Microsoft.Authorization/locks/_ akcje. Wbudowanych ról, tylko **właściciela** i **Administrator dostępu użytkowników** otrzymują te akcje.
+Aby utworzyć lub usunąć blokady zarządzania, musi mieć dostęp do Microsoft.Authorization/ _lub Microsoft.Authorization/locks/_ akcje. Spośród wbudowanych ról tylko **Właściciel** i **Administrator dostępu użytkowników** mają dostęp do tych akcji.
 
 ## <a name="api-access-to-billing-information"></a>Interfejs API dostęp do informacji dotyczących rozliczeń
 
@@ -413,7 +413,7 @@ Centrum zabezpieczeń Azure monitorowanie następujących zasobów platformy Azu
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Bezpieczeństwo informacji analizy dzienników oprogramowania rozwoju i usługi zespołu i [program ładu](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md) obsługuje jej wymagania biznesowe i stosuje przepisom eksportowym obowiązującym zgodnie z opisem w [zaufania usługi Microsoft Azure Centrum](https://azure.microsoft.com/support/trust-center/) i [zgodności Centrum zaufania Microsoft](https://www.microsoft.com/TrustCenter/Compliance/default.aspx). Jak analizy dzienników ustanowić wymagania dotyczące zabezpieczeń, identyfikuje kontroli zabezpieczeń zarządza i monitoruje ryzyka są także opisane istnieje. Co rok, możemy przeglądu zasady, normy, procedury i wskazówek.
+Bezpieczeństwo informacji analizy dzienników oprogramowania rozwoju i usługi zespołu i [program ładu](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md) obsługuje jej wymagania biznesowe i stosuje przepisom eksportowym obowiązującym zgodnie z opisem w [zaufania usługi Microsoft Azure Centrum](https://azure.microsoft.com/support/trust-center/) i [zgodności Centrum zaufania Microsoft](https://microsoft.com/en-us/trustcenter/compliance). Jak analizy dzienników ustanowić wymagania dotyczące zabezpieczeń, identyfikuje kontroli zabezpieczeń zarządza i monitoruje ryzyka są także opisane istnieje. Co rok, możemy przeglądu zasady, normy, procedury i wskazówek.
 
 Każdego członka zespołu programowanie analizy dzienników odbiera szkolenia formalnego aplikacji w zakresie zabezpieczeń. Wewnętrznie używamy system kontroli wersji dla rozwoju oprogramowania. Każdy projekt oprogramowania jest chroniona przez system kontroli wersji.
 

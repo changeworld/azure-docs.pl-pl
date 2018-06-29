@@ -1,26 +1,26 @@
 ---
-title: Omówienie usługi Azure Data Lake Store | Microsoft Docs
-description: Dowiedz się, czym jest usługa Azure Data Lake Store i dlaczego jest lepsza od innych magazynów danych
+title: Omówienie usługi Azure Data Lake Storage Gen1 | Dokumentacja firmy Microsoft
+description: Zrozumienie, jakie Gen1 magazynu Data Lake jest (wcześniej znana jako Azure Data Lake Store) i wartość, która jest lepsza od innych magazynów danych
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: b3475057-9427-4492-a3af-25a802a23a79
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 03/26/2018
+ms.topic: conceptual
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 111906bc9e7e85e30a879d7bacff37edb4b204ac
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: HT
+ms.openlocfilehash: 4dff8f4ff9fc324d48391c0399677b64824493c6
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37036455"
 ---
-# <a name="overview-of-azure-data-lake-store"></a>Omówienie usługi Azure Data Lake Store
+# <a name="overview-of-azure-data-lake-storage-gen1"></a>Omówienie usługi Azure Data Lake Storage Gen1
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
 Azure Data Lake Store to repozytorium w hiperskali obsługujące całe przedsiębiorstwo na potrzeby obciążeń analizy dużych ilości danych (big data). Usługa Azure Data Lake umożliwia przechwytywanie danych dowolnego typu, o dowolnym rozmiarze i szybkości wprowadzania oraz przechowywanie ich w jednym miejscu na potrzeby analiz operacyjnych i poznawczych.
 
 > [!TIP]
@@ -81,24 +81,8 @@ Za pomocą nowego systemu plików AzureDataLakeFilesystem (adl://) można uzyski
 
 Dostęp do danych w usłudze Data Lake Store można uzyskać przy użyciu adresu `adl://<data_lake_store_name>.azuredatalakestore.net`. Aby uzyskać więcej informacji na temat sposobu uzyskiwania dostępu do danych w usłudze Data Lake Store, zobacz [Wyświetlanie właściwości przechowywanych danych](data-lake-store-get-started-portal.md#properties).
 
-## <a name="how-do-i-start-using-azure-data-lake-store"></a>Jak zacząć korzystać z usługi Azure Data Lake Store?
-Zobacz [Rozpoczynanie pracy z usługą Azure Data Lake Store za pomocą witryny Azure Portal](data-lake-store-get-started-portal.md), aby dowiedzieć się, jak aprowizować usługę Data Lake Store za pomocą witryny Azure Portal. Po aprowizowaniu usługi Azure Data Lake możesz nauczyć się, jak korzystać z rozwiązań do obsługi danych big data, takich jak Azure Data Lake Analytics lub Azure HDInsight, z usługą Data Lake Store. Możesz również utworzyć aplikację .NET w celu utworzenia konta usługi Azure Data Lake Store i wykonywania operacji, takich jak przekazywanie danych, pobieranie danych itp.
+## <a name="next-steps"></a>Kolejne kroki
 
-* [Rozpoczynanie pracy z usługą Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Korzystanie z usługi Azure HDInsight z usługą Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Wprowadzenie do usługi Data Lake Store przy użyciu portalu Azure](data-lake-store-get-started-portal.md)
 * [Rozpoczynanie pracy z usługą Azure Data Lake Store z użyciem zestawu SDK .NET](data-lake-store-get-started-net-sdk.md)
-
-## <a name="data-lake-store-videos"></a>Filmy wideo dotyczące usługi Data Lake Store
-Jeśli wolisz obejrzeć filmy wideo, aby nauczyć się korzystać z usługi, usługa Data Lake Store udostępnia filmy wideo dotyczące różnych funkcji.
-
-* [Tworzenie konta usługi Azure Data Lake Store](https://mix.office.com/watch/1k1cycy4l4gen)
-* [Zarządzanie danymi w usłudze Azure Data Lake Store za pomocą Eksploratora danych](https://mix.office.com/watch/icletrxrh6pc)
-* [Łączenie usługi Azure Data Lake Analytics z usługą Azure Data Lake Store](https://mix.office.com/watch/qwji0dc9rx9k)
-* [Uzyskiwanie dostępu do usługi Azure Data Lake Store za pomocą usługi Data Lake Analytics](https://mix.office.com/watch/1n0s45up381a8)
-* [Łączenie usługi Azure HDInsight z usługą Azure Data Lake Store](https://mix.office.com/watch/l93xri2yhtp2)
-* [Uzyskiwanie dostępu do usługi Azure Data Lake Store za pomocą technologii Hive i Pig](https://mix.office.com/watch/1n9g5w0fiqv1q)
-* [Kopiowanie danych do i z usługi Azure Data Lake Store za pomocą narzędzia DistCp (Distributed Copy) platformy Hadoop](https://mix.office.com/watch/1liuojvdx6sie)
-* [Przenoszenie danych między źródłami relacyjnymi i usługą Azure Data Lake Store z wykorzystaniem narzędzia Apache Sqoop](https://mix.office.com/watch/1butcdjxmu114)
-* [Organizowanie danych za pomocą usługi Azure Data Factory dla usługi Azure Data Lake Store](https://mix.office.com/watch/1oa7le7t2u4ka)
-* [Zabezpieczanie danych w usłudze Azure Data Lake Store](https://mix.office.com/watch/1q2mgzh9nn5lx)
-
+* [Korzystanie z usługi Azure HDInsight z usługą Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)

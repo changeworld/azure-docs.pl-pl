@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/19/2018
+ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 5201d02b4f70f964f39b4fe135e4715732b9741a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e0366e6a2403f7cea83efde35c7b3b42565a1cf2
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792552"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062783"
 ---
 # <a name="data-sources-in-log-analytics"></a>Źródła danych w analizy dzienników
 Analiza dzienników zbiera dane z połączonych źródeł i zapisuje go w obszarze roboczym analizy dzienników.  Dane są zbierane z każdej jest zdefiniowany przez źródła danych, które można skonfigurować.  Dane analizy dziennika są przechowywane jako zestaw rekordów.  Dla każdego źródła danych tworzy rekordy określonego typu z każdym typem o własny zestaw właściwości.
@@ -30,14 +30,14 @@ Analiza dzienników zbiera dane z połączonych źródeł i zapisuje go w obszar
 
 
 ## <a name="summary-of-data-sources"></a>Podsumowanie źródeł danych
-W poniższej tabeli wymieniono źródeł danych, które są aktualnie dostępne w analizy dzienników.  Każdy ma łącze do oddzielnym artykule podanie szczegółów dla tego źródła danych.   Zawiera także informacje o ich metody i częstotliwości zbierania danych do analizy dzienników.  Do identyfikowania różnych rozwiązań dostępnych i zrozumieć wymagania przepływu i połączenia danych dla rozwiązań w zakresie zarządzania różnych, można użyć informacje w tym artykule. Wyjaśnień kolumn, zobacz [szczegóły zbierania danych w celu rozwiązania do zarządzania na platformie Azure](../monitoring/monitoring-solutions-inventory.md).
+W poniższej tabeli wymieniono źródeł danych, które są aktualnie dostępne w analizy dzienników.  Każdy ma łącze do oddzielnym artykule podanie szczegółów dla tego źródła danych.   Zawiera także informacje o ich metody i częstotliwość zbierania danych do analizy dzienników.  Do identyfikacji różnych rozwiązań dostępne i zrozumienie wymagań przepływu i połączenia danych rozwiązania do zarządzania różnych, możesz skorzystać z informacji w tym artykule. Wyjaśnień kolumn, zobacz [szczegóły zbierania danych w celu rozwiązania do zarządzania na platformie Azure](../monitoring/monitoring-solutions-inventory.md).
 
 
 | Źródło danych | Platforma | Agent monitorowania firmy Microsoft | Agent programu Operations Manager | Azure Storage | Wymagane programu Operations Manager? | Danych agenta programu Operations Manager są wysyłane za pośrednictwem grupy zarządzania | Częstotliwość zbierania |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Niestandardowe dzienniki](log-analytics-data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | po przybyciu |
 | [Niestandardowe dzienniki](log-analytics-data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | po przybyciu |
-| [Dzienniki usług IIS](log-analytics-data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |5 minut |
+| [Dzienniki usług IIS](log-analytics-data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |zależy od ustawienia Przerzucanie pliku dziennika |
 | [Liczniki wydajności](log-analytics-data-sources-performance-counters.md) | Windows |&#8226; |&#8226; |  |  |  |jako zaplanowane, co najmniej 10 sekund |
 | [Liczniki wydajności](log-analytics-data-sources-performance-counters.md) | Linux |&#8226; |  |  |  |  |jako zaplanowane, co najmniej 10 sekund |
 | [Dziennik systemu](log-analytics-data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |z usługi Azure storage: 10 minut; od agenta: Przy nadejściu |

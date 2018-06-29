@@ -11,12 +11,12 @@ ms.workload: azure
 ms.topic: conceptual
 ms.date: 8/24/2017
 ms.author: ghogen
-ms.openlocfilehash: 0beeb8fb7f7e46db97e179f3eacf3c68dd92cff3
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: c9828504ab40a1e62c107f218fda024be6330c23
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798581"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061747"
 ---
 # <a name="browse-and-manage-storage-resources-by-using-server-explorer"></a>Przeglądanie i zarządzanie zasobami magazynu za pomocą Eksploratora serwera
 
@@ -157,7 +157,7 @@ Na poniższej ilustracji przedstawiono kolejki, która zawiera dwa komunikaty:
 
 ![Wyświetlanie kolejki](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC651470.png)
 
-Aby uzyskać więcej informacji na temat magazynu usług kolejek, zobacz [Rozpoczynanie pracy z magazynem kolejek Azure przy użyciu platformy .NET](http://go.microsoft.com/fwlink/?LinkID=264702). Aby uzyskać informacje na temat usługi sieci web uzyskać magazynu usług kolejek, zobacz [pojęcia dotyczące usługi kolejki](http://go.microsoft.com/fwlink/?LinkId=264788). Aby dowiedzieć się, jak wysyłać wiadomości do kolejki usługi magazynu przy użyciu programu Visual Studio, zobacz [wysyłania wiadomości do kolejki usługi magazynu](https://msdn.microsoft.com/library/azure/jj649344.aspx).
+Aby uzyskać więcej informacji na temat magazynu usług kolejek, zobacz [Rozpoczynanie pracy z magazynem kolejek Azure przy użyciu platformy .NET](http://go.microsoft.com/fwlink/?LinkID=264702). Aby uzyskać informacje na temat usługi sieci web uzyskać magazynu usług kolejek, zobacz [pojęcia dotyczące usługi kolejki](http://go.microsoft.com/fwlink/?LinkId=264788). Aby dowiedzieć się, jak wysyłać wiadomości do kolejki usługi magazynu przy użyciu programu Visual Studio, zobacz [wysyłania wiadomości do kolejki usługi magazynu](https://docs.microsoft.com/azure/visual-studio/vs-storage-cloud-services-getting-started-queues).
 
 > [!NOTE]
 > Magazyn kolejek usługi różni się od kolejek usługi Azure Service Bus. Aby uzyskać więcej informacji na temat kolejek usługi Service Bus, zobacz [kolejek usługi Service Bus, tematy i subskrypcje](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-queues-topics-subscriptions).
@@ -215,7 +215,7 @@ Można dostosować zestaw jednostek, które są wyświetlane w tabeli, jeśli u�
 
     **Konstruktora zapytań** zostanie wyświetlone okno dialogowe. Na poniższej ilustracji przedstawiono kwerendę, która jest tworzona w konstruktora zapytań.
 
-    ![Konstruktor kwerend](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC652231.png)
+    ![Konstruktor zapytań](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC652231.png)
 1. Po zakończeniu tworzenia zapytania, zamknij okno dialogowe. Tekst w formularzu, zapytania jest wyświetlana w polu tekstowym jako filtr usługi danych WCF.
 1. Aby uruchomić zapytanie, wybierz ikonę zielonym trójkątem.
 

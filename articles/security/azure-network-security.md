@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 774d678c00b830f3932455c5b79fb44bde284d91
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: b1485ff933df7991e1c112981ae10d93bf5613da
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895642"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061545"
 ---
 # <a name="azure-network-security"></a>Zabezpieczenia sieci na platformie Azure
 
 Wiemy, że zabezpieczenia są zadania, co w chmurze i jak ważne jest aby znaleźć dokładne i aktualne informacje na temat zabezpieczeń platformy Azure. Najważniejsze przyczyny na potrzeby aplikacji i usług Azure ma korzystać z platformy Azure szerokiej gamy narzędzi zabezpieczeń i możliwości. Te narzędzia i funkcje pomocy umożliwiają tworzenie bezpiecznych rozwiązań na platformie Azure.
 
-Microsoft Azure udostępnia poufność, integralność i dostępność danych klienta, jednoczesnym accountability przezroczysty. Aby lepiej zrozumieć kolekcja formantów zabezpieczeń sieci zaimplementowana w systemie Microsoft Azure z perspektywy klienta, w tym artykule "Zabezpieczenia sieciowe Azure", są zapisywane w zapewnić kompleksowe przyjrzeć się sieci dostępnych opcji zabezpieczeń Microsoft Azure.
+Microsoft Azure udostępnia poufność, integralność i dostępność danych klienta, jednoczesnym accountability przezroczysty. Aby lepiej zrozumieć kolekcja formantów zabezpieczeń sieci zaimplementowana w systemie Microsoft Azure z perspektywy klienta, w tym artykule "Zabezpieczenia sieciowe Azure", są zapisywane w kontrole zabezpieczeń kompleksowe przyjrzeć się sieci dostępne w systemie Microsoft Azure.
 
-Ten dokument jest przeznaczony do o szerokiej gamy kontrolek sieci, które można skonfigurować tak, aby zwiększyć bezpieczeństwo rozwiązania, które wdrażasz na platformie Azure. Jeśli interesuje Cię do zabezpieczania sieci szkieletowej z platformą Azure czego firmy Microsoft, zobacz sekcję zabezpieczeń platformy Azure w [Microsoft Trust Center](https://www.microsoft.com/trustcenter/security/azure-security).
+Ten dokument jest przeznaczony do o szerokiej gamy kontrolek sieci, które można skonfigurować tak, aby zwiększyć bezpieczeństwo rozwiązania, które wdrażasz na platformie Azure. Jeśli interesuje Cię do zabezpieczania sieci szkieletowej z platformą Azure czego firmy Microsoft, zobacz sekcję zabezpieczeń platformy Azure w [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/cloudservices/azure).
 
 ## <a name="azure-platform"></a>Platforma Azure
 
@@ -37,7 +37,7 @@ Podczas tworzenia lub migracji zasobów informatycznych do dostawcy usług w chm
 
 Infrastruktury platformy Azure umożliwiają z funkcji aplikacji do obsługi jednocześnie miliony klientów i zapewnia foundation godne zaufania, na którym firmy mogą spełnić ich wymagań dotyczących zabezpieczeń. Ponadto Azure udostępnia szeroką gamę kolekcji zabezpieczeń można skonfigurować opcje i możliwości ich kontroli, dzięki czemu można dostosować zabezpieczeń, aby spełnić unikatowe wymagania danej organizacji wdrożeń.
 
-## <a name="abstract"></a>Abstrakcyjny
+## <a name="abstract"></a>abstrakcyjny
 
 Usługi w chmurze publicznej Microsoft świadczenia usług hiperskali i infrastruktury, funkcje klasy korporacyjnej oraz wiele opcji na potrzeby łączności hybrydowej. Można uzyskać dostęp do tych usług za pośrednictwem Internetu lub z usługi Azure ExpressRoute, który zapewnia łączność w sieci prywatnej. Platforma Microsoft Azure umożliwia bezproblemowo rozszerzają infrastruktury do chmury i tworzenia wielu architektur. Ponadto stron trzecich można włączyć udoskonalone funkcje oferty usług zabezpieczeń oraz urządzenia wirtualnego.
 
@@ -200,12 +200,12 @@ Sieci lokalnej można nawiązać sieć wirtualną przy użyciu dowolnej kombinac
 
 #### <a name="internet-connectivity"></a>Połączenie z Internetem
 
-Zgodnie z sugestią, jego nazwa, połączenie z Internetem sprawia, że obciążeń z Internetu, konfigurując można ujawnić różne publiczne punkty końcowe obciążeń, które na żywo w sieci wirtualnej. Te obciążenia mogą zostać ujawnione przy użyciu [modułu równoważenia obciążenia internetowy](https://docs.microsoft.com/azure/load-balancer/load-balancer-internet-overview) lub po prostu przypisywane do publicznego adresu IP do maszyny Wirtualnej. W ten sposób staje się możliwe do wszelkich w Internecie, aby mieć dostęp do maszyny wirtualnej, zaporę hosta dostarczone [sieciowej grupy zabezpieczeń (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg), i [trasy zdefiniowane przez użytkownika](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) zezwala na to.
+Zgodnie z sugestią, jego nazwa, połączenie z Internetem sprawia, że obciążeń z Internetu, konfigurując można ujawnić różne publiczne punkty końcowe obciążeń, które na żywo w sieci wirtualnej. Te obciążenia mogą zostać ujawnione przy użyciu [modułu równoważenia obciążenia internetowy](https://docs.microsoft.com/azure/load-balancer/load-balancer-internet-overview) lub po prostu przypisywane do publicznego adresu IP do maszyny Wirtualnej. W ten sposób staje się możliwe do wszelkich w Internecie, aby mieć dostęp do maszyny wirtualnej, zaporę hosta dostarczone [sieciowej grupy zabezpieczeń (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg), i [trasy zdefiniowane przez użytkownika](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) zezwala na stanie.
 
 W tym scenariuszu może spowodować narażenie aplikacji, która musi być publiczny z Internetem oraz mieć możliwość nawiązania połączenia z dowolnego miejsca lub z określonych lokalizacji w zależności od konfiguracji obciążeń.
 
 #### <a name="point-to-site-vpn-or-site-to-site-vpn"></a>Sieć VPN punkt lokacja lub sieci VPN typu lokacja lokacja
-Te dwa należące do tej samej kategorii. Potrzebuje Twojej sieci wirtualnej mają bramy sieci VPN i możesz połączyć do niego przy użyciu klienta sieci VPN dla stacji roboczej w ramach [konfiguracjępunktuwitryny](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal) lub skonfigurować lokalną [urządzenia sieci VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices) aby można było zakończyć VPN lokacja lokacja. W ten sposób urządzeń lokalnych, można połączyć się z zasobów w sieci wirtualnej.
+Te dwa należące do tej samej kategorii. Potrzebuje Twojej sieci wirtualnej mają bramy sieci VPN i możesz połączyć do niego przy użyciu klienta sieci VPN dla stacji roboczej w ramach [konfiguracjępunktuwitryny](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal) lub skonfigurować lokalną [urządzenia sieci VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)aby można było zakończyć VPN lokacja lokacja. W ten sposób urządzeń lokalnych, można połączyć się z zasobów w sieci wirtualnej.
 
 Konfiguracja typu punkt-lokacja pozwala utworzyć indywidualne bezpieczne połączenie z siecią wirtualną z poziomu komputera klienckiego. Połączenie punkt-lokacja (P2S) to połączenie sieci VPN nawiązywane za pośrednictwem protokołu SSTP (Secure Socket Tunneling Protocol).
 
@@ -261,7 +261,7 @@ Poniżej przedstawiono kontroli bezpieczeństwa, używanych w sieci wirtualnej p
 -   Kontrola dostępność sieci
 
 #### <a name="network-access-controls"></a>Kontrolę dostępu do sieci
-Gdy sieci wirtualnej platformy Azure (VNet) stanowi podstawę model sieci platformy Azure i zapewnia izolacji i ochrony, [grup zabezpieczeń sieci (NSG)](https://blogs.msdn.microsoft.com/igorpag/2016/05/14/azure-network-security-groups-nsg-best-practices-and-lessons-learned/) są główne narzędzie służy do wymuszania i kontrolować reguły ruchu sieciowego na poziomie sieci.
+Gdy sieci wirtualnej platformy Azure (VNet) stanowi podstawę model sieci platformy Azure i zapewnia izolacji i ochrony, [grup zabezpieczeń sieci (NSG)](https://blogs.msdn.microsoft.com/igorpag/2016/05/14/azure-network-security-groups-nsg-best-practices-and-lessons-learned/) są główne narzędzie służy do wymuszania i kontrolować reguły ruchu sieciowego na poziom sieci.
 
 ![ Kontrolę dostępu do sieci](media/azure-network-security/azure-network-security-fig-8.png)
 
@@ -338,7 +338,7 @@ W poniższej sekcji przedstawiono bieżące ograniczenia tabeli routingu i tras 
 > Aby uzyskać więcej informacji, zobacz [dokumentacja usługi ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/) Aby uzyskać więcej informacji.
 
 #### <a name="network-security-appliances"></a>Urządzenia zabezpieczeń sieci
-Gdy grup zabezpieczeń sieci i trasy zdefiniowane przez użytkownika zapewniają miary zabezpieczeń sieciowych w sieci i transportu warstw [OSI model](https://en.wikipedia.org/wiki/OSI_model), będą się zdarzyć, gdy mają lub konieczne włączenie zabezpieczeń na wyższych poziomach stosu sieciowego. W takich sytuacjach zalecamy wdrożenie zapewniana przez partnerów Azure urządzenia zabezpieczeń sieci wirtualnej.
+Gdy grup zabezpieczeń sieci i trasy zdefiniowane przez użytkownika zapewniają miary zabezpieczeń sieciowych w sieci i transportu warstw [OSI model](https://en.wikipedia.org/wiki/OSI_model), będą się zdarzyć, gdy mają lub konieczne włączenie zabezpieczeń w wyższe poziomy stosu sieciowego. W takich sytuacjach zalecamy wdrożenie zapewniana przez partnerów Azure urządzenia zabezpieczeń sieci wirtualnej.
 
 ![Urządzenia zabezpieczeń sieci](./media/azure-network-security/azure-network-security-fig-10.png)
 
@@ -389,7 +389,7 @@ Zapory aplikacji sieci Web dla bramy aplikacji może działać w trybie wykrywan
 
  ![Application Gateway](./media/azure-network-security/azure-network-security-fig-12.png)
 
-Ponadto bramy aplikacji zapory aplikacji sieci Web ułatwia monitorowanie aplikacji sieci web przed atakami przy użyciu dziennika zapory aplikacji sieci Web w czasie rzeczywistym, które jest zintegrowany z [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) i [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) śledzenia alerty zapory aplikacji sieci Web i ułatwia monitorowanie trendów.
+Ponadto bramy aplikacji zapory aplikacji sieci Web ułatwia monitorowanie aplikacji sieci web przed atakami przy użyciu dziennika zapory aplikacji sieci Web w czasie rzeczywistym, które jest zintegrowany z [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) i [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) do śledzenia alerty zapory aplikacji sieci Web i ułatwia monitorowanie trendów.
 
 Dziennik sformatowany JSON trafia bezpośrednio do konta magazynu klienta. Mają pełną kontrolę nad te dzienniki i można zastosować zasad przechowywania.
 
@@ -403,7 +403,7 @@ Aplikacje sieci Web są coraz bardziej cele złośliwe ataki wykorzystujące wsp
 
 Scentralizowanego [zapory aplikacji sieci web (WAF)](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview) można chronić przed atakami opartymi na sieci web i upraszcza zarządzanie zabezpieczeniami bez konieczności wprowadzania zmian w aplikacji.
 
-Zapora aplikacji sieci Web może reagować na zagrożenia bezpieczeństwa szybciej — poprzez wdrażanie poprawek zapobiegających wykorzystaniu znanych luk w zabezpieczeniach w centralnej lokalizacji zamiast w poszczególnych aplikacjach sieci Web. Istniejące bramy Application Gateway można łatwo przekonwertować na bramę Application Gateway obsługującą zaporę aplikacji sieci Web.
+Zapora aplikacji internetowej może reagować na zagrożenia bezpieczeństwa szybciej — poprzez wdrażanie poprawek zapobiegających wykorzystaniu znanych luk w zabezpieczeniach w centralnej lokalizacji zamiast w poszczególnych aplikacjach internetowych. Istniejące bramy Application Gateway można łatwo przekonwertować na bramę Application Gateway obsługującą zaporę aplikacji internetowej.
 
 #### <a name="network-availability-controls"></a>Formanty dostępność sieci
 
@@ -458,7 +458,7 @@ Gdy klient próbuje połączyć się z usługą, jego rozpoznać nazwę DNS usł
 
 Sprawdzanie poprawności sieci platformy Azure jest aby upewnić się, że sieć platformy Azure działa zgodnie z jest skonfigurowany i sprawdzania poprawności można wykonać przy użyciu usługi i funkcje dostępne dla monitorowania sieci. Monitor sieci Azure, umożliwia dostęp do nadmiar rejestrowania i diagnostyki możliwości, które dają insights, aby zrozumieć wydajność sieci, a kondycji. Te możliwości są udostępniane za pośrednictwem portalu, powłoki Power Shell, interfejsu wiersza polecenia, interfejs API Rest i zestawu SDK.
 
-Azure bezpieczeństwa operacyjnego odwołuje się do usług, formanty i funkcje dostępne dla użytkowników do ochrony danych, aplikacji i innych zasobów na platformie Microsoft Azure. Zabezpieczeń platformy Azure Operational w oparciu o strukturę, która zawiera wiedzę za pośrednictwem różnych funkcji, które są unikatowe dla firmy Microsoft, w tym Microsoft Security Development Lifecycle (SDL), program Microsoft Security odpowiedzi Centrum i głębokie świadomości bezpieczeństwa przez zagrożeń.
+Azure bezpieczeństwa operacyjnego odwołuje się do usług, formanty i funkcje dostępne dla użytkowników do ochrony danych, aplikacji i innych zasobów na platformie Microsoft Azure. Azure bezpieczeństwa operacyjnego jest zbudowany na platformie uwzględniająca wiedzę za pośrednictwem różnych funkcji, które są unikatowe dla firmy Microsoft, w tym Microsoft Security Development Lifecycle (SDL), program Centrum odpowiedź zabezpieczeń firmy Microsoft i głębokie świadomości bezpieczeństwa przez zagrożeń.
 
 -   [Azure Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)
 
@@ -537,7 +537,7 @@ Monitor sieci [przechwytywania pakietów zmiennej](https://docs.microsoft.com/az
 
 Przechwytywania pakietów jest uruchamiana zdalnie za pomocą Monitora sieci rozszerzenia maszyny wirtualnej. Funkcja ta ułatwia obciążeń uruchomionych przechwytywania pakietów ręcznego na odpowiednią maszynę wirtualną, która zapisuje cenny czas. Przechwytywania pakietów mogą być wyzwalane za pośrednictwem portalu, programu PowerShell, interfejsu wiersza polecenia lub interfejsu API REST. Przykład sposobu przechwytywania pakietów mogą być wyzwalane jest z alertami maszyny wirtualnej.
 
-#### <a name="ip-flow-verify"></a>Sprawdź przepływ IP
+#### <a name="ip-flow-verify"></a>Weryfikowanie przepływu adresów IP
 
 [Sprawdź przepływów IP](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview) sprawdza, czy pakiet jest dozwolony lub odmowa dostępu do lub z maszyny wirtualnej na podstawie informacji 5-elementowej. Te informacje składa się z kierunku, protokół lokalny adres IP, zdalny adres IP, portu lokalnego i portu zdalnego. Jeśli pakiet jest zabroniony przez grupę zabezpieczeń, zwracana jest nazwa reguły, z którego pakiet. Podczas gdy można wybrać dowolny źródłowy lub docelowy adres IP, funkcja ta ułatwia ona administratorom szybkie diagnozowanie problemów z łącznością z lub do Internetu i z lub do środowiska lokalnego.
 

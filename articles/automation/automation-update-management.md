@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c6ec168332d8a655d78c3deffe89f51f7d75a840
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
-ms.translationtype: MT
+ms.openlocfilehash: a8ac62986eb7eb184ae6d102a956ee051e3aa88a
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751884"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063514"
 ---
 # <a name="update-management-solution-in-azure"></a>Aktualizacja rozwiązania do zarządzania na platformie Azure
 
@@ -505,39 +505,9 @@ Jednak aktualizacja zarządzania nadal może raportować tego komputera jako są
 
 Wdrażanie aktualizacji przez aktualizację klasyfikacji nie działa na CentOS poza pole. Dla SUSE wybierając *tylko* inne aktualizacje zgodnie z klasyfikacji może spowodować pewne zabezpieczenia aktualizuje również zainstalowania aktualizacji zabezpieczeń związane z zypper (Menedżera pakietów) lub najpierw jego zależności są wymagane. Jest to ograniczenie zypper. W niektórych przypadkach konieczne może być ponowne uruchomienie wdrożenia aktualizacji, aby sprawdzić w dzienniku aktualizacji.
 
-## <a name="troubleshooting"></a>Rozwiązywanie problemów
+## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-Ta sekcja zawiera informacje ułatwiające rozwiązywanie problemów z rozwiązaniem do zarządzania aktualizacjami.
-
-### <a name="windows"></a>Windows
-
-Jeśli wystąpią problemy podczas próby dołączenia rozwiązania lub maszyny wirtualnej, sprawdź **aplikacji i usług Menedżera Logs\Operations** wiadomości w dzienniku zdarzeń na komputerze lokalnym dla zdarzeń, które mają 4502 identyfikator zdarzenia i zdarzeń zawiera **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent**. W poniższej tabeli wymieniono określone komunikaty o błędach i możliwe rozwiązanie dla poszczególnych:
-
-| Komunikat | Przyczyna | Rozwiązanie |
-|----------|----------|----------|
-| Nie można zarejestrować maszyny na potrzeby zarządzania poprawkami,<br/>rejestracja nie powiodła się z powodu wyjątku<br/>System.InvalidOperationException: {"Message": "Maszyna jest już<br/>zarejestrowana na innym koncie. "} | Maszyna jest już został załadowany do innego obszaru roboczego do zarządzania aktualizacjami. | Przeprowadzić czyszczenie starego artefaktów przez [Usuwanie grupy hybrydowych Runbook](automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group).|
-| Nie można zarejestrować maszyny Zarządzanie poprawkami, rejestracja nie powiodła się z powodu wyjątku<br/>System.Net.Http.HttpRequestException: Wystąpił błąd podczas wysyłania żądania. ---><br/>System.Net.WebException: Połączenie podstawowe<br/>zostało zamknięte: Wystąpił nieoczekiwany błąd<br/>przy odbiorze. ---> System.ComponentModel.Win32Exception:<br/>Klient i serwer nie mogą nawiązać komunikacji,<br/>ponieważ nie mają wspólnego algorytmu | Serwer proxy/bramy/Zapora blokuje komunikacji. | [Przejrzyj wymagania dotyczące sieci](automation-hybrid-runbook-worker.md#network-planning).|
-| Nie można zarejestrować maszyny na potrzeby zarządzania poprawkami,<br/>rejestracja nie powiodła się z powodu wyjątku<br/>Newtonsoft.Json.JsonReaderException: Błąd podczas analizowania wartości nieskończoności dodatniej. | Serwer proxy/bramy/Zapora blokuje komunikacji. | [Przejrzyj wymagania dotyczące sieci](automation-hybrid-runbook-worker.md#network-planning).|
-| Certyfikat przedstawiony przez usługę \<wsid\>. oms.opinsights.azure.com<br/>nie został wystawiony przez urząd certyfikacji<br/>używany na potrzeby usług firmy Microsoft. Kontakt<br/>administratorem sieci, aby sprawdzić, czy jest używany serwer proxy, który przechwytuje<br/>komunikację TLS/SSL. |Serwer proxy/bramy/Zapora blokuje komunikacji. | [Przejrzyj wymagania dotyczące sieci](automation-hybrid-runbook-worker.md#network-planning).|
-| Nie można zarejestrować maszyny na potrzeby zarządzania poprawkami,<br/>rejestracja nie powiodła się z powodu wyjątku<br/>AgentService.HybridRegistration.<br/>PowerShell.Certificates.CertificateCreationException:<br/>Nie można utworzyć certyfikatu z podpisem własnym. ---><br/>System.UnauthorizedAccessException: Odmowa dostępu. | Błąd generowania certyfikatu z podpisem własnym. | Sprawdź, czy konto systemowe ma<br/>dostęp do odczytu do folderu:<br/>**C:\ProgramData\Microsoft\**<br/>** Crypto\RSA**|
-
-### <a name="linux"></a>Linux
-
-Jeśli przebiegi aktualizacji nie można uruchomić na komputerze systemu Linux, Utwórz kopię następującego pliku dziennika i zachować go na potrzeby rozwiązywania problemów:
-
-```
-/var/opt/microsoft/omsagent/run/automationworker/worker.log
-```
-
-Jeśli wystąpią błędy podczas przebieg aktualizacji po jego pomyślnym uruchomieniu w systemie Linux, sprawdź dane wyjściowe z zainfekowanego komputera w Uruchom zadanie. Może się okazać określone komunikaty o błędach z Menedżera pakietu na komputerze, który można badania i podejmij akcję. Zarządzanie aktualizacjami wymaga Menedżera pakietów wskazywać dobrej kondycji w przypadku wdrożeń Pomyślna aktualizacja.
-
-W niektórych przypadkach pakietu aktualizacji może zakłócać zaktualizować zarządzania uniemożliwia wdrożenia aktualizacji na ukończenie. Jeśli zobaczysz, że, musisz zainstalować je ręcznie albo Wyklucz te pakiety z przebiegi aktualizacji przyszłych samodzielnie.
-
-Jeśli nie możesz rozwiązać problem z poprawką, Utwórz kopię następującego pliku dziennika i zachować go **przed** uruchamia dalej wdrożenia aktualizacji na potrzeby rozwiązywania problemów:
-
-```
-/var/opt/microsoft/omsagent/run/automationworker/omsupdatemgmt.log
-```
+Aby dowiedzieć się, jak rozwiązywać problemy z zarządzania aktualizacjami, zobacz [Rozwiązywanie problemów z zarządzaniem aktualizacji](troubleshoot/update-management.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

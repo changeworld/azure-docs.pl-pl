@@ -7,15 +7,15 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/27/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: b966ed4f1a9a8e659fbce185a807573d5321b251
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 50fef25a3b7b71821e64638729eb8d93f65b9e31
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801657"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063920"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Narzędzia diagnostyki stosu Azure
 
@@ -46,6 +46,35 @@ Poniżej przedstawiono kilka przykładowych typów dziennika, które są zbieran
 *   **Dzienniki zdarzeń systemu Windows**
 
 Te pliki są zbierane i zapisywane w udziale przez moduł zbierający śledzenia. **Get-AzureStackLog** polecenia cmdlet programu PowerShell można następnie używany do gromadzenia je w razie potrzeby.
+
+### <a name="to-run-get-azurestacklog-on-azure-stack-integrated-systems"></a>Do uruchomienia Get-AzureStackLog na stosie Azure zintegrowanych systemów 
+Aby uruchomić narzędzie do zbierania dzienników na zintegrowany system, należy mieć dostęp do uprzywilejowanych punktu końcowego (program ten). Poniżej przedstawiono przykładowy skrypt można uruchomić przy użyciu program ten zbierania dzienników na zintegrowany system:
+
+```powershell
+$ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
+ 
+$pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
+$cred = New-Object System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $pwd)
+ 
+$shareCred = Get-Credential
+ 
+$s = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred
+
+$fromDate = (Get-Date).AddHours(-8)
+$toDate = (Get-Date).AddHours(-2)  #provide the time that includes the period for your issue
+ 
+Invoke-Command -Session $s {    Get-AzureStackLog -OutputSharePath "<EXTERNAL SHARE ADDRESS>" -OutputShareCredential $using:shareCred  -FilterByRole Storage -FromDate $using:fromDate -ToDate $using:toDate}
+
+if($s)
+{
+    Remove-PSSession $s
+}
+```
+
+- Parametry **OutputSharePath** i **OutputShareCredential** są używane do przekazywania dzienników do zewnętrznego folderu udostępnionego.
+- Jak pokazano w poprzednim przykładzie **FromDate** i **ToDate** parametry może służyć do zbierania dzienników dla danego okresu. To są dostępne w przydatne w scenariuszach, takich jak zbieranie dzienników po zastosowaniu pakietu aktualizacji na zintegrowany system.
+
+
  
 ### <a name="to-run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system"></a>Aby uruchomić Get AzureStackLog w systemie Azure stosu Development Kit (ASDK)
 1. Zaloguj się jako **AzureStack\CloudAdmin** na hoście.
@@ -77,65 +106,6 @@ Te pliki są zbierane i zapisywane w udziale przez moduł zbierający śledzenia
   ```powershell
   Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
   ```
-
-### <a name="to-run-get-azurestacklog-on-azure-stack-integrated-systems-version-1804-and-later"></a>Do uruchomienia Get-AzureStackLog na stosie Azure zintegrowanych wersji systemów 1804 i nowsze
-
-Aby uruchomić narzędzie do zbierania dzienników na zintegrowany system, należy mieć dostęp do uprzywilejowanych punktu końcowego (program ten). Poniżej przedstawiono przykładowy skrypt można uruchomić przy użyciu program ten zbierania dzienników na zintegrowany system:
-
-```powershell
-$ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
- 
-$pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
-$cred = New-Object System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $pwd)
- 
-$shareCred = Get-Credential
- 
-$s = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred
-
-$fromDate = (Get-Date).AddHours(-8)
-$toDate = (Get-Date).AddHours(-2)  #provide the time that includes the period for your issue
- 
-Invoke-Command -Session $s {    Get-AzureStackLog -OutputSharePath "<EXTERNAL SHARE ADDRESS>" -OutputShareCredential $using:shareCred  -FilterByRole Storage -FromDate $using:fromDate -ToDate $using:toDate}
-
-if($s)
-{
-    Remove-PSSession $s
-}
-```
-
-- Parametry **OutputSharePath** i **OutputShareCredential** są używane do przekazywania dzienników do zewnętrznego folderu udostępnionego.
-- Jak pokazano w poprzednim przykładzie **FromDate** i **ToDate** parametry może służyć do zbierania dzienników dla danego okresu. To są dostępne w przydatne w scenariuszach, takich jak zbieranie dzienników po zastosowaniu pakietu aktualizacji na zintegrowany system.
-
-
-### <a name="to-run-get-azurestacklog-on-azure-stack-integrated-systems-version-1803-and-earlier"></a>Do uruchomienia Get-AzureStackLog na stosie Azure zintegrowanych wersji systemów 1803 lub starszej
-
-Aby uruchomić narzędzie do zbierania dzienników na zintegrowany system, należy mieć dostęp do uprzywilejowanych punktu końcowego (program ten). Poniżej przedstawiono przykładowy skrypt można uruchomić przy użyciu program ten zbierania dzienników na zintegrowany system:
-
-```powershell
-$ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
- 
-$pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
-$cred = New-Object System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $pwd)
- 
-$shareCred = Get-Credential
- 
-$s = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred
-
-$fromDate = (Get-Date).AddHours(-8)
-$toDate = (Get-Date).AddHours(-2)  #provide the time that includes the period for your issue
- 
-Invoke-Command -Session $s {    Get-AzureStackLog -OutputPath "\\<HLH MACHINE ADDRESS>\c$\logs" -OutputSharePath "<EXTERNAL SHARE ADDRESS>" -OutputShareCredential $using:shareCred  -FilterByRole Storage -FromDate $using:fromDate -ToDate $using:toDate}
-
-if($s)
-{
-    Remove-PSSession $s
-}
-```
-
-- Zbieranie dzienników z program ten, określić **OutputPath** parametr do lokalizacji na komputerze hosta cyklu życia sprzętu (HLH). Również upewnić się, że lokalizacja jest zaszyfrowany.
-- Parametry **OutputSharePath** i **OutputShareCredential** są opcjonalne i są używane podczas przekazywania dzienników do zewnętrznego folderu udostępnionego. Użyj tych parametrów *dodatkowo* do **OutputPath**. Jeśli **OutputPath** nie zostanie określony, narzędzie do zbierania dzienników używa dysku systemowego maszyny wirtualnej program ten magazyn. Może to spowodować skryptu, aby zakończyć się niepowodzeniem, ponieważ miejsce na dysku jest ograniczone.
-- Jak pokazano w poprzednim przykładzie **FromDate** i **ToDate** parametry może służyć do zbierania dzienników dla danego okresu. To są dostępne w przydatne w scenariuszach, takich jak zbieranie dzienników po zastosowaniu pakietu aktualizacji na zintegrowany system.
-
 
 ### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>Zagadnienia dotyczące parametru dla ASDK i zintegrowanych systemów
 

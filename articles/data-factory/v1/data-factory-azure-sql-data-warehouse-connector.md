@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: df8fe611c762421f3a963340b24df74a80a20160
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 678913796edafe86e19d8907e3a2e29ec15ffa90
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621738"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047081"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure SQL Data Warehouse przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](data-factory-azure-sql-data-warehouse-connector.md)
-> * [Wersja 2 — wersja zapoznawcza](../connector-azure-sql-data-warehouse.md)
+> * [W wersji 1](data-factory-azure-sql-data-warehouse-connector.md)
+> * [W wersji 2 (bieżąca wersja)](../connector-azure-sql-data-warehouse.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [łącznika usługi Azure SQL Data Warehouse w wersji 2](../connector-azure-sql-data-warehouse.md).
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [łącznika usługi Azure SQL Data Warehouse w wersji 2](../connector-azure-sql-data-warehouse.md).
 
 W tym artykule opisano sposób korzystania działanie kopiowania w fabryce danych Azure, aby przenieść dane z usługi Azure SQL Data Warehouse. Opiera się na [działań przepływu danych](data-factory-data-movement-activities.md) artykułu, który przedstawia ogólny przegląd przenoszenia danych z działania kopiowania.  
 
@@ -54,7 +54,7 @@ Można utworzyć potok z działania kopiowania, który przenosi dane z usługi A
 
 Najprostszym sposobem, aby utworzyć potok, który kopiuje dane z magazynu danych SQL Azure jest za pomocą Kreatora kopiowania danych. Zobacz [samouczek: ładowanie danych do usługi SQL Data Warehouse z fabryką danych](../../sql-data-warehouse/sql-data-warehouse-load-with-data-factory.md) szybkie przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
 
-Umożliwia także następujące narzędzia do tworzenia potoku: **portalu Azure**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejs API .NET**, i **interfejsu API REST**. Zobacz [samouczek działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
+Umożliwia także następujące narzędzia do tworzenia potoku: **portalu Azure**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager** , **Interfejs API .NET**, i **interfejsu API REST**. Zobacz [samouczek działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
 
 Czy można użyć narzędzia i interfejsy API, należy wykonać następujące kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródła do ujścia magazynu danych:
 
@@ -154,7 +154,7 @@ GO
 | rejectSampleValue |Określa liczbę wierszy do pobrania przed PolyBase ponownie oblicza procent odrzuconych wierszy. |1, 2, … |Tak, jeśli **dla właściwości rejectType** jest **procent** |
 | useTypeDefault |Określa sposób obsługi brakujących wartości w rozdzielane pliki tekstowe, jeśli PolyBase pobiera dane z pliku tekstowego.<br/><br/>Dowiedz się więcej o tej właściwości z sekcji argumenty w [utworzyć EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx). |Wartość true, False (ustawienie domyślne) |Nie |
 | writeBatchSize |Wstawia dane do tabeli SQL, gdy writeBatchSize osiągnie rozmiar buforu |Liczba całkowita (liczba wierszy) |Nie (domyślne: 10000) |
-| writeBatchTimeout |Czas na ukończenie zanim upłynie limit czasu operacji wstawiania wsadowego oczekiwania. |Zakres czasu<br/><br/> Przykład: "00: 30:00" (30 minut). |Nie |
+| writeBatchTimeout |Czas na ukończenie zanim upłynie limit czasu operacji wstawiania wsadowego oczekiwania. |zakres czasu<br/><br/> Przykład: "00: 30:00" (30 minut). |Nie |
 
 #### <a name="sqldwsink-example"></a>Przykład SqlDWSink
 
@@ -229,10 +229,10 @@ Jeśli nie zostały spełnione wymagania, fabryki danych Azure sprawdza ustawien
 Źródło danych nie spełnia kryteriów wprowadzone w poprzedniej sekcji, umożliwia kopiowanie danych za pośrednictwem tymczasowego przemieszczania magazynu obiektów Blob Azure (nie może być magazyn w warstwie Premium). W takim przypadku fabryki danych Azure automatycznie dokonuje przekształcenia danych spełnia wymagania dotyczące formatu danych PolyBase, a następnie użyj programu PolyBase, aby załadować dane do usługi SQL Data Warehouse i na ostatnich oczyszczania tymczasowego danych z magazynu obiektów Blob. Zobacz [przemieszczane kopiowania](data-factory-copy-activity-performance.md#staged-copy) szczegółowe informacje na temat jak kopiowanie danych za pośrednictwem tymczasowych obiektów Blob platformy Azure działa na ogół.
 
 > [!NOTE]
-> Podczas kopiowania danych z danych z lokalnego magazynu do usługi Azure SQL Data Warehouse przy użyciu programu PolyBase i przemieszczania, jeśli wersja bramy zarządzania danymi znajduje się poniżej 2.4 środowiska JRE (Java Runtime Environment) jest wymagana na komputerze bramy, służący do przekształcania danych źródłowych właściwego formatu. Sugerują, że uaktualnienie bramy do najnowszej wersji w celu uniknięcia takiej zależności.
+> Podczas kopiowania danych z danych z lokalnego magazynu do usługi Azure SQL Data Warehouse przy użyciu programu PolyBase i przemieszczania, jeśli wersja bramy zarządzania danymi znajduje się poniżej 2.4 środowiska JRE (Java Runtime Environment) jest wymagana na komputerze bramy, który jest używany do transformacji danych źródłowych do prawidłowego formatu. Sugerują, że uaktualnienie bramy do najnowszej wersji w celu uniknięcia takiej zależności.
 >
 
-Aby użyć tej funkcji, należy utworzyć [połączonej usługi magazynu Azure](data-factory-azure-blob-connector.md#azure-storage-linked-service) odwołujący się do konta magazynu Azure, które ma magazynu tymczasowego obiektu blob, następnie określ `enableStaging` i `stagingSettings` właściwości dla działania kopiowania, jak pokazano w poniższym kodzie:
+Aby użyć tej funkcji, należy utworzyć [połączonej usługi magazynu Azure](data-factory-azure-blob-connector.md#azure-storage-linked-service) odwołujący się do konta magazynu Azure, które ma magazynu tymczasowego obiektu blob, następnie określ `enableStaging` i `stagingSettings` właściwości dla działania kopiowania, jak pokazano w następujący kod:
 
 ```json
 "activities":[  
@@ -297,7 +297,7 @@ All columns of the table must be specified in the INSERT BULK statement.
 Wartość NULL jest specjalny rodzaj wartości domyślnej. W przypadku wartości Null kolumny danych wejściowych (w obiekcie blob) dla tej kolumny może być pusta (nie może być brakuje wejściowy zestaw danych). Program PolyBase wstawia wartość NULL w przypadku ich w magazynie danych SQL Azure.  
 
 ## <a name="auto-table-creation"></a>Automatyczne tworzenie tabeli
-Jeśli używasz kreatora kopiowania, aby skopiować dane z serwera SQL lub bazy danych SQL Azure do usługi Azure SQL Data Warehouse, tabeli, która odpowiada tabela źródłowa nie istnieje w magazynie docelowym fabryki danych może automatycznie tworzyć tabeli w magazynie danych przy użyciu schematu tabeli źródłowej.
+Jeśli używasz kreatora kopiowania, aby skopiować dane z serwera SQL lub bazy danych SQL Azure do usługi Azure SQL Data Warehouse, tabeli, która odpowiada tabela źródłowa nie istnieje w magazynie docelowym fabryki danych może automatycznie tworzyć tabeli w magazynie danych przez u SING schemat tabeli źródłowej.
 
 Fabryka danych tworzy tabeli w magazynie docelowym o takiej samej nazwie tabeli w magazynie źródła danych. Typy danych kolumn są wybierane w oparciu następujące mapowania typu. W razie potrzeby wykonuje konwersje typów, aby rozwiązać wszelkie niezgodności między magazynami źródłowym i docelowym. Używa okrężnego tabeli dystrybucji.
 
@@ -347,7 +347,7 @@ Mapowanie jest taka sama jak [mapowanie typu danych serwera SQL dla ADO.NET](htt
 | Typ aparatu bazy danych programu SQL Server | Typ programu .NET framework |
 | --- | --- |
 | bigint |Int64 |
-| Binarne |Byte[] |
+| dane binarne |Byte[] |
 | bitowe |Wartość logiczna |
 | char |Ciąg, Char] |
 | data |DateTime |
@@ -356,8 +356,8 @@ Mapowanie jest taka sama jak [mapowanie typu danych serwera SQL dla ADO.NET](htt
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
 | Atrybut FILESTREAM (varbinary(max)) |Byte[] |
-| Liczba zmiennoprzecinkowa |O podwójnej precyzji |
-| Obraz |Byte[] |
+| Liczba zmiennoprzecinkowa |podwójne |
+| image |Byte[] |
 | int |Int32 |
 | oszczędność pieniędzy |Decimal |
 | nchar |Ciąg, Char] |
@@ -373,7 +373,7 @@ Mapowanie jest taka sama jak [mapowanie typu danych serwera SQL dla ADO.NET](htt
 | tekst |Ciąg, Char] |
 | time |Zakres czasu |
 | sygnatura czasowa |Byte[] |
-| tinyint |Bajtów |
+| tinyint |Bajt |
 | Unikatowy identyfikator |Identyfikator GUID |
 | varbinary |Byte[] |
 | varchar |Ciąg, Char] |

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d22829217209b7d0b1b5690d6a864b58bf102e3c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e775798dbaaf93d5a9b497323a3b2fa365820550
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622282"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046468"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Wywoływanie programów Spark z potoków fabryki danych Azure
 
@@ -37,7 +37,7 @@ ms.locfileid: "34622282"
 > * [Niestandardowe działanie platformy .NET](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Azure Data Factory, która jest ogólnie dostępna. Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [Przekształcanie danych za pomocą działania Apache Spark w fabryce danych w wersji 2](../transform-data-using-spark.md).
+> Ten artykuł dotyczy wersji 1 usługi Azure Data Factory, która jest ogólnie dostępna. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [Przekształcanie danych za pomocą działania Apache Spark w fabryce danych](../transform-data-using-spark.md).
 
 ## <a name="introduction"></a>Wprowadzenie
 Działanie Spark jest jednym z [działań przekształcania danych](data-factory-data-transformation-activities.md) obsługiwane przez fabryki danych. To działanie uruchamia określony program Spark w klastrze Spark w usłudze Azure HDInsight. 
@@ -268,8 +268,7 @@ W tym kroku możesz utworzyć potok z działaniem HDInsightSpark. W tym przypadk
 
     ![Wyniki zapytania Jupyter](media/data-factory-spark/jupyter-notebook-results.png)
 
-<!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article -->
-Aby uzyskać szczegółowe instrukcje, zobacz sekcję [uruchamiania zapytań Spark SQL](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
+<!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article --> Aby uzyskać szczegółowe instrukcje, zobacz sekcję [uruchamiania zapytań Spark SQL](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 Ponieważ ustawioną getDebugInfo **zawsze**, zobacz podfolder dziennika w folderze pyFiles w kontenerze obiektu blob. Dodatkowe informacje znajdują się w pliku dziennika w folderze dziennika. Ten plik dziennika jest szczególnie przydatna w przypadku, gdy występuje błąd. W środowisku produkcyjnym można ustawić ją na **błąd**.
@@ -337,7 +336,7 @@ W poniższej tabeli opisano właściwości JSON używane w definicji JSON.
 | rootPath | Kontener obiektów blob i folder zawierający plik Spark. Nazwa pliku jest uwzględniana wielkość liter. | Yes |
 | entryFilePath | Ścieżka względna do folderu głównego Spark kodu/pakietu. | Yes |
 | className | Aplikacji Java/Spark klasy głównym. | Nie |
-| Argumenty | Lista argumentów wiersza polecenia do programu Spark. | Nie |
+| argumenty | Lista argumentów wiersza polecenia do programu Spark. | Nie |
 | proxyUser | Konto użytkownika do personifikacji do wykonania programu Spark. | Nie |
 | sparkConfig | Określ wartości dla właściwości konfiguracji Spark na liście [konfiguracji Spark: właściwości aplikacji](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Nie |
 | getDebugInfo | Określa, kiedy Spark pliki dziennika są kopiowane do magazynu używane przez klaster usługi HDInsight (lub) został określony przez sparkJobLinkedService. Dozwolone wartości to None, zawsze lub niepowodzenie. Wartość domyślna to None. | Nie |

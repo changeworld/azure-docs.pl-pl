@@ -12,22 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/31/2018
 ms.author: douglasl
-ms.openlocfilehash: 525ad1c83a1982ae5b954b900c5a6c7086544c66
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: abe2fabc505f94f19d4b15a406fc59bf6d6e7ac1
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700540"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050339"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Przekształcanie danych za pomocą działania Spark w usłudze fabryka danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](v1/data-factory-spark.md)
-> * [Wersja 2 — wersja zapoznawcza](transform-data-using-spark.md)
+> * [W wersji 1](v1/data-factory-spark.md)
+> * [Bieżąca wersja](transform-data-using-spark.md)
 
 Działanie Spark w fabryce danych [potoku](concepts-pipelines-activities.md) wykonuje Spark program na [własne](compute-linked-services.md#azure-hdinsight-linked-service) lub [na żądanie](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) klastra usługi HDInsight. W tym artykule opiera się na [działań przekształcania danych](transform-data.md) artykułu, który przedstawia ogólny przegląd transformacji danych i działań obsługiwanych transformacji. Gdy używasz usługi Spark połączony na żądanie usługi fabryka danych automatycznie tworzy klaster Spark dla możesz just-in-time do przetwarzania danych, a następnie usuwa klastra po zakończeniu przetwarzania. 
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [działania Spark w wersji 1](v1/data-factory-spark.md).
 
 > [!IMPORTANT]
 > Działanie Spark nie obsługuje klastrów HDInsight Spark, które używają usługi Azure Data Lake Store jako podstawowy magazyn.
@@ -74,7 +71,7 @@ W poniższej tabeli opisano właściwości JSON używane w definicji JSON:
 | rootPath              | Kontener obiektów Blob platformy Azure i folder zawierający plik Spark. Nazwa pliku jest rozróżniana wielkość liter. Odwoływać się do struktury folderów sekcji (dalej) Aby uzyskać szczegółowe informacje o strukturze tego folderu. | Yes      |
 | entryFilePath         | Ścieżka względna do folderu głównego Spark kodu/pakietu. Plik wejścia musi być plikiem Python lub pliku JAR. | Yes      |
 | className             | Klasy głównym aplikacji Java/Spark      | Nie       |
-| Argumenty             | Lista argumentów wiersza polecenia do programu Spark. | Nie       |
+| argumenty             | Lista argumentów wiersza polecenia do programu Spark. | Nie       |
 | proxyUser             | Konto użytkownika do personifikacji do wykonania programu Spark | Nie       |
 | sparkConfig           | Określ wartości dla właściwości konfiguracji Spark wymienione w temacie: [konfiguracji Spark — właściwości aplikacji](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Nie       |
 | getDebugInfo          | Określa, kiedy Spark pliki dziennika są kopiowane do magazynu Azure używanego przez klaster usługi HDInsight (lub) został określony przez sparkJobLinkedService. Dozwolone wartości: None, zawsze lub niepowodzenie. Wartość domyślna: Brak. | Nie       |

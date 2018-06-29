@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/29/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 37239a45cffe18478b8302ccf1ee95c8edd0423a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9b36014057eb1713b2b056cd203a099c59d9b5d4
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592164"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031774"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Logowanie użytkownika do uwierzytelniania przekazywanego Azure Active Directory
 
@@ -49,7 +49,7 @@ Możesz łączyć uwierzytelniania przekazywanego z [bezproblemowe logowanie jed
 - *Bezpieczeństwo*
   - Lokalne hasła nigdy nie są przechowywane w chmurze w jakimkolwiek formularzu.
   - Agent tylko sprawia, że połączenia wychodzące z sieci. W związku z tym jest wymagany do zainstalowania agenta w sieci obwodowej, znanej także jako strefa DMZ.
-  - Chroni kont użytkowników przy stosowaniu bezproblemowo [zasady dostępu warunkowego AD Azure](../active-directory-conditional-access-azure-portal.md), łącznie z usługi Multi-Factor Authentication (MFA) i przez [filtrowanie ataków siłowych hasła](active-directory-aadconnect-pass-through-authentication-smart-lockout.md).
+  - Chroni kont użytkowników przy stosowaniu bezproblemowo [zasady dostępu warunkowego AD Azure](../active-directory-conditional-access-azure-portal.md), łącznie z usługi Multi-Factor Authentication (MFA) i przez [filtrowanie ataków siłowych hasła](../authentication/howto-password-smart-lockout.md).
 - *Wysokiej dostępności*
   - Dodatkowe agentów można zainstalować na wielu serwerach lokalnych, aby zapewnić wysoką dostępność żądań logowania.
 
@@ -64,12 +64,12 @@ Możesz łączyć uwierzytelniania przekazywanego z [bezproblemowe logowanie jed
 - Można ją włączyć za pomocą [Azure AD Connect](active-directory-aadconnect.md).
 - Używa agenta lekkie lokalnymi, który odbiera i odpowiada na żądania sprawdzania poprawności hasła.
 - Instalowanie wielu agentów zapewnia wysoką dostępność żądań logowania.
-- On [chroni](active-directory-aadconnect-pass-through-authentication-smart-lockout.md) złamania hasła w chmurze force konta lokalnego przed metodą siłową.
+- On [chroni](../authentication/howto-password-smart-lockout.md) złamania hasła w chmurze force konta lokalnego przed metodą siłową.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [**Szybki Start** ](active-directory-aadconnect-pass-through-authentication-quick-start.md) — Uzyskaj i systemem Azure AD przekazywanego uwierzytelniania.
-- [**Inteligentne blokady** ](active-directory-aadconnect-pass-through-authentication-smart-lockout.md) — funkcja Konfigurowanie blokady inteligentnej na dzierżawy do ochrony kont użytkowników.
+- [**Inteligentne blokady** ](../authentication/howto-password-smart-lockout.md) — funkcja Konfigurowanie blokady inteligentnej na dzierżawy do ochrony kont użytkowników.
 - [**Bieżące ograniczenia** ](active-directory-aadconnect-pass-through-authentication-current-limitations.md) — Dowiedz się, jakie scenariusze są obsługiwane i zostały.
 - [**Nowości techniczne** ](active-directory-aadconnect-pass-through-authentication-how-it-works.md) -zrozumieć sposób działania tej funkcji.
 - [**Często zadawane pytania** ](active-directory-aadconnect-pass-through-authentication-faq.md) — odpowiedzi na często zadawane pytania.

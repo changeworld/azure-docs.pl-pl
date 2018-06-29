@@ -1,5 +1,5 @@
 ---
-title: Określić sposób użycia wystąpienia zastrzeżone Azure dla subskrypcji z - rozliczenia Azure | Dokumentacja firmy Microsoft
+title: Określić sposób użycia Azure wystąpienia zarezerwowane dla Twojej subskrypcji z | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak można odczytać użycie zrozumieć, jak stosowany jest zastrzeżone wystąpienia maszyny Wirtualnej Azure dla subskrypcji z.
 services: billing
 documentationcenter: ''
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: manshuk
-ms.openlocfilehash: 7bf4aea86d4d430c15d60a8d73365705ace18b5a
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 7e303f3e5ce0e618d941be4190f6fadb40f2e09d
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063925"
 ---
 # <a name="understand-reserved-instance-usage-for-your-pay-as-you-go-subscription"></a>Określić sposób użycia wystąpienia zarezerwowane dla Twojej subskrypcji z
 
@@ -28,7 +29,7 @@ Zrozumieć użycie zastrzeżonego wystąpienia maszyny Wirtualnej Azure przy uż
 >[!NOTE]
 >W tym artykule nie ma zastosowania do EA klienci. Jeśli klient EA, zobacz [użycia zrozumieć wystąpienia zarezerwowane dla rejestracji w przedsiębiorstwie.](billing-understand-reserved-instance-usage-ea.md) Tym artykule przyjęto również zastosowana wystąpienia zarezerwowane do jednej subskrypcji. Jeśli wystąpienie zastrzeżone jest stosowane do więcej niż jedną subskrypcję, korzyści zastrzeżone wystąpienia mogą obejmować wiele plików csv użycia. 
 
-W poniższej sekcji, że używasz maszyny Wirtualnej systemu Windows Standard_DS1_v2 w Azji regionu Stanów Zjednoczonych i wystąpienia zastrzeżone informacje wygląda w poniższej tabeli:
+Dla następujących sekcji założono, że uruchamiasz Standard_DS1_v2 maszyny Wirtualnej systemu Windows w Azji regionu Stanów Zjednoczonych i wystąpienia zastrzeżone Twoje informacje prawdopodobnie poniższej tabeli:
 
 | Pole | Wartość |
 |---| :---: |
@@ -42,7 +43,7 @@ W poniższej sekcji, że używasz maszyny Wirtualnej systemu Windows Standard_DS
 Część sprzętu maszyny Wirtualnej jest objęte ponieważ wdrożonej maszyny Wirtualnej jest zgodna z atrybutów wystąpienia zastrzeżone. Aby zobaczyć, jakie oprogramowanie systemu Windows nie jest objęte zastrzeżone wystąpienia, przejdź do [koszty oprogramowania Windows wystąpień maszyny Wirtualnej rezerwy Azure.](billing-reserved-instance-windows-software-costs.md)
 
 ### <a name="statement-section-of-csv"></a>Instrukcja sekcji pliku CSV
-Tej sekcji z pliku CSV pokazuje całkowite użycie zastrzeżonego wystąpienia. Zastosuj filtr na pole podkategorii miernika, które zawiera "Rezerwacji-" i dane mogą wyglądać Poniższy zrzut ekranu: ![zrzut ekranu przedstawiający filtrowane szczegóły użycia wystąpienia zastrzeżone i opłat](./media/billing-understand-reserved-instance-usage/billing-payg-reserved-instance-csv-statements.png)
+W tej części sieci csv pokazuje całkowite użycie zastrzeżonego wystąpienia. Zastosuj filtr na pole podkategorii miernika, które zawiera "Rezerwacji-" i dane mogą wyglądać Poniższy zrzut ekranu: ![zrzut ekranu przedstawiający filtrowane wystąpienia zastrzeżone szczegóły użycia i opłat](./media/billing-understand-reserved-instance-usage/billing-payg-reserved-instance-csv-statements.png)
 
 Wiersz rezerwacji podstawowa maszyna wirtualna ma łączną liczbę godzin, które są objęte zastrzeżone wystąpienia. Ten wiersz jest 0,00, ponieważ wystąpienie zastrzeżone obejmuje on. Windows rezerwacji Svr (1 rdzeń) wiersza obejmuje koszty oprogramowania systemu Windows.
 
@@ -60,9 +61,9 @@ Odfiltruj dodatkowe informacje, a następnie wpisz w Twojej **identyfikator reze
 ## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej o wystąpieniach zastrzeżonych, zobacz następujące artykuły:
 
-- [Oszczędzić pieniądze na maszynach wirtualnych z wystąpieniami zastrzeżone Azure](billing-save-compute-costs-reservations.md)
-- [Przedpłaty dla maszyn wirtualnych z wystąpień zastrzeżone](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Zarządzanie wystąpieniami zastrzeżone](billing-manage-reserved-vm-instance.md)
+- [Co to są zastrzeżone wystąpień maszyn wirtualnych Azure?](billing-save-compute-costs-reservations.md)
+- [Przedpłaty dla maszyn wirtualnych z wystąpień zastrzeżone maszyna wirtualna platformy Azure](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Zarządzanie wystąpieniami zarezerwowane na platformie Azure](billing-manage-reserved-vm-instance.md)
 - [Zrozumienie, jak stosowany jest rabat zastrzeżone wystąpienia](billing-understand-vm-reservation-charges.md)
 - [Określić sposób użycia wystąpienia zarezerwowane dla rejestracji w przedsiębiorstwie](billing-understand-reserved-instance-usage-ea.md)
 - [Koszty oprogramowania systemu Windows nie jest dołączony do wystąpienia zastrzeżone](billing-reserved-instance-windows-software-costs.md)

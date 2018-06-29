@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 65c7262916219a74dcd6bdab487306b5bd5f709f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 1882207207327214ee6519a98715d06a7e32ab93
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299100"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045606"
 ---
 # <a name="logic-apps-b2b-cross-region-disaster-recovery"></a>Odzyskiwanie po awarii między region B2B aplikacje logiki
 
@@ -85,7 +85,7 @@ Aby wrócić do regionu podstawowego, gdy jest ona dostępna, wykonaj następuj�
 Ciągłość prowadzenia działalności biznesowej dla EDI X 12 dokumenty są oparte na numery kontroli:
 
 > [!TIP]
-> Można również użyć [X12 szybki start szablonu](https://azure.microsoft.com/documentation/templates/201-logic-app-x12-disaster-recovery-replication/) do tworzenia aplikacji logiki. Tworzenie konta integracji podstawowe i pomocnicze są wymagania wstępne, aby użyć szablonu. Szablon ułatwia tworzenie aplikacji logiki dwóch dla kontroli odebranej liczby i osobne numery wygenerowanego kontroli. Odpowiednich wyzwalacze i akcje są tworzone w aplikacjach logiki, wyzwalacz łączenia się z podstawowej integracji konta i akcji na koncie dodatkowej integracji.
+> Można również użyć [X12 szybki start szablonu](https://azure.microsoft.com/resources/templates/201-logic-app-b2b-disaster-recovery-replication/) do tworzenia aplikacji logiki. Tworzenie konta integracji podstawowe i pomocnicze są wymagania wstępne, aby użyć szablonu. Szablon ułatwia tworzenie aplikacji logiki dwóch dla kontroli odebranej liczby i osobne numery wygenerowanego kontroli. Odpowiednich wyzwalacze i akcje są tworzone w aplikacjach logiki, wyzwalacz łączenia się z podstawowej integracji konta i akcji na koncie dodatkowej integracji.
 
 **Wymagania wstępne**
 

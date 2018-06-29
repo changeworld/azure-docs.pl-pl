@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/13/2018
-ms.openlocfilehash: ec916ea2104df9d694aad2462df7ca5a487017f2
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: cfdfa1493857a1731da74c52a616293b482f811a
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30907762"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030696"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Tworzenie zadania Stream Analytics krawędzi za pomocą narzędzi Visual Studio
 
@@ -61,14 +61,14 @@ Po utworzeniu pobiera projektu, przejdź do **Eksploratora rozwiązań** Aby wy�
 2. Upewnij się, czy obiekt Sink jest ustawiony na wybierz **Centrum krawędzi** > Format serializacji zdarzeń wartość **Json** > i kodowanie ma ustawioną wartość **UTF8** > i ma ustawioną wartość formatu  **Tablica**. Opcjonalnie można zmienić nazwy **Alias wyjściowy**, umożliwia pozostawienie go jako jest w tym przykładzie. W przypadku, gdy zostanie zmieniona nazwa aliasu danych wyjściowych, należy użyć nazwy określone podczas definiowania zapytania. Wybierz pozycję **Zapisz**, aby zapisać ustawienia. 
    ![Dane wyjściowe konfiguracji](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-output-configuration.png)
  
-## <a name="define-the-transformation-query"></a>Zdefiniuj zapytanie o transformacji
+## <a name="define-the-transformation-query"></a>Definiowanie zapytania przekształcenia
 
 Wdrożone w środowiskach krawędzi zadania usługi analiza strumienia obsługuje większość [odwołania Stream Analytics Query Language](https://msdn.microsoft.com/azure/stream-analytics/reference/stream-analytics-query-language-reference?f=255&MSPPError=-2147217396), ale następujące operacje nie są jeszcze obsługiwane krawędzi zadań: 
 
 
 |**Kategoria**  | **Polecenie**  |
 |---------|---------|
-|Operatory lokalizacji geograficznych |<ul><li>CreatePoint</li><li>CreatePolygon</li><li>CreateLineString</li><li>ST_DISTANCE</li><li>ST_WITHIN</li><li>ST_OVERLAPS</li><li>ST_INTERSECTS</li></ul> |
+|Operatory danych geoprzestrzennych |<ul><li>CreatePoint</li><li>CreatePolygon</li><li>CreateLineString</li><li>ST_DISTANCE</li><li>ST_WITHIN</li><li>ST_OVERLAPS</li><li>ST_INTERSECTS</li></ul> |
 |Inne operatory | <ul><li>PARTYCJA PRZEZ</li><li>SYGNATURA CZASOWA W TRYB FAILOVER</li><li>RÓŻNE</li><li>Parametr wyrażenia w COUNT — operator</li><li>Mikrosekund w funkcji daty i godziny</li><li>UDA JavaScript (Ta funkcja jest dostępny w wersji zapoznawczej zadań wdrożonych w chmurze)</li></ul>   |
 
 Podczas tworzenia zadania krawędzi w portalu, kompilator będzie automatycznie ostrzega użytkownika, jeśli nie używasz operatorem obsługiwanych.
@@ -123,6 +123,6 @@ Okno widoku zadania umożliwia operacji, takich jak odświeżyć zadania, usuwan
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Więcej informacji na temat krawędzi Iot Azure](../iot-edge/how-iot-edge-works.md)
+* [Więcej informacji na temat krawędzi Iot Azure](../iot-edge/about-iot-edge.md)
 * [ASA na krawędzi IoT — samouczek](../iot-edge/tutorial-deploy-stream-analytics.md)
 * [Wyślij opinię do zespołu za pomocą tej ankiety](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) 

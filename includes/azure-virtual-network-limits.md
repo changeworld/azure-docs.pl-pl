@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/20/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: b9e06865b4a401cd925cce564b9c30594c912bae
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 326da32f91b263bbd09a4c6f521c9ec72094820c
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36297970"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37066071"
 ---
 <a name="virtual-networking-limits-classic"></a>Poniższe limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu klasycznego modelu wdrażania, które przypadają na jedną subskrypcję. Dowiedz się, jak [wyświetlać z bieżącego wykorzystania zasobów względem swoje limity subskrypcji](../articles/networking/check-usage-against-limits.md).
 
@@ -44,7 +44,7 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 | Komunikacji równorzędnych sieci wirtualnych dla sieci wirtualnej |10 |50 |
 | Serwery DNS na sieć wirtualną |9 |25 |
 | Prywatne adresy IP na sieć wirtualną |16384 ** |16384 |
-| Prywatne adresy IP na interfejs sieciowy |256 |1024 |
+| Prywatne adresy IP na interfejs sieciowy |256 |256 |
 | Współbieżne TCP lub UDP przepływów na kartę Sieciową maszyny wirtualnej lub wystąpienia roli |500 000 |500 000 |
 | Interfejsy sieciowe (karta sieciowa) |24000 ** |24000 |
 | Sieciowe grupy zabezpieczeń (NSG) |100 |5000 |

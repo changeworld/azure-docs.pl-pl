@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: Brenduns
 ms.reviewer: JeffGoldner
-ms.openlocfilehash: d90ac726ae689cf299ee41d4e7ff4c17769e7455
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 8d9337053c8905886ed4429d64f8ef5b4e2c7d14
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34074834"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060451"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Systemy operacyjne gościa obsługiwane na stosie Azure
 
@@ -40,7 +40,7 @@ Stos Azure obsługuje systemy operacyjne Windows gościa wymienione w poniższej
 | Windows Server 2008 SP2 | 64-bitowa |  Przełącz własnego obrazu |
 | Windows 10 *(patrz Uwaga 1)* | 64-bitowy, Pro i Enterprise | Przełącz własnego obrazu |
 
-***Uwaga 1:*** *do wdrażania systemów operacyjnych klienta systemu Windows 10 na stosie Azure, musi mieć [Windows licencjonowania na użytkownika](https://www.microsoft.com/Licensing/product-licensing/windows10.aspx) lub zakupu za pośrednictwem dostawcy usług hostingowych wielodostępnej kwalifikowana ([QMTH](https://www.microsoft.com/CloudandHosting/licensing_sca.aspx)).*
+***Uwaga 1:*** *do wdrażania systemów operacyjnych klienta systemu Windows 10 na stosie Azure, musi mieć [Windows licencjonowania na użytkownika](https://www.microsoft.com/en-us/Licensing/product-licensing/windows10.aspx) lub zakupu za pośrednictwem dostawcy usług hostingowych wielodostępnej kwalifikowana ([QMTH](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)).*
 
 Obrazy Marketplace są dostępne dla płatności jako — użytkownik użycia lub licencjonowania BYOL (EA/SPLA). Zarówno w pojedynczym wystąpieniu Azure stosu nie jest obsługiwane. Podczas wdrażania stos Azure injects odpowiedniej wersji agenta gościa w obrazie.
 

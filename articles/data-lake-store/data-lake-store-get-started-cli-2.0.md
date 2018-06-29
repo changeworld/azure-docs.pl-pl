@@ -1,26 +1,23 @@
 ---
-title: "Rozpoczynanie pracy z usługą Azure Data Lake Store przy użyciu interfejsu wiersza polecenia platformy Azure 2.0 | Microsoft Docs"
-description: "Korzystanie z międzyplatformowego wiersza polecenia platformy Azure 2.0 w celu utworzenia konta usługi Data Lake Store i wykonywania podstawowych operacji"
+title: Interfejsu użyj 2.0 wiersza polecenia platformy Azure, aby zacząć korzystać z usługi Azure Data Lake magazynu Gen1 | Dokumentacja firmy Microsoft
+description: Korzystanie z międzyplatformowego wiersza polecenia platformy Azure 2.0 w celu utworzenia konta usługi Data Lake Store i wykonywania podstawowych operacji
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: 4ffa0f4a-1cca-46ac-803d-1fc8538c685b
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/09/2018
+ms.topic: conceptual
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: b93b9a801b3e5e1fd869cda7f3d67554e2d03195
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
-ms.translationtype: HT
+ms.openlocfilehash: acd1182fdc66374e9abbc4964207417a7de3aadb
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37036577"
 ---
-# <a name="get-started-with-azure-data-lake-store-using-azure-cli-20"></a>Rozpoczynanie pracy z usługą Azure Data Lake Store za pomocą interfejsu wiersza polecenia platformy Azure 2.0
+# <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-cli-20"></a>Wprowadzenie do usługi Azure Data Lake magazynu Gen1 używa interfejsu wiersza polecenia platformy Azure w wersji 2.0
 > [!div class="op_single_selector"]
 > * [Portal](data-lake-store-get-started-portal.md)
 > * [Program PowerShell](data-lake-store-get-started-powershell.md)
@@ -28,7 +25,9 @@ ms.lasthandoff: 03/09/2018
 >
 > 
 
-Dowiedz się, jak przy użyciu interfejsu wiersza polecenia platformy Azure 2.0 utworzyć konto usługi Azure Data Lake Store i wykonywać podstawowe operacje, takie jak tworzenie folderów, przekazywanie i pobieranie plików danych, usuwanie konta itp. Aby uzyskać więcej informacji o usłudze Data Lake Store, zobacz [Omówienie usługi Data Lake Store](data-lake-store-overview.md).
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
+Dowiedz się, jak przy użyciu interfejsu wiersza polecenia platformy Azure 2.0 utworzyć konto usługi Azure Data Lake Store i wykonywać podstawowe operacje, takie jak tworzenie folderów, przekazywanie i pobieranie plików danych, usuwanie konta itp. Aby uzyskać więcej informacji o usłudze Data Lake Store, zobacz [omówienie z Data Lake magazynu Gen1](data-lake-store-overview.md).
 
 Interfejs wiersza polecenia platformy Azure 2.0 to nowe środowisko wiersza polecenia platformy Azure do zarządzania jej zasobami. Można go używać w systemach macOS, Linux i Windows. Aby uzyskać więcej informacji, zobacz [Overview of Azure CLI 2.0](https://docs.microsoft.com/cli/azure) (Przegląd interfejsu wiersza polecenia platformy Azure 2.0). Aby wyświetlić pełną listę poleceń i składnię, zobacz artykuł [Azure Data Lake Store CLI 2.0 reference](https://docs.microsoft.com/cli/azure/dls) (Informacje o interfejsie wiersza polecenia usługi Azure Data Lake Store 2.0).
 
@@ -53,7 +52,7 @@ W tym artykule użyto prostszej metody uwierzytelniania w usłudze Data Lake Sto
     az login
     ```
 
-    Uzyskasz kod do użycia w następnym kroku. Użyj przeglądarki sieci Web, aby otworzyć stronę https://aka.ms/devicelogin, i wprowadź kod w celu uwierzytelnienia. Zostanie wyświetlony monit o zalogowanie się przy użyciu poświadczeń.
+    Uzyskasz kod do użycia w następnym kroku. Aby otworzyć stronę przy użyciu przeglądarki sieci web https://aka.ms/devicelogin i wprowadź kod uwierzytelniania. Zostanie wyświetlony monit o zalogowanie się przy użyciu poświadczeń.
 
 2. Po zalogowaniu w oknie zostanie wyświetlona lista wszystkich subskrypcji platformy Azure, które są skojarzone z Twoim kontem. Za pomocą następującego polecenia użyj konkretnej subskrypcji.
    
@@ -232,7 +231,7 @@ az dls account delete --account mydatalakestore
 
 Po wyświetleniu monitu wpisz **Y**, aby usunąć konto.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Używanie usługi Azure Data Lake Store w zastosowaniach wymagających danych big data](data-lake-store-data-scenarios.md) 
 * [Zabezpieczanie danych w usłudze Data Lake Store](data-lake-store-secure-data.md)
 * [Korzystanie z usługi Azure Data Lake Analytics z usługą Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

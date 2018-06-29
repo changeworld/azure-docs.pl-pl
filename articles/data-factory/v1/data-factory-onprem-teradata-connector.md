@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 62b838212f94c48e39daf31877aeb5b344836571
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ee2440171b54e1279571ec4fcb0c5be7bec207a1
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622564"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045742"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Przenoszenia danych z programu Teradata przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](data-factory-onprem-teradata-connector.md)
-> * [Wersja 2 — wersja zapoznawcza](../connector-teradata.md)
+> * [W wersji 1](data-factory-onprem-teradata-connector.md)
+> * [W wersji 2 (bieżąca wersja)](../connector-teradata.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [Teradata łącznika w wersji 2](../connector-teradata.md).
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [Teradata łącznika w wersji 2](../connector-teradata.md).
 
 W tym artykule opisano sposób używania działania kopiowania w fabryce danych Azure do przenoszenia danych z lokalną bazą danych programu Teradata. Opiera się na [działań przepływu danych](data-factory-data-movement-activities.md) artykułu, który przedstawia ogólny przegląd przenoszenia danych z działania kopiowania.
 
@@ -48,7 +48,7 @@ Dla bramy zarządzania danymi do łączenia z bazą danych programu Teradata, mu
 Można utworzyć potok z działania kopiowania, który przenosi dane z magazynu lokalnego Cassandra danych przy użyciu różnych narzędzi/interfejsów API. 
 
 - Najprostszym sposobem, aby utworzyć potok jest użycie **kreatora kopiowania**. Zobacz [samouczek: tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybkie przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych. 
-- Umożliwia także następujące narzędzia do tworzenia potoku: **portalu Azure**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejs API .NET**, i **interfejsu API REST**. Zobacz [samouczek działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
+- Umożliwia także następujące narzędzia do tworzenia potoku: **portalu Azure**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager** , **Interfejs API .NET**, i **interfejsu API REST**. Zobacz [samouczek działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
 
 Czy można użyć narzędzia i interfejsy API, należy wykonać następujące kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródła do ujścia magazynu danych:
 
@@ -292,14 +292,14 @@ Podczas przenoszenia danych do programu Teradata, następujące mapowania są u�
 | VarChar |Ciąg |
 | VarGraphic |Ciąg |
 | Obiekt blob |Byte[] |
-| Bajtów |Byte[] |
+| Bajt |Byte[] |
 | VarByte |Byte[] |
 | BigInt |Int64 |
 | ByteInt |Int16 |
 | Decimal |Decimal |
-| O podwójnej precyzji |O podwójnej precyzji |
+| podwójne |podwójne |
 | Liczba całkowita |Int32 |
-| Liczba |O podwójnej precyzji |
+| Liczba |podwójne |
 | SmallInt |Int16 |
 | Date |DateTime |
 | Time |Zakres czasu |

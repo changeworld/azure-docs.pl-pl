@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: f121a1f95eed04bf8086c03a5d4406c092dc9445
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ea6ffa9d07be719c43ca33cfca76876c161d69bc
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31400677"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048475"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Nowości — zaawansowane analizy
 
@@ -61,7 +61,7 @@ Wraz z wybranie najlepszego dopasowania algorytmy, należy wziąć pod uwagę, c
 HDInsight ma kilka machine learning opcje zaawansowane metody analizy przepływu pracy:
 
 * [Uczenie maszynowe i Spark](#machine-learning-and-spark)
-* [Serwer R i r](#r-and-r-server)
+* [R i usługi uczenie Maszynowe](#r-and-r-server)
 * [Uczenie maszynowe Azure i Hive](#azure-machine-learning-and-hive)
 * [Platforma Spark i uczenie się bezpośrednich](#spark-and-deep-learning)
 
@@ -75,9 +75,9 @@ Istnieją trzy biblioteki learning maszyny skalowalne, zapewniające możliwośc
 * [**SparkML** ](https://spark.apache.org/docs/1.2.2/ml-guide.html) -SparkML jest nowsza pakietu, który udostępnia interfejs API wyższego poziomu, rozszerzający Spark DataFrames tworzenia ML potoków do.
 * [**MMLSpark** ](https://github.com/Azure/mmlspark) - Microsoft Machine Learning biblioteki dla Apache Spark (MMLSpark) umożliwia analityków danych bardziej wydajnej pracy na Spark, zwiększenia szybkości eksperymenty i uczenie maszynowe najnowocześniejsze technik, w tym uczenie głębokie, na bardzo dużych zestawów danych. Biblioteka MMLSpark upraszcza typowe zadania modelowania budowania modeli w PySpark. 
 
-### <a name="r-and-r-server"></a>Serwer R i r
+### <a name="r-and-ml-services"></a>R i usługi uczenie Maszynowe
 
-W ramach usługi HDInsight, można utworzyć klastra usługi HDInsight [R Server](../r-server/r-server-overview.md) gotowe do użycia z duże zestawy danych i modele. Ta nowa funkcja zapewnia chi z interfejsem R znanych można skalować i analityków danych na żądanie za pośrednictwem usługi HDInsight, bez potrzeby Konfiguracja klastra i konserwacji.
+W ramach usługi HDInsight, można utworzyć klastra usługi HDInsight [usługi uczenia Maszynowego](../r-server/r-server-overview.md) gotowe do użycia z duże zestawy danych i modele. Ta nowa funkcja zapewnia chi z interfejsem R znanych można skalować i analityków danych na żądanie za pośrednictwem usługi HDInsight, bez potrzeby Konfiguracja klastra i konserwacji.
 
 ### <a name="azure-machine-learning-and-hive"></a>Uczenie maszynowe Azure i Hive
 

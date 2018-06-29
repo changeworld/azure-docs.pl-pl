@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: seguler
-ms.openlocfilehash: 80b112de1fd8417dd64d9d95b7a037ec876d18c7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3ed449912df1e16b5c8f1dfa3c83b81eaf635227
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32194672"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37036428"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Transfer danych za pomocą narzędzia AzCopy w systemie Linux
 
@@ -35,7 +35,9 @@ Istnieją dwie wersje programu AzCopy, który można pobrać. Narzędzie AzCopy 
 ### <a name="installation-on-linux"></a>Instalacja w systemie Linux
 
 > [!NOTE]
-> Może być konieczne zainstalowanie zależności .NET Core 2.1 wyróżnione to [artykułu .NET Core wstępne](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) w zależności od dystrybucji. Typowe dystrybucji, takich jak Ubuntu 16.04 i RHEL 7 to zwykle nie jest potrzebna.
+> Może być konieczne zainstalowanie zależności .NET Core 2.1 wyróżnione to [artykułu .NET Core wstępne](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) w zależności od dystrybucji. 
+>
+> Dystrybucji systemów RHEL 7 należy zainstalować ICU i libunwind zależności: ```yum install -y libunwind icu```
 
 Instalowanie narzędzia AzCopy w systemie Linux (v7.2 lub nowszym) jest tak proste, jak wyodrębnianie pakietu tar i uruchomienie skryptu instalacji. 
 
@@ -723,4 +725,3 @@ Aby uzyskać więcej informacji na temat usługi Azure Storage i narzędzia AzCo
 * [Narzędzie AzCopy: Transfer danych za pomocą trybu ponownego uruchamiania i tokenu sygnatury dostępu Współdzielonego](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
 * [Narzędzia AzCopy: Blob kopiowania między konta przy użyciu](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
 * [Narzędzie AzCopy: Przekazywanie pobieranie plików dla obiektów blob Azure](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
-

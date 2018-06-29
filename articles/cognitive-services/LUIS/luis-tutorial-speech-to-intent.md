@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: v-geberr;
-ms.openlocfilehash: b8a2c0dbadb0124b9250849a0260f5b34d38a5c3
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: b681598f953d217ca636fb5c0adc3de4ddbebd60
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021667"
+ms.locfileid: "37031791"
 ---
 # <a name="integrate-speech-service"></a>Integrowanie usługi mowy
 [Mowy usługi](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umożliwia przy użyciu pojedynczego żądania odbierania audio i zwracany LUIS prediction obiektów JSON.
@@ -53,7 +53,9 @@ Po zaimportowaniu aplikacji, wybierz **jednostek**, następnie **Zarządzanie wb
 
   Na **publikowania** strony, zbieranie identyfikator aplikacji, Opublikuj regionu i identyfikator subskrypcji klucza LUIS utworzone w [LUIS Utwórz klucz punktu końcowego](#create-luis-endpoint-key) sekcji. Należy zmodyfikować kod, aby użyć tych wartości w dalszej części tego artykułu. 
 
-  Te wartości są uwzględniane w adresie URL punktu końcowego w dolnej części **publikowania** strony o klucz został utworzony. Czy **nie** użyć klucza wolnego starter w tym ćwiczeniu. 
+  Te wartości są uwzględniane w adresie URL punktu końcowego w dolnej części **publikowania** strony o klucz został utworzony. 
+  
+  Czy **nie** użyć klucza wolnego starter w tym ćwiczeniu. Tylko **opis języka** klucza utworzone w portalu Azure będzie działać dla tego testu. 
 
   https://**REGION**.api.cognitive.microsoft.com/luis/v2.0/apps/**APPID**? subskrypcji klucz =**LUISKEY**& q =
 
@@ -84,22 +86,13 @@ Plik jest już intencje kadr zamapowane.
 
 Skompiluj i uruchom aplikację. 
 
-![Zrzut ekranu przedstawiający uruchomiony program wiersza polecenia](./media/luis-tutorial-speech-to-intent/cmdline-1.png)
-
 ## <a name="test-code-with-utterance"></a>Kod testu z utterance
-Wybierz **8** i powiedz do mikrofonu "Kto jest Menedżera Jan Kowalski".
+Wybierz **1** i powiedz do mikrofonu "Kto jest Menedżera Jan Kowalski".
 
 ```cmd
-1. Speech recognition with microphone input.
-2. Speech recognition in the specified language.
-3. Speech recognition with file input.
-4. Speech recognition using customized model.
-5. Speech continuous recognition using events.
-6. Translation with microphone input.
-7. Translation with file input.
-8. Speech recognition of LUIS intent.
+1. Speech recognition of LUIS intent.
 0. Stop.
-Your choice: 8
+Your choice: 1
 LUIS...
 Say something...
 ResultId:cc83cebc9d6040d5956880bcdc5f5a98 Status:Recognized IntentId:<GetEmployeeOrgChart> Recognized text:<Who is the manager of John Smith?> Recognized Json:{"DisplayText":"Who is the manager of John Smith?","Duration":25700000,"Offset":9200000,"RecognitionStatus":"Success"}. LanguageUnderstandingJson:{
@@ -127,7 +120,7 @@ Prawidłowe opcje **GetEmployeeOrgChart**, znaleziono bez obaw 61%. Jednostka ke
 Zestaw SDK mowy zwraca całej odpowiedzi LUIS. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Gdy nie są już potrzebne, usunięcie aplikacji LUIS brzmi HumanResources. Aby to zrobić, należy wybrać menu trzy kropki (...), z prawej strony nazwy aplikacji na liście aplikacji zaznacz **usunąć**. W wyskakującym oknie dialogowym **aplikacji Usuń?**, wybierz pozycję **Ok**.
+Gdy nie są już potrzebne, usunięcie aplikacji LUIS brzmi HumanResources. Aby to zrobić, wybierz menu z trzema kropkami (...) po prawej stronie nazwy aplikacji na liście aplikacji i wybierz polecenie **Delete** (Usuń). W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
 
 Pamiętaj, aby usunąć katalog LUIS próbek, gdy wszystko będzie gotowe za pomocą przykładowy kod.
 

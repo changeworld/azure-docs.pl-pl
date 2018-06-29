@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8f73643d25dbcb507e3660a726516d69b7151ecb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d895dcdf9eefac01790aab6dc3f36a3feb0a8b12
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619902"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051154"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Przenoszenia danych z usługi magazynowania proste Amazon przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](data-factory-amazon-simple-storage-service-connector.md)
-> * [Wersja 2 — wersja zapoznawcza](../connector-amazon-simple-storage-service.md)
+> * [W wersji 1](data-factory-amazon-simple-storage-service-connector.md)
+> * [W wersji 2 (bieżąca wersja)](../connector-amazon-simple-storage-service.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [Amazon S3 łącznika w wersji 2](../connector-amazon-simple-storage-service.md).
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [Amazon S3 łącznika w wersji 2](../connector-amazon-simple-storage-service.md).
 
 W tym artykule opisano sposób użycia działanie kopiowania w fabryce danych Azure, aby przenieść dane z usługi Amazon proste usługi Storage (S3). Opiera się na [działań przepływu danych](data-factory-data-movement-activities.md) artykułu, który przedstawia ogólny przegląd przenoszenia danych z działania kopiowania.
 
@@ -46,7 +46,7 @@ Można utworzyć potoku o działanie kopiowania, który przenosi dane ze źród�
 
 Najprostszym sposobem, aby utworzyć potok jest użycie **kreatora kopiowania**. Przewodnik Szybki, zobacz [samouczek: tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md).
 
-Umożliwia także następujące narzędzia do tworzenia potoku: **portalu Azure**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejs API .NET**, i **interfejsu API REST**. Aby uzyskać instrukcje utworzyć potok z działania kopiowania, zobacz [samouczek działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+Umożliwia także następujące narzędzia do tworzenia potoku: **portalu Azure**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager** , **Interfejs API .NET**, i **interfejsu API REST**. Aby uzyskać instrukcje utworzyć potok z działania kopiowania, zobacz [samouczek działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 Czy za pomocą narzędzia lub interfejsów API, należy wykonać następujące kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródła do ujścia magazynu danych:
 
@@ -99,7 +99,7 @@ Sekcje, takie jak struktury, dostępności i zasady są podobne dla wszystkich t
 | key |Klucz obiektu S3. |Ciąg |Nie |
 | Prefiks |Prefiks klucza obiektu S3. Wybrano obiektów, w której klucze uruchomienia z tym prefiksem. Ma zastosowanie tylko wtedy, gdy klucz jest pusty. |Ciąg |Nie |
 | wersja |Wersja obiektu S3, jeśli włączono S3 przechowywania wersji. |Ciąg |Nie |
-| Format | Obsługiwane są następujące typy format: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w formacie do jednej z tych wartości. Aby uzyskać więcej informacji, zobacz [formacie tekstowym](data-factory-supported-file-and-compression-formats.md#text-format), [formatu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Avro format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc format](data-factory-supported-file-and-compression-formats.md#orc-format), i [Parquet format](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz skopiować pliki jako — jest między opartych na plikach magazynów (kopia binarnego), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie | |
+| Format | Obsługiwane są następujące typy format: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**,  **ParquetFormat**. Ustaw **typu** właściwości w formacie do jednej z tych wartości. Aby uzyskać więcej informacji, zobacz [formacie tekstowym](data-factory-supported-file-and-compression-formats.md#text-format), [formatu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Avro format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc format](data-factory-supported-file-and-compression-formats.md#orc-format), i [Parquet format ](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz skopiować pliki jako — jest między opartych na plikach magazynów (kopia binarnego), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie | |
 | Kompresja | Określ typ i poziom kompresji danych. Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**. Obsługiwane poziomy: **optymalna** i **najszybciej**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w fabryce danych Azure](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie | |
 
 
@@ -176,7 +176,7 @@ Pełną listę sekcje i właściwości dostępnych dla definiowania działań, z
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| Cykliczne |Określa, czy do rekursywnie lista S3 obiektów w katalogu. |wartość true, false |Nie |
+| cykliczne |Określa, czy do rekursywnie lista S3 obiektów w katalogu. |wartość true, false |Nie |
 
 ## <a name="json-example-copy-data-from-amazon-s3-to-azure-blob-storage"></a>Przykład JSON: kopiowanie danych z usługi Amazon S3 do magazynu obiektów Blob platformy Azure
 W tym przykładzie pokazano, jak skopiować dane z usługi Amazon S3 do magazynu obiektów Blob platformy Azure. Jednak możesz skopiować dane bezpośrednio do [żadnego wychwytywanie, które są obsługiwane](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w fabryce danych.

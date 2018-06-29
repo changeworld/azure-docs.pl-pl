@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 345ea6f91593e14ff19616f5512916ee77f38486
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2dab0adb0728a1fb5e8ac9bebe01f861ed8c7c3a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619953"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37058985"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](v1/data-factory-use-custom-activities.md)
-> * [Wersja 2 — wersja zapoznawcza](transform-data-using-dotnet-custom-activity.md)
+> * [W wersji 1](v1/data-factory-use-custom-activities.md)
+> * [Bieżąca wersja](transform-data-using-dotnet-custom-activity.md)
 
 Istnieją dwa typy działań, które można używać w potoku fabryki danych Azure.
 
@@ -30,10 +30,6 @@ Istnieją dwa typy działań, które można używać w potoku fabryki danych Azu
 - [Działania przekształcania danych](transform-data.md) do przekształcania danych przy użyciu usług, takich jak Azure HDInsight, partii zadań Azure i usługi Azure Machine Learning obliczeniowe. 
 
 Aby przenieść czy fabryki danych nie obsługuje lub aby proces/transformacji danych w taki sposób, który nie jest obsługiwany przez fabrykę danych, można utworzyć magazynu danych do/z danych **działania niestandardowe** z własnych przenoszenia danych lub logiki transformacji i użyj działania w potoku. Niestandardowe działanie jest uruchomione logiki niestandardowy kod **partii zadań Azure** puli maszyn wirtualnych.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [działania DotNet (niestandardowy) w wersji 1 usługi fabryka danych](v1/data-factory-use-custom-activities.md).
- 
 
 Zobacz następujące artykuły, jeśli jesteś nowym użytkownikiem usługi partia zadań Azure:
 
@@ -107,7 +103,7 @@ W poniższej tabeli opisano nazwy i opisy właściwości, które są specyficzne
 | description           | Tekst opisujący działanie robi.  | Nie       |
 | type                  | Dla działania niestandardowego typu działania jest **niestandardowy**. | Yes      |
 | linkedServiceName     | Połączonej usługi partia zadań Azure. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [obliczeniowe połączonych usług](compute-linked-services.md) artykułu.  | Yes      |
-| polecenie               | Polecenia niestandardowych aplikacji do wykonania. Jeśli aplikacja jest już dostępne w węźle puli usługi partia zadań Azure, resourceLinkedService i folderPath można pominięte. Na przykład można określić polecenie, aby być `cmd /c dir`, które jest obsługiwane przez węzeł puli partii systemu Windows. | Yes      |
+| command               | Polecenia niestandardowych aplikacji do wykonania. Jeśli aplikacja jest już dostępne w węźle puli usługi partia zadań Azure, resourceLinkedService i folderPath można pominięte. Na przykład można określić polecenie, aby być `cmd /c dir`, które jest obsługiwane przez węzeł puli partii systemu Windows. | Yes      |
 | resourceLinkedService | Azure połączonej usługi magazynu do konta magazynu, w którym przechowywana jest aplikacja niestandardowych | Nie       |
 | folderPath            | Ścieżka do folderu niestandardowych aplikacji i wszystkich jego zależności | Nie       |
 | referenceObjects      | Tablica istniejących połączonych usług i zestawów danych. Przywoływany połączonych usług i zestawy danych są przekazywane do niestandardowych aplikacji w formacie JSON, więc niestandardowy kod może odwoływać się zasobów z fabryką danych | Nie       |
@@ -288,7 +284,7 @@ namespace SampleApp
   "failureType": ""
   "target": "MyCustomActivity"
   ```
-Jeśli chcesz korzystać z zawartości stdout.txt działania podrzędne, można uzyskać ścieżki do pliku stdout.txt w wyrażeniu "@activity.output.outputs (MyCustomActivity) [0]". 
+Jeśli chcesz korzystać z zawartości stdout.txt działania podrzędne, można uzyskać ścieżki do pliku stdout.txt w wyrażeniu "\@activity('MyCustomActivity').output.outputs [0]". 
 
   > [!IMPORTANT]
   > - Activity.json linkedServices.json i datasets.json są przechowywane w folderze czasu wykonywania zadania wsadowego. Na przykład activity.json, linkedServices.json i datasets.json są przechowywane w "https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/" ścieżki. Jeśli to konieczne, należy wyczyścić oddzielnie. 
@@ -307,7 +303,7 @@ Jeśli chcesz korzystać z zawartości stdout.txt działania podrzędne, można 
   W poniższej tabeli opisano różnice między działania niestandardowe V2 fabryki danych i fabryki danych w wersji 1 (niestandardowy) DotNet działania: 
 
 
-|Różnice      |w wersji 2 działania niestandardowe      | Wersja 1 (niestandardowy) działania DotNet      |
+|Różnice      | Niestandardowe działania      | Wersja 1 (niestandardowy) działania DotNet      |
 | ---- | ---- | ---- |
 |Jak zdefiniowano niestandardowej logiki      |Zapewniając pliku wykonywalnego      |Zaimplementowanie .net biblioteki DLL      |
 |Środowiska wykonania niestandardowej logiki      |Systemu Windows lub Linux      |Systemu Windows (.Net Framework 4.5.2)      |
@@ -318,7 +314,7 @@ Jeśli chcesz korzystać z zawartości stdout.txt działania podrzędne, można 
 |Rejestrowanie      |Zapisuje dane bezpośrednio na STDOUT      |Implementowanie rejestratora w .net biblioteki DLL      |
 
 
-  Jeśli masz zapisywane w wersji 1 (niestandardowy) DotNet działania istniejącego kodu platformy .net, należy zmodyfikować kod dla tej funkcji w wersji 2 działania niestandardowego. Zaktualizuj kod według poniższych wskazówek wysokiego poziomu:  
+  Jeśli masz zapisane w wersji 1 (niestandardowy) DotNet działania istniejącego kodu platformy .net, należy zmodyfikować kod dla tej funkcji w bieżącej wersji działania niestandardowe. Zaktualizuj kod według poniższych wskazówek wysokiego poziomu:  
 
    - Zmień projekt z .net biblioteki klas w aplikacji konsoli. 
    - Uruchom aplikację z `Main` metody. `Execute` Metody `IDotNetActivity` interfejsu nie jest już wymagane. 
@@ -327,7 +323,7 @@ Jeśli chcesz korzystać z zawartości stdout.txt działania podrzędne, można 
    - Pakiet Microsoft.Azure.Management.DataFactories NuGet nie jest już wymagane. 
    - Kompilowanie kodu, Przekaż plik wykonywalny i jego zależności do magazynu Azure i określić ścieżkę w `folderPath` właściwości. 
 
-Dla kompletnego przykładu end-to-end biblioteki DLL i potoku próbka opisu w wersji fabryki danych 1 artykułu [skorzystać z działań niestandardowych w potoku fabryki danych Azure](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) można przepisany działania niestandardowego v2 fabryki danych, zobacz [ Przykładowe działania niestandardowe w wersji 2 fabryki danych](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample). 
+Dla kompletnego przykładu end-to-end biblioteki DLL i potoku próbka opisu w wersji fabryki danych 1 artykułu [skorzystać z działań niestandardowych w potoku fabryki danych Azure](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) można przepisany działania niestandardowego fabryki danych, zobacz [ Przykładowe działania niestandardowe fabryki danych](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample). 
 
 ## <a name="auto-scaling-of-azure-batch"></a>Automatyczne skalowanie partii zadań Azure
 Można również utworzyć puli partii zadań Azure z **skalowania automatycznego** funkcji. Na przykład można utworzyć puli partii zadań azure 0 dedykowanych maszyn wirtualnych i formuły skalowania automatycznego na podstawie liczby oczekujących zadań. 

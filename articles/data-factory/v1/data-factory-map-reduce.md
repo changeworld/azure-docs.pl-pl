@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6bddb3d5beca57852ef62361b278ec1fa8961f45
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: edbef08eaa100248368d7f0b23171f15b52ec56a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621262"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050951"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Wywoływanie programów MapReduce z fabryki danych
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -35,7 +35,7 @@ ms.locfileid: "34621262"
 > * [Działania niestandardowe .NET](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [Przekształcanie danych za pomocą działania MapReduce z fabryki danych w wersji 2](../transform-data-using-hadoop-map-reduce.md).
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [Przekształcanie danych za pomocą działania MapReduce w fabryce danych](../transform-data-using-hadoop-map-reduce.md).
 
 
 Działania HDInsight MapReduce w fabryce danych [potoku](data-factory-create-pipelines.md) wykonuje programy MapReduce na [własne](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) lub [na żądanie](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) klastrów HDInsight opartych na systemie Windows/Linux. W tym artykule opiera się na [działań przekształcania danych](data-factory-data-transformation-activities.md) artykułu, który przedstawia ogólny przegląd transformacji danych i działań obsługiwanych transformacji.
@@ -189,7 +189,7 @@ Potok, w tym przykładzie jest tylko jedno działanie, które jest typu: HDInsig
 | className |Nazwa klasy jest: **wordcount** |
 | jarFilePath |Ścieżka do pliku jar zawierający klasę. Jeśli użytkownik skopiuj/Wklej następujący kod, nie zapomnij zmienić nazwę klastra. |
 | jarLinkedService |Usługa Azure Storage połączone usługi, który zawiera plik jar. Tej połączonej usługi odwołuje się do magazynu, który jest skojarzony z klastrem usługi HDInsight. |
-| Argumenty |Wordcount program przyjmuje dwa argumenty wejściowe i wyjściowe. Wejściowy plik jest plikiem davinci.txt. |
+| argumenty |Wordcount program przyjmuje dwa argumenty wejściowe i wyjściowe. Wejściowy plik jest plikiem davinci.txt. |
 | frequency/interval |Wartości tych właściwości zgodne wyjściowego zestawu danych. |
 | linkedServiceName |odnosi się do usługi HDInsight połączone, którą ma zostać utworzony wcześniej. |
 

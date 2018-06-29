@@ -8,14 +8,14 @@ manager: onano
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 47527087dc008c201949524f193820e636a8744f
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 38f7f038a803546adb83245519efc5de0c0d1599
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35356235"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045014"
 ---
 # <a name="sample-for-intent-recognition"></a>Przykładowe rozpoznawania konwersji
 
@@ -23,7 +23,7 @@ ms.locfileid: "35356235"
 > Aby uzyskać instrukcje dotyczące pobierania w tym przykładzie i innych użytkowników, zobacz [przykłady dotyczące zestawu SDK mowy](samples.md).
 
 > [!NOTE]
-> Najpierw uzyskać klucz subskrypcji. W przeciwieństwie do innych usług obsługiwanych przez zestaw SDK kognitywnych mowy usługi usługi rozpoznawania zamiar wymaga klucza subscribtion określone. [W tym miejscu](https://www.luis.ai) można znaleźć dodatkowe informacje na temat technologii rozpoznawania konwersji, jak również informacje dotyczące sposobu uzyskania klucza subskrypcji. Zastąp klucz subskrypcji, region usługi, a także AppId konwersji modelu w odpowiednim miejscu w przykładach.
+> Najpierw uzyskać klucz subskrypcji. W przeciwieństwie do innych usług obsługiwanych przez zestaw SDK kognitywnych mowy usługi usługi rozpoznawania zamiar wymaga klucza określonej subskrypcji. [W tym miejscu](https://www.luis.ai) można znaleźć dodatkowe informacje na temat technologii rozpoznawania konwersji, a także informacje o sposobie pozyskania klucza subskrypcji. Zastąp klucz subskrypcji, region usługi i identyfikator AppId konwersji modelu w odpowiednim miejscu w przykładach.
 
 > [!NOTE]
 > Dla wszystkich przykłady poniżej następujące deklaracje najwyższego poziomu powinny być stosowane:
@@ -54,7 +54,7 @@ Poniższy fragment kodu rozpoznaje zamiar z pliku audio w języku domyślnym (`e
 
 [!include[Sample Audio](includes/sample-audio.md)]
 
-[!code-cpp[Intent Recognition From a File](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/intent_recognition_samples.cpp?IntentRecognitionWithFile)]
+[!code-cpp[Intent Recognition From a File](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/intent_recognition_samples.cpp#IntentRecognitionWithFile)]
 
 - - -
 

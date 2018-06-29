@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 038a9be813367d130dd8bb02b24879d1e2e573b5
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 2d7ee7050f430efea64d9988adf4f5a603128de2
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072253"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053453"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Przygotowywanie wirtualnego dysku twardego Windows lub VHDX do przekazania do platformy Azure
 Przed przekazaniem Windows maszyn wirtualnych (VM) z lokalnej do systemu Microsoft Azure, należy przygotować wirtualny dysk twardy (VHD lub VHDX). Azure obsługuje tylko generacji 1 maszyn wirtualnych, które mają w formacie pliku wirtualnego dysku twardego o rozmiarze dysk stały. Maksymalny rozmiar dozwolony dla wirtualnego dysku twardego jest 1,023 GB. Możesz przekonwertować generacji 1 maszyny Wirtualnej z dysk VHDX pliku system z dynamicznie powiększających się dysków do stałym rozmiarze i dysków VHD. Ale nie można zmienić generacji maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [generacji 1 lub 2 należy utworzyć maszyny Wirtualnej w funkcji Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
@@ -367,7 +367,7 @@ Jeśli zamiast tego chcesz tylko utworzyć jedną maszynę Wirtualną z jednego 
 Aby uzyskać więcej informacji o sposobie tworzenia maszyny Wirtualnej z dyskiem specjalne Zobacz:
 
 - [Utwórz maszynę Wirtualną z dyskiem specjalne](create-vm-specialized.md)
-- [Tworzenie maszyny Wirtualnej z dysku VHD specjalne](https://azure.microsoft.com/resources/templates/201-vm-specialized-vhd/)
+- [Tworzenie maszyny Wirtualnej z dysku VHD specjalne](https://review.docs.microsoft.com/en-us/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)
 
 Aby utworzyć obraz uogólniony, należy uruchomić programu sysprep. Aby uzyskać więcej informacji na temat narzędzia Sysprep, zobacz [sposobu użycia programu Sysprep: wprowadzenie](http://technet.microsoft.com/library/bb457073.aspx). 
 
@@ -381,7 +381,7 @@ Nie każda rola lub aplikacji, która jest zainstalowana na komputerze z systeme
 1. Zaloguj się do maszyny Wirtualnej systemu Windows.
 2. Uruchom **wiersza polecenia** jako administrator. 
 3. Zmień katalog na: **%windir%\system32\sysprep**, a następnie uruchom **sysprep.exe**.
-3. W **narzędzie przygotowania systemu** okno dialogowe, wybierz opcję **wprowadź systemu Out-of-Box Experience (OOBE)** i upewnij się, że **Generalize** pole wyboru jest zaznaczone.
+3. W oknie dialogowym **Narzędzie przygotowywania systemu** wybierz pozycję **Włącz systemowy tryb OOBE** i upewnij się, że pole wyboru **Uogólnij** jest zaznaczone.
 
     ![Narzędzie przygotowywania systemu](media/prepare-for-upload-vhd-image/syspre.png)
 4. W **opcje zamykania**, wybierz pozycję **zamknięcia**.

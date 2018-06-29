@@ -12,18 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: douglasl
-ms.openlocfilehash: 984971c24f2dfdd5d8eced45341737d1ce975033
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cb1a263c0a33a291a44e7c60b3c032d7f9dc16a3
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619358"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054079"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Jak utworzyć i skonfigurować środowiska uruchomieniowego integracji Azure
 Integracja środowiska uruchomieniowego (IR) jest używany przez fabryki danych Azure zapewnienie możliwości integracji danych w różnych środowiskach sieci infrastruktury obliczeniowej. Aby uzyskać więcej informacji na temat IR, zobacz [integrację środowiska uruchomieniowego](concepts-integration-runtime.md).
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [dokumentacji V1 fabryki danych](v1/data-factory-introduction.md).
 
 Azure IR udostępnia zasoby obliczeniowe pełni zarządzana natywnie wykonywania danych przemieszczania i wysyłania danych przekształcania działań do obliczenia usług, takich jak usługa HDInsight. Znajduje się w środowisku platformy Azure, a obsługuje połączenia z zasobami w publicznych środowisko sieci z publiczne punkty końcowe dostępny.
 

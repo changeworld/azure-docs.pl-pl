@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 06/04/2018
 ms.author: danlep
-ms.openlocfilehash: 4ee8425bb5c3830b029b766aad464df0ffb15f41
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 8ef9d5a8e5212f6715769eecf4fde92a6d0b9d44
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801119"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060521"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Uruchamianie aplikacji kontenera w partii zadań Azure
 
@@ -229,7 +229,13 @@ Użyj `ContainerSettings` właściwości klasy zadania, aby skonfigurować ustaw
 
 Po uruchomieniu zadania na obrazy kontenera [zadań chmury](/dotnet/api/microsoft.azure.batch.cloudtask) i [zadanie Menedżer zadania](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask) wymagają ustawienia kontenera. Jednak [Uruchom zadanie](/dotnet/api/microsoft.azure.batch.starttask), [zadanie przygotowanie zadania](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask), i [zadania Zwolnienie zadania](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask) nie wymagają ustawienia kontenera (to znaczy, zostaną one uruchomione w kontekście kontenera lub bezpośrednio w węźle).
 
-Po skonfigurowaniu kontenera, wszystkie katalogi rekursywnie poniżej `AZ_BATCH_NODE_ROOT_DIR` (root partii zadań Azure katalogi w węźle) są mapowane do kontenera, wszystkie środowiska zadań zmienne są mapowane do kontenera i wiersz polecenia zadania reguły są wykonywane w kontenerze.
+Wiersz polecenia dla zadania kontenera partii zadań Azure wykonuje się w katalogu roboczym, w kontenerze, który jest bardzo podobny do środowiska, które partii konfiguruje regularne zadania (z systemem innym niż kontener):
+
+* Wszystkie katalogi rekursywnie poniżej `AZ_BATCH_NODE_ROOT_DIR` (root partii zadań Azure katalogi w węźle) są mapowane do kontenera.
+* Wszystkie zmienne środowiskowe zadań są mapowane do kontenera.
+* Katalog roboczy aplikacji ustawiono takie same jak w przypadku regularnego zadań, dzięki czemu można użyć funkcji, takich jak pakiety aplikacji i pliki zasobów
+
+Ponieważ partii zmienia domyślny katalog roboczy w kontenerze sieci, to zadanie jest uruchamiane w lokalizacji innej z punktu wejścia typowe kontenera (na przykład `c:\` domyślnie do kontenera systemu Windows lub `/` w systemie Linux). Upewnij się, że punktem wejścia wiersza polecenia lub kontener zadanie Określa ścieżkę bezwzględną, jeśli go nie jest już skonfigurowana w ten sposób.
 
 Poniższy fragment kodu języka Python zawiera podstawowe wiersza polecenia uruchomione w kontenerze Ubuntu pobierane z Centrum Docker. Dodatkowe argumenty są opcje kontener uruchamianie `docker create` zadanie jest uruchamiane polecenie. W tym miejscu `--rm` opcja umożliwia usunięcie kontenera po zakończeniu zadania.
 
@@ -240,7 +246,7 @@ task_container_settings = batch.models.TaskContainerSettings(
     container_run_options='--rm')
 task = batch.models.TaskAddParameter(
     id=task_id,
-    command_line='echo hello',
+    command_line='/bin/echo hello',
     container_settings=task_container_settings
 )
 
@@ -251,7 +257,7 @@ W poniższym przykładzie C# przedstawiono ustawienia kontenera podstawowe zadan
 ```csharp
 // Simple container task command
 
-string cmdLine = "<my-command-line>";
+string cmdLine = "c:\myApp.exe";
 
 TaskContainerSettings cmdContainerSettings = new TaskContainerSettings (
     imageName: "tensorflow/tensorflow:latest-gpu",

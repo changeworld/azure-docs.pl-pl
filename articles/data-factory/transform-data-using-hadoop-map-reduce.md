@@ -12,24 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: be925521178bba0ae4ae9820e78042509b2f1741
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cb7009d0e7f31b2f503ac51d378fd117fff9f9b2
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621007"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049955"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Przekształcanie danych za pomocą działania MapReduce z Hadoop w usłudze fabryka danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](v1/data-factory-map-reduce.md)
-> * [Wersja 2 — wersja zapoznawcza](transform-data-using-hadoop-map-reduce.md)
-
+> * [W wersji 1](v1/data-factory-map-reduce.md)
+> * [Bieżąca wersja](transform-data-using-hadoop-map-reduce.md)
 
 Działania HDInsight MapReduce w fabryce danych [potoku](concepts-pipelines-activities.md) wywołuje MapReduce program na [własne](compute-linked-services.md#azure-hdinsight-linked-service) lub [na żądanie](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) klastra usługi HDInsight. W tym artykule opiera się na [działań przekształcania danych](transform-data.md) artykułu, który przedstawia ogólny przegląd transformacji danych i działań obsługiwanych transformacji.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [działania MapReduce w wersji 1](v1/data-factory-map-reduce.md).
-
 
 Jeśli jesteś nowym użytkownikiem usługi fabryka danych Azure, zapoznaj się z artykułem [wprowadzenie do fabryki danych Azure](introduction.md) i wykonaj samouczka: [samouczek: przekształcania danych](tutorial-transform-data-spark-powershell.md) przed przeczytaniem tego artykułu. 
 
@@ -77,7 +72,7 @@ Zobacz [Pig](transform-data-using-hadoop-pig.md) i [Hive](transform-data-using-h
 | jarFilePath       | Podaj ścieżkę do plików Jar przechowywanych w usłudze Azure Storage odwołuje się jarLinkedService. Nazwa pliku jest rozróżniana wielkość liter. | Yes      |
 | jarlibs           | Ciąg tablicy ścieżki do plików biblioteki Jar odwołuje się zadania przechowywanych w magazynie Azure zdefiniowane w jarLinkedService. Nazwa pliku jest rozróżniana wielkość liter. | Nie       |
 | getDebugInfo      | Określa, kiedy pliki dziennika są kopiowane do magazynu Azure używanego przez klaster usługi HDInsight (lub) określonym przez jarLinkedService. Dozwolone wartości: None, zawsze lub niepowodzenie. Wartość domyślna: Brak. | Nie       |
-| Argumenty         | Określa tablicę argumentów dla zadania usługi Hadoop. Argumenty są przekazywane jako argumenty wiersza polecenia do każdego zadania. | Nie       |
+| argumenty         | Określa tablicę argumentów dla zadania usługi Hadoop. Argumenty są przekazywane jako argumenty wiersza polecenia do każdego zadania. | Nie       |
 | Definiuje           | Określ parametry jako pary klucz wartość dla odwołania do skryptu Hive. | Nie       |
 
 

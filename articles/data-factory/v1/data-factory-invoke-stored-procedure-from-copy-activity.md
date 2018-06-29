@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c06e8c1a64f6f784f106c9b925f698b33c196320
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e75573513f107977e1d5fe62fbae89cb4439e0e9
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621840"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048955"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Wywołanie procedury składowanej z działania kopiowania w fabryce danych Azure
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [Przekształcanie danych za pomocą działania procedury składowanej w fabryce danych w wersji 2](../transform-data-using-stored-procedure.md).
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [Przekształcanie danych za pomocą działania procedury składowanej w fabryce danych](../transform-data-using-stored-procedure.md).
 
 
 Podczas kopiowania danych do [programu SQL Server](data-factory-sqlserver-connector.md) lub [bazy danych SQL Azure](data-factory-azure-sql-connector.md), można skonfigurować **SqlSink** w przypadku działania kopiowania, aby wywołać procedurę składowaną. Może zajść potrzeba użycia zapisana procedura do wykonania żadnych dodatkowych czynności (Scalanie kolumn wyszukiwania wartości i wstawia go do wielu tabel, itp.) jest wymagana przed wstawieniem danych w tabeli docelowej. Ta funkcja korzysta z [zwracającej tabelę parametrów](https://msdn.microsoft.com/library/bb675163.aspx). 

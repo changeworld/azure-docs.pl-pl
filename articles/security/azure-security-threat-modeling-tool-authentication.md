@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 1ac614156755b9b29db7c968c708a5cff706f7a8
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: d53ade1e5c31ca25636b95d4f8b9e0fe29f9d081
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28019674"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031111"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Ramka zabezpieczenia: Uwierzytelnianie | Środki zaradcze 
 | Produktów i usług | Artykuł |
@@ -163,7 +163,7 @@ ms.locfileid: "28019674"
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Azure Event Hub | 
+| **Składnik**               | Centrum zdarzeń Azure | 
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -306,7 +306,7 @@ Konfigurowanie usługi MSMQ, aby wymusić uwierzytelnianie domeny systemu Window
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | .NET framework 3 |
 | **Atrybuty**              | Typ poświadczeń klienta - brak |
-| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [uzyskania zawartości](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [uzyskania zawartości](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_message_client) |
 | **Kroki** | Brak uwierzytelniania oznacza, że wszyscy jest w stanie uzyskać dostępu do tej usługi. Usługa, która nie uwierzytelnia klientów umożliwia dostęp do wszystkich użytkowników. Konfigurowanie aplikacji w celu uwierzytelniania poświadczeń klienta. Można to zrobić przez ustawienie clientCredentialType komunikatów systemu Windows lub certyfikatu. |
 
 ### <a name="example"></a>Przykład
@@ -322,7 +322,7 @@ Konfigurowanie usługi MSMQ, aby wymusić uwierzytelnianie domeny systemu Window
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | Ogólny, .NET Framework 3 |
 | **Atrybuty**              | Typ poświadczeń klienta - brak |
-| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [uzyskania zawartości](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [uzyskania zawartości](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_transport_client) |
 | **Kroki** | Brak uwierzytelniania oznacza, że wszyscy jest w stanie uzyskać dostępu do tej usługi. Usługa, która nie uwierzytelnia klientów zezwala wszystkim użytkownikom na dostęp do jego funkcjonalność. Konfigurowanie aplikacji w celu uwierzytelniania poświadczeń klienta. Można to zrobić, ustawiając właściwość clientCredentialType transportu do systemu Windows lub certyfikatu. |
 
 ### <a name="example"></a>Przykład
@@ -422,7 +422,7 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 }
 ```
 
-Należy pamiętać, że do testowania efektywności tę konfigurację, zaloguj się do lokalnych aplikacji chronionej przez OIDC i przechwytywania żądanie `"/signin-oidc"` punktu końcowego w narzędziu fiddler. Jeśli ochrona nie jest w miejscu, odtwarzanie tego żądania w narzędziu fiddler ustawi nowego pliku cookie sesji. Jeśli żądanie jest odtwarzany po dodaniu ochrony TokenReplayCache, aplikacji spowoduje zgłoszenie wyjątku w następujący sposób:`SecurityTokenReplayDetectedException: IDX10228: The securityToken has previously been validated, securityToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ1......`
+Należy pamiętać, że do testowania efektywności tę konfigurację, zaloguj się do lokalnych aplikacji chronionej przez OIDC i przechwytywania żądanie `"/signin-oidc"` punktu końcowego w narzędziu fiddler. Jeśli ochrona nie jest w miejscu, odtwarzanie tego żądania w narzędziu fiddler ustawi nowego pliku cookie sesji. Jeśli żądanie jest odtwarzany po dodaniu ochrony TokenReplayCache, aplikacji spowoduje zgłoszenie wyjątku w następujący sposób: `SecurityTokenReplayDetectedException: IDX10228: The securityToken has previously been validated, securityToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ1......`
 
 ## <a id="adal-oauth2"></a>Umożliwia zarządzanie token żądania od klientów protokołu OAuth2 do usługi AAD biblioteki ADAL (lub lokalnej usługi AD)
 
@@ -491,7 +491,7 @@ await deviceClient.SendEventAsync(message);
     ```
 #### <a name="sas-token"></a>Token sygnatury dostępu współdzielonego
 * Pobiera zostały wygenerowane wewnętrznie przy użyciu klucza symetrycznego, ale można wygenerować i używają go jawnie także
-* Zdefiniuj protokół:`var Http = require('azure-iot-device-http').Http;`
+* Zdefiniuj protokół: `var Http = require('azure-iot-device-http').Http;`
 * Utwórz token sygnatury dostępu współdzielonego:
     ```javascript
     resourceUri = encodeURIComponent(resourceUri.toLowerCase()).toLowerCase();

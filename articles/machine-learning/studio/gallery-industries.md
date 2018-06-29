@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: garye
-ms.openlocfilehash: b2b55c550a75be977b040070926953308c387639
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: c1ca9c45a7bd070ba0dbcee3b428f986ebac47d3
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834570"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062101"
 ---
 # <a name="discover-industry-specific-solutions-in-the-azure-ai-gallery"></a>Poznaj rozwiązania branżowe w galerii Azure AI
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="industry-specific-cortana-intelligence-solutions"></a>Branżowe Cortana Intelligence rozwiązania
-**[Branżach](https://gallery.cortanaintelligence.com/industries)** sekcji galerii zgromadzono różnych zasobów, które są specyficzne dla branży, takich jak
+**[Branżach](https://gallery.azure.ai/industries)** sekcji galerii zgromadzono różnych zasobów, które są specyficzne dla branży, takich jak
 
-* [Detaliczne](https://gallery.cortanaintelligence-int.com/industries/retail) — Znajdź rozwiązania sprzedaży detalicznej, takie jak sprzedaż prognozowania, przewidywanie przenoszenie klienta i tworzenie modelami cenowymi.
-* [Produkcyjny](https://gallery.cortanaintelligence-int.com/industries/manufacturing) — Znajdź produkcyjny rozwiązań, takich jak przewidywanie konserwacji sprzętu i prognozowanie cen energii.
-* [Banków](https://gallery.cortanaintelligence-int.com/industries/banking) — Znajdź banków rozwiązań przykład przewidywanie środki ryzyka i monitorowanie w celu oszustwa online.
-* [Opieka zdrowotna](https://gallery.cortanaintelligence-int.com/industries/healthcare) — rozwiązania opieki zdrowotnej, takich jak wykrywanie choroby i prognozowanie readmissions szpital Twoich.
+* [Detaliczne](https://gallery.azure.ai/industries/retail) — Znajdź rozwiązania sprzedaży detalicznej, takie jak sprzedaż prognozowania, przewidywanie przenoszenie klienta i tworzenie modelami cenowymi.
+* [Produkcyjny](https://gallery.azure.ai/industries/manufacturing) — Znajdź produkcyjny rozwiązań, takich jak przewidywanie konserwacji sprzętu i prognozowanie cen energii.
+* [Banków](https://gallery.azure.ai/industries/banking) — Znajdź banków rozwiązań przykład przewidywanie środki ryzyka i monitorowanie w celu oszustwa online.
+* [Opieka zdrowotna](https://gallery.azure.ai/industries/healthcare) — rozwiązania opieki zdrowotnej, takich jak wykrywanie choroby i prognozowanie readmissions szpital Twoich.
 
 Te zasoby obejmują eksperymentów, niestandardowe moduły interfejsów API, kolekcji i innych elementów galerii, które ułatwiają tworzenie rozwiązań specyficzne dla używanego w branży.
 

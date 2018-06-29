@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: 0f3662ed386c3a3d2d132a483e7192bddc26de06
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5c05c7c4c0f8f0b3619b36390c8a0224a03c900a
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26633820"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063546"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Informacje o wersji dla usługi Azure BizTalk Services
 
@@ -65,12 +65,12 @@ Należy wziąć pod uwagę następujące sytuacje z usługi BizTalk Services pro
 "Tworzenia" rozwiązania w programie Visual Studio pomyślnie. Następnie "Odbudować" lub "Czysta" rozwiązania. Po tym, gdy odbudować lub wyczyścić ponownie, wystąpił następujący błąd:  
   Nie można skopiować pliku <Path to DLL> do "bin\Debug\FileName.dll". Proces uzyskać dostępu do pliku "bin\Debug\FileName.dll", ponieważ jest on używany przez inny proces.  
 
-#### <a name="workaround"></a>Obejście problemu
-* Jeśli [Visual Studio 2012 Update 3](https://www.microsoft.com/download/details.aspx?id=39305) jest zainstalowany, masz następujące dwie opcje:
+#### <a name="workaround"></a>Obejście
+* Jeśli [Visual Studio 2012 Update 3](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2012-update3-vs) jest zainstalowany, masz następujące dwie opcje:
   
   * Uruchom ponownie program Visual Studio lub
   * Uruchom ponownie rozwiązanie. Następnie należy wykonać tylko kompilację w ramach rozwiązania.  
-* Jeśli [Visual Studio 2012 Update 3](https://www.microsoft.com/download/details.aspx?id=39305) nie jest zainstalowany, Otwórz Menedżer zadań kliknij procesów, kliknij proces MSBuild.exe, a następnie kliknij przycisk Zakończ proces.  
+* Jeśli [Visual Studio 2012 Update 3](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2012-update3-vs) nie jest zainstalowany, Otwórz Menedżer zadań kliknij procesów, kliknij proces MSBuild.exe, a następnie kliknij przycisk Zakończ proces.  
 
 ### <a name="routing-to-basichttprelay-endpoints-is-not-supported-from-bridges-and-biztalk-services-portal-if-non-printable-characters-are-promoted-as-http-headers"></a>Routing do punktów końcowych BasicHttpRelay nie jest obsługiwana w portalu usługi BizTalk i mostków czy znaki niedrukowalne są awansowane nagłówki HTTP
 Jeśli używasz niedrukowalne znaki jako część awansowanej właściwości wiadomości tych wiadomości nie kierowane do przekazywania miejsc docelowych, korzystające z wiązania BasicHttpRelay. Ponadto awansowanej właściwości dostępnych jako część śledzenia są zakodowane w adresie URL dla obiektów blob i cofanie zakodowanego dla miejsc docelowych.  
@@ -108,7 +108,7 @@ Rozważmy scenariusz, w następującej kolejności:
 * Zamknij plik .bcs (zamykając kartę w programie Visual Studio) bez zapisywania zmian.  
 * Otwórz plik .bcs ponownie z Eksploratora rozwiązań.  
   Można zauważyć, że podczas .bridgeconfig skojarzony plik ma nowy podana nazwa, nazwa jednostki na powierzchni projektu jest nadal starej nazwy. Jeśli spróbujesz otwórz konfigurację mostka, klikając dwukrotnie składnika Mostek otrzymasz następujący błąd:  
-  `‘<old name>’ Entity’s associated file ‘<old name>.bridgeconfig’ does not exist`Aby uniknąć uruchomiona w tym scenariuszu, upewnij się, że po zmianie nazwy jednostki w projekcie usługi BizTalk zapisywania zmian.  
+  `‘<old name>’ Entity’s associated file ‘<old name>.bridgeconfig’ does not exist` Aby uniknąć uruchomiona w tym scenariuszu, upewnij się, że po zmianie nazwy jednostki w projekcie usługi BizTalk zapisywania zmian.  
   
 ### <a name="biztalk-service-project-builds-successfully-even-if-an-artifact-has-been-excluded-from-a-visual-studio-project"></a>Projekt usługi BizTalk kompilacje pomyślnie, nawet jeśli artefakty został on wykluczony z projektu programu Visual Studio
 Rozważmy scenariusz, w którym możesz dodać artefaktu (na przykład plik XSD) do projektu usługi BizTalk, obejmują tego artefaktów w konfiguracji mostu (na przykład, określając go jako typ komunikatu żądania) i wyklucz go z projektu programu Visual Studio. W takim przypadku skompilowanie projektu nie będzie przekazywać wszelkie błędy tak długo, jak tylko usunięte artefakt znajduje się na dysku w tej samej lokalizacji, z którym został dołączony do projektu programu Visual Studio.
@@ -223,5 +223,5 @@ Przykładowa scenariusz, w którym masz Mostek XML wdrożone w wersji zapoznawcz
 W tym dokumencie termin "potoki" i "mostków" są używane zamiennie. Zasadniczo zarówno oznaczają to samo, który jest wdrożony na usługi BizTalk Services jednostki przetwarzania komunikatu.  
 
 ### <a name="concepts"></a>Pojęcia
-[Usługi BizTalk Services](https://msdn.microsoft.com/library/azure/hh689864.aspx)   
+[BizTalk Services](https://msdn.microsoft.com/library/azure/hh689864.aspx)   
 

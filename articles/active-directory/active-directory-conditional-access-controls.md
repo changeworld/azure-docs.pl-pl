@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 924c41b060f56b4a21e4d29e059eb2968fa19330
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: dc1e3fd3984d0ccbfb0565a3216ec907894e88ea
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232475"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028952"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co to są kontroli dostępu w usłudze Azure Active Directory dostępu warunkowego? 
 
@@ -77,7 +77,7 @@ Przy użyciu usługi Multi-Factor authentication pomaga chronić zasoby z uzyski
 
 ### <a name="compliant-device"></a>Zgodne urządzenie
 
-Można skonfigurować zasady dostępu warunkowego, które są oparte na urządzeniu. Celem zasad dostępu warunkowego opartego na urządzeniu jest udzielić dostępu do zasobów skonfigurowany tylko z [zarządzanych urządzeń](active-directory-conditional-access-policy-connected-applications.md#managed-devices). Wymaganie zgodnego urządzenia jest jedną z opcji należy zdefiniować urządzenia zarządzanego. Jeśli ta opcja jest zaznaczona, zasady dostępu warunkowego udziela dostępu do dostępu podjętych z urządzeniami, które są [zarejestrowany](device-management-introduction.md) do platformy Azure Active Directory i są oznaczone jako zgodne przez rozwiązanie do zarządzania urządzeniami Przenośnymi.
+Można skonfigurować zasady dostępu warunkowego, które są oparte na urządzeniu. Celem zasad dostępu warunkowego opartego na urządzeniu jest udzielić dostępu do zasobów skonfigurowany tylko z [zarządzanych urządzeń](active-directory-conditional-access-policy-connected-applications.md#managed-devices). Wymaganie zgodnego urządzenia jest jedną z opcji należy zdefiniować urządzenia zarządzanego. Jeśli ta opcja jest zaznaczona, zasady dostępu warunkowego udziela dostępu do dostępu podjętych z urządzeniami, które są [zarejestrowany](device-management-introduction.md) do platformy Azure Active Directory i są oznaczone jako zgodne przez usługę Intune (dla wszystkich urządzeń systemu operacyjnego) lub przez użytkownika system MDM innej firmy dla urządzeń z systemem Windows 10. Systemy zarządzania urządzeniami Przenośnymi innej firmy dla systemu operacyjnego urządzenia o typie innym niż Windows 10 nie są obsługiwane.
 
 Aby uzyskać więcej informacji, zobacz [Konfigurowanie zasad dostępu warunkowego opartego na urządzenia usługi Azure Active Directory](active-directory-conditional-access-policy-connected-applications.md).
 

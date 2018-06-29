@@ -1,5 +1,5 @@
 ---
-title: Monitorowanie i śledzenie użycia z bezpłatnych usług - Azure | Dokumentacja firmy Microsoft
+title: Monitorowanie i śledzenie użycia z bezpłatnych usług platformy Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się sprawdzić użycia bezpłatnych usług. Użyj Azure portalu i użycie woluminów csv.
 services: ''
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: amberb
-ms.openlocfilehash: 560137d92491da46fda950dec84a0a7caa3ed720
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 7fa0196b7a44ef20ecd63797869dffea55f92c3d
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33205894"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061320"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Sprawdź użycie bezpłatnych usług dołączonego bezpłatne konto platformy Azure 
 

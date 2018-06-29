@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: f11098f4af2e85df16e00ce6dac6e7c4b5b34e2b
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: fa3e5fff8080acb9e824ffe27f6c149054804830
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260922"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063650"
 ---
 # <a name="microsoftcommontextbox-ui-element"></a>Microsoft.Common.TextBox UI element
 Formant, który może służyć do edycji niesformatowanego tekstu.
@@ -31,8 +31,8 @@ Formant, który może służyć do edycji niesformatowanego tekstu.
 {
   "name": "element1",
   "type": "Microsoft.Common.TextBox",
-  "label": "Some text box",
-  "defaultValue": "my value",
+  "label": "Example text box 1",
+  "defaultValue": "my text value",
   "toolTip": "Use only allowed characters",
   "constraints": {
     "required": true,
@@ -44,7 +44,7 @@ Formant, który może służyć do edycji niesformatowanego tekstu.
 ```
 
 ## <a name="remarks"></a>Uwagi
-- Jeśli `constraints.required` ustawiono **true**, a następnie w polu tekstowym musi zawierać wartość do zweryfikowania pomyślnie. Wartość domyślna to **false**.
+- Jeśli `constraints.required` ustawiono **true**, a następnie w polu tekstowym musi mieć wartość do zweryfikowania pomyślnie. Wartość domyślna to **false**.
 - `constraints.regex` jest wzorzec wyrażenia regularnego JavaScript. Jeśli jest określony, wartość pola tekstowego musi odpowiadać wzorzec można pomyślnie zweryfikować. Wartość domyślna to **null**.
 - `constraints.validationMessage` jest to ciąg wyświetlany, gdy wartość w polu tekstowym weryfikacji nie powiedzie się. Jeśli nie zostanie określony, komunikaty o błędach weryfikacji wbudowane pole tekstowe są używane. Wartość domyślna to **null**.
 - Można określić wartość dla `constraints.regex` podczas `constraints.required` ustawiono **false**. W tym scenariuszu wartość nie jest wymagane dla pola tekstowego sprawdzić poprawność pomyślnie. Jeśli jest określony, musi być zgodna ze wzorcem wyrażenia regularnego.
@@ -52,7 +52,7 @@ Formant, który może służyć do edycji niesformatowanego tekstu.
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
 
 ```json
-"my value"
+"my text value"
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -1,6 +1,6 @@
 ---
-title: Operacjonalizuj R Server w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak operacjonalizacji R Server w usłudze Azure HDInsight.
+title: Operacjonalizuj usługi uczenia Maszynowego w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak operacjonalizacji usługi uczenia Maszynowego w usłudze Azure HDInsight.
 services: hdinsight
 documentationcenter: ''
 author: nitinme
@@ -10,28 +10,31 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: R
 ms.topic: conceptual
-ms.date: 03/23/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 6de6e78d9b4ad68d268b59cff18c75fbdd7be757
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: caefe30ff567a5e24e1f4c3a11309bd35e06190c
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31412845"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046143"
 ---
-# <a name="operationalize-r-server-cluster-on-azure-hdinsight"></a>Operacjonalizuj klastra R Server w usłudze Azure HDInsight
+# <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Operacjonalizuj klastra usługi uczenia Maszynowego w usłudze Azure HDInsight
 
-Po zastosowaniu klastra R Server w usłudze HDInsight przeprowadzenie modelowania danych, aby operacjonalizować modelu w celu tworzenia prognoz. Ten artykuł zawiera instrukcje dotyczące sposobu wykonania tego zadania.
+Po zastosowaniu klastra usługi uczenia Maszynowego w usłudze HDInsight przeprowadzenie modelowania danych, aby operacjonalizować modelu w celu tworzenia prognoz. Ten artykuł zawiera instrukcje dotyczące sposobu wykonania tego zadania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Klaster R Server w usłudze HDInsight**: Aby uzyskać instrukcje, zobacz [Rozpoczynanie pracy z serwerem R w usłudze HDInsight](r-server-get-started.md).
+* **Klaster usługi uczenia Maszynowego w usłudze HDInsight**: Aby uzyskać instrukcje, zobacz [wprowadzenie do usługi uczenia Maszynowego w usłudze HDInsight](r-server-get-started.md).
 
 * **Klient protokołu Secure Shell (SSH)**: klient SSH jest używany do zdalnego łączenia z klastrem usługi HDInsight i uruchamiania poleceń bezpośrednio w klastrze. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="operationalize-r-server-cluster-with-one-box-configuration"></a>Operacjonalizuj R Server klaster z konfiguracją jednego pola
+## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>Operacjonalizuj klastra usługi uczenia Maszynowego o konfiguracji jednego pola
 
-1. Połącz się z węzłem krawędzi za pomocą protokołu SSH.  
+> [!NOTE]
+> Poniższe kroki mają zastosowanie do R Server 9.0 i ML 9.1 serwera. ML 9.3 serwera, można znaleźć w temacie [umożliwia zarządzanie konfiguracją operationalization narzędzie do administrowania](https://docs.microsoft.com/machine-learning-server/operationalize/configure-admin-cli-launch).
+
+1. Połącz się z węzłem krawędzi za pomocą protokołu SSH.
 
         ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 
@@ -39,7 +42,7 @@ Po zastosowaniu klastra R Server w usłudze HDInsight przeprowadzenie modelowani
 
 2. Zmień katalog dla odpowiednich wersji i sudo dll net kropka: 
 
-    - W przypadku oprogramowania Microsoft R Server 9.1:
+    - Dla programu Microsoft Server ML 9.1:
 
             cd /usr/lib64/microsoft-r/rserver/o16n/9.1.0
             sudo dotnet Microsoft.RServer.Utils.AdminUtil/Microsoft.RServer.Utils.AdminUtil.dll
@@ -49,11 +52,11 @@ Po zastosowaniu klastra R Server w usłudze HDInsight przeprowadzenie modelowani
             cd /usr/lib64/microsoft-deployr/9.0.1
             sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-3. Dostępne są opcje do wyboru. Z pierwszej opcji, jak pokazano na poniższym zrzucie ekranu do **skonfigurować R Server dla Operationalization**.
+3. Dostępne są opcje do wyboru. Z pierwszej opcji, jak pokazano na poniższym zrzucie ekranu do **skonfigurować serwer ML Operationalization**.
 
     ![opernacjonalizacja przy użyciu jednej maszyny](./media/r-server-operationalize/admin-util-one-box-1.png)
 
-4. Teraz otrzymasz opcję, aby wybrać sposób operacjonalizacji R Server. Opcje przedstawioną wybierz pierwszą wprowadzając **A**.
+4. Teraz otrzymasz opcję, aby wybrać sposób operacjonalizacji ML serwera. Opcje przedstawioną wybierz pierwszą wprowadzając **A**.
 
     ![opernacjonalizacja przy użyciu jednej maszyny](./media/r-server-operationalize/admin-util-one-box-2.png)
 
@@ -99,7 +102,7 @@ Jeśli wystąpią duże opóźnienia podczas próby korzystania z usługi intern
 
 Na tym etapie konfiguracja operacjonalizacji jest ukończona. Teraz można używać `mrsdeploy` pakietu w Twojej RClient nawiązać operationalization węzła krawędzi i rozpocząć korzystanie z jej funkcje, takie jak [zdalne wykonywanie kodu](https://docs.microsoft.com/machine-learning-server/r/how-to-execute-code-remotely) i [usług sieci web](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services). W zależności od tego, czy klaster został skonfigurowany w sieci wirtualnej, może być konieczne skonfigurowanie tunelowania przekierowania portów za pomocą logowania SSH. W poniższych sekcjach wyjaśniono, jak skonfigurować taki tunel.
 
-### <a name="r-server-cluster-on-virtual-network"></a>Klaster R Server w sieci wirtualnej
+### <a name="ml-services-cluster-on-virtual-network"></a>Klaster usługi uczenia Maszynowego w sieci wirtualnej
 
 Sprawdź, czy ruch przez port 12800 węzła krawędzi jest dozwolony. Pozwala to użyć węzła krawędzi do nawiązania połączenia z funkcją operacjonalizacji.
 
@@ -115,7 +118,7 @@ Sprawdź, czy ruch przez port 12800 węzła krawędzi jest dozwolony. Pozwala to
 
 Jeśli metoda `remoteLogin()` nie może połączyć się z węzłem krawędzi, lecz nawiązanie połączenia SSH z węzłem krawędzi jest możliwe, sprawdź, czy reguła zezwalająca na ruch przez port 12800 jest skonfigurowana poprawnie. Jeśli problem nie ustąpi, możesz go obejść, konfigurując tunelowanie przekierowania portów przez połączenie SSH. Aby uzyskać instrukcje zobacz sekcję poniżej:
 
-### <a name="r-server-cluster-not-set-up-on-virtual-network"></a>Serwer R klastra nie są skonfigurowane w sieci wirtualnej
+### <a name="ml-services-cluster-not-set-up-on-virtual-network"></a>Klaster usługi uczenia Maszynowego nie skonfigurowane w sieci wirtualnej
 
 Jeśli klaster nie jest skonfigurowany w sieci wirtualnej lub występują problemy z korzystaniem z sieci wirtualnej, możesz użyć tunelowania przekierowania portów za pomocą protokołu SSH:
 
@@ -139,7 +142,7 @@ Skalowanie węzłów obliczeniowych, należy najpierw zlikwidować węzłów pro
 
 ### <a name="step-1-decommission-the-worker-nodes"></a>Krok 1: Zlikwidować węzłów procesu roboczego
 
-Serwer R klastra nie jest zarządzana za pomocą YARN. Jeśli węzłów procesu roboczego nie są wycofany z eksploatacji, Menedżer zasobów YARN nie działa zgodnie z oczekiwaniami, ponieważ nie został powiadomiony o zasoby są zajmowane przez serwer. Aby tego uniknąć, zalecamy zlikwidowanie węzłów procesu roboczego przed przystąpieniem do skalowania węzłów obliczeniowych na zewnątrz.
+Usługi uczenia Maszynowego klastra nie jest zarządzana za pomocą YARN. Jeśli węzłów procesu roboczego nie są wycofany z eksploatacji, Menedżer zasobów YARN nie działa zgodnie z oczekiwaniami, ponieważ nie został powiadomiony o zasoby są zajmowane przez serwer. Aby tego uniknąć, zalecamy zlikwidowanie węzłów procesu roboczego przed przystąpieniem do skalowania węzłów obliczeniowych na zewnątrz.
 
 Wykonaj następujące kroki, aby zlikwidować węzłów procesu roboczego:
 
@@ -163,11 +166,11 @@ Wykonaj następujące kroki, aby zlikwidować węzłów procesu roboczego:
 
 1. Za pomocą protokołu SSH połącz się z każdym zlikwidowanym węzłem procesu roboczego.
 
-2. Uruchom narzędzie administracyjne, przy użyciu odpowiednich biblioteki DLL dla klastra serwera R, czy masz. R Server 9.1 Uruchom następujące polecenie:
+2. Uruchom narzędzie administracyjne, przy użyciu odpowiednich biblioteki DLL dla klastra usługi uczenia Maszynowego, czy masz. ML serwera 9.1 Uruchom następujące polecenie:
 
         dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-3. Wprowadź **1** aby wybrać opcję **skonfigurować R Server dla Operationalization**.
+3. Wprowadź **1** aby wybrać opcję **skonfigurować serwer ML Operationalization**.
 
 4. Wprowadź **C** aby wybrać opcję `C. Compute node`. Umożliwi to skonfigurowanie węzła obliczeniowego w węźle procesu roboczego.
 
@@ -175,7 +178,7 @@ Wykonaj następujące kroki, aby zlikwidować węzłów procesu roboczego:
 
 ### <a name="step-3-add-compute-nodes-details-on-web-node"></a>Krok 3: Dodawanie obliczeniowe szczegóły węzłów w węźle sieci web
 
-Po skonfigurowaniu wszystkich węzłów procesu roboczego wycofany z eksploatacji do uruchomienia węzła obliczeń wrócić na węzeł brzegowy i dodać węzłów procesu roboczego wycofany z eksploatacji adresów IP w konfiguracji węzła sieci web R Server:
+Po skonfigurowaniu wszystkich węzłów procesu roboczego wycofany z eksploatacji do uruchomienia węzła obliczeń wrócić na węzeł brzegowy i dodać węzłów procesu roboczego wycofany z eksploatacji adresów IP w konfiguracji węzła ML serwera sieci web:
 
 1. Połącz się z węzłem krawędzi za pomocą protokołu SSH.
 
@@ -192,6 +195,6 @@ Po skonfigurowaniu wszystkich węzłów procesu roboczego wycofany z eksploatacj
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Manage R Server cluster on HDInsight (Zarządzanie klastrem oprogramowania R Server w usłudze HDInsight)](r-server-hdinsight-manage.md)
-* [Compute context options for R Server on HDInsight (Opcje kontekstu obliczeniowego dla oprogramowania R Server w usłudze HDInsight)](r-server-compute-contexts.md)
-* [Azure Storage options for R Server on HDInsight (Opcje usługi Azure Storage dla oprogramowania R Server w usłudze HDInsight)](r-server-storage.md)
+* [Zarządzanie klastrem usługi uczenia Maszynowego w usłudze HDInsight](r-server-hdinsight-manage.md)
+* [Obliczenia bazy danych opcji kontekstu dla klastra usługi uczenia Maszynowego w usłudze HDInsight](r-server-compute-contexts.md)
+* [Opcje magazynu systemu Azure dla klastra usługi uczenia Maszynowego w usłudze HDInsight](r-server-storage.md)

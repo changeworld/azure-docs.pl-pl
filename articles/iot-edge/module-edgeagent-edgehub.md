@@ -8,18 +8,18 @@ ms.date: 03/14/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0b9e7421bb09e619b4a820910db5faa9edfcc5d5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2858179d42ebf51cbb24d95d2e0093f8577bacef
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632911"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030567"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Właściwości krawędź agent i twins modułu Centrum krawędzi
 
 Krawędź agent i koncentrator krawędzi są dwa moduły, które składają się na krawędzi IoT środowiska uruchomieniowego. Aby uzyskać więcej informacji o jakie obowiązków wykonuje każdy moduł, zobacz [zrozumienie środowiska uruchomieniowego Azure IoT Edge i jego architektura](iot-edge-runtime.md). 
 
-Ten artykuł zawiera odpowiednie właściwości i zgłoszone właściwości twins moduł środowiska wykonawczego. Zobacz [wdrażania i monitorowania] [ lnk-deploy] Aby uzyskać więcej informacji na temat wdrażania modułów na urządzenia brzegowe IoT.
+Ten artykuł zawiera odpowiednie właściwości i zgłoszone właściwości twins moduł środowiska wykonawczego. Aby uzyskać więcej informacji na temat wdrażania modułów na krawędzi IoT urządzenia, zobacz [wdrażania i monitorowania][lnk-deploy].
 
 ## <a name="edgeagent-desired-properties"></a>Właściwości EdgeAgent potrzeby
 
@@ -31,22 +31,25 @@ Dwie modułu dla agenta krawędzi jest nazywany `$edgeAgent` i koordynuje komuni
 | runtime.type | Musi być "docker" | Yes |
 | runtime.settings.minDockerVersion | Wartość minimalna wersja platformy Docker wymaganych przez ten manifest wdrażania | Yes |
 | runtime.settings.loggingOptions | Stringified JSON, zawierające opcje rejestrowania dla kontenera agenta krawędzi. [Opcje rejestrowania platformy docker][lnk-docker-logging-options] | Nie |
+| runtime.settings.registryCredentials<br>. .username {registryId} | Nazwa rejestru kontenera. Rejestr kontenera platformy Azure nazwa użytkownika jest zazwyczaj nazwa rejestru.<br><br> Poświadczenia rejestru są niezbędne do żadnych obrazów modułu, które nie są publicznie udostępniane. | Nie |
+| runtime.settings.registryCredentials<br>. .password {registryId} | Hasło do rejestru kontenera. | Nie |
+| runtime.settings.registryCredentials<br>. .address {registryId} | Adres rejestru kontenera. Do rejestru kontenera platformy Azure, adres jest zwykle *.azurecr.io {registryname}*. | Nie |  
 | systemModules.edgeAgent.type | Musi być "docker" | Yes |
 | systemModules.edgeAgent.settings.image | Identyfikator URI agenta krawędzi obrazu. Krawędź agent nie jest obecnie mogli automatycznie zaktualizowana. | Yes |
-| systemModules.edgeAgent.settings.createOptions | Stringified JSON, zawierające opcje tworzenia kontenera agenta krawędzi. [Opcje tworzenia docker][lnk-docker-create-options] | Nie |
-| systemModules.edgeAgent.configuration.id | Identyfikator wdrożenia, które wdrożyć ten moduł. | Zostało to określone przez Centrum IoT, po zastosowaniu tego manifestu przy użyciu wdrożenia. Nie jest częścią manifest wdrażania. |
+| systemModules.edgeAgent.settings<br>.createOptions | Stringified JSON, zawierające opcje tworzenia kontenera agenta krawędzi. [Opcje tworzenia docker][lnk-docker-create-options] | Nie |
+| systemModules.edgeAgent.configuration.id | Identyfikator wdrożenia, które wdrożyć ten moduł. | Ta właściwość jest ustawiana przez Centrum IoT podczas tego manifestu jest stosowany przy użyciu wdrożenia. Nie jest częścią manifest wdrażania. |
 | systemModules.edgeHub.type | Musi być "docker" | Yes |
 | systemModules.edgeHub.status | Musi być "uruchomiona" | Yes |
 | systemModules.edgeHub.restartPolicy | Musi być "zawsze" | Yes |
 | systemModules.edgeHub.settings.image | Identyfikator URI obrazu Centrum krawędzi. | Yes |
-| systemModules.edgeHub.settings.createOptions | Stringified JSON, zawierające opcje tworzenia kontenera Centrum krawędzi. [Opcje tworzenia docker][lnk-docker-create-options] | Nie |
-| systemModules.edgeHub.configuration.id | Identyfikator wdrożenia, które wdrożyć ten moduł. | Zostało to określone przez Centrum IoT, po zastosowaniu tego manifestu przy użyciu wdrożenia. Nie jest częścią manifest wdrażania. |
+| systemModules.edgeHub.settings<br>.createOptions | Stringified JSON, zawierające opcje tworzenia kontenera Centrum krawędzi. [Opcje tworzenia docker][lnk-docker-create-options] | Nie |
+| systemModules.edgeHub.configuration.id | Identyfikator wdrożenia, które wdrożyć ten moduł. | Ta właściwość jest ustawiana przez Centrum IoT podczas tego manifestu jest stosowany przy użyciu wdrożenia. Nie jest częścią manifest wdrażania. |
 | moduły. {moduleId} .version | Zdefiniowane przez użytkownika ciąg reprezentujący wersję tego modułu. | Yes |
 | moduły. .type {moduleId} | Musi być "docker" | Yes |
 | moduły. .restartPolicy {moduleId} | {"nigdy" \| "— nie powiodło się" \| "na — zła" \| "zawsze"} | Yes |
 | modules.{moduleId}.settings.image | Identyfikator URI do obrazu modułu. | Yes |
 | modules.{moduleId}.settings.createOptions | Stringified JSON, zawierające opcje tworzenia kontenera modułu. [Opcje tworzenia docker][lnk-docker-create-options] | Nie |
-| moduły. .configuration.id {moduleId} | Identyfikator wdrożenia, które wdrożyć ten moduł. | Zostało to określone przez Centrum IoT, po zastosowaniu tego manifestu przy użyciu wdrożenia. Nie jest częścią manifest wdrażania. |
+| moduły. .configuration.id {moduleId} | Identyfikator wdrożenia, które wdrożyć ten moduł. | Ta właściwość jest ustawiana przez Centrum IoT podczas tego manifestu jest stosowany przy użyciu wdrożenia. Nie jest częścią manifest wdrażania. |
 
 ## <a name="edgeagent-reported-properties"></a>EdgeAgent zgłosił właściwości
 
@@ -59,7 +62,7 @@ Agent krawędzi zgłosił, że właściwości obejmują trzy główne informacje
 Ten ostatni element informacji jest przydatne w przypadku najnowszych odpowiednie właściwości nie są stosowane pomyślnie w czasie wykonywania, a urządzenie jest nadal uruchomiona poprzedniej manifest wdrażania.
 
 > [!NOTE]
-> Zgłoszony właściwości agenta krawędzi są przydatne, jak mogą być przeszukiwane przy [język zapytań Centrum IoT] [ lnk-iothub-query] do badania stanu wdrożeń na dużą skalę. Zapoznaj się [wdrożeń] [ lnk-deploy] Aby uzyskać więcej informacji na temat korzystania z tej funkcji.
+> Zgłoszony właściwości agenta krawędzi są przydatne, jak mogą być przeszukiwane przy [język zapytań Centrum IoT] [ lnk-iothub-query] do badania stanu wdrożeń na dużą skalę. Aby uzyskać więcej informacji na temat korzystania z właściwości agenta krawędzi dla stanu, zobacz [wdrożeń zrozumieć IoT Edge dla urządzeń z jednego lub na dużą skalę][lnk-deploy].
 
 Poniższa tabela nie zawiera informacje, które jest kopiowana żądanej właściwości.
 

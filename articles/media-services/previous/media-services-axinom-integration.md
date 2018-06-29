@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: willzhan;Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 0aaf0eea0414d234c9a24f707df5eed491a61c08
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 81247863eb86752113989f6e48e79f5c8bc75505
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788795"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061158"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Korzystanie z Axinom w celu dostarczania licencji Widevine do usługi Azure Media Services
 > [!div class="op_single_selector"]
@@ -59,7 +59,7 @@ Zobacz [generowania tokenów JWT](media-services-axinom-integration.md#jwt-token
 
 ## <a name="azure-media-player-preparation"></a>Przygotowanie odtwarzacz multimediów Azure
 AMP v1.4.0 obsługuje odtwarzanie AMS spakowanego dynamicznie z PlayReady i Widevine DRM.
-Jeśli serwer licencji Widevine nie wymaga uwierzytelniania tokenu, nie ma dodatkowych, należy wykonać, aby przetestować DASH zawartość chroniona przez Widevine. Na przykład zespół AMP udostępnia prostą [próbki](http://amp.azure.net/libs/amp/latest/samples/dynamic_multiDRM_PlayReadyWidevine_notoken.html), w którym można obejrzeć go do pracy w Edge i IE11 za pomocą PlayReady i Chrome przy użyciu metody Widevine.
+Jeśli serwer licencji Widevine nie wymaga uwierzytelniania tokenu, nie ma dodatkowych, należy wykonać, aby przetestować DASH zawartość chroniona przez Widevine. Na przykład zespół AMP udostępnia prostą [próbki](https://amp.azure.net/libs/amp/latest/samples/dynamic_multiDRM_PlayReadyWidevineFairPlay_notoken.html), w którym można obejrzeć go do pracy w Edge i IE11 za pomocą PlayReady i Chrome przy użyciu metody Widevine.
 Serwer licencji Widevine dostarczonych przez Axinom wymaga uwierzytelnienia tokenu JWT. JWT token musi zostać przesłane z żądaniem licencji za pośrednictwem nagłówka HTTP "X-AxDRM-komunikat". W tym celu należy dodać następujący kod javascript hosting AMP przed ustawieniem źródło strony sieci web:
 
     <script>AzureHtml5JS.KeySystem.WidevineCustomAuthorizationHeader = "X-AxDRM-Message"</script>

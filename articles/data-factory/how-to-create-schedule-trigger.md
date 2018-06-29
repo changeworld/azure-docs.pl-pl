@@ -13,20 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: shlo
-ms.openlocfilehash: 5df6633d40a3a361e551d1bea6caa2606a661a52
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: eee68481f4396f8a09241b664d4c3d7d4a4f6567
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618926"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054356"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Utwórz wyzwalacz uruchamia potoku zgodnie z harmonogramem
 Ten artykuł zawiera informacje o wyzwalacza harmonogramu oraz instrukcje umożliwiające tworzenie, uruchomić i monitorować wyzwalacz harmonogramu. Dla innych typów wyzwalaczy, zobacz [potoku wykonywania i wyzwalaczy](concepts-pipeline-execution-triggers.md).
 
 Podczas tworzenia harmonogramu wyzwalacza należy określić harmonogram (rozpoczęcie cyklu, końcowa data itp.) dla wyzwalacza i skojarz z potokiem. Między potokami i wyzwalaczami występuje relacja wiele-do-wielu. Wiele wyzwalaczy może uruchomić jeden potok. Jeden wyzwalacz może uruchamiać wiele potoków.
-
-> [!NOTE]
-> Ten artykuł dotyczy usługi Azure Data Factory w wersji 2, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz usługi fabryka danych Azure w wersji 1, która jest ogólnie dostępna (GA), zobacz [Rozpoczynanie pracy z fabryką danych Azure w wersji 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 Poniższe sekcje zawierają kroki, aby utworzyć harmonogram wyzwalacza w inny sposób. 
 
@@ -249,7 +246,7 @@ Aby monitorować wyzwalacz uruchamia i potoku jest uruchamiana w portalu Azure, 
 Szablon usługi Azure Resource Manager służy do tworzenia wyzwalacza. Aby uzyskać instrukcje, zobacz [tworzenie fabryki danych Azure przy użyciu szablonu usługi Resource Manager](quickstart-create-data-factory-resource-manager-template.md).  
 
 ## <a name="pass-the-trigger-start-time-to-a-pipeline"></a>Przekaż wyzwalacza godziny rozpoczęcia dla potoku
-Fabryka danych Azure w wersji 1 obsługuje odczytu lub zapisu danych podzielonej na partycje przy użyciu zmiennych systemowych: **SliceStart**, **SliceEnd**, **WindowStart**i **WindowEnd**. W fabryce danych Azure w wersji 2 to zachowanie można osiągnąć za pomocą parametru potoku. Czas rozpoczęcia i zaplanowanym terminie wyzwalacza są ustawione jako wartość parametru potoku. W poniższym przykładzie zaplanowanego czasu dla wyzwalacza jest przekazywany jako wartość do potoku **scheduledRunTime** parametru:
+Fabryka danych Azure w wersji 1 obsługuje odczytu lub zapisu danych podzielonej na partycje przy użyciu zmiennych systemowych: **SliceStart**, **SliceEnd**, **WindowStart**i **WindowEnd**. W bieżącej wersji usługi fabryka danych Azure to zachowanie można osiągnąć za pomocą parametru potoku. Czas rozpoczęcia i zaplanowanym terminie wyzwalacza są ustawione jako wartość parametru potoku. W poniższym przykładzie zaplanowanego czasu dla wyzwalacza jest przekazywany jako wartość do potoku **scheduledRunTime** parametru:
 
 ```json
 "parameters": {

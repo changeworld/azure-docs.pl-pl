@@ -4,18 +4,18 @@ description: Więcej informacji na temat sposobu modułów uzyskać wdrażania n
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 10/05/2017
+ms.date: 06/06/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 880a17b6029dafec9ed41e3a32802dc42b872e77
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: f64e6db576b7b1605cc070948a021184fc6ee8ad
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725330"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029264"
 ---
-# <a name="understand-iot-edge-deployments-for-single-devices-or-at-scale---preview"></a>Zrozumienie wdrożeń IoT Edge dla urządzeń z jednego lub na dużą skalę - preview
+# <a name="understand-iot-edge-deployments-for-single-devices-or-at-scale"></a>Zrozumienie wdrożeń IoT Edge dla urządzeń z jednego lub na dużą skalę
 
 Urządzenia brzegowe IoT Azure wykonaj [cykl życia urządzenia] [ lnk-lifecycle] przypomina na inne typy urządzeń IoT:
 
@@ -23,7 +23,7 @@ Urządzenia brzegowe IoT Azure wykonaj [cykl życia urządzenia] [ lnk-lifecycle
 1. Urządzenia są skonfigurowane do uruchomienia [modułów krawędzi IoT][lnk-modules]i następnie monitorować kondycję. 
 1. Ponadto urządzenia można wycofać gdy są one zastąpione lub staną się nieaktualne.  
 
-Azure IoT krawędź udostępnia dwa sposoby konfigurowania modułów do uruchamiania na urządzeniach krawędzi IoT: jeden dla rozwoju i szybkie iteracji na jednym urządzeniu (który został użyty w samouczkach Azure IoT krawędzi), a drugi do zarządzania dużą floty urządzeń IoT krawędzi. Obie metody są dostępne, w portalu Azure i programowo.
+Azure IoT krawędź udostępnia dwa sposoby konfigurowania modułów do uruchamiania na urządzeniach krawędzi IoT: jeden dla rozwoju i szybkie iteracji na jednym urządzeniu (użyto tej metody w samouczkach Azure IoT krawędzi), a drugi do zarządzania dużą floty urządzeń IoT krawędzi. Obie metody są dostępne, w portalu Azure i programowo.
 
 Ten artykuł skupia się na konfiguracji i monitorowania etapów floty urządzeń, nazywane zbiorczo krawędzi IoT wdrożeń automatycznych. Ogólne kroki wdrożenia są następujące:   
 
@@ -32,15 +32,15 @@ Ten artykuł skupia się na konfiguracji i monitorowania etapów floty urządze�
 1. Usługa Centrum IoT pobiera stan z urządzeń IoT Edge i udostępnia te operator monitorowania.  Na przykład operator widoczny, gdy urządzenia nie skonfigurowano pomyślnie lub moduł nie powiedzie się w czasie wykonywania. 
 1. W dowolnym momencie nowych urządzeń IoT krawędzi, które spełniają warunki określania wartości docelowej są skonfigurowane do wdrożenia. Na przykład wdrożenia, którego celem jest automatycznie wszystkie urządzenia IoT krawędzi w stanie Waszyngton konfiguruje nowe urządzenie brzegowe IoT po elastycznie i dodane do grupy urządzeń w stanie Waszyngton. 
  
-Ten artykuł przeprowadzi Cię przez poszczególne składniki zaangażowane w Konfigurowanie i monitorowanie wdrożenia. Aby uzyskać wskazówki dotyczące tworzenia i aktualizowania wdrożenia, zobacz [wdrażanie i monitorowanie krawędzi IoT modułów na dużą skalę][lnk-howto].
+W tym artykule opisano każdego składnika uwzględnionego w Konfigurowanie i monitorowanie wdrożenia. Aby uzyskać wskazówki dotyczące tworzenia i aktualizowania wdrożenia, zobacz [wdrażanie i monitorowanie krawędzi IoT modułów na dużą skalę][lnk-howto].
 
 ## <a name="deployment"></a>Wdrożenie
 
-Automatyczne wdrożenie krawędzi IoT przypisuje krawędzi IoT obrazów modułu do uruchamiania jako wystąpień w zestawie docelowym urządzenia brzegowe IoT. Działa on przez skonfigurowanie manifest rozmieszczenia krawędzi IoT Aby dołączyć listę modułów z odpowiednie parametry inicjacji. Wdrożenia można przypisać do jednego urządzenia (zazwyczaj na podstawie identyfikatora urządzenia) lub do grupy urządzeń (w oparciu tagów). Po urządzenia IoT odbiera manifest wdrażania, pobiera i instaluje obrazy kontener modułu z repozytoriami odpowiedniego kontenera i konfiguruje je odpowiednio. Po utworzeniu wdrożenia operator można monitorować stan wdrożenia, aby zobaczyć, czy urządzeń docelowych są poprawnie skonfigurowane.   
+Automatyczne wdrożenie krawędzi IoT przypisuje krawędzi IoT obrazów modułu do uruchamiania jako wystąpień w zestawie docelowym urządzenia brzegowe IoT. Działa on przez skonfigurowanie manifest rozmieszczenia krawędzi IoT Aby dołączyć listę modułów z odpowiednie parametry inicjacji. Wdrożenia można przypisać do jednego urządzenia (na podstawie Identyfikatora urządzenia) lub do grupy urządzeń (w oparciu tagów). Po urządzenia IoT odbiera manifest wdrażania, pobiera i instaluje obrazy kontener modułu z repozytoriami odpowiedniego kontenera i konfiguruje je odpowiednio. Po utworzeniu wdrożenia operator można monitorować stan wdrożenia, aby zobaczyć, czy urządzeń docelowych są poprawnie skonfigurowane.   
 
-Urządzenia muszą być udostępniane jako urządzenia IoT brzegowe można skonfigurować z wdrożeniem. Poniżej są wymagania wstępne i nie są uwzględnione we wdrożeniu:
+Urządzenia muszą być udostępniane jako urządzenia IoT brzegowe można skonfigurować z wdrożeniem. Następujące wymagania wstępne musi być na urządzeniu, zanim może odbierać wdrożenia:
 * Podstawowy system operacyjny
-* Docker 
+* Kontener system zarządzania, takich jak Moby lub Docker
 * Inicjowanie obsługi środowiska uruchomieniowego krawędzi IoT 
 
 ### <a name="deployment-manifest"></a>Manifest rozmieszczenia
@@ -52,12 +52,16 @@ Metadane konfiguracji dla każdego modułu obejmują:
 * Typ 
 * Stan (np. uruchomiona lub zatrzymana) 
 * Ponowne uruchomienie zasad 
-* Repozytorium obrazów i kontener 
+* Obraz i kontener rejestru
 * Trasy dla danych wejściowych i wyjściowych 
+
+Jeśli w rejestrze Kontener prywatny jest przechowywany obraz modułu, agent krawędzi IoT przechowuje poświadczenia rejestru. 
 
 ### <a name="target-condition"></a>Warunek docelowy
 
-Warunek docelowy jest stale obliczenia obejmują nowe urządzenia, które spełniają wymagania lub usuń urządzenia, które nie może wykonywać za pomocą czasu życia wdrożenia. Wdrożenie zostanie ponownie uaktywnić, jeśli usługa wykrywa zmiany stanu docelowego. Na przykład masz wdrożenie A mającej tags.environment warunek docelowy = "produkcyjnego". Gdy należy rozpocząć poza wdrożenia istnieją 10 urządzeń produkcyjną. Moduły pomyślnie zostały zainstalowane w tych 10 urządzeń. Stan agenta krawędzi IoT jest wyświetlany jako 10 łączna liczba urządzeń, 10 pomyślnie odpowiedzi, 0 odpowiedzi i 0 oczekujące odpowiedzi. Teraz Dodaj 5 więcej urządzeń z tags.environment = "produkcyjnego". Usługa wykryje zmianę i stan agenta krawędzi IoT pomyślnie staje się 15 łączna liczba urządzeń, 10 odpowiedzi, 0 odpowiedzi i 5 oczekujące odpowiedzi przy próbie wdrożyć pięć nowych urządzeń.
+Warunek docelowy jest stale obliczenia obejmują nowe urządzenia, które spełniają wymagania lub usuń urządzenia, które nie może wykonywać za pomocą czasu życia wdrożenia. Wdrożenie zostanie ponownie uaktywnić, jeśli usługa wykrywa zmiany stanu docelowego. 
+
+Na przykład masz wdrożenie A z tags.environment warunek docelowy = "produkcyjnego". Gdy należy rozpocząć poza wdrożenia istnieje dziesięć urządzeń produkcji. Moduły pomyślnie zostały zainstalowane w tych dziesięć urządzeń. Stan agenta krawędzi IoT jest wyświetlany jako 10 łączna liczba urządzeń, 10 pomyślnej odpowiedzi, 0 odpowiedzi i 0 oczekujące odpowiedzi. Teraz Dodaj pięć większej liczby urządzeń z tags.environment = "produkcyjnego". Usługa wykryje zmianę i stan agenta krawędzi IoT staje się 15 łączna liczba urządzeń, 10 pomyślnej odpowiedzi, 0 odpowiedzi i 5 oczekujące odpowiedzi przy próbie wdrożyć pięć nowych urządzeń.
 
 Wszelkie warunek typu Boolean na urządzeniu twins znaczników lub deviceId można użyć do wybrania urządzeń docelowych. Jeśli chcesz użyć warunku tagów, musisz dodać "tagi":{} części dwie urządzenia, w tym samym poziomie jako właściwości. [Dowiedz się więcej na temat tagów w dwie urządzenia](../iot-hub/iot-hub-devguide-device-twins.md)
 
@@ -73,7 +77,7 @@ Poniżej przedstawiono niektóre ogranicza podczas tworzenia warunku docelowych:
 * W dwie urządzenia można utworzyć tylko przy użyciu znaczników lub deviceId warunek docelowy.
 * Podwójny cudzysłów nie jest dozwolone w jakiejkolwiek jego części warunek docelowy. Użyj pojedynczych cudzysłowów.
 * Apostrofy reprezentują wartości stanu docelowego. W związku z tym musi escape z innego pojedynczy cudzysłów pojedynczy cudzysłów, jeśli jest ona częścią nazwy urządzenia. Na przykład warunek docelowy: operator'sDevice musi mieć postać deviceId = "operator" sDevice ".
-* Cyfry, litery i następujące znaki są dozwolone w docelowej values:-:.+%_#* warunek? (),=@;$
+* Cyfry, litery i następujące znaki są dozwolone w wartości warunek docelowych: `-:.+%_#*?!(),=@;$`.
 
 ### <a name="priority"></a>Priorytet
 

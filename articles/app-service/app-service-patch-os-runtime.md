@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: cephalin
-ms.openlocfilehash: 92b6945ad13842e926d53be6dcc0d21554485ff3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0626b958a9b822569f4d3b6d27f3395bed853174
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32151012"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030057"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>System operacyjny i środowiska uruchomieniowego poprawki w usłudze Azure App Service
 
@@ -74,31 +74,31 @@ az webapp config set --python-version 3.4 --resource-group <groupname> --name <a
 az webapp config set --java-version 1.8 --java-container Tomcat --java-container-version 9.0 --resource-group <groupname> --name <appname>
 ```
 
-### <a name="deprecated-versions"></a>Przestarzałe wersji
+### <a name="deprecated-versions"></a>Przestarzałe wersji  
 
 Gdy starsza wersja jest przestarzały, Data usunięcia ogłoszenia tak, aby odpowiednio zaplanować uaktualnienie wersji środowiska wykonawczego. 
 
-## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>Jak zbadać stan aktualizacji systemu operacyjnego i środowiska uruchomieniowego na mój wystąpień
+## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>Jak zbadać stan aktualizacji systemu operacyjnego i środowiska uruchomieniowego na mój wystąpień  
 
 Podczas kluczowych informacji systemu operacyjnego jest zablokowana z programu access (zobacz [funkcji systemu operacyjnego w usłudze Azure App Service](web-sites-available-operating-system-functionality.md)), [Kudu konsoli](https://github.com/projectkudu/kudu/wiki/Kudu-console) pozwala na zapytania dotyczące systemu operacyjnego wystąpienia usługi aplikacji Wersja i wersji środowiska wykonawczego. 
 
 W poniższej tabeli przedstawiono sposób wersje systemu Windows i środowisko uruchomieniowe języka uruchamiania aplikacji:
 
-| Informacje | Gdzie można znaleźć go |
+| Informacje | Gdzie można znaleźć go | 
 |-|-|
 | Wersja systemu Windows | Zobacz `https://<appname>.scm.azurewebsites.net/Env.cshtml` (w obszarze informacje o systemie) |
 | Wersja platformy .NET | W `https://<appname>.scm.azurewebsites.net/DebugConsole`, uruchom następujące polecenie w wierszu polecenia: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
 | Wersja platformy .NET core | W `https://<appname>.scm.azurewebsites.net/DebugConsole`, uruchom następujące polecenie w wierszu polecenia: <br> `dotnet --version` |
 | Wersja języka PHP | W `https://<appname>.scm.azurewebsites.net/DebugConsole`, uruchom następujące polecenie w wierszu polecenia: <br> `php --version` |
 | Domyślną wersję środowiska Node.js | W [powłoki chmury](../cloud-shell/overview.md), uruchom następujące polecenie: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
-| Wersja języka Python | W `https://<appname>.scm.azurewebsites.net/DebugConsole`, uruchom następujące polecenie w wierszu polecenia: <br> `python --version` |
+| Wersja języka Python | W `https://<appname>.scm.azurewebsites.net/DebugConsole`, uruchom następujące polecenie w wierszu polecenia: <br> `python --version` |  
 
-> [!NOTE]
+> [!NOTE]  
 > Dostęp do lokalizacji w rejestrze `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, gdzie informacji na temat [poprawek "KB"]((https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins)) są przechowywane, jest zablokowana.
 >
 >
 
 ## <a name="more-resources"></a>Więcej zasobów
 
-[Centrum zaufania: zabezpieczeń](https://www.microsoft.com/TrustCenter/Security/default.aspx)  
+[Centrum zaufania: zabezpieczeń](https://www.microsoft.com/en-us/trustcenter/security)  
 [64-bitowy platformy ASP.NET Core w usłudze Azure App Service](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)

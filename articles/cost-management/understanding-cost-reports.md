@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: b2f33a8dce441312e74688ca766ab65c028451d9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 75709e099c6126997d91bf4b679de473fc75a485
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32167900"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064003"
 ---
 # <a name="understanding-cost-management-reports"></a>Raporty zarządzania koszt opis
 
@@ -121,7 +121,7 @@ Poszczególnych numerowane obszar obrazu poprzedniego jest szczegółowo opisane
     -   **Typ użycia**
           - Typ użycia może być jednorazowe opłaty lub cykliczne opłat.
 
-5. **filtry**
+5. **Filtry**
 
     Użyj filtrów pojedynczego lub wielokrotnego wyboru, aby ustawić zakresy wybranych wartości. Aby ustawić filtr, kliknij przycisk **Dodaj** , a następnie wybierz filtr kategorii i wartości.
 
@@ -145,9 +145,9 @@ Poszczególnych numerowane obszar obrazu poprzedniego jest szczegółowo opisane
 
     Umożliwia wybór rozwiązania czasu, w ramach zakresu dat zaznaczonego rozpoznawania. Rozdzielczość czasu określa sposób jednostki są wyświetlane w raporcie i może być:
     - Codziennie
-    - Co tydzień
+    - Cotygodniowo
     - Miesięczne
-    - Co kwartał
+    - Kwartalnie
     - Roczne
 
 9. **Zasady alokacji**
@@ -176,6 +176,10 @@ Poszczególnych numerowane obszar obrazu poprzedniego jest szczegółowo opisane
 
     Użyj akcje, aby zapisać, wyeksportować lub ustalania harmonogramu raportu.
 
+15. **Zasady**
+
+    Mimo że nie przedstawianych, niektóre raporty zawierają zasady obliczania szacowany koszt. W tych raportach **skonsolidowanych** zasad zawiera zalecenia dotyczące wszystkich kont i subskrypcje w ramach bieżącego obiektu, takie jak Microsoft rejestracji lub usług AWS płatnika. **Autonomiczny** zasad zawiera zalecenia dotyczące jednego konto lub subskrypcja tak, jakby istnieje żadnych innych subskrypcji. Zasady, które należy wybrać zmienia się na strategii optymalizacji używany przez organizację. Projekcje kosztu są oparte na ostatnich 30 dni od użycia.
+
 ## <a name="save-and-schedule-reports"></a>Zapisz i planowania raportów
 
 Po utworzeniu raportu można zapisać go do użytku w przyszłości. Zapisane raporty są dostępne w **Moje narzędzia** > **Moje raporty**. Jeśli wprowadzono zmiany do istniejącego raportu i zapisz go, raport jest zapisywany jako nową wersję. Alternatywnie można zapisać go jako nowy raport.
@@ -199,4 +203,5 @@ Podczas wyświetlania wszystkich raportów, kliknij przycisk **akcje** , a nast�
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Jeśli nie zostało już ukończone pierwszy samouczek koszt zarządzania, przeczytaj je na [Przejrzyj użycia i koszty](tutorial-review-usage.md).
+- Więcej informacji na temat raportów, które znajdują się w Cloudyn w [raporty użycia kosztów zarządzania](use-reports.md).
+- Dowiedz się więcej o tym, jak używać raportów do tworzenia [pulpity nawigacyjne](dashboards.md).

@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c5f47379072f4e5d15ffd96c5e45a23d10fff187
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f53c9e2b21e4758bccb6b0f89eb69501df2a6009
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620252"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051403"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Fabryka danych Azure — dziennik zmian interfejs API .NET
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). 
+> Ten artykuł dotyczy wersji 1 fabryki danych. 
 
 Ten artykuł zawiera informacje o zmianach wprowadzonych do zestawu SDK usługi Azure Data Factory w określonej wersji. Fabryka danych Azure można znaleźć najnowszy pakiet NuGet [tutaj](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactories)
 

@@ -10,24 +10,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/07/2018
+ms.topic: conceptual
+ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: aa96356b01d63aa21c55f1b2e6998e65f9d617f6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6a232787793f9f4992a4dece821ae0bcc9059afc
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37058990"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopiowanie danych z i do Oracle przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](v1/data-factory-onprem-oracle-connector.md)
-> * [Wersja 2 — wersja zapoznawcza](connector-oracle.md)
+> * [W wersji 1](v1/data-factory-onprem-oracle-connector.md)
+> * [Bieżąca wersja](connector-oracle.md)
 
 W tym artykule omówiono sposób użycia działanie kopiowania w fabryce danych Azure, aby skopiować dane z i do bazy danych programu Oracle. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 fabryki danych, która jest ogólnie dostępna, zobacz [łącznika Oracle w wersji 1](v1/data-factory-onprem-oracle-connector.md).
 
 ## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
@@ -40,6 +38,9 @@ W szczególności ten łącznik Oracle obsługuje następujące wersje bazy dany
 - Oracle 10g R1, R2 (10.1, 10.2)
 - Oracle 9i R1, R2 (9.0.1, 9.2)
 - Oracle 8i R3 (8.1.7)
+
+> [!Note]
+> Serwer proxy Oracle nie jest obsługiwane.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -58,7 +59,7 @@ Następujące właściwości są obsługiwane przez usługę Oracle połączone.
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi mieć ustawioną **Oracle**. | Yes |
-| Parametry połączenia | Określa informacje wymagane do nawiązania połączenia z wystąpieniem bazy danych programu Oracle. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md).<br><br>**Obsługiwany typ połączenia**: można użyć **Oracle SID** lub **nazwa usługi Oracle** Aby zidentyfikować bazy danych:<br>— Jeśli używasz identyfikator SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>— Jeśli używasz nazwa usługi: `Host=<host>;Port=<port>;ServiceName=<sid>;User Id=<username>;Password=<password>;` | Yes |
+| Parametry połączenia | Określa informacje wymagane do nawiązania połączenia z wystąpieniem bazy danych programu Oracle. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md).<br><br>**Obsługiwany typ połączenia**: można użyć **Oracle SID** lub **nazwa usługi Oracle** Aby zidentyfikować bazy danych:<br>— Jeśli używasz identyfikator SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>— Jeśli używasz nazwa usługi: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Yes |
 | connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. (Jeśli w magazynie danych jest dostępny publicznie) można użyć środowiska uruchomieniowego integracji Self-hosted lub środowiska uruchomieniowego integracji Azure. Jeśli nie zostanie określony, używa domyślnej środowiska uruchomieniowego integracji Azure. |Nie |
 
 **Przykład:**
@@ -208,7 +209,7 @@ Po skopiowaniu danych od i do Oracle, następujące mapowania są używane z typ
 | Typ danych Oracle | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
 | BPLIK |Byte[] |
-| BLOB |Byte[]<br/>(obsługiwana tylko w bazie danych Oracle 10 GB/s i nowsze) |
+| OBIEKT BLOB |Byte[]<br/>(obsługiwana tylko w bazie danych Oracle 10 GB/s i nowsze) |
 | CHAR |Ciąg |
 | CLOB |Ciąg |
 | DATE |DateTime |
@@ -218,9 +219,9 @@ Po skopiowaniu danych od i do Oracle, następujące mapowania są używane z typ
 | LONG RAW |Byte[] |
 | NCHAR |Ciąg |
 | NCLOB |Ciąg |
-| NUMBER |Decimal, ciąg (jeśli precyzja > 28) |
+| NUMER |Decimal, ciąg (jeśli precyzja > 28) |
 | NVARCHAR2 |Ciąg |
-| RAW |Byte[] |
+| NIEPRZETWORZONE |Byte[] |
 | ROWID |Ciąg |
 | ZNACZNIK CZASU |DateTime |
 | SYGNATURA CZASOWA Z LOKALNEJ STREFIE CZASOWEJ |Ciąg |

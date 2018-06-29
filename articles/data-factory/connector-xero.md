@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych z Xero przy użyciu fabryki danych Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+title: Kopiowanie danych z Xero przy użyciu fabryki danych Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skopiować dane z Xero do zbiornika obsługiwane magazyny danych za pomocą działania kopiowania w potoku fabryki danych Azure.
 services: data-factory
 documentationcenter: ''
@@ -13,19 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 0d2b55384484932cb243ec6b15a6b4944c716471
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 17341e8431ffd5cc41fdda86a7511688dcabaf45
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337653"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045388"
 ---
-# <a name="copy-data-from-xero-using-azure-data-factory-preview"></a>Kopiowanie danych z Xero przy użyciu fabryki danych Azure (wersja zapoznawcza)
+# <a name="copy-data-from-xero-using-azure-data-factory"></a>Kopiowanie danych z Xero przy użyciu fabryki danych Azure
 
 W tym artykule omówiono sposób użycia działanie kopiowania w fabryce danych Azure, aby skopiować dane z Xero. Opiera się na [skopiuj omówienie działania](copy-activity-overview.md) artykułu, który przedstawia ogólny przegląd działanie kopiowania.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [działanie kopiowania w wersji 1](v1/data-factory-data-movement-activities.md).
 
 > [!IMPORTANT]
 > Ten łącznik jest obecnie w przeglądzie. Możesz wypróbować jej możliwości i wyrazić swoją opinię. Jeśli w swoim rozwiązaniu chcesz wprowadzić zależność od łączników w wersji zapoznawczej, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/).

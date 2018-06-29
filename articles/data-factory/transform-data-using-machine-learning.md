@@ -12,27 +12,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: ffa65e542b83bccf1629674a0a4860e236401605
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 87a71cff07d18dde25fa5c58b3718e7a57e3ce8d
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621527"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046017"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Tworzenie potoków predykcyjnej przy użyciu usługi Azure Machine Learning i fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](v1/data-factory-azure-ml-batch-execution-activity.md)
-> * [Wersja 2 — wersja zapoznawcza](transform-data-using-machine-learning.md)
+> * [W wersji 1](v1/data-factory-azure-ml-batch-execution-activity.md)
+> * [Bieżąca wersja](transform-data-using-machine-learning.md)
 
 [Usługa Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/) umożliwia tworzenie, testowanie i wdrażanie rozwiązań analizy predykcyjnej. Z wysokiego poziomu punktu widzenia można to zrobić w trzy kroki:
 
 1. **Tworzenie eksperymentu uczenia**. Aby wykonać ten krok za pomocą usługi Azure ML Studio. Studio uczenia Maszynowego to środowisko visual programowanie zespołowe używanej do nauczenia i przetestowania modelu analizy predykcyjnej przy użyciu danych szkoleniowych.
 2. **Przekonwertuj go eksperyment predykcyjny**. Po modelu po zapoznaniu z istniejącymi danymi i chcesz używać go do oceniać nowe dane, Przygotuj i usprawnić eksperymentu wyników.
 3. **Go wdrożyć jako usługę sieci web**. Możesz opublikować oceniania eksperymentu jako usługi sieci web platformy Azure. Można wysyłać dane do modelu za pomocą tego punktu końcowego usługi sieci web i odbierać prognoz wyniku z modelu.  
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [działanie wykonywania wsadowego Machine Learning w wersji 1](v1/data-factory-azure-ml-batch-execution-activity.md).
-
 
 ### <a name="data-factory-and-machine-learning-together"></a>Fabryki danych i jednocześnie uczenia maszynowego
 Fabryka danych Azure umożliwia łatwe tworzenie potoków, które używają opublikowanych [Azure Machine Learning] [-uczenia maszynowego azure-] usługi sieci web analizy predykcyjnej. Przy użyciu **działanie wykonywania wsadowego** w potoku fabryki danych Azure, można wywołać usługi sieci web uczenie Maszynowe Azure w celu prognozowania danych w partii. 

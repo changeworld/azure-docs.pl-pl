@@ -10,15 +10,17 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: v-geberr
-ms.openlocfilehash: 8e04853e0044e045158642fea51c225378eb3ad6
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 14c53bd25913922a0cd7cc438ad0fbe8b4663dd1
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319058"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061968"
 ---
-# <a name="prebuilt-domain-reference"></a>Odwołanie do domeny wbudowane
-To odwołanie, zawiera informacje o wbudowane domen, które są wbudowane kolekcje intencje i jednostek, które oferuje LUIS.
+# <a name="prebuilt-domain-reference"></a>Dokumentacja wstępnie utworzonych domen
+Ta dokumentacja zawiera informacje na temat [wbudowane domen](luis-how-to-use-prebuilt-domains.md), które są wbudowane kolekcje intencje i jednostek, które oferuje LUIS.
+
+[Domen niestandardowych](create-new-app.md), natomiast uruchomić bez intencje i modeli. Można dodać żadnych opcji wbudowane domeny i jednostki do modelu niestandardowych.
 
 ## <a name="list-of-prebuilt-domains"></a>Listy domen wbudowane
 LUIS oferuje 20 wbudowane domen. 
@@ -41,7 +43,7 @@ LUIS oferuje 20 wbudowane domen.
 | Przypomnienie | Obsługa żądania związane z tworzeniem, edytowaniem i znajdowanie przypomnienia.| pl-PL<br/> zh-CN |
 | RestaurantReservation | Obsługa żądań do zarządzania zastrzeżenia restauracji.| pl-PL<br/> zh-CN |
 | Taksówki | Obsługa rezerwacji dla taksówki.| pl-PL<br/> zh-CN |
-| Przetłumacz | Tłumaczenie tekstu do języka docelowego.| pl-PL<br/> zh-CN |
+| Tłumaczenie | Tłumaczenie tekstu do języka docelowego.| pl-PL<br/> zh-CN |
 | TV | Kontrolowanie telewizorach.| pl-PL |
 | Usługi użyteczności publicznej  | Obsługę żądań, które są wspólne w wielu domenach, takich jak "pomoc", "Powtórz", "zacząć od nowa."| pl-PL |
 | Pogody | Pobieranie pogody i prognoz.| pl-PL<br/> zh-CN |
@@ -442,7 +444,7 @@ restart|
 | RouteAvoidanceCriteria | Kryteria dla uniknięcia określonej trasy, takich jak unikanie awarii, konstrukcji lub przejazd | Przejazd <br/>Konstrukcje<br/>Trasy 11|
 | ServiceProvided | Jest to oferowane przez firmy lub miejsca, takie jak nowe zlecenie, śniegu plowing, krajobrazowe. | Pracownik<br/>mechanika<br/>plumber|
 | TransportationCompany | Nazwa dostawcy transportu.|Amtrak<br/>Acela<br/>Greyhound|
-| TransportationType | Typ transportu.|Magistrala<br/>Uczenie<br/>Jazda samochodem|
+| TransportationType | Typ transportu.|Magistrala<br/>Szkolenie<br/>Jazda samochodem|
 
 ## <a name="reminder"></a>Przypomnienie 
 Domena monitu zapewnia intencje i jednostki dla tworzenia, edytowania i znajdowanie przypomnienia.
@@ -523,9 +525,9 @@ Cancel my Uber
 | PlaceName | Nazwa lokalnego biznesowych, restauracji, przyciągania publicznych lub instytucji. |Wstrzymywanie środkowe<br/>Safeway<br/>Walmart|
 | PlaceType| Typ miejsca w żądaniu zarezerwować taksówki.|Restauracja<br/>Opera<br/>kinowych|
 | TransportationCompany | Nazwa dostawcy transportu.|Amtrak<br/>Acela<br/>Greyhound|
-| TransportationType | Typ transportu.|Magistrala<br/>Uczenie<br/>Jazda samochodem|
+| TransportationType | Typ transportu.|Magistrala<br/>Szkolenie<br/>Jazda samochodem|
 
-## <a name="translate"></a>Przetłumacz 
+## <a name="translate"></a>Tłumaczenie 
 Domena Przetłumacz zapewnia intencje i obiektów związanych z tłumaczenie tekstu do języka docelowego.
 
 ### <a name="examples"></a>Przykłady
@@ -538,7 +540,7 @@ Translate this sentence to English
 ### <a name="intents"></a>Intencje
 | Nazwa metody konwersji | Opis | Przykłady |
 | ---------------- |-----------------------|----|
-| Przetłumacz| Tłumaczenie tekstu na inny język.|Tłumaczenia na język francuski<br/>Tłumaczenie hello na język niemiecki|
+| Tłumaczenie| Tłumaczenie tekstu na inny język.|Tłumaczenia na język francuski<br/>Tłumaczenie hello na język niemiecki|
 
 
 ### <a name="entities"></a>Jednostki

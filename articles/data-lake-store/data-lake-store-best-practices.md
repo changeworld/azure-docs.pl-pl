@@ -1,24 +1,26 @@
 ---
-title: Najlepsze rozwiązania dotyczące korzystania z usługi Azure Data Lake Store | Dokumentacja firmy Microsoft
-description: Dowiedz się, najlepsze rozwiązania dotyczące wprowadzanie danych, Data zabezpieczeń i wydajności powiązane z użyciem usługi Azure Data Lake Store
+title: Najlepsze rozwiązania dotyczące korzystania z usługi Azure Data Lake magazynu Gen1 | Dokumentacja firmy Microsoft
+description: Dowiedz się, najlepsze rozwiązania dotyczące wprowadzanie danych, Data zabezpieczeń i wydajności powiązane z użyciem usługi Azure Data Lake magazynu Gen1 (wcześniej znana jako Azure Data Lake Store)
 services: data-lake-store
 documentationcenter: ''
 author: sachinsbigdata
 manager: jhubbard
-editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2018
+ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 9fd6b72a7d09f85f7a6e60e5af4035ffc3862d2c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 00eb2b6b60aa6c3224b58556f6dad64d4294c308
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625342"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37036078"
 ---
-# <a name="best-practices-for-using-azure-data-lake-store"></a>Najlepsze rozwiązania dotyczące używania usługi Azure Data Lake Store
+# <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Najlepsze rozwiązania dotyczące używania usługi Azure Data Lake magazynu Gen1
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
 W tym artykule opisano najważniejsze wskazówki i informacje dotyczące pracy z usługi Azure Data Lake Store. Ten artykuł zawiera informacje dotyczące zabezpieczeń, wydajności, odporności i monitorowania usługi Data Lake Store. Przed usługi Data Lake Store pracę z danymi big naprawdę w usługach, takich jak usługa Azure HDInsight był zbyt złożony. Konieczne było współdzielenie danych między wiele kont magazynu obiektów Blob, aby petabajt magazynu i optymalnej wydajności, które rozwijają się może zostać osiągnięty. Z usługi Data Lake Store większość stałych limitów rozmiaru i wydajności zostaną usunięte. Jednak nadal istnieją pewne kwestie, które w tym artykule omówiono tak, aby uzyskać najlepszą wydajność dzięki usłudze Data Lake Store. 
 
 ## <a name="security-considerations"></a>Zagadnienia związane z zabezpieczeniami
@@ -114,7 +116,7 @@ Zadania kopiowania może zostać wyzwolone przez Apache Oozie przepływów pracy
 
 ### <a name="use-azure-data-factory-to-schedule-copy-jobs"></a>Zaplanuj zadania kopiowania za pomocą fabryki danych Azure 
 
-Fabryka danych Azure można również zaplanować zadania kopiowania za pomocą **działanie kopiowania**, a nawet można skonfigurować na częstotliwość za pośrednictwem **kreatora kopiowania**. Należy pamiętać fabryki danych Azure ma limit jednostki przepływu danych w chmurze (DMUs), a ostatecznie caps przepływności/obliczeniowe dla obciążeń dużej ilości danych. Ponadto fabryki danych Azure aktualnie nie oferuje aktualizacji przyrostowych między kontami usługi Data Lake Store, folderów, na przykład tabele programu Hive wymagałoby to kompletna kopia do replikacji. Zapoznaj się [przewodnik dostrajania działanie kopiowania](../data-factory/v1/data-factory-copy-activity-performance.md) Aby uzyskać więcej informacji o kopiowaniu z fabryką danych. 
+Fabryka danych Azure można również zaplanować zadania kopiowania za pomocą **działanie kopiowania**, a nawet można skonfigurować na częstotliwość za pośrednictwem **kreatora kopiowania**. Należy pamiętać fabryki danych Azure ma limit jednostki przepływu danych w chmurze (DMUs), a ostatecznie caps przepływności/obliczeniowe dla obciążeń dużej ilości danych. Ponadto fabryki danych Azure aktualnie nie oferuje aktualizacji przyrostowych między kontami usługi Data Lake Store, folderów, na przykład tabele programu Hive wymagałoby to kompletna kopia do replikacji. Zapoznaj się [przewodnik dostrajania działanie kopiowania](../data-factory/copy-activity-performance.md) Aby uzyskać więcej informacji o kopiowaniu z fabryką danych. 
 
 ### <a name="adlcopy"></a>AdlCopy
 

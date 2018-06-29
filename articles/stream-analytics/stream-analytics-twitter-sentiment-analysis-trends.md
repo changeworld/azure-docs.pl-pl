@@ -9,12 +9,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: 4c77c8a7209825477929ddc0997b75ace5fe04a1
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 0b920d21486fc0003d8b11bef79bd44be4b28adf
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30910530"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030618"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>W czasie rzeczywistym analizy usługi Azure Stream Analytics wskaźniki nastrojów klientów usługi Twitter
 
@@ -60,7 +60,7 @@ W tej procedurze należy najpierw utworzyć przestrzeń nazw Centrum zdarzeń, a
 
     ![Przycisk Dodaj Centrum zdarzeń do tworzenia nowego Centrum zdarzeń ](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub-button.png)    
  
-6. Nazwa nowego Centrum zdarzeń `socialtwitter-eh`. Można użyć innej nazwy. Jeśli to zrobisz, zanotuj, ponieważ później potrzebne. Nie ma potrzeby ustaw inne opcje dla Centrum zdarzeń.
+6. Nazwa nowego Centrum zdarzeń `socialtwitter-eh`. Możesz użyć innej nazwy. Jeśli to zrobisz, zanotuj, ponieważ później potrzebne. Nie ma potrzeby ustaw inne opcje dla Centrum zdarzeń.
 
     ![Blok do tworzenia nowego Centrum zdarzeń](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub.png)
  
@@ -69,7 +69,7 @@ W tej procedurze należy najpierw utworzyć przestrzeń nazw Centrum zdarzeń, a
 
 ### <a name="grant-access-to-the-event-hub"></a>Udziel dostępu do Centrum zdarzeń
 
-Aby proces może wysyłać dane do Centrum zdarzeń, Centrum zdarzeń muszą mieć zasadę, która umożliwia uzyskanie odpowiedniego dostępu. Zasady dostępu generuje ciąg połączenia, który zawiera informacje o autoryzacji.
+Aby proces może wysyłać dane do Centrum zdarzeń, Centrum zdarzeń muszą mieć zasadę, która umożliwia uzyskanie odpowiedniego dostępu. Zasady dostępu generują parametry połączenia, które zawierają informacje o autoryzacji.
 
 1.  W bloku przestrzeni nazw zdarzeń, kliknij przycisk **usługi Event Hubs** , a następnie kliknij nazwę nowego Centrum zdarzeń.
 
@@ -90,7 +90,7 @@ Aby proces może wysyłać dane do Centrum zdarzeń, Centrum zdarzeń muszą mie
     
     ![Kopiowanie klucza podstawowego połączenia ciągu z zasad dostępu](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-shared-access-policy-copy-connection-string.png)
  
-7.  Wklej parametry połączenia w edytorze tekstu. Należy tego ciągu połączenia dla następnej sekcji, po wprowadzeniu niektóre zmiany mała do niego.
+7.  Wklej parametry połączenia do edytora tekstu. Należy tego ciągu połączenia dla następnej sekcji, po wprowadzeniu niektóre zmiany mała do niego.
 
     Parametry połączenia wygląda następująco:
 
@@ -251,7 +251,7 @@ Aby porównać liczbę uwagi między tematami, można użyć [okno wirowania](ht
 
     Azure przykłady 3 minut, przez które danych ze strumienia wejściowego i powiadamia użytkownika, gdy będzie gotowy przykładowych danych. (Trwa to krótki czas). 
 
-    Przykładowe dane są tymczasowo przechowywane i jest dostępny, gdy masz okna kwerendy. Jeśli zamkniesz okno kwerendy przykładowe dane są usuwane i należy utworzyć nowy zestaw przykładowych danych. 
+    Przykładowe dane są przechowywane tymczasowo i są dostępne, kiedy okno zapytania jest otwarte. Jeśli zamkniesz okno kwerendy przykładowe dane są usuwane i należy utworzyć nowy zestaw przykładowych danych. 
 
 5. Zmień zapytanie w edytorze kodu do następującego:
 
@@ -316,7 +316,7 @@ W tym samouczku możesz zapisać zdarzeń zagregowane tweet zapytania zadania do
 5. Zamknij **dane wyjściowe** bloku. 
 
 
-## <a name="start-the-job"></a>Uruchom zadanie
+## <a name="start-the-job"></a>Uruchamianie zadania
 
 Dane wejściowe zadania, zapytań i dane wyjściowe zostały określone. Wszystko jest gotowe do rozpoczęcia zadania usługi analiza strumienia.
 
@@ -338,7 +338,7 @@ Dane wejściowe zadania, zapytań i dane wyjściowe zostały określone. Wszystk
 
 Po uruchomieniu zadania przetwarza strumienia w czasie rzeczywistym usługi Twitter, można wyświetlić dane wyjściowe do analizy wskaźniki nastrojów klientów.
 
-Można użyć narzędzia, takiego jak [Eksploratora usługi Storage Azure](https://http://storageexplorer.com/) lub [Eksploratora Azure](http://www.cerebrata.com/products/azure-explorer/introduction) Aby wyświetlić dane wyjściowe zadania w czasie rzeczywistym. W tym miejscu, można użyć [usługi Power BI](https://powerbi.com/) rozszerzenie aplikacji zawierającej dostosowany pulpit nawigacyjny tak jak pokazano na poniższym zrzucie ekranu:
+Można użyć narzędzia, takiego jak [Eksploratora usługi Storage Azure](https://storageexplorer.com/) lub [Eksploratora Azure](http://www.cerebrata.com/products/azure-explorer/introduction) Aby wyświetlić dane wyjściowe zadania w czasie rzeczywistym. W tym miejscu, można użyć [usługi Power BI](https://powerbi.com/) rozszerzenie aplikacji zawierającej dostosowany pulpit nawigacyjny tak jak pokazano na poniższym zrzucie ekranu:
 
 ![Power BI](./media/stream-analytics-twitter-sentiment-analysis-trends/power-bi.png)
 

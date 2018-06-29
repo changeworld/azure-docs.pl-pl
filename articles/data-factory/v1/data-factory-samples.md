@@ -14,19 +14,19 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c56501deaf4d30374690a112b1ba11eaa9344cdb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 417425a6982ca92e486ccfb578131ebc898a0466
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622367"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046092"
 ---
 # <a name="azure-data-factory---samples"></a>Fabryki danych Azure — przykłady
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [przykłady środowiska PowerShell w wersji 2 usługi fabryka danych](../samples-powershell.md) i [przykłady w galerii Azure przykłady kodu](https://azure.microsoft.com/resources/samples/?service=data-factory).
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [przykłady środowiska PowerShell w fabryce danych](../samples-powershell.md) i [przykłady w galerii Azure przykłady kodu](https://azure.microsoft.com/resources/samples/?service=data-factory).
 
 
-## <a name="samples-on-github"></a>Przykłady z witryny GitHub
+## <a name="samples-on-github"></a>Przykłady w serwisie GitHub
 [Repozytorium GitHub Azure-DataFactory](https://github.com/azure/azure-datafactory) zawiera kilka przykłady, które ułatwiają szybkie zwiększać usłudze fabryka danych Azure (lub) zmodyfikować skrypty i używać jej w własnych aplikacji. Samples\JSON folder zawiera fragmenty kodu JSON dla typowych scenariuszy.
 
 | Sample | Opis |

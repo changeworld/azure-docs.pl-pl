@@ -1,5 +1,5 @@
 ---
-title: Określić sposób użycia szczegółowe Azure
+title: Określić sposób użycia szczegółowe Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak przeczytane i zrozumiane sekcji szczegółowe użycie woluminów CSV dla subskrypcji platformy Azure
 services: ''
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.openlocfilehash: 0f698bff1506484e1dd4afe22f7c14e0a710937c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 723e42d2bb2af09eb2236c3cbefeee33987ea45b
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32771142"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060804"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>Zrozumienie warunki na opłaty za programu Microsoft Azure szczegółowe dane użycia 
 
@@ -59,7 +59,7 @@ W górnej części szczegółowe dane użycia pliku CSV zawiera usługi, które 
 |Stawka |Szybkość, z którego są pobierane na jednostkę rozliczeń |
 |Wartość |Przedstawia wynik mnożenia kolumny ilości nadwyżkowe według kolumny szybkości. Jeśli liczba zużywane nie przekracza ilość uwzględnione, Brak bez dodatkowych opłat w tej kolumnie. |
 
-### <a name="daily-usage"></a>Dzienne dane użycia
+### <a name="daily-usage"></a>Dzienne użycie
 
 Dzienne użycie części pliku CSV przedstawia szczegółowe informacje użycia, wpływających na rozliczeń stawki. W poniższej tabeli wymieniono terminy i opisy przedstawionym w tej sekcji.
 

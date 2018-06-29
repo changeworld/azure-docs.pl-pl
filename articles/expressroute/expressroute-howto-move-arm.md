@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/03/2017
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: 37db218010288912bf75d00fd5868aab171aef71
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: MT
+ms.openlocfilehash: 20914eec070452186295f6d87a85ea0675ebaf4c
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31592909"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060090"
 ---
 # <a name="move-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model-using-powershell"></a>Przenieść obwody usługi ExpressRoute z klasycznego modelu wdrażania usługi Resource Manager przy użyciu programu PowerShell
 
@@ -96,6 +96,10 @@ Aby przenieść obwodu, zmodyfikuj i uruchom następujący fragment kodu:
 ```powershell
 Move-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
 ```
+
+> [!NOTE]
+> W trybie klasycznym obwodu usługi ExpressRoute nie ma pojęcie jest związana z obszarem. W Resource Manager (ARM), każdy zasób musi być mapowane do regionu platformy Azure. Obszar polecenia cmdlet Move-AzureRmExpressRouteCircuit technicznie może być dowolnym regionie. Do celów organizacji można wybrać region, który reprezentuje ściśle lokalizacja komunikacji równorzędnej.
+> 
 
 > [!NOTE]
 > Po zakończeniu przenoszenia nową nazwę, która znajduje się w poprzednim poleceniu cmdlet będzie wykorzystywana do adresowania zasobów. Zasadniczo można zmienić nazwy obwodu.

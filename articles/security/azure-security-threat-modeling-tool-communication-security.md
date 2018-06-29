@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 71bbe53595f2afab50d6220f335d615ada957a85
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: c361f74147862585074f3c4475209ba6eb0c1e0c
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28019487"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029802"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Ramka zabezpieczeń: Zabezpieczenia komunikacji | Środki zaradcze 
 | Produktów i usług | Artykuł |
@@ -42,7 +42,7 @@ ms.locfileid: "28019487"
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Azure Event Hub | 
+| **Składnik**               | Centrum zdarzeń Azure | 
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -68,7 +68,7 @@ ms.locfileid: "28019487"
 | **Faza SDL**               | Wdrożenie |  
 | **Zastosowanie technologii** | Ogólny |
 | **Atrybuty**              | Typy połączonych usług - Azure i lokalnej |
-| **Odwołania**              |[Przenoszenie danych między o lokalnej i fabryki danych Azure](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway), [brama zarządzania danymi](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
+| **Odwołania**              |[ Przenoszenie danych między o lokalnej i fabryki danych Azure](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway), [brama zarządzania danymi](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
 | **Kroki** | <p>Narzędzie danych zarządzania bramy (DMG) jest wymagane do połączenia ze źródłami danych, które są chronione za corpnet lub zaporą.</p><ol><li>Blokowanie komputera izoluje narzędzia DMG i uniemożliwia nieprawidłowo programy z uszkodzenia lub śledzenie na maszynie źródłowej danych. (Np. musi być zainstalowane najnowsze aktualizacje, Włącz minimalne wymagane porty, kontrolowanego kont inicjowania obsługi administracyjnej, inspekcji włączona, szyfrowanie dysków włączone itp.)</li><li>Klucz bramy danych jest obracana odstępach częste lub gdy hasło konta usługi DMG odnawia</li><li>Tranzytu danych za pośrednictwem łącza usługi musi być zaszyfrowany.</li></ol> |
 
 ## <a id="identity-https"></a>Upewnij się, że cały ruch do tożsamości serwera jest za pośrednictwem połączenia HTTPS
@@ -146,7 +146,7 @@ Ta zasada działa zwróciła kod stanu HTTP 301 (Stałe przekierowanie) gdy uży
 | **Zastosowanie technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | [Zabezpieczenia transportu Strict HTTP OWASP Ściągawka](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
-| **Kroki** | <p>Zabezpieczenia transportu HTTP ograniczeniami (HSTS) jest ulepszeniem opcjonalnych zabezpieczeń, określonym przez aplikację sieci web przy użyciu nagłówka odpowiedzi specjalnych. Kiedy obsługiwanej przeglądarki odbiera ten nagłówek przeglądarka uniemożliwi komunikację z są wysyłane za pośrednictwem protokołu HTTP z określoną domeną i zamiast tego wyśle cała komunikacja za pośrednictwem protokołu HTTPS. Uniemożliwia także kliknij HTTPS za pomocą monity w przeglądarkach.</p><p>Aby zaimplementować HSTS, następujący nagłówek odpowiedzi musi być skonfigurowana globalnie, witryny sieci Web w w kodzie lub w pliku konfiguracyjnym. Strict —-TLS: maksymalny — wiek = 300; includeSubDomains HSTS dotyczy następujących zagrożeniami:</p><ul><li>Użytkownik zakładki lub ręcznie typy http://example.com i podlega atakująca man-in--middle: HSTS automatyczne przekierowanie żądania HTTP do HTTPS dla domeny docelowej</li><li>Aplikacja sieci Web, która powinna być całkowicie HTTPS przypadkowo zawiera łącza HTTP lub obsługują zawartość za pośrednictwem protokołu HTTP: HSTS automatyczne przekierowanie żądania HTTP do HTTPS dla domeny docelowej</li><li>Atakujący man-in--middle próbuje przechwytywać ruch od użytkownika ofiara przy użyciu nieprawidłowego certyfikatu i nadzieję, użytkownik będzie akceptować zły certyfikat: HSTS nie zezwala użytkownikowi przesłanianie komunikat nieprawidłowy certyfikat</li></ul>|
+| **Kroki** | <p>Zabezpieczenia transportu HTTP ograniczeniami (HSTS) jest ulepszeniem opcjonalnych zabezpieczeń, określonym przez aplikację sieci web przy użyciu nagłówka odpowiedzi specjalnych. Kiedy obsługiwanej przeglądarki odbiera ten nagłówek przeglądarka uniemożliwi komunikację z są wysyłane za pośrednictwem protokołu HTTP z określoną domeną i zamiast tego wyśle cała komunikacja za pośrednictwem protokołu HTTPS. Uniemożliwia także kliknij HTTPS za pomocą monity w przeglądarkach.</p><p>Aby zaimplementować HSTS, następujący nagłówek odpowiedzi musi być skonfigurowana globalnie, witryny sieci Web w w kodzie lub w pliku konfiguracyjnym. Strict —-TLS: maksymalny — wiek = 300; includeSubDomains HSTS dotyczy następujących zagrożeniami:</p><ul><li>Zakładki użytkownika, lub ręcznie typy http://example.com i podlega atakująca man-in--middle: HSTS automatyczne przekierowanie żądania HTTP do HTTPS dla domeny docelowej</li><li>Aplikacja sieci Web, która powinna być całkowicie HTTPS przypadkowo zawiera łącza HTTP lub obsługują zawartość za pośrednictwem protokołu HTTP: HSTS automatyczne przekierowanie żądania HTTP do HTTPS dla domeny docelowej</li><li>Atakujący man-in--middle próbuje przechwytywać ruch od użytkownika ofiara przy użyciu nieprawidłowego certyfikatu i nadzieję, użytkownik będzie akceptować zły certyfikat: HSTS nie zezwala użytkownikowi przesłanianie komunikat nieprawidłowy certyfikat</li></ul>|
 
 ## <a id="sqlserver-validation"></a>Upewnij się, SQL server szyfrowania i certyfikatu sprawdzania poprawności połączenia
 
@@ -288,7 +288,7 @@ namespace CertificatePinningExample
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | NET Framework 3 |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [uzyskania zawartości Królestwo](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [uzyskania zawartości Królestwo](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_transport_security_enabled) |
 | **Kroki** | Konfiguracja aplikacji powinien upewnić się, że HTTPS jest używany przez wszystkie dostęp do poufnych informacji.<ul><li>**Wyjaśnienie:** Jeśli aplikacja obsługuje poufne informacje i nie używa szyfrowania na poziomie wiadomości, a następnie powinno być dozwolone tylko do komunikacji za pośrednictwem kanału zaszyfrowanych transportu.</li><li>**ZALECENIA:** upewnij się, że transportu HTTP jest wyłączona, a zamiast tego włączyć transportu HTTPS. Na przykład zastąpić `<httpTransport/>` z `<httpsTransport/>` tagu. Nie należy polegać na konfigurację sieci (zapory), aby zagwarantować, że aplikacja jest możliwy tylko za pośrednictwem bezpiecznego kanału. Z filozoficzne punktu widzenia aplikacji nie należy uwzględniać sieci na potrzeby jego zabezpieczeń.</li></ul><p>Z praktycznego punktu widzenia osoby odpowiedzialne za zabezpieczania sieci nie zawsze Śledź wymagania dotyczące zabezpieczeń aplikacji ich ewolucji.</p>|
 
 ## <a id="message-protection"></a>WCF: Zabezpieczenia komunikatów zestawu poziom ochrony EncryptAndSign

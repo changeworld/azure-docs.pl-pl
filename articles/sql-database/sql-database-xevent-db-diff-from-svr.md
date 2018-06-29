@@ -10,12 +10,12 @@ ms.workload: On Demand
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 446c1f3af3f00fb70a230dfec5f5c533b45a285f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9c0115254fc3368868584e76ead8da812656e4d1
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650047"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028850"
 ---
 # <a name="extended-events-in-sql-database"></a>Rozszerzone zdarzenia w bazie danych SQL
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -190,7 +190,7 @@ Jeśli zostanie wyświetlony komunikat o błędzie z informacją, że maksymalna
 ## <a name="related-links"></a>Powiązane linki
 
 - [Używanie programu Azure PowerShell z usługą Azure Storage](../storage/common/storage-powershell-guide-full.md).
-- [Polecenia cmdlet usługi Azure Storage](http://msdn.microsoft.com/library/dn806401.aspx)
+- [Polecenia cmdlet usługi Azure Storage](https://docs.microsoft.com/powershell/module/Azure.Storage)
 - [Przy użyciu programu Azure PowerShell z usługą Azure Storage](../storage/common/storage-powershell-guide-full.md) — zawiera szczegółowe informacje na temat środowiska PowerShell i usługi magazynu Azure.
 - [Jak używać magazynu obiektów Blob w .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 - [CREATE CREDENTIAL (Transact-SQL)](http://msdn.microsoft.com/library/ms189522.aspx)

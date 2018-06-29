@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d65851f73ca3cc0bc85caff39b3a322900b78843
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5abd0b07037559b14158a3c314b6ca6ce30ab655
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622520"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045120"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Przekształcanie danych za pomocą działania Pig w fabryce danych Azure
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -35,7 +35,7 @@ ms.locfileid: "34622520"
 > * [Działania niestandardowe .NET](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [Przekształcanie danych za pomocą działania Pig w fabryce danych w wersji 2](../transform-data-using-hadoop-pig.md).
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [Przekształcanie danych za pomocą działania Pig w fabryce danych](../transform-data-using-hadoop-pig.md).
 
 
 Działanie HDInsight Pig w fabryce danych [potoku](data-factory-create-pipelines.md) wykonuje zapytania Pig na [własne](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) lub [na żądanie](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) klastrów HDInsight opartych na systemie Windows/Linux. W tym artykule opiera się na [działań przekształcania danych](data-factory-data-transformation-activities.md) artykułu, który przedstawia ogólny przegląd transformacji danych i działań obsługiwanych transformacji.
@@ -90,7 +90,7 @@ Działanie HDInsight Pig w fabryce danych [potoku](data-factory-create-pipelines
 | dane wejściowe |Co najmniej jeden dane wejściowe, używane na potrzeby działania Pig |Nie |
 | wyjścia |Co najmniej jeden dane wyjściowe, generowane przez działanie Pig |Yes |
 | linkedServiceName |Odwołanie do klastra usługi HDInsight zarejestrowany jako połączonej usługi z fabryki danych |Yes |
-| Skrypt |Określ wbudowanego skryptu Pig |Nie |
+| skrypt |Określ wbudowanego skryptu Pig |Nie |
 | Ścieżka skryptu |Umieść skrypt programu Pig w magazynie obiektów blob platformy Azure, a następnie podaj ścieżkę do pliku. Użyj właściwości 'script' lub "scriptPath". Nie można używać razem. Nazwa pliku jest rozróżniana wielkość liter. |Nie |
 | Definiuje |Określ parametry jako pary klucz wartość dla odwołania do skryptu Pig |Nie |
 

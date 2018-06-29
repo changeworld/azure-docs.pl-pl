@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych z Netezza przy użyciu fabryki danych Azure (wersja Beta) | Dokumentacja firmy Microsoft
+title: Kopiowanie danych z Netezza przy użyciu fabryki danych Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skopiować dane z Netezza do zbiornika obsługiwane magazyny danych za pomocą działania kopiowania w potoku fabryki danych Azure.
 services: data-factory
 documentationcenter: ''
@@ -11,24 +11,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 85a79cbbe53393bc02178cd827453508b043692e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f8c10e2200f830ea6e568e7b3fba1f0a6085cef2
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617896"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37059070"
 ---
-# <a name="copy-data-from-netezza-using-azure-data-factory-beta"></a>Kopiowanie danych z Netezza przy użyciu fabryki danych Azure (wersja Beta)
+# <a name="copy-data-from-netezza-using-azure-data-factory"></a>Kopiowanie danych z Netezza przy użyciu fabryki danych Azure 
 
 W tym artykule omówiono sposób użycia działanie kopiowania w fabryce danych Azure, aby skopiować dane z Netezza. Opiera się na [skopiuj omówienie działania](copy-activity-overview.md) artykułu, który przedstawia ogólny przegląd działanie kopiowania.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [działanie kopiowania w wersji 1](v1/data-factory-data-movement-activities.md).
-
-> [!IMPORTANT]
-> Ten łącznik jest obecnie w wersji Beta. Możesz wypróbować jej możliwości i przekaż nam swoją opinię. Nie należy używać go w środowisku produkcyjnym.
 
 ## <a name="supported-capabilities"></a>Obsługiwane możliwości
 

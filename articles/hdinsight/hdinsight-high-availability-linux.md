@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 974ed70fbda88dfcb775e021474583f7afb0576b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 835e649959164aee5cc8edb1f2e34170d8a321f1
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31404964"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046683"
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>Dostępność i niezawodność klastrów Hadoop w usłudze HDInsight
 
@@ -38,7 +38,7 @@ Węzły w klastrze usługi HDInsight są implementowane za pomocą usługi Azure
 > [!NOTE]
 > Nie wszystkie typy węzłów są używane dla typu klastra. Na przykład typ klastra usługi Hadoop nie ma żadnych węzłów Nimbus. Aby uzyskać więcej informacji na węzłach używana przez typy klastrów usługi HDInsight, zobacz sekcję typy klastrów [utworzyć Linux opartych klastrów Hadoop w usłudze HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types) dokumentu.
 
-### <a name="head-nodes"></a>HEAD węzłów
+### <a name="head-nodes"></a>Węzły główne
 
 Aby zapewnić wysoką dostępność usług Hadoop, usługa HDInsight zapewnia dwóch węzłów głównych. Obu węzłów głównych są jednocześnie aktywne i działa w klastrze usługi HDInsight. Niektóre usługi, takie jak system plików HDFS lub YARN, są tylko aktywne, w jednym węźle głównym w danym momencie. Inne usługi, takie jak serwera HiveServer2 lub na potrzeby magazynu metadanych Hive są aktywne w obu węzłów głównych w tym samym czasie.
 
@@ -51,7 +51,7 @@ Węzły HEAD (i inne węzły w usłudze HDInsight) ma wartość numeryczną jako
 
 Węzły nimbus są dostępne z klastrami Storm. Węzłów Nimbus zawiera funkcje podobne do Hadoop JobTracker za dystrybucji i monitorowania przetwarzania między węzłami procesów roboczych. HDInsight dostarcza dwóch węzłów Nimbus, w przypadku klastrów Storm
 
-### <a name="zookeeper-nodes"></a>Węzły dozorcy
+### <a name="zookeeper-nodes"></a>Węzły usługi Zookeeper
 
 [Dozorcy](http://zookeeper.apache.org/) węzły są używane do wyboru wiodące głównego usługi na węzłach głównych. Są one również używane do upewnić się, że usług, danych (proces roboczy) węzły i bram wiedzieć, które węzła głównego jest aktywny w głównej usługi. Domyślnie usługa HDInsight zapewnia trzy węzły dozorcy.
 
@@ -63,9 +63,9 @@ Węzłów procesu roboczego do wykonywania analizy danych rzeczywistych po przes
 
 Węzeł krawędzi nie aktywnie uczestniczy w analizy danych w ramach klastra. Jest on używany przez programistów i analityków danych, podczas pracy z platformą Hadoop. Węzeł brzegowy znajduje się w tej samej sieci wirtualnej Azure, co inne węzły w klastrze i można uzyskać dostęp do innych węzłów. Można użyć węzła krawędzi bez konieczności przełączania zasoby zadań analizy i krytycznych usług Hadoop.
 
-Obecnie R Server w usłudze HDInsight jest tylko typ klastra, zapewniająca węzła krawędzi domyślnie. R Server w usłudze HDInsight służy węzła krawędzi kodu testowego R lokalnie w węźle przed przesłaniem ich do klastra na potrzeby przetwarzania rozproszonego.
+Obecnie usługi uczenia Maszynowego w usłudze HDInsight jest tylko typ klastra, zapewniająca węzła krawędzi domyślnie. Dla usługi uczenia Maszynowego w usłudze HDInsight, węzeł krawędzi służy kod testu R lokalnie w węźle przed przesłaniem ich do klastra na potrzeby przetwarzania rozproszonego.
 
-Informacje o korzystaniu z węzłem krawędzi z klastra o typie innym niż serwer R, zobacz [użycia węzłów krawędzi w usłudze HDInsight](hdinsight-apps-use-edge-node.md) dokumentu.
+Uzyskać informacji o korzystaniu z węzłem krawędzi z innych typów klastra, zobacz [użycia węzłów krawędzi w usłudze HDInsight](hdinsight-apps-use-edge-node.md) dokumentu.
 
 ## <a name="accessing-the-nodes"></a>Uzyskiwanie dostępu do węzłów
 
@@ -213,7 +213,7 @@ Z poziomu interfejsu użytkownika sieci Web Ambari wybierz usługi, którą chce
 
 Rozmiar węzła można wybrać tylko podczas tworzenia klastra. Możesz znaleźć listę różnych dostępnych rozmiarów maszyny Wirtualnej dla usługi HDInsight w [cennikiem usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-Podczas tworzenia klastra, można określić rozmiaru węzłów. Poniższe informacje znajdują się wskazówki dotyczące sposobu określania przy użyciu rozmiaru [portalu Azure][preview-portal], [programu Azure PowerShell][azure-powershell]i [interfejsu wiersza polecenia Azure][azure-cli]:
+Podczas tworzenia klastra, można określić rozmiaru węzłów. Poniższe informacje znajdują się wskazówki dotyczące sposobu określania przy użyciu rozmiaru [portalu Azure][preview-portal], [programu Azure PowerShell][azure-powershell]i [Azure CLI][azure-cli]:
 
 * **Azure portal**: podczas tworzenia klastra, można ustawić rozmiar węzłów, używane przez klaster:
 

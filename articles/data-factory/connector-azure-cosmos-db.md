@@ -10,25 +10,23 @@ ms.service: multiple
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/27/2018
+ms.topic: conceptual
+ms.date: 05/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 58e1c88629c21940e09efd6832d536c0b2b47ace
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 92b45c1038fd099926360dc80802ababf0e8ee93
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052770"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Kopiowanie danych do lub z bazy danych rozwiązania Cosmos Azure przy użyciu fabryki danych Azure
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](v1/data-factory-azure-documentdb-connector.md)
-> * [Wersja 2 — wersja zapoznawcza](connector-azure-cosmos-db.md)
+> * [W wersji 1](v1/data-factory-azure-documentdb-connector.md)
+> * [Bieżąca wersja](connector-azure-cosmos-db.md)
 
 W tym artykule omówiono sposób użycia działanie kopiowania w fabryce danych Azure, aby skopiować dane z i do bazy danych Azure rozwiązania Cosmos (interfejsu API SQL). Opiera się na [skopiuj omówienie działania](copy-activity-overview.md) artykułu, który przedstawia ogólny przegląd działanie kopiowania.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [connnector bazy danych rozwiązania Cosmos Azure w wersji 1](v1/data-factory-azure-documentdb-connector.md).
 
 ## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
@@ -87,7 +85,7 @@ Aby skopiować dane z/do bazy danych Azure rozwiązania Cosmos, ustaw właściwo
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi mieć ustawioną właściwość type zestawu danych: **DocumentDbCollection** |Yes |
-| CollectionName |Nazwa kolekcji dokumentów DB rozwiązania Cosmos. |Yes |
+| collectionName |Nazwa kolekcji dokumentów DB rozwiązania Cosmos. |Yes |
 
 **Przykład:**
 
@@ -111,8 +109,8 @@ Aby skopiować dane z/do bazy danych Azure rozwiązania Cosmos, ustaw właściwo
 
 Dla magazynów danych bez schematu, takie jak bazy danych Azure rozwiązania Cosmos działanie kopiowania wnioskuje schemat w jednym z następujących sposobów. W związku z tym chyba że chcesz [importu/eksportu dokumentów JSON jako — jest](#importexport-json-documents), najlepszym rozwiązaniem jest zdefiniowanie struktury danych w **struktury** sekcji.
 
-1. Jeśli określisz struktury danych za pomocą **struktury** tej struktury Schema honoruje właściwości w definicji zestawu danych, usługi fabryka danych. W takim przypadku wiersza nie zawiera wartości dla kolumny, będzie należy podać dla niego wartość null.
-2. Jeśli nie określisz struktury danych za pomocą **struktury** właściwości w definicji zestawu danych, usługi fabryka danych z wnioskuje schemat za pomocą pierwszego wiersza w danych. W takim przypadku jeśli pierwszy wiersz zawiera pełną schematu, niektóre kolumny będą niedostępne w wyniku operacji kopiowania.
+*. Jeśli określisz struktury danych za pomocą **struktury** tej struktury Schema honoruje właściwości w definicji zestawu danych, usługi fabryka danych. W takim przypadku wiersza nie zawiera wartości dla kolumny, będzie należy podać dla niego wartość null.
+*. Jeśli nie określisz struktury danych za pomocą **struktury** właściwości w definicji zestawu danych, usługi fabryka danych z wnioskuje schemat za pomocą pierwszego wiersza w danych. W takim przypadku jeśli pierwszy wiersz zawiera pełną schematu, niektóre kolumny będą niedostępne w wyniku operacji kopiowania.
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
@@ -210,8 +208,8 @@ Korzystając z tego łącznika DB rozwiązania Cosmos, można łatwo
 
 Do osiągnięcia tych kopii niezależny od schematu:
 
-- W bazie danych rozwiązania Cosmos zestawów danych, nie zostanie określony w sekcji "structure"; a w przypadku działania kopiowania DB rozwiązania Cosmos źródło/ujście, nie określono właściwości "nestingSeparator".
-- Podczas importowania z / eksportowanie do pliki JSON w odpowiedniego pliku magazynu zestawu danych, określ typ formatu jako "JsonFormat" i konfiguracji "filePattern" prawidłowo (zobacz [formatu JSON](supported-file-formats-and-compression-codecs.md#json-format) sekcji, aby uzyskać szczegółowe informacje), następnie należy określać struktury" "sekcji i Pomiń pozostałe ustawienia formatu.
+* Gdy narzędzie kopii danych i sprawdź **"wyeksportować w postaci-ma pliki w formacie JSON lub kolekcji rozwiązania Cosmos bazy danych"** opcji.
+* Podczas tworzenia działania nie określać w sekcji "structure" (alias schemat) w opublikowanych DB rozwiązania Cosmos ani właściwości "nestingSeparator" dla bazy danych rozwiązania Cosmos źródło/ujście w przypadku działania kopiowania. Podczas importowania z / eksportowanie do pliki JSON w odpowiedniego pliku magazynu zestawu danych, określ typ formatu jako "JsonFormat" i konfiguracji "filePattern" prawidłowo (zobacz [formatu JSON](supported-file-formats-and-compression-codecs.md#json-format) sekcji, aby uzyskać szczegółowe informacje), następnie należy określać struktury" "(alias schemat) sekcji i Pomiń pozostałe ustawienia formatu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Lista magazynów danych obsługiwane jako źródła i wychwytywanie przez działanie kopiowania w fabryce danych Azure, zobacz [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).

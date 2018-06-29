@@ -12,22 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: ea83701e834895b09faf8eb6602bd342b648ec37
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4c2bf83fec3d8f961a84523365e4a98fe3bf7603
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620208"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052371"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Przekształcanie danych za pomocą działaniu przesyłania strumieniowego usługi Hadoop w usłudze fabryka danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](v1/data-factory-hadoop-streaming-activity.md)
-> * [Wersja 2 — wersja zapoznawcza](transform-data-using-hadoop-streaming.md)
+> * [W wersji 1](v1/data-factory-hadoop-streaming-activity.md)
+> * [Bieżąca wersja](transform-data-using-hadoop-streaming.md)
 
 HDInsight działaniu przesyłania strumieniowego w fabryce danych [potoku](concepts-pipelines-activities.md) wykonuje programy przesyłania strumieniowego usługi Hadoop na [własne](compute-linked-services.md#azure-hdinsight-linked-service) lub [na żądanie](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) klastra usługi HDInsight. W tym artykule opiera się na [działań przekształcania danych](transform-data.md) artykułu, który przedstawia ogólny przegląd transformacji danych i działań obsługiwanych transformacji.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [działaniu przesyłania strumieniowego usługi Hadoop w wersji 1](v1/data-factory-hadoop-streaming-activity.md).
 
 Jeśli jesteś nowym użytkownikiem usługi fabryka danych Azure, zapoznaj się z artykułem [wprowadzenie do fabryki danych Azure](introduction.md) i [samouczek: przekształcania danych](tutorial-transform-data-spark-powershell.md) przed przeczytaniem tego artykułu. 
 
@@ -86,7 +83,7 @@ Jeśli jesteś nowym użytkownikiem usługi fabryka danych Azure, zapoznaj się 
 | wejście             | Określa ścieżkę WASB do pliku wejściowego dla mapowania. | Yes      |
 | output            | Określa reduktor WASB ścieżka do pliku wyjściowego. | Yes      |
 | getDebugInfo      | Określa, kiedy pliki dziennika są kopiowane do magazynu Azure używanego przez klaster usługi HDInsight (lub) określony przez element scriptLinkedService. Dozwolone wartości: None, zawsze lub niepowodzenie. Wartość domyślna: Brak. | Nie       |
-| Argumenty         | Określa tablicę argumentów dla zadania usługi Hadoop. Argumenty są przekazywane jako argumenty wiersza polecenia do każdego zadania. | Nie       |
+| argumenty         | Określa tablicę argumentów dla zadania usługi Hadoop. Argumenty są przekazywane jako argumenty wiersza polecenia do każdego zadania. | Nie       |
 | Definiuje           | Określ parametry jako pary klucz wartość dla odwołania do skryptu Hive. | Nie       | 
 
 ## <a name="next-steps"></a>Kolejne kroki

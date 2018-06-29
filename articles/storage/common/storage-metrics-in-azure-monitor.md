@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 09/05/2017
 ms.author: fryu
-ms.openlocfilehash: b1d82f9b527a62109e0301907b87bd683f9912af
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 05021d5ab8d33e36bff16ce7d2ebacd3db72639a
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37036039"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metryki usługi Azure Storage w usłudze Azure Monitor
 
@@ -38,7 +39,7 @@ Można monitorować metryki wraz z upływem czasu, w portalu Azure. Poniższy pr
 
 ![Zrzut ekranu przedstawiający dostęp do metryk w portalu Azure](./media/storage-metrics-in-azure-monitor/access-metrics-in-portal.png)
 
-Dla metryki pomocnicze, wymiary możesz filtrować z żądaną wartością. Poniższy przykład przedstawia sposób wyświetlania **transakcji** na poziomie konta z **Powodzenie** typ odpowiedzi.
+Metryki pomocnicze, wymiary można filtrować Metryka z żądaną wartością. Poniższy przykład przedstawia sposób wyświetlania **transakcji** na poziomie konta na określonej operacji po wybraniu wartości dla **Nazwa interfejsu API** wymiaru.
 
 ![Zrzut ekranu przedstawiający dostęp do metryk z wymiarem w portalu Azure](./media/storage-metrics-in-azure-monitor/access-metrics-in-portal-with-dimension.png)
 
@@ -317,7 +318,7 @@ Poniżej przedstawiono format Określ identyfikator ID zasobu dla każdej z usł
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/queueServices/default
 `
 * Identyfikator zasobu usługi plików `
-/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/fileServices/default
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/default
 `
 
 ### <a name="resource-id-in-azure-monitor-rest-api"></a>Identyfikator zasobu w monitorze Azure interfejsu API REST
@@ -402,6 +403,12 @@ Metryki wymiarów pomocnicze należy określić wartość wymiaru, aby wyświetl
 ## <a name="service-continuity-of-legacy-metrics"></a>Ciągłość usługi starszych metryk
 
 Metryki starszej wersji są dostępne równolegle z metryki Monitor Azure zarządzanych. Obsługa utrzymuje takie same, aż do usługi Azure Storage kończy się usługę w starszych metryki.
+
+## <a name="faq"></a>Często zadawane pytania
+
+**Usługi Azure Storage obsługuje metryki dla dysków zarządzane lub niezarządzane dysków?**
+
+Nie, rozwiązań usługi obliczenia Azure obsługuje metryki na dyskach. Zobacz [artykułu](https://azure.microsoft.com/en-us/blog/per-disk-metrics-managed-disks/) więcej szczegółów.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
-ms.openlocfilehash: 06fd2f3ef4a17c5626afc95ed8ae5999778ebda6
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 24b20766997a9a41956f575f6cab8ee5ef0d9e25
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293164"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37036476"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Tworzenie wyrażeń na potrzeby mapowań atrybutów w usłudze Azure Active Directory
 Po skonfigurowaniu udostępniania do aplikacji SaaS, jest jeden z typów mapowań atrybutów, które można określić mapowanie wyrażenia. W tym przypadku należy napisać wyrażenie przypominającej skryptu, które pozwala na przekształcanie danych użytkowników do formatów, które są bardziej dozwolone dla aplikacji SaaS.
@@ -37,7 +37,7 @@ Składnia wyrażeń dla mapowań atrybutów jest przypominający Visual Basic dl
 * Dla stałe typu string Jeśli potrzebujesz ukośnik odwrotny (\) lub cudzysłowu (") w ciągu go należy użyć znaków ucieczki ze znakiem ukośnika odwrotnego (\\). Na przykład: "Nazwa firmy: \"Contoso\""
 
 ## <a name="list-of-functions"></a>Lista funkcji
-[Dołącz](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [Join](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; [nie](#not) &nbsp; &nbsp; &nbsp; &nbsp; [Zastąp](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [przełącznika](#switch)
+[Dołącz](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [Join](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [nie](#not) &nbsp; &nbsp; &nbsp; &nbsp; [Zastąp](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Przełącznika](#switch)
 
 - - -
 ### <a name="append"></a>Append
@@ -96,7 +96,19 @@ Jeśli jedna z wartości źródła jest atrybutu wielowartościowego, każda war
 | **długość** |Wymagane |liczba całkowita |Długość podciąg. Jeśli długość kończy się poza **źródła** ciągu, funkcja zwraca podciąg z **start** indeksu do końca **źródła** ciągu. |
 
 - - -
-### <a name="not"></a>nie
+### <a name="normalizediacritics"></a>NormalizeDiacritics
+**Funkcja:**<br> NormalizeDiacritics(source)
+
+**Opis:**<br> Wymaga jednego argumentu ciągu. Zwraca ciąg, ale z znaków diakrytycznych zastępowane znakami diakrytycznych równoważne. Zwykle służący do konwertowania imiona i nazwiska zawierające znaków diakrytycznych (znaki akcentu) do wartości prawne, których można użyć w różnych identyfikatorach użytkownika, takich jak nazwy główne użytkowników, nazwy konta SAM i adresów e-mail.
+
+**Parametry:**<br> 
+
+| Name (Nazwa) | Wymagane / powtarzanej | Typ | Uwagi |
+| --- | --- | --- | --- |
+| **source** |Wymagane |Ciąg | Zazwyczaj imię lub ostatniego atrybutu name |
+
+- - -
+### <a name="not"></a>Nie
 **Funkcja:**<br> Not(Source)
 
 **Opis:**<br> Odwraca wartość logiczną **źródła**. Jeśli **źródła** wartość to "*True*", zwraca "*False*". W przeciwnym razie zwraca wartość "*True*".
@@ -129,7 +141,6 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametry podane:
   * Jeśli **źródła** ma wartość, używa **regexPattern** i **regexGroupName** można wyodrębnić wartość zastępcza z właściwości z **replacementPropertyName** . Zastąpienie wartości jest zwracana w wyniku
 
 **Parametry:**<br> 
-
 | Name (Nazwa) | Wymagane / powtarzanej | Typ | Uwagi |
 | --- | --- | --- | --- |
 | **source** |Wymagane |Ciąg |Zazwyczaj nazwa atrybutu z obiektem źródłowym. |
@@ -144,7 +155,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametry podane:
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
 **Funkcja:**<br> SingleAppRoleAssignment([appRoleAssignments])
 
-**Opis:**<br> Zwraca pojedynczy appRoleAssignment z listy wszystkich appRoleAssignments przypisana do użytkownika dla danej aplikacji. Ta funkcja jest wymagana do konwertowania appRoleAssignments obiektu na ciąg nazwy jedną rolę. Należy pamiętać, że najlepszym rozwiązaniem jest zapewnienie appRoleAssignment tylko jeden jest przypisany do jednego użytkownika w czasie, a jeśli wiele ról są przypisane zwrócony ciąg roli może nie być przewidywalne.
+**Opis:**<br> Wymaga jednego argumentu ciągu. Zwraca ciąg, z dowolnego repalced znaków diakrytycznych znakami diakrytycznych równoważne.
 
 **Parametry:**<br> 
 
@@ -162,7 +173,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametry podane:
 
 | Name (Nazwa) | Wymagane / powtarzanej | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **source** |Wymagane |Ciąg |**Źródło** wartość do aktualizacji. |
+| **source** |Wymagane |Ciąg |**źródło** wartość do aktualizacji. |
 
 - - -
 ### <a name="switch"></a>Przełącznik
@@ -215,16 +226,16 @@ Należy wygenerować użytkownika alias przez pierwsze 3 litery imię użytkowni
 * **Dane wejściowe** (nazwisko): "Nowak"
 * **Dane wyjściowe**: "JohDoe"
 
-### <a name="remove-diacritics-from-a-string-and-convert-to-lowercase"></a>Usuń z ciągu znaków diakrytycznych i przekonwertować na małe litery.
-Należy usunąć znaki specjalne z ciągu i przekonwertować wielkich liter na małe litery.
+### <a name="remove-diacritics-from-a-string"></a>Usuwanie znaków diakrytycznych z ciągu
+Należy zastąpić znaki, zawierające znaki akcentu równoważne znaków, które nie zawierają znaki akcentu.
 
 **Wyrażenie:** <br>
-`Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace([givenName], , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])", , "m", , ), , "([ñńňÑŃŇN])", , "n", , ), , "([öòőõôóÖÒŐÕÔÓO])", , "o", , ), , "([P])", , "p", , ), , "([Q])", , "q", , ), , "([řŘR])", , "r", , ), , "([ßšśŠŚS])", , "s", , ), , "([TŤť])", , "t", , ), , "([üùûúůűÜÙÛÚŮŰU])", , "u", , ), , "([V])", , "v", , ), , "([W])", , "w", , ), , "([ýÿýŸÝY])", , "y", , ), , "([źžżŹŽŻZ])", , "z", , ), " ", , , "", , )`
+NormalizeDiacritics([givenName])
 
 **Próba wejścia/wyjścia:** <br>
 
 * **Dane wejściowe** (imię): "Zoë"
-* **Dane wyjściowe**: "zoe"
+* **Dane wyjściowe**: "Zoe"
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>Dane wyjściowe daty w postaci ciągu w określonym formacie
 Chcesz wysłać daty do aplikacji SaaS w określonym formacie. <br>
@@ -259,5 +270,5 @@ Jeśli kod stanu nie odpowiada żadnemu z wstępnie zdefiniowanych opcji, należ
 * [Filtry zakresu dla Inicjowanie obsługi użytkowników](active-directory-saas-scoping-filters.md)
 * [Włączanie automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji przy użyciu SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Powiadomienia aprowizacji kont](active-directory-saas-account-provisioning-notifications.md)
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS](active-directory-saas-tutorial-list.md)
+* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS](saas-apps/tutorial-list.md)
 

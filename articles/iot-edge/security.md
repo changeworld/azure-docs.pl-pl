@@ -8,23 +8,20 @@ ms.date: 10/05/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: effe33182435d2a4afbad3356c6840070ba96325
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f198efe9ff5e4862a3bbe872ab50e5848c9dbb5c
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631432"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030584"
 ---
-# <a name="securing-azure-iot-edge---preview"></a>Zabezpieczanie krawędzi IoT Azure — wersja zapoznawcza
+# <a name="securing-azure-iot-edge"></a>Zabezpieczanie krawędzi IoT Azure
 
 Zabezpieczanie inteligentnego krawędzi jest przyznanie zaufania w ramach operacji kompleksowe rozwiązania IoT. Usługa Azure IoT krawędzi jest przeznaczona dla zabezpieczeń jest rozszerzony do różnych ryzyka profilów, scenariusze wdrażania i oferuje takiej samej ochronie, która oczekuje od wszystkich usług platformy Azure.
 
 Krawędź IoT Azure działa na inny komputer obsługuje zarówno systemu Linux i Windows i ma zastosowanie do różnych wdrożeń.  Oceny ryzyka zależy od wielu zagadnienia, w tym własność rozwiązania, geography wdrożenia, wrażliwości danych, ochrony prywatności, pionowe i przepisami wymagań aplikacji.  Zamiast oferty konkretnego rozwiązania konkretnych scenariuszy, warto projektowania framework extensible zabezpieczeń opartych na zasadach dobrze uziemionych przeznaczone do skalowania. 
  
 Ten artykuł zawiera omówienie przez strukturę zabezpieczeń. Aby uzyskać więcej informacji, zobacz [zabezpieczanie inteligentnego krawędzi][lnk-edge-blog].
-
->[!NOTE]
->Przez strukturę zabezpieczeń opisanych poniżej jest teraz dodać do produktu i będzie dostępna w wersji ogólnodostępnej Azure IoT krawędzi. Produkt jest obecnie w publicznej wersji zapoznawczej, zlecenia ma umożliwić projektowanie i tworzenie prototypów rozwiązań edge, wdrożeń produkcyjnych nie jest zapełniona, wymagające framework pełne zabezpieczenia.   
 
 ## <a name="standards"></a>Standardy
 

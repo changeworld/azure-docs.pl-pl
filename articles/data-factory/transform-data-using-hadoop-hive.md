@@ -12,22 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: ad5c2335af95f15faf8e4df20cc992186aee394e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fc7c2c49de582a413b49d31c4b4e062d81e5e6ae
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620973"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051328"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Przekształcanie danych za pomocą działania usługi Hadoop Hive w fabryce danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](v1/data-factory-hive-activity.md)
-> * [Wersja 2 — wersja zapoznawcza](transform-data-using-hadoop-hive.md)
+> * [W wersji 1](v1/data-factory-hive-activity.md)
+> * [Bieżąca wersja](transform-data-using-hadoop-hive.md)
 
 Działanie HDInsight Hive w fabryce danych [potoku](concepts-pipelines-activities.md) wykonuje zapytania Hive na [własne](compute-linked-services.md#azure-hdinsight-linked-service) lub [na żądanie](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) klastra usługi HDInsight. W tym artykule opiera się na [działań przekształcania danych](transform-data.md) artykułu, który przedstawia ogólny przegląd transformacji danych i działań obsługiwanych transformacji.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [Hive działania w wersji 1](v1/data-factory-hive-activity.md).
 
 Jeśli jesteś nowym użytkownikiem usługi fabryka danych Azure, zapoznaj się z artykułem [wprowadzenie do fabryki danych Azure](introduction.md) i [samouczek: przekształcania danych](tutorial-transform-data-spark-powershell.md) przed przeczytaniem tego artykułu. 
 
@@ -68,7 +65,7 @@ Jeśli jesteś nowym użytkownikiem usługi fabryka danych Azure, zapoznaj się 
 | scriptLinkedService | Odwołanie do połączonej usługi magazynu Azure są używane do przechowywania skryptu Hive. Jeśli nie określisz tej połączonej usługi, usługi połączonej magazynu Azure, zdefiniowane w połączonej usłudze HDInsight jest używany. | Nie       |
 | scriptPath          | Podaj ścieżkę do pliku skryptu przechowywanych w magazynie Azure odwołuje się element scriptLinkedService. Nazwa pliku jest rozróżniana wielkość liter. | Yes      |
 | getDebugInfo        | Określa, kiedy pliki dziennika są kopiowane do magazynu Azure używanego przez klaster usługi HDInsight (lub) określony przez element scriptLinkedService. Dozwolone wartości: None, zawsze lub niepowodzenie. Wartość domyślna: Brak. | Nie       |
-| Argumenty           | Określa tablicę argumentów dla zadania usługi Hadoop. Argumenty są przekazywane jako argumenty wiersza polecenia do każdego zadania. | Nie       |
+| argumenty           | Określa tablicę argumentów dla zadania usługi Hadoop. Argumenty są przekazywane jako argumenty wiersza polecenia do każdego zadania. | Nie       |
 | Definiuje             | Określ parametry jako pary klucz wartość dla odwołania do skryptu Hive. | Nie       |
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 9a8e0154faccca356c7fb8ce93e43ce67cc0aae2
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 3fae9390b41d12361b820e2c37601283b37bc302
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28019589"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031716"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>Ramka zabezpieczeń: Zarządzanie wyjątkami | Środki zaradcze 
 | Produktów i usług | Artykuł |
 | --------------- | ------- |
 | **WCF** | <ul><li>[Usługi WCF - nie zawiera węzła serviceDebug w pliku konfiguracji](#servicedebug)</li><li>[Usługi WCF - nie zawiera węzła serviceMetadata w pliku konfiguracji](#servicemetadata)</li></ul> |
-| **Interfejs API sieci Web** | <ul><li>[Upewnij się, że odpowiednich wyjątków odbywa się w interfejsie API sieci Web ASP.NET](#exception)</li></ul> |
-| **Aplikacja sieci Web** | <ul><li>[Nie ujawniaj szczegóły zabezpieczeń w komunikatach o błędach](#messages)</li><li>[Implementowanie obsługi strony błędów domyślne](#default)</li><li>[Ustaw metody wdrażania na wersję handlową w usługach IIS](#deployment)</li><li>[Wyjątki powinna zakończyć się niepowodzeniem bezpiecznie](#fail)</li></ul> |
+| **Interfejs API sieci Web** | <ul><li>[Upewnij się, że odpowiednich wyjątków odbywa się w interfejsie API sieci Web ASP.NET ](#exception)</li></ul> |
+| **Aplikacja sieci Web** | <ul><li>[Nie ujawniaj szczegóły zabezpieczeń w komunikatach o błędach ](#messages)</li><li>[Implementowanie obsługi strony błędów domyślne ](#default)</li><li>[Ustaw metody wdrażania na wersję handlową w usługach IIS](#deployment)</li><li>[Wyjątki powinna zakończyć się niepowodzeniem bezpiecznie](#fail)</li></ul> |
 
 ## <a id="servicedebug"></a>Usługi WCF - nie zawiera węzła serviceDebug w pliku konfiguracji
 
@@ -36,7 +36,7 @@ ms.locfileid: "28019589"
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | Ogólny, NET Framework 3 |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [uzyskania zawartości Królestwo](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [uzyskania zawartości Królestwo](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_debug_information) |
 | **Kroki** | Usług Windows Communication Framework (WCF) można skonfigurować w celu ujawnienie informacji debugowania. Debugowanie informacji nie powinna być używana w środowisku produkcyjnym. `<serviceDebug>` Tagów Określa, czy dla usługi WCF jest włączona funkcja informacji debugowania. Jeśli includeExceptionDetailInFaults atrybut ma ustawioną wartość true, informacje o wyjątku z aplikacji, zostanie zwrócony do klientów. Osoby atakujące mogą korzystać z dodatkowych informacji, które będą mogli z debugowania dane wyjściowe można zainstalować ataków ukierunkowanych na platformę, bazy danych lub inne zasoby używane przez aplikację. |
 
 ### <a name="example"></a>Przykład
@@ -60,7 +60,7 @@ Wyłącz informacji o debugowaniu w usłudze. Można to zrobić przez usunięcie
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | Ogólny |
 | **Atrybuty**              | Ogólny, NET Framework 3 |
-| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [uzyskania zawartości Królestwo](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [uzyskania zawartości Królestwo](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_service_enumeration) |
 | **Kroki** | Publicznie udostępnianie informacji na temat usługi umożliwia atakującym cenny wgląd w jaki sposób może wykorzystać usługę. `<serviceMetadata>` Tag włącza funkcję publikowania metadanych. Metadane usługi mogą zawierać poufne informacje, które nie powinny być publicznie dostępne. Co najmniej Zezwalaj tylko przez zaufanych użytkowników dostępu do metadanych i upewnij się, że niepotrzebnych informacji nie jest uwidaczniana. Jeszcze lepiej całkowicie wyłączyć publikowanie metadanych. Bezpieczne konfiguracji usługi WCF nie będą zawierać `<serviceMetadata>` tagu. |
 
 ## <a id="exception"></a>Upewnij się, że odpowiednich wyjątków odbywa się w interfejsie API sieci Web ASP.NET
@@ -72,7 +72,7 @@ Wyłącz informacji o debugowaniu w usłudze. Można to zrobić przez usunięcie
 | **Zastosowanie technologii** | MVC 5, MVC 6 |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | [Obsługa wyjątków w ASP.NET Web API](http://www.asp.net/web-api/overview/error-handling/exception-handling), [modelu weryfikacji w składniku ASP.NET Web API](http://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
-| **Kroki** | Domyślnie większość nieprzechwyconych wyjątków w interfejsie API sieci Web platformy ASP.NET są przetłumaczyć z kodem stanu odpowiedzi HTTP`500, Internal Server Error`|
+| **Kroki** | Domyślnie większość nieprzechwyconych wyjątków w interfejsie API sieci Web platformy ASP.NET są przetłumaczyć z kodem stanu odpowiedzi HTTP `500, Internal Server Error`|
 
 ### <a name="example"></a>Przykład
 Aby kontrolować kod stanu zwrócony przez interfejs API, `HttpResponseException` można w sposób przedstawiony poniżej: 

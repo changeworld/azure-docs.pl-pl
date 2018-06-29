@@ -13,19 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: f30b749d40cd2628ca6539d962d5a1153cd3e7c2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0141694b87664a83872f7b270631d454f863d5a8
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618528"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046170"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Jeśli warunek działania w fabryce danych Azure
 Działanie If Condition pełni taką samą rolę, co instrukcja if w językach programowania. Powoduje ono obliczenie zestawu działań, gdy warunek zostanie obliczony na wartość `true`, oraz innego zestawu działań, gdy warunek zostanie obliczony na wartość `false`. 
-
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [dokumentacji V1 fabryki danych](v1/data-factory-introduction.md).
 
 ## <a name="syntax"></a>Składnia
 
@@ -73,7 +69,7 @@ Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
 name | Nazwa działania, jeśli warunek. | Ciąg | Yes
 type | Należy wybrać opcję **IfCondition** | Ciąg | Yes
-wyrażenie | Wyrażenie musi zwrócić wartość true lub false | Yes
+Wyrażenie | Wyrażenie musi zwrócić wartość true lub false | Yes
 ifTrueActivities | Zestaw działań, które są wykonywane, gdy wyrażenie ma `true`. | Yes
 ifFalseActivities | Zestaw działań, które są wykonywane, gdy wyrażenie ma `false`. | Yes
 

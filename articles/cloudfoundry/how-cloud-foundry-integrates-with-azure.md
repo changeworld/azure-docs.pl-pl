@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: 1f4afbe1849210c55c392d014449224f2fe97b04
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0959617185694d48c593996d5cd8c836098dd1cd
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655468"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062210"
 ---
-# <a name="integrate-cloud-foundry-with-azure"></a>Integracja Foundry chmury platformy Azure
+# <a name="integrate-cloud-foundry-with-azure"></a>Integracja usługi Cloud Foundry z platformą Azure
 
 [Chmury Foundry](https://docs.cloudfoundry.org/) to platforma PaaS uruchomiony na górze dostawców chmury IaaS platformy. Oferuje środowisko wdrażania aplikacji spójne przez dostawców chmury. Ponadto on również integrować z różnymi usługami platformy Azure z klasy enterprise wysokiej dostępności, skalowalności i oszczędności.
 Brak [6 podsystemami Foundry chmury](https://docs.cloudfoundry.org/concepts/architecture/), które mogą być elastycznie skali w trybie online, łącznie z: routingu, uwierzytelnianie, Zarządzanie cyklem życia aplikacji, zarządzanie usługą obsługi wiadomości i monitorowania. Dla każdego z podsystemów można skonfigurować Foundry chmury mogą korzystać z korespondenta usługi Azure. 
@@ -81,7 +81,7 @@ Gdy F i wirtualna D serii często były zalecane w środowisku produkcyjnym kluc
 #### <a name="managed-standard-disk"></a>Dysków zarządzanych w warstwie standardowa: 
 Dyski Premium zostały zalecane niezawodnej wydajności w środowisku produkcyjnym.  Z [zarządzane dysku](https://azure.microsoft.com/services/managed-disks/), standardowy magazyn może również udostępniać podobne niezawodności, wydajności różnych. Dla obciążenia, który nie jest zależne od wydajności, takich jak tworzenie/testowanie oprogramowania lub niekrytyczne środowiska zarządzanego dyski standardowe mają alternatywnych opcji z niższym kosztem.  
 ### <a name="cost-saving-in-general"></a>Ogólnie rzecz biorąc obniżenie kosztów 
-#### <a name="significant-vm-cost-saving-with-reserved-instances"></a>Wirtualna znaczących oszczędność wystąpieniami zastrzeżone: 
+#### <a name="significant-vm-cost-saving-with-reserved-instances"></a>Znaczne wirtualna koszt zapisywanie wystąpieniami zastrzeżone: 
 Obecnie wszystkie CF maszyny wirtualne są rozliczane za pomocą cenach "na żądanie", mimo że tych środowisk zwykle Pozostań na górę nieskończoność. Można teraz wydajność maszyny Wirtualnej rezerwowa termin, 1 lub rok 3 oraz uzyskać rabaty 45 65%. Rabaty są stosowane w systemie rozliczeń, bez żadnych zmian w danym środowisku. Aby uzyskać więcej informacji, zobacz [jak zastrzeżone działa wystąpień](https://azure.microsoft.com/pricing/reserved-vm-instances/). 
 #### <a name="managed-premium-disk-with-smaller-sizes"></a>Zarządzane Premium dysku o rozmiarze mniejszym: 
 Zarządzane dyski obsługi mniejsze rozmiary dysku, na przykład P4(32 GB) i P6(64 GB) dla premium i standardowa dysków. Jeśli masz obciążeń małymi można zapisać koszt podczas migracji z dysków premium standardowych dysków zarządzanych w warstwie premium.

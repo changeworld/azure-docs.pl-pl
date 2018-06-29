@@ -13,21 +13,21 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d0826db686b7fdea8389944b4b56f549ea03f751
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5cfab02fc248139c76bd6123ac942832f8e1a21a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621051"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052515"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Dodaj odporność na uszkodzenia w przypadku działania kopiowania przez pominięcie niezgodne wierszy
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](data-factory-copy-activity-fault-tolerance.md)
-> * [Wersja 2 — wersja zapoznawcza](../copy-activity-fault-tolerance.md)
+> * [W wersji 1](data-factory-copy-activity-fault-tolerance.md)
+> * [W wersji 2 (bieżąca wersja)](../copy-activity-fault-tolerance.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [odporność na uszkodzenia w przypadku działania kopiowania fabryki danych w wersji 2](../copy-activity-fault-tolerance.md).
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [odporność na uszkodzenia w przypadku działania kopiowania fabryki danych](../copy-activity-fault-tolerance.md).
 
 Fabryka danych Azure [działanie kopiowania](data-factory-data-movement-activities.md) oferuje obsługi niezgodne wierszy, gdy kopiowanie danych między źródłowy i odbiorczy magazynów danych na dwa sposoby:
 

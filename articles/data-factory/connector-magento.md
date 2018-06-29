@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych z Magento przy użyciu fabryki danych Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+title: Kopiowanie danych z Magento przy użyciu fabryki danych Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skopiować dane z Magento do zbiornika obsługiwane magazyny danych za pomocą działania kopiowania w potoku fabryki danych Azure.
 services: data-factory
 documentationcenter: ''
@@ -13,19 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: fc37b9f678a9864ba5c2a79bd1544d0082275b89
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: cdea8b6f24673186e3a3d2b44183b2c622aaaf41
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337849"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047177"
 ---
-# <a name="copy-data-from-magento-using-azure-data-factory-preview"></a>Kopiowanie danych z Magento przy użyciu fabryki danych Azure (wersja zapoznawcza)
+# <a name="copy-data-from-magento-using-azure-data-factory"></a>Kopiowanie danych z Magento przy użyciu fabryki danych Azure
 
 W tym artykule omówiono sposób użycia działanie kopiowania w fabryce danych Azure, aby skopiować dane z Magento. Opiera się na [skopiuj omówienie działania](copy-activity-overview.md) artykułu, który przedstawia ogólny przegląd działanie kopiowania.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [działanie kopiowania w wersji 1](v1/data-factory-data-movement-activities.md).
 
 > [!IMPORTANT]
 > Ten łącznik jest obecnie w przeglądzie. Możesz wypróbować jej możliwości i przekaż nam swoją opinię. Jeśli w swoim rozwiązaniu chcesz wprowadzić zależność od łączników w wersji zapoznawczej, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/).

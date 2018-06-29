@@ -13,18 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: e9d2140edc64daca4df0463dbfdcd5b06f072012
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cca9befb65abed3b6d07a52aa286c43725577121
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620412"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051750"
 ---
 # <a name="azure-data-factory---naming-rules"></a>Fabryka danych Azure - reguły nazewnictwa
 W poniższej tabeli przedstawiono reguły nazewnictwa artefaktów fabryki danych.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [reguły w fabryce danych version1 nazewnictwa](v1/data-factory-naming-rules.md).
 
 | Name (Nazwa) | Name Uniqueness | Sprawdzanie poprawności |
 |:--- |:--- |:--- |

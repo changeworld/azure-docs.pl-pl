@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ebd8abf8c34be1fa6fcd282c9bfbc63d81a56239
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6330854f4ee9b2db1597d916c815bb6646da6a29
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621136"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052753"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Kreator kopiowania fabryki danych Azure
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). 
+> Ten artykuł dotyczy wersji 1 fabryki danych. 
 
 Kreator kopiowania fabryki danych Azure ułatwia proces wprowadzania danych, który zazwyczaj jest to pierwszy krok w scenariuszu integracji danych na całej trasie. Podczas przechodzenia za pomocą Kreatora kopiowania fabryki danych Azure, nie należy zrozumieć żadnych definicji JSON połączonej usługi, zestawy danych i potoki. Kreator automatycznie tworzy potoku można skopiować danych z wybranego źródła danych do wybranej lokalizacji docelowej. Ponadto Kreator kopiowania pomaga sprawdzić poprawności danych jest pozyskanych w czasie tworzenia. Pozwala to zaoszczędzić czas, szczególnie gdy użytkownik są pobierania danych po raz pierwszy ze źródła danych. Aby uruchomić Kreatora kopiowania, kliknij przycisk **skopiować dane** kafelka na stronie głównej w fabryce danych.
 
@@ -33,7 +33,7 @@ Kreator kopiowania fabryki danych Azure ułatwia proces wprowadzania danych, kt�
 ## <a name="designed-for-big-data"></a>Przeznaczone dla danych big data
 Ten kreator pozwala łatwo przenosić dane z różnych źródeł do miejsc docelowych w minutach. Po przejściu w Kreatorze potoku z działaniem kopiowania jest tworzony automatycznie, oraz jednostki zależne fabryki danych (połączonych usług i zestawy danych). Żadne dodatkowe kroki są wymagane do utworzenia potoku.   
 
-![Wybierz źródło danych](./media/data-factory-copy-wizard/select-data-source-page.png)
+![Wybieranie źródła danych](./media/data-factory-copy-wizard/select-data-source-page.png)
 
 > [!NOTE]
 > Aby uzyskać instrukcje utworzyć potok próbki można skopiować danych z platformy Azure blob do tabeli bazy danych SQL Azure, zobacz [Samouczek Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md).
@@ -67,7 +67,7 @@ Poniższy zrzut ekranu przedstawia zapytania SQL za pomocą `Text.Format` funkcj
 ![Sprawdzanie poprawności wyrażenia](./media/data-factory-copy-wizard/validate-expressions.png)
 
 ### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Filtrowanie danych w folderze obiektów blob platformy Azure
-Zmienne w ścieżce folderu służy do kopiowania danych z folderu, który jest określana w czasie wykonywania na podstawie [zmienne systemowe](data-factory-functions-variables.md#data-factory-system-variables). Są obsługiwane zmienne: **{year}**, **{month}**, **{day}**, **{godzina}**, **{minutę}**, i **{niestandardowych}**. Na przykład: inputfolder / {year} / {month} / {day}.
+Zmienne w ścieżce folderu służy do kopiowania danych z folderu, który jest określana w czasie wykonywania na podstawie [zmienne systemowe](data-factory-functions-variables.md#data-factory-system-variables). Są obsługiwane zmienne: **{year}**, **{month}**, **{day}**, **{godzina}**, **{minutę}** i **{niestandardowych}**. Na przykład: inputfolder / {year} / {month} / {day}.
 
 Załóżmy, że podania folderów w następującym formacie:
 

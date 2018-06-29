@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 84d81dd9e1ef51a2a1705210cd7002a685bdf8fb
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 3758b04fc9b5ecd5dc69c82a8bd07999a9f1074a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266825"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050611"
 ---
 # <a name="how-to-start-and-stop-the-azure-ssis-integration-runtime-on-a-schedule"></a>Jak uruchomić i zatrzymać środowiska uruchomieniowego integracji Azure SSIS zgodnie z harmonogramem
 W tym artykule opisano sposób tworzenia harmonogramu uruchamiania i zatrzymywania Azure SSIS integrację środowiska uruchomieniowego (IR) przy użyciu usługi Automatyzacja Azure i fabryki danych Azure. Uruchomiona środowiska uruchomieniowego integracji SSIS Azure (SQL Server Integration Services) (IR) ma koszt skojarzonych z nim. W związku z tym zazwyczaj chcesz uruchomić IR tylko wtedy, gdy jest to wymagane do uruchamiania pakietów SSIS na platformie Azure i Zatrzymaj IR, gdy nie będzie potrzebny. Można użyć interfejsu użytkownika z fabryki danych lub Azure PowerShell do [ręcznie uruchomić lub zatrzymać IR SSIS Azure](manage-azure-ssis-integration-runtime.md)).
@@ -34,10 +34,6 @@ Poniżej przedstawiono ogólne kroki opisane w tym artykule:
 3. **Utwórz dwa elementów webhook dla elementu runbook**, jeden dla operacji START, a drugą dla operacji ZATRZYMANIA. Adresy URL tych elementów webhook można użyć podczas konfigurowania sieci web działania w potoku fabryki danych. 
 4. **Utworzyć potok fabryki danych**. Potok, w którym można utworzyć składa się z trzech działań. Pierwszy **Web** działania wywołuje pierwszego elementu webhook uruchomić podczerwieni Azure SSIS. **Procedury składowanej** działanie uruchamia skrypt SQL, który uruchamia pakiet SSIS. Drugi **Web** działania zatrzymuje podczerwieni Azure SSIS. Aby uzyskać więcej informacji na temat wywoływania pakietów SSIS z potoku fabryki danych za pomocą działania procedury składowanej, zobacz [wywołania pakietów SSIS](how-to-invoke-ssis-package-stored-procedure-activity.md). Następnie można utworzyć wyzwalacza harmonogramu, można zaplanować potoku do uruchamiania w okresach, które określisz.
 
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [pakietów SSIS wywołać przy użyciu działania procedury składowanej w wersji 1](v1/how-to-invoke-ssis-package-stored-procedure-activity.md).
-
- 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Jeśli nie zostało już udostępniane środowiska uruchomieniowego integracji Azure SSIS, zainicjujesz go przy zgodnie z instrukcjami wyświetlanymi w [samouczek](tutorial-create-azure-ssis-runtime-portal.md). 
 
@@ -254,7 +250,7 @@ Po utworzeniu i przetestować potoku utworzyć wyzwalacza harmonogram i skojarzy
       - Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów.   
          
       Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
-4. Wybierz wartość **V2 (wersja zapoznawcza)** dla **wersji**.
+4. Wybierz **V2** dla **wersji**.
 5. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Na liście są wyświetlane tylko lokalizacje obsługiwane na potrzeby tworzenia fabryk danych.
 6. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
 7. Kliknij przycisk **Utwórz**.

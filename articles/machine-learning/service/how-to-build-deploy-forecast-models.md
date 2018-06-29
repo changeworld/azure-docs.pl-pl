@@ -3,18 +3,18 @@ title: Tworzenie i wdrażanie modelu prognozowania można używać dla Prognozow
 description: Informacje o sposobie tworzenia, uczenia, testowania i wdrażania modelu prognozowania można używać przy użyciu pakietu Learning maszyny Azure dla Prognozowanie.
 services: machine-learning
 ms.service: machine-learning
-ms.component: service
+ms.component: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: mattcon
 author: matthewconners
 ms.date: 05/07/2018
-ms.openlocfilehash: 0891f49da479b4209c305ebb532b053d85a7b2a6
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 320a7cf4a34657138c9096cdc4b573170be376e9
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833533"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37036642"
 ---
 # <a name="build-and-deploy-forecasting-models-with-azure-machine-learning"></a>Tworzenie i wdrażanie modeli prognozowania z usługi Azure Machine Learning
 
@@ -336,7 +336,7 @@ print('{} time series in the data frame.'.format(nseries))
 
 Dane zawierają około 250 różnych kombinacji magazynu i marki w ramce danych. Każda kombinacja definiuje własną szeregów czasowych sprzedaży. 
 
-Można użyć [TimeSeriesDataFrame](https://docs.microsoft.com/python/api/ftk.dataframets.timeseriesdataframe) klasy wygodnie modelu wielu serii za pomocą struktury danych jednego _ziarna_. Ziarna jest określona przez `store` i `brand` kolumn.
+Można użyć [TimeSeriesDataFrame](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest) klasy wygodnie modelu wielu serii za pomocą struktury danych jednego _ziarna_. Ziarna jest określona przez `store` i `brand` kolumn.
 
 Różnica między _ziarna_ i _grupy_ ziarna są zawsze fizycznie znaczenie w świecie rzeczywistym, gdy grupy nie musi być. Funkcje wewnętrzne pakietu używają grupy można utworzyć model jednego z wielu szeregach czasowych, jeśli użytkownik uznaje się, że ta metoda grupowania pomaga w zwiększeniu wydajności modelu. Domyślnie grupa ma ustawioną wartość równa ziarna i pojedynczego modelu jest skompilowany dla każdego ziarna. 
 
@@ -498,7 +498,7 @@ whole_tsdf.loc[pd.IndexSlice['1990-06':'1990-09', 2, 'dominicks'], ['Quantity']]
 
 
 
-[TimeSeriesDataFrame.ts_report](https://docs.microsoft.com/en-us/python/api/ftk.dataframets.timeseriesdataframe#ts-report) funkcja generuje raport kompleksowe dane szeregów czasowych. Raport zawiera zarówno opis ogólnych danych jak i statystyki specyficzne dla czasu serii danych. 
+[TimeSeriesDataFrame.ts_report](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#ts-report) funkcja generuje raport kompleksowe dane szeregów czasowych. Raport zawiera zarówno opis ogólnych danych jak i statystyki specyficzne dla czasu serii danych. 
 
 
 ```python
@@ -887,14 +887,14 @@ whole_tsdf.head()
 
 ## <a name="preprocess-data-and-impute-missing-values"></a>Przetwarzanie wstępne danych i przypisują brakujące wartości
 
-Rozpocznij od dzielenia danych na zestaw szkoleniowy i testowania ustawiony za pomocą [ftk.tsutils.last_n_periods_split](https://docs.microsoft.com/python/api/ftk.tsutils) funkcja narzędzia. Powstałe w ten sposób testowania zestaw zawiera ostatnio 40 obserwacji każdego szeregów czasowych. 
+Rozpocznij od dzielenia danych na zestaw szkoleniowy i testowania ustawiony za pomocą [ftk.tsutils.last_n_periods_split](https://docs.microsoft.com/en-us/python/api/ftk.ts_utils?view=azure-ml-py-latest) funkcja narzędzia. Powstałe w ten sposób testowania zestaw zawiera ostatnio 40 obserwacji każdego szeregów czasowych. 
 
 
 ```python
 train_tsdf, test_tsdf = last_n_periods_split(whole_tsdf, 40)
 ```
 
-Modeli szeregów czasowych podstawowe wymagają szeregów czasowych ciągły. Sprawdź, czy serii są regularnie, co oznacza, że mają one indeks czas próbkowania w regularnych odstępach czasu, przy użyciu [check_regularity_by_grain](https://docs.microsoft.compython/api/ftk.dataframets.timeseriesdataframe) funkcji.
+Modeli szeregów czasowych podstawowe wymagają szeregów czasowych ciągły. Sprawdź, czy serii są regularnie, co oznacza, że mają one indeks czas próbkowania w regularnych odstępach czasu, przy użyciu [check_regularity_by_grain](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#check-regularity-by-grain) funkcji.
 
 
 ```python
@@ -969,7 +969,7 @@ print(ts_regularity[ts_regularity['regular'] == False])
     [213 rows x 2 columns]
     
 
-Widać, że większość serii (213 poza 249) są nieprawidłowe. [Przekształcenia przypisywania](https://docs.microsoft.com/python/api/ftk.transforms.tsimputer.timeseriesimputer) jest wymagany w celu wypełnienia brakujących wartości ilości sprzedaży. Istnieje wiele opcji przypisywania, następujący przykładowy kod zużywa interpolacji liniowej.
+Widać, że większość serii (213 poza 249) są nieprawidłowe. [Przekształcenia przypisywania](https://docs.microsoft.com/en-us/python/api/ftk.transforms.ts_imputer?view=azure-ml-py-latest) jest wymagany w celu wypełnienia brakujących wartości ilości sprzedaży. Istnieje wiele opcji przypisywania, następujący przykładowy kod zużywa interpolacji liniowej.
 
 
 ```python
@@ -1035,7 +1035,7 @@ arima_model = Arima(oj_series_freq, arima_order)
 
 ### <a name="combine-multiple-models"></a>Łączenie wielu modeli
 
-[ForecasterUnion](https://docs.microsoft.com/python/api/ftk.models.forecasterunion.forecasterunion) narzędzia do szacowania umożliwia łączenie wielu estymatorów i/prognozowania Dopasuj je przy użyciu jednego wiersza kodu.
+[ForecasterUnion](https://docs.microsoft.com/en-us/python/api/ftk.models.forecaster_union.forecasterunion?view=azure-ml-py-latest) narzędzia do szacowania umożliwia łączenie wielu estymatorów i/prognozowania Dopasuj je przy użyciu jednego wiersza kodu.
 
 
 ```python
@@ -1108,7 +1108,7 @@ univariate_model_errors
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>modelName</th>
+      <th>ModelName</th>
       <th>MAPE</th>
       <th>MedianAPE</th>
     </tr>
@@ -1249,7 +1249,7 @@ print(train_feature_tsdf.head())
 
  **RegressionForecaster**
 
-[RegressionForecaster](https://docs.microsoft.com/python/api/ftk.models.regressionforecaster.regressionforecaster) — funkcja opakowuje estymatorów regresji sklearn, dzięki czemu może być uczony na TimeSeriesDataFrame. Warunkowy opakowanej typu również umieszcza każdej grupy, w tym przypadku magazynie samego modelu. Warunkowy typu informacji można znaleźć jednego modelu dla grupy serii, która została uznana za podobne i mogą być połączone. Jeden model grupy serii często korzysta z danych z serii dłużej zwiększające prognoz dla krótkich serii. Można zastąpić te modele w przypadku innych modeli w bibliotece, które obsługują regresji. 
+[RegressionForecaster](https://docs.microsoft.com/en-us/python/api/ftk.models.regression_forecaster.regressionforecaster?view=azure-ml-py-latest) — funkcja opakowuje estymatorów regresji sklearn, dzięki czemu może być uczony na TimeSeriesDataFrame. Warunkowy opakowanej typu również umieszcza każdej grupy, w tym przypadku magazynie samego modelu. Warunkowy typu informacji można znaleźć jednego modelu dla grupy serii, która została uznana za podobne i mogą być połączone. Jeden model grupy serii często korzysta z danych z serii dłużej zwiększające prognoz dla krótkich serii. Można zastąpić te modele w przypadku innych modeli w bibliotece, które obsługują regresji. 
 
 
 ```python
@@ -1298,7 +1298,7 @@ all_errors.sort_values('MedianAPE')
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>modelName</th>
+      <th>ModelName</th>
       <th>MAPE</th>
       <th>MedianAPE</th>
     </tr>

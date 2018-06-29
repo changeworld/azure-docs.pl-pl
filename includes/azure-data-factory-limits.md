@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/20/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: d65c75a9b4f308ddd1bb6a6bff28c52c946e4f05
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 43408ebc65d4acf581b612e8ecfb9d00679cc078
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36320036"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37066105"
 ---
 Fabryka danych jest usługą wielodostępne, która ma następujące domyślne limity mające na celu upewnij się, że subskrypcjami klientów są chronione przez obciążeń. Wiele granic można łatwo wygenerowany dla Twojej subskrypcji do maksymalnego limitu za pośrednictwem pracowników pomocy technicznej.
 
@@ -35,7 +35,7 @@ Fabryka danych jest usługą wielodostępne, która ma następujące domyślne l
 | Maksymalny limit uruchomień działania w potoku | 7 dni | 7 dni |
 | Bajtów dla każdego obiektu dla potoku obiektów <sup>1</sup> | 200 KB | 200 KB |
 | Liczba bajtów na obiekt zestawu danych i obiektów powiązanych z <sup>1</sup> | 100 KB | 2000 KB |
-| Jednostki przepływu danych na uruchamiania działania w chmurze <sup>3</sup> | 256 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Jednostki integracji danych na uruchamiania działania kopiowania <sup>3</sup> | 256 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Zapis wywołań interfejsu API | 2500/godz.<br/><br/> Ten limit jest narzucone przez usługi Azure Resource Manager, nie fabryki danych Azure. | [Skontaktuj się z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Wywołania API odczytu | 12 500/godz.<br/><br/> Ten limit jest narzucone przez usługi Azure Resource Manager, nie fabryki danych Azure. | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 
@@ -51,14 +51,14 @@ Fabryka danych jest usługą wielodostępne, która ma następujące domyślne l
 | Bajtów dla każdego obiektu dla potoku obiektów <sup>1</sup> |200 KB |200 KB |
 | Liczba bajtów na obiekt zestawu danych i obiektów powiązanych z <sup>1</sup> |100 KB |2000 KB |
 | Rdzeni na żądanie klastra usługi HDInsight w ramach subskrypcji <sup>2</sup> |60 |[Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Jednostki przepływu danych na uruchamiania działania w chmurze <sup>3</sup> |32 |[Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Jednostki przepływu danych na uruchamiania działania kopiowania w chmurze <sup>3</sup> |32 |[Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Liczba uruchomień działania potoku ponownych prób |1000 |MaxInt (32-bitowe) |
 
 <sup>1</sup> potoku, zestawu danych i obiektów powiązanych z reprezentują logiczne grupowanie obciążenie. Limity dla tych obiektów nie odnoszą się do ilości danych, można przenieść i przetwarzania w usłudze fabryka danych Azure. Fabryka danych zaprojektowano w celu skalowania, umożliwiając obsługę petabajtów danych.
 
 <sup>2</sup> rdzeni na żądanie usługi HDInsight są przydzielane poza subskrypcji, która zawiera fabryki danych. W związku z tym powyżej limitu jest fabryki danych wymuszone limit podstawowych rdzeni HDInsight na żądanie i różni się od limit rdzeni skojarzone z subskrypcją platformy Azure.
 
-<sup>3</sup> jednostki przepływu danych w chmurze (DMU) jest używany w operacji kopiowania w chmurze z chmurą. Stanowi ona miarę, która odzwierciedla wydajność (kombinacja Procesora, pamięci i alokacji zasobów w sieci) w pojedynczą jednostkę w fabryce danych. Wyższej przepustowości kopii można osiągnąć za pomocą więcej DMUs w niektórych scenariuszach. Zapoznaj się [jednostki przepływu danych (V2) w chmurze](../articles/data-factory/copy-activity-performance.md#cloud-data-movement-units) i [jednostki przepływu danych (wersja 1) w chmurze](../articles/data-factory/v1/data-factory-copy-activity-performance.md#cloud-data-movement-units) sekcji Szczegóły.
+<sup>3</sup> jednostki integracji danych (DIU) dla wersji 2 lub chmury danych przemieszczania jednostki (DMU) dla v1 jest używany w operacji kopiowania w chmurze z chmurą. Stanowi ona miarę, która odzwierciedla wydajność (kombinacja Procesora, pamięci i alokacji zasobów w sieci) w pojedynczą jednostkę w fabryce danych. Wyższej przepustowości kopii można osiągnąć za pomocą więcej DMUs w niektórych scenariuszach. Zapoznaj się [jednostki integracji danych (V2)](../articles/data-factory/copy-activity-performance.md#data-integration-units) i [jednostki przepływu danych (wersja 1) w chmurze](../articles/data-factory/v1/data-factory-copy-activity-performance.md#cloud-data-movement-units) sekcji Szczegóły, i [cennikiem usługi fabryka danych Azure](https://azure.microsoft.com/pricing/details/data-factory/) związanych z rozliczeniami możliwa.
 
 <sup>4</sup> integrację środowiska uruchomieniowego (IR) jest używany przez fabryki danych Azure do zapewniają następujące możliwości integracji danych w różnych środowiskach sieci infrastruktury obliczeniowej: przenoszenie danych, wysyłki działań do obliczenia usług, Wykonanie pakietów SSIS. Aby uzyskać więcej informacji, zobacz [Omówienie środowiska uruchomieniowego integracji](../articles/data-factory/concepts-integration-runtime.md).
 

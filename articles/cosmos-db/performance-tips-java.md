@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: sngun
-ms.openlocfilehash: 92a7ed065b2ab29037e8c2467e210e7fd0ba3a07
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.openlocfilehash: 2c0290ef160283f5aef8b1a4a5f67e69222aec0e
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34613180"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029360"
 ---
 > [!div class="op_single_selector"]
 > * [Java (asynchroniczny)](performance-tips-async-java.md)
@@ -36,8 +36,8 @@ Dlatego jeśli "jak poprawić wydajność mojej bazy danych?" należy wziąć po
 
     Jak klient nawiąże połączenie bazy danych Azure rozwiązania Cosmos ma istotny wpływ na wydajność, szczególnie pod względem obserwowanych opóźnienia po stronie klienta. Brak jednego klucza konfiguracji ustawienie dostępne do konfigurowania klienta [ConnectionPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy) — [ConnectionMode](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_mode).  Dwa ConnectionModes dostępne są następujące:
 
-   1. [Brama (ustawienie domyślne)](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_mode.gateway)
-   2. [DirectHttps](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_mode.directhttps)
+   1. [Brama (ustawienie domyślne)](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb._connection_mode)
+   2. [DirectHttps](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb._connection_mode)
 
     Tryb bramy jest obsługiwana na wszystkich platformach zestawu SDK i jest skonfigurowana domyślna.  Gdy aplikacja działa w sieci firmowej z ograniczeń zapory strict, brama jest najlepszym rozwiązaniem, ponieważ używa standardowego portu HTTPS i jeden punkt końcowy. Jednak z zależnościami wydajności jest tryb bramy obejmuje przeskoku dodatkowe sieci, za każdym razem, gdy danych jest odczytywanych lub zapisywanych do bazy danych Azure rozwiązania Cosmos. W związku z tym trybie DirectHttps oferuje lepszą wydajność ze względu na mniejszą liczbę przeskoków sieciowych. 
 

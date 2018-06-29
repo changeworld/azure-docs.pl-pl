@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 05abd943d85fcdd709143bf7fce221dcdfb86011
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f6196c1403ded7bb8a72ee5483c2c2056b0e8020
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215103"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030713"
 ---
-# <a name="service-endpoint-monitor"></a>Monitor punktu końcowego usługi
+# <a name="service-connectivity-monitor"></a>Monitorowanie łączności usług
 
-Korzystając z możliwości Monitor punktu końcowego usługi w [monitora wydajności sieci](log-analytics-network-performance-monitor.md) monitorować łączność sieciową z dowolnego punktu końcowego, który został otwarty port TCP. Takie punkty końcowe obejmują witryn sieci Web, aplikacji SaaS PaaS aplikacji i baz danych. 
+Można użyć możliwości usługi łączności Monitor w [monitora wydajności sieci](log-analytics-network-performance-monitor.md) monitorować łączność sieciową z dowolnego punktu końcowego, który został otwarty port TCP. Takie punkty końcowe obejmują witryn sieci Web, aplikacji SaaS PaaS aplikacji i baz danych. 
 
-Można wykonywać następujące funkcje związane z monitorem punktu końcowego usługi: 
+Można wykonywać następujące funkcje związane z monitorem łączności usługi: 
 
 - Monitoruje łączność sieciową z wielu oddziałów lub lokalizacje aplikacji i usług sieciowych. Aplikacje i usługi sieciowe obejmują usługi Office 365, Dynamics CRM, wewnętrznych aplikacji biznesowych z i baz danych.
 - Użyj wbudowanego testów monitorowania punktów końcowych usługi Office 365 i Dynamics 365 łączność sieciową. 
@@ -34,7 +34,7 @@ Można wykonywać następujące funkcje związane z monitorem punktu końcowego 
 - Zidentyfikuj punkty aktywne w sieci, które mogą być przyczyną niską wydajnością wyświetlając opóźnienia przekazanych przez każdego przeskoku w formie mapy topologii.
 
 
-![Monitor punktu końcowego usługi](media/log-analytics-network-performance-monitor/service-endpoint-intro.png)
+![Monitorowanie łączności usług](media/log-analytics-network-performance-monitor/service-endpoint-intro.png)
 
 
 ## <a name="configuration"></a>Konfigurowanie 
@@ -55,11 +55,11 @@ netsh advfirewall firewall add rule name="NPMDICMPV4TimeExceeded" protocol="icmp
 netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmpv6:3,any" dir=in action=allow 
 ```
 
-### <a name="create-service-endpoint-monitor-tests"></a>Tworzenie testów Monitor punktu końcowego usługi 
+### <a name="create-service-connectivity-monitor-tests"></a>Tworzenie testów Monitor połączenia usługi 
 
 Rozpocznij tworzenie testów monitorowania punktów końcowych usługi łączność sieciową.
 
-1. Wybierz **Monitor punktu końcowego usługi** kartę.
+1. Wybierz **Monitor łączności usługi** kartę.
 2. Wybierz **Dodaj Test**, a następnie wprowadź nazwę testu i opis. 
 3. Wybierz typ testu:<br>
 
@@ -84,7 +84,7 @@ Rozpocznij tworzenie testów monitorowania punktów końcowych usługi łączno�
 
 ## <a name="walkthrough"></a>Przewodnik 
 
-Przejdź do widoku pulpitu nawigacyjnego monitora wydajności sieci. Aby uzyskać podsumowanie kondycji inne testy został utworzony, obejrzyj **Monitor punktu końcowego usługi** strony. 
+Przejdź do widoku pulpitu nawigacyjnego monitora wydajności sieci. Aby uzyskać podsumowanie kondycji inne testy został utworzony, obejrzyj **Monitor łączności usługi** strony. 
 
 ![Monitor punktu końcowego usługi strony](media/log-analytics-network-performance-monitor/service-endpoint-blade.png)
 

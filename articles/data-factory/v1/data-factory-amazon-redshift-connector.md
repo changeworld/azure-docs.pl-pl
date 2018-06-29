@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5731e4249c94e77846f07870e4bba28aab70682e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7ece34809734478ddb52c12d5dbd92291231f439
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619528"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045691"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Przenoszenie danych z Redshift Amazon przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](data-factory-amazon-redshift-connector.md)
-> * [Wersja 2 — wersja zapoznawcza](../connector-amazon-redshift.md)
+> * [W wersji 1](data-factory-amazon-redshift-connector.md)
+> * [W wersji 2 (bieżąca wersja)](../connector-amazon-redshift.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [Amazon Redshift łącznika w wersji 2](../connector-amazon-redshift.md).
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [Amazon Redshift łącznika w wersji 2](../connector-amazon-redshift.md).
 
 W tym artykule opisano sposób używania działania kopiowania w fabryce danych Azure do przenoszenia danych z Amazon Redshift. Artykuł opiera się na [działań przepływu danych](data-factory-data-movement-activities.md) artykułu, który przedstawia ogólny przegląd przenoszenia danych z działania kopiowania. 
 
@@ -68,7 +68,7 @@ Poniższa tabela zawiera opisy elementów JSON, które są specyficzne dla usłu
 | **Port** |Numer portu TCP używany przez serwer Amazon Redshift do nasłuchiwania dla połączeń klienta. |Nie (wartość domyślna to 5439) |
 | **Bazy danych** |Nazwa bazy danych Amazon Redshift. |Yes |
 | **Nazwa użytkownika** |Nazwa użytkownika, który ma dostęp do bazy danych. |Yes |
-| **Hasło** |Hasło dla konta użytkownika. |Yes |
+| **hasło** |Hasło dla konta użytkownika. |Yes |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
@@ -78,7 +78,7 @@ Listę sekcje i właściwości, które są dostępne do definiowania zestawów d
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| **TableName** |Nazwa tabeli w bazie danych Amazon Redshift, odnoszący się do połączonej usługi. |Nie (Jeśli **zapytania** właściwości działania kopiowania typu **RelationalSource** jest określona) |
+| **tableName** |Nazwa tabeli w bazie danych Amazon Redshift, odnoszący się do połączonej usługi. |Nie (Jeśli **zapytania** właściwości działania kopiowania typu **RelationalSource** jest określona) |
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
@@ -88,7 +88,7 @@ Dla działania kopiowania, gdy źródłem jest typu **AmazonRedshiftSource**, s�
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| **Zapytania** | Użyj niestandardowych zapytania, aby odczytać danych. |Nie (Jeśli **tableName** określono właściwości zestawu danych) |
+| **zapytania** | Użyj niestandardowych zapytania, aby odczytać danych. |Nie (Jeśli **tableName** określono właściwości zestawu danych) |
 | **redshiftUnloadSettings** | Zawiera grupę właściwości, używając Redshift **zwolnienie** polecenia. | Nie |
 | **s3LinkedServiceName** | Amazon S3, który ma być używana jako magazyn tymczasowy. Połączona usługa jest określana za pomocą nazwy typu fabryki danych Azure **AwsAccessKey**. | Wymagane, gdy usługa **redshiftUnloadSettings** właściwości |
 | **bucketName** | Wskazuje zasobnika Amazon S3 służące do przechowywania danych tymczasowych. Jeśli ta właściwość nie zostanie podany, działanie kopiowania auto generuje zasobnika. | Wymagane, gdy usługa **redshiftUnloadSettings** właściwości |
@@ -97,7 +97,7 @@ Alternatywnie można użyć **RelationalSource** typu, który obejmuje Amazon Re
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| **Zapytania** |Użyj niestandardowych zapytania, aby odczytać danych. | Nie (Jeśli **tableName** określono właściwości zestawu danych) |
+| **zapytania** |Użyj niestandardowych zapytania, aby odczytać danych. | Nie (Jeśli **tableName** określono właściwości zestawu danych) |
 
 ## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>Umożliwia kopiowanie danych z usługi Amazon Redshift zwolnienia
 
@@ -336,7 +336,7 @@ Następujące mapowania są używane, gdy działanie kopiowania konwertuje dane 
 | BIGINT |Int64 |
 | DECIMAL |Decimal |
 | RZECZYWISTE |Pojedyncze |
-| PODWÓJNEJ PRECYZJI |O podwójnej precyzji |
+| PODWÓJNEJ PRECYZJI |podwójne |
 | WARTOŚĆ LOGICZNA |Ciąg |
 | CHAR |Ciąg |
 | VARCHAR |Ciąg |

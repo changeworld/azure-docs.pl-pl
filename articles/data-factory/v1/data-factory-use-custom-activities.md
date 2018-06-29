@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: d12038daf5d74889ca99ed2c7d35009f4cb7add7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 044d47a294df4e218c84a928a63426dde4f8373b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622817"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053137"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](data-factory-use-custom-activities.md)
-> * [Wersja 2 — wersja zapoznawcza](../transform-data-using-dotnet-custom-activity.md)
+> * [W wersji 1](data-factory-use-custom-activities.md)
+> * [W wersji 2 (bieżąca wersja)](../transform-data-using-dotnet-custom-activity.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [działań niestandardowych w wersji 2](../transform-data-using-dotnet-custom-activity.md).
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [działań niestandardowych w wersji 2](../transform-data-using-dotnet-custom-activity.md).
 
 Istnieją dwa typy działań, które można używać w potoku fabryki danych Azure.
 
@@ -387,7 +387,7 @@ Metoda zwraca słownik, który może służyć do łańcuch niestandardowych dzi
 15. Przekaż MyDotNetActivity.zip jako obiekt blob do customactivitycontainer w **ogólnego przeznaczenia** magazynu obiektów blob platformy Azure (gorącą nie/chłodnej magazynu obiektów Blob), który odwołuje się do AzureStorageLinkedService.  
 
 > [!IMPORTANT]
-> Jeśli dodać ten projekt działania .NET do rozwiązania w programie Visual Studio, zawierający projekt fabryki danych i Dodaj odwołanie do projektu działania .NET z projektu aplikacji fabryki danych nie należy przeprowadzić ostatnie dwa kroki ręcznego tworzenia pliku zip i przekazać go do magazynu obiektów blob platformy Azure ogólnego przeznaczenia. Podczas publikowania jednostek fabryki danych przy użyciu programu Visual Studio, te kroki automatycznie są wykonywane przez proces publikowania. Aby uzyskać więcej informacji, zobacz [fabryki danych projektu programu Visual Studio](#data-factory-project-in-visual-studio) sekcji.
+> Jeśli dodać ten projekt działania .NET do rozwiązania w programie Visual Studio, zawierający projekt fabryki danych i Dodaj odwołanie do projektu działania .NET z projektu aplikacji fabryki danych nie należy przeprowadzić ostatnie dwa kroki ręcznego tworzenia zip plik i przekazać go do magazynu obiektów blob platformy Azure ogólnego przeznaczenia. Podczas publikowania jednostek fabryki danych przy użyciu programu Visual Studio, te kroki automatycznie są wykonywane przez proces publikowania. Aby uzyskać więcej informacji, zobacz [fabryki danych projektu programu Visual Studio](#data-factory-project-in-visual-studio) sekcji.
 
 ## <a name="create-a-pipeline-with-custom-activity"></a>Utworzyć potok z działań niestandardowych
 Utworzono niestandardowe działania i przekazać do kontenera obiektów blob w pliku zip z plików binarnych **ogólnego przeznaczenia** konta magazynu Azure. W tej sekcji utworzysz fabryki danych Azure z potok, który korzysta z działań niestandardowych.
@@ -653,7 +653,7 @@ W tym kroku możesz utworzyć zestawy danych do reprezentowania danych wejściow
 Zobacz [monitorować i zarządzać potoki](data-factory-monitor-manage-pipelines.md) szczegółowy opis kroków monitorowania zestawy danych i potoki.      
 
 ## <a name="data-factory-project-in-visual-studio"></a>Projekt fabryki danych w programie Visual Studio  
-Można tworzyć i publikować jednostek fabryki danych przy użyciu programu Visual Studio, a za pomocą portalu Azure. Szczegółowe informacje na temat tworzenia i publikowania jednostek fabryki danych przy użyciu programu Visual Studio, zobacz [kompilacji swój pierwszy potok, za pomocą programu Visual Studio](data-factory-build-your-first-pipeline-using-vs.md) i [skopiować dane z obiektu Blob Azure do usługi Azure SQL](data-factory-copy-activity-tutorial-using-visual-studio.md) artykułów.
+Można tworzyć i publikować jednostek fabryki danych przy użyciu programu Visual Studio, a za pomocą portalu Azure. Szczegółowe informacje na temat tworzenia i publikowania jednostek fabryki danych przy użyciu programu Visual Studio, zobacz [kompilacji swój pierwszy potok, za pomocą programu Visual Studio](data-factory-build-your-first-pipeline-using-vs.md) i [skopiować dane z obiektu Blob Azure do usługi Azure SQL](data-factory-copy-activity-tutorial-using-visual-studio.md) artykuły.
 
 Jeśli tworzysz projekt fabryki danych w programie Visual Studio, należy wykonać następujące dodatkowe czynności:
  
@@ -706,7 +706,7 @@ Rozwiązywanie problemów z składa się z kilku podstawowych techniki:
    Ponadto sprawdź **0.log systemu** za wszelkie komunikaty o błędach systemu i wyjątki.
 4. Obejmują **PDB** plików w pliku zip, aby szczegóły błędu mają informacje takie jak **stosu wywołań** po wystąpieniu błędu.
 5. Wszystkie pliki w archiwum ZIP działania niestandardowego muszą znajdować się na **najwyższym poziomie**, bez podfolderów.
-6. Upewnij się, że **assemblyName** (MyDotNetActivity.dll), **punktu wejścia**(MyDotNetActivityNS.MyDotNetActivity), **packageFile** (customactivitycontainer/MyDotNetActivity.zip) i **packageLinkedService** (powinny wskazywać **ogólnego przeznaczenia**magazynu obiektów blob platformy Azure, który zawiera plik zip) są ustawione prawidłowe wartości.
+6. Upewnij się, że **assemblyName** (MyDotNetActivity.dll), **punktu wejścia**(MyDotNetActivityNS.MyDotNetActivity), **packageFile** (customactivitycontainer / MyDotNetActivity.zip) i **packageLinkedService** (powinny wskazywać **ogólnego przeznaczenia**magazynu obiektów blob platformy Azure, który zawiera plik zip) są ustawione prawidłowe wartości.
 7. Jeśli naprawiono błąd i chcesz przetworzyć wycinek ponownie, kliknij prawym przyciskiem wycinek w bloku **OutputDataset** i kliknij polecenie **Uruchom**.
 8. Jeśli zostanie wyświetlony następujący błąd, są za pomocą pakietu magazynu Azure w wersji > 4.3.0. Uruchamianie usługi fabryka danych wymaga wersji 4.3 WindowsAzure.Storage. Zobacz [izolacji elementu Appdomain](#appdomain-isolation) sekcji OBEJŚCIE Jeśli należy użyć nowszej wersji zestawu Azure Storage. 
 
@@ -721,9 +721,9 @@ Rozwiązywanie problemów z składa się z kilku podstawowych techniki:
     ```
 
     Skompiluj projekt. Usuń zespół Azure.Storage wersji > 4.3.0 z folderu bin\Debug. Utwórz plik zip zawierający pliki binarne i pliku PDB. Zastąpić starego pliku zip to w kontenerze obiektów blob (customactivitycontainer). Uruchom ponownie wycinków, których nie powiodła się (kliknij prawym przyciskiem myszy wycinek i kliknij przycisk Uruchom).   
-8. Działania niestandardowe nie używa **app.config** plików z pakietu. W związku z tym jeśli kod odczytuje wszelkie parametry połączenia z pliku konfiguracji, działa w czasie wykonywania. Najlepszym rozwiązaniem w przypadku przy użyciu partii zadań Azure do przechowywania wszelkich kluczy tajnych w **Azure KeyVault**, użyj nazwy głównej usługi oparte na certyfikatach, aby chronić **keyvault**i rozpowszechniania certyfikatów do puli partii zadań Azure. Niestandardowe działanie .NET będzie miało w takiej sytuacji dostęp do danych poufnych z magazynu KeyVault w czasie uruchomienia. To rozwiązanie jest ogólny rozwiązania i można skalować do dowolnego typu klucza tajnego, nie tylko w parametrach połączenia.
+8. Działania niestandardowe nie używa **app.config** plików z pakietu. W związku z tym jeśli kod odczytuje wszelkie parametry połączenia z pliku konfiguracji, działa w czasie wykonywania. Najlepszym rozwiązaniem w przypadku przy użyciu partii zadań Azure do przechowywania wszelkich kluczy tajnych w **Azure KeyVault**, użyj nazwy głównej usługi oparte na certyfikatach, aby chronić **keyvault**i wprowadzić certyfikat do partii zadań Azure Pula. Niestandardowe działanie .NET będzie miało w takiej sytuacji dostęp do danych poufnych z magazynu KeyVault w czasie uruchomienia. To rozwiązanie jest ogólny rozwiązania i można skalować do dowolnego typu klucza tajnego, nie tylko w parametrach połączenia.
 
-   Istnieje obejście łatwiejsze (ale nie najlepiej): można utworzyć **Azure SQL połączona usługa** z ustawień parametrów połączenia, utworzyć zestawu danych, który używa połączonej usługi, a powiązane zestawu danych jako fikcyjny wejściowy zestaw danych do działania niestandardowego .NET. Następnie dostępne parametry połączenia połączonej usługi w kodzie działania niestandardowego.  
+   Istnieje obejście łatwiejsze (ale nie najlepiej): można utworzyć **Azure SQL połączona usługa** z ustawień parametrów połączenia, utworzyć zestawu danych, który używa połączonej usługi, a łańcucha zestawu danych jako fikcyjny wejściowy zestaw danych do Niestandardowe działania .NET. Następnie dostępne parametry połączenia połączonej usługi w kodzie działania niestandardowego.  
 
 ## <a name="update-custom-activity"></a>Aktualizowanie działań niestandardowych
 Po zaktualizowaniu kod dla działań niestandardowych skompiluj go i przekazać plik zip, który zawiera nowe pliki binarne do magazynu obiektów blob.

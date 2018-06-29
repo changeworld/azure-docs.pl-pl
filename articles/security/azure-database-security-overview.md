@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 44abf7a4fc24893146179b34d3357f54450decab
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 27f6ccadaa89042ebced759ac3040b5b79e1f8f8
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365148"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051529"
 ---
 # <a name="azure-database-security-overview"></a>Przegląd zabezpieczeń bazy danych platformy Azure
 
@@ -69,7 +69,7 @@ Można wykonać kilka kroków, aby ułatwić zabezpieczanie bazy danych. Na przy
 
 Jest jedno rozwiązanie do szyfrowania poufnych danych w bazie danych i ochrony kluczy, które są używane do szyfrowania danych przy użyciu certyfikatu. To rozwiązanie zapobiega osobom niemającym kluczy przy użyciu danych, ale muszą być planowane tego rodzaju ochrony.
 
-Aby rozwiązać ten problem, SQL Server i obsługi bazy danych SQL [przezroczystego szyfrowania danych](https://docs.microsoft.com/sql/relational-databases/securityrecryption/transparent-data-encryption-tde). Przezroczystego szyfrowania danych szyfruje programu SQL Server i bazy danych SQL plików danych, znane jako szyfrowanie danych magazynowanych.
+Aby rozwiązać ten problem, SQL Server i obsługi bazy danych SQL [przezroczystego szyfrowania danych](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current&viewFallbackFrom=sql-server-2017). Przezroczystego szyfrowania danych szyfruje programu SQL Server i bazy danych SQL plików danych, znane jako szyfrowanie danych magazynowanych.
 
 Przezroczystego szyfrowania danych chroni przed zagrożeniem złośliwych działań. Wykonuje w czasie rzeczywistym szyfrowanie i odszyfrowywanie bazy danych, skojarzonych kopii zapasowych i plików dziennika transakcji w stanie spoczynku bez konieczności wprowadzania zmian w aplikacji.  
 

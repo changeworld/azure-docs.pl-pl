@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9075c774d0b56b6609616205e30b5a7d484fa031
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 34de57188dffb7375889ed9ed89a759238b035ac
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808098"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046888"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Przenoszenie danych z MySQL przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](data-factory-onprem-mysql-connector.md)
-> * [Wersja 2 — wersja zapoznawcza](../connector-mysql.md)
+> * [W wersji 1](data-factory-onprem-mysql-connector.md)
+> * [W wersji 2 (bieżąca wersja)](../connector-mysql.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [MySQL łącznika w wersji 2](../connector-mysql.md).
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [MySQL łącznika w wersji 2](../connector-mysql.md).
 
 
 W tym artykule opisano sposób używania działania kopiowania w fabryce danych Azure do przenoszenia danych z lokalną bazą danych MySQL. Opiera się na [działań przepływu danych](data-factory-data-movement-activities.md) artykułu, który przedstawia ogólny przegląd przenoszenia danych z działania kopiowania.
@@ -52,7 +52,7 @@ Dla bramy zarządzania danymi do łączenia z bazą danych MySQL, musisz zainsta
 Można utworzyć potok z działania kopiowania, który przenosi dane z magazynu lokalnego Cassandra danych przy użyciu różnych narzędzi/interfejsów API. 
 
 - Najprostszym sposobem, aby utworzyć potok jest użycie **kreatora kopiowania**. Zobacz [samouczek: tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybkie przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych. 
-- Umożliwia także następujące narzędzia do tworzenia potoku: **portalu Azure**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejs API .NET**, i **interfejsu API REST**. Zobacz [samouczek działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
+- Umożliwia także następujące narzędzia do tworzenia potoku: **portalu Azure**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager** , **Interfejs API .NET**, i **interfejsu API REST**. Zobacz [samouczek działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
 
 Czy można użyć narzędzia i interfejsy API, należy wykonać następujące kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródła do ujścia magazynu danych:
 
@@ -311,8 +311,8 @@ Podczas przenoszenia danych na MySQL, następujące mapowania są używane do ty
 | data |Data/godzina |
 | datetime |Data/godzina |
 | Decimal |Decimal |
-| podwójnej precyzji |O podwójnej precyzji |
-| double |O podwójnej precyzji |
+| podwójnej precyzji |podwójne |
+| double |podwójne |
 | wyliczenia |Ciąg |
 | liczba zmiennoprzecinkowa |Pojedyncze |
 | int unsigned |Int64 |
@@ -328,8 +328,8 @@ Podczas przenoszenia danych na MySQL, następujące mapowania są używane do ty
 | mediumint |Int32 |
 | mediumtext |Ciąg |
 | numeryczne |Decimal |
-| rzeczywiste |O podwójnej precyzji |
-| zestaw |Ciąg |
+| rzeczywiste |podwójne |
+| Zestaw |Ciąg |
 | smallint bez znaku |Int32 |
 | smallint |Int16 |
 | tekst |Ciąg |

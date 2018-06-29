@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 4530b11db7691f631f636021634cc5e9c8be8c86
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ac0e1945e75ee7aea346c103a671b4a47b9e5994
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620565"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048618"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Informacje o wersji bramy zarządzania danymi
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [hosta samodzielnego środowiska uruchomieniowego integracji w wersji 2](../create-self-hosted-integration-runtime.md).
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [hosta samodzielnego środowiska uruchomieniowego integracji w wersji 2](../create-self-hosted-integration-runtime.md).
 
 Jest jednym z wyzwań integracji nowoczesnych danych do przenoszenia danych do i z lokalnymi do chmury. Fabryka danych powoduje, że integracja z brama zarządzania danymi, czyli zainstalowanie lokalnego umożliwia przenoszenie danych hybrydowego agenta.
 
@@ -127,12 +127,12 @@ Firma Microsoft nie ma więcej zachowuje informacje o wersji w tym miejscu. Pobi
 
     *  Formanty reorganizowane po kolei i uproszczone.
 
-    *  Można skopiować danych z magazynu za pomocą [narzędzia Podgląd niekorzystające z kodu kopiowania](data-factory-copy-data-wizard-tutorial.md). Zobacz [przemieszczane kopiowania](data-factory-copy-activity-performance.md#staged-copy) szczegółowe informacje o tej funkcji w zasadzie.
+    *  Można skopiować danych z magazynu za pomocą [kopiowania kodu bez narzędzia](data-factory-copy-data-wizard-tutorial.md). Zobacz [przemieszczane kopiowania](data-factory-copy-activity-performance.md#staged-copy) szczegółowe informacje o tej funkcji w zasadzie.
 *  Brama zarządzania danymi do danych wejściowych bezpośrednio z lokalną bazą danych programu SQL Server można użyć do usługi Azure Machine Learning.
 
 *  Ulepszenia wydajności
 
-    * Zwiększyć wydajność o wyświetlaniu schematu/Preview dla programu SQL Server w narzędziu Podgląd kopiowania niekorzystające z kodu.
+    * Zwiększyć wydajność o wyświetlaniu schematu/Preview dla programu SQL Server w narzędziu Kopia niekorzystające z kodu.
 
 ## <a name="11259531"></a>1.12.5953.1
 

@@ -13,20 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 1cadcdd45e648f315e292bbc806abc9337725670
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b577c276627c3a187215cd0da551428fbb32791f
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619222"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050910"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>Szyfrowania poświadczeń dla lokalnych magazynów danych w fabryce danych Azure
 Można zaszyfrować i przechowywania poświadczeń dla użytkownika magazynów danych lokalnych (połączonej usługi z poufne informacje) na komputerze z programem obsługi integracji hostowania samoobsługowego. 
 
 Przekaż plik definicji JSON przy użyciu poświadczeń do <br/>[**Nowy AzureRmDataFactoryV2LinkedServiceEncryptedCredential** ](https://docs.microsoft.com/powershell/module/azurerm.datafactoryv2/New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential?view=azurermps-4.4.0) polecenia cmdlet, aby utworzyć plik definicji danych wyjściowych JSON z zaszyfrowane poświadczenia. Następnie należy użyć zaktualizowanej definicji JSON do utworzenia połączonych usług.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz dostępnej ogólnie wersji 1 usługi Data Factory, zobacz [Data Factory version 1 documentation (Dokumentacja usługi Data Factory w wersji 1)](v1/data-factory-introduction.md).
 
 ## <a name="author-sql-server-linked-service"></a>Usługi SQL Server połączone autora
 Utwórz plik JSON o nazwie **SqlServerLinkedService.json** do folderu o następującej treści:  

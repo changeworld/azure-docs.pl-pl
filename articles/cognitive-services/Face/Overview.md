@@ -9,14 +9,14 @@ ms.component: face-api
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: bb3ee9431f24a51dfd3877f1c4d621f7ba633b96
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: fb1d14ff80bf53adc3008d79cc998739ffffde1b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347600"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048673"
 ---
-# <a name="what-is-face-api"></a>Co to jest powierzchni interfejsu API?
+# <a name="what-is-face-api"></a>Czym jest interfejs API rozpoznawania twarzy?
 
 Zapraszamy do powierzchni interfejsu API usługi Microsoft, usług chmurowych, który zapewnia najbardziej zaawansowane algorytmy krój. Powierzchni interfejsu API ma dwa główne funkcje: stają przed wykrywania z atrybutami i stają przed rozpoznawania.
 
@@ -85,6 +85,8 @@ Następujące samouczki przykładem podstawowych funkcji powierzchni interfejsu 
 
 Spójrz na te przykładowe aplikacje korzystające z interfejsu API twarzy na obrazie.
 
+- [Microsoft powierzchni interfejsu API: Biblioteka klienta usługi Windows & próbki](https://github.com/Microsoft/Cognitive-Face-Windows)
+  - WPF przykładową aplikację prezentującą kilka scenariuszy wykrywania twarzy na obrazie, analizy i identyfikacji.
 - [Aplikacja FamilyNotes platformy uniwersalnej systemu Windows](https://github.com/Microsoft/Windows-appsample-familynotes)
   - Uniwersalnych platformy systemu Windows (UWP) przykładowej aplikacji, pokazujący użycie mowy, Cortana odręczne i aparatu za pośrednictwem rodzina Pamiętaj scenariusza udostępniania.
 - [Przykładowe analizy ramek wideo](https://github.com/microsoft/cognitive-samples-videoframeanalysis)

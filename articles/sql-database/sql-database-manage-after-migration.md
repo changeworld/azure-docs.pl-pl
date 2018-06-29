@@ -12,12 +12,12 @@ ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: 2a0a411d5f2b19eda844cba160429ecfe958c45e
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: d97e0bf94b911936cacf04f7f26c172b9975c56f
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309617"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061648"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nowy model DBA w chmurze — zarządzania bazą danych w bazie danych SQL Azure
 
@@ -170,7 +170,7 @@ Usługi Express Route umożliwia również serii maksymalnie 2 x limit przepusto
 - [Przepływy pracy](../expressroute/expressroute-workflows.md)
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>Jest zgodna z wymagań regulacyjnych bazy danych SQL, i w jaki sposób który pomaga z własnej organizacji zgodności?
-Baza danych SQL jest zgodne z przepisami compliances zakresem. Aby wyświetlić najnowsze zbiór compliances, które zostały spełnione, odwiedź stronę [Microsoft Trust Center](https://www.microsoft.com/trustcenter/compliance/complianceofferings) oraz rozwijanie compliances, które są ważne dla organizacji, aby zobaczyć, czy baza danych SQL jest objęte zgodny z usług Azure. Należy pamiętać, że chociaż baza danych SQL mogą mieć certyfikat potwierdzający usługi zgodne, pomaga w zgodności organizacji usługi ale nie automatycznie gwarantuje on.
+Baza danych SQL jest zgodne z przepisami compliances zakresem. Aby wyświetlić najnowsze zbiór compliances, które zostały spełnione, odwiedź stronę [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/compliance/complianceofferings) oraz rozwijanie compliances, które są ważne dla organizacji, aby zobaczyć, czy baza danych SQL jest objęte zgodny z usług Azure. Należy pamiętać, że chociaż baza danych SQL mogą mieć certyfikat potwierdzający usługi zgodne, pomaga w zgodności organizacji usługi ale nie automatycznie gwarantuje on.
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>Inteligentnego bazy danych monitorowania oraz konserwacji po migracji
 

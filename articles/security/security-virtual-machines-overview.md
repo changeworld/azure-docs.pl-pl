@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 7d31a434d4ead6dd8f8a13a08d368389904b5b4a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5ffba386ae6b1e1e5d18f92803bc8cb74b2ff89e
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364237"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061303"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Omówienie zabezpieczeń usługi Azure maszyny wirtualne
 Maszyny wirtualne Azure umożliwia wdrażanie szeroką gamę rozwiązania informatyczne w sposób agile. Usługa obsługuje Microsoft Windows, Linux, programu Microsoft SQL Server, Oracle, IBM, SAP i usługi BizTalk Services dla platformy Azure. Dlatego mogą wdrażać dowolne obciążenia i dowolnego języka w niemal dowolnym systemie operacyjnym.
@@ -142,5 +142,5 @@ Maszyny wirtualne platformy Azure jest certyfikowany do FISMA, FedRAMP HIPAA, PC
 
 Więcej informacji:
 
-* [Centrum zaufania Microsoft: zgodności](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)
+* [Centrum zaufania Microsoft: zgodności](https://www.microsoft.com/en-us/trustcenter/compliance)
 * [Zaufanych chmury: Microsoft Azure zabezpieczeń, prywatności i zgodności](http://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)

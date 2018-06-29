@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/04/2018
+ms.date: 06/27/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0747bd5dc147639167f352dea46f7e4a1d43227d
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 178102990462235b9b39f2ed1ad0e43395118daf
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763457"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063933"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Jak zainstalować i skonfigurować SAP HANA (duże wystąpień) w systemie Azure
 
@@ -44,7 +44,7 @@ Sprawdź ponownie, szczególnie w przypadku planowania instalacji HANA 2.0 [2235
 
 ## <a name="first-steps-after-receiving-the-hana-large-instance-units"></a>Pierwsze kroki po otrzymaniu jednostek wystąpienia dużych HANA
 
-**Pierwszy krok** po otrzymaniu wystąpienia dużych HANA i ustalonych dostępu i łączności do wystąpień, jest rejestracja systemu operacyjnego wystąpienia u swojego dostawcy systemu operacyjnego. Ten krok obejmuje rejestrowanie system operacyjny SUSE Linux w wystąpieniu SMT SUSE, potrzebne do zostały wdrożone na maszynie wirtualnej na platformie Azure. Jednostka HANA dużych wystąpienia mogą łączyć się tego wystąpienia SMT (patrz niżej w tej dokumentacji). Lub system operacyjny RedHat muszą być zarejestrowane przy użyciu Red Hat subskrypcji Menedżera wymagane do nawiązania połączenia. Zobacz także uwagi w tym [dokumentu](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Ten krok jest także niezbędne można było zastosować poprawki systemu operacyjnego. Zadanie, które jest odpowiedzialny za klienta. SUSE, można znaleźć w dokumentacji, aby zainstalować i skonfigurować SMT [tutaj](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html).
+**Pierwszy krok** po otrzymaniu wystąpienia dużych HANA i ustalonych dostępu i łączności do wystąpień, jest rejestracja systemu operacyjnego wystąpienia u swojego dostawcy systemu operacyjnego. Ten krok obejmuje rejestrowanie system operacyjny SUSE Linux w wystąpieniu SMT SUSE, potrzebne do zostały wdrożone na maszynie wirtualnej na platformie Azure. Jednostka HANA dużych wystąpienia mogą łączyć się tego wystąpienia SMT (patrz niżej w tej dokumentacji). Lub system operacyjny Red Hat muszą być zarejestrowane przy użyciu Red Hat subskrypcji Menedżera wymagane do nawiązania połączenia. Zobacz także uwagi w tym [dokumentu](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Ten krok jest także niezbędne można było zastosować poprawki systemu operacyjnego. Zadanie, które jest odpowiedzialny za klienta. SUSE, można znaleźć w dokumentacji, aby zainstalować i skonfigurować SMT [tutaj](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html).
 
 **W drugim kroku** ma Sprawdź nowe poprawki i poprawki określonych wersji systemu operacyjnego/version. Sprawdź, czy poziom poprawki wystąpienia dużych HANA na najnowszy stan. W oparciu o czas na poprawki/poszczególnych wersji systemu operacyjnego i zmiany do obrazu, który można wdrożyć program Microsoft, mogą wystąpić przypadki, w którym najnowsze poprawki nie może być włączony. Dlatego jest obowiązkowa procedurze po podjęciu przez jednostkę wystąpienia dużych HANA można sprawdzić, czy poprawki dotyczące zabezpieczeń, funkcji, dostępności i wydajności zostały wydane w tym samym czasie przez określonego dostawcy systemu Linux i należy zastosować.
 
@@ -80,18 +80,7 @@ Przyjęto założenie, że zostały wykonane zalecenia dotyczące projektowania 
 
 Istnieją pewne szczegóły warto wspomnieć o dotyczących sieci w jednej jednostki. Każda jednostka HANA dużych wystąpienia jest dostarczany z dwóch lub trzech adresów IP przypisanych do dwóch lub trzech portów kart jednostki. Trzy adresy IP są używane w HANA skalowalnego w poziomie konfiguracji oraz scenariusz HANA replikacji systemu. Jeden z adresów IP przypisanych do karty Sieciowej jednostki jest poza puli adresów IP serwera, który został opisany w [omówienie SAP HANA (duże wystąpienia) i architektury na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
 
-Powinna wyglądać dystrybucji dla jednostek o dwa adresy IP:
-
-- eth0.xx powinny mieć przypisanego adresu IP spoza zakresu adresów puli adresów IP serwera, który przesłane do firmy Microsoft. Ten adres IP są używane do przechowywania w/etc/hosts systemu operacyjnego.
-- eth1.xx powinny mieć przypisanego adresu IP używanego do komunikacji systemu plików NFS. W związku z tym, czy te adresy **nie** muszą być utrzymywane w etc/hosts, aby zezwolić na ruch wystąpienia można instancji w ramach dzierżawy.
-
-W przypadku wdrażania replikacji systemu HANA lub HANA skalowalnych w poziomie Konfiguracja bloku o dwa adresy IP nie jest odpowiedni. Jeśli o przypisane tylko dwa adresy IP, która pragnie wdrożyć takiej konfiguracji, skontaktuj się z SAP HANA na zarządzania usługą Azure, aby uzyskać trzeci adres IP w innej sieci VLAN przypisane. Dla wystąpienia dużych HANA jednostek o trzy adresy IP przypisane do trzech portów kart obowiązują następujące reguły użycia:
-
-- eth0.xx powinny mieć przypisanego adresu IP spoza zakresu adresów puli adresów IP serwera, który przesłane do firmy Microsoft. Dlatego ten adres IP nie stosuje się do przechowywania w/etc/hosts systemu operacyjnego.
-- eth1.xx powinny mieć przypisanego adresu IP używanego do komunikacji z magazynem systemu plików NFS. Dlatego adresów tego typu nie powinna być utrzymywana w etc/hosts.
-- eth2.xx należy używać wyłącznie do przechowywania w itp/hostów do komunikacji między różnymi wystąpieniami. Te adresy również będą adresy IP, które mają zostać zachowane w konfiguracjach HANA skalowalnego w poziomie jako adresy IP, które używa HANA konfiguracji między węzłami.
-
-
+Zobacz [HLI obsługiwane scenariusze](hana-supported-scenario.md) Aby poznać szczegóły ethernet dla architektury.
 
 ## <a name="storage"></a>Magazyn
 
@@ -111,7 +100,7 @@ Gdzie SID = wystąpienie HANA identyfikator systemu
 
 I dzierżawcy = wewnętrzny wyliczenie operacje podczas wdrażania dzierżawcy.
 
-Jak widać, HANA udostępnionych usr/sap są udostępnianie i tym samym woluminie. Nomenklatura punkty instalacji obejmują identyfikator systemu wystąpień HANA, a także numer instalacji. W przypadku dużych wdrożeń jest tylko jeden instalacji, takich jak mnt00001. We wdrożeniu skalowalnego w poziomie można zobaczyć tyle instalacji, należy mieć węzłów procesu roboczego i wzorzec. Dla środowiska skalowalnego w poziomie, danych, dzienników woluminach kopii zapasowej dziennika są udostępnione i dołączona do każdego węzła w konfiguracji skalowania w poziomie. W przypadku konfiguracji uruchamianie wielu wystąpień SAP inny zestaw woluminów jest utworzony i dołączyć do HAN dużych wystąpienia jednostki.
+Jak widać, HANA udostępnionych usr/sap są udostępnianie i tym samym woluminie. Nomenklatura punkty instalacji obejmują identyfikator systemu wystąpień HANA, a także numer instalacji. W przypadku dużych wdrożeń jest tylko jeden instalacji, takich jak mnt00001. We wdrożeniu skalowalnego w poziomie można zobaczyć tyle instalacji, należy mieć węzłów procesu roboczego i wzorzec. Dla środowiska skalowalnego w poziomie, danych, dzienników woluminach kopii zapasowej dziennika są udostępnione i dołączona do każdego węzła w konfiguracji skalowania w poziomie. W przypadku konfiguracji uruchamianie wielu wystąpień SAP inny zestaw woluminów jest utworzony i dołączyć do HAN dużych wystąpienia jednostki. Zobacz [HLI obsługiwane scenariusze](hana-supported-scenario.md) szczegółowe układu magazynu dla danego scenariusza.
 
 Podczas odczytu papieru i Szukaj jednostki wystąpienia dużych HANA można zrealizować jednostki pochodzić HANA/danych z woluminu dysku zamiast atrakcyjne i że mamy woluminu HANA / / kopii zapasowej dziennika. Dlaczego możemy o rozmiarze HANA/danych tak duża dzieje się tak że migawki pamięci masowej, które oferujemy Ci jako klient korzysta z tego samego woluminu dysku. Oznacza to, więcej pamięci masowej migawki, należy wykonać, więcej miejsca jest używane przez migawek w woluminach przydzielonych magazynu. Wolumin HANA / / kopii zapasowej dziennika nie jest uważany za woluminu mają zostać umieszczone w kopii zapasowych bazy danych. Jest on o rozmiarze do użycia jako wolumin kopii zapasowej dla kopii zapasowej dziennika transakcji HANA. W przyszłych wersji magazynu migawek self usług, firma Microsoft będzie obowiązywać tego określonego woluminu, aby częstsze migawki. I z tym częstsze replikacji do lokacji odzyskiwania po awarii jeśli jest to wymagane do opcji w funkcji odzyskiwania po awarii infrastruktury HANA dużych wystąpienia. Zobacz szczegóły w [SAP HANA (duże wystąpień) wysokiej dostępności i odzyskiwania po awarii na platformie Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 
 
@@ -150,6 +139,7 @@ Także można skonfigurować parametrów po zakończeniu instalacji bazy danych 
 
 SAP HANA 2.0 z hdbparam framework jest przestarzała. W związku z tym należy ustawić parametry za pomocą polecenia SQL. Aby uzyskać więcej informacji, zobacz [2399079 # Uwaga SAP: eliminacji hdbparam 2 HANA](https://launchpad.support.sap.com/#/notes/2399079).
 
+Zobacz [HLI obsługiwane scenariusze](hana-supported-scenario.md) Aby dowiedzieć się układu magazynu dla architektury.
 
 ## <a name="operating-system"></a>System operacyjny
 
@@ -157,7 +147,7 @@ Obszar wymiany dostarczonego obrazu systemu operacyjnego jest równa 2 GB zgodni
 
 [SUSE Linux Enterprise Server 12 SP1 dla programu SAP aplikacji](https://www.suse.com/products/sles-for-sap/hana) jest dystrybucja systemu Linux zainstalowane dla SAP HANA na platformie Azure (wystąpienia duże). Tej konkretnej dystrybucji zapewnia możliwości specyficznych dla programu SAP &quot;fabrycznej&quot; (w tym systemie SAP SLES skutecznie wstępnie ustawionymi parametrów).
 
-Zobacz [zasobów biblioteki/oficjalne dokumenty](https://www.suse.com/products/sles-for-sap/resource-library#white-papers) w witrynie sieci Web SUSE i [SAP w systemie SUSE](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE) w sieci społeczności SAP (SCN) dla kilku przydatne zasoby związane z wdrażaniem SAP HANA na SLES (w tym konfiguracji o wysokiej dostępności, specyficzne dla operacji SAP wzmocnienie zabezpieczeń i inne).
+Zobacz [zasobów biblioteki/oficjalne dokumenty](https://www.suse.com/products/sles-for-sap/resource-library#white-papers) w witrynie sieci Web SUSE i [SAP w systemie SUSE](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE) w sieci społeczności SAP (SCN) dla kilku przydatne zasoby związane z wdrażaniem SAP HANA na SLES (w tym ustawienia Wysoki Dostępność, specyficzne dla operacji SAP wzmocnienie zabezpieczeń i inne).
 
 Dodatkowe i przydatne SAP SUSE związane z łącza:
 
@@ -325,7 +315,7 @@ Ponieważ jednostki HANA dużych wystąpienie nie ma bezpośredniego połączeni
 
 Aby pobrać pakiety instalacyjne HANA, należy użytkownik S SAP lub innego użytkownika, dzięki czemu można uzyskać dostępu do witryny Marketplace SAP. Po zalogowaniu, przejdź do tej sekwencji ekrany:
 
-Przejdź do [Marketplace usługi SAP](https://support.sap.com/en/index.html) > kliknij przycisk Pobierz oprogramowanie > instalacje i uaktualnienia > przez indeks alfabetyczny > w obszarze H — SAP HANA platformy Edition > SAP HANA platformy wersji 2.0 > instalacji > pobierania następujących plików
+Przejdź do [Marketplace usługi SAP](https://support.sap.com/en/index.html) > kliknij polecenie Pobierz oprogramowanie > instalacje i uaktualnienia > przez indeks alfabetyczny > w obszarze H — SAP HANA wersji platformy > SAP HANA platformy wersji 2.0 > instalacji > Pobierz następujące pliki
 
 ![Pobierz HANA instalacji](./media/hana-installation/image16_download_hana.PNG)
 
@@ -400,7 +390,7 @@ W następnym kroku należy również pobierać dane, które należy nadać do fi
 > [!Important]
 > Konieczne jest zapewnienie tego samego Identyfikatora użytkownika systemu i Identyfikatora grupy użytkowników jako podane Microsoft jako kolejność wdrażania jednostki. Jeśli nie można nadać bardzo takich samych identyfikatorów, instalacja SAP HANA w jednostce HANA dużych wystąpienie nie powiedzie się.
 
-W dwóch następnych ekranach, które firma Microsoft nie są wyświetlane w tej dokumentacji, musisz podać hasło dla użytkownika SYSTEM bazy danych SAP HANA i hasło użytkownika sapadm, który jest używany dla agenta hosta SAP, które są instalowane jako część tego wystąpienia bazy danych SAP HANA.
+W dwóch następnych ekranach, które firma Microsoft nie są wyświetlane w tej dokumentacji, musisz podać hasło dla użytkownika SYSTEM bazy danych SAP HANA i hasło użytkownika sapadm, który służy do agenta hosta SAP, które są instalowane jako część datab SAP HANA wystąpienie ASE.
 
 Po zdefiniowaniu hasła, ekran potwierdzenia jest wyświetlane. Sprawdź wszystkie dane na liście i kontynuować instalację. Zostanie wyświetlona ekran postępu dokumentów postęp instalacji, jak poniżej
 

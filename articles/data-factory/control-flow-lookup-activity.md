@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/22/2018
+ms.date: 06/15/2018
 ms.author: shlo
-ms.openlocfilehash: 032b14051c5c2b06fa23ee67858706fada545967
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 25ed439674fcf7136e29034eb97e0652ae9ba111
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618661"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37059064"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Działania wyszukiwania w fabryce danych Azure
 
@@ -26,9 +26,6 @@ Działanie wyszukiwania może być używane do pobierania zestawu danych z dowol
 - Dynamiczne określanie obiekty, które (plików, tabel, itp.) do działania na kolejne działania, zamiast kodować nazwa obiektu
 
 Działania wyszukiwania może odczytywać i zwrócić zawartość zgodnie z pliku konfiguracji, Tabela konfiguracji lub wynik wykonywania zapytań lub procedurze składowanej.  Dane wyjściowe działania wyszukiwania można używane w kolejnych kopii lub transformacji działania, jeśli jest to wartość singleton lub używany w działaniu ForEach przypadku tablicę z atrybutami.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Azure Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz dostępnej ogólnie wersji 1 usługi Data Factory, zobacz [Data Factory version 1 documentation (Dokumentacja usługi Data Factory w wersji 1)](v1/data-factory-introduction.md).
 
 ## <a name="supported-capabilities"></a>Obsługiwane możliwości
 

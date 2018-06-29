@@ -1,6 +1,6 @@
 ---
-title: Azure rozwiązań magazynów na potrzeby R Server w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
-description: Informacje na temat opcji magazynu innego dostępne z serwerem R w usłudze HDInsight
+title: Azure rozwiązań magazynów na potrzeby usługi uczenia Maszynowego w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat magazynu różnych opcjach usługi uczenia Maszynowego w usłudze HDInsight
 services: hdinsight
 documentationcenter: ''
 author: nitinme
@@ -11,18 +11,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: R
 ms.topic: conceptual
-ms.date: 03/22/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 23e32a913fb73d2207f7cf37ce6230e428fbe95c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f5b9b180f8a6f825e4d91850ee72af19e6d09a4c
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31409469"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052967"
 ---
-# <a name="azure-storage-solutions-for-r-server-on-azure-hdinsight"></a>Azure rozwiązań magazynów na potrzeby R Server w usłudze Azure HDInsight
+# <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure rozwiązań magazynów na potrzeby usługi uczenia Maszynowego w usłudze Azure HDInsight
 
-R Server w usłudze HDInsight zawiera różnych rozwiązań magazynu do utrwalenia danych, kodu lub obiektów zawierających wyniki analizy. Należą do nich następujące opcje:
+Usługi uczenia Maszynowego w usłudze HDInsight można użyć różnych rozwiązań magazynu do utrwalenia danych, kodu lub obiektów zawierających wyniki analizy. Należą do nich następujące opcje:
 
 - [Azure Blob](https://azure.microsoft.com/services/storage/blobs/)
 - [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)
@@ -35,14 +35,14 @@ Podczas tworzenia klastra usługi Hadoop w usłudze HDInsight, należy określi�
 - [Użyj magazynu platformy Azure z usługą HDInsight](../hdinsight-hadoop-use-blob-storage.md)
 - [Użyj Data Lake Store z klastrami Azure HDInsight](../hdinsight-hadoop-use-data-lake-store.md)
 
-## <a name="use-azure-blob-storage-accounts-with-r-server-cluster"></a>Użyj konta magazynu obiektów Blob platformy Azure z klastrem serwera R
+## <a name="use-azure-blob-storage-accounts-with-ml-services-cluster"></a>Użyj konta magazynu obiektów Blob platformy Azure z klastrem usługi uczenia Maszynowego
 
-Jeśli określono więcej niż jedno konto magazynu podczas tworzenia klastra serwerów R, poniższe instrukcje wyjaśniają sposób użycia dodatkowej konta dla dostępu do danych i operacji w klastrze serwera R. Załóżmy następujące konta magazynu i kontener: **storage1** i domyślny kontener o nazwie **container1**, i **storage2** z **container2**.
+Jeśli określono więcej niż jedno konto magazynu podczas tworzenia klastra usługi uczenia Maszynowego, poniższe instrukcje wyjaśniają sposób użycia dodatkowej konta dla dostępu do danych i operacji w klastrze usługi uczenia Maszynowego. Załóżmy następujące konta magazynu i kontener: **storage1** i domyślny kontener o nazwie **container1**, i **storage2** z **container2**.
 
 > [!WARNING]
 > Ze względów wydajnościowych klastra usługi HDInsight jest tworzony w tym samym centrum danych, co konto magazynu podstawowego, który określisz. Używanie konta magazynu w innej lokalizacji niż klastra usługi HDInsight nie jest obsługiwane.
 
-### <a name="use-the-default-storage-with-r-server-on-hdinsight"></a>Użyj domyślnego magazynu z serwerem R w usłudze HDInsight
+### <a name="use-the-default-storage-with-ml-services-on-hdinsight"></a>Domyślny magazyn za pomocą usługi uczenia Maszynowego w usłudze HDInsight
 
 1. Przy użyciu klienta SSH, połączenie z węzłem krawędzi klastra. Aby uzyskać informacji o korzystaniu z protokołu SSH z klastrami usługi HDInsight, zobacz [używanie SSH z usługą HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
   
@@ -73,7 +73,7 @@ Jeśli określono więcej niż jedno konto magazynu podczas tworzenia klastra se
 
 Wszystkie odwołania katalogów i plików wskaż konta magazynu `wasb://container1@storage1.blob.core.windows.net`. Jest to **domyślne konto magazynu** który jest skojarzony z klastrem usługi HDInsight.
 
-### <a name="use-the-additional-storage-with-r-server-on-hdinsight"></a>Użyj dodatkowe miejsce do magazynowania z serwerem R w usłudze HDInsight
+### <a name="use-the-additional-storage-with-ml-services-on-hdinsight"></a>Dodatkowe miejsce do magazynowania za pomocą usługi uczenia Maszynowego w usłudze HDInsight
 
 Załóżmy, że chcesz przetworzyć pliku o nazwie mysamplefile1.csv, który znajduje się w /private katalog **container2** w **storage2**.
 
@@ -106,13 +106,13 @@ Należy skonfigurować User/RevoShare/<SSH username> katalogu na **storage2** w 
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare/<RDP username>
 
-## <a name="use-an-azure-data-lake-store-with-r-server-cluster"></a>Użyj usługi Azure Data Lake Store z klastrem serwera R 
+## <a name="use-an-azure-data-lake-store-with-ml-services-cluster"></a>Użyj usługi Azure Data Lake Store z klastrem usługi uczenia Maszynowego 
 
 Aby korzystać z usługi Data Lake Store z klastrem usługi HDInsight, należy zapewnić dostęp do sieci klastra do każdej usługi Azure Data Lake Store, którego chcesz używać. Aby uzyskać instrukcje dotyczące sposobu tworzenia klastra usługi HDInsight przy użyciu konta usługi Azure Data Lake Store jako domyślnego magazynu lub dodatkowego magazynu za pomocą portalu Azure, zobacz [tworzenia klastra usługi HDInsight z Data Lake Store za pomocą portalu Azure](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
 
 Następnie należy użyć magazynu w skrypcie R znacznie jak konto magazynu Azure dodatkowej zgodnie z opisem w poprzedniej procedurze.
 
-### <a name="add-cluster-access-to-your-azure-data-lake-stores"></a>Dodaj klaster dostęp do usługi Azure Data Lake sklepach
+### <a name="add-cluster-access-to-your-azure-data-lake-stores"></a>Dodaj klaster dostęp do Twojej Lake magazyny danych Azure
 Data Lake store jest dostęp przy użyciu nazwy głównej usługi Azure Active Directory (Azure AD), który został skojarzony z klastrem usługi HDInsight.
 
 1. Podczas tworzenia klastra usługi HDInsight, wybierz **tożsamość usługi AAD klastra** z **źródła danych** kartę.
@@ -123,9 +123,9 @@ Po nadaj nazwę główną usługi i Utwórz hasło dla niego kliknij **zarządza
 
 Istnieje również możliwość można dodać klastra dostęp do co najmniej jednego konta usługi Data Lake Store, po utworzeniu klastra. Otwórz pozycję portalu usługi Azure Data Lake Store i przejdź do **Eksploratora danych > dostępu > Dodaj**. 
 
-### <a name="how-to-access-the-data-lake-store-from-r-server-on-hdinsight"></a>Jak uzyskać dostęp do Data Lake store z serwerem R w usłudze HDInsight
+### <a name="how-to-access-the-data-lake-store-from-ml-services-on-hdinsight"></a>Jak uzyskać dostęp do Data Lake store z usługi uczenia Maszynowego w usłudze HDInsight
 
-Po którym został przyznany dostęp do usługi Data Lake Store, używając magazynu w klastrze serwerów R w usłudze HDInsight sposób, w jaki konto magazynu Azure dodatkowej. Jedyną różnicą jest to, że prefiks **wasb: / /** zmienia się na **adl: / /** w następujący sposób:
+Po którym został przyznany dostęp do usługi Data Lake Store, używając magazynu w klastrze usługi uczenia Maszynowego w usłudze HDInsight sposób, w jaki konto magazynu Azure dodatkowej. Jedyną różnicą jest to, że prefiks **wasb: / /** zmienia się na **adl: / /** w następujący sposób:
 
 
     # Point to the ADL store (e.g. ADLtest)
@@ -161,7 +161,7 @@ Poniższe polecenia są używane do konfigurowania konta usługi Data Lake Store
     hadoop fs –ls adl://rkadl1.azuredatalakestore.net/share
 
 
-## <a name="use-azure-file-storage-with-r-server-on-hdinsight"></a>Użyj usługi Magazyn plików Azure z serwerem R w usłudze HDInsight
+## <a name="use-azure-file-storage-with-ml-services-on-hdinsight"></a>Magazyn plików Azure za pomocą usługi uczenia Maszynowego w usłudze HDInsight
 
 Istnieje również wygodne danych opcji magazynu do użycia na węzeł krawędzi, o nazwie [pliki Azure] ((https://azure.microsoft.com/services/storage/files/). Umożliwia instalowanie udziału plików magazynu Azure w systemie Linux. Ta opcja może być przydatna do przechowywania plików danych, skrypty języka R i obiektów wynikowych, które mogą być wymagane później, szczególnie w przypadku warto system plików natywnych węzła krawędzi zamiast systemu plików HDFS. 
 
@@ -173,7 +173,7 @@ Główną zaletą usługi pliki Azure jest udziały plików może być zainstalo
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Omówienie klastrów R Server w usłudze HDInsight](r-server-overview.md)
-* [Rozpoczynanie pracy z klastrem R Server na platformie Hadoop](r-server-get-started.md)
-* [Compute context options for R Server on HDInsight (Opcje kontekstu obliczeniowego dla oprogramowania R Server w usłudze HDInsight)](r-server-compute-contexts.md)
+* [Omówienie klastrów usługi uczenia Maszynowego w usłudze HDInsight](r-server-overview.md)
+* [Rozpoczynanie pracy z klastrem usługi uczenia Maszynowego na platformie Hadoop](r-server-get-started.md)
+* [Obliczenia bazy danych opcji kontekstu dla klastra usługi uczenia Maszynowego w usłudze HDInsight](r-server-compute-contexts.md)
 

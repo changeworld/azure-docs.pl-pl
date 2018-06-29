@@ -13,20 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: e60f368115e91cbd8972af8dfa7f0f3d6ea8765b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1d1b21897975717db7b733e33b7700bc76e3e065
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337597"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046551"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Alert i Monitor fabryki danych Azure monitora
 Aplikacje w chmurze są złożonych z wielu części ruchu. Monitorowanie zawiera danych, aby upewnić się, że aplikacja pozostaje w górę i działa w dobrej kondycji. Pomaga również umożliwia stave potencjalne problemy i rozwiązywanie problemów w przeszłości te. Ponadto można użyć danych monitorowania w celu uzyskania szczegółowych informacji o aplikacji. Wiedzy może pomóc zwiększyć wydajność aplikacji lub utrzymania lub automatyzować czynności, które w przeciwnym razie wymagają ręcznej interwencji.
 
 Azure Monitor udostępnia na podstawowym poziomie infrastruktury metryki i dzienniki dla większości usług platformy Microsoft Azure. Aby uzyskać więcej informacji, zobacz [omówienie monitorowania](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor). Azure dzienników diagnostycznych są dzienniki emitowane przez zasób, które zawierają rozbudowane, często dane dotyczące operacji tego zasobu. Fabryka danych danych wyjściowych dzienników diagnostycznych w monitorze Azure.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [monitorowanie i zarządzanie nimi potoków w fabryce danych version1](v1/data-factory-monitor-manage-pipelines.md).
 
 ## <a name="persist-data-factory-data"></a>Utrwalanie fabryki danych
 Fabryka danych przechowuje dane tylko potoku Uruchom danych 45 dni. Jeśli chcesz zachować potoku Uruchom danych przez więcej niż 45 dni, za pomocą monitora Azure, nie można tylko trasy dzienników diagnostycznych do analizy, można ją utrwalić je do konta magazynu, który pozwala uzyskać fabryki informacji czasie trwania chossing Twojego.

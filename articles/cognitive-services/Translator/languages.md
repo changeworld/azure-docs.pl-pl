@@ -6,18 +6,19 @@ author: Jann-Skotdal
 manager: chriswendt1
 ms.service: cognitive-services
 ms.component: translator-text
-ms.topic: article
-ms.date: 10/30/2017
+ms.topic: conceptual
+ms.date: 06/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: f388e9e39809774f307c0d1752e29f34b041ed13
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 5542c1c0eee5e4c7c85c566908dc8999b118f06e
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35356403"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37032454"
 ---
-# <a name="supported-languages-in-the-microsoft-translator-text-api"></a>Obsługiwane języki w interfejsie API Microsoft Translator tekstu 
-Interfejs API Microsoft Translator tekstu obsługuje następujące języki do tłumaczenia tekst — tekst. Tłumaczenie neuronowej (NMT) nowy standard tłumaczeń maszyny zasilane AI wysokiej jakości i jest dostępny jako domyślny za pomocą V3 Translator API tekstu, gdy neuronowej systemu jest dostępne. Neuronowej tłumaczenia maszynowego jest dostępna w wersji 2 za pomocą kategorii "generalnn". 
+# <a name="supported-languages-in-the-microsoft-translator-text-api"></a>Obsługiwane języki w interfejsie API Microsoft Translator tekstu
+
+Interfejs API Microsoft Translator tekstu obsługuje następujące języki do tłumaczenia tekst — tekst. Tłumaczenie neuronowej (NMT) nowy standard tłumaczeń maszyny zasilane AI wysokiej jakości i jest dostępny jako domyślny za pomocą V3 Translator API tekstu, gdy neuronowej systemu jest dostępne. Neuronowej tłumaczenia maszynowego jest dostępna w wersji 2 za pomocą kategorii "generalnn".
 
 [Dowiedz się więcej na temat działania tłumaczenia maszynowego](https://www.microsoft.com/translator/mt.aspx)
 
@@ -25,6 +26,7 @@ Interfejs API Microsoft Translator tekstu obsługuje następujące języki do t�
 |:----------- |:-------:|:-------------:|
 | Afrikaans      | Statystyczne |`af`          |
 | Arabski      | Neuronowej | `ar`          |
+| Arabski, Levantine    | Neuronowej | `apc`
 | Bengalski      | Neuronowej |`bn`          |
 | Bośniacki (łaciński)      | Statystyczne |`bs`          |
 | Bułgarski     |  Neuronowej |`bg`          |
@@ -116,7 +118,7 @@ Metoda Transliterate obsługuje następujące języki. W "do/z" "<>--" oznacza, 
 
 ## <a name="dictionary"></a>Słownik
 
-Słownik obsługuje następujące języki do lub z metodami wyszukiwania i przykłady w języku angielskim. 
+Słownik obsługuje następujące języki do lub z metodami wyszukiwania i przykłady w języku angielskim.
 
 | Język    | Kod języka |
 |:----------- |:-------------:|
@@ -173,12 +175,12 @@ Słownik obsługuje następujące języki do lub z metodami wyszukiwania i przyk
 
 ## <a name="languages-detected-by-the-detect-method"></a>Języki wykrywane przez metodę wykrywania
 
-Następujące języki mogą być wykrywane przez metodę wykrywania. Wykryj może wykryć języki, które nie może dokonywać translacji Translator firmy Microsoft. 
+Następujące języki mogą być wykrywane przez metodę wykrywania. Wykryj może wykryć języki, które nie może dokonywać translacji Translator firmy Microsoft.
 
-| Język    | 
+| Język    |
 |:----------- |
 | Afrikaans |
-| Albański | 
+| Albański |
 | Arabski |
 | Baskijski |
 | Białoruski |
@@ -248,7 +250,7 @@ Następujące języki mogą być wykrywane przez metodę wykrywania. Wykryj moż
 
 Listę obsługiwanych języków, programowo przy użyciu operacji języków tekstu interfejsu API w wersji 3.0 są dostępne. Można wyświetlić listę funkcji, kod języka, a także nazwę języka w języku angielskim lub dowolnego obsługiwanego języka. Ta lista jest automatycznie aktualizowany przez usługę Microsoft Translator jako nowe języki staną się dostępne.
 
-[Przejrzyj dokumentację referencyjną operacji języków](/reference/languages.md)
+[Przejrzyj dokumentację referencyjną operacji języków](reference/v3-0-languages.md)
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>Dostęp do listy w witrynie sieci Web Microsoft Translator
 

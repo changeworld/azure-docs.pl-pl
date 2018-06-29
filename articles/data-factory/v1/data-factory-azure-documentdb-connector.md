@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d0897f73ed1a321c8287729eaba775a625f51e4d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f3ebd704129aabecffdaa2589b8b086803a2d092
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620990"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046607"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Przenoszenie danych do i z bazy danych rozwiązania Cosmos Azure przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](data-factory-azure-documentdb-connector.md)
-> * [Wersja 2 — wersja zapoznawcza](../connector-azure-cosmos-db.md)
+> * [W wersji 1](data-factory-azure-documentdb-connector.md)
+> * [W wersji 2 (bieżąca wersja)](../connector-azure-cosmos-db.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [łącznika Azure DB rozwiązania Cosmos w wersji 2](../connector-azure-cosmos-db.md).
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [łącznika Azure DB rozwiązania Cosmos w wersji 2](../connector-azure-cosmos-db.md).
 
 W tym artykule opisano sposób używania działania kopiowania w fabryce danych Azure do przeniesienia danych z bazy danych Azure rozwiązania Cosmos (interfejsu API SQL). Opiera się na [działań przepływu danych](data-factory-data-movement-activities.md) artykułu, który przedstawia ogólny przegląd przenoszenia danych z działania kopiowania. 
 
@@ -43,7 +43,7 @@ Można utworzyć potoku o działanie kopiowania, który przenosi dane z bazy dan
 
 Najprostszym sposobem, aby utworzyć potok jest użycie **kreatora kopiowania**. Zobacz [samouczek: tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybkie przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
 
-Umożliwia także następujące narzędzia do tworzenia potoku: **portalu Azure**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejs API .NET**, i **interfejsu API REST**. Zobacz [samouczek działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
+Umożliwia także następujące narzędzia do tworzenia potoku: **portalu Azure**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager** , **Interfejs API .NET**, i **interfejsu API REST**. Zobacz [samouczek działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
 
 Czy można użyć narzędzia i interfejsy API, należy wykonać następujące kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródła do ujścia magazynu danych: 
 
@@ -84,7 +84,7 @@ Sekcja typeProperties jest różne dla każdego typu zestawu danych i zawiera in
 
 | **Właściwość** | **Opis** | **Wymagane** |
 | --- | --- | --- |
-| CollectionName |Nazwa kolekcji dokumentów DB rozwiązania Cosmos. |Yes |
+| collectionName |Nazwa kolekcji dokumentów DB rozwiązania Cosmos. |Yes |
 
 Przykład:
 
@@ -134,7 +134,7 @@ W przypadku działania kopiowania, gdy źródłem jest typu **DocumentDbCollecti
 | --- | --- | --- | --- |
 | nestingSeparator |Wymagany jest znak specjalny w nazwa kolumny źródłowej, aby wskazać zagnieżdżonych dokumentu. <br/><br/>Na przykład powyżej: `Name.First` w danych wyjściowych tabeli tworzy następującą strukturę JSON w dokumencie rozwiązania Cosmos bazy danych:<br/><br/>"Nazwa": {<br/>    "Pierwszy": "Jan"<br/>}, |Znak używany do rozdzielania poziomów zagnieżdżenia.<br/><br/>Wartość domyślna to `.` (kropką). |Znak używany do rozdzielania poziomów zagnieżdżenia. <br/><br/>Wartość domyślna to `.` (kropką). |
 | writeBatchSize |Liczba równoległych żądań do usługi Azure DB rozwiązania Cosmos w celu utworzenia dokumentów.<br/><br/>Aby precyzyjnie zdefiniować wydajność podczas kopiowania danych z bazy danych usługi rozwiązania Cosmos przy użyciu tej właściwości. Wraz ze zwiększeniem writeBatchSize, ponieważ więcej żądań równoległych do rozwiązania Cosmos bazy danych są wysyłane, może spodziewać się lepszą wydajność. Jednak należy unikać ograniczania przepustowości, który może zgłaszać komunikat o błędzie: "jest duża szybkość żądania".<br/><br/>Ograniczanie zadecyduje o wiele czynników, w tym rozmiar dokumentów, liczbę dokumentów, indeksowania zasady kolekcji docelowej, itd. Dla operacji kopiowania umożliwiają lepsze kolekcji (np. S3) ma największą przepływność dostępne (2500 żądań jednostek na sekundę). |Liczba całkowita |Nie (domyślne: 5) |
-| writeBatchTimeout |Poczekaj na ukończenie upłynie limit czasu operacji. |Zakres czasu<br/><br/> Przykład: "00: 30:00" (30 minut). |Nie |
+| writeBatchTimeout |Poczekaj na ukończenie upłynie limit czasu operacji. |zakres czasu<br/><br/> Przykład: "00: 30:00" (30 minut). |Nie |
 
 ## <a name="importexport-json-documents"></a>Dokumentów JSON Import/Eksport
 Korzystając z tego łącznika DB rozwiązania Cosmos, można łatwo

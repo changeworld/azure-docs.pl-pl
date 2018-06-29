@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych z pionowe przy użyciu fabryki danych Azure (wersja Beta) | Dokumentacja firmy Microsoft
+title: Kopiowanie danych z pionowe przy użyciu fabryki danych Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skopiować dane z pionowe do zbiornika obsługiwane magazyny danych za pomocą działania kopiowania w potoku fabryki danych Azure.
 services: data-factory
 documentationcenter: ''
@@ -11,24 +11,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/26/2018
+ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 56be714224ccdaf9af1afcb18e24a85bed7522b4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d4399fd26c4c536f89bb15e16bfc67fb1d0940fa
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617855"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37058978"
 ---
-# <a name="copy-data-from-vertica-using-azure-data-factory-beta"></a>Kopiowanie danych z pionowe przy użyciu fabryki danych Azure (wersja Beta)
+# <a name="copy-data-from-vertica-using-azure-data-factory"></a>Kopiowanie danych z pionowe przy użyciu fabryki danych Azure 
 
 W tym artykule omówiono sposób użycia działanie kopiowania w fabryce danych Azure, aby skopiować dane z pionowe. Opiera się na [skopiuj omówienie działania](copy-activity-overview.md) artykułu, który przedstawia ogólny przegląd działanie kopiowania.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [działanie kopiowania w wersji 1](v1/data-factory-data-movement-activities.md).
-
-> [!IMPORTANT]
-> Ten łącznik jest obecnie w wersji Beta. Możesz wypróbować jej możliwości i przekaż nam swoją opinię. Nie należy używać go w środowisku produkcyjnym.
 
 ## <a name="supported-capabilities"></a>Obsługiwane możliwości
 

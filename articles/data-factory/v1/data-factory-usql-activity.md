@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: a0f4a823d9a484dcae35a2741bf7904eb17a1502
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 534fbeaa8ba3c27c8d3f3bbcc59717d8bdb5c654
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622857"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050322"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Przekształcanie danych za pomocą skryptów U-SQL w usłudze Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](data-factory-usql-activity.md)
-> * [Wersja 2 — wersja zapoznawcza](../transform-data-using-data-lake-analytics.md)
+> * [W wersji 1](data-factory-usql-activity.md)
+> * [W wersji 2 (bieżąca wersja)](../transform-data-using-data-lake-analytics.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [działanie U-SQL w wersji 2](../transform-data-using-data-lake-analytics.md).
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [działanie U-SQL w wersji 2](../transform-data-using-data-lake-analytics.md).
 
 Potok w fabryce danych Azure przetwarza dane w usługach magazynu połączone, przy użyciu obliczeniowego połączonej usługi. Zawiera sekwencję działań, gdzie każde działanie wykonuje operację przetwarzania specyficznego dla. W tym artykule opisano **Data Lake Analytics U-SQL działania** , na którym działa **U-SQL** skryptom na **Azure Data Lake Analytics** obliczeniowe połączonej usługi. 
 
@@ -67,7 +67,7 @@ Uwierzytelnianie usługi głównej przez określenie następujących właściwo�
 |:--- |:--- |:--- |
 | **servicePrincipalId** | Określ identyfikator aplikacji klienta. | Yes |
 | **servicePrincipalKey** | Określ klucz aplikacji. | Yes |
-| **Dzierżawy** | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można go pobrać, ustawiając kursor myszy w prawym górnym rogu portalu Azure. | Yes |
+| **dzierżawy** | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można go pobrać, ustawiając kursor myszy w prawym górnym rogu portalu Azure. | Yes |
 
 **Przykład: Usługa podmiotu zabezpieczeń uwierzytelniania**
 ```json
@@ -213,7 +213,7 @@ W poniższej tabeli opisano nazwy i opisy właściwości, które są specyficzne
 | linkedServiceName   | Odwołanie do usługi Azure Data Lake Analytics zarejestrowany jako połączonej usługi z fabryki danych | Yes                                      |
 | scriptPath          | Ścieżka do folderu, który zawiera skrypt U-SQL. Nazwa pliku jest rozróżniana wielkość liter. | Nie (Jeśli używasz skryptu)                   |
 | scriptLinkedService | Połączonej usługi, która łączy magazynu, który zawiera skrypt do fabryki danych | Nie (Jeśli używasz skryptu)                   |
-| Skrypt              | Określ skrypt wbudowany zamiast określania scriptPath i scriptLinkedService. Na przykład: `"script": "CREATE DATABASE test"`. | Nie (Jeśli używasz scriptPath i scriptLinkedService) |
+| skrypt              | Określ skrypt wbudowany zamiast określania scriptPath i scriptLinkedService. Na przykład: `"script": "CREATE DATABASE test"`. | Nie (Jeśli używasz scriptPath i scriptLinkedService) |
 | degreeOfParallelism | Maksymalna liczba węzłów jednocześnie użyta do uruchomienia zadania. | Nie                                       |
 | priorytet            | Określa, które spośród wszystkich znajdujących się w kolejce zadań należy wybrać ma być uruchomiony. Im niższy numer, tym wyższy priorytet. | Nie                                       |
 | parameters          | Parametry skryptu U-SQL          | Nie                                       |

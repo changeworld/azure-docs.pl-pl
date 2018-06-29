@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: ea612f0c58b92e37d405f9a57611610fa187f7db
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 81392cc8b6225302d6835cdb3d23e9bab7d9c930
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619324"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37059086"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Wyrażeń i funkcji w fabryce danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](v1/data-factory-functions-variables.md)
-> * [Wersja 2 — wersja zapoznawcza](control-flow-expression-language-functions.md)
+> * [W wersji 1](v1/data-factory-functions-variables.md)
+> * [Bieżąca wersja](control-flow-expression-language-functions.md)
 
-Ten artykuł zawiera szczegółowe informacje o wyrażeniach i funkcje obsługiwane przez usługi fabryka danych Azure (wersja 2). 
+Ten artykuł zawiera szczegółowe informacje o wyrażeniach i funkcje obsługiwane przez usługi fabryka danych Azure. 
 
 ## <a name="introduction"></a>Wprowadzenie
 Wartości JSON w definicji może być literał lub wyrażeń, które są oceniane w czasie wykonywania. Na przykład:  
@@ -40,19 +40,14 @@ Wartości JSON w definicji może być literał lub wyrażeń, które są ocenian
 "name": "@pipeline().parameters.password"
 ```
 
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [funkcje i zmienne w V1 fabryki danych](v1/data-factory-functions-variables.md).
-
-
 ## <a name="expressions"></a>Wyrażenia  
-Wyrażenia mogą występować w dowolnym miejscu w wartości ciągu JSON i zawsze powoduje inną wartość JSON. Jeśli wartość JSON jest wyrażenie, treść wyrażenia został wyodrębniony przez usunięcie znaku (@). Jeśli wymagane jest literałem, która rozpoczyna się od @, należy użyć znaków ucieczki przy użyciu@. W poniższych przykładach pokazano, jak są analizowane wyrażenia.  
+Wyrażenia mogą występować w dowolnym miejscu w wartości ciągu JSON i zawsze powoduje inną wartość JSON. Jeśli wartość JSON jest wyrażenie, treść wyrażenia został wyodrębniony przez usunięcie znaku (\@). Jeśli wymagane jest literałem, która rozpoczyna się od @, należy użyć znaków ucieczki przy użyciu@. W poniższych przykładach pokazano, jak są analizowane wyrażenia.  
   
 |Wartość JSON|Wynik|  
 |----------------|------------|  
 |"Parametry"|Znaki "parameters" są zwracane.|  
 |"parametry [1]"|Zwracane są znaki "parametry [1]".|  
-|"\@\@"|Ciąg 1 znaku, który zawiera "@" jest zwracany.|  
+|"\@@"|Ciąg 1 znaku, który zawiera "@" jest zwracany.|  
 |" \@"|Ciąg znaków 2, który zawiera "@" jest zwracany.|  
   
  Wyrażenia może również wystąpić wewnątrz ciągi, przy użyciu funkcji o nazwie *ciągu interpolacji* gdzie wyrażenia są ujęte w `@{ ... }`. Na przykład: `"name" : "First Name: @{pipeline().parameters.firstName} Last Name: @{pipeline().parameters.lastName}"`  
@@ -61,13 +56,13 @@ Wyrażenia mogą występować w dowolnym miejscu w wartości ciągu JSON i zawsz
   
 |Wartość JSON|Wynik|  
 |----------------|------------|  
-|"@pipeline(). parameters.myString"| Zwraca `foo` jako ciąg.|  
-|"@{pipeline().parameters.myString}"| Zwraca `foo` jako ciąg.|  
-|"@pipeline(). parameters.myNumber"| Zwraca `42` jako *numer*.|  
-|"@{potoku.parameters.myNumber ()}"| Zwraca `42` jako *ciąg*.|  
+|"\@potoku.parameters.myString ()"| Zwraca `foo` jako ciąg.|  
+|"\@{potoku.parameters.myString ()}"| Zwraca `foo` jako ciąg.|  
+|"\@potoku.parameters.myNumber ()"| Zwraca `42` jako *numer*.|  
+|"\@{potoku.parameters.myNumber ()}"| Zwraca `42` jako *ciąg*.|  
 |"Odpowiedź brzmi: @{potoku.parameters.myNumber ()}"| Zwraca ciąg `Answer is: 42`.|  
-|"@concat(" Odpowiedź brzmi: ", string(pipeline().parameters.myNumber))"| Zwraca ciąg `Answer is: 42`|  
-|"Odpowiedź brzmi: @@ {potoku.parameters.myNumber ()}"| Zwraca ciąg `Answer is: @{pipeline().parameters.myNumber}`.|  
+|"\@concat (' odpowiedź brzmi:", string(pipeline().parameters.myNumber)) "| Zwraca ciąg `Answer is: 42`|  
+|"Odpowiedź brzmi: \@@{potoku.parameters.myNumber ()}"| Zwraca ciąg `Answer is: @{pipeline().parameters.myNumber}`.|  
   
 ### <a name="examples"></a>Przykłady
 
@@ -174,11 +169,11 @@ W poniższym przykładzie przyjmuje potoku **inputPath** i **outputPath** parame
 |-------------------|-----------------|  
 |zawiera|Zwraca wartość PRAWDA, jeśli słownik zawiera listę kluczy, zawiera wartość lub ciąg zawiera podciąg. Na przykład poniższe wyrażenie zwraca `true:``contains('abacaba','aca')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: W kolekcji<br /><br /> **Opis elementu**: wymagane. Kolekcja do przeszukania.<br /><br /> **Liczba parametrów**: 2<br /><br /> **Nazwa**: obiekt Find<br /><br /> **Opis elementu**: wymagane. Obiekt, aby znaleźć wewnątrz **w kolekcji**.|  
 |długość|Zwraca liczbę elementów w tablicy lub ciągu. Na przykład poniższe wyrażenie zwraca `3`:  `length('abc')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: kolekcji<br /><br /> **Opis elementu**: wymagane. Kolekcja można pobrać długości.|  
-|pusty|Zwraca wartość PRAWDA, jeśli obiekt, tablicy lub ciągu jest pusty. Na przykład poniższe wyrażenie zwraca `true`:<br /><br /> `empty('')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: kolekcji<br /><br /> **Opis elementu**: wymagane. Kolekcja, aby sprawdzić, czy jest pusta.|  
-|część wspólną|Zwraca pojedynczą tablicę lub obiektu o wspólnych elementach między tablicami lub przekazywane do niej obiekty. Na przykład, funkcja zwraca `[1, 2]`:<br /><br /> `intersection([1, 2, 3], [101, 2, 1, 10],[6, 8, 1, 2])`<br /><br /> Parametry funkcji może być zestaw obiektów lub zestaw tablic (nie kombinacja jego). Jeśli występują dwa obiekty o takiej samej nazwie, ostatni obiekt o tej nazwie pojawia się w końcowym obiektu.<br /><br /> **Liczba parametrów**: 1... *n*<br /><br /> **Nazwa**: kolekcja *n*<br /><br /> **Opis elementu**: wymagane. Kolekcje do oceny. Obiekt musi być we wszystkich zbiorach przekazany do są wyświetlane w wynikach.|  
+|Pusty|Zwraca wartość PRAWDA, jeśli obiekt, tablicy lub ciągu jest pusty. Na przykład poniższe wyrażenie zwraca `true`:<br /><br /> `empty('')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: kolekcji<br /><br /> **Opis elementu**: wymagane. Kolekcja, aby sprawdzić, czy jest pusta.|  
+|Część wspólną|Zwraca pojedynczą tablicę lub obiektu o wspólnych elementach między tablicami lub przekazywane do niej obiekty. Na przykład, funkcja zwraca `[1, 2]`:<br /><br /> `intersection([1, 2, 3], [101, 2, 1, 10],[6, 8, 1, 2])`<br /><br /> Parametry funkcji może być zestaw obiektów lub zestaw tablic (nie kombinacja jego). Jeśli występują dwa obiekty o takiej samej nazwie, ostatni obiekt o tej nazwie pojawia się w końcowym obiektu.<br /><br /> **Liczba parametrów**: 1... *n*<br /><br /> **Nazwa**: kolekcja *n*<br /><br /> **Opis elementu**: wymagane. Kolekcje do oceny. Obiekt musi być we wszystkich zbiorach przekazany do są wyświetlane w wynikach.|  
 |Unii|Zwraca pojedynczą tablicę lub obiektu z wszystkich elementów, które w tablicy lub obiekt są przekazywane do niego. Na przykład funkcja zwraca `[1, 2, 3, 10, 101]:`<br /><br /> :  `union([1, 2, 3], [101, 2, 1, 10])`<br /><br /> Parametry funkcji może być zestaw obiektów lub zestaw tablic (nie kombinacja jego). Jeśli występują dwa obiekty o takiej samej nazwie w ostateczne dane wyjściowe, ostatni obiekt o tej nazwie pojawia się w końcowym obiektu.<br /><br /> **Liczba parametrów**: 1... *n*<br /><br /> **Nazwa**: kolekcja *n*<br /><br /> **Opis elementu**: wymagane. Kolekcje do oceny. Obiekt, który pojawia się w dowolnej kolekcji zostanie wyświetlony w wyniku.|  
 |pierwszy|Zwraca pierwszy element tablicy lub ciągu przekazany. Na przykład, funkcja zwraca `0`:<br /><br /> `first([0,2,3])`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: kolekcji<br /><br /> **Opis elementu**: wymagane. Podjęcie pierwszy obiekt z kolekcji.|  
-|ostatni|Zwraca ostatni element w tablicy lub ciągu przekazany. Na przykład, funkcja zwraca `3`:<br /><br /> `last('0123')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: kolekcji<br /><br /> **Opis elementu**: wymagane. Kolekcja podjęcie ostatni obiekt z.|  
+|Ostatni|Zwraca ostatni element w tablicy lub ciągu przekazany. Na przykład, funkcja zwraca `3`:<br /><br /> `last('0123')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: kolekcji<br /><br /> **Opis elementu**: wymagane. Kolekcja podjęcie ostatni obiekt z.|  
 |podejmij|Zwraca pierwszy **liczba** przekazano elementów z tablicy lub ciągu, na przykład ta funkcja zwraca `[1, 2]`:  `take([1, 2, 3, 4], 2)`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: kolekcji<br /><br /> **Opis elementu**: wymagane. Kolekcja podjęcie pierwszy **liczba** obiektów z.<br /><br /> **Liczba parametrów**: 2<br /><br /> **Nazwa**: liczba<br /><br /> **Opis elementu**: wymagane. Liczba obiektów z **kolekcji**. Musi być dodatnią liczbą całkowitą.|  
 |Pomiń|Zwraca elementy w tablicy, zaczynając od indeksu **liczba**, na przykład ta funkcja zwraca `[3, 4]`:<br /><br /> `skip([1, 2 ,3 ,4], 2)`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: kolekcji<br /><br /> **Opis elementu**: wymagane. Kolekcja, aby pominąć pierwszy **liczba** obiektów z.<br /><br /> **Liczba parametrów**: 2<br /><br /> **Nazwa**: liczba<br /><br /> **Opis elementu**: wymagane. Liczba obiektów, aby usunąć z przodu **kolekcji**. Musi być dodatnią liczbą całkowitą.|  
   

@@ -11,24 +11,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 3f6add6691b0e1f43d70399493fa6bf8db8f3833
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 24954cfc128834313bf13a1917e67d5c1812cf66
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617182"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37058993"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Kopiowanie danych do i z magazynem tabel Azure przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](v1/data-factory-azure-table-connector.md)
-> * [Wersja 2 — wersja zapoznawcza](connector-azure-table-storage.md)
+> * [W wersji 1](v1/data-factory-azure-table-connector.md)
+> * [Bieżąca wersja](connector-azure-table-storage.md)
 
 Ten artykuł przedstawia sposób użycia działanie kopiowania w fabryce danych Azure można skopiować danych do i z magazynem tabel Azure. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólny przegląd działanie kopiowania.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 fabryki danych, która jest ogólnie dostępna, zobacz [tabeli łącznika magazynu w wersji 1](v1/data-factory-azure-table-connector.md).
 
 ## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
@@ -81,11 +78,11 @@ Możesz również utworzyć połączoną usługą magazynu przy użyciu sygnatur
 
 Sygnatury dostępu współdzielonego umożliwiają dostęp delegowany do zasobów na koncie magazynu. Służy on przyznanie klienta ograniczone uprawnienia do obiektów na koncie magazynu przez określony czas i z określonym zestawem uprawnień. Nie trzeba udostępniać klucze dostępu do Twojego konta. Sygnatury dostępu współdzielonego to identyfikator URI, który obejmuje w jego parametrów zapytania, wszystkie informacje niezbędne do uwierzytelniony dostęp do zasobów magazynu. Aby uzyskać dostęp do zasobów magazynu przy użyciu sygnatury dostępu współdzielonego, klient musi tylko Przekaż sygnatury dostępu współdzielonego do odpowiedniego konstruktora lub metody. Aby uzyskać więcej informacji na temat sygnatur dostępu współdzielonego, zobacz [sygnatur dostępu współużytkowanego: zrozumienie modelu sygnatury dostępu współdzielonego](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
-> [!IMPORTANT]
-> Fabryka danych obsługuje obecnie tylko sygnatur dostępu usług udostępnionych, ale nie sygnatur dostępu udostępnionego konta. Aby uzyskać więcej informacji o tych dwóch typów i sposób ich tworzenia, zobacz [rodzaje sygnatur dostępu współdzielonego](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures). Dostępu współdzielonego adres URL sygnatury wygenerowane z portalu Azure lub Eksploratora usługi Storage platformy Azure jest sygnatury dostępu współdzielonego konta, które nie jest obsługiwane.
+> [!NOTE]
+> Fabryka danych obsługuje teraz sygnatur dostępu usług udostępnionych i sygnatur dostępu udostępnionego konta. Aby uzyskać więcej informacji o tych dwóch typów i sposób ich tworzenia, zobacz [rodzaje sygnatur dostępu współdzielonego](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures). 
 
 > [!TIP]
-> Można wykonywać następujące polecenia programu PowerShell, aby wygenerować sygnaturę dostępu współdzielonego usługi dla konta magazynu. Zastąp symbole zastępcze i przyznanie odpowiedniego uprawnienia.
+> Aby wygenerować sygnaturę dostępu współdzielonego usługi dla konta magazynu, można wykonywać następujące polecenia programu PowerShell. Zastąp symbole zastępcze i przyznanie odpowiedniego uprawnienia.
 > `$context = New-AzureStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
 > `New-AzureStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 

@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 03/22/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: 763b0af9c258a70392e8c7ebbb4c107e94fce5b2
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 46e46cfea621f99e150446fcc75b71feb468fa49
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29877283"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052702"
 ---
 # <a name="provider-resource-usage-api"></a>Interfejs API użycia zasobów dostawcy
 Termin *dostawcy* stosuje się do administratora usługi i wszystkich dostawców delegowanego. Azure operatorów stosu i dostawców delegowanego służy użycia dostawcy interfejsu API do wyświetlania użycia bezpośredniego dzierżawcom. Na przykład pokazany na rysunku P0 można wywołać dostawcy interfejsu API, aby uzyskać użycia informacji o jego P1 i P2 przez bezpośredniego użycia i P1 można wywołać użycie informacji na temat P3 i P4.
@@ -34,7 +34,7 @@ Ten interfejs API użycia jest dostawcy interfejsu API, aby obiekt wywołujący 
 
 | **— Metoda** | **Identyfikator URI żądania** |
 | --- | --- |
-| GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce/subscriberUsageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity}&subscriberId={sub1.1}&api-version=2015-06-01-preview&continuationToken={token-value} |
+| GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity} & subscriberId = {sub1.1} & api-version = 2015-06-01-preview & continuationToken = {wartości tokenu} |
 
 ### <a name="arguments"></a>Argumenty
 | **Argument** | **Opis** |
@@ -49,7 +49,7 @@ Ten interfejs API użycia jest dostawcy interfejsu API, aby obiekt wywołujący 
 | *continuationToken* |Token jest pobierana z ostatnim wywołaniem dostawcy użycia interfejsu API. Token ten jest potrzebna, gdy odpowiedź jest większa niż 1000 wierszy i działa jako zakładka postęp. Jeśli token nie jest obecny, dane są pobierane z początku dnia lub przekazano godzinę, w oparciu o stopień szczegółowości. |
 
 ### <a name="response"></a>Odpowiedź
-Pobierz /subscriptions/sub1/providers/Microsoft.Commerce/subscriberUsageAggregates?reportedStartTime=reportedStartTime=2014-05-01T00%3a00%3a00%2b00%3a00 & reportedEndTime = 2015-06-01T00% 3a00% 3a00% 2b00% 3a00 & aggregationGranularity = codziennie & subscriberId = sub1.1 & api-version = 1.0
+Pobierz /subscriptions/sub1/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime=reportedStartTime=2014-05-01T00%3a00%3a00%2b00%3a00 & reportedEndTime = 2015-06-01T00% 3a00% 3a00% 2b00% 3a00 & aggregationGranularity = codziennie & subscriberId = sub1.1 & api-version = 1.0
 
 ```json
 {
@@ -57,11 +57,11 @@ Pobierz /subscriptions/sub1/providers/Microsoft.Commerce/subscriberUsageAggregat
 {
 
 "id":
-"/subscriptions/sub1.1/providers/Microsoft.Commerce/UsageAggregate/sub1.1-
+"/subscriptions/sub1.1/providers/Microsoft.Commerce.Admin/UsageAggregate/sub1.1-
 
 meterID1",
 "name": "sub1.1-meterID1",
-"type": "Microsoft.Commerce/UsageAggregate",
+"type": "Microsoft.Commerce.Admin/UsageAggregate",
 
 "properties": {
 "subscriptionId":"sub1.1",
@@ -82,12 +82,12 @@ meterID1",
 | --- | --- |
 | *id* |Unikatowy identyfikator użycia agregacji. |
 | *Nazwa* |Nazwa wartości zagregowanej użycia. |
-| *Typ* |Definicja zasobu. |
-| *subscriptionId* |Identyfikator subskrypcji użytkownika stosu Azure. |
+| *type* |Definicja zasobu. |
+| *Identyfikator subskrypcji* |Identyfikator subskrypcji użytkownika stosu Azure. |
 | *usageStartTime* |Czas UTC uruchomienie zasobnika użycia, do którego należy ta wartość zagregowana użycia.|
 | *usageEndTime* |Godzina zakończenia UTC zasobnika użycia, do którego należy ta wartość zagregowana użycia. |
 | *instanceData* |Pary klucz wartość Szczegóły wystąpienia (w formacie nowych):<br> *resourceUri*: identyfikator zasobu, który obejmuje grup zasobów i nazwę wystąpienia w pełni kwalifikowana. <br> *Lokalizacja*: regionu, w którym uruchomiono tę usługę. <br> *tagi*: tagi zasobów, które są określone przez użytkownika. <br> *części informacje dodatkowe aby*: więcej szczegółowych informacji o zasobu, który został wykorzystany, na przykład typ wersji lub obrazu systemu operacyjnego. |
-| *Ilość* |Ilość zużycia zasobów, które wystąpiły w tym przedziale czasu. |
+| *ilość* |Ilość zużycia zasobów, które wystąpiły w tym przedziale czasu. |
 | *meterId* |Unikatowy identyfikator zasobu, który został wykorzystany (nazywane również *ResourceID*). |
 
 

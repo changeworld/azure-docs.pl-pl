@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: jingwang
-ms.openlocfilehash: c96d8b273a0e74ced5b121d19e1c3e5343a754b4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 534df0dfef1f69297c5728ed892a5457944e4468
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621823"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052294"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Obsługiwane formaty plików i kodery-dekodery kompresji w fabryce danych Azure
 
@@ -27,9 +27,6 @@ Jeśli chcesz **skopiuj pliki jako — jest** między opartych na plikach magazy
 * [Avro format](#avro-format)
 * [ORC format](#orc-format)
 * [Parquet format](#parquet-format)
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [obsługiwane formaty plików i kompresji w fabryce danych version1](v1//data-factory-supported-file-and-compression-formats.md).
 
 > [!TIP]
 > Dowiedz się, jak aktywność kopiowania mapy źródła danych do zbiornika z [mapowanie schematu w przypadku działania kopiowania](copy-activity-schema-and-type-mapping.md), w tym jak metadanych jest ustalony na podstawie własnych ustawień format pliku i wskazówek gdy do określenia [dataset `structure` ](concepts-datasets-linked-services.md#dataset-structure) sekcji.
@@ -450,8 +447,8 @@ Pamiętaj o następujących kwestiach:
 | Typ danych tymczasowych fabryki danych | Typy ORC |
 |:--- |:--- |
 | Wartość logiczna | Wartość logiczna |
-| Sbyte — | Bajtów |
-| Bajtów | Krótkie |
+| Sbyte — | Bajt |
+| Bajt | Krótkie |
 | Int16 | Krótkie |
 | UInt16 | Int |
 | Int32 | Int |
@@ -459,7 +456,7 @@ Pamiętaj o następujących kwestiach:
 | Int64 | Długie |
 | UInt64 | Ciąg |
 | Pojedyncze | Liczba zmiennoprzecinkowa |
-| O podwójnej precyzji | O podwójnej precyzji |
+| podwójne | podwójne |
 | Decimal | Decimal |
 | Ciąg | Ciąg |
 | DateTime | Sygnatura czasowa |
@@ -495,7 +492,7 @@ Pamiętaj o następujących kwestiach:
 |:--- |:--- |:--- |:--- |
 | Wartość logiczna | Wartość logiczna | ND | ND |
 | Sbyte — | Int32 | Int8 | Int8 |
-| Bajtów | Int32 | UInt8 | Int16 |
+| Bajt | Int32 | UInt8 | Int16 |
 | Int16 | Int32 | Int16 | Int16 |
 | UInt16 | Int32 | UInt16 | Int32 |
 | Int32 | Int32 | Int32 | Int32 |
@@ -503,7 +500,7 @@ Pamiętaj o następujących kwestiach:
 | Int64 | Int64 | Int64 | Int64 |
 | UInt64 | Int64/danych binarnych | UInt64 | Decimal |
 | Pojedyncze | Liczba zmiennoprzecinkowa | ND | ND |
-| O podwójnej precyzji | O podwójnej precyzji | ND | ND |
+| podwójne | podwójne | ND | ND |
 | Decimal | Binarny | Decimal | Decimal |
 | Ciąg | Binarny | Utf8 | Utf8 |
 | DateTime | Int96 | ND | ND |

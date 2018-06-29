@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/24/2018
+ms.date: 06/27/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: aca67ceff2650a5470b1c08b20c21d71f00bae62
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: eae350f751788eb09271e70f71f79b12e27c4e16
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751534"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061405"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Dołącz do środowiska uruchomieniowego integracji usług SSIS Azure do sieci wirtualnej
 Dołącz do programu Azure SSIS integracji runtime (IR) do sieci wirtualnej platformy Azure w następujących scenariuszach: 
@@ -27,10 +27,7 @@ Dołącz do programu Azure SSIS integracji runtime (IR) do sieci wirtualnej plat
 
 - Obsługiwana baza danych katalogu usług SQL Server Integration Services (SSIS) w bazie danych SQL Azure z punktów końcowych usługi sieci wirtualnej/zarządzane wystąpienia (wersja zapoznawcza). 
 
- Fabryka danych Azure w wersji 2 (wersja zapoznawcza) umożliwia dołączenie Twojego środowiska uruchomieniowego integracji usług SSIS Azure do sieci wirtualnej, która została utworzona za pośrednictwem klasycznego modelu wdrażania lub modelu wdrażania usługi Azure Resource Manager. 
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest zazwyczaj dostępności (GA), zobacz [fabryki danych w wersji 1 dokumentacji](v1/data-factory-introduction.md). 
+ Fabryka danych Azure umożliwia dołączenie Twojego środowiska uruchomieniowego integracji usług SSIS Azure do sieci wirtualnej, która została utworzona za pośrednictwem klasycznego modelu wdrażania lub modelu wdrażania usługi Azure Resource Manager. 
 
 ## <a name="access-to-on-premises-data-stores"></a>Dostęp do lokalnych magazynów danych
 Pakiety usług SSIS dostęp do chmury publicznej tylko magazynów danych, nie trzeba dołączyć IR Azure SSIS do sieci wirtualnej. Jeśli pakiety usług SSIS uzyskać dostęp do lokalnych magazynów danych, IR Azure SSIS należy dołączyć do sieci wirtualnej, która jest połączona z siecią lokalną. 
@@ -114,7 +111,10 @@ Jeśli masz obawy utraty możliwości inspekcji wychodzący ruch internetowy poc
 Zobacz [ten skrypt programu PowerShell](https://gallery.technet.microsoft.com/scriptcenter/Adds-Azure-Datacenter-IP-dbeebe0c) przykład. Należy uruchomić skrypt co tydzień w celu zapewnienia aktualności listy adresów IP centrum danych Azure. 
 
 ### <a name="resource-group"></a> Wymagania dla grupy zasobów.
-IR Azure SSIS potrzebuje do utworzenia niektórych zasobów sieciowych w grupie zasobów co sieć wirtualna, w tym do modułu równoważenia obciążenia Azure, Azure publicznego adresu IP i grupę zabezpieczeń sieci. 
+-   IR Azure SSIS potrzebuje do utworzenia niektórych zasobów sieciowych w grupie zasobów co sieć wirtualna. Te zasoby obejmują następujące czynności:
+    -   Moduł równoważenia obciążenia Azure, o nazwie  *<Guid>cloudserviceloadbalancer - azurebatch*.
+    -   Azure publiczny adres IP, nazwą  *<Guid>cloudservicepublicip - azurebatch*.
+    -   Grupa zabezpieczeń sieci pracy, o nazwie  *<Guid>cloudservicenetworksecuritygroup - azurebatch*. 
 
 -   Upewnij się, że nie masz żadnych Blokada zasobu, grupy zasobów lub subskrypcji, do którego należy sieć wirtualna. Jeśli skonfigurujesz blokady tylko do odczytu lub usunięcia blokady uruchamianie i zatrzymywanie IR może zakończyć się niepowodzeniem lub zawieszenie. 
 

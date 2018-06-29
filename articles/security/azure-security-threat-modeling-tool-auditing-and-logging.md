@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 3f1933fc59862eca7ae6ee40bbd5136e449e5cf1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8837dfaf156e5a4d07598f2c58694663a9ff5580
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23926746"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029985"
 ---
 # <a name="security-frame-auditing-and-logging--mitigations"></a>Ramka zabezpieczeń: Inspekcji i rejestrowania | Środki zaradcze 
 | Produktów i usług | Artykuł |
@@ -35,106 +35,106 @@ ms.locfileid: "23926746"
 
 ## <a id="sensitive-entities"></a>Identyfikowania poufnych jednostek w rozwiązaniu i implementować inspekcji zmian
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Dynamics CRM | 
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | Ogólny |
-| **Atrybuty**              | Nie dotyczy  |
-| **Odwołania**              | Nie dotyczy  |
+| **Atrybuty**              | ND  |
+| **Odwołania**              | ND  |
 | **Kroki**                   | Identyfikowanie jednostek w rozwiązaniu zawierające dane poufne i implementować inspekcji zmian w tych jednostek i pól |
 
 ## <a id="auditing"></a>Upewnij się, czy przeprowadzania inspekcji i rejestrowania są wymuszane na aplikację
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | Ogólny |
-| **Atrybuty**              | Nie dotyczy  |
-| **Odwołania**              | Nie dotyczy  |
+| **Atrybuty**              | ND  |
+| **Odwołania**              | ND  |
 | **Kroki**                   | Włączanie inspekcji i rejestrowania dla wszystkich składników. Dzienniki inspekcji należy przechwytywać kontekstu użytkownika. Zidentyfikuj wszystkie zdarzenia ważne i dziennika zdarzeń. Implementowanie funkcji centralnego rejestrowania |
 
 ## <a id="log-rotation"></a>Upewnij się, że rotacji dziennika i oddzielenie zostały spełnione
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | Ogólny |
-| **Atrybuty**              | Nie dotyczy  |
-| **Odwołania**              | Nie dotyczy  |
+| **Atrybuty**              | ND  |
+| **Odwołania**              | ND  |
 | **Kroki**                   | <p>Rotacji dziennika jest używany w administracji systemu, w którym są archiwizowane pliki dziennika z zautomatyzowany proces. Serwery, które często uruchamiać aplikacje dużych rejestrować wszystkie żądania: w wypadku przestrzennych dzienniki rotacji dziennika to sposób ograniczyć całkowity rozmiar dzienników, umożliwiając analizy ostatnie zdarzenia. </p><p>Zaloguj się oddzielenie zasadniczo oznacza, że masz do przechowywania dziennika, pliki na partycji innej jako gdzie OS/aplikacja jest uruchomiona celu zapobieżenia obniżenie aplikacji lub typu "odmowa usługi" jego wydajność,</p>|
 
 ## <a id="log-sensitive-data"></a>Upewnij się, że aplikacja nie rejestruje danych poufnych użytkownika
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | Ogólny |
-| **Atrybuty**              | Nie dotyczy  |
-| **Odwołania**              | Nie dotyczy  |
+| **Atrybuty**              | ND  |
+| **Odwołania**              | ND  |
 | **Kroki**                   | <p>Sprawdź, czy dane poufne, które użytkownik prześle nie logowania do witryny. Sprawdź, czy zamierzone rejestrowania, a także efekty uboczne spowodowane przez problemy z projektu. Przykłady danych poufnych:</p><ul><li>Poświadczenia użytkownika</li><li>Numer ubezpieczenia społecznego i inne informacje identyfikacyjne</li><li>Numer karty kredytowej lub inne informacje finansowe</li><li>Informacje o kondycji</li><li>Klucze prywatne lub innych danych, która może posłużyć do odszyfrowania zaszyfrowanych informacji</li><li>Informacje systemu lub aplikacji, które umożliwia bardziej efektywne ataki aplikacji</li></ul>|
 
 ## <a id="log-restricted-access"></a>Upewnij się, że inspekcja i pliki dziennika mają dostęp ograniczony
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | Ogólny |
-| **Atrybuty**              | Nie dotyczy  |
-| **Odwołania**              | Nie dotyczy  |
+| **Atrybuty**              | ND  |
+| **Odwołania**              | ND  |
 | **Kroki**                   | <p>Sprawdź prawa dostępu do plików dziennika jest skonfigurowana. Konta aplikacji powinny mieć dostęp tylko do zapisu i operatory i pomocy technicznej powinien mieć dostęp tylko do odczytu, zgodnie z potrzebami.</p><p>Konta administratorów są to jedyne konta, które ma pełny dostęp. Sprawdź ACL systemu Windows pliki dziennika na upewnij się, że są one poprawnie ograniczeniami:</p><ul><li>Konta aplikacji powinny mieć dostęp tylko do zapisu</li><li>Operatory i personel pomocy technicznej powinien mieć dostęp tylko do odczytu, w razie potrzeby</li><li>Administratorzy są to jedyne konta, które ma pełny dostęp</li></ul>|
 
 ## <a id="user-management"></a>Upewnij się, że użytkownik administracyjny zdarzenia są rejestrowane
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | Ogólny |
-| **Atrybuty**              | Nie dotyczy  |
-| **Odwołania**              | Nie dotyczy  |
+| **Atrybuty**              | ND  |
+| **Odwołania**              | ND  |
 | **Kroki**                   | <p>Upewnij się, że aplikacja monitoruje zdarzeń zarządzania użytkownika, takich jak nazwy logowania użytkownika udane i nieudane, resetowania haseł, zmiany hasła, zablokowania konta, rejestracja użytkownika. Wykonywanie ułatwia wykrywanie i reagowanie na podejrzanego zachowania. Umożliwia również zbieranie danych operacji; na przykład, aby śledzić kto uzyskuje dostęp do aplikacji</p>|
 
 ## <a id="inbuilt-defenses"></a>Upewnij się, że system ma wbudowane zabezpieczenia przed niewłaściwym użyciem
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | Ogólny |
-| **Atrybuty**              | Nie dotyczy  |
-| **Odwołania**              | Nie dotyczy  |
-| **Kroki**                   | <p>Formanty powinny zostać zastosowane którego zgłosić wyjątek zabezpieczeń w razie niewłaściwego użycia aplikacji. Np. jeśli atakujący podejmie próbę wprowadzenia złośliwego kodu, który nie pasuje do wyrażenia regularnego sprawdzania poprawności danych wejściowych jest już na miejscu, wyjątek zabezpieczeń może zostać wygenerowany może to przykładowy nadużycia systemu</p><p>Na przykład zalecane jest zostały zarejestrowane wyjątki zabezpieczeń oraz działania podjęte w następujących kwestiach:</p><ul><li>Sprawdzania poprawności danych wejściowych</li><li>Naruszenia CSRF</li><li>Atak siłowy (górny limit liczby żądań na użytkownika na zasobów)</li><li>Naruszeń przekazywania pliku</li><ul>|
+| **Atrybuty**              | ND  |
+| **Odwołania**              | ND  |
+| **Kroki**                   | <p>Formanty powinny zostać zastosowane którego zgłosić wyjątek zabezpieczeń w razie niewłaściwego użycia aplikacji. Np. jeśli atakujący podejmie próbę wprowadzenia złośliwego kodu, który nie pasuje do wyrażenia regularnego sprawdzania poprawności danych wejściowych jest już na miejscu, wyjątek zabezpieczeń może zostać wygenerowany może to przykładowy nadużycia systemu</p><p>Na przykład zalecane jest zostały zarejestrowane wyjątki zabezpieczeń oraz działania podjęte w następujących kwestiach:</p><ul><li>Walidacja danych wejściowych</li><li>Naruszenia CSRF</li><li>Atak siłowy (górny limit liczby żądań na użytkownika na zasobów)</li><li>Naruszeń przekazywania pliku</li><ul>|
 
 ## <a id="diagnostics-logging"></a>Włączanie rejestrowania diagnostyki dla aplikacji sieci web w usłudze aplikacji Azure
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | Ogólny |
 | **Atrybuty**              | EnvironmentType - Azure |
-| **Odwołania**              | Nie dotyczy  |
-| **Kroki** | <p>Platforma Azure oferuje wbudowane narzędzia diagnostyczne z usługi aplikacji — profilowanie aplikacji sieci web. Ma również zastosowanie do aplikacji interfejsu API i aplikacji mobilnych. Aplikacje sieci web usługi aplikacji udostępniają funkcje diagnostyczne dla rejestrowanie informacji z serwera sieci web i aplikacji sieci web.</p><p>Te logicznie podzielone na diagnostyki serwera sieci web i diagnostyki aplikacji</p>|
+| **Odwołania**              | ND  |
+| **Kroki** | <p>Platforma Azure udostępnia wbudowaną funkcję diagnostyki, która pomaga w debugowaniu aplikacji internetowej usługi App Service. Ma również zastosowanie do aplikacji interfejsu API i aplikacji mobilnych. Aplikacje sieci web usługi aplikacji udostępniają funkcje diagnostyczne dla rejestrowanie informacji z serwera sieci web i aplikacji sieci web.</p><p>Te logicznie podzielone na diagnostyki serwera sieci web i diagnostyki aplikacji</p>|
 
 ## <a id="identify-sensitive-entities"></a>Upewnij się, że inspekcja logowania jest włączona na serwerze SQL
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | Ogólny |
-| **Atrybuty**              | Nie dotyczy  |
+| **Atrybuty**              | ND  |
 | **Odwołania**              | [Konfigurowanie inspekcji logowania](https://msdn.microsoft.com/library/ms175850.aspx) |
 | **Kroki** | <p>Inspekcja logowania serwera bazy danych musi być włączony do wykrywania potwierdzić na odgadnięcie hasła ataków. Jest ważne przechwycić nieudanych prób logowania. Przechwytywanie prób zarówno udane i nieudane logowania zapewnia dodatkowych korzyści podczas badania śledczej</p>|
 
 ## <a id="threat-detection"></a>Włączyć wykrywanie zagrożeń SQL Azure
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
@@ -145,24 +145,24 @@ ms.locfileid: "23926746"
 
 ## <a id="analytics"></a>Przeprowadź inspekcję dostępu do usługi Azure Storage za pomocą analityka magazynu Azure
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Storage | 
 | **Faza SDL**               | Wdrożenie |  
 | **Zastosowanie technologii** | Ogólny |
-| **Atrybuty**              | Nie dotyczy |
+| **Atrybuty**              | ND |
 | **Odwołania**              | [Przy użyciu magazynu Analytics można monitorować typu autoryzacji](https://azure.microsoft.com/documentation/articles/storage-security-guide/#storage-analytics) |
 | **Kroki** | <p>Dla każdego konta magazynu co można włączyć analityka magazynu Azure do przechowywania danych metryki i wykonywać rejestrowanie. Dzienniki analityka magazynu zawierają istotne informacje, takie jak metodę uwierzytelniania używaną przez osobę przy uzyskiwaniu dostępu do magazynu.</p><p>Może to być naprawdę pomocne, jeśli są ściśle ochrona dostępu do magazynu. Na przykład w magazynie obiektów Blob można ustawić opcję prywatne dla wszystkich kontenerów i implementować korzystania z usługi SAS w całej aplikacji. Następnie można sprawdzić dzienniki regularnie, aby sprawdzić, czy obiektów blob są dostępne przy użyciu kluczy konta magazynu, które mogą wskazywać naruszenia zabezpieczeń, lub jeśli obiekty BLOB są publiczne, ale nie powinny być one.</p>|
 
 ## <a id="sufficient-logging"></a>Implementowanie wystarczające rejestrowania
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | .NET framework |
-| **Atrybuty**              | Nie dotyczy  |
-| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [uzyskania zawartości Królestwo](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Zastosowanie technologii** | .NET Framework |
+| **Atrybuty**              | ND  |
+| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [uzyskania zawartości Królestwo](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_logging) |
 | **Kroki** | <p>Brak dziennik inspekcji właściwe po zdarzenia zabezpieczeń mogą utrudniać śledczej działań. Windows Communication Foundation (WCF) oferuje możliwość rejestrowania prób uwierzytelnienia się pomyślnie i/lub nie powiodło się.</p><p>Rejestrowanie nieudanych prób uwierzytelnienia może zostać wyświetlone ostrzeżenie administratorów o potencjalnych ataków siłowych. Podobnie rejestrowanie zdarzeń pomyślnego uwierzytelnienia zapewniają dziennik inspekcji przydatne w przypadku złamania zabezpieczeń konta uprawnionego. Włączanie funkcji inspekcji zabezpieczeń usługi WCF w |
 
 ### <a name="example"></a>Przykład
@@ -185,13 +185,13 @@ Poniżej przedstawiono przykładową konfigurację po włączeniu inspekcji
 
 ## <a id="audit-failure-handling"></a>Implementowanie obsługi wystarczające Niepowodzenie inspekcji
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | .NET framework |
-| **Atrybuty**              | Nie dotyczy  |
-| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [uzyskania zawartości Królestwo](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Zastosowanie technologii** | .NET Framework |
+| **Atrybuty**              | ND  |
+| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [uzyskania zawartości Królestwo](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_audit_failure_handling) |
 | **Kroki** | <p>Rozwinięte rozwiązanie z konfiguracją nie można wygenerować wyjątek po błędzie do zapisania w dzienniku inspekcji. Jeśli WCF z konfiguracją nie można zgłosić wyjątek, gdy nie można zapisać do dziennika inspekcji, program nie zostanie poinformowany o awarii i inspekcję zdarzeń zabezpieczenia krytyczne mogą nie być wykrywane.</p>|
 
 ### <a name="example"></a>Przykład
@@ -212,33 +212,33 @@ Konfigurowanie usługi WCF do powiadamiania programu, jeśli to nie można zapis
 
 ## <a id="logging-web-api"></a>Upewnij się, że inspekcji i rejestrowania są wymuszane na interfejs API sieci Web
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Interfejs API sieci Web | 
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | Ogólny |
-| **Atrybuty**              | Nie dotyczy  |
-| **Odwołania**              | Nie dotyczy  |
+| **Atrybuty**              | ND  |
+| **Odwołania**              | ND  |
 | **Kroki** | Włączanie inspekcji i rejestrowania na interfejsów API sieci Web. Dzienniki inspekcji należy przechwytywać kontekstu użytkownika. Zidentyfikuj wszystkie zdarzenia ważne i dziennika zdarzeń. Implementowanie funkcji centralnego rejestrowania |
 
 ## <a id="logging-field-gateway"></a>Upewnij się, czy odpowiedniej inspekcji i rejestrowania są wymuszane na pole bramy
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Pole IoT bramy | 
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | Ogólny |
-| **Atrybuty**              | Nie dotyczy  |
-| **Odwołania**              | Nie dotyczy  |
+| **Atrybuty**              | ND  |
+| **Odwołania**              | ND  |
 | **Kroki** | <p>Wiele urządzeń nawiązania połączenia bramy pola, upewnij się, że próby nawiązania połączenia i stanu uwierzytelniania (powodzenie lub niepowodzenie) dla poszczególnych urządzeń są rejestrowane i przechowywany w polu Brama.</p><p>Ponadto w przypadkach, gdy pole bramy jest obsługę Centrum IoT poświadczenia dla poszczególnych urządzeń, upewnij się, że inspekcja jest wykonywane, gdy te poświadczenia są pobierane. Tworzenie procesu okresowo przekazywania dzienników do platformy Azure IoT Hub i magazynowania dla długi okres przechowywania.</p> |
 
 ## <a id="logging-cloud-gateway"></a>Upewnij się, czy odpowiednie inspekcji i rejestrowania są wymuszane na bramy chmury
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Brama chmury IoT | 
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | Ogólny |
-| **Atrybuty**              | Nie dotyczy  |
+| **Atrybuty**              | ND  |
 | **Odwołania**              | [Wprowadzenie do monitorowania operacji centrum IoT](https://azure.microsoft.com/documentation/articles/iot-hub-operations-monitoring/) |
 | **Kroki** | <p>Projekt do gromadzenia i przechowywania danych inspekcji zebranych przez monitorowanie operacji centrum IoT. Włącz monitorowanie następujących kategorii:</p><ul><li>Operacje tożsamości urządzenia</li><li>Komunikacja urządzenia do chmury</li><li>Komunikacja z chmury do urządzenia</li><li>Połączenia</li><li>Przekazywania plików</li></ul>|

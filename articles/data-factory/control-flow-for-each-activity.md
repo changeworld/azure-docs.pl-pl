@@ -13,18 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 2240ebc7fb4fd39ea063240987fec64f26608a8a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a029cb815f7765e6fe4e2fdbf81d437d5ac4ebe3
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619052"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047585"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Działania ForEach w fabryce danych Azure
 Działania ForEach definiuje identycznych przepływu sterowania w potoku sieci. To działanie służy do wykonywania iteracji po kolekcji i wykonuje określone działania w pętli. Implementacja pętli tego działania przypomina strukturę pętli Foreach w językach programowania.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [dokumentacji V1 fabryki danych](v1/data-factory-introduction.md).
 
 ## <a name="syntax"></a>Składnia
 Właściwości opisane w dalszej części tego artykułu. Właściwości elementów jest kolekcją i każdego elementu w kolekcji jest określana za pomocą `@item()` zgodnie z poniższą składnią:  

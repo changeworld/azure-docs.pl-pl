@@ -1,25 +1,26 @@
 ---
-title: Scenariusze danych dotyczących usługi Data Lake Store | Dokumentacja firmy Microsoft
-description: Zapoznanie się z różnych scenariuszy i narzędzi przy użyciu danych można pozyskanych, przetwarzane pobrane i wizualizowane w Data Lake Store
+title: Scenariusze danych obejmujących Data Lake magazynu Gen1 | Dokumentacja firmy Microsoft
+description: Zapoznanie się z różnych scenariuszy i narzędzi przy użyciu danych można pozyskanych, przetwarzane pobrane i wizualizowane w Gen1 magazynu Lake danych (wcześniej znana jako Azure Data Lake Store)
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: 37409a71-a563-4bb7-bc46-2cbd426a2ece
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/29/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: cc48bf011d95b3e60a78d2102d88dc188155ddc1
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: e0c7ed22762ef19c6e68ad69d0cabcfeb8007251
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/27/2018
-ms.locfileid: "37017372"
+ms.locfileid: "37031043"
 ---
-# <a name="using-azure-data-lake-store-for-big-data-requirements"></a>Za pomocą usługi Azure Data Lake Store wymagania danych big data
+# <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Za pomocą usługi Azure Data Lake magazynu Gen1 wymagania danych big data
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
 Istnieją cztery etapy klucza podczas przetwarzania danych big:
 
 * Wprowadzania dużych ilości danych do magazynu danych, w czasie rzeczywistym lub w partiach

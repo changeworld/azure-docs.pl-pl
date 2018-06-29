@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2018
+ms.date: 06/27/2018
 ms.author: maheshu
-ms.openlocfilehash: 4263034408de059880b91e8106f6832ccacc6085
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 5838dbefab9f7100ed4776eebef7a1d07d2db1a6
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300972"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061049"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurowanie bezpiecznego protokołu LDAP (LDAPS) dla domeny zarządzanej usług domenowych Azure AD
 
@@ -48,7 +48,7 @@ Aby włączyć bezpiecznego protokołu LDAP, wykonaj następujące kroki konfigu
 4. Bezpieczny dostęp LDAP do domeny zarządzanej jest domyślnie wyłączona. Przełącz **bezpieczny protokół LDAP** do **włączyć**.
 
     ![Włącz bezpieczny protokół LDAP](./media/active-directory-domain-services-admin-guide/secure-ldap-blade-configure.png)
-5. Domyślnie bezpieczny dostęp LDAP do domeny zarządzanej za pośrednictwem Internetu jest wyłączona. Przełącz **zapewnia bezpieczny dostęp LDAP w Internecie** do **włączyć**, jeśli to konieczne. 
+5. Domyślnie bezpieczny dostęp LDAP do domeny zarządzanej za pośrednictwem Internetu jest wyłączona. Przełącz **zapewnia bezpieczny dostęp LDAP w Internecie** do **włączyć**, jeśli to konieczne.
 
     > [!WARNING]
     > Po włączeniu bezpiecznego dostępu LDAP w Internecie domeny jest podatny na hasła ataków siłowych za pośrednictwem Internetu. Dlatego zaleca się skonfigurowanie grupy NSG do blokowania dostępu do zakresów adresów IP wymagana źródła. Zapoznaj się z instrukcjami, aby [blokowania dostępu LDAPS do domeny zarządzanej za pośrednictwem Internetu](#task-5---lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet).
@@ -111,6 +111,23 @@ W poniższej tabeli przedstawiono przykład grupy NSG można skonfigurować do b
 
 <br>
 
+## <a name="bind-to-the-managed-domain-over-ldap-using-ldpexe"></a>Powiązanie do domeny zarządzanej za pośrednictwem protokołu LDAP przy użyciu LDP.exe
+Można użyć narzędzia LDP.exe, który jest dostępny w pakiecie narzędzia administracji zdalnej serwera wyszukiwania za pośrednictwem protokołu LDAP i powiązać.
+
+Najpierw należy otworzyć przystawkę LDP i połącz się z domeną zarządzanych. Kliknij przycisk **połączenia** i kliknij przycisk **połączenia...**  w menu. Określ nazwę domeny DNS domeny zarządzanej. Określ port używany dla połączenia. W przypadku połączeń LDAP należy użyć portu 389. W przypadku połączeń LDAPS używać portu 636. Kliknij przycisk **OK** przycisk, aby połączyć się do domeny zarządzanej.
+
+Następnie należy powiązać z domeny zarządzanej. Kliknij przycisk **połączenia** i kliknij przycisk **powiązać...**  w menu. Podaj poświadczenia konta użytkownika należącego do grupy "Administratorzy usługi AAD kontrolera domeny".
+
+Wybierz **widoku**, a następnie wybierz **drzewa** w menu. Bazowa nazwa Wyróżniająca pole jest puste, a następnie kliknij przycisk OK. Przejdź do kontenera, który chcesz wyszukać, kliknij prawym przyciskiem myszy kontener, a następnie wybierz wyszukiwania.
+
+> [!TIP]
+> - Użytkownicy i grupy synchronizowane z usługi Azure AD są przechowywane w **użytkowników AADDC** kontenera. Ścieżka wyszukiwania dla tego kontenera wygląda jak ```CN=AADDC\ Users,DC=CONTOSO100,DC=COM```.
+> - Konta komputerów dla komputery przyłączone do domeny zarządzanej są przechowywane w **komputerów AADDC** kontenera. Ścieżka wyszukiwania dla tego kontenera wygląda jak ```CN=AADDC\ Computers,DC=CONTOSO100,DC=COM```.
+>
+>
+
+Więcej informacji - [podstawy kwerendy LDAP](https://technet.microsoft.com/library/aa996205.aspx)
+
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 Jeśli masz problemy z połączeniem do domeny zarządzanej przy użyciu bezpiecznego protokołu LDAP, wykonaj następujące kroki:
@@ -129,6 +146,7 @@ Jeśli masz problemy z połączeniem do domeny zarządzanej przy użyciu bezpiec
 ## <a name="related-content"></a>Zawartość pokrewna
 * [Usługi domenowe AD Azure - Przewodnik wprowadzający](active-directory-ds-getting-started.md)
 * [Administrowanie domeną zarządzaną usług Azure AD Domain Services](active-directory-ds-admin-guide-administer-domain.md)
+* [Podstawowe informacje o zapytań LDAP](https://technet.microsoft.com/library/aa996205.aspx)
 * [Administrowanie zasad grupy w domenie zarządzanej usług domenowych Azure AD](active-directory-ds-admin-guide-administer-group-policy.md)
 * [Sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md)
 * [Utwórz grupę zabezpieczeń sieci](../virtual-network/tutorial-filter-network-traffic.md)

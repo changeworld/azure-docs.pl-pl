@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a4cf32ea7b77db3fc78a404063b8a4d69ecebf58
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 32cc1a436521574917c8e52b2fa4e045d32a4f09
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195713"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062578"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Uruchomione elementy runbook na hybrydowy proces roboczy elementu Runbook
 
-Nie ma różnic w strukturze elementów runbook, które są uruchamiane w automatyzacji Azure oraz te, które uruchamiane na hybrydowy proces roboczy elementu Runbook. Elementy Runbook korzystające z każdym najprawdopodobniej różnią się znacznie jednak ponieważ elementy runbook, elementów docelowych hybrydowy proces roboczy elementu Runbook, zwykle zarządzać zasobami na komputerze lokalnym lub w odniesieniu do zasobów w środowisku lokalnym, w których jest wdrożona, gdy elementy runbook automatyzacji Azure zazwyczaj zarządzać zasobami w chmurze Azure.
+Nie ma różnic w strukturze elementów runbook, które są uruchamiane w automatyzacji Azure oraz te, które uruchamiane na hybrydowy proces roboczy elementu Runbook. Elementy Runbook korzystające z każdym najprawdopodobniej różnią się znacznie jednak ponieważ elementy runbook, zwykle przeznaczonych dla hybrydowego procesu roboczego elementu Runbook zarządzanie zasobami na komputerze lokalnym lub względem zasobów, w których jest wdrożona, podczas elementów runbook w środowisku lokalnym Automatyzacja Azure zazwyczaj zarządzać zasobami w chmurze Azure.
 
 Podczas tworzenia elementów runbook do uruchamiania na hybrydowy proces roboczy elementu Runbook, należy edytować i testowania elementów runbook na maszynie, który jest hostem hybrydowy proces roboczy. Komputer hosta zawiera wszystkie moduły programu PowerShell i dostępu do sieci, które należy do zarządzania i dostęp do zasobów lokalnych. Gdy element runbook został edytować i przetestowane na maszynie hybrydowego procesu roboczego, można przekazać jej do środowiska usługi Automatyzacja Azure, w których jest dostępna do uruchamiania w hybrydowy proces roboczy. Ważne jest, aby dowiedzieć się, że zadania uruchomione w ramach lokalnego konta systemowego dla systemu windows lub specjalne konto użytkownika **nxautomation** w systemie Linux, które mogą stać się niewielkie różnice podczas tworzenia elementów runbook dla procesu roboczego elementu Runbook na hybrydowego powinna to być brana pod uwagę.
 
@@ -79,7 +79,7 @@ Aby określić konto Uruchom jako dla grupy hybrydowych procesów roboczych, uż
 
 W ramach procesu kompilacji automatycznego wdrażania zasobów na platformie Azure mogą wymagać dostępu do lokalnego systemów do obsługi zadań lub zestaw kroków w sekwencji wdrożenia. Do obsługi uwierzytelniania przy użyciu konta Uruchom jako platformy Azure, należy zainstalować certyfikat konta Uruchom jako.
 
-Następujący element runbook programu PowerShell *RunAsCertificateToHybridWorker eksportu*, umożliwia wyeksportowanie certyfikatu uruchom jako z konta usługi Automatyzacja Azure i pliki do pobrania i zaimportowanie go do magazynu certyfikatów komputera lokalnego na hybrydowy proces roboczy podłączony do tego samego konta. Po ukończeniu tego kroku sprawdza to, czy Proces roboczy może pomyślnie wykonać uwierzytelnienia na platformie Azure przy użyciu konta Uruchom jako.
+Następujący element runbook programu PowerShell *RunAsCertificateToHybridWorker eksportu*, umożliwia wyeksportowanie certyfikatu uruchom jako z konta usługi Automatyzacja Azure i pliki do pobrania i zaimportowanie go do magazynu certyfikatów komputera lokalnego na hybrydowego proces roboczy podłączony do tego samego konta. Po ukończeniu tego kroku sprawdza to, czy Proces roboczy może pomyślnie wykonać uwierzytelnienia na platformie Azure przy użyciu konta Uruchom jako.
 
 ```azurepowershell-interactive
 <#PSScriptInfo
@@ -157,13 +157,9 @@ Zapisz *RunAsCertificateToHybridWorker eksportu* runbook na komputerze z `.ps1` 
 
 Zadania są obsługiwane nieco inne w hybrydowych procesów roboczych elementu Runbook, niż uruchamianych na Azure obszarów izolowanych. Jednego klucza różnica polega na tym, że nie ma żadnego limitu na czas trwania zadania na hybrydowych procesów roboczych elementu Runbook. Jeśli element runbook długotrwałe chcesz zapewnić odporność na możliwe ponowne uruchomienie, na przykład jeśli ponowne uruchomienie komputera, który jest hostem hybrydowy proces roboczy. Jeśli komputer hosta hybrydowy proces roboczy zostanie uruchomiony ponownie, wszystkie uruchomione zadania elementu runbook uruchamia ponownie od samego początku, lub z ostatniego punktu kontrolnego dla elementów runbook przepływu pracy programu PowerShell. Jeśli zadanie elementu runbook zostanie ponownie uruchomiony więcej niż 3 razy, następnie jest wstrzymana.
 
-## <a name="troubleshooting-runbooks-on-hybrid-runbook-worker"></a>Rozwiązywanie problemów z elementów runbook na hybrydowy proces roboczy elementu Runbook
+## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-Dzienniki są przechowywane lokalnie na każdym hybrydowy proces roboczy na C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. Hybrydowe procesy robocze również rejestrowania błędów i zdarzeń w dzienniku zdarzeń systemu Windows w obszarze **aplikacji i usług Logs\Microsoft-SMA\Operational**. Zdarzenia związane z elementami runbook wykonywane w procesie roboczym są zapisywane w **aplikacji i usług Logs\Microsoft-Automation\Operational**. **Microsoft SMA** dziennika zawiera wiele więcej zdarzeń związanych z zadania elementu runbook do elementu roboczego i przetwarzania elementu runbook. Gdy **automatyzacji Microsoft** dziennika zdarzeń nie ma wiele zdarzeń przy użyciu szczegółów pomoc w rozwiązywaniu problemów z wykonanie elementu runbook, zawiera wyniki zadań elementu runbook.
-
-[Runbook dane wyjściowe i komunikaty](automation-runbook-output-and-messages.md) są wysyłane do usługi Automatyzacja Azure z hybrydowych procesów roboczych, podobnie jak zadania elementów runbook działają w chmurze. Można również włączyć pełne i postępu strumienie tak samo jak dla innych elementów runbook.
-
-Jeśli elementy runbook nie są pomyślnie wykonywane zadanie podsumowania przedstawia stan **zawieszone**, przejrzyj artykuł dotyczący rozwiązywania problemów [hybrydowy proces roboczy elementu Runbook: kończy zadanie elementu runbook o stanie Suspended](automation-troubleshooting-hybrid-runbook-worker.md#a-runbook-job-terminates-with-a-status-of-suspended).
+Jeśli elementy runbook nie są pomyślnie wykonywane zadanie podsumowania przedstawia stan **zawieszone**, przejrzyj podręczniku rozwiązywania problemów na [błędy wykonania elementu runbook](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

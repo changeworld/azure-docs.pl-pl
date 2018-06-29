@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 06/27/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: ee4321b905396f78e7dad9248b9e377dad250a13
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 1a516c890441c3b703d43f31816b7c37cac364fd
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010979"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054385"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Wersje interfejsu API dostawcy zasobów obsługiwane przez profile w stosie Azure
 
@@ -26,7 +26,7 @@ Dla każdego profilu interfejsu API używanych przez stos Azure w tym artykule m
 
 Profil interfejsu API używa trzech konwencji nazewnictwa:
  - najnowsza
- - Rrrr mm-dd hybrydowego
+ - rrrr mm-dd hybrydowego
  - rrrr mm-dd profilu
 
 Opis profilów interfejsu API oraz wersji release okresach stosu Azure można znaleźć [profile wersji Zarządzanie interfejsu API w stosie Azure](azure-stack-version-profiles.md).
@@ -144,11 +144,14 @@ Obliczeniowe interfejsów API usługi Azure umożliwiają programowy dostęp do 
 
 | Typy zasobów | Wersje interfejsu API |
 |--------------------|--------------------|
-| Reguły alertów | 2016-03-01 |
-| Kategorie zdarzeń | 2017-03-01-preview |
-| Rodzaje wydarzeń | 2017-03-01-preview |
-| Definicje metryk | 2016-03-01 |
 | Operacje | 2015-04-01 |
+| Rodzaje wydarzeń | 2015-04-01 |
+| Kategorie zdarzeń | 2015-04-01 |
+| Definicje metryk | 2018-01-01 |
+| Metryki | 2018-01-01 |
+| Ustawienia diagnostyki | 2017-05-01-preview |
+| Kategorie ustawień diagnostycznych | 2017-05-01-preview |
+
 
 ### <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 

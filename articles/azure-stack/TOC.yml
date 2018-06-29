@@ -294,15 +294,15 @@
             - name: Oferują klastra Kubernetes
               href: azure-stack-solution-template-kubernetes-cluster-add.md
         - name: Użycie i rozliczenia
+          href: azure-stack-billing-and-chargeback.md
           items:
-            - name: Przegląd
-              href: azure-stack-billing-and-chargeback.md
             - name: Zarządzanie użycia i rozliczeń jako dostawcy usług Kryptograficznych
               href: azure-stack-add-manage-billing-as-a-csp.md
-            - name: Dodaj dzierżaw użycia i rozliczeń
-              href: azure-stack-csp-howto-register-tenants.md
-            - name: Zarządzanie rejestracją dzierżawy
-              href: azure-stack-csp-ref-operations.md
+              items:
+                - name: Dodaj dzierżaw użycia i rozliczeń
+                  href: azure-stack-csp-howto-register-tenants.md
+                - name: Zarządzanie rejestracją dzierżawy
+                  href: azure-stack-csp-ref-operations.md
             - name: Odwołanie do rozliczeń i zużycia
               items:
                 - name: Raportowanie danych użycia

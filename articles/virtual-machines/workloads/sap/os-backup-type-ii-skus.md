@@ -11,24 +11,24 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/31/2017
+ms.date: 06/27/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0d5caf5836b96555e01b55d408e51f3df2407d35
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f01a32612b335003856a372ece15ef300b9d93db
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657608"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063278"
 ---
 # <a name="os-backup-and-restore-for-type-ii-skus"></a>Kopia zapasowa systemu operacyjnego i przywracania dla jednostki SKU II typu
 
-W tym dokumencie opisano kroki, aby wykonać kopię zapasową systemu operacyjnego i przywracania dla **jednostki SKU II typu** wystąpień dużych HANA. 
+W tym dokumencie opisano kroki, aby wykonywać kopie zapasowe poziomu pliku systemu operacyjnego i przywracania dla **jednostki SKU II typu** wystąpień dużych HANA. 
 
 >[!NOTE]
 >Skrypty kopii zapasowej systemu operacyjnego przy użyciu oprogramowania tyłu, który jest wstępnie zainstalowane na serwerze.  
 
-Po ukończeniu inicjowania obsługi administracyjnej przez zespół zarządzania usługami firmy Microsoft, domyślnie serwer jest skonfigurowany z harmonogramem dwóch kopii zapasowych, aby utworzyć kopię zapasową w pełnym systemie operacyjnym. Harmonogram zadania tworzenia kopii zapasowej można sprawdzić za pomocą następującego polecenia:
+Po ukończeniu inicjowania obsługi administracyjnej przez zespół zarządzania usługami firmy Microsoft, domyślnie serwer jest skonfigurowany z harmonogramem dwóch kopii zapasowych, aby utworzyć kopię zapasową systemu plików poziomu Utwórz kopię zapasową systemu operacyjnego. Harmonogram zadania tworzenia kopii zapasowej można sprawdzić za pomocą następującego polecenia:
 ```
 #crontab –l
 ```
@@ -38,14 +38,14 @@ Można zmienić harmonogram tworzenia kopii zapasowych dowolnej chwili za pomoc�
 ```
 ## <a name="how-to-take-a-manual-backup"></a>Jak wykonać kopię zapasową ręczne?
 
-Kopia zapasowa systemu operacyjnego jest zaplanowane, za pomocą **zadania cron** już. Można jednak wykonać ręcznie również kopię systemu operacyjnego. Aby wykonać kopię zapasową ręczne, uruchom następujące polecenie:
+Kopia zapasowa systemu plików systemu operacyjnego jest zaplanowane, za pomocą **zadania cron** już. Można jednak wykonać systemu operacyjnego plik poziomu kopii zapasowej także ręcznie. Aby wykonać kopię zapasową ręczne, uruchom następujące polecenie:
 
 ```
 #rear -v mkbackup
 ```
 Następujący program ekranu pokazuje przykładowe ręcznego wykonywania kopii zapasowej:
 
-![Jak](media/HowToHLI/OSBackupTypeIISKUs/HowtoTakeManualBackup.PNG)
+![jak](media/HowToHLI/OSBackupTypeIISKUs/HowtoTakeManualBackup.PNG)
 
 
 ## <a name="how-to-restore-a-backup"></a>Jak przywrócić z kopii zapasowej?

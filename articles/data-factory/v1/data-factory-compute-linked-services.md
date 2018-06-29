@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 51a0f43587b9d34a3693eb4a2927d10c71bd95d1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59631ee0115c817da1b0588c1ad37d2f8b34db67
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621755"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053666"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Obliczenia bazy danych środowiskach obsługiwanych przez usługi fabryka danych Azure
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Azure Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [obliczeniowe połączonych usług w wersji 2](../compute-linked-services.md).
+> Ten artykuł dotyczy wersji 1 usługi fabryka danych Azure. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [obliczeniowe połączonych usług w](../compute-linked-services.md).
 
 W tym artykule opisano środowiska obliczeniowego, w których można użyć do procesu lub przekształcenia danych. Zapewnia także szczegółowe informacje o różnych konfiguracjach (na żądanie i bring your own) czy obsługuje fabryki danych podczas konfigurowania połączone usługi, które łączą te obliczeniowe środowisk do fabryki danych Azure.
 
@@ -66,7 +66,7 @@ Po 31 lipca 2018:
 - Jeśli używasz usługi HDInsight połączony na żądanie można wykonać fabryki danych w wersji 1 DotNet niestandardowe działania, aktualizację definicji DotNet niestandardowe działania w formacie JSON, aby zamiast tego użyć partii zadań Azure połączone usługi. Aby uzyskać więcej informacji, zobacz [skorzystać z działań niestandardowych w potoku fabryki danych](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities). 
 
 > [!Note]
-> Jeśli używasz istniejącą, bring your own klastra usługi HDInsight połączone urządzenia w fabryce danych w wersji 1 lub bring your own i na żądanie usługi HDInsight połączone w fabryce danych Azure w wersji 2, akcja nie jest wymagana. W tych scenariuszach najnowszych zasad pomocy technicznej wersji klastrów HDInsight już jest wymuszana. 
+> Jeśli używasz istniejącą, bring your own klastra usługi HDInsight połączone urządzenia w fabryce danych w wersji 1 lub bring your own i na żądanie usługi HDInsight połączone w fabryce danych Azure, akcja nie jest wymagana. W tych scenariuszach najnowszych zasad pomocy technicznej wersji klastrów HDInsight już jest wymuszana. 
 >
 > 
 

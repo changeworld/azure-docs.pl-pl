@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 66e6725dd4e23eeaf0c8d0dcff6e5d26e3743218
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9453099af8d9be21a97808733ffa8f8bfe5a364a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624288"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047568"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Rozwiązywanie problemów z używaniem bramy zarządzania danymi
 Ten artykuł zawiera informacje na temat rozwiązywania problemów przy użyciu bramy zarządzania danymi.
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Azure Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [hosta samodzielnego środowiska uruchomieniowego integracji z fabryki danych w wersji 2](../create-self-hosted-integration-runtime.md).
+> Ten artykuł dotyczy wersji 1 usługi fabryka danych Azure. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [hosta samodzielnego środowiska uruchomieniowego integracji w fabryce danych](../create-self-hosted-integration-runtime.md).
 
 Zobacz [brama zarządzania danymi](data-factory-data-management-gateway.md) artykułu, aby uzyskać szczegółowe informacje na temat bramy. Zobacz [przenoszenie danych między lokalnymi i w chmurze](data-factory-move-data-between-onprem-and-cloud.md) artykułu przewodnik przenoszenia danych z lokalną bazą danych programu SQL Server do magazynu obiektów Blob Microsoft Azure przy użyciu bramy.
 
@@ -126,7 +126,7 @@ Brama została zarejestrowana na innych komputerach przed. Podczas początkowej 
 Podczas przywracania bramy na inny komputer hosta, Kreator rejestracji żąda tego certyfikatu do odszyfrowania zaszyfrowanych wcześniej za pomocą tego certyfikatu poświadczeń.  Bez tego certyfikatu nie można odszyfrować poświadczeń przez nową bramę i wykonaniami działania kopiowania kolejnych skojarzone z tym nową bramę zakończy się niepowodzeniem.  
 
 #### <a name="resolution"></a>Rozwiązanie
-Jeśli certyfikat poświadczeń zostały wyeksportowane z oryginalnego komputera bramy przy użyciu **wyeksportować** znajdującego się na **ustawienia** karcie w danych Menedżera konfiguracji bramy zarządzania, w tym miejscu użyć certyfikatu.
+Jeśli certyfikat poświadczeń zostały wyeksportowane z oryginalnego komputera bramy przy użyciu **wyeksportować** znajdującego się na **ustawienia** karcie w danych Menedżera konfiguracji bramy zarządzania, należy użyć certyfikatu w tym miejscu.
 
 Nie można pominąć ten etap, podczas przywracania bramy. Jeśli brakuje certyfikatu, należy usunąć bramę z portalu i ponownie utwórz nową bramę.  Ponadto należy zaktualizować wszystkie połączone usługi, powiązane z bramą, ponownego wprowadzania poświadczeń.
 

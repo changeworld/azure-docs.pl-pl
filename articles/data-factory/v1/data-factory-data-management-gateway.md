@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: d28d25b74ce46c0323b01670bfdb639c02b92d8a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 67b8e35f0ddafd0a39bf29757927f4ace6230547
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335809"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048921"
 ---
 # <a name="data-management-gateway"></a>Brama zarządzania danymi
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [hosta samodzielnego środowiska uruchomieniowego integracji w wersji 2](../create-self-hosted-integration-runtime.md). 
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [hosta samodzielnego środowiska uruchomieniowego integracji w](../create-self-hosted-integration-runtime.md). 
 
 > [!NOTE]
 > Brama zarządzania danymi ma teraz zostały rebranded jako Self-hosted integracji w czasie wykonywania.  
@@ -288,12 +288,12 @@ Użytkownik może Włącz/Wyłącz funkcję automatycznej aktualizacji, wykonuj�
     ```PowerShell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on  
     ```
-[Wielowęzłowego wysoką dostępność i skalowalność bramy (wersja zapoznawcza)](data-factory-data-management-gateway-high-availability-scalability.md)
+[Dla bramy o wysokiej dostępności i skalowalności wielowęzłowego](data-factory-data-management-gateway-high-availability-scalability.md)
 1. Uruchom program Windows PowerShell na komputerze bramy.
 2. Przejdź do folderu C:\Program Files\Microsoft integracji Runtime\3.0\PowerShellScript\.
 3. Uruchom następujące polecenie, aby włączyć automatyczną aktualizację funkcji OFF (wyłączone).   
 
-    Bramy o wysokiej dostępności funkcji (wersja zapoznawcza) wymagany jest dodatkowy param AuthKey.
+    Dla bramy o wysokiej dostępności funkcji wymagany jest dodatkowy param AuthKey.
     ```PowerShell
     .\IntegrationRuntimeAutoUpdateToggle.ps1  -off -AuthKey <your auth key>
     ```

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: b9ad3ceeb77a4adc2c47b262aa40a48c14423198
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 9ab106a78aa56b8308207bcadb3db0b5a9714a9d
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28019521"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029496"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Ramka zabezpieczeń: Autoryzacji | Środki zaradcze 
 | Produktów i usług | Artykuł |
@@ -83,7 +83,7 @@ ms.locfileid: "28019521"
 | **Zastosowanie technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | Aby sprawdzić, czy ten etap został uruchomiony za pośrednictwem przez oryginalnego użytkownika, aby wymusić aplikacji tylko przetwarzać przepływy logiki biznesowej w kolejności kolejny krok z wszystkich kroków przetwarzanych w czasie człowieka realistyczne i przetwarza poza kolejnością, pominięte kroki, kroki przetworzonych od innego użytkownika lub zbyt szybko przesłanych transakcji.|
+| **Kroki** | Aby sprawdzić, czy ten etap został uruchomiony za pośrednictwem przez oryginalnego użytkownika mają zostać wymuszone aplikacji tylko firm logiki przepływy procesu w kolejności kolejny krok wszystkich kroków przetwarzanych w czasie człowieka realistyczne i przetwarza poza kolejnością, pominięte kroki , przetwarzanych kroki od innego użytkownika lub zbyt szybko przesłać transakcji.|
 
 ## <a id="rate-enumeration"></a>Implementowanie tempa ograniczania mechanizm zapobiegania — wyliczenie
 
@@ -187,7 +187,7 @@ Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy dan
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Azure Event Hub | 
+| **Składnik**               | Centrum zdarzeń Azure | 
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -198,7 +198,7 @@ Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy dan
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Azure Event Hub | 
+| **Składnik**               | Centrum zdarzeń Azure | 
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -209,7 +209,7 @@ Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy dan
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Azure Event Hub | 
+| **Składnik**               | Centrum zdarzeń Azure | 
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -264,7 +264,7 @@ Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy dan
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Dynamics CRM Portal | 
+| **Składnik**               | Portal programu Dynamics CRM | 
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -312,7 +312,7 @@ Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy dan
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | Ogólny, NET Framework 3 |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [uzyskania zawartości Królestwo](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [uzyskania zawartości Królestwo](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
 | **Kroki** | <p>System używa Odwołanie słabe klasy, które może umożliwić atakującemu wykonanie nieautoryzowanego kodu. Program odwołuje się do klasy zdefiniowanej przez użytkownika, która nie jest jednoznacznie zidentyfikować. Podczas ładowania tej klasy lekko zidentyfikowanych .NET modułu ładującego typu CLR wyszukuje klasy w następujących lokalizacjach w podanej kolejności:</p><ol><li>Jeśli zestawu typu jest znany, moduł ładujący wyszukuje plik konfiguracji przekierowania lokalizacjach, GAC, bieżącego zestawu przy użyciu informacji o konfiguracji i podstawowego katalogu aplikacji</li><li>Jeśli zestaw jest nieznany, moduł ładujący wyszukuje bieżącego zestawu, mscorlib i lokalizację zwrócony przez program obsługi zdarzeń TypeResolve</li><li>Ta kolejność wyszukiwania CLR może być modyfikowany z punkty zaczepienia, takich jak mechanizm przekazywania typu i zdarzenia AppDomain.TypeResolve</li></ol><p>Jeśli osoba atakująca wykorzystuje kolejność wyszukiwania CLR, tworząc klasę alternatywnych o takiej samej nazwie i umieszczenie go w lokalizacji alternatywnej czy CLR załaduje najpierw CLR zostanie przypadkowo wykonywania kodu dostarczone przez osobę atakującą</p>|
 
 ### <a name="example"></a>Przykład
@@ -349,7 +349,7 @@ Przy użyciu w pełni kwalifikowane nazwy (silne) unikatowo identyfikuje typ i j
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | Ogólny, NET Framework 3 |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [uzyskania zawartości Królestwo](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [uzyskania zawartości Królestwo](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_unauthorized_access) |
 | **Kroki** | <p>Ta usługa korzysta z kontrolki autoryzacji. Kiedy klient wywołuje określonej usługi WCF, WCF zawiera różnych systemów autoryzacji, które pozwalają sprawdzić, czy element wywołujący ma uprawnienia do wykonania metody usługi na serwerze. Jeśli formanty autoryzacji nie są włączone dla usługi WCF, uwierzytelniony użytkownik może osiągnąć podwyższenie poziomu uprawnień.</p>|
 
 ### <a name="example"></a>Przykład

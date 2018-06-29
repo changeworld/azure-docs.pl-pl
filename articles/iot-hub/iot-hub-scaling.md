@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: b7751bd1b309333d5ef40530b0fa499a42a57cd1
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: d77953100bb7007553cf1c5ab00b9cdafea281e9
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752252"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030441"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wybierz prawa warstwy Centrum IoT dla rozwiązania
 
@@ -43,7 +43,7 @@ Po utworzeniu Centrum IoT można uaktualnić z podstawowych warstwy do warstwy s
 | [Monitorowania i diagnostyki](iot-hub-monitor-resource-health.md) | Yes | Yes |
 | [Obsługa wiadomości chmury do urządzenia](iot-hub-devguide-c2d-guidance.md) |   | Yes |
 | [Urządzenie twins](iot-hub-devguide-device-twins.md), [twins modułu](iot-hub-devguide-module-twins.md) i [zarządzania urządzeniami](iot-hub-device-management-overview.md) |   | Yes |
-| [Azure IoT Edge](../iot-edge/how-iot-edge-works.md) |   | Yes |
+| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Yes |
 
 Centrum IoT oferuje również warstwę bezpłatna, który jest przeznaczony do testowania i oceny. Ma ona wszystkie możliwości warstwy standardowa, ale ograniczone dodatki obsługi wiadomości. Nie można uaktualnić warstwę bezpłatna do planu basic lub standard. 
 
@@ -59,9 +59,9 @@ Różnica między warstwami podstawowa i standardowa Centrum IoT oznacza, że ni
 | Pobieranie modułu | Yes | Yes |
 | [Uzyskać statystyki rejestru](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getdeviceregistrystatistics) | Yes | Yes |
 | [Uzyskać statystyki usług](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getservicestatistics) | Yes | Yes |
-| [Umieść urządzenia](https://docs.microsoft.com/rest/api/iothub/deviceapi/putdevice) | Yes | Yes |
+| [Utwórz lub zaktualizuj urządzenia](https://docs.microsoft.com/rest/api/iothub/service/service/createorupdatedevice) | Yes | Yes |
 | Umieść moduł | Yes | Yes |
-| [Kwerenda urządzeń](https://docs.microsoft.com/rest/api/iothub/deviceapi/querydevices) | Yes | Yes |
+| [Centrum IoT zapytania](https://docs.microsoft.com/rest/api/iothub/service/service/queryiothub) | Yes | Yes |
 | Moduły zapytania | Yes | Yes |
 | [Tworzenie przekazywania pliku identyfikatora URI połączenia SAS](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/createfileuploadsasuri) | Yes | Yes |
 | [Otrzymywanie powiadomień urządzenie powiązane](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/receivedeviceboundnotification) | Yes | Yes |

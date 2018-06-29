@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a70f02fca5ebf575bc009623c3af648a5a80fd70
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 358827722e8d77cd91410fae842ad2ba99967d98
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32153748"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028901"
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Umożliwia dostęp do usługi Azure Data Lake Store Linux VM zarządzane usługi tożsamości (MSI)
 
@@ -190,7 +190,7 @@ Gratulacje!  Uwierzytelniono systemie plików usługi Data Lake Store za pomocą
 - Omówienie MSI, zobacz [omówienie zarządzane tożsamość usługi](msi-overview.md).
 - W przypadku zarządzania operacji Data Lake Store używa usługi Azure Resource Manager.  Aby uzyskać więcej informacji na temat używania MSI maszyny Wirtualnej do uwierzytelniania do Menedżera zasobów, przeczytaj [umożliwia dostęp do Menedżera zasobów systemu Linux VM zarządzane usługi tożsamości (MSI)](../managed-service-identity/msi-tutorial-linux-vm-access-arm.md).
 - Dowiedz się więcej o [uwierzytelniania za pomocą usługi Data Lake Store za pomocą usługi Azure Active Directory](~/articles/data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md).
-- Dowiedz się więcej o [operacji systemu plików w usłudze Azure Data Lake Store za pomocą interfejsu API REST](~/articles/data-lake-store/data-lake-store-data-operations-rest-api.md) lub [interfejsów API systemu plików WebHDFS](https://docs.microsoft.com/rest/api/datalakestore/webhdfs-filesystem-apis.md).
+- Dowiedz się więcej o [operacji systemu plików w usłudze Azure Data Lake Store za pomocą interfejsu API REST](~/articles/data-lake-store/data-lake-store-data-operations-rest-api.md) lub [interfejsów API systemu plików WebHDFS](https://docs.microsoft.com/rest/api/datalakestore/webhdfs-filesystem-apis).
 - Dowiedz się więcej o [kontroli dostępu w usłudze Data Lake Store](~/articles/data-lake-store/data-lake-store-access-control.md).
 
 W poniższej sekcji komentarzy umożliwia wyrazić swoją opinię i pomóc nam dostosować i kształtu zawartość.

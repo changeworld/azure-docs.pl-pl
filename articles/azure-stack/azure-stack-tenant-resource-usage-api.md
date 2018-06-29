@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 03/26/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: bc0b9993119342f07c28ed0384c11ae0f15bc439
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 8472d8ce733c07641a7fa6d53aeb6909cd709990
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29873491"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048394"
 ---
 # <a name="tenant-resource-usage-api"></a>Interfejs API użycia zasobów dzierżawcy
 
@@ -79,12 +79,12 @@ Pobierz /subscriptions/sub1/providers/Microsoft.Commerce/UsageAggregates?reporte
 | --- | --- |
 | *id* |Unikatowy identyfikator użycia agregacji |
 | *Nazwa* |Nazwa wartości zagregowanej użycia |
-| *Typ* |Definicja zasobu |
-| *subscriptionId* |Identyfikator subskrypcji platformy Azure użytkownika |
+| *type* |Definicja zasobu |
+| *Identyfikator subskrypcji* |Identyfikator subskrypcji platformy Azure użytkownika |
 | *usageStartTime* |Czas UTC uruchomienie zasobnika użycia, do którego należy ta wartość zagregowana użycia |
 | *usageEndTime* |Godzina zakończenia UTC łańcucha użycia, do którego należy ta wartość zagregowana użycia |
 | *instanceData* |Pary klucz wartość Szczegóły wystąpienia (w formacie nowych):<br>  *resourceUri*: pełni kwalifikowany identyfikator zasobu, łącznie z grupami zasobów i nazwa wystąpienia <br>  *Lokalizacja*: regionu, w którym uruchomienia tej usługi <br>  *tagi*: tagi zasobów, które określa użytkownika <br>  *części informacje dodatkowe aby*: więcej szczegółowych informacji o zasobu, który został wykorzystany, na przykład typ wersji lub obrazu systemu operacyjnego |
-| *Ilość* |Ilość zużycia zasobów, które wystąpiły w tym przedziale czasu |
+| *ilość* |Ilość zużycia zasobów, które wystąpiły w tym przedziale czasu |
 | *meterId* |Unikatowy identyfikator zasobu, który został wykorzystany (nazywane również *ResourceID*) |
 
 

@@ -11,12 +11,12 @@ ms.custom: managed instance
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: a5a81279726e5c221d9ae4734466a04ae5912af6
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 1015600343886333655a921f2e0944ebb676f3e6
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936806"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050131"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migracja wystąpienia programu SQL Server do wystąpienia zarządzane bazy danych SQL Azure
 
@@ -82,6 +82,8 @@ Zarządzane wystąpienie obsługuje następujące opcje migracji bazy danych (ob
 ### <a name="azure-database-migration-service"></a>Azure Database Migration Service
 
 [Azure migracji usługi BAZĘ](../dms/dms-overview.md) to w pełni zarządzana usługa zaprojektowana w celu umożliwienia bezproblemowego migracji z wielu źródeł bazy danych do platformy Azure danych z minimalnym czasem przestojów. Ta usługa upraszcza zadania wymagane do przenoszenia istniejącego innych firm i baz danych programu SQL Server na platformie Azure. Opcje wdrażania w publicznej wersji zapoznawczej obejmują usługi Azure SQL Database, zarządzane wystąpienia i programu SQL Server w maszynie wirtualnej platformy Azure. Usługa DMS jest zalecaną metodą migracji obciążeń przedsiębiorstwa. 
+
+Jeśli używasz programu SQL Server Integration Services (SSIS) na serwerze SQL lokalnie, DMS nie obsługuje jeszcze Migrowanie katalog SSIS (SSISDB), który przechowuje pakietów SSIS, ale można udostępnić Azure SSIS integrację środowiska uruchomieniowego (IR) w fabryce danych Azure (ADF), których będzie Tworzenie nowej bazy danych SSISDB w bazie danych SQL Azure/zarządzane wystąpienia, a następnie należy ponownie wdrożyć pakietów do niego, zobacz [utworzyć IR Azure SSIS w ADF](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime).
 
 Aby dowiedzieć się więcej na temat tego scenariusza i konfiguracji kroki dla DMS, zobacz [migracji lokalnej bazy danych do wystąpienia zarządzane przy użyciu DMS](../dms/tutorial-sql-server-to-managed-instance.md).  
 

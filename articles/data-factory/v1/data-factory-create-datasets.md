@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6a3401f620f7dfe8b42bad9ed1a3981325b2ce1e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f33ff3f588dac49e295a5aa96d71557d32407e46
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620483"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046990"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Zestawy danych w fabryce danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](data-factory-create-datasets.md)
-> * [Wersja 2 — wersja zapoznawcza](../concepts-datasets-linked-services.md)
+> * [W wersji 1](data-factory-create-datasets.md)
+> * [W wersji 2 (bieżąca wersja)](../concepts-datasets-linked-services.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [zestawów danych w wersji 2](../concepts-datasets-linked-services.md).
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [zestawów danych w wersji 2](../concepts-datasets-linked-services.md).
 
 W tym artykule opisano, jakie zestawy danych są, jak są definiowane w formacie JSON i w jaki sposób są one używane w fabryce danych Azure potoków. W definicji zestawu danych JSON on szczegółowe informacje na temat każdej sekcji (na przykład struktury, dostępności i zasad). Artykuł zawiera również przykłady dotyczące korzystania z **przesunięcie**, **anchorDateTime**, i **styl** właściwości w definicji zestawu danych JSON.
 
@@ -197,7 +197,7 @@ Każda kolumna w strukturze zawiera następujące właściwości:
 | --- | --- | --- |
 | name |Nazwa kolumny. |Yes |
 | type |Typ danych kolumny.  |Nie |
-| Kultury |. Kulturę opartą na sieci do użycia, gdy typem jest typ architektury .NET: `Datetime` lub `Datetimeoffset`. Wartość domyślna to `en-us`. |Nie |
+| kultury |. Kulturę opartą na sieci do użycia, gdy typem jest typ architektury .NET: `Datetime` lub `Datetimeoffset`. Wartość domyślna to `en-us`. |Nie |
 | Format |Ciąg do użycia, gdy typem jest typ architektury .NET formatu: `Datetime` lub `Datetimeoffset`. |Nie |
 
 Poniższe wskazówki pomocne w określeniu, kiedy obejmują informacje o strukturze i elementów do uwzględnienia w **struktury** sekcji.

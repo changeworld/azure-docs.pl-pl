@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 1ed2ee73b32f71d2e1ca34c6de9d1cb2649d7f0c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6c358b5a40b1d8e91c2e1af5eb493b13604cf82e
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349713"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045062"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>Użyj "Tekst na mowę" w usłudze mowy
 
@@ -25,14 +25,7 @@ Treść wpisu żądania tekst na mowę, może być zwykły tekst (ASCII lub UTF8
 
 Punkty końcowe regionalnych tekst na mowę są wyświetlane tutaj. Użyj jednej odpowiednie do Twojej subskrypcji.
 
-Region| Endpoint
--|-
-Zachodnie stany USA| `https://westus.tts.speech.microsoft.com/cognitiveservices/v1`
-Azja Wschodnia| `https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1`
-Europa Północna| `https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1`
-
-> [!NOTE]
-> Jeśli utworzono czcionki niestandardowe głosu użycia punktu końcowego, utworzonej dla niego zamiast nich powyżej.
+[!include[](includes/endpoints-text-to-speech.md)]
 
 ## <a name="specify-a-voice"></a>Określ głosu
 

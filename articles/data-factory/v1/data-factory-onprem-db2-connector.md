@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fc4ce0a2ae33e99ecede371d9f17fb9a63851f64
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 88e56f522545f9c1f38bf0d0fdbcebdc171c294b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622027"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046534"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Przenieść dane z bazy danych DB2 za pomocą działania kopiowania fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](data-factory-onprem-db2-connector.md)
-> * [Wersja 2 — wersja zapoznawcza](../connector-db2.md)
+> * [W wersji 1](data-factory-onprem-db2-connector.md)
+> * [W wersji 2 (bieżąca wersja)](../connector-db2.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [łącznik DB2 w wersji 2](../connector-db2.md).
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [łącznik DB2 w wersji 2](../connector-db2.md).
 
 
 W tym artykule opisano, jak używasz działanie kopiowania w fabryce danych Azure można skopiować danych z lokalną bazą danych DB2 w magazynie danych. Można skopiować danych do dowolnego magazynu, który jest wymieniony jako obsługiwany zbiornika w [działań przepływu danych fabryki danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) artykułu. W tym temacie opiera się na artykułu fabryki danych, które zawiera omówienie przepływu danych za pomocą działania kopiowania i wyświetla kombinacje magazynu obsługiwane dane. 
@@ -88,17 +88,17 @@ W poniższej tabeli wymieniono właściwości JSON, które są specyficzne dla u
 | **schema** |Nazwa schematu bazy danych DB2. Ta właściwość jest rozróżniana wielkość liter. |Nie |
 | **authenticationType** |Typ uwierzytelniania używany do łączenia z bazą danych DB2. Możliwe wartości to: anonimowe, podstawowe i systemu Windows. |Yes |
 | **Nazwa użytkownika** |Nazwa konta użytkownika, jeśli korzystasz z uwierzytelniania podstawowego lub systemu Windows. |Nie |
-| **Hasło** |Hasło dla konta użytkownika. |Nie |
+| **hasło** |Hasło dla konta użytkownika. |Nie |
 | **gatewayName** |Nazwa bramy, która powinna być używana przez usługi fabryka danych nawiązać połączenia z lokalną bazą danych DB2. |Yes |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
-Listę sekcje i właściwości, które są dostępne do definiowania zestawów danych, zobacz [Tworzenie zbiorów danych](data-factory-create-datasets.md) artykułu. Sekcje, takich jak **struktury**, **dostępności**i **zasad** dla zestawu danych JSON, są podobne dla wszystkich typów zestawu danych (Azure SQL, magazyn obiektów Blob platformy Azure, Magazyn tabel Azure itd.).
+Listę sekcje i właściwości, które są dostępne do definiowania zestawów danych, zobacz [Tworzenie zbiorów danych](data-factory-create-datasets.md) artykułu. Sekcje, takich jak **struktury**, **dostępności**i **zasad** dla zestawu danych JSON, są podobne dla wszystkich typów obiektów dataset (Azure SQL, magazynu obiektów Blob platformy Azure, Magazyn tabel Azure i tak dalej).
 
 **TypeProperties** sekcja jest różne dla każdego typu zestawu danych i zawiera informacje o lokalizacji danych w magazynie danych. **TypeProperties** sekcja dla zestawu danych typu **RelationalTable**, w tym zestawie danych DB2, ma następującą właściwość:
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| **TableName** |Nazwa tabeli w wystąpieniu bazy danych DB2 odnoszący się do połączonej usługi. Ta właściwość jest rozróżniana wielkość liter. |Nie (Jeśli **zapytania** właściwości działania kopiowania typu **RelationalSource** jest określona) |
+| **tableName** |Nazwa tabeli w wystąpieniu bazy danych DB2 odnoszący się do połączonej usługi. Ta właściwość jest rozróżniana wielkość liter. |Nie (Jeśli **zapytania** właściwości działania kopiowania typu **RelationalSource** jest określona) |
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 Aby uzyskać listę sekcji i właściwości, które są dostępne do definiowania działania kopiowania, zobacz [tworzenie potoków](data-factory-create-pipelines.md) artykułu. Kopiuj właściwości działania, takie jak **nazwa**, **opis**, **dane wejściowe** tabeli, **generuje** tabeli, i **zasad**, są dostępne dla wszystkich typów działań. Właściwości, które są dostępne w **typeProperties** sekcji działania różne dla każdego typu działania. Dla działania kopiowania właściwości różnią się w zależności od typów źródeł danych i sink.
@@ -107,7 +107,7 @@ Dla działania kopiowania, gdy źródłem jest typu **RelationalSource** (która
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| **Zapytania** |Użyj niestandardowych zapytania, aby odczytać danych. |Ciąg zapytania SQL. Na przykład: `"query": "select * from "MySchema"."MyTable""` |Nie (Jeśli **tableName** określono właściwości zestawu danych) |
+| **zapytania** |Użyj niestandardowych zapytania, aby odczytać danych. |Ciąg zapytania SQL. Na przykład: `"query": "select * from "MySchema"."MyTable""` |Nie (Jeśli **tableName** określono właściwości zestawu danych) |
 
 > [!NOTE]
 > Nazwy schematu i tabeli jest rozróżniana wielkość liter. W instrukcji zapytania, ujmij nazw właściwości, za pomocą "" (podwójne cudzysłowy).
@@ -313,8 +313,8 @@ Następujące mapowania są używane, gdy działanie kopiowania konwertuje dane 
 | Liczba całkowita |Int32 |
 | BigInt |Int64 |
 | Real |Pojedyncze |
-| O podwójnej precyzji |O podwójnej precyzji |
-| Liczba zmiennoprzecinkowa |O podwójnej precyzji |
+| podwójne |podwójne |
+| Liczba zmiennoprzecinkowa |podwójne |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Liczbowy |Decimal |
@@ -339,8 +339,8 @@ Następujące mapowania są używane, gdy działanie kopiowania konwertuje dane 
 | Liczba całkowita |Int32 |
 | BigInt |Int64 |
 | Real |Pojedyncze |
-| O podwójnej precyzji |O podwójnej precyzji |
-| Liczba zmiennoprzecinkowa |O podwójnej precyzji |
+| podwójne |podwójne |
+| Liczba zmiennoprzecinkowa |podwójne |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Liczbowy |Decimal |

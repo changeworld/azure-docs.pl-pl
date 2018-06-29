@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 0c115cce7659fe1f10e8d3d9c988748151916ce0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 951756d57441d175ccf8bab44bf00c3cb542f1b9
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620745"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050050"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Samouczek: Tworzenie swój pierwszy potok do przekształcania danych przy użyciu klastra usługi Hadoop
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "34620745"
 
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi Data Factory, która jest w wersji zapoznawczej, zobacz [Szybki start: tworzenie fabryki danych przy użyciu usługi Azure Data Factory w wersji 2](../quickstart-create-data-factory-dot-net.md).
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [Szybki Start: tworzenie fabryki danych przy użyciu fabryki danych Azure](../quickstart-create-data-factory-dot-net.md).
 
 W tym samouczku należy utworzyć pierwszy fabrykę danych Azure z potokiem danych. Potok przekształca danych wejściowych przez uruchomienie skryptu Hive w usłudze Azure HDInsight (Hadoop) klastrze wygenerowało danych wyjściowych.  
 

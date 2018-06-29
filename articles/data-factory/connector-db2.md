@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 808405de3391912433919d21b59214831b024866
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 11647c231db3ff7beb2fed641dc72ff339b2b45a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616400"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046245"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Kopiowanie danych z bazy danych DB2 przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](v1/data-factory-onprem-db2-connector.md)
-> * [Wersja 2 — wersja zapoznawcza](connector-db2.md)
+> * [W wersji 1](v1/data-factory-onprem-db2-connector.md)
+> * [Bieżąca wersja](connector-db2.md)
 
 W tym artykule omówiono sposób użycia działanie kopiowania w fabryce danych Azure, aby skopiować dane z bazy danych DB2. Opiera się na [skopiuj omówienie działania](copy-activity-overview.md) artykułu, który przedstawia ogólny przegląd działanie kopiowania.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [łącznik DB2 w wersji 1](v1/data-factory-onprem-db2-connector.md).
 
 ## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
@@ -46,7 +43,7 @@ W szczególności ten łącznik DB2 obsługuje następujące platformy IBM DB2 i
 
 > [!TIP]
 > Jeśli zostanie wyświetlony komunikat o błędzie stwierdzający "nie znaleziono pakietu odpowiadający żądania wykonania instrukcji SQL. SQLSTATE = 51002 SQLCODE =-805 ", powodem jest wymagana pakietu nie został utworzony dla zwykłego użytkownika na takie systemu operacyjnego. Wykonaj te instrukcje, w zależności od typu serwera bazy danych DB2:
-> - Bazy danych DB2 dla i (AS400): umożliwia użytkownikowi zasilania utworzyć kolekcję dla logowania użytkownika przed użyciem działania kopiowania. polecenie: `create collection <username>`
+> - Bazy danych DB2 dla i (AS400): umożliwia użytkownikowi zasilania utworzyć kolekcję dla logowania użytkownika przed użyciem działania kopiowania. Polecenie: `create collection <username>`
 > - Bazy danych DB2 z/OS lub LUW: raz uruchomić działanie kopiowania za pomocą konta z wysokim poziomie uprawnień — użytkownik zaawansowany lub administrator z urzędów pakietu i powiązania BINDADD, uprawnienia GRANT wykonania do publicznego —, a następnie uruchomienie pakietu jest tworzony automatycznie podczas kopiowania. Możesz później, przejdź do zwykłego użytkownika dla sekwencji kolejnych kopii.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -187,8 +184,8 @@ Podczas kopiowania danych z bazy danych DB2, następujące mapowania są używan
 | DbClob |Ciąg |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
-| O podwójnej precyzji |O podwójnej precyzji |
-| Liczba zmiennoprzecinkowa |O podwójnej precyzji |
+| podwójne |podwójne |
+| Liczba zmiennoprzecinkowa |podwójne |
 | Grafika |Ciąg |
 | Liczba całkowita |Int32 |
 | LongVarBinary |Byte[] |

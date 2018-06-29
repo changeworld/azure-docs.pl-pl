@@ -13,26 +13,26 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 9608af734d39627435a81e1d853c2546eabcdb0f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bf91b1cb1e764c1350cead0c5dfb109b73e9dad3
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623438"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052719"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Wywołanie pakietów SSIS za pomocą działania procedury składowanej w fabryce danych Azure
 W tym artykule opisano sposób wywołania pakietów SSIS z potoku fabryki danych Azure za pomocą działania procedury składowanej. 
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi fabryka danych, która jest ogólnie dostępna. Jeśli używasz wersji 2 usługi fabryka danych, który znajduje się w publicznej wersji zapoznawczej, zobacz [pakietów SSIS wywołać przy użyciu działania procedury składowanej w wersji 2](../how-to-invoke-ssis-package-stored-procedure-activity.md).
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [pakietów SSIS wywołać przy użyciu działania procedury składowanej w](../how-to-invoke-ssis-package-stored-procedure-activity.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="azure-sql-database"></a>Azure SQL Database 
-Wskazówki w tym artykule używa bazy danych Azure SQL katalogiem usług SSIS. Można również użyć Azure zarządzane wystąpienia SQL (wersja zapoznawcza).
+Wskazówki w tym artykule używa bazy danych Azure SQL katalogiem usług SSIS. Można również użyć Azure wystąpienia bazy danych SQL zarządzane (wersja zapoznawcza).
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>Tworzenie środowiska Azure SSIS Integration Runtime
-Tworzenie środowiska uruchomieniowego integracji usług SSIS Azure, jeśli nie masz, wykonując instrukcje krok po kroku w [samouczek: pakiety wdrażania usług SSIS](../tutorial-create-azure-ssis-runtime-portal.md). Należy utworzyć fabryki danych w wersji 2, aby utworzyć środowiska uruchomieniowego integracji usług SSIS Azure. 
+Tworzenie środowiska uruchomieniowego integracji usług SSIS Azure, jeśli nie masz, wykonując instrukcje krok po kroku w [samouczek: pakiety wdrażania usług SSIS](../tutorial-create-azure-ssis-runtime-portal.md). Za pomocą fabryki danych w wersji 1 nie można utworzyć środowiska uruchomieniowego integracji usług SSIS Azure. 
 
 ## <a name="azure-portal"></a>Azure Portal
 W tej sekcji Użyj portalu Azure można utworzyć potok fabryki danych z działaniem procedury składowanej wywołująca pakietów SSIS.

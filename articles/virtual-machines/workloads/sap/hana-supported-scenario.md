@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/25/2018
+ms.date: 06/27/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4b703f6d141005cf3cf29531a0586eebb61693a2
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 8927b2a32956f73e75ac7b157ebad6bf6596ea88
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36754509"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063633"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Obsługiwane scenariusze dla wystąpień dużych HANA
 W tym dokumencie opisano obsługiwane scenariusze wraz z ich szczegóły architektury dla HANA wystąpień duże (HLI).
@@ -78,6 +78,22 @@ W razie potrzeby można zdefiniować dodatkowe karty NIC samodzielnie. Jednak ni
 
 >[!NOTE]
 >Nadal może się okazać dodatkowych interfejsów, które są interfejsy fizyczne lub łączenia. Należy rozważyć wyżej interfejsów dla tej sprawy używana, można zignorować rest / lub być ograniczony z.
+
+Powinna wyglądać dystrybucji dla jednostek o dwa adresy IP:
+
+Ethernet "A" powinny mieć przypisanego adresu IP spoza zakresu adresów puli adresów IP serwera, który przesłane do firmy Microsoft. Ten adres IP są używane do przechowywania w/etc/hosts systemu operacyjnego.
+
+Ethernet "B" powinny mieć przypisanego adresu IP używanego do komunikacji systemu plików NFS. W związku z tym, czy te adresy **nie** muszą być utrzymywane w etc/hosts, aby zezwolić na ruch wystąpienia można instancji w ramach dzierżawy.
+
+W przypadku wdrażania replikacji systemu HANA lub HANA skalowalnych w poziomie Konfiguracja bloku o dwa adresy IP nie jest odpowiedni. Jeśli o przypisane tylko dwa adresy IP, która pragnie wdrożyć takiej konfiguracji, skontaktuj się z SAP HANA na zarządzania usługą Azure, aby uzyskać trzeci adres IP w innej sieci VLAN przypisane. Dla wystąpienia dużych HANA jednostek o trzy adresy IP przypisane do trzech portów kart obowiązują następujące reguły użycia:
+
+- Ethernet "A" powinny mieć przypisanego adresu IP spoza zakresu adresów puli adresów IP serwera, który przesłane do firmy Microsoft. Dlatego ten adres IP nie stosuje się do przechowywania w/etc/hosts systemu operacyjnego.
+
+- Ethernet "B" powinny mieć przypisanego adresu IP używanego do komunikacji z magazynem systemu plików NFS. Dlatego adresów tego typu nie powinna być utrzymywana w etc/hosts.
+
+- Ethernet "C" należy używać wyłącznie do przechowywania w itp/hostów do komunikacji między różnymi wystąpieniami. Te adresy również będą adresy IP, które mają zostać zachowane w konfiguracjach HANA skalowalnego w poziomie jako adresy IP, które używa HANA konfiguracji między węzłami.
+
+- Ethernet "D" powinien być używany wyłącznie dla urządzenia STONITH dostępu dla rozrusznik. Jest to wymagane, podczas konfigurowania HANA System replikacji (HSR) i chcesz osiągnąć pracy awaryjnej automatycznie na system operacyjny za pomocą urządzenia na podstawie interwencja.
 
 
 ### <a name="storage"></a>Magazyn
@@ -221,6 +237,7 @@ Następujące punkty instalacji są wstępnie skonfigurowane:
 - Dla MCOS: Dystrybucji rozmiar woluminu opiera się poza rozmiar bazy danych w pamięci. Zobacz [omówienie i architektura](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) sekcji, aby dowiedzieć się, jakie bazy danych rozmiary w pamięci są obsługiwane w środowisku multisid.
 - W DR: woluminy i punkty instalacji są skonfigurowane (oznaczony jako "Wymagana przy instalowaniu HANA") w środowisku produkcyjnym instalację wystąpienia HANA w jednostce HLI odzyskiwania po awarii. 
 - W DR: dane, logbackups i udostępnione woluminy (oznaczone jako "Replikacji magazynu"), które są replikowane za pomocą migawki z lokacji produkcyjnej. Te woluminy są instalowane tylko podczas pracy awaryjnej. Zobacz [procedury awaryjnego odzyskiwania trybu failover](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) więcej szczegółów.
+- Rozruch wolumin **typu jednostki SKU I klasy** są replikowane do odzyskiwania po awarii węzła.
 
 
 ## <a name="4-single-node-with-dr-multipurpose"></a>4. Jeden węzeł z DR (Multipurpose)
@@ -270,6 +287,7 @@ Następujące punkty instalacji są wstępnie skonfigurowane:
 - W DR: woluminy i punkty instalacji są skonfigurowane (oznaczony jako "Wymagana przy instalowaniu HANA") w środowisku produkcyjnym instalację wystąpienia HANA w jednostce HLI odzyskiwania po awarii. 
 - W DR: dane, logbackups i udostępnione woluminy (oznaczone jako "Replikacji magazynu"), które są replikowane za pomocą migawki z lokacji produkcyjnej. Te woluminy są instalowane tylko podczas pracy awaryjnej. Zobacz [procedury awaryjnego odzyskiwania trybu failover](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) więcej szczegółów. 
 - W DR: danych, logbackups dziennika, udostępnione woluminy dla pytań i odpowiedzi (oznaczone jako "Instalacja wystąpienia QA") są skonfigurowane do instalacji wystąpienia pytań i odpowiedzi.
+- Rozruch wolumin **typu jednostki SKU I klasy** są replikowane do odzyskiwania po awarii węzła.
 
 ## <a name="5-hsr-with-stonith"></a>5. HSR z STONITH
  
@@ -378,6 +396,7 @@ Następujące punkty instalacji są wstępnie skonfigurowane:
 - W DR: woluminy i punkty instalacji są skonfigurowane (oznaczony jako "Wymagana przy instalowaniu HANA") w środowisku produkcyjnym instalację wystąpienia HANA w jednostce HLI odzyskiwania po awarii. 
 - W DR: dane, logbackups i udostępnione woluminy (oznaczone jako "Replikacji magazynu"), które są replikowane za pomocą migawki z lokacji produkcyjnej. Te woluminy są instalowane tylko podczas pracy awaryjnej. Zobacz [procedury awaryjnego odzyskiwania trybu failover](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) więcej szczegółów. 
 - W DR: danych, logbackups dziennika, udostępnione woluminy dla pytań i odpowiedzi (oznaczone jako "Instalacja wystąpienia QA") są skonfigurowane do instalacji wystąpienia pytań i odpowiedzi.
+- Rozruch wolumin **typu jednostki SKU I klasy** są replikowane do odzyskiwania po awarii węzła.
 
 
 ## <a name="7-host-auto-failover-11"></a>7. Tryb failover automatycznego hosta (1 + 1)
@@ -540,6 +559,7 @@ Następujące punkty instalacji są wstępnie skonfigurowane:
 - /usr/SAP/SID jest łącze symboliczne do /hana/shared/SID.
 -  W DR: woluminy i punkty instalacji są skonfigurowane (oznaczony jako "Wymagana przy instalowaniu HANA") w środowisku produkcyjnym instalację wystąpienia HANA w jednostce HLI odzyskiwania po awarii. 
 - W DR: dane, logbackups i udostępnione woluminy (oznaczone jako "Replikacji magazynu"), które są replikowane za pomocą migawki z lokacji produkcyjnej. Te woluminy są instalowane tylko podczas pracy awaryjnej. Zobacz [procedury awaryjnego odzyskiwania trybu failover](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) więcej szczegółów. 
+- Rozruch wolumin **typu jednostki SKU I klasy** są replikowane do odzyskiwania po awarii węzła.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

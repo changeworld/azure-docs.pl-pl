@@ -11,29 +11,26 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: c5ec07603088edd3f95f08f12b6982022b396d05
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8e34b0823b7f10455ac0b66fb0614d3946f2382e
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618491"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37059069"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Działanie kopiowania w fabryce danych Azure
 
 ## <a name="overview"></a>Przegląd
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](v1/data-factory-data-movement-activities.md)
-> * [Wersja 2 — wersja zapoznawcza](copy-activity-overview.md)
+> * [W wersji 1](v1/data-factory-data-movement-activities.md)
+> * [Bieżąca wersja](copy-activity-overview.md)
 
 W fabryce danych Azure działanie kopiowania służy do kopiowania danych między danych magazynów znajduje się w sieci lokalnej i w chmurze. Po skopiowaniu danych można go dalej transformacji i analizy. Działanie kopiowania umożliwia także publikowanie transformacji i wyniki analizy do analizy biznesowej (BI) i użycie aplikacji.
 
 ![Rola działanie kopiowania](media/copy-activity-overview/copy-activity.png)
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [działanie kopiowania w wersji 1](v1/data-factory-data-movement-activities.md).
 
 Działanie kopiowania jest wykonywana na [integrację środowiska uruchomieniowego](concepts-integration-runtime.md). W scenariuszu kopii dla innych danych można użyć różnych wersji środowiska uruchomieniowego integracji:
 
@@ -114,7 +111,7 @@ Następujący szablon działania kopiowania zawiera stanowi wyczerpującej listy
                 "type": "TabularTranslator",
                 "columnMappings": "<column mapping>"
             },
-            "cloudDataMovementUnits": <number>,
+            "dataIntegrationUnits": <number>,
             "parallelCopies": <number>,
             "enableStaging": true/false,
             "stagingSettings": {
@@ -138,10 +135,10 @@ Następujący szablon działania kopiowania zawiera stanowi wyczerpującej listy
 | wyjścia | Określ zestaw danych został utworzony wskazującą na obiekt sink danych. Działanie kopiowania obsługuje tylko pojedynczego wyjścia. | Yes |
 | typeProperties | Grupa właściwości, aby skonfigurować działanie Kopiuj. | Yes |
 | source | Określ typ źródła kopiowania i odpowiednie właściwości na temat pobierania danych.<br/><br/>Dowiedz się więcej szczegółów w sekcji "Kopiuj właściwości działania" w artykule łącznika na liście [obsługiwane formaty i magazyny danych](#supported-data-stores-and-formats). | Yes |
-| obiekt sink | Określ typ ujścia kopiowania i odpowiednie właściwości na temat zapisywania danych.<br/><br/>Dowiedz się więcej szczegółów w sekcji "Kopiuj właściwości działania" w artykule łącznika na liście [obsługiwane formaty i magazyny danych](#supported-data-stores-and-formats). | Yes |
+| Obiekt sink | Określ typ ujścia kopiowania i odpowiednie właściwości na temat zapisywania danych.<br/><br/>Dowiedz się więcej szczegółów w sekcji "Kopiuj właściwości działania" w artykule łącznika na liście [obsługiwane formaty i magazyny danych](#supported-data-stores-and-formats). | Yes |
 | translator | Określ mapowania kolumn jawne ze źródła do zbiornika. Ma zastosowanie, gdy domyślne zachowanie kopiowania nie może spełnić potrzeby.<br/><br/>Dowiedz się więcej szczegółów z [schemat i dane mapowania typu](copy-activity-schema-and-type-mapping.md). | Nie |
-| cloudDataMovementUnits | Określ powerfulness z [środowiska uruchomieniowego integracji Azure](concepts-integration-runtime.md) upoważnienie kopię danych.<br/><br/>Dowiedz się więcej szczegółów z [jednostki przepływu danych w chmurze](copy-activity-performance.md). | Nie |
-| parallelCopies | Określanie równoległości interesujące Kopiuj działania do użycia podczas odczytu danych z źródła i zapisywania danych do zbiornika.<br/><br/>Dowiedz się więcej szczegółów z [równoległych kopii](copy-activity-performance.md#parallel-copy). | Nie |
+| dataIntegrationUnits | Określ powerfulness z [środowiska uruchomieniowego integracji Azure](concepts-integration-runtime.md) upoważnienie kopię danych. Wcześniej znane jako chmury jednostki przepływu danych (DMU). <br/><br/>Dowiedz się więcej szczegółów z [jednostki integracji danych](copy-activity-performance.md#data-integration-units). | Nie |
+| ParallelCopies | Określanie równoległości interesujące Kopiuj działania do użycia podczas odczytu danych z źródła i zapisywania danych do zbiornika.<br/><br/>Dowiedz się więcej szczegółów z [równoległych kopii](copy-activity-performance.md#parallel-copy). | Nie |
 | enableStaging<br/>stagingSettings | Wybierz etap przejściowy danych w magazynie obiektów blob aa zamiast bezpośrednio kopii danych ze źródła do zbiornika.<br/><br/>Poznaj przydatne w scenariuszach i szczegóły konfiguracji z [przemieszczane kopiowania](copy-activity-performance.md#staged-copy). | Nie |
 | enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Wybierz sposób obsługi niezgodne wierszy podczas kopiowania danych ze źródła do zbiornika.<br/><br/>Dowiedz się więcej szczegółów z [odporność na uszkodzenia](copy-activity-fault-tolerance.md). | Nie |
 
@@ -173,8 +170,8 @@ Szczegóły wykonywania działania kopiowania i charakterystyki wydajności tak�
 
 | Nazwa właściwości  | Opis | Jednostka |
 |:--- |:--- |:--- |
-| DataRead | Rozmiar danych ze źródła do odczytu | Wartość Int64 w **bajtów** |
-| DataWritten | Rozmiar danych zapisywane do zbiornika | Wartość Int64 w **bajtów** |
+| dataRead | Rozmiar danych ze źródła do odczytu | Wartość Int64 w **bajtów** |
+| dataWritten | Rozmiar danych zapisywane do zbiornika | Wartość Int64 w **bajtów** |
 | filesRead | Liczba plików kopiowanych podczas kopiowania danych z magazynu plików. | Wartości Int64 (Brak jednostki) |
 | filesWritten | Liczba plików kopiowanych podczas kopiowania danych do magazynu plików. | Wartości Int64 (Brak jednostki) |
 | rowsCopied | Liczba wierszy kopiowane (nie dotyczy binarne kopii). | Wartości Int64 (Brak jednostki) |
@@ -185,7 +182,7 @@ Szczegóły wykonywania działania kopiowania i charakterystyki wydajności tak�
 | redshiftUnload | Jeśli zwolnienie jest używany podczas kopiowania danych z Redshift. | Wartość logiczna |
 | hdfsDistcp | Jeśli narzędzia DistCp jest używany podczas kopiowania danych z systemu plików HDFS. | Wartość logiczna |
 | effectiveIntegrationRuntime | Pokaż Runtime(s) integracji używanego do uruchamiania w formacie działania pozwalają `<IR name> (<region if it's Azure IR>)`. | Tekst (ciąg) |
-| usedCloudDataMovementUnits | Skuteczne chmury jednostki przepływu danych podczas kopiowania. | Wartość Int32 |
+| usedDataIntegrationUnits | Skuteczne jednostki integracji danych podczas kopiowania. | Wartość Int32 |
 | usedParallelCopies | Skuteczne parallelCopies podczas kopiowania. | Wartość Int32|
 | redirectRowPath | Ścieżka do dziennika pominiętych wierszy niezgodne w magazynie obiektów blob, należy skonfigurować w obszarze "redirectIncompatibleRowSettings". Zobacz w poniższym przykładzie. | Tekst (ciąg) |
 | executionDetails | Więcej informacji na temat etapów działania kopiowania przechodzi przez, i odpowiadające jej kroki, czas trwania, konfiguracje używane,... itd. Nie zaleca się przeanalizować w tej sekcji, ponieważ mogą ulec zmianie. | Tablica |
@@ -200,7 +197,7 @@ Szczegóły wykonywania działania kopiowania i charakterystyki wydajności tak�
     "throughput": 467707.344,
     "errors": [],
     "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (East US 2)",
-    "usedCloudDataMovementUnits": 32,
+    "usedDataIntegrationUnits": 32,
     "usedParallelCopies": 8,
     "executionDetails": [
         {
@@ -213,7 +210,7 @@ Szczegóły wykonywania działania kopiowania i charakterystyki wydajności tak�
             "status": "Succeeded",
             "start": "2018-01-17T15:13:00.3515165Z",
             "duration": 221,
-            "usedCloudDataMovementUnits": 32,
+            "usedDataIntegrationUnits": 32,
             "usedParallelCopies": 8,
             "detailedDurations": {
                 "queuingDuration": 2,
@@ -237,10 +234,10 @@ Domyślnie działanie kopiowania zatrzymuje kopiowanie danych i zwraca błąd, p
 Zobacz [wydajności działania kopiowania i dostrajania przewodnik](copy-activity-performance.md), która opisuje kluczowych czynników wpływających na wydajność przepływu danych (działanie kopiowania) w fabryce danych Azure. Również zawiera listę obserwowana wydajność podczas testowania wewnętrznego oraz opisano różne sposoby optymalizacji wydajności działania kopiowania.
 
 ## <a name="incremental-copy"></a>Kopia przyrostowa 
-Fabryka danych w wersji 2 obsługuje scenariusze przyrostowo kopiowania danych różnicowych z magazynu danych źródłowych w magazynie danych docelowego. Zobacz [samouczek: przyrostowo kopiowanie danych](tutorial-incremental-copy-overview.md). 
+Fabryka danych obsługuje scenariusze przyrostowo kopiowania danych różnicowych z magazynu danych źródłowych w magazynie danych docelowego. Zobacz [samouczek: przyrostowo kopiowanie danych](tutorial-incremental-copy-overview.md). 
 
 ## <a name="read-and-write-partitioned-data"></a>Odczytywanie i zapisywanie danych podzielonej na partycje
-W wersji 1 usługi fabryka danych Azure obsługiwane odczytu lub zapisu danych podzielonej na partycje przy użyciu SliceStart/SliceEnd/WindowStart/WindowEnd zmienne systemowe. W wersji 2 to zachowanie można osiągnąć za pomocą parametru potoku i czas/zaplanowana godzina rozpoczęcia tego wyzwalacza jako wartość parametru. Aby uzyskać więcej informacji, zobacz [jak do odczytu lub zapisu na partycje danych](how-to-read-write-partitioned-data.md).
+W wersji 1 usługi fabryka danych Azure obsługiwane odczytu lub zapisu danych podzielonej na partycje przy użyciu SliceStart/SliceEnd/WindowStart/WindowEnd zmienne systemowe. W bieżącej wersji to zachowanie można osiągnąć za pomocą parametru potoku i czas/zaplanowana godzina rozpoczęcia tego wyzwalacza jako wartość parametru. Aby uzyskać więcej informacji, zobacz [jak do odczytu lub zapisu na partycje danych](how-to-read-write-partitioned-data.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Zobacz następujące Przewodniki Szybki Start, samouczki i przykłady:

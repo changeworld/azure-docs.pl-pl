@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1d566a719abaf09146965a677868d363d33d10e5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 189adf27795172bb08b52af1a9e3428d854a50a0
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622768"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046734"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Przenoszenia danych z PostgreSQL przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](data-factory-onprem-postgresql-connector.md)
-> * [Wersja 2 — wersja zapoznawcza](../connector-postgresql.md)
+> * [W wersji 1](data-factory-onprem-postgresql-connector.md)
+> * [W wersji 2 (bieżąca wersja)](../connector-postgresql.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [PostgreSQL łącznika w wersji 2](../connector-postgresql.md).
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [PostgreSQL łącznika w wersji 2](../connector-postgresql.md).
 
 
 W tym artykule opisano sposób używania działania kopiowania w fabryce danych Azure do przenoszenia danych z lokalną bazą danych PostgreSQL. Opiera się na [działań przepływu danych](data-factory-data-movement-activities.md) artykułu, który przedstawia ogólny przegląd przenoszenia danych z działania kopiowania.
@@ -322,7 +322,7 @@ Podczas przenoszenia danych do PostgreSQL, następujące mapowania są używane 
 | koło | |Byte [], ciąg |&nbsp;
 | data | |Data/godzina |&nbsp;
 | DateRange | |Ciąg |&nbsp;
-| podwójnej precyzji |FLOAT8 |O podwójnej precyzji |
+| podwójnej precyzji |FLOAT8 |podwójne |
 | inet | |Byte [], ciąg |&nbsp;
 | intarry | |Ciąg |&nbsp;
 | int4range | |Ciąg |&nbsp;
@@ -331,7 +331,7 @@ Podczas przenoszenia danych do PostgreSQL, następujące mapowania są używane 
 | Interwał [pola] [(p)] | |Zakres czasu |&nbsp;
 | json | |Ciąg |&nbsp;
 | jsonb | |Byte[] |&nbsp;
-| wiersz | |Byte [], ciąg |&nbsp;
+| Wiersz | |Byte [], ciąg |&nbsp;
 | lseg | |Byte [], ciąg |&nbsp;
 | macaddr | |Byte [], ciąg |&nbsp;
 | oszczędność pieniędzy | |Decimal |&nbsp;
@@ -340,7 +340,7 @@ Podczas przenoszenia danych do PostgreSQL, następujące mapowania są używane 
 | Identyfikator OID | |Int32 |&nbsp;
 | ścieżka | |Byte [], ciąg |&nbsp;
 | pg_lsn | |Int64 |&nbsp;
-| punkt | |Byte [], ciąg |&nbsp;
+| Punkt | |Byte [], ciąg |&nbsp;
 | wielokąta | |Byte [], ciąg |&nbsp;
 | rzeczywiste |FLOAT4 |Pojedyncze |
 | smallint |int2 |Int16 |

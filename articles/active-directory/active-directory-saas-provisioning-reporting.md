@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/12/2017
 ms.author: asmalser-msft
-ms.openlocfilehash: e2ab7efdec326a7f1a2c7f3e7b7d0f379efa8606
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 5011dfbe496472e21a85dee9fa4901dad429a984
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025821"
+ms.locfileid: "37031733"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Samouczek: Raportowania na inicjowanie obsługi konta użytkowników
 
@@ -112,6 +112,9 @@ Najbardziej typowe przypadek użycia dla inicjowania obsługi administracyjnej d
 
 7. Polecenie pojedynczych zdarzeń, aby wyświetlić szczegóły rozszerzonej, w tym wszystkie właściwości użytkownika, które zostały pobrane, obliczenia lub zapisywane jako część zdarzenia.
 
+Aby uzyskać pokaz dotyczące sposobu używania dzienniki inspekcji Zobacz poniższy klip wideo. Dzienniki inspekcji są przedstawione około 5:30 oznaczyć:
+
+> [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 
 ### <a name="tips-for-viewing-the-provisioning-audit-logs"></a>Porady dotyczące wyświetlania inicjowania obsługi administracyjnej dziennika inspekcji
 

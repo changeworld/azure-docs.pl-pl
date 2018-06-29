@@ -4,8 +4,6 @@ description: Wyodrębnienie tekstu z plików obrazów w potoku wzbogacenia usłu
 services: search
 manager: pablocas
 author: luiscabrer
-documentationcenter: ''
-ms.assetid: ''
 ms.service: search
 ms.devlang: NA
 ms.workload: search
@@ -13,12 +11,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 4ac86be25ebe7d12190cce290603ce83037a7b47
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 478afe81ed739b98487973eb092ee9cad0aa17fd
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640374"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37059081"
 ---
 # <a name="ocr-cognitive-skill"></a>Kognitywnych umiejętności Rozpoznawania
 
@@ -38,14 +36,14 @@ Parametry jest rozróżniana wielkość liter.
 | Nazwa parametru     | Opis |
 |--------------------|-------------|
 | detectOrientation | Włącza automatycznego wykrywania orientacji obrazu. <br/> Prawidłowe wartości: PRAWDA / FAŁSZ.|
-|defaultLanguageCode |  Kod języka wejściowego tekstu. Obsługiwane języki: `ar, cs, da, de, en, es, fi, fr, he, hu, it, ko, pt-br, pt`.  Jeśli kod języka jest nieokreślona lub wartość null, język jest autodetected.|
+|defaultLanguageCode | <p>  Kod języka wejściowego tekstu. Obsługiwane języki: <br/> zh-Hans (ChineseSimplified) <br/> zh-Hant (ChineseTraditional) <br/>CS (czeski) <br/>da (duński) <br/>NL (holenderski) <br/>EN (angielski) <br/>Fi (fiński)  <br/>FR (francuski) <br/>  Niemcy (wersja niemiecka) <br/>EL (grecki) <br/> hu (Węgierski) <br/> on (włoska) <br/>  Japonia (wersja japońska) <br/> Ko (koreański) <br/> NB (Norweski) <br/>   PL (Polski) <br/> PT (portugalski) <br/>  RU (rosyjski) <br/>  ES (wersja hiszpańska) <br/>  SV (Szwedzki) <br/>  TR (turecki) <br/> AR (arabski) <br/> ro (Rumuński) <br/> SR-Cyrl (SerbianCyrillic) <br/> SR-Latn (SerbianLatin) <br/>  SK (Słowacki). <br/>  UNK (nieznany) <br/><br/> Jeśli kod języka jest nieokreślona lub wartość null, język jest autodetected. </p> |
 | textExtractionAlgorithm | "drukowane" lub "odręcznie". Algorytm Rozpoznawania rozpoznawania "pismo" jest obecnie w wersji zapoznawczej i obsługiwane tylko w języku angielskim. |
 
 ## <a name="skill-inputs"></a>Dane wejściowe umiejętności
 
 | Wprowadź nazwę      | Opis                                          |
 |---------------|------------------------------------------------------|
-| Obraz         | Typ złożony. Obecnie tylko działania z polem "/ dokumentu/normalized_images" utworzonego przez indeksator obiektów Blob platformy Azure po ```imageAction``` ma ustawioną wartość ```generateNormalizedImages```. Zobacz [próbki](#sample-output) Aby uzyskać więcej informacji.|
+| image         | Typ złożony. Obecnie tylko działania z polem "/ dokumentu/normalized_images" utworzonego przez indeksator obiektów Blob platformy Azure po ```imageAction``` ma ustawioną wartość ```generateNormalizedImages```. Zobacz [próbki](#sample-output) Aby uzyskać więcej informacji.|
 
 
 ## <a name="skill-outputs"></a>Dane wyjściowe umiejętności

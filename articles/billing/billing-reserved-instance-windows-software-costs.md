@@ -1,5 +1,5 @@
 ---
-title: Koszty oprogramowania rezerwy wystąpienia w systemie Windows Azure - rozliczenia Azure | Dokumentacja firmy Microsoft
+title: Rezerwacja Azure wystąpienia koszty oprogramowania systemu Windows | Dokumentacja firmy Microsoft
 description: Dowiedz się, które liczników oprogramowania systemu Windows nie są uwzględniane w koszty zastrzeżone wystąpienia maszyny Wirtualnej Azure.
 services: billing
 documentationcenter: ''
@@ -14,13 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: manshuk
-ms.openlocfilehash: b526ca578a72d7d35fb4198affeb02db4d308b20
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 6602424e2b2e4a4c2c3c51b5cb4bb1024a39d2e0
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063913"
 ---
-# <a name="windows-software-costs-not-included-with-azure-reserved-instances"></a>Koszty oprogramowania systemu Windows nie jest dołączony do wystąpienia zastrzeżone Azure
+# <a name="windows-software-costs-not-included-with-azure-reserved-instances"></a>Koszty oprogramowania systemu Windows nie jest dołączony do zastrzeżonego wystąpieniach platformy Azure
 
 Jeśli nie masz korzyści Użyj hybrydowe platformy Azure na maszynach wirtualnych zastrzeżone wystąpienia są naliczane dla liczników oprogramowania systemu Windows wymienionych w poniższej sekcji.
 
@@ -52,11 +53,11 @@ Jeśli nie masz korzyści Użyj hybrydowe platformy Azure na maszynach wirtualny
 Koszt każdej z tych liczników można uzyskać za pośrednictwem interfejsu API RateCard Azure. Aby uzyskać informacje dotyczące sposobu uzyskania stawki miernika azure, zobacz [uzyskiwanie informacji o cenach i metadanych dla zasobów używanych w subskrypcji platformy Azure](https://msdn.microsoft.com/library/azure/mt219004).
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się więcej o wystąpieniach zastrzeżone Azure, zobacz następujące artykuły:
+Aby dowiedzieć się więcej o wystąpieniach zastrzeżone platformy Azure, zobacz następujące artykuły:
 
-- [Oszczędzić pieniądze na maszynach wirtualnych z wystąpieniami zastrzeżone Azure](billing-save-compute-costs-reservations.md)
-- [Przedpłaty dla maszyn wirtualnych z wystąpień zastrzeżone](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Zarządzanie wystąpieniami zastrzeżone](billing-manage-reserved-vm-instance.md)
+- [Co to są zastrzeżone wystąpień maszyn wirtualnych Azure?](billing-save-compute-costs-reservations.md)
+- [Przedpłaty dla maszyn wirtualnych z wystąpień zastrzeżone maszyna wirtualna platformy Azure](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Zarządzanie wystąpieniami zarezerwowane na platformie Azure](billing-manage-reserved-vm-instance.md)
 - [Zrozumienie, jak stosowany jest rabat zastrzeżone wystąpienia](billing-understand-vm-reservation-charges.md)
 - [Określić sposób użycia wystąpienia zarezerwowane dla Twojej subskrypcji z](billing-understand-reserved-instance-usage.md)
 - [Określić sposób użycia wystąpienia zarezerwowane dla rejestracji w przedsiębiorstwie](billing-understand-reserved-instance-usage-ea.md)

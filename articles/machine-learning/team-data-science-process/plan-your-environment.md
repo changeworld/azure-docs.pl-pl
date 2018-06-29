@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: 16cc7c5841708b8b27cff4fcc7c93cdbb2fe0fa4
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7754fccdfe8a2c4fad24f61fc22c722d2640ffa6
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838337"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063999"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Identyfikowanie scenariuszy i planowanie zaawansowanego przetwarzania danych analizy
 Jakie zasoby powinny zamierzasz włączyć podczas konfigurowania środowiska w celu zaawansowana analityka przetwarzania na zestaw danych? W tym artykule sugeruje szereg pytań pomagające w identyfikacji zadania i odpowiednie zasoby danego scenariusza. Kolejność etapów wysokiego poziomu analizy predykcyjnej jest opisane w temacie [co to jest proces nauki danych zespołu (TDSP)?](overview.md). Każda z tych czynności wymaga określonych zasobów dla zadań dotyczących Twojego scenariusza. Ważne pytania, aby zidentyfikować scenariusz dotyczy danych logistyki cech jakości zestawów danych, narzędzia i języki, aby wykonać analizy.
@@ -54,7 +54,7 @@ Logistyczna pytania dotyczą lokalizację **źródła danych**, **docelowej** pl
 ## <a name="data-characteristics-questions-type-format-and-size"></a>Pytania dotyczące danych właściwości: typ, format i rozmiar
 Pytania te stanowią podstawę planowania magazynu i przetwarzania środowiska, które są odpowiednie do różnych typów danych i każdy z nich ma pewne ograniczenia.
 
-1. **Jakie są typy danych?** Na przykład:
+1. **Co to są typy danych?** Na przykład:
    
    * Wartości liczbowych
    * Podzielone na kategorie
@@ -97,9 +97,9 @@ Istnieje wiele opcji w zależności od jakich języków i środowisk dewelopersk
    
    * [Microsoft Azure Powershell](/powershell/azure/overview) -język skryptów służących do administrowania zasobami Azure w języku skryptu.
    * [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
-   * [Obrót analityka](http://www.revolutionanalytics.com/revolution-r-open)
+   * [Obrót analityka](https://www.microsoft.com/sql-server/machinelearningserver)
    * [Programu RStudio](http://www.rstudio.com)
-   * [Python Tools for Visual Studio](http://microsoft.github.io/PTVS/)
+   * [Python Tools for Visual Studio](http://aka.ms/ptvsdocs)
    * [Anaconda](https://www.continuum.io/why-anaconda)
    * [Notesy Jupyter](http://jupyter.org/)
    * [Microsoft Power BI](http://powerbi.microsoft.com)

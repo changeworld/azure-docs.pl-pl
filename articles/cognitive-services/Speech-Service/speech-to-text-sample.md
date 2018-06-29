@@ -8,14 +8,14 @@ manager: onano
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 9e0b82cc9a034f1e25ef0cc656e3770a166a6ad7
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2a1850e6a4f3c8eebd1b947aabe1374bdaab3fc8
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349725"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030254"
 ---
 # <a name="sample-for-speech-to-text"></a>Przykładowe mowy do tekstu
 
@@ -79,6 +79,6 @@ Najnowszą wersję przykłady i jeszcze bardziej zaawansowane przykłady znajduj
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Rozpoznawanie konwersji](./intent.md)
+- [Rozpoznawanie intencji mowy](./intent.md)
 
 - [Tłumaczenie](./translation.md)

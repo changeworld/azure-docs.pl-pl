@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 3afdcbfc2d1d6f40db0f0336be161a06908cb883
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1ded69225319e447ad210aed267741b2803889ac
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618001"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048088"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Kopiowanie danych z programu SAP HANA przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](v1/data-factory-sap-hana-connector.md)
-> * [Wersja 2 — wersja zapoznawcza](connector-sap-hana.md)
+> * [W wersji 1](v1/data-factory-sap-hana-connector.md)
+> * [Bieżąca wersja](connector-sap-hana.md)
 
 W tym artykule omówiono sposób użycia działanie kopiowania w fabryce danych Azure, aby skopiować dane z bazy danych SAP HANA. Opiera się na [skopiuj omówienie działania](copy-activity-overview.md) artykułu, który przedstawia ogólny przegląd działanie kopiowania.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [SAP HANA łącznika w wersji 1](v1/data-factory-sap-hana-connector.md).
 
 ## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
@@ -169,7 +166,7 @@ Podczas kopiowania danych z programu SAP HANA, następujące mapowania są używ
 | ALPHANUM | Ciąg |
 | BIGINT | Int64 |
 | OBIEKT BLOB | Byte[] |
-| WARTOŚĆ LOGICZNA | Bajtów |
+| WARTOŚĆ LOGICZNA | Bajt |
 | CLOB | Byte[] |
 | DATE | DateTime |
 | DECIMAL | Decimal |
@@ -181,7 +178,7 @@ Podczas kopiowania danych z programu SAP HANA, następujące mapowania są używ
 | SMALLINT | Int16 |
 | CZAS | Zakres czasu |
 | ZNACZNIK CZASU | DateTime |
-| TINYINT | Bajtów |
+| TINYINT | Bajt |
 | VARCHAR | Ciąg |
 
 ## <a name="known-limitations"></a>Znane ograniczenia

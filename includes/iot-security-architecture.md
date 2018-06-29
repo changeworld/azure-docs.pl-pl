@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 62856d4743d853d5685503b5c21faedc46575e55
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6f28df6f2faa78af90fb4b5e62f218e3b391000b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33814802"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37066088"
 ---
 # <a name="internet-of-things-security-architecture"></a>Architektura zabezpieczeń Internetu rzeczy
 
@@ -29,7 +29,7 @@ Wiele zespołów deweloperów czy znakomity zadanie przechwytywania wymagania fu
 
 ### <a name="when-to-threat-model"></a>Kiedy zagrożenia modelu
 
-[Modelowanie zagrożeń](http://www.microsoft.com/security/sdl/adopt/threatmodeling.aspx) zapewnia największą wartość w przypadku, gdy należy zastosować w fazie projektowania. Podczas projektowania, masz największą elastyczność, aby wprowadzić zmiany w celu wyeliminowania zagrożenia. Eliminowanie zagrożeń zgodnie z projektem jest rezultat. Jest znacznie prostsze niż dodawanie środki zaradcze, ich testowania i zapewnienia są zawsze aktualne, a ponadto takie eliminacji nie zawsze jest możliwe. Staje się przeszkodę w celu wyeliminowania zagrożenia produktu staje się bardziej dojrzałe i z kolei ostatecznie wymaga więcej pracy i znacznie trudniejsze wady i zalety niż zagrożeń na wczesnym etapie modelowania do tworzenia.
+[Modelowanie zagrożeń](https://www.microsoft.com/en-us/sdl/adopt/threatmodeling.aspx) zapewnia największą wartość w przypadku, gdy należy zastosować w fazie projektowania. Podczas projektowania, masz największą elastyczność, aby wprowadzić zmiany w celu wyeliminowania zagrożenia. Eliminowanie zagrożeń zgodnie z projektem jest rezultat. Jest znacznie prostsze niż dodawanie środki zaradcze, ich testowania i zapewnienia są zawsze aktualne, a ponadto takie eliminacji nie zawsze jest możliwe. Staje się przeszkodę w celu wyeliminowania zagrożenia produktu staje się bardziej dojrzałe i z kolei ostatecznie wymaga więcej pracy i znacznie trudniejsze wady i zalety niż zagrożeń na wczesnym etapie modelowania do tworzenia.
 
 ### <a name="what-to-threat-model"></a>Co należy modelu zagrożeń
 
@@ -103,7 +103,7 @@ W poniższych sekcjach omówiono standardowymi elementami, które zwykle znajduj
 
 ### <a name="the-device-zone"></a>Strefy urządzenia
 
-Środowisko urządzenia jest natychmiastowe fizycznego miejsca wokół urządzenia w przypadku, gdy fizycznego dostępu i/lub "sieci lokalnej" peer-to-peer cyfrowego dostępu do urządzenia jest możliwe. "Sieci lokalnej" zakłada się, że sieci, która jest odrębny i odizolowanego od — ale potencjalnie mostkowania do — publicznego Internetu i zawiera wszystkie urządzenia bezprzewodowego radia technologie, które umożliwia komunikację peer-to-peer urządzeń. Robi *nie* obejmują innych technologii wirtualizacji sieci tworzenie wrażenie sieci lokalnej i również nie zawiera operator publiczny sieci, które wymagają żadne dwa urządzenia komunikują się za pośrednictwem sieci publicznej miejsce ich wprowadź relacji komunikacji peer-to-peer.
+Środowisko urządzenia jest natychmiastowe fizycznego miejsca wokół urządzenia w przypadku, gdy fizycznego dostępu i/lub "sieci lokalnej" peer-to-peer cyfrowego dostępu do urządzenia jest możliwe. "Sieci lokalnej" zakłada się, że sieci, która jest odrębny i odizolowanego od — ale potencjalnie mostkowania do — publicznego Internetu i zawiera wszystkie urządzenia bezprzewodowego radia technologie, które umożliwia komunikację peer-to-peer urządzeń. Robi *nie* obejmują innych technologii wirtualizacji sieci tworzenie wrażenie sieci lokalnej i również nie zawiera operator publiczny sieci, które wymagają żadne dwa urządzenia komunikują się za pośrednictwem sieci publicznej przestrzeni Jeśli były wprowadź relacji komunikacji peer-to-peer.
 
 ### <a name="the-field-gateway-zone"></a>Pole strefy bramy
 
@@ -250,13 +250,13 @@ Co brama urządzenia i pole ma jakiegoś magazynu (tymczasowy dla usługi kolejk
 
 ### <a name="device-and-event-processingcloud-gateway-zone"></a>Urządzenia i zdarzenia strefy bramy przetwarzania/w chmurze
 
-Brama chmury to system, który umożliwia zdalnej komunikacji z i do urządzeń lub bram pola z wielu różnych lokacji w sieci publicznej przestrzeni, zwykle kierunku kontroli opartej na chmurze i systemu analizy danych, Federacji takich systemów. W niektórych przypadkach brama chmury mogą natychmiast ułatwienia dostępu na urządzeniach specjalnych z terminali, np. tabletów i telefonów. W kontekście omówione w tym miejscu "chmura" jest przeznaczona do odwoływania się do systemu dedykowanych przetwarzania danych, który nie jest powiązany z tej samej lokacji co podłączone urządzenia lub pola bramy, i gdy środki operacyjne zapobiec docelowe fizyczny dostęp, ale nie jest niezbędne do infrastruktury "w chmurze publicznej". Brama chmury potencjalnie mogą być mapowane do nakładki wirtualizacji sieci, aby zabezpieczyć bramy chmury oraz wszystkie jego podłączonych urządzeń i bram pole od innego ruchu sieciowego. Brama chmury nie jest system kontroli urządzeń lub przetwarzania lub magazynu dla danych urządzenia. Interfejs te urządzenia bramy chmury. Strefa bramy chmury obejmuje bramy chmury wraz ze wszystkich bram pola i bezpośrednio lub pośrednio dołączone do niego urządzenia.
+Brama chmury to system, który umożliwia zdalnej komunikacji z i do urządzeń lub bram pola z wielu różnych lokacji w sieci publicznej przestrzeni, zwykle kierunku kontroli opartej na chmurze i systemu analizy danych, Federacji takich systemów. W niektórych przypadkach brama chmury mogą natychmiast ułatwienia dostępu na urządzeniach specjalnych z terminali, np. tabletów i telefonów. W kontekście omówione w tym miejscu "w chmurze" jest przeznaczona do odwoływania się do systemu dedykowanych przetwarzania danych, nie jest powiązany z tą samą witryną jako podłączone urządzenia lub pola bramy, a gdy środki operacyjne uniemożliwić docelowe fizyczny dostęp, ale nie jest zawsze do " Infrastruktura chmury publicznej". Brama chmury potencjalnie mogą być mapowane do nakładki wirtualizacji sieci, aby zabezpieczyć bramy chmury oraz wszystkie jego podłączonych urządzeń i bram pole od innego ruchu sieciowego. Brama chmury nie jest system kontroli urządzeń lub przetwarzania lub magazynu dla danych urządzenia. Interfejs te urządzenia bramy chmury. Strefa bramy chmury obejmuje bramy chmury wraz ze wszystkich bram pola i bezpośrednio lub pośrednio dołączone do niego urządzenia.
 
 Brama chmury jest głównie niestandardowych wbudowanych oprogramowanie jako usługa z punktami końcowymi narażonych, z którymi się łączyć pola bramy i urządzeń. Jako takie muszą być zaprojektowane z myślą o bezpieczeństwie. Postępuj zgodnie z [SDL](http://www.microsoft.com/sdl) proces projektowania i tworzenia tej usługi.
 
 #### <a name="services-zone"></a>Strefa usługi
 
-System kontroli (lub kontrolera) jest rozwiązaniem oprogramowania, które z urządzeniem, lub brama pola lub brama chmury na potrzeby kontrolowania jednego lub wielu urządzeń i/lub do zbierania i/lub przechowywania i/lub analizować dane urządzenie prezentacji lub celów kolejnych kontroli. Systemów kontroli są jednostkami tylko w zakresie tej dyskusji, która może ułatwić natychmiast interakcji z użytkownikami. Wyjątki są pośredniego fizycznych powierzchni na urządzeniach, takich jak przełącznik, który umożliwia użytkownikowi wyłączyć urządzenie lub zmienić inne właściwości i dla którego nie ma odpowiednika funkcjonalności, które mogą uzyskiwać cyfrowo.
+System kontroli (lub kontrolera) jest rozwiązaniem oprogramowania, które z urządzeń, lub brama pola lub brama chmury na potrzeby kontrolowania jednego lub wielu urządzeń i/lub do zbierania i/lub przechowywania i/lub analizowania danych urządzeń do prezentacji, lub celów kolejnych kontroli. Systemów kontroli są jednostkami tylko w zakresie tej dyskusji, która może ułatwić natychmiast interakcji z użytkownikami. Wyjątki są pośredniego fizycznych powierzchni na urządzeniach, takich jak przełącznik, który umożliwia użytkownikowi wyłączyć urządzenie lub zmienić inne właściwości i dla którego nie ma odpowiednika funkcjonalności, które mogą uzyskiwać cyfrowo.
 
 Są pośredniego powierzchni kontroli fizycznej w przypadku, gdy regulujące logiki ogranicza funkcji powierzchni fizycznych odpowiedniki może zostać uruchomiona zdalnie lub można uniknąć konfliktów wejściowego przy użyciu zdalnego danych wejściowych — przykład intermediated Sterowanie koncepcyjnie są dołączone do system kontroli lokalnego, który korzysta z funkcji podstawowych innym systemom zdalnego sterowania, jaki urządzenie może zostać dołączony do równolegle. Górny zagrożeń dotyczących chmury obliczeniowej, może być odczytany przy [chmury zabezpieczeń Alliance (CSA)](https://cloudsecurityalliance.org/research/top-threats/) strony.
 

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 62ee13c4e756e41558adcb5b98081e24d683e01a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 62712a201e8f9717f3e0215c4c29130d3bddcdf2
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620378"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050215"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Tworzenie potoków predykcyjnej przy użyciu usługi Azure Machine Learning i fabryki danych Azure
 
@@ -37,7 +37,7 @@ ms.locfileid: "34620378"
 
 ## <a name="introduction"></a>Wprowadzenie
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [Przekształcanie danych za pomocą uczenia maszynowego w fabryce danych w wersji 2](../transform-data-using-machine-learning.md).
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [Przekształcanie danych za pomocą uczenia maszynowego w fabryce danych](../transform-data-using-machine-learning.md).
 
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
@@ -83,7 +83,7 @@ W tym scenariuszu usługi sieci Web Azure Machine Learning sprawia, że prognoz 
 > [!IMPORTANT]
 > Jeśli usługa sieci web ma wielu danych wejściowych, użyj **webServiceInputs** zamiast za pomocą właściwości **WebServiceInputActivity**. Zobacz [usługi sieci Web wymaga wielu nakładów](#web-service-requires-multiple-inputs) sekcji, na przykład za pomocą właściwości webServiceInputs.
 >
-> Zestawy danych, które odwołują się **WebServiceInputActivity**/**webServiceInputs** i **webServiceOutputs** właściwości (w **typeProperties**) muszą także być ujęte w działaniu **dane wejściowe** i **generuje**.
+> Zestawy danych, które odwołują się **WebServiceInputActivity**/**webServiceInputs** i **webServiceOutputs** właściwości (w  **typeProperties**) muszą także być ujęte w działaniu **dane wejściowe** i **generuje**.
 >
 > W eksperymencie uczenie Maszynowe Azure wprowadzania usługi sieci web i porty wyjścia i parametry globalne mają nazwy domyślnej ("input1", "input2"), które można dostosować. Nazwy używanych w przypadku webServiceInputs, webServiceOutputs i ustawienia globalParameters musi dokładnie odpowiadać nazwy eksperymenty. Przykładowy ładunek żądania można wyświetlić na stronie pomocy wykonywania wsadowego dla punktu końcowego uczenia Maszynowego Azure można zweryfikować oczekiwanego mapowania.
 >

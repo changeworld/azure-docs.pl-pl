@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: faa28a6b28c721e4088ccfbb00514be7f605f3e2
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: ff5c76ca0a164d09e45488cb7abf7f2c2ee50a95
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33943750"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063995"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Przygotowanie do użycia z chmury init istniejącego obrazu maszyny Wirtualnej systemu Linux platformy Azure
 W tym artykule przedstawiono sposób pobrać istniejącej maszyny wirtualnej platformy Azure i przygotowania go ponownie wdrożonym i gotowe do użycia chmury init. Obraz wynikowy może służyć do wdrażania nowej maszyny wirtualnej lub zestawy skalowania maszyn wirtualnych — w jednej z nich można następnie można dodatkowo dostosowywać przez init chmury w czasie wdrażania.  Skrypty te init chmury są uruchamiane po pierwszym uruchomieniu komputera po zasoby zostały udostępnione przez platformę Azure. Aby uzyskać więcej informacji na temat chmury inicjowania działania natywnie Azure i obsługiwanych dystrybucjach systemu Linux, zobacz [init chmury — omówienie](using-cloud-init.md)
@@ -97,7 +97,7 @@ EOF
 
 Jeśli chcesz zmienić konfigurację pliku wymiany dla nowych obrazów przy użyciu chmury init istniejącego obrazu platformy Azure został skonfigurowany pliku wymiany, musisz usunąć istniejący plik wymiany.
 
-RedHat podstawie obrazów — postępuj zgodnie z instrukcjami następujące RedHat dokument wyjaśniający, jak [Usuń plik wymiany](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/5/html/Deployment_Guide/s2-swap-removing-file.html).
+Red Hat podstawie obrazów — postępuj zgodnie z instrukcjami następujące Red Hat dokument wyjaśniający, jak [Usuń plik wymiany](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/swap-removing-file).
 
 CentOS obrazów z swapfile włączone można uruchomić następujące polecenie, aby wyłączyć swapfile:
 ```bash

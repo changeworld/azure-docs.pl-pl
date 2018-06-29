@@ -13,19 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 95b0440dbec1a13096928bdefd31383d07a1f86d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f9f6d2e43fff9a3e57145f39863f66eed64869b2
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618576"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048587"
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>Kopiowanie danych z programu SAP ECC przy użyciu fabryki danych Azure
 
 Ten artykuł przedstawia sposób użycia działanie kopiowania w fabryce danych Azure można skopiować danych z programu SAP ECC (SAP składnikiem przedsiębiorstwa). Opiera się na [skopiuj omówienie działania](copy-activity-overview.md) artykułu, który przedstawia ogólny przegląd działanie kopiowania.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [działanie kopiowania w wersji 1](v1/data-factory-data-movement-activities.md).
 
 ## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
@@ -170,7 +167,7 @@ Podczas kopiowania danych z programu SAP ECC, następujące mapowania są używa
 | Edm.Byte | Ciąg |
 | Edm.DateTime | DateTime |
 | Edm.Decimal | Decimal |
-| Edm.Double | O podwójnej precyzji |
+| Edm.Double | podwójne |
 | Edm.Single | Pojedyncze |
 | Edm.Guid | Ciąg |
 | Edm.Int16 | Int16 |

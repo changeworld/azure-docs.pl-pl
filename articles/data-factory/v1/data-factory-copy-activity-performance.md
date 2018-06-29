@@ -14,21 +14,21 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 27d74ce2cf8fdc4434c48c36dd0c0751dbbab232
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 505f7345af6224b767d6d3719c123d91f54e48f5
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622316"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054296"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Skopiuj wydajności działania i dostrajania przewodnik
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](data-factory-copy-activity-performance.md)
-> * [Wersja 2 — wersja zapoznawcza](../copy-activity-performance.md)
+> * [W wersji 1](data-factory-copy-activity-performance.md)
+> * [W wersji 2 (bieżąca wersja)](../copy-activity-performance.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [skopiuj dostrajania przewodnik dla fabryki danych w wersji 2 i wydajności działania](../copy-activity-performance.md).
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [skopiuj dostrajania przewodnik dla fabryki danych i wydajności działania](../copy-activity-performance.md).
 
 Działanie kopiowania fabryki danych Azure oferuje najwyższej jakości danych bezpieczne, niezawodne i wysoko wydajnych ładowania rozwiązania. Go umożliwia utworzenie kopii dziesiątki terabajtów danych codziennie przez szeroki zakres chmury i lokalnych magazynów danych. Ładowanie wydajności danych ogromną fast ma kluczowe znaczenie dla zapewnienia można skoncentrować się na temat problemu "danych big data" core: kompilowanie rozwiązań zaawansowane analizy i uzyskiwanie szczegółowych informacji z wszystkie te dane.
 
@@ -133,7 +133,7 @@ Aby zastąpić to ustawienie domyślne, należy określić wartość dla **cloud
 > Jeśli potrzebujesz więcej chmury DMUs umożliwiających uzyskanie większej produktywności, skontaktuj się z [pomocy technicznej platformy Azure](https://azure.microsoft.com/support/). Obecnie działa tylko wtedy, gdy ustawienie 8 i nowszych można **skopiować wielu plików z obiektu Blob magazynu/Data Lake Store/Amazon S3/w chmurze SFTP FTP/w chmurze do obiektu Blob magazynu/Data Lake Store/usługi Azure SQL Database**.
 >
 
-### <a name="parallelcopies"></a>parallelCopies
+### <a name="parallelcopies"></a>ParallelCopies
 Można użyć **parallelCopies** Właściwość wskazująca równoległości interesujące Kopiuj działania do użycia. Tej właściwości można traktować jako maksymalną liczbę wątków w ramach działania kopiowania, który można ze źródła do odczytu lub zapisu z magazynów danych zbiornika równolegle.
 
 Dla każdego działania kopiowania Uruchom fabryki danych określa liczbę równoległych kopii umożliwia kopiowanie danych z źródła danych, przechowywania i dane miejsce docelowe przechowywania. Domyślna liczba równoległych kopii, których używa zależy od typu źródłowy i odbiorczy, którego używasz.  
@@ -265,8 +265,8 @@ Zaleca się, że należy wykonać następujące kroki w celu dostrojenia wydajno
      * [Kopiuj przemieszczanego](#staged-copy)
      * [Skalowalność zarządzania bramy danych](data-factory-data-management-gateway-high-availability-scalability.md)
    * [Brama zarządzania danymi](#considerations-for-data-management-gateway)
-   * [Źródło](#considerations-for-the-source)
-   * [obiekt sink](#considerations-for-the-sink)
+   * [Element źródłowy](#considerations-for-the-source)
+   * [Obiekt sink](#considerations-for-the-sink)
    * [Serializacja i deserializacja](#considerations-for-serialization-and-deserialization)
    * [Kompresja](#considerations-for-compression)
    * [Mapowanie kolumny](#considerations-for-column-mapping)

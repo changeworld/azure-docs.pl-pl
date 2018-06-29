@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: larryfr
-ms.openlocfilehash: 0a8930da2d44714573155477d791dd9cb78d872a
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 9ad6ab9e280762fbdb04ba0c1790cd6d01526556
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32311696"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063446"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Opracowywanie topologii Apache Storm w usłudze HDInsight przy użyciu języka Python
 
@@ -38,7 +38,7 @@ Kod dla tego projektu jest dostępne pod adresem [ https://github.com/Azure-Samp
 
 * Maven 3
 
-* (Opcjonalnie) Lokalne Środowisko deweloperskie Storm. Środowisko lokalne Storm jest potrzebne tylko wtedy, jeśli chcesz uruchomić topologii lokalnie. Aby uzyskać więcej informacji, zobacz [Konfigurowanie środowiska projektowego](http://storm.apache.org/releases/1.1.0/Setting-up-development-environment.html).
+* (Opcjonalnie) Lokalne Środowisko deweloperskie Storm. Środowisko lokalne Storm jest potrzebne tylko wtedy, jeśli chcesz uruchomić topologii lokalnie. Aby uzyskać więcej informacji, zobacz [Konfigurowanie środowiska projektowego](http://storm.apache.org/releases/1.1.2/Setting-up-development-environment.html).
 
 ## <a name="storm-multi-language-support"></a>Obsługa wielu języków STORM
 
@@ -97,7 +97,7 @@ storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.
 ```
 
 > [!NOTE]
-> To polecenie wymaga lokalne Środowisko deweloperskie Storm. Aby uzyskać więcej informacji, zobacz [Konfigurowanie środowiska projektowego](http://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html)
+> To polecenie wymaga lokalne Środowisko deweloperskie Storm. Aby uzyskać więcej informacji, zobacz [Konfigurowanie środowiska projektowego](http://storm.apache.org/releases/1.0.6/Setting-up-development-environment.html)
 
 Po uruchomieniu topologii go emituje informacje podobne do następującego konsoli lokalnej:
 

@@ -4,21 +4,20 @@ description: Opis elementu Microsoft.Compute.UserNameTextBox interfejsu użytkow
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
-manager: timlt
 editor: tysonn
 ms.service: managed-applications
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: b65b62389fbb66c9461430d1dd2df42e71bf6cff
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 9f07c5bf9ba1f1880fa142beb52455522425e68d
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260726"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063305"
 ---
 # <a name="microsoftcomputeusernametextbox-ui-element"></a>Microsoft.Compute.UserNameTextBox UI element
 Formant pola tekstowego z wbudowanych sprawdzania poprawności nazwy użytkownika systemu Windows i Linux.
@@ -45,16 +44,15 @@ Formant pola tekstowego z wbudowanych sprawdzania poprawności nazwy użytkownik
 ```
 
 ## <a name="remarks"></a>Uwagi
-- Jeśli `constraints.required` ustawiono **true**, a następnie w polu tekstowym musi zawierać wartość do zweryfikowania pomyślnie. Wartość domyślna to **true**.
+- Jeśli `constraints.required` ustawiono **true**, a następnie w polu tekstowym musi mieć wartość do zweryfikowania pomyślnie. Wartość domyślna to **true**.
 - `osPlatform` należy określić i mogą być **Windows** lub **Linux**.
 - `constraints.regex` jest wzorzec wyrażenia regularnego JavaScript. Jeśli jest określony, wartość pola tekstowego musi odpowiadać wzorzec można pomyślnie zweryfikować. Wartość domyślna to **null**.
 - `constraints.validationMessage` ciąg do wyświetlenia, gdy wartość w polu tekstowym nie powiodło się sprawdzenie poprawności określonej przez `constraints.regex`. Jeśli nie zostanie określony, komunikaty o błędach weryfikacji wbudowane pole tekstowe są używane. Wartość domyślna to **null**.
-- Ten element ma wbudowane weryfikacji, który bazuje na wartość określona dla `osPlatform`. Wbudowane sprawdzania poprawności można wraz z niestandardowe wyrażenie regularne.
-Jeśli określono wartość `constraints.regex` jest określony, a następnie poprawności wbudowanych i niestandardowych są wyzwalane.
+- Ten element ma wbudowane weryfikacji, który bazuje na wartość określona dla `osPlatform`. Wbudowane sprawdzania poprawności można wraz z niestandardowe wyrażenie regularne. Jeśli określono wartość `constraints.regex` jest określony, a następnie poprawności wbudowanych i niestandardowych są wyzwalane.
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
 ```json
-"tabrezm"
+"Example name"
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

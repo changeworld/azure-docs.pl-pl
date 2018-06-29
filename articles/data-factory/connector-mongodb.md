@@ -13,23 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 24d641247ad9bb0b5e6199952cbde9cb56fcaea7
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: debb27f49c730df4a8bef42b1f1ef9ec50f1faf0
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809298"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054062"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopiowanie danych z bazy danych MongoDB przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](v1/data-factory-on-premises-mongodb-connector.md)
-> * [Wersja 2 — wersja zapoznawcza](connector-mongodb.md)
+> * [W wersji 1](v1/data-factory-on-premises-mongodb-connector.md)
+> * [Bieżąca wersja](connector-mongodb.md)
 
 W tym artykule omówiono sposób użycia działanie kopiowania w fabryce danych Azure, aby skopiować dane z bazy danych MongoDB. Opiera się na [skopiuj omówienie działania](copy-activity-overview.md) artykułu, który przedstawia ogólny przegląd działanie kopiowania.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [łącznika bazy danych MongoDB w wersji 1](v1/data-factory-on-premises-mongodb-connector.md).
-
 
 ## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
@@ -102,7 +98,7 @@ Aby skopiować dane z bazy danych MongoDB, ustaw właściwość Typ zestawu dany
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi mieć ustawioną właściwość type zestawu danych: **MongoDbCollection** | Yes |
-| CollectionName |Nazwa kolekcji w bazie danych MongoDB. |Yes |
+| collectionName |Nazwa kolekcji w bazie danych MongoDB. |Yes |
 
 **Przykład:**
 
@@ -183,7 +179,7 @@ Podczas kopiowania danych z bazy danych MongoDB, następujące mapowania są uż
 | Binarny |Byte[] |
 | Wartość logiczna |Wartość logiczna |
 | Date |DateTime |
-| NumberDouble |O podwójnej precyzji |
+| NumberDouble |podwójne |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectID |Ciąg |

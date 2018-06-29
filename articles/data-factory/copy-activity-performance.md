@@ -13,23 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 6b0f576538f159155dcf602fe39b0ea67254e4c7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b6de6331b4d829f183c8b5dc03d6a29095a47479
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619256"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049336"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Skopiuj wydajności działania i dostrajania przewodnik
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](v1/data-factory-copy-activity-performance.md)
-> * [Wersja 2 — wersja zapoznawcza](copy-activity-performance.md)
+> * [W wersji 1](v1/data-factory-copy-activity-performance.md)
+> * [Bieżąca wersja](copy-activity-performance.md)
 
 
 Działanie kopiowania fabryki danych Azure oferuje najwyższej jakości danych bezpieczne, niezawodne i wysoko wydajnych ładowania rozwiązania. Go umożliwia utworzenie kopii dziesiątki terabajtów danych codziennie przez szeroki zakres chmury i lokalnych magazynów danych. Ładowanie wydajności danych ogromną fast ma kluczowe znaczenie dla zapewnienia można skoncentrować się na temat problemu "danych big data" core: kompilowanie rozwiązań zaawansowane analizy i uzyskiwanie szczegółowych informacji z wszystkie te dane.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [wydajności działania kopiowania w fabryce danych w wersji 1](v1/data-factory-copy-activity-performance.md).
 
 Platforma Azure oferuje zestaw korporacyjnej rozwiązania dotyczące danych magazynu i danych magazynu i działanie kopiowania oferuje zoptymalizowanego ładowania środowisko, która jest łatwa do skonfigurowania i danych. Z po prostu działanie pojedynczej kopii można uzyskać:
 
@@ -40,7 +37,7 @@ Platforma Azure oferuje zestaw korporacyjnej rozwiązania dotyczące danych maga
 W tym artykule opisano:
 
 * [Numery wydajności](#performance-reference) obsługiwane źródłowy i odbiorczy magazyny danych do planowania projektu.
-* Funkcje, które może zwiększyć przepływność kopiowania w różnych scenariuszy, w tym [jednostki przepływu danych w chmurze](#cloud-data-movement-units), [równoległych kopii](#parallel-copy), i [przemieszczane kopiowania](#staged-copy);
+* Funkcje, które może zwiększyć przepływność kopiowania w różnych scenariuszy, w tym [jednostki integracji danych](#data-integration-units), [równoległych kopii](#parallel-copy), i [przemieszczane kopiowania](#staged-copy);
 * [Wskazówki dotyczące dostrajania wydajności](#performance-tuning-steps) w sposób dostrajania wydajności i kluczowych czynników, które mogą mieć wpływ na wydajność kopiowania.
 
 > [!NOTE]
@@ -49,12 +46,12 @@ W tym artykule opisano:
 
 ## <a name="performance-reference"></a>Informacje dotyczące wydajności
 
-Jako odwołanie, w poniższej tabeli pokazuje liczbę przepływności kopiowania **w MB/s** dla danego par źródłowy i odbiorczy **w działaniu pojedynczej kopii Uruchom** testów wewnętrznych. Porównanie można go również pokazano, jak różne ustawienia [jednostki przepływu danych w chmurze](#cloud-data-movement-units) lub [skalowalność środowiska uruchomieniowego integracji Self-hosted](concepts-integration-runtime.md#self-hosted-integration-runtime) (wiele węzłów) pozwalają na wydajność kopiowania.
+Jako odwołanie, w poniższej tabeli pokazuje liczbę przepływności kopiowania **w MB/s** dla danego par źródłowy i odbiorczy **w działaniu pojedynczej kopii Uruchom** testów wewnętrznych. Porównanie można go również pokazano, jak różne ustawienia [jednostki integracji danych](#data-integration-units) lub [skalowalność środowiska uruchomieniowego integracji Self-hosted](concepts-integration-runtime.md#self-hosted-integration-runtime) (wiele węzłów) pozwalają na wydajność kopiowania.
 
 ![Macierz wydajności](./media/copy-activity-performance/CopyPerfRef.png)
 
->[!IMPORTANT]
->W fabryce danych Azure w wersji 2 gdy działanie kopiowania jest wykonywana w środowisku uruchomieniowym integracji Azure jednostki przepływu danych minimalny dozwolony chmury wynosi dwa. Jeśli nie zostanie określony, zobacz jednostki przepływu danych domyślne używane w [jednostki przepływu danych w chmurze](#cloud-data-movement-units).
+> [!IMPORTANT]
+> Działanie kopiowania jest wykonywana w środowisku uruchomieniowym integracji Azure, minimalne dozwolone jednostki integracji danych (wcześniej znane jako jednostki przepływu danych) wynosi dwa. Jeśli nie zostanie określony, zobacz jednostki integracji danych domyślne używane w [jednostki integracji danych](#data-integration-units).
 
 Informacje, które należy zwrócić uwagę:
 
@@ -79,25 +76,25 @@ Informacje, które należy zwrócić uwagę:
 
 
 > [!TIP]
-> Wyższej przepustowości można osiągnąć za pomocą więcej danych przemieszczania jednostki (DMUs) niż domyślne dozwolona maksymalna DMUs, które są 32 dla działania kopiowania w chmurze na chmurze, uruchom. Na przykład z 100 DMUs, możesz osiągnąć kopiowanie danych z obiektu Blob Azure do usługi Azure Data Lake Store **1.0GBps**. Zobacz [jednostki przepływu danych w chmurze](#cloud-data-movement-units) sekcji, aby uzyskać więcej informacji dotyczących tej funkcji i obsługiwany scenariusz. Skontaktuj się z [pomocy technicznej platformy Azure](https://azure.microsoft.com/support/) żądania DMUs więcej.
+> Wyższej przepustowości można osiągnąć za pomocą więcej danych integracji jednostki (DIU) niż domyślne dozwolona maksymalna DIUs, które są 32 dla działania kopiowania w chmurze na chmurze, uruchom. Na przykład z 100 DIUs, możesz osiągnąć kopiowanie danych z obiektu Blob Azure do usługi Azure Data Lake Store **1.0GBps**. Zobacz [jednostki integracji danych](#data-integration-units) sekcji, aby uzyskać więcej informacji dotyczących tej funkcji i obsługiwany scenariusz. Skontaktuj się z [pomocy technicznej platformy Azure](https://azure.microsoft.com/support/) żądania DIUs więcej.
 
-## <a name="cloud-data-movement-units"></a>Jednostki przepływu danych w chmurze
+## <a name="data-integration-units"></a>Jednostki integracji danych
 
-A **jednostki przepływu danych w chmurze (DMU)** miary, która odzwierciedla wydajność (kombinacja Procesora, pamięci i alokacji zasobów w sieci) w pojedynczą jednostkę w fabryce danych. **DMU ma zastosowanie tylko do [środowiska uruchomieniowego integracji Azure](concepts-integration-runtime.md#azure-integration-runtime)**, ale nie [środowiska uruchomieniowego integracji Self-hosted](concepts-integration-runtime.md#self-hosted-integration-runtime).
+A **jednostki integracji danych (DIU)** (wcześniej znane jako jednostka przepływu danych w chmurze lub DMU) miary, która odzwierciedla wydajność (kombinacja Procesora, pamięci i alokacji zasobów w sieci) w pojedynczą jednostkę w fabryce danych. **DIU ma zastosowanie tylko do [środowiska uruchomieniowego integracji Azure](concepts-integration-runtime.md#azure-integration-runtime)**, ale nie [środowiska uruchomieniowego integracji Self-hosted](concepts-integration-runtime.md#self-hosted-integration-runtime).
 
-**Jednostki przepływu danych minimalnego chmury dla uruchamiania działania kopiowania wynosi dwa.** Jeśli nie zostanie określony, w poniższej tabeli wymieniono DMUs domyślne używane w scenariuszach różnych kopiowania:
+**Minimalny jednostki integracji danych dla uruchamiania działania kopiowania wynosi dwa.** Jeśli nie zostanie określony, w poniższej tabeli wymieniono DIUs domyślne używane w scenariuszach różnych kopiowania:
 
-| Skopiuj scenariusza | Domyślne DMUs określone przez usługę |
+| Skopiuj scenariusza | Domyślne DIUs określone przez usługę |
 |:--- |:--- |
 | Kopiowanie danych między magazynów opartych na plikach | Od 4 do 32 w zależności od liczby i rozmiaru plików. |
 | Inne scenariusze kopiowania | 4 |
 
-Aby zastąpić to ustawienie domyślne, należy określić wartość dla **cloudDataMovementUnits** właściwości w następujący sposób. **Dozwolone wartości** dla **cloudDataMovementUnits** właściwość jest **256**. **Rzeczywistą liczbę chmury DMUs** używany w czasie wykonywania operacji kopiowania jest równa lub mniejsza niż skonfigurowana wartość, w zależności od tego wzorca sieci danych. Uzyskać informacje na temat poziomu są bardziej wydajne, można uzyskać po skonfigurowaniu więcej jednostek dla konkretnej kopii źródłowy i odbiorczy, zobacz [dotyczące wydajności](#performance-reference).
+Aby zastąpić to ustawienie domyślne, należy określić wartość dla **dataIntegrationUnits** właściwości w następujący sposób. **Dozwolone wartości** dla **dataIntegrationUnits** właściwość jest **256**. **Rzeczywistą liczbę DIUs** używany w czasie wykonywania operacji kopiowania jest równa lub mniejsza niż skonfigurowana wartość, w zależności od tego wzorca sieci danych. Uzyskać informacje na temat poziomu są bardziej wydajne, można uzyskać po skonfigurowaniu więcej jednostek dla konkretnej kopii źródłowy i odbiorczy, zobacz [dotyczące wydajności](#performance-reference).
 
-Widać jednostki przepływu danych chmury faktycznie używana dla poszczególnych kopii uruchamiania w przypadku działania kopiowania danych wyjściowych podczas uruchamiania działania monitorowania. Dowiedz się więcej szczegółów z [skopiuj Monitorowanie działania](copy-activity-overview.md#monitoring).
+Widać rzeczywiście używane jednostki integracji danych dla poszczególnych kopii uruchamiania w przypadku działania kopiowania danych wyjściowych podczas uruchamiania działania monitorowania. Dowiedz się więcej szczegółów z [skopiuj Monitorowanie działania](copy-activity-overview.md#monitoring).
 
 > [!NOTE]
-> Jeśli potrzebujesz więcej chmury DMUs umożliwiających uzyskanie większej produktywności, skontaktuj się z [pomocy technicznej platformy Azure](https://azure.microsoft.com/support/). Ustawienie 8 i nowszych jest obecnie obsługiwane tylko wtedy, gdy użytkownik **skopiować wielu plików z obiektu Blob magazynu/Data Lake Store/Amazon S3/w chmurze SFTP FTP/w chmurze do innych magazynów danych chmury**.
+> Jeśli potrzebujesz więcej DIUs umożliwiających uzyskanie większej produktywności, skontaktuj się z [pomocy technicznej platformy Azure](https://azure.microsoft.com/support/). Ustawienie 8 i nowszych jest obecnie obsługiwane tylko wtedy, gdy użytkownik **skopiować wielu plików z obiektu Blob magazynu/Data Lake Store/Amazon S3/w chmurze SFTP FTP/w chmurze do innych magazynów danych chmury**.
 >
 
 **Przykład:**
@@ -116,15 +113,15 @@ Widać jednostki przepływu danych chmury faktycznie używana dla poszczególnyc
             "sink": {
                 "type": "AzureDataLakeStoreSink"
             },
-            "cloudDataMovementUnits": 32
+            "dataIntegrationUnits": 32
         }
     }
 ]
 ```
 
-### <a name="cloud-data-movement-units-billing-impact"></a>Jednostki przepływu danych chmury rozliczeń wpływu
+### <a name="data-integration-units-billing-impact"></a>Wpływ rozliczeniowym jednostki integracji danych
 
-Ma ona **ważne** pamiętać, że są naliczane na podstawie całkowitej czasu operacji kopiowania. Całkowity czas, które są rozliczane dla przepływu danych jest łączny czas trwania między DMUs. Zadanie kopiowania używana do zbierania godzinę z dwóch jednostek chmury, teraz trwa 15 minut z jednostkami chmury osiem zestawienie ogólnej pozostaje prawie takie same.
+Ma ona **ważne** pamiętać, że są naliczane na podstawie całkowitej czasu operacji kopiowania. Całkowity czas, które są rozliczane dla przepływu danych jest łączny czas trwania między DIUs. Zadanie kopiowania używana do zbierania godzinę z dwóch jednostek chmury, teraz trwa 15 minut z jednostkami chmury osiem zestawienie ogólnej pozostaje prawie takie same.
 
 ## <a name="parallel-copy"></a>Kopiuj równoległych
 
@@ -134,7 +131,7 @@ Dla każdego działania kopiowania Uruchom fabryki danych określa liczbę równ
 
 | Skopiuj scenariusza | Liczba równoległych kopii domyślne określone przez usługę |
 | --- | --- |
-| Kopiowanie danych między magazynów opartych na plikach |Zależy od rozmiaru plików i liczby jednostek chmury danych przepływu (DMUs) umożliwia kopiowanie danych między dwa magazyny danych w chmurze lub fizyczną konfigurację środowiska uruchomieniowego integracji Self-hosted maszyny. |
+| Kopiowanie danych między magazynów opartych na plikach |Zależy od rozmiaru plików i liczbę jednostek integracji danych (DIUs) umożliwia kopiowanie danych między dwa magazyny danych w chmurze lub fizyczną konfigurację środowiska uruchomieniowego integracji Self-hosted maszyny. |
 | Kopiowanie danych z dowolnego źródła danych magazynu do magazynu tabel Azure |4 |
 | Inne scenariusze kopiowania |1 |
 
@@ -168,7 +165,7 @@ Informacje, które należy zwrócić uwagę:
 * Po skopiowaniu danych między magazynów opartych na plikach, **parallelCopies** określić równoległości na poziomie plików. Podziału w jednym pliku sytuacja może mieć miejsce pod automatycznie i w sposób niewidoczny dla użytkownika, a zostało zaprojektowane na potrzeby ładowania danych w równoległych i prostopadłym do parallelCopies najlepsze rozmiar fragmentu odpowiedniego dla typu danego źródła danych magazynu. Rzeczywista liczba równoległych kopii używa usługi przenoszenia danych w czasie wykonywania operacji kopiowania jest nie więcej niż liczba plików. Jeśli jest to zachowanie kopii **mergeFile**, aktywność kopiowania nie może korzystać z równoległości poziomie plików.
 * Po określeniu wartość **parallelCopies** właściwości, warto rozważyć zwiększenie obciążenia na magazyny danych źródłowy i odbiorczy i środowiska uruchomieniowego integracji Self-Hosted, gdy działanie kopiowania jest upoważniony przez nią z na przykład hybrydowego kopii. Ma to miejsce, zwłaszcza jeśli masz wiele działań lub uruchamia równoczesnych działań uruchamianych z tego samego magazynu danych. Jeśli zauważysz jest przeciążony magazyn danych lub środowisko uruchomieniowe integracji Self-hosted obciążenia, Zmniejsz **parallelCopies** wartość na zmniejszenie obciążenia.
 * Po skopiowaniu danych z magazynów, które nie są opartą na plikach do magazynów, które są oparte na pliku usługi przenoszenia danych ignoruje **parallelCopies** właściwości. Nawet wtedy, gdy określono równoległości, nie zostanie zastosowane w tym przypadku.
-* **parallelCopies** prostopadłym do **cloudDataMovementUnits**. Pierwsza jest traktowane przez wszystkie chmury danych przemieszczania jednostki.
+* **parallelCopies** prostopadłym do **dataIntegrationUnits**. Pierwsza jest traktowane przez wszystkie jednostki integracji danych.
 
 ## <a name="staged-copy"></a>Kopiuj przemieszczanego
 
@@ -246,12 +243,12 @@ Zaleca się, że należy wykonać następujące kroki w celu dostrojenia wydajno
 
    * Funkcje wydajności:
      * [Kopiuj równoległych](#parallel-copy)
-     * [Jednostki przepływu danych w chmurze](#cloud-data-movement-units)
+     * [Jednostki integracji danych](#data-integration-units)
      * [Kopiuj przemieszczanego](#staged-copy)
      * [Hostowanie Samoobsługowe skalowalność integrację środowiska uruchomieniowego](concepts-integration-runtime.md#self-hosted-integration-runtime)
    * [Hostowanie Samoobsługowe integrację środowiska uruchomieniowego](#considerations-for-self-hosted-integration-runtime)
-   * [Źródło](#considerations-for-the-source)
-   * [obiekt sink](#considerations-for-the-sink)
+   * [Element źródłowy](#considerations-for-the-source)
+   * [Obiekt sink](#considerations-for-the-sink)
    * [Serializacja i deserializacja](#considerations-for-serialization-and-deserialization)
    * [Kompresja](#considerations-for-compression)
    * [Mapowanie kolumny](#considerations-for-column-mapping)

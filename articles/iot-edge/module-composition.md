@@ -1,37 +1,37 @@
 ---
 title: Budowy modułu w usłudze Azure IoT krawędzi | Dokumentacja firmy Microsoft
-description: Dowiedz się, co jest umieszczane w modułach Azure IoT krawędzi i jak można ponownie
+description: Dowiedz się, jak manifest rozmieszczenia deklaruje które moduły do wdrożenia, jak wdrażać je i sposób tworzenia tras wiadomości między nimi.
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 03/23/2018
+ms.date: 06/06/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c886d1d9dea120a243693c12ae861a58126daadc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.openlocfilehash: 84a0698a61e68c141cc79dbc779f352aab528afa
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631687"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031485"
 ---
-# <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>Skonfigurowane, zrozumieć, jak moduły krawędzi IoT mogą być używane i ponownie - preview
+# <a name="learn-how-to-use-deployment-manifests-to-deploy-modules-and-establish-routes"></a>Dowiedz się, jak manifesty wdrożenia umożliwia wdrażanie modułów i ustanowienia trasy
 
-Poszczególne urządzenia IoT krawędzi działa co najmniej dwa moduły: $edgeAgent i $edgeHub, które składają się na krawędzi IoT środowiska uruchomieniowego. Oprócz tych dwóch standardowe wszystkie urządzenia IoT można uruchomić wiele modułów, aby wykonać dowolną liczbę procesów. Jednocześnie wdrażania tych modułów do urządzenia, należy zadeklarować, które moduły są uwzględniane w sposób współdziałają ze sobą. 
+Poszczególne urządzenia IoT krawędzi działa co najmniej dwa moduły: $edgeAgent i $edgeHub, które składają się na krawędzi IoT środowiska uruchomieniowego. Oprócz tych dwóch standardowe wszystkie urządzenia IoT można uruchomić wiele modułów, aby wykonać dowolną liczbę procesów. Jednocześnie wdrażania tych modułów do urządzenia, należy zadeklarować modułów, które są uwzględniane i ich interakcji ze sobą. 
 
 *Manifest rozmieszczenia* jest dokumentem JSON, który opisuje:
 
-* Które moduły krawędzi IoT trzeba można wdrożyć, wraz z ich opcje tworzenie i zarządzanie nimi.
+* Konfiguracja agenta krawędzi, który zawiera obraz kontener dla każdego modułu, poświadczenia, które mają dostęp do rejestrów Kontener prywatny i instrukcje dotyczące sposobu tworzenia i zarządzane poszczególnych modułów.
 * Konfiguracja koncentratora krawędzi, w tym, jak komunikaty przepływ między modułami i ostatecznie Centrum IoT.
-* Opcjonalnie wartości, które można ustawić we właściwościach żądaną twins modułu do konfigurowania aplikacji pojedynczego modułu.
+* Opcjonalnie żądanej właściwości twins modułu.
 
 Wszystkie urządzenia IoT krawędzi, należy skonfigurować z manifestu wdrożenia. Nowo zainstalowany moduł wykonawczy krawędzi IoT raporty do czasu skonfigurowania z prawidłowym manifestem kod błędu. 
 
-W samouczkach Azure IoT krawędzi tworzenia manifest rozmieszczenia za pośrednictwem kreatora w portalu Azure IoT krawędzi. Można także zastosować dla manifest wdrażania, programowo przy użyciu przerwę lub zestawu SDK usług Centrum IoT. Zapoznaj się [wdrażanie i monitorowanie] [ lnk-deploy] uzyskać więcej informacji o wdrożeniach IoT krawędzi.
+W samouczkach Azure IoT krawędzi tworzenia manifest rozmieszczenia za pośrednictwem kreatora w portalu Azure IoT krawędzi. Można także zastosować dla manifest wdrażania, programowo przy użyciu przerwę lub zestawu SDK usług Centrum IoT. Aby uzyskać więcej informacji, zobacz [wdrożeń zrozumieć krawędzi IoT][lnk-deploy].
 
 ## <a name="create-a-deployment-manifest"></a>Tworzenie manifestu wdrożenia
 
-Na wysokim poziomie manifest wdrażania konfiguruje dwie modułu odpowiednie właściwości dla modułów krawędzi IoT wdrożone na urządzeniu IoT krawędzi. Zawsze występują dwa z tych modułów: agent krawędzi i koncentrator krawędzi.
+Na wysokim poziomie manifest wdrażania konfiguruje dwie modułu odpowiednie właściwości dla modułów krawędzi IoT wdrożone na urządzeniu IoT krawędzi. Zawsze występują dwa z tych modułów: `$edgeAgent`, i `$edgeHub`.
 
 Manifest wdrażania, zawierający tylko krawędzi IoT środowiska uruchomieniowego (agenta i koncentrator) jest nieprawidłowy.
 
@@ -44,6 +44,7 @@ Manifest tej struktury są następujące:
             "properties.desired": {
                 // desired properties of the Edge agent
                 // includes the image URIs of all modules
+                // includes container registry credentials
             }
         },
         "$edgeHub": {
@@ -67,7 +68,7 @@ Manifest tej struktury są następujące:
 
 ## <a name="configure-modules"></a>Konfiguruj moduły
 
-Oprócz ustalenia odpowiednie właściwości wszelkich modułów, które mają zostać wdrożone, należy Poinformuj środowiska uruchomieniowego krawędzi IoT, jak mają być instalowane. Informacje o konfiguracji i zarządzania dla wszystkich modułów przechodzi wewnątrz **$edgeAgent** żądanego właściwości. Informacje te obejmują parametry konfiguracji dla samego agenta krawędzi. 
+Należy sprawdzić środowiska uruchomieniowego krawędzi IoT, jak zainstalować moduły w danym wdrożeniu. Informacje o konfiguracji i zarządzania dla wszystkich modułów przechodzi wewnątrz **$edgeAgent** żądanego właściwości. Informacje te obejmują parametry konfiguracji dla samego agenta krawędzi. 
 
 Aby uzyskać pełną listę właściwości, które mogą lub muszą być włączone, zobacz [właściwości krawędź agent i koncentrator krawędzi](module-edgeagent-edgehub.md).
 
@@ -78,6 +79,11 @@ Właściwości $edgeAgent wykonaj tej struktury:
     "properties.desired": {
         "schemaVersion": "1.0",
         "runtime": {
+            "settings":{
+                "registryCredentials":{ // give the edge agent access to container images that aren't public
+                    }
+                }
+            }
         },
         "systemModules": {
             "edgeAgent": {
@@ -88,7 +94,7 @@ Właściwości $edgeAgent wykonaj tej struktury:
             }
         },
         "modules": {
-            "{module1}": { //optional
+            "{module1}": { // optional
                 // configuration and management details
             },
             "{module2}": { // optional
@@ -158,7 +164,7 @@ Obiekt sink definiuje, którego wysyłane są komunikaty. Może być jedną z na
 | `$upstream` | Wysyła komunikat do Centrum IoT |
 | `BrokeredEndpoint("/modules/{moduleId}/inputs/{input}")` | Wyślij wiadomość do wprowadzania `{input}` modułu `{moduleId}` |
 
-Należy pamiętać, że Centrum krawędzi zapewnia na najmniej jednokrotne gwarancje, co oznacza, że komunikaty są przechowywane lokalnie w przypadku trasy nie może dostarczyć wiadomości do jego odbioru, na przykład Centrum krawędzi nie może połączyć się z Centrum IoT lub moduł docelowy nie jest połączona.
+Krawędź IoT zapewnia gwarancje na najmniej jednokrotne. Koncentrator krawędzi przechowuje komunikaty lokalnie w przypadku trasy nie może dostarczyć wiadomości do jego odbioru. Na przykład jeśli koncentrator krawędzi nie może nawiązać Centrum IoT lub modułu docelowy nie jest połączony.
 
 Koncentrator krawędzi przechowuje komunikaty do przez czas określony w `storeAndForwardConfiguration.timeToLiveSecs` właściwość [Centrum krawędzi żądanego właściwości](module-edgeagent-edgehub.md).
 
@@ -168,7 +174,7 @@ Manifest wdrażania można określić właściwości żądaną dwie modułu każ
 
 Jeśli nie określisz dwie modułu odpowiednie właściwości w manifeście rozmieszczenia, Centrum IoT nie zmodyfikuje dwie modułu w jakikolwiek sposób i będzie można programowo Ustaw odpowiednie właściwości.
 
-Te same mechanizmy, które umożliwiają modyfikowanie twins urządzenia są używane do modyfikowania twins modułu. Zapoznaj się [przewodnik dewelopera dwie urządzenia](../iot-hub/iot-hub-devguide-device-twins.md) Aby uzyskać więcej informacji.   
+Te same mechanizmy, które umożliwiają modyfikowanie twins urządzenia są używane do modyfikowania twins modułu. Aby uzyskać więcej informacji, zobacz [przewodnik dewelopera dwie urządzenia](../iot-hub/iot-hub-devguide-device-twins.md).   
 
 ## <a name="deployment-manifest-example"></a>Przykład manifestu wdrożenia
 
@@ -176,72 +182,79 @@ Ten przykład dokumentu JSON manifestu wdrożenia.
 
 ```json
 {
-"moduleContent": {
+  "moduleContent": {
     "$edgeAgent": {
-        "properties.desired": {
-            "schemaVersion": "1.0",
-            "runtime": {
-                "type": "docker",
-                "settings": {
-                    "minDockerVersion": "v1.25",
-                    "loggingOptions": ""
-                }
-            },
-            "systemModules": {
-                "edgeAgent": {
-                    "type": "docker",
-                    "settings": {
-                    "image": "microsoft/azureiotedge-agent:1.0-preview",
-                    "createOptions": ""
-                    }
-                },
-                "edgeHub": {
-                    "type": "docker",
-                    "status": "running",
-                    "restartPolicy": "always",
-                    "settings": {
-                    "image": "microsoft/azureiotedge-hub:1.0-preview",
-                    "createOptions": ""
-                    }
-                }
-            },
-            "modules": {
-                "tempSensor": {
-                    "version": "1.0",
-                    "type": "docker",
-                    "status": "running",
-                    "restartPolicy": "always",
-                    "settings": {
-                    "image": "microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview",
-                    "createOptions": "{}"
-                    }
-                },
-                "filtermodule": {
-                    "version": "1.0",
-                    "type": "docker",
-                    "status": "running",
-                    "restartPolicy": "always",
-                    "settings": {
-                    "image": "myacr.azurecr.io/filtermodule:latest",
-                    "createOptions": "{}"
-                    }
-                }
+      "properties.desired": {
+        "schemaVersion": "1.0",
+        "runtime": {
+          "type": "docker",
+          "settings": {
+            "minDockerVersion": "v1.25",
+            "loggingOptions": "",
+            "registryCredentials": {
+              "ContosoRegistry": {
+                "username": "myacr",
+                "password": "{password}",
+                "address": "myacr.azurecr.io"
+              }
             }
+          }
+        },
+        "systemModules": {
+          "edgeAgent": {
+            "type": "docker",
+            "settings": {
+              "image": "microsoft/azureiotedge-agent:1.0-preview",
+              "createOptions": ""
+            }
+          },
+          "edgeHub": {
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "microsoft/azureiotedge-hub:1.0-preview",
+              "createOptions": ""
+            }
+          }
+        },
+        "modules": {
+          "tempSensor": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
+              "createOptions": "{}"
+            }
+          },
+          "filtermodule": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "myacr.azurecr.io/filtermodule:latest",
+              "createOptions": "{}"
+            }
+          }
         }
+      }
     },
     "$edgeHub": {
-        "properties.desired": {
-            "schemaVersion": "1.0",
-            "routes": {
-                "sensorToFilter": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
-                "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
-            },
-            "storeAndForwardConfiguration": {
-                "timeToLiveSecs": 10
-            }
+      "properties.desired": {
+        "schemaVersion": "1.0",
+        "routes": {
+          "sensorToFilter": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
+          "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
+        },
+        "storeAndForwardConfiguration": {
+          "timeToLiveSecs": 10
         }
+      }
     }
-}
+  }
 }
 ```
 

@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 408f9759262d6ae2193df3193ee1c306d384afe6
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 90d74d8df2ed59e6f3313ef7c620284d1022a667
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308792"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049115"
 ---
 # <a name="getting-started-with-face-api-in-python-tutorial"></a>Wprowadzenie do korzystania z powierzchni interfejsu API w samouczku Python
 
@@ -95,7 +95,7 @@ img.show()
 
 ## <a name='further'></a> Dalszych badań
 
-Aby ułatwić dalszą analizę powierzchni interfejsu API, w tym samouczku omówiono przykładowe graficznego interfejsu użytkownika. Aby go uruchomić, należy najpierw zainstalować [wxPython](https://wxpython.org/) następnie uruchom poniższe polecenia.
+Aby ułatwić dalszą analizę powierzchni interfejsu API, w tym samouczku omówiono przykładowe graficznego interfejsu użytkownika. Aby go uruchomić, należy najpierw zainstalować [wxPython](https://wxpython.org/pages/downloads/) następnie uruchom poniższe polecenia.
 
 ```bash
 git clone https://github.com/Microsoft/Cognitive-Face-Python.git

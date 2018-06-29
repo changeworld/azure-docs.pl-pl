@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/19/2018
+ms.date: 06/27/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18b6aaf7396c16714370435d2ee6d3a4960ecf21
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 3918096a977cfd48e2128646d7c552e842ab8834
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337975"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063684"
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Architektura na platformie Azure i SAP HANA (duże wystąpień) — omówienie
 
@@ -393,6 +393,8 @@ Rozmiary są liczbami nierównej woluminów, które może różnić się nieznac
 Mogą wymagać więcej pamięci masowej. Magazyn można dodać przy zakupie dodatkowego magazynu w jednostkach 1 TB. To dodatkowe Magazyn można dodać jako dodatkowy wolumin. Również może służyć do rozszerzenia co najmniej jeden z istniejących woluminów. Nie można zmniejszyć rozmiar woluminu pierwotnie wdrożone, a przede wszystkim opisane w poprzednich tabelach. Ponadto nie można zmienić nazwy woluminów lub instalacji nazwy. Woluminy magazynu opisany powyżej są dołączone do jednostki HANA dużych wystąpienia jako woluminy NFS4.
 
 Przy użyciu migawek magazynu na potrzeby odzyskiwania kopii zapasowej i przywracania i odzyskiwaniem po awarii. Aby uzyskać więcej informacji, zobacz [SAP HANA (duże wystąpień) wysokiej dostępności i odzyskiwania po awarii na platformie Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+
+Zobacz [HLI obsługiwane scenariusze](hana-supported-scenario.md) szczegółowe układu magazynu dla danego scenariusza.
 
 ### <a name="encryption-of-data-at-rest"></a>Szyfrowanie nieużywanych danych
 Magazyn używany dla wystąpienia dużych HANA umożliwia przezroczystego szyfrowania danych są przechowywane na dyskach. Po wdrożeniu jednostki wystąpienia dużych HANA można włączyć tego rodzaju szyfrowania. Możesz również można zmienić na zaszyfrowanych woluminach po wdrożeniu. Przenoszenie z niezaszyfrowane do zaszyfrowanych woluminach działa w sposób niewidoczny i nie wymaga przestojów. 

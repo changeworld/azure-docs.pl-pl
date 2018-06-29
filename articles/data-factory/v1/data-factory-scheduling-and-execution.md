@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f18d6817d3a04ad787888ba058e1251303e575a7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bd8b682e073e86bb824d31d6ebab20a80f807730
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622411"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054606"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Planowanie fabryki danych i wykonywania
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [potoku wykonywania i wyzwalaczy](../concepts-pipeline-execution-triggers.md) artykułu.
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [potoku wykonywania i wyzwalaczy](../concepts-pipeline-execution-triggers.md) artykułu.
 
 W tym artykule wyjaśniono aspekty planowania i wykonywania modelu aplikacji usługi Azure Data Factory. W tym artykule przyjęto założenie, że rozumiesz podstawowe pojęcia modelu aplikacji fabryki danych, w tym działania, potoki połączonych usług i zestawów danych. Dla podstawowych pojęciach dotyczących usługi fabryka danych Azure zobacz następujące artykuły:
 

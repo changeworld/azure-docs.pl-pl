@@ -8,14 +8,14 @@ manager: onano
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: a02a89de1d05ec5388a92f14a0fd206e0ee966a6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1151628ed695e74e2196c20b08e33fa5eaf33282
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349697"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028391"
 ---
 # <a name="sample-for-translation"></a>Próbka do tłumaczenia
 
@@ -56,4 +56,4 @@ Najnowszą wersję przykłady i jeszcze bardziej zaawansowane przykłady znajduj
 
 - [Rozpoznawanie mowy](./speech-to-text-sample.md)
 
-- [Rozpoznawanie konwersji](./intent.md)
+- [Rozpoznawanie intencji mowy](./intent.md)

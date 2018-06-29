@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/30/2018
+ms.date: 06/27/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9c4c126663d34d65cc7e0aa641bf93b848a5dcae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d2445713aa5d6a839950ca0fe9567133c06d1ffa
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658319"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062245"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>SAP HANA dużych wystąpień wysokiej dostępności i odzyskiwania po awarii na platformie Azure 
 
@@ -44,10 +44,12 @@ W poniższej tabeli przedstawiono kombinacje i aktualnie obsługiwanych wysokiej
 | Obsługiwany w wystąpieniach dużych HANA scenariusz | Opcja wysokiej dostępności | Opcje odzyskiwania po awarii | Komentarze |
 | --- | --- | --- | --- |
 | Jeden węzeł | Nie jest dostępna. | Dedykowany Instalator odzyskiwania po awarii.<br /> Instalator odzyskiwania po awarii Multipurpose. | |
-| Host trybu failover automatycznego: N + m<br /> w tym 1 + 1 | Możliwe ze stanem gotowości, biorąc aktywnej roli.<br /> HANA steruje przełącznika roli. | Dedykowany Instalator odzyskiwania po awarii.<br /> Instalator odzyskiwania po awarii Multipurpose.<br /> Synchronizacja DR przy użyciu replikacji magazynu. | Zestawy HANA są dołączone do wszystkich węzłów (n + m).<br /> Lokacja DR musi mieć taką samą liczbę węzłów. |
+| Host trybu failover automatycznego: skalowalnego w poziomie (z lub bez standby)<br /> w tym 1 + 1 | Możliwe ze stanem gotowości, biorąc aktywnej roli.<br /> HANA steruje przełącznika roli. | Dedykowany Instalator odzyskiwania po awarii.<br /> Instalator odzyskiwania po awarii Multipurpose.<br /> Synchronizacja DR przy użyciu replikacji magazynu. | Zestawy HANA są dołączone do wszystkich węzłów.<br /> Lokacja DR musi mieć taką samą liczbę węzłów. |
 | Replikacji systemu HANA | Możliwe z ustawienia podstawowy lub pomocniczy.<br /> Pomocniczy przenosi podstawową rolą w przypadku trybu failover.<br /> Replikacji systemu HANA i systemu operacyjnego kontroli trybu failover. | Dedykowany Instalator odzyskiwania po awarii.<br /> Instalator odzyskiwania po awarii Multipurpose.<br /> Synchronizacja DR przy użyciu replikacji magazynu.<br /> DR za pomocą replikacji systemu HANA nie jest jeszcze możliwe bez składników innych firm. | Osobny zestaw woluminów dysków dołączonych do każdego węzła.<br /> Replikowane tylko dysku woluminy repliki pomocniczej w lokacji produkcyjnej do lokalizacji odzyskiwania po awarii.<br /> Jeden zestaw woluminów jest wymagany w lokacji odzyskiwania po awarii. | 
 
 Dedykowany Instalator odzyskiwania po awarii jest których HANA dużych wystąpienia jednostki w lokacji odzyskiwania po awarii nie jest używany do uruchamiania innych obciążeń lub system nieprodukcyjnych. Jednostka jest w stanie pasywnym i jest wdrożona tylko wtedy, gdy jest wykonywana po awarii trybu failover. Jednak ta konfiguracja nie jest preferowany wybór dla wielu klientów.
+
+Zobacz [HLI obsługiwane scenariusze](hana-supported-scenario.md) Aby poznać szczegóły ethernet i układ magazynu dla architektury.
 
 > [!NOTE]
 > [Wdrożenia SAP HANA MCOD](https://launchpad.support.sap.com/#/notes/1681092) (wielu wystąpień HANA na jedną jednostkę) nakładanie pracy scenariuszy wysokiej dostępności i odzyskiwania po awarii metody wymienione w tabeli. Wyjątek jest użycie replikacji systemu HANA klastra automatycznej pracy awaryjnej rozrusznik w oparciu o. Wówczas obsługuje tylko jedno wystąpienie HANA na jednostkę. Aby uzyskać [SAP HANA MDC](https://launchpad.support.sap.com/#/notes/2096000) wdrożenia, tylko podstawie magazynu wysokiej dostępności i odzyskiwania po awarii metody działają w przypadku wdrażania więcej niż jednego dzierżawcy. Z jednej dzierżawy wdrożone wszystkie metody wymienione są prawidłowe.  
@@ -60,7 +62,7 @@ Więcej informacji na temat SAP HANA wysokiej dostępności można znaleźć w n
 - [Oficjalny dokument programu SAP HANA wysokiej dostępności](http://go.sap.com/documents/2016/05/f8e5eeba-737c-0010-82c7-eda71af511fa.html)
 - [Przewodnik administracji programu SAP HANA](http://help.sap.com/hana/SAP_HANA_Administration_Guide_en.pdf)
 - [SAP HANA Academy wideo na replikacji systemu SAP HANA](http://scn.sap.com/community/hana-in-memory/blog/2015/05/19/sap-hana-system-replication)
-- [Obsługa Uwaga #1999880 — często zadawane pytania dotyczące replikacji systemu SAP HANA SAP](https://bcs.wdf.sap.corp/sap/support/notes/1999880)
+- [Obsługa Uwaga #1999880 — często zadawane pytania dotyczące replikacji systemu SAP HANA SAP](https://apps.support.sap.com/sap/support/knowledge/preview/en/1999880)
 - [SAP Uwaga Obsługa #2165547 — SAP HANA wstecz zapasowej i przywracania środowisku SAP HANA System replikacji](https://websmp230.sap-ag.de/sap(bD1lbiZjPTAwMQ==)/bc/bsp/sno/ui_entry/entry.htm?param=69765F6D6F64653D3030312669765F7361706E6F7465735F6E756D6265723D3231363535343726)
 - [SAP Uwaga Obsługa #1984882 — za pomocą replikacji systemu SAP HANA wymiany sprzętu przestojów minimalna/Zero](https://websmp230.sap-ag.de/sap(bD1lbiZjPTAwMQ==)/bc/bsp/sno/ui_entry/entry.htm?param=69765F6D6F64653D3030312669765F7361706E6F7465735F6E756D6265723D3139383438383226)
 

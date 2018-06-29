@@ -8,14 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: chrisgre
-ms.openlocfilehash: fe5ce960663f39d4f2c87a7bbffa091d327e9559
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 29a56e212f842e8f4243eca7fc865175fd275a39
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632452"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030771"
 ---
-# <a name="configure-and-monitor-iot-devices-at-scale---preview"></a>Konfigurowanie i monitorować urządzenia IoT na dużą skalę - preview
+# <a name="configure-and-monitor-iot-devices-at-scale-using-the-azure-portal"></a>Konfigurowanie i monitorowanie urządzeń IoT na dużą skalę przy użyciu portalu Azure
+
+[!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
 Zarządzanie urządzeniami automatyczne w Centrum IoT Azure pozwala zautomatyzować wiele powtarzających się i złożonych zadań związanych z zarządzaniem floty dużych urządzenia za pośrednictwem całości ich cyklów. Z zarządzania urządzeniami automatyczne docelowa zbiór urządzeń, na podstawie ich właściwości, zdefiniuj wymaganą konfiguracją, a let Centrum IoT aktualizowania urządzeń, które pochodzą do zakresu.  To jest wykonywane przy użyciu konfiguracji automatycznego urządzenia, która będzie również można podsumować zakończenia i zgodności, scalanie dojścia i konflikty i wdrażanie konfiguracji etapami.
 
@@ -28,9 +30,6 @@ Pracy konfiguracji urządzenia automatycznego aktualizowania zbiór urządzeń t
 * **Kierować zawartość** definiuje żądanej właściwości mają być dodane lub zaktualizowane w twins urządzenia docelowego. Zawartość zawiera ścieżkę do sekcji żądanej właściwości zostanie zmieniony.
 
 * **Metryki** zdefiniuj podsumowanie liczby różnych stanami konfiguracji, takich jak **Powodzenie**, **w toku**, i **błąd**. Metryki niestandardowe są określone jako zapytania na urządzeniu dwie zgłoszone właściwości.  Metryki systemu są domyślne metryki pomiaru dwie stan aktualizacji, takie jak liczba twins urządzenia, które są stosowane i liczba twins, które zostały pomyślnie zaktualizowane. 
-
-> [!Note]
-> Podczas udostępniania wersji zapoznawczej ta funkcja nie jest dostępna dla centra IoT w regionach wschodnie stany USA, zachodnie stany USA, Europa Północna, Europa i Europa Zachodnia.
 
 ## <a name="implement-device-twins-to-configure-devices"></a>Implementowanie twins urządzenia w celu skonfigurowania urządzeń
 
@@ -52,7 +51,7 @@ Przed utworzeniem konfiguracji należy określić urządzeń, które mają zosta
 ## <a name="create-a-configuration"></a>Tworzenie konfiguracji
 
 1. W [portalu Azure][lnk-portal], przejdź do Centrum IoT. 
-1. Wybierz **konfiguracji urządzenia IoT (wersja zapoznawcza)**.
+1. Wybierz **konfiguracji urządzenia IoT**.
 1. Wybierz **Dodaj konfigurację**.
 
 Brak pięć kroki, aby utworzyć konfigurację. Poniższe sekcje przeprowadzenie każdej z nich. 
@@ -96,7 +95,7 @@ Użyj właściwości tagów z twins Twojego urządzenia pod kątem określonych 
 Ponieważ wiele konfiguracji mogą odnosić się do tego samego urządzenia, należy nadać każdej konfiguracji priorytety. Jeśli kiedykolwiek występuje konflikt, wins w konfiguracji o najwyższym priorytecie. 
 
 1. Wprowadź dodatnią liczbą całkowitą w konfiguracji **priorytet**. Największa wartość numeryczna jest traktowany jako najwyższy priorytet. Jeśli dwie konfiguracje mają ten sam numer priorytet, który został utworzony w większości ostatnio wins. 
-1. Wprowadź **Target warunku** do określ urządzeń, które będą stosowane w przypadku tej konfiguracji. Warunek jest oparta na tagi dwie urządzenia lub dwie urządzenia zgłoszone właściwości i powinny być zgodne z formatem wyrażenia. Na przykład `tags.environment='test'` lub `properties.reported.chillerProperties.model='4000x'`. 
+1. Wprowadź **Target warunku** do określ urządzeń, które będą stosowane w przypadku tej konfiguracji. Warunek jest oparta na tagi dwie urządzenia lub dwie urządzenia zgłoszone właściwości i powinny być zgodne z formatem wyrażenia. Na przykład `tags.environment='test'` lub `properties.reported.chillerProperties.model='4000x'`. Można określić `*` do wszystkich urządzeń.
 1. Wybierz **dalej** można przenieść do ostatniego kroku.
 
 ### <a name="step-5-review-configuration"></a>Krok 5: Przejrzyj konfigurację
@@ -108,8 +107,8 @@ Przejrzyj informacje o konfiguracji, a następnie wybierz **przesyłania**.
 Aby wyświetlić szczegóły konfiguracji i monitorowania urządzeń, uruchomienie jej, wykonaj następujące kroki:
 
 1. W [portalu Azure][lnk-portal], przejdź do Centrum IoT. 
-1. Wybierz **konfiguracji urządzenia IoT (wersja zapoznawcza)**.
-1. Sprawdź, czy listy konfiguracji. Dla każdej konfiguracji można wyświetlić następujące informacje:
+1. Wybierz **konfiguracji urządzenia IoT**.
+2. Sprawdź, czy listy konfiguracji. Dla każdej konfiguracji można wyświetlić następujące informacje:
    * **Identyfikator** — Nazwa konfiguracji.
    * **Docelowa warunku** -Zapytanie używane do definiowania urządzeń docelowych.
    * **Priorytet** — numer priorytetu skojarzony z konfiguracją.
@@ -136,25 +135,25 @@ Po zaktualizowaniu warunek docelowy są wykonywane następujące aktualizacje:
 Aby zmodyfikować konfigurację, użyj następujących kroków: 
 
 1. W [portalu Azure][lnk-portal], przejdź do Centrum IoT. 
-1. Wybierz **konfiguracji urządzenia IoT (wersja zapoznawcza)**. 
-1. Wybierz konfigurację, którą chcesz zmodyfikować. 
-1. Aktualizowanie następujące pola: 
+1. Wybierz **konfiguracji urządzenia IoT**. 
+2. Wybierz konfigurację, którą chcesz zmodyfikować. 
+3. Aktualizowanie następujące pola: 
    * Warunek docelowy 
    * Etykiety 
    * Priorytet 
    * Metryki
-1. Wybierz pozycję **Zapisz**.
-1. Postępuj zgodnie z instrukcjami [Monitor konfiguracji] [zakotwiczenia monitorów] Aby obejrzeć zmiany wdrożyć. 
+4. Wybierz pozycję **Zapisz**.
+5. Postępuj zgodnie z instrukcjami [Monitor konfiguracji] [zakotwiczenia monitorów] Aby obejrzeć zmiany wdrożyć. 
 
 ## <a name="delete-a-configuration"></a>Usuwanie konfiguracji
 
 Podczas usuwania konfiguracji twins dowolnego urządzenia przełączyć na ich dalej konfiguracji najwyższy priorytet. Jeśli twins urządzenia nie spełniają warunek docelowy z dowolnej innej konfiguracji, nie inne ustawienia są stosowane. 
 
 1. W [portalu Azure][lnk-portal], przejdź do Centrum IoT. 
-1. Wybierz **konfiguracji urządzenia IoT (wersja zapoznawcza)**. 
-1. Użyj pola wyboru, aby wybrać konfigurację, którą chcesz usunąć. 
-1. Wybierz pozycję **Usuń**.
-1. Monit zostanie wyświetlony monit o potwierdzenie.
+1. Wybierz **konfiguracji urządzenia IoT**. 
+2. Użyj pola wyboru, aby wybrać konfigurację, którą chcesz usunąć. 
+3. Wybierz pozycję **Usuń**.
+4. Monit zostanie wyświetlony monit o potwierdzenie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 W tym artykule przedstawiono sposób konfigurowania i monitorowania urządzeń IoT na dużą skalę. Skorzystaj z poniższych linków, aby dowiedzieć się więcej o zarządzaniu Centrum IoT Azure:

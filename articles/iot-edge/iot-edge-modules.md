@@ -8,14 +8,14 @@ ms.date: 02/15/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 60c2c17d7a5cca66a6323f43e1ab2662afff54ee
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9c196ec92fc7997617fa464d676dc93ca9fe84f0
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34630840"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029098"
 ---
-# <a name="understand-azure-iot-edge-modules---preview"></a>Zrozumienie modułów krawędzi IoT Azure — wersja zapoznawcza
+# <a name="understand-azure-iot-edge-modules"></a>Zrozumienie modułów krawędzi IoT Azure
 
 Krawędź IoT Azure umożliwia wdrażanie i zarządzanie nimi logiki biznesowej na krawędzi w formie *modułów*. Azure IoT krawędzi modułów najmniejsza obliczeń zarządza krawędzi IoT i mogą zawierać usług platformy Azure (np. Azure Stream Analytics) lub kodu określonego rozwiązania. Aby zrozumieć, jak moduły opracowany, wdrożona i jest aktualizowany, warto wziąć pod uwagę z czterech części pojęciach, wchodzące w skład modułu:
 
@@ -60,6 +60,17 @@ await client.OpenAsync();
 // Get the model twin 
 Twin twin = await client.GetTwinAsync(); 
 ```
+
+## <a name="offline-capabilities"></a>Możliwości w trybie offline
+
+Azure IoT krawędzi obsługuje operacje w trybie offline na urządzeniach IoT krawędzi. Te możliwości są ograniczone teraz, a dodatkowe scenariusze są opracowywane. 
+
+Moduły krawędzi IoT może być w trybie offline przez dłuższy czas, tak długo, jak są spełnione następujące wymagania: 
+
+* **Czas wygaśnięcia wiadomości (TTL) nie wygasł**. Wartością domyślną dla czas wygaśnięcia wiadomości jest o dwie godziny, ale może zostać zmieniony wyższe lub niższe w magazynie i przekazywania konfiguracji w programie IoT Edge hub ustawienia. 
+* **Moduły nie ma potrzeby ponownego uwierzytelnienia z Centrum IoT krawędzi w trybie offline**. Moduły mogą uwierzytelniać tylko z koncentratorami krawędzi, które mają aktywne połączenie z Centrum IoT. Moduły muszą ponownego uwierzytelnienia, jeśli ich ponownego uruchomienia różnych przyczyn. Moduły nadal może wysyłać wiadomości do koncentratora krawędzi, po upływie ich tokenu sygnatury dostępu Współdzielonego. Po wznowieniu połączenia, Centrum krawędzi żąda nowy token z modułu, a następnie zweryfikuje go z Centrum IoT. W przypadku powodzenia Centrum krawędzi przesyła dalej wiadomości moduł, który przechowywanych nawet wiadomości, które zostały wysłane, gdy token modułu wygasła. 
+* **Moduł, który wysyłane wiadomości w trybie offline nadal działa po wznowieniu połączenia**. Po połączeniu z Centrum IoT, Centrum krawędzi wymagane jest sprawdzenie nowy token modułu (Jeśli poprzedni ważność) przed może przekazywać komunikaty modułu. Jeśli moduł nie jest dostępne w celu zapewnienia nowy token, Centrum krawędzi nie może działać na modułu przechowywane wiadomości. 
+* **Koncentrator krawędzi ma miejsce na dysku do przechowywania wiadomości**. Domyślnie komunikaty są przechowywane w kontenerze Centrum krawędzi systemu plików. Brak opcji konfiguracji, aby określić zainstalowany wolumin do przechowywania wiadomości zamiast tego. W obu przypadkach musi istnieć miejsca do przechowywania komunikatów do odroczonego dostarczenia Centrum IoT.  
 
 ## <a name="next-steps"></a>Kolejne kroki
  - [Zrozumienie jego architektura i środowiska uruchomieniowego krawędzi IoT Azure][lnk-runtime]

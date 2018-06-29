@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: jroth
-ms.openlocfilehash: 1da89bbf88e9f1f2105e7afab5c3fdabcecdbc64
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 4bb13ec9d835959273801c2f53c8d736491080a6
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852714"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061339"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Automatyczne stosowanie poprawek dla programu SQL Server na maszynach wirtualnych platformy Azure (klasyczne)
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ Aby użyć automatyczne stosowanie poprawek, należy wziąć pod uwagę następu
 * SQL Server 2014
 * SQL Server 2016
 
-**Azure PowerShell**:
+**Program Azure PowerShell**:
 
 * [Zainstaluj najnowsze poleceń programu PowerShell Azure](/powershell/azure/overview).
 
@@ -71,7 +71,7 @@ W poniższej tabeli opisano opcje, które można skonfigurować dla automatyczne
 | **Harmonogram konserwacji** |Codziennie, poniedziałek, Wtorek, środę, czwartek, piątek, sobota, niedziela |Harmonogram pobieranie i instalowanie aktualizacji systemu Windows, programu SQL Server i Microsoft dla maszyny wirtualnej. |
 | **Godzina rozpoczęcia konserwacji** |0-24 |Godzina rozpoczęcia lokalnego można zaktualizować maszyny wirtualnej. |
 | **Czas trwania okna obsługi** |30-180 |Liczba minut uprawnienia do pobierania i instalacji aktualizacji. |
-| **Patch Category** |Ważne |Kategoria aktualizacje do pobrania i zainstalowania. |
+| **Poprawka kategorii** |Ważne |Kategoria aktualizacje do pobrania i zainstalowania. |
 
 ## <a name="configuration-with-powershell"></a>Konfiguracja przy użyciu programu PowerShell
 W poniższym przykładzie programu PowerShell służy do konfigurowania automatyczne stosowanie poprawek na istniejącej maszyny Wirtualnej programu SQL Server. **AzureVMSqlServerAutoPatchingConfig nowy** polecenie konfiguruje nowe okno obsługi, aktualizacje automatyczne.
@@ -86,7 +86,7 @@ Na podstawie tego przykładu, w poniższej tabeli opisano praktyczne wpływa na 
 | --- | --- |
 | **DayOfWeek** |Każdy czwartek zainstalowanych poprawek. |
 | **MaintenanceWindowStartingHour** |Aktualizacje BEGIN o 11:00. |
-| **MaintenanceWindowsDuration** |Poprawki muszą być zainstalowane w ciągu 120 minut. Na podstawie czasu rozpoczęcia, użytkownicy muszą wykonać przez 1:00 pm. |
+| **MaintenanceWindowDuration** |Poprawki muszą być zainstalowane w ciągu 120 minut. Na podstawie czasu rozpoczęcia, użytkownicy muszą wykonać przez 1:00 pm. |
 | **PatchCategory** |Ustawienie tylko dla tego parametru jest "Ważne". |
 
 Go może potrwać kilka minut, aby zainstalować i skonfigurować agenta programu SQL Server IaaS.

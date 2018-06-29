@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr
-ms.openlocfilehash: 58bfae51fda10d14d9b1c4ea34cc10345d9a90ac
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: c3c0d12bbbeec85d2cbf0daead49ee16ca7728fb
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318062"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046262"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Wzorce poprawić precyzję przewidywania
 Wzorce są przeznaczone do poprawy dokładności po kilku zniesławiających są bardzo podobne. Udostępniając wzorca utterance, LUIS może mieć wysokiego zaufania prognozowania. 
@@ -42,6 +42,9 @@ Wzorce używać różnych technologii prognozowania. Ustawienie we wzorcu opcje 
 
 ## <a name="patterns-do-not-improve-entity-detection"></a>Wzorce nie poprawić wykrywanie jednostki
 Podczas gdy wzorce wymagają jednostek, wzorca nie wykrywania jednostki. Wzorzec jest przeznaczone tylko do pomocy prognozowania intencje i ról.  
+
+## <a name="patterns-use-entity-roles"></a>Wzorce użycia ról jednostki
+Jeśli co najmniej dwie jednostki w układzie kontekstowej są powiązane, wzorce użycia jednostek [ról](luis-concept-roles.md) aby wyodrębnić informacje kontekstowe dotyczące jednostek. To jest odpowiednikiem dzieci hierarchiczna jednostki, ale jest **tylko** dostępne we wzorcach. 
 
 ## <a name="prediction-scores-with-and-without-patterns"></a>Wyniki prognozowania z włączonymi i wyłączonymi wzorce
 Mając wystarczająco dużo przykład zniesławiających, LUIS będą mogli zwiększyć zaufanie prognozowania bez wzorce. Wzorce zwiększyć wynik zaufania bez konieczności podawania zniesławiających dowolną liczbę.  
@@ -92,7 +95,7 @@ Na przykład załóżmy, że masz wzorca zawierający zarówno opcjonalnych skł
 
 Należy wziąć pod uwagę wzorzec "[Znajdź] poczty e-mail, {temat} [{osoby}]". W poniższych zniesławiających **podmiotu** i **osoby** jednostki są wyodrębniane poprawnie i niepoprawnie:
 
-|utterance|Jednostka|Poprawne wyodrębniania|
+|Wypowiedź|Jednostka|Poprawne wyodrębniania|
 |--|--|:--:|
 |wiadomości e-mail o psów z Krzysztof|temat = psów<br>osoba = Krzysztof|✔|
 |Wyślij wiadomość e-mail o man z La Mancha|temat = man<br>osoba = La Mancha|X|

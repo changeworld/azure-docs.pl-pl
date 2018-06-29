@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: de85a555def31d164f2cda5c6c6bc9fae9fb5a7e
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
-ms.translationtype: MT
+ms.openlocfilehash: c48a0f078da8e56038ec74ee398bd26fe1dc2718
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309286"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054759"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porównanie funkcji: Azure SQL Database i programu SQL Server 
 
@@ -75,12 +75,12 @@ Poniższa tabela zawiera listę głównych funkcji programu SQL Server oraz info
 | [Powiadomienia o zdarzeniach](https://docs.microsoft.com/sql/relational-databases/service-broker/event-notifications) | Nie — zobacz [alertów](sql-database-insights-alerts-portal.md) | Yes |
 | [Wyrażenia](https://docs.microsoft.com/sql/t-sql/language-elements/expressions-transact-sql) |Yes | Yes |
 | [Zdarzenia rozszerzone](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) | Niektóre — zobacz [rozszerzony zdarzeń w bazie danych SQL](sql-database-xevent-db-diff-from-svr.md) | Tak — zobacz [rozszerzony różnice zdarzenia ](sql-database-managed-instance-transact-sql-information.md#extended-events) |
-| [rozszerzone procedury składowane](https://docs.microsoft.com/sql/relational-databases/extended-stored-procedures-programming/creating-extended-stored-procedures) | Nie | Nie |
+| [Rozszerzone procedury składowane](https://docs.microsoft.com/sql/relational-databases/extended-stored-procedures-programming/creating-extended-stored-procedures) | Nie | Nie |
 [Pliki i grup plików](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups) | Tylko grupy plik podstawowy | Yes |
 | [Filestream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) | Nie | Nie |
 | [Wyszukiwanie pełnotekstowe](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) |  Moduły dzielenia wyrazów innej firmy nie są obsługiwane. |Moduły dzielenia wyrazów innej firmy nie są obsługiwane. |
 | [Funkcje](https://docs.microsoft.com/sql/t-sql/functions/functions) | Większość — Zobacz poszczególnych funkcji | Tak — zobacz [procedury przechowywane i funkcje, wyzwala różnic](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |
-| [geograficzne](sql-database-recovery-using-backups.md#geo-restore) | Yes | Nie — można przywrócić COPY_ONLY pełne kopie zapasowe wykonywane okresowo — zobacz [kopii zapasowej różnice](sql-database-managed-instance-transact-sql-information.md#backup) i [przywrócić różnice](sql-database-managed-instance-transact-sql-information.md#restore-statement). |
+| [Geograficzne](sql-database-recovery-using-backups.md#geo-restore) | Yes | Nie — można przywrócić COPY_ONLY pełne kopie zapasowe wykonywane okresowo — zobacz [kopii zapasowej różnice](sql-database-managed-instance-transact-sql-information.md#backup) i [przywrócić różnice](sql-database-managed-instance-transact-sql-information.md#restore-statement). |
 | [Geo-replication](sql-database-geo-replication-overview.md) (Replikacja geograficzna) | Yes | Nie |
 | [Przetwarzanie wykresu](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) | Yes | Yes |
 | [Optymalizacja w pamięci](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Tak — [tylko warstwy Premium i biznesowe krytyczne](sql-database-in-memory.md) | Nie |
@@ -121,7 +121,7 @@ Poniższa tabela zawiera listę głównych funkcji programu SQL Server oraz info
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Nie — zobacz [usług Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) | Nie — zobacz [usług Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) |
 | [Inspekcja programu SQL Server](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | Nie — zobacz [inspekcji bazy danych SQL](sql-database-auditing.md) | Tak — zobacz [inspekcji różnic](sql-database-managed-instance-transact-sql-information.md#auditing) |
 | [Program SQL Server Data Tools (SSDT)] (https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) | Yes | Yes |
-| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Tak, z zarządzanego SSIS w środowisku fabryki danych Azure (ADF), gdy pakiety są przechowywane w SSISDB obsługiwana przez bazę danych SQL Azure i wykonywane na [środowiska uruchomieniowego integracji usług SSIS Azure](../data-factory/tutorial-deploy-ssis-packages-azure-powershell.md). | Tak, z zarządzanego SSIS w środowisku fabryki danych Azure (ADF), gdy pakiety są przechowywane w SSISDB hostowane przez zarządzane wystąpienia i wykonać na [środowiska uruchomieniowego integracji usług SSIS Azure](../data-factory/tutorial-deploy-ssis-packages-azure-powershell.md). |
+| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Tak, z zarządzanego SSIS w środowisku fabryki danych Azure (ADF), gdy pakiety są przechowywane w SSISDB obsługiwana przez bazę danych SQL Azure i wykonywane na Azure SSIS integrację środowiska uruchomieniowego (IR), zobacz [utworzyć IR Azure SSIS w ADF](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime). | Tak, z zarządzanego SSIS w środowisku fabryki danych Azure (ADF), gdy pakiety są przechowywane w SSISDB hostowane przez zarządzane wystąpienia i wykonywane na Azure SSIS integrację środowiska uruchomieniowego (IR), zobacz [utworzyć IR Azure SSIS w ADF](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime). |
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | Yes | Yes |
 | [SQL Server w programie PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Yes | Yes |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Nie — zobacz [rozszerzone zdarzenia](sql-database-xevent-db-diff-from-svr.md) | Yes |

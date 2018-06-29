@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 57ae7c3cab6c0084bb43585f65d79ae6cc265356
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 11e98117a93f541f6f88b213f59dcf4aba3e7f36
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31400456"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045215"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Tworzenie klastrów z systemem Linux w usłudze HDInsight przy użyciu programu Azure PowerShell
 
@@ -50,7 +50,7 @@ Aby utworzyć klaster usługi HDInsight przy użyciu programu Azure PowerShell, 
 * Tworzenie grupy zasobów platformy Azure
 * Tworzenie konta usługi Azure Storage
 * Tworzenie kontenera obiektów Blob platformy Azure
-* Tworzenie klastra usługi HDInsight
+* Tworzenie klastra HDInsight
 
 Poniższy skrypt pokazuje, jak utworzyć nowy klaster:
 
@@ -63,7 +63,7 @@ Wartości określone dla użytkownika SSH są używane do utworzenia użytkownik
 > [!IMPORTANT]
 > Jeśli planujesz użyć więcej niż 32 węzłami procesów roboczych (lub podczas tworzenia klastra przez skalowanie klastra po utworzeniu), należy również określić rozmiaru węzła głównego z co najmniej 8 rdzeniami i 14 GB pamięci RAM.
 >
-> Aby uzyskać więcej informacji na węzeł rozmiary i koszty, zobacz [cennik usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
+> Aby uzyskać więcej informacji o rozmiarach węzła i powiązanych kosztach, zobacz [Cennik usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 Może upłynąć do 20 minut na utworzenie klastra.
 
@@ -71,7 +71,7 @@ Może upłynąć do 20 minut na utworzenie klastra.
 
 Można również utworzyć HDInsight konfiguracji obiektów przy użyciu `New-AzureRmHDInsightClusterConfig` polecenia cmdlet. Następnie można zmodyfikować ten obiekt konfiguracji, aby włączyć dodatkowe opcje konfiguracji klastra. Na koniec użyj `-Config` parametr `New-AzureRmHDInsightCluster` polecenia cmdlet do korzystania z konfiguracji.
 
-Poniższy skrypt tworzy obiekt konfiguracji, aby skonfigurować serwer R na typ klastra usługi HDInsight. Konfiguracja umożliwia węzeł krawędzi, programu RStudio i konta dodatkowego miejsca do magazynowania.
+Poniższy skrypt tworzy obiekt konfiguracji, aby skonfigurować usługi uczenia Maszynowego na typ klastra usługi HDInsight. Konfiguracja umożliwia węzeł krawędzi, programu RStudio i konta dodatkowego miejsca do magazynowania.
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/create-cluster/create-cluster-with-config.ps1?range=59-98)]
 

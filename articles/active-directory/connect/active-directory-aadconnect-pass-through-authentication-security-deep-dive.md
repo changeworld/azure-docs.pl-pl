@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: cb8382a9801c3570a190259416d846fe518cc6ea
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 967184d9a7590dc0b8c88a49cf178bbd9eb83267
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595040"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063599"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory przekazywanego uwierzytelniania zabezpieczeń nowości
 
@@ -132,20 +132,21 @@ Uwierzytelniania przekazywanego obsługi żądania logowania użytkownika w nast
 1. Użytkownik próbuje uzyskać dostęp do aplikacji, na przykład [aplikacji Outlook Web App](https://outlook.office365.com/owa).
 2. Jeśli użytkownik nie jest już zalogowany, aplikacja przekierowuje przeglądarki do strony logowania usługi Azure AD.
 3. Tworzenie kopii odpowiada usługi STS usługi Azure AD za pomocą **logowania użytkownika** strony.
-4. Użytkownik wprowadza nazwę użytkownika i hasło do **logowania użytkownika** strony, a następnie wybiera **logowania** przycisku.
-5. Nazwa użytkownika i hasło są przesyłane do usługi Azure AD STS w żądaniu POST protokołu HTTPS.
-6. Usługi Azure AD STS pobiera klucze publiczne dla wszystkich agentów uwierzytelniania zarejestrowane na Twojej dzierżawy z bazy danych Azure SQL i szyfrowanie hasła za ich pomocą. 
+4. Użytkownik musi wprowadzić swoją nazwę użytkownika do **logowania użytkownika** strony, a następnie wybiera **dalej** przycisku.
+5. Użytkownik wprowadza swoje hasło do **logowania użytkownika** strony, a następnie wybiera **logowania** przycisku.
+6. Nazwa użytkownika i hasło są przesyłane do usługi Azure AD STS w żądaniu POST protokołu HTTPS.
+7. Usługi Azure AD STS pobiera klucze publiczne dla wszystkich agentów uwierzytelniania zarejestrowane na Twojej dzierżawy z bazy danych Azure SQL i szyfrowanie hasła za ich pomocą. 
     - Generuje "N" zaszyfrowane hasło wartości dla agentów "N" uwierzytelnianie zarejestrowane na Twojej dzierżawy.
-7. Usługi Azure AD STS umieszcza żądania sprawdzenia poprawności hasła, która składa się z nazwy użytkownika i wartości zaszyfrowane hasło do kolejki usługi Service Bus przeznaczony dla Twojej dzierżawy.
-8. Ponieważ zainicjowane agentów uwierzytelniania jest trwały podłączony do kolejki usługi Service Bus, pobiera jeden z dostępnych agentów uwierzytelniania żądania sprawdzenia poprawności hasła.
-9. Agent uwierzytelniania lokalizuje wartość zaszyfrowane hasło, która jest specyficzne dla swojego klucza publicznego, za pomocą identyfikatora i odszyfrowuje je, korzystając z kluczem prywatnym.
-10. Agent uwierzytelniania próbuje zweryfikować nazwę użytkownika i hasło z lokalną usługą Active Directory za pomocą [Win32 API funkcji LogonUser](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) z **dwLogonType** ustawiona **LOGON32_LOGON_NETWORK**. 
+8. Usługi Azure AD STS umieszcza żądania sprawdzenia poprawności hasła, która składa się z nazwy użytkownika i wartości zaszyfrowane hasło do kolejki usługi Service Bus przeznaczony dla Twojej dzierżawy.
+9. Ponieważ zainicjowane agentów uwierzytelniania jest trwały podłączony do kolejki usługi Service Bus, pobiera jeden z dostępnych agentów uwierzytelniania żądania sprawdzenia poprawności hasła.
+10. Agent uwierzytelniania lokalizuje wartość zaszyfrowane hasło, która jest specyficzne dla swojego klucza publicznego, za pomocą identyfikatora i odszyfrowuje je, korzystając z kluczem prywatnym.
+11. Agent uwierzytelniania próbuje zweryfikować nazwę użytkownika i hasło z lokalną usługą Active Directory za pomocą [Win32 API funkcji LogonUser](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) z **dwLogonType** ustawiona **LOGON32_LOGON_NETWORK**. 
     - Ten interfejs API jest tego samego interfejsu API, który jest używany przez usługi Active Directory Federation Services (AD FS) do logowania użytkowników w federacyjnym scenariuszu logowania.
     - Ten interfejs API korzysta z procesu rozpoznawania standardowego w systemie Windows Server można znaleźć kontrolera domeny.
-11. Agent uwierzytelniania odbiera wynik z usługi Active Directory, takie jak powodzenie, nazwa użytkownika lub hasło jest nieprawidłowe lub hasło wygasło.
-12. Agent uwierzytelniania przesyła wynik do usługi Azure AD STS za pośrednictwem uwierzytelnionego wzajemnie wychodzącego kanału HTTPS przez port 443. Uwierzytelnianie wzajemne używa certyfikatu, wcześniej wydane agentowi uwierzytelnianie podczas rejestracji.
-13. Usługi Azure AD STS sprawdza, czy wynik skorelowany z określonym żądaniem logowania w dzierżawie.
-14. Usługi Azure AD STS będzie kontynuowane przy użyciu procedury logowania, zgodnie z konfiguracją. Na przykład jeśli sprawdzanie poprawności hasła zakończyło się pomyślnie, użytkownik może wezwał uwierzytelnianie wieloskładnikowe lub przekierowany z powrotem do aplikacji.
+12. Agent uwierzytelniania odbiera wynik z usługi Active Directory, takie jak powodzenie, nazwa użytkownika lub hasło jest nieprawidłowe lub hasło wygasło.
+13. Agent uwierzytelniania przesyła wynik do usługi Azure AD STS za pośrednictwem uwierzytelnionego wzajemnie wychodzącego kanału HTTPS przez port 443. Uwierzytelnianie wzajemne używa certyfikatu, wcześniej wydane agentowi uwierzytelnianie podczas rejestracji.
+14. Usługi Azure AD STS sprawdza, czy wynik skorelowany z określonym żądaniem logowania w dzierżawie.
+15. Usługi Azure AD STS będzie kontynuowane przy użyciu procedury logowania, zgodnie z konfiguracją. Na przykład jeśli sprawdzanie poprawności hasła zakończyło się pomyślnie, użytkownik może wezwał uwierzytelnianie wieloskładnikowe lub przekierowany z powrotem do aplikacji.
 
 ## <a name="operational-security-of-the-authentication-agents"></a>Bezpieczeństwa operacyjnego agentów uwierzytelniania
 
@@ -208,7 +209,7 @@ Do automatycznej aktualizacji agenta uwierzytelniania:
 ## <a name="next-steps"></a>Kolejne kroki
 - [Bieżące ograniczenia](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Dowiedz się, jakie scenariusze są obsługiwane i zostały.
 - [Szybki start](active-directory-aadconnect-pass-through-authentication-quick-start.md): rozpocząć pracę na Azure AD przekazywanego uwierzytelniania.
-- [Inteligentne blokady](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): Konfigurowanie funkcji blokady inteligentnej na swojej dzierżawy, aby chronić kont użytkowników.
+- [Inteligentne blokady](../authentication/howto-password-smart-lockout.md): Konfigurowanie funkcji blokady inteligentnej na swojej dzierżawy, aby chronić kont użytkowników.
 - [Jak działa](active-directory-aadconnect-pass-through-authentication-how-it-works.md): Poznaj podstawy działania usługi Azure AD przekazywanego uwierzytelniania.
 - [Często zadawane pytania](active-directory-aadconnect-pass-through-authentication-faq.md): odpowiedzi na często zadawane pytania.
 - [Rozwiązywanie problemów z](active-directory-aadconnect-troubleshoot-pass-through-authentication.md): Dowiedz się, jak rozwiązać typowe problemy z funkcją uwierzytelniania przekazywanego.

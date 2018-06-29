@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/13/2018
 ms.author: markvi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 565394664ab59ef5186503f708502eacc040321f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 7dad9f3e688c43de3eabd430bf5618ad4632ca3d
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295629"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37036447"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Dostosowywanie użytkownika udostępniania mapowań atrybutów dla aplikacji SaaS w usłudze Azure Active Directory
-Inicjowanie obsługi użytkowników do aplikacji SaaS innych firm, takie jak Salesforce, Google Apps i innych użytkowników usługi Microsoft Azure AD zapewnia obsługę. Jeśli użytkownik Inicjowanie obsługi administracyjnej dla aplikacji SaaS innych firm włączone, portalu Azure określa jego wartości atrybutów w postaci konfiguracji o nazwie "mapowanie atrybutu".
+Inicjowanie obsługi użytkowników do aplikacji SaaS innych firm, takie jak Salesforce, Google Apps i innych użytkowników usługi Microsoft Azure AD zapewnia obsługę. Jeśli Inicjowanie obsługi użytkowników dla aplikacji SaaS innych firm włączone, portalu Azure określa jego wartości atrybutów w formie mapowań atrybutów.
 
-Brak zestawu wstępnie skonfigurowanych atrybutów i atrybutu mapowania między obiektami użytkownika usługi Azure AD i każda aplikacja SaaS użytkownika. Niektóre aplikacje zarządzania innymi typami obiektów oprócz użytkowników, takich jak grupy. <br> 
- Mapowanie atrybutów domyślne można dostosować zgodnie z potrzebami firmy. Oznacza to, że można zmienić lub usunąć istniejące mapowania atrybutu lub utworzyć nowe mapowanie atrybutów.
+Brak wstępnie skonfigurowane zestaw atrybutów i mapowania atrybutów między obiektami użytkownika usługi Azure AD i każda aplikacja SaaS użytkownika. Niektóre aplikacje zarządzania innymi typami obiektów oprócz użytkowników, takich jak grupy. <br> 
+ Mapowanie atrybutów domyślne można dostosować zgodnie z potrzebami firmy. Oznacza to, że można zmienić lub usunąć istniejące mapowanie atrybutów lub utworzyć nowe mapowanie atrybutów.
  
 ## <a name="editing-user-attribute-mappings"></a>Edytowanie mapowań atrybutów użytkownika
 
@@ -47,7 +47,7 @@ Można dostosować istniejący **mapowań atrybutów** klikając mapowania. Spow
 ![SalesForce][7]  
 
 
-### <a name="understanding-attribute-mapping-types"></a>Opis atrybutu mapowania typów
+### <a name="understanding-attribute-mapping-types"></a>Opis typów mapowanie atrybutu
 Z mapowań atrybutów możesz kontrolować sposób atrybuty są wypełnione w aplikacji SaaS innych firm. Istnieją cztery typy innego mapowania obsługiwane:
 
 * **Bezpośrednie** — atrybut docelowy jest wypełniane przy użyciu wartości atrybutu połączonego obiektu w usłudze Azure AD.
@@ -56,10 +56,10 @@ Z mapowań atrybutów możesz kontrolować sposób atrybuty są wypełnione w ap
   Aby uzyskać więcej informacji, zobacz [pisać wyrażenia potrzeby mapowań atrybutów w usłudze Azure Active Directory](active-directory-saas-writing-expressions-for-attribute-mappings.md).
 * **Brak** — atrybut docelowy zostanie pozostawiony bez modyfikacji. Jednak jeśli atrybut docelowy jest kiedykolwiek pusta, jest wypełnione wartością domyślną, który określisz.
 
-Oprócz tych cztery typy mapowanie atrybutu podstawowego mapowań atrybutów niestandardowych obsługuje pojęcie opcjonalny **domyślne** przypisanie wartości. Przypisanie wartości domyślne gwarantuje, że atrybut docelowy jest wypełniana wartości, które nie istnieje żadna wartość w usłudze Azure AD, ani na obiekcie docelowym. Najbardziej typowych konfiguracji jest to pole pozostanie puste.
+Oprócz tych cztery podstawowe typy niestandardowe Mapowanie atrybutów obsługuje pojęcie opcjonalny **domyślne** przypisanie wartości. Przypisanie wartości domyślne gwarantuje, że atrybut docelowy jest wypełniana wartości, które nie istnieje żadna wartość w usłudze Azure AD, ani na obiekcie docelowym. Najbardziej typowych konfiguracji jest to pole pozostanie puste.
 
 
-### <a name="understanding-attribute-mapping-properties"></a>Opis właściwości Mapowanie atrybutów
+### <a name="understanding-attribute-mapping-properties"></a>Opis właściwości mapowanie atrybutu
 
 W poprzedniej sekcji możesz już zostały wprowadzone do właściwości typu atrybutu mapowania.
 Oprócz tej właściwości mapowań atrybutów obsługują następujące atrybuty:
@@ -73,7 +73,7 @@ Oprócz tej właściwości mapowań atrybutów obsługują następujące atrybut
     - **Tylko podczas tworzenia** -Zastosuj to mapowanie tylko akcje creation użytkownika
 
 
-## <a name="editing-group-attribute-mappings"></a>Edytowanie grupy mapowań atrybutów
+## <a name="editing-group-attribute-mappings"></a>Edytowanie mapowań atrybutów grupy
 
 Wybraną liczbę aplikacji, takich jak usługi ServiceNow, pole i usługi Google Apps obsługuje możliwość udostępnienia obiektów grupy oprócz obiekty użytkownika. Obiekty grupy może zawierać właściwości grupy, takie jak nazwy wyświetlane oraz wiadomości e-mail aliasy, oprócz członków grupy.
 
@@ -98,8 +98,7 @@ Aplikacje i systemy, które obsługują dostosowania listy atrybutów obejmują:
 * SalesForce
 * ServiceNow
 * Dzień roboczy
-* Usługa Azure Active Directory
-* W lokalnej usłudze Active Directory (jako część użytkownika produktu Workday inicjowania obsługi administracyjnej łącznika)
+* Usługa Azure Active Directory ([interfejsu API usługi Azure AD Graph domyślne atrybuty](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity) i katalog niestandardowych rozszerzeń są obsługiwane)
 * Aplikacje, które obsługują [SCIM 2.0](https://tools.ietf.org/html/rfc7643), gdzie atrybuty zdefiniowane w [schematu core](https://tools.ietf.org/html/rfc7643) musi zostać dodany
 
 >[!NOTE]
@@ -140,9 +139,9 @@ Ta opcja wymusi skutecznie ponownej synchronizacji dla wszystkich użytkowników
 
 * Microsoft Azure AD zapewnia wydajne wykonania procesu synchronizacji. W środowisku zainicjowana tylko obiekty wymagające aktualizacji są przetwarzane podczas cyklu synchronizacji. 
 
-* Aktualizowanie mapowań atrybutów ma wpływ na wydajność cyklu synchronizacji. Aktualizacja konfiguracji mapowania atrybut wymaga wszystkich obiektów zarządzanych go obliczyć ponownie. 
+* Aktualizowanie mapowań atrybutów ma wpływ na wydajność cyklu synchronizacji. Aktualizacja konfiguracji mapowanie atrybutu wymaga, aby wszystkie obiekty zarządzane go obliczyć ponownie. 
 
-* Jest zalecanym najlepszym rozwiązaniem aby utrzymać liczbę kolejnych zmian do mapowania atrybutu co najmniej.
+* Jest zalecanym najlepszym rozwiązaniem aby utrzymać liczbę kolejnych zmian do mapowania użytkownika atrybutów co najmniej.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
@@ -151,7 +150,7 @@ Ta opcja wymusi skutecznie ponownej synchronizacji dla wszystkich użytkowników
 * [Tworzenie wyrażeń na potrzeby mapowań atrybutów](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Filtry zakresu dla Inicjowanie obsługi użytkowników](active-directory-saas-scoping-filters.md)
 * [Włączanie automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji przy użyciu SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS](active-directory-saas-tutorial-list.md)
+* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS](saas-apps/tutorial-list.md)
 
 <!--Image references-->
 [5]: ./media/active-directory-saas-customizing-attribute-mappings/21.png

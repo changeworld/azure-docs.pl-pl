@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1ef94f5cfa91422dddf9c684c2dc1b6eada754f1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8b74a431664faa95e8be9c9ff90970fd6e7c0ec7
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621296"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048724"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Skopiować lub przenieść dane z Kreatora kopiowania fabryki danych Azure
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi Data Factory, która jest w wersji zapoznawczej, zapoznaj się z [dokumentacją samouczka działania kopiowania w wersji 2](../quickstart-create-data-factory-dot-net.md). 
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [samouczek działania kopiowania](../quickstart-create-data-factory-dot-net.md). 
 
 
 Kreator kopiowania fabryki danych Azure jest upraszczają proces wprowadzania danych, który zazwyczaj jest to pierwszy krok w scenariuszu integracji danych na całej trasie. Podczas przechodzenia za pomocą Kreatora kopiowania fabryki danych Azure, nie należy zrozumieć żadnych definicji JSON połączonej usługi, zestawy danych i potoki. Jednak po ukończeniu wszystkich czynności kreatora, Kreator automatycznie tworzy potoku można skopiować danych z wybranego źródła danych do wybranej lokalizacji docelowej. Ponadto Kreator kopiowania ułatwia sprawdzania poprawności danych jest pozyskanych w czasie tworzenia, która zapisuje większość czasu, szczególnie gdy użytkownik są pobierania danych po raz pierwszy ze źródła danych. Aby uruchomić Kreatora kopiowania, kliknij przycisk **skopiować dane** kafelka na stronie głównej w fabryce danych.
@@ -34,7 +34,7 @@ Kreator kopiowania fabryki danych Azure jest upraszczają proces wprowadzania da
 ## <a name="an-intuitive-wizard-for-copying-data"></a>Intuicyjne Kreator kopiowania danych
 Ten kreator pozwala łatwo przenosić dane z różnych źródeł do miejsc docelowych w minutach. Po przejściu przez kreatora, potoku z działaniem kopiowania jest utworzony automatycznie wraz z zależnych jednostek fabryki danych (połączonych usług i zbiory danych). Żadne dodatkowe kroki są wymagane do utworzenia potoku.   
 
-![Wybierz źródło danych](./media/data-factory-copy-wizard/select-data-source-page.png)
+![Wybieranie źródła danych](./media/data-factory-copy-wizard/select-data-source-page.png)
 
 > [!NOTE]
 > Zobacz [Samouczek Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) artykułu, aby uzyskać instrukcje krok po kroku utworzyć potok próbki można skopiować obiektu blob danych z platformy Azure do tabeli bazy danych SQL Azure. 
@@ -64,7 +64,7 @@ W tym przykładzie zapytanie SQL używa `Text.Format` funkcji i `WindowStart` zm
 ![Sprawdzanie poprawności wyrażenia](./media/data-factory-copy-wizard/validate-expressions.png)
 
 ### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Filtrowanie danych w folderze obiektów blob platformy Azure
-Zmienne w ścieżce folderu służy do kopiowania danych z folderu, który jest określana w czasie wykonywania na podstawie [zmienne systemowe](data-factory-functions-variables.md#data-factory-system-variables). Są obsługiwane zmienne: **{year}**, **{month}**, **{day}**, **{godzina}**, **{minutę}**, i **{niestandardowych}**. Przykład: inputfolder / {year} / {month} / {day}.
+Zmienne w ścieżce folderu służy do kopiowania danych z folderu, który jest określana w czasie wykonywania na podstawie [zmienne systemowe](data-factory-functions-variables.md#data-factory-system-variables). Są obsługiwane zmienne: **{year}**, **{month}**, **{day}**, **{godzina}**, **{minutę}** i **{niestandardowych}**. Przykład: inputfolder / {year} / {month} / {day}.
 
 Załóżmy, że podania folderów w następującym formacie:
 
@@ -73,7 +73,7 @@ Załóżmy, że podania folderów w następującym formacie:
     2016/03/01/03
     ...
 
-Kliknij przycisk **Przeglądaj** przycisk dla **pliku lub folderu**, przejdź do jednej z tych folderów (na przykład 2016 -> 03 -> 01 -> 02) i kliknij przycisk **wybierz**. Powinny pojawić się `2016/03/01/02` w polu tekstowym. Teraz, Zastąp **2016** z **{year}**, **03** z **{month}**, **01** z **{day}**, i **02** z **{godzina}**, i naciśnij klawisz Tab. Powinny pojawić się listy rozwijanej, aby wybrać format tych zmiennych:
+Kliknij przycisk **Przeglądaj** przycisk dla **pliku lub folderu**, przejdź do jednej z tych folderów (na przykład 2016 -> 03 -> 01 -> 02) i kliknij przycisk **wybierz**. Powinny pojawić się `2016/03/01/02` w polu tekstowym. Teraz, Zastąp **2016** z **{year}**, **03** z **{month}**, **01** z **{day}** , i **02** z **{godzina}**, i naciśnij klawisz Tab. Powinny pojawić się listy rozwijanej, aby wybrać format tych zmiennych:
 
 ![Używanie zmiennych systemu](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 

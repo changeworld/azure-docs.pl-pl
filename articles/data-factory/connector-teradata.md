@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 4360ff12a435afc4347fa97bba4506ccd81618aa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a2928b202f56674c69e6431201db6d846a9feb9a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618984"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045759"
 ---
 # <a name="copy-data-from-teradata-using-azure-data-factory"></a>Kopiowanie danych z programu Teradata przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](v1/data-factory-onprem-teradata-connector.md)
-> * [Wersja 2 — wersja zapoznawcza](connector-teradata.md)
+> * [W wersji 1](v1/data-factory-onprem-teradata-connector.md)
+> * [Bieżąca wersja](connector-teradata.md)
 
 W tym artykule omówiono sposób użycia działanie kopiowania w fabryce danych Azure, aby skopiować dane z bazy danych programu Teradata. Opiera się na [skopiuj omówienie działania](copy-activity-overview.md) artykułu, który przedstawia ogólny przegląd działanie kopiowania.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [Teradata łącznika w wersji 1](v1/data-factory-onprem-teradata-connector.md).
 
 ## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
@@ -169,13 +166,13 @@ Podczas kopiowania danych z programu Teradata, następujące mapowania są używ
 |:--- |:--- |
 | BigInt |Int64 |
 | Obiekt blob |Byte[] |
-| Bajtów |Byte[] |
+| Bajt |Byte[] |
 | ByteInt |Int16 |
 | char |Ciąg |
 | CLOB |Ciąg |
 | Date |DateTime |
 | Decimal |Decimal |
-| O podwójnej precyzji |O podwójnej precyzji |
+| podwójne |podwójne |
 | Grafika |Ciąg |
 | Liczba całkowita |Int32 |
 | Interwał dnia |Zakres czasu |
@@ -191,7 +188,7 @@ Podczas kopiowania danych z programu Teradata, następujące mapowania są używ
 | Interwał drugi |Zakres czasu |
 | Interwał roku |Ciąg |
 | Interwał rok, miesiąc |Ciąg |
-| Liczba |O podwójnej precyzji |
+| Liczba |podwójne |
 | Period(Date) |Ciąg |
 | Period(Time) |Ciąg |
 | Okres (czas ze strefą czasową) |Ciąg |

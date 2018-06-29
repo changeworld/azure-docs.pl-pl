@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: cdfc3ceb1ce94c4653a710658c1df991d9ca2c30
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 8253dfb6525496c78515a9382778a767f7da0771
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294449"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063582"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Rozwiązywanie problemów z brakiem danych — usługa Application Insights dla platformy .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Brakuje części Moje telemetrii
@@ -41,7 +41,7 @@ ms.locfileid: "35294449"
 *Gdy I kliknij prawym przyciskiem myszy istniejący projekt w Eksploratorze rozwiązań, nie ma żadnych opcji usługi Application Insights.*
 
 * Nie wszystkie typy .NET projektu są obsługiwane przez narzędzia. Projekty sieci Web i WCF są obsługiwane. Dla innych typów projektów, takich jak aplikacje pulpitu lub usługi, nadal możesz [ręcznie Dodaj zestaw SDK usługi Application Insights do projektu](app-insights-windows-desktop.md).
-* Upewnij się, że masz [programu Visual Studio 2013 Update 3 lub nowszym](http://go.microsoft.com/fwlink/?LinkId=397827). Pochodzi on wstępnie zainstalowane z narzędzia Developer Analytics, które zapewniają zestaw SDK usługi Application Insights.
+* Upewnij się, że masz [programu Visual Studio 2013 Update 3 lub nowszym](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2013-update3-rtm-vs). Pochodzi on wstępnie zainstalowane z narzędzia Developer Analytics, które zapewniają zestaw SDK usługi Application Insights.
 * Wybierz **narzędzia**, **rozszerzenia i aktualizacje** i sprawdź, czy **Developer Analytics Tools** jest zainstalowany i włączony. Jeśli tak, kliknij przycisk **aktualizacje** czy jest aktualizacja.
 * Otwórz okno dialogowe Nowy projekt i wybierz aplikację sieci Web programu ASP.NET. Jeśli widzisz opcję usługi Application Insights są zainstalowane narzędzia. Jeśli nie, spróbuj odinstalować i ponowne zainstalowanie narzędzia Application Insights Tools.
 

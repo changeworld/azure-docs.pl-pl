@@ -1,26 +1,24 @@
 ---
-title: Rozpoczynanie pracy z usługą Data Lake Store przy użyciu witryny Azure Portal | Microsoft Docs
-description: Użyj witryny Azure Portal, aby utworzyć konto usługi Data Lake Store i wykonywać podstawowe operacje w tej usłudze
+title: Rozpoczynanie pracy z Gen1 magazynu Lake danych za pomocą portalu Azure | Dokumentacja firmy Microsoft
+description: Utwórz konto usługi Data Lake Store i wykonywać podstawowe operacje w usłudze data lake store za pomocą portalu Azure
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: fea324d0-ad1a-4150-81f0-8682ddb4591c
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 03/26/2018
+ms.topic: conceptual
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 91ed55e5f12c10e67653bdadfca80bd072779711
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: HT
+ms.openlocfilehash: e23b2496ccb69bb530bd825a1feb99abcc4ab35b
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37036678"
 ---
-# <a name="get-started-with-azure-data-lake-store-using-the-azure-portal"></a>Rozpoczynanie pracy z usługą Azure Data Lake Store za pośrednictwem witryny Azure Portal
+# <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Wprowadzenie do usługi Azure Data Lake magazynu Gen1 przy użyciu portalu Azure
+
 > [!div class="op_single_selector"]
 > * [Portal](data-lake-store-get-started-portal.md)
 > * [Program PowerShell](data-lake-store-get-started-powershell.md)
@@ -28,7 +26,9 @@ ms.lasthandoff: 03/28/2018
 >
 > 
 
-Dowiedz się, jak za pomocą witryny Azure Portal możesz utworzyć konto usługi Azure Data Lake Store i wykonywać podstawowe operacje, takie jak tworzenie folderów, przekazywanie i pobieranie plików danych, usuwanie konta itp. Aby uzyskać więcej informacji, zobacz temat [Omówienie usługi Azure Data Lake Store](data-lake-store-overview.md).
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
+Dowiedz się, jak za pomocą witryny Azure Portal możesz utworzyć konto usługi Azure Data Lake Store i wykonywać podstawowe operacje, takie jak tworzenie folderów, przekazywanie i pobieranie plików danych, usuwanie konta itp. Aby uzyskać więcej informacji, zobacz [Omówienie programu Azure Data Lake magazynu Gen1](data-lake-store-overview.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przed przystąpieniem do wykonywania kroków opisanych w tym samouczku musisz mieć poniższe:
@@ -122,7 +122,7 @@ Aby usunąć konto usługi Azure Data Lake Store z bloku Data Lake Store, klikni
 
 ![Usuwanie konta usługi Data Lake](./media/data-lake-store-get-started-portal/ADL.Delete.Account.png "Usuwanie konta usługi Data Lake")
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Używanie usługi Azure Data Lake Store w zastosowaniach wymagających danych big data](data-lake-store-data-scenarios.md) 
 * [Zabezpieczanie danych w usłudze Data Lake Store](data-lake-store-secure-data.md)
 * [Korzystanie z usługi Azure Data Lake Analytics z usługą Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

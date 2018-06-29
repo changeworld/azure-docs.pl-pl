@@ -12,21 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: jingwang
-ms.openlocfilehash: f12c3a2a1193adc08c408292a4e0eca2e2458085
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e1be16ec6a7536cedf3a27ffacb9c4dffe42bbef
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620670"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052419"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Przechowywania poświadczeń w usłudze Azure Key Vault
 
 Można zapisać poświadczenia na potrzeby magazynów danych i oblicza w [usługi Azure Key Vault](../key-vault/key-vault-whatis.md). Fabryka danych Azure pobiera poświadczeń podczas wykonywania działanie, które korzysta z magazynu danych/obliczeniowej.
 
 Ta funkcja obsługuje obecnie, wszystkie typy działań z wyjątkiem działania niestandardowego. Dla konfiguracji łącznika w szczególności, Sprawdź sekcję "połączone właściwości usługi" [każdego tematu łącznika](copy-activity-overview.md#supported-data-stores-and-formats) szczegółowe informacje.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [dokumentacji dla fabryki danych version1](v1/data-factory-introduction.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

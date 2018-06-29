@@ -7,14 +7,14 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 06/27/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 56de113b41be419a5e39d705a22466139c1c29ce
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 16b0df4b81220885e2c3747470272cee9536e10c
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266108"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063565"
 ---
 # <a name="data-conversion-concepts-in-luis"></a>Pojęcia dotyczące konwersji danych LUIS
 LUIS umożliwia konwertowanie zniesławiających zniesławiających rozmowy na tekst zniesławiających przed prognozowania. 
@@ -23,22 +23,21 @@ LUIS umożliwia konwertowanie zniesławiających zniesławiających rozmowy na t
 Konwersja mowy na tekst w LUIS służy do wysyłania zniesławiających rozmowy do punktu końcowego i odbierania odpowiedzi prognozowania LUIS. Proces jest integracja [mowy](https://docs.microsoft.com/azure/cognitive-services/Speech) usługi z LUIS. 
 
 ### <a name="key-requirements"></a>Wymagania dotyczące klucza
-Nie trzeba tworzyć **API mowy usługi Bing** kluczy dla tej integracji. Klucz LUIS działa w przypadku tej integracji.
+Nie trzeba tworzyć **API mowy usługi Bing** kluczy dla tej integracji. A **opis języka** klucza utworzone w portalu Azure działa w przypadku tej integracji. Nie należy używać klucza starter LUIS, nie będzie działać dla tej integracji.
 
 ### <a name="new-endpoint"></a>Nowy punkt końcowy 
-Integracja ta tworzy nowy punkt końcowy i [cennik](luis-boundaries.md#key-limits) modelu. Punkt końcowy jest możliwość odbierania zarówno wymawiane i zniesławiających tekstu, dzięki czemu można używać go jako jeden punkt końcowy. 
+Integracja ta tworzy nowy punkt końcowy i [cennik](luis-boundaries.md#key-limits) modelu. Punkt końcowy, za pomocą [mowy SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk), może odbierać zarówno wymawiane i zniesławiających tekstu, dzięki czemu można używać go jako jeden punkt końcowy. 
 
 ### <a name="quota-usage"></a>Użycie przydziału
 Zobacz [klucza limity](luis-boundaries.md#key-limits) informacji. 
 
 ### <a name="data-retention"></a>Przechowywanie danych
-Dane wysyłane do punktu końcowego, niezależnie od przypadku mowy lub tekstu, jest używana tylko w celu zwiększenia modelu mowy. Nie jest używana poza modelu w w celu zwiększenia mowy lub LUIS ogólne pojemności. Po usunięciu aplikacji LUIS zachowane dane są także usuwane.
+Dane wysyłane do punktu końcowego za pośrednictwem usługi SDK mowy, niezależnie od przypadku mowy lub tekstu, jest używana tylko w celu zwiększenia modelu mowy. Nie jest używana poza modelu w w celu zwiększenia mowy lub LUIS ogólne pojemności. Po usunięciu aplikacji LUIS zachowane dane są także usuwane.
 
 <!-- TBD: Machine translation conversion concepts -->
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Poprawianie błędów pisowni z tego samouczka](luis-tutorial-bing-spellcheck.md)
+> [Użyj mowy na tekst.](luis-tutorial-speech-to-intent.md)
 
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

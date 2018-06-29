@@ -13,23 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 5787f944211c5dd6c0c83e7dc10170d8a0cd9a23
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6d36733b63645fd86580ccdc5af756739f77338c
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616614"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048149"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Kopiowanie danych z usługi Amazon Redshift przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](v1/data-factory-amazon-redshift-connector.md)
-> * [Wersja 2 — wersja zapoznawcza](connector-amazon-redshift.md)
+> * [W wersji 1](v1/data-factory-amazon-redshift-connector.md)
+> * [Bieżąca wersja](connector-amazon-redshift.md)
 
 
 Ten artykuł przedstawia sposób użycia działanie kopiowania w fabryce danych Azure można skopiować danych z Redshift Amazon. Opiera się na [skopiuj omówienie działania](copy-activity-overview.md) artykułu, który przedstawia ogólny przegląd działanie kopiowania.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [connnector Amazon Redshift w wersji 1](v1/data-factory-amazon-redshift-connector.md).
 
 ## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
@@ -201,7 +198,7 @@ Dla tego przykładu przypadek użycia, skopiuj działania zwalnia dane z Amazon 
                 "linkedServiceName": "AzureStorageLinkedService",
                 "path": "adfstagingcopydata"
             },
-            "cloudDataMovementUnits": 32
+            "dataIntegrationUnits": 32
         }
     }
 ]
@@ -218,7 +215,7 @@ Podczas kopiowania danych z Amazon Redshift, następujące mapowania są używan
 | CHAR |Ciąg |
 | DATE |DateTime |
 | DECIMAL |Decimal |
-| PODWÓJNEJ PRECYZJI |O podwójnej precyzji |
+| PODWÓJNEJ PRECYZJI |podwójne |
 | LICZBA CAŁKOWITA |Int32 |
 | RZECZYWISTE |Pojedyncze |
 | SMALLINT |Int16 |

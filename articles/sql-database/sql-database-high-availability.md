@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: jovanpop
 ms.reviewer: carlrab, sashan
-ms.openlocfilehash: 4e1963e97a7458db8badb63e28dbc3d215ad88b2
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: a9874681d59d193fc3c3d0fd4271e2a6a0fb0dc6
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309634"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060387"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Baza danych SQL wysokiej dostępności i platformy Azure
 
@@ -60,7 +60,7 @@ W poniższym diagramie przedstawiono wersja nadmiarowe strefy architektury wysok
 ![Wysoka dostępność architektura obszar strefowo nadmiarowy](./media/sql-database-high-availability/high-availability-architecture-zone-redundant.png)
 
 ## <a name="read-scale-out"></a>Przeczytaj skalowalnego w poziomie
-Zgodnie z opisem, krytycznych Business (wersja zapoznawcza) i Premium usługi warstw korzystaj z zestawów kworum i zawsze na technologii wysokiej dostępności, zarówno w jednej strefie i nadmiarowego konfiguracji strefy. Jedną z zalet AlwasyON jest repliki są zawsze w stanie spójna transakcyjnie. Ponieważ replik mają ten sam poziom wydajności jako podstawowy, aplikację można korzystać z dodatkowych wydajność obsługi obciążenia tylko do odczytu bez dodatkowych kosztów (odczytu skalowalnych w poziomie). W ten sposób zapytania tylko do odczytu zostanie odizolowana od głównego obciążenia zapisu i odczytu i nie będzie miało wpływ na wydajność. Odczytu, które funkcja skalowania w poziomie jest przeznaczona dla aplikacji, które obejmują logicznie rozdzielane obciążeń tylko do odczytu, takich jak analizy, a w związku z tym można wykorzystać to dodatkowej pojemności bez nawiązywania połączenia z serwerem podstawowym. 
+Zgodnie z opisem, krytycznych Business (wersja zapoznawcza) i Premium usługi warstw korzystaj z zestawów kworum i zawsze na technologii wysokiej dostępności, zarówno w jednej strefie i nadmiarowego konfiguracji strefy. Jedną z zalet funkcji AlwaysOn jest repliki są zawsze w stanie spójna transakcyjnie. Ponieważ replik mają ten sam poziom wydajności jako podstawowy, aplikację można korzystać z dodatkowych wydajność obsługi obciążenia tylko do odczytu bez dodatkowych kosztów (odczytu skalowalnych w poziomie). W ten sposób zapytania tylko do odczytu zostanie odizolowana od głównego obciążenia zapisu i odczytu i nie będzie miało wpływ na wydajność. Odczytu, które funkcja skalowania w poziomie jest przeznaczona dla aplikacji, które obejmują logicznie rozdzielane obciążeń tylko do odczytu, takich jak analizy, a w związku z tym można wykorzystać to dodatkowej pojemności bez nawiązywania połączenia z serwerem podstawowym. 
 
 Do korzystania z funkcji odczytu skalowalnego w poziomie z określoną bazę danych, musisz jawnie aktywować go podczas tworzenia bazy danych lub później, zmieniając konfigurację przy użyciu programu PowerShell, wywołując [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) lub [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) poleceń cmdlet lub przy użyciu interfejsu API usługi Azure Resource Manager REST [baz danych — Tworzenie lub aktualizowanie](/rest/api/sql/databases/createorupdate) metody.
 

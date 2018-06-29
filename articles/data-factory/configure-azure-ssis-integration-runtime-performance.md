@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: e0bbd504b47a3b599022049c984c6dd59a6d0a0b
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: ac53e1a8a7c6c1b2c2959b92e14c7911065aed6d
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266774"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052032"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurowanie środowiska uruchomieniowego integracji usług SSIS Azure o wysokiej wydajności
 
@@ -38,11 +38,11 @@ $DataFactoryLocation = "EastUS"
 # Azure-SSIS integration runtime information. This is a Data Factory compute resource for running SSIS packages
 $AzureSSISName = "<Specify a name for your Azure-SSIS IR>"
 $AzureSSISDescription = "<Specify description for your Azure-SSIS IR"
-# In public preview, only EastUS, NorthEurope, and WestEurope are supported.
+# Only EastUS, NorthEurope, and WestEurope are supported.
 $AzureSSISLocation = "EastUS" 
-# In public preview, only Standard_A4_v2, Standard_A8_v2, Standard_D1_v2, Standard_D2_v2, Standard_D3_v2, Standard_D4_v2 are supported
+# Only Standard_A4_v2, Standard_A8_v2, Standard_D1_v2, Standard_D2_v2, Standard_D3_v2, Standard_D4_v2 are supported
 $AzureSSISNodeSize = "Standard_D3_v2"
-# In public preview, only 1-10 nodes are supported.
+# Only 1-10 nodes are supported.
 $AzureSSISNodeNumber = 2 
 # For a Standard_D1_v2 node, 1-4 parallel executions per node are supported. For other nodes, it's 1-8.
 $AzureSSISMaxParallelExecutionsPerNode = 2 
@@ -60,7 +60,7 @@ $SSISDBPricingTier = "<pricing tier of your Azure SQL server. Examples: Basic, S
 **AzureSSISLocation** to lokalizacja, w węźle integracji środowiska wykonawczego procesu roboczego. Z węzłem procesu roboczego przechowuje stałe połączenie z bazą danych usług SSIS katalogu (SSISDB) w bazie danych Azure SQL. Ustaw **AzureSSISLocation** w tej samej lokalizacji co serwer bazy danych SQL, który jest hostem bazy danych SSISDB, który umożliwia integrację środowiska uruchomieniowego działa jak najbardziej wydajny.
 
 ## <a name="azuressisnodesize"></a>AzureSSISNodeSize
-W publicznej wersji zapoznawczej v2 fabryki danych Azure, w tym IR Azure SSIS obsługuje następujące opcje:
+Fabryka danych, w tym IR Azure SSIS obsługuje następujące opcje:
 -   Standardowe\_A4\_v2
 -   Standardowe\_A8\_v2
 -   Standardowe\_D1\_v2

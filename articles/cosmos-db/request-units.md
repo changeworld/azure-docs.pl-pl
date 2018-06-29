@@ -7,14 +7,14 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 06/26/2018
 ms.author: rimman
-ms.openlocfilehash: 9021d0c3f650d64480f2881508d456ce98beab2a
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 160ff4e09f70036fd261c07fa59e13772bc00660
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36961970"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053331"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Żądanie jednostki w usłudze Azure DB rozwiązania Cosmos
 
@@ -41,7 +41,7 @@ Azure DB rozwiązania Cosmos szybkie, oferuje przewidywalną wydajność przez z
 
 Z bazy danych Azure rozwiązania Cosmos zarezerwowaną przepływnością jest określane w przeliczeniu na jednostki żądania przetwarzania na sekundę. Jednostki żądania można traktować jako walutę przepływności. Należy zarezerwować liczba jednostek żądania gwarantowane mają być dostępne dla aplikacji na podstawie na sekundę. Każdej operacji w usłudze Azure DB rozwiązania Cosmos, w tym zapisywania dokumentu, wykonywania zapytania i aktualizowanie dokumentu, korzysta z Procesora, pamięci i IOPS. Oznacza to, że każdej operacji wiąże bezpłatnie żądania w jednostkach żądań. Po zapoznaniu czynników, które mają wpływ na koszty jednostki żądania i wymagania dotyczące przepływności aplikacji, można uruchomić aplikacji jako koszt skutecznie, jak to możliwe. 
 
-Aby pomóc Ci rozpocząć, Azure Menedżera programów DB rozwiązania Cosmos Andrew Liu omówiono jednostki żądania w poniższym klipie wideo: <br /><br />
+Aby pomóc Ci rozpocząć, Azure Menedżera programów DB rozwiązania Cosmos Andrew Liu omówiono jednostki żądania w poniższym klipie wideo (Brak pomocniczej Literówka w przykładzie jednostki wideo na żądanie. W przypadku 1 KB danych przy użyciu 100 000 rekordów całkowita ilość miejsca jest 100 MB, a nie 100 GB): <br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/stk5WSp5uX0]
 > 

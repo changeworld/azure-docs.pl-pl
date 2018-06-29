@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: b035141c443c3dad18c3e9bfbc53581a7d180e5a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b96483232a1da5ae21e6ba8cbe873d876d38ed11
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333831"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050305"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Ładowanie danych do usługi Azure SQL Data Warehouse przy użyciu fabryki danych Azure
 
@@ -35,9 +35,6 @@ W tym artykule przedstawiono sposób użycia narzędzia kopii fabryki danych do 
 
 > [!NOTE]
 > Aby uzyskać więcej informacji, zobacz [kopiowanie danych do i z usługi Azure SQL Data Warehouse przy użyciu fabryki danych Azure](connector-azure-sql-data-warehouse.md).
->
-> Ten artykuł dotyczy wersji 2 usługi Azure Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [działanie kopiowania w fabryce danych Azure w wersji 1](v1/data-factory-data-movement-activities.md).
-
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Subskrypcja platformy Azure: Jeśli nie masz subskrypcji platformy Azure, Utwórz [bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
@@ -57,7 +54,7 @@ W tym artykule przedstawiono sposób użycia narzędzia kopii fabryki danych do 
     * **Nazwa**: Wprowadź globalnie unikatowej nazwy dla fabryką danych Azure. Jeśli zostanie wyświetlony błąd "Nazwa fabryki danych \"LoadSQLDWDemo\" jest niedostępny," Wprowadź inną nazwę dla fabryki danych. Na przykład można użyć nazwy  _**twojanazwa**_**ADFTutorialDataFactory**. Spróbuj ponownie utworzyć fabryki danych. Artykuł [Data Factory naming rules (Zasady nazewnictwa fabryki danych)](naming-rules.md) zawiera zasady nazewnictwa artefaktów usługi Data Factory.
     * **Subskrypcja**: Wybierz subskrypcję platformy Azure, w którym można utworzyć fabryki danych. 
     * **Grupa zasobów**: Wybierz istniejącą grupę zasobów z listy rozwijanej lub wybierz **Utwórz nowy** opcję i wprowadź nazwę grupy zasobów. Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
-    * **Wersja**: Wybierz **V2 (wersja zapoznawcza)**.
+    * **Wersja**: Wybierz **V2**.
     * **Lokalizacja**: Wybierz lokalizację dla fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych, które są używane przez fabrykę danych może być w innych lokalizacjach i regionach. Te magazyny danych obejmują usługi Azure Data Lake Store, usługi Azure Storage, baza danych SQL Azure i tak dalej.
 
 3. Wybierz pozycję **Utwórz**.
@@ -90,9 +87,9 @@ W tym artykule przedstawiono sposób użycia narzędzia kopii fabryki danych do 
    
     ![Konfigurowanie bazy danych Azure SQL](./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png)
 
-    d. Wybierz nowo utworzony połączonej usługi jako źródła, a następnie kliknij przycisk **dalej**.
+    d. Wybierz nowo utworzoną połączoną usługę jako źródło, a następnie kliknij pozycję **Dalej**.
 
-    ![Wybierz źródło połączone usługi](./media/load-azure-sql-data-warehouse/select-source-linked-service.png)
+    ![Wybieranie połączonej usługi źródłowej](./media/load-azure-sql-data-warehouse/select-source-linked-service.png)
 
 4. W **wybierz tabele, z których chcesz skopiować dane, lub użyć niestandardowej kwerendy** wprowadź **SalesLT** do filtrowania tabel. Wybierz **(Zaznacz wszystko)** korzystać ze wszystkich tabel dla kopii, a następnie wybierz **dalej**: 
 

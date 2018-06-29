@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 5d9061e12ac9fe0b9d858690897e582acab5169e
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: c0a07cb872ec87bbf39237b74990a1fc7a74e9e8
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36754583"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053259"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Zagadnienia dotyczące zabezpieczeń dla ruchu danych w fabryce danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](v1/data-factory-data-movement-security-considerations.md)
-> * [Wersja 2 — wersja zapoznawcza](data-movement-security-considerations.md)
+> * [W wersji 1](v1/data-factory-data-movement-security-considerations.md)
+> * [Bieżąca wersja](data-movement-security-considerations.md)
 
 W tym artykule opisano infrastruktury podstawowych zabezpieczeń, który usługi przenoszenia danych z fabryki danych Azure używany do zabezpieczania danych. Zasoby dotyczące zarządzania fabryki danych są wbudowane w infrastrukturze zabezpieczeń platformy Azure i użyj wszystkich możliwych zabezpieczenia oferowanych na platformie Azure.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [zagadnienia dotyczące zabezpieczeń przepływu danych dla fabryki danych w wersji 1](v1/data-factory-data-movement-security-considerations.md).
 
 W ramach rozwiązania fabryki danych jest tworzony co najmniej jeden [potok](concepts-pipelines-activities.md) danych. Potoki to logiczne grupy działań, które wspólnie wykonują zadanie. Potoki te znajdują się w regionie, w której został utworzony z fabryką danych. 
 

@@ -4,16 +4,16 @@ description: Rozwiązywanie typowych problemów i nabywanie umiejętności rozwi
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 03/23/2018
+ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ad22b0cd1457c1d4146a75047ff18e916c0c7ccd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: efe3e31a1a92e21f2c3a3461deba248d2a8c97fa
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633540"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029445"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Typowe problemy z usługą Azure IoT Edge i ich rozwiązania
 
@@ -23,36 +23,135 @@ Jeśli wystąpią problemy z uruchamianiem usługi Azure IoT Edge w danym środo
 
 W przypadku wystąpienia problemu dowiedz się więcej o stanie urządzenia usługi IoT Edge, przeglądając dzienniki kontenera i komunikaty przekazywane do i z urządzenia. Użyj poleceń i narzędzi w tej sekcji, aby zebrać informacje. 
 
-* Sprawdź dzienniki kontenerów Docker, aby wykryć problemy. Rozpocznij od wdrożonych kontenerów, a następnie sprawdź kontenery, które tworzą środowisko uruchomieniowe usługi IoT Edge: Agent usługi Edge i Centrum usługi Edge. Dzienniki agenta usługi Edge zwykle zawierają informacje o cyklu życia każdego kontenera. Dzienniki centrum usługi Edge zawierają informacje dotyczące obsługi komunikatów i routingu. 
+### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>Sprawdź stan Menedżera zabezpieczeń krawędzi IoT i jej dzienników:
 
-   ```cmd
-   docker logs <container name>
+W systemie Linux:
+- Aby wyświetlić stan Menedżera zabezpieczeń krawędzi IoT:
+
+   ```bash
+   sudo systemctl status iotedge
    ```
 
-* Przejrzyj komunikaty przechodzące przez centrum usługi Edge i zbierz analizy dotyczące aktualizacji właściwości urządzenia za pomocą szczegółowych dzienników z kontenerów środowiska wykonawczego.
+- Aby wyświetlić dzienniki Menedżera zabezpieczeń krawędzi IoT:
 
-   ```cmd
-   iotedgectl setup --connection-string "{device connection string}" --runtime-log-level debug
-   ```
+    ```bash
+    sudo journalctl -u iotedge -f
+    ```
+
+- Aby wyświetlić bardziej szczegółowe dzienniki Menedżera zabezpieczeń krawędzi IoT:
+
+   - Edytuj ustawienia demon iotedge:
+
+      ```bash
+      sudo systemctl edit iotedge.service
+      ```
    
-* Wyświetl pełne dzienniki za pomocą poleceń iotedgectl:
+   - Zaktualizuj następujące wiersze:
+    
+      ```
+      [Service]
+      Environment=IOTEDGE_LOG=edgelet=debug
+      ```
+    
+   - Uruchom ponownie demona zabezpieczeń krawędzi IoT:
+    
+      ```bash
+      sudo systemctl cat iotedge.service
+      sudo systemctl daemon-reload
+      sudo systemctl restart iotedge
+      ```
 
-   ```cmd
-   iotedgectl --verbose DEBUG <command>
+W systemie Windows:
+- Aby wyświetlić stan Menedżera zabezpieczeń krawędzi IoT:
+
+   ```powershell
+   Get-Service iotedge
    ```
 
-* Jeśli wystąpią problemy z łącznością, zbadaj zmienne środowiskowe urządzenia Edge, takie jak parametry połączenia urządzenia:
+- Aby wyświetlić dzienniki Menedżera zabezpieczeń krawędzi IoT:
+
+   ```powershell
+   # Displays logs from today, newest at the bottom.
+ 
+   Get-WinEvent -ea SilentlyContinue `
+   -FilterHashtable @{ProviderName= "iotedged";
+     LogName = "application"; StartTime = [datetime]::Today} |
+   select TimeCreated, Message |
+   sort-object @{Expression="TimeCreated";Descending=$false}
+   ```
+
+### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>Jeśli Menedżera zabezpieczeń krawędzi IoT nie jest uruchomiona, należy sprawdzić plik konfiguracyjny yaml programu
+
+> [!WARNING]
+> Pliki yaml programu nie może zawierać kart jako identation. Zamiast tego użyj spacji 2.
+
+W systemie Linux:
+
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
+   ```
+
+W systemie Windows:
 
    ```cmd
-   docker exec edgeAgent printenv
+   notepad C:\ProgramData\iotedge\config.yaml
+   ```
+
+### <a name="check-container-logs-for-issues"></a>Sprawdź dzienniki kontenera problemów
+
+Po uruchomieniu demona IoT krawędzi zabezpieczeń, należy znaleźć w dziennikach, kontenerów do wykrywania problemów. Rozpocznij od wdrożonych kontenerów, a następnie sprawdź kontenery, które tworzą środowisko uruchomieniowe usługi IoT Edge: Agent usługi Edge i Centrum usługi Edge. Dzienniki agenta usługi Edge zwykle zawierają informacje o cyklu życia każdego kontenera. Dzienniki centrum usługi Edge zawierają informacje dotyczące obsługi komunikatów i routingu. 
+
+   ```cmd
+   iotedge logs <container name>
+   ```
+
+### <a name="view-the-messages-going-through-the-edge-hub"></a>Wyświetlanie komunikatów pośrednictwa Centrum krawędzi
+
+Wyświetlanie komunikatów pośrednictwa Centrum Edge i zbierać szczegółowych informacji o aktualizacji właściwości urządzenia z dziennikami verbose z kontenerów środowiska uruchomieniowego edgeAgent i edgeHub. Aby włączyć pełne dzienniki do tych kontenerów, ustaw `RuntimeLogLevel` zmiennej środowiskowej: 
+
+W systemie Linux:
+    
+   ```cmd
+   export RuntimeLogLevel="debug"
+   ```
+    
+W systemie Windows:
+    
+   ```powershell
+   [Environment]::SetEnvironmentVariable("RuntimeLogLevel", "debug")
    ```
 
 Możesz także sprawdzić komunikaty przesyłane między usługą IoT Hub i urządzeniami usługi IoT Edge. Te komunikaty można wyświetlić przy użyciu rozszerzenia [Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) programu Visual Studio Code. Więcej pomocy zawiera temat [Handy tool when you develop with Azure IoT (Przydatne narzędzie dla programowania w usłudze Azure IoT)](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
 
-Po przeanalizowaniu dzienników i komunikatów pod kątem informacji możesz także spróbować uruchomić ponownie środowisko uruchomieniowe usługi Azure IoT Edge:
+### <a name="restart-containers"></a>Uruchom ponownie kontenerów
+Po zbadaniu dzienniki i komunikaty, aby uzyskać informacje, można spróbować uruchomić kontenerów:
+
+```
+iotedge restart <container name>
+```
+
+Uruchom ponownie kontenery środowiska uruchomieniowego krawędzi IoT:
+
+```
+iotedge restart edgeAgent && iotedge restart edgeHub
+```
+
+### <a name="restart-the-iot-edge-security-manager"></a>Ponownie uruchom Menedżera zabezpieczeń krawędzi IoT
+
+Jeśli problem nadal jest trwałym, można spróbować uruchomić Menedżera zabezpieczeń IoT krawędzi.
+
+W systemie Linux:
 
    ```cmd
-   iotedgectl restart
+   sudo systemctl restart iotedge
+   ```
+
+W systemie Windows:
+
+   ```powershell
+   Stop-Service iotedge -NoWait
+   sleep 5
+   Start-Service iotedge
    ```
 
 ## <a name="edge-agent-stops-after-about-a-minute"></a>Agent usługi Edge jest zatrzymywany po około minucie
@@ -100,29 +199,11 @@ Uruchomienie kontenera nie powodzi się, a w dziennikach agenta usługi Edge jes
 Agent usługi Edge nie ma uprawnień dostępu do obrazu modułu. 
 
 ### <a name="resolution"></a>Rozwiązanie
-Spróbuj uruchomić ponownie polecenie `iotedgectl login`.
+Upewnij się, że poświadczenia rejestru są poprawnie określona w manifeście wdrażania
 
-## <a name="iotedgectl-cant-find-docker"></a>Polecenie iotedgectl nie może znaleźć platformy Docker
+## <a name="iot-edge-security-daemon-fails-with-an-invalid-hostname"></a>Demon zabezpieczeń krawędzi IoT kończy się niepowodzeniem z nieprawidłową nazwę hosta
 
-Polecenia `iotedgectl setup` lub `iotedgectl start` zakończyć się niepowodzeniem i Drukuj komunikat do dzienników:
-```output
-File "/usr/local/lib/python2.7/dist-packages/edgectl/host/dockerclient.py", line 98, in get_os_type
-  info = self._client.info()
-File "/usr/local/lib/python2.7/dist-packages/docker/client.py", line 174, in info
-  return self.api.info(*args, **kwargs)
-File "/usr/local/lib/python2.7/dist-packages/docker/api/daemon.py", line 88, in info
-  return self._result(self._get(self._url("/info")), True)
-```
-
-### <a name="root-cause"></a>Główna przyczyna
-Polecenie iotedgectl nie może znaleźć platformy Docker, która jest wymaganiem wstępnym.
-
-### <a name="resolution"></a>Rozwiązanie
-Zainstaluj platformę Docker, upewnij się, że jest uruchomiona, i spróbuj ponownie.
-
-## <a name="iotedgectl-setup-fails-with-an-invalid-hostname"></a>iotedgectl instalacja zakończy się niepowodzeniem z nieprawidłową nazwą hosta
-
-Polecenie `iotedgectl setup` nie powiedzie się i wyświetla następujący komunikat: 
+Polecenie `sudo journalctl -u iotedge` nie powiedzie się i wyświetla następujący komunikat: 
 
 ```output
 Error parsing user input data: invalid hostname. Hostname cannot be empty or greater than 64 characters
@@ -143,9 +224,17 @@ Gdy zostanie wyświetlony ten błąd, można rozwiązać, konfigurowanie nazwę 
 4. Skopiuj nowej nazwy DNS, która powinna być w formacie  **\<DNSnamelabel\>.\< vmlocation\>. cloudapp.azure.com**.
 5. Na maszynie wirtualnej Użyj następującego polecenia, aby skonfigurować środowisko uruchomieniowe krawędzi IoT z nazwą DNS:
 
-   ```input
-   iotedgectl setup --connection-string "<connection string>" --nopass --edge-hostname "<DNS name>"
-   ```
+   - W systemie Linux:
+
+      ```bash
+      sudo nano /etc/iotedge/config.yaml
+      ```
+
+   - W systemie Windows:
+
+      ```cmd
+      notepad C:\ProgramData\iotedge\config.yaml
+      ```
 
 ## <a name="next-steps"></a>Kolejne kroki
 Uważasz, że znaleziono usterkę platformy IoT Edge? [Prześlij problem](https://github.com/Azure/iot-edge/issues), aby umożliwić nam naprawę. 

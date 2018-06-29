@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 9b2acf622f33f5d1748c503ab4765b72c3d921e2
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 5287a1d1f09a7057590b455c14aa7f70128ad7fa
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751582"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053646"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopiowanie danych do lub z bazą danych SQL Azure przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
-> * [W wersji 1, GA](v1/data-factory-azure-sql-connector.md)
-> * [W wersji 2, w wersji zapoznawczej](connector-azure-sql-database.md)
+> * [W wersji 1](v1/data-factory-azure-sql-connector.md)
+> * [Bieżąca wersja](connector-azure-sql-database.md)
 
 W tym artykule opisano sposób użycia działanie kopiowania w fabryce danych Azure, aby skopiować dane z lub do bazy danych SQL Azure. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólny przegląd działanie kopiowania.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 fabryki danych obecnie w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych z ogólnie dostępna (GA), zobacz [łącznika usługi Azure SQL Database w wersji 1](v1/data-factory-azure-sql-connector.md).
 
 ## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
@@ -60,7 +57,7 @@ Te właściwości są obsługiwane dla bazy danych SQL Azure połączone usługi
 | Parametry połączenia | Podaj informacje wymagane do połączenia z wystąpieniem bazy danych SQL Azure dla **connectionString** właściwości. Oznacz to pole jako **SecureString** Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | servicePrincipalId | Określ identyfikator aplikacji klienta. | Tak, gdy użytkownik korzysta z nazwy głównej usługi uwierzytelniania usługi Azure AD. |
 | servicePrincipalKey | Określ klucz aplikacji. Oznacz to pole jako **SecureString** Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak, gdy użytkownik korzysta z nazwy głównej usługi uwierzytelniania usługi Azure AD. |
-| dzierżawy | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Pobrać, ustawiając kursor myszy w prawym górnym rogu portalu Azure. | Tak, gdy użytkownik korzysta z nazwy głównej usługi uwierzytelniania usługi Azure AD. |
+| dzierżawa | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Pobrać, ustawiając kursor myszy w prawym górnym rogu portalu Azure. | Tak, gdy użytkownik korzysta z nazwy głównej usługi uwierzytelniania usługi Azure AD. |
 | connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. Mogą używać środowiska uruchomieniowego integracji Azure lub runtime siebie integracji, jeśli w magazynie danych znajduje się w sieci prywatnej. Jeśli nie zostanie określony, używa domyślnej środowiska uruchomieniowego integracji Azure. | Nie |
 
 Różnymi typami uwierzytelniania można znaleźć w poniższych sekcjach na warunki wstępne i przykłady JSON odpowiednio:
@@ -580,7 +577,7 @@ Podczas kopiowania danych z lub do bazy danych SQL Azure, następujące mapowani
 | bitowe |Wartość logiczna |
 | char |Ciąg, Char] |
 | data |DateTime |
-| Data i godzina |DateTime |
+| Data/godzina |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |

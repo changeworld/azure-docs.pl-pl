@@ -4,19 +4,19 @@ description: W tym scenariuszu pokazano, jak to zrobić rozproszonej dostrojenie
 services: machine-learning
 author: pechyony
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.author: dmpechyo
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: c6eccda4329572a181b6a7e7e3870ace4bfac13b
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 6347500b8968394a922969dd3dd2f00dd51cb6dd
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832751"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37036431"
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Rozproszone dostrojenie hyperparameters przy użyciu usługi Azure Machine Learning Workbench
 
@@ -157,9 +157,9 @@ Po wykonaniu tej Wybierz kontener zestawu danych z listy i kliknij przycisk prze
 
 Przekazywanie plików może zająć kilka minut, w zależności od połączenia internetowego. 
 
-W naszym kodzie używamy [zestawu SDK usługi Magazyn Azure](https://azure-storage.readthedocs.io/en/latest/) pobierania zestawu danych z magazynu obiektów blob do aktualnego środowiska wykonawczego. Pobieranie jest wykonywane w obciążenia\_funkcja funkcji data() z pliku load_data.py. Aby użyć tego kodu, należy zastąpić < nazwa_konta > i < ACCOUNT_KEY > o nazwie i klucz podstawowy konta magazynu, który jest hostem zestawu danych. Widać nazwy konta w lewym górnym rogu strony systemu Azure dla konta magazynu. Można uzyskać konta typu klucza, wybierz klucze dostępu Azure stronie magazynu konta, (Zobacz pierwszy zrzut ekranu w sekcji wprowadzanie danych), a następnie skopiuj długi ciąg w pierwszym wierszu kolumny klucza:
+W naszym kodzie używamy [zestawu SDK usługi Magazyn Azure](https://docs.microsoft.com/en-us/python/azure/) pobierania zestawu danych z magazynu obiektów blob do aktualnego środowiska wykonawczego. Pobieranie jest wykonywane w obciążenia\_funkcja funkcji data() z pliku load_data.py. Aby użyć tego kodu, należy zastąpić < nazwa_konta > i < ACCOUNT_KEY > o nazwie i klucz podstawowy konta magazynu, który jest hostem zestawu danych. Widać nazwy konta w lewym górnym rogu strony systemu Azure dla konta magazynu. Można uzyskać konta typu klucza, wybierz klucze dostępu Azure stronie magazynu konta, (Zobacz pierwszy zrzut ekranu w sekcji wprowadzanie danych), a następnie skopiuj długi ciąg w pierwszym wierszu kolumny klucza:
  
-![Klucz dostępu](media/scenario-distributed-tuning-of-hyperparameters/access_key.png)
+![klucz dostępu](media/scenario-distributed-tuning-of-hyperparameters/access_key.png)
 
 Poniższy kod z funkcji load_data() pobiera pojedynczy plik:
 
@@ -213,7 +213,7 @@ Xgboost ma osiem hyperparameters, opisane [tutaj](https://github.com/dmlc/xgboos
 * learning_rate
 * colsample\_by_level
 * podpróbki
-* Cel  
+* cel  
  
 Początkowo możemy użyć zdalnego DSVM i dostrajania hyperparameters z małych siatki candidate wartości:
 

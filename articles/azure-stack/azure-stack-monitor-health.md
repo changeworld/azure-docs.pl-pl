@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: mabrigg
-ms.openlocfilehash: 446df7922422ccfcf3fbb92ecf153c6dec2f6197
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: e20670476f4549a06d80d5f85e2ebd8ab1f50b05
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26640382"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047245"
 ---
 # <a name="monitor-health-and-alerts-in-azure-stack"></a>Monitorowanie kondycji i alertów w stosie Azure
 
@@ -32,6 +32,17 @@ Stos Azure obejmuje monitorowanie możliwości, które umożliwiają wyświetlan
  ## <a name="understand-health-in-azure-stack"></a>Zrozumienie kondycji w stosie Azure
 
  Kondycja i alerty są zarządzane przez dostawcę zasobów kondycji. Składniki infrastruktury w usłudze Azure stosu zarejestrować u dostawcy zasobów kondycji podczas wdrażania stosu Azure i konfiguracji. Rejestracja Umożliwia wyświetlanie kondycji i alertów dla poszczególnych składników. Kondycji w stosie Azure to pojęcie proste. Jeśli istnieją alerty dotyczące zarejestrowanych wystąpienia składnika, kondycja tego składnika odzwierciedla najgorszy active ważność alertu; Ostrzeżenie, lub krytyczne.
+
+## <a name="alert-severity-definition"></a>Definicja ważność alertu
+
+W stosie Azure pojawienia się alertów tylko dwa ważności: **ostrzeżenie** i **krytyczne**.
+
+**Ostrzeżenie**  
+Operator może zająć alert ostrzeżenia w zaplanowanym czasie. Alert zwykle nie wpływa na obciążenia użytkownika.
+
+**Krytyczne**  
+Operator powinna uwzględniać alert krytyczny o pilność. Są to problemów, które obecnie wpływ lub wkrótce będzie miało wpływ stosu Azure użytkowników. 
+
  
  ## <a name="view-and-manage-component-health-state"></a>Wyświetl i zarządzaj nimi stan kondycji składników
  
@@ -71,7 +82,7 @@ Możesz kliknąć określony alert, aby wyświetlić szczegóły alertu. Szczeg�
 
 Po powrocie do trybu online wystąpienia roli infrastruktury ten alert jest automatycznie zamykany. Wiele, ale nie każdy alert zamyka automatycznie, gdy problem zostanie rozwiązany. Zaleca się, że wybrano **Zamknij Alert** po wykonaniu czynności korygujące. Jeśli problem będzie się powtarzać, stos Azure generuje nowy alert. Jeśli ten problem można rozwiązać, alert pozostanie zamknięty i nie wymaga dodatkowych czynności.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Zarządzanie aktualizacjami w stosie Azure](azure-stack-updates.md)
 

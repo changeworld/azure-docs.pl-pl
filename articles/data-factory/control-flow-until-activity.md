@@ -13,18 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 8ceecdefe644cb5dd1b6038636960cbb5dd9167e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cd4b58dea43e497a2d7a5b977379d95f7004af45
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618967"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052311"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Do działania w fabryce danych Azure
 Działanie Until zapewnia te same funkcje czy-dopóki zapętlenia struktury udostępnia w językach programowania. Służy do wykonywania zestawu działań w pętli do momentu, gdy warunek skojarzony z działaniem zostanie obliczony na wartość true. W usłudze Data Factory można określić wartość limitu czasu działania Until. 
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [dokumentacji V1 fabryki danych](v1/data-factory-introduction.md).
 
 ## <a name="syntax"></a>Składnia
 
@@ -60,7 +57,7 @@ Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
 name | Nazwa `Until` działania. | Ciąg | Yes
 type | Należy wybrać opcję **do momentu**. | Ciąg | Yes
-wyrażenie | Wyrażenie musi zwrócić wartość true lub false | Wyrażenie.  | Yes
+Wyrażenie | Wyrażenie musi zwrócić wartość true lub false | wyrażenie.  | Yes
 timeout | Czy — do pętli razy się po upływie określonego czasu. | Ciąg. `d.hh:mm:ss` (lub) `hh:mm:ss`. Wartość domyślna to 7 dni. Maksymalna wartość to: 90 dni. | Nie
 Działania | Zbiór działań, które są wykonywane, dopóki wyrażenie daje w wyniku `true`. | Tablica działań. |  Yes
 

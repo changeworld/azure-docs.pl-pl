@@ -12,15 +12,21 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/09/2018
+ms.date: 06/27/2018
 ms.author: aljo
-ms.openlocfilehash: 118a6d10eeba691fd0886967f90156a0ab8d9fae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.openlocfilehash: 6783c2b3b431e99050bc6762c1855b22e0701686
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642652"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062283"
 ---
+# <a name="description-of-the-different-upgrade-policies"></a>Opis różnych zasad uaktualniania
+
+- **Dynamiczne** — zmiany w konfiguracji dynamicznej nie powodują ponowne uruchomienia procesu procesów usługi sieć szkieletowa usług lub procesów hosta usługi. 
+- **Statyczne** — zmian do konfiguracji statycznej spowoduje ponowne uruchomienie w celu korzystania z zmiany węzeł sieci szkieletowej usług. Usługi w węzłach zostanie uruchomiona ponownie.
+- **NotAllowed** — nie można modyfikować tych ustawień. Zmiana tych ustawień wymaga niszczone klastra i utworzyć nowy klaster. 
+
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Dostosowywanie ustawień klastra sieci szkieletowej usług i zasady uaktualniania sieci szkieletowej
 Ten dokument zawiera informacje dotyczące dostosować różne ustawienia sieci szkieletowej i sieci szkieletowej uaktualniania zasad dla klastra usługi sieć szkieletowa usług. Możesz dostosować je za pomocą [portalu Azure](https://portal.azure.com) lub przy użyciu szablonu usługi Azure Resource Manager.
 
@@ -80,7 +86,7 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 ## <a name="backuprestoreservice"></a>BackupRestoreService
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
-|MinReplicaSetSize|Int, domyślna to 0|Statyczny|MinReplicaSetSize dla BackupRestoreService |
+|MinReplicaSetSize|int, domyślne to 0|Statyczny|MinReplicaSetSize dla BackupRestoreService |
 |PlacementConstraints|wstring, domyślny jest L""|Statyczny| PlacementConstraints BackupRestore usługi |
 |SecretEncryptionCertThumbprint|wstring, domyślny jest L""|Dynamiczny|Odcisk palca certyfikatu szyfrowania tajny X509 |
 |SecretEncryptionCertX509StoreName|wstring, domyślny jest L "Moje"|  Dynamiczny|    Oznacza to certyfikat używany do szyfrowania i odszyfrowywania poświadczenia magazynu certyfikatów nazwa X.509, który jest używany do szyfrowania, odszyfrowywania poświadczeń magazynu używane przez usługę Przywracanie kopii zapasowej |
@@ -207,9 +213,9 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |BuildReplicaTimeLimit|Zakres czasu, domyślnie jest Common::TimeSpan::FromSeconds(3600)|Dynamiczny|Określ zakres czasu w sekundach. Limit czasu na tworzenie replik stanowe; Po upływie którego ostrzeżenie raportu kondycji zostanie zainicjowana |
-|ClusterPauseThreshold|Int, wartość domyślna to 1|Dynamiczny|Jeśli liczba węzłów w systemie zejść poniżej tej wartości, a następnie umieszczania; Równoważenie; obciążenia i trybu failover zostanie zatrzymana. |
+|ClusterPauseThreshold|int, domyślna to 1|Dynamiczny|Jeśli liczba węzłów w systemie zejść poniżej tej wartości, a następnie umieszczania; Równoważenie; obciążenia i trybu failover zostanie zatrzymana. |
 |CreateInstanceTimeLimit|Zakres czasu, domyślnie jest Common::TimeSpan::FromSeconds(300)|Dynamiczny|Określ zakres czasu w sekundach. Limit czasu na tworzenie wystąpienia bezstanowych; Po upływie którego ostrzeżenie raportu kondycji zostanie zainicjowana |
-|ExpectedClusterSize|Int, wartość domyślna to 1|Dynamiczny|Po początkowym uruchomieniu klastra FM będzie czekać w tym wiele węzłów do zgłaszania samodzielnie się przed rozpoczęciem wprowadzania do innych usług. w tym usług systemowych, takich jak nazewnictwa. Zwiększenie tej wartości zwiększa czas uruchomienia; klastra ale uniemożliwia wczesne węzłów z przeciążenia, a także dodatkowe przenosi, które będą potrzebne, ponieważ więcej węzłów do trybu online. Ta wartość zazwyczaj powinien mieć ustawioną niektórych ułamku rozmiaru klastra. |
+|ExpectedClusterSize|int, domyślna to 1|Dynamiczny|Po początkowym uruchomieniu klastra FM będzie czekać w tym wiele węzłów do zgłaszania samodzielnie się przed rozpoczęciem wprowadzania do innych usług. w tym usług systemowych, takich jak nazewnictwa. Zwiększenie tej wartości zwiększa czas uruchomienia; klastra ale uniemożliwia wczesne węzłów z przeciążenia, a także dodatkowe przenosi, które będą potrzebne, ponieważ więcej węzłów do trybu online. Ta wartość zazwyczaj powinien mieć ustawioną niektórych ułamku rozmiaru klastra. |
 |ExpectedNodeDeactivationDuration|Zakres czasu, domyślnie jest Common::TimeSpan::FromSeconds(60.0 * 30)|Dynamiczny|Określ zakres czasu w sekundach. Jest to oczekiwany czas trwania dla węzła w celu ukończenia dezaktywacji w. |
 |ExpectedNodeFabricUpgradeDuration|Zakres czasu, domyślnie jest Common::TimeSpan::FromSeconds(60.0 * 30)|Dynamiczny|Określ zakres czasu w sekundach. Oczekiwany czas trwania dla węzła do uaktualnienia jest podczas uaktualniania systemu Windows w sieci szkieletowej. |
 |ExpectedReplicaUpgradeDuration|Zakres czasu, domyślnie jest Common::TimeSpan::FromSeconds(60.0 * 30)|Dynamiczny|Określ zakres czasu w sekundach. Jest to oczekiwany czas trwania dla wszystkich replik do uaktualnienia w węźle podczas uaktualniania aplikacji. |
@@ -231,7 +237,7 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 | --- | --- | --- | --- |
 |CompletedActionKeepDurationInSeconds | Int, domyślnie jest 604800 |Statyczny| Jest to około czas przechowywania akcje, które są w stanie terminala. Zależy to od również StoredActionCleanupIntervalInSeconds; ponieważ pracy do czyszczenia jest wykonywane tylko w tym interwał. 604800 wynosi 7 dni. |
 |DataLossCheckPollIntervalInSeconds|int, domyślna to 5|Statyczny|Jest to czas między testy, które system wykonuje podczas oczekiwania na utratę danych, mieć miejsce. Ile razy numer utraty danych, zostanie sprawdzony na iterację wewnętrznego jest DataLossCheckWaitDurationInSeconds/to. |
-|DataLossCheckWaitDurationInSeconds|Int, domyślna to 25|Statyczny|Łączny czas trwania; w ciągu sekund; czy system będzie oczekiwał na utratę danych, mieć miejsce. To jest używana wewnętrznie po wywołaniu interfejsu api StartPartitionDataLossAsync(). |
+|DataLossCheckWaitDurationInSeconds|int, domyślna to 25|Statyczny|Łączny czas trwania; w ciągu sekund; czy system będzie oczekiwał na utratę danych, mieć miejsce. To jest używana wewnętrznie po wywołaniu interfejsu api StartPartitionDataLossAsync(). |
 |MinReplicaSetSize |Int, domyślna to 0 |Statyczny|MinReplicaSetSize dla FaultAnalysisService. |
 |PlacementConstraints | ciąg, domyślna to ""|Statyczny| PlacementConstraints dla FaultAnalysisService. |
 |QuorumLossWaitDuration | Czas w sekundach, domyślnie jest MaxValue |Statyczny|Określ zakres czasu w sekundach. QuorumLossWaitDuration dla FaultAnalysisService. |
@@ -298,7 +304,7 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |Elementów MaxPercentDeltaUnhealthyNodes|Int, domyślna to 10|Statyczny|Zasady oceny kondycji uaktualnienia klastra: dozwolony maksymalny procent złej kondycji węzłów różnicowych aby klaster mógł być w dobrej kondycji |
-|MaxPercentUpgradeDomainDeltaUnhealthyNodes|Int, domyślną jest 15|Statyczny|Zasady oceny kondycji uaktualnienia klastra: dozwolone maksymalny procent różnicowych węzłów w złej kondycji w domenie uaktualnienia, aby klaster mógł być w dobrej kondycji |
+|MaxPercentUpgradeDomainDeltaUnhealthyNodes|int, domyślną jest 15|Statyczny|Zasady oceny kondycji uaktualnienia klastra: dozwolone maksymalny procent różnicowych węzłów w złej kondycji w domenie uaktualnienia, aby klaster mógł być w dobrej kondycji |
 
 ## <a name="hosting"></a>Hosting
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
@@ -379,7 +385,7 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |AzureStorageMaxConnections | Int, domyślna to 5000 |Dynamiczny|Maksymalna liczba jednoczesnych połączeń z magazynem platformy azure. |
-|AzureStorageMaxWorkerThreads | Int, domyślna to 25 |Dynamiczny|Maksymalna liczba wątków roboczych równolegle. |
+|AzureStorageMaxWorkerThreads | int, domyślna to 25 |Dynamiczny|Maksymalna liczba wątków roboczych równolegle. |
 |AzureStorageOperationTimeout | Czas w sekundach, domyślnie jest 6000 |Dynamiczny|Określ zakres czasu w sekundach. Limit czasu na ukończenie operacji xstore. |
 |CleanupApplicationPackageOnProvisionSuccess|wartość logiczna, domyślna to FALSE |Dynamiczny|Ta konfiguracja Włącza lub wyłącza funkcję automatycznego czyszczenia pakietu aplikacji złożenia powiodło się. |
 |DisableChecksumValidation | Wartość logiczna, wartość domyślna to false |Statyczny| Ta konfiguracja pozwala włączyć lub wyłączyć Weryfikacja sum kontrolnych podczas inicjowania obsługi aplikacji. |
@@ -469,9 +475,9 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 |ConstraintFixPartialDelayAfterNodeDown | Czas w sekundach, domyślna to 120 |Dynamiczny| Określ zakres czasu w sekundach. W tym czasie po węźle zdarzenie naciśnięcia, czy nie napraw FaultDomain i UpgradeDomain naruszenia ograniczenia. |
 |ConstraintViolationHealthReportLimit | Int, domyślną wartością jest 50 |Dynamiczny| Definiuje, ile razy ograniczenia naruszania replika musi być trwale Niepoprawione przed diagnostyki są wykonywane i raporty dotyczące kondycji są emitowane. |
 |DetailedConstraintViolationHealthReportLimit | Int, domyślna to 200 |Dynamiczny| Definiuje, ile razy ograniczenia naruszania replika musi być trwale Niepoprawione przed diagnostyczne są wykonywane i kondycji, które są emitowane raporty szczegółowe. |
-|DetailedDiagnosticsInfoListLimit | Int, domyślną jest 15 |Dynamiczny| Definiuje liczbę pozycji diagnostycznych (wraz ze szczegółowymi informacjami) na ograniczenia do uwzględnienia przed obcięcie w diagnostyce.|
-|DetailedNodeListLimit | Int, domyślną jest 15 |Dynamiczny| Określa liczbę węzłów ograniczenia do uwzględnienia przed obcięcie w raportach Unplaced repliki. |
-|DetailedPartitionListLimit | Int, domyślną jest 15 |Dynamiczny| Definiuje liczbę partycji na diagnostycznych wpis dla ograniczenia do uwzględnienia przed obcięcie w diagnostyce. |
+|DetailedDiagnosticsInfoListLimit | int, domyślną jest 15 |Dynamiczny| Definiuje liczbę pozycji diagnostycznych (wraz ze szczegółowymi informacjami) na ograniczenia do uwzględnienia przed obcięcie w diagnostyce.|
+|DetailedNodeListLimit | int, domyślną jest 15 |Dynamiczny| Określa liczbę węzłów ograniczenia do uwzględnienia przed obcięcie w raportach Unplaced repliki. |
+|DetailedPartitionListLimit | int, domyślną jest 15 |Dynamiczny| Definiuje liczbę partycji na diagnostycznych wpis dla ograniczenia do uwzględnienia przed obcięcie w diagnostyce. |
 |DetailedVerboseHealthReportLimit | Int, domyślna to 200 | Dynamiczny|Definiuje, ile razy unplaced repliki musi być trwale unplaced przed są emitowane kondycji szczegółowe raporty. |
 |FaultDomainConstraintPriority | Int, domyślna to 0 |Dynamiczny| Określa priorytet ograniczenia domeny błędów: 0: twarde; 1: nietrwałego; ujemna: Ignoruj. |
 |GlobalMovementThrottleCountingInterval | Czas w sekundach, domyślna to 600 |Statyczny| Określ zakres czasu w sekundach. Wskazuje ostatnich interwał, do których chcesz śledzić na domeny przemieszczania repliki (używane wraz z GlobalMovementThrottleThreshold). Może być równa 0 Aby zignorować globalnego ograniczania przepustowości całkowicie. |
@@ -527,10 +533,10 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania**| **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |BatchAcknowledgementInterval|Zakres czasu, domyślnie jest Common::TimeSpan::FromMilliseconds(15)|Statyczny|Określ zakres czasu w sekundach. Określa czas oczekiwania po otrzymaniu operacji przed odsyła potwierdzenia replikatora. Inne operacje otrzymanych w tym czasie będzie miał ich potwierdzeń wysyłane z powrotem w pojedynczym komunikacie -> ograniczenia ruchu sieciowego, ale potencjalnie zmniejszenie przepływności replikatora.|
-|MaxCopyQueueSize|Uint, domyślny to 1024|Statyczny|Jest to maksymalna wartość Określa początkowy rozmiar kolejki, co umożliwia utrzymywanie operacji replikacji. Należy pamiętać, że musi być potęgą liczby 2. Jeśli w czasie wykonywania kolejki rozwoju na tę operację rozmiar zostanie zdławionych między replikatorów podstawowego i pomocniczego.|
+|MaxCopyQueueSize|uint, domyślny to 1024|Statyczny|Jest to maksymalna wartość Określa początkowy rozmiar kolejki, co umożliwia utrzymywanie operacji replikacji. Należy pamiętać, że musi być potęgą liczby 2. Jeśli w czasie wykonywania kolejki rozwoju na tę operację rozmiar zostanie zdławionych między replikatorów podstawowego i pomocniczego.|
 |MaxPrimaryReplicationQueueMemorySize|Uint — wartość domyślna to 0|Statyczny|Jest to maksymalna wartość kolejki podstawowej replikacji w bajtach.|
-|MaxPrimaryReplicationQueueSize|Uint, domyślny to 1024|Statyczny|Jest to maksymalna liczba operacji, które może znajdować się w kolejce podstawowej replikacji. Należy pamiętać, że musi być potęgą liczby 2.|
-|MaxReplicationMessageSize|Uint — wartość domyślna to 52428800|Statyczny|Maksymalny rozmiar komunikatu operacji replikacji. Domyślną jest 50MB.|
+|MaxPrimaryReplicationQueueSize|uint, domyślny to 1024|Statyczny|Jest to maksymalna liczba operacji, które może znajdować się w kolejce podstawowej replikacji. Należy pamiętać, że musi być potęgą liczby 2.|
+|MaxReplicationMessageSize|uint, domyślny jest 52428800|Statyczny|Maksymalny rozmiar komunikatu operacji replikacji. Domyślną jest 50MB.|
 |MaxSecondaryReplicationQueueMemorySize|Uint — wartość domyślna to 0|Statyczny|Jest to maksymalna wartość kolejki dodatkowej replikacji w bajtach.|
 |MaxSecondaryReplicationQueueSize|uint, domyślna wartość to 2048|Statyczny|Jest to maksymalna liczba operacji, które może znajdować się w kolejce replikacji dodatkowej. Należy pamiętać, że musi być potęgą liczby 2.|
 |QueueHealthMonitoringInterval|Zakres czasu, domyślnie jest Common::TimeSpan::FromSeconds(30)|Statyczny|Określ zakres czasu w sekundach. Ta wartość określa okres czasu, używany przez Replikator do monitorowania kondycji ostrzeżenie/błąd zdarzeń kolejki operacji replikacji. Wartość "0" powoduje wyłączenie monitorowania kondycji |
@@ -737,7 +743,7 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, domyślna wartość to Brak|Dynamiczny| |
 
-## <a name="setup"></a>Konfiguracja
+## <a name="setup"></a>Konfigurowanie
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |ContainerNetworkName|ciąg, domyślny jest L""| Statyczny |Nazwa sieciowa używana podczas konfigurowania sieci kontenera.|
@@ -765,7 +771,7 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 |MaxCopyQueueSize |Uint — wartość domyślna to 16384 | Statyczny |Jest to maksymalna wartość Określa początkowy rozmiar kolejki, co umożliwia utrzymywanie operacji replikacji. Należy pamiętać, że musi być potęgą liczby 2. Jeśli w czasie wykonywania kolejki rozwoju na tę operację rozmiar zostanie zdławionych między replikatorów podstawowego i pomocniczego. |
 |MaxPrimaryReplicationQueueMemorySize |Uint — wartość domyślna to 0 | Statyczny |Jest to maksymalna wartość kolejki podstawowej replikacji w bajtach. |
 |MaxPrimaryReplicationQueueSize |Uint — wartość domyślna to 8192 | Statyczny |Jest to maksymalna liczba operacji, które może znajdować się w kolejce podstawowej replikacji. Należy pamiętać, że musi być potęgą liczby 2. |
-|MaxReplicationMessageSize |Uint — wartość domyślna to 52428800 | Statyczny | Maksymalny rozmiar komunikatu operacji replikacji. Domyślną jest 50MB. |
+|MaxReplicationMessageSize |uint, domyślny jest 52428800 | Statyczny | Maksymalny rozmiar komunikatu operacji replikacji. Domyślną jest 50MB. |
 |MaxSecondaryReplicationQueueMemorySize |Uint — wartość domyślna to 0 | Statyczny |Jest to maksymalna wartość kolejki dodatkowej replikacji w bajtach. |
 |MaxSecondaryReplicationQueueSize |Uint — wartość domyślna to 16384 | Statyczny |Jest to maksymalna liczba operacji, które może znajdować się w kolejce replikacji dodatkowej. Należy pamiętać, że musi być potęgą liczby 2. |
 |ReplicatorAddress |ciąg, domyślną jest "localhost:0" | Statyczny | Punkt końcowy w postaci ciągu - IP:Port, który jest używany przez Replikator sieci szkieletowej systemu Windows do nawiązywania połączeń z innych replik w celu wysyłania i odbierania operacji. |

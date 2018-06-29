@@ -10,20 +10,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/24/2018
+ms.date: 06/27/2018
 ms.author: douglasl
-ms.openlocfilehash: 2bcb0d4e6af00b56d083690439be45379ce4d175
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: a9c15b239ee0bd0dde0b1f11691565b2676e3d07
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752813"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062125"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Utwórz wyzwalacz uruchamia potoku w odpowiedzi na zdarzenia
 
 W tym artykule opisano wyzwalacze oparty na zdarzeniach utworzonych w potokach z fabryki danych.
 
-Sterowane zdarzeniami architektura (EDA) jest wspólnego wzorca integracji danych, która obejmuje produkcji, wykrywania zużycia i reagowania na zdarzenia. Scenariusze integracji danych często wymagają fabryki danych klientów do wyzwolenia potoki na podstawie zdarzeń.
+Sterowane zdarzeniami architektura (EDA) jest wspólnego wzorca integracji danych, która obejmuje produkcji, wykrywania zużycia i reagowania na zdarzenia. Scenariusze integracji danych często wymagają fabryki danych klientów do wyzwolenia potoki na podstawie zdarzeń. Fabryka danych jest teraz zintegrowana z [siatki zdarzeń Azure](https://azure.microsoft.com/services/event-grid/), pozwalającej użytkownik zainicjuje potoków na zdarzenia.
 
 ## <a name="data-factory-ui"></a>Interfejs użytkownika usługi Data Factory
 
@@ -64,11 +64,20 @@ Poniższa tabela zawiera omówienie elementów schematu, które są związane z 
 Ta sekcja zawiera przykłady ustawień wyzwalacza opartego na zdarzeniach.
 
 -   **Ścieżka obiektu blob, który rozpoczyna się od**("/ containername /") — odbiera zdarzenia dla dowolnego obiektu blob w kontenerze.
--   **Ścieżka obiektu blob, który rozpoczyna się od**("/ containername/nazwa folderu") — odbiera zdarzenia żadnych obiektów blob w kontenerze containername i nazwa_folderu folderu.
--   **Ścieżka obiektu blob, który rozpoczyna się od**("/ containername/foldername/file.txt") — odbiera zdarzenia dla obiektu blob o nazwie plik.txt w folderze nazwa_folderu w kontenerze containername.
+-   **Ścieżka obiektu blob, który rozpoczyna się od**("/ containername/obiekty BLOB/nazwa folderu") — odbiera zdarzenia żadnych obiektów blob w kontenerze containername i nazwa_folderu folderu.
+-   **Ścieżka obiektu blob, który rozpoczyna się od**("/ containername/blobs/foldername/file.txt") — odbiera zdarzenia dla obiektu blob o nazwie plik.txt w folderze nazwa_folderu w kontenerze containername.
 -   **Ścieżka obiektu blob kończy się**("plik.txt") — Receive zdarzenia dla obiektu blob o nazwie plik.txt w dowolnej ścieżce.
--   **Ścieżka obiektu blob kończy się**("/ containername/file.txt") — odbiera zdarzenia dla obiektu blob o nazwie plik.txt w kontenerze containername.
+-   **Ścieżka obiektu blob kończy się**("/ containername/blobs/file.txt") — odbiera zdarzenia dla obiektu blob o nazwie plik.txt w kontenerze containername.
 -   **Ścieżka obiektu blob kończy się**("foldername/file.txt") — plik.txt w folderze nazwa_folderu każdy kontener o nazwie zdarzenia działania Receive dla obiektu blob.
+
+> [!NOTE]
+> Musi zawierać `/blobs/` segment ścieżki za każdym razem można określić kontenera i folderu, kontenera i folderu pliku lub kontenera i plików.
+
+## <a name="using-blob-events-trigger-properties"></a>Za pomocą właściwości wyzwalacza zdarzenia obiektów Blob
+
+Gdy generowane wyzwalacz zdarzenia obiektów blob, jego udostępnienie dwie zmienne do potoku sieci: *folderPath* i *fileName*. Aby uzyskać dostęp do tych zmiennych, należy użyć `@triggerBody().fileName` lub `@triggerBody().folderPath` wyrażenia.
+
+Rozważmy na przykład wyzwalacz, który został skonfigurowany tak, aby zostać wywołane podczas tworzenia obiektu blob z `.csv` jako wartość `blobPathEndsWith`. Gdy plik CSV są przenoszone do konta magazynu *folderPath* i *fileName* opisują lokalizację pliku CSV. Na przykład *folderPath* ma wartość `/containername/foldername/nestedfoldername` i *fileName* ma wartość `filename.csv`.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać szczegółowe informacje dotyczące wyzwalaczy, zobacz [potoku wykonywania i wyzwalaczy](concepts-pipeline-execution-triggers.md#triggers).

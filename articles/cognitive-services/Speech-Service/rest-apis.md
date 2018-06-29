@@ -9,12 +9,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: e80c69657dfb7cbab7d29c94d3dd3c56574de7b7
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
-ms.translationtype: MT
+ms.openlocfilehash: a25c2b7ea7fdfcc6bcaa10baff3a5ae14ae9753b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321995"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37044824"
 ---
 # <a name="speech-service-rest-apis"></a>Usługa rozpoznawania mowy interfejsów API REST
 
@@ -24,14 +24,7 @@ Interfejsy API REST usługi ujednoliconego mowy są podobne do interfejsów API 
 
 W mowy API tekstu tylko punktów końcowych używanych różnią się od poprzedniej mowy usługi interfejsu API rozpoznawania mowy. W poniższej tabeli przedstawiono nowe punkty końcowe. Użyj, który odpowiada regionie Twojej subskrypcji.
 
-Region| Mowy do punktu końcowego tekstu
--|-
-Zachodnie stany USA| `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1`
-Azja Wschodnia| `https://eastasia.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1`
-Europa Północna| `https://northeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1`
-
-> [!NOTE]
-> Należy dołączyć wymagany język w identyfikatorze URI w celu uniknięcia błędu http 401. Aby uzyskać en US poprawny identyfikator URI będzie mieć: https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US
+[!include[](includes/endpoints-speech-to-text.md)]
 
 Mowy API tekstu w przeciwnym razie jest podobny do [interfejsu API REST](https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest) poprzedniego interfejsu API mowy.
 
@@ -62,14 +55,7 @@ pl-PL  | US English | Mężczyzna   | "Microsoft Server mowy tekstu na głos mow
 
 Dostępne są następujące punkty końcowe REST do ujednoliconego mowy usługi tekst na mowę interfejsu API. Użyj punktu końcowego, który odpowiada regionie Twojej subskrypcji.
 
-Region| Tekst na mowę punktu końcowego
--|-
-Zachodnie stany USA|    `https://westus.tts.speech.microsoft.com/cognitiveservices/v1`
-Azja Wschodnia|  `https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1`
-Europa Północna|   `https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1`
-
-> [!NOTE]
-> Jeśli utworzono czcionki głosu niestandardowe, należy użyć niestandardowego punktu końcowego.
+[!include[](includes/endpoints-text-to-speech.md)]
 
 Zachowaj te różnice pamiętać jako odwoływać się [dokumentacja interfejsu API REST](https://docs.microsoft.com/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput) poprzedniego interfejsu API mowy.
 
@@ -77,11 +63,7 @@ Zachowaj te różnice pamiętać jako odwoływać się [dokumentacja interfejsu 
 
 Wysyłanie żądania do interfejsu API REST usługi mowy wymaga tokenu dostępu. Uzyskania tokenu zapewniając klucz subskrypcji do regionalnych usługi mowy `issueToken` punktu końcowego, co pokazano w poniższej tabeli. Użyj punktu końcowego, który odpowiada regionie Twojej subskrypcji.
 
-Region| Punkt końcowy usługi tokenu
--|-
-Zachodnie stany USA|    `https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken`
-Azja Wschodnia|  `https://eastasia.api.cognitive.microsoft.com/sts/v1.0/issueToken`
-Europa Północna|   `https://northeurope.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+[!include[](includes/endpoints-token-service.md)]
 
 Każdy token dostępu jest ważny przez 10 minut. W dowolnym momencie można uzyskać nowy token — w tym, jeśli chcesz tylko przed każdym żądaniem interfejsu API REST mowy. Aby zminimalizować ruch sieciowy i czas oczekiwania, jednak zaleca się przy użyciu tego samego tokenu dziewięć minut.
 

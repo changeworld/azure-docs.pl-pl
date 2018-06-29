@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/15/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: a3dfce6ce1b136e39047cfd47b336b2fb2a35af9
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 8ac151a70a81f78dab5ed1f30df51a1121a42cbd
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34258685"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029020"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Obróć kluczy tajnych w stosie Azure
 
@@ -84,11 +84,12 @@ Uruchomiona tajny obrotu z instrukcjami poniżej będzie skorygować te alerty.
     > [!note]  
     > Następne kroki stosowane tylko wtedy, gdy obracanie kluczy tajnych zewnętrznego stosu Azure.
 
-2.  Przygotuj nowy zestaw wymiany certyfikatów zewnętrznych. Nowy zestaw odpowiada specyfikacji certyfikatu opisane w temacie [wymagania dotyczące certyfikatu PKI stosu Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs).
-3.  Przechowywanie kopii zapasowej certyfikaty używane do obrotu w bezpiecznej lokalizacji kopii zapasowej. Jeśli Twoje obrotu uruchomiona, a następnie kończy się niepowodzeniem, Zastąp certyfikaty w udziale plików kopii zapasowych przed ponownym uruchomieniem obrót. Należy pamiętać, wykonywania kopii zapasowych w bezpiecznej lokalizacji.
-3.  Tworzenie udziału plików, których masz dostęp z ERCS maszyn wirtualnych. Udział plików musi być zdatny do odczytu i zapisu dla **CloudAdmin** tożsamości.
-4.  Otwórz konsolę programu PowerShell ISE z komputera, gdzie masz dostęp do udziału plików. Przejdź do Twojej udziału plików. 
-5.  Uruchom **[CertDirectoryMaker.ps1](http://www.aka.ms/azssecretrotationhelper)** można utworzyć katalogów wymaganych do używania certyfikatów zewnętrznych.
+2. Upewnij się, że tajne obrotu nie został pomyślnie wykonano w środowisku w ciągu ostatniego miesiąca. W tym momencie stosu Azure obsługuje tylko tajny obrotu raz w miesiącu. 
+3. Przygotuj nowy zestaw wymiany certyfikatów zewnętrznych. Nowy zestaw odpowiada specyfikacji certyfikatu opisane w temacie [wymagania dotyczące certyfikatu PKI stosu Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs).
+4.  Przechowywanie kopii zapasowej certyfikaty używane do obrotu w bezpiecznej lokalizacji kopii zapasowej. Jeśli Twoje obrotu uruchomiona, a następnie kończy się niepowodzeniem, Zastąp certyfikaty w udziale plików kopii zapasowych przed ponownym uruchomieniem obrót. Należy pamiętać, wykonywania kopii zapasowych w bezpiecznej lokalizacji.
+5.  Tworzenie udziału plików, których masz dostęp z ERCS maszyn wirtualnych. Udział plików musi być zdatny do odczytu i zapisu dla **CloudAdmin** tożsamości.
+6.  Otwórz konsolę programu PowerShell ISE z komputera, gdzie masz dostęp do udziału plików. Przejdź do Twojej udziału plików. 
+7.  Uruchom **[CertDirectoryMaker.ps1](http://www.aka.ms/azssecretrotationhelper)** można utworzyć katalogów wymaganych do używania certyfikatów zewnętrznych.
 
 ## <a name="rotating-external-and-internal-secrets"></a>Obracanie kluczy tajnych wewnętrznych i zewnętrznych
 
@@ -157,8 +158,8 @@ Polecenie cmdlet Start-SecretRotation obraca kluczy tajnych infrastruktury syste
 
 | Parametr | Typ | Wymagane | Pozycja | Domyślne | Opis |
 | -- | -- | -- | -- | -- | -- |
-| PfxFilesPath | Ciąg  | False  | o nazwie  | Brak  | Ścieżka udziału plików do **\Certificates** katalog zawierający wszystkie zewnętrzne sieci certyfikaty punktu końcowego. Wymagany tylko w przypadku obracanie kluczy tajnych wewnętrznych i zewnętrznych. Katalog end musi być **\Certificates**. |
-| CertificatePassword | SecureString | False  | o nazwie  | Brak  | Hasło dla wszystkich certyfikatów w PfXFilesPath —. Wymagane wartości, jeśli PfxFilesPath jest udostępniane po wewnętrznych i zewnętrznych kluczy tajnych są obracane. |
+| PfxFilesPath | Ciąg  | False  | O nazwie  | Brak  | Ścieżka udziału plików do **\Certificates** katalog zawierający wszystkie zewnętrzne sieci certyfikaty punktu końcowego. Wymagany tylko w przypadku obracanie kluczy tajnych wewnętrznych i zewnętrznych. Katalog end musi być **\Certificates**. |
+| CertificatePassword | SecureString | False  | O nazwie  | Brak  | Hasło dla wszystkich certyfikatów w PfXFilesPath —. Wymagane wartości, jeśli PfxFilesPath jest udostępniane po wewnętrznych i zewnętrznych kluczy tajnych są obracane. |
 |
 
 ### <a name="examples"></a>Przykłady

@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: shlo
-ms.openlocfilehash: 56128a7fe28f1599b74ba9f1475ef636e0e8718c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c07199887faf073d19007f1ef410c193bbdbf3ee
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617984"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049370"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Uzyskiwanie metadanych działania w fabryce danych Azure
-GetMetadata działanie może być używane do pobierania **metadanych** wszystkich danych z fabryki danych Azure. To działanie jest obsługiwana tylko dla fabryki danych w wersji 2. Mogą być używane w następujących scenariuszach:
+GetMetadata działanie może być używane do pobierania **metadanych** wszystkich danych z fabryki danych Azure. To działanie może być używane w następujących scenariuszach:
 
 - Sprawdź poprawność informacji o metadanych danych
 - Wyzwalanie potoku, gdy dane są gotowe / dostępne
@@ -31,9 +31,6 @@ Następujące funkcje są dostępne w przepływie sterowania:
 
 - Dane wyjściowe działania GetMetadata można używać w wyrażeniach warunkowego do wykonywania sprawdzania poprawności.
 - Potok mogą być wyzwalane, gdy warunek jest spełniony za pośrednictwem czy — do pętli
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [dokumentacji V1 fabryki danych](v1/data-factory-introduction.md).
 
 ## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
@@ -46,18 +43,22 @@ Działanie GetMetadata przyjmuje zestawu danych jako wymagane dane wejściowe i 
 
 **Magazyn plików:**
 
-| Łącznik/metadanych | Nazwa elementu<br>(plik lub folder) | ItemType<br>(plik lub folder) | rozmiar<br>(plik) | utworzone<br>(plik lub folder) | Ostatnia modyfikacja<br>(plik lub folder) |childItems<br>(folder) |contentMD5<br>(plik) | Struktura<br/>(plik) | ColumnCount<br>(plik) | istnieje<br>(plik lub folder) |
+| Łącznik/metadanych | Nazwa elementu<br>(plik lub folder) | itemType<br>(plik lub folder) | rozmiar<br>(plik) | utworzone<br>(plik lub folder) | Ostatnia modyfikacja<br>(plik lub folder) |childItems<br>(folder) |contentMD5<br>(plik) | Struktura<br/>(plik) | columnCount<br>(plik) | istnieje<br>(plik lub folder) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| Obiekt bob Azure | √/√ | √/√ | √ | x/x | √/√ | √ | √ | √ | √ | √/√ |
+| Amazon S3 | √/√ | √/√ | √ | x/x | √ / √ * | √ | x | √ | √ | √ / √ * |
+| Obiekt bob Azure | √/√ | √/√ | √ | x/x | √ / √ * | √ | √ | √ | √ | √/√ |
 | Azure Data Lake Store | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | Azure File Storage | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | System plików | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | SFTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | FTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 
+- Dla Amazon S3 `lastModified` dotyczy zasobnika oraz klucz, folder wirtualny nie; i `exists` dotyczy zasobnika i klucza, ale nie prefiks lub folder wirtualny.
+- Dla obiektów Blob platformy Azure `lastModified` ma zastosowanie do kontenera i obiektów blob, ale nie virtual folderu.
+
 **Relacyjna baza danych:**
 
-| Łącznik/metadanych | Struktura | ColumnCount | istnieje |
+| Łącznik/metadanych | Struktura | columnCount | istnieje |
 |:--- |:--- |:--- |:--- |
 | Azure SQL Database | √ | √ | √ |
 | Azure SQL Data Warehouse | √ | √ | √ |
@@ -70,14 +71,14 @@ Na liście pól GetMetadata działania można pobrać można określić następu
 | Typ metadanych | Opis |
 |:--- |:--- |
 | Nazwa elementu | Nazwa pliku lub folderu. |
-| ItemType | Typ pliku lub folderu. Wartość wyjściowa to `File` lub `Folder`. |
+| itemType | Typ pliku lub folderu. Wartość wyjściowa to `File` lub `Folder`. |
 | rozmiar | Rozmiar pliku w bajcie. Dotyczy tylko plików. |
 | utworzone | Utworzone datetime pliku lub folderu. |
 | Ostatnia modyfikacja | Ostatnia modyfikacja datetime pliku lub folderu. |
 | childItems | Lista podfoldery i pliki znajdujące się w danym folderze. Dotyczy tylko do folderu. Wartość wyjściowa znajduje się lista nazwę i typ każdego elementu podrzędnego. |
 | contentMD5 | MD5 pliku. Dotyczy tylko plików. |
 | Struktura | Struktura danych wewnątrz pliku lub tabeli relacyjnej bazy danych. Wartość wyjściowa jest listę nazw kolumn i typ kolumny. |
-| ColumnCount | Liczba kolumn w pliku lub relacyjne tabeli. |
+| columnCount | Liczba kolumn w pliku lub relacyjne tabeli. |
 | istnieje| Określa, czy plik/folder/tabela istnieje, lub nie. Należy pamiętać, jeśli określono "istnieje" na liście pól GetaMetadata, działania nie zakończyć się niepowodzeniem, nawet wtedy, gdy element (tabeli plików/folderów) nie istnieje; Zamiast tego zwraca `exists: false` w danych wyjściowych. |
 
 >[!TIP]

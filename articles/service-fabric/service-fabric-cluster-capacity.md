@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2018
+ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: a5046a5e3771e95d76bb6edc7987a1e3176abeb0
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: aca03452ff5655d3a7180009f42df14c9459a9ff
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309419"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061562"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Zagadnienia związane z planowaniem pojemności klastra sieci szkieletowej usług
 Wszystkie wdrożenia produkcyjnego planowania pojemności jest ważnym krokiem. Poniżej przedstawiono niektóre elementy, które należy wziąć pod uwagę w ramach tego procesu.
@@ -27,6 +27,10 @@ Wszystkie wdrożenia produkcyjnego planowania pojemności jest ważnym krokiem. 
 * Liczba typów węzeł klastra musi zaczynać
 * Właściwości każdego typu węzła (rozmiar, podstawową, internetowy, liczba maszyn wirtualnych itd.)
 * Charakterystyka niezawodności i trwałości klastra
+
+> [!NOTE]
+> Migrację należy przejrzeć wszystkie **niedozwolone** uaktualnienia wartości zasad podczas planowania. To jest zapewnienie odpowiednio ustawione wartości i ograniczyć nagrywania klastra później z powodu ustawień konfiguracji niezmienne systemu. 
+> 
 
 Daj nam krótko Sprawdź każdy z tych elementów.
 

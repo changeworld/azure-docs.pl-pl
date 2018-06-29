@@ -13,18 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: shlo
-ms.openlocfilehash: 61d53e0d5f32f40b67f5b2d4ce888b047f8c4cea
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 02f84047d0e1d3e73fac991250da814176f3995d
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619715"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049928"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Utwórz wyzwalacz, który działa na okno wirowania potoku
 Ten artykuł zawiera kroki, aby utworzyć, uruchomić i monitorować wyzwalacz okno wirowania. Aby uzyskać ogólne informacje o wyzwalaczy i obsługiwane typy, zobacz [potoku wykonywania i wyzwalaczy](concepts-pipeline-execution-triggers.md).
-
-> [!NOTE]
-> Ten artykuł dotyczy usługi Azure Data Factory w wersji 2, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz usługi fabryka danych Azure w wersji 1, która jest ogólnie dostępna (GA), zobacz [Rozpoczynanie pracy z fabryką danych Azure w wersji 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 Wyzwalacze okna wirowania to rodzaj wyzwalaczy uruchamianych w określonych odstępach czasu od wskazanego czasu rozpoczęcia przy zachowaniu stanu. Okna wirowania to ciągłe, nienakładające się na siebie serie odstępów czasu o stałych rozmiarach. Wyzwalacz okno wirowania ma relacje jeden do jednego z potokiem i może się odwoływać tylko do pojedynczej potoku.
 

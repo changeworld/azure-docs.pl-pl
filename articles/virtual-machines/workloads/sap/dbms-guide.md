@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 356e44b063fbd65de23d3aab313f58b5572840ea
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 79e77aa067cbb7262a945d94ce8ac1750e80b2d5
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656197"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054793"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Azure wdrożenia SAP NetWeaver DBMS maszyny wirtualne
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -288,7 +288,7 @@ ms.locfileid: "34656197"
 [virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
-[virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
+[virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/en-us/resources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
 [virtual-network-deploy-multinic-arm-cli]:../linux/multiple-nics.md
 [virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
 [virtual-network-deploy-multinic-arm-template]:../../../virtual-network/template-samples.md
@@ -554,7 +554,7 @@ Chcesz przełączyć firmy Microsoft lub innych firm, pod warunkiem obrazu z por
 #### <a name="deploying-a-vm-with-a-customer-specific-generalized-image"></a>Wdrażanie maszyny Wirtualnej z uogólniony obraz właściwe dla klienta
 Ze względu na wymagania określone poprawki dotyczące tej wersji systemu operacyjnego lub DBMS podane obrazów w portalu Azure Marketplace może nie odpowiadają potrzebom. W związku z tym konieczne może utworzyć Maszynę wirtualną przy użyciu własnego "private" obrazu systemu operacyjnego/DBMS maszyny Wirtualnej, można wdrożyć kilka razy później. Aby przygotować obraz "private" do duplikacji, system operacyjny musi być uogólniony na lokalnej maszynie Wirtualnej. Zapoznaj się [Deployment Guide] [ deployment-guide] szczegółowe informacje na temat sposobu generalize maszyny Wirtualnej.
 
-Jeśli zainstalowano już SAP zawartości w lokalnej maszyny Wirtualnej (szczególnie w przypadku systemów warstwy 2), można dostosować ustawienia systemu SAP po wdrożenia maszyny Wirtualnej platformy Azure za pomocą wystąpienia nazwy procedury obsługiwana przez Menedżera inicjowania obsługi oprogramowania SAP (Uwaga SAP [1619720]). W przeciwnym razie można zainstalować oprogramowania SAP później po wdrożeniu maszyny wirtualnej Azure.
+Jeśli zainstalowano już SAP zawartości w lokalnej maszyny Wirtualnej (szczególnie w przypadku systemów warstwy 2), można dostosować ustawienia systemu SAP po wdrożenia maszyny Wirtualnej platformy Azure za pomocą wystąpienia nazwy procedury obsługiwane przez SAP oprogramowania inicjowania obsługi administracyjnej Menedżera (SAP Należy pamiętać, [1619720]). W przeciwnym razie można zainstalować oprogramowania SAP później po wdrożeniu maszyny wirtualnej Azure.
 
 Zgodnie z bazy danych zawartości używana przez aplikację SAP, możesz albo wygenerować zawartość świeżo przez instalację programu SAP lub zaimportować zawartość na platformie Azure za pomocą dysku VHD z kopii zapasowej bazy danych systemu DBMS lub korzystania z możliwości systemu DBMS bezpośrednio kopii zapasowej do  Magazyn Microsoft Azure. W takim przypadku można również przygotować dyski VHD z systemu DBMS danych i dziennika plików lokalnej, a następnie zaimportowanie tych dysków na platformie Azure. Jednak transferu danych systemu DBMS, który jest ładowany z lokalnego do platformy Azure może działać przez dysków VHD, które muszą być przygotowane na lokalnym.
 

@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 2ca39490174047d83968561da98409ade2832253
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 222558a6596c676034e52812d3b2dd0c77e1466b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752619"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046905"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Fabryka danych Azure — zagadnienia dotyczące zabezpieczeń dla przepływu danych
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [zagadnienia dotyczące zabezpieczeń przepływu danych dla fabryki danych w wersji 2](../data-movement-security-considerations.md).
+> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [zagadnienia dotyczące zabezpieczeń przepływu danych dla fabryki danych](../data-movement-security-considerations.md).
 
 ## <a name="introduction"></a>Wprowadzenie
 W tym artykule opisano infrastrukturę podstawowych zabezpieczeń, która umożliwia Zabezpieczanie danych usługi przenoszenia danych z fabryki danych Azure. Zasoby dotyczące zarządzania fabryki danych Azure są tworzone w infrastrukturze zabezpieczeń platformy Azure i użyj wszystkich możliwych zabezpieczenia oferowanych na platformie Azure.

@@ -1,17 +1,17 @@
 ---
 ms.topic: include
-ms.openlocfilehash: 32fdc23aded78ca491fbde2ef5c76247c56d0c4c
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 509d2bc3f58c57a3e2e15eed2ea2c70ed17856f3
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36313748"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063701"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Przedpłaty dla maszyn wirtualnych z wystąpień zastrzeżone maszyna wirtualna platformy Azure
 
-Przedpłaty dla maszyn wirtualnych i tańszą wystąpieniami Azure zastrzeżone maszyn wirtualnych (VM). Aby uzyskać więcej informacji, zobacz [oferty Azure zastrzeżone wystąpień](https://azure.microsoft.com/pricing/reserved-vm-instances/).
+Przedpłaty dla maszyn wirtualnych i tańszą wystąpieniami Azure zastrzeżone maszyn wirtualnych (VM). Aby uzyskać więcej informacji, zobacz [oferty zarezerwowane wystąpień maszyn wirtualnych Azure](https://azure.microsoft.com/pricing/reserved-vm-instances/).
 
-Zarezerwowane wystąpień Azure można kupić [portalu Azure](https://portal.azure.com). Aby kupić zastrzeżone wystąpienie:
+Zarezerwowane wystąpieniach platformy Azure można kupić [portalu Azure](https://portal.azure.com). Aby kupić zastrzeżone wystąpienie:
 -   Musisz być w roli właściciela co najmniej jednej organizacji lub z subskrypcji.
 -   Dla subskrypcji Enterprise zakupy zastrzeżone wystąpienie musi być włączony w [EA portal](https://ea.azure.com).
 -   Dla programu Cloud Solution Provider (CSP) tylko agentów administratora lub agentom sprzedaży można kupić zastrzeżone wystąpień.
@@ -50,12 +50,12 @@ Należy użyć jednej z metod opisanych poniżej, aby zidentyfikować poprawnie 
 ## <a name="next-steps"></a>Kolejne kroki 
 Zniżki zastrzeżone wystąpienia stosowany jest automatycznie liczba uruchomionych maszyn wirtualnych, które pasują do wystąpienia zastrzeżony zakres i atrybutów. Można aktualizować zakres zarezerwowanych wystąpienie za pośrednictwem [portalu Azure](https://portal.azure.com), programu PowerShell, interfejsu wiersza polecenia lub za pośrednictwem interfejsu API. 
 
-Aby dowiedzieć się, jak zarządzać zastrzeżone wystąpienia, zobacz [Zarządzanie wystąpień zastrzeżone Azure](../articles/billing/billing-manage-reserved-vm-instance.md).
+Aby dowiedzieć się, jak zarządzać zastrzeżone wystąpienia, zobacz [Zarządzanie wystąpieniami zarezerwowane na platformie Azure](../articles/billing/billing-manage-reserved-vm-instance.md).
 
-Aby dowiedzieć się więcej o wystąpieniach zastrzeżone Azure, zobacz następujące artykuły:
+Aby dowiedzieć się więcej o wystąpieniach zastrzeżone platformy Azure, zobacz następujące artykuły:
 
-- [Oszczędzić pieniądze na maszynach wirtualnych z wystąpieniami zastrzeżone](../articles/billing/billing-save-compute-costs-reservations.md)
-- [Zarządzanie wystąpieniami zastrzeżone Azure](../articles/billing/billing-manage-reserved-vm-instance.md)
+- [Co to są zastrzeżone wystąpień maszyn wirtualnych Azure?](../articles/billing/billing-save-compute-costs-reservations.md)
+- [Zarządzanie wystąpieniami zarezerwowane na platformie Azure](../articles/billing/billing-manage-reserved-vm-instance.md)
 - [Zrozumienie, jak stosowany jest rabat zastrzeżone wystąpienia](../articles/billing/billing-understand-vm-reservation-charges.md)
 - [Określić sposób użycia wystąpienia zarezerwowane dla Twojej subskrypcji z](../articles/billing/billing-understand-reserved-instance-usage.md)
 - [Określić sposób użycia wystąpienia zarezerwowane dla rejestracji w przedsiębiorstwie](../articles/billing/billing-understand-reserved-instance-usage-ea.md)

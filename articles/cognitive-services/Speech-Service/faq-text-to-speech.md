@@ -9,12 +9,12 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: fa25f16d3ef7ee8c7ec4c0c9ee17ccc89e8c52a2
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
-ms.translationtype: MT
+ms.openlocfilehash: 64e505889ef9472603471d67a961985c1290663a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321855"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045847"
 ---
 # <a name="custom-speech-service-frequently-asked-questions"></a>Często zadawane pytania dotyczące usługi mowy niestandardowych
 
@@ -88,7 +88,7 @@ Skontaktuj się z nami, jeśli wymaga zwiększenia skali.
 
 **Pytanie**: raport danych mówi wystąpiły zniesławiających nie powiodło się. Co to jest problem?
 
-**Odpowiedzi**: nie można przekazać 100% utterences w pliku nie jest problemem.
+**Odpowiedzi**: nie można przekazać 100% zniesławiających w pliku nie jest problemem.
 Jeśli ustawiona większość zniesławiających akustycznego lub język danych (na przykład > 95%) zostały pomyślnie zaimportowane, zestaw danych można używać. Jednak zaleca się, że próby wyjaśnienia przyczyn niepowodzenia zniesławiających i rozwiązać problemy. Najbardziej typowe problemy, takie jak formatowanie błędy, można łatwo rozwiązać. 
 
 ## <a name="creating-am"></a>Tworzenie AM
@@ -148,7 +148,7 @@ Należy dążyć do modelu linii bazowej, aby dostosowań zastanowić Ci
 **Pytanie**: można tylko przekazać listę słów?
 
 **Odpowiedzi**: przekazywanie listę słów będzie wyrazów do słownika, ale nie uczy systemu jak wyrazy są zazwyczaj używane.
-Przez zapewnienie pełnej lub częściowej zniesławiających (zdań lub fraz rzeczy, które użytkownicy mogą powiedzieć) model języka można dowiedzieć się nowych słów i jak to zrobić, są one używane. Model języka niestandardowy jest prawidłowa, nie tylko do pobierania nowych słów w systemie, ale także dostosowywania prawdopodobieństwo znane słowa dla aplikacji. Zapewnienie pełnej zniesławiających pomaga Dowiedz się ebtter systemu. 
+Przez zapewnienie pełnej lub częściowej zniesławiających (zdań lub fraz rzeczy, które użytkownicy mogą powiedzieć) model języka można dowiedzieć się nowych słów i jak to zrobić, są one używane. Model języka niestandardowy jest prawidłowa, nie tylko do pobierania nowych słów w systemie, ale także dostosowywania prawdopodobieństwo znane słowa dla aplikacji. Zapewnienie pełnej zniesławiających pomaga systemu lepiej Dowiedz się więcej. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

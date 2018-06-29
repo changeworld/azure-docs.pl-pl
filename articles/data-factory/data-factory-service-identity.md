@@ -12,19 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: jingwang
-ms.openlocfilehash: f4ce76385897c24bd5259d5a39aa1756769fe2aa
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: ba965b0610525f66c24dd6d5bad3fd113a6b6758
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284484"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050869"
 ---
 # <a name="azure-data-factory-service-identity"></a>Tożsamość usługi fabryka danych Azure
 
 Ten artykuł pomaga zrozumieć, co to jest tożsamość usługi fabryki danych i jak działa.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [dokumentacji dla fabryki danych version1](v1/data-factory-introduction.md).
 
 ## <a name="overview"></a>Przegląd
 
@@ -39,7 +36,7 @@ Tożsamość usługi fabryka danych przynosi korzyści następujące dwie funkcj
 
 Tożsamość usługi fabryka danych jest generowany w następujący sposób:
 
-- Podczas tworzenia fabryki danych za pośrednictwem **portalu Azure lub programu PowerShell**, tożsamość usługi będą zawsze tworzone automatycznie od ADF V2 publicznej wersji zapoznawczej.
+- Podczas tworzenia fabryki danych za pośrednictwem **portalu Azure lub programu PowerShell**, tożsamość usługi zawsze zostaną utworzone automatycznie.
 - Podczas tworzenia fabryki danych za pośrednictwem **SDK**, tożsamość usługi zostanie utworzona tylko w przypadku określenia "tożsamości = FactoryIdentity() nowy" w obiekcie fabrykę do tworzenia. Zobacz przykład w [.NET — Szybki Start — tworzenie fabryki danych](quickstart-create-data-factory-dot-net.md#create-a-data-factory).
 - Podczas tworzenia fabryki danych za pośrednictwem **interfejsu API REST**, tożsamość usługi zostanie utworzona tylko, jeśli określono sekcję "identity" w treści żądania. Zobacz przykład w [REST Szybki Start — tworzenie fabryki danych](quickstart-create-data-factory-rest-api.md#create-a-data-factory).
 

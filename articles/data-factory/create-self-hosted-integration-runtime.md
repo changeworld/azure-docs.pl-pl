@@ -12,18 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 6f3259170a1b3fe0bbd33899a74863f5e71a49f6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 832e4672a15368768977feedade83707a26b9965
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618457"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048792"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Jak utworzyć i skonfigurować Self-hosted integracji w czasie wykonywania
 Integracja środowiska uruchomieniowego (IR) jest używany przez fabryki danych Azure zapewnienie możliwości integracji danych w różnych środowiskach sieci infrastruktury obliczeniowej. Aby uzyskać więcej informacji o IR, zobacz [Omówienie środowiska uruchomieniowego integracji](concepts-integration-runtime.md).
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz dostępnej ogólnie wersji 1 usługi Data Factory, zobacz [Data Factory version 1 documentation (Dokumentacja usługi Data Factory w wersji 1)](v1/data-factory-introduction.md).
 
 Hostowanie Samoobsługowe integracji środowiska uruchomieniowego jest możliwe uruchamianie działania kopiowania między danych w chmurze magazynów i magazynu danych w sieci prywatnej i wywoływanie transformacji działania względem obliczeniowe zasobów w lokalnej lub sieci wirtualnej platformy Azure. Zainstaluj potrzeb związanych z integracją siebie środowiska uruchomieniowego na maszynie lokalnej lub maszyny wirtualnej w sieci prywatnej.  
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: c8966c70fba1cbb17d377223ed5348075ebb7adc
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: f953e1dc15e12c37c30a86ebd7536b1126bf18f7
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34266901"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062004"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Element Microsoft.Common.DropDown interfejsu użytkownika
 Formant wyboru z listy rozwijanej.
@@ -31,8 +31,8 @@ Formant wyboru z listy rozwijanej.
 {
   "name": "element1",
   "type": "Microsoft.Common.DropDown",
-  "label": "Some drop down",
-  "defaultValue": "my value",
+  "label": "Example drop down",
+  "defaultValue": "Value two",
   "toolTip": "",
   "constraints": {
     "allowedValues": [
@@ -44,21 +44,23 @@ Formant wyboru z listy rozwijanej.
         "label": "Value two",
         "value": "two"
       }
-    ]
+    ],
+    "required": true
   },
   "visible": true
 }
 ```
 
 ## <a name="remarks"></a>Uwagi
+
 - Etykieta dla `constraints.allowedValues` jest wyświetlany tekst dla elementu i jego wartość jest wartością danych wyjściowych w przypadku wybrania elementu.
 - Jeśli jest określony, wartość domyślna musi być obecne w etykiecie `constraints.allowedValues`. Jeśli nie zostanie określony, pierwszy element `constraints.allowedValues` jest zaznaczone. Wartość domyślna to **null**.
-- `constraints.allowedValues` musi zawierać co najmniej jeden element.
-- Ten element nie obsługuje `constraints.required` właściwości. Aby emulować to zachowanie, należy dodać element z etykiety i wartości `""` (pusty ciąg) do `constraints.allowedValues`.
+- `constraints.allowedValues` musi mieć co najmniej jeden element.
+- Aby emulować wartość nie jest wymagane, należy dodać element z etykiety i wartości `""` (pusty ciąg) do `constraints.allowedValues`.
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
 ```json
-"Bar"
+"two"
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

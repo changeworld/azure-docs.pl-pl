@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: nitinme
-ms.openlocfilehash: b80c49b67c7cca835ae08346561984e168e3df4e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6ccdb1fff5ecdcb61beedf1b12904d3785d4921d
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31392174"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048507"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Machine learning w usłudze HDInsight
 
@@ -33,13 +33,13 @@ Biblioteka Microsoft Machine Learning platformy Apache Spark jest [MMLSpark](htt
 
 ## <a name="r"></a>R
 
-[R](https://www.r-project.org/) jest obecnie najpopularniejsze statystyczne język programowania na świecie. To narzędzie wizualizacji danych typu open source społeczności użytkowników ponad 2,5 mln i powiększania. Jego podstawowy użytkownik thriving i ponad 8000 załadowanie współtworzonej pakietów R to prawdopodobnie wybór dla wielu firm, które potrzebują uczenia maszynowego. Z serwerem R gotowe do użycia z duże zestawy danych i modeli, można utworzyć klastra usługi HDInsight. Ta funkcja udostępnia chi z interfejsem R znanych można skalować i analityków danych na żądanie za pośrednictwem usługi HDInsight, bez potrzeby Konfiguracja klastra i konserwacji.
+[R](https://www.r-project.org/) jest obecnie najpopularniejsze statystyczne język programowania na świecie. To narzędzie wizualizacji danych typu open source społeczności użytkowników ponad 2,5 mln i powiększania. Jego podstawowy użytkownik thriving i ponad 8000 załadowanie współtworzonej pakietów R to prawdopodobnie wybór dla wielu firm, które potrzebują uczenia maszynowego. Z usługami ML gotowe do użycia z duże zestawy danych i modeli, można utworzyć klastra usługi HDInsight. Ta funkcja udostępnia chi z interfejsem R znanych można skalować i analityków danych na żądanie za pośrednictwem usługi HDInsight, bez potrzeby Konfiguracja klastra i konserwacji.
 
 ![Szkolenie odpowiednie do prognozowania z serwerem R](./media/hdinsight-machine-learning-overview/r-training.png)
 
 Węzeł krawędzi klastra umożliwia wygodne Połącz się z klastrem i uruchamiania skryptów R.  Masz również opcję, aby uruchamiać skrypty języka R w węzłach klastra przy użyciu jego ScaleR Hadoop mapy zmniejszyć lub Spark obliczeniowe kontekstach.
 
-Z serwerem R w usłudze HDInsight z Spark można parallelize szkolenia w węzłach klastra przy użyciu kontekstu obliczeń platformy Spark. Można uruchamiać skrypty R bezpośrednio w węźle krawędzi przy użyciu wszystkie dostępne rdzenie równolegle, zgodnie z potrzebami. Alternatywnie można uruchomić kod z węzłem krawędzi, aby rozpocząć poza przetwarzania, która jest dystrybuowana do wszystkich węzłów w klastrze. R Server w usłudze HDInsight z Spark umożliwia również parallelizing funkcji z pakietów typu open source R, w razie potrzeby.
+Z usługi uczenia Maszynowego w usłudze HDInsight z Spark można parallelize szkolenia w węzłach klastra przy użyciu kontekstu obliczeń platformy Spark. Można uruchamiać skrypty R bezpośrednio w węźle krawędzi przy użyciu wszystkie dostępne rdzenie równolegle, zgodnie z potrzebami. Alternatywnie można uruchomić kod z węzłem krawędzi, aby rozpocząć poza przetwarzania, która jest dystrybuowana do wszystkich węzłów w klastrze. Usługi uczenia Maszynowego w usłudze HDInsight z Spark umożliwia również parallelizing funkcji z pakietów typu open source R, w razie potrzeby.
 
 ## <a name="azure-machine-learning-and-hive"></a>Uczenie maszynowe Azure i Hive
 

@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: ad883248097fd84e2fa064515b6c7a5232aaa3d3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f6b2be357ad53a1852973d40e221da3d41b09ffb
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621942"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050577"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Proces dużych zestawów danych przy użyciu fabryki danych i usługi partia zadań
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Azure Data Factory, która jest ogólnie dostępna. Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [działań niestandardowych z fabryki danych w wersji 2](../transform-data-using-dotnet-custom-activity.md).
+> Ten artykuł dotyczy wersji 1 usługi Azure Data Factory, która jest ogólnie dostępna. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [działań niestandardowych w fabryce danych](../transform-data-using-dotnet-custom-activity.md).
 
 W tym artykule opisano architekturę rozwiązania próbki, które przenosi i przetwarzania dużych zestawów danych w sposób automatycznego i zaplanowane. Umożliwia także wskazówki end-to-end, aby zaimplementować to rozwiązanie przy użyciu fabryki danych i partii zadań Azure.
 

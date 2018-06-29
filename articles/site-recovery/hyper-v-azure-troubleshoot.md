@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: rayne
-ms.openlocfilehash: 95a33c80b1aeef7fbf8bea0ab760bbd66babdac8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8b16f495a21ff0b3da415390877777650a9fbb82
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31427090"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048207"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Rozwiązywanie problemów z funkcją Hyper-V do platformy Azure replikacji i trybu failover
 
@@ -58,7 +58,7 @@ Rozwiązywanie problemów z replikacją wstępnych i bieżących w następujący
 5. Sprawdź, czy hosty funkcji Hyper-V może nawiązać połączenie adresu URL obiektu blob magazynu Azure. Aby to zrobić, wybierz i sprawdź **cbengine.exe**. Widok **połączeń TCP** do weryfikowania łączności z hosta do obiektu blob magazynu Azure.
 6. Sprawdź problemy z wydajnością, zgodnie z poniższym opisem.
     
-### <a name="performance-issues"></a>problemy z wydajnością
+### <a name="performance-issues"></a>Problemy z wydajnością
 
 Ograniczenia przepustowości sieci może wpływać na replikacji. Rozwiązywanie problemów w następujący sposób:
 
@@ -116,7 +116,7 @@ Migawki dotyczącej spójności aplikacji jest w momencie migawki danych aplikac
         - Licznik: "zapisu bajtów / s"</br>
         - Zwiększa lub pozostają na wysokim poziomie, w zależności od obciążenia maszyny Wirtualnej lub jej aplikacje tej częstotliwości zmian danych.
         - Przenoszenie danych dysku źródłowego średni to 2 MB/s dla magazynu w warstwie standardowa dla usługi Site Recovery. [Dowiedz się więcej](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
-    - Ponadto można [Sprawdź wartości docelowe skalowalności magazynu](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets.md#scalability-targets-for-a-storage-account).
+    - Ponadto można [Sprawdź wartości docelowe skalowalności magazynu](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#scalability-targets-for-a-storage-account).
 8. Uruchom [wdrożenia Planistę](hyper-v-deployment-planner-run.md).
 9. Przejrzyj zalecenia dotyczące [sieci](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input) i [magazynu](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input).
 

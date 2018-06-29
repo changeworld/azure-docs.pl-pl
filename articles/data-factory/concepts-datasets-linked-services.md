@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 93729646cf1a501b5502e2666ed68944fe474f72
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d5cf4005ad50c9c75f22b2fa2719925afbe69f26
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616009"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37044980"
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Zestawy danych i usług połączonych w fabryce danych Azure 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](v1/data-factory-create-datasets.md)
-> * [Wersja 2 — wersja zapoznawcza](concepts-datasets-linked-services.md)
+> * [W wersji 1](v1/data-factory-create-datasets.md)
+> * [Bieżąca wersja](concepts-datasets-linked-services.md)
 
-W tym artykule opisano, jakie zestawy danych są, jak są definiowane w formacie JSON i w jaki sposób są one używane w wersji 2 fabryki danych Azure potoków. 
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [zestawów danych w wersji 1 z fabryki danych](v1/data-factory-create-datasets.md).
+W tym artykule opisano, jakie zestawy danych są, jak są definiowane w formacie JSON i w jaki sposób są one używane w fabryce danych Azure potoków. 
 
 Jeśli jesteś nowym użytkownikiem usługi fabryka danych, zobacz [wprowadzenie do fabryki danych Azure](introduction.md) omówienie. 
 
@@ -193,7 +190,7 @@ Właściwość | Opis | Wymagane
 -------- | ----------- | --------
 name | Nazwa kolumny. | Yes
 type | Typ danych kolumny. Fabryka danych obsługuje następujące typy danych tymczasowych jako dozwolone wartości: **Int16, Int32, Int64, pojedynczego, Double, Decimal bajtów [], wartość logiczna, ciąg, Guid, Datetime, Datetimeoffset i Timespan** | Nie
-Kultury | . Kulturę opartą na sieci do użycia, gdy typem jest typ architektury .NET: `Datetime` lub `Datetimeoffset`. Wartość domyślna to `en-us`. | Nie
+kultury | . Kulturę opartą na sieci do użycia, gdy typem jest typ architektury .NET: `Datetime` lub `Datetimeoffset`. Wartość domyślna to `en-us`. | Nie
 Format | Ciąg do użycia, gdy typem jest typ architektury .NET formatu: `Datetime` lub `Datetimeoffset`. Zapoznaj się [niestandardowe ciągi daty i godziny Format](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) w sposób formatowania daty i godziny. | Nie
 
 ### <a name="example"></a>Przykład
@@ -220,13 +217,13 @@ Poniższe wskazówki ułatwiają zrozumienie, kiedy uwzględnić informacje o st
 ## <a name="create-datasets"></a>Tworzenie zestawów danych
 Zestawy danych można utworzyć za pomocą jednej z tych narzędzi i zestawy SDK: [interfejs API .NET](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [interfejsu API REST](quickstart-create-data-factory-rest-api.md), szablon Menedżera zasobów Azure i portalu Azure
 
-## <a name="v1-vs-v2-datasets"></a>V1 vs. Zestawy danych w wersji 2
+## <a name="current-version-vs-version-1-datasets"></a>Bieżąca wersja a zestawów danych w wersji 1
 
-Poniżej przedstawiono niektóre różnice między fabryki danych v1 i v2 zestawów danych: 
+Poniżej przedstawiono niektóre różnice między fabryki danych i zestawy danych w wersji 1 fabryki danych: 
 
-- Właściwość zewnętrznych nie jest obsługiwana w wersji 2. Został zastąpiony przez [wyzwalacza](concepts-pipeline-execution-triggers.md).
-- Właściwości zasad i dostępności nie są obsługiwane w wersji 2. Czas rozpoczęcia dla potoku jest zależna od [wyzwalaczy](concepts-pipeline-execution-triggers.md).
-- Zakresami zestawów danych (zestawy danych zdefiniowany w potoku) nie są obsługiwane w wersji 2. 
+- Właściwość zewnętrznych nie jest obsługiwana w bieżącej wersji. Został zastąpiony przez [wyzwalacza](concepts-pipeline-execution-triggers.md).
+- Właściwości zasad i dostępności nie są obsługiwane w bieżącej wersji. Czas rozpoczęcia dla potoku jest zależna od [wyzwalaczy](concepts-pipeline-execution-triggers.md).
+- Zakresami zestawów danych (zestawy danych zdefiniowany w potoku) nie są obsługiwane w bieżącej wersji. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 Zobacz samouczek następujące instrukcje krok po kroku do tworzenia potoki i zestawów danych przy użyciu jednej z tych narzędzi i zestawy SDK. 
