@@ -1,24 +1,21 @@
 ---
-title: 'Usługa Azure Active Directory B2C: Dodawanie dostawcy usługi Azure AD za pomocą niestandardowych zasad | Dokumentacja firmy Microsoft'
-description: Dowiedz się więcej o zasadach niestandardowych usługi Azure Active Directory B2C
+title: Dodaj dostawcę usługi Azure AD za pomocą niestandardowych zasad w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Informacje o zasadach niestandardowych usługi Azure Active Directory B2C.
 services: active-directory-b2c
-documentationcenter: ''
-author: parakhj
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 31f0dfe5-1ad0-4a25-a53b-8acc71bcea72
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 04/04/2017
-ms.author: parakhj
-ms.openlocfilehash: 40943c135746925929daf7ebae4714ef70eeda51
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: davidmu
+ms.component: B2C
+ms.openlocfilehash: 9d010564aadcb6ea33312b7fb40854cfd0a97f1a
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34709244"
 ---
 # <a name="azure-active-directory-b2c-sign-in-by-using-azure-ad-accounts"></a>Usługa Azure Active Directory B2C: Zaloguj się przy użyciu konta usługi Azure AD
 
@@ -50,7 +47,7 @@ Aby włączyć logowanie użytkowników z określonej usługi Azure AD w organiz
 3. Wybierz **więcej usług** w okienku po lewej stronie, a następnie wyszukaj "Rejestracji aplikacji".
 4. Wybierz pozycję **Rejestrowanie nowej aplikacji**.
 5. Wprowadź nazwę dla aplikacji (na przykład `Azure AD B2C App`).
-6. Jako typ aplikacji wybierz pozycję **Interfejs API/aplikacja sieci Web**.
+6. Jako typ aplikacji wybierz pozycję **Interfejs API/aplikacja internetowa**.
 7. Aby uzyskać **adres URL logowania**, wprowadź następujący adres URL, gdzie `yourtenant` zastępuje nazwę dzierżawy usługi Azure AD B2C (`fabrikamb2c.onmicrosoft.com`):
 
     >[!NOTE]

@@ -1,21 +1,21 @@
 ---
-title: Token odwołanie — usługi Azure AD B2C | Dokumentacja firmy Microsoft
+title: Token odwołania w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Typy tokenów wystawionych w usłudze Azure Active Directory B2C
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: 09d776b54941e33979d7969b25c35e67a53cf8f0
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: e2ca582c9ec767e9b810c574e3efddc6485bb6a0
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34709312"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Usługi Azure AD B2C: Odwołanie Token
 
@@ -145,7 +145,7 @@ Gdy aplikację lub interfejsu API odbiera token Identyfikatora, jego również w
 
 Aby uzyskać pełną listę aplikacji należy wykonać sprawdzanie poprawności, zapoznaj się [OpenID Connect specyfikacji](https://openid.net). Szczegóły oczekiwanych wartości tych oświadczeń są zawarte w poprzednim [token sekcji](#types-of-tokens).  
 
-## <a name="token-lifetimes"></a>Czasy życia tokenu
+## <a name="token-lifetimes"></a>Okresy istnienia tokenu
 Następujące okresy tokenu są przekazywane do dalszego wiedzy użytkownika. One może pomóc podczas opracowywania i debugowania aplikacji. Należy pamiętać, że aplikacji nie powinna być zapisana oczekiwać żadnego z tych okresy istnienia pozostaje stała. Mogą i ulegnie zmianie. Przeczytaj więcej na temat [dostosowywania okresy istnienia tokenu](active-directory-b2c-token-session-sso.md) w usłudze Azure AD B2C.
 
 | Token | Cykl życia | Opis |

@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: Zmiana hasła samoobsługi | Dokumentacja firmy Microsoft'
-description: Temat pokazująca, jak skonfigurować zmiany hasła Samoobsługowe przez użytkowników w usłudze Azure Active Directory B2C
+title: Zmiana hasła samoobsługi w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Temat pokazująca, jak skonfigurować zmiany hasła Samoobsługowe przez użytkowników w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 09/05/2016
 ms.author: davidmu
-ms.openlocfilehash: 4c54abe8c3375b49b786c7849c7e963e5849fa3a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 5474f469c6271a0c1348004664ead8b190de08c7
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34709142"
 ---
 # <a name="azure-active-directory-b2c-configure-password-change-in-custom-policies"></a>Usługa Azure Active Directory B2C: Skonfiguruj zmiany hasła w niestandardowych zasad  
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]

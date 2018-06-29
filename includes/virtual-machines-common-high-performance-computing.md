@@ -9,10 +9,11 @@ ms.date: 05/11/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 32a438d393077cfe4cb7f6ee62f3a01edfce0571
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
-ms.translationtype: MT
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34152227"
 ---
 Organizacje mają wielkoskalowe potrzeby przetwarzania danych. Te obciążenia obliczeniowe Big obejmują projektu inżynieryjnego i analizy, obliczeń finansowych ryzyka, renderowanie obrazów, modelowania złożonych, Symulacje Monte Carlo i więcej. 
 
@@ -55,7 +56,7 @@ Odwiedź stronę [portalu Azure Marketplace](https://azuremarketplace.microsoft.
 * [SUSE Linux Enterprise Server dla HPC](https://azure.microsoft.com/marketplace/partners/suse/suselinuxenterpriseserver12optimizedforhighperformancecompute/)
 *  [Aparat serwera siatki TIBCO](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tibco-software.gridserverlinuxengine?tab=Overview)
 * [Nauki danych Azure maszyny Wirtualnej systemu Windows i Linux](../articles/machine-learning/machine-learning-data-science-virtual-machine-overview.md)
-* [d3View](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/xfinityinc.d3view-v5?tab=Overview)
+* [D3View](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/xfinityinc.d3view-v5?tab=Overview)
 * [UberCloud](https://azure.microsoft.com/search/marketplace/?q=ubercloud)
 * [Intel chmury Edition dla połysk](https://azuremarketplace.microsoft.com/marketplace/apps/intel.lustre-cloud-edition-eval?tab=Overview)
 
