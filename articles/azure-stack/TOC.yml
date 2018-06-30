@@ -269,6 +269,8 @@
               href: azure-stack-app-service-release-notes-update-one.md
             - name: Usługi aplikacji — informacje o wersji update 2 Azure stosu
               href: azure-stack-app-service-release-notes-update-two.md
+        - name: Wdrażanie Ethereum
+          href: azure-stack-ethereum.md
         - name: Wypełnianie portalu Marketplace treścią
           items:
             - name: Omówienie portalu Marketplace
