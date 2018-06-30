@@ -1,6 +1,6 @@
 ---
-title: Szczegóły pobierania danych rozwiązań zarządzania Azure | Dokumenty Microsoft
-description: Rozwiązania do zarządzania na platformie Azure są Kolekcja reguł nabycia logiki, wizualizacji i danych zawierających metryki przestawiać wokół obszaru określonego problemu.  Ten artykuł zawiera listę dostępnych rozwiązań zarządzania firmy Microsoft i szczegółowe informacje dotyczące ich metody i częstotliwości zbierania danych.
+title: Szczegóły zbierania danych w celu rozwiązania do zarządzania na platformie Azure | Dokumentacja firmy Microsoft
+description: Rozwiązania do zarządzania na platformie Azure są Kolekcja reguł nabycia logiki, wizualizacji i danych zawierających metryki przestawiać wokół obszaru określonego problemu.  Ten artykuł zawiera listę dostępnych rozwiązań do zarządzania firmy Microsoft i szczegółowe informacje o ich metody i częstotliwość zbierania danych.
 services: log-analytics
 documentationcenter: ''
 author: MGoedtel
@@ -12,30 +12,30 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: ab07a11883b3462c4b9d0f9adab6c55e4fe49d78
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 887611f1293e276070df51ac06df51a994161ec1
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010255"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112200"
 ---
-# <a name="data-collection-details-for-management-solutions-in-azure"></a>Szczegóły pobierania danych rozwiązań zarządzania Azure
-Ten artykuł zawiera listę [rozwiązań w zakresie zarządzania](monitoring-solutions.md) udostępniana przez firmę Microsoft z łączami do ich szczegółowej dokumentacji.  Zawiera także informacje o ich metody i częstotliwości zbierania danych do analizy dzienników.  Do identyfikowania różnych rozwiązań dostępnych i zrozumieć wymagania przepływu i połączenia danych dla rozwiązań w zakresie zarządzania różnych, można użyć informacje w tym artykule. 
+# <a name="data-collection-details-for-management-solutions-in-azure"></a>Szczegóły zbierania danych w celu rozwiązania do zarządzania na platformie Azure
+Ten artykuł zawiera listę [rozwiązań do zarządzania](monitoring-solutions.md) udostępnianych przez firmę Microsoft z łącza do ich szczegółowa dokumentacja.  Zawiera także informacje o ich metody i częstotliwość zbierania danych do analizy dzienników.  Do identyfikacji różnych rozwiązań dostępne i zrozumienie wymagań przepływu i połączenia danych rozwiązania do zarządzania różnych, możesz skorzystać z informacji w tym artykule. 
 
-## <a name="list-of-management-solutions"></a>Lista rozwiązań w zakresie zarządzania
+## <a name="list-of-management-solutions"></a>Lista rozwiązań do zarządzania
 
-W poniższej tabeli wymieniono [rozwiązań w zakresie zarządzania](monitoring-solutions.md) w Azure dostarczony przez firmę Microsoft. Wpis w kolumnie oznacza, że rozwiązanie zbiera dane do analizy dzienników przy użyciu tej metody.  Jeśli rozwiązanie nie ma kolumn zaznaczone, następnie zapisuje bezpośrednio do analizy dzienników z inną usługę Azure. Kliknięcie łącza dla każdego z nich do jego szczegółowej dokumentacji, aby uzyskać więcej informacji.
+W poniższej tabeli wymieniono [rozwiązań do zarządzania](monitoring-solutions.md) w dostarczonym przez firmę Microsoft Azure. Wpis w kolumnie oznacza, że rozwiązanie służy do zbierania danych do analizy dzienników przy użyciu tej metody.  Jeśli rozwiązanie nie zawiera kolumn zaznaczone, następnie zapisuje bezpośrednio do analizy dzienników z innej usługi Azure. Kliknij link dla każdej z nich do jego szczegółową dokumentację, aby uzyskać więcej informacji.
 
-Wyjaśnienia kolumn są w następujący sposób:
+Wyjaśnienia dotyczące kolumn są następujące:
 
-- **Program Microsoft agent monitorowania** -agenta używane w systemach Windows i Linux, aby uruchomić pakiet zarządy z SCOM i zarządzania rozwiązania firmy Azure. W tej konfiguracji agenta jest podłączony bezpośrednio do analizy dzienników bez połączenia z grupą zarządzania Operations Manager. 
-- **Menedżera operacji** -agent identyczne jak Microsoft agent monitorowania. W tej konfiguracji ma on [połączony z grupą zarządzania Operations Manager](../log-analytics/log-analytics-om-agents.md) podłączonego do analizy dzienników. 
--  **Magazyn Azure** -rozwiązanie zbiera dane z konta magazynu Azure. 
-- **Wymagane programu Operations Manager?** -Podłączona grupa zarządzania programu Operations Manager jest wymagane dla zbierania danych przez rozwiązanie do zarządzania. 
-- **Dane agenta menedżera operacji wysyłane za pośrednictwem grupy zarządzania** - jeśli agent jest [połączeni z grupą zarządzania SCOM](../log-analytics/log-analytics-om-agents.md), a następnie dane są przesyłane do analizy dzienników z serwera zarządzania. W takim przypadku agent nie trzeba podłączyć bezpośrednio do analizy dzienników. Jeśli to pole nie jest zaznaczone, następnie dane są przesyłane z agenta bezpośrednio do analizy dzienników nawet jeśli agent jest podłączony do grupy zarządzania SCOM. albo będzie musiała mieć możliwość komunikowania się do analizy dzienników za pomocą [OMS Brama](../log-analytics/log-analytics-oms-gateway.md).
-- **Częstotliwość pobierania** -określa częstotliwość, że dane są zbierane przez rozwiązanie do zarządzania. 
+- **Agent monitorowania firmy Microsoft** -Agent używane w systemach Windows i Linux do uruchamiania Management pack z rozwiązań zarządzania i programu SCOM z platformy Azure. W tej konfiguracji agenta jest podłączony bezpośrednio do analizy dzienników bez połączenia z grupą zarządzania programu Operations Manager. 
+- **Operations Manager** — identyczne agenta jako programu Microsoft monitoring agent. W tej konfiguracji ma [połączony z grupą zarządzania programu Operations Manager](../log-analytics/log-analytics-om-agents.md) podłączonego do analizy dzienników. 
+-  **Usługa Azure Storage** — rozwiązania zbiera dane z konta magazynu platformy Azure. 
+- **Wymagane programu Operations Manager?** -Podłączonej grupy zarządzania programu Operations Manager jest wymagany do zbierania danych przez rozwiązanie do zarządzania. 
+- **Danych agenta programu Operations Manager są wysyłane za pośrednictwem grupy zarządzania** — jeśli agent jest [połączony z grupą zarządzania programu SCOM](../log-analytics/log-analytics-om-agents.md), a następnie wysłaniu danych z analizą dzienników z serwera zarządzania. W takim przypadku agenta nie musi połączyć się bezpośrednio z analizy dzienników. Jeśli to pole nie jest zaznaczone, następnie dane są przesyłane z agenta bezpośrednio do analizy dzienników nawet wtedy, gdy agent jest połączony z grupą zarządzania programu SCOM. albo trzeba będzie mieć możliwości komunikacji z analizą dzienników za pośrednictwem [bramy OMS](../log-analytics/log-analytics-oms-gateway.md).
+- **Częstotliwość zbierania** -częstotliwość Określa, że dane są zbierane przez rozwiązanie do zarządzania. 
 
 
 
@@ -47,7 +47,7 @@ Wyjaśnienia kolumn są w następujący sposób:
 | [Kondycja agenta](../operations-management-suite/oms-solution-agenthealth.md) | System Windows i Linux | &#8226; | &#8226; | | | &#8226; | 1 min |
 | [Alert zarządzania](../log-analytics/log-analytics-solution-alert-management.md) (Nagios) |Linux |&#8226; | | | | |po przybyciu |
 | [Alert zarządzania](../log-analytics/log-analytics-solution-alert-management.md) (Zabbix) |Linux |&#8226; | | | | |1 min |
-| [Alert zarządzania](../log-analytics/log-analytics-solution-alert-management.md) (kierownik) |Windows | |&#8226; | |&#8226; |&#8226; |3 minuty |
+| [Alert zarządzania](../log-analytics/log-analytics-solution-alert-management.md) (programu Operations Manager) |Windows | |&#8226; | |&#8226; |&#8226; |3 minuty |
 | [Azure Site Recovery](../site-recovery/site-recovery-overview.md) | Azure | | | | | | Nie dotyczy |
 | [Łącznik aplikacji Insights (wersja zapoznawcza)](../log-analytics/log-analytics-app-insights-connector.md) | Azure | | | |  |  | na powiadomienia |
 | [Automatyzacja hybrydowego procesu roboczego](../automation/automation-hybrid-runbook-worker.md) | Windows | &#8226; | &#8226; |  |  |  | Nie dotyczy |
@@ -65,9 +65,6 @@ Wyjaśnienia kolumn są w następujący sposób:
 | [Monitor wydajności sieci](../log-analytics/log-analytics-network-performance-monitor.md) | Windows | &#8226; | &#8226; |  |  |  | TCP uzgodnienia co 5 sekund, dane wysyłane co 3 minuty |
 | [Analiza usługi Office 365 (wersja zapoznawcza)](../operations-management-suite/oms-solution-office-365.md) |Windows | | | | | |na powiadomienia |
 | **Rozwiązanie do zarządzania** | **Platformy** | **Agent monitorowania firmy Microsoft** | **Agent programu Operations Manager** | **Magazyn platformy Azure** | **Wymagane programu Operations Manager?** | **Danych agenta programu Operations Manager są wysyłane za pośrednictwem grupy zarządzania** | **Częstotliwość kolekcji** |
-| [Zabezpieczenia i audyt](../operations-management-suite/oms-security-getting-started.md) (Syslog) | Linux | &#8226; | | |  |  | po przybyciu |
-| [Zabezpieczenia i audyt](../operations-management-suite/oms-security-getting-started.md) (dzienniki zdarzeń zabezpieczeń) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | po przybyciu |
-| [Zabezpieczenia i audyt](../operations-management-suite/oms-security-getting-started.md) (zapory Dzienniki) |Windows |&#8226; |&#8226; |  |  |  |po przybyciu |
 | [Usługa sieci szkieletowej Analytics (wersja zapoznawcza)](../log-analytics/log-analytics-service-fabric.md) |Windows | | |&#8226; | | |5 minut |
 | [Mapa usługi](../operations-management-suite/operations-management-suite-service-map.md) | System Windows i Linux | &#8226; | &#8226; |  |  |  | 15 sekund |
 | [Ocena serwera SQL](../log-analytics/log-analytics-sql-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 dni |

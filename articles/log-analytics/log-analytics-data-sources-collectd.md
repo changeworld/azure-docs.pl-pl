@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: magoedte
-ms.openlocfilehash: a63b15ca5126b45451f0694c9ee75d7b67b1ceaf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: na
+ms.openlocfilehash: 59b6f8b82d0f714d4526147b42f68e14bf0aa2bd
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23855208"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127700"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Zbieranie danych z CollectD na agentach systemu Linux w analizy dzienników
 [CollectD](https://collectd.org/) jest demonów systemu Linux typu open source, która okresowo gromadzi metryki wydajności z aplikacji i informacji o poziomie systemu. Przykładowe aplikacje obejmują maszyny wirtualnej Java (JVM), serwer MySQL i Nginx. Ten artykuł zawiera informacje dotyczące zbierania danych wydajności z CollectD w analizy dzienników.
@@ -74,7 +75,7 @@ Agent pakietu OMS dla systemu Linux również nasłuchuje na porcie 26000 dla me
 - Dla kolekcji metryki CollectD wymagany jest Agent pakietu OMS dla systemu Linux v1.1.0-217 lub nowszym.
 
 
-## <a name="configuration"></a>Konfiguracja
+## <a name="configuration"></a>Konfigurowanie
 Poniżej przedstawiono podstawowe czynności umożliwiające konfigurowanie zbierania danych CollectD w analizy dzienników.
 
 1. Skonfiguruj CollectD do wysyłania danych do Agent pakietu OMS dla systemu Linux przy użyciu wtyczki write_http.  
@@ -111,8 +112,8 @@ Aby zachować znanego modelu między metryki infrastruktury już zebrane przez a
 
 | Metryka CollectD pola | Pole analizy dzienników |
 |:--|:--|
-| Host | Computer (Komputer) |
-| Wtyczki | Brak |
+| host | Computer (Komputer) |
+| wtyczki | Brak |
 | plugin_instance | Nazwa wystąpienia<br>Jeśli **plugin_instance** jest *null* następnie InstanceName = "*_Total*" |
 | type | Nazwa obiektu |
 | type_instance | CounterName<br>Jeśli **type_instance** jest *null* następnie CounterName =**puste** |
@@ -120,7 +121,7 @@ Aby zachować znanego modelu między metryki infrastruktury już zebrane przez a
 | dstypes | Brak |
 | wartości] | Równowartości |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o [dziennika wyszukiwania](log-analytics-log-searches.md) analizować dane zebrane ze źródeł danych i rozwiązania. 
 * Użyj [pola niestandardowe](log-analytics-custom-fields.md) do analizowania danych z rekordów dziennika systemowego do poszczególnych pól.
 

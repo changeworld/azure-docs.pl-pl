@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: raynew
-ms.openlocfilehash: d58dfd482b66d90748f0ca661e56fa281c14598a
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 2610a331ef8ef17b319da99eb89288b59532be9f
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29876017"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111502"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Tryb failover i niepowodzeniem ponownie fizycznych serwerów zreplikowanej w systemie Azure
 
@@ -114,7 +114,7 @@ Uruchom tryb failover w następujący sposób:
 
 ## <a name="reprotect-on-premises-machines-to-azure"></a>Ponowne włączanie ochrony lokalnych maszyn na platformie Azure
 
-Dane powinny teraz ponownie znajdować się w lokacji lokalnej, ale nie są replikowane na platformie Azure. Możesz ponownie rozpocząć replikowanie na platformie Azure w następujący sposób:
+Dane powinno być teraz Wstecz w swojej witrynie lokalnej, ale nie przeprowadza replikacji do platformy Azure. Możesz ponownie rozpocząć replikowanie na platformie Azure w następujący sposób:
 
 1. W magazynie w obszarze **Ustawienia** > **Zreplikowane elementy** wybierz maszyny wirtualne, które przywrócono po awarii, i kliknij przycisk **Włącz ponownie ochronę**.
 2. Wybierz serwer przetwarzania używany do wysyłania replikowanych danych do platformy Azure, a następnie kliknij przycisk **OK**.

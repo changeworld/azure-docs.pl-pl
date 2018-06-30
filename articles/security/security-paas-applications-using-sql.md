@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 3e7dc4dfba001228a4d11e2b21cdeed8e7af45ac
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 054a3987cfd67fbd558fe9d4b482aac3d9b467fd
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31794875"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114681"
 ---
 # <a name="securing-paas-databases-in-azure"></a>Zabezpieczanie PaaS baz danych na platformie Azure
 
@@ -79,7 +79,7 @@ Aby dowiedzieć się więcej na temat ograniczeń zapory SQL Azure i IP, zobacz:
 ### <a name="encryption-of-data-at-rest"></a>Szyfrowanie nieużywanych danych
 [Funkcji przezroczystego szyfrowania danych (TDE)](https://msdn.microsoft.com/library/azure/bb934049) jest domyślnie włączona. Funkcji TDE szyfruje niewidocznie plików danych i dziennika programu SQL Server, bazy danych SQL Azure i usługi Azure SQL Data Warehouse. Funkcji TDE chroni przed naruszeniem bezpośredniego dostępu do plików lub ich kopii zapasowej. Umożliwia szyfrowanie danych magazynowanych bez zmieniania istniejących aplikacji. Funkcji TDE powinien zawsze włączone; jednak nie spowoduje to zatrzymanie atakujący, przy użyciu ścieżki normalny. Funkcji TDE zapewnia możliwość wykonania wielu ustawowych, wykonawczych i wskazówkami w różnych branżach.
 
-Azure SQL zarządza klucza problemy związane z funkcji TDE. Z funkcji TDE, lokalnie specjalne należy uważać, aby zapewnić możliwość odzyskania danych, gdy przenoszenia baz danych. W bardziej zaawansowanych scenariuszy klucze jawnie odbywa się w usłudze Azure Key Vault za pośrednictwem rozszerzonego zarządzania kluczami (zobacz [włączenia funkcji TDE na SQL Server przy użyciu EKM](/security/encryption/enable-tde-on-sql-server-using-ekm)). Umożliwia to także dla Przenieś swój własny klucza (BYOK) za pośrednictwem funkcji BYOK magazynów kluczy Azure.
+Azure SQL zarządza klucza problemy związane z funkcji TDE. Z funkcji TDE, lokalnymi specjalne należy uważać, aby zapewnić możliwość odzyskania danych, gdy przenoszenia baz danych. W bardziej zaawansowanych scenariuszy klucze jawnie odbywa się w usłudze Azure Key Vault za pośrednictwem rozszerzonego zarządzania kluczami (zobacz [włączenia funkcji TDE na SQL Server przy użyciu EKM](/security/encryption/enable-tde-on-sql-server-using-ekm)). Umożliwia to także dla Przenieś swój własny klucza (BYOK) za pośrednictwem funkcji BYOK magazynów kluczy Azure.
 
 Azure SQL zapewnia szyfrowanie kolumn za pomocą [zawsze zaszyfrowane](/sql/relational-databases/security/encryption/always-encrypted-database-engine). Dzięki temu tylko autoryzowanych aplikacji dostęp do poufnych kolumn. Za pomocą tego rodzaju szyfrowania ogranicza kwerendy SQL dla zaszyfrowanych kolumn na podstawie równości wartości.
 

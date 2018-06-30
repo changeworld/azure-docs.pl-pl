@@ -88,5 +88,30 @@ Odbiornik grupy dostępności jest adresu IP i sieci nazwy który grupy dostępn
 
     b. Ustaw parametry klastra przez uruchomienie skryptu programu PowerShell na jednym z węzłów klastra.  
 
+Powtórz powyższe kroki, aby ustawić parametry klastra dla adresu IP klastra usługi WSFC.
+
+1. Pobierz nazwę adres IP adres IP klastra usługi WSFC. W **Menedżera klastra trybu Failover** w obszarze **zasoby podstawowe klastra**, zlokalizuj **nazwy serwera**.
+
+1. Kliknij prawym przyciskiem myszy **adres IP**i wybierz **właściwości**.
+
+1. Kopiuj **nazwa** adresu IP. Być może jest ona `Cluster IP Address`. 
+
+1. <a name="setwsfcparam"></a>Ustaw parametry klastra w programie PowerShell.
+    
+    a. Skopiuj poniższy skrypt programu PowerShell do jednego wystąpienia programu SQL Server. Zaktualizuj zmienne w danym środowisku.     
+    
+    ```PowerShell
+    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+    $IPResourceName = "<ClusterIPResourceName>" # the IP Address resource name
+    $ILBIP = "<n.n.n.n>" # the IP Address of the Cluster IP resource. This is the static IP address for the load balancer you configured in the Azure portal.
+    [int]$ProbePort = <nnnnn>
+    
+    Import-Module FailoverClusters
+    
+    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+    ```
+
+    b. Ustaw parametry klastra przez uruchomienie skryptu programu PowerShell na jednym z węzłów klastra.  
+
     > [!NOTE]
     > Wystąpienia programu SQL Server znajdują się w oddzielnych regionach, należy uruchomić skrypt programu PowerShell dwukrotnie. Po raz pierwszy, użyj `$ILBIP` i `$ProbePort` z pierwszego regionu. Następnie należy użyć `$ILBIP` i `$ProbePort` z drugiego regionu. Nazwa sieciowa klastra i nazwę zasobu klastra IP są takie same. 

@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/21/2018
 ms.author: maquaran
-ms.openlocfilehash: f69742d111555e776a968454bdc004ba171e6336
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: f47b847b3a356540e5f366235713b8f99aea3404
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937421"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113721"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Procesor kanału informacyjnego zmiany .NET SDK: Pobierz i informacje o wersji
 > [!div class="op_single_selector"]
@@ -41,39 +41,10 @@ ms.locfileid: "36937421"
 
 ## <a name="release-notes"></a>Informacje o wersji
 
-### <a name="stable-builds"></a>Stabilna kompilacji
+### <a name="v2-builds"></a>kompilacje w wersji 2
 
-### <a name="a-name133133"></a><a name="1.3.3"/>1.3.3
-* Dodano więcej rejestrowania.
-* Stała przeciek DocumentClient podczas wywoływania metody oszacowania pracy oczekujących wiele razy.
-
-### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
-* Poprawki oszacowania pracy oczekujących.
-
-### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
-* Ulepszenia.
-  * Rozwiąż problem anulowane zadania, które mogą prowadzić do zatrzymania obserwatorów na niektóre partycje obsługi.
-* Obsługa ręczne tworzenie punktów kontrolnych.
-* Zgodny z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.21 i powyżej.
-
-### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
-* Dodaje obsługę platformy .NET Standard 2.0. Pakiet obsługuje teraz `netstandard2.0` i `net451` monikerów framework.
-* Zgodny z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.17.0 lub nowszym.
-* Zgodny z [SQL .NET Core SDK](sql-api-sdk-dotnet-core.md) wersji 1.5.1 lub nowszym.
-
-### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
-* Rozwiązuje problem z wyliczeniem oszacowania pracy pozostałej podczas zmiany źródła danych jest pusta lub oczekiwała żadne czynności.
-* Zgodny z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.13.2 lub nowszym.
-
-### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
-* Dodaje metody uzyskać szacunkową Praca pozostała na przetworzenie w źródła danych zmian.
-* Zgodny z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.13.2 lub nowszym.
-
-### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+### <a name="a-name204204"></a><a name="2.0.4"/>2.0.4
 * GA SDK
-* Zgodny z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.14.1 i poniżej.
-
-### <a name="pre-release-builds"></a>Kompilacje wydania wstępnego
 
 ### <a name="a-name203-prerelease203-prerelease"></a><a name="2.0.3-prerelease"/>2.0.3-Prerelease
 * Rozwiązano następujące problemy:
@@ -108,6 +79,39 @@ ms.locfileid: "36937421"
 * 100% zgodności z wcześniejszymi wersjami API w wersji 1.
 * Nowy kod podstawowy.
 * Zgodny z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.21.1 lub nowszym.
+
+### <a name="v1-builds"></a>Tworzy V1
+
+### <a name="a-name133133"></a><a name="1.3.3"/>1.3.3
+* Dodano więcej rejestrowania.
+* Stała przeciek DocumentClient podczas wywoływania metody oszacowania pracy oczekujących wiele razy.
+
+### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
+* Poprawki oszacowania pracy oczekujących.
+
+### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
+* Ulepszenia.
+  * Rozwiąż problem anulowane zadania, które mogą prowadzić do zatrzymania obserwatorów na niektóre partycje obsługi.
+* Obsługa ręczne tworzenie punktów kontrolnych.
+* Zgodny z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.21 i powyżej.
+
+### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
+* Dodaje obsługę platformy .NET Standard 2.0. Pakiet obsługuje teraz `netstandard2.0` i `net451` monikerów framework.
+* Zgodny z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.17.0 lub nowszym.
+* Zgodny z [SQL .NET Core SDK](sql-api-sdk-dotnet-core.md) wersji 1.5.1 lub nowszym.
+
+### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
+* Rozwiązuje problem z wyliczeniem oszacowania pracy pozostałej podczas zmiany źródła danych jest pusta lub oczekiwała żadne czynności.
+* Zgodny z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.13.2 lub nowszym.
+
+### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
+* Dodaje metody uzyskać szacunkową Praca pozostała na przetworzenie w źródła danych zmian.
+* Zgodny z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.13.2 lub nowszym.
+
+### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+* GA SDK
+* Zgodny z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.14.1 i poniżej.
+
 
 ## <a name="release--retirement-dates"></a>Wersja & wycofania dat
 Firma Microsoft udostępni powiadomienia co najmniej **12 miesięcy** klienta z wyprzedzeniem wycofanie SDK w celu złagodzenia przejścia do nowszej/nieobsługiwaną wersję.

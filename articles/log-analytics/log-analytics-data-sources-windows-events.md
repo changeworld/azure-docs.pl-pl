@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: ee52f564-995b-450f-a6ba-0d7b1dac3f32
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2017
 ms.author: bwren
-ms.openlocfilehash: 7a7deb4d7a287b2e9613e6035a7ffd7bb6f14f9c
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.component: na
+ms.openlocfilehash: 8183258ddde335b09293c72368ad3bf58a69334a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26782034"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129357"
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Źródła danych dziennika zdarzeń systemu Windows w analizy dzienników
 Dzienniki zdarzeń systemu Windows są jednym z najbardziej typowych [źródeł danych](log-analytics-data-sources.md) do zbierania danych za pomocą agentów systemu Windows, ponieważ wiele aplikacji zapisu do dziennika zdarzeń systemu Windows.  Oprócz określenia żadnych dzienników niestandardowych tworzony przez aplikacje, które należy monitorować może zbierać zdarzenia z dzienników standardowe, takie jak systemu i aplikacji.
@@ -29,7 +30,7 @@ Dzienniki zdarzeń systemu Windows są jednym z najbardziej typowych [źródeł 
 ## <a name="configuring-windows-event-logs"></a>Dzienniki zdarzeń Konfigurowanie systemu Windows
 Konfigurowanie dzienników zdarzeń systemu Windows z [danych menu Ustawienia usługi Analiza dzienników](log-analytics-data-sources.md#configuring-data-sources).
 
-Analiza dzienników zbiera tylko zdarzenia z dzienników zdarzeń systemu Windows, które są określone w ustawieniach.  Dziennik zdarzeń można dodać wpisać nazwę dziennika, a następnie klikając polecenie  **+** .  Dla każdego dziennika są zbierane tylko zdarzenia dla wybranego ważności.  Sprawdzanie ważności dla określonego dziennika, który chcesz zebrać.  Nie można podać wszelkie dodatkowe kryteria, aby filtrować zdarzenia.
+Analiza dzienników zbiera tylko zdarzenia z dzienników zdarzeń systemu Windows, które są określone w ustawieniach.  Dziennik zdarzeń można dodać wpisać nazwę dziennika, a następnie klikając polecenie **+**.  Dla każdego dziennika są zbierane tylko zdarzenia dla wybranego ważności.  Sprawdzanie ważności dla określonego dziennika, który chcesz zebrać.  Nie można podać wszelkie dodatkowe kryteria, aby filtrować zdarzenia.
 
 Podczas wpisywania nazwy dziennika zdarzeń analizy dzienników zawiera sugestie dotyczące typowych nazw w dzienniku zdarzeń. Jeśli dziennik, który ma zostać dodany, nie ma na liście, należy go dodać, wpisując w pełną nazwę dziennika. Pełna nazwa dziennika można znaleźć za pomocą Podglądu zdarzeń. W Podglądzie zdarzeń, otwórz *właściwości* strony dziennika i skopiuj ciąg z *imię i nazwisko* pola.
 
@@ -51,7 +52,7 @@ Rekordy zdarzeń systemu Windows mają typ **zdarzeń** i mieć właściwości w
 | EventCategory |Kategoria zdarzenia. |
 | EventData |Dane wszystkich zdarzeń w formacie nieprzetworzonym. |
 | Identyfikator zdarzenia |Numer zdarzenia. |
-| eventLevel |Waga zdarzenia w liczbowe. |
+| EventLevel |Waga zdarzenia w liczbowe. |
 | EventLevelName |Waga zdarzenia w postaci tekstu. |
 | Dziennik zdarzeń |Nazwa dziennika zdarzeń, które zostały zebrane zdarzenia. |
 | ParameterXml |Wartości parametrów zdarzenia w formacie XML. |
@@ -68,9 +69,9 @@ Poniższa tabela zawiera różne przykłady wyszukiwania dziennika, które pobie
 | Zapytanie | Opis |
 |:---|:---|
 | Wydarzenie |Wszystkie zdarzenia systemu Windows. |
-| Zdarzenie &#124; gdzie EventLevelName == "error" |Wszystkie zdarzenia systemu Windows z ważność błędu. |
-| Zdarzenie &#124; Podsumowanie funkcji count() przez źródło |Liczba systemu Windows zdarzenia według źródła. |
-| Zdarzenie &#124; gdzie EventLevelName == "error" &#124; Podsumowanie funkcji count() przez źródło |Liczba Windows Błąd źródła. |
+| Zdarzenia &#124; gdzie EventLevelName == "error" |Wszystkie zdarzenia systemu Windows z ważność błędu. |
+| Zdarzenia &#124; Podsumowanie funkcji count() przez źródło |Liczba systemu Windows zdarzenia według źródła. |
+| Zdarzenia &#124; gdzie EventLevelName == "error" &#124; Podsumowanie funkcji count() przez źródło |Liczba Windows Błąd źródła. |
 
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 7cfcc5b907b28a877bea57ea869e17f01aae00cb
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: d1b83432e925e4f6fd439ac78acfde56ad31ba52
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265391"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128401"
 ---
 # <a name="glossary"></a>Słownik
 
@@ -70,7 +70,7 @@ Taki sam jak [aktywnej wersji](#active-version)
 
 W kontekście LUIS **domeny** jest to obszar wiedzy. Twoja domena to określonego obszaru aplikacji wiedzy. Może to być ogólnego obszaru, takie jak aplikacja agenta podróży. Można też dotyczą tylko obszary informacje dla swojej firmy, takich jak określone lokalizacje geograficzne, języki i usługi aplikacji podróży agenta. 
 
-## <a name="endpoint"></a>punkt końcowy
+## <a name="endpoint"></a>Punkt końcowy
 
 [Punktu końcowego LUIS](https://aka.ms/luis-endpoint-apis) adres URL jest, gdzie przesyłania zapytań LUIS po [aplikacji LUIS](#luis-app) zostaną utworzone i opublikowane. Adres URL punktu końcowego zawiera region opublikowanej aplikacji, jak również identyfikator aplikacji. Możesz znaleźć punkt końcowy na **[publikowania](publishapp.md)** strony aplikacji, w tabeli zasobów i kluczy lub możesz uzyskać adres URL punktu końcowego z [uzyskać informacje o aplikacji](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) interfejsu API.
 
@@ -82,11 +82,11 @@ Punkt końcowy przykład wyglądają następująco:
 |--|--|
 |region| [opublikowane regionu](luis-reference-regions.md#publishing-regions) |
 |appID | Identyfikator aplikacji LUIS |
-|Identyfikator subskrypcji | Klucz subskrypcji LUIS utworzone w portalu Azure |
+|Identyfikator subskrypcji | Klucz punktu końcowego (subskrypcji) LUIS utworzone w portalu Azure |
 |Q | utterance |
 |wartości timezoneOffset| minutes|
 
-## <a name="entity"></a>Jednostki
+## <a name="entity"></a>jednostki
 
 [Jednostki](luis-concept-entity-types.md) są ważne wyrazów w [zniesławiających](luis-concept-utterance.md) opisują informacje dotyczące [zamiar](luis-concept-intent.md), i czasami są niezbędne do niego. Jednostka jest zasadniczo elementu datatype LUIS. 
 
@@ -110,7 +110,7 @@ W uczeniu maszynowym [funkcji](luis-concept-feature.md) wyróżniającą cechy l
 
 [Zamiar](luis-concept-intent.md) reprezentuje zadania lub akcji, które użytkownik chce wykonać. Jest to cel lub celem wyrażone w danych wejściowych użytkownika, takie jak rezerwacji lot, zwracając rachunek lub wyszukiwanie artykułu wiadomości. W LUIS konwersji prognozowania opiera się na cały utterance. Jednostki, to w porównaniu fragmenty utterance.
 
-## <a name="labeling"></a>etykietowania
+## <a name="labeling"></a>Etykietowania
 
 Etykietowanie jest proces kojarzenia słowo lub frazę w zamiar [utterance](#utterance) z [jednostki](#entity) (typ danych). 
 
@@ -137,7 +137,7 @@ A [wbudowane domeny](luis-how-to-use-prebuilt-domains.md) jest to aplikacja LUIS
 
 A [wbudowane jednostki](pre-builtentities.md) jest jednostką LUIS przewiduje typowych informacji takich jak numer, adres URL i poczty e-mail. Istnieje możliwość dodawania wbudowane jednostki do aplikacji. 
 
-## <a name="precision"></a>dokładność
+## <a name="precision"></a>Dokładność
 W [testowania partii][batch-testing], dokładność (nazywanych również wartość dodatnią predykcyjnej) jest część odpowiednich zniesławiających między zniesławiających pobrane.
 
 ## <a name="programmatic-key"></a>Klucz programowy
@@ -175,7 +175,7 @@ Taki sam jak [klucza programowego](#programmatic-key), zmieniono nazwę do tworz
 
 ## <a name="subscription-key"></a>Klucz subskrypcji
 
-Klucz subskrypcji jest skojarzony z usługą LUIS [utworzona na platformie Azure](luis-how-to-azure-subscription.md). Ten klucz nie jest [tworzenia klucza](#programmatic-key). Jeśli masz klucz subskrypcji, stosuje się dla wszystkich żądań punktu końcowego, zamiast tworzenia klucza. Widać bieżącego klucza subskrypcji wewnątrz adres URL punktu końcowego w dolnej części [ **publikowania aplikacji** strony](publishapp.md) w [LUIS](luis-reference-regions.md) witryny sieci Web. Jest to wartość **klucza subskrypcji** para nazwa/wartość. 
+Klucz subskrypcji jest **punktu końcowego** klucz skojarzony z usługą LUIS [utworzona na platformie Azure](luis-how-to-azure-subscription.md). Ten klucz nie jest [tworzenia klucza](#programmatic-key). Jeśli masz klucz punktu końcowego stosuje się dla wszystkich żądań punktu końcowego, zamiast tworzenia klucza. Widać bieżący klucz punktu końcowego wewnątrz adres URL punktu końcowego w dolnej części [ **publikowania aplikacji** strony](publishapp.md) w [LUIS](luis-reference-regions.md) witryny sieci Web. Jest to wartość **klucza subskrypcji** para nazwa/wartość. 
 
 ## <a name="test"></a>Test
 
@@ -202,7 +202,7 @@ W [testowania partii][batch-testing], zniesławiających, w których aplikacja p
 
 W [testowania partii][batch-testing], zniesławiających, w których aplikacja poprawnie przewidzieć istnienie zamiar/Jednostka docelowa reprezentują punktów danych.
 
-## <a name="utterance"></a>Utterance
+## <a name="utterance"></a>utterance
 
 Utterance oznacza języka naturalnego takie jak "biletów książki 2 do Seattle następny wtorek". Przykład zniesławiających są dodawane do celem. 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: ed1a307cb2a2613fc7701392cd7b408715f10910
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: fc0bb56e85c2a9cf7a458b0f6d97887d392ee65f
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207302"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114320"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Wprowadzenie do monitorowania kondycji usługi Service Fabric
 Sieć szkieletowa usług Azure wprowadza modelu kondycji, który zawiera oceny kondycji sformatowanego, elastyczny i rozszerzalny i raportowania. Model pozwala niemal czasie rzeczywistym monitorowania stanu klastra i usługi działające w nim. Można łatwo uzyskać informacje o kondycji i rozwiązać potencjalne problemy przed kaskadowo i spowodować duże awarii. W typowej modelu usług wysyłania raportów opartych na ich lokalnych widoków, a następnie agregowane zapewnienie ogólną informacji klastra poziomie widoku.
@@ -78,7 +78,7 @@ Możliwe [stanów kondycji](https://docs.microsoft.com/dotnet/api/system.fabric.
 * **OK**. Jednostka jest w dobrej kondycji. Nie są znane problemy zgłoszone go lub jego elementów podrzędnych (jeśli jest to wymagane).
 * **Ostrzeżenie**. Jednostka ma kilka problemów, ale mogą nadal działać prawidłowo. Na przykład występują opóźnienia, ale nie powoduje żadnych problemów funkcjonalnych jeszcze. W niektórych przypadkach stan ostrzeżenia może rozwiązać się bez interwencji zewnętrznych. W takich przypadkach raportów o kondycji podnieść świadomość i zapewniają wgląd w co się dzieje. W innych przypadkach stan ostrzeżenia mogą obniżyć poważny problem, bez interwencji użytkownika.
 * **Błąd**. Jednostka ma niepoprawny stan. Działania należy podjąć w celu ustalenia stanu jednostki, ponieważ nie może działać prawidłowo.
-* **Nieznany**. Jednostka nie istnieje w magazynie kondycji. Wynik ten można uzyskać z zapytań rozproszonych, które łączą się wyniki z wielu składników. Na przykład zapytanie listy węzła get przechodzi do **FailoverManager**, **ClusterManager**, i **HealthManager**; uzyskiwanie aplikacji zapytanie listy przechodzi do **ClusterManager** i **HealthManager**. Te zapytania scalania wyniki z wielu składników systemu. Jeśli inny składnik systemu zwraca jednostki, która nie znajduje się w magazynie kondycji, scalonych wyników ma nieznany stan kondycji. Jednostka nie jest w magazynie, ponieważ nie zostały jeszcze przetworzone Raporty kondycji lub jednostki zostały wyczyszczone po usunięciu.
+* **Nieznany**. Jednostka nie istnieje w magazynie kondycji. Wynik ten można uzyskać z zapytań rozproszonych, które łączą się wyniki z wielu składników. Na przykład zapytanie listy węzła get przechodzi do **FailoverManager**, **ClusterManager**, i **HealthManager**; uzyskiwanie aplikacji zapytanie listy przechodzi do  **ClusterManager** i **HealthManager**. Te zapytania scalania wyniki z wielu składników systemu. Jeśli inny składnik systemu zwraca jednostki, która nie znajduje się w magazynie kondycji, scalonych wyników ma nieznany stan kondycji. Jednostka nie jest w magazynie, ponieważ nie zostały jeszcze przetworzone Raporty kondycji lub jednostki zostały wyczyszczone po usunięciu.
 
 ## <a name="health-policies"></a>Zasady dotyczące kondycji
 Magazynu kondycji stosuje zasady dotyczące kondycji, aby określić, czy jednostka jest w dobrej kondycji na podstawie jego raporty i jego elementów podrzędnych.
@@ -117,7 +117,7 @@ Poniższy przykład zawiera fragment manifestu klastra. Aby zdefiniować wpisy m
 [Zasady kondycji aplikacji](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy) w tym artykule opisano, jak oceny zdarzeń oraz Stany podrzędnych agregacji jest wykonywane dla aplikacji i ich elementy podrzędne. Może być zdefiniowany w manifeście aplikacji **ApplicationManifest.xml**, w pakiecie aplikacji. Jeśli nie określono żadnych zasad, sieci szkieletowej usług zakłada, że jednostki jest nieprawidłowy, jeśli ma ona raport o kondycji lub element podrzędny w stanu kondycji ostrzeżenia lub błędu.
 Można skonfigurować zasady są:
 
-* [Elementów ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.considerwarningaserror.aspx). Określa, czy traktować ostrzeżenie kondycji raportuje jako błędy podczas oceny kondycji. Domyślnie: false.
+* [Elementów ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Określa, czy traktować ostrzeżenie kondycji raportuje jako błędy podczas oceny kondycji. Domyślnie: false.
 * [MaxPercentUnhealthyDeployedApplications](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.maxpercentunhealthydeployedapplications). Określa maksymalny udział procentowy tolerowaną wdrożone aplikacje, które mogą być zła, zanim aplikacja zostanie uznane za błąd. Ta wartość jest obliczana na podstawie dzielenia liczby wdrożonych aplikacji w złej kondycji przez liczbę węzłów, które aplikacje są obecnie wdrożona w klastrze. Obliczenia Zaokrągla wartość w do tolerowanie awarii jednego w małej liczby węzłów. Domyślna wartość procentowa: zero.
 * [DefaultServiceTypeHealthPolicy](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.defaultservicetypehealthpolicy). Określa domyślne usługi typu zasad dotyczących kondycji, która zastępuje domyślną zasadę kondycji dla wszystkich typów usług w aplikacji.
 * [ServiceTypeHealthPolicyMap](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap). Miejsce mapy zasad dotyczących kondycji usługi dla typów usług. Te zasady zastępują domyślne zasady kondycji typu usługi dla każdego określonego typu. Na przykład jeśli aplikacja ma typ usługi bezstanowej bramy i typ usługi stanowej aparatu, możesz można skonfigurować zasady dotyczące kondycji ich oceny inaczej. Po określeniu zasad na typ usługi, aby uzyskać większą kontrolę nad kondycji usługi.
@@ -201,7 +201,7 @@ Aby wysłać dane kondycji w magazynie kondycji, osoby zgłaszającej musi ziden
 * **Identyfikator jednostki**. Określa jednostki, w których jest stosowane raportu. Różni się na podstawie [typu jednostki](service-fabric-health-introduction.md#health-entities-and-hierarchy):
   
   * Klaster. Brak.
-  * Węzeł. Nazwa węzła (ciąg).
+  * węzeł. Nazwa węzła (ciąg).
   * Aplikacja. Nazwa aplikacji (URI). Reprezentuje nazwę wystąpienia aplikacji wdrożonych w klastrze.
   * Usługa. Nazwa usługi (URI). Reprezentuje nazwę wystąpienia usługi wdrożone w klastrze.
   * Partycja. Identyfikator (GUID). Reprezentuje unikatowy identyfikator partycji.

@@ -14,62 +14,69 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: anwestg
-ms.openlocfilehash: ae21a7cc5c38fefd40a2676e15308b027c6f95d5
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 37d6ee2f047768f08ea7a113b7d97911d58a46e2
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796737"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110579"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Przed rozpoczęciem pracy z usługi aplikacji Azure stosu
 
 *Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
 
-> [!IMPORTANT]
-> Zastosowanie aktualizacji 1804 systemu Azure stosu zintegrowane lub wdrożyć najnowszy zestaw deweloperski stosu Azure przed wdrożeniem usługi Azure App Service 1.2.
->
->
+Przed wdrożeniem usługi Azure App Service na stosie Azure, wykonaj wymagane wstępnie kroki w tym artykule.
 
-Przed wdrożeniem usługi Azure App Service na stosie Azure musi spełnić wymagania wstępne w tym artykule.
+> [!IMPORTANT]
+> Zastosowanie aktualizacji 1804 systemu Azure stosu zintegrowane lub wdrożyć najnowszą Azure stosu Development Kit (ASDK) przed wdrożeniem usługi Azure App Service 1.2.
 
 ## <a name="download-the-installer-and-helper-scripts"></a>Pobierz skrypty Instalatora i pomocnika
 
 1. Pobierz [usługi aplikacji na skryptów pomocnika wdrażania stosu Azure](https://aka.ms/appsvconmashelpers).
 2. Pobierz [usługi aplikacji na stos Azure Instalatora](https://aka.ms/appsvconmasinstaller).
-3. Wyodrębnij pliki z pliku zip skryptów pomocnika. Są wyświetlane następujące pliki i struktury folderów:
+3. Wyodrębnij pliki z pliku zip skryptów pomocnika. Następujące pliki i foldery są wyodrębniane:
+
    - Common.ps1
    - Create-AADIdentityApp.ps1
    - Create-ADFSIdentityApp.ps1
    - Create-AppServiceCerts.ps1
    - Get-AzureStackRootCert.ps1
    - Remove-AppService.ps1
-   - Moduły
+   - Folder modułów
      - GraphAPI.psm1
 
 ## <a name="high-availability"></a>Wysoka dostępność
 
-Z powodu wersji 1802 Azure stosu, w którym dodano obsługę domen błędów, nowe wdrożenia usługi Azure App Service na stosie Azure będą dystrybuowane między domenami usterek i zapewnienia odporności na uszkodzenia.  Aby istniejące wdrożenia usługi Azure App Service na stosie Azure, które zostały wdrożone przed wydaniem 1802 aktualizacji, zobacz [dokumentacji](azure-stack-app-service-fault-domain-update.md) jak Równoważenie wdrożenia.
+Aktualizacja 1802 stosu Azure dodano obsługę domen błędów. Nowe wdrożenia usługi Azure App Service na stosie Azure będą dystrybuowane między domenami usterek i zapewnienia odporności na uszkodzenia.
 
-Ponadto usługi Azure App Service na stosie Azure wysokiej dostępności, Wdróż wymaganego pliku serwer i wystąpienie programu SQL Server w konfiguracji o wysokiej dostępności.
+Aby istniejące wdrożenia usługi Azure App Service na stosie Azure, które zostały wdrożone przed aktualizacją 1802, zobacz [Rebalance dostawcy zasobów usługi aplikacji w domenach awarii](azure-stack-app-service-fault-domain-update.md) artykułu.
+
+Ponadto wdrażanie serwera plików wymaganych i wystąpień programu SQL Server w konfiguracji o wysokiej dostępności.
 
 ## <a name="get-certificates"></a>Uzyskanie certyfikatów
 
 ### <a name="azure-resource-manager-root-certificate-for-azure-stack"></a>Usługa Azure Resource Manager certyfikat główny dla stosu Azure
 
-W sesji programu PowerShell uruchomiona jako azurestack\CloudAdmin na komputerze, który można uzyskać dostęp do uprzywilejowanych punktu końcowego Azure stosu zintegrowany System lub Azure stosu Development Kit Host, uruchom skrypt Get AzureStackRootCert.ps1 z folderu, w którym została rozpakowana skrypty pomocnika. Skrypt tworzy certyfikat główny, w tym samym folderze, skrypt, który wymaga usługi aplikacji do tworzenia certyfikatów.
+Otwórz sesję programu PowerShell z podwyższonym poziomem uprawnień na komputerze, który można osiągnąć punktu końcowego uprzywilejowanych Azure stosu zintegrowany System lub Azure stosu Development Kit Host.
+
+Uruchom *Get AzureStackRootCert.ps1* skryptu z folderu, w którym została rozpakowana skrypty pomocnika. Skrypt tworzy certyfikat główny, w tym samym folderze, skrypt, który wymaga usługi aplikacji do tworzenia certyfikatów.
+
+Po uruchomieniu następującego polecenia programu PowerShell będzie konieczne podanie AzureStack\CloudAdmin uprzywilejowanych punktu końcowego i poświadczeń.
 
 ```PowerShell
     Get-AzureStackRootCert.ps1
 ```
+
+#### <a name="get-azurestackrootcertps1-script-parameters"></a>Get-AzureStackRootCert.ps1 Parametry skryptu
 
 | Parametr | Wymagane lub opcjonalne | Wartość domyślna | Opis |
 | --- | --- | --- | --- |
 | PrivilegedEndpoint | Wymagane | AzS-ERCS01 | Uprzywilejowane punktu końcowego |
 | CloudAdminCredential | Wymagane | AzureStack\CloudAdmin | Poświadczenia konta domeny dla administratorów chmury Azure stosu |
 
-### <a name="certificates-required-for-the-azure-stack-development-kit"></a>Certyfikaty wymagane dla zestawu SDK usługi Azure stosu
+### <a name="certificates-required-for-asdk-deployment-of-azure-app-service"></a>Certyfikaty wymagane ASDK wdrożenia usługi Azure App Service
 
-Pierwszy skryptu współpracuje z urzędu certyfikacji stosu Azure można utworzyć cztery certyfikaty, które wymaga usługi aplikacji:
+*AppServiceCerts.ps1 Utwórz* działania skryptu z urzędu certyfikacji stosu Azure można utworzyć cztery certyfikaty, które wymaga usługi aplikacji.
 
 | Nazwa pliku | Użycie |
 | --- | --- |
@@ -78,29 +85,32 @@ Pierwszy skryptu współpracuje z urzędu certyfikacji stosu Azure można utworz
 | ftp.appservice.local.azurestack.external.pfx | Certyfikat SSL wydawcy usługi aplikacji |
 | sso.appservice.local.azurestack.external.pfx | Certyfikat aplikacji tożsamości usługi aplikacji |
 
-Uruchom skrypt na hoście Azure stosu Development Kit i upewnij się, że używasz programu PowerShell jako azurestack\CloudAdmin:
+Aby utworzyć certyfikaty, wykonaj następujące kroki:
 
-1. W sesji programu PowerShell, uruchomione jako azurestack\AzureStackAdmin Uruchom skrypt AppServiceCerts.ps1 Utwórz z folderu, w którym została rozpakowana skrypty pomocnika. Skrypt tworzy cztery certyfikatów, w tym samym folderze, skrypt, który wymaga usługi aplikacji do tworzenia certyfikatów.
-2. Wprowadź hasło, aby zabezpieczyć pliki PFX i zapisz go. Wprowadź go w usłudze App Service w Instalatorze stosu Azure.
+1. Zaloguj się przy użyciu konta AzureStack\AzureStackAdmin hosta Azure stosu Development Kit.
+2. Otwórz sesję programu PowerShell z podwyższonym poziomem uprawnień.
+3. Uruchom *AppServiceCerts.ps1 Utwórz* skryptu z folderu, w którym została rozpakowana skrypty pomocnika. Ten skrypt tworzy cztery certyfikatów, w tym samym folderze, skrypt, który wymaga usługi aplikacji do tworzenia certyfikatów.
+4. Wprowadź hasło, aby zabezpieczyć pliki PFX i zapisz go. Musisz wprowadzić go w usłudze App Service w Instalatorze stosu Azure.
 
-#### <a name="create-appservicecertsps1-parameters"></a>Utwórz AppServiceCerts.ps1 parametrów
-
-```PowerShell
-    Create-AppServiceCerts.ps1
-```
+#### <a name="create-appservicecertsps1-script-parameters"></a>Utwórz AppServiceCerts.ps1 Parametry skryptu
 
 | Parametr | Wymagane lub opcjonalne | Wartość domyślna | Opis |
 | --- | --- | --- | --- |
 | pfxPassword | Wymagane | Null | Hasła, która pomaga chronić klucz prywatny certyfikatu |
 | DomainName | Wymagane | local.azurestack.external | Azure sufiks regionu i domeny stosu |
 
-### <a name="certificates-required-for-a-production-deployment-of-azure-app-service-on-azure-stack"></a>Certyfikaty wymagane w przypadku wdrożenia produkcyjnego usługi Azure App Service na stosie Azure
+### <a name="certificates-required-for-azure-stack-production-deployment-of-azure-app-service"></a>Certyfikaty wymagane w przypadku wdrożenia produkcyjnego stosu Azure usługi Azure App Service
 
-Działanie dostawcy zasobów w środowisku produkcyjnym, należy podać cztery następujących certyfikatów:
+Aby uruchomić dostawcy zasobów w środowisku produkcyjnym, należy podać następujących certyfikatów:
+
+- Domyślny certyfikat domeny
+- Certyfikat interfejsu API
+- Publikowanie certyfikatów
+- Certyfikat tożsamości
 
 #### <a name="default-domain-certificate"></a>Domyślny certyfikat domeny
 
-Domyślny certyfikat domeny jest umieszczany w roli Serwer sieci Web. Aplikacje użytkownika żądań domeny symboli wieloznacznych lub wartość domyślną w usłudze Azure App Service użycie tego certyfikatu. Certyfikat służy także do operacji kontroli źródła (Kudu).
+Domyślny certyfikat domeny jest umieszczany w roli Serwer sieci Web. Aplikacje użytkownika dla symbolu wieloznacznego lub wartość domyślną żądania domeny w usłudze Azure App Service użycie tego certyfikatu. Certyfikat służy także do operacji kontroli źródła (Kudu).
 
 Należy certyfikat uniwersalny trzech podmiotu certyfikatu i musi być w formacie pfx. To wymaganie umożliwia jeden certyfikat pokrywał się zarówno w domenie domyślnej, jak i punktu końcowego SCM operacji kontroli źródła.
 
@@ -133,15 +143,15 @@ Certyfikat tożsamości aplikacji umożliwia:
 - Integrację usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS) katalogu stosu Azure i usługi aplikacji do obsługi integracji z dostawcy zasobów obliczeniowych.
 - Pojedynczy logowania jednokrotnego scenariusze dotyczące narzędzia dla zaawansowanych programistów w usłudze Azure App Service na stosie Azure.
 
-Certyfikat tożsamości musi zawierać którego podmiot odpowiada następujący format:
+Certyfikat tożsamości musi zawierać którego podmiot odpowiada następujący format.
 
 | Format | Przykład |
 | --- | --- |
 | sso.appservice.\<region\>.\<DomainName\>.\<extension\> | sso.appservice.redmond.azurestack.external |
 
-## <a name="virtual-network"></a>Virtual Network
+## <a name="virtual-network"></a>Sieć wirtualna
 
-Usługa aplikacji Azure na stosie Azure umożliwia wdrażanie dostawcy zasobów do albo istniejącej sieci wirtualnej lub usługi aplikacji — zostanie utworzona jako część wdrożenia.  Za pomocą istniejącej sieci wirtualnej umożliwia korzystanie z wewnętrznych adresów IP do nawiązania połączenia przez serwer plików i programu SQL server wymagane przez usługę Azure App Service na stosie Azure.  Sieć wirtualna musi być skonfigurowany z następujące podsieci i zakres adresów, przed zainstalowaniem usługi Azure App Service na stosie Azure:
+Usługa aplikacji Azure na stosie Azure umożliwia wdrażanie dostawcy zasobów do istniejącej sieci wirtualnej lub pozwala utworzyć sieć wirtualną jako część wdrożenia. Za pomocą istniejącej sieci wirtualnej umożliwia korzystanie z wewnętrznych adresów IP do nawiązania połączenia przez serwer plików i programu SQL server wymagane przez usługę Azure App Service na stosie Azure. Sieć wirtualna musi być skonfigurowany z następujące podsieci i zakres adresów, przed zainstalowaniem usługi Azure App Service na stosie Azure:
 
 Sieć wirtualna — / 16 do /
 
@@ -161,43 +171,51 @@ Azure stosu Development Kit tylko w przypadku wdrożeń, można użyć [Szablon 
 
 >[!IMPORTANT]
 > Jeśli wybierzesz do wdrożenia usługi aplikacji w ramach istniejącej sieci wirtualnej z serwerem plików powinny zostać wdrożone w osobnej podsieci z usługi aplikacji.
->
 
 ### <a name="provision-groups-and-accounts-in-active-directory"></a>Zapewnij grup i kont w usłudze Active Directory
 
 1. Utwórz następujące grupy zabezpieczeń globalnych usługi Active Directory:
+
    - FileShareOwners
    - FileShareUsers
+
 2. Utwórz następujące konta usługi Active Directory jako konta usług:
+
    - FileShareOwner
    - FileShareUser
 
-   Bezpieczeństwa najlepiej użytkowników dla tych kont (i dla wszystkich ról sieci web) powinny się różnić od siebie i ma silnej nazwy użytkowników i hasła. Ustaw hasła z następujących warunków:
+   Bezpieczeństwa najlepiej użytkowników dla tych kont (i dla wszystkich ról sieci web) powinny być unikatowe i mają silnej nazwy użytkowników i hasła. Ustaw hasła z następujących warunków:
+
    - Włącz **hasło nigdy nie wygasa**.
    - Włącz **użytkownik nie może zmienić hasła**.
    - Wyłącz **użytkownik musi zmienić hasło przy następnym logowaniu**.
+
 3. Dodaj konta do członkostwa w grupach w następujący sposób:
+
    - Dodaj **właściciel udziału plików** do **FileShareOwners** grupy.
    - Dodaj **FileShareUser** do **FileShareUsers** grupy.
 
 ### <a name="provision-groups-and-accounts-in-a-workgroup"></a>Zapewnij grup i kont w grupie roboczej
 
 >[!NOTE]
-> Podczas konfiguracji serwera plików, uruchom następujące polecenia w oknie wiersza polecenia administratora. *Nie należy używać środowiska PowerShell.*
+> Gdy konfigurujesz serwer plików, uruchom następujące polecenia z **wiersza polecenia administratora**. <br>***Nie używaj programu PowerShell.***
 
 Gdy używasz szablonu usługi Azure Resource Manager, użytkownicy, zostały już utworzone.
 
 1. Uruchom następujące polecenia, aby utworzyć konta Właściciel udziału plików i FileShareUser. Zastąp `<password>` z własne wartości.
+
     ``` DOS
     net user FileShareOwner <password> /add /expires:never /passwordchg:no
     net user FileShareUser <password> /add /expires:never /passwordchg:no
     ```
 2. Ustaw hasła dla konta, które nigdy nie wygasa, uruchamiając następujące polecenia WMIC:
+
     ``` DOS
     WMIC USERACCOUNT WHERE "Name='FileShareOwner'" SET PasswordExpires=FALSE
     WMIC USERACCOUNT WHERE "Name='FileShareUser'" SET PasswordExpires=FALSE
     ```
 3. Utwórz grupy lokalne FileShareUsers i FileShareOwners i dodać konta w pierwszym kroku do nich:
+
     ``` DOS
     net localgroup FileShareUsers /add
     net localgroup FileShareUsers FileShareUser /add
@@ -318,7 +336,7 @@ Wykonaj następujące kroki:
 10. Wybierz **rejestracji aplikacji**.
 11. Wyszukaj identyfikator aplikacji zwracane w ramach kroku 7. Aplikacja usługi aplikacji znajduje się.
 12. Wybierz **aplikacji** na liście.
-13. Kliknij przycisk **ustawienia**.
+13. Wybierz **ustawienia**.
 14. Wybierz **wymagane uprawnienia** > **udzielić uprawnień** > **tak**.
 
 ```PowerShell

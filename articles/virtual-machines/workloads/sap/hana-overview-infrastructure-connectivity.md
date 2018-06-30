@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4741cf306aed1c86be1bc4b54fb961383e2f70bd
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 4c0f5d0c5ed3814495a68d7fd49d41cec521bbd7
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763769"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114562"
 ---
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>Infrastruktura SAP HANA (duże wystąpień) i łączność na platformie Azure 
 
@@ -129,9 +129,9 @@ Już wprowadzone niektóre niezbędnych do wdrożenia HANA wystąpień dużych w
    - Współistnienie z sieci VPN i ExpressRoute przy użyciu bramy ExpressRoute wysokiej wydajności (lub mniejsze): / 27 blok adresów
    - Innych sytuacjach: / 28 blok adresów. Ten zakres adresów musi być częścią wartości użyte w wartości "Przestrzeni adresowej sieci wirtualnej". Ten zakres adresów musi być częścią wartości użyte w wartości przestrzeni adresowej sieci wirtualnej Azure, które należy przesłać do firmy Microsoft. Jak uzyskać ten zakres adresów IP? Dostawca zespołu lub usługi sieci firmowej powinien zapewnić zakres adresów IP, który nie jest obecnie używany w sieci. 
 
-- **Zakres łączności ER P2P adresów:** ten zakres jest zakres adresów IP połączenie P2P SAP HANA dużych wystąpienia usługi ExpressRoute (ER). Ten zakres adresów IP musi być /29 zakres adresów CIDR IP. Ten zakres nie musi nakłada się z lokalnymi lub innymi IP platformy Azure, zakresy adresów. Ten zakres adresów IP jest używana do konfigurowania łączności ER z bramę usługi ExpressRoute sieci wirtualnej Azure do serwerów wystąpienia dużych SAP HANA. Jak uzyskać ten zakres adresów IP? Dostawca zespołu lub usługi sieci firmowej powinien zapewnić zakres adresów IP, który nie jest obecnie używany w sieci. **Ten zakres jest zakres adresów IP, które muszą zostać przesłane do firmy Microsoft podczas pytania o początkowe wdrożenie**
+- **Zakres łączności ER P2P adresów:** ten zakres jest zakres adresów IP połączenie P2P SAP HANA dużych wystąpienia usługi ExpressRoute (ER). Ten zakres adresów IP musi być /29 zakres adresów CIDR IP. Ten zakres musi nie pokrywają się z lokalnymi lub innymi IP platformy Azure zakresów adresów. Ten zakres adresów IP jest używana do konfigurowania łączności ER z bramę usługi ExpressRoute sieci wirtualnej Azure do serwerów wystąpienia dużych SAP HANA. Jak uzyskać ten zakres adresów IP? Dostawca zespołu lub usługi sieci firmowej powinien zapewnić zakres adresów IP, który nie jest obecnie używany w sieci. **Ten zakres jest zakres adresów IP, które muszą zostać przesłane do firmy Microsoft podczas pytania o początkowe wdrożenie**
   
-- **Zakres puli adresów IP serwera:** ten zakres adresów IP jest używana do przypisywania pojedynczy adres IP HANA dużych wystąpienia serwerów. Rozmiar podsieci zalecane jest prefiksie/24 CIDR zablokować — ale jeśli potrzebne może być mniejszy do minimum dostarczać 64 adresy IP. Z tego zakresu pierwsze 30 adresy IP są zarezerwowane do użytku przez firmę Microsoft. Upewnij się, że ten fakt przypada na wybierając rozmiar zakresu. Ten zakres musi nie nakłada się z lokalnymi lub innymi IP platformy Azure adresów. Jak uzyskać ten zakres adresów IP? Dostawca zespołu lub usługi sieci firmowej powinien zapewnić zakres adresów IP, który nie jest obecnie używany w sieci. Prefiksie/24 blok CIDR unikatowy (zalecane) służący do przypisywania adresów IP określonych, potrzebnego do SAP HANA na platformie Azure (wystąpienia duże). **Ten zakres jest zakres adresów IP, które muszą zostać przesłane do firmy Microsoft podczas pytania o początkowe wdrożenie**
+- **Zakres puli adresów IP serwera:** ten zakres adresów IP jest używana do przypisywania pojedynczy adres IP HANA dużych wystąpienia serwerów. Rozmiar podsieci zalecane jest prefiksie/24 CIDR zablokować — ale jeśli potrzebne może być mniejszy do minimum dostarczać 64 adresy IP. Z tego zakresu pierwsze 30 adresy IP są zarezerwowane do użytku przez firmę Microsoft. Upewnij się, że ten fakt przypada na wybierając rozmiar zakresu. Ten zakres musi nie pokrywają się z lokalnymi lub innymi IP platformy Azure adresów. Jak uzyskać ten zakres adresów IP? Dostawca zespołu lub usługi sieci firmowej powinien zapewnić zakres adresów IP, który nie jest obecnie używany w sieci. Prefiksie/24 blok CIDR unikatowy (zalecane) służący do przypisywania adresów IP określonych, potrzebnego do SAP HANA na platformie Azure (wystąpienia duże). **Ten zakres jest zakres adresów IP, które muszą zostać przesłane do firmy Microsoft podczas pytania o początkowe wdrożenie**
  
 Chociaż należy zdefiniować i Planowanie zakresów adresów IP powyżej, nie wszystkie ich muszą zostać przesłane do firmy Microsoft. Podsumowując powyższego, zakresy adresów IP, do nazwy do firmy Microsoft są wymagane są:
 

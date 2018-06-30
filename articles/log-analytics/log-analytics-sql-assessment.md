@@ -3,7 +3,7 @@ title: Optymalizuj środowisko programu SQL Server z Azure Log Analytics | Dokum
 description: Z usługi Analiza dzienników Azure rozwiązania SQL sprawdzania kondycji służy do oceny ryzyka i kondycji środowisk w regularnych odstępach czasu.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: e297eb57-1718-4cfe-a241-b9e84b2c42ac
@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: magoedte
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 47f912932f9a0e1383ef5f82d1d3e33b5ababa9c
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.component: na
+ms.openlocfilehash: e83a722ee58f49c20871faaca6aae7d7a5678361
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33886318"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130611"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optymalizuj środowisko SQL z rozwiązaniem sprawdzania kondycji serwera SQL w analizy dzienników
 

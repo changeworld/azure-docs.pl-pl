@@ -3,22 +3,23 @@ title: Zbieranie dzienników aktywności platformy Azure w usłudze Log Analytic
 description: Użyj usługi Centra zdarzeń lub Logic Apps, aby zbierać dane z dziennika aktywności platformy Azure i wysyłać je do obszaru roboczego usługi Azure Log Analytics w innej dzierżawie.
 services: log-analytics, logic-apps, event-hubs
 documentationcenter: ''
-author: richrundmsft
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: richrund; bwren
-ms.openlocfilehash: d72d0823d78f47aed3d8690cee81f8bb00e7921d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.component: na
+ms.openlocfilehash: c2bb802213d903290a0168623d7e6a302ba0e324
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636974"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127445"
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>Zbieranie dzienników aktywności platformy Azure w usłudze Log Analytics w wielu subskrypcjach
 
@@ -26,7 +27,7 @@ W tym artykule omówiono metodę zbierania dzienników aktywności platformy Azu
 
 Jeśli obszar roboczy usługi Log Analytics znajduje się w tej samej subskrypcji platformy Azure lub w innej subskrypcji, ale w tej samej usłudze Azure Active Directory, użyj kroków w [rozwiązaniu dziennika aktywności platformy Azure](../log-analytics/log-analytics-activity.md), aby zebrać dzienniki aktywności platformy Azure.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Strategia używana w tym scenariuszu jest oparta na wysyłaniu zdarzeń przez dziennik aktywności platformy Azure do [centrum zdarzeń](../event-hubs/event-hubs-what-is-event-hubs.md), skąd [aplikacja logiki](../logic-apps/logic-apps-overview.md) wysyła je do obszaru roboczego usługi Log Analytics. 
 
@@ -338,7 +339,7 @@ Ostatnim krokiem jest sprawdzenie obszaru roboczego usługi Log Analytics, aby u
 
 ![Testowanie aplikacji logiki](media/log-analytics-activity-logs-subscriptions/log-analytics-results.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym artykule utworzono aplikację logiki w celu odczytywania dzienników aktywności platformy Azure z centrum zdarzeń oraz wysyłania ich do usługi Log Analytics w celu przeprowadzenia analizy. Aby dowiedzieć się więcej o wizualizacji danych w usłudze Log Analytics, w tym o tworzeniu pulpitów nawigacyjnych, sprawdź samouczek dotyczący wizualizacji danych.
 

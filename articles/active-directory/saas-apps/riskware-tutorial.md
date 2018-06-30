@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 06/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 2062ba20b09e8e42fd094fbff628f5e76b5ea00f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d234b34f7583441f496fb96d37166c5472cadb4c
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225793"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110831"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Samouczek: Integracji Azure Active Directory z Riskware
 
@@ -67,7 +67,7 @@ Aby skonfigurować integrację usługi Azure AD Riskware, należy dodać Riskwar
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Blok aplikacje przedsiębiorstwa][2]
-    
+
 3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
@@ -101,7 +101,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
 2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
- 
+
     ![Okno dialogowe rejestracji jednokrotnej](./media/riskware-tutorial/tutorial_riskware_samlbase.png)
 
 3. Na **Riskware domeny i adres URL** sekcji, wykonaj następujące czynności:
@@ -113,7 +113,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     |--|--|
     | Testowanie akceptacyjne przez użytkowników|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
     | PRODUKCYJNEGO| `https://riskcloud.net/prod?ccode=<COMPANYCODE>` |
-    | DEMO| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` | 
+    | DEMO| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` |
     |||
 
     b. W **identyfikator jednostki** tekstowym, wpisz adres URL:
@@ -121,10 +121,10 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     |--|--|
     | Testowanie akceptacyjne przez użytkowników| `https://riskcloud.net/uat` |
     | PRODUKCYJNEGO| `https://riskcloud.net/prod` |
-    | DEMO| `https://riskcloud.net/demo` | 
+    | DEMO| `https://riskcloud.net/demo` |
     |||
 
-    > [!NOTE] 
+    > [!NOTE]
     > Zaloguj się na wartość adresu URL nie jest prawdziwe. Zaktualizuj tę wartość z adresem URL logowania rzeczywistych. Skontaktuj się z [zespołem pomocy technicznej klienta Riskware](mailto:support@pansoftware.com.au) można uzyskać wartość.
 
 4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
@@ -137,11 +137,11 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
 6. Na **konfiguracji Riskware** , kliknij przycisk **skonfigurować Riskware** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **Sign-Out adresu URL i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
 
-    ![Konfiguracja Riskware](./media/riskware-tutorial/tutorial_riskware_configure.png) 
+    ![Konfiguracja Riskware](./media/riskware-tutorial/tutorial_riskware_configure.png)
 
 7. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy Riskware.
 
-8. W górnym rogu kliknij **konserwacji** aby otworzyć stronę konserwacji. 
+8. W górnym rogu kliknij **konserwacji** aby otworzyć stronę konserwacji.
 
     ![Obsługa konfiguracji Riskware](./media/riskware-tutorial/tutorial_riskware_maintain.png)
 
@@ -159,16 +159,16 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     c. W **opis** tekstowym, wpisz opis jak konfiguracji AZURE dla logowania jednokrotnego.
 
-    d. W **Zaloguj się na stronie** pole tekstowe, Wklej wartość **SAML pojedynczy znak na adres URL usługi**, które zostały skopiowane z portalu Azure.
+    d. W **Zaloguj się na stronie** pole tekstowe, Wklej **SAML pojedynczy znak na adres URL usługi** wartość, która została skopiowana z portalu Azure.
 
-    e. W **Wyloguj strony** pole tekstowe, Wklej wartość **Sign-Out URL**, które zostały skopiowane z portalu Azure.
+    e. W **Wyloguj strony** pole tekstowe, Wklej **Sign-Out URL** wartość, która została skopiowana z portalu Azure.
 
-    f. W **pola formularza Post** tekstowym, wpisz nazwę pola w odpowiedź Post, która zawiera SAML, takich jak SamlResponse
+    f. W **pola formularza Post** tekstowym, wpisz nazwę pola w odpowiedź Post, która zawiera SAML, takich jak SAMLResponse
 
     g. W **nazwa tagu XML tożsamości** pole tekstowe, typ atrybutu, który zawiera unikatowy identyfikator w odpowiedzi SAML, takich jak NameID.
 
     h. Otwórz pobrany **Xml metadanych** z portalu Azure w programie Notatnik, skopiuj certyfikat z pliku metadanych i wklej ją do **certyfikatu** pole tekstowe
-    
+
     i. W **adres URL klienta** pole tekstowe, Wklej wartość **adres URL odpowiedzi**, którego można uzyskać z zespołem pomocy technicznej.
 
     j. W **wystawcy** pole tekstowe, Wklej wartość **identyfikator**, który można pobrać z zespołem pomocy technicznej.
@@ -176,9 +176,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     > [!Note]
     > Skontaktuj się z [zespołem pomocy technicznej klienta Riskware](mailto:support@pansoftware.com.au) uzyskać te wartości
 
-    k. Wybierz **POST użyj** do przekazania żądania SAML jako parametr post.
+    k. Wybierz **POST użyj** wyboru.
 
-    l. Wybierz **żądania SAML użyj** do przekazania logowania jednokrotnego Zezwalaj na żądania SAML dla SP zainicjowane.
+    l. Wybierz **żądania SAML użyj** wyboru.
 
     m. Kliknij pozycję **Zapisz**.
 
@@ -213,14 +213,14 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
- 
+
 ### <a name="create-a-riskware-test-user"></a>Tworzenie użytkownika testowego Riskware
 
-Aby umożliwić użytkownikom usługi Azure AD zalogować się do Riskware, musi być przygotowana do Riskware. W Riskware Inicjowanie obsługi to zadanie ręczne.
+Aby umożliwić użytkownikom usługi Azure AD do logowania się na Riskware, musi być przygotowana do Riskware. W Riskware Inicjowanie obsługi to zadanie ręczne.
 
 **Aby udostępnić konta użytkownika, wykonaj następujące czynności:**
 
-1. Zaloguj się jako Administrator zabezpieczeń Riskware.
+1. Zaloguj się do Riskware jako Administrator zabezpieczeń.
 
 2. W górnym rogu kliknij **konserwacji** aby otworzyć stronę konserwacji. 
 
@@ -230,8 +230,8 @@ Aby umożliwić użytkownikom usługi Azure AD zalogować się do Riskware, musi
 
     ![Osoby Riskware konfiguracji](./media/riskware-tutorial/tutorial_riskware_people.png)
 
-4. Na **szczegóły** karcie, wykonaj następujące czynności:
-    
+4. Wybierz **szczegóły** karcie i wykonaj następujące czynności:
+
     ![Szczegóły konfiguracji Riskware](./media/riskware-tutorial/tutorial_riskware_details.png)
 
     a. Wybierz **typ osoby** , takich jak pracownika.
@@ -240,7 +240,7 @@ Aby umożliwić użytkownikom usługi Azure AD zalogować się do Riskware, musi
 
     c. W **nazwisko** pole tekstowe, wprowadź nazwisko użytkownika, takich jak **Simona**.
 
-5. Na **zabezpieczeń** karcie, wykonaj następujące czynności:    
+5. Na **zabezpieczeń** karcie, wykonaj następujące czynności:
 
     ![Riskware konfiguracji zabezpieczeń](./media/riskware-tutorial/tutorial_riskware_security.png)
 
@@ -254,8 +254,8 @@ Aby umożliwić użytkownikom usługi Azure AD zalogować się do Riskware, musi
 
     ![Org Riskware konfiguracji](./media/riskware-tutorial/tutorial_riskware_org.png)
 
-    a. W obszarze **organizacji** wybierz organizacji jako **Level1** organizacji.
-    
+    a. Wybierz opcję jako **Level1** organizacji.
+
     b. W obszarze **pracy głównej osoby** sekcji w **lokalizacji** tekstowym, wpisz lokalizację.
 
     c. W obszarze **pracownika** zaznacz **stanu** dorywczy, takich jak.
@@ -266,7 +266,7 @@ Aby umożliwić użytkownikom usługi Azure AD zalogować się do Riskware, musi
 
 W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu Riskware.
 
-![Przypisanie roli użytkownika][200] 
+![Przypisanie roli użytkownika][200]
 
 **Aby przypisać Simona Britta Riskware, wykonaj następujące czynności:**
 

@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: 084b8fa0addbe2ddeee699b58c9b0de1a6f27d99
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.component: na
+ms.openlocfilehash: 54f2af60751ed0d9c64e71efad6fa9aa3ef06589
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33938696"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129119"
 ---
 # <a name="delete-an-azure-log-analytics-workspace-with-the-azure-portal"></a>Usuń z obszarem roboczym usługi Analiza dzienników Azure przy użyciu portalu Azure
 W tym artykule pokazano, jak korzystać z portalu Azure można usunąć obszaru roboczego analizy dzienników, który może nie są już potrzebne. 
@@ -38,7 +38,7 @@ Po usunięciu obszaru roboczego analizy dzienników wszystkie dane związane z o
 
 Wszystkich agentów i skonfigurowane do raportu do obszaru roboczego grupy zarządzania programu System Center Operations Manager nadal w stanie oddzielony.  Jakie agentów rozwiązania w zakresie spisu i innymi usługami platformy Azure są zintegrowane z obszaru roboczego przed kontynuowaniem.   
  
-Jeśli jesteś administratorem i z tym obszarem roboczym jest skojarzonych wielu użytkowników, skojarzenie między tymi użytkownikami i obszarem roboczym zostanie przerwane. Jeśli użytkownicy są skojarzone z innych obszarów roboczych, następnie można przejść za pomocą analizy dzienników z tych obszarów roboczych. Jednak jeśli nie są one powiązane z innych obszarów roboczych następnie muszą utworzyć obszaru roboczego, aby użyć analizy dzienników. 
+Jeśli jesteś administratorem i z tym obszarem roboczym jest skojarzonych wielu użytkowników, skojarzenie między tymi użytkownikami i obszarem roboczym zostanie przerwane. Jeśli użytkownicy są skojarzeni z innymi obszarami roboczymi, mogą nadal z nich korzystać w usłudze Log Analytics. Jednak jeśli nie są one powiązane z innych obszarów roboczych następnie muszą utworzyć obszaru roboczego, aby użyć analizy dzienników. 
 
 1. Zaloguj się do [Azure Portal](http://portal.azure.com). 
 2. W witrynie Azure Portal kliknij pozycję **Więcej usług** w lewym dolnym rogu. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.

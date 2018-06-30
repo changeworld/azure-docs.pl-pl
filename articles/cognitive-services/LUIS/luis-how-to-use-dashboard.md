@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: v-geberr
-ms.openlocfilehash: 4e117aa734c551f76c3602f81e3e2ebc6aa9f337
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c7ef38e2f2edaf795d3d76706afd4aa09b3b6959
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349804"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110052"
 ---
 # <a name="application-dashboard"></a>Pulpit nawigacyjny aplikacji
 Pulpit nawigacyjny aplikacji umożliwia monitorowanie aplikacji jeden rzut oka. **Pulpitu nawigacyjnego** są wyświetlane po otwarciu aplikacji, klikając nazwę aplikacji **Moje aplikacje** następnie wybierz opcję **pulpitu nawigacyjnego** z górnym panelu. 
@@ -69,7 +69,7 @@ Aby wybrać okres, aby wyświetlić na wykresie:
 2. Z listy wybierz okres, a następnie kliknij strzałkę Wstecz ![Strzałka wstecz](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) Aby wyświetlić na wykresie.
 
 ### <a name="key-usage"></a>Użycie klucza
-Liczba trafień używane z klucza subskrypcji aplikacji. Aby uzyskać więcej informacji o kluczach subskrypcji, zobacz [kluczy w LUIS](luis-concept-keys.md). 
+Liczba trafień używane z klucza punkt końcowy aplikacji. Aby uzyskać więcej informacji o kluczach punktu końcowego, zobacz [kluczy w LUIS](luis-concept-keys.md). 
   
 ## <a name="intent-breakdown"></a>Podział konwersji
 **Podział zamiar** przedstawia podział na podstawie zniesławiających etykietą lub trafień punktu końcowego lokalizacji docelowych. Ten wykres podsumowania przedstawia względnego każdego zamiar w aplikacji. Po umieszczeniu wskaźnika myszy na wycinek Zobacz konwersji nazwy i które reprezentuje procent całkowitej liczby trafień etykietą zniesławiających/punktu końcowego. 

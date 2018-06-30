@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 338df0e258f66b6639e59a4fe31b6cfb6c283dd3
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 16275ddc4d4ad85bdac54244ceeec568603fdfef
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045531"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112103"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Mapowanie schematu w przypadku działania kopiowania
 W tym artykule opisano, jak aktywność kopiowania fabryki danych Azure mapowania schematu i mapowanie typu danych ze źródła danych do zbiornika danych kiedy wykonać kopię danych.
@@ -52,7 +52,7 @@ Można określić **columnMappings** w **typeProperties** sekcji działanie kopi
 
 #### <a name="explicit-column-mapping-example"></a>Przykładowe mapowanie kolumny jawne
 
-W tym przykładzie Tabela wejściowa ma strukturę i wskazuje tabelę w bazie danych SQL lokalnie.
+W tym przykładzie Tabela wejściowa ma strukturę i wskazuje tabelę w lokalnej bazie danych SQL.
 
 ```json
 {

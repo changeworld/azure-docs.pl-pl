@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/24/2018
+ms.date: 06/26/2018
 ms.author: ryanwi
-ms.openlocfilehash: f128947cf3ac0a2afab23d41f101c1b0d7624397
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 993d5c804490540a9c71647f52692fb55b27c405
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641955"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113303"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Przygotowywanie środowiska deweloperskiego w systemie Windows
 > [!div class="op_single_selector"]
@@ -64,8 +64,8 @@ Jeśli potrzebujesz tylko zestawu SDK, możesz zainstalować ten pakiet:
 * [Instalowanie zestawu SDK usługi Microsoft Azure Service Fabric][core-sdk]
 
 Bieżące wersje:
-* Sieć szkieletowa usług zestawu SDK i narzędzia 3.1.283
-* Środowisko uruchomieniowe usługi sieć szkieletowa 6.2.283
+* Sieć szkieletowa usług zestawu SDK i narzędzia 3.1.301
+* Środowisko uruchomieniowe usługi sieć szkieletowa 6.2.301
 * Service Fabric Tools for Visual Studio 2015 2.1.20180510.2
 * Program Visual Studio 2017 15.7 obejmuje narzędzia Service Fabric Tools for Visual Studio 2.1.20180423.1 
 

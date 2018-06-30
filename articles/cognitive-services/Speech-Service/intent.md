@@ -10,12 +10,12 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 38f7f038a803546adb83245519efc5de0c0d1599
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 1c9c1e2d54ccb200ef009be3566f6da9ced01175
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045014"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111171"
 ---
 # <a name="sample-for-intent-recognition"></a>Przykładowe rozpoznawania konwersji
 
@@ -23,7 +23,7 @@ ms.locfileid: "37045014"
 > Aby uzyskać instrukcje dotyczące pobierania w tym przykładzie i innych użytkowników, zobacz [przykłady dotyczące zestawu SDK mowy](samples.md).
 
 > [!NOTE]
-> Najpierw uzyskać klucz subskrypcji. W przeciwieństwie do innych usług obsługiwanych przez zestaw SDK kognitywnych mowy usługi usługi rozpoznawania zamiar wymaga klucza określonej subskrypcji. [W tym miejscu](https://www.luis.ai) można znaleźć dodatkowe informacje na temat technologii rozpoznawania konwersji, a także informacje o sposobie pozyskania klucza subskrypcji. Zastąp klucz subskrypcji, region usługi i identyfikator AppId konwersji modelu w odpowiednim miejscu w przykładach.
+> Najpierw uzyskać klucz subskrypcji. W przeciwieństwie do innych usług obsługiwanych przez zestaw SDK kognitywnych mowy usługi usługi rozpoznawania zamiar wymaga klucza określonej subskrypcji. [W tym miejscu](https://www.luis.ai) można znaleźć dodatkowe informacje na temat technologii rozpoznawania konwersji, a także informacje o sposobie pozyskania klucza subskrypcji. Zastąp własnego klucza subskrypcji [regionie Twojej subskrypcji](regions.md)i AppId konwersji modelu w odpowiednich miejscach w przykładach.
 
 > [!NOTE]
 > Dla wszystkich przykłady poniżej następujące deklaracje najwyższego poziomu powinny być stosowane:

@@ -10,15 +10,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: bwren
-ms.openlocfilehash: 5719dc3719739fb561626e307ee295729752c1fa
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.component: na
+ms.openlocfilehash: e47e8cbd209ea34317ca9b176a2c4b0fef10a2b2
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297757"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37133085"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Przenoszenie na platformę Azure portalu OMS
 Dziękujemy za korzystanie z portalu OMS. Firma Microsoft zaleca się przez działem pomocy technicznej i przejdź do silnie inwestycji w naszych usług zarządzania i monitorowania. Jedna część opinię heard wielokrotnie klientów jest konieczność obsługi pojedynczego użytkownika monitorować i zarządzać nimi, zarówno lokalnie, jak i obciążeń Azure. Prawdopodobnie wiesz, portalu Azure Centrum dla wszystkich usług platformy Azure, oferuje rozbudowane Zarządzanie doświadczenia z możliwości, takie jak pulpity nawigacyjne dla funkcji przypinania zasobów, inteligentnego wyszukiwanie zasobów znajdowania i znakowanie dla zarządzania zasobami. Konsolidacja i usprawnić przepływ pracy zarządzania i monitorowania, możemy rozpoczęto Dodawanie możliwości portalu OMS do portalu Azure. Mamy przyjemność poinformować, że większość funkcji portalu OMS są teraz częścią portalu Azure. W rzeczywistości niektóre z nowych funkcji, takich jak usługi Traffic Manager są dostępne tylko w portalu Azure. Istnieje tylko kilka luk pozostałą, najbardziej impactful jest pięć rozwiązań, które są nadal w procesie do przeniesienia do portalu Azure. Jeśli nie używasz tych funkcji, można wykonywać wszystkie obiekty, które wcześniej czynności w portalu OMS z portalu Azure i inne. Jeśli jeszcze tego nie zrobiono, zaleca się uruchamiania przy użyciu portalu Azure już dziś! 
@@ -94,7 +95,7 @@ Z obsługą programu [zapytania zasobów między](log-analytics-cross-workspace-
 
 
 ## <a name="azure-network-security-group-analytics"></a>Analiza sieciowej grupy zabezpieczeń platformy Azure
-[Rozwiązania analizy grupy zabezpieczeń sieci Azure](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) zostaną zastąpione z ostatnio uruchomionego [analizy ruchu](../network-watcher/traffic-analytics.md) zapewniające wgląd w działania użytkowników i aplikacji w sieciach w chmurze. Analiza ruchu pomaga inspekcji aktywność sieci, zabezpieczenia aplikacji i danych organizacji, zoptymalizować wydajność przetwarzania obciążenia i pozostać zgodne. 
+[Rozwiązania analizy grupy zabezpieczeń sieci Azure](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) zostaną zastąpione z ostatnio uruchomionego [analizy ruchu](https://azure.microsoft.com/en-in/blog/traffic-analytics-in-preview/) zapewniające wgląd w działania użytkowników i aplikacji w sieciach w chmurze. Analiza ruchu pomaga inspekcji aktywność sieci, zabezpieczenia aplikacji i danych organizacji, zoptymalizować wydajność przetwarzania obciążenia i pozostać zgodne. 
 
 To rozwiązanie analizuje przepływu NSG dzienniki i zapewnia wgląd w informacje poniżej.
 
@@ -105,7 +106,7 @@ To rozwiązanie analizuje przepływu NSG dzienniki i zapewnia wgląd w informacj
 - Zabezpieczenia, w tym złośliwego ruchu, internetowych, aplikacji lub maszyn wirtualnych próby dostępu do Internetu Otwórz porty.
 - Wykorzystanie pojemności, co pomaga wyeliminować problemy dotyczące inicjowania obsługi administracyjnej lub niedostateczne wykorzystanie zasobów.
 
-Można nadal zależą od ustawień diagnostycznych, aby wysłać dzienniki grupy NSG do analizy dzienników, istniejące zapisane wyszukiwania, alerty, pulpity nawigacyjne będą nadal działać. Klienci, którzy zainstalowali rozwiązania można nadal używać go deklarujące. Uruchamianie czerwca 20 rozwiązania NSG zostaną usunięte z portalu marketplace i dostępne za pośrednictwem Wspólnoty jako [szablonie Szybki Start Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights).
+Można nadal zależą od ustawień diagnostycznych, aby wysłać dzienniki grupy NSG do analizy dzienników, istniejące zapisane wyszukiwania, alerty, pulpity nawigacyjne będą nadal działać. Klienci, którzy zainstalowali rozwiązania można nadal używać go deklarujące. Uruchamianie czerwca 20 rozwiązania analizy grupy zabezpieczeń sieci zostaną usunięte z portalu marketplace i dostępne za pośrednictwem Wspólnoty jako [szablonie Szybki Start Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights).
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Zobacz [często zadawane pytania przejścia z portalu OMS do portalu Azure Log Analytics użytkowników](log-analytics-oms-portal-faq.md) wskazówki dotyczące przenoszenia z portalu OMS do portalu Azure.

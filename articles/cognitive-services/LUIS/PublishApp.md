@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 12a63e65a739be08d436f8f1b53df566255b1fb1
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: ad5ef58536bb6cc7f2c754f2e5c4487a3ffe96f2
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36322058"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112830"
 ---
 # <a name="publish-your-trained-app"></a>Publikowanie aplikacji przeszkolone
 Po zakończeniu tworzenia i testowania aplikacji LUIS go opublikować. Po opublikowaniu aplikacji strony publikowania zawiera wszystkie skojarzone HTTP [punkty końcowe](luis-glossary.md#endpoint). Te punkty końcowe na [region](luis-reference-regions.md) i na [klucza](Manage-Keys.md), następnie są zintegrowane z dowolnej aplikacji klienta, chatbot lub wewnętrznej bazy danych. 
@@ -48,7 +48,7 @@ W **ustawienia usług zewnętrznych**, **włączyć Priming mowy** wyboru pozwal
 Po włączeniu tej funkcji publikowania aplikacji. Podczas publikowania aplikacji LUIS modelu aplikacji są wysyłane do usługi mowy do zapisują usługi mowy. Informacje o modelu jest **nie** używane poza własnej usługi. 
 
 Aby można było wykonywać plucia mowy, należy następujące informacje do użycia w [mowy SDK](../speech-service/speech-sdk-reference.md):
-* Klucz LUIS subskrypcji.
+* Klucz punktu końcowego LUIS.
 * Identyfikator LUIS aplikacji.
 * Domeny punktu końcowego określane jako "Nazwa hosta" w zestawie SDK mowy, takie jak "westus.api.cognitive.microsoft.com", gdzie pierwszy poddomeny to region, w którym aplikacja została opublikowana.
 
@@ -129,7 +129,7 @@ Ta tabela odzwierciedla wygodny sposób publikowania konfiguracji w programie pu
 
 Trasy adresu URL jest tworzony z regionu i identyfikator aplikacji. W przypadku publikowania w różnych regionach lub w innych aplikacjach, adres URL punktu końcowego można konstruować przez zmianę wartości Identyfikatora regionu i aplikacji. 
 
-* Wybierz miejsca produkcyjnego i **publikowania** przycisku. Podczas publikowania zakończy się powodzeniem, umożliwia dostęp do aplikacji LUIS wyświetlanych końcowego adresu URL. 
+* Wybierz miejsce produkcyjne i przycisk **Publish** (Publikuj). Podczas publikowania zakończy się powodzeniem, umożliwia dostęp do aplikacji LUIS wyświetlanych końcowego adresu URL. 
 
 ### <a name="optional-query-string-parameters"></a>Parametry ciągu zapytania opcjonalne
 Następujące parametry ciągu zapytania mogą służyć do adresu URL punktu końcowego:

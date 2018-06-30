@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 28fde09fa9291fbcd64ce4542a008f48dd0018d1
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 8d8620a1c53037be6f1a33083f41964655a04921
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265256"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112120"
 ---
 # <a name="data-extraction"></a>Wyodrębnianie danych
 LUIS daje możliwość pobrania informacji z zniesławiających języka naturalnego użytkownika. Informacje są wyodrębniane w sposób, że może służyć przez program, aplikacji lub chatbot podejmowania żadnych działań.
@@ -26,7 +26,7 @@ LUIS zawiera dane publikowane [punktu końcowego](luis-glossary.md#endpoint). **
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-`appID` Jest dostępna w **ustawienia** strony z LUIS aplikacji, a także część adresu URL (po `/apps/`) podczas edytowania, aplikacja LUIS. `subscription-key` Jest punktu końcowego używany do wykonywania zapytań w aplikacji. Za pomocą klucza tworzenia/starter wolnego podczas nauki obsługi LUIS, ważne jest, aby zmienić wartość klucza subskrypcji do klucza, który obsługuje Twojej [oczekiwano użycia LUIS](luis-boundaries.md#key-limits). `timezoneOffset` Jednostka jest minut.
+`appID` Jest dostępna w **ustawienia** strony z LUIS aplikacji, a także część adresu URL (po `/apps/`) podczas edytowania, aplikacja LUIS. `subscription-key` Jest punktu końcowego używany do wykonywania zapytań w aplikacji. Za pomocą klucza tworzenia/starter wolnego podczas nauki obsługi LUIS, ważne jest, aby zmienić klucz punktu końcowego na klucz, który obsługuje Twojej [oczekiwano użycia LUIS](luis-boundaries.md#key-limits). `timezoneOffset` Jednostka jest minut.
 
 **Odpowiedzi HTTPS** zawiera wszystkie informacje zamiar i jednostek, LUIS można określić oparte na bieżący model publikowanych albo tymczasowym czy produkcyjnym punktu końcowego. Punkt końcowy adres URL znajduje się na [LUIS] [ LUIS] witryny sieci Web **publikowania** strony. 
 
@@ -540,7 +540,7 @@ Pattern.any jednostki to jednostki o zmiennej długości, używany w szablonie z
 ```
 
 
-## <a name="sentiment-analysis"></a>Analiza opinii
+## <a name="sentiment-analysis"></a>Analiza tonacji
 Jeśli skonfigurowano analizy wskaźniki nastrojów klientów, odpowiedź w formacie json LUIS obejmuje analizy wskaźniki nastrojów klientów. Dowiedz się więcej na temat analizy wskaźniki nastrojów klientów w [Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) dokumentacji.
 
 ### <a name="sentiment-data"></a>Wskaźniki nastrojów klientów danych

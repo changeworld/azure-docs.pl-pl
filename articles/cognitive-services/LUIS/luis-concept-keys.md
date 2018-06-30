@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/23/2018
 ms.author: v-geberr
-ms.openlocfilehash: 70bca3b181e02f42da50e827154193936544131a
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: d22b2ba332996d31b1db4ef4d095f0a4b443ba16
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36263822"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109362"
 ---
 # <a name="keys-in-luis"></a>Klucze w LUIS
 LUIS wykorzystuje dwa klucze: [tworzenia](#programmatic-key) i [punktu końcowego](#endpoint-key). Po utworzeniu konta LUIS tworzenia klucza jest tworzony automatycznie. Gdy wszystko będzie gotowe do publikowania aplikacji LUIS należy [Utwórz klucz punktu końcowego](luis-how-to-azure-subscription.md#create-luis-endpoint-key), [Przypisz do niego](Manage-keys.md#assign-endpoint-key) do aplikacji LUIS, i [korzystania z niego zapytanie punktu końcowego](#use-endpoint-key-in-query). 
@@ -22,7 +22,7 @@ LUIS wykorzystuje dwa klucze: [tworzenia](#programmatic-key) i [punktu końcoweg
 |Klucz|Przeznaczenie|
 |--|--|
 |[Tworzenie klucza](#programmatic-key)|Tworzenie, publikowanie i zarządzanie współpracownicy, przechowywanie wersji|
-|[Klucz punktu końcowego](#endpoint-key)| Wykonywanie zapytania|
+|[klucz punktu końcowego](#endpoint-key)| Wykonywanie zapytania|
 
 Ważne jest, aby tworzyć aplikacje LUIS w [regionów](luis-reference-regions.md#publishing-regions) również miejscu do publikowania i zapytania.
 
@@ -40,7 +40,7 @@ Kiedy mają być **zapytań punktu końcowego produkcji**, Utwórz Azure [subskr
 > [!CAUTION]
 > Dla wygody wiele próbek użyć klucza tworzenie, ponieważ zapewnia kilka wywołania punktu końcowego w jego [przydziału](luis-boundaries.md#key-limits).  
 
-## <a name="endpoint-key"></a>Klucz punktu końcowego
+## <a name="endpoint-key"></a>klucz punktu końcowego
  Jeśli wymagane jest **zapytań punktu końcowego produkcji**, Utwórz [LUIS klucza](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) w portalu Azure. Zapamiętaj nazwę używaną do tworzenia klucza, należy po dodaniu klucza do aplikacji...
 
 Po zakończeniu procesu subskrypcji LUIS [Dodaj klucz](Manage-keys.md#assign-endpoint-key) z aplikacją na **publikowania** strony. 
@@ -54,7 +54,7 @@ Nie należy używać do tworzenia aplikacji LUIS klucz punktu końcowego.
 ## <a name="use-endpoint-key-in-query"></a>Klucz punktu końcowego używany w zapytaniu
 Punkt końcowy LUIS akceptuje dwa style zapytania, oba rozwiązania używają punktu końcowego o klucza, ale w różnych miejscach:
 
-|Zlecenie|Przykładowy adres url i klucza lokalizacji|
+|zlecenie|Przykładowy adres url i klucza lokalizacji|
 |--|--|
 |[GET](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)|https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/98998dcf-66d2-468e-840a-7c7c57549b5a?subscription-key=your-endpoint-key-here&verbose=true&timezoneOffset=0&q=turn na kontrolki<br><br>wartość ciągu kwerendy `subscription-key`<br><br>Zmień wartość zapytania punktu końcowego dla `subscription-key` z tworzenia klucza (początkową), aby nowy klucz punktu końcowego, aby można było używać częstotliwość klucza przydziału LUIS punktu końcowego. Jeśli tworzenie klucza i przypisz klucz ale nie należy zmieniać wartości zapytania punktu końcowego dla klucza subskrypcji ", nie używasz limitu przydziału klucza punktu końcowego.|
 |[POST](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)| https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/98998dcf-66d2-468e-840a-7c7c57549b5a<br><br> wartość nagłówka `Ocp-Apim-Subscription-Key`<br><br>Zmień wartość zapytania punktu końcowego dla `Ocp-Apim-Subscription-Key` z tworzenia klucza (początkową), aby nowy klucz punktu końcowego, aby można było używać częstotliwość klucza przydziału LUIS punktu końcowego. Jeśli tworzenia klucza i przypisz klucza, ale nie należy zmieniać wartości zapytania punktu końcowego dla `Ocp-Apim-Subscription-Key`, limitu przydziału klucza punktu końcowego nie jest używany.|
@@ -62,10 +62,10 @@ Punkt końcowy LUIS akceptuje dwa style zapytania, oba rozwiązania używają pu
 ## <a name="api-usage-of-ocp-apim-subscription-key"></a>Użycie Ocp-Apim-subskrypcji-klucza interfejsu API
 Interfejsy API LUIS Użyj wartości header `Ocp-Apim-Subscription-Key`. Nazwa nagłówka nie zmienia oparte na które klucza i zestaw interfejsów API używasz. Ustaw nagłówek do tworzenia klucza do tworzenia interfejsów API. Jeśli używasz punktu końcowego, ustawić nagłówek klucz punktu końcowego. 
 
-Nie można przekazać klucz punktu końcowego do tworzenia interfejsów API. Jeśli to zrobisz, otrzymasz błąd 401 — Odmowa dostępu z powodu subskrypcji nieprawidłowy klucz. 
+Nie można przekazać klucz punktu końcowego do tworzenia interfejsów API. Jeśli to zrobisz, otrzymasz błąd 401 — Odmowa dostępu z powodu klucza nieprawidłowy punkt końcowy. 
 
 ## <a name="key-limits"></a>Ograniczenia klucza
-Zobacz [klucza limity](luis-boundaries.md#key-limits) i [regiony platformy Azure](luis-reference-regions.md). Tworzenia klucza jest wolną i używaną do tworzenia. Klucz LUIS subskrypcja ma warstwę bezpłatna, ale musi być utworzone przez użytkownika i skojarzone z aplikacją LUIS na **publikowania** strony. Nie można używać do tworzenia, ale tylko kwerendy punktu końcowego.
+Zobacz [klucza limity](luis-boundaries.md#key-limits) i [regiony platformy Azure](luis-reference-regions.md). Tworzenia klucza jest wolną i używaną do tworzenia. Klucz punktu końcowego LUIS ma warstwę bezpłatna, ale musi być utworzone przez użytkownika i skojarzone z aplikacją LUIS na **publikowania** strony. Nie można używać do tworzenia, ale tylko kwerendy punktu końcowego.
 
 Regiony publikowania różnią się od tworzenia regionów. Upewnij się, że tworzenie aplikacji w polu tworzenia region do publikowania żądany region.
 

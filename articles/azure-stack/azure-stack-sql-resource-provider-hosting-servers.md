@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 06/29/2018
 ms.author: jeffgilb
-ms.openlocfilehash: af820f90c5d8822dbdaa768b16360d534fd47828
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 74d888ffe28e5428b47bfc73122518c22d0f0918
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060046"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128711"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Dodaj serwery hostingu dla dostawcy zasobów SQL
 
@@ -121,7 +121,8 @@ Konfigurowanie SQL zawsze włączone wystąpienia wymaga wykonania dodatkowych k
 > [!NOTE]
 > Dostawca zasobów SQL karty _tylko_ obsługuje Enterprise programu SQL 2016 z dodatkiem SP1 lub później wystąpień dla zawsze włączony. Nowe funkcje SQL, takie jak automatyczne wstępne wypełnianie w ramach tej konfiguracji karty.
 
-Ponadto należy włączyć [automatyczne wstępne wypełnianie](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) w każdej grupie dostępności dla każdego wystąpienia programu SQL Server.
+### <a name="automatic-seeding"></a>Automatyczne wstępne wypełnianie
+Należy włączyć [automatyczne wstępne wypełnianie](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) w każdej grupie dostępności dla każdego wystąpienia programu SQL Server.
 
 Aby włączyć automatyczne wstępne wypełnianie we wszystkich wystąpieniach, edytować, a następnie uruchom poniższe polecenie SQL dla poszczególnych wystąpień:
 
@@ -136,6 +137,18 @@ W wystąpieniach dodatkowej edytować, a następnie uruchom poniższe polecenie 
 
   ```
   ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
+  GO
+  ```
+
+### <a name="configure-contained-database-authentication"></a>Konfigurowanie uwierzytelniania zawartej bazy danych
+Przed dodaniem zawartej bazy danych do grupy dostępności, upewnij się, że opcja serwera uwierzytelniania zawartej bazy danych jest ustawiona na 1 na każde wystąpienie serwera, który jest hostem repliki dostępności dla grupy dostępności. Aby uzyskać więcej informacji, zobacz [zawarte bazy danych uwierzytelniania opcji konfiguracji serwera](https://docs.microsoft.com/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017).
+
+Aby ustawić opcję zawartej bazy danych uwierzytelniania serwera dla każdego wystąpienia, należy używać tych poleceń:
+
+  ```
+  EXEC sp_configure 'contained database authentication', 1
+  GO
+  RECONFIGURE
   GO
   ```
 

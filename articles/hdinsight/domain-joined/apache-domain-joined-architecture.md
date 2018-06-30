@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: omidm
-ms.openlocfilehash: f4380f5d6ec379d5807f697294623a672bd270ae
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 8503534031dc5774e64c58edd3e158162a5a6aee
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715245"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110459"
 ---
 # <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>Planowanie klastrów Hadoop przyłączonych do domeny platformy Azure w usłudze HDInsight
 
@@ -50,7 +50,7 @@ Poniższy zrzut ekranu przedstawia jednostki Organizacyjnej utworzone w domenie 
 HDInsight aktualnie obsługuje tylko AAD DS jako kontroler domeny głównej, że klaster będzie się komunikował z Kerberise klastra. Jednak innych złożonych konfiguracji AD są również możliwe tak długo, jak prowadzi do włączania dostępu HDI AAD DS.
 
 - **[Azure Active Directory Domain Services (usługi AAD DS)](../../active-directory-domain-services/active-directory-ds-overview.md)**: ta usługa udostępnia domeny zarządzanej, które są całkowicie zgodne z usługi Active Directory systemu Windows Server. Microsoft odpowiada on za zarządzanie, poprawki i domeny w konfiguracji wysokiej Available(HA) monitorowania. Można wdrożyć klaster bez obaw o zachowaniu kontrolerów domeny. Użytkownicy, grupy i hasła są synchronizowane z Azure Active Directory(AAD) [jednokierunkowe Synchronizuj z usługi AAD AAD usług domenowych w usłudze], włączanie użytkownikom zalogować się do klastra przy użyciu tych samych poświadczeń firmowych. Aby uzyskać więcej informacji, zobacz [sposób konfigurowania domeny w usłudze HDInsight clusters przy użyciu usługi AAD DS](./apache-domain-joined-configure-using-azure-adds.md).
-- **Lokalnej usługi AD lub AD na maszynach wirtualnych IaaS**: Jeśli masz usługi AD z lokalnymi lub innych AD bardziej złożonych konfiguracji dla domeny, można zsynchronizować te tożsamości usługi AAD przy użyciu AD Connect, a następnie włącz dzierżawy usługi AAD DS na danej reklamy. Ponieważ protokół Kerberos opiera się na skrótów haseł, konieczne będzie [Włączanie synchronizacji skrótów haseł w usłudze Katalogowej AAD](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). Jeśli używasz federacji z AD federation Services (AD FS), można opcjonalnie Konfiguracja synchronizacji skrótów haseł jako zapasowy na wypadek awarii infrastruktury usług AD FS. Aby uzyskać więcej informacji, zobacz [Włączanie synchronizacji skrótów haseł z synchronizacją AAD Connect](../../active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md). Przy użyciu lokalnej usługi AD lub AD w samych maszyn wirtualnych IaaS, bez usługi AAD i usługa AAD DS nie jest obsługiwana konfiguracja za dołączenie do domeny klastra HDI.
+- **Lokalnej usługi AD lub AD na maszynach wirtualnych IaaS**: Jeśli masz lokalnej usługi AD lub innych złożonych AD konfiguracje dla domeny, można zsynchronizować te tożsamości usługi AAD przy użyciu AD Connect, a następnie włącz dzierżawy usługi AAD DS na danej reklamy. Ponieważ protokół Kerberos opiera się na skrótów haseł, konieczne będzie [Włączanie synchronizacji skrótów haseł w usłudze Katalogowej AAD](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). Jeśli używasz federacji z AD federation Services (AD FS), można opcjonalnie Konfiguracja synchronizacji skrótów haseł jako zapasowy na wypadek awarii infrastruktury usług AD FS. Aby uzyskać więcej informacji, zobacz [Włączanie synchronizacji skrótów haseł z synchronizacją AAD Connect](../../active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md). Przy użyciu lokalnej usługi AD lub AD na maszynach wirtualnych IaaS samodzielnie, bez usługi AAD i usługa AAD DS nie jest obsługiwana konfiguracja za dołączenie do domeny klastra HDI.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Konfigurowanie klastrów HDInsight przyłączonych do domeny](apache-domain-joined-configure-using-azure-adds.md).

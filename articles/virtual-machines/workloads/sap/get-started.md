@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7f0705f2fb14bc44a7738f38bc3ef53a6359dfb4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4b3024b451ddf08b6b7ab171238ae45edbafc58a
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657775"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110966"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Za pomocą platformy Azure, umożliwiające hosting i uruchamianie scenariuszy obciążenia SAP
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -301,7 +301,7 @@ Oprócz obsługi scenariuszy SAP NetWeaver z innego systemu DBMS na platformie A
 
 Platforma Azure ma natywnej oferty maszyny wirtualnej platformy Azure, które kiedykolwiek rośnie w wielkości zasobów Procesora i pamięci, aby pokrywał obciążenia SAP, który wykorzystuje języki SAP HANA. Aby uzyskać więcej informacji na ten obszar wyszukania dokumentów w sekcji SAP HANA na maszynach wirtualnych platformy Azure."
 
-Unikatowość platformy Azure i SAP HANA jest to oferta unikatowy, która ustawia Azure oprócz konkurencji. Aby włączyć hosting więcej pamięci i zasobów procesora CPU wymagających SAP scenariusze obejmujące SAP HANA, platforma Azure oferuje użycie klienta dedykowanego sprzętu bez systemu operacyjnego na potrzeby uruchamiania wdrożenia SAP HANA, które wymagają do 20 TB (60 TB skalowalnych w poziomie) pamięci dla S/4HANA lub innych obciążeń SAP HANA. To unikatowy Azure rozwiązanie programu SAP HANA na platformie Azure (wystąpienia duże) pozwala na uruchamianie SAP HANA na dedykowanym sprzęcie bez systemu operacyjnego z warstwy aplikacji SAP lub obciążenia pośredniczącym warstwy hostowanej w macierzysty maszynach wirtualnych platformy Azure. To rozwiązanie jest udokumentowany w różnych dokumentach w sekcji "SAP HANA na platformie Azure (wystąpienia duże)".   
+Unikatowość platformy Azure i SAP HANA jest to oferta unikatowy, która ustawia Azure oprócz konkurencji. Aby włączyć hosting więcej pamięci i zasobów procesora CPU wymagających SAP scenariusze obejmujące SAP HANA Azure oferuje użycie klienta dedykowanego sprzętu bez systemu operacyjnego na potrzeby uruchamiania wdrożenia SAP HANA, które wymagają do 20 TB (60 TB skalowalnych w poziomie) pamięci dla S/4HANA lub innych obciążeń SAP HANA. To unikatowy Azure rozwiązanie programu SAP HANA na platformie Azure (wystąpienia duże) pozwala na uruchamianie SAP HANA na dedykowanym sprzęcie bez systemu operacyjnego z warstwy aplikacji SAP lub obciążenia pośredniczącym warstwy hostowanej w macierzysty maszynach wirtualnych platformy Azure. To rozwiązanie jest udokumentowany w różnych dokumentach w sekcji "SAP HANA na platformie Azure (wystąpienia duże)".   
 
 Wymagania dotyczące integracji tożsamości i Single-Sign-On przy użyciu usługi Azure Directory działania do innych składników programu SAP i SAP SaaS również hosting SAP scenariusze obciążenia na platformie Azure można utworzyć lub oferuje PaaS. Listę takich integracji i scenariusze Single-Sign-On z usługi Azure Active Directory (AAD) i SAP jednostek jest opisane i opisano w sekcji "Integracja tożsamości SAP usługi AAD i Single-Sign-On."
 
@@ -480,7 +480,7 @@ Zaktualizowano: Czerwiec 2017 r.
 ### <a name="using-azure-site-recovery-for-sap-workload"></a>Za pomocą usługi Azure Site Recovery dla obciążenia SAP
 Nazwa: SAP NetWeaver: tworzenie rozwiązanie odzyskiwania po awarii z usługi Azure Site Recovery
 
-Podsumowanie: W tym dokumencie opisano sposób sposobu użycia usługi Azure Site Recovery na potrzeby obsługi scenariuszy odzyskiwania po awarii. W przypadkach gdy Azure jest używana jako lokalizację odzyskiwania po awarii dla orientacji poziomej SAP lokalnych przy użyciu usług Azure Site Recovery. Inny scenariusz opisany w dokumencie to w przypadku odzyskiwania po awarii Azure-Azure (A2A) i sposób zarządzania z usługi Azure Site Recovery.  
+Podsumowanie: W tym dokumencie opisano sposób sposobu użycia usługi Azure Site Recovery na potrzeby obsługi scenariuszy odzyskiwania po awarii. W przypadkach gdy Azure jest używana jako lokalizację odzyskiwania po awarii dla orientacji poziomej SAP lokalnymi przy użyciu usług Azure Site Recovery. Inny scenariusz opisany w dokumencie to w przypadku odzyskiwania po awarii Azure-Azure (A2A) i sposób zarządzania z usługi Azure Site Recovery.  
 
 Zaktualizowano: Sierpnia 2017 r.
 

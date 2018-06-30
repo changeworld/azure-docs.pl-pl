@@ -19,7 +19,7 @@ Po za pomocą podstawowych ustawień i wybierz tylko subskrypcję, powłoki chmu
 Instaluje udziału plików jako `clouddrive` w Twojej `$Home` katalogu. To działanie jednorazowe i udziału plików automatycznie instaluje się w kolejnych sesjach. 
 
 > [!NOTE]
-> Dla bezpieczeństwa każdy użytkownik powinien obsługiwać własne magazyn.  Do kontroli dostępu opartej na rolach (RBAC), użytkownicy muszą mieć dostęp współautora lub nowszej.
+> Zabezpieczeń każdy użytkownik powinien udostępniać swoje własne konta magazynu.  Do kontroli dostępu opartej na rolach (RBAC) użytkownicy musi mieć dostęp współautora lub powyżej w magazynie konta poziomu.
 
 W Bash, udziału plików zawiera także obraz 5 GB, który jest tworzony której automatycznie będzie się powtarzał danych w sieci `$Home` katalogu. 
 

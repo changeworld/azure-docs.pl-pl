@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 74a660f7240b9ae6138c402dbbb418bbc665dc3c
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 5f25213d8d1fbc95aa419c86ca5b780f345952ed
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098706"
+ms.locfileid: "37130203"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Komunikatami o błędach z rozszerzenia serwera NPS uwierzytelnianie wieloskładnikowe Azure
 
@@ -96,7 +96,7 @@ Jeśli wystąpią jeden z tych błędów, zaleca się możesz [się z pomocą te
 
 ### <a name="troubleshoot-user-accounts"></a>Rozwiązywanie problemów z kontami użytkownika
 
-Jeśli użytkownicy są [wystąpił problem w trakcie weryfikacji dwuetapowej](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-troubleshoot.md), pomóc w ich własnym diagnozowanie problemów. 
+Jeśli użytkownicy są [wystąpił problem w trakcie weryfikacji dwuetapowej](end-user/current/multi-factor-authentication-end-user-troubleshoot.md), pomóc w ich własnym diagnozowanie problemów. 
 
 ### <a name="contact-microsoft-support"></a>Skontaktuj się z pomocą techniczną firmy Microsoft
 

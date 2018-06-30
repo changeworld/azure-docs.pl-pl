@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 2f34233a68bec506d9f69426d779aee8e493d759
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9314b8ae8dceb29a9aee63ba3093ab191d4fdef3
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31402067"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37116302"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Wyodrębniania, przekształcania i ładowania (ETL) na dużą skalę
 
@@ -81,11 +81,11 @@ ADLS również jest zoptymalizowana pod kątem wprowadzanie zdarzeń przy użyci
 
 #### <a name="considerations-for-both-storage-options"></a>Zagadnienia dotyczące obie opcje magazynu
 
-Do przekazywania zestawów danych w zakresie terabajtów, opóźnienie sieci może być poważny problem, zwłaszcza w przypadku, gdy dane pochodzą z lokalizacji lokalnego.  W takich przypadkach można użyć poniższych opcji:
+Do przekazywania zestawów danych w zakresie terabajtów, opóźnienie sieci może być poważny problem, szczególnie w przypadku, gdy dane pochodzi z lokalizacji lokalnej.  W takich przypadkach można użyć poniższych opcji:
 
 * Usługa Azure ExpressRoute: Azure ExpressRoute umożliwia tworzenie prywatnych połączeń między centrach danych platformy Azure i infrastruktury lokalnej. Połączenia te zapewniają niezawodne opcja transferowania dużych ilości danych. Aby uzyskać więcej informacji, zobacz [dokumentacja usługi Azure ExpressRoute](../../expressroute/expressroute-introduction.md).
 
-* "Offline" przekazywanie danych. Można użyć [usługi Import/Eksport Azure](../../storage/common/storage-import-export-service.md) na potrzeby wysłania dysków twardych z danymi umieszczanymi w centrum danych Azure. Dane najpierw zostało załadowane na obiektach blob magazynu Azure. Następnie można użyć [fabryki danych Azure](../../data-factory/v1/data-factory-azure-datalake-connector.md) lub [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) narzędzie można skopiować danych z obiektów blob magazynu Azure do usługi Data Lake Store.
+* "Offline" przekazywanie danych. Można użyć [usługi Import/Eksport Azure](../../storage/common/storage-import-export-service.md) na potrzeby wysłania dysków twardych z danymi umieszczanymi w centrum danych Azure. Dane najpierw zostało załadowane na obiektach blob magazynu Azure. Następnie można użyć [fabryki danych Azure](../../data-factory/connector-azure-data-lake-store.md) lub [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) narzędzie można skopiować danych z obiektów blob magazynu Azure do usługi Data Lake Store.
 
 ### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
 
@@ -133,9 +133,9 @@ Sqoop używa MapReduce, aby importować i eksportować dane, w celu zapewnienia 
 
 Apache Flume to usługa rozproszonej, niezawodny i dostępne wydajnie zbierania, agregację i przenoszenia dużych ilości danych dziennika. Flume ma architektura prosty i elastyczny, oparty na przesyłanie strumieniowe przepływów danych. Flume jest niezawodny i odpornych z mechanizmów dostosowywalne niezawodność i wiele mechanizmów trybu failover i odzyskiwania. Flume używa modelu proste extensible danych, który umożliwia stosowanie analityczne online.
 
-Apache Flume nie można używać z usługą Azure HDInsight.  Instalacja Hadoop lokalnego umożliwia Flume wysyłania danych do obiektów blob magazynu Azure lub usługi Azure Data Lake Store.  Aby uzyskać więcej informacji, zobacz [przy użyciu Flume Apache z usługą HDInsight](https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
+Apache Flume nie można używać z usługą Azure HDInsight.  Hadoop instalacji lokalnej można użyć Flume do wysyłania danych do obiektów blob magazynu Azure lub usługi Azure Data Lake Store.  Aby uzyskać więcej informacji, zobacz [przy użyciu Flume Apache z usługą HDInsight](https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
 
-## <a name="transform"></a>Przekształcenia
+## <a name="transform"></a>Przekształcanie
 
 Po danych istnieje w wybranej lokalizacji, należy go wyczyścić, łączyć lub przygotowania go do użycia określonego wzorca.  Hive, Pig i Spark SQL powinno się wszystkie dla tego rodzaju pracy.  Są one wszystkie obsługiwane w usłudze HDInsight. 
 

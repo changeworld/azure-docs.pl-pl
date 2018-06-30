@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/27/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8927b2a32956f73e75ac7b157ebad6bf6596ea88
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 656ba21abf06ad0f079e3ce425d3221724d195d4
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063633"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113582"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Obsługiwane scenariusze dla wystąpień dużych HANA
 W tym dokumencie opisano obsługiwane scenariusze wraz z ich szczegóły architektury dla HANA wystąpień duże (HLI).
@@ -81,17 +81,17 @@ W razie potrzeby można zdefiniować dodatkowe karty NIC samodzielnie. Jednak ni
 
 Powinna wyglądać dystrybucji dla jednostek o dwa adresy IP:
 
-Ethernet "A" powinny mieć przypisanego adresu IP spoza zakresu adresów puli adresów IP serwera, który przesłane do firmy Microsoft. Ten adres IP są używane do przechowywania w/etc/hosts systemu operacyjnego.
+- Ethernet "A" powinny mieć przypisanego adresu IP spoza zakresu adresów puli adresów IP serwera, który przesłane do firmy Microsoft. Ten adres IP są używane do przechowywania w/etc/hosts systemu operacyjnego.
 
-Ethernet "B" powinny mieć przypisanego adresu IP używanego do komunikacji systemu plików NFS. W związku z tym, czy te adresy **nie** muszą być utrzymywane w etc/hosts, aby zezwolić na ruch wystąpienia można instancji w ramach dzierżawy.
+- Ethernet "C" powinny mieć przypisanego adresu IP używanego do komunikacji systemu plików NFS. W związku z tym, czy te adresy **nie** muszą być utrzymywane w etc/hosts, aby zezwolić na ruch wystąpienia można instancji w ramach dzierżawy.
 
 W przypadku wdrażania replikacji systemu HANA lub HANA skalowalnych w poziomie Konfiguracja bloku o dwa adresy IP nie jest odpowiedni. Jeśli o przypisane tylko dwa adresy IP, która pragnie wdrożyć takiej konfiguracji, skontaktuj się z SAP HANA na zarządzania usługą Azure, aby uzyskać trzeci adres IP w innej sieci VLAN przypisane. Dla wystąpienia dużych HANA jednostek o trzy adresy IP przypisane do trzech portów kart obowiązują następujące reguły użycia:
 
 - Ethernet "A" powinny mieć przypisanego adresu IP spoza zakresu adresów puli adresów IP serwera, który przesłane do firmy Microsoft. Dlatego ten adres IP nie stosuje się do przechowywania w/etc/hosts systemu operacyjnego.
 
-- Ethernet "B" powinny mieć przypisanego adresu IP używanego do komunikacji z magazynem systemu plików NFS. Dlatego adresów tego typu nie powinna być utrzymywana w etc/hosts.
+- Ethernet "B" należy używać wyłącznie do przechowywania w itp/hostów do komunikacji między różnymi wystąpieniami. Te adresy również będą adresy IP, które mają zostać zachowane w konfiguracjach HANA skalowalnego w poziomie jako adresy IP, które używa HANA konfiguracji między węzłami.
 
-- Ethernet "C" należy używać wyłącznie do przechowywania w itp/hostów do komunikacji między różnymi wystąpieniami. Te adresy również będą adresy IP, które mają zostać zachowane w konfiguracjach HANA skalowalnego w poziomie jako adresy IP, które używa HANA konfiguracji między węzłami.
+- Ethernet "C" powinny mieć przypisanego adresu IP używanego do komunikacji z magazynem systemu plików NFS. Dlatego adresów tego typu nie powinna być utrzymywana w etc/hosts.
 
 - Ethernet "D" powinien być używany wyłącznie dla urządzenia STONITH dostępu dla rozrusznik. Jest to wymagane, podczas konfigurowania HANA System replikacji (HSR) i chcesz osiągnąć pracy awaryjnej automatycznie na system operacyjny za pomocą urządzenia na podstawie interwencja.
 

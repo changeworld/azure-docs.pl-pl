@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 5fbb4f8a15ee7ee8b6cecbe76391e2b2a7e4be1b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 1b6aea5152e9eb5152b400d74d834e31eb883458
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31515353"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110241"
 ---
 # <a name="api-management-access-restriction-policies"></a>Zasady ograniczeń dostępu do interfejsu API zarządzania
 W tym temacie znajdują się informacje na następujące zasady usługi API Management. Aby uzyskać informacje dotyczące dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -40,7 +40,7 @@ W tym temacie znajdują się informacje na następujące zasady usługi API Mana
 ### <a name="policy-statement"></a>Deklaracja zasad  
   
 ```xml  
-<check-header name="header name" failed-check-httpcode="code" failed-check-error-message="message" ignore-case="True">  
+<check-header name="header name" failed-check-httpcode="code" failed-check-error-message="message" ignore-case="true">  
     <value>Value1</value>  
     <value>Value2</value>  
 </check-header>  
@@ -115,7 +115,7 @@ W tym temacie znajdują się informacje na następujące zasady usługi API Mana
 |----------|-----------------|--------------|  
 |set-limit|Element główny.|Yes|  
 |api|Dodaj co najmniej jeden z tych elementów do narzuca ograniczenia szybkości wywołania interfejsów API w obrębie produktu. Produktu i interfejsu API wywołać szybkość, z jaką ograniczenia są stosowane niezależnie. Interfejs API może być przywoływany albo za pośrednictwem `name` lub `id`. Jeśli oba atrybuty są dostarczane, `id` będą używane i `name` zostaną zignorowane.|Nie|  
-|Operacja|Dodaj co najmniej jeden z tych elementów do narzuca ograniczenia szybkości wywołania operacji w obrębie interfejsu API. Produkt, interfejsu API i operacji należy wywołać szybkość, z jaką ograniczenia są stosowane niezależnie. Operacja może być przywoływany albo za pośrednictwem `name` lub `id`. Jeśli oba atrybuty są dostarczane, `id` będą używane i `name` zostaną zignorowane.|Nie|  
+|operacja|Dodaj co najmniej jeden z tych elementów do narzuca ograniczenia szybkości wywołania operacji w obrębie interfejsu API. Produkt, interfejsu API i operacji należy wywołać szybkość, z jaką ograniczenia są stosowane niezależnie. Operacja może być przywoływany albo za pośrednictwem `name` lub `id`. Jeśli oba atrybuty są dostarczane, `id` będą używane i `name` zostaną zignorowane.|Nie|  
   
 ### <a name="attributes"></a>Atrybuty  
   
@@ -270,7 +270,7 @@ W tym temacie znajdują się informacje na następujące zasady usługi API Mana
 |----------|-----------------|--------------|  
 |quota|Element główny.|Yes|  
 |api|Dodaj co najmniej jeden z tych elementów do nakładania przydział wywołania interfejsów API w obrębie produktu. Produktu i przydziały wywołania interfejsu API są stosowane niezależnie. Interfejs API może być przywoływany albo za pośrednictwem `name` lub `id`. Jeśli oba atrybuty są dostarczane, `id` będą używane i `name` zostaną zignorowane.|Nie|  
-|Operacja|Dodaj co najmniej jeden z tych elementów nakładanie przydział wywołanie w operacji w obrębie interfejsu API. Przydziały wywołania produktu, interfejsu API i operacji są stosowane niezależnie. Operacja może być przywoływany albo za pośrednictwem `name` lub `id`. Jeśli oba atrybuty są dostarczane, `id` będą używane i `name` zostaną zignorowane.|Nie|  
+|operacja|Dodaj co najmniej jeden z tych elementów nakładanie przydział wywołanie w operacji w obrębie interfejsu API. Przydziały wywołania produktu, interfejsu API i operacji są stosowane niezależnie. Operacja może być przywoływany albo za pośrednictwem `name` lub `id`. Jeśli oba atrybuty są dostarczane, `id` będą używane i `name` zostaną zignorowane.|Nie|  
   
 ### <a name="attributes"></a>Atrybuty  
   

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: v-geberr
-ms.openlocfilehash: 1f501981dd4b45f4d36188ef4c2aaa6cb11881a2
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: f5d1cf61ca7b8d8eeaed52fc3f45f8d4847ddda9
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36263757"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37108692"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>Strategie Enterprise LUIS aplikacji
 Przejrzyj te strategii projektowania aplikacji przedsiębiorstwa.
@@ -32,7 +32,7 @@ Wyznaczanie tylko jednej aplikacji jako wzorzec. Wszelkie zniesławiających, kt
 Zaplanuj okresowo [przeglądu zniesławiających punktu końcowego](label-suggested-utterances.md) active szkoleniowe, co dwa tygodnie, np. następnie ponownie ucz i ponownie opublikować. 
 
 ### <a name="assign-multiple-luis-keys-to-same-app"></a>Przypisywanie klawiszy wielu LUIS do tej samej aplikacji
-Jeśli aplikacja LUIS otrzyma jeden punkt końcowy trafień niż pozwala przydziału jednego klucza, Utwórz i przypisz więcej klucze do aplikacji LUIS. Tworzenie Menedżera ruchu lub zarządzanie zapytań punktu końcowego za pośrednictwem kluczy subskrypcji usługi równoważenia obciążenia. 
+Jeśli aplikacja LUIS otrzyma jeden punkt końcowy trafień niż pozwala przydziału jednego klucza, Utwórz i przypisz więcej klucze do aplikacji LUIS. Tworzenie Menedżera ruchu lub zarządzanie zapytań punktu końcowego za pośrednictwem kluczy punktu końcowego usługi równoważenia obciążenia. 
 
 ## <a name="when-your-monolithic-app-returns-wrong-intent"></a>Gdy wbudowanymi aplikacji zwraca niewłaściwy zamiar
 Jeśli aplikacja jest przeznaczona do prognozowania szerokiej gamy zniesławiających użytkownika, rozważ zaimplementowanie [modelu wysyłania](#dispatch-tool-and-model). Podzielenie wbudowanymi aplikacji umożliwia LUIS wykrywania fokus między intencje pomyślnie zamiast pobierania pomylić między intencje w aplikacji nadrzędnej i podrzędnej aplikacji. 

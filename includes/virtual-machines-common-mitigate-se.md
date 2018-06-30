@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/21/2018
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 49db6b625a9e4fc46fe414eb723dfccd890efd64
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b31e5cc3f99bdbb45aae6f9d71efdabdcc60f9c8
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34677363"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37138181"
 ---
 **Dokument ostatniej aktualizacji**: 21 maja 2018 3:00 PM PST.
 
@@ -28,7 +28,7 @@ Ponadto Azure rozszerza się użycie [pamięci, zachowując konserwacji](https:/
 >
 > W późne 2018 lutego, Intel Corporation opublikowane zaktualizowane [wskazówki poprawki mikrokodu](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/03/microcode-update-guidance.pdf) stan ich wersje mikrokodu, które poprawić stabilność i ograniczyć ostatnie luk w zabezpieczeniach ujawnione przez [Projektu Google Zero](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html). Środki zaradcze wprowadzone przez Azure [3 stycznia 2018](https://azure.microsoft.com/blog/securing-azure-customers-from-cpu-vulnerability/) nie dotyczy aktualizacji mikrokodu firmy Intel. Microsoft już wprowadzić Silne środki zaradcze ochrony klientów platformy Azure z innych maszyn wirtualnych platformy Azure.  
 >
-> Mikrokodu firmy Intel adresów variant 2 Spectre ([CVE-2017-5715](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5715) lub gałęzi docelowej iniekcji) ochronę przed atakami, które mogłyby tylko odpowiednie realizującym obciążeń udostępnionego lub niezaufanych wewnątrz maszyn wirtualnych na platformie Azure. Nasze inżynierów testowania stabilności, aby zminimalizować wpływ na wydajność mikrokodu, przed udostępnieniem jej klientów platformy Azure.  Bardzo kilku klientów Uruchom niezaufanych obciążeń w ramach ich maszyn wirtualnych, większość klientów nie będzie konieczne włączenie tej możliwości wydawane raz. 
+> Mikrokodu firmy Intel adresów variant 2 Spectre - [CVE-2017-5715](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5715) lub gałęzi docelowej iniekcji — ochronę przed atakami, które mogłyby tylko odpowiednie realizującym obciążeń udostępnionego lub niezaufanych wewnątrz maszyn wirtualnych na platformie Azure. Nasze inżynierów testowania stabilności, aby zminimalizować wpływ na wydajność mikrokodu, przed udostępnieniem jej klientów platformy Azure.  Bardzo kilku klientów Uruchom niezaufanych obciążeń w ramach ich maszyn wirtualnych, większość klientów nie będzie konieczne włączenie tej możliwości wydawane raz. 
 >
 > Ta strona zostanie zaktualizowany, jako informacje są dostępne.  
 

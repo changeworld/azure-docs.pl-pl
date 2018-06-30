@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 40a8cd256164bb66e82c651e58d37b1afbb4a652
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: a3bba4e8fd83b160472a2dc6a9425192b4bbd301
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287807"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114613"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurowanie zawsze włączonej grupy dostępności w maszynie Wirtualnej platformy Azure ręcznie
 
@@ -86,7 +86,7 @@ Po ukończeniu wymagania wstępne, pierwszym krokiem jest tworzenie klastra tryb
 
    ![Właściwości klastra](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/42_IPProperties.png)
 
-3. Wybierz **statyczny adres IP** i określ adres z zakresu automatycznego adresowania prywatnego adresu IP (APIPA): 169.254.0.1 do 169.254.255.254 w polu tekstowym adres. W tym przykładzie można użyć dowolnego adresu w tym zakresie. Na przykład: `169.254.0.1`. Następnie kliknij przycisk **OK**.
+3. Wybierz **statyczny adres IP** i określ adres z tej samej podsieci jako maszyn wirtualnych.
 
 4. W **zasoby podstawowe klastra** sekcji, kliknij prawym przyciskiem myszy nazwę klastra i kliknij przycisk **przejdź do trybu Online**. Następnie zaczekaj, aż oba zasoby są w trybie online. Gdy nazwa zasobu klastra do trybu online, aktualizuje serwera kontrolera domeny przy użyciu nowego konta komputera usługi AD. Umożliwia to konto AD później uruchomić usługę grupie dostępności w klastrze.
 
@@ -341,7 +341,7 @@ W tym momencie masz grupę dostępności z replik na dwa wystąpienia programu S
 
 ## <a name="create-an-azure-load-balancer"></a>Tworzenie modułu równoważenia obciążenia na platformie Azure
 
-Na maszynach wirtualnych Azure grupy dostępności programu SQL Server wymaga usługi równoważenia obciążenia. Moduł równoważenia obciążenia zawiera adres IP dla odbiornika grupy dostępności. Ta sekcja zawiera podsumowanie sposobu tworzenia modułu równoważenia obciążenia w portalu Azure.
+Na maszynach wirtualnych Azure grupy dostępności programu SQL Server wymaga usługi równoważenia obciążenia. Moduł równoważenia obciążenia zawiera adresy IP dla odbiorniki grupy dostępności i klastra trybu Failover systemu Windows Server. Ta sekcja zawiera podsumowanie sposobu tworzenia modułu równoważenia obciążenia w portalu Azure.
 
 1. W portalu Azure, przejdź do grupy zasobów, w których są serwery SQL i kliknij przycisk **+ Dodaj**.
 2. Wyszukaj **modułu równoważenia obciążenia**. Wybierz opublikowane przez firmę Microsoft modułu równoważenia obciążenia.
@@ -370,7 +370,7 @@ Na maszynach wirtualnych Azure grupy dostępności programu SQL Server wymaga us
 
 Aby skonfigurować usługę równoważenia obciążenia, musisz utworzyć puli wewnętrznej bazy danych, sondowania i ustawić reguły równoważenia obciążenia. Czy w portalu Azure.
 
-### <a name="add-backend-pool"></a>Dodawanie puli wewnętrznej bazy danych
+### <a name="add-backend-pool-for-the-availability-group-listener"></a>Dodawanie puli wewnętrznej bazy danych dla odbiornika grupy dostępności
 
 1. W portalu Azure przejdź do tej grupy dostępności. Może być konieczne odświeżenie widoku, aby zobaczyć usługi równoważenia obciążenia nowo utworzony.
 
@@ -416,6 +416,46 @@ Aby skonfigurować usługę równoważenia obciążenia, musisz utworzyć puli w
    | **Port** | Korzystając z portu odbiornika grupy dostępności | 1435 |
    | **Port zaplecza** | To pole nie jest używany, gdy pływający adres IP jest wartość dla serwera bezpośredniego zwrotu | 1435 |
    | **Sondy** |Nazwa określona dla sondy | SQLAlwaysOnEndPointProbe |
+   | **Trwałość sesji** | Listy rozwijanej | **Brak** |
+   | **Limit czasu bezczynności** | Minut, aby utrzymać otwarte połączenie TCP | 4 |
+   | **Zmienny adres IP (bezpośredni zwrot serwera)** | |Enabled (Włączony) |
+
+   > [!WARNING]
+   > Bezpośredni zwrot serwera jest ustawiana podczas tworzenia. Nie można zmienić tej nazwy.
+
+1. Kliknij przycisk **OK** można ustawić reguły równoważenia obciążenia.
+
+### <a name="add-the-front-end-ip-address-for-the-wsfc"></a>Dodaj adres IP frontonu dla usługi WSFC
+
+Adres IP usługi WSFC musi być także w usłudze równoważenia obciążenia. 
+
+1. W portalu należy dodać nowej konfiguracji IP frontonu dla usługi WSFC. Użyty adres IP skonfigurowany dla usługi WSFC w zasoby podstawowe klastra. Określ adres IP jako statyczny. 
+
+1. Kliknij usługę równoważenia obciążenia, kliknij przycisk **sondy kondycji**i kliknij przycisk **+ Dodaj**.
+
+1. Ustaw sondy kondycji w następujący sposób:
+
+   | Ustawienie | Opis | Przykład
+   | --- | --- |---
+   | **Nazwa** | Tekst | WSFCEndPointProbe |
+   | **Protokół** | Wybierz protokół TCP | TCP |
+   | **Port** | Wszelkie nieużywany port. | 58888 |
+   | **Interwał**  | Ilość czasu między próbami sondy w sekundach |5 |
+   | **Próg złej kondycji** | Liczba kolejnych niepowodzeń sondy musi odbywać się dla maszyny wirtualnej być określana jako Zła  | 2 |
+
+1. Kliknij przycisk **OK** można ustawić sondy kondycji.
+
+1. Ustaw reguły równoważenia obciążenia. Kliknij przycisk **reguły równoważenia obciążenia**i kliknij przycisk **+ Dodaj**.
+
+1. Ustaw następujące zasady funkcji równoważenia obciążenia.
+   | Ustawienie | Opis | Przykład
+   | --- | --- |---
+   | **Nazwa** | Tekst | WSFCPointListener |
+   | **Adres IP frontonu** | Wybierz adres |Użyj adresu, który został utworzony podczas konfigurowania adresu IP usługi WSFC. |
+   | **Protokół** | Wybierz protokół TCP |TCP |
+   | **Port** | Korzystając z portu odbiornika grupy dostępności | 58888 |
+   | **Port zaplecza** | To pole nie jest używany, gdy pływający adres IP jest wartość dla serwera bezpośredniego zwrotu | 58888 |
+   | **Sondy** |Nazwa określona dla sondy | WSFCEndPointProbe |
    | **Trwałość sesji** | Listy rozwijanej | **Brak** |
    | **Limit czasu bezczynności** | Minut, aby utrzymać otwarte połączenie TCP | 4 |
    | **Zmienny adres IP (bezpośredni zwrot serwera)** | |Enabled (Włączony) |

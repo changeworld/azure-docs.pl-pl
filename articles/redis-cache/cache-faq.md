@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: f78dd2a28575ad8e3fa30ac9c2bbd29c7d85a78f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6c308205c5adb05f4c7e1668c67adea414020ea2
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640476"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113276"
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis Cache — często zadawane pytania
 Dowiedz się odpowiedzi na często zadawane pytania, wzorców i najlepszych rozwiązań dla pamięci podręcznej Redis Azure.
@@ -217,7 +217,7 @@ Jedną z najważniejszych funkcji Redis zakłada, że wielu klientów, obsługa 
 <a name="cache-emulator"></a>
 
 ### <a name="is-there-a-local-emulator-for-azure-redis-cache"></a>Czy istnieje lokalne emulatora dla pamięci podręcznej Redis Azure?
-Nie jest nie emulator lokalnej pamięci podręcznej Redis Azure, ale można uruchomić wersji MSOpenTech redis-server.exe z [Redis narzędzia wiersza polecenia](https://github.com/MSOpenTech/redis/releases/) na lokalnym komputerze, a następnie połączyć się go, aby podobne możliwości na emulatorze lokalnej pamięci podręcznej, jak pokazano w poniższym przykładzie:
+Nie jest nie emulator lokalnej pamięci podręcznej Redis Azure, ale można uruchomić wersji MSOpenTech redis-server.exe z [Redis narzędzia wiersza polecenia](https://github.com/MSOpenTech/redis/releases/) na lokalnym komputerze i połącz się go, aby podobne możliwości na emulatorze lokalnej pamięci podręcznej, jak pokazano w poniższym przykładzie:
 
     private static Lazy<ConnectionMultiplexer>
           lazyConnection = new Lazy<ConnectionMultiplexer>
@@ -250,7 +250,7 @@ Można użyć dowolnego z poleceń w [Redis polecenia](http://redis.io/commands#
 * `redis-cli -h <redis cache name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Narzędzia wiersza polecenia Redis nie działa z portem SSL, ale można użyć narzędzia, takie jak `stunnel` nawiązać bezpiecznego narzędzia SSL port przez zgodnie z instrukcjami w [Announcing ASP.NET dostawcę stanu sesji dla wersji zapoznawczej Redis](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) wpis w blogu.
+> Narzędzia wiersza polecenia Redis nie działa z portem SSL, ale można użyć narzędzia, takie jak `stunnel` nawiązać bezpiecznego narzędzia SSL port przez zgodnie z instrukcjami w [Announcing ASP.NET dostawcę stanu sesji dla podglądu Redis Wersja](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) wpis w blogu.
 >
 >
 
@@ -295,7 +295,7 @@ Redis serwer nie obsługuje natywnie SSL, ale nie w pamięci podręcznej Redis A
 >
 >
 
-Redis narzędzi, takich jak `redis-cli` nie działa z portem SSL, ale można użyć narzędzia, takie jak `stunnel` nawiązać bezpiecznego narzędzia SSL port przez zgodnie z instrukcjami w [Announcing ASP.NET dostawcę stanu sesji dla wersji zapoznawczej Redis](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) wpis w blogu.
+Redis narzędzi, takich jak `redis-cli` nie działa z portem SSL, ale można użyć narzędzia, takie jak `stunnel` nawiązać bezpiecznego narzędzia SSL port przez zgodnie z instrukcjami w [Announcing ASP.NET dostawcę stanu sesji dla pamięci podręcznej Redis Wersja Preview](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) wpis w blogu.
 
 Aby uzyskać instrukcje dotyczące pobierania narzędzia Redis, zobacz [jak uruchomić polecenia Redis?](#cache-commands) sekcji.
 
@@ -392,7 +392,10 @@ Jak skonfigurować tego ustawienia:
   > Wartość określona w tym elemencie konfiguracji jest *-core* ustawienie. Na przykład jeśli korzystasz z 4-rdzeniową maszyną i chcesz ustawienia minIOThreads się 200 w czasie wykonywania, czy użyć `<processModel minIoThreads="50"/>`.
   >
 
-* Poza ASP.NET, użyj [ThreadPool.SetMinThreads(...) ](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) Interfejsu API.
+* Poza ASP.NET i global.asax witryn sieci Web platformy Azure, użyj [ThreadPool.SetMinThreads (...)] (https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) Interfejsu API.
+
+  > [!NOTE]
+  > Wartość określoną przez ten interfejs API jest ustawienie globalne wpływu na cały elementu AppDomain. Jeśli maszyna 4 rdzenie, a chcesz ustawić minWorkerThreads i minIOThreads 50 dla każdego procesora CPU w czasie wykonywania, użyj ThreadPool.SetMinThreads (200, 200).
 
 <a name="server-gc"></a>
 

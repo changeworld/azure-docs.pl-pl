@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2018
+ms.date: 06/28/2018
 ms.author: alkohli
-ms.openlocfilehash: 8d033cc09de8e115324067d7bbdf052751730d63
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: e33a3f843017ec24f3a79701fac9a62e15b4f9ba
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28030954"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109192"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>Użyj nowego uwierzytelniania dla Twojego urządzenia StorSimple
 
@@ -59,9 +59,9 @@ Jeśli używany jest tablicą wirtualnego StorSimple, skorzystaj z poniższej ta
 
 | Jeśli urządzenie korzysta  | Wykonaj następującą akcję                                    |
 |----------------------------|--------------------------------------------------------------|
-| Aktualizacja z wersji 1.0 lub nowszej i jest w trybie offline. <br> Zostanie wyświetlony alert, że adres URL nie jest białej.| Modyfikowanie reguły zapory w celu uwzględnienia adres URL uwierzytelniania. Zobacz [adresów URL uwierzytelniania](#url-changes-for-aad-authentication). |
+| Aktualizacja z wersji 1.0 lub nowszej i jest w trybie offline. <br> Zostanie wyświetlony alert, że adres URL nie jest białej.| 1. Modyfikowanie reguły zapory w celu uwzględnienia adres URL uwierzytelniania. Zobacz [adresów URL uwierzytelniania](#url-changes-for-aad-authentication). <br> 2. [Pobierz klucz rejestracji usługi AAD z usługi](#aad-based-registration-keys). <br> 3. Wykonaj kroki 1-5, aby [Połącz z interfejsu programu Windows PowerShell wirtualnego tablicy](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br> 4. Użyj `Invoke-HcsReRegister` polecenia cmdlet, aby zarejestrować urządzenia za pomocą programu Windows PowerShell. Określ klucz uzyskanego w poprzednim kroku.|
 | Aktualizacji wersji 1.0 lub nowszej, a urządzenie jest w trybie online.| Nie jest wymagana żadna akcja.                                       |
-| Aktualizacja 0,6 lub starszym i urządzenie jest w trybie offline. | [Pobierz aktualizację w wersji 1.0 za pośrednictwem serwera katalogu](storsimple-virtual-array-install-update-1.md#download-the-update-or-the-hotfix).<br>[Zastosuj Update 1.0 za pośrednictwem lokalnego interfejsu użytkownika sieci web](storsimple-virtual-array-install-update-1.md#install-the-update-or-the-hotfix). <br> [Pobierz klucz rejestracji usługi AAD z usługi](#aad-based-registration-keys). <br> Wykonaj kroki 1-5, aby [Połącz z interfejsu programu Windows PowerShell wirtualnego tablicy](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br> Użyj `Invoke-HcsReRegister` polecenia cmdlet, aby zarejestrować urządzenia za pomocą programu Windows PowerShell. Określ klucz uzyskanego w poprzednim kroku.|
+| Aktualizacja 0,6 lub starszym i urządzenie jest w trybie offline. | 1. [Pobierz aktualizację w wersji 1.0 za pośrednictwem serwera katalogu](storsimple-virtual-array-install-update-1.md#download-the-update-or-the-hotfix).<br>2. [Zastosuj Update 1.0 za pośrednictwem lokalnego interfejsu użytkownika sieci web](storsimple-virtual-array-install-update-1.md#install-the-update-or-the-hotfix).<br>3. [Pobierz klucz rejestracji usługi AAD z usługi](#aad-based-registration-keys). <br>4. Wykonaj kroki 1-5, aby [Połącz z interfejsu programu Windows PowerShell wirtualnego tablicy](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br>5. Użyj `Invoke-HcsReRegister` polecenia cmdlet, aby zarejestrować urządzenia za pomocą programu Windows PowerShell. Określ klucz uzyskanego w poprzednim kroku.|
 | Aktualizacja 0,6 lub starszym i urządzenie jest w trybie online | Modyfikowanie reguły zapory w celu uwzględnienia adres URL uwierzytelniania.<br> Zainstaluj Update 1.0 za pośrednictwem portalu Azure. |
 
 ## <a name="aad-based-registration-keys"></a>Klucze rejestracji opartych na usłudze AAD

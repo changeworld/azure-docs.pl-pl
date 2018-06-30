@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 04/23/2018
-ms.openlocfilehash: 72f5215bac9254c9e3295b2cade7b6d44d516af6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2c988f8651d0ae9a8662b502ca2ba2dbabb2defe
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637739"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37116055"
 ---
 # <a name="build-and-deploy-image-classification-models-with-azure-machine-learning"></a>Tworzenie i wdrażanie modeli klasyfikacji obrazu przy użyciu usługi Azure Machine Learning
 
@@ -34,7 +34,7 @@ Podczas tworzenia i wdrażania tego modelu z AMLPCV, można przejść przez nast
 7. Wdrażanie usługi sieci Web
 8. Usługa sieci Web testów obciążenia
 
-[CNTK](https://www.microsoft.com/cognitive-toolkit/) służy jako platforma głębokie learning szkolenia jest wykonywana lokalnie na maszynie GPU zasilane takich jak ([głębokie uczenia wirtualna nauki danych](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)), i instalacja używa interfejsu wiersza polecenia Azure ML Operationalization.
+[CNTK](https://www.microsoft.com/en-us/cognitive-toolkit/) służy jako platforma głębokie learning szkolenia jest wykonywana lokalnie na maszynie GPU zasilane takich jak ([głębokie uczenia wirtualna nauki danych](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)), i instalacja używa interfejsu wiersza polecenia Azure ML Operationalization.
 
 Zapoznaj się [pakietu dokumentacji](https://aka.ms/aml-packages/vision) szczegółowe odwołania dla każdego modułu i klasy.
 

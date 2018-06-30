@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: 6c46ada7fc95d5789512f8f7c7842852e6a86b69
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: d608378f9b3ff3179f9e37ef13f88c65a645d018
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35249347"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112990"
 ---
-# <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Odzyskiwanie po awarii przy użyciu usługi Azure DNS i Menedżera ruchu
+# <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Odzyskiwanie po awarii przy użyciu usług Azure DNS i Traffic Manager
 
 Odzyskiwanie po awarii koncentruje się na odzyskanie poważny utratę funkcjonalności aplikacji. Aby można było wybrać rozwiązanie odzyskiwania po awarii, właściciele biznesowych i technologicznych najpierw ustalić poziom funkcji wymaganych podczas awarii, takich jak - niedostępne, częściowo dostępnego za pośrednictwem ograniczonej funkcjonalności lub opóźnione dostępności lub pełni dostępna.
 Większość klientów korporacyjnych wybierania wielu region architektura odporność aplikacji lub infrastruktury poziomu trybu failover. Klienci mogą wybrać kilka metod w żądanie do osiągnięcia trybu failover i wysokiej dostępności za pomocą architektury nadmiarowe. Oto niektóre z popularnych metod:
@@ -59,7 +59,7 @@ DNS jest jednym z najbardziej efektywny mechanizmy kierowanie ruchu sieciowego, 
 
 Jest ważne poznać kilka koncepcji w systemie DNS, które są często używane do rozwiązania zawarte w tym artykule omówiono:
 - **Rekord DNS** — rekordy A są wskaźnikami, które wskazują domenę adres IPv4. 
-- **Nazwa CNAME lub Canonical** — tego typu rekordu służy do wskaż inny rekord DNS. CNAME nie odpowie z odpowiedzi IP, ale raczej wskaźnik do rekordu, który zawiera adres IP. 
+- **Nazwa CNAME lub Canonical** — tego typu rekordu służy do wskaż inny rekord DNS. CNAME nie odpowiadać, podając adres IP, ale raczej wskaźnik do rekordu, który zawiera adres IP. 
 - **Ważone Routing** — można do skojarzenia wagi do punktów końcowych usługi, a następnie rozpowszechnić ruchu w oparciu wagi przypisanej. Ta metoda routingu jest jednym z czterech ruchu routingu mechanizmy dostępnych w Menedżerze ruchu. Aby uzyskać więcej informacji, zobacz [ważone metody routingu](../traffic-manager/traffic-manager-routing-methods.md#weighted).
 - **Routing priorytet** — priorytet routingu jest oparta na sprawdzenie kondycji punktów końcowych. Domyślnie usługi Azure Traffic manager wysyła cały ruch do najwyższy priorytet punktu końcowego, a po awarii lub poważnej awarii, Traffic Manager kieruje ruch do dodatkowej punktu końcowego. Aby uzyskać więcej informacji, zobacz [metody routingu priorytet](../traffic-manager/traffic-manager-routing-methods.md#priority).
 

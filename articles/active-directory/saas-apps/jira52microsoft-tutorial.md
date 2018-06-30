@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 7ea727d5fb004ca224407a8b1c93a6f11448b5e7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 5df8b3d91f52e4809ef43e3e376004e4274b4400
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231359"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112024"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>Samouczek: Integracji Azure Active Directory z logowania jednokrotnego SAML JIRA przez firmy Microsoft (w wersji 5.2)
 
@@ -224,7 +224,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
 
 ### <a name="create-a-jira-saml-sso-by-microsoft-v52-test-user"></a>Utwórz logowania jednokrotnego SAML JIRA przez użytkownika testowego programu Microsoft (wersji 5.2)
 
-Aby włączyć użytkowników usługi Azure AD zalogować się do serwera lokalnego JIRA, muszą mieć przydzielone do JIRA na serwerze lokalnym.
+Aby umożliwić użytkownikom usługi Azure AD zalogować się do serwera lokalnego JIRA, muszą mieć przydzielone do JIRA na serwerze lokalnym.
 
 **Aby udostępnić konta użytkownika, wykonaj następujące czynności:**
 

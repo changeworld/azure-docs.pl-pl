@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/15/2017
+ms.date: 6/28/2018
 ms.author: dekapur
-ms.openlocfilehash: 268ec61515f438fb7f98b6cef7a8ec60ba22e23f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 51895731efd466a314877e963a5fd2c6d868ec02
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212640"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110876"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Funkcja diagnostyki dla stanowych usług Reliable Services
 Klasa Azure Usługa sieci szkieletowej Stateful niezawodnej usługi StatefulServiceBase emituje [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) zdarzenia, które mogą służyć do debugowania usługi, zapewniają wgląd w sposób działania środowiska uruchomieniowego oraz pomóc w rozwiązywaniu problemów.
@@ -53,13 +53,16 @@ StatefulRunAsyncSlowCancellation jest emitowany zawsze, gdy żądanie anulowania
 | Kategoria | Opis |
 | --- | --- |
 | Replikator transakcyjny usługi Service Fabric |Liczniki specyficzne dla replikatora transakcyjnego sieci szkieletowej usług Azure |
+| Service Fabric TStore |Liczniki specyficzne dla TStore sieci szkieletowej usług Azure |
 
-Replikator transakcyjny sieci szkieletowej usług jest używany przez [niezawodnej Menedżer stanu](service-fabric-reliable-services-reliable-collections-internals.md) replikacji transakcji w ramach danego zestawu [replik](service-fabric-concepts-replica-lifecycle.md). 
+Replikator transakcyjny sieci szkieletowej usług jest używany przez [niezawodnej Menedżer stanu](service-fabric-reliable-services-reliable-collections-internals.md) replikacji transakcji w ramach danego zestawu [replik](service-fabric-concepts-replica-lifecycle.md).
+
+TStore sieci szkieletowej usług jest używany w składnik [niezawodnej kolekcje](service-fabric-reliable-services-reliable-collections-internals.md) do przechowywania i pobierania pary klucz wartość.
 
 [Monitor wydajności systemu Windows](https://technet.microsoft.com/library/cc749249.aspx) aplikacji, która jest dostępna domyślnie w systemie operacyjnym Windows może służyć do zbierania i przeglądać dane liczników wydajności. [Diagnostyka Azure](../cloud-services/cloud-services-dotnet-diagnostics.md) jest inną opcją w przypadku zbierania danych licznika wydajności i przekazać go do tabel platformy Azure.
 
 ### <a name="performance-counter-instance-names"></a>Nazwy wystąpień liczników wydajności
-Klaster ma dużą liczbę niezawodne usługi lub partycje niezawodnej usługi ma dużą liczbę wystąpień liczników wydajności replikatora transakcyjnego. Nazwy wystąpień liczników wydajności mogą pomóc w określeniu konkretnym [partycji](service-fabric-concepts-partitioning.md) i repliki usługi, którą skojarzona jest wystąpienie licznika wydajności.
+Klaster ma dużą liczbę niezawodne usługi lub partycje niezawodnej usługi ma dużą liczbę wystąpień liczników wydajności replikatora transakcyjnego. To jest również w przypadku TStore liczniki wydajności, ale jest również pomnożona przez liczbę niezawodnej słowniki i niezawodne kolejki używane. Nazwy wystąpień liczników wydajności mogą pomóc w określeniu konkretnym [partycji](service-fabric-concepts-partitioning.md), repliki usługi i dostawcy stanu w przypadku TStore, z którą skojarzona jest wystąpienie licznika wydajności.
 
 #### <a name="service-fabric-transactional-replicator-category"></a>Kategoria Replikator transakcyjny sieci szkieletowej usług
 Dla kategorii `Service Fabric Transactional Replicator`, nazwy wystąpień liczników znajdują się w następującym formacie:
@@ -76,6 +79,25 @@ Następująca nazwa wystąpienia liczników jest typowa dla licznika w obszarze 
 
 W powyższym przykładzie `00d0126d-3e36-4d68-98da-cc4f7195d85e` jest reprezentację ciągu Identyfikatora partycji usługi Service Fabric i `131652217797162571` to identyfikator repliki.
 
+#### <a name="service-fabric-tstore-category"></a>Kategoria TStore sieci szkieletowej usług
+Dla kategorii `Service Fabric TStore`, nazwy wystąpień liczników znajdują się w następującym formacie:
+
+`ServiceFabricPartitionId:ServiceFabricReplicaId:ServiceFabricStateProviderId_PerformanceCounterInstanceDifferentiator`
+
+*ServiceFabricPartitionId* jest reprezentację ciągu Identyfikatora partycji usługi sieć szkieletowa skojarzonego z wystąpienia licznika wydajności. Identyfikator partycji jest identyfikatorem GUID i reprezentacji ciągu jest generowany przez [ `Guid.ToString` ](https://msdn.microsoft.com/library/97af8hh4.aspx) z specyfikator formatu "D".
+
+*ServiceFabricReplicaId* to identyfikator skojarzony z danym repliki niezawodnej usługi. Identyfikator repliki znajduje się nazwę wystąpienia licznika wydajności w celu zapewnienia unikatowości jego i uniknąć konfliktów z innymi wystąpieniami licznika wydajności wygenerowane przez tę samą partycję. Szczegółowe informacje na temat repliki i ich role w niezawodnej usługi można znaleźć [tutaj](service-fabric-concepts-replica-lifecycle.md).
+
+*ServiceFabricStateProviderId* to identyfikator skojarzony z dostawcy stanu, w ramach niezawodnej usługi. Identyfikator dostawcy stanu znajduje się nazwę wystąpienia licznika wydajności do odróżnienia TStore z innej.
+
+*PerformanceCounterInstanceDifferentiator* różnego identyfikator skojarzony z wystąpieniem licznika wydajności w ramach dostawcy stanu. Tym informatyczne znajduje się nazwę wystąpienia licznika wydajności w celu zapewnienia jego unikatowości i uniknąć konfliktów z innymi wystąpieniami licznika wydajności wygenerowane przez ten sam dostawca stanu.
+
+Następująca nazwa wystąpienia liczników jest typowa dla licznika w obszarze `Service Fabric TStore` kategorii:
+
+`00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571:142652217797162571_1337`
+
+W powyższym przykładzie `00d0126d-3e36-4d68-98da-cc4f7195d85e` jest reprezentację ciągu Identyfikatora partycji usługi sieć szkieletowa `131652217797162571` jest identyfikator repliki `142652217797162571` jest Identyfikatorem dostawcy stanu i `1337` jest różnicą wystąpienia licznika wydajności.
+
 ### <a name="transactional-replicator-performance-counters"></a>Liczniki wydajności Replikator transakcyjny
 
 Środowisko uruchomieniowe niezawodne usługi emituje następujących zdarzeń w obszarze `Service Fabric Transactional Replicator` kategorii
@@ -88,6 +110,14 @@ W powyższym przykładzie `00d0126d-3e36-4d68-98da-cc4f7195d85e` jest reprezenta
 | Ograniczone operacje/s | Liczba operacji odrzuconych w każdej sekundzie przez replikatora transakcyjnego z powodu ograniczania. |
 | Średni Ms/zatwierdzania transakcji | Opóźnienie zatwierdzania średnia dla transakcji w milisekundach |
 | Średni Flush czas oczekiwania (ms) | Średni czas trwania operacji opróżniania dysku inicjowane przez replikatora transakcyjnego w milisekundach |
+
+### <a name="tstore-performance-counters"></a>Liczniki wydajności TStore
+
+Środowisko uruchomieniowe niezawodne usługi emituje następujących zdarzeń w obszarze `Service Fabric TStore` kategorii
+
+ Nazwa licznika | Opis |
+| --- | --- |
+| Liczba elementów | Liczba kluczy w magazynie.|
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Element EventSource dostawców w narzędzia PerfView](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

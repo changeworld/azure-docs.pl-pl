@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: danlep
-ms.openlocfilehash: 1b9c0514e93fa89f8776d830ef242fc4963a6f7b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: d5ec76a62b56769ee3065cac3542f5a94df4a1c6
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30316474"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37133035"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Uruchomienie zadania na kontach użytkowników w partii
 
@@ -173,8 +173,8 @@ Console.WriteLine("Creating pool [{0}]...", poolId);
 // Create a pool using the cloud service configuration.
 pool = batchClient.PoolOperations.CreatePool(
     poolId: poolId,
-    targetDedicatedComputeNodes: 3,                                                         
-    virtualMachineSize: "small",                                                
+    targetDedicatedComputeNodes: 3,
+    virtualMachineSize: "standard_d1_v2",
     cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));   
 
 // Add named user accounts.
@@ -313,7 +313,7 @@ Wersja usługi partii 2017-01-01.4.0 wprowadzono istotne zmiany, zastępując **
 |---------------------------------------|------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.RunElevated = true;`       | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.Admin));`    |
 | `CloudTask.RunElevated = false;`      | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.NonAdmin));` |
-| `CloudTask.RunElevated` Nie określono | Aktualizacja nie jest wymagana                                                                                               |
+| `CloudTask.RunElevated` nie określono | Aktualizacja nie jest wymagana                                                                                               |
 
 ### <a name="batch-java"></a>Java partii
 
@@ -321,7 +321,7 @@ Wersja usługi partii 2017-01-01.4.0 wprowadzono istotne zmiany, zastępując **
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.withRunElevated(true);`        | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.ADMIN));`    |
 | `CloudTask.withRunElevated(false);`       | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.NONADMIN));` |
-| `CloudTask.withRunElevated` Nie określono | Aktualizacja nie jest wymagana                                                                                                                     |
+| `CloudTask.withRunElevated` nie określono | Aktualizacja nie jest wymagana                                                                                                                     |
 
 ### <a name="batch-python"></a>Batch Python
 
@@ -329,11 +329,9 @@ Wersja usługi partii 2017-01-01.4.0 wprowadzono istotne zmiany, zastępując **
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `run_elevated=True`                       | `user_identity=user`, gdzie <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.admin)) `                |
 | `run_elevated=False`                      | `user_identity=user`, gdzie <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.nonadmin)) `             |
-| `run_elevated` Nie określono | Aktualizacja nie jest wymagana                                                                                                                                  |
+| `run_elevated` nie określono | Aktualizacja nie jest wymagana                                                                                                                                  |
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-### <a name="batch-forum"></a>Forum usługi partia zadań
-
-[Forum usługi partia zadań Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch) w witrynie MSDN jest doskonałym miejscem do omówienia partii i zadać pytania dotyczące usługi. HEAD na za pośrednictwem przydatne Posty przypiętych i opublikuj swoje pytania powstałych podczas tworzenia własnych rozwiązań partii.
+* Aby uzyskać szczegółowe informacje o partii, zobacz [Programowanie równoległe na dużą skalę obliczeniowe rozwiązań w partii](batch-api-basics.md).

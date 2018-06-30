@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: df7ca91d403374e8d320822f5fa384a866fac0ae
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 7cb7ce0ea81cf99c2ee14a6f209864894563d237
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025910"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111783"
 ---
 # <a name="set-up-sql-data-sync"></a>Konfigurowanie synchronizacji danych SQL
 Z tego samouczka dowiesz się sposobu konfigurowania synchronizacji danych SQL Azure, tworząc grupy synchronizacji hybrydowych, zawierającej wystąpienia zarówno usługi Azure SQL Database i programu SQL Server. Nowa grupa synchronizacji jest w pełni skonfigurowane i synchronizuje się zgodnie z harmonogramem, które można ustawić.
@@ -274,7 +274,7 @@ Jeśli chcesz uruchomić lokalnego agenta z innego komputera niż aktualnie znaj
 
 3. Użyj nowego agenta interfejsu użytkownika, aby przesłać nowy klucz agenta.
 
-4. Zaczekaj, aż agenta klienta pobiera listę lokalnych baz danych, które zostały wcześniej zarejestrowane.
+4. Zaczekaj, aż agent klienta pobierze lista lokalnych baz danych, które zostały wcześniej zarejestrowane.
 
 5. Podaj poświadczenia bazy danych dla wszystkich baz danych zawierających jako niedostępny. Te bazy danych musi być dostępny z nowym komputerze, na którym jest zainstalowany agent.
 

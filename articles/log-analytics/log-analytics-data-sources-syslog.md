@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 011eaf1a4705f9078225b9b871f81b4333b05ee8
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.component: na
+ms.openlocfilehash: 1e7806e802f9b1dda16a9d5d477783663d03d416
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011098"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131790"
 ---
 # <a name="syslog-data-sources-in-log-analytics"></a>SYSLOG źródeł danych w analizy dzienników
 SYSLOG to protokół rejestrowania zdarzeń jest wspólny dla systemu Linux.  Aplikacje będą wysyłać wiadomości, które mogą być przechowywane na komputerze lokalnym lub dostarczone do modułu zbierającego Syslog.  Po zainstalowaniu Agent pakietu OMS dla systemu Linux, konfiguruje lokalnego demon Syslog do przekazywania wiadomości do agenta.  Agent wysyła następnie komunikat do analizy dzienników, w którym odpowiedni rekord jest tworzony w repozytorium OMS.  
@@ -192,8 +193,8 @@ Rekordy dziennika systemowego zawiera typu **Syslog** i mieć właściwości w p
 | Nazwa hosta |Nazwa systemu wysyłania wiadomości. |
 | Poziom ważności |Poziom ważności zdarzenia. |
 | SyslogMessage |Tekst komunikatu. |
-| Identyfikator procesu |Identyfikator procesu, który wygenerował komunikat. |
-| eventTime |Data i godzina wygenerowania zdarzenia. |
+| ProcessId |Identyfikator procesu, który wygenerował komunikat. |
+| EventTime |Data i godzina wygenerowania zdarzenia. |
 
 ## <a name="log-queries-with-syslog-records"></a>Dziennik zapytań dotyczących rekordów dziennika systemowego
 Poniższa tabela zawiera przykłady różnych dziennika zapytań, które pobierają rekordy dziennika systemowego.

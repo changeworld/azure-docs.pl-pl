@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 7f46e55e11c4eb68b515a743b0f51392ffc1269e
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 52bda6a13422ce8f759c40bd454a6b15e92d7a5d
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266808"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110300"
 ---
 # <a name="luis-boundaries"></a>Granice LUIS
 LUIS ma kilka obszarów granic. Pierwsza to [granic modelu](#model-boundaries), która kontroluje lokalizacji docelowych, jednostki i funkcje w LUIS. Drugi ma [limity przydziału](#key-limits) na podstawie typu klucza. Trzeci obszar granice jest [klawiatury kombinacja](#keyboard-controls) kontrolowania LUIS witryny sieci Web. Czwarty obszar jest [mapowania region world](luis-reference-regions.md) między LUIS tworzenia witryny sieci Web i LUIS [punktu końcowego](luis-glossary.md#endpoint) interfejsów API. 
@@ -39,7 +39,7 @@ LUIS ma kilka obszarów granic. Pierwsza to [granic modelu](#model-boundaries), 
 | [Wyrażenie regularne jednostek](./luis-concept-entity-types.md)|20 jednostek<br>Maksymalna liczba znaków to 500. na wzorzec wyrażenia regularnego jednostki|
 | [Role](luis-concept-roles.md)|300 role na aplikację. 10 ról na jednostkę|
 | **[Proste](./luis-concept-entity-types.md)| 100 jednostek|
-| [Utterance][utterances] | 500 znaków|
+| [utterance][utterances] | 500 znaków|
 | [Zniesławiających][utterances] | 15 000, według aplikacji|
 | [Nazwa wersji][luis-how-to-manage-versions] | 10 znaków ograniczone do alfanumeryczne oraz kropki (.) |
 
@@ -56,17 +56,17 @@ W nazwach zamiar i jednostki nie należy używać następujących znaków:
 |`}`|Prawy nawias klamrowy|
 |`[`|Nawias otwierający|
 |`]`|Prawy nawias|
-|`\`|ukośnik odwrotny|
+|`\`|Ukośnik odwrotny|
 
 ## <a name="key-limits"></a>Ograniczenia klucza
-Tworzenia klucz ma inną limity dla tworzenia i punktu końcowego. Klucz subskrypcji usługi LUIS jest prawidłowy tylko dla punktu końcowego zapytań.
+Tworzenia klucz ma inną limity dla tworzenia i punktu końcowego. Klucz punktu końcowego usługi LUIS jest prawidłowy tylko dla punktu końcowego zapytań.
 
 |Klucz|Tworzenie|Endpoint|Przeznaczenie|
 |--|--|--|--|
 |Tworzenie początkowe|1 mln miesięcznie, 5/s|1 tysięcy miesięcznie, 5/s|Tworzenie aplikacji LUIS|
 |[Subskrypcja] [ pricing] - F0 — warstwa bezpłatna |nieprawidłowy|10 tysięcy miesięcznie, 5/s|Wykonywanie zapytania LUIS punktu końcowego|
 |[Subskrypcja] [ pricing] - S0 — warstwa podstawowa|nieprawidłowy|50/sekundę|Wykonywanie zapytania LUIS punktu końcowego|
-|[Wskaźniki nastrojów klientów analizy integracji](publishapp.md#enable-sentiment-analysis)|nieprawidłowy|Bez dodatkowych opłat|Dodawanie informacji wskaźniki nastrojów klientów, w tym wyodrębniania danych frazy klucza |
+|[Wskaźniki nastrojów klientów analizy integracji](publishapp.md#enable-sentiment-analysis)|nieprawidłowy|bez dodatkowych opłat|Dodawanie informacji wskaźniki nastrojów klientów, w tym wyodrębniania danych frazy klucza |
 |Integracja mowy|nieprawidłowy|$5.50 USD/1 tysięcy żądania punktu końcowego|Konwertuj tekst utterance utterance rozmowy i zwracają wyniki LUIS|
 
 ## <a name="keyboard-controls"></a>Klawiatury

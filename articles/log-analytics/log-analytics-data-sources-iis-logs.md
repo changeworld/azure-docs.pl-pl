@@ -1,24 +1,26 @@
 ---
-title: "Rejestrowania przez usługi IIS w Azure Log Analytics | Dokumentacja firmy Microsoft"
-description: "Internet Information Services (IIS) są przechowywane działań użytkownika w plikach dziennika, które mogą zostać zebrane przez analizy dzienników.  W tym artykule opisano sposób konfigurowania zbierania dzienników usług IIS i szczegóły rekordów tworzonych w obszarze roboczym analizy dzienników."
+title: Rejestrowania przez usługi IIS w Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Internet Information Services (IIS) są przechowywane działań użytkownika w plikach dziennika, które mogą zostać zebrane przez analizy dzienników.  W tym artykule opisano sposób konfigurowania zbierania dzienników usług IIS i szczegóły rekordów tworzonych w obszarze roboczym analizy dzienników.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: cec5ff0a-01f5-4262-b2e8-e3db7b7467d2
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/07/2018
+ms.date: 06/12/2018
 ms.author: bwren
-ms.openlocfilehash: b8ce4e6fe6e12aa3edb81abad1589924e3e121e4
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.comopnent: na
+ms.openlocfilehash: 65320e7d3cc97a3d53fd1a00fbbeab5559c02fce
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37133058"
 ---
 # <a name="iis-logs-in-log-analytics"></a>Rejestrowania przez usługi IIS w analizy dzienników
 Internet Information Services (IIS) są przechowywane działań użytkownika w plikach dziennika, które mogą zostać zebrane przez analizy dzienników.  
@@ -33,10 +35,10 @@ Analiza dzienników nie zbiera dzienniki w formacie native NCSA lub usług IIS.
 
 Konfigurowanie dzienników usług IIS w analizy dzienników z [danych menu Ustawienia usługi Analiza dzienników](log-analytics-data-sources.md#configuring-data-sources).  Jest wymagana żadna konfiguracja innych niż wybranie **pliki dziennika w formacie W3C zbieranie IIS**.
 
-Zaleca się, że po włączeniu zbierania dzienników usług IIS, należy skonfigurować ustawienie przerzucania dziennika IIS na każdym serwerze.
 
 ## <a name="data-collection"></a>Zbieranie danych
-Analiza dzienników zbiera wpisy dziennika usług IIS z wszystkich połączonych źródeł, co 15 minut.  Agent rejestruje jego miejsce w każdym dzienniku zdarzeń zbierane z.  Jeśli agent przejdzie do trybu offline, następnie analizy dzienników zbiera dane zdarzeń z którym ostatnio przerwał, nawet jeśli te zdarzenia zostały utworzone podczas agent jest w trybie offline.
+Analiza dzienników zbiera wpisy dziennika usług IIS z każdego agenta, w każdym razem, gdy dziennik jest zamknięty, a nowy jest tworzony. Steruje tym częstotliwość **harmonogram przerzucania pliku dziennika** ustawienia witryny usług IIS, która jest raz dziennie domyślnie. Na przykład w przypadku ustawienia **co godzinę**, a następnie analizy dzienników zbierze dziennika co godzinę.  Jeśli ustawienie jest **codzienne**, następnie analizy dzienników zbierze dziennika co 24 godziny.
+
 
 ## <a name="iis-log-record-properties"></a>Właściwości rekordu dziennika usług IIS
 Rekordy dziennika usług IIS zawiera typu **W3CIISLog** i mieć właściwości w poniższej tabeli:
@@ -63,7 +65,7 @@ Rekordy dziennika usług IIS zawiera typu **W3CIISLog** i mieć właściwości w
 | sPort |Port na serwerze klient połączony. |
 | sSiteName |Nazwa witryny usług IIS. |
 | TimeGenerated |Data i godzina zarejestrowania wpisu. |
-| Właściwość timeTaken |Długość czasu na przetwarzanie żądania w milisekundach. |
+| Właściwość TimeTaken |Długość czasu na przetwarzanie żądania w milisekundach. |
 
 ## <a name="log-searches-with-iis-logs"></a>Dziennik wyszukiwania przy użyciu dzienników usług IIS
 Poniższa tabela zawiera przykłady różnych dziennika zapytań, które pobierają rekordy dziennika usług IIS.
@@ -72,9 +74,9 @@ Poniższa tabela zawiera przykłady różnych dziennika zapytań, które pobiera
 |:--- |:--- |
 | W3CIISLog |Wszystkie rekordy dziennika usług IIS. |
 | W3CIISLog &#124; gdzie scStatus == 500 |Wszystkie rekordy dziennika usług IIS o stanie zwracanych 500. |
-| W3CIISLog &#124; Podsumowanie funkcji count() przez cIP |Liczba usług IIS pozycje dziennika za pomocą adresu IP klienta. |
-| W3CIISLog &#124; gdzie csHost == "www.contoso.com" &#124; Podsumowanie funkcji count() przez csUriStem |Liczba usług IIS dziennika wpisy przez adres URL dla www.contoso.com hosta. |
-| W3CIISLog &#124; Podsumuj sum(csBytes) przez komputer &#124; podejmij 500000 |Całkowita liczba bajtów odebranych przez każdy komputer usług IIS. |
+| W3CIISLog &#124; podsumowania count() przez cIP |Liczba usług IIS pozycje dziennika za pomocą adresu IP klienta. |
+| W3CIISLog &#124; gdzie csHost == "www.contoso.com" &#124; podsumowania count() przez csUriStem |Liczba usług IIS dziennika wpisy przez adres URL dla www.contoso.com hosta. |
+| W3CIISLog &#124; Podsumuj sum(csBytes) przez komputer &#124; zająć 500000 |Całkowita liczba bajtów odebranych przez każdy komputer usług IIS. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Konfigurowanie analizy dzienników do gromadzenia innych [źródeł danych](log-analytics-data-sources.md) do analizy.

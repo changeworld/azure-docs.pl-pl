@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: kakampf
-ms.openlocfilehash: 3ac3df7f7861b8a12778190072e5554927706e08
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: f79d80a2743fb1a46fd2f17ec3b99d97e3b3d8d8
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061423"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111028"
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Jakie są składniki platformy Hadoop i wersje dostępne w usłudze HDInsight?
 
@@ -84,7 +84,6 @@ W poniższej tabeli wymieniono wersje HDInsight, które są dostępne w portalu 
 | Wersja usługi HDInsight | Wersja HDP | VM OS | Data wydania | Data wygaśnięcia pomocy technicznej | Dacie wycofania | Wysoka dostępność |  Dostępność w portalu Azure | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3,6 |HDP 2.6 |Ubuntu 16.0.4 LTS |4 kwietnia 2017 r. | | |Yes |Yes |
-| HDInsight 3.5 |HDP 2.5 |Ubuntu 16.0.4 LTS |30 września 2016 roku. |5 września 2017 r. |28 czerwca 2018 |Yes |Yes |
 | HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |2 grudnia 2015 r. |27 czerwca 2016 r. |31 lipca 2018 |Yes |Nie |
 
 > [!NOTE]
@@ -97,6 +96,7 @@ W poniższej tabeli wymieniono wersje programu HDInsight są **nie** dostępne w
 
 | Wersja usługi HDInsight | Wersja HDP | VM OS | Data wydania | Data wygaśnięcia pomocy technicznej | Dacie wycofania | Wysoka dostępność |  Dostępność w portalu Azure | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| HDInsight 3.5 |HDP 2.5 |Ubuntu 16.0.4 LTS |30 września 2016 roku. |5 września 2017 r. |28 czerwca 2018 |Yes |Nie |
 | HDInsight w wersji 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |29 marca 2016 r. |29 grudnia 2016 r. |9 stycznia 2018 |Yes |Nie |
 | HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2 grudnia 2015 r. |27 czerwca 2016 r. |31 lipca 2017 r. |Yes |Nie |
 | HDInsight 3.2 |HDP 2.2 |Ubuntu 12.04 LTS lub Windows Server 2012 R2 |18 lutego 2015 |1 marca 2016 r. |1 kwietnia 2017 r. |Yes |Nie |

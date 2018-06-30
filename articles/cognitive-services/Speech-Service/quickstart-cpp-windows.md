@@ -10,12 +10,12 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 0bcdc3c4357cb8985fad16c607957bffad4a2b8c
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 4dea1209548fb3bb4f846cdf7eaf82751f938bea
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049234"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37108848"
 ---
 # <a name="quickstart-for-c-and-windows"></a>Szybki Start dla języka C++ i systemu Windows
 
@@ -78,8 +78,8 @@ Zastąp swój domyślny kod początkowy następujące:
 [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/Windows/quickstart-cpp/CppHelloSpeech.cpp#code)]
 
 > [!IMPORTANT]
-> Zamień na klucz subskrypcji, który został uzyskany. <br>
-> Zamień region regionu z [interfejsu API REST usługi mowy](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis), np. Zamień "westus".
+> Zastąp ten, który został uzyskany klucz subskrypcji. <br>
+> Zastąp [region](regions.md) z elementem skojarzone z subskrypcją, na przykład zastąpić `westus` dla bezpłatnej wersji próbnej subskrypcji.
 
 ![Dodaj klucz subskrypcji](media/sdk/sub-key-recognize-speech-cpp.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 37f44538d94ed78509bbcb09e726dc34a9e92e95
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: e6e792c31f9856bcaf1d777e534dcac8d8be3dd3
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28030947"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113531"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>Użyj nowego uwierzytelniania dla Twojego urządzenia StorSimple
 
@@ -60,9 +60,9 @@ Jeśli z urządzenia z serii StorSimple 8000, skorzystaj z poniższej tabeli, ab
 
 | Jeśli urządzenie korzysta| Wykonaj następującą akcję                                    |
 |--------------------------|------------------------|--------------------|--------------------------------------------------------------|
-| Aktualizacji 5 lub nowszy, a urządzenie jest w trybie offline. <br> Zostanie wyświetlony alert, że adres URL nie jest białej.| Modyfikowanie reguły zapory w celu uwzględnienia adres URL uwierzytelniania.<br> Zobacz [adresów URL uwierzytelniania](#url-changes-for-aad-authentication). |
+| Aktualizacji 5 lub nowszy, a urządzenie jest w trybie offline. <br> Zostanie wyświetlony alert, że adres URL nie jest białej.|1. Modyfikowanie reguły zapory w celu uwzględnienia adres URL uwierzytelniania. Zobacz [adresów URL uwierzytelniania](#url-changes-for-aad-authentication).<br>2. [Pobierz klucz rejestracji usługi AAD z usługi](#aad-based-registration-keys).<br>3. [Nawiązania połączenia interfejsu programu Windows PowerShell urządzenia serii StorSimple 8000](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).<br>4. Użyj `Redo-DeviceRegistration` polecenia cmdlet, aby zarejestrować urządzenia za pomocą programu Windows PowerShell. Określ klucz uzyskanego w poprzednim kroku.|
 | Aktualizacji 5 lub nowszy i urządzeniem w trybie online.| Nie jest wymagana żadna akcja.                                       |
-| Update 4 lub starszym, a urządzenie jest w trybie offline. | Modyfikowanie reguły zapory w celu uwzględnienia adres URL uwierzytelniania.<br>[Pobieranie aktualizacji 5 za pośrednictwem serwera katalogu](storsimple-8000-install-update-5.md#download-updates-for-your-device).<br>[Zastosowanie aktualizacji 5 za pomocą metody poprawkę](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix). <br> [Pobierz klucz rejestracji usługi AAD z usługi](#aad-based-registration-keys). <br> [Nawiązania połączenia interfejsu programu Windows PowerShell urządzenia serii StorSimple 8000](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). <br>Użyj `Redo-DeviceRegistration` polecenia cmdlet, aby zarejestrować urządzenia za pomocą programu Windows PowerShell. Określ klucz uzyskanego w poprzednim kroku.|
+| Update 4 lub starszym, a urządzenie jest w trybie offline. |1. Modyfikowanie reguły zapory w celu uwzględnienia adres URL uwierzytelniania.<br>2. [Pobieranie aktualizacji 5 za pośrednictwem serwera katalogu](storsimple-8000-install-update-5.md#download-updates-for-your-device).<br>3. [Zastosowanie aktualizacji 5 za pomocą metody poprawkę](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix).<br>4. [Pobierz klucz rejestracji usługi AAD z usługi](#aad-based-registration-keys).<br>5. [Nawiązania połączenia interfejsu programu Windows PowerShell urządzenia serii StorSimple 8000](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). <br>6. Użyj `Redo-DeviceRegistration` polecenia cmdlet, aby zarejestrować urządzenia za pomocą programu Windows PowerShell. Określ klucz uzyskanego w poprzednim kroku.|
 | Update 4 lub starszym, a urządzenie jest w trybie online. |Modyfikowanie reguły zapory w celu uwzględnienia adres URL uwierzytelniania.<br> Instalowanie aktualizacji 5 za pomocą portalu Azure.              |
 | Resetowanie do wersji przed aktualizacją 5 do ustawień fabrycznych.      |Portal zawiera klucz rejestracji opartych na usłudze AAD urządzeniu jest uruchomiona starsza oprogramowania. Wykonaj kroki opisane w poprzednim scenariuszu w przypadku gdy urządzenie jest uruchomiona aktualizacji 4 lub starszym.              |
 

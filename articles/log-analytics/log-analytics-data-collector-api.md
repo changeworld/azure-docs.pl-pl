@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/25/2018
+ms.topic: conceptual
+ms.date: 06/14/2018
 ms.author: bwren
-ms.openlocfilehash: 33b98c56cde8d4a876f217d0bbdd716d3a336260
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: na
+ms.openlocfilehash: 1125cdb5b1cc6829345c71537582816d020edc53
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636736"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37133023"
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Wysyłanie danych do analizy dzienników przy użyciu protokołu HTTP danych modułu zbierającego interfejsu API (w publicznej wersji zapoznawczej)
 W tym artykule przedstawiono sposób wysyłania danych do analizy dzienników z klienta interfejsu API REST za pomocą interfejsu API modułów zbierających dane HTTP.  Przedstawiono sposób formatowania danych zbieranych przez skrypt lub aplikację, dołączyć go w żądaniu i mieć tego żądania uprawnień przez analizy dzienników.  Przykłady są dostępne dla programu PowerShell, C# i Python.
@@ -60,7 +61,7 @@ Aby za pomocą interfejsu API modułów zbierających dane HTTP, należy utworzy
 | Autoryzacja |Podpis autoryzacji. W dalszej części tego artykułu można uzyskać informacje dotyczące sposobu tworzenia nagłówka HMAC SHA256. |
 | Typ dziennika |Określ typ rekordu jest przesyłane dane. Typ dziennika obsługuje obecnie tylko znaki alfanumeryczne. Nie obsługuje wartości numeryczne i znaki specjalne. Limit rozmiaru dla tego parametru wynosi 100 znaków. |
 | x-ms-date |Żądanie zostało przetworzone, w formacie RFC 1123 Data. |
-| time-generated-field |Nazwa pola danych, które zawiera sygnaturę czasową elementu danych. Jeśli określisz pola, a następnie jego zawartość jest używana dla **TimeGenerated**. Nie może mieć wartości null i musi zawierać prawidłowy godzina. Jeśli to pole nie zostanie określona, wartością domyślną **TimeGenerated** jest czas, który jest pozyskanych wiadomości. Zawartość pola wiadomości należy wykonać w formacie ISO 8601 RRRR-MM-Ddtgg. |
+| time-generated-field |Nazwa pola danych, które zawiera sygnaturę czasową elementu danych. Jeśli określisz pola, a następnie jego zawartość jest używana dla **TimeGenerated**. Jeśli to pole nie zostanie określona, wartością domyślną **TimeGenerated** jest czas, który jest pozyskanych wiadomości. Zawartość pola wiadomości należy wykonać w formacie ISO 8601 RRRR-MM-Ddtgg. |
 
 ## <a name="authorization"></a>Autoryzacja
 Każde żądanie API modułu zbierającego dane dziennika Analytics HTTP musi zawierać nagłówek uwierzytelnienia. Aby uwierzytelnić żądanie, musisz zalogować się żądanie z serwera podstawowego lub dodatkowego klucza dla obszaru roboczego, który wysłał żądanie. Następnie przekaż tego podpisu, jako część żądania.   
@@ -101,29 +102,33 @@ Przykłady w kolejnych sekcjach ma przykładowy kod, aby utworzyć nagłówek au
 Treść komunikatu musi być w formacie JSON. Musi zawierać co najmniej jeden rekord z pary nazw i wartości właściwości w następującym formacie:
 
 ```
-{
-"property1": "value1",
-" property 2": "value2"
-" property 3": "value3",
-" property 4": "value4"
-}
+[
+    {
+        "property 1": "value1",
+        "property 2": "value2",
+        "property 3": "value3",
+        "property 4": "value4"
+    }
+]
 ```
 
 Partii z wielu rekordów razem w jednym żądaniu, przy użyciu następującego formatu. Wszystkie rekordy muszą być tego samego typu rekordu.
 
 ```
-{
-"property1": "value1",
-" property 2": "value2"
-" property 3": "value3",
-" property 4": "value4"
-},
-{
-"property1": "value1",
-" property 2": "value2"
-" property 3": "value3",
-" property 4": "value4"
-}
+[
+    {
+        "property 1": "value1",
+        "property 2": "value2",
+        "property 3": "value3",
+        "property 4": "value4"
+    },
+    {
+        "property 1": "value1",
+        "property 2": "value2",
+        "property 3": "value3",
+        "property 4": "value4"
+    }
+]
 ```
 
 ## <a name="record-type-and-properties"></a>Typ rekordu i właściwości
@@ -137,7 +142,7 @@ Aby określić typ danych właściwości, analizy dzienników dodaje sufiks nazw
 |:--- |:--- |
 | Ciąg |_s |
 | Wartość logiczna |_b |
-| O podwójnej precyzji |_d |
+| podwójne |_d |
 | Data i godzina |_t |
 | GUID |_g |
 
@@ -382,7 +387,7 @@ namespace OIAPIExample
 
 ```
 
-### <a name="python-sample"></a>Przykładowe Python
+### <a name="python-2-sample"></a>Przykład 2 języka Python
 ```
 import json
 import requests

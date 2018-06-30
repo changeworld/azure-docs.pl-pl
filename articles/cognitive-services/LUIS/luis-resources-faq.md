@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: fd63ffd312e3ac17a6376eb3c9bef8f1978e3935
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f192c2f71208f3caf8a01a18a7023763f8de63c3
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333619"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113140"
 ---
 # <a name="language-understanding-faq"></a>Opis języka — często zadawane pytania
 
@@ -65,9 +65,9 @@ LUIS [tokenizes](luis-glossary.md#token) na podstawie utterance [kultury](luis-s
 System powinien używać najwyższy zamiar oceniania niezależnie od jego wartości. Na przykład wynik poniżej 0,5 (mniej niż 50%) nie musi oznaczać czy LUIS ma zaufanie niski. Zapewnianie więcej danych szkoleniowych może pomóc zwiększyć wynik najbardziej prawdopodobna zamiarem.
 
 ### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>Dlaczego nie widzę mojego trafień punktu końcowego na pulpicie nawigacyjnym Moja aplikacja
-Liczba całkowita punktu końcowego na pulpicie nawigacyjnym aplikacji są okresowo aktualizowane, ale metryki skojarzony z kluczem LUIS subskrypcję w portalu Azure są aktualizowane częściej. 
+Liczba całkowita punktu końcowego na pulpicie nawigacyjnym aplikacji są okresowo aktualizowane, ale metryki skojarzony z kluczem LUIS punktu końcowego w portalu Azure są aktualizowane częściej. 
 
-Jeśli nie widzisz trafień zaktualizowano punkt końcowy na pulpicie nawigacyjnym, zaloguj się do portalu Azure i Znajdź zasobu skojarzonego z kluczem LUIS subskrypcji, a następnie otwórz **metryki** wybierz **całkowita liczba wywołań** metryki. Jeśli klucz Subskrypcja jest używana do więcej niż jedną aplikację LUIS, metryki w portalu Azure zawiera łączna liczba wywołań z wszystkich aplikacji LUIS, które go używają.
+Jeśli nie widzisz trafień zaktualizowano punkt końcowy na pulpicie nawigacyjnym, zaloguj się do portalu Azure i Znajdź zasobu skojarzonego z kluczem LUIS punktu końcowego, a następnie otwórz **metryki** wybierz **całkowita liczba wywołań** metryki. Jeśli klucz punktu końcowego jest używana do więcej niż jedną aplikację LUIS, metryki w portalu Azure zawiera łączna liczba wywołań z wszystkich aplikacji LUIS, które go używają.
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>Moja aplikacja LUIS opracowanego wczoraj, ale obecnie 403 błędów występujących. Nie można zmienić aplikacji. Jak rozwiązać ten problem? 
 Po [instrukcje](#how-do-i-create-and-assign-a-luis-endpoint-key) w następnym — często zadawane pytania do tworzenia klucza punktu końcowego LUIS i przypisz go do aplikacji. Następnie należy zmienić żądania HTTP do punktu końcowego do [użycia nowego klucza punktu końcowego](luis-concept-keys.md#use-endpoint-key-in-query).
@@ -115,8 +115,9 @@ Na platformie Azure dzierżawca reprezentuje klienta lub organizacja, która jes
 
 ![Identyfikator dzierżawy w portalu Azure](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
-### <a name="why-are-there-more-subscription-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>Dlaczego są istnieje więcej klucze subskrypcji na moją aplikację strona publikowania niż przypisane do aplikacji? 
-Każda aplikacja LUIS ma klucz tworzenia początkowego. Klucze subskrypcji LUIS utworzone w czasie GA są widoczne na stronie publikowania, niezależnie od tego, czy zostały dodane do aplikacji. To zostało zrobione ułatwić GA migracji. Klucze subskrypcji LUIS nie są wyświetlane na stronie publikowania. 
+<a name="why-are-there-more-subscription-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>
+### <a name="why-are-there-more-endpoint-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>Dlaczego są istnieje więcej klucze punktu końcowego na moją aplikację strona publikowania niż przypisane do aplikacji? 
+Każda aplikacja LUIS ma klucz tworzenia początkowego. Klucze punktu końcowego LUIS utworzone w czasie GA są widoczne na stronie publikowania, niezależnie od tego, czy zostały dodane do aplikacji. To zostało zrobione ułatwić GA migracji. Klucze punktu końcowego LUIS nie są wyświetlane na stronie publikowania. 
 
 ## <a name="app-management"></a>Zarządzanie aplikacjami
 
@@ -153,7 +154,7 @@ Jeśli używasz dziennik analizy prognozowania, nie należy przechwytywać znies
 ## <a name="app-notification"></a>Powiadomienie aplikacji
 
 ### <a name="why-did-i-get-an-email-saying-im-almost-out-of-quota"></a>Dlaczego otrzymuję wiadomość e-mail z informacją, że chcę prawie poza limit przydziału?
-Klucz tworzenia starter jest dozwolony tylko 1000 miesiąca wysyła zapytanie do punktu końcowego. Utwórz klucz subskrypcji LUIS (wolne lub płatną) i używać tego klucza, podczas tworzenia kwerend punktu końcowego. W przypadku wprowadzania zapytań punktu końcowego z robotów lub innej aplikacji, musisz zmienić klucz punktu końcowego LUIS istnieje. 
+Klucz tworzenia starter jest dozwolony tylko 1000 miesiąca wysyła zapytanie do punktu końcowego. Utwórz klucz punktu końcowego LUIS (wolne lub płatną) i używać tego klucza, podczas tworzenia kwerend punktu końcowego. W przypadku wprowadzania zapytań punktu końcowego z robotów lub innej aplikacji, musisz zmienić klucz punktu końcowego LUIS istnieje. 
 
 ## <a name="integrating-luis"></a>Integrowanie LUIS
 
@@ -167,7 +168,7 @@ Wybierz szablon LUIS i zaznaczenie **wybierz** przycisku w okienku szablon, w ok
 
 ## <a name="luis-service"></a>Usługa LUIS 
 
-### <a name="is-luis-available-on-premise-or-in-private-cloud"></a>Działa LUIS dostępne lokalnie lub w chmurze prywatnej?
+### <a name="is-luis-available-on-premises-or-in-private-cloud"></a>Jest LUIS dostępnych na lokalnym lub w chmurze prywatnej?
 Nie. 
 
 ## <a name="changes-to-the-docs"></a>Zmiany do dokumentów
@@ -201,7 +202,7 @@ Tworzenie dodatkowych [trasy interfejsu API](https://github.com/Microsoft/LUIS-S
 Wideo: 
 * [Azure piątek w kompilacji 2018: Usługi kognitywnych — języka (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
 * [Pokaż AI 2018 kompilacji — Nowości dotyczące języka opis usługi](https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player)
-* [2018 kompilacji sesji - Bot analizy mowę i NLU najlepsze rozwiązania](https://channel9.msdn.com/events/Build/2018/BRK3208)
+* [Sesja konferencji Build 2018 — inteligencja botów, możliwości rozpoznawania mowy i najlepsze rozwiązania dotyczące NLU](https://channel9.msdn.com/events/Build/2018/BRK3208)
 * [2018 kompilacji - LUIS aktualizacji](https://channel9.msdn.com/events/Build/2018/THR3118/player)
 
 Projekty: 

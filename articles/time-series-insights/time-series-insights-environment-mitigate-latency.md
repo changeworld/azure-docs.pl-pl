@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/27/2017
-ms.openlocfilehash: bbd5e7d91e982a3dce320ea10a7fe8da435ff212
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 35860838d03d61e1145d35fd2516c1688c3bb64f
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293778"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130584"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorowanie i ograniczenia przepustowości w celu zmniejszenia opóźnień w usłudze Azure czas serii Insights
 Gdy ilość przychodzących danych przekracza konfiguracji w danym środowisku, mogą wystąpić opóźnienia lub ograniczanie w usłudze Azure czas serii Insights.
@@ -52,15 +52,15 @@ Z tego miejsca można skonfigurować alerty za pomocą następujących metryk:
 |**Transfer danych przychodzących odebranych komunikatów**   | Liczba wiadomości odczytywać wszystkie centra zdarzeń lub centra IoT źródła zdarzeń.        |
 |**Transfer danych przychodzących przechowywane bajtów**     | Łączny rozmiar zdarzeń zapisanych i dostępne dla zapytania. Rozmiar jest obliczana tylko na wartość właściwości.        |
 |**Transfer danych przychodzących przechowywane zdarzenia**     |   Liczba zdarzeń spłaszczoną przechowywane i dostępne dla zapytania.      |
-|**Transfer danych przychodzących komunikatów logicznych opóźnienia**    |  Różnica między czas komunikat umieszczonych w kolejce w źródle zdarzeń i czas przetwarzania w transfer danych przychodzących.      |
-|**Transfer danych przychodzących logicznych liczba komunikatów opóźnienie**    |  Różnica między liczba sekwencji ostatniej wiadomości umieszczonych w kolejce zdarzeń źródła partycji i sekwencji liczba komunikatów przetwarzanych w wejściowych.      |
+|**Transfer danych przychodzących odebranego komunikatu opóźnienia**    |  Różnica w sekundach między czasem, że wiadomość jest umieszczonych w kolejce zdarzeń źródła i czas przetwarzania w wejściowych.      |
+|**Transfer danych przychodzących odebranych opóźnienie liczba komunikatów**    |  Różnica między liczba sekwencji ostatniej wiadomości umieszczonych w kolejce zdarzeń źródła partycji i sekwencji liczba komunikatów przetwarzanych w wejściowych.      |
 
 
 ![Opóźnienie](media/environment-mitigate-latency/latency.png)
 
-Jeśli użytkownik jest ograniczane, wyświetlona zostanie wartość dla *zwłokę czasową komunikat logicznych wejściowych*, informujące o ile minut za TSI jest od czasu rzeczywistego komunikat trafienia źródło zdarzenia (z wyłączeniem czasu indeksowania appx. 30 – 60 sekund).  *Liczba komunikatów wejściowych logicznych Lag* również powinien mieć wartość, dzięki czemu można ustalić, ile komunikatów za możesz są.  Najprostszym sposobem aktualizować jest w celu zwiększenia pojemności w środowisku do rozmiaru, która pozwala pokonać różnica.  
+Jeśli użytkownik jest ograniczane, wyświetlona zostanie wartość dla *wejściowych odebrał komunikat zwłokę czasową obowiązującą*, informujące o liczbę sekund za TSI jest od czasu rzeczywistego komunikat trafienia źródło zdarzenia (z wyłączeniem czasu indeksowania appx. 30 – 60 sekund).  *Opóźnienie liczba komunikatów odebranych wejściowych* również powinien mieć wartość, dzięki czemu można ustalić, ile komunikatów za możesz są.  Najprostszym sposobem aktualizować jest w celu zwiększenia pojemności w środowisku do rozmiaru, która pozwala pokonać różnica.  
 
-Na przykład w środowisku pojedynczego S1 jednostki i dowiedzieć się, że istnieje opóźnienie pięć milionów wiadomości, można zwiększyć rozmiar środowiska do sześciu jednostki dla wokół dziennie można aktualizować.  Możesz można zwiększyć nawet bardziej efektywnej się szybciej.  To jest typowe wystąpienia, gdy początkowo inicjowania obsługi administracyjnej środowisku, szczególnie w przypadku, gdy zostanie ono podłączone do źródła zdarzenia, który ma już zdarzenia w nim lub gdy zbiorczego przekazania duże ilości danych historycznych.
+Na przykład w środowisku pojedynczego S1 jednostki i dowiedzieć się, że istnieje opóźnienie pięć milionów wiadomości, można zwiększyć rozmiar środowiska do sześciu jednostki dla wokół dziennie można aktualizować.  Możesz można zwiększyć nawet bardziej efektywnej się szybciej.  Okres wyrównującej jest często dochodzi przypadku początkowo inicjowania obsługi środowiska, szczególnie w przypadku, gdy zostanie ono podłączone do źródła zdarzenia, który ma już zdarzenia w nim lub zbiorczo przekazywania duże ilości danych historycznych.
 
 Innej techniki jest skonfigurowanie **wejściowych przechowywanych zdarzenia** alert > = Próg nieco niższy wydajność środowiska łączny okres 2 godziny.  Ten alert może pomóc zrozumieć, jeśli jest stale pojemności, co oznacza wysokie prawdopodobieństwo opóźnienia.  
 

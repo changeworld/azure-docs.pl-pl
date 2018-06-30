@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: data-sync
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 06/28/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: bb5a383828e98c773c079dcea8e3cf37f9a068f0
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: ab4e8a41cff854cb1f60a7de32c0db164d5721f0
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37017439"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114211"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizowanie danych między wieloma bazami danych chmury i lokalnych z opcją synchronizacji danych SQL
 
@@ -110,6 +110,14 @@ Alokowania i anulowania alokowania podczas tworzenia grupy synchronizacji, aktua
 -   Kolekcji XMLSchemaCollection (XML obsługiwane)
 
 -   Kursor, Timestamp, Hierarchyid
+
+#### <a name="unsupported-column-types"></a>Typy kolumn nieobsługiwane
+
+Synchronizacja danych nie można zsynchronizować kolumny tylko do odczytu lub generowanych przez system. Na przykład:
+
+-   Kolumny obliczanej.
+
+-   Kolumn generowanych przez system, w przypadku tabel czasowych.
 
 #### <a name="limitations-on-service-and-database-dimensions"></a>Ograniczenia dotyczące wymiarów usługi i bazy danych
 

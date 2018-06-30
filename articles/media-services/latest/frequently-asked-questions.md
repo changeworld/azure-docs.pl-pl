@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: juliako
-ms.openlocfilehash: 7fe59763162ca53ea0256d5902aeece90525f214
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 098a34aba8e5ce23f64d4bb07e3b9622aa2adb8e
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655677"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110424"
 ---
 # <a name="azure-media-services-v3-preview-frequently-asked-questions"></a>Azure Media Services w wersji 3 (wersja zapoznawcza) — często zadawane pytania
 
@@ -30,7 +30,7 @@ Jeszcze nie. Można użyć jednego z obsługiwanych zestawów SDK. Zobacz samouc
 
 Zespół usługi Media Services jest wyeliminowanie RUs w wersji 3. Jednak pracy wymagane usługi nie została ukończona. Do tego czasu klienci mają do portalu Azure lub interfejsów API usług AMS v2 skonfiguruj RUs (zgodnie z opisem w [skalowanie przetwarzania multimediów](../previous/media-services-scale-media-processing-overview.md). 
 
-S3 RUs są niezbędne dla **VideoAnalyzerPreset** i **AudioAnalyzerPreset** predefiniowane V3.
+Korzystając z **VideoAnalyzerPreset** i/lub **AudioAnalyzerPreset**, ustawić konta usługi Media Services do 10 jednostki zarezerwowane multimediów S3.
 
 ## <a name="does-v3-asset-have-no-assetfile-concept"></a>V3 zasobów ma pojęcie AssetFile?
 
@@ -56,7 +56,7 @@ Aby uzyskać więcej informacji, zobacz [filtrowanie, porządkowanie, stronicowa
 
 ## <a name="how-to-retrieve-an-entity-in-media-services-v3"></a>Jak pobrać jednostki w wersji 3 usługi Media Services?
 
-v3 opiera się na ujednoliconego powierzchni interfejsu API, który udostępnia funkcje zarówno zarządzanie i operacje, w oparciu **usługi Azure Resource Manager**. Zgodnie z **usługi Azure Resource Manager**, nazw zasobów są unikatowe. W związku z tym można dowolne ciągi Unikatowy identyfikator (na przykład, GUID) dla nazwy zasobu. 
+v3 opiera się na ujednoliconego powierzchni interfejsu API, który udostępnia funkcje zarówno zarządzanie i operacje, w oparciu **usługi Azure Resource Manager**. Zgodnie z **usługi Azure Resource Manager**, nazw zasobów są unikatowe. W związku z tym jako nazw zasobów można używać dowolnych ciągów będących unikatowymi identyfikatorami (na przykład identyfikatorów GUID). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

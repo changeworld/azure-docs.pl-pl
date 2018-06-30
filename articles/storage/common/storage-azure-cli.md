@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
-ms.openlocfilehash: 68e101ebec4a90d8c0f39eedeef33d252c720ed1
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: b7cb8b1ca2f377964f3613ad8e0549418cb2abec
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737372"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131875"
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>Za pomocą usługi Azure CLI 2.0 z usługą Azure Storage
 
@@ -198,9 +198,20 @@ az storage account create \
   * `Standard_RAGRS`
   * `Standard_ZRS`
 
-
 ### <a name="set-default-azure-storage-account-environment-variables"></a>Ustaw zmienne środowiskowe domyślne konto magazynu Azure
+
 Może mieć wielu kont magazynu w ramach subskrypcji platformy Azure. Aby wybrać jeden z nich do użycia dla wszystkich poleceń kolejnych magazynu, można ustawić zmienne środowiskowe:
+
+Najpierw wyświetl klucze konta magazynu przy użyciu polecenia [az storage account keys list](/cli/azure/storage/account/keys#list):
+
+```azurecli-interactive
+az storage account keys list \
+    --account-name <account_name> \
+    --resource-group <resource_group> \
+    --output table
+```
+
+Teraz, po klucz jako zmienne środowiskowe można zdefiniować ją i nazwa konta:
 
 ```azurecli
 export AZURE_STORAGE_ACCOUNT=<account_name>
@@ -223,7 +234,6 @@ export AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
 
 > [!NOTE]
 > Wszystkie przykłady w następujących sekcjach w tym artykule założono, że ustawiono `AZURE_STORAGE_ACCOUNT` i `AZURE_STORAGE_ACCESS_KEY` zmiennych środowiskowych.
->
 
 ## <a name="create-and-manage-blobs"></a>Tworzenie i zarządzanie nimi obiektów blob
 Magazyn obiektów Blob Azure to usługa do przechowywania dużych ilości danych bez struktury, takich jak dane tekstowe lub binarne, którego mogą uzyskać dostęp z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS. W tej sekcji założono, że znasz już pojęcia dotyczące magazynu obiektów Blob platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [Rozpoczynanie pracy z magazynem obiektów Blob platformy Azure przy użyciu platformy .NET](../blobs/storage-dotnet-how-to-use-blobs.md) i [pojęcia dotyczące usługi Blob](/rest/api/storageservices/blob-service-concepts).
@@ -241,7 +251,7 @@ Można ustawić jedną z trzech poziomów dostępu do odczytu dla nowego kontene
 * `blob`: Publiczny dostęp do odczytu obiektów blob.
 * `container`: Publiczny dostęp do odczytu i listy do całego kontenera.
 
-Aby uzyskać więcej informacji, zobacz [Zarządzanie anonimowy dostęp do odczytu do kontenerów i obiektów blob](../blobs/storage-manage-access-to-resources.md).
+Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem anonimowym w trybie odczytu do kontenerów i obiektów blob](../blobs/storage-manage-access-to-resources.md).
 
 ### <a name="upload-a-blob-to-a-container"></a>Przekazywanie obiektu blob do kontenera
 Azure Blob storage obsługuje blok, Dołącz i stronicowe. Przekaż obiekty BLOB do kontenera za pomocą `blob upload` polecenia:

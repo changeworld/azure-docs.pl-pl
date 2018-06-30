@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3de93c06285f36353d91a66db975c0a579c1379c
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: e1bcae85c7078d817e30ec578ac12b2be13342c7
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097448"
+ms.locfileid: "37129027"
 ---
 # <a name="update-management-solution-in-azure"></a>Aktualizacja rozwiązania do zarządzania na platformie Azure
 
@@ -213,11 +213,11 @@ Aby utworzyć nowe wdrożenie aktualizacji, wybierz **harmonogram wdrożenia akt
 |Name (Nazwa) |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
 |System operacyjny| Wybierz **Linux** lub **Windows**.|
 |Komputery do zaktualizowania |Wybierz zapisanego kryterium wyszukiwania lub **maszyny** z listy rozwijanej, a następnie wybierz poszczególne maszyny. |
-|Klasyfikacje aktualizacji|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne. CentOS nie obsługują tych poza pole.|
-|Aktualizacje, które mają zostać wykluczone|Wprowadź aktualizacje, które mają zostać wykluczone. W systemie Windows, wprowadź artykułu KB bez **KB** prefiks. Dla systemu Linux wprowadź nazwę pakietu, lub użyj symbolu wieloznacznego.  |
+|Aktualizuj klasyfikacje|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne. CentOS nie obsługują tych poza pole.|
+|Aktualizacje do wykluczenia|Wprowadź aktualizacje, które mają zostać wykluczone. W systemie Windows, wprowadź artykułu KB bez **KB** prefiks. Dla systemu Linux wprowadź nazwę pakietu, lub użyj symbolu wieloznacznego.  |
 |Ustawienia harmonogramu|Wybierz godzinę rozpoczęcia, a następnie wybierz opcję **raz** lub **cykliczny** cyklu.|| Okno obsługi |Liczba minut dla aktualizacji. Wartość nie może być mniejsza niż 30 minut lub więcej niż 6 godzin. |
 
-## <a name="update-classifications"></a>Klasyfikacje aktualizacji
+## <a name="update-classifications"></a>Aktualizuj klasyfikacje
 
 W poniższych tabelach przedstawiono klasyfikacje aktualizacji w przystawce Zarządzanie aktualizacji definicji dla każdej klasyfikacji.
 
@@ -253,13 +253,15 @@ Nie jest obecnie żadna metoda metoda obsługiwana umożliwiające dostępności
 
 Następujące adresy są wymagane w szczególności do zarządzania aktualizacjami. Dane na te adresy są przesyłane za pośrednictwem portu 443.
 
-|Azure publicznego  |Azure Government  |
+|Azure Public  |Azure Government  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
 |*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
 
 Aby uzyskać więcej informacji na temat porty wymagane przez hybrydowy proces roboczy elementu Runbook, zobacz [portów roli hybrydowy proces roboczy](automation-hybrid-runbook-worker.md#hybrid-worker-role).
+
+Zaleca się używania adresów wymienionych podczas definiowania wyjątków. Adresy IP można pobrać [zakresów IP centrum danych Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653). Ten plik jest aktualizowana co tydzień i odzwierciedla aktualnie wdrożonych zakresy i nadchodzące zmiany zakresu adresów IP.
 
 ## <a name="search-logs"></a>Dzienniki wyszukiwania
 
@@ -509,7 +511,7 @@ Wdrażanie aktualizacji przez aktualizację klasyfikacji nie działa na CentOS p
 
 Aby dowiedzieć się, jak rozwiązywać problemy z zarządzania aktualizacjami, zobacz [Rozwiązywanie problemów z zarządzaniem aktualizacji](troubleshoot/update-management.md)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Nadal samouczkiem, aby dowiedzieć się, jak zarządzanie aktualizacjami dla maszyn wirtualnych systemu Windows.
 

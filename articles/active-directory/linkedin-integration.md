@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 06/28/2018
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: 3d73cae0975bea0332c2d266d2745773b373b7d8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4b3ff0b2481b42f516d28ac17f2616685730b7d5
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33762374"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109590"
 ---
 # <a name="linkedin-account-connections-for-microsoft-apps-and-services"></a>LinkedIn konto połączenia dla usług i aplikacji firmy Microsoft
 W tym artykule możesz dowiedzieć się, jak do zarządzania połączeniami konta LinkedIn dla dzierżawy w Centrum administracyjnym usługi Azure Active Directory (Azure AD). 
@@ -53,7 +53,7 @@ Funkcja połączenia konta LinkedIn jest domyślnie całego dzierżawy. Można w
 4. W obszarze **LinkedIn konta połączenia**:
   * Wybierz **tak** umożliwiających LinkedIn połączenia konta dla wszystkich użytkowników w dzierżawie
   * Wybierz **wybrane** umożliwiające LinkedIn konta połączenia tylko wybrane dzierżawcy użytkowników
-  * Wybierz **nr** Aby wyłączyć LinkedIn połączenia konta dla wszystkich użytkowników ![LinkedIn włączanie konta połączenia](./media/linkedin-integration/LinkedIn-integration.png)
+  * Wybierz **nr** Aby wyłączyć LinkedIn połączenia konta dla wszystkich użytkowników ![LinkedIn włączanie konta połączenia](./media/linkedin-integration/linkedin-integration.png)
 5. Zapisz ustawienia, gdy wszystko będzie gotowe, wybierając **zapisać**.
 
 ### <a name="enable-or-disable-linkedin-account-connections-for-your-organizations-office-2016-apps-using-group-policy"></a>Włącz lub wyłącz LinkedIn konta połączenia w przypadku aplikacji pakietu Office 2016 w organizacji za pomocą zasad grupy
@@ -64,7 +64,7 @@ Funkcja połączenia konta LinkedIn jest domyślnie całego dzierżawy. Można w
 4. Utwórz obiekt zasad grupy z następującymi ustawieniami: **Konfiguracja użytkownika** > **Szablony administracyjne** > **Microsoft Office 2016**  >  **Różne** > **funkcji Pokaż LinkedIn w aplikacjach pakietu Office**.
 5. Wybierz **włączone** lub **wyłączone**.
   * Gdy zasady są **włączone**, **funkcji Pokaż LinkedIn w aplikacjach pakietu Office** znaleźć w oknie dialogowym Opcje pakietu Office 2016 jest włączone. Oznacza to również użytkowników w organizacji można użyć funkcji LinkedIn w swoich aplikacjach pakietu Office.
-  * Gdy zasady są **wyłączone**, **funkcji Pokaż LinkedIn w aplikacjach pakietu Office** znaleziono ustawienia w opcjach programu Office 2016 okna dialogowego ustawiono stan wyłączone, a użytkownicy końcowi nie można zmienić tego ustawienia. Użytkownicy w Twojej organizacji nie można użyć funkcji LinkedIn w aplikacjach pakietu Office 2016. 
+  * Gdy zasady są **wyłączone**, **funkcji Pokaż LinkedIn w aplikacjach pakietu Office** znaleziono ustawienia w opcjach programu Office 2016 okna dialogowego ustawiono stan wyłączone, a użytkownicy końcowi nie można zmienić tego ustawienia. Użytkownicy w Twojej organizacji nie można użyć funkcji LinkedIn w aplikacjach pakietu Office 2016.
 
 Zasady grupy dotyczy tylko pakiet Office 2016 aplikacji na komputerze lokalnym. Użytkownicy mogą zobaczyć funkcje LinkedIn w profilu karty w usłudze Office 365, nawet wtedy, gdy wyłączenie LinkedIn w swoich aplikacjach pakietu Office 2016. 
 

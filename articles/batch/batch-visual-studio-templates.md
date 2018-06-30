@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5241c62e8b423b20477fc72c87303daf3d4ab43c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 98a5af1c0b321b7f9acf2bfd936a16d22088babf
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30316753"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128864"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Szablony projektu Visual Studio umożliwia szybkie rozpoczęcie tworzenia rozwiązań partii
 
@@ -216,7 +216,7 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 ```
 **Poświadczenia magazynu**
 
-Zazwyczaj klienta nie musi podać poświadczenia konta magazynu połączone, do zadania Menedżer zadania, ponieważ () najbardziej menedżerów zadania nie trzeba jawnie uzyskać dostęp do konta magazynu połączone i (b połączonym koncie magazynu jest często dostępne do wszystkich zadań jako wspólne ustawienia środowiska dla zadania. Jeśli nie udostępniasz kont magazynu połączone za pomocą typowych ustawień środowiska, a Menedżer zadania wymaga dostępu do magazynu połączone, następnie należy określić poświadczenia magazynu połączone w następujący sposób:
+Zazwyczaj klient nie trzeba podać poświadczenia konta magazynu połączone, do zadania Menedżer zadania, ponieważ () większości menedżerów zadania nie trzeba jawnie uzyskać dostęp do konta magazynu połączone i (b połączonym koncie magazynu często mają wszystkie zadania jako Typowe ustawienia środowiska dla zadania. Jeśli nie udostępniasz kont magazynu połączone za pomocą typowych ustawień środowiska, a Menedżer zadania wymaga dostępu do magazynu połączone, następnie należy określić poświadczenia magazynu połączone w następujący sposób:
 
 ```csharp
 job.JobManagerTask.EnvironmentSettings = new [] {
@@ -362,7 +362,7 @@ Implementacji Run() ma dostęp do:
 
 **Niepowodzenie zadania**
 
-W razie awarii wyjściu metody Run() zgłoszeniu wyjątku, ale to pozostawia obsługi najwyższego poziomu wyjątek w formancie kodu zakończenia zadania. Jeśli chcesz kontrolować kod zakończenia tak, aby odróżnić różnego rodzaju błąd, na przykład w celach diagnostycznych albo niektóre rodzaje uszkodzenia należy zakończyć zadania i inne osoby nie powinien należy zakończyć metody Run() zwracając kod wyjścia równy zero. Staje się on kodu zakończenia zadania.
+W razie awarii wyjściu metody Run() zgłoszeniu wyjątku, ale to pozostawia obsługi najwyższego poziomu wyjątek w formancie kodu zakończenia zadania. Jeśli chcesz kontrolować kod zakończenia tak, aby odróżnić różnego rodzaju błąd, na przykład w celach diagnostycznych albo niektóre rodzaje uszkodzenia należy zakończyć zadania i inne osoby nie powinien, następnie należy powinny być kończone metody Run() zwracając inną niż zero Kod zakończenia. Staje się on kodu zakończenia zadania.
 
 ### <a name="exit-codes-and-exceptions-in-the-task-processor-template"></a>Kody zakończenia i wyjątków w szablonie zadań procesora
 Kody zakończenia i wyjątków udostępniają mechanizm określić wyniki działania programu, a ich pomocne w identyfikacji problemów z wykonywanie programu. Szablon procesora zadanie implementuje kody wyjścia i wyjątków opisanych w tej sekcji.
@@ -385,7 +385,7 @@ Wszystkie informacje zwracane przez wyjątki są zapisywane w plikach stdout.txt
 ### <a name="client-considerations"></a>Uwagi dotyczące klientów
 **Poświadczenia magazynu**
 
-Jeśli procesor zadań korzysta z magazynu obiektów blob platformy Azure do utrwalenia danych wyjściowych, na przykład za pomocą biblioteki pomocnika konwencje pliku, a następnie będzie potrzebował dostępu do *albo* poświadczeń konta magazynu w chmurze *lub* adresu URL kontenera obiektu blob zawierającego sygnatury dostępu współdzielonego (SAS). Szablon obsługuje podawania poświadczeń za pomocą wspólnych zmiennych środowiskowych. Klient może przekazać poświadczeń magazynu w następujący sposób:
+Jeśli procesor zadań korzysta z magazynu obiektów blob platformy Azure do utrwalenia danych wyjściowych, na przykład za pomocą biblioteki pomocnika konwencje pliku, a następnie będzie potrzebował dostępu do *albo* poświadczeń konta magazynu w chmurze *lub* obiektu blob adresu URL kontenera, który zawiera sygnaturę dostępu współdzielonego (SAS). Szablon obsługuje podawania poświadczeń za pomocą wspólnych zmiennych środowiskowych. Klient może przekazać poświadczeń magazynu w następujący sposób:
 
 ```csharp
 job.CommonEnvironmentSettings = new [] {
@@ -439,10 +439,7 @@ parameters.JSON następującym kodem, a jeśli go znaleziono ładuje go jako sł
 ### <a name="persist-job-and-task-output-to-azure-storage"></a>Utrwalanie i zadań dane wyjściowe do magazynu Azure
 Kolejnym narzędziem pomocne w partii opracowywanie rozwiązań jest [konwencje pliku wsadowego Azure][nuget_package]. Ta biblioteka klas programu .NET (obecnie w wersji zapoznawczej) w aplikacjach partiami platformy .NET umożliwia łatwe przechowywanie i pobieranie danych wyjściowych zadania, do i z usługi Azure Storage. [Utrwalić danych wyjściowych i zadań partii zadań Azure](batch-task-output.md) zawiera pełne omówienie biblioteki i jej użycia.
 
-### <a name="batch-forum"></a>Forum usługi partia zadań
-[Forum usługi partia zadań Azure] [ forum] w witrynie MSDN jest doskonałym miejscem do omówienia partii i zadać pytania dotyczące usługi. HEAD na za pośrednictwem przydatne Posty "trwałe" i opublikuj swoje pytania powstałych podczas tworzenia własnych rozwiązań partii.
 
-[forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azurebatch
 [net_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobmanagertask.aspx
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files

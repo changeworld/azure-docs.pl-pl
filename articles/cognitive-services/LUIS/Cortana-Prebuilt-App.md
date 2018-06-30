@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: v-geberr
-ms.openlocfilehash: b792d090d037ef180258a1634d4bd063c0a71b9a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c7249cb8d8cff29f419412025c69e3b2b76b49d1
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348164"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110661"
 ---
 # <a name="cortana-prebuilt-app"></a>Wbudowane aplikacji Cortana
 
@@ -46,7 +46,7 @@ Aby dostęp do aplikacji wbudowane Cortana przy użyciu następujących punktów
 > Punkt końcowy adresy URL są także dostępne w [aplikacje — Pobierz Pomocnik aplikacje](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c32) interfejsu API.
 
 ## <a name="try-out-the-personal-assistant-app"></a>Wypróbowanie aplikacji Pomocnik
-Aby wywołać punkt końcowy, można dołączyć Twojej subskrypcji argument i zapytania ciąg klucza do punktu końcowego. 
+Aby wywołać punkt końcowy, można dołączyć z punktu końcowego argument i zapytania ciąg klucza do punktu końcowego. 
 
 Na przykład jeśli utterance chcesz zinterpretować jest "Utwórz termin spotkania zespołu", tym utterance można dołączyć do adresu URL punktu końcowego. 
 
@@ -54,7 +54,7 @@ Na przykład jeśli utterance chcesz zinterpretować jest "Utwórz termin spotka
 https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/c413b2ef-382c-45bd-8ff0-f76d60e2a821?subscription-key={YOUR-SUBSCRIPTION-KEY}&q=create an appointment for team meeting
 ```
 
-Wklej adres URL w przeglądarce sieci web i Zastąp klucz subskrypcji na potrzeby `{YOUR-SUBSCRIPTION-KEY}` pola.
+Wklej adres URL w przeglądarce sieci web, a klucz punktu końcowego w celu zastąpienia `{YOUR-SUBSCRIPTION-KEY}` pola.
 
 W przeglądarce widać, że aplikacja wbudowane Cortana identyfikuje `builtin.intent.calendar.create_calendar_entry` jako zamierzone i `builtin.calendar.title` jako typu jednostki i utterance `create an appointment for team meeting`.
 

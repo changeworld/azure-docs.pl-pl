@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 8bcc89f9ec7c73fd1f690e00e831fbd5b960eef9
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 96de05eb8ebae85b73eaa012efdfb38ac074abf8
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850012"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110924"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory
 
@@ -93,7 +93,7 @@ Wdrażanie usługi Azure AD przyłączone do urządzeń zapewnia następujące k
 
 - **Ograniczenie dostępu** aby aplikacji tylko w przypadku urządzeń, które spełniają zasady zgodności.
 
-- **Bezproblemowy dostęp do zasobów na lokalnych** gdy urządzenie ma procesów z wiersza do lokalnego kontrolera domeny. 
+- **Bezproblemowy dostęp do zasobów lokalnych** gdy urządzenie ma procesów z wiersza do lokalnego kontrolera domeny. 
 
 
 Podczas usługi Azure AD join jest przeznaczone głównie dla organizacji, które nie mają infrastruktury lokalnej usługi Active Directory systemu Windows Server, na pewno umożliwia w scenariuszach, w których:

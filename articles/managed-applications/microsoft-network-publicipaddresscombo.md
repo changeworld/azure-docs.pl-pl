@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/30/2018
+ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: bf0ef5be609fba14ab12e1e6f9f97bc63f032aae
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: d06a450595a53fdc65fba74791345abe3a1b3db4
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260564"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109573"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft.Network.PublicIpAddressCombo UI element
 Grupa służy do wybierania nowego lub istniejącego publicznego adresu IP.
@@ -66,18 +66,20 @@ Grupa służy do wybierania nowego lub istniejącego publicznego adresu IP.
 - Jeśli `constraints.required.domainNameLabel` ustawiono **true**, użytkownik musi podać etykieta nazwy domeny, podczas tworzenia nowego publicznego adresu IP. Istniejącego publicznego adresu IP, adresy bez etykiety nie są dostępne do wyboru.
 - Jeśli `options.hideNone` ustawiono **true**, następnie wybrać opcję **Brak** publicznego adresu IP adres jest ukryty. Wartość domyślna to **false**.
 - Jeśli `options.hideDomainNameLabel` ustawiono **true**, a następnie w polu tekstowym dla etykiety nazwy domeny jest ukryty. Wartość domyślna to **false**.
-- Jeśli `options.hideExisting` ma wartość true, a następnie użytkownik nie będzie mógł wybrać istniejącego publicznego adresu IP. Wartość domyślna to **false**.
+- Jeśli `options.hideExisting` ma wartość true, a następnie użytkownik nie jest możliwe wybranie istniejącego publicznego adresu IP. Wartość domyślna to **false**.
 - Aby uzyskać `zone`, tylko publiczne adresy IP dla określonej strefy lub odporność publiczne adresy IP strefy są dostępne.
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
-Jeśli użytkownik wybierze żadnego publicznego adresu IP, oczekiwano następujące dane wyjściowe:
+Jeśli użytkownik wybierze żadnego publicznego adresu IP, formantu zwraca następujące dane wyjściowe:
+
 ```json
 {
   "newOrExistingOrNone": "none"
 }
 ```
 
-Jeśli użytkownik wybierze nowy lub istniejący adres IP, oczekiwano następujące dane wyjściowe:
+Jeśli użytkownik wybierze nowy lub istniejący adres IP, formantu zwraca następujące dane wyjściowe:
+
 ```json
 {
   "name": "ip01",
@@ -87,6 +89,7 @@ Jeśli użytkownik wybierze nowy lub istniejący adres IP, oczekiwano następuj�
   "newOrExistingOrNone": "new"
 }
 ```
+
 - Gdy `options.hideNone` jest określony jako **true**, `newOrExistingOrNone` będzie mieć tylko wartość **nowe** lub **istniejących**.
 - Gdy `options.hideDomainNameLabel` jest określony jako **true**, `domainNameLabel` jest niezadeklarowany.
 

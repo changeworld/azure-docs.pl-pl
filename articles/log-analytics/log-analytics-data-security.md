@@ -3,7 +3,7 @@ title: Rejestrować dane Analytics | Dokumentacja firmy Microsoft
 description: Więcej informacji na temat sposobu analizy dzienników prywatności i zabezpiecza dane.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: a33bb05d-b310-4f2c-8f76-f627e600c8e7
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: magoedte
-ms.openlocfilehash: 8558b3b1f5a9036f1134ddce3302211b41f57c05
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.component: na
+ms.openlocfilehash: 7596428b4ed067bf53f3b295a1682ed372f8d472
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025913"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131448"
 ---
 # <a name="log-analytics-data-security"></a>Rejestrować analizy danych
 Ten dokument jest przeznaczony do dostarczania informacji Azure Log Analytics załączyć na [Centrum zaufania Azure](../security/security-microsoft-trust-center.md).  

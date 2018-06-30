@@ -12,12 +12,12 @@ ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: d97e0bf94b911936cacf04f7f26c172b9975c56f
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: ab6a66821905901515258842176ce24e485a54e3
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061648"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110616"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nowy model DBA w chmurze — zarządzania bazą danych w bazie danych SQL Azure
 
@@ -254,7 +254,7 @@ Baza danych SQL używa niektóre techniki inteligentne, umożliwiające obsług�
 ### <a name="how-do-i-synchronize-data-between-sql-database-and-sql-server"></a>Sposób synchronizacji danych między bazą danych SQL i programu SQL Server?
 Istnieje kilka sposobów osiągnięcia tego: 
 - **[Synchronizacja danych](sql-database-sync-data.md)**  — ta funkcja pomaga w synchronizacji danych dwukierunkowo między wieloma lokalnych baz danych programu SQL Server i bazy danych SQL. Synchronizacja lokalnych baz danych programu SQL Server, należy zainstalować i skonfigurować synchronizację agenta na komputerze lokalnym i otwórz wychodzący port TCP 1433.
-- **[Transakcja replikacji](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)**  — w przypadku replikacji transakcji można synchronizować dane z lokalnej bazy danych SQL Azure z lokalnego wydawcy i subskrybencie są bazy danych SQL Azure. Obecnie jest obsługiwany tylko w tej instalacji. Aby uzyskać więcej informacji na temat migracji danych z lokalnego do usługi Azure SQL z minimalnym czasem przestojów, zobacz: [użycie transakcji replikacji](sql-database-cloud-migrate.md#method-2-use-transactional-replication)
+- **[Transakcja replikacji](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)**  — w przypadku replikacji transakcji można synchronizować dane z lokalnej bazy danych SQL Azure z lokalną wydawcy i subskrybencie są bazy danych SQL Azure. Obecnie jest obsługiwany tylko w tej instalacji. Aby uzyskać więcej informacji na temat migracji danych z lokalnego do usługi Azure SQL z minimalnym czasem przestojów, zobacz: [użycie transakcji replikacji](sql-database-cloud-migrate.md#method-2-use-transactional-replication)
 
 ## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej o [bazy danych SQL](sql-database-technical-overview.md).

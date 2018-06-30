@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/31/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: dc01a775579455ae24c95ecc6f3858ce28149dea
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: cc5b4955d6bd239f99a9be0ab158ac8003f67ddf
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232447"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110525"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Kody błędów w raportach działań związanych z logowaniem w portalu usługi Azure Active Directory
 
@@ -104,7 +104,7 @@ W poniższej sekcji przedstawiono kompletne omówienie wszystkich możliwych bł
 |50120|Problem z nagłówkiem JWT. Skontaktuj się z administratorem dzierżawy.|
 |50124|Przekształcenie oświadczeń zawiera nieprawidłowy parametr wejściowy. Skontaktuj się z administratorem dzierżawy, aby zaktualizować zasady.|
 |50125|Logowanie zostało przerwane z powodu wpisu dotyczącego resetowania lub rejestracji hasła|
-|50126|Nieprawidłowa nazwa lub hasło użytkownika albo nieprawidłowa nazwa lub hasło użytkownika lokalnego.|
+|50126|Nieprawidłowa nazwa użytkownika lub hasło lub lokalnego Nieprawidłowa nazwa użytkownika lub hasło.|
 |50127|Użytkownik musi zainstalować aplikację brokera, aby uzyskać dostęp do tej zawartości.|
 |50128|Nieprawidłowa nazwa domeny — żadne informacje identyfikujące dzierżawę nie zostały znalezione w żądaniu ani nie są implikowane przez jakiekolwiek podane poświadczenia|
 |50129|Urządzenie nie jest dołączone w miejscu pracy — dołączanie w miejscu pracy jest wymagane do zarejestrowania urządzenia.|

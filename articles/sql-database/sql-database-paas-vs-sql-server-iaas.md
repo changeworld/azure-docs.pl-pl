@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: carlrab
-ms.openlocfilehash: a212a595c02a048721f1a8753b437f74f2fc4973
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 2fb5a7cbca4df0faa06864f580814f31cc2b609c
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308958"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114405"
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>Wybieranie opcji programu SQL Server w chmurze: usługa Azure SQL Database (PaaS) lub program SQL Server na maszynach wirtualnych Azure (IaaS)
 
@@ -124,7 +124,7 @@ W przypadku **programu SQL Server uruchomionego na maszynach wirtualnych platfor
 
 **Zarządzane wystąpienia bazy danych SQL** znacząco upraszcza migrację istniejących aplikacji do bazy danych SQL Azure, co umożliwia przenoszenie migrowanych bazy danych aplikacji na rynek Azure szybko.
 
-**Program SQL Server uruchomiony na maszynach wirtualnych Azure** jest idealne, jeśli istniejące lub nowe aplikacje wymagają dużych baz danych lub dostęp do wszystkich funkcji w programie SQL Server lub systemu Windows i Linux i chce się uniknąć do czasu i kosztów uzyskania nowego sprzętu lokalnego. Możliwe jest również odpowiedni, jeśli chcesz migrować istniejące lokalne aplikacje i bazy danych na platformie Azure jako-to - w przypadku gdy wystąpienia zarządzane bazy danych SQL Azure nie jest odpowiedni. Ponieważ nie musisz wprowadzać zmian w prezentacji, aplikacji i warstwach danych, jeśli rezygnujesz z ponownego projektowania istniejącego rozwiązania, oszczędzasz czas i pieniądze. Zamiast tego możesz skoncentrować się na migracji wszystkich rozwiązań do platformy Azure i przeprowadzeniu optymalizacji wydajności, których może wymagać platforma Azure. Więcej informacje zawiera artykuł [Performance Best Practices for SQL Server on Azure Virtual Machines](../virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md) (Najlepsze praktyki dotyczące wydajności dla programu SQL Server w usłudze Azure Virtual Machines).
+**Program SQL Server uruchomiony na maszynach wirtualnych Azure** jest idealne, jeśli istniejące lub nowe aplikacje wymagają dużych baz danych lub dostęp do wszystkich funkcji w programie SQL Server lub systemem Windows lub Linux, aby uniknąć na czas i wydatków uzyskania nowego sprzętu lokalnymi. Możliwe jest również odpowiedni, jeśli chcesz migrować istniejące lokalne aplikacje i bazy danych na platformie Azure jako-to - w przypadku gdy wystąpienia zarządzane bazy danych SQL Azure nie jest odpowiedni. Ponieważ nie musisz wprowadzać zmian w prezentacji, aplikacji i warstwach danych, jeśli rezygnujesz z ponownego projektowania istniejącego rozwiązania, oszczędzasz czas i pieniądze. Zamiast tego możesz skoncentrować się na migracji wszystkich rozwiązań do platformy Azure i przeprowadzeniu optymalizacji wydajności, których może wymagać platforma Azure. Więcej informacje zawiera artykuł [Performance Best Practices for SQL Server on Azure Virtual Machines](../virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md) (Najlepsze praktyki dotyczące wydajności dla programu SQL Server w usłudze Azure Virtual Machines).
 
 ## <a name="summary"></a>Podsumowanie
 W tym artykule omówiono usługę SQL Database i program SQL Server w usłudze Azure Virtual Machines oraz względy biznesowe, które mogą mieć wpływ na wybór jednego z tych rozwiązań. Poniżej znajduje się podsumowanie sugestii, które należy wziąć pod uwagę:

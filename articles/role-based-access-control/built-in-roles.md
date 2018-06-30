@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 06/06/2018
+ms.date: 06/28/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 861b4ca360ef3fb9bc752d79009570ee2cfc9ade
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 7de9700b41b08e2769ba337dcd5760fdf7ab246b
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294500"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114647"
 ---
 # <a name="built-in-roles-in-azure"></a>Wbudowane role na platformie Azure
 [Kontrola dostępu oparta na rolach (RBAC)](overview.md) ma kilka definicji wbudowanych ról, które można przypisać do użytkowników, grup i nazwy główne usług. Przypisania ról są sposób kontrolowania dostępu do zasobów na platformie Azure. Jeśli wbudowane role nie spełnienia specyficznych potrzeb Twojej organizacji, możesz utworzyć własne [role niestandardowe](custom-roles.md).
@@ -34,12 +34,12 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 | Wbudowane roli | Opis |
 | --- | --- |
 | [Właściciel](#owner) | Umożliwia zarządzanie wszystkim, w tym dostępem do zasobów. |
-| [Współautora](#contributor) | Umożliwia zarządzanie wszystkim z wyjątkiem dostępu do zasobów. |
-| [Czytnik](#reader) | Umożliwia wyświetlanie wszystkiego, ale nie umożliwia wprowadzania jakichkolwiek zmian. |
+| [Współautor](#contributor) | Umożliwia zarządzanie wszystkim z wyjątkiem dostępu do zasobów. |
+| [Czytelnik](#reader) | Umożliwia wyświetlanie wszystkiego, ale nie umożliwia wprowadzania jakichkolwiek zmian. |
 | [AcrImageSigner](#acrimagesigner) | osoba podpisująca obraz ACR |
 | [AcrQuarantineReader](#acrquarantinereader) | czytnik danych kwarantanny ACR |
 | [AcrQuarantineWriter](#acrquarantinewriter) | moduł zapisywania danych kwarantanny ACR |
-| [Interfejs API zarządzania usługi współautora](#api-management-service-contributor) | Można zarządzać usług i interfejsów API |
+| [Interfejs API zarządzania usługi współautora](#api-management-service-contributor) | Umożliwia zarządzanie usługami API Management, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Rola operatora usługi zarządzania interfejsu API](#api-management-service-operator-role) | Może zarządzać usługą, lecz nie interfejsami API |
 | [Interfejs API zarządzania usługi czytnika roli](#api-management-service-reader-role) | Dostęp tylko do odczytu do usługi i interfejsów API |
 | [Application Insights składnika współautora](#application-insights-component-contributor) | Umożliwia zarządzanie składnikami usługi Application Insights |
@@ -51,7 +51,7 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 | [Współautor kopii zapasowej](#backup-contributor) | Umożliwia zarządzanie usługami kopii zapasowych z wyjątkiem tworzenia magazynów i przyznawania dostępu innym osobom |
 | [Operator kopii zapasowych](#backup-operator) | Umożliwia zarządzanie usługami kopii zapasowych z wyjątkiem usuwania kopii zapasowych, tworzenia magazynów i przyznawania dostępu innym osobom |
 | [Czytnik kopii zapasowej](#backup-reader) | Może wyświetlać usługi kopii zapasowych, ale nie może wprowadzać zmian |
-| [Czytnik rozliczeń](#billing-reader) | Umożliwia dostęp do odczytu do danych dotyczących rozliczeń |
+| [Czytnik rozliczeń](#billing-reader) | Umożliwia odczytywanie danych dotyczących rozliczeń |
 | [BizTalk Contributor](#biztalk-contributor) | Umożliwia zarządzanie usługami BizTalk Services, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Współautor punktu końcowego CDN](#cdn-endpoint-contributor) | Może zarządzać punktami końcowymi usługi CDN, lecz nie może przyznawać dostępu innym użytkownikom. |
 | [Czytnik punktu końcowego CDN](#cdn-endpoint-reader) | Może wyświetlać punkty końcowe usługi CDN, ale nie może wprowadzać zmian. |
@@ -63,10 +63,10 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 | [Współautor klasyczne maszyny wirtualnej](#classic-virtual-machine-contributor) | Umożliwia zarządzanie klasycznymi maszynami wirtualnymi, ale nie dostęp do nich ani do sieci wirtualnych i konta magazynu, z którymi są połączone. |
 | [Współautor ClearDB MySQL bazy danych](#cleardb-mysql-db-contributor) | Umożliwia zarządzanie bazami danych ClearDB MySQL, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Rozwiązania cosmos bazy danych konta czytnik roli](#cosmos-db-account-reader-role) | Można odczytać danych konta bazy danych Azure rozwiązania Cosmos. Zobacz [współautora konta usługi DocumentDB](#documentdb-account-contributor) do zarządzania kontami bazy danych Azure rozwiązania Cosmos. |
-| [Współautor fabryki danych](#data-factory-contributor) | Utwórz i Zarządzaj fabryk danych, jak również zasoby podrzędne w nich. |
+| [Współautor fabryki danych](#data-factory-contributor) | Umożliwia zarządzanie fabrykami danych, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Data Lake Analytics Developer](#data-lake-analytics-developer) | Umożliwia przesyłanie własnych zadań, monitorowanie ich i zarządzanie nimi, ale nie tworzenie ani usuwanie kont usługi Data Lake Analytics. |
 | [Purger danych](#data-purger) | Może czyścić dane analizy |
-| [DevTest Labs użytkownika](#devtest-labs-user) | Pozwala połączyć, start, ponowne uruchamiania i zamykania maszyn wirtualnych w sieci Azure DevTest Labs. |
+| [DevTest Labs użytkownika](#devtest-labs-user) | Umożliwia łączenie, uruchamianie, ponowne uruchamianie i zamykanie maszyn wirtualnych w usłudze Azure DevTest Labs. |
 | [Współautor strefy DNS](#dns-zone-contributor) | Umożliwia zarządzanie strefami DNS i zestawami rekordów w usłudze Azure DNS, ale nie zapewnia kontroli dostępu do nich. |
 | [Współautor konta usługi DocumentDB](#documentdb-account-contributor) | Można zarządzać kontami bazy danych Azure rozwiązania Cosmos. Azure DB rozwiązania Cosmos jest znanego wcześniej jako usługi DocumentDB. |
 | [Współautor konta systemów inteligentnych](#intelligent-systems-account-contributor) | Umożliwia zarządzanie kontami usługi Intelligent Systems, ale nie umożliwia uzyskiwania do nich dostępu. |
@@ -88,7 +88,7 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 | [Harmonogram zadania kolekcje współautora](#scheduler-job-collections-contributor) | Umożliwia zarządzanie kolekcjami zadań usługi Scheduler, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Współautor usługi wyszukiwania](#search-service-contributor) | Umożliwia zarządzanie usługami Search, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Administrator zabezpieczeń](#security-admin) | W Centrum zabezpieczeń tylko: można wyświetlić zasady zabezpieczeń, wyświetlanie stanów zabezpieczeń, Edytuj zasady zabezpieczeń, wyświetlanie alertów i zalecenia, odrzucać alerty i zalecenia |
-| [Menedżer zabezpieczeń (starsze)](#security-manager-legacy) | To jest rola starszej wersji. Zamiast tego użyj administratora zabezpieczeń |
+| [Menedżer zabezpieczeń](#security-manager) | Umożliwia zarządzanie składnikami zabezpieczeń, zasadami zabezpieczeń i maszynami wirtualnymi |
 | [Czytnik zabezpieczeń](#security-reader) | W Centrum zabezpieczeń tylko: można wyświetlić zalecenia i alertów, widok zasady zabezpieczeń, wyświetlanie stanów zabezpieczeń, ale nie można wprowadzić zmian |
 | [Współautor odzyskiwania lokacji](#site-recovery-contributor) | Pozwala zarządzać usługą Site Recovery z wyjątkiem tworzenia magazynu i przypisywania ról |
 | [Operator odzyskiwania lokacji](#site-recovery-operator) | Pozwala przechodzić do trybu failover i przywracać sprawność po awarii, ale nie umożliwia wykonywania innych operacji zarządzania usługi Site Recovery |
@@ -105,9 +105,9 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 | [Współautor żądania obsługi](#support-request-contributor) | Umożliwia tworzenie żądań pomocy technicznej i zarządzanie nimi |
 | [Współautor Menedżera ruchu](#traffic-manager-contributor) | Umożliwia zarządzanie profilami usługi Traffic Manager, ale nie zapewnia kontroli dostępu do nich. |
 | [Administrator dostępu użytkowników](#user-access-administrator) | Umożliwia zarządzanie dostępem użytkowników do zasobów platformy Azure. |
-| [Identyfikator logowania administratora maszyny wirtualnej](#virtual-machine-administrator-login) | - użytkownicy z tą rolą mają możliwość zalogowania się na maszynie wirtualnej z uprawnieniami administratora systemu Windows lub użytkownika root systemu Linux. |
-| [Współautor maszyny wirtualnej](#virtual-machine-contributor) | Umożliwia zarządzanie maszyn wirtualnych, ale nie do nich dostępu i nie sieci wirtualnej lub konta magazynu, które są połączone. |
-| [Dane logowania użytkownika maszyny wirtualnej](#virtual-machine-user-login) | Użytkownicy z tą rolą mają możliwość zalogowania się na maszynie wirtualnej jako zwykli użytkownicy. |
+| [Identyfikator logowania administratora maszyny wirtualnej](#virtual-machine-administrator-login) | Maszyny wirtualne widoku w portalu i zaloguj się jako administrator |
+| [Współautor maszyny wirtualnej](#virtual-machine-contributor) | Umożliwia zarządzanie maszynami wirtualnymi, ale nie dostęp do nich ani do sieci wirtualnych i konta magazynu, z którymi są połączone. |
+| [Dane logowania użytkownika maszyny wirtualnej](#virtual-machine-user-login) | Widok maszyn wirtualnych w portalu i zaloguj się jako zwykłych użytkowników. |
 | [Współautor Plan sieci Web](#web-plan-contributor) | Umożliwia zarządzanie planami sieci Web dla witryn sieci Web, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Współautor witryny sieci Web](#website-contributor) | Umożliwia zarządzanie witrynami sieci Web (nie planami sieci Web), ale nie umożliwia uzyskiwania do nich dostępu. |
 
@@ -178,7 +178,7 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Można zarządzać usług i interfejsów API |
+> | **Opis** | Umożliwia zarządzanie usługami API Management, ale nie umożliwia uzyskiwania do nich dostępu. |
 > | **Identyfikator** | 312a565d-c81f-4fd8-895a-4e21e48d571c |
 > | **Akcje** |  |
 > | Microsoft.ApiManagement/service/* | Tworzenie i zarządzanie nimi usługi Zarządzanie interfejsami API |
@@ -383,14 +383,18 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Role odczytu i przypisania ról |
 > | Microsoft.Network/virtualNetworks/read | Pobierz definicję sieci wirtualnej |
+> | Microsoft.RecoveryServices/locations/allocatedStamp/read | Operacja GetAllocatedStamp to operacja wewnętrzna używana przez usługę |
+> | Microsoft.RecoveryServices/Vaults/backupconfig/vaultconfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | Zwraca stan operacji |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/operationResults/read | Pobiera wynik operacji wykonanej na kontenerze ochrony. |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/backup/action | Wykonuje kopię zapasową elementu chronionego. |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | Pobiera wynik operacji wykonanej na elementach chronionych. |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | Zwraca stan operacji wykonanej na elementach chronionych. |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read | Zwraca szczegóły obiektu elemencie chroniony |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/action | Odzyskiwanie elementów błyskawicznych udostępniania dla chronionego elementu |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | Pobierz punkty odzyskiwania dla elementów chronionych. |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | Przywróć punkty odzyskiwania dla elementów chronionych. |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | Odwołanie elementu błyskawicznych odzyskiwania dla chronionego elementu |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | Tworzenie kopii zapasowej elementu chronione |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | Zwraca wszystkich zarejestrowanych kontenerów |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | Tworzenie i zarządzanie nimi zadania tworzenia kopii zapasowej |
@@ -398,36 +402,32 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 > | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | Zwraca wynik operacji zadania. |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/read | Zwraca wszystkie obiekty zadania |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Eksportowanie zadań |
+> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read | Zwraca wynik operacji eksportowania zadania. |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read | Zwraca metadane zarządzania kopiami zapasowymi magazynu usług Recovery Services. |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Utwórz i Zarządzaj wynikami operacji zarządzania kopiami zapasowymi |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | Pobierz wyniki operacji zasad. |
+> | Microsoft.RecoveryServices/Vaults/backupPolicies/operationStatus/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Zwraca wszystkie zasady ochrony |
 > | Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | Tworzenie i zarządzanie nimi elementy, które można utworzyć kopię zapasową |
 > | Microsoft.RecoveryServices/Vaults/backupProtectableItems/read | Zwraca listę wszystkich elementów podlegających ochronie |
 > | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | Zwraca listę wszystkich elementów chronionych. |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | Zwraca wszystkie kontenery należących do subskrypcji |
 > | Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read | Zwraca podsumowania dla chronionych serwerów i chronione elementy usług odzyskiwania. |
+> | Microsoft.RecoveryServices/Vaults/certificates/write | Operacja aktualizacji zasobów certyfikatu aktualizuje certyfikat poświadczeń zasobów/magazynu. |
 > | Microsoft.RecoveryServices/Vaults/extendedInformation/read | Operacja Pobierz rozszerzone informacje pobiera rozszerzone informacje o obiekcie reprezentujące zasób platformy Azure typu „magazyn” |
 > | Microsoft.RecoveryServices/Vaults/extendedInformation/write | Operacja Pobierz rozszerzone informacje pobiera rozszerzone informacje o obiekcie reprezentujące zasób platformy Azure typu „magazyn” |
+> | Microsoft.RecoveryServices/Vaults/monitoringAlerts/read | Pobiera alertów dla magazynu usług odzyskiwania. |
+> | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/* |  |
 > | Microsoft.RecoveryServices/Vaults/read | Operacja Get magazynu pobiera obiekt reprezentujący zasobów platformy Azure typu "magazynu" |
-> | Microsoft.RecoveryServices/Vaults/refreshContainers/* | Zarządzanie pobieranie operacji wykrywania nowo utworzony kontenerów |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | Odświeża listę kontenera |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read | Wyniki operacji Get operacji można używać Pobierz stan operacji i wynik operacji asynchronicznie przesłane |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | Kontenery pobrać operacji można używać Pobierz kontenery zarejestrowanych dla każdego zasobu. |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/write | Operacji zarejestrować kontenera usług można używać do rejestrowania kontener z usługą odzyskiwania. |
+> | Microsoft.RecoveryServices/Vaults/storageConfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Zwraca szczegóły użycia magazynu usług Recovery Services. |
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie nimi wdrożenia grupy zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Storage/storageAccounts/read | Zwraca listę kont magazynu bądź pobiera właściwości dla podanego konta magazynu. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/action | Odzyskiwanie elementów błyskawicznych udostępniania dla chronionego elementu |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | Odwołanie elementu błyskawicznych odzyskiwania dla chronionego elementu |
-> | Microsoft.RecoveryServices/locations/allocatedStamp/read | Operacja GetAllocatedStamp to operacja wewnętrzna używana przez usługę |
-> | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/* |  |
-> | Microsoft.RecoveryServices/Vaults/monitoringAlerts/read | Pobiera alertów dla magazynu usług odzyskiwania. |
-> | Microsoft.RecoveryServices/Vaults/storageConfig/* |  |
-> | Microsoft.RecoveryServices/Vaults/backupconfig/vaultconfig/* |  |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read | Zwraca wynik operacji eksportowania zadania. |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/operationStatus/read |  |
-> | Microsoft.RecoveryServices/Vaults/certificates/write | Operacja aktualizacji zasobów certyfikatu aktualizuje certyfikat poświadczeń zasobów/magazynu. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 
 ## <a name="backup-reader"></a>Czytelnik kopii zapasowych
@@ -472,7 +472,7 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Umożliwia dostęp do odczytu do danych dotyczących rozliczeń |
+> | **Opis** | Umożliwia odczytywanie danych dotyczących rozliczeń |
 > | **Identyfikator** | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Role odczytu i przypisania ról |
@@ -660,7 +660,7 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Utwórz i Zarządzaj fabryk danych, jak również zasoby podrzędne w nich. |
+> | **Opis** | Umożliwia zarządzanie fabrykami danych, ale nie umożliwia uzyskiwania do nich dostępu. |
 > | **Identyfikator** | 673868aa-7521-48A0-acc6-0f60742d39f5 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Role odczytu i przypisania roli |
@@ -719,7 +719,7 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Pozwala połączyć, start, ponowne uruchamiania i zamykania maszyn wirtualnych w sieci Azure DevTest Labs. |
+> | **Opis** | Umożliwia łączenie, uruchamianie, ponowne uruchamianie i zamykanie maszyn wirtualnych w usłudze Azure DevTest Labs. |
 > | **Identyfikator** | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Role odczytu i przypisania roli |
@@ -1103,18 +1103,19 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie nimi wdrożenia grupy zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Security/*/read | Składniki zabezpieczeń Odczytaj i zasady |
-> | Microsoft.Security/locations/alerts/dismiss/action | Odrzuć alert zabezpieczeń |
 > | Microsoft.Security/locations/alerts/activate/action | Aktywuj alert zabezpieczeń |
-> | Microsoft.Security/locations/tasks/dismiss/action | Odrzuć zalecana ze względów bezpieczeństwa |
+> | Microsoft.Security/locations/alerts/dismiss/action | Odrzuć alert zabezpieczeń |
 > | Microsoft.Security/locations/tasks/activate/action | Aktywuj zalecana ze względów bezpieczeństwa |
+> | Microsoft.Security/locations/tasks/dismiss/action | Odrzuć zalecana ze względów bezpieczeństwa |
 > | Microsoft.Security/policies/write | Aktualizacje zasad zabezpieczeń |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | Microsoft.Management/managementGroups/read | Wyświetlanie listy grup zarządzania dla tego uwierzytelnionego użytkownika. |
 
-## <a name="security-manager-legacy"></a>Menedżer zabezpieczeń (starsze)
+## <a name="security-manager"></a>Menedżer zabezpieczeń
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | To jest rola starszej wersji. Zamiast tego użyj administratora zabezpieczeń |
+> | **Opis** | Umożliwia zarządzanie składnikami zabezpieczeń, zasadami zabezpieczeń i maszynami wirtualnymi |
 > | **Identyfikator** | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Role odczytu i przypisania ról |
@@ -1135,13 +1136,14 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 > | **Opis** | W Centrum zabezpieczeń tylko: można wyświetlić zalecenia i alertów, widok zasady zabezpieczeń, wyświetlanie stanów zabezpieczeń, ale nie można wprowadzić zmian |
 > | **Identyfikator** | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **Akcje** |  |
-> | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów |
-> | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie nimi wdrożenia grupy zasobów |
-> | Microsoft.operationalInsights/workspaces/*/read | Wyświetl dane analizy dzienników |
 > | Microsoft.Authorization/*/read | Role odczytu i przypisania ról |
-> | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów |
+> | Microsoft.operationalInsights/workspaces/*/read | Wyświetl dane analizy dzienników |
+> | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie nimi wdrożenia grupy zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Security/*/read | Składniki zabezpieczeń Odczytaj i zasady |
+> | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | Microsoft.Management/managementGroups/read | Wyświetlanie listy grup zarządzania dla tego uwierzytelnionego użytkownika. |
 
 ## <a name="site-recovery-contributor"></a>Współautor usługi Site Recovery
 > [!div class="mx-tableFixed"]
@@ -1221,7 +1223,7 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationRecoveryServicesProviders/refreshProvider/action | Odśwież dostawcę |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationStorageClassifications/read | Przeczytaj wszystkie klasyfikacje magazynu |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationStorageClassifications/replicationStorageClassificationMappings/read | Wszelkie mapowania klasyfikacji magazynu do odczytu |
-> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationvCenters/read | Wszystkie zadania do odczytu |
+> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationvCenters/read | Wszelkie Vcenter do odczytu |
 > | Microsoft.RecoveryServices/vaults/replicationJobs/* | Tworzenie i zarządzanie nimi zadania replikacji |
 > | Microsoft.RecoveryServices/vaults/replicationPolicies/read | Wszystkie zasady do odczytu |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/failoverCommit/action | Zatwierdzanie trybu failover planu odzyskiwania |
@@ -1272,7 +1274,7 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationRecoveryServicesProviders/read | Przeczytaj wszystkich dostawców usług odzyskiwania |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationStorageClassifications/read | Przeczytaj wszystkie klasyfikacje magazynu |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationStorageClassifications/replicationStorageClassificationMappings/read | Wszelkie mapowania klasyfikacji magazynu do odczytu |
-> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationvCenters/read | Wszystkie zadania do odczytu |
+> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationvCenters/read | Wszelkie Vcenter do odczytu |
 > | Microsoft.RecoveryServices/vaults/replicationJobs/read | Wszystkie zadania do odczytu |
 > | Microsoft.RecoveryServices/vaults/replicationPolicies/read | Wszystkie zasady do odczytu |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/read | Wszystkie plany odzyskiwania do odczytu |
@@ -1503,7 +1505,7 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | - użytkownicy z tą rolą mają możliwość zalogowania się na maszynie wirtualnej z uprawnieniami administratora systemu Windows lub użytkownika root systemu Linux. |
+> | **Opis** | Maszyny wirtualne widoku w portalu i zaloguj się jako administrator |
 > | **Identyfikator** | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
 > | **Akcje** |  |
 > | Microsoft.Network/publicIPAddresses/read | Pobiera definicję adres publiczny adres ip. |
@@ -1519,7 +1521,7 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Umożliwia zarządzanie maszyn wirtualnych, ale nie do nich dostępu i nie sieci wirtualnej lub konta magazynu, które są połączone. |
+> | **Opis** | Umożliwia zarządzanie maszynami wirtualnymi, ale nie dostęp do nich ani do sieci wirtualnych i konta magazynu, z którymi są połączone. |
 > | **Identyfikator** | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj autoryzacji |
@@ -1564,7 +1566,7 @@ Poniższa tabela zawiera krótkie opisy wbudowane role. Kliknij nazwę roli, aby
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Użytkownicy z tą rolą mają możliwość zalogowania się na maszynie wirtualnej jako zwykli użytkownicy. |
+> | **Opis** | Widok maszyn wirtualnych w portalu i zaloguj się jako zwykłych użytkowników. |
 > | **Identyfikator** | fb879df8-f326-4884-b1cf-06f3ad86be52 |
 > | **Akcje** |  |
 > | Microsoft.Network/publicIPAddresses/read | Pobiera definicję adres publiczny adres ip. |

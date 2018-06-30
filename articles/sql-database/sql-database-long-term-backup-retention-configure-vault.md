@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/08/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 9f2fd54a1ce3cf8900b04545a258a32f9aa3e31a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: feefe68fbe6681ee4b450503606ac8c4f25d5a39
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647191"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130264"
 ---
 # <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention-using-azure-recovery-services-vault"></a>Konfigurowanie i Przywróć z bazy danych SQL Azure długoterminowego przechowywania kopii zapasowych za pomocą magazynu usług odzyskiwania Azure
 
@@ -265,6 +265,55 @@ $restoredDb
 
 > [!NOTE]
 > W tym miejscu możesz nawiązać przywróconej bazy danych przy użyciu programu SQL Server Management Studio do wykonywania wymaganych zadań, np. wyodrębnienie bit danych z przywróconej bazy danych ma zostać skopiowany do istniejącej bazy danych lub usuń istniejącą bazę danych i zmienić nazwę przywróconej Baza danych do nazwy istniejącej bazy danych. Zobacz [punktu w czasie przywracania](sql-database-recovery-using-backups.md#point-in-time-restore).
+
+## <a name="how-to-cleanup-backups-in-recovery-services-vault"></a>Jak oczyszczania tworzenia kopii zapasowych w magazynie usług odzyskiwania
+
+Począwszy od 1 lipca 2018 API V1 od lewej do prawej jest przestarzała i wszystkie do istniejących kopii zapasowych w magazynach usługi odzyskiwania zostały poddane migracji do kontenery magazynu od lewej do prawej, które są zarządzane przez usługę SQL Database. Aby upewnić się, możesz nie są naliczane oryginalnej kopii zapasowych, ich zostały usunięte z magazynów po migracji. Jednak umieszczenie blokady w magazynie kopii zapasowych będzie nadal istnieje. Aby uniknąć niepotrzebnych opłat, można ręcznie usunąć starych kopii zapasowych z magazynu usług odzyskiwania przy użyciu następującego skryptu. 
+
+```PowerShell
+<#
+.EXAMPLE
+    .\Drop-LtrV1Backup.ps1 -SubscriptionId “{vault_sub_id}” -ResourceGroup “{vault_resource_group}” -VaultName “{vault_name}” 
+#>
+[CmdletBinding()]
+Param (
+    [Parameter(Mandatory = $true, HelpMessage="The vault subscription ID")]
+    $SubscriptionId,
+
+    [Parameter(Mandatory = $true, HelpMessage="The vault resource group name")]
+    $ResourceGroup,
+
+    [Parameter(Mandatory = $true, HelpMessage="The vault name")]
+    $VaultName
+)
+
+Login-AzureRmAccount
+
+Select-AzureRmSubscription -SubscriptionId $SubscriptionId
+
+$vaults = Get-AzureRmRecoveryServicesVault
+$vault = $vaults | where { $_.Name -eq $VaultName }
+
+Set-AzureRmRecoveryServicesVaultContext -Vault $vault
+
+$containers = Get-AzureRmRecoveryServicesBackupContainer -ContainerType AzureSQL
+
+ForEach ($container in $containers)
+{
+   $canDeleteContainer = $true  
+   $ItemCount = 0
+   Write-Host "Working on container" $container.Name
+   $items = Get-AzureRmRecoveryServicesBackupItem -container $container -WorkloadType AzureSQLDatabase
+   ForEach ($item in $items)
+   {
+          write-host "Deleting item" $item.name
+          Disable-AzureRmRecoveryServicesBackupProtection -RemoveRecoveryPoints -item $item -Force
+   }
+
+   Write-Host "Deleting container" $container.Name
+   Unregister-AzureRmRecoveryServicesBackupContainer -Container $container
+}
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

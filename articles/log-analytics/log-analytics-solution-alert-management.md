@@ -4,22 +4,23 @@ description: Rozwiązanie zarządzania alertami w Log Analytics pomaga analizowa
 services: log-analytics
 documentationcenter: ''
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: fe5d534e-0418-4e2f-9073-8025e13271a8
-ms.service: operations-management-suite
+ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 0d9028b821e4c488186143311c81bfa6d17908ff
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: na
+ms.openlocfilehash: eb61a48e8c479db4742d65187b202655f29b032d
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30181201"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131051"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Alert rozwiązania do zarządzania w Analiza dzienników Azure
 
@@ -70,7 +71,7 @@ Polecenie **zarządzania alertami** Kafelek, aby otworzyć **zarządzania alerta
 |:--- |:--- |
 | Alerty krytyczne |Wszystkie alerty o ważności krytyczna pogrupowane według nazwę alertu.  Kliknij nazwę alertu, aby uruchomić wyszukiwanie dziennika zwracanie wszystkich rekordów dla tego alertu. |
 | Alerty ostrzegawcze |Wszystkie alerty o ważności ostrzeżenie pogrupowane według nazwę alertu.  Kliknij nazwę alertu, aby uruchomić wyszukiwanie dziennika zwracanie wszystkich rekordów dla tego alertu. |
-| Alerty aktywne SCOM |Wszystkie alerty zebranych z programu Operations Manager przez każdy stan inny niż *zamknięte* pogrupowane według źródła, który wygenerował alert. |
+| Aktywne alerty programu SCOM |Wszystkie alerty zebranych z programu Operations Manager przez każdy stan inny niż *zamknięte* pogrupowane według źródła, który wygenerował alert. |
 | Wszystkie aktywne alerty |Wszystkie alerty o wszelkich ważność pogrupowane według nazwę alertu. Tylko innych niż obejmuje alertów programu Operations Manager z jakimkolwiek stanem stanów *zamknięte*. |
 
 Przewiń w prawo, pulpit nawigacyjny wyświetla kilka typowych zapytań, które można kliknąć przeprowadzić [wyszukiwania dziennika](log-analytics-log-searches.md) dla danych alertów.

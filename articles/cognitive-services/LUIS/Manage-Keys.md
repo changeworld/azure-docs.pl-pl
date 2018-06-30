@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: v-geberr
-ms.openlocfilehash: 8e6e363649a0bdab5525de7b8e7abe9a53d14573
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 1fdf0f21697e48fd5cb9eca4212596059a9519cb
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266026"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127121"
 ---
 # <a name="manage-your-luis-keys"></a>Zarządzanie kluczami LUIS
 Klucz umożliwia tworzenie i publikowanie aplikacji LUIS lub zapytania punktu końcowego. 
@@ -34,7 +34,7 @@ Zobacz [kluczy w LUIS](luis-concept-keys.md) LUIS do tworzenia i punktu końcowe
 ## <a name="assign-endpoint-key"></a>Przypisz klucz punktu końcowego
 Na **publikowania aplikacji** pozycję istnieje już klucz w **zasobów i klucze** tabeli. Jest to tworzenia klucza (początkową). 
 
-1. Utwórz klucz LUIS na [portalu Azure](https://portal.azure.com). Aby uzyskać dalsze instrukcje, zobacz [Tworzenie klucza subskrypcji przy użyciu usługi Azure](luis-how-to-azure-subscription.md).
+1. Utwórz klucz LUIS na [portalu Azure](https://portal.azure.com). Aby uzyskać dalsze instrukcje, zobacz [Tworzenie klucza punktu końcowego za pomocą usługi Azure](luis-how-to-azure-subscription.md).
  
 2. Aby dodać klucz LUIS utworzony w poprzednim kroku, kliknij przycisk **Dodaj klucz** przycisk, aby otworzyć **przypisać klawisz aplikacji** okna dialogowego. 
 

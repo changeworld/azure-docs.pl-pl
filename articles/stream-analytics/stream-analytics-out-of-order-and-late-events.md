@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: e407a95d3ac858ea7180a75f9fbfc399860ad378
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f0ee486d9ff4c05269da23866edad281aa627889
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30912019"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113898"
 ---
 # <a name="azure-stream-analytics-event-order-considerations"></a>Zagadnienia dotyczące usługi Azure Stream Analytics zdarzeń kolejności
 
@@ -22,7 +22,7 @@ ms.locfileid: "30912019"
 
 W strumieniu danych czasowych zdarzeń każdego zdarzenia jest przypisane sygnatury czasowej. Usługa Azure Stream Analytics przypisuje sygnatury czasowej każdego zdarzenia przy użyciu przyjęcia czasu albo czasu aplikacji. **System.Timestamp** kolumna zawiera sygnaturę czasową przypisany do zdarzenia. 
 
-Godzina nadejścia jest przypisywany w źródła danych wejściowych, gdy zdarzenie osiągnie źródła. Godzina nadejścia mogą korzystać za pomocą **EventEnqueuedTime** właściwości dla wejścia Centrum zdarzeń i przy użyciu [BlobProperties.LastModified](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties.lastmodified?view=azurestorage-8.1.3) właściwości dla obiektu blob danych wejściowych. 
+Godzina nadejścia jest przypisywany w źródła danych wejściowych, gdy zdarzenie osiągnie źródła. Godzina nadejścia mogą korzystać za pomocą **EventEnqueuedUtcTime** właściwości dla danych wejściowych usługi Event Hubs, **IoTHub.EnqueuedTime** właściwości Centrum IoT i przy użyciu [BlobProperties.LastModified ](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties.lastmodified?view=azurestorage-8.1.3) właściwości dla obiektu blob danych wejściowych. 
 
 Czas aplikacji jest przypisany, gdy zostanie wygenerowane zdarzenie i jest częścią ładunku. Aby przetwarzać zdarzenia według czasu aplikacji, należy użyć **sygnatury czasowej przez** klauzuli w wykonywania zapytania select. Jeśli **sygnatury czasowej przez** klauzula jest nieobecny, zdarzenia są przetwarzane przez Godzina nadejścia. 
 
@@ -111,7 +111,7 @@ Zapytanie nie ma **partycji według identyfikatora PartitionId** klauzuli, i czy
 
 Konfiguracja jest taka sama jak przykład 2. Jednak brak danych w jednej partycji można opóźnić danych wyjściowych przez dodatkowe późne przyjęcia tolerancji.
 
-## <a name="handling-event-producers-with-differing-timelines"></a>Obsługa producentów zdarzeń z różnych osi czasu
+## <a name="handling-event-producers-with-differing-timelines-with-substreams"></a>Obsługa producentów zdarzeń z różnych osiach czasu z "substreams"
 Strumień pojedyncze zdarzenie wejściowe często zawiera zdarzenia, które pochodzą od wielu producentów zdarzeń, takich jak poszczególnych urządzeń. Zdarzenia te mogą dotrzeć poza kolejnością z powodu omówionych wcześniej przyczyn. W tych scenariuszach chociaż pogorszenie przez producentów zdarzeń może być duży, pogorszenie w zdarzeniach z pojedynczego producenta jest mały (lub nawet nieistniejącego).
 
 Usługa Azure Stream Analytics zawiera ogólne mechanizmy zajmujących się zdarzenia poza kolejnością. Tych mechanizmów doprowadzi do przetwarzania opóźnień (podczas oczekiwania na straggling zdarzenia do osiągnięcia system), porzucić lub dostosowywana zdarzenia lub oba.

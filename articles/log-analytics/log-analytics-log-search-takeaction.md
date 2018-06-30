@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: ''
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: c59a32e1b2d460e04c4c6f5d1be2dd655abbef27
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.component: na
+ms.openlocfilehash: 48e184206d9f1cf5b14c2e18b4ca1ed260d70161
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29394619"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130220"
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>Podjąć działania z element Runbook usługi Automatyzacja w wynikach wyszukiwania dziennika analizy dzienników
 
@@ -27,7 +28,7 @@ Wynik wyszukiwania dziennika w Azure Log Analytics można teraz wybrać **reakcj
 
 ## <a name="components-and-features-used"></a>Używane składniki i funkcje
 * [Konto usługi Automatyzacja Azure](../automation/automation-offering-get-started.md)
-* [Obszar roboczy analizy dzienników](../log-analytics/log-analytics-overview.md)
+* [Obszar roboczy usługi Log Analytics](../log-analytics/log-analytics-overview.md)
 
 ## <a name="to-initiate-runbook-from-log-search"></a>Aby zainicjować element runbook z dziennika wyszukiwania
 

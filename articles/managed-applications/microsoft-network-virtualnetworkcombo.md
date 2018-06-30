@@ -11,23 +11,26 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5d806afbfd74d68d139f494c7a5a6e871a7dae36
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 2c2553d9ffb1dfbe032385fb77e234a8b96cb239
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260598"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110069"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Microsoft.Network.VirtualNetworkCombo UI element
 Grupa służy do wybierania nowej lub istniejącej sieci wirtualnej.
 
 ## <a name="ui-sample"></a>Przykład interfejsu użytkownika
-![Microsoft.Network.VirtualNetworkCombo](./media/managed-application-elements/microsoft.network.virtualnetworkcombo.png)
+Gdy użytkownik wybiera nowej sieci wirtualnej, użytkownik może dostosować nazwę każdej podsieci i prefiksu adresu. Konfigurowanie podsieci jest opcjonalne.
 
-- Szkielet top użytkownik pobrał nowej sieci wirtualnej, więc użytkownik może dostosować prefiks nazwy i adresu każdej podsieci. W takim przypadku Konfigurowanie podsieci jest opcjonalne.
-- Szkielet dolnej użytkownik pobrał istniejącej sieci wirtualnej, więc użytkownik musi być zamapowany każdej podsieci, wymagane przez szablon wdrożenia na istniejącą podsieć. W takim przypadku Konfigurowanie podsieci jest wymagana.
+![Nowe Microsoft.Network.VirtualNetworkCombo](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-new.png)
+
+Gdy użytkownik wybiera istniejącej sieci wirtualnej, użytkownik musi być zamapowany każdej podsieci, wymagane przez szablon wdrożenia na istniejącą podsieć. W takim przypadku Konfigurowanie podsieci jest wymagana.
+
+![Istniejące Microsoft.Network.VirtualNetworkCombo](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-existing.png)
 
 ## <a name="schema"></a>Schemat
 ```json
@@ -88,12 +91,12 @@ Grupa służy do wybierania nowej lub istniejącej sieci wirtualnej.
 - `constraints.minAddressPrefixSize` musi być określona. Istniejących sieci wirtualnych się na przestrzeń adresową mniejszą niż określona wartość są niedostępne do wybrania.
 - `subnets` musi być określona, i `constraints.minAddressPrefixSize` musi być określona dla każdej podsieci.
 - Podczas tworzenia nowej sieci wirtualnej, prefiks adresu w każdej podsieci jest obliczana automatycznie na podstawie prefiksów adresów sieci wirtualnej i odpowiednio `addressPrefixSize`.
-- Podczas korzystania z istniejącej wirtualnych sieci, żadnych podsieci mniejsze niż odpowiednie `constraints.minAddressPrefixSize` nie są dostępne do wyboru. Ponadto jeśli jest określony, podsieci, które nie zawierają co najmniej `minAddressCount` dostępne adresy są niedostępne do wybrania.
-Wartość domyślna to **0**. Aby upewnić się, że dostępnych adresów są ciągłe, określ **true** dla `requireContiguousAddresses`. Wartość domyślna to **true**.
+- Podczas korzystania z istniejącej wirtualnych sieci, żadnych podsieci mniejsze niż odpowiednie `constraints.minAddressPrefixSize` nie są dostępne do wyboru. Ponadto jeśli jest określony, podsieci, które nie mają co najmniej `minAddressCount` dostępne adresy są niedostępne do wybrania. Wartość domyślna to **0**. Aby upewnić się, że dostępnych adresów są ciągłe, określ **true** dla `requireContiguousAddresses`. Wartość domyślna to **true**.
 - Tworzenie podsieci w istniejącej sieci wirtualnej nie jest obsługiwane.
 - Jeśli `options.hideExisting` jest **true**, użytkownik nie może wybrać istniejącej sieci wirtualnej. Wartość domyślna to **false**.
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
+
 ```json
 {
   "name": "vnet01",

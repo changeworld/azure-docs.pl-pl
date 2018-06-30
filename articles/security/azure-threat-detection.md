@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: eb1bf9f6465a8a94fd2de75f581817887c333289
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 0813e0f6b51c747d033ca2c44aed21cf94c32000
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895335"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113031"
 ---
 # <a name="azure-advanced-threat-detection"></a>Wykrywanie zagrożeń zaawansowane Azure
 ## <a name="introduction"></a>Wprowadzenie
@@ -42,7 +42,7 @@ Podczas migrowania do chmury publicznej w organizacji, czy organizacja jest odpo
 
 Infrastruktura platformy Azure została zaprojektowana kompleksowo, począwszy od obiektu po aplikacje hostujące jednocześnie miliony klientów, i zapewnia wiarygodną podstawę zaspokajania potrzeb firm w zakresie bezpieczeństwa. Platforma Azure oferuje szeroką gamę opcji, aby skonfigurować i dostosować zabezpieczeń w celu spełnienia wymagań stanu wdrożenia aplikacji. Ten dokument pomaga spełnić te wymagania.
 
-### <a name="abstract"></a>Abstrakcyjny
+### <a name="abstract"></a>abstrakcyjny
 
 Microsoft Azure oferuje wbudowane funkcje wykrywania advanced threat za pośrednictwem usług, takich jak Azure Active Directory, Azure Operations Management Suite (OMS) i Centrum zabezpieczeń Azure. Ta kolekcja usług zabezpieczeń i możliwości umożliwia proste i szybkie zorientować się w ramach wdrożeń platformy Azure.
 
@@ -89,7 +89,7 @@ Przykłady niektórych metod, które mogą ułatwić ochronę tożsamości usłu
 
 Z [usługi Azure Active Directory (AD) Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure),
 
-![Azure AD Privileged Identity Management](./media/azure-threat-detection/azure-threat-detection-fig2.png)
+![Usługa Azure AD Privileged Identity Management](./media/azure-threat-detection/azure-threat-detection-fig2.png)
 
 Możesz zarządzanie, sterowanie i monitorowanie dostępu w organizacji. Dotyczy to również dostępu do zasobów usługi Azure AD i innych usług online firmy Microsoft, takich jak Office 365 lub Microsoft Intune.
 
@@ -309,11 +309,11 @@ Detektory zagrożeń bazy danych SQL, użyj jednej z następujących metod wykry
 
 Konfigurowanie zapory aplikacji sieci Web w aplikacji bramy miejsce następujące korzyści:
 
--   Ochrona aplikacji sieci Web przed atakami wykorzystującymi luki w zabezpieczeniach oraz atakami niewymagającymi modyfikacji kodu zaplecza.
+-   Ochrona aplikacji internetowej przed atakami wykorzystującymi luki w zabezpieczeniach oraz atakami niewymagającymi modyfikacji kodu zaplecza.
 
--   Jednoczesna ochrona wielu aplikacji sieci Web za bramą aplikacji. Pojedyncza brama aplikacji umożliwia hosting maksymalnie 20 witryn sieci Web. Wszystkie witryny za bramą są chronione przed atakami z sieci Web.
+-   Jednoczesna ochrona wielu aplikacji internetowych za bramą aplikacji. Pojedyncza brama aplikacji umożliwia hosting maksymalnie 20 witryn sieci Web. Wszystkie witryny za bramą są chronione przed atakami z sieci Web.
 
--   Monitorowanie aplikacji sieci Web pod kątem ataków przy użyciu raportu w czasie rzeczywistym generowanego przez dzienniki zapory aplikacji sieci Web bramy aplikacji.
+-   Monitorowanie aplikacji internetowej pod kątem ataków przy użyciu raportu w czasie rzeczywistym generowanego przez dzienniki zapory aplikacji internetowej bramy aplikacji.
 
 -   Niektóre środki kontrolne mające na celu zapewnienie zgodności wymagają, aby wszystkie punkty końcowe umożliwiające dostęp do Internetu były chronione z użyciem zapory aplikacji sieci Web. Korzystając z bramy aplikacji z zaporą aplikacji sieci Web, można spełnić te wymagania zgodności.
 
@@ -405,7 +405,7 @@ Na zbieranie danych z tych źródeł, Cloud App Security uruchamia zaawansowane 
 
 ## <a name="third-party-atd-capabilities-through-azure-marketplace"></a>Możliwości ATD innej firmy za pomocą portalu Azure Marketplace
 
-### <a name="web-application-firewall"></a>Zapora aplikacji sieci Web
+### <a name="web-application-firewall"></a>Zapora aplikacji internetowej
 
 Zapora aplikacji sieci Web sprawdza sieci web dla ruchu przychodzącego ruchu i bloki iniekcji SQL, Cross-Site skryptów, złośliwego oprogramowania przekazywania & aplikacji przed atakami DDoS oraz inne ataki celem aplikacji sieci web. Sprawdza również odpowiedzi z serwerów sieci web zaplecza dla zapobiegania utracie danych (DLP). Aparat kontroli dostępu zintegrowane umożliwia administratorom tworzenie zasad kontroli dostępu szczegółowego dla uwierzytelniania, autoryzacji i Ewidencjonowanie, która umożliwia organizacjom silnego uwierzytelniania i kontroli użytkownika.
 
@@ -420,7 +420,7 @@ Zapora aplikacji sieci Web sprawdza sieci web dla ruchu przychodzącego ruchu i 
 
 Poniżej przedstawiono przykład dostępne w usłudze Azure rynek zapory aplikacji sieci Web:
 
-[Zapora aplikacji sieci Web barracuda, Zapora Brocade do aplikacji wirtualnych sieci Web (Brocade vWAF), Imperva SecureSphere i ThreatSTOP IP zapory.](https://azure.microsoft.com/marketplace/partners/brocade_communications/brocade-virtual-web-application-firewall-templatevtmcluster/)
+[Zapora aplikacji sieci Web barracuda, Zapora Brocade do aplikacji wirtualnych sieci Web (Brocade vWAF), Imperva SecureSphere i ThreatSTOP IP zapory.](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf)
 
 ## <a name="next-steps"></a>Następne kroki
 

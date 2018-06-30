@@ -13,15 +13,15 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 6/1/2018
+ms.date: 6/29/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 4ae64fefb58840214104a4e1cb338ec404fac1a8
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 89a1df607c220e5dc12bc6263955d6e445e529bd
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235417"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37116128"
 ---
 # <a name="back-up-sql-server-database-in-azure"></a>Wykonaj kopię zapasową bazy danych programu SQL Server na platformie Azure
 
@@ -251,7 +251,7 @@ Jeśli używasz **odnajdywanie bazami danych** narzędzia Kopia zapasowa Azure w
 
 - Instaluje **AzureBackupWindowsWorkload** rozszerzenia na maszynie wirtualnej. Tworzenie kopii zapasowej bazy danych SQL jest rozwiązaniem bez wykorzystania agentów, czyli z rozszerzeniem zainstalowany na maszynie wirtualnej, agent nie jest zainstalowany w bazie danych SQL.
 
-- tworzy konto usługi **NT Service\AzureWLBackupPluginSvc**, na maszynie wirtualnej. Wszystkie operacje tworzenia kopii zapasowej i przywracania Użyj konta usługi. **NT Server\AzureWLBackupPluginSvc** wymaga uprawnień administratora systemu SQL. Wszystkie maszyny wirtualne SQL Marketplace dostarczane z SqlIaaSExtension zainstalowane i AzureBackupWindowsWorkload używa SQLIaaSExtension na automatyczne uzyskiwanie wymaganych uprawnień. Jeśli maszyna wirtualna nie ma zainstalowanych SqlIaaSExtension, odnajdywanie bazy danych kończy się niepowodzeniem i otrzymasz komunikat o błędzie **UserErrorSQLNoSysAdminMembership**. Aby dodać uprawnienia administratora systemu do utworzenia kopii zapasowej, postępuj zgodnie z instrukcjami [Ustawianie uprawnień kopia zapasowa Azure dla maszyn wirtualnych SQL spoza witryny marketplace](backup-azure-sql-database.md#set-permissions-for-non--marketplace-sql-vms).
+- tworzy konto usługi **NT Service\AzureWLBackupPluginSvc**, na maszynie wirtualnej. Wszystkie operacje tworzenia kopii zapasowej i przywracania Użyj konta usługi. **NT Service\AzureWLBackupPluginSvc** wymaga uprawnień administratora systemu SQL. Wszystkie maszyny wirtualne SQL Marketplace dostarczane z SqlIaaSExtension zainstalowane i AzureBackupWindowsWorkload używa SQLIaaSExtension na automatyczne uzyskiwanie wymaganych uprawnień. Jeśli maszyna wirtualna nie ma zainstalowanych SqlIaaSExtension, odnajdywanie bazy danych kończy się niepowodzeniem i otrzymasz komunikat o błędzie **UserErrorSQLNoSysAdminMembership**. Aby dodać uprawnienia administratora systemu do utworzenia kopii zapasowej, postępuj zgodnie z instrukcjami [Ustawianie uprawnień kopia zapasowa Azure dla maszyn wirtualnych SQL spoza witryny marketplace](backup-azure-sql-database.md#set-permissions-for-non--marketplace-sql-vms).
 
     ![Wybierz maszynę wirtualną i bazy danych](./media/backup-azure-sql-database/registration-errors.png)
 
@@ -443,6 +443,10 @@ Przywracanie bazy danych
 
 Ta procedura przeprowadzi Cię przez przywrócenie danych do lokalizacji alternatywnej. Jeśli chcesz zastąpić bazy danych podczas przywracania, przejść do sekcji [przywrócić i zastąpić bazy danych](backup-azure-sql-database.md#restore-and-overwrite-the-database). W tej procedurze przyjęto założenie, Magazyn usług odzyskiwania otwartych i w menu Przywracanie konfiguracji. Jeśli nie, Rozpocznij od sekcji [przywracania bazy danych SQL](backup-azure-sql-database.md#restore-a-sql-database).
 
+> [!NOTE]
+> Można przywrócić bazę danych SQL Server, w tym samym regionie Azure, a serwer docelowy musi być SuperScript w magazynie usług odzyskiwania. 
+>
+
 **Serwera** menu rozwijanego wyświetlane są tylko serwery SQL zarejestrowana w magazynie usług odzyskiwania. Jeśli serwer ma nie jest w **serwera** listy, zobacz sekcję [baz danych serwera SQL odnajdywanie](backup-azure-sql-database.md#discover-sql-server-databases) odnaleźć serwera. W procesie odnajdowania bazy danych wszystkich nowych serwerach są rejestrowane w magazynie usług odzyskiwania.
 
 1. W **Przywracanie konfiguracji** menu:
@@ -607,10 +611,40 @@ Ta sekcja zawiera informacje o różnych kopia zapasowa Azure operacji zarządza
 * Wyrejestruj programu SQL server
 
 ### <a name="monitor-jobs"></a>Monitorowanie zadań
+Kopia zapasowa Azure jest rozwiązaniem klasy Enterprise udostępnia zaawansowane kopii zapasowej alertów i powiadomień dla niepowodzenia (zobacz sekcja alerty kopii zapasowej poniżej). Jeśli nadal chcesz monitorować określonych zadań można użyć dowolnej z poniższych opcji opartych na wymagań:
 
-Kopia zapasowa Azure korzysta natywnych interfejsów API SQL dla wszystkich operacji tworzenia kopii zapasowej. Przy użyciu macierzystych interfejsów API, można pobrać wszystkie informacje o zadaniu z [tabeli zestawu kopii zapasowych SQL](https://docs.microsoft.com/sql/relational-databases/system-tables/backupset-transact-sql?view=sql-server-2017) w bazie danych msdb. Ponadto kopia zapasowa Azure zawiera wszystkie ręcznie wyzwalanych lub ad hoc, zadania w portalu zadania tworzenia kopii zapasowej. Zadania dostępne w portalu include: wszystkie skonfigurować operacje tworzenia kopii zapasowej, operacje przywracania rejestracji odnajdywanie operacje bazy danych i Zatrzymaj operacje tworzenia kopii zapasowej. Wszystkie zaplanowane zadania można również monitorować z analizy dzienników OMS. Za pomocą analizy dzienników usuwa bałaganu zadań i zapewnia elastyczność szczegółowego monitorowania lub filtrowanie określonych zadań.
-
+#### <a name="using-azure-portal---recovery-services-vault-for-all-ad-hoc-operations"></a>Przy użyciu portalu Azure -> magazynu usług odzyskiwania dla wszystkich operacji w trybie ad hoc
+Azure pokazuje kopii zapasowej wszystkich ręcznie wyzwalane lub ad hoc, zadania w portalu zadania tworzenia kopii zapasowej. Zadania dostępne w portalu include: wszystkie skonfigurować operacje tworzenia kopii zapasowej, ręcznie wyzwalane operacje tworzenia kopii zapasowej, operacje przywracania rejestracji odnajdywanie operacje bazy danych i Zatrzymaj operacje tworzenia kopii zapasowej. 
 ![menu zaawansowanej konfiguracji](./media/backup-azure-sql-database/jobs-list.png)
+
+> [!NOTE]
+> Wszystkich zaplanowanych zadań kopii zapasowej w tym pełne, dziennika i różnicowej kopii zapasowej nie zostanie wyświetlone w portalu i mogą być monitorowane, przy użyciu programu SQL Server Management Studio, zgodnie z poniższym opisem.
+>
+
+#### <a name="using-sql-server-management-studio-ssms-for-backup-jobs"></a>Za pomocą programu SQL Server Management Studio (SSMS) dla zadania tworzenia kopii zapasowej
+Kopia zapasowa Azure korzysta natywnych interfejsów API SQL dla wszystkich operacji tworzenia kopii zapasowej. Przy użyciu macierzystych interfejsów API, można pobrać wszystkie informacje o zadaniu z [tabeli zestawu kopii zapasowych SQL](https://docs.microsoft.com/sql/relational-databases/system-tables/backupset-transact-sql?view=sql-server-2017) w bazie danych msdb. 
+
+Można użyć poniżej kwerendy, na przykład aby pobrać wszystkie zadania tworzenia kopii zapasowej dla określonej bazy danych o nazwie "DB1". Można dostosować poniżej zapytania więcej zaawansowane monitorowanie.
+```
+select CAST (
+Case type
+                when 'D' 
+                                 then 'Full'
+                when  'I'
+                               then 'Differential' 
+                ELSE 'Log'
+                END         
+                AS varchar ) AS 'BackupType',
+database_name, 
+server_name,
+machine_name,
+backup_start_date,
+backup_finish_date,
+DATEDIFF(SECOND, backup_start_date, backup_finish_date) AS TimeTakenByBackupInSeconds,
+backup_size AS BackupSizeInBytes
+  from msdb.dbo.backupset where user_name = 'NT SERVICE\AzureWLBackupPluginSvc' AND database_name =  <DB1>  
+ 
+```
 
 ### <a name="backup-alerts"></a>Alerty kopii zapasowej
 

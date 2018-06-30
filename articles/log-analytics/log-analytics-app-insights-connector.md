@@ -3,7 +3,7 @@ title: Wyświetl dane aplikacji Azure Application Insights | Dokumentacja firmy 
 description: Rozwiązanie Application Insights łącznika można użyć do diagnozowania problemów z wydajnością i zrozumieć, co zrobić użytkownicy, z aplikacji podczas monitorowania z usługą Application Insights.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: 49280cad-3526-43e1-a365-c6a3bf66db52
@@ -11,19 +11,23 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/18/2017
+ms.topic: conceptual
+ms.date: 06/29/2018
 ms.author: magoedte
-ms.openlocfilehash: 854ec70c897b6a561fdec056228f82ccec3ae16c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: na
+ms.openlocfilehash: 2312b0ed51be7079da3e53b27c269adfb761044d
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30186237"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131630"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Rozwiązania do zarządzania łącznika Insights aplikacji (wersja zapoznawcza)
 
 ![Application Insights symbol](./media/log-analytics-app-insights-connector/app-insights-connector-symbol.png)
+
+>[!NOTE]
+> Z obsługą programu [zapytania zasobów między](log-analytics-cross-workspace-search.md), rozwiązania do zarządzania łącznika usługi Application Insights nie jest już wymagana i zostaną wycofane. Uruchamianie lipca, nie będzie mógł połączyć nowych zasobów usługi Application Insights do analizy dzienników obszarów roboczych. Istniejące linki i pulpity nawigacyjne będą nadal działać do czasu 2018 listopad. Aby uzyskać więcej informacji, zobacz [portalu OMS przenoszenie na platformę Azure](log-analytics-oms-portal-transition.md).
 
 Łącznik usługi Insights aplikacji rozwiązanie pomaga diagnozować problemy z wydajnością i zrozumieć, co zrobić użytkownicy z aplikacją, gdy jest monitorowany z [usługi Application Insights](../application-insights/app-insights-overview.md). Widoki danych telemetrycznych tej samej aplikacji, deweloperzy widoczne w usłudze Application Insights są dostępne w analizy dzienników. Jednak po zintegrowaniu aplikacji usługi Application Insights z analizy dzienników widoczność aplikacji jest zwiększana o zebranie danych operacji i aplikacji w jednym miejscu. O tym samym widoków ułatwia współpracę z deweloperów w Twojej aplikacji. Widok typowych może pomóc zmniejszyć czas do wykrywania i rozwiązywania zarówno aplikacji, jak i problemów platformy.
 
@@ -83,7 +87,7 @@ Kliknij przycisk **usługi Application Insights** Kafelek, aby otworzyć **usłu
 
 ![Pulpit nawigacyjny szczegółowych informacji w aplikacji](./media/log-analytics-app-insights-connector/app-insights-dash02.png)
 
-Pulpit nawigacyjny zawiera bloki z tabelą. Każdy blok zawiera maksymalnie 10 elementów spełniających kryteria tego bloku dla określonego zakresu i zakres czasu. Można uruchomić wyszukiwania dziennika, który zwraca wszystkie rekordy po kliknięciu **zobaczyć wszystkie** w dolnej części bloku lub po kliknięciu nagłówka bloku.
+Pulpit nawigacyjny zawiera bloki z tabelą. Każdy blok zawiera do 10 elementów spełniających kryteria tego bloku dla określonego zakresu i czasu. Można uruchomić wyszukiwania dziennika, który zwraca wszystkie rekordy po kliknięciu **zobaczyć wszystkie** w dolnej części bloku lub po kliknięciu nagłówka bloku.
 
 [!INCLUDE [log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
@@ -118,7 +122,7 @@ Po kliknięciu dowolnej lokalizacji w **wyjątki** bloku, zobacz wizualizacji do
 
 ![Application Insights wyjątki bloku](./media/log-analytics-app-insights-connector/exceptions-blade-drill-search.png)
 
-Niezależnie od tego, czy można kliknąć element jedną **Application Insights łącznik** pulpitu nawigacyjnego, poziomu **wyszukiwania** strony, każde zapytanie zwraca dane usługi Application Insights zawiera perspektywę usługi Application Insights. Na przykład, jeśli można przeglądać dane usługi Application Insights **&#42;** zapytanie wyświetla również karcie perspektywy, podobnie jak na poniższej ilustracji:
+Niezależnie od tego, czy można kliknąć element jedną **Application Insights łącznik** pulpitu nawigacyjnego, poziomu **wyszukiwania** strony, każde zapytanie zwraca dane usługi Application Insights przedstawiono aplikację Perspektywa szczegółowych informacji. Na przykład, jeśli można przeglądać dane usługi Application Insights **&#42;** zapytanie wyświetla również karcie perspektywy, podobnie jak na poniższej ilustracji:
 
 ![Application Insights ](./media/log-analytics-app-insights-connector/app-insights-search.png)
 
@@ -191,7 +195,7 @@ Rekord z *typu* z *ApplicationInsights* jest tworzony dla każdego typu danych w
 | IsAuthenticated | Prawda lub fałsz |
 | OperationID | Elementy, które mają tę samą operację identyfikator są wyświetlane jako elementy powiązane w portalu. Zazwyczaj identyfikator żądania |
 | ParentOperationID | Identyfikator działania nadrzędnego |
-| OperationName |   |
+| operationName |   |
 | Identyfikator sesji | Identyfikator GUID do jednoznacznej identyfikacji sesji, w którym utworzono żądanie |
 | SourceSystem | ApplicationInsights |
 

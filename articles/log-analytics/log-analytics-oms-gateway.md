@@ -3,7 +3,7 @@ title: Łączenie komputerów przy użyciu bramy OMS | Dokumentacja firmy Micros
 description: Uzyskuj dostęp do Twojego urządzenia i komputery monitorowane programu Operations Manager bramy OMS do przesyłania danych do usługi Automatyzacja Azure i usługi analizy dzienników, gdy nie mają dostępu do Internetu.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ae9a1623-d2ba-41d3-bd97-36e65d3ca119
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: magoedte
-ms.openlocfilehash: b3055e6b22e3f391c0bc3f321cd8117d55a95cf5
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.component: na
+ms.openlocfilehash: ecbc88ebaaa93215f85b57becc8a643dc3e168a0
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271653"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129044"
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Łączenie komputerów bez dostępu do Internetu za pomocą bramy OMS
 W tym dokumencie opisano sposób konfigurowania komunikacji przy użyciu automatyzacji Azure i analizy dzienników przy użyciu bramy OMS, gdy bezpośrednie połączenia lub Operations Manager monitorowane komputery nie mają dostępu do Internetu.  Brama OMS, czyli protokołu HTTP do przodu serwera proxy, który obsługuje tunelowania przy użyciu połączenia HTTP polecenia HTTP, można zbierać dane i przesyła do automatyzacji Azure i analizy dzienników w ich imieniu.  
@@ -157,9 +158,9 @@ Aby użyć bramy do obsługi programu Operations Manager, musi mieć:
 > Jeśli nie określisz wartości dla bramy, puste wartości jest przypisany do wszystkich agentów.
 > 
 
-Jeśli jest to rejestruje grupę zarządzania programu Operations Manager z obszaru roboczego analizy dzienników po raz pierwszy, opcję, aby określić konfigurację serwera proxy dla grupy zarządzania nie jest dostępne w konsoli operacje.  Grupa zarządzania nie mają być pomyślnie zarejestrowane w usłudze, zanim ta opcja jest dostępna.  Musisz zaktualizować konfigurację serwera proxy systemu za pomocą narzędzia Netsh w systemie konsoli operacje z systemem do skonfigurowania integracji i wszystkich serwerów zarządzania w grupie zarządzania.  
+Jeśli jest to rejestruje grupę zarządzania programu Operations Manager z obszaru roboczego analizy dzienników po raz pierwszy, opcję, aby określić konfigurację serwera proxy dla grupy zarządzania nie jest dostępne w konsoli operacje.  Ta opcja staje się dostępna dopiero po pomyślnym zarejestrowaniu grupy zarządzania w usłudze.  Aby skonfigurować integrację i wszystkie serwery zarządzania w grupie zarządzania, musisz zaktualizować konfigurację serwera proxy systemu za pomocą narzędzia Netsh w systemie, w którym działa konsola zarządzania operacjami.  
 
-1. Otwórz podniesionego wiersza poleceń.
+1. Otwórz wiersz polecenia z podwyższonymi uprawnieniami.
    a. Przejdź do **Start** i typ **cmd**.
    b. Kliknij prawym przyciskiem myszy **wiersza polecenia** i wybierz polecenie Uruchom jako administrator **.
 2. Wprowadź następujące polecenie i naciśnij klawisz **Enter**:

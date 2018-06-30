@@ -1,5 +1,5 @@
 ---
-title: Okresowe kopii zapasowej i przywracania w sieci szkieletowej usług Azure (wersja zapoznawcza) | Dokumenty Microsoft
+title: Okresowe kopii zapasowej i przywracania w sieci szkieletowej usług Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Użyj usługi sieć szkieletowa okresowe kopii zapasowej i przywracania funkcji ochrony przed utratą danych aplikacji.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: hrushib
-ms.openlocfilehash: 73b5356f63199c7530fe5eef0c4b4b7ee617ff5f
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 9fbf3a6c965bb2f52b71fbac32b289555b922772
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236124"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113993"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Okresowe kopii zapasowej i przywracania w sieci szkieletowej usług Azure (wersja zapoznawcza)
 > [!div class="op_single_selector"]

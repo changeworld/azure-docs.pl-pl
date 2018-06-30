@@ -10,12 +10,12 @@ ms.author: jamesbak
 ms.date: 06/27/2018
 ms.service: storage
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: a726779e731be2534e457ba595d93fe51c023601
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: e92c4efba29f1c40f6d4cb155974ca3a896796e5
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37036018"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114337"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Sterownik Filesystem obiektów Blob Azure (ABFS): dedykowany sterownika usługi Azure Storage dla platformy Hadoop
 
@@ -29,7 +29,7 @@ W związku z tym aby wyeliminować braki projektowania związane z WASB, Nowa us
 
 ## <a name="the-azure-blob-file-system-driver"></a>Sterownik systemu plików obiektów Blob Azure
 
-[Interfejsu Azure Data Lake magazynu REST](https://docs.microsoft.com/en-us/rest/api/datalakestorage/) jest przeznaczona do obsługi semantyki systemu plików w magazynie obiektów Blob Azure. Biorąc pod uwagę, że w systemie plików usługi Hadoop jest również przystosowany do obsługi tej samej semantyki nie jest wymagane dla złożonych mapowania sterownika. W związku z tym sterownik System plików obiektów Blob Azure (lub ABFS) jest podkładki zwykłe klienta interfejsu API REST.
+[Interfejsu Azure Data Lake magazynu REST](https://docs.microsoft.com/en-us/rest/api/storageservices/data-lake-storage-gen2) jest przeznaczona do obsługi semantyki systemu plików w magazynie obiektów Blob Azure. Biorąc pod uwagę, że w systemie plików usługi Hadoop jest również przystosowany do obsługi tej samej semantyki nie jest wymagane dla złożonych mapowania sterownika. W związku z tym sterownik System plików obiektów Blob Azure (lub ABFS) jest podkładki zwykłe klienta interfejsu API REST.
 
 Istnieją jednak niektóre funkcje, które sterownik nadal należy wykonać:
 

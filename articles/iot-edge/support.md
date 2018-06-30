@@ -8,17 +8,17 @@ ms.date: 6/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0a5cbabf8080efd1ae25ba151a1be339e8f5cad2
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
-ms.translationtype: HT
+ms.openlocfilehash: 05a571c4491122ec5c7c35f6bccc4b8c332a4be2
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081758"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130713"
 ---
 # <a name="azure-iot-edge-support"></a>Obsługa krawędzi IoT Azure
 Istnieją różne sposoby poszukuje produktu Azure IoT krawędzi.
 
-**Raportowanie błędów** — większość programowanie, który jest przesyłany do produktu Azure IoT krawędzi odbywa się w projekt open source IoT krawędzi. Błędy mogą być zgłaszane na [strony problemy](https://github.com/azure/iot-edge/issues) projektu. Poprawki należy szybko z projektu w drodze do aktualizacji produktu.
+**Raportowanie błędów** — większość programowanie, który jest przesyłany do produktu Azure IoT krawędzi odbywa się w projekt open source IoT krawędzi. Błędy mogą być zgłaszane na [strony problemy](https://github.com/azure/iotedge/issues) projektu. Poprawki należy szybko z projektu w drodze do aktualizacji produktu.
 
 **Zespół obsługi klienta firmy Microsoft** — użytkownicy, którzy mają [plan pomocy technicznej](https://azure.microsoft.com/support/plans/) można Uwzględnij zespół obsługi klienta firmy Microsoft przez tworzenie biletu pomocy technicznej bezpośrednio z [portalu Azure]( https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac).
 

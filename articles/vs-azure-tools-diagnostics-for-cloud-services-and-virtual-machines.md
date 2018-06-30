@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 11/11/2016
+ms.date: 06/28/2018
 ms.author: mikejo
-ms.openlocfilehash: 34c667b0a594682e4d099e7bff64bfdb336b850b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 2ff2a619dabd7dfabf89361172557efa4884ba12
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30292544"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110491"
 ---
 # <a name="set-up-diagnostics-for-azure-cloud-services-and-virtual-machines"></a>Ustaw diagnostyki dla usług Azure Cloud Services i maszyny wirtualne
 Gdy konieczne jest rozwiązywanie problemów z usługą w chmurze platformy Azure lub maszyny wirtualnej, można użyć programu Visual Studio aby łatwiej skonfigurować diagnostyki Azure. Diagnostyka przechwytuje dane systemu i rejestrowanie danych na maszynach wirtualnych i wystąpień maszyn wirtualnych, które są uruchamiane usługi w chmurze. Dane diagnostyczne jest przekazywane do wybranego konta magazynu. Aby uzyskać więcej informacji o diagnostyce rejestrowania na platformie Azure, zobacz [Włączanie rejestrowania diagnostyki dla aplikacji sieci Web w usłudze Azure App Service](app-service/web-sites-enable-diagnostic-log.md).
@@ -87,7 +87,11 @@ W programie Visual Studio może zbierać dane diagnostyczne dla ról, które dzi
    * W przypadku wybrania **subskrypcji**, wybierz subskrypcję platformy Azure, którego chcesz używać i wprowadź nazwę konta. Aby zarządzać subskrypcjami platformy Azure, wybierz **Zarządzanie kontami**.
    * W przypadku wybrania **ręcznie wprowadzić poświadczenia**, wprowadź nazwę i klucza konta platformy Azure, którego chcesz używać.
 5. Aby wyświetlić **konfiguracji diagnostyki** okno dialogowe, wybierz opcję **Konfiguruj**. Z wyjątkiem **ogólne** i **katalogów dziennika**, każda karta reprezentuje źródła danych diagnostycznych, które można zebrać. Wartość domyślna **ogólne** kartę oferuje następujące diagnostyki opcji zbierania danych: **tylko błędy**, **wszystkie informacje**, i **plan niestandardowy**. Wartość domyślna **tylko błędy** opcja używa minimalnej liczbie magazynu, ponieważ nie transferu, ostrzeżenia lub komunikaty śledzenia. **Wszystkie informacje** opcja przekazuje informacje najbardziej, używa najwięcej pamięci masowej i w związku z tym jest to najbardziej kosztownych opcja.
-   
+
+   > [!NOTE]
+   > Minimalny rozmiar obsługiwanych "Dysku przydziału w MB" wynosi 4GB. Jednak jeśli są zbierane zrzuty pamięci, zwiększyć to wyższej wartości podobnie jak 10GB.
+   >
+  
     ![Włącz diagnostyki Azure i konfiguracji](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758144.png)
 6. Na przykład wybierz **plan niestandardowy** opcji, więc można dostosować zebranych danych.
 7. W **przydział dysku w MB** pole, można ustawić ilości wykorzystanego miejsca można przydzielić na koncie magazynu dla danych diagnostycznych. Można zmienić lub zaakceptuj wartość domyślną.
@@ -249,7 +253,7 @@ Jeśli w przypadku badania problemów z usługą w chmurze, która jest już uru
 ### <a name="to-set-up-diagnostics-for-a-running-cloud-service"></a>Aby skonfigurować diagnostykę dla uruchomionej usługi w chmurze
 1. W Eksploratorze serwera rozwiń **usługi w chmurze** węzeł, a następnie rozwiń listę węzłów można zlokalizować roli wystąpienia (i/lub), który chcesz zbadać.
    
-    ![Skonfiguruj diagnostyki](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC748913.png)
+    ![Konfigurowanie diagnostyki](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC748913.png)
 2. Menu skrótów dla wystąpienia węzeł lub ról, wybierz **ustawień diagnostycznych aktualizacji**, a następnie wybierz ustawień diagnostycznych, które mają być zbierane.
    
     Aby uzyskać informacje o ustawieniach konfiguracji, zobacz sekcję **konfigurowania źródeł danych diagnostycznych** w tym artykule. Aby uzyskać informacje o sposobie wyświetlania danych diagnostycznych, zobacz sekcję **wyświetlić dane diagnostyczne** w tym artykule.

@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2017
+ms.date: 06/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 3c3fde3aefe02dd3919378d39afeff7cded763fc
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 36c7bfeece12fe2bb2738e50de03ba2c8fc07bfa
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215566"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111950"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Samouczek: Integracji Azure Active Directory z Coupa
 
@@ -60,14 +60,14 @@ Aby skonfigurować integrację usługi Azure AD Coupa, należy dodać Coupa z ga
 
 **Aby dodać Coupa z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony.
 
     ![Przycisk usługi Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Blok aplikacje przedsiębiorstwa][2]
-    
+
 3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
@@ -103,21 +103,33 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
 2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
- 
+
     ![Okno dialogowe rejestracji jednokrotnej](./media/coupa-tutorial/tutorial_coupa_samlbase.png)
 
 3. Na **Coupa domeny i adres URL** sekcji, wykonaj następujące czynności:
 
     ![Adresy URL i domeny Coupa pojedynczy informacje logowania jednokrotnego](./media/coupa-tutorial/tutorial_coupa_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `http://<companyname>.Coupa.com`
+    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<companyname>.coupahost.com`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `<companyname>.coupahost.com`
+    > [!NOTE]
+    > Wartość adres URL logowania nie jest prawdziwe. Zaktualizuj tę wartość przy rzeczywisty adres URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta Coupa](https://success.coupa.com/Support/Contact_Us?) aby zyskać tę wartość.
 
-    c. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<companyname>.coupahost.com/sp/ACS.saml2`
+    b. W **identyfikator** tekstowym, wpisz adres URL:
 
-    > [!NOTE] 
-    > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania, identyfikator i adres URL odpowiedzi, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta Coupa](https://success.coupa.com/Support/Contact_Us?) uzyskać te wartości. wartość adresu URL odpowiedzi otrzyma z metadanych, który znajduje się w dalszej części tego samouczka.
+    | Środowisko  | Adres URL |
+    |:-------------|----|
+    | Piaskownica | `devsso35.coupahost.com`|
+    | Produkcja | `prdsso40.coupahost.com`|
+    | | |
+
+    c. W **adres URL odpowiedzi** tekstowym, wpisz adres URL:
+
+    | Środowisko | Adres URL |
+    |------------- |----|
+    | Piaskownica | `https://devsso35.coupahost.com/sp/ACS.saml2`|
+    | Produkcja | `https://prdsso40.coupahost.com/sp/ACS.saml2`|
+    | | |
 
 4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
@@ -130,24 +142,18 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 6. Zalogować się do witryny firmy Coupa jako administrator.
 
 7. Przejdź do **Instalator \> zabezpieczeniem**.
-   
+
    ![Opcje zabezpieczeń](./media/coupa-tutorial/ic791900.png "środki zabezpieczające.")
 
 8. W **Zaloguj się za pomocą poświadczeń Coupa** sekcji, wykonaj następujące czynności:
 
     ![Metadane Coupa SP](./media/coupa-tutorial/ic791901.png "Coupa SP metadanych")
-    
-    a. Wybierz **zalogowanie się przy użyciu SAML**.
-    
-    b. Aby pobrać pliku metadanych Coupa do komputera, kliknij przycisk **pobieranie i Importowanie metadanych SP**. Otwórz metadanych i skopiuj **AssertionConsumerService indeksu lub adres URL** wartość, Wklej wartości do **adres URL odpowiedzi** textbox w **Coupa domeny i adres URL** sekcji. 
-    
-    c. Kliknij przycisk **Przeglądaj** przekazać metadanych pobrany z portalu Azure.
-    
-    d. Kliknij pozycję **Zapisz**.
 
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    a. Wybierz **zalogowanie się przy użyciu SAML**.
+
+    b. Kliknij przycisk **Przeglądaj** przekazać metadanych pobrany z portalu Azure.
+
+    c. Kliknij pozycję **Zapisz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -180,7 +186,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
- 
+
 ### <a name="create-a-coupa-test-user"></a>Tworzenie użytkownika testowego Coupa
 
 Aby włączyć użytkowników usługi Azure AD zalogować się do Coupa, musi być przygotowana do Coupa.  
@@ -192,39 +198,39 @@ Aby włączyć użytkowników usługi Azure AD zalogować się do Coupa, musi by
 1. Zaloguj się do Twojego **Coupa** witryny firmy jako administrator.
 
 2. W menu u góry kliknij **Instalator**, a następnie kliknij przycisk **użytkowników**.
-   
+
    ![Użytkownicy](./media/coupa-tutorial/ic791908.png "użytkowników")
 
 3. Kliknij przycisk **Utwórz**.
-   
+
    ![Tworzenie użytkowników](./media/coupa-tutorial/ic791909.png "tworzenie użytkowników")
 
 4. W **Utwórz użytkownika** sekcji, wykonaj następujące czynności:
-   
+
    ![Szczegóły użytkownika](./media/coupa-tutorial/ic791910.png "szczegóły użytkownika")
-   
+
    a. Typ **logowania**, **imię**, **nazwisko**, **identyfikator rejestracji jednokrotnej**, **E-mail** atrybutów prawidłowe konto usługi Azure Active Directory, które chcesz udostępnić do powiązanych pól tekstowych.
 
-   b. Kliknij przycisk **Utwórz**.   
-   
+   b. Kliknij przycisk **Utwórz**.
+
    >[!NOTE]
-   >Właściciel konta usługi Azure Active Directory otrzyma wiadomość e-mail z łączem do potwierdzenia konta, zanim staje się aktywny. 
-   > 
+   >Właściciel konta usługi Azure Active Directory otrzyma wiadomość e-mail z łączem do potwierdzenia konta, zanim staje się aktywny.
+   >
 
 >[!NOTE]
->Możesz użyć innych Coupa użytkownika konta tworzenia narzędzi lub interfejsów API dostarczonych przez Coupa do kont użytkowników usługi AAD. 
+>Możesz użyć innych Coupa użytkownika konta tworzenia narzędzi lub interfejsów API dostarczonych przez Coupa do kont użytkowników usługi AAD.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
 
 W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu Coupa.
 
-![Przypisanie roli użytkownika][200] 
+![Przypisanie roli użytkownika][200]
 
 **Aby przypisać Simona Britta Coupa, wykonaj następujące czynności:**
 
 1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
-    ![Przypisz użytkownika][201] 
+    ![Przypisz użytkownika][201]
 
 2. Na liście aplikacji zaznacz **Coupa**.
 
@@ -243,13 +249,13 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
-    
+
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
 Po kliknięciu kafelka Coupa w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji Coupa.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
@@ -269,4 +275,3 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 [201]: ./media/coupa-tutorial/tutorial_general_201.png
 [202]: ./media/coupa-tutorial/tutorial_general_202.png
 [203]: ./media/coupa-tutorial/tutorial_general_203.png
-

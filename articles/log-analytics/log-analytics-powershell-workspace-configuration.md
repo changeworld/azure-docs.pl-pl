@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: powershell
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/21/2016
 ms.author: richrund
-ms.openlocfilehash: 6a3f91323a017533d2d012f1e81760396c17a643
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: na
+ms.openlocfilehash: 375ae9a82af4a1f8a86b529b597ed479388e66dc
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30179093"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129340"
 ---
 # <a name="manage-log-analytics-using-powershell"></a>Zarządzanie usługą Log Analytics przy użyciu programu PowerShell
 Można użyć [poleceń cmdlet programu PowerShell analizy dziennika](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) do wykonywania różnych funkcji w analizy dzienników przy użyciu wiersza polecenia lub w ramach skryptu.  Przykłady zadania, które można wykonać przy użyciu programu PowerShell:
@@ -192,7 +193,7 @@ Bez agenta monitorowania zasobów platformy Azure, zasoby muszą mieć Diagnosty
 
 | Typ zasobu | Dzienniki | Metryki |
 | --- | --- | --- |
-| Bramy Application Gateway    | Yes | Yes |
+| Bramy aplikacji    | Yes | Yes |
 | Konta usługi Automation     | Yes | |
 | Konta usługi Batch          | Yes | Yes |
 | Data Lake analytics     | Yes | | 

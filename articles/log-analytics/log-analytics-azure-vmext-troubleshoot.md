@@ -3,23 +3,24 @@ title: Rozwiązywanie problemów z rozszerzenia maszyny Wirtualnej usługi Anali
 description: Opisz objawy, przyczyny i rozwiązania dla typowych problemów z rozszerzeniem wirtualna analizy dziennika systemu Windows i Linux maszynach wirtualnych platformy Azure.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: tysonn
 ms.assetid: ''
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/08/2018
 ms.author: magoedte
-ms.openlocfilehash: d1e70d8f9fb929e3877c88fd4c1169a0c76ac2a6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.component: na
+ms.openlocfilehash: 700d6b2c3bcd39aed38bf75556bcdcb59d1ab78b
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29394990"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128830"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension"></a>Rozwiązywanie problemów z rozszerzenia maszyny Wirtualnej analizy dzienników
 W tym artykule zawiera informacje pomocne przy rozwiązywaniu problemów z błędami, mogą wystąpić z rozszerzeniem wirtualna analizy dzienników dla systemu Windows i Linux maszynami wirtualnymi w systemie Microsoft Azure, a także sugeruje możliwe rozwiązania ich rozwiązania.
@@ -27,7 +28,7 @@ W tym artykule zawiera informacje pomocne przy rozwiązywaniu problemów z błę
 Aby sprawdzić stan rozszerzenia, wykonaj następujące kroki w portalu Azure.
 
 1. Zaloguj się do [Azure Portal](http://portal.azure.com).
-2. W portalu Azure kliknij **wszystkie usługi**. Na liście zasobów wpisz **maszyn wirtualnych**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **maszyn wirtualnych**.
+2. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **maszyn wirtualnych**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **maszyn wirtualnych**.
 3. Na liście maszyn wirtualnych Znajdź i zaznacz go.
 3. Na maszynie wirtualnej, kliknij przycisk **rozszerzenia**.
 4. Z listy Sprawdź, czy rozszerzenie Log Analytics jest włączone.  Dla systemu Linux, agent będzie wyświetlany jako **OMSAgentforLinux** i dla systemu Windows, agent będzie wyświetlany jako **MicrosoftMonitoringAgent**.

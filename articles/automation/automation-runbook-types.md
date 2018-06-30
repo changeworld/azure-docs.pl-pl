@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 06/29/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 94fbc1cf0232eaf48bb0be3c6edc0542142e4681
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7958042ccb2f55e9b6021f7d804a0dcd090695c5
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34196053"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109321"
 ---
 # <a name="azure-automation-runbook-types"></a>Typy elementu runbook automatyzacji Azure
 Automatyzacja Azure obsługuje kilka typów elementów runbook krótko opisane w poniższej tabeli.  Poniższe sekcje zawierają dodatkowe informacje na temat poszczególnych typów, łącznie z uwagi na kiedy należy używać każdego.
@@ -44,7 +44,7 @@ Automatyzacja Azure obsługuje kilka typów elementów runbook krótko opisane w
 * Nie można wyświetlić lub edytować bezpośrednio kod programu PowerShell, który jest tworzony przez graficzny przepływ pracy. Należy pamiętać, że można wyświetlić kod, który można utworzyć w żadnych działań kodu.
 
 ## <a name="powershell-runbooks"></a>Elementy runbook programu PowerShell
-Elementy runbook programu PowerShell są oparte na programie Windows PowerShell.  Bezpośredniego edytowania kodu elementu runbook w portalu Azure za pomocą edytora tekstu.  Można również użyć dowolnego edytora tekstu w trybie offline i [zaimportuj element runbook](http://msdn.microsoft.com/library/azure/dn643637.aspx) w automatyzacji Azure.
+Elementy runbook programu PowerShell są oparte na programie Windows PowerShell.  Bezpośredniego edytowania kodu elementu runbook w portalu Azure za pomocą edytora tekstu.  Można również użyć dowolnego edytora tekstu w trybie offline i [zaimportuj element runbook](automation-creating-importing-runbook.md) w automatyzacji Azure.
 
 ### <a name="advantages"></a>Zalety
 * Implementuje całą logikę złożonych z kodem PowerShell bez dodatkowej złożoności przepływu pracy programu PowerShell. 
@@ -65,7 +65,7 @@ Oto obecnie znane problemy z elementów runbook programu PowerShell.
 * Element runbook programu PowerShell może zakończyć się niepowodzeniem, jeśli próbuje zapisać bardzo dużą ilość danych do strumienia wyjściowego na raz.   Ten problem można zwykle obejść przez generowanie właśnie informacji potrzebnych podczas pracy z dużych obiektów.  Na przykład zamiast Generowanie przypominać *Get-Process*, można output tylko wymagane pola z *Get-Process | Wybierz parametr i procesora CPU*.
 
 ## <a name="powershell-workflow-runbooks"></a>Elementy runbook przepływu pracy programu PowerShell
-Element runbook przepływu pracy programu PowerShell jest tekst elementów runbook na podstawie [przepływu pracy środowiska Windows PowerShell](automation-powershell-workflow.md).  Bezpośredniego edytowania kodu elementu runbook w portalu Azure za pomocą edytora tekstu.  Można również użyć dowolnego edytora tekstu w trybie offline i [zaimportuj element runbook](http://msdn.microsoft.com/library/azure/dn643637.aspx) w automatyzacji Azure.
+Element runbook przepływu pracy programu PowerShell jest tekst elementów runbook na podstawie [przepływu pracy środowiska Windows PowerShell](automation-powershell-workflow.md).  Bezpośredniego edytowania kodu elementu runbook w portalu Azure za pomocą edytora tekstu.  Można również użyć dowolnego edytora tekstu w trybie offline i [zaimportuj element runbook](automation-creating-importing-runbook.md) w automatyzacji Azure.
 
 ### <a name="advantages"></a>Zalety
 * Implementuje całą logikę złożonych z kodem przepływu pracy programu PowerShell.
@@ -80,7 +80,7 @@ Element runbook przepływu pracy programu PowerShell jest tekst elementów runbo
 * Elementy runbook programu PowerShell można dołączyć jako podrzędne elementy runbook tylko za pomocą polecenia cmdlet Start-AzureAutomationRunbook, który tworzy nowe zadanie.
 
 ## <a name="python-runbooks"></a>Elementy runbook języka Python
-Elementy runbook Python kompilacji 2 języka Python.  Kod elementu runbook za pomocą edytora tekstu, w portalu Azure można edytować bezpośrednio lub za pomocą dowolnego edytora tekstu w trybie offline i [zaimportuj element runbook](http://msdn.microsoft.com/library/azure/dn643637.aspx) w automatyzacji Azure.
+Elementy runbook Python kompilacji 2 języka Python.  Kod elementu runbook za pomocą edytora tekstu, w portalu Azure można edytować bezpośrednio lub za pomocą dowolnego edytora tekstu w trybie offline i [zaimportuj element runbook](automation-creating-importing-runbook.md) w automatyzacji Azure.
 
 ### <a name="advantages"></a>Zalety
 * Korzystanie z niezawodne standardowa biblioteka języka Python.

@@ -127,8 +127,6 @@
           href: stream-analytics-job-diagram-with-metrics.md
         - name: Dzienniki diagnostyczne
           href: stream-analytics-job-diagnostic-logs.md
-        - name: Sprawdzanie kondycji zasobu
-          href: stream-analytics-resource-health.md
         - name: Instrukcja SELECT INTO
           href: stream-analytics-select-into.md
         - name: Odbiorcy usługi Event Hubs

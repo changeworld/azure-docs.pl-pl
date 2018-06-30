@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: wgries
-ms.openlocfilehash: 946311c42088d3a5840eb35387c8a552d3d5d70f
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: c1ca8146db8c5d67be53ba4e30d8ab0218aca104
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34735648"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128762"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent-preview"></a>Informacje o wersji agenta usługi Azure File Sync (wersja zapoznawcza)
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Instalacje systemów Windows Server są przekształcane w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS). Możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
@@ -25,7 +25,8 @@ Następujące wersje są obsługiwane przez agenta usługi Azure File Sync:
 
 | Punkt kontrolny | Numer wersji agenta | Data wydania | Stan |
 |----|----------------------|--------------|------------------|
-| Odśwież 2 | 3.0.12.0 | 22 maja 2018 r. | Obsługiwane (zalecana wersja) |
+| Pakiet zbiorczy aktualizacji czerwca | 3.0.13.0 | 29 czerwca 2018 | Obsługiwane (zalecana wersja) |
+| Odśwież 2 | 3.0.12.0 | 22 maja 2018 r. | Obsługiwane |
 | Pakiet zbiorczy aktualizacji kwietnia | 2.3.0.0 | 8 maja 2018 | Obsługiwane |
 | Pakiet zbiorczy aktualizacji z marca | 2.2.0.0 | 12 marca 2018 | Obsługiwane |
 | Pakiet zbiorczy aktualizacji lutego | 2.1.0.0 | 28 lutego 2018 r. | Obsługiwane |
@@ -37,6 +38,12 @@ Następujące wersje są obsługiwane przez agenta usługi Azure File Sync:
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Zasady aktualizacji agenta usługi Azure File Sync
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-30130"></a>Wersja agenta 3.0.13.0
+Poniższe informacje o wersji dotyczą wersji 3.0.13.0 agent synchronizacji plików Azure wydanej 29 czerwca 2018. Te informacje są oprócz wymienionych wersji 3.0.12.0 informacje o wersji.
+
+W tej wersji dodano następujące poprawki:
+- Punkty ponownej analizy synchronizacji kończy się niepowodzeniem, jeśli serwer jest dodawany do istniejącej grupy synchronizacji, jeśli istnieje w lokalizacji punktu końcowego serwera na serwerze.
 
 ## <a name="agent-version-30120"></a>Wersja agenta 3.0.12.0
 Poniższe informacje o wersji dotyczą wersji 3.0.12.0 agent synchronizacji plików Azure (22 maja 2018 wydane).

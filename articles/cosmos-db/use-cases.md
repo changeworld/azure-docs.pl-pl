@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/7/2017
 ms.author: sngun
-ms.openlocfilehash: ab24dc98ef4c767f04dc083ac6208e2c9d831935
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 15a4e2fa981617c538edf3731bf9457bf172213c
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616808"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113123"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Typowe przypadki użycia bazy danych Azure rozwiązania Cosmos
 Ten artykuł zawiera omówienie kilka typowe przypadki użycia dla bazy danych Azure rozwiązania Cosmos.  Zalecenia przedstawione w tym artykule służyć jako punktu wyjścia podczas opracowywania aplikacji DB rozwiązania Cosmos.   
@@ -51,7 +51,7 @@ Seria danych można pozyskanych przez usługi Azure Event Hubs, ponieważ zapewn
 
 Przykładowe rozwiązanie IoT przy użyciu bazy danych Azure rozwiązania Cosmos, EventHubs i Storm, zobacz [hdinsight-storm przykłady repozytorium w usłudze GitHub](https://github.com/hdinsight/hdinsight-storm-examples/).
 
-Aby uzyskać więcej informacji na oferty Azure IoT, zobacz [utworzyć Internetu rzeczy Your](http://www.microsoft.com/server-cloud/internet-of-things.aspx). 
+Aby uzyskać więcej informacji na oferty Azure IoT, zobacz [utworzyć Internetu rzeczy Your](https://www.microsoft.com/en-us/internet-of-things). 
 
 ## <a name="retail-and-marketing"></a>Sieci sprzedaży i marketingu
 Azure DB rozwiązania Cosmos jest bardzo często używane na platformach firmy Microsoft handlu elektronicznego, systemem Sklep Windows i usługi XBox Live. Również służy w sprzedaży detalicznej do przechowywania danych katalogu i zdarzenia sourcing w kolejności przetwarzania potoków.
@@ -62,7 +62,7 @@ Rozważ przykład katalog produktów dla dostawcy samochodowych. Każdej częśc
 
 ![Architektura referencyjna katalogu Azure DB rozwiązania Cosmos handlowe](./media/use-cases/product-catalog.png)
 
-Azure DB rozwiązania Cosmos jest często używany do zdarzeń sourcing do zasilania architektury zdarzeniami przy użyciu jego [zmienić źródła strumieniowego](change-feed.md) funkcji. Zmiana źródła strumieniowego umożliwia mikrousług podrzędne niezawodnie i stopniowo odczytu INSERT i Update (na przykład kolejność zdarzeń), wprowadzone do bazy danych Azure rozwiązania Cosmos. Tej funkcji można użyć do zapewnienia magazynu trwałego zdarzeń jako brokera komunikatów zdarzeń zmiany stanu i dysku kolejność przetwarzania w przepływie pracy między wiele mikrousług (które można zaimplementować jako [niekorzystającą usługi Azure Functions](http://azure.com/serverless)).
+Azure DB rozwiązania Cosmos jest często używany do zdarzeń sourcing do zasilania architektury zdarzeniami przy użyciu jego [zmienić źródła strumieniowego](change-feed.md) funkcji. Zmiana źródła strumieniowego umożliwia mikrousług podrzędne niezawodnie i stopniowo odczytu INSERT i Update (na przykład kolejność zdarzeń), wprowadzone do bazy danych Azure rozwiązania Cosmos. Tej funkcji można użyć do zapewnienia magazynu trwałego zdarzeń jako brokera komunikatów zdarzeń zmiany stanu i dysku kolejność przetwarzania w przepływie pracy między wiele mikrousług (które można zaimplementować jako [bez serwera usługi Azure Functions](http://azure.com/serverless)).
 
 ![Azure DB rozwiązania Cosmos porządkowanie architektura referencyjna potoku](./media/use-cases/event-sourcing.png)
 

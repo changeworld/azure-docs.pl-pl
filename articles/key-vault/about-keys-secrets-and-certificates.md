@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: a6bd63598781a60c2dd717c07b96fcb498a67d30
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dd1bb6117c0360e67783434c980c56b5f6ae7f9f
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636610"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110239"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Temat kluczy, kluczy tajnych i certyfikatów
 Usługa Azure Key Vault umożliwia użytkownikom przechowywać i wykorzystywać kluczy kryptograficznych w środowisku Microsoft Azure. Magazyn kluczy obsługuje wiele typów kluczy i algorytmów i umożliwia korzystanie z sprzętowych modułów zabezpieczeń (HSM) dla kluczy o wysokiej wartości. Ponadto Key Vault umożliwia użytkownikom bezpieczne przechowywanie kluczy tajnych. Klucze tajne są obiektami octet ograniczony z nie szczególnych semantyki. Magazyn kluczy obsługuje także certyfikaty, które są oparte na kluczach i kluczach tajnych i dodać funkcję automatycznego odnawiania.
@@ -172,7 +172,7 @@ Usługa Azure Key Vault obsługuje następujące operacje na obiektach klucza:
 -   **Kopia zapasowa**: eksportuje klucza w formie chronionych.  
 -   **Przywróć**: importuje wcześniej kopii zapasowej klucza.  
 
-Aby uzyskać więcej informacji, zobacz [klucza operacji](/rest/api/keyvault/key-operations.md)  
+Aby uzyskać więcej informacji, zobacz [klucza operacji](/rest/api/keyvault/key-operations).  
 
 Po klucz został utworzony w usłudze Azure Key Vault, może wykonać następujące operacje kryptograficzne przy użyciu klucza:  
 
@@ -281,7 +281,7 @@ Następujące uprawnienia mogą być używane, na podstawie na principal w wpisu
 -   *Usuń*: usuwanie klucza tajnego  
 -   *wszystkie*: wszystkie uprawnienia  
 
-Aby uzyskać więcej informacji na temat pracy z kluczy tajnych, zobacz [operacje kluczy tajnych](/rest/api/keyvault/secret-operations.md).  
+Aby uzyskać więcej informacji na temat pracy z kluczy tajnych, zobacz [operacje kluczy tajnych](/rest/api/keyvault/secret-operations).  
 
 ###  <a name="BKMK_SecretTags"></a> Tajny tagów  
 W formularzu tagów można określić dodatkowe metadane specyficzne dla aplikacji. Usługa Azure Key Vault obsługuje maksymalnie 15 znaczników, z których każda może mieć nazwę 256 znaków i wartością 256 znaków.  
@@ -376,7 +376,7 @@ Poniższa tabela przedstawia mapowanie x509 zasad użycia klucza do wprowadzenia
 |**X509 flagi użycie klucza**|**Ops klucza Key Vault**|**Domyślne zachowanie**|
 |----------|--------|--------|
 |DataEncipherment|szyfrowanie, odszyfrowywanie| ND |
-|DecipherOnly|Odszyfrowywanie| ND  |
+|DecipherOnly|odszyfrowywanie| ND  |
 |Bity DigitalSignature|Zaloguj się, sprawdź| Domyślne usługi Key Vault bez użycia specyfikację w czasie tworzenia certyfikatu | 
 |EncipherOnly|encrypt| ND |
 |KeyCertSign|Zaloguj się, sprawdź|ND|
@@ -443,9 +443,9 @@ Jeśli zasady dotyczące certyfikatów ustawiono automatycznego odnawiania, powi
 
 ## <a name="additional-information-for-certificates"></a>Dodatkowe informacje dotyczące certyfikatów
 
-- [Certyfikaty i zasady](/rest/api/keyvault/certificates-and-policies.md)
-- [Wystawców certyfikatów](/rest/api/keyvault/certificate-issuers.md)
-- [Kontakty certyfikatu](/rest/api/keyvault/certificate-contacts.md)
+- [Certyfikaty i zasady](/rest/api/keyvault/certificates-and-policies)
+- [Wystawców certyfikatów](/rest/api/keyvault/certificate-issuers)
+- [Kontakty certyfikatu](/rest/api/keyvault/certificate-contacts)
 
 ## <a name="see-also"></a>Zobacz też
 

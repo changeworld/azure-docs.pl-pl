@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 5f2a6de9737569c75e0350e2aceec19b149d9549
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 105c10423a9688300ba74874769b162e29572185
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31418496"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128609"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Tworzenie topologii Apache Storm w języku Java
 
@@ -41,7 +41,7 @@ Po wykonaniu tych kroków w tym dokumencie, można wdrożyć topologii Apache St
 
 ## <a name="configure-environment-variables"></a>Konfigurowanie zmiennych środowiskowych
 
-Po zainstalowaniu Java i zestaw JDK, który można konfigurować następujące zmienne środowiskowe. Jednak należy sprawdzić, czy istnieją i że zawierają one poprawne wartości dla systemu.
+Po zainstalowaniu Java i zestaw JDK, który można konfigurować następujące zmienne środowiskowe. Należy jednak sprawdzić, czy te zmienne istnieją i czy zawierają poprawne wartości dla systemu.
 
 * **JAVA_HOME** -powinny wskazywać na katalog, w którym zainstalowano środowiska wykonawczego języka Java (JRE). Na przykład w systemie Unix lub Linux dystrybucji, powinien on wartość podobną do `/usr/lib/jvm/java-8-oracle`. W systemie Windows będzie mieć wartość podobną do `c:\Program Files (x86)\Java\jre1.8`
 
@@ -600,7 +600,7 @@ Plik yaml programu określa składniki do użycia na potrzeby topologii oraz dan
 Aby uzyskać więcej informacji na strumienia, zobacz [framework strumienia (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html).
 
 > [!WARNING]
-> Ze względu na [usterek (https://issues.apache.org/jira/browse/STORM-2055) ](https://issues.apache.org/jira/browse/STORM-2055) z systemu Storm 1.0.1, należy zainstalować [środowisko projektowe Storm](https://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html) do uruchomienia lokalnie topologie strumienia.
+> Ze względu na [usterek (https://issues.apache.org/jira/browse/STORM-2055) ](https://issues.apache.org/jira/browse/STORM-2055) z systemu Storm 1.0.1, należy zainstalować [środowisko projektowe Storm](http://storm.apache.org/releases/current/Setting-up-development-environment.html) do uruchomienia lokalnie topologie strumienia.
 
 1. Przenieś `WordCountTopology.java` pliku poza projektu. Wcześniej ten plik zdefiniowany topologii, ale nie jest wymagane ze strumienia.
 
@@ -719,9 +719,9 @@ Aby uzyskać więcej informacji na strumienia, zobacz [framework strumienia (htt
     ```
 
     > [!WARNING]
-    > Jeśli topologii korzysta z usługi bits Storm 1.0.1, to polecenie nie powiedzie się. Ten błąd jest spowodowany przez [ https://issues.apache.org/jira/browse/STORM-2055 ](https://issues.apache.org/jira/browse/STORM-2055). Zamiast tego [zainstalować Storm w środowisku projektowania](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html) i wykonaj następujące czynności:
+    > Jeśli topologii korzysta z usługi bits Storm 1.0.1, to polecenie nie powiedzie się. Ten błąd jest spowodowany przez [ https://issues.apache.org/jira/browse/STORM-2055 ](https://issues.apache.org/jira/browse/STORM-2055). Zamiast tego [zainstalować Storm w środowisku projektowania](http://storm.apache.org/releases/current/Setting-up-development-environment.html) i wykonaj następujące czynności:
     >
-    > Jeśli masz [zainstalowane Storm w środowisku projektowania](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html), można użyć następujących poleceń:
+    > Jeśli masz [zainstalowane Storm w środowisku projektowania](http://storm.apache.org/releases/current/Setting-up-development-environment.html), można użyć następujących poleceń:
     >
     > ```bash
     > mvn compile package

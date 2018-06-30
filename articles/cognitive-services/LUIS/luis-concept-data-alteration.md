@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: v-geberr
-ms.openlocfilehash: 4fb1a5542bb56bd853984e66198ebfbd189451f8
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: ab9b9fe5c34c334fd65971f9040c8e43467aa242
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266869"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112154"
 ---
 # <a name="data-alterations"></a>Zmiany danych
 LUIS udostępnia metod manipulowania utterance przed lub podczas prognozowania. 
@@ -31,7 +31,7 @@ Punkt końcowy wymagane są dwa parametry dla pisowni pracę:
 |Param|Wartość|
 |--|--|
 |`spellCheck`|wartość logiczna|
-|`bing-spell-check-subscription-key`|[7 interfejsu API sprawdzania pisowni usługi Bing](https://azure.microsoft.com/services/cognitive-services/spell-check/) klucza subskrypcji|
+|`bing-spell-check-subscription-key`|[7 interfejsu API sprawdzania pisowni usługi Bing](https://azure.microsoft.com/services/cognitive-services/spell-check/) klucz punktu końcowego|
 
 Gdy [7 interfejsu API sprawdzania pisowni usługi Bing](https://azure.microsoft.com/services/cognitive-services/spell-check/) wykrywa błąd, oryginalny utterance i poprawiony utterance są zwracane wraz z prognoz z punktu końcowego.
 

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: v-geberr
-ms.openlocfilehash: 09c9d4da835b7b30fd132770f9d13b33fa80a3f5
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: e97dc184266bc9518ee5f909891bd97f7c71804b
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268330"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113057"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Tworzenie aplikacji LUIS programowo przy użyciu środowiska Node.js
 
@@ -111,7 +111,7 @@ Zainstaluj zależności Node.js z pakietu NPM w wierszu polecenia/terminalu.
 ````
 
 ### <a name="change-configuration-settings"></a>Zmień ustawienia konfiguracji
-Aby można było używać tej aplikacji, musisz Zmień wartości w pliku index.js klucz subskrypcji i podaj nazwę aplikacji na. Można również ustawić kultury aplikacji lub zmienić numer wersji.
+Aby można było używać tej aplikacji, musisz Zmień wartości w pliku index.js klucz punktu końcowego, a następnie podaj nazwę aplikacji na. Można również ustawić kultury aplikacji lub zmienić numer wersji.
 
 Otwórz plik index.js i zmień wartości tych w górnej części pliku.
 

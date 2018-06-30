@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: f6196c1403ded7bb8a72ee5483c2c2056b0e8020
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.component: na
+ms.openlocfilehash: c260371043ddcb8a9ea5952760377282596fff7c
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030713"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127197"
 ---
 # <a name="service-connectivity-monitor"></a>Monitorowanie łączności usług
 
