@@ -4,22 +4,23 @@ description: Przy użyciu projektanta widoków analizy dzienników, można tworz
 services: log-analytics
 documentationcenter: ''
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: ''
 ms.assetid: 41787c8f-6c13-4520-b0d3-5d3d84fcf142
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
-ms.openlocfilehash: f341cb9430c7750909c1fc1f50c15f0620e74366
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.component: na
+ms.openlocfilehash: fc5dc00a05486c1f781016df63877f40d21b0205
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29947320"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131274"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Podręcznik projektanta widoku kafelków w analizy dzienników
 Przy użyciu projektanta widoków Analiza dzienników Azure, można tworzyć widoki niestandardowe w portalu Azure, która przedstawia różne wizualizacje danych w obszarze roboczym analizy dzienników. W tym artykule jest przewodnik odwołanie do ustawienia dla kafelków, które są dostępne w niestandardowych widoków.
@@ -32,11 +33,11 @@ Aby uzyskać więcej informacji na temat Projektant widoków zobacz:
 
 W poniższej tabeli opisano dostępne Kafelki Projektant widoków:  
 
-| Kafelek | Opis |
+| Sąsiadująco | Opis |
 |:--- |:--- |
 | [Numer](#number-tile) |Liczba rekordów w wyniku zapytania. |
 | [Dwóch liczb](#two-numbers-tile) |Liczba rekordów z dwóch różnych zapytań. |
-| [pierścień](#donut-tile) | Wykres opartą na kwerendzie, w Centrum podsumowania wartość. |
+| [Pierścień](#donut-tile) | Wykres opartą na kwerendzie, w Centrum podsumowania wartość. |
 | [Wykres liniowy i objaśnienie](#line-chart-amp-callout-tile) | Wykres liniowy, na podstawie zapytania i objaśnienie z wartością podsumowania. |
 | [Wykres liniowy](#line-chart-tile) |Wykres liniowy, opartą na kwerendzie. |
 | [Dwóch osiach czasu](#two-timelines-tile) | Wykres kolumnowy z dwóch serii każdego na podstawie osobne zapytania. |
@@ -91,15 +92,15 @@ Ten Kafelek Wyświetla liczbę rekordy z dwóch różnych dziennika zapytań i e
 |:--- |:--- |
 | Name (Nazwa) |Tekst, który jest wyświetlany w górnej części fragmentu. |
 | Opis |Tekst, który jest wyświetlany w obszarze Nazwa kafelka. |
-| **pierścień** | |
+| **Pierścień** | |
 | Zapytanie |Zapytanie jest wykonywane dla pierścień. Pierwszą właściwością jest wartość tekstową, a drugą właściwością jest wartość liczbowa. To zapytanie zazwyczaj używa *miary* — słowo kluczowe do podsumowania wyników. |
-| **pierścień** |**> Center** |
+| **Pierścień** |**> Center** |
 | Tekst |Tekst, który jest wyświetlany w obszarze wartość w pierścień. |
 | Operacja |Operacja, która jest wykonywana dla właściwości value Podsumowując jako pojedyncza wartość.<ul><li>Sum: Dodaj odpowiednie wartości wszystkich rekordów z wartością właściwości.</li><li>Wartość procentowa: Procent równy określonemu procentowi wartości w rekordach o wartości właściwości w porównaniu z wartościami równy określonemu procentowi wszystkie rekordy.</li></ul> |
-| Wynik wartości używana podczas operacji Centrum |Opcjonalnie wybierz znak plus (+), aby dodać jedną lub więcej wartości. Wyniki zapytania są ograniczone do rekordów z wartościami właściwości, które określisz. Jeśli wartości nie zostaną dodane, wszystkie rekordy są uwzględnione w zapytaniu. |
-| **pierścień** |**> Dodatkowe opcje** |
+| Wartości wynikowe używane w środku |Opcjonalnie wybierz znak plus (+), aby dodać jedną lub więcej wartości. Wyniki zapytania są ograniczone do rekordów z wartościami właściwości, które określisz. Jeśli wartości nie zostaną dodane, wszystkie rekordy są uwzględnione w zapytaniu. |
+| **Pierścień** |**> Dodatkowe opcje** |
 | Kolory |Kolor, który jest wyświetlany dla każdej z trzech właściwości top. Aby określić alternatywne kolory określone wartości właściwości, należy użyć *zaawansowane mapowanie kolorów*. |
-| Mapowanie kolorów zaawansowane |Wyświetla kolor, który reprezentuje określone wartości właściwości. Jeśli podaną wartość znajduje się w pierwszych trzech, alternatywny kolor zostanie wyświetlony standardowy koloru. Jeśli właściwość nie ma trzy najważniejsze, kolor nie jest wyświetlana. |
+| Zaawansowane mapowanie kolorów |Wyświetla kolor, który reprezentuje określone wartości właściwości. Jeśli podaną wartość znajduje się w pierwszych trzech, alternatywny kolor zostanie wyświetlony standardowy koloru. Jeśli właściwość nie ma trzy najważniejsze, kolor nie jest wyświetlana. |
 | **Zaawansowane** |**> Weryfikacja przepływu danych** |
 | Enabled (Włączony) |Wybierz ten link, jeśli Weryfikacja przepływu danych powinno być włączone dla fragmentu. Metoda ta umożliwia komunikat alternatywnego, jeśli dane są niedostępne. Podejście jest zwykle używane do udostępniania komunikat okresie tymczasowych, gdy widok jest zainstalowany i dane będą dostępne. |
 | Zapytanie |Zapytanie jest uruchomione, aby określić, czy dane są dostępne dla widoku. Jeśli zapytanie nie przynosi efektów, zamiast wartości główne zapytanie zostanie wyświetlony komunikat. |
@@ -169,7 +170,7 @@ Ten Kafelek jest zarówno linia, wykres ten przedstawia wielu serii z dziennika 
 | **Drugi wykresu** | |
 | Legenda |Tekst, który jest wyświetlany w obszarze objaśnienia drugi serii. |
 | Kolor |Kolor, który jest używany dla kolumn w drugiej serii. |
-| Wykres zapytania |Zapytanie, do którego jest uruchamiany drugi serii. Liczba rekordów przez każdego interwału czasu jest reprezentowana przez kolumny wykresu. |
+| Zapytanie wykresu |Zapytanie, do którego jest uruchamiany drugi serii. Liczba rekordów przez każdego interwału czasu jest reprezentowana przez kolumny wykresu. |
 | Operacja |Operacja, która jest wykonywana dla właściwości value Podsumowując jako pojedyncza wartość objaśnienia.<ul><li>Średnia: Średniej wartości ze wszystkich rekordów.</li><li>Liczba: Liczba wszystkich rekordów, które są zwracane przez zapytanie.</li><li>Ostatnio przykładowe: wartość ostatniego interwału, który znajduje się na wykresie.</li><li>Maksymalna liczba: Maksymalna wartość interwałów, które znajdują się na wykresie. |
 | **Zaawansowane** |**> Weryfikacja przepływu danych** |
 | Enabled (Włączony) |Wybierz ten link, jeśli Weryfikacja przepływu danych powinno być włączone dla fragmentu. Metoda ta umożliwia komunikat alternatywnego, jeśli dane są niedostępne. Podejście jest zwykle używane do udostępniania komunikat okresie tymczasowych, gdy widok jest zainstalowany i dane będą dostępne. |

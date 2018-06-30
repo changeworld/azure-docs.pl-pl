@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/05/2018
+ms.date: 05/17/2018
 ms.author: sethm
-ms.openlocfilehash: a581b7039a3631b7f1dc35816175242f892bd7dd
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9d2c38ac589e5120441daf972217e61738fd57a1
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29802791"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131359"
 ---
 # <a name="event-hubs-samples"></a>Przykłady centra zdarzeń 
 
@@ -56,7 +56,7 @@ Te przykłady pokazują różnych funkcji usługi Azure Event hubs, przeznaczony
 
 ### <a name="get-started-with-event-hubs"></a>Rozpoczynanie pracy z usługą Event Hubs 
 
-[Event Hubs wprowadzenie](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097) przykładzie przedstawiono podstawowe funkcje usługi Event hubs, takich jak tworzenie Centrum zdarzeń, wysyłania zdarzeń do Centrum zdarzeń i korzystanie ze zdarzeń przy użyciu [hosta procesora zdarzeń](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/).
+[Event Hubs wprowadzenie](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097) przykładzie przedstawiono podstawowe funkcje usługi Event hubs, takich jak tworzenie Centrum zdarzeń, wysyłania zdarzeń do Centrum zdarzeń i korzystanie ze zdarzeń przy użyciu [hosta procesora zdarzeń](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) .
 
 ### <a name="scale-out-event-processing"></a>Skalowanie przetwarzania zdarzeń 
 

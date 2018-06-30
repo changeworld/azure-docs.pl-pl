@@ -3,21 +3,22 @@ title: Automatyzowanie procesów Analiza dzienników Azure z Flow firmy Microsof
 description: Dowiedz się, jak można użyć Microsoft Flow można szybko zautomatyzować powtarzalnych procesów za pomocą łącznika usługi Analiza dzienników Azure.
 services: log-analytics
 documentationcenter: ''
-author: CFreemanwa
+author: mgoedtel
 manager: carmonm
 ms.service: log-analytics
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
-ms.openlocfilehash: 9884b97aad8f022e6bc20b2a630ccdd07ebc64db
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.component: na
+ms.openlocfilehash: 21cf7cf3d12902b02fcbf650a1623e78004d28b4
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2017
-ms.locfileid: "23889508"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131704"
 ---
 # <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>Automatyzacji procesów analizy dzienników przy użyciu łącznika dla Flow firmy Microsoft
 [Microsoft Flow](https://ms.flow.microsoft.com) służy do tworzenia automatycznych przepływów pracy za pomocą setki akcje dla różnych usług. Dane wyjściowe z jedną akcję może służyć jako dane wejściowe do innego pozwala na tworzenie integrację różnych usług.  Łącznik usługi Analiza dzienników Azure dla programu Microsoft Flow pozwalają na tworzenie przepływów pracy, które zawierają dane pobierane przez dziennik wyszukiwania analizy dzienników.
@@ -76,7 +77,7 @@ Samouczek, w tym artykule przedstawiono sposób tworzenia przepływu, który aut
 3. Po zakończeniu przepływu, Sprawdź pocztę adresata, który można określić.  Powinna zostać odebrana poczty z treścią podobny do następującego:<br><br>![Przykładowej wiadomości e-mail](media/log-analytics-flow-tutorial/flow08.png)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o [Zaloguj wyszukiwania analizy dzienników](log-analytics-log-search-new.md).
 - Dowiedz się więcej o [Microsoft Flow](https://ms.flow.microsoft.com).

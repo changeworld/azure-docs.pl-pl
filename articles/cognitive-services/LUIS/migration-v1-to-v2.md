@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: v-geberr
-ms.openlocfilehash: 060baa6578f8a31234a1a667e2d591b92c39a06f
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 45b6c2eda77668616a7e49ecd5ea2715af3cd3ce
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264288"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111590"
 ---
 # <a name="api-v2-migration-guide"></a>Przewodnik migracji interfejsu API w wersji 2
 Wersja 1 [punktu końcowego](https://aka.ms/v1-endpoint-api-docs) i [tworzenia](https://aka.ms/v1-authoring-api-docs) zostaną wycofane interfejsów API. Użyj tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do wersji 2 [punktu końcowego](https://aka.ms/luis-endpoint-apis) i [tworzenia](https://aka.ms/luis-authoring-apis) interfejsów API. 
@@ -104,14 +104,14 @@ odpowiedź sukcesu punktu końcowego v2:
 ```
 
 ## <a name="key-management-no-longer-in-api"></a>Zarządzanie kluczami nie jest już w interfejsie API
-Klucz subskrypcji interfejsów API są przestarzałe, zwracając 410 GONE.
+Klucz punktu końcowego subskrypcji interfejsy API są przestarzałe, zwracając 410 GONE.
 
 | wersja | trasa |
 |--|--|
 |1|/Luis/V1.0/prog/Subscriptions|
 |1|/ luis/v1.0/prog/subscriptions/{subscriptionKey}|
 
-Azure [klucze subskrypcji](luis-how-to-azure-subscription.md) są generowane w portalu Azure. Przypisz klucz do aplikacji LUIS na **[publikowania](manage-keys.md)** strony. Nie trzeba znać rzeczywistej wartości klucza. LUIS używa Nazwa subskrypcji, aby przypisania. 
+Azure [klucze punktu końcowego](luis-how-to-azure-subscription.md) są generowane w portalu Azure. Przypisz klucz do aplikacji LUIS na **[publikowania](manage-keys.md)** strony. Nie trzeba znać rzeczywistej wartości klucza. LUIS używa Nazwa subskrypcji, aby przypisania. 
 
 ## <a name="new-versioning-route"></a>Nową trasę kontroli wersji
 V2 model jest teraz zawarta w [wersji](luis-how-to-manage-versions.md). Nazwa wersji jest 10 znaków w trasie. Wersja domyślna to "0,1".
@@ -146,7 +146,7 @@ LUIS sugeruje zniesławiających z istniejących [zniesławiających punktu koń
 ## <a name="create-app-from-prebuilt-domains"></a>Tworzenie aplikacji z domen wbudowane
 [Wbudowane domen](luis-how-to-use-prebuilt-domains.md) Podaj modelu domeny wstępnie zdefiniowane. Wbudowane domeny pozwala szybko utworzyć aplikację LUIS dla typowych domen. Ten interfejs API umożliwia tworzenie nowej aplikacji na podstawie wbudowane domeny. Odpowiedź jest nowy identyfikator aplikacji.
 
-|trasy v2|Zlecenie|
+|trasy v2|zlecenie|
 |--|--|
 |/Luis/API/v2.0/Apps/customprebuiltdomains  |GET, post|
 |/ luis/api/v2.0/apps/customprebuiltdomains/{culture}  |Pobierz|

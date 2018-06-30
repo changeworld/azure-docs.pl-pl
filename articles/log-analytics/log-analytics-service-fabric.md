@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: nini
-ms.openlocfilehash: 879c89d21aece120888dded49ca1b2c55677635e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.component: na
+ms.openlocfilehash: 282b610aeb75010108a63dafe037c09180a247a1
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31595059"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131688"
 ---
 # <a name="assess-azure-service-fabric-applications-and-micro-services-with-powershell"></a>Oceń sieć szkieletowa usług Azure, aplikacji i micro-services przy użyciu programu PowerShell
 > [!div class="op_single_selector"]
@@ -375,7 +376,7 @@ Kliknij przycisk **sieci szkieletowej usług** Kafelek, aby otworzyć pulpit naw
 
 W poniższej tabeli przedstawiono metody zbierania danych i inne szczegółowe informacje o jak dane są zbierane dla sieci szkieletowej usług:
 
-| Platformy | Bezpośrednie agenta | Agent programu Operations Manager | Azure Storage | Wymagane programu Operations Manager? | Danych agenta programu Operations Manager są wysyłane za pośrednictwem grupy zarządzania | Częstotliwość kolekcji |
+| Platformy | Agent bezpośredni | Agent programu Operations Manager | Azure Storage | Wymagane programu Operations Manager? | Danych agenta programu Operations Manager są wysyłane za pośrednictwem grupy zarządzania | Częstotliwość kolekcji |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |  |  | &#8226; |  |  |10 minut |
 

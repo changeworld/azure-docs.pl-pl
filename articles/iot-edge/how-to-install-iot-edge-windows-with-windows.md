@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 0ab70de83c36ec3048d9bbf74e5a315026f02b85
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 1ae51d948fdaa5654c59549d384b784f0e87dcc3
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37036738"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112623"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-windows-containers"></a>Zainstalować środowisko uruchomieniowe krawędzi IoT Azure w systemie Windows do użycia z kontenerami systemu Windows
 
@@ -89,15 +89,37 @@ Windows Registry Editor Version 5.00
 
 ## <a name="configure-the-azure-iot-edge-security-daemon"></a>Skonfiguruj demona zabezpieczeń krawędzi IoT Azure
 
-Demon można skonfigurować przy użyciu pliku konfiguracji w `C:\ProgramData\iotedge\config.yaml` urządzenie brzegowe można skonfigurować <!--[automatically via Device Provisioning Service][lnk-dps] or--> ręcznie przy użyciu [ciąg połączenia urządzenia][lnk-dcs].
+Demon można skonfigurować przy użyciu pliku konfiguracji w `C:\ProgramData\iotedge\config.yaml`.
 
-W przypadku ręcznej konfiguracji, wprowadź ciąg połączenia urządzenia w **inicjowania obsługi administracyjnej:** sekcji **config.yaml**
+Urządzenie brzegowe można skonfigurować ręcznie przy użyciu [ciąg połączenia urządzenia] [ lnk-dcs] lub [automatycznie za pomocą usługi inicjowania obsługi urządzeń] [ lnk-dps].
 
-```yaml
-provisioning:
-  source: "manual"
-  device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
-```
+* Konfiguracja ręczna, usuń znaczniki komentarza **ręczne** tryb obsługi administracyjnej. Zaktualizuj wartość **device_connection_string** ciągu połączenia z urządzenia IoT krawędzi.
+
+   ```yaml
+   provisioning:
+     source: "manual"
+     device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+  
+   # provisioning: 
+   #   source: "dps"
+   #   global_endpoint: "https://global.azure-devices-provisioning.net"
+   #   scope_id: "{scope_id}"
+   #   registration_id: "{registration_id}"
+   ```
+
+* Do automatycznego konfigurowania, usuń znaczniki komentarza **punktu dystrybucji** tryb obsługi administracyjnej. Zaktualizuj wartości **scope_id** i **registration_id** wartościami z wystąpienia punktu dystrybucji Centrum IoT i na urządzeniu IoT krawędzi z modułem TPM. 
+
+   ```yaml
+   # provisioning:
+   #   source: "manual"
+   #   device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+  
+   provisioning: 
+     source: "dps"
+     global_endpoint: "https://global.azure-devices-provisioning.net"
+     scope_id: "{scope_id}"
+     registration_id: "{registration_id}"
+   ```
 
 Pobierz nazwę krawędzi urządzeniami przy użyciu `hostname` poleceń w programie PowerShell i ustaw go jako wartość **hostname:** w yaml programu configuration. Na przykład:
 
@@ -158,6 +180,8 @@ Start-Service iotedge
 
 ## <a name="verify-successful-installation"></a>Sprawdź pomyślnej instalacji
 
+Jeśli używasz **ręcznej konfiguracji** kroki opisane w poprzedniej sekcji, środowisko uruchomieniowe krawędzi IoT powinna być pomyślnie zainicjowane i działają na urządzeniu. Jeśli używasz **automatycznej konfiguracji** kroków, a następnie należy wykonać dodatkowe kroki, aby środowiska uruchomieniowego można zarejestrować urządzenia z Centrum IoT w Twoim imieniu. Dalsze czynności, zobacz [tworzenia i udostępniania symulowane urządzenie brzegowe modułu TPM w systemie Windows](how-to-auto-provision-simulated-device-windows.md#create-a-tpm-environment-variable).
+
 Można sprawdzić stanu usługi IoT krawędzi przez: 
 
 ```powershell
@@ -193,8 +217,8 @@ Jeśli masz problemy ze środowiskiem uruchomieniowym krawędzi poprawnie, insta
 
 <!-- Links -->
 [lnk-docker-config]: https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers
-[lnk-dcs]: ../iot-hub/quickstart-send-telemetry-dotnet.md#register-a-device
-[lnk-dps]: how-to-simulate-dps-tpm.md
+[lnk-dcs]: how-to-register-device-portal.md
+[lnk-dps]: how-to-auto-provision-simulated-device-windows.md
 [lnk-oci]: https://www.opencontainers.org/
 [lnk-moby]: https://mobyproject.org/
 [lnk-trouble]: troubleshoot.md

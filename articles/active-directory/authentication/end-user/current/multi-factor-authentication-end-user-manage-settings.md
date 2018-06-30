@@ -16,15 +16,15 @@ ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: lizross
 ms.custom: end-user
-ms.openlocfilehash: 25a51cf534afaabd6fd540d70152659fc2478e11
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 81c2323dd65ee18d42a231306840eeb65bd09313
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/29/2018
-ms.locfileid: "37102609"
+ms.locfileid: "37127462"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>Zarządzanie ustawieniami na potrzeby weryfikacji dwuetapowej
-W tym artykule odpowiedzi na pytania o tym, jak można zaktualizować ustawień uwierzytelnianie dwuetapowe weryfikacji lub Multi-Factor. Jeśli występują problemy dotyczące logowania do konta, dotyczą [wystąpił problem w trakcie weryfikacji dwuetapowej](../../../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-troubleshoot.md) dla pomocy w rozwiązywaniu problemów.
+W tym artykule odpowiedzi na pytania o tym, jak można zaktualizować ustawień uwierzytelnianie dwuetapowe weryfikacji lub Multi-Factor. Jeśli występują problemy dotyczące logowania do konta, dotyczą [wystąpił problem w trakcie weryfikacji dwuetapowej](multi-factor-authentication-end-user-troubleshoot.md) dla pomocy w rozwiązywaniu problemów.
 
 ## <a name="where-to-find-the-settings-page"></a>Gdzie można znaleźć na stronie ustawień
 W zależności od tego, jak firma skonfigurowane uwierzytelnianie wieloskładnikowe Azure istnieje kilka miejsc, w którym można zmienić ustawienia, takie jak numer telefonu.
@@ -55,7 +55,7 @@ Jeśli kliknięcie tego łącza nie działa, możesz również pobrać do **doda
 Należy skonfigurować numer telefonu uwierzytelniania dodatkowego.  Ponieważ sieci głównego numeru telefonu i aplikacji mobilnej prawdopodobnie znajdują się w tej samej telefonu, numeru telefonu dodatkowej jest jedynym sposobem można wrócić do konta Jeśli telefon zostanie utracony lub skradziony.
 
 > [!NOTE]
-> Jeśli nie mają dostęp do sieci głównego numeru telefonu i potrzebujesz pomocy, uzyskiwanie w do swojego konta, zobacz [wystąpił problem w trakcie weryfikacji dwuetapowej](../../../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-troubleshoot.md) artykułu, aby uzyskać dalszą pomoc.  
+> Jeśli nie mają dostęp do sieci głównego numeru telefonu i potrzebujesz pomocy, uzyskiwanie w do swojego konta, zobacz [wystąpił problem w trakcie weryfikacji dwuetapowej](multi-factor-authentication-end-user-troubleshoot.md) artykułu, aby uzyskać dalszą pomoc.  
 
 **Aby zmienić numer telefonu głównej:**  
 
@@ -80,5 +80,5 @@ W zależności od ustawienia organizacji może być stwierdzający, pole wyboru 
 Odinstaluj aplikację z urządzenia lub zresetowania urządzenia, nie powoduje usunięcia aktywacji wewnętrznych. Aby uzyskać więcej informacji, zobacz [Microsoft Authenticator](../../../../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Uzyskać porady dotyczące rozwiązywania problemów i pomoc na temat [wystąpił problem w trakcie weryfikacji dwuetapowej](../../../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-troubleshoot.md)
+* Uzyskać porady dotyczące rozwiązywania problemów i pomoc na temat [wystąpił problem w trakcie weryfikacji dwuetapowej](multi-factor-authentication-end-user-troubleshoot.md)
 * Konfigurowanie [hasła aplikacji](../../../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-app-passwords.md) dla wszystkich aplikacji, które nie obsługują weryfikacji dwuetapowej.

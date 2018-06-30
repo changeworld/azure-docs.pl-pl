@@ -9,14 +9,14 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: search
-ms.date: 05/17/2018
+ms.date: 06/28/2018
 ms.author: HeidiSteen
-ms.openlocfilehash: 2e000628ebec393147328125a04d5d6f55afd3c6
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
-ms.translationtype: HT
+ms.openlocfilehash: b5cb60bf16a4c904c9a6060113eba8b4d3a671ef
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100491"
+ms.locfileid: "37112606"
 ---
 # <a name="azure-search-service-rest-api-version-2017-11-11-preview"></a>Wersja interfejsu api REST usługi Azure Search 2017-11-11-Preview
 W tym artykule opisano `api-version=2017-11-11-Preview` wersji usługi Azure Search interfejsu API REST, oferty eksperymentalną nie jeszcze ogólnie dostępna.

@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: de52521824c146f63fb16e2690e2a24167ae2efe
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e6b263c1eb9fe3b151f0a51b5da9a92b8ced4549
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333916"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109746"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Bezpieczny dostęp do konta bazy danych rozwiązania Cosmos Azure przy użyciu punktu końcowego usługi Azure Virtual Network
 
@@ -249,9 +249,9 @@ Aby dowiedzieć się więcej na temat NSG tagów, zobacz [tagi usługi sieci wir
 
 Te dwie funkcje uzupełniają do zapewnienia izolacji bazy danych Azure rozwiązania Cosmos zasoby i zabezpieczenia. Przy użyciu protokołu IP zapory zapewnia, że statyczne adresy IP dostęp do konta bazy danych Azure rozwiązania Cosmos.  
 
-### <a name="can-an-on-premise-devices-ip-address-that-is-connected-through-azure-virtual-network-gatewayvpn-or-express-route-gateway-access-azure-cosmos-db-account"></a>Adres IP urządzenia lokalnego, który jest połączony za pośrednictwem sieci wirtualnej Azure gateway(VPN) lub Express route bramy masz dostęp do konta platformy Azure DB rozwiązania Cosmos?  
+### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gatewayvpn-or-express-route-gateway-access-azure-cosmos-db-account"></a>Adres IP urządzenia lokalnego, który jest połączony za pośrednictwem sieci wirtualnej Azure gateway(VPN) lub Express route bramy masz dostęp do konta platformy Azure DB rozwiązania Cosmos?  
 
-Urządzenia lokalnego adresu IP lub zakres adresów IP powinien można dodać do listy statyczne adresy IP w celu uzyskania dostępu do konta bazy danych Azure rozwiązania Cosmos.  
+Adres IP lub zakres adresów IP lokalnego urządzenia powinien można dodać do listy statyczne adresy IP w celu uzyskania dostępu do konta bazy danych Azure rozwiązania Cosmos.  
 
 ### <a name="what-happens-if-you-delete-a-virtual-network-that-has-service-endpoint-setup-for-azure-cosmos-db"></a>Co się stanie, jeśli usuniesz siecią wirtualną, która ma ustawienia punktu końcowego usługi dla bazy danych rozwiązania Cosmos Azure?  
 

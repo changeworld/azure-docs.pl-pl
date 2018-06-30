@@ -3,7 +3,7 @@ title: Monitoruje stan replikacji usługi Active Directory z Azure Log Analytics
 description: Stan replikacji usługi Active Directory pakiet rozwiązania regularnie monitoruje środowiska usługi Active Directory dla wszelkie błędy replikacji.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: 1b988972-8e01-4f83-a7f4-87f62778f91d
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7707c4a1afdc42ef44a7b6f761ceb03b7e7da2f0
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.component: na
+ms.openlocfilehash: 0ccd457295584f871088bc20864ef103648f1654
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2018
-ms.locfileid: "29179338"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128728"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Monitoruje stan replikacji usługi Active Directory z analizy dzienników
 
@@ -31,7 +31,7 @@ Usługa Active Directory jest kluczowym elementem w środowisku INFORMATYCZNYM p
 Stan replikacji AD pakiet rozwiązania regularnie monitoruje środowiska usługi Active Directory dla wszelkie błędy replikacji.
 
 ## <a name="installing-and-configuring-the-solution"></a>Instalowanie i konfigurowanie rozwiązania
-Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązania.
+Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązanie.
 
 * Należy zainstalować agentów na kontrolerach domeny, które są członkami domeny, która ma zostać obliczone. Lub, musisz zainstalować agentów na serwerach członkowskich i konfigurowanie agentów na wysyłanie danych replikacji AD z analizą dzienników. Aby zrozumieć, jak połączyć się analizy dzienników z komputerów z systemem Windows, temacie [połączyć komputery do analizy dzienników](log-analytics-windows-agent.md). Jeśli kontroler domeny jest już częścią istniejącego środowiska System Center Operations Manager, który chcesz połączyć z analizą dzienników, zobacz [połączenie programu Operations Manager do analizy dzienników](log-analytics-om-agents.md).
 * Dodaj rozwiązanie stan replikacji usługi Active Directory do obszaru roboczego analizy dzienników przy użyciu procesu opisanego w [rozwiązań dodać analizy dzienników z galerii rozwiązań](log-analytics-add-solutions.md).  Nie są wymagane żadne dalsze czynności konfiguracyjne.
@@ -39,7 +39,7 @@ Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiąz
 ## <a name="ad-replication-status-data-collection-details"></a>Szczegóły kolekcji danych stanu replikacji usługi AD
 W poniższej tabeli przedstawiono metody zbierania danych i inne szczegółowe informacje o jak zbierane są dane, stan replikacji usługi AD.
 
-| Platformy | Bezpośrednie agenta | Agenta programu SCOM | Azure Storage | SCOM wymagane? | Dane agenta programu SCOM wysyłane za pośrednictwem grupy zarządzania | Częstotliwość kolekcji |
+| Platformy | Agent bezpośredni | Agenta programu SCOM | Azure Storage | SCOM wymagane? | Dane agenta programu SCOM wysyłane za pośrednictwem grupy zarządzania | Częstotliwość kolekcji |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |&#8226; |&#8226; |  |  |&#8226; |co pięć dni |
 
@@ -129,7 +129,7 @@ Odpowiedź: nie w tej chwili.
 Odpowiedź: nie można dodać tylko jednego kontrolera domeny. Jeśli masz wiele kontrolerów domeny w obszarze roboczym analizy dzienników, dane ze wszystkich z nich jest wysyłane do analizy dzienników.
 
 **Pytanie: nie chcę dodać wszystkie kontrolery domeny do mojego obszaru roboczego analizy dzienników. Można nadal korzystać z rozwiązania stan replikacji usługi AD?**
-Odpowiedź: tak. Można ustawić wartość klucza rejestru, aby ją włączyć. Zobacz [umożliwiające kontrolera domeny z systemem innym niż do przesyłania danych AD do analizy dzienników](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
+Odp. Tak. Można ustawić wartość klucza rejestru, aby ją włączyć. Zobacz [umożliwiające kontrolera domeny z systemem innym niż do przesyłania danych AD do analizy dzienników](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
 
 **Pytanie: co to jest nazwa procesu, który wykonuje zbierania danych?**
 A: AdvisorAssessment.exe

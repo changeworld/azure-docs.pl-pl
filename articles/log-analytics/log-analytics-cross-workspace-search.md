@@ -3,7 +3,7 @@ title: Wyszukiwanie w całym zasobów przy użyciu usługi Azure Log Analytics |
 description: W tym artykule opisano, jak można wykonać zapytanie względem zasobów z wielu obszarów roboczych i aplikacji usługi App Insights w ramach subskrypcji.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: magoedte
-ms.openlocfilehash: 52c3914cc1b51bf7c2a6d0fbf28dc0bf7756e749
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.component: na
+ms.openlocfilehash: a8d5465a2a9aaf9cf686a8e135a1f537cc60c6b5
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751449"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129255"
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Wyszukiwanie zasobów między dziennika w analizy dzienników  
 

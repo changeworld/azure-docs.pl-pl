@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
-ms.openlocfilehash: 9c4b16ec11d1990de687014c5385314f0e0c602a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: na
+ms.openlocfilehash: 47158d0c2b5a80ceae25b275836d45b63db50ff4
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30238396"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127046"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Azure Key Vault Analytics rozwiązania analizy dzienników
 
@@ -113,7 +114,7 @@ Rozwiązanie usługi Azure Key Vault analizuje rekordów, które mają typ **Key
 | httpStatusCode_d |Kod stanu HTTP zwracane przez żądanie (na przykład *200*) |
 | id_s |Unikatowy identyfikator żądania |
 | identity_claim_appid_g | Identyfikator GUID dla identyfikatora aplikacji |
-| OperationName |Nazwa operacji zgodnie z opisem w [rejestrowanie usługi Azure Key Vault](../key-vault/key-vault-logging.md) |
+| operationName |Nazwa operacji zgodnie z opisem w [rejestrowanie usługi Azure Key Vault](../key-vault/key-vault-logging.md) |
 | OperationVersion |Wersja interfejsu API REST żądanego przez klienta (na przykład *2015-06-01*) |
 | requestUri_s |Identyfikator URI żądania |
 | Zasób |Nazwa magazynu kluczy |

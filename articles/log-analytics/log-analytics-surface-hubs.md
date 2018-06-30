@@ -3,7 +3,7 @@ title: Monitorowanie urządzenia Surface Hub z Azure Log Analytics | Dokumentacj
 description: Rozwiązanie Surface Hub umożliwia śledzenie kondycji z urządzeń Surface Hub i zrozumieć, jak są one używane.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: 8b4e56bc-2d4f-4648-a236-16e9e732ebef
@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: magoedte
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 525b3ced979834a956f91ef8c6f647b659ca21f1
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.component: na
+ms.openlocfilehash: dfbcdce293d6d47267892487d0760410665af94a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2018
-ms.locfileid: "29179229"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130774"
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>Monitorowanie urządzeń Surface Hub z analizy dzienników śledzenia ich kondycję
 
@@ -31,7 +31,7 @@ W tym artykule opisano, jak używasz rozwiązania Surface Hub w analizy dziennik
 Każdy Surface Hub został zainstalowany program Microsoft Monitoring Agent. Jego przez agenta, czy użytkownik może wysyłać dane z Twojego Surface Hub analizy dzienników. Pliki dziennika są odczytywane z urządzeń Surface Hub i są następnie są wysyłane do analizy dzienników. Zagadnienia, takie jak serwery w trybie offline, Kalendarz nie synchronizuje lub jeśli nie może zalogować się do konta urządzeń Skype są wyświetlane na pulpicie nawigacyjnym Surface Hub w analizy dzienników. Przy użyciu danych na pulpicie nawigacyjnym, można zidentyfikować urządzenia nie są uruchomione lub są inne problemy i potencjalnie zastosować poprawki dotyczące wykrytych problemów.
 
 ## <a name="install-and-configure-the-solution"></a>Instalowanie i konfigurowanie rozwiązania
-Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązania. Aby zarządzać z urządzeń Surface Hub w analizy dzienników, będą potrzebne następujące czynności:
+Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązanie. Aby zarządzać z urządzeń Surface Hub w analizy dzienników, będą potrzebne następujące czynności:
 
 * A [subskrypcji analizy dzienników](https://azure.microsoft.com/pricing/details/log-analytics/) poziomu, która będzie obsługiwać liczbę urządzeń, które chcesz monitorować. Cennik usługi Analiza dzienników zmienia się w zależności od liczby urządzeń zarejestrowanych i ilość danych go procesów. Należy to uwzględnić podczas planowania wdrożenia Surface Hub.
 

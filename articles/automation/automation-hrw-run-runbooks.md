@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 32cc1a436521574917c8e52b2fa4e045d32a4f09
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: dcc77d9826d91c57dc15b1abed83c2b640e73906
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062578"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110705"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Uruchomione elementy runbook na hybrydowy proces roboczy elementu Runbook
 
@@ -77,7 +77,7 @@ Aby określić konto Uruchom jako dla grupy hybrydowych procesów roboczych, uż
 
 ### <a name="automation-run-as-account"></a>Konto Uruchom jako automatyzacji
 
-W ramach procesu kompilacji automatycznego wdrażania zasobów na platformie Azure mogą wymagać dostępu do lokalnego systemów do obsługi zadań lub zestaw kroków w sekwencji wdrożenia. Do obsługi uwierzytelniania przy użyciu konta Uruchom jako platformy Azure, należy zainstalować certyfikat konta Uruchom jako.
+W ramach procesu kompilacji automatycznego wdrażania zasobów na platformie Azure mogą wymagać dostępu do systemów lokalnych do obsługi zadań lub zestaw kroków w sekwencji wdrożenia. Do obsługi uwierzytelniania przy użyciu konta Uruchom jako platformy Azure, należy zainstalować certyfikat konta Uruchom jako.
 
 Następujący element runbook programu PowerShell *RunAsCertificateToHybridWorker eksportu*, umożliwia wyeksportowanie certyfikatu uruchom jako z konta usługi Automatyzacja Azure i pliki do pobrania i zaimportowanie go do magazynu certyfikatów komputera lokalnego na hybrydowego proces roboczy podłączony do tego samego konta. Po ukończeniu tego kroku sprawdza to, czy Proces roboczy może pomyślnie wykonać uwierzytelnienia na platformie Azure przy użyciu konta Uruchom jako.
 

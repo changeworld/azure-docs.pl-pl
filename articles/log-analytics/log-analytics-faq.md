@@ -3,7 +3,7 @@ title: Zaloguj się Analytics — często zadawane pytania | Dokumentacja firmy 
 description: Odpowiedzi na często zadawane pytania dotyczące usługi Analiza dzienników Azure.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ad536ff7-2c60-4850-a46d-230bc9e1ab45
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 9d34c06461ea5f264f762494d93d76f1dc1bcb3e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.component: na
+ms.openlocfilehash: eb1a60ff533e9e24f3dc80057129da47a2d9a726
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221547"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128534"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics — często zadawane pytania
 Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące analizy dzienników platformy Microsoft Azure. Jeśli masz dodatkowe pytania dotyczące analizy dzienników, przejdź do [forum dyskusyjne](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) i opublikuj swoje pytania. Po zadawane pytania możemy dodać ją do tego artykułu, aby można je znaleźć szybkie i łatwe.
@@ -79,13 +80,13 @@ Odpowiedź: wykonaj kroki opisane w [Utwórz nowy alert dziennika](../monitoring
 
 Podczas tworzenia alertu dla po zatrzymaniu zbierania danych należy skonfigurować:
 
-- **Zdefiniuj warunek alertu** określić obszaru roboczego analizy dzienników jako element docelowy zasobów.
-- **Kryteria alertu** , podaj następujące informacje:
+- **Zdefiniuj warunek alertu** — określ obszar roboczy usługi Log Analytics jako element docelowy zasobu.
+- **Kryteria alertu** — określ następujące informacje:
    - **Nazwa sygnału** wybierz **wyszukiwania dziennika niestandardowego**.
    - **Zapytanie wyszukiwania** na `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
-   - **Alert logiki** jest **na podstawie** *liczba wyników* i **warunku** jest *większa niż* **wartości progowej**  z *0*
+   - **Alert logiki** **opiera się na** *liczbie wyników*, a **warunek** jest *większy niż*  **próg**  wynoszący *0*
    - **Okres czasu** z *30* minut i **Alert częstotliwości** do każdego *10* minut
-- **Zdefiniuj szczegóły alertu** , podaj następujące informacje:
+- **Zdefiniuj szczegóły alertu** — określ następujące informacje:
    - **Nazwa** do *zatrzymać zbieranie danych*
    - **Ważność** na *Ostrzeżenie*
 

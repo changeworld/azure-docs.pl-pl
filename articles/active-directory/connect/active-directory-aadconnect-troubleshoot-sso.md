@@ -2,25 +2,22 @@
 title: 'Azure Active Directory Connect: Rozwiązywanie problemów z bezproblemowe logowanie jednokrotne | Dokumentacja firmy Microsoft'
 description: W tym temacie opisano sposoby rozwiązywania problemów z usługi Azure Active Directory bezproblemowe logowanie jednokrotne
 services: active-directory
-keywords: Co to jest usługa Azure AD Connect, zainstaluj usługę Active Directory, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on
-documentationcenter: ''
-author: swkrish
+author: billmath
+ms.reviewer: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 06/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 205df47c36cb1d6925e232f06c0f1355c40ae973
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4df60668f6b9aa0afb2203fa59788c47e2ffaefb
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592232"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110893"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Rozwiązywanie problemów z usługi Azure Active Directory bezproblemowe logowanie jednokrotne
 
@@ -61,7 +58,7 @@ Przejdź do **usługi Azure Active Directory** > **logowania** w [Centrum admini
 
 |Kod błędu logowania|Przyczyna niepowodzenia logowania|Rozwiązanie
 | --- | --- | ---
-| 81001 | Bilet Kerberos użytkownika jest zbyt duży. | Zmniejsz członkostwa w grupach użytkownika i spróbuj ponownie.
+| 81001 | Bilet Kerberos użytkownika jest zbyt duży. | Zmniejsz liczbę członkostw użytkownika w grupach i spróbuj ponownie.
 | 81002 | Nie można sprawdzić poprawności biletów Kerberos użytkownika. | Zobacz [Rozwiązywanie problemów z listy kontrolnej](#troubleshooting-checklist).
 | 81003 | Nie można sprawdzić poprawności biletów Kerberos użytkownika. | Zobacz [Rozwiązywanie problemów z listy kontrolnej](#troubleshooting-checklist).
 | 81004 | Próba uwierzytelniania Kerberos nie powiodła się. | Zobacz [Rozwiązywanie problemów z listy kontrolnej](#troubleshooting-checklist).
@@ -84,6 +81,7 @@ Poniższa lista kontrolna umożliwia rozwiązywanie problemów bezproblemowe rej
 - Upewnij się, że konto użytkownika z lasu usługi Active Directory, gdzie zostały bezproblemowe logowanie Jednokrotne skonfigurowano.
 - Upewnij się, że urządzenie jest połączone z siecią firmową.
 - Upewnij się, że godzina na urządzeniu jest zsynchronizowany z czasem w usłudze Active Directory i kontrolery domeny i że są one w ciągu pięciu minut od siebie.
+- Upewnij się, że `AZUREADSSOACCT` konto komputera jest obecny i włączona w każdym lesie usługi AD, które bezproblemowe logowanie Jednokrotne włączone. 
 - Listy istniejące bilety Kerberos na urządzeniu za pomocą `klist` polecenia z wiersza polecenia. Upewnij się, że bilety wystawione dla `AZUREADSSOACCT` istnieją konta komputera. Bilety Kerberos użytkowników są zazwyczaj ważne 10 godzin. Konieczne może być różne ustawienia w usłudze Active Directory.
 - Jeśli wyłączona, a następnie ponownie włączona bezproblemowe logowanie Jednokrotne w swojej dzierżawy, użytkownicy nie otrzymywali pojedynczego środowisko logowania, dopóki ich pamięci podręcznej biletów Kerberos wygasły.
 - Wyczyść istniejące bilety Kerberos z urządzenia przy użyciu `klist purge` polecenia, a następnie spróbuj ponownie.

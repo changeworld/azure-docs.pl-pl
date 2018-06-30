@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: d8f3c0e4dec05b2ed968a3493a7cc560231e7331
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b57522933647c9d1d5518740d41b624b199a020e
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215695"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110562"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>Samouczek: Integracji Azure Active Directory z logowania jednokrotnego SAML zlewiska przez firmę Microsoft
 
@@ -43,7 +43,7 @@ Korzystać z serwera zlewiska Atlassian konta Microsoft Azure Active Directory, 
 Aby skonfigurować integrację usługi Azure AD z logowania jednokrotnego SAML zlewiska przez firmę Microsoft, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- Aplikacja serwera zlewiska zainstalowany na serwerze Windows 64-bitowych (lokalnie lub w chmurze infrastruktury IaaS)
+- Aplikacja serwera zlewiska zainstalowane na serwerze Windows 64-bitowych (lokalnie lub w chmurze infrastruktury IaaS)
 - Serwer zlewiska jest obsługujące protokół HTTPS
 - Należy pamiętać, że obsługiwane wersje dla wtyczki zlewiska są wymienione w poniższej sekcji.
 - Zlewiska serwer jest dostępny w Internecie, szczególnie do strony logowania usługi AD platformy Azure do uwierzytelniania i powinien otrzymywać token z usługi Azure AD
@@ -222,11 +222,11 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
  
 ### <a name="creating-a-confluence-saml-sso-by-microsoft-test-user"></a>Tworzenie logowania jednokrotnego SAML zlewiska przez użytkownika testowego firmy Microsoft
 
-Aby umożliwić użytkownikom usługi Azure AD zalogować się do zlewiska na serwerze lokalnym, ich muszą mieć przydzielone do logowania jednokrotnego SAML zlewiska przez firmę Microsoft. W przypadku logowania jednokrotnego SAML zlewiska przez firmę Microsoft inicjowania obsługi administracyjnej jest zadanie ręczne.
+Aby umożliwić użytkownikom usługi Azure AD zalogować się do serwera lokalnego zlewiska, ich muszą mieć przydzielone do logowania jednokrotnego SAML zlewiska przez firmę Microsoft. W przypadku logowania jednokrotnego SAML zlewiska przez firmę Microsoft inicjowania obsługi administracyjnej jest zadanie ręczne.
 
 **Aby udostępnić konta użytkownika, wykonaj następujące czynności:**
 
-1. Zaloguj się do Twojego zlewiska na lokalnym serwerze jako administrator.
+1. Zaloguj się do serwera lokalnego zlewiska jako administrator.
 
 2. Umieść kursor na koło zębate, a następnie kliknij przycisk **Zarządzanie użytkownikami**.
 

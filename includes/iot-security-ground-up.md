@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: c1ba6cb5b01c86c64fd6134c592829050bbb226d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: b3525f461d0662db5bf3677f7e981bbdbc663d50
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34307553"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37103647"
 ---
 # <a name="internet-of-things-security-from-the-ground-up"></a>Zabezpieczeń Internetu rzeczy od podstaw
 
@@ -33,7 +33,7 @@ Podana zabezpieczeń, ochrony prywatności, przezroczystość i dotyczy zgodnoś
 
 ## <a name="secure-infrastructure-from-the-ground-up"></a>Bezpiecznej infrastruktury od podstaw
 
-[Microsoft Cloud](https://www.microsoft.com/enterprise/microsoftcloud/default.aspx#fbid=WzBsRQi6aGk) infrastruktury obsługuje więcej niż 1 miliard klientów w krajach 127. Opierając się na firmy Microsoft long dekad środowisko tworzenia oprogramowania korporacyjnego i uruchamiania niektórych największy usług online na świecie, Microsoft Cloud zawiera wyższego poziomu zwiększonych zabezpieczeń, ochrony prywatności, zgodności i zagrożeń wskazówki środki zaradcze niż większość klientów może osiągnąć samodzielnie.
+[Microsoft Cloud](https://azure.microsoft.com) infrastruktury obsługuje więcej niż 1 miliard klientów w krajach 127. Opierając się na firmy Microsoft long dekad środowisko tworzenia oprogramowania korporacyjnego i uruchamiania niektórych największy usług online na świecie, Microsoft Cloud zawiera wyższego poziomu zwiększonych zabezpieczeń, ochrony prywatności, zgodności i zagrożeń wskazówki środki zaradcze niż większość klientów może osiągnąć samodzielnie.
 
 [Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl/) udostępnia proces obowiązkowe programowanie całej firmy, który osadza wymagania dotyczące zabezpieczeń w cyklu życia całego oprogramowania. Aby zapewnić, działań operacyjnych skorzystaj z tego samego poziomu rozwiązania w zakresie zabezpieczeń, SDL używa wytyczne dotyczące zabezpieczeń rygorystyczne, którego układ określa się w procesie operacyjnej gwarancji bezpieczeństwa (OSA) firmy Microsoft. Microsoft działa także w przypadku innych firm inspekcji przedsiębiorstwa bieżących weryfikacji, że spełnia on wymagania zgodności zobowiązań i Microsoft angażuje się w zakresie zabezpieczeń szerokie do tworzenia centrów doskonałości Microsoft jednostki, w tym Microsoft Security Response Center, a w Centrum ochrony przed złośliwym oprogramowaniem firmy Microsoft.
 

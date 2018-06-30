@@ -2,18 +2,18 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: virtual-machines
-author: rogara
+author: roygara
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 812f11a1ced3bac765441bf66f402abb4da4bc3f
-ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
+ms.openlocfilehash: d05d6d4a8bfc4450de4881e704b0e9f7b7b4716d
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/12/2018
-ms.locfileid: "35414573"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37138147"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Często zadawane pytania dotyczące dyski maszyny Wirtualnej Azure IaaS i zarządzane i niezarządzane — wersja premium
 
@@ -102,7 +102,7 @@ Klienci mogą migawki dysków zarządzanych, a następnie użyj migawki do tworz
 Tak, zarówno niezarządzane i zarządzane dyski są obsługiwane. Zalecamy dysków zarządzanych dla nowych obciążeń, a migracja bieżącego obciążeń do zarządzanych dysków.
 
 
-**Jeśli I Utwórz dysk 128 GB i dopiero potem zwiększyć rozmiar 130 GB I obciążymy dla następnego rozmiar dysku (512 GB)?**
+**Jeśli I Utwórz dysk 128 GB i dopiero potem zwiększyć rozmiar 130 GB I obciążymy dla następnego rozmiar dysku (256 GB)?**
 
 Tak.
 
@@ -209,11 +209,11 @@ Nie.
 
 **Jest szyfrowanie usługi Magazyn dostępna tylko w określonych regionach?**
 
-Nie. Jest dostępna we wszystkich regionach, gdzie są dostępne dyski zarządzanych. Dyski zarządzane jest dostępna we wszystkich regionach publicznego i Niemczech.
+Nie. Jest dostępna we wszystkich regionach, gdzie są dostępne dyski zarządzanych. Dyski zarządzane jest dostępna we wszystkich regionach publicznego i Niemczech. Jest ona również dostępna w Chinach, jednak tylko w przypadku zarządzany przez firmę Microsoft w klucze, nie klucze zarządzane przez klienta.
 
 **Jak można sprawdzić w przypadku zarządzanych dysku są szyfrowane?**
 
-Można ustalić czas utworzenia dysków zarządzanych w portalu Azure, interfejsu wiersza polecenia Azure i programu PowerShell. Gdy czas po 9 czerwca 2017 dysku są szyfrowane. 
+Można ustalić czas utworzenia dysków zarządzanych w portalu Azure, interfejsu wiersza polecenia Azure i programu PowerShell. Gdy czas po 9 czerwca 2017 dysku są szyfrowane.
 
 **Jak można zaszyfrować Moje istniejących dysków, które zostały utworzone przed 10 czerwca 2017 r.**
 

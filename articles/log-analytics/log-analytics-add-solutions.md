@@ -3,7 +3,7 @@ title: Dodawanie rozwiązania do zarządzania Azure Log Analytics | Dokumentacja
 description: Rozwiązania do zarządzania na platformie Azure są Kolekcja reguł nabycia logiki, wizualizacji i danych zawierających metryki przestawiać wokół obszaru określonego problemu.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: f029dd6d-58ae-42c5-ad27-e6cc92352b3b
@@ -11,20 +11,20 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: magoedte
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f6ec6dd46d28518baf6f105dd232a4b0e77a8c6f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.component: na
+ms.openlocfilehash: 0cffdbcaa128dce52758e4b618b93dd763961361
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29395466"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131479"
 ---
 # <a name="add-azure-log-analytics-management-solutions-to-your-workspace"></a>Dodawanie rozwiązania do zarządzania usługi Analiza dzienników Azure do swojego obszaru roboczego
 
-Dziennik rozwiązań do zarządzania Analytics to zbiór **logiki**, **wizualizacji**, i **reguły pozyskiwania danych** zawierających metryki przestawiać wokół obszaru określonego problemu. W tym artykule wymieniono obsługiwane przez analizy dzienników rozwiązania do zarządzania i przedstawiono sposób dodawania i usuwania dla obszaru roboczego przy użyciu portalu Azure.
+Dziennik rozwiązań do zarządzania Analytics to zbiór **logiki**, **wizualizacji**, i **reguły pozyskiwania danych** zawierających metryki przestawiać wokół określonego obszar problem. W tym artykule wymieniono obsługiwane przez analizy dzienników rozwiązania do zarządzania i przedstawiono sposób dodawania i usuwania dla obszaru roboczego przy użyciu portalu Azure.
 
 Zezwalaj na lepszy wgląd do rozwiązania do zarządzania:
 
@@ -56,11 +56,11 @@ Rozwiązania do zarządzania można zainstalować z portalu Azure marketplace, k
 7. W bloku *nazwy rozwiązania do zarządzania* wybierz obszar roboczy, który chcesz skojarzyć z rozwiązaniem do zarządzania.
 8. Opcjonalnie można zmienić ustawienia obszaru roboczego dla subskrypcji platformy Azure, grupy zasobów i lokalizacji. Można również wybrać **opcje automatyzacji**. Kliknij przycisk **Utwórz**.  
     ![obszar roboczy rozwiązania](./media/log-analytics-add-solutions/solution-workspace.png)  
-9. Aby rozpocząć korzystanie z rozwiązania do zarządzania, które zostały dodane do obszaru roboczego, przejdź do **analizy dzienników** > **subskrypcje** > ***nazwa obszaru roboczego*** > **omówienie**. Zostanie wyświetlony nowy Kafelek rozwiązania do zarządzania. Kliknij Kafelek, aby go otworzyć i uruchomić za pomocą rozwiązania, po zebraniu danych dla rozwiązania.
+9. Aby rozpocząć korzystanie z rozwiązania do zarządzania, które zostały dodane do obszaru roboczego, przejdź do **analizy dzienników** > **subskrypcje** > ***nazwa obszaru roboczego***  >  **Omówienie**. Zostanie wyświetlony nowy Kafelek rozwiązania do zarządzania. Kliknij Kafelek, aby go otworzyć i uruchomić za pomocą rozwiązania, po zebraniu danych dla rozwiązania.
 
 ## <a name="remove-a-management-solution"></a>Usuń rozwiązanie do zarządzania
 
-1. W [portalu Azure](https://portal.azure.com), przejdź do **analizy dzienników** > **subskrypcje** > ***nazwa obszaru roboczego*** , a następnie w ***nazwa obszaru roboczego*** bloku, kliknij przycisk **rozwiązań**.
+1. W [portalu Azure](https://portal.azure.com), przejdź do **analizy dzienników** > **subskrypcje** > ***nazwa obszaru roboczego*** i następnie w ***nazwa obszaru roboczego*** bloku, kliknij przycisk **rozwiązań**.
 2. Na liście rozwiązań do zarządzania wybierz rozwiązanie, które chcesz usunąć.
 3. W bloku rozwiązania dla obszaru roboczego kliknij **usunąć**.  
     ![Usuwanie rozwiązania](./media/log-analytics-add-solutions/solution-delete.png)  
@@ -88,7 +88,7 @@ Wszystkie rozwiązania w poniższej tabeli są dostępne z poziomu portalu Azure
 |[Tworzenie kopii zapasowych](../backup/backup-introduction-to-azure-backup.md)                                                                                 | <ul><li>Wgląd w dane i analizy</li></ul>                                   | Bezpłatna<br> Standardowa (Standard)<br> Premium&nbsp;(OMS)<br> Na&nbsp;GB&nbsp;(autonomiczna)<br> Na&nbsp;węzła&nbsp;(OMS)                                                                       | Wymaga klasycznego magazyn kopii zapasowych.<br> Nie można dodać z portalu Azure/portalu marketplace. |
 | [Pojemność i wydajność (wersja zapoznawcza)](log-analytics-capacity.md)                                                   | <ul><li>Szczegółowe informacje o&nbsp;i&nbsp;analityka</li><li>Log Analytics</li></ul>   | Bezpłatna<br> Standardowa (Standard)<br> Premium&nbsp;(OMS)<br> Na&nbsp;GB&nbsp;(autonomiczna)<br> Na&nbsp;węzła&nbsp;(OMS)   | |
 | [Śledzenie zmian](log-analytics-change-tracking.md)                                       | <ul><li>Automation and Control</li></ul>                                  | Bezpłatna<br> Na&nbsp;węzła&nbsp;(OMS)                                                                         | Wymaga obszaru roboczego analizy dzienników powiązać konto automatyzacji |
-| [Kontenery](log-analytics-containers.md)                                                 | <ul><li>Szczegółowe informacje o&nbsp;i&nbsp;analityka</li><li>Log Analytics</li></ul>   | Bezpłatna<br> Standardowa (Standard)<br> Premium&nbsp;(OMS)<br> Na&nbsp;GB&nbsp;(autonomiczna)<br> Na&nbsp;węzła&nbsp;(OMS)   | |
+| [Containers](log-analytics-containers.md)                                                 | <ul><li>Szczegółowe informacje o&nbsp;i&nbsp;analityka</li><li>Log Analytics</li></ul>   | Bezpłatna<br> Standardowa (Standard)<br> Premium&nbsp;(OMS)<br> Na&nbsp;GB&nbsp;(autonomiczna)<br> Na&nbsp;węzła&nbsp;(OMS)   | |
 | [Łącznik zarządzania usługami IT](log-analytics-itsmc-overview.md)                                                | <ul><li>Szczegółowe informacje o&nbsp;i&nbsp;analityka</li><li>Log Analytics</li></ul>   | Bezpłatna<br> Na&nbsp;węzła&nbsp;(OMS)     | |
 | HDInsight HBase monitorowania <br>(Wersja zapoznawcza)                                                  | <ul><li>Szczegółowe informacje o&nbsp;i&nbsp;analityka</li><li>Log Analytics</li></ul>   | Bezpłatna<br> Standardowa (Standard)<br> Premium&nbsp;(OMS)<br> Na&nbsp;GB&nbsp;(autonomiczna)<br> Na&nbsp;węzła&nbsp;(OMS)   | |
 | [Analiza usługi Key Vault](log-analytics-azure-key-vault.md)                   | <ul><li>Szczegółowe informacje o&nbsp;i&nbsp;analityka</li><li>Log Analytics</li></ul>   | Bezpłatna<br> Standardowa (Standard)<br> Premium&nbsp;(OMS)<br> Na&nbsp;GB&nbsp;(autonomiczna)<br> Na&nbsp;węzła&nbsp;(OMS)   | |
@@ -142,34 +142,34 @@ Agent Windows analizy dziennika i agent programu System Center Operations Manage
 | Activity Log Analytics | Azure |   |   |   |   |   | na powiadomienia |
 | Ocena usługi AD |Windows |&#8226; |&#8226; |  |  |&#8226; |7 dni |
 | Stan replikacji usługi AD |Windows |&#8226; |&#8226; |  |  |&#8226; |5 dni |
-| Kondycja agenta | System Windows i Linux | &#8226; | &#8226; |   |   | &#8226; | 1 minuta |
+| Kondycja agenta | System Windows i Linux | &#8226; | &#8226; |   |   | &#8226; | 1 min |
 | Zarządzania alertami (Nagios) |Linux |&#8226; |  |  |  |  |po przybyciu |
-| Zarządzania alertami (Zabbix) |Linux |&#8226; |  |  |  |  |1 minuta |
+| Zarządzania alertami (Zabbix) |Linux |&#8226; |  |  |  |  |1 min |
 | Zarządzania alertami (program Operations Manager) |Windows |  |&#8226; |  |&#8226; |&#8226; |3 minuty |
-| Łącznik aplikacji Insights (wersja zapoznawcza) | Azure |   |   |   |   |   | na powiadomienia |
-| Analiza bramy aplikacji Azure | Azure |   |   |   |   |   | na powiadomienia |
-| Grupy zabezpieczeń sieci Azure analityka | Azure |   |   |   |   |   | na powiadomienia |
-| Analiza Azure SQL (wersja zapoznawcza) |Windows |  |  |  |  |  | 10 minut |
+| Łącznik usługi Application Insights (wersja zapoznawcza) | Azure |   |   |   |   |   | na powiadomienia |
+| Analiza dotycząca usługi Azure Application Gateway | Azure |   |   |   |   |   | na powiadomienia |
+| Analiza sieciowej grupy zabezpieczeń platformy Azure | Azure |   |   |   |   |   | na powiadomienia |
+| Analiza usługi Azure SQL (wersja zapoznawcza) |Windows |  |  |  |  |  | 10 minut |
 | Zarządzanie pojemnością |Windows |&#8226; |&#8226; |  |  |&#8226; |po przybyciu |
-| Kontenery | System Windows i Linux | &#8226; | &#8226; |   |   |   | 3 minuty |
-| Analityka magazynu kluczy |Windows |  |  |  |  |  |na powiadomienia |
+| Containers | System Windows i Linux | &#8226; | &#8226; |   |   |   | 3 minuty |
+| Key Vault Analytics |Windows |  |  |  |  |  |na powiadomienia |
 | Monitor wydajności sieci | Windows | &#8226; | &#8226; |   |   |   | TCP uzgodnienia co 5 sekund, dane wysyłane co 3 minuty |
 | Analiza usługi Office 365 (wersja zapoznawcza) |Windows |  |  |  |  |  |na powiadomienia |
-| Usługa sieci szkieletowej analityka |Windows |  |  |&#8226; |  |  |5 minut |
+| Service Fabric Analytics |Windows |  |  |&#8226; |  |  |5 minut |
 | Mapa usługi | System Windows i Linux | &#8226; | &#8226; |   |   |   | 15 sekund |
 | Ocena serwera SQL |Windows |&#8226; |&#8226; |  |  |&#8226; |7 dni |
 | SurfaceHub |Windows |&#8226; |  |  |  |  |po przybyciu |
 | Do oceny programu System Center Operations Manager (wersja zapoznawcza) | Windows | &#8226; | &#8226; |   |   | &#8226; | 7 dni |
-| Uaktualnij Analytics (wersja zapoznawcza) | Windows | &#8226; |   |   |   |   | 2 dni |
-| VMware monitorowania (wersja zapoznawcza) | Linux | &#8226; |   |   |   |   | 3 minuty |
-| Dane o komunikacji sieciowej |Systemu Windows (2012 R2 / 8.1 lub nowszy) |&#8226; |&#8226; |  |  |  | 1 minuta |
+| Analiza uaktualnień (wersja zapoznawcza) | Windows | &#8226; |   |   |   |   | 2 dni |
+| Monitorowanie VMware (wersja zapoznawcza) | Linux | &#8226; |   |   |   |   | 3 minuty |
+| Dane o komunikacji sieciowej |Systemu Windows (2012 R2 / 8.1 lub nowszy) |&#8226; |&#8226; |  |  |  | 1 min |
 
 
 ### <a name="automation--control"></a>Automatyzacja i kontrola
 
 | Rozwiązanie do zarządzania | Platforma | Agent monitorowania firmy Microsoft | Agent programu Operations Manager | Azure Storage | Wymagane programu Operations Manager? | Danych agenta programu Operations Manager są wysyłane za pośrednictwem grupy zarządzania | Częstotliwość zbierania |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Automatyzacja hybrydowego procesu roboczego | Windows | &#8226; | &#8226; |   |   |   | Nie dotyczy |
+| Hybrydowy proces roboczy usługi Automation | Windows | &#8226; | &#8226; |   |   |   | Nie dotyczy |
 | Śledzenie zmian |Windows |&#8226; |&#8226; |  |  |&#8226; |co godzinę |
 | Śledzenie zmian |Linux |&#8226; |  |  |  |  |co godzinę |
 | Zarządzanie aktualizacjami | Windows |&#8226; |&#8226; |  |  |&#8226; |co najmniej 2 razy dziennie i 15 minut po zainstalowaniu aktualizacji |
@@ -178,7 +178,7 @@ Agent Windows analizy dziennika i agent programu System Center Operations Manage
 
 | Rozwiązanie do zarządzania | Platforma | Agent monitorowania firmy Microsoft | Agent programu Operations Manager | Azure Storage | Wymagane programu Operations Manager? | Danych agenta programu Operations Manager są wysyłane za pośrednictwem grupy zarządzania | Częstotliwość zbierania |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Ocena ochrony przed złośliwym oprogramowaniem |Windows |&#8226; |&#8226; |  |  |&#8226; |co godzinę |
+| Ocena oprogramowania chroniącego przed złośliwym kodem |Windows |&#8226; |&#8226; |  |  |&#8226; |co godzinę |
 | Bezpieczeństwo i inspekcji<sup>1</sup> | System Windows i Linux | częściowe | częściowe | częściowe |   | częściowe | różne |
 
 <sup>1</sup> rozwiązania zabezpieczenia i inspekcji mogą zbierać dzienniki z systemu Windows, programu Operations Manager i systemu Linux. Zobacz [źródeł danych](#data-sources) danych zbierania informacji o:
@@ -207,7 +207,7 @@ Agent Windows analizy dziennika i agent programu System Center Operations Manage
 | Dzienniki diagnostyczne platformy Azure |Windows |  |  |  |  |  |na powiadomienia |
 | Metryki diagnostycznych platformy Azure |Windows |  |  |  |  |  |na powiadomienia |
 | ETW |Windows |  |  |&#8226; |  |  |5 minut |
-| Dzienniki programu IIS |Windows |&#8226; |&#8226; |&#8226; |  |  |5 minut |
+| Dzienniki usług IIS |Windows |&#8226; |&#8226; |&#8226; |  |  |5 minut |
 | Liczniki wydajności |Windows |&#8226; |&#8226; |  |  |  |jako zaplanowane, co najmniej 10 sekund |
 | Liczniki wydajności |Linux |&#8226; |  |  |  |  |jako zaplanowane, co najmniej 10 sekund |
 | Dziennik systemu |Linux |&#8226; |  |  |  |  |z usługi Azure storage: 10 minut; od agenta: Przy nadejściu |

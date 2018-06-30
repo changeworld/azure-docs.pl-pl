@@ -3,7 +3,7 @@ title: Rozwiązanie Dane o komunikacji sieciowej w usłudze Log Analytics | Micr
 description: Dane o komunikacji sieciowej to skonsolidowane dane o sieci i wydajności pochodzące z komputerów z agentami OMS, w tym z agentami programu Operations Manager oraz agentami połączonymi z systemem Windows. Dane sieciowe są połączone z danymi Twojego dziennika, aby ułatwić korelowanie danych.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: fc3d7127-0baa-4772-858a-5ba995d1519b
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: magoedte
-ms.openlocfilehash: c86d1274ed46ff725c9db3093a8852fbae7f67ff
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.component: na
+ms.openlocfilehash: f44f47129a1d989422d25b7f0c5c55c1d229c07e
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011445"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129010"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Rozwiązanie Dane o komunikacji sieciowej 2.0 (wersja zapoznawcza) w usłudze Log Analytics
 
@@ -449,6 +450,6 @@ Rekord o typie _WireData_ jest tworzony dla każdego typu danych wejściowych. R
 | RemoteIPLatitude | Wartość szerokości geograficznej IP |
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Wyszukaj dzienniki](log-analytics-log-searches.md), aby wyświetlić szczegółowe rekordy wyszukiwania rozwiązania Dane o komunikacji sieciowej.

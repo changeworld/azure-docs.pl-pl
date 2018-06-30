@@ -2,19 +2,19 @@
 title: Zasobów na podstawie jednostek dtu w warstwie bazy danych SQL Azure ogranicza pojedynczych baz danych | Dokumentacja firmy Microsoft
 description: Na tej stronie opisano niektóre typowe limity zasobów na podstawie jednostek DTU dla pojedynczych baz danych w bazie danych SQL Azure.
 services: sql-database
-author: CarlRabeler
+author: sachinpMSFT
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 06/29/2018
 ms.author: carlrab
-ms.openlocfilehash: 5a7abb7d67de59ea326b5180cf94e3594cd06576
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 2d6660e1064959f2d04424ae1c3e9bc668231c92
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753391"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131325"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>Limity zasobów dla pojedynczych baz danych przy użyciu model kupna jednostek dtu w warstwie 
 
@@ -72,7 +72,7 @@ Dla pojedynczej bazy danych w poniższej tabeli przedstawiono dostępne zasoby d
 
 
 > [!IMPORTANT]
-> Więcej niż 1 TB pamięci masowej w warstwie Premium jest dostępna we wszystkich regionach, z wyjątkiem następujących: Wielka Brytania Północna, zachodnie środkowe stany, South2 Wielka Brytania, Chin Wschodnia, USDoDCentral, Niemcy środkowe, południowo-zachodni USDoDEast, USA wersji dla instytucji rządowych, nam wersji dla instytucji rządowych Południowa centralnej, Niemcy północno-wschodnie, Chiny Północno-wschodnie wersji dla instytucji rządowych Stanów Zjednoczonych. W pozostałych regionach maksymalna wielkość pamięci w warstwie Premium jest ograniczona do 1 TB. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> Więcej niż 1 TB pamięci masowej w warstwie Premium jest dostępna we wszystkich regionach, z wyjątkiem następujących: zachodnie środkowe stany, Chiny Wschodnia, USDoDCentral, Niemcy środkowe, południowo-zachodni USDoDEast, USA wersji dla instytucji rządowych, Niemcy północno-wschodnie, Północna Chiny USGovIowa. W pozostałych regionach maksymalna wielkość pamięci w warstwie Premium jest ograniczona do 1 TB. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 ## <a name="single-database-change-storage-size"></a>Pojedyncza baza danych: zmiana rozmiaru magazynu
 

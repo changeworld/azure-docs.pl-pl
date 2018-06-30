@@ -2,19 +2,19 @@
 title: Warstwy usługi bazy danych SQL Azure - jednostek dtu w warstwie | Dokumentacja firmy Microsoft
 description: Więcej informacji na temat warstwy usługi dla pojedynczej i baz danych puli zapewnienie poziomy wydajności i rozmiaru magazynu.
 services: sql-database
-author: CarlRabeler
+author: sachinpMSFT
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 06/28/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: cf17ec616819da94678f2ae4f0f0ca283f99f629
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: d6dc641123e2bf840940f6246245a89fdd792db5
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36750428"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131841"
 ---
 # <a name="choosing-a-dtu-based-service-tier-performance-level-and-storage-resources"></a>Wybieranie warstwy usług na podstawie jednostek dtu w warstwie, poziom wydajności i zasobów magazynowania 
 
@@ -60,7 +60,7 @@ Poziomy wydajności są wyrażane jako liczba jednostek DTU (Database Transactio
 ||||||
 
 > [!IMPORTANT]
-> Więcej niż 1 TB pamięci masowej w warstwie Premium jest dostępna we wszystkich regionach, z wyjątkiem następujących: Wielka Brytania Północna, zachodnie środkowe stany, South2 Wielka Brytania, Chin Wschodnia, USDoDCentral, Niemcy środkowe, południowo-zachodni USDoDEast, USA wersji dla instytucji rządowych, nam wersji dla instytucji rządowych Południowa centralnej, Niemcy północno-wschodnie, Chiny Północno-wschodnie wersji dla instytucji rządowych Stanów Zjednoczonych. W pozostałych regionach maksymalna wielkość pamięci w warstwie Premium jest ograniczona do 1 TB. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> Więcej niż 1 TB pamięci masowej w warstwie Premium jest dostępna we wszystkich regionach, z wyjątkiem następujących: zachodnie środkowe stany Chin Wschodnia, USDoDCentral, Niemcy środkowe, południowo-zachodni USDoDEast, USA wersji dla instytucji rządowych, USGov Iowa, Niemcy Northeast, Północna Chin. W pozostałych regionach maksymalna wielkość pamięci w warstwie Premium jest ograniczona do 1 TB. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 ## <a name="next-steps"></a>Kolejne kroki
 

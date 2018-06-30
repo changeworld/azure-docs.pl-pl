@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: 800ee1269556e7c2d56fbbf2b497c10509b5c78c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: na
+ms.openlocfilehash: d3c8807b7624e68ff55557922f97d51e24fc2c19
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23855222"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131807"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-oms-agent-for-linux-in-log-analytics"></a>Zbieranie niestandardowych źródeł danych JSON z agentem pakietu OMS dla systemu Linux w analizy dzienników
 Mogą być zbierane niestandardowych źródeł danych JSON do analizy dzienników dla systemu Linux przy użyciu agenta pakietu OMS.  Te źródła danych niestandardowych mogą być proste skrypty, takie jak zwracanie JSON [curl](https://curl.haxx.se/) lub jednego z [w FluentD 300 + wtyczek](http://www.fluentd.org/plugins/all). W tym artykule opisano konfiguracja wymagana dla tej kolekcji danych.
@@ -27,7 +28,7 @@ Mogą być zbierane niestandardowych źródeł danych JSON do analizy dziennikó
 > [!NOTE]
 > Agent pakietu OMS dla systemu Linux v1.1.0-217 + jest wymagana dla danych JSON niestandardowe
 
-## <a name="configuration"></a>Konfiguracja
+## <a name="configuration"></a>Konfigurowanie
 
 ### <a name="configure-input-plugin"></a>Skonfiguruj wtyczkę wejściowych
 
@@ -62,7 +63,7 @@ Plik konfiguracji dodany w obszarze `/etc/opt/microsoft/omsagent/<workspace id>/
 `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/exec-json.conf`
 
 ### <a name="configure-output-plugin"></a>Skonfiguruj wtyczkę danych wyjściowych 
-Dodaj następującą konfigurację wtyczki dane wyjściowe do konfiguracji głównego w `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` lub plik konfiguracji oddzielne wprowadzanych w`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`
+Dodaj następującą konfigurację wtyczki dane wyjściowe do konfiguracji głównego w `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` lub plik konfiguracji oddzielne wprowadzanych w `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`
 
 ```
 <match oms.api.**>
@@ -103,6 +104,6 @@ Zagnieżdżone dane JSON źródeł, są obsługiwane, ale są indeksowane na pod
 ```
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o [dziennika wyszukiwania](log-analytics-log-searches.md) analizować dane zebrane ze źródeł danych i rozwiązania. 
  

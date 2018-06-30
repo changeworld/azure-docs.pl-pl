@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: be79f0111cb569509cb05b24c99f86d4ca9534b0
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 54b2cab2ad6b1a22d35fcf0755f257063573e58b
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063929"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128626"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatyzację zasobów w centrum danych lub w chmurze przy użyciu hybrydowego procesu roboczego elementu Runbook
 
@@ -95,7 +95,7 @@ Aby usunąć grupę, należy najpierw usunąć hybrydowy proces roboczy elementu
 
 ### <a name="hybrid-worker-role"></a>Hybrydowe roli procesu roboczego
 
-Aby hybrydowy proces roboczy do nawiązania połączenia i zarejestruj analizy dzienników musi mieć dostęp do numer portu i adres URL, które zostały opisane w tej sekcji. Jest to dodatkowe [porty i adresy URL wymagane dla programu Microsoft Monitoring Agent](../log-analytics/log-analytics-agent-windows.md) do nawiązania połączenia analizy dzienników.
+Aby hybrydowy proces roboczy do nawiązania połączenia i zarejestruj analizy dzienników musi mieć dostęp do numer portu i adres URL, które zostały opisane w tej sekcji. Jest to dodatkowe [porty i adresy URL wymagane dla programu Microsoft Monitoring Agent](../log-analytics/log-analytics-agent-windows.md) do nawiązania połączenia analizy dzienników. 
 
 Jeśli używasz serwera proxy do komunikacji między agentem i usługą analizy dzienników, upewnij się, że odpowiednie zasoby są dostępne. Jeśli używasz zapory, aby ograniczyć dostęp do Internetu, należy skonfigurować zaporę tak, aby zezwolić na dostęp.
 
@@ -105,6 +105,8 @@ Następujące adresy URL i port są wymagane dla roli hybrydowy proces roboczy e
 * Globalny adres URL: *.azure-automation.net
 * Globalny adres URL Virginia wersji dla instytucji rządowych Stanów Zjednoczonych: *.azure automation.us
 * Usługa agenta: https://\<workspaceId\>.agentsvc.azure-automation.net
+
+Zaleca się używania adresów wymienionych podczas definiowania wyjątków. Adresy IP można pobrać [zakresów IP centrum danych Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653). Ten plik jest aktualizowana co tydzień i odzwierciedla aktualnie wdrożonych zakresy i nadchodzące zmiany zakresu adresów IP.
 
 Jeśli masz konto automatyzacji, który jest zdefiniowany dla konkretnego regionu, można ograniczyć komunikacji z tym regionalne centrum danych. Poniższa tabela zawiera rekord DNS dla każdego regionu:
 

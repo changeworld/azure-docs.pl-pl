@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: ed1a55c26ab1ef2aadb4906757205df0ca09d866
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7a0a5d4f1fbba5d7bd2813e8b9c300a37853e06c
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655509"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111480"
 ---
 # <a name="visualize-remote-monitoring-data-with-time-series-insights"></a>Wizualizuj zdalnych danych monitorowania z informacjami dotyczącymi serii czasu
 
@@ -55,7 +55,7 @@ Azure Time Series Insights to w pełni zarządzana usługa związana z analizą,
     | Ustawienie | Wartość |
     | ------- | ----- |
     | Nazwa środowiska | Poniższy zrzut ekranu używa nazwy **contorosrmtsi**. Po wykonaniu tego kroku, należy wybrać własną unikatową nazwę. |
-    | Subskrypcja | Wybierz subskrypcję platformy Azure w listy rozwijanej. |
+    | Subskrypcja | Z listy rozwijanej wybierz subskrypcję platformy Azure. |
     | Grupa zasobów | **Utwórz nowe**. Używamy nazwy **ContosoRM**. |
     | Lokalizacja | Używamy **wschodnie stany USA**. Utworzyć środowisko, w tym samym regionie co rozwiązanie monitorowania zdalnego. |
     | SKU |**S1** |
@@ -87,7 +87,7 @@ Utwórz nowe źródło zdarzeń nawiązać połączenia z Centrum IoT. Upewnij s
     | Źródło zdarzenia nazwy | Poniższy zrzut ekranu używa nazwy **contosorm iot koncentrator**. Po wykonaniu tego kroku, należy korzystać z własnej unikatowe nazwy. |
     | Element źródłowy | **IoT Hub** |
     | Opcja importu | **Użyj Centrum IoT z dostępnych subskrypcji** |
-    | Identyfikator subskrypcji | Wybierz subskrypcję platformy Azure w listy rozwijanej. |
+    | Identyfikator subskrypcji | Z listy rozwijanej wybierz subskrypcję platformy Azure. |
     | Nazwa centrum iot | **contosorma57a6**. Użyj nazwy Centrum IoT z rozwiązania do monitorowania zdalnego. |
     | Nazwa zasad Centrum iot | **iothubowner** upewnij się, używane są zasady właściciela. |
     | Klucz zasad Centrum iot | To pole jest wypełniane automatycznie. |
@@ -145,4 +145,4 @@ Eksplorator Insights serii czasu jest aplikacja sieci web, która pomaga tworzy�
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat Eksploruj i zapytania na danych w Eksploratorze czasu serii Insights, zobacz [Eksplorator Azure czas serii Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-dashboard.png).
+Aby dowiedzieć się więcej na temat Eksploruj i zapytania na danych w Eksploratorze czasu serii Insights, zobacz [Eksplorator Azure czas serii Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer).

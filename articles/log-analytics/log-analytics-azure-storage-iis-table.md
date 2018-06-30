@@ -3,7 +3,7 @@ title: Użyj magazynu obiektów blob dla usług IIS i tabeli magazynu dla zdarze
 description: Analiza dzienników mogą odczytać w dziennikach usług platformy Azure, które zapisać diagnostyki magazynu tabel lub dzienniki programu IIS zapisywane do magazynu obiektów blob.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: bf444752-ecc1-4306-9489-c29cb37d6045
@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 459ef90ca1d76bada6565bfefd7b4bd1086197d5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: na
+ms.openlocfilehash: 8f923cc081ea652c8e32d4109225044c70c8767d
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23855446"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128745"
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Użyj magazynu obiektów blob platformy Azure dla usług IIS i Azure magazyn tabel zdarzeń o analizy dzienników
 
@@ -61,12 +61,12 @@ Poniższa procedura umożliwia włączanie diagnostyki Azure na maszynie wirtual
 ### <a name="to-enable-azure-diagnostics-in-a-virtual-machine-with-the-azure-portal"></a>Aby włączyć diagnostyki Azure na maszynie wirtualnej z portalu Azure
 1. Zainstaluj agenta maszyny Wirtualnej, podczas tworzenia maszyny wirtualnej. Jeśli maszyna wirtualna już istnieje, sprawdź, czy Agent maszyny Wirtualnej jest już zainstalowany.
 
-   * W portalu Azure, przejdź do maszyny wirtualnej, wybierz opcję **konfiguracji opcjonalnej**, następnie **diagnostyki** i ustaw **stan** do **na**.
+   * W portalu Azure, przejdź do maszyny wirtualnej, wybierz opcję **konfiguracji opcjonalnej**, następnie **diagnostyki** i ustaw **stan** do **na** .
 
      Po zakończeniu maszyna wirtualna ma rozszerzenie Azure Diagnostics zainstalowany i uruchomiony. To rozszerzenie jest odpowiedzialny za zbierania danych diagnostycznych.
 2. Aby włączyć monitorowanie i skonfigurować rejestrowanie zdarzeń w istniejącej maszyny Wirtualnej. Można włączyć diagnostyki na poziomie maszyny Wirtualnej. Włącz diagnostykę, a następnie skonfiguruj rejestrowanie zdarzeń, wykonaj następujące czynności:
 
-   1. Wybierz maszynę Wirtualną.
+   1. Wybierz maszynę wirtualną.
    2. Kliknij przycisk **monitorowania**.
    3. Kliknij przycisk **diagnostyki**.
    4. Ustaw **stan** do **ON**.
@@ -123,7 +123,7 @@ Po zaktualizowanej konfiguracji diagnostyczne jest stosowany do usługi w chmurz
 ## <a name="use-the-azure-portal-to-collect-logs-from-azure-storage"></a>Zbieranie dzienników z usługi Azure Storage za pomocą portalu Azure
 Azure portal umożliwiają skonfigurowanie analizy dzienników do zbierania dzienników dla następujących usług platformy Azure:
 
-* Klastrów sieci szkieletowej usług
+* Klastry usługi Service Fabric
 * Maszyny wirtualne
 * Role sieć Web/proces roboczy.
 
@@ -192,7 +192,7 @@ Przejrzyj następującym przykładowym skrypcie, skopiuj go, w razie potrzeby, Z
 ```
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Zbieranie dzienników i metryki dla usługi Azure](log-analytics-azure-storage.md) obsługiwanych usług platformy Azure.
 * [Włącz rozwiązań](log-analytics-add-solutions.md) zapewnienie wglądu w dane.
 * [Użyj zapytań wyszukiwania](log-analytics-log-searches.md) do analizowania danych.

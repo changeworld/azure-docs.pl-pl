@@ -11,12 +11,12 @@ ms.workload: azure
 ms.topic: conceptual
 ms.date: 8/24/2017
 ms.author: ghogen
-ms.openlocfilehash: c9828504ab40a1e62c107f218fda024be6330c23
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: dd867462ce3a1841aa4e2e8943f2c2619d168b08
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061747"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112324"
 ---
 # <a name="browse-and-manage-storage-resources-by-using-server-explorer"></a>Przeglądanie i zarządzanie zasobami magazynu za pomocą Eksploratora serwera
 
@@ -219,7 +219,7 @@ Można dostosować zestaw jednostek, które są wyświetlane w tabeli, jeśli u�
 1. Po zakończeniu tworzenia zapytania, zamknij okno dialogowe. Tekst w formularzu, zapytania jest wyświetlana w polu tekstowym jako filtr usługi danych WCF.
 1. Aby uruchomić zapytanie, wybierz ikonę zielonym trójkątem.
 
-Można również filtrować jednostki dane wyświetlane przez projektanta tabel wpisanie ciąg filtru usługi danych WCF bezpośrednio w polu tekstowym filtru. Tego rodzaju ciągu jest podobna do klauzuli SQL WHERE, ale jest wysyłane do serwera jako żądanie HTTP. Aby uzyskać informacje dotyczące sposobu tworzenia ciągów filtru, zobacz [konstruowania ciągach filtru dla projektanta tabel](https://msdn.microsoft.com/library/azure/ff683669.aspx).
+Można również filtrować jednostki dane wyświetlane przez projektanta tabel wpisanie ciąg filtru usługi danych WCF bezpośrednio w polu tekstowym filtru. Tego rodzaju ciągu jest podobna do klauzuli SQL WHERE, ale jest wysyłane do serwera jako żądanie HTTP. Aby uzyskać informacje dotyczące sposobu tworzenia ciągów filtru, zobacz [Constructing filtru ciągów dla projektanta tabel](https://docs.microsoft.com/azure/vs-azure-tools-table-designer-construct-filter-strings).
 
 Na poniższej ilustracji przedstawiono przykład ciągu prawidłowym filtrem:
 

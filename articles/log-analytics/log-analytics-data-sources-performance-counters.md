@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: 20e145e4-2ace-4cd9-b252-71fb4f94099e
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/19/2017
 ms.author: magoedte
-ms.openlocfilehash: 0f7119f280f2eb51222ade2ea7984b560a02f667
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.component: na
+ms.openlocfilehash: b23c170e557d019abf2b9aab8edcb74728bc872d
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26783166"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128779"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>System Windows i Linux źródła danych wydajności w analizy dzienników
 Liczniki wydajności w systemie Windows i Linux zapewniają wgląd w wydajności składników sprzętu, systemów operacyjnych i aplikacji.  Analizy dzienników można zebrać liczników wydajności odstępach częste do analizy w pobliżu czasu rzeczywistego (NRT) oprócz agregowanie danych wydajności dłuższy okres analizy i raportowania.
@@ -37,7 +38,7 @@ Do liczników wydajności systemu Windows można wybrać określonego wystąpien
 | --- | --- |
 | \_Całkowita liczba |Całkowita liczba wszystkich wystąpień |
 | \* |Wszystkie wystąpienia |
-| (/ &#124; / var) |Dopasowuje wystąpienia o nazwie: / lub /var |
+| (/&#124;/var) |Dopasowuje wystąpienia o nazwie: / lub /var |
 
 ### <a name="windows-performance-counters"></a>Liczniki wydajności systemu Windows
 
@@ -49,7 +50,7 @@ Wykonaj tę procedurę, aby dodać nowy licznik wydajności systemu Windows do z
 
     Podczas zbierania liczników wydajności programu SQL Server z nazwanego wystąpienia, wszystkie o nazwie Nazwa wystąpienia liczników rozpoczyna się od *MSSQL$* i następuje nazwa wystąpienia.  Na przykład, zbieraj dane licznika Stosunek trafień w pamięci podręcznej dziennika dla wszystkich baz danych z obiektu wydajności bazy danych dla serwera SQL o nazwie wystąpienia INST2, określ `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`.
 
-2. Kliknij przycisk  **+**  lub naciśnij klawisz **Enter** można dodać licznika do listy.
+2. Kliknij przycisk **+** lub naciśnij klawisz **Enter** można dodać licznika do listy.
 3. Po dodaniu licznik używa domyślnie 10 sekund na jego **interwału próbkowania**.  Można zmienić to wyższej wartości do 1800 sekund (30 minut), aby zmniejszyć wymagania dotyczące magazynu danych wydajności zebranych.
 4. Po zakończeniu dodawania liczników kliknij **zapisać** przycisk w górnej części ekranu, aby zapisać konfigurację.
 
@@ -61,7 +62,7 @@ Wykonaj tę procedurę, aby dodać nowy licznik wydajności systemu Linux do zbi
 
 1. Domyślnie wszystkie zmiany konfiguracji są automatycznie przypisany do wszystkich agentów.  Dla agentów systemów Linux plik konfiguracji jest wysyłany do Fluentd modułów zbierających dane.  Jeśli chcesz zmodyfikować ten plik ręcznie na każdym agenta systemu Linux, usuń zaznaczenie pola *Zastosuj poniższą konfigurację na moich maszynach z systemem Linux* i postępuj zgodnie ze wskazówkami poniżej.
 2. Wpisz nazwę komputera w polu tekstowym w formacie *\counter obiektu (wystąpienia)*.  Po rozpoczęciu wprowadzania, są prezentowane z listą zgodnych wspólnej liczników.  Licznik albo można wybrać z listy lub wpisz własny.  
-3. Kliknij przycisk  **+**  lub naciśnij klawisz **Enter** można dodać do listy inne liczniki dla obiekt licznika.
+3. Kliknij przycisk **+** lub naciśnij klawisz **Enter** można dodać do listy inne liczniki dla obiekt licznika.
 4. Wszystkie liczniki dla obiekt używać tego samego **interwału próbkowania**.  Wartość domyślna to 10 sekund.  Możesz zmienić to wyższej wartości do 1800 sekund (30 minut), aby zmniejszyć wymagania dotyczące magazynu danych wydajności zebranych.
 5. Po zakończeniu dodawania liczników kliknij **zapisać** przycisk w górnej części ekranu, aby zapisać konfigurację.
 
@@ -84,8 +85,8 @@ W poniższej tabeli opisano parametry w tym elemencie.
 | Parametry | Opis |
 |:--|:--|
 | obiekt\_nazwy | Nazwa obiektu do kolekcji. |
-| wystąpienie\_wyrażeń regularnych |  A *wyrażenia regularnego* Definiowanie które wystąpienia zbierania. Wartość: `.*` określa wszystkich wystąpień. Aby zbierać metryki procesora tylko \_całkowita liczba wystąpień, można określić `_Total`. Aby zbierać metryki procesu tylko wystąpienia crond lub sshd, można określić: "(crond\|sshd) ". |
-| Licznik\_nazwa\_wyrażeń regularnych | A *wyrażenia regularnego* definiujący, które liczniki (dla obiekt) do zbierania. Aby zbierać wszystkie liczniki dla obiekt, podaj: `.*`. Aby zbierać tylko wymiany miejsca liczniki dla obiekt pamięci, na przykład można określić:`.+Swap.+` |
+| wystąpienie\_wyrażeń regularnych |  A *wyrażenia regularnego* Definiowanie które wystąpienia zbierania. Wartość: `.*` określa wszystkich wystąpień. Aby zbierać metryki procesora tylko \_całkowita liczba wystąpień, można określić `_Total`. Aby zbierać metryki procesu tylko wystąpienia crond lub sshd, można określić: `(crond\|sshd)`. |
+| Licznik\_nazwa\_wyrażeń regularnych | A *wyrażenia regularnego* definiujący, które liczniki (dla obiekt) do zbierania. Aby zbierać wszystkie liczniki dla obiekt, podaj: `.*`. Aby zbierać tylko wymiany miejsca liczniki dla obiekt pamięci, na przykład można określić: `.+Swap.+` |
 | interval | Częstotliwość pobierane liczniki obiektu. |
 
 
@@ -127,10 +128,10 @@ Poniższa tabela zawiera listę obiektów i liczników, które można określić
 | Dysk fizyczny | Średni Dysku w s/Transfer |
 | Dysk fizyczny | Średni Dysku w s/Zapis |
 | Dysk fizyczny | Bajty dysku fizycznego/s |
-| Przetwórz | Czas uprzywilejowany PCT |
-| Przetwórz | Czas użytkownika protokołu PCT |
-| Przetwórz | Używane KB pamięci |
-| Przetwórz | Wirtualnej pamięci współużytkowanej |
+| Proces | Czas uprzywilejowany PCT |
+| Proces | Czas użytkownika protokołu PCT |
+| Proces | Używane KB pamięci |
+| Proces | Wirtualnej pamięci współużytkowanej |
 | Procesor | Czas DPC (%) |
 | Procesor | Czas bezczynności (%) |
 | Procesor | Czas przerwań (%) |
@@ -210,16 +211,16 @@ Poniższa tabela zawiera przykłady różnych dziennika wyszukiwania, które pob
 | Zapytanie | Opis |
 |:--- |:--- |
 | Wydajności |Wszystkie dane dotyczące wydajności |
-| Wydajności &#124; gdy komputer == "Mój komputer" |Wszystkie dane dotyczące wydajności z określonego komputera |
+| Wydajności &#124; gdzie komputera == "Mój komputer" |Wszystkie dane dotyczące wydajności z określonego komputera |
 | Wydajności &#124; w przypadku, gdy CounterName == "Bieżąca długość kolejki dysku" |Wszystkie dane wydajności dla określonego licznika |
-| Wydajności &#124; Gdzie ObjectName == "Procesor" i CounterName == "% czasu procesora" i InstanceName == "_łącznie" &#124; Podsumuj AVGCPU = avg(Average) przez komputer |Średnie wykorzystanie procesora CPU na wszystkich komputerach |
+| Wydajności &#124; gdzie ObjectName == "Procesor" i CounterName == "% czasu procesora" i InstanceName == "_łącznie" &#124; Podsumuj AVGCPU = avg(Average) przez komputer |Średnie wykorzystanie procesora CPU na wszystkich komputerach |
 | Wydajności &#124; w przypadku, gdy CounterName == "% czasu procesora" &#124; Podsumuj AggregatedValue = max(Max) przez komputer |Maksymalne wykorzystanie procesora CPU na wszystkich komputerach |
-| Wydajności &#124; Gdzie ObjectName == "Dysk logiczny" i CounterName == "Bieżąca długość kolejki dysku" i komputer == "MyComputerName" &#124; Podsumuj AggregatedValue = avg(Average) przez InstanceName |Średnia długość kolejki dysku bieżącego we wszystkich wystąpieniach danego komputera |
+| Wydajności &#124; gdzie ObjectName == "Dysk logiczny" i CounterName == "Bieżąca długość kolejki dysku" i komputer == "MyComputerName" &#124; Podsumuj AggregatedValue = avg(Average) przez InstanceName |Średnia długość kolejki dysku bieżącego we wszystkich wystąpieniach danego komputera |
 | Wydajności &#124; w przypadku, gdy CounterName == "Na sekundę DiskTransfers" &#124; Podsumuj AggregatedValue = percentyl (średnia, 95) przez komputer |95 percentylu z transfery dyskowe/s na wszystkich komputerach |
 | Wydajności &#124; w przypadku, gdy CounterName == "% czasu procesora" i InstanceName == "_łącznie" &#124; Podsumuj AggregatedValue = avg(CounterValue) przez bin (TimeGenerated, 1 godz.), komputer |Średniej godzinowej użycia procesora CPU na wszystkich komputerach |
-| Wydajności &#124; gdy komputer == "Mój komputer" i CounterName startswith_cs "%" i InstanceName == "_łącznie" &#124; Podsumuj AggregatedValue = bin (TimeGenerated, 1 godz.), CounterName percentyl (równowartości 70) | Co godzinę percentyl 70 co licznika procent % dla określonego komputera |
-| Wydajności &#124; w przypadku, gdy CounterName == "% czasu procesora" i InstanceName == "_łącznie" i komputer == "Mój komputer" &#124; Podsumuj ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] = percentyl (równowartości, 75), ["max(CounterValue)"] = max(CounterValue) przez bin (TimeGenerated, 1 godz.), komputer |Co godzinę średnia, minimalne, maksymalne i percentyl 75 użycia procesora CPU dla określonego komputera |
-| Wydajności &#124; Gdzie ObjectName == "MSSQL$ INST2: bazy danych" i InstanceName == "główna" | Wszystkie dane dotyczące wydajności z obiektu wydajności bazy danych dla bazy danych master z nazwanego wystąpienia programu SQL Server INST2.  
+| Wydajności &#124; gdzie komputera == "Mój komputer" i CounterName startswith_cs "%" i InstanceName == "_łącznie" &#124; Podsumuj AggregatedValue = bin (TimeGenerated, 1 godz.), CounterName percentyl (równowartości 70) | Co godzinę percentyl 70 co licznika procent % dla określonego komputera |
+| Wydajności &#124; w przypadku, gdy CounterName == "% czasu procesora" i InstanceName == "_łącznie" i komputer == "Mój komputer" &#124; Podsumuj ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] percentyl (równowartości, 75), = ["max(CounterValue)"] = max(CounterValue) przez bin (TimeGenerated, 1 godz.), komputer |Co godzinę średnia, minimalne, maksymalne i percentyl 75 użycia procesora CPU dla określonego komputera |
+| Wydajności &#124; gdzie ObjectName == "MSSQL$ INST2: bazy danych" i InstanceName == "główna" | Wszystkie dane dotyczące wydajności z obiektu wydajności bazy danych dla bazy danych master z nazwanego wystąpienia programu SQL Server INST2.  
 
 
 

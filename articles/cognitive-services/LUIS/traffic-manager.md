@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 513d4395b1d3e631855c2f6e132d54331b3ddf8d
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 8c8228b13c972c65596f0389e2fdfde585f8a742
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266349"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110317"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Umożliwia zarządzanie przydziału punktu końcowego za pośrednictwem kluczy Menedżera ruchu Microsoft Azure
 Opis języka (LUIS) oferuje możliwość zwiększyć ten przydział żądania punktu końcowego po przekroczeniu przydziału jednego klucza. Jest to zrobić, tworząc więcej kluczy dla LUIS oraz dodanie ich do aplikacji LUIS na **publikowania** strony **zasobów i klucze** sekcji. 
@@ -48,13 +48,13 @@ New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
 
     ![Zrzut ekranu LUIS portal za pomocą dwóch kluczy LUIS na strony publikowania](./media/traffic-manager/luis-keys-in-luis.png)
 
-    Przykładowy adres URL w **punktu końcowego** kolumna używa żądanie GET z kluczem subskrypcji jako parametr zapytania. Skopiuj dwa klucze nowe adresy URL punktów końcowych. Są one używane w ramach konfiguracji Menedżera ruchu w dalszej części tego artykułu.
+    Przykładowy adres URL w **punktu końcowego** kolumna używa żądanie GET z kluczem punktu końcowego jako parametr zapytania. Skopiuj dwa klucze nowe adresy URL punktów końcowych. Są one używane w ramach konfiguracji Menedżera ruchu w dalszej części tego artykułu.
 
 ## <a name="manage-luis-endpoint-requests-across-keys-with-traffic-manager"></a>Zarządzaj żądaniami punktu końcowego LUIS między klucze Menedżera ruchu
 Menedżer ruchu tworzy nowy punkt dostępu DNS dla punktów końcowych. Nie działa jako brama lub serwer proxy, ale wyłącznie na poziomie DNS. W tym przykładzie nie zmienia żadnych rekordów DNS. Biblioteka DNS używa do komunikacji z usługą Traffic Manager można uzyskać właściwego punktu końcowego dla tego konkretnego żądania. _Każdy_ żądania przeznaczonych dla LUIS wymaga najpierw żądanie Menedżera ruchu, aby określić, które LUIS punktu końcowego. 
 
 ### <a name="polling-uses-luis-endpoint"></a>Sondowanie używa LUIS punktu końcowego
-Menedżer ruchu sonduje punkty końcowe okresowo, aby upewnić się, że punkt końcowy jest nadal dostępny. Adres URL Menedżera ruchu sondowania musi być dostępny z żądania GET i zwrócić 200. Adres URL punktu końcowego na **publikowania** strony robi to. Ponieważ każdy klucz subskrypcji ma inną trasę i parametrów ciągu zapytania, każdy klucz subskrypcji musi sondowania inną ścieżkę. Zawsze ankiety Traffic Manager kosztuje żądania limitu przydziału. Parametr ciągu zapytania **q** LUIS punktu końcowego jest utterance wysyłane do LUIS. Ten parametr, zamiast wysyłać utterance służy do dodawania sondowania Traffic Manager do dziennika punktu końcowego LUIS jako technika debugowania podczas pobierania usługi Traffic Manager skonfigurowane.
+Menedżer ruchu sonduje punkty końcowe okresowo, aby upewnić się, że punkt końcowy jest nadal dostępny. Adres URL Menedżera ruchu sondowania musi być dostępny z żądania GET i zwrócić 200. Adres URL punktu końcowego na **publikowania** strony robi to. Ponieważ każdy klucz punkt końcowy ma inną trasę i parametrów ciągu zapytania, klucz każdego punktu końcowego musi sondowania inną ścieżkę. Zawsze ankiety Traffic Manager kosztuje żądania limitu przydziału. Parametr ciągu zapytania **q** LUIS punktu końcowego jest utterance wysyłane do LUIS. Ten parametr, zamiast wysyłać utterance służy do dodawania sondowania Traffic Manager do dziennika punktu końcowego LUIS jako technika debugowania podczas pobierania usługi Traffic Manager skonfigurowane.
 
 Ponieważ każdy punkt końcowy LUIS musi mieć własny ścieżki, musi on własny profil Menedżera ruchu. Aby można było zarządzać w profilach, tworzenia [ _zagnieżdżonych_ Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-nested-profiles) architektury. Jeden profil nadrzędnego wskazuje profile elementów podrzędnych i zarządzanie ruchem między nimi.
 
@@ -64,11 +64,11 @@ Po skonfigurowaniu usługi Traffic Manager Pamiętaj, aby zmienić ścieżkę do
 Poniższe sekcje utworzyć dwa profile podrzędnych, jeden dla klucza LUIS Wschód i jeden dla klucza LUIS zachodnie. Następnie tworzony jest profil nadrzędne i podrzędne dwa profile są dodawane do profilu nadrzędnej. 
 
 ### <a name="create-the-east-us-traffic-manager-profile-with-powershell"></a>Tworzenie profilu Menedżera ruchu wschodnie stany USA przy użyciu programu PowerShell
-Aby utworzyć profil Menedżera ruchu wschodnie stany USA, istnieje kilka czynności: Tworzenie profilu, Dodaj punkt końcowy i ustaw punkt końcowy. Profil usługi Traffic Manager może mieć wiele punktów końcowych, ale każdy punkt końcowy ma taką samą ścieżkę weryfikacji. Ponieważ adresy URL punktów końcowych LUIS subskrypcji Wschodnią i zachodnią są różne z powodu klucza regionu i subskrypcji, każdy punkt końcowy LUIS musi mieć jeden punkt końcowy w profilu. 
+Aby utworzyć profil Menedżera ruchu wschodnie stany USA, istnieje kilka czynności: Tworzenie profilu, Dodaj punkt końcowy i ustaw punkt końcowy. Profil usługi Traffic Manager może mieć wiele punktów końcowych, ale każdy punkt końcowy ma taką samą ścieżkę weryfikacji. Ponieważ adresy URL punktów końcowych LUIS subskrypcji Wschodnią i zachodnią są różne z powodu klucza regionu i punktu końcowego, każdy punkt końcowy LUIS musi mieć jeden punkt końcowy w profilu. 
 
 1. Utwórz profil z **[AzureRmTrafficManagerProfile nowy](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager/new-azurermtrafficmanagerprofile?view=azurermps-6.2.0)** polecenia cmdlet
 
-    Użyj następującego polecenia cmdlet, aby utworzyć profil. Upewnij się zmienić `appIdLuis` i `subscriptionKeyLuis`. SubscriptionKey jest wschód nam LUIS klucza. Jeśli ścieżka jest niepoprawny, przy tym LUIS aplikacji identyfikator i subskrypcji klucz, sondowania Menedżera ruchu jest stan `degraded` ponieważ ruch zarządzania pomyślnie nie można żądać LUIS punktu końcowego. Upewnij się, że wartość `q` jest `traffic-manager-east` pozwala zobaczyć tę wartość w dziennikach LUIS punktu końcowego.
+    Użyj następującego polecenia cmdlet, aby utworzyć profil. Upewnij się zmienić `appIdLuis` i `subscriptionKeyLuis`. SubscriptionKey jest wschód nam LUIS klucza. Jeśli ścieżka jest niepoprawny, przy tym LUIS aplikacji identyfikator i punktu końcowego klucz, sondowania Menedżera ruchu jest stan `degraded` ponieważ ruch zarządzania pomyślnie nie można żądać LUIS punktu końcowego. Upewnij się, że wartość `q` jest `traffic-manager-east` pozwala zobaczyć tę wartość w dziennikach LUIS punktu końcowego.
 
     ```PowerShell
     $eastprofile = New-AzureRmTrafficManagerProfile -Name luis-profile-eastus -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-eastus -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/luis/v2.0/apps/<appID>?subscription-key=<subscriptionKey>&q=traffic-manager-east"
@@ -136,7 +136,7 @@ Aby utworzyć profil Menedżera ruchu zachodnie stany USA, wykonaj te same kroki
 
 1. Utwórz profil z **[AzureRmTrafficManagerProfile nowy](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/New-AzureRmTrafficManagerProfile?view=azurermps-6.2.0)** polecenia cmdlet
 
-    Użyj następującego polecenia cmdlet, aby utworzyć profil. Upewnij się zmienić `appIdLuis` i `subscriptionKeyLuis`. SubscriptionKey jest wschód nam LUIS klucza. Jeśli ścieżka nie jest poprawna, w tym aplikacji LUIS klucza identyfikator i subskrypcji, sondowania Menedżera ruchu jest stan `degraded` ponieważ ruch zarządzania pomyślnie nie można żądać LUIS punktu końcowego. Upewnij się, że wartość `q` jest `traffic-manager-west` pozwala zobaczyć tę wartość w dziennikach LUIS punktu końcowego.
+    Użyj następującego polecenia cmdlet, aby utworzyć profil. Upewnij się zmienić `appIdLuis` i `subscriptionKeyLuis`. SubscriptionKey jest wschód nam LUIS klucza. Jeśli ścieżka nie jest poprawna, w tym aplikacji LUIS klucza identyfikator i punktu końcowego, sondowania Menedżera ruchu jest stan `degraded` ponieważ ruch zarządzania pomyślnie nie można żądać LUIS punktu końcowego. Upewnij się, że wartość `q` jest `traffic-manager-west` pozwala zobaczyć tę wartość w dziennikach LUIS punktu końcowego.
 
     ```PowerShell
     $westprofile = New-AzureRmTrafficManagerProfile -Name luis-profile-westus -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-westus -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west"
@@ -152,7 +152,7 @@ Aby utworzyć profil Menedżera ruchu zachodnie stany USA, wykonaj te same kroki
     |-RelativeDnsName|Luis-dns-westus|Jest poddomeną usługi: luis-dns-westus.trafficmanager.net|
     |Wartość Ttl-|30|Interwał sondowania, 30 sekund|
     |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|Port i protokół LUIS jest protokołu HTTPS i 443|
-    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west`|Zastąp <appId> i <subscriptionKey> z własne wartości. Należy pamiętać, że ten klucz subskrypcji jest inny niż klucz subskrypcji Region Azji i Pacyfiku|
+    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west`|Zastąp <appId> i <subscriptionKey> z własne wartości. Należy pamiętać, że ten klucz punktu końcowego jest inny niż klucz punktu końcowego Region Azji i Pacyfiku|
     
     Pomyślne żądanie ma nie otrzymano odpowiedzi.
 
@@ -364,7 +364,7 @@ Aby zarządzać ruchem w obrębie punktów końcowych, trzeba Wstawianie wywoła
 
 
 ## <a name="clean-up"></a>Czyszczenie
-Usuń dwa klucze subskrypcji LUIS, trzy profile Menedżera ruchu i grupę zasobów, która zawiera te zasoby pięć. Można to zrobić w portalu Azure. Pięć zasoby zostaną usunięte z listy zasobów. Następnie usuń grupę zasobów. 
+Usuń dwa klucze punktu końcowego LUIS, trzy profile Menedżera ruchu i grupę zasobów, która zawiera te zasoby pięć. Można to zrobić w portalu Azure. Pięć zasoby zostaną usunięte z listy zasobów. Następnie usuń grupę zasobów. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

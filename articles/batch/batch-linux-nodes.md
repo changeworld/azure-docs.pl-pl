@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 06/01/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: abb822483253fc5fce0e76afc2628806fe4485d8
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: f3faa9e811216cc930354b76903519a66f3d3587
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801766"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128815"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Zapewnij węzły obliczeniowe systemu Linux w puli partii
 
-Partia zadań Azure służy do uruchamiania obciążeń obliczeniowych równoległe w przypadku maszyn wirtualnych zarówno systemu Windows, jak i Linux. W tym artykule szczegółowo przedstawiają, jak utworzyć pule węzłów obliczeniowych systemu Linux w usługa partia zadań za pomocą obu [Python partii] [ py_batch_package] i [partiami platformy .NET] [ api_net] bibliotek klienckich.
+Partia zadań Azure służy do uruchamiania obciążeń obliczeniowych równoległe w przypadku maszyn wirtualnych zarówno systemu Windows, jak i Linux. W tym artykule szczegółowo przedstawiają, jak utworzyć pule węzłów obliczeniowych systemu Linux w usługa partia zadań za pomocą obu [Python partii] [ py_batch_package] i [partiami platformy .NET] [ api_net]bibliotek klienckich.
 
 > [!NOTE]
 > Pakiety aplikacji są obsługiwane we wszystkich pulach usługi Batch utworzonych po 5 lipca 2017 r. W pulach usługi Batch utworzonych między 10 marca 2016 r. a 5 lipca 2017 r. są one obsługiwane tylko w przypadku, gdy pula została utworzona za pomocą konfiguracji usługi w chmurze. Pule usługi Batch utworzone przed 10 marca 2016 r. nie obsługują pakietów aplikacji. Aby uzyskać więcej informacji o używaniu pakietów aplikacji do wdrażania aplikacji w węzłach usługi Batch, zobacz temat [Deploy applications to compute nodes with Batch application packages (Wdrażanie aplikacji w węzłach obliczeniowych za pomocą pakietów aplikacji usługi Batch)](batch-application-packages.md).
@@ -220,8 +220,8 @@ W poniższej tabeli wymieniono Marketplace obrazy maszyny wirtualnej, które są
 | partia | Renderowanie windows2016 | Renderowanie | najnowsza | Batch.node.Windows amd64 |
 | Canonical | UbuntuServer | 16.04-LTS | najnowsza | batch.node.ubuntu 16.04 |
 | Canonical | UbuntuServer | 14.04.5-LTS | najnowsza | batch.node.ubuntu 14.04 |
-| Credativ | Debian | 9 | najnowsza | Batch.node.debian 9 |
-| Credativ | Debian | 8 | najnowsza | Batch.node.debian 8 |
+| credativ | Debian | 9 | najnowsza | Batch.node.debian 9 |
+| credativ | Debian | 8 | najnowsza | Batch.node.debian 8 |
 | microsoft-ads | linux-data-science-vm | linuxdsvm | najnowsza | Batch.node.centos 7 |
 | microsoft-ads | Standard danych nauki vm | Standard danych nauki vm | najnowsza | Batch.node.Windows amd64 |
 | Microsoft partii zadań azure | kontener centos | 7-4 | najnowsza | Batch.node.centos 7 |
@@ -328,16 +328,12 @@ W przypadku wdrożenia aplikacji węzły partii przy użyciu [pakietów aplikacj
 Więcej informacji na temat samouczek dotyczący sposobu pracy z partii przy użyciu języka Python, zapoznaj się z [Rozpoczynanie pracy z klientem Python usługi partia zadań Azure](batch-python-tutorial.md). Pomocnik jego [przykładowy kod] [ github_samples_pyclient] obejmuje funkcję Pomocnika `get_vm_config_for_distro`, który pokazuje innej techniki, aby uzyskać konfigurację maszyny wirtualnej.
 
 ### <a name="batch-python-code-samples"></a>Przykłady kodu Python partii
-[Przykłady kodu Python] [ github_samples_py] w [azure partii próbek] [ github_samples] repozytorium w usłudze GitHub zawierać skrypty, które opisano sposób wykonywania typowych operacji wsadowych, takie jak pula, zadania i tworzenia zadań. [README] [ github_py_readme] dołączony Python próbek zawiera szczegółowe informacje dotyczące sposobu zainstalowania wymaganych pakietów.
-
-### <a name="batch-forum"></a>Forum usługi Batch
-[Forum usługi partia zadań Azure] [ forum] w witrynie MSDN jest doskonałym miejscem do omówienia partii i zadać pytania dotyczące usługi. Odczyt przydatne "przypięte" ogłoszeń i opublikuj swoje pytania powstałych podczas tworzenia własnych rozwiązań partii.
+[Przykłady kodu Python] [ github_samples_py] w [azure partii próbek] [ github_samples] repozytorium w usłudze GitHub zawierać skrypty, które opisano sposób wykonania typowych operacji wsadowych, takie jak pula, zadania i tworzenia zadań. [README] [ github_py_readme] dołączony Python próbek zawiera szczegółowe informacje dotyczące sposobu zainstalowania wymaganych pakietów.
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_mgmt]: https://msdn.microsoft.com/library/azure/mt463120.aspx
 [api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
 [cloud_services_pricing]: https://azure.microsoft.com/pricing/details/cloud-services/
-[forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azurebatch
 [github_py_readme]: https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/README.md
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [github_samples_py]: https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch
@@ -349,14 +345,14 @@ Więcej informacji na temat samouczek dotyczący sposobu pracy z partii przy uż
 [net_list_skus]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.listnodeagentskus.aspx
 [net_pool_ops]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.aspx
 [net_ssh_key]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.computenodeuser.sshpublickey.aspx
-[nuget_batch_net]: https://www.nuget.org/packages/Azure.Batch/
+[nuget_batch_net]: https://www.nuget.org/packages/Microsoft.Azure.Batch/
 [rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
 [py_account_ops]: http://azure-sdk-for-python.readthedocs.org/en/dev/ref/azure.batch.operations.html#azure.batch.operations.AccountOperations
 [py_azure_sdk]: https://pypi.python.org/pypi/azure
-[py_batch_docs]: http://azure-sdk-for-python.readthedocs.org/en/dev/ref/azure.batch.html
+[py_batch_docs]: https://azure-sdk-for-python.readthedocs.io/batch.html
 [py_batch_package]: https://pypi.python.org/pypi/azure-batch
-[py_computenodeuser]: http://azure-sdk-for-python.readthedocs.org/en/dev/ref/azure.batch.models.html#azure.batch.models.ComputeNodeUser
-[py_imagereference]: http://azure-sdk-for-python.readthedocs.org/en/dev/ref/azure.batch.models.html#azure.batch.models.ImageReference
+[py_computenodeuser]: https://docs.microsoft.com/python/api/azure.batch.models.computenodeuser
+[py_imagereference]: https://docs.microsoft.com/python/api/azure.mgmt.batch.models.imagereference
 [py_list_skus]: http://azure-sdk-for-python.readthedocs.org/en/dev/ref/azure.batch.operations.html#azure.batch.operations.AccountOperations.list_node_agent_skus
 [vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
 [vm_pricing]: https://azure.microsoft.com/pricing/details/virtual-machines/

@@ -3,7 +3,7 @@ title: Zarządzanie agenta usługi Analiza dzienników Azure | Dokumentacja firm
 description: W tym artykule opisano zadania różnych zarządzania, które zwykle będą wykonywane podczas cyklu życia programu Microsoft Monitoring Agent (MMA) wdrożone na maszynie.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 5ff4f79a607143683b37726f1c02a6057dc6b9b0
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.component: na
+ms.openlocfilehash: 908418dffaffc25be320bd0008edf03493aa4e55
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30320088"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128796"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Zarządzanie i obsługę agenta analizy dzienników systemu Windows i Linux
 
@@ -204,6 +205,6 @@ Wykonaj poniższe kroki, aby skonfigurować agenta pakietu OMS dla systemu Linux
 2. Upewnij się, że zaczyna się od wiersza `httpsport=` definiuje portu 1270. Takie jak: `httpsport=1270`
 3. Uruchom ponownie serwer OMI: `sudo /opt/omi/bin/service_control restart`
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Przegląd [Rozwiązywanie problemów z agentem systemu Linux](log-analytics-agent-linux-support.md) napotkania problemów podczas instalowania lub zarządzania agentem.  

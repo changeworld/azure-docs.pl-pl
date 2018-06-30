@@ -3,7 +3,7 @@ title: Połącz z analizą dzienników programu Configuration Manager | Dokument
 description: W tym artykule przedstawiono kroki, aby nawiązać połączenia analizy dzienników programu Configuration Manager i rozpocząć analizy danych.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: f2298bd7-18d7-4371-b24a-7f9f15f06d66
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
-ms.openlocfilehash: 5ff0687fe99f0853e29e5f0d814a8555c367027c
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.component: na
+ms.openlocfilehash: 6bb59e4b63933500bc8571dca2422eec6c3456ee
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30284000"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129761"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Połącz z analizą dzienników programu Configuration Manager
 Możesz łączyć środowiska System Center Configuration Manager Analiza dzienników Azure na synchronizowanie danych kolekcji urządzeń i odwołać kolekcjach analizy dzienników i automatyzacji Azure.  
@@ -48,7 +49,7 @@ W poniższej procedurze, udzielasz *współautora* roli w obszarze roboczym anal
 > Należy określić uprawnienia w analizy dzienników programu Configuration Manager. W przeciwnym razie zostanie wyświetlony komunikat o błędzie, korzystając z Kreatora konfiguracji w programie Configuration Manager.
 >
 
-1. W portalu Azure kliknij **wszystkie usługi** w lewym górnym rogu. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.<br><br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi** w lewym górnym rogu. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.<br><br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
 2. Na liście obszarów roboczych usługi Analiza dzienników wybierz obszar roboczy, aby zmodyfikować.
 3. W okienku po lewej stronie wybierz **kontroli dostępu (IAM)**.
 4. Na stronie kontroli dostępu, kliknij przycisk **Dodaj** i **dodać uprawnienia** pojawi się okienko.
@@ -94,7 +95,7 @@ Po utworzeniu połączenie OMS dodane do programu Configuration Manager i agent 
 
 Po wykonaniu konfiguracji początkowej, aby zaimportować kolekcje urządzeń z hierarchii informacje członkostwa kolekcji są pobierane co 3 godziny, aby zapewnić aktualność członkostwa. Można wyłączyć tę opcję w dowolnym momencie.
 
-1. W portalu Azure kliknij **wszystkie usługi** w lewym górnym rogu. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
+1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi** w lewym górnym rogu. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
 2. Na liście obszarów roboczych usługi Analiza dzienników wybierz obszar roboczy programu Configuration Manager są rejestrowane w usłudze.  
 3. Wybierz pozycję **Ustawienia zaawansowane**.<br><br> ![Ustawienia zaawansowane usługi Log Analytics](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
 4. Wybierz **grup komputerów** , a następnie wybierz **SCCM**.  

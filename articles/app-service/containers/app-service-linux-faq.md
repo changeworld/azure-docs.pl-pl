@@ -1,11 +1,11 @@
 ---
 title: Usługa aplikacji Azure w systemie Linux — często zadawane pytania | Dokumentacja firmy Microsoft
 description: Usługa aplikacji Azure w systemie Linux — często zadawane pytania.
-keywords: Usługa aplikacji Azure, aplikacji sieci web, często zadawane pytania, linux, oss
+keywords: usługi aplikacji Azure, aplikacji sieci web, — często zadawane pytania, linux, systemów operacyjnych, aplikacji sieci web dla kontenerów, wielu kontenera, multicontainer
 services: app-service
 documentationCenter: ''
-author: ahmedelnably
-manager: cfowler
+author: yili
+manager: apurvajo
 editor: ''
 ms.assetid: ''
 ms.service: app-service
@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/18/2018
-ms.author: msangapu
-ms.openlocfilehash: 5b3b3d3946b56ff53ad74c2ab93a646baa787d05
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.date: 06/26/2018
+ms.author: yili
+ms.openlocfilehash: a35f3d428674c3398497cd43465e0bd501f5c3fc
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222981"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131496"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Usługa aplikacji Azure w systemie Linux — często zadawane pytania
 
@@ -144,6 +144,35 @@ Mamy automatyczne wykrywanie portu. Można również określić, że aplikacja n
 **Należy do implementacji protokołu HTTPS w mojej niestandardowych kontenera?**
 
 Nie, platforma obsługuje zakończenia połączenia HTTPS na końcach front udostępnionego.
+
+## <a name="multi-container-with-docker-compose-and-kubernetes"></a>Kontener wielu z Docker Compose i Kubernetes
+
+**Jak skonfigurować rejestr kontenera Azure (ACR) do użycia z kontenera usługi?**
+
+Aby można było używać ACR z wieloma kontenera **wszystkie obrazy kontenera** muszą być hostowane na tym samym serwerze rejestru ACR. Gdy znajdują się na tym samym serwerze rejestru, należy utworzyć ustawienia aplikacji, a następnie zaktualizuj plik konfiguracji rozwiązania Docker Compose lub Kubernetes, aby uwzględnić nazwę obrazu ACR.
+
+Utwórz następujące ustawienia aplikacji:
+
+- DOCKER_REGISTRY_SERVER_USERNAME
+- DOCKER_REGISTRY_SERVER_URL (pełny adres URL, np: https://<server-name>.azurecr.io)
+- DOCKER_REGISTRY_SERVER_PASSWORD (Włącz dostęp administratora w ustawieniach ACR)
+
+W pliku konfiguracji odwołania obrazu ACR jak w następującym przykładzie:
+
+```yaml
+image: <server-name>.azurecr.io/<image-name>:<tag>
+```
+
+**Jak dowiedzieć, które kontenera jest dostępny w Internecie?**
+
+- Tylko jeden kontener może być otwarty w celu udzielenia dostępu
+- Tylko porty 80 i 8080 jest niedostępny (narażonych portów)
+
+Poniżej przedstawiono zasady określające kontenera jest dostępny — w kolejności priorytetu:
+
+- Ustawienie aplikacji `WEBSITES_WEB_CONTAINER_NAME` należy ustawić nazwę kontenera
+- Pierwszy kontener, aby zdefiniować port 80 lub 8080
+- Jeśli żaden z powyższych ma wartość true, pierwszy kontenera zdefiniowane w pliku będzie dostępna (widoczne)
 
 ## <a name="pricing-and-sla"></a>Cennik i umowy SLA
 

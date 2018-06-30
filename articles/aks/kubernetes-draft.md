@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 2caf8e14407546d8a2ec7c9d18765dd10e575144
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 8f273a5a2c47b25dc339fd63df127d141fe2f8e2
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099346"
+ms.locfileid: "37130247"
 ---
 # <a name="use-draft-with-azure-kubernetes-service-aks"></a>Projekt za pomocą usługi Azure Kubernetes (AKS)
 
@@ -58,11 +58,11 @@ Projekt tworzy kontener obrazów na lokalnie, a następnie albo wdraża je z lok
 
 ### <a name="create-trust-between-aks-cluster-and-acr"></a>Tworzenie relacji zaufania między AKS klastra i ACR
 
-Aby ustanowić zaufanie między klastrem AKS i ACR rejestru, należy zmodyfikować główna Azure do usługi Active Directory używany z AKS, dodając do niego roli współautora z zakresem repozytorium ACR. Aby to zrobić, uruchom następujące polecenia, zastępując _&lt;aks zarządcy zasobów nazwy&gt;_ i _&lt;aks klastra name&gt;_ z grupy zasobów i nazwa użytkownika Klaster AKS i _&lt;acr-zarządcy zasobów — nazwa&gt;_ i _&lt;nazwa acr repozytorium&gt;_ z nazwą grupy i repozytorium zasobów rekordu ACR repozytorium, z którym chcesz utworzyć zaufania.
+Aby ustanowić zaufanie między klastrem AKS i ACR rejestru, należy zmodyfikować główna Azure do usługi Active Directory używany z AKS, dodając do niego roli współautora z zakresem rejestru ACR. Aby to zrobić, uruchom następujące polecenia, zastępując _&lt;aks zarządcy zasobów nazwy&gt;_ i _&lt;aks klastra name&gt;_ z grupy zasobów i nazwa użytkownika Klaster AKS i _&lt;acr-zarządcy zasobów — nazwa&gt;_ i _&lt;acr rejestru nazwy&gt;_ z nazwą grupy i rejestru zasobu rekordu ACR rejestr, z którym chcesz utworzyć zaufania.
 
 ```console
 export AKS_SP_ID=$(az aks show -g <aks-rg-name> -n <aks-cluster-name> --query "servicePrincipalProfile.clientId" -o tsv)
-export ACR_RESOURCE_ID=$(az acr show -g <acr-rg-name> -n <acr-repo-name> --query "id" -o tsv)
+export ACR_RESOURCE_ID=$(az acr show -g <acr-rg-name> -n <acr-registry-name> --query "id" -o tsv)
 az role assignment create --assignee $AKS_SP_ID --scope $ACR_RESOURCE_ID --role contributor
 ```
 

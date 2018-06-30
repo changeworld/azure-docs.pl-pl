@@ -3,7 +3,7 @@ title: Rozwiązania analizy DNS w Azure Log Analytics | Dokumentacja firmy Micro
 description: Konfigurowanie i korzystanie z rozwiązania analizy DNS w analizy dzienników można zebrać informacje dotyczące infrastruktury DNS dotyczące zabezpieczeń, wydajności i operacji.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: f44a40c4-820a-406e-8c40-70bd8dc67ae7
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 6a59cf8b9444fe7cb197501c51d10dae81acb027
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: na
+ms.openlocfilehash: a6f63fac85008425f473f431ae85d04f62eed667
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30241949"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127595"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Zbieranie informacji na temat infrastruktury DNS z rozwiązaniem Podgląd Analytics DNS
 
@@ -41,7 +42,7 @@ Rozwiązanie gromadzi, analizuje i skorelowany analityczne DNS z systemem Window
 
 W poniższej tabeli opisano połączonych źródeł, które są obsługiwane przez to rozwiązanie:
 
-| **Źródło połączenia** | **Pomoc techniczna** | **Opis** |
+| **Połączone źródło** | **Pomoc techniczna** | **Opis** |
 | --- | --- | --- |
 | [Agenci dla systemu Windows](log-analytics-windows-agent.md) | Yes | Rozwiązanie zbiera informacje DNS z agentów systemu Windows. |
 | [Agenci dla systemu Linux](log-analytics-linux-agents.md) | Nie | Rozwiązanie nie zbiera informacje DNS z bezpośredniego agentów systemu Linux. |
@@ -61,7 +62,7 @@ Poniższe informacje umożliwiają skonfigurowanie rozwiązania:
 
 Rozwiązanie rozpoczyna zbieranie danych bez konieczności dalszej konfiguracji. Jednak można użyć następującej konfiguracji, aby dostosować zbieranie danych.
 
-### <a name="configure-the-solution"></a>Konfigurowanie rozwiązania
+### <a name="configure-the-solution"></a>Skonfiguruj rozwiązanie
 
 Na pulpicie nawigacyjnym rozwiązania kliknij **konfiguracji** aby otworzyć stronę konfiguracji analizy DNS. Istnieją dwa typy zmian konfiguracji, które mogą ułatwić:
 

@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: nini
-ms.openlocfilehash: 10c5394935c59b21139c0e141c348ce20a7c0800
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.component: na
+ms.openlocfilehash: 8296f0756aef7180efa777795cb361e653c0e4e3
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28932685"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128017"
 ---
 # <a name="assess-service-fabric-applications-and-micro-services-with-the-azure-portal"></a>Oceń aplikacji usługi Service Fabric i micro-services przy użyciu portalu Azure
 
@@ -33,7 +34,7 @@ ms.locfileid: "28932685"
 
 W tym artykule opisano sposób użycia rozwiązania sieci szkieletowej usług w analizy dzienników do identyfikacji i rozwiązywania problemów w klastrze usługi sieć szkieletowa usług.
 
-Rozwiązanie usługi Service Fabric korzysta z danych diagnostyki Azure z maszyn wirtualnych, sieci szkieletowej usług zbierać dane z tabel Azure WAD. Analizy dzienników następnie odczytuje zdarzenia framework sieci szkieletowej usług, w tym **niezawodnej zdarzeń usługi**, **zdarzenia aktora**, **zdarzenia operacyjne**, i **zdarzenia ETW niestandardowe**. Z pulpitu nawigacyjnego rozwiązania będą mogli wyświetlić godne uwagi problemy i istotne zdarzenia w środowisku sieci szkieletowej usług.
+Rozwiązanie usługi Service Fabric korzysta z danych diagnostyki Azure z maszyn wirtualnych, sieci szkieletowej usług zbierać dane z tabel Azure WAD. Analiza dzienników następnie odczytuje zdarzeniami framework sieci szkieletowej usług, w tym **niezawodnej zdarzeń usługi**, **zdarzenia aktora**, **zdarzenia operacyjne**, i **niestandardowe Zdarzenia ETW**. Z pulpitu nawigacyjnego rozwiązania będą mogli wyświetlić godne uwagi problemy i istotne zdarzenia w środowisku sieci szkieletowej usług.
 
 Aby rozpocząć pracę z rozwiązaniem, należy połączyć z klastra usługi sieć szkieletowa usług do obszaru roboczego analizy dzienników. Poniżej przedstawiono trzy scenariusze, które należy uwzględnić:
 
@@ -153,7 +154,7 @@ Po zakończeniu wdrożenia i sieci szkieletowej usług rozwiązania została wł
 
 W poniższej tabeli przedstawiono metody zbierania danych i inne szczegółowe informacje o jak dane są zbierane dla sieci szkieletowej usług.
 
-| Platformy | Bezpośrednie agenta | Agent programu Operations Manager | Azure Storage | Wymagane programu Operations Manager? | Danych agenta programu Operations Manager są wysyłane za pośrednictwem grupy zarządzania | Częstotliwość kolekcji |
+| Platformy | Agent bezpośredni | Agent programu Operations Manager | Azure Storage | Wymagane programu Operations Manager? | Danych agenta programu Operations Manager są wysyłane za pośrednictwem grupy zarządzania | Częstotliwość kolekcji |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |  |  | &#8226; |  |  |10 minut |
 

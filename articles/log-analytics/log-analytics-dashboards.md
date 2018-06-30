@@ -3,7 +3,7 @@ title: Utwórz niestandardowy pulpit nawigacyjny w Azure Log Analytics | Dokumen
 description: Ten przewodnik pomaga zrozumieć, jak pulpity nawigacyjne analizy dzienników można Wizualizuj wszystkie dziennika zapisanych wyszukiwań, umożliwiając pojedynczego obiektyw, aby wyświetlić środowiska.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: magoedte
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7eaa74655b009e3154e2cc4f09d5599040ec4589
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.component: na
+ms.openlocfilehash: 7b17b23d30b15fe71dcf031ac67f0c54fc3cfe3e
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010775"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129316"
 ---
 # <a name="create-a-custom-dashboard-for-use-in-log-analytics"></a>Utwórz niestandardowy pulpit nawigacyjny do użycia w analizy dzienników
 
@@ -68,11 +68,11 @@ W widoku Mój pulpit nawigacyjny, wystarczy kliknąć **Dostosuj** wprowadzenia 
 ### <a name="tile-visualizations"></a>Wizualizacje kafelka
 Istnieją trzy rodzaje wizualizacje kafelka do wyboru:
 
-| Typ wykresu | jaką pełni funkcję |
+| Typ wykresu | Jaką pełni funkcję |
 | --- | --- |
 | ![Wykres słupkowy](./media/log-analytics-dashboards/oms-dashboards-bar-chart.png) |Wyświetla oś czasu wyników wyszukiwania zapisany dziennik jako wykres słupkowy lub lista wyników według pola w zależności od, jeśli wyszukiwanie dziennika agreguje wyniki według pola, czy nie. |
 | ![metryka](./media/log-analytics-dashboards/oms-dashboards-metric.png) |Wyświetla trafień wynik wyszukiwania z całkowitej dziennika jako liczby na kafelku. Metryki kafelków umożliwiają ustawienie progu wyróżniane kafelka, po osiągnięciu progu. |
-| ![wiersz](./media/log-analytics-dashboards/oms-dashboards-line.png) |Wyświetla wykres liniowy osi czasu z zapisany dziennik wyszukiwania wynik trafień wartościami. |
+| ![Wiersz](./media/log-analytics-dashboards/oms-dashboards-line.png) |Wyświetla wykres liniowy osi czasu z zapisany dziennik wyszukiwania wynik trafień wartościami. |
 
 ### <a name="threshold"></a>Próg
 Próg można utworzyć na kafelku, za pomocą metryki wizualizacji. Wybierz na, aby utworzyć wartość progową na kafelku. Wybierz opcję podświetlania kafelka, gdy wartość jest powyżej lub poniżej wybrany próg, a następnie ustaw poniżej wartości progowej.

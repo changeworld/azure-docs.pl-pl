@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: big-compute
 ms.date: 12/18/2017
 ms.author: markscu
-ms.openlocfilehash: 565ceb179d8cf749842bb58ab25a8b3d946efa12
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4dd9218b982860e62e04b46fb5d07e5553407599
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608651"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130856"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer-preview"></a>Korzystanie z szablonów interfejsu wiersza polecenia usługi Azure Batch i transferu plików (wersja zapoznawcza)
 
@@ -258,7 +258,7 @@ Szablony puli i zadania umożliwiają plików przechowywanych w grup plików mo�
 
 Obsługa transfer szablon i plik obecnie zostały dodane tylko do wiersza polecenia platformy Azure. Celem jest, aby rozwinąć odbiorców, którzy mogą być partii użytkowników, którzy nie chcą Opracuj kodu za pomocą interfejsów API partii, takie jak pracowników naukowo-badawczych użytkowników IT i tak dalej. Bez kodowania, użytkownicy mający wiedzę na temat usługi Azure, partii i aplikacje do uruchamiania przez partię można utworzyć szablony do tworzenia puli i zadania. Parametry szablonu użytkowników bez szczegółowej znajomości partii i aplikacje mogą za pomocą szablonów.
 
-Wypróbowanie rozszerzenia partii dla wiersza polecenia platformy Azure i uzyskaliśmy wszelkie opinie i sugestie, albo w komentarzach tego artykułu lub za pośrednictwem [forum usługi partia zadań Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch).
+Wypróbowanie rozszerzenia partii dla wiersza polecenia platformy Azure i uzyskaliśmy wszelkie opinie i sugestie, albo w komentarzach tego artykułu lub za pośrednictwem [repozytorium społeczności partii](https://github.com/Azure/Batch).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: wolfma
-ms.openlocfilehash: f0a2ec617c71f9e86610017d3b6fa961bbd14322
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
-ms.translationtype: HT
+ms.openlocfilehash: 14e5110385667d0f2135251eef53ff20ada08444
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083090"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111256"
 ---
 # <a name="quickstart-recognize-speech-using-the-cognitive-services-speech-c-sdk"></a>Szybki Start: Rozpoznawanie mowy przy użyciu kognitywnych mowy usługi C# SDK
 
@@ -63,7 +63,7 @@ W tej sekcji możesz dodać nowe platformy konfiguracji, który pasuje do archit
 
 ## <a name="add-the-sample-code"></a>Dodaj kod przykładowy
 
-1. W `Program.cs` projektu programu Visual Studio, Zastąp treści `Program` klasy następującym kodem. Upewnij się, że możesz zastąpić klucz subskrypcji i regionu, który został uzyskany dla usługi.
+1. W `Program.cs` plik projektu programu Visual Studio, Zastąp treści `Program` klasy następującym kodem. Upewnij się, że możesz zmienić klucz subskrypcji własnymi i [region](regions.md) do tego, który został skojarzony z subskrypcją (na przykład `westus` dla bezpłatnej subskrypcji próbnej).
 
     [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/Windows/quickstart-csharp/Program.cs#code)]
 

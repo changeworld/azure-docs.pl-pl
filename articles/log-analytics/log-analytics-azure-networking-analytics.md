@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/20/2018
+ms.topic: conceptual
+ms.date: 06/21/2018
 ms.author: richrund
-ms.openlocfilehash: 12172e81ed6b4d79ee200ee1ca79803ad58d6d19
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.component: na
+ms.openlocfilehash: 8a92bf7b031899ee75fbf2bb2fdfd7dced3bc1ad
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30263534"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127896"
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Sieć platformy Azure monitorowanie rozwiązań w analizy dzienników
 
@@ -31,7 +32,7 @@ Analiza dzienników oferuje następujące rozwiązania do monitorowania sieci:
  * Azure metryki bramy aplikacji
 * Rozwiązania do monitorowania i inspekcji sieci działania w sieci w chmurze
 * [Analiza ruchu](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
-* Grupy zabezpieczeń sieci Azure analityka
+* Analiza sieciowej grupy zabezpieczeń platformy Azure
 
 ## <a name="network-performance-monitor-npm"></a>Monitor wydajności sieci (NPM)
 
@@ -77,7 +78,8 @@ Dla bramy aplikacji obsługiwane są następujące dzienniki:
 * ApplicationGatewayPerformanceLog
 * ApplicationGatewayFirewallLog
 
-Obsługiwane są następujące metryki dla bramy aplikacji:
+Obsługiwane są następujące metryki dla bramy aplikacji: ponownie
+
 
 * Przepływność 5 minut
 
@@ -140,6 +142,12 @@ Na wszystkich stronach wyszukiwania dziennika można wyświetlić wyniki według
 ## <a name="azure-network-security-group-analytics-solution-in-log-analytics"></a>Grupy zabezpieczeń sieci Azure rozwiązania analizy w analizy dzienników
 
 ![Symbol Analytics sieciowej grupy zabezpieczeń usługi Azure](./media/log-analytics-azure-networking/azure-analytics-symbol.png)
+
+> [!NOTE]
+> Rozwiązania analizy grupy zabezpieczeń sieci jest przenoszona do techniczna dla społeczności, ponieważ jego działanie został zastąpiony przez [analizy ruchu](../network-watcher/traffic-analytics.md).
+> - Rozwiązania jest teraz dostępna w [szablonów Szybki Start Azure](https://azure.microsoft.com/resources/templates/oms-azurensg-solution/) oraz najszybciej nie będą już dostępne w portalu Azure Marketplace.
+> - Dla istniejących klientów, którzy już dodany do swojego obszaru roboczego rozwiązania będzie działać bez zmian.
+> - Firma Microsoft będzie obsługuje wysyłanie dzienników diagnostycznych NSG do swojego obszaru roboczego przy użyciu ustawień diagnostycznych.
 
 Dla grup zabezpieczeń sieci obsługiwane są następujące dzienniki:
 

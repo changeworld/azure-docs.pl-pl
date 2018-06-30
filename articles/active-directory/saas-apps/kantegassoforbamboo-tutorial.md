@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: c31d1162c41ddb6d4728f74d91061f38dcfa68d8
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 01b07529765a7fe68a30cfae754829fe8dbd6264
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228326"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110276"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>Samouczek: Azure Active Directory integracji z logowaniem Jednokrotnym Kantega dla Bambus
 
@@ -133,7 +133,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/kantegassoforbamboo-tutorial/tutorial_general_400.png)
     
-7. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do Twojej Bambus na serwerze lokalnym.
+7. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do serwera lokalnego Bambus.
 
 8. Umieść kursor na koło zębate, a następnie kliknij przycisk **dodatki**.
 
@@ -218,7 +218,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     c. Kliknij pozycję **Zapisz**.
 
 > [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą  **Konfiguracja** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
@@ -257,7 +257,7 @@ Aby umożliwić użytkownikom usługi Azure AD zalogować się do Bambus, musi b
 
 **Aby udostępnić konta użytkownika, wykonaj następujące czynności:**
 
-1. Zaloguj się do Twojego Bambus na lokalnym serwerze jako administrator.
+1. Zaloguj się do serwera lokalnego Bambus jako administrator.
 
 2. Umieść kursor na koło zębate, a następnie kliknij przycisk **Zarządzanie użytkownikami**.
 

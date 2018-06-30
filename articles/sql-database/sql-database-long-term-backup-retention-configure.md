@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 0ce22cae50e70ca7232e025d4009b23d62f6a198
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f7125a18aa2496ebe8367443a67502a7a7dbac02
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649231"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128518"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Zarządzanie długoterminowego przechowywania kopii zapasowych bazy danych SQL Azure
 
@@ -83,8 +83,10 @@ Wyświetl kopie zapasowe, które zostaną zachowane dla określonej bazy danych 
 Poniższe sekcje pokazują, jak skonfigurować długoterminowego przechowywania kopii zapasowych, wyświetlić kopii zapasowych magazynu Azure SQL i przywracanie z kopii zapasowej w magazynie Azure SQL przy użyciu programu PowerShell.
 
 > [!IMPORTANT]
-> Musisz użyć najnowszej powershell AzureRM do konfigurowania zasad V2 od lewej do prawej. Bieżąca wersja to [AzureRM 4.5.0-preview](https://www.powershellgallery.com/packages/AzureRM.Sql/4.5.0-preview), to jest wersja preview, aby go zainstalować za pomocą tego polecenia: `Install-Module -Name AzureRM.Sql -AllowPrerelease -Force`.
-> Aby uzyskać instrukcje na temat instalowania wersji wstępnej, zobacz [PowerShellGet uzyskać modułu](https://docs.microsoft.com/en-us/powershell/gallery/installing-psget). Powershell AzureRM wersji 2018 może pochodzi za kilka dni (powinien być 2018-5/18), można zignorować przełącznika - AllowPrelease po zainstalowaniu wersji po ich udostępnieniu i użyj następującego polecenia " `Install-Module -Name AzureRM.Sql -Force`.
+> Interfejs API V2 od lewej do prawej jest obsługiwany w następujących wersjach środowiska PowerShell:
+- [AzureRM.Sql 4.5.0](https://www.powershellgallery.com/packages/AzureRM.Sql/4.5.0) lub nowsza
+- [AzureRM 6.1.0](https://www.powershellgallery.com/packages/AzureRM/6.1.0) lub nowsza
+> 
 
 ### <a name="create-an-ltr-policy"></a>Tworzenie zasad od lewej do prawej
 

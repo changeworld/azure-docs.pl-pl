@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: v-geberr
-ms.openlocfilehash: 273fca51d83f25e2657b51b68179e46f4295f92b
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: b3283880ebb116e5397c38d722a0790cff414f38
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36263884"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111926"
 ---
 # <a name="web-app-bot-using-the-luis-template-for-c"></a>Bot aplikacji sieci Web przy użyciu szablonu LUIS w języku C#
 
@@ -72,7 +72,7 @@ Bot odpowiada mówiąc "osiągnięto pozdrowienie. Możesz powiedzieć: hello ".
 
 ## <a name="connect-your-luis-app-to-the-bot"></a>Łączenie aplikacji z LUIS bot
 
-Otwórz **ustawienia aplikacji** i edytować **LuisAppId** pole ma zawierać identyfikator aplikacji LUIS aplikacji. Jeśli utworzono aplikację HomeAutomation LUIS w regionie innym niż zachodnie stany USA, musisz zmienić **LuisAPIHostName** również. **LuisAPIKey** ma obecnie ustawioną tworzenia klucza. Możesz zmienić to do Twojej subskrypcji klucza podczas ruchu przekracza limit przydziału warstwę bezpłatna. 
+Otwórz **ustawienia aplikacji** i edytować **LuisAppId** pole ma zawierać identyfikator aplikacji LUIS aplikacji. Jeśli utworzono aplikację HomeAutomation LUIS w regionie innym niż zachodnie stany USA, musisz zmienić **LuisAPIHostName** również. **LuisAPIKey** ma obecnie ustawioną tworzenia klucza. Możesz zmienić to do punktu końcowego klucza podczas ruchu przekracza limit przydziału warstwę bezpłatna. 
 
   ![Aktualizuj LUIS identyfikator aplikacji na platformie Azure](./media/luis-tutorial-cscharp-web-bot/bot-service-app-settings.png)
 

@@ -6,14 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 05/04/2018
+ms.date: 06/29/2018
 ms.author: tomfitz
-ms.openlocfilehash: ebba28e72b3b27729318956bad07b6b6df3f14ac
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 3c085074863aa166a5766116b6c63b7dc341ad96
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823550"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130839"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>Zestawy SDK siatki zdarzeń zarządzania i publikowanie
 
@@ -43,6 +43,7 @@ Płaszczyzna danych zestawów SDK umożliwiają post zdarzenia do tematów przez
 
 ## <a name="next-steps"></a>Kolejne kroki
 
+* Na przykład aplikacje, zobacz [przykłady kodu siatki zdarzeń](https://azure.microsoft.com/resources/samples/?sort=0&service=event-grid).
 * Aby obejrzeć wprowadzenie do siatki zdarzeń, zobacz [co to jest zdarzenie siatki?](overview.md)
 * Zdarzenie siatki poleceń w wiersza polecenia platformy Azure, zobacz [interfejsu wiersza polecenia Azure](/cli/azure/eventgrid).
 * Dla polecenia siatki zdarzeń w programie PowerShell, zobacz [PowerShell](/powershell/module/azurerm.eventgrid).

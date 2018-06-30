@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: seguler
-ms.openlocfilehash: 2a958ceb0b3a1db9d06d045a8161fa6cd3ef5aba
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 073d81baca7e174872806301236f547329836c45
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37059930"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113480"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-data-lake-storage-gen2-preview"></a>Kopiowanie danych między obiektach blob magazynu Azure i w wersji zapoznawczej usługi Data Lake magazynu Gen2 za pomocą narzędzia Distcp
 
-Jeśli masz klaster usługi HDInsight z dostępem do usługi Azure Data Lake magazynu Gen2 podglądu, aby skopiować dane można użyć narzędzia ekosystemu Hadoop, takich jak narzędzia Distcp **do i z** magazynu klastra usługi HDInsight (WASB) w stanie Gen2 magazynu Lake danych konto. Ten artykuł zawiera instrukcje, jak używać narzędzia narzędzia Distcp.
+Jeśli masz klaster usługi HDInsight z dostępem do usługi Azure Data Lake magazynu Gen2 podglądu, można użyć narzędzia ekosystemu Hadoop, takich jak [narzędzia Distcp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) do skopiowania danych **do i z** magazynu klastra usługi HDInsight (WASB) do danych Konto stanie Lake Gen2 magazynu. Ten artykuł zawiera instrukcje, jak używać narzędzia narzędzia Distcp.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Konto magazynu Azure z włączoną funkcją usługi Azure Data Lake Storage (wersja zapoznawcza)**. Aby uzyskać instrukcje na temat go utworzyć, zobacz [TODO](quickstart-create-account.md)
+* **Konto magazynu Azure z włączoną funkcją usługi Azure Data Lake Storage (wersja zapoznawcza)**. Aby uzyskać instrukcje na temat go utworzyć, zobacz [Tworzenie konta magazynu platformy Azure Data Lake magazynu Gen2 w wersji zapoznawczej](quickstart-create-account.md)
 * **Klaster HDInsight Azure** z dostępem do konta usługi Data Lake Storage. Zobacz [Użyj Azure Data Lake magazynu Gen2 z usługą Azure HDInsight clusters](use-hdi-cluster.md). Upewnij się, że włączenie pulpitu zdalnego dla klastra.
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>Za pomocą narzędzia Distcp z klastra usługi HDInsight w systemie Linux
@@ -37,35 +37,35 @@ Klaster usługi HDInsight jest dostarczany z narzędzia narzędzia Distcp, któr
 
 2. Sprawdź, czy można uzyskać dostęp do obiektów blob magazynu Azure (WASB). Uruchom następujące polecenie:
 
-        hdfs dfs –ls wasb://<container_name>@<storage_account_name>.blob.core.windows.net/
+        hdfs dfs –ls wasb://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/
 
     Dane wyjściowe powinny udostępnić listę zawartości obiektu blob magazynu.
 
 3. Podobnie należy sprawdzić, czy masz dostęp do konta usługi Data Lake Storage z klastra. Uruchom następujące polecenie:
 
-        hdfs dfs -ls abfs://<filesystem_name>@<storage_account_name>.dfs.core.windows.net/
+        hdfs dfs -ls abfs://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/
 
     Dane wyjściowe powinny zawierają listę plików/folderów w ramach konta usługi Data Lake Storage.
 
 4. Aby skopiować dane z WASB do konta usługi Data Lake Storage za pomocą narzędzia Distcp.
 
-        hadoop distcp wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg abfs://<filesystem_name>@<storage_account_name>.dfs.core.windows.net/myfolder
+        hadoop distcp wasb://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfs://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder
 
     Polecenie kopiuje zawartość **/przykład/data/gutenberg/** folderu w magazynie obiektów Blob do **/myfolder** w ramach konta usługi Data Lake Storage.
 
 5. Podobnie Aby skopiować dane z konta usługi Data Lake Storage magazynu obiektów Blob (WASB) za pomocą narzędzia Distcp.
 
-        hadoop distcp abfs://<filesystem_name>@<storage_account_name>.dfs.core.windows.net/myfolder wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg
+        hadoop distcp abfs://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder wasb://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg
 
     Polecenie kopiuje zawartość **/myfolder** w ramach konta usługi Data Lake Store, aby **/przykład/data/gutenberg/** folderu w WASB.
 
 ## <a name="performance-considerations-while-using-distcp"></a>Zagadnienia dotyczące wydajności podczas korzystania z narzędzia DistCp
 
-Ponieważ w narzędzia DistCp najniższy poziom szczegółowości jest pojedynczy plik, ustawienie maksymalną liczbę jednoczesnych kopii jest parametr najważniejszych w celu zoptymalizowania go pod względem usługi Data Lake Storage. Liczbę jednoczesnych kopii jest kontrolowany przez ustawienie liczby mapowań ('M ') parametru w wierszu polecenia. Ten parametr określa maksymalną liczbę mapowań, które są używane do kopiowania danych. Wartość domyślna to 20.
+Ponieważ w narzędzia DistCp najniższy poziom szczegółowości jest pojedynczy plik, ustawienie maksymalną liczbę jednoczesnych kopii jest parametr najważniejszych w celu zoptymalizowania go pod względem usługi Data Lake Storage. Liczbę jednoczesnych kopii jest kontrolowany przez ustawienie liczby mapowań (**m**) parametru w wierszu polecenia. Ten parametr określa maksymalną liczbę mapowań, które są używane do kopiowania danych. Wartość domyślna to 20.
 
 **Przykład**
 
-    hadoop distcp wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg abfs://<filesystem_name>@<storage_account_name>.dfs.core.windows.net/myfolder -m 100
+    hadoop distcp wasb://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfs://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder -m 100
 
 ### <a name="how-do-i-determine-the-number-of-mappers-to-use"></a>Jak ustalić liczbę mapowań można użyć?
 
@@ -81,11 +81,11 @@ Oto kilka użytecznych wskazówek.
 
 Załóżmy, że masz 4 węzły D14v2s w klastrze, a chcesz przenieść 10 TB danych z różnych folderach 10. Zawiera foldery różnych ilości danych różni się od rozmiary plików w ramach każdego folderu.
 
-* Całkowita liczba pamięci YARN - portal z Ambari okaże się, że pamięć YARN jest 96 GB dla węzła D14. Tak całkowita pamięć YARN czterech węzłów klastra jest: 
+* **Całkowita ilość pamięci YARN**: należy określić, czy pamięć YARN jest 96 GB dla węzła D14 portalu z Ambari. Tak całkowita pamięć YARN czterech węzłów klastra jest: 
 
         YARN memory = 4 * 96GB = 384GB
 
-* Liczba mapowań - portal z Ambari okaże się, że rozmiar kontenera YARN to 3072 D14 węzła klastra. Tak liczba mapowań to:
+* **Liczba mapowań**: portal z Ambari okaże się, że rozmiar kontenera YARN to 3072 D14 węzła klastra. Tak liczba mapowań to:
 
         m = (4 nodes * 96GB) / 3072MB = 128 mappers
 

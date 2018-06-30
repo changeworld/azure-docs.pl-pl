@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 6/17/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 272d98613e13c1bb76c75befd6bd5e0115c32610
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
-ms.translationtype: HT
+ms.openlocfilehash: ff9f107b8cd10cdab71ba13a1925403d2d144984
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097244"
+ms.locfileid: "37128500"
 ---
 # <a name="integrate-azure-active-directory-with-aks---preview"></a>Integrowanie usługi Azure Active Directory z AKS - Preview
 
@@ -59,19 +59,21 @@ Pierwszą aplikację usługi Azure AD jest używany do pobierania członkostwa w
 
 4. Powrót do aplikacji usługi Azure AD, wybierz pozycję **ustawienia** > **wymagane uprawnienia** > **Dodaj**  >   **Wybierz interfejs API** > **Microsoft Graph** > **wybierz**.
 
-  W obszarze **uprawnienia aplikacji** dalej, aby zaznaczyć **odczytuj dane katalogu**.
+  ![Wybierz interfejs API programu graph](media/aad-integration/graph-api.png)
+
+5. W obszarze **uprawnienia aplikacji** dalej, aby zaznaczyć **odczytuj dane katalogu**.
 
   ![Ustaw uprawnienia wykres aplikacji](media/aad-integration/read-directory.png)
 
-5. W obszarze **DELEGOWANE uprawnienia**, zaznacz obok **Zaloguj się i odczytuj profil użytkownika** i **odczytuj dane katalogu**. Zapisz aktualizacje wykonywane raz.
+6. W obszarze **DELEGOWANE uprawnienia**, zaznacz obok **Zaloguj się i odczytuj profil użytkownika** i **odczytuj dane katalogu**. Zapisz aktualizacje wykonywane raz.
 
   ![Ustaw uprawnienia wykres aplikacji](media/aad-integration/delegated-permissions.png)
 
-6. Wybierz **gotowe** i **udzielanie uprawnień** do ukończenia tego kroku. Ten krok zakończy się niepowodzeniem, jeśli nie jest z bieżącego konta administratora dzierżawy.
+7. Wybierz **gotowe**, wybierz *Microsoft Graph* wybierz z listy interfejsów API, następnie **udzielanie uprawnień**. Ten krok zakończy się niepowodzeniem, jeśli nie jest z bieżącego konta administratora dzierżawy.
 
   ![Ustaw uprawnienia wykres aplikacji](media/aad-integration/grant-permissions.png)
 
-7. Wróć do aplikacji, a następnie zanotuj **identyfikator aplikacji**. Podczas wdrażania klastra usługi Azure AD, włączone AKS, ta wartość jest określana jako `Server application ID`.
+8. Wróć do aplikacji, a następnie zanotuj **identyfikator aplikacji**. Podczas wdrażania klastra usługi Azure AD, włączone AKS, ta wartość jest określana jako `Server application ID`.
 
   ![Uzyskiwanie Identyfikatora aplikacji](media/aad-integration/application-id.png)
 
@@ -195,6 +197,12 @@ aks-nodepool1-42032720-2   Ready     agent     1h        v1.9.6
 ```
 
 Po wykonaniu tych czynności token uwierzytelniania są buforowane. Są tylko ponownie monitowany, aby zalogować się po wygaśnięciu tokena lub pliku konfiguracyjnym Kubernetes utworzony ponownie.
+
+Jeśli jest wyświetlany komunikat o błędzie autoryzacji, po zalogowaniu się pomyślnie, upewnij się, że użytkownik logujesz niezmieniona nie Gość w usłudze Azure AD (jest to często przypadku korzystania z federacyjnego logowania z innego katalogu).
+```console
+error: You must be logged in to the server (Unauthorized)
+```
+
 
 ## <a name="next-steps"></a>Następne kroki
 

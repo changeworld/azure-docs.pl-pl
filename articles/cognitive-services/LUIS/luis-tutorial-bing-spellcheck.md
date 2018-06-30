@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: v-geberr
-ms.openlocfilehash: 340fb34c234a12f93fcfc3182ac3fd44fce324fe
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 96b23146e726b7fee86b7e449c81d7efc0073e8d
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35356123"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127673"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Poprawne pisowni z sprawdzania pisowni usługi Bing
 
@@ -26,8 +26,9 @@ Twoje [pierwszy klucz w wersji 7 API sprawdzania pisowni usługi Bing](https://a
 
 ![Utwórz klucz bezpłatna](./media/luis-tutorial-bing-spellcheck/free-key.png)
 
-## <a name="create-subscription-key"></a>Utwórz klucz subskrypcji
-Jeśli klucz wolnego ważność, należy utworzyć klucz subskrypcji.
+< nazwa "Tworzenie subskrypcji klucza" ></a>
+## <a name="create-endpoint-key"></a>Utwórz klucz punktu końcowego
+Jeśli klucz wolnego ważność, Utwórz klucz punktu końcowego.
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com). 
 
@@ -56,7 +57,7 @@ Jeśli klucz wolnego ważność, należy utworzyć klucz subskrypcji.
 10. Skopiuj klucz pierwszego. Wystarczy tylko jeden z dwóch kluczy. 
 
 ## <a name="using-the-key-in-luis-test-panel"></a>W panelu testu LUIS przy użyciu klucza
-Istnieją dwa miejsca w LUIS, aby użyć klucza. Pierwsza to w [panelu testu](train-test.md#view-bing-spell-check-corrections-in-test-panel). Klucz nie jest zapisany w LUIS, ale zamiast tego jest zmiennej sesji. Należy określić klucz, za każdym razem, gdy chce panelu testu dotyczyć utterance usługi w wersji 7 API sprawdzania pisowni usługi Bing. Zobacz [instrukcje](train-test.md#view-bing-spell-check-corrections-in-test-panel) w panelu testu do ustawiania klucza.
+Istnieją dwa miejsca w LUIS, aby użyć klucza. Pierwsza to w [panelu testu](interactive-test.md#view-bing-spell-check-corrections-in-test-panel). Klucz nie jest zapisany w LUIS, ale zamiast tego jest zmiennej sesji. Należy określić klucz, za każdym razem, gdy chce panelu testu dotyczyć utterance usługi w wersji 7 API sprawdzania pisowni usługi Bing. Zobacz [instrukcje](interactive-test.md#view-bing-spell-check-corrections-in-test-panel) w panelu testu do ustawiania klucza.
 
 ## <a name="adding-the-key-to-the-endpoint-url"></a>Dodawanie klucza do adresu URL punktu końcowego
 Zapytanie punktu końcowego musi mieć klucz przekazano parametrów ciągu zapytania dla każdego zapytania, którego chcesz zastosować poprawkę pisowni. Użytkownik może mieć chatbot, która wywołuje LUIS lub LUIS punkt końcowy interfejsu API może wywołać bezpośrednio. Niezależnie od tego, jak nazywa się punkt końcowy wszystkie wywołania musi zawierać wymagane informacje dotyczące pisowni działała poprawnie.

@@ -3,22 +3,24 @@ title: Za pomocą szablonów usługi Azure Resource Manager do tworzenia i konfi
 description: Szablony usługi Azure Resource Manager umożliwia tworzenie i konfigurowanie analizy dzienników obszarów roboczych.
 services: log-analytics
 documentationcenter: ''
-author: richrundmsft
-manager: jochan
+author: mgoedtel
+manager: carmonm
 editor: ''
 ms.assetid: d21ca1b0-847d-4716-bb30-2a8c02a606aa
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: json
-ms.topic: article
-ms.date: 04/25/2018
-ms.author: richrund
-ms.openlocfilehash: 297f15430c64e5de3c10e6f38855664a50d11a8d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.topic: conceptual
+ms.date: 06/11/2018
+ms.author: magoedte
+ms.component: na
+ms.openlocfilehash: 6e23858bcc288b68a70750e7dbcecdf4b43b8870
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37133054"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Zarządzanie za pomocą szablonów usługi Azure Resource Manager analizy dzienników
 Można użyć [szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) do tworzenia i konfigurowania analizy dzienników obszarów roboczych. Zadania, które można wykonywać za pomocą szablonów należą:
@@ -35,6 +37,16 @@ Można użyć [szablonów usługi Azure Resource Manager](../azure-resource-mana
 * Konfigurowanie analizy dzienników do indeksowania danych zbieranych za pomocą diagnostyki Azure
 
 W tym artykule przedstawiono przykłady szablonów, które zilustrować niektóre konfiguracji, które można wykonywać za pomocą szablonów.
+
+## <a name="api-versions"></a>Wersje interfejsu API
+W poniższej tabeli wymieniono wersja interfejsu API dla zasobów używanych w tym przykładzie.
+
+| Zasób | Typ zasobu | Wersja interfejsu API |
+|:---|:---|:---|:---|
+| Obszar roboczy   | obszary robocze    | 2017-03-15-preview |
+| Wyszukiwanie      | savedSearches | 2017-03-15-preview |
+| Źródło danych | źródła danych   | 2015-11-01-preview |
+| Rozwiązanie    | rozwiązania     | 2015-11-01-preview |
 
 ## <a name="create-a-log-analytics-workspace"></a>Tworzenie obszaru roboczego analizy dzienników
 W poniższym przykładzie jest tworzona przy użyciu szablonu z komputera lokalnego obszaru roboczego. Szablon JSON skonfigurowano tylko wyświetlenie monitu o nazwę obszaru roboczego i określenie wartości domyślnej dla innych parametrów, które prawdopodobnie będzie służyć jako standardowej konfiguracji w danym środowisku.  

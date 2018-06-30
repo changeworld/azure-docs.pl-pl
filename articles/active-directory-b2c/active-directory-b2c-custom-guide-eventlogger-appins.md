@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 04/16/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1b37e61763b34e320ffb4078600e08b1d32330a1
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 94d96af8db651a848ac092d1f8b85da4909427b7
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34709968"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110119"
 ---
 # <a name="track-user-behavior-in-azure-ad-b2c-journeys-by-using-application-insights"></a>Śledzenia zachowania użytkownika w usłudze Azure AD B2C podróże przy użyciu usługi Application Insights
 
@@ -111,7 +111,7 @@ Profile technicznych mogą zostać uwzględnione funkcje w tożsamości środowi
 | JourneyContextForInsights | Otwiera sesji w usłudze Application Insights i wysyła identyfikator korelacji |
 | AzureInsights-SignInRequest | Tworzy `SignIn` zdarzenie z zestaw oświadczeń, gdy otrzymano żądanie logowania | 
 | AzureInsights-UserSignup | Tworzy zdarzenie UserSignup, gdy użytkownik uruchamia opcją w podróży konta-konta/logowania | 
-| AzureInsights-SignInComplete | rejestruje pomyślne zakończenie uwierzytelniania, gdy token zostało wysłane do jednostki uzależnionej strony aplikacji | 
+| AzureInsights-SignInComplete | Rejestruje pomyślne zakończenie uwierzytelniania, gdy token zostało wysłane do jednostki uzależnionej strony aplikacji | 
 
 Dodaj profile do pliku rozszerzenie z pakietu starter przez dodanie tych elementów do `<ClaimsProviders>` węzła.  Nazwa pliku jest zwykle `yourtenant.onmicrosoft.com-B2C_1A_TrustFrameworkExtensions.xml`
 
@@ -280,13 +280,12 @@ Referenced using {OIDC:One of the property names below}
 
 | Claim | Parametr OpenIdConnect | Przykład |
 | ----- | ----------------------- | --------|
-| wiersz | wiersz | ND |
+| Monituj | Monituj | ND |
 | LoginHint |  login_hint | ND |
 | DomainHint | domain_hint | ND |
 |  MaxAge | max_age | ND |
 | clientId | client_id | ND |
 | Nazwa użytkownika | login_hint | ND |
-| Hasło | domain_hint | ND |
 |  Zasób | zasób| ND |
 | AuthenticationContextReferences | acr_values | ND |
 
@@ -304,11 +303,11 @@ Poniżej przedstawiono przykładowe żądanie od aplikacji:
 https://login.microsoftonline.com/sampletenant.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_signup_signin&client_id=e1d2612f-c2bc-4599-8e7b-d874eaca1ae1&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&app_session=0a2b45c&loyalty_number=1234567
 
 ```
-Następnie można dodać oświadczenia przez dodanie `Input Claim` element do zdarzenia usługi Application Insights:
+Następnie można dodać oświadczenia przez dodanie `Input Claim` element do zdarzenia usługi Application Insights. Właściwości zdarzenia są dodawane przy użyciu składni {właściwości: nazwa}, gdzie nazwa właściwości dodawana do zdarzenia. Na przykład:
 
 ```
-<InputClaim ClaimTypeReferenceId="app_session" PartnerClaimType="app_session" DefaultValue="{OAUTH-KV:app_session}" />
-<InputClaim ClaimTypeReferenceId="loyalty_number" PartnerClaimType="loyalty_number" DefaultValue="{OAUTH-KV:loyalty_number}" />
+<InputClaim ClaimTypeReferenceId="app_session" PartnerClaimType="{property:app_session}" DefaultValue="{OAUTH-KV:app_session}" />
+<InputClaim ClaimTypeReferenceId="loyalty_number" PartnerClaimType="{property:loyalty_number}" DefaultValue="{OAUTH-KV:loyalty_number}" />
 ```
 
 ### <a name="other-system-claims"></a>Pozostałe roszczenia systemu

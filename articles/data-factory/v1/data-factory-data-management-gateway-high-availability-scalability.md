@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 2d636eb381710c5e8341e24af8cd157a627348ef
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: b9ec9867e9abd188142067e593c925e3c8acdd0b
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053840"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113344"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Brama zarządzania danymi - wysokiej dostępności i skalowalności (wersja zapoznawcza)
 > [!NOTE]
@@ -165,7 +165,7 @@ Poniżej przedstawiono wymagania dotyczące certyfikatu TLS/SSL, który służy 
 - Certyfikat musi być publicznie zaufany X509 certyfikatu w wersji 3. Firma Microsoft zaleca, aby używać certyfikatów wystawionych przez publiczny (niezależny) urząd certyfikacji (CA).
 - Każdy węzeł środowiska uruchomieniowego integracji muszą ufać tego certyfikatu, komputer kliencki z systemem aplikacji Menedżera poświadczeń. 
 > [!NOTE]
-> Aplikacja Menedżer poświadczeń jest używany podczas bezpiecznego ustawiania poświadczeń z Kreatora kopiowania / portalu Azure. I może to być wypalane z dowolnego komputera w ramach tej samej sieci co lokalnego / prywatnej magazynu danych.
+> Aplikacja Menedżer poświadczeń jest używany podczas bezpiecznego ustawiania poświadczeń z Kreatora kopiowania / portalu Azure. I może to być wypalane z dowolnego komputera w sieci lokalnej / prywatnej magazynu danych.
 - Symbol wieloznaczny certyfikaty są obsługiwane. Jeśli nazwa FQDN to **node1.domain.contoso.com**, można użyć ***. domain.contoso.com** jako nazwa podmiotu certyfikatu.
 - Certyfikaty sieci SAN nie jest zalecane, ponieważ będą używane tylko ostatni element alternatywnej nazwy podmiotu, a wszystkie pozostałe zostaną pominięte ze względu na bieżące ograniczenia. Na przykład mieć certyfikat SAN którego SAN są **node1.domain.contoso.com** i **node2.domain.contoso.com**, tego certyfikatu można używać tylko na komputerze, którego nazwa FQDN to **node2.domain.contoso.com**.
 - Obsługuje wszystkie rozmiar klucza obsługiwana przez system Windows Server 2012 R2 dla certyfikatów SSL.
