@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: 86e018a3f8eedecbb60614b0f1226b088ebb18fc
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 0f22f22d40410b258b3945d9e78938384ce64767
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837936"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128404"
 ---
 # <a name="deploy-an-azure-machine-learning-web-service"></a>Wdrażanie usługi sieci Web Azure Machine Learning
 Usługa Azure Machine Learning umożliwia tworzenia, testowania i wdrażania rozwiązań z zakresu analiz predykcyjnych.
@@ -145,7 +145,7 @@ Aby przetestować usługę wykonywania wsadowego, **Test** Podgląd łącza. Na 
 
 Na **konfiguracji** strony, można zmienić nazwę wyświetlaną usługi i nadaj mu opis. Nazwa i opis jest wyświetlany w [portalu Azure](https://portal.azure.com/) gdzie zarządzania usługami sieci web.
 
-Można podać opis dla danych wejściowych, danych wyjściowych i sieci web parametry usługi wpisując ciąg dla każdej kolumny w obszarze **schemat danych wejściowych**, **SCHEMATEM WYJŚCIOWYM**, i **PARAMETR usługi sieci Web**. Opisy te są używane w przykładowy kod dokumentację dla usługi sieci web.
+Można podać opis dla danych wejściowych, danych wyjściowych i sieci web parametry usługi wpisując ciąg dla każdej kolumny w obszarze **schemat danych wejściowych**, **SCHEMATEM WYJŚCIOWYM**, i **usługi sieci Web PARAMETR**. Opisy te są używane w przykładowy kod dokumentację dla usługi sieci web.
 
 Można włączyć rejestrowanie, aby zdiagnozować wszelkie błędy, które jest wyświetlane podczas uzyskiwania dostępu do usługi sieci web. Aby uzyskać więcej informacji, zobacz [należy włączyć rejestrowanie dla usługi sieci web uczenie maszynowe](web-services-logging.md).
 
@@ -187,8 +187,8 @@ Jedną z opcji aktualizowania usługi sieci web jest ponownie ucz modelu program
 [Tworzenie eksperymentu szkolenia]: #create-a-training-experiment
 [Przekonwertuj go eksperyment predykcyjny]: #convert-the-training-experiment-to-a-predictive-experiment
 [Go wdrożyć jako usługę sieci web]: #deploy-it-as-a-web-service
-[Nowy]: #deploy-the-predictive-experiment-as-a-new-Web-service
-[Classic]: #deploy-the-predictive-experiment-as-a-new-Web-service
+[Nowy]: #deploy-the-predictive-experiment-as-a-new-web-service
+[Classic]: #deploy-the-predictive-experiment-as-a-classic-web-service
 [Access]: #access-the-Web-service
 [Manage]: #manage-the-Web-service-in-the-azure-management-portal
 [Update]: #update-the-Web-service

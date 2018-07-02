@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 02c3a3d996fa253cf56e551a37e098639bf73533
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: ab5d6c531b08a13d465811d68a07e07e9fb0167c
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "32151947"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109464"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Jak delegować subskrypcji użytkownika rejestracji i produktu
 Delegowanie umożliwia przy użyciu istniejącej witryny sieci Web do obsługi projektanta logowania — w/tworzenia konta i subskrypcji do produktów, a nie za pomocą wbudowanej funkcji w portalu dla deweloperów. Dzięki temu witryny sieci Web do własnych danych użytkownika i przeprowadzania weryfikacji tych kroków w niestandardowy sposób.
@@ -175,7 +175,7 @@ Aby uzyskać więcej informacji na delegowania zobacz poniższe wideo:
 [Delegating product subscription]: #delegate-product-subscription
 [żądanie tokenu (rejestracji jednokrotnej SSO) single-sign-on]: https://docs.microsoft.com/rest/api/apimanagement/User/GenerateSsoUrl
 [Utwórz użytkownika]: https://docs.microsoft.com/rest/api/apimanagement/user/createorupdate
-[wywołanie interfejsu API REST dla subskrypcji produktu]: http://go.microsoft.com/fwlink/?LinkId=507655#SSO
+[wywołanie interfejsu API REST dla subskrypcji produktu]: https://docs.microsoft.com/rest/api/apimanagement/productsubscriptions
 [Next steps]: #next-steps
 [przykładowy kod podany poniżej]: #delegate-example-code
 
