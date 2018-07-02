@@ -1,0 +1,48 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentacja kontroli dostępu opartej na rolach
+metadata:
+  document_id: 
+  title: Dokumentacja kontroli dostępu opartej na rolach na platformie Azure | Microsoft Docs
+  description: Dowiedz się więcej na temat kontroli dostępu opartej na rolach w celu zarządzania osobami mającymi dostęp do zasobów platformy Azure, czynnościami, jakie mogą wykonywać, oraz obszarami, do których mają dostęp.
+  services: active-directory
+  author: rolyon
+  manager: mtillman
+  ms.service: role-based-access-control
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 06/15/2018
+  ms.author: rolyon
+  ms.openlocfilehash: 2d49a0ad4393582439511e5454041a2478cea961
+  ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 06/29/2018
+  ms.locfileid: "37115030"
+abstract:
+  description: Kontrola dostępu oparta na rolach to system umożliwiający precyzyjne zarządzanie dostępem do zasobów na platformie Azure. Przy użyciu kontroli dostępu opartej na rolach można przeprowadzić segregowanie zadań w ramach zespołu i nadać użytkownikom tylko takie uprawnienia dostępu, które są im niezbędne do wykonywania zadań.
+  aside:
+    image:
+      alt: 
+      height: 112
+      src: media/index/video-thumb-get-started.png
+      width: 200
+    title: Blokowanie dostępu do platformy Azure (1:16)
+    href: https://www.youtube.com/embed/FKBoWWKRnvI
+    width: 200
+sections:
+- title: 5-minutowe przewodniki Szybki start
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/role-based-access-control/quickstart-assign-role-user-portal">Udzielanie dostępu użytkownikowi</a>
+- title: Samouczki krok po kroku
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/role-based-access-control/tutorial-role-assignments-group-powershell">Udzielanie dostępu grupie — PowerShell</a>
+    - html: <a href="/azure/role-based-access-control/tutorial-custom-role-powershell">Tworzenie roli niestandardowej — PowerShell</a>
+    - html: <a href="/azure/role-based-access-control/tutorial-custom-role-cli">Tworzenie roli niestandardowej — interfejs wiersza polecenia</a>

@@ -25,16 +25,11 @@
   items:
     - name: Omówienie definicji ról
       href: role-definitions.md
-    - name: Wbudowane role
-      href: built-in-roles.md
-    - name: Operacje dostawcy zasobów
-      href: resource-provider-operations.md
     - name: Usługa Privileged Identity Management (PIM) dla Kontroli dostępu opartej na rolach
       href: pim-azure-resource.md
     - name: Dostęp warunkowy do zarządzania platformy Azure
       href: conditional-access-azure-management.md
 - name: Przewodniki z instrukcjami
-  expanded: true
   items:
     - name: Zarządzanie dostępem
       items:
@@ -63,3 +58,17 @@
       href: role-assignments-external-users.md
     - name: Rozwiązywanie problemów
       href: troubleshooting.md
+- name: Dokumentacja
+  items:
+    - name: Wbudowane role
+      href: built-in-roles.md
+    - name: Operacje dostawcy zasobów
+      href: resource-provider-operations.md
+    - name: Limity kontroli dostępu opartej na rolach
+      href: '../azure-subscription-service-limits.md#role-based-access-control-limits'
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.resources
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: /cli/azure/role?view=azure-cli-latest
+    - name: Interfejs API REST
+      href: /rest/api/authorization/

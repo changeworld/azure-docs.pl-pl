@@ -7,6 +7,7 @@
 #### [Rozwijanie firmy dzięki usłudze AppSource](./grow-your-business-with-appsource.md)  
 ##### [Tworzenie strony docelowej](./build-your-landing-page.md)  
 ##### [Włączanie udostępniania informacji o potencjalnych klientach](./enable-lead-sharing.md)  
+##### [Preferowane rozwiązania](./preferred-solutions.md)
 ##### [Korzyści usług Go-To-Market na platformie handlowej](./gtm-benefits.md)  
 ##### [Promowanie swojej firmy we współpracy z firmą Microsoft](./promote-your-business-with-microsoft.md)  
 #### [Grow your business with Azure Marketplace (Rozwijanie firmy za pomocą witryny Azure Marketplace)](./grow-your-business-with-azure-marketplace.md)  
