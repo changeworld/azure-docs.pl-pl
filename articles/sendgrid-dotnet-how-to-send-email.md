@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: dx@sendgrid.com
 ms.openlocfilehash: a5f07d02bfe4032d77a17e5972b88f6530125f28
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 06/29/2018
 ms.locfileid: "27534859"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>Sposób wysyłania poczty E-mail przy użyciu SendGrid z platformy Azure
@@ -26,7 +26,7 @@ ms.locfileid: "27534859"
 W tym przewodniku przedstawiono sposób wykonywania typowych zadań programowania usługi poczty e-mail SendGrid na platformie Azure. Przykłady są napisane w języku C\# i obsługuje standardowe 1.3 .NET. Omówione scenariusze obejmują konstruowania poczty e-mail, wysyłania wiadomości e-mail, dodawanie załączników i włączanie różnych poczty i ustawienia śledzenia. Aby uzyskać więcej informacji na SendGrid i wysyłania wiadomości e-mail, zobacz [następne kroki] [ Next steps] sekcji.
 
 ## <a name="what-is-the-sendgrid-email-service"></a>Co to jest usługa SendGrid poczty E-mail?
-Jest SendGrid [e-mail opartej na chmurze usługa] zapewnia niezawodne [dostarczania transakcyjnych wiadomości e-mail], skalowalności i analiz w czasie rzeczywistym oraz elastyczne interfejsów API, które umożliwiają łatwe niestandardowej integracji. Typowe przypadki użycia SendGrid obejmują:
+Jest SendGrid [Usługa poczty e-mail hostowanego w chmurze] zapewnia niezawodne [dostarczania transakcyjnych wiadomości e-mail], skalowalności i analiz w czasie rzeczywistym oraz elastyczne interfejsów API, które umożliwiają łatwe niestandardowej integracji. Typowe przypadki użycia SendGrid obejmują:
 
 * Automatycznego wysyłania potwierdzeń lub potwierdzenia zakupu do klientów.
 * Administrowanie dystrybucji wymieniono wysyłania klientów miesięczne ulotki i promocji.
@@ -34,7 +34,7 @@ Jest SendGrid [e-mail opartej na chmurze usługa] zapewnia niezawodne [dostarcza
 * Przekazywanie zapytania klientów.
 * Przetwarzanie przychodzących wiadomości e-mail.
 
-Aby uzyskać więcej informacji, odwiedź stronę [https://sendgrid.com](https://sendgrid.com) lub jego SendGrid [biblioteki C#] [ sendgrid-csharp] repozytorium GitHub.
+Aby uzyskać więcej informacji, odwiedź stronę [ https://sendgrid.com ](https://sendgrid.com) lub jego SendGrid [biblioteki C#] [ sendgrid-csharp] repozytorium GitHub.
 
 ## <a name="create-a-sendgrid-account"></a>Utwórz konto SendGrid
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
@@ -43,7 +43,7 @@ Aby uzyskać więcej informacji, odwiedź stronę [https://sendgrid.com](https:/
 [Pakietu SendGrid NuGet](https://www.nuget.org/packages/Sendgrid) jest najprostszym sposobem, można pobrać interfejsu API SendGrid i skonfigurowania aplikacji ze wszystkich zależności. NuGet to rozszerzenie programu Visual Studio, dołączone do programu Microsoft Visual Studio 2015 i powyżej, który ułatwia instalacji i aktualizacji biblioteki i narzędzia.
 
 > [!NOTE]
-> Aby zainstalować NuGet, jeśli używasz programu Visual Studio w wersji starszej niż Visual Studio 2015, odwiedź [http://www.nuget.org](http://www.nuget.org)i kliknij przycisk **instalowania NuGet** przycisku.
+> Aby zainstalować NuGet, jeśli używasz programu Visual Studio w wersji starszej niż Visual Studio 2015, odwiedź [ http://www.nuget.org ](http://www.nuget.org)i kliknij przycisk **instalowania NuGet** przycisku.
 >
 >
 
@@ -278,6 +278,6 @@ Teraz, kiedy znasz już podstawy usługi poczty E-mail SendGrid, skorzystaj z po
 [documentation]: https://sendgrid.com/docs/Classroom/Send/api_keys.html
 [settings-documentation]: https://sendgrid.com/docs/API_Reference/SMTP_API/apps.html
 
-[e-mail opartej na chmurze usługa]: https://sendgrid.com/solutions
+[Usługa poczty e-mail hostowanego w chmurze]: https://sendgrid.com/solutions
 [dostarczania transakcyjnych wiadomości e-mail]: https://sendgrid.com/use-cases/transactional-email
 
