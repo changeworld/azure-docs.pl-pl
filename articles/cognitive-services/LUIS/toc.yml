@@ -9,36 +9,8 @@
 - name: Przewodniki Szybki start
   expanded: true
   items:
-    - name: Tworzenie modelu aplikacji
-      items:
-        - name: Korzystanie ze wstępnie utworzonej domeny
-          href: luis-get-started-create-app.md
-        - name: Korzystanie z domeny niestandardowej
-          href: luis-quickstart-intents-only.md
-- name: Samouczki
-  items:
-    - name: Dodawanie wstępnie utworzonych intencji i jednostek
-      href: luis-tutorial-prebuilt-intents-entities.md
-    - name: Pobieranie danych z jednostki
-      items:
-        - name: Prosta jednostka
-          href: luis-quickstart-primary-and-secondary-data.md
-        - name: Jednostka hierarchiczna
-          href: luis-quickstart-intent-and-hier-entity.md
-        - name: Jednostka wyrażenia regularnego
-          href: luis-quickstart-intents-regex-entity.md
-        - name: Jednostka listy
-          href: luis-quickstart-intent-and-list-entity.md
-        - name: Jednostka KeyPhrase
-          href: luis-quickstart-intent-and-key-phrase.md
-        - name: Analiza tonacji
-          href: luis-quickstart-intent-and-sentiment-analysis.md
-    - name: Ulepszanie przewidywania
-      items:
-        - name: Za pomocą wzorców
-          href: luis-tutorial-pattern.md
-        - name: Za pomocą listy fraz
-          href: luis-tutorial-interchangeable-phrase-list.md
+    - name: Kompilowanie aplikacji dla wstępnie utworzonej domeny
+      href: luis-get-started-create-app.md
     - name: Korzystanie z interfejsów API
       items:
         - name: Przewidywanie wypowiedzi za pomocą zapytania punktu końcowego
@@ -73,6 +45,32 @@
               href: luis-get-started-php-add-utterance.md
             - name: Ruby
               href: luis-get-started-ruby-add-utterance.md
+- name: Samouczki
+  items:
+    - name: Kompilowanie aplikacji
+      items:
+        - name: 1. Przy użyciu domeny niestandardowej
+          href: luis-quickstart-intents-only.md
+        - name: 2. Dodawanie wstępnie utworzonych intencji i jednostek
+          href: luis-tutorial-prebuilt-intents-entities.md
+        - name: 3. Dodawanie jednostki wyrażenia regularnego
+          href: luis-quickstart-intents-regex-entity.md
+        - name: 4. Dodawanie jednostki listy
+          href: luis-quickstart-intent-and-list-entity.md
+        - name: 5. Dodawanie jednostki hierarchicznej
+          href: luis-quickstart-intent-and-hier-entity.md
+        - name: 6. Dodawanie jednostki prostej i listy fraz
+          href: luis-quickstart-primary-and-secondary-data.md
+        - name: 7. Dodawanie jednostki keyPhrase
+          href: luis-quickstart-intent-and-key-phrase.md
+        - name: 8. Dodawanie analizy tonacji
+          href: luis-quickstart-intent-and-sentiment-analysis.md
+    - name: Ulepszanie przewidywania
+      items:
+        - name: Za pomocą wzorców
+          href: luis-tutorial-pattern.md
+        - name: Za pomocą listy fraz
+          href: luis-tutorial-interchangeable-phrase-list.md
 - name: Przykłady
   items:
     - name: Przykłady kodu

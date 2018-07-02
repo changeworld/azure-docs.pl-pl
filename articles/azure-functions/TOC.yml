@@ -138,9 +138,11 @@
         - name: Testowanie funkcji
           href: functions-test-a-function.md
         - name: Programowanie i debugowanie lokalnie
-          href: functions-run-local.md
+          href: functions-develop-local.md
         - name: Opracowywanie zawartości w programie Visual Studio
           href: functions-develop-vs.md
+        - name: Opracowywanie podstawowych narzędzi
+          href: functions-run-local.md
         - name: Zarządzanie połączeniami
           href: manage-connections.md
         - name: Obsługa błędów

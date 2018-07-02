@@ -38,7 +38,7 @@
 ### [Uaktualnianie serwera MFA](../active-directory/authentication/howto-mfaserver-deploy-upgrade.md)
 ### [Uaktualnianie z narzędzia PhoneFactor](../active-directory/authentication/howto-mfaserver-deploy-upgrade-pf.md)
 ### [Uwierzytelnianie systemu Windows](../active-directory/authentication/howto-mfaserver-windows.md)
-### [Aplikacje sieci Web usługi IIS](../active-directory/authentication/howto-mfaserver-iis.md)
+### [Aplikacje internetowe usługi IIS](../active-directory/authentication/howto-mfaserver-iis.md)
 ### Integracja katalogu
 #### [Uwierzytelnianie LDAP](../active-directory/authentication/howto-mfaserver-dir-ldap.md)
 #### [Uwierzytelnianie za pomocą protokołu RADIUS](../active-directory/authentication/howto-mfaserver-dir-radius.md)
@@ -56,7 +56,7 @@
 ## [Raportowanie](../active-directory/authentication/howto-mfa-reporting.md)
 ### [Zbieranie danych](../active-directory/authentication/howto-mfa-reporting-datacollection.md)
 
-## [Podręcznik użytkownika uwierzytelniania wieloskładnikowego](./end-user/multi-factor-authentication-end-user.md)
+## [Podręcznik użytkownika uwierzytelniania wieloskładnikowego](../active-directory/authentication/end-user/current/multi-factor-authentication-end-user.md)
 
 ## Rozwiązywanie problemów
 ### [Często zadawane pytania](../active-directory/authentication/multi-factor-authentication-faq.md)

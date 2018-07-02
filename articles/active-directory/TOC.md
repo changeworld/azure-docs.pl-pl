@@ -186,12 +186,6 @@
 ### [Rozpoczęcie pracy](manage-apps/plan-an-application-integration.md)
 ### [Samouczki integracji aplikacji SaaS](saas-apps/tutorial-list.md)
 
-
-### [Cloud App Discovery](manage-apps/cloud-app-discovery.md)
-#### [Tworzenie raportów migawek](manage-apps/cloud-app-discovery-create-snapshot-reports.md)
-#### [Konfigurowanie ciągłego raportowania](https://docs.microsoft.com/cloud-app-security/discovery-docker)
-#### [Korzystanie z niestandardowego analizatora dziennika](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
-
 ### [Aprowizacja i anulowanie aprowizacji użytkowników w aplikacjach SaaS](active-directory-saas-app-provisioning.md) 
 #### [Samouczki integracji aplikacji](saas-apps/tutorial-list.md) 
 #### [Automatyzowanie aprowizacji w aplikacjach obsługujących standard SCIM](manage-apps/use-scim-to-provision-users-and-groups.md) 

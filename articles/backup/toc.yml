@@ -61,13 +61,13 @@
           href: backup-mabs-protection-matrix.md
         - name: Instalowanie lub uaktualnianie
           items:
-            - name: Przygotowywanie obciążeń serwera Azure Backup Server w witrynie Azure Portal
+            - name: Instalowanie usługi Azure Backup Server
               href: backup-azure-microsoft-azure-backup.md
-            - name: Dodawanie magazynu do usługi Azure Backup Server
+            - name: Dodawanie magazynu
               href: backup-mabs-add-storage.md
-            - name: Uaktualnianie usługi Azure Backup Server do wersji 2
+            - name: Uaktualnianie do wersji 2
               href: backup-mabs-upgrade-to-v2.md
-            - name: Instalacja nienadzorowana usługi Azure Backup Server
+            - name: Instalacja nienadzorowana
               href: backup-mabs-unattended-install.md
         - name: Ochrona obciążeń
           items:

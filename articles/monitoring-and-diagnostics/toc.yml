@@ -23,6 +23,8 @@
       href: monitoring-data-sources.md
     - name: Azure Monitor
       href: monitoring-overview-azure-monitor.md
+    - name: Agenci
+      href: ../monitoring/monitoring-overview-azure-agents.md
     - name: Metryki
       href: monitoring-overview-metrics.md
     - name: Automatyczne skalowanie

@@ -17,18 +17,6 @@
       href: quickstart-cpp-linux.md
     - name: Rozpoczynanie pracy z zestawem Speech Devices SDK
       href: speech-devices-sdk-qsg.md
-- name: Dostosowywanie
-  items:
-    - name: Dostosowywanie modeli mowy
-      href: how-to-customize-speech-models.md
-    - name: Dostosowywanie czcionek głosowych
-      href: how-to-customize-voice-font.md
-    - name: Przygotowanie transkrypcji
-      href: prepare-transcription.md
-    - name: Korzystanie z niestandardowych strumieni audio
-      href: how-to-use-audio-input-streams.md
-    - name: Dostosowywanie słowa aktywującego urządzenie (zestaw SDK urządzeń)
-      href: speech-devices-sdk-create-kws.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Rozpoznawanie mowy
@@ -39,8 +27,22 @@
       href: how-to-translate-speech.md
     - name: Pobieranie zestawu Speech Devices SDK
       href: get-speech-devices-sdk.md
-    - name: Transkrypcja wsadowa (biura obsługi)
+    - name: Transkrypcja wsadowa
       href: batch-transcription.md
+- name: Dostosowywanie
+  items:
+    - name: Dostosowywanie modeli akustycznych
+      href: how-to-customize-acoustic-models.md
+    - name: Dostosowywanie modeli językowych
+      href: how-to-customize-language-model.md
+    - name: Dostosowywanie czcionek głosowych (głos bota powiązany z marką)
+      href: how-to-customize-voice-font.md
+    - name: Przygotowanie transkrypcji
+      href: prepare-transcription.md
+    - name: Korzystanie z niestandardowych strumieni audio
+      href: how-to-use-audio-input-streams.md
+    - name: Dostosowywanie słowa aktywującego urządzenie (zestaw SDK urządzeń)
+      href: speech-devices-sdk-create-kws.md
 - name: Przykłady
   items:
     - name: Pobierz przykłady

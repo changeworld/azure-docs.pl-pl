@@ -11,36 +11,68 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 05/25/2018
+  ms.date: 06/28/2018
   ms.author: kamrani
-  ms.openlocfilehash: 7d529825733025335f27ce0fe477c117aeaf5c41
-  ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+  ms.openlocfilehash: f3ccbb033354afc01fa840b3129d305f04942ffd
+  ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 06/08/2018
-  ms.locfileid: "35358290"
+  ms.lasthandoff: 06/29/2018
+  ms.locfileid: "37095574"
 abstract:
   description: Usługa Language Understanding (LUIS) umożliwia aplikacji rozpoznawanie poleceń wydawanych naturalnymi słowami. Usługa LUIS korzysta z uczenia maszynowego, aby umożliwić deweloperom tworzenie aplikacji odbierających dane wejściowe użytkownika w języku naturalnym i wyodrębniających ich znaczenie.
 sections:
 - title: 5-minutowe przewodniki Szybki start
   items:
-  - type: list
-    style: unordered
-    items:
-    - html: <a href="luis-get-started-create-app.md">Tworzenie aplikacji we wstępnie utworzonej domenie</a>
-    - html: <a href="luis-quickstart-intents-only.md">Tworzenie aplikacji we domenie niestandardowej</a>
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/logo_csharp.svg
+    - image:
+        src: media/index/logo_java.svg
+    - image:
+        src: media/index/logo_js.svg
+    - image:
+        src: media/index/logo_nodejs.svg
+    - image:
+        src: media/index/logo_python.svg
+    - image:
+        src: media/index/logo_php.svg
+    - image:
+        src: media/index/logo_ruby.svg
+    rows:
+    - title: Interfejs API punktu końcowego
+      values:
+      - href: luis-get-started-cs-get-intent
+      - href: luis-get-started-java-get-intent
+      - href: luis-get-started-js-get-intent
+      - href: luis-get-started-node-get-intent
+      - href: luis-get-started-python-get-intent
+      - href: luis-get-started-php-get-intent
+      - href: luis-get-started-ruby-get-intent
+    - title: Interfejs API tworzenia aplikacji
+      values:
+      - href: luis-get-started-cs-add-utterance
+      - href: luis-get-started-java-add-utterance
+      - href: luis-get-started-javascript-add-utterance
+      - href: luis-get-started-node-add-utterance
+      - href: luis-get-started-python-add-utterance
+      - href: luis-get-started-php-add-utterance
+      - href: luis-get-started-ruby-add-utterance
 - title: Samouczki krok po kroku
   items:
   - type: list
     style: ordered
     items:
-    - html: <a href="luis-quickstart-primary-and-secondary-data">Wyodrębnianie danych wiadomości z wypowiedzi przy użyciu prostej jednostki</a>
-    - html: <a href="luis-quickstart-intents-regex-entity">Wyodrębnianie numeru artykułu bazy wiedzy z wypowiedzi przy użyciu jednostki wyrażenia regularnego</a>
-    - html: <a href="luis-quickstart-intent-and-list-entity">Wyodrębnianie informacji o zamówionym napoju z wypowiedzi przy użyciu jednostki listy</a>
-    - html: <a href="luis-tutorial-pattern">Zwiększanie dokładności przewidywania intencji i jednostek za pomocą wzorców</a>
-    - html: <a href="luis-tutorial-interchangeable-phrase-list">Zwiększanie istotności słów za pomocą listy fraz</a>
-    - html: <a href="luis-get-started-cs-get-intent">Wysyłanie wypowiedzi do usługi LUIS i odbieranie odpowiedzi z punktu końcowego przewidywania — C#</a>
-    - html: <a href="luis-get-started-cs-add-utterance">Dodawanie przykładowej wypowiedzi do intencji i szkolenie aplikacji usługi LUIS — C#</a>
+    - html: <a href="luis-quickstart-intents-only">Tworzenie aplikacji dla domeny działu kadr</a>
+    - html: <a href="luis-tutorial-prebuilt-intents-entities">Dodawanie wstępnie utworzonych intencji i jednostek</a>
+    - html: <a href="luis-quickstart-intents-regex-entity">Dodawanie jednostki wyrażenia regularnego</a>
+    - html: <a href="luis-quickstart-intent-and-list-entity">Dodawanie jednostki listy</a>
+    - html: <a href="luis-quickstart-intent-and-hier-entity">Dodawanie jednostki hierarchicznej</a>
+    - html: <a href="luis-quickstart-primary-and-secondary-data">Dodawanie jednostki prostej i listy fraz</a>
+    - html: <a href="luis-quickstart-intent-and-key-phrase">Dodawanie jednostki keyPhrase</a>
+    - html: <a href="luis-quickstart-intent-and-sentiment-analysis">Dodawanie analizy tonacji</a>
 - title: Filmy wideo
   items:
   - type: list

@@ -118,8 +118,6 @@ items:
                         href: sql-api-java-get-started.md
                       - name: Node.js
                         href: sql-api-nodejs-get-started.md
-                      - name: C++
-                        href: sql-api-cpp-get-started.md
                   - name: Tworzenie aplikacji internetowej
                     items:
                       - name: .NET
@@ -144,10 +142,6 @@ items:
                     href: local-emulator.md
                   - name: Eksportowanie certyfikatów
                     href: local-emulator-export-ssl-certificates.md
-              - name: 6 — Integracja z usługą Functions
-                items:
-                  - name: Wyzwalacz HTTP
-                    href: tutorial-functions-http-trigger.md
           - name: Przykłady
             items:
               - name: Interfejs wiersza polecenia platformy Azure
@@ -350,26 +344,14 @@ items:
                 href: gremlin-support.md
           - name: Samouczki
             items:
-              - name: 1 — Tworzenie
-                href: tutorial-develop-graph-dotnet.md
-              - name: 2 — Wykonywanie zapytań
+              - name: 1 — Wykonywanie zapytań
                 href: tutorial-query-graph.md
-              - name: 3 — Dystrybucja globalna
-                href: tutorial-global-distribution-graph.md
           - name: Przewodniki z instrukcjami
             items:
               - name: Partycjonowanie grafu
                 href: graph-partitioning.md
               - name: Zarządzanie przy użyciu Eksploratora usługi Storage
                 href: storage-explorer.md
-              - name: Integracja
-                items:
-                  - name: Łączenie z programem Spark GraphX
-                    href: spark-connector-graph.md
-          - name: Dokumentacja
-            items:
-              - name: .NET
-                href: graph-sdk-dotnet.md
           - name: Zasoby
             items:
               - name: Zarządzanie przy użyciu Eksploratora usługi Storage

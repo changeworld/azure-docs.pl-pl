@@ -1,11 +1,11 @@
 - name: Dokumentacja dotycząca przetwarzania obrazów
   href: index.yml
 - name: Omówienie
+  expanded: true
   items:
     - name: Czym jest przetwarzanie obrazów?
       href: Home.md
-- name: Przewodniki Szybki start
-  expanded: true
+- name: Interfejs API — przewodniki Szybki start
   items:
     - name: Podsumowanie
       href: QuickStarts/quickstart-summary.md
@@ -97,6 +97,16 @@
           href: QuickStarts/ruby-thumb.md
         - name: Wyodrębnianie tekstu drukowanego
           href: QuickStarts/ruby-print-text.md
+- name: Zestaw SDK — przewodniki Szybki start
+  items:
+    - name: 'C#'
+      items:
+        - name: Analizowanie obrazu
+          href: quickstarts-sdk/csharp-analyze-sdk.md
+        - name: Generowanie miniatur
+          href: quickstarts-sdk/csharp-thumb-sdk.md
+        - name: Wyodrębnianie tekstu odręcznego
+          href: quickstarts-sdk/csharp-hand-text-sdk.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Pierwsze aplikacje z funkcją przetwarzania obrazów

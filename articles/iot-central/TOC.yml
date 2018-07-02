@@ -17,20 +17,16 @@
       href: quick-deploy-iot-central.md
 - name: Samouczki
   items:
-    - name: Konstruktor
-      items:
-        - name: 1 — Definiowanie nowego typu urządzenia
-          href: tutorial-define-device-type.md
-        - name: 2 — Konfigurowanie reguł
-          href: tutorial-configure-rules.md
-        - name: 3 — Dostosowywanie widoku operatora
-          href: tutorial-customize-operator.md
-    - name: Operator
-      items:
-        - name: 4 — Monitorowanie urządzeń
-          href: tutorial-monitor-devices.md
-        - name: 5 — Dodawanie urządzenia
-          href: tutorial-add-device.md
+    - name: 1 — Definiowanie nowego typu urządzenia
+      href: tutorial-define-device-type.md
+    - name: 2 — Konfigurowanie reguł
+      href: tutorial-configure-rules.md
+    - name: 3 — Dostosowywanie widoku operatora
+      href: tutorial-customize-operator.md
+    - name: 4 — Monitorowanie urządzeń
+      href: tutorial-monitor-devices.md
+    - name: 5 — Dodawanie urządzenia
+      href: tutorial-add-device.md
 - name: Pojęcia
   items:
     - name: Architektura

@@ -1,7 +1,9 @@
-- name: Czym jest usługa QnA Maker?
-  href: Overview/overview.md
+- name: Dokumentacja usługi QnA Maker
+  href: index.yml
 - name: Omówienie
   items:
+    - name: Co jest usługa QnA Maker?
+      href: Overview/overview.md
     - name: Obsługiwane języki
       href: Overview/languages-supported.md
 - name: Przewodniki Szybki start

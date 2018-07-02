@@ -1,0 +1,43 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentacja akceleratorów rozwiązań IoT
+metadata:
+  title: Dokumentacja akceleratorów rozwiązań IoT
+  meta.description: Get started quickly building your IoT solutions with the IoT solution accelerators. Add new devices and connect existing ones using device SDKs for multiple platforms, including Linux, Windows, and real-time operating systems. Easily scale from just a few sensors to millions of simultaneously connected devices and rely on the global availability of Azure, no matter how large or small your project.
+  services: iot-accelerators
+  author: dominicbetts
+  manager: timlt
+  ms.service: iot-accelerators
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 06/19/2018
+  ms.author: dobett
+  ms.openlocfilehash: ab97a3a2579be289f1d88d926fc2151cb4d2ad4f
+  ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 06/28/2018
+  ms.locfileid: "37088328"
+abstract:
+  description: Szybko rozpocznij tworzenie rozwiązań IoT dzięki akceleratorom rozwiązań IoT. Dodawaj nowe i łącz istniejące urządzenia za pomocą zestawów SDK urządzeń dla wielu platform, w tym systemów Linux i Windows oraz systemów operacyjnych czasu rzeczywistego. Łatwe skalowanie od kilku czujników do milionów równocześnie połączonych urządzeń. Możesz polegać na globalnej dostępności platformy Azure niezależnie od wielkości projektu.
+sections:
+- title: 5-minutowe przewodniki Szybki start
+  items:
+  - type: paragraph
+    text: 'Rozpocznij pracę z akceleratorami rozwiązań IoT:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/iot-accelerators/quickstart-remote-monitoring-deploy">Deploy a cloud-based remote monitoring solution (Wdrażanie opartego na chmurze rozwiązania do zdalnego monitorowania)</a>
+- title: Samouczki krok po kroku
+  items:
+  - type: paragraph
+    text: 'Więcej informacji na temat akceleratorów rozwiązań IoT i kluczowych scenariuszy, które implementują:'
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-monitor">Monitorowanie urządzeń IoT</a>
+    - html: <a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-automate">Wykrywanie problemów z urządzeniami połączonymi z rozwiązaniem do monitorowania</a>
+    - html: <a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-manage">Konfigurowanie urządzeń połączonych z rozwiązaniem do monitorowania i zarządzanie nimi</a>
+    - html: <a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-maintain">Korzystanie z alertów i rozwiązywanie problemów z urządzeniami</a>
