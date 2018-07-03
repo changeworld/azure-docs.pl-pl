@@ -3,7 +3,7 @@ title: Analizowanie użycia danych w usłudze Log Analytics | Microsoft Docs
 description: Pulpit nawigacyjny użycia i szacowanych kosztów w usłudze Log Analytics umożliwia szacowanie ilości danych wysyłanych do usługi Log Analytics oraz identyfikowanie potencjalnych przyczyn nieprzewidzianego wzrostu tej ilości.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: 74d0adcb-4dc2-425e-8b62-c65537cef270
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 06/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 2ceb350883bc6f2b40d88d5cf595b06b074013d1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
-ms.translationtype: HT
+ms.component: na
+ms.openlocfilehash: d02c3ad3e1ca2812049608cad2eacced3686dad3
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36209820"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128568"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analizowanie użycia danych w usłudze Log Analytics
 Usługa Log Analytics zawiera informacje na temat ilości zebranych danych, źródeł, z których zostały one wysłane, oraz typów danych.  Użyj pulpitu nawigacyjnego **Użycie usługi Log Analytics** do przeglądania i analizowania użycia danych. Na pulpicie nawigacyjnym prezentowana jest ilość danych zebranych przez każde rozwiązanie i ilość danych wysyłanych przez komputery.
@@ -151,7 +152,7 @@ Wykonaj następujące kroki, aby zmniejszyć wolumin zebranych danych dziennikó
 
 | Źródło dużego woluminu danych | Jak zmniejszyć wolumin danych |
 | -------------------------- | ------------------------- |
-| Zdarzenia zabezpieczeń            | Wybierz [pospolite lub minimalne zdarzenia zabezpieczeń](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/). <br> Zmień zasady inspekcji zabezpieczeń w celu zbierania tylko potrzebnych zdarzeń. W szczególności zastanów się nad koniecznością zbierania następujących zdarzeń: <br> - [inspekcja platformy filtrowania](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [inspekcja rejestru](https://docs.microsoft.com/windows/device-security/auditing/audit-registry)<br> - [inspekcja systemu plików](https://docs.microsoft.com/windows/device-security/auditing/audit-file-system)<br> - [inspekcja obiektu jądra](https://docs.microsoft.com/windows/device-security/auditing/audit-kernel-object)<br> - [inspekcja manipulowania dojściem](https://docs.microsoft.com/windows/device-security/auditing/audit-handle-manipulation)<br> - [inspekcja magazynu wymiennego](https://docs.microsoft.com/windows/device-security/auditing/audit-removable-storage) |
+| Zdarzenia zabezpieczeń            | Wybierz [pospolite lub minimalne zdarzenia zabezpieczeń](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/). <br> Zmień zasady inspekcji zabezpieczeń w celu zbierania tylko potrzebnych zdarzeń. W szczególności zastanów się nad koniecznością zbierania następujących zdarzeń: <br> - [inspekcja platformy filtrowania](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [inspekcja rejestru](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [inspekcja systemu plików](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [inspekcja obiektu jądra](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [inspekcja manipulowania dojściem](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> — Inspekcja magazynu wymiennego |
 | Liczniki wydajności       | Zmień [konfigurację licznika wydajności](log-analytics-data-sources-performance-counters.md) w następujący sposób: <br> — Zmniejsz częstotliwość gromadzenia <br> — Zmniejsz liczbę liczników wydajności |
 | Dzienniki zdarzeń                 | Zmień [konfigurację dziennika zdarzeń](log-analytics-data-sources-windows-events.md) w następujący sposób: <br> — Zmniejsz liczbę gromadzonych danych dzienników zdarzeń <br> — Zbieraj wyłącznie zdarzenia o wymaganym poziomie. Na przykład nie zbieraj zdarzeń na poziomie *Informacje*. |
 | Dziennik systemu                     | Zmień [konfigurację dziennika systemu](log-analytics-data-sources-syslog.md) w następujący sposób: <br> — Zmniejsz liczbę urządzeń, z których zbierane są dane <br> — Zbieraj wyłącznie zdarzenia o wymaganym poziomie. Na przykład nie zbieraj zdarzeń na poziomie *Informacje* i *Debugowanie*. |
@@ -165,7 +166,7 @@ Kliknij opcję **Zobacz wszystko**, aby wyświetlić pełną listę komputerów,
 
 Użyj funkcji [określania celu rozwiązania](../operations-management-suite/operations-management-suite-solution-targeting.md), aby zbierać dane tylko z wymaganych grup komputerów.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Zobacz temat [Wyszukiwanie w dziennikach w usłudze Log Analytics](log-analytics-log-searches.md), aby dowiedzieć się, jak korzystać z języka wyszukiwania. Możesz użyć zapytań wyszukiwania w celu przeprowadzenia dodatkowej analizy danych użycia.
 * Wykonaj kroki opisane w sekcji dotyczącej [tworzenia nowego alertu dziennika](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md), aby otrzymywać powiadomienie, gdy kryteria wyszukiwania zostaną spełnione.
 * Użyj funkcji [określania celu rozwiązania](../operations-management-suite/operations-management-suite-solution-targeting.md), aby zbierać dane tylko z wymaganych grup komputerów.
