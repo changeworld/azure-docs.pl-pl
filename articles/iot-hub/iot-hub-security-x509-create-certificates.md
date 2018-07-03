@@ -1,40 +1,36 @@
 ---
-title: Jak utworzyć certyfikatów X.509 przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
-description: Jak utworzyć certyfikatów X.509 lokalnie i włączyć X.509 przy użyciu programu PowerShell na podstawie zabezpieczeń w Centrum Azure IoT w środowisku symulowanym.
-services: iot-hub
-documentationcenter: ''
+title: Sposób tworzenia certyfikatów X.509 przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
+description: Jak używać programu PowerShell do tworzenia certyfikatów X.509 lokalnie i włączyć X.509 na podstawie zabezpieczeń w usłudze Azure IoT hub w środowisku symulowanym.
 author: dsk-2015
 manager: timlt
-editor: ''
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: dkshir
-ms.openlocfilehash: 656799c76a87870a19018849dbeffea3b12a356e
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d0063ff79a0bda88fffb486f03286f6784ece7fa
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "34637603"
 ---
 # <a name="powershell-scripts-to-manage-ca-signed-x509-certificates"></a>Skrypty programu PowerShell do zarządzania certyfikatami X.509 podpisany przez urząd certyfikacji
 
-Zabezpieczenia oparte na certyfikatach X.509 w Centrum IoT wymaga do uruchomienia z [łańcucha certyfikatów X.509](https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification), który zawiera certyfikat główny, a także wszystkich pośrednich certyfikatów do certyfikatu liścia. To *jak* przewodnik przedstawiono przykładowe skrypty programu PowerShell używające [OpenSSL](https://www.openssl.org/) do tworzenia i podpisywania certyfikatów X.509. Zaleca się, można użyć w tym przewodniku dla eksperymenty, ponieważ wiele z tych kroków nastąpi podczas procesu w świecie rzeczywistym produkcyjnego. Tych certyfikatów można użyć do symulowania zabezpieczeń w Centrum Azure IoT za pomocą *uwierzytelnianie certyfikatu X.509*. Kroki opisane w tym przewodniku tworzenia certyfikatów lokalnie na komputerze z systemem Windows. 
+Zabezpieczenia oparte na certyfikatach X.509 w usłudze IoT Hub, należy rozpocząć od [łańcucha certyfikatów X.509](https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification), który zawiera certyfikat główny, a także wszystkie certyfikaty pośrednie przesłaną certyfikatu liścia. To *jak* przewodnik przeprowadzi Cię przez przykładowych skryptów programu PowerShell używające [OpenSSL](https://www.openssl.org/) Aby utworzyć i podpisać certyfikatu x.509. Firma Microsoft zaleca skorzystaj z tego przewodnika wyłącznie eksperymentów, ponieważ wiele z tych kroków nastąpi podczas procesu w świecie rzeczywistym produkcyjnego. Tych certyfikatów można użyć do symulowania zabezpieczeń przy użyciu usługi Azure IoT hub *uwierzytelnianie certyfikatu X.509*. Kroki opisane w tym przewodniku Tworzenie certyfikatów lokalnie na komputerze Windows. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Ten samouczek zakłada, że zostały nabyte plików binarnych biblioteki OpenSSL. Użytkownik może
-    - Pobierz kod źródłowy biblioteki OpenSSL i kompilacji plików binarnych na komputerze, lub 
-    - Pobierz i zainstaluj wszelkie [plików binarnych biblioteki OpenSSL innych firm](https://wiki.openssl.org/index.php/Binaries), na przykład z [tego projektu na SourceForge](https://sourceforge.net/projects/openssl/).
+Ten samouczek zakłada uzyskali plików binarnych biblioteki OpenSSL. Użytkownik może:
+    - Pobierz kod źródłowy biblioteki OpenSSL i kompilowania plików binarnych na komputerze, lub 
+    - Pobierz i zainstaluj dowolne [plików binarnych biblioteki OpenSSL firm](https://wiki.openssl.org/index.php/Binaries), na przykład z [tego projektu na SourceForge](https://sourceforge.net/projects/openssl/).
 
 <a id="createcerts"></a>
 
 ## <a name="create-x509-certificates"></a>Tworzenie certyfikatów X.509
-W poniższej procedurze pokazano przykład sposobu tworzenia certyfikatów głównych X.509 lokalnie. 
+Poniższe kroki pokazują przykład sposobu tworzenia certyfikatów głównych X.509 lokalnie. 
 
 1. Otwórz okno programu PowerShell jako *administratora*.  
-   **Uwaga:** należy otworzyć to w programie PowerShell samej siebie, nie PowerShell ISE, Visual Studio Code lub innych narzędzi, które otaczają podstawowej konsoli programu PowerShell.  Korzystanie z systemem innym niż konsoli oparte na środowisku PowerShell spowoduje `openssl` poniższe wiszące polecenia.
+   **Uwaga:** należy otworzyć tego w programie PowerShell samego, nie PowerShell ISE, Visual Studio Code lub innych narzędzi, które umieszczają w otoce podstawowej konsola programu PowerShell.  Przy użyciu innej konsoli programu PowerShell w oparciu o spowoduje `openssl` poniższe wiszące polecenia.
 
 2. Przejdź do katalogu roboczego. Uruchom następujący skrypt, aby ustawić zmienne globalne. 
     ```PowerShell
@@ -58,7 +54,7 @@ W poniższej procedurze pokazano przykład sposobu tworzenia certyfikatów głó
     # Whether to use ECC or RSA.
     $useEcc                     = $true
     ```
-3. Uruchom następujący skrypt, który kopiuje pliki binarne biblioteki OpenSSL do katalogu roboczego i ustawia zmienne środowiskowe:
+3. Uruchom następujący skrypt, który kopiuje pliki binarne OpenSSL do katalogu roboczego i ustawia zmienne środowiskowe:
 
     ```PowerShell
     function Initialize-CAOpenSSL()
@@ -80,7 +76,7 @@ W poniższej procedurze pokazano przykład sposobu tworzenia certyfikatów głó
     }
     Initialize-CAOpenSSL
     ```
-4. Następnie uruchom następujący skrypt, który wyszukuje czy certyfikatu przez określony *nazwa podmiotu* jest już zainstalowany i czy biblioteki OpenSSL został poprawnie skonfigurowany na komputerze:
+4. Następnie uruchom następujący skrypt, który wyszukuje czy certyfikatu przez określony *nazwy podmiotu* jest już zainstalowany, oraz czy OpenSSL jest poprawnie skonfigurowany na komputerze:
     ```PowerShell
     function Get-CACertBySubjectName([string]$subjectName)
     {
@@ -115,13 +111,13 @@ W poniższej procedurze pokazano przykład sposobu tworzenia certyfikatów głó
     }
     Test-CAPrerequisites
     ```
-    Jeśli wszystko jest skonfigurowane poprawnie, powinny pojawić się "Powodzenie" wiadomości. 
+    Jeśli wszystko jest poprawnie skonfigurowane, powinien zostać wyświetlony "komunikat Success" wiadomości. 
 
 <a id="createcertchain"></a>
 
 ## <a name="create-x509-certificate-chain"></a>Tworzenie łańcucha certyfikatów X.509
-Tworzenie łańcucha certyfikatów z głównego urzędu certyfikacji, na przykład "CN = Azure IoT głównego urzędu certyfikacji" w tym przykładzie używany, uruchamiając następujący skrypt programu PowerShell. Ten skrypt również aktualizacji magazynu certyfikatów systemu operacyjnego Windows, jak również tworzy pliki certyfikatów w katalogu roboczym. 
-    1. Poniższy skrypt tworzy funkcję programu PowerShell do utworzenia certyfikatu z podpisem własnym, dla danego *nazwa podmiotu* i podpisywania urzędu. 
+Tworzenie łańcucha certyfikatów za pomocą głównego urzędu certyfikacji, na przykład "CN = usługi Azure IoT głównego urzędu certyfikacji", w tym przykładzie użyto, uruchamiając następujący skrypt programu PowerShell. Ten skrypt aktualizuje również swojego magazynu certyfikatów systemu operacyjnego Windows, jak również tworzy pliki certyfikatów w katalogu roboczym. 
+    1. Poniższy skrypt tworzy funkcję programu PowerShell, aby utworzyć certyfikat z podpisem własnym, dla danej *nazwy podmiotu* i podpisywania urzędu. 
     ```PowerShell
     function New-CASelfsignedCertificate([string]$commonName, [object]$signingCert, [bool]$isASigner=$true)
     {
@@ -157,7 +153,7 @@ Tworzenie łańcucha certyfikatów z głównego urzędu certyfikacji, na przykł
         write (New-SelfSignedCertificate @selfSignedArgs)
     }
     ``` 
-    2. Następująca funkcja PowerShell tworzy pośrednich certyfikatów X.509 przy użyciu poprzedniej funkcji, a także plików binarnych biblioteki OpenSSL. 
+    2. Używając następującej funkcji programu PowerShell tworzy pośrednich certyfikatów X.509 przy użyciu poprzedniej funkcji, a także plików binarnych biblioteki OpenSSL. 
     ```PowerShell
     function New-CAIntermediateCert([string]$commonName, [Microsoft.CertificateServices.Commands.Certificate]$signingCert, [string]$pemFileName)
     {
@@ -174,7 +170,7 @@ Tworzenie łańcucha certyfikatów z głównego urzędu certyfikacji, na przykł
         write $newCert
     }  
     ```
-    3. Następująca funkcja PowerShell tworzy łańcuch certyfikatów X.509. Odczyt [łańcuchów certyfikatów](https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification) Aby uzyskać więcej informacji.
+    3. Używając następującej funkcji programu PowerShell tworzy łańcucha certyfikatów X.509. Odczyt [łańcuchy certyfikatów](https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification) Aby uzyskać więcej informacji.
     ```PowerShell
     function New-CACertChain()
     {
@@ -193,16 +189,16 @@ Tworzenie łańcucha certyfikatów z głównego urzędu certyfikacji, na przykł
     }    
     ```
     Ten skrypt tworzy plik o nazwie *RootCA.cer* w katalogu roboczym. 
-    4. Na koniec użyj powyższej funkcji programu PowerShell można utworzyć łańcucha certyfikatu X.509, uruchamiając polecenie `New-CACertChain` w oknie programu PowerShell. 
+    4. Na koniec Użyj powyższych funkcje programu PowerShell do utworzenia łańcucha certyfikatów X.509, uruchamiając polecenie `New-CACertChain` w oknie programu PowerShell. 
 
 
 <a id="signverificationcode"></a>
 
-## <a name="proof-of-possession-of-your-x509-ca-certificate"></a>Potwierdzenie posiadania certyfikat X.509 urzędu certyfikacji
+## <a name="proof-of-possession-of-your-x509-ca-certificate"></a>Dowód przesyłany certyfikatu X.509 urzędu certyfikacji
 
-Ten skrypt wykonuje *dowodu posiadania* przepływu dla certyfikatu X.509. 
+Ten skrypt wykonuje *dowodu posiadania* przepływ dla certyfikatu X.509. 
 
-W oknie programu PowerShell z pulpitu Uruchom następujący kod:
+W oknie programu PowerShell na komputerze uruchom następujący kod:
    
    ```PowerShell
    function New-CAVerificationCert([string]$requestedSubjectName)
@@ -225,14 +221,14 @@ W oknie programu PowerShell z pulpitu Uruchom następujący kod:
    New-CAVerificationCert "<your verification code>"
    ```
 
-Ten kod tworzy certyfikat z nazwą danego podmiotu, podpisany przez urząd certyfikacji jako plik o nazwie *VerifyCert4.cer* w katalogu roboczym. Ten plik certyfikatu może pomóc sprawdzić z Centrum IoT czy masz uprawnienie podpisywania (to znaczy, że klucz prywatny) tego urzędu certyfikacji.
+Ten kod tworzy certyfikat z nazwą dany podmiot podpisany przez urząd certyfikacji jako plik o nazwie *VerifyCert4.cer* w katalogu roboczym. Ten plik certyfikatu może pomóc, używanie funkcji validate z Twojego Centrum IoT, czy masz uprawnienie podpisywania (oznacza to, że klucz prywatny) tego urzędu certyfikacji.
 
 
 <a id="createx509device"></a>
 
-## <a name="create-leaf-x509-certificate-for-your-device"></a>Utwórz certyfikat X.509 liścia dla urządzenia
+## <a name="create-leaf-x509-certificate-for-your-device"></a>Utwórz certyfikat X.509 liścia dla Twojego urządzenia
 
-W tej sekcji przedstawiono, których można użyć skryptu programu PowerShell tworzącą certyfikatu liścia urządzenia i odpowiednie łańcucha certyfikatów. 
+W tej sekcji przedstawiono, których można użyć skryptu programu PowerShell, który pokazuje Tworzenie certyfikatu urządzenia liścia i odpowiednie łańcucha certyfikatów. 
 
 W oknie programu PowerShell na komputerze lokalnym Uruchom następujący skrypt, aby utworzyć certyfikat X.509 podpisany przez urząd certyfikacji dla tego urządzenia:
 
@@ -278,12 +274,12 @@ W oknie programu PowerShell na komputerze lokalnym Uruchom następujący skrypt,
 
 Następnie uruchom `New-CADevice "<yourTestDevice>"` w oknie programu PowerShell przy użyciu przyjaznej nazwy, który został użyty do utworzenia urządzenia. Po wyświetleniu monitu o hasło klucza prywatnego urzędu certyfikacji, wprowadź "123". Spowoduje to utworzenie  _<yourTestDevice>PFX_ pliku w katalogu roboczym.
 
-## <a name="clean-up-certificates"></a>Wyczyść certyfikatów
+## <a name="clean-up-certificates"></a>Czyszczenie certyfikatów
 
-Na pasku start lub **ustawienia** aplikacji, wyszukaj i wybierz **zarządzanie certyfikatami komputera**. Usuń wszelkie certyfikaty wystawione przez ** TestOnly *** Azure IoT urzędu certyfikacji. Certyfikaty te powinny istnieć w następujących trzech miejscach: 
+Na pasku rozpoczęcia lub **ustawienia** aplikacji, wyszukaj i wybierz **zarządzania certyfikatami komputera**. Usuń wszystkie certyfikaty wystawione przez ** TestOnly *** usługi Azure IoT urzędu certyfikacji. Te certyfikaty powinny istnieć w następujących trzech miejscach: 
 
-* Certyfikaty — komputer lokalny > osobiste > certyfikatów
-* Certyfikaty — komputer lokalny > Zaufane główne urzędy certyfikacji > certyfikatów
-* Certyfikaty — komputer lokalny > urzędów certyfikacji pośredniego > certyfikatów
+* Certyfikaty — komputer lokalny > osobiste > Certyfikaty
+* Certyfikaty — komputer lokalny > Zaufane główne urzędy certyfikacji > Certyfikaty
+* Certyfikaty — komputer lokalny > pośrednim urzędem certyfikacji > Certyfikaty
 
-   ![Usuń certyfikaty TestOnly urzędu certyfikacji IoT Azure](./media/iot-hub-security-x509-create-certificates/cleanup.png)
+   ![Usuń certyfikaty usługi Azure IoT urzędu certyfikacji TestOnly](./media/iot-hub-security-x509-create-certificates/cleanup.png)
