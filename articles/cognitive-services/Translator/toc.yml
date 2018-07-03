@@ -21,6 +21,20 @@
           href: quickstart-csharp-languages.md
         - name: Uzyskiwanie długości zdania w tekście
           href: quickstart-csharp-sentences.md
+    - name: Przejdź
+      items:
+        - name: Tłumaczenie tekstu
+          href: quickstart-go-translate.md
+        - name: Konwertowanie skryptu tekstowego
+          href: quickstart-go-transliterate.md
+        - name: Identyfikowanie języka na podstawie tekstu
+          href: quickstart-go-detect.md
+        - name: Uzyskiwanie alternatywnych tłumaczeń
+          href: quickstart-go-dictionary.md
+        - name: Uzyskiwanie obsługiwanych języków
+          href: quickstart-go-languages.md
+        - name: Uzyskiwanie długości zdania w tekście
+          href: quickstart-go-sentences.md
     - name: Java
       items:
         - name: Tłumaczenie tekstu

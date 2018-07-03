@@ -1,11 +1,11 @@
 - name: Dokumentacja interfejsu API rozpoznawania twarzy
   href: index.yml
 - name: Omówienie
+  expanded: true
   items:
     - name: Czym jest interfejs API rozpoznawania twarzy?
       href: Overview.md
 - name: Przewodniki Szybki start
-  expanded: true
   items:
     - name: 'C#'
       href: QuickStarts/CSharp.md
@@ -53,16 +53,18 @@
   items:
     - name: Interfejs API rozpoznawania twarzy
       href: APIReference.md
+    - name: Słownik
+      href: Glossary.md
     - name: Zestawy SDK
       items:
-        - name: Przejdź
-          href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face'
+        - name: Windows
+          href: 'https://github.com/Microsoft/Cognitive-Face-Windows'
         - name: Node.js
           href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest#vision-modules'
         - name: Python
           href: 'https://github.com/Microsoft/Cognitive-Face-Python'
-        - name: Windows
-          href: 'https://github.com/Microsoft/Cognitive-Face-Windows'
+        - name: Przejdź
+          href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face'
         - name: Android
           href: 'https://github.com/Microsoft/Cognitive-Face-Android'
         - name: iOS
@@ -81,7 +83,7 @@
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
-    - name: Słownik
-      href: Glossary.md
+    - name: Dostępność regionalna
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Informacje o wersji
       href: ReleaseNotes.md

@@ -79,7 +79,11 @@
         - name: IoT Core
           href: how-to-install-iot-core.md
     - name: Automatyczne aprowizowanie za pomocą usługi DPS
-      href: how-to-auto-provision-simulated-device-windows.md
+      items:
+        - name: Linux
+          href: how-to-auto-provision-simulated-device-linux.md
+        - name: Windows
+          href: how-to-auto-provision-simulated-device-windows.md
     - name: Programowanie i debugowanie modułów
       items:
         - name: 'C#'

@@ -192,11 +192,11 @@
         - name: Zwiększanie dokładności za pomocą testowania wsadowego
           href: luis-tutorial-batch-testing.md
     - name: Publikowanie aplikacji
-      href: PublishApp.md
+      href: luis-how-to-publish-app.md
     - name: Korzystanie ze wstępnie utworzonych modeli
       items:
         - name: Korzystanie ze wstępnie utworzonych jednostek
-          href: Pre-builtEntities.md
+          href: luis-prebuilt-entities.md
         - name: Korzystanie ze wstępnie utworzonych domen
           href: luis-how-to-use-prebuilt-domains.md
         - name: Korzystanie ze wstępnie utworzonej aplikacji Cortana
@@ -208,7 +208,7 @@
         - name: Tworzenie kluczy
           href: luis-how-to-azure-subscription.md
         - name: Dodawanie kluczy w usłudze LUIS
-          href: Manage-Keys.md
+          href: luis-how-to-manage-keys.md
         - name: Wyświetlanie informacji o użyciu punktu końcowego przy użyciu programu PowerShell
           href: luis-how-to-manage-from-cloud-shell.md
         - name: Zarządzanie wersjami
@@ -283,6 +283,10 @@
           href: 'https://github.com/Microsoft/Cognitive-LUIS-Android'
         - name: Node.js
           href: 'https://github.com/Microsoft/Cognitive-LUIS-Node.js'
+        - name: Przejdź
+          href: 'https://aka.ms/luis-sdk-go'
+        - name: Java
+          href: 'https://aka.ms/luis-java-sdk'
         - name: Python
           href: 'https://github.com/Microsoft/Cognitive-LUIS-Python'
         - name: Punkt końcowy platformy .NET
