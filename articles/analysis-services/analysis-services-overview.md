@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 06/05/2018
+ms.date: 06/21/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 52695ba495b088d30a5ee039d3e24eb274957bff
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 07768dbc8beb7a851d442e9e0c3e7538bf12b766
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234560"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937941"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co to są usługi Azure Analysis Services?
 
@@ -31,7 +31,7 @@ W witrynie Azure Portal [serwer można utworzyć](analysis-services-create-serve
 
 **Wideo:** zapoznaj się z [automatycznym wdrażaniem](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation), aby dowiedzieć się więcej na temat przyspieszania tworzenia serwera za pomocą usługi Azure Automation.
 
-Usługi Azure Analysis Services można zintegrować z wieloma usługami platformy Azure, umożliwiając tworzenie wyrafinowanych rozwiązań analitycznych. Integracja z usługą [Azure Active Directory](../active-directory/active-directory-whatis.md) zapewnia bezpieczny i oparty na rolach dostęp do kluczowych danych. Jest możliwa integracja z potokami usługi [Azure Data Factory](../data-factory/introduction.md) przez uwzględnienie działania ładującego dane do modelu. Istnieje możliwość prostego organizowania modeli za pomocą usług [Azure Automation](../automation/automation-intro.md) i [Azure Functions](../azure-functions/functions-overview.md) oraz niestandardowego kodu. 
+Usługi Azure Analysis Services można zintegrować z wieloma usługami platformy Azure, umożliwiając tworzenie wyrafinowanych rozwiązań analitycznych. Integracja z usługą [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) zapewnia bezpieczny i oparty na rolach dostęp do kluczowych danych. Jest możliwa integracja z potokami usługi [Azure Data Factory](../data-factory/introduction.md) przez uwzględnienie działania ładującego dane do modelu. Istnieje możliwość prostego organizowania modeli za pomocą usług [Azure Automation](../automation/automation-intro.md) i [Azure Functions](../azure-functions/functions-overview.md) oraz niestandardowego kodu. 
 
 ## <a name="the-right-tier-when-you-need-it"></a>Odpowiednia warstwa dopasowana do potrzeb
 
@@ -72,39 +72,41 @@ Ta warstwa jest najlepszym rozwiązaniem w przypadku aplikacji produkcyjnych o k
 
 ## <a name="availability-by-region"></a>Dostępność według regionów
 
-Usługa Azure Analysis Services jest obsługiwana w regionach na całym świecie. Zagwarantuj [wysoką dostępność](analysis-services-bcdr.md), wdrażając swoje modele na serwerach nadmiarowych w kilku regionach. Obsługiwane warstwy i repliki zapytań zależą od wybranego regionu. 
+Usługa Azure Analysis Services jest obsługiwana w regionach na całym świecie. Obsługiwane plany i dostępność repliki zapytania zależą od wybranego regionu. Plan i dostępność repliki zapytania może ulec zmianie w zależności od potrzeb i dostępnych zasobów dla każdego regionu. 
 
 ### <a name="americas"></a>Ameryki
 
-|Region  | Obsługiwane warstwy | Repliki zapytań |
+|Region  | Obsługiwane plany | Repliki zapytania (tylko plany Standard) |
 |---------|---------|:---------:|
 |Brazylia Południowa     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Kanada Środkowa    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |Wschodnie stany USA     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
-|Wschodnie stany USA 2     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |    7     |
+|Wschodnie stany USA 2     |     B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |    7     |
 |Środkowo-północne stany USA     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
-|Środkowe stany USA     |    B1, B2, S0, S1, S2, S4, D1     |    3     |
+|Środkowe stany USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Środkowo-południowe stany USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|Środkowo-zachodnie stany USA   |     B1, B2, S0, S1, S2, S4, D1    |    7     |
-|Zachodnie stany USA     |    B1, B2, S0, S1, S2, S4, S8, S9, D1     |    7     |
-|Zachodnie stany USA 2    |    B1, B2, S0, S1, S2, S4, S8, S9, D1     |    1     |
+|Środkowo-zachodnie stany USA   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
+|Zachodnie stany USA     |    B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |    7     |
+|Zachodnie stany USA 2    |    B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |    3     |
 
 ### <a name="europe"></a>Europa
 
-|Region  | Obsługiwane warstwy | Repliki zapytań |
+|Region  | Obsługiwane plany | Repliki zapytania (tylko plany Standard) |
 |---------|---------|:---------:|
-|Europa Północna     |    B1, B2, S0, S1, S2, S4, D1      |    1     |
+|Europa Północna     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
 |Południowe Zjednoczone Królestwo   |    B1, B2, S0, S1, S2, S4, D1      |     1    |
-|Europa Zachodnia     |    B1, B2, S0, S1, S2, S4, S8, S9, D1      |    7     |
+|Europa Zachodnia     |    B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1      |    7     |
 
 ### <a name="asia-pacific"></a>Azja i Pacyfik 
 
-|Region  | Obsługiwane warstwy | Repliki zapytań |
+|Region  | Obsługiwane plany | Repliki zapytania (tylko plany Standard) |
 |---------|---------|:---------:|
 |Australia Południowo-Wschodnia     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Japonia Wschodnia  |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Azja Południowo-Wschodnia     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |   3      |
+|Azja Południowo-Wschodnia     |     B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |   1      |
 |Indie Zachodnie     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+
+\* Plany S8 i S9 w warstwie Standardowa obsługują jedną replikę zapytania.
 
 ## <a name="scale-to-your-needs"></a>Skalowanie zgodnie z potrzebami
 
@@ -116,7 +118,7 @@ Serwer można skalować w górę, skalować w dół lub wstrzymywać. Można do 
 
 W przypadku skalowania w poziomie zapytania klienta są dystrybuowane między wieloma *replikami zapytania* w puli zapytania. Repliki zapytania mają zsynchronizowane kopie modeli tabelarycznych. Dzięki rozproszeniu obciążenia zapytania można zredukować czas odpowiedzi w przypadku dużych obciążeń związanych z zapytaniami. Operacje przetwarzania modelu można oddzielić od puli zapytania, dzięki czemu operacje przetwarzania nie będą wpływać negatywnie na zapytania klienta. 
 
-Można utworzyć pulę zapytania z nawet siedmioma dodatkowymi replikami zapytania (łącznie ośmioma, wliczając serwer). Liczba replik zapytania, które można umieścić w puli, zależy od wybranego regionu. Repliki zapytań nie mogą być rozmieszczane poza regionem serwera. Opłaty za repliki zapytań są naliczane przy użyciu tej samej stawki, co w przypadku serwera.
+Można utworzyć pulę zapytania z nawet siedmioma dodatkowymi replikami zapytania (łącznie ośmioma, wliczając serwer). Liczba replik zapytania, które można umieścić w puli, zależy od wybranego planu regionu. Repliki zapytań nie mogą być rozmieszczane poza regionem serwera. Opłaty za repliki zapytań są naliczane przy użyciu tej samej stawki, co w przypadku serwera.
 
 Podobnie jak w przypadku zmiany warstw można skalować repliki zapytania w poziomie zgodnie z potrzebami. Konfiguracja skalowania w poziomie jest możliwa w portalu lub przy użyciu interfejsów API REST. Aby dowiedzieć się więcej, zobacz [Azure Analysis Services scale-out (Skalowanie usługi Azure Analysis Services w poziomie)](analysis-services-scale-out.md).
 
@@ -148,7 +150,7 @@ Zapora usługi Azure Analysis Services blokuje wszystkie połączenia klienta in
 
 ### <a name="authentication"></a>Authentication
 
-Uwierzytelnianie użytkownika jest obsługiwane przez usługę [Azure Active Directory (AAD)](../active-directory/active-directory-whatis.md). Podczas logowania użytkownicy korzystają z tożsamości konta organizacji z dostępem do bazy danych opartym na rolach. Tożsamości użytkowników muszą być członkami domyślnej usługi Azure Active Directory dla subskrypcji, w której znajduje się serwer. Aby dowiedzieć się więcej, zobacz [Authentication and user permissions (Uwierzytelnianie i uprawnienia użytkownika)](analysis-services-manage-users.md).
+Uwierzytelnianie użytkownika jest obsługiwane przez usługę [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md). Podczas logowania użytkownicy korzystają z tożsamości konta organizacji z dostępem do bazy danych opartym na rolach. Tożsamości użytkowników muszą być członkami domyślnej usługi Azure Active Directory dla subskrypcji, w której znajduje się serwer. Aby dowiedzieć się więcej, zobacz [Authentication and user permissions (Uwierzytelnianie i uprawnienia użytkownika)](analysis-services-manage-users.md).
 
 ### <a name="data-security"></a>Bezpieczeństwo danych
 

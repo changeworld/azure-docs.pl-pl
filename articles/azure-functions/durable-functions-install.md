@@ -1,6 +1,6 @@
 ---
-title: Zainstaluj rozszerzenie funkcji trwałe i przykłady - Azure
-description: Dowiedz się, jak zainstalować rozszerzenie funkcji trwałe dla usługi Azure Functions do rozwoju portalu lub tworzenia Visual Studio.
+title: Instalowanie rozszerzenia funkcji trwałych i przykłady dla platformy Azure —
+description: Dowiedz się, jak zainstalować rozszerzenia funkcji trwałych dla usługi Azure Functions dla dla portalu lub programowanie aplikacji programu Visual Studio.
 services: functions
 author: cgillum
 manager: cfowler
@@ -14,172 +14,172 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4dd4bbb9c382b772f8f60b259844e7e471ec73e3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6ed8265a0b1a014ad15a6bb42fabb6003fb6a775
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33762357"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342980"
 ---
-# <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Zainstaluj rozszerzenie funkcji trwałe i przykłady (usługi Azure Functions)
+# <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Instalowanie rozszerzenia funkcji trwałych i przykłady (usługi Azure Functions)
 
-[Trwałe funkcji](durable-functions-overview.md) rozszerzenie dla usługi Azure Functions znajduje się w pakiecie NuGet [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask). W tym artykule przedstawiono sposób instalowania pakietu i zestaw przykładów dla następujących środowisk deweloperskich:
+[Funkcje trwałe](durable-functions-overview.md) rozszerzenia dla usługi Azure Functions jest podawany jako pakiet NuGet [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask). W tym artykule przedstawiono sposób instalowania pakietu i uzyskać zestaw przykładów dla następujących środowisk programowania:
 
-* Visual Studio 2017 r (zalecane dla C#) 
-* Kod programu Visual Studio (zalecane dla języka JavaScript)
+* Program Visual Studio 2017 (zalecane dla języka C#) 
+* Program Visual Studio Code (zalecane dla języka JavaScript)
 * Azure Portal
 
 ## <a name="visual-studio-2017"></a>Visual Studio 2017
 
-Program Visual Studio udostępnia obecnie najlepsze środowisko dla opracowywania aplikacji korzystających z funkcji trwałe.  Funkcji mogą być uruchamiane lokalnie, a także mogą być publikowane na platformie Azure. Pusty projekt lub zestaw funkcji przykładowe można uruchomić.
+Visual Studio zawiera obecnie najlepsze środowisko do tworzenia aplikacji, które używają funkcje trwałe.  Funkcje mogą być uruchamiane lokalnie, a także mogą być publikowane na platformie Azure. Można uruchomić z pusty projekt lub zestaw funkcji próbki.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-* Zainstaluj [najnowszej wersji programu Visual Studio](https://www.visualstudio.com/downloads/) (wersja 15.3 lub nowsza). Obejmują **Azure programowanie** obciążenia w opcjach instalacji.
+* Zainstaluj [najnowszą wersję programu Visual Studio](https://www.visualstudio.com/downloads/) (w wersji 15.3 lub nowszej). Obejmują **programowanie na platformie Azure** obciążenie w opcjach Instalatora.
 
-### <a name="start-with-sample-functions"></a>Uruchom funkcje próbki 
+### <a name="start-with-sample-functions"></a>Start z usługą functions próbki 
 
-1. Pobierz [pliku .zip Przykładowa aplikacja dla programu Visual Studio](https://azure.github.io/azure-functions-durable-extension/files/VSDFSampleApp.zip). Nie musisz dodać odwołanie NuGet, ponieważ już ma przykładowy projekt.
-2. Zainstaluj i uruchom [emulatora magazynu Azure](https://docs.microsoft.com/azure/storage/storage-use-emulator) w wersji 5.2 lub nowszej. Alternatywnie możesz zaktualizować *local.appsettings.json* pliku z rzeczywistych parametrów połączenia usługi Azure Storage.
-3. Otwórz projekt w programie Visual Studio 2017 r. 
-4. Aby uzyskać instrukcje na temat uruchamiania próbki, rozpoczynać się od [funkcji łańcucha — Witaj próbki sekwencji](durable-functions-sequence.md). Próbki można uruchomić lokalnie lub opublikowane na platformie Azure.
+1. Pobierz [plik zip Przykładowa aplikacja dla programu Visual Studio](https://azure.github.io/azure-functions-durable-extension/files/VSDFSampleApp.zip). Nie musisz dodać odwołanie NuGet, ponieważ przykładowy projekt zawiera już go.
+2. Zainstaluj i uruchom [emulatora usługi Azure Storage](https://docs.microsoft.com/azure/storage/storage-use-emulator) wersji 5.2 lub nowszej. Alternatywnie, możesz zaktualizować *local.appsettings.json* plik z rzeczywistych parametrów połączenia usługi Azure Storage.
+3. Otwórz projekt w programie Visual Studio 2017. 
+4. Aby uzyskać instrukcje dotyczące sposobu uruchamiania przykładu, rozpoczynać się [funkcji łańcucha — Witaj przykładowy Sekwencja](durable-functions-sequence.md). Przykład można uruchomić lokalnie lub opublikowane na platformie Azure.
 
 ### <a name="start-with-an-empty-project"></a>Rozpoczynać pusty projekt
  
-Postępuj zgodnie z instrukcjami sam jak w przypadku począwszy próbki, ale należy wykonać poniższe kroki zamiast pobierania *.zip* pliku:
+Postępuj zgodnie z instrukcjami ten sam, jak w przypadku począwszy od przykładu, ale należy wykonać poniższe kroki, zamiast pobierać *zip* pliku:
 
 1. Utwórz projekt aplikacji funkcji.
-2. Wyszukaj następujący NuGet pakietu odwołania przy użyciu *Zarządzaj pakietami NuGet* i dodaj go do projektu: Microsoft.Azure.WebJobs.Extensions.DurableTask v1.4.0 (Sprawdź *Uwzględnij wersję wstępną* do Wyszukaj ten pakiet)
+2. Wyszukaj następujący NuGet pakietu odwołania przy użyciu *Zarządzaj pakietami NuGet* i dodaj go do projektu: Microsoft.Azure.WebJobs.Extensions.DurableTask v1.5.0
    
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
-Visual Studio Code zapewnia środowisko rozwoju lokalnego obejmujących wszystkich głównych platform - systemu Windows, system macOS i Linux.  Funkcje mogą być uruchamiane lokalnie i zostaną opublikowane na platformie Azure. Pusty projekt lub zestaw funkcji przykładowe można uruchomić.
+Visual Studio Code zapewnia środowisko programowania lokalnego obejmujące wszystkich największych platform: Windows, macOS i Linux.  Funkcje mogą być uruchamiane lokalnie i zostaną opublikowane na platformie Azure. Można uruchomić z pusty projekt lub zestaw funkcji próbki.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-* Zainstaluj [najnowszej wersji programu Visual Studio Code](https://code.visualstudio.com/Download) 
+* Zainstaluj [najnowszą wersję programu Visual Studio Code](https://code.visualstudio.com/Download) 
 
-* Postępuj zgodnie z instrukcjami w obszarze "Zainstaluj Azure funkcje podstawowe narzędzia" na [kodu oraz testów usługi Azure Functions lokalnie](https://docs.microsoft.com/azure/azure-functions/functions-run-local)
-
-    >[!IMPORTANT]
-    > Jeśli masz już narzędzi Cross Platform w programie Azure funkcji, aktualizację do najnowszej dostępnej wersji.
+* Postępuj zgodnie z instrukcjami w sekcji "Instalowanie narzędzi usługi Azure Functions Core" w [kodu i testowanie usługi Azure Functions lokalnie](https://docs.microsoft.com/azure/azure-functions/functions-run-local)
 
     >[!IMPORTANT]
-    >Trwałe funkcji w języku JavaScript wymaga wersji 2.x podstawowe narzędzia funkcji platformy Azure.
+    > Jeśli masz już narzędzia Cross Platform usługi Azure Functions, należy je zaktualizować do najnowszej dostępnej wersji.
 
-*  Jeśli na komputerze z systemem Windows, zainstalować i uruchomić [emulatora magazynu Azure](https://docs.microsoft.com/azure/storage/storage-use-emulator) w wersji 5.2 lub nowszej. Alternatywnie możesz zaktualizować *local.appsettings.json* pliku z rzeczywistą połączenia usługi Azure Storage. 
+    >[!IMPORTANT]
+    >Trwałe funkcje w języku JavaScript wymaga wersji 2.x podstawowych narzędzi usługi Azure Functions.
+
+*  Jeśli na komputerze Windows, zainstaluj i uruchom [emulatora usługi Azure Storage](https://docs.microsoft.com/azure/storage/storage-use-emulator) wersji 5.2 lub nowszej. Alternatywnie, możesz zaktualizować *local.appsettings.json* plików za pomocą rzeczywistych połączenia usługi Azure Storage. 
 
 
-### <a name="start-with-sample-functions"></a>Uruchom funkcje próbki
+### <a name="start-with-sample-functions"></a>Start z usługą functions próbki
 
 #### <a name="c"></a>C#
 
-1. Klonowanie [repozytorium trwałe funkcji](https://github.com/Azure/azure-functions-durable-extension.git).
-2. Przejdź na tym komputerze do [folderu przykładów skryptu C#](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/csx). 
-3. Zainstaluj rozszerzenie trwałe funkcji platformy Azure, uruchamiając następujące polecenia oknie monitu / terminala:
+1. Klonuj [repozytorium funkcje trwałe](https://github.com/Azure/azure-functions-durable-extension.git).
+2. Przejdź na Twojej maszynie do [C# script samples folderu](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/csx). 
+3. Zainstaluj rozszerzenie niezawodne funkcje platformy Azure, uruchamiając następujące polecenia oknie monitu / terminalu:
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.4.0
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.5.0
     ```
-4. Zainstaluj rozszerzenie usługi Twilio funkcji platformy Azure, uruchamiając następujące polecenia oknie monitu / terminala:
+4. Instalowanie rozszerzenia usługi Twilio funkcji platformy Azure, uruchamiając następujące polecenia oknie monitu / terminalu:
 
     ```bash
     func extensions install -p Microsoft.Azure.WebJobs.Extensions.Twilio -v 3.0.0-beta5
     ```
-5. Uruchom Emulator usługi Azure Storage lub aktualizacji *local.appsettings.json* pliku z rzeczywistych parametrów połączenia usługi Azure Storage.
+5. Uruchamianie emulatora usługi Azure Storage lub aktualizacji *local.appsettings.json* plików za pomocą rzeczywistych parametrów połączenia usługi Azure Storage.
 6. Otwórz projekt w programie Visual Studio Code. 
-7. Aby uzyskać instrukcje na temat uruchamiania próbki, rozpoczynać się od [funkcji łańcucha — Witaj próbki sekwencji](durable-functions-sequence.md). Próbki można uruchomić lokalnie lub opublikowane na platformie Azure.
-8. Uruchom projekt, uruchamiając w poleceniu monitu / terminali następujące polecenie:
+7. Aby uzyskać instrukcje dotyczące sposobu uruchamiania przykładu, rozpoczynać się [funkcji łańcucha — Witaj przykładowy Sekwencja](durable-functions-sequence.md). Przykład można uruchomić lokalnie lub opublikowane na platformie Azure.
+8. Uruchom projekt, uruchamiając w poleceniu monitu / terminalu następujące polecenie:
     ```bash
     func host start
     ```
 
 #### <a name="javascript-functions-v2-only"></a>JavaScript (tylko funkcje v2)
 
-1. Klonowanie [repozytorium trwałe funkcji](https://github.com/Azure/azure-functions-durable-extension.git).
-2. Przejdź na tym komputerze do [folderu przykładów JavaScript](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/javascript). 
-3. Zainstaluj rozszerzenie trwałe funkcji platformy Azure, uruchamiając następujące polecenia oknie monitu / terminala:
+1. Klonuj [repozytorium funkcje trwałe](https://github.com/Azure/azure-functions-durable-extension.git).
+2. Przejdź na Twojej maszynie do [folderze samples JavaScript](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/javascript). 
+3. Zainstaluj rozszerzenie niezawodne funkcje platformy Azure, uruchamiając następujące polecenia oknie monitu / terminalu:
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.4.0
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.5.0
     ```
-4. Przywracanie pakietów npm, uruchamiając następujące polecenia oknie monitu / terminala:
+4. Przywróć pakiety npm, uruchamiając następujące polecenia oknie monitu / terminalu:
     
     ```bash
     npm install
     ``` 
-5. Aktualizacja *local.appsettings.json* pliku z rzeczywistych parametrów połączenia usługi Azure Storage.
+5. Aktualizacja *local.appsettings.json* pliku przy użyciu rzeczywistych parametrów połączenia usługi Azure Storage.
 6. Otwórz projekt w programie Visual Studio Code. 
-7. Aby uzyskać instrukcje na temat uruchamiania próbki, rozpoczynać się od [funkcji łańcucha — Witaj próbki sekwencji](durable-functions-sequence.md). Próbki można uruchomić lokalnie lub opublikowane na platformie Azure.
-8. Uruchom projekt, uruchamiając w poleceniu monitu / terminali następujące polecenie:
+7. Aby uzyskać instrukcje dotyczące sposobu uruchamiania przykładu, rozpoczynać się [funkcji łańcucha — Witaj przykładowy Sekwencja](durable-functions-sequence.md). Przykład można uruchomić lokalnie lub opublikowane na platformie Azure.
+8. Uruchom projekt, uruchamiając w poleceniu monitu / terminalu następujące polecenie:
     ```bash
     func host start
     ```
 
 ### <a name="start-with-an-empty-project"></a>Rozpoczynać pusty projekt
  
-1. W poleceniu monitu / terminalu przejdź do folderu, który będzie hostem aplikacji funkcji.
-2. Zainstaluj rozszerzenie trwałe funkcji platformy Azure, uruchamiając następujące polecenia oknie monitu / terminala:
+1. W poleceniu monitu / terminalu przejdź do folderu, który będzie hostować swoją aplikację funkcji.
+2. Zainstaluj rozszerzenie niezawodne funkcje platformy Azure, uruchamiając następujące polecenia oknie monitu / terminalu:
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.4.0
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.5.0
     ```
 3. Utwórz projekt aplikacji funkcji, uruchamiając następujące polecenie:
 
     ```bash
     func init
     ``` 
-4. Uruchom Emulator usługi Azure Storage lub aktualizacji *local.appsettings.json* pliku z rzeczywistych parametrów połączenia usługi Azure Storage.
+4. Uruchamianie emulatora usługi Azure Storage lub aktualizacji *local.appsettings.json* plików za pomocą rzeczywistych parametrów połączenia usługi Azure Storage.
 5. Następnie utwórz nową funkcję, uruchamiając następujące polecenie i wykonaj kroki kreatora:
 
     ```bash
     func new
     ```
     >[!IMPORTANT]
-    > Obecnie szablon trwałe funkcja nie jest dostępny, ale można uruchomić z jednym z obsługiwanych opcji, a następnie zmodyfikować kod. Użyj odwołania przykłady dotyczące [klienta aranżacji](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/csx/HttpStart), [wyzwalacza aranżacji](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/csx/E1_HelloSequence), i [działania wyzwalacza](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/csx/E1_HelloSequence).
+    > Obecnie szablon funkcji trwałe jest niedostępny, ale można zacząć od jednego z obsługiwanych opcji, a następnie zmodyfikować kod. Przykłady dla odwołania na użytek [klient Orkiestracji](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/csx/HttpStart), [wyzwalacza aranżacji](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/csx/E1_HelloSequence), i [działania wyzwalacza](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/csx/E1_HelloSequence).
 
-6. Otwórz folder projektu w programie Visual Studio Code i kontynuuj przez zmodyfikowanie kod szablonu. 
-7. Uruchom projekt, uruchamiając w poleceniu monitu / terminali następujące polecenie:
+6. Otwórz folder projektu w programie Visual Studio Code i kontynuować, modyfikując kod szablonu. 
+7. Uruchom projekt, uruchamiając w poleceniu monitu / terminalu następujące polecenie:
     ```bash
     func host start
     ```
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Jeśli wolisz, można użyć portalu Azure dla rozwoju trwałe funkcji.
+Jeśli wolisz, można użyć witryny Azure portal do tworzenia aplikacji funkcje trwałe.
 
    > [!NOTE]
-   > Trwałe funkcji w języku JavaScript nie są jeszcze dostępne w portalu.
+   > Trwałe funkcje w języku JavaScript nie są jeszcze dostępne w portalu.
 
 ### <a name="create-an-orchestrator-function"></a>Tworzenie funkcji programu orchestrator
 
-1. Utwórz nową aplikację funkcji w [functions.azure.com](https://functions.azure.com/signin).
+1. Tworzenie nowej aplikacji funkcji w [functions.azure.com](https://functions.azure.com/signin).
 
-2. Konfigurowanie aplikacji funkcji [Użyj wersji 2.0 runtime](set-runtime-version.md).
+2. Konfigurowanie aplikacji funkcji w celu [korzystać z wersji 2.0 środowisko uruchomieniowe](set-runtime-version.md).
 
-   Rozszerzenie funkcji trwałe działa zarówno środowiska uruchomieniowego 1.X i 2.0 runtime, ale szablony portalu Azure są dostępne tylko, jeśli celem 2.0 runtime.
+   Rozszerzenia funkcji trwałych działa zarówno na środowisko uruchomieniowe 1.X i 2.0 środowisko uruchomieniowe, ale szablonów portalu systemu Azure są dostępne tylko podczas określania wartości docelowej 2.0 środowisko uruchomieniowe.
 
-3. Utwórz nową funkcję, wybierając **"Tworzenie funkcji niestandardowej".** .
+3. Utwórz nową funkcję, wybierając **"Utwórz własną funkcję niestandardową".** .
 
-4. Zmień **języka** do **C#**, **scenariusza** do **trwałe funkcji** i wybierz **trwałe Starter Http funkcji -C#** szablonu.
+4. Zmiana **języka** do **C#**, **scenariusza** do **funkcje trwałe** i wybierz **niezawodne funkcje Http Starter -C#** szablonu.
 
-5. W obszarze **nie zainstalowano rozszerzenia**, kliknij przycisk **zainstalować** do pobrania rozszerzenie z NuGet.org. 
+5. W obszarze **rozszerzenia niezainstalowane**, kliknij przycisk **zainstalować** można pobrać rozszerzenia z witryny NuGet.org. 
 
-6. Po zakończeniu instalacji należy kontynuować tworzenie funkcji klienta aranżacji — **"HttpStart"** utworzonego przez wybranie **trwałe funkcje Http Starter - C#** szablonu.
+6. Po zakończeniu instalacji kontynuuj tworzenie funkcję klienta aranżacji — **"HttpStart"** utworzonego przez wybranie **niezawodne funkcje — szablon Http Starter — C#** szablonu.
 
-7. Teraz Utwórz funkcję aranżacji **"HelloSequence"** z **trwałe funkcje programu Orchestrator - C#** szablonu.
+7. Teraz Utwórz funkcję aranżacji **"HelloSequence"** z **Durable Functions — Orkiestrator — C#** szablonu.
 
-8. I zostanie wywołana funkcja ostatniego **"Hello"** z **trwałe działania funkcji - C#** szablonu.
+8. I zostanie wywołana funkcja last **"Hello"** z **Durable Functions — działanie — C#** szablonu.
 
-9. Przejdź do **"HttpStart"** funkcji i skopiuj adres URL.
+9. Przejdź do **"HttpStart"** funkcji i skopiuj jej adres URL.
 
-10. Umożliwia Postman lub programu cURL wywołanie funkcji trwałe. Przed testowaniem, Zastąp w adresie URL **{functionName}** z nazwą funkcji orchestrator - **HelloSequence**.  Nie są wymagane żadne dane, po prostu użyj zlecenie POST. 
+10. Użyj narzędzia Postman lub programu cURL, aby wywołać funkcję trwałe. Przed testowaniem, w powyższej ścieżce zastąpić adres URL **{functionName}** przy użyciu nazwy funkcji programu orchestrator - **HelloSequence**.  Żadne dane nie są wymagane, wystarczy użyć zlecenie POST. 
 
     ```bash
     curl -X POST https://{your function app name}.azurewebsites.net/api/orchestrators/HelloSequence
     ```
 
-11. Następnie wywołaj metodę **"statusQueryGetUri"** punktu końcowego i zostanie wyświetlony bieżący stan trwały funkcji
+11. Następnie wywołaj **"statusQueryGetUri"** punktu końcowego i możesz wyświetlić bieżący stan trwały funkcji
 
     ```json
         {
@@ -191,7 +191,7 @@ Jeśli wolisz, można użyć portalu Azure dla rozwoju trwałe funkcji.
         }
     ```
 
-12. Kontynuować wywoływania **"statusQueryGetUri"** punktu końcowego, aż stan zmieni się na **"Ukończone"** 
+12. Kontynuuj wywoływania **"statusQueryGetUri"** punktu końcowego, aż stan zmieni się na **"Ukończone"** 
 
     ```json
     {
@@ -207,9 +207,9 @@ Jeśli wolisz, można użyć portalu Azure dla rozwoju trwałe funkcji.
         }
     ```
 
-Gratulacje! Swoją pierwszą funkcję trwałego jest uruchomiona w portalu Azure!
+Gratulacje! Pierwszą funkcję trwałe jest uruchomiona w witrynie Azure Portal!
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Uruchamianie funkcji łańcucha próbki](durable-functions-sequence.md)
+> [Uruchom funkcję łańcucha próbki](durable-functions-sequence.md)

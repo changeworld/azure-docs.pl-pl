@@ -1,11 +1,28 @@
-``*.accesscontrol.windows.net``. Służy do kontrolowania dostępu i zarządzania tożsamościami. (Uwierzytelnianie usług ACS na podstawie zostanie uznana za przestarzałą 2017 grudnia) <br/>
-``https://login.microsoftonline.com`` Używany do zarządzania tożsamości i kontroli dostępu przy użyciu usługi AAD
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: site-recovery
+author: rayne-wiselman
+manager: carmonm
+ms.service: site-recovery
+ms.topic: include
+ms.date: 06/28/2018
+ms.author: raynew
+ms.openlocfilehash: f7d6c3f68618fec839ccff06b73ba44d106999d2
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342826"
+---
+| Name (Nazwa) | Adres URL komercyjnych | Adres URL dla instytucji rządowych | Opis |
+|---|---|---|---|
+| Azure AD | ``login.microsoftonline.com`` | ``login.microsoftonline.us`` | Używane do kontrolowania dostępu i tożsamości zarządzania przy użyciu usługi AAD |
+| Backup | ``*.backup.windowsazure.com`` | ``*.backup.windowsazure.us`` | Służy do przesyłania danych replikacji i koordynacji |
+| Replikacja | ``*.hypervrecoverymanager.windowsazure.com`` | ``*.hypervrecoverymanager.windowsazure.us``  | Służy do operacji zarządzania replikacją i koordynacji |
+| Magazyn | ``*.blob.core.windows.net`` | ``*.blob.core.usgovcloudapi.net``  | Służy do uzyskiwania dostępu do konta magazynu przechowującego zreplikowane dane |
+| Dane telemetryczne (opcjonalnie) | ``dc.services.visualstudio.com`` | ``dc.services.visualstudio.com`` | Używany do telemetrii |
 
-``*.backup.windowsazure.com``. Służy do transferowania i koordynacji danych replikacji. <br/> ``*.blob.core.windows.net``. Służy do uzyskiwania dostępu do konta magazynu przechowującego zreplikowane dane.<br/> ``*.hypervrecoverymanager.windowsazure.com``. Służy do wykonywania operacji i koordynacji zarządzania replikacją.<br/>
-``dc.services.visualstudio.com`` -Używane do zbierania danych telemetrycznych. <br>
-``time.nist.gov`` i ``time.windows.com``. Służą do sprawdzania synchronizacji czasu między systemem i czasem globalnym.
-<br/><br/>
-Adresy URL w chmurze Azure dla instytucji rządowych:<br/>— .ugv.hypervrecoverymanager.windowsazure.us<br/>— .ugv.backup.windowsazure.us<br/>— .ugi.hypervrecoverymanager.windowsazure.us<br/>— .ugi.backup.windowsazure.us<br/>-
-https://login.microsoftonline.us<br/>-
-https://login.microsoftonline.com<br/>
+``time.nist.gov`` i ``time.windows.com`` służą do sprawdzania synchronizacji czasu między systemem i czasem globalnym we wszystkich wdrożeniach.
+
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: bd1b0f21162978496750886d32e7166c3a90922d
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 130e9956702515574da47dc872b03598ca19ff29
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33868300"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031692"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Wprowadzenie do serwera Azure Multi-Factor Authentication
 
@@ -103,8 +103,8 @@ Po pobraniu serwera możesz go zainstalować i skonfigurować. Sprawdź, czy ser
 
 1. Kliknij dwukrotnie plik wykonywalny.
 2. Upewnij się, że na ekranie Wybieranie folderu instalacji wybrany jest prawidłowy folder, a następnie kliknij przycisk **Dalej**.
-3. Po ukończeniu instalacji kliknij przycisk **Zakończ**.  Spowoduje to uruchomienie kreatora konfiguracji.
-4. Na ekranie powitalnym kreatora konfiguracji zaznacz pole **Pomiń korzystanie z kreatora konfiguracji uwierzytelniania** i kliknij przycisk **Dalej**.  Spowoduje to zamknięcie kreatora i uruchomienie serwera.
+3. Po ukończeniu instalacji kliknij przycisk **Zakończ**. Spowoduje to uruchomienie kreatora konfiguracji.
+4. Na ekranie powitalnym kreatora konfiguracji zaznacz pole **Pomiń korzystanie z kreatora konfiguracji uwierzytelniania** i kliknij przycisk **Dalej**. Spowoduje to zamknięcie kreatora i uruchomienie serwera.
 
    ![Chmura](./media/howto-mfaserver-deploy/skip2.png)
 
@@ -116,7 +116,7 @@ Aby ułatwić wprowadzenie, zezwól serwerowi usługi MFA na komunikowanie się 
 
 Wiadomość e-mail powinna zależeć od konfiguracji użytkowników na potrzeby weryfikacji dwuetapowej. Jeśli na przykład uda się zaimportować numery telefonów z katalogu firmy, wiadomość e-mail powinna zawierać domyślny numer telefonu, aby użytkownicy wiedzieli, czego oczekiwać. Jeśli nie importujesz numerów telefonów lub użytkownicy będą korzystać z aplikacji mobilnej, wyślij wiadomość e-mail umożliwiającą im ukończenie rejestracji konta. W wiadomości e-mail podaj hiperlink do portalu użytkownika usługi Azure Multi-Factor Authentication.
 
-Treść wiadomości e-mail różni się też w zależności od metody weryfikacji, która została ustawiona dla użytkownika (połączenie telefoniczne, wiadomość SMS lub aplikacja mobilna).  Jeśli na przykład użytkownik musi podczas uwierzytelniania użyć numeru PIN, w wiadomości e-mail zostanie podany początkowy numer PIN.  Użytkownicy muszą zmienić numer PIN podczas pierwszej weryfikacji.
+Treść wiadomości e-mail różni się też w zależności od metody weryfikacji, która została ustawiona dla użytkownika (połączenie telefoniczne, wiadomość SMS lub aplikacja mobilna). Jeśli na przykład użytkownik musi podczas uwierzytelniania użyć numeru PIN, w wiadomości e-mail zostanie podany początkowy numer PIN. Użytkownicy muszą zmienić numer PIN podczas pierwszej weryfikacji.
 
 ### <a name="configure-email-and-email-templates"></a>Konfigurowanie wiadomości e-mail i szablonów wiadomości e-mail
 
@@ -130,14 +130,14 @@ Na karcie Zawartość wiadomości e-mail są widoczne szablony wiadomości e-mai
 
 ## <a name="import-users-from-active-directory"></a>Importowanie użytkowników z usługi Active Directory
 
-Teraz, po zainstalowaniu serwera, należy dodać użytkowników. Możesz utworzyć ich ręcznie, zaimportować użytkowników z usługi Active Directory lub skonfigurować automatyczną synchronizację z usługą Active Directory.
+Serwer jest już zainstalowany, należy więc dodać użytkowników. Możesz utworzyć ich ręcznie, zaimportować użytkowników z usługi Active Directory lub skonfigurować automatyczną synchronizację z usługą Active Directory.
 
 ### <a name="manual-import-from-active-directory"></a>Ręczne importowanie z usługi Active Directory
 
 1. Na serwerze Azure MFA, w obszarze po lewej stronie, wybierz pozycję **Użytkownicy**.
 2. U dołu ekranu wybierz pozycję **Importuj z usługi Active Directory**.
-3. Po wykonaniu tych czynności możesz wyszukiwać poszczególnych użytkowników lub wyszukać w katalogu usługi AD jednostki organizacyjne obejmujące użytkowników.  W tym przypadku jest określana jednostka organizacyjna użytkowników.
-4. Zaznacz wszystkich użytkowników po prawej stronie, a następnie kliknij przycisk **Importuj**.  Zostanie wyświetlone okno podręczne informujące, że proces został zakończony pomyślnie.  Zamknij okno importu.
+3. Po wykonaniu tych czynności możesz wyszukiwać poszczególnych użytkowników lub wyszukać w katalogu usługi AD jednostki organizacyjne obejmujące użytkowników. W tym przypadku jest określana jednostka organizacyjna użytkowników.
+4. Zaznacz wszystkich użytkowników po prawej stronie, a następnie kliknij przycisk **Importuj**. Zostanie wyświetlone okno podręczne informujące, że proces został zakończony pomyślnie. Zamknij okno importu.
 
    ![Importowanie użytkowników serwera usługi MFA](./media/howto-mfaserver-deploy/import2.png)
 
@@ -181,6 +181,10 @@ Jeśli trzeba przywrócić dane, wykonaj następujące kroki:
 5. Uruchom usługę **MultiFactorAuth**.
 
 Nowy serwer jest teraz gotowy i został uruchomiony przy użyciu oryginalnych danych konfiguracji i użytkowników z kopii zapasowej.
+
+## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>Zarządzanie protokołami TLS/SSL i zestawami szyfrowania
+
+Po uaktualnieniu do wersji 8.x lub wyższej oprogramowania MFA Server lub zainstalowaniu jej zaleca się wyłączenie lub usunięcie starszych i słabszych zestawów szyfrowania, chyba że są one wymagane przez organizację. Informacje o tym, jak wykonać to zadanie, można znaleźć w artykule [Managing SSL/TLS Protocols and Cipher Suites for AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) (Zarządzanie protokołami SSL/TLS i zestawami szyfrowania dla usług AD FS).
 
 ## <a name="next-steps"></a>Następne kroki
 

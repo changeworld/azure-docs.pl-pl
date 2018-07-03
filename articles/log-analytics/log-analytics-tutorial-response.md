@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/23/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 70698dc233dac60a2fa2d1444930d21d3fba8773
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6fa090a5277b1feb3e1b6ea0114ce90035197076
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637127"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753272"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Odpowiadanie na zdarzenia przy użyciu alertów platformy Azure Monitor
 Alerty platformy Azure Monitor mogą identyfikować ważne informacje w repozytorium usługi Log Analytics. Są one tworzone przy użyciu reguł alertów, które automatycznie uruchamiają przeszukiwanie dzienników w regularnych odstępach czasu. Jeśli wyniki przeszukiwania dzienników pasują do danych kryteriów, zostaje utworzony rekord alertu. Ponadto można go skonfigurować tak, aby generował automatyczną odpowiedź.  Ten samouczek jest kontynuacją samouczka [Tworzenie i udostępnianie pulpitów nawigacyjnych z danymi usługi Log Analytics](log-analytics-tutorial-dashboards.md).   
@@ -41,7 +41,7 @@ Alerty są tworzone na podstawie reguł alertów na platformie Azure Monitor i m
 
 W poniższym przykładzie tworzona jest reguła alertu pomiaru metryki na podstawie zapytania *Maszyny wirtualne platformy Azure — użycie procesora* znajdującego się w [samouczku Wizualizacja danych](log-analytics-tutorial-dashboards.md).  Alert jest tworzony dla każdej maszyny wirtualnej, która przekracza próg 90%.  
 
-1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
+1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Monitor**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Monitor**.
 2. W okienku po lewej stronie wybierz pozycję **Alerty**, a następnie kliknij przycisk **Nowa reguła alertu** w górnej części strony, aby utworzyć nowy alert.<br><br> ![Tworzenie nowej reguły alertu](./media/log-analytics-tutorial-response/alert-rule-02.png)<br>
 3. W pierwszym kroku w sekcji **Utwórz alert** wybierzesz jako zasób obszar roboczy usługi Log Analytics, ponieważ jest to sygnał alertu oparty na dzienniku.  Filtruj wyniki: jeśli masz więcej subskrypcji, wybierz z listy rozwijanej **Subskrypcję** zawierającą maszynę wirtualną oraz obszar roboczy usługi Log Analytics, które zostały utworzone wcześniej.  Filtruj **Typ zasobu**, wybierając z listy rozwijanej pozycję **Log Analytics**.  Na końcu wybierz kolejno opcje **Zasób** **DefaultLAWorkspace**, a następnie kliknij przycisk **Gotowe**.<br><br> ![Zadanie tworzenia alertu — krok 1](./media/log-analytics-tutorial-response/alert-rule-03.png)<br>
 4. W sekcji **Kryteria alertu** kliknij przycisk **Dodaj kryteria**, aby wybrać zapisane zapytanie, a następnie podaj logikę, zgodnie z którą działa reguła alertu.  W okienku **Konfigurowanie logiki sygnału** wybierz z listy pozycję *Maszyny wirtualne platformy Azure — użycie procesora*.  Okienko jest aktualizowane i zawiera ustawienia konfiguracji dla alertu.  W górnej części znajdują się wyniki z ostatnich 30 minut dla wybranego sygnału i samo zapytanie wyszukiwania.  

@@ -1,10 +1,27 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: billing
+author: rothja
+ms.service: billing
+ms.topic: include
+ms.date: 07/02/2018
+ms.author: jroth
+ms.custom: include file
+ms.openlocfilehash: f47654d056a26f5a58b1ccc2c200f774bee1f19f
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37348205"
+---
 | Zasób | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
 | Maszyny wirtualne na [subskrypcję](../articles/billing-buy-sign-up-azure-subscription.md) |10 000 <sup>1</sup> na region |10 000 na region |
 | Całkowita liczba rdzeni maszyn wirtualnych na [subskrypcję](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> na region | Kontakt z pomocą techniczną |
 | Liczba rdzeni maszyn wirtualnych na serię (Dv2, F itp.) na [subskrypcję](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> na region | Kontakt z pomocą techniczną |
 | [Współadministratorzy](../articles/billing-add-change-azure-subscription-administrator.md) na subskrypcję |Nieograniczona liczba |Nieograniczona liczba |
-| [Konta magazynu](../articles/storage/common/storage-create-storage-account.md) na subskrypcję |200 |200<sup>2</sup> |
+| [Konta magazynu](../articles/storage/common/storage-create-storage-account.md) na region na subskrypcję |200 |200<sup>2</sup> |
 | [Grupy kontenerów](../articles/azure-resource-manager/resource-group-overview.md) na subskrypcję |980 |980 |
 | [Zestawy dostępności](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) na subskrypcję |2000 na region |2000 na region |
 | Odczyty interfejsu API usługi Resource Manager |15 000 na godzinę |15 000 na godzinę |

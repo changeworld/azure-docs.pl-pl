@@ -7,14 +7,14 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 03/29/2018
+ms.date: 06/26/2018
 ms.author: v-geberr
-ms.openlocfilehash: 1e8647e34da3d34946a4f6ac298017f6d4c99de6
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: b718ed505babd2df6487aecd3a87f17590aef2b9
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265364"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061251"
 ---
 # <a name="tutorial-create-app-that-uses-simple-entity"></a>Samouczek: tworzenie aplikacji używającej jednostki prostej
 W ramach tego samouczka utworzysz aplikację demonstrującą sposób wyodrębniania danych nauczonych maszynowo z wypowiedzi za pomocą jednostki **Simple** (prostej).
@@ -22,125 +22,110 @@ W ramach tego samouczka utworzysz aplikację demonstrującą sposób wyodrębnia
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * Omówienie jednostek prostych 
-> * Tworzenie nowej aplikacji LUIS dla domeny komunikacji z intencją SendMessage
-> * Dodawanie intencji _None_ i dodawanie przykładowych wypowiedzi
-> * Dodawanie jednostki prostej w celu wyodrębnienia zawartość wiadomości z wypowiedzi
+> * Tworzenie nowej aplikacji LUIS dla domeny zasobów ludzkich (HR, Human Resources) 
+> * Dodawanie prostej jednostki do wyodrębnienia zadań z aplikacji
 > * Uczenie i publikowanie aplikacji
 > * Wysyłanie zapytania do punktu końcowego aplikacji w celu wyświetlenia odpowiedzi JSON usługi LUIS
+> * Dodawanie listy fraz w celu wzmocnienia sygnału wyrazów związanych z zadaniami
+> * Uczenie, publikowanie aplikacji i ponowne wykonywanie zapytania dotyczącego punktu końcowego
 
-Na potrzeby tego artykułu wymagane jest bezpłatne konto usługi [LUIS][LUIS] w celu tworzenia aplikacji LUIS.
+Na potrzeby tego artykułu wymagane jest bezpłatne konto usługi [LUIS](luis-reference-regions.md#luis-website) w celu tworzenia aplikacji LUIS.
+
+## <a name="before-you-begin"></a>Przed rozpoczęciem
+Jeśli nie masz aplikacji Human Resources z samouczka dotyczącego [jednostki hierarchicznej](luis-quickstart-intent-and-hier-entity.md), [zaimportuj](create-new-app.md#import-new-app) kod JSON do nowej aplikacji w witrynie internetowej usługi [LUIS](luis-reference-regions.md#luis-website). Aplikacja do zaimportowania znajduje się w repozytorium [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-hier-HumanResources.json) usługi Github.
+
+Jeśli chcesz zachować oryginalną aplikację Human Resources, sklonuj tę wersję na stronie [Settings](luis-how-to-manage-versions.md#clone-a-version) (Ustawienia) i nadaj jej nazwę `simple`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji.  
 
 ## <a name="purpose-of-the-app"></a>Przeznaczenie aplikacji
-Ta aplikacja pokazuje, jak wydobyć dane z wypowiedzi. Przeanalizujmy następującą wypowiedź z czatbota:
+Ta aplikacja pokazuje, jak wydobyć dane z wypowiedzi. Przeanalizujmy następujące wypowiedzi z czatbota:
 
-```JSON
-Send a message telling them to stop
-```
+|Wypowiedź|Nazwa zadania możliwa do wyodrębnienia|
+|:--|:--|
+|I want to apply for the new accounting job.|accounting|
+|Please submit my resume for the engineering position.|engineering|
+|Fill out application for job 123456|123456|
 
-Intencją jest wysłanie wiadomości. Ważnymi danymi w wypowiedzi jest sama wiadomość, `telling them to stop`.  
+W tym samouczku dodasz nową jednostkę w celu wyodrębnienia nazwy zadania. Możliwość wyodrębniania określonego numeru zadania została przedstawiona w [samouczku](luis-quickstart-intents-regex-entity.md) dotyczącym wyrażeń regularnych. 
 
 ## <a name="purpose-of-the-simple-entity"></a>Przeznaczenie jednostki prostej
-Celem jednostki prostej jest nauczenie usługi LUIS, co to jest wiadomość i gdzie można ją znaleźć w wypowiedzi. Część wypowiedzi, która jest wiadomością, może się zmienić dla różnych wypowiedzi i jest zależna od doboru słów i długości wypowiedzi. Usługa LUIS potrzebuje przykładów wiadomości w dowolnej wypowiedzi we wszystkich intencjach.  
+Celem jednostki prostej w tej aplikacji LUIS jest nauczenie usługi LUIS, co to jest numer zadania i gdzie można go znaleźć w wypowiedzi. Część wypowiedzi, która jest zadaniem, może się zmienić dla różnych wypowiedzi i jest zależna od doboru wyrazów i długości wypowiedzi. Usługa LUIS potrzebuje przykładów zadań w dowolnej wypowiedzi we wszystkich intencjach.  
 
-Dla tej prostej aplikacji wiadomość będzie znajdować się na końcu wypowiedzi. 
+Nazwa zadania jest trudna do określenia, ponieważ może być rzeczownikiem, czasownikiem lub frazą składającą się z kilku wyrazów. Na przykład:
 
-## <a name="create-a-new-app"></a>Tworzenie nowej aplikacji
-1. Zaloguj się w witrynie internetowej usługi [LUIS][LUIS]. Pamiętaj, aby zalogować się w regionie, w którym mają zostać opublikowane punkty końcowe usługi LUIS.
+|Zadania|
+|--|
+|engineer|
+|software engineer|
+|senior software engineer|
+|engineering team lead |
+|air traffic controller|
+|motor vehicle operator|
+|ambulance driver|
+|tender|
+|extruder|
+|millwright|
 
-2. W witrynie internetowej usługi [LUIS][LUIS] wybierz pozycję **Create new app** (Utwórz nową aplikację).  
+Ta aplikacja LUIS ma nazwy zadań w kilku intencjach. Oznaczając te wyrazy w wypowiedziach dla wszystkich intencji, usługa LUIS uczy się, czym jest zadanie, i poznaje dalsze sposoby wyszukiwania go w wypowiedziach.
 
-    ![Lista aplikacji LUIS](./media/luis-quickstart-primary-and-secondary-data/app-list.png)
+## <a name="create-job-simple-entity"></a>Tworzenie prostej jednostki zadania
 
-3. W wyskakującym oknie dialogowym wprowadź nazwę `MyCommunicator`. 
+1. Upewnij się, że aplikacja Human Resources znajduje się w sekcji **Build** (Kompilacja) aplikacji LUIS. Możesz przejść do tej sekcji, wybierając pozycję **Build** (Kompilacja) na górnym pasku menu po prawej stronie. 
 
-    ![Lista aplikacji LUIS](./media/luis-quickstart-primary-and-secondary-data/create-new-app-dialog.png)
+    [ ![Zrzut ekranu aplikacji LUIS z wyróżnioną pozycją Build (Kompilacja) na górnym prawym pasku nawigacyjnym](./media/luis-quickstart-primary-and-secondary-data/hr-first-image.png)](./media/luis-quickstart-primary-and-secondary-data/hr-first-image.png#lightbox)
 
-4. Po zakończeniu tego procesu aplikacja wyświetli stronę **Intents** (Intencje) z intencją **None**. 
+2. Na stronie **Intents** (Intencje) wybierz intencję **ApplyForJob**. 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/intents-list.png "Zrzut ekranu ze stroną Intents (Intencje) usługi LUIS z intencją None")](media/luis-quickstart-primary-and-secondary-data/intents-list.png#lightbox)
+    [![](media/luis-quickstart-primary-and-secondary-data/hr-select-applyforjob.png "Zrzut ekranu usługi LUIS z wyróżnioną intencją „ApplyForJob”")](media/luis-quickstart-primary-and-secondary-data/hr-select-applyforjob.png#lightbox)
 
-## <a name="create-a-new-intent"></a>Tworzenie nowej intencji
+3. W wypowiedzi `I want to apply for the new accounting job` wybierz pozycję `accounting`, wprowadź `Job` w górnym polu menu podręcznego, a następnie w menu podręcznym wybierz polecenie **Create new entity** (Utwórz nową jednostkę). 
 
-1. Na stronie **Intents** (Intencje) wybierz pozycję **Create new intent** (Utwórz nową intencję). 
+    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "Zrzut ekranu usługi LUIS z intencją „ApplyForJob” i wyróżnionymi krokami tworzenia jednostki")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
 
-    [![](media/luis-quickstart-primary-and-secondary-data/create-new-intent-button.png "Zrzut ekranu usługi LUIS z wyróżnionym przyciskiem Create new intent (Utwórz nową intencję)")](media/luis-quickstart-primary-and-secondary-data/create-new-intent-button.png#lightbox)
+4. W oknie podręcznym sprawdź nazwę i typ jednostki, a następnie wybierz pozycję **Done** (Gotowe).
 
-2. Wprowadź nazwę nowej intencji: `SendMessage`. Ta intencja powinna być wybierana za każdym razem, gdy użytkownik chce wysłać wiadomość.
+    ![Modalne okno dialogowe tworzenia prostej jednostki o nazwie Job (Zadanie) i typie Simple (Prosta)](media/luis-quickstart-primary-and-secondary-data/hr-create-simple-entity-popup.png)
 
-    Tworząc intencję, tworzysz główną kategorię informacji, którą chcesz identyfikować. Nadanie nazwy kategorii umożliwia każdej innej aplikacji, która używa wyników zapytania usługi LUIS, zastosowanie tej nazwy kategorii w celu znalezienia odpowiedniej odpowiedzi lub podjęcia odpowiedniej akcji. Usługa LUIS nie będzie odpowiadać na te pytania — określi jedynie, jakiego rodzaju informacji dotyczy pytanie w języku naturalnym. 
+5. W wypowiedzi `Submit resume for engineering position` oznacz etykietą wyraz „engineering” jako jednostkę Job (Zadanie). Zaznacz wyraz „engineering”, a następnie wybierz pozycję Job (Zadanie) w menu podręcznym. 
 
-    ![Wprowadź nazwę intencji SendMessage](./media/luis-quickstart-primary-and-secondary-data/create-new-intent-popup-dialog.png)
+    [![](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Zrzut ekranu usługi LUIS z wyróżnioną etykietą jednostki Job (Zadanie)")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
-3. Dodaj siedem wypowiedzi do intencji `SendMessage` — takich, których spodziewasz się ze strony użytkownika, na przykład:
+    Wszystkie wypowiedzi są oznaczone etykietami, ale pięć wypowiedzi nie wystarcza, aby nauczyć usługę LUIS o powiązanych z zadaniem wyrazach i frazach. Zadania, które używają wartości liczbowej, nie potrzebują większej liczby przykładów, ponieważ używają jednostki wyrażenia regularnego. Zadania, które są wyrazami lub frazami, wymagają co najmniej 15 dalszych przykładów. 
 
-    | Przykładowe wypowiedzi|
-    |--|
-    |Odpowiedz: Mam wiadomość od Ciebie, odpowiedź będę znać jutro|
-    |Wyślij wiadomość: Kiedy będziesz w domu?|
-    |Wyślij wiadomość, że nie mam czasu|
-    |Poinformuj, że to musi być zrobione dzisiaj|
-    |Wyślij wiadomość błyskawiczną, że prowadzę i odpowiem później|
-    |Napisz wiadomość do Dawida o treści: Kiedy to było?|
-    |Wyślij powitanie do Grzegorza|
+6. Dodaj więcej wypowiedzi i oznacz wyrazy lub frazy dotyczące zadania jako jednostkę **Job** (Zadanie). Typy zadań są ogólnie używane w ramach zatrudnienia na potrzeby usługi obsługującej zatrudnienie. Jeśli potrzebujesz zadań związanych z określoną branżą, wyrazy zadania powinny to odzwierciedlać. 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/enter-utterances-on-intent-page.png "Zrzut ekranu z usługi LUIS z wprowadzonymi wypowiedziami")](media/luis-quickstart-primary-and-secondary-data/enter-utterances-on-intent-page.png#lightbox)
+    |Wypowiedź|Jednostka Job (Zadanie)|
+    |:--|:--|
+    |I'm applying for the Program Manager desk in R&D|Program Manager|
+    |Here is my line cook application.|line cook|
+    |My resume for camp counselor is attached.|camp counselor|
+    |This is my c.v. for administrative assistant.|administrative assistant|
+    |I want to apply for the management job in sales.|management, sales|
+    |This is my resume for the new accounting position.|accounting|
+    |My application for barback is included.|barback|
+    |I'm submitting my application for roofer and framer.|roofer, framer|
+    |My c.v. for bus driver is here.|bus driver|
+    |I'm a registered nurse. Here is my resume.|registered nurse|
+    |I would like to submit my paperwork for the teaching position I saw in the paper.|teaching|
+    |This is my c.v. for the stocker post in fruits and vegetables.|stocker|
+    |Apply for tile work.|kafelek|
+    |Attached resume for landscape architect.|landscape architect|
+    |My curriculum vitae for professor of biology is enclosed.|professor of biology|
+    |I would like to apply for the position in photography.|photography|git 
 
-## <a name="add-utterances-to-none-intent"></a>Dodawanie wypowiedzi do intencji None
-
-Aplikacja LUIS obecnie nie zawiera żadnych wypowiedzi dla intencji **None**. Potrzebne są wypowiedzi, na które aplikacja ma nie odpowiadać, dlatego należy dodać wypowiedzi do intencji **None**. Nie zostawiaj jej pustej. 
-    
-1. Wybierz pozycję **Intents** (Intencje) na lewym panelu. 
-
-    [![](media/luis-quickstart-primary-and-secondary-data/select-intent-link.png "Zrzut ekranu usługi LUIS z wyróżnionym przyciskiem Intents (Intencje)")](media/luis-quickstart-primary-and-secondary-data/select-intent-link.png#lightbox)
-
-2. Wybierz intencję **None**. 
-
-    [![](media/luis-quickstart-primary-and-secondary-data/select-none-intent.png "Zrzut ekranu z wybieraniem intencji None")](media/luis-quickstart-primary-and-secondary-data/select-none-intent.png#lightbox)
-
-3. Dodaj trzy wypowiedzi, które może wprowadzić użytkownik, ale które nie są istotne dla tej aplikacji. Niektóre dobre intencje **None** to:
-
-    | Przykładowe wypowiedzi|
-    |--|
-    |Anuluj!|
-    |Do widzenia|
-    |Co się dzieje?|
-    
-    W aplikacji wywołującej usługę LUIS (takiej jak czatbot), gdy usługa LUIS zwraca intencję **None** dla wypowiedzi, bot może zadać pytanie, czy użytkownik chce zakończyć konwersację. Bot może również podać więcej wskazówek umożliwiających kontynuowanie konwersacji, jeśli użytkownik nie chce jej zakończyć. 
-
-    [![](media/luis-quickstart-primary-and-secondary-data/utterances-for-none-intent.png "Zrzut ekranu z usługi LUIS z wypowiedziami dla intencji None")](media/luis-quickstart-primary-and-secondary-data/utterances-for-none-intent.png#lightbox)
-
-## <a name="create-a-simple-entity-to-extract-message"></a>Tworzenie prostej jednostki do wyodrębnienia wiadomości 
+## <a name="label-entity-in-example-utterances-for-getjobinformation-intent"></a>Oznaczanie etykietą jednostki w przykładowych wypowiedziach dla intencji GetJobInformation
 1. Wybierz pozycję **Intents** (Intencje) z menu po lewej.
 
-    ![Wybieranie linku Intents (Intencje)](./media/luis-quickstart-primary-and-secondary-data/select-intents-from-none-intent.png)
+2. Wybierz pozycję **GetJobInformation** z listy intencji. 
 
-2. Wybierz pozycję `SendMessage` z listy intencji.
+3. Oznacz etykietami zadania w przykładowych wypowiedziach:
 
-    ![Wybierz intencję SendMessage](./media/luis-quickstart-primary-and-secondary-data/select-sendmessage-intent.png)
+    |Wypowiedź|Jednostka Job (Zadanie)|
+    |:--|:--|
+    |Is there any work in databases?|bazy danych|
+    |Looking for a new situation with responsibilities in accounting|accounting|
+    |What positions are available for senior engineers?|senior engineers|
 
-3. W wypowiedzi (`Reply with I got your message, I will have the answer tomorrow`) wybierz pierwsze (`I`) i ostatnie słowo treści wiadomości (`tomorrow`). Wszystkie te słowa są wybierane dla wiadomości i u góry wyświetlane jest menu rozwijane.
-
-    [![](media/luis-quickstart-primary-and-secondary-data/select-words-in-utterance.png "Zrzut ekranu z wybieraniem słów wiadomości w wypowiedzi")](media/luis-quickstart-primary-and-secondary-data/select-words-in-utterance.png#lightbox)
-
-4. Wprowadź nazwę jednostki `Message` w polu tekstowym.
-
-    [![](media/luis-quickstart-primary-and-secondary-data/enter-entity-name-in-box.png "Zrzut ekranu wprowadzania nazwy jednostki w polu")](media/luis-quickstart-primary-and-secondary-data/enter-entity-name-in-box.png#lightbox)
-
-5. Wybierz pozycję **Create new entity** (Utwórz nową jednostkę) z menu rozwijanego. Przeznaczeniem jednostki jest wydobycie tekstu, który stanowi treść wiadomości. W tej aplikacji LUIS wiadomość tekstowa znajduje się na końcu wypowiedzi, ale wypowiedź może być dowolnej długości, tak samo jak wiadomość. 
-
-    [![](media/luis-quickstart-primary-and-secondary-data/create-message-entity.png "Zrzut ekranu przedstawiający tworzenie nowej jednostki z wypowiedzi")](media/luis-quickstart-primary-and-secondary-data/create-message-entity.png#lightbox)
-
-6. W oknie wyskakującym domyślnym typem jednostki jest **Simple** (Prosta), a nazwą jednostki jest `Message`. Zachowaj te ustawienia i wybierz pozycję **Done** (Gotowe).
-
-    ![Weryfikowanie typu jednostki](./media/luis-quickstart-primary-and-secondary-data/entity-type.png)
-
-7. Teraz, gdy jednostka została utworzona i oznaczono etykietą jedną wypowiedź, oznacz etykietami resztę wypowiedzi za pomocą tej jednostki. Wybierz wypowiedź, a następnie kliknij pierwsze i ostatnie słowo wiadomości. Z menu rozwijanego wybierz jednostkę `Message`. Wiadomość jest teraz oznaczona w jednostce. Oznacz etykietami wszystkie frazy wiadomości w pozostałych wypowiedziach.
-
-    [![](media/luis-quickstart-primary-and-secondary-data/all-labeled-utterances.png "Zrzut ekranu przedstawiający wszystkie wypowiedzi oznaczone etykietami")](media/luis-quickstart-primary-and-secondary-data/all-labeled-utterances.png#lightbox)
-
-    Domyślnym widokiem wypowiedzi jest **Entities view** (Widok jednostek). Wybierz kontrolkę **Entities view** (Widok jednostek) nad wypowiedziami. Widok **Tokens view** (Widok tokenów) wyświetla tekst wypowiedzi. 
-
-    [![](media/luis-quickstart-primary-and-secondary-data/tokens-view-of-utterances.png "Zrzut ekranu wypowiedzi w widoku tokenów")](media/luis-quickstart-primary-and-secondary-data/tokens-view-of-utterances.png#lightbox)
+    Istnieją inne przykładowe wypowiedzi, ale nie zawierają one wyrazów związanych z zadaniem.
 
 ## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
 Usługa LUIS nie wie o zmianach intencji i jednostek (modelu), dopóki nie zostanie ich nauczona. 
@@ -169,48 +154,227 @@ Na stronie **Publish** (Publikowanie) wybierz link **endpoint** (punkt końcowy)
 
 [![](media/luis-quickstart-primary-and-secondary-data/publish-select-endpoint.png "Zrzut ekranu przedstawiający stronę publikowania z wyróżnionym punktem końcowym")](media/luis-quickstart-primary-and-secondary-data/publish-select-endpoint.png#lightbox)
 
-Ta czynność spowoduje otwarcie nowego okna przeglądarki z adresem URL punktu końcowego na pasku adresu. Przejdź na koniec tego adresu URL i wprowadź ciąg `text I'm driving and will be 30 minutes late to the meeting`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe oznaczone wypowiedzi, dlatego jest dobra do testowania i powinna zwrócić wypowiedzi `SendMessage`.
+Ta czynność spowoduje otwarcie nowego okna przeglądarki z adresem URL punktu końcowego na pasku adresu. Przejdź na koniec tego adresu URL i wprowadź ciąg `Here is my c.v. for the programmer job`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe oznaczone wypowiedzi, dlatego jest dobra do testowania i powinna zwrócić wypowiedzi `ApplyForJob`.
 
-```
+```JSON
 {
-  "query": "text I'm driving and will be 30 minutes late to the meeting",
+  "query": "Here is my c.v. for the programmer job",
   "topScoringIntent": {
-    "intent": "SendMessage",
-    "score": 0.987501
+    "intent": "ApplyForJob",
+    "score": 0.9826467
   },
   "intents": [
     {
-      "intent": "SendMessage",
-      "score": 0.987501
+      "intent": "ApplyForJob",
+      "score": 0.9826467
+    },
+    {
+      "intent": "GetJobInformation",
+      "score": 0.0218927357
+    },
+    {
+      "intent": "MoveEmployee",
+      "score": 0.007849265
+    },
+    {
+      "intent": "Utilities.StartOver",
+      "score": 0.00349470088
+    },
+    {
+      "intent": "Utilities.Confirm",
+      "score": 0.00348804821
     },
     {
       "intent": "None",
-      "score": 0.111048922
+      "score": 0.00319909188
+    },
+    {
+      "intent": "FindForm",
+      "score": 0.00222647213
+    },
+    {
+      "intent": "Utilities.Help",
+      "score": 0.00211193133
+    },
+    {
+      "intent": "Utilities.Stop",
+      "score": 0.00172086991
+    },
+    {
+      "intent": "Utilities.Cancel",
+      "score": 0.00138010911
     }
   ],
   "entities": [
     {
-      "entity": "i ' m driving and will be 30 minutes late to the meeting",
-      "type": "Message",
-      "startIndex": 5,
-      "endIndex": 58,
-      "score": 0.162995353
+      "entity": "programmer",
+      "type": "Job",
+      "startIndex": 24,
+      "endIndex": 33,
+      "score": 0.5230502
     }
   ]
 }
 ```
 
+## <a name="names-are-tricky"></a>Nazwy są trudne
+Aplikacja LUIS znalazła prawidłową intencję z wysokim poziomem pewności i wyodrębniła nazwę zadania, ale nazwy mogą być skomplikowane. Spróbuj użyć wypowiedzi `This is the lead welder paperwork`.  
+
+W poniższym kodzie JSON usługa LUIS odpowiada przy użyciu prawidłowej intencji `ApplyForJob`, ale nie wyodrębniła nazwy zadania `lead welder`. 
+
+```JSON
+{
+  "query": "This is the lead welder paperwork.",
+  "topScoringIntent": {
+    "intent": "ApplyForJob",
+    "score": 0.468558252
+  },
+  "intents": [
+    {
+      "intent": "ApplyForJob",
+      "score": 0.468558252
+    },
+    {
+      "intent": "GetJobInformation",
+      "score": 0.0102701457
+    },
+    {
+      "intent": "MoveEmployee",
+      "score": 0.009442534
+    },
+    {
+      "intent": "Utilities.StartOver",
+      "score": 0.00639619166
+    },
+    {
+      "intent": "None",
+      "score": 0.005859333
+    },
+    {
+      "intent": "Utilities.Cancel",
+      "score": 0.005087704
+    },
+    {
+      "intent": "Utilities.Stop",
+      "score": 0.00315379258
+    },
+    {
+      "intent": "Utilities.Help",
+      "score": 0.00259344373
+    },
+    {
+      "intent": "FindForm",
+      "score": 0.00193389168
+    },
+    {
+      "intent": "Utilities.Confirm",
+      "score": 0.000420796918
+    }
+  ],
+  "entities": []
+}
+```
+
+Ponieważ nazwa może być dowolna, usługa LUIS przewiduje jednostki dokładniej, jeśli ma listę fraz powiązanych z wyrazami, które umożliwiają wzmocnienie sygnału.
+
+## <a name="to-boost-signal-add-jobs-phrase-list"></a>Dodawanie listy fraz zadań w celu wzmocnienia sygnału
+Otwórz plik [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) z repozytorium Github LUIS-Samples. Lista zawiera ponad tysiąc wyrazów i fraz związanych z zadaniami. Wyszukaj na liście istotne w Twoim przypadku wyrazy dotyczące zadań. Jeśli odpowiednich wyrazów lub fraz nie ma na liście, dodaj własne.
+
+1. W sekcji **Build** (Kompilacja) aplikacji LUIS wybierz pozycję **Phrase lists** (Listy fraz) w menu **Improve app performance** (Zwiększ wydajność aplikacji).
+
+    [![](media/luis-quickstart-primary-and-secondary-data/hr-select-phrase-list-left-nav.png "Zrzut ekranu Phrase lists (Listy fraz) z wyróżnionym lewym przyciskiem nawigacji")](media/luis-quickstart-primary-and-secondary-data/hr-select-phrase-list-left-nav.png#lightbox)
+
+2. Wybierz pozycję **Create new phrase list** (Utwórz nową listę fraz). 
+
+    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-new-phrase-list.png "Zrzut ekranu z wyróżnionym przyciskiem Create new phrase list (Utwórz nową listę fraz)")](media/luis-quickstart-primary-and-secondary-data/hr-create-new-phrase-list.png#lightbox)
+
+3. Nadaj nowej liście fraz nazwę `Jobs` i skopiuj listę z pliku jobs-phrase-list.csv do pola tekstowego **Values** (Wartości). Wybierz klawisz Enter. 
+
+    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Zrzut ekranu podręcznego okna dialogowego tworzenia nowej listy fraz")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
+
+    Jeśli chcesz dodać więcej wyrazów do listy fraz, przejrzyj zalecane wyrazy i dodaj odpowiednie w Twojej sytuacji. 
+
+4. Wybierz pozycję **Save** (Zapisz), aby aktywować listę fraz.
+
+    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Zrzut ekranu podręcznego okna dialogowego tworzenia nowej listy fraz z wyrazami w polu wartości listy fraz")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
+
+5. [Naucz](#train-the-luis-app) i [opublikuj](#publish-the-app-to-get-the-endpoint-URL) aplikację ponownie, aby użyć listy fraz.
+
+6. Wykonaj ponownie zapytanie w punkcie końcowym dla tej samej wypowiedzi: `This is the lead welder paperwork.`
+
+    Odpowiedź JSON zawiera wyodrębnioną jednostkę:
+
+    ```JSON
+    {
+        "query": "This is the lead welder paperwork.",
+        "topScoringIntent": {
+            "intent": "ApplyForJob",
+            "score": 0.920025647
+        },
+        "intents": [
+            {
+            "intent": "ApplyForJob",
+            "score": 0.920025647
+            },
+            {
+            "intent": "GetJobInformation",
+            "score": 0.003800706
+            },
+            {
+            "intent": "Utilities.StartOver",
+            "score": 0.00299335527
+            },
+            {
+            "intent": "MoveEmployee",
+            "score": 0.0027167045
+            },
+            {
+            "intent": "None",
+            "score": 0.00259556063
+            },
+            {
+            "intent": "FindForm",
+            "score": 0.00224019377
+            },
+            {
+            "intent": "Utilities.Stop",
+            "score": 0.00200693542
+            },
+            {
+            "intent": "Utilities.Cancel",
+            "score": 0.00195913855
+            },
+            {
+            "intent": "Utilities.Help",
+            "score": 0.00162656687
+            },
+            {
+            "intent": "Utilities.Confirm",
+            "score": 0.0002851904
+            }
+        ],
+        "entities": [
+            {
+            "entity": "lead welder",
+            "type": "Job",
+            "startIndex": 12,
+            "endIndex": 22,
+            "score": 0.8295959
+            }
+        ]
+    }
+    ```
+
+## <a name="phrase-lists"></a>Listy fraz
+Dodanie listy frazy wzmocniło sygnał wyrazów na liście, ale **nie** jest ona używana jako dokładne dopasowanie. Lista fraz ma kilka zadań z pierwszym wyrazem `lead` i zadanie `welder`, ale nie ma zadania `lead welder`. Ta lista fraz dla zadań może być niekompletna. W miarę regularnego [przeglądania wypowiedzi punktu końcowego](label-suggested-utterances.md) i wyszukiwania innych wyrazów dotyczących zadań można dodawać je do listy fraz. Następnie należy ponownie nauczyć i opublikować aplikację.
+
 ## <a name="what-has-this-luis-app-accomplished"></a>Co wykonała ta aplikacja LUIS?
-Ta aplikacja, zawierająca jedynie dwie intencje i jedną jednostkę, zidentyfikowała intencję zapytania w języku naturalnym i zwróciła dane wiadomości. 
+Ta aplikacja, zawierająca prostą jednostkę i listę fraz powiązanych z wyrazami, zidentyfikowała intencję zapytania w języku naturalnym i zwróciła dane wiadomości. 
 
-W wynikach JSON najwyżej oceniana intencja `SendMessage` ma wynik 0.987501. Wszystkie wyniki należą do zakresu od 1 do 0, im bliżej 1, tym lepiej. Wynikiem dla intencji `None` jest 0.111048922, czyli znaczniej bliżej zera. 
-
-Dane wiadomości mają typ (`Message`) i wartość (`i ' m driving and will be 30 minutes late to the meeting`). 
-
-Twój chatbot ma teraz dość informacji, aby określić akcję główną (`SendMessage`) i parametr tej akcji — tekst wiadomości. 
+Twój czatbot ma teraz dość informacji, aby określić akcję główną ubiegania się o pracę i parametr tej akcji — przywoływane zadanie. 
 
 ## <a name="where-is-this-luis-data-used"></a>Gdzie są używane te dane usługi LUIS? 
-Usługa LUIS skończyła obsługiwać to żądanie. Aplikacja wywołująca, taka jak czatbot, może pobrać wynik topScoringIntent (najwyżej oceniana intencja) oraz dane z jednostki, aby wysłać wiadomość przez interfejs API innej firmy. Jeśli istnieją inne opcje programowe dla bota lub aplikacji wywołującej, usługa LUIS nie obsłuży ich. Usługa LUIS określa jedynie intencję użytkownika. 
+Usługa LUIS skończyła obsługiwać to żądanie. Aplikacja wywołująca, taka jak czatbot, może pobrać wynik topScoringIntent oraz dane z jednostki, aby użyć interfejsu API innej firmy do wysłania informacji o zadaniu do przedstawiciela działu zasobów ludzkich. Jeśli istnieją inne opcje programowe dla bota lub aplikacji wywołującej, usługa LUIS nie obsłuży ich. Usługa LUIS określa jedynie intencję użytkownika. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Aby to zrobić, wybierz menu z trzema kropkami (...) po prawej stronie nazwy aplikacji na liście aplikacji i wybierz polecenie **Delete** (Usuń). W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
@@ -218,8 +382,4 @@ Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Aby to zrobić, wybier
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak dodać jednostkę hierarchiczną](luis-quickstart-intent-and-hier-entity.md)
-
-
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
+> [Dowiedz się, jak dodać wstępnie skompilowaną jednostkę KeyPhrase](luis-quickstart-intent-and-key-phrase.md)

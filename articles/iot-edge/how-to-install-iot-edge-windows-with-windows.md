@@ -1,6 +1,6 @@
 ---
-title: Jak zainstalować krawędzi IoT Azure w systemie Windows z kontenerów systemu Windows | Dokumentacja firmy Microsoft
-description: Usługa Azure IoT krawędzi instrukcje dotyczące instalacji w systemie Windows z kontenerami systemu Windows
+title: Jak zainstalować usługi Azure IoT Edge na Windows za pomocą kontenerów Windows | Dokumentacja firmy Microsoft
+description: Usługa Azure IoT Edge instrukcje dotyczące instalacji na Windows za pomocą kontenerów Windows
 author: kgremban
 manager: timlt
 ms.reviewer: veyalla
@@ -9,43 +9,43 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 1ae51d948fdaa5654c59549d384b784f0e87dcc3
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: b2878f9d7aa32b2502487cdc081896e5ba306af1
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112623"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346380"
 ---
-# <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-windows-containers"></a>Zainstalować środowisko uruchomieniowe krawędzi IoT Azure w systemie Windows do użycia z kontenerami systemu Windows
+# <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-windows-containers"></a>Zainstaluj środowisko uruchomieniowe usługi Azure IoT Edge na Windows do korzystania z kontenerów Windows
 
-Środowisko uruchomieniowe Azure IoT krawędzi jest wdrażana na wszystkich urządzeniach IoT krawędzi. Składa się z trzech składników. **Krawędzi IoT zabezpieczeń demon** zapewnia i przechowuje standardów zabezpieczeń na urządzeniu krawędzi. Demon rozpoczyna się na każdym rozruchu i używa do ładowania urządzenia przez uruchomienie agenta IoT krawędzi. **IoT krawędź agent** ułatwia wdrażanie i monitorowanie modułów na urządzeniu krawędzi, w tym Centrum IoT krawędzi. **Centrum usługi IoT Edge** zarządza komunikacją między modułami na urządzeniu usługi IoT Edge oraz między urządzeniem a usługą IoT Hub.
+Środowisko uruchomieniowe usługi Azure IoT Edge jest wdrażana na wszystkich urządzeniach usługi IoT Edge. Składa się ono z trzech składników. **Demona zabezpieczeń usługi IoT Edge** dostarcza i utrzymuje standardów zabezpieczeń na urządzeniu usługi Edge. Demon jest uruchamiany w każdym rozruchu i używa do ładowania urządzenia przez uruchomienie agenta usługi IoT Edge. **Agenta usługi IoT Edge** ułatwia wdrażanie i monitorowanie modułów na urządzeniu usługi Edge, w tym Centrum IoT Edge. **Centrum usługi IoT Edge** zarządza komunikacją między modułami na urządzeniu usługi IoT Edge oraz między urządzeniem a usługą IoT Hub.
 
-W tym artykule wymieniono kroki, aby zainstalować środowisko uruchomieniowe Azure IoT Edge na x64 (AMD/Intel) systemu Windows systemu. 
+W tym artykule wymieniono kroki, aby zainstalować środowisko uruchomieniowe usługi Azure IoT Edge na usługi Windows x64 (AMD/Intel) systemu. 
 
-Obsługa systemu Windows jest obecnie w przeglądzie.
+Obsługa Windows jest obecnie w wersji zapoznawczej.
 
-## <a name="supported-windows-versions"></a>Obsługiwane wersje systemu Windows
-Azure IoT krawędzi z kontenerami systemu Windows mogą być używane z:
-  * Windows 10/IoT Enterprise/IoT Core z kwietnia 2018 aktualizacji (17134 kompilacji).
-  * Windows Server 1803
+## <a name="supported-windows-versions"></a>Obsługiwane wersje Windows
+Usługa Azure IoT Edge przy użyciu kontenerów Windows mogą być używane z:
+  * Windows 10 Enterprise na IoT/IoT Core z kwietnia 2018 r. Zaktualizuj (Tworzenie 17134).
+  * System Windows Server w wersji 1803
 
 ## <a name="install-the-container-runtime"></a>Zainstaluj środowisko uruchomieniowe kontenera 
 
 >[!NOTE]
->Instalacja aparatu kontenera w systemie Windows IoT Core, wykonaj kroki od [udostępnić artykułu urządzenia IoT Core] [ lnk-iot-core] , a następnie kontynuować pracę z poniższymi instrukcjami.
+>W przypadku instalacji aparatu kontenera na Windows IoT Core, wykonaj kroki z [aprowizowanie urządzenia IoT Core artykułu] [ lnk-iot-core] , a następnie kontynuuj z poniższymi instrukcjami.
 
-Zależy od usługi Azure IoT krawędzi [OCI zgodnego] [ lnk-oci] kontener środowiska uruchomieniowego (np. Docker). Można użyć [Docker dla systemu Windows] [ lnk-docker-for-windows] do projektowania i testowania. 
+Usługa Azure IoT Edge opiera się na [zgodnego z OCI] [ lnk-oci] kontener środowiska uruchomieniowego (np. Docker). Możesz użyć [Docker for Windows] [ lnk-docker-for-windows] do tworzenia i testowania. 
 
-**Upewnij się, Docker dla systemu Windows jest [skonfigurowana do używania kontenery systemu Windows][lnk-docker-config]**
+**Upewnij się, Docker for Windows [skonfigurowany do używania kontenerów Windows][lnk-docker-config]**
 
-## <a name="install-the-azure-iot-edge-security-daemon"></a>Instalowanie demona zabezpieczeń krawędzi IoT Azure
+## <a name="install-the-azure-iot-edge-security-daemon"></a>Instalowanie demona zabezpieczeń usługi Azure IoT Edge
 
 >[!NOTE]
->Pakiety oprogramowania w usłudze Azure IoT krawędzi obowiązują postanowienia licencyjne, znajduje się w pakietach (w katalogu licencji). Przeczytaj postanowienia licencyjne przed przy użyciu pakietu. Twoje instalacji i używania pakietu oznacza akceptację postanowień niniejszych warunków. Jeśli nie akceptujesz postanowień licencyjnych, nie należy używać pakietu.
+>Pakiety oprogramowania w usłudze Azure IoT Edge to z zastrzeżeniem postanowień licencyjnych, znajduje się w pakietach (w katalogu licencji). Przeczytaj postanowienia licencyjne, aby korzystać z pakietu. Twoja instalacja i używanie pakietu stanowi zaakceptowania przez korzystającego tych warunków. Jeśli nie zgadzasz się z warunkami licencji, nie należy używać pakietu.
 
-### <a name="download-the-edge-daemon-package-and-install"></a>Demon krawędzi Pobierz i zainstaluj
+### <a name="download-the-edge-daemon-package-and-install"></a>Pobierz pakiet demonów Edge i zainstaluj
 
-W oknie Administrator programu PowerShell uruchom następujące polecenia:
+W oknie programu PowerShell administratora uruchom następujące polecenia:
 
 ```powershell
 Invoke-WebRequest https://aka.ms/iotedged-windows-latest -o .\iotedged-windows.zip
@@ -56,7 +56,7 @@ $env:Path += ";C:\ProgramData\iotedge"
 SETX /M PATH "$env:Path"
 ```
 
-Zainstaluj vcruntime przy użyciu (możesz pominąć ten krok na urządzenia IoT core):
+Zainstaluj vcruntime przy użyciu (możesz pominąć ten krok na urządzeniu usługi IoT Edge podstawowej):
 
 ```powershell
 Invoke-WebRequest -useb https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe -o vc_redist.exe
@@ -70,13 +70,13 @@ New-Service -Name "iotedge" -BinaryPathName "C:\ProgramData\iotedge\iotedged.exe
 Start-Service iotedge
 ```
 
-Dodawanie wyjątków zapory dla portów używanych przez usługę:
+Dodać wyjątki zapory dla portów używanych przez usługę:
 
 ```powershell
 New-NetFirewallRule -DisplayName "iotedged allow inbound 15580,15581" -Direction Inbound -Action Allow -Protocol TCP -LocalPort 15580-15581 -Program "C:\programdata\iotedge\iotedged.exe" -InterfaceType Any
 ```
 
-Utwórz **iotedge.reg** pliku o następującej zawartości, a następnie zaimportować w rejestrze systemu Windows przez dwukrotne kliknięcie go lub za pomocą `reg import iotedge.reg` polecenia:
+Tworzenie **iotedge.reg** pliku o następującej zawartości i importowanie w rejestrze Windows przez dwukrotne kliknięcie go lub za pomocą `reg import iotedge.reg` polecenia:
 
 ```
 Windows Registry Editor Version 5.00
@@ -87,13 +87,13 @@ Windows Registry Editor Version 5.00
 "TypesSupported"=dword:00000007
 ```
 
-## <a name="configure-the-azure-iot-edge-security-daemon"></a>Skonfiguruj demona zabezpieczeń krawędzi IoT Azure
+## <a name="configure-the-azure-iot-edge-security-daemon"></a>Skonfiguruj demona zabezpieczeń usługi Azure IoT Edge
 
-Demon można skonfigurować przy użyciu pliku konfiguracji w `C:\ProgramData\iotedge\config.yaml`.
+Demon można skonfigurować przy użyciu pliku konfiguracji na `C:\ProgramData\iotedge\config.yaml`.
 
-Urządzenie brzegowe można skonfigurować ręcznie przy użyciu [ciąg połączenia urządzenia] [ lnk-dcs] lub [automatycznie za pomocą usługi inicjowania obsługi urządzeń] [ lnk-dps].
+Urządzenie brzegowe można skonfigurować ręcznie przy użyciu [parametry połączenia urządzenia] [ lnk-dcs] lub [automatycznie za pomocą usługi Device Provisioning] [ lnk-dps].
 
-* Konfiguracja ręczna, usuń znaczniki komentarza **ręczne** tryb obsługi administracyjnej. Zaktualizuj wartość **device_connection_string** ciągu połączenia z urządzenia IoT krawędzi.
+* Konfiguracja ręczna, usuń znaczniki komentarza **ręczne** tryb obsługi administracyjnej. Zaktualizuj wartość **device_connection_string** przy użyciu parametrów połączenia z urządzenia usługi IoT Edge.
 
    ```yaml
    provisioning:
@@ -107,7 +107,7 @@ Urządzenie brzegowe można skonfigurować ręcznie przy użyciu [ciąg połącz
    #   registration_id: "{registration_id}"
    ```
 
-* Do automatycznego konfigurowania, usuń znaczniki komentarza **punktu dystrybucji** tryb obsługi administracyjnej. Zaktualizuj wartości **scope_id** i **registration_id** wartościami z wystąpienia punktu dystrybucji Centrum IoT i na urządzeniu IoT krawędzi z modułem TPM. 
+* Konfiguracja automatyczna, usuń znaczniki komentarza **dps** tryb obsługi administracyjnej. Zaktualizuj wartości **scope_id** i **registration_id** wartościami z wystąpieniem usługi DPS Centrum IoT i urządzenia usługi IoT Edge przy użyciu modułu TPM. 
 
    ```yaml
    # provisioning:
@@ -121,7 +121,7 @@ Urządzenie brzegowe można skonfigurować ręcznie przy użyciu [ciąg połącz
      registration_id: "{registration_id}"
    ```
 
-Pobierz nazwę krawędzi urządzeniami przy użyciu `hostname` poleceń w programie PowerShell i ustaw go jako wartość **hostname:** w yaml programu configuration. Na przykład:
+Pobierz nazwę przy użyciu urządzenia usługi edge `hostname` poleceń w programie PowerShell i ustawić ją jako wartość **hostname:** w yaml konfiguracji. Na przykład:
 
 ```yaml
   ###############################################################################
@@ -136,33 +136,35 @@ Pobierz nazwę krawędzi urządzeniami przy użyciu `hostname` poleceń w progra
   hostname: "edgedevice-1"
 ```
 
-Następnie musisz podać adres ip i portu dla **workload_uri** i **management_uri** w **connect:** sekcji konfiguracji.
+Następnie podaj adres ip i port dla **workload_uri** i **management_uri** w **connect:** i **nasłuchiwania:** sekcje Konfiguracja.
 
-Wprowadź adres ip `ipconfig` w oknie programu PowerShell i wybierz adres ip **vEthernet (nat)** interfejsu, jak pokazano w poniższym przykładzie (adres ip w systemie mogą być różne):  
+Aby pobrać adres ip, wprowadź `ipconfig` w oknie programu PowerShell i skopiuj adres ip **vEthernet (nat)** interfejsu, jak pokazano w poniższym przykładzie (adres ip w systemie może się różnić):  
 
 ![nat][img-nat]
 
+Aktualizacja **workload_uri** i **management_uri** w **connect:** sekcję pliku konfiguracji. Zastąp **\<GATEWAY_ADDRESS\>** o adresie IP, który został skopiowany. 
+
 ```yaml
 connect:
-  management_uri: "http://172.29.240.1:15580"
-  workload_uri: "http://172.29.240.1:15581"
+  management_uri: "http://<GATEWAY_ADDRESS>:15580"
+  workload_uri: "http://<GATEWAY_ADDRESS>:15581"
 ```
 
-Wprowadź tych samych adresów w **nasłuchiwania:** sekcji konfiguracji. Na przykład:
+Wprowadź ten sam adresy w **nasłuchiwania:** sekcji konfiguracji, za pomocą adresu IP jako adres bramy.
 
 ```yaml
 listen:
-  management_uri: "http://172.29.240.1:15580"
-  workload_uri: "http://172.29.240.1:15581"
+  management_uri: "http://<GATEWAY_ADDRESS>:15580"
+  workload_uri: "http://<GATEWAY_ADDRESS>:15581"
 ```
 
-W oknie programu PowerShell Utwórz zmienną środowiskową **IOTEDGE_HOST** z **management_uri** adresu, na przykład:
+W oknie programu PowerShell Utwórz zmienną środowiskową **IOTEDGE_HOST** z **management_uri** adresu.
 
 ```powershell
-[Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://172.29.240.1:15580")
+[Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://<GATEWAY_ADDRESS>:15580")
 ```
 
-Ponadto upewnij się, **sieci:** w obszarze **moby_runtime:** jest odkomentowana i **translatora adresów sieciowych**
+Na koniec upewnij się, **sieci:** w obszarze **moby_runtime:** jest odkomentowana i **translatora adresów sieciowych**
 
 ```yaml
 moby_runtime:
@@ -170,7 +172,7 @@ moby_runtime:
   network: "nat"
 ```
 
-Zapisz plik konfiguracji i ponownie uruchom usługę:
+Zapisz plik konfiguracji, a następnie uruchom ponownie usługę:
 
 ```powershell
 Stop-Service iotedge -NoWait
@@ -180,15 +182,15 @@ Start-Service iotedge
 
 ## <a name="verify-successful-installation"></a>Sprawdź pomyślnej instalacji
 
-Jeśli używasz **ręcznej konfiguracji** kroki opisane w poprzedniej sekcji, środowisko uruchomieniowe krawędzi IoT powinna być pomyślnie zainicjowane i działają na urządzeniu. Jeśli używasz **automatycznej konfiguracji** kroków, a następnie należy wykonać dodatkowe kroki, aby środowiska uruchomieniowego można zarejestrować urządzenia z Centrum IoT w Twoim imieniu. Dalsze czynności, zobacz [tworzenia i udostępniania symulowane urządzenie brzegowe modułu TPM w systemie Windows](how-to-auto-provision-simulated-device-windows.md#create-a-tpm-environment-variable).
+Jeśli użyto **ręcznej konfiguracji** kroki opisane w poprzedniej sekcji, środowisko uruchomieniowe usługi IoT Edge należy pomyślnie aprowizacja i uruchomienie na urządzeniu. Jeśli użyto **automatycznej konfiguracji** kroki należy wykonać kilka dodatkowych kroków, środowisko uruchomieniowe można zarejestrować urządzenia za pomocą usługi IoT hub w Twoim imieniu. Dalsze czynności, zobacz [tworzenie i aprowizowanie symulowanego urządzenia TPM Edge na Windows](how-to-auto-provision-simulated-device-windows.md#create-a-tpm-environment-variable).
 
-Można sprawdzić stanu usługi IoT krawędzi przez: 
+Można sprawdzić stanu usługi IoT Edge przez: 
 
 ```powershell
 Get-Service iotedge
 ```
 
-Sprawdź dzienniki usługi ostatnich 5 minut, za pomocą:
+Sprawdź dzienniki usługi dla ostatnich 5 minut, przy użyciu:
 
 ```powershell
 
@@ -209,7 +211,7 @@ iotedge list
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Jeśli masz problemy ze środowiskiem uruchomieniowym krawędzi poprawnie, instalowanie wyewidencjonowania [Rozwiązywanie problemów z] [ lnk-trouble] strony.
+Jeśli występują problemy z środowiska uruchomieniowego usługi Edge instalacji prawidłowo, wyewidencjonowania [Rozwiązywanie problemów z] [ lnk-trouble] strony.
 
 
 <!-- Images -->

@@ -13,19 +13,19 @@ ms.workload: na
 ms.devlang: azurecli
 ms.tgt_pltfrm: na
 ms.topic: sample
-ms.date: 06/01/2017
+ms.date: 06/26/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: d2efd0891cb0010aac6135ce190ad77667f78efd
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 7d3fc71bc53e85fa7555dbee5ee79b3f06f27fe8
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29843990"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960342"
 ---
 # <a name="map-a-custom-domain-to-a-function-app"></a>Mapowanie domeny niestandardowej na aplikację funkcji
 
-Ten przykładowy skrypt służy do tworzenia aplikacji funkcji z powiązanymi zasobami, a następnie mapowania domeny `www.<yourdomain>` na tę aplikację. Aby wykonać mapowanie na domenę niestandardową, aplikacja funkcji musi zostać utworzona w ramach planu usługi App Service, a nie planu Zużycie. Usługa Azure Functions obsługuje mapowanie domeny niestandardowej tylko przy użyciu rekordu A.
+Ten przykładowy skrypt służy do tworzenia aplikacji funkcji z powiązanymi zasobami, a następnie mapowania domeny `www.<yourdomain>` na tę aplikację. Jeśli aplikacja funkcji jest hostowana w [planie usługi App Service](../functions-scale.md#app-service-plan), możesz zamapować domenę niestandardową przy użyciu rekordu CNAME lub A. Dla aplikacji funkcji w [planie Zużycie](../functions-scale.md#consumption-plan) obsługiwana jest tylko opcja CNAME.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

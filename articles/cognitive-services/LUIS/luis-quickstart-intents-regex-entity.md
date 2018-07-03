@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: v-geberr
-ms.openlocfilehash: c31e7d130d02ab6b0fad7577026e557692c2b60e
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 317d5b37b90f6c436e3cecf0486d587f54960598
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285954"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36316546"
 ---
 # <a name="tutorial-use-regular-expression-entity"></a>Samouczek: używanie jednostki wyrażenia regularnego
 W tym samouczku utworzysz aplikację, która pokazuje, jak można wyodrębnić spójnie sformatowane dane z wypowiedzi przy użyciu jednostki **Regular Expression** (Wyrażenie regularne).
@@ -28,10 +28,10 @@ W tym samouczku utworzysz aplikację, która pokazuje, jak można wyodrębnić s
 > * Uczenie i publikowanie aplikacji
 > * Wysyłanie zapytania do punktu końcowego aplikacji w celu wyświetlenia odpowiedzi JSON usługi LUIS
 
-Na potrzeby tego artykułu wymagane jest bezpłatne konto usługi [LUIS][LUIS] w celu tworzenia aplikacji LUIS.
+Na potrzeby tego artykułu wymagane jest bezpłatne konto usługi [LUIS](luis-reference-regions.md#luis-website) w celu tworzenia aplikacji LUIS.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-Jeśli nie masz aplikacji Human Resources z samouczka dotyczącego wstępnie utworzonych jednostek [domeny niestandardowej](luis-tutorial-prebuilt-intents-entities.md), [zaimportuj](create-new-app.md#import-new-app) obiekt JSON do nowej aplikacji w witrynie usługi [LUIS][LUIS] z repozytorium Github [przykładów aplikacji LUIS](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json).
+Jeśli nie masz aplikacji Human Resources z samouczka dotyczącego [domeny niestandardowej](luis-tutorial-prebuilt-intents-entities.md) wstępnie skompilowanych jednostek, [zaimportuj](create-new-app.md#import-new-app) obiekt JSON do nowej aplikacji w witrynie usługi [LUIS](luis-reference-regions.md#luis-website) z repozytorium Github [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json).
 
 Jeśli chcesz zachować oryginalną aplikację Human Resources, sklonuj tę wersję na stronie [Settings](luis-how-to-manage-versions.md#clone-a-version) (Ustawienia) i nadaj jej nazwę `regex`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. 
 
@@ -244,6 +244,3 @@ Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Aby to zrobić, wybier
 > [!div class="nextstepaction"]
 > [Informacje na temat jednostki KeyPhrase](luis-quickstart-intent-and-key-phrase.md)
 
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
-[LUIS-regions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#publishing-regions

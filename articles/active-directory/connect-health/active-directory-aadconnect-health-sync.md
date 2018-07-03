@@ -14,17 +14,17 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cff8be88e23d57545a9926df366289c6ba264886
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a3801573f3ffe3a0941f3941cf33e516f4f1b614
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30229952"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961642"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Monitorowanie synchronizacji usługi Azure AD Connect za pomocą programu Azure AD Connect Health
 Poniższa dokumentacja dotyczy monitorowania programu Azure AD Connect (synchronizacja) przy użyciu programu Azure AD Connect Health.  Aby uzyskać informacje na temat monitorowania usług AD FS za pomocą programu Azure AD Connect Health, zobacz [Używanie programu Azure AD Connect Health z usługami AD FS](active-directory-aadconnect-health-adfs.md). Ponadto, aby uzyskać informacje na temat monitorowania Usług domenowych Active Directory za pomocą programu Azure AD Connect Health, zobacz [Używanie programu Azure AD Connect Health z usługami AD DS](active-directory-aadconnect-health-adds.md).
 
-![Program Azure AD Connect Health do celów synchronizacji](./media/active-directory-aadconnect-health-sync/sync-blade.png)
+![Program Azure AD Connect Health do celów synchronizacji](./media/active-directory-aadconnect-health-sync/syncsnapshot.png)
 
 ## <a name="alerts-for-azure-ad-connect-health-for-sync"></a>Alerty dla programu Azure AD Connect Health do celów synchronizacji
 Sekcja Alerty programu Azure AD Connect Health do celów synchronizacji zawiera listę aktywnych alertów. Każdy alert zawiera istotne informacje, kroki do rozwiązania problemu i linki do powiązanej dokumentacji. Po wybraniu aktywnego lub rozwiązanego alertu pojawi się nowy blok z dodatkowymi informacjami, kroki, jakie można podjąć, aby rozwiązać alert, oraz linki do dodatkowej dokumentacji. Można również wyświetlić dane historyczne na temat alertów, które zostały rozwiązane w przeszłości.
@@ -98,15 +98,18 @@ Przejście do szczegółów każdej kategorii pozwoli wyświetlić listę obiekt
 ### <a name="error-details"></a>Szczegóły błędu
 W szczegółowym widoku dla każdego błędu są dostępne następujące dane
 
+* Wyróżniony atrybut w konflikcie
 * Identyfikatory *obiektów usługi AD*, których dotyczy błąd
 * Identyfikatory *obiektów usługi Azure AD*, których dotyczy błąd (o ile dotyczy)
 * Opis błędu i sposób naprawy
-* Pokrewne artykuły:
 
-![Szczegóły raportu o błędach synchronizacji](./media/active-directory-aadconnect-health-sync/errorreport04.png)
+![Szczegóły raportu o błędach synchronizacji](./media/active-directory-aadconnect-health-sync/duplicateAttributeSyncError.png)
 
 ### <a name="download-the-error-report-as-csv"></a>Pobieranie raportu o błędach w formie pliku CVS
 Wybierając przycisk „Eksportuj”, możesz pobrać plik CSV z pełnymi, szczegółowymi informacjami na temat wszystkich błędów.
+
+### <a name="diagnose-and-remediate-sync-errors"></a>Diagnozowanie i naprawianie błędów synchronizacji 
+W przypadku określonego scenariusza błędu synchronizacji zduplikowanego atrybutu dotyczącego aktualizacji zakotwiczenia źródła użytkownika problem można rozwiązać bezpośrednio w portalu. Przeczytaj więcej na temat [diagnozowania i naprawiania błędów synchronizacji zduplikowanego atrybutu](active-directory-aadconnect-health-diagnose-sync-errors.md)
 
 ## <a name="related-links"></a>Powiązane linki
 * [Rozwiązywanie problemów z błędami występującymi podczas synchronizacji](../connect/active-directory-aadconnect-troubleshoot-sync-errors.md)

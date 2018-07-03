@@ -1,6 +1,6 @@
 ---
-title: Ograniczenia dotyczące bazy danych platformy Azure dla programu MySQL
-description: W tym artykule opisano ograniczenia w bazie danych Azure dla programu MySQL, takie jak liczba połączeń i opcje aparatu magazynu.
+title: Ograniczenia dotyczące usługi Azure Database for MySQL
+description: W tym artykule opisano ograniczenia dotyczące usługi Azure Database for MySQL, takie jak liczba połączeń i opcje aparatu magazynu.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -8,21 +8,21 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/21/2018
-ms.openlocfilehash: 2fc224445f89a0b0b4afdc0ef1d0eb1b25b45f36
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.date: 06/30/2018
+ms.openlocfilehash: 1fd5905b8ea3f87fe6cfc2a830b73b8120a717dd
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309925"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341481"
 ---
-# <a name="limitations-in-azure-database-for-mysql"></a>Ograniczenia dotyczące bazy danych platformy Azure dla programu MySQL
-W poniższych sekcjach opisano pojemności, magazynu aparat obsługę, uprawnień, obsługi instrukcji manipulacji danych oraz limity funkcjonalności usługi bazy danych. Zobacz też [ogólne ograniczenia](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) mające zastosowanie do aparatu bazy danych MySQL.
+# <a name="limitations-in-azure-database-for-mysql"></a>Ograniczenia dotyczące usługi Azure Database for MySQL
+Poniżej opisano pojemności, obsługa aparatu magazynu, uprawnień obsługę, dane manipulowania instrukcji oraz ograniczenia funkcjonalności w usłudze bazy danych. Zobacz też [ogólne ograniczenia](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) mające zastosowanie do aparatu bazy danych MySQL.
 
 ## <a name="maximum-connections"></a>Maksymalna liczba połączeń
-Maksymalna liczba połączeń na warstwa cenowa i vCores są następujące: 
+Maksymalna liczba połączeń na warstwa cenowa i rdzeni wirtualnych są następujące: 
 
-|**Warstwa cenowa**|**vCore(s)**| **Maksymalna liczba połączeń**|
+|**Warstwa cenowa**|**rdzenie wirtualne:**| **Maksymalna liczba połączeń**|
 |---|---|---|
 |Podstawowa| 1| 50|
 |Podstawowa| 2| 100|
@@ -36,13 +36,13 @@ Maksymalna liczba połączeń na warstwa cenowa i vCores są następujące:
 |Pamięć| 8| 2500|
 |Pamięć| 16| 5000|
 
-Gdy połączenia przekracza limit, może zostać wyświetlony następujący błąd:
+Po przekroczeniu limitu połączeń może zostać wyświetlony następujący błąd:
 > Błąd 1040 (08004): Zbyt wiele połączeń
 
 ## <a name="storage-engine-support"></a>Obsługa aparatu magazynu
 
 ### <a name="supported"></a>Obsługiwane
-- [InnoDB](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)
+- [Aparatu InnoDB](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)
 - [MEMORY](https://dev.mysql.com/doc/refman/5.7/en/memory-storage-engine.html)
 
 ### <a name="unsupported"></a>Nieobsługiwane
@@ -54,13 +54,13 @@ Gdy połączenia przekracza limit, może zostać wyświetlony następujący bł�
 ## <a name="privilege-support"></a>Obsługa uprawnień
 
 ### <a name="unsupported"></a>Nieobsługiwane
-- Administrator roli: wiele parametrów serwera i ustawienia mogą przypadkowo obniżają wydajność serwerów lub odwrócić ACID właściwości systemu DBMS. Tak, aby zachować integralności usługi i umowy SLA na poziomie produktu, tego usługa nie uwidacznia roli Administrator. Domyślne konto użytkownika, który jest tworzony podczas tworzenia nowego wystąpienia bazy danych, umożliwia użytkownikowi wykonują większość instrukcji DDL i DML w wystąpieniu bazy danych zarządzanych. 
-- Uprawnienie administratora: Podobnie [SUPER uprawnień](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) również jest ograniczony.
+- Rola Administrator: wiele parametrów serwera i ustawienia mogą przypadkowo obniżają wydajność serwerów lub odwrócić właściwości ACID systemu DBMS. Jako takie utrzymanie integralności usługi i umowa SLA na poziomie produktu, ta usługa nie ujawnia roli Administrator. Domyślne konto użytkownika, który jest tworzony, gdy tworzone jest nowe wystąpienie bazy danych, umożliwia użytkownikowi wykonać większość instrukcji DDL i DML w wystąpieniu zarządzanym bazy danych. 
+- Uprawnienia administratora: Podobnie [uprawnień administratora](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) również jest ograniczony.
 
 ## <a name="data-manipulation-statement-support"></a>Obsługa instrukcji manipulacji danych
 
 ### <a name="supported"></a>Obsługiwane
-- `LOAD DATA INFILE` jest obsługiwana, ale `[LOCAL]` parametru musi być określona i Przekierowanie do ścieżki UNC (zainstalowane za pomocą protokołu SMB magazynu Azure).
+- `LOAD DATA INFILE` jest obsługiwany, ale `[LOCAL]` parametru musi być określona i Przekierowanie do ścieżki UNC (magazynu platformy Azure zainstalowany za pomocą protokołu SMB).
 
 ### <a name="unsupported"></a>Nieobsługiwane
 - `SELECT ... INTO OUTFILE`
@@ -69,20 +69,23 @@ Gdy połączenia przekracza limit, może zostać wyświetlony następujący bł�
 
 ### <a name="scale-operations"></a>Operacje skalowania
 - Dynamiczne skalowanie do i z warstw cenowych podstawowa nie jest obecnie obsługiwane.
-- Zmniejszenie rozmiaru magazynu serwera nie jest obsługiwana.
+- Zmniejsza rozmiar magazynu serwera nie jest obsługiwane.
 
-### <a name="server-version-upgrades"></a>Uaktualniania wersji
-- Automatycznej migracji między wersjami aparatu bazy danych głównych nie jest obecnie obsługiwane.
+### <a name="server-version-upgrades"></a>Uaktualnienia wersji serwera
+- Automatycznej migracji między wersjami aparatu głównej bazy danych nie jest obecnie obsługiwane.
 
 ### <a name="point-in-time-restore"></a>Przywracanie do punktu w czasie
-- Podczas korzystania z funkcji PITR tworzona jest nowy serwer jako serwer, który jest oparty na takie same konfiguracje.
-- Przywracanie usuniętych serwera nie jest obsługiwane.
+- Podczas korzystania z funkcji Odzyskiwanie, nowy serwer jest tworzony przy użyciu tej samej konfiguracji, co serwer, który opiera się na.
+- Przywracanie usuniętych serwera nie jest obsługiwana.
+
+### <a name="vnet-service-endpoints"></a>Punkty końcowe usługi sieci wirtualnej
+- Obsługa punktów końcowych usługi sieci wirtualnej jest tylko w przypadku serwerów ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.
 
 ### <a name="subscription-management"></a>Zarządzanie subskrypcjami
-- Dynamicznie przenoszenie serwerów wstępnie utworzone w subskrypcji i grupy zasobów nie jest obecnie obsługiwane.
+- Dynamicznie przenoszenie serwerów wstępnie utworzonych w subskrypcji i grupy zasobów nie jest obecnie obsługiwane.
 
 ## <a name="current-known-issues"></a>Obecnie znane problemy
-- Wystąpienie serwera MySQL Wyświetla wersję niewłaściwy serwer, po nawiązaniu połączenia. Aby uzyskać wystąpienia aparatu wersji z właściwym serwerem, użyj `select version();` polecenia.
+- Wystąpienia serwera MySQL Wyświetla wersja serwera problem, po nawiązaniu połączenia. Aby uzyskać z właściwym serwerem w wystąpieniu aparatu wersji, użyj `select version();` polecenia.
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Co to jest dostępne w poszczególnych warstwach usług](concepts-pricing-tiers.md)

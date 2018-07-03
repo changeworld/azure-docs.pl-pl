@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: jgao
 ms.custom: mvc
-ms.openlocfilehash: 321f84e0d56a2bda57e1fbfa2cc562b65c6e1d30
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1e3f1d5edf12980cb0324bb130725ec2588aa220
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33779161"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36957984"
 ---
 # <a name="quickstart-create-a-spark-cluster-in-hdinsight-using-powershell"></a>Szybki start: tworzenie klastra Spark w usłudze HDInsight przy użyciu programu PowerShell
 Dowiedz się, jak utworzyć klaster Apache Spark w usłudze Azure HDInsight, a następnie uruchamiać zapytania Spark SQL dla tabel programu Hive. Platforma Apache Spark umożliwia szybką analizę danych i używanie klastrów obliczeniowych korzystających z funkcji przetwarzania w pamięci. Aby uzyskać informacje na temat klastra Spark w usłudze HDInsight, zobacz [Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md).
@@ -34,7 +34,7 @@ Tworzenie klastra usługi HDInsight obejmuje tworzenie następujących obiektów
 
 - Grupa zasobów platformy Azure. Grupa zasobów platformy Azure to kontener dla zasobów platformy Azure. 
 - Konto magazynu platformy Azure lub usługa Azure Data Lake Store.  Każdy klaster usługi HDInsight wymaga zależnego magazynu danych. W tym przewodniku Szybki start utworzysz konto magazynu.
-- Klaster usługi HDInsight odpowiedniego typu.  W tym przewodniku Szybki start utworzysz klaster Spark w wersji 2.2.
+- Klaster usługi HDInsight odpowiedniego typu.  W tym przewodniku Szybki start utworzysz klaster Spark w wersji 2.3.
 
 Te zasoby zostaną utworzone za pomocą skryptu programu PowerShell.  Po uruchomieniu skryptu zostanie wyświetlony monit o wprowadzenie następujących wartości:
 
@@ -53,7 +53,7 @@ Te zasoby zostaną utworzone za pomocą skryptu programu PowerShell.  Po uruchom
 2. Skopiuj i wklej poniższy skrypt programu PowerShell w usłudze Cloud Shell. 
 
     ```azurepowershell-interactive
-    ### Create a Spark 2.2 cluster in Azure HDInsight
+    ### Create a Spark 2.3 cluster in Azure HDInsight
         
     # Create the resource group
     $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
@@ -75,7 +75,7 @@ Te zasoby zostaną utworzone za pomocą skryptu programu PowerShell.  Po uruchom
                                     -StorageAccountName $defaultStorageAccountName `
                                     -StorageAccountKey $defaultStorageAccountKey
     
-    # Create a Spark 2.2 cluster
+    # Create a Spark 2.3 cluster
     $clusterName = Read-Host -Prompt "Enter the name of the HDInsight cluster"
     # Cluster login is used to secure HTTPS services hosted on the cluster
     $httpCredential = Get-Credential -Message "Enter Cluster login credentials" -UserName "admin"
@@ -96,7 +96,7 @@ Te zasoby zostaną utworzone za pomocą skryptu programu PowerShell.  Po uruchom
         -Name $clusterName -Context $defaultStorageContext 
     
     $sparkConfig = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
-    $sparkConfig.Add("spark", "2.2")
+    $sparkConfig.Add("spark", "2.3")
     
     # Create the HDInsight cluster
     New-AzureRmHDInsightCluster `

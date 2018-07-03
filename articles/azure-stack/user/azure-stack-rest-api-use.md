@@ -1,44 +1,44 @@
 ---
-title: Użyj interfejsu API stosu Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak pobrać uwierzytelniania z platformą Azure, aby wysyłać żądania interfejsu API Azure stosu.
+title: Użyj usługi Azure Stack interfejsu API | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak pobrać uwierzytelniania z platformy Azure w celu wysyłania żądań interfejsu API do usługi Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: cblackuk
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2018
+ms.date: 07/02/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: e8a9489a3f487a45303bac45f805381b41427b4b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3b89564bf17a9884640b51faa1c3966dce93f89a
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359115"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346794"
 ---
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
-# <a name="use-the-azure-stack-api"></a>Użyj interfejsu API Azure stosu
+# <a name="use-the-azure-stack-api"></a>Użyj usługi Azure Stack interfejsu API
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Azure stosu interfejsu programowania aplikacji (API) służy do automatyzacji operacji, takich jak syndicating elementów marketplace.
+Interfejs programowania aplikacji (API) umożliwia automatyzowanie operacji, takich jak dodawanie maszyny Wirtualnej z Twoją chmurą usługi Azure Stack.
 
-Interfejs API wymaga klienta do uwierzytelniania względem punktu końcowego logowania Microsoft Azure. Punkt końcowy zwraca token do użycia w nagłówku każde żądanie wysłane do interfejsu API Azure stosu. Microsoft Azure korzysta z protokołu Oauth 2.0.
+Interfejs API wymaga klienta do uwierzytelniania punkt końcowy logowania Microsoft Azure. Punkt końcowy zwraca token do użycia w nagłówku każdego żądania wysyłane do interfejsu API usługi Azure Stack. Microsoft Azure korzysta z protokołu Oauth 2.0.
 
-W tym artykule przedstawiono przykłady, które używają **cURL** narzędzie do tworzenia żądań stosu Azure. Aplikacja, zwinięcie, jest narzędziem wiersza polecenia z biblioteki do przesyłania danych. Poniższe przykłady przeprowadzenie proces pobierania tokenu na potrzeby dostępu interfejsu API stosu Azure. Większość języków programowania udostępnia bibliotekach Oauth 2.0, które są niezawodne tokenu zadania zarządzania i obsługi takich token odświeżania.
+Ten artykuł zawiera przykłady z zastosowaniem **cURL** narzędzia do tworzenia żądań usługi Azure Stack. Aplikacja programu cURL, jest narzędziem wiersza polecenia za pomocą biblioteki do przesyłania danych. Te przykłady prowadzą użytkownika przez proces pobierania tokenu dostępu do interfejsu API usługi Azure Stack. Większość języków programowania udostępniają biblioteki protokołu Oauth 2.0, które mają niezawodne tokenu zadania zarządzania i obsługują takie odświeżanie tokenu.
 
-Przejrzyj cały proces przy użyciu interfejsu API REST stosu Azure z ogólnym klienta REST, takich jak **cURL**, aby ułatwić zrozumienie podstawowych żądania i pokazuje, czego można oczekiwać w ładunku odpowiedzi.
+Przejrzyj cały proces przy użyciu interfejsu API REST usługi Azure Stack przy użyciu ogólnego klienta REST, takich jak **cURL**, aby ułatwić zrozumienie podstawowych żądania i pokazuje, czego mogą oczekiwać otrzymać w ładunku odpowiedzi.
 
-W tym artykule nie Eksploruj wszystkie opcje dostępne dla pobierania tokenów, takie jak logowania interakcyjnego lub tworzenia dedykowanych identyfikatorów aplikacji. Aby uzyskać informacje dotyczące tych tematów, zobacz [dokumentacja interfejsu API REST Azure](https://docs.microsoft.com/rest/api/).
+W tym artykule nie Poznaj wszystkie opcje dostępne do pobierania tokenów, takich jak interakcyjnego logowania lub tworzenia dedykowanych identyfikatory aplikacji. Aby uzyskać informacje dotyczące tych tematów, zobacz [dokumentacja interfejsu API REST usługi Azure](https://docs.microsoft.com/rest/api/).
 
 ## <a name="get-a-token-from-azure"></a>Pobierz token z platformy Azure
 
-Utwórz treści żądania, sformatowany przy użyciu typu zawartości x--www-form-urlencoded można uzyskać tokenu dostępu. Po żądania do punktu końcowego uwierzytelniania REST Azure i logowania.
+Tworzenie treści żądania, sformatowany przy użyciu typu zawartości x--www-form-urlencoded do uzyskania tokenu dostępu. PUBLIKUJ Twoje żądanie do punktu końcowego Azure REST uwierzytelniania i logowania.
 
 ### <a name="uri"></a>Identyfikator URI
 
@@ -48,9 +48,9 @@ POST https://login.microsoftonline.com/{tenant id}/oauth2/token
 
 **Identyfikator dzierżawy** jest:
 
- - Domenę dzierżawy, takich jak `fabrikam.onmicrosoft.com`
+ - Twoja domena dzierżawy, takich jak `fabrikam.onmicrosoft.com`
  - Identyfikator dzierżawy, takich jak `8eaed023-2b34-4da1-9baa-8bc8c9d6a491`
- - Wartość domyślna dla kluczy niezależny od dzierżawy: `common`
+ - Wartość domyślna dla kluczy niezależnie od dzierżawcy: `common`
 
 ### <a name="post-body"></a>Treść wpisu
 
@@ -66,20 +66,20 @@ grant_type=password
 Dla każdej wartości:
 
  - **grant_type**  
-    Typ schematu uwierzytelniania będzie przy użyciu. W tym przykładzie wartość to `password`
+    Typ schematu uwierzytelniania należy za pomocą. W tym przykładzie wartość `password`
 
  - **resource**  
-    Zasób uzyskuje dostęp do tokenu. Badając punktu końcowego metadanych zarządzania stosu Azure można znaleźć zasobu. Przyjrzyj się **odbiorców** sekcji
+    Zasób uzyskuje dostęp do tokenu. Można znaleźć zasobu, badając punkt końcowy metadanych zarządzania usługi Azure Stack. Przyjrzyj się **odbiorców** sekcji
 
- - **Punkt końcowy zarządzania Azure stosu**  
+ - **Punkt końcowy zarządzania usługi Azure Stack**  
     ```
     https://management.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-01
     ```
 
   > [!NOTE]  
-  > Jeśli jesteś administratorem próby uzyskania dostępu do interfejsu API dzierżawcy musi upewnij się, że należy użyć punktu końcowego dzierżawcy, na przykład: `https://adminmanagement.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-011`  
+  > Jeśli jesteś administratorem, który próbuje uzyskać dostęp interfejs API dzierżawcy musi upewnij się, że punkt końcowy dzierżawy, należy użyć na przykład: `https://adminmanagement.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-011`  
 
-  Na przykład z zestawem Azure stosu programowanie jako punktu końcowego:
+  Na przykład za pomocą usługi Azure Stack Development Kit jako punkt końcowy:
 
     ```bash
     curl 'https://management.local.azurestack.external/metadata/endpoints?api-version=2015-01-01'
@@ -107,13 +107,13 @@ Dla każdej wartości:
 
   **client_id**
 
-  Ta wartość jest zapisane na stałe wartość domyślna:
+  Ta wartość jest zakodowana w domyślną wartość:
 
   ```
   1950a258-227b-4e31-a9cf-717495945fc2
   ```
 
-  Alternatywne opcje są dostępne w określonych scenariuszach:
+  Alternatywne opcje są dostępne dla konkretnych scenariuszy:
 
   
   | Aplikacja | Identyfikator aplikacji |
@@ -126,7 +126,7 @@ Dla każdej wartości:
 
   **Nazwa użytkownika**
 
-  Na przykład konto Azure AAD stosu:
+  Na przykład konto usługi Azure Stack AAD:
 
   ```
   azurestackadmin@fabrikam.onmicrosoft.com
@@ -134,7 +134,7 @@ Dla każdej wartości:
 
   **Hasło**
 
-  Hasło administratora usługi Azure stosu AAD.
+  Hasło administratora usługi Azure Stack w usłudze AAD.
 
 ### <a name="example"></a>Przykład
 
@@ -165,9 +165,9 @@ Odpowiedź:
 }
 ```
 
-## <a name="api-queries"></a>Zapytania interfejsu API
+## <a name="api-queries"></a>Interfejs API zapytań
 
-Po pobraniu tokenu dostępu, należy dodać go jako nagłówka do wszystkich żądań interfejsu API. Aby to zrobić, należy utworzyć nagłówek **autoryzacji** z wartością: `Bearer <access token>`. Na przykład:
+Po pobraniu tokenu dostępu, należy dodać go jako nagłówek do poszczególnych żądań interfejsu API. Aby to zrobić, należy utworzyć nagłówek **autoryzacji** z wartością: `Bearer <access token>`. Na przykład:
 
 Żądanie:
 
@@ -189,16 +189,16 @@ subscriptionPolicies : @{locationPlacementId=AzureStack}
 
 ### <a name="url-structure-and-query-syntax"></a>Adres URL struktury i składni zapytań
 
-Identyfikator URI żądania ogólnego składa się z: {schemat identyfikatora URI} :// {host identyfikatora URI} / {ścieżka zasobu}? {Ciąg zapytania}
+Rodzajowe żądanie identyfikatora URI, który składa się z: {identyfikator URI scheme} :// {host identyfikatora URI} / {ścieżka zasobu}? {Ciąg zapytania}
 
 - **Schemat identyfikatora URI**:  
 Identyfikator URI Określa protokół używany do wysyłania żądania. Na przykład `http` lub `https`.
 - **Host identyfikatora URI**:  
-Host Określa nazwę domeny lub adres IP serwera, na którym hostowana jest punktem końcowym usługi REST, takich jak `graph.microsoft.com` lub `adminmanagement.local.azurestack.external`.
+Host Określa nazwę domeny lub adres IP serwera, na którym hostowana jest punkt końcowy usługi REST, takich jak `graph.microsoft.com` lub `adminmanagement.local.azurestack.external`.
 - **Ścieżka zasobu**:  
-Ścieżka Określa zasobu lub kolekcji zasobów, co może obejmować wiele segmentów używane przez usługę w określeniu zaznaczenie tych zasobów. Na przykład: `beta/applications/00003f25-7e1f-4278-9488-efc7bac53c4a/owners` może służyć do badania właścicieli określonej aplikacji w kolekcji aplikacji z listy.
-- **Długość ciągu zapytania**:  
-Ciąg zawiera dodatkowych parametrów proste, na przykład kryteria wyboru wersji lub zasobu interfejsu API.
+Ścieżka Określa zasób lub kolekcję zasobów, które mogą obejmować wiele segmentów używanych przez usługę podczas wybierania tych zasobów. Na przykład: `beta/applications/00003f25-7e1f-4278-9488-efc7bac53c4a/owners` może służyć do wykonywania zapytań na liście właścicieli określonej aplikacji w obrębie kolekcji aplikacji.
+- **Ciąg zapytania**:  
+Ciąg udostępnia dodatkowe proste parametry, takie jak API wersji lub kryteria wybierania zasobów.
 
 ## <a name="azure-stack-request-uri-construct"></a>Konstrukcja identyfikatora URI żądania w usłudze Azure stosu
 
@@ -220,4 +220,4 @@ https://adminmanagement.local.azurestack.external/subscriptions/800c4168-3eb1-40
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji o używaniu Azure RESTful punktów końcowych, zobacz [dokumentacja interfejsu API REST Azure](https://docs.microsoft.com/rest/api/).
+Aby uzyskać więcej informacji o korzystaniu z punktów końcowych RESTful na platformie Azure, zobacz [dokumentacja interfejsu API REST usługi Azure](https://docs.microsoft.com/rest/api/).

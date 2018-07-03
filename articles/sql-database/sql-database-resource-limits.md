@@ -1,76 +1,77 @@
 ---
-title: Zasobów bazy danych SQL Azure ogranicza omówienie | Dokumentacja firmy Microsoft
-description: Na tej stronie opisano niektóre typowe limity zasobów na podstawie jednostek DTU dla pojedynczych baz danych w bazie danych SQL Azure.
+title: Zasób platformy Azure SQL Database ogranicza — omówienie | Dokumentacja firmy Microsoft
+description: Ta strona zawiera opis niektórych typowych limitów zasobów na podstawie jednostek DTU dla pojedynczej bazy danych w usłudze Azure SQL Database.
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/02/2018
 ms.author: carlrab
-ms.openlocfilehash: 6806b0c5b5e5ac5e1189f628786f0c8f9b223395
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 403490f47ac171d4a302d2b68af65375bbdc26cd
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36750955"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345723"
 ---
-# <a name="overview-azure-sql-database-resource-limits"></a>Limity zasobów bazy danych SQL Azure — omówienie 
+# <a name="overview-azure-sql-database-resource-limits"></a>Limity zasobów usługi Azure SQL Database — omówienie 
 
-Ten artykuł zawiera omówienie zasobów bazy danych SQL Azure ogranicza oraz zawiera informacje dotyczące co się stanie, gdy te limity zasobów są trafień lub przekroczony.
+Ten artykuł zawiera omówienie zasobów usługi Azure SQL Database ogranicza i zawiera informacje dotyczące co się stanie, gdy te limity zasobów są osiągnięty lub przekroczony.
 
 ## <a name="what-is-the-maximum-number-of-servers-and-databases"></a>Co to jest maksymalna liczba serwerów i baz danych?
 
 | Maksimum | Wartość |
 | :--- | :--- |
-| Baz danych na serwerze | 5000 |
+| Baz danych na jednym serwerze | 5000 |
 | Domyślna liczba serwerów na subskrypcję w dowolnym regionie | 20 |
 | Maksymalna liczba serwerów na subskrypcję w dowolnym regionie | 200 |
+| Jednostka DTU / przydziału liczby jednostek eDTU na serwerze | 54,000 |
 |||
 
 > [!NOTE]
-> Aby uzyskać więcej przydział serwera niż domyślny, w portalu Azure dla subskrypcji o problem typu "Przydziału" można przesłać nowe żądanie pomocy technicznej.
+> Aby uzyskać więcej /eDTU limitu przydziału lub większej liczby serwerów niż domyślny, można przesłać nowe żądanie pomocy technicznej w witrynie Azure portal dla subskrypcji z typem problemu "Limit przydziału". Wartość DTU / limitu przydziału i bazy danych na serwer liczby jednostek eDTU ogranicza liczbę pule elastyczne na serwerze. 
 
 > [!IMPORTANT]
-> Jak liczba baz danych zbliża się do limitu na serwerze, mogą wystąpić następujące czynności:
-> - Zwiększanie opóźnienie w wykonywanie zapytań bazy danych master.  Dotyczy to widoków dane statystyczne wykorzystania zasobów, takich jak sys.resource_stats.
-> - Zwiększenie opóźnienia podczas wykonywania operacji zarządzania i renderowania portalu punkt widzenia obejmujących wyliczanie baz danych na serwerze.
+> Jak liczba baz danych zbliża się do limitu na serwer, mogą wystąpić następujące czynności:
+> - Zwiększenie opóźnienia w uruchamianiu zapytań bazy danych master.  Dotyczy to widoków dane statystyczne wykorzystania zasobów, takich jak sys.resource_stats.
+> - Zwiększenie opóźnienia w operacji zarządzania i renderowanie portalu punkty widzenia, obejmujące wyliczanie baz danych na serwerze.
 
-## <a name="what-happens-when-database-resource-limits-are-reached"></a>Co się stanie po osiągnięciu limitu zasobów bazy danych?
+## <a name="what-happens-when-database-resource-limits-are-reached"></a>Co się stanie po osiągnięciu limitów zasobów bazy danych?
 
-### <a name="compute-dtus-and-edtus--vcores"></a>Obliczenia bazy danych (Dtu a Edtu / vCores)
+### <a name="compute-dtus-and-edtus--vcores"></a>Obliczeniowe (jednostki Dtu i Edtu / rdzeni wirtualnych)
 
-Gdy wzrośnie wykorzystania obliczeń bazy danych (mierzonej w Dtu a Edtu lub vCores), opóźnienia zapytania zwiększa i może nawet limit czasu. W tych warunkach zapytania mogą być umieszczone w kolejce przez usługę i są pod warunkiem, że zwolnić zasobów do wykonania jako zasobu.
-Gdy wystąpią wykorzystania wysokiej obliczeń, są następujące opcje środki zaradcze:
+Gdy wzrośnie wykorzystanie obliczeń bazy danych (według liczby jednostek Dtu i Edtu lub rdzenie wirtualne), kwerendami zwiększa i może nawet przekroczyć limit czasu. W tych warunkach zapytania mogą być umieszczane w kolejce przez usługę i są pod warunkiem, że zwolnić zasoby do wykonania jako zasób.
+Gdy wystąpią wykorzystanie dużą mocą obliczeniową, opcje środki zaradcze:
 
-- Zwiększenie poziomu wydajności bazy danych lub puli elastycznej, aby zapewnić większą ilością zasobów obliczeniowych bazy danych. Zobacz [skalowania pojedynczej bazy danych zasobów](sql-database-single-database-scale.md) i [puli elastycznej zasoby są skalowane](sql-database-elastic-pool-scale.md).
-- Optymalizacja zapytania, aby zmniejszyć wykorzystanie zasobów każdego zapytania. Aby uzyskać więcej informacji, zobacz [zapytania dostrajania/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
+- Zwiększenie poziomu wydajności bazy danych lub elastycznej puli w celu zapewnienia bazy danych przy użyciu większej ilości zasobów obliczeniowych. Zobacz [skalowanie pojedynczej bazy danych zasobów](sql-database-single-database-scale.md) i [skalowanie elastycznej puli zasobów](sql-database-elastic-pool-scale.md).
+- Optymalizowanie zapytań, aby zmniejszyć wykorzystanie zasobów każdej kwerendy. Aby uzyskać więcej informacji, zobacz [zapytania dostrajania/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
 ### <a name="storage"></a>Magazyn
 
-Gdy miejsca w bazie danych używany przez nią miejsce osiągnie limit maksymalnego rozmiaru bazy danych wstawia i aktualizacji, które zwiększają rozmiar danych nie powiodło się i klienci odbierają [komunikat o błędzie](sql-database-develop-error-messages.md). Baza danych WYBIERA i USUWA nadal się powieść.
+Używane miejsce w bazie danych osiągnie limit maksymalnego rozmiaru, wstawia bazy danych i aktualizacji, które zwiększają rozmiar danych nie powiodło się i klienci otrzymują [komunikat o błędzie](sql-database-develop-error-messages.md). Baza danych WYBIERA i USUWA nadal pomyślnie tworzone.
 
-Gdy wystąpią wykorzystanie miejsca wysoka, są następujące opcje środki zaradcze:
+Gdy wystąpią wykorzystania miejsca wysoka, opcje środki zaradcze:
 
-- Zwiększyć maksymalny rozmiar bazy danych lub elastyczna pula lub Dodaj więcej pamięci masowej. Zobacz [skalowania pojedynczej bazy danych zasobów](sql-database-single-database-scale.md) i [puli elastycznej zasoby są skalowane](sql-database-elastic-pool-scale.md).
-- W przypadku bazy danych w puli elastycznej następnie również bazy danych może zostać przeniesiona poza puli tak, aby jej miejsca do magazynowania nie są współużytkowane z innych baz danych.
+- Zwiększenie maksymalnego rozmiaru bazy danych lub elastycznej puli, lub Dodaj więcej pamięci masowej. Zobacz [skalowanie pojedynczej bazy danych zasobów](sql-database-single-database-scale.md) i [skalowanie elastycznej puli zasobów](sql-database-elastic-pool-scale.md).
+- W przypadku bazy danych w puli elastycznej następnie też bazy danych można przenosić poza pulę, aby jej miejsca do magazynowania nie jest współużytkowane z innymi bazami danych.
 
-### <a name="sessions-and-workers-requests"></a>Sesje i procesy robocze (liczba żądań) 
+### <a name="sessions-and-workers-requests"></a>Sesje i procesów roboczych (żądań) 
 
-Maksymalna liczba sesji, jak i pracownicy są określane przez warstwę i poziom wydajności usługi (Dtu a Edtu). Nowe żądania są odrzucane po osiągnięciu limitu sesji lub proces roboczy, a klienci odbierają komunikat o błędzie. Gdy liczbę połączeń dostępnych może być kontrolowane przez aplikację, liczbę równoczesnych procesów roboczych jest często przeszkodę oszacować i sterowanie nią. Jest to szczególnie istotne podczas okresów obciążenia szczytowego po osiągnięciu limitu zasobów bazy danych i pracowników, ustawianie z powodu dłużej uruchomione zapytania. 
+Maksymalna liczba sesji i procesy robocze są określane przez usługę warstwy i poziomu wydajności (jednostki Dtu i Edtu). Nowe żądania są odrzucane po osiągnięciu limitu sesji lub proces roboczy, a klienci otrzymują komunikat o błędzie. Chociaż można kontrolować liczbę połączeń, które są dostępne przez aplikację, liczba współbieżnych procesów roboczych jest często trudniejsze do oszacowania i sterowania. Jest to szczególnie istotne w okresach szczytowego obciążenia po osiągnięciu limitów zasobów bazy danych i procesów roboczych, ustawianie ze względu na dłużej uruchomionych zapytań. 
 
-Gdy wystąpią wysokie użycie sesji lub procesu roboczego, są następujące opcje środki zaradcze:
-- Zwiększenie poziomu warstwy lub wydajności usługi bazy danych lub elastyczna pula. Zobacz [skalowania pojedynczej bazy danych zasobów](sql-database-single-database-scale.md) i [puli elastycznej zasoby są skalowane](sql-database-elastic-pool-scale.md).
-- Optymalizacja zapytania, aby zmniejszyć wykorzystanie zasobów każdego zapytania, jeśli przyczyną zwiększone wykorzystanie wynika z rywalizacji o zasoby obliczeniowe. Aby uzyskać więcej informacji, zobacz [zapytania dostrajania/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
+Gdy wystąpią wysokie wykorzystanie sesji lub proces roboczy, opcje środki zaradcze:
+- Zwiększenie poziomu wydajności lub Warstwa usługi bazy danych lub elastycznej puli. Zobacz [skalowanie pojedynczej bazy danych zasobów](sql-database-single-database-scale.md) i [skalowanie elastycznej puli zasobów](sql-database-elastic-pool-scale.md).
+- Optymalizacja zapytania, aby zmniejszyć wykorzystanie zasobów każdej kwerendy, jeśli przyczyną zwiększonej wykorzystanie jest z powodu rywalizacji o zasoby obliczeniowe. Aby uzyskać więcej informacji, zobacz [zapytania dostrajania/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
-Gdy wystąpią wysokie użycie sesji lub procesu roboczego, są następujące opcje środki zaradcze:
-- Zwiększa poziom wydajności ani warstwy usługi bazy danych. Zobacz [skalowania pojedynczej bazy danych zasobów](sql-database-single-database-scale.md) i [puli elastycznej zasoby są skalowane](sql-database-elastic-pool-scale.md).
-- Optymalizacja zapytania, aby zmniejszyć wykorzystanie zasobów każdego zapytania, jeśli przyczyną zwiększone wykorzystanie wynika z rywalizacji o zasoby obliczeniowe. Aby uzyskać więcej informacji, zobacz [zapytania dostrajania/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
+Gdy wystąpią wysokie wykorzystanie sesji lub proces roboczy, opcje środki zaradcze:
+- Zwiększenie poziomu wydajności lub Warstwa usługi bazy danych. Zobacz [skalowanie pojedynczej bazy danych zasobów](sql-database-single-database-scale.md) i [skalowanie elastycznej puli zasobów](sql-database-elastic-pool-scale.md).
+- Optymalizacja zapytania, aby zmniejszyć wykorzystanie zasobów każdej kwerendy, jeśli przyczyną zwiększonej wykorzystanie jest z powodu rywalizacji o zasoby obliczeniowe. Aby uzyskać więcej informacji, zobacz [zapytania dostrajania/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Zobacz [bazy danych SQL — często zadawane pytania](sql-database-faq.md) odpowiedzi na często zadawane pytania.
-- Informacje ogólne limity Azure, zobacz [subskrypcji platformy Azure i usługi limity, przydziały i ograniczenia](../azure-subscription-service-limits.md).
-- Informacje o Dtu a Edtu, zobacz [Dtu a Edtu](sql-database-service-tiers.md#what-are-database-transaction-units-dtus).
-- Informacje o limity rozmiaru bazy danych tempdb, zobacz https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database.
+- Zobacz [— często zadawane pytania dla bazy danych SQL](sql-database-faq.md) odpowiedzi na często zadawane pytania.
+- Aby uzyskać informacji na temat ogólne limity platformy Azure, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../azure-subscription-service-limits.md).
+- Aby uzyskać informacji na temat jednostek Dtu i Edtu, zobacz [jednostek Dtu i Edtu](sql-database-service-tiers.md#what-are-database-transaction-units-dtus).
+- Aby uzyskać informacje na temat limitów rozmiarów bazy danych tempdb, zobacz https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database.

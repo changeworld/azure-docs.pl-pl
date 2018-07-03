@@ -1,6 +1,6 @@
 ---
-title: Utwórz przezroczyste bramę z krawędzi IoT Azure — Linux | Dokumentacja firmy Microsoft
-description: Umożliwia utworzenie przezroczysty bramy, który może przetwarzać informacje dla wielu urządzeń krawędzi IoT Azure
+title: Tworzenie przezroczystej bramy za pomocą usługi Azure IoT Edge — Linux | Dokumentacja firmy Microsoft
+description: Umożliwia tworzenie przezroczystej bramy, która pozwala na przetwarzanie informacji dla wielu urządzeń w usłudze Azure IoT Edge
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -8,51 +8,51 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5a78d6fb8ee52f0daba80a77cc8a5e75c2e5248d
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 45179f8f1f46be764144bdc22d5bab3548e9401d
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37036519"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346063"
 ---
-# <a name="create-a-linux-iot-edge-device-that-acts-as-a-transparent-gateway"></a>Utwórz urządzenie Linux IoT krawędzi, który działa jako brama przezroczyste
+# <a name="create-a-linux-iot-edge-device-that-acts-as-a-transparent-gateway"></a>Tworzenie urządzenia usługi IoT Edge w systemie Linux, która pełni rolę przezroczystej bramy
 
-Ten artykuł zawiera szczegółowe instrukcje dotyczące używania urządzenia IoT jako przezroczysty bramy. W pozostałej części niniejszego artykułu termin *brama brzegowa IoT* odwołuje się do urządzenia IoT używany jako przezroczysty bramy. Aby uzyskać szczegółowe informacje, zobacz [jak IoT urządzenia może służyć jako brama][lnk-edge-as-gateway], co daje omówienie pojęć.
+Ten artykuł zawiera szczegółowe instrukcje dotyczące korzystania z urządzenia usługi IoT Edge rolę przezroczystej bramy. W pozostałej części tego artykułu termin *brama usługi IoT Edge* odwołuje się do urządzenia usługi IoT Edge używany jako przezroczystej bramy. Aby uzyskać więcej informacji, zobacz [jak IoT Edge urządzenia mogą być używane jako brama][lnk-edge-as-gateway], który zawiera omówienie pojęć.
 
 >[!NOTE]
 >Obecnie:
-> * Jeśli brama jest odłączona od centrum IoT, podrzędne urządzeń nie można uwierzytelnić z bramą.
-> * Urządzenia brzegowe IoT nie może połączyć się bram granicznych IoT.
-> * Podrzędne urządzeń nie można użyć przekazywania pliku.
+> * Jeśli brama zostanie odłączony od usługi IoT Hub, podrzędnym urządzenia nie mogą uwierzytelniać za pomocą bramy.
+> * Urządzenia usługi IoT Edge nie można nawiązać połączenia bramy usługi IoT Edge.
+> * Podrzędne urządzeń nie można użyć przekazywania plików.
 
-Etap o tworzeniu przezroczysty bramy jest bezpiecznego połączenia bramy na urządzeniach podrzędne. Krawędź IoT Azure umożliwia użycie infrastruktury kluczy publicznych do skonfigurowania bezpiecznego połączenia TLS między tymi urządzeniami. W takim przypadku firma Microsoft jest stosowanie podrzędne urządzenia do nawiązania połączenia urządzenia IoT działający jako brama przezroczysty.  Aby zachować bezpieczeństwo uzasadnione, podrzędne urządzenia powinien potwierdzenia tożsamości urządzenie brzegowe ponieważ mają tylko urządzenia nawiązywanie połączeń z bram i nie mogą okazać się złośliwe bramy.
+Trudnym o tworzeniu przezroczystej bramy jest możliwość bezpiecznego łączenia z bramy do podrzędnego urządzeń. Usługa Azure IoT Edge umożliwia użycie infrastruktury kluczy publicznych do skonfigurowania nawiązywać bezpieczne połączenia TLS między tymi urządzeniami. W tym przypadku możemy zezwolenie podrzędnym urządzenia połączyć się z urządzenia usługi IoT Edge, działając jako przezroczystej bramy.  Aby zachować bezpieczeństwo uzasadnione, podrzędne urządzenia należy się upewnić tożsamość urządzenia usługi Edge, ponieważ mają tylko urządzenia nawiązywania połączenia z bramami i potencjalnie złośliwych bramy.
 
-Można utworzyć dowolnej infrastruktury certyfikatów, umożliwiającą zaufania wymagane dla topologii urządzenia bramy. W tym artykule przyjęto założenie, tę samą konfigurację certyfikatu, który ma zostać użyty do włączenia [zabezpieczeń urzędu certyfikacji X.509] [ lnk-iothub-x509] w Centrum IoT, które obejmuje certyfikat X.509 urzędu certyfikacji skojarzonego z określonym Centrum IoT (IoT hub właściciel urzędu certyfikacji ) oraz serii certyfikatów, podpisanych tego urzędu certyfikacji i urzędu certyfikacji dla urządzenia brzegowego.
+Można utworzyć żadnej infrastruktury certyfikatów, umożliwiająca zaufania wymagane dla topologii urządzenia bramy. W tym artykule przyjęto założenie, że tę samą konfigurację certyfikatu, który zostanie wykorzystany do włączenia [zabezpieczeń urzędu certyfikacji X.509] [ lnk-iothub-x509] w usłudze IoT Hub, który obejmuje certyfikat X.509 urzędu certyfikacji, powiązanych z określonej usługi IoT hub (IoT hub właściciel urzędu certyfikacji ) oraz szeregu certyfikaty, podpisane za pomocą tego urzędu certyfikacji i urzędu certyfikacji dla urządzeń brzegowych.
 
 ![Instalator bramy][1]
 
-Brama przedstawia informacje o jego krawędzi urządzenia urzędu certyfikacji, aby urządzenia podrzędne podczas inicjowania połączenia. Podrzędne urządzenie sprawdza upewnij się, że certyfikat urzędu certyfikacji urządzenia krawędzi jest podpisany przez właściciela certyfikatu urzędu certyfikacji. Dzięki temu podrzędne urządzeniu, aby upewnić się, że brama pochodzi z zaufanego źródła.
+Brama przedstawia swój certyfikat urzędu certyfikacji urządzenia Edge na urządzeniu podrzędnego podczas inicjowania połączenia. Podrzędne urządzenie sprawdza upewnij się, że certyfikat urzędu certyfikacji urządzenia Edge jest podpisany przez właściciela certyfikatu urzędu certyfikacji. Ten proces umożliwia podrzędnym urządzenia upewnić się, że brama pochodzi z zaufanego źródła.
 
-W poniższych krokach objaśniono proces tworzenia certyfikatów oraz instalowania ich w odpowiednich miejscach.
+W poniższych krokach objaśniono proces tworzenia certyfikatów i instalowania ich w odpowiednich miejscach.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-1.  Zainstaluj środowisko uruchomieniowe Azure IoT Edge na urządzeniu systemu Linux, który ma być używany jako brama przezroczysty.
+1.  Zainstaluj środowisko uruchomieniowe usługi Azure IoT Edge na urządzeniu systemu Linux, którego chcesz użyć jako przezroczystej bramy.
    * [Linux x64][lnk-install-linux-x64]
    * [ARM32 systemu Linux][lnk-install-linux-arm]
 
-2.  Uzyskaj skryptów do generowania wymaganych certyfikatów nieprodukcyjnych przy użyciu następującego polecenia. Skrypty te ułatwiają tworzenie certyfikaty niezbędne do skonfigurowania bramy przezroczysty. 
+2.  Uzyskaj skrypty w celu wygenerowania wymaganych certyfikatów nieprodukcyjnych przy użyciu następującego polecenia. Te skrypty pomocne podczas tworzenia wymagane certyfikaty, aby skonfigurować przezroczystej bramy. 
 
    ```cmd
    git clone https://github.com/Azure/azure-iot-sdk-c.git
    ```
 
-3. Te skrypty przy użyciu biblioteki OpenSSL Generowanie wymaganych certyfikatów, a biblioteki OpenSSL wymaga konfiguracji.
+3. Te skrypty użyj biblioteki OpenSSL, aby wygenerować wymagane certyfikaty i OpenSSL wymaga konfiguracji.
    
    1. Przejdź do katalogu, w którym chcesz pracować. W tym miejscu na będzie nazywamy to $WRKDIR.  Wszystkie pliki zostaną utworzone w tym katalogu.
 
-      CD $WRKDIR
+      ciągłe dostarczanie $WRKDIR
    
-   1. Skopiuj pliki konfiguracji i skrypt do katalogu roboczego.
+   1. Skopiuj pliki konfiguracji i skrypt w katalogu roboczym.
 
       ```cmd
       cp azure-iot-sdk-c/tools/CACertificates/*.cnf .
@@ -61,13 +61,13 @@ W poniższych krokach objaśniono proces tworzenia certyfikatów oraz instalowan
       ```
 
 ## <a name="certificate-creation"></a>Tworzenie certyfikatu
-1.  Utwórz certyfikat urzędu certyfikacji właściciela i jednego certyfikatu pośredniego. Są one wszystkich umieszczane w `$WRKDIR`.
+1.  Utwórz certyfikat urzędu certyfikacji właściciela i jeden certyfikat pośredniego. Te są umieszczane w `$WRKDIR`.
 
    ```cmd
    ./certGen.sh create_root_and_intermediate
    ```
 
-   Dane wyjściowe wykonania skryptu są następujące certyfikaty i klucze:
+   Dane wyjściowe wykonywania skryptów są następujące certyfikaty i klucze:
    * Certyfikaty
       * `$WRKDIR/certs/azure-iot-test-only.root.ca.cert.pem`
       * `$WRKDIR/certs/azure-iot-test-only.intermediate.cert.pem`
@@ -75,34 +75,34 @@ W poniższych krokach objaśniono proces tworzenia certyfikatów oraz instalowan
       * `$WRKDIR/private/azure-iot-test-only.root.ca.key.pem`
       * `$WRKDIR/private/azure-iot-test-only.intermediate.key.pem`
 
-2.  Utwórz certyfikat urzędu certyfikacji krawędzi urządzenia i klucz prywatny z poniższego polecenia.
+2.  Utwórz certyfikat urzędu certyfikacji urządzenia usługi Edge i klucza prywatnego za pomocą poniższego polecenia.
 
    >[!NOTE]
-   > **NIE** Użyj nazwy, która jest taka sama jak nazwa hosta DNS bramy. W ten sposób spowoduje certyfikatu klienta dla tych certyfikatów, aby zakończyć się niepowodzeniem.
+   > **NIE** Użyj nazwy, która jest taka sama jak nazwa hosta DNS bramy. To spowoduje, że certyfikatu klienta dla tych certyfikatów, nie powiedzie się.
 
       ```cmd
       ./certGen.sh create_edge_device_certificate "<gateway device name>"
       ```
 
-   Dane wyjściowe wykonania skryptu są następujące certyfikaty i klucz:
+   Dane wyjściowe wykonywania skryptów są następujące certyfikaty i klucza:
    * `$WRKDIR/certs/new-edge-device.*`
    * `$WRKDIR/private/new-edge-device.key.pem`
 
 ## <a name="certificate-chain-creation"></a>Tworzenie łańcucha certyfikatu
-Tworzenie łańcucha certyfikatów z właściciela certyfikatu urzędu certyfikacji, certyfikat pośredniego i certyfikat urzędu certyfikacji urządzenia krawędzi z poniższego polecenia. Umieszczenie go w pliku łańcucha pozwala łatwo zainstalować na urządzeniu krawędzi, działając jako brama przezroczysty.
+Tworzenie łańcucha certyfikatów od właściciela certyfikatu urzędu certyfikacji, pośredniego certyfikatu i certyfikat urzędu certyfikacji urządzeń brzegowych za pomocą poniższego polecenia. Umieszczenie ich w pliku łańcucha pozwala łatwo zainstalować na urządzeniu usługi Edge działający jako przezroczystej bramy.
 
    ```cmd
    cat ./certs/new-edge-device.cert.pem ./certs/azure-iot-test-only.intermediate.cert.pem ./certs/azure-iot-test-only.root.ca.cert.pem > ./certs/new-edge-device-full-chain.cert.pem
    ```
 
 ## <a name="installation-on-the-gateway"></a>Instalacja bramy
-1.  Skopiuj następujące pliki z $WRKDIR dowolnego miejsca na urządzeniu krawędzi, będzie nazywamy który $CERTDIR. Jeśli certyfikaty są generowane na urządzeniu krawędzi pominąć ten krok.
+1.  Skopiuj następujące pliki z $WRKDIR dowolne miejsce na urządzeniu usługi Edge, będziemy odnosić się do tego jako $CERTDIR. Pomiń ten krok, jeśli certyfikaty są generowane na urządzeniu usługi Edge.
 
-   * Certyfikat urzędu certyfikacji urządzenia —  `$WRKDIR/certs/new-edge-device-full-chain.cert.pem`
-   * Klucz prywatny urzędu certyfikacji urządzenia- `$WRKDIR/private/new-edge-device.key.pem`
-   * Urząd certyfikacji - właściciela `$WRKDIR/certs/azure-iot-test-only.root.ca.cert.pem`
+   * Certyfikat dostępu Warunkowego do urządzeń —  `$WRKDIR/certs/new-edge-device-full-chain.cert.pem`
+   * Klucz prywatny urzędu certyfikacji urządzenia — `$WRKDIR/private/new-edge-device.key.pem`
+   * Właściciel CA- `$WRKDIR/certs/azure-iot-test-only.root.ca.cert.pem`
 
-2.  Ustaw `certificate` właściwości w pliku yaml programu config demon zabezpieczeń do ścieżki rozmieszczenia pliki certyfikatu i klucza.
+2.  Ustaw `certificate` właściwości w pliku yaml konfiguracji demona zabezpieczeń do ścieżki gdzie umieścić pliki certyfikatu i klucza.
 
 ```yaml
 certificates:
@@ -112,12 +112,12 @@ certificates:
 ```
 
 ## <a name="deploy-edgehub-to-the-gateway"></a>Wdrażanie EdgeHub do bramy
-Jedną z najważniejszych funkcji usługi Azure IoT Edge jest możliwość wdrażania modułów na urządzeniach usługi IoT Edge z poziomu chmury. Ta sekcja zawiera, należy utworzyć pusty pozornie wdrożenie; Jednak Centrum krawędzi jest dodawane do wszystkich wdrożeń, nawet jeśli nie mają żadnych modułów obecny automatcially. Koncentrator krawędzi jest tylko moduł, który należy na urządzenie brzegowe ona działać jako przezroczysty bramy, tworzenie pustego wdrożenia jest wystarczająca. 
+Jedną z najważniejszych funkcji usługi Azure IoT Edge jest możliwość wdrażania modułów na urządzeniach usługi IoT Edge z poziomu chmury. Ta sekcja zawiera podczas tworzenia wdrożenia pozornie pusty; Centrum usługi Edge jest jednak automatcially dodawane do wszystkich wdrożeń, nawet jeśli nie mają żadnych modułów obecne. Centrum usługi Edge jest tylko moduł, który należy na urządzeniu usługi Edge ona pełnić rolę przezroczystej bramy, dzięki czemu Tworzenie pustego wdrożenia jest wystarczająca. 
 1. W witrynie Azure Portal przejdź do centrum IoT Hub.
-2. Przejdź do **krawędzi IoT** i wybierz urządzenia IoT krawędzi, który ma być używany jako brama.
+2. Przejdź do **usługi IoT Edge** i wybierz urządzenia usługi IoT Edge, która ma być używany jako brama.
 3. Wybierz pozycję **Ustaw moduły**.
 4. Wybierz opcję **Dalej**.
-5. W **określić trasy** kroku powinny mieć domyślną trasę, która wysyła komunikaty ze wszystkich modułów do Centrum IoT. Jeśli nie, Dodaj następujący kod, a następnie wybierz **dalej**.
+5. W kroku **Określanie tras** powinna być widoczna domyślna trasa, która wysyła wszystkie komunikaty ze wszystkich modułów do centrum IoT Hub. Jeśli tak nie jest, dodaj następujący kod, a następnie wybierz przycisk **Dalej**.
    ```JSON
    {
        "routes": {
@@ -125,27 +125,31 @@ Jedną z najważniejszych funkcji usługi Azure IoT Edge jest możliwość wdra�
        }
    }
    ```
-6. W kroku szablonu przeglądu, wybierz **przesyłania**.
+6. W kroku szablon recenzji wybierz **przesyłania**.
 
 ## <a name="installation-on-the-downstream-device"></a>Instalacja na urządzeniu podrzędne
-Podrzędne urządzenie może być dowolną aplikację przy użyciu [urządzenia Azure IoT SDK][lnk-devicesdk], takie jak opisano to proste w [Podłącz urządzenie do Centrum IoT przy użyciu platformy .NET] [ lnk-iothub-getstarted]. Aplikacji podrzędne urządzenie ma ufać **właściciela urzędu certyfikacji** certyfikatu w celu weryfikowania połączeń TLS do urządzenia bramy. Ten krok, zwykle można przeprowadzić na dwa sposoby: na poziomie systemu operacyjnego lub (w przypadku niektórych języków) na poziomie aplikacji.
+Podrzędne urządzenie może pozostawać w dowolnej aplikacji przy użyciu [zestaw SDK urządzeń Azure IoT][lnk-devicesdk], takie jak proste co opisano w [Podłącz urządzenie do Centrum IoT hub przy użyciu platformy .NET] [ lnk-iothub-getstarted]. Aplikacji urządzenia podrzędnego musi ufać **właściciela urzędu certyfikacji** certyfikatu w celu weryfikowania połączeń TLS do urządzenia bramy. Zazwyczaj ten krok można wykonać na dwa sposoby: na poziomie systemu operacyjnego lub (w przypadku niektórych języków) na poziomie aplikacji.
 
 ### <a name="os-level"></a>Poziom systemu operacyjnego
-Instalowanie certyfikatu w magazynie certyfikatów systemu operacyjnego umożliwi wszystkie aplikacje, aby użyć właściciela certyfikatu urzędu certyfikacji jako zaufanego certyfikatu.
+Instalacji tego certyfikatu w magazynie certyfikatów systemu operacyjnego pozwoli wszystkie aplikacje, aby użyć właściciela certyfikatu urzędu certyfikacji jako zaufanego certyfikatu.
 
-* Ubuntu — w tym miejscu jest przykładem zainstalować certyfikat urzędu certyfikacji na hoście Ubuntu.
+* Ubuntu - poniżej przedstawiono przykładowy sposób zainstalować certyfikat urzędu certyfikacji na hoście systemu Ubuntu.
 
    ```cmd
    sudo cp $CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem  /usr/local/share/ca-certificates/azure-iot-test-only.root.ca.cert.pem.crt
    sudo update-ca-certificates
    ```
  
-    Powinien zostać wyświetlony komunikat informujący o tym, "aktualizowanie certyfikatów w /etc/ssl/certs... 1 dodane, usunięte 0; Gotowe".
+    Powinien zostać wyświetlony komunikat z informacją "Aktualizowanie certyfikaty /etc/ssl/certs... Dodano 1, 0 usunięte; Gotowe".
 
-* System Windows — [to](https://msdn.microsoft.com/en-us/library/cc750534.aspx) artykule szczegółowo przedstawiają, jak to zrobić na urządzeniu z systemem Windows przy użyciu Kreator importu certyfikatów. 
+* Windows — poniżej przedstawiono przykładowy sposób zainstalować certyfikat urzędu certyfikacji na hoście Windows.
+  * W menu start wpisz "Zarządzanie komputerem certyfikaty". To powinno wyświetlić narzędziem o nazwie `certlm`.
+  * Przejdź do certyfikatów komputera lokalnego--> zaufanych certyfikatów głównych--> Certyfikaty--> po prawej stronie kliknij pozycję--> Wszystkie zadania--> Importuj, aby uruchomić Kreatora importu certyfikatów.
+  * Postępuj zgodnie z instrukcjami, zgodnie z instrukcją i zaimportuj $CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem pliku certyfikatu.
+  * Po zakończeniu wyświetlony komunikat "Pomyślnie zaimportowane".
 
-### <a name="application-level"></a>Poziomie aplikacji
-Dla aplikacji .NET można dodać następującego fragmentu kodu zaufania certyfikatu w formacie PEM. Inicjowanie zmiennej `certPath` z `$CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem`.
+### <a name="application-level"></a>Poziom aplikacji
+W przypadku aplikacji .NET można dodać poniższy fragment kodu można traktować jako zaufany certyfikat w formacie PEM. Zainicjować zmienną `certPath` z `$CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem`.
 
    ```
    using System.Security.Cryptography.X509Certificates;
@@ -158,29 +162,29 @@ Dla aplikacji .NET można dodać następującego fragmentu kodu zaufania certyfi
    store.Close();
    ```
 
-## <a name="connect-the-downstream-device-to-the-gateway"></a>Podłącz urządzenie podrzędne do bramy
-Należy zainicjować sdk urządzenia IoT Hub parametrami połączenia odwołujących się do nazwy hosta z urządzeniem bramy. Jest to realizowane przez dodanie `GatewayHostName` właściwości parametrów połączenia urządzenia. Na przykład poniżej przedstawiono przykładowe parametry połączenia urządzenia dla urządzeń, do którego możemy dołączany `GatewayHostName` właściwości:
+## <a name="connect-the-downstream-device-to-the-gateway"></a>Podłącz urządzenie podrzędnego do bramy
+Zestaw sdk urządzenia usługi IoT Hub musi zostać zainicjowany przy użyciu parametrów połączenia, odnoszące się do nazwy hosta urządzenia bramy. Jest to realizowane przez dołączenie `GatewayHostName` właściwość parametrów połączenia urządzenia. Na przykład poniżej przedstawiono przykładowe parametry połączenia dla urządzenia dla urządzenia, do której firma Microsoft dołączany `GatewayHostName` właściwości:
 
    ```
    HostName=yourHub.azure-devices.net;DeviceId=yourDevice;SharedAccessKey=XXXYYYZZZ=;GatewayHostName=mygateway.contoso.com
    ```
 
    >[!NOTE]
-   >To jest przykład polecenia, które testy, które wszystko zostało poprawnie. Możesz sohuld komunikat "zweryfikować OK".
+   >To przykładowe polecenie, które testy, które wszystko, co zostało skonfiguruj poprawnie. Możesz sohuld powiedzenie komunikat "zweryfikowano OK".
    >
-   >biblioteki openssl s_client-connect - CAfile mygateway.contoso.com:8883 $CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem - showcerts
+   >openssl s_client-connect - CAfile mygateway.contoso.com:8883 $CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem - showcerts
 
-## <a name="routing-messages-from-downstream-devices"></a>Routing wiadomości z urządzeń podrzędne
-Środowisko uruchomieniowe krawędzi IoT może kierować wiadomości wysłane z podrzędnego urządzeń, podobnie jak komunikaty wysyłane przez moduły. Dzięki temu można wykonywać analizy w module uruchomione w bramie przed wysłaniem danych do chmury. Poniżej trasy będzie służyć do wysyłania komunikatów z urządzeniem podrzędny o nazwie `sensor` na nazwę modułu `ai_insights`.
+## <a name="routing-messages-from-downstream-devices"></a>Routing komunikatów z urządzeń podrzędne
+Komunikaty wysyłane z urządzeń podrzędne, podobnie jak komunikaty wysyłane przez moduły można kierować do środowiska uruchomieniowego usługi IoT Edge. Pozwala na przeprowadzanie analiz w module uruchomiona na bramie przed wysłaniem danych do chmury. Poniżej trasy będzie służyć do wysyłania komunikatów z urządzenia podrzędnego o nazwie `sensor` z nazwą modułu `ai_insights`.
 
    ```json
    { "routes":{ "sensorToAIInsightsInput1":"FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO BrokeredEndpoint(\"/modules/ai_insights/inputs/input1\")", "AIInsightsToIoTHub":"FROM /messages/modules/ai_insights/outputs/output1 INTO $upstream" } }
    ```
 
-Zobacz [artykuł kompozycji modułu] [lnk--budowy modułu] więcej szczegółów na przesyłanie wiadomości.
+[Artykule kompozycji moduł] [lnk--budowy modułu] Aby uzyskać szczegółowe informacje na temat routingu komunikatów.
 
-## <a name="next-steps"></a>Kolejne kroki
-[Zrozumieć wymagania i narzędzi do tworzenia modułów krawędzi IoT][lnk-module-dev].
+## <a name="next-steps"></a>Następne kroki
+[Zrozumienie wymagań i narzędzia do tworzenia modułów usługi IoT Edge][lnk-module-dev].
 
 <!-- Images -->
 [1]: ./media/how-to-create-transparent-gateway/gateway-setup.png

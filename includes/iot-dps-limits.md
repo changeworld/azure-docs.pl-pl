@@ -1,19 +1,22 @@
-W poniższej tabeli wymieniono limity, które są stosowane do inicjowania obsługi usługi IoT Hub urządzeń zasobów:
+W poniższej tabeli wymieniono ograniczenia, które są stosowane do zasobów IoT Hub Device Provisioning Service:
 
 | Zasób | Limit |
 | --- | --- |
-| Maksymalna urządzenia udostępnianie usług dla subskrypcji platformy Azure | 10 |
-| Maksymalna liczba rejestracji | 10 000 |
-| Maksymalna liczba rejestracji | 10 000 |
+| Maksymalna usługi Device Provisioning na subskrypcję platformy Azure | 10 |
+| Maksymalna liczba rejestracji | 500,000 |
+| Maksymalna liczba rejestracji | 500,000 |
 | Maksymalna liczba grup rejestracji | 100 |
-| Maksymalna liczba urzędów certyfikacji | 10 |
+| Maksymalna liczba urzędy certyfikacji | 25 |
 
 > [!NOTE]
-> Możesz skontaktować się [Microsoft Support](https://azure.microsoft.com/support/options/) zwiększenie liczby wystąpień w ramach subskrypcji.
+> Możesz skontaktować się ze [Microsoft Support](https://azure.microsoft.com/support/options/) zwiększenie liczby wystąpień w ramach subskrypcji.
 
-Usługa inicjowania obsługi urządzeń ogranicza żądania, gdy zostaną przekroczone następujące limity przydziału:
+> [!NOTE]
+> Możesz skontaktować się ze [Microsoft Support](https://azure.microsoft.com/support/options/) Aby zwiększyć liczbę rejestracji i rejestracje na Twoją usługą aprowizacji.
+
+Usługi Device Provisioning ogranicza żądania po przekroczeniu następujących limitów przydziału:
 
 | Ograniczenie | Wartość usługi |
 | --- | --- |
 | Operacje | 100/min |
-| Rejestracji urządzenia | 100/min |
+| Rejestracje urządzeń | 100/min |

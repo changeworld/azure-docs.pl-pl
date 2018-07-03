@@ -1,6 +1,6 @@
 ---
-title: Zrozumienie przechowywania wersji LUIS - Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać wersji do zarządzania zmianami w opis języka (LUIS)
+title: Omówienie przechowywania wersji usługi LUIS — Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać wersji do zarządzania zmianami w Language Understanding (LUIS)
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,58 +9,58 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/13/2018
 ms.author: v-geberr
-ms.openlocfilehash: dabe7def2766770b686be3c43d4af4f331dd9577
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 694b195440936a6eb42520c3343b6ff13194cc79
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266077"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346335"
 ---
 # <a name="versions"></a>Wersje
-Utwórz różne modele w tej samej aplikacji przy użyciu [wersji](luis-how-to-manage-versions.md). 
+Utwórz różne modele taką samą aplikację na [wersji](luis-how-to-manage-versions.md). 
 
 ## <a name="version-id"></a>Identyfikator wersji
-Identyfikator wersji zawiera znaki, cyfry lub '.' i nie może być dłuższa niż 10 znaków.
+Identyfikator wersji zawiera znaki, cyfry lub "." i nie może być dłuższa niż 10 znaków.
 
 ## <a name="initial-version"></a>Wersja początkowa
-Wersja początkowa (0,1) jest aktywna wersja domyślna. 
+Wersja początkowa (0,1) to domyślna wersja active. 
 
 ## <a name="active-version"></a>Wersja aktywna
-Aby [Ustaw wersję](luis-how-to-manage-versions.md#set-active-version) jako aktywne oznacza jest obecnie edytowany i testowane w [LUIS] [ LUIS] witryny sieci Web. Ustaw wersję jako aktywny do jego dane dotyczące dostępu, Sprawdź aktualizacje, a także testowanie i opublikować go.
+Aby [Ustaw wersję](luis-how-to-manage-versions.md#set-active-version) jako aktywny oznacza jest obecnie edytować i testowane na platformie [LUIS] [ LUIS] witryny sieci Web. Ustaw wersję jako aktywny, aby uzyskać dostęp do swoich danych, wprowadzenia aktualizacji, jak również testowanie i opublikować go.
 
-Nazwa wersji aktualnie aktywny jest wyświetlany w panelu, lewa górna po nazwy aplikacji. 
+Nazwa aktualnie aktywnego wersji jest wyświetlane w panelu po lewej stronie, górna po nazwie aplikacji. 
 
 [ ![Zmień wersję active](./media/luis-concept-version/version-in-nav-bar-inline.png) ](./media/luis-concept-version/version-in-nav-bar-expanded.png#lightbox)
 
-## <a name="versions-and-publishing-slots"></a>Wersje i publikowania gniazda
-Możesz opublikować etap i produktu miejsc. Inna wersja lub tej samej wersji, może być każdego miejsca. Jest to przydatne sprawdzania zmian między wersjami modelu za pośrednictwem punktu końcowego, który jest dostępny dla robotów lub innych LUIS wywoływania aplikacji. 
+## <a name="versions-and-publishing-slots"></a>Wersje i gniazda publikowania
+Opublikuj etapu i produktu miejsca. Każdego miejsca może mieć inną wersję lub tej samej wersji. Jest to przydatne w celu sprawdzenia zmian między wersjami modelu za pośrednictwem punktu końcowego, który jest dostępny do botów lub inne usługi LUIS wywołanie aplikacji. 
 
 ## <a name="clone-a-version"></a>Klonowanie wersji
-Klonowanie wersji, aby utworzyć kopię istniejącej wersji i zapisać je jako nową wersję. Klonowanie wersja, aby można było używać tej samej zawartości istniejącą wersję jako punkt początkowy dla nowej wersji. Po w klonowania wersję, staje się nowej wersji **active** wersji. 
+Klonuj wersji, aby utworzyć kopię istniejącej wersji i zapisać ją jako nową wersję. Klonuj wersji, aby użyć tej samej zawartości istniejącej wersji jako punktu wyjścia dla nowej wersji. Po klonowania wersji staje się nowej wersji **active** wersji. 
 
 ## <a name="import-and-export-a-version"></a>Importowanie i eksportowanie wersji
-Możesz zaimportować wersji na poziomie aplikacji. Ta wersja staje się aktywny wersji i używane identyfikator wersji we właściwości "versionId" pliku aplikacji. Możesz również zaimportować na poziomie wersji do istniejącej aplikacji. Nowa wersja staje się aktywny wersji. 
+Można zaimportować wersji na poziomie aplikacji. Ta wersja staje się aktywny wersji i używane identyfikator wersji we właściwości "versionId" pliku aplikacji. Można również zaimportować się na poziomie wersji, do istniejącej aplikacji. Nowa wersja staje się aktywny wersji. 
 
-Można wyeksportować wersję na poziomie aplikacji, lub można wyeksportować wersję na poziomie wersji. Jedyna różnica polega na że eksportowanych wersji poziomie aplikacji jest aktualnie aktywnej wersji znajduje się na poziomie wersji, można wybrać dowolnej wersji, aby wyeksportować na **[ustawienia](luis-how-to-manage-versions.md)** strony. 
+Możesz wyeksportować wersji na poziomie aplikacji, lub możesz wyeksportować wersji na poziomie wersji. Jedyna różnica polega na czy wersja wyeksportowanych poziomie aplikacji jest aktualnie aktywne wersji znajduje się na poziomie wersji, możesz wybrać dowolnej wersji, aby wyeksportować na **[ustawienia](luis-how-to-manage-versions.md)** strony. 
 
-Wyeksportowany plik nie zawiera informacji rozpoznane maszyny, ponieważ aplikacja jest retrained po zakończeniu importowania. Wyeksportowany plik nie zawiera współpracownicy — należy dodać te wstecz po wersji jest importowany do nowej aplikacji.
+Wyeksportowany plik nie zawiera informacji przedstawiono maszyny, ponieważ aplikacja jest retrained po ich zaimportowaniu. Wyeksportowany plik nie zawiera współpracowników — należy dodać te wstecz po wersji są importowane do nowej aplikacji.
 
-## <a name="export-each-version-as-app-backup"></a>Eksportuj poszczególnych wersji na kopii zapasowej aplikacji
-Aby można było utworzyć kopię zapasową aplikacji LUIS, należy wyeksportować poszczególnych wersji na **[ustawienia](luis-how-to-manage-versions.md)** strony.
+## <a name="export-each-version-as-app-backup"></a>Eksportowanie każdej wersji jako kopia zapasowa aplikacji
+Aby utworzyć kopię zapasową aplikacją usługi LUIS, należy wyeksportować poszczególnych wersji na **[ustawienia](luis-how-to-manage-versions.md)** strony.
 
 ## <a name="delete-a-version"></a>Usuwanie wersji
-Wszystkie wersje, z wyjątkiem wersji active można usunąć z listy wersji na stronie ustawień. 
+Wszystkie wersje, z wyjątkiem aktywnej wersji można usunąć z listy wersji na stronie Ustawienia. 
 
 ## <a name="version-availability-at-the-endpoint"></a>Dostępność wersji w punkcie końcowym
-Wersje przeszkolone nie są automatycznie dostępne w Twojej aplikacji [punktu końcowego](luis-glossary.md#endpoint). Należy [publikowania](PublishApp.md) lub ponownie opublikować wersji w celu jej mają być dostępne w punkcie końcowym w aplikacji. Można opublikować **przemieszczania** i **produkcji**, co daje maksymalnie dwie wersje aplikacji, które są dostępne w punkcie końcowym. Jeśli potrzebujesz więcej wersji aplikacji, które są dostępne w punkcie końcowym, należy wyeksportować wersję i ponownie zaimportować nowej aplikacji. Nowa aplikacja ma identyfikator inny aplikacji.
+Uczony wersje nie są automatycznie dostępne w Twojej aplikacji [punktu końcowego](luis-glossary.md#endpoint). Należy najpierw [publikowania](luis-how-to-publish-app.md) lub ponownie opublikować wersję w kolejności, aby była dostępna w punkcie końcowym w aplikacji. Możesz opublikować **przemieszczania** i **produkcji**, co daje maksymalnie dwie wersje aplikacji, które są dostępne w punkcie końcowym. Jeśli potrzebujesz więcej wersji aplikacji, które są dostępne w punkcie końcowym, możesz wyeksportować wersję i ponownie zaimportować do nowej aplikacji. Nowa aplikacja ma identyfikator innej aplikacji.
 
 ## <a name="collaborators"></a>Współpracownicy
-Właściciela i wszystkie [współpracownicy](luis-how-to-collaborate.md) mają pełny dostęp do wszystkich wersji aplikacji.
+Właściciela i wszystkie [współpracowników](luis-how-to-collaborate.md) mają pełny dostęp do wszystkich wersji aplikacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Jak dodać [versioning](luis-how-to-manage-versions.md) na stronie Ustawienia aplikacji. 
+Zobacz, jak dodać [versioning](luis-how-to-manage-versions.md) na stronie Ustawienia aplikacji. 
 
-Dowiedz się, jak zaprojektować [intencje](luis-concept-intent.md) do modelu.
+Dowiedz się, jak projektować [intencji](luis-concept-intent.md) do modelu.
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

@@ -1,5 +1,5 @@
 ---
-title: Tworzenie kont automatyzacji Uruchom jako platformy Azure
+title: Tworzenie kont Uruchom jako usługi Azure Automation
 description: W tym artykule opisano sposób aktualizowania konta usługi Automation i tworzenia kont Uruchom jako przy użyciu programu PowerShell lub w portalu.
 services: automation
 ms.service: automation
@@ -9,17 +9,17 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c9180b3f6bf6b151909ab681d0f33bc6b3583ce0
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 3f6f2768e13e85edb8a314359fef0b0312a8e84d
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714667"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344902"
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>Aktualizowanie uwierzytelniania konta usługi Automation przy użyciu kont Uruchom jako 
 Istniejące konto usługi Automation można zaktualizować w witrynie Azure Portal lub przy użyciu programu PowerShell, gdy:
 
-* Użytkownik utworzył konto usługi Automation, ale zrezygnował z tworzenia konta Uruchom jako.
+* Tworzenie konta usługi Automation, ale nie należy tworzyć konta Uruchom jako.
 * Użytkownik używa już konta usługi Automation do zarządzania zasobami usługi Resource Manager i chce je zaktualizować, aby umożliwiało uwierzytelnianie elementu runbook za pomocą konta Uruchom jako.
 * Użytkownik używa już konta usługi Automation do zarządzania zasobami klasycznymi i chce je zaktualizować, aby używać klasycznego konta Uruchom jako, zamiast tworzenia nowego konta i migrowania do niego elementów runbook i zasobów.   
 
@@ -52,7 +52,7 @@ Aby uzyskać wartości parametrów *SubscriptionID*, *ResourceGroup* i *Automati
 ### <a name="required-permissions-to-update-your-automation-account"></a>Uprawnienia wymagane do aktualizacji konta usługi Automation
 Aby zaktualizować konto usługi Automation, musisz mieć następujące określone uprawnienia i uprawnienia wymagane do wykonania zadań opisanych w tym temacie.   
  
-* Twoje konto użytkownika AD musi można dodać do roli uprawnienia równorzędne do roli współautora dla zasobów Microsoft.Automation w sposób opisany w artykule [kontroli dostępu opartej na rolach w automatyzacji Azure](automation-role-based-access-control.md#contributor).  
+* Konto użytkownika usługi AD należy dodać do roli z uprawnieniami odpowiadającymi roli współautora dla zasobów Microsoft.Automation w sposób opisany w artykule [kontroli dostępu opartej na rolach w usłudze Azure Automation](automation-role-based-access-control.md#contributor).  
 * Użytkownicy inni niż administratorzy w Twojej dzierżawie usługi Azure AD mogą [rejestrować aplikacje usługi AD](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions), jeśli opcja **Użytkownicy mogą rejestrować aplikacje** dzierżawy usługi Azure AD na stronie **Ustawienia użytkownika** została ustawiona na **Tak**. Jeśli wartością ustawienia rejestracji aplikacji jest **Nie**, użytkownik wykonujący tę akcję musi być administratorem globalnym w usłudze Azure AD.
 
 Jeśli nie jesteś członkiem wystąpienia usługi Active Directory subskrypcji, przed dodaniem do roli administratora globalnego/współadministratora subskrypcji, dodamy Cię do usługi Active Directory jako gościa. W tej usłudze zobaczysz ostrzeżenie „Nie masz uprawnień do utworzenia...” w bloku **Dodawanie konta usługi Automation**. Użytkownicy, którzy najpierw zostali dodani do roli administratora globalnego/współadministratora, mogą zostać usunięci z wystąpienia usługi Active Directory dla subskrypcji i ponownie dodani, aby zostać pełnymi użytkownikami w usłudze Active Directory. Aby zweryfikować tę sytuację, w okienku **Azure Active Directory** w witrynie Azure Portal wybierz kolejno pozycje **Użytkownicy i grupy** i **Wszyscy użytkownicy**, a po wybraniu określonego użytkownika wybierz pozycję **Profil**. Wartość atrybutu **Typ użytkownika** na liście profilów użytkowników nie powinna być równa **Gość**.
@@ -272,19 +272,19 @@ Ten skrypt programu PowerShell obsługuje następujące konfiguracje:
 
 Po pomyślnym wykonaniu skryptu pamiętaj o następujących kwestiach:
 * Jeśli zostało utworzone klasyczne konto Uruchom jako z certyfikatem publicznym z podpisem własnym (plik CER), skrypt tworzy i zapisuje je w folderze plików tymczasowych na komputerze w ramach profilu użytkownika *%USERPROFILE%\AppData\Local\Temp* użytego do uruchomienia sesji programu PowerShell.
-* Jeśli zostało utworzone klasyczne konto Uruchom jako z publicznym certyfikatem przedsiębiorstwa (plik CER), użyj tego certyfikatu. Postępuj zgodnie z instrukcjami dotyczącymi [przekazywanie certyfikatu zarządzania interfejsu API w portalu Azure](../azure-api-management-certs.md), a następnie zweryfikować konfigurację poświadczeń przy użyciu zasobów klasycznych wdrożenia przy użyciu [przykładowy kod w celu uwierzytelnienia z zasobów platformy Azure wdrożenia klasycznego](automation-verify-runas-authentication.md#classic-run-as-authentication). 
+* Jeśli zostało utworzone klasyczne konto Uruchom jako z publicznym certyfikatem przedsiębiorstwa (plik CER), użyj tego certyfikatu. Postępuj zgodnie z instrukcjami dotyczącymi [przekazywania certyfikatu interfejsu API zarządzania do witryny Azure portal](../azure-api-management-certs.md), a następnie zweryfikuj konfigurację poświadczeń za pomocą zasobów klasycznego wdrożenia, używając [przykładowego kodu do uwierzytelniania z zasobami w klasycznym wdrożeniu platformy Azure](automation-verify-runas-authentication.md#classic-run-as-authentication). 
 * Jeśli klasyczne konto Uruchom jako *nie* zostało utworzone, uwierzytelnij się za pomocą zasobów usługi Resource Manager i zweryfikuj konfigurację poświadczeń, używając [przykładowego kodu do uwierzytelniania za pośrednictwem zasobów usługi Service Management](automation-verify-runas-authentication.md#automation-run-as-authentication).
 
-## <a name="limiting-run-as-account-permissions"></a>Ograniczanie uprawnień konta — Uruchom jako
+## <a name="limiting-run-as-account-permissions"></a>Ograniczenie uprawnień konta — Uruchom jako
 
-Aby kontrolować wartości docelowej automatyzacji względem zasobów usługi Automatyzacja Azure, konta Uruchom jako domyślnie otrzymuje uprawnienia współautora w subskrypcji. Jeśli chcesz ograniczyć, co można zrobić nazwy głównej usługi Uruchom jako, można usunąć konto z roli współautora do subskrypcji i dodaj go jako współautor grupy zasobów, które ma zostać określony.
+Aby kontrolować, przeznaczone dla usługi Automation w odniesieniu do zasobów w usłudze Azure Automation, konto Uruchom jako, domyślnie otrzymuje uprawnienia współautora w subskrypcji. Jeśli musisz ograniczyć, co zrobić, Uruchom jako jednostki usługi, możesz usunąć konto z roli współautora do subskrypcji i dodać go jako współautora do grupy zasobów, które chcesz określić.
 
-W portalu Azure wybierz **subskrypcje** i wybierz subskrypcję konta automatyzacji. Wybierz **(IAM) kontroli dostępu** i wyszukaj nazwę główną usługi dla konta automatyzacji (prawdopodobnie \<AutomationAccountName\>identyfikator _unique). Wybierz konto, a następnie kliknij przycisk **Usuń** Aby usunąć go z subskrypcji.
+W witrynie Azure portal wybierz **subskrypcje** i wybierz subskrypcję, konta usługi Automation. Wybierz **kontrola dostępu (IAM)** i wyszukiwania dla jednostki usługi dla konta usługi Automation (wygląda jak \<AutomationAccountName\>identyfikator _unique). Wybierz konto, a następnie kliknij przycisk **Usuń** usunąć go z subskrypcji.
 
 ![Współautorzy subskrypcji](media/automation-create-runas-account/automation-account-remove-subscription.png)
 
-Aby dodać nazwy głównej usługi do grupy zasobów, wybierz grupę zasobów na platformie Azure, portalu i wybierz pozycję **(IAM) kontroli dostępu**. Wybierz **Dodaj**, spowoduje to otwarcie **dodać uprawnienia** strony. Aby uzyskać **roli**, wybierz pozycję **współautora**. W **wybierz** tekstu wpisz nazwę główną usługi dla konta Uruchom jako i wybierz go z listy. Kliknij przycisk **Zapisz**, aby zapisać zmiany. W tym dla grup zasobów chcesz nadać automatyzacji Uruchom jako platformy Azure usługa główna dostęp do.
+Aby dodać nazwę główną usługi do grupy zasobów, wybierz grupę zasobów w witrynie Azure portal i wybierz pozycję **kontrola dostępu (IAM)**. Wybierz **Dodaj**, spowoduje to otwarcie **Dodaj uprawnienia** strony. Aby uzyskać **roli**, wybierz opcję **Współautor**. W **wybierz** tekstu wpisz nazwę jednostki usługi dla konta Uruchom jako i wybierz ją z listy. Kliknij przycisk **Zapisz**, aby zapisać zmiany. W tym dla grup zasobów, którą chcesz nadać usługi Automation Uruchom jako platformy Azure jednostce usługi dostępu do.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby uzyskać więcej informacji dotyczących nazwy główne usług, zobacz [obiekty aplikacji i nazwy głównej usługi](../active-directory/active-directory-application-objects.md).
-* Aby uzyskać więcej informacji na temat certyfikatów i usług Azure, zobacz [Omówienie certyfikatów dla usług w chmurze Azure](../cloud-services/cloud-services-certs-create.md).
+* Aby uzyskać więcej informacji na temat nazw głównych usług, zobacz [obiekty aplikacji i jednostki usługi](../active-directory/active-directory-application-objects.md).
+* Aby uzyskać więcej informacji na temat certyfikatów i usług platformy Azure, zobacz [Omówienie certyfikatów usług Azure Cloud Services](../cloud-services/cloud-services-certs-create.md).

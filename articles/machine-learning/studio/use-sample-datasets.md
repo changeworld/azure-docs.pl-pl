@@ -1,6 +1,6 @@
 ---
 title: Użyj przykładowych zestawów danych w usłudze Machine Learning Studio | Dokumentacja firmy Microsoft
-description: Opisy zestawów danych użytych w Przykładowe modele uwzględnione w usłudze Machine Learning Studio. Te przykładowych zestawów danych można użyć do eksperymentów.
+description: Opisy zestawów danych użytych w Przykładowe modele uwzględnione w usłudze Machine Learning Studio. Te przykładowe zestawy danych można użyć do eksperymentów.
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.openlocfilehash: 87d0eac427f2d3904278dbe8211a3fae3da891ed
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: acdc2ca6f0746f4495f6b3747b7fc303574f712c
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085059"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342552"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Korzystanie z przykładowych arkuszy danych w usłudze Azure Machine Learning Studio
 [top]: #machine-learning-sample-datasets
 
-Po utworzeniu nowego obszaru roboczego w usłudze Azure Machine Learning szereg przykładowych zestawów danych i eksperymenty są domyślnie dołączone. Wiele z tych przykładowych zestawów danych są używane przez Przykładowe modele w [galerii Azure AI](http://gallery.cortanaintelligence.com/). Inne są dołączone jako przykłady różnych typów danych zwykle używanych w uczeniu maszynowym.
+Gdy tworzysz nowy obszar roboczy w usłudze Azure Machine Learning, są domyślnie dołączone szereg przykładowych zestawów danych i doświadczeń. Wiele z tych przykładowych zestawów danych są używane przez Przykładowe modele w [galerii Azure AI](http://gallery.cortanaintelligence.com/). Inne są dołączone jako przykłady różnych typów danych zwykle używanych w usłudze machine learning.
 
-Niektóre z tych zestawów danych są dostępne w magazynie obiektów Blob Azure. Dla tych zestawów danych Poniższa tabela zawiera bezpośrednie połączenie. Te zestawy danych można użyć w eksperymentów, za pomocą [i zaimportuj dane] [ import-data] modułu.
+Niektóre z tych zestawów danych są dostępne w usłudze Azure Blob storage. Dla tych zestawów danych Poniższa tabela zawiera bezpośredni link. Te zestawy danych można użyć w eksperymentów, za pomocą [importu danych] [ import-data] modułu.
 
-Pozostała część tych przykładowych zestawów danych są dostępne w obszarze roboczym w obszarze **zapisane zestawów danych**. To można znaleźć na palecie modułów z lewej strony obszaru roboczego eksperymentu w usłudze Machine Learning Studio.
-Można użyć dowolnej z tych zestawów danych w eksperymencie własnych przeciągając je w obszarze roboczym eksperymentu.
+Pozostała część tych przykładowych zestawów danych dostępnych w Twoim obszarze roboczym, w obszarze **zapisane zestawów danych**. To można znaleźć w palety modułów, z lewej strony obszaru roboczego eksperymentu w usłudze Machine Learning Studio.
+Można użyć dowolnego z tych zestawów danych w eksperymencie własnych, przeciągając go do Twojego obszaru roboczego eksperymentu.
 
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
@@ -39,308 +39,308 @@ Można użyć dowolnej z tych zestawów danych w eksperymencie własnych przeci�
 
 <tr>
   <th>Nazwa zestawu danych</th>
-  <th>Opis zestawu danych</th>
+  <th>Opis elementu DataSet</th>
 </tr>
 
 <tr>
-  <td>Dla dorosłych klasyfikacji binarnej dochodu spisu zestawu danych.</td>
+  <td>Treści dla dorosłych klasyfikacji binarnej dochodu spisu zestawu danych.</td>
   <td>
-Podzbiór bazy danych spisu 1994 r., przy użyciu osoby dorosłe pracy przez wiek 16 z indeksem skorygowaną dochodu > 100.
+Podzbiór 1994 r. spisu bazy danych, przy użyciu pracy osoby dorosłe w wieku powyżej 16 z indeksem skorygowany dochodu > 100.
 <p></p>
-<b>Sposób użycia:</b> klasyfikowania osoby za pomocą demograficznych do prognozowania, czy osoba uzyskuje ponad 50 K rocznie.
+<b>Sposób użycia:</b> klasyfikowania osób używających dane demograficzne w celu przewidywania, czy osoba zarabiają ponad 50 K rok.
 <p></p>
-<b>Powiązane Research:</b> Kohavi, R., Becker B., (1996). UCI Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, urząd certyfikacji: University Kalifornijskiej, szkoły informacji i informatyki </td>
+<b>Powiązane Research:</b> Kohavi, R., Becker B., (1996). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki </td>
 </tr>
 
 <tr>
-  <td>Zestaw danych kodów lotnisku</td>
+  <td>Port lotniczy kodów w zestawie danych</td>
   <td>
-Kody lotnisku Stanów Zjednoczonych.
+Kody Kuwejcie Stanów Zjednoczonych.
 <p></p>
-Ten zestaw danych zawiera jeden wiersz dla każdego lotnisku USA, zapewniając lotnisku identyfikator i nazwa wraz z lokalizacji miejscowość i województwo.
+Ten zestaw danych zawiera jeden wiersz dla każdego lotnisko Stanów Zjednoczonych, podając numer identyfikacyjny lotniczego oraz wraz z lokalizacji miasto i województwo.
   </td>
 </tr>
 
 <tr>
   <td>Cen samochodów, data (Raw)</td>
   <td>
-Informacji na temat samochodów przez producent i model, w tym cena, funkcje, takie jak liczba cylindrów i MPG, a także oceny ryzyka ubezpieczenia.
+Informacji na temat samochodów, producent i model, w tym ceny, funkcje, takie jak liczba cylindrów i paliwa, a także ubezpieczenia ryzyka.
 <p></p>
-Oceny ryzyka jest początkowo skojarzony z cen automatycznie. Następnie dopasowaniu do rzeczywistego zagrożenia w procesie nazywanym do aktuariuszy jako symboling. Wartość + 3 wskazuje ryzykowne jest automatycznie, czy wartość -3 jego jest prawdopodobnie bezpieczne.
+Ocena ryzyka to początkowo skojarzone z ceną automatycznie. Następnie jest on uwzględniany rzeczywistego zagrożenia w procesie nazywanym do aktuariuszy jako symboling. Wartość + 3 wskazuje, że automatycznego jest ryzykowne i wartością -3 aby znajdował się prawdopodobnie można bezpiecznie.
 <p></p>
-<b>Sposób użycia:</b> prognozowania przez funkcje za pomocą funkcji klasyfikacji regresji lub multivariate oceny ryzyka. 
+<b>Sposób użycia:</b> prognozowania oceny ryzyka na podstawie funkcji, za pomocą regresji lub send_time klasyfikacji. 
 <p></p>
-<b>Powiązane Research:</b> Schlimmer, J.C. (1987). UCI Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, urząd certyfikacji: University Kalifornijskiej, szkoły informacji i informatyki </td>
+<b>Powiązane Research:</b> Schlimmer, J.C. (1987). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki </td>
 </tr>
 
 <tr>
-  <td>Zestaw danych UCI wynajem roweru</td>
+  <td>Zestaw danych na wypożyczeń rowerów</td>
   <td>
-Dzierżawa roweru UCI zestawu danych, który bazuje na prawdziwe dane z Bikeshare kapitału firmy, która obsługuje sieci wynajem roweru w stanie Waszyngton kontrolera domeny.
+Zestaw danych wypożyczeń rowerów UCI, który opiera się na prawdziwe dane pochodzące z firmy Bikeshare wielkiej litery, która obsługuje sieci wypożyczeń rowerów w Waszyngtonie.
 <p></p>
-Element dataset zawiera jeden wiersz dla każdej godziny dziennie 2011 i 2012, łącznie 17,379 wierszy. Zakres co godzinę roweru dzierżawy jest z zakresu od 1 do 977.
+Zestaw danych zawiera jeden wiersz dla każdej godziny każdego dnia w 2011 r. i 2012, w sumie 17,379 wierszy. Zakres godzin wypożyczenia rowerów jest z zakresu od 1 do 977.
 
   </td>
 </tr>
 
 <tr>
-  <td>Obraz RGB rachunku bramy</td>
+  <td>Obraz RGB Billa Gatesa</td>
   <td>
-Plik obrazu publicznie dostępne są konwertowane na dane w formacie CSV.
+Plik publicznie dostępnego obrazu są konwertowane na dane w formacie CSV.
 <p></p>
-Konwertowanie obrazu kod znajduje się w <strong>kolor podziału korzystania z klastra K-średnich</strong> strony szczegółów modelu.
+Konwertowanie obrazu w kodzie znajduje się w <strong>kolor zaokrąglania korzystania z klastra K-średnich</strong> strony szczegółów modelu.
   </td>
 </tr>
 
 <tr>
-  <td>Krwi pobrania danych</td>
+  <td>Krwi darowizn danych</td>
   <td>
-Podzbiór danych z bazy danych dawcy krwi transfuzji krwi usługi Centrum Hsin Chu Miasto, Tajwan.
+Podzbiór danych z bazy danych dawcy krwi transfuzji krwi Service Center Hsin Chu miasta, Tajwan.
 <p></p>
-Dane dawcy obejmują miesięcy od czasu ostatniego pobrania) i częstotliwość lub liczbę pobrań, czas od ostatniego pobrania i ilość krwi przekazywana.
+Dane dawcy obejmują miesięcy od czasu ostatniego darowizn) i często i całkowita liczba pobrań, czas od ostatniego darowizn i ilości krwi wymagania.
 <p></p>
-<b>Sposób użycia:</b> celem jest do prognozowania za pośrednictwem klasyfikacji, czy dawcy przekazywana krwi marca 2007, gdzie 1 oznacza dawcy okresie docelowego, i 0 z systemem innym niż dawcy. 
+<b>Sposób użycia:</b> celem jest przewidzieć przy użyciu klasyfikacji, czy dawcy wymagania krwi w 2007 marca, gdzie 1 oznacza dawcy podczas okresu docelowego i 0 nie dawcy. 
 <p></p>
-<b>Powiązane Research:</b> Yeh I.C., (2008). UCI Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, urząd certyfikacji: University Kalifornijskiej, szkoły informacji i informatyki
+<b>Powiązane Research:</b> Yeh, I.C., (2008). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki
 <p></p>
-Yeh, -Cheng, Yang króla-Jang i notatki, Ming Tao, "odnajdywaniem wiedzy w tryb RFM modelu przy użyciu sekwencji Bernoulliego,"systemy ekspertów z aplikacjami, 2008, <a href="http://dx.doi.org/10.1016/j.eswa.2008.07.018">http://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
+Yeh, -Cheng, Yang King Jang, a klasyfikacja, Ming tag, "Knowledge discovery w tryb RFM modelu przy użyciu sekwencji Bernoulli'ego,"systemy eksperta z aplikacjami, 2008, <a href="http://dx.doi.org/10.1016/j.eswa.2008.07.018">http://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
   </td>
 </tr>
 
 <tr>
   <td>Dane raka piersi</td>
   <td>
-Jeden z trzech danych związanych z raka dostarczonych przez Instytut Oncology, który pojawia się często w machine learning materiały. Łączy informacje diagnostyczne z funkcjami z analizy laboratorium hodowlami około 300.
+Jeden z trzech zestawów powiązanych raka danych, dostarczonych przez Instytut Oncology, który pojawia się często w machine learning w literaturze dostępne. Łączy informacje diagnostyczne z funkcjami analizy laboratorium około 300 hodowlami.
 <p></p>
-<b>Sposób użycia:</b> klasyfikowania typ raka, oparte na atrybutach 9, niektóre z nich liniowej i niektóre są podzielone na kategorie. 
+<b>Sposób użycia:</b> Sklasyfikuj typ raka, na podstawie 9 atrybutów, z których niektóre są liniowe, a niektóre są podzielone na kategorie. 
 <p></p>
-<b>Powiązane Research:</b> O.L. Wohlberg, W.H., ulicy, W.N. i Mangasarian, (1995). UCI Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, urząd certyfikacji: University Kalifornijskiej, szkoły informacji i informatyki </td>
+<b>Powiązane Research:</b> O.L. Wohlberg, W.H., ulicy, W.N. & Mangasarian, (1995). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki </td>
 </tr>
 
 <tr>
   <td>Funkcje raka piersi <td>
-Zestaw danych zawiera informacje regionów podejrzane 102K (kandydatów) rentgenowskie obrazów, każdy opisany przez 117 funkcje. Funkcje są zastrzeżone i ich znaczenie nie została ujawniona przez twórców zestawu danych (opieki zdrowotnej Siemens). 
+Zestaw danych zawiera informacje podejrzanych obszarów 102K (kandydatów) obrazów rentgenowskie, opisano każdy przy użyciu funkcji 117. Funkcje te są zastrzeżone i ich znaczenie nie została ujawniona przez twórcy zestawu danych (Siemens opieki zdrowotnej). 
   </td>
 </tr>
 
 <tr>
   <td>Informacje o raka piersi</td>
   <td>
-Zestaw danych zawiera dodatkowe informacje dla każdego podejrzanego obszaru rentgenowskie obrazu. Każdy przykład zawiera informacje (na przykład etykieta, pacjenta identyfikator, współrzędnych poprawki względem całego obrazu) o jej numer wiersza w zestawie danych funkcji raka piersi. Każdy pacjenta ma wiele przykładów. Dla pacjentów, którzy mają raka Oto kilka przykładów dodatnią, a inne ujemna. Dla pacjentów, którzy nie mają raka wszystkie przykłady jest ujemna. Element dataset zawiera przykłady 102K. Zestaw danych jest ukierunkowane % 0,6 punktów jest dodatnia, pozostała jest ujemna. Zestaw danych została udostępniona przez opieki zdrowotnej Siemens.
+Zestaw danych zawiera dodatkowe informacje dla każdego regionu podejrzane rentgenowskie obrazu. Każdy przykład zawiera informacje (na przykład etykieta, pacjentów identyfikator, współrzędne poprawki względem całego obrazu) o numer wiersza w zestawie danych funkcji raka piersi. Każdy pacjent ma wiele przykładów. Dla pacjentów, którzy ma raka przykłady są pozytywne, a inne ujemna. Dla pacjentów, którzy nie ma raka we wszystkich przykładach jest ujemna. Zestaw danych zawiera przykłady 102K. Zestaw danych jest obciążona Update 0.6% punktów jest dodatnia, ujemna pozostałe. Zestaw danych została udostępniona przez Siemens opieki zdrowotnej.
   </td>
 </tr>
 
 <tr>
-  <td>Etykiety Appetency CRM udostępnionych</td>
+  <td>Etykiety Appetency CRM udostępnione</td>
   <td>
-Etykiety z żądania prognozowania relacji klienta 2009 Pucharze KDD (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels">orange_small_train_appetency.labels</a>).
+Etykiety z zawodów KDD Cup 2009 klienta relacji prognozowania wyzwanie (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels">orange_small_train_appetency.labels</a>).
   </td>
 </tr>
 
 <tr>
-  <td>Etykiety przenoszenie CRM udostępnionych</td>
+  <td>CRM zmian etykiety udostępnione</td>
   <td>
-Etykiety z żądania prognozowania relacji klienta 2009 Pucharze KDD (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels">orange_small_train_churn.labels</a>).
+Etykiety z zawodów KDD Cup 2009 klienta relacji prognozowania wyzwanie (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels">orange_small_train_churn.labels</a>).
   </td>
 </tr>
 
 <tr>
-  <td>CRM zestawu danych udostępnionych</td>
+  <td>Zestaw danych CRM, udostępnione</td>
   <td>
-Te dane pochodzą z żądania prognozowania relacji klienta 2009 Pucharze KDD (<a href="http://www.sigkdd.org/kdd-cup-2009-customer-relationship-prediction - orange_small_train.data.zip">orange_small_train.data.zip</a>).
+Te dane pochodzą z zawodów KDD Cup 2009 klienta relacji prognozowania wyzwanie (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip">orange_small_train.data.zip</a>).
 <p></p>
-Zestaw danych zawiera 50K klientów firmy telekomunikacyjnych francuski pomarańczowy. Każdy klient ma 230 funkcje anonimowe, 190, które są numeryczne i 40 są podzielone na kategorie. Funkcje są bardzo rozrzedzone.
+Zestaw danych zawiera 50 tysięcy klientów z firmy telekomunikacyjnej francuski pomarańczowy. Każdy klient ma 230 funkcje anonimowe, 190, które są liczbowe i 40 są podzielone na kategorie. Funkcje są bardzo rozrzedzone.
   </td>
 </tr>
 
 <tr>
-  <td>Etykiety grup CRM udostępnionych</td>
+  <td>Etykiety grup CRM udostępnione</td>
   <td>
-Etykiety z żądania prognozowania relacji klienta 2009 Pucharze KDD (<a href="http://www.sigkdd.org/site/2009/files/orange_large_train_upselling.labels">orange_large_train_upselling.labels</a>).
+Etykiety z zawodów KDD Cup 2009 klienta relacji prognozowania wyzwanie (<a href="http://www.sigkdd.org/site/2009/files/orange_large_train_upselling.labels">orange_large_train_upselling.labels</a>).
   </td>
 </tr>
 
 <tr>
-  <td>Regresja zapotrzebowania na energię danych</td>
+  <td>Dane wydajności energetycznej regresji</td>
   <td>
-Zbiór profilów symulowane energii, na podstawie 12 innego budynku kształtów. Budynki są zróżnicowane przez osiem funkcje. W tym szyb obszaru, szyb obszaru dystrybucji i orientacji.
+Zbiór profilów symulowane energii, na podstawie 12 tworzenie różnych kształtów. Budynki są zróżnicowane według osiem funkcji. W tym szyby obszaru, szyby obszaru dystrybucji i orientacji.
 <p></p>
-<b>Sposób użycia:</b> przewidzieć wydajności energii klasyfikacja na podstawie jako jedną z dwóch wartości rzeczywistych odpowiedzi za pomocą klasyfikacji lub regresji. Klasa wielu klasyfikacji jest round zmiennej odpowiedzi do najbliższej liczby całkowitej. 
+<b>Sposób użycia:</b> umożliwia przewidzieć energię klasyfikacja na podstawie jako jedną z dwóch odpowiedzi rzeczywiste wartości klasyfikacji lub regresji. W przypadku klasyfikacji wieloklasowej jest round zmiennej odpowiedzi do najbliższej liczby całkowitej. 
 <p></p>
-<b>Powiązane Research:</b> Xifara, A. & Tsanas, A. (2012). UCI Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, urząd certyfikacji: University Kalifornijskiej, szkoły informacji i informatyki </td>
+<b>Powiązane Research:</b> Xifara, A. & Tsanas, A. (2012). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki </td>
 </tr>
 
 <tr>
-  <td>Transmitowane opóźnienia danych</td>
+  <td>Flight opóźnia danych</td>
   <td>
-Transmitowane pasażerów na czas dane wydajności z kolekcji danych TranStats USA Stanowych (<a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">na czas</a>).
+Lot pasażerski na czas poświęcony ze zbierania danych TranStats Stanów Zjednoczonych dane dotyczące wydajności Departamentu transportu (<a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">na czas</a>).
 <p></p>
-Zestaw danych obejmuje okres czasu kwietnia — październik 2013. Przed przekazaniem do usługi Azure Machine Learning Studio, zestaw danych został przetworzony w następujący sposób:
+Zestaw danych obejmuje okres kwietnia — październik 2013. Przed przekazaniem do usługi Azure Machine Learning Studio, zestaw danych został przetworzony w następujący sposób:
 <ul>
-  <li>Zestaw danych został przefiltrowany dotyczyć tylko 70 zajętej lotniskach kontynentalnym stany USA</li>
-  <li>Anulowano lotach zostały oznaczone jako opóźniony o więcej niż 15 minut.</li>
-  <li>Kierunku lotach zostały odfiltrowane.</li>
-  <li>Wybrano następujące kolumny: rok, miesiąc, DayofMonth, DayOfWeek, operatora, OriginAirportID, DestAirportID, CRSDepTime, DepDelay, DepDel15, CRSArrTime, ArrDelay, ArrDel15, anulowane</li>
+  <li>Zestaw danych zostały przefiltrowane na pokrycie tylko 70 najczęściej odwiedzane lotniskach w kontynentalnych Stanach Zjednoczonych</li>
+  <li>Anulowano lotów zostały oznaczone jako opóźniony o ponad 15 minut.</li>
+  <li>Kierunku lotów zostały odfiltrowane.</li>
+  <li>Wybrano następujące kolumny: rok, miesiąc, DayofMonth, DayOfWeek, operatora, OriginAirportID, DestAirportID, CRSDepTime, DepDelay, DepDel15, CRSArrTime, ArrDelay, ArrDel15 i anulowane</li>
 </ul>
 </td>
 </tr>
 
 <tr>
-  <td>Na czas osiągów (Raw)</td>
+  <td>Flight punktualności lotów (Raw)</td>
   <td>
-Rejestruje samolotowy transmitowane odbiorów i odejście na terenie Stanów Zjednoczonych z października 2011.
+Rekordy przybyć lotu samolot i odejść na terenie Stanów Zjednoczonych z października 2011.
 <p></p>
-<b>Sposób użycia:</b> prognozowania transmitowane opóźnienia. 
+<b>Sposób użycia:</b> prognozowania opóźnień lotów. 
 <p></p>
 <b>Powiązane Research:</b> z działu transportu USA <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time"> http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time </a>.
   </td>
 </tr>
 
 <tr>
-  <td>Dane generowane lasu</td>
+  <td>Las generowane dane</td>
   <td>
-Zawiera dane pogodzie, takich jak indeksy temperatury i wilgotności i szybkość knie. Dane są pobierane z obszaru północno-wschodniej Portugalii, w połączeniu z rekordów pożarów lasów.
+Zawiera dane o pogodzie, takich jak indeksy temperatury i wilgotności i prędkość wiatru. Dane treningowe pochodzą z obszaru północno-wschodniej Portugalii, w połączeniu z rekordami pożarów lasów.
 <p></p>
-<b>Sposób użycia:</b> jest to zadanie regresji trudne, której celem jest przewidzieć obszaru palony pożarów lasów. 
+<b>Sposób użycia:</b> jest zadaniem trudne regresji, których celem jest przewidzieć obszaru nagrany pożarów lasów. 
 <p></p>
-<b>Powiązane Research:</b> Cortez, P. & Morais, A. (2008). UCI Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, urząd certyfikacji: University Kalifornijskiej, szkoły informacji i informatyki
+<b>Powiązane Research:</b> Cortez, P. & Morais, A. (2008). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki
 <p></p>
-[Cortez i Morais, 2007] Str. Cortez i A. Morais. Dane wyszukiwania podejście do prognozowania pożarów lasów przy użyciu danych meteorologicznych. W J. Neves, M. F. Santos i J. Machado Eds., nowe tendencji sztucznego analizy, postępowania 13 2007 EPIA — portugalski konferencji sztucznego analizy, grudnia, Guimarães, Portugalia str. 512-523, 2007. APPIA, ISBN-13 978-989-95618-0-9. Dostępne pod adresem: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf"> http://www.dsi.uminho.pt/~pcortez/fires.pdf </a>.
+[Cortez i Morais, 2007] P. Cortez i A. Morais. Dane wyszukiwania podejście do przewidywania pożarów lasów przy użyciu Meteorological danych. W J. Neves, M. F. Santos i J. Machado Eds., nowe trendy w sztuczną inteligencję postępowania 13 2007 EPIA — portugalski konferencji na sztucznej inteligencji grudnia Guimarães, Portugalia, str. 512-523, 2007. APPIA, ISBN-13 978-989-95618-0-9. Dostępne pod adresem: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf"> http://www.dsi.uminho.pt/~pcortez/fires.pdf </a>.
   </td>
 </tr>
 
 <tr>
-  <td>Niemiecki karty kredytowej UCI zestawu danych</td>
+  <td>Niemiecki karty kredytowej na zestaw danych</td>
   <td>
-Zestaw danych Statlog UCI (karta kredytowa niemiecki) (<a href="http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">Statlog + niemiecki + środki + danych</a>), przy użyciu pliku german.data.
+Zestaw danych na Statlog (karta kredytowa niemiecki) (<a href="http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">Statlog niemiecki + środki + dane +</a>), przy użyciu pliku german.data.
 <p></p>
-Zestaw danych klasyfikuje osób opisanego przez zestaw atrybutów jako niski lub wysokiego ryzyka. Każdy przykład reprezentuje osoby. Istnieją funkcje 20, zarówno numeryczne i podzielone na kategorie i etykietę binarne (wartość ryzyko kredytowe). Środki wysokiego ryzyka zapisów etykiety = 2, środki niskiego ryzyka zapisów etykiety = 1. Koszt misclassifying jest przykład niskiego ryzyka tak dużych jest 1, 5 jest misclassifying przykład wysokiego ryzyka, jako niskie koszty.
+Zestaw danych klasyfikuje osób, opisanego przez zestaw atrybutów jako środków niskie lub wysokie ryzyko. Każdy przykład reprezentuje osobę. Istnieją 20 funkcji, zarówno wartości liczbowych, jak i podzielonych na kategorie i binarny etykietę (wartość ryzyko kredytowe). Środki wysokiego ryzyka wpisy mają etykiety = 2, środki niskie ryzyko wpisy mają etykiety = 1. Koszt misclassifying to przykład niskiego ryzyka jako wysokie wynosi 1, natomiast misclassifying przykład o wysokim ryzyku, jako niski koszt wynosi 5.
   </td>
 </tr>
 
 <tr>
   <td>ZAUFANI filmu tytułów</td>
   <td>
-Zestaw danych zawiera informacje na temat filmów, które zostały sklasyfikowane w serwisie Twitter tweetów: ZAUFANI filmu identyfikator, nazwę filmu genre i roku produkcji. Brak 17K filmów w zestawie danych. Zestaw danych została wprowadzona w dokumencie "S. Dooms T. De Pessemier i L. Martens. MovieTweetings: filmu klasyfikacji zestawu danych zbieranych z serwisem Twitter. Workshop na Crowdsourcing i ludzkich obliczanie systemów polecania CrowdRec na RecSys 2013".
+Zestaw danych zawiera informacje na temat filmów, które zostały ocenione w tweety w usłudze Twitter: ZAUFANI filmu identyfikator, tytuł filmu, gatunku i roku produkcji. Brak filmów 17K w zestawie danych. Zestaw danych została wprowadzona w dokumencie "S. Dooms T. De Pessemier i L. Martens. MovieTweetings: filmu ocena zestawu danych pobranych z usługi Twitter. Warsztaty Crowdsourcing i ludzi obliczeń systemów polecania CrowdRec na RecSys 2013".
   </td>
 </tr>
 
 <tr>
-  <td>Iris dwie klasy danych</td>
+  <td>Dane klasy Iris dwóch</td>
   <td>
-Jest to prawdopodobnie znaną bazy danych ma zostać odnaleziona w materiały rozpoznawania wzorca. Zestaw danych jest stosunkowo mały, zawierający 50 przykłady pomiarów Motyw Płatek z trzech iris odmian.
+Być może jest znaną bazy danych ma zostać odnaleziona w literaturze rozpoznawania wzorca. Zestaw danych jest stosunkowo mały, zawierający 50 przykłady pomiarów płatka z trzech odmian iris.
 <p></p>
-<b>Sposób użycia:</b> prognozowania typu iris z pomiarów.  
+<b>Sposób użycia:</b> prognozowania typu irysa z pomiarów.  
 <p></p>
-<b>Powiązane Research:</b> Fishera, R.A. (1988). UCI Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, urząd certyfikacji: University Kalifornijskiej, szkoły informacji i informatyki </td>
+<b>Powiązane Research:</b> Fishera, R.A. (1988). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki </td>
 </tr>
 
 <tr>
-  <td>Tweetów film</td>
+  <td>Film Tweetów</td>
   <td>
-Zestaw danych jest rozszerzona wersja Tweetings filmu zestawu danych. Element dataset zawiera 170K Klasyfikacje filmów wyodrębniony z dobrze tweetów w serwisie Twitter. Każde wystąpienie reprezentuje tweet i jest krotka: identyfikator użytkownika, ZAUFANI filmu ID, klasyfikacji, sygnatura czasowa, numer Ulubione tweet i liczba retweets to tweet. Zestaw danych została udostępniona A. powiedział, S. Dooms, B. Loni i D. Tikk dla polecania systemów wyzwanie 2014.
+Zestaw danych jest rozszerzona wersja zestawu Tweetings filmu. Zestaw danych zawiera 170K klasyfikację filmów, programów wyodrębnione z odpowiedniej strukturze tweety w serwisie Twitter. Każde wystąpienie reprezentuje tweet i jest spójną kolekcją: identyfikator użytkownika, identyfikator filmu ZAUFANI, klasyfikacja, sygnatury czasowej, numer Ulubione dla tego tweetu, a liczba retweets tego tweetu. Zestaw danych została udostępniona przez powiedział A., S. Dooms, Loni b i D. Tikk polecania systemów wyzwanie 2014.
   </td>
 </tr>
 
 <tr>
   <td>Dane MPG dotyczące różnych samochodów</td>
   <td>
-Ten zestaw danych jest nieco zmodyfikowaną wersję udostępniane przez bibliotekę StatLib Carnegie Mellon University zestawu danych. Zestaw danych został użyty w 1983 American statystyczne skojarzenia specyfikacji.
+Ten zestaw danych jest nieco zmodyfikowaną wersję zestawu danych, dostarczone przez bibliotekę StatLib Carnegie Mellon University. Zestaw danych był używany w 1983 American statystyczne skojarzenia specyfikacji.
 <p></p>
-Zużycie paliwa dla różnych samochodów w milach na galon wykazy danych. Zawiera również informacje, takie jak liczba cylindrów, aparat przemieszczenie moc, całkowitej wagi i przyspieszenia.
+Zużycie paliwa dotyczące różnych samochodów w przebiegu w milach na galon wykazy danych. Zawiera także informacje, takie jak liczba cylindrów, aparat przemieszczenia, napędową, łączna waga oraz zwiększanie ich szybkości.
 <p></p>
-<b>Sposób użycia:</b> prognozowania zużycie paliwa na podstawie trzech wielowartościowego atrybutów dyskretnych i pięciu atrybutów ciągłych. 
+<b>Sposób użycia:</b> przewidywanie zużycia paliwa w oparciu o trzy wielowartościowych atrybutów dyskretnych i pięciu atrybutów ciągłych. 
 <p></p>
-<b>Powiązane Research:</b> StatLib Carnegie Mellon University (1993). UCI Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, urząd certyfikacji: University Kalifornijskiej, szkoły informacji i informatyki </td>
+<b>Powiązane Research:</b> StatLib Carnegie Mellon University (1993). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki </td>
 </tr>
 
 <tr>
-  <td>Klasyfikacji binarnej cukrzyca Indian Pima zestawu danych</td>
+  <td>Klasyfikacja binarna choroby Indian Pima zestawu danych</td>
   <td>
-Podzbiór danych z National Institute cukrzyca i przewodu i choroby nerek bazy danych. Zestaw danych został przefiltrowany skoncentrować się na żeńskiego pacjentów dziedzictwa indyjskiego Pima. Dane obejmują medyczne dane, takie jak glukozy i inulinowego poziomy, a także lifestyle czynników.
+Podzbiór danych pochodzących z National Institute of choroby i przewodu i chorób nerki bazy danych. Zestaw danych został przefiltrowany skoncentrować się na żeńskiego pacjentów dziedzictwa Rupia Pima. Dane obejmują danych medycznych, takich jak glukozy i poziomy inulinowego, a także lifestyle czynników.
 <p></p>
-<b>Sposób użycia:</b> prognozowania, czy podmiot ma cukrzyca (klasyfikacji binarnej). 
+<b>Sposób użycia:</b> przewidywania, czy temat ma choroby (Klasyfikacja binarna). 
 <p></p>
-<b>Powiązane Research:</b> Sigillito, V. (1990). UCI Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml"</a>. Irvine, urząd certyfikacji: University Kalifornijskiej, szkoły informacji i informatyki </td>
+<b>Powiązane Research:</b> Sigillito, V. (1990). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml"</a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki </td>
 </tr>
 
 <tr>
   <td>Dane klienta restauracji</td>
   <td>
-Zestaw metadane dotyczące klientów, w tym demograficznymi i preferencje.
+Zestaw metadanych dotyczących klientów, w tym dane demograficzne i preferencje klientów.
 <p></p>
-<b>Sposób użycia:</b> Użyj tego zestawu danych w połączeniu z innymi dwóch restauracji zestawy danych, do nauczenia i przetestowania systemu polecania. 
+<b>Sposób użycia:</b> używają tego zestawu danych, w połączeniu z innymi dwóch restauracji zestawów danych, do nauczenia i przetestowania polecania systemu. 
 <p></p>
-<b>Powiązane Research:</b> Bache, K. i Lichman, M. (2013). UCI Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, urząd certyfikacji: University Kalifornijskiej, szkoły informacji i informatyki.
+<b>Powiązane Research:</b> Bache, K. i Lichman, M. (2013). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki.
   </td>
 </tr>
 
 <tr>
   <td>Dane funkcji restauracji</td>
   <td>
-Zestaw metadane dotyczące restauracji i ich funkcje, takie jak typ żywności, lokali stylu i lokalizacji.
+Zestaw metadanych o restauracjach i ich funkcje, takie jak typ żywności, filozofów stylu i lokalizacji.
 <p></p>
-<b>Sposób użycia:</b> Użyj tego zestawu danych w połączeniu z innymi dwóch restauracji zestawy danych, do nauczenia i przetestowania systemu polecania. 
+<b>Sposób użycia:</b> używają tego zestawu danych, w połączeniu z innymi dwóch restauracji zestawów danych, do nauczenia i przetestowania polecania systemu. 
 <p></p>
-<b>Powiązane Research:</b> Bache, K. i Lichman, M. (2013). UCI Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, urząd certyfikacji: University Kalifornijskiej, szkoły informacji i informatyki.
+<b>Powiązane Research:</b> Bache, K. i Lichman, M. (2013). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki.
   </td>
 </tr>
 
 <tr>
   <td>Klasyfikacje restauracji</td>
   <td>
-Zawiera klasyfikacji podanej przez użytkowników restauracji w skali od 0 do 2.
+Zawiera klasyfikacji podanej przez użytkowników do restauracji w skali od 0 do 2.
 <p></p>
-<b>Sposób użycia:</b> Użyj tego zestawu danych w połączeniu z innymi dwóch restauracji zestawy danych, do nauczenia i przetestowania systemu polecania. 
+<b>Sposób użycia:</b> używają tego zestawu danych, w połączeniu z innymi dwóch restauracji zestawów danych, do nauczenia i przetestowania polecania systemu. 
 <p></p>
-<b>Powiązane Research:</b> Bache, K. i Lichman, M. (2013). UCI Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, urząd certyfikacji: University Kalifornijskiej, szkoły informacji i informatyki.
+<b>Powiązane Research:</b> Bache, K. i Lichman, M. (2013). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki.
   </td>
 </tr>
 
 <tr>
-  <td>Stali Annealing wielu klasy dataset</td>
+  <td>Stal Annealing wielu klas dataset</td>
   <td>
-Ten zestaw danych zawiera szereg rekordy z stali termiczne odprężanie prób. Zawiera fizyczne atrybuty (szerokość, grubość, typ (cewka, Arkusz itp.) powstałe w ten sposób stali typów.
+Ten zestaw danych zawiera szereg rekordy z stali annealing wersji próbnych. Zawiera fizyczne atrybuty (szerokość, grubość, typu (cewka, Arkusz itp.) powstałe stali typów.
 <p></p>
-<b>Sposób użycia:</b> dwa atrybuty klasy liczbowych; twardości lub siły przewidzieć. Może również analizować korelacji między atrybutami.
+<b>Sposób użycia:</b> dwa atrybuty klasy liczbowych; twardości ani siły przewidzieć. Może również analizować korelacji między atrybutami.
 <p></p>
-Stali wykonaj standardowego zestawu, zdefiniowany przez SAE i innych organizacji. Szukasz określonej "klasy" (zmienna klasy) i chcesz poznać wartości potrzebnych. 
+Stali standardowy zestaw, postępuj zgodnie z definicją SAE i innych organizacji. Szukasz konkretnego "klasy" (zmienna klasy) i aby zrozumieć wartości wymagane. 
 <p></p>
-<b>Powiązane Research:</b> szterlinga, D. & Buntine, W. (NA). UCI Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, urząd certyfikacji: University Kalifornijskiej, szkoły informacji i informatyki
+<b>Powiązane Research:</b> szterling, D. & Buntine, W. (NA). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji i informatyki
 <p></p>
-Przydatny przewodnik dotyczący stali klas można znaleźć tutaj: <a href="http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf">http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf</a>
+Gatunki stali przydatny przewodnik można znaleźć tutaj: <a href="http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf">http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>
 </tr>
 
 <tr>
   <td>Teleskopu danych</td>
   <td>
-Rekord cząstki gamma wysokiej energii ulega zapaleniu wraz z szumu tła, zarówno symulowane za pomocą Monte Carlo procesu.
+Rekord cząstki gamma wysokiej energii bursts oraz hałas w tle, zarówno symulowane przy użyciu Monte Carlo procesu.
 <p></p>
-Celem symulacji było zwiększyć dokładność teleskopy gamma Cherenkov atmosferycznych na podstawie podstaw. Jest to zrobić za pomocą metod statystycznych do rozróżniania żądany sygnał (promieniowania Cherenkov natryski) oraz szumu tła (hadronic natryski inicjowane przez promienie cosmic w górnym atmosferze).
+Celem symulacji było, aby poprawić dokładność teleskopy gamma Cherenkov atmospheric oparte na ziemi. Odbywa się przy użyciu metody statystyczne do rozróżniania żądaną sygnał (promieniowania Cherenkov prysznicem) oraz hałas w tle (hadronic prysznicem inicjowane przez promieniach cosmic w powietrzu górnego).
 <p></p>
-Dane zostały wstępnie przetworzonych do utworzenia klastra wydłużonym z długiego osi jest zorientowany Centrum aparatu. Właściwości tego elipsy (często nazywane parametry Hillas) są parametry obrazu, które mogą być używane dla dyskryminacji.
+Dane zostały wstępnie przetworzony do utworzenia klastra wydłużonym z długiego osi jest zorientowany center aparatu. Cechy tego wielokropka (często nazywane parametrami Hillas) znajdują się wśród parametrów obrazu, które mogą służyć do dyskryminacji.
 <p></p>
-<b>Sposób użycia:</b> prognozowania, czy obraz przyjęcie reprezentuje szumu sygnał lub w tle.
+<b>Sposób użycia:</b> przewidywania, czy obraz przyjęcie reprezentuje hałas w tle lub sygnału.
 <p></p>
-<b>Uwagi:</b> proste klasyfikacji dokładność nie jest zrozumiały dla tych danych, ponieważ klasyfikacji zdarzeń tła jako sygnału jest większa niż klasyfikowania zdarzenie sygnału jako tło. Porównanie różnych klasyfikatory wykres ROC powinien być używany. Prawdopodobieństwo akceptowania zdarzeń tła jako sygnału musi być poniżej jedną z następujących progów: 0,01, 0,02, 0,05, 0,1 lub 0,2.
+<b>Uwagi:</b> dokładność klasyfikacji prostego nie jest zrozumiały dla tych danych, ponieważ klasyfikacji zdarzeń tła, sygnał jest niższa niż klasyfikowania zdarzenie sygnału jako tło. Porównanie różnych klasyfikatorów wykres ROC powinno być używane. Prawdopodobieństwo akceptowania zdarzenia tła sygnału musi być jeden z progów: 0,01, 0,02, 0,05, 0,1 lub 0,2.
 <p></p>
-Należy również zauważyć, że liczba zdarzeń tła (h, natryski hadronic) jest zgłosił. W rzeczywistym pomiarów h lub szumu klasy reprezentuje większość zdarzeń. 
+Należy również zauważyć, że liczba zdarzeń tła (h, hadronic prysznicem) jest niedoceniane. W pomiarów rzeczywistego klasy h lub szumu reprezentuje większość zdarzeń. 
 <p></p>
-<b>Powiązane Research:</b> Bock, R.K. (1995). UCI Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, urząd certyfikacji: University z Kalifornijskiej, szkoły informacji </td>
+<b>Powiązane Research:</b> Bock, R.K. (1995). UCI usługi Machine Learning repozytorium <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Uniwersytet kalifornijski, szkoły informacji </td>
 </tr>
 
 <tr>
-  <td>Pogody zestawu danych</td>
+  <td>Zestaw danych o pogodzie</td>
   <td>
-Co godzinę uwag lądowej pogody NOAA (<a href="http://cdo.ncdc.noaa.gov/qclcd_ascii/, merged data from 201304 to 201310">scalane dane z 201304 201310</a>).
+Co godzinę obserwacje lądową pogodowe z agencji NOAA (<a href="http://cdo.ncdc.noaa.gov/qclcd_ascii/, merged data from 201304 to 201310">scalane dane z 201304 201310</a>).
 <p></p>
-Dane pogody obejmuje uwagi z lotniska pogody stacje, obejmujący okres czas, kwietnia — październik 2013. Przed przekazaniem do usługi Azure Machine Learning Studio, zestaw danych został przetworzony w następujący sposób:
+Dane o pogodzie obejmuje uwagi z stacje pogody port lotniczy, obejmujące okres kwietnia — październik 2013. Przed przekazaniem do usługi Azure Machine Learning Studio, zestaw danych został przetworzony w następujący sposób:
 <ul>
-  <li>Identyfikatory pogody stacji nie zostały zamapowane na lotnisku odpowiednich identyfikatorów</li>
-  <li>Stacje pogody nie są skojarzone z 70 lotniskach zajętej zostały odfiltrowane.</li>
-  <li>Data kolumny podzielono na osobne kolumny rok, miesiąc i dzień</li>
-  <li>Wybrano następujące kolumny: AirportID, rok, miesiąc, dzień, czas, strefy czasowej, SkyCondition, widoczność, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, Prędkość wiatru, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, wysokościomierza</li>
+  <li>Identyfikatory pogodowa byli zamapowani na lotnisku odpowiednich identyfikatorów</li>
+  <li>Pogoda stacji nie jest skojarzona z 70 lotniskach najczęściej odwiedzane zostały odfiltrowane.</li>
+  <li>Kolumna dat podzielono na osobne kolumny, rok, miesiąc i dzień</li>
+  <li>Wybrano następujące kolumny: AirportID, rok, miesiąc, dzień, godzina, strefa czasowa, SkyCondition, widoczność, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius i RelativeHumidity, Prędkość wiatru WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, są parametry RecordType, HourlyPrecip, wysokościomierza</li>
 </ul>
   </td>
 </tr>
@@ -348,64 +348,64 @@ Dane pogody obejmuje uwagi z lotniska pogody stacje, obejmujący okres czas, kwi
 <tr>
   <td>Wikipedia SP 500 Dataset</td>
   <td>
-Danych jest określana na podstawie Wikipedia (<a href="http://www.wikipedia.org/">http://www.wikipedia.org/</a>) oparte na artykuły każdej S & P 500 firmy przechowywanych danych XML.
+Dane pochodzą z Wikipedii (<a href="http://www.wikipedia.org/">http://www.wikipedia.org/</a>) oparte na artykuły każdej S & P 500 firmy przechowywane w postaci danych XML.
 <p></p>
 Przed przekazaniem do usługi Azure Machine Learning Studio, zestaw danych został przetworzony w następujący sposób:
 <ul>
-  <li>Wyodrębnienie zawartości tekstowej dla każdej firmy</li>
-  <li>Usunięcie formatowania stron typu wiki</li>
+  <li>Wyodrębnij zawartość tekstu dla każdej firmy</li>
+  <li>Usuwanie formatowania stron typu wiki</li>
   <li>Usuń znaki inne niż alfanumeryczne</li>
   <li>Konwertuj cały tekst na małe litery.</li>
-  <li>Kategorie znane firmy zostały dodane</li>
+  <li>Kategorie znanych firmy zostały dodane.</li>
 </ul>
 <p></p>
-Nie można odnaleźć należy pamiętać, że w przypadku niektórych firm artykułu, więc to liczba rekordów jest mniej niż 500.
+Nie można odnaleźć należy pamiętać, że dla niektórych firmom artykułu, więc to liczba rekordów to 500.
   </td>
 </tr>
 
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">direct_marketing.csv</a></td>
   <td>
-Zestaw danych zawiera dane klientów i wskazówek dotyczących ich odpowiedzi na bezpośrednie kampanii. Każdy wiersz reprezentuje klienta. Zestaw danych zawiera funkcje dziewięć o demograficznymi użytkownika oraz zachowanie i trzech etykiet kolumn (odwiedź konwersji oraz wydatków).  Odwiedź stronę to kolumna typu binary, który wskazuje, że klient odwiedzi po kampanię marketingową. Konwersja oznacza, że klient zakupiono produkt. Spędzają jest przeznaczony wielkość.  Zestaw danych została udostępniona przez Hillstrom Kevina dla MineThatData E-Mail analizy danych wyszukiwania żądania i.
+Zestaw danych zawiera dane klientów i dotyczące ich odpowiedzi na bezpośrednie kampanii. Każdy wiersz reprezentuje klienta. Zestaw danych zawiera dziewięć funkcje dotyczące użytkownika, danych demograficznych i przeszłymi zachowanie i trzy etykiety kolumn (odwiedzić, konwersji i wydatków).  Odwiedź stronę to kolumna typu binary, który wskazuje, że klient odwiedzone po kampanii marketingowej. Konwersja wskazuje, że klient zakupu. Wydania jest kwota, która została wydana.  Zestaw danych została udostępniona przez Kevina Hillstrom dla MineThatData E-Mail Analytics i dane wyszukiwania wyzwanie.
   </td>
 </tr>
 
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">lyrl2004_tokens_test.csv</a></td>
   <td>
-Funkcje przykłady testów w zestawie danych wiadomości Reuters RCV1 V2. Element dataset zawiera artykuły 781K wraz z ich identyfikatorów (pierwszej kolumny zestawu danych). Każdego artykułu jest stokenizowana stopworded i zakończonej. Zestaw danych została udostępniona przez Dominika. D. Nowak.
+Funkcje przykłady testów w zestawie danych wiadomości Reuters RCV1 V2. Zestaw danych zawiera artykuły z wiadomościami 781K wraz z ich identyfikatorów (pierwszej kolumny zestawu danych). Każdego artykułu jest stokenizowana stopworded i pęd. Zestaw danych została udostępniona przez David. D. Lewis.
   </td>
 </tr>
 
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train.csv</a></td>
   <td>
-Funkcje przykładów szkoleniowych w zestawie danych wiadomości Reuters RCV1 V2. Element dataset zawiera artykuły 23K wraz z ich identyfikatorów (pierwszej kolumny zestawu danych). Każdego artykułu jest stokenizowana stopworded i zakończonej. Zestaw danych została udostępniona przez Dominika. D. Nowak.
+Funkcje przykładów szkoleniowych w zestawie danych wiadomości Reuters RCV1 V2. Zestaw danych zawiera artykuły z wiadomościami 23K wraz z ich identyfikatorów (pierwszej kolumny zestawu danych). Każdego artykułu jest stokenizowana stopworded i pęd. Zestaw danych została udostępniona przez David. D. Lewis.
   </td>
 </tr>
 
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a><br></td>
   <td>
-Zestaw danych z KDD Pucharze 1999 wiedzy odnajdywania i wyszukiwania danych narzędzi konkurencji (<a href="http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99.html</a>).
+Zestaw danych z zawodów KDD Cup 1999 Knowledge Discovery i analizą danych narzędzi konkurencji (<a href="http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99.html</a>).
 <p></p>
-Zestaw danych został pobrany i przechowywane w magazynie obiektów Blob platformy Azure (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a>) i obejmuje zarówno uczenie i testowanie zestawów danych. Zestaw danych szkoleniowych ma około 126K wierszy i kolumn 43, w tym etykiety. Trzy kolumny są częścią informacji etykiety, a kolumny 40, składające się z funkcje numeryczne i ciągu/podzielone na kategorie, są dostępne do uczenia modelu. Dane testowe ma około 22,5 K test przykłady można podać te same kolumny 43 jak danych szkoleniowych.
+Zestaw danych został pobrany i przechowywane w usłudze Azure Blob storage (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a>) i obejmuje zarówno uczenie i testowanie zestawów danych. Zestaw danych szkoleniowych ma około 126 tysięcy wierszy i kolumn 43, w tym etykiety. Trzy kolumny to część informacji etykiety, a kolumny 40, składający się z funkcji liczbowe i ciągu/podzielonych na kategorie, są dostępne dla uczenia modelu. Dane testowe ma około 22,5 K test przykłady z tego samego 43 kolumnami, jak dane szkoleniowe.
   </td>
 </tr>
 
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2.topics.qrels.csv</a></td>
   <td>
-Temat przypisania dla nowych artykułów w zestawie danych wiadomości Reuters RCV1 V2. Artykuł wiadomości można przypisać do różnych tematów. Format każdy wiersz jest "&lt;nazwa tematu&gt; &lt;identyfikator dokumentu&gt; 1". Zestaw danych zawiera przypisania tematu 2.6M. Zestaw danych została udostępniona przez Dominika. D. Nowak.
+Temat przypisań artykuły w zestawie danych wiadomości Reuters RCV1 V2. Artykuł wiadomości można przypisać do różnych tematów. Format każdy wiersz jest "&lt;nazwy tematu&gt; &lt;identyfikator dokumentu&gt; 1". Zestaw danych zawiera 2,6 mln temat przypisania. Zestaw danych została udostępniona przez David. D. Lewis.
   </td>
 </tr>
 
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
   <td>
-Te dane pochodzą z żądania oceny wydajności uczniów 2010 Pucharze KDD (<a href="http://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">oceny wydajności uczniowie</a>). Danych używany jest zestaw szkoleniowy Algebra_2008_2009 (Stamper, J., Niculescu-Mizil, S. A., Ritter, Gordon, G.J. & Koedinger, K.R. (2010). Algebraiczną I 2008 2009. Żądanie zestawu danych z KDD Pucharze 2010 edukacyjnych danych wyszukiwania żądania. Znajdź go w <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a>.
+Te dane pochodzą z zawodów KDD Cup 2010 uczniów wyzwanie oceny wydajności (<a href="http://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">oceny wydajności dla uczniów</a>). Dane używane jest zestaw treningowy Algebra_2008_2009 (Stamper, J., Niculescu-Mizil, S. A., Ritter, Gordon, G.J. & Koedinger, K.R. (2010). Algebry I 2008 2009. Rzuć wyzwanie zestawu danych z zawodów KDD Cup 2010 edukacyjnych danych wyszukiwania wyzwanie. Na stronie Znajdź <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a>.
 <p></p>
-Zestaw danych został pobrany i przechowywane w magazynie obiektów Blob platformy Azure (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>) i zawiera pliki dziennika z studenta Korepetycje systemu. Podany cechy identyfikator problemu i jego krótki opis, ID studenta znacznik czasu i liczby prób uczniów przed rozwiązywanie problemu w sposób prawo. Oryginalny zestaw danych zawiera rekordy 8,9 M; Ten zestaw danych został próbkowany w dół do pierwszych wierszy 100 KB. Element dataset zawiera 23 tabulatorem kolumny z różnych typów: liczbowe podzielone na kategorie i sygnatura czasowa.
+Zestaw danych został pobrany i przechowywane w usłudze Azure Blob storage (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>) i zawiera pliki dziennika z uczniów z inteligentnymi systemu. Podane funkcje obejmują identyfikator problemu i jego krótki opis, Legitymację, znacznik czasu i liczbę prób dla uczniów, przed rozwiązywanie problemu w odpowiedni sposób. Oryginalny zestaw danych zawiera rekordy 8,9 M; Ten zestaw danych został próbkowana w dół do pierwszych wierszy 100 tys. Zestaw danych zawiera 23 rozdzielane znakami tabulacji kolumnami różnych typów: liczbowe, podzielone na kategorie i sygnaturę czasową.
   </td>
 </tr>
 

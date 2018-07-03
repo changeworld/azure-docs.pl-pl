@@ -1,10 +1,10 @@
 ---
-title: Przewodnik dotyczący wydawcy witrynę Azure Marketplace i AppSource | Azure
-description: Omówienie portalu Azure Marketplace i AppSource są wydawcy aplikacji i usług
+title: Przewodnik dla wydawcy portalu Azure Marketplace i AppSource | Azure
+description: Omówienie portalu Azure Marketplace i AppSource są wydawcy aplikacji i usługi
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
-author: jm-aditi-ms
-manager: pabutler
+author: ellacroi
+manager: nunoc
 editor: ''
 ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
 ms.service: marketplace
@@ -12,144 +12,126 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/11/2018
+ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: e40b3a9f1454e892e07f7749ba900cd74c42c339
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: ff78a7ed700506625761b0b1060040548b4a3ea1
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309235"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344818"
 ---
-# <a name="azure-marketplace-and-appsource-publisher-guide"></a>Przewodnik AppSource wydawcy i portalu Azure Marketplace  
+# <a name="azure-marketplace-and-appsource-publisher-guide"></a>Przewodnik wydawcy usługi AppSource i portalu Azure Marketplace  
 
-## <a name="overview"></a>Przegląd  
-Witamy w podręczniku wydawcy sklepy w witrynie marketplace.
-*  AppSource  
-*  Azure Marketplace  
+## <a name="overview"></a>Przegląd 
 
-Nowych i istniejących wydawców (użytkownik) dowiedzieć się więcej o następujących tematach, przy użyciu tego przewodnika. 
-*   Jak używać portalu Azure Marketplace i AppSource sklepy
-*   Sposób publikowania aplikacji i oferty  
-*   Jak rozwoju firmy współpraca z firmą Microsoft  
+Witamy w podręczniku wydawcy witryny Marketplace. Ten przewodnik został zaprojektowany w celu marzących i istniejących wydawców dowiedzieć się, jak korzystać z portalu Azure Marketplace (www.azuremarketplace.com) i usługi AppSource (www.appsource.com) sklepów Rozwijaj swoją działalność we współpracy z firmą Microsoft, lista ich aplikacje i usługi.  
 
-Możesz uzyskać lepsze zrozumienie następujące tematy.
-*   Jakie są korzyści wynikające z listy w sklepy w witrynie marketplace  
-*   Jak używać sklepy  
-*   Sklepu, która jest odpowiednia dla usług i oferty  
-*   Jakie aplikacje i oferty, które mogą publikować  
-*   Jakie są wymagania techniczne i biznesowe dla każdej opcji publikowania  
-*   Jak utworzyć listę kontrolną wstępnie publikowania zasobów  
-*   Jak tworzyć wydawcy  
-*   Gdzie można tworzyć i publikować oferuje  
-*   Jak zoptymalizować listy i korzystać z zasobów przejdź na rynek wpływ dysku  
-*   Skąd uzyskać pomoc i obsługa techniczna  
+Ten przewodnik obejmuje następujące tematy: 
+*   Co to jest witryna marketplace i jak to działa 
+*   Jaka jest różnica między sklepów w portalu Azure Marketplace i AppSource 
+*   Korzyści, jakie można uzyskać, biorąc udział w rynku 
+*   Jak zostać wydawcą i wyświetlanie listy aplikacji lub usługi 
+*   Jak Rozwijaj działalność 
 
-Pytania i komentarze dotyczące witryny marketplace lub Podręcznik publikowania, Wyślij wiadomość e-mail do [ cloudmarketplace@microsoft.com ](mailto:cloudmarketplace@microsoft.com).  
+Ten przewodnik zawiera techniczne i biznesowe informacje dotyczące czynności wykonywanych należy zrozumieć przed wystawieniem aplikacji i usług. Użyj paska nawigacyjnego, znajduje się w lewej części tej strony do przechodzenia do różnych sekcji tego przewodnika i przejść bezpośrednio do kluczowe tematy.   
+
+Dla dodatkowe pytania na temat portalu Azure Marketplace i AppSource Wyślij do nas wiadomość, w obszarze Typ problemu > przechodzenia do portalu Marketplace. Nasz zespół ds. dołączania wydawcy witryny Marketplace będą chętnie Ci pomożemy! 
 
 ---  
 
-## <a name="benefits"></a>Korzyści  
+## <a name="benefits-of-participating-in-the-marketplace"></a>Korzyści z uczestnictwa w portalu marketplace 
 
-### <a name="benefits-of-participating-on-the-marketplace"></a>Korzyści z uczestnictwa w witrynie marketplace  
-Sklepy w witrynie marketplace są launchpads wspólnego działań przejdź na rynek (GTM) z firmą Microsoft.  
-*   AppSource  
-*   Azure Marketplace  
+Portal Marketplace jest punktem startowym dla wspólnych działań go-to-market z firmą Microsoft, aby przyspieszyć rozwój Twojej firmy. Za pomocą promocji uruchamiania, generowania popytu i wspólne sprzedaży i marketingu, oferty w witrynie marketplace mogą być centralnym punktem silnika firm chmury. Nie ma żadnych opłat za uczestnictwa w portalu marketplace.  
 
-Sklepy są drzwi do wspólnej sprzedaje gotowe możliwości współpracy. Możesz użyć aplikacji lub oferować jedną z następujących ról.  
-*   Bezpośrednio przez aparat firm chmury  
-*   Zamachowym dla rozwojowi firmy 
+Naszym celem jest łączenie klientów firmy Microsoft z najlepszymi rozwiązaniami, które są oferowane przez nasz ekosystem partnerów. Aby to zrobić, obsługujemy możesz w całym przygodę z dołączania do publikowania i wzrost. 
 
-Można rozwinąć swoją firmę o poniższe możliwości w witrynie marketplace.  
-*    Uruchamianie podwyższania poziomu  
-*    Generowanie żądanie  
-*    Wspólne sprzedaż i marketing  
+Korzystaj z możliwości w witrynie marketplace sposoby rozwijania działalności: 
 
-Nie ma żadnych opłat za uczestniczących w sklepy w witrynie marketplace. Microsoft skupia się na nawiązywanie najlepszych rozwiązań i usług, które są udostępniane przez partnerów firmy Microsoft. 
+### <a name="expand-to-new-markets-and-segments-and-generate-new-sales-opportunities"></a>Rozwiń do nowych rynków i segmentów i generowanie nowych szans sprzedaży
 
-Korzystać z możliwości może potrwać w witrynie marketplace do rozwoju firmy.  
+Użyj portalu marketplace jako kanał dostępu do nowych rynków, segmenty i użytkownicy w chmurze firmy Microsoft z portfolio rozwiązań. Generowanie nowych marketing potencjalnych klientów i zaspakajanie potrzeb istniejących je do szans sprzedaży. Korzystać ze wspólnych sprzedaży i marketingu działań, uzyskanie większej liczby klientów.  
 
-#### <a name="generate-leads-and-sales-opportunities"></a>Generowanie potencjalnych klientów i sprzedaży możliwości.  
-Wprowadź nowy rynkach z rozwiniętym portfolio rozwiązań w sklepy w witrynie marketplace. O dostępności wyższych kategorii i sprzedaży ofert witryny marketplace.  
+### <a name="enhance-business-value-and-increase-deal-size-with-existing-and-new-customers"></a>Zwiększ wartość biznesową i Zwiększaj rozmiar umów z istniejących i nowych klientów 
 
-#### <a name="enhance-business-value-and-increase-deal-size-with-existing-and-new-customers"></a>Zwiększyć wartość biznesową i zwiększyć rozmiar transakcji z istniejących i nowych klientów  
-Wzrostu wielkości umowy i rozwiązywania problemów klienta, po przeniesieniu obciążeń na platformie Azure. Zmniejsz cykle sprzedaży i zwiększyć rentowność transakcji o tym docelowych określonych obciążeń i scenariusze branży sprzedaży kompletnych rozwiązań.  
+Oferować zakupu takich produktów i sprzedaży rozwiązań, odnoszący się problemy klientów po przeniesieniu obciążeń do chmury. Sprzedaj lub wdrożyć za pośrednictwem witryny marketplace, można zmniejszyć cykle sprzedaży, Przyspiesz projekty i zwiększyć zyskowność ofertę sprzedając kompletnych rozwiązań w tej branży scenariuszy i docelowy konkretnych obciążeń. 
+  
+### <a name="get-actionable-insights"></a>Uzyskuj szczegółowe informacje z możliwością działania 
 
-#### <a name="get-actionable-insights"></a>Uzyskuj szczegółowe informacje z możliwością działania  
-Twój sukces jest wspólnego sukcesu. Uzyskaj informacje na temat wydajności z listy, używając portalu dla partnerów chmury. Uzyskaj więcej informacji o wydajności, potencjalnych klientów i jak zmaksymalizować działania aplikacji w ramach kampanii.  
+Uzyskuj szczegółowe informacje dotyczące wydajności swojej oferty za pośrednictwem udostępnione do analizy i szczegółowych informacji. Uzyskaj więcej informacji na temat wydajność kampanii, zamówień i wypłaty oraz sposób zmaksymalizowania działań marketingowych rozwiązania.  
 
->[!NOTE]
->Aplikacje, które rozszerzają Office muszą uzyskać dostęp do szczegółowych informacji przez proces publikowania dla aplikacji pakietu Office.  
+### <a name="marketplace-go-to-market-benefits"></a>Korzyści Go-To-Market portalu Marketplace 
 
-### <a name="go-to-market-benefits"></a>Przejdź na rynek korzyści  
-Sklepy umożliwiają pokazują rozwiązań miliony klientów. Nowe listy w witrynie marketplace automatycznie są oferowane zestaw bezpłatnie z zalet GTM ułatwiające świadomości dysku oferty w witrynie marketplace.  
+Dla nowych ofert w portalu marketplace, kwalifikują się do różnorodnych zestaw bezpłatnych korzyści, w celu ułatwiania partnerom Rozwijaj swoją działalność w portalu marketplace. Te korzyści można podzielić na następujące kategorie: 
 
- Twoje launchpad wspólnego GTM działań z firmą Microsoft rozpoczyna się od publikowanie ofertę w sklepy.  Sklepy są drzwi do partnerstwo drugi sell gotowe. Wszystkie nowe aplikacje i oferty automatycznie podano zestaw nie GTM oszczędności ułatwiające dysku pogłębianie wiedzy na temat Twojej oferty do klientów firmy Microsoft lub aplikacji. Korzyści GTM dostarczania kilka działań wspólnej marketing i wspólnej sprzedaży.  Działania wspólnej marketing i wspólnej sprzedaje opracowano ułatwiają korzystanie z następujących czynności, aby dysk pogłębianie wiedzy na temat rozwiązania do generowania sprzedaży.
-*   Marki firmy Microsoft  
-*   Kanały firmy Microsoft  
-*   Klienci firmy Microsoft i partnerów  
+*   Pomoc: Wszystko, czego potrzebujesz do przygotowania aplikacji do uruchomienia. Pomoc techniczna, projekt aplikacji i projektowania architektury usług do środków platformy Azure na potrzeby opracowywania i testowania. 
 
-Nie trzeba wykonywać żadnych dodatkowych czynności. Po opublikowaniu ofertę zespołu Microsoft GTM kontaktuje się na rozpoczęcie dostarczania.  
-*   Więcej informacji o Microsoft GTM korzyści i sposoby rozwoju firmy w witrynie marketplace, odwiedź stronę usługi firmy Microsoft przejdź na rynek zlokalizowanej w [partner.microsoft.com/reach-customers/gtm](https://partner.microsoft.com/reach-customers/gtm).  
+*   Współpracą marketingową: Wszystko, czego potrzebujesz do uruchomienia oferty. Dostęp do bezpłatnych podstawy uruchamiania Go-to-Market ułatwia uruchamianie i wypromuj swoje rozwiązanie. Możesz również kwalifikować się do dodatkowych włączenia kampanii marketingowych firmy Microsoft i obejmuje możliwości, aby była polecana w portalu marketplace.  
+
+*   Prowadzenie sprzedaży: Rozpoczyna się lub Skróć swoją drogę do sprzedaży w firmie Microsoft za pośrednictwem witryny marketplace. Dostęp do programów i obsługę dysków połączonych zasobów sprzedaży z usługą Microsoft teams.  
+
+Po [Prześlij swoje rozwiązanie](https://azuremarketplace.microsoft.com/sell/signup) w portalu Marketplace, nasz zespół organizujący dołączanie skontaktuje się z obsługę środowisko publikowania.  
+
+Aby uzyskać więcej informacji na temat korzyści go-to-market firmy Microsoft i sposobów rozwoju swojej działalności, w portalu marketplace, odwiedź stronę [strony usług Microsoft Go-To-Market Services](https://partner.microsoft.com/reach-customers/gtm).
 
 ---  
 
 ## <a name="storefronts"></a>Sklepy  
-Firma Microsoft udostępnia dwa różne sklepy w witrynie marketplace. Sklepy pozwalają na liście oferty, Włącz prób i transact bezpośrednio z klientów firmy Microsoft.  
-*   Porównanie AppSource i portalu Azure Marketplace
-    *   Aby uzyskać więcej informacji na temat sklepy, odwiedź stronę AppSource porównanie i portalu Azure Marketplace strony znajduje się w [AppSource porównanie i portalu Azure Marketplace](./comparing-appsource-azure-marketplace.md).
+Firma Microsoft oferuje dwa odrębne sklepów w witrynie marketplace. Sklepów pozwalają na liście ofert, Włącz wersje próbne i transact bezpośrednio z klientami firmy Microsoft.  
+*   Porównanie usługi AppSource i portalu Azure Marketplace
+    *   Aby uzyskać więcej informacji na temat sklepów, odwiedź stronę porównanie w usłudze AppSource i stronie portalu Azure Marketplace znajdujący się w [porównanie usługi AppSource i portalu Azure Marketplace](./comparing-appsource-azure-marketplace.md).
 *   AppSource 
-    *   Aby uzyskać więcej informacji na temat AppSource odwiedź Zwiększaj firmą przy użyciu strony AppSource znajdujący się w [rozwoju firmy z AppSource](./grow-your-business-with-appsource.md).  
+    *   Aby uzyskać więcej informacji o usłudze AppSource, można znaleźć w rozwoju Twojej firmy za pomocą usługi AppSource strony znajduje się w [Rozwijaj swoją firmę dzięki usłudze AppSource](./grow-your-business-with-appsource.md).  
 *   Azure Marketplace 
-    *   Aby uzyskać więcej informacji na temat portalu Azure Marketplace, odwiedź stronę Zwiększaj firmy z portalu Azure Marketplace strony znajduje się w [rozwoju firmy z portalu Azure Marketplace](./grow-your-business-with-azure-marketplace.md).  
+    *   Aby uzyskać więcej informacji na temat portalu Azure Marketplace można znaleźć w rozwoju działalności dzięki stronie portalu Azure Marketplace znajdujący się w [Rozwijaj swoją firmę dzięki witrynie Azure Marketplace](./grow-your-business-with-azure-marketplace.md).  
 
-Sklepy umożliwiają wyszukiwanie, spróbuj i kupić aplikacje i usługi, które przyspieszanie Twojej cyfrowe transformacji. Sklepy pomóc wzrostu Twojej firmy przez zwiększenie dostęp do klientów firmy Microsoft i partnerów.  
+Sklepów umożliwiają znajdowanie, testowanie i kupowanie aplikacji i usług, które przyspieszanie swojej transformacji cyfrowej. Sklepów pomóc w rozwoju Twojej firmy, ułatwiając dostęp klientów firmy Microsoft i partnerów.  
  
-Każdy sklepu zawiera specjalne opcje ułatwiające zmaksymalizowaniu zwrotu z inwestycji publikowania. W poniższej tabeli przedstawiono te opcje.  
+Każda witryna sklepu udostępnia wyspecjalizowane opcje ułatwiają maksymalne wykorzystanie inwestycji w publikacji. Poniższa tabela zawiera podsumowanie tych opcji.  
 
 |  | AppSource | Azure Marketplace |  
 |:--- |:--- |:--- |  
-| Odbiorcy docelowi | Biznesowych inne osoby podejmujące decyzje<table> <tr> <th>specjalistyczną ról </th> </tr> <tr> <td>Księgowość</td> </tr> <tr> <td>Zamówień</td> </tr> <tr> <td>Produkcja</td> </tr> </table> | Informatycy i deweloperzy<table> <tr> <th>specjalistyczną ról </th> </tr> <tr> <td>DevOps</td> </tr> <tr> <td>DBAs</td> </tr> <tr> <td>SecOP</td> </tr> </table> |  
-| Skompilowany, albo aby rozszerzyć | Azure<br />Dynamics 365<br />Office 365<br />Power BI<br />PowerApps | Azure |  
-| Typy rozwiązań i usług | Zakończono aplikacji biznesowych z chmury<br />Dodatki usługi Office 365 | Rozwiązania infrastruktury<br />Usługi specjalistyczne |  
-| Typ oferty | Usługi konsultingowe<br />Kontakt ze mną<br />Bezpłatna wersja próbna<br />Pobierz teraz<br />Wersja testowa | Aplikacje platformy Azure: aplikacje zarządzane<br />Aplikacje platformy Azure: rozwiązanie szablonów<br />Usługi konsultingowe<br />Kontakt ze mną<br />Wersja próbna<br />maszyna wirtualna |  
-| Środowisko w aplikacji można przyznać dostęp użytkownikom<br />do aplikacji i usług w kontekście<br />aplikacji | Dynamics 365<br />Office 365<br />Aplikacje klienckie pakietu Office<br />Power BI | Azure Portal<br />Usługa Azure Resource Manager interfejsu wiersza polecenia |  
+| Odbiorcy docelowi | Line-of-business, inne osoby podejmujące decyzje<table> <tr> <th>role specjalista ds. </th> </tr> <tr> <td>Księgowość</td> </tr> <tr> <td>Zaopatrzenia</td> </tr> <tr> <td>Produkcja</td> </tr> </table> | Informatyków i deweloperów<table> <tr> <th>role specjalista ds. </th> </tr> <tr> <td>DevOps</td> </tr> <tr> <td>Przetwarzający</td> </tr> <tr> <td>SecOP</td> </tr> </table> |  
+| Skompilowanych przy użyciu albo aby rozszerzyć | Azure<br />Dynamics 365<br />Office 365<br />Power BI<br />PowerApps | Azure |  
+| Typy rozwiązań i usług | Gotowe aplikacje w chmurze line-of-business<br />Dodatki pakietu Office 365 | Rozwiązania infrastruktury<br />Usługi specjalistyczne |  
+| Typ oferty | Usługi doradcze<br />Kontakt ze mną<br />Bezpłatna wersja próbna<br />Pobierz teraz<br />Wersja testowa | Aplikacje platformy Azure: aplikacje zarządzane<br />Aplikacje platformy Azure: szablony rozwiązań<br />Usługi doradcze<br />Kontakt ze mną<br />Wersja próbna<br />maszyna wirtualna |  
+| Środowisko aplikacji w celu udzielenia dostępu użytkownikom<br />do aplikacji i usług w kontekście<br />Aplikacja | Dynamics 365<br />Office 365<br />Aplikacje klienta pakietu Office<br />Power BI | Azure Portal<br />Interfejs wiersza polecenia Azure Resource Manager |  
 
 ---   
 
 ## <a name="how-to-publish-in-the-storefronts-on-the-marketplace"></a>Instrukcje publikowania w sklepach na platformie handlowej  
-Następujące strony pomóc w nawigowaniu opcje publikowania AppSource i portalu Azure Marketplace.  
+Następujące strony pomóc w nawigowaniu opcje publikowania w usłudze AppSource i portalu Azure Marketplace.  
 
-Stają się wydawcy w sklepy w witrynie marketplace w trzy łatwe kroki.  
-1.  Odwiedź stronę [określają typ wyświetlania dla rozwiązania](./determine-your-listing-type.md) strony.  
-2.  Odwiedź stronę [stają się wydawcy w sklepy w witrynie marketplace](./become-publisher.md) strony.  
-3.  Odwiedź stronę [wymagania według typu wyświetlania](./listing-type-requirements.md) strony.  
+Zostać wydawcą w sklepów w portalu marketplace w trzech prostych krokach.  
+1.  Odwiedź stronę [określają typ wyświetlania listy dla rozwiązania](./determine-your-listing-type.md) strony.  
+2.  Odwiedź stronę [zostać wydawcą w sklepów w witrynie marketplace](./become-publisher.md) strony.  
+3.  Odwiedź stronę [wymagań według typu Lista](./listing-type-requirements.md) strony.  
 
 ---   
 
-## <a name="publishing-checklists"></a>Listy kontrolne dotyczące publikowania  
-*   Odwiedź stronę [publikowania Lista kontrolna dotycząca AppSource](publishing-checklist-appsource.md) strony.  
-*   Odwiedź stronę [publikowania Lista kontrolna dotycząca portalu Azure Marketplace w portalu dla partnerów chmury](./publishing-checklist-azure-marketplace.md) strony.  
-*   Odwiedź stronę [włączyć za pomocą usługi Azure AD wersji próbnej](./enable-trial-using-azure-ad.md) strony.  
+## <a name="publishing-checklists"></a>Publikowanie list kontrolnych  
+*   Odwiedź stronę [publikowania listy kontrolnej zawierającej AppSource](publishing-checklist-appsource.md) strony.  
+*   Odwiedź stronę [publikowania Lista kontrolna dotycząca portalu Azure Marketplace w portalu Cloud Partner](./publishing-checklist-azure-marketplace.md) strony.  
+*   Odwiedź stronę [Włączanie wersji próbnej za pomocą usługi Azure AD](./enable-trial-using-azure-ad.md) strony.  
 
 ---  
 
 ## <a name="support"></a>Pomoc techniczna  
-*   Odwiedź stronę [obsługę AppSource](./support-appsource.md) strony.  
+*   Odwiedź stronę [obsługę usługi AppSource](./support-appsource.md) strony.  
 *   Odwiedź stronę [obsługę portalu Azure Marketplace](./support-azure-marketplace.md) strony.  
 
 ---  
 
 ## <a name="guides"></a>Przewodniki  
-*   Odwiedź stronę [Azure Marketplace konsultacji usługi](consulting-services.md) strony.  
-*   Odwiedź stronę [techniczne Podręcznik publikowania aplikacji Azure Marketplace SaaS](marketplace-saas-applications-technical-publishing-guide.md) strony.  
+*   Odwiedź stronę [usługi konsultingowe Marketplace Azure](consulting-services.md) strony.  
+*   Odwiedź stronę [techniczne Podręcznik publikowania aplikacji SaaS usługi Azure Marketplace](marketplace-saas-applications-technical-publishing-guide.md) strony.  
 
 ## <a name="guidelines"></a>Wytyczne  
-*   Odwiedź stronę [wytyczne](./guidelines.md) strony.  
-    *   Odwiedź stronę [wytyczne dotyczące tworzenia Identyfikatora Microsoft do zarządzania konta witryny marketplace](./guidelines.md#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account) sekcji.  
-*   Odwiedź stronę [Zarejestruj w Centrum deweloperów](./register-dev-center.md) strony.  
-*   Odwiedź stronę [Bank Dodaj i informacje o podatku](./add-bank-tax-info.md) strony.  
-*   Odwiedź stronę [włączyć za pomocą usługi Azure AD wersji próbnej](./enable-trial-using-azure-ad.md) strony.  
-*   Odwiedź stronę [rozliczeń opcji Azure Marketplace](./billing-options-azure-marketplace.md) strony.  
+*   Odwiedź stronę [wytycznych](./guidelines.md) strony.  
+    *   Odwiedź stronę [wytyczne dotyczące tworzenia Identyfikatora firmy Microsoft do zarządzania kontem marketplace](./guidelines.md#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account) sekcji.  
+*   Odwiedź stronę [rejestrowanie w Centrum deweloperów](./register-dev-center.md) strony.  
+*   Odwiedź stronę [Bank Dodaj i informacje podatkowe](./add-bank-tax-info.md) strony.  
+*   Odwiedź stronę [Włączanie wersji próbnej za pomocą usługi Azure AD](./enable-trial-using-azure-ad.md) strony.  
+*   Odwiedź stronę [opcje rozliczeń portalu Azure Marketplace](./billing-options-azure-marketplace.md) strony.  
 
 ---  

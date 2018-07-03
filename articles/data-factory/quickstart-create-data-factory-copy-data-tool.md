@@ -11,25 +11,22 @@ ms.workload: data-services
 ms.topic: hero-article
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 23d4afffbe108d439dd53d95ed81f7d9fc4246ef
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 4df392ec7e100ef0efcbb3876079710a6b9ca4fb
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284578"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048030"
 ---
 # <a name="use-the-copy-data-tool-to-copy-data"></a>Kopiowanie danych przy użyciu narzędzia do kopiowania danych 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
-> * [Wersja 1 — ogólnie dostępna](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-> * [Wersja 2 — wersja zapoznawcza](quickstart-create-data-factory-copy-data-tool.md)
+> * [Wersja 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [Bieżąca wersja](quickstart-create-data-factory-copy-data-tool.md)
 
 W tym przewodniku Szybki start utworzysz fabrykę danych przy użyciu witryny Azure Portal. Następnie za pomocą narzędzia do kopiowania danych utworzysz potok służący do kopiowania danych z folderu w magazynie Azure Blob Storage do innego folderu. 
 
 > [!NOTE]
 > Jeśli jesteś nowym użytkownikiem usługi Azure Data Factory, przed wykonaniem kroków zawartych w tym przewodniku Szybki start zobacz [Wprowadzenie do usługi Azure Data Factory](data-factory-introduction.md). 
->
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz ogólnie dostępnej wersji 1 usługi, zobacz [Wprowadzenie do usługi Data Factory w wersji 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
-
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
@@ -52,7 +49,7 @@ W tym przewodniku Szybki start utworzysz fabrykę danych przy użyciu witryny Az
    - Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów.   
          
    Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
-4. W obszarze **Wersja** wybierz pozycję **V2 (wersja zapoznawcza)**.
+4. W obszarze **Wersja** wybierz pozycję **V2**.
 5. W obszarze **Lokalizacja** wybierz lokalizację fabryki danych. 
 
    Na liście wyświetlane są tylko obsługiwane lokalizacje. Magazyny danych (na przykład Azure Storage lub Azure SQL Database) i jednostki obliczeniowe (na przykład HDInsight) używane przez fabrykę danych mogą mieścić się w innych lokalizacjach/regionach.
@@ -85,7 +82,7 @@ W tym przewodniku Szybki start utworzysz fabrykę danych przy użyciu witryny Az
 
     ![Wybieranie magazynu obiektów blob z galerii](./media/quickstart-create-data-factory-copy-data-tool/select-blob-source.png)
 
-    d. Na stronie **Określanie konta usługi Azure Blob Storage** wybierz swoje konto magazynu z listy **Nazwa konta magazynu**, a następnie wybierz przycisk **Dalej**. 
+    d. Na stronie **Określanie konta usługi Azure Blob Storage** wybierz swoje konto magazynu z listy **Nazwa konta magazynu**, a następnie wybierz przycisk **Zakończ**. 
 
    ![Konfigurowanie konta usługi Azure Blob Storage](./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png)
 

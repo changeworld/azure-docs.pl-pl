@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 8f477282e49104e9b034e11656ff50c2a67545f7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5efb0087c8e1ea55051d8eb7b209059b3abd5c5c
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195876"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062763"
 ---
 # <a name="what-is-azure-redis-cache"></a>Co to jest usługa Azure Redis Cache
 
@@ -48,7 +48,7 @@ Usługa Azure Redis Cache jest dostępna w następujących warstwach:
 | Warstwa | Opis |
 |---|---|
 Podstawowa | Pamięć podręczna z jednym węzłem. Ta warstwa obsługuje wiele rozmiarów pamięci (250 MB–53 GB). Idealnie nadaje się do programowania/testowania i obsługi obciążeń niekrytycznych. Warstwa Podstawowa nie ma umowy dotyczącej poziomu usług (SLA) |
-| Standardowa | Replikowana pamięć podręczna w postaci dwóch węzłów (podstawowy/dodatkowy) zarządzanych przez firmę Microsoft i objętych umową SLA zapewniającą wysoką dostępność (99,9%). |
+| Standardowa (Standard) | Replikowana pamięć podręczna w postaci dwóch węzłów (podstawowy/dodatkowy) zarządzanych przez firmę Microsoft i objętych umową SLA zapewniającą wysoką dostępność (99,9%). |
 | Premium | Warstwa Premium jest warstwą przeznaczoną dla przedsiębiorstw. Pamięci podręczne w warstwie Premium obsługują więcej funkcji i mają większą przepływność przy niższych opóźnieniach. Pamięci podręczne w warstwie Premium są wdrażane na mocniejszym sprzęcie, zapewniając większą wydajność w porównaniu do warstw Podstawowa i Standardowa. Ta zaleta oznacza, że przepływność dla pamięci podręcznej o tym samym rozmiarze będzie większa w warstwie Premium niż w warstwie Standardowa. |
 
 > [!TIP]
@@ -61,7 +61,7 @@ Pamięć podręczną można po utworzeniu skalować w górę do wyższej warstwy
 
 Strona [Cennik usługi Redis Cache](https://azure.microsoft.com/pricing/details/cache/) zawiera szczegółowe porównanie wszystkich warstw. W poniższej tabeli opisano niektóre funkcje obsługiwane przez warstwy:
 
-| Opis funkcji | Premium | Standardowa | Podstawowa |
+| Opis funkcji | Premium | Standardowa (Standard) | Podstawowa |
 | ------------------- | :-----: | :------: | :---: |
 | [Umowa dotycząca poziomu usług (SLA)](https://azure.microsoft.com/support/legal/sla/cache/v1_0/) |✔|✔|-|
 | [Trwałość danych Redis](cache-how-to-premium-persistence.md) |✔|-|-|
@@ -77,6 +77,7 @@ Strona [Cennik usługi Redis Cache](https://azure.microsoft.com/pricing/details/
 
 * [Szybki start z aplikacją internetową platformy ASP.NET](cache-web-app-howto.md) Tworzenie prostej aplikacji internetowej platformy ASP.NET, która korzysta z usługi Azure Redis Cache.
 * [Szybki start z platformą .NET](cache-dotnet-how-to-use-azure-redis-cache.md) Tworzenie aplikacji platformy .NET, która korzysta z usługi Azure Redis Cache.
+* [Szybki start z platformą .NET Core](cache-dotnet-core-quickstart.md) Tworzenie aplikacji platformy .NET Core, która korzysta z usługi Azure Redis Cache.
 * [Szybki start z platformą Node.js](cache-nodejs-get-started.md) Tworzenie prostej aplikacji platformy Node.js, która korzysta z usługi Azure Redis Cache.
 * [Szybki start z językiem Java](cache-java-get-started.md) Tworzenie aplikacji Java, która korzysta z usługi Azure Redis Cache.
 * [Szybki start z językiem Python](cache-python-get-started.md) Tworzenie aplikacji Python, która korzysta z usługi Azure Redis Cache.

@@ -1,28 +1,28 @@
 ---
-title: Ograniczenia dotyczące bazy danych platformy Azure dla PostgreSQL
-description: W tym artykule opisano ograniczeń w bazie danych Azure PostgreSQL, takie jak liczba połączeń i opcje aparatu magazynu.
+title: Ograniczenia dotyczące usługi Azure Database for PostgreSQL
+description: W tym artykule opisano ograniczenia dotyczące usługi Azure Database for PostgreSQL, takie jak liczba połączeń i opcje aparatu magazynu.
 services: postgresql
-author: kamathsun
-ms.author: sukamat
+author: rachel-msft
+ms.author: raagyema
 manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 06/04/2018
-ms.openlocfilehash: 5cd829236d8d8a58e68f7bf766790aa3f0cb656e
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.date: 06/30/2018
+ms.openlocfilehash: dc1f8581df5dc7c5728094577298ba078cc2c527
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757420"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342995"
 ---
-# <a name="limitations-in-azure-database-for-postgresql"></a>Ograniczenia dotyczące bazy danych platformy Azure dla PostgreSQL
-W poniższych sekcjach opisano pojemności i limity funkcjonalności usługi bazy danych.
+# <a name="limitations-in-azure-database-for-postgresql"></a>Ograniczenia dotyczące usługi Azure Database for PostgreSQL
+W poniższych sekcjach opisano, pojemnością i limitami funkcjonalności w usłudze bazy danych.
 
 ## <a name="maximum-connections"></a>Maksymalna liczba połączeń
-Maksymalna liczba połączeń na warstwa cenowa i vCores są następujące: 
+Maksymalna liczba połączeń na warstwa cenowa i rdzeni wirtualnych są następujące: 
 
-|**Warstwa cenowa**| **vCore(s)**| **Maksymalna liczba połączeń** |
+|**Warstwa cenowa**| **rdzenie wirtualne:**| **Maksymalna liczba połączeń** |
 |---|---|---|
 |Podstawowa| 1| 50 |
 |Podstawowa| 2| 100 |
@@ -36,27 +36,30 @@ Maksymalna liczba połączeń na warstwa cenowa i vCores są następujące:
 |Pamięć| 8| 480|
 |Pamięć| 16| 950|
 
-Gdy połączenia przekracza limit, może zostać wyświetlony następujący błąd:
-> Błąd krytyczny: Niestety, jeszcze zbyt wielu klientów
+Po przekroczeniu limitu połączeń może zostać wyświetlony następujący błąd:
+> Błąd krytyczny: Niestety, zbyt wielu klientów już
 
-Azure system wymaga pięciu połączeń do monitorowania PostgreSQL serwera bazy danych Azure. 
+Azure system wymaga pięć połączeń do monitorowania usługi Azure Database for postgresql w warstwie serwera. 
 
 ## <a name="functional-limitations"></a>Ograniczenia funkcjonalności
 ### <a name="scale-operations"></a>Operacje skalowania
-1.  Dynamiczne skalowanie serwerów między warstwa cenowa nie jest obecnie obsługiwane. Oznacza to przełączaniu między warstwy Basic, ogólnego przeznaczenia lub zoptymalizowanych pod kątem pamięci.
-2.  Zmniejszenie rozmiaru magazynu serwera nie jest obecnie obsługiwane.
+- Dynamiczne skalowanie do i z warstw cenowych podstawowa nie jest obecnie obsługiwane.
+- Zmniejsza rozmiar magazynu serwera nie jest obecnie obsługiwane.
 
-### <a name="server-version-upgrades"></a>Uaktualniania wersji
-- Automatycznej migracji między wersjami aparatu bazy danych głównych nie jest obecnie obsługiwane.
+### <a name="server-version-upgrades"></a>Uaktualnienia wersji serwera
+- Automatycznej migracji między wersjami aparatu głównej bazy danych nie jest obecnie obsługiwane.
 
 ### <a name="subscription-management"></a>Zarządzanie subskrypcjami
 - Dynamicznie przenoszenie serwerów w subskrypcji i grup zasobów nie jest obecnie obsługiwane.
 
-### <a name="point-in-time-restore-pitr"></a>Punkt w — czas restore (PITR)
-1.  Podczas korzystania z funkcji PITR tworzona jest nowy serwer jako serwer, który jest oparty na takie same konfiguracje.
-2.  Przywracanie usuniętych serwera nie jest obsługiwane.
+### <a name="vnet-service-endpoints"></a>Punkty końcowe usługi sieci wirtualnej
+- Obsługa punktów końcowych usługi sieci wirtualnej jest tylko w przypadku serwerów ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.
+
+### <a name="point-in-time-restore-pitr"></a>W czasie — przywracania do punktu (Odzyskiwanie)
+- Podczas korzystania z funkcji Odzyskiwanie, nowy serwer jest tworzony przy użyciu tej samej konfiguracji, co serwer, który opiera się na.
+- Przywracanie usuniętych serwera nie jest obsługiwana.
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Zrozumienie [co jest dostępne w każdej warstwy cenowej](concepts-pricing-tiers.md)
-- Dowiedz się więcej o [obsługiwane wersje PostgreSQL bazy danych](concepts-supported-versions.md)
-- Przegląd [jak kopii zapasowej i przywracania serwera w bazie danych Azure dla PostgreSQL przy użyciu portalu Azure](howto-restore-server-portal.md)
+- Dowiedz się więcej o [obsługiwane wersje bazy danych PostgreSQL](concepts-supported-versions.md)
+- Przegląd [jak tworzenie kopii zapasowej i przywracania serwera w usłudze Azure Database for PostgreSQL za pomocą witryny Azure portal](howto-restore-server-portal.md)

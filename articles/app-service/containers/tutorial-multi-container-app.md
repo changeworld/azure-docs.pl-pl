@@ -1,7 +1,7 @@
 ---
-title: Tworzenie aplikacji wielokontenerowej (w wersji zapoznawczej) przy użyciu funkcji Azure Web App for Containers
+title: Tworzenie aplikacji wielokontenerowej (w wersji zapoznawczej) przy użyciu funkcji Web App for Containers
 description: Dowiedz się, jak używać wielu kontenerów na platformie Azure, korzystając z plików konfiguracji narzędzi Docker Compose i Kubernetes, z aplikacją WordPress i MySQL.
-keywords: azure app service, web app, linux, docker, compose, multi-container, container, kubernetes
+keywords: azure app service, web app, linux, docker, compose, multicontainer, container, kubernetes
 services: app-service
 documentationcenter: ''
 author: msangapu
@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.date: 05/02/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 61158af0bc978665c3d914c8de3376b8f5d5c69f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 43a3fa271a1958c99bd3dd597c73de2d77bb1bfd
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651513"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751918"
 ---
-# <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Samouczek: tworzenie aplikacji wielokontenerowej (w wersji zapoznawczej) przy użyciu funkcji Web App for Containers
+# <a name="tutorial-create-a-multicontainer-preview-app-in-web-app-for-containers"></a>Samouczek: tworzenie aplikacji wielokontenerowej (w wersji zapoznawczej) przy użyciu funkcji Web App for Containers
 
 Funkcja [Web App for Containers](app-service-linux-intro.md) oferuje elastyczny sposób korzystania z obrazów platformy Docker. Z tego samouczka dowiesz się, jak utworzyć aplikację wielokontenerową przy użyciu rozwiązań WordPress i MySQL.
 
@@ -511,7 +511,7 @@ Rozwiązanie WordPress połączy się z serwerem usługi Redis. **Stan** połąc
 
 W tej sekcji dowiesz się, jak wdrożyć wiele kontenerów przy użyciu konfiguracji narzędzia Kubernetes. Upewnij się, że zostały wykonane wcześniejsze kroki w celu utworzenia [grupy zasobów](#create-a-resource-group) i [planu usługi App Service](#create-an-azure-app-service-plan). Ponieważ większość czynności jest podobna do tych opisanych w sekcji dotyczącej narzędzia Compose, plik konfiguracji został połączony.
 
-### <a name="supported-kubernetes-options-for-multi-container"></a>Obsługiwane opcje narzędzia Kubernetes w przypadku aplikacji wielokontenerowych
+### <a name="supported-kubernetes-options-for-multicontainer"></a>Obsługiwane opcje narzędzia Kubernetes w przypadku aplikacji wielokontenerowych
 
 * args
 * command
@@ -649,7 +649,7 @@ Po utworzeniu ustawień aplikacji w interfejsie wiersza polecenia platformy Azur
 ]
 ```
 
-### <a name="create-a-multi-container-app-kubernetes"></a>Tworzenie aplikacji wielokontenerowej (Kubernetes)
+### <a name="create-a-multicontainer-app-kubernetes"></a>Tworzenie aplikacji wielokontenerowej (Kubernetes)
 
 W lokalnym terminalu wiersza polecenia utwórz wielokontenerową [aplikację internetową](app-service-linux-intro.md) w ramach grupy zasobów `myResourceGroup` i planu usługi App Service `myAppServicePlan`, używając polecenia [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create). Pamiętaj o zastąpieniu ciągu _\<app_name>_ unikatową nazwą aplikacji.
 

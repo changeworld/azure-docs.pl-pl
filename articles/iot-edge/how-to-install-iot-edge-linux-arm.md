@@ -1,6 +1,6 @@
 ---
-title: Jak zainstalować krawędzi IoT Azure w systemie Linux | Dokumentacja firmy Microsoft
-description: Azure IoT krawędzi instrukcje instalacji w systemie Linux na ARM32
+title: Jak zainstalować usługi Azure IoT Edge w systemie Linux | Dokumentacja firmy Microsoft
+description: Usługa Azure IoT Edge instrukcje instalacji w systemie Linux na ARM32
 author: kgremban
 manager: timlt
 ms.reviewer: veyalla
@@ -9,29 +9,29 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 2f25faa6957f9a8a42e64829e62506ae2add13ae
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 320eef05faec6b3e399e5a1289e3ee076823c921
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096162"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346318"
 ---
-# <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>Zainstaluj środowisko uruchomieniowe krawędzi IoT Azure w systemie Linux (ARM32v7/armhf)
+# <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>Instalowanie środowiska uruchomieniowego usługi Azure IoT Edge w systemie Linux (ARM32v7/armhf)
 
-Środowisko uruchomieniowe Azure IoT krawędzi jest wdrażana na wszystkich urządzeniach IoT krawędzi. Składa się z trzech składników. **Krawędzi IoT zabezpieczeń demon** zapewnia i przechowuje standardów zabezpieczeń na urządzeniu krawędzi. Demon rozpoczyna się na każdym rozruchu i używa do ładowania urządzenia przez uruchomienie agenta IoT krawędzi. **IoT krawędź agent** ułatwia wdrażanie i monitorowanie modułów na urządzeniu krawędzi, w tym Centrum IoT krawędzi. **Centrum usługi IoT Edge** zarządza komunikacją między modułami na urządzeniu usługi IoT Edge oraz między urządzeniem a usługą IoT Hub.
+Środowisko uruchomieniowe usługi Azure IoT Edge jest wdrażana na wszystkich urządzeniach usługi IoT Edge. Składa się ono z trzech składników. **Demona zabezpieczeń usługi IoT Edge** dostarcza i utrzymuje standardów zabezpieczeń na urządzeniu usługi Edge. Demon jest uruchamiany w każdym rozruchu i używa do ładowania urządzenia przez uruchomienie agenta usługi IoT Edge. **Agenta usługi IoT Edge** ułatwia wdrażanie i monitorowanie modułów na urządzeniu usługi Edge, w tym Centrum IoT Edge. **Centrum usługi IoT Edge** zarządza komunikacją między modułami na urządzeniu usługi IoT Edge oraz między urządzeniem a usługą IoT Hub.
 
-W tym artykule przedstawiono kroki, aby zainstalować środowisko uruchomieniowe Azure IoT Edge na urządzeniu krawędzi Linux ARM32v7/armhf (na przykład malina Pi).
+W tym artykule wymieniono kroki, aby zainstalować środowisko uruchomieniowe usługi Azure IoT Edge na urządzeniu Linux ARM32v7/armhf krawędzi (na przykład urządzenia Raspberry Pi).
 
 >[!NOTE]
->Pakiety w repozytoria oprogramowania systemu Linux są z zastrzeżeniem postanowień licencyjnych, znajduje się w każdym pakiecie (/ usr/udostępnianie/doc/*nazwy pakietu*). Przeczytaj postanowienia licencyjne przed przy użyciu pakietu. Twoje instalacji i używania pakietu oznacza akceptację postanowień niniejszych warunków. Jeśli nie akceptujesz postanowień licencyjnych, nie należy używać pakietu.
+>Są pakiety w repozytoriach oprogramowania systemu Linux, z zastrzeżeniem postanowień licencyjnych, znajduje się w każdym pakiecie (/ usr/udostępnianie/docs/*nazwy pakietu*). Przeczytaj postanowienia licencyjne przed przy użyciu pakietu. Twoja instalacja i używanie pakietu stanowi zaakceptowania przez korzystającego tych warunków. Jeśli nie zgadzasz się z warunkami licencji, nie należy używać pakietu.
 
 ## <a name="install-the-container-runtime"></a>Zainstaluj środowisko uruchomieniowe kontenera
 
-Zależy od usługi Azure IoT krawędzi [OCI zgodnego] [ lnk-oci] kontener środowiska uruchomieniowego (np. Docker). Jeśli masz już Docker CE/EE zainstalowanej na urządzeniu krawędzi, można użyć jej do projektowania i testowania Azure IoT krawędzi. 
+Usługa Azure IoT Edge opiera się na [zgodnego z OCI] [ lnk-oci] kontener środowiska uruchomieniowego (np. Docker). Jeśli masz już Docker CE/EE zainstalowane na urządzeniu usługi Edge, można nadal z niego korzystać do tworzenia i testowania przy użyciu usługi Azure IoT Edge. 
 
-W scenariuszach produkcyjnych zdecydowanie zaleca się używasz [na podstawie Moby] [ lnk-moby] aparat poniżej. To aparat kontenera tylko oficjalnie obsługiwana Azure IoT krawędzi. Obrazy usługi docker CE/EE kontenera są w pełni zgodne ze środowiskiem uruchomieniowym Moby.
+Na potrzeby scenariuszy produkcyjnych zdecydowanie zaleca się używasz [na podstawie Moby] [ lnk-moby] aparatu przedstawione poniżej. Jest aparat tylko kontenera oficjalnie obsługiwana dzięki usłudze Azure IoT Edge. Obrazy kontenera usługi docker CE/EE są w pełni zgodne, ze środowiskiem uruchomieniowym Moby.
 
-Poniższe polecenia zainstalować aparat moby i interfejsu wiersza polecenia (CLI). Interfejsu wiersza polecenia jest przydatne do tworzenia aplikacji, ale opcjonalny w przypadku wdrożeń produkcyjnych.
+Poniższe polecenia zainstalować aparat moby i interfejsu wiersza polecenia (CLI). Interfejs wiersza polecenia jest przydatne do tworzenia aplikacji, ale opcjonalny w przypadku wdrożeń produkcyjnych.
 
 ```cmd/sh
 
@@ -49,7 +49,7 @@ sudo apt-get install -f
 
 ```
 
-## <a name="install-the-iot-edge-security-daemon"></a>Instalowanie demona zabezpieczeń krawędzi IoT
+## <a name="install-the-iot-edge-security-daemon"></a>Instalowanie demona zabezpieczeń usługi IoT Edge
 
 ```cmd/sh
 # You can copy the entire text from this code block and 
@@ -65,21 +65,46 @@ curl -L https://aka.ms/iotedged-linux-armhf-latest -o iotedge.deb && sudo dpkg -
 sudo apt-get install -f
 ```
 
-## <a name="configure-the-azure-iot-edge-security-daemon"></a>Skonfiguruj demona zabezpieczeń krawędzi IoT Azure
+## <a name="configure-the-azure-iot-edge-security-daemon"></a>Skonfiguruj demona zabezpieczeń usługi Azure IoT Edge
 
-Demon można skonfigurować przy użyciu pliku konfiguracji w `/etc/iotedge/config.yaml` urządzenie brzegowe można skonfigurować <!--[automatically via Device Provisioning Service][lnk-dps] or--> ręcznie przy użyciu [ciąg połączenia urządzenia][lnk-dcs].
 
-W przypadku ręcznej konfiguracji, wprowadź ciąg połączenia urządzenia w **inicjowania obsługi administracyjnej** sekcji **config.yaml**
+Demon można skonfigurować przy użyciu pliku konfiguracji na `/etc/iotedge/config.yaml`. Plik jest zabezpieczony przed zapisem domyślnie, może być konieczne podwyższonym poziomem uprawnień, aby go edytować.
 
-```yaml
-provisioning:
-  source: "manual"
-  device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+```bash
+sudo nano /etc/iotedge/config.yaml
 ```
 
-*Plik jest zabezpieczony przed zapisem domyślnie, konieczne może być `sudo` go edytować. Na przykład `sudo nano /etc/iotedge/config.yaml`*
+Urządzenie brzegowe można skonfigurować ręcznie przy użyciu [parametry połączenia urządzenia] [ lnk-dcs] lub [automatycznie za pomocą usługi Device Provisioning] [ lnk-dps].
 
-Po wprowadzeniu informacje o udostępnianiu w konfiguracji, uruchom ponownie demona:
+* Konfiguracja ręczna, usuń znaczniki komentarza **ręczne** tryb obsługi administracyjnej. Zaktualizuj wartość **device_connection_string** przy użyciu parametrów połączenia z urządzenia usługi IoT Edge.
+
+   ```yaml
+   provisioning:
+     source: "manual"
+     device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+  
+   # provisioning: 
+   #   source: "dps"
+   #   global_endpoint: "https://global.azure-devices-provisioning.net"
+   #   scope_id: "{scope_id}"
+   #   registration_id: "{registration_id}"
+   ```
+
+* Konfiguracja automatyczna, usuń znaczniki komentarza **dps** tryb obsługi administracyjnej. Zaktualizuj wartości **scope_id** i **registration_id** wartościami z wystąpieniem usługi DPS Centrum IoT i urządzenia usługi IoT Edge przy użyciu modułu TPM. 
+
+   ```yaml
+   # provisioning:
+   #   source: "manual"
+   #   device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+  
+   provisioning: 
+     source: "dps"
+     global_endpoint: "https://global.azure-devices-provisioning.net"
+     scope_id: "{scope_id}"
+     registration_id: "{registration_id}"
+   ```
+
+Po wprowadzeniu informacji o udostępnianiu w konfiguracji, należy ponownie uruchomić demona:
 
 ```cmd/sh
 sudo systemctl restart iotedge
@@ -87,13 +112,15 @@ sudo systemctl restart iotedge
 
 ## <a name="verify-successful-installation"></a>Sprawdź pomyślnej instalacji
 
-Można sprawdzić stan przy użyciu demon krawędzi IoT:
+Jeśli użyto **ręcznej konfiguracji** kroki opisane w poprzedniej sekcji, środowisko uruchomieniowe usługi IoT Edge należy pomyślnie aprowizacja i uruchomienie na urządzeniu. Jeśli użyto **automatycznej konfiguracji** kroki należy wykonać kilka dodatkowych kroków, środowisko uruchomieniowe można zarejestrować urządzenia za pomocą usługi IoT hub w Twoim imieniu. Dalsze czynności, zobacz [tworzenie i aprowizowanie symulowanego urządzenia TPM Edge na maszynie wirtualnej systemu Linux](how-to-auto-provision-simulated-device-linux.md#give-iot-edge-access-to-the-tpm).
+
+Możesz sprawdzić stan, IoT Edge demona przy użyciu:
 
 ```cmd/sh
 systemctl status iotedge
 ```
 
-Przeanalizuj dzienniki demona przy użyciu:
+Sprawdź dzienniki demona przy użyciu:
 
 ```cmd/sh
 journalctl -u iotedge --no-pager --no-full
@@ -105,13 +132,13 @@ I uruchomione moduły z listy:
 sudo iotedge list
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Jeśli masz problemy ze środowiskiem uruchomieniowym krawędzi poprawnie, instalowanie wyewidencjonowania [Rozwiązywanie problemów z] [ lnk-trouble] strony.
+Jeśli występują problemy z środowiska uruchomieniowego usługi Edge instalacji prawidłowo, wyewidencjonowania [Rozwiązywanie problemów z] [ lnk-trouble] strony.
 
 <!-- Links -->
-[lnk-dcs]: ../iot-hub/quickstart-send-telemetry-dotnet.md#register-a-device
-[lnk-dps]: how-to-simulate-dps-tpm.md
+[lnk-dcs]: how-to-register-device-portal.md
+[lnk-dps]: how-to-auto-provision-simulated-device-linux.md
 [lnk-oci]: https://www.opencontainers.org/
 [lnk-moby]: https://mobyproject.org/
 [lnk-trouble]: troubleshoot.md

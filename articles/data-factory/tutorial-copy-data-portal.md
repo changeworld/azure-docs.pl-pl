@@ -11,22 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/09/2018
+ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 34c78a114c1d106c400a94941aa113153383e206
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 47fc3b44719caf430edf026bf776c4e85764ad08
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30173342"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048441"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Kopiowanie danych z usługi Azure Blob Storage do bazy danych SQL za pomocą usługi Azure Data Factory
 W tym samouczku utworzysz fabrykę danych przy użyciu interfejsu użytkownika usługi Azure Data Factory. Potok w tej fabryce danych kopiuje dane z usługi Azure Blob Storage do bazy danych SQL. Wzorzec konfiguracji w tym samouczku ma zastosowanie do kopiowania danych z magazynu opartego na plikach do relacyjnego magazynu danych. Aby zapoznać się z listą magazynów danych obsługiwanych jako źródła i ujścia, zobacz tabelę zawierającą [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
 
 > [!NOTE]
 > - Jeśli jesteś nowym użytkownikiem usługi Data Factory, zobacz [Wprowadzenie do usługi Azure Data Factory](introduction.md).
->
-> - Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz ogólnie dostępnej wersji 1 usługi Data Factory, zobacz [Wprowadzenie do usługi Data Factory w wersji 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 Ten samouczek obejmuje wykonanie następujących kroków:
 
@@ -104,7 +102,7 @@ W tym kroku utworzysz fabrykę danych i uruchomisz interfejs użytkownika usług
     b. Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów. 
          
     Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources (Używanie grup zasobów do zarządzania zasobami platformy Azure)](../azure-resource-manager/resource-group-overview.md). 
-6. W obszarze **Wersja** wybierz pozycję **V2 (wersja zapoznawcza)**.
+6. W obszarze **Wersja** wybierz pozycję **V2**.
 7. W obszarze **Lokalizacja** wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych (np. usługi Azure Storage i SQL Database) oraz jednostki obliczeniowe (np. usługa Azure HDInsight) używane przez fabrykę danych mogą znajdować się w innych regionach.
 8. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**. 
 9. Wybierz pozycję **Utwórz**. 
@@ -128,74 +126,67 @@ W tym samouczku zaczniesz od utworzenia potoku. Następnie utworzysz usługi po�
 1. Na stronie **Zaczynajmy** wybierz pozycję **Utwórz potok**. 
 
    ![Tworzenie potoku](./media/tutorial-copy-data-portal/create-pipeline-tile.png)
-2. W oknie **Właściwości** potoku w polu **Nazwa** wprowadź wartość **CopyPipeline** jako nazwę potoku.
+2. Na karcie **Ogólne** dla potoku w polu **Nazwa** wprowadź wartość **CopyPipeline**.
 
-    ![Nazwa potoku](./media/tutorial-copy-data-portal/pipeline-name.png)
-3. W przyborniku **Działania** rozwiń kategorię **Przepływ danych**, a następnie przeciągnij działanie **Kopiowanie** z przybornika i upuść je na powierzchni projektanta potoku. 
+3. W przyborniku **Działania** rozwiń kategorię **Przepływ danych**, a następnie przeciągnij działanie **Kopiowanie** z przybornika i upuść je na powierzchni projektanta potoku. Wprowadź wartość **CopyFromBlobToSql** w polu **Nazwa**.
 
     ![Działanie kopiowania](./media/tutorial-copy-data-portal/drag-drop-copy-activity.png)
-4. Na karcie **Ogólne** w oknie **Właściwości** wprowadź wartość **CopyFromBlobToSql** jako nazwę działania.
 
-    ![Nazwa działania](./media/tutorial-copy-data-portal/activity-name.png)
-5. Przejdź do karty **Źródło**. Wybierz pozycję **+ Nowy**, aby utworzyć źródłowy zestaw danych. 
+### <a name="configure-source"></a>Konfigurowanie źródła
 
-    ![Karta Źródło](./media/tutorial-copy-data-portal/new-source-dataset-button.png)
-6. W oknie **Nowy zestaw danych** wybierz pozycję **Azure Blob Storage**, a następnie wybierz przycisk **Zakończ**. Dane źródłowe znajdują się w magazynie obiektów blob, musisz więc wybrać usługę **Azure Blob Storage** dla źródłowego zestawu danych. 
+1. Przejdź do karty **Źródło**. Wybierz pozycję **+ Nowy**, aby utworzyć źródłowy zestaw danych. 
 
-    ![Wybór magazynu](./media/tutorial-copy-data-portal/select-azure-storage.png)
-7. W aplikacji zostanie otwarta nowa karta zatytułowana **AzureBlob1**.
+2. W oknie **Nowy zestaw danych** wybierz pozycję **Azure Blob Storage**, a następnie wybierz przycisk **Zakończ**. Dane źródłowe znajdują się w magazynie obiektów blob, musisz więc wybrać usługę **Azure Blob Storage** dla źródłowego zestawu danych. 
 
-    ![Karta AzureBlob1 ](./media/tutorial-copy-data-portal/new-tab-azure-blob1.png)        
-8. Na karcie **Ogólne** w dolnej części okna **Właściwości** w polu **Nazwa** wprowadź wartość **SourceBlobDataset**.
+    ![Wybór magazynu](./media/tutorial-copy-data-portal/select-azure-blob-dataset.png)
+
+3. Zostanie otwarta nowa karta dla tego zestawu danych obiektu blob. Na karcie **Ogólne** w dolnej części okna **Właściwości** w polu **Nazwa** wprowadź wartość **SourceBlobDataset**.
 
     ![Nazwa zestawu danych](./media/tutorial-copy-data-portal/dataset-name.png)
-9. W oknie **Właściwości** przejdź do karty **Połączenie**. Kliknij pozycję **+ Nowy** obok pola tekstowego **Połączona usługa**. 
 
-    Połączona usługa łączy magazyn danych lub zasoby obliczeniowe z fabryką danych. W tym przypadku tworzysz połączoną usługę Storage w celu połączenia swojego konta magazynu z magazynem danych. Połączona usługa ma informacje o połączeniu, których usługa Data Factory używa do nawiązywania połączenia z usługą Blob Storage w środowisku uruchomieniowym. Zestaw danych określa kontener, folder i plik (opcjonalnie) zawierający dane źródłowe. 
+4. W oknie **Właściwości** przejdź do karty **Połączenie**. Kliknij pozycję **+ Nowy** obok pola tekstowego **Połączona usługa**. 
 
     ![Przycisk Nowa połączona usługa](./media/tutorial-copy-data-portal/source-dataset-new-linked-service-button.png)
-10. W oknie **Nowa połączona usługa** wykonaj następujące kroki: 
 
-    a. W polu **Nazwa** wprowadź wartość **AzureStorageLinkedService**. 
-
-    b. W polu **Nazwa konta magazynu** wybierz konto magazynu.
-
-    d. Wybierz przycisk **Testuj połączenie**, aby przetestować połączenie z kontem magazynu.
-
-    d. Wybierz opcję **Zapisz**, aby zapisać połączoną usługę.
+5. W oknie **Nowa połączona usługa** wprowadź jako nazwę **AzureStorageLinkedService**, wybierz konto magazynu z listy **Nazwa konta magazynu**, a następnie wybierz przycisk **Zapisz**, aby wdrożyć połączoną usługę.
 
     ![Nowa połączona usługa](./media/tutorial-copy-data-portal/new-azure-storage-linked-service.png)
-11. Wybierz przycisk **Przeglądaj** obok pozycji **Ścieżka pliku**.
+
+6. Po utworzeniu połączonej usługi wrócisz do ustawień zestawu danych. Wybierz przycisk **Przeglądaj** obok pozycji **Ścieżka pliku**.
 
     ![Przycisk Przeglądaj do wyszukiwania ścieżki pliku](./media/tutorial-copy-data-portal/file-browse-button.png)
-12. Przejdź do folderu **adftutorial/input**, wybierz plik **emp.txt**, a następnie wybierz przycisk **Zakończ**. Możesz również kliknąć dwukrotnie plik **emp.txt**. 
+
+7. Przejdź do folderu **adftutorial/input**, wybierz plik **emp.txt**, a następnie wybierz przycisk **Zakończ**. 
 
     ![Wybieranie pliku wejściowego](./media/tutorial-copy-data-portal/select-input-file.png)
-13. Upewnij się, że w obszarze **Format pliku** jest ustawiona wartość **Format tekstowy**, a w obszarze **Ogranicznik kolumny** jest ustawiona wartość **Przecinek (`,`)**. Jeśli plik źródłowy używa innych ograniczników wiersza i kolumny, możesz wybrać pozycję **Wykryj format tekstowy** w obszarze **Format pliku**. Narzędzie do kopiowania danych automatycznie wykrywa format pliku i ograniczniki. Ciągle możesz zastąpić te wartości. Aby wyświetlić podgląd danych na tej stronie, wybierz pozycję **Podgląd danych**.
+
+8. Upewnij się, że w obszarze **Format pliku** jest ustawiona wartość **Format tekstowy**, a w obszarze **Ogranicznik kolumny** jest ustawiona wartość **Przecinek (`,`)**. Jeśli plik źródłowy używa innych ograniczników wiersza i kolumny, możesz wybrać pozycję **Wykryj format tekstowy** w obszarze **Format pliku**. Narzędzie do kopiowania danych automatycznie wykrywa format pliku i ograniczniki. Ciągle możesz zastąpić te wartości. Aby wyświetlić podgląd danych na tej stronie, wybierz pozycję **Podgląd danych**.
 
     ![Wykrywanie formatu tekstowego](./media/tutorial-copy-data-portal/detect-text-format.png)
-14. Przejdź do karty **Schemat** w oknie **Właściwości** i wybierz pozycję **Importuj schemat**. Zwróć uwagę, że aplikacja wykryła dwie kolumny w pliku źródłowym. W tym miejscu importuje się schemat, dzięki czemu można mapować kolumny z magazynu danych będącego źródłem na magazyn danych będący ujściem. Jeśli nie ma potrzeby mapowania kolumn, możesz pominąć ten krok. W tym samouczku zaimportuj schemat.
+
+9. Przejdź do karty **Schemat** w oknie **Właściwości** i wybierz pozycję **Importuj schemat**. Zwróć uwagę, że aplikacja wykryła dwie kolumny w pliku źródłowym. W tym miejscu importuje się schemat, dzięki czemu można mapować kolumny z magazynu danych będącego źródłem na magazyn danych będący ujściem. Jeśli nie ma potrzeby mapowania kolumn, możesz pominąć ten krok. W tym samouczku zaimportuj schemat.
 
     ![Wykrywanie schematu źródłowego](./media/tutorial-copy-data-portal/detect-source-schema.png)  
-15. Teraz przejdź do karty z potokiem lub wybierz potok po lewej stronie.
 
-    ![Karta potoku](./media/tutorial-copy-data-portal/pipeline-tab.png)
-16. Upewnij się, że w obszarze **Źródłowy zestaw danych** w oknie **Właściwości** wybrano pozycję **SourceBlobDataset**. Aby wyświetlić podgląd danych na tej stronie, wybierz pozycję **Podgląd danych**. 
+10. Teraz wróć do potoku, do karty **Źródło**. Upewnij się, że wybrano wartość **SourceBlobDataset**. Aby wyświetlić podgląd danych na tej stronie, wybierz pozycję **Podgląd danych**. 
     
     ![Zestaw danych źródłowych](./media/tutorial-copy-data-portal/source-dataset-selected.png)
-17. Przejdź do karty **Ujście**, a następnie wybierz pozycję **+ Nowy**, aby utworzyć zestaw danych będący ujściem. 
+
+### <a name="configure-sink"></a>Konfigurowanie ujścia
+
+1. Przejdź do karty **Ujście**, a następnie wybierz pozycję **+ Nowy**, aby utworzyć zestaw danych będący ujściem. 
 
     ![Zestaw danych będący ujściem](./media/tutorial-copy-data-portal/new-sink-dataset-button.png)
-18. W oknie **Nowy zestaw danych** wybierz pozycję **Azure SQL Database**, a następnie wybierz przycisk **Zakończ**. W tym samouczku skopiujesz dane do bazy danych SQL. 
+2. W oknie **Nowy zestaw danych** wprowadź „SQL” w polu wyszukiwania w celu przefiltrowania łączników, wybierz pozycję **Azure SQL Database**, a następnie wybierz przycisk **Zakończ**. W tym samouczku skopiujesz dane do bazy danych SQL. 
 
-    ![Wybieranie bazy danych SQL](./media/tutorial-copy-data-portal/select-azure-sql-database.png)
-19. Na karcie **Ogólne** w oknie **Właściwości** w polu **Nazwa** wpisz wartość **OutputSqlDataset**. 
+    ![Wybieranie bazy danych SQL](./media/tutorial-copy-data-portal/select-azure-sql-dataset.png)
+3. Na karcie **Ogólne** w oknie **Właściwości** w polu **Nazwa** wpisz wartość **OutputSqlDataset**. 
     
     ![Nazwa zestawu danych wyjściowych](./media/tutorial-copy-data-portal/output-dataset-name.png)
-20. Przejdź do karty **Połączenie** i wybierz pozycję **+ Nowy** obok obszaru **Połączona usługa**. Zestaw danych musi być skojarzony z połączoną usługą. Połączona usługa ma parametry połączenia, których usługa Data Factory używa do nawiązywania połączenia z usługą SQL Database w środowisku uruchomieniowym. Zestaw danych określa kontener, folder i plik (opcjonalnie), do którego dane są kopiowane. 
+4. Przejdź do karty **Połączenie** i wybierz pozycję **+ Nowy** obok obszaru **Połączona usługa**. Zestaw danych musi być skojarzony z połączoną usługą. Połączona usługa ma parametry połączenia, których usługa Data Factory używa do nawiązywania połączenia z usługą SQL Database w środowisku uruchomieniowym. Zestaw danych określa kontener, folder i plik (opcjonalnie), do którego dane są kopiowane. 
     
     ![Połączona usługa](./media/tutorial-copy-data-portal/new-azure-sql-database-linked-service-button.png)       
-21. W oknie **Nowa połączona usługa** wykonaj następujące kroki: 
+5. W oknie **Nowa połączona usługa** wykonaj następujące kroki: 
 
     a. W obszarze **Nazwa** wprowadź wartość **AzureSqlDatabaseLinkedService**.
 
@@ -213,160 +204,46 @@ W tym samouczku zaczniesz od utworzenia potoku. Następnie utworzysz usługi po�
     
     ![Zapisywanie nowej połączonej usługi](./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png)
 
-22. W obszarze **Tabela** wybierz pozycję **[dbo].[emp]**. 
+6. W obszarze **Tabela** wybierz pozycję **[dbo].[emp]**. 
 
     ![Tabela](./media/tutorial-copy-data-portal/select-emp-table.png)
-23. Przejdź do karty **Schemat** i wybierz pozycję **Importuj schemat**. 
+7. Przejdź do karty **Schemat** i wybierz pozycję **Importuj schemat**. 
 
     ![Wybieranie pozycji Importuj schemat](./media/tutorial-copy-data-portal/import-destination-schema.png)
-24. Zaznacz kolumnę **ID**, a następnie wybierz pozycję **Usuń**. Kolumna **ID** jest kolumną tożsamości w bazie danych SQL, więc działanie kopiowania nie musi wstawiać danych do tej kolumny.
+8. Zaznacz kolumnę **ID**, a następnie wybierz pozycję **Usuń**. Kolumna **ID** jest kolumną tożsamości w bazie danych SQL, więc działanie kopiowania nie musi wstawiać danych do tej kolumny.
 
     ![Usuwanie kolumny ID](./media/tutorial-copy-data-portal/delete-id-column.png)
-25. Przejdź do karty z potokiem i upewnij się, że w obszarze **Zestaw danych będący ujściem** wybrano pozycję **OutputSqlDataset**.
+9. Przejdź do karty z potokiem i upewnij się, że w obszarze **Zestaw danych będący ujściem** wybrano pozycję **OutputSqlDataset**.
 
     ![Karta potoku](./media/tutorial-copy-data-portal/pipeline-tab-2.png)        
-26. Przejdź do karty **Mapowanie** w dolnej części okna **Właściwości** i wybierz pozycję **Importuj schematy**. Zwróć uwagę, że pierwsza i druga kolumna w pliku źródłowym są mapowane na pola **FirstName** i **LastName** w bazie danych SQL.
 
-    ![Mapowanie schematów](./media/tutorial-copy-data-portal/map-schemas.png)
-27. Wybierz pozycję **Weryfikuj**, aby zweryfikować potok. W prawym górnym rogu wybierz strzałkę w prawo, aby zamknąć okno weryfikacji.
+### <a name="confugure-mapping"></a>Konfigurowanie mapowania
 
-    ![Dane wyjściowe weryfikacji potoku](./media/tutorial-copy-data-portal/pipeline-validation-output.png)   
-28. W prawym górnym rogu wybierz pozycję **Kod**. Zostanie wyświetlony kod JSON skojarzony z potokiem. 
+Przejdź do karty **Mapowanie** w dolnej części okna **Właściwości** i wybierz pozycję **Importuj schematy**. Zwróć uwagę, że pierwsza i druga kolumna w pliku źródłowym są mapowane na pola **FirstName** i **LastName** w bazie danych SQL.
 
-    ![Przycisk Kod](./media/tutorial-copy-data-portal/code-button.png)
-29. Wyświetlony kod JSON będzie podobny do następującego fragmentu kodu: 
+![Mapowanie schematów](./media/tutorial-copy-data-portal/map-schemas.png)
 
-    ```json
-    {
-        "name": "CopyPipeline",
-        "properties": {
-            "activities": [
-                {
-                    "name": "CopyFromBlobToSql",
-                    "type": "Copy",
-                    "dependsOn": [],
-                    "policy": {
-                        "timeout": "7.00:00:00",
-                        "retry": 0,
-                        "retryIntervalInSeconds": 20
-                    },
-                    "typeProperties": {
-                        "source": {
-                            "type": "BlobSource",
-                            "recursive": true
-                        },
-                        "sink": {
-                            "type": "SqlSink",
-                            "writeBatchSize": 10000
-                        },
-                        "enableStaging": false,
-                        "parallelCopies": 0,
-                        "cloudDataMovementUnits": 0,
-                        "translator": {
-                            "type": "TabularTranslator",
-                            "columnMappings": "Prop_0: FirstName, Prop_1: LastName"
-                        }
-                    },
-                    "inputs": [
-                        {
-                            "referenceName": "SourceBlobDataset",
-                            "type": "DatasetReference",
-                            "parameters": {}
-                        }
-                    ],
-                    "outputs": [
-                        {
-                            "referenceName": "OutputSqlDataset",
-                            "type": "DatasetReference",
-                            "parameters": {}
-                        }
-                    ]
-                }
-            ]
-        }
-    }
-    ```
+## <a name="validate-the-pipeline"></a>Weryfikowanie potoku
+Wybierz na pasku narzędzi pozycję **Weryfikuj**, aby zweryfikować potok.
+ 
+Kod JSON skojarzony z potokiem można wyświetlić, klikając pozycję **Kod**  w prawym górnym rogu.
 
-## <a name="test-run-the-pipeline"></a>Testowe uruchamianie potoku
-Przed opublikowaniem artefaktów (połączone usługi, zestawy danych i potok) w usłudze Data Factory lub własnym repozytorium Git usług Studio Team Services możesz testowo uruchomić potok. 
+## <a name="debug-and-publish-the-pipeline"></a>Debugowanie i publikowanie potoku
+Przed opublikowaniem artefaktów (połączone usługi, zestawy danych i potok) w usłudze Data Factory lub własnym repozytorium Git usług Visual Studio Team Services możesz debugować potok. 
 
-1. Aby testowo uruchomić potok, kliknij pozycję **Uruchomienie testowe** na pasku narzędzi. Na karcie **Dane wyjściowe** w dolnej części okna wyświetlany jest stan uruchomienia potoku. 
+1. Aby debugować potok, wybierz na pasku narzędzi pozycję **Debuguj**. Na karcie **Dane wyjściowe** w dolnej części okna wyświetlany jest stan uruchomienia potoku. 
 
-    ![Testowanie potoku](./media/tutorial-copy-data-portal/test-run-output.png)
-2. Upewnij się, że dane z pliku źródłowego są wstawione do docelowej bazy danych usługi SQL. 
-
-    ![Weryfikacja danych wyjściowych usługi SQL](./media/tutorial-copy-data-portal/verify-sql-output.png)
-3. W okienku po lewej stronie kliknij pozycję **Opublikuj wszystkie**. Ta akcja powoduje opublikowanie utworzonych jednostek (połączone usługi, zestawy danych i potok) w usłudze Data Factory.
+2. Po umożliwieniu pomyślnego uruchomienia potoku wybierz na górnym pasku narzędzi pozycję **Publikuj wszystko**. Ta akcja powoduje opublikowanie utworzonych jednostek (zestawy danych i potok) w usłudze Data Factory.
 
     ![Publikowanie](./media/tutorial-copy-data-portal/publish-button.png)
-4. Poczekaj na wyświetlenie komunikatu **Pomyślnie opublikowano**. Aby wyświetlić komunikaty powiadomień, kliknij kartę **Pokaż powiadomienia** na lewym pasku bocznym. Aby zamknąć okno powiadomień, wybierz pozycję **Zamknij**.
 
-    ![Wyświetlanie powiadomień](./media/tutorial-copy-data-portal/show-notifications.png)
-
-## <a name="configure-code-repository"></a>Konfigurowanie repozytorium kodu
-Kod skojarzony z Twoimi artefaktami fabryki danych możesz opublikować w repozytorium kodu usług Visual Studio Team Services. W tym kroku utworzysz repozytorium kodu.  Aby dowiedzieć się więcej o tworzeniu wizualizacji przy użyciu integracji VSTS, zobacz [Tworzenie przy użyciu integracji VSTS Git](author-visually.md#author-with-vsts-git-integration).
-
-Jeśli nie chcesz pracować z repozytorium kodu usług Visual Studio Team Services, możesz pominąć ten krok. Możesz kontynuować publikowanie w usłudze Data Factory jak w poprzednim kroku. 
-
-1. W lewym górnym rogu wybierz pozycję **Fabryka danych** lub przycisk strzałki w dół znajdujący się obok i wybierz pozycję **Konfiguruj repozytorium kodu**. 
-
-    ![Konfigurowanie repozytorium kodu](./media/tutorial-copy-data-portal/configure-code-repository-button.png)
-2. Na stronie **Ustawienia repozytorium** wykonaj następujące czynności:
-
-    a. W obszarze **Typ repozytorium** wybierz pozycję **Repozytorium Git usług Visual Studio Team Services**.
-
-    b. W obszarze **Konto usług Visual Studio Team Services** wybierz swoje konto usług Visual Studio Team Services.
-
-    d. W obszarze **Nazwa projektu** wybierz projekt w ramach swojego konta usług Visual Studio Team Services.
-
-    d. W obszarze **Nazwa repozytorium git** wprowadź wartość **Tutorial2** jako nazwę repozytorium Git, które ma być skojarzone z fabryką danych.
-
-    e. Upewnij się, że zaznaczono pole wyboru **Importuj istniejące zasoby usługi Data Factory do repozytorium**.
-
-    f. Wybierz pozycję **Zapisz**, aby zapisać ustawienia. 
-
-    ![Ustawienia repozytoriów](./media/tutorial-copy-data-portal/repository-settings.png)
-3. Upewnij się, że wybrano pozycję **VSTS GIT** dla repozytorium.
-
-    ![Wybieranie pozycji VSTS GIT](./media/tutorial-copy-data-portal/vsts-git-selected.png)
-4. W osobnej karcie przeglądarki przejdź do repozytorium **Tutorial2**. Zostaną wyświetlone dwie gałęzie: **adf_publish** i **master**.
-
-    ![Gałęzie master i adf_publish](./media/tutorial-copy-data-portal/initial-branches-vsts-git.png)
-5. Upewnij się, że pliki JSON dla jednostek usługi Data Factory znajdują się w gałęzi **master**.
-
-    ![Pliki w gałęzi master](./media/tutorial-copy-data-portal/master-branch-files.png)
-6. Upewnij się, że pliki JSON nie znajdują się jeszcze w gałęzi **adf_publish**. 
-
-    ![Pliki w gałęzi adf_publish](./media/tutorial-copy-data-portal/adf-publish-files.png)
-7. W obszarze **Opis** dodaj opis potoku i wybierz pozycję **Zapisz** na pasku narzędzi. 
-
-    ![Opis potoku](./media/tutorial-copy-data-portal/pipeline-description.png)
-8. Teraz zostanie wyświetlona gałąź z Twoją nazwą użytkownika w repozytorium **Tutorial2**. Wprowadzone zmiany mają zastosowanie do Twojej gałęzi, a nie gałęzi master. Publikować można tylko jednostki z gałęzi master.
-
-    ![Twoja gałąź](./media/tutorial-copy-data-portal/your-branch.png)
-9. Umieść wskaźnik myszy na przycisku **Synchronizuj** (jeszcze go nie wybieraj), zaznacz pole wyboru **Zatwierdź zmiany**, a następnie wybierz przycisk **Synchronizuj**, aby zsynchronizować zmiany z gałęzią master. 
-
-    ![Zatwierdzanie i synchronizowanie zmian](./media/tutorial-copy-data-portal/commit-and-sync.png)
-10. W oknie **Synchronizacja zmian** wykonaj następujące czynności: 
-
-    a. Upewnij się, że element **CopyPipeline** jest wyświetlany na zaktualizowanej liście **Potoki**.
-
-    b. Upewnij się, że zaznaczono opcję **Opublikuj zmiany po synchronizacji**. Jeśli usuniesz zaznaczenie tego pola wyboru, zmiany wprowadzone w Twojej gałęzi zostaną zsynchronizowane tylko z gałęzią master. Nie zostaną one opublikowane w usłudze Data Factory. Możesz je opublikować później, klikając przycisk **Opublikuj**. Jeśli zaznaczysz to pole wyboru, zmiany są najpierw synchronizowane z gałęzią master, a następnie publikowane w usłudze Data Factory.
-
-    d. Wybierz pozycję **Synchronizuj**. 
-
-    ![Synchronizowanie zmian](./media/tutorial-copy-data-portal/sync-your-changes.png)
-11. Teraz pliki będą widoczne w gałęzi **adf_publish** repozytorium **Tutorial2**. W tej gałęzi możesz również znaleźć szablon usługi Azure Resource Manager dla Twojego rozwiązania usługi Data Factory. 
-
-    ![Lista plików w gałęzi adf_publish](./media/tutorial-copy-data-portal/adf-publish-files-after-publish.png)
-
+4. Poczekaj na wyświetlenie komunikatu **Pomyślnie opublikowano**. Aby wyświetlić komunikaty powiadomień, kliknij pozycję **Pokaż powiadomienia** w prawym górnym rogu (przycisk dzwonka). 
 
 ## <a name="trigger-the-pipeline-manually"></a>Ręczne wyzwalanie potoku
 W tym kroku ręcznie wyzwolisz potok, który został opublikowany w poprzednim kroku. 
 
 1. Wybierz pozycję **Wyzwól** na pasku narzędzi, a następnie wybierz pozycję **Wyzwól teraz**. Na stronie **Uruchomienie potoku** wybierz przycisk **Zakończ**.  
 
-    ![Wyzwalanie potoku](./media/tutorial-copy-data-portal/trigger-now-menu.png)
 2. Przejdź do karty **Monitorowanie** po lewej stronie. Widoczne jest uruchomienie potoku, które zostało wyzwolone za pomocą wyzwalacza ręcznego. Za pomocą linków w kolumnie **Akcje** możesz wyświetlić szczegóły działań i ponownie uruchomić potok.
 
     ![Monitorowanie uruchomień potoku](./media/tutorial-copy-data-portal/monitor-pipeline.png)
@@ -378,12 +255,10 @@ W tym kroku ręcznie wyzwolisz potok, który został opublikowany w poprzednim k
 ## <a name="trigger-the-pipeline-on-a-schedule"></a>Wyzwalanie potoku zgodnie z harmonogramem
 W tym kroku utworzysz wyzwalacz harmonogramu potoku. Wyzwalacz uruchamia potok zgodnie z określonym harmonogramem, na przykład co godzinę lub codziennie. W tym przykładzie ustawisz wyzwalacz, aby uruchamiał się co minutę, aż do określonej daty/godziny zakończenia. 
 
-1. Przejdź do karty **Edycja** po lewej stronie. 
+1. Przejdź do karty **Tworzenie** po lewej stronie karty Monitorowanie. 
 
-    ![Karta Edycja](./media/tutorial-copy-data-portal/edit-tab.png)
-2. Wybierz pozycję **Wyzwól**, a następnie pozycję **Nowy/Edytuj**. Jeśli potok nie jest aktywny, przejdź do niego. 
+2. Przejdź do potoku, kliknij pozycję **Wyzwalacz** na pasku narzędzi, a następnie wybierz pozycję **Nowy/Edytuj**. 
 
-    ![Opcja wyzwalania](./media/tutorial-copy-data-portal/trigger-new-edit-menu.png)
 3. W oknie **Dodawanie wyzwalaczy** wybierz pozycję **Wybierz wyzwalacz**, a następnie wybierz przycisk **+ Nowy**. 
 
     ![Przycisk Nowy](./media/tutorial-copy-data-portal/add-trigger-new-button.png)
@@ -414,9 +289,9 @@ W tym kroku utworzysz wyzwalacz harmonogramu potoku. Wyzwalacz uruchamia potok z
 5. Na stronie **Parametry uruchamiania wyzwalacza** zapoznaj się z ostrzeżeniem, a następnie wybierz przycisk **Zakończ**. Potok w tym przykładzie nie przyjmuje żadnych parametrów. 
 
     ![Parametry uruchomienia wyzwalacza](./media/tutorial-copy-data-portal/trigger-pipeline-parameters.png)
-6. Wybierz pozycję **Synchronizuj**, aby zsynchronizować zmiany z Twojej gałęzi z gałęzią master. Opcja **Opublikuj zmiany po synchronizacji** jest domyślnie zaznaczona. Po wybraniu pozycji **Synchronizuj** zaktualizowane jednostki z gałęzi master są również publikowane w usłudze Data Factory. Wyzwalacz nie zostanie aktywowany do czasu pomyślnego opublikowania zmian.
 
-    ![Synchronizowanie zmian](./media/tutorial-copy-data-portal/sync-your-changes-with-trigger.png) 
+6. Kliknij przycisk **Publikuj wszystko**, aby opublikować zmianę. 
+
 7. Przejdź do karty **Monitorowanie** po lewej stronie, aby zobaczyć wyzwolone uruchomienia potoku. 
 
     ![Wyzwolone uruchomienia potoku](./media/tutorial-copy-data-portal/triggered-pipeline-runs.png)    

@@ -13,18 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 89f5391cfbfd85f9f0715a8c7d288cc3981cc618
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ae0247df0bbde07e755bd910bca08b8703969cec
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30237009"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047279"
 ---
-# <a name="introduction-to-azure-data-factory"></a>Wprowadzenie do usługi Azure Data Factory
- 
+# <a name="introduction-to-azure-data-factory"></a>Wprowadzenie do usługi Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Wersja 1 — ogólnie dostępna](v1/data-factory-introduction.md)
-> * [Wersja 2 — wersja zapoznawcza](introduction.md)
+> * [Wersja 1](v1/data-factory-introduction.md)
+> * [Bieżąca wersja](introduction.md)
 
 W świecie danych big data dane nieprzetworzone i niezorganizowane często są przechowywane w relacyjnych, nierelacyjnych i innych systemach magazynowania. Jednak same nieprzetworzone dane nie mają prawidłowego kontekstu ani znaczenia umożliwiającego zapewnienie istotnych informacji analitykom, specjalistom z zakresu danych i osobom podejmującym decyzje biznesowe. 
 
@@ -41,9 +40,6 @@ Azure Data Factory to platforma, która umożliwia pracę z takimi scenariuszami
 Ponadto umożliwiają publikowanie danych wyjściowych w magazynach danych, np. Azure SQL Data Warehouse, w celu użycia przez aplikacje analizy biznesowej. Ostatecznie dzięki usłudze Azure Data Factory nieprzetworzone dane mogą być organizowane w praktyczne magazyny i usługi data lake ułatwiające podejmowanie właściwych decyzji biznesowych.
 
 ![Widok najwyższego poziomu usługi Data Factory](media/introduction/big-picture.png)
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz dostępnej ogólnie wersji 1 usługi Data Factory, zobacz [Introduction to Data Factory version 1](v1/data-factory-introduction.md) (Wprowadzenie do usługi Data Factory w wersji 1).
 
 ## <a name="how-does-it-work"></a>Jak to działa?
 Potoki (oparte na danych przepływy pracy) w usłudze Azure Data Factory zwykle wykonują następujące cztery kroki:
@@ -93,7 +89,7 @@ Połączone usługi w usłudze Fabryka danych służą do dwóch celów:
 - Reprezentowanie **zasobu obliczeniowego**, który może hostować wykonywanie działania. Na przykład działanie HDInsightHive jest wykonywane w klastrze HDInsight na platformie Hadoop. Listę działań przekształcania i obsługiwanych środowisk obliczeniowych zamieszczono w artykule dotyczącym [przekształcania danych](transform-data.md).
 
 ### <a name="triggers"></a>Wyzwalacze
-Wyzwalacze reprezentują jednostki przetwarzania, które określają, kiedy należy rozpocząć wykonanie potoku. Istnieją różne typy wyzwalaczy dla różnych typów zdarzeń. W wersji zapoznawczej usługa Data Factory obsługuje wyzwalacz harmonogramu zegarowego. 
+Wyzwalacze reprezentują jednostki przetwarzania, które określają, kiedy należy rozpocząć wykonanie potoku. Istnieją różne typy wyzwalaczy dla różnych typów zdarzeń.
 
 ### <a name="pipeline-runs"></a>Uruchomienia potoków
 Uruchomienie potoku to wystąpienie wykonania potoku. Uruchomienia potoku są tworzone zazwyczaj przez przekazanie argumentów do parametrów zdefiniowanych w potokach. Argumenty można przekazać ręcznie lub w ramach definicji wyzwalacza.
@@ -125,8 +121,8 @@ Mimo iż usługa Data Factory jest dostępna tylko w regionach Wschodnie stany U
 
 Załóżmy na przykład, że środowiska obliczeniowe, takie jak klaster usługi Azure HDInsight i usługa Azure Machine Learning, są uruchamiane z regionu Europa Zachodnia. Można utworzyć i zastosować wystąpienie usługi Azure Data Factory w regionie Wschodnie stany USA lub Wschodnie stany USA 2 oraz użyć go do planowania zadań wykonywanych w środowiskach obliczeniowych w regionie Europa Zachodnia. Wyzwolenie zadania w środowisku obliczeniowym zajmuje usłudze Data Factory kilka milisekund, ale czas uruchomienia zadania w środowisku obliczeniowym nie zmienia się.
 
-## <a name="compare-with-version-2"></a>Porównanie z wersją 2
-Aby uzyskać listę różnic między wersjami 1 i 2 usługi Data Factory, zobacz [Porównanie z wersją 1](compare-versions.md). 
+## <a name="compare-with-version-1"></a>Porównanie z wersją 1
+Aby uzyskać listę różnic między wersjami 1 i bieżącą usługi Data Factory, zobacz [Porównanie z wersją 1](compare-versions.md). 
 
 ## <a name="next-steps"></a>Następne kroki
 Wprowadzenie do tworzenia potoku usługi Data Factory przy użyciu jednego z następujących narzędzi/zestawów SDK: 

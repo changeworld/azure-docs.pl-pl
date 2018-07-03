@@ -1,21 +1,21 @@
 ---
-title: Wyklucz dyski z ochrony za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+title: Wykluczanie dysków z ochrony za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
 description: Opisuje, dlaczego i jak wykluczać dyski maszyny wirtualnej z replikacji z programu VMware do platformy Azure.
 author: nsoneji
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/01/2018
 ms.author: nisoneji
-ms.openlocfilehash: 59c8d38d94604a9950693d6bb73b6263f9cdb23b
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 6a0b8891e25a764ecd0430696e155b2bd8e06e13
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285094"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342610"
 ---
 # <a name="exclude-disks-from-replication-for-vmware-to-azure-scenario"></a>Wykluczanie dysków z replikacji w scenariuszu VMware–Azure
 
-W tym artykule opisano sposób Wyklucz dyski podczas replikowania maszyn wirtualnych VMware do platformy Azure. Takie wykluczenie może zoptymalizować przepustowość używaną przez replikację lub zoptymalizować zasoby po stronie docelowej, z których korzystają takie dyski. Jeśli potrzebujesz informacji na temat funkcji Hyper-v z wyjątkiem dysków, przeczytaj [w tym artykule](hyper-v-exclude-disk.md)
+W tym artykule opisano sposób wykluczania dysków podczas replikowania maszyn wirtualnych VMware na platformę Azure. Takie wykluczenie może zoptymalizować przepustowość używaną przez replikację lub zoptymalizować zasoby po stronie docelowej, z których korzystają takie dyski. Jeśli potrzebujesz informacji na temat funkcji Hyper-v z wyjątkiem dysków, zapoznaj się z [w tym artykule](hyper-v-exclude-disk.md)
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -50,7 +50,7 @@ Postępuj zgodnie z przepływem pracy [Włączanie replikacji](vmware-azure-enab
 
 >[!NOTE]
 >
-> * Wykluczyć możesz tylko te dyski, na których jest już zainstalowana usługa Mobility. Usługę Mobility należy zainstalować ręcznie, ponieważ jest ona instalowana tylko przy użyciu mechanizmu wypychania po włączeniu replikacji.
+> * Można wykluczyć tylko te dyski, na maszynach wirtualnych, które mają już zainstalowaną usługę mobilności. Należy ręcznie zainstalować usługę mobilności, ponieważ jest ona instalowana tylko przy użyciu mechanizmu wypychania po włączeniu replikacji.
 > * Tylko dyski podstawowe można wyłączyć z replikacji. Nie możesz wykluczać dysków systemu operacyjnego ani dysków dynamicznych.
 > * Po włączeniu replikacji nie możesz dodawać dysków do replikacji ani ich usuwać. Jeśli chcesz dodać lub wykluczyć dysk, musisz wyłączyć ochronę maszyny, a następnie włączyć ją ponownie.
 > * Jeśli wykluczysz dysk wymagany do działania aplikacji, po przełączeniu w tryb failover na platformie Azure musisz utworzyć go na tej platformie ręcznie, aby można było uruchomić replikowaną aplikację. Alternatywnie możesz zintegrować usługę Azure Automation z planem odzyskiwania, aby utworzyć dysk podczas przełączania maszyny w tryb failover.

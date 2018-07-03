@@ -1,6 +1,6 @@
 ---
-title: Hosting serwerów na stosie Azure SQL | Dokumentacja firmy Microsoft
-description: Jak dodać wystąpienia programu SQL dla inicjowania obsługi administracyjnej za pośrednictwem dostawcy zasobów karty SQL.
+title: SQL hostowania serwerów w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Jak dodać wystąpień SQL na potrzeby aprowizacji za pośrednictwem dostawcy zasobu karty bazy danych SQL.
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,171 +11,182 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2018
+ms.date: 07/02/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 74d888ffe28e5428b47bfc73122518c22d0f0918
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.reviewer: jeffgo
+ms.openlocfilehash: e8dd425bbb5839b1c2f5ad4e217c61dc50b38ce1
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128711"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346828"
 ---
-# <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Dodaj serwery hostingu dla dostawcy zasobów SQL
+# <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Dodawanie serwerów hostingu dla dostawcy zasobów bazy danych SQL
 
-Wystąpienie serwera SQL na maszynie wirtualnej (VM) może obsługiwać w [stosu Azure](azure-stack-poc.md), lub na maszynie Wirtualnej poza środowiskiem Azure stosu, tak długo, jak dostawca zasobów SQL można połączyć się z wystąpieniem.
+Wystąpienie serwera SQL na maszynie wirtualnej (VM) można hostować w [usługi Azure Stack](azure-stack-poc.md), lub na maszynie Wirtualnej poza środowiskiem usługi Azure Stack, tak długo, jak dostawcy zasobów bazy danych SQL można połączyć się z wystąpieniem.
 
 ## <a name="overview"></a>Przegląd
 
-Przed dodaniem hostem serwera SQL, przejrzyj następujące obowiązkowe i ogólne wymagania.
+Przed dodaniem jest hostem serwera SQL, sprawdź następujące wymagania obowiązkowe i ogólne.
 
-**Obowiązkowe wymagania**
+### <a name="mandatory-requirements"></a>Obowiązkowe wymagania
 
-* Włącz uwierzytelnianie SQL w wystąpieniu programu SQL Server. Ponieważ dostawca zasobów SQL maszyny Wirtualnej nie jest przyłączony do domeny, można go łączyć się hostingu serwera przy użyciu uwierzytelniania programu SQL.
-* Skonfiguruj adresy IP dla wystąpień programu SQL jako publiczne. Dostawca zasobów i użytkowników, takich jak aplikacje sieci Web komunikują się za pośrednictwem sieci przez użytkownika tak łączność do wystąpienia serwera SQL w tej sieci jest wymagana.
+* Włącz uwierzytelnianie SQL w wystąpieniu programu SQL Server. Dostawcy zasobów bazy danych SQL, maszyna wirtualna nie jest przyłączony do domeny, dlatego jego można połączyć tylko do obsługi serwera przy użyciu uwierzytelniania SQL.
+* Skonfiguruj adresy IP dla wystąpienia programu SQL jako publiczne, podczas instalowania w usłudze Azure Stack. Dostawcy zasobów i użytkowników, takich jak aplikacje sieci Web, komunikują się za pośrednictwem sieci przez użytkownika, dzięki czemu jest wymagana łączność z wystąpieniem programu SQL w tej sieci.
 
-**Wymagania ogólne**
+### <a name="general-requirements"></a>Wymagania ogólne
 
-* Przeznaczyć wystąpienia SQL do użycia przez zasób obciążeń dostawcy i użytkownika. Nie można użyć wystąpienia SQL, który jest używany przez innego użytkownika. To ograniczenie ma również zastosowanie do usług aplikacji.
-* Skonfiguruj konto z poziomami uprawnień właściwe dla dostawcy zasobów.
-* Jesteś są odpowiedzialni za zarządzanie wystąpień programu SQL i ich hostów.  Na przykład dostawcę zasobów nie stosować aktualizacje, obsługi kopii zapasowych lub obsługi poświadczeń obrotu.
+* Przydzielenie dedykowanego wystąpienia SQL do użycia przez zasób obciążeń dostawcy oraz użytkownika. Nie można użyć wystąpienia SQL, który jest używany przez innego konsumenta. To ograniczenie dotyczy także App Services.
+* Konto można skonfigurować z poziomami odpowiednich uprawnień dla dostawcy zasobów (opisanych poniżej).
+* Jesteś są odpowiedzialni za zarządzanie wystąpienia programu SQL i ich hostów.  Na przykład dostawca zasobów nie zastosowania aktualizacji, obsługi kopii zapasowych lub obsługi poświadczeń obrotu.
 
-### <a name="sql-server-virtual-machine-images"></a>Obrazy maszyny wirtualnej programu SQL Server
+### <a name="sql-server-virtual-machine-images"></a>Obrazy maszyn wirtualnych programu SQL Server
 
-Obrazy maszyny wirtualnej SQL IaaS są dostępne za pośrednictwem funkcji zarządzania Marketplace. Te obrazy są takie same jak SQL maszyn wirtualnych, które są dostępne w systemie Azure.
+Obrazy maszyn wirtualnych SQL IaaS są dostępne za pośrednictwem funkcji zarządzania w portalu Marketplace. Te obrazy są takie same jak maszyn wirtualnych SQL, które są dostępne na platformie Azure.
 
-Upewnij się, że zawsze Pobierz najnowszą wersję **rozszerzenia IaaS SQL** przed wdrożeniem maszyny Wirtualnej SQL przy użyciu elementu portalu Marketplace. Rozszerzenia IaaS i odpowiednie portalu ulepszeń oferują dodatkowe funkcje, takie jak automatyczne stosowanie poprawek i kopii zapasowej. Aby uzyskać więcej informacji na temat tego rozszerzenia, zobacz [automatyzacji zadań zarządzania na maszynach wirtualnych Azure z rozszerzeniem agenta serwera SQL](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension).
+Upewnij się, że zawsze pobrać najnowszą wersję **SQL IaaS rozszerzenia** przed wdrożeniem maszyny Wirtualnej SQL przy użyciu elementu portalu Marketplace. Rozszerzenie IaaS i odpowiedniego portalu ulepszeń zapewniają dodatkowe funkcje, takie jak automatyczne stosowanie poprawek i tworzenia kopii zapasowych. Aby uzyskać więcej informacji na temat tego rozszerzenia, zobacz [automatyzacji zadań zarządzania na maszynach wirtualnych platformy Azure za pomocą rozszerzenia agenta programu SQL Server](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension).
 
-Istnieją inne opcje wdrażania maszyn wirtualnych SQL, w tym szablony w [galerii Szybki Start Azure stosu](https://github.com/Azure/AzureStack-QuickStart-Templates).
+Istnieją inne opcje wdrażania maszyn wirtualnych SQL, w tym szablony w [galerii Szybki Start usługi Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates).
 
 > [!NOTE]
-> Wszystkie serwery hostingu zainstalowane na stosie Azure wielowęzłowego musi zostać utworzona z subskrypcji użytkownika. Nie można ich utworzyć z subskrypcji domyślny dostawca. Musi zostać utworzony za pomocą portalu użytkownika lub w sesji programu PowerShell z odpowiednią nazwą logowania. Wszystkie serwery hostingu rozliczeniowy maszyn wirtualnych i musi mieć odpowiednie licencje SQL. Administrator usługi _można_ właściciela tej subskrypcji.
+> Serwery hostingu zainstalowana na wielu węzłach usługi Azure Stack musi zostać utworzona subskrypcja użytkownika i nie domyślne dostawcy subskrypcji. Musi zostać utworzona z poziomu portalu użytkownika lub w sesji programu PowerShell, za pomocą identyfikatora logowania odpowiednie. Wszystkie serwery hostingu są płatne maszyn wirtualnych i musi mieć odpowiednie licencje programu SQL. Administrator usługi _można_ być właścicielem tej subskrypcji.
 
 ### <a name="required-privileges"></a>Wymagane uprawnienia
 
-Można utworzyć użytkownika administracyjnego z uprawnieniami niższe niż SQL sysadmin. Użytkownik musi tylko uprawnienia dla następujących czynności:
+Użytkownik administracyjny możesz utworzyć przy użyciu niższe uprawnienia niż aktualnie SQL sysadmin. Użytkownik musi jedynie uprawnień w przypadku następujących operacji:
 
-* Baza danych: Utwórz, Alter, z zawierania (dla zawsze włączony tylko), porzucić, kopia zapasowa
-* Grupy dostępności: Alter, Dołącz do dodawania i usuwania bazy danych
-* Logowania: Tworzenie, wybierz, Alter, Drop, odwoływanie
-* Wybierz operacje: \[wzorca\].\[ sys\].\[ availability_group_listeners\] (AlwaysOn), sys.availability_replicas (AlwaysOn), sys.databases, \[wzorca\].\[ sys\].\[ dm_os_sys_memory\], SERVERPROPERTY, \[wzorca\].\[ sys\].\[ availability_groups\] (AlwaysOn), widoku sys.master_files
+* Baza danych: Utwórz, Alter, przy użyciu zawierania (dla zawsze włączonych tylko), porzucić, utworzyć kopię zapasową
+* Grupy dostępności: Alter, dołączenia, dodawać i usuwać bazy danych
+* Zaloguj się: Tworzenie, wybierz, Alter, Drop, odwołać
+* Wybierz operacje: \[wzorca\].\[ sys\].\[ availability_group_listeners\] (AlwaysOn) sys.availability_replicas (AlwaysOn), sys.databases, \[wzorca\].\[ sys\].\[ dm_os_sys_memory\], SERVERPROPERTY, \[wzorca\].\[ sys\].\[ availability_groups\] (AlwaysOn) sys.master_files
 
-## <a name="provide-capacity-by-connecting-to-a-standalone-hosting-sql-server"></a>Zapewniają pojemność, łącząc się z autonomicznego hostowany program SQL server
+### <a name="additional-security-information"></a>Informacje dodatkowe zabezpieczenia
 
-Można użyć autonomicznej (z systemem innym niż — HA) serwerów SQL przy użyciu dowolnej wersji programu SQL Server 2014 lub SQL Server 2016. Upewnij się, że masz poświadczenia dla konta z uprawnieniami administratora systemu.
+Poniżej znajdują się wskazówki dotyczące zabezpieczeń:
 
-Aby dodać hostingu serwer autonomiczny, który został już skonfigurowany, wykonaj następujące kroki:
+* Cały magazyn usługi Azure Stack, są szyfrowane za pomocą funkcji BitLocker, więc dowolnego wystąpienia SQL w usłudze Azure Stack będą używać magazynu obiektów blob zaszyfrowany.
+* Dostawcy zasobów bazy danych SQL w pełni obsługuje protokół TLS 1.2. Upewnij się, że wszelkie SQL Server, które odbywa się za pośrednictwem SQL RP jest skonfigurowany dla protokołu TLS 1.2 _tylko_ i domyślnie do tej jednostki Uzależnionej. Zobacz wszystkich obsługiwanych wersjach programu SQL Server Obsługa protokołu TLS 1.2 [Obsługa protokołu TLS 1.2 dla programu Microsoft SQL Server](https://support.microsoft.com/en-us/help/3135244/tls-1-2-support-for-microsoft-sql-server).
+* Użyj SQL Server Configuration Manager, aby ustawić **ForceEncryption** opcję, aby cała komunikacja z programem SQL server są zawsze szyfrowane. Zobacz [do skonfigurowania serwera, aby wymusić połączeń szyfrowanych](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#ConfigureServerConnections).
+* Upewnij się, że każda aplikacja kliencka komunikuje się również za pośrednictwem szyfrowanego połączenia.
+* Jednostki Uzależnionej jest skonfigurowana do ufania certyfikatów używanych przez wystąpienia programu SQL Server.
 
-1. Zaloguj się do portalu Azure stosu operatora jako administratora usługi.
+## <a name="provide-capacity-by-connecting-to-a-standalone-hosting-sql-server"></a>Zapewniają pojemność, łącząc się z autonomicznym hostowany program SQL server
 
-2. Wybierz **Przeglądaj** &gt; **zasobów administracyjnych** &gt; **SQL serwerów hosta**.
+Można użyć autonomicznego (inne niż-HA) serwerami SQL korzystającymi z dowolnej wersji programu SQL Server 2014 lub SQL Server 2016. Upewnij się, że masz poświadczenia dla konta z uprawnieniami administratora systemu.
 
-   ![Hosting serwerów SQL](./media/azure-stack-sql-rp-deploy/sqlhostingservers.png)
+Aby dodać autonomicznego serwera hostingu, który został już skonfigurowany, wykonaj następujące kroki:
 
-   W obszarze **Hosting serwerów SQL**, możesz połączyć dostawcy zasobów SQL do wystąpień programu SQL Server, które służą jako wewnętrznej bazy danych dostawcy zasobów.
+1. Zaloguj się do portalu usługi Azure Stack operatora jako administrator usługi.
 
-   ![Pulpit nawigacyjny karty SQL](./media/azure-stack-sql-rp-deploy/sqladapterdashboard.png)
+2. Wybierz **Przeglądaj** &gt; **zasoby administracyjne** &gt; **hostowania serwerów SQL**.
+
+   ![Serwerów do hostingu SQL](./media/azure-stack-sql-rp-deploy/sqlhostingservers.png)
+
+   W obszarze **serwerów do hostingu SQL**, łączysz dostawcy zasobów bazy danych SQL do wystąpienia programu SQL Server, które służą jako dostawca zasobów wewnętrznej bazy danych.
+
+   ![Karta SQL pulpitu nawigacyjnego](./media/azure-stack-sql-rp-deploy/sqladapterdashboard.png)
 
 3. Na **dodawania serwera hostingu SQL**, podaj szczegóły połączenia dla wystąpienia programu SQL Server.
 
-   ![Dodaj hostem serwera SQL](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
+   ![Dodaj jest hostem serwera SQL](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
 
-    Opcjonalnie podaj nazwę wystąpienia, a następnie określ numer portu, jeśli wystąpienie nie jest przypisana do domyślnego portu 1433.
+    Opcjonalnie podaj nazwę wystąpienia, a następnie podaj numer portu, jeśli wystąpienie nie jest przypisany do domyślnego portu 1433.
 
    > [!NOTE]
-   > Tak długo, jak przez użytkownika, a administrator usługi Azure Resource Manager można uzyskać dostępu do wystąpienia serwera SQL, mogą być umieszczone pod kontrolą dostawcy zasobów. Wystąpienie programu SQL __musi__ można przydzielić wyłącznie do dostawcy zasobów.
+   > Tak długo, jak wystąpieniem serwera SQL są dostępne dla użytkowników i administratorów usługi Azure Resource Manager, mogą być umieszczone pod kontrolą dostawcy zasobów. Wystąpienie SQL __musi__ przydzielenia wyłącznie na potrzeby dostawcy zasobów.
 
-4. W miarę dodawania serwerów, należy przypisać je do istniejącej jednostki SKU albo utworzyć nowe jednostki SKU. W obszarze **dodawania serwera hostingu**, wybierz pozycję **jednostki SKU**.
+4. Podczas dodawania serwerów, należy przypisać je do istniejących jednostek SKU lub tworzenie nowej jednostki SKU. W obszarze **dodawania serwera hostingu**, wybierz opcję **jednostki SKU**.
 
-   * Aby użyć istniejącej jednostki SKU, wybierz dostępne jednostki SKU, a następnie wybierz **Utwórz**.
-   * Aby utworzyć jednostki SKU, wybierz **+ Utwórz nowe jednostki SKU**. W **utworzyć jednostki SKU**, wprowadź wymagane informacje, a następnie wybierz **OK**.
+   * Aby korzystać z istniejących jednostek SKU, wybierz dostępną jednostką SKU, a następnie wybierz **Utwórz**.
+   * Aby utworzyć jednostkę SKU, wybierz **+ Tworzenie nowej jednostki SKU**. W **Tworzenie jednostki SKU**, wprowadź wymagane informacje, a następnie wybierz **OK**.
 
      > [!IMPORTANT]
-     > Znaki specjalne, łącznie ze spacjami i okresów, nie są obsługiwane w **nazwa** pola. Przykładowych można używać w następujących Przechwytywanie ekranu, aby wprowadzić wartości **rodziny**, **warstwy**, i **wersji** pola.
+     > Znaki specjalne, łącznie ze spacjami i okresów, nie są obsługiwane w **nazwa** pola. Używając przykładów na poniższym zrzucie ekranu, możesz wprowadź wartości w polach **rodziny**, **warstwy**, i **wersji** pola.
 
-     ![Utwórz jednostki SKU](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
+     ![Tworzenie jednostki SKU](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
 
-      Jednostki SKU może potrwać do godziny mają być wyświetlane w portalu. Użytkownicy nie można utworzyć bazy danych, dopóki nie zostanie całkowicie utworzona jednostka SKU.
+## <a name="provide-high-availability-using-sql-always-on-availability-groups"></a>Zapewnianie wysokiej dostępności przy użyciu programu SQL zawsze włączone grupy dostępności
 
-### <a name="sku-notes"></a>Informacje o wersji
+Konfigurowanie wystąpienia SQL Always On wymaga dodatkowych kroków, a trzy maszyny wirtualne (lub maszyn fizycznych). W tym artykule przyjęto założenie, iż już pełny opis zawsze włączonych grup dostępności. Aby uzyskać więcej informacji zobacz następujące artykuły:
 
-Jednostki SKU służy do rozróżnienia oferty usług. Na przykład można mieć wystąpienia programu SQL Enterprise, które ma następującą charakterystykę:
-  
-* Wysoka wydajność
-* wysokiej wydajności
-* Wysoka dostępność
-
-Można utworzyć jednostki SKU dla poprzedniego przykładu, ograniczanie dostępu do określonych grup, które wymagają wysokiej wydajności bazy danych.
-
->[!TIP]
->Użyj nazwy jednostki SKU, która odzwierciedla opisano możliwości serwerów w jednostce SKU, takich jak pojemność i wydajność. Nazwa służy jako pomoc, aby ułatwić użytkownikom wdrażania ich baz danych na odpowiednie jednostki SKU.
-
-Najlepszym rozwiązaniem serwerami hostingu w jednostce SKU powinny mieć te same właściwości zasobów i wydajności.
-
-## <a name="provide-high-availability-using-sql-always-on-availability-groups"></a>Zapewnianie wysokiej dostępności przy użyciu SQL zawsze włączone grupy dostępności
-
-Konfigurowanie SQL zawsze włączone wystąpienia wymaga wykonania dodatkowych kroków i wymaga trzech maszyn wirtualnych (lub maszyn fizycznych.) W tym artykule przyjęto założenie, już pełny opis zawsze włączonych grup dostępności. Aby uzyskać więcej informacji zobacz następujące artykuły:
-
-* [Wprowadzenie do programu SQL Server zawsze włączonych grup dostępności na maszynach wirtualnych Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
+* [Wprowadzenie do programu SQL Server zawsze włączonych grup dostępności na maszynach wirtualnych platformy Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
 * [Zawsze włączone grupy dostępności (SQL Server)](https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2017)
 
 > [!NOTE]
-> Dostawca zasobów SQL karty _tylko_ obsługuje Enterprise programu SQL 2016 z dodatkiem SP1 lub później wystąpień dla zawsze włączony. Nowe funkcje SQL, takie jak automatyczne wstępne wypełnianie w ramach tej konfiguracji karty.
+> Dostawcy zasobów bazy danych SQL karty _tylko_ obsługuje SQL 2016 SP1 Enterprise lub później wystąpień dla zawsze włączonych grup dostępności. Ta konfiguracja karty wymaga nowych funkcji programu SQL, takich jak automatyczne wstępne wypełnianie.
 
 ### <a name="automatic-seeding"></a>Automatyczne wstępne wypełnianie
-Należy włączyć [automatyczne wstępne wypełnianie](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) w każdej grupie dostępności dla każdego wystąpienia programu SQL Server.
+
+Należy włączyć [automatyczne wstępne wypełnianie](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) dla każdej grupy dostępności dla każdego wystąpienia programu SQL Server.
 
 Aby włączyć automatyczne wstępne wypełnianie we wszystkich wystąpieniach, edytować, a następnie uruchom poniższe polecenie SQL dla poszczególnych wystąpień:
 
-  ```
+  ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>]
       MODIFY REPLICA ON 'InstanceName'
       WITH (SEEDING_MODE = AUTOMATIC)
   GO
   ```
 
-W wystąpieniach dodatkowej edytować, a następnie uruchom poniższe polecenie SQL dla każdego wystąpienia:
+Na wystąpieniach dodatkowej edycji, a następnie uruchom poniższe polecenie SQL dla poszczególnych wystąpień:
 
-  ```
+  ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
   GO
   ```
 
 ### <a name="configure-contained-database-authentication"></a>Konfigurowanie uwierzytelniania zawartej bazy danych
-Przed dodaniem zawartej bazy danych do grupy dostępności, upewnij się, że opcja serwera uwierzytelniania zawartej bazy danych jest ustawiona na 1 na każde wystąpienie serwera, który jest hostem repliki dostępności dla grupy dostępności. Aby uzyskać więcej informacji, zobacz [zawarte bazy danych uwierzytelniania opcji konfiguracji serwera](https://docs.microsoft.com/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017).
 
-Aby ustawić opcję zawartej bazy danych uwierzytelniania serwera dla każdego wystąpienia, należy używać tych poleceń:
+Przed dodaniem zawartej bazy danych do grupy dostępności, upewnij się, czy opcja serwer uwierzytelniania zawartej bazy danych jest ustawiona na 1 na każde wystąpienie serwera, który jest hostem repliki dostępności dla grupy dostępności. Aby uzyskać więcej informacji, zobacz [zawarte uwierzytelnianie bazy danych opcji konfiguracji serwera](https://docs.microsoft.com/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017).
 
-  ```
+Aby ustawić opcję zawartej bazy danych uwierzytelniania serwera dla każdego wystąpienia, należy użyć tych poleceń:
+
+  ```sql
   EXEC sp_configure 'contained database authentication', 1
   GO
   RECONFIGURE
   GO
   ```
 
-### <a name="to-add-sql-always-on-hosting-servers"></a>Aby dodać SQL zawsze na serwerów hosta
+### <a name="to-add-sql-always-on-hosting-servers"></a>Aby dodać SQL Always On serwerów hosta
 
-1. Zaloguj się do portalu administracyjnego platformy Azure stosu jako administratora usługi.
+1. Zaloguj się do portalu usługi Azure Stack administratora jako administratora usługi.
 
-2. Wybierz **Przeglądaj** &gt; **zasobów administracyjnych** &gt; **SQL serwerów hosta** &gt; **+ Dodaj**.
+2. Wybierz **Przeglądaj** &gt; **zasoby administracyjne** &gt; **hostowania serwerów SQL** &gt; **+ Dodaj**.
 
-   W obszarze **Hosting serwerów SQL**, możesz połączyć dostawcy zasobów programu SQL Server do rzeczywistego wystąpień programu SQL Server, które służyć jako wewnętrznej bazy danych dostawcy zasobów.
+   W obszarze **serwerów do hostingu SQL**, łączysz dostawcy zasobów programu SQL Server do rzeczywistych wystąpień programu SQL Server, które służą jako dostawca zasobów wewnętrznej bazy danych.
 
-3. Wypełnij formularz Szczegóły połączenia dla wystąpienia programu SQL Server. Upewnij się, że używasz nazwę FQDN adresu zawsze na odbiornika (i numer portu opcjonalne.) Podaj informacje dotyczące konta, które są skonfigurowane z uprawnieniami administratora systemu.
+3. Wypełnij formularz z szczegóły połączenia dla wystąpienia programu SQL Server. Należy upewnić się, że adres FQDN zawsze odbiornik (i opcjonalnie port numer.) Podaj informacje dla konta, które zostały skonfigurowane z uprawnieniami administratora systemu.
 
-4. Zaznacz pole zawsze włączonej grupy dostępności, aby włączyć obsługę wystąpienia SQL zawsze włączonej grupy dostępności.
+4. Zaznacz pole zawsze włączonej grupy dostępności, aby włączyć obsługę wystąpień zawsze włączonej grupy dostępności SQL.
 
    ![Włącz zawsze](./media/azure-stack-sql-rp-deploy/AlwaysOn.PNG)
 
-5. Dodaj wystąpienie SQL AlwaysOn do jednostki SKU.
+5. Dodaj wystąpienie programu SQL Always On do jednostki SKU.
 
    > [!IMPORTANT]
-   > Nie można mieszać serwerów autonomicznych z wystąpieniami zawsze włączone w tej samej jednostki SKU. Próba mieszać typów po dodaniu pierwszego hostingu wyników z serwera błąd.
+   > Nie można mieszać serwerów autonomicznych z wystąpieniami Always On w tej samej jednostki SKU. Podjęto próbę mieszać typy po dodaniu pierwszego wyników z serwera hostingu wystąpienie błędu.
 
-## <a name="make-the-sql-databases-available-to-users"></a>Udostępnienie użytkownikom bazy danych SQL
+## <a name="sku-notes"></a>Informacje o jednostce SKU
 
-Tworzenie planów i oferty, aby udostępnić baz danych SQL dla użytkowników. Dodaj **Microsoft.SqlAdapter** usługi do planu i Dodaj domyślny limit przydziału lub Utwórz nowy przydział.
+Jednostki SKU służy do rozróżnienia ofert usług. Na przykład można mieć wystąpienia programu SQL Enterprise, który ma następujące cechy:
+  
+* Wysoka pojemność
+* o wysokiej wydajności
+* Wysoka dostępność
 
-![Tworzenie planów i ofert do dołączenia bazy danych](./media/azure-stack-sql-rp-deploy/sqlrp-newplan.png)
+Nie można przypisać jednostki SKU do określonych użytkowników lub grup w tej wersji.
+
+ Jednostki SKU może potrwać do godziny mają być wyświetlane w portalu. Użytkownicy nie mogą tworzyć bazy danych, dopóki nie jest w pełni utworzona jednostka SKU.
+
+>[!TIP]
+>Użyj nazwy jednostki SKU, która odzwierciedla opisano możliwości serwerów w ramach jednostki SKU, takich jak pojemność i wydajność. Nazwa służy jako pomocy, aby ułatwić użytkownikom wdrożyć swoje bazy danych do odpowiedniej jednostki SKU.
+
+Najlepszym rozwiązaniem jest serwerami hostingu w jednostce SKU powinny mieć takie same charakterystyki zasobów i wydajności.
+
+## <a name="make-the-sql-databases-available-to-users"></a>Udostępnić użytkownikom bazy danych SQL
+
+Utwórz plany i oferty, aby udostępnić użytkownikom baz danych SQL. Dodaj **Microsoft.SqlAdapter** usługi zgodnie z planem i tworzenie nowego limitu przydziału.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

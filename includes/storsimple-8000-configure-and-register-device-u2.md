@@ -9,7 +9,7 @@
 
 3. Zostanie wyświetlony monit o wybranie języka dla danego urządzenia. Wybierz język, a następnie naciśnij klawisz **Enter**.
 
-4. W przedstawionym menu konsoli szeregowej wybierz opcję 1, aby **zalogować się z pełnymi uprawnieniami dostępu**.
+4. W przedstawionym menu konsoli szeregowej wybierz opcję 1: **Zaloguj z pełnymi uprawnieniami dostępu**.
      Wykonaj kroki 5–12, aby skonfigurować minimalne wymagane ustawienia sieciowe urządzenia. **Te kroki konfiguracji należy wykonać na aktywnym kontrolerze urządzenia.** Menu konsoli szeregowej wskazuje stan kontrolera w komunikacie transparentu. Jeśli nie masz połączenia z aktywnym kontrolerem, zakończ połączenie, a następnie nawiąż połączenie z aktywnym kontrolerem.
 
 5. W wierszu polecenia wpisz hasło. Domyślne hasło urządzenia to **Password1**.

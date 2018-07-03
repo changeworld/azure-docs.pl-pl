@@ -1,7 +1,7 @@
 ---
-title: Interfejs API migracji przewodnik od v1 v2 | Dokumentacja firmy Microsoft
+title: Migracja interfejsu API Przewodnik z v1 v2 | Dokumentacja firmy Microsoft
 titleSuffix: Azure
-description: Dowiedz się do migracji z interfejsem API najnowszej konfiguracji.
+description: Dowiedz się, jak migracja do najnowszych interfejsu API do zestawu.
 services: cognitive-services
 author: v-geberr
 manager: kamran.iqbal
@@ -10,36 +10,36 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: v-geberr
-ms.openlocfilehash: 45b6c2eda77668616a7e49ecd5ea2715af3cd3ce
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 7174a78aeb339c864b2eea384b794646c215bc25
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37111590"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344006"
 ---
-# <a name="api-v2-migration-guide"></a>Przewodnik migracji interfejsu API w wersji 2
-Wersja 1 [punktu końcowego](https://aka.ms/v1-endpoint-api-docs) i [tworzenia](https://aka.ms/v1-authoring-api-docs) zostaną wycofane interfejsów API. Użyj tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do wersji 2 [punktu końcowego](https://aka.ms/luis-endpoint-apis) i [tworzenia](https://aka.ms/luis-authoring-apis) interfejsów API. 
+# <a name="api-v2-migration-guide"></a>Przewodnik migracji usługi interfejsu API w wersji 2
+Wersja 1 [punktu końcowego](https://aka.ms/v1-endpoint-api-docs) i [tworzenia](https://aka.ms/v1-authoring-api-docs) staną się przestarzałe interfejsy API. Użyj tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do wersji 2 [punktu końcowego](https://aka.ms/luis-endpoint-apis) i [tworzenia](https://aka.ms/luis-authoring-apis) interfejsów API. 
 
 ## <a name="new-azure-regions"></a>Nowe regiony platformy Azure
-LUIS ma new [regionów](https://aka.ms/LUIS-regions) podany dla interfejsów API LUIS. LUIS zawiera inną witrynę sieci Web dla regionu grup. Aplikacja musi być utworzone w tym samym regionie, które chcesz zbadać. Aplikacje nie są automatycznie migrowane regionów. Możesz wyeksportować aplikację jeden region, a następnie importowanie do innego dla powinna być dostępna w regionie nowe.
+Usługa LUIS ma nowy [regionów](https://aka.ms/LUIS-regions) podany dla interfejsów API usługi LUIS. LUIS zawiera inną witrynę sieci Web dla regionu grup. Aplikacja musi zostać utworzona w tym samym regionie, które chcesz zbadać. Aplikacje nie są automatycznie migrowane regionów. Możesz wyeksportować aplikację z jednego regionu, a następnie importowania do innej, aby była dostępna w nowym regionie.
 
-## <a name="authoring-route-changes"></a>Zmiany trasy źródłowej
-Trasa tworzenia interfejsu API zmieniła się z pomocą **programu** trasy przy użyciu **interfejsu api** trasy.
+## <a name="authoring-route-changes"></a>Tworzenie zmiany trasy
+Trasy interfejsu API tworzenia zmieniła się z pomocą **programu** tras za pomocą **interfejsu api** trasy.
 
 
 | wersja | trasa |
 |--|--|
 |1|/Luis/V1.0/**programu**/apps|
-|2|/Luis/**interfejsu api**/v2.0/apps|
+|2|/Luis/**api**/v2.0/apps|
 
 
 ## <a name="endpoint-route-changes"></a>Zmiany trasy punktu końcowego
-Punkt końcowy interfejsu API ma nowe parametry querystring, a także różne odpowiedzi. Jeśli flaga pełne ma wartość true, wszystkie opcje, niezależnie od tego, wynik, są zwracane w tablicy o nazwie intencje oprócz topScoringIntent.
+Punkt końcowy interfejsu API ma nowe parametry querystring, a także różnych odpowiedzi. Jeśli flaga pełne ma wartość true, wszystkie opcje, niezależnie od tego, wynik, są zwracane w tablicy o nazwie intencji oprócz topScoringIntent.
 
-| wersja | Pobierz trasy |
+| wersja | Pobierz trasę |
 |--|--|
-|1|/Luis/V1/Application? ID = {appId} & q = {q}|
-|2|/ luis/v2.0/apps/{appId}?q={q} [& wartości timezoneOffset] [-verbose] [& Sprawdzanie pisowni] [& tymczasowej] [& bing pisowni wyboru subskrypcji — klucz] [& dziennika]|
+|1|/Luis/V1/Application? ID = {appId} & q = {pytania}|
+|2|/ luis/v2.0/apps/{appId}?q={q} [& timezoneOffset] [-verbose] [& Sprawdzanie pisowni] [& przemieszczania] [& bing pisowni wyboru subscription-key] [& dziennika]|
 
 
 odpowiedź sukcesu punkt końcowy 1:
@@ -104,27 +104,27 @@ odpowiedź sukcesu punktu końcowego v2:
 ```
 
 ## <a name="key-management-no-longer-in-api"></a>Zarządzanie kluczami nie jest już w interfejsie API
-Klucz punktu końcowego subskrypcji interfejsy API są przestarzałe, zwracając 410 GONE.
+Klucz punktu końcowego subskrypcji interfejsy API są przestarzałe zwracanie 410 GONE.
 
 | wersja | trasa |
 |--|--|
 |1|/Luis/V1.0/prog/Subscriptions|
 |1|/ luis/v1.0/prog/subscriptions/{subscriptionKey}|
 
-Azure [klucze punktu końcowego](luis-how-to-azure-subscription.md) są generowane w portalu Azure. Przypisz klucz do aplikacji LUIS na **[publikowania](manage-keys.md)** strony. Nie trzeba znać rzeczywistej wartości klucza. LUIS używa Nazwa subskrypcji, aby przypisania. 
+Azure [klucze punktu końcowego](luis-how-to-azure-subscription.md) są generowane w witrynie Azure portal. Przypisany klawisz aplikacją usługi LUIS w **[Publikuj](luis-how-to-manage-keys.md)** strony. Nie trzeba znać rzeczywistej wartości klucza. Usługa LUIS używa nazwy subskrypcji, aby przypisania. 
 
-## <a name="new-versioning-route"></a>Nową trasę kontroli wersji
-V2 model jest teraz zawarta w [wersji](luis-how-to-manage-versions.md). Nazwa wersji jest 10 znaków w trasie. Wersja domyślna to "0,1".
+## <a name="new-versioning-route"></a>Nową trasę przechowywania wersji
+V2 model jest teraz zawarty w [wersji](luis-how-to-manage-versions.md). Nazwa wersji jest 10 znaków w trasie. Domyślna wersja to "0.1".
 
 | wersja | trasa |
 |--|--|
 |1|/Luis/V1.0/**programu**/apps/ {appId} / jednostek|
-|2|/Luis/**interfejsu api**/v2.0/apps/{appId}/**wersji**/ {versionId} / jednostek|
+|2|/Luis/**api**/v2.0/apps/{appId}/**wersji**/ {versionId} / jednostek|
 
-## <a name="metadata-renamed"></a>Metadane zmieniona
-Kilka interfejsów API, które zwracają metadanych LUIS mają nowej nazwy.
+## <a name="metadata-renamed"></a>Zmieniono nazwę metadanych
+Kilka interfejsów API, które zwracają metadanych usługi LUIS mają nowe nazwy.
 
-| Nazwa trasy V1 | Nazwa trasy v2 |
+| Nazwa trasy V1 | Nazwa trasy w wersji 2 |
 |--|--|
 |PersonalAssistantApps |Asystenci|
 |applicationcultures|kultur|
@@ -132,42 +132,42 @@ Kilka interfejsów API, które zwracają metadanych LUIS mają nowej nazwy.
 |applicationusagescenarios|usagescenarios|
 
 
-## <a name="sample-renamed-to-suggest"></a>"Sample" zmieniona na "Sugeruj"
-LUIS sugeruje zniesławiających z istniejących [zniesławiających punktu końcowego](label-suggested-utterances.md) które może poprawić modelu. W poprzedniej wersji, to był o nazwie **próbki**. W nowej wersji, nazwa została zmieniona z próby **Sugeruj**. Ta metoda jest wywoływana **[Przejrzyj zniesławiających punktu końcowego](https://docs.microsoft.com/azure/cognitive-services/LUIS/label-suggested-utterances)** w LUIS witryny sieci Web.
+## <a name="sample-renamed-to-suggest"></a>"Przykładowy" zmieniona na "Zaproponuj"
+Usługa LUIS sugeruje wypowiedzi z istniejących [wypowiedzi punktu końcowego](label-suggested-utterances.md) , może pomóc w lepszym modelu. W poprzedniej wersji, ta nosiła nazwę **przykładowe**. W nowej wersji nazwa została zmieniona z przykładu, aby **zasugerować**. Jest to nazywane **[Przejrzyj wypowiedzi punktu końcowego](https://docs.microsoft.com/azure/cognitive-services/LUIS/label-suggested-utterances)** w witrynie internetowej usługi LUIS.
 
 | wersja | trasa |
 |--|--|
 |1|/Luis/V1.0/**programu**/entities/ /apps/ {appId} {entityId} /**próbki**|
 |1|/Luis/V1.0/**programu**/intents/ /apps/ {appId} {intentId} /**próbki**|
-|2|/Luis/**interfejsu api**/v2.0/apps/{appId}/**wersji**/ /entities/ {versionId} {entityId} /**Sugeruj**|
-|2|/Luis/**interfejsu api**/v2.0/apps/{appId}/**wersji**/ /intents/ {versionId} {intentId} /**Sugeruj**|
+|2|/Luis/**api**/v2.0/apps/{appId}/**wersji**/ /entities/ {versionId} {entityId} /**zasugerować**|
+|2|/Luis/**api**/v2.0/apps/{appId}/**wersji**/ /intents/ {versionId} {intentId} /**zasugerować**|
 
 
-## <a name="create-app-from-prebuilt-domains"></a>Tworzenie aplikacji z domen wbudowane
-[Wbudowane domen](luis-how-to-use-prebuilt-domains.md) Podaj modelu domeny wstępnie zdefiniowane. Wbudowane domeny pozwala szybko utworzyć aplikację LUIS dla typowych domen. Ten interfejs API umożliwia tworzenie nowej aplikacji na podstawie wbudowane domeny. Odpowiedź jest nowy identyfikator aplikacji.
+## <a name="create-app-from-prebuilt-domains"></a>Tworzenie aplikacji na podstawie ze wstępnie utworzonych domen
+[Ze wstępnie utworzonych domen](luis-how-to-use-prebuilt-domains.md) zapewnić model domeny wstępnie zdefiniowane. Ze wstępnie utworzonych domen umożliwiają szybkie tworzenie aplikacji usługi LUIS dla typowych domeny. Ten interfejs API umożliwia tworzenie nowej aplikacji na podstawie wstępnie domeny. Odpowiedź jest nowy identyfikator aplikacji.
 
-|trasy v2|zlecenie|
+|trasy w wersji 2|zlecenia|
 |--|--|
 |/Luis/API/v2.0/Apps/customprebuiltdomains  |GET, post|
 |/ luis/api/v2.0/apps/customprebuiltdomains/{culture}  |Pobierz|
 
-## <a name="importing-1x-app-into-2x"></a>Importowanie aplikacji 1.x 2.x
-Wyeksportowane 1.x JSON aplikacji ma pewne kwestie, które należy zmienić przed zaimportowaniem do [LUIS] [ LUIS] 2.0. 
+## <a name="importing-1x-app-into-2x"></a>Importowanie aplikacji 1.x do 2.x
+1.x wyeksportowany plik JSON aplikacji ma kilka obszarów, które należy zmienić przed zaimportowaniem do [LUIS] [ LUIS] w wersji 2.0. 
 
-### <a name="prebuilt-entities"></a>Wbudowane jednostek 
-[Wbudowane jednostek](Pre-builtEntities.md) zostały zmienione. Upewnij się, że używasz V2 wbudowane jednostek. Obejmuje to przy użyciu [datetimeV2](pre-builtentities.md?#use-a-prebuilt-datetimev2-entity), zamiast daty/godziny. 
+### <a name="prebuilt-entities"></a>Wstępnie utworzonych jednostek 
+[Ze wstępnie utworzonych jednostek](luis-prebuilt-entities.md) uległy zmianie. Upewnij się, że używasz wersji 2 ze wstępnie utworzonych jednostek. W tym za pomocą [datetimeV2](luis-prebuilt-entities.md#use-a-prebuilt-datetimev2-entity), zamiast daty/godziny. 
 
 ### <a name="actions"></a>Akcje
-Właściwości działania nie jest już prawidłowy. Powinna być pusta 
+Właściwość akcji nie jest już prawidłowy. Powinna być pusta 
 
-### <a name="labeled-utterances"></a>Zniesławiających etykietą
-V1 dozwolone etykietą zniesławiających uwzględnić spacje na początku lub na końcu wyraz lub frazę. Usunięte spacje. 
+### <a name="labeled-utterances"></a>Labeled wypowiedzi
+V1 dozwolone etykietami wypowiedzi na zawiera spacje na początku lub końcu wyrazu lub frazy. Usunięte spacje. 
 
-## <a name="common-reasons-for-http-response-status-codes"></a>Najczęstsze przyczyny kody stanu odpowiedzi HTTP
-Zobacz [kody odpowiedzi interfejsu API LUIS](luis-reference-response-codes.md).
+## <a name="common-reasons-for-http-response-status-codes"></a>Typowe przyczyny kodów stanu odpowiedzi HTTP
+Zobacz [kodów odpowiedzi interfejsu API usługi LUIS](luis-reference-response-codes.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Użyj wywołań w dokumentacji interfejsu API w wersji 2 do zaktualizowania istniejącej REST LIUS [punktu końcowego](https://aka.ms/luis-endpoint-apis) i [tworzenia](https://aka.ms/luis-authoring-apis) interfejsów API. 
+Korzystanie z dokumentacji interfejsu API w wersji 2, aby zaktualizować istniejące REST wywołania LIUS [punktu końcowego](https://aka.ms/luis-endpoint-apis) i [tworzenia](https://aka.ms/luis-authoring-apis) interfejsów API. 
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

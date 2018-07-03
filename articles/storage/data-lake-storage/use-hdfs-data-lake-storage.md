@@ -1,6 +1,6 @@
 ---
-title: Przy użyciu interfejsu wiersza polecenia systemu plików HDFS z usługi Azure Data Lake Storage Gen2 w wersji zapoznawczej
-description: Wprowadzenie do systemu plików HDFS interfejsu wiersza polecenia dla wersji zapoznawczej usługi Data Lake Storage Gen2
+title: Przy użyciu interfejsu wiersza polecenia systemu plików HDFS za pomocą usługi Azure Data Lake Storage Gen2 (wersja zapoznawcza)
+description: Wprowadzenie do systemu plików HDFS interfejs wiersza polecenia dla Data Lake Gen2 — wersja zapoznawcza
 services: storage
 documentationcenter: ''
 author: artemuwka
@@ -13,28 +13,28 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: artek
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 75fb07120c78c45d422ee5017eac0afcf0e80859
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 591d8ea7670bf9b29450695ee7cbee5fa39baaac
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060822"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344726"
 ---
-# <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Przy użyciu interfejsu wiersza polecenia systemu plików HDFS w usłudze Data Lake Storage Gen2
+# <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Przy użyciu interfejsu wiersza polecenia systemu plików HDFS z Gen2 Lake magazynu danych
 
-Azure Data Lake magazynu Gen2 podglądu służy do zarządzania i dostęp do danych, tak samo jak w przypadku [systemu Distributed plików Hadoop (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Czy masz klastra usługi HDInsight dołączony lub uruchom zadanie Apache Spark przy użyciu Azure Databricks do wykonywania analizy na dane przechowywane w usłudze Azure Data Lake magazynu Gen2 służy interfejsu wiersza polecenia (CLI) do pobrania i modyfikowania załadowanych danych. Pozostała część tego artykułu opisano opcje ma podczas [zespołu usługi Magazyn Azure działa na obsługę Eksploratora usługi Storage platformy Azure i portalu Azure](https://azure.microsoft.com/roadmap/) — jedyne!
+Usługa Azure Data Lake Gen2 — wersja zapoznawcza pozwala zarządzać i uzyskiwać dostęp do danych, tak samo, jak za pomocą [pliku System (HDFS, Hadoop Distributed)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Czy istnieje klastra usługi HDInsight, dołączony, lub uruchomić zadanie platformy Apache Spark przy użyciu usługi Azure Databricks w celu przeprowadzenia analizy danych przechowywanych w usłudze Azure Data Lake magazynu Gen2 można użyć interfejsu wiersza polecenia (CLI) do pobrania i manipulowania nimi załadowanych danych. Pozostałej części tego artykułu opisano opcje mają podczas [zespół usługi Azure Storage pracuje nad dodaniem obsługi dla Eksploratora usługi Azure Storage i witryny Azure portal](https://azure.microsoft.com/roadmap/).
 
-## <a name="hdfs-cli-with-hdinsight"></a>System plików HDFS interfejsu wiersza polecenia z usługą HDInsight
+## <a name="hdfs-cli-with-hdinsight"></a>System plików HDFS interfejsu wiersza polecenia przy użyciu HDInsight
 
-Usługa HDInsight zapewnia dostęp do rozproszonego systemu plików, który jest lokalnie dołączony do węzłów obliczeniowych. W tym systemie plików jest możliwy przy użyciu powłoki, który bezpośrednio prowadzi interakcję z systemem plików HDFS i innych systemów plików, które obsługuje usługi Hadoop. Poniżej przedstawiono często używanych poleceń i linki do przydatne zasoby.
+Usługa HDInsight zapewnia dostęp do rozproszonego systemu plików, który jest lokalnie dołączony do węzłów obliczeniowych. W tym systemie plików jest możliwy za pomocą powłoki, który wchodzi w interakcję bezpośrednio z systemu plików HDFS i innych systemów plików, które obsługuje platformy Hadoop. Poniżej przedstawiono typowe polecenia i linki do przydatnych zasobów.
 
 >[!IMPORTANT]
->Naliczanie opłat rozpoczyna się w momencie utworzenia klastra usługi HDInsight i kończy się wraz z jego usunięciem. Są naliczane proporcjonalnie za minutę, więc zawsze należy usunąć klaster, gdy nie jest już w użyciu (Dowiedz się, jak [usunąć klaster](../../hdinsight/hdinsight-delete-cluster.md)). Jednak dane przechowywane w usłudze Azure Data Lake magazynu Gen2 utrzymuje nawet po usunięciu klastra usługi HDInsight.
+>Naliczanie opłat rozpoczyna się w momencie utworzenia klastra usługi HDInsight i kończy się wraz z jego usunięciem. Jest rozliczana proporcjonalnie za minutę, więc należy go usunąć z klastrem, gdy nie jest już w użyciu (Dowiedz się, jak [usunąć klaster](../../hdinsight/hdinsight-delete-cluster.md)). Jednak dane przechowywane w usłudze Azure Data Lake magazynu Gen2 będzie nadal występował mimo klastra usługi HDInsight zostanie usunięty.
 
 Aby uzyskać listę plików lub katalogów:
 
     hdfs dfs -ls <args>
-Do tworzenia katalogu:
+Aby utworzyć katalog:
 
     hdfs dfs -mkdir [-p] <paths>
 Aby usunąć pliku lub katalogu:
@@ -42,7 +42,7 @@ Aby usunąć pliku lub katalogu:
     hdfs dfs -rm [-skipTrash] URI [URI ...]
 
 
-Teraz wytłumaczone klastra usługi HDInsight Hadoop w systemie Linux jako przykład. Aby korzystać z interfejsu wiersza polecenia systemu plików HDFS, najpierw należy ustanowić [zdalny dostęp do usług](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-information#remote-access-to-services). W przypadku wybrania [SSH](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) przykładowy kod programu PowerShell będzie wyglądać następująco:
+Poświęćmy teraz klastra usługi HDInsight Hadoop w systemie Linux, na przykład. Aby korzystać z interfejsu wiersza polecenia systemu plików HDFS, najpierw należy ustanowić [zdalny dostęp do usług](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-information#remote-access-to-services). W przypadku wybrania [SSH](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) przykładowego kodu programu PowerShell będzie wyglądać w następujący sposób:
 ```PowerShell
 #Connect to the cluster via SSH.
 ssh sshuser@clustername-ssh.azurehdinsight.net
@@ -52,46 +52,46 @@ hdfs dfs -ls /
 hdfs dfs -mkdir /samplefolder
 ```
 
-Parametry połączenia można znaleźć w folderze "SSH + klastra logowania" części bloku klastra usługi HDInsight w portalu Azure. SSH poświadczenia zostały określone podczas tworzenia klastra.
+Parametry połączenia znajduje się w temacie "klastra i protokołu SSH logowania" części bloku klastra HDInsight w witrynie Azure portal. Poświadczenia protokołu SSH zostały określone podczas tworzenia klastra.
 
-Aby uzyskać więcej informacji o systemie plików HDFS interfejsu wiersza polecenia, zobacz [oficjalnej dokumentacji](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html) i [przewodnik uprawnienia systemu plików HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html).
+Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia systemu plików HDFS, zobacz [oficjalnej dokumentacji](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html) i [Przewodnik po uprawnieniach systemu plików HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html).
 
-## <a name="hdfs-cli-with-azure-databricks"></a>System plików HDFS interfejsu wiersza polecenia z Azure Databricks
+## <a name="hdfs-cli-with-azure-databricks"></a>System plików HDFS interfejsu wiersza polecenia za pomocą usługi Azure Databricks
 
-Databricks zapewnia CLI łatwy w użyciu, rozszerzający Databricks interfejsu API REST. Projekt open source znajduje się na [GitHub](https://github.com/databricks/databricks-cli). Poniżej przedstawiono często używanych poleceń.
+Databricks zapewnia łatwy w użyciu interfejsu wiersza polecenia platformy korzystających z interfejsu API REST usługi Databricks. Projekt typu open-source znajduje się na [GitHub](https://github.com/databricks/databricks-cli). Poniżej przedstawiono często używanych poleceń.
 
 Aby uzyskać listę plików lub katalogów:
 
     dbfs ls [-l]
-Do tworzenia katalogu:
+Aby utworzyć katalog:
 
     dbfs mkdirs
 Aby usunąć plik:
 
     dbfs rm [-r]
 
-Inny sposób interakcji z Databricks są notesów. Podczas Notes ma podstawowy język, można mieszać języków, określając język % magic polecenia języka na początku komórki. W szczególności % sh umożliwia wykonanie kodu powłoki w notesie podobne jak w przykładzie HDInsight wcześniej w tym artykule.
+Inny sposób interakcji z usługi Databricks są notesy. Chociaż notesu ma podstawowy język, określając język % magiczne polecenie języka na początku komórka można łączyć różne języki. W szczególności % sh umożliwia wykonanie kodu powłoki w notesie podobne w przykładzie HDInsight we wcześniejszej części tego artykułu.
 
 Aby uzyskać listę plików lub katalogów:
 
     %sh ls <args>
-Do tworzenia katalogu:
+Aby utworzyć katalog:
 
     %sh mkdir [-p] <paths>
 Aby usunąć pliku lub katalogu:
 
     %sh rm [-skipTrash] URI [URI ...]
 
-Po uruchomieniu klastra Spark w usłudze Azure Databricks, zostanie utworzony nowy notes. Przykładowy skrypt notesu będzie wyglądać w następujący sposób:
+Po uruchomieniu klastra Spark w usłudze Azure Databricks, utworzysz nowy notes. Przykładowy skrypt notesu będzie wyglądać w następujący sposób:
 
     #Execute basic HDFS commands invoking the shell. Display the hierarchy.
     %sh ls /
     #Create a sample directory.
     %sh mkdir /samplefolder
 
-Aby uzyskać więcej informacji o Databricks interfejsu wiersza polecenia, zobacz [oficjalnej dokumentacji](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html). Aby uzyskać więcej informacji na notesów, zobacz [notesów](https://docs.azuredatabricks.net/user-guide/notebooks/index.html) sekcji dokumentacji.
+Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia Databricks, zobacz [oficjalną dokumentacją](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html). Aby uzyskać więcej informacji na temat notesów, zobacz [notesów](https://docs.azuredatabricks.net/user-guide/notebooks/index.html) sekcji dokumentacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Tworzenie klastra usługi HDInsight z usługi Azure Data Lake magazynu Gen2](./quickstart-create-connect-hdi-cluster.md)
-- [Użycie konta usługi Azure Data Lake magazynu Gen2 funkcją w Azure Databricks](./quickstart-create-databricks-account.md) 
+- [Tworzenie klastra usługi HDInsight przy użyciu usługi Azure Data Lake Storage Gen2](./quickstart-create-connect-hdi-cluster.md)
+- [Użyj konta usługi Azure Data Lake Storage Gen2 możliwością w usłudze Azure Databricks](./quickstart-create-databricks-account.md) 

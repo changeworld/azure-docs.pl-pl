@@ -1,6 +1,6 @@
 ---
-title: Hasło konta, uwierzytelniania, zresetuj w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Jak utworzyć aplikację sieci web, która ma konta-konta/logowania, edycji profilu i hasło resetowania przy użyciu usługi Azure Active Directory B2C.
+title: Uwierzytelnianie, zarejestruj się, resetowania haseł w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Jak utworzyć aplikację sieci web, która zawiera konta-dokonywania/Zaloguj się i edytowania profilu, resetowania haseł za pomocą usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
@@ -10,52 +10,54 @@ ms.topic: article
 ms.date: 03/17/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ec106b46097f9a35b9e41e08de4c18339f1b28f0
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 090e85df2f4315e6a31d5f9da38483f7ec00be22
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34710410"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345009"
 ---
-# <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>Tworzenie aplikacji sieci web platformy ASP.NET z usługi Azure Active Directory B2C profilu rejestracji, logowania, edycji i resetowania hasła
+# <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>Tworzenie aplikacji sieci web platformy ASP.NET za pomocą usługi Azure Active Directory B2C profilu rejestracji, logowania, edycji i resetowania haseł
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:
 
 > [!div class="checklist"]
-> * Dodawanie funkcji tożsamości usługi Azure AD B2C do aplikacji sieci web
-> * Rejestrowanie aplikacji sieci web w katalogu usługi Azure AD B2C
-> * Tworzenie użytkownika konta-konta/logowania, edycji profilu i zasady resetowania hasła dla aplikacji sieci web
+> * Dodaj funkcje obsługi tożsamości usługi Azure AD B2C w aplikacji sieci web
+> * Zarejestruj swoją aplikację sieci web w katalogu usługi Azure AD B2C
+> * Tworzenie użytkownika konta-dokonywania/logowania, edytowania profilów i zasady resetowania hasła dla aplikacji sieci web
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Dzierżawy usługi B2C należy połączyć z kontem platformy Azure. Możesz utworzyć bezpłatne konto platformy Azure [tutaj](https://azure.microsoft.com/).
-- Należy [programu Microsoft Visual Studio](https://www.visualstudio.com/) lub program podobne do wyświetlania i modyfikowania przykładowy kod.
+- Dzierżawy usługi B2C należy połączyć z kontem platformy Azure. Można utworzyć bezpłatne konto platformy Azure [tutaj](https://azure.microsoft.com/).
+- Potrzebujesz [programu Microsoft Visual Studio](https://www.visualstudio.com/) lub podobny do wyświetlanie i modyfikowanie przykładowego kodu.
 
-## <a name="create-an-azure-ad-b2c-directory"></a>Tworzenie katalogu usługi Azure AD B2C
+## <a name="create-an-azure-ad-b2c-tenant"></a>Tworzenie dzierżawy usługi Azure AD B2C
 
-Przed rozpoczęciem korzystania z usługi Azure AD B2C należy utworzyć katalog lub dzierżawę. Katalog jest kontenerem dla wszystkich użytkowników, aplikacji, grup i inne. Jeśli nie masz już, tworzenia katalogu B2C, przed kontynuowaniem w tym przewodniku.
+Zanim użyjesz usługi Azure AD B2C, trzeba utworzyć dzierżawę. Dzierżawa jest kontenerem dla wszystkich użytkowników, aplikacji, grup i. Jeśli nie masz jeszcze, należy utworzyć dzierżawę B2C przed rozpoczęciem pracy w tym przewodniku.
 
 [!INCLUDE [active-directory-b2c-create-tenant](../../includes/active-directory-b2c-create-tenant.md)]
 
 > [!NOTE]
 > 
-> Musisz połączyć dzierżawy B2C do subskrypcji platformy Azure. Po wybraniu **Utwórz**, wybierz pozycję **dzierżawy łącze istniejącej usługi Azure AD B2C do subskrypcji platformy Azure** opcji, a następnie w **dzierżawy usługi Azure AD B2C** listy rozwijanej, wybierz dzierżawcy do skojarzenia.
+> Należy połączyć z dzierżawy usługi Azure AD B2C z subskrypcją platformy Azure. Po wybraniu **Utwórz**, wybierz opcję **dzierżawy łączy istniejące usługi Azure AD B2C do mojej subskrypcji platformy Azure** opcji, a następnie w **dzierżawy usługi Azure AD B2C** listę rozwijaną, wybierz opcję dzierżawy, który chcesz skojarzyć.
 
-## <a name="create-and-register-an-application"></a>Tworzenie i rejestrowania aplikacji
+## <a name="create-and-register-an-application"></a>Tworzenie i rejestrowanie aplikacji
 
-Następnie należy utworzyć i zarejestrować aplikację w katalogu usługi B2C. Zapewnia informacje wymagające usługi Azure AD B2C do bezpiecznego komunikowania się z aplikacją. 
+Następnie należy utworzyć i zarejestrować aplikację w dzierżawie usługi Azure AD B2C. Dzięki temu informacje wymagające bezpiecznego komunikowania się z aplikacją usługi Azure AD B2C. 
+
+Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**. Teraz powinien być używany dzierżawy, która została wcześniej utworzona.
 
 [!INCLUDE [active-directory-b2c-register-web-api](../../includes/active-directory-b2c-register-web-api.md)]
 
-Gdy wszystko będzie gotowe, będzie mieć zarówno interfejs API i aplikacji natywnej w ustawienia aplikacji.
+Gdy wszystko będzie gotowe, konieczne będzie interfejsu API i aplikacji macierzystej w ustawieniach aplikacji.
 
-## <a name="create-policies-on-your-b2c-tenant"></a>Tworzenie zasad na dzierżawę B2C
+## <a name="create-policies-on-your-b2c-tenant"></a>Tworzenie zasad na swoją dzierżawę B2C
 
-W usłudze Azure AD B2C każde działanie użytkownika jest definiowane przy użyciu [zasad](active-directory-b2c-reference-policies.md). Ten przykładowy kod obejmuje trzy środowiska tożsamości: **rejestracji i logowania**, **edycji profilu**, i **resetowania hasła**.  Dla każdego typu należy utworzyć jeden zbiór zasad zgodnie z opisem w [artykule o zasadach](active-directory-b2c-reference-policies.md). Dla każdej zasady upewnij się, aby wybrać atrybut nazwy wyświetlania lub oświadczeń i skopiuj nazwę tej zasady do późniejszego użycia.
+W usłudze Azure AD B2C każde działanie użytkownika jest definiowane przy użyciu [zasad](active-directory-b2c-reference-policies.md). Ten przykładowy kod obejmuje trzy środowiska tożsamości: **rejestracji i logowania**, **profilu edycji**, i **resetowania hasła**.  Dla każdego typu należy utworzyć jeden zbiór zasad zgodnie z opisem w [artykule o zasadach](active-directory-b2c-reference-policies.md). Dla każdej zasady upewnij się, aby wybrać atrybut nazwy wyświetlania lub oświadczeń i skopiuj nazwę swoich zasad w celu późniejszego użycia.
 
-### <a name="add-your-identity-providers"></a>Dodaj użytkownika dostawców tożsamości
+### <a name="add-your-identity-providers"></a>Dodaj dostawców tożsamości
 
-Wybierz z ustawień **dostawców tożsamości** i wybierz polecenie zapisywania nazwy użytkownika lub rejestracji poczty E-mail.
+Wybierz z ustawień, **dostawców tożsamości** i wybierz polecenie rejestrowania nazwy użytkownika lub rejestracja E-mail.
 
 ### <a name="create-a-sign-up-and-sign-in-policy"></a>Tworzenie zasad rejestracji i logowania
 
@@ -69,7 +71,7 @@ Wybierz z ustawień **dostawców tożsamości** i wybierz polecenie zapisywania 
 
 [!INCLUDE [active-directory-b2c-create-password-reset-policy](../../includes/active-directory-b2c-create-password-reset-policy.md)]
 
-Po utworzeniu zasad, możesz przystąpić do tworzenia aplikacji.
+Po utworzeniu zasad możesz rozpocząć tworzenie aplikacji.
 
 ## <a name="download-the-sample-code"></a>Pobierz przykładowy kod
 
@@ -79,49 +81,49 @@ Kod używany w tym samouczku [jest przechowywany w serwisie GitHub](https://gith
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
-Po pobraniu przykładu kodu otwórz plik SLN programu Visual Studio, aby rozpocząć. Plik rozwiązania zawiera dwa projekty: `TaskWebApp` i `TaskService`. `TaskWebApp` to aplikacja sieci web MVC, którą użytkownik wchodzi w interakcję z. `TaskService` to interfejs API zaplecza aplikacji, który przechowuje listy zadań do wykonania poszczególnych użytkowników. Ten artykuł zawiera jedynie omówienie aplikacji `TaskWebApp`. Aby dowiedzieć się, jak tworzyć `TaskService` za pomocą usługi Azure AD B2C, zobacz [naszym samouczkiem interfejsu api sieci web .NET](active-directory-b2c-devquickstarts-api-dotnet.md).
+Po pobraniu przykładu kodu otwórz plik SLN programu Visual Studio, aby rozpocząć. Plik rozwiązania zawiera dwa projekty: `TaskWebApp` i `TaskService`. `TaskWebApp` to aplikacja sieci web MVC, który użytkownik wchodzi w interakcję z. `TaskService` to interfejs API zaplecza aplikacji, który przechowuje listy zadań do wykonania poszczególnych użytkowników. Ten artykuł zawiera jedynie omówienie aplikacji `TaskWebApp`. Aby dowiedzieć się, jak tworzyć `TaskService` za pomocą usługi Azure AD B2C, zobacz [Nasz samouczek dotyczący interfejsu api sieci web platformy .NET](active-directory-b2c-devquickstarts-api-dotnet.md).
 
-## <a name="update-code-to-use-your-tenant-and-policies"></a>Zaktualizuj kod, aby użyć zasad i dzierżawy
+## <a name="update-code-to-use-your-tenant-and-policies"></a>Zaktualizuj kod w celu użycia zasad i dzierżawy
 
 Nasz przykład został skonfigurowany do używania zasad i identyfikatora klienta dzierżawy pokazowej. Aby połączyć go z własną dzierżawę, należy otworzyć `web.config` w `TaskWebApp` projektu i Zastąp następujące wartości:
 
 * `ida:Tenant` nazwą dzierżawy
-* `ida:ClientId` identyfikatorem aplikacji sieci Web
-* `ida:ClientSecret` kluczem tajnym aplikacji sieci Web
+* `ida:ClientId` identyfikatorem aplikacji internetowej
+* `ida:ClientSecret` kluczem tajnym aplikacji internetowej
 * `ida:SignUpSignInPolicyId` nazwą zasady tworzenia konta/logowania
 * `ida:EditProfilePolicyId` nazwą zasady edycji profilu
 * `ida:ResetPasswordPolicyId` nazwą zasady resetowania hasła
 
 ## <a name="launch-the-app"></a>Uruchom aplikację
-Z poziomu programu Visual Studio, uruchom aplikację. Przejdź do karty listy zadań do wykonania i zanotuj adres URl jest: https://login.microsoftonline.com/ *YourTenantName*/oauth2/v2.0/authorize?p=*YourSignUpPolicyName*& client_id =*YourclientID*.....
+Z poziomu programu Visual Studio, uruchom aplikację. Przejdź do karty listy zadań do wykonania i zanotuj adres URl to: https://login.microsoftonline.com/ *YourTenantName*/oauth2/v2.0/authorize?p=*YourSignUpPolicyName*& client_id =*YourclientID*.....
 
-Utwórz aplikację za pomocą poczty e-mail nazwy adres lub użytkownika. Wyloguj, a następnie zaloguj się ponownie i edytowanie profilu lub zresetować hasło. Wyloguj się i zaloguj się jako inny użytkownik. 
+Zarejestruj się w aplikacji przy użyciu nazwy użytkownika lub adres e-mail. Wyloguj się, a następnie zaloguj się ponownie i dokonać edycji profilu lub zresetować hasło. Wyloguj się i zaloguj się jako inny użytkownik. 
 
-## <a name="add-social-idps"></a>Dodaj IDPs społecznościowych
+## <a name="add-social-idps"></a>Dodaj dostawców tożsamości społecznościowych
 
-Obecnie aplikacja obsługuje tylko użytkownik, zapisywania i zaloguj się przy użyciu **kont lokalnych**; kontom przechowywane w katalogu B2C, użyj nazwy użytkownika i hasła. Za pomocą usługi Azure AD B2C, można dodać obsługę innych **dostawców tożsamości** (IDPs) bez zmieniania żadnego kodu.
+Obecnie aplikacja obsługuje tylko użytkownika, zarejestruj się i zaloguj się przy użyciu **kont lokalnych**; kont przechowywane w katalogu usługi B2C, używające nazwy użytkownika i hasła. Za pomocą usługi Azure AD B2C, możesz dodać obsługę innych **dostawców tożsamości** (IDPs) bez konieczności zmieniania żadnego kodu.
 
-Aby dodać społecznościowych IDPs do aplikacji, Rozpocznij zgodnie z instrukcjami szczegółowe w tych artykułach. Dla każdego dostawców tożsamości, które mają być obsługiwane musisz zarejestrować aplikację w tym systemie i Uzyskaj identyfikator klienta.
+Aby dodać społecznościowych dostawców tożsamości do aplikacji, należy rozpocząć zgodnie z instrukcjami szczegółowe w następujących artykułach. Dla każdego dostawcy tożsamości, które mają być obsługiwane należy zarejestrować aplikację w tym systemie i uzyskać identyfikator klienta.
 
-* [Konfigurowanie usługi Facebook jako dostawca tożsamości](active-directory-b2c-setup-fb-app.md)
-* [Konfigurowanie usługi Google jako dostawca tożsamości](active-directory-b2c-setup-goog-app.md)
-* [Konfigurowanie usługi Amazon jako dostawca tożsamości](active-directory-b2c-setup-amzn-app.md)
-* [Konfigurowanie LinkedIn jako dostawca tożsamości](active-directory-b2c-setup-li-app.md)
+* [Konfigurowanie usługi Facebook jako dostawcy tożsamości](active-directory-b2c-setup-fb-app.md)
+* [Konfigurowanie Google jako dostawcy tożsamości](active-directory-b2c-setup-goog-app.md)
+* [Konfigurowanie Amazon jako dostawcy tożsamości](active-directory-b2c-setup-amzn-app.md)
+* [Konfigurowanie usługi LinkedIn jako dostawcy tożsamości](active-directory-b2c-setup-li-app.md)
 
-Po dodaniu dostawców tożsamości do katalogu usługi B2C edycję każdego z trzech zbiorów zasad uwzględnienie nowych IDPs, zgodnie z opisem w [artykule o zasadach](active-directory-b2c-reference-policies.md). Po zapisaniu zasad, uruchom ponownie aplikację.  Powinien zostać wyświetlony nowy IDPs, dodawane jako logowania oraz wrażenia opcji zapisywania w każdym z Twoją tożsamość.
+Po dodaniu dostawcy tożsamości do katalogu usługi B2C edycję każdego z trzech zbiorów zasad w celu uwzględnienia nowych dostawców tożsamości, zgodnie z opisem w [artykule dotyczącym struktury zasad](active-directory-b2c-reference-policies.md). Po zapisaniu zasad, należy ponownie uruchomić tę aplikację.  Powinien zostać wyświetlony nowy dostawców tożsamości, dodany jako logowania i środowisk opcji rejestracji w każdym z Twoją tożsamość.
 
-Możesz eksperymentować z zasadami i obserwować wpływ na przykładowej aplikacji. Dodaj lub usuń IDPs, manipulować oświadczenia aplikacji lub zmień atrybuty rejestracji. Eksperymentu, aż zostanie wyświetlony, jak zasady, żądania uwierzytelniania i OWIN powiązać razem.
+Możesz eksperymentować z zasadami dotyczącymi zasobów i obserwować wpływ na przykładowej aplikacji. Dodaj lub usuń dostawców tożsamości, manipulowania oświadczeń aplikacji lub zmień atrybuty tworzenia konta. Wypróbuj, aż zobaczysz, jak zasady, żądania uwierzytelniania i OWIN powiązać ze sobą.
 
-## <a name="sample-code-walkthrough"></a>Przykładowy kod wskazówki
-Poniższe sekcje pokazują, jak przykładowy kod aplikacji jest skonfigurowana. Mogą wykorzystać te informacje jako przewodnika przy projektowaniu aplikacji w przyszłości.
+## <a name="sample-code-walkthrough"></a>Przewodnik po przykładzie kodu
+W poniższych sekcjach opisano sposób skonfigurowania przykładowego kodu aplikacji. Udziału można używać jako przewodnika podczas programowania aplikacji w przyszłości.
 
 ### <a name="add-authentication-support"></a>Dodaj obsługę uwierzytelniania
 
-Można teraz skonfigurować aplikację do używania usługi Azure AD B2C. Aplikacja komunikuje się z usługi Azure AD B2C, wysyłając żądania uwierzytelniania OpenID Connect. Żądania jest wymagane przez środowisko użytkownika, które chce wykonać określając zasady aplikacji. Biblioteka OWIN firmy Microsoft umożliwia wysyłać te żądania, wykonania zasady, zarządzania sesjami użytkownika i inne.
+Teraz można skonfigurować aplikację do używania usługi Azure AD B2C. Aplikacja komunikuje się z usługą Azure AD B2C, wysyłając żądania uwierzytelniania OpenID Connect. Żądania dyktowanie środowisko użytkownika, który chce wykonać, określając zasady aplikacji. Przy użyciu biblioteki OWIN firmy Microsoft, do wysyłania tych żądań, wykonanie zasad, zarządzanie sesje użytkowników oraz inne funkcje.
 
 #### <a name="install-owin"></a>Instalowanie interfejsu OWIN
 
-Aby rozpocząć, Dodaj pakiety NuGet oprogramowanie pośredniczące OWIN do projektu przy użyciu konsoli Menedżera pakietów programu Visual Studio.
+Aby rozpocząć, Dodaj pakiety NuGet oprogramowanie pośredniczące OWIN do projektu przy użyciu konsoli Menedżera pakietów Visual Studio.
 
 ```Console
 PM> Install-Package Microsoft.Owin.Security.OpenIdConnect
@@ -151,9 +153,9 @@ public partial class Startup
 
 #### <a name="configure-the-authentication-middleware"></a>Konfigurowanie oprogramowania pośredniczącego uwierzytelniania
 
-Otwórz plik `App_Start\Startup.Auth.cs` i wdrożenie `ConfigureAuth(...)` metody. Parametry podane `OpenIdConnectAuthenticationOptions` służyć jako współrzędnych dla aplikacji w celu komunikowania się z usługą Azure AD B2C. Jeśli nie określono niektórych parametrów, użyje wartości domyślnej. Na przykład firma Microsoft nie określaj `ResponseType` w próbce, dlatego wartość domyślna `code id_token` będzie służyć do wszystkich żądań wychodzących do usługi Azure AD B2C.
+Otwórz plik `App_Start\Startup.Auth.cs` i zaimplementować `ConfigureAuth(...)` metody. Parametry podane `OpenIdConnectAuthenticationOptions` służyć jako współrzędnych dla aplikacji do komunikowania się z usługą Azure AD B2C. Jeśli niektóre parametry nie jest określony, użyje wartości domyślnej. Na przykład firma Microsoft nie określaj `ResponseType` w przykładzie, więc wartość domyślna `code id_token` zostaną użyte na każde wychodzące żądanie do usługi Azure AD B2C.
 
-Należy również skonfigurować plik cookie uwierzytelniania. Oprogramowanie pośredniczące OpenID Connect używa plików cookie, aby zachować sesje użytkowników, między innymi.
+Należy również skonfigurować uwierzytelniania plików cookie. Oprogramowania pośredniczącego OpenID Connect używa plików cookie w celu zachowania sesji użytkownika, między innymi.
 
 ```CSharp
 // App_Start\Startup.Auth.cs
@@ -203,20 +205,20 @@ public partial class Startup
 }
 ```
 
-W `OpenIdConnectAuthenticationOptions` powyżej, definiujemy zestaw funkcji wywołania zwrotnego dla określonych powiadomień, które są odbierane przez oprogramowanie pośredniczące OpenID Connect. Te zachowania są definiowane przy użyciu `OpenIdConnectAuthenticationNotifications` obiektu i przechowywane w `Notifications` zmiennej. W naszym przykładzie definiujemy trzech różnych wywołań zwrotnych w zależności od zdarzenia.
+W `OpenIdConnectAuthenticationOptions` powyżej, możemy zdefiniować zestaw funkcji wywołania zwrotnego dla określonego powiadomienia, które są odbierane przez oprogramowanie pośredniczące uwierzytelniania OpenID Connect. Te zachowania są definiowane przy użyciu `OpenIdConnectAuthenticationNotifications` obiektu i przechowywane w `Notifications` zmiennej. W naszym przykładzie definiujemy trzech różnych wywołań zwrotnych w zależności od zdarzenia.
 
 ### <a name="using-different-policies"></a>Przy użyciu różnych zasad
 
-`RedirectToIdentityProvider` Powiadomień jest zawsze wyzwalane, gdy żądań do usługi Azure AD B2C. W funkcji wywołania zwrotnego `OnRedirectToIdentityProvider`, sprawdzamy w wywołaniu wychodzących, jeśli chcemy użyć różnych zasad. Aby nie resetowania haseł lub edytowanie profilu, trzeba użyć odpowiednich zasad, takich jak zasady, zamiast domyślnej zasady "Rejestracji i logowania" resetowania hasła.
+`RedirectToIdentityProvider` Przy każdym wysłaniu żądania do usługi Azure AD B2C jest wyzwalane powiadomienie. W funkcji wywołania zwrotnego `OnRedirectToIdentityProvider`, możemy sprawdzić, w wywołaniu wychodzących, jeśli chcemy użyć różnych zasad. Aby można było wykonać Resetowanie hasła lub edytowania profilu, należy użyć odpowiednich zasad, takich jak zasady, zamiast domyślnych zasad "Zarejestruj się lub zaloguj się" resetowania hasła.
 
-W naszym przykładzie gdy użytkownik chce, aby zresetować hasło lub edytowanie profilu, dodamy zasady, które firma Microsoft nie chce używać w kontekście OWIN. Który może odbywać się w następujący sposób:
+W naszym przykładzie gdy użytkownik chce, aby zresetować hasło lub dokonać edycji profilu, dodamy zasad które firma Microsoft nie chce używać w kontekście OWIN. Można to zrobić, wykonując następujące czynności:
 
 ```CSharp
     // Let the middleware know you are trying to use the edit profile policy
     HttpContext.GetOwinContext().Set("Policy", EditProfilePolicyId);
 ```
 
-I funkcja wywołania zwrotnego można zaimplementować `OnRedirectToIdentityProvider` przez wykonanie następujących czynności:
+I można zaimplementować funkcję wywołania zwrotnego `OnRedirectToIdentityProvider` , wykonując następujące czynności:
 
 ```CSharp
 /*
@@ -240,11 +242,11 @@ private Task OnRedirectToIdentityProvider(RedirectToIdentityProviderNotification
 
 ### <a name="handling-authorization-codes"></a>Obsługa kodów autoryzacji
 
-`AuthorizationCodeReceived` Powiadomień jest wyzwalane po odebraniu kod autoryzacji. Oprogramowanie pośredniczące OpenID Connect nie obsługuje kodów wymianę tokenów dostępu. Należy ręcznie wymienić kod tokenu w funkcji wywołania zwrotnego. Aby uzyskać więcej informacji, zapoznaj się [dokumentacji](active-directory-b2c-devquickstarts-web-api-dotnet.md) objaśniający sposób.
+`AuthorizationCodeReceived` Jest wyzwalane powiadomienie, po odebraniu kodu autoryzacji. Oprogramowania pośredniczącego OpenID Connect nie obsługuje wymianę kodów dla tokenów dostępu. Można ręcznie wymienić kod tokenu w funkcji wywołania zwrotnego. Aby uzyskać więcej informacji można znaleźć w [dokumentacji](active-directory-b2c-devquickstarts-web-api-dotnet.md) objaśniający sposób.
 
 ### <a name="handling-errors"></a>Obsługa błędów
 
-`AuthenticationFailed` Powiadomień jest wyzwalane, gdy uwierzytelnianie nie powiedzie się. Metody wywołania zwrotnego może obsługiwać błędy, zgodnie z wymaganiami. Należy jednak dodać wyboru dla kodu błędu `AADB2C90118`. Podczas wykonywania zasady "Rejestracji i logowania", użytkownik ma możliwość wybierz **nie pamiętasz hasła?** łącza. W takim przypadku usługi Azure AD B2C wysyła aplikacji, ten kod błędu wskazujący, czy aplikacji należy wysłać żądanie, zamiast zasady resetowania hasła.
+`AuthenticationFailed` Jest wyzwalane powiadomienie, gdy uwierzytelnianie nie powiedzie się. W jego metody wywołania zwrotnego może obsługiwać błędy, jak chcesz. Należy jednak dodać Wyszukaj kod błędu: `AADB2C90118`. W czasie wykonywania zasad "Rejestracji lub logowania" użytkownik musi wybrać **nie pamiętasz hasła?** łącza. W takiej sytuacji usługi Azure AD B2C wysyła aplikacji, ten kod błędu wskazujący, że aplikacji należy upewnić żądanie zamiast przy użyciu zasad resetowania hasła.
 
 ```CSharp
 /*
@@ -274,11 +276,11 @@ private Task OnAuthenticationFailed(AuthenticationFailedNotification<OpenIdConne
 }
 ```
 
-### <a name="send-authentication-requests-to-azure-ad"></a>Wysyłanie żądania uwierzytelniania do usługi Azure AD
+### <a name="send-authentication-requests-to-azure-ad"></a>Wysyłanie żądania uwierzytelnienia do usługi Azure AD
 
-Aplikacji jest teraz prawidłowo skonfigurowana do komunikowania się z usługą Azure AD B2C przy użyciu protokołu uwierzytelniania OpenID Connect. OWIN zarządza szczegółowe informacje, obsługuje tworzenie komunikatów uwierzytelniania, sprawdzanie poprawności tokenów z usługi Azure AD B2C i podtrzymywanie sesji użytkowników. Wszystkie opcje, które pozostaje ma inicjować przepływ każdego użytkownika.
+Aplikacji jest prawidłowo skonfigurowany do komunikowania się z usługą Azure AD B2C przy użyciu protokołu uwierzytelniania OpenID Connect. OWIN zarządza szczegóły obsługuje tworzenie komunikatów uwierzytelniania, sprawdzanie poprawności tokenów z usługi Azure AD B2C i podtrzymywanie sesji użytkowników. Pozostaje tylko do inicjowania przepływu każdego użytkownika.
 
-Gdy użytkownik wybierze **up logowania/logowania**, **edytowanie profilu**, lub **resetowania hasła** w aplikacji sieci web skojarzonej akcji jest wywoływana w `Controllers\AccountController.cs`:
+Gdy użytkownik wybierze **Sign up/logowanie w**, **Edytuj profil**, lub **Resetuj hasło** w aplikacji sieci web skojarzone z akcją jest wywoływana w `Controllers\AccountController.cs`:
 
 ```CSharp
 // Controllers\AccountController.cs
@@ -335,7 +337,7 @@ public void ResetPassword()
 }
 ```
 
-Aby się wylogować użytkownika z poziomu aplikacji umożliwia także OWIN. W `Controllers\AccountController.cs` mamy:
+Korzystanie z OWIN, można również wylogowania użytkownika z aplikacji. W `Controllers\AccountController.cs` mamy:
 
 ```CSharp
 // Controllers\AccountController.cs
@@ -355,7 +357,7 @@ public void SignOut()
 }
 ```
 
-Oprócz jawnie wywoływanie zasad, można użyć `[Authorize]` tag w kontrolerach, który wykonuje zasadę, jeśli użytkownik nie jest zalogowany. Otwórz `Controllers\HomeController.cs` i Dodaj `[Authorize]` tag do kontrolera oświadczeń.  Wybiera OWIN ostatnio zasady skonfigurowane podczas obliczania `[Authorize]` tag zostaje trafiony.
+Oprócz jawne wywołanie zasad, można użyć `[Authorize]` tag w kontrolerach, który wykonuje zasady, jeśli użytkownik nie jest zalogowany. Otwórz `Controllers\HomeController.cs` i Dodaj `[Authorize]` tag, aby kontroler oświadczeń.  Wybiera OWIN, ostatnie zasady skonfigurowane, kiedy `[Authorize]` tag tych limitów zostanie osiągnięty.
 
 ```CSharp
 // Controllers\HomeController.cs
@@ -367,11 +369,11 @@ public ActionResult Claims()
   ...
 ```
 
-### <a name="display-user-information"></a>Wyświetl informacje o użytkowniku
+### <a name="display-user-information"></a>Wyświetlaj informacje o użytkowniku
 
-Podczas uwierzytelniania użytkowników za pomocą protokołu OpenID Connect, usługi Azure AD B2C zwraca token identyfikator aplikacji, która zawiera **oświadczeń**. Te są potwierdzeniami dotyczącymi użytkownika. Aby spersonalizować aplikacji może użyć oświadczeń.
+Podczas uwierzytelniania użytkowników za pomocą protokołu OpenID Connect, usługi Azure AD B2C zwraca tokenu Identyfikacyjnego aplikacja, która zawiera **oświadczeń**. Są to asercje o użytkowniku. Korzystanie z oświadczeń, aby spersonalizować Twojej aplikacji.
 
-Otwórz plik `Controllers\HomeController.cs`. Oświadczenia użytkowników są dostępne w kontrolerach za pośrednictwem `ClaimsPrincipal.Current` obiekt główny zabezpieczeń.
+Otwórz plik `Controllers\HomeController.cs`. Dostęp do oświadczenia użytkownika w kontrolerach za pośrednictwem `ClaimsPrincipal.Current` podmiotu zabezpieczeń.
 
 ```CSharp
 // Controllers\HomeController.cs
@@ -385,4 +387,4 @@ public ActionResult Claims()
 }
 ```
 
-Możesz uzyskać dostęp, że aplikacja odbiera w taki sam sposób.  Lista wszystkich oświadczeń aplikacja odbiera jest dostępne na **oświadczeń** strony.
+Wszelkie roszczenia, które aplikacja otrzyma w taki sam sposób możesz uzyskać dostęp.  Lista wszystkich oświadczeń odbiera aplikacja jest dostępna dla Ciebie na **oświadczeń** strony.

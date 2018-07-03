@@ -1,71 +1,71 @@
 ---
-title: " Zarządzanie serwera konfiguracji na potrzeby odzyskiwania po awarii serwera fizycznego z usługą Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: W tym artykule opisano sposób zarządzania istniejącego serwera konfiguracji na potrzeby odzyskiwania po awarii serwera fizycznego na platformie Azure, z usługą Azure Site Recovery.
+title: " Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii serwerów fizycznych z usługą Azure Site Recovery | Dokumentacja firmy Microsoft"
+description: W tym artykule opisano sposób zarządzania istniejącego serwera konfiguracji odzyskiwania po awarii serwerów fizycznych na platformę Azure za pomocą usługi Azure Site Recovery.
 services: site-recovery
 author: AnoopVasudavan
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 07/01/2018
 ms.author: anoopkv
-ms.openlocfilehash: 580d32a51f6b38916ddccd46784b80b1179c29c4
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0b30e4df71bae631366e81ebd2d4e1c467981fbe
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31598867"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341964"
 ---
-# <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Zarządzanie serwera konfiguracji na potrzeby odzyskiwania po awarii serwera fizycznego
+# <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii serwerów fizycznych
 
-Lokalny serwer konfiguracji należy skonfigurować korzystając z [usługi Azure Site Recovery](site-recovery-overview.md) usługi odzyskiwania po awarii serwerów fizycznych do platformy Azure. Serwer konfiguracji koordynuje komunikacji między komputerami lokalnymi i Azure i zarządza replikacji danych. Ten artykuł zawiera podsumowanie typowych zadań zarządzania serwera konfiguracji po jego wdrożeniu.
+Ustaw się na lokalnym serwerze konfiguracji, gdy używasz [usługi Azure Site Recovery](site-recovery-overview.md) usługi odzyskiwania po awarii serwerów fizycznych na platformę Azure. Serwer konfiguracji służy do koordynowania komunikacji między maszyn w środowisku lokalnym i platformą Azure oraz do zarządzania replikacją danych. Ten artykuł zawiera podsumowanie typowych zadań zarządzania na serwerze konfiguracji po jej wdrożeniu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tabeli przedstawiono wymagania wstępne dotyczące wdrażania na lokalnej maszynie serwera konfiguracji.
+W tabeli przedstawiono wymagania wstępne dotyczące wdrażania w środowisku lokalnym komputera serwera konfiguracji.
 
 | **Składnik** | **Wymaganie** |
 | --- |---|
 | Rdzenie procesora CPU| 8 |
 | Pamięć RAM | 16 GB|
-| Liczba dysków | 3, w tym dysku systemu operacyjnego, dysku pamięci podręcznej serwera przetwarzania i przechowywania dysku powrotu po awarii |
+| Liczba dysków | 3, w tym dysku systemu operacyjnego, dysk pamięci podręcznej serwera przetwarzania i dysk przechowywania na potrzeby powrotu po awarii |
 | Wolne miejsce na dysku (pamięć podręczna serwera przetwarzania) | 600 GB
 | Wolne miejsce na dysku (dysk przechowywania) | 600 GB|
 | System operacyjny  | Windows Server 2012 R2 <br> Windows Server 2016 |
 | Ustawienia regionalne systemu operacyjnego | English (US)|
 | Wersja programu VMware vSphere PowerCLI | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0")|
 | Role systemu Windows Server | Nie włączaj tych ról: <br> - Active Directory Domain Services <br>- Internet Information Services <br> - Hyper-V |
-| Zasady grupy| Nie włączaj tych zasad grupy: <br> -Uniemożliwić dostęp do wiersza polecenia <br> -Uniemożliwić dostęp do narzędzia do edycji rejestru <br> — Logika zaufania dla załączników plików <br> -Włącz wykonywanie skryptu <br> [Dowiedz się więcej](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-| IIS | -Brak istniejącego domyślnej witryny sieci Web <br> -Włącz [uwierzytelnianie anonimowe](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Włącz [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ustawienie  <br> -Brak istniejącego witryny sieci Web/aplikacja nasłuchuje na porcie 443<br>|
-| Typ karty Sieciowej | VMXNET3 (jeśli są wdrażane jako maszyny Wirtualnej VMware) |
+| Zasady grupy| Nie włączaj tych zasad grupy: <br> -Zapobieganie dostępowi do wiersza polecenia <br> -Uniemożliwić dostęp do narzędzi edycji rejestru <br> — Logika zaufania dla plików załączników <br> -Włącz wykonywanie skryptu <br> [Dowiedz się więcej](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
+| IIS | -Brak wcześniej istniejącej domyślnej witryny sieci Web <br> -Włącz [uwierzytelnianie anonimowe](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Włącz [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ustawienie  <br> -Brak istniejące witryny sieci Web/aplikacja nasłuchuje na porcie 443<br>|
+| Typ karty NIC | Innego VMXNET3 (jeśli jest wdrażane jako maszyny Wirtualnej VMware) |
 | Typ adresu IP | Statyczny |
-| Dostęp do Internetu | Serwer musi mieć dostęp do tych adresów URL: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - dc.services.visualstudio.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (nie wymaga proces skalowania w poziomie serwerów) <br> - time.nist.gov <br> - time.windows.com |
+| Dostęp do Internetu | Serwer musi mieć dostęp do tych adresów URL: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - dc.services.visualstudio.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (niewymagane w przypadku serwerów przetwarzania skalowalnego w poziomie) <br> - time.nist.gov <br> - time.windows.com |
 | Porty | 443 (organizowanie kanału sterowania)<br>9443 (transport danych)|
 
 ## <a name="download-the-latest-installation-file"></a>Pobierz najnowszy plik instalacyjny
 
-Najnowszą wersję pliku instalacyjnego serwera konfiguracji jest dostępna w portalu usługi Site Recovery. Ponadto można go pobrać bezpośrednio z [Microsoft Download Center](http://aka.ms/unifiedsetup).
+Najnowszą wersję pliku instalacyjnego serwera konfiguracji jest dostępny w portalu usługi Site Recovery. Ponadto można go pobrać bezpośrednio z [Microsoft Download Center](http://aka.ms/unifiedsetup).
 
-1. Zaloguj się do portalu Azure i przejdź do magazynu usług odzyskiwania.
-2. Przejdź do **infrastrukturę odzyskiwania lokacji** > **serwery konfiguracji** (w obszarze VMware i maszyn fizycznych).
+1. Zaloguj się do witryny Azure portal i przejdź do magazynu usługi Recovery Services.
+2. Przejdź do **infrastruktura usługi Site Recovery** > **serwery konfiguracji** (w ramach programu VMware i maszyn fizycznych).
 3. Kliknij przycisk **+ serwery** przycisku.
-4. Na **Dodaj serwer** kliknij przycisk pobierania, aby pobrać klucz rejestracji. Ten klucz jest wymagane podczas instalacji serwera konfiguracji, aby zarejestrować go z usługą Azure Site Recovery.
-5. Kliknij przycisk **Pobierz Instalatora Microsoft Azure Site Recovery Unified** łącze, aby pobrać najnowszą wersję serwera konfiguracji.
+4. Na **Dodaj serwer** kliknij przycisk pobierania, aby pobrać klucz rejestracji. Będzie on potrzebny podczas instalacji serwera konfiguracji, aby zarejestrować go za pomocą usługi Azure Site Recovery.
+5. Kliknij przycisk **Pobierz Microsoft Azure Site Recovery Unified Setup** link, aby pobrać najnowszą wersję serwera konfiguracji.
 
   ![Strona pobierania](./media/physical-manage-configuration-server/downloadcs.png)
 
 
-## <a name="install-and-register-the-server"></a>Zainstaluj i Zarejestruj serwer
+## <a name="install-and-register-the-server"></a>Instalowanie i rejestrowanie serwera
 
 1. Uruchom plik instalacyjny ujednoliconego instalatora.
-2. W **przed rozpoczęciem**, wybierz pozycję **zainstalować serwer konfiguracji i serwera przetwarzania**.
+2. W **przed rozpoczęciem**, wybierz opcję **Zainstaluj serwer konfiguracji i serwer przetwarzania**.
 
     ![Przed rozpoczęciem](./media/physical-manage-configuration-server/combined-wiz1.png)
 
 3. W obszarze **Licencja na oprogramowanie innej firmy** kliknij pozycję **Akceptuję**, aby pobrać i zainstalować program MySQL.
-4. W obszarze **Ustawienia internetowe** określ, jak dostawca działający na serwerze konfiguracji ma się łączyć z usługą Azure Site Recovery przez Internet. Upewnij się, że zezwolono odpowiednie adresy URL.
+4. W obszarze **Ustawienia internetowe** określ, jak dostawca działający na serwerze konfiguracji ma się łączyć z usługą Azure Site Recovery przez Internet. Upewnij się, że zezwolono wymaganego adresów URL.
 
-    - Jeśli chcesz się połączyć z serwerem proxy aktualnie skonfigurowany na komputerze, wybierz opcję **nawiązywanie połączenia z usługi Azure Site Recovery przy użyciu serwera proxy**.
+    - Jeśli chcesz się połączyć z serwerem proxy, który jest obecnie skonfigurowane na maszynie, wybierz opcję **nawiązywanie połączenia z usługi Azure Site Recovery przy użyciu serwera proxy**.
     - Jeśli chcesz, aby dostawca łączył się bezpośrednio, wybierz opcję **Połącz bezpośrednio z usługi Azure Site Recovery bez serwera proxy**.
-    - Jeśli istniejący serwer proxy wymaga uwierzytelnienia, lub jeśli chcesz użyć niestandardowego serwera proxy dla połączenia dostawcy, wybierz opcję **Połącz przy użyciu niestandardowych ustawień serwera proxy**i określ adres, port oraz poświadczenia.
+    - Jeśli istniejący serwer proxy wymaga uwierzytelniania lub chcesz użyć niestandardowego serwera proxy dla połączenia dostawcy, wybierz opcję **Połącz przy użyciu niestandardowych ustawień serwera proxy**, a następnie określ adres, port i poświadczenia.
      ![Zapora](./media/physical-manage-configuration-server/combined-wiz4.png)
 6. W kroku **Sprawdzanie wymagań wstępnych** Instalator przeprowadza kontrolę w celu upewnienia się, że można uruchomić instalację. Jeśli zostanie wyświetlone ostrzeżenie dotyczące **kontroli synchronizacji czasu globalnego**, sprawdź, czy czas zegara systemowego (ustawienia **Data i godzina**) jest taki sam jak dla strefy czasowej.
 
@@ -73,7 +73,7 @@ Najnowszą wersję pliku instalacyjnego serwera konfiguracji jest dostępna w po
 7. W obszarze **Konfiguracja programu MySQL** utwórz poświadczenia do logowania się do zainstalowanego wystąpienia serwera programu MySQL.
 
     ![MySQL](./media/physical-manage-configuration-server/combined-wiz6.png)
-8. W obszarze **Szczegóły środowiska** wybierz, czy zamierzasz replikować maszyny wirtualne programu VMware. Jeśli jesteś, Instalator sprawdza, czy zainstalowana jest PowerCLI 6.0.
+8. W obszarze **Szczegóły środowiska** wybierz, czy zamierzasz replikować maszyny wirtualne programu VMware. Jeśli jesteś, Instalator sprawdza, czy interfejs PowerCLI 6.0 jest zainstalowany.
 9. W obszarze **Lokalizacja instalacji** wybierz, gdzie mają zostać zainstalowane pliki binarne i gdzie ma być przechowywana pamięć podręczną. Na wybranym dysku musi być co najmniej 5 GB dostępnego miejsca, ale zalecamy dysk pamięci podręcznej z co najmniej 600 GB wolnego miejsca.
 
     ![Lokalizacja instalacji](./media/physical-manage-configuration-server/combined-wiz8.png)
@@ -88,7 +88,7 @@ Najnowszą wersję pliku instalacyjnego serwera konfiguracji jest dostępna w po
 Po zakończeniu rejestracji serwer jest wyświetlany w bloku **Ustawienia** > **Serwery** w magazynie.
 
 
-## <a name="install-from-the-command-line"></a>Zainstaluj z poziomu wiersza polecenia
+## <a name="install-from-the-command-line"></a>Instalowanie przy użyciu wiersza polecenia
 
 Uruchom plik instalacyjny w następujący sposób:
 
@@ -98,7 +98,7 @@ Uruchom plik instalacyjny w następujący sposób:
 
 ### <a name="sample-usage"></a>Przykładowe zastosowanie
   ```
-  MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /xC:\Temp\Extracted
+  MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted
   cd C:\Temp\Extracted
   UNIFIEDSETUP.EXE /AcceptThirdpartyEULA /servermode "CS" /InstallLocation "D:\" /MySQLCredsFilePath "C:\Temp\MySQLCredentialsfile.txt" /VaultCredsFilePath "C:\Temp\MyVault.vaultcredentials" /EnvType "VMWare"
   ```
@@ -125,16 +125,16 @@ Uruchom plik instalacyjny w następujący sposób:
 
 
 
-### <a name="create-file-input-for-mysqlcredsfilepath"></a>Utwórz plik danych wejściowych MYSQLCredsFilePath
+### <a name="create-file-input-for-mysqlcredsfilepath"></a>Tworzenie pliku wejściowego dla MYSQLCredsFilePath
 
-Parametr MySQLCredsFilePath przyjmuje pliku jako dane wejściowe. Utwórz plik w następującym formacie, a następnie przekaż go jako parametr wejściowy MySQLCredsFilePath.
+Parametr MySQLCredsFilePath przyjmuje plik jako dane wejściowe. Utwórz plik w następującym formacie, a następnie przekaż go jako parametr wejściowy MySQLCredsFilePath.
 ```
 [MySQLCredentials]
 MySQLRootPassword = "Password>"
 MySQLUserPassword = "Password"
 ```
-### <a name="create-file-input-for-proxysettingsfilepath"></a>Utwórz plik danych wejściowych ProxySettingsFilePath
-Parametr ProxySettingsFilePath przyjmuje pliku jako dane wejściowe. Utwórz plik w następującym formacie, a następnie przekaż go jako parametr wejściowy ProxySettingsFilePath.
+### <a name="create-file-input-for-proxysettingsfilepath"></a>Tworzenie pliku wejściowego dla ProxySettingsFilePath
+Parametr ProxySettingsFilePath przyjmuje plik jako dane wejściowe. Utwórz plik w następującym formacie, a następnie przekaż go jako parametr wejściowy ProxySettingsFilePath.
 
 ```
 [ProxySettings]
@@ -144,18 +144,18 @@ ProxyPort = "Port"
 ProxyUserName="UserName"
 ProxyPassword="Password"
 ```
-## <a name="modify-proxy-settings"></a>Zmodyfikuj ustawienia serwera proxy
+## <a name="modify-proxy-settings"></a>Modyfikowanie ustawień serwera proxy
 
-Ustawienia serwera proxy dla komputera serwera konfiguracji można zmodyfikować w następujący sposób:
+Można zmodyfikować ustawienia serwera proxy dla komputera serwera konfiguracji w następujący sposób:
 
-1. Zaloguj się na serwerze konfiguracji.
-2. Uruchamianie cspsconfigtool.exe za pomocą skrótu na użytkownika.
-3. Kliknij przycisk **rejestracji magazynu** kartę.
-4. Pobranie nowego pliku rejestracji magazynu z portalu, a następnie przekazać go jako dane wejściowe do narzędzia.
+1. Zaloguj się do serwera konfiguracji.
+2. Uruchom cspsconfigtool.exe za pomocą skrótu w sieci.
+3. Kliknij przycisk **rejestracja w magazynie** kartę.
+4. Pobierz nowy plik rejestracji magazynu z portalu i podaj je jako dane wejściowe do narzędzia.
 
   ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
-5. Podaj nowe szczegóły serwera proxy i kliknij przycisk **zarejestrować** przycisku.
-6. Otwórz okno poleceń programu PowerShell administratora.
+5. Podaj nowe szczegóły serwera proxy, a następnie kliknij przycisk **zarejestrować** przycisku.
+6. Otwórz okno poleceń programu PowerShell.
 7. Uruchom następujące polecenie:
   ```
   $pwd = ConvertTo-SecureString -String MyProxyUserPassword
@@ -165,16 +165,16 @@ Ustawienia serwera proxy dla komputera serwera konfiguracji można zmodyfikować
   ```
 
   >[!WARNING]
-  Jeśli masz serwery dodatkowych procesów podłączone do serwera konfiguracji należy [Popraw ustawienia serwera proxy na wszystkich serwerach proces skalowania w poziomie](vmware-azure-manage-process-server.md#modify-proxy-settings-for-an-on-premises-process-server) w danym wdrożeniu.
+  W przypadku dodatkowych serwerów przetwarzania dołączonych do serwera konfiguracji należy [poprawienie ustawień serwera proxy na wszystkich serwerach proces skalowania w poziomie](vmware-azure-manage-process-server.md#modify-proxy-settings-for-an-on-premises-process-server) w danym wdrożeniu.
 
 ## <a name="reregister-a-configuration-server-with-the-same-vault"></a>Zarejestruj ponownie serwer konfiguracji, w tym samym magazynie
   1. Zaloguj się do serwera konfiguracji.
   2. Uruchom cspsconfigtool.exe za pomocą skrótu na pulpicie.
-  3. Kliknij przycisk **rejestracji magazynu** kartę.
-  4. Pobranie nowego pliku rejestracji z portalu i udostępnij go jako dane wejściowe do narzędzia.
+  3. Kliknij przycisk **rejestracja w magazynie** kartę.
+  4. Pobierz nowy plik rejestracji z portalu, a następnie podać go jako dane wejściowe do narzędzia.
         ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
   5. Podaj szczegóły serwera Proxy, a następnie kliknij przycisk **zarejestrować** przycisku.  
-  6. Otwórz okno poleceń programu PowerShell administratora.
+  6. Otwórz okno poleceń programu PowerShell.
   7. Uruchom następujące polecenie
 
       ```
@@ -185,14 +185,14 @@ Ustawienia serwera proxy dla komputera serwera konfiguracji można zmodyfikować
       ```
 
   >[!WARNING]
-  Jeśli masz wiele serwerów procesu należy [ponownie je zarejestrować](vmware-azure-manage-process-server.md#reregister-a-process-server).
+  Jeśli masz wiele serwerów procesu, musisz [ponownie je zarejestrować](vmware-azure-manage-process-server.md#reregister-a-process-server).
 
-## <a name="register-a-configuration-server-with-a-different-vault"></a>Zarejestruj serwer konfiguracji w innym magazynie
+## <a name="register-a-configuration-server-with-a-different-vault"></a>Rejestrowanie serwera konfiguracji za pomocą innego magazynu
 
 > [!WARNING]
-> Następny krok powoduje usunięcie serwera konfiguracji z bieżącego magazynu, a następnie replikację chronionych maszyn wirtualnych w ramach serwera konfiguracji jest zatrzymana.
+> Następny krok powoduje usunięcie serwera konfiguracji z bieżącego magazynu, a następnie replikację chronionych maszyn wirtualnych na serwerze konfiguracji jest zatrzymana.
 
-1. Zaloguj się do konfiguracji serwera
+1. Zaloguj się do serwera konfiguracji
 2. z wiersza polecenia z uprawnieniami administratora uruchom polecenie:
 
     ```
@@ -200,10 +200,10 @@ Ustawienia serwera proxy dla komputera serwera konfiguracji można zmodyfikować
     net stop dra
     ```
 3. Uruchom cspsconfigtool.exe za pomocą skrótu na pulpicie.
-4. Kliknij przycisk **rejestracji magazynu** kartę.
-5. Pobranie nowego pliku rejestracji z portalu i udostępnij go jako dane wejściowe do narzędzia.
+4. Kliknij przycisk **rejestracja w magazynie** kartę.
+5. Pobierz nowy plik rejestracji z portalu, a następnie podać go jako dane wejściowe do narzędzia.
 6. Podaj szczegóły serwera Proxy, a następnie kliknij przycisk **zarejestrować** przycisku.  
-7. Otwórz okno poleceń programu PowerShell administratora.
+7. Otwórz okno poleceń programu PowerShell.
 8. Uruchom następujące polecenie
     ```
     $pwd = ConvertTo-SecureString -String MyProxyUserPassword
@@ -212,96 +212,96 @@ Ustawienia serwera proxy dla komputera serwera konfiguracji można zmodyfikować
     net start obengine
     ```
 
-## <a name="upgrade-a-configuration-server"></a>Uaktualnianie serwera konfiguracji
+## <a name="upgrade-a-configuration-server"></a>Uaktualnij serwer konfiguracji
 
-Możesz uruchomić pakiety zbiorcze aktualizacji, aby zaktualizować serwer konfiguracji. Aktualizacje mogą być stosowane dla maksymalnie N-4 wersji. Na przykład:
+Możesz uruchamiać pakiety zbiorcze aktualizacji, aby zaktualizować serwer konfiguracji. Aktualizacje mogą być stosowane dla maksymalnie N-4 wersji. Na przykład:
 
-- Jeśli używasz 9.7, 9,8, 9.9 lub 9.10 — można uaktualnić bezpośrednio do 9.11.
-- Jeśli używasz 9.6 lub starszym, i chcesz uaktualnić do 9.11, należy najpierw uaktualnić do wersji 9.7. przed 9.11.
+- Jeśli korzystasz z zbierając 9,7, 9,8, 9.9 lub 9.10 — można uaktualnić bezpośrednio do 9.11.
+- Jeśli korzystasz z 9.6 lub starszym, a chcesz uaktualnić do 9.11, należy najpierw uaktualnić do wersji zbierając 9,7. przed 9.11.
 
-Łącza do pakiety zbiorcze aktualizacji dla uaktualnienia wszystkich wersji serwera konfiguracji są dostępne w [strona typu wiki aktualizacji](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
+Łącza do pakiety zbiorcze aktualizacji dla uaktualnienie dla wszystkich wersji serwera konfiguracji są dostępne w [strona aktualizacji witryny typu wiki](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
 
 Uaktualnij serwer w następujący sposób:
 
-1. Pobierz plik Instalatora aktualizacji na serwerze konfiguracji.
+1. Pobierz plik Instalatora aktualizacji z serwerem konfiguracji.
 2. Kliknij dwukrotnie, aby uruchomić Instalatora.
-3. Instalator wykrywa bieżącą wersję uruchomionych na komputerze.
-4. Kliknij przycisk **OK** do potwierdzenia, a następnie uruchom uaktualnianie. 
+3. Instalator wykrywa bieżąca wersja uruchomiona na maszynie.
+4. Kliknij przycisk **OK** upewnij się, w celu przeprowadzenia uaktualnienia. 
 
 
-## <a name="delete-or-unregister-a-configuration-server"></a>Usuń lub Wyrejestruj serwer konfiguracji
+## <a name="delete-or-unregister-a-configuration-server"></a>Usunąć lub wyrejestrować serwer konfiguracji
 
 > [!WARNING]
-> Upewnij się przed rozpoczęciem likwidowania serwera konfiguracji.
+> Upewnij się przed rozpoczęciem Likwidowanie serwera konfiguracji.
 > 1. [Wyłącz ochronę](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) dla wszystkich maszyn wirtualnych na tym serwerze konfiguracji.
-> 2. [Usuń skojarzenie](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) i [usunąć](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) wszystkie zasady replikacji z serwera konfiguracji.
-> 3. [Usuń](vmware-azure-manage-vcenter.md#delete-a-vcenter-server) wszystkie hosty serwerów/vSphere Vcenter, które są skojarzone z serwerem konfiguracji.
+> 2. [Usuń skojarzenie](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) i [Usuń](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) wszystkie zasady replikacji z serwera konfiguracji.
+> 3. [Usuń](vmware-azure-manage-vcenter.md#delete-a-vcenter-server) wszystkie hosty vSphere/serwerach vCenters, które są skojarzone z serwerem konfiguracji.
 
 
-### <a name="delete-the-configuration-server-from-azure-portal"></a>Usuń serwer konfiguracji z portalu Azure
-1. W portalu Azure, przejdź do **infrastruktura usługi Site Recovery** > **serwery konfiguracji** w menu magazynu.
+### <a name="delete-the-configuration-server-from-azure-portal"></a>Usuwanie serwera konfiguracji z witryny Azure portal
+1. W witrynie Azure portal, przejdź do **infrastruktura usługi Site Recovery** > **serwery konfiguracji** w menu magazynu.
 2. Kliknij serwer konfiguracji, który ma zostać zlikwidowany.
-3. Na stronie Szczegóły serwera konfiguracji, kliknij przycisk **usunąć** przycisku.
+3. Na stronie szczegółów serwera konfiguracji, kliknij przycisk **Usuń** przycisku.
 4. Kliknij przycisk **tak** o potwierdzenie usunięcia serwera.
 
 ### <a name="uninstall-the-configuration-server-and-its-dependencies"></a>Odinstaluj serwer konfiguracji i jego zależności
   > [!TIP]
-  Jeśli planujesz ponowne serwerze konfiguracji z usługą Azure Site Recovery, następnie można przejść do kroku 4 bezpośrednio
+  Jeśli planujesz ponowne serwera konfiguracji za pomocą usługi Azure Site Recovery, następnie możesz przejść do kroku 4 bezpośrednio
 
-1. Zaloguj się jako Administrator serwera konfiguracji.
+1. Zaloguj się do serwera konfiguracji jako Administrator.
 2. Otwórz Panel sterowania > Program > Odinstaluj programy
 3. Należy odinstalować te programy w następującej kolejności:
   * Agent usług Microsoft Azure Recovery Services
-  * Microsoft Azure Site odzyskiwania mobilności usługi/główny serwer docelowy
-  * Dostawcy usługi Microsoft Azure Site Recovery
-  * Serwer procesu/serwera konfiguracji odzyskiwania witryny Microsoft Azure
-  * Microsoft Azure Site odzyskiwania konfiguracji serwera zależności
+  * Microsoft Azure lokacji odzyskiwania mobilności usługi/główny serwer docelowy
+  * Dostawca programu Microsoft Azure Site Recovery
+  * Serwer procesu/serwera konfiguracji odzyskiwania lokacji platformy Microsoft Azure
+  * Zależności serwera konfiguracji odzyskiwania lokacji platformy Microsoft Azure
   * MySQL Server 5.5
-4. Uruchom następujące polecenie z i wiersza polecenia administratora.
+4. Uruchom następujące polecenie i wierszu polecenia administratora.
   ```
   reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
   ```
 
-## <a name="delete-or-unregister-a-configuration-server-powershell"></a>Usuń lub Wyrejestruj serwer konfiguracji (PowerShell)
+## <a name="delete-or-unregister-a-configuration-server-powershell"></a>Usunąć lub wyrejestrować serwer konfiguracji (PowerShell)
 
 1. [Zainstaluj](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) modułu Azure PowerShell
-2. Logowanie do konta platformy Azure przy użyciu polecenia
+2. Logowanie do konta platformy Azure za pomocą polecenia
     
     `Connect-AzureRmAccount`
 3. Wybierz subskrypcję, w którym znajduje się magazyn
 
      `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`
-3.  Teraz skonfigurować kontekst magazynu
+3.  Teraz konfigurować kontekst magazynu
     
     ```
     $vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
     Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
     ```
-4. GET, wybierz serwer konfiguracji
+4. Pobierz, wybierz serwer konfiguracji
 
     `$fabric = Get-AzureRmSiteRecoveryFabric -FriendlyName <name of your configuration server>`
-6. Usuń serwer konfiguracji
+6. Usuwanie serwera konfiguracji
 
     `Remove-AzureRmSiteRecoveryFabric -Fabric $fabric [-Force] `
 
 > [!NOTE]
-> **-Force** opcji w AzureRmSiteRecoveryFabric Usuń może służyć do wymusić usunięcie/usunięcie serwera konfiguracji.
+> **-Force** opcji AzureRmSiteRecoveryFabric Usuń można wymusić usunięcie/usuwanie serwera konfiguracji.
 
 ## <a name="renew-ssl-certificates"></a>Odnawianie certyfikatów SSL
-Serwer konfiguracji jest serwer sieci web wbudowanych, który organizuje działania usługi mobilności, proces serwerów i głównych serwerów docelowych dołączone do niego. Serwer sieci web używa certyfikatu SSL do uwierzytelniania klientów. Certyfikat wygaśnie po upływie trzech lat i mogą być odnawiane w dowolnym momencie.
+Serwer konfiguracji jest serwer sieci web wbudowanych, który organizuje działania usługi mobilności, serwerów przetwarzania i główne serwery docelowe połączoną z nią. Serwer sieci web używa certyfikatu SSL do uwierzytelniania klientów. Certyfikat wygasa po upływie trzech lat i można odnawiać w dowolnym momencie.
 
 ### <a name="check-expiry"></a>Sprawdzanie wygaśnięcia
 
-Dla wdrożenia serwera konfiguracji przed maj 2016 okresu ważności certyfikatu została ustawiona na jeden rok. Jeśli certyfikat jest wkrótce wygaśnie, są następujące:
+Dla wdrożenia serwera konfiguracji, które maja 2016 r. Data ważności certyfikatu została ustawiona na jeden rok. Jeśli masz certyfikat ma wygaśnie, mają miejsce następujące zdarzenia:
 
-- Jeśli data wygaśnięcia jest dwóch miesięcy lub mniej, Usługa rozpoczyna wysyłanie powiadomień, w portalu, a także za pośrednictwem poczty e-mail (Jeśli masz subskrypcję usługi Azure Site Recovery powiadomień).
-- Transparent powiadomienie jest wyświetlane na stronie zasobów magazynu. Kliknij przycisk transparentu, aby uzyskać więcej informacji.
-- Jeśli widzisz **Uaktualnij teraz** przycisku, oznacza to, czy niektóre składniki w danym środowisku, które nie zostały uaktualnione do 9.4.xxxx.x lub nowszej wersji. Należy uaktualnić składniki, aby odnowić certyfikat. Nie można odnowić w starszych wersjach.
+- Gdy data wygaśnięcia jest dwa miesiące lub mniej, uruchamiania usługi, wysyłania powiadomień w portalu i za pośrednictwem poczty e-mail (Jeśli masz subskrypcję powiadomień usługi Azure Site Recovery).
+- Transparent powiadomienia zostanie wyświetlona na stronie zasobów magazynu. Kliknij transparent, aby uzyskać więcej informacji.
+- Jeśli widzisz **Uaktualnij teraz** przycisku, oznacza to, że istnieją niektóre składniki w danym środowisku, które nie zostały uaktualnione do 9.4.xxxx.x lub nowsze wersje. Uaktualnij składniki, aby odnowić certyfikat. Nie można odnowić w starszych wersjach.
 
 ### <a name="renew-the-certificate"></a>Odnów certyfikat
 
-1. W magazynie, otwórz **infrastruktura usługi Site Recovery** > **serwera konfiguracji**i kliknij serwer konfiguracji.
-2. Data wygaśnięcia jest wyświetlany w obszarze **kondycję konfiguracji serwera**
+1. W magazynie, otwórz **infrastruktura usługi Site Recovery** > **serwera konfiguracji**i kliknij serwer, wymaganej konfiguracji.
+2. Data ważności jest wyświetlany w obszarze **kondycji serwera konfiguracji**
 3. Kliknij przycisk **odnawiania certyfikatów**. 
 
 

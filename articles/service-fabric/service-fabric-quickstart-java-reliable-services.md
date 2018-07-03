@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 10/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 13d350950e91d771b7b4b2310a788537c4c36bd7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5ae6ba28ba448591d58cc3963f5df9a563997ab0
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642397"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959549"
 ---
 # <a name="quickstart-deploy-a-java-service-fabric-reliable-services-application-to-azure"></a>Szybki start: wdrażanie aplikacji niezawodnych usług usługi Java Service Fabric na platformie Azure
 Usługa Azure Service Fabric to platforma systemów rozproszonych umożliwiająca wdrażanie mikrousług i kontenerów, a także zarządzanie nimi. 
@@ -120,13 +120,13 @@ Aby zaimportować certyfikat w swoim systemie, użyj dowolnej, preferowanej prze
 
 Do aplikacji należy dodać odcisk palca certyfikatu, ponieważ korzysta ona z modeli programowania usługi Service Fabric. 
 
-1. Podczas pracy w zabezpieczonym klastrze potrzebny będzie odcisk palca certyfikatu w pliku ```Voting/VotingApplication/ApplicationManiest.xml```. Uruchom następujące polecenie, aby wyodrębnić odcisk palca certyfikatu.
+1. Podczas pracy w zabezpieczonym klastrze potrzebny będzie odcisk palca certyfikatu w pliku `Voting/VotingApplication/ApplicationManifest.xml`. Uruchom następujące polecenie, aby wyodrębnić odcisk palca certyfikatu.
 
     ```bash
     openssl x509 -in [CERTIFICATE_PEM_FILE] -fingerprint -noout
     ```
 
-2. W obszarze```Voting/VotingApplication/ApplicationManiest.xml``` dodaj następujący fragment kodu w obszarze tagu **ApplicationManifest**. Odciskiem palca z poprzedniego kroku powinien być element **X509FindValue** (bez średników). 
+2. W pliku `Voting/VotingApplication/ApplicationManifest.xml` dodaj następujący fragment kodu w obszarze tagu **ApplicationManifest**. Odciskiem palca z poprzedniego kroku powinien być element **X509FindValue** (bez średników). 
 
     ```xml
     <Certificates>

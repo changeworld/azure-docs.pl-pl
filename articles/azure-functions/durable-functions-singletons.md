@@ -1,6 +1,6 @@
 ---
-title: Wzorce Singleton dla funkcji trwałe - Azure
-description: Jak używać pojedynczych wystąpień w rozszerzeniu Functons trwałe dla usługi Azure Functions.
+title: Wzorce Singleton dla funkcje trwałe - Azure
+description: Jak używać pojedynczych elementów w rozszerzeniu Functons trwałe dla usługi Azure Functions.
 services: functions
 author: cgillum
 manager: cfowler
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: ea8b5db946d6b35ea4583d9170ec36e5f95e16cd
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 71c0cebf676d29308fe9f4942350ae96d3bedcf6
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29972555"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340835"
 ---
-# <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Pojedyncze orchestrators w funkcji trwałe (funkcje platformy Azure)
+# <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Pojedyncze orkiestratorów w funkcje trwałe (usługi Azure Functions)
 
-Dla zadań w tle lub orchestrations aktora stylu, często wymaga upewnić się, że tylko jedno wystąpienie określonego programu orchestrator jest uruchamiany w czasie. Można to zrobić [trwałe funkcje](durable-functions-overview.md) przypisując konkretnego wystąpienia identyfikator programu orchestrator, podczas jej tworzenia.
+Dla zadania w tle lub aranżacji stylu aktora, często musisz upewnij się, że tylko jedno wystąpienie określonego programu orchestrator jest uruchamiany w danym momencie. Można to zrobić [funkcje trwałe](durable-functions-overview.md) , przypisując określony identyfikator wystąpienia do programu orchestrator po jej utworzeniu.
 
-## <a name="singleton-example"></a>Przykład pojedynczego wystąpienia
+## <a name="singleton-example"></a>Przykład pojedyncze
 
-W poniższym przykładzie C# zawiera funkcję wyzwalacza HTTP, która tworzy aranżacji zadania tła singleton. Kod stanowi gwarancję, że istnieje tego tylko jedno wystąpienie określonego wystąpienia identyfikatora.
+C# poniższy kod przedstawia funkcję wyzwalacza HTTP, która tworzy pojedyncze tła zadania aranżacji. Kod daje pewność, że to tylko jedno wystąpienie istnieje dla identyfikatora określonego wystąpienia.
 
 ```cs
 [FunctionName("HttpStartSingle")]
@@ -58,11 +58,14 @@ public static async Task<HttpResponseMessage> RunSingle(
 }
 ```
 
-Domyślnie wystąpienie, które identyfikatory są losowo wygenerowane identyfikatorów GUID. Jednak w takim przypadku Identyfikatora wystąpienia jest przekazywany w danych trasy z podanego adresu URL. Kod wywołuje [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetStatusAsync_) do sprawdzenia, czy wystąpienie o określonym identyfikatorze jest już uruchomiony. Jeśli nie, tworzone jest wystąpienie o tym identyfikatorze.
+Domyślnie wystąpienie, które identyfikatory są losowo generowany identyfikatorów GUID. Ale w tym przypadku identyfikator wystąpienia jest przekazywany w danych trasy z adresu URL. Kod wywołuje [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetStatusAsync_) do sprawdzenia, czy wystąpienie o określonym identyfikatorze jest już uruchomiona. Jeśli nie, wystąpienie jest tworzone za pomocą tego identyfikatora.
 
-Szczegóły implementacji funkcji programu orchestrator nie faktycznie znaczenia. Może to być funkcja regularne orchestrator momencie rozpoczęcia i zakończenia lub może być taki, który działa w nieskończoność (to znaczy [Eternal aranżacji](durable-functions-eternal-orchestrations.md)). Istotne jest tylko kiedykolwiek jednego działania w czasie wystąpienia.
+> [!NOTE]
+> W tym przykładzie jest potencjalnych sytuacji wyścigu. Jeśli dwa wystąpienia **HttpStartSingle** współbieżnie, wyniku wykonywania dwóch różnych utworzeniem wystąpienia Singleton, jeden z nich, które powoduje zastąpienie innych. W zależności od wymagań może mieć niepożądane skutki uboczne. Z tego powodu należy upewnić się, że ma dwóch żądań można wykonać tej funkcji wyzwalacza jednocześnie.
+
+Szczegóły implementacji funkcji programu orchestrator nie faktycznie znaczenia. Może to być funkcja regularne programu orchestrator, która zostanie uruchomione i zakończy, lub może być taki, który działa w nieskończoność (czyli [Eternal aranżacji](durable-functions-eternal-orchestrations.md)). Istotną kwestią jest dostępne tylko w przypadku kiedykolwiek jedno wystąpienie, które działa w danym momencie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak wywołać orchestrations podrzędne](durable-functions-sub-orchestrations.md)
+> [Dowiedz się, jak wywołać podrzędnych aranżacji](durable-functions-sub-orchestrations.md)

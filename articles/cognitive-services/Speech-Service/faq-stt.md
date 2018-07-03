@@ -1,6 +1,6 @@
 ---
-title: Często zadawane pytania dotyczące mowy usługi tekst na platformie Azure | Dokumentacja firmy Microsoft
-description: Poniżej przedstawiono odpowiedzi na pytania najpopularniejszych o mowy na tekst.
+title: Często zadawane pytania dotyczące zamiana mowy na tekst usługi na platformie Azure | Dokumentacja firmy Microsoft
+description: Poniżej przedstawiono odpowiedzi na najpopularniejsze pytania dotyczące zamiana mowy na tekst.
 services: cognitive-services
 author: PanosPeriorellis
 manager: onano
@@ -9,148 +9,138 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 64e505889ef9472603471d67a961985c1290663a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: db57e0bd0f7afcfa836ef6446cdfd74e5d61c440
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054991"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345264"
 ---
-# <a name="custom-speech-service-frequently-asked-questions"></a>Często zadawane pytania dotyczące usługi mowy niestandardowych
+# <a name="custom-speech-service-frequently-asked-questions"></a>Custom Speech Service — często zadawane pytania
 
-Jeśli nie możesz znaleźć odpowiedzi na pytania w tych często zadawanych PYTAŃ, spróbuj pytaniem społeczności niestandardowej usługi rozpoznawania mowy na [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) i [UserVoice](https://cognitive.uservoice.com/)
+Jeśli nie możesz znaleźć odpowiedzi na pytania w tym artykule, spróbuj pytanie społeczności usługi Custom Speech Service na [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) i [UserVoice](https://cognitive.uservoice.com/)
 
 ## <a name="general"></a>Ogólne
 
-**Pytanie**: jaka jest różnica między linii bazowej i mowy niestandardowych modeli tekstu?
+**Pytanie**: jaka jest różnica między linii bazowej i custom Speech modeli tekstu?
 
-**Odpowiedzi**: modele linii bazowej przeprowadzono uczenia z firmą Microsoft, których właścicielem danych i są już wdrożone w chmurze. Modele niestandardowe umożliwiają użytkownikom dostosowania modelu w celu lepszego dopasowania określonym środowisku z określonych hałasu otoczenia lub języka. Fabryka piętra, samochodów, naprawienie streets wymagają dostosowane modelu akustycznego określonych tematów, takich jak biologii, fizycznych radiologii, nazwy produktów i niestandardowych akronimów będzie wymagać model języka.
+**Odpowiedź**: modeli podstawowych przeszkoleni należące do danych firmy Microsoft i są już wdrożone w chmurze. Modele niestandardowe umożliwiają użytkownikom dostosowanie modelu, aby lepiej dopasować określonego środowiska za pomocą określonych hałasu otoczenia albo języka. Fabryk, samochodów, streets hałas wymagałoby dostosowany model akustyczny, natomiast określonych tematów, takich jak biologii, fizyki, radiologii, nazwy produktów i niestandardowe akronimów wymagałoby modelu językowego dostosowane.
 
-**Pytanie**: gdzie uruchomić Aby korzystać z modelu linii bazowej?
+**Pytanie**: gdzie rozpocząć jeśli chcę korzystać z modelu linii bazowej?
 
-**Odpowiedzi**: najpierw należy pobrać [klucza subskrypcji](get-started.md). Jeśli chcesz wykonywać wywołania REST modele predeployed linii bazowej, należy skontaktować się [szczegóły tutaj](rest-apis.md). Jeśli chcesz użyć pobierania Websocket [zestawu SDK](speech-sdk.md)
+**Odpowiedź**: najpierw musisz pobrać [klucz subskrypcji](get-started.md). Jeśli chcesz wykonywać wywołania REST do modeli predeployed linii bazowej, zapoznaj się z [szczegółowych informacji w tym miejscu](rest-apis.md). Jeśli chcesz użyć funkcji WebSockets pobierania [zestawu SDK](speech-sdk.md)
 
-**Pytanie**: wykonaj I zawsze jest konieczne do tworzenia modelu mowy niestandardowych?
+**Pytanie**: mogę zawsze potrzebne do tworzenia modelu mowy niestandardowej?
 
-**Odpowiedzi**: nie, jeśli aplikacja używa ogólnego języka codziennie bez słownika niestandardowego lub ten może następnie rzadkich nie musisz dostosować modelu. Ponadto, jeśli aplikacja ma być używany w środowisku, w którym istnieje niewielkiego lub żadnego szumu tła, a następnie nie trzeba dostosować albo. Portal umożliwia użytkownikom wdrażać linię bazową i dostosowane modeli i uruchamiać testy dokładności przed nimi. Użytkownicy można użyć tej funkcji do mierzenia dokładność vs linii bazowej niestandardowych modelu.
+**Odpowiedź**: nie, jeśli aplikacja korzysta ogólnych języka dnia na dzień, a następnie nie należy dostosować model. Ponadto, jeśli w środowisku, w którym istnieje niewielki lub hałas w tle, a następnie trzeba dostosować albo korzystania z aplikacji. Portal pozwala użytkownikom na wdrażanie linii bazowej i niestandardowe modele i uruchomić testy dokładności względem nich. Użytkowników ta funkcja służy do mierzenia dokładności vs linii bazowej modelu niestandardowego.
 
-**Pytanie**: jak można ustalić, po zakończeniu przetwarzania zestawu danych lub modelu?
+**Pytanie**: skąd mam wiedzieć, po zakończeniu przetwarzania zestawu danych lub modelu?
 
-**Odpowiedzi**: Stan modelu lub zestawu danych w tabeli jest obecnie tylko chcesz wiedzieć.
-Po zakończeniu przetwarzania stan będzie "Gotowe".
+**Odpowiedź**: obecnie stan modelu lub zestawu danych w tabeli jest tylko chcesz wiedzieć.
+Po zakończeniu przetwarzania stan będzie mieć stan "Powodzenie".
 
-**Pytanie**: można utworzyć więcej niż jednego modelu w czasie?
+**Pytanie**: można utworzyć więcej niż jednego modelu?
 
-**Odpowiedzi**: nie ma żadnego limitu liczby modeli znajdują się w kolekcji, ale tylko jeden z nich można tworzyć w czasie na każdej stronie.
-Na przykład nie można uruchomić procesu tworzenia modelu języka, jeśli jest aktualnie model języka etap procesu.
-Można jednak mieć modelu akustycznego i model języka przetwarzania w tym samym czasie. 
+**Odpowiedź**: nie ma żadnego limitu, na ile modeli znajdują się w kolekcji.
 
-**Pytanie**: I zrealizowany wprowadzone błędu. Jak anulować Moje importu danych lub modelu tworzenia, która jest w toku? 
+**Pytanie**: czy mogę zrealizowane, czy w przypadku popełnienia. Jak anulować Moje importowania danych lub modelu tworzenia, który jest w toku? 
 
-**Odpowiedzi**: obecnie nie można cofnąć procesu dostosowania akustycznego lub języka.
-Importowane dane mogą zostać usunięte, po zakończeniu importowania
+**Odpowiedź**: obecnie nie można wycofać procesem adaptacji akustyczne lub języka. Zaimportowane dane i modeli, można usunąć po umieszczeniu ich w stan końcowy.
 
-**Pytanie**: jaka jest różnica między wyszukiwania i modeli dyktowania i konwersacji modeli?
+**Pytanie**: jaka jest różnica między wyszukiwania & dyktowanie modeli i modele konwersacji?
 
-**Odpowiedzi**: istnieją dwa Base akustycznego & języka modeli do wyboru w niestandardowej usługi rozpoznawania mowy.
-zapytania wyszukiwania lub dyktowania. Microsoft Conversational AM jest rozpoznawania mowy używany w stylu konwersacji.
-Tego typu mowy jest zazwyczaj kierowane na innej osobie, takich jak w centrach wywołania lub spotkania.
+**Odpowiedź**: istnieją więcej niż jeden punkt odniesienia modele mogą wybierać usługi mowy. Model konwersacji jest odpowiednia dla rozpoznawania mowy, używany w stylu konwersacji. W tym modelu będzie idealne rozwiązanie w przypadku wywołania trnascribing podczas wyszukiwania i dyktowanie jest idealne dla aplikacji głosu wyzwolone. Uniwersalny jest nowy model, który ma na celu obu scenariuszy.
 
-**Pytanie**: można aktualizować Mój istniejący model (model układania)?
+**Pytanie**: czy mogę zaktualizować Mój istniejący model (model układania)?
 
-**Odpowiedzi**: nie można zaktualizować istniejącej modeli. Jako obejście połączyć stary zestaw danych z nowym i readapt.
+**Odpowiedź**: nie można zaktualizować istniejących modeli. Jako obejścia łączyć stary zestaw danych przy użyciu nowego i readapt.
 
-Zestawy danych w starym i nowym musi można połączyć w jednym zip (jeśli są to dane akustycznego) lub pliku txt, jeśli są to dane języka. Raz dostosowania odbywa się można cofnąć wdrożone, można uzyskać nowy punkt końcowy nowe konieczność zaktualizowanym modelu.
+Stare i nowe zestawy danych muszą można połączyć w pojedynczy plik zip (jeśli jest dane akustyczne) lub plik z rozszerzeniem txt, jeśli są to dane języka. Po dostosowaniu odbywa się nowych musi aktualizowanego modelu można cofnąć wdrożone do uzyskania nowego punktu końcowego
 
-**Pytanie**: gdzie należy współbieżności wyższa niż wartość domyślna lub co to jest oferowana w portalu. 
+**Pytanie**: co zrobić, jeśli potrzebujesz wyższej współbieżności dla mojego modelu deloyed niż treści oferowanych w portalu. 
 
-**Odpowiedzi**: można skalować modelu w przyrostach 20 równoczesnych żądań. 
+**Odpowiedź**: można zwiększać z przyrostem równym 20 równoczesnych żądań modelu. 
 
-Skontaktuj się z nami, jeśli wymaga zwiększenia skali.
+Skontaktuj się z nami, jeśli potrzebujesz większej skali.
 
-**Pytanie**: można pobrać moich modelu i uruchom lokalnie?
+**Pytanie**: można pobrać swój model i uruchomić go lokalnie?
 
-**Odpowiedzi**: modeli nie może zostać pobrana i wykonywane lokalnie.
+**Odpowiedź**: modeli nie mogą być pobierane i wykonywany lokalnie.
 
-**Pytanie**: Moje żądania rejestrowane?
+**Pytanie**: czy Moje żądania rejestrowane?
 
-**Odpowiedzi**: dostępne są opcje podczas tworzenia wdrożenia można wyłączyć śledzenia, w którym brak audio lub transcriptions będą rejestrowane. W przeciwnym razie żądania zwykle są rejestrowane w usłudze Azure w bezpiecznym magazynie. Jeśli masz więcej prywatności, które uniemożliwiają korzystanie z usługi rozpoznawania mowy niestandardowe, skontaktuj się z kanałów pomocy technicznej.
+**Odpowiedź**: masz do wyboru podczas tworzenia wdrożenia na wyłączenie śledzenia, w tym momencie nie audio lub transkrypcje będą rejestrowane. W przeciwnym razie żądania zwykle są rejestrowane na platformie Azure w bezpiecznym magazynie. Jeśli masz więcej prywatności, które uniemożliwiają przy użyciu Custom Speech Service, skontaktuj się z jednego z kanałów pomocy technicznej.
 
 ## <a name="importing-data"></a>Importowanie danych
 
 **Pytanie**: co to jest limit rozmiaru zestawu danych? Dlaczego? 
 
-**Odpowiedzi**: bieżący limit dla zestawu danych wynosi 2 GB, z powodu ograniczeń rozmiaru pliku dla operacji przekazywania HTTP. 
+**Odpowiedź**: bieżący limit dla zestawu danych wynosi 2 GB, ze względu na ograniczenia rozmiaru pliku do przekazania HTTP. 
 
-**Pytanie**: można I zip pliki tekstowe, aby przekazać plik tekstowy większych? 
+**Pytanie**: może I zip Moje pliki tekstowe, aby przekazać plik tekstowy większych? 
 
-**Odpowiedzi**: nie, obecnie dozwolone są tylko pliki nieskompresowanych tekstu.
+**Odpowiedź**: nie. obecnie dozwolone są tylko pliki nieskompresowanych tekstu.
 
-**Pytanie**: raport danych mówi wystąpiły zniesławiających nie powiodło się. Co to jest problem?
+**Pytanie**: raport danych mówi wystąpiły wypowiedzi nie powiodło się. Na czym polega problem?
 
-**Odpowiedzi**: nie można przekazać 100% zniesławiających w pliku nie jest problemem.
-Jeśli ustawiona większość zniesławiających akustycznego lub język danych (na przykład > 95%) zostały pomyślnie zaimportowane, zestaw danych można używać. Jednak zaleca się, że próby wyjaśnienia przyczyn niepowodzenia zniesławiających i rozwiązać problemy. Najbardziej typowe problemy, takie jak formatowanie błędy, można łatwo rozwiązać. 
+**Odpowiedź**: nie można przekazać 100% wypowiedzi w pliku nie jest problemem.
+Jeśli większość wypowiedzi dane akustyczne i języka zestawu (na przykład > 95%) pomyślnie zaimportowane, zestaw danych może być użyteczne. Jednak zalecane jest, że próby zrozumieć, dlaczego wypowiedzi nie powiodło się i rozwiązać problemy. Najbardziej typowe problemy, takie jak błędy, formatowania można łatwo rozwiązać. 
 
 ## <a name="creating-am"></a>Tworzenie AM
 
-**Pytanie**: ilość danych akustycznych zbędna?
+**Pytanie**: ile dane akustyczne potrzebuję?
 
-**Odpowiedzi**: zalecamy Rozpoczynanie od 30 minut do 1 godziny akustycznego danych
+**Odpowiedź**: zalecamy Rozpoczynanie od 30 minut do 1 godziny dane akustyczne
 
-**Pytanie**: jakie dane należy zebrać?
+**Pytanie**: jakie dane należy zbierać?
 
-**Odpowiedzi**: zbieranie danych, która jest maksymalnie zbliżony scenariusza aplikacji i przypadek użycia, jak to możliwe.
-Zbieranie danych powinien być zgodny aplikacji docelowej i użytkownicy pod względem urządzenie lub urządzenia, środowisk i typy głośników. Ogólnie rzecz biorąc należy zebrać dane z jako szerokiego zakresu głośników, jak to możliwe. 
+**Odpowiedź**: zbieranie danych, które są jak najbliższe danym scenariuszu aplikacji i przypadek użycia, jak to możliwe.
+Zbieranie danych powinien być zgodny w aplikacji docelowej i użytkowników pod kątem urządzeń lub urządzeń, środowisk i typy głośników. Ogólnie rzecz biorąc należy zebrać dane z jako szerokiego zakresu mówiące, jak to możliwe. 
 
 **Pytanie**: jak należy zebrać go? 
 
-**Odpowiedzi**: można utworzyć oddzielną aplikację zbierania danych lub korzystać z niektórych poza półki oprogramowania nagrania audio.
-Można również utworzyć wersję aplikacji, która rejestruje dane audio i użyty. 
+**Odpowiedź**: możesz utworzyć oddzielną aplikację zbierania danych lub korzystać z niektórych off półki oprogramowania nagrywania dźwięku.
+Można również utworzyć wersję aplikacji, który rejestruje dane audio i użyty. 
 
-**Pytanie**: należy wykonać transkrypcji danych dostosowania samodzielnie? 
+**Pytanie**: należy samodzielnie transkrypcja dostosowania danych? 
 
-**Odpowiedzi**: dane muszą zostać przetłumaczone. Można wykonać transkrypcji ją samodzielnie lub użyć usługi professional przekształcania. Niektóre z tych transcribers professional Użyj oraz innym osobom Użyj crowdsourcing.
+**Odpowiedź**: tak! Można także samodzielnie lub użyj usługi profesjonalne transkrypcji. Niektórzy użytkownicy preferują professional transcribers, podczas gdy inne Użyj crowdsourcing lub wykonaj transkrypcje, samodzielnie.
 
-**Pytanie**: jak długo trwa do utworzenia niestandardowych modelu akustycznego?
+## <a name="accuracy-testing"></a>Testowanie dokładności
 
-**Odpowiedzi**: czas przetwarzania służący do tworzenia niestandardowych modelu akustycznego nastąpi taka sama jak długość akustycznego zestawu danych.
-Tak, dostosowane modelu akustycznego utworzone na podstawie pięciu godzinnego zestawu danych potrwa około pięciu godzin do procesu. 
+**Pytanie**: wykonaj, testowanie offline Moje niestandardowy model akustyczny przy użyciu modelu języka niestandardowego?
 
-## <a name="offline-testing"></a>Testowanie offline
+**Odpowiedź**: tak, po prostu wybierz model języka niestandardowego listy rozwijanej, po skonfigurowaniu testu w trybie offline
 
-**Pytanie**: wykonywać, w trybie offline testowanie Moje niestandardowe modelu akustycznego przy użyciu modelu języków niestandardowych?
+**Pytanie**: wykonaj, testowanie offline mojego języka niestandardowego modelu z użyciem niestandardowy model akustyczny?
 
-**Odpowiedzi**: tak, wystarczy zaznaczyć model niestandardowych języka w listy rozwijanej, po skonfigurowaniu testu w trybie offline
-
-**Pytanie**: wykonywać, w trybie offline testowanie Moje modelu języków niestandardowych przy użyciu niestandardowych modelu akustycznego?
-
-**Odpowiedzi**: tak, wystarczy zaznaczyć modelu akustycznego niestandardowych w menu rozwijanym po skonfigurowaniu testu w trybie offline.
+**Odpowiedź**: tak, wystarczy wybrać niestandardowy model akustyczny w menu rozwijanym, podczas konfigurowania testu w trybie offline.
 
 **Pytanie**: co to jest współczynnik błędów programu Word i jak jest ona obliczana?
 
-**Odpowiedzi**: Częstotliwość błędów Word to metryki oceny rozpoznawania mowy. Jest on liczone jako całkowita liczba błędów, w tym wstawienia, usunięcia i podstawień podzielona przez całkowitą liczbę słów w przekształcania odwołania.
+**Odpowiedź**: Częstotliwość błędów programu Word to metryki oceny funkcji rozpoznawania mowy. Jest ona traktowana jako liczba błędów, w tym liczba operacji wstawienia, usuwania i podstawienia, podzielona przez całkowitą liczbę słów w transkrypcji odwołania. Tryb szczegółów [tutaj](https://en.wikipedia.org/wiki/Word_error_rate)
 
-**Pytanie**: jak ustalić, czy wyniki testu dokładność jest dobrym?
+**Pytanie**: jak ustalić, czy wyniki testu dokładności jest dobra?
 
-**Odpowiedzi**: porównanie modelu linii bazowej i co można dostosować w wynikach.
-Należy dążyć do modelu linii bazowej, aby dostosowań zastanowić Ci
+**Odpowiedź**: Wyniki pokazują porównania między modelem linii bazowej i co można dostosować.
+Należy dążyć do zapewniała modelu odniesienia umożliwiają dostosowanie zwiększonej
 
-**Pytanie**: jak wiem, raportowanie błędów systemu Windows z modeli bazowych tak widać, jeśli został poprawy? 
+**Pytanie**: jak wiem, raportowanie błędów systemu Windows, podstawowy modeli, aby można było zobaczyć jeśli było poprawy jakości obsługi? 
 
-**Odpowiedzi**: wyników testu w trybie offline Pokaż dokładność linii bazowej dokładności modelu niestandardowych oraz poprawy za pośrednictwem linii bazowej
+**Odpowiedź**: wyniki testu w trybie offline Pokaż dokładność linii bazowej dokładności modelu niestandardowego, a także ulepszanie względem punktu odniesienia
 
 ## <a name="creating-lm"></a>Tworzenie LM
 
-**Pytanie**: ilość danych tekstowych należy przekazać?
+**Pytanie**: jak dużo danych tekstu należy przekazać?
 
-**Odpowiedzi**: zależy od różnych słownictwa i wyrażenia używane w aplikacji z początkowy modeli języka. Dla wszystkich nowych wyrazów warto zawierają przykłady tyle możliwie użycia tych słów. Typowych wyrażeń, które są używane w aplikacji w tym fraz w danych języka jest również przydatne jako informuje system do nasłuchiwania również niniejsze postanowienia. Jest to często mają co najmniej jeden 100 i zwykle kilka zniesławiających kilkuset w zestawie danych języka lub więcej. Również niektórych typów kwerend powinny być częściej niż inne, można wstawić wiele kopii typowych kwerend w zestawie danych.
+**Odpowiedź**: zależy od różnych słownictwo i wyrażenia używane w aplikacji pochodzą od początkowego modeli językowych. Dla wszystkich nowych wyrazów warto zawierają przykłady tyle możliwie użycia tych słów. Dla typowych fraz, które są używane w aplikacji w tym zwrotów w danym języku jest również przydatne jako informuje system do nasłuchiwania tych warunków również. Jest to często mają co najmniej jeden hudrend i zazwyczaj kilka kilkuset wypowiedzi w zestawie danych języka lub więcej. Również niektórych rodzajów zapytań powinny być częściej niż inne, można wstawić wiele kopii typowych zapytań w zestawie danych.
 
-**Pytanie**: można tylko przekazać listę słów?
+**Pytanie**: czy mogę po prostu przekazać listę słów?
 
-**Odpowiedzi**: przekazywanie listę słów będzie wyrazów do słownika, ale nie uczy systemu jak wyrazy są zazwyczaj używane.
-Przez zapewnienie pełnej lub częściowej zniesławiających (zdań lub fraz rzeczy, które użytkownicy mogą powiedzieć) model języka można dowiedzieć się nowych słów i jak to zrobić, są one używane. Model języka niestandardowy jest prawidłowa, nie tylko do pobierania nowych słów w systemie, ale także dostosowywania prawdopodobieństwo znane słowa dla aplikacji. Zapewnienie pełnej zniesławiających pomaga systemu lepiej Dowiedz się więcej. 
+**Odpowiedź**: przekazywanie listę słów, które będą wyrazów do słownika, ale uczą system jak wyrazy są zwykle używane.
+Dostarczając pełnej lub częściowej wypowiedzi (zdań lub fraz rzeczy, które użytkownicy mogą podać) model języka można Dowiedz się nowych słów i jak są one używane. Model języka niestandardowego jest dobra, nie tylko w celu uzyskania nowych wyrazów w systemie, ale także dostosowywania prawdopodobieństwo znanych wyrazy dla aplikacji. Zapewnienie pełnej wypowiedzi pomaga systemu, Dowiedz się, lepiej. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Rozwiązywanie problemów](troubleshooting.md)
 * [Informacje o wersji](releasenotes.md)

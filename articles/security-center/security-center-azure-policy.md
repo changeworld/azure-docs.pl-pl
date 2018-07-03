@@ -3,7 +3,7 @@ title: Integracja zasad zabezpieczeń w usłudze Azure Security Center z usług�
 description: Ten dokument zawiera informacje pomocne podczas konfigurowania integracji zasad zabezpieczeń w usłudze Azure Security Center z usługą Azure Policy.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: cd906856-f4f9-4ddc-9249-c998386f4085
@@ -12,60 +12,65 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2018
-ms.author: yurid
-ms.openlocfilehash: aec29ac1ccf9386615e7603898f071fe9cda44cf
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.date: 06/21/2018
+ms.author: terrylan
+ms.openlocfilehash: b3d6d15d41fece613290deb2c77e980caa5dcfef
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364339"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018567"
 ---
 # <a name="integrate-security-center-security-policies-with-azure-policy"></a>Integracja zasad zabezpieczeń w usłudze Security Center z usługą Azure Policy
-Ten artykuł zawiera informacje pomocne podczas konfigurowania w usłudze Azure Security Center zasad zabezpieczeń obsługiwanych przez usługę Azure Policy.
+Ten artykuł zawiera informacje pomocne podczas konfigurowania zasad zabezpieczeń obsługiwanych przez usługę [Azure Policy](../azure-policy/azure-policy-introduction.md) w usłudze Azure Security Center.
 
 ## <a name="how-security-policies-work"></a>Jak działają zasady zabezpieczeń
-Usługa Security Center automatycznie tworzy domyślne zasady zabezpieczeń dla każdej Twojej subskrypcji platformy Azure. Możesz edytować zasady w usłudze Security Center lub wykonywać poniższe czynności przy użyciu usługi [Azure Policy](http://docs.microsoft.com/azure/azure-policy/azure-policy-introduction):
-* Tworzenie nowych definicji zasad.
-* Przypisywanie w grupach zarządzania zasad, które mogą reprezentować całą organizację lub jednostkę biznesową w organizacji.
-* Monitorowanie zgodności zasad.
+Usługa Security Center automatycznie tworzy domyślne zasady zabezpieczeń dla każdej Twojej subskrypcji platformy Azure. Możesz edytować zasady w usłudze Security Center lub wykonywać poniższe czynności przy użyciu usługi Azure Policy:
+- Tworzenie nowych definicji zasad.
+- Przypisywanie w subskrypcjach i grupach zarządzania zasad, które mogą reprezentować całą organizację lub jednostkę biznesową w organizacji.
+- Monitorowanie zgodności zasad.
 
-> [!NOTE]
-> Usługa Azure Policy jest dostępna w ograniczonej wersji zapoznawczej. W celu dołączenia przejdź na stronę [tworzenia nowego konta usługi Azure Policy](https://aka.ms/getpolicy). Aby uzyskać więcej informacji na temat usługi Azure Policy, zobacz [Create and manage policies to enforce compliance (Tworzenie zasad i zarządzanie nimi w celu wymuszenia zgodności)](http://docs.microsoft.com/azure/azure-policy/create-manage-policy).
+Aby uzyskać więcej informacji na temat usługi Azure Policy, zobacz [Create and manage policies to enforce compliance (Tworzenie zasad i zarządzanie nimi w celu wymuszenia zgodności)](../azure-policy/create-manage-policy.md).
+
+Zasady platformy Azure zawierają następujące składniki:
+
+- **Zasada** jest regułą
+- **Inicjatywa** jest zbiorem zasad
+- **Przypisanie** to zastosowanie inicjatywy lub zasady do określonego zakresu (grupy zarządzania, subskrypcji lub grupy zasobów)
+
+Zasób jest oceniany pod kątem zasad, które zostały do niego przypisane, i otrzymuje współczynnik zgodności w zależności od liczby zasad, z którymi jest zgodny.
 
 ## <a name="edit-security-policies"></a>Edytowanie zasad zabezpieczeń
-W usłudze Security Center możesz edytować domyślne zasady zabezpieczeń dla każdej Twojej subskrypcji platformy Azure. Aby zmodyfikować zasady zabezpieczeń, musisz być właścicielem, współautorem lub administratorem zabezpieczeń tej subskrypcji lub zawierającej ją grupy zarządzania. Aby wyświetlić zasady bezpieczeństwa w usłudze Security Center, wykonaj następujące czynności:
+W usłudze Security Center możesz edytować domyślne zasady zabezpieczeń dla każdej Twojej grupy zarządzania i subskrypcji platformy Azure. Aby zmodyfikować zasady zabezpieczeń, musisz być właścicielem, współautorem lub administratorem zabezpieczeń tej subskrypcji lub zawierającej ją grupy zarządzania. Aby wyświetlić zasady zabezpieczeń w usłudze Security Center:
 
-1. Zaloguj się do Portalu Azure.
-
-2. Na pulpicie nawigacyjnym usługi **Security Center** w obszarze **Ogólne** wybierz pozycję **Zasady zabezpieczeń**.
+1. Na pulpicie nawigacyjnym usługi **Security Center** w obszarze **ZASADY I ZGODNOŚĆ** wybierz pozycję **Zasady zabezpieczeń**. Zostanie otwarte okienko **Zarządzanie zasadami**.
 
     ![Okienko Zarządzanie zasadami](./media/security-center-azure-policy/security-center-policies-fig10.png)
 
-3. Wybierz subskrypcję, dla której chcesz włączyć zasady zabezpieczeń.  
+  W okienku Zarządzanie zasadami jest wyświetlana liczba grup zarządzania, subskrypcji i obszarów roboczych, a także struktura Twojej grupy zarządzania.
 
-4. W sekcji **Składniki zasad** kliknij pozycję **Zasady zabezpieczeń**.  
-    Zostanie otwarte okno **Podstawowe informacje**.
+  > [!NOTE]
+  > Pulpit nawigacyjny usługi Security Center może pokazywać większą liczbę subskrypcji w obszarze **Pokrycie subskrypcji**, niż w obszarze **Zarządzanie zasadami**. W obszarze Pokrycie subskrypcji jest wyświetlana liczba subskrypcji w warstwie Standardowa, Bezpłatna i subskrypcji „nie pokrytych”. Subskrypcje „nie pokryte” nie mają włączonej usługi Security Center i nie są wyświetlane w obszarze **Zarządzanie zasadami**.
+  >
+  >
 
-    ![Składniki zasad](./media/security-center-azure-policy/security-center-policies-fig12.png)
+  Kolumny w tabeli wyświetlają następujące informacje:
 
-5. Aby usunąć definicję zasad, w obszarze **Zasady i parametry** obok definicji, którą chcesz usunąć, wybierz pozycję **Usuń**.
+ - Przypisanie inicjatywy zasad — Wbudowane zasady i inicjatywy usługi Security Center przypisane do subskrypcji lub grupy zarządzania.
+ - Zgodność — Ogólny wynik zgodności dla grupy zarządzania, subskrypcji lub obszaru roboczego. Wynik ten jest średnią ważoną przypisań. Średnia ważona jest uwzględniania w liczbie zasad pojedynczego przypisania i liczbie zasobów, których dotyczy to przypisanie.
 
-6. Kliknij pozycję **Zapisz**.  
-    Zostanie otwarte okno **Dostępne definicje** z domyślnymi zasadami przypisanymi do usługi Security Center za pośrednictwem usługi Azure Policy.
+ Jeśli na przykład Twoja subskrypcja obejmuje dwie maszyny wirtualne i inicjatywę z przypisanymi do niej pięcioma zasadami, to masz w tej subskrypcji 10 ocen. Jeśli jedna z maszyn wirtualnych nie jest zgodna z dwoma zasadami, to ogólny wynik zgodności przypisania Twojej subskrypcji wynosi 80%.
 
-7. (Opcjonalnie) W oknie **Dostępne definicje** wykonaj jedną z następujących czynności:
+ - Pokrycie — Określa warstwę cenową (Bezpłatna lub Standardowa), w której działa grupa zarządzania, subskrypcja lub obszar roboczy.  Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
+ - Ustawienia — Subskrypcje zawierają link **Edytuj ustawienia**. Wybranie linku **Edytuj ustawienia** umożliwia aktualizację ustawień subskrypcji, takich jak zbieranie danych, warstwa cenowa i powiadomienia e-mail.
 
-    * Aby dodać definicję zasad, wybierz znak plus (+) obok definicji.
+2. Wybierz subskrypcję lub grupę zarządzania, dla której chcesz włączyć zasady zabezpieczeń. Zostanie otwarte okno **Zasady zabezpieczeń**.
 
-    ![Dostępne definicje zasad](./media/security-center-azure-policy/security-center-policies-fig11.png)
+3.  W obszarze **Zasady zabezpieczeń** wybierz kontrolki, które mają być monitorowane przez usługę Security Center, i podaj rekomendacje, wybierając opcję **Włączone**.  Wybierz opcję **Wyłączone**, jeśli nie chcesz, aby usługa Security Center monitorowała daną kontrolkę.
 
-    * Aby wyświetlić szczegółowy opis zasad, wybierz je.  
-    Zostanie otwarte okno **Podgląd** definicji. Będzie ono zawierać opis definicji i link do kodu JSON określającego strukturę [definicji zasad](../azure-policy/policy-definition.md).
+    ![Składniki zasad](./media/security-center-azure-policy/security-policy.png)
 
-    ![Okno Podgląd definicji](./media/security-center-azure-policy/security-center-policies-fig14.png)
-
-7. Po zakończeniu edycji wybierz pozycję **Zapisz**.
+4. Wybierz pozycję **Zapisz**.
 
 ## <a name="available-security-policy-definitions"></a>Dostępne definicje zasad zabezpieczeń
 
@@ -78,13 +83,21 @@ Aby uzyskać informacje o definicjach zasad dostępnych w ramach domyślnych zas
 | Ochrona punktów końcowych |Zalecają ochronę punktów końcowych do skonfigurowania dla wszystkich maszyn wirtualnych systemu Windows, aby ułatwić identyfikację i usuwanie wirusów, programów szpiegujących oraz innego złośliwego oprogramowania. |
 | Szyfrowanie dysków |Zaleca włączenie szyfrowania dysków na wszystkich maszynach wirtualnych w celu zwiększenia ochrony magazynowanych danych. |
 | Grupy zabezpieczeń sieci |Zaleca się, aby [sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) były skonfigurowane do kontrolowania ruchu przychodzącego i wychodzącego do maszyn wirtualnych z publicznymi punktami końcowymi. Sieciowe grupy zabezpieczeń skonfigurowane dla podsieci są dziedziczone przez wszystkie interfejsy sieciowe maszyny wirtualnej, chyba że określono inaczej. Oprócz sprawdzania, czy sieciowa grupa zabezpieczeń została skonfigurowana, ta opcja również ocenia reguły zabezpieczeń ruchu przychodzącego w celu określenia, czy istnieją takie, które zezwalają na ruch przychodzący. |
-| Zapora aplikacji sieci Web |Zalecają skonfigurowanie zapory aplikacji internetowej na maszynach wirtualnych, gdy został spełniony dowolny z następujących warunków: <ul><li>Używany jest [publiczny adres IP na poziomie wystąpienia](../virtual-network/virtual-networks-instance-level-public-ip.md), a konfiguracja reguł zabezpieczeń ruchu przychodzącego dla skojarzonej sieciowej grupy zabezpieczeń umożliwia dostęp do portu 80/443.</li><li>Używany jest adres IP ze zrównoważonym obciążeniem, a konfiguracja skojarzonych reguł równoważenia obciążenia i reguł translatora adresów sieciowych (NAT) dla ruchu przychodzącego umożliwia dostęp do portu 80/443. Aby uzyskać więcej informacji, zobacz artykuł [Azure Resource Manager support for Load Balancer](../load-balancer/load-balancer-arm.md) (Obsługa usługi Azure Resource Manager dla modułu równoważenia obciążenia).</li> |
+| Zapora aplikacji internetowej |Zalecają skonfigurowanie zapory aplikacji internetowej na maszynach wirtualnych, gdy został spełniony dowolny z następujących warunków: <ul><li>Używany jest [publiczny adres IP na poziomie wystąpienia](../virtual-network/virtual-networks-instance-level-public-ip.md), a konfiguracja reguł zabezpieczeń ruchu przychodzącego dla skojarzonej sieciowej grupy zabezpieczeń umożliwia dostęp do portu 80/443.</li><li>Używany jest adres IP ze zrównoważonym obciążeniem, a konfiguracja skojarzonych reguł równoważenia obciążenia i reguł translatora adresów sieciowych (NAT) dla ruchu przychodzącego umożliwia dostęp do portu 80/443. Aby uzyskać więcej informacji, zobacz artykuł [Azure Resource Manager support for Load Balancer](../load-balancer/load-balancer-arm.md) (Obsługa usługi Azure Resource Manager dla modułu równoważenia obciążenia).</li> |
 | Zapora nowej generacji |Powoduje rozszerzenie ochrony sieci poza grupy zabezpieczeń sieci, które są wbudowane w platformę Azure. Usługa Security Center wykryje wdrożenia, dla których zaleca się zaporę nowej generacji, i umożliwi skonfigurowanie urządzenia wirtualnego. |
 | Inspekcja SQL i wykrywanie zagrożeń |Zalecają, aby inspekcja dostępu do bazy danych platformy Azure była włączona w celu zapewnienia zgodności, umożliwienia zaawansowanego wykrywania zagrożeń i na potrzeby analizy. |
 | Szyfrowanie SQL |Zalecają, aby funkcja szyfrowania nieaktywnych danych była włączona dla usługi Azure SQL Database, skojarzonych kopii zapasowych i plików dziennika transakcji. Dzięki temu nawet w przypadku włamania się do danych nie będzie można ich odczytać. |
 | Ocena luk w zabezpieczeniach |Zaleca się zainstalowanie na maszynie wirtualnej rozwiązania do oceny luk w zabezpieczeniach. |
 | Szyfrowanie w usłudze Storage |Obecnie ta funkcja jest dostępna w usługach Azure Blob Storage i Azure Files. Po włączeniu szyfrowania w usłudze Storage szyfrowane będą tylko nowe dane, a wszystkie pliki istniejące już na tym koncie magazynu pozostaną niezaszyfrowane. |
 | Dostęp do sieci JIT |Gdy zostanie włączony dostęp do sieci typu „dokładnie na czas” (JIT, just-in-time), usługa Security Center zablokuje ruch przychodzący do maszyn wirtualnych platformy Azure przez utworzenie reguły sieciowej grupy zabezpieczeń. Należy wybrać porty na maszynie wirtualnej, do których ruch przychodzący powinien zostać zablokowany. Aby uzyskać więcej informacji, zobacz [Manage virtual machine access using just in time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) (Zarządzanie dostępem maszyny wirtualnej przy użyciu funkcji „dokładnie na czas”). |
+
+## <a name="management-groups"></a>Grupy zarządzania
+Jeśli Twoja organizacja ma wiele subskrypcji, możesz potrzebować sposobu na wydajne zarządzanie dostępem, zasadami i zgodnością dla tych subskrypcji. Grupy zarządzania platformy Azure zapewniają poziom zakresu powyżej subskrypcji. Subskrypcje są organizowane w kontenerach nazywanych „grupami zarządzania”, do których należy zastosować swoje zasady nadzoru. Wszystkie subskrypcje w grupie zarządzania automatycznie dziedziczą zasady zastosowane do tej grupy zarządzania. Do każdego katalogu jest przypisywana grupa zarządzania najwyższego poziomu nazywana „główną” grupą zarządzania. Główna grupa zarządzania jest wbudowana w hierarchię, aby wszystkie grupy zarządzania i subskrypcje pod nią podlegały. Główna grupa zarządzania umożliwia stosowanie zasad globalnych i przypisań RBAC na poziomie katalogu. Aby skonfigurować używanie grup zarządzania w usłudze Azure Security Center, postępuj zgodnie z instrukcjami w artykule [Gain tenant-wide visibility for Azure Security Center](security-center-management-groups.md) (Uzyskiwanie wglądu na poziomie dzierżawy w usłudze Azure Security Center). 
+
+> [!NOTE]
+> Ważne jest, aby poznać hierarchię grup zarządzania i subskrypcji. Zobacz [Organize your resources with Azure Management Groups](../azure-resource-manager/management-groups-overview.md#root-management-group-for-each-directory) (Organizowanie zasobów za pomocą grup zarządzania platformy Azure), aby dowiedzieć się więcej na temat grup zarządzania, zarządzania grupą główną i dostępu do grup zarządzania.
+>
+>
 
 
 ## <a name="next-steps"></a>Następne kroki
@@ -94,5 +107,8 @@ W tym artykule przedstawiono sposób konfigurowania zasad zabezpieczeń w usłud
 * [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
 * [Monitorowanie rozwiązań partnerskich w usłudze Azure Security Center](security-center-partner-solutions.md) — informacje na temat monitorowania stanu kondycji rozwiązań partnerskich.
+* [Uzyskiwanie wglądu na poziomie dzierżawy w usłudze Azure Security Center](security-center-management-groups.md) — informacje na temat sposobu konfigurowania grup zarządzania dla usługi Azure Security Center. 
 * [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
 * [Blog Azure Security](http://blogs.msdn.com/b/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.
+
+Aby dowiedzieć się więcej na temat usługi Azure Policy, zobacz [Co to jest Azure Policy?](../azure-policy/azure-policy-introduction.md)

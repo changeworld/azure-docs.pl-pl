@@ -4,21 +4,23 @@ description: Wdrażanie usługi Azure Machine Learning jako modułu na urządzen
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 03/12/2018
+ms.date: 06/25/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 248bc97c214c013d10f1839201ce2f572cb854ed
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: afc9e7c0635f9920aa3ec7c9e6012aa4e41edb9d
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631177"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062045"
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Wdrażanie usługi Azure Machine Learning jako modułu usługi IoT Edge — wersja zapoznawcza
 
-Moduły usługi IoT Edge umożliwiają wdrożenie kodu implementującego logikę biznesową bezpośrednio na urządzeniach usługi IoT Edge. Ten samouczek zawiera instrukcje dotyczące wdrażania modułu usługi Azure Machine Learning służącego do przewidywania awarii urządzenia na podstawie danych czujników na symulowanym urządzeniu usługi IoT Edge utworzonym przy użyciu informacji z samouczków dotyczących [wdrażania usługi Azure IoT Edge na symulowanym urządzeniu w systemie ][lnk-tutorial1-win] lub [Linux][lnk-tutorial1-lin].
+Moduły usługi IoT Edge umożliwiają wdrożenie kodu implementującego logikę biznesową bezpośrednio na urządzeniach usługi IoT Edge. Ten samouczek zawiera opis sposobu wdrażania modułu usługi Azure Machine Learning, który przewiduje awarię urządzenia na podstawie symulowanych danych dotyczących temperatury maszyny. 
+
+Moduł usługi Azure Machine Learning tworzony w tym samouczku odczytuje dane środowiska wygenerowane przez urządzenie i oznacza, czy komunikaty wskazują wystąpienie anomalii, czy nie.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -28,16 +30,57 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Wdrażanie modułu usługi Azure Machine Learning na urządzeniu usługi IoT Edge
 > * Wyświetlanie wygenerowanych danych
 
-Moduł usługi Azure Machine Learning tworzony w tym samouczku odczytuje dane środowiska wygenerowane przez urządzenie i oznacza, czy komunikaty wskazują wystąpienie anomalii, czy nie.
+>[!NOTE]
+>Moduły usługi Azure Machine Learning w usłudze Azure IoT Edge są dostępne w publicznej wersji zapoznawczej. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Urządzenie usługi Azure IoT Edge utworzone w ramach przewodnika Szybki start lub pierwszego samouczka.
-* Parametry połączenia centrum IoT Hub, z którym łączy się urządzenie usługi IoT Edge.
-* Konto usługi Azure Machine Learning. Aby utworzyć konto, postępuj zgodnie z instrukcjami w temacie [Tworzenie kont usługi Azure Machine Learning i instalowanie aplikacji Azure Machine Learning Workbench](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts). Na potrzeby tego samouczka nie jest konieczne instalowanie aplikacji Workbench. 
-* Funkcja zarządzania modułami dla usługi Azure ML na Twojej maszynie. Aby skonfigurować środowisko i utworzyć konto, postępuj zgodnie z instrukcjami w temacie [Konfiguracja funkcji zarządzania modelami](../machine-learning/desktop-workbench/deployment-setup-configuration.md).
+Do przetestowania modułu usługi Machine Learning utworzonego w tym samouczku potrzebne jest urządzenie usługi Azure IoT Edge. Możesz użyć urządzenia, które skonfigurowano w przewodniku Szybki start dla urządzeń z systemem [Linux](quickstart-linux.md) lub [Windows](quickstart.md). 
 
 Moduł usługi Azure Machine Learning nie obsługuje procesorów ARM.
+
+Na komputerze deweloperskim niezbędne są następujące wstępnie wymagane elementy: 
+* Konto usługi Azure Machine Learning. Postępuj zgodnie z instrukcjami w temacie [Tworzenie kont usługi Azure Machine Learning i instalowanie aplikacji Azure Machine Learning Workbench](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts). Na potrzeby tego samouczka nie jest konieczne instalowanie aplikacji Workbench. 
+* Funkcja zarządzania modułami dla usługi Azure ML na Twojej maszynie. Aby skonfigurować środowisko i utworzyć konto, postępuj zgodnie z instrukcjami w temacie [Konfiguracja funkcji zarządzania modelami](../machine-learning/desktop-workbench/deployment-setup-configuration.md).
+
+### <a name="disable-process-identification"></a>Wyłączanie identyfikacji procesu
+
+>[!NOTE]
+>
+> Usługa Azure Machine Learning w wersji zapoznawczej nie obsługuje funkcji zabezpieczeń identyfikacji procesu włączonej domyślnie w usłudze IoT Edge. 
+> Poniżej przedstawiono kroki, które umożliwiają jej wyłączenie. Nie są one jednak odpowiednie do użycia w środowisku produkcyjnym.
+
+W celu wyłączenia identyfikacji procesu należy podać adres IP i port dla elementów **workload_uri** i **management_uri** w sekcji **connect** konfiguracji demona usługi IoT Edge.
+
+Najpierw uzyskaj adres IP. Wprowadź polecenie `ifconfig` w wierszu polecenia i skopiuj adres IP interfejsu **docker0**.
+
+Edytuj plik konfiguracji demona usługi IoT Edge:
+
+```cmd/sh
+sudo nano /etc/iotedge/config.yaml
+```
+
+Zaktualizuj sekcję **connect** konfiguracji. Na przykład:
+```yaml
+connect:
+  management_uri: "http://172.17.0.1.1:15580"
+  workload_uri: "http://172.17.0.1:15581"
+```
+
+Wprowadź te same adresy w sekcji **listen** konfiguracji. Na przykład:
+
+```yaml
+listen:
+  management_uri: "http://172.17.0.1.1:15580"
+  workload_uri: "http://172.17.0.1:15581"
+```
+
+Utwórz zmienną środowiskową IOTEDGE_HOST z adresem management_uri (aby ustawić ją trwale, dodaj ją do pliku `/etc/environment`). Na przykład:
+
+```cmd/sh
+export IOTEDGE_HOST="http://172.17.0.1:15580"
+```
+
 
 ## <a name="create-the-azure-ml-container"></a>Tworzenie kontenera usługi Azure ML
 W tej sekcji pobierzesz pliki uczonego modelu i przekonwertujesz je na kontener usługi Azure ML.
@@ -57,7 +100,7 @@ az ml service create realtime --model-file model.pkl -f iot_score.py -n machinel
 
 ### <a name="view-the-container-repository"></a>Wyświetlanie repozytorium kontenerów
 
-Sprawdź, czy obraz kontenera został pomyślnie utworzony i zapisany w repozytorium kontenerów platformy Azure skojarzonym ze środowiskiem uczenia maszynowego.
+Sprawdź, czy obraz kontenera został pomyślnie utworzony i zapisany w rejestrze kontenerów platformy Azure skojarzonym ze środowiskiem uczenia maszynowego.
 
 1. W witrynie [Azure Portal](https://portal.azure.com) przejdź do obszaru **Wszystkie usługi**, a następnie wybierz pozycję **Rejestry kontenerów**.
 2. Wybierz rejestr. Nazwa powinna zaczynać się od łańcucha **mlcr** i należy do grupy zasobów, lokalizacji i subskrypcji użytych do skonfigurowania funkcji zarządzania modułami.
@@ -67,36 +110,34 @@ Sprawdź, czy obraz kontenera został pomyślnie utworzony i zapisany w repozyto
 6. Wybierz pozycję **machinelearningmodule**.
 7. Masz teraz pełną ścieżkę do obrazu kontenera. Zanotuj tę ścieżkę w celu użycia w następnej sekcji. Powinna ona wyglądać następująco: **<nazwa_rejestru>.azureacr.io/machinelearningmodule:1**
 
-## <a name="add-registry-credentials-to-your-edge-device"></a>Dodawanie poświadczeń rejestru na urządzeniu usługi Edge
-
-Dodaj poświadczenia dla rejestru do środowiska uruchomieniowego usługi Edge na komputerze, na którym jest uruchomione urządzenie usługi Edge. Ta komenda zapewnia dostęp do środowiska uruchomieniowego w celu ściągnięcia kontenera.
-
-W systemie Linux:
-   ```cmd
-   sudo iotedgectl login --address <registry-login-server> --username <registry-username> --password <registry-password>
-   ```
-
-W systemie Windows:
-   ```cmd
-   iotedgectl login --address <registry-login-server> --username <registry-username> --password <registry-password>
-   ```
-
-## <a name="run-the-solution"></a>Uruchamianie rozwiązania
+## <a name="deploy-to-your-device"></a>Wdrażanie na urządzeniu
 
 1. W witrynie [Azure Portal](https://portal.azure.com) przejdź do centrum IoT Hub.
-1. Przejdź do pozycji **IoT Edge (wersja zapoznawcza)** i wybierz urządzenie usługi IoT Edge.
+
+1. Przejdź do pozycji **IoT Edge** i wybierz urządzenie usługi IoT Edge.
+
 1. Wybierz opcję **Ustaw moduły**.
+
+1. W sekcji **Ustawienia rejestru** dodaj poświadczenia skopiowane z rejestru kontenerów platformy Azure. 
+
+   ![Dodawanie poświadczeń rejestru](./media/tutorial-deploy-machine-learning/registry-settings.png)
+
 1. Jeśli moduł tempSensor został już wcześniej wdrożony na urządzeniu usługi IoT Edge, może on zostać automatycznie wypełniony. Jeśli nie znajduje się on jeszcze na liście modułów, dodaj go.
-    1. Wybierz pozycję **Dodaj moduł usługi IoT Edge**.
-    2. W polu **Nazwa** wprowadź wartość `tempSensor`.
-    3. W polu **Identyfikator URI obrazu** wprowadź wartość `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`.
+
+    1. Kliknij pozycję **Dodaj** i wybierz pozycję **Moduł usługi IoT Edge**.
+    2. W polu **Nazwa** wprowadź wartość `tempsensor`.
+    3. W polu **Identyfikator URI obrazu** wprowadź wartość `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`.
     4. Wybierz pozycję **Zapisz**.
+
 1. Dodaj utworzony moduł uczenia maszynowego.
-    1. Wybierz pozycję **Dodaj moduł usługi IoT Edge**.
+
+    1. Kliknij pozycję **Dodaj** i wybierz pozycję **Moduł usługi Azure Machine Learning**.
     1. W polu **Nazwa** wprowadź wartość `machinelearningmodule`.
     1. W polu **Obraz** wprowadź adres obrazu, na przykład `<registry_name>.azurecr.io/machinelearningmodule:1`.
     1. Wybierz pozycję **Zapisz**.
+
 1. W kroku **Dodawanie modułów** wybierz opcję **Dalej**.
+
 1. W kroku **Określanie tras** skopiuj poniższe dane JSON do pola tekstowego. Pierwsza trasa służy do transportu komunikatów z czujnika temperatury do modułu uczenia maszynowego za pośrednictwem punktu końcowego „amlInput”, który jest używany przez wszystkie moduły usługi Azure Machine Learning. Druga trasa służy do transportu komunikatów z modułu uczenia maszynowego do centrum IoT Hub. W ramach tej trasy „amlOutput” to punkt końcowy używany przez wszystkie moduły usługi Azure Machine Learning do wyprowadzania danych, a element „$upstream” wskazuje centrum IoT Hub.
 
     ```json
@@ -109,31 +150,92 @@ W systemie Windows:
     ```
 
 1. Wybierz opcję **Dalej**.
-1. W kroku **Przegląd szablonu** wybierz opcję **Prześlij**.
+
+1. W kroku **Przegląd wdrożenia** wybierz pozycję **Prześlij**.
+
 1. Wróć do strony szczegółów urządzenia i wybierz opcję **Odśwież**.  Powinien zostać wyświetlony nowy moduł **machinelearningmodule** uruchomiony wraz z modułem **tempSensor** i modułami środowiska uruchomieniowego usługi IoT Edge.
 
 ## <a name="view-generated-data"></a>Wyświetlanie wygenerowanych danych
 
-Komunikaty urządzenie-chmura wysyłane przez urządzenia usługi IoT Edge można wyświetlić przy użyciu narzędzia [IoT Hub Explorer](https://github.com/azure/iothub-explorer) lub rozszerzenia Azure IoT Toolkit dla programu Visual Studio Code.
+Wyświetlać możesz komunikaty generowane przez poszczególne moduły usługi IoT Edge oraz dostarczane do Twojego centrum IoT.
+
+### <a name="view-data-on-your-iot-edge-device"></a>Wyświetlanie danych na urządzeniu usługi IoT Edge
+
+Na urządzeniu usługi IoT Edge można wyświetlać komunikaty wysyłane z każdego pojedynczego modułu. 
+
+Jeśli te polecenia są wykonywane na urządzeniu z systemem Linux, może być konieczne użycie polecenia `sudo`, aby uzyskać podwyższony poziom uprawnień.
+
+1. Wyświetl wszystkie moduły na urządzeniu usługi IoT Edge.
+
+   ```cmd/sh
+   iotedge list
+   ```
+
+2. Wyświetl komunikaty wysyłane z określonego urządzenia. Użyj nazwy modułu z danych wyjściowych poprzedniego polecenia.
+
+   ```cmd/sh
+   iotedge logs <module_name> -f
+   ```
+
+### <a name="view-data-arriving-at-your-iot-hub"></a>Wyświetlanie danych otrzymywanych przez centrum IoT
+
+Komunikaty urządzenie-chmura odbierane przez centrum IoT można wyświetlić przy użyciu narzędzia [IoT Hub Explorer](https://github.com/azure/iothub-explorer) lub [rozszerzenia Azure IoT Toolkit dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+
+Poniższe kroki pokazują, jak skonfigurować program Visual Studio Code w celu monitorowania komunikatów urządzenie-chmura w centrum IoT. 
 
 1. W programie Visual Studio Code wybierz pozycję **IoT Hub Devices** (Urządzenia centrum IoT Hub).
+
 2. Wybierz pozycję **...** , a następnie wybierz pozycję **Set IoT Hub Connection String** (Ustaw parametry połączenia centrum IoT Hub) z menu.
 
    ![Menu Więcej urządzeń centrum IoT Hub](./media/tutorial-deploy-machine-learning/set-connection.png)
 
 3. W polu tekstowym, które zostanie otwarte w górnej części strony wprowadź ciąg połączenia iothubowner dla używanego centrum IoT Hub. Urządzenie usługi IoT Edge powinno zostać wyświetlone na liście IoT Hub Devices (Urządzenia centrum IoT Hub).
+
 4. Ponownie wybierz pozycję **...** , a następnie wybierz pozycję **Start monitoring D2C message** (Rozpocznij monitorowanie komunikatu D2C).
+
 5. Obserwuj komunikaty przychodzące z modułu tempSensor co pięć sekund. Treść komunikatu zawiera właściwość o nazwie **anomaly**, którą moduł machinelearningmodule ustawia na wartość true lub false. Właściwość **AzureMLResponse** zawiera wartość „OK”, jeśli model został uruchomiony pomyślnie.
 
    ![Odpowiedź usługi Azure ML w treści komunikatu](./media/tutorial-deploy-machine-learning/ml-output.png)
+
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów 
+
+<!--[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)] -->
+
+Jeśli zamierzasz przejść do kolejnego zalecanego artykułu, możesz zachować już utworzone zasoby oraz konfiguracje i użyć ich ponownie.
+
+W przeciwnym razie możesz usunąć konfigurację lokalną i zasoby platformy Azure utworzone podczas pracy z tym artykułem, aby uniknąć naliczania opłat. 
+
+> [!IMPORTANT]
+> Usunięcie zasobów i grupy zasobów platformy Azure jest nieodwracalne. Grupa zasobów oraz wszystkie zawarte w niej zasoby zostaną trwale usunięte. Uważaj, aby nie usunąć przypadkowo niewłaściwych zasobów lub grupy zasobów. Jeśli usługa IoT Hub została utworzona wewnątrz istniejącej grupy zasobów zawierającej zasoby, które chcesz zachować, zamiast usuwać całą grupę zasobów, usuń tylko zasób usługi IoT Hub.
+>
+
+Aby usunąć tylko centrum IoT Hub, uruchom następujące polecenie, używając nazwy centrum i nazwy grupy zasobów:
+
+```azurecli-interactive
+az iot hub delete --name MyIoTHub --resource-group TestResources
+```
+
+
+Aby usunąć całą grupę zasobów na podstawie nazwy:
+
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i kliknij pozycję **Grupy zasobów**.
+
+2. W polu tekstowym **Filtruj według nazwy** wpisz nazwę grupy zasobów zawierającej usługę IoT Hub. 
+
+3. Z prawej strony grupy zasobów na liście wyników kliknij pozycję **...**, a następnie kliknij pozycję **Usuń grupę zasobów**.
+
+<!--
+   ![Delete](./media/iot-edge-quickstarts-clean-up-resources/iot-edge-delete-resource-group.png)
+-->
+4. Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Ponownie wpisz nazwę grupy zasobów w celu potwierdzenia, a następnie kliknij pozycję **Usuń**. Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usunięte.
 
 ## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku wdrożono moduł usługi IoT Edge obsługiwany przez usługę Azure Machine Learning. Możesz teraz kontynuować pracę, korzystając ze wszystkich innych samouczków, aby dowiedzieć się o innych metodach, za pomocą których usługa Azure IoT Edge może ułatwiać przekształcanie danych w analizy biznesowe na urządzeniach brzegowych.
 
 > [!div class="nextstepaction"]
-> [Wdrażanie usługi Azure Functions jako modułu](tutorial-deploy-function.md)
+> [Filtrowanie danych czujników przy użyciu kodu C#](tutorial-csharp-module.md)
 
 <!--Links-->
-[lnk-tutorial1-win]: tutorial-simulate-device-windows.md
-[lnk-tutorial1-lin]: tutorial-simulate-device-linux.md
+[lnk-tutorial1-win]: quickstart.md
+[lnk-tutorial1-lin]: quickstart-linux.md

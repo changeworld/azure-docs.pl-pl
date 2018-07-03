@@ -9,27 +9,24 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: hero-article
-ms.date: 01/09/2018
+ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: d2f1d089c6a08a1dc90f82fd9d1c3cb2b6f6dc0a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 504f025edef79b310249c29665198438a326881a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30171809"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052005"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Kopiowanie danych z usługi Azure Blob Storage do usługi SQL Database przy użyciu narzędzia do kopiowania danych
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
-> * [Wersja 1 — ogólnie dostępna](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-> * [Wersja 2 — wersja zapoznawcza](tutorial-copy-data-tool.md)
+> * [Wersja 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [Bieżąca wersja](tutorial-copy-data-tool.md)
 
 W tym samouczku utworzysz fabrykę danych za pomocą witryny Azure Portal. Następnie za pomocą narzędzia do kopiowania danych utworzysz potok, który kopiuje dane z usługi Azure Blob Storage do usługi SQL Database. 
 
 > [!NOTE]
 > Jeśli jesteś nowym użytkownikiem usługi Azure Data Factory, zobacz [Wprowadzenie do usługi Azure Data Factory](introduction.md).
->
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz ogólnie dostępnej wersji 1 usługi Data Factory, zobacz [Wprowadzenie do usługi Data Factory w wersji 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
-
 
 Ten samouczek obejmuje wykonanie następujących kroków:
 
@@ -106,7 +103,7 @@ Przygotuj usługi Blob Storage i SQL Database pod kątem tego samouczka, wykonuj
          
     Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources (Używanie grup zasobów do zarządzania zasobami platformy Azure)](../azure-resource-manager/resource-group-overview.md).
 
-5. W obszarze **wersja** wybierz dla wersji wartość **V2 (wersja zapoznawcza)**.
+5. W obszarze **Wersja** wybierz wersję **V2**.
 6. W obszarze **lokalizacja** wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych (np. usługi Azure Storage i SQL Database) oraz jednostki obliczeniowe (np. usługa Azure HDInsight) używane przez Twoją fabrykę danych mogą mieścić się w innych lokalizacjach i regionach.
 7. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**. 
 8. Wybierz pozycję **Utwórz**.
@@ -126,84 +123,80 @@ Przygotuj usługi Blob Storage i SQL Database pod kątem tego samouczka, wykonuj
 2. Na stronie **Właściwości** w obszarze **Nazwa zadania**, wprowadź wartość **CopyFromBlobToSqlPipeline**. Następnie wybierz przycisk **Dalej**. Interfejs użytkownika usługi Data Factory tworzy potok o określonej nazwie zadania. 
 
     ![Strona właściwości](./media/tutorial-copy-data-tool/copy-data-tool-properties-page.png)
-3. Na stronie **Źródłowy magazyn danych** wybierz pozycję **Azure Blob Storage**, a następnie wybierz przycisk **Dalej**. Źródło danych znajduje się w usłudze Blob Storage. 
+3. Na stronie **Źródłowy magazyn danych** wykonaj następujące czynności:
 
-    ![Strona Źródłowy magazyn danych](./media/tutorial-copy-data-tool/source-data-store-page.png)
-4. Na stronie **Określanie konta usługi Azure Blob Storage** wykonaj następujące kroki:
+    a. Kliknij pozycję **+Utwórz nowe połączenie**, aby dodać połączenie.
 
-    a. W polu **Nazwa połączenia** wprowadź wartość **AzureStorageLinkedService**.
+    ![Nowa połączona usługa źródłowa](./media/tutorial-copy-data-tool/new-source-linked-service.png)
 
-    b. Z listy rozwijanej **Nazwa konta magazynu** wybierz nazwę swojego konta magazynu.
+    b. Z galerii wybierz pozycję **Azure Blob Storage**, a następnie wybierz przycisk **Dalej**.
 
-    d. Wybierz opcję **Dalej**. 
+    ![Wybieranie źródłowego obiektu blob](./media/tutorial-copy-data-tool/select-blob-source.png)
 
-    ![Określanie konta magazynu](./media/tutorial-copy-data-tool/specify-blob-storage-account.png)
+    d. Na stronie **Nowa połączona usługa** wybierz konto magazynu z listy **Nazwa konta magazynu**, a następnie wybierz przycisk **Zakończ**.
 
-    Połączona usługa łączy magazyn danych lub zasoby obliczeniowe z fabryką danych. W takim przypadku tworzysz połączoną usługę magazynu w celu połączenia swojego konta magazynu z magazynem danych. Połączona usługa ma informacje o połączeniu, których usługa Data Factory używa do nawiązywania połączenia z usługą Blob Storage w środowisku uruchomieniowym. Zestaw danych określa kontener, folder i plik (opcjonalnie) zawierający dane źródłowe. 
+    ![Konfigurowanie usługi Azure Storage](./media/tutorial-copy-data-tool/configure-azure-storage.png)
 
-5. Na stronie **Wybieranie pliku lub folderu wejściowego** wykonaj następujące kroki:
+    d. Wybierz nowo utworzoną połączoną usługę jako źródło, a następnie kliknij pozycję **Dalej**.
+
+    ![Wybieranie połączonej usługi źródłowej](./media/tutorial-copy-data-tool/select-source-linked-service.png)
+
+4. Na stronie **Wybieranie pliku lub folderu wejściowego** wykonaj następujące czynności:
     
-    a. Przejdź do folderu **adfv2tutorial/input**.
+    a. Kliknij pozycję **Przeglądaj**, aby przejść do folderu **adfv2tutorial/input**, wybierz plik **inputEmp.txt**, a następnie kliknij przycisk **Wybierz**.
 
-    b. Wybierz plik **inputEmp.txt**.
+    ![Wybieranie pliku lub folderu wejściowego](./media/tutorial-copy-data-tool/specify-source-path.png)
 
-    d. Wybierz pozycję **Wybierz**. Możesz również kliknąć dwukrotnie plik **inputEmp.txt**.
+    b. Kliknij przycisk **Dalej**, aby przejść do następnego kroku.
 
-    d. Wybierz opcję **Dalej**. 
-
-    ![Wybieranie pliku lub folderu wejściowego](./media/tutorial-copy-data-tool/choose-input-file-folder.png)
-
-6. Na stronie **Ustawienia formatu pliku** zwróć uwagę, że narzędzie automatycznie wykrywa ograniczniki kolumn i wierszy. Wybierz opcję **Dalej**. Na tej stronie możesz także wyświetlić podgląd danych i wyświetlić schemat danych wejściowych. 
+5. Na stronie **Ustawienia formatu pliku** zwróć uwagę, że narzędzie automatycznie wykrywa ograniczniki kolumn i wierszy. Wybierz opcję **Dalej**. Na tej stronie możesz także wyświetlić podgląd danych i wyświetlić schemat danych wejściowych. 
 
     ![Ustawienia formatu pliku](./media/tutorial-copy-data-tool/file-format-settings-page.png)
-7. Na stronie **Docelowy magazyn danych** wybierz pozycję **Azure SQL Database**, a następnie kliknij przycisk **Dalej**.
+6. Na stronie **Docelowy magazyn danych** wykonaj następujące czynności:
 
-    ![Docelowy magazyn danych](./media/tutorial-copy-data-tool/destination-data-storage-page.png)
-8. Na stronie **Określanie usługi Azure SQL Database** wykonaj następujące kroki: 
+    a. Kliknij pozycję **+Utwórz nowe połączenie**, aby dodać połączenie.
 
-    a. W polu **Nazwa połączenia** wprowadź wartość **AzureSqlDatabaseLinkedService**.
+    ![Nowa połączona usługa ujścia](./media/tutorial-copy-data-tool/new-sink-linked-service.png)
 
-    b. W polu **Nazwa serwera** wybierz swoje wystąpienie programu SQL Server.
+    b. Z galerii wybierz pozycję **Azure Blob Storage**, a następnie wybierz przycisk **Dalej**.
 
-    d. W polu **Nazwa bazy danych** wybierz swoją usługę SQL Database.
+    ![Wybieranie bazy danych Azure SQL](./media/tutorial-copy-data-tool/select-azure-sql-db.png)
 
-    d. W polu **Nazwa użytkownika** wprowadź nazwę użytkownika.
+    d. Na stronie **Nowa połączona usługa** wybierz nazwę serwera i nazwę bazy danych z listy rozwijanej, wprowadź nazwę użytkownika i hasło, a następnie wybierz przycisk **Zakończ**.    
 
-    e. W polu **Hasło** wprowadź hasło użytkownika.
+    ![Konfigurowanie bazy danych Azure SQL](./media/tutorial-copy-data-tool/config-azure-sql-db.png)
 
-    f. Wybierz opcję **Dalej**. 
+    d. Wybierz nowo utworzoną połączoną usługę jako ujście, a następnie kliknij pozycję **Dalej**.
 
-    ![Określanie usługi SQL Database](./media/tutorial-copy-data-tool/specify-azure-sql-database.png)
+    ![Wybieranie połączonej usługi ujścia](./media/tutorial-copy-data-tool/select-sink-linked-service.png)
 
-    Zestaw danych musi być skojarzony z połączoną usługą. Połączona usługa ma parametry połączenia, których usługa Data Factory używa do nawiązywania połączenia z usługą SQL Database w środowisku uruchomieniowym. Zestaw danych określa kontener, folder i plik (opcjonalnie), do którego dane są kopiowane.
+7. Na stronie **Mapowanie tabeli** wybierz tabelę **[dbo].[emp]**, a następnie kliknij przycisk **Dalej**. 
 
-9. Na stronie **Mapowanie tabeli** wybierz tabelę **[dbo].[emp]**, a następnie kliknij przycisk **Dalej**. 
+    ![Mapowanie tabeli](./media/tutorial-copy-data-tool/table-mapping.png)
+8. Na stronie **Mapowanie schematu** zwróć uwagę, że pierwsza i druga kolumna w pliku wejściowym są mapowane na kolumny **FirstName** i **LastName** tabeli **emp**. Wybierz opcję **Dalej**.
 
-    ![Mapowanie tabeli](./media/tutorial-copy-data-tool/table-mapping-page.png)
-10. Na stronie **Mapowanie schematu** zwróć uwagę, że pierwsza i druga kolumna w pliku wejściowym są mapowane na kolumny **FirstName** i **LastName** tabeli **emp**.
-
-    ![Strona Mapowanie schematu](./media/tutorial-copy-data-tool/schema-mapping-page.png)
-11. Na stronie **Ustawienia** wybierz przycisk **Dalej**. 
-
-    ![Strona Ustawienia](./media/tutorial-copy-data-tool/settings-page.png)
-12. Na stronie **Podsumowanie** sprawdź ustawienia, a następnie kliknij przycisk **Dalej**.
+    ![Strona Mapowanie schematu](./media/tutorial-copy-data-tool/schema-mapping.png)
+9. Na stronie **Ustawienia** wybierz przycisk **Dalej**. 
+10. Na stronie **Podsumowanie** sprawdź ustawienia, a następnie kliknij przycisk **Dalej**.
 
     ![Strona podsumowania](./media/tutorial-copy-data-tool/summary-page.png)
-13. Na **stronie Wdrażanie** wybierz pozycję **Monitorowanie**, aby monitorować potok (zadanie).
+11. Na **stronie Wdrażanie** wybierz pozycję **Monitorowanie**, aby monitorować potok (zadanie).
 
     ![Strona Wdrażanie](./media/tutorial-copy-data-tool/deployment-page.png)
-14. Zwróć uwagę, że karta **Monitor** po lewej stronie jest automatycznie wybrana. Kolumna **Akcje** zawiera linki służące do wyświetlania szczegółów działań i ponownego uruchamiania potoku. Wybierz pozycję **Odśwież**, aby odświeżyć listę. 
+12. Zwróć uwagę, że karta **Monitor** po lewej stronie jest automatycznie wybrana. Kolumna **Akcje** zawiera linki służące do wyświetlania szczegółów działań i ponownego uruchamiania potoku. Wybierz pozycję **Odśwież**, aby odświeżyć listę. 
 
-    ![Monitorowanie uruchomień potoku](./media/tutorial-copy-data-tool/monitor-pipeline-runs.png)
-15. Aby wyświetlić uruchomienia działań skojarzone z uruchomieniem potoku, wybierz link **Wyświetl uruchomienia działań** w kolumnie **Akcje**. W potoku jest tylko jedno działanie (działanie kopiowania), dlatego na liście jest wyświetlana tylko jedna pozycja. Aby uzyskać szczegółowe informacje na temat operacji kopiowania, wybierz link **Szczegóły** (ikona okularów) w kolumnie **Akcje**. Aby powrócić do widoku **Uruchomienia potoków**, wybierz link **Potoki** u góry ekranu. Aby odświeżyć widok, wybierz pozycję **Odśwież**. 
+    ![Monitorowanie uruchomień potoku](./media/tutorial-copy-data-tool/pipeline-monitoring.png)
+13. Aby wyświetlić uruchomienia działań skojarzone z uruchomieniem potoku, wybierz link **Wyświetl uruchomienia działań** w kolumnie **Akcje**. Aby uzyskać szczegółowe informacje na temat operacji kopiowania, wybierz link **Szczegóły** (ikona okularów) w kolumnie **Akcje**. Aby powrócić do widoku **Uruchomienia potoków**, wybierz link **Potoki** u góry ekranu. Aby odświeżyć widok, wybierz pozycję **Odśwież**. 
 
-    ![Monitorowanie uruchomień działania](./media/tutorial-copy-data-tool/monitor-activity-runs.png)
-16. Wybierz kartę **Edycja** po lewej stronie, aby przełączyć się w tryb edytora. Za pomocą edytora można zaktualizować usługi połączone, zestawy danych i potoki utworzone przez narzędzie. Wybierz pozycję **Kod**, aby wyświetlić kod JSON dla obiektu, który jest obecnie otwarty w edytorze. Aby uzyskać szczegółowe informacje dotyczące edytowania tych jednostek w interfejsie użytkownika usługi Data Factory, zobacz [wersję witryny Azure Portal używaną w tym samouczku](tutorial-copy-data-portal.md).
+    ![Monitorowanie uruchomień działania](./media/tutorial-copy-data-tool/activity-monitoring.png)
 
-    ![Karta edytora](./media/tutorial-copy-data-tool/edit-tab.png)
-17. Sprawdź, czy dane są wstawiane do tabeli **emp** w usłudze SQL Database.
+    ![Kopiowanie szczegółów działania](./media/tutorial-copy-data-tool/copy-execution-details.png)
+
+14. Sprawdź, czy dane są wstawiane do tabeli **emp** w usłudze SQL Database.
 
     ![Weryfikacja danych wyjściowych usługi SQL](./media/tutorial-copy-data-tool/verify-sql-output.png)
+
+15. Wybierz kartę **Autor** po lewej stronie, aby przełączyć się w tryb edytora. Za pomocą edytora można zaktualizować usługi połączone, zestawy danych i potoki utworzone przez narzędzie. Aby uzyskać szczegółowe informacje dotyczące edytowania tych jednostek w interfejsie użytkownika usługi Data Factory, zobacz [wersję witryny Azure Portal używaną w tym samouczku](tutorial-copy-data-portal.md).
 
 ## <a name="next-steps"></a>Następne kroki
 Potok w tym przykładzie kopiuje dane z usługi Blob Storage do usługi SQL Database. W tym samouczku omówiono: 

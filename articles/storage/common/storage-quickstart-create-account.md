@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: tamram
-ms.openlocfilehash: 1dffceb629df5d0197bfc8ac66120df3912d70b1
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 7f6357c5b0be12c18797e82b73bd05af42888aa0
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31603780"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752337"
 ---
 # <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
@@ -165,7 +165,7 @@ Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 w witrynie Azure
 1. W witrynie Azure Portal rozwiń menu po lewej stronie, aby otworzyć menu usług, a następnie wybierz pozycję **Wszystkie usługi**. Następnie przewiń w dół do pozycji **Magazyn** i wybierz pozycję **Konta magazynu**. W oknie **Konta magazynu**, które zostanie wyświetlone, wybierz pozycję **Dodaj**.
 2. Wprowadź nazwę konta magazynu.
 3. Ustaw pole **Rodzaj konta** na wartość **StorageV2 (ogólnego przeznaczenia, wersja 2)**.
-4. Pozostaw pole **Replikacja** ustawione na wartość **Magazyn lokalnie nadmiarowy (LRS)**. Możesz również wybrać pozycję **Magazyn strefowo nadmiarowy (wersja zapoznawcza magazynu ZRS)**, **Magazyn geograficznie nadmiarowy (GRS)** lub **Magazyn geograficznie nadmiarowy dostępny do odczytu (RA-GRS)**.
+4. Pozostaw pole **Replikacja** ustawione na wartość **Magazyn lokalnie nadmiarowy (LRS)**. Możesz również wybrać pozycję **Magazyn strefowo nadmiarowy (ZRS) (wersja zapoznawcza)**, **Magazyn geograficznie nadmiarowy (GRS)** lub **Magazyn geograficznie nadmiarowy dostępny do odczytu (RA-GRS)**.
 5. Pozostaw następujące pola ustawione na ich wartości domyślne: **Model wdrażania**, **Wydajność** i **Wymagany bezpieczny transfer**.
 6. Wybierz subskrypcję, w ramach której chcesz utworzyć konto magazynu.
 7. Z listy rozwijanej **Grupa zasobów** wybierz pozycję **Użyj istniejącej**, a następnie wybierz grupę zasobów utworzoną w poprzedniej sekcji.
@@ -186,7 +186,7 @@ New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
   -Kind StorageV2 
 ```
 
-Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 przy użyciu magazynu strefowo nadmiarowego (wersja zapoznawcza magazynu ZRS), magazynu geograficznie nadmiarowego (GRS) lub magazynu geograficznie nadmiarowego dostępnego do odczytu (RA-GRS), zastąp żądaną wartość w poniższej tabeli dla parametru **SkuName**. 
+Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 przy użyciu magazynu strefowo nadmiarowego (ZRS) (wersja zapoznawcza), magazynu geograficznie nadmiarowego (GRS) lub magazynu geograficznie nadmiarowego dostępnego do odczytu (RA-GRS), zastąp żądaną wartość w poniższej tabeli dla parametru **SkuName**. 
 
 |Opcja replikacji  |Parametr SkuName  |
 |---------|---------|
@@ -219,13 +219,7 @@ Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 z magazynu stref
 
 ---
 
-> [!NOTE]
-> [Magazyn strefowo nadmiarowy](https://azure.microsoft.com/blog/announcing-public-preview-of-azure-zone-redundant-storage/preview/) jest obecnie w wersji zapoznawczej i jest dostępny tylko w następujących lokalizacjach:
->    - Wschodnie stany USA 2
->    - Środkowe stany USA
->    - Francja Środkowa (ten region jest obecnie w wersji zapoznawczej. Zobacz [Microsoft Azure preview with Azure Availability Zones now open in France (Platforma Microsoft Azure w wersji zapoznawczej ze strefami dostępności platformy Azure jest obecnie otwarta we Francji)](https://azure.microsoft.com/blog/microsoft-azure-preview-with-azure-availability-zones-now-open-in-france), aby zażądać dostępu).
-    
-Aby uzyskać więcej informacji o różnych dostępnych typach replikacji, zobacz [Opcje replikacji magazynu](storage-redundancy.md).
+Aby uzyskać więcej informacji na temat dostępnych opcji replikacji, zobacz [Storage replication options (Opcje replikacji danych usługi Storage)](storage-redundancy.md).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

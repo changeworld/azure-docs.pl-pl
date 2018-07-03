@@ -1,6 +1,6 @@
 ---
-title: Utwórz ofertę w stosie Azure | Dokumentacja firmy Microsoft
-description: Jako administrator chmury Dowiedz się, jak utworzyć ofertę dla użytkowników w stosie Azure.
+title: Tworzenie oferty w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Jako administrator chmury Dowiedz się, jak utworzyć ofertę dla użytkowników w usłudze Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -12,54 +12,54 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/07/2018
+ms.date: 07/2/2018
 ms.author: brenduns
-ms.openlocfilehash: e5b96a9464bf4d0e3b69d2f635da32c6648ce793
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: eed715a7c2cb967f6c9ea0b7d4442a4f9976bd17
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35247521"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345893"
 ---
 # <a name="create-an-offer-in-azure-stack"></a>Tworzenie oferty w usłudze Azure Stack
 
-[Oferuje](azure-stack-key-features.md) są grupami co najmniej jeden plan, które dostawców znajdujących się użytkowników, aby kupić lub subskrybować. Ten dokument przedstawia sposób tworzenia oferty, która obejmuje [utworzony plan](azure-stack-create-plan.md). Ta oferta zapewnia subskrybentów możliwość skonfigurowania maszyn wirtualnych.
+[Oferuje](azure-stack-key-features.md) grup co najmniej jeden plan, które dostawcy przedstawiają użytkownikom kupowanie lub subskrybować. W tym dokumencie pokazano, jak utworzyć ofertę, która obejmuje [planu, który został utworzony](azure-stack-create-plan.md). Ta oferta umożliwia subskrybentom Konfigurowanie maszyn wirtualnych.
 
-1. Zaloguj się do portalu administratora platformy Azure stosu (https://adminportal.local.azurestack.external) i wybierz **nowy** > **oferuje dzierżawy + planów** > **oferują**.
+1. Zaloguj się do portalu administratora usługi Azure Stack (https://adminportal.local.azurestack.external) i wybierz **New** > **dzierżawy oferty i plany** > **oferują**.
 
    ![Tworzenie oferty](media/azure-stack-create-offer/image01.png)
   
-2. W obszarze **oferują nowe**, wprowadź **Nazwa wyświetlana** i **Nazwa zasobu**, a następnie w obszarze **grupy zasobów**, wybierz pozycję **Utwórz Nowy** lub **Użyj istniejącego**. Nazwa wyświetlana jest przyjazna nazwa dla oferty. Przyjaznej nazwy, to tylko informacje o ofercie, które użytkownicy widzą po zasubskrybowaniu oferty. Użyj intuicyjne nazwy, która ułatwia użytkownikom zrozumienie, co jest dostarczany z oferty. Nazwa zasobu jest widoczna tylko dla administratora. Jest to nazwa używana przez administratorów do pracy z ofertą jako zasobem usługi Azure Resource Manager.
+2. W obszarze **nowa oferta**, wprowadź **nazwę wyświetlaną** i **Nazwa zasobu**, a następnie w obszarze **grupy zasobów**, wybierz opcję **Create nowe** lub **Użyj istniejącej**. Nazwa wyświetlana jest przyjazną nazwę dla oferty. Ta przyjazna nazwa jest tylko informacje dotyczące oferty, którą widzą użytkownicy Po subskrybowaniu oferty. Użyj nazwy intuicyjne, która pomaga użytkownikom zrozumieć, co jest dostarczane z tej oferty. Nazwa zasobu jest widoczna tylko dla administratora. Jest to nazwa używana przez administratorów do pracy z ofertą jako zasobem usługi Azure Resource Manager.
 
-   ![Nowe oferty](media/azure-stack-create-offer/image01a.png)
+   ![Nowa oferta](media/azure-stack-create-offer/image01a.png)
   
-3. Wybierz **podstawowa planów** otworzyć **Planowanie**. Wybierz planów chcesz dołączyć do oferty, a następnie wybierz pozycję **wybierz**. Aby utworzyć ofertę wybierz **Utwórz**.
+3. Wybierz **plany bazowe** otworzyć **Planowanie**. Wybierz plany, aby uwzględnić w ofercie, a następnie wybierz **wybierz**. Aby utworzyć wybierz ofertę **Utwórz**.
 
    ![Wybierz plan](media/azure-stack-create-offer/image02.png)
   
-4. Po utworzeniu oferty, można zmienić jego stanu. Musi być dokonana oferty *publicznego* użytkownikom uzyskanie pełnego widoku po ich subskrypcji. Oferty można:
+4. Po utworzeniu oferty, możesz zmienić jego stan. Oferty muszą być wykonane *publicznych* dla użytkowników uzyskać pełny widok podczas subskrybowania. Może być oferty:
 
-   - **Publiczny**: widoczne dla użytkowników.
-   - **Prywatne**: widoczne tylko dla administratorów w chmurze. To ustawienie jest przydatne podczas opracowywania planu lub oferty, lub jeśli administrator chmury chce [utworzyć każdej subskrypcji dla użytkowników](azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator).
-   - **Zlikwidowane**: zamknięte dla nowych subskrybentów. Administrator chmury można użyć wycofany z eksploatacji uniknąć przyszłych subskrypcji, pozostawiając jednak bieżący subskrybentów nie dotyczy.
+   - **Publiczne**: widoczne dla użytkowników.
+   - **Prywatne**: widoczne tylko dla administratorów w chmurze. To ustawienie jest przydatne podczas opracowywania planu lub oferty, lub jeśli chce się z administratorem chmury [tworzenia każdej subskrypcji dla użytkowników](azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator).
+   - **Zlikwidowane**: zamknięte dla nowych subskrybentów. Administrator chmury można użyć stanu zlikwidowane, aby uniemożliwić przyszłe subskrypcje, ale pozostawić bieżących subskrybentów bez zmian.
 
    > [!TIP]  
-   > Zmiany oferty nie są bezpośrednio widoczne dla użytkownika. Aby wyświetlić zmiany, użytkownicy mogą mieć Wyloguj się i zaloguj się ponownie w aplikacji portal użytkowników zobaczysz tę ofertę nowe.
+   > Zmiany tej oferty nie są bezpośrednio widoczne dla użytkownika. Aby zobaczyć zmiany, użytkownicy mogą mieć wylogowania się i zaloguj się ponownie do portalu użytkowników będzie nowej oferty.
 
    Aby zmienić stan oferty:
 
-   - **Wersja 1803 i nowsze**:  
-     W przeglądzie oferty, wybierz **stan dostępności**. Wybierz stan, którego chcesz użyć (na przykład *publicznego*), a następnie wybierz **zapisać**.
+   - **W wersji 1803 i nowszych**:  
+     W obszarze Przegląd dla oferty wybierz **stan ułatwień dostępu**. Wybierz stan, w której chcesz użyć (na przykład *publicznych*), a następnie wybierz **Zapisz**.
  
      ![Wybierz stan ułatwień dostępu](media/azure-stack-create-offer/change-state.png)
 
-     Alternatywnie, po uzyskaniu dostępu oferty można przejść do **oferują ustawienia**. Wybierz **stan dostępności** zmiany stanu.
+     Alternatywnie, po uzyskaniu dostępu ofertę możesz przejść do **ustawienia oferty**. Wybierz **stan ułatwień dostępu** zmiany stanu.
 
    - **Przed wersją 1803**:  
-     Wybierz **wszystkie zasoby**, Wyszukaj ofertę nowe, a następnie wybierz nowy oferty. Wybierz **zmiany stanu**, a następnie wybierz **publicznego**.
+     Wybierz **wszystkie zasoby**, Wyszukaj nowe oferty, a następnie wybierz nową ofertę. Wybierz **zmiany stanu**, a następnie wybierz pozycję **publicznych**.
 
    > [!NOTE]
-   > Można również utworzyć oferty domyślne, planów i przydziały za pomocą programu PowerShell. Aby uzyskać więcej informacji, zobacz [readme administratora usługi Azure stosu](https://github.com/Azure/AzureStack-Tools/tree/master/ServiceAdmin).
+   > Umożliwia także środowiska PowerShell do utworzenia domyślnego oferty, przydziały i planów. Aby uzyskać więcej informacji, zobacz [modułu programu PowerShell usługi Azure Stack 1.3.0](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

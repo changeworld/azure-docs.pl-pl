@@ -1,10 +1,10 @@
 ---
 title: Tworzenie aplikacji ASP.NET na platformie Azure przy użyciu usługi SQL Database | Microsoft Docs
-description: Dowiedz się, jak uruchomić aplikację ASP.NET na platformie Azure z użyciem połączenia z usługą SQL Database.
+description: Dowiedz się, jak wdrożyć aplikację C# ASP.NET z bazą danych programu SQL Server na platformie Azure.
 services: app-service\web
-documentationcenter: nodejs
+documentationcenter: ''
 author: cephalin
-manager: erikre
+manager: cfowler
 editor: ''
 ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
 ms.service: app-service-web
@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 06/09/2017
+ms.date: 06/25/2018
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 4fd1381594c77d8bba92027fee06c08376ee903b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b08033c53185e6229e6fa368a3456749e19eb1f0
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31789252"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021327"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Samouczek: tworzenie aplikacji ASP.NET na platformie Azure przy użyciu usługi SQL Database
 
@@ -44,19 +44,15 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 W celu ukończenia tego samouczka:
 
-* Zainstaluj program [Visual Studio 2017](https://www.visualstudio.com/downloads/) z następującymi pakietami roboczymi:
-  - **Tworzenie aplikacji na platformie ASP.NET i tworzenie aplikacji internetowych**
-  - **Tworzenie aplikacji na platformie Azure**
-
-  ![Tworzenie aplikacji na platformie ASP.NET i tworzenie aplikacji internetowych oraz tworzenie aplikacji na platformie Azure (w ramach Internetu i chmury)](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
+Zainstaluj program <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> z pakietem roboczym **Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych**.
 
 Jeśli program Visual Studio został już zainstalowany, dodaj obciążenia w programie Visual Studio, klikając kolejno pozycje **Narzędzia** > **Pobierz narzędzia i funkcje**.
 
 ## <a name="download-the-sample"></a>Pobierz przykład
 
-[Pobierz przykładowy projekt](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip).
-
-Wyodrębnij (rozpakuj) plik *dotnet-sqldb-tutorial-master.zip*.
+<a name="-download-the-sample-projecthttpsgithubcomazure-samplesdotnet-sqldb-tutorialarchivemasterzip"></a>-[Pobierz przykładowy projekt](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip).
+-
+-Wypakuj plik *dotnet-sqldb-tutorial-master.zip*.
 
 Przykładowy projekt zawiera podstawową aplikację [ASP.NET MVC](https://www.asp.net/mvc) CRUD (create-read-update-delete, tworzenie-odczytywanie-aktualizowanie-usuwanie) korzystającą z modelu [Code First platformy Entity Framework](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
 
@@ -86,20 +82,20 @@ Publikowanie powoduje otwarcie okna dialogowego **Tworzenie usługi App Service*
 
 ### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-W oknie dialogowym **Tworzenie usługi App Service** kliknij pozycję **Dodaj konto**, a następnie zaloguj się do swojej subskrypcji platformy Azure. Jeśli zalogowano się już do konta Microsoft, upewnij się, że to konto zawiera Twoją subskrypcję platformy Azure. Jeśli użyte do logowania konto Microsoft nie ma subskrypcji platformy Azure, kliknij je, aby dodać prawidłowe konto.
+W oknie dialogowym **Tworzenie usługi App Service** kliknij pozycję **Dodaj konto**, a następnie zaloguj się do swojej subskrypcji platformy Azure. Jeśli zalogowano się już do konta Microsoft, upewnij się, że to konto zawiera Twoją subskrypcję platformy Azure. Jeśli użyte do logowania konto Microsoft nie ma subskrypcji platformy Azure, kliknij je, aby dodać prawidłowe konto. 
+
+> [!NOTE]
+> Jeśli przeprowadzono już logowanie, nie wybieraj jeszcze pozycji **Utwórz**.
+>
+>
    
 ![Logowanie do platformy Azure](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
-
-Po zalogowaniu możesz w tym oknie dialogowym utworzyć wszystkie zasoby potrzebne dla aplikacji sieci Web platformy Azure.
 
 ### <a name="configure-the-web-app-name"></a>Konfigurowanie nazwy aplikacji internetowej
 
 Wygenerowaną nazwę aplikacji internetowej można zachować lub zmienić na inną unikatową nazwę (prawidłowe znaki to `a-z`, `0-9` i `-`). Nazwa aplikacji internetowej jest używana jako część domyślnego adresu URL aplikacji (`<app_name>.azurewebsites.net`, gdzie `<app_name>` to nazwa aplikacji internetowej). Te nazwy muszą być unikatowe dla wszystkich aplikacji na platformie Azure. 
 
 ![Okno dialogowe Tworzenie usługi App Service](media/app-service-web-tutorial-dotnet-sqldatabase/wan.png)
-
-> [!NOTE]
-> Nie należy klikać przycisku **Utwórz**. Najpierw trzeba skonfigurować usługę SQL Database zgodnie z opisem w jednym z następnych kroków.
 
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -131,13 +127,9 @@ W oknie dialogowym **Konfiguruj plan usługi App Service** skonfiguruj nowy plan
 
 Przed utworzeniem bazy danych należy uruchomić [serwer logiczny usługi Azure SQL Database](../sql-database/sql-database-features.md). Serwer logiczny zawiera grupę baz danych zarządzanych jako grupa.
 
-Wybierz pozycję **Eksploruj dodatkowe usługi platformy Azure**.
+Kliknij pozycję **Utwórz bazę danych SQL Database**.
 
-![Konfigurowanie nazwy aplikacji sieci Web](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
-
-Na karcie **Usługi** kliknij ikonę **+** obok pozycji **SQL Database**. 
-
-![Na karcie Usługi kliknij ikonę + obok pozycji SQL Database.](media/app-service-web-tutorial-dotnet-sqldatabase/sql.png)
+![Tworzenie bazy danych SQL](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
 
 W oknie dialogowym **Konfigurowanie bazy danych SQL** kliknij pozycję **Nowy** obok pozycji **SQL Server**. 
 
@@ -164,7 +156,7 @@ W oknie dialogowym **Konfigurowanie bazy danych SQL** wykonaj następujące czyn
 
 ![Konfigurowanie bazy danych SQL](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-Utworzone zasoby zostaną wyświetlone w oknie dialogowym **Tworzenie usługi App Service**. Kliknij przycisk **Utwórz**. 
+Skonfigurowane zasoby zostaną wyświetlone w oknie dialogowym **Tworzenie usługi App Service**. Kliknij przycisk **Utwórz**. 
 
 ![Utworzone zasoby](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 
@@ -314,7 +306,7 @@ Teraz, gdy zmiany kodu zaczęły obowiązywać (łącznie z migracją bazy danyc
 
 Podobnie jak wcześniej kliknij projekt prawym przyciskiem myszy i wybierz polecenie **Publikuj**.
 
-Kliknij pozycję **Ustawienia**, aby otworzyć Kreatora publikacji.
+Kliknij pozycję **Konfiguruj**, aby otworzyć ustawienia publikowania.
 
 ![Otwieranie ustawień publikowania](./media/app-service-web-tutorial-dotnet-sqldatabase/publish-settings.png)
 
@@ -405,9 +397,9 @@ Przejdź do witryny [Azure Portal](https://portal.azure.com), aby wyświetlić u
 
 
 
-W lewym menu kliknij pozycję **App Service**, a następnie kliknij nazwę swojej aplikacji sieci Web platformy Azure.
+W lewym menu kliknij pozycję **App Service**, a następnie kliknij nazwę swojej aplikacji internetowej platformy Azure.
 
-![Nawigacja w portalu do aplikacji sieci Web platformy Azure](./media/app-service-web-tutorial-dotnet-sqldatabase/access-portal.png)
+![Nawigacja w portalu do aplikacji internetowej platformy Azure](./media/app-service-web-tutorial-dotnet-sqldatabase/access-portal.png)
 
 Zostanie otwarta strona Twojej aplikacji internetowej. 
 

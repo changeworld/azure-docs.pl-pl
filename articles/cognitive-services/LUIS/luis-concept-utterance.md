@@ -1,6 +1,6 @@
 ---
-title: Zniesławiających w aplikacjach LUIS na platformie Azure | Dokumentacja firmy Microsoft
-description: Dodaj zniesławiających w aplikacji usługi inteligentnego opis języka (LUIS).
+title: Wypowiedzi w aplikacjach usługi LUIS na platformie Azure | Dokumentacja firmy Microsoft
+description: Dodawanie wypowiedzi w aplikacjach Language Understanding Intelligent Service (LUIS).
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,68 +9,68 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: v-geberr
-ms.openlocfilehash: 66a23876eebe177c767b20f60f86891c35da3385
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 9b8556a30169561488a7b46f93af87b31e049e7a
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301866"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345512"
 ---
-# <a name="utterances-in-luis"></a>Zniesławiających w LUIS
+# <a name="utterances-in-luis"></a>Wypowiedzi w usługi LUIS
 
-**Zniesławiających** są dane wejściowe użytkownika, które aplikacji należy interpretować. Uczenia LUIS można wyodrębnić intencje i jednostki z nich, jest szereg różnych komponentów dla każdego zamiar przechwytywania. Active learning lub kontynuowanie uczenia na nowe zniesławiających, proces jest niezbędne do analizy rozpoznawane maszyny, zapewniająca LUIS.
+**Wypowiedzi** są dane wejściowe użytkownika, że Twoja aplikacja wymaga, aby zinterpretować. Szkolenie usługi LUIS do wyodrębnienia z nich intencje i podmioty, jest przechwytywania szereg różnych danych wejściowych dla poszczególnych intencji. Aktywna nauka lub proces szkolenie dotyczące nowych wypowiedzi w dalszym ciągu jest niezbędne do analizy maszyny do opanowania, udostępniająca usługi LUIS.
 
-Zbieraj wyrażeń, które uważasz, że użytkownicy będą mogli wprowadzać. Dołącz zniesławiających, które oznaczają to samo, ale są zbudowane inaczej długość słowa i umieszczania programu word. 
+Zbieraj fraz, które uważasz, że użytkownicy będą mogli wprowadzać. Dołącz wypowiedzi, które oznaczają to samo, ale są konstruowane inaczej długość słowa i rozmieszczenie programu word. 
 
-## <a name="how-to-choose-varied-utterances"></a>Wybieranie zróżnicowane zniesławiających
-Należy najpierw pobrać uruchomienia przez [Dodawanie zniesławiających przykład] [ add-example-utterances] modelu LUIS, poniżej przedstawiono niektóre zasady, które należy wziąć pod uwagę.
+## <a name="how-to-choose-varied-utterances"></a>Jak wybrać zróżnicowane wypowiedzi
+Gdy użytkownik najpierw początek [Dodawanie wypowiedzi przykład] [ add-example-utterances] do modelu usługi LUIS, poniżej przedstawiono niektóre zasady, które należy uwzględnić.
 
-### <a name="utterances-arent-always-well-formed"></a>Zniesławiających nie są zawsze poprawnie sformułowany.
-Może być zdania, takich jak "W Book mnie bilet, aby Paryża" lub fragmentu zdania, takich jak "Rezerwacji" lub "Paryża transmitowane."  Użytkownicy często wykonują błędów pisowni. Podczas planowania aplikacji, należy wziąć pod uwagę czy możesz sprawdzanie danych wejściowych użytkownika przed przekazaniem go do LUIS. [API sprawdzania pisowni usługi Bing] [ BingSpellCheck] integruje się z LUIS. LUIS aplikacji można skojarzyć z kluczem zewnętrznym dla API sprawdzania pisowni usługi Bing podczas jego publikowania. Jeśli nie zostało wpisane wyboru użytkownika zniesławiających, powinien uczenia LUIS na zniesławiających, obejmujące błędów pisowni i błędów pisowni.
+### <a name="utterances-arent-always-well-formed"></a>Wypowiedzi nie są zawsze poprawnie sformułowany.
+Może być dowolne zdanie, takich jak "W Zarezerwuj mnie biletu do Paryża" lub fragment zdania, takich jak "Rezerwacji" lub "Paryż lot."  Użytkownicy często wykonują błędy pisowni. Podczas planowania aplikacji należy wziąć pod uwagę informację określającą, czy możesz sprawdzanie pisowni dla danych wejściowych użytkownika przed przekazaniem go do usługi LUIS. [Interfejsu API sprawdzania pisowni Bing] [ BingSpellCheck] integruje się z użyciem usługi LUIS. Aplikacją usługi LUIS można skojarzyć z klucza zewnętrznego do API sprawdzania pisowni Bing podczas publikowania go. Jeśli wypowiedzi użytkownika wyboru nie jest pisowni, możesz później LUIS, na wypowiedzi obejmujących literówki i błędy pisowni.
 
 ### <a name="use-the-representative-language-of-the-user"></a>Użyj reprezentatywny języka użytkownika
-Podczas wybierania zniesławiających, należy pamiętać, co myślisz jest wspólny termin lub frazę może nie być użytkownikowi typowych aplikacji klienta. Nie może mieć środowisko domeny. Dlatego należy zachować ostrożność, podczas korzystania z warunków lub wyrażeń, że użytkownik będzie tylko powiedzieć, jakby były eksperta.
+Podczas wybierania wypowiedzi, należy pamiętać, co myślisz, jest wspólny termin lub frazę, może nie być użytkownikowi typowej aplikacji klienckiej. Nie może mieć środowisko domeny. Dlatego należy zachować ostrożność, korzystając z terminów ani fraz, czy użytkownik będzie tylko powiedzieć, jeśli znajdowały się ekspertem.
 
-### <a name="choose-varied-terminology-as-well-as-phrasing"></a>Wybierz zróżnicowane terminologii, a także właściwej
-Znajdziesz się nawet wtedy, gdy wysiłki utworzyć wzorce zróżnicowane zdania, będą nadal powtórzenie niektórych słownika.
+### <a name="choose-varied-terminology-as-well-as-phrasing"></a>Wybierz zależeć od terminologii, a także właściwej
+Znajdziesz, nawet jeśli wprowadzisz działań mających na celu tworzenie zdania zależeć od wzorców, będą nadal powtórzenie niektóre słownika.
 
-Wykonaj te zniesławiających przykładzie:
+Wykonaj te wypowiedzi przykładu:
 ```
 how do I get a computer?
 Where do I get a computer?
 I want to get a computer, how do I go about it?
 When can I have a computer? 
 ```
-Termin core w tym miejscu "komputer", nie jest zmieniane. One powiedzieć komputerów stacjonarnych, laptopów, stacji roboczej lub nawet po prostu maszyny. LUIS inteligentnie wnioskuje synonimy z kontekstu, ale po utworzeniu zniesławiających szkolenia jest nadal lepiej różnią się je.
+W tym miejscu termin core nie zróżnicowane "computer". Można mówią, komputerów stacjonarnych, laptopów, stacji roboczej lub nawet po prostu maszyny. Usługa LUIS inteligentnie wnioskuje synonimy z kontekstu, ale podczas tworzenia wypowiedzi szkolenia jest nadal lepiej różnią się w ich.
 
-## <a name="example-utterances-in-each-intent"></a>Przykład zniesławiających w każdym polu Opcje
-Każda próba trzeba przykład zniesławiających, co najmniej 10 – 15. Jeśli masz zamiar, który nie ma żadnych zniesławiających przykład nie można uczenia LUIS. Jeśli masz zamiar z jednego lub kilku bardzo zniesławiających przykład LUIS nie zostanie dokładnie przewidzieć celem. 
+## <a name="example-utterances-in-each-intent"></a>Przykład wypowiedzi w każdej intencji
+Każdy intencji trzeba wypowiedzi przykładu, co najmniej 10 do 15. Jeśli cel, który nie ma wypowiedzi przykład, nie będzie to w opracowywaniu usługi LUIS. W przypadku intencji z jednego lub kilku bardzo wypowiedzi przykład LUIS nie będą dokładnie przewidzieć intencji. 
 
-## <a name="add-small-groups-of-10-15-utterances-for-each-authoring-iteration"></a>Dodaj małych grup zniesławiających 10 – 15 dla każdej iteracji tworzenia pakietów administracyjnych
-W każdej iteracji modelu nie należy dodawać dużej ilości zniesławiających. Dodaj zniesławiających w ilości dziesiątki. [Train](luis-how-to-train.md), [publikowania](publishapp.md), i [test](interactive-test.md) ponownie.  
+## <a name="add-small-groups-of-10-15-utterances-for-each-authoring-iteration"></a>Dodaj mniejszym grupom wypowiedzi 10 – 15 dla każdej iteracji tworzenia pakietów administracyjnych
+W każdej iteracji modelu nie należy dodawać dużej ilości wypowiedzi. Dodawanie wypowiedzi w ilościach dziesiątki. [Szkolenie](luis-how-to-train.md), [publikowania](luis-how-to-publish-app.md), i [test](interactive-test.md) ponownie.  
 
-LUIS kompilacje skuteczne modeli z zniesławiających wybranych uważnie. Dodawanie zbyt wiele zniesławiających nie jest przydatna ponieważ wprowadza ona pomyłek.  
+Usługa LUIS opiera się skuteczne modeli z wypowiedzi wybranych dokładnie. Dodawanie wypowiedzi zbyt wiele nie jest przydatne ponieważ wprowadza ona pomyłek.  
 
-Zaleca się rozpoczynać się od kilku zniesławiających, następnie [Przejrzyj zniesławiających punktu końcowego](label-suggested-utterances.md) poprawne konwersji ekstrakcji prognozowania i jednostek.
+Zaleca się rozpoczynać kilka wypowiedzi następnie [Przejrzyj wypowiedzi punktu końcowego](label-suggested-utterances.md) poprawne intencji ekstrakcji prognoz i jednostek.
 
-## <a name="ignoring-words-and-punctuation"></a>Ignorowanie słów i znaków interpunkcyjnych
-Jeśli chcesz zignorować słów lub znaki interpunkcyjne w przykładzie utterance, użyj [wzorzec](luis-concept-patterns.md#pattern-syntax) z _Ignoruj_ składni. 
+## <a name="ignoring-words-and-punctuation"></a>Ignorowanie słów i znaki interpunkcyjne
+Ignorowanie konkretnych słów lub znaki interpunkcyjne w wypowiedź przykładu, należy użyć [wzorzec](luis-concept-patterns.md#pattern-syntax) z _Ignoruj_ składni. 
 
-## <a name="training-utterances"></a>Zniesławiających szkolenia
-Szkolenie jest deterministyczna: prognozowania utterance mogą się nieco różnić między wersjami lub aplikacji.
+## <a name="training-utterances"></a>Szkolenie wypowiedzi
+Szkolenie jest niejednoznaczne: prognozowanie wypowiedź może się nieco różnić między wersjami lub aplikacji.
 
-## <a name="testing-utterances"></a>Testowanie zniesławiających 
+## <a name="testing-utterances"></a>Wypowiedzi testowania 
 
-Deweloperzy powinien rozpocząć testowanie ich aplikacji LUIS przy użyciu rzeczywistego ruchu, wysyłając zniesławiających do punktu końcowego. Zniesławiających te są wykorzystywane do ulepszania wydajności intencje i jednostki z [Przejrzyj zniesławiających](label-suggested-utterances.md). Testy przesłane z witryną internetową LUIS testowania okienku nie są wysyłane za pośrednictwem punktu końcowego, a nie współtworzenia do uczenia active. 
+Deweloperzy powinni uruchomić testowanie ich aplikacji LUIS, przy użyciu rzeczywistego ruchu, wysyłając wypowiedzi do punktu końcowego. Wypowiedzi te są wykorzystywane do ulepszania wydajności intencje i podmioty, za pomocą [Przejrzyj wypowiedzi](label-suggested-utterances.md). Przesłane za pomocą usługi LUIS witryny sieci Web, w okienku testowania testy nie są wysyłane za pośrednictwem punktu końcowego, a więc nie przyczyniają się do aktywne uczenie. 
 
-## <a name="review-utterances"></a>Przejrzyj zniesławiających
-Po modelu przeszkolone opublikowanych i odbierania [punktu końcowego](luis-glossary.md#endpoint) zapytań, [Przejrzyj zniesławiających](label-suggested-utterances.md) zasugerowany przez LUIS. LUIS wybiera zniesławiających punktu końcowego, mających niski wyniki zamiar lub jednostki. 
+## <a name="review-utterances"></a>Przejrzyj wypowiedzi
+Po model jest uczony opublikowane i odbieranie [punktu końcowego](luis-glossary.md#endpoint) zapytań, [Przejrzyj wypowiedzi](label-suggested-utterances.md) zaproponowana przez usługi LUIS. Usługa LUIS wybiera wypowiedzi punkt końcowy ma niskie oceny przeznaczenie lub jednostki. 
 
 ## <a name="best-practices"></a>Najlepsze praktyki
-Przegląd [najlepsze rozwiązania](luis-concept-best-practices.md) Aby dowiedzieć się więcej.
+Przegląd [najlepsze praktyki](luis-concept-best-practices.md) Aby dowiedzieć się więcej.
 
-## <a name="next-steps"></a>Kolejne kroki
-Zobacz [dodać zniesławiających przykład] [ add-example-utterances] uzyskać informacji dotyczących szkoleń aplikacji LUIS, aby zrozumieć zniesławiających użytkownika.
+## <a name="next-steps"></a>Następne kroki
+Zobacz [Dodawanie wypowiedzi przykład] [ add-example-utterances] uzyskać informacji na temat szkoleń aplikacją usługi LUIS, aby zrozumieć wypowiedzi użytkowników.
 
 [add-example-utterances]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-add-example-utterances
 [BingSpellCheck]: https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/proof-text

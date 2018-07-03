@@ -3,7 +3,7 @@ title: Przyrostowe kopiowanie wielu tabel przy użyciu usługi Azure Data Factor
 description: W tym samouczku utworzysz potok usługi Azure Data Factory służący do przyrostowego kopiowania danych różnicowych z wielu tabel w lokalnej bazie danych SQL Server do bazy danych Azure SQL Database.
 services: data-factory
 documentationcenter: ''
-author: linda33wj
+author: dearandyxu
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/20/2018
-ms.author: jingwang
-ms.openlocfilehash: 399e132f0a28ffc6b60e3d757afff5aae60f7674
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: yexu
+ms.openlocfilehash: c35d267acfd1778e80605cdfe9eec0edbb18a281
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052848"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Przyrostowe ładowanie danych z wielu tabel w programie SQL Server do bazy danych Azure SQL Database
 W tym samouczku utworzysz fabrykę danych Azure Data Factory z potokiem służącym do ładowania danych różnicowych z wielu tabel na lokalnym serwerze SQL Server do bazy danych Azure SQL Database.    
@@ -36,9 +37,6 @@ Ten samouczek obejmuje następujące procedury:
 > * Dodawanie lub aktualizowanie danych w tabelach źródłowych.
 > * Ponowne uruchamianie i monitorowanie potoku.
 > * Przegląd wyników końcowych.
-
-> [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Azure Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz dostępnej ogólnie wersji 1 usługi Data Factory, zobacz [dokumentację dotyczącą usługi Data Factory w wersji 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="overview"></a>Omówienie
 Poniżej przedstawiono ważne czynności związane z tworzeniem tego rozwiązania: 
@@ -369,16 +367,25 @@ W tym kroku utworzysz zestawy danych reprezentujące źródło danych, docelową
 3. W przeglądarce sieci Web zostanie otwarta nowa karta służąca do konfigurowania zestawu danych. Zostanie też wyświetlony zestaw danych w widoku drzewa. U dołu karty **Ogólne** w oknie właściwości wprowadź wartość **SinkDataset** w polu **Nazwa**.
 
    ![Zestaw danych będący ujściem — ogólne](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-general.png)
-4. Przejdź do karty **Połączenie** w oknie właściwości, a następnie wybierz pozycję **AzureSqlLinkedService** w polu **Połączona usługa**. 
-
-   ![Zestaw danych będący ujściem — połączenie](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection.png)
-5. Przejdź do karty **Parametry** w oknie Właściwości i wykonaj następujące czynności: 
+4. Przejdź do karty **Parametry** w oknie Właściwości i wykonaj następujące czynności: 
 
     1. Kliknij pozycję **Nowy** w sekcji **Parametry tworzenia/aktualizacji**. 
     2. Wprowadź wartość **SinkTableName** w polu **nazwa** i wartość **Ciąg** w polu **typ**. Ten zestaw danych otrzymuje wartość **SinkTableName** jako parametr. Parametr SinkTableName jest ustawiany dynamicznie przez potok w czasie wykonywania. Działanie ForEach w potoku przeprowadza iterację po liście nazw i przekazuje nazwę tabeli do tego zestawu danych w każdej iteracji.
-    3. Wprowadź wartość `@{dataset().SinkTableName}` dla właściwości **tableName** w sekcji **Właściwości sparametryzowane**. Wartość przekazana do parametru **SinkTableName** jest używana do inicjowania właściwości **tableName** zestawu danych. 
-
+   
        ![Zestaw danych będący ujściem — właściwości](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
+5. Przejdź do karty **Połączenie** w oknie właściwości, a następnie wybierz pozycję **AzureSqlLinkedService** w polu **Połączona usługa**. W obszarze właściwości **Tabela** kliknij pozycję **Dodaj zawartość dynamiczną**. 
+
+   ![Zestaw danych będący ujściem — połączenie](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection.png)
+    
+    
+6. W sekcji **Parametry** wybierz pozycję **SinkTableName**.
+   
+   ![Zestaw danych będący ujściem — połączenie](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-dynamicContent.png)
+
+   
+ 7. Po kliknięciu przycisku **Zakończ** zostanie wyświetlona nazwa tabeli **@dataset().SinkTableName**.
+   
+   ![Zestaw danych będący ujściem — połączenie](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
 
 ### <a name="create-a-dataset-for-a-watermark"></a>Tworzenie zestawu danych dla limitu
 W tym kroku utworzysz zestaw danych do przechowywania wartości górnego limitu. 
@@ -644,7 +651,7 @@ VALUES
     ]
     ```
 
-## <a name="monitor-the-pipeline"></a>Monitorowanie potoku
+## <a name="monitor-the-pipeline-again"></a>Ponowne monitorowanie potoku
 
 1. Przejdź do karty **Monitorowanie** po lewej stronie. Zostanie wyświetlone uruchomienie potoku, które zostało wyzwolone za pomocą **wyzwalacza ręcznego**. Kliknij przycisk **Odśwież**, aby odświeżyć listę. Linki w kolumnie **Działania** umożliwiają wyświetlanie uruchomień działań skojarzonych z uruchomieniem potoku oraz ponowne uruchamianie potoku. 
 
@@ -654,7 +661,7 @@ VALUES
     ![Uruchomienia działania](./media/tutorial-incremental-copy-multiple-tables-portal/activity-runs.png) 
 
 ## <a name="review-the-final-results"></a>Przegląd wyników końcowych
-W programu SQL Server Management Studio uruchom następujące zapytania względem docelowej bazy danych, aby sprawdzić, czy zaktualizowane lub nowe dane zostały skopiowane z tabel źródłowych do tabel docelowych. 
+W programie SQL Server Management Studio uruchom następujące zapytania względem docelowej bazy danych, aby sprawdzić, czy zaktualizowane lub nowe dane zostały skopiowane z tabel źródłowych do tabel docelowych. 
 
 **Zapytanie** 
 ```sql

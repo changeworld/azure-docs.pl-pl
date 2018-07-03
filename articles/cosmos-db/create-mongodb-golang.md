@@ -2,7 +2,7 @@
 title: 'Azure Cosmos DB: Tworzenie aplikacji konsolowej interfejsu API usługi MongoDB przy użyciu języka Golang i witryny Azure Portal | Microsoft Docs'
 description: Przykładowy kod języka Golang, którego można używać do nawiązywania połączeń z usługą Azure Cosmos DB i wykonywania w niej zapytań
 services: cosmos-db
-author: Durgaprasad-Budhwani
+author: SnehaGunda
 manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: c02d85546a50b197639929158dc97b3d9bf7ff90
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: d1a45389e95dbd7f5f762b6dee0edc3897d0c3b8
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795775"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029851"
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB: Tworzenie aplikacji konsolowej interfejsu API usługi MongoDB przy użyciu języka Golang i witryny Azure Portal
 
@@ -210,7 +210,7 @@ if err != nil {
 ## <a name="run-the-app"></a>Uruchomienie aplikacji
 
 1. W środowisku Goglang upewnij się, że ścieżka GOPATH (dostępna po wybraniu pozycji **File** [Plik], **Settings** [Ustawienia], **Go**, **GOPATH**) uwzględnia lokalizację, w której zostało zainstalowane polecenie gopkg. Domyślnie jest to ścieżka PROFIL_UŻYTKOWNIKA\go. 
-2. Przekształć w komentarz wiersze usuwające dokument (91–96), aby dokument był widoczny po uruchomieniu aplikacji.
+2. Przekształć w komentarz wiersze usuwające dokument (103–107), aby dokument był widoczny po uruchomieniu aplikacji.
 3. W środowisku Goglang kliknij pozycję **Run** (Uruchom), a następnie kliknij pozycję **Run 'Build main.go and run'** (Uruchom „Skompiluj plik main.go i uruchom”).
 
     Aplikacja kończy działanie i wyświetla opis dokumentu utworzonego w sekcji [Tworzenie dokumentu](#create-document).

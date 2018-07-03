@@ -4,7 +4,7 @@ description: Dowiedz się, jak zarządzać usługą Azure Cosmos DB w Eksplorato
 Keywords: Azure Cosmos DB, Azure Storage Explorer, MongoDB
 services: cosmos-db
 author: Jejiang
-manager: omafnan
+manager: kfile
 editor: ''
 tags: Azure Cosmos DB
 ms.service: cosmos-db
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: jejiang
-ms.openlocfilehash: 3b870ed638656ee3b1b0e46fe9bac44e4436f154
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b45328425cff978377d5e05de487d42e786c063b
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34612847"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345111"
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>Zarządzanie usługą Azure Cosmos DB w Eksploratorze usługi Azure Storage
 
@@ -219,7 +219,7 @@ Przed kontynuacją spróbuj ponownie uruchomić aplikację i zobacz, czy problem
 
 Istnieje kilka przyczyn wyświetlenia tego błędu, przy czym dwoma najbardziej typowymi są:
 
-+ Jesteś za *przezroczystego obiektu pośredniczącego*, co oznacza, że ktoś (na przykład dział IT) jest przechwycenia ruchu HTTPS, odszyfrowywania go i następnie szyfrowania za pomocą certyfikatu z podpisem własnym.
++ Znajdujesz się za *przezroczystym serwerem proxy*, co oznacza, że ktoś (na przykład dział IT) przechwytuje ruch HTTPS, odszyfrowuje go i następnie szyfruje za pomocą certyfikatu z podpisem własnym.
 
 + Używasz oprogramowania, takiego jak oprogramowanie antywirusowe, które wprowadza certyfikaty SSL z podpisem własnym do wiadomości protokołu HTTPS, które otrzymujesz.
 
@@ -308,7 +308,7 @@ Spróbuj wykonać poniższe sugestie:
 
 Jeśli te rozwiązania nie działają w Twoim przypadku, wyślij wiadomość e-mail do zespołu narzędzi dla deweloperów usługi Cosmos Azure DB ([cosmosdbtooling@microsoft.com](mailto:cosmosdbtooling@microsoft.com)) zawierającą szczegółowe informacje o problemach w celu ich rozwiązania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Obejrzyj ten film wideo, aby dowiedzieć się, jak używać usługi Azure Cosmos DB w Eksploratorze usługi Azure Storage: [Use Azure Cosmos DB in Azure Storage Explorer (Używanie usługi Azure Cosmos DB w Eksploratorze usługi Azure Storage)](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).
 * Aby dowiedzieć się więcej o Eksploratorze usługi Storage i sposobach łączenia się z dodatkowymi usługami, zobacz [Wprowadzenie do Eksploratora usługi Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).

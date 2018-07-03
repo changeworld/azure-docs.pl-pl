@@ -1,89 +1,89 @@
 ---
 title: Przewodnik po zabezpieczeniach magazynu platformy Azure | Dokumentacja firmy Microsoft
-description: Szczegóły wiele metod zabezpieczania usługi Azure Storage, w tym między innymi RBAC, szyfrowanie usługi Magazyn szyfrowania po stronie klienta, SMB 3.0 i szyfrowania dysków Azure.
+description: Szczegóły wiele metod zabezpieczania usługi Azure Storage, w tym między innymi RBAC, szyfrowanie usługi Storage, szyfrowanie po stronie klienta, protokołu SMB 3.0 i usługi Azure Disk Encryption.
 services: storage
 author: craigshoemaker
-manager: jeconnoc
+manager: twooley
 ms.service: storage
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cshoe
-ms.openlocfilehash: ba008a86f76a526967bb9dab6ba37043a85f5cf3
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 3c45375a46ee7896509f061828720bcf465aded7
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36304528"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342474"
 ---
-# <a name="azure-storage-security-guide"></a>Przewodnik po zabezpieczeniach magazynu Azure
+# <a name="azure-storage-security-guide"></a>Przewodnik po zabezpieczeniach magazynu platformy Azure
 
-Magazyn Azure oferuje rozbudowany zestaw funkcji zabezpieczeń, które razem umożliwiają deweloperom tworzenie bezpiecznych aplikacji:
+Usługa Azure Storage udostępnia rozbudowany zestaw funkcji zabezpieczeń, umożliwiających deweloperom tworzenie bezpiecznych aplikacji:
 
-- Wszystkie dane zapisane w magazynie Azure automatycznie jest szyfrowana przy użyciu [szyfrowanie usługi Magazyn (SSE)](storage-service-encryption.md). Aby uzyskać więcej informacji, zobacz [Announcing domyślne szyfrowanie dla obiektów blob Azure, plików, tabeli i magazynu kolejek](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
-- Azure Active Directory (Azure AD) i kontroli dostępu opartej na rolach (RBAC) są obsługiwane dla usługi Azure Storage dla operacji zarządzania zasobów i operacje na danych, w następujący sposób:   
-    - Można przypisać role RBAC ograniczone do konta magazynu do podmiotów zabezpieczeń i użycia usługi Azure AD, do autoryzacji zasobów operacji zarządzania, takich jak zarządzanie kluczami.
-    - Integracja z usługą Azure AD jest obsługiwana w wersji zapoznawczej danych operacje w ramach usług obiektów Blob i kolejek. Można przypisać role RBAC ograniczone do subskrypcji, grupy zasobów, konta magazynu lub poszczególnych kontenera lub kolejki do podmiotu zabezpieczeń lub tożsamości usługi zarządzanej. Aby uzyskać więcej informacji, zobacz [uwierzytelniania dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza)](storage-auth-aad.md).   
-- Dane mogą być chronione przy użyciu przesyłanych między aplikacją a Azure [szyfrowania po stronie klienta](../storage-client-side-encryption.md), HTTPS lub SMB 3.0.  
-- Systemu operacyjnego i dysków z danymi używanych przez maszyny wirtualne Azure mogą być szyfrowane przy użyciu [szyfrowania dysków Azure](../../security/azure-security-disk-encryption.md). 
-- Delegowany dostęp do obiektów danych w usłudze Azure Storage można otrzymać za pomocą [sygnatury dostępu współdzielonego](../storage-dotnet-shared-access-signature-part-1.md).
+- Wszystkie dane zapisane w usłudze Azure Storage są automatycznie szyfrowane przy użyciu [szyfrowanie usługi Storage (SSE)](storage-service-encryption.md). Aby uzyskać więcej informacji, zobacz [ogłoszenie domyślne szyfrowanie obiektów blob platformy Azure, pliki, tabela i Queue Storage](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
+- Azure Active Directory (Azure AD) i kontrola dostępu oparta na rolach (RBAC) są obsługiwane dla usługi Azure Storage zarówno dla zasobów operacje zarządzania i operacje na danych, w następujący sposób:   
+    - Można przypisać role RBAC ograniczone do konta magazynu do podmiotów zabezpieczeń i użyj usługi Azure AD, aby autoryzować operacji zarządzania zasobów, takich jak zarządzanie kluczami.
+    - Integracja z usługą Azure AD jest obsługiwana w wersji zapoznawczej dla operacje na danych w usługach obiektów Blob i kolejek. Można przypisać role RBAC do subskrypcji, grupy zasobów, konto magazynu lub pojedynczy kontener lub kolejki do podmiotu zabezpieczeń lub tożsamości usługi zarządzanej zakresu. Aby uzyskać więcej informacji, zobacz [uwierzytelniania dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza)](storage-auth-aad.md).   
+- Dane mogą być chronione przesyłane między aplikacją i platformy Azure przy użyciu [szyfrowania po stronie klienta](../storage-client-side-encryption.md), HTTPS lub SMB 3.0.  
+- Dysków systemu operacyjnego i danych, które są używane przez maszyny wirtualne platformy Azure może być szyfrowana przy użyciu [usługi Azure Disk Encryption](../../security/azure-security-disk-encryption.md). 
+- Delegowanego dostępu do obiektów danych w usłudze Azure Storage można przyznać za pomocą [sygnatur dostępu współdzielonego](../storage-dotnet-shared-access-signature-part-1.md).
 
-Ten artykuł zawiera omówienie każdego z tych funkcji zabezpieczeń, które mogą być używane z usługą Azure Storage. Łącza są dostarczane do artykułów, które zapewni szczegóły dotyczące każdej funkcji, można w prosty sposób dalszych badań na każdego tematu.
+Ten artykuł zawiera omówienie każdego z tych funkcji zabezpieczeń, które mogą być używane z usługi Azure Storage. Łącza są dostarczane do artykułów, które będzie podać szczegóły dotyczące każdej funkcji to łatwo zrobić dalsze badanie dotyczące każdego tematu.
 
-Tematy, które mają być uwzględnione w tym artykule są:
+Tematy, które mają być uwzględnione w tym artykule są następujące:
 
-* [Zabezpieczenia płaszczyzny Management](#management-plane-security) — zabezpieczanie konta magazynu
+* [Zabezpieczenia płaszczyzny zarządzania](#management-plane-security) — zabezpieczanie konta magazynu
 
-  Płaszczyzny zarządzania składa się z zasobami umożliwiają zarządzanie kontem magazynu. W tej sekcji omówiono modelu wdrażania usługi Azure Resource Manager oraz sposób korzystania z kontroli dostępu opartej na rolach (RBAC) do kontrolowania dostępu do kont magazynu. Rozwiązuje ona również zarządzanie kluczami konta magazynu i jak można ponownie wygenerować je.
-* [Dane płaszczyzny zabezpieczeń](#data-plane-security) — zabezpieczanie dostępu do danych
+  Płaszczyzna zarządzania składa się z zasobami umożliwiają zarządzanie kontem magazynu. W tej sekcji omówiono modelu wdrażania usługi Azure Resource Manager i sposobu używania kontroli dostępu opartej na rolach (RBAC) do kontrolowania dostępu do konta magazynu. Zajmuje się także, zarządzanie klucze konta magazynu i jak można wygenerować je ponownie.
+* [Zabezpieczenia na płaszczyźnie danych](#data-plane-security) — zabezpieczanie dostępu do danych
 
-  W tej sekcji wyjaśniono zezwalania na dostęp do danych rzeczywistych obiektów na koncie magazynu obiektów blob, plików, kolejek i tabel, np. przy użyciu sygnatury dostępu współdzielonego i przechowywane zasad dostępu. Omówimy SAS poziomu usług i poziomie konta sygnatury dostępu Współdzielonego. Firma Microsoft będzie również sprawdzić, jak ograniczyć dostęp do określonego adresu IP (lub zakres adresów IP), jak ograniczyć protokół używany do HTTPS i jak odwołać sygnaturę dostępu współdzielonego bez oczekiwania na jej wygaśnięcie.
+  W tej sekcji omówimy zezwalania na dostęp do danych rzeczywistych obiektów w ramach konta magazynu, takie jak obiekty BLOB, plików, kolejek i tabel, za pomocą sygnatur dostępu współdzielonego i przechowywanych zasad dostępu. Omówimy zarówno sygnatura SAS na poziomie usługi, jak i interfejsie SAS na poziomie konta. Również zobaczymy, jak ograniczyć dostęp do określonego adresu IP (lub zakres adresów IP), jak ograniczyć protokół HTTPS i sposób odwołać sygnaturę dostępu współdzielonego nie trzeba czekać na jego wygaśnięcia.
 * [Szyfrowanie podczas transferu](#encryption-in-transit)
 
-  W tej sekcji omówiono sposób do zabezpieczania danych podczas transferu do lub z usługi Azure Storage. Będzie omawianiu zalecane użycie protokołu HTTPS i szyfrowania używany przez protokół SMB 3.0 udziałów plików na platformę Azure. Firma Microsoft będzie także Spójrz na szyfrowanie po stronie klienta, co umożliwia szyfrowanie danych, zanim zostanie przekazany do magazynu w aplikacji klienckiej oraz do odszyfrowania danych po przeniesieniu poza magazynu.
+  W tej sekcji omówiono sposób zabezpieczania danych podczas przesyłania do i z usługi Azure Storage. Omówimy zalecane użycie protokołu HTTPS i szyfrowania używany przez protokół SMB 3.0 udziałów plików platformy Azure. Firma Microsoft będzie również Spójrz na szyfrowanie po stronie klienta, co pozwala szyfrować dane, zanim zostanie przekazany do usługi Storage w aplikacji klienckiej i odszyfrować danych, gdy zostanie przeniesiona poza magazynu.
 * [Szyfrowanie w spoczynku](#encryption-at-rest)
 
-  Firma Microsoft będzie się komunikował o magazynu usługi szyfrowania (SSE), który teraz jest automatycznie włączona dla magazynu nowych i istniejących kont. Ponadto przedstawiono sposób użycia szyfrowania dysków Azure i poznać różnice podstawowych i przypadków szyfrowania dysku i SSE i szyfrowania po stronie klienta. Krótko przedstawiono zgodności ze standardem FIPS dla Stanów Zjednoczonych Komputery dla instytucji rządowych.
-* Przy użyciu [analityka magazynu](#storage-analytics) inspekcji dostępu do magazynu Azure
+  Firma Microsoft będzie komunikować informacje szyfrowanie usługi Storage (SSE), który teraz jest automatycznie włączona dla konta magazynu z nowymi i istniejącymi. Również przedstawiony zostanie sposób użycia usługi Azure Disk Encryption i zapoznaj się z podstawowych różnic i przypadków szyfrowania dysku i SSE i szyfrowanie po stronie klienta. Krótko omówimy zgodności ze standardem FIPS dla Stanów Zjednoczonych Komputery dla instytucji rządowych.
+* Za pomocą [Storage Analytics](#storage-analytics) inspekcji dostępu do usługi Azure Storage
 
-  W tej sekcji omówiono informacje można znaleźć w dziennikach analityka magazynu dla żądania. Firma Microsoft będzie Spójrz na analityka magazynu rzeczywiste dane dziennika i zobacz, jak do wykrycia, czy żądanie kluczem konta magazynu, za pomocą podpisu dostęp współdzielony lub anonimowo oraz tego, czy powodzeniem lub niepowodzeniem.
-* [Włączanie przeglądarki klientów przy użyciu mechanizmu CORS](#Cross-Origin-Resource-Sharing-CORS)
+  W tej sekcji omówiono sposób znajdowania informacji w dziennikach analizy magazynu dla żądania. Utworzymy Przyjrzyj się analityka magazynu rzeczywistych danych dzienników i zobacz, jak rozpoznać, czy żądanie przy użyciu klucza konta magazynu przy użyciu podpisu dostęp współdzielony lub anonimowo oraz tego, czy zakończonych powodzeniem lub niepowodzeniem.
+* [Włączanie klientów oparte na przeglądarce, przy użyciu mechanizmu CORS](#Cross-Origin-Resource-Sharing-CORS)
 
-  Ta sekcja zawiera informacje o sposobu zezwalania współużytkowanie zasobów między źródłami (CORS) do udostępniania. Będzie omawianiu międzydomenowy dostęp i sposobie jego obsługa z CORS wbudowanych funkcji na magazyn Azure.
+  W tej sekcji opowiada, jak umożliwić współużytkowanie zasobów między źródłami (cors). Omówimy międzydomenowy dostęp i jak go obsłużyć za pomocą funkcji CORS, wbudowana w usłudze Azure Storage.
 
-## <a name="management-plane-security"></a>Zarządzanie płaszczyzny zabezpieczeń
-Płaszczyzny zarządzania składa się z operacji, które mają wpływ na samo konto magazynu. Na przykład można utworzyć lub usuwania konta magazynu, Pobierz listę kont magazynu w ramach subskrypcji, pobrać klucze konta magazynu lub ponownie wygenerować kluczy konta magazynu.
+## <a name="management-plane-security"></a>Zabezpieczenia płaszczyzny zarządzania
+Płaszczyzna zarządzania składa się z działań, które wpływają na konto magazynu. Na przykład można utworzyć lub usunąć konto magazynu, uzyskać listę kont magazynu w ramach subskrypcji, pobrać klucze konta magazynu lub ponowne generowanie kluczy konta magazynu.
 
-Podczas tworzenia nowego konta magazynu jest wybierz model wdrożenia klasycznego lub Menedżera zasobów. Klasycznego modelu tworzenie zasobów na platformie Azure umożliwia tylko all-or-nothing dostępu do subskrypcji, a więc konta magazynu.
+Podczas tworzenia nowego konta magazynu, możesz wybrać modelu wdrożenia klasycznego lub usługi Resource Manager. Klasyczny model tworzenia zasobów na platformie Azure umożliwia tylko sztywnego dostępu do subskrypcji, a w pozycji konta magazynu.
 
-Ten przewodnik koncentruje się na modelu Resource Manager, który jest zalecany sposób tworzenia kont magazynu. Za pomocą Menedżera zasobów konta magazynu, zamiast dające dostęp do całej subskrypcji można kontrolować dostęp na poziomie bardziej ograniczone do płaszczyzny zarządzania za pomocą kontroli dostępu opartej na rolach (RBAC).
+Ten przewodnik koncentruje się na modelu usługi Resource Manager, który jest zalecany sposób tworzenia kont magazynu. Z kontami magazynu usługi Resource Manager, a nie dające dostęp do całej subskrypcji możesz kontrolować dostęp na poziomie bardziej ograniczone do płaszczyzny zarządzania za pomocą kontroli dostępu opartej na rolach (RBAC).
 
-### <a name="how-to-secure-your-storage-account-with-role-based-access-control-rbac"></a>Jak zabezpieczyć konto magazynu z kontroli dostępu opartej na rolach (RBAC)
-Załóżmy porozmawiać na temat RBAC jest i jak można go użyć. Każda subskrypcja platformy Azure zawiera usługę Azure Active Directory. Użytkownicy, grupy i aplikacje z katalogu może otrzymać dostęp do zarządzania zasobami w subskrypcji platformy Azure, które używają modelu wdrażania usługi Resource Manager. Ten typ zabezpieczeń jest określana jako kontroli dostępu opartej na rolach (RBAC). Aby zarządzać dostępem, można użyć [portalu Azure](https://portal.azure.com/), [narzędzia wiersza polecenia platformy Azure](../../cli-install-nodejs.md), [PowerShell](/powershell/azureps-cmdlets-docs), lub [interfejsów API REST dostawcy zasobów magazynu Azure](https://msdn.microsoft.com/library/azure/mt163683.aspx).
+### <a name="how-to-secure-your-storage-account-with-role-based-access-control-rbac"></a>Jak zabezpieczyć swoje konto magazynu przy użyciu kontroli dostępu opartej na rolach (RBAC)
+Poniżej omówiono RBAC jest i jak można jej używać. Każda subskrypcja platformy Azure zawiera usługę Azure Active Directory. Użytkownikom, grupom i aplikacjom z tego katalogu można udzielić dostępu do zarządzania zasobami w subskrypcji platformy Azure, które używają modelu wdrażania usługi Resource Manager. Ten typ zabezpieczeń jest określany jako kontrola dostępu oparta na rolach (RBAC). Aby zarządzać dostępem, można użyć [witryny Azure portal](https://portal.azure.com/), [narzędzia wiersza polecenia platformy Azure](../../cli-install-nodejs.md), [PowerShell](/powershell/azureps-cmdlets-docs), lub [magazynu zasobów dostawcy interfejsów API REST Azure](https://msdn.microsoft.com/library/azure/mt163683.aspx).
 
-W modelu Resource Manager należy umieścić konta magazynu w zasobów grupy i kontroli dostępu do tego konta określonego magazynu przy użyciu usługi Azure Active Directory płaszczyzny zarządzania. Na przykład można udzielić określonym użytkownikom możliwość dostępu klucze konta magazynu, podczas gdy inni użytkownicy mogą wyświetlać informacje o koncie magazynu, ale nie ma dostępu do kluczy konta magazynu.
+Za pomocą modelu usługi Resource Manager należy umieścić na koncie magazynu w zasobów grupy i kontroli dostępu do płaszczyzny zarządzania tym konkretnym kontem magazynu za pomocą usługi Azure Active Directory. Na przykład można udzielić określonym użytkownikom możliwość dostępu do kluczy konta magazynu, podczas gdy inni użytkownicy mogą wyświetlać informacje o koncie magazynu, ale nie dostęp do kluczy konta magazynu.
 
 #### <a name="granting-access"></a>Udzielanie dostępu
-Dostęp przez przypisanie odpowiednie role RBAC dla użytkowników, grup i aplikacji, w zakresie prawo. Aby udzielić dostępu do całej subskrypcji, możesz przypisać rolę na poziomie subskrypcji. Dostęp do wszystkich zasobów w grupie zasobów można przyznać za udzielanie uprawnień grupy zasobów. Można również przypisać określonych ról do określonych zasobów, takich jak konta magazynu.
+Dostęp jest udzielany, przypisując odpowiednie role RBAC do użytkowników, grup i aplikacji w zakresie prawo. Aby udzielić dostępu do całej subskrypcji, możesz przypisać rolę na poziomie subskrypcji. Możesz udzielić dostępu do wszystkich zasobów w grupie zasobów, przyznając uprawnienia do samej grupy zasobów. Można także przypisać określonych ról, do określonych zasobów, takich jak konta magazynu.
 
-Poniżej przedstawiono główne punkty, które musisz wiedzieć o dostęp do operacji zarządzania konta usługi Azure Storage za pomocą RBAC:
+Poniżej przedstawiono główne punkty, które musisz wiedzieć o otwieranie operacje zarządzania kontem usługi Azure Storage za pomocą funkcji RBAC:
 
-* Po przypisaniu dostępu zasadniczo przypisać rolę do konta, które chcesz mieć dostęp. Można kontrolować dostęp do operacji umożliwia zarządzanie tym kontem magazynu, ale nie do obiektów danych w ramach konta. Na przykład można udzielić uprawnienia do pobierania właściwości konta magazynu (na przykład nadmiarowość), ale nie do kontenera lub dane w kontenerze wewnątrz magazynu obiektów Blob.
-* Osoba, która ma uprawnienia dostępu do danych obiektów na koncie magazynu można nadać im uprawnienia do odczytu klucze konta magazynu, a ten użytkownik mógł następnie użyć tych kluczy można uzyskać dostępu do obiektów blob, kolejek, tabel i plików.
-* Role można przypisać do określonego konta użytkownika, grupy użytkowników lub do określonej aplikacji.
-* Każda rola ma listę działania i nie działania. Na przykład Rola współautora maszyny wirtualnej ma akcję "listKeys", która umożliwia odczyt kluczy konta magazynu. Współautor ma "Nie akcje" jak aktualizowanie dostępu dla użytkowników w usłudze Active Directory.
-* Role dla magazynu obejmują (ale nie są ograniczone do) następujące role:
+* W przypadku przypisania dostępu po prostu przypisać rolę do konta, które chcesz mieć dostęp. Możesz kontrolować dostęp do operacji używane do zarządzania tym kontem magazynu, ale nie do obiektów danych w ramach konta. Na przykład, można przyznać uprawnienia do pobierania właściwości konta magazynu (na przykład nadmiarowości), ale nie do kontenera lub dane z kontenera w usłudze Blob Storage.
+* Niepowołanym ma uprawnienia do dostępu do obiektów danych w ramach konta magazynu można nadać im uprawnienia do odczytu klucze konta magazynu, a ten użytkownik mógł następnie użyć tych kluczy do uzyskania dostępu do obiektów blob, kolejek, tabel i plików.
+* Role można przypisywać do określonego konta użytkownika, grupy użytkowników lub do określonej aplikacji.
+* Każda rola zawiera listę działań i nie akcje. Na przykład rola Współautor maszyny wirtualnej ma akcję "listKeys" umożliwiająca kluczy konta magazynu do odczytu. Współautor ma "Nie akcje", takie jak aktualizowanie dostępu dla użytkowników w usłudze Active Directory.
+* Role dla magazynu obejmują (ale nie są ograniczone do) następujących ról:
 
-  * Właściciel — mogą zarządzać wszystkim łącznie z dostępem.
-  * Współautor — Administratorzy mogą wykonywać żadnych czynności właściciela oprócz przypisywanie dostępu. Ktoś z tą rolą mogą wyświetlać i ponownie wygenerować kluczy konta magazynu. Klucze konta magazynu ich umożliwia dostęp do obiektów danych.
-  * Czytnik — mogą wyświetlać informacje o koncie magazynu, z wyjątkiem kluczy tajnych. Na przykład jeśli zostaną przypisane roli z uprawnieniami czytnika na koncie magazynu, mogą wyświetlać właściwości konta magazynu, ale nie mogą wprowadzać żadnych zmian właściwości lub Wyświetl klucze konta magazynu.
-  * Współautor konta magazynu — mogą zarządzać konta magazynu — może odczytywać subskrypcji grup zasobów i zasobów, tworzenie i zarządzanie wdrożeniami grup zasobów subskrypcji. Można także przejść klucze konta magazynu, które z kolei oznacza, że będą mieć dostępu do warstwy danych.
-  * Administrator dostępu użytkowników — one zarządzanie dostępem użytkowników do konta magazynu. Na przykład można przyznają dostęp czytelnika do określonego użytkownika.
-  * Współautor maszyny wirtualnej — mogą zarządzać maszyn wirtualnych, ale nie na koncie magazynu, do którego jest podłączony. Tę rolę można wyświetlić listę kluczy konta magazynu, co oznacza, że użytkownik, któremu można przypisać tej roli można aktualizować płaszczyzna danych.
+  * Właściciel — może on zarządzać wszystkim łącznie z dostępem.
+  * Współautor — może robią niczego właściciela oprócz przypisywanie dostępu. Ktoś z tą rolą można przeglądać i ponowne generowanie kluczy konta magazynu. Za pomocą kluczy konta magazynu ich dostęp do obiektów danych.
+  * Czytelnik — mogą wyświetlać informacje o koncie magazynu, z wyjątkiem wpisów tajnych. Na przykład w przypadku przypisania roli z uprawnieniami czytelnika na koncie magazynu w innej, mogą wyświetlać właściwości konta magazynu, ale nie mogą wprowadzać żadnych zmian właściwości lub Wyświetl klucze konta magazynu.
+  * Współautor konta magazynu — może on zarządzać konto magazynu — może odczytywać informacje o subskrypcji grupy zasobów i zasoby, tworzenie i zarządzanie wdrożeniami grup zasobów w subskrypcji. Mogą również dostęp do kluczy konta magazynu, co z kolei oznacza, że mogą uzyskiwać dostęp do płaszczyzny danych.
+  * Administrator dostępu użytkowników — one zarządzanie dostępem użytkowników do konta magazynu. Na przykład powodują udzielenie dostępu czytnik dla określonego użytkownika.
+  * Współautor maszyny wirtualnej — może on zarządzać maszynami wirtualnymi, ale nie na koncie magazynu, z którym są połączone. Tę rolę można wyświetlić listę kluczy konta magazynu, co oznacza, że użytkownik, do którego ta rola została przypisana zaktualizować płaszczyzny danych.
 
-    Użytkownika, aby utworzyć maszynę wirtualną, muszą mieć możliwość utworzenia odpowiedniego pliku VHD na koncie magazynu. W tym celu muszą być w stanie pobrać klucz konta magazynu i przekaż go do interfejsu API tworzenia maszyny Wirtualnej. W związku z tym muszą mieć te uprawnienia, można wyświetlić listę kluczy konta magazynu.
-* Możliwość definiowania ról niestandardowych jest funkcją, która umożliwia utworzenie zestaw akcji z listy dostępnych akcji, które mogą być wykonywane na zasobów platformy Azure.
-* Aby można było przypisać rolę do nich można skonfigurować w usłudze Azure Active Directory użytkownika.
-* Można utworzyć raport, który przyznane/odwołany jakiego rodzaju dostępu do i z którego i na jakie zakresu przy użyciu programu PowerShell lub interfejsu wiersza polecenia Azure.
+    Użytkownika, aby utworzyć maszynę wirtualną, muszą mieć możliwość utworzenia odpowiedniego pliku VHD na koncie magazynu. Aby to zrobić, muszą mieć możliwość pobierania klucza konta magazynu i przekazywać je do interfejsu API tworzenia maszyny Wirtualnej. W związku z tym dzięki czemu można wyświetlić listę kluczy konta magazynu muszą mieć to uprawnienie.
+* Możliwość definiowania ról niestandardowych to funkcja umożliwiająca tworzą zestaw akcji z listy dostępnych akcji, które mogą być wykonywane dla zasobów platformy Azure.
+* Użytkownik musi skonfigurować w usłudze Azure Active Directory, zanim będzie można przypisać roli do nich.
+* Można utworzyć raport o który przyznane/odwołany jakiego rodzaju dostępu do i z którego i na jakie zakresu, przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
 #### <a name="resources"></a>Zasoby
 * [Kontrola dostępu oparta na rolach w usłudze Azure Active Directory](../../role-based-access-control/role-assignments-portal.md)
@@ -91,111 +91,110 @@ Poniżej przedstawiono główne punkty, które musisz wiedzieć o dostęp do ope
   W tym artykule objaśniono funkcję kontroli dostępu opartej na rolach w usłudze Azure Active Directory i sposób jej działania.
 * [Kontrola dostępu oparta na rolach (RBAC): wbudowane role](../../role-based-access-control/built-in-roles.md)
 
-  Ten artykuł zawiera szczegóły dotyczące wszystkich dostępnych w RBAC ról wbudowanych.
+  Ten artykuł szczegółowo wszystkie wbudowane Role dostępne w RBAC.
 * [Omówienie wdrażania przy użyciu usługi Resource Manager oraz wdrażania klasycznego](../../azure-resource-manager/resource-manager-deployment-model.md)
 
-  W tym artykule opisano wdrożenie usługi Resource Manager i klasycznych modeli wdrażania, a opis korzyści przy użyciu grup Resource Manager i zasobów. Wyjaśniono, jak działają rozwiązań usługi obliczenia Azure, sieci i dostawcy magazynu w modelu Resource Manager.
+  W tym artykule opisano wdrożenia usługi Resource Manager i klasycznych modeli wdrażania oraz informacje o korzyści z używania usługi Resource Manager i grup zasobów. Wyjaśniono, jak działają usługi Azure Compute, sieć i dostawców magazynu w ramach modelu usługi Resource Manager.
 * [Zarządzanie kontrolą dostępu opartą na rolach za pomocą interfejsu API REST](../../role-based-access-control/role-assignments-rest.md)
 
   W tym artykule przedstawiono sposób zarządzania kontrolą dostępu opartą na rolach (RBAC) za pomocą interfejsu API REST.
-* [Dokumentacja interfejsu API REST dostawcy zasobów magazynu Azure](https://msdn.microsoft.com/library/azure/mt163683.aspx)
+* [Dokumentacja interfejsu API REST dostawcy zasobów usługi Azure Storage](https://msdn.microsoft.com/library/azure/mt163683.aspx)
 
-  Ta dokumentacja interfejsu API opisano interfejsów API, można programowo zarządzać konta magazynu.
-* [Użyj Menedżera zasobów uwierzytelniania interfejsu API do dostępu do subskrypcji](../../azure-resource-manager/resource-manager-api-authentication.md)
+  Ta dokumentacja interfejsu API opisuje interfejsy API, można użyć do programowego zarządzania konta magazynu.
+* [Interfejs API uwierzytelniania Użyj usługi Resource Manager do dostępu do subskrypcji](../../azure-resource-manager/resource-manager-api-authentication.md)
 
-  W tym artykule przedstawiono sposób uwierzytelniania przy użyciu interfejsów API Menedżera zasobów.
+  W tym artykule przedstawiono sposób uwierzytelniania przy użyciu interfejsów API usługi Resource Manager.
 * [Kontrola dostępu oparta na rolach dla platformy Microsoft Azure — konferencja Ignite](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
 
   To jest link do filmu wideo w witrynie Channel 9 z konferencji Microsoft Ignite 2015. W tej sesji rozmawiamy o możliwościach zarządzania dostępem i raportowania na platformie Azure i eksplorujemy najlepsze rozwiązania dotyczące zabezpieczania dostępu do subskrypcji Azure za pomocą usługi Azure Active Directory.
 
 ### <a name="managing-your-storage-account-keys"></a>Zarządzanie kluczami konta magazynu
-Klucze konta magazynu są ciągami 512-bitowe utworzone przez platformę Azure, która wraz z nazwy konta magazynu mogą być używane do dostępu do obiektów danych przechowywanych w ramach konta magazynu, na przykład, obiekty BLOB podmiotów w obrębie tabeli, kolejki komunikatów i plików w udziale plików na platformę Azure. Kontrolowanie dostępu do magazynu konta klucze kontroli dostępu do płaszczyzna danych dla tego konta magazynu.
+Klucze konta magazynu są ciągami 512-bitowy, utworzone przez platformę Azure, która wraz z nazwą konta magazynu, mogą być używane do dostępu do obiektów danych przechowywanych na koncie magazynu, na przykład, obiekty BLOB, jednostki przechowywane w tabeli, kolejki komunikatów i plików w udziale plików platformy Azure. Kontrolowanie dostępu do kluczy kontroli dostępu do konta magazynu do płaszczyzny danych dla tego konta magazynu.
 
-Każde konto magazynu ma dwa klucze określane jako "Klucz 1" i "Klucz 2" w [portalu Azure](http://portal.azure.com/) i polecenia cmdlet programu PowerShell. Te mogą zostać wygenerowane ponownie ręcznie przy użyciu jednej z kilku metod, w tym między innymi przy użyciu [portalu Azure](https://portal.azure.com/), programu PowerShell, interfejsu wiersza polecenia Azure albo programowo z użyciem biblioteki klienta usługi Storage platformy .NET lub interfejsu API REST usług magazynu Azure.
+Każde konto magazynu ma dwa klucze, określane jako "Klucz 1" i "Klucz 2" w [witryny Azure portal](http://portal.azure.com/) w poleceniach cmdlet programu PowerShell. Te mogą zostać wygenerowane ponownie ręcznie przy użyciu jednej z kilku metod, w tym między innymi za pomocą [witryny Azure portal](https://portal.azure.com/), PowerShell, interfejsu wiersza polecenia platformy Azure lub programowo przy użyciu biblioteki klienta .NET magazynu lub usług Azure Storage INTERFEJS API REST.
 
-Istnieje wielu sytuacjach można ponownie wygenerować kluczy konta magazynu.
+Istnieje wiele powodów, aby ponownie wygenerować kluczy konta magazynu.
 
-* Użytkownik może ponownie wygenerować ich regularnie ze względów bezpieczeństwa.
-* Jeśli ktoś zarządzane hack do aplikacji i pobierania klucza, który zostało zapisane na stałe lub zapisany w pliku konfiguracji, zapewniając im dostęp do konta magazynu będzie ponownie wygenerować kluczy konta magazynu.
-* Innym przypadku ponowne generowanie klucza jest Jeśli zespół używa aplikacji Eksploratora magazynu, który zachowuje klucz konta magazynu, a jeden z członków zespołu pozostawia. Aplikacja będzie nadal działać, udzieleniem im dostępu do konta magazynu po zrobi to ktoś inny. Jest to rzeczywiście głównej przyczyny, dla której one utworzone sygnatury dostępu współdzielonego poziomie konta — SAS poziomie konta można użyć zamiast przechowywanie kluczy dostępu w pliku konfiguracji.
+* Użytkownik może ponownie wygenerować je na bieżąco ze względów bezpieczeństwa.
+* Jeśli ktoś zarządzane hack do aplikacji i pobierania klucza, który zostało zapisane na stałe lub zapisać w pliku konfiguracji, zapewniając im pełny dostęp do swojego konta magazynu będzie ponownie wygenerować kluczy konta magazynu.
+* W innym przypadku ponownego wygenerowania klucza jest, jeśli Twój zespół używa aplikacji Eksploratora usługi Storage, która przechowuje klucz konta magazynu i jeden z członków zespołu pozostawia. Aplikacja będzie nadal działać, dając im dostęp do swojego konta magazynu po zrobi to ktoś inny. To jest faktycznie głównym powodem, utworzonych przez siebie sygnatur dostępu współdzielonego na poziomie konta — sygnatury dostępu Współdzielonego na poziomie konta można użyć zamiast przechowywać klucze dostępu w pliku konfiguracji.
 
 #### <a name="key-regeneration-plan"></a>Ponowne generowanie klucza planu
-Nie chcesz ponownie wygenerować klucz używanego bez niektóre planowania. Dostęp może można to zrobić, obcięty, do tego konta magazynu, który może spowodować przestoje głównych. Jest to, dlatego dostępne są dwa klucze. Należy ponownie wygenerować jeden klucz w czasie.
+Nie chcesz po prostu ponownie wygenerować klucz używane bez niektóre planowania. Jeśli to zrobisz, może odcięte wszelki dostęp do tego konta magazynu i może spowodować przestoje głównych. Jest to, dlaczego dostępne są dwa klucze. Należy ponownie wygenerować jeden klucz w danym momencie.
 
-Wygenerować klucze, upewnij się, że masz listę wszystkich aplikacji, które są zależne od konta magazynu, a także innych usług używanych na platformie Azure. Na przykład jeśli używasz usługi Azure Media Services, które są zależne od konta magazynu musi resync klucze dostępu z usługą multimediów po ponownym wygenerowaniu klucza. Jeśli używasz dowolnej aplikacji, takich jak Eksplorator magazynu należy podać nowe klucze do tych aplikacji, jak również. Jeśli masz maszyny wirtualne, których pliki VHD są przechowywane na koncie magazynu, ich nie dotyczy ponowne generowanie kluczy konta magazynu.
+Zanim można ponownie wygenerować klucze, upewnij się, że masz listę wszystkich aplikacji, które są zależne od konta magazynu, a także innych usług, których używasz na platformie Azure. Na przykład jeśli używasz usługi Azure Media Services, które są zależne od konta magazynu musi resync klawiszy dostępu za pomocą usługi media Services po ponownym wygenerowaniu klucza. Jeśli używasz dowolnej aplikacji, takich jak Eksplorator magazynu konieczne będzie udostępnia nowe klucze do tych aplikacji, jak również. Jeśli masz maszyny wirtualne, których pliki VHD są przechowywane na koncie magazynu, nie będzie ich wpływu przez ponowne generowanie kluczy konta magazynu.
 
-Można ponownie wygenerować klucze w portalu Azure. Gdy klucze są generowane, one mieć mają być synchronizowane między usługi magazynu do 10 minut.
+Można ponownie wygenerować klucze w witrynie Azure portal. Po klucze są generowane, ich może potrwać do 10 minut mają być synchronizowane między usługami magazynu.
 
-Jeśli wszystko jest gotowe, Oto ogólny proces opisujące, jak należy zmienić klucz. W takim przypadku założeniu jest obecnie używasz klucz 1, a użytkownik chce zmienić wszystkie informacje niezbędne do zamiast tego Użyj klucza 2.
+Gdy wszystko będzie gotowe, Oto ogólny proces szczegółowych informacji na temat, jak należy zmienić klucz. W tym przypadku przy założeniu jest, że aktualnie używasz klucz 1 i zamierzasz zmienić wszystko, aby zamiast tego użyj klucz 2.
 
-1. Wygeneruj ponownie klucz 2, aby upewnić się, że jest bezpieczne. Można to zrobić w portalu Azure.
-2. We wszystkich aplikacjach przechowywania klucza magazynu należy zmienić wartość klucza magazynu do użycia nowej wartości klucza 2. Testowanie i publikowanie aplikacji.
-3. Po wszystkich aplikacji i usług są włączone i uruchomiony pomyślnie, należy ponownie wygenerować klucz 1. Dzięki temu, że każdy, komu nie wyraźnie mają nowy klucz zostanie nie ma dostępu do konta magazynu.
+1. Wygeneruj ponownie klucz 2, aby upewnić się, że jest bezpieczne. Można to zrobić w witrynie Azure portal.
+2. We wszystkich aplikacjach miejsce przechowywania klucza magazynu należy zmienić klucz magazynu, aby użyć wartości nowy klucz 2. Testowanie i publikowanie aplikacji.
+3. Po wszystkich aplikacji i usług są włączone i uruchomione pomyślnie, Wygeneruj ponownie klucz 1. Zapewnia to, że nie będzie miało każda osoba, której nie zostały wyraźnie określone mają nowy klucz dostępu do konta magazynu.
 
-Jeśli obecnie używasz 2 klucza, można użyć tego samego procesu, ale odwrotnej nazwy kluczy.
+Jeśli obecnie używasz klucza 2, użyj tego samego procesu, ale odwrotnego nazwy kluczy.
 
-Przez kilka dni, można migrować Zmiana użycia nowego klucza dla każdej aplikacji i publikowania. Po wykonaniu wszystkich z nich czynności należy wrócić do poprzedniej strony i ponownie wygenerować starego klucza, ale nie działa.
+Można przeprowadzić migrację przez kilka dni, zmiana każdej aplikacji w celu używania nowego klucza i publikując ją. Po wykonaniu wszystkich tych czynności należy wrócić i ponowne generowanie klucza stare, więc nie będzie działać.
 
-Innym rozwiązaniem jest umieszczenie klucz konta magazynu [usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/) jako klucz tajny i mieć aplikacji pobrać klucza z tego miejsca. Następnie po ponownie wygenerować klucz aktualizacji usługi Azure Key Vault, aplikacje nie będzie jej ponownego wdrożenia, ponieważ ich pobierze nowy klucz z magazynu kluczy Azure automatycznie. Zauważ, że masz aplikacji, trzeba go do odczytu klucza, lub można ją buforują w pamięci i w przypadku niepowodzenia podczas korzystania z niego, Pobierz klucz ponownie z usługi Azure Key Vault.
+Innym rozwiązaniem jest umieszczenie klucza konta magazynu w [usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/) jako klucz tajny i mieć aplikacji pobrać klucza z tego miejsca. Następnie gdy ponowne wygenerowanie klucza i aktualizacji usługi Azure Key Vault, aplikacje nie należy do ponownego wdrożenia, ponieważ ich przejmie nowy klucz w usłudze Azure Key Vault automatycznie. Zauważ, że może mieć aplikacja będzie odczytywać klucza każdorazowo, będą potrzebne lub można buforowanie w pamięci i jeśli zakończy się niepowodzeniem w przypadku korzystania z niego, klucz ponownego pobrania z usługi Azure Key Vault.
 
-Również przy użyciu usługi Azure Key Vault dodaje kolejny poziom zabezpieczeń dla kluczy magazynu. Jeśli używasz tej metody, nigdy nie należy ustalony klucza magazynu w pliku konfiguracji, co spowoduje usunięcie tego ścieżek ktoś uzyskiwanie dostępu do kluczy bez odpowiedniego uprawnienia.
+Również przy użyciu usługi Azure Key Vault dodaje kolejny poziom zabezpieczeń dla kluczy magazynu. Ta metoda nigdy nie będzie miała zakodowaną klucza magazynu w pliku konfiguracji, co spowoduje usunięcie tego ścieżek osoba uzyska dostęp do kluczy bez wyraźnej zgody.
 
-Inną zaletą używania usługi Azure Key Vault jest można też kontrolować dostęp do kluczy przy użyciu usługi Azure Active Directory. Oznacza to, że można udzielać dostępu do grupy aplikacji, które należy pobrać klucze z usługi Azure Key Vault i dowiedzieć się, że inne aplikacje nie będą mogli uzyskać dostęp do kluczy bez przyznania im uprawnień w szczególności.
+Inną zaletą przy użyciu usługi Azure Key Vault jest można także kontrolować dostęp do swoich kluczy za pomocą usługi Azure Active Directory. Oznacza to, że możesz udzielić dostępu do kilku aplikacji, które musisz pobrać klucze z usługi Azure Key Vault i wiedzieć, czy inne aplikacje nie będą mogli uzyskać dostęp do kluczy bez nadawania im uprawnienia specjalnie.
 
-Uwaga: zalecane jest tylko jeden z kluczy Użyj we wszystkich aplikacji, w tym samym czasie. Jeśli używasz klucz 1 w niektórych miejscach i 2 klucza w innych nie można obrócić klucze bez utraty dostępu do aplikacji.
+Uwaga: zaleca się używać tylko jeden z kluczy we wszystkich aplikacjach, w tym samym czasie. Jeśli używasz klucz 1 w jednych miejscach i klawisz 2 w innych, nie można obrócić klucze bez utraty dostępu do aplikacji.
 
 #### <a name="resources"></a>Zasoby
-* [Informacji o kontach magazynu Azure](storage-create-storage-account.md#regenerate-storage-access-keys)
+* [O kontach magazynu Azure](storage-create-storage-account.md#regenerate-storage-access-keys)
 
-  Ten artykuł zawiera omówienie kont magazynu i wyświetlanie, kopiowanie i ponowne generowanie kluczy dostępu do magazynu.
-* [Dokumentacja interfejsu API REST dostawcy zasobów magazynu Azure](https://msdn.microsoft.com/library/mt163683.aspx)
+  Ten artykuł zawiera omówienie kont magazynu i w tym artykule omówiono wyświetlanie, kopiowanie i ponowne generowanie kluczy dostępu do magazynu.
+* [Dokumentacja interfejsu API REST dostawcy zasobów usługi Azure Storage](https://msdn.microsoft.com/library/mt163683.aspx)
 
-  Ten artykuł zawiera łącza do artykułów na temat pobierania kluczy konta magazynu i Trwa ponowne generowanie kluczy konta magazynu dla konta platformy Azure przy użyciu interfejsu API REST. Uwaga: Jest to w przypadku kont magazynu Menedżera zasobów.
+  Ten artykuł zawiera łącza do określonych artykuły na temat pobierania kluczy konta magazynu i ponowne generowanie kluczy konta magazynu dla konta platformy Azure przy użyciu interfejsu API REST. Uwaga: Są to konta magazynu usługi Resource Manager.
 * [Operacje na kontach magazynu](https://msdn.microsoft.com/library/ee460790.aspx)
 
-  W tym artykule w dokumentacji interfejsu API REST magazynu Service Manager zawiera łącza do określonych artykułów na pobieranie i Trwa ponowne generowanie kluczy konta magazynu przy użyciu interfejsu API REST. Uwaga: Jest to w przypadku kont magazynu Classic.
-* [Koniec z zarządzanie kluczami — zarządzanie dostępem do danych usługi Azure Storage za pomocą usługi Azure AD](http://www.dushyantgill.com/blog/2015/04/26/say-goodbye-to-key-management-manage-access-to-azure-storage-data-using-azure-ad/)
+  W tym artykule w dokumentacji interfejsu API REST magazynu Service Manager zawiera linki do artykułów określonych na pobieranie i ponowne generowanie kluczy konta magazynu przy użyciu interfejsu API REST. Uwaga: To klasyczne konta magazynu.
 
-  W tym artykule pokazano, jak używać usługi Active Directory do kontrolowania dostępu do kluczy magazynu Azure w usłudze Azure Key Vault. Widoczny jest również sposób zadanie usługi Automatyzacja Azure umożliwia ponowne generowanie kluczy co godzinę.
+  W tym artykule pokazano, jak używać usługi Active Directory do kontrolowania dostępu do kluczy usługi Azure Key Vault przy użyciu usługi Azure Storage. Pokazano również, jak na potrzeby ponownego generowania kluczy w systemie godzinowym zadanie usługi Azure Automation.
 
-## <a name="data-plane-security"></a>Zabezpieczenia warstwy danych
-Bezpieczeństwo płaszczyzna danych odwołuje się do metody używane do zabezpieczania obiektów danych przechowywanych w usłudze Azure Storage — obiekty BLOB, kolejek, tabel i plików. Firma Microsoft w tym samouczku metod do szyfrowania danych i zabezpieczeń podczas przesyłania danych, ale jak uzyskać temat kontrolowania dostępu do obiektów?
+## <a name="data-plane-security"></a>Bezpieczeństwo płaszczyzny danych
+Bezpieczeństwo płaszczyzny danych odnosi się do metody używane do zabezpieczania obiektów danych przechowywanych w usłudze Azure Storage — obiektów blob, kolejek, tabel i plików. Zobaczyliśmy, metody służące do szyfrowania danych i zabezpieczeń podczas przesyłania danych, ale jak przejdziesz temat kontrolowania dostępu do obiektów?
 
-Dostępne są trzy opcje w celu autoryzowania dostępu do danych obiektów w usłudze Azure Storage, w tym:
+Są trzy opcje do autoryzowania dostępu do obiektów danych w usłudze Azure Storage, w tym:
 
-- Używanie programu Azure AD do autoryzacji dostępu do kontenerów i kolejek (wersja zapoznawcza). Usługa Azure AD zapewnia zalet w porównaniu z innych metod do autoryzacji, łącznie z usunięciem trzeba przechowywać kluczy tajnych w kodzie. Aby uzyskać więcej informacji, zobacz [uwierzytelniania dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza)](storage-auth-aad.md). 
-- Przy użyciu kluczy konta magazynu do autoryzowania dostępu za pomocą klucza wspólnego. Autoryzowanie za pomocą klucza wspólnego wymaga przechowywanie kluczy konta magazynu w aplikacji, dlatego firma Microsoft zaleca używanie usługi Azure AD zamiast tego, jeśli jest to możliwe. Przez aplikacje produkcyjne lub w celu autoryzowania dostępu do tabel platformy Azure i pliki nadal przy użyciu klucza wspólnego podczas integracji z usługą Azure AD jest w wersji zapoznawczej.
-- Przy użyciu sygnatury dostępu współdzielonego do przyznawania uprawnień kontrolowane określone dane obiektów dla określonego przedziału czasu.
+- Używanie programu Azure AD do autoryzowania dostępu do kontenerów i kolejek (wersja zapoznawcza). Usługa Azure AD zapewnia korzyści w porównaniu do innych metod do autoryzacji, łącznie z usunięciem konieczności przechowywania wpisów tajnych w kodzie. Aby uzyskać więcej informacji, zobacz [uwierzytelniania dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza)](storage-auth-aad.md). 
+- Przy użyciu kluczy konta magazynu, aby autoryzować dostęp za pomocą klucza wspólnego. Uwierzytelnianie za pomocą klucza wspólnego wymaga przechowywania kluczy konta magazynu w aplikacji, dzięki czemu firma Microsoft zaleca używanie usługi Azure AD zamiast tego, gdzie to możliwe. Dla aplikacji produkcyjnych, lub Autoryzowanie dostępu do tabel platformy Azure i plików nadal przy użyciu klucza wspólnego, podczas integracji z usługą Azure AD jest w wersji zapoznawczej.
+- Za pomocą sygnatur dostępu współdzielonego, aby udzielić kontrolowanymi uprawnieniami do obiektów danych specyficznych dla określonego przedziału czasu.
 
-Ponadto dla magazynu obiektów Blob, można zezwolić publiczny dostęp do obiektów blob ustawiając poziom dostępu dla kontenera, który zawiera obiekty BLOB w związku z tym. Jeśli ustawisz dostępu do kontenera obiektów Blob lub kontenera, umożliwia publiczny dostęp do odczytu obiektów blob w tym kontenerze. Oznacza to, że każdy użytkownik z adresem URL wskazującym na obiekt blob w tym kontenerze otworzyć go w przeglądarce bez przy użyciu sygnaturę dostępu współdzielonego lub posiadanie kluczy konta magazynu.
+Ponadto dla magazynu obiektów Blob, można zezwolić publicznego dostępu do obiektów blob, ustawiając poziom dostępu dla kontener, który zawiera obiekty BLOB w związku z tym. Jeśli ustawisz dostępu dla kontenera obiektów Blob lub kontenera, umożliwi publicznego dostępu do odczytu dla obiektów blob w kontenerze. Oznacza to, że każda osoba mająca adres URL wskazuje obiekt blob w kontenerze otwórz go w przeglądarce, bez przy użyciu podpisu dostępu współdzielonego oraz korzystanie z kluczy konta magazynu.
 
-Oprócz ograniczania dostępu do autoryzacji, należy użyć [zapory i sieci wirtualne](storage-network-security.md) Aby ograniczyć dostęp do konta magazynu, na podstawie reguł w sieci.  Ta umożliwia podejście Odmów dostępu do publicznej ruchu internetowego i przyznać dostęp tylko do określonych sieciach wirtualnych platformy Azure lub publicznego Internetu zakresów adresów IP.
+Oprócz ograniczania dostępu do autoryzacji, można również użyć [zapory i sieci wirtualne](storage-network-security.md) do ograniczania dostępu do konta magazynu, na podstawie reguł sieci.  Dzięki temu podejście odmowa dostępu do publicznego ruch internetowy i przyznać dostęp tylko do określonych sieci wirtualnych platformy Azure lub publicznej sieci internet zakresów adresów IP.
 
 ### <a name="storage-account-keys"></a>Klucze kont magazynu
-Klucze konta magazynu są ciągami 512-bitowe utworzone przez platformę Azure, którego wraz z nazwy konta magazynu, można uzyskać dostęp do obiektów danych przechowywanych w ramach konta magazynu.
+Klucze konta magazynu są ciągami 512-bitowy, utworzone przez platformę Azure, która wraz z nazwą konta magazynu, może służyć do dostępu do obiektów danych przechowywanych na koncie magazynu.
 
-Można na przykład obiekty BLOB do odczytu, zapisu do kolejek, tworzenie tabel i modyfikowanie plików. Wiele z tych akcji mogą być wykonywane za pośrednictwem portalu Azure lub przy użyciu jednej z wielu aplikacji Eksploratora magazynu. Można również napisać kod do wykonania tych operacji za pomocą interfejsu API REST lub jednej z bibliotek klienckich magazynu.
+Można na przykład odczytu obiektów blob, zapisu w kolejkach, tworzyć tabele i zmodyfikować pliki. Wiele z tych akcji można przeprowadzić za pośrednictwem witryny Azure portal lub przy użyciu jednego z wielu aplikacji Eksploratora usługi Storage. Można także napisać kod, aby wykonywać te operacje za pomocą interfejsu API REST lub jednej z bibliotek klienckich magazynu.
 
-Zgodnie z opisem w sekcji na [zabezpieczeń płaszczyzny zarządzania](#management-plane-security), dostęp do magazynu kluczy dla konta magazynu Classic można otrzymać, zapewniając dostęp do subskrypcji platformy Azure. Dostęp do magazynu kluczy dla konta magazynu przy użyciu modelu usługi Azure Resource Manager można sterować za pośrednictwem kontroli dostępu opartej na rolach (RBAC).
+Zgodnie z opisem w sekcji na [zabezpieczeń płaszczyzny zarządzania](#management-plane-security), dostęp do magazynu kluczy dla klasycznego konta magazynu można udzielić, zapewniając pełny dostęp do subskrypcji platformy Azure. Dostęp do magazynu kluczy dla konta magazynu przy użyciu modelu usługi Azure Resource Manager mogą być kontrolowane za pomocą kontroli dostępu opartej na rolach (RBAC).
 
-### <a name="how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies"></a>Jak delegować dostęp do obiektów na koncie przy użyciu sygnatury dostępu współdzielonego i przechowywane zasad dostępu
-Sygnaturę dostępu współdzielonego jest ciąg zawierający token zabezpieczający, który można dołączyć do identyfikatora URI, który umożliwia delegowanie dostępu do magazynu obiektów i określić ograniczeń, takich jak uprawnienia i zakres dostępu daty/godziny.
+### <a name="how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies"></a>Jak delegować dostęp do obiektów na koncie przy użyciu sygnatury dostępu współdzielonego i przechowywanych zasad dostępu
+Sygnaturę dostępu współdzielonego to ciąg zawierający token zabezpieczający, który można dołączyć do identyfikatora URI, który umożliwia delegowanie dostępu do magazynu obiektów oraz określanie ograniczeń takich jak uprawnienia i zakresu dat/godzin dostępu.
 
-Mogą udzielać dostępu do obiektów blob, kontenery wiadomości w kolejce, plików i tabele. W tabelach faktycznie można przyznać uprawnień dostępu zakresu jednostek w tabeli, określając zakresami kluczy partycji i wiersza do których mają użytkownik miał dostęp do. Na przykład, jeśli masz dane przechowywane z użyciem klucza partycji geograficzne stanu, możesz podać ktoś dostęp do tylko te dane, Polski.
+Możesz udzielić dostępu do obiektów blob, kontenerów, wiadomości w kolejce, plików i tabel. Z tabelami może faktycznie udzielić uprawnień dostępu zakresu jednostek w tabeli, określając zakresów kluczy partycji i wiersza do których chcesz, aby użytkownik ma dostęp. Na przykład, jeśli masz dane przechowywane w usłudze klucza partycji, geograficzne stanu, można nadasz innej osobie dostępu do tylko dane dla Kalifornia.
 
-W kolejnym przykładzie może udzielić aplikacji sieci web token sygnatury dostępu Współdzielonego, który umożliwia zapisywanie wpisów do kolejki i nadaj roboczy aplikacji roli tokenu sygnatury dostępu Współdzielonego, aby pobrać wiadomości z kolejki i przetwarzanie ich. Lub jednego klienta można nadać tokenu sygnatury dostępu Współdzielonego, można użyć w celu przekazania obrazów do kontenera w magazynie obiektów Blob i nadaj uprawnienia aplikacji sieci web do odczytu tych obrazów. W obu przypadkach jest separacji — każdej aplikacji można przydzielić tylko dostępu, które są wymagane w celu wykonywania swoich zadań. Jest to możliwe przy użyciu sygnatury dostępu współdzielonego.
+W kolejnym przykładzie może udzielić aplikacji sieci web token sygnatury dostępu Współdzielonego, która umożliwia zapisywanie wpisów do kolejki i nadać procesu roboczego aplikacji roli tokenu sygnatury dostępu Współdzielonego, Pobierz komunikaty z kolejki i przetwarzać je. Lub można nadać jednego odbiorcy tokenu sygnatury dostępu Współdzielonego, można Użyj, aby przekazywać obrazy do kontenera w usłudze Blob Storage i nadaj uprawnienia aplikacji sieci web, aby odczytać te obrazy. W obu przypadkach istnieje separacji zagadnień — każdej aplikacji można udzielić tylko dostępu, które są wymagane w celu wykonywania ich zadań. Jest to możliwe przy użyciu sygnatury dostępu współdzielonego.
 
-#### <a name="why-you-want-to-use-shared-access-signatures"></a>Dlaczego chcesz użyć sygnatury dostępu współdzielonego
-Dlaczego czy chcesz użyć SAS zamiast tylko nadawania klucz konta magazynu jest dużo łatwiejszy? Nadawania klucz konta magazynu jest podobne do udostępniania kluczy Królestwo Twojego magazynu. Udziela uprawnień pełny dostęp. Ktoś może użycie klawiszy i przekazywanie ich całej biblioteki utworów muzycznych na koncie magazynu. One można również zastąpić pliki wersjami zainfekowany wirusów lub kradzieży danych. Przekazywanie nieograniczony dostęp do konta magazynu to element, którego nie powinny być uwzględniane w niewielkim stopniu.
+#### <a name="why-you-want-to-use-shared-access-signatures"></a>Dlaczego, do którego chcesz użyć sygnatur dostępu współdzielonego
+Dlaczego czy chcesz używać sygnatury dostępu Współdzielonego zamiast po prostu ujawnianiem klucz konta magazynu, które jest znacznie łatwiejsze? Ujawnianiem klucz konta magazynu jest podobne do udostępniania kluczy Królestwa usługi magazynu. Daje ona pełny dostęp. Ktoś może używać kluczy i przekazywanie ich całej biblioteki utworów muzycznych na koncie magazynu. One może również zastąpić pliki zainfekowanych wersjami lub kradzieży danych. Przekazywanie nieograniczony dostęp do swojego konta magazynu jest coś, co nie powinny być uwzględniane w niewielkim stopniu.
 
-Z sygnatury dostępu współdzielonego można nadać klienta tylko uprawnień wymaganych przez ograniczony czas. Na przykład jeśli ktoś jest przekazywanie obiektu blob na koncie, można przyznać im dostęp do zapisu wystarczającego czasu do przekazania obiektu blob (w zależności od rozmiaru obiektu blob, oczywiście). A jeśli zmienisz zdanie, że dostęp można odwołać.
+Za pomocą sygnatur dostępu współdzielonego można zaoferować klientowi tylko uprawnień wymaganych przez ograniczony czas. Na przykład jeśli ktoś przekazywania obiektu blob na koncie, można przyznać im dostęp do zapisu dla wystarczający tylko raz przekazać obiekt blob (w zależności od rozmiaru obiektów blob, oczywiście). A jeśli zmienisz zdanie, możesz odwołać dostęp.
 
-Ponadto można określić, że żądania przy użyciu sygnatury dostępu Współdzielonego są ograniczone do niektórych adresów IP lub zakres adresów IP zewnętrznego do platformy Azure. Możesz również wymagać, że żądania są wykonywane przy użyciu określonego protokołu (HTTPS lub HTTP/HTTPS). Oznacza to, jeśli chcesz zezwolić na ruch protokołu HTTPS, wymagany protokół HTTPS można ustawić tylko i ruchu HTTP zostanie zablokowana.
+Ponadto można określić, że żądania wysyłane za pomocą sygnatury dostępu Współdzielonego są ograniczone do określonych adresów IP lub zakres adresów IP zewnętrznej na platformie Azure. Może również wymagać, że żądania są wykonywane przy użyciu określonego protokołu (HTTPS lub HTTP/HTTPS). Oznacza to, jeśli chcesz zezwolić na ruch HTTPS, możesz ustawić wymagany protokół HTTPS tylko i ruch HTTP będzie blokowany.
 
 #### <a name="definition-of-a-shared-access-signature"></a>Definicja sygnatury dostępu współdzielonego
-Sygnaturę dostępu współdzielonego to zestaw parametrów zapytania dołączone do adresu URL, wskazując zasobu
+Sygnaturę dostępu współdzielonego to zbiór parametrów zapytania dołączona do adresu URL wskazuje na zasób
 
-zawierające informacje o dozwolony dostęp do i czas, dla których dostęp jest dozwolony. Oto przykład; Ten identyfikator URI zapewnia dostęp do odczytu do obiektu blob na pięć minut. Uwaga SAS parametry zapytania musi być zakodowanych jako adres URL, takich jak 3A % dwukropka (:) lub % 20 spacją.
+który zawiera informacje dotyczące dostępu przyznany i czas, dla których dostęp jest dozwolony. Oto przykład; Ten identyfikator URI zapewnia dostęp do odczytu do obiektu blob przez pięć minut. Parametry zapytania sygnatury dostępu Współdzielonego muszą być zakodowane jako adres URL, takich jak 3A % dwukropek (:) lub 20% w przypadku spację.
 
 ```
 http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
@@ -209,254 +208,254 @@ http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
 &sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D (signature used for the authentication of the SAS)
 ```
 
-#### <a name="how-the-shared-access-signature-is-authorized-by-the-azure-storage-service"></a>W jaki sposób sygnatura dostępu współdzielonego jest autoryzowane przez usługi Azure Storage
-Gdy Usługa magazynu odbiera żądanie, przyjmuje parametry zapytania i tworzy podpis przy użyciu tej samej metody co program wywołujący. Porównuje dwa podpisów. Jeśli użytkownik wyrazi zgodę, usługa Magazyn można sprawdzić wersji usług magazynu, upewnij się, że jest prawidłowy, sprawdź, czy bieżąca data i godzina są w określonym przedziale, upewnij się, że dostęp zażądał odpowiada żądania itp.
+#### <a name="how-the-shared-access-signature-is-authorized-by-the-azure-storage-service"></a>Jak sygnatura dostępu współdzielonego jest autoryzowany przez usługę Azure Storage
+Gdy Usługa magazynu odbiera żądanie, przyjmuje parametry zapytania danych wejściowych i tworzy podpis przy użyciu tej samej metody co program wywołujący. Porównuje dwa podpisów. Jeśli użytkownik wyrazi zgodę, usługi magazynu można sprawdzić wersji usługi storage: Upewnij się, że jest on prawidłowy, sprawdź, czy bieżąca data i godzina są w ramach określonego okna, upewnij się, że dostęp do żądanego odnosi się do żądań zgłaszanych itp.
 
-Na przykład z naszych powyżej adresu URL, jeśli adres URL został wskazuje plik zamiast obiektu blob to żądanie nie powiedzie się, ponieważ określa ona, że sygnatura dostępu współdzielonego jest dla obiekt blob. Jeśli polecenie REST wywoływana nie można zaktualizować obiektu blob, będą się kończyć niepowodzeniem, ponieważ sygnatura dostępu współdzielonego Określa, czy jest dozwolony dostęp tylko do odczytu.
+Na przykład za pomocą naszych adresu URL podanego powyżej, jeśli adres URL został wskazuje plik, a nie obiektu blob to żądanie będzie się niepowodzeniem, ponieważ on określa, że sygnatura dostępu współdzielonego dla obiektu blob. Jeśli wywołania polecenia REST można zaktualizować obiektu blob, zakończy się niepowodzeniem, ponieważ sygnatura dostępu współdzielonego Określa, czy jest dozwolony dostęp tylko do odczytu.
 
 #### <a name="types-of-shared-access-signatures"></a>Rodzaje sygnatur dostępu współdzielonego
-* SAS poziomu usług może służyć do dostępu do określonych zasobów na koncie magazynu. Niektóre przykłady są pobiera listę obiektów blob w kontenerze, pobieranie obiektu blob, aktualizowania jednostki w tabeli, dodawanie wiadomości do kolejki lub przekazywanie pliku do udziału plików.
-* SAS poziomie konta można uzyskać dostępu do wszystkich elementów, które SAS poziomu usług może służyć do. Ponadto zapewnia opcje z zasobami, które nie są dozwolone z poziomu usługi sygnatury dostępu Współdzielonego, takie jak możliwość tworzenia kontenerów, tabel, kolejek i udziałów plików. Dostęp do wielu usług można także określić jednocześnie. Na przykład może być ktoś udzielić dostępu do obiektów blob i plików na Twoim koncie magazynu.
+* Sygnaturę dostępu Współdzielonego na poziomie usług może służyć do dostępu do określonych zasobów na koncie magazynu. Kilka przykładów pobierają listę obiektów blob w kontenerze, pobieranie obiektu blob, aktualizowanie jednostkę w tabeli, dodawanie komunikatów do kolejki lub próba przekazania pliku do udziału plików.
+* Sygnatury dostępu Współdzielonego na poziomie konta może służyć do dostępu do wszystkich elementów, które umożliwia sygnaturę dostępu Współdzielonego na poziomie usługi. Ponadto oferuje opcje do zasobów, które nie są dozwolone z poziomu usługi sygnatury dostępu Współdzielonego, takie jak możliwość tworzenia kontenerów, tabel, kolejek i udziałów plików. Dostęp do wielu usług można również określić tylko raz. Na przykład może być nadasz innej osobie dostępu do obiektów blob i plików na koncie magazynu.
 
 #### <a name="creating-a-sas-uri"></a>Tworzenie identyfikatora URI sygnatury dostępu Współdzielonego
-1. Na żądanie, definiujący wszystkie parametry zapytania każdorazowo, można utworzyć identyfikatora URI.
+1. Na żądanie, definiując wszystkie parametry zapytania każdorazowo, można utworzyć identyfikatora URI.
 
-   Takie podejście jest elastyczny, ale jeśli logiczne zestaw parametrów, które są podobne za każdym razem, za pomocą zasad dostępu przechowywany jest lepiej zrozumieć.
-2. Można utworzyć zasady dostępu do przechowywanych dla całego kontenera, udziału plików, tabel lub kolejek. Można to podstawę dla identyfikatorów URI sygnatury dostępu Współdzielonego, można utworzyć. Łatwo można odwołać uprawnień na podstawie zasad dostępu przechowywane. Może mieć maksymalnie pięć zasady zdefiniowane dla każdego kontenera, kolejki, tabeli lub udziału plików.
+   To podejście jest elastyczny, ale jeśli masz logiczny zbiór parametrów, które są podobne za każdym razem, przy użyciu przechowywanych zasad dostępu jest lepiej zrozumieć.
+2. Można utworzyć zasady dostępu przechowywane dla całego kontenera, udziału plików, tabel lub kolejek. Można to jako podstawy dla identyfikatorów URI sygnatury dostępu Współdzielonego, możesz utworzyć. Uprawnienia na podstawie przechowywanych zasad dostępu mogą być łatwo odwoływane. Może mieć maksymalnie pięć zasady zdefiniowane dla każdego kontenera, kolejki, tabeli lub udziału plików.
 
-   Na przykład jeśli zostały będą mieć wiele osób do odczytu obiektów blob w określonym kontenerze, można utworzyć przechowywane zasad dostępu, stwierdzający "zapewniają dostęp do odczytu" i inne ustawienia, które będą takie same zawsze. Następnie można utworzyć identyfikatora URI połączenia SAS za pomocą ustawień zasad dostępu przechowywane i określając Data/godzina wygaśnięcia. Dzięki temu jest, że nie trzeba określać wszystkich parametrów zapytania zawsze.
+   Na przykład jeśli były chce mieć wiele osób odczytu obiektów blob w określonym kontenerze, można utworzyć przechowywanych zasad dostępu, który jest wyświetlany komunikat "zapewniają dostęp do odczytu" i inne ustawienia, które będą takie same każdorazowo. Następnie można utworzyć identyfikatora URI sygnatury dostępu Współdzielonego, za pomocą ustawień przechowywanych zasad dostępu i określając Data/godzina wygaśnięcia. Dzięki temu jest, że nie trzeba określić wszystkie parametry zapytania za każdym razem, gdy.
 
 #### <a name="revocation"></a>Odwołania
-Załóżmy, że naruszono bezpieczeństwo sieci SAS lub chcesz zmienić go z powodu zabezpieczeń firmy lub wymagania dotyczące zgodności z przepisami. Jak można odwołać dostęp do zasobów, przy użyciu tego skojarzenia zabezpieczeń? To zależy od sposobu tworzenia identyfikatora URI połączenia SAS.
+Załóżmy, że złamał z sygnatury dostępu Współdzielonego lub chcesz go zmienić z powodu zabezpieczeń firmy lub prawnych wymagań dotyczących zgodności. Jak można odwołać dostęp do zasobów przy użyciu tej sygnatury dostępu Współdzielonego? To zależy od sposobu tworzenia identyfikatora URI sygnatury dostępu Współdzielonego.
 
-Jeśli używasz ad hoc identyfikatory URI, masz trzy opcje. Może wystawiać tokeny sygnatury dostępu Współdzielonego z zasadami wygasania krótki i poczekaj na sygnatury dostępu Współdzielonego wygaśnie. Można zmienić lub usunąć zasób (przy założeniu, że token zostało ograniczone do pojedynczego obiektu). Klucze konta magazynu, można zmienić. Ta opcja ostatniego może mieć znaczący wpływ, w zależności od tego, jak wiele usług korzystają z tego konta magazynu i prawdopodobnie nie jest coś, co chcesz zrobić bez niektóre planowania.
+Jeśli używasz ad-hoc identyfikatory URI są trzy opcje. Można wystawiać tokeny sygnatur dostępu Współdzielonego z zasadami wygasania krótki, a następnie poczekaj na wygaśnięcie sygnatur dostępu współdzielonego. Można zmienić lub usunąć zasób (przy założeniu, że token zostało ograniczone do pojedynczego obiektu). Można zmieniać klucze konta magazynu. Ta ostatnia opcja może mieć znaczący wpływ, w zależności od tego, ile usługi używają tego konta magazynu i prawdopodobnie nie jest coś, co chcesz zrobić bez niektóre planowania.
 
-Jeśli używasz sygnatury dostępu Współdzielonego uzyskane z zasad dostępu przechowywany, można usunąć dostęp, odwołując zasad dostępu przechowywany — Zmień go tak, aby już wygasł, albo usuń go całkowicie. Aktywne natychmiast i unieważnia co SAS utworzone za pomocą tego przechowywane zasad dostępu. Aktualizowania lub usuwania zasad dostępu przechowywane może tabela osób wpływ uzyskuje dostęp do tego kontenera określonego udziału plików lub kolejki przy użyciu sygnatury dostępu Współdzielonego, ale jeśli klienci są zapisywane, więc żądają nowe skojarzenia zabezpieczeń, gdy stary staje się nieprawidłowy, to będzie działać prawidłowo.
+Korzystając z sygnatury dostępu Współdzielonego uzyskane z przechowywanych zasad dostępu, można usunąć dostęp, odwołując zasady dostępu przechowywane — Zmień to po prostu, aby już wygasł, albo usuń go całkowicie. Ma efekt natychmiastowy i unieważnia każdej sygnatury dostępu Współdzielonego utworzonych przy użyciu tego przechowywanych zasad dostępu. Aktualizowanie lub usuwanie zasady dostępu przechowywane może tabeli osób wpływ na uzyskiwanie dostępu do tego kontenera dla udziału plików lub kolejki przy użyciu sygnatury dostępu Współdzielonego, ale jeśli klienci są zapisywane, dzięki czemu będą one żądać nowej sygnatury dostępu Współdzielonego, gdy stary staje się nieprawidłowy, to będzie działać prawidłowo.
 
-Ponieważ przy użyciu sygnatury dostępu Współdzielonego uzyskane z zasad dostępu do przechowywanych daje możliwość natychmiast odwołać tego SAS, jest zalecanym najlepszym rozwiązaniem jest zawsze używaj przechowywane zasad dostępu, gdy jest to możliwe.
+Ponieważ przy użyciu sygnatury dostępu Współdzielonego pochodną zasady dostępu przechowywane daje możliwość natychmiast odwołać tej sygnatury dostępu Współdzielonego, jest zalecanym najlepszym rozwiązaniem jest zawsze używaj przechowywanych zasad dostępu, gdy jest to możliwe.
 
 #### <a name="resources"></a>Zasoby
-Aby uzyskać szczegółowe informacje na temat używania sygnatur dostępu współdzielonego i przechowywane zasad dostępu, wraz z przykładami można znaleźć w następujących artykułach:
+Aby uzyskać szczegółowe informacje na temat używania sygnatur dostępu współdzielonego i przechowywanych zasad dostępu, wraz z przykładami można znaleźć w następujących artykułach:
 
-* Są to artykuły odwołania.
+* Są to gama artykułów.
 
-  * [Usługa SAS](https://msdn.microsoft.com/library/dn140256.aspx)
+  * [Sygnatura dostępu Współdzielonego usługi](https://msdn.microsoft.com/library/dn140256.aspx)
 
-    Ten artykuł zawiera przykłady użycia SAS poziomu usług z obiektów blob, kolejki komunikatów, zakresy tabeli i plików.
+    Ten artykuł zawiera przykłady przy użyciu sygnatury dostępu Współdzielonego poziomu usługi za pomocą obiektów blob, kolejki komunikatów, zakresy tabeli i plików.
   * [Utworzenie sygnatury dostępu Współdzielonego usługi](https://msdn.microsoft.com/library/dn140255.aspx)
-  * [Utworzenie konta SAS](https://msdn.microsoft.com/library/mt584140.aspx)
-* Są to samouczków dotyczących za pomocą biblioteki klienta .NET można utworzyć sygnatury dostępu współdzielonego i przechowywane zasad dostępu.
+  * [Utworzenie sygnatury dostępu Współdzielonego konta](https://msdn.microsoft.com/library/mt584140.aspx)
+* Są to samouczki dotyczące tworzenia sygnatury dostępu współdzielonego i przechowywanych zasad dostępu za pomocą biblioteki klienckiej .NET.
 
-  * [Przy użyciu sygnatury dostępu współdzielonego (SAS)](../storage-dotnet-shared-access-signature-part-1.md)
-  * [Udostępnione sygnatur dostępu, część 2: Tworzenie i sygnatury dostępu Współdzielonego za pomocą usługi Blob](../blobs/storage-dotnet-shared-access-signature-part-2.md)
+  * [Używanie sygnatur dostępu współdzielonego (SAS)](../storage-dotnet-shared-access-signature-part-1.md)
+  * [Udostępnione sygnatur dostępu, część 2: Tworzenie i sygnatury dostępu Współdzielonego za pomocą usługi Blob Service](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 
-    Ten artykuł zawiera opis modelu sygnatur dostępu Współdzielonego, przykłady sygnatury dostępu współdzielonego i zalecenia dotyczące najlepszych praktyk Użyj SAS. Opisano również jest odwołania uprawnienia przyznane.
+    Ten artykuł zawiera opis modelu sygnatur dostępu Współdzielonego, przykłady sygnatur dostępu współdzielonego i zalecenia dotyczące najlepszych praktyk korzystanie z sygnatury dostępu Współdzielonego. Omówiono również jest cofnięcie przyznanie uprawnienia.
 
 * Authentication
 
   * [Uwierzytelnianie dla usług Azure Storage](https://msdn.microsoft.com/library/azure/dd179428.aspx)
-* Pierwsze kroki samouczka sygnatury dostępu współdzielonego
+* Udostępnione sygnatur dostępu wprowadzenie do samouczka
 
-  * [Pierwsze kroki samouczka SAS](https://github.com/Azure-Samples/storage-dotnet-sas-getting-started)
+  * [Wprowadzenie do samouczka sygnatury dostępu Współdzielonego](https://github.com/Azure-Samples/storage-dotnet-sas-getting-started)
 
-## <a name="encryption-in-transit"></a>Szyfrowanie podczas przesyłania
+## <a name="encryption-in-transit"></a>Szyfrowanie podczas transferu
 ### <a name="transport-level-encryption--using-https"></a>Szyfrowanie na poziomie transportu — przy użyciu protokołu HTTPS
-Kolejny krok, które należy podjąć w celu zapewnienia bezpieczeństwa danych usługi Azure Storage jest szyfrowanie danych między klientem a usługą Azure Storage. Pierwszy zalecane jest zawsze używaj [HTTPS](https://en.wikipedia.org/wiki/HTTPS) protokołu, który zapewnia bezpieczną komunikację za pośrednictwem publicznej sieci Internet.
+Kolejny krok, które należy podjąć w celu zapewnienia bezpieczeństwa danych usługi Azure Storage jest szyfrowanie danych między klientem i usługi Azure Storage. Pierwszy zalecenie to zawsze użycie [HTTPS](https://en.wikipedia.org/wiki/HTTPS) protokołu, który zapewnia bezpieczną komunikację za pośrednictwem publicznej sieci Internet.
 
-Aby bezpieczny kanał komunikacyjny, zawsze należy używać protokołu HTTPS podczas wywoływania interfejsów API REST lub uzyskiwanie dostępu do obiektów w magazynie. Ponadto **sygnatury dostępu współdzielonego**, które mogą służyć do delegować dostęp do obiektów usługi Azure Storage, obejmują opcję, aby określić, że mogą być używane tylko z protokołu HTTPS przy użyciu sygnatury dostępu współdzielonego, zapewniając każdy wysyłanie linków z tokenami SAS użyje odpowiedni protokół.
+Aby uzyskać bezpieczny kanał komunikacyjny, należy zawsze używać protokołu HTTPS podczas wywoływania interfejsów API REST lub uzyskiwania dostępu do obiektów w magazynie. Ponadto **sygnatur dostępu współdzielonego**, której można delegować dostępu do obiektów usługi Azure Storage, podając opcję, aby określić, że mogą być używane tylko z protokołu HTTPS, korzystając z sygnatury dostępu współdzielonego, upewniając się, że ktoś wysyła limit połączeń za pomocą sygnatury dostępu Współdzielonego tokenów użyje odpowiedni protokół.
 
-Można wymusić użycie protokołu HTTPS podczas wywoływania interfejsów API REST, aby uzyskać dostęp do obiektów na kontach magazynu przez włączenie [bezpieczny transfer wymagane](../storage-require-secure-transfer.md) dla konta magazynu. Połączenia przy użyciu protokołu HTTP będą przyjmowane, gdy ta opcja jest włączona.
+Można wymusić użycie protokołu HTTPS podczas wywoływania interfejsów API REST w celu uzyskania dostępu do obiektów w ramach kont magazynu przez włączenie [Wymagany bezpieczny transfer](../storage-require-secure-transfer.md) dla konta magazynu. Będzie można odmówić połączenia przy użyciu protokołu HTTP, gdy ta opcja jest włączona.
 
-### <a name="using-encryption-during-transit-with-azure-file-shares"></a>Szyfrowanie podczas przesyłania z udziałami plików na platformę Azure
-[Usługa pliki Azure](../files/storage-files-introduction.md) obsługuje szyfrowanie za pomocą protokołu SMB 3.0 i protokół HTTPS, korzystając z interfejsu API REST pliku. Podczas instalowania poza region platformy Azure udziału plików na platformę Azure znajduje się w, takich jak lokalnie lub w innym regionie Azure, SMB 3.0, szyfrowanie jest zawsze wymagane. Protokół SMB 2.1 nie obsługuje szyfrowania, więc domyślnie połączenia są dozwolone tylko w obrębie tego samego regionu platformy Azure, ale protokół SMB 3.0 przy użyciu szyfrowania może być wymuszana przez [wymagające zapewnienia bezpiecznego transferu](../storage-require-secure-transfer.md) dla konta magazynu.
+### <a name="using-encryption-during-transit-with-azure-file-shares"></a>Przy użyciu szyfrowania podczas przesyłania przy użyciu udziałów plików platformy Azure
+[Usługa Azure Files](../files/storage-files-introduction.md) obsługuje szyfrowanie, za pośrednictwem protokołu SMB 3.0 i HTTPS, korzystając z interfejsu API REST plików. Podczas instalowania poza regionem świadczenia udziału plików platformy Azure znajduje się, na przykład lokalnie lub w innym regionie platformy Azure, protokołu SMB 3.0, szyfrowanie jest zawsze wymagany. Protokół SMB 2.1 nie obsługuje szyfrowania, więc domyślnie połączenia są dozwolone tylko w obrębie tego samego regionu na platformie Azure, ale można wymusić przez protokół SMB 3.0 za pomocą szyfrowania [Wymaganie bezpiecznego transferu](../storage-require-secure-transfer.md) dla konta magazynu.
 
-Protokół SMB 3.0, szyfrowanie jest dostępne w [wszystkie obsługiwane systemy operacyjne Windows i Windows Server](../files/storage-how-to-use-files-windows.md) z wyjątkiem systemu Windows 7 i Windows Server 2008 R2, który obsługuje tylko protokół SMB 2.1. Protokół SMB 3.0 jest również obsługiwany w [macOS](../files/storage-how-to-use-files-mac.md) i podziału [Linux](../files/storage-how-to-use-files-linux.md) przy użyciu jądra systemu Linux 4.11 i powyżej. Obsługa szyfrowania protokołu SMB 3.0 również zostały backported ze starszymi wersjami jądra systemu Linux przez kilka dystrybucje systemu Linux, zapoznaj się [wymagania dotyczące klienta SMB opis](../files/storage-how-to-use-files-linux.md#smb-client-reqs).
+Protokół SMB 3.0 za pomocą szyfrowania jest dostępna w [wszystkie obsługiwane systemy operacyjne Windows i Windows Server](../files/storage-how-to-use-files-windows.md) tylko z wyjątkiem Windows 7 i Windows Server 2008 R2, który obsługuje protokół SMB 2.1. Obsługiwana jest również protokół SMB 3.0 na [macOS](../files/storage-how-to-use-files-mac.md) i w dystrybucjach systemu [Linux](../files/storage-how-to-use-files-linux.md) przy użyciu jądra systemu Linux 4.11 i nowsze wersje. Obsługa szyfrowania protokołu SMB 3.0 został także backported do starszych wersji jądra systemu Linux przez kilka dystrybucje systemu Linux, zapoznaj się z [wymagania dotyczące klienta SMB opis](../files/storage-how-to-use-files-linux.md#smb-client-reqs).
 
-### <a name="using-client-side-encryption-to-secure-data-that-you-send-to-storage"></a>Za pomocą szyfrowania po stronie klienta w celu zabezpieczenia danych, który możesz wysłać do magazynu
-Inną opcją, która pomaga zagwarantować, że dane są bezpieczne podczas ich przesyłania między aplikacją klienta i magazynu jest szyfrowanie po stronie klienta. Dane są szyfrowane przed przesyłane do usługi Azure Storage. Podczas pobierania danych z usługi Azure Storage, dane zostaną odszyfrowane po odebraniu po stronie klienta. Nawet jeśli dane są szyfrowane, przechodzi przez sieć, zalecamy również używać protokołu HTTPS, ponieważ ta kolumna ma wbudowane zmniejszenia którego błędy sieciowe wpływających na integralność danych, sprawdzania integralności danych.
+### <a name="using-client-side-encryption-to-secure-data-that-you-send-to-storage"></a>Za pomocą szyfrowania po stronie klienta do zabezpieczania danych wysyłanych do usługi storage
+Inną opcją, który pomaga zagwarantować, że Twoje dane są bezpieczne podczas przesyłania ich między aplikacją kliencką a magazynem jest szyfrowanie po stronie klienta. Dane są szyfrowane, zanim zostaną przesłane do usługi Azure Storage. Podczas pobierania danych z usługi Azure Storage, dane są odszyfrowywane po ich odebraniu po stronie klienta. Mimo, że dane są szyfrowane, przechodząc w sieci, firma Microsoft zaleca również używać protokołu HTTPS, ponieważ zawiera ona sprawdzania integralności danych wbudowane, która ułatwić rozwiązywanie błędów związanych z sieci, wpływających na integralności danych.
 
-Szyfrowanie po stronie klienta jest również szyfrowanie danych magazynowanych, ponieważ dane są przechowywane w postaci zaszyfrowanej. Będzie omawianiu to bardziej szczegółowo w sekcji na [szyfrowanie magazynowanych](#encryption-at-rest).
+Szyfrowanie po stronie klienta jest również szyfrowanie danych magazynowanych, ponieważ dane są przechowywane w postaci zaszyfrowanej. Omówimy to bardziej szczegółowo w sekcji na [szyfrowanie w spoczynku](#encryption-at-rest).
 
-## <a name="encryption-at-rest"></a>Szyfrowanie magazynowanych
-Istnieją trzy funkcje platformy Azure umożliwiających szyfrowanie przechowywanych. Szyfrowanie dysków Azure jest używany do szyfrowania dysków systemu operacyjnego i danych w maszynach wirtualnych IaaS. Szyfrowanie po stronie klienta i SSE jest używany zarówno do szyfrowania danych w usłudze Azure Storage. 
+## <a name="encryption-at-rest"></a>Szyfrowanie w spoczynku
+Istnieją trzy funkcje platformy Azure, które zapewniają szyfrowanie danych magazynowanych. Usługa Azure Disk Encryption umożliwia szyfrowanie dysków systemu operacyjnego i danych na maszynach wirtualnych IaaS. Szyfrowanie po stronie klienta i SSE zarówno służą do szyfrowania danych w usłudze Azure Storage. 
 
-Podczas szyfrowania po stronie klienta można używać do szyfrowania danych podczas przesyłania (które są także przechowywane w postaci zaszyfrowanej w magazynie), można używać protokołu HTTPS podczas transferu, a niektóre sposób dla danych mają być szyfrowane automatycznie, gdy jest on przechowywany. Istnieją dwa sposoby w tym--szyfrowania dysków Azure i SSE. Jeden służy do bezpośredniego szyfrowania danych na dyskach systemu operacyjnego i danych używany przez maszyny wirtualne, a drugi jest używany do szyfrowania danych zapisywane do magazynu obiektów Blob Azure.
+Podczas korzystania z szyfrowania po stronie klienta, aby szyfrować dane podczas przesyłania, (które również są przechowywane w zaszyfrowanej postaci w magazynie), warto używać protokołu HTTPS podczas transferu i mieć jakiś sposób, aby uzyskać dane, które mają być automatycznie szyfrowane, gdy jest on przechowywany. Istnieją dwa sposoby wykonania tej czynności — usługa Azure Disk Encryption i SSE. Jeden jest używany do bezpośrednio do szyfrowania danych na dyskach systemu operacyjnego i danych używane przez maszyny wirtualne, a drugi jest używany do szyfrowania danych zapisanych w usłudze Azure Blob Storage.
 
-### <a name="storage-service-encryption-sse"></a>Szyfrowanie usługi Magazyn (SSE)
+### <a name="storage-service-encryption-sse"></a>Szyfrowanie usługi Storage (SSE)
 
-Nie można wyłączyć SSE, jest włączona dla wszystkich kont magazynu. SSE automatycznie szyfruje dane podczas zapisywania go do magazynu Azure. Gdy odczytać danych z usługi Azure Storage, przed zwróceniem jest odszyfrowywany przez Magazyn Azure. SSE umożliwia Zabezpieczanie danych bez konieczności modyfikowania kodu lub Dodaj kod, aby wszystkie aplikacje.
+Funkcja SSE jest włączona dla wszystkich kont magazynu i nie może być wyłączony. Usługa SSE automatycznie szyfruje dane podczas zapisywania jej do usługi Azure Storage. Podczas odczytywania danych z usługi Azure Storage, zostaje odszyfrowywany przez usługę Azure Storage przed zwróceniem. Usługa SSE umożliwia Zabezpieczanie danych bez konieczności modyfikowania kodu ani dodać kod do dowolnej aplikacji.
 
-Można użyć klawiszy zarządzany przez firmę Microsoft lub własne niestandardowe klucze. Firma Microsoft generuje klucze zarządzanych i obsługuje ich bezpiecznego magazynu, a także regularne obracanie zdefiniowane przez wewnętrznych zasad firmy Microsoft. Aby uzyskać więcej informacji o korzystaniu z kluczy niestandardowych, zobacz [szyfrowanie usługi Magazyn przy użyciu kluczy zarządzany przez klienta w usłudze Azure Key Vault](storage-service-encryption-customer-managed-keys.md).
+Można użyć kluczy zarządzanych przez firmę Microsoft lub klucze niestandardowe. Firma Microsoft generuje klucze zarządzanych i obsługuje ich bezpiecznego magazynu, a także ich regularne obrotu, zgodnie z definicją, wewnętrzne zasady firmy Microsoft. Aby uzyskać więcej informacji na temat używania kluczy niestandardowych zobacz [szyfrowanie usługi Storage przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault](storage-service-encryption-customer-managed-keys.md).
 
 Usługa SSE automatycznie szyfruje dane we wszystkich warstwach wydajności (Standardowa i Premium), wszystkich modelach wdrażania (model usługi Azure Resource Manager i model klasyczny) oraz wszystkich usługach Azure Storage (Blob, Queue, Table i File). 
 
 ### <a name="client-side-encryption"></a>Szyfrowanie po stronie klienta
-Wspomniano szyfrowania po stronie klienta przy omawianiu szyfrowanie danych podczas przesyłania. Ta funkcja umożliwia programowo szyfrowania danych w aplikacji klienta przed wysłaniem przez sieć do zapisania do magazynu Azure i programowo odszyfrować danych po pobraniu go z magazynu Azure.
+Wspomnieliśmy szyfrowania po stronie klienta podczas omawiania szyfrowanie danych podczas przesyłania. Ta funkcja umożliwia programowo szyfrować dane w aplikacji klienckiej przed wysłaniem ich faktycznie są zapisywane w usłudze Azure Storage i programowo odszyfrowywania danych po pobraniu go z usługi Azure Storage.
 
-To zapewnia szyfrowanie podczas przesyłania, ale oferuje także funkcję do szyfrowania w stanie spoczynku. Mimo że dane są szyfrowane podczas przesyłania, nadal zaleca się przy użyciu protokołu HTTPS, aby móc korzystać z sprawdzania integralności danych wbudowanych, które pomagają ograniczyć błędy sieciowe wpływających na integralność danych.
+To zapewnia szyfrowanie podczas transferu, ale udostępnia również funkcję szyfrowanie danych magazynowanych. Mimo, że dane są szyfrowane podczas przesyłania, nadal zaleca się przy użyciu protokołu HTTPS, aby móc korzystać z sprawdzania integralności danych wbudowane, które pomagają ograniczyć błędy sieci wpływających na integralności danych.
 
-Przykład gdzie tej opcji można użyć, to jeśli masz aplikację sieci web przechowuje obiekty BLOB i pobiera obiekty BLOB i ma być należycie zabezpieczone aplikacji i danych. W takim przypadku użyje szyfrowania po stronie klienta. Ruch między klientem a usługą Blob Azure zawiera zaszyfrowane zasobów, a nikt nie mogą interpretować dane przesyłane i przywróć ją do prywatnego obiektów blob.
+Przykładem gdzie tej opcji można użyć jest, jeśli masz aplikację internetową, która przechowuje obiekty BLOB i umożliwia pobranie obiektów blob, i chcesz, aby być tak samo bezpieczna, jak to możliwe, aplikacji i danych. W takim przypadku należy użyć szyfrowania po stronie klienta. Ruch między klientem a usługą Azure Blob zawiera zaszyfrowane zasób, a nikt nie mogą być interpretowane danych podczas przesyłania i odtworzenia go do prywatnej obiektów blob.
 
-Szyfrowanie po stronie klienta jest oparty na języku Java i biblioteki klienta magazynu .NET, które z kolei używają klucza magazynu interfejsów API usługi Azure, dzięki czemu można zapewnić. Proces szyfrowania i odszyfrowywania danych używa techniki koperty i są przechowywane metadane używane przez szyfrowanie w każdym obiekcie magazynu. Na przykład dla obiektów blob, przechowuje go w metadane obiektu blob, natomiast w przypadku kolejek, dodanie go do każdej kolejki wiadomości.
+Szyfrowanie po stronie klienta jest wbudowana w języka Java i .NET biblioteki klienta magazynu, które z kolei używają klucza magazynu interfejsów API usługi Azure, dzięki czemu można zaimplementować. Proces szyfrowania i odszyfrowywania danych używa techniki koperty i przechowuje metadane używane przez szyfrowanie w każdym obiekcie magazynu. Na przykład w przypadku obiektów blob, przechowuje go w metadanych obiektu blob, natomiast w przypadku kolejek, dodanie go do każdego komunikatu w kolejce.
 
-Sam szyfrowania można wygenerować i zarządzanie kluczami szyfrowania. Umożliwia także klucze generowane przez bibliotekę klienta usługi Azure Storage lub masz usługi Azure Key Vault generowania kluczy. Można przechowywać kluczy szyfrowania w Twoim magazynie kluczy lokalnymi lub można przechowywać w usłudze Azure Key Vault. Usługa Azure Key Vault umożliwia udzielenie dostępu do kluczy tajnych w magazynie kluczy Azure do konkretnych użytkowników przy użyciu usługi Azure Active Directory. Oznacza to, że nie tylko każdy może odczytywać usługi Azure Key Vault i pobieranie kluczy, którego używasz do szyfrowania po stronie klienta.
+Sam szyfrowania można wygenerować i zarządzać kluczami szyfrowania. Można również użyć kluczy wygenerowany przez bibliotekę klienta usługi Azure Storage lub masz usługi Azure Key Vault, generowania kluczy. Można przechowywać klucze szyfrowania w magazynie kluczy w środowisku lokalnym lub można go przechowywać w usłudze Azure Key Vault. Usługa Azure Key Vault umożliwia udzielenie dostępu do kluczy tajnych w usłudze Azure Key Vault do konkretnych użytkowników przy użyciu usługi Azure Active Directory. Oznacza to, że nie osoba mogła odczytać usługi Azure Key Vault i pobrać klucze używane do szyfrowania po stronie klienta.
 
 #### <a name="resources"></a>Zasoby
-* [Szyfrowanie i odszyfrowywanie obiektów blob w magazynie platformy Microsoft Azure przy użyciu usługi Azure Key Vault](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
+* [Szyfrowanie i odszyfrowywanie obiektów blob w Microsoft Azure Storage przy użyciu usługi Azure Key Vault](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
 
-  W tym artykule przedstawiono sposób szyfrowania po stronie klienta za pomocą usługi Azure Key Vault, łącznie ze sposobem tworzenia klucza KEK i zapisze go w magazynie przy użyciu programu PowerShell.
-* [Magazyn kluczy szyfrowania po stronie klienta i Azure dla magazynu Microsoft Azure](../storage-client-side-encryption.md)
+  W tym artykule przedstawiono sposób szyfrowania po stronie klienta za pomocą usługi Azure Key Vault, w tym sposobu tworzenia klucza KEK i zapisz go w magazynie przy użyciu programu PowerShell.
+* [Szyfrowanie po stronie klienta i usługi Azure Key Vault dla usługi Microsoft Azure Storage](../storage-client-side-encryption.md)
 
-  Ten artykuł zawiera wyjaśnienie szyfrowania po stronie klienta i zawiera przykłady za pomocą biblioteki klienta magazynu do szyfrowania i odszyfrowywania zasobów z czterech usług magazynu. Zawiera ona również informacje o usługi Azure Key Vault.
+  Ten artykuł zawiera wyjaśnienie szyfrowania po stronie klienta i zawiera przykłady przy użyciu biblioteki klienta usługi storage do szyfrowania i odszyfrowywania zasobów z czterech usług magazynu. Również opowiada o usłudze Azure Key Vault.
 
-### <a name="using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines"></a>Przy użyciu szyfrowania dysków Azure do szyfrowania dysków używanych przez maszyny wirtualne
-Szyfrowanie dysków Azure to nowa funkcja. Ta funkcja umożliwia szyfrowanie dysków systemu operacyjnego i dysków danych używanych przez maszyny wirtualne IaaS. W systemie Windows dyski są szyfrowane za pomocą technologii szyfrowania BitLocker standardowych. Dla systemu Linux dyski są szyfrowane za pomocą technologii DM-Crypt. To jest zintegrowany z usługą Azure Key Vault, co pozwala na kontrolowanie i zarządzać kluczami szyfrowania dysku.
+### <a name="using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines"></a>Do szyfrowania dysków używanych przez maszyny wirtualne przy użyciu usługi Azure Disk Encryption
+Usługa Azure Disk Encryption jest nową funkcją. Ta funkcja umożliwia szyfrowanie dysków systemu operacyjnego i dysków danych używanych przez maszynę wirtualną IaaS. Dla Windows dyski są szyfrowane przy użyciu technologii szyfrowania funkcją BitLocker będące standardami branżowymi. W przypadku systemu Linux dyski są szyfrowane przy użyciu technologii DM-Crypt. Ta lokalizacja jest zintegrowana z usługą Azure Key Vault umożliwia kontrolowanie i zarządzać kluczami szyfrowania dysków.
 
-Rozwiązanie obsługuje następujące scenariusze dla maszyn wirtualnych IaaS, jeśli są włączone w systemie Microsoft Azure:
+Rozwiązanie obsługuje następujące scenariusze dla maszyn wirtualnych IaaS, gdy są one włączone w systemie Microsoft Azure:
 
-* Integracja z usługi Azure Key Vault
-* Maszyny wirtualne warstwy standardowa: [A, D DS, G, GS i itp szeregów maszyn wirtualnych IaaS](https://azure.microsoft.com/pricing/details/virtual-machines/)
-* Włączenie szyfrowania w systemach Windows i maszyn wirtualnych systemu Linux IaaS
-* Wyłączenie szyfrowania systemu operacyjnego i danych dyski dla maszyn wirtualnych IaaS systemu Windows
-* Wyłączenie szyfrowania dla dysków z danymi dla maszyn wirtualnych systemu Linux IaaS
-* Włączenie szyfrowania na maszynach wirtualnych IaaS, którego uruchomiono system operacyjny klienta systemu Windows
-* Włączenie szyfrowania na woluminach ze ścieżki instalacji
-* Włączenie szyfrowania na maszynach wirtualnych systemu Linux, które są skonfigurowane przy użyciu rozkładanie (RAID) przy użyciu mdadm
-* Włączenie szyfrowania na maszynach wirtualnych systemu Linux przy użyciu LVM dla dysków z danymi
-* Włączenie szyfrowania na maszynach wirtualnych systemu Windows, które są skonfigurowane przy użyciu funkcji miejsca do magazynowania
-* Wszystkie publiczne regiony platformy Azure są obsługiwane.
+* Integracja z usługą Azure Key Vault
+* Maszyny wirtualne w warstwie standardowa: [A, D, DS, G, GS i tak dalej serię maszyn wirtualnych IaaS](https://azure.microsoft.com/pricing/details/virtual-machines/)
+* Włączanie szyfrowania na Windows i maszyn wirtualnych IaaS z systemem Linux
+* Wyłączenie szyfrowania systemu operacyjnego i danych dyski dla maszyn wirtualnych IaaS Windows
+* Wyłączenie szyfrowania dla dysków z danymi dla maszyn wirtualnych IaaS z systemem Linux
+* Włączanie szyfrowania na maszynach wirtualnych IaaS, które są uruchomione w systemie operacyjnym klienta Windows
+* Włączanie szyfrowania dla woluminów przy użyciu ścieżki instalacji
+* Włączanie szyfrowania na maszynach wirtualnych systemu Linux, które są skonfigurowane przy użyciu rozkładanie (RAID) przy użyciu mdadm
+* Włączanie szyfrowania na maszynach wirtualnych z systemem Linux przy użyciu LVM dla dysków z danymi
+* Włączanie szyfrowania na maszynach wirtualnych Windows, które są konfigurowane przy użyciu funkcji miejsca do magazynowania
+* Wszystkich publicznych regionach platformy Azure są obsługiwane.
 
-Rozwiązanie nie obsługuje następujące scenariusze, funkcje i technologie w wersji:
+Rozwiązanie nie obsługuje następujących scenariuszy, funkcji i technologii w wersji:
 
-* Maszyny wirtualne IaaS warstwa podstawowa
-* Wyłączenie szyfrowania na dysku systemu operacyjnego dla maszyn wirtualnych systemu Linux IaaS
+* Warstwa podstawowa maszyn wirtualnych IaaS
+* Wyłączenie szyfrowania na dysku systemu operacyjnego dla maszyn wirtualnych IaaS z systemem Linux
 * Maszyny wirtualne IaaS, które są tworzone za pomocą klasycznego metodę tworzenia maszyny Wirtualnej
-* Integracja z lokalnej usługi zarządzania kluczami
-* Usługa pliki Azure (udostępnionego systemu plików), sieciowego systemu plików (NFS), dynamiczne woluminy i maszyn wirtualnych systemu Windows, które są skonfigurowane przy użyciu systemów opartych na oprogramowaniu RAID
+* Integracja z usługą zarządzania kluczami w środowisku lokalnym
+* Usługa pliki systemu Azure (udostępnionego systemu plików), Network File System (NFS), dynamiczne woluminy i maszyn wirtualnych Windows, które są skonfigurowane przy użyciu systemów programowej macierzy RAID
 
 
 > [!NOTE]
-> Szyfrowanie dysków systemu operacyjnego Linux jest aktualnie obsługiwana w następujących dystrybucje systemu Linux: RHEL 7.2, CentOS 7.2n i Ubuntu 16.04.
+> Szyfrowanie dysków systemu operacyjnego Linux jest obecnie obsługiwany na poniższe dystrybucje systemu Linux: systemu RHEL 7.2 CentOS 7.2n i Ubuntu 16.04.
 >
 >
 
-Ta funkcja zapewnia, że wszystkie dane na dyskach maszyny wirtualnej jest szyfrowane, gdy w usłudze Azure Storage.
+Ta funkcja pozwala zagwarantować, że wszystkie dane na dyskach maszyn wirtualnych są szyfrowane w stanie spoczynku w usłudze Azure Storage.
 
 #### <a name="resources"></a>Zasoby
-* [Szyfrowanie dysków Azure dla systemu Windows i maszyn wirtualnych systemu Linux IaaS](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
+* [Usługa Azure Disk Encryption for Windows i maszyn wirtualnych IaaS z systemem Linux](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
 
-### <a name="comparison-of-azure-disk-encryption-sse-and-client-side-encryption"></a>Porównanie szyfrowania dysków Azure, SSE i szyfrowania po stronie klienta
+### <a name="comparison-of-azure-disk-encryption-sse-and-client-side-encryption"></a>Porównanie usługi Azure Disk Encryption, SSE i szyfrowanie po stronie klienta
 
-#### <a name="iaas-vms-and-their-vhd-files"></a>Maszyny wirtualne IaaS i swoich plików wirtualnego dysku twardego
+#### <a name="iaas-vms-and-their-vhd-files"></a>Maszyny wirtualne IaaS i ich pliki wirtualnego dysku twardego
 
-W przypadku dysków danych używany przez maszyny wirtualne IaaS szyfrowania dysków Azure jest zalecane. Jeśli tworzysz Maszynę wirtualną z dyskami niezarządzanych przy użyciu obrazu z portalu Azure Marketplace, platforma Azure stosuje [skrócona kopiowania](https://en.wikipedia.org/wiki/Object_copying) obrazu do magazynu konta w usłudze Azure Storage, a nie są szyfrowane, nawet jeśli masz SSE włączone. Po tworzy maszynę Wirtualną i uruchamia aktualizacji obrazu, SSE rozpocznie się zaszyfrowanie danych. Z tego powodu najlepiej jest używać szyfrowania dysków Azure na maszynach wirtualnych z dyskami niezarządzane utworzone z obrazów w portalu Azure Marketplace, jeśli chcesz, w pełni szyfrowane. Po utworzeniu maszyny Wirtualnej z dysków zarządzanych SSE szyfruje wszystkie dane domyślnie przy użyciu platformy zarządzanych kluczy. 
+W przypadku dysków danych używany przez maszyny wirtualne IaaS Azure Disk Encryption jest zalecane. Jeśli tworzysz Maszynę wirtualną z dyskami niezarządzanymi przy użyciu obrazu z witryny Azure Marketplace, platforma Azure przeprowadza [skrócona kopiowania](https://en.wikipedia.org/wiki/Object_copying) obrazu do magazynu konta w usłudze Azure Storage, a nie są szyfrowane, nawet jeśli masz włączoną SSE. Po tworzy maszynę Wirtualną i rozpoczyna się aktualizowanie obrazu, SSE rozpocznie się zaszyfrowanie danych. Z tego powodu najlepiej jest używać usługi Azure Disk Encryption na maszynach wirtualnych z dyskami niezarządzanymi utworzone z obrazów w portalu Azure Marketplace, jeśli chcesz, w pełni zaszyfrowane. Jeśli tworzysz Maszynę wirtualną z usługą Managed Disks, usługa SSE szyfruje wszystkie dane domyślnie przy użyciu platformy zarządzanych kluczy. 
 
-W przypadku przeniesienia zaszyfrowane wstępnie maszyny Wirtualnej na platformie Azure z lokalnymi, można przekazać do usługi Azure Key Vault kluczy szyfrowania i kontynuować korzystanie z szyfrowania dla tej maszyny Wirtualnej, aby były używane lokalnie. Szyfrowanie dysków Azure jest włączona do obsługi tego scenariusza.
+W przypadku przeniesienia wstępnie zaszyfrowanej maszyny Wirtualnej na platformie Azure ze środowiska lokalnego, można przekazać kluczy szyfrowania w usłudze Azure Key Vault i kontynuować korzystanie z szyfrowania dla tej maszyny Wirtualnej, które były używane w środowisku lokalnym. Usługa Azure Disk Encryption jest włączona w celu obsługi tego scenariusza.
 
-Jeśli masz niezaszyfrowane wirtualnego dysku twardego z lokalnej, należy przekazać go do galerii jako obraz niestandardowy i udostępnić Maszynę wirtualną z niego. Jeśli możesz to zrobić za pomocą szablonów usługi Resource Manager, poproś go o włączenie szyfrowania dysków Azure po jego rozruchu maszyny Wirtualnej.
+Jeśli masz niezaszyfrowane wirtualny dysk twardy ze środowiska lokalnego, możesz przekazać go do galerii jako obraz niestandardowy i aprowizować maszynę Wirtualną z niego. Jeśli możesz to zrobić przy użyciu szablonów usługi Resource Manager, możesz poprosić, aby włączyć usługi Azure Disk Encryption podczas rozruchu maszynę wirtualną.
 
-Podczas dodawania dysku danych i zainstalować go na maszynie Wirtualnej, można włączyć szyfrowania dysków Azure na tym dysku danych. Go zostanie najpierw szyfrowania dysku danych lokalnie, a następnie warstwy modelu wdrażania klasycznego będzie wykonaj opóźnieniem zapisu względem magazynu, zawartość magazynu jest zaszyfrowana.
+W przypadku dodania dysku danych i zainstalować go na maszynie Wirtualnej, można włączyć usługi Azure Disk Encryption na tym dysku danych. Go spowoduje zaszyfrowanie dysku danych lokalnie najpierw, a następnie warstwy modelu wdrożenia klasycznego będzie wykonaj zapis z opóźnieniem magazynu, więc zawartość magazynu jest szyfrowana.
 
 #### <a name="client-side-encryption"></a>Szyfrowania po stronie klienta
-Szyfrowanie po stronie klienta jest najbezpieczniejszą metodą szyfrowania danych, ponieważ szyfrowanie danych przed przesyłania.  Jednak wymaga Dodaj kod aplikacji przy użyciu magazynu, który może chcesz zrobić. W takim wypadku można użyć protokołu HTTPS do zabezpieczania danych przesyłanych. Po danych osiągnie magazynu Azure, są szyfrowane przez SSE.
+Szyfrowanie po stronie klienta jest najbezpieczniejszą metodą szyfruje Twoje dane ponieważ je szyfruje dane przed przesyłania.  Jednak wymagać, możesz dodać kod do aplikacji za pomocą usługi storage, która może chcesz zrobić. W takich przypadkach można użyć protokołu HTTPS do zabezpieczenia danych podczas przesyłania. Gdy dane osiągną usługi Azure Storage, są szyfrowane przez SSE.
 
-Szyfrowanie po stronie klienta można zaszyfrować jednostek tabeli, kolejki komunikatów i obiekty BLOB. 
+Za pomocą szyfrowania po stronie klienta można zaszyfrować jednostki z tabeli, kolejki komunikatów i obiektów blob. 
 
-Szyfrowanie po stronie klienta odbywa się wyłącznie przez aplikację. Jest to najbezpieczniejsza metoda, ale wymagają zmian programowy do aplikacji i wprowadzenia procesy zarządzania kluczami. Należy użyć to dodatkowe bezpieczeństwo podczas przesyłania, i przechowywane dane do zaszyfrowania.
+Szyfrowanie po stronie klienta odbywa się wyłącznie przez aplikację. Jest to najbezpieczniejsza metoda, ale wymaga zmiany programowy do aplikacji i umieścić procesów zarządzania kluczami w miejscu. Użyj tego chcesz zapewnienia dodatkowego bezpieczeństwa podczas przesyłania, gdy chcesz, aby dane przechowywane na szyfrowanie.
 
-Szyfrowanie po stronie klienta jest większe obciążenie na kliencie, a muszą to uwzględniać w planów skalowalność, zwłaszcza, jeśli są szyfrowania i przesyłania dużych ilości danych.
+Szyfrowanie po stronie klienta jest większe obciążenie na komputerze klienckim i muszą to uwzględniać w planów skalowalność, zwłaszcza, jeśli są szyfrowania i przesyłania dużych ilości danych.
 
-#### <a name="storage-service-encryption-sse"></a>Szyfrowanie usługi Magazyn (SSE)
+#### <a name="storage-service-encryption-sse"></a>Szyfrowanie usługi Storage (SSE)
 
-SSE jest zarządzana przez usługi Azure Storage. SSE nie zapewniają bezpieczeństwo danych podczas przesyłania, ale szyfrowania danych, ponieważ jest ona zapisywana w usłudze Azure Storage. Usługa SSE nie wpływa na wydajność usługi Azure Storage.
+Funkcja SSE jest zarządzane przez usługę Azure Storage. Usługa SSE nie zapewnia bezpieczeństwo danych podczas przesyłania, ale szyfrowania danych, ponieważ jest ona zapisywana w usłudze Azure Storage. Usługa SSE nie wpływa na wydajność usługi Azure Storage.
 
-Można zaszyfrować każdego typu danych konta magazynu przy użyciu SSE (blokowe obiekty BLOB, Dołącz obiektów blob, stronicowe obiekty BLOB, tabeli danych, kolejki danych i plików).
+Umożliwia ona szyfrowanie dowolnego typu danych na koncie magazynu przy użyciu SSE (blokowe obiekty BLOB, uzupełnialnych obiektów blob, stronicowe obiekty BLOB, tabeli danych, dane w kolejce i plików).
 
-Jeśli masz archiwum lub biblioteka plików VHD, które używa jako podstawy do tworzenia nowych maszyn wirtualnych, możesz utworzyć nowe konto magazynu i następnie przekazać pliki wirtualnego dysku twardego do tego konta. Te pliki VHD będą szyfrowane przez Magazyn Azure.
+W przypadku archiwum lub biblioteka plików VHD, można użyć jako podstawy do tworzenia nowych maszyn wirtualnych, które można utworzyć nowe konto magazynu i następnie przekaż pliki wirtualnego dysku twardego do tego konta. Te pliki wirtualnego dysku twardego, będą szyfrowane przez usługę Azure Storage.
 
-Jeśli masz dysków na maszynie wirtualnej jest włączone szyfrowanie dysków Azure, wszystkie nowo napisanych dane są szyfrowane, zarówno SSE i szyfrowania dysków Azure.
+Jeśli masz usługi Azure Disk Encryption włączone dla dysków na maszynie wirtualnej, wszystkie nowo napisanych dane są szyfrowane zarówno SSE i usługi Azure Disk Encryption.
 
 ## <a name="storage-analytics"></a>Analityka magazynu
-### <a name="using-storage-analytics-to-monitor-authorization-type"></a>Przy użyciu magazynu Analytics można monitorować typu autoryzacji
-Dla każdego konta magazynu można włączyć analityka magazynu Azure do przechowywania danych metryki i wykonywać rejestrowanie. Jest to doskonałe narzędzie do użycia podczas sprawdzania metryki wydajności konta magazynu lub konieczne rozwiązywanie problemów z konta magazynu, ponieważ występują problemy z wydajnością.
+### <a name="using-storage-analytics-to-monitor-authorization-type"></a>Przy użyciu usługi Storage Analytics do monitorowania typ autoryzacji
+Dla każdego konta magazynu można włączyć usługi Azure Storage Analytics wykonać rejestrowania i przechowywanie danych metryk. Jest to doskonałe narzędzie do użycia, gdy chcesz sprawdzić metryki wydajności konta magazynu lub muszą rozwiązywać problemy z kontem magazynu, ponieważ występują problemy z wydajnością.
 
-Inny element danych, można znaleźć w dziennikach analityka magazynu jest metodę uwierzytelniania używaną przez osobę przy uzyskiwaniu dostępu do magazynu. Na przykład z magazynem obiektów Blob widać, użycie sygnaturę dostępu współdzielonego i klucze konta magazynu lub jeśli publiczny dostęp do obiektu blob.
+Inny element danych, które można zobaczyć w dzienniki analiz magazynu to metodę uwierzytelniania używaną przez osobę podczas uzyskiwania dostępu do magazynu. Na przykład z usługą Blob Storage, widać użycie sygnaturę dostępu współdzielonego i klucze konta magazynu lub jeśli publiczny dostęp do obiektu blob.
 
-Może to być przydatne, jeśli są ściśle ochrona dostępu do magazynu. Na przykład w magazynie obiektów Blob można ustawić opcję prywatne dla wszystkich kontenerów i implementować korzystania z usługi SAS w całej aplikacji. Następnie można sprawdzić dzienniki regularnie, aby sprawdzić, czy obiektów blob są dostępne przy użyciu kluczy konta magazynu, które mogą wskazywać naruszenia zabezpieczeń, lub jeśli obiekty BLOB są publiczne, ale nie powinny być one.
+Może to być przydatne, jeśli są ściśle ochrona dostępu do magazynu. Na przykład w usłudze Blob Storage można ustawić wszystkie kontenery na prywatną i zaimplementować korzystania z usługi sygnatury dostępu Współdzielonego w całej aplikacji. Następnie można sprawdzić dzienniki regularnie, aby zobaczyć, czy obiekty BLOB są dostępne przy użyciu kluczy konta magazynu, które mogą wskazywać naruszenia zabezpieczeń, czy obiekty BLOB były publiczne, ale nie powinny być.
 
 #### <a name="what-do-the-logs-look-like"></a>Jak wyglądają dzienniki?
-Po włączeniu metryki konta magazynu i rejestrowanie za pośrednictwem portalu Azure, dane analityczne rozpocznie się szybko. Rejestrowanie i metryki dla każdej usługi jest oddzielona; Rejestrowanie są zapisywane tylko w przypadku działania na tym koncie magazynu, gdy metryki będą rejestrowane co minutę, co godzinę lub codziennie, w zależności od sposobu skonfigurowania.
+Po włączeniu metryki konta magazynu i logujesz się za pośrednictwem witryny Azure portal, analiza danych będą kończyć się szybko wzrosnąć. Rejestrowanie i metryki dla każdej z tych usług jest oddzielona; Rejestrowanie są zapisywane tylko w przypadku działania na tym koncie magazynu, gdy metryki będą rejestrowane co minutę, co godzinę lub codziennie, w zależności od tego, jak skonfigurować.
 
-Dzienniki są przechowywane w blokowych obiektów blob w kontenerze o nazwie $logs na koncie magazynu. Ten kontener jest tworzony automatycznie, gdy analityka magazynu jest włączona. Po utworzeniu tego kontenera nie można usunąć, mimo że można usunąć jego zawartość.
+Dzienniki są przechowywane w blokowych obiektów blob w kontenerze o nazwie $logs na koncie magazynu. Ten kontener jest tworzony automatycznie, gdy jest włączona usługa Storage Analytics. Po utworzeniu tego kontenera nie można usunąć, mimo że można usunąć jej zawartość.
 
-W kontenerze $logs znajduje się tam folder dla każdej usługi, a następnie istnieją podfoldery roku/miesiąc/dzień/godzinę. W obszarze godzinę dzienniki są numerowane. Jest to, jak będzie wyglądać strukturę katalogów:
+W kontenerze $logs znajduje się tam folder dla każdej usługi, a następnie istnieją podfoldery dla rok/miesiąc/dzień/godz. W obszarze godzinę dzienniki są numerowane. Jest to, jak będzie wyglądać struktura katalogów:
 
 ![Wyświetl pliki dziennika](./media/storage-security-guide/image1.png)
 
-Każde żądanie do usługi Azure Storage jest rejestrowane. Oto migawki pliku dziennika, przedstawiający pierwsze kilka pola.
+Każde żądanie do usługi Azure Storage jest rejestrowane. Oto migawki pliku dziennika, przedstawiający pierwsze kilka pól.
 
 ![Migawki pliku dziennika](./media/storage-security-guide/image2.png)
 
-Widać, że umożliwia dzienniki śledzenia dowolnego rodzaju wywołań konta magazynu.
+Widać, że umożliwia dzienniki śledzenia dowolnego rodzaju połączenia z kontem magazynu.
 
-#### <a name="what-are-all-of-those-fields-for"></a>Co to są wszystkich tych pól?
-Brak wymienionym w zasobach poniżej zawiera listę wiele pól w dziennikach i ich używać. Oto lista pól w kolejności:
+#### <a name="what-are-all-of-those-fields-for"></a>Co to są wszystkie te pola?
+Brak artykułu na liście zasobów poniżej zawiera listę wiele pól w dziennikach i ich zastosowania. Oto lista pól w kolejności:
 
-![Migawki pól w pliku dziennika](./media/storage-security-guide/image3.png)
+![Migawka pola w pliku dziennika](./media/storage-security-guide/image3.png)
 
-Interesuje nas wpisy GetBlob i w jaki sposób użytkownik jest uprawniony, więc musimy Wyszukaj wpisy z operacji typu "Get-obiektu Blob" i sprawdź stan żądania (czwarty</sup> kolumny) i typ autoryzacji (ósmego</sup> kolumny).
+Jesteśmy zainteresowani wpisy dla GetBlob i w jaki sposób użytkownik jest uprawniony, więc musimy Wyszukaj wpisy operacji typu "Get-Blob" i sprawdzić stan żądania (czwarty</sup> kolumny) i typ autoryzacji (ósmego</sup> kolumny).
 
-Na przykład w kilka pierwszych wierszy na liście powyżej, stan żądania jest "Powodzenie" i typ autoryzacji "uwierzytelnieniu". Oznacza to, że żądanie było autoryzowane przy użyciu klucza konta magazynu.
+Na przykład w pierwszej kilka wierszy na liście powyżej, stan żądania to "Powodzenie" i typ autoryzacji "uwierzytelnieniu". Oznacza to, że żądanie było autoryzowane przy użyciu klucza konta magazynu.
 
-#### <a name="how-is-access-to-my-blobs-being-authorized"></a>W jaki sposób dostępu do obiektów blob, Moje autoryzowanego?
-Mamy trzech przypadkach, w których Dbamy o.
+#### <a name="how-is-access-to-my-blobs-being-authorized"></a>W jaki sposób dostęp do obiektów blob, Moje autoryzowanego?
+Mamy trzy przypadki, które jesteśmy zainteresowani.
 
-1. Obiekt blob jest publiczny i jest on dostępny przy użyciu adresu URL bez sygnaturę dostępu współdzielonego. W takim przypadku stan żądania jest "AnonymousSuccess" i "anonymous" jest typ autoryzacji.
+1. Obiekt blob jest publiczny, a następnie odbywa się przy użyciu adresu URL bez podpisu dostępu współdzielonego. W takim przypadku stan żądania jest "AnonymousSuccess" i typ autoryzacji jest "anonimowy".
 
    1.0;2015-11-17T02:01:29.0488963Z;GetBlob;**AnonymousSuccess**;200;124;37;**anonymous**;;mystorage…
-2. Obiekt blob jest prywatny i została użyta z sygnaturą dostępu współdzielonego. W takim przypadku stan żądania jest "SASSuccess" i "sas" jest typ autoryzacji.
+2. Obiekt blob jest prywatny i została użyta z sygnaturę dostępu współdzielonego. W takim przypadku stan żądania jest "SASSuccess" i typ autoryzacji jest "sygnatury dostępu współdzielonego".
 
    1.0;2015-11-16T18:30:05.6556115Z;GetBlob;**SASSuccess**;200;416;64;**sas**;;mystorage…
-3. Obiekt blob jest prywatny i klucz magazynu został użyty do niego dostęp. W tym przypadku jest stan żądania "**Powodzenie**"i typ autoryzacji jest"**uwierzytelniony**".
+3. Obiekt blob jest prywatny, a klucz magazynu został użyty do niego dostęp. W tym przypadku jest stan żądania "**Powodzenie**"i typ autoryzacji jest"**uwierzytelniony**".
 
    1.0;2015-11-16T18:32:24.3174537Z;GetBlob;**Success**;206;59;22;**authenticated**;mystorage…
 
-Aby przeglądać i analizować te dzienniki, można użyć programu Microsoft Message Analyzer. Obejmuje on możliwości wyszukiwania i filtrowania. Na przykład można wyszukać wystąpienia GetBlob, aby zobaczyć, czy jest oczekiwań, oznacza to, aby upewnić się, ktoś jest nie dostęp do konta magazynu niewłaściwie.
+Aby przeglądać i analizować te dzienniki, można użyć programu Microsoft Message Analyzer. Obejmuje funkcje wyszukiwania i filtrowania. Na przykład możesz chcieć wyszukać wystąpienia GetBlob, aby zobaczyć, jeśli użycie wynosi, czego można oczekiwać, oznacza to, aby upewnić się, że ktoś nie uzyskuje dostęp do konta usługi storage niewłaściwie.
 
 #### <a name="resources"></a>Zasoby
 * [Analityka magazynu](../storage-analytics.md)
 
-  W tym artykule przedstawiono analityka magazynu oraz jak je włączyć.
-* [Format dziennika analityka magazynu](https://msdn.microsoft.com/library/azure/hh343259.aspx)
+  W tym artykule przedstawiono omówienie procedury analityka magazynu oraz jak je włączyć.
+* [Format dziennika analizy magazynu](https://msdn.microsoft.com/library/azure/hh343259.aspx)
 
-  W tym artykule przedstawiono Format dziennika analityka magazynu i zawiera szczegóły dostępnych pól, tym — typ uwierzytelniania, który wskazuje typ uwierzytelniania dla żądania.
-* [Monitor konta magazynu w portalu Azure](../storage-monitor-storage-account.md)
+  W tym artykule przedstawiono Format magazynu analizy dzienników i informacje dostępne pola tam, takie jak typ uwierzytelniania, które wskazuje typ uwierzytelniania dla żądania.
+* [Monitorowanie konta magazynu w witrynie Azure portal](../storage-monitor-storage-account.md)
 
-  W tym artykule przedstawiono sposób konfigurowania monitorowania metryki i logowania dla konta magazynu.
-* [Rozwiązywanie problemów na trasie przy użyciu metryk usługi Azure Storage i rejestrowania, AzCopy i analizatora komunikatów](../storage-e2e-troubleshooting.md)
+  W tym artykule przedstawiono sposób konfigurowania, monitorowania metryk i rejestrowania dla konta magazynu.
+* [End-to-End Rozwiązywanie problemów przy użyciu metryk usługi Azure Storage i rejestrowania, narzędzia AzCopy i analizatora komunikatów](../storage-e2e-troubleshooting.md)
 
-  Ten artykuł zawiera informacje o Rozwiązywanie problemów przy użyciu analityka magazynu i przedstawia sposób użycia programu Microsoft Message Analyzer.
-* [Przewodnik operacyjny analizatora wiadomości firmy Microsoft](https://technet.microsoft.com/library/jj649776.aspx)
+  W tym artykule zawiera informacje o Rozwiązywanie problemów przy użyciu analizy magazynu i pokazuje, jak używać programu Microsoft Message Analyzer.
+* [Microsoft Message Analyzer operacyjnego przewodnik](https://technet.microsoft.com/library/jj649776.aspx)
 
-  W tym artykule jest odwołaniem do programu Microsoft Message Analyzer oraz linki samouczek Szybki Start i Podsumowanie funkcji.
+  W tym artykule jest odwołanie do programu Microsoft Message Analyzer oraz zawiera łącza do samouczku szybkiego startu i Podsumowanie funkcji.
 
 ## <a name="cross-origin-resource-sharing-cors"></a>Współużytkowanie zasobów między źródłami (CORS)
 ### <a name="cross-domain-access-of-resources"></a>Dostęp z innych domen zasobów
-Gdy przeglądarki sieci web działa w jednej domenie wysyła żądanie HTTP dla zasobu z innej domeny, jest to żądanie HTTP cross-origin. Na przykład strona HTML z contoso.com zażąda hostowanych na fabrikam.blob.core.windows.net jpeg. Ze względów bezpieczeństwa przeglądarki ograniczanie żądań HTTP cross-origin inicjowane przy użyciu skryptów, takich jak JavaScript. Oznacza to, że jeśli kod JavaScript na stronie sieci web w domenie contoso.com zażąda tej jpeg na fabrikam.blob.core.windows.net, przeglądarka nie zezwoli żądania.
+Gdy przeglądarki sieci web uruchomiony w jednej domenie wykonuje żądania HTTP dla zasobu z innej domeny, jest to żądanie HTTP cross-origin. Na przykład strony HTML z contoso.com sprawia, że żądanie dotyczące jpeg w serwisie fabrikam.blob.core.windows.net. Ze względów bezpieczeństwa przeglądarek ograniczanie żądań HTTP cross-origin inicjowane przy użyciu tej skryptów, takich jak JavaScript. Oznacza to, że gdy kodu JavaScript na stronie sieci web w domenie contoso.com zażąda tego jpeg na fabrikam.blob.core.windows.net, przeglądarka nie pozwoli na żądanie.
 
-Co to ma sposób korzystania z usługi Azure Storage Dobrze, jeśli przechowujesz statycznych zasobów, takich jak pliki danych JSON i XML w magazynie obiektów Blob przy użyciu konta magazynu o nazwie firmy Fabrikam, domeny zasobów będzie fabrikam.blob.core.windows.net i contoso.com aplikacji sieci web nie będzie można uzyskiwać do nich dostęp przy użyciu języka JavaScript, ponieważ różnią się domen. Jest to również wartość true, jeśli próbujesz wywoływanie jednego z usług magazynu Azure — takie jak magazyn tabel — które zwracają dane JSON do przetworzenia przez klienta języka JavaScript.
+Jaki to ma sposób korzystania z usługi Azure Storage Dobrze, jeśli będą przechowywane zasoby statyczne, takich jak pliki danych JSON lub XML w usłudze Blob Storage przy użyciu konta magazynu o nazwie firmy Fabrikam, domeny dla aktywami będzie fabrikam.blob.core.windows.net i aplikacji sieci web contoso.com nie będą mogli uzyskiwać do nich dostęp za pomocą JavaScript, ponieważ domen są różne. Jest to również wartość true, jeśli próbujesz wywołać jedną z usług Azure Storage — takich jak usługi Table Storage — które zwracają dane JSON do przetworzenia przez klienta JavaScript.
 
 #### <a name="possible-solutions"></a>Możliwe rozwiązania
-Jednym ze sposobów rozwiązania tego problemu jest przypisywany domeny niestandardowej, takie jak "storage.contoso.com" fabrikam.blob.core.windows.net. Problem polega na tym, że można przypisać tylko tej domeny niestandardowe na jedno konto magazynu. Co zrobić, jeśli zasoby są przechowywane w wielu kont magazynu?
+Jednym ze sposobów, aby rozwiązać ten problem jest przypisywanie domeny niestandardowej, takich jak "storage.contoso.com" do fabrikam.blob.core.windows.net. Problem polega na tym, że można przypisać tylko tej domeny niestandardowej do jednego konta magazynu. Co zrobić, jeśli zasoby są przechowywane na wielu kontach magazynu?
 
-Innym sposobem rozwiązania tego problemu ma działać jako serwer proxy dla wywołań Magazyn aplikacji sieci web. Oznacza to, czy plik jest przekazywany do magazynu obiektów Blob, aplikacji sieci web będzie zapisywany lokalnie i skopiuj go do magazynu obiektów Blob lub zostaną odczytać wszystkich go do pamięci, a następnie zapisz je do magazynu obiektów Blob. Alternatywnie można zapisać dedykowanych aplikacji sieci web (np. interfejsu API sieci Web) przekazuje plików lokalnie i zapisuje je w magazynie obiektów Blob. W obu przypadkach należy konta dla tej funkcji, gdy wymaga określenia skalowalność.
+Innym sposobem, aby rozwiązać ten problem ma działać jako serwer proxy dla połączeń magazynu aplikacji sieci web. Oznacza to, jeśli plik jest przekazywany do usługi Blob Storage, aplikacji sieci web będzie albo zapisać go lokalnie, a następnie skopiuj go do magazynu obiektów Blob lub będzie odczytywać wszystkie do pamięci, a następnie zapisać go do magazynu obiektów Blob. Alternatywnie można zapisać aplikację internetową dedykowane (np. interfejsu API sieci Web), która przekazuje te pliki lokalnie i zapisuje je do magazynu obiektów Blob. W obu przypadkach należy konta dla tej funkcji, podczas określania skalowalność potrzebuje.
 
-#### <a name="how-can-cors-help"></a>Jak może pomóc CORS
-Magazyn Azure umożliwia CORS — Cross udostępniania zasobów pochodzenia. Dla każdego konta magazynu można określić domeny, które mogą uzyskiwać dostęp do zasobów na tym koncie magazynu. Na przykład w tym przypadku opisanych powyżej, możemy włączyć mechanizm CORS w fabrikam.blob.core.windows.net konta magazynu i skonfigurować go, aby zezwolić na dostęp do domeny contoso.com. Następnie contoso.com aplikacji sieci web może bezpośrednio uzyskać dostęp do zasobów w fabrikam.blob.core.windows.net.
+#### <a name="how-can-cors-help"></a>Jak może pomóc mechanizmu CORS
+Usługa Azure Storage umożliwia włączanie mechanizmu CORS — Cross współużytkowanie zasobów. Dla każdego konta magazynu można określić domeny, które mogą uzyskać dostęp do zasobów, w ramach tego konta magazynu. Na przykład w naszym przypadku opisanych powyżej, możemy włączyć mechanizm CORS na koncie magazynu fabrikam.blob.core.windows.net i skonfigurować tak, aby zezwolić na dostęp do domeny contoso.com. Następnie contoso.com aplikacji sieci web można uzyskać dostęp do zasobów w fabrikam.blob.core.windows.net.
 
-Jedyną operacją, należy pamiętać, to czy CORS zezwala na dostęp, ale nie zapewnia uwierzytelniania, który jest wymagany dla wszystkich dostępu publicznego zasobów magazynu. Oznacza to, że można tylko dostęp do obiektów blob, jeśli są one publiczne lub zawierać umożliwiając odpowiednich uprawnień sygnaturę dostępu współdzielonego. Tabel, kolejek i plików nie mają publicznego dostępu i wymagają sygnatury dostępu Współdzielonego.
+Jedno należy pamiętać, jest, że CORS zezwala na dostęp, ale nie zapewnia uwierzytelniania, która jest wymagana dla wszystkich dostęp publiczny zasobów magazynu. Oznacza to, że możesz tylko dostęp do obiektów blob, jeśli są one publicznego lub zawierać sygnaturę dostępu współdzielonego umożliwiając odpowiednich uprawnień. Tabele, kolejki i pliki nie mają publicznego dostępu i wymagają sygnatury dostępu Współdzielonego.
 
-Domyślnie CORS jest wyłączona na wszystkich usług. Mechanizm CORS można włączyć za pomocą interfejsu API REST lub biblioteka klienta magazynu do wywoływania jednej z metod, aby ustawić zasady usługi. Po wykonaniu tej czynności, możesz dołączyć regułę CORS, która jest w formacie XML. Oto przykład reguły CORS, która została ustawiona przy użyciu operacji ustawić właściwości usługi dla usługi obiektów Blob dla konta magazynu. Można wykonać tej operacji za pomocą biblioteki klienta usługi storage lub interfejsów API REST usługi Azure Storage.
+Domyślnie CORS jest wyłączona na wszystkie usługi. Przy użyciu interfejsu API REST lub biblioteka klienta magazynu do wywoływania jednej z metod, które można ustawić zasady dotyczące usług, można włączyć mechanizm CORS. Po wykonaniu tej czynności, możesz dołączyć regułę CORS, który jest w formacie XML. Oto przykład reguły CORS, która została ustawiona za pomocą operacji ustawiania właściwości usługi dla usługi Blob dla konta magazynu. Można wykonać tej operacji przy użyciu biblioteki klienta usługi storage lub interfejsów API REST dla usługi Azure Storage.
 
 ```xml
 <Cors>    
@@ -472,46 +471,46 @@ Domyślnie CORS jest wyłączona na wszystkich usług. Mechanizm CORS można wł
 
 Oto, co oznacza każdy wiersz:
 
-* **AllowedOrigins** informuje domen niezgodny żądać i odbierać dane z usługi magazynowania. To mówi, że zarówno contoso.com i fabrikam.com można zażądać danych z magazynu obiektów Blob na koncie magazynu określonym. Możesz również ustawić do symbolu wieloznacznego (\*) umożliwia wszystkich domen do żądań dostępu.
-* **AllowedMethods** jest to lista metod (zleceń HTTP żądania), które mogą być używane podczas tworzenia żądania. W tym przykładzie są dozwolone tylko PUT i GET. Możesz ustawić do symbolu wieloznacznego (\*) zezwalająca na wszystkie metody mają być używane.
-* **AllowedHeaders** to nagłówków żądań, które domeny pochodzenia można określić podczas zgłaszania żądania. W tym przykładzie wszystkie nagłówki metadanych, począwszy od x-ms-meta-data x-ms-meta docelowego, a x-ms-meta-abc są dozwolone. Symbol wieloznaczny (\*) wskazuje, że wszystkie nagłówka, począwszy od określonego prefiksu jest dozwolone.
-* **ExposedHeaders** informuje nagłówki odpowiedzi, które powinny zostać ujawnione przez przeglądarkę, aby wystawcy żądania. W tym przykładzie wszystkie nagłówka, począwszy od "x-ms - meta-" mają być widoczne.
-* **MaxAgeInSeconds** jest maksymalną ilość czasu, czy żądania wstępnego opcje zostaną zbuforowane przez przeglądarkę. (Aby uzyskać więcej informacji na temat żądania wstępnego Sprawdź pierwszego artykułu poniżej).
+* **AllowedOrigins** informuje domen niezgodny może żądać i odbierać dane z usługi storage. Mówi, że domeny contoso.com i fabrikam.com można zażądać danych z magazynu obiektów Blob dla konta określonego magazynu. Można również ustawić to do symbolu wieloznacznego (\*) aby zezwolić na wszystkie domeny do żądań dostępu.
+* **AllowedMethods** jest lista metody (polecenia żądań protokołu HTTP), które mogą być używane podczas wykonywania żądania. W tym przykładzie są dozwolone tylko PUT i GET. Można ustawić tego symbolu wieloznacznego (\*) zezwalać na wszystkie metody, które ma być używany.
+* **AllowedHeaders** to nagłówki żądania, które można określić domenę pochodzenia, podczas wykonywania żądania. W tym przykładzie wszystkie nagłówki metadanych, począwszy od x-ms-meta-data x-ms-meta-target i x-ms-meta-abc są dozwolone. Symbol wieloznaczny (\*) wskazuje, czy jest dozwolone dowolnego nagłówka rozpoczynający się od określonego prefiksu.
+* **ExposedHeaders** informuje nagłówki odpowiedzi, które powinny zostać ujawnione przez przeglądarkę do wydawcy żądania. W tym przykładzie dowolny nagłówek, rozpoczynając od "x-ms - meta-" zostaną ujawnione.
+* **Atrybut MaxAgeInSeconds** to maksymalną ilość czasu, przeglądarki zostanie buforowania żądania wstępnego OPTIONS. (Aby uzyskać więcej informacji na temat żądania wstępnego Sprawdź poniższy artykuł pierwszy).
 
 #### <a name="resources"></a>Zasoby
-Aby uzyskać więcej informacji na temat CORS oraz jak je włączyć zapoznaj się z tych zasobów.
+Aby uzyskać więcej informacji na temat mechanizmu CORS i jak go włączyć zapoznaj się z tymi zasobami.
 
-* [Współużytkowanie zasobów między źródłami (CORS) obsługę usług Azure Storage w witrynie Azure.com do udostępniania](../storage-cors-support.md)
+* [Cross-Origin Resource Sharing (CORS) obsługę usług Azure Storage w witrynie Azure.com](../storage-cors-support.md)
 
-  Ten artykuł zawiera omówienie mechanizmu CORS i sposobu ustawiania zasad dla różnych usług.
+  Ten artykuł zawiera omówienie mechanizmu CORS i jak ustawić zasady dotyczące usług innego magazynu.
 * [Cross-Origin Resource Sharing (CORS) obsługę usług Azure Storage w witrynie MSDN](https://msdn.microsoft.com/library/azure/dn535601.aspx)
 
-  Jest to dokumentacji dla obsługi mechanizmu CORS dla usług magazynu Azure. Zawiera łącza do artykułów na stosowanie dla wszystkich usług magazynu i przedstawiono przykład i opisano każdy element w pliku CORS.
-* [Usługi Microsoft Azure Storage: Wprowadzenie CORS](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)
+  Jest to dokumentacja obsługę mechanizmu CORS dla usług Azure Storage. Zawiera łącza do artykułów, stosowania do poszczególnych usług magazynu i przedstawia przykład i opisano każdy element w pliku CORS.
+* [Microsoft Azure Storage: Wprowadzenie do mechanizmu CORS](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)
 
-  To łącze do artykułu początkowej blog o mechanizmu CORS i przedstawiający jak z niego korzystać.
+  To łącze do artykuł z bloga początkowej ogłoszenie CORS wyświetlanie i jak z niej korzystać.
 
 ## <a name="frequently-asked-questions-about-azure-storage-security"></a>Często zadawane pytania dotyczące zabezpieczeń usługi Azure Storage
-1. **Jak można zweryfikować integralność obiektów blob, który I używam transferu do lub z usługi Azure Storage gdy nie jest używany protokół HTTPS?**
+1. **Jak mogę sprawdzić integralność obiektów blob, które mogę jestem przesyłania do i z usługi Azure Storage, jeśli nie mogę używać protokołu HTTPS**
 
-   Przyczyn potrzebnych do obsługi protokołu HTTP zamiast HTTPS i pracy z blokowych obiektów blob, umożliwia sprawdzanie MD5 weryfikowania integralności transferowanych obiektów blob. Pomoże to ochrony z sieci/transport layer błędów, ale niekoniecznie pośredniczące ataków.
+   Jakiegokolwiek powodu, czego potrzebujesz do obsługi protokołu HTTP zamiast HTTPS i pracy z blokowymi obiektami blob, umożliwia sprawdzanie MD5 ułatwiają sprawdzanie integralności przesyłanych obiektów blob. Ułatwi to ochronę przed błędami warstwy transportu sieciowego /, ale niekoniecznie pośrednie ataków.
 
-   Jeśli używasz protokołu HTTPS, który zapewnia zabezpieczeń na poziomie transportu, następnie przy użyciu algorytmu MD5 sprawdzanie jest nadmiarowe i niepotrzebne.
+   Jeśli używasz protokołu HTTPS, który zapewnia zabezpieczenia na poziomie transportu, a następnie użyć sprawdzanie MD5 jest nadmiarowe i niepotrzebne.
 
-   Aby uzyskać więcej informacji, zapoznaj się [Przegląd MD5 obiektów Blob Azure](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx).
-2. **Informacje o zgodności ze standardem FIPS dla Stanów Zjednoczonych Rządowych Stanów Zjednoczonych?**
+   Aby uzyskać więcej informacji, zapoznaj się z [Omówienie usługi Azure Blob MD5](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx).
+2. **Informacje o zgodności ze standardem FIPS dla Stanów Zjednoczonych Government?**
 
-   Stany Zjednoczone informacji przetwarzania Standard FIPS (Federal) definiuje algorytmy kryptograficzne zatwierdzone do użycia przez amerykański Federalnych systemów komputerowych do ochrony danych poufnych. Włączanie FIPS tryb na serwerze z systemem Windows lub pulpitu informuje system operacyjny powinien być używany tylko standardem FIPS algorytmów kryptograficznych. Jeśli aplikacja używa algorytmów niezgodnych, aplikacje zostaną przerwane. With.NET Framework w wersji 4.5.2 lub nowszym, aplikacja automatycznie przełącza algorytmy kryptografii użyj zgodnych algorytmów FIPS, gdy komputer jest w trybie FIPS.
+   Stany Zjednoczone informacji przetwarzania Standard FIPS (Federal) definiuje zatwierdzone do użycia przez amerykański algorytmów kryptograficznych Systemów komputerowych rządu federalnego ochrony poufnych danych. Włączanie standardu FIPS tryb na serwerze Windows lub pulpitu informuje system operacyjny powinna służyć tylko standardem FIPS algorytmów kryptograficznych. Jeśli aplikacja używa algorytmów niezgodnych, spowoduje awarię aplikacji. With.NET Framework w wersji 4.5.2 lub nowszej, aplikacja automatycznie przełącza się algorytmy kryptograficzne, aby użyć algorytmów zgodnych ze standardem FIPS, gdy komputer jest w trybie FIPS.
 
-   Microsoft pozostawia go do każdego klienta w celu podjęcie decyzji o włączeniu w trybie FIPS. Mamy nadzieję, że to nie ma powodu istotnych dla klientów, którzy nie podlegają dla instytucji rządowych przepisy, aby włączyć tryb FIPS domyślnie.
+   Microsoft pozostawi je do każdego klienta w celu podjęcie decyzji o włączeniu w trybie FIPS. Wierzymy, że nie ma istotnych dla klientów, którzy nie są podlegających regulacjom rządowym w celu włączenia trybu FIPS domyślnie.
 
 ### <a name="resources"></a>Zasoby
-* [Dlaczego jest nie zalecamy "Tryb FIPS" już](https://blogs.technet.microsoft.com/secguide/2014/04/07/why-were-not-recommending-fips-mode-anymore/)
+* [Dlaczego one nie zalecamy "W trybie FIPS" już](https://blogs.technet.microsoft.com/secguide/2014/04/07/why-were-not-recommending-fips-mode-anymore/)
 
-  W tym artykule na blogu powinien zawierać omówienie FIPS i objaśniono, dlaczego nie umożliwiają one trybie FIPS domyślnie.
-* [FIPS 140 sprawdzania poprawności](https://technet.microsoft.com/library/cc750357.aspx)
+  Ten artykuł w blogu zawiera omówienie FIPS i wyjaśnia, dlaczego nie umożliwiają trybu FIPS domyślnie.
+* [Standard FIPS 140 sprawdzania poprawności](https://technet.microsoft.com/library/cc750357.aspx)
 
-  Ten artykuł zawiera informacje dotyczące sposobu produktów firmy Microsoft i modułów kryptograficznych zgodne ze standardem FIPS dla Stanów Zjednoczonych Federalnych.
-* ["Kryptografia systemu: Użyj FIPS algorytmów szyfrowania, mieszania i podpisywania" efekty ustawienia zabezpieczeń w systemie Windows XP i w nowszych wersjach systemu Windows](https://support.microsoft.com/kb/811833)
+  Ten artykuł zawiera informacje dotyczące sposobu modułów kryptograficznych i produktów firmy Microsoft są zgodne ze standardem FIPS dla Stanów Zjednoczonych Rządu federalnego.
+* ["Kryptografia systemu: Korzystanie ze standardem FIPS dla celów szyfrowania, mieszania i podpisywania algorytmów" efekty ustawienia zabezpieczeń w Windows XP i nowszych wersjach systemu Windows](https://support.microsoft.com/kb/811833)
 
-  Ten artykuł zawiera informacje o trybu FIPS w starszych komputerów z systemem Windows.
+  Ten artykuł zawiera informacje o trybu FIPS w starszych komputerów Windows.

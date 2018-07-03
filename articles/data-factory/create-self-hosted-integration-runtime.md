@@ -1,6 +1,6 @@
 ---
-title: Tworzenie środowiska uruchomieniowego integracji siebie w fabryce danych Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć środowiska uruchomieniowego integracji siebie w fabryce danych Azure, dzięki czemu fabryki danych można uzyskać dostępu do magazyny danych w sieci prywatnej.
+title: Tworzenie własnego środowiska integration runtime w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć własne środowisko integration runtime w usłudze Azure Data Factory, która umożliwia fabryki danych mieć dostęp do magazynów danych w sieci prywatnej.
 services: data-factory
 documentationcenter: ''
 author: nabhishek
@@ -12,198 +12,199 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: be2ac5427516bc29f87052667e4b44be52757f1e
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: afd061b026e30378f5e645d11b84b44b7a516143
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113157"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341583"
 ---
-# <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Jak utworzyć i skonfigurować Self-hosted integracji w czasie wykonywania
-Integracja środowiska uruchomieniowego (IR) jest używany przez fabryki danych Azure zapewnienie możliwości integracji danych w różnych środowiskach sieci infrastruktury obliczeniowej. Aby uzyskać więcej informacji o IR, zobacz [Omówienie środowiska uruchomieniowego integracji](concepts-integration-runtime.md).
+# <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Jak utworzyć i skonfigurować własne środowisko IR
+Integration Runtime (IR) to infrastruktura obliczeniowa używana przez usługę Azure Data Factory w celu zapewnienia możliwości integracji danych w różnych środowiskach sieciowych. Aby uzyskać szczegółowe informacje o środowisku IR, zobacz [Omówienie środowiska Integration Runtime](concepts-integration-runtime.md).
 
-Hostowanie Samoobsługowe integracji środowiska uruchomieniowego jest możliwe uruchamianie działania kopiowania między danych w chmurze magazynów i magazynu danych w sieci prywatnej i wywoływanie transformacji działania względem obliczeniowe zasobów w lokalnej lub sieci wirtualnej platformy Azure. Zainstaluj potrzeb związanych z integracją siebie środowiska uruchomieniowego na maszynie lokalnej lub maszyny wirtualnej w sieci prywatnej.  
+Własne środowisko integration runtime jest w stanie uruchomienia działania kopiowania między danych w chmurze magazynów i magazynu danych w sieci prywatnej i wywoływanie działań przekształcania dla zasobów, w lokalnym programie obliczeniowych lub Azure Virtual Network. Zainstaluj potrzeb związanych z integracją samodzielnie hostowanego środowiska uruchomieniowego na maszynie w środowisku lokalnym lub maszynie wirtualnej w sieci prywatnej.  
 
-Tym dokumencie przedstawiono sposób tworzenia i konfigurowania Self-hosted IR.
+Ten dokument stanowi wprowadzenie, jak utworzyć i skonfigurować własne IR.
 
-## <a name="high-level-steps-to-install-self-hosted-ir"></a>Ogólne kroki, aby zainstalować IR hostowanie Samoobsługowe
-1.  Tworzenie środowiska uruchomieniowego integracji siebie. Oto przykład środowiska PowerShell:
+## <a name="high-level-steps-to-install-self-hosted-ir"></a>Ogólne kroki, aby zainstalować własne środowisko IR
+1.  Tworzenie własnego środowiska integration runtime. Oto przykład programu PowerShell:
 
     ```powershell
     Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ```
-2.  Pobierz i zainstaluj hosta samodzielnego środowiska uruchomieniowego integracji (na komputerze lokalnym).
-3.  Pobierz klucz uwierzytelniania i zarejestruj środowiska uruchomieniowego integracji hostowania samoobsługowego przy użyciu klucza. Oto przykład środowiska PowerShell:
+2.  Pobierz i zainstaluj własne środowisko integration runtime (na komputer lokalny).
+3.  Pobierz klucz uwierzytelniania i zarejestrowania własnego środowiska integration runtime przy użyciu klucza. Oto przykład programu PowerShell:
 
     ```powershell
     Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
     ```
 
 ## <a name="command-flow-and-data-flow"></a>Polecenie przepływu i przepływu danych
-Podczas przenoszenia danych między lokalnymi i w chmurze, działanie wykorzystuje runtime siebie integracji na przesyłanie danych z lokalnego źródła danych do chmury i na odwrót.
+Podczas przenoszenia danych między lokalizacją lokalną i chmurą, działanie korzysta z własnego środowiska integration runtime do transferu danych ze źródła danych lokalnych do chmury i na odwrót.
 
-Poniżej przedstawiono przepływ danych wysokiego poziomu podsumowania kroki kopii IR hostowania samoobsługowego:
+Poniżej przedstawiono przepływ danych wysokiego poziomu dla podsumowania kroki związanym z kopiowaniem z własne środowisko IR:
 
 ![Ogólne omówienie](media\create-self-hosted-integration-runtime\high-level-overview.png)
 
-1. Projektant danych tworzy środowiska uruchomieniowego integracji siebie w ramach fabryki danych Azure przy użyciu polecenia cmdlet programu PowerShell. Azure portal nie obsługuje obecnie tej funkcji.
-2. Projektant danych tworzy połączonej usługi magazynu danych lokalnych za pośrednictwem wystąpienia środowiska wykonawczego siebie integracji, które powinny być używane do nawiązania połączenia magazynów danych. W ramach konfigurowania połączonej usługi, danych deweloperów używa aplikacji Menedżer poświadczeń (obecnie nieobsługiwane) do ustawiania typy uwierzytelniania i poświadczeń. Okno dialogowe aplikacji Menedżera poświadczeń komunikuje się z magazynem danych, aby przetestować połączenie i środowiska uruchomieniowego integracji siebie na zapisywanie poświadczeń.
-4.  Hostowanie Samoobsługowe integrację środowiska uruchomieniowego węzła szyfruje poświadczenia przy użyciu systemu Windows ochrony danych aplikacji programowania interfejsu (DPAPI) i zapisze go lokalnie. Jeśli ustawiono wiele węzłów wysokiej dostępności, poświadczenia dodatkowe są synchronizowane w innych węzłach. Wszystkie węzły są szyfrowane za pomocą DPAPI i są przechowywane lokalnie. Synchronizacja poświadczeń jest niewidoczny dla dewelopera danych i jest obsługiwany przez siebie IR.    
-5.  Usługi fabryka danych komunikuje się ze środowiskiem uruchomieniowym integracji siebie do planowania i zarządzanie zadań za pomocą **kanał kontrolny** używającą kolejki magistrali usług Azure udostępnionych. Gdy zadanie działania musi zostać uruchomione, fabryki danych kolejkuje żądanie wraz z żadnych informacji dotyczących poświadczeń (w przypadku poświadczenia nie są już przechowywane na siebie integrację środowiska uruchomieniowego). Hostowanie Samoobsługowe integrację środowiska uruchomieniowego dotyczącego zadania po sondowania kolejki.
-6.  Hostowanie Samoobsługowe integrację środowiska uruchomieniowego kopiuje dane z magazynu lokalnego do magazynu w chmurze, albo na odwrót w zależności od sposobu skonfigurowania działanie kopiowania w potoku danych. W tym kroku środowiska uruchomieniowego integracji siebie komunikuje się bezpośrednio z usług magazynu w chmurze, takich jak magazyn obiektów Blob Azure za pośrednictwem bezpiecznego kanału (HTTPS).
+1. Dane i deweloperów tworzy własne środowisko integration runtime w fabryce danych Azure przy użyciu polecenia cmdlet programu PowerShell. Witryna Azure portal nie obsługuje obecnie tej funkcji.
+2. Dane i deweloperów tworzy połączonej usługi magazynu danych w środowisku lokalnym za pośrednictwem własne wystąpienie infrastruktury integration runtime za pomocą której należy połączyć się z magazynów danych. W ramach konfigurowania połączoną usługę, dane i deweloperów używa aplikacji "Menedżer poświadczeń" (obecnie nieobsługiwane) do ustawiania poświadczeń i typy uwierzytelniania. Okno aplikacji Menedżer poświadczeń komunikuje się z magazynem danych, aby przetestować połączenie i własne środowisko integration runtime do zapisania poświadczeń.
+4.  Węzeł Self-Hosted integration runtime szyfruje poświadczenia przy użyciu Windows Data Protection interfejsu API (DPAPI) i zapisuje go lokalnie. Jeśli wiele węzłów są skonfigurowane w celu zapewnienia wysokiej dostępności, poświadczenia są dodatkowo synchronizowane w innych węzłach. Każdy węzeł są szyfrowane za pomocą interfejsu DPAPI i są przechowywane lokalnie. Synchronizacja poświadczeń jest niewidoczna dla dewelopera danych i jest obsługiwany przez Self-Hosted IR    
+5.  Usługa Data Factory, który komunikuje się z własnego środowiska integration runtime do planowania i zarządzania zadań za pośrednictwem **kanał kontrolny** , który używa kolejki magistrali udostępnionych usług platformy Azure. Gdy zadanie działania musi zostać uruchomione, usługi Data Factory umieszcza w kolejce żądań wraz z żadnych informacji dotyczących poświadczeń (w przypadku, gdy poświadczenia nie są już przechowywane na własne środowisko integration runtime). Własne środowisko integration runtime dotyczącego zadania po sondowania kolejki.
+6.  Własne środowisko integration runtime kopiuje dane z lokalnego magazynu do magazynu w chmurze lub na odwrót w zależności od sposobu skonfigurowania działania kopiowania w potoku danych. W tym kroku własnego środowiska integration runtime komunikuje się bezpośrednio z usług magazynu w chmurze, takich jak Azure Blob Storage za pośrednictwem bezpiecznego kanału (HTTPS).
 
-## <a name="considerations-for-using-self-hosted-ir"></a>Zagadnienia dotyczące korzystania z własnym hostowanej IR.
+## <a name="considerations-for-using-self-hosted-ir"></a>Zagadnienia dotyczące korzystania z własne środowisko IR
 
-- Runtime pojedynczego siebie integracji może służyć dla wielu lokalnych źródeł danych. Jednak **pojedynczego siebie integracji środowiska uruchomieniowego jest związany z tylko jedną fabryki danych Azure** i nie mogą być udostępniane innym fabryki danych.
-- Może mieć **tylko jedno wystąpienie środowiska uruchomieniowego integracji siebie** zainstalowane na jednym komputerze. Załóżmy ma dwa fabryki danych, które wymagają dostęp do lokalnych źródeł danych, musisz zainstalować siebie integrację środowiska uruchomieniowego na dwóch lokalnych komputerach. Innymi słowy runtime integracji hostowania samoobsługowego jest związany z fabryki danych
-- **Siebie integrację środowiska uruchomieniowego musi być na tym samym komputerze jako źródło danych**. Jednak konieczności samodzielnego hostingu środowiska uruchomieniowego integracji bliżej ze źródłem danych, skraca czas siebie integrację środowiska uruchomieniowego do nawiązania połączenia ze źródłem danych. Zaleca się zainstalowanie środowiska uruchomieniowego integracji siebie na komputerze, na którym jest inna niż wersja tego źródła danych lokalnych hostów. W przypadku hostowania samoobsługowego integrację środowiska uruchomieniowego i źródła danych na różnych komputerach, środowiska uruchomieniowego integracji hostowanie Samoobsługowe nie konkurować o zasoby z źródła danych.
-- Może mieć **wiele runtimes siebie integracji na różnych komputerach nawiązywania połączenia z tym samym źródle danych lokalnych**. Na przykład może mieć dwóch siebie integracji środowiska uruchomieniowego obsługująca dwóch fabryk danych, ale to samo źródło danych lokalnych jest zarejestrowana w usłudze fabryki danych.
-- Jeśli masz już bramy zainstalowanej na programu obsługi komputera **usługi Power BI** scenariuszu zainstalować **środowiska wykonawczego oddzielne integracji hostowanie Samoobsługowe dla fabryki danych Azure** na innym komputerze.
-- Hostowanie Samoobsługowe integrację środowiska uruchomieniowego, należy użyć do obsługi integracji danych w ramach sieci wirtualnej platformy Azure.
-- Traktuj źródła danych jako źródło danych lokalnych (który znajduje się za zaporą) nawet jeśli używasz **ExpressRoute**. Użyj środowiska uruchomieniowego integracji hostowania samoobsługowego nawiązać połączenie między usługą i źródła danych.
-- Należy użyć środowiska uruchomieniowego integracji siebie, nawet jeśli magazyn danych jest w chmurze na **maszyny wirtualne Azure IaaS**.
-- Zadania mogą nie działać w środowisku uruchomieniowym Self-hosted integracji zainstalowane w systemie Windows Server, na których zgodne ze standardem FIPS jest włączone szyfrowanie. Aby obejść ten problem, należy wyłączyć szyfrowanie zgodne ze standardem FIPS na serwerze. Umożliwia wyłączenie szyfrowania zgodne ze standardem FIPS, należy zmienić następującą wartość rejestru z zakresu od 1 (włączone), 0 (wyłączone): `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`.
+- Pojedynczy własnego środowiska integration runtime może służyć do wielu źródeł danych w środowisku lokalnym. Jednak **pojedynczego własnego środowiska integration runtime jest powiązana z tylko jedną usługę Azure data factory** i nie mogą być udostępniane innym fabryki danych.
+- Może mieć **tylko jedno wystąpienie własnego środowiska integration runtime** zainstalowane na jednym komputerze. Załóżmy, że masz dwa fabryki danych, które chcą korzystać z lokalnych źródeł danych, musisz zainstalować własnego środowiska integration runtime na komputerach z dwiema lokalnymi. Innymi słowy własne środowisko integration runtime jest powiązany z fabryki danych z konkretnych
+- **Własnego środowiska integration runtime nie musi znajdować się na tym samym komputerze co źródło danych**. Jednak bliżej źródła danych o może być samodzielnie hostowane środowisko IR skraca czas dla własnego środowiska integration runtime do połączenia ze źródłem danych. Zaleca się zainstalowanie własnego środowiska integration runtime na maszynie, która jest inna niż wersja tego źródła danych lokalnych hostów. W przypadku Self-Hosted integration runtime i źródła danych na różnych maszynach, własne środowisko integration runtime nie konkurują o zasoby ze źródłem danych.
+- Może mieć **wielu środowisk Self-Hosted integration Runtime na różnych maszynach, na nawiązywanie połączeń z tego samego źródła danych w środowisku lokalnym**. Na przykład masz dwa własnego środowiska integration runtime obsługuje dwa fabryki danych, ale tego samego źródła danych lokalnych jest zarejestrowana przy użyciu fabryk danych.
+- Jeśli masz już bramę zainstalowanym obsługująca Twojego komputera **usługi Power BI** scenariuszu zainstalować **oddzielne własnego środowiska integration runtime usługi Azure Data Factory** na innym komputerze.
+- Własne środowisko integration runtime, należy użyć do obsługi integracji danych w usłudze Azure Virtual Network.
+- Traktuj źródła danych jako źródła danych w środowisku lokalnym, (która znajduje się za zaporą) nawet wtedy, kiedy należy używać **ExpressRoute**. Użyj własnego środowiska integration runtime można ustanowić łączności między usługą i źródła danych.
+- Należy użyć własnego środowiska integration runtime, nawet jeśli magazyn danych znajduje się w chmurze na **maszyny wirtualnej IaaS platformy Azure**.
+- Zadania mogą nie działać w środowiskiem Integration Runtime zainstalowane w systemie Windows Server, na które zgodne ze standardem FIPS jest włączone szyfrowanie. Aby obejść ten problem, należy wyłączyć szyfrowanie zgodne ze standardem FIPS na serwerze. Aby wyłączyć szyfrowanie zgodne ze standardem FIPS, należy zmienić następującą wartość rejestru z zakresu od 1 (włączone) na wartość 0 (wyłączone): `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Obsługiwane **systemu operacyjnego** są wersje systemu Windows 7 z dodatkiem SP1, Windows 8.1, Windows 10, systemu Windows Server 2008 R2 z dodatkiem SP1, systemu Windows Server 2012, Windows Server 2012 R2, Windows Server 2016. Instalacja środowiska uruchomieniowego integracji siebie na **kontroler domeny nie jest obsługiwany**.
-- **.NET framework 4.6.1 lub nowszej** jest wymagana. Jeśli instalujesz siebie integrację środowiska uruchomieniowego na komputerze z systemem Windows 7, zainstaluj program .NET Framework 4.6.1 lub nowszej. Zobacz [wymagania systemowe programu .NET Framework](/dotnet/framework/get-started/system-requirements) szczegółowe informacje.
-- Zalecanym **konfiguracji** środowiska uruchomieniowego integracji siebie maszyna jest co najmniej 2 GHz 4 rdzenie, 8 GB pamięci RAM i dysk 80 GB.
-- Jeśli komputer hosta przejdzie w stan hibernacji, środowiska uruchomieniowego integracji hostowanie Samoobsługowe nie odpowiada na żądania danych. W związku z tym skonfigurować plan zasilania odpowiednie na komputerze przed instalacją środowiska uruchomieniowego integracji siebie. Jeśli komputer jest skonfigurowany do hibernacji, instalacji środowiska uruchomieniowego integracji siebie wyświetli komunikat.
-- Musi być administratorem na tym komputerze do instalowania i konfigurowania środowiska uruchomieniowego integracji siebie pomyślnie.
-- Jak uruchomień działania kopiowania wystąpi na określonej częstotliwości, użycie zasobów (procesora CPU, pamięci) na maszynie również zgodny ze wzorcem tego samego szczytu i czas bezczynności. Wykorzystanie zasobów zależy również od silnie ilości danych jest przenoszony. W przypadku wielu kopii zadania w toku, zostanie wyświetlony użycia zasobów, do góry w godzinach szczytu.
+- Obsługiwane **systemu operacyjnego** wersje to Windows 7 z dodatkiem Service Pack 1, Windows 8.1, systemu Windows 10, Windows Server 2008 R2 z dodatkiem SP1, Windows Server 2012, Windows Server 2012 R2, systemu Windows Server 2016. Instalacja własnego środowiska integration runtime na **kontroler domeny nie jest obsługiwany**.
+- **Program .NET framework 4.6.1 lub nowszej** jest wymagana. Jeśli instalujesz własnego środowiska integration runtime na komputerze z Windows 7, zainstaluj program .NET Framework 4.6.1 lub nowszej. Zobacz [.NET Framework System Requirements](/dotnet/framework/get-started/system-requirements) Aby uzyskać szczegółowe informacje.
+- Zalecanym **konfiguracji** dla własnego środowiska integration runtime maszyna jest co najmniej 2 GHz, 4 rdzenie, 8 GB pamięci RAM i 80 GB dysku.
+- Jeśli komputer hosta przechodzi w stan hibernacji, własne środowisko integration runtime nie odpowiada na żądania danych. W związku z tym należy skonfigurować plan zasilania odpowiednich na komputerze, przed zainstalowaniem własnego środowiska integration runtime. Jeśli komputer jest skonfigurowany do hibernacji, instalacja Self-Hosted integration runtime wyświetli komunikat.
+- Musi być administratorem na komputerze, aby zainstalować i skonfigurować własne środowisko integration runtime pomyślnie.
+- Jako uruchomienia działania kopiowania i tak się stanie w określonej częstotliwości użycia zasobów (procesor CPU, pamięci) na maszynie również zgodna z szczytowe i czasach bezczynności tego samego wzorca. Wykorzystanie zasobów zależy również od intensywnie ilości danych przenoszonych. W przypadku wielu zadań kopiowania w toku, zobaczysz użycia zasobów wzrosną godzinami szczytu.
 
 ## <a name="installation-best-practices"></a>Najlepsze rozwiązania dotyczące instalacji
-Hostowanie Samoobsługowe integrację środowiska uruchomieniowego mogą być instalowane przez pobieranie pakietu Instalatora MSI z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717). Zobacz [przenoszenie danych między lokalnymi i w chmurze artykułu](tutorial-hybrid-copy-powershell.md) instrukcje krok po kroku.
+Własne środowisko integration runtime można zainstalować, pobierając pakietu Instalatora MSI z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717). Zobacz [przenoszenie danych między lokalizacją lokalną i chmurą artykułu](tutorial-hybrid-copy-powershell.md) instrukcje krok po kroku.
 
-- Skonfiguruj planu zasilania na komputerze hosta dla siebie integrację środowiska uruchomieniowego, dzięki czemu komputer nie hibernacji. Jeśli komputer hosta przejdzie w stan hibernacji, środowiska uruchomieniowego integracji siebie włącza w trybie offline.
-- Utwórz kopię zapasową poświadczeń skojarzonych z własnym hostowanej integracji środowiska uruchomieniowego regularnie.
+- Skonfigurować plan zasilania na komputerze hosta dla własnego środowiska integration runtime, aby maszyny bez hibernacji. Jeśli komputer hosta przechodzi w stan hibernacji, własne środowisko integration runtime zmieni się w trybie offline.
+- Utwórz kopię zapasową poświadczeń skojarzonych z własnego środowiska integration runtime regularnie.
 
-## <a name="install-and-register-self-hosted-ir-from-download-center"></a>Zainstaluj i zarejestruj IR Self-hosted z Centrum pobierania
+## <a name="install-and-register-self-hosted-ir-from-download-center"></a>Instalowanie i rejestrowanie własne środowisko IR w Centrum pobierania
 
-1. Przejdź do [stronę pobierania środowiska uruchomieniowego integracji Microsoft](https://www.microsoft.com/download/details.aspx?id=39717).
-2. Kliknij przycisk **Pobierz**, wybierz odpowiednią wersję (**32-bitowych** vs. **64-bitowych**) i kliknij przycisk **dalej**.
-3. Uruchom **MSI** bezpośrednio lub zapisać go na dysku twardym i uruchom.
-4. Na **powitalnej** wybierz pozycję **języka** kliknij **dalej**.
-5. **Zaakceptuj** umowę licencyjną użytkownika oprogramowania i kliknij przycisk **dalej**.
-6. Wybierz **folderu** zainstaluj środowisko uruchomieniowe integracji siebie, a następnie kliknij przycisk **dalej**.
-7. Na **gotowe do zainstalowania** kliknij przycisk **zainstalować**.
+1. Przejdź do [strony pobierania środowiska Microsoft Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717).
+2. Kliknij przycisk **Pobierz**, wybierz odpowiednią wersję (**32-bitowych** programu vs. **64-bitowych**) i kliknij przycisk **dalej**.
+3. Uruchom **MSI** bezpośrednio lub zapisać go w celu dysku twardego i uruchom.
+4. Na **powitalnej** wybierz opcję **języka** kliknij **dalej**.
+5. **Zaakceptuj** Umowa licencyjna użytkownika oprogramowania i kliknij przycisk **dalej**.
+6. Wybierz **folderu** Zainstaluj własne środowisko integration runtime, a następnie kliknij przycisk **dalej**.
+7. Na **gotowe do zainstalowania** kliknij **zainstalować**.
 8. Kliknij przycisk **Zakończ** do ukończenia instalacji.
 9. Pobierz klucz uwierzytelniania przy użyciu programu Azure PowerShell. Przykład programu PowerShell do pobierania klucza uwierzytelniania:
 
     ```powershell
     Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime
     ```
-11. Na **zarejestrować integracji Runtime (hosta samodzielnego)** strony programu Microsoft integrację środowiska uruchomieniowego programu Configuration Manager na komputerze, wykonaj następujące czynności:
-    1. Wklej **klucz uwierzytelniania** w obszarze tekstu.
-    2. Opcjonalnie kliknij **klucz uwierzytelniania Pokaż** tekst klucza.
+11. Na **rejestrowanie produktu Integration Runtime (Self-Hosted)** strony programu Microsoft Integration Runtime Configuration Manager uruchomiony na Twoim komputerze, wykonaj następujące czynności:
+    1. Wklej **klucz uwierzytelniania** w obszarze tekstowym.
+    2. Opcjonalnie kliknij **klucz uwierzytelniania Show** Aby wyświetlić tekst klucza.
     3. Kliknij przycisk **zarejestrować**.
 
 
-## <a name="high-availability-and-scalability"></a>Wysoką dostępność i skalowalność
-Środowisko uruchomieniowe Self-hosted integracji może być skojarzony z wieloma komputerami lokalnymi. Te komputery są nazywane węzłami. Może mieć maksymalnie czterech węzłów skojarzony ze środowiskiem uruchomieniowym Self-hosted integracji. Zalety mające wiele węzłów (lokalnymi maszynami z bramą zainstalowany) dla bramy logiczne to:
-1. Wyższej dostępności środowiska uruchomieniowego integracji Self-hosted, że nie jest już pojedynczy punkt awarii w danych Big Data rozwiązania lub w chmurze danych integracją z fabryką danych Azure, zapewniając ciągłość z maksymalnie 4 węzły.
-2. Zwiększona wydajność i przepływność podczas przenoszenia danych między lokalnymi i w chmurze magazynów danych. Uzyskać więcej informacji na temat [porównania wydajności](copy-activity-performance.md).
+## <a name="high-availability-and-scalability"></a>Wysoka dostępność i skalowalność
+Własne środowisko IR może być skojarzona z wielu maszyn w środowisku lokalnym. Te maszyny są nazywane węzłami. Może mieć maksymalnie cztery węzły skojarzony ze środowiskiem Integration Runtime. Zalety o wielu węzłach (maszynach lokalnych z zainstalowaną bramę) dla bramy sieci logiczne to:
+1. Wyższą dostępność środowiskiem Integration Runtime, tak że nie jest już pojedynczym punktem awarii w danych Big Data rozwiązania lub w chmurze integrację danych dzięki usłudze Azure Data Factory, zapewniając ciągłość działalności biznesowej przy użyciu maksymalnie 4 węzły.
+2. Zwiększona wydajność i przepływność podczas przenoszenia danych między lokalizacją lokalną i chmurą magazynów danych. Uzyskaj więcej informacji [porównania wydajności](copy-activity-performance.md).
 
-Można skojarzyć wielu węzłów po prostu instalując oprogramowanie środowiska uruchomieniowego integracji Self-hosted od [Centrum pobierania](https://www.microsoft.com/download/details.aspx?id=39717) i rejestrując ją przy użyciu jednej z kluczy uwierzytelniania uzyskane z AzureRmDataFactoryV2IntegrationRuntimeKey nowe polecenia cmdlet, zgodnie z opisem w [samouczka](tutorial-hybrid-copy-powershell.md)
-
-> [!NOTE]
-> Nie trzeba utworzyć nowy środowiska uruchomieniowego integracji Self-hosted kojarzenia każdego węzła. Można zainstalować środowiska uruchomieniowego integracji siebie na innym komputerze i zarejestrowanie go za pomocą tego samego klucza uwierzytelniania. 
+Można skojarzyć wiele węzłów, po prostu zainstalować oprogramowanie środowiskiem Integration Runtime z [Centrum pobierania](https://www.microsoft.com/download/details.aspx?id=39717) i rejestrując ją przy użyciu jednej z klucze uwierzytelniania uzyskanego z AzureRmDataFactoryV2IntegrationRuntimeKey nowe polecenia cmdlet, zgodnie z opisem w [samouczek](tutorial-hybrid-copy-powershell.md)
 
 > [!NOTE]
-> Przed dodaniem innego węzła dla **wysokiej dostępności i skalowalności**, sprawdź, czy **"Dostępu zdalnego do intranetu"** jest opcja **włączone** w węźle 1 (Microsoft Menedżer konfiguracji środowiska uruchomieniowego integracji -> Ustawienia -> zdalny dostęp do intranetu). 
+> Nie trzeba utworzyć nowe własne środowisko IR kojarzenia każdego węzła. Można zainstalować własnego środowiska integration runtime na inny komputer i zarejestrować go za pomocą tego samego klucza uwierzytelniania. 
 
-### <a name="tlsssl-certificate-requirements"></a>Wymagania dotyczące certyfikatów dla protokołu TLS/SSL
-Poniżej przedstawiono wymagania dotyczące certyfikatu TLS/SSL, który służy do zabezpieczania komunikacji między integrację środowiska uruchomieniowego węzłów:
+> [!NOTE]
+> Przed dodaniem innego węzła dla **wysokiej dostępności i skalowalności**, sprawdź, czy **"Dostęp zdalny do intranetu"** opcja jest **włączone** węzła 1 (Microsoft Menedżer konfiguracji produktu Integration Runtime -> Ustawienia -> zdalnego dostępu do sieci intranet). 
 
-- Certyfikat musi być publicznie zaufany X509 certyfikatu w wersji 3. Firma Microsoft zaleca, aby używać certyfikatów wystawionych przez publiczny (niezależny) urząd certyfikacji (CA).
-- Każdy węzeł środowiska uruchomieniowego integracji musi ufać temu certyfikatowi.
-- Symbol wieloznaczny certyfikaty są obsługiwane. Jeśli nazwa FQDN to **node1.domain.contoso.com**, można użyć ***. domain.contoso.com** jako nazwa podmiotu certyfikatu.
-- Certyfikaty sieci SAN nie jest zalecane, ponieważ będą używane tylko ostatni element alternatywnej nazwy podmiotu, a wszystkie pozostałe zostaną pominięte ze względu na bieżące ograniczenia. Na przykład mieć certyfikat SAN którego SAN są **node1.domain.contoso.com** i **node2.domain.contoso.com**, tego certyfikatu można używać tylko na komputerze, którego nazwa FQDN to **node2.domain.contoso.com**.
+### <a name="tlsssl-certificate-requirements"></a>Wymagania certyfikatu TLS/SSL
+Poniżej przedstawiono wymagania dotyczące certyfikatu TLS/SSL, używany do zabezpieczania komunikacji między integration runtime węzłów:
+
+- Certyfikat musi być publicznie zaufany X509 certyfikatu v3. Firma Microsoft zaleca użycie certyfikatów wystawionych przez publiczny (innej firmy) urząd certyfikacji (CA).
+- Każdy węzeł środowiska integration runtime, muszą ufać temu certyfikatowi.
+- Certyfikaty symbole wieloznaczne są obsługiwane. Jeśli nazwa FQDN jest **node1.domain.contoso.com**, możesz użyć ***. domain.contoso.com** jako nazwę podmiotu certyfikatu.
+- Certyfikaty SAN nie są zalecane, ponieważ tylko ostatni element nazwy alternatywnej podmiotu, który będzie używany, a wszystkie pozostałe zostaną zignorowane ze względu na bieżące ograniczenia. Na przykład mieć certyfikat sieci SAN, w których SAN są **node1.domain.contoso.com** i **node2.domain.contoso.com**, możesz użyć wyłącznie tego certyfikatu na komputerze, którego nazwa FQDN jest **node2.domain.contoso.com**.
 - Obsługuje wszystkie rozmiar klucza obsługiwana przez system Windows Server 2012 R2 dla certyfikatów SSL.
-- Certyfikat przy użyciu CNG klucze nie są obsługiwane. Doesrted DoesDoes nie obsługuje certyfikatów, które używają kluczy CNG.
+- Certyfikat przy użyciu CNG klucze nie są obsługiwane. Doesrted DoesDoes nie obsługuje certyfikatów korzystających z kluczami CNG.
 
-## <a name="system-tray-icons-notifications"></a>Ikony systemowe na pasku zadań / powiadomienia
-Przesunięcie kursora za pośrednictwem wiadomości ikonę/powiadomień na pasku zadań systemu można znaleźć szczegółowe informacje o stanie środowiska uruchomieniowego integracji siebie.
+## <a name="system-tray-icons-notifications"></a>Ikony na pasku zadań systemu / powiadomienia
+Jeśli przesuniesz kursor nad komunikat powiadomienia ikonę na pasku zadań systemu można znaleźć szczegółowe informacje o stanie własnego środowiska integration runtime.
 
-![System powiadomień na pasku zadań](media\create-self-hosted-integration-runtime\system-tray-notifications.png)
+![Powiadomienia na pasku zadań systemu](media\create-self-hosted-integration-runtime\system-tray-notifications.png)
 
 ## <a name="ports-and-firewall"></a>Porty i zapory
-Istnieją dwa zapory, należy wziąć pod uwagę: **firmowej zapory** uruchomionego na routerze centralnej organizacji, i **zapory systemu Windows** skonfigurowany jako demon na komputerze lokalnym gdzie hostowanie Samoobsługowe integrację środowiska uruchomieniowego jest zainstalowany.
+Istnieją dwa zapór, które należy wziąć pod uwagę: **zaporą firmową** uruchomionego na routerze centralnej w organizacji, i **zapory Windows** skonfigurowany jako demon na komputerze lokalnym gdzie własne środowisko integration runtime jest zainstalowany.
 
 ![Zapora](media\create-self-hosted-integration-runtime\firewall.png)
 
-W **firmowej zapory** poziomu, wymagają konfigurowania portów wychodzących i następujących domen:
+W **zaporą firmową** poziomu, potrzebujesz konfigurowania następujących domen i portów wychodzących:
 
 Nazwy domen | Porty | Opis
 ------------ | ----- | ------------
-*.servicebus.windows.net | 443, 80 | Używany do komunikacji z zapleczem usługi przenoszenia danych
-*.core.windows.net | 443 | Używany do kopiowania przejściowa przy użyciu obiektów Blob platformy Azure (jeśli jest skonfigurowane)
-*.frontend.clouddatahub.net | 443 | Używany do komunikacji z zapleczem usługi przenoszenia danych
+*.servicebus.windows.net | 443, 80 | Używany do komunikacji z zapleczem usługi Data Movement Service
+*.core.windows.net | 443 | Używane z kopiowaniem przejściowa przy użyciu obiektów Blob platformy Azure (jeśli jest skonfigurowane)
+*.frontend.clouddatahub.net | 443 | Używany do komunikacji z zapleczem usługi Data Movement Service
+download.microsoft.com | 443 | Używane do pobierania aktualizacji
 
-W **zapory systemu Windows** poziomie (komputer), te porty wyjściowe zwykle są włączone. Nie można skonfigurować w domenach i porty odpowiednio na hosta samodzielnego integrację środowiska uruchomieniowego maszyny.
+W **zapory Windows** poziomie (komputer), te porty wychodzące zwykle są włączone. Nie można skonfigurować domeny i porty odpowiednio na Self-Hosted integration runtime maszyny.
 
 > [!NOTE]
-> Na podstawie Twojego źródła / wychwytywanie, może zajść potrzeba dodatkowe domeny listy dozwolonych adresów IP i portów wychodzących w sieci firmowej/Zapora systemu Windows.
+> Na podstawie Twojego źródła / ujścia, może zajść potrzeba dodatkowe domeny listy dozwolonych adresów i portów wychodzących w zaporze firmowej/Windows.
 >
-> Dla niektórych baz danych w chmurze (na przykład: baza danych SQL Azure, usługa Azure Data Lake, itp.), może być konieczne dozwolonych adres IP komputera środowiska uruchomieniowego integracji siebie na ich konfiguracji zapory.
+> Dla niektórych baz danych w chmurze (na przykład: Azure SQL Database, Azure Data Lake, itp.), konieczne może być adres IP dozwolonych Self-Hosted integration runtime maszyny na ich konfigurację zapory.
 
-### <a name="copy-data-from-a-source-to-a-sink"></a>Kopiowanie danych z źródła do ujścia
-Sprawdź, czy reguły zapory są włączone prawidłowo w firmowej zapory, Zapora systemu Windows na komputerze środowiska uruchomieniowego integracji hostowania samoobsługowego i magazyn danych sam. Włączenie tych zasad umożliwia hostowanie Samoobsługowe integracji środowiska uruchomieniowego do łączenia się zarówno źródła i sink pomyślnie. Włącz reguły dla każdego magazynu danych, który jest używany w operacji kopiowania.
+### <a name="copy-data-from-a-source-to-a-sink"></a>Kopiowanie danych ze źródła do ujścia
+Upewnij się, że reguły zapory są prawidłowo włączona zapory firmowej zapory Windows na maszynie Self-Hosted integration runtime i sam magazyn danych. Włączenie tych zasad umożliwia własnego środowiska integration runtime do łączenia się zarówno źródła i ujścia pomyślnie. Włącz reguły dla każdego magazynu danych, który jest używany w operacji kopiowania.
 
-Na przykład do kopiowania z **magazynu danych lokalnych do zbiornika bazy danych SQL Azure lub ujścia magazynu danych SQL Azure**, wykonaj następujące czynności:
+Na przykład, aby kopiowanie danych z **magazynu danych lokalnych do ujścia Azure SQL Database lub ujścia Azure SQL Data Warehouse**, wykonaj następujące czynności:
 
-- Zezwalaj na wychodzące **TCP** komunikację za pośrednictwem portu **1433** dla zapory systemu Windows i firmowej zapory.
-- Skonfiguruj ustawienia zapory programu Azure SQL, aby dodać adres IP maszyny środowiska uruchomieniowego integracji siebie do listy dozwolonych adresów IP.
+- Zezwalaj na wychodzące **TCP** komunikację na porcie **1433** dla zapory Windows i zaporą firmową.
+- Konfigurowanie ustawień zapory serwera Azure SQL, aby dodać adres IP komputera Self-Hosted integration runtime do listy dozwolonych adresów IP.
 
 > [!NOTE]
-> Jeśli Zapora nie zezwala na wychodzący port 1433, hostowanie Samoobsługowe integrację środowiska uruchomieniowego nie bezpośredni dostęp Azure SQL. W takim przypadku można użyć [przemieszczane kopiowania](copy-activity-performance.md) do bazy danych SQL Azure / SQL Azure DW. W tym scenariuszu do przenoszenia danych są tylko wymagane HTTPS (port 443).
+> Jeśli Zapora nie zezwala na wychodząca przez port 1433, własne środowisko integration runtime nie może uzyskać dostępu usługi Azure SQL bezpośrednio. W takim przypadku można użyć [kopiowania etapowego](copy-activity-performance.md) do usługi Azure SQL Database / magazyn danych SQL Azure. W tym scenariuszu HTTPS (port 443) będzie wymagać tylko w przypadku przenoszenia danych.
 
 
 ## <a name="proxy-server-considerations"></a>Zagadnienia dotyczące serwera proxy
-Jeśli w środowisku firmowym sieci korzysta z serwera proxy do uzyskania dostępu do Internetu, należy skonfigurować środowiska uruchomieniowego integracji siebie do użycia odpowiednie ustawienia serwera proxy. Podczas fazy początkowe rejestracyjny można ustawić serwera proxy.
+Jeśli w środowisku firmowym sieci korzysta z serwera proxy, dostęp do Internetu, należy skonfigurować własne środowisko integration runtime do użycia odpowiednie ustawienia serwera proxy. W fazie początkowej rejestracji, można ustawić serwera proxy.
 
 ![Określ serwer proxy](media\create-self-hosted-integration-runtime\specify-proxy.png)
 
-Hostowanie Samoobsługowe integrację środowiska uruchomieniowego używa serwera proxy do nawiązania połączenia usługi w chmurze. Kliknij łącze Zmień podczas instalacji początkowej. Zostanie wyświetlona okno dialogowe Ustawienia serwera proxy.
+Własne środowisko integration runtime używa serwera proxy, aby nawiązać połączenie z usługą w chmurze. Kliknij łącze Zmień podczas początkowej konfiguracji. Zobaczysz okno dialogowe Ustawienia serwera proxy.
 
-![Zestaw serwera proxy](media\create-self-hosted-integration-runtime\set-http-proxy.png)
+![Ustaw serwer proxy](media\create-self-hosted-integration-runtime\set-http-proxy.png)
 
 Dostępne są trzy opcje konfiguracji:
 
-- **Nie używaj serwera proxy**: hostowanie Samoobsługowe integrację środowiska uruchomieniowego nie jawnie używać dowolnego serwera proxy do nawiązania połączenia usługi w chmurze.
-- **Użyj serwera proxy systemu**: hosta samodzielnego używa środowiska uruchomieniowego integracji w diahost.exe.config i diawp.exe.config skonfigurowano ustawienie serwera proxy. Jeśli żadnego serwera proxy jest skonfigurowany w diahost.exe.config i diawp.exe.config, hostowanie Samoobsługowe integrację środowiska uruchomieniowego łączy się z usługą w chmurze bezpośrednio, bez przechodzenia przez serwer proxy.
-- **Użyć niestandardowego serwera proxy**: Konfiguruj ustawienia do użycia na potrzeby hostowania samoobsługowego integrację środowiska uruchomieniowego, zamiast konfiguracje diahost.exe.config i diawp.exe.config proxy HTTP. Wymagane są adres i Port. Nazwa użytkownika i hasło są opcjonalne, w zależności od ustawienia uwierzytelniania serwer proxy. Wszystkie ustawienia są szyfrowane z interfejsu DPAPI systemu Windows na siebie integrację środowiska uruchomieniowego i przechowywane lokalnie na komputerze.
+- **Nie używaj serwera proxy**: własnego środowiska integration runtime nie jawnie za pomocą dowolnego serwera proxy do łączenia się z usługami w chmurze.
+- **Użyj serwera proxy systemu**: może być samodzielnie hostowane używa środowiska uruchomieniowego integracji w diahost.exe.config i diawp.exe.config skonfigurowano ustawienia serwera proxy. Jeśli żaden serwer proxy jest skonfigurowany w diahost.exe.config i diawp.exe.config, własne środowisko integration runtime łączy się z usługą w chmurze bezpośrednio bez konieczności zwracania się za pośrednictwem serwera proxy.
+- **Użyj niestandardowego serwera proxy**: skonfigurowanie ustawienia do użycia dla własnego środowiska integration runtime, zamiast korzystać z konfiguracji w diahost.exe.config i diawp.exe.config proxy HTTP. Wymagane są adres i Port. Nazwa użytkownika i hasło są opcjonalne, w zależności od ustawienia uwierzytelniania na serwerze proxy. Wszystkie ustawienia są szyfrowane przy użyciu interfejsu DPAPI Windows na własne środowisko integration runtime i przechowywane lokalnie na komputerze.
 
-Środowisko uruchomieniowe integracji usługi hosta do automatycznego uruchomienia po zapisaniu zaktualizowanych ustawień serwera proxy.
+Usługa hosta integration runtime powoduje automatyczne ponowne uruchomienie po zapisaniu zaktualizowanych ustawień serwera proxy.
 
-Po środowiska uruchomieniowego integracji hostowania samoobsługowego został pomyślnie zarejestrowany, jeśli chcesz wyświetlić lub zaktualizować ustawienia serwera proxy, użyj Menedżera konfiguracji środowiska uruchomieniowego integracji.
+Po własnego środowiska integration runtime został pomyślnie zarejestrowany, jeśli chcesz wyświetlić lub zaktualizować ustawienia serwera proxy, należy użyć Menedżera konfiguracji produktu Integration Runtime.
 
-1.  Uruchom **Menedżera konfiguracji środowiska uruchomieniowego integracji Microsoft**.
+1.  Uruchom **Menedżera konfiguracji produktu Microsoft Integration Runtime**.
 2.  Przejdź do karty **Ustawienia**.
-3.  Kliknij przycisk **zmiany** łącze w **serwer HTTP Proxy** sekcji, aby uruchomić **ustawiony serwer Proxy HTTP** okna dialogowego.
-4.  Po kliknięciu **dalej** przycisku, zobacz okno dialogowe ostrzeżenia pytania o uprawnienia zapisać ustawienie serwera proxy i ponownie uruchom usługę hosta środowiska uruchomieniowego integracji.
+3.  Kliknij przycisk **zmiany** łącze w **serwer HTTP Proxy** sekcji, aby uruchomić **Ustaw serwer Proxy HTTP** okna dialogowego.
+4.  Po kliknięciu **dalej** przycisku, zobaczysz okno dialogowe ostrzeżenia z prośbą o Twojej zgody, aby zapisać ustawienia serwera proxy, a następnie ponownie uruchom usługę hosta Integration Runtime.
 
-Można wyświetlać i aktualizować serwer proxy HTTP za pomocą narzędzia Configuration Manager.
+Można wyświetlić i zaktualizować serwer proxy HTTP za pomocą narzędzia Configuration Manager.
 
-![Widok serwera proxy](media\create-self-hosted-integration-runtime\view-proxy.png)
+![Serwer proxy w widoku](media\create-self-hosted-integration-runtime\view-proxy.png)
 
 > [!NOTE]
-> Jeśli skonfigurowano serwer proxy z uwierzytelnianiem NTLM środowiska uruchomieniowego integracji hosta usługa działa na koncie domeny. Jeśli zmienisz hasło dla konta domeny później, pamiętaj, aby zaktualizować ustawienia konfiguracji dla usługi i odpowiednio uruchom ją ponownie. Ze względu na to wymaganie zaleca się, że używasz konta domeny dedykowanego serwera proxy, który nie wymaga często zaktualizuj hasło dostępu do.
+> Jeśli skonfigurowano serwer proxy przy użyciu metody NTLM środowiska Integration runtime usługi hosta działa w ramach konta domeny. Jeśli zmienisz hasło do konta domeny w dalszej części, pamiętaj, aby zaktualizować ustawienia konfiguracji dla usługi, a następnie uruchom go ponownie w związku z tym. Ze względu na to wymaganie zaleca się, że używasz konta domeny dedykowanego dostępu do serwera proxy, który nie wymaga częstej aktualizacji hasła.
 
 ### <a name="configure-proxy-server-settings"></a>Skonfiguruj ustawienia serwera proxy
 
-W przypadku wybrania **użycia serwera proxy systemu** ustawienie serwera proxy HTTP, hostowanie Samoobsługowe integrację środowiska uruchomieniowego używa ustawienie diahost.exe.config i diawp.exe.config serwera proxy. Jeśli w diahost.exe.config i diawp.exe.config określono żadnego serwera proxy, hostowanie Samoobsługowe integrację środowiska uruchomieniowego łączy do usługi w chmurze bezpośrednio, bez przechodzenia przez serwer proxy. Poniższa procedura zawiera instrukcje dotyczące aktualizacji pliku diahost.exe.config.
+Jeśli wybierzesz **Użyj systemowego serwera proxy** ustawienia serwera proxy HTTP, własne środowisko integration runtime wykorzystuje ustawienie diahost.exe.config i diawp.exe.config serwera proxy. Jeśli żaden serwer proxy jest określona w diahost.exe.config i diawp.exe.config, własne środowisko integration runtime łączy się z usługą w chmurze bezpośrednio bez konieczności zwracania się za pośrednictwem serwera proxy. Poniższa procedura zawiera instrukcje dotyczące aktualizowania pliku diahost.exe.config.
 
-1. W Eksploratorze plików wykonaj kopię bezpieczne C:\Program Files\Microsoft integracji Runtime\3.0\Shared\diahost.exe.config Aby utworzyć kopię zapasową oryginalnego pliku.
-2. Uruchamianie Notepad.exe uruchomioną jako administrator, a następnie otwórz plik tekstowy "C:\Program Files\Microsoft integracji Runtime\3.0\Shared\diahost.exe.config. Domyślny znacznik można znaleźć system.net zgodnie z poniższym kodem:
+1. W Eksploratorze plików należy utworzyć kopię bezpieczne C:\Program Files\Microsoft integracji Runtime\3.0\Shared\diahost.exe.config do tworzenia kopii zapasowej oryginalnego pliku.
+2. Uruchom Notepad.exe uruchomione jako administrator, a następnie otwórz plik tekstowy "C:\Program Files\Microsoft integracji Runtime\3.0\Shared\diahost.exe.config. Możesz znaleźć tag domyślny dla przestrzeni nazw system.net, jak pokazano w poniższym kodzie:
 
     ```xml
     <system.net>
         <defaultProxy useDefaultCredentials="true" />
     </system.net>
     ```
-    Następnie można dodać szczegóły serwera proxy, jak pokazano w poniższym przykładzie:
+    Następnie można dodać szczegółów serwera proxy, jak pokazano w poniższym przykładzie:
 
     ```xml
     <system.net>
@@ -213,46 +214,46 @@ W przypadku wybrania **użycia serwera proxy systemu** ustawienie serwera proxy 
     </system.net>
     ```
 
-    Dodatkowe właściwości są dozwolone wewnątrz tagu serwera proxy do określenia wymagane ustawienia, takie jak scriptLocation. Zobacz [serwera proxy elementu (ustawienia sieciowe)](https://msdn.microsoft.com/library/sa91de1e.aspx) składni.
+    Dodatkowe właściwości są dozwolone wewnątrz tagu serwera proxy do określania wymaganych ustawień, takich jak scriptLocation. Zobacz [serwera proxy — Element (ustawienia sieci)](https://msdn.microsoft.com/library/sa91de1e.aspx) składni.
 
     ```xml
     <proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
     ```
-3. Zapisz plik konfiguracji do oryginalnej lokalizacji, a następnie uruchom ponownie usługę Self-hosted integrację środowiska uruchomieniowego hosta, który przejmuje zmiany. Aby ponownie uruchomić usługę: użyj apletu usługi w Panelu sterowania lub z **integrację środowiska uruchomieniowego Configuration Manager** > kliknij **Zatrzymaj usługę** przycisk, a następnie kliknij przycisk **Start Usługa**. Jeśli usługa nie zostanie uruchomiona, istnieje prawdopodobieństwo, że dodano niepoprawną składnię tagu XML w pliku konfiguracji aplikacji, który był edytowany.
+3. Zapisz plik konfiguracji do oryginalnej lokalizacji, a następnie ponownie uruchom usługę własne Host środowiska Integration Runtime, która uwzględnia zmiany. Aby ponownie uruchomić usługę: użyj apletu usługi w Panelu sterowania lub z **Menedżera konfiguracji produktu Integration Runtime** > kliknij **Zatrzymaj usługę** przycisk, a następnie kliknij przycisk **Start Usługa**. Jeśli usługa nie zostanie uruchomiona, istnieje prawdopodobieństwo, że dodano niepoprawną składnię tagu XML w pliku konfiguracji aplikacji, który był edytowany.
 
 > [!IMPORTANT]
-> Pamiętaj zaktualizować zarówno diahost.exe.config i diawp.exe.config.
+> Pamiętaj zaktualizować diahost.exe.config i diawp.exe.config.
 
-Oprócz tych punktów należy również upewnij się, że jest dozwolonych w firmie Microsoft Azure. Lista prawidłowych adresów IP firmy Microsoft Azure można pobrać z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=41653).
+Oprócz tych punktów, należy również upewnić, że Microsoft Azure znajduje się w dozwolonych w firmie. Lista prawidłowych adresów IP platformy Microsoft Azure można pobrać z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=41653).
 
-### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>Symptomów zapory i serwera proxy problemów związanych z serwerami
-Jeśli wystąpią błędy podobne do następujących pól, prawdopodobnie z powodu nieprawidłowej konfiguracji zapory lub serwera proxy serwera, która blokuje środowiska uruchomieniowego integracji siebie połączenie z fabryki danych do samodzielnego uwierzytelnienia. Zapoznaj się z poprzedniej sekcji, aby upewnić się, zapory i serwera proxy są poprawnie skonfigurowane.
+### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>Możliwe objawy zapory i serwera proxy problemów związanych z serwerem
+Jeśli wystąpią błędy podobne do poniższych, prawdopodobnie z powodu nieprawidłowej konfiguracji zapory lub serwera proxy serwera, który blokuje własnego środowiska integration runtime połączenie z usługą Data Factory do samodzielnego uwierzytelnienia. Można znaleźć w poprzedniej sekcji, aby upewnić się, zapory i serwera proxy są prawidłowo skonfigurowane.
 
-1.  Podczas próby zarejestrowania środowiska uruchomieniowego integracji hostowania samoobsługowego, zostanie wyświetlony następujący błąd: "nie można zarejestrować tego węzła środowiska uruchomieniowego integracji! Potwierdzić, że klucz uwierzytelniania jest prawidłowy i hosta Usługa integracji jest uruchomiona na tym komputerze. "
-2.  Po otwarciu Menedżera konfiguracji środowiska uruchomieniowego integracji, zobacz stan jako "**Rozłączono**"lub"**łączenie**". Podczas przeglądania dzienników zdarzeń systemu Windows, w obszarze "Podglądu zdarzeń" > "I usługi Dzienniki aplikacji" > "Runtime integracji Microsoft", można wyświetlić komunikaty o błędach, takich jak następujący błąd:
+1.  Podczas próby zarejestrowania własnego środowiska integration runtime, zostanie wyświetlony następujący błąd: "nie można zarejestrować ten węzeł Integration Runtime. Upewnij się, że klucz uwierzytelniania jest prawidłowy, a usługa hosta Integration usługa jest uruchomiona na tym komputerze. "
+2.  Po otwarciu Menedżera konfiguracji produktu Integration Runtime, zostanie wyświetlony stan jako "**Disconnected**"or"**łączenie**". Podczas przeglądania dzienników zdarzeń Windows, w obszarze "Podgląd zdarzeń" > "Aplikacji i usług dzienniki" > "Microsoft Integration Runtime", zostanie wyświetlony błąd komunikaty, takie jak następujący błąd:
 
     ```
     Unable to connect to the remote server
     A component of Integration Runtime has become unresponsive and restarts automatically. Component name: Integration Runtime (Self-hosted).
     ```
 
-### <a name="enable-remote-access-from-intranet"></a>Włączenie dostępu zdalnego z sieci Intranet  
-W przypadku, jeśli używasz **PowerShell** lub **aplikacji Menedżera poświadczeń** do szyfrowania poświadczeń dostępu z innego komputera (w sieci) innych niż środowiska uruchomieniowego integracji siebie zainstalowanym, następnie będzie wymagać **"Zdalnego dostępu z intranetu"** Aby włączyć opcję. Po uruchomieniu **PowerShell** lub **aplikacji Menedżera poświadczeń** do szyfrowania poświadczeń na tym samym komputerze, na którym instalowany jest hostowanie Samoobsługowe integrację środowiska uruchomieniowego, następnie **"dostępu zdalnego z sieci Intranet "** może nie być włączone.
+### <a name="enable-remote-access-from-intranet"></a>Włącz dostęp zdalny z intranetu  
+W przypadku, jeśli używasz **PowerShell** lub **aplikacji Menedżer poświadczeń** zaszyfrować poświadczenia z innego komputera (w sieci) niż gdy własne środowisko integration runtime jest zainstalowany, następnie Czy potrzebujesz **"Dostęp zdalny z intranetu"** możliwość włączenia. Jeśli uruchamiasz **PowerShell** lub **aplikacji Menedżer poświadczeń** do szyfrowania poświadczeń na tym samym komputerze, na którym instalowany jest własnego środowiska integration runtime, następnie **"dostęp zdalny z intranetu "** może nie być włączona.
 
-Zdalny dostęp z intranetu powinien być **włączone** przed dodaniem innego węzła dla **wysokiej dostępności i skalowalności**.  
+Dostęp zdalny z intranetu powinny być **włączone** przed dodaniem innego węzła dla **wysokiej dostępności i skalowalności**.  
 
-Podczas integracji hostowania samoobsługowego środowiska uruchomieniowego instalacji (i jego nowszych wersjach 3.3.xxxx.x v), domyślnie wyłącza instalacji środowiska uruchomieniowego integracji siebie **"Zdalnego dostępu z intranetu"** na komputerze środowiska uruchomieniowego integracji siebie.
+Podczas własnego Instalatora środowiska integration runtime (i nowszych wersjach 3.3.xxxx.x v), domyślnie, wyłącza instalacji Self-Hosted integration runtime **"Dostęp zdalny z intranetu"** maszynie Self-Hosted integration runtime.
 
-Jeśli używasz zapory innych firm, można ręcznie otworzyć port 8060 (lub użytkownik skonfigurowany). Jeśli napotkasz problem zapory podczas instalacji środowiska uruchomieniowego integracji hostowania samoobsługowego możesz spróbować zainstalować środowisko uruchomieniowe siebie integracji bez konfigurowania zapory przy użyciu następującego polecenia.
+Jeśli używasz zapory innych firm, możesz ręcznie otworzyć port 8060 (lub skonfigurowane przez użytkownika). Jeśli napotkasz problem z zaporą podczas instalacji Self-Hosted integration runtime możesz spróbować, używając następującego polecenia do zainstalowania własnego środowiska integration runtime, bez konieczności konfigurowania zapory.
 
 ```
 msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 ```
 > [!NOTE]
-> **Menedżer poświadczeń aplikacji** nie jest jeszcze dostępna w celu szyfrowania poświadczeń w ADFv2. Firma Microsoft będzie później dodać tę obsługę.  
+> **Aplikacji Menedżer poświadczeń** nie jest jeszcze dostępna w celu szyfrowania poświadczeń w ADFv2. Ta obsługa zostanie dodany później.  
 
-Jeśli wybierzesz nie otworzyć port 8060 na komputerze środowiska uruchomieniowego integracji hostowania samoobsługowego, używa mechanizmów innych niż z użyciem ** ustawienie poświadczeń ** aplikacji w celu skonfigurowania poświadczeń magazynu danych. Na przykład można użyć polecenia cmdlet New-AzureRmDataFactoryV2LinkedServiceEncryptCredential środowiska PowerShell. Zobacz sekcję ustawienie poświadczeń i zabezpieczeń w sposób poświadczeń magazynu danych można ustawić.
+Jeśli wybierzesz nie otworzyć port 8060 maszynie Self-Hosted integration runtime, użyj mechanizmów, innych niż z użyciem ** Ustawianie poświadczeń ** aplikację, aby skonfigurować poświadczenia magazynu danych. Na przykład można użyć polecenia cmdlet New-AzureRmDataFactoryV2LinkedServiceEncryptCredential programu PowerShell. Zobacz sekcję Ustawianie poświadczeń i zabezpieczeń na sposób przechowywania poświadczeń w danych można ustawić.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Następujące samouczki krok po kroku: [samouczek: kopiowanie danych lokalnych do chmury](tutorial-hybrid-copy-powershell.md).
+Zobacz następujące samouczki krok po kroku dotyczące: [samouczek: kopiowanie danych do chmury lokalnych](tutorial-hybrid-copy-powershell.md).

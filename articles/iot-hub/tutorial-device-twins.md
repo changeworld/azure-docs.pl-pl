@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 05/14/2018
 ms.author: dobett
 ms.custom: mvc
-ms.openlocfilehash: b1e7fa441dc52a647828c7d3785f09533af06fd0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 42be14569215af7ee98a540c2a86cef2b2a028e4
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651545"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37033882"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -76,7 +76,7 @@ az group create --name tutorial-iot-hub-rg --location $location
 az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku S1
 
 # Make a note of the service connection string, you need it later:
-az iot hub show-connection-string --hub-name $hub-name -o table
+az iot hub show-connection-string --hub-name $hubname -o table
 
 ```
 
@@ -260,14 +260,7 @@ az group delete --name tutorial-iot-hub-rg
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób synchronizacji informacji o stanie między urządzeniami i centrum IoT Hub przez wykonanie następujących zadań:
-
-> [!div class="checklist"]
-> * Utworzenie centrum IoT Hub i dodanie urządzenia testowego do rejestru tożsamości.
-> * Użycie żądanych właściwości do wysyłania informacji o stanie do urządzenia symulowanego.
-> * Użycie zgłaszanych właściwości do odbierania informacji o stanie z urządzenia symulowanego.
-
-Przejdź do następnego samouczka, aby dowiedzieć się, jak używać bliźniaczych reprezentacji urządzeń do implementowania procesu aktualizacji oprogramowania układowego.
+W tym samouczku przedstawiono sposób synchronizacji informacji o stanie między urządzeniami i centrum IoT Hub. Przejdź do następnego samouczka, aby dowiedzieć się, jak używać bliźniaczych reprezentacji urządzeń do implementowania procesu aktualizacji oprogramowania układowego.
 
 > [!div class="nextstepaction"]
-[Testowanie łączności z centrum IoT za pomocą urządzenia symulowanego](tutorial-connectivity.md)
+[Wdrażanie procesu aktualizacji oprogramowania układowego urządzenia](tutorial-firmware-update.md)

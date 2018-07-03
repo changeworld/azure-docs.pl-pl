@@ -1,5 +1,5 @@
 ---
-title: Partia zadań Azure przekształcania interfejsu API | Dokumentacja firmy Microsoft Azure
+title: Usługa Azure Batch transkrypcji interfejsu API | Dokumentacja firmy Microsoft Azure
 description: Przykłady
 services: cognitive-services
 author: PanosPeriorellis
@@ -9,36 +9,36 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: cf58f676be52aa16ce6de59c3566613c7ee9276d
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 9dd7479ae95f74123d9b762e42ec95e8dbf25818
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37084086"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346448"
 ---
-# <a name="batch-transcription"></a>Przekształcenia partii
+# <a name="batch-transcription"></a>Transkrypcja wsadowa
 
-Przekształcenia partii jest idealny dla przypadków użycia z dużą ilością audio. Umożliwia deweloperowi wskaż plików audio i wrócić transcriptions w trybie asynchronicznym.
+Transkrypcja partii jest idealny dla przypadków użycia z dużą ilością audio. Dzięki temu deweloper wskaż plików audio i uzyskanie transkrypcje w trybie asynchronicznym.
 
-## <a name="batch-transcription-api"></a>Przekształcenia partii interfejsu API
+## <a name="batch-transcription-api"></a>Batch transkrypcji interfejsu API
 
-Przekształcenia partii interfejsu API umożliwia powyższym scenariuszu. Zapewnia ona asynchroniczne mowy do przekształcania tekstu oraz dodatkowe funkcje.
+Transkrypcji interfejsu API usługi Batch pozwala powyższym scenariuszu. Oferuje ona asynchroniczne zamiana mowy na tekst transkrypcji oraz dodatkowe funkcje.
 
 > [!NOTE]
-> Przekształcenia interfejsu API partii jest idealny dla biurem obsługi zwykle się tysiące godziny audio. Zasady Fire & zapomnij klas interfejsu API można łatwo wykonać transkrypcji dużą liczbę nagrania audio.
+> Transkrypcji interfejsu API usługi Batch jest idealny dla biurem obsługi zwykle się tysiące godzin audio. Ogień & zapomnij Filozofia interfejsu API ułatwia także dużą liczbą nagrania audio.
 
 ### <a name="supported-formats"></a>Obsługiwane formaty
 
-Przekształcenia interfejsu API partii ma de-facto we wszystkich scenariuszach związanych z Centrum wywołanie w trybie offline i oferują obsługę wszystkich powiązanych formatów. Obecnie obsługiwane formaty:
+Transkrypcji interfejsu API usługi Batch ma na celu stają się de facto we wszystkich scenariuszach związanych z Centrum wywołań w trybie offline i oferują pomoc techniczną dla wszystkich powiązanych formatów. Obecnie obsługiwane formaty:
 
 Name (Nazwa)| Kanał  |
 ----|----------|
-mp3 |   Mono   |   
+mp3 |   Narzędzie mono   |   
 mp3 |  Stereo  | 
-WAV |   Mono   |
+WAV |   Narzędzie mono   |
 WAV |  Stereo  |
 
-Stereo strumieni audio przekształcania partii podzieli lewy i prawy kanał podczas zapisu. Każdy dwa pliki JSON z wynikiem są tworzone z jednego kanału. Sygnatury czasowe na utterance umożliwiają deweloperom tworzenie uporządkowanego wykaz końcowego. W poniższym przykładzie JSON zawierają dane wyjściowe kanału.
+Dla stereo strumieni audio transkrypcji Batch zostanie podzielona kanału lewy i prawy podczas transkrypcji. Każdy dwa pliki JSON z wynikiem są tworzone z pojedynczy kanał. Sygnatury czasowe na wypowiedź Włącz dla deweloperów utworzyć uporządkowany końcowego transkrypcji. Poniższy przykładowy kod JSON zawiera dane wyjściowe kanału.
 
 ```json
        {
@@ -56,11 +56,11 @@ Stereo strumieni audio przekształcania partii podzieli lewy i prawy kanał podc
 ```
 
 > [!NOTE]
-> Przekształcenia interfejsu API partii jest przy użyciu usługi REST żądanych transcriptions, stanu i skojarzone wyników. Jest on oparty na platformie .NET i nie ma żadnych zależności zewnętrzne. W następnej sekcji opisano, jak będą wykorzystywane.
+> Transkrypcji interfejsu API usługi Batch korzysta z usługi REST, do żądania transkrypcje, stanu i skojarzonych wyników. Interfejs API można używać z dowolnego języka. W następnej sekcji opisano, jak są używane.
 
 ## <a name="authorization-token"></a>Token autoryzacji
 
-Zgodnie z wszystkimi funkcjami usługi mowy Unified, użytkownik musi utworzyć klucz subskrypcji z [portalu Azure](https://portal.azure.com). Ponadto klucz interfejsu API musi zostać pobrany z portalu mowy. Kroki, aby wygenerować klucz interfejsu API:
+Zgodnie z wszystkich funkcji programu Unified Speech Service, użytkownik musi utworzyć klucz subskrypcji z [witryny Azure portal](https://portal.azure.com). Ponadto klucza interfejsu API musi zostać uzyskane z portalu mowy. Kroki, aby wygenerować klucz interfejsu API:
 
 1. Zaloguj się do https://customspeech.ai.
 
@@ -68,16 +68,16 @@ Zgodnie z wszystkimi funkcjami usługi mowy Unified, użytkownik musi utworzyć 
 
 3. Kliknij opcję `Generate API Key`.
 
-    ![Widok przekazywania](media/stt/Subscriptions.jpg)
+    ![Wyświetl przekazywania](media/stt/Subscriptions.jpg)
 
 4. Skopiuj i Wklej klucz w kodzie klienta w poniższym przykładzie.
 
 > [!NOTE]
-> Jeśli planujesz użyć niestandardowego modelu wymagana będzie identyfikator modelu zbyt. Należy pamiętać, że nie jest wdrożenia lub identyfikator punktu końcowego, które znajdują się w widoku szczegółów punktu końcowego, ale identyfikator modelu, który można pobrać po kliknięciu szczegóły tego modelu
+> Jeśli planujesz użyć niestandardowego modelu należy identyfikator modelu zbyt. Należy pamiętać, że to nie wdrożenia lub identyfikator punktu końcowego, który można znaleźć w widoku Szczegóły punktu końcowego, ale identyfikator modelu, który można pobrać po kliknięciu szczegółowe informacje o modelu
 
 ## <a name="sample-code"></a>Przykładowy kod
 
-Użyj interfejsu API jest dość proste do przodu. Poniższy przykładowy kod musi można dostosować za pomocą klucza subskrypcji i klucz interfejsu API, który włącza umożliwia deweloperowi do uzyskania tokenu elementu nośnego jako kod następujący kod fragment kodu przedstawia:
+Korzystanie z interfejsu API jest już bardzo proste. Przykładowy kod poniżej musi można dostosować za pomocą klucz subskrypcji i klucz interfejsu API, który z kolei umożliwia deweloperom uzyskanie tokenu elementu nośnego, jak poniższy fragment kodu przedstawia:
 
 ```cs
     public static async Task<CrisClient> CreateApiV1ClientAsync(string username, string key, string hostName, int port)
@@ -94,7 +94,7 @@ Użyj interfejsu API jest dość proste do przodu. Poniższy przykładowy kod mu
         }
 ```
 
-Po uzyskaniu tokenu deweloper musi zmiennoprzecinkową identyfikatora Uri połączenia SAS wskazuje plik dźwiękowy wymagających zapisu. Pozostałe kod po prostu iteruje stan i wyświetla wyniki.
+Po uzyskaniu tokenu deweloper musi Określ identyfikator Uri sygnatury dostępu Współdzielonego, wskazujący na plik dźwiękowy wymagające transkrypcji. Pozostała część kodu po prostu wykonuje iterację przez stan i wyświetla wyniki.
 
 ```cs
    static async Task TranscribeAsync()
@@ -153,28 +153,28 @@ Po uzyskaniu tokenu deweloper musi zmiennoprzecinkową identyfikatora Uri połą
 ```
 
 > [!NOTE]
-> Klucz subskrypcji wspomnianego powyżej fragmentu kodu jest na podstawie Speech(Preview) zasobu utworzonego w portalu Azure. Klucze uzyskiwane ze źródła niestandardowej usługi rozpoznawania mowy nie będą działać.
+> Klucz subskrypcji wspomniano w powyższym fragmencie kodu jest kluczem z zasobu Speech(Preview), które tworzysz w witrynie Azure portal. Kluczy uzyskanych z zasobów Custom Speech Service nie będzie działać.
 
 
-Zwróć uwagę, ustawień asynchroniczne przesyłanie audio i odbieranie stanu przekształcania. Klient NET Http jest klienta utworzone. Brak `PostTranscriptions` metody wysyłania szczegółów pliku audio i `GetTranscriptions` metodę, aby otrzymywać wyniki. `PostTranscriptions` Zwraca uchwyt i `GetTranscriptions` metody jest tworzenie przy użyciu tego uchwytu dojścia do uzyskania stanu przekształcania.
+Zwróć uwagę, asynchronicznego Instalatora w celu opublikowanie audio i odbieranie stanu transkrypcji. Klient utworzone to klient Http platformy .NET. Brak `PostTranscriptions` metodę szczegóły pliku audio i `GetTranscriptions` metodę, aby otrzymać wyniki. `PostTranscriptions` Zwraca uchwyt, a `GetTranscriptions` metody jest tworzenie przy użyciu tego uchwytu dojścia do uzyskania stanu transkrypcji.
 
-Bieżący kod przykładowy nie określa żadnych niestandardowych modeli. Usługa będzie używać modeli linii bazowej przetwarzanie plików. Jeśli użytkownik chce Określ modele, co można przekazać na tej samej metody modelIDs akustycznego i model języka. 
+Bieżący kod przykładowy nie określono żadnych niestandardowych modeli. Modele planu bazowego dla przepisywania plików będzie używane przez usługę. Gdy użytkownik chce określić te modele, jeden może przekazać w tej samej metody modelIDs akustyczne i modelu języka. 
 
-Jeśli jeden nie chce używać linii bazowej, jeden musi przejść pomyślnie identyfikatory modelu dla modeli zarówno akustycznego i języka.
+Jeśli jeden nie chcesz używać punktu odniesienia, jeden musi pomyślnie przejść identyfikatory modelu dla modeli zarówno akustyczne i językowe.
 
 > [!NOTE]
-> Dla linii bazowej przekształcania użytkownik nie ma zadeklarować punkty końcowe modeli linii bazowej. Jeśli użytkownik chce używać niestandardowych modeli on będzie musiał podać ich identyfikatorów punkty końcowe jako [próbki](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI). Jeśli użytkownik chce używać akustycznego linii bazowej z modelem języka linii bazowej następnie on tylko musi zadeklarować identyfikatora modelu niestandardowe punktu końcowego. Wewnętrznie naszym systemie zorientować się modelu linii bazowej partnera (można go akustycznego lub język) i używać, aby wykonać żądanie zapisu.
+> Dla linii bazowej transkrypcji użytkownik nie ma do deklarowania punktów końcowych w modelu odniesienia. Jeśli użytkownik chce, aby korzystać z niestandardowych modeli miałby on zapewnienie ich identyfikatory punktów końcowych jako [przykładowe](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI). Jeśli użytkownik chce planu bazowego akustyczny za pomocą modelu języka podstawowego następnie on tylko musi zadeklarować identyfikatora modelu niestandardowego punktu końcowego. Wewnętrznie nasz system ustalenie modelu odniesienia partnera (można go akustyczny lub język) i używać go do spełnienia żądania transkrypcji.
 
-### <a name="supported-storage"></a>Obsługiwanego magazynu
+### <a name="supported-storage"></a>Obsługiwane
 
-Obecnie tylko magazyn obsługiwane jest obiektów blob platformy Azure.
+Obecnie tylko magazynu obsługiwane jest obiektów blob platformy Azure.
 
-## <a name="downloading-the-sample"></a>Pobieranie próbki
+## <a name="downloading-the-sample"></a>Pobieranie przykładu
 
 Przykładowe wyświetlane w tym miejscu znajduje się na [GitHub](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI).
 
 > [!NOTE]
-> Audio przekształcania wymaga zwykle od zakresu czasu równy okresowi plik dźwiękowy oraz koszty 2 – 3 minuty.
+> Zazwyczaj transkrypcję audio wymaga przedział czasu równy okresowi plik audio oraz obciążenie 2 – 3 minuty.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

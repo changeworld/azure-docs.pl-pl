@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 12/13/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 5b61b7f89c127b297f058082d86952f2a45d766a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 543b75fbc1e080d13654df06cf36874e3833e851
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798713"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018404"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Samouczek: wdrażanie aplikacji przy użyciu ciągłej integracji/ciągłego wdrażania w klastrze usługi Service Fabric
 Niniejszy samouczek jest czwartą częścią serii i zawiera opis sposobu konfiguracji ciągłej integracji i ciągłego wdrażania aplikacji usługi Service Fabric za pomocą usługi Visual Studio Team Services.  Wymagana jest istniejąca aplikacja usługi Service Fabric. Na potrzeby tego samouczka za przykład posłużyła aplikacja utworzona w temacie [Tworzenie aplikacji .NET](service-fabric-tutorial-create-dotnet-app.md).
@@ -46,7 +46,7 @@ Przed rozpoczęciem tego samouczka:
 - Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Zainstaluj program Visual Studio 2017](https://www.visualstudio.com/), a następnie zainstaluj obciążenia **Programowanie na platformie Azure** i **Tworzenie aplikacji na platformie ASP.NET i tworzenie aplikacji internetowych**.
 - [Zainstaluj zestaw SDK usługi Service Fabric.](service-fabric-get-started.md)
-- Utwórz klaster usługi Service Fabric z systemem Windows na platformie Azure, na przykład [postępując zgodnie z tym samouczkiem](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+- Utwórz klaster usługi Service Fabric z systemem Windows na platformie Azure, na przykład [postępując zgodnie z tym samouczkiem](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 - Utwórz [konto usługi Team Services](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services).
 
 ## <a name="download-the-voting-sample-application"></a>Pobieranie przykładowej aplikacji do głosowania
@@ -79,7 +79,7 @@ Sprawdź swój adres e-mail i z listy rozwijanej **Domena usługi Team Services*
 Opublikowanie repozytorium powoduje utworzenie nowego projektu zespołowego na Twoim koncie o takiej samej nazwie co lokalne repozytorium. Aby utworzyć repozytorium w istniejącym projekcie zespołowym, kliknij polecenie **Zaawansowane** obok nazwy **Repozytorium**, a następnie wybierz projekt zespołowy. Aby wyświetlić kod w Internecie, wybierz polecenie **Wyświetl w Internecie**.
 
 ## <a name="configure-continuous-delivery-with-vsts"></a>Konfigurowanie ciągłego dostarczania za pomocą usługi VSTS
-Definicja kompilacji usługi Team Services zawiera opis przepływu pracy, który składa się z zestawu kroków kompilacji wykonywanych sekwencyjnie. Utwórz definicję kompilacji, która spowoduje utworzenie pakietu aplikacji usługi Service Fabric, i innych artefaktów, na potrzeby wdrożenia w klastrze usługi Service Fabric. Dowiedz się więcej na temat [definicji kompilacji usługi Team Services](https://www.visualstudio.com/docs/build/define/create). 
+Definicja kompilacji usługi Team Services zawiera opis przepływu pracy, który składa się z zestawu kroków kompilacji wykonywanych sekwencyjnie. Utwórz definicję kompilacji, która spowoduje wygenerowanie pakietu aplikacji usługi Service Fabric i innych artefaktów, na potrzeby wdrożenia w klastrze usługi Service Fabric. Dowiedz się więcej na temat [definicji kompilacji usługi Team Services](https://www.visualstudio.com/docs/build/define/create). 
 
 Definicja wydania usługi Team Services opisuje przepływ pracy, który wdraża pakiet aplikacji w klastrze. Jednoczesne użycie definicji kompilacji i definicji wydania powoduje wykonanie całego przepływu pracy, zaczynając od plików źródłowych, a kończąc na aplikacji uruchomionej w klastrze. Dowiedz się więcej na temat[definicji wydania](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition) usługi Team Services.
 

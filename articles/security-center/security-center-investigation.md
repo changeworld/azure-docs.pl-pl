@@ -3,36 +3,41 @@ title: Badanie zdarzeń i alertów w usłudze Azure Security Center | Microsoft 
 description: Ten dokument ułatwia korzystanie z funkcji badania zdarzeń zabezpieczeń i alertów w usłudze Azure Security Center.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: a8e894a9-8781-4749-ae8f-8c8e01658566
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/18/2017
-ms.author: yurid
-ms.openlocfilehash: bab7b64a1635639991d639fb838b7118e234aa5b
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
-ms.translationtype: HT
+ms.date: 06/29/2018
+ms.author: terrylan
+ms.openlocfilehash: 010c641c247552a8994c9d1c945cd585148fadf9
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32776486"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340794"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Badanie zdarzeń i alertów w usłudze Azure Security Center (wersja zapoznawcza)
 Ten dokument ułatwia korzystanie z funkcji badania zdarzeń zabezpieczeń i alertów w usłudze Azure Security Center.
 
 ## <a name="what-is-investigation-in-security-center"></a>Czym jest badanie w usłudze Security Center?
 Funkcja Badanie w usłudze Security Center umożliwia klasyfikowanie, określanie zakresu i śledzenie głównej przyczyny potencjalnego [zdarzenia zabezpieczeń](https://docs.microsoft.com/azure/security-center/security-center-incident).
- 
+
 Celem jest ułatwienie procesu badania dzięki połączeniu wszystkich jednostek ([alertów zabezpieczeń](https://docs.microsoft.com/azure/security-center/security-center-alerts-type), użytkowników, komputerów i zdarzeń) biorących udział w badanym zdarzeniu.  Usługa Security Center umożliwia skorelowanie odpowiednich danych ze wszystkimi zaangażowanymi jednostkami oraz udostępnienie tej korelacji za pomocą dynamicznego wykresu, który ułatwia nawigowanie po obiektach i wizualizowanie istotnych informacji.
+
+> [!NOTE]
+> [Niestandardowe alerty](security-center-custom-alert.md) nie są obsługiwane w funkcji badania Centrum zabezpieczeń.
+>
+>
 
 
 ## <a name="how-investigation-works"></a>Jak działa funkcja Badanie?
 Funkcja Badanie składa się z wykresu, który zajmuje centralny obszar pulpitu nawigacyjnego badania. Wykres zawsze koncentruje się na określonej jednostce i przedstawia związane z nią jednostki. Jednostką może być alert zabezpieczeń, użytkownik, komputer lub zdarzenie.
- 
+
 ![Mapa](./media/security-center-investigation/security-center-investigation-fig1.png)
 
 Użytkownik może przechodzić z jednej jednostki do innej, klikając ją na wykresie. Wykres automatycznie koncentruje się na wybranej jednostce i związanych z nią jednostkach. Jednostki, które nie są już istotne, mogą zostać usunięte z wykresu.
@@ -43,7 +48,7 @@ Gdy użytkownik przechodzi do innych jednostek, ścieżka badania ułatwia śled
 ![Ścieżka](./media/security-center-investigation/security-center-investigation-fig2.png)
 
 ### <a name="general-information"></a>Informacje ogólne
-Gdy jednostka jest wyświetlana na wykresie, na kartach znajdują się dodatkowe informacje na jej temat. Karta **Informacje** zawiera ogólne informacje na temat danej jednostki pochodzące z różnych dostępnych źródeł informacji. 
+Gdy jednostka jest wyświetlana na wykresie, na kartach znajdują się dodatkowe informacje na jej temat. Karta **Informacje** zawiera ogólne informacje na temat danej jednostki pochodzące z różnych dostępnych źródeł informacji.
 
 ![Informacje ogólne](./media/security-center-investigation/security-center-investigation-fig3.png)
 
@@ -71,7 +76,7 @@ Karta **Eksploracja** umożliwia analitykowi ocenę danych dotyczących różnyc
 
 ### <a name="timeline"></a>Oś czasu
 
-Większość danych prezentowanych na wykresie i na różnych kartach dotyczy określonego przedziału czasu. Ten zakres czasu ustawia się za pomocą selektora zakresu czasu w lewym górnym rogu wykresu. Analityk może wybrać zakres czasu różnymi metodami. 
+Większość danych prezentowanych na wykresie i na różnych kartach dotyczy określonego przedziału czasu. Ten zakres czasu ustawia się za pomocą selektora zakresu czasu w lewym górnym rogu wykresu. Analityk może wybrać zakres czasu różnymi metodami.
 
 ![Oś czasu](./media/security-center-investigation/security-center-investigation-fig7.png)
 
@@ -103,15 +108,14 @@ Badanie można rozpocząć z poziomu zdarzenia zabezpieczeń lub alertu. Wybrana
 
     ![Pulpit nawigacyjny funkcji Badanie](./media/security-center-investigation/security-center-investigation-fig9.png)
 
-W tym miejscu można zbadać jednostki, które brały udział w tym zdarzeniu, i uzyskać więcej szczegółowych informacji na temat każdej z nich. 
+W tym miejscu można zbadać jednostki, które brały udział w tym zdarzeniu, i uzyskać więcej szczegółowych informacji na temat każdej z nich.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 W tym dokumencie przedstawiono sposób użycia funkcji badania w usłudze Security Center. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Dowiedz się, jak zarządzać alertami i reagować na zdarzenia związane z bezpieczeństwem w usłudze Security Center.
 * [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md). Informacje na temat sposobu monitorowania kondycji zasobów platformy Azure.
 * [Informacje o alertach zabezpieczeń w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Poznaj różne typy alertów zabezpieczeń.
-* [Przewodnik rozwiązywania problemów z usługą Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Dowiedz się, jak rozwiązywać typowe problemy z usługą Security Center. 
+* [Przewodnik rozwiązywania problemów z usługą Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Dowiedz się, jak rozwiązywać typowe problemy z usługą Security Center.
 * [Azure Security Center — często zadawane pytania](security-center-faq.md). Odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
 * [Blog Azure Security](http://blogs.msdn.com/b/azuresecurity/). Wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.
-

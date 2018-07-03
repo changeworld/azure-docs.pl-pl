@@ -1,6 +1,6 @@
 ---
-title: Zrozumienie aplikacji iteracyjne LUIS projektowania - Azure | Dokumentacja firmy Microsoft
-description: LUIS aplikacje wymagają iteracji projektu w celu przeszkolenia LUIS, aby uzyskać najlepsze wyodrębniania danych.
+title: Zrozumienie iteracyjne aplikacją usługi LUIS projektowania — Azure | Dokumentacja firmy Microsoft
+description: Usługa LUIS aplikacje wymagają iteracje projektu do nauczenia usługi LUIS, aby uzyskać najlepsze wyodrębnianie danych.
 services: cognitive-services
 author: v-geberr
 manager: kamran.iqbal
@@ -9,47 +9,47 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: v-geberr
-ms.openlocfilehash: b7f8dd46dc8289322726934f330761b0f1ab94bd
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: b1736630317d9cbcf2e7380df29bfa8c383b681d
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265941"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346777"
 ---
-# <a name="authoring-cycle"></a>Tworzenie cyklu
-LUIS uczy się najlepiej w iteracji cyklu zmian modelu, utterance przykłady publikowania i zbieranie danych z zapytania punktu końcowego. 
+# <a name="authoring-cycle"></a>Cykl tworzenia
+Usługa LUIS uczy się najlepiej w iteracyjny cykl zmiany modelu, przykłady wypowiedź, publikowanie oraz zbieranie danych z punktu końcowego zapytań. 
 
-![Tworzenie cyklu](./media/luis-concept-app-iteration/iteration.png)
+![Cykl tworzenia](./media/luis-concept-app-iteration/iteration.png)
 
-## <a name="building-a-luis-model"></a>Budowanie modelu LUIS
-Model służy do ustalenia użytkownika pyta o (zamiar lub zamiar) i które części zapytania Podaj szczegóły (jednostki), które pomagają w ustaleniu odpowiedzi. 
+## <a name="building-a-luis-model"></a>Budowanie modelu usługi LUIS
+Model ma na celu ustalenie użytkownika pyta o (zamiar lub intencje) i które części pytanie podaj szczegóły (jednostki), pomagające ustalić odpowiedź. 
 
-Model musi być specyficzne dla domeny aplikacji, aby określić słowa i zwroty, czy są odpowiednie, a także typowe word porządkowania. 
+Model musi być specyficzne dla domeny aplikacji, aby określić słów i określającego, czy są odpowiednie, a także typowe word kolejności. 
 
-Ten model zawiera opcje jednostek. 
+Ten model zawiera intencje i podmioty. 
 
 ## <a name="add-training-examples"></a>Dodaj przykłady szkolenia
-LUIS musi zniesławiających przykładzie w lokalizacji docelowych. Przykłady muszą za mało odmianą word wybór i kolejność słów, aby można było ustalić, który zamiar utterance są przeznaczone. Każdy utterance przykładzie trzeba wszelkie wymagane dane oznaczone jako jednostek. 
+Usługa LUIS musi przykład wypowiedzi w intencji. Przykłady muszą wystarczająco dużo odmianą word wybór i kolejność słów, aby można było określić, który zamiar wypowiedź jest przeznaczona dla. Wypowiedź każdy przykład musi mieć wszystkie wymagane dane oznaczone jako jednostki. 
 
-Poinstruuj LUIS zignorowanie zniesławiających, które nie mają znaczenia dla domeny aplikacji, przypisując utterance do **Brak** celem. Wszelkie słów ani fraz, który nie ma potrzeby pobierane poza utterance nie trzeba być oznaczony jako. Brak jest etykiety dla słów ani fraz do ignorowania. 
+Poinstruowanie LUIS w celu ignorowania wypowiedzi, które nie mają znaczenia dla domeny Twojej aplikacji, przypisując wypowiedź do **Brak** intencji. Wszelkie słów i fraz, których nie potrzebujesz ściągane poza wypowiedź nie trzeba mieć etykietę. Brak jest etykiety słów i fraz, aby zignorować. 
 <!--
 ## Not just yet
 Do not add features such as a [phrase list](luis-concept-feature.md) feature in your first cycle. Phrase lists are phrases that would be specific to your app's subject area.  
 -->
-## <a name="train-and-publish-the-app"></a>Szkolenie i publikowanie aplikacji
-Po utworzeniu zniesławiających różnych 10 – 15 w każdym polu Opcje z podmiotami wymagane etykietą, możesz uczenia LUIS, a następnie pobrać punktów końcowych. Upewnij się, że tworzenie aplikacji i publikowanie aplikacji, dzięki czemu jest on dostępny w [regionów punktu końcowego](luis-reference-regions.md) potrzebne. 
+## <a name="train-and-publish-the-app"></a>Uczenie i publikowanie aplikacji
+Po utworzeniu wypowiedzi różnych 10 do 15 w każdym polu opcje przy użyciu wymaganych jednostek, etykietę możesz nauczenia usługi LUIS, a następnie opublikuj można pobrać punktów końcowych. Upewnij się, że tworzenie aplikacji i publikowanie aplikacji, dlatego, że jest on dostępny w [regionów punktu końcowego](luis-reference-regions.md) potrzebujesz. 
 
-## <a name="https-endpoint-testing"></a>Testowanie punkt końcowy HTTPS
-Można przetestować aplikację LUIS z punktem końcowym HTTPS znajduje się na **[publikowania](publishapp.md)** strony. Testowanie z punktu końcowego umożliwia LUIS wybrać wszystkie zniesławiających z niskim zaufania do przeglądu.  
+## <a name="https-endpoint-testing"></a>Testowanie punktu końcowego protokołu HTTPS
+Można przetestować aplikację usługi LUIS z punktu końcowego protokołu HTTPS na **[Publikuj](luis-how-to-publish-app.md)** strony. Testowanie z punktu końcowego umożliwia LUIS wybrać wypowiedzi o niskim poziomie pewności dla przeglądu.  
 
-## <a name="recycle"></a>Kosz
-Po zakończeniu z cyklem tworzenia, możesz rozpocząć ponownie. Rozpocząć od sprawdzenia zniesławiających punktu końcowego, LUIS oznaczone bez obaw niski. Sprawdź te zniesławiających zamiar i jednostki. Po przejrzeniu zniesławiających listy przeglądu powinien być pusty.  
+## <a name="recycle"></a>Odtwarzanie
+Gdy skończysz, z cyklem tworzenia, możesz rozpocząć ponownie. Rozpoczynać przeglądanie wypowiedzi punktu końcowego, LUIS oznaczone pewnie niski. Sprawdź te wypowiedzi zarówno intencji i jednostki. Po przejrzeniu wypowiedzi, przejrzyj listę powinien być pusty.  
 
-## <a name="batch-testing"></a>Testowanie usługi partia zadań
-Testowanie partii jest sposób, aby zobaczyć, jak wiele zniesławiających przykładzie są oceniane przez LUIS. Przykłady powinno być nowe dla LUIS i powinna być poprawnie oznaczone zamierzone i ma LUIS można znaleźć jednostki. Wyniki testu wskazują, jak LUIS przeprowadza się w tym zestawie zniesławiających. 
+## <a name="batch-testing"></a>Testowanie wsadowe
+Testowanie usługi Batch jest sposób, aby zobaczyć, ile wypowiedzi przykład są oceniane przez usługi LUIS. Przykłady powinno być jesteś nowym użytkownikiem usługi LUIS i powinna być poprawnie oznaczone intencji i chcesz, aby usługa LUIS można znaleźć jednostki. Wyniki testu wskazują, jak w tym zestawie wypowiedzi wykona usługi LUIS. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Więcej informacji na temat pojęć [współpracy](luis-concept-collaborator.md).
+Pojęcia dotyczące [współpracy](luis-concept-collaborator.md).
 
 [luis-reference-prebuilt-domains]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-domains

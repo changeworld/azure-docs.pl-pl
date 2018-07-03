@@ -7,14 +7,14 @@ manager: jwillis
 ms.service: storage
 ms.workload: storage
 ms.topic: get-started-article
-ms.date: 06/07/2018
+ms.date: 06/22/2018
 ms.author: hux
-ms.openlocfilehash: d6279a308bc4539184cca37c1343afe8725eca7f
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 3f1dfa09c0f123d20a7be043aa8d0033a5b6bd72
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248303"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335775"
 ---
 # <a name="azure-storage-account-options"></a>Opcje konta usługi Azure Storage
 
@@ -76,32 +76,27 @@ Konta usługi Blob Storage obsługują te same funkcje blokowych obiektów blob 
 
 > [!NOTE]
 > Konta Magazynu obiektów blob obsługują tylko blokowe obiekty blob i uzupełnialne obiekty blob — stronicowe obiekty blob nie są obsługiwane.
+>
+> W przypadku większości scenariuszy firma Microsoft zaleca używanie kont magazynu ogólnego przeznaczenia w wersji 2, a nie kont usługi Blob Storage.
 
 ## <a name="recommendations"></a>Zalecenia
 
 Aby uzyskać więcej informacji dotyczących kont magazynu, zobacz [Informacje o kontach magazynu Azure](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-W przypadku aplikacji wymagających tylko magazynu blokowych obiektów blob lub magazynu uzupełnialnych obiektów blob zaleca się użycie kont GPv2, co pozwoli na korzystanie ze zróżnicowanego modelu cenowego magazynu warstwowego. Czasem korzystniejsze może być używanie konta GPv1, na przykład wtedy, gdy:
+W przypadku aplikacji wymagających najnowszych funkcji blokowych lub uzupełnialnych obiektów blob zaleca się użycie kont GPv2, co pozwoli na korzystanie ze zróżnicowanego modelu cenowego magazynu warstwowego. Czasem korzystniejsze może być używanie konta GPv1, na przykład wtedy, gdy:
 
 * Nadal musisz korzystać z klasycznego modelu wdrożenia. Konta GPv2 i usługi Blob Storage są dostępne tylko za pośrednictwem modelu wdrażania przy użyciu usługi Azure Resource Manager.
-
 * Używasz dużej liczby transakcji lub dużej przepustowości replikacji geograficznej, które są droższe w przypadku kont GPv2 i Blob Storage niż kont GPv1, i nie masz wystarczająco dużego magazynu, aby skorzystać z zalet niższych kosztów magazynu za GB.
-
 * Używasz wersji [interfejsu API REST usług Storage](https://msdn.microsoft.com/library/azure/dd894041.aspx) wcześniejsza niż 2014-02-14 lub biblioteka klienta w wersji wcześniejszej niż 4.x i nie można uaktualnić aplikacji.
 
 ## <a name="pricing-and-billing"></a>Cennik i rozliczenia
 Wszystkie konta magazynu używają modelu cenowego dla magazynu obiektów blob opartego na warstwie każdego obiektu blob. W przypadku korzystania z konta magazynu mają zastosowanie następujące zagadnienia dotyczące rozliczeń:
 
 * **Koszty usługi Storage**: oprócz ilości przechowywanych danych koszt przechowywania danych różni się w zależności od warstwy magazynowania. Koszt za gigabajt zmniejsza się w miarę, jak warstwa staje się chłodniejsza.
-
 * **Koszty dostępu do danych**: opłaty za dostęp do danych wzrastają w miarę, jak warstwa staje się chłodniejsza. W przypadku danych w warstwie magazynowania Chłodna i Archiwum naliczana jest opłata za dostęp do danych za każdy gigabajt dla operacji odczytu.
-
 * **Koszty transakcji**: w przypadku wszystkich warstw naliczana jest opłata za transakcję, która wzrasta w miarę, jak warstwa staje się chłodniejsza.
-
 * **Koszty transferu danych replikacji geograficznej**: ta opłata dotyczy tylko kont ze skonfigurowaną replikacją geograficzną, w tym GRS i RA-GRS. Transfer danych w ramach replikacji geograficznej powoduje naliczanie opłaty za każdy gigabajt.
-
 * **Koszty transferu danych wychodzących**: transfery danych wychodzących (dane przesyłane poza region platformy Azure) powodują naliczanie opłat za zużycie przepustowości za każdy gigabajt, co jest spójne z kontami magazynu ogólnego przeznaczenia.
-
 * **Zmiana warstwy magazynowania**: zmiana warstwy magazynowania z Chłodna na Gorąca spowoduje naliczenie opłaty równej opłacie za odczytanie wszystkich danych istniejących w ramach konta magazynu. Natomiast zmiana warstwy magazynowania konta z Gorąca na Chłodna spowoduje naliczenie opłaty równej opłacie za zapisanie wszystkich danych w warstwie Chłodna (tylko konta GPv2).
 
 > [!NOTE]
@@ -205,7 +200,6 @@ W obu przypadkach priorytetem jest oszacowanie kosztu magazynowania i uzyskiwani
 Aby oszacować koszty magazynowania i uzyskiwania dostępu do danych przechowywanych na koncie GPv2, konieczne będzie dokonanie oceny istniejącego wzorca użycia lub określenie w przybliżeniu oczekiwanego wzorca użycia. Ogólnie potrzebne są odpowiedzi na następujące pytania:
 
 * Wykorzystanie magazynu — jaka ilość danych jest magazynowana i jak ta ilość zmienia się w ciągu miesiąca?
-
 * Wzorzec dostępu do magazynu — jak dużo danych jest odczytywanych z konta i zapisywanych na nim (w tym nowych danych)? Ile transakcji jest przeprowadzanych w celu uzyskania dostępu do danych i jakiego rodzaju są to transakcje?
 
 ## <a name="monitoring-existing-storage-accounts"></a>Monitorowanie istniejących kont magazynu
@@ -259,7 +253,6 @@ Usługa Storage Analytics nie udostępnia informacji na temat ilości odczytywan
 Aby oszacować koszty dostępu do danych dla kont usługi Blob Storage, konieczne będzie podzielenie transakcji na dwie grupy.
 
 * Ilość danych pobieranych z konta magazynu można oszacować, przyglądając się sumie *„TotalEgress”* przede wszystkim dla operacji *„GetBlob”* i *„CopyBlob”*.
-
 * Ilość danych zapisywanych na koncie magazynu można oszacować, przyglądając się sumie *„TotalIngress”* przede wszystkim dla operacji *„PutBlob”*, *„PutBlock”*, *„CopyBlob”* i *„AppendBlock”*.
 
 Koszt transferu danych replikacji geograficznej dla kont usługi Blob Storage można obliczyć, korzystając z kalkulacji ilości danych zapisanych w przypadku używania konta magazynu GRS lub RA-GRS.

@@ -1,6 +1,6 @@
 ---
-title: Zarządzaj subskrypcjami punktu końcowego platformy Azure | Dokumentacja firmy Microsoft
-description: W tym artykule należy utworzyć klucz naliczane punktu końcowego dla Twojego konta LUIS zapewnić nieograniczony ruch do punktu końcowego po plan płatności.
+title: Zarządzaj subskrypcjami punkt końcowy platformy Azure | Dokumentacja firmy Microsoft
+description: W tym artykule tworzenia klucza punktu końcowego naliczane dla swojego konta usługi LUIS zapewnić nieograniczony ruch do punktu końcowego zgodnie z planem płatności.
 services: cognitive-services
 author: v-geberr
 manager: Kaiqb
@@ -9,59 +9,59 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: v-geberr
-ms.openlocfilehash: 3526871f126ac975f323fe84b14883b361b684ae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dbcbdb0f806241c015e6fbc160465390bead7c37
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349796"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340777"
 ---
-# <a name="manage-azure-endpoint-subscription-keys"></a>Zarządzanie kluczami subskrypcji punktu końcowego platformy Azure
+# <a name="manage-azure-endpoint-subscription-keys"></a>Zarządzanie kluczami subskrypcji punkt końcowy platformy Azure
 
-Testowanie i prototypu tylko Użyj bezpłatnej warstwy (F0). W przypadku systemów produkcyjnych, użyj [płatnej](https://aka.ms/luis-price-tier) warstwy. 
+Testowanie i prototypu tylko przy użyciu warstwy bezpłatna (F0). W przypadku systemów produkcyjnych, użyj [płatnych](https://aka.ms/luis-price-tier) warstwy. 
 
 > [!NOTE]
 > Nie używaj [tworzenia klucza](luis-concept-keys.md#authoring-key) dla punktu końcowego kwerend w środowisku produkcyjnym.
 
 <a name="create-luis-service"></a>
-## <a name="create-luis-endpoint-key"></a>Utwórz klucz punktu końcowego LUIS
+## <a name="create-luis-endpoint-key"></a>Tworzenie klucza punktu końcowego usługi LUIS
 
 1. Zaloguj się do  **[platformy Microsoft Azure](https://ms.portal.azure.com/)** 
-2. Kliknij zielony **+** Zaloguj się w górnym lewym panelu i wyszukaj "LUIS" w witrynie marketplace, a następnie kliknij przycisk **opis języka** i postępuj zgodnie z **utworzyć środowisko**  Aby utworzyć konto subskrypcji LUIS. 
+2. Kliknij zielony **+** Zaloguj się w prawym górnym panelu po lewej stronie i poszukaj pozycji "LUIS" w witrynie marketplace, a następnie kliknij pozycję **Language Understanding** i postępuj zgodnie z **tworzenia środowiska**  utworzyć konto subskrypcji usługi LUIS. 
 
     ![Azure Search](./media/luis-azure-subscription/azure-search.png) 
 
-3. Konfigurowanie subskrypcji z ustawieniami, łącznie z nazwą konta ceny warstw itp. 
+3. Konfigurowanie subskrypcji przy użyciu ustawień, łącznie z nazwą konta ceny warstw itp. 
 
-    ![Wybór interfejsu API platformy Azure](./media/luis-azure-subscription/azure-api-choice.png) 
+    ![Usługa Azure wybranego interfejsu API](./media/luis-azure-subscription/azure-api-choice.png) 
 
-4. Po utworzeniu usługi LUIS można wyświetlić klawisze dostępu wygenerowanych w **kluczy -> Zarządzanie zasobami**.  
+4. Po utworzeniu usługi LUIS, można wyświetlić klucze dostępu wygenerowanych w **zarządzania zasobami -> klucze**.  
 
-    ![Kluczy Azure](./media/luis-azure-subscription/azure-keys.png)
+    ![Klucze Azure](./media/luis-azure-subscription/azure-keys.png)
 
     > [!Note] 
-    > * Zaloguj się do regionu [LUIS](luis-reference-regions.md) witryny sieci Web i [Dodaj nowy klucz punktu końcowego LUIS](Manage-Keys.md#assign-endpoint-key). 
-    > * Trzeba pamiętać nazwy usługi Azure został utworzony, aby go zaznaczyć na region [LUIS](luis-reference-regions.md) strony publikacji.  
+    > * Zaloguj się do Twojego regionu [LUIS](luis-reference-regions.md) witryny sieci Web i [Dodaj nowy klucz punktu końcowego usługi LUIS](luis-how-to-manage-keys.md#assign-endpoint-key). 
+    > * Trzeba pamiętać nazwy usługi platformy Azure został utworzony, aby go zaznaczyć w regionie [LUIS](luis-reference-regions.md) strona publikowania.  
 
-## <a name="change-luis-pricing-tier"></a>Warstwa cenowa LUIS zmiany
+## <a name="change-luis-pricing-tier"></a>Zmiana usługi LUIS — warstwa cenowa
 
-1.  W [Azure](https://portal.azure.com), Znajdź LUIS subskrypcji. Kliknij subskrypcję LUIS.
-    ![Znajdź LUIS subskrypcji](./media/luis-usage-tiers/find.png)
-2.  Kliknij przycisk **warstwa cenowa** aby zobaczyć dostępne warstwy cenowe. 
-    ![Widok warstw cenowych](./media/luis-usage-tiers/subscription.png)
+1.  W [Azure](https://portal.azure.com), Znajdź swoją subskrypcję usługi LUIS. Kliknij subskrypcję usługi LUIS.
+    ![Znajdź swoją subskrypcję usługi LUIS](./media/luis-usage-tiers/find.png)
+2.  Kliknij przycisk **warstwa cenowa** aby można było wyświetlić dostępnych warstw cenowych. 
+    ![Wyświetl warstwy cenowe](./media/luis-usage-tiers/subscription.png)
 3.  Kliknij wybraną warstwę cenową, a następnie kliknij przycisk **wybierz** można zapisać zmiany. 
-    ![Zmień warstwę LUIS płatności](./media/luis-usage-tiers/plans.png)
-4.  Po ukończeniu zmieniania cenowej okno podręczne sprawdza nową warstwę cenową. 
-    ![Sprawdź warstwę LUIS płatności](./media/luis-usage-tiers/updated.png)
-5. Pamiętaj, aby [przypisać ten punkt końcowy klucz](manage-keys.md#assign-endpoint-key) na **publikowania** strony i używać jej w wszystkie zapytania punktu końcowego. 
+    ![Zmień warstwę płatności usługi LUIS](./media/luis-usage-tiers/plans.png)
+4.  Po zakończeniu zmianą cen okno podręczne sprawdza nowej warstwy cenowej. 
+    ![Sprawdź warstwę płatności usługi LUIS](./media/luis-usage-tiers/updated.png)
+5. Pamiętaj, aby [przypisania tego klucza punktu końcowego](luis-how-to-manage-keys.md#assign-endpoint-key) na **Publikuj** strony i używać jej w wszystkie zapytania punktu końcowego. 
 
-## <a name="exceed-pricing-tier-usage"></a>Przekracza użycia warstwy cenowej
-Każda warstwa umożliwia żądania punktu końcowego na koncie LUIS z określoną szybkością. Jeśli to liczba żądań jest wyższa niż dozwolone szybkość naliczane konta na minutę lub miesięcznie, żądania odbierania błędu HTTP "429: zbyt wiele żądań."
+## <a name="exceed-pricing-tier-usage"></a>Przekracza użycie warstwy cenowej
+Każda warstwa umożliwia żądania punktu końcowego do swojego konta usługi LUIS z określoną szybkością. Jeśli liczba żądań jest większy niż dozwolone stopień konta naliczane za minutę lub miesięcznie, żądania otrzymują błąd HTTP "429: zbyt wiele żądań."
 
-Każda warstwa umożliwia kumulacyjne żądań miesięcznie. Jeśli całkowita liczba żądań są wyższe niż dozwolone szybkość, żądania odbierania błędu HTTP "403: zabronione".  
+Każda warstwa umożliwia kumulacyjne żądań miesięcznie. Jeśli łączna liczba żądań są wyższe niż dozwolone szybkość, żądania otrzymują błąd HTTP "403: dostęp zabroniony".  
 
 ## <a name="viewing-summary-usage"></a>Wyświetlanie podsumowania użycia
-Można wyświetlić informacje o użyciu LUIS na platformie Azure. **Omówienie** strony pokazuje ostatnie podsumowanie informacji o tym wywołania i błędów. Jeśli wprowadzisz LUIS żądania punktu końcowego, następnie natychmiast oglądać **strony Przegląd**, Zezwalaj użycia wyświetlani do pięciu minut.
+Możesz wyświetlić informacje dotyczące użycia usługi LUIS na platformie Azure. **Przegląd** strona zawiera najnowsze informacje podsumowania, w tym połączeń i błędów. Jeśli usługa LUIS żądania punktu końcowego, następnie natychmiast obejrzeć **strony Przegląd**, Zezwalaj na użycie pojawienie się do pięciu minut.
 
 ![Wyświetlanie podsumowania użycia](./media/luis-usage-tiers/overview.png)
 
@@ -70,17 +70,17 @@ Metryki zapewnia bardziej szczegółowy wgląd w dane.
 
 ![Domyślne metryki](./media/luis-usage-tiers/metrics-default.png)
 
-Można skonfigurować wykresach metryki dla okresu i metryki typu. 
+Wykresy metryk można skonfigurować w przedziale czasu i typ metryki. 
 
 ![Metryki niestandardowe](./media/luis-usage-tiers/metrics-custom.png)
 
-## <a name="total-transactions-threshold-alert"></a>Całkowita liczba transakcji próg alertu
-Jeśli chcesz wiedzieć, kiedy osiągnięto określonego progu transakcji, na przykład 10 000 transakcji, można utworzyć alertu. 
+## <a name="total-transactions-threshold-alert"></a>Łączna liczba transakcji próg alertu
+Jeśli chcesz dowiedzieć się, gdy został osiągnięty limit określonego progu transakcji, na przykład 10 000 transakcji, można utworzyć alertu. 
 
-![Domyślne alertów](./media/luis-usage-tiers/alert-default.png)
+![Domyślne alerty](./media/luis-usage-tiers/alert-default.png)
 
-Dodawanie metryki alertu dla **całkowita liczba połączeń** metryki w danym okresie czasu. Dodaj adresy e-mail wszystkich osób, które powinien zostać wyświetlony alert. Dodawanie elementów webhook we wszystkich systemach, które powinien zostać wyświetlony alert. Można również uruchomić aplikację logiki, po wyzwoleniu alertu. 
+Dodaj alert dotyczący metryki dla **łączna liczba wywołań** metryk przez pewien czas. Dodaj adresy e-mail wszystkich osób, które powinien zostać wyświetlony alert. Dodaj elementy webhook dla wszystkich systemów, które powinny otrzymać alert. Można również uruchomić aplikację logiki, gdy zostanie wyzwolony alert. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak używać [wersji](luis-how-to-manage-versions.md) Aby zarządzać zmianami LUIS aplikacji.
+Dowiedz się, jak używać [wersji](luis-how-to-manage-versions.md) Zarządzanie zmianami w aplikacją usługi LUIS.

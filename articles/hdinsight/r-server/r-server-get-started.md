@@ -1,6 +1,6 @@
 ---
-title: Wprowadzenie do oprogramowania R Server w usłudze HDInsight — platforma Azure | Microsoft Docs
-description: Dowiedz się, jak utworzyć aparat Apache Spark w klastrze usługi HDInsight zawierającym oprogramowanie R Server, a następnie jak przesłać skrypt języka R do klastra.
+title: Wprowadzenie do usług ML w usłudze HDInsight — platforma Azure | Microsoft Docs
+description: Dowiedz się, jak utworzyć aparat Apache Spark w klastrze usługi HDInsight zawierającym usługi ML, a następnie przesłać skrypt języka R do klastra.
 services: hdinsight
 documentationcenter: ''
 author: nitinme
@@ -13,19 +13,18 @@ ms.devlang: R
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/23/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: d6910ab257312626ca25126721410edeed6cdeae
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: efc7ada12f722b0447712594de496e933bde3d36
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31411485"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053436"
 ---
-# <a name="get-started-with-r-server-cluster-on-azure-hdinsight"></a>Wprowadzenie do klastra oprogramowania R Server w usłudze Azure HDInsight
+# <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Wprowadzenie do usług ML w usłudze Azure HDInsight
 
-Usługa Azure HDInsight obejmuje opcję oprogramowania R Server, którą można zintegrować z klastrem usługi HDInsight. Opcja ta pozwala skryptom języka R używać aparatu Spark i funkcji MapReduce do wykonywania obliczeń rozproszonych. W tym artykule omówiono sposób tworzenia wystąpienia oprogramowania R Server w klastrze usługi HDInsight. Następnie omówiono uruchamianie skryptu R, który demonstruje sposób użycia aparatu Spark na potrzeby wykonywania rozproszonych obliczeń przez kod R.
-
+Usługa Azure HDInsight umożliwia tworzenie klastrów usług ML. Opcja ta pozwala skryptom języka R używać aparatu Spark i funkcji MapReduce do wykonywania obliczeń rozproszonych. W tym artykule przedstawiono procedurę tworzenia klastra usług ML w usłudze HDInsight, a następnie uruchamiania skryptu R, który demonstruje sposób użycia aparatu Spark na potrzeby wykonywania rozproszonych obliczeń przez kod R.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -53,13 +52,13 @@ Usługa Azure HDInsight obejmuje opcję oprogramowania R Server, którą można 
 
 4. Wybierz pozycję **Typ klastra**, a następnie ustaw następujące wartości w sekcji **Konfiguracja klastra**:
 
-    * **Typ klastra**: R Server
+    * **Typ klastra**: usługi ML
 
     * **System operacyjny**: Linux
 
-    * **Wersja**: R Server 9.1 (HDI 3.6). Informacje o wersji dotyczące dostępnych wersji oprogramowania R Server można znaleźć w witrynie [docs.microsoft.com](https://docs.microsoft.com/machine-learning-server/whats-new-in-r-server#r-server-91).
+    * **Wersja**: ML Server 9.3 (HDI 3.6). Informacje o programie ML Server w wersji 9.3 są dostępne w witrynie [docs.microsoft.com](https://docs.microsoft.com/machine-learning-server/whats-new-in-machine-learning-server).
 
-    * **Program R Studio Community Edition for R Server**: to środowisko IDE oparte na przeglądarce, które jest instalowane domyślnie w węźle brzegowym. Wyczyść pole wyboru, jeśli nie chcesz go instalować. Jeśli wybierzesz opcję instalacji, adres URL umożliwiający logowanie do programu RStudio Server będzie dostępny w bloku aplikacji portalu dla utworzonego klastra.
+    * **Program R Studio Community Edition for ML Server**: to środowisko IDE oparte na przeglądarce jest instalowane domyślnie na węźle brzegowym. Wyczyść pole wyboru, jeśli nie chcesz go instalować. Jeśli wybierzesz opcję instalacji, adres URL umożliwiający logowanie do programu RStudio Server będzie dostępny w bloku aplikacji portalu dla utworzonego klastra.
 
         ![Podstawowe szczegóły klastra](./media/r-server-get-started/clustertypeconfig.png)
 
@@ -81,11 +80,11 @@ Usługa Azure HDInsight obejmuje opcję oprogramowania R Server, którą można 
 
 Jeśli wybierzesz opcję instalacji programu RStudio Server Community Edition w ramach klastra usługi HDInsight, możesz uzyskać dostęp do logowania do programu RStudio przy użyciu jednej z dwóch następujących metod:
 
-* **Opcja 1** — przejdź do następującego adresu URL (gdzie **NAZWA_KLASTRA** to nazwa utworzonego klastra programu R Server):
+* **Opcja 1** — przejdź do następującego adresu URL (gdzie **CLUSTERNAME** to nazwa utworzonego klastra usług ML):
 
         https://CLUSTERNAME.azurehdinsight.net/rstudio/
 
-* **Opcja 2** — otwórz klaster programu R Server w witrynie Azure Portal w obszarze **Szybkie linki** i kliknij pozycję **Pulpity nawigacyjne programu R Server**.
+* **Opcja 2** — otwórz klaster usług ML w witrynie Azure Portal w obszarze **Szybkie linki** i kliknij pozycję **Pulpity nawigacyjne usług ML**.
 
      ![Konfigurowanie ustawień konta magazynu dla usługi HDInsight](./media/r-server-get-started/dashboard-quick-links.png)
 
@@ -175,9 +174,9 @@ Zadanie można przesłać za pomocą funkcji programu ScaleR. Oto przykładowe p
 <a name="connect-to-edge-node"></a>
 ## <a name="connect-to-the-cluster-edge-node"></a>Łączenie z węzłem brzegowym klastra
 
-Z tej sekcji możesz dowiedzieć się, jak połączyć się z węzłem brzegowym klastra oprogramowania R Server w usłudze HDInsight przy użyciu protokołu SSH. Aby zapoznać się z zastosowaniem protokołu SSH, zobacz [Korzystanie z protokołu SSH z usługą HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Z tej sekcji możesz dowiedzieć się, jak połączyć się z węzłem brzegowym klastra usług ML w usłudze HDInsight przy użyciu protokołu SSH. Aby zapoznać się z zastosowaniem protokołu SSH, zobacz [Korzystanie z protokołu SSH z usługą HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-Polecenie SSH służące do łączenia z węzłem brzegowym klastra R Server to:
+Polecenie SSH służące do łączenia z węzłem brzegowym klastra usług ML to:
 
    `ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net`
 
@@ -194,15 +193,15 @@ Po nawiązaniu połączenia pojawi się monit podobny do następującego:
     sshuser@ed00-myrclu:~$
 
 <a name="use-r-console"></a>
-## <a name="use-the-r-server-console"></a>Korzystanie z konsoli oprogramowania R Server
+## <a name="use-the-r-console"></a>Użycie konsoli R
 
 1. W sesji SSH wpisz następujące polecenie, aby uruchomić konsolę R:  
 
         R
 
-2. Oprócz innych informacji powinny pojawić się dane wyjściowe z wersją oprogramowania R Server.
+2. Oprócz innych informacji powinny pojawić się dane wyjściowe z wersją oprogramowania ML Server.
     
-3. W monicie `>` możesz podać kod R. Oprogramowanie R Server w usłudze HDInsight zawiera pakiety, które umożliwiają łatwą współpracę z usługą Hadoop i uruchamianie rozproszonych obliczeń. Na przykład następujące polecenie umożliwia wyświetlenie katalogu głównego domyślnego systemu plików klastra usługi HDInsight:
+3. W monicie `>` możesz podać kod R. Usługi ML w usłudze HDInsight zawierają pakiety, które umożliwiają łatwą współpracę z usługą Hadoop i uruchamianie rozproszonych obliczeń. Na przykład następujące polecenie umożliwia wyświetlenie katalogu głównego domyślnego systemu plików klastra usługi HDInsight:
 
         rxHadoopListFiles("/")
 
@@ -216,11 +215,11 @@ Po nawiązaniu połączenia pojawi się monit podobny do następującego:
 
 ## <a name="automated-cluster-creation"></a>Zautomatyzowane tworzenie klastra
 
-Aby zautomatyzować tworzenie klastra oprogramowania R Server dla usługi HDInsight, możesz użyć szablonów usługi Azure Resource Manager, zestawu SDK oraz programu PowerShell.
+Aby zautomatyzować tworzenie klastra usług ML w usłudze HDInsight, możesz użyć zestawu SDK oraz programu PowerShell.
 
-* Aby utworzyć klaster oprogramowania R Server za pomocą szablonu usługi Azure Resource Management, zobacz [Deploy an R server HDInsight cluster (Wdrażanie klastra usługi HDInsight oprogramowania R Server)](https://azure.microsoft.com/resources/templates/101-hdinsight-rserver/).
-* Aby utworzyć klaster oprogramowania R Server za pomocą zestawu .NET SDK, zobacz [Create Linux-based clusters in HDInsight using the .NET SDK (Tworzenie klastrów opartych na systemie Linux w usłudze HDInsight przy użyciu zestawu .NET SDK)](../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md).
-* Aby utworzyć klaster oprogramowania R Server przy użyciu programu PowerShell, zobacz artykuł [Create HDInsight clusters using Azure PowerShell (Tworzenie klastrów usługi HDInsight przy użyciu programu Azure PowerShell)](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md).
+<!---* To create an ML Server cluster using an Azure Resource Management template, see [Deploy an R Server for HDInsight cluster](https://azure.microsoft.com/resources/templates/101-hdinsight-rserver/).--->
+* Aby utworzyć klaster usług ML za pomocą zestawu .NET SDK, zobacz [Create Linux-based clusters in HDInsight using the .NET SDK (Tworzenie klastrów opartych na systemie Linux w usłudze HDInsight przy użyciu zestawu .NET SDK)](../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md).
+* Aby utworzyć klaster usług ML przy użyciu programu PowerShell, zobacz artykuł [Create HDInsight clusters using Azure PowerShell (Tworzenie klastrów usługi HDInsight przy użyciu programu Azure PowerShell)](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md).
 
 ## <a name="delete-the-cluster"></a>Usuwanie klastra
 
@@ -232,10 +231,10 @@ W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule przedstawiono sposób tworzenia nowego klastra oprogramowania R Server w usłudze Azure HDInsight i podstawy korzystania z konsoli języka R w sesji protokołu SSH. W poniższych artykułach opisano inne sposoby korzystania z oprogramowania R Server w usłudze HDInsight oraz zarządzania nim:
+W tym artykule przedstawiono sposób tworzenia nowego klastra usług ML w usłudze Azure HDInsight oraz podstawy korzystania z konsoli języka R w sesji protokołu SSH. W poniższych artykułach opisano inne sposoby korzystania z usług ML w usłudze HDInsight oraz zarządzania nimi:
 
 * [Submit jobs from R Tools for Visual Studio (Przesyłanie zadań z narzędzi R Tools for Visual Studio)](r-server-submit-jobs-r-tools-vs.md)
-* [Manage R Server cluster on HDInsight (Zarządzanie klastrem oprogramowania R Server w usłudze HDInsight)](r-server-hdinsight-manage.md)
-* [Operationalize R Server cluster on HDInsight (Operacjonalizowanie klastra oprogramowania R Server w usłudze HDInsight)](r-server-operationalize.md)
-* [Compute context options for R Server on HDInsight (Opcje kontekstu obliczeniowego dla oprogramowania R Server w usłudze HDInsight)](r-server-compute-contexts.md)
-* [Azure Storage options for R Server on HDInsight (Opcje usługi Azure Storage dla oprogramowania R Server w usłudze HDInsight)](r-server-storage.md)
+* [Manage ML Services cluster on HDInsight (Zarządzanie klastrem usług ML w usłudze HDInsight)](r-server-hdinsight-manage.md)
+* [Operationalize ML Services cluster on HDInsight (Obsługa operacji klastra usług ML w usłudze HDInsight)](r-server-operationalize.md)
+* [Compute context options for ML Services cluster on HDInsight (Opcje kontekstu obliczeniowego dla klastra usług ML w usłudze HDInsight)](r-server-compute-contexts.md)
+* [Azure Storage options for ML Services cluster on HDInsight (Opcje usługi Azure Storage dla klastra usług ML w usłudze HDInsight)](r-server-storage.md)

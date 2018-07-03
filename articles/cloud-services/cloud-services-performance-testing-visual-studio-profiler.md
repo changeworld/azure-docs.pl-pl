@@ -1,7 +1,7 @@
 ---
-title: Usługi w chmurze lokalnie w emulatorze obliczeń profilowania | Dokumentacja firmy Microsoft
+title: Profilowanie usługi w chmurze lokalnie w emulatorze obliczeń | Dokumentacja firmy Microsoft
 services: cloud-services
-description: Zbadaj problemy z wydajnością usług w chmurze przy użyciu profilera Visual Studio
+description: Badanie problemów z wydajnością w usługach w chmurze za pomocą profilera Visual Studio
 documentationcenter: ''
 author: mikejo
 manager: douge
@@ -15,35 +15,35 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
-ms.openlocfilehash: 8ff7b88a3086488ab669288687c274237ca30b47
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: ea46039583681bd89e254d153997e3a300041d4e
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30284561"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341358"
 ---
-# <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Testowanie wydajności usługi w chmurze lokalnie w emulatorze obliczeń platformy Azure przy użyciu profilera Visual Studio
-Różnych narzędzi i technik są dostępne do testowania wydajności usługi w chmurze.
-Po opublikowaniu usługi w chmurze na platformie Azure, program Visual Studio zbierania danych profilowania, a następnie analizować lokalnie, zgodnie z opisem w [profilowania aplikacji Azure][1].
-Umożliwia także diagnostyki do śledzenia różne liczniki wydajności, zgodnie z opisem w [na platformie Azure za pomocą liczników wydajności][2].
-Można także profilu aplikacji lokalnie w emulatorze obliczeń przed jego wdrożeniem w chmurze.
+# <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Testowanie wydajności usługi w chmurze lokalnie w emulatorze obliczeń platformy Azure przy użyciu programu Visual Studio Profiler
+Różne narzędzia i techniki są dostępne do testowania wydajności usługi w chmurze.
+Podczas publikowania usługi w chmurze na platformie Azure, masz programu Visual Studio, zbierania danych profilowania, a następnie analizować lokalnie, zgodnie z opisem w [profilowanie aplikacji na platformie Azure][1].
+Można również użyć diagnostyki do śledzenia różnych liczników wydajności, zgodnie z opisem w [przy użyciu liczników wydajności na platformie Azure][2].
+Możesz również chcieć Profiluj aplikację lokalnie w emulatorze obliczeń przed jego wdrożeniem w chmurze.
 
-W tym artykule opisano profilowanie metodą próbkowania procesora, które można przeprowadzić lokalnie w emulatorze. Próbkowanie Procesora jest metoda profilowania, która nie jest bardzo niepożądanych. Interwałem próbkowania wyznaczonych profilera wykonuje migawkę stosu wywołań. Dane są zbierane przez pewien czas i wyświetlane w raporcie. Ta metoda profilowania zwykle wskazuje, gdzie w praktyce znacznym aplikacji większość pracy Procesora jest wykonywana.  Zapewnia możliwość skupić się na "ścieżce aktywnej" gdzie aplikacji jest poświęcany najwięcej czasu.
+W tym artykule opisano profilowanie metodą próbkowania procesora, które można przeprowadzić lokalnie w emulatorze. Próbkowanie Procesora jest metodą profilowania, która nie jest bardzo bez wprowadzania niepożądanych. Interwałem próbkowania wyznaczonym program profilujący tworzy migawkę stosu wywołań. Dane są zbierane w przedziale czasu i wyświetlane w raporcie. Ta metoda profilowania zwykle wskazuje, gdzie w aplikacji wymaga dużej mocy obliczeniowej większość pracy procesora CPU jest wykonywana.  To umożliwia skoncentrowanie się na "ścieżki aktywnej" gdzie aplikacja jest wydatków najwięcej czasu.
 
 ## <a name="1-configure-visual-studio-for-profiling"></a>1: Konfigurowanie programu Visual Studio do profilowania
-Najpierw istnieje kilka opcji konfiguracji programu Visual Studio, które mogą być przydatne podczas profilowania. Aby sensu raportów profilowania, musisz symboli (.pdb, pliki) dla aplikacji i również symboli dla biblioteki systemu. Należy się upewnić, że odwoływania serwerów dostępna symbolu. Aby to zrobić, na **narzędzia** menu w programie Visual Studio, wybierz **opcje**, a następnie wybierz **debugowanie**, następnie **symbole**. Upewnij się, że serwerów symboli firmy Microsoft znajduje się w obszarze **symboli (.pdb) lokalizacje**.  Można także odwoływać http://referencesource.microsoft.com/symbols, które mogą mieć dodatkowe symboli plików.
+Po pierwsze istnieje kilka opcji konfiguracji programu Visual Studio, które mogą być pomocne w przypadku profilowania. Aby poznać raporty profilowania, konieczne będzie symboli (pliki .pdb) dla swojej aplikacji, a także symbole dla bibliotek systemowych. Należy się upewnić, że odwoływać się z serwerów symboli dostępne. Aby to zrobić, na **narzędzia** menu w programie Visual Studio, wybierz opcję **opcje**, następnie wybierz **debugowanie**, następnie **symbole**. Upewnij się, że serwery symboli firmy Microsoft znajduje się w obszarze **symboli (.pdb) lokalizacji**.  Możesz też przywołać http://referencesource.microsoft.com/symbols, które mogą mieć dodatkowe symboli plików.
 
-![Opcje symbolu][4]
+![Opcje symboli][4]
 
-W razie potrzeby można uprościć raportów, które generuje profilera, ustawiając opcję tylko mój kod. Z tylko mój kod włączone stosy wywołań funkcji są uproszczone, dzięki czemu wywołania całkowicie wewnętrznej biblioteki i .NET Framework są ukryte przed raporty. Na **narzędzia** menu, wybierz **opcje**. Następnie rozwiń węzeł **narzędzi wydajności** węzeł i wybierz polecenie **ogólne**. Zaznacz pole wyboru **Włącz opcję tylko mój kod dla raportów profilera**.
+Jeśli to konieczne, można uprościć raporty, które generuje program profilujący, ustawiając opcję tylko mój kod. Dzięki włączeniu tylko mój kod stosy wywołań funkcji są uproszczone, dzięki czemu wywołania całkowicie wewnętrzne biblioteki i .NET Framework są ukryte przed raportów. Na **narzędzia** menu, wybierz **opcje**. Następnie rozwiń **narzędzia do oceny wydajności** węzeł i wybierz polecenie **ogólne**. Zaznacz pole wyboru **Włącz tylko mój kod dla raportów profilera**.
 
 ![Tylko mój kod opcje][17]
 
-Instrukcje te mogą posłużyć z istniejącego projektu lub z nowym projektem.  Jeśli tworzysz nowy projekt, aby spróbować techniki opisane poniżej, wybierz C# **usługi w chmurze Azure** projekt i wybierz **roli sieci Web** i **roli procesu roboczego**.
+Z istniejącego projektu lub z nowym projektem, można użyć tych instrukcji.  Jeśli tworzysz nowy projekt do wypróbowania techniki opisane poniżej, wybierz opcję języka C# **usługa w chmurze** projektu, a następnie wybierz **roli sieci Web** i **roli procesu roboczego**.
 
-![Azure ról projektu usługi w chmurze][5]
+![Role usługi w chmurze platformy Azure w projekcie][5]
 
-Na przykład celów, dodać kod do projektu, który zajmuje dużo czasu i przedstawiono niektóre problem z wydajnością oczywiste. Na przykład dodaj następujący kod do projektu roli proces roboczy:
+Na przykład celów, dodać kod do projektu, który zajmuje dużo czasu i pokazuje niektóre problem z wydajnością oczywiste. Na przykład dodaj następujący kod do projektu roli proces roboczy:
 
 ```csharp
 public class Concatenator
@@ -61,7 +61,7 @@ public class Concatenator
 }
 ```
 
-Wywołaj ten kod w metodzie RunAsync w klasie pochodnej RoleEntryPoint roli procesu roboczego. (Zignorować ostrzeżenie dotyczące metody uruchomiona synchronicznie).
+Wywołaj ten kod w metodzie RunAsync w klasie pochodnej RoleEntryPoint roli procesu roboczego. (Ignoruj ostrzeżenia o metodzie uruchomiona synchronicznie).
 
 ```csharp
 private async Task RunAsync(CancellationToken cancellationToken)
@@ -75,23 +75,23 @@ private async Task RunAsync(CancellationToken cancellationToken)
 }
 ```
 
-Tworzenie i uruchamianie usługi w chmurze lokalnie bez debugowania (Ctrl + F5) z konfiguracją rozwiązania ustawioną **wersji**. Dzięki temu, że wszystkie pliki i foldery są tworzone dla aplikacji uruchomionej na komputerze lokalnym i zapewnia, że są uruchomione te emulatory. Uruchom interfejs użytkownika emulatora obliczeń z poziomu paska zadań, aby sprawdzić, czy działa swojej roli procesu roboczego.
+Skompilować i uruchomić usługi w chmurze lokalnie bez debugowania (klawisze Ctrl + F5), za pomocą konfiguracji rozwiązania, ustaw **wersji**. Zapewnia to, że wszystkie pliki i foldery są tworzone dla aplikacji uruchomionej na komputerze lokalnym i gwarantuje, że są uruchomione wszystkie emulatorów. Uruchom interfejs użytkownika emulatora obliczeń z paska zadań, aby sprawdzić, czy działa swojej roli procesu roboczego.
 
-## <a name="2-attach-to-a-process"></a>2: dołączanie do procesu
-Profilowanie aplikacji przez uruchomienie go z programu Visual Studio 2010 IDE, a nie musi dołączanie profilera do uruchomionego procesu. 
+## <a name="2-attach-to-a-process"></a>2: Dołącz do procesu
+Zamiast sprofilować aplikację, uruchamiając go za pomocą programu Visual Studio 2010 IDE, należy dołączyć profiler do uruchomionego procesu. 
 
-Aby dołączanie profilera do procesu, na **Analizuj** menu, wybierz **profilera** i **Attach/Detach**.
+Aby dołączyć profiler do procesu, na **analizy** menu, wybierz **Profiler** i **Attach/Detach**.
 
 ![Dołącz profile — opcja][6]
 
-Dla roli proces roboczy Znajdź proces WaWorkerHost.exe.
+Dla roli procesu roboczego Znajdź proces WaWorkerHost.exe.
 
 ![Proces WaWorkerHost][7]
 
-W przypadku folderu projektu na dysku sieciowym, profilera zostanie wyświetlony monit o podanie inną lokalizację, aby zapisać raportów profilowania.
+W przypadku folderu projektu na dysku sieciowym, program profilujący zapyta zapewnienie innej lokalizacji, aby zapisywać raporty profilowania.
 
- Możesz także dołączyć do roli sieci web przez dołączenie do WaIISHost.exe.
-Jeśli istnieje wiele procesów roli procesu roboczego w aplikacji, należy użyć processID, aby odróżnić je. ProcessID można badać programowo, uzyskując dostęp do obiektu procesu. Na przykład jeśli dodasz ten kod do metody Run klas pochodnych po RoleEntryPoint w roli można przyjrzeć się zaloguj interfejs użytkownika emulatora obliczeń wiedzieć, jakie procesy, aby nawiązać połączenie.
+ Można także dołączyć do roli sieci web, dołączając do WaIISHost.exe.
+W przypadku wielu procesów roli proces roboczy w aplikacji, należy użyć processID, aby odróżnić je. Można programowo zapytania processID, uzyskując dostęp do obiektu procesu. Na przykład jeśli dodasz ten kod do metody wykonywania klasy pochodnej RoleEntryPoint w roli zapoznanie się z logowania interfejs użytkownika emulatora obliczeń wiedzieć, jakie procesy, aby nawiązać połączenie.
 
 ```csharp
 var process = System.Diagnostics.Process.GetCurrentProcess();
@@ -99,39 +99,39 @@ var message = String.Format("Process ID: {0}", process.Id);
 Trace.WriteLine(message, "Information");
 ```
 
-Aby wyświetlić dziennik, uruchom interfejs użytkownika emulatora obliczeń.
+Aby wyświetlić dziennik, należy uruchomić interfejs użytkownika emulatora obliczeń.
 
-![Uruchom Emulator obliczeń interfejsu użytkownika][8]
+![Uruchom interfejs użytkownika emulatora obliczeń][8]
 
-Otwórz okno konsoli dziennik roli procesu roboczego w interfejs użytkownika emulatora obliczeń, klikając na pasku tytułu okna konsoli. Identyfikator procesu w dzienniku jest widoczny.
+Otwórz okno konsoli dziennika roli procesu roboczego w interfejs użytkownika emulatora obliczeń, klikając przycisk na pasku tytułu okna konsoli. Możesz zobaczyć identyfikator procesu w dzienniku.
 
-![Identyfikator procesu widoku][9]
+![Wyświetl identyfikator procesu][9]
 
-Jedna podłączona, wykonaj kroki w interfejsie użytkownika aplikacji (w razie potrzeby) do odtworzenia tego scenariusza.
+Jedna jest podłączona, wykonaj kroki w interfejsie użytkownika aplikacji (jeśli jest to konieczne) do odtworzenia tego scenariusza.
 
-Aby zatrzymać profilowanie, wybrać **Zatrzymaj profilowanie** łącza.
+Jeśli chcesz zatrzymać profilowanie, wybierz **Zatrzymaj profilowanie** łącza.
 
 ![Zatrzymaj profilowanie opcji][10]
 
-## <a name="3-view-performance-reports"></a>3: Wyświetl raporty wydajności
-Zostanie wyświetlony raport wydajności aplikacji.
+## <a name="3-view-performance-reports"></a>3: wyświetlić raporty dotyczące wydajności
+Raport o wydajności dla aplikacji jest wyświetlany.
 
-W tym momencie profilera zatrzymuje wykonywanie, zapisuje dane w pliku Vsp i wyświetla raport zawiera analizę danych.
+W tym momencie program profilujący zatrzymuje wykonywanie, zapisuje dane w pliku Vsp i wyświetla raport zawiera analizę tych danych.
 
-![Raport programu profilującego][11]
+![Profiler raportu][11]
 
-Jeśli widzisz String.wstrcpy w aktywnej ścieżki, kliknij tylko mój kod, aby zmienić widok, aby pokazać tylko kod użytkownika.  Jeśli widzisz String.concat — spróbuj nacisnąć przycisk Pokaż cały kod.
+Jeśli widzisz String.wstrcpy gorącej ścieżki, kliknij opcję tylko mój kod, aby zmienić widok, aby wyświetlić tylko kod użytkownika.  Jeśli widzisz String.concat —, spróbuj nacisnąć przycisk Pokaż cały kod.
 
-Powinna zostać wyświetlona ZŁĄCZ.teksty metoda i String.concat — zajmuje dużo czasu wykonywania.
+Powinien zostać wyświetlony ZŁĄCZ.teksty metody i String.concat — zajmuje dużo czasu wykonywania.
 
-![Raport analizy][12]
+![Analizę raportu][12]
 
-Jeśli dodano kod łączenia ciągu w tym artykule, w tym powinna zostać wyświetlona ostrzeżenie na liście zadań. Może również zostać wyświetlony ostrzeżenie, że jest nadmierne ilości pamięci, czyli z powodu liczby ciągów, które są tworzone i usunięty.
+Jeśli dodano kod konkatenacji ciągów w tym artykule, powinny pojawić się ostrzeżenie, na liście zadań, w tym. Może też pojawić się ostrzeżenie, brak nadmiernej liczby wyrzucania elementów bezużytecznych, czyli ze względu na liczbę ciągów, które są tworzone i usunięty.
 
-![Ostrzeżenia wydajności][14]
+![Ostrzeżeń dotyczących wydajności][14]
 
 ## <a name="4-make-changes-and-compare-performance"></a>4: wprowadź zmiany i porównanie wydajności
-Można także porównać wydajności przed i po zmianie kodu.  Zatrzymaj uruchomionego procesu, a następnie Edytuj kod, aby zastąpić ciąg operacji łączenia z użyciem klasy StringBuilder:
+Można również porównać wydajność przed i po zmianie kodu.  Zatrzymaj uruchomionego procesu, a następnie edytować kod i Zastąp ciąg operacji łączenia z użyciem klasy StringBuilder:
 
 ```csharp
 public static string Concatenate(int number)
@@ -146,28 +146,28 @@ public static string Concatenate(int number)
 }
 ```
 
-Czy inne uruchomienie wydajności, a następnie porównaj wydajność. W Eksploratorze wydajności, jeśli działa znajdują się w tej samej sesji można po prostu wybraniu obu raportów, otwórz menu skrótów i **raporty porównanie wydajności**. Do porównania z uruchomiony w innej sesji wydajności, należy otworzyć **Analizuj** menu i wybierz polecenie **raporty porównanie wydajności**. Określ oba pliki, w wyświetlonym oknie dialogowym.
+Wykonaj inne uruchomienie wydajności, a następnie porównaj wydajność. W Eksploratorze wydajności w przypadku uruchomienia w tej samej sesji możesz można po prostu zaznacz oba raporty, otwórz menu skrótów i wybierz **Porównaj wydajność raportów**. Jeśli chcesz porównać z przebiegiem w innej sesji wydajności, otwórz **analizy** menu i wybrać **Porównaj wydajność raportów**. Określ oba pliki w zostanie wyświetlone okno dialogowe.
 
-![Porównanie opcji raporty wydajności][15]
+![Porównanie opcji raportów wydajności][15]
 
-Raporty zaznacz różnice między dwa przebiegi.
+Raporty zaznacz różnice między dwoma przebiegami.
 
 ![Raport porównawczy][16]
 
 Gratulacje! Rozpoczęciu pracy przy użyciu profilera.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
-* Upewnij się, czy profilowania kompilacji wydania i uruchomić bez debugowania.
-* Jeśli opcja Attach/Detach nie jest włączona w menu profilera, uruchom Kreatora wydajności.
+* Upewnij się, profilowany kompilację wydania i uruchom bez debugowania.
+* Jeśli nie włączono opcji Attach/Detach menu Profiler, uruchom Kreatora wydajności.
 * Interfejs użytkownika emulatora obliczeń Umożliwia wyświetlenie stanu aplikacji. 
-* Jeśli masz problemy z uruchamianiem aplikacji w emulatorze lub dołączenie profilera, zamknij emulator obliczeń w dół i uruchom ją ponownie. Jeśli to nie rozwiąże problemu, spróbuj wykonać ponowny rozruch. Ten problem może wystąpić, jeśli używasz emulatora obliczeniowe do wstrzymania i usuwanie wdrożeń uruchomionych.
-* Jeśli używasz dowolnego z profilowania poleceń w wierszu polecenia, szczególnie ustawienia globalne, upewnij się, VSPerfClrEnv /globaloff została wywołana i zamknąć VsPerfMon.exe.
-* Jeśli podczas pobierania próbek, zostanie wyświetlony komunikat "PRF0025: żadne dane nie zostały zebrane," Sprawdź, czy dołączyć do procesu ma aktywności Procesora. Aplikacje, które są bezczynny obliczeniowy może nie dawać dane z próbkowania.  Istnieje również możliwość, że proces został zakończony zanim wykonano żadnych próbkowania. Sprawdź, czy metoda Run dla roli, do której są profilowania nie kończy.
+* Jeśli masz problemy z uruchamianiem aplikacji w emulatorze lub dołączanie programu profiler zamykanie emulatora obliczeń w dół, a następnie uruchom go ponownie. Jeśli to nie rozwiąże problemu, spróbuj wykonać ponowny rozruch. Ten problem może wystąpić, jeśli używasz emulatora obliczeń do wstrzymania i Usuń uruchomionych wdrożeniach.
+* Jeśli używasz dowolnego polecenia profilowania z wiersza polecenia, a szczególnie globalne ustawienia, upewnij się, VSPerfClrEnv /globaloff została wywołana i że VsPerfMon.exe został zamknięty.
+* Jeśli podczas pobierania próbek, zostanie wyświetlony komunikat "PRF0025: nie zebrano żadnych danych," Sprawdź, czy Proces, który został dołączony do ma działanie procesora CPU. Aplikacje, które nie wykonują wszelkie prace obliczeniową może nie dawać dane z próbkowania.  Istnieje również możliwość, że proces zakończony przed wykonano wszystkie pobierania próbek. Sprawdź, czy metoda Run dla roli, który jest profilowany nie kończy.
 
 ## <a name="next-steps"></a>Następne kroki
-Instrumentacja Azure pliki binarne w emulatorze nie jest obsługiwany w profilera Visual Studio, ale jeśli chcesz przetestować alokacji pamięci, możesz wybrać tę opcję podczas profilowania. Można również wybrać profilowania współbieżności, który pomaga ustalić, czy wątki są marnować czas rywalizuje blokady lub warstwy profilowanie interakcji, który pomaga wykrywać problemy z wydajnością, gdy interakcji między warstwami aplikacji, większość często między warstwą danych i rolę procesu roboczego.  Można wyświetlić kwerendy bazy danych, które generuje aplikacji i za pomocą danych profilowania zwiększyć korzystania z bazy danych. Informacji o profilowanie interakcji między warstwami znajduje się w temacie we wpisie blogu [wskazówki: w programie Visual Studio Team System 2010 przy użyciu profilera interakcji warstwy][3].
+Instrumentacja Azure plików binarnych w emulatorze nie jest obsługiwane w programie Visual Studio profiler, ale jeśli chcesz przetestować alokacji pamięci, możesz wybrać tę opcję podczas profilowania. Można również wybrać profilowania współbieżności, który pomaga ustalić, czy wątki są marnowania czasu rywalizując o blokady lub warstwy profilowanie interakcji między, co pomoże Ci w wyszukaniu problemy z wydajnością podczas interakcji między warstwami aplikacji, najbardziej często między warstwą danych i rolę procesu roboczego.  Można wyświetlić zapytania do bazy danych, które aplikacja generuje i używać danych profilowania w celu używania bazy danych. Aby uzyskać informacje o profilowaniu interakcji między warstwami, zobacz wpis w blogu [Instruktaż: przy użyciu warstwy Profiler interakcji w Visual Studio Team System 2010][3].
 
-[1]: http://msdn.microsoft.com/library/azure/hh369930.aspx
+[1]: https://docs.microsoft.com/azure/application-insights/app-insights-profiler
 [2]: http://msdn.microsoft.com/library/azure/hh411542.aspx
 [3]: http://blogs.msdn.com/b/habibh/archive/2009/06/30/walkthrough-using-the-tier-interaction-profiler-in-visual-studio-team-system-2010.aspx
 [4]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally09.png

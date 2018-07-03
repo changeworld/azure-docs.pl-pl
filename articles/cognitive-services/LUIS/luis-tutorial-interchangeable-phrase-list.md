@@ -1,6 +1,6 @@
 ---
-title: Samouczek przy użyciu listy frazy zwiększające prognoz LUIS - Azure | Dokumentacja firmy Microsoft
-description: W tym samouczku dodać listę frazę do aplikacji LUIS i zobacz poprawy wynik.
+title: Samouczek przy użyciu listy frazę w celu przewidywania usługi LUIS — Azure | Dokumentacja firmy Microsoft
+description: W tym samouczku dodać listy fraz z aplikacją usługi LUIS i zobacz ulepszanie wynik.
 services: cognitive-services
 author: v-geberr
 manager: kamran.iqbal
@@ -9,48 +9,48 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2017
 ms.author: v-geberr
-ms.openlocfilehash: feb8acb674fd2dc62b62c26da6a6b42515f30242
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 9f12d9e8c9ee2038e7841cd05bb438421a5a8984
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265975"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345349"
 ---
-# <a name="tutorial-add-phrase-list-to-improve-predictions"></a>Samouczek: Dodaj wyrażenie listy w celu poprawienia prognoz
-W tym samouczku, zwiększyć dokładność wyniki konwersji i zidentyfikować jednostek wyrazy, które mają takie samo znaczenie (synonimy), dodając wymienne [funkcja listy frazy](./luis-concept-feature.md).
+# <a name="tutorial-add-phrase-list-to-improve-predictions"></a>Samouczek: Dodawanie listy frazę w celu poprawienia prognozy
+W tym samouczku, zwiększyć dokładność wyników intencji i zidentyfikować jednostki dla słowa, które mają takie samo znaczenie (synonimy), dodając wymienne [funkcji listy fraz](./luis-concept-feature.md).
 
 > [!div class="checklist"]
-* Importuj nowej aplikacji  
-* Punkt końcowy zapytania ze znanych utterance 
-* Punkt końcowy z zapytania _nieznany_ utterance
-* Dodawanie listy frazę w celu poprawienia utterance nieznany wynik
-* Sprawdź, czy jednostka zostanie znaleziony, używając listy frazy
+* Zaimportuj nową aplikację  
+* Punkt końcowy zapytanie, za pomocą znanych wypowiedź 
+* Punkt końcowy z zapytania _nieznany_ wypowiedź
+* Dodawanie listy frazę w celu poprawienia wypowiedź nieznany wynik
+* Upewnij się, że jednostka zostanie znaleziony, używając listy fraz
 
-W tym artykule należy bezpłatny [LUIS] [ LUIS] konta, aby można było tworzyć LUIS aplikacji.
+Na potrzeby tego artykułu wymagane jest bezpłatne konto usługi [LUIS][LUIS] w celu tworzenia aplikacji LUIS.
 
-## <a name="import-a-new-app"></a>Importuj nowej aplikacji
-1. Pobierz [przykład aplikacji LUIS] [ LuisSampleApp] zaprojektowaną do celów tego samouczka. Zostanie użyty w następnym kroku. 
+## <a name="import-a-new-app"></a>Zaimportuj nową aplikację
+1. Pobierz [przykład aplikacją usługi LUIS] [ LuisSampleApp] zaprojektowaną na potrzeby tego samouczka. Użyjesz go w następnym kroku. 
 
-2. Zgodnie z opisem w [Utwórz aplikację](Create-new-app.md#import-new-app), zaimportuj plik do [LUIS] [ LUIS] witryny sieci Web jako nową aplikację. Nazwa aplikacji jest "Mój frazy samouczek." Składa się z lokalizacji docelowych, jednostki i zniesławiających. 
+2. Zgodnie z opisem w [tworzenie aplikacji](Create-new-app.md#import-new-app), zaimportuj plik który został pobrany do [LUIS] [ LUIS] witryny sieci Web jako nową aplikację. Nazwa aplikacji jest "Mój samouczek listy fraz." Posiada intencji, jednostek i wypowiedzi. 
 
-3. [Train](luis-how-to-train.md) aplikacji. Dopiero po jego przygotowaniu nie [interaktywnie test](interactive-test.md#interactive-testing) w [LUIS] [ LUIS] witryny sieci Web. 
+3. [Szkolenie](luis-how-to-train.md) aplikacji. Do momentu jego przygotowaniu nie [interaktywnie test](interactive-test.md#interactive-testing) go w [LUIS] [ LUIS] witryny sieci Web. 
 
-4. Na [publikowania](PublishApp.md) wybierz pozycję **uwzględnianie wszystkich przewidzieć wyniki konwersji** pole wyboru. Po zaznaczeniu pola wyboru, zwracane są wszystkie opcje. Gdy pole wyboru jest wyczyszczone, jest zwracany top celem. 
+4. Na [Publikuj](luis-how-to-publish-app.md) wybierz opcję **Uwzględnij wszystkie przewidywane wyniki intencji** pole wyboru. Gdy pole wyboru jest zaznaczone, zwracane są wszystkie opcje. Gdy pole wyboru jest wyczyszczone, zwracany jest najważniejsze intencji. 
 
-5. [Publikowanie](PublishApp.md) aplikacji. Publikowanie aplikacji umożliwia przetestować go przy użyciu punktu końcowego protokołu HTTPS. 
+5. [Publikowanie](luis-how-to-publish-app.md) aplikacji. Publikowanie aplikacji, można ją przetestować przy użyciu punktu końcowego HTTPS. 
 
-## <a name="test-a-trained-utterance"></a>Testowanie przeszkolone utterance
-Umożliwia zapytania utterance, która aplikacja już zna opublikowanych punktu końcowego. Ponieważ LUIS zna już utterance, wynik jest wysoka, a jednostka została wykryta.
+## <a name="test-a-trained-utterance"></a>Testowanie uczonego wypowiedź
+Użycie opublikowanej punktu końcowego do wykonywania zapytań wypowiedź, że aplikacja jest już zna. Ponieważ usługa LUIS już zna wypowiedź, wynik jest wysoki i wykryciu jednostki.
 
-1. Na [opis języka (LUIS)] [ LUIS] witryny sieci Web na **publikowania** strony dla nowej aplikacji, wybierz adres URL punktu końcowego w **zasobów i klucze**sekcji. 
+1. Na [Language Understanding (LUIS)] [ LUIS] witryny sieci Web na **Publikuj** strony dla nowej aplikacji, wybierz adres URL punktu końcowego w **zasobów i klucze**sekcji. 
 
-    ![Publikuj adres URL punktu końcowego](./media/luis-tutorial-interchangeable-phrase-list/luis-publish-url.png)
+    ![Opublikuj adres URL punktu końcowego](./media/luis-tutorial-interchangeable-phrase-list/luis-publish-url.png)
 
-2. W przeglądarce na końcu adresu URL, Dodaj następujące zapytanie po `q=`.
+2. W przeglądarce, na końcu adresu URL, Dodaj następujące zapytanie po `q=`.
 
     `I want a computer replacement`
 
-    Punkt końcowy odpowiada JSON następujące:
+    Punkt końcowy odpowiada następującym kodem JSON:
     
     ```JSON
     {
@@ -93,25 +93,25 @@ Umożliwia zapytania utterance, która aplikacja już zna opublikowanych punktu 
     }
     ```
 
-    Wynik konwersji 0.973 i wynik wykrywania jednostki 0.846 są wysoka, ponieważ aplikacja została uczone z tym utterance. Utterance znajduje się w aplikacji LUIS na stronie konwersji **GetHardware**. Tekst utterance `computer`, jest oznaczone jako **sprzętu** jednostki. 
+    Wynik konwersji 0.973 i wynik wykrywania jednostki 0.846 są wysokie, ponieważ aplikacja została wyszkolonego przy tym wypowiedź. Wypowiedź znajduje się w aplikacji usługi LUIS na stronie intencji **GetHardware**. Tekstowe wypowiedź `computer`, jest oznaczona jako **sprzętu** jednostki. 
     
     |Stan|Word| Wynik konwersji | Wynik jednostki |
     |--|--|--|--|
-    |Uczony| chcesz | 0.973 | 0.846 |
+    |Przeszkoleni| chcesz | 0.973 | 0.846 |
     
     
-## <a name="test-an-untrained-utterance"></a>Testowanie nieprzeszkolonych utterance
-W przeglądarce za pomocą tego samego punktu końcowego opublikowanych w zapytaniu utterance, która aplikacja już nie może ustalić:
+## <a name="test-an-untrained-utterance"></a>Testowanie nieprzeszkolonych wypowiedź
+W przeglądarce za pomocą tego samego opublikowanych punktu końcowego do wykonywania zapytań wypowiedź, aplikacja już nie wiesz, że:
 
 `I require a computer replacement`
 
-Ta utterance używa synonim poprzedniej utterance:
+Ta wypowiedź używa synonim poprzedniego wypowiedź:
 
-| Przeszkolone programu word | Synonim nieprzeszkolonych |
+| Uczony programu word | Synonim nieprzeszkolonych |
 |--|--|
 | chcesz | Wymagaj |
 
-Odpowiedź punktu końcowego jest:
+Odpowiedź na punkt końcowy jest:
 
 ```JSON
 {
@@ -148,59 +148,59 @@ Odpowiedź punktu końcowego jest:
 
 | Stan | Word | Wynik konwersji | Wynik jednostki |
 |--|--|--|--|
-| Uczony| chcesz | 0.973 | 0.846 |
+| Przeszkoleni| chcesz | 0.973 | 0.846 |
 | Nieprzeszkolonych| Wymagaj | 0.840 | - |
 
-Wynik konwersji nieprzeszkolonych utterance jest mniejszy niż utterance etykietą, ponieważ LUIS wie, że zdanie gramatycznie jest taka sama. Ale LUIS nie wie, że zniesławiających mają takie samo znaczenie. Ponadto bez listy frazy **sprzętu** nie znaleziono jednostki.
+Wynik konwersji nieprzeszkolonych wypowiedź jest mniejszy niż z etykietami wypowiedź, ponieważ usługa LUIS wie, że zdanie gramatycznie jest taka sama. Jednak usługa LUIS nie wie, że wypowiedzi mają takie samo znaczenie. Ponadto bez listy fraz **sprzętu** nie znaleziono jednostki.
 
-Muszą uczyć LUIS *mają* i *wymagają* oznaczają to samo w tej domenie aplikacji, ponieważ wyraz może mieć więcej niż jeden znaczenie. 
+Musi uczyć LUIS *ma* i *wymagają* oznaczają to samo w tej domenie aplikacji, ponieważ słowo może mieć więcej niż jeden znaczenie. 
 
-## <a name="improve-the-score-of-untrained-utterance-with-phrase-list"></a>Poprawa wynik nieprzeszkolonych utterance z listą frazy 
-1. Dodaj [listy frazy](luis-how-to-add-features.md) funkcji o nazwie **mają** z wartością `want`, a następnie wybierz **Enter**.
+## <a name="improve-the-score-of-untrained-utterance-with-phrase-list"></a>Poprawa wynik nieprzeszkolonych wypowiedź przy użyciu listy fraz 
+1. Dodaj [listy fraz](luis-how-to-add-features.md) funkcji o nazwie **ma** z wartością `want`, a następnie wybierz pozycję **Enter**.
 
     > [!TIP]
-    > Po każdym wyraz lub frazę, wybierz **Enter** klucza. Wyraz lub frazę zostanie dodany do **frazę wartości listy** polu, gdy wskaźnik pozostaje w **wartość** pole. Można wprowadzić wiele wartości szybko przy użyciu tej funkcji.
+    > Po każdy wyraz lub frazę, wybierz **Enter** klucza. Wyraz lub frazę, zostanie dodany do **frazę wartości listy** pola, gdy kursor pozostaje w **wartość** pole. Można wprowadzić wiele wartości, szybko przy użyciu tej funkcji.
 
-2. Zaznacz, aby wyświetlić słowa, które zaleca LUIS **zaleca**. 
+2. Zaznacz, aby wyświetlić wyrazy, które usługa LUIS zaleca **zaleca się**. 
 
     ![Zaleca się wartości](./media/luis-tutorial-interchangeable-phrase-list/recommend.png)
 
-3. Dodaj wszystkie wyrazy. Jeśli `require` jest spoza listy zalecane, dodaj go jako wymaganej wartości. 
+3. Dodaj wszystkie wyrazy. Jeśli `require` jest nie w liście zalecanych Dodaj ją jako wymaganą wartość. 
 
-4. Ponieważ te wyrazy są synonimy, Zachowaj *wymienne* ustawienia, a następnie wybierz **zapisać**.
+4. Ponieważ te wyrazy są synonimy, Zachowaj *wymienne* ustawienia, a następnie wybierz **Zapisz**.
 
     ![Wyrażenie wartości listy](./media/luis-tutorial-interchangeable-phrase-list/phrase-list-values.png)
 
-5. W górnym pasku nawigacyjnym, wybierz **uczenia** do uczenia aplikacji, ale nie publikuj go. Masz teraz dwa modele. Możesz porównać wartości w obu modeli.
+5. Na górnym pasku nawigacyjnym, wybierz **szkolenie** to w opracowywaniu aplikacji, ale nie opublikujesz zmian. Masz teraz dwa modele. Można porównać wartości w dwóch modeli.
 
-## <a name="compare-the-phrase-list-model-to-the-published-model"></a>Porównywanie modelu listy frazę do opublikowanego modelu
-W tej aplikacji opublikowanych modelu nie jest uczenia z synonimy. Aktualnie edytowany model zawiera listę frazy synonimów. Aby porównać modele, użyj [interakcyjne testowania](interactive-test.md#interactive-testing). 
+## <a name="compare-the-phrase-list-model-to-the-published-model"></a>Porównaj modelu listy frazę do opublikowanego modelu
+W tej aplikacji opublikowany model nie jest uczony przy użyciu synonimów. Tylko aktualnie edytowany model zawiera listę frazy synonimów. Aby porównać te modele, należy użyć [interaktywne testowania](interactive-test.md#interactive-testing). 
 
-1. Otwórz **testu** okienku, a następnie wprowadź następujące utterance:
+1. Otwórz **testu** okienka, a następnie wprowadź następujące wypowiedź:
 
     `I require a computer replacement`
 
-2. Aby otworzyć panel inspekcji, wybierz **inspekcję**. 
+2. Aby otworzyć panel inspekcji, zaznacz **Sprawdź**. 
 
-    ![Wybierz inspekcji](./media/luis-tutorial-interchangeable-phrase-list/inspect-button.png)
+    ![Wybierz opcję Sprawdź](./media/luis-tutorial-interchangeable-phrase-list/inspect-button.png)
 
-3. Aby porównać opublikowanego modelu do nowego modelu listy frazy, wybierz **opublikowane Porównaj z elementem**.
+3. Aby porównać opublikowany model do nowego modelu listy fraz, wybierz **Porównaj z opublikowanych**.
 
-    ![Sprawdź opublikowane w porównaniu z bieżącego](./media/luis-tutorial-interchangeable-phrase-list/inspect.png)
+    ![Zbadaj opublikowane w stosunku do bieżącego](./media/luis-tutorial-interchangeable-phrase-list/inspect.png)
 
-Po dodaniu listy frazy większą dokładność utterance i **sprzętu** odnaleźć jednostki. 
+Po dodaniu listy fraz większą dokładność wypowiedź i **sprzętu** odnaleźć jednostki. 
 
 |Stan | Lista fraz| Wynik konwersji | Wynik jednostki |
 |--|--|--|--|
 | Opublikowano | - | 0,84 | - |
-| Obecnie edycji |✔| 0.92 | Podmiot sprzętu |
+| Trwa edytowanie |✔| 0.92 | Podmiot sprzętu |
 
 > [!TIP]
-> * Za pomocą [interakcyjne testowania](interactive-test.md#interactive-testing), możesz porównać opublikowanego modelu do wszelkich przeszkolone zmian wprowadzonych po opublikowaniu. 
-> * Za pomocą [testowania punktu końcowego](PublishApp.md#test-your-published-endpoint-in-a-browser), można wyświetlić dokładna reakcja LUIS JSON. 
+> * Za pomocą [interaktywne testowania](interactive-test.md#interactive-testing), można porównać opublikowany model w celu zmiany przeszkolonych, które zostały wprowadzone po opublikowaniu. 
+> * Za pomocą [punkt końcowy testowania](luis-how-to-publish-app.md#test-your-published-endpoint-in-a-browser), można wyświetlić dokładną odpowiedzi usługi LUIS JSON. 
 
-## <a name="get-the-entity-score-with-the-endpoint-test"></a>Pobierz wynik jednostki z testem punktu końcowego
-Aby wyświetlić wynik jednostki [opublikować model](PublishApp.md) i zapytania punktu końcowego. 
+## <a name="get-the-entity-score-with-the-endpoint-test"></a>Uzyskaj ocenę jednostki z testem punktu końcowego
+Aby wyświetlić wynik jednostki [Opublikuj model](luis-how-to-publish-app.md) i wykonywania zapytań względem punktu końcowego. 
 
 `I require a computer replacement`
 
@@ -245,21 +245,21 @@ Aby wyświetlić wynik jednostki [opublikować model](PublishApp.md) i zapytania
 }
 ```
 
-**Sprzętu** jednostki przedstawia wynik 0.595 z listą frazę. Przed wprowadzeniem listy frazy, jednostka nie została wykryta. 
+**Sprzętu** jednostki pokazuje wynik 0.595 przy użyciu listy fraz. Przed wprowadzeniem listy fraz, jednostki nie została wykryta. 
 
 |Stan | Lista fraz| Wynik konwersji | Wynik jednostki |
 |--|--|--|--|
 | Opublikowano | - | 0,84 | - |
-| Obecnie edycji |✔| 0.92 | 0.595 |
+| Trwa edytowanie |✔| 0.92 | 0.595 |
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Gdy nie są już potrzebne, usunięcie aplikacji LUIS. Aby to zrobić, należy wybrać menu trzy kropki (...), z prawej strony nazwy aplikacji na liście aplikacji zaznacz **usunąć**. W wyskakującym oknie dialogowym **aplikacji Usuń?**, wybierz pozycję **Ok**.
+Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Aby to zrobić, wybierz menu z trzema kropkami (...) po prawej stronie nazwy aplikacji na liście aplikacji i wybierz polecenie **Delete** (Usuń). W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Pobierz utterance prognozowania z zapytaniem punktu końcowego](luis-get-started-cs-get-intent.md)
+> [Pobierz prognozowania wypowiedź za pomocą kwerendy punktu końcowego](luis-get-started-cs-get-intent.md)
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
 [LuisFeatures]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-feature

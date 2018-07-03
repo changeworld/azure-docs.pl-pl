@@ -13,24 +13,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/20/2018
 ms.author: shlo
-ms.openlocfilehash: 8fda0eaa3c92fd750a84db345a91590163c20446
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: ceff54b15ef70c9654142566bb1d54b6a7990833
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293483"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048642"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Wyzwalacze i wykonywanie potoku w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
-> * [Wersja 1 — ogólnie dostępna](v1/data-factory-scheduling-and-execution.md)
-> * [Wersja 2 — wersja zapoznawcza](concepts-pipeline-execution-triggers.md)
+> * [Wersja 1](v1/data-factory-scheduling-and-execution.md)
+> * [Bieżąca wersja](concepts-pipeline-execution-triggers.md)
 
-_Uruchomienie potoku_ w usłudze Azure Data Factory w wersji 2 definiuje wystąpienie wykonania potoku. Załóżmy na przykład istnienie potoku, który jest wykonywany o godzinie 8:00, 9:00 i 10:00. W takim przypadku występują trzy osobne uruchomienia potoku. Każde uruchomienie potoku ma unikatowy identyfikator uruchomienia potoku. Identyfikator uruchomienia jest identyfikatorem GUID, który w sposób unikatowy definiuje to konkretne uruchomienie potoku. 
+_Uruchomienie potoku_ w bieżącej wersji usługi Azure Data Factory definiuje wystąpienie wykonania potoku. Załóżmy na przykład istnienie potoku, który jest wykonywany o godzinie 8:00, 9:00 i 10:00. W takim przypadku występują trzy osobne uruchomienia potoku. Każde uruchomienie potoku ma unikatowy identyfikator uruchomienia potoku. Identyfikator uruchomienia jest identyfikatorem GUID, który w sposób unikatowy definiuje to konkretne uruchomienie potoku. 
 
 Uruchomienia potoku są tworzone zazwyczaj przez przekazanie argumentów do parametrów, które definiujesz w potoku. Potok możesz wykonywać ręcznie albo za pomocą _wyzwalacza_. Ten artykuł zawiera szczegółowe informacje na temat obu metod wykonywania potoku.
-
-> [!NOTE]
-> Ten artykuł dotyczy usługi Azure Data Factory w wersji 2, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz ogólnie dostępnej usługi Data Factory w wersji 1, zobacz [Planowanie i wykonywanie w usłudze Azure Data Factory w wersji 1](v1/data-factory-scheduling-and-execution.md).
 
 ## <a name="manual-execution-on-demand"></a>Wykonywanie ręczne (na żądanie)
 Ręczne wykonywanie potoku nazywane jest również wykonywaniem _na żądanie_.
@@ -136,7 +133,7 @@ Pełny przykład można znaleźć w artykule [Szybki start: tworzenie fabryki da
 > Zestaw SDK platformy .NET umożliwia wywoływanie potoków usługi Data Factory z usługi Azure Functions, z własnych usług internetowych itp.
 
 <h2 id="triggers">Wykonywanie wyzwalacza</h2>
-Wyzwalacze to inny sposób wykonywania uruchomienia potoku. Wyzwalacze reprezentują jednostki przetwarzania, które określają, kiedy należy rozpocząć wykonanie potoku. Obecnie usługa Data Factory obsługuje 2 typy wyzwalaczy:
+Wyzwalacze to inny sposób wykonywania uruchomienia potoku. Wyzwalacze reprezentują jednostki przetwarzania, które określają, kiedy należy rozpocząć wykonanie potoku. Obecnie usługa Data Factory obsługuje 3 typy wyzwalaczy:
 
 - Wyzwalacz harmonogramu: wyzwalacz, który wywołuje potok zgodnie z harmonogramem zegarowym.
 

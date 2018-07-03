@@ -7,14 +7,14 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 03/27/2018
+ms.date: 06/22/2018
 ms.author: v-geberr
-ms.openlocfilehash: 2547407126943161ba604fa2f5e80b9186cae57e
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 5fb93ebbd2da02df0c2cdf0d19ed282aeafe9473
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266502"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335564"
 ---
 # <a name="tutorial-create-app-that-uses-hierarchical-entity"></a>Samouczek: tworzenie aplikacji używającej jednostki hierarchicznej
 W tym samouczku utworzysz aplikację, która pokazuje, jak znaleźć powiązane elementy danych na podstawie kontekstu. 
@@ -22,140 +22,111 @@ W tym samouczku utworzysz aplikację, która pokazuje, jak znaleźć powiązane 
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * Omówienie jednostek hierarchicznych i wywnioskowanych z kontekstu elementów podrzędnych 
-> * Tworzenie nowej aplikacji LUIS dla domeny travel z intencją Bookflight
-> * Dodawanie intencji _None_ i dodawanie przykładowych wypowiedzi
+> * Korzystanie z aplikacji usługi LUIS w domenie zasobów ludzkich (HR, Human Resources) 
 > * Dodawanie jednostki hierarchicznej lokalizacji z elementami podrzędnymi miejsca początkowego i docelowego
 > * Uczenie i publikowanie aplikacji
 > * Wykonywanie względem punktu końcowego zapytania o aplikację w celu sprawdzenia odpowiedzi JSON usługi LUIS, w tym hierarchicznych elementów podrzędnych 
 
 Na potrzeby tego artykułu wymagane jest bezpłatne konto usługi [LUIS][LUIS] w celu tworzenia aplikacji LUIS.
 
+## <a name="before-you-begin"></a>Przed rozpoczęciem
+Jeśli nie masz aplikacji Human Resources z samouczka dotyczącego [jednostek listy](luis-quickstart-intent-and-list-entity.md), [zaimportuj](create-new-app.md#import-new-app) kod JSON do nowej aplikacji w witrynie internetowej usługi [LUIS](luis-reference-regions.md#luis-website). Aplikacja do zaimportowania znajduje się w repozytorium [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-list-HumanResources.json) usługi Github.
+
+Jeśli chcesz zachować oryginalną aplikację Human Resources, sklonuj tę wersję na stronie [Settings](luis-how-to-manage-versions.md#clone-a-version) (Ustawienia) i nadaj jej nazwę `hier`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. 
+
 ## <a name="purpose-of-the-app-with-this-entity"></a>Przeznaczenie aplikacji z tą jednostką
-Ta aplikacja określa, czy użytkownik chce zarezerwować lot. Używa jednostki hierarchicznej do określenia lokalizacji, miasta początkowego i miasta docelowego z tekstu użytkownika. 
+Ta aplikacja określa, dokąd pracownik ma zostać przeniesiony z lokalizacji źródłowej (budynek i biuro) do lokalizacji docelowej (budynek i biuro). Używa ona jednostki hierarchicznej do określania lokalizacji w wypowiedzi. 
 
 Jednostka hierarchiczna jest odpowiednia dla tego typu danych, ponieważ oba elementy danych:
 
-* Są lokalizacjami, zwykle określonymi przy użyciu nazwy miasta lub kodu lotniska.
-* Zwykle wokół tych słów występują pewne unikatowe słowa, które pozwalają określić, co jest lokalizacją początkową, a co docelową. Te słowa zwykle obejmują: do, w kierunku, z, odlot.
+* Są ze sobą powiązane w kontekście wypowiedzi.
+* Używają określonych wybranych wyrazów w celu wskazania poszczególnych lokalizacji. Przykładowe wyrazy tego typu to: from/to (od/do), leaving/headed to (opuszczać/kierować się do), away from/toward (w kierunku od/do).
 * Obie lokalizacje często znajdują się w tej samej wypowiedzi. 
 
 Celem jednostki **hierarchicznej** jest znalezienie powiązanych danych w wypowiedzi na podstawie kontekstu. Przeanalizujmy następującą wypowiedź:
 
 ```JSON
-1 ticket from Seattle to Cairo`
+mv Jill Jones from a-2349 to b-1298
 ```
-
-W wypowiedzi są podane dwie lokalizacje. Jedna to miasto początkowe, Seattle, a drugie to miasto docelowe, Kair. Oba te miasta są ważne przy rezerwowaniu lotu. Chociaż można je znaleźć przy użyciu jednostek prostych, są ze sobą powiązane i często będą znajdowane w tej samej wypowiedzi. W związku z tym warto je zgrupować ze sobą jako elementy podrzędne jednostki hierarchicznej **„Location”**. 
-
-Tak jak jednostki uczone maszynowo, aplikacja potrzebuje przykładowych wypowiedzi z oznaczonymi lokalizacjami początkowymi i docelowymi. To pokazuje usłudze LUIS, gdzie w wypowiedziach znajdują się jednostki, jakie są długie i jakie słowa są wokół nich. 
-
-## <a name="app-intents"></a>Intencje aplikacji
-Intencje to kategorie tego, czego chce użytkownik. Ta aplikacja ma dwie intencje: BookFlight i None. Intencja [None](luis-concept-intent.md#none-intent-is-fallback-for-app) jest zamierzona i wskazuje wszystko spoza aplikacji.  
-
-## <a name="hierarchical-entity-is-contextually-learned"></a>Jednostka hierarchiczna jest uczona kontekstowo 
-Celem jednostki jest znalezienie fragmentów tekstu w wypowiedzi i przypisanie im kategorii. Jednostka [hierarchiczna](luis-concept-entity-types.md) to jednostka typu „element nadrzędny — element podrzędny” bazująca na kontekście użycia. Osoba może określić miasto początkowe i docelowe w wypowiedzi na podstawie użycia słów `to` i `from`. Oto przykład użycia kontekstowego.  
-
-Dla tej aplikacji Travel usługa LUIS wyodrębnia lokalizację początkową i docelową w taki sposób, aby można było utworzyć i wypełnić standardową rezerwację. Usługa LUIS pozwala na to, aby wypowiedzi zawierały wariacje, skróty i żargon. 
-
-Proste przykładowe wypowiedzi użytkowników mogą być następujące:
-
-```
-Book a flight to London for next Monday
-2 tickets from Dallas to Dublin this weekend
-Researve a seat from New York to Paris on the first of April
-```
-
-Wersje wypowiedzi ze skrótami lub żargonem mogą być następujące:
-
-```
-LHR tomorrow
-SEA to NYC next Monday
-LA to MCO spring break
-```
+W wypowiedzi są podane dwie lokalizacje: `a-2349` i `b-1298`. Załóżmy, że litera odpowiada nazwie budynku, a numer wskazuje biuro w tym budynku. Dobrym rozwiązaniem jest pogrupowanie ich jako elementów podrzędnych jednostki hierarchicznej `Locations`, ponieważ oba elementy danych muszą zostać wyodrębnione z wypowiedzi i są ze sobą powiązane. 
  
-Jednostka hierarchiczna dopasowuje lokalizację początkową i docelową. Jeśli obecny jest tylko jeden element podrzędny jednostki hierarchicznej (lokalizacja początkowa lub docelowa), też jest wyodrębniany. Nie jest konieczne znalezienie wszystkich elementów podrzędnych, aby wyodrębnić jeden lub część z nich. 
+Jeśli obecny jest tylko jeden element podrzędny jednostki hierarchicznej (lokalizacja początkowa lub docelowa), też jest wyodrębniany. Nie jest konieczne znalezienie wszystkich elementów podrzędnych, aby wyodrębnić jeden lub część z nich. 
 
-## <a name="what-luis-does"></a>Jak działa usługa LUIS
-Gdy intencje i jednostki wypowiedzi zostaną zidentyfikowane, [wyodrębnione](luis-concept-data-extraction.md#list-entity-data) i zwrócone w formacie JSON z [punktu końcowego](https://aka.ms/luis-endpoint-apis), działanie usługi LUIS kończy się. Aplikacja wywołująca lub czatbot pobiera tę odpowiedź JSON i spełnia żądanie — w taki sposób, jaki został zaprojektowany. 
+## <a name="remove-prebuilt-number-entity-from-app"></a>Usuwanie wstępnie skompilowanej jednostki numeru z aplikacji
+Aby zobaczyć całą wypowiedź i oznaczyć hierarchiczne elementy podrzędne, tymczasowo usuń wstępnie skompilowaną jednostkę numeru.
 
-## <a name="create-a-new-app"></a>Tworzenie nowej aplikacji
-1. Zaloguj się w witrynie internetowej usługi [LUIS][LUIS]. Pamiętaj, aby zalogować się w [regionie][LUIS-regions], w którym mają zostać opublikowane punkty końcowe usługi LUIS.
+1. Upewnij się, że aplikacja Human Resources znajduje się w sekcji **Build** (Kompilacja) aplikacji LUIS. Możesz przejść do tej sekcji, wybierając pozycję **Build** (Kompilacja) na górnym pasku menu po prawej stronie. 
 
-2. W witrynie internetowej usługi [LUIS][LUIS] wybierz pozycję **Create new app** (Utwórz nową aplikację).  
+    [ ![Zrzut ekranu aplikacji LUIS z wyróżnioną pozycją Build (Kompilacja) na górnym prawym pasku nawigacyjnym](./media/luis-quickstart-intent-and-hier-entity/hr-first-image.png)](./media/luis-quickstart-intent-and-hier-entity/hr-first-image.png#lightbox)
 
-    [![](media/luis-quickstart-intent-and-hier-entity/app-list.png "Zrzut ekranu ze stroną App lists (Listy aplikacji)")](media/luis-quickstart-intent-and-hier-entity/app-list.png#lightbox)
+2. Wybierz pozycję **Entities** (Jednostki) w menu po lewej stronie.
 
-3. W wyskakującym oknie dialogowym wprowadź nazwę `MyTravelApp`. 
+    [ ![Zrzut ekranu aplikacji LUIS z wyróżnionym przyciskiem Entities (Jednostki) w lewym menu](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png#lightbox)
 
-    [![](media/luis-quickstart-intent-and-hier-entity/create-new-app.png "Zrzut ekranu z wyskakującym oknem dialogowym Tworzenie nowej aplikacji")](media/luis-quickstart-intent-and-hier-entity/create-new-app.png#lightbox)
 
-4. Po zakończeniu tego procesu aplikacja wyświetli stronę **Intents** (Intencje) z intencją **None**. 
+3. Wybierz wielokropek (...) po prawej stronie jednostki numeru na liście. Wybierz pozycję **Usuń**. 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/intents-page-none-only.png "Zrzut ekranu z listą Intents (Intencje) i samą intencją None")](media/luis-quickstart-intent-and-hier-entity/intents-page-none-only.png#lightbox)
+    [ ![Zrzut ekranu aplikacji LUIS na stronie listy jednostek z przyciskiem Delete (Usuń) wyróżnionym dla wstępnie skompilowanej jednostki numeru](./media/luis-quickstart-intent-and-hier-entity/hr-delete-number-prebuilt.png)](./media/luis-quickstart-intent-and-hier-entity/hr-delete-number-prebuilt.png#lightbox)
 
-## <a name="create-a-new-intent"></a>Tworzenie nowej intencji
 
-1. Na stronie **Intents** (Intencje) wybierz pozycję **Create new intent** (Utwórz nową intencję). 
+## <a name="add-utterances-to-findform-intent"></a>Dodawanie wypowiedzi do intencji FindForm
 
-    [![](media/luis-quickstart-intent-and-hier-entity/create-new-intent-button.png "Zrzut ekranu z listą Intents (Intencje) i wyróżnionym przyciskiem Create new intent (Utwórz nową intencję)")](media/luis-quickstart-intent-and-hier-entity/create-new-intent-button.png#lightbox)
+1. Wybierz pozycję **Intents** (Intencje) z menu po lewej.
 
-2. Wprowadź nazwę nowej intencji: `BookFlight`. Ta intencja powinna być wybierana za każdym razem, gdy użytkownik chce zarezerwować loty.
+    [ ![Zrzut ekranu aplikacji LUIS z wyróżnioną pozycją Intents (Intencje) w lewym menu](./media/luis-quickstart-intent-and-hier-entity/hr-select-intents-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-intents-button.png#lightbox)
 
-    Tworząc intencję, tworzysz główną kategorię informacji, którą chcesz identyfikować. Nadanie nazwy kategorii umożliwia każdej innej aplikacji, która używa wyników zapytania usługi LUIS, zastosowanie tej nazwy kategorii w celu znalezienia odpowiedniej odpowiedzi lub podjęcia odpowiedniej akcji. Usługa LUIS nie będzie odpowiadać na te pytania — określi jedynie, jakiego rodzaju informacji dotyczy pytanie w języku naturalnym. 
+2. Wybierz pozycję **MoveEmployee** z listy intencji.
 
-    [![](media/luis-quickstart-intent-and-hier-entity/create-new-intent.png "Zrzut ekranu z wyskakującym oknem dialogowym Create new intent (Tworzenie nowej intencji)")](media/luis-quickstart-intent-and-hier-entity/create-new-intent.png#lightbox)
+    [ ![Zrzut ekranu aplikacji LUIS z wyróżnioną intencją MoveEmployee w lewym menu](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png)](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png#lightbox)
 
-3. Dodaj kilka wypowiedzi do intencji `BookFlight` — takich, których spodziewasz się ze strony użytkownika, na przykład:
+3. Dodaj następujące przykładowe wypowiedzi:
 
-    | Przykładowe wypowiedzi|
+    |Przykładowe wypowiedzi|
     |--|
-    |Zabookuj 2 bilety z Seattle do Kairu na następny poniedziałek|
-    |Zarezerwuj bilet do Londynu na jutro|
-    |Zamów 4 miejsca z Paryża do Londynu na 1 kwietnia|
+    |Move John W. Smith **to** a-2345|
+    |Direct Jill Jones **to** b-3499|
+    |Organize the move of x23456 **from** hh-2345 **to** e-0234|
+    |Begin paperwork to set x12345 **leaving** a-3459 **headed to** f-34567|
+    |Displace 425-555-0000 **away from** g-2323 **toward** hh-2345|
 
-    [![](media/luis-quickstart-intent-and-hier-entity/enter-utterances-on-intent.png "Zrzut ekranu z wprowadzaniem wyrażeń na stronie intencji aplikacji BookFlight")](media/luis-quickstart-intent-and-hier-entity/enter-utterances-on-intent.png#lightbox)
+    W samouczku dotyczącym [jednostki listy](luis-quickstart-intent-and-list-entity.md) można wyznaczyć pracownika według nazwy, adresu e-mail, numeru wewnętrznego, numer telefonu komórkowego lub federalnego numeru ubezpieczenia społecznego (Stany Zjednoczone). Te numery pracowników są używane w zniesławiających. Poprzednie przykładowe wypowiedzi przedstawiają różne sposoby wskazywania lokalizacji źródłowych, które wyróżniono za pomocą pogrubienia. Celowo w niektórych wypowiedziach znajdują się tylko miejsca docelowe. Pomaga to usłudze LUIS zrozumieć, jak te lokalizacje są umieszczane w wypowiedzi, jeśli nie określono źródła.
 
-## <a name="add-utterances-to-none-intent"></a>Dodawanie wypowiedzi do intencji None
+    [ ![Zrzut ekranu usługi LUIS z nowymi wypowiedziami w intencji MoveEmployee](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png#lightbox)
+     
 
-Aplikacja LUIS obecnie nie zawiera żadnych wypowiedzi dla intencji **None**. Potrzebne są wypowiedzi, na które aplikacja ma nie odpowiadać, dlatego należy dodać wypowiedzi do intencji **None**. Nie zostawiaj jej pustej. 
+## <a name="create-a-location-entity"></a>Tworzenie jednostki Location (Lokalizacja)
+Usługa LUIS musi zrozumieć, czym jest lokalizacja, oznaczając źródło i miejsce docelowe w wypowiedziach. Jeśli chcesz zobaczyć wypowiedź w widoku tokenu (nieprzetworzonym), na pasku nad wypowiedziami wybierz przełącznik oznaczony etykietą **Entities View** (Widok jednostek). Po przełączeniu przełącznika kontrolka będzie mieć etykietę **Tokens View** (Widok tokenów).
 
-1. Wybierz pozycję **Intents** (Intencje) na lewym panelu. 
+1. W wypowiedzi `Displace 425-555-0000 away from g-2323 toward hh-2345` zaznacz wyraz `g-2323`. Zostanie wyświetlone menu rozwijane z polem tekstowym w górnej części. Wprowadź nazwę jednostki `Locations` w polu tekstowym, a następnie wybierz polecenie **Create new entity** (Utwórz nową jednostkę) w menu rozwijanym. 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/select-intents-from-bookflight-intent.png "Zrzut ekranu ze stroną intencji aplikacji BookFlight i wyróżnionym przyciskiem Intents (Intencje)")](media/luis-quickstart-intent-and-hier-entity/select-intents-from-bookflight-intent.png#lightbox)
+    [![](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png "Zrzut ekranu przedstawiający tworzenie nowej jednostki na stronie intencji")](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png#lightbox)
 
-2. Wybierz intencję **None**. Dodaj trzy wypowiedzi, które może wprowadzić użytkownik, ale które nie są istotne dla tej aplikacji:
+2. W oknie podręcznym wybierz typ jednostki **Hierarchical** (Hierarchiczna) z elementami `Origin` i `Destination` jako podrzędnymi. Wybierz pozycję **Done** (Gotowe).
 
-    | Przykładowe wypowiedzi|
-    |--|
-    |Anuluj!|
-    |Do widzenia|
-    |Co się dzieje?|
+    ![](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-2.png "Zrzut ekranu z podręcznym oknem dialogowym tworzenia jednostki dla nowej jednostki Location (Lokalizacja)")
 
-## <a name="when-the-utterance-is-predicted-for-the-none-intent"></a>Kiedy dla intencji None jest przewidziana wypowiedź
-W aplikacji wywołującej usługę LUIS (takiej jak czatbot), gdy usługa LUIS zwraca intencję **None** dla wypowiedzi, bot może zadać pytanie, czy użytkownik chce zakończyć konwersację. Bot może również podać więcej wskazówek umożliwiających kontynuowanie konwersacji, jeśli użytkownik nie chce jej zakończyć. 
+3. Etykieta dla elementu `g-2323` jest oznaczona jako `Locations`, ponieważ usługa LUIS nie może ustalić, czy termin jest lokalizacją początkową, docelową czy żadną z nich. Wybierz pozycję `g-2323`, wybierz pozycję **Locations** (Lokalizacje), a następnie przejdź do menu z prawej strony i wybierz pozycję `Origin`.
 
-Jednostki działają w intencji **None**. Jeśli najwyżej ocenianą intencją jest intencja **None**, ale wyodrębniona jednostka ma znaczenie dla czatbota, to czatbot może zadać pytanie, które spowoduje ukierunkowanie intencji klienta. 
+    [![](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png "Zrzut ekranu z podrzędnym oknem dialogowym etykietowania lokalizacji w celu zmiany elementu podrzędnego jednostki Locations (Lokalizacje)")](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png#lightbox)
 
-## <a name="create-a-location-entity-from-the-intent-page"></a>Tworzenie jednostki lokalizacji z poziomu strony Intencja
-Teraz, kiedy te dwie intencje mają wypowiedzi, usługa LUIS musi zrozumieć, czym jest lokalizacja. Przejdź z powrotem do intencji `BookFlight` i oznacz nazwę miasta w wypowiedzi, wykonując następujące kroki:
+5. Aby oznaczyć etykietą inne lokalizacje we wszystkich innych wypowiedziach, wybierz budynek i biuro w wypowiedzi, a następnie wybierz pozycję Locations (Lokalizacje) i w menu z prawej strony wybierz pozycję `Origin` lub `Destination`. Po oznaczeniu etykietami wszystkich lokalizacji wypowiedzi w obszarze **Tokens View** (widok tokenów) będą wyglądać podobnie do wzorca. 
 
-1. Wróć do intencji `BookFlight`, wybierając pozycję **Intents** (Intencje) w lewym panelu.
+    [![](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png "Zrzut ekranu z jednostką Locations (Lokalizacje) oznaczoną etykietą w wypowiedziach")](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png#lightbox)
 
-2. Wybierz pozycję `BookFlight` z listy intencji.
+## <a name="add-prebuilt-number-entity-to-app"></a>Dodawanie wstępnie skompilowanej jednostki numeru do aplikacji
+Dodaj wstępnie skompilowaną jednostkę numeru z powrotem do aplikacji.
 
-3. W wypowiedzi `Book 2 flights from Seattle to Cairo next Monday` zaznacz wyraz `Seattle`. Zostanie wyświetlone menu rozwijane z polem tekstowym w górnej części, umożliwiającym utworzenie nowej jednostki. Wprowadź nazwę jednostki `Location` w polu tekstowym, a następnie wybierz polecenie **Create new entity** (Utwórz nową jednostkę) w menu rozwijanym. 
+1. Wybierz pozycję **Entities** (Jednostki) w menu nawigacji po lewej stronie.
 
-    [![](media/luis-quickstart-intent-and-hier-entity/label-seattle-in-utterance.png "Zrzut ekranu strony intencji BookFlight podczas tworzenia nowej jednostki na podstawie zaznaczonego tekstu")](media/luis-quickstart-intent-and-hier-entity/label-seattle-in-utterance.png#lightbox)
+    [ ![Zrzut ekranu przedstawiający przycisk Entities (Jednostki) wyróżniony na lewym pasku nawigacyjnym](./media/luis-quickstart-intent-and-hier-entity/hr-select-entity-button-from-intent-page.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-entity-button-from-intent-page.png#lightbox)
 
-4. W oknie podręcznym wybierz typ jednostki **Hierarchical** (Hierarchiczna) z elementami `Origin` i `Destination` jako podrzędnymi. Wybierz pozycję **Done** (Gotowe).
+2. Wybierz przycisk **Manage prebuilt entities** (Zarządzaj wstępnie skompilowanymi jednostkami).
 
-    [![](media/luis-quickstart-intent-and-hier-entity/hier-entity-ddl.png "Zrzut ekranu z wyskakującym oknem dialogowym tworzenia jednostki dla nowej jednostki Location (Lokalizacja)")](media/luis-quickstart-intent-and-hier-entity/hier-entity-ddl.png#lightbox)
+    [![Zrzut ekranu z listą Entities (Jednostki) i wyróżnioną pozycją Manage prebuilt entities (Zarządzaj wstępnie skompilowanymi jednostkami)](./media/luis-quickstart-intent-and-hier-entity/hr-manage-prebuilt-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-manage-prebuilt-button.png#lightbox)
 
-    Etykieta dla elementu `Seattle` jest oznaczona jako `Location`, ponieważ usługa LUIS nie może ustalić, czy termin jest lokalizacją początkową, docelową czy żadną z nich. Wybierz pozycję `Seattle`, wybierz pozycję Location (Lokalizacja), a następnie przejdź do menu z prawej strony i wybierz pozycję `Origin`.
+3. Wybierz pozycję **number** (liczba) z listy wstępnie skompilowanych jednostek, a następnie wybierz pozycję **Done** (Gotowe).
 
-5. Teraz, gdy jednostka jest utworzona i jedna wypowiedź ma etykiety, oznacz etykietami inne miasta, wybierając nazwę miasta i pozycję Location (Lokalizacja), a następnie z menu po prawej wybierając pozycję `Origin` lub `Destination`.
-
-    [![](media/luis-quickstart-intent-and-hier-entity/label-destination-in-utterance.png "Zrzut ekranu z jednostką Bookflight i zaznaczonym tekstem wypowiedzi w celu wybrania jednostki")](media/luis-quickstart-intent-and-hier-entity/label-destination-in-utterance.png#lightbox)
+    ![Zrzut ekranu przedstawiający pozycję number (liczba) wybraną w oknie dialogowym wstępnie skompilowanych jednostek](./media/luis-quickstart-intent-and-hier-entity/hr-add-number-back-ddl.png)
 
 ## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
 Usługa LUIS nie wie o zmianach intencji i jednostek (modelu), dopóki nie zostanie ich nauczona. 
@@ -173,8 +144,6 @@ Aby uzyskać przewidywania usługi LUIS w czatbocie lub innej aplikacji, należy
 
 1. W górnej części witryny usługi LUIS po prawej stronie wybierz przycisk **Publish** (Publikuj). 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/publish.png "Zrzut ekranu z intencją BookFlight i wyróżnionym przyciskiem Publish (Opublikuj)")](media/luis-quickstart-intent-and-hier-entity/publish.png#lightbox)
-
 2. Wybierz miejsce produkcyjne i przycisk **Publish** (Publikuj).
 
     [![](media/luis-quickstart-intent-and-hier-entity/publish-to-production.png "Zrzut ekranu przedstawiający stronę publikowania z wyróżnionym przyciskiem publikowania w miejscu produkcyjnym")](media/luis-quickstart-intent-and-hier-entity/publish-to-production.png#lightbox)
@@ -186,41 +155,114 @@ Aby uzyskać przewidywania usługi LUIS w czatbocie lub innej aplikacji, należy
 
     [![](media/luis-quickstart-intent-and-hier-entity/publish-select-endpoint.png "Zrzut ekranu przedstawiający stronę publikowania z wyróżnionym adresem URL punktu końcowego")](media/luis-quickstart-intent-and-hier-entity/publish-select-endpoint.png#lightbox)
 
-2. Przejdź na koniec tego adresu URL i wprowadź ciąg `1 ticket to Portland on Friday`. Ostatni parametr ciągu zapytania to `q`, czyli **q**uery (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe oznaczone wypowiedzi, dlatego jest dobra do testowania i powinna zwrócić intencję `BookFlight` z wyodrębnioną jednostką hierarchiczną.
+2. Przejdź na koniec adresu URL na pasku adresu i wprowadź ciąg `Please relocation jill-jones@mycompany.com from x-2345 to g-23456`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe oznaczone wypowiedzi, dlatego jest dobra do testowania i powinna zwrócić intencję `MoveEmployee` z wyodrębnioną jednostką hierarchiczną.
 
-```
+```JSON
 {
-  "query": "1 ticket to Portland on Friday",
+  "query": "Please relocation jill-jones@mycompany.com from x-2345 to g-23456",
   "topScoringIntent": {
-    "intent": "BookFlight",
-    "score": 0.9998226
+    "intent": "MoveEmployee",
+    "score": 0.9966052
   },
   "intents": [
     {
-      "intent": "BookFlight",
-      "score": 0.9998226
+      "intent": "MoveEmployee",
+      "score": 0.9966052
+    },
+    {
+      "intent": "Utilities.Stop",
+      "score": 0.0325253047
+    },
+    {
+      "intent": "FindForm",
+      "score": 0.006137873
+    },
+    {
+      "intent": "GetJobInformation",
+      "score": 0.00462633232
+    },
+    {
+      "intent": "Utilities.StartOver",
+      "score": 0.00415637763
+    },
+    {
+      "intent": "ApplyForJob",
+      "score": 0.00382325822
+    },
+    {
+      "intent": "Utilities.Help",
+      "score": 0.00249120337
     },
     {
       "intent": "None",
-      "score": 0.221926212
+      "score": 0.00130756292
+    },
+    {
+      "intent": "Utilities.Cancel",
+      "score": 0.00119622645
+    },
+    {
+      "intent": "Utilities.Confirm",
+      "score": 1.26910036E-05
     }
   ],
   "entities": [
     {
-      "entity": "portland",
-      "type": "Location::Destination",
-      "startIndex": 12,
-      "endIndex": 19,
-      "score": 0.564448953
+      "entity": "jill - jones @ mycompany . com",
+      "type": "Employee",
+      "startIndex": 18,
+      "endIndex": 41,
+      "resolution": {
+        "values": [
+          "Employee-45612"
+        ]
+      }
+    },
+    {
+      "entity": "x - 2345",
+      "type": "Locations::Origin",
+      "startIndex": 48,
+      "endIndex": 53,
+      "score": 0.8520272
+    },
+    {
+      "entity": "g - 23456",
+      "type": "Locations::Destination",
+      "startIndex": 58,
+      "endIndex": 64,
+      "score": 0.974032
+    },
+    {
+      "entity": "-2345",
+      "type": "builtin.number",
+      "startIndex": 49,
+      "endIndex": 53,
+      "resolution": {
+        "value": "-2345"
+      }
+    },
+    {
+      "entity": "-23456",
+      "type": "builtin.number",
+      "startIndex": 59,
+      "endIndex": 64,
+      "resolution": {
+        "value": "-23456"
+      }
     }
   ]
 }
 ```
 
-## <a name="what-has-this-luis-app-accomplished"></a>Co wykonała ta aplikacja LUIS?
-Ta aplikacja, zawierająca jedynie dwie intencje i jednostkę hierarchiczną, zidentyfikowała intencję zapytania w języku naturalnym i zwróciła wyodrębnione dane. 
+## <a name="could-you-have-used-a-regular-expression-for-each-location"></a>Czy można było użyć wyrażenia regularnego dla każdej lokalizacji?
+Tak, utwórz wyrażenie regularne z rolami źródłowymi i docelowymi, a następnie użyj go we wzorcu.
 
-Twój czatbot ma teraz wystarczająco dużo informacji, aby określić akcję główną (`BookFlight`) i informacje o lokalizacji znalezione w wypowiedzi. 
+Lokalizacje w tym przykładzie, takie jak `a-1234`, są zgodnie ze specyficznym formatem obejmującym jedną lub dwie litery z kreską, po których następuje seria 4 lub 5 wartości liczbowych. Te dane można przedstawić jako jednostkę wyrażenia regularnego z rolą dla każdej lokalizacji. Role są dostępne w przypadku wzorców. Można utworzyć wzorce w oparciu o te wypowiedzi, a następnie utworzyć wyrażenie regularne dla formatu lokalizacji i dodawać je do wzorców. <!-- Go to this tutorial to see how that is done -->
+
+## <a name="what-has-this-luis-app-accomplished"></a>Co wykonała ta aplikacja LUIS?
+Ta aplikacja, zawierająca jedynie kilka intencji i jednostkę hierarchiczną, zidentyfikowała intencję zapytania w języku naturalnym i zwróciła wyodrębnione dane. 
+
+Twój czatbot ma teraz wystarczająco dużo informacji, aby określić akcję główną (`MoveEmployee`) i informacje o lokalizacji znalezione w wypowiedzi. 
 
 ## <a name="where-is-this-luis-data-used"></a>Gdzie są używane te dane usługi LUIS? 
 Usługa LUIS skończyła obsługiwać to żądanie. Aplikacja wywołująca, taka jak czatbot, może pobrać wynik topScoringIntent (najwyżej oceniana intencja) oraz dane z jednostki, aby wykonać kolejny krok. Usługa LUIS nie wykonuje tej pracy programowej dla bota ani dla aplikacji wywołującej. Usługa LUIS określa jedynie intencję użytkownika. 
@@ -231,11 +273,6 @@ Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Aby to zrobić, wybier
 ## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"] 
 > [Dowiedz się, jak dodać jednostkę listy](luis-quickstart-intent-and-list-entity.md) 
-
-Dodawanie [wstępnie utworzonej jednostki](luis-how-to-add-entities.md#add-prebuilt-entity) **number** (numer) w celu wyodrębnienia numeru. 
-
-Dodawanie [wstępnie utworzonej jednostki](luis-how-to-add-entities.md#add-prebuilt-entity) **datetimeV2** (data/godzina w wersji 2) w celu wyodrębnienia informacji o dacie.
-
 
 <!--References-->
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

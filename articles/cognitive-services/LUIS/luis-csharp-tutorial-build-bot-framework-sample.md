@@ -1,6 +1,6 @@
 ---
-title: Integracja LUIS z robotów dla C# na platformie Azure przy użyciu zestawu SDK konstruktora Bot | Dokumentacja firmy Microsoft
-description: Tworzenie robotów zintegrowany z aplikacją LUIS przy użyciu platformy Bot.
+title: Integrowanie usługi LUIS z botem przy użyciu zestawu SDK Bot Builder dla języka C# na platformie Azure | Dokumentacja firmy Microsoft
+description: Twórz Boty zintegrowane z aplikacją usługi LUIS przy użyciu platformy Bot Framework.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,31 +9,31 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: v-geberr
-ms.openlocfilehash: b3283880ebb116e5397c38d722a0790cff414f38
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: b7e8bf9046d432bd830f65e1934704ec5036fd1c
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37111926"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346634"
 ---
-# <a name="web-app-bot-using-the-luis-template-for-c"></a>Bot aplikacji sieci Web przy użyciu szablonu LUIS w języku C#
+# <a name="web-app-bot-using-the-luis-template-for-c"></a>Web Apps przy użyciu szablonu usługi LUIS dla języka C#
 
-Tworzenie chatbot opis zintegrowane języka.
+Zbuduj czatbota z usługą interpretacji języka zintegrowanego.
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 
-* [Aplikacja LUIS HomeAutomation](luis-get-started-create-app.md). Profile z tej mapy aplikacji LUIS do bot okno obsługi. 
+* [Aplikacją usługi LUIS HomeAutomation](luis-get-started-create-app.md). Intencji z tej usługi LUIS mapy aplikacji do obsługi okna dialogowego botów. 
 
-## <a name="luis-homeautomation-intents"></a>Intencje LUIS HomeAutomation
+## <a name="luis-homeautomation-intents"></a>Usługa LUIS HomeAutomation intencji
 
-| Celem | Przykład utterance | Funkcje BOT |
+| Przeznaczenie | Przykład wypowiedź | Bot funkcji |
 |:----:|:----------:|---|
-| HomeAutomation.TurnOn | Włącz kontrolki. | Gdy zamiar LUIS `HomeAutomation.TurnOn` wykryciu wywołuje bot `OnIntent` okno obsługi. To okno dialogowe jest, gdzie należy wywołać usługi IoT, aby włączyć na urządzeniu i monituj użytkownika, że urządzenie zostało włączone. |
-| HomeAutomation.TurnOff | Wyłącz światła sypialnię. | Gdy zamiar LUIS `HomeAutomation.TurnOff` wykryciu wywołuje bot `OffIntent` okno obsługi. To okno dialogowe jest, gdzie należy wywołać usługi IoT, aby wyłączyć urządzenie i poinformuj użytkownika, że urządzenie zostało wyłączone. |
+| HomeAutomation.TurnOn | Włączenie świateł. | Gdy celem usługi LUIS `HomeAutomation.TurnOn` zostanie wykryte, bot wywołuje `OnIntent` okno obsługi. To okno dialogowe jest, gdzie możesz wywołać usługi IoT w celu włączenia na urządzeniu, a następnie poinformuj użytkowników, że urządzenie zostało włączone. |
+| HomeAutomation.TurnOff | Wyłącz światła sypialni. | Gdy celem usługi LUIS `HomeAutomation.TurnOff` zostanie wykryte, bot wywołuje `OffIntent` okno obsługi. To okno dialogowe jest, gdzie możesz wywołać usługi IoT, aby wyłączyć urządzenie i poinformuj użytkownika, że urządzenie zostało wyłączone. |
 
-## <a name="create-a-language-understanding-bot-with-bot-service"></a>Utwórz bot opis języka z usługą Bot
+## <a name="create-a-language-understanding-bot-with-bot-service"></a>Tworzenie botów Language Understanding przy użyciu usługi Bot Service
 
-1. W [portalu Azure](https://portal.azure.com), wybierz pozycję **utworzyć nowy zasób** w menu u góry po lewej stronie.
+1. W [witryny Azure portal](https://portal.azure.com), wybierz opcję **Tworzenie nowego zasobu** w górnym menu po lewej stronie.
 
     ![Tworzenie nowego zasobu](./media/luis-tutorial-cscharp-web-bot/bot-service-creation.png)
 
@@ -43,123 +43,123 @@ Tworzenie chatbot opis zintegrowane języka.
 
 3. W oknie Bot aplikacji sieci Web kliknij **Utwórz**.
 
-4. W **usługi Bot**, podaj wymagane informacje i kliknij przycisk **Utwórz**. To tworzy i wdraża bot usług i aplikacji LUIS na platformie Azure. Jeśli chcesz użyć [plucia mowy](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming), przejrzyj [wymagania region](luis-resources-faq.md#what-luis-regions-support-bot-framework-speech-priming) przed utworzeniem sieci bot. 
-    * Ustaw **Nazwa aplikacji** Twojego bot nazwy. Nazwa jest używana jako poddomeny po wdrożeniu programu bot do chmury (na przykład mynotesbot.azurewebsites.net). <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
-    * Wybierz subskrypcję, [grupy zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), plan usługi App service, i [lokalizacji](https://azure.microsoft.com/regions/).
-    * Wybierz **opis języka (C#)** szablon **szablonu Bot** pola.
-    * Wybierz **lokalizacji aplikacji LUIS**. Jest to tworzeniem [region] [ LUIS] aplikacji jest tworzony w.
-    * Zaznacz pole wyboru potwierdzenia powiadomień prawnych. Warunki prawne komunikatu znajdują się poniżej pola wyboru.
+4. W **Bot Service**, podaj wymagane informacje i kliknij przycisk **Utwórz**. To tworzy i wdraża bot service i LUIS aplikacji na platformie Azure. Jeśli chcesz używać [zalewanie mowy](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming), przejrzyj [wymagania region](luis-resources-faq.md#what-luis-regions-support-bot-framework-speech-priming) przed utworzeniem bota. 
+    * Ustaw **nazwy aplikacji** nazwę Twój bot. Nazwa jest używana jako domenę podrzędną, gdy Twój bot jest wdrażane w chmurze (na przykład mynotesbot.azurewebsites.net). <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
+    * Wybierz subskrypcję, [grupy zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), plan usługi App service, a [lokalizacji](https://azure.microsoft.com/regions/).
+    * Wybierz **interpretacji języka (C#)** szablon **szablonu Bota** pola.
+    * Wybierz **lokalizacji aplikacji LUIS**. Jest to, tworzeniem [region] [ LUIS] aplikacja zostanie utworzona w.
+    * Zaznacz pole wyboru potwierdzenia prawne. Warunki prawne są wyświetlane poniżej pola wyboru.
 
     ![Bot Service](./media/luis-tutorial-cscharp-web-bot/bot-service-setting-callout-template.png)
 
 
-5. Upewnij się, że wdrożono usługę bot.
-    * Kliknij przycisk powiadomienia (ikonę dzwonka, która jest wzdłuż górnej krawędzi portalu Azure). Powiadomienie zostanie zmieniony z **rozpoczęto wdrażanie** do **wdrożenie zakończyło się pomyślnie**.
-    * Po zmianie powiadomienia do **wdrożenie zakończyło się pomyślnie**, kliknij przycisk **przejdź do zasobu** na powiadomienie.
+5. Upewnij się, czy usługa bot service został pomyślnie wdrożony.
+    * Kliknij przycisk powiadomienia (ikonę dzwonka, który znajduje się wzdłuż górnej krawędzi w witrynie Azure Portal). Powiadomienie zmieni się z **Wdrażanie rozpoczęte** do **wdrażanie zakończyło się pomyślnie**.
+    * Po powiadomienie zmieni się na **wdrażanie zakończyło się pomyślnie**, kliknij przycisk **przejdź do zasobu** na powiadomienia.
 
 > [!Note]
-> Ten proces tworzenia bot aplikacji sieci web również utworzone Nowa aplikacja LUIS automatycznie. Został uczony i opublikowanych dla użytkownika. 
+> Ten proces tworzenia bota aplikacji sieci web również utworzona nowa aplikacja usługi LUIS. Został przeszkolony i opublikowane dla Ciebie. 
 
 ## <a name="try-the-default-bot"></a>Spróbuj bot domyślne
 
-Upewnij się, że bot został wdrożony, wybierając **powiadomienia** wyboru. Powiadomienia zmieni się z **wdrożenie w toku...**  do **wdrożenie zakończyło się pomyślnie**. Kliknij przycisk **przejdź do zasobu** przycisk, aby otworzyć bot zasobów.
+Upewnij się, że bot został wdrożony, wybierając **powiadomienia** pola wyboru. Powiadomienia zmieni się z **wdrażanie jest w toku...**  do **wdrażanie zakończyło się pomyślnie**. Kliknij przycisk **przejdź do zasobu** przycisk, aby otworzyć zasobów botów.
 
-Po wdrożeniu bot kliknij **testów w sieci Web rozmowę** aby otworzyć okienko rozmowę sieci Web. Wpisz tekst "hello" w sieci Web rozmawiać.
+Po wdrożeniu bot kliknij **testu w czatów internetowych** aby otworzyć okienko czatów internetowych. Wpisz "hello" w czatów internetowych.
 
-  ![Testowanie bot w sieci Web rozmowę](./media/luis-tutorial-cscharp-web-bot/bot-service-web-chat.png)
+  ![Testowanie bota w czatów internetowych](./media/luis-tutorial-cscharp-web-bot/bot-service-web-chat.png)
 
-Bot odpowiada mówiąc "osiągnięto pozdrowienie. Możesz powiedzieć: hello ".  Ta odpowiedź potwierdza, że bot ma odebrane wiadomości i przekazanego domyślnej aplikacji LUIS, utworzony. To ustawienie domyślne LUIS aplikacji wykryto zamiar pozdrowienie. W następnym kroku połączę się z bot aplikacji LUIS utworzonych wcześniej zamiast domyślnej LUIS aplikacji.
+Bot odpowiada mówiąc "osiągnięto pozdrowienie. Można powiedzieć: hello ".  Ta odpowiedź potwierdza, że bot ma Odebrano wiadomość i przekazanego aplikacją usługi LUIS, utworzony domyślny. To ustawienie domyślne aplikacją usługi LUIS wykrył intencji pozdrowienie. W następnym kroku połączysz bot się utworzoną wcześniej zamiast domyślnego aplikacją usługi LUIS aplikację usługi LUIS.
 
-## <a name="connect-your-luis-app-to-the-bot"></a>Łączenie aplikacji z LUIS bot
+## <a name="connect-your-luis-app-to-the-bot"></a>Połącz z aplikacją usługi LUIS do robota
 
-Otwórz **ustawienia aplikacji** i edytować **LuisAppId** pole ma zawierać identyfikator aplikacji LUIS aplikacji. Jeśli utworzono aplikację HomeAutomation LUIS w regionie innym niż zachodnie stany USA, musisz zmienić **LuisAPIHostName** również. **LuisAPIKey** ma obecnie ustawioną tworzenia klucza. Możesz zmienić to do punktu końcowego klucza podczas ruchu przekracza limit przydziału warstwę bezpłatna. 
+Otwórz **ustawienia aplikacji** i edytować **LuisAppId** pole będzie zawierać identyfikator aplikacji z aplikacją usługi LUIS. Jeśli utworzono aplikacją usługi HomeAutomation LUIS w regionie innym niż zachodnie stany USA, należy zmienić **LuisAPIHostName** także. **LuisAPIKey** jest aktualnie skonfigurowana do tworzenia klucza. Możesz zmienić to do klucza punktu końcowego w przypadku ruchu przekracza limit przydziału w warstwie bezpłatna. 
 
-  ![Aktualizuj LUIS identyfikator aplikacji na platformie Azure](./media/luis-tutorial-cscharp-web-bot/bot-service-app-settings.png)
+  ![Zaktualizuj identyfikator aplikacji usługi LUIS na platformie Azure](./media/luis-tutorial-cscharp-web-bot/bot-service-app-settings.png)
 
 > [!Note]
-> Jeśli nie masz identyfikator aplikacji LUIS [aplikacji Home automatyzacji](luis-get-started-create-app.md), zaloguj się do [LUIS](luis-reference-regions.md) witryny sieci Web przy użyciu tego samego konta, które są używane do logowania się do platformy Azure. 
-> 1. Polecenie **Moje aplikacje**. 
-> 2. Znajdź LUIS utworzonego wcześniej, zawierający intencje i jednostek z domeny HomeAutomation.
-> 3. W **ustawienia** stronie LUIS aplikacji, należy znaleźć i skopiować identyfikator aplikacji. Upewnij się, że jest [uczonego](interactive-test.md) i [opublikowane](PublishApp.md). 
+> Jeśli nie masz identyfikator aplikacji usługi LUIS [Home automatyzacji aplikacji](luis-get-started-create-app.md), zaloguj się do [LUIS](luis-reference-regions.md) witryny sieci Web przy użyciu tego samego konta, które umożliwia logowanie do platformy Azure. 
+> 1. Kliknij pozycję **Moje aplikacje**. 
+> 2. Znajdź LUIS utworzonego wcześniej, zawierający intencje i podmioty, z domeny HomeAutomation.
+> 3. W **ustawienia** stronie aplikacji usługi LUIS, Znajdź i skopiuj identyfikator aplikacji. Upewnij się, że jest [uczonego](interactive-test.md) i [opublikowane](luis-how-to-publish-app.md). 
 
     > [!WARNING]
     > If you delete your app ID or LUIS key, the bot will stop working.
 
-## <a name="modify-the-bot-code"></a>Zmodyfikuj kod bot
+## <a name="modify-the-bot-code"></a>Modyfikowanie kodu bot
 
-1. Kliknij przycisk **kompilacji** , a następnie kliknij przycisk **Edytor Otwórz kodu online**.
+1. Kliknij przycisk **kompilacji** a następnie kliknij przycisk **Otwórz online Edytor kodu**.
 
    ![Otwórz online Edytor kodu](./media/luis-tutorial-cscharp-web-bot/bot-service-build.png)
 
-2. Kliknij prawym przyciskiem myszy `build.cmd` i wybierz polecenie **uruchomić z konsoli** do tworzenia aplikacji. Istnieje kilka czynności kompilacji, które usługa kończy się automatycznie za Ciebie. Kompilacja zostanie zakończona, po jego zakończeniu "Zakończyło się pomyślnie."
+2. Kliknij prawym przyciskiem myszy `build.cmd` i wybierz polecenie **uruchamiane z poziomu konsoli** do skompilowania aplikacji. Istnieje kilka kroków kompilacji, które usługa kończy się automatycznie dla Ciebie. Kompilacja zostanie zakończona, po jego zakończeniu "Zakończyło się pomyślnie."
 
-3. Otwórz w edytorze kodu `/Dialogs/BasicLuisDialog.cs`. Ten przewodnik zawiera następujący kod:
+3. Otwórz w edytorze kodu `/Dialogs/BasicLuisDialog.cs`. Zawiera następujący kod:
 
    [!code-csharp[Default BasicLuisDialog.cs](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/Default_BasicLuisDialog.cs "Default BasicLuisDialog.cs")]
 
 ## <a name="change-code-to-homeautomation-intents"></a>Zmiana kodu na intencje HomeAutomation
 
 
-1. Usuń trzy atrybuty konwersji i metody dla **pozdrowienia**, **anulować**, i **pomocy**. Te opcje nie są używane w domenie wbudowane HomeAutomation. Upewnij się zachować **Brak** atrybutu konwersji i metody. 
+1. Usuń trzy atrybuty intencji i metody **pozdrowienia**, **anulować**, i **pomocy**. Te opcje nie są używane w domenie wstępnie HomeAutomation. Upewnij się zachować **Brak** atrybut intencji i metody. 
 
-2. Dodaj zależności do górnej części pliku, z innych zależności:
+2. Dodaj zależności do górnej części pliku, przy użyciu innych zależności:
 
    [!code-csharp[Dependencies](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs?range=4-5&dedent=8 "dependencies")]
 
-3. Dodaj stałe zarządzanie ciągów w górnej części `BasicLuisDialog ` klasy:
+3. Dodaj stałe do zarządzania ciągów w górnej części `BasicLuisDialog ` klasy:
 
    [!code-csharp[Add Intent and Entity Constants](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs?range=23-32&dedent=8 "Add Intent and Entity Constants")]
 
-4. Dodaj kod dla nowych opcji programu `HomeAutomation.TurnOn` i `HomeAutomation.TurnOff` wewnątrz `BasicLuisDialog ` klasy:
+4. Dodaj kod dla nowych intencji `HomeAutomation.TurnOn` i `HomeAutomation.TurnOff` wewnątrz `BasicLuisDialog ` klasy:
 
    [!code-csharp[Add Intents](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs?range=61-71&dedent=8 "Add Intents")]
 
-5. Dodaj kod, aby pobrać wszystkie elementy znalezione przez LUIS wewnątrz `BasicLuisDialog ` klasy:
+5. Dodaj kod, aby pobrać wszystkie jednostki znalezione przez usługi LUIS wewnątrz `BasicLuisDialog ` klasy:
 
    [!code-csharp[Collect entities](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs?range=34-53&dedent=8 "Collect entities")]
 
-6. Zmień **ShowLuisResult** metoda `BasicLuisDialog ` klasy zaokrąglona wynik zbierania jednostek i wyświetlenia komunikatu odpowiedzi w chatbot:
+6. Zmiana **ShowLuisResult** method in Class metoda `BasicLuisDialog ` klasy zaokrąglić wynik, zbieraj jednostek i wyświetli komunikat odpowiedzi w chatbot:
 
    [!code-csharp[Display message in chatbot](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs?range=73-83&dedent=8 "Display message in chatbot")]
 
-## <a name="build-the-bot"></a>Tworzenie bot
-W edytorze kodu, kliknij prawym przyciskiem myszy `build.cmd` i wybierz **uruchomić z konsoli**.
+## <a name="build-the-bot"></a>Tworzenie bota
+W edytorze kodu, kliknij prawym przyciskiem myszy `build.cmd` i wybierz **uruchamiane z poziomu konsoli**.
 
-![Tworzenie bot sieci Web ](./media/luis-tutorial-cscharp-web-bot/bot-service-build-run-from-console.png)
+![Tworzenie botów w sieci Web ](./media/luis-tutorial-cscharp-web-bot/bot-service-build-run-from-console.png)
 
-Widok kodu jest zastępowany terminali okna pokazującego postęp i wyniki kompilacji.
+Widok kodu jest zastępowany okno terminalu pokazujący postęp i wyniki kompilacji.
 
-![Kompilacja zakończona sukcesem bot sieci Web](./media/luis-tutorial-cscharp-web-bot/bot-service-build-success.png)
+![Kompilacja zakończona sukcesem w sieci Web bot](./media/luis-tutorial-cscharp-web-bot/bot-service-build-success.png)
 
 > [!TIP]
-> Alternatywna metoda tworzenia bot jest wybierz nazwę bot w górnym pasku niebieski, a następnie wybierz **Otwórz konsolę Kudu**. Otwiera konsolę do **D:\home**. 
+> Alternatywną metodą tworzenia bota jest wybierz nazwa robota na górnym pasku niebieski, a następnie wybierz pozycję **otwartej konsoli Kudu**. Otwiera konsolę **D:\home**. 
 > 
 > Zmień katalog na **D:\home\site\wwwroot** , wpisując: `cd site\wwwroot`
 >
 > Uruchom skrypt kompilacji, wpisując: `build.cmd`
 
-## <a name="test-the-bot"></a>Testowanie bot
+## <a name="test-the-bot"></a>Testowanie robota
 
-W portalu Azure kliknij **testów w sieci Web rozmowę** do testowania bot. Wpisz komunikaty like "Włącz kontrolki" i "Wyłącz Moje grzejnik" można wywołać lokalizacji docelowych, które dodano do niego.
+W witrynie Azure portal kliknij pozycję **testowania w czatów internetowych** do testowania robota. Typ wiadomości like "Włączenie świateł" i "turn off Moje heater" do wywołania intencji, które dodano do niego.
 
-   ![Testowanie HomeAutomation bot w sieci Web rozmowę](./media/luis-tutorial-cscharp-web-bot/bot-service-chat-results.png)
+   ![Testowanie HomeAutomation bot w czatów internetowych](./media/luis-tutorial-cscharp-web-bot/bot-service-chat-results.png)
 
 > [!TIP]
-> Można ponownie ucz aplikacji LUIS bez żadnych modyfikacji kodu z bot. Zobacz [dodać zniesławiających przykład](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) i [nauczenia i przetestowania aplikacji LUIS](https://docs.microsoft.com/azure/cognitive-services/LUIS/interactive-test). 
+> Mogą przechowywać aplikacją usługi LUIS bez żadnych modyfikacji kodu Twój bot. Zobacz [Dodawanie wypowiedzi przykład](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) i [nauczenia i przetestowania aplikacją usługi LUIS](https://docs.microsoft.com/azure/cognitive-services/LUIS/interactive-test). 
 
 ## <a name="download-the-bot-to-debug"></a>Pobierz bot do debugowania
-Jeśli Twoje bot nie działa, Pobierz projektu na komputerze lokalnym i kontynuować [debugowania](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-an-azure-app-service-web-app-c-bot). 
+Jeśli Twój bot nie działa, pobrać projektu na komputerze lokalnym i kontynuować [debugowania](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-an-azure-app-service-web-app-c-bot). 
 
-## <a name="learn-more-about-bot-framework"></a>Dowiedz się więcej o Bot Framework
-Dowiedz się więcej o [Bot Framework](https://dev.botframework.com/) i [3.x](https://github.com/Microsoft/BotBuilder) i [4.x](https://github.com/Microsoft/botbuilder-dotnet) zestawów SDK.
+## <a name="learn-more-about-bot-framework"></a>Dowiedz się więcej na temat platformy Bot Framework
+Dowiedz się więcej o [platformy Bot Framework](https://dev.botframework.com/) i [3.x](https://github.com/Microsoft/BotBuilder) i [4.x](https://github.com/Microsoft/botbuilder-dotnet) zestawów SDK.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dodaj LUIS intencje i Bot okien obsługi **pomocy**, **anulować**, i **pozdrowienia** lokalizacji docelowych. Pamiętaj, aby uczenia, publikowanie i [kompilacji](#build-the-bot) bot aplikacji sieci web. Zarówno LUIS i bot powinien mieć tej samej lokalizacji docelowych.
+Dodawanie intencji LUIS i Bot okien obsługi **pomocy**, **anulować**, i **pozdrowienia** intencji. Pamiętaj, aby uczyć, publikowanie i [kompilacji](#build-the-bot) bot aplikacji sieci web. Bot i LUIS powinny mieć ten sam intencji.
 
 > [!div class="nextstepaction"]
-> [Dodaj intencje](./luis-how-to-add-intents.md)
-> [plucia mowy](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)
+> [Dodawanie intencji](./luis-how-to-add-intents.md)
+> [zalewanie mowy](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)
 
 
 <!-- Links -->
@@ -170,7 +170,7 @@ Dodaj LUIS intencje i Bot okien obsługi **pomocy**, **anulować**, i **pozdrowi
 [BFPortal]: https://dev.botframework.com/
 [RegisterInstructions]: https://docs.microsoft.com/bot-framework/portal-register-bot
 [BotFramework]: https://docs.microsoft.com/bot-framework/
-[AssignedEndpointDoc]: https://docs.microsoft.com/azure/cognitive-services/LUIS/manage-keys
+[AssignedEndpointDoc]: https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-how-to-manage-keys
 [VisualStudio]: https://www.visualstudio.com/
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
 <!-- tested on Win10 -->

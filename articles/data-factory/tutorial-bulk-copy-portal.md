@@ -11,21 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/10/2018
+ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 440b07b494b34db7ff3fcdf5d5ac830b165c339d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c42f7257b4b4077cc719c57e3136505f766e654c
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30173287"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046837"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Zbiorcze kopiowanie wielu tabel przy użyciu usługi Azure Data Factory
 W tym samouczku przedstawiono **kopiowanie wielu tabel z bazy danych Azure SQL Database do usługi Azure SQL Data Warehouse**. Tego samego wzorca można użyć także w innych scenariuszach kopiowania. Na przykład kopiowanie tabel z programu SQL Server/Oracle do usługi Azure SQL Database/Data Warehouse/Azure Blob, kopiowanie różnych ścieżek z obiektów blob do tabeli bazy danych Azure SQL Database.
 
 > [!NOTE]
 > - Jeśli jesteś nowym użytkownikiem usługi Azure Data Factory, zobacz [Wprowadzenie do usługi Azure Data Factory](introduction.md).
-> - Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz dostępnej ogólnie wersji 1 usługi Data Factory, zobacz [dokumentację dotyczącą usługi Data Factory w wersji 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 Na poziomie ogólnym ten samouczek obejmuje następujące kroki:
 
@@ -93,7 +92,7 @@ Zarówno dla bazy SQL Database, jak i dla magazynu SQL Data Warehouse, zezwól u
       - Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów.   
          
       Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
-4. Wybierz wartość **V2 (wersja zapoznawcza)** dla **wersji**.
+4. Wybierz opcję **V2** w obszarze **Wersja**.
 5. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Obecnie usługa Data Factory w wersji 2 umożliwia tworzenie fabryk danych tylko w regionach Wschodnie stany USA, Wschodnie stany USA 2 i Europa Zachodnia. Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 6. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
 7. Kliknij przycisk **Utwórz**.
@@ -163,9 +162,9 @@ W tym samouczku magazyn obiektów blob platformy Azure służy jako obszar przej
 ## <a name="create-datasets"></a>Tworzenie zestawów danych
 W tym samouczku utworzysz zestawy danych będące źródłem i ujściem, określające lokalizację przechowywania danych. 
 
-Wejściowy zestaw danych AzureSqlDatabaseDataset odwołuje się do elementu AzureSqlDatabaseLinkedService. Połączona usługa określa parametry połączenia w celu nawiązania połączenia z bazą danych. Zestaw danych określa nazwę bazy danych i tabelę, która zawiera dane źródłowe. 
+Wejściowy zestaw danych **AzureSqlDatabaseDataset** odwołuje się do elementu **AzureSqlDatabaseLinkedService**. Połączona usługa określa parametry połączenia w celu nawiązania połączenia z bazą danych. Zestaw danych określa nazwę bazy danych i tabelę, która zawiera dane źródłowe. 
 
-Wyjściowy zestaw danych AzureSqlDWDataset odwołuje się do elementu AzureSqlDWLinkedService. Połączona usługa określa parametry połączenia w celu nawiązania połączenia z magazynem danych. Zestaw danych określa bazę danych i tabelę, do którego dane są kopiowane. 
+Wyjściowy zestaw danych **AzureSqlDWDataset** odwołuje się do elementu **AzureSqlDWLinkedService**. Połączona usługa określa parametry połączenia w celu nawiązania połączenia z magazynem danych. Zestaw danych określa bazę danych i tabelę, do którego dane są kopiowane. 
 
 W tym samouczku źródłowe i docelowe tabele SQL nie są ustalone w definicjach zestawów danych. W zamian działanie ForEach przekazuje nazwę tabeli w czasie wykonywania do działania kopiowania. 
 
@@ -179,7 +178,6 @@ W tym samouczku źródłowe i docelowe tabele SQL nie są ustalone w definicjach
     ![Wybieranie usługi Azure SQL Database](./media/tutorial-bulk-copy-portal/select-azure-sql-database-dataset.png)
 3. W oknie właściwości w dolnej części wprowadź wartość **AzureSqlDatabaseDataset** w polu **Nazwa**.
 
-    ![Nazwa zestawu danych będącego źródłem](./media/tutorial-bulk-copy-portal/source-dataset-general.png)
 4. Przejdź do karty **Połączenie** i wykonaj następujące czynności: 
 
     1. Wybierz wartość **AzureSqlDatabaseLinkedService** w polu **Połączona usługa**.
@@ -193,14 +191,21 @@ W tym samouczku źródłowe i docelowe tabele SQL nie są ustalone w definicjach
 1. Kliknij pozycję **+ (plus)** w lewym okienku, a następnie kliknij pozycję **Zestaw danych**. 
 2. W oknie **Nowy zestaw danych** wybierz pozycję **Azure SQL Data Warehouse** i kliknij pozycję **Zakończ**. Powinna zostać wyświetlona nowa karta o nazwie **AzureSqlDWTable1**. 
 3. W oknie właściwości w dolnej części wprowadź wartość **AzureSqlDWDataset** w polu **Nazwa**.
-4. Przejdź do karty **Połączenia** i wybierz wartość **AzureSqlDatabaseLinkedService** w polu **Połączona usługa**.
-5. Przejdź do karty **Parametry**, a następnie kliknij pozycję **+ Nowy**
+5. Przejdź do karty **Parametry**, a następnie kliknij pozycję **+ Nowy** i wprowadź ciąg **DWTableName** jako nazwę parametru. Jeśli kopiujesz/wklejasz tę nazwę ze strony, upewnij się, że nie ma **znaku spacji na końcu** ciągu **DWTableName**. 
 
-    ![Strona połączenia źródłowego zestawu danych](./media/tutorial-bulk-copy-portal/sink-dataset-new-parameter-button.png)
-6. Wprowadź ciąg **DWTableName** jako nazwę parametru. Jeśli kopiujesz/wklejasz tę nazwę ze strony, upewnij się, że nie ma **znaku spacji na końcu** ciągu **DWTableName**. 
-7. W sekcji **Właściwości sparametryzowane** wprowadź `@{dataset().DWTableName}` jako wartość właściwości **tableName**. Właściwość **tableName** zestawu danych jest ustawiana na wartość przekazywaną jako argument parametru **DWTableName**. Działanie ForEach iteruje w obrębie listy tabel i przekazuje je po jednej do działania Copy (Kopiowanie). 
-   
-    ![Nazwa parametru](./media/tutorial-bulk-copy-portal/dwtablename-tablename.png)
+    ![Strona połączenia źródłowego zestawu danych](./media/tutorial-bulk-copy-portal/sink-dataset-new-parameter.png)
+
+6. Przejdź do karty **Połączenie**. 
+
+    a. Wybierz wartość **AzureSqlDatabaseLinkedService** w polu **Połączona usługa**.
+
+    b. W obszarze **Tabela** wybierz opcję **Edytuj**, kliknij w polu wprowadzania nazwy tabeli, a następnie kliknij link **Dodaj zawartość dynamiczną** poniżej. 
+    
+    ![Nazwa parametru](./media/tutorial-bulk-copy-portal/table-name-parameter.png)
+
+    d. Na stronie **Dodawanie zawartości dynamicznej** kliknij pozycję **DWTAbleName** w obszarze **Parametry**. Spowoduje to automatyczne wypełnienie pola tekstowego wyrażenia u góry: `@dataset().DWTableName`. Następnie Kliknij przycisk **Zakończ**. Właściwość **tableName** zestawu danych jest ustawiana na wartość przekazywaną jako argument parametru **DWTableName**. Działanie ForEach iteruje w obrębie listy tabel i przekazuje je po jednej do działania Copy (Kopiowanie). 
+
+    ![Konstruktor parametrów zestawu danych](./media/tutorial-bulk-copy-portal/dataset-parameter-builder.png)
 
 ## <a name="create-pipelines"></a>Tworzenie potoków
 W tym samouczku tworzysz dwa potoki: **IterateAndCopySQLTables** i **GetTableListAndTriggerCopyData**. 
@@ -217,63 +222,65 @@ Potok **GetTableListAndTriggerCopyData** przyjmuje listę tabel jako parametr. D
 1. W lewym okienku kliknij pozycję **+ (plus)**, a następnie kliknij pozycję **Potok**.
 
     ![Menu Nowy potok](./media/tutorial-bulk-copy-portal/new-pipeline-menu.png)
-2. W oknie Właściwości zmień nazwę potoku na **IterateAndCopySQLTables**. 
+2. Na karcie **Ogólne** określ jako nazwę wartość **IterateAndCopySQLTables**. 
 
-    ![Nazwa potoku](./media/tutorial-bulk-copy-portal/first-pipeline-name.png)
 3. Przejdź do karty **Parametry** i wykonaj następujące czynności: 
 
     1. Kliknij pozycję **+ Nowy**. 
     2. Wprowadź ciąg **tableList** jako **nazwę** parametru.
-    3. Wybierz wartość **Obiekt** w polu **Typ**.
+    3. Wybierz wartość **Array** w polu **Typ**.
 
         ![Parametr potoku](./media/tutorial-bulk-copy-portal/first-pipeline-parameter.png)
-4. W przyborniku **Działania** rozwiń pozycję **Iteracja i warunki**, a następnie przeciągnij i upuść działanie **ForEach** do powierzchni projektu potoku. Możesz również wyszukać działania w przyborniku **Działania**. W dolnej części okna **Właściwości** wprowadź wartość **IterateSQLTables** w polu **Nazwa**. 
+4. W przyborniku **Działania** rozwiń pozycję **Iteracja i warunki**, a następnie przeciągnij i upuść działanie **ForEach** do powierzchni projektu potoku. Możesz również wyszukać działania w przyborniku **Działania**. 
 
-    ![Nazwa działania ForEach](./media/tutorial-bulk-copy-portal/for-each-activity-name.png)
-5. Przejdź do karty **Ustawienia**, a następnie wprowadź wartość `@pipeline().parameters.tableList` w polu **Elementy**.
+    a. Na karcie **Ogólne** u dołu wprowadź wartość **IterateSQLTables** w polu **Nazwa**. 
+
+    b. Przejdź do karty **Ustawienia**, kliknij w polu wprowadzania **Elementy**, a następnie kliknij link **Dodaj zawartość dynamiczną** poniżej. 
 
     ![Ustawienia działania ForEach](./media/tutorial-bulk-copy-portal/for-each-activity-settings.png)
-6. Aby dodać działanie podrzędne do działania **ForEach**, **kliknij dwukrotnie** działanie ForEach (lub) kliknij pozycję **Edytuj (ikona ołówka)**. Linki akcji dla działania zostaną wyświetlone tylko po wybraniu tych pozycji. 
 
-    ![Nazwa działania ForEach](./media/tutorial-bulk-copy-portal/edit-for-each-activity.png)
-7. W przyborniku **Działania** rozwiń węzeł **DataFlow**, a następnie przeciągnij i upuść działanie **Copy** (Kopiowanie) na powierzchni projektanta potoku i zmień nazwę w oknie Właściwości na **CopyData**. Zwróć uwagę na menu linków do stron nadrzędnych w górnej części. IterateAndCopySQLTable to nazwa potoku, a IterateSQLTables to nazwa działania ForEach. Projektant należy do zakresu działania. Aby wrócić do edytora potoku z edytora ForEach, kliknij link w menu linków do stron nadrzędnych. 
+    d. Na stronie **Dodawanie zawartości dynamicznej** zwiń sekcje Zmienne systemowe oraz Funkcje, kliknij pozycję **tableList** w obszarze **Parametry**. Spowoduje to automatyczne wypełnienie pola tekstowego wyrażenia u góry: `@pipeline().parameter.tableList`. Następnie Kliknij przycisk **Zakończ**. 
+
+    ![Konstruktor parametru ForEach](./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png)
+    
+    d. Przejdź do karty **Działania**, kliknij pozycję **Dodaj działanie**, aby dodać działanie podrzędne do działania **ForEach**.
+
+5. W przyborniku **Działania** rozwiń pozycję **Przepływ danych**, a następnie przeciągnij działanie **Kopiowanie** i upuść je na powierzchni projektanta potoku. Zwróć uwagę na menu linków do stron nadrzędnych w górnej części. IterateAndCopySQLTable to nazwa potoku, a IterateSQLTables to nazwa działania ForEach. Projektant należy do zakresu działania. Aby wrócić do edytora potoku z edytora ForEach, kliknij link w menu linków do stron nadrzędnych. 
 
     ![Kopiowanie w działaniu ForEach](./media/tutorial-bulk-copy-portal/copy-in-for-each.png)
-8. Przejdź do karty **Źródło** i wykonaj następujące czynności:
+6. Przejdź do karty **Źródło** i wykonaj następujące czynności:
 
     1. Wybierz wartość **AzureSqlDatabaseDataset** w polu **Źródło danych**. 
     2. Wybierz opcję **Zapytanie** w polu **Zapytanie użytkownika**. 
-    3. W obszarze **Zapytanie** wprowadź następujące zapytanie SQL.
+    3. Kliknij pole wprowadzania **Zapytanie** -> wybierz pozycję **Dodaj zawartość dynamiczną** poniżej -> wprowadź poniższe wyrażenie w polu **Zapytanie** -> wybierz przycisk **Zakończ**.
 
         ```sql
         SELECT * FROM [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
         ``` 
 
         ![Kopiowanie ustawień źródła](./media/tutorial-bulk-copy-portal/copy-source-settings.png)
-9. Przejdź do karty **Ujście** i wykonaj następujące czynności: 
+7. Przejdź do karty **Ujście** i wykonaj następujące czynności: 
 
     1. Wybierz pozycję **AzureSqlDWDataset** w polu **Zestaw danych będący ujściem**.
+    2. Kliknij pole wprowadzania WARTOŚĆ parametru DWTableName -> wybierz pozycję **Dodaj zawartość dynamiczną** poniżej, wprowadź wyrażenie `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` jako skrypt -> wybierz przycisk **Zakończ**.
     2. Rozwiń węzeł **Ustawienia programu Polybase** i wybierz pozycję **Zezwól na program Polybase**. 
     3. Usuń zaznaczenie opcji **Użyj wartości domyślnej typu**. 
-    4. Wprowadź następujący skrypt SQL w obszarze **Skrypt czyszczenia**. 
+    4. Kliknij pole wprowadzania **Skrypt czyszczenia** -> wybierz pozycję **Dodaj zawartość dynamiczną** poniżej -> wprowadź poniższe wyrażenie jako skrypt -> wybierz przycisk **Zakończ**. 
 
         ```sql
         TRUNCATE TABLE [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
         ```
 
         ![Ustawienia ujścia kopiowania](./media/tutorial-bulk-copy-portal/copy-sink-settings.png)
-10. Przejdź do karty **Parametry**, w razie potrzeby przewiń w dół w celu wyświetlenia sekcji **Zestaw danych będący ujściem** z parametrem **DWTableName**. Ustaw wartość tego parametru na `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]`.
 
-    ![Parametry ujścia kopiowania](./media/tutorial-bulk-copy-portal/copy-sink-parameters.png)
-11. Przejdź do karty **Ustawienia** i wykonaj następujące czynności: 
+8. Przejdź do karty **Ustawienia** i wykonaj następujące czynności: 
 
     1. Wybierz wartość **Prawda** dla opcji **Włącz tryb przejściowy**.
     2. Wybierz wartość **AzureStorageLinkedService** w polu **Połączona usługa konta magazynu**.
 
         ![Włączanie trybu przejściowego](./media/tutorial-bulk-copy-portal/copy-sink-staging-settings.png)
-12. Aby zweryfikować ustawienia potoku, kliknij pozycję **Weryfikuj**. Potwierdź, że weryfikacja nie zwróciła błędu. Aby zamknąć okno **Raport weryfikacji potoku**, kliknij pozycję **>>**.
 
-    ![Raport weryfikacji potoku](./media/tutorial-bulk-copy-portal/first-pipeline-validation-report.png)
+9. Aby zweryfikować ustawienia potoku, kliknij pozycję **Weryfikuj** na górnym pasku narzędzi dla potoku. Potwierdź, że weryfikacja nie zwróciła błędu. Aby zamknąć okno **Raport weryfikacji potoku**, kliknij pozycję **>>**.
 
 ### <a name="create-the-pipeline-gettablelistandtriggercopydata"></a>Tworzenie potoku GetTableListAndTriggerCopyData
 
@@ -287,7 +294,6 @@ Ten potok wykonuje dwie czynności:
     ![Menu Nowy potok](./media/tutorial-bulk-copy-portal/new-pipeline-menu.png)
 2. W oknie Właściwości zmień nazwę potoku na **GetTableListAndTriggerCopyData**. 
 
-    ![Nazwa potoku](./media/tutorial-bulk-copy-portal/second-pipeline-name.png)
 3. W przyborniku **Działania** rozwiń pozycję **Ogólne**, przeciągnij i upuść działanie **Lookup** (Wyszukiwanie) na powierzchni projektanta i wykonaj poniższe czynności:
 
     1. Wprowadź wartość **LookupTableList** w polu **Nazwa**. 
@@ -315,7 +321,7 @@ Ten potok wykonuje dwie czynności:
     2. Rozwiń sekcję **Zaawansowane**. 
     3. Kliknij pozycję **+ Nowy** w sekcji **Parametry**. 
     4. Wprowadź ciąg **tableList** jako **nazwę** parametru.
-    5. Wprowadź `@activity('LookupTableList').output.value` jako **wartość** parametru. Ustawiasz listę wyników działania Lookup (Wyszukiwanie) jako wejście do drugiego potoku. Lista wyników zawiera listę tabel, których dane trzeba skopiować do miejsca docelowego. 
+    5. Kliknij pole wprowadzania WARTOŚĆ -> wybierz pozycję **Dodaj zawartość dynamiczną** poniżej -> wprowadź `@activity('LookupTableList').output.value` jako wartość nazwy tabeli -> wybierz przycisk **Zakończ**. Ustawiasz listę wyników działania Lookup (Wyszukiwanie) jako wejście do drugiego potoku. Lista wyników zawiera listę tabel, których dane trzeba skopiować do miejsca docelowego. 
 
         ![Działanie Execute Pipeline (Wykonywanie potoku) — strona Ustawienia](./media/tutorial-bulk-copy-portal/execute-pipeline-settings-page.png)
 7. **Połącz** działanie **Lookup** (Wyszukiwanie) z działaniem **Execute Pipeline** (Wykonywanie potoku), przeciągając **zielone pole** dołączone do działania Lookup do lewej strony działania Execute Pipeline.
@@ -323,17 +329,13 @@ Ten potok wykonuje dwie czynności:
     ![Łączenie działań Lookup (Wyszukiwanie) i Execute Pipeline (Wykonywanie potoku)](./media/tutorial-bulk-copy-portal/connect-lookup-execute-pipeline.png)
 8. Aby zweryfikować potok, kliknij pozycję **Weryfikuj** na pasku narzędzi. Potwierdź, że weryfikacja nie zwróciła błędów. Aby zamknąć okno **Raport weryfikacji potoku**, kliknij pozycję **>>**.
 
-    ![Drugi potok — raport weryfikacji](./media/tutorial-bulk-copy-portal/second-pipeline-validation-report.png)
-9. Aby opublikować jednostki (zestawy danych, potoki itp.) w usłudze Data Factory, kliknij pozycję **Opublikuj wszystko**. Poczekaj na pomyślne zakończenie publikowania. 
-
-    ![Przycisk Opublikuj](./media/tutorial-bulk-copy-portal/publish.png)
+9. Aby opublikować jednostki (zestawy danych, potoki itp.) w usłudze Data Factory, kliknij pozycję **Opublikuj wszystko** w górnej części okna. Poczekaj na pomyślne zakończenie publikowania. 
 
 ## <a name="trigger-a-pipeline-run"></a>Wyzwalanie uruchomienia potoku
 
-1. Sprawdź, czy karta **GetTableListAndTriggerCopyData** jest aktywna. 
-2. Kliknij pozycję **Wyzwól**, a następnie kliknij pozycję **Wyzwól teraz**. 
+Przejdź do potoku **GetTableListAndTriggerCopyData**, kliknij pozycję **Wyzwalacz**, a następnie pozycję **Wyzwól teraz**. 
 
-    ![Wyzwól teraz](./media/tutorial-bulk-copy-portal/trigger-now.png)
+![Wyzwól teraz](./media/tutorial-bulk-copy-portal/trigger-now.png)
 
 ## <a name="monitor-the-pipeline-run"></a>Monitorowanie działania potoku
 

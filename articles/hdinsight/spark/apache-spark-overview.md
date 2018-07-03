@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 05/07/2018
 ms.author: jgao
-ms.openlocfilehash: 7e01915a63e0e260dc85893bdf65cf7b86000cef
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a18777694677ab4958c88b5610844726f80868cb
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33771222"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054004"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Co to jest platforma Apache Spark w usłudze Azure HDInsight
 
@@ -43,8 +43,8 @@ Klastry Spark w usłudze HDInsight oferują w pełni zarządzaną usługę Spark
 | Interfejsy API REST |Klastry Spark w usłudze HDInsight obejmują [Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server), czyli serwer zadań Spark oparty na interfejsie API REST do zdalnego przesyłania i monitorowania zadań. |
 | Obsługa usługi Azure Data Lake Store | Klastry Spark w usłudze HDInsight mogą korzystać z usługi Azure Data Lake Store zarówno w formie magazynu podstawowego, jak i dodatkowego. Aby uzyskać więcej informacji o usłudze Data Lake — magazyn, zobacz temat [Przegląd usługi Azure Data Lake Store](../../data-lake-store/data-lake-store-overview.md). |
 | Integracja z usługami Azure |Klaster Spark w usłudze HDInsight zawiera łącznik usługi Azure Event Hubs. Aplikacje do przesyłania strumieniowego można tworzyć nie tylko za pomocą oprogramowania [Kafka](http://kafka.apache.org/), które jest już dostępne w ramach platformy Spark, ale także przy użyciu usługi Event Hubs. |
-| Obsługa platformy R Server | Możesz skonfigurować platformę R Server w klastrze Spark w usłudze HDInsight, aby uruchamiać rozproszone obliczenia R z szybkością zapewnianą przez klaster Spark. Aby uzyskać więcej informacji, zobacz temat [Rozpoczęcie pracy z platformą R Server w usłudze HDInsight](../r-server/r-server-get-started.md). |
-| Integracja ze zintegrowanymi środowiskami projektowymi innych firm | Usługa HDInsight zapewnia kilka wtyczek IDE, które są przydatne do tworzenia i przesyłania aplikacji do klastra Spark w usłudze HDInsight. Aby uzyskać więcej informacji, zobacz tematy [Korzystanie z zestawu narzędzi platformy Azure dla środowiska IntelliJ IDEA](apache-spark-intellij-tool-plugin.md) i [Korzystanie z zestawu narzędzi platformy Azure dla środowiska Eclipse](apache-spark-eclipse-tool-plugin.md).|
+| Obsługa narzędzia ML Server | Narzędzie ML Server jest obsługiwane w usłudze HDInsight przy użyciu typu klastra **Usługi ML**. Możesz skonfigurować klaster usług ML, aby uruchamiać rozproszone obliczenia R z szybkością zapewnianą przez klaster Spark. Aby uzyskać więcej informacji, zobacz temat [Wprowadzenie do narzędzia ML Server w usłudze HDInsight](../r-server/r-server-get-started.md). |
+| Integracja ze zintegrowanymi środowiskami projektowymi innych firm | Usługa HDInsight zapewnia kilka wtyczek IDE, które są przydatne do tworzenia i przesyłania aplikacji do klastra Spark w usłudze HDInsight. Aby uzyskać więcej informacji, zobacz tematy [Korzystanie z zestawu narzędzi Azure Toolkit for IntelliJ IDEA](apache-spark-intellij-tool-plugin.md), [Use HDInsight for VSCode (Korzystanie z narzędzi usługi HDInsight dla programu VSCode)](../hdinsight-for-vscode.md) i [Korzystanie z zestawu narzędzi Azure Toolkit for Eclipse](apache-spark-eclipse-tool-plugin.md).|
 | Zapytania jednoczesne |Klastry Spark w usłudze HDInsight obsługują zapytania jednoczesne. Dzięki temu wiele zapytań od jednego użytkownika lub wiele zapytań od różnych użytkowników i aplikacji może współdzielić te same zasoby klastra. |
 | Buforowanie na dyskach SSD |Istnieje możliwość buforowania danych w pamięci lub na dyskach SSD podłączonych do węzłów klastra. Buforowanie w pamięci zapewnia najlepszą wydajność zapytań, ale może być kosztowne. Buforowanie na dyskach SSD stanowi doskonałe rozwiązanie umożliwiające poprawę wydajności zapytań bez konieczności tworzenia klastra o rozmiarze obejmującym cały zestaw danych w pamięci. |
 | Integracja z narzędziami do analizy biznesowej |Klastry Spark w usłudze HDInsight zawierają łączniki dla narzędzi do analizy biznesowej danych, takich jak [Power BI](http://www.powerbi.com/). |
@@ -109,3 +109,4 @@ Aby dowiedzieć się więcej na temat platformy Spark w usłudze HDInsight, moż
 W tym omówieniu uzyskasz podstawową wiedzę na temat platformy Apache Spark w usłudze Azure HDInsight. Przejdź do następnego artykułu, aby dowiedzieć się, jak utworzyć klaster HDInsight Spark i uruchamiać niektóre zapytania Spark SQL:
 
 - [Tworzenie klastra Spark w usłudze HDInsight](./apache-spark-jupyter-spark-sql.md)
+

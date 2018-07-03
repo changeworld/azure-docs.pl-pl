@@ -1,6 +1,6 @@
 ---
-title: Uprawnienia w usłudze Azure AD | Microsoft Docs
-description: Dowiedz się więcej na temat zakresów i uprawnień w usłudze Azure Active Directory i sposobu ich użycia
+title: Uprawnienia w usłudze Azure Active Directory | Microsoft Docs
+description: Dowiedz się więcej na temat uprawnień w usłudze Azure Active Directory i sposobu ich użycia.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -13,21 +13,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 04/20/2017
+ms.date: 06/25/2018
 ms.author: celested
-ms.reviewer: justhu
+ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 749253d6a082bcdc2b80c5984f20c4b8c4039ad0
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 786757293e2ad2c47f80745f6bdd9bb5a65add80
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156895"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936959"
 ---
-# <a name="permissions-in-azure-ad"></a>Uprawnienia w usłudze Azure AD
-Usługa Azure Active Directory (Azure AD) szeroko wykorzystuje użycie uprawnień dla przepływów OAuth i OIDC (OpenID Connect). Po odebraniu przez aplikację tokenu dostępu od usługi Azure AD aplikacja uwzględnia oświadczenia z opisami uprawnień, które aplikacja ma w odniesieniu do określonego zasobu (są one znane także jako zakresy). Ułatwia to autoryzację zasobu, ponieważ wystarczy sprawdzić, czy token zawiera odpowiednie uprawnienie, niezależnie od wywoływanego interfejsu API. 
+# <a name="permissions-in-azure-active-directory"></a>Uprawnienia w usłudze Azure Active Directory
+
+Usługa Azure Active Directory (Azure AD) szeroko wykorzystuje użycie uprawnień dla przepływów OAuth i OIDC (OpenID Connect). Po odebraniu przez aplikację tokenu dostępu od usługi Azure AD aplikacja uwzględnia oświadczenia z opisami uprawnień, które aplikacja ma w odniesieniu do określonego zasobu. Uprawnienia, znane również jako zakresy, ułatwiają autoryzację zasobu, ponieważ zasób musi jedynie sprawdzić, czy token zawiera odpowiednie uprawnienie do dowolnego interfejsu API wywoływanego przez aplikację. 
 
 ## <a name="types-of-permissions"></a>Typy uprawnień
+
 W usłudze Azure AD zdefiniowano dwa rodzaje uprawnień: 
 * **Uprawnienia delegowane** — są używane przez aplikacje, w których użytkownik jest obecnie zalogowany. W przypadku takich aplikacji zgodę na uprawnienia żądane przez aplikację może wyrazić użytkownik lub administrator. Podczas wywołań interfejsu API do aplikacji są delegowane uprawnienia do działania w roli zalogowanego użytkownika. W zależności od interfejsu API użytkownik może nie mieć możliwości wyrażenia bezpośrednio zgody w interfejsie i zamiast tego może [poprosić administratora o udzielenie „zgody administratora”.](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)
 * **Uprawnienia aplikacji** — są używane przez aplikacje i nie wymagają zalogowanego użytkownika. Są to np. aplikacje działające jako usługi w tle lub demony. Uprawnienia aplikacji mogą być [nadane wyłącznie przez administratora](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant), ponieważ stanowią potężne narzędzia i umożliwiają dostęp do danych przekraczający granice użytkownika lub dotyczą danych, dostęp do których byłby w przeciwnym razie ograniczony do administratorów. 
@@ -55,14 +57,14 @@ Uprawnienia w usłudze Azure AD mają wiele właściwości, które pomagają uż
 
 | Nazwa właściwości | Opis | Przykład | 
 | --- | --- | --- |
-| ID | Jest to wartość identyfikatora GUID, która unikatowo identyfikuje to uprawnienie. | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca | 
-| IsEnabled | Wskazuje, czy ten zakres jest dostępny do użycia. | true | 
-| Typ | Wskazuje, czy to uprawnienie wymaga zgody użytkownika, czy też zgody administratora. | Użytkownik | 
-| AdminConsentDescription | Jest to opis widziany przez administratorów podczas procesu wyrażania przez nich zgody. | Zezwala aplikacji na odczytywanie wiadomości e-mail w skrzynkach pocztowych użytkowników. | 
-| AdminConsentDisplayName | Jest to przyjazna nazwa widziana przez administratorów podczas procesu wyrażania przez nich zgody. | Odczytuj pocztę użytkownika | 
-| UserConsentDescription | Jest to opis widziany przez użytkowników podczas procesu wyrażania przez nich zgody. |  Zezwala aplikacji na odczytywanie wiadomości e-mail w skrzynce pocztowej użytkownika. | 
-| UserConsentDisplayName | Jest to przyjazna nazwa widziana przez użytkowników podczas procesu wyrażania przez nich zgody. | Odczytywanie wiadomości | 
-| Wartość | Jest to ciąg, który służy do identyfikowania uprawnienia podczas przepływów autoryzacji OAuth 2.0. Można go również być połączyć z ciągiem identyfikatora URI aplikacji w celu utworzenia nazwy FQDN uprawnień. | `Mail.Read` | 
+| `ID` | Wartość identyfikatora GUID, która unikatowo identyfikuje to uprawnienie. | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca | 
+| `IsEnabled` | Wskazuje, czy to uprawnienie jest dostępne do użycia. | true | 
+| `Type` | Wskazuje, czy to uprawnienie wymaga zgody użytkownika, czy też zgody administratora. | Użytkownik | 
+| `AdminConsentDescription` | Opis widziany przez administratorów podczas procesu wyrażania przez nich zgody | Zezwala aplikacji na odczytywanie wiadomości e-mail w skrzynkach pocztowych użytkowników. | 
+| `AdminConsentDisplayName` | Przyjazna nazwa widziana przez administratorów podczas procesu wyrażania przez nich zgody. | Odczytuj pocztę użytkownika | 
+| `UserConsentDescription` | Opis widziany przez użytkowników podczas procesu wyrażania przez nich zgody. |  Zezwala aplikacji na odczytywanie wiadomości e-mail w skrzynce pocztowej użytkownika. | 
+| `UserConsentDisplayName` | Przyjazna nazwa widziana przez użytkowników podczas procesu wyrażania przez nich zgody. | Odczytywanie wiadomości | 
+| `Value` | Ciąg, który służy do identyfikowania uprawnienia podczas przepływów autoryzacji OAuth 2.0. Ciąg `Value` można również być połączyć z ciągiem identyfikatora URI aplikacji w celu utworzenia nazwy FQDN uprawnień. | `Mail.Read` | 
 
 ## <a name="types-of-consent"></a>Typy zgody
 Przy uzyskiwaniu dostępu do niezbędnych zasobów lub interfejsów API aplikacje w usłudze Azure AD muszą uzyskać zgodę. Istnieje wiele rodzajów zgody, które powinny być znane aplikacji, aby jej praca zakończyła się pomyślnie. Podczas definiowania uprawnień należy także znać sposoby używane przez użytkowników podczas uzyskiwania dostępu do Twojej aplikacji lub interfejsu API.
@@ -70,31 +72,38 @@ Przy uzyskiwaniu dostępu do niezbędnych zasobów lub interfejsów API aplikacj
 * **Statyczna zgoda użytkownika** — zachodzi automatycznie podczas [przepływu autoryzacji OAuth 2.0](/azure/active-directory/develop/active-directory-protocols-oauth-code.md#request-an-authorization-code) po podaniu zasobu, z którym chce współdziałać Twoja aplikacja. W scenariuszu statycznej zgody użytkownika aplikacja musi już znać wszystkie uprawnienia, które są niezbędne do skonfigurowania aplikacji w witrynie Azure Portal. Jeśli użytkownik (lub administrator, zależnie od potrzeb) nie udzielił zgody dla tej aplikacji, wtedy usługa Azure AD będzie monitować użytkownika o zgodę. 
 
     Dowiedz się więcej o rejestrowaniu aplikacji usługi Azure AD, która żąda dostępu do statycznego zestawu interfejsów API.
-* **Dynamiczna zgoda użytkownika** — jest to funkcja dostępna w modelu aplikacji usługi Azure AD w wersji 2. W tym scenariuszu aplikacja żąda zbioru zakresów, których potrzebuje w [przepływie autoryzacji OAuth 2.0 dla aplikacji v2](/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent). Jeśli użytkownik nie wyraził jeszcze zgody, w tym momencie zostanie wyświetlony monit o jej wyrażenie. [Dowiedz się więcej na temat dynamicznej zgody](/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent).
+* **Dynamiczna zgoda użytkownika** — jest to funkcja dostępna w modelu aplikacji usługi Azure AD w wersji 2. W tym scenariuszu aplikacja żąda zbioru uprawnień, których potrzebuje w [przepływie autoryzacji OAuth 2.0 dla aplikacji v2](/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent). Jeśli użytkownik nie wyraził jeszcze zgody, w tym momencie zostanie wyświetlony monit o jej wyrażenie. [Dowiedz się więcej na temat dynamicznej zgody](/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent).
 
     > [!NOTE]
     > Dynamiczne udzielanie zgody może być wygodne, ale stanowi duże wyzwanie w przypadku uprawnień wymagających zgody administratora, ponieważ w momencie wyrażania zgody administrator nie dysponuje informacjami dotyczącymi uprawnień. Jeśli zachodzi konieczność posiadania uprawnień administratora, używana aplikacja musi zarejestrować je w witrynie Azure Portal.
   
-* **Zgoda administratora** — jest wymagana, gdy aplikacja potrzebuje dostępu do niektórych uprawnień wysokiego poziomu. Dzięki temu administratorzy mają dodatkową kontrolę nad autoryzowaniem dostępu aplikacji lub użytkowników do danych organizacji wymagających szczególnych uprawnień. [Dowiedz się więcej na temat sposobu udzielania zgody administratora](/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+* **Zgoda administratora** — jest wymagana, gdy aplikacja potrzebuje dostępu do niektórych uprawnień wysokiego poziomu. Zgoda administratora zapewnia, że administratorzy mają dodatkową kontrolę nad autoryzowaniem dostępu aplikacji lub użytkowników do danych organizacji wymagających szczególnych uprawnień. [Dowiedz się więcej na temat sposobu udzielania zgody administratora](/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 
-### <a name="resource-best-practices"></a>Najlepsze praktyki dotyczące zasobów
-Zasoby, które udostępniają interfejsy API, powinny bardzo szczegółowo definiować uprawnienia dla chronionych przez nie danych lub akcji. Dzięki temu klienci nie otrzymują uprawnień do niepotrzebnych danych oraz są poinformowani, do jakich danych mają dostęp.
-
-Zasoby powinny w sposób jawny osobno definiować uprawnienia `Read` i `ReadWrite`. 
-
-Zasoby powinny oznaczyć wszystkie uprawnienia umożliwiające dostęp do danych przekraczający granice użytkownika jako uprawnienia `Admin`. 
-
-Zasoby powinny stosować następujący wzorzec nazewnictwa `Subject.Permission[.Modifier]`, gdzie `Subject` odpowiada typowi dostępnych danych, `Permission` odpowiada działaniu, które użytkownik może wykonać na tych danych, i `Modifier` służy opcjonalnie do opisu specjalizacji innego uprawnienia. Na przykład: 
-* Mail.Read — umożliwia użytkownikom odczytywanie wiadomości e-mail. 
-* Mail.ReadWrite — umożliwia użytkownikom odczytywanie i pisanie wiadomości e-mail.
-* Mail.ReadWrite.All — umożliwia administratorowi lub użytkownikom dostęp do wszystkich wiadomości w organizacji.
-
 ### <a name="client-best-practices"></a>Najlepsze rozwiązania klientów
-Żądaj wyłącznie uprawnień dla zakresów wymaganych przez Twoją aplikację. Aplikacje ze zbyt dużą liczbą uprawnień niosą ze sobą ryzyko ujawnienia danych użytkowników w przypadku naruszenia bezpieczeństwa aplikacji.
 
-Klienci nie powinni jednocześnie wymagać uprawnień dla aplikacji i delegować ich z tej samej aplikacji. Może to spowodować podniesienie poziomu uprawnień i zezwolić użytkownikowi na uzyskanie dostępu do danych, do których nie posiada on własnych uprawnień. 
+- Żądaj tylko tych uprawnień, których potrzebuje Twoja aplikacja. Aplikacje ze zbyt dużą liczbą uprawnień niosą ze sobą ryzyko ujawnienia danych użytkowników w przypadku naruszenia bezpieczeństwa aplikacji.
+- Wybierz między uprawnieniami delegowanymi i uprawnieniami aplikacji, biorąc pod uwagę scenariusz obsługiwany przez aplikację. 
+    - Zawsze używaj uprawnień delegowanych, jeśli wywołanie jest wykonywane w imieniu użytkownika.
+    - Uprawnień aplikacji używaj tylko wtedy, jeśli aplikacja jest nieinterakcyjna i nie wykonuje wywołań w imieniu żadnego określonego użytkownika. Uprawnienia aplikacji są wysoce uprzywilejowane i należy ich używać tylko w razie absolutnej konieczności.
+- W przypadku używania aplikacji opartej na punkcie końcowym w wersji 2.0 zawsze konfiguruj uprawnienia statyczne (określone w rejestracji aplikacji) tak, aby były nadzbiorem uprawnień dynamicznych, żądanych w czasie wykonywania (są to uprawnienia określone w kodzie i wysyłane jako parametry zapytania w żądaniu autoryzacji), aby scenariusze, takie jak zgoda administratora, działały poprawnie.
+
+### <a name="resourceapi-best-practices"></a>Najlepsze rozwiązania dotyczące zasobów/interfejsu API
+
+- Zasoby, które udostępniają interfejsy API, powinny szczegółowo definiować uprawnienia dla chronionych przez nie danych lub akcji. Dzięki zastosowaniu tego najlepszego rozwiązania klienci nie otrzymują uprawnień do niepotrzebnych danych oraz są poinformowani, do jakich danych mają dostęp.
+- Zasoby powinny w sposób jawny osobno definiować uprawnienia `Read` i `ReadWrite`.
+- Zasoby powinny oznaczyć wszystkie uprawnienia umożliwiające dostęp do danych przekraczający granice użytkownika jako uprawnienia `Admin`.
+- Nazwy zasobów powinny być zgodne ze wzorcem `Subject.Permission[.Modifier]`, gdzie:
+    - `Subject` odnosi się do typu dostępnych danych,
+    - `Permission` odnosi się do działania, które użytkownik może wykonać na tych danych, a 
+    - `Modifier` jest używane opcjonalnie do opisania specjalizacji innego uprawnienia. 
+    
+    Na przykład: 
+    * Mail.Read — umożliwia użytkownikom odczytywanie wiadomości e-mail.
+    * Mail.ReadWrite — umożliwia użytkownikom odczytywanie i pisanie wiadomości e-mail.
+    * Mail.ReadWrite.All — umożliwia administratorowi lub użytkownikom dostęp do wszystkich wiadomości w organizacji.
+
 
 
 

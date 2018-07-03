@@ -1,12 +1,29 @@
-Tworzenie tożsamości urządzenia symulowane urządzenie, dzięki czemu może komunikować się z Centrum IoT. Ponieważ urządzenia IoT brzegowe zachowują się i mogą być zarządzane inaczej niż typowe urządzenia IoT, zadeklarować to być urządzenia IoT od początku. 
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: iot-edge
+author: kgremban
+ms.service: iot-edge
+ms.topic: include
+ms.date: 06/25/2018
+ms.author: kgremban
+ms.custom: include file
+ms.openlocfilehash: bacafdc8f7fd8e206335f3be0a086df1c54f1081
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37032116"
+---
+Utwórz tożsamość urządzenia symulowanego, aby umożliwić mu komunikowanie się z centrum IoT Hub. Ponieważ urządzenia usługi IoT Edge zachowują się inaczej niż typowe urządzenia IoT, a także mogą być inaczej zarządzane, już na samym początku zadeklaruj to urządzenie jako urządzenie usługi IoT Edge. 
 
-1. W portalu Azure przejdź do Centrum IoT.
-1. Wybierz **IoT krawędzi (wersja zapoznawcza)** następnie wybierz **Dodaj urządzenie brzegowe IoT**.
+1. W witrynie Azure Portal przejdź do centrum IoT Hub.
+1. Wybierz pozycję **IoT Edge**, a następnie pozycję **Dodaj urządzenie usługi IoT Edge**.
 
-   ![Dodaj urządzenia IoT](./media/iot-edge-register-device/add-device.png)
+   ![Dodawanie urządzenia usługi IoT Edge](./media/iot-edge-register-device/add-device.png)
 
-1. Nadaj symulowane urządzenie identyfikator unikatowy urządzenia.
-1. Wybierz **zapisać** Aby dodać własne urządzenie.
-1. Wybierz nowe urządzenie z listy urządzeń.
-1. Skopiuj wartość **parametry połączenia — klucz podstawowy** i zapisz go. Ta wartość będzie używane do konfigurowania środowiska uruchomieniowego IoT krawędzi w następnej sekcji. 
+1. Nadaj urządzeniu symulowanemu unikatowy identyfikator urządzenia.
+1. Wybierz pozycję **Zapisz**, aby dodać to urządzenie.
+1. Wybierz to nowe urządzenie z listy urządzeń.
+1. Skopiuj wartość **Parametry połączenia — klucz podstawowy** i zapisz ją. Za pomocą tej wartości skonfigurujesz środowisko uruchomieniowe usługi IoT Edge w następnej sekcji. 
 

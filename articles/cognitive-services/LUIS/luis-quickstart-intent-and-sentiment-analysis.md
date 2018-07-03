@@ -7,104 +7,98 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 06/25/2018
 ms.author: v-geberr
-ms.openlocfilehash: d000637312619fc493e2f7bad8e8edf0d8d0d94b
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: ac959989dbe64460025bfba84df7b6f22c3c1c04
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265338"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36958433"
 ---
 # <a name="tutorial-create-app-that-returns-sentiment-along-with-intent-prediction"></a>Samouczek: Tworzenie aplikacji, która zwraca tonację wraz z przewidywaną intencją
 W tym samouczku utworzysz aplikację, która pokazuje, jak wyodrębniać pozytywne, negatywne i neutralne tonacje z wypowiedzi.
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Omówienie jednostek hierarchicznych i wywnioskowanych z kontekstu elementów podrzędnych 
-> * Tworzenie nowej aplikacji LUIS dla domeny travel z intencją Bookflight
-> * Dodawanie intencji _None_ i dodawanie przykładowych wypowiedzi
-> * Dodawanie jednostki hierarchicznej lokalizacji z elementami podrzędnymi miejsca początkowego i docelowego
+> * Interpretacja analizy tonacji
+> * Korzystanie z aplikacji usługi LUIS w domenie zasobów ludzkich (HR, Human Resources) 
+> * Dodawanie analizy tonacji
 > * Uczenie i publikowanie aplikacji
-> * Wykonywanie względem punktu końcowego zapytania o aplikację w celu sprawdzenia odpowiedzi JSON usługi LUIS, w tym hierarchicznych elementów podrzędnych 
+> * Wysyłanie zapytania do punktu końcowego aplikacji w celu wyświetlenia odpowiedzi JSON usługi LUIS 
 
 Na potrzeby tego artykułu wymagane jest bezpłatne konto usługi [LUIS][LUIS] w celu tworzenia aplikacji LUIS.
+
+## <a name="before-you-begin"></a>Przed rozpoczęciem
+Jeśli nie masz aplikacji Human Resources z samouczka dotyczącego [jednostek keyPhrase](luis-quickstart-intent-and-key-phrase.md), [zaimportuj](create-new-app.md#import-new-app) kod JSON do nowej aplikacji w witrynie internetowej usługi [LUIS](luis-reference-regions.md#luis-website). Aplikacja do zaimportowania znajduje się w repozytorium [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-keyphrase-HumanResources.json) usługi Github.
+
+Jeśli chcesz zachować oryginalną aplikację Human Resources, sklonuj tę wersję na stronie [Settings](luis-how-to-manage-versions.md#clone-a-version) (Ustawienia) i nadaj jej nazwę `sentiment`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. 
 
 ## <a name="sentiment-analysis"></a>Analiza tonacji
 Analiza tonacji to możliwość określenia, czy wypowiedź użytkownika jest pozytywna, negatywna, czy neutralna. 
 
 Następujące wypowiedzi przedstawiają przykłady tonacji:
 
-|Tonacja i wynik|Wypowiedź|
-|:--|--|
-|pozytywna: 0.89 |Połączenie zupy i sałatki było wyśmienite.|
-|negatywna: 0.07 |Przystawka podana podczas kolacji mi nie smakowała.|
+|Opinia|Wynik|Wypowiedź|
+|:--|:--|:--|
+|pozytywna|0,91 |John W. Smith did a great job on the presentation in Paris.|
+|pozytywna|0,84 |jill-jones@mycompany.com did fabulous work on the Parker sales pitch.|
 
-Analiza tonacji to ustawienie aplikacji, która ma zastosowanie do każdej wypowiedzi. Nie ma potrzeby odnajdywania słów wskazujących tonację w ramach wypowiedzi i oznaczania ich. Usługa LUIS zrobi to za Ciebie.
+Analiza tonacji to ustawienie aplikacji, które ma zastosowanie do każdej wypowiedzi. Nie trzeba wyszukiwać wyrazów wskazujących tonację w wypowiedzi ani oznaczać ich etykietami, ponieważ analiza tonacji dotyczy całej wypowiedzi. 
 
-## <a name="create-a-new-app"></a>Tworzenie nowej aplikacji
-1. Zaloguj się w witrynie internetowej usługi [LUIS][LUIS]. Pamiętaj, aby zalogować się w [regionie][LUIS-regions], w którym mają zostać opublikowane punkty końcowe usługi LUIS.
+## <a name="add-employeefeedback-intent"></a>Dodawanie intencji EmployeeFeedback 
+Dodanie nowej intencji pozwala na przechwycenie opinii pracowników firmy. 
 
-2. W witrynie internetowej usługi [LUIS][LUIS] wybierz pozycję **Create new app** (Utwórz nową aplikację). 
+1. Upewnij się, że aplikacja Human Resources znajduje się w sekcji **Build** (Kompilacja) aplikacji LUIS. Możesz przejść do tej sekcji, wybierając pozycję **Build** (Kompilacja) na górnym pasku menu po prawej stronie. 
 
-    [![](media/luis-quickstart-intent-and-sentiment-analysis/app-list.png "Zrzut ekranu ze stroną App lists (Listy aplikacji)")](media/luis-quickstart-intent-and-sentiment-analysis/app-list.png#lightbox)
+    [ ![Zrzut ekranu aplikacji LUIS z wyróżnioną pozycją Build (Kompilacja) na górnym prawym pasku nawigacyjnym](./media/luis-quickstart-intent-and-sentiment-analysis/hr-first-image.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-first-image.png#lightbox)
 
-3. W oknie dialogowym **Create new app** (Tworzenie nowej aplikacji) nadaj aplikacji nazwę `Restaurant Reservations With Sentiment`, a następnie wybierz pozycję **Done** (Gotowe). 
+2. Wybierz pozycję**Create new intent** (Utwórz nową intencję).
 
-    ![Obraz przedstawiający okno dialogowe tworzenia nowej aplikacji](./media/luis-quickstart-intent-and-sentiment-analysis/create-app-ddl.png)
+    [ ![Zrzut ekranu aplikacji LUIS z wyróżnioną pozycją Build (Kompilacja) na górnym prawym pasku nawigacyjnym](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent.png#lightbox)
 
-    Po ukończeniu procesu tworzenia aplikacji w usłudze LUIS wyświetlona zostanie lista intencji zawierająca intencję None.
+3. Nadaj nowej intencji nazwę `EmployeeFeedback`.
 
-    [![](media/luis-quickstart-intent-and-sentiment-analysis/intents-list.png "Zrzut ekranu przedstawiający stronę Intents lists (Listy intencji)")](media/luis-quickstart-intent-and-sentiment-analysis/intents-list.png#lightbox)
+    ![Okno dialogowe tworzenia nowej intencji z nazwą EmployeeFeedback](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent-ddl.png)
 
-## <a name="add-a-prebuilt-domain"></a>Dodawanie wstępnie utworzonej domeny
-Dodaj wstępnie utworzoną domenę, aby szybko dodawać intencje, jednostki i oznaczone wypowiedzi.
+4. Dodaj kilka wypowiedzi wskazujących, że pracownik robi coś dobrze lub że musi poprawić swoje wyniki w określonym obszarze:
 
-1. Wybierz pozycję **Prebuilt Domains** (Wstępnie utworzone domeny) z menu po lewej stronie.
+    Pamiętaj, że w tej aplikacji Human Resources pracownicy są definiowani w jednostce List (Lista), `Employee`, według nazwy, adresu e-mail, numeru wewnętrznego, numer telefonu komórkowego lub federalnego numeru ubezpieczenia społecznego (Stany Zjednoczone). 
 
-    [ ![Zrzut ekranu przedstawiający przycisk Prebuilt Domains (Wstępnie utworzone domeny)](./media/luis-quickstart-intent-and-sentiment-analysis/prebuilt-domains-button-inline.png)](./media/luis-quickstart-intent-and-sentiment-analysis/prebuilt-domains-button-expanded.png#lightbox)
+    |Wypowiedzi|
+    |--|
+    |425-555-1212 did a nice job of welcoming back a co-worker from maternity leave|
+    |234-56-7891 did a great job of comforting a co-worker in their time of grief.|
+    |jill-jones@mycompany.com didn't have all the required invoices for the paperwork.|
+    |john.w.smith@mycompany.com turned in the required forms a month late with no signatures|
+    |x23456 didn't make it to the important marketing off-site meeting.|
+    |x12345 missed the meeting for June reviews.|
+    |Jill Jones rocked the sales pitch at Harvard|
+    |John W. Smith did a great job on the presentation at Stanford|
 
-2. Wybierz pozycję **Add domain** (Dodaj domenę) dla wstępnie utworzonej domeny **RestaurantReservation**. Poczekaj na dodanie domeny.
-
-    [ ![Zrzut ekranu przedstawiający listę Prebuilt Domain (Wstępnie utworzone domeny)](./media/luis-quickstart-intent-and-sentiment-analysis/prebuilt-domains-list-inline.png)](./media/luis-quickstart-intent-and-sentiment-analysis/prebuilt-domains-list-expanded.png#lightbox)
-
-3. Wybierz pozycję **Intents** (Intencje) na lewym pasku nawigacyjnym. Ta wstępnie utworzona domena ma jedną intencję.
-
-    [ ![Zrzut ekranu przedstawiający listę Prebuilt domain (Wstępnie utworzone domeny) z wyróżnioną pozycją Intents (Intencje) na lewym pasku nawigacyjnym](./media/luis-quickstart-intent-and-sentiment-analysis/prebuilt-domains-list-domain-added-expanded.png)](./media/luis-quickstart-intent-and-sentiment-analysis/prebuilt-domains-list-domain-added-expanded.png#lightbox)
-
-4.  Wybierz intencję **RestaurantReservation.Reserve**. 
-
-    [ ![Zrzut ekranu z listą Intents (Intencje) i wyróżnioną intencją RestaurantReservation.Reserve](./media/luis-quickstart-intent-and-sentiment-analysis/select-intent.png)](./media/luis-quickstart-intent-and-sentiment-analysis/select-intent.png#lightbox)
-
-5. Przełącz **widok jednostek**, aby sprawdzić wypowiedzi podane z oznaczonymi jednostkami specyficznymi dla domeny.
-
-    [ ![Zrzut ekranu z intencją RestaurantReservation.Reserve i widokiem Intents (Intencje) przełączonym na wyróżniony widok Token (Token)](./media/luis-quickstart-intent-and-sentiment-analysis/utterance-list-inline.png)](./media/luis-quickstart-intent-and-sentiment-analysis/utterance-list-expanded.png#lightbox)
+    [ ![Zrzut ekranu aplikacji LUIS z przykładami wypowiedzi w intencji EmployeeFeedback](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
 
 ## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
-Usługa LUIS nie wie o zmianach intencji i jednostek (modelu), dopóki nie zostanie ich nauczona. 
+Usługa LUIS nie ma informacji dotyczących nowej intencji ani odpowiednich przykładowych wypowiedzi do momentu zakończenia uczenia. 
 
 1. W górnej części witryny internetowej usługi LUIS po prawej stronie wybierz przycisk **Train** (Ucz).
 
-    ![Zrzut ekranu przedstawiający wyróżniony przycisk Train (Ucz)](./media/luis-quickstart-intent-and-sentiment-analysis/train-button-expanded.png)
+    ![Zrzut ekranu przedstawiający wyróżniony przycisk Train (Ucz)](./media/luis-quickstart-intent-and-sentiment-analysis/train-button.png)
 
 2. Uczenie jest ukończone, gdy w górnej części witryny internetowej jest widoczny zielony pasek stanu potwierdzający powodzenie.
 
-    ![Zrzut ekranu przedstawiający pasek powiadomienia o powodzeniu uczenia ](./media/luis-quickstart-intent-and-sentiment-analysis/trained-expanded.png)
+    ![Zrzut ekranu przedstawiający pasek powiadomienia o powodzeniu uczenia ](./media/luis-quickstart-intent-and-sentiment-analysis/hr-trained-inline.png)
 
 ## <a name="configure-app-to-include-sentiment-analysis"></a>Konfigurowanie aplikacji do uwzględnienia analizy tonacji
-Analiza tonacji jest włączona na stronie **Publish** (Publikowanie). 
+Analiza tonacji jest konfigurowana na stronie **Publish** (Publikowanie). 
 
 1. Wybierz pozycję **Publish** (Publikuj) na prawym górnym pasku nawigacyjnym.
 
-    ![Zrzut ekranu przedstawiający stronę Intent (Intencja) z rozwiniętym przyciskiem Publish (Publikuj) ](./media/luis-quickstart-intent-and-sentiment-analysis/publish-expanded.png)
+    ![Zrzut ekranu przedstawiający stronę Intent (Intencja) z rozwiniętym przyciskiem Publish (Publikuj) ](./media/luis-quickstart-intent-and-sentiment-analysis/hr-publish-button-in-top-nav-highlighted.png)
 
-2. Wybierz pozycję **Enable Sentiment Analysis** (Włącz analizę tonacji).
+2. Wybierz pozycję **Enable Sentiment Analysis** (Włącz analizę tonacji). Wybierz miejsce produkcyjne i przycisk **Publish** (Publikuj).
 
-    ![Zrzut ekranu przedstawiający stronę publikowania z wyróżnioną pozycją Enable Sentiment Analysis (Włącz analizę tonacji) ](./media/luis-quickstart-intent-and-sentiment-analysis/enable-sentiment-expanded.png)
-
-3. Wybierz miejsce produkcyjne i przycisk **Publish** (Publikuj).
-
-    [![](media/luis-quickstart-intent-and-sentiment-analysis/publish-to-production-inline.png "Zrzut ekranu przedstawiający stronę publikowania z wyróżnionym przyciskiem publikowania w miejscu produkcyjnym")](media/luis-quickstart-intent-and-sentiment-analysis/publish-to-production-expanded.png#lightbox)
+    [![](media/luis-quickstart-intent-and-sentiment-analysis/hr-publish-to-production-expanded.png "Zrzut ekranu przedstawiający stronę publikowania z wyróżnionym przyciskiem publikowania w miejscu produkcyjnym")](media/luis-quickstart-intent-and-sentiment-analysis/hr-publish-to-production-expanded.png#lightbox)
 
 4. Publikowanie jest ukończone, gdy w górnej części witryny internetowej jest widoczny zielony pasek stanu potwierdzający powodzenie.
 
@@ -112,34 +106,102 @@ Analiza tonacji jest włączona na stronie **Publish** (Publikowanie).
 
 1. Na stronie **Publish** (Publikowanie) wybierz link **endpoint** (punkt końcowy) u dołu strony. Ta czynność spowoduje otwarcie nowego okna przeglądarki z adresem URL punktu końcowego na pasku adresu. 
 
-    ![Zrzut ekranu przedstawiający stronę publikowania z wyróżnionym adresem URL punktu końcowego](media/luis-quickstart-intent-and-sentiment-analysis/endpoint-url-inline.png)
+    ![Zrzut ekranu przedstawiający stronę publikowania z wyróżnionym adresem URL punktu końcowego](media/luis-quickstart-intent-and-sentiment-analysis/hr-endpoint-url-inline.png)
 
-2. Przejdź na koniec tego adresu URL i wprowadź ciąg `Reserve table for  10 on upper level away from kitchen`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe oznaczone wypowiedzi, dlatego jest dobra do testowania i powinna zwrócić intencję `RestaurantReservation.Reserve` z wyodrębnioną analizą tonacji.
+2. Przejdź na koniec tego adresu URL i wprowadź ciąg `Jill Jones work with the media team on the public portal was amazing`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe oznaczone wypowiedzi, dlatego jest dobra do testowania i powinna zwrócić intencję `EmployeeFeedback` z wyodrębnioną analizą tonacji.
 
 ```
 {
-  "query": "Reserve table for 10 on upper level away from kitchen",
+  "query": "Jill Jones work with the media team on the public portal was amazing",
   "topScoringIntent": {
-    "intent": "RestaurantReservation.Reserve",
-    "score": 0.9926384
+    "intent": "EmployeeFeedback",
+    "score": 0.4983256
   },
   "intents": [
     {
-      "intent": "RestaurantReservation.Reserve",
-      "score": 0.9926384
+      "intent": "EmployeeFeedback",
+      "score": 0.4983256
+    },
+    {
+      "intent": "MoveEmployee",
+      "score": 0.06617523
+    },
+    {
+      "intent": "GetJobInformation",
+      "score": 0.04631853
+    },
+    {
+      "intent": "ApplyForJob",
+      "score": 0.0103248553
+    },
+    {
+      "intent": "Utilities.StartOver",
+      "score": 0.007531875
+    },
+    {
+      "intent": "FindForm",
+      "score": 0.00344597152
+    },
+    {
+      "intent": "Utilities.Help",
+      "score": 0.00337914471
+    },
+    {
+      "intent": "Utilities.Cancel",
+      "score": 0.0026357458
     },
     {
       "intent": "None",
-      "score": 0.00961109251
+      "score": 0.00214573368
+    },
+    {
+      "intent": "Utilities.Stop",
+      "score": 0.00157622492
+    },
+    {
+      "intent": "Utilities.Confirm",
+      "score": 7.379545E-05
     }
   ],
-  "entities": [],
+  "entities": [
+    {
+      "entity": "jill jones",
+      "type": "Employee",
+      "startIndex": 0,
+      "endIndex": 9,
+      "resolution": {
+        "values": [
+          "Employee-45612"
+        ]
+      }
+    },
+    {
+      "entity": "media team",
+      "type": "builtin.keyPhrase",
+      "startIndex": 25,
+      "endIndex": 34
+    },
+    {
+      "entity": "public portal",
+      "type": "builtin.keyPhrase",
+      "startIndex": 43,
+      "endIndex": 55
+    },
+    {
+      "entity": "jill jones",
+      "type": "builtin.keyPhrase",
+      "startIndex": 0,
+      "endIndex": 9
+    }
+  ],
   "sentimentAnalysis": {
-    "label": "neutral",
-    "score": 0.5
+    "label": "positive",
+    "score": 0.8694164
   }
 }
 ```
+
+Wynik analizy sentimentAnalysis jest pozytywny i ma wartość 0,86. 
 
 ## <a name="what-has-this-luis-app-accomplished"></a>Co wykonała ta aplikacja LUIS?
 Ta aplikacja z włączoną funkcją analizy tonacji zidentyfikowała intencję zapytania języka naturalnego i zwróciła wyodrębnione dane zawierające ogólną tonację jako wynik. 

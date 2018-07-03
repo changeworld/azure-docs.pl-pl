@@ -7,14 +7,14 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 06/21/2018
 ms.author: v-geberr
-ms.openlocfilehash: 33394dff1091f27c79c74d8648a90724ba8d6698
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 68c241833aab756bfc5e71c03da5d4175401910d
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264831"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335826"
 ---
 # <a name="tutorial-create-app-using-a-list-entity"></a>Samouczek: tworzenie aplikacji przy użyciu jednostki listy
 W tym samouczku utworzysz aplikację, która pokazuje, jak uzyskać dane zgodne ze wstępnie zdefiniowaną listą. 
@@ -22,154 +22,126 @@ W tym samouczku utworzysz aplikację, która pokazuje, jak uzyskać dane zgodne 
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * Omówienie jednostek listy 
-> * Tworzenie nowej aplikacji LUIS dla domeny napojów z intencją OrderDrinks
-> * Dodawanie intencji _None_ i dodawanie przykładowych wypowiedzi
-> * Dodawanie jednostki listy w celu wyodrębnienia elementów napojów z wypowiedzi
+> * Tworzenie nowej aplikacji LUIS dla domeny zasobów ludzkich (HR, Human Resources) z intencją MoveEmployee
+> * Dodawanie jednostki listy w celu wyodrębnienia pracowników z wypowiedzi
 > * Uczenie i publikowanie aplikacji
 > * Wysyłanie zapytania do punktu końcowego aplikacji w celu wyświetlenia odpowiedzi JSON usługi LUIS
 
-Na potrzeby tego artykułu wymagane jest bezpłatne konto usługi [LUIS][LUIS] w celu tworzenia aplikacji LUIS.
+Na potrzeby tego artykułu wymagane jest bezpłatne konto usługi [LUIS](luis-reference-regions.md#luis-website) w celu tworzenia aplikacji LUIS.
+
+## <a name="before-you-begin"></a>Przed rozpoczęciem
+Jeśli nie masz aplikacji Human Resources z samouczka dotyczącego [domeny niestandardowej](luis-quickstart-intents-regex-entity.md) jednostek wyrażeń regularnych, [zaimportuj](create-new-app.md#import-new-app) kod JSON do nowej aplikacji w witrynie internetowej usługi [LUIS](luis-reference-regions.md#luis-website). Aplikacja do zaimportowania znajduje się w repozytorium [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json) usługi Github.
+
+Jeśli chcesz zachować oryginalną aplikację Human Resources, sklonuj tę wersję na stronie [Settings](luis-how-to-manage-versions.md#clone-a-version) (Ustawienia) i nadaj jej nazwę `list`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. 
 
 ## <a name="purpose-of-the-list-entity"></a>Przeznaczenie jednostki listy
-Ta aplikacja pobiera zamówienia na napoje, takie jak `1 coke and 1 milk please`, i zwraca dane, takie jak typ napoju. Jednostka **listy** napojów szuka dokładnych dopasowań tekstu i zwraca te dopasowania. 
+Ta aplikacja prognozuje wypowiedzi dotyczące przenoszenia pracownika z jednego budynku do innego budynku. Ta aplikacja używa jednostki listy do wyodrębnienia pracownika. Do pracownika można odwoływać się przy użyciu nazwy, numeru telefonu, adresu e-mail lub federalnego numer ubezpieczenia społecznego (USA). 
 
-Jednostka listy jest dobrym rozwiązaniem w przypadku tego typu danych, jeśli wartości danych są znanym zestawem. Nazwy napojów mogą się różnić w zależności od żargonu i skrótów, jednak nie zmieniają się one zbyt często. 
+Jednostka listy może zawierać wiele elementów z synonimami każdego z nich. W małej lub średniej firmie jednostka listy służy do wyodrębniania informacji o pracownikach. 
 
-## <a name="app-intents"></a>Intencje aplikacji
-Intencje to kategorie tego, czego chce użytkownik. Ta aplikacja ma dwie intencje: OrderDrink i None. Intencja [None](luis-concept-intent.md#none-intent-is-fallback-for-app) jest zamierzona i wskazuje wszystko spoza aplikacji.  
+Nazwa kanoniczna każdego elementu to numer pracownika. Przykłady synonimów w tej domenie: 
 
-## <a name="list-entity-is-an-exact-text-match"></a>Jednostka listy jest dokładnym dopasowaniem tekstu
-Celem jednostki jest znalezienie fragmentów tekstu w wypowiedzi i przypisanie im kategorii. Jednostka [listy](luis-concept-entity-types.md) umożliwia dokładne dopasowanie słów i fraz.  
+|Cel synonimu|Wartość synonimu|
+|--|--|
+|Name (Nazwa)|John W. Smith|
+|Adres e-mail|john.w.smith@mycompany.com|
+|Numer wewnętrzny|x12345|
+|Numer osobistego telefonu komórkowego|425-555-1212|
+|Federalny numer ubezpieczenia społecznego (USA)|123-45-6789|
 
-W przypadku tej aplikacji napojów aplikacja LUIS wyodrębnia zamówienie na napój w taki sposób, że umożliwia utworzenie i wypełnienie standardowego zamówienia. Usługa LUIS pozwala na to, aby wypowiedzi zawierały wariacje, skróty i żargon. 
+Jednostka listy jest dobrym rozwiązaniem w przypadku tego typu danych, jeśli:
 
-Proste przykładowe wypowiedzi użytkowników mogą być następujące:
+* Wartości danych należą do znanego zestawu.
+* Zestaw nie przekracza maksymalnych [granic](luis-boundaries.md) usługi LUIS dla tego typu jednostki.
+* Tekst w wypowiedzi to dokładne dopasowanie synonimu. 
+
+Usługa LUIS wyodrębnia pracownika w taki sposób, że standardowe zlecenie przeniesienia pracownika można utworzyć w aplikacji klienta.
+<!--
+## Example utterances
+Simple example utterances for a `MoveEmployee` inent:
 
 ```
-2 glasses of milk
-3 bottles of water
-2 cokes
-```
-
-Wersje wypowiedzi ze skrótami lub żargonem mogą być następujące:
+move John W. Smith from B-1234 to H-4452
+mv john.w.smith@mycompany from office b-1234 to office h-4452
 
 ```
-5 milk
-3 h2o
-1 pop
-```
- 
-Jednostka listy dopasowuje ciąg `h2o` do wody, a ciąg `pop` do napoju bezalkoholowego.  
+-->
 
-## <a name="what-luis-does"></a>Jak działa usługa LUIS
-Gdy intencje i jednostki wypowiedzi zostaną zidentyfikowane, [wyodrębnione](luis-concept-data-extraction.md#list-entity-data) i zwrócone w formacie JSON z [punktu końcowego](https://aka.ms/luis-endpoint-apis), działanie usługi LUIS kończy się. Aplikacja wywołująca lub czatbot pobiera tę odpowiedź JSON i spełnia żądanie — w taki sposób, jaki został zaprojektowany. 
+## <a name="add-moveemployee-intent"></a>Dodawanie intencji MoveEmployee
 
-## <a name="create-a-new-app"></a>Tworzenie nowej aplikacji
-1. Zaloguj się w witrynie internetowej usługi [LUIS][LUIS]. Pamiętaj, aby zalogować się w [regionie][LUIS-regions], w którym mają zostać opublikowane punkty końcowe usługi LUIS.
+1. Upewnij się, że aplikacja Human Resources znajduje się w sekcji **Build** (Kompilacja) aplikacji LUIS. Możesz przejść do tej sekcji, wybierając pozycję **Build** (Kompilacja) na górnym pasku menu po prawej stronie. 
 
-2. W witrynie internetowej usługi [LUIS][LUIS] wybierz pozycję **Create new app** (Utwórz nową aplikację).  
+    [ ![Zrzut ekranu aplikacji LUIS z wyróżnioną pozycją Build (Kompilacja) na górnym prawym pasku nawigacyjnym](./media/luis-quickstart-intent-and-list-entity/hr-first-image.png)](./media/luis-quickstart-intent-and-list-entity/hr-first-image.png#lightbox)
 
-    ![Tworzenie nowej aplikacji](./media/luis-quickstart-intent-and-list-entity/app-list.png)
+2. Wybierz pozycję**Create new intent** (Utwórz nową intencję). 
 
-3. W wyskakującym oknie dialogowym wprowadź nazwę `MyDrinklist`. 
+    [ ![Zrzut ekranu przedstawiający stronę intencji z wyróżnionym przyciskiem Create new intent (Utwórz nową intencję)](./media/luis-quickstart-intent-and-list-entity/hr-create-new-intent-button.png) ](./media/luis-quickstart-intent-and-list-entity/hr-create-new-intent-button.png#lightbox)
 
-    ![Nadanie aplikacji nazwy MyDrinkList](./media/luis-quickstart-intent-and-list-entity/create-app-dialog.png)
+3. Wprowadź ciąg `MoveEmployee` w wyświetlonym oknie dialogowym, a następnie wybierz pozycję **Done** (Gotowe). 
 
-4. Po zakończeniu tego procesu aplikacja wyświetli stronę **Intents** (Intencje) z intencją **None**. 
+    ![Zrzut ekranu z wyskakującym oknem dialogowym Create new intent (Tworzenie nowej intencji)](./media/luis-quickstart-intent-and-list-entity/hr-create-new-intent-ddl.png)
 
-    [![](media/luis-quickstart-intent-and-list-entity/intents-page-none-only.png "Zrzut ekranu przedstawiający stronę Intents (Intencje)")](media/luis-quickstart-intent-and-list-entity/intents-page-none-only.png#lightbox)
+4. Dodaj przykładowe wypowiedzi do intencji.
 
-## <a name="create-a-new-intent"></a>Tworzenie nowej intencji
-
-1. Na stronie **Intents** (Intencje) wybierz pozycję **Create new intent** (Utwórz nową intencję). 
-
-    [![](media/luis-quickstart-intent-and-list-entity/create-new-intent.png "Zrzut ekranu przedstawiający stronę Intents (Intencje) z wyróżnionym przyciskiem Create new intent (Utwórz nową intencję)")](media/luis-quickstart-intent-and-list-entity/create-new-intent.png#lightbox)
-
-2. Wprowadź nazwę nowej intencji: `OrderDrinks`. Ta intencja powinna być wybierana za każdym razem, gdy użytkownik chce zamówić napój.
-
-    Tworząc intencję, tworzysz główną kategorię informacji, którą chcesz identyfikować. Nadanie nazwy kategorii umożliwia każdej innej aplikacji, która używa wyników zapytania usługi LUIS, zastosowanie tej nazwy kategorii w celu znalezienia odpowiedniej odpowiedzi lub podjęcia odpowiedniej akcji. Usługa LUIS nie będzie odpowiadać na te pytania — określi jedynie, jakiego rodzaju informacji dotyczy pytanie w języku naturalnym. 
-
-    [![](media/luis-quickstart-intent-and-list-entity/intent-create-dialog-order-drinks.png "Zrzut ekranu przedstawiający tworzenie nowej intencji OrderDrinks")](media/luis-quickstart-intent-and-list-entity/intent-create-dialog-order-drinks.png#lightbox)
-
-3. Dodaj kilka wypowiedzi do intencji `OrderDrinks` — takich, których spodziewasz się ze strony użytkownika, na przykład:
-
-    | Przykładowe wypowiedzi|
+    |Przykładowe wypowiedzi|
     |--|
-    |Proszę wysłać 2 cole i butelkę wody do mojego pokoju|
-    |2 wody perrier z odrobiną limonki|
-    |h20|
+    |move John W. Smith from B-1234 to H-4452|
+    |mv john.w.smith@mycompany.com from office b-1234 to office h-4452|
+    |shift x12345 to h-1234 tomorrow|
+    |place 425-555-1212 in HH-2345|
+    |move 123-45-6789 from A-4321 to J-23456|
+    |mv Jill Jones from D-2345 to J-23456|
+    |shift jill-jones@mycompany.com to M-12345|
+    |x23456 to M-12345|
+    |425-555-0000 to h-4452|
+    |234-56-7891 to hh-2345|
 
-    [![](media/luis-quickstart-intent-and-list-entity/intent-order-drinks-utterance.png "Zrzut ekranu przedstawiający wprowadzanie wypowiedzi na stronie intencji OrderDrinks")](media/luis-quickstart-intent-and-list-entity/intent-order-drinks-utterance.png#lightbox)
+    [ ![Zrzut ekranu przedstawiający stronę Intent (Intencja) z wyróżnionymi nowymi wypowiedziami](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png) ](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png#lightbox)
 
-## <a name="add-utterances-to-none-intent"></a>Dodawanie wypowiedzi do intencji None
+    Ta aplikacja zawiera wstępnie skompilowaną jednostkę numeru dodaną w poprzednim samouczku, dlatego każdy numer jest otagowany. Te informacje mogą być wystarczające w przypadku aplikacji klienckiej, ale numer nie jest oznaczany etykietą typu. Utworzenie nowej jednostki z odpowiednią nazwę umożliwia aplikacji klienckiej przetworzenie jednostki zwróconej z usługi LUIS.
 
-Aplikacja LUIS obecnie nie zawiera żadnych wypowiedzi dla intencji **None**. Potrzebne są wypowiedzi, na które aplikacja ma nie odpowiadać, dlatego należy dodać wypowiedzi do intencji **None**. Nie zostawiaj jej pustej. 
-
-1. Wybierz pozycję **Intents** (Intencje) na lewym panelu. 
-
-    [![](media/luis-quickstart-intent-and-list-entity/left-panel-intents.png "Zrzut ekranu przedstawiający wybieranie linku Intents (Intencje) w lewym panelu")](media/luis-quickstart-intent-and-list-entity/left-panel-intents.png#lightbox)
-
-2. Wybierz intencję **None**. Dodaj trzy wypowiedzi, które może wprowadzić użytkownik, ale które nie są istotne dla tej aplikacji:
-
-    | Przykładowe wypowiedzi|
-    |--|
-    |Anuluj!|
-    |Do widzenia|
-    |Co się dzieje?|
-
-## <a name="when-the-utterance-is-predicted-for-the-none-intent"></a>Kiedy dla intencji None jest przewidziana wypowiedź
-W aplikacji wywołującej usługę LUIS (takiej jak czatbot), gdy usługa LUIS zwraca intencję **None** dla wypowiedzi, bot może zadać pytanie, czy użytkownik chce zakończyć konwersację. Bot może również podać więcej wskazówek umożliwiających kontynuowanie konwersacji, jeśli użytkownik nie chce jej zakończyć. 
-
-Jednostki działają w intencji **None**. Jeśli najwyżej ocenianą intencją jest intencja **None**, ale wyodrębniona jednostka ma znaczenie dla czatbota, to czatbot może zadać pytanie, które spowoduje ukierunkowanie intencji klienta. 
-
-## <a name="create-a-menu-entity-from-the-intent-page"></a>Tworzenie jednostki menu z poziomu strony Intent (Intencja)
-Teraz, kiedy te dwie intencje mają wypowiedzi, aplikacja LUIS musi zrozumieć, czym jest napój. Przejdź z powrotem do intencji `OrderDrinks` i oznacz napoje w wypowiedzi, wykonując następujące kroki:
-
-1. Wróć do intencji `OrderDrinks`, wybierając pozycję **Intents** (Intencje) w lewym panelu.
-
-2. Wybierz pozycję `OrderDrinks` z listy intencji.
-
-3. W wypowiedzi `Please send 2 cokes and a bottle of water to my room` zaznacz wyraz `water`. Zostanie wyświetlone menu rozwijane z polem tekstowym w górnej części, umożliwiającym utworzenie nowej jednostki. Wprowadź nazwę jednostki `Drink` w polu tekstowym, a następnie wybierz polecenie **Create new entity** (Utwórz nową jednostkę) w menu rozwijanym. 
-
-    [![](media/luis-quickstart-intent-and-list-entity/intent-label-h2o-in-utterance.png "Zrzut ekranu przedstawiający tworzenie nowej jednostki przez zaznaczenie wyrazu w wypowiedzi")](media/luis-quickstart-intent-and-list-entity/intent-label-h2o-in-utterance.png#lightbox)
-
-4. W oknie podręcznym wybierz typ jednostki **List** (Lista). Dodaj synonim `h20`. Po wprowadzeniu każdego synonimu naciśnij klawisz Enter. Nie dodawaj wyrazu `perrier` do listy synonimów. Zostanie on dodany w kolejnym kroku jako przykład. Wybierz pozycję **Done** (Gotowe).
-
-    [![](media/luis-quickstart-intent-and-list-entity/create-list-ddl.png "Zrzut ekranu przedstawiający konfigurowanie nowej jednostki")](media/luis-quickstart-intent-and-list-entity/create-list-ddl.png#lightbox)
-
-5. Teraz, po utworzeniu jednostki, oznacz pozostałe synonimy wyrazu „woda”, zaznaczając je, a następnie wybierając pozycję `Drink` na liście rozwijanej. Przejdź do menu z prawej strony, a następnie wybierz polecenie `Set as synonym` i pozycję `water`.
-
-    [![](media/luis-quickstart-intent-and-list-entity/intent-label-perriers.png "Zrzut ekranu przedstawiający oznaczanie wypowiedzi za pomocą istniejącej jednostki")](media/luis-quickstart-intent-and-list-entity/intent-label-perriers.png#lightbox)
-
-## <a name="modify-the-list-entity-from-the-entity-page"></a>Modyfikowanie jednostki listy na stronie Entity (Jednostka)
-Jednostka listy napojów została utworzona, jednak nie zawiera wielu pozycji ani synonimów. Jeśli znasz niektóre terminy, skróty i żargon, szybciej będzie wypełnić listę na stronie **Entity** (Jednostka). 
+## <a name="create-an-employee-list-entity"></a>Tworzenie jednostki listy pracowników
+Teraz, gdy intencja **MoveEmployee** ma wypowiedzi, usługa LUIS musi zrozumieć, czym jest pracownik. 
 
 1. Wybierz pozycję **Entities** (Jednostki) w lewym panelu.
 
-    [![](media/luis-quickstart-intent-and-list-entity/intent-select-entities.png "Zrzut ekranu przedstawiający wybieranie pozycji Entities (Jednostki) w lewym panelu")](media/luis-quickstart-intent-and-list-entity/intent-select-entities.png#lightbox)
+    [ ![Zrzut ekranu przedstawiający stronę Intent (Intencja) z przyciskiem Entities (Jednostki) wyróżnionym na lewym pasku nawigacyjnym](./media/luis-quickstart-intent-and-list-entity/hr-select-entity-button.png) ](./media/luis-quickstart-intent-and-list-entity/hr-select-entity-button.png#lightbox)
 
-2. Wybierz pozycję `Drink` na liście jednostek.
+2. Wybierz pozycję **Create new entity** (Utwórz nową jednostkę).
 
-    [![](media/luis-quickstart-intent-and-list-entity/entities-select-drink-entity.png "Zrzut ekranu przedstawiający wybieranie jednostki Drink na liście jednostek")](media/luis-quickstart-intent-and-list-entity/entities-select-drink-entity.png#lightbox)
+    [![Zrzut ekranu przedstawiający stronę Entities (Jednostki) z wyróżnioną pozycją Create new entity (Utwórz nową jednostkę)](./media/luis-quickstart-intent-and-list-entity/hr-create-new-entity-button.png) ](./media/luis-quickstart-intent-and-list-entity/hr-create-new-entity-button.png#lightbox)
 
-3. W polu tekstowym wprowadź ciąg `Soda pop`, a następnie naciśnij klawisz Enter. Jest to termin szeroko stosowany w języku angielskim do określania napojów gazowanych. W każdej kulturze istnieje jakaś nazwa lub termin żargonowy określający ten typ napoju.
+3. W oknie podręcznym jednostki wprowadź `Employee` jako nazwę jednostki i **Lista** (Lista) jako typ jednostki. Wybierz pozycję **Done** (Gotowe).  
 
-    [![](media/luis-quickstart-intent-and-list-entity/drink-entity-enter-canonical-name.png "Zrzut ekranu przedstawiający wprowadzanie nazwy kanonicznej")](media/luis-quickstart-intent-and-list-entity/drink-entity-enter-canonical-name.png#lightbox)
+    [![](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png "Zrzut ekranu przedstawiający podręczne okno dialogowe tworzenia nowej jednostki")](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png#lightbox)
 
-4. W tym samym wierszu, w którym znajduje się termin `Soda pop`, wprowadź synonimy takie jak: 
+4. Na stronie jednostki Employee (Pracownik) wprowadź `Employee-24612` jako nową wartość.
 
-    ```
-    coke
-    cokes
-    coca-cola
-    coca-colas
-    ```
+    [![](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png "Zrzut ekranu przedstawiający wprowadzanie wartości")](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png#lightbox)
 
-    Synonimy mogą zawierać frazy, znaki interpunkcyjne, zaimki dzierżawcze i liczbę mnogą. Ponieważ jednostka listy jest dokładnym dopasowaniem tekstu (z wyjątkiem wielkości liter), każdy synonim musi występować we wszystkich odmianach. Listę można poszerzać po poznaniu kolejnych wariacji na podstawie dzienników zapytania lub trafień punktu końcowego. 
+5. W obszarze Synonyms (Synonimy) dodaj następujące wartości:
 
-    W tym artykule użyto tylko kilku synonimów, aby przykład nie był zbyt długi. Aplikacja LUIS na poziomie produkcyjnym zawierałaby wiele synonimów, które byłyby regularnie przeglądane i dodawane. 
+    |Cel synonimu|Wartość synonimu|
+    |--|--|
+    |Name (Nazwa)|John W. Smith|
+    |Adres e-mail|john.w.smith@mycompany.com|
+    |Numer wewnętrzny|x12345|
+    |Numer osobistego telefonu komórkowego|425-555-1212|
+    |Federalny numer ubezpieczenia społecznego (USA)|123-45-6789|
 
-    [![](media/luis-quickstart-intent-and-list-entity/drink-entity-enter-synonyms.png "Zrzut ekranu przedstawiający dodawanie synonimów")](media/luis-quickstart-intent-and-list-entity/drink-entity-enter-synonyms.png#lightbox)
+    [![](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png "Zrzut ekranu przedstawiający wprowadzanie synonimów")](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png#lightbox)
+
+6. Wprowadź `Employee-45612` jako nową wartość.
+
+7. W obszarze Synonyms (Synonimy) dodaj następujące wartości:
+
+    |Cel synonimu|Wartość synonimu|
+    |--|--|
+    |Name (Nazwa)|Jill Jones|
+    |Adres e-mail|jill-jones@mycompany.com|
+    |Numer wewnętrzny|x23456|
+    |Numer osobistego telefonu komórkowego|425-555-0000|
+    |Federalny numer ubezpieczenia społecznego (USA)|234-56-7891|
 
 ## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
 Usługa LUIS nie wie o zmianach intencji i jednostek (modelu), dopóki nie zostanie ich nauczona. 
@@ -200,59 +172,127 @@ Aby uzyskać przewidywania usługi LUIS w czatbocie lub innej aplikacji, należy
 
     [![](media/luis-quickstart-intent-and-list-entity/publish-select-endpoint.png "Zrzut ekranu przedstawiający adres URL punktu końcowego na stronie publikowania")](media/luis-quickstart-intent-and-list-entity/publish-select-endpoint.png#lightbox)
 
-2. Przejdź na koniec tego adresu URL i wprowadź ciąg `2 cokes and 3 waters`. Ostatni parametr ciągu zapytania to `q`, czyli **q**uery (zapytanie) wypowiedzi. Ta wypowiedź jest inna, niż wszystkie pozostałe oznaczone wypowiedzi, dlatego jest dobra do testowania i powinna zwrócić intencję `OrderDrinks` z dwoma typami napojów: `cokes` i `waters`.
+2. Przejdź na koniec tego adresu URL i wprowadź ciąg `shift 123-45-6789 from Z-1242 to T-54672`. Ostatni parametr ciągu zapytania to `q`, czyli **q**uery (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe wypowiedzi oznaczone etykietami, dlatego jest dobra do testowania i powinna zwrócić intencję `MoveEmployee` z wyodrębnionym elementem `Employee`.
 
-```
+```JSON
 {
-  "query": "2 cokes and 3 waters",
+  "query": "shift 123-45-6789 from Z-1242 to T-54672",
   "topScoringIntent": {
-    "intent": "OrderDrinks",
-    "score": 0.999998569
+    "intent": "MoveEmployee",
+    "score": 0.9882801
   },
   "intents": [
     {
-      "intent": "OrderDrinks",
-      "score": 0.999998569
+      "intent": "MoveEmployee",
+      "score": 0.9882801
+    },
+    {
+      "intent": "FindForm",
+      "score": 0.016044287
+    },
+    {
+      "intent": "GetJobInformation",
+      "score": 0.007611245
+    },
+    {
+      "intent": "ApplyForJob",
+      "score": 0.007063288
+    },
+    {
+      "intent": "Utilities.StartOver",
+      "score": 0.00684710965
     },
     {
       "intent": "None",
-      "score": 0.23884207
+      "score": 0.00304174074
+    },
+    {
+      "intent": "Utilities.Help",
+      "score": 0.002981
+    },
+    {
+      "intent": "Utilities.Confirm",
+      "score": 0.00212222221
+    },
+    {
+      "intent": "Utilities.Cancel",
+      "score": 0.00191026414
+    },
+    {
+      "intent": "Utilities.Stop",
+      "score": 0.0007461446
     }
   ],
   "entities": [
     {
-      "entity": "cokes",
-      "type": "Drink",
-      "startIndex": 2,
-      "endIndex": 6,
+      "entity": "123 - 45 - 6789",
+      "type": "Employee",
+      "startIndex": 6,
+      "endIndex": 16,
       "resolution": {
         "values": [
-          "Soda pop"
+          "Employee-24612"
         ]
       }
     },
     {
-      "entity": "waters",
-      "type": "Drink",
-      "startIndex": 14,
-      "endIndex": 19,
+      "entity": "123",
+      "type": "builtin.number",
+      "startIndex": 6,
+      "endIndex": 8,
       "resolution": {
-        "values": [
-          "h20"
-        ]
+        "value": "123"
+      }
+    },
+    {
+      "entity": "45",
+      "type": "builtin.number",
+      "startIndex": 10,
+      "endIndex": 11,
+      "resolution": {
+        "value": "45"
+      }
+    },
+    {
+      "entity": "6789",
+      "type": "builtin.number",
+      "startIndex": 13,
+      "endIndex": 16,
+      "resolution": {
+        "value": "6789"
+      }
+    },
+    {
+      "entity": "-1242",
+      "type": "builtin.number",
+      "startIndex": 24,
+      "endIndex": 28,
+      "resolution": {
+        "value": "-1242"
+      }
+    },
+    {
+      "entity": "-54672",
+      "type": "builtin.number",
+      "startIndex": 34,
+      "endIndex": 39,
+      "resolution": {
+        "value": "-54672"
       }
     }
   ]
 }
 ```
 
+Pracownik został znaleziony i zwrócony jako typ `Employee` o wartości rozwiązania `Employee-24612`.
+
 ## <a name="where-is-the-natural-language-processing-in-the-list-entity"></a>W którym miejscu jednostki listy jest wykonywane przetwarzanie języka naturalnego? 
-Jednostka listy jest dokładnym dopasowaniem tekstu, dlatego nie opiera się na przetwarzaniu języka naturalnego (ani na uczeniu maszynowym). Aplikacja LUIS korzysta z przetwarzania języka naturalnego (lub uczenia maszynowego), aby wybrać właściwą najwyżej ocenianą intencję. Ponadto wypowiedź może zawierać kilka jednostek lub nawet kilka typów jednostek. Każda wypowiedź jest przetwarzana po kątem wszystkich jednostek w aplikacji, w tym jednostek przetwarzania języka naturalnego (lub nauczonych maszynowo), takich jak jednostka **Simple**.
+Jednostka listy jest dokładnym dopasowaniem tekstu, dlatego nie opiera się na przetwarzaniu języka naturalnego (ani na uczeniu maszynowym). Aplikacja LUIS korzysta z przetwarzania języka naturalnego (lub uczenia maszynowego), aby wybrać właściwą najwyżej ocenianą intencję. Ponadto wypowiedź może zawierać kilka jednostek lub nawet kilka typów jednostek. Każda wypowiedź jest przetwarzana po kątem wszystkich jednostek w aplikacji, w tym jednostek przetwarzania języka naturalnego (lub nauczonych maszynowo).
 
 ## <a name="what-has-this-luis-app-accomplished"></a>Co wykonała ta aplikacja LUIS?
-Ta aplikacja, zawierająca jedynie dwie intencje i jednostkę listy, zidentyfikowała intencję zapytania w języku naturalnym i zwróciła wyodrębnione dane. 
+Ta aplikacja z jednostką listy wyodrębniła właściwego pracownika. 
 
-Twój czatbot ma teraz wystarczająco dużo informacji, aby określić akcję główną, `OrderDrinks`, i typy napojów, które zostały zamówione z jednostki listy Drink. 
+Twój czatbot ma teraz wystarczająco dużo informacji, aby określić akcję główną, `MoveEmployee`, i pracownika do przeniesienia. 
 
 ## <a name="where-is-this-luis-data-used"></a>Gdzie są używane te dane usługi LUIS? 
 Usługa LUIS skończyła obsługiwać to żądanie. Aplikacja wywołująca, taka jak czatbot, może pobrać wynik topScoringIntent (najwyżej oceniana intencja) oraz dane z jednostki, aby wykonać kolejny krok. Usługa LUIS nie wykonuje tej pracy programowej dla bota ani dla aplikacji wywołującej. Usługa LUIS określa jedynie intencję użytkownika. 
@@ -263,10 +303,5 @@ Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Aby to zrobić, wybier
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Informacje na temat dodawania jednostki wyrażenia regularnego](luis-quickstart-intents-regex-entity.md)
+> [Dowiedz się, jak dodać jednostkę hierarchiczną](luis-quickstart-intent-and-hier-entity.md)
 
-Dodawanie [wstępnie utworzonej jednostki](luis-how-to-add-entities.md#add-prebuilt-entity) **number** (numer) w celu wyodrębnienia numeru. 
-
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
-[LUIS-regions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#publishing-regions

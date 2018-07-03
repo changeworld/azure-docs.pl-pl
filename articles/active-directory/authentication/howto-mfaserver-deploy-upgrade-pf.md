@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: e1a216a8bf524d22af815d077b16ab29c817e9e4
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: e3e0855d2ac54643a6dc6128eea974d952bb56d5
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866237"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335632"
 ---
 # <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>Uaktualnianie agenta PhoneFactor do serwera Azure Multi-Factor Authentication
 
@@ -66,11 +66,8 @@ Aby uaktualnić agenta PhoneFactor (w wersji 5.x lub starszej) do serwera Azure 
 
   3. Przejdź do lokalizacji instalacji portalu użytkowników (np. C:\inetpub\wwwroot\MultiFactorAuth) i otwórz do edycji plik web.config. Z oryginalnego pliku web.config, który został umieszczony w kopii zapasowej przed uaktualnieniem, skopiuj wartości z sekcji appSettings i applicationSettings do nowego pliku web.config. Jeśli nowa domyślna nazwa katalogu wirtualnego została zachowana podczas instalacji zestawu SDK usługi sieci Web, zmień adres URL w sekcji applicationSettings, aby wskazywał poprawną lokalizację. Jeśli w poprzednim pliku web.config zostały zmienione inne wartości domyślne, zastosuj te same zmiany w nowym pliku web.config.
 
-  4. Aby zainstalować usługę sieci Web aplikacji mobilnej na serwerze sieci Web, otwórz wiersz polecenia jako administrator i uruchom instalatora MultiFactorAuthenticationMobileAppWebServiceSetupXX.msi.
-
-    Domyślną nazwą katalogu wirtualnego jest teraz **MultiFactorAuthMobileAppWebService** zamiast **PhoneFactorPhoneAppWebService**. Jeśli chcesz użyć poprzedniej nazwy, musisz podczas instalacji zmienić nazwę katalogu wirtualnego. Można wybrać krótszą nazwę, aby ułatwić użytkownikom końcowym wpisywanie jej w urządzeniach przenośnych. W przeciwnym razie, jeśli zezwolisz procesowi instalacji na użycie nowej nazwy domyślnej, kliknij ikonę aplikację mobilnej na serwerze Multi-Factor Authentication i zaktualizuj adres URL usługi sieci Web aplikacji mobilnej.
-
-  5. Przejdź do lokalizacji instalacji usługi internetowej aplikacji mobilnej (np. C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService) i otwórz do edycji plik web.config. Z oryginalnego pliku web.config, który został umieszczony w kopii zapasowej przed uaktualnieniem, skopiuj wartości z sekcji appSettings i applicationSettings do nowego pliku web.config. Jeśli nowa domyślna nazwa katalogu wirtualnego została zachowana podczas instalacji zestawu SDK usługi sieci Web, zmień adres URL w sekcji applicationSettings, aby wskazywał poprawną lokalizację. Jeśli w poprzednim pliku web.config zostały zmienione inne wartości domyślne, zastosuj te same zmiany w nowym pliku web.config.
+> [!NOTE]
+> W przypadku uaktualniania z wersji serwera Azure MFA Server starszej niż 8.0 do wersji 8.0 lub nowszej po uaktualnieniu można odinstalować usługę internetową aplikacji mobilnej
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -12,17 +12,26 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2018
+ms.date: 06/25/2018
 ms.author: tomfitz
-ms.openlocfilehash: 85dc16b07b72f2e8c1ed00fb5dd25288b985ae21
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 576558f7ab3ae9a0e3ceebb65d19f689b4836022
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603047"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36958820"
 ---
 # <a name="azure-resource-manager-overview"></a>Omówienie usługi Azure Resource Manager
 Infrastruktura aplikacji zwykle obejmuje wiele składników — może to być maszyna wirtualna, konto magazynu i sieć wirtualna albo aplikacja internetowa, baza danych, serwer bazy danych i usługi zewnętrzne. Te składniki nie są widoczne jako osobne jednostki, tylko jako powiązane i zależne od siebie nawzajem części jednej całości. Dlatego najlepiej wdrażać i monitorować je oraz zarządzać nimi grupowo. Usługa Azure Resource Manager umożliwia pracę z zasobami tworzącymi rozwiązanie w formie grupy. Wszystkie zasoby danego rozwiązania można wdrożyć, zaktualizować lub usunąć w ramach jednej skoordynowanej operacji. Wdrażanie wykonuje się przy użyciu szablonu, którego można następnie używać w różnych środowiskach (testowanie, etap przejściowy i produkcja). Usługa Resource Manager zapewnia funkcje zabezpieczeń, inspekcji i znakowania ułatwiające zarządzanie zasobami po wdrożeniu. 
+
+## <a name="consistent-management-layer"></a>Spójna warstwa zarządzania
+Usługa Resource Manager zapewnia spójną warstwę zarządzania na potrzeby wykonywania zadań za pomocą programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure, witryny Azure Portal, interfejsu API REST oraz zestawów SDK klienta. Wszystkie funkcje, które są dostępne w witrynie Azure Portal są również dostępne za pośrednictwem programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure, interfejsu API REST oraz zestawów SDK klienta. Funkcje udostępnione najpierw za pośrednictwem interfejsów API zostaną wprowadzone w witrynie Portal w ciągu 180 dni od początkowego wydania.
+
+Wybierz narzędzia i interfejsy API, które najbardziej Ci odpowiadają — mają one te same możliwości i zapewniają spójne wyniki.
+
+Na poniższej ilustracji przedstawiono, jak poszczególne narzędzia wchodzą w interakcję z tym samym interfejsem API usługi Azure Resource Manager. Interfejs API przekazuje żądania do usługi Resource Manager, która je uwierzytelnia i autoryzuje. Usługa Resource Manager przekierowuje następnie żądania do odpowiednich dostawców zasobów.
+
+![Model żądań usługi Resource Manager](./media/resource-group-overview/consistent-management-layer.png)
 
 ## <a name="terminology"></a>Terminologia
 Jeśli dopiero zaczynasz korzystać z usługi Azure Resource Manager, oto kilka terminów, których możesz nie znać.
@@ -45,13 +54,6 @@ Usługa Resource Manager zapewnia kilka korzyści:
 * Możliwość wyjaśniania rozliczeń w organizacji przez wyświetlanie kosztów dla grupy zasobów korzystających z tego samego tagu.  
 
 Usługa Resource Manager udostępnia nową metodę wdrażania rozwiązań i zarządzania nimi. Jeśli znasz wcześniejszy model wdrażania i chcesz dowiedzieć się więcej o zmianach, zobacz artykuł [Understanding Resource Manager deployment and classic deployment](resource-manager-deployment-model.md) (Opis wdrażania za pomocą usługi Resource Manager oraz wdrażania klasycznego).
-
-## <a name="consistent-management-layer"></a>Spójna warstwa zarządzania
-Usługa Resource Manager zapewnia spójną warstwę zarządzania dla zadań wykonywanych za pomocą programu Azure PowerShell, interfejsu wiersza polecenia Azure, witryny Azure Portal, interfejsu API REST oraz narzędzi programistycznych. Wszystkie narzędzia korzystają ze wspólnego zestawu operacji. Możesz używać najwygodniejszych dla siebie narzędzi i stosować je zamiennie, bez jakichkolwiek problemów. 
-
-Na poniższej ilustracji przedstawiono, jak poszczególne narzędzia wchodzą w interakcję z tym samym interfejsem API usługi Azure Resource Manager. Interfejs API przekazuje żądania do usługi Resource Manager, która je uwierzytelnia i autoryzuje. Usługa Resource Manager przekierowuje następnie żądania do odpowiednich dostawców zasobów.
-
-![Model żądań usługi Resource Manager](./media/resource-group-overview/consistent-management-layer.png)
 
 ## <a name="guidance"></a>Wskazówki
 Poniższe sugestie pomogą Ci w pełni wykorzystać możliwości usługi Resource Manager w pracy z rozwiązaniami.
@@ -214,7 +216,7 @@ Platforma Azure udostępnia kilka ról specyficznych dla zasobów. Niektóre typ
 2. Współautor sieci — może zarządzać wszystkimi zasobami sieci, ale nie może udzielać dostępu do nich
 3. Współautor konta magazynu — może zarządzać kontami magazynu, ale nie może udzielać dostępu do nich
 4. Współautor serwera SQL — może zarządzać bazami danych i serwerami SQL, ale nie ich zasadami związanymi z zabezpieczeniami
-5. Współautor witryny sieci Web — może zarządzać witrynami sieci Web, ale nie planami sieci Web, do których są podłączone
+5. Współautor witryny internetowej — może zarządzać witrynami internetowymi, ale nie planami internetowymi, do których są podłączone
 
 Aby uzyskać pełną listę ról i dozwolonych akcji, zobacz [Kontrola dostępu oparta na rolach (RBAC): wbudowane role](../role-based-access-control/built-in-roles.md). Aby uzyskać więcej informacji na temat kontroli dostępu na podstawie ról, zobacz temat [Azure Role-Based Access Control](../role-based-access-control/role-assignments-portal.md) (Kontrola dostępu na podstawie ról na platformie Azure). 
 
@@ -227,7 +229,7 @@ W niektórych przypadkach istnieje potrzeba uruchomienia kodu lub skryptu, któr
 Można również jawnie zablokować dostęp do kluczowych zasobów, aby uniemożliwić użytkownikom ich usuwanie i modyfikowanie. Aby uzyskać więcej informacji, zobacz [Lock resources with Azure Resource Manager](resource-group-lock-resources.md) (Blokowanie zasobów w usłudze Azure Resource Manager).
 
 ## <a name="activity-logs"></a>Dzienniki aktywności
-Usługa Resource Manager rejestruje wszystkie operacje służące do tworzenia, modyfikowania lub usuwania zasobu. Dzienników aktywności można użyć do znalezienia błędu podczas rozwiązywania problemów lub do monitorowania sposobu, w jaki zasób został zmodyfikowany przez użytkownika w organizacji. Aby wyświetlić dzienniki, wybierz pozycję **Dzienniki aktywności** w bloku **Ustawienia** dla grupy zasobów. Dzienniki można filtrować według wielu różnych wartości, w tym według użytkownika, który zainicjował operację. Aby uzyskać informacje dotyczące pracy z dziennikami aktywności, zobacz [View activity logs to manage Azure resources](resource-group-audit.md) (Wyświetlanie dzienników aktywności w celu zarządzania zasobami platformy Azure).
+Usługa Resource Manager rejestruje wszystkie operacje służące do tworzenia, modyfikowania lub usuwania zasobu. Dzienników aktywności można użyć do znalezienia błędu podczas rozwiązywania problemów lub do monitorowania sposobu, w jaki zasób został zmodyfikowany przez użytkownika w organizacji. Dzienniki można filtrować według wielu różnych wartości, w tym według użytkownika, który zainicjował operację. Aby uzyskać informacje dotyczące pracy z dziennikami aktywności, zobacz [View activity logs to manage Azure resources](resource-group-audit.md) (Wyświetlanie dzienników aktywności w celu zarządzania zasobami platformy Azure).
 
 ## <a name="customized-policies"></a>Zasady niestandardowe
 Usługa Resource Manager umożliwia tworzenie zasad niestandardowych na potrzeby zarządzania zasobami. Typy tworzonych zasad mogą obejmować różne scenariusze. Można wymusić konwencję nazewnictwa zasobów, ograniczyć typy i wystąpienia zasobów, które można wdrożyć, lub wprowadzić ograniczenia dotyczące regionów, które mogą hostować dany typ zasobu. Można wymagać wartości tagu dla zasobów w celu organizowania rozliczania według działów. Tworzenie zasad umożliwia obniżenie kosztów i zachowanie spójności w ramach subskrypcji. 
@@ -255,7 +257,7 @@ Można utworzyć o wiele więcej typów zasad. Aby uzyskać więcej informacji, 
 ## <a name="sdks"></a>Zestawy SDK
 Zestawy Azure SDK są dostępne dla wielu języków i platform. Implementacje dla poszczególnych języków są dostępne za pośrednictwem menedżera pakietów danego ekosystemu oraz w usłudze GitHub.
 
-Oto nasze repozytoria zestawów SDK typu open source. Zachęcamy do wysyłania opinii, zgłaszania problemów i przesyłania żądań ściągnięcia.
+Oto repozytoria zestawów SDK typu open source.
 
 * [Zestaw Azure SDK dla platformy .NET](https://github.com/Azure/azure-sdk-for-net)
 * [Biblioteki zarządzania Azure dla języka Java](https://github.com/Azure/azure-sdk-for-java)
