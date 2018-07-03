@@ -89,6 +89,12 @@
       href: /powershell/module/azurerm.eventgrid
     - name: REST
       href: /rest/api/eventgrid
+    - name: Zasoby szablonu
+      items:
+        - name: Subskrypcje zdarzeń
+          href: /azure/templates/microsoft.eventgrid/eventsubscriptions
+        - name: Tematy
+          href: /azure/templates/microsoft.eventgrid/topics
     - name: Zestawy SDK
       href: sdk-overview.md
     - name: Schemat subskrypcji

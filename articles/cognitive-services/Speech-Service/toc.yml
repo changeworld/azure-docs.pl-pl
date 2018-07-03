@@ -5,6 +5,8 @@
     - name: Czym jest usługa rozpoznawania mowy?
       href: overview.md
       expanded: true
+    - name: Scenariusze z zastosowaniem mowy
+      href: speech-scenarios.md
 - name: Przewodniki Szybki start
   items:
     - name: Wypróbuj bezpłatnie usługę rozpoznawania mowy
@@ -25,16 +27,18 @@
       href: how-to-text-to-speech.md
     - name: Tłumaczenie mowy
       href: how-to-translate-speech.md
-    - name: Pobieranie zestawu Speech Devices SDK
-      href: get-speech-devices-sdk.md
     - name: Transkrypcja wsadowa
       href: batch-transcription.md
+    - name: Pobieranie zestawu Speech Devices SDK
+      href: get-speech-devices-sdk.md
 - name: Dostosowywanie
   items:
     - name: Dostosowywanie modeli akustycznych
       href: how-to-customize-acoustic-models.md
     - name: Dostosowywanie modeli językowych
       href: how-to-customize-language-model.md
+    - name: Dostosowywanie wymowy
+      href: how-to-customize-pronunciation.md
     - name: Dostosowywanie czcionek głosowych (głos bota powiązany z marką)
       href: how-to-customize-voice-font.md
     - name: Przygotowanie transkrypcji

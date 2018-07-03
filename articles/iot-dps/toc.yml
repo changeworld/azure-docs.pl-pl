@@ -113,9 +113,14 @@
           href: how-to-manage-dps-with-cli.md
         - name: Kontrola dostępu do interfejsów API usługi Provisioning Service
           href: how-to-control-access.md
-    - name: Aprowizowanie urządzenia usługi IoT Edge
-      href: ../iot-edge/how-to-auto-provision-simulated-device-windows.md
-      maintainContext: true
+    - name: Aprowizowanie urządzeń usługi IoT Edge
+      items:
+        - name: Linux
+          href: ../iot-edge/how-to-auto-provision-simulated-device-linux.md
+          maintainContext: true
+        - name: Windows
+          href: ../iot-edge/how-to-auto-provision-simulated-device-windows.md
+          maintainContext: true
     - name: Korzystanie z mechanizmów zaświadczania za pomocą zestawu SDK
       href: use-hsm-with-sdk.md
     - name: Korzystanie z narzędzi zestawu SDK do programowania

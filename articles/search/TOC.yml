@@ -145,7 +145,7 @@
           href: search-faceted-navigation.md
         - name: Dostrajanie trafności
           href: 'https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index'
-        - name: Synonimy — wersja zapoznawcza
+        - name: Synonimy
           href: search-synonyms.md
     - name: Indeksowanie danych
       items:

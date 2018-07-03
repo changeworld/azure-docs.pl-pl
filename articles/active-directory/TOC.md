@@ -380,6 +380,7 @@
 ### [Integrowanie tożsamości lokalnych za pomocą usługi Azure AD Connect](./connect/active-directory-aadconnect.md)
 
 ## Delegowanie dostępu do zasobów
+### [Wyświetlanie członków roli administratora](directory-manage-roles-portal.md)
 ### [Role administratorów](active-directory-assign-admin-roles-azure-portal.md)
 #### [Przypisywanie użytkownikowi roli administratora](fundamentals/active-directory-users-assign-role-azure-portal.md)
 #### [Porównanie uprawnień członka i gościa](fundamentals/users-default-permissions.md)

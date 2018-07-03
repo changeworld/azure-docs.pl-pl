@@ -169,94 +169,104 @@
           href: log-analytics-agent-linux-support.md
     - name: Korzystanie z rozwiązań
       items:
-        - name: Omówienie rozwiązań
-          href: log-analytics-add-solutions.md
+        - name: Instalowanie rozwiązań
+          href: ../monitoring/monitoring-solutions.md?toc=%2fazure%2flog-analytics%2ftoc.json
+        - name: Spis rozwiązań
+          href: ../monitoring/monitoring-solutions-inventory.md?toc=%2fazure%2flog-analytics%2ftoc.json
         - name: Rozwiązania docelowe
           href: ../monitoring/monitoring-solution-targeting.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: Dzienniki aktywności platformy Azure
+        - name: Przewodniki po rozwiązaniach
           items:
-            - name: Analiza
-              href: log-analytics-activity.md
-            - name: Gromadzenie z różnych subskrypcji
-              href: log-analytics-activity-logs-subscriptions.md
-        - name: Ocena usługi AD
-          href: log-analytics-ad-assessment.md
-        - name: Stan replikacji usługi AD
-          href: log-analytics-ad-replication-status.md
-        - name: Kondycja agenta
-          href: ../operations-management-suite/oms-solution-agenthealth.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: Zarządzanie alertami
-          href: log-analytics-solution-alert-management.md
-        - name: Application Insights Connector
-          href: log-analytics-app-insights-connector.md
-        - name: Azure SQL Analytics
-          href: log-analytics-azure-sql.md
-        - name: Azure Web Apps Analytics
-          href: log-analytics-azure-web-apps-analytics.md
-        - name: Pojemność i wydajność
-          href: log-analytics-capacity.md
-        - name: Śledzenie zmian
-          href: log-analytics-change-tracking.md
-        - name: Containers
-          href: log-analytics-containers.md
-        - name: Analiza DNS
-          href: log-analytics-dns.md
-        - name: Łącznik zarządzania usługami IT
-          href: log-analytics-itsmc-overview.md
-          items:
-            - name: Połączenia zarządzania usługami IT
-              href: log-analytics-itsmc-connections.md
-        - name: Usługa Key Vault
-          href: log-analytics-azure-key-vault.md
-        - name: Logic Apps — wiadomości B2B
-          items:
-            - name: Logic Apps — rozwiązanie do obsługi wiadomości B2B
-              href: ../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json
-            - name: Logic Apps — niestandardowy schemat śledzenia B2B
-              href: ../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: Analiza sieci
-          href: log-analytics-azure-networking-analytics.md
-        - name: Monitor wydajności sieci
-          items:
-            - name: Omówienie rozwiązania
-              href: log-analytics-network-performance-monitor.md
-            - name: Monitorowanie wydajności
-              href: log-analytics-network-performance-monitor-performance-monitor.md
-            - name: Punkt końcowy usługi
-              href: log-analytics-network-performance-monitor-service-endpoint.md
-            - name: ExpressRoute
-              href: log-analytics-network-performance-monitor-expressroute.md
-            - name: Cennik
-              href: log-analytics-network-performance-monitor-pricing-faq.md
-        - name: Office 365
-          href: ../operations-management-suite/oms-solution-office-365.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: Sprawdzanie kondycji oprogramowania SCOM
-          href: log-analytics-scom-assessment.md
-        - name: Inspekcja zabezpieczeń
-          href: ../security-center/security-center-intro.md
-        - name: Usługa Service Fabric używana z programem Azure PowerShell
-          href: log-analytics-service-fabric.md
-          items:
-            - name: Usługa Service Fabric używana z usługą Azure Resource Manager
-              href: log-analytics-service-fabric-azure-resource-manager.md
-        - name: Mapa usługi
-          href: ../monitoring/monitoring-service-map.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: Sprawdzanie kondycji bazy danych SQL
-          href: log-analytics-sql-assessment.md
-        - name: Surface Hub
-          href: log-analytics-surface-hubs.md
-        - name: Zarządzanie aktualizacjami
-          href: ../operations-management-suite/oms-solution-update-management.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: VMware
-          href: log-analytics-vmware.md
-        - name: Analiza systemu Windows
-          items:
-            - name: Zgodność aktualizacji
-              href: 'https://technet.microsoft.com/itpro/windows/manage/update-compliance-get-started'
-            - name: Gotowość do uaktualnienia
-              href: 'https://technet.microsoft.com/itpro/windows/deploy/upgrade-readiness-get-started'
-        - name: Dane o komunikacji sieciowej
-          href: log-analytics-wire-data.md
+            - name: Dzienniki aktywności platformy Azure
+              items:
+                - name: Analiza
+                  href: log-analytics-activity.md
+                - name: Gromadzenie z różnych subskrypcji
+                  href: log-analytics-activity-logs-subscriptions.md
+            - name: Ocena usługi AD
+              href: log-analytics-ad-assessment.md
+            - name: Stan replikacji usługi AD
+              href: log-analytics-ad-replication-status.md
+            - name: Kondycja agenta
+              href: ../monitoring/monitoring-solution-agenthealth.md?toc=%2fazure%2flog-analytics%2ftoc.json
+            - name: Zarządzanie alertami
+              href: log-analytics-solution-alert-management.md
+            - name: Application Insights Connector
+              href: log-analytics-app-insights-connector.md
+            - name: Azure SQL Analytics
+              href: log-analytics-azure-sql.md
+            - name: Azure Web Apps Analytics
+              href: log-analytics-azure-web-apps-analytics.md
+            - name: Pojemność i wydajność
+              href: log-analytics-capacity.md
+            - name: Śledzenie zmian
+              href: log-analytics-change-tracking.md
+            - name: Containers
+              href: log-analytics-containers.md
+            - name: Analiza DNS
+              href: log-analytics-dns.md
+            - name: Łącznik zarządzania usługami IT
+              href: log-analytics-itsmc-overview.md
+              items:
+                - name: Połączenia zarządzania usługami IT
+                  href: log-analytics-itsmc-connections.md
+            - name: Usługa Key Vault
+              href: log-analytics-azure-key-vault.md
+            - name: Logic Apps — wiadomości B2B
+              items:
+                - name: Logic Apps — rozwiązanie do obsługi wiadomości B2B
+                  href: ../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json
+                - name: Logic Apps — niestandardowy schemat śledzenia B2B
+                  href: ../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md?toc=%2fazure%2flog-analytics%2ftoc.json
+            - name: Analiza sieci
+              href: log-analytics-azure-networking-analytics.md
+            - name: Monitor wydajności sieci
+              items:
+                - name: Omówienie rozwiązania
+                  href: log-analytics-network-performance-monitor.md
+                - name: Monitorowanie wydajności
+                  href: log-analytics-network-performance-monitor-performance-monitor.md
+                - name: Punkt końcowy usługi
+                  href: log-analytics-network-performance-monitor-service-endpoint.md
+                - name: ExpressRoute
+                  href: log-analytics-network-performance-monitor-expressroute.md
+                - name: Cennik
+                  href: log-analytics-network-performance-monitor-pricing-faq.md
+            - name: Office 365
+              href: ../monitoring/monitoring-solution-office-365.md?toc=%2fazure%2flog-analytics%2ftoc.json
+            - name: Sprawdzanie kondycji oprogramowania SCOM
+              href: log-analytics-scom-assessment.md
+            - name: Inspekcja zabezpieczeń
+              href: ../security-center/security-center-intro.md
+            - name: Usługa Service Fabric używana z programem Azure PowerShell
+              href: log-analytics-service-fabric.md
+              items:
+                - name: Usługa Service Fabric używana z usługą Azure Resource Manager
+                  href: log-analytics-service-fabric-azure-resource-manager.md
+            - name: Mapa usługi
+              items:
+                - name: Użycie
+                  href: ../monitoring/monitoring-service-map.md?toc=%2fazure%2flog-analytics%2ftoc.json
+                - name: Konfigurowanie
+                  href: ../monitoring/monitoring-service-map-configure.md?toc=%2fazure%2flog-analytics%2ftoc.json
+                - name: Integracja z programem Operations Manager
+                  href: ../monitoring/monitoring-service-map-scom.md?toc=%2fazure%2flog-analytics%2ftoc.json
+            - name: Sprawdzanie kondycji bazy danych SQL
+              href: log-analytics-sql-assessment.md
+            - name: Surface Hub
+              href: log-analytics-surface-hubs.md
+            - name: Zarządzanie aktualizacjami
+              href: ../automation/automation-update-management.md?toc=%2fazure%2flog-analytics%2ftoc.json
+            - name: VMware
+              href: log-analytics-vmware.md
+            - name: Analiza systemu Windows
+              items:
+                - name: Zgodność aktualizacji
+                  href: 'https://technet.microsoft.com/itpro/windows/manage/update-compliance-get-started'
+                - name: Gotowość do uaktualnienia
+                  href: 'https://technet.microsoft.com/itpro/windows/deploy/upgrade-readiness-get-started'
+            - name: Dane o komunikacji sieciowej
+              href: log-analytics-wire-data.md
     - name: Programowanie
       items:
         - name: Polecenia cmdlet programu PowerShell

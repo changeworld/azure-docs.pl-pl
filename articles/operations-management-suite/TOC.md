@@ -1,6 +1,5 @@
 # Omówienie
-## [Co to jest pakiet Operations Management Suite?](operations-management-suite-overview.md)
-## [Architektura pakietu OMS](operations-management-suite-architecture.md)
+## [Monitorowania agentów](../monitoring/index.md)
 
 # Rozpoczęcie pracy
 ## [Log Analytics](../log-analytics/log-analytics-get-started.md)
@@ -13,8 +12,6 @@
 
 ## Analiza
 ### [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-### [Porównanie produktów związanych z monitorowaniem](operations-management-suite-monitoring-product-comparison.md)
-### [Zarządzanie alertami](operations-management-suite-monitoring-alerts.md)
 ## Automatyzacja
 ### [Omówienie usługi Azure Automation](../automation/automation-intro.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
@@ -68,12 +65,7 @@
 ### [Najlepsze praktyki](../monitoring/monitoring-solutions-best-practices.md)
 
 ## Scenariusze zarządzania
-### [Zbieranie danych analitycznych z elementu runbook](operations-management-suite-runbook-datacollect.md)
-
-## [Integracja z usługą OMS](operations-management-suite-integration.md)
-
-# Dokumentacja
-## [SDK](operations-management-suite-sdk.md)
+### [Zbieranie danych analitycznych z elementu runbook](../monitoring/monitoring-runbook-datacollect.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
 # Zasoby
 ## [Harmonogram działania dla platformy Azure](https://azure.microsoft.com/roadmap/)

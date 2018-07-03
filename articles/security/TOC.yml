@@ -10,6 +10,8 @@
       href: azure-log-audit.md
     - name: Zabezpieczenia sieci na platformie Azure
       href: azure-network-security.md
+    - name: Bezpieczeństwo bezserwerowej platformy Azure
+      href: abstract-serverless-platform-security.md
     - name: Włączanie bezpieczeństwa działania
       href: azure-operational-security.md
     - name: Ład na platformie Azure
