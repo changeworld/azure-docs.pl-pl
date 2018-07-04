@@ -1,6 +1,6 @@
 ---
-title: 'Azure rozwiązania Cosmos bazy danych: Interfejsu API języka Java SQL, zestaw SDK & zasobów | Dokumentacja firmy Microsoft'
-description: Dowiedz się wszystkiego o interfejsu API języka Java SQL i zestawu SDK, w tym daty wydania, daty wycofania i zmiany wprowadzone od każdej wersji zestawu SDK Java SQL platformy Azure rozwiązania Cosmos bazy danych.
+title: 'Azure Cosmos DB: Interfejs API SQL języka Java, zestaw SDK i zasoby | Dokumentacja firmy Microsoft'
+description: Poznaj interfejs API SQL języka Java i zestawu SDK, w tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami zestawu SDK usługi Azure Cosmos DB SQL języka Java.
 services: cosmos-db
 author: rnagpal
 manager: kfile
@@ -9,20 +9,20 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/16/2018
-ms.author: khdang
+ms.date: 06/29/2018
+ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 352fa562a09d343d4a01b94343a60e3f6610c73f
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: d7d00d6236b601d145be03e6086bec2d72faafcd
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097169"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344941"
 ---
-# <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure rozwiązania Cosmos DB Java SDK dla interfejsu API SQL: informacje o wersji i zasoby
+# <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Usługa Azure Cosmos DB Java SDK dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [Źródła danych zmian .NET](sql-api-sdk-dotnet-changefeed.md)
+> * [Kanał informacyjny zmian .NET](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java (asynchroniczny)](sql-api-sdk-async-java.md)
@@ -31,177 +31,185 @@ ms.locfileid: "37097169"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Dostawca zasobów REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-> * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
+> * [Bulkexecutor — platforma .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulkexecutor — platforma Java](sql-api-sdk-bulk-executor-java.md)
 
-Zestaw SDK Java interfejsu API SQL obsługuje synchronicznych operacji. Obsługa komunikacji asynchronicznej, można użyć [SQL zestawu SDK Java asynchroniczne dla interfejsu API](sql-api-sdk-async-java.md). 
+Zestaw SDK języka Java dla interfejsu API SQL obsługuje operacje synchroniczne. Użyj asynchronicznej obsługi [zestawu Java SDK SQL API Async](sql-api-sdk-async-java.md). 
 
 <table>
 
-<tr><td>**Pobierz zestaw SDK**</td><td>[Maven](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)</td></tr>
+<tr><td>**Zestaw SDK do pobrania**</td><td>[Maven](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)</td></tr>
 
-<tr><td>**Dokumentacja interfejsu API**</td><td>[Dokumentacji interfejsu API języka Java](/java/api/com.microsoft.azure.documentdb)</td></tr>
+<tr><td>**Dokumentacja interfejsu API**</td><td>[Dokumentacja interfejsu API języka Java](/java/api/com.microsoft.azure.documentdb)</td></tr>
 
-<tr><td>**Przyczyniają się do zestawu SDK**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-java/)</td></tr>
+<tr><td>**Przyczynia się do zestawu SDK**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-java/)</td></tr>
 
-<tr><td>**Wprowadzenie**</td><td>[Rozpoczynanie pracy z zestawu Java SDK](sql-api-java-get-started.md)</td></tr>
+<tr><td>**Wprowadzenie**</td><td>[Wprowadzenie do zestawu SDK Java](sql-api-java-get-started.md)</td></tr>
 
-<tr><td>**Samouczek aplikacji sieci Web**</td><td>[Tworzenie aplikacji sieci Web z bazy danych Azure rozwiązania Cosmos](sql-api-java-application.md)</td></tr>
+<tr><td>**Samouczek dotyczący aplikacji sieci Web**</td><td>[Opracowywanie aplikacji sieci Web za pomocą usługi Azure Cosmos DB](sql-api-java-application.md)</td></tr>
 
-<tr><td>**Minimalna obsługiwana środowiska wykonawczego**</td><td>[JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)</td></tr>
+<tr><td>**Minimalne obsługiwane środowisko uruchomieniowe**</td><td>[JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)</td></tr>
 </table></br>
 
 ## <a name="release-notes"></a>Informacje o wersji
 
+### <a name="a-name11621162"></a><a name="1.16.2"/>1.16.2
+* Dodano niepowodzenia przesyłania strumieniowego za pośrednictwem pomocy technicznej.
+* Dodano obsługę niestandardowych metadanych.
+* Sesja ulepszona logika obsługi.
+* Usunięto usterkę w pamięci podręcznej zakres kluczy partycji.
+* Usunięto usterkę NPE w trybie bezpośredniego.
+
 ### <a name="a-name11611161"></a><a name="1.16.1"/>1.16.1
 * Dodano obsługę unikatowego indeksu.
-* Dodano obsługę ograniczanie rozmiaru token kontynuacji w opcjach źródła danych.
-* Rozwiązane usterki w serializacji Json (sygnatura).
-* Rozwiązane usterki w serializacji Json (enum).
-* Zależność od uaktualnione do 2.9.5 com.fasterxml.jackson.core:jackson-databind.
+* Dodano obsługę ograniczenie rozmiaru token kontynuacji w opcjach źródła danych.
+* Usunięto usterkę w serializacji Json (sygnatura czasowa).
+* Usunięto usterkę w serializacji Json (enum).
+* Zależność od uaktualnione do 2.9.5 elementu databind na com.fasterxml.jackson.core:jackson.
 
 ### <a name="a-name11601160"></a><a name="1.16.0"/>1.16.0
-* Ulepszone buforowania w trybie bezpośredniego połączeń.
-* Ulepszona wyprzedzeniem poprawy w przypadku innych niż orderby cross zapytanie partycji.
-* Ulepszone generowania identyfikatora UUID.
-* Ulepszone logika spójność sesji.
+* Buforowanie w trybie bezpośredniego połączenia ulepszona.
+* Ulepszona wzrost pobierania z wyprzedzeniem dla innych orderby wielu partycji zapytania.
+* Ulepszone Generowanie UUID.
+* Ulepszona logika spójność sesji.
 * Dodano obsługę multipolygon.
-* Dodano obsługę statystyki zakresu klucza partycji dla kolekcji.
-* Stała usterki w przypadku pomocy technicznej.
+* Dodano obsługę statystyk zakresu klucza partycji dla kolekcji.
+* Usunięto usterkę w obsłudze wielu regionów.
 
 ### <a name="a-name11501150"></a><a name="1.15.0"/>1.15.0
-* Zwiększona wydajność serializacji Json.
-* Ta wersja zestawu SDK wymaga najnowszej wersji emulatora DB rozwiązania Cosmos Azure dostępne do pobrania z https://aka.ms/cosmosdb-emulator.
+* Zwiększono wydajność serializacji Json.
+* Ta wersja zestawu SDK wymaga najnowszej wersji emulatora usługi Azure Cosmos dostępne do pobrania z https://aka.ms/cosmosdb-emulator.
 
 ### <a name="a-name11401140"></a><a name="1.14.0"/>1.14.0
 * Wewnętrzny zmiany dla bibliotek znajomych firmy Microsoft.
 
 ### <a name="a-name11301130"></a><a name="1.13.0"/>1.13.0
-* Rozwiązano problem podczas odczytywania klucza zakresy jednej partycji.
-* Rozwiązano problem w ResourceID analizy, który ma wpływ na bazę danych krótkie nazwy.
-* Stałe przyczyną problemu kodowanie klucza partycji.
+* Rozwiązano problem podczas odczytu jedną partycję kluczy zakresów.
+* Rozwiązano problem z ResourceID analizy, która ma wpływ na bazę danych z krótkimi nazwami.
+* Ustalić przyczynę problemu, kodując partycję kluczy.
 
 ### <a name="a-name11201120"></a><a name="1.12.0"/>1.12.0
-* Poprawki błędów krytycznych do żądania przetwarzania podczas podziałów partycji.
-* Rozwiązano problem z poziomy spójności silne i BoundedStaleness.
+* Poprawki błędów krytycznych żądania przetwarzania podczas dzieli dane partycji.
+* Rozwiązano problem z poziomów spójności silne i BoundedStaleness.
 
 ### <a name="a-name11101110"></a><a name="1.11.0"/>1.11.0
-* Dodano obsługę nowego poziomu spójności o nazwie ConsistentPrefix.
-* Stałe błędów w kolekcji sesji w trybie odczytu.
+* Dodano obsługę nowego poziomu spójności, nazywana ConsistentPrefix.
+* Usunięto usterkę w kolekcji sesji w trybie do czytania.
 
 ### <a name="a-name11001100"></a><a name="1.10.0"/>1.10.0
-* Włączona obsługa kolekcji partycjonowanych jako niskie jako 2500 RU/s i skalować z przyrostem 100 RU/s.
-* Rozwiązane usterki w natywny zestaw, co może spowodować wyjątek NullRef niektórych kwerend.
+* Włączona obsługa kolekcji partycjonowanej z jako mało jako klient może dysponować 2500 jednostek żądań na sekundę i skalować w przyrostach 100 RU/s.
+* Usunięto usterkę w macierzystym zestawie, co może spowodować wyjątek NullRef w niektórych zapytaniach.
 
 ### <a name="a-name196196"></a><a name="1.9.6"/>1.9.6
-* Rozwiązane usterki w Konfiguracja aparatu zapytania, który może powodować wyjątki dla zapytań w trybie bramy.
-* Stałe kilka błędów w kontenerze sesji, która może spowodować wyjątek "Nie można odnaleźć zasobu właściciela" żądań natychmiast po utworzeniu kolekcji.
+* Usunięto usterkę w Konfiguracja aparatu zapytań, które mogą powodować wyjątki dotyczące zapytań w trybie bramy.
+* Naprawiono kilka błędów w kontenerze sesji, który może spowodować wyjątek "Nie można odnaleźć zasobu właściciela", w przypadku żądań od razu po utworzeniu kolekcji.
 
 ### <a name="a-name195195"></a><a name="1.9.5"/>1.9.5
-* Dodano obsługę zapytań agregacji (COUNT, MIN, MAX, SUM i Śr.). Zobacz [Obsługa agregacji](sql-api-sql-query.md#Aggregates).
-* Dodano obsługę zmiany źródła danych.
-* Dodano obsługę za pośrednictwem RequestOptions.setPopulateQuotaInfo, informacje o limicie przydziału kolekcji.
-* Dodano obsługę rejestrowania skryptu procedury składowanej za pośrednictwem RequestOptions.setScriptLoggingEnabled.
-* Stałe usterki, gdzie mogą wykraczać zapytania w trybie DirectHttps, gdy wystąpią błędy ograniczania.
-* Rozwiązane usterki w tryb spójność sesji.
-* Stałe błędów, które mogą spowodować NullReferenceException element HttpContext po wysoki współczynnik żądań.
-* Lepsza wydajność DirectHttps tryb.
+* Dodano obsługę zapytań agregacji (COUNT, MIN, MAX, Suma i średnia). Zobacz [Obsługa agregacji](sql-api-sql-query.md#Aggregates).
+* Dodano obsługę zestawienia zmian.
+* Dodano obsługę za pomocą RequestOptions.setPopulateQuotaInfo, informacje o limitach przydziału kolekcji.
+* Dodano obsługę rejestrowanie skryptu procedury składowanej za pośrednictwem RequestOptions.setScriptLoggingEnabled.
+* Usunięto usterkę, w którym może się zawiesić zapytania w trybie DirectHttps, gdy wystąpią błędy ograniczania.
+* Usunięto usterkę w trybie spójność sesji.
+* Naprawiono usterkę, która może spowodować obiektu NullReferenceException w HttpContext, gdy liczba żądań jest wysoka.
+* Zwiększono wydajność DirectHttps trybu.
 
 ### <a name="a-name194194"></a><a name="1.9.4"/>1.9.4
-* Dodano proste klienta oparte na wystąpienie obsługi serwera proxy z interfejsem API ConnectionPolicy.setProxy().
-* Dodano DocumentClient.close() interfejsu API do prawidłowego zamknięcia DocumentClient wystąpienia.
-* Poprawia wydajność zapytań w trybie bezpośrednie połączenie między wyprowadzanie planu zapytania z natywny zestaw zamiast bramy.
-* Ustaw FAIL_ON_UNKNOWN_PROPERTIES = false, dlatego użytkownicy nie muszą definiować JsonIgnoreProperties w ich typu POJO.
-* Rejestrowanie refaktoryzowane, aby użyć SLF4J.
-* Stała kilka innych błędów spójności czytnika.
+* Obsługa oparta na wystąpieniach proxy dodano prostego klienta za pomocą interfejsu API ConnectionPolicy.setProxy().
+* Dodano DocumentClient.close() interfejsu API prawidłowe zamknięcie wystąpienia DocumentClient.
+* Poprawia wydajność zapytań w trybie połączenie bezpośrednie wyprowadzanie planu zapytania z natywnego zestawu, zamiast bramy.
+* Ustaw FAIL_ON_UNKNOWN_PROPERTIES = false, dzięki czemu użytkownicy nie muszą definiować JsonIgnoreProperties w ich obiektu typu POJO.
+* Zaprojektowane od nowa, rejestrowanie użycia SLF4J.
+* Naprawiono kilka innych błędów w czytniku spójności.
 
 ### <a name="a-name193193"></a><a name="1.9.3"/>1.9.3
-* Stała zarządzania połączenia, aby zapobiec przeciekom połączenia w trybie bezpośrednie połączenie między usterki.
-* Stała usterki zapytania TOP, w którym może zgłosić wyjątek NullReferenece.
-* Lepszą wydajność dzięki zmniejszeniu liczby wywołań sieci dla wewnętrznej pamięci podręcznej.
-* Kod stanu dodany, ActivityID i identyfikator URI żądania w DocumentClientException w celu ułatwienia rozwiązywania problemów.
+* Usunięto usterkę z zarządzaniem połączeniami, aby zapobiec przeciekom połączenia w trybie bezpośredniego połączenia.
+* Usunięto usterkę zapytania dotyczącego POCZĄTKOWYCH, w którym może zgłaszać wyjątek NullReferenece.
+* Zwiększono wydajność dzięki zmniejszeniu liczby wywołań sieci dla wewnętrznych pamięci podręcznych.
+* Dodano został zwrócony kod stanu ActivityID i żądań z identyfikatora URI w DocumentClientException w celu ułatwienia rozwiązywania problemów.
 
 ### <a name="a-name192192"></a><a name="1.9.2"/>1.9.2
-* Rozwiązano problem z zarządzaniem połączeniami dla stabilności.
+* Rozwiązano problem z zarządzaniem połączeniami dotyczące stabilności.
 
 ### <a name="a-name191191"></a><a name="1.9.1"/>1.9.1
 * Dodano obsługę BoundedStaleness poziomu spójności.
-* Dodano obsługę bezpośrednie połączenie między dla operacji CRUD dla kolekcji partycjonowanych.
-* Stałe błędów badania bazy danych z programu SQL.
-* Rozwiązane usterki w pamięci podręcznej sesji, gdzie może być niepoprawna tokenu sesji.
+* Dodano obsługę połączenie bezpośrednie dla operacji CRUD dla kolekcji podzielonych na partycje.
+* Usunięto usterkę w zapytań bazy danych przy użyciu języka SQL.
+* Usunięto usterkę w pamięci podręcznej sesji, gdzie tokenu sesji może być nieprawidłowo ustawiona.
 
 ### <a name="a-name190190"></a><a name="1.9.0"/>1.9.0
-* Dodano obsługę dla wielu partycji zapytania równoległe.
-* Dodano obsługę TOP/ORDER BY zapytania dla kolekcji partycjonowanych.
-* Dodano obsługę wysoki poziom spójności.
-* Dodano obsługę żądań na podstawie nazwy przy użyciu bezpośrednie połączenie między.
-* Stała ActivityId pozostaną niezmienione we wszystkich ponownych prób wykonania żądania.
-* Stałe błędów związane z pamięci podręcznej sesji podczas odtwarzania kolekcji o tej samej nazwie.
-* Dodano wielokąta i typy danych LineString podczas określania kolekcji indeksowania zasad dla zapytań przestrzennych grodzenia.
-* Rozwiązane problemy z dokumentem Java dla języka Java 1.8.
+* Dodano obsługę dla wielu partycji zapytania równolegle.
+* Dodano obsługę TOP/ORDER BY zapytania dla kolekcji podzielonych na partycje.
+* Dodano obsługę silnej spójności.
+* Dodano obsługę nazwy na podstawie żądania, korzystając z połączenia bezpośredniego.
+* Stała się ActivityId pozostają spójne we wszystkich ponownych prób wykonania żądania.
+* Naprawiono usterki związane z pamięci podręcznej sesji podczas odtwarzania kolekcji o takiej samej nazwie.
+* Dodano wielokąta i typy danych LineString, podczas określania zasad dla zapytań przestrzennych grodzenia indeksowania kolekcji.
+* Rozwiązane problemy z dokumentacji języka Java dla języka Java 1.8.
 
 ### <a name="a-name181181"></a><a name="1.8.1"/>1.8.1
-* Rozwiązane usterki w PartitionKeyDefinitionMap do buforowania kolekcje z jedną partycją i nie wprowadzać dodatkowe pobierania żądania klucza partycji.
-* Stałe błędów nie próbę, gdy została podana wartość klucza partycji niepoprawne.
+* Usunięto usterkę w PartitionKeyDefinitionMap buforowanie kolekcji z jedną partycją i nie wprowadzać dodatkowe pobierania żądania klucza partycji.
+* Naprawiono usterkę, aby nie ponowić próbę, gdy została podana wartość klucza partycji niepoprawne.
 
 ### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
-* Dodano obsługę konta w przypadku bazy danych.
-* Dodano obsługę automatycznego ponowienie dotyczące żądań ograniczeniem przepustowości z opcjami, aby dostosować max ponownych prób i ponawiania maksymalny czas oczekiwania.  Zobacz RetryOptions i ConnectionPolicy.getRetryOptions().
-* Przestarzałe IPartitionResolver na podstawie niestandardowych kodów partycjonowania. Użyj kolekcji partycjonowanych wyżej magazynu i przepustowości.
+* Dodano obsługę multiregionalne konta baz danych.
+* Dodano obsługę automatycznego ponowienie dotyczące żądania ograniczone opcje, aby dostosować max ponownych prób i ponawiania maksymalny czas oczekiwania.  Zobacz RetryOptions i ConnectionPolicy.getRetryOptions().
+* Przestarzałe IPartitionResolver na podstawie niestandardowego kodu partycjonowania. Użyj kolekcji podzielonych na partycje dla nowszej magazynu i przepływności.
 
 ### <a name="a-name171171"></a><a name="1.7.1"/>1.7.1
-* Obsługa zasad ponawiania dodano limitów szybkości.  
+* Obsługa zasad ponawiania dodano dla limitów szybkości.  
 
 ### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
-* Czas do live (TTL) — Pomoc techniczna dla dokumentów.
+* Dodano czas live (TTL) — Pomoc techniczna dla dokumentów.
 
 ### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
-* Zaimplementowane [kolekcje partycjonowane](partition-data.md) i [poziomy wydajności zdefiniowanych przez użytkownika](performance-levels.md).
+* Zaimplementowane [podzielona na partycje kolekcje](partition-data.md) i [poziomów wydajności zdefiniowanych przez użytkownika](performance-levels.md).
 
 ### <a name="a-name151151"></a><a name="1.5.1"/>1.5.1
-* Rozwiązane usterki w HashPartitionResolver do generowania wartości skrótu w little endian było spójne z innych zestawów SDK.
+* Usunięto usterkę w HashPartitionResolver do generowania wartości skrótu w little endian aby były zgodne z innych zestawów SDK.
 
 ### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
-* Dodaj skrót & zakres partycji rozwiązujący pomagające dzielenia na fragmenty aplikacji między wieloma partycjami.
+* Dodaj skrót zak & res partycji rozwiązujący uzyskanymi fragmentowania aplikacje na wielu partycjach.
 
 ### <a name="a-name140140"></a><a name="1.4.0"/>1.4.0
-* Implementuje Upsert. Dodane w celu obsługi funkcji Upsert nowych metod upsertXXX.
-* Na podstawie Identyfikatora wdrożenie routingu. Brak zmian publicznego interfejsu API, wszystkie zmiany wewnętrznego.
+* Implementowanie Upsert. Nowe metody upsertXXX dodanych do obsługi funkcji Upsert.
+* Routing oparty na identyfikator implementacji. Brak publicznego zmian interfejsu API, wszystkie zmiany wewnętrznego.
 
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
-* Pominięto wersji można wyświetlić numer wersji wyrównania z innych zestawów SDK
+* Pominięto wersji, aby wyświetlić numer wersji w sposób zgodny z innymi zestawami SDK
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
-* Obsługuje dane geograficzne indeksu
-* Weryfikuje właściwość identyfikatora dla wszystkich zasobów. Identyfikatory zasobów nie może zawierać?, /, #, \, znaków ani kończyć spacją.
-* Dodaje nowego nagłówka "indeksu przekształcania toku" do ResourceResponse.
+* Obsługa danych Geoprzestrzennych indeksu
+* Sprawdza poprawność właściwość identyfikatora dla wszystkich zasobów. Identyfikatory zasobów nie może zawierać?, /, #, \, znaków ani kończyć się spacją.
+* Dodaje nowy nagłówek "indeks przekształcania progress" ResourceResponse.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
-* Implementuje zasady indeksowania V2
+* Implementuje zasady indeksowania w wersji 2
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
-* GA SDK
+* ZESTAW SDK W WERSJI OGÓLNIE DOSTĘPNEJ
 
-## <a name="release-and-retirement-dates"></a>Wersja i wycofania dat
-Firma Microsoft udostępni powiadomienia co najmniej **12 miesięcy** klienta z wyprzedzeniem wycofanie SDK w celu złagodzenia przejścia do nowszej/nieobsługiwaną wersję.
+## <a name="release-and-retirement-dates"></a>Daty wydania i wycofania
+Firma Microsoft zapewnia powiadomienie co najmniej **12 miesięcy** ewentualnej wycofanie zestawu SDK w celu złagodzenia przejścia do nowszych/obsługiwanych wersji.
 
-Nowe funkcje i funkcjonalność i optymalizację, które są dodawane tylko do bieżącego zestawu SDK, w związku jest zalecane, zawsze uaktualnienie SDK najnowszą tak szybko jak to możliwe.
+Nowe funkcje i funkcjonalność i optymalizacje są dodawane tylko do bieżącego zestawu SDK, w związku z tym jest zalecane, zawsze uaktualnienie do najnowszej wersji zestawu SDK tak szybko, jak to możliwe.
 
-Każde żądanie do rozwiązania Cosmos bazy danych przy użyciu wycofane zestawu SDK będą odrzucane przez usługę.
+Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK zostanie odrzucone przez usługę.
 
 > [!WARNING]
-> Wszystkie wersje programu SQL zestawu SDK dla języka Java poprzedzające wersję **1.0.0** zostały wycofane na **29 lutego 2016**.
+> Wszystkie wersje SQL SDK dla języka Java w wersji wcześniejszej niż **1.0.0** zostały wycofane z dniem **do 29 lutego 2016 r.**.
 > 
 > 
 
 <br/>
 
-| Wersja | Data wydania | Dacie wycofania |
+| Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
-| [1.16.1](#1.16.1) |16 maja 2018 |--- |
-| [1.16.0](#1.16.0) |15 marca 2018 |--- |
+| [1.16.2](#1.16.2) |29 czerwca 2018 r. |--- |
+| [1.16.1](#1.16.1) |16 maja 2018 r. |--- |
+| [1.16.0](#1.16.0) |15 marca 2018 r. |--- |
 | [1.15.0](#1.15.0) |14 listopada 2017 r. |--- |
-| [1.14.0](#1.14.0) |28 OCT 2017 r. |--- |
+| [1.14.0](#1.14.0) |28 października 2017 r. |--- |
 | [1.13.0](#1.13.0) |25 sierpnia 2017 r. |--- |
 | [1.12.0](#1.12.0) |11 lipca 2017 r. |--- |
 | [1.11.0](#1.11.0) |10 maja 2017 |--- |
@@ -218,16 +226,16 @@ Każde żądanie do rozwiązania Cosmos bazy danych przy użyciu wycofane zestaw
 | [1.7.1](#1.7.1) |30 kwietnia 2016 r. |--- |
 | [1.7.0](#1.7.0) |27 kwietnia 2016 r. |--- |
 | [1.6.0](#1.6.0) |29 marca 2016 r. |--- |
-| [1.5.1](#1.5.1) |31 grudnia 2015 r. |--- |
+| [1.5.1](#1.5.1) |Do 31 grudnia 2015 r. |--- |
 | [1.5.0](#1.5.0) |04 grudnia 2015 r. |--- |
-| [1.4.0](#1.4.0) |05 października 2015 |--- |
-| [1.3.0](#1.3.0) |05 października 2015 |--- |
-| [1.2.0](#1.2.0) |05 sierpnia 2015 |--- |
+| [1.4.0](#1.4.0) |05 października 2015 r. |--- |
+| [1.3.0](#1.3.0) |05 października 2015 r. |--- |
+| [1.2.0](#1.2.0) |05 sierpnia 2015 r. |--- |
 | [1.1.0](#1.1.0) |09 lipca 2015 r. |--- |
 | [1.0.1](#1.0.1) |12 maja 2015 r. |--- |
 | [1.0.0](#1.0.0) |07 kwietnia 2015 r. |--- |
-| 0.9.5-prelease |09 marca 2015 roku. |29 lutego 2016 r. |
-| 0.9.4-prelease |17 lutego 2015 |29 lutego 2016 r. |
+| 0.9.5-prelease |09 marca 2015 r. |29 lutego 2016 r. |
+| 0.9.4-prelease |17 lutego 2015 r. |29 lutego 2016 r. |
 | 0.9.3-prelease |13 stycznia 2015 r. |29 lutego 2016 r. |
 | 0.9.2-prelease |19 grudnia 2014 r. |29 lutego 2016 r. |
 | 0.9.1-prelease |19 grudnia 2014 r. |29 lutego 2016 r. |
@@ -237,5 +245,5 @@ Każde żądanie do rozwiązania Cosmos bazy danych przy użyciu wycofane zestaw
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Zobacz także
-Aby dowiedzieć się więcej na temat rozwiązania Cosmos bazy danych, zobacz [bazy danych programu Microsoft Azure rozwiązania Cosmos](https://azure.microsoft.com/services/cosmos-db/) stronę usługi.
+Aby dowiedzieć się więcej na temat usługi Cosmos DB, zobacz [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) stronę usługi.
 
