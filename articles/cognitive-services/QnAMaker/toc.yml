@@ -118,6 +118,8 @@
       href: glossary.md
 - name: Zasoby
   items:
+    - name: Dostępność regionalna
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/'
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Cennik

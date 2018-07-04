@@ -6,12 +6,12 @@ description: Dowiedz się, jak tworzyć zaawansowane aplikacje i zarządzać nim
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: afc3a6036e8d006f8c5f2a1de35037db2b38a70a
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: fdce9dc733f8c1a389a44374641eb27ba40d6b37
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083383"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446020"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -5451,7 +5451,7 @@ Platforma Azure dla deweloperów języka Java </h3>
                                                     <a href="/java/azure">Wprowadzenie</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/java/api/overview/azure">Dokumentacja interfejsu API</a>
+                                                    <a href="/java/api">Dokumentacja interfejsu API</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -5602,7 +5602,7 @@ Docker </h3>
                                                     <a href="/aspnet/core/host-and-deploy/docker/visual-studio-tools-for-docker">Visual Studio Tools for Docker</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=780680">Pobierz dla programu Visual Studio</a>
+                                                    <a href="https://www.visualstudio.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017">Pobierz dla programu Visual Studio</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://go.microsoft.com/fwlink/?LinkId=780681">Pobierz dla kodu Visual Studio Code</a>

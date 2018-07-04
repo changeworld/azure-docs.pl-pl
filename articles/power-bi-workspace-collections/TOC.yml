@@ -51,7 +51,7 @@
     - name: JavaScript
       href: 'https://github.com/Microsoft/PowerBI-JavaScript/wiki'
     - name: Interfejsy API REST zarządzania
-      href: /rest/api/powerbiembedded/
+      href: 'https://docs.microsoft.com/rest/api/power-bi-workspace-collections/'
     - name: Interfejsy API REST
       href: 'https://msdn.microsoft.com/library/azure/mt711507.aspx'
 - name: Zasoby
