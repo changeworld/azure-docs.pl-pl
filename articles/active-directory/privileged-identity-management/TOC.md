@@ -1,12 +1,9 @@
 # Omówienie
-## [Bezpieczny dostęp uprzywilejowany](active-directory-securing-privileged-access.md)
 ## [Co to jest usługa Azure AD PIM?](../active-directory-privileged-identity-management-configure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [Bezpieczny dostęp uprzywilejowany](../admin-roles-best-practices.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [Role katalogów w usłudze PIM](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [Usługa PIM dla zasobów platformy Azure](azure-pim-resource-rbac.md)
 ## [Przepływ pracy zatwierdzania usługi PIM](azure-ad-pim-approval-workflow.md)
-## [Role](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-
-
 
 # Rozpoczęcie pracy
 ## [Wymagania dotyczące subskrypcji](subscription-requirements.md)
@@ -46,16 +43,8 @@
 ### [Kończenie przeglądu dostępu](pim-resource-roles-complete-access-review.md)
 
 # Często zadawane pytania
-## Usługa PIM dla ról katalogów
 ## Usługa PIM dla ról zasobów
 ### [Typy przypisań](pim-resource-roles-eligible-visibility.md)
 
 # Dokumentacja
 ## [Przykłady kodu](https://azure.microsoft.com/resources/samples/?service=active-directory)
-
-# Powiązane
-## [Azure Active Directory](/azure/active-directory/)
-## [Kontrola dostępu oparta na rolach](../../role-based-access-control/overview.md)
-# Zasoby
-## [Harmonogram działania dla platformy Azure](https://azure.microsoft.com/roadmap/?category=security-identity)
-## [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/)

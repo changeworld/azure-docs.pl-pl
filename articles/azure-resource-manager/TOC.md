@@ -2,15 +2,17 @@
 
 # Omówienie
 ## [Co to jest usługa Resource Manager?](resource-group-overview.md)
-## [Dostawcy zasobów i ich typy](resource-manager-supported-services.md)
 ## [Wdrażanie za pomocą usługi Resource Manager i klasyczne](resource-manager-deployment-model.md)
-## [Nadzór subskrypcji](/azure/architecture/cloud-adoption-guide/subscription-governance)
-## [Organizowanie zasobów przy użyciu grup zarządzania](management-groups-overview.md)
 
 # Rozpoczęcie pracy
 ## [Szablon tworzenia i wdrażania](resource-manager-create-first-template.md)
 ## [Rozszerzenia kodu VS dla szablonów](resource-manager-vscode-extension.md)
 ## [Program Visual Studio z usługą Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
+
+# Pojęcia
+## [Dostawcy zasobów i ich typy](resource-manager-supported-services.md)
+## [Grupy zarządzania](management-groups-overview.md)
+## [Nadzór subskrypcji](/azure/architecture/cloud-adoption-guide/subscription-governance?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 
 # Instrukcje
 ## Tworzenie szablonów

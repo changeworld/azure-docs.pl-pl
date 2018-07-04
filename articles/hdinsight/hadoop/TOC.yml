@@ -508,6 +508,10 @@
     - name: Informacje o wersji
       href: ../hdinsight-release-notes.md
       maintainContext: true
+      items:
+        - name: Zarchiwizowane informacje o wersji
+          href: ../hdinsight-release-notes-archive.md
+          maintainContext: true
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
     - name: Uzyskiwanie pomocy na forum

@@ -5,7 +5,6 @@
 ### Sklepy  
 #### [Porównanie usługi AppSource i witryny Azure Marketplace](./comparing-appsource-azure-marketplace.md)  
 #### [Rozwijanie firmy dzięki usłudze AppSource](./grow-your-business-with-appsource.md) 
-#### [Preferowane rozwiązania](./preferred-solutions.md)
 ##### [Tworzenie strony docelowej](./build-your-landing-page.md)  
 ##### [Włączanie udostępniania informacji o potencjalnych klientach](./enable-lead-sharing.md)  
 ##### [Korzyści usług Go-To-Market na platformie handlowej](./gtm-benefits.md)  
@@ -19,17 +18,17 @@
 ### Instrukcje publikowania w sklepach na platformie handlowej  
 #### [Określanie typu oferty dla rozwiązania](./determine-your-listing-type.md)  
 #### [Jak zostać wydawcą w sklepach na platformie handlowej](./become-publisher.md)  
-#### [Wymagania dotyczące poszczególnych typów ofert](./listing-type-requirements.md)  
+#### [Wymagania dotyczące poszczególnych typów ofert](./listing-type-requirements.md) 
+#### [Preferowane rozwiązania](./preferred-solutions.md) 
 
 ### Listy kontrolne dotyczące publikowania  
 #### [Lista kontrolna dotycząca publikowania w usłudze AppSource](./publishing-checklist-appsource.md)  
 #### [Lista kontrolna dotycząca publikowania w witrynie Azure Marketplace](./publishing-checklist-azure-marketplace.md)  
 
 ### Pomoc techniczna  
-#### [Pomoc techniczna dotycząca usługi AppSource](./support-appsource.md)  
-#### [Pomoc techniczna dotycząca witryny Azure Marketplace](./support-azure-marketplace.md)  
+#### [Pomoc techniczna dla witryny Azure Marketplace i usługi AppSource](./support-azure-marketplace.md)  
 
-### Przewodniki  
+### Przewodniki dotyczące wydawania  
 #### [Usługi konsultingowe dla witryny Azure Marketplace](consulting-services.md)  
 #### [Techniczny przewodnik po publikowaniu aplikacji SaaS w witrynie Azure Marketplace](marketplace-saas-applications-technical-publishing-guide.md) 
 

@@ -4,7 +4,7 @@
 ## [Często zadawane pytania](faq-classic.md)
 
 # Rozpoczęcie pracy
-## [Tworzenie maszyny wirtualnej z systemem Linux przy użyciu witryny Azure Portal](createportal-classic.md)
+## [Tworzenie maszyny wirtualnej z systemem Linux](createportal-classic.md)
 
 # Instrukcje
 ## Wystąpienia obliczeniowe
@@ -30,7 +30,7 @@
 ### [Optymalizacja wydajności programu MySQL](optimize-mysql.md)
 
 ## Uruchamianie aplikacji
-### [Aplikacja sieci Web Ruby on Rails](ruby-rails-web-app.md)
+### [Aplikacja internetowa Ruby on Rails](ruby-rails-web-app.md)
 ### [Program Cassandra i klient Node.js](cassandra-nodejs.md)
 ### [Tomcat](setup-tomcat.md)
 ### [Klaster RDMA do uruchamiania aplikacji MPI](rdma-cluster.md)
